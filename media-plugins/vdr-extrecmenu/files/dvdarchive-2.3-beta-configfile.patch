@@ -1,0 +1,13 @@
+--- a/dvdarchive-2.3-beta.sh
++++ b/dvdarchive-2.3-beta.sh
+@@ -118,6 +118,10 @@
+ DEBUGLOG="/tmp/dvdarchive.sh-debug.log"
+ 
+ #</Configuration>
++
++# read config file
++. /etc/vdr/dvdarchive.conf
++
+ #
+ # No changes needed after this mark
+

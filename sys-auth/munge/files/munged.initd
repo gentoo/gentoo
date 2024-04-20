@@ -1,0 +1,48 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	after localmount
+}
+
+check_key() {
+	[ -s "${KEYFILE}" ] && return 0
+	local old_umask=$(umask)
+	local ret
+	umask 037
+	dd if=/dev/urandom bs=1024 count=1 of="${KEYFILE}" 2>/dev/null; ret=$?
+	umask $old_umask
+	return $ret
+}
+
+start() {
+	ebegin "Starting munged"
+	if ! check_key; then
+		eerror "Failed to create munge key"
+		eend 1 && exit 1
+	fi
+	checkpath -d -m 755 -o munge:munge /run/munge
+	checkpath -d -m 711 -o munge:munge /var/lib/munge
+	checkpath -d -m 700 -o munge:munge /var/log/munge
+	checkpath -f -m 600 -o munge:munge "${KEYFILE}"
+	start-stop-daemon -S /usr/sbin/munged \
+		--user munge \
+		--group munge \
+		--pidfile /run/munge/munged.pid \
+		-- \
+		--log-file=/var/log/munge/munged.log \
+		--key-file="${KEYFILE}" \
+		--group-check-mtime="${GROUP_CHECK_MTIME}" \
+		--group-update-time="${GROUP_UPDATE_TIME}" \
+		--num-threads="${NUM_THREADS}"
+	eend ${?}
+}
+
+stop() {
+	ebegin "Stopping munged"
+	start-stop-daemon -K /usr/sbin/munged \
+		--pidfile /run/munge/munged.pid
+	eend ${?}
+}
+

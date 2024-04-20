@@ -1,0 +1,26 @@
+From 5df37d4e6a22a67671a4b74c68e725a9001fbac1 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 15 Jun 2021 02:38:33 +0000
+Subject: [PATCH] Fix pointer comparison with 0
+
+Closes: https://bugs.gentoo.org/786276
+---
+ src/ndu.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/ndu.cpp b/src/ndu.cpp
+index 558ee45..8d3b353 100644
+--- a/src/ndu.cpp
++++ b/src/ndu.cpp
+@@ -404,7 +404,7 @@ public:
+ 		{
+ 			// see if file is a reverse file
+ 			// if the zone ends in .in-addr.arpa
+-			if(strstr(name->pchar(), IN_ADDR_ARPA) > 0)
++			if(strstr(name->pchar(), IN_ADDR_ARPA) != 0)
+ 			{
+ 				zoneType = 1;
+ 			}
+-- 
+2.32.0
+

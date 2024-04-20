@@ -1,0 +1,135 @@
+From: Sam Hocevar <sam@hocevar.net>
+Date: Fri, 26 Feb 2021 12:40:06 +0100
+Subject: [2/2] Fix a problem in the caca_resize() overflow detection and add
+ several unit tests.
+Origin: https://github.com/cacalabs/libcaca/commit/e4968ba6e93e9fd35429eb16895c785c51072015
+Bug: https://github.com/cacalabs/libcaca/issues/52
+Bug-Debian: https://bugs.debian.org/983686
+Bug-Debian-Security: https://security-tracker.debian.org/tracker/CVE-2021-3410
+
+---
+ caca/canvas.c     | 16 ++++++++--------
+ test/canvas.cpp   | 18 +++++++++++++++---
+ tools/makefont.c  | 22 +++++++++++++++++++---
+ 3 files changed, 42 insertions(+), 14 deletions(-)
+
+--- a/caca/canvas.c
++++ b/caca/canvas.c
+@@ -367,6 +367,14 @@ int caca_resize(caca_canvas_t *cv, int w
+ {
+     int x, y, f, old_width, old_height, old_size;
+ 
++    /* Check for overflow */
++    int new_size = width * height;
++    if (new_size < 0 || (width > 0 && new_size / width != height))
++    {
++        seterrno(EOVERFLOW);
++        return -1;
++    }
++
+     old_width = cv->width;
+     old_height = cv->height;
+     old_size = old_width * old_height;
+@@ -377,14 +385,6 @@ int caca_resize(caca_canvas_t *cv, int w
+      * dirty rectangle handling */
+     cv->width = width;
+     cv->height = height;
+-    int new_size = width * height;
+-
+-    /* Check for overflow */
+-    if (new_size / width != height)
+-    {
+-        seterrno(EOVERFLOW);
+-        return -1;
+-    }
+ 
+     /* If width or height is smaller (or both), we have the opportunity to
+      * reduce or even remove dirty rectangles */
+--- a/test/canvas.cpp
++++ b/test/canvas.cpp
+@@ -16,6 +16,7 @@
+ #include <cppunit/TestCaller.h>
+ #include <cppunit/TestCase.h>
+ #include <cppunit/TestSuite.h>
++#include <climits>
+ 
+ #include "caca.h"
+ 
+@@ -53,18 +54,29 @@ public:
+         CPPUNIT_ASSERT_EQUAL(caca_get_canvas_width(cv), 0);
+         CPPUNIT_ASSERT_EQUAL(caca_get_canvas_height(cv), 0);
+ 
+-        caca_set_canvas_size(cv, 1, 1);
++        int ret = caca_set_canvas_size(cv, 1, 1);
++        CPPUNIT_ASSERT_EQUAL(ret, 0);
+         CPPUNIT_ASSERT_EQUAL(caca_get_canvas_width(cv), 1);
+         CPPUNIT_ASSERT_EQUAL(caca_get_canvas_height(cv), 1);
+ 
+-        caca_set_canvas_size(cv, 1234, 1001);
++        ret = caca_set_canvas_size(cv, 1234, 1001);
++        CPPUNIT_ASSERT_EQUAL(ret, 0);
+         CPPUNIT_ASSERT_EQUAL(caca_get_canvas_width(cv), 1234);
+         CPPUNIT_ASSERT_EQUAL(caca_get_canvas_height(cv), 1001);
+ 
+-        caca_set_canvas_size(cv, 0, 0);
++        ret = caca_set_canvas_size(cv, 0, 0);
++        CPPUNIT_ASSERT_EQUAL(ret, 0);
+         CPPUNIT_ASSERT_EQUAL(caca_get_canvas_width(cv), 0);
+         CPPUNIT_ASSERT_EQUAL(caca_get_canvas_height(cv), 0);
+ 
++        CPPUNIT_ASSERT_EQUAL(-1, caca_set_canvas_size(cv, -1, 50));
++        CPPUNIT_ASSERT_EQUAL(-1, caca_set_canvas_size(cv, 50, -1));
++        CPPUNIT_ASSERT_EQUAL(-1, caca_set_canvas_size(cv, -1, -1));
++        CPPUNIT_ASSERT_EQUAL(-1, caca_set_canvas_size(cv, INT_MAX / 2, 3));
++        CPPUNIT_ASSERT_EQUAL(-1, caca_set_canvas_size(cv, 3, INT_MAX / 2));
++        CPPUNIT_ASSERT_EQUAL(-1, caca_set_canvas_size(cv, INT_MAX / 2, INT_MAX / 2));
++        CPPUNIT_ASSERT_EQUAL(0, caca_set_canvas_size(cv, 0, 0));
++
+         caca_free_canvas(cv);
+     }
+ 
+--- a/tools/makefont.c
++++ b/tools/makefont.c
+@@ -40,7 +40,8 @@
+  * and the UTF-8 glyphs necessary for canvas rotation and mirroring. */
+ static unsigned int const blocklist[] =
+ {
+-    0x0000, 0x0080, /* Basic latin: A, B, C, a, b, c */
++    0x0020, 0x0080, /* Basic latin: A, B, C, a, b, c */
++#if 0
+     0x0080, 0x0100, /* Latin-1 Supplement: Ä, Ç, å, ß */
+     0x0100, 0x0180, /* Latin Extended-A: Ā č Ō œ */
+     0x0180, 0x0250, /* Latin Extended-B: Ǝ Ƹ */
+@@ -63,6 +64,7 @@ static unsigned int const blocklist[] =
+     0x30a0, 0x3100, /* Katakana: ロ ル */
+     0xff00, 0xfff0, /* Halfwidth and Fullwidth Forms: Ａ, Ｂ, Ｃ, ａ, ｂ, ｃ */
+     0x10400, 0x10450, /* Deseret: 𐐒 𐐋 */
++#endif
+     0, 0
+ };
+ 
+@@ -317,8 +319,22 @@ int main(int argc, char *argv[])
+             printf_unicode(&gtab[n]);
+ 
+             if(gtab[n].same_as == n)
+-                printf_hex(" */ %s\n",
+-                           glyph_data + gtab[n].data_offset, gtab[n].data_size);
++            {
++                char const *lut = " .:nmW@";
++                printf("\n");
++                for (int y = 0; y < height; ++y)
++                {
++                    for (int x = 0; x < gtab[n].data_width; ++x)
++                    {
++                        int val = glyph_data[gtab[n].data_offset + y * gtab[n].data_width + x];
++                        char ch = lut[val * val * 7 / 256 / 256];
++                        printf("%c%c", ch, ch);
++                    }
++                    printf("\n");
++                }
++                //printf_hex(" */ %s\n",
++                //           glyph_data + gtab[n].data_offset, gtab[n].data_size);
++            }
+             else
+             {
+                 printf(" is ");

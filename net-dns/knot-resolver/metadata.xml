@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>matthew@gentoo.org</email>
+		<name>Matthew Smith</name>
+	</maintainer>
+	<use>
+		<flag name="dnstap">
+			Build dnstap binary logging module
+		</flag>
+		<flag name="kresc">
+			Build (experimental) command-line client
+		</flag>
+		<flag name="nghttp2">
+			DNS-over-HTTPS support
+		</flag>
+	</use>
+</pkgmetadata>

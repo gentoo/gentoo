@@ -1,0 +1,39 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -1,7 +1,11 @@
+-PREFIX			= /usr/local/bin
++prefix			= @prefix@
++exec_prefix		= @exec_prefix@
++bindir			= @bindir@
+ TEST				= test/
+-CC					= gcc  
+-CFLAGS			= -O9  -Wall 
++CC				= @CC@  
++CFLAGS			= @CFLAGS@
++CPPFLAGS		= @CPPFLAGS@
++LDFLAGS			= @LDFLAGS@
+ DEBUGFLAGS		= -ggdb -Wall 
+ 
+ SOURCES			= kalign2_distance_calculation.c kalign2_dp.c kalign2_input.c kalign2_main.c kalign2_mem.c kalign2_inferface.c kalign2_misc.c kalign2_tree.c  kalign2_profile.c kalign2_alignment_types.c kalign2_feature.c kalign2_hirschberg.c  kalign2_advanced_gaps.c kalign2_hirschberg_dna.c  kalign2_output.c kalign2_string_matching.c kalign2_profile_alignment.c 
+@@ -16,10 +20,7 @@
+ .PHONY: clean
+ 
+ all: $(OBJECTS)
+-	$(CC) $(CFLAGS) $(OBJECTS) -o $(PROGS)
+-	
+-%.o:	%.c
+-	$(CC) $(CFLAGS) -c $<
++	$(CC) $(LDFLAGS) $(CFLAGS) $(OBJECTS) -o $(PROGS)
+ 	
+ debug: $(DEBUGOBJECTS)
+ 	$(CC) $(DEBUGFLAGS) $(DEBUGOBJECTS) -o $(DEBUGPROGS)	
+@@ -29,7 +30,8 @@
+ 
+ 
+ install:
+-	cp $(PROGS) /usr/local/bin/
++	mkdir -p $(DESTDIR)$(bindir)
++	cp $(PROGS) $(DESTDIR)$(bindir)
+ 	
+ clean: 
+ 	rm -f $(PROGS) $(OBJECTS)

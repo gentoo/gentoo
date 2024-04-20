@@ -1,0 +1,11 @@
+--- a/docs/reference/Makefile.am	2016-08-13 23:05:38.521053367 +0000
++++ b/docs/reference/Makefile.am	2016-08-13 23:14:28.832053304 +0000
+@@ -9,7 +9,7 @@
+ # of using the various options.
+ 
+ # The name of the module, e.g. 'glib'.
+-DOC_MODULE=libosmgpsmap
++DOC_MODULE=libosmgpsmap-1.0
+ 
+ # The top-level SGML file. You can change this if you want to.
+ DOC_MAIN_SGML_FILE=$(DOC_MODULE)-docs.xml

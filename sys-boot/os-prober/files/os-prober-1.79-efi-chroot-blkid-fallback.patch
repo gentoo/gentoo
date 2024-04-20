@@ -1,0 +1,24 @@
+Fixes missing entries when os-prober is run in a chroot environment by falling back
+to blkid if udev isn't available or if /run/udev isn't bind mounted. Modified from
+https://build.opensuse.org/package/view_file/Base:System/os-prober/os-prober-05efi-blkid.patch?rev=103
+
+Bug: https://bugs.gentoo.org/761475
+     https://bugzilla.opensuse.org/1076779
+
+--- a/os-probes/mounted/x86/05efi
++++ b/os-probes/mounted/x86/05efi
+@@ -46,6 +46,14 @@ if type udevinfo > /dev/null 2>&1; then
+ 	fi
+ 
+ 	eval "$(udevinfo -q property -n "$partition" | grep -E '^ID_PART_ENTRY_(TYPE|SCHEME)=')"
++
++	# udev may not work in chroot as its db may not be there, bailout that by blkid (bsc#1076779)
++	if [ -z "$ID_PART_ENTRY_TYPE" -a -z "$ID_PART_ENTRY_SCHEME" ] &&
++		type blkid > /dev/null 2>&1; then
++		debug "fallback to blkid"
++		eval "$(blkid -p -o udev "$partition" | grep -E '^(ID_PART_ENTRY_(TYPE|SCHEME))=')"
++	fi
++
+ 	debug "$partition partition scheme is $ID_PART_ENTRY_SCHEME"
+ 	debug "$partition partition type is $ID_PART_ENTRY_TYPE"
+ 

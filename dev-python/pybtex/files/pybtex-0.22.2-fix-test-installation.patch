@@ -1,0 +1,11 @@
+--- a/setup.py	2020-06-02 10:46:54.592360043 +0100
++++ b/setup.py	2020-06-02 10:47:00.482302281 +0100
+@@ -82,7 +82,7 @@
+     ],
+     install_requires=install_requires,
+     python_requires='>=2.7,!=3.0.*,!=3.1.*,!=3.2.*',
+-    packages=find_packages(exclude=['docs']),
++    packages=find_packages(exclude=['docs', 'tests*']),
+     include_package_data=True,
+     cmdclass={'sdist': Sdist},
+     entry_points={

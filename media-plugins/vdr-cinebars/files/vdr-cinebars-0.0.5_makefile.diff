@@ -1,0 +1,21 @@
+diff -Naur cinebars-0.0.5.orig/Makefile cinebars-0.0.5/Makefile
+--- cinebars-0.0.5.orig/Makefile	2012-06-30 18:27:52.000000000 +0200
++++ cinebars-0.0.5/Makefile	2012-06-30 18:29:25.000000000 +0200
+@@ -49,13 +49,13 @@
+ 
+ ### The object files (add further files here):
+ OBJS = $(PLUGIN).o
+-ifneq ($(VERS157),1)
+-OBJS += i18n.o
+-endif
++#ifneq ($(VERS157),1)
++#OBJS += i18n.o
++#endif
+ 
+ ### The main target:
+ all: libvdr-$(PLUGIN).so
+-	if [ $(VERS157) = 1 ]; then make i18n; fi
++#	if [ $(VERS157) = 1 ]; then make i18n; fi
+ 
+ ### Implicit rules:
+ %.o: %.c

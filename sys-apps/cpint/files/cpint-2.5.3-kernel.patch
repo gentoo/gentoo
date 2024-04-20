@@ -1,0 +1,43 @@
+--- cpint-2.5.3/cpint.c
++++ cpint-2.5.3/cpint.c
+@@ -131,7 +131,7 @@
+ 
+ CPInt_Dev *cpint_devices;
+ 
+-static struct class_simple *cpint_class;
++static struct class *cpint_class;
+ 
+ /*----------------------------------------------------------*/
+ /* The different file operations                            */
+@@ -309,7 +309,7 @@
+     /*------------------------------------------------------*/
+ 	/* Register this device class                           */
+     /*------------------------------------------------------*/
+-	cpint_class = class_simple_create(THIS_MODULE, "cpint");
++	cpint_class = class_create(THIS_MODULE, "cpint");
+ 	if (IS_ERR(cpint_class)) {
+ 		printk(KERN_ERR "Error creating cpint class.\n");
+ 		kfree(cpint_devices);
+@@ -325,7 +325,7 @@
+ 
+ 		fopIdx = fopMap[i_dev];
+ 		if (fopIdx > -1 && !(cpint_devs_map & (1 << fopIdx))) {
+-			class_simple_device_add(cpint_class,
++			class_device_create(cpint_class, NULL,
+ 						MKDEV(cpint_major, i_dev), NULL,
+ 						cpNames[fopIdx]);
+ 			cpint_devs_map |= 1 << fopIdx;
+@@ -386,11 +386,11 @@
+ 
+ 		fopIdx = fopMap[i_dev];
+ 		if (fopIdx > -1 && (cpint_devs_map & (1 << fopIdx))) {
+-			class_simple_device_remove(MKDEV(cpint_major, i_dev));
++			class_device_destroy(cpint_class, MKDEV(cpint_major, i_dev));
+ 		}
+ 	}
+ 	cpint_devs_map = 0;
+-	class_simple_destroy(cpint_class);
++	class_destroy(cpint_class);
+ 
+ 	unregister_chrdev(cpint_major, "cpint");
+ 	for (i_dev = 0; i_dev < CPINT_NR_DEVS; i_dev++) {

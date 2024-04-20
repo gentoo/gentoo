@@ -1,0 +1,8 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+#CONFIG_FILE=/etc/go-carbon/go-carbon.conf
+
+# user and group to run go-carbon as
+#USER=carbon
+#GROUP=carbon

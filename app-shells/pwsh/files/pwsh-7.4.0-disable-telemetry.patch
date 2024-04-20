@@ -1,0 +1,47 @@
+--- a/src/System.Management.Automation/utils/Telemetry.cs
++++ b/src/System.Management.Automation/utils/Telemetry.cs
+@@ -137,10 +137,10 @@ namespace Microsoft.PowerShell.Telemetry
+         private static TelemetryClient s_telemetryClient { get; }
+ 
+         // the unique identifier for the user, when we start we
+-        private static string s_uniqueUserIdentifier { get; }
++        private static string s_uniqueUserIdentifier { get; } = string.Empty;
+ 
+         // the session identifier
+-        private static string s_sessionId { get; }
++        private static string s_sessionId { get; } = string.Empty;
+ 
+         // private semaphore to determine whether we sent the startup telemetry event
+         private static int s_startupEventSent = 0;
+@@ -149,8 +149,8 @@ namespace Microsoft.PowerShell.Telemetry
+         /// We send telemetry only a known set of modules and tags.
+         /// If it's not in the list (initialized in the static constructor), then we report anonymous
+         /// or don't report anything (in the case of tags).
+-        private static readonly HashSet<string> s_knownModules;
+-        private static readonly HashSet<string> s_knownModuleTags;
++        private static readonly HashSet<string> s_knownModules = new(){};
++        private static readonly HashSet<string> s_knownModuleTags = new(){};
+ 
+         /// <summary>Gets a value indicating whether telemetry can be sent.</summary>
+         public static bool CanSendTelemetry { get; private set; } = false;
+--- a/src/System.Management.Automation/utils/Telemetry.cs
++++ b/src/System.Management.Automation/utils/Telemetry.cs
+@@ -165,7 +165,8 @@ namespace Microsoft.PowerShell.Telemetry
+         static ApplicationInsightsTelemetry()
+         {
+             // If we can't send telemetry, there's no reason to do any of this
+-            CanSendTelemetry = !GetEnvironmentVariableAsBool(name: _telemetryOptoutEnvVar, defaultValue: false);
++            CanSendTelemetry = false;
++           /*
+             if (CanSendTelemetry)
+             {
+                 s_sessionId = Guid.NewGuid().ToString();
+@@ -617,6 +618,7 @@ namespace Microsoft.PowerShell.Telemetry
+ 
+                 s_uniqueUserIdentifier = GetUniqueIdentifier().ToString();
+             }
++           */
+         }
+ 
+         /// <summary>
+

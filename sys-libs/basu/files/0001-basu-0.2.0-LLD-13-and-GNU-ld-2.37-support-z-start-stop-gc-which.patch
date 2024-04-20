@@ -1,0 +1,51 @@
+From baa3a54e019b8ba6161fe20943c897490f4bcde8 Mon Sep 17 00:00:00 2001
+From: Fangrui Song <i@maskray.me>
+Date: Sat, 27 Nov 2021 18:19:46 +0100
+Subject: [PATCH basu] LLD 13 and GNU ld 2.37 support -z start-stop-gc which
+ allows garbage collection of C identifier name sections despite the
+ __start_/__stop_ references.  Simply set the retain attribute so that GCC 11
+ (if configure-time binutils is 2.36 or newer)/Clang 13 will set the
+ SHF_GNU_RETAIN section attribute to prevent garbage collection.
+
+Without the patch, there are linker errors like the following with -z
+start-stop-gc.
+
+```
+ld: error: undefined symbol: __start_SYSTEMD_BUS_ERROR_MAP
+>>> referenced by bus-error.c:93 (../src/libsystemd/sd-bus/bus-error.c:93)
+>>>               sd-bus_bus-error.c.o:(bus_error_name_to_errno) in archive src/libsystemd/libsystemd_static.a
+```
+
+Co-authored-by: Evgeniy Khramtsov <evgeniy@khramtsov.org>
+---
+Upstream: https://git.sr.ht/~emersion/basu/commit/5fa970e868f25ebc79ccca9b1d9df4c030d97661
+Gentoo bug: https://bugs.gentoo.org/832045
+
+ src/libsystemd/sd-bus/bus-error.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/libsystemd/sd-bus/bus-error.h b/src/libsystemd/sd-bus/bus-error.h
+index 06c478a..883213f 100644
+--- a/src/libsystemd/sd-bus/bus-error.h
++++ b/src/libsystemd/sd-bus/bus-error.h
+@@ -28,11 +28,17 @@ int bus_error_set_errnofv(sd_bus_error *e, int error, const char *format, va_lis
+  * the bus error table, and BUS_ERROR_MAP_ELF_USE has to be used at
+  * least once per compilation unit (i.e. per library), to ensure that
+  * the error map is really added to the final binary.
++ *
++ * In addition, set the retain attribute so that the section cannot be
++ * discarded by ld --gc-sections -z start-stop-gc. Older compilers would
++ * warn for the unknown attribute, so just disable -Wattributes.
+  */
+ 
+ #define BUS_ERROR_MAP_ELF_REGISTER                                      \
++        _Pragma("GCC diagnostic ignored \"-Wattributes\"")              \
+         __attribute__ ((__section__("BUS_ERROR_MAP")))                  \
+         __attribute__ ((__used__))                                      \
++        __attribute__ ((retain))                                        \
+         __attribute__ ((aligned(8)))
+ 
+ #define BUS_ERROR_MAP_ELF_USE(errors)                                   \
+-- 
+2.34.1
+

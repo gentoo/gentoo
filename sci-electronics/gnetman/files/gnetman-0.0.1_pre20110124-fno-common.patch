@@ -1,0 +1,30 @@
+--- a/src/sch/schwrite.c
++++ b/src/sch/schwrite.c
+@@ -21,7 +21,7 @@
+ --------------------------------------------------------------------------------------------------*/
+ #include "sch.h"
+ 
+-FILE *schFile;
++extern FILE *schFile;
+ 
+ /*--------------------------------------------------------------------------------------------------
+   Write to schFile.
+--- a/src/spice/cir.h
++++ b/src/spice/cir.h
+@@ -36,5 +36,5 @@
+ extern void cirwarn(char *message, ...);
+ 
+ /* Attribute symbols */
+-utSym cirGraphicalSym, cirNetSym, cirSpiceTypeSym, cirSpiceTextSym;
++extern utSym cirGraphicalSym, cirNetSym, cirSpiceTypeSym, cirSpiceTextSym;
+ 
+--- a/src/spice/cirwrite.c
++++ b/src/spice/cirwrite.c
+@@ -29,6 +29,7 @@
+ FILE *cirFile;
+ uint32 cirLineNum;
+ cirRoot cirTheRoot;
++utSym cirGraphicalSym, cirNetSym, cirSpiceTypeSym, cirSpiceTextSym;
+ 
+ static char *cirLine;
+ static uint32 cirLinePos, cirLineSize, cirLastBreakPos;

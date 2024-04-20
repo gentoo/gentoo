@@ -1,0 +1,12 @@
+--- a/src/deskmenu.c
++++ b/src/deskmenu.c
+@@ -146,6 +146,9 @@
+ 	return value;
+ }
+ 
++int
++decode_switches (int argc, char **argv);
++
+ void
+ initialize (int argc, char *argv[])
+ {

@@ -1,0 +1,21 @@
+--- a/config-scripts/cups-common.m4
++++ b/config-scripts/cups-common.m4
+@@ -39,15 +39,15 @@
+ AC_PROG_CPP
+ AC_PROG_CXX
+ AC_PROG_RANLIB
+-AC_PATH_PROG([AR], [ar])
++AC_CHECK_TOOL([AR], [ar])
+ AC_PATH_PROG([CHMOD], [chmod])
+ AC_PATH_PROG([GZIPPROG], [gzip])
+ AC_MSG_CHECKING([for install-sh script])
+ INSTALL="`pwd`/install-sh"
+ AC_SUBST([INSTALL])
+ AC_MSG_RESULT([using $INSTALL])
+-AC_PATH_PROG([LD], [ld])
+-AC_PATH_PROG([LN], [ln])
++AC_CHECK_TOOL([LD], [ld])
++AC_CHECK_TOOL([LN], [ln])
+ AC_PATH_PROG([MKDIR], [mkdir])
+ AC_PATH_PROG([MV], [mv])
+ AC_PATH_PROG([RM], [rm])

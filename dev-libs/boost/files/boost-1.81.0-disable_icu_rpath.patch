@@ -1,0 +1,19 @@
+--- a/libs/locale/build/Jamfile.v2
++++ b/libs/locale/build/Jamfile.v2
+@@ -99,16 +99,6 @@ if $(.icu-path)
+ rule path_options ( properties * )
+ {
+     local result ;
+-    if <address-model>64 in $(properties) && <toolset>msvc in $(properties)
+-    {
+-        debug-message Search 64 bit ICU in "$(.icu-path)/lib64" ;
+-        result = <search>$(.icu-path)/bin64 <search>$(.icu-path)/lib64 ;
+-    }
+-    else
+-    {
+-        debug-message Search ICU in "$(.icu-path)/lib" ;
+-        result = <search>$(.icu-path)/bin <search>$(.icu-path)/lib ;
+-    }
+     return $(result) ;
+ }
+ 

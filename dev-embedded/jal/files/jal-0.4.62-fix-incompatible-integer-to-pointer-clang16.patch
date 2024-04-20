@@ -1,0 +1,22 @@
+Bug: https://bugs.gentoo.org/883243
+--- a/jal/treerep.c
++++ b/jal/treerep.c
+@@ -892,7 +892,7 @@ tree new_asm(loc_t loc, opcode_t opcode, tree arg1, int arg2)
+ 
+ 
+     if (code_has(p->opcode, field_flabel)) {
+-        assert_pointer(NULL, arg2);
++        assert_pointer(NULL, (void *)arg2);
+         p->next = new_const(new_value(type_universal, arg2));
+     }
+ 
+--- a/jal/treetools.c
++++ b/jal/treetools.c
+@@ -600,7 +600,6 @@ tree arg(tree p, int n, boolean must_find)
+ #endif
+     assert_kind(p->loc, p, node_procedure);
+ /*    jal_assert(p->loc, n > 0); */
+-    assert_pointer(p->loc, n > 0);
+     p = p->first;
+     assert_pointer(NULL, p);
+ 

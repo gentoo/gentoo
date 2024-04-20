@@ -1,0 +1,15 @@
+#!/bin/sh
+# Run the expire function of apt-cacher-ng non-interactively (unless errors 
+# are detected).
+
+# optional, specify hostname to appear in error messages and links
+# HOSTNAME=externallyVisibleHostName
+# export HOSTNAME
+
+# optional, specify IP address to connect to
+# ACNGIP=10.0.1.3
+# export ACNGIP
+
+if test -r /usr/sbin/expire-caller.pl ; then
+   perl /usr/sbin/expire-caller.pl || echo Check error messages in /var/log/apt-cacher-ng/maint_*.log 
+fi

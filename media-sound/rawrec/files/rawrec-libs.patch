@@ -1,0 +1,22 @@
+Index: src/Makefile
+===================================================================
+--- src.orig/Makefile
++++ src/Makefile
+@@ -19,7 +19,7 @@ OPTFLAGS = -O2
+ CFLAGS = $(WARNFLAGS) $(OPTFLAGS) $(DEBUGFLAGS) -DUSEBUFFLOCK \
+          $(FANCY_THREAD_DEFINES) -D_REENTRANT -D_GNU_SOURCE \
+          -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE
+-LDFLAGS = -lm -lpthread
++LIBS = -lm -lpthread
+ 
+ # The GNU way is just too painful.  I'm not writing three tiers of
+ # variables just to get to /usr/local/man/man1.  If it starts to seem 
+@@ -35,7 +35,7 @@ MAN_DIR = /usr/local/man/man1
+ all: $(PROG) $(ALT_INVOC)
+ 
+ $(PROG): $(OBJS)
+-	$(CC) $(OBJS) $(LDFLAGS) -o $(PROG)
++	$(CC) $(LDFLAGS) $(OBJS) -o $(PROG) $(LIBS)
+ 
+ # Everything is rebuilt if this Makefile (which is hopefully named
+ # "Makefile") or any header changes.

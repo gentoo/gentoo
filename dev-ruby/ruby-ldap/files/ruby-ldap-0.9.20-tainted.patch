@@ -1,0 +1,28 @@
+From 849ca6bb46bf4826d51648feddd453142281e541 Mon Sep 17 00:00:00 2001
+From: Hisashi MINAMINO <minamino@iij.ad.jp>
+Date: Thu, 28 May 2020 14:04:05 +0900
+Subject: [PATCH] for ruby-2.7
+
+---
+ rbldap.h | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/rbldap.h b/rbldap.h
+index 1fa04e1..b7b1765 100644
+--- a/rbldap.h
++++ b/rbldap.h
+@@ -205,3 +205,14 @@ VALUE rb_ldap_mod_vals (VALUE);
+         rb_define_method(rb_cLDAP_Mod,method,cfunc,argc)
+ 
+ #endif
++
++#if RUBY_VERSION_CODE >= 270
++# if defined rb_tainted_str_new
++#  undef rb_tainted_str_new
++# endif
++# if defined rb_tainted_str_new2
++#  undef rb_tainted_str_new2
++# endif
++# define rb_tainted_str_new(p,l)	rb_str_new((p),(l))
++# define rb_tainted_str_new2(p)		rb_str_new_cstr((p))
++#endif

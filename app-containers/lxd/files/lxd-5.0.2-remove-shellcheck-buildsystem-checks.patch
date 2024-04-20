@@ -1,0 +1,32 @@
+diff -Naur a/Makefile b/Makefile
+--- a/Makefile	2023-01-16 21:10:45.000000000 -0000
++++ b/Makefile	2023-01-19 14:52:28.488204725 -0000
+@@ -248,28 +248,6 @@
+ .PHONY: build-mo
+ build-mo: $(MOFILES)
+ 
+-.PHONY: static-analysis
+-static-analysis:
+-ifeq ($(shell command -v golangci-lint 2> /dev/null),)
+-	go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.46.2
+-endif
+-ifeq ($(shell command -v shellcheck 2> /dev/null),)
+-	echo "Please install shellcheck"
+-	exit 1
+-endif
+-ifneq "$(shell shellcheck --version | grep version: | cut -d ' ' -f2)" "0.8.0"
+-	@echo "WARN: shellcheck version is not 0.8.0"
+-endif
+-ifeq ($(shell command -v flake8 2> /dev/null),)
+-	echo "Please install flake8"
+-	exit 1
+-endif
+-	golangci-lint run --timeout 5m
+-	flake8 test/deps/import-busybox
+-	shellcheck --shell sh test/*.sh test/includes/*.sh test/suites/*.sh test/backends/*.sh test/lint/*.sh
+-	shellcheck test/extras/*.sh
+-	run-parts --regex '.sh' test/lint
+-
+ .PHONY: tags
+ tags: *.go lxd/*.go shared/*.go lxc/*.go
+ 	find . -type f -name '*.go' | xargs gotags > tags

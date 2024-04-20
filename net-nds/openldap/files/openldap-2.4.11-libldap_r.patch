@@ -1,0 +1,10 @@
+--- a/servers/slapd/slapi/Makefile.in
++++ b/servers/slapd/slapi/Makefile.in
+@@ -37,6 +37,7 @@
+ XLIBS = $(LIBRARY)
+ XXLIBS = 
+ NT_LINK_LIBS = $(AC_LIBS)
++UNIX_LINK_LIBS = ../../../libraries/libldap_r/libldap_r.la $(LTHREAD_LIBS)
+ 
+ XINCPATH = -I$(srcdir)/.. -I$(srcdir)
+ XDEFS = $(MODULES_CPPFLAGS)

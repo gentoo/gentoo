@@ -1,0 +1,356 @@
+https://github.com/coturn/coturn/commit/9af9f6306ab73c3403f9e11086b1936e9148f7de
+https://github.com/coturn/coturn/commit/4ce784a8781ab086c150e2b9f5641b1a37fd9b31
+https://github.com/coturn/coturn/commit/9370bb742d976166a51032760da1ecedefb92267
+https://github.com/coturn/coturn/commit/d72a2a8920b80ce66b36e22b2c22f308ad06c424
+
+From 9af9f6306ab73c3403f9e11086b1936e9148f7de Mon Sep 17 00:00:00 2001
+From: Pavel Punsky <eakraly@users.noreply.github.com>
+Date: Wed, 14 Sep 2022 03:29:26 -0700
+Subject: [PATCH] Fix renegotiation flag for older version of openssl (#978)
+
+`SSL_OP_NO_RENEGOTIATION` is only supported in openssl-1.1.0 and above
+Older versions have `SSL3_FLAGS_NO_RENEGOTIATE_CIPHERS `
+
+Fixes #977 and #952
+
+Test:
+Build in a docker container running running openssl-1.0.2g (ubuntu
+16.04) successfully (without the fix getting the same errors)
+--- a/src/apps/relay/dtls_listener.c
++++ b/src/apps/relay/dtls_listener.c
+@@ -295,8 +295,17 @@ static ioa_socket_handle dtls_server_input_handler(dtls_listener_relay_server_ty
+ 	SSL_set_accept_state(connecting_ssl);
+ 
+ 	SSL_set_bio(connecting_ssl, NULL, wbio);
+-	SSL_set_options(connecting_ssl, SSL_OP_COOKIE_EXCHANGE | SSL_OP_NO_RENEGOTIATION);
+-
++	SSL_set_options(connecting_ssl, SSL_OP_COOKIE_EXCHANGE
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if defined(SSL3_FLAGS_NO_RENEGOTIATE_CIPHERS)
++		| SSL3_FLAGS_NO_RENEGOTIATE_CIPHERS
++#endif
++#else
++#if defined(SSL_OP_NO_RENEGOTIATION)
++		| SSL_OP_NO_RENEGOTIATION
++#endif
++#endif
++	);
+ 	SSL_set_max_cert_list(connecting_ssl, 655350);
+ 
+ 	ioa_socket_handle rc = dtls_accept_client_connection(server, s, connecting_ssl,
+@@ -581,7 +590,17 @@ static int create_new_connected_udp_socket(
+ 
+ 		SSL_set_bio(connecting_ssl, NULL, wbio);
+ 
+-		SSL_set_options(connecting_ssl, SSL_OP_COOKIE_EXCHANGE | SSL_OP_NO_RENEGOTIATION);
++		SSL_set_options(connecting_ssl, SSL_OP_COOKIE_EXCHANGE
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if defined(SSL3_FLAGS_NO_RENEGOTIATE_CIPHERS)
++			| SSL3_FLAGS_NO_RENEGOTIATE_CIPHERS
++#endif
++#else
++#if defined(SSL_OP_NO_RENEGOTIATION)
++			| SSL_OP_NO_RENEGOTIATION
++#endif
++#endif
++		);
+ 
+ 		SSL_set_max_cert_list(connecting_ssl, 655350);
+ 		int rc = ssl_read(ret->fd, connecting_ssl, server->sm.m.sm.nd.nbh,
+--- a/src/apps/relay/ns_ioalib_engine_impl.c
++++ b/src/apps/relay/ns_ioalib_engine_impl.c
+@@ -1428,7 +1428,17 @@ static void set_socket_ssl(ioa_socket_handle s, SSL *ssl)
+ 		if(ssl) {
+ 			SSL_set_app_data(ssl,s);
+ 			SSL_set_info_callback(ssl, (ssl_info_callback_t)ssl_info_callback);
+-			SSL_set_options(ssl, SSL_OP_NO_RENEGOTIATION);
++			SSL_set_options(ssl, 
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if defined(SSL3_FLAGS_NO_RENEGOTIATE_CIPHERS)
++				SSL3_FLAGS_NO_RENEGOTIATE_CIPHERS
++#endif
++#else
++#if defined(SSL_OP_NO_RENEGOTIATION)
++				SSL_OP_NO_RENEGOTIATION
++#endif
++#endif
++			);
+ 		}
+ 	}
+ }
+
+From 4ce784a8781ab086c150e2b9f5641b1a37fd9b31 Mon Sep 17 00:00:00 2001
+From: Pavel Punsky <eakraly@users.noreply.github.com>
+Date: Fri, 16 Sep 2022 00:46:45 -0700
+Subject: [PATCH] Improve openssl3 and FIPS support (#955)
+
+openssl-3.0 deprecated some APIs and introduced new APIs instead:
+
+`SSL_get_peer_certificate ` -> `SSL_get1_peer_certificate `
+`FIPS_mode()`->`EVP_default_properties_is_fips_enabled()`
+`EVP_MD_CTX_set_flags()`->`EVP_default_properties_enable_fips()`
+specifically for enabling FIPS mode
+
+This change should workaround that by ifdef-ing old/new versions of
+openssl and APIs - so pre-3.0 use existing APIs (so not change there)
+and >=3.0 will use new APIs (whether it actually works or not is still
+TBD as this is just a first step in openssl-3.0 support)
+
+Should fix #886
+
+Test Plan:
+Run CI build that supports ubuntu-20.04 (openssl-1.1.1) and ubuntu-22.04
+(openssl-3.0.2)
+Both builds pass
+None of them have FIPS support (which for 1.1.x stays the same as
+before)
+
+Co-authored-by: Pavel Punsky <pavel.punsky@epicgames.com>
+--- a/src/apps/relay/ns_ioalib_engine_impl.c
++++ b/src/apps/relay/ns_ioalib_engine_impl.c
+@@ -1868,7 +1868,11 @@ int ssl_read(evutil_socket_t fd, SSL* ssl, ioa_network_buffer_handle nbh, int ve
+ 
+ 	} else if (!if1 && if2) {
+ 
++#if (OPENSSL_VERSION_NUMBER >= 0x30000000L)
++		if(verbose && SSL_get1_peer_certificate(ssl)) {
++#else
+ 		if(verbose && SSL_get_peer_certificate(ssl)) {
++#endif
+ 		  printf("\n------------------------------------------------------------\n");
+ 		  X509_NAME_print_ex_fp(stdout, X509_get_subject_name(SSL_get_peer_certificate(ssl)), 1,
+ 					XN_FLAG_MULTILINE);
+--- a/src/apps/uclient/startuclient.c
++++ b/src/apps/uclient/startuclient.c
+@@ -138,7 +138,11 @@ static SSL* tls_connect(ioa_socket_raw fd, ioa_addr *remote_addr, int *try_again
+ 		if (rc > 0) {
+ 		  TURN_LOG_FUNC(TURN_LOG_LEVEL_INFO,"%s: client session connected with cipher %s, method=%s\n",__FUNCTION__,
+ 				  SSL_get_cipher(ssl),turn_get_ssl_method(ssl,NULL));
++#if (OPENSSL_VERSION_NUMBER >= 0x30000000L)
++		  if(clnet_verbose && SSL_get1_peer_certificate(ssl)) {
++#else
+ 		  if(clnet_verbose && SSL_get_peer_certificate(ssl)) {
++#endif
+ 			  TURN_LOG_FUNC(TURN_LOG_LEVEL_INFO, "------------------------------------------------------------\n");
+ 		  	X509_NAME_print_ex_fp(stdout, X509_get_subject_name(SSL_get_peer_certificate(ssl)), 1,
+ 		  						XN_FLAG_MULTILINE);
+--- a/src/client/ns_turn_msg.c
++++ b/src/client/ns_turn_msg.c
+@@ -248,12 +248,22 @@ int stun_produce_integrity_key_str(const uint8_t *uname, const uint8_t *realm, c
+ 		if (FIPS_mode()) {
+ 			EVP_MD_CTX_set_flags(&ctx,EVP_MD_CTX_FLAG_NON_FIPS_ALLOW);
+ 		}
+-#endif
++#endif // defined EVP_MD_CTX_FLAG_NON_FIPS_ALLOW && !defined(LIBRESSL_VERSION_NUMBER)
+ 		EVP_DigestInit_ex(&ctx,EVP_md5(), NULL);
+ 		EVP_DigestUpdate(&ctx,str,strl);
+ 		EVP_DigestFinal(&ctx,key,&keylen);
+ 		EVP_MD_CTX_cleanup(&ctx);
+-#else
++#elif OPENSSL_VERSION_NUMBER >= 0x30000000L
++ 		unsigned int keylen = 0;
++ 		EVP_MD_CTX *ctx = EVP_MD_CTX_new();
++		if (EVP_default_properties_is_fips_enabled(NULL)) {
++			EVP_default_properties_enable_fips(NULL, 0);
++ 		}
++ 		EVP_DigestInit_ex(ctx,EVP_md5(), NULL);
++ 		EVP_DigestUpdate(ctx,str,strl);
++ 		EVP_DigestFinal(ctx,key,&keylen);
++ 		EVP_MD_CTX_free(ctx);
++#else // OPENSSL_VERSION_NUMBER < 0x10100000L
+ 		unsigned int keylen = 0;
+ 		EVP_MD_CTX *ctx = EVP_MD_CTX_new();
+ #if defined EVP_MD_CTX_FLAG_NON_FIPS_ALLOW && ! defined(LIBRESSL_VERSION_NUMBER)
+@@ -265,7 +275,7 @@ int stun_produce_integrity_key_str(const uint8_t *uname, const uint8_t *realm, c
+ 		EVP_DigestUpdate(ctx,str,strl);
+ 		EVP_DigestFinal(ctx,key,&keylen);
+ 		EVP_MD_CTX_free(ctx);
+-#endif
++#endif // OPENSSL_VERSION_NUMBER < 0X10100000L
+ 		ret = 0;
+ 	}
+ 
+
+From 9370bb742d976166a51032760da1ecedefb92267 Mon Sep 17 00:00:00 2001
+From: Pavel Punsky <eakraly@users.noreply.github.com>
+Date: Fri, 16 Sep 2022 23:29:32 -0700
+Subject: [PATCH] Fix a warning (#988)
+
+There are too many defines that are, eventually, used in one place so
+just inlining.
+
+Current code generates following warning:
+```
+warning: macro expansion producing 'defined' has undefined behavior [-Wexpansion-to-defined]
+```
+
+With the fix there is no warning
+
+Co-authored-by: Pavel Punsky <pavel.punsky@epicgames.com>
+--- a/src/apps/relay/netengine.c
++++ b/src/apps/relay/netengine.c
+@@ -31,13 +31,7 @@
+ #include "mainrelay.h"
+ 
+ //////////// Backward compatibility with OpenSSL 1.0.x //////////////
+-#define HAVE_OPENSSL11_API (!(OPENSSL_VERSION_NUMBER < 0x10100001L || defined LIBRESSL_VERSION_NUMBER))
+-
+-#ifndef HAVE_SSL_CTX_UP_REF
+-#define HAVE_SSL_CTX_UP_REF HAVE_OPENSSL11_API
+-#endif
+-
+-#if !HAVE_SSL_CTX_UP_REF
++#if (OPENSSL_VERSION_NUMBER < 0x10100001L || defined LIBRESSL_VERSION_NUMBER)
+ #define SSL_CTX_up_ref(ctx) CRYPTO_add(&(ctx)->references, 1, CRYPTO_LOCK_SSL_CTX)
+ #endif
+ 
+
+From d72a2a8920b80ce66b36e22b2c22f308ad06c424 Mon Sep 17 00:00:00 2001
+From: Pavel Punsky <eakraly@users.noreply.github.com>
+Date: Mon, 24 Oct 2022 13:06:35 -0700
+Subject: [PATCH] Cleanup openssl initialization (#1012)
+
+Rewriting openssl initialization code (threading support to make it
+cleaner
+
+- Regroup functions so that there is one ifdef (for old code and new
+code)
+- Modern openssl (>1.0.2) does not need any synchornization routines so
+they are empty
+- Old openssl (<=1.0.2) now require `OPENSSL_THREADS` which allows
+running multiple threads in turnserver. Not having turnserver
+multi-threaded is a huge waste. `OPENSSL_THREADS` is now a requirement.
+
+
+Test Plan:
+- CI builds pass for openssl versions 1.0.2, 1.1.1, 3.0, including tests
+--- a/src/apps/relay/mainrelay.c
++++ b/src/apps/relay/mainrelay.c
+@@ -1345,7 +1345,6 @@ static void set_option(int c, char *value)
+ 		STRCPY(turn_params.relay_ifname, value);
+ 		break;
+ 	case 'm':
+-#if defined(OPENSSL_THREADS)
+ 		if(atoi(value)>MAX_NUMBER_OF_GENERAL_RELAY_SERVERS) {
+ 			TURN_LOG_FUNC(TURN_LOG_LEVEL_WARNING, "WARNING: max number of relay threads is 128.\n");
+ 			turn_params.general_relay_servers_number = MAX_NUMBER_OF_GENERAL_RELAY_SERVERS;
+@@ -1354,9 +1353,6 @@ static void set_option(int c, char *value)
+ 		} else {
+ 			turn_params.general_relay_servers_number = atoi(value);
+ 		}
+-#else
+-		TURN_LOG_FUNC(TURN_LOG_LEVEL_WARNING, "WARNING: OpenSSL version is too old OR does not support threading,\n I am using single thread for relaying.\n");
+-#endif
+ 		break;
+ 	case 'd':
+ 		STRCPY(turn_params.listener_ifname, value);
+@@ -2645,9 +2641,8 @@ int main(int argc, char **argv)
+ 
+ ////////// OpenSSL locking ////////////////////////////////////////
+ 
+-#if defined(OPENSSL_THREADS)
+-
+-static char some_buffer[65536];
++#if defined(OPENSSL_THREADS) 
++#if OPENSSL_VERSION_NUMBER < OPENSSL_VERSION_1_1_0
+ 
+ //array larger than anything that OpenSSL may need:
+ static pthread_mutex_t mutex_buf[256];
+@@ -2665,76 +2660,52 @@ void coturn_locking_function(int mode, int n, const char *file, int line) {
+   }
+ }
+ 
+-#if OPENSSL_VERSION_NUMBER >= 0x10000000L
+ void coturn_id_function(CRYPTO_THREADID *ctid);
+ void coturn_id_function(CRYPTO_THREADID *ctid)
+ {
+ 	UNUSED_ARG(ctid);
+     CRYPTO_THREADID_set_numeric(ctid, (unsigned long)pthread_self());
+ }
+-#else
+-unsigned long coturn_id_function(void);
+-unsigned long coturn_id_function(void)
+-{
+-    return (unsigned long)pthread_self();
+-}
+-#endif
+-
+-#endif
+ 
+ static int THREAD_setup(void) {
+-
+-#if defined(OPENSSL_THREADS)
+-
+-	int i;
+-
+-	some_buffer[0] = 0;
+-
++    int i;
+ 	for (i = 0; i < CRYPTO_num_locks(); i++) {
+ 		pthread_mutex_init(&(mutex_buf[i]), NULL);
+ 	}
+ 
+ 	mutex_buf_initialized = 1;
+-
+-#if OPENSSL_VERSION_NUMBER >= 0x10000000L && OPENSSL_VERSION_NUMBER <= OPENSSL_VERSION_1_1_1
+ 	CRYPTO_THREADID_set_callback(coturn_id_function);
+-#else
+-	CRYPTO_set_id_callback(coturn_id_function);
+-#endif
+-
+ 	CRYPTO_set_locking_callback(coturn_locking_function);
+-#endif
+-
+ 	return 1;
+ }
+ 
+ int THREAD_cleanup(void);
+ int THREAD_cleanup(void) {
++    int i;
+ 
+-#if defined(OPENSSL_THREADS)
++    if (!mutex_buf_initialized)
++        return 0;
+ 
+-  int i;
+-
+-  if (!mutex_buf_initialized)
+-    return 0;
++    CRYPTO_THREADID_set_callback(NULL);
++    CRYPTO_set_locking_callback(NULL);
++    for (i = 0; i < CRYPTO_num_locks(); i++) {
++        pthread_mutex_destroy(&(mutex_buf[i]));
++    }
+ 
+-#if OPENSSL_VERSION_NUMBER >= 0x10000000L && OPENSSL_VERSION_NUMBER <= OPENSSL_VERSION_1_1_1
+-	CRYPTO_THREADID_set_callback(NULL);
++    mutex_buf_initialized = 0;
++  return 1;
++}
+ #else
+-	CRYPTO_set_id_callback(NULL);
+-#endif
+-
+-  CRYPTO_set_locking_callback(NULL);
+-  for (i = 0; i < CRYPTO_num_locks(); i++) {
+-	  pthread_mutex_destroy(&(mutex_buf[i]));
+-  }
+-
+-  mutex_buf_initialized = 0;
+-
+-#endif
++static int THREAD_setup(void) {
++    return 1;
++}
+ 
+-  return 1;
++int THREAD_cleanup(void);
++int THREAD_cleanup(void){
++    return 1;
+ }
++#endif /* OPENSSL_VERSION_NUMBER < OPENSSL_VERSION_1_1_0 */
++#endif /* defined(OPENSSL_THREADS) */
+ 
+ static void adjust_key_file_name(char *fn, const char* file_title, int critical)
+ {
+

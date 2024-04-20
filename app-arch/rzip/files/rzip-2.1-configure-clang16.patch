@@ -1,0 +1,13 @@
+See also: https://bugzilla.redhat.com/show_bug.cgi?id=2144458
+
+--- a/configure.in
++++ b/configure.in
+@@ -36,7 +36,7 @@ AC_CACHE_CHECK([for large file support],rzip_cv_HAVE_LARGE_FILES,[
+ AC_TRY_RUN([
+ #include <stdio.h>
+ #include <sys/types.h>
+-main() { return (sizeof(off_t) == 4); }],
++int main(void) { return (sizeof(off_t) == 4); }],
+ rzip_cv_HAVE_LARGE_FILES=yes,
+ rzip_cv_HAVE_LARGE_FILES=no,
+ rzip_cv_HAVE_LARGE_FILES=cross)])

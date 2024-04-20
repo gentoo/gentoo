@@ -1,0 +1,63 @@
+--- a/Makefile
++++ b/Makefile	2003-10-12 02:25:31.000000000 +0000
+@@ -4,7 +4,7 @@
+ 
+ ### Sources
+ 
+-SOURCE_FILES=file_io.h file_io.c in_buffer.h in_buffer.c parse_ifo.h parse_ifo.c s_types.h main.c vstrip.h vstrip.c
++SOURCE_FILES=file_io.h file_io.c in_buffer.h in_buffer.c parse_ifo.h parse_ifo.c s_types.h main.c vstrip.h vstrip.c dvd2avi_plugin.c
+ 
+ ### Objects and executables
+ 
+@@ -27,8 +27,8 @@
+ 
+ ### Details
+ 
+-vstrip :	 file_io.o in_buffer.o main.o parse_ifo.o vstrip.o
+-	$(CC)	-g  file_io.o in_buffer.o main.o parse_ifo.o vstrip.o -o vstrip
++vstrip :	 file_io.o in_buffer.o main.o parse_ifo.o vstrip.o dvd2avi_plugin.o
++	$(CC)	$(LDFLAGS) file_io.o in_buffer.o main.o parse_ifo.o vstrip.o dvd2avi_plugin.o -o vstrip -lm 
+ file_io.o : s_types.h file_io.h file_io.c
+ in_buffer.o : s_types.h file_io.h in_buffer.h in_buffer.c
+ main.o : s_types.h file_io.h vstrip.h main.c
+--- a/dvd2avi_plugin.c
++++ b/dvd2avi_plugin.c	2003-10-12 02:29:23.000000000 +0000
+@@ -6,13 +6,17 @@
+   
+ *************************************************************************/
+ 
++#include <string.h>
++#include <stdlib.h>
+ #include <stdio.h>
+-#include <io.h>
++#include <sys/io.h>
+ #include <fcntl.h>
+ #include "s_types.h"
+ #include "vstrip.h"
+ #include "dvd2avi_plugin.h"
+ 
++#define max(a,b) a < b ? b : a
++
+ bool dvd2avi_process(byte *data, tp_vs_streaminfo const si, void *user_data)
+ {
+ 	t_dvd2avi* d2v = (t_dvd2avi *)user_data;
+@@ -206,7 +210,7 @@
+ 	fp = _open(fname, _O_BINARY | _O_RDONLY); // check size
+ 	if (fp != -1)
+ 	{
+-		__int64 fposition = _filelengthi64(fp);
++		__int64_t fposition = lseek64(fp, 0, SEEK_END);
+ 		
+ 		lba = (dword)(fposition / fio_SECTOR_SIZE);
+ 		_close(fp);
+--- a/file_io.c
++++ b/file_io.c	2003-10-12 02:24:46.000000000 +0000
+@@ -32,7 +32,7 @@
+ 		fp = _open(name, _O_BINARY | _O_RDONLY); // check size
+ 		if (fp != -1)
+ 		{
+-			__int64 fposition = _filelengthi64(fp);
++			__int64_t fposition = lseek64(fp, 0, SEEK_END);
+ 			
+ 			f->written_to = fposition > 0;
+ 			if (fposition > 0)

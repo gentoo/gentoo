@@ -1,0 +1,16 @@
+--- a/Makefile
++++ b/Makefile
+@@ -38,10 +38,10 @@
+   endif
+ endif
+ 
+-all : hdhomerun_config$(BINEXT) libhdhomerun$(LIBEXT)
++all : libhdhomerun$(LIBEXT) hdhomerun_config$(BINEXT)
+ 
+-hdhomerun_config$(BINEXT) : hdhomerun_config.c $(LIBSRCS)
+-	$(CC) $(CFLAGS) $+ $(LDFLAGS) -o $@
++hdhomerun_config$(BINEXT) : hdhomerun_config.c libhdhomerun$(LIBEXT)
++	$(CC) $(CFLAGS) $+ $(LDFLAGS) -L./ -lhdhomerun -o $@
+ 	$(STRIP) $@
+ 
+ libhdhomerun$(LIBEXT) : $(LIBSRCS)

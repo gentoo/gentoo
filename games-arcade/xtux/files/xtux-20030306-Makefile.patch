@@ -1,0 +1,190 @@
+--- a/src/client/Makefile
++++ b/src/client/Makefile
+@@ -16,13 +16,12 @@
+ 
+ # Programs used in building process
+ MAKE = make
+-CC = gcc
+ 
+ # Where to put the XTux client binary.
+ BINARY = $(TOPLEVEL_PATH)/xtux
+ 
+ # Flags used when compiling
+-CFLAGS = -g -Wall -O2 -DDATADIR=\"$(DATADIR)\"
++CPPFLAGS += -DDATADIR=\"$(DATADIR)\"
+ 
+ # Paths to header files
+ X11_INC = -I$(X11_PATH)/include
+@@ -48,8 +47,8 @@
+ 
+ #Apps
+ client: $(OBJECTS)
+-	$(CC) -o $(BINARY) $(CFLAGS) $(OBJECTS) $(XTUXLIB) $(MATHLIB) $(X11LIB) $(XPMLIB) $(SOCKLIB) $(GGZLIB)
++	$(CC) $(LDFLAGS) -o $(BINARY) $(CFLAGS) $(OBJECTS) $(XTUXLIB) $(MATHLIB) $(X11LIB) $(XPMLIB) $(SOCKLIB) $(GGZLIB)
+ 
+ # OBJECTS
+ .c.o:	client.h $*.c
+-	$(CC) $(CFLAGS) -c $*.c $(COMMON_INC) $(X11_INC) $(GGZ_INC)
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c $*.c $(COMMON_INC) $(X11_INC) $(GGZ_INC)
+--- a/src/common/Makefile
++++ b/src/common/Makefile
+@@ -1,9 +1,6 @@
+ # Makefile for stuff that's common between server & client.
+ 
+-CC	= gcc
+-CFLAGS	= -g -Wall -O2 -DDATADIR=\"$(DATADIR)\"
+-AR	= ar
+-RANLIB	= ranlib
++CPPFLAGS += -DDATADIR=\"$(DATADIR)\"
+ 
+ OBJECTS	= common.o timing.o net.o entity_type.o weapon_type.o map.o maths.o datafile.o
+ XTUXLIB = xtuxlib.a
+@@ -18,4 +15,4 @@
+ 	${RANLIB} $@
+ 
+ .c.o:	xtux.h $*.c $*.h
+-	$(CC) $(CFLAGS) -c $*.c $(COMMON_INC)
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c $*.c $(COMMON_INC)
+--- a/src/ggz/client/Makefile
++++ b/src/ggz/client/Makefile
+@@ -61,7 +61,6 @@
+ host_alias = i586-pc-linux-gnu
+ host_triplet = i586-pc-linux-gnu
+ AS = @AS@
+-CC = gcc
+ CPP = gcc -E
+ DLLTOOL = @DLLTOOL@
+ EASYSOCK_MAJOR_VERSION = 0
+@@ -79,7 +78,6 @@
+ NM = /usr/bin/nm -B
+ OBJDUMP = @OBJDUMP@
+ PACKAGE = easysock
+-RANLIB = ranlib
+ VERSION = 0.2.0
+ 
+ noinst_LIBRARIES = libggz.a
+@@ -92,13 +90,9 @@
+ 
+ 
+ DEFS = -DHAVE_CONFIG_H -I. -I$(srcdir) -I..
+-CPPFLAGS = 
+-LDFLAGS = 
+ LIBS = 
+ libggz_a_LIBADD = 
+ libggz_a_OBJECTS =  ggz.o
+-AR = ar
+-CFLAGS = -g -O2
+ COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+ LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+ CCLD = $(CC)
+--- a/src/ggz/easysock/Makefile
++++ b/src/ggz/easysock/Makefile
+@@ -61,7 +61,6 @@
+ host_alias = i586-pc-linux-gnu
+ host_triplet = i586-pc-linux-gnu
+ AS = @AS@
+-CC = gcc
+ CPP = gcc -E
+ DLLTOOL = @DLLTOOL@
+ EASYSOCK_MAJOR_VERSION = 0
+@@ -79,7 +78,6 @@
+ NM = /usr/bin/nm -B
+ OBJDUMP = @OBJDUMP@
+ PACKAGE = easysock
+-RANLIB = ranlib
+ VERSION = 0.2.0
+ 
+ noinst_LIBRARIES = libeasysock.a
+@@ -92,13 +90,9 @@
+ 
+ 
+ DEFS = -DHAVE_CONFIG_H -I. -I$(srcdir) -I..
+-CPPFLAGS = 
+-LDFLAGS = 
+ LIBS = 
+ libeasysock_a_LIBADD = 
+ libeasysock_a_OBJECTS =  easysock.o
+-AR = ar
+-CFLAGS = -g -O2
+ COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+ LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+ CCLD = $(CC)
+--- a/src/ggz/Makefile
++++ b/src/ggz/Makefile
+@@ -61,7 +61,6 @@
+ host_alias = i586-pc-linux-gnu
+ host_triplet = i586-pc-linux-gnu
+ AS = @AS@
+-CC = gcc
+ CPP = gcc -E
+ DLLTOOL = @DLLTOOL@
+ EASYSOCK_MAJOR_VERSION = 0
+@@ -79,7 +78,6 @@
+ NM = /usr/bin/nm -B
+ OBJDUMP = @OBJDUMP@
+ PACKAGE = easysock
+-RANLIB = ranlib
+ VERSION = 0.2.0
+ 
+ SUBDIRS = easysock server client
+--- a/src/ggz/server/Makefile
++++ b/src/ggz/server/Makefile
+@@ -61,7 +61,6 @@
+ host_alias = i586-pc-linux-gnu
+ host_triplet = i586-pc-linux-gnu
+ AS = @AS@
+-CC = gcc
+ CPP = gcc -E
+ DLLTOOL = @DLLTOOL@
+ EASYSOCK_MAJOR_VERSION = 0
+@@ -79,7 +78,6 @@
+ NM = /usr/bin/nm -B
+ OBJDUMP = @OBJDUMP@
+ PACKAGE = easysock
+-RANLIB = ranlib
+ VERSION = 0.2.0
+ 
+ INCLUDES = -I$(top_srcdir)/easysock
+@@ -94,13 +92,9 @@
+ 
+ 
+ DEFS = -DHAVE_CONFIG_H -I. -I$(srcdir) -I..
+-CPPFLAGS = 
+-LDFLAGS = 
+ LIBS = 
+ libggzd_a_LIBADD = 
+ libggzd_a_OBJECTS =  ggz.o
+-AR = ar
+-CFLAGS = -g -O2
+ COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+ LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+ CCLD = $(CC)
+--- a/src/server/Makefile
++++ b/src/server/Makefile
+@@ -11,14 +11,11 @@
+ COMMON_PATH = $(TOPLEVEL_PATH)/src/common
+ GGZ_PATH= $(TOPLEVEL_PATH)/src/ggz
+ 
+-# Programs used in building process
+-CC = gcc
+-
+ # Where to put the XTux client binary.
+ BINARY = $(TOPLEVEL_PATH)/tux_serv
+ 
+ # Flags used when compiling
+-CFLAGS = -g -Wall -O2 -DDATADIR=\"$(DATADIR)\"
++CPPFLAGS += -DDATADIR=\"$(DATADIR)\"
+ 
+ # Paths to header files
+ COMMON_INC = -I$(COMMON_PATH)
+@@ -41,8 +38,8 @@
+ 
+ #Apps
+ server:	$(OBJECTS)
+-	$(CC) -o $(BINARY) $(OBJECTS) $(XTUXLIB) $(MATHLIB) $(SOCKLIB) $(GGZLIB)
++	$(CC) $(LDFLAGS) -o $(BINARY) $(OBJECTS) $(XTUXLIB) $(MATHLIB) $(SOCKLIB) $(GGZLIB)
+ 
+ # OBJECTS
+ .c.o:	server.h $*.h $*.c
+-	$(CC) $(CFLAGS) -c $*.c $(COMMON_INC) $(GGZ_INC)
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c $*.c $(COMMON_INC) $(GGZ_INC)

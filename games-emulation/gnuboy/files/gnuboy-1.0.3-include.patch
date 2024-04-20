@@ -1,0 +1,13 @@
+--- a/defs.h
++++ b/defs.h
+@@ -4,6 +4,10 @@
+ #ifndef __DEFS_H__
+ #define __DEFS_H__
+ 
++#include <stdlib.h>
++#include <string.h>
++#include <unistd.h>
++#include <ctype.h>
+ 
+ 
+ #ifdef IS_LITTLE_ENDIAN

@@ -1,0 +1,26 @@
+--- a/Makefile
++++ b/Makefile
+@@ -21,13 +21,12 @@
+ # to change it to this:
+ # CFLAGS = -Xc
+ 
+-CFLAGS = -std=gnu99 -W -Wall -Wconversion -pedantic $(DEBUG) $(OPT)
++CFLAGS += -std=gnu99 -Wall -Wconversion -pedantic
+ 
+ 
+ # The default is GCC.  On Solaris, you might put:
+ # CC = /opt/SUNWspro/bin/cc
+ 
+-CC = gcc
+ 
+ 
+ # Depending on the compile flags you use, you might need to explicitly use the
+@@ -42,7 +41,7 @@
+ OBJS = sim4b1.o align.o misc.o sim4.init.o
+ 
+ sim4: $(OBJS)
+-	$(CC) -o SIBsim4 $(CFLAGS) $(OBJS) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o SIBsim4 $(OBJS) $(LIBS)
+ 
+ clean:
+ 	rm -f SIBsim4 *.o

@@ -1,0 +1,38 @@
+[Unit]
+Description = Jellyfin Media Server
+After=syslog.target network.target
+
+[Service]
+User=jellyfin
+Group=jellyfin
+
+Type=simple
+StateDirectory=jellyfin
+CacheDirectory=jellyfin
+LogsDirectory=jellyfin
+ConfigurationDirectory=jellyfin
+ExecStart=/opt/jellyfin/jellyfin --logdir "$LOGS_DIRECTORY" --cachedir "$CACHE_DIRECTORY" --configdir "$CONFIGURATION_DIRECTORY" --datadir "$STATE_DIRECTORY"
+TimeoutStopSec=20
+KillMode=process
+Restart=always
+
+PrivateTmp=yes
+PrivateMounts=yes
+ProtectHome=yes
+ProtectSystem=full
+NoNewPrivileges=yes
+ProtectHostname=yes
+ProtectClock=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+RemoveIPC=true
+RestrictRealtime=yes
+DeviceAllow=char-drm rw
+DeviceAllow=char-nvidia-frontend rw
+DeviceAllow=char-nvidia-uvm rw
+
+[Install]
+WantedBy=multi-user.target
+

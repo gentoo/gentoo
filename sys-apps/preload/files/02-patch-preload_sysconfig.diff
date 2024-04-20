@@ -1,0 +1,38 @@
+--- a/preload.sysconfig	2008-10-23 03:08:20.000000000 +0200
++++ b/preload.sysconfig	2009-05-01 13:51:03.493828659 +0200
+@@ -1,10 +1,30 @@
++# Copyright 1999-2008 Gentoo Foundation
++# $Id$
++# preload configuration file
++
++PIDFILE="/var/run/preload.pid"
++
++# verbosity. 0-10, Default is 1.
++#PRELOAD_VERBOSITY="1"
++
++# set this for niceness. Default is 15. Valid ranges are from -20 to 19. See
++# nice(1) man page.
++#PRELOAD_NICE="15"
++
++# log file (default is /var/log/preload.log )
++#PRELOAD_LOGFILE="/var/log/preload.log"
++
++# preload state file (default location is /var/lib/preload/preload.state )
++# Empty (commented out) means no state is saved.
++PRELOAD_STATEFILE="/var/lib/preload/preload.state"
++
+ # Miminum memory that the system should have for preload to be launched.
+-# In megabytes.
+-MIN_MEMORY="256"
++# In megabytes. Currently unused.
++#MIN_MEMORY="256"
+ 
+ # Command-line arguments to pass to the daemon.  Read preload(8) man page
+ # for available options.
+-PRELOAD_OPTS="--verbose 1"
++#PRELOAD_OPTS="--verbose 1"
+ 
+-# Option to call ionice with.  Leave empty to skip ionice.
+-IONICE_OPTS="-c3"
++# Option to call ionice with.  Leave empty to use defaults.
++#IONICE_OPTS="-c3"

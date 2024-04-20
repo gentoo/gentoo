@@ -1,0 +1,2 @@
+# /etc/conf.d/xenstored
+XENSTORED_OPTS=""

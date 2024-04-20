@@ -1,0 +1,14 @@
+--- PG-4.4-orig/etc/desktop/proofgeneral.desktop
++++ PG-4.4/etc/desktop/proofgeneral.desktop
+@@ -4,9 +4,9 @@
+ Name=Proof General
+ GenericName=Theorem proving environment
+ Comment=Organise your proofs!
+-Icon=proofgeneral.png
++Icon=proofgeneral
+ TryExec=proofgeneral
+ Exec=proofgeneral %F
+ Terminal=false
+-Categories=Application;IDE;Development;TextEditor;Math
++Categories=IDE;Development;TextEditor;Math
+ StartupWMClass=Emacs

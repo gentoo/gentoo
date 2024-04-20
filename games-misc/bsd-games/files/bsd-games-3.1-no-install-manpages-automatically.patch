@@ -1,0 +1,13 @@
+--- a/Makefile
++++ b/Makefile
+@@ -20,10 +20,6 @@ $O%.o:	%.c
+ 	echo "    Compiling $< to assembly ..."
+ 	${CC} ${cflags} -S -o $@ -c $<
+ 
+-$O%.6.gz:	%.6
+-	echo "    Compressing $@ ..."
+-	gzip -c9 $< > $@
+-
+ ################ Installation ##########################################
+ 
+ ifdef bindir

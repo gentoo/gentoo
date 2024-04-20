@@ -1,0 +1,55 @@
+--- a/cec.c
++++ b/cec.c
+@@ -20,6 +20,9 @@
+ typedef struct Shelf Shelf;
+ typedef struct Pkt Pkt;
+ 
++int debug;
++char *progname;
++
+ struct Pkt {
+ 	uchar		dst[6];
+ 	uchar		src[6];
+@@ -77,5 +80,5 @@ extern int errno;
+ int	ntab;
+ uchar	contag;
+-extern 	int fd;		/* set in netopen */
++int fd;		/* set in netopen */
+ int	shelf;
+ Shelf	*connp;
+--- a/cec.h
++++ b/cec.h
+@@ -6,8 +6,8 @@ typedef unsigned char uchar;
+ typedef unsigned int uint;
+ #endif
+ 
+-int debug;
+-char *progname;
++extern int debug;
++extern char *progname;
+ extern char hbacecfile[];
+ 
+ int netopen(char *name);
+--- a/hba.c
++++ b/hba.c
+@@ -9,7 +9,7 @@
+ 
+ #include "cec.h"
+ 
+-int fd;
++extern int fd;
+ static char hba_bytes[1<<14];
+ static int hba_len;
+ 
+--- a/linux.c
++++ b/linux.c
+@@ -25,7 +25,8 @@
+ 
+ #include "cec.h"
+ 
+-int fd;
++extern int fd;
++extern int debug;
+ char net_bytes[1<<14];
+ int net_len;
+ char srcaddr[6];

@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/854837
+https://github.com/libimobiledevice/libplist/pull/212
+--- a/src/bplist.c
++++ b/src/bplist.c
+@@ -998,18 +998,24 @@ static void write_real(bytearray_t * bplist, double val)
+     buff[7] = BPLIST_REAL | Log2(size);
+     if (size == sizeof(float)) {
+         float floatval = (float)val;
+-        *(uint32_t*)(buff+8) = float_bswap32(*(uint32_t*)&floatval);
++        uint32_t intval;
++        memcpy(&intval, &floatval, sizeof(float));
++        *(uint32_t*)(buff+8) = float_bswap32(intval);
+     } else {
+-        *(uint64_t*)(buff+8) = float_bswap64(*(uint64_t*)&val);
++        uint64_t intval;
++        memcpy(&intval, &val, sizeof(double));
++        *(uint64_t*)(buff+8) = float_bswap64(intval);
+     }
+     byte_array_append(bplist, buff+7, size+1);
+ }
+ 
+ static void write_date(bytearray_t * bplist, double val)
+ {
++    uint64_t intval;
++    memcpy(&intval, &val, sizeof(double));
+     uint8_t buff[16];
+     buff[7] = BPLIST_DATE | 3;
+-    *(uint64_t*)(buff+8) = float_bswap64(*(uint64_t*)&val);
++    *(uint64_t*)(buff+8) = float_bswap64(intval);
+     byte_array_append(bplist, buff+7, 9);
+ }
+ 

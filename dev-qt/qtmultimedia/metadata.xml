@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+		<name>Gentoo Qt Project</name>
+	</maintainer>
+	<use>
+		<flag name="eglfs">Enable screen capture support with Qt's EGL Full Screen/Single Surface platform plugin</flag>
+		<flag name="gstreamer">Enable audio support via <pkg>media-libs/gstreamer</pkg></flag>
+		<flag name="qml">Build QML/QtQuick bindings and imports</flag>
+		<flag name="widgets">Build the QtMultimediaWidgets module</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://bugreports.qt.io/</bugs-to>
+		<doc>https://doc.qt.io/</doc>
+		<remote-id type="github">qt/qtmultimedia</remote-id>
+	</upstream>
+	<slots>
+		<subslots>
+			Must only be used by packages that are known to use private parts of the Qt API.
+		</subslots>
+	</slots>
+</pkgmetadata>

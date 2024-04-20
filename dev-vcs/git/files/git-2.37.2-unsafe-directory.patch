@@ -1,0 +1,14 @@
+Neuter the "safe directory" feature, except for tests.
+--- a/setup.c
++++ b/setup.c
+@@ -1157,7 +1157,9 @@ static int ensure_valid_ownership(const char *gitfile,
+ 	 */
+ 	read_very_early_config(safe_directory_cb, &data);
+ 
+-	return data.is_safe;
++	if (git_env_bool("GIT_TEST_ASSUME_DIFFERENT_OWNER", 0))
++		return data.is_safe;
++	return 1;
+ }
+ 
+ enum discovery_result {

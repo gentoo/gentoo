@@ -1,0 +1,26 @@
+https://dev.gnupg.org/T6778
+--- a/lang/python/tests/support.py
++++ b/lang/python/tests/support.py
+@@ -46,13 +46,15 @@ def is_gpg_version(version):
+ 
+ 
+ def have_tofu_support(ctx, some_uid):
+-    keys = list(
+-        ctx.keylist(
+-            some_uid,
+-            mode=(gpg.constants.keylist.mode.LOCAL |
+-                  gpg.constants.keylist.mode.WITH_TOFU)))
+-    return len(keys) > 0
+-
++    try:
++        keys = list(
++            ctx.keylist(
++                some_uid,
++                mode=(gpg.constants.keylist.mode.LOCAL |
++                      gpg.constants.keylist.mode.WITH_TOFU)))
++        return len(keys) > 0
++    except gpg.errors.GPGMEError:
++        return False
+ 
+ # Skip the Python tests for GnuPG < 2.1.12.  Prior versions do not
+ # understand the command line flags that we assume exist.  C.f. issue

@@ -1,0 +1,61 @@
+From be29286502be6c41b76e652b02862fe987c1f49b Mon Sep 17 00:00:00 2001
+From: Matthew White <mehw.is.me@inventati.org>
+Date: Sun, 14 Apr 2024 04:03:34 +0000
+Subject: [PATCH] libflac: fix undefined references when libflac is disabled
+
+In the upstream master branch:
+ - future commit 2fbfd3e0a5ab803e2072cbac1b2be685c3adcf05 disabled
+   ondemand (aka OD) in CMakeLists.txt.
+ - future commit cbf1bb558e094e24cbb54c3bbd2bd45a1abbfb2a expunged
+   ondemand fully.
+
+Closes: https://bugs.gentoo.org/741969
+Closes: https://bugs.gentoo.org/884747
+---
+ src/CMakeLists.txt         | 6 ++++--
+ src/ProjectFileManager.cpp | 4 +++-
+ 2 files changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 93dc50c82..b2c4496ab 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -702,8 +702,10 @@ list( APPEND SOURCES
+       ondemand/ODComputeSummaryTask.h
+       ondemand/ODDecodeFFmpegTask.cpp
+       ondemand/ODDecodeFFmpegTask.h
+-      ondemand/ODDecodeFlacTask.cpp
+-      ondemand/ODDecodeFlacTask.h
++      $<$<BOOL:${USE_LIBFLAC}>:
++         ondemand/ODDecodeFlacTask.cpp
++         ondemand/ODDecodeFlacTask.h
++      >
+       ondemand/ODDecodeTask.cpp
+       ondemand/ODDecodeTask.h
+       ondemand/ODManager.cpp
+diff --git a/src/ProjectFileManager.cpp b/src/ProjectFileManager.cpp
+index de5eeee98..106c52c31 100644
+--- a/src/ProjectFileManager.cpp
++++ b/src/ProjectFileManager.cpp
+@@ -51,7 +51,9 @@ Paul Licameli split from AudacityProject.cpp
+ #include "import/ImportMIDI.h"
+ #include "commands/CommandContext.h"
+ #include "ondemand/ODComputeSummaryTask.h"
++#ifdef USE_LIBFLAC
+ #include "ondemand/ODDecodeFlacTask.h"
++#endif
+ #include "ondemand/ODManager.h"
+ #include "ondemand/ODTask.h"
+ #include "toolbars/SelectionBar.h"
+@@ -276,7 +278,7 @@ void ProjectFileManager::EnqueueODTasks()
+          while((odFlags|createdODTasks) != createdODTasks)
+          {
+             std::unique_ptr<ODTask> newTask;
+-#ifdef EXPERIMENTAL_OD_FLAC
++#if defined(EXPERIMENTAL_OD_FLAC) && defined(USE_LIBFLAC)
+             if(!(createdODTasks&ODTask::eODFLAC) && (odFlags & ODTask::eODFLAC)) {
+                newTask = std::make_unique<ODDecodeFlacTask>();
+                createdODTasks = createdODTasks | ODTask::eODFLAC;
+-- 
+2.44.0
+

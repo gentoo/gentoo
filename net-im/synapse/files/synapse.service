@@ -1,0 +1,22 @@
+[Unit]
+Description=Synapse Matrix homeserver
+After=network.target
+After=postgresql-10.service
+After=postgresql-11.service
+After=postgresql-12.service
+After=postgresql-13.service
+After=postgresql-14.service
+After=postgresql-15.service
+
+[Service]
+ExecStart=/usr/bin/synctl --no-daemonize start /etc/synapse/homeserver.yaml
+ExecStop=/usr/bin/synctl stop /etc/synapse/homeserver.yaml
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+PrivateTmp=true
+User=synapse
+Group=synapse
+WorkingDirectory=/var/lib/synapse
+
+[Install]
+WantedBy=multi-user.target

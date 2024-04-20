@@ -1,0 +1,32 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,5 @@
+ # compiler selection and options
+-CC       = gcc
+-CFLAGS   = -g -O2 -Wall
++CFLAGS   += -Wall
+ DEPFLAGS = -MM -MG
+ 
+ # install location
+@@ -18,19 +17,16 @@
+ 
+ all: $(TARGETS)
+ 
+-%.o: %.c
+-	$(CC) $(CFLAGS) -c $< -o $@
+-
+ $(DEPFILE): Makefile
+ 	@$(CC) $(DEPFLAGS) cdbackup.c cdrestore.c cdrom.c virtual.c misc.c > $@
+ 
+ include $(DEPFILE)
+ 
+ cdbackup: cdbackup.o cdrom.o virtual.o virtual-backup.o misc.o
+-	$(CC) $(CFLAGS) -o $@ $^
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
+ 
+ cdrestore: cdrestore.o cdrom.o virtual.o misc.o
+-	$(CC) $(CFLAGS) -o $@ $^
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
+ 
+ strip: $(TARGETS)
+ 	strip $(TARGETS)

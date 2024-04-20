@@ -1,0 +1,15 @@
+--- libquvi-0.9.4/configure.ac 2021-10-20 13:44:09.834182117 +0200
++++ libquvi-0.9.4/configure.ac 2021-10-20 13:46:23.611188250 +0200
+@@ -85,7 +85,9 @@ AC_SUBST([VALGRIND])
+ PKG_CHECK_MODULES([liblua], [lua >= 5.1], [], [
+   PKG_CHECK_MODULES([liblua], [lua51 >= 5.1], [], [
+     PKG_CHECK_MODULES([liblua], [lua5.1 >= 5.1], [], [
+-      PKG_CHECK_MODULES(liblua, [lua-5.1 >= 5.1])])
++      PKG_CHECK_MODULES([liblua], [lua-5.1 >= 5.1], [], [
++        PKG_CHECK_MODULES(liblua, [luajit])])
++    ])
+   ])
+ ])
+ PKG_CHECK_MODULES([libproxy], [libproxy-1.0 >= 0.3.1])
+
+

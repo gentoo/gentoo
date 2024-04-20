@@ -1,0 +1,11 @@
+--- a/virtual.h
++++ b/virtual.h
+@@ -42,7 +42,7 @@
+   };
+ 
+ struct toc_entry {
+-  u_char track_no;	/* track number */
++  unsigned char track_no;	/* track number */
+   char is_data;		/* 1 = data track */
+   char is_cdbackup;	/* was it created by CD-Backup? */
+   int sec_start;	/* start sector */

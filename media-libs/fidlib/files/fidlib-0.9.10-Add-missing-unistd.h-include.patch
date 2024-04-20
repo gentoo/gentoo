@@ -1,0 +1,15 @@
+From ffe98aaaef253621d71b73b3a0e54813d220ece9 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 30 Sep 2022 01:54:08 +0100
+Subject: [PATCH] Add missing unistd.h include
+
+--- a/firun.c
++++ b/firun.c
+@@ -58,6 +58,7 @@ NL "  -L         Ignore following arguments, display list of filter types."
+ #include <ctype.h>
+ #include <math.h>
+ #include <errno.h>
++#include <unistd.h>
+ #include "fidlib.h"
+ 
+ typedef unsigned char uchar;

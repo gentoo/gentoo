@@ -1,0 +1,33 @@
+diff --git a/Makefile.config b/Makefile.config
+index 8f2b5208e..19f6f72d3 100644
+--- a/Makefile.config
++++ b/Makefile.config
+@@ -5,9 +5,6 @@ include scripts/feature-tests.mak
+ ifeq ($(call try-cc,$(FEATURE_TEST_LIBBSD_DEV),-lbsd),true)
+         LIBS_FEATURES	+= -lbsd
+         FEATURE_DEFINES	+= -DCONFIG_HAS_LIBBSD
+-else
+-        $(info Note: Building without setproctitle() and strlcpy() support.)
+-        $(info $(info)      To enable these features, please install libbsd-devel (RPM) / libbsd-dev (DEB).)
+ endif
+ 
+ ifeq ($(call pkg-config-check,libselinux),y)
+@@ -33,8 +30,6 @@ ifeq ($(NO_GNUTLS)x$(call pkg-config-check,gnutls),xy)
+         LIBS_FEATURES	+= -lgnutls
+         export CONFIG_GNUTLS := y
+         FEATURE_DEFINES	+= -DCONFIG_GNUTLS
+-else
+-        $(info Note: Building without GnuTLS support)
+ endif
+ 
+ ifeq ($(call pkg-config-check,libnftables),y)
+@@ -49,9 +44,6 @@ ifeq ($(call pkg-config-check,libnftables),y)
+                 $(warning Warn: you have libnftables installed but it has incompatible API)
+                 $(warning Warn: Building without nftables support)
+         endif
+-else
+-        $(warning Warn: you have no libnftables installed)
+-        $(warning Warn: Building without nftables support)
+ endif
+ 
+ export LIBS += $(LIBS_FEATURES)

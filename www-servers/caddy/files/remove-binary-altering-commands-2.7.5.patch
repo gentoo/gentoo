@@ -1,0 +1,61 @@
+# Remove commands which can modify binary outside of Portage.
+# Inspired from:
+# https://src.fedoraproject.org/rpms/caddy/blob/rawhide/f/0001-Disable-commands-that-can-alter-the-binary.patch
+# https://salsa.debian.org/go-team/packages/caddy/-/blob/debian/sid/debian/patches/0005-Remove-obsolote-subcommands.patch?ref_type=heads
+--- a/cmd/commands.go
++++ a/cmd/commands.go
+@@ -393,54 +393,10 @@
+ 			cmd.RunE = WrapCommandFuncForCobra(cmdFmt)
+ 		},
+ 	})
+ 
+ 	RegisterCommand(Command{
+-		Name:  "upgrade",
+-		Short: "Upgrade Caddy (EXPERIMENTAL)",
+-		Long: `
+-Downloads an updated Caddy binary with the same modules/plugins at the
+-latest versions. EXPERIMENTAL: May be changed or removed.
+-`,
+-		CobraFunc: func(cmd *cobra.Command) {
+-			cmd.Flags().BoolP("keep-backup", "k", false, "Keep the backed up binary, instead of deleting it")
+-			cmd.RunE = WrapCommandFuncForCobra(cmdUpgrade)
+-		},
+-	})
+-
+-	RegisterCommand(Command{
+-		Name:  "add-package",
+-		Usage: "<packages...>",
+-		Short: "Adds Caddy packages (EXPERIMENTAL)",
+-		Long: `
+-Downloads an updated Caddy binary with the specified packages (module/plugin)
+-added. Retains existing packages. Returns an error if the any of packages are
+-already included. EXPERIMENTAL: May be changed or removed.
+-`,
+-		CobraFunc: func(cmd *cobra.Command) {
+-			cmd.Flags().BoolP("keep-backup", "k", false, "Keep the backed up binary, instead of deleting it")
+-			cmd.RunE = WrapCommandFuncForCobra(cmdAddPackage)
+-		},
+-	})
+-
+-	RegisterCommand(Command{
+-		Name:  "remove-package",
+-		Func:  cmdRemovePackage,
+-		Usage: "<packages...>",
+-		Short: "Removes Caddy packages (EXPERIMENTAL)",
+-		Long: `
+-Downloads an updated Caddy binaries without the specified packages (module/plugin).
+-Returns an error if any of the packages are not included.
+-EXPERIMENTAL: May be changed or removed.
+-`,
+-		CobraFunc: func(cmd *cobra.Command) {
+-			cmd.Flags().BoolP("keep-backup", "k", false, "Keep the backed up binary, instead of deleting it")
+-			cmd.RunE = WrapCommandFuncForCobra(cmdRemovePackage)
+-		},
+-	})
+-
+-	RegisterCommand(Command{
+ 		Name:  "manpage",
+ 		Usage: "--directory <path>",
+ 		Short: "Generates the manual pages for Caddy commands",
+ 		Long: `
+ Generates the manual pages for Caddy commands into the designated directory

@@ -1,0 +1,40 @@
+From 803016b9b4bd6cc96efb6cba8c37befaf410be61 Mon Sep 17 00:00:00 2001
+From: Yuan Liao <liaoyuan@gmail.com>
+Date: Sun, 20 Feb 2022 11:07:41 -0800
+Subject: [PATCH] Replace use of sun.misc.BASE64{En,De}coder for Java 9+
+
+Signed-off-by: Yuan Liao <liaoyuan@gmail.com>
+---
+ java/org/jdesktop/http/Request.java | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/java/org/jdesktop/http/Request.java b/java/org/jdesktop/http/Request.java
+index ff72322..57c4bf8 100644
+--- a/java/org/jdesktop/http/Request.java
++++ b/java/org/jdesktop/http/Request.java
+@@ -30,8 +30,7 @@ import org.jdesktop.beans.AbstractBean;
+ import org.jdesktop.http.Header.Element;
+ import org.jdesktop.xpath.XPathUtils;
+ import org.w3c.dom.Document;
+-import sun.misc.BASE64Decoder;
+-import sun.misc.BASE64Encoder;
++import java.util.Base64;
+ 
+ /**
+  * <p>Represents an http request. A <code>Request</code> is constructed and then
+@@ -613,10 +612,10 @@ public class Request extends AbstractBean {
+     }
+ 
+     private static String base64Encode(String s) throws Exception {
+-        return new String(new BASE64Encoder().encode(s.getBytes()));
++        return Base64.getEncoder().encodeToString(s.getBytes());
+     }
+     
+     private static String base64Decode(String s) throws Exception {
+-        return new String(new BASE64Decoder().decodeBuffer(s));
++        return new String(Base64.getDecoder().decode(s));
+     }
+ }
+-- 
+2.34.1
+

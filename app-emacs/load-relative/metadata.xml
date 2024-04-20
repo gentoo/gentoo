@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    Relative loads for Emacs Lisp files. Adds functions __FILE__ and
+    load-relative and require-relative.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/rocky/emacs-load-relative/issues/</bugs-to>
+    <remote-id type="github">rocky/emacs-load-relative</remote-id>
+  </upstream>
+</pkgmetadata>

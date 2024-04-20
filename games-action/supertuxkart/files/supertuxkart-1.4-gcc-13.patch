@@ -1,0 +1,122 @@
+https://github.com/supertuxkart/stk-code/commit/0163e3fa88b72634c3ddff5304c9086b649f53b1
+
+From 0163e3fa88b72634c3ddff5304c9086b649f53b1 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Thu, 26 Jan 2023 16:35:54 +0100
+Subject: [PATCH] Add missing includes to fix the build with gcc 13
+
+Like other versions before, gcc 13 moved some includes around and as a
+result <stdexcept> and <cstdio> are no longer transitively included.
+Explicitly include them for std::runtime_error and snprintf.
+--- a/lib/graphics_engine/include/vk_mem_alloc.h
++++ b/lib/graphics_engine/include/vk_mem_alloc.h
+@@ -2563,6 +2563,7 @@ VMA_CALL_PRE void VMA_CALL_POST vmaFreeStatsString(
+ #undef VMA_IMPLEMENTATION
+ 
+ #include <cstdint>
++#include <cstdio>
+ #include <cstdlib>
+ #include <cstring>
+ #include <utility>
+--- a/lib/graphics_engine/src/ge_spm_buffer.cpp
++++ b/lib/graphics_engine/src/ge_spm_buffer.cpp
+@@ -5,6 +5,7 @@
+ #include "ge_vulkan_features.hpp"
+ 
+ #include <algorithm>
++#include <stdexcept>
+ 
+ #include "mini_glm.hpp"
+ 
+--- a/lib/graphics_engine/src/ge_vulkan_array_texture.cpp
++++ b/lib/graphics_engine/src/ge_vulkan_array_texture.cpp
+@@ -12,6 +12,7 @@
+ 
+ #include <IImageLoader.h>
+ #include <cassert>
++#include <stdexcept>
+ 
+ namespace GE
+ {
+--- a/lib/graphics_engine/src/ge_vulkan_command_loader.cpp
++++ b/lib/graphics_engine/src/ge_vulkan_command_loader.cpp
+@@ -8,6 +8,7 @@
+ #include <deque>
+ #include <memory>
+ #include <mutex>
++#include <stdexcept>
+ #include <thread>
+ 
+ #include "../source/Irrlicht/os.h"
+--- a/lib/graphics_engine/src/ge_vulkan_depth_texture.cpp
++++ b/lib/graphics_engine/src/ge_vulkan_depth_texture.cpp
+@@ -3,6 +3,8 @@
+ #include "ge_main.hpp"
+ #include "ge_vulkan_driver.hpp"
+ 
++#include <stdexcept>
++
+ namespace GE
+ {
+ GEVulkanDepthTexture::GEVulkanDepthTexture(GEVulkanDriver* vk,
+--- a/lib/graphics_engine/src/ge_vulkan_draw_call.cpp
++++ b/lib/graphics_engine/src/ge_vulkan_draw_call.cpp
+@@ -25,6 +25,7 @@
+ #include <algorithm>
+ #include <cmath>
+ #include <limits>
++#include <stdexcept>
+ 
+ #include "../source/Irrlicht/os.h"
+ #include "quaternion.h"
+--- a/lib/graphics_engine/src/ge_vulkan_fbo_texture.cpp
++++ b/lib/graphics_engine/src/ge_vulkan_fbo_texture.cpp
+@@ -6,6 +6,7 @@
+ 
+ #include <array>
+ #include <exception>
++#include <stdexcept>
+ 
+ namespace GE
+ {
+--- a/lib/graphics_engine/src/ge_vulkan_mesh_cache.cpp
++++ b/lib/graphics_engine/src/ge_vulkan_mesh_cache.cpp
+@@ -10,6 +10,7 @@
+ 
+ #include <algorithm>
+ #include <cassert>
++#include <stdexcept>
+ #include <vector>
+ 
+ namespace GE
+--- a/lib/graphics_engine/src/ge_vulkan_skybox_renderer.cpp
++++ b/lib/graphics_engine/src/ge_vulkan_skybox_renderer.cpp
+@@ -11,6 +11,7 @@
+ 
+ #include <array>
+ #include <cstdint>
++#include <stdexcept>
+ #include <unordered_map>
+ 
+ namespace GE
+--- a/lib/graphics_engine/src/ge_vulkan_texture.cpp
++++ b/lib/graphics_engine/src/ge_vulkan_texture.cpp
+@@ -21,6 +21,7 @@ extern "C"
+ #include <IAttributes.h>
+ #include <IImageLoader.h>
+ #include <limits>
++#include <stdexcept>
+ 
+ namespace GE
+ {
+--- a/lib/graphics_engine/src/ge_vulkan_texture_descriptor.cpp
++++ b/lib/graphics_engine/src/ge_vulkan_texture_descriptor.cpp
+@@ -6,6 +6,7 @@
+ 
+ #include <algorithm>
+ #include <exception>
++#include <stdexcept>
+ 
+ namespace GE
+ {
+

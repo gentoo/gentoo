@@ -1,0 +1,32 @@
+https://github.com/libuv/libuv/commit/f1444293652cf5478a67b9305271d73ad6d36232
+
+From f1444293652cf5478a67b9305271d73ad6d36232 Mon Sep 17 00:00:00 2001
+From: matoro <12038583+matoro@users.noreply.github.com>
+Date: Wed, 15 Nov 2023 17:57:06 -0500
+Subject: [PATCH] linux: disable io_uring on hppa below kernel 6.1.51 (#4224)
+
+First kernel with support is 6.1, was only fully functional from .51
+onwards: https://lore.kernel.org/all/cb912694-b1fe-dbb0-4d8c-d608f3526905@gmx.de/
+
+Co-authored-by: matoro <matoro@users.noreply.github.com>
+--- a/src/unix/linux.c
++++ b/src/unix/linux.c
+@@ -487,8 +487,16 @@ static int uv__use_io_uring(void) {
+   use = atomic_load_explicit(&use_io_uring, memory_order_relaxed);
+ 
+   if (use == 0) {
++    use = uv__kernel_version() >=
++#if defined(__hppa__)
++    /* io_uring first supported on parisc in 6.1, functional in .51 */
++    /* https://lore.kernel.org/all/cb912694-b1fe-dbb0-4d8c-d608f3526905@gmx.de/ */
++    /* 6.1.51 */ 0x060133
++#else
+     /* Older kernels have a bug where the sqpoll thread uses 100% CPU. */
+-    use = uv__kernel_version() >= /* 5.10.186 */ 0x050ABA ? 1 : -1;
++    /* 5.10.186 */ 0x050ABA
++#endif
++    ? 1 : -1;
+ 
+     /* But users can still enable it if they so desire. */
+     val = getenv("UV_USE_IO_URING");
+

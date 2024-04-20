@@ -1,0 +1,42 @@
+diff --git a/re_assert.py b/re_assert.py
+index 840401e..8818da1 100644
+--- a/re_assert.py
++++ b/re_assert.py
+@@ -1,8 +1,13 @@
++import sys
++
+ from typing import Any
+ from typing import Optional
+ from typing import Pattern
+ 
+-import regex
++if sys.implementation.name == "cpython":
++    import regex
++else:
++    import re as regex
+ 
+ 
+ class Matches:  # TODO: Generic[AnyStr] (binary pattern support)
+@@ -12,6 +17,9 @@ class Matches:  # TODO: Generic[AnyStr] (binary pattern support)
+         self._type = type(pattern)
+ 
+     def _fail_message(self, fail: str) -> str:
++        if sys.implementation.name != "cpython":
++            return "regex failed to match"
++
+         # binary search to find the longest substring match
+         pos, bound = 0, len(fail)
+         while pos < bound:
+diff --git a/setup.cfg b/setup.cfg
+index 46303ca..74cf999 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -20,7 +20,7 @@ classifiers =
+ [options]
+ py_modules = re_assert
+ install_requires =
+-    regex
++    regex; python_implementation=="CPython"
+ python_requires = >=3.6.1
+ 
+ [bdist_wheel]

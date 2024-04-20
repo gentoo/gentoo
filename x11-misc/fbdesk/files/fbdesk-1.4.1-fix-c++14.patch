@@ -1,0 +1,22 @@
+Fix building with C++14, which errors out due to bool -> T* conversions
+See also: https://bugs.gentoo.org/show_bug.cgi?id=594052
+
+--- a/src/FbTk/Image.cc
++++ b/src/FbTk/Image.cc
+@@ -85,14 +85,14 @@
+ 
+ 
+     if (filename == "")
+-        return false;
++        return NULL;
+ 
+     // determine file ending
+     std::string extension(StringUtil::toUpper(StringUtil::findExtension(filename)));
+     
+     // valid handle?
+     if (s_image_map.find(extension) == s_image_map.end())
+-        return false;
++        return NULL;
+     
+     // load file
+     PixmapWithMask *pm = s_image_map[extension]->load(filename, screen_num);

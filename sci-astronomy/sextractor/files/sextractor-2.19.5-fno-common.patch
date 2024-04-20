@@ -1,0 +1,277 @@
+--- a/src/clean.c
++++ b/src/clean.c
+@@ -44,6 +44,7 @@
+ 
+ /*------------------------------- variables ---------------------------------*/
+ 
++objliststruct *cleanobjlist;
+ static LONG		*cleanvictim;
+ 
+ 
+--- a/src/clean.h
++++ b/src/clean.h
+@@ -33,7 +33,7 @@
+ 
+ /*------------------------------- variables ---------------------------------*/
+ 
+-objliststruct	*cleanobjlist;		/* laconic, isn't it? */
++extern objliststruct	*cleanobjlist;		/* laconic, isn't it? */
+ 
+ /*------------------------------- functions ---------------------------------*/
+ 
+--- a/src/extract.c
++++ b/src/extract.c
+@@ -40,6 +40,8 @@
+ #include	"extract.h"
+ #include	"plist.h"
+ 
++PIXTYPE   *dumscan;
++
+ /*------------------------- Static buffers for lutz() -----------------------*/
+ 
+ static infostruct	*info, *store;
+--- a/src/extract.h
++++ b/src/extract.h
+@@ -37,7 +37,7 @@
+ 				status;	/* Extraction status */
+ 
+ /*--------------------------------- variables -------------------------------*/
+-PIXTYPE		*dumscan;
++extern PIXTYPE		*dumscan;
+ 
+ /*------------------------------- structures --------------------------------*/
+ /* Temporary object parameters during extraction */
+--- a/src/filter.c
++++ b/src/filter.c
+@@ -44,6 +44,8 @@
+ #include	"filter.h"
+ #include	"image.h"
+ 
++filterstruct  *thefilter;
++
+ /******************************** convolve ***********************************/
+ /*
+ Convolve a scan line with an array.
+--- a/src/filter.h
++++ b/src/filter.h
+@@ -43,7 +43,7 @@
+   struct structbpann	*bpann;
+   }	filterstruct;
+ 
+-filterstruct	*thefilter;
++extern filterstruct	*thefilter;
+ 
+ /*------------------------------- functions ---------------------------------*/
+ void		convolve(picstruct *, PIXTYPE *, int y),
+--- a/src/fits/fitscat.c
++++ b/src/fits/fitscat.c
+@@ -42,6 +42,10 @@
+ #include	"fitscat_defs.h"
+ #include	"fitscat.h"
+ 
++float      ctg[37], stg[37];
++char     gstr[MAXCHAR];
++int   bswapflag;
++
+ /****** about_cat **************************************************************
+ PROTO	int about_cat(catstruct *cat, FILE *stream)
+ PURPOSE	Print some info about a catalog.
+--- a/src/fits/fitscat_defs.h
++++ b/src/fits/fitscat_defs.h
+@@ -86,7 +86,7 @@
+ typedef	int		LONG;			/* for DEC-Alpha... */
+ 	
+ /*----------------------------- Internal constants --------------------------*/
+-char		gstr[MAXCHAR];
++extern char		gstr[MAXCHAR];
+ 
+ /*----------------------------- External constants --------------------------*/
+ 
+--- a/src/fits/fitscat.h
++++ b/src/fits/fitscat.h
+@@ -333,6 +333,6 @@
+ 		warning(char *msg1, char *msg2);
+ 
+ 
+-int		bswapflag;
++extern int		bswapflag;
+ 
+ #endif
+--- a/src/globals.h
++++ b/src/globals.h
+@@ -30,13 +30,13 @@
+ 
+ /*----------------------- miscellaneous variables ---------------------------*/
+ 
+-sexcatstruct		thecat;
+-picstruct		thefield1,thefield2, thewfield1,thewfield2;
+-objstruct		flagobj;
+-obj2struct		flagobj2;
++extern sexcatstruct		thecat;
++extern picstruct		thefield1,thefield2, thewfield1,thewfield2;
++extern objstruct		flagobj;
++extern obj2struct		flagobj2;
+ extern obj2struct	outobj2;
+-float			ctg[37], stg[37];
+-char			gstr[MAXCHAR];
++extern float			ctg[37], stg[37];
++extern char			gstr[MAXCHAR];
+ 
+ /*------------------------------- functions ---------------------------------*/
+ extern void	alloccatparams(void),
+--- a/src/plist.c
++++ b/src/plist.c
+@@ -38,6 +38,11 @@
+ #include	"prefs.h"
+ #include	"plist.h"
+ 
++int plistexist_value, plistexist_dvalue, plistexist_cdvalue,
++  plistexist_flag, plistexist_wflag, plistexist_dthresh, plistexist_var,
++  plistoff_value, plistoff_dvalue, plistoff_cdvalue,
++  plistoff_flag[MAXFLAG], plistoff_wflag, plistoff_dthresh, plistoff_var,
++  plistsize;
+ 
+ /******************************** createblank *******************************
+ PROTO   int createblank(int no, objliststruct *objlist)
+--- a/src/plist.h
++++ b/src/plist.h
+@@ -47,7 +47,7 @@
+ 
+ /*-------------------------------- globals ----------------------------------*/
+ 
+-int	plistexist_value, plistexist_dvalue, plistexist_cdvalue,
++extern int	plistexist_value, plistexist_dvalue, plistexist_cdvalue,
+ 	plistexist_flag, plistexist_wflag, plistexist_dthresh, plistexist_var,
+ 	plistoff_value, plistoff_dvalue, plistoff_cdvalue,
+ 	plistoff_flag[MAXFLAG], plistoff_wflag, plistoff_dthresh, plistoff_var,
+--- a/src/preflist.h
++++ b/src/preflist.h
+@@ -39,7 +39,7 @@
+ #endif
+ 
+ /*-------------------------------- initialization ---------------------------*/
+- int	idummy;
++extern int	idummy;
+ 
+  pkeystruct key[] =
+  {
+--- a/src/prefs.c
++++ b/src/prefs.c
+@@ -56,6 +56,9 @@
+ #include	"preflist.h"
+ #include	"fits/fitscat.h"
+ 
++prefstruct    prefs;
++double  ddummy;
++int idummy;
+ 
+ /********************************* dumpprefs ********************************/
+ /*
+--- a/src/prefs.h
++++ b/src/prefs.h
+@@ -249,7 +249,7 @@
+   int		nthreads;			/* Number of active threads */
+   }	prefstruct;
+ 
+-  prefstruct		prefs;
++extern  prefstruct		prefs;
+ 
+ /*-------------------------------- protos -----------------------------------*/
+ extern int	cistrcmp(char *cs, char *ct, int mode);
+--- a/src/psf.c
++++ b/src/psf.c
+@@ -47,6 +47,9 @@
+ 
+ /*------------------------------- variables ---------------------------------*/
+ 
++psfstruct *psf,*thedpsf,*thepsf;
++psfitstruct *thepsfit,*thedpsfit;
++PIXTYPE   *checkmask;
+ 
+ extern keystruct	objkey[];
+ extern objstruct	outobj;
+--- a/src/psf.h
++++ b/src/psf.h
+@@ -102,9 +102,9 @@
+   }	psfitstruct;
+ 
+ /*----------------------------- Global variables ----------------------------*/
+-psfstruct	*psf,*thedpsf,*thepsf;
+-psfitstruct	*thepsfit,*thedpsfit;
+-PIXTYPE		*checkmask;
++extern psfstruct	*psf,*thedpsf,*thepsf;
++extern psfitstruct	*thepsfit,*thedpsfit;
++extern PIXTYPE		*checkmask;
+ 
+ /*-------------------------------- functions --------------------------------*/
+ extern void	compute_pos(int *pnpsf,int *pconvflag,int *pnpsfflag,
+--- a/src/retina.c
++++ b/src/retina.c
+@@ -42,6 +42,7 @@
+ #include	"image.h"
+ #include	"retina.h"
+ 
++retistruct  *theretina;
+ 
+ /******************************** readretina *********************************/
+ /*
+--- a/src/retina.h
++++ b/src/retina.h
+@@ -38,7 +38,7 @@
+   struct structbpann	*bpann;	/* The neural network */
+   }     retistruct;
+ 
+-retistruct	*theretina;
++extern retistruct	*theretina;
+ 
+ /*------------------------------- functions ---------------------------------*/
+ 
+--- a/src/sexhead1.h
++++ b/src/sexhead1.h
+@@ -26,8 +26,8 @@
+ *
+ *%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*/
+ 
+-int	idummy;
+-double	ddummy;
++extern int	idummy;
++extern double	ddummy;
+ 
+ keystruct	headkey1[] = {
+   {"EPOCH   ", "",
+--- a/src/som.c
++++ b/src/som.c
+@@ -41,6 +41,8 @@
+ #include	"prefs.h"
+ #include	"som.h"
+ 
++somstruct *thesom;
++
+ /********************************* som_phot **********************************/
+ /*
+ Perform SOM-fitting on a detected source: returns node number of the
+--- a/src/som.h
++++ b/src/som.h
+@@ -70,7 +70,7 @@
+   float		stderror;		/* Global reduced error */
+   }	somstruct;
+ 
+-somstruct	*thesom;
++extern somstruct	*thesom;
+ 
+ /*---------------------------------- protos --------------------------------*/
+ 
+--- a/src/xml.c
++++ b/src/xml.c
+@@ -50,6 +50,11 @@
+ xmlstruct		*xmlstack = NULL;
+ int			nxml=0, nxmlmax=0;
+ 
++sexcatstruct    thecat;
++picstruct   thefield1,thefield2, thewfield1,thewfield2;
++objstruct   flagobj;
++obj2struct    flagobj2;
++
+ /****** init_xml ************************************************************
+ PROTO	int	init_xml(void)
+ PURPOSE	Initialize a set of meta-data kept in memory before being written to the

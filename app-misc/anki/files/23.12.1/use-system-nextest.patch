@@ -1,0 +1,26 @@
+Provide the binary ourselves to prevent network access.
+Set test runner options in the ebuild.
+
+From: Lucio Sauer <watermanpaint@posteo.net>
+--- a/build/ninja_gen/src/cargo.rs
++++ b/build/ninja_gen/src/cargo.rs
+@@ -152,19 +152,11 @@ impl BuildAction for CargoTest {
+ 
+     fn files(&mut self, build: &mut impl FilesHandle) {
+         build.add_inputs("", &self.inputs);
+-        build.add_inputs("", inputs![":cargo-nextest"]);
+         build.add_env_var("ANKI_TEST_MODE", "1");
+         build.add_output_stamp("tests/cargo_test");
+     }
+ 
+     fn on_first_instance(&self, build: &mut Build) -> Result<()> {
+-        build.add_action(
+-            "cargo-nextest",
+-            CargoInstall {
+-                binary_name: "cargo-nextest",
+-                args: "cargo-nextest --version 0.9.57 --locked",
+-            },
+-        )?;
+         setup_flags(build)
+     }
+ }

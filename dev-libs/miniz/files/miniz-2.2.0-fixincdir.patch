@@ -1,0 +1,18 @@
+From 37ea28133d9abea3926248c9517676be9b558ca7 Mon Sep 17 00:00:00 2001
+From: Matthew Smith <matthew@gentoo.org>
+Date: Sat, 4 Jun 2022 09:31:06 +0100
+Subject: [PATCH 2/2] build: Set pkgconfig includedir to miniz directory
+
+Allows users to include <miniz.h> instead of <miniz/miniz.h> which
+seems to be the intended behaviour.
+--- a/miniz.pc.in
++++ b/miniz.pc.in
+@@ -1,7 +1,7 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=${prefix}
+ libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
+-includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
++includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@/miniz
+ 
+ Name: @PROJECT_NAME@
+ Description: @PROJECT_DESCRIPTION@

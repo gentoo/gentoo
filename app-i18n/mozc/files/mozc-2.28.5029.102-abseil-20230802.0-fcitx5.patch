@@ -1,0 +1,19 @@
+Adapted fcitx5 path from https://github.com/fcitx/mozc/commit/748ddfb45b7615283f1d40e03c23940750031ac1
+
+--- a/src/unix/fcitx5/surrounding_text_util.cc
++++ b/src/unix/fcitx5/surrounding_text_util.cc
+@@ -211,11 +211,11 @@
+   const size_t selection_start = std::min(cursor_pos, anchor_pos);
+   const size_t selection_length = std::abs(info->relative_selected_length);
+   info->preceding_text =
+-      Util::Utf8SubString(surrounding_text, 0, selection_start);
++      std::string(Util::Utf8SubString(surrounding_text, 0, selection_start));
+   info->selection_text =
+-      Util::Utf8SubString(surrounding_text, selection_start, selection_length);
++      std::string(Util::Utf8SubString(surrounding_text, selection_start, selection_length));
+   info->following_text =
+-      Util::Utf8SubString(surrounding_text, selection_start + selection_length);
++      std::string(Util::Utf8SubString(surrounding_text, selection_start + selection_length));
+   return true;
+ }
+ 

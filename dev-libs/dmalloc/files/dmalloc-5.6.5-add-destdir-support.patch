@@ -1,0 +1,103 @@
+From 79c791659a519cc7b3b3e615a3cc51c5e85a0a0a Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Sat, 16 Dec 2023 14:13:57 +0200
+Subject: [PATCH 1/5] Add DESTDIR support
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -182,65 +182,65 @@ distclean : clean
+ docs : $(DOCS) LICENSE.txt
+ 
+ installdirs :
+-	$(srcdir)/mkinstalldirs $(includedir) $(libdir) $(bindir)
++	$(srcdir)/mkinstalldirs $(DESTDIR)$(includedir) $(DESTDIR)$(libdir) $(DESTDIR)$(bindir)
+ 
+ installincs : $(HFLS)
+-	$(srcdir)/mkinstalldirs $(includedir)
+-	$(INSTALL_DATA) $(HFLS) $(includedir)
++	$(srcdir)/mkinstalldirs $(DESTDIR)$(includedir)
++	$(INSTALL_DATA) $(HFLS) $(DESTDIR)$(includedir)
+ 
+ installthsl : $(LIB_TH_SL)
+-	$(srcdir)/mkinstalldirs $(libdir)
+-	$(INSTALL_PROGRAM) $(LIB_TH_SL) $(libdir)
++	$(srcdir)/mkinstalldirs $(DESTDIR)$(libdir)
++	$(INSTALL_PROGRAM) $(LIB_TH_SL) $(DESTDIR)$(libdir)
+ 
+ installth : $(INSTALL_THREADS)
+-	$(srcdir)/mkinstalldirs $(libdir)
+-	$(INSTALL_PROGRAM) $(LIB_TH) $(libdir)
++	$(srcdir)/mkinstalldirs $(DESTDIR)$(libdir)
++	$(INSTALL_PROGRAM) $(LIB_TH) $(DESTDIR)$(libdir)
+ @CXX_OFF@	@echo "Enter 'make installthcxx' to install the threaded C++ library"
+ @SL_OFF@	@echo "Enter 'make installthsl' to install the threaded shared-library"
+ 
+ installthcxxsl : $(LIB_TH_CXX_SL)
+-	$(srcdir)/mkinstalldirs $(shlibdir)
+-	$(INSTALL_PROGRAM) $(LIB_TH_CXX_SL) $(shlibdir)
++	$(srcdir)/mkinstalldirs $(DESTDIR)$(shlibdir)
++	$(INSTALL_PROGRAM) $(LIB_TH_CXX_SL) $(DESTDIR)$(shlibdir)
+ 
+ installthcxx : $(INSTALL_TH_CXX)
+-	$(srcdir)/mkinstalldirs $(libdir)
+-	$(INSTALL_PROGRAM) $(LIB_TH_CXX) $(libdir)
++	$(srcdir)/mkinstalldirs $(DESTDIR)$(libdir)
++	$(INSTALL_PROGRAM) $(LIB_TH_CXX) $(DESTDIR)$(libdir)
+ @SL_OFF@	@echo "Enter 'make installthcxxsl' to install the threaded C++ shared-library"
+ 
+ installcxxsl : $(LIB_CXX_SL)
+-	$(srcdir)/mkinstalldirs $(libdir)
+-	$(INSTALL_PROGRAM) $(LIB_CXX_SL) $(libdir)
++	$(srcdir)/mkinstalldirs $(DESTDIR)$(libdir)
++	$(INSTALL_PROGRAM) $(LIB_CXX_SL) $(DESTDIR)$(libdir)
+ 
+ installcxx : $(INSTALL_CXX)
+-	$(srcdir)/mkinstalldirs $(libdir)
+-	$(INSTALL_PROGRAM) $(LIB_CXX) $(libdir)
++	$(srcdir)/mkinstalldirs $(DESTDIR)$(libdir)
++	$(INSTALL_PROGRAM) $(LIB_CXX) $(DESTDIR)$(libdir)
+ @TH_OFF@	@echo "Enter 'make installthcxx' to install the threaded C++ library"
+ @SL_OFF@	@echo "Enter 'make installcxxsl' to install the C++ shared-library"
+ 
+ installsl : $(LIB_SL)
+-	$(srcdir)/mkinstalldirs $(shlibdir)
+-	$(INSTALL_PROGRAM) $(LIB_SL) $(shlibdir)
++	$(srcdir)/mkinstalldirs $(DESTDIR)$(shlibdir)
++	$(INSTALL_PROGRAM) $(LIB_SL) $(DESTDIR)$(shlibdir)
+ @CXX_OFF@	@echo "Enter 'make installcxxsl' to install the C++ shared-library"
+ @TH_OFF@	@echo "Enter 'make installthsl' to install thread shared-library"
+ 
+ installlib : $(INSTALL_LIB)
+-	$(srcdir)/mkinstalldirs $(libdir)
+-	$(INSTALL_PROGRAM) $(LIBRARY) $(libdir)
+-	@RANLIB@ $(libdir)/$(LIBRARY)
++	$(srcdir)/mkinstalldirs $(DESTDIR)$(libdir)
++	$(INSTALL_PROGRAM) $(LIBRARY) $(DESTDIR)$(libdir)
++	@RANLIB@ $(DESTDIR)$(libdir)/$(LIBRARY)
+ @SL_OFF@	@echo "Enter 'make installsl' to install $(LIB_SL) in $(shlibdir)"
+ @CXX_OFF@	@echo "Enter 'make installcxx' to install the C++ library"
+ @TH_OFF@	@echo "Enter 'make installth' to install thread library"
+ 
+ # see notes about why we need the FILE2 entries below
+ installdocs : $(INSTALL_FILE2) $(HTML_FILE2) $(INFO_FILE)
+-	$(srcdir)/mkinstalldirs $(docdir)
+-	$(INSTALL_DATA) $(INSTALL_FILE2) $(docdir)/$(INSTALL_FILE)
+-	$(INSTALL_DATA) $(HTML_FILE2) $(docdir)/$(HTML_FILE)
+-	$(INSTALL_DATA) $(INFO_FILE) $(docdir)
++	$(srcdir)/mkinstalldirs $(DESTDIR)$(docdir)
++	$(INSTALL_DATA) $(INSTALL_FILE2) $(DESTDIR)$(docdir)/$(INSTALL_FILE)
++	$(INSTALL_DATA) $(HTML_FILE2) $(DESTDIR)$(docdir)/$(HTML_FILE)
++	$(INSTALL_DATA) $(INFO_FILE) $(DESTDIR)$(docdir)
+ 
+ install : installincs installlib $(UTIL)
+-	$(srcdir)/mkinstalldirs $(bindir)
+-	$(INSTALL_PROGRAM) $(UTIL) $(bindir)
++	$(srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
++	$(INSTALL_PROGRAM) $(UTIL) $(DESTDIR)$(bindir)
+ 	@echo "Enter 'make installdocs' to install $(DOCS) in $(docdir)"
+ 
+ dmalloc.h.2 conf.h settings.h version.h : $(srcdir)/configure $(srcdir)/settings.dist $(srcdir)/conf.h.in
+-- 
+2.43.0
+

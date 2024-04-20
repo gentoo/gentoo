@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<use>
+		<flag name="daemon">Build/install msmtpd MTA daemon</flag>
+		<flag name="mta">Enable this to install as system-wide MTA</flag>
+	</use>
+</pkgmetadata>

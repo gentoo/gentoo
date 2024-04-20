@@ -1,0 +1,66 @@
+From 28bd6caa3401b2e79fa4c922ecc2d5d1ada8460f Mon Sep 17 00:00:00 2001
+From: Krzysztof Burghardt <krzysztof@burghardt.pl>
+Date: Tue, 11 Aug 2015 07:03:34 +0200
+Subject: [PATCH] Include git describe output in each binary.
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -9,5 +9,12 @@ version.h:
+ endif
+ 	echo \#define PACKAGE_VERSION_SVN_REV \"SVN-r`svnversion`\" > version.h
+ 
++if DOT_GIT
++version.h: .git/HEAD .git/index
++else
++version.h:
++endif
++	echo \#define PACKAGE_VERSION_SVN_REV \"GIT-`git describe --dirty --always --tags`\" > version.h
++
+ all: config.h version.h
+ 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
+--- a/configure.ac
++++ b/configure.ac
+@@ -4,6 +4,7 @@ AC_CONFIG_SRCDIR(src/esekeyd.c)
+ AM_CONFIG_HEADER(config.h)
+ AM_INIT_AUTOMAKE
+ AM_CONDITIONAL([DOT_SVN], [test -f .svn/entries])
++AM_CONDITIONAL([DOT_GIT], [test -f .git/index])
+ 
+ if test "$CFLAGS"; then
+  CFLAGS_CUSTOM=yes
+From dbac719dfd8d0d4aa4fe4699c73772553d7566f7 Mon Sep 17 00:00:00 2001
+From: Krzysztof Burghardt <krzysztof@burghardt.pl>
+Date: Thu, 13 Aug 2015 22:30:17 +0200
+Subject: [PATCH] Do not override all:, use BUILT_SOURCES for version.h
+ generation.
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,20 +1,20 @@
+ SUBDIRS = src doc examples
+ 
++BUILT_SOURCES = version.h
+ EXTRA_DIST = version.h
+ 
+ if DOT_SVN
+ version.h: .svn/entries
+-else
+-version.h:
+-endif
+ 	echo \#define PACKAGE_VERSION_SVN_REV \"SVN-r`svnversion`\" > version.h
+-
++else
+ if DOT_GIT
+ version.h: .git/HEAD .git/index
++	echo \#define PACKAGE_VERSION_SVN_REV \"GIT-`git describe --dirty --always --tags`\" > version.h
+ else
+ version.h:
++	echo \#define PACKAGE_VERSION_SVN_REV \"unknown\" > version.h
++endif
+ endif
+-	echo \#define PACKAGE_VERSION_SVN_REV \"GIT-`git describe --dirty --always --tags`\" > version.h
+ 
+-all: config.h version.h
+-	$(MAKE) $(AM_MAKEFLAGS) all-recursive
++clean-local:
++	rm -f version.h

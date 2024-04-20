@@ -1,0 +1,107 @@
+--- a/scripts/squid_redirect-nodata
++++ b/scripts/squid_redirect-nodata
+@@ -31,7 +31,7 @@
+ 
+ use POSIX ":sys_wait_h";
+ use Socket;
+-require 'flush.pl';
++use IO::Handle;
+ 
+ $::IOSIZE=1024;
+ 
+@@ -232,7 +232,7 @@
+ {
+   if (defined $::LogFile)
+   { print LOGFILE $_;
+-    flush(LOGFILE);
++    LOGFILE->flush();;
+   }
+   chomp;
+   
+@@ -259,7 +259,7 @@
+     }
+   }
+ 
+-  flush(STDOUT);
++  STDOUT->flush();
+ }
+ 
+ exit 0;
+@@ -789,14 +789,16 @@
+       }
+ 
+       # dispatch request and headers
+-      printflush(GCHILD_WRITE,"$method $uri $v1 $v2\n")
++      print GCHILD_WRITE "$method $uri $v1 $v2\n"
+ 	|| die "tell grandchild the request: $!";
++      GCHILD_WRITE->flush();
+ 
+       print PROXY "$method $uri HTTP/$v1.$v2\r\n";
+       for my $H (@hdrs)
+       { print PROXY $H->[0], ":", $H->[1], "\r\n";
+       }
+-      printflush(PROXY,"\r\n");
++      print PROXY "\r\n";
++      PROXY->flush();
+       ##warn "[$$]: sent rq to proxy\n";
+ 
+       proxy_copybody(CONN,PROXY,$method,$persist,\@hdrs)
+@@ -965,8 +967,9 @@
+     }
+ 
+     warn "[$child:$$]: pass response to parent\n";
+-    printflush(TOCHILD,($persist ? PERSIST : CLOSE)." $code $info")
++    print TOCHILD ($persist ? PERSIST : CLOSE)." $code $info"
+ 	|| die "[$child:$$]: print(TOCHILD) fails: $!";
++    TOCHILD->flush();
+     warn "[$child:$$]: told parent, passing response to client\n";
+ 
+     # copy to child
+@@ -974,7 +977,8 @@
+     for my $H (@hdrs)
+     { print CONN $H->[0], ":", $H->[1], "\r\n";
+     }
+-    printflush(CONN,"\r\n");
++    print CONN "\r\n";
++    CONN->flush();
+ 
+     # see RFC2616 section 10
+     if (
+@@ -1050,11 +1054,13 @@
+ 	)
+   {
+     ##warn "[$$]: read ".length($_)." bytes of request body\n";
+-    if (! printflush($to,$_))
+-    { warn "$::cmd: [$$]: printflush($to,..): $!";
++    $to->autoflush(1);
++    if (! print $to $_)
++    { warn "$::cmd: [$$]: print $to ..): $!";
+       $ok=0;
+       last COPY;
+     }
++    $to->autoflush(0);
+     $cl-=length if defined $cl;
+   }
+   warn "[$$]: finished unchunked body, ok=$ok";
+@@ -1083,10 +1089,10 @@
+     { print $to $_;
+       $chunksize-=length;
+     }
+-    flush($to);
++    $to->flush();
+   }
+ 
+-  flush($to);
++  $to->flush();
+ 
+   # pass trailer headers
+   while (defined($_=<$from>) && !/^\r?\n/)
+@@ -1096,7 +1102,7 @@
+   { ##warn "[$$]: final trailer: $_";
+     print $to $_;
+   }
+-  flush($to);
++  $to->flush();
+ 
+   return (1,"");
+ }

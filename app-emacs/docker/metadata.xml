@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    This package allows you to manipulate docker images, containers and more
+    from Emacs. Supports docker containers, images, volumes, networks and
+    docker-compose.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/Silex/docker.el/issues/</bugs-to>
+    <remote-id type="github">Silex/docker.el</remote-id>
+  </upstream>
+</pkgmetadata>

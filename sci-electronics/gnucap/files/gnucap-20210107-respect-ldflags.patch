@@ -1,0 +1,208 @@
+diff --git a/apps/Make2.Debug b/apps/Make2.Debug
+index b35ac81..f437b76 100644
+--- a/apps/Make2.Debug
++++ b/apps/Make2.Debug
+@@ -41,7 +41,7 @@ CCFLAGS = \
+ 
+ LIBS = \
+ 
+-LDFLAGS = -shared
++LDFLAGS += -shared
+ 
+ %.SUFFIXES:
+ .SUFFIXES: .o .cc
+diff --git a/apps/Make2.g++ b/apps/Make2.g++
+index c7581c9..443c0e8 100644
+--- a/apps/Make2.g++
++++ b/apps/Make2.g++
+@@ -32,7 +32,7 @@ CCFLAGS = \
+ 
+ LIBS = \
+ 
+-LDFLAGS = -shared
++LDFLAGS += -shared
+ 
+ .SUFFIXES:
+ .SUFFIXES: .o .cc
+diff --git a/apps/Make2.mingw32 b/apps/Make2.mingw32
+index 8a9345e..df5f7f6 100644
+--- a/apps/Make2.mingw32
++++ b/apps/Make2.mingw32
+@@ -30,7 +30,7 @@ CCFLAGS = \
+ 
+ LIBS = -lgnucap
+ 
+-LDFLAGS = -shared  -L../../lib/MSW
++LDFLAGS += -shared  -L../../lib/MSW
+ 
+ .SUFFIXES:
+ .SUFFIXES: .o .cc
+diff --git a/apps/configure b/apps/configure
+index 1fbb987..6b684af 100755
+--- a/apps/configure
++++ b/apps/configure
+@@ -38,7 +38,7 @@ VPATH = .:..
+ CCC = c++
+ TARGET_EXT = .so
+ 
+-LDFLAGS = -shared
++LDFLAGS += -shared
+ 
+ .SUFFIXES:
+ .SUFFIXES: .o .cc
+diff --git a/lib/Make2.Debug b/lib/Make2.Debug
+index b0e180a..7cfe919 100644
+--- a/lib/Make2.Debug
++++ b/lib/Make2.Debug
+@@ -43,7 +43,7 @@ LIBS = \
+ -lreadline -ltermcap \
+ -ldl
+ 
+-LDFLAGS = -shared
++LDFLAGS += -shared
+ 
+ %.SUFFIXES:
+ .SUFFIXES: .o .cc
+diff --git a/lib/Make2.g++ b/lib/Make2.g++
+index 7dd1598..a240c53 100644
+--- a/lib/Make2.g++
++++ b/lib/Make2.g++
+@@ -35,7 +35,7 @@ LIBS = \
+ -lreadline -ltermcap \
+ -ldl
+ 
+-LDFLAGS = -shared
++LDFLAGS += -shared
+ 
+ .SUFFIXES:
+ .SUFFIXES: .o .cc
+diff --git a/lib/Make2.mingw32 b/lib/Make2.mingw32
+index 27a2c51..bf7c663 100644
+--- a/lib/Make2.mingw32
++++ b/lib/Make2.mingw32
+@@ -31,7 +31,7 @@ CCFLAGS = \
+ 
+ LIBS =
+ 
+-LDFLAGS = -shared
++LDFLAGS += -shared
+ 
+ .SUFFIXES:
+ .SUFFIXES: .o .cc
+diff --git a/lib/configure b/lib/configure
+index a10a76e..4a07543 100755
+--- a/lib/configure
++++ b/lib/configure
+@@ -49,7 +49,7 @@ VPATH = .:..
+ CCC = c++
+ TARGET_EXT = .so
+ 
+-LDFLAGS = -shared
++LDFLAGS += -shared
+ 
+ .SUFFIXES:
+ .SUFFIXES: .o .cc
+diff --git a/main/Make2.Debug b/main/Make2.Debug
+index e531639..31f7fa8 100644
+--- a/main/Make2.Debug
++++ b/main/Make2.Debug
+@@ -39,7 +39,7 @@ CCFLAGS = \
+ LIBS = \
+ -lgnucap \
+ 
+-LDFLAGS = -rdynamic  \
++LDFLAGS += -rdynamic  \
+ -L../../lib/O-DEBUG
+ 
+ %.SUFFIXES:
+diff --git a/main/Make2.g++ b/main/Make2.g++
+index 8991962..8add8f6 100644
+--- a/main/Make2.g++
++++ b/main/Make2.g++
+@@ -31,7 +31,7 @@ CCFLAGS = \
+ LIBS = \
+ -lgnucap \
+ 
+-LDFLAGS = -rdynamic \
++LDFLAGS += -rdynamic \
+ -L../../lib/O
+ 
+ .SUFFIXES:
+diff --git a/main/Make2.mingw32 b/main/Make2.mingw32
+index b6150e6..0175914 100644
+--- a/main/Make2.mingw32
++++ b/main/Make2.mingw32
+@@ -30,7 +30,7 @@ CCFLAGS = \
+ 
+ LIBS = -lgnucap
+ 
+-LDFLAGS = -L../../lib/MSW
++LDFLAGS += -L../../lib/MSW
+ 
+ .SUFFIXES:
+ .SUFFIXES: .o .cc
+diff --git a/main/configure b/main/configure
+index 9c43821..b68d06a 100755
+--- a/main/configure
++++ b/main/configure
+@@ -65,7 +65,7 @@ VPATH = .:..
+ CCC = c++
+ TARGET_EXT =
+ 
+-LDFLAGS = -rdynamic \
++LDFLAGS += -rdynamic \
+ -L../../lib/O
+ 
+ .SUFFIXES : .o .cc
+diff --git a/modelgen/Make2.Debug b/modelgen/Make2.Debug
+index e531639..31f7fa8 100644
+--- a/modelgen/Make2.Debug
++++ b/modelgen/Make2.Debug
+@@ -39,7 +39,7 @@ CCFLAGS = \
+ LIBS = \
+ -lgnucap \
+ 
+-LDFLAGS = -rdynamic  \
++LDFLAGS += -rdynamic  \
+ -L../../lib/O-DEBUG
+ 
+ %.SUFFIXES:
+diff --git a/modelgen/Make2.g++ b/modelgen/Make2.g++
+index 8991962..8add8f6 100644
+--- a/modelgen/Make2.g++
++++ b/modelgen/Make2.g++
+@@ -31,7 +31,7 @@ CCFLAGS = \
+ LIBS = \
+ -lgnucap \
+ 
+-LDFLAGS = -rdynamic \
++LDFLAGS += -rdynamic \
+ -L../../lib/O
+ 
+ .SUFFIXES:
+diff --git a/modelgen/Make2.mingw32 b/modelgen/Make2.mingw32
+index 63b9657..813c5f4 100644
+--- a/modelgen/Make2.mingw32
++++ b/modelgen/Make2.mingw32
+@@ -30,7 +30,7 @@ CCFLAGS = \
+ 
+ LIBS = -lgnucap
+ 
+-LDFLAGS = -L../../lib/MSW
++LDFLAGS += -L../../lib/MSW
+ 
+ .SUFFIXES:
+ .SUFFIXES: .o .cc
+diff --git a/modelgen/configure b/modelgen/configure
+index d11d07e..3193444 100755
+--- a/modelgen/configure
++++ b/modelgen/configure
+@@ -39,7 +39,7 @@ VPATH = .:..
+ CCC = c++
+ TARGET_EXT =
+ 
+-LDFLAGS = -rdynamic \
++LDFLAGS += -rdynamic \
+ -L../../lib/O
+ 
+ .SUFFIXES : .o .cc

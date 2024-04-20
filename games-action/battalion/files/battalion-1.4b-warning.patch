@@ -1,0 +1,11 @@
+--- a/net.c
++++ b/net.c
+@@ -378,7 +378,7 @@
+ 
+ /* nother copy of this elsewhere */
+ 
+-	sprintf(mesg, "%s %d %3.1f %3.1f %3.1f %3.1f %0.3f %d %d #", MESG_NEW_TANK,
++	sprintf(mesg, "%s %d %3.1f %3.1f %3.1f %3.1f %0.3f %d #", MESG_NEW_TANK,
+ 						 tempTank->number, 
+ 						 tempTank->x-globalxshift, 
+ 						 tempTank->z-globalzshift, 

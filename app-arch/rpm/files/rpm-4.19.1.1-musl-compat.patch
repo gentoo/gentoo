@@ -1,0 +1,17 @@
+musl doesn't implement GLOB_BRACE, simply disable it.
+
+https://bugs.gentoo.org/922286
+https://github.com/rpm-software-management/rpm/issues/2844
+--- a/rpmio/rpmglob.c
++++ b/rpmio/rpmglob.c
+@@ -33,6 +33,10 @@
+ 
+ #include "debug.h"
+ 
++#ifndef GLOB_BRACE
++#define GLOB_BRACE 0
++#endif
++
+ /* Return 1 if pattern contains a magic char, see glob(7) for a list */
+ static int ismagic(const char *pattern)
+ {

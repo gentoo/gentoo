@@ -1,0 +1,30 @@
+From 433eb149841a8d56ed6b82790b52195e8251582f Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 13 Dec 2023 14:39:03 -0500
+Subject: [PATCH] tst/testall.g: load GAPDoc and SmallGrp before testing
+
+To help resolve the chicken and egg problem, it's nice to be able to
+launch gap with --bare when testing transgrp. But without GAPDoc and
+SmallGrp loaded, the test suite fails. So let's load them explicitly.
+This won't hurt anything under normal circumstances where both of them
+are loaded anyway.
+---
+ tst/testall.g | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/tst/testall.g b/tst/testall.g
+index 19275f8..08edc69 100644
+--- a/tst/testall.g
++++ b/tst/testall.g
+@@ -4,6 +4,8 @@
+ # This file runs package tests. It is also referenced in the package
+ # metadata in PackageInfo.g.
+ #
++LoadPackage( "gapdoc" );
++LoadPackage( "smallgrp" );
+ LoadPackage( "transgrp" );
+ 
+ TestDirectory(DirectoriesPackageLibrary( "transgrp", "tst" ),
+-- 
+2.43.0
+

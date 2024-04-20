@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ajak@gentoo.org</email>
+		<name>John Helmert III</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">Foxboron/sbctl</remote-id>
+		<changelog>https://github.com/Foxboron/sbctl/releases</changelog>
+	</upstream>
+</pkgmetadata>

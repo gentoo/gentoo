@@ -1,0 +1,12 @@
+For icon: https://github.com/NVIDIA/nvidia-settings/pull/56
+--- a/nvidia-settings/doc/nvidia-settings.desktop
++++ b/nvidia-settings/doc/nvidia-settings.desktop
+@@ -5,5 +5,5 @@
+ Comment=Configure NVIDIA X Server Settings
+-Exec=__UTILS_PATH__/nvidia-settings
+-Icon=__PIXMAP_PATH__/nvidia-settings.png
+-Categories=__NVIDIA_SETTINGS_DESKTOP_CATEGORIES__
++Exec=nvidia-settings
++Icon=nvidia-settings
++Categories=System;HardwareSettings;
+ 

@@ -1,0 +1,24 @@
+diff -r -U 3 pptpd-1.4.0.orig/Makefile.am pptpd-1.4.0/Makefile.am
+--- pptpd-1.4.0.orig/Makefile.am	2020-06-29 00:24:23.301857353 +0300
++++ pptpd-1.4.0/Makefile.am	2020-06-29 00:25:16.072686760 +0300
+@@ -11,7 +11,7 @@
+ ##  warning with -Wmissing-prototypes).
+ ## -Wmissing-prototypes removed (eg, Linux 2.2.6 headers
+ ##  aren't up to it).
+-CFLAGS += -fno-builtin -Wall -DSBINDIR='"$(sbindir)"'
++CFLAGS += -fno-builtin -Wall -DSBINDIR='"$(sbindir)"' -DLIBDIR='"$(libdir)"'
+ #CFLAGS = -O2 -fno-builtin -Wall -ansi -DSBINDIR='"$(sbindir)"'
+ #CFLAGS = -O2 -fno-builtin -Wall -ansi -pedantic -Wmissing-prototypes -Werror -DSBINDIR='"$(sbindir)"'
+ 
+diff -r -U 3 pptpd-1.4.0.orig/pptpctrl.c pptpd-1.4.0/pptpctrl.c
+--- pptpd-1.4.0.orig/pptpctrl.c	2013-10-23 08:53:19.000000000 +0400
++++ pptpd-1.4.0/pptpctrl.c	2020-06-29 00:25:23.356525131 +0300
+@@ -786,7 +786,7 @@
+ 
+         if (pptp_logwtmp) {
+                  pppd_argv[an++] = "plugin";
+-                 pppd_argv[an++] = "/usr/lib/pptpd/pptpd-logwtmp.so";
++                 pppd_argv[an++] = LIBDIR "/pptpd/pptpd-logwtmp.so";
+                  pppd_argv[an++] = "pptpd-original-ip";
+                  pppd_argv[an++] = inet_ntoa(inetaddrs[1]);
+         }

@@ -1,0 +1,23 @@
+diff -urN bareos-Release-22.0.2.orig/core/CMakeLists.txt bareos-Release-22.0.2/core/CMakeLists.txt
+--- bareos-Release-22.0.2.orig/core/CMakeLists.txt	2023-02-07 15:30:01.000000000 +0530
++++ bareos-Release-22.0.2/core/CMakeLists.txt	2023-03-01 23:06:39.577048453 +0530
+@@ -104,7 +104,7 @@
+     -Werror=format-security compiler_error_format_security
+   )
+   if(${compiler_error_format_security})
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=format-security")
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wformat-security")
+   endif()
+ endif()
+ 
+@@ -394,8 +394,8 @@
+   add_definitions("-DDEVELOPER=1")
+ endif()
+ 
+-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror -Wall -Wextra")
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -Wall -Wextra")
++set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
+ 
+ include(BareosSetVariableDefaults)
+ option(ENABLE_BCONSOLE "Build bconsole binary" ON)

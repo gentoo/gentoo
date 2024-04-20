@@ -1,0 +1,21 @@
+--- a/Build.PL
++++ b/Build.PL
+@@ -1,7 +1,8 @@
+ use Module::Build;
+ use strict;
+ 
+-my $CONFIG = "pkg-config imlib2";
++my $PKG_CONFIG = $ENV{PKG_CONFIG} || 'pkg-config';
++my $CONFIG = "${PKG_CONFIG} imlib2";
+ 
+ my $version = `$CONFIG --version`;
+ if (!$version) {
+@@ -18,7 +19,7 @@ Alternatively, if you have downloaded and installed imlib2 and this
+ still will not work, modify the $CONFIG variable inside Build.PL to
+ point to the imlib2-config program that provides.
+ ';
+-  exit 0;
++  exit 1;
+ } else {
+   print "Found imlib2 $version";
+ }

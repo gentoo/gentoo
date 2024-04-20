@@ -1,0 +1,153 @@
+diff --git a/sources/makefile b/sources/makefile
+index f287d71..c560f48 100644
+--- a/sources/makefile
++++ b/sources/makefile
+@@ -2,25 +2,22 @@
+ 
+ 
+ 
+-CC=g++
+-CFLAGS=-g
+-
+ all: glimmerhmm
+ 
+ glimmerhmm: glimmerhmm.o graph.o sites.o tree_util_prob.o util.o
+-	$(CC) $(CFLAGS) -o glimmerhmm glimmerhmm.o graph.o sites.o tree_util_prob.o util.o  -lm 
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o glimmerhmm glimmerhmm.o graph.o sites.o tree_util_prob.o util.o  -lm 
+ 
+ glimmerhmm.o: glimmerhmm.c
+-	$(CC) $(CFLAGS) -c glimmerhmm.c
++	$(CXX) $(CXXFLAGS) -c glimmerhmm.c
+ 
+ graph.o: graph.c 
+-	$(CC) $(CFLAGS) -c graph.c
++	$(CXX) $(CXXFLAGS) -c graph.c
+ 
+ sites.o: sites.c
+-	$(CC) $(CFLAGS) -c sites.c
++	$(CXX) $(CXXFLAGS) -c sites.c
+ 
+ tree_util_prob.o: tree_util_prob.c
+-	$(CC) $(CFLAGS) -c tree_util_prob.c
++	$(CXX) $(CXXFLAGS) -c tree_util_prob.c
+ 
+ util.o: util.c
+-	$(CC) $(CFLAGS) -c util.c
++	$(CXX) $(CXXFLAGS) -c util.c
+diff --git a/train/makefile b/train/makefile
+index 56eaa13..d660cf1 100644
+--- a/train/makefile
++++ b/train/makefile
+@@ -2,11 +2,8 @@
+ 
+ # C compiler
+ 
+-C       = gcc 
+-CC      = g++ 
+ #CFLAGS  = -O1 ${SEARCHDIRS}
+ #CFLAGS  = -O3 -g -Wall
+-CFLAGS = -Wall -g
+ LIBS    = -lm
+ 
+ MAKEFILE= makefile
+@@ -16,67 +13,79 @@ all:    build-icm build-icm-noframe build1 build2 falsecomp findsites karlin sco
+ 
+ 
+ misc.o: misc.c
+-	${C} ${CFLAGS} -c misc.c
++	$(CC) $(CFLAGS) -c misc.c
+ 
+ build-icm.o: build-icm.c
+-	${C} ${CFLAGS} -c build-icm.c
++	$(CC) $(CFLAGS) -c build-icm.c
+ 
+ build-icm: build-icm.o misc.o
+-	$(C) ${CFLAGS} -o $@ build-icm.o misc.o $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ build-icm.o misc.o $(LIBS)
+ 
+ build-icm-noframe.o: build-icm-noframe.c
+-	${C} ${CFLAGS} -c build-icm-noframe.c
++	$(CC) $(CFLAGS) -c build-icm-noframe.c
+ 
+ build-icm-noframe: build-icm-noframe.o misc.o
+-	$(C) ${CFLAGS} -o $@ build-icm-noframe.o misc.o $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ build-icm-noframe.o misc.o $(LIBS)
+ 
+ build1: build1.o
+-	${CC} ${CFLAGS} build1.c -o build1 $(LIBS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) build1.o -o build1 $(LIBS)
+ 
+ build2: build2.o
+-	${CC} ${CFLAGS} build2.c -o build2 $(LIBS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) build2.o -o build2 $(LIBS)
+ 
+ falsecomp: falsecomp.o
+-	${CC} ${CFLAGS} falsecomp.c -o falsecomp $(LIBS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) falsecomp.o -o falsecomp $(LIBS)
+ 
+ findsites: findsites.o
+-	${CC} ${CFLAGS} findsites.c -o findsites $(LIBS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) findsites.o -o findsites $(LIBS)
+ 
+ karlin: karlin.o
+-	${CC} ${CFLAGS} karlin.c -o karlin $(LIBS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) karlin.o -o karlin $(LIBS)
+ 
+ score: score.o
+-	${CC} ${CFLAGS} score.c -o score $(LIBS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) score.o -o score $(LIBS)
+ 
+ score2: score2.o
+-	${CC} ${CFLAGS} score2.c -o score2 $(LIBS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) score2.o -o score2 $(LIBS)
+ 
+ scoreATG: scoreATG.o
+-	${CC} ${CFLAGS} scoreATG.c -o scoreATG $(LIBS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) scoreATG.o -o scoreATG $(LIBS)
+ 
+ scoreATG2: scoreATG2.o
+-	${CC} ${CFLAGS} scoreATG2.c -o scoreATG2 $(LIBS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) scoreATG2.o -o scoreATG2 $(LIBS)
+ 
+ scoreSTOP: scoreSTOP.o
+-	${CC} ${CFLAGS} scoreSTOP.c -o scoreSTOP $(LIBS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) scoreSTOP.o -o scoreSTOP $(LIBS)
+ 
+ escoreSTOP2: scoreSTOP2.o
+-	${CC} ${CFLAGS} scoreSTOP2.c -o scoreSTOP2 $(LIBS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) scoreSTOP2.o -o scoreSTOP2 $(LIBS)
+ 
+ rfapp: erfapp.o
+-	${CC} ${CFLAGS} erfapp.c -o erfapp $(LIBS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) erfapp.c -o erfapp $(LIBS)
+ 
+ sites.o: sites.c
+-	${CC} ${CFLAGS} -c sites.c
++	$(CXX) $(CXXFLAGS) -c sites.c
++
++scoreATG.o: scoreATG.c
++	$(CXX) $(CXXFLAGS) -c scoreATG.c
++       
++scoreSTOP.o: scoreSTOP.c
++	$(CXX) $(CXXFLAGS) -c scoreSTOP.c
++
++scoreSTOP2.o: scoreSTOP2.c
++	$(CXX) $(CXXFLAGS) -c scoreSTOP2.c
++
++scoreATG2.o: scoreATG2.c
++	$(CXX) $(CXXFLAGS) -c scoreATG2.c
+ 
+ utils.o: utils.c 
+-	${CC} ${CFLAGS} -c utils.c
++	$(CXX) $(CXXFLAGS) -c utils.c
+ 
+ splicescore.o: splicescore.c
+-	${CC} ${CFLAGS} -c splicescore.c
++	$(CXX) $(CXXFLAGS) -c splicescore.c
+ 
+ splicescore: splicescore.o sites.o utils.o
+-	${CC} splicescore.o sites.o utils.o -o splicescore $(LIBS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) splicescore.o sites.o utils.o -o splicescore $(LIBS)
+ .PHONY : clean
+ clean::
+ 	/bin/rm -f core* splicescore *.o score build? build-icm \

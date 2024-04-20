@@ -1,0 +1,11 @@
+rely on standard POSIX headers to fix globs of warnings
+
+requires 0.88-protos.patch first
+
+--- a/rblspp.c
++++ b/rblspp.c
+@@ -1,3 +1,4 @@
++#include <stdlib.h>
+ #include "byte.h"
+ #include "str.h"
+ #include "scan.h"

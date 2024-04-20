@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>jsmolic@gentoo.org</email>
+		<name>Jakov Smolić</name>
+	</maintainer>
+	<longdescription lang="en">
+		libuv is a platform layer for node.js. Its purpose is to abstract
+		IOCP on Windows and epoll/kqueue/event ports/etc. on Unix systems.
+		We intend to eventually contain all platform differences in this
+		library.
+
+		Features:
+			* Non-blocking TCP sockets
+			* Non-blocking named pipes
+			* UDP
+			* Timers
+			* Child process spawning
+			* Asynchronous DNS via uv_getaddrinfo.
+			* Asynchronous file system APIs uv_fs_*
+			* High resolution time uv_hrtime
+			* Current executable path look up uv_exepath
+			* Thread pool scheduling uv_queue_work
+			* ANSI escape code controlled TTY uv_tty_t
+			* File system events using inotify, kqueue, event ports,
+			FSEvents and ReadDirectoryChangesW
+			* IPC and socket sharing between processes uv_write2
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/libuv/libuv/issues</bugs-to>
+		<remote-id type="github">libuv/libuv</remote-id>
+		<remote-id type="cpe">cpe:/a:libuv:libuv</remote-id>
+	</upstream>
+	<slots>
+		<subslots>Reflect ABI compatibility of libuv.so.</subslots>
+	</slots>
+</pkgmetadata>

@@ -1,0 +1,57 @@
+--- a/src/makefile.linux
++++ b/src/makefile.linux
+@@ -1,6 +1,3 @@
+-CC = gcc
+-AR = ar cru
+-RANLIB = ranlib
+ MAJOR_VERSION = 1
+ MINOR_VERSION = 6
+ PATCH_LEVEL = 8
+@@ -11,15 +8,13 @@
+ OUTPUT = libNL.so.$(VERSION)
+ LIBNAME = NL
+ STATIC = libNL.a
+-OPTFLAGS = -funroll-all-loops -ffast-math -fomit-frame-pointer -O2 -D_GNU_SOURCE -D_REENTRANT
+-CFLAGS = -Wall -fPIC $(INCLUDE) $(OPTFLAGS)
+-LIBFLAGS = -shared -Wl,-soname,NL.so.$(MAJOR_VERSION).$(MINOR_VERSION) -rdynamic -lpthread
++CPPFLAGS += -D_GNU_SOURCE -D_REENTRANT $(INCLUDE)
++CFLAGS += -Wall -fPIC
++LIBFLAGS = -shared -Wl,-soname,libNL.so.$(MAJOR_VERSION).$(MINOR_VERSION) -rdynamic -lpthread
+ OBJECTS = crc.o errorstr.o nl.o sock.o group.o loopback.o err.o thread.o mutex.o condition.o nltime.o
+ 
+ all: $(OBJECTS)
+-	$(CC) -o $(OUTPUT) $(OBJECTS) $(LIBFLAGS) $(CFLAGS)
+-	$(AR) $(STATIC) $(OBJECTS)
+-	$(RANLIB) $(STATIC)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(OUTPUT) $(OBJECTS) $(LIBFLAGS)
+ 
+ nl.o : nlinternal.h nl.c
+ sock.o : nlinternal.h sock.h sock.c
+@@ -34,23 +29,14 @@
+ nltime.o : nlinternal.h nltime.c
+ 
+ install:
++	mkdir -p $(LIBDIR) $(INCDIR) ; chmod 755 $(LIBDIR) $(INCDIR)
+ 	cp $(OUTPUT) $(LIBDIR)
+-	cp $(STATIC) $(LIBDIR)
+ 	chmod 755 $(LIBDIR)/$(OUTPUT)
+-	ln -s $(LIBDIR)/$(OUTPUT) $(LIBDIR)/lib$(LIBNAME).so.$(MAJOR_VERSION).$(MINOR_VERSION)
+-	ln -s $(LIBDIR)/$(OUTPUT) $(LIBDIR)/lib$(LIBNAME).so.$(MAJOR_VERSION)
+-	ln -s $(LIBDIR)/$(OUTPUT) $(LIBDIR)/lib$(LIBNAME).so
+-	ln -s $(LIBDIR)/$(OUTPUT) $(LIBDIR)/$(LIBNAME).so
++	ln -s $(OUTPUT) $(LIBDIR)/lib$(LIBNAME).so.$(MAJOR_VERSION).$(MINOR_VERSION)
++	ln -s $(OUTPUT) $(LIBDIR)/lib$(LIBNAME).so.$(MAJOR_VERSION)
++	ln -s $(OUTPUT) $(LIBDIR)/lib$(LIBNAME).so
+ 	cp ../include/nl.h $(INCDIR)/nl.h
+ 	chmod 644 $(INCDIR)/nl.h
+-	@echo ""
+-	@echo "*************************************************"
+-	@echo "* Installed HawkNL.                             *"
+-	@echo "* Remember to run /sbin/ldconfig before using   *"
+-	@echo "* the library, you may also want to check that  *"
+-	@echo "* $(LIBDIR) is included in /etc/ld.so.conf      *"
+-	@echo "* You must be root to run ldconfig.             *"
+-	@echo "*************************************************"
+ 
+ uninstall:
+ 	rm -f $(LIBDIR)/$(OUTPUT) $(LIBDIR)/lib$(LIBNAME).so.$(MAJOR_VERSION).$(MINOR_VERSION)

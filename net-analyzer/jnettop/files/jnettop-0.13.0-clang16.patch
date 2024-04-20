@@ -1,0 +1,9 @@
+https://bugs.gentoo.org/870667
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -151,4 +151,5 @@
+ AC_MSG_CHECKING([if "localhost" resolves])
+ AC_TRY_RUN([
++#include <stdlib.h>
+ #include <string.h>
+ #include <sys/types.h>

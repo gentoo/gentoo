@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/919133
+https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/3688
+https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/8ecc61e1177c94e78fa171ee359cfbbd239942bc
+
+From 8ecc61e1177c94e78fa171ee359cfbbd239942bc Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Tue, 5 Dec 2023 16:18:30 +0100
+Subject: [PATCH] module-x11-bell: force pulse backend
+
+The libcanberra ALSA backend has some races and causes crashes, we
+should try to not use that one.
+
+Fixes #3688
+--- a/src/modules/module-x11-bell.c
++++ b/src/modules/module-x11-bell.c
+@@ -104,6 +104,11 @@ static int play_sample(struct impl *impl)
+ 		res = -EIO;
+ 		goto exit;
+ 	}
++	if ((res = ca_context_set_driver(ca, "pulse")) < 0) {
++		pw_log_error("canberra context set backend error: %s", ca_strerror(res));
++		res = -EIO;
++		goto exit_destroy;
++	}
+ 	if ((res = ca_context_open(ca)) < 0) {
+ 		pw_log_error("canberra context open error: %s", ca_strerror(res));
+ 		res = -EIO;
+-- 
+GitLab

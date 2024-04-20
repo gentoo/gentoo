@@ -1,0 +1,24 @@
+# Configuration for the HDAPS daemon (hdapsd). All settings here are
+# optional and will override those set in /etc/hdapsd.conf (if hdapsd
+# was built with libconfig support).
+
+# The list of the disk devices that hdapsd should monitor. Usually
+# this is "hda", "sda", or "hda sda". The hdaps daemon will attempt to
+# auto-detect your drive if this is left empty. Empty by default.
+#
+#DISKLIST="sda"
+
+# Hdapsd sensitivity. The lower the threshold, the earlier the heads
+# are parked when movement is detected. The default is determined by
+# hdapsd, and is currently 15.
+#
+#THRESHOLD="10"
+
+# Log to syslog? Disabled by default.
+#
+#SYSLOG="true"
+
+# Set any extra options here, like -a for "adaptive mode". Empty by
+# default.
+#
+#OPTIONS="-a"

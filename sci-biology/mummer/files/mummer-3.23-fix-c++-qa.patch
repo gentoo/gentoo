@@ -1,0 +1,83 @@
+--- a/src/kurtz/libbasedir/space.c
++++ b/src/kurtz/libbasedir/space.c
+@@ -379,7 +379,7 @@
+   }
+   if(numberofblocks > 0)
+   {
+-    fprintf(stderr,"space leak: number of blocks = %u\n",numberofblocks);
++    fprintf(stderr,"space leak: number of blocks = %lu\n",numberofblocks);
+     exit(EXIT_FAILURE);
+   } 
+   free(blocks);
+--- a/src/tigr/combineMUMs.cc
++++ b/src/tigr/combineMUMs.cc
+@@ -106,7 +106,7 @@
+     //  This array [i]  is the maximum number of errors allowed
+     //  in a match between sequences of length  i , which is
+     //  i * MAXERROR_RATE .
+-char  * Error_File_Name = DEFAULT_ERROR_FILE_NAME;
++const char  * Error_File_Name = DEFAULT_ERROR_FILE_NAME;
+     // Name of file to write gaps listing with # errors in each gap
+ int  Fill_Ct = 0;
+     // Number of non-acgt bases in ref sequence
+@@ -132,7 +132,7 @@
+     // The query sequence
+ long int  Query_Len;
+     // The length of the query sequence
+-char  * Query_Suffix = "Query";
++const char  * Query_Suffix = "Query";
+     // Suffix for query tag
+ char  * Ref = NULL;
+     // The reference sequence
+@@ -142,7 +142,7 @@
+     // The length of the reference sequence
+ long int  Ref_Size;
+     // The size of the reference sequence buffer
+-char  * Ref_Suffix = "Ref";
++const char  * Ref_Suffix = "Ref";
+     // Suffix for reference tag
+ int  Show_Differences = FALSE;
+     // If  TRUE  then show differences in all alignments
+--- a/src/tigr/mgaps.cc
++++ b/src/tigr/mgaps.cc
+@@ -64,9 +64,9 @@
+ static void  Parse_Command_Line
+     (int argc, char * argv []);
+ static void  Process_Matches
+-    (Match_t * A, int N, char * label);
++    (Match_t * A, int N, const char * label);
+ static int  Process_Cluster
+-    (Match_t * A, int N, char * label);
++    (Match_t * A, int N, const char * label);
+ static void  Union
+     (int a, int b);
+ static void  Usage
+@@ -438,7 +438,7 @@
+ 
+ 
+ static int  Process_Cluster
+-    (Match_t * A, int N, char * label)
++    (Match_t * A, int N, const char * label)
+ 
+ //  Process the cluster of matches in  A [0 .. (N - 1)]  and output them
+ //  after a line containing  label .  Return the number of clusters
+@@ -552,7 +552,7 @@
+ 
+ 
+ static void  Process_Matches
+-    (Match_t * A, int N, char * label)
++    (Match_t * A, int N, const char * label)
+ 
+ //  Process matches  A [1 .. N]  and output them after
+ //  a line containing  label .
+--- a/src/tigr/show-coords.cc
++++ b/src/tigr/show-coords.cc
+@@ -788,7 +788,7 @@
+      (vector<AlignStats> Stats)
+ {
+   time_t currtime;
+-  char * type;
++  const char * type;
+   char date[MAX_LINE];
+   long int len;
+   vector<AlignStats>::iterator Sip;

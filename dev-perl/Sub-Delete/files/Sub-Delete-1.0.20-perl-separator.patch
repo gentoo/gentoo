@@ -1,0 +1,49 @@
+https://bugs.debian.org/1050447
+https://rt.cpan.org/Public/Bug/Display.html?id=146682
+
+commit e0e7d68582b40ff309657358357f61055e9a2ae8
+Author: Yves Orton <demerphq@gmail.com>
+Date:   Thu Feb 23 15:14:12 2023 +0100
+
+    deal with deprecation of apostrophe as a package separator
+    
+    this package for some reason includes its own copy of Test::More
+    which includes isn't, the code also uses apostrophe as a package
+    separator. This usage was deprecated in perl 5.37.9, and support
+    for it will be removed sometime in 5.39.
+
+--- a/lib/Sub/Delete.pm
++++ b/lib/Sub/Delete.pm
+@@ -44,7 +44,7 @@ sub delete_sub {
+ 	}
+         delete $stash->{$key};
+ 	keys %imported_slots == 1 and exists $imported_slots{SCALAR}
+-	 and !$imported_slots{SCALAR} and Internals'SvREFCNT $$glob =>== 1
++	 and !$imported_slots{SCALAR} and Internals::SvREFCNT $$glob =>== 1
+ 	 and !defined *$glob{IO} and !defined *$glob{FORMAT}
+ 	 and return; # empty glob
+ 	my $newglob = \*$globname;
+--- a/t/Test/More.pm
++++ b/t/Test/More.pm
+@@ -335,9 +335,6 @@ sub isnt ($$;$) {
+     $tb->isnt_eq(@_);
+ }
+ 
+-*isn't = \&isnt;
+-
+-
+ =item B<like>
+ 
+   like( $this, qr/that/, $test_name );
+--- a/t/test.t
++++ b/t/test.t
+@@ -97,7 +97,7 @@ SKIP:{
+ }
+ 
+ # Make sure ‘use vars’ info is preserved.
+-{ package gred; *'chit = \$'chit } # use vars
++{ package gred; *::chit = \$::chit } # use vars
+ sub chit;
+ delete_sub 'chit';
+ {
+

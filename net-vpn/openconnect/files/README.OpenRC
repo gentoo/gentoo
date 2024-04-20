@@ -1,0 +1,13 @@
+The service script for openconnect supports multiple VPN tunnels.
+
+To enable this, create a symbolic link to /etc/init.d/openconnect in
+/etc/init.d for each tunnel instead of calling it directly:
+
+ln -s /etc/init.d/openconnect /etc/init.d/openconnect.vpn0
+
+To define per-VPN settings, copy /etc/conf.d/openconnect to
+openconnect.vpn0.
+
+You can then start the vpn tunnel like this:
+
+rc-service openconnect.vpn0 start

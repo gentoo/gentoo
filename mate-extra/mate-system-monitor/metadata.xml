@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+		<maintainer type="person" proxied="yes">
+			<email>immoloism@gmail.com</email>
+			<name>Ian Jordan</name>
+		</maintainer>
+		<maintainer type="project" proxied="proxy">
+			<email>proxy-maint@gentoo.org</email>
+			<name>Proxy Maintainers</name>
+		</maintainer>
+	<upstream>
+		<remote-id type="github">mate-desktop/mate-system-monitor</remote-id>
+	</upstream>
+	<use>
+		<flag name="wnck">Enable experimental support 
+		using <pkg>x11-libs/libwnck</pkg>.</flag>
+	</use>
+</pkgmetadata>

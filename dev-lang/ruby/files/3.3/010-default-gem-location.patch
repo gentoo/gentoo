@@ -1,0 +1,11 @@
+--- a/tool/rbinstall.rb	2022-11-13 08:12:27.373041649 +0100
++++ b/tool/rbinstall.rb	2022-11-13 08:16:09.110406705 +0100
+@@ -994,7 +994,7 @@
+ end
+ 
+ install?(:ext, :comm, :gem, :'bundled-gems') do
+-  gem_dir = Gem.default_dir
++  gem_dir = ENV['GEM_DESTDIR']
+   install_dir = with_destdir(gem_dir)
+   prepare "bundled gems", gem_dir
+   RbInstall.no_write do

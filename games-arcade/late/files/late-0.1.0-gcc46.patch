@@ -1,0 +1,7 @@
+https://bugs.gentoo.org/362367
+--- a/src/ball.h
++++ b/src/ball.h
+@@ -27,2 +27,3 @@
+ #include "square.h"
++#include <cstddef>
+ 

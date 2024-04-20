@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  The COmputational INfrastructure for Operations Research (COIN-OR) 
+  MP is a C-API interface library that supports most of the
+  functionality of the CLP (Coin LP), CBC (Coin Branch-and-Cut), and
+  CGL (Cut Generation Library) projects.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">coin-or/CoinMP</remote-id>
+  </upstream>
+</pkgmetadata>

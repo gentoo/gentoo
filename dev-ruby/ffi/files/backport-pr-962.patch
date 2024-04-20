@@ -1,0 +1,48 @@
+From edc54894f77d00c4ca34593c8b4c94f656f5807e Mon Sep 17 00:00:00 2001
+From: Frederick Cheung <frederick.cheung@gmail.com>
+Date: Fri, 17 Jun 2022 18:57:28 +0100
+Subject: [PATCH] Fix Pointer#initialize using NUM2LL instead of NUM2ULL
+
+If the high bit of the address was set this would raise RangeError
+(bignum too big to convert into long long). This is not uncommon on
+platforms that use the high bits of pointers for purposes such as
+pointer authentication
+
+This also now matches Pointer#address which uses ULL2NUM.
+---
+ ext/ffi_c/Pointer.c      | 2 +-
+ spec/ffi/pointer_spec.rb | 8 ++++++++
+ 2 files changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/ext/ffi_c/Pointer.c b/ext/ffi_c/Pointer.c
+index 153fff101..79886811f 100644
+--- a/ext/ffi_c/Pointer.c
++++ b/ext/ffi_c/Pointer.c
+@@ -112,7 +112,7 @@ ptr_initialize(int argc, VALUE* argv, VALUE self)
+     switch (TYPE(rbAddress)) {
+         case T_FIXNUM:
+         case T_BIGNUM:
+-            p->memory.address = (void*) (uintptr_t) NUM2LL(rbAddress);
++            p->memory.address = (void*) (uintptr_t) NUM2ULL(rbAddress);
+             p->memory.size = LONG_MAX;
+             if (p->memory.address == NULL) {
+                 p->memory.flags = 0;
+diff --git a/spec/ffi/pointer_spec.rb b/spec/ffi/pointer_spec.rb
+index b216a161d..7a2ac1565 100644
+--- a/spec/ffi/pointer_spec.rb
++++ b/spec/ffi/pointer_spec.rb
+@@ -237,6 +237,14 @@ def to_ptr
+       expect(FFI::Pointer.new(0).slice(0, 10).size_limit?).to be true
+     end
+   end
++
++  describe "#initialise" do
++    it 'can use adresses with high bit set' do
++      max_address = 2**FFI::Platform::ADDRESS_SIZE - 1
++      pointer = FFI::Pointer.new(:uint8, max_address)
++      expect(pointer.address).to eq(max_address)
++    end
++  end
+ end
+ 
+ describe "AutoPointer" do

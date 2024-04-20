@@ -1,0 +1,171 @@
+From cfc56fa6a5809c2dbc7276df3579836e586d9193 Mon Sep 17 00:00:00 2001
+From: William Breathitt Gray <vilhelm.gray@gmail.com>
+Date: Tue, 23 Jun 2020 12:56:01 -0400
+Subject: [PATCH] Introduce configure options for bash-completion, doc, fonts,
+ and icons
+
+This patch introduces the --enable-bash-completion, --enable-doc,
+--enable-fonts, and --enable-icons configuration options to control the
+build of bash-completion, documentation, fonts, and icons respectively.
+This is useful for users of systems such as Gentoo which allow custom
+configuration of packages, or for package maintainers in general who
+would like finer control over the components built when compiling
+Chocolate Doom.
+---
+ Makefile.am                     |  2 +-
+ configure.ac                    | 49 ++++++++++++++++++++++++++++++++-
+ man/Makefile.am                 |  2 +-
+ man/bash-completion/Makefile.am |  2 +-
+ src/Makefile.am                 |  2 +-
+ src/setup/Makefile.am           |  2 +-
+ textscreen/fonts/Makefile.am    |  2 +-
+ 7 files changed, 54 insertions(+), 7 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 1bd91a43..70f2e5b9 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -50,7 +50,7 @@ SUBDIRS=textscreen midiproc opl pcsound data src man
+ 
+ DIST_SUBDIRS=pkg $(SUBDIRS)
+ 
+-if HAVE_PYTHON
++if HAVE_DOC
+ 
+ INSTALL : man/INSTALL.template man/simplecpp
+ 	./man/simplecpp -DDOOM -DHERETIC -DHEXEN -DSTRIFE \
+diff --git a/configure.ac b/configure.ac
+index 8e18a0e9..9bef517a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -35,6 +35,50 @@ PKG_CHECK_MODULES(SDL, [sdl2 >= 2.0.1])
+ PKG_CHECK_MODULES(SDLMIXER, [SDL2_mixer >= 2.0.0])
+ PKG_CHECK_MODULES(SDLNET, [SDL2_net >= 2.0.0])
+ 
++# Check for bash-completion.
++AC_ARG_ENABLE([bash-completion],
++AS_HELP_STRING([--disable-bash-completion], [Disable bash-completion])
++)
++AS_IF([test "x$enable_bash_completion" != xno], [
++    AS_IF([test HAVE_PYTHON = false], [
++        AC_MSG_WARN([Building bash-completion requires Python, but Python not found])
++        enable_bash_completion=no
++    ])
++])
++
++# Check for doc.
++AC_ARG_ENABLE([doc],
++AS_HELP_STRING([--disable-doc], [Disable documentation])
++)
++AS_IF([test "x$enable_doc" != xno], [
++    AS_IF([test HAVE_PYTHON = false], [
++        AC_MSG_WARN([Building documentation requires Python, but Python not found])
++        enable_doc=no
++    ])
++])
++
++# Check for fonts.
++AC_ARG_ENABLE([fonts],
++AS_HELP_STRING([--disable-fonts], [Disable fonts])
++)
++AS_IF([test "x$enable_fonts" != xno], [
++    AS_IF([test HAVE_PYTHON = false], [
++        AC_MSG_WARN([Building fonts require Python, but Python not found])
++        enable_fonts=no
++    ])
++])
++
++# Check for icons.
++AC_ARG_ENABLE([icons],
++AS_HELP_STRING([--disable-icons], [Disable icons])
++)
++AS_IF([test "x$enable_icons" != xno], [
++    AS_IF([test HAVE_PYTHON = false], [
++        AC_MSG_WARN([Building icons require Python, but Python not found])
++        enable_icons=no
++    ])
++])
++
+ # Check for libsamplerate.
+ AC_ARG_WITH([libsamplerate],
+ AS_HELP_STRING([--without-libsamplerate],
+@@ -106,7 +150,10 @@ AS_IF([test "x$enable_werror" = "xyes"], [
+ ])
+ 
+ AM_CONDITIONAL(HAVE_WINDRES, test "$WINDRES" != "")
+-AM_CONDITIONAL(HAVE_PYTHON, $HAVE_PYTHON)
++AM_CONDITIONAL(HAVE_BASH_COMPLETION, [test "x$enable_bash_completion" != xno])
++AM_CONDITIONAL(HAVE_DOC, [test "x$enable_doc" != xno])
++AM_CONDITIONAL(HAVE_FONTS, [test "x$enable_fonts" != xno])
++AM_CONDITIONAL(HAVE_ICONS, [test "x$enable_icons" != xno])
+ 
+ dnl Automake v1.8.0 is required, please upgrade!
+ 
+diff --git a/man/Makefile.am b/man/Makefile.am
+index 915cb206..5a886fc9 100644
+--- a/man/Makefile.am
++++ b/man/Makefile.am
+@@ -15,7 +15,7 @@ hereticdocsdir = ${docdir}/../${PROGRAM_PREFIX}heretic
+ hexendocsdir = ${docdir}/../${PROGRAM_PREFIX}hexen
+ strifedocsdir = ${docdir}/../${PROGRAM_PREFIX}strife
+ 
+-if HAVE_PYTHON
++if HAVE_DOC
+ 
+ GENERATED_MAN_PAGES =               \
+            @PROGRAM_PREFIX@doom.6         \
+diff --git a/man/bash-completion/Makefile.am b/man/bash-completion/Makefile.am
+index 9c1400f1..a79fe623 100644
+--- a/man/bash-completion/Makefile.am
++++ b/man/bash-completion/Makefile.am
+@@ -6,7 +6,7 @@ BASH_COMPLETION_TEMPLATES = \
+     hexen.template \
+     strife.template
+ 
+-if HAVE_PYTHON
++if HAVE_BASH_COMPLETION
+ 
+ BASH_COMPLETION_SCRIPTLETS = \
+     @PROGRAM_PREFIX@doom \
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 19a42598..698d2ce0 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -271,7 +271,7 @@ CLEANFILES = $(execgames_SCRIPTS) $(app_DATA) $(screensaver_DATA)
+ %.o : %.rc
+ 	$(WINDRES) $< -o $@
+ 
+-if HAVE_PYTHON
++if HAVE_ICONS
+ 
+ icon.c : $(top_builddir)/data/doom.png
+ 	$(top_builddir)/data/convert-icon $(top_builddir)/data/doom.png $@
+diff --git a/src/setup/Makefile.am b/src/setup/Makefile.am
+index a9dd240c..493b0b47 100644
+--- a/src/setup/Makefile.am
++++ b/src/setup/Makefile.am
+@@ -33,7 +33,7 @@ CLEANFILES = $(app_DATA)
+ @PACKAGE_RDNS@.Setup.desktop : Setup.desktop
+ 	cp Setup.desktop $@
+ 
+-if HAVE_PYTHON
++if HAVE_ICONS
+ 
+ setup_icon.c : $(top_builddir)/data/setup.png
+ 	$(top_builddir)/data/convert-icon $(top_builddir)/data/setup.png $@
+diff --git a/textscreen/fonts/Makefile.am b/textscreen/fonts/Makefile.am
+index 67ae8a21..5f6ad066 100644
+--- a/textscreen/fonts/Makefile.am
++++ b/textscreen/fonts/Makefile.am
+@@ -3,7 +3,7 @@ EXTRA_DIST = small.png normal.png large.png convert-font $(FONT_HDRS)
+ 
+ noinst_DATA = $(FONT_HDRS)
+ 
+-if HAVE_PYTHON
++if HAVE_FONTS
+ 
+ small.h: small.png convert-font
+ 	./convert-font small small.png small.h
+-- 
+2.26.2
+

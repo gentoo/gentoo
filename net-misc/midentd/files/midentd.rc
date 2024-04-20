@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+start() {
+	ebegin "Starting midentd"
+	/usr/sbin/midentd ${MIDENTD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping midentd"
+	start-stop-daemon --stop --quiet --pidfile /var/run/midentd.pid
+	local ret=$?
+	rm -f /var/run/midentd.pid
+	eend ${ret}
+}

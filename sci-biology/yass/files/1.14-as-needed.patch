@@ -1,0 +1,207 @@
+diff --git a/configure.ac b/configure.ac
+index 68453ef..3ecfd21 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -28,13 +28,11 @@ AC_CHECK_FUNCS([floor memset clock pow sqrt strchr strdup strtol strtoul])
+ dnl 1) threads options
+ 
+ dnl abc) : with-threads option
+-AC_ARG_WITH(
+-	threads,
+-	[  --with-threads          compile with all threads],
+-	[threads="yes"],
+-	[threads="no"])
++AC_ARG_ENABLE(
++	[threads],
++	AS_HELP_STRING([--enable-threads], [compile with all threads]))
+ 
+-if test "$threads" = "yes"; then
++AS_IF([test "x$enable_threads" = "xyes"], [
+   AC_MSG_RESULT(detected cpu parameter: threads);
+  
+   dnl pthread library here ? (UNIX system)
+@@ -46,167 +44,25 @@ if test "$threads" = "yes"; then
+     AC_MSG_RESULT(yes)
+     AC_DEFINE([HAVE_PTHREAD],[1],[pthread available on the computer])
+        CFLAGS=" $CFLAGS -DTHREAD_ASSEMBLE_ALIGN -DTHREAD_FORWARD_REVERSE -DTHREAD_QUERY_CHUNK "
+-       LDFLAGS="$LDFLAGS -lpthread"
++       LIBS="$LIBS -lpthread"
+   else
+     AC_MSG_RESULT(no : disabling \"--with-threads\" parameter)
+   fi
+-
+-else
+-   if test -s /proc/cpuinfo; then
+-      AC_MSG_CHECKING(for multi-processor)
+-      dnl Multithread advice
+-      if test `grep -c '^processor' /proc/cpuinfo` -gt 2; then
+-         AC_MSG_RESULT(yes) 
+-         AC_MSG_RESULT(- try \"configure --with-threads\")
+-      else
+-         AC_MSG_RESULT(no)
+-      fi;
+-   fi;
+-fi
+-
+-
+-
+-
+-
+-dnl a) : with-thread-fr option
+-AC_ARG_WITH(
+-	thread-fr,
+-	[  --with-thread-fr        compile with two separate threads for Forward and Reverse sequence],
+-	[thread_forward_reverse="yes"],
+-	[thread_forward_reverse="no"])
+-
+-if test "$thread_forward_reverse" = "yes"; then
+-  AC_MSG_RESULT(detected cpu parameter: thread-fr);
+- 
+-  dnl pthread library here ? (UNIX system)
+-  AC_MSG_CHECKING(for pthread lib)
+-  AC_CHECK_LIB(pthread, pthread_create,
+-	[have_pthread="yes"],
+-	[have_pthread="no"])
+-  if test "$have_pthread" = "yes"; then
+-    AC_MSG_RESULT(yes)
+-    AC_DEFINE([HAVE_PTHREAD],[1],[pthread available on the computer])
+-       CFLAGS=" $CFLAGS -DTHREAD_FORWARD_REVERSE "
+-       LDFLAGS="$LDFLAGS -lpthread"  
+-  else
+-    AC_MSG_RESULT(no : disabling \"--with-thread-fr\" parameter)
+-  fi
+-
+-else
+-   if test -s /proc/cpuinfo; then
+-      AC_MSG_CHECKING(for multi-processor)
+-      dnl Multithread advice
+-      if test `grep -c '^processor' /proc/cpuinfo` -gt 1; then
+-         AC_MSG_RESULT(yes) 
+-         AC_MSG_RESULT(- try \"configure --with-thread-fr\")
+-      else
+-         AC_MSG_RESULT(no)
+-      fi;
+-   fi;
+-fi
+-
+-
+-
+-
+-
+-dnl b) : with-thread-aa option
+-AC_ARG_WITH(
+-	thread-aa,
+-	[  --with-thread-aa        compile with two separate threads for Assemble and Align steps],
+-	[thread_assemble_align="yes"],
+-	[thread_assemble_align="no"])
+-
+-if test "$thread_assemble_align" = "yes"; then
+-  AC_MSG_RESULT(detected cpu parameter: thread-aa);
+- 
+-  dnl pthread library here ? (UNIX system)
+-  AC_MSG_CHECKING(for pthread lib)
+-  AC_CHECK_LIB(pthread, pthread_create,
+-	[have_pthread="yes"],
+-	[have_pthread="no"])
+-  if test "$have_pthread" = "yes"; then
+-    AC_MSG_RESULT(yes)
+-    AC_DEFINE([HAVE_PTHREAD],[1],[pthread available on the computer])
+-       CFLAGS=" $CFLAGS -DTHREAD_ASSEMBLE_ALIGN "
+-       LDFLAGS="$LDFLAGS -lpthread"  
+-  else
+-    AC_MSG_RESULT(no : disabling \"--with-thread-aa\" parameter)
+-  fi
+-
+-else
+-   if test -s /proc/cpuinfo; then
+-      AC_MSG_CHECKING(for multi-processor)
+-      dnl Multithread advice
+-      if test `grep -c '^processor' /proc/cpuinfo` -gt 1; then
+-         AC_MSG_RESULT(yes) 
+-         AC_MSG_RESULT(- try \"configure --with-thread-aa\")
+-      else
+-         AC_MSG_RESULT(no)
+-      fi;
+-   fi;
+-fi
+-
+-
+-dnl c) : with-thread-qc option
+-AC_ARG_WITH(
+-	thread-qc,
+-	[  --with-thread-qc        compile with threads for the query chunks],
+-	[thread_query_chunk="yes"],
+-	[thread_query_chunk="no"])
+-
+-if test "$thread_query_chunk" = "yes"; then
+-  AC_MSG_RESULT(detected cpu parameter: thread-qc);
+- 
+-  dnl pthread library here ? (UNIX system)
+-  AC_MSG_CHECKING(for pthread lib)
+-  AC_CHECK_LIB(pthread, pthread_create,
+-	[have_pthread="yes"],
+-	[have_pthread="no"])
+-  if test "$have_pthread" = "yes"; then
+-    AC_MSG_RESULT(yes)
+-    AC_DEFINE([HAVE_PTHREAD],[1],[pthread available on the computer])
+-       CFLAGS=" $CFLAGS -DTHREAD_QUERY_CHUNK "
+-       LDFLAGS="$LDFLAGS -lpthread"  
+-  else
+-    AC_MSG_RESULT(no : disabling \"--with-thread-qc\" parameter)
+-  fi
+-
+-else
+-   if test -s /proc/cpuinfo; then
+-      AC_MSG_CHECKING(for multi-processor)
+-      dnl Multithread advice
+-      if test `grep -c '^processor' /proc/cpuinfo` -gt 1; then
+-         AC_MSG_RESULT(yes) 
+-         AC_MSG_RESULT(- try \"configure --with-thread-qc\")
+-      else
+-         AC_MSG_RESULT(no)
+-      fi;
+-   fi;
+-fi
+-
+-
+-
++])
+ 
+ dnl 2) : low-memory option
+-AC_ARG_WITH(
+-	low-memory,
+-	[  --with-low-memory       use less memory, but can miss some repeats],
+-	[low_memory="yes"],
+-	[low_memory="no"])
++AC_ARG_ENABLE(
++	[lowmemory],
++	AS_HELP_STRING([--enable-lowmemory], [use less memory, but can miss some repeats]))
+ 
+-if test "$low_memory" = "yes"; then
++AS_IF([test "x$enable_lowmemory" = "xyes"], [
+    AC_MSG_RESULT(detected memory parameter: low memory);
+    CFLAGS=" $CFLAGS -DLOW_MEMORY "
+-else
+-   AC_MSG_RESULT(detected memory parameter : plain memory) 
+-fi
+-
+-
+-CFLAGS="$CFLAGS -O3 -Wall -ansi -pedantic -funroll-loops -pipe -fomit-frame-pointer "
+-LDFLAGS="$LDFLAGS -lm"
++])
+ 
+ AC_SUBST(CFLAGS)
+ AC_SUBST(LDFLAGS)
++
+ AM_WITH_DMALLOC
+ AM_INIT_AUTOMAKE
+ AC_CONFIG_FILES([Makefile
+diff --git a/src/Makefile.am b/src/Makefile.am
+index e456f94..8d90ca9 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -6,3 +6,4 @@
+ bin_PROGRAMS = yass
+ yass_SOURCES = align.c assemble.c avl.c display.c global_var.c hash.c kword.c list.c main.c prdyn.c proba.c red_black.c regroup.c threads.c tuple.c util.c \
+                align.h assemble.h avl.h display.h global_var.h hash.h kword.h list.h        prdyn.h proba.h red_black.h regroup.h threads.h tuple.h util.h
++yass_LDADD = -lm

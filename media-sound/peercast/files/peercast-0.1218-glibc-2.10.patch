@@ -1,0 +1,109 @@
+Index: work/core/common/common.h
+===================================================================
+--- work.orig/core/common/common.h
++++ work/core/common/common.h
+@@ -274,7 +274,7 @@ inline int strToID(char *str)
+ }
+ 
+ // -----------------------------------
+-char *getCGIarg(const char *str, const char *arg);
++const char *getCGIarg(const char *str, const char *arg);
+ bool cmpCGIarg(char *str, char *arg, char *value);
+ bool hasCGIarg(char *str, char *arg);
+ 
+Index: work/core/common/html.cpp
+===================================================================
+--- work.orig/core/common/html.cpp
++++ work/core/common/html.cpp
+@@ -103,7 +103,7 @@ void HTML::writeVariable(Stream &s,const
+ 			r = true;
+ 		}else if (varName.startsWith("loop.hit."))
+ 		{
+-			char *idstr = getCGIarg(tmplArgs,"id=");
++			const char *idstr = getCGIarg(tmplArgs,"id=");
+ 			if (idstr)
+ 			{
+ 				GnuID id;
+@@ -136,7 +136,7 @@ void HTML::writeVariable(Stream &s,const
+ 	{
+ 		if (varName.startsWith("page.channel."))
+ 		{
+-			char *idstr = getCGIarg(tmplArgs,"id=");
++			const char *idstr = getCGIarg(tmplArgs,"id=");
+ 			if (idstr)
+ 			{
+ 				GnuID id;
+@@ -150,7 +150,7 @@ void HTML::writeVariable(Stream &s,const
+ 
+ 			String v = varName+5;
+ 			v.append('=');
+-			char *a = getCGIarg(tmplArgs,v);
++			const char *a = getCGIarg(tmplArgs,v);
+ 			if (a)
+ 			{
+ 				s.writeString(a);		
+Index: work/core/common/sys.cpp
+===================================================================
+--- work.orig/core/common/sys.cpp
++++ work/core/common/sys.cpp
+@@ -740,12 +740,12 @@ void LogBuffer::write(const char *str, T
+ }
+ 
+ // -----------------------------------
+-char *getCGIarg(const char *str, const char *arg)
++const char *getCGIarg(const char *str, const char *arg)
+ {
+ 	if (!str)
+ 		return NULL;
+ 
+-	char *s = strstr(str,arg);
++	const char *s = strstr(str,arg);
+ 
+ 	if (!s)
+ 		return NULL;
+Index: work/core/common/servhs.cpp
+===================================================================
+--- work.orig/core/common/servhs.cpp
++++ work/core/common/servhs.cpp
+@@ -150,10 +150,10 @@ void Servent::handshakeHTTP(HTTP &http, 
+ 			if (!isAllowed(ALLOW_BROADCAST))
+ 				throw HTTPException(HTTP_SC_UNAVAILABLE,503);
+ 
+-			char *pwdArg = getCGIarg(fn,"pass=");
+-			char *songArg = getCGIarg(fn,"song=");
+-			char *mountArg = getCGIarg(fn,"mount=");
+-			char *urlArg = getCGIarg(fn,"url=");
++			const char *pwdArg = getCGIarg(fn,"pass=");
++			const char *songArg = getCGIarg(fn,"song=");
++			const char *mountArg = getCGIarg(fn,"mount=");
++			const char *urlArg = getCGIarg(fn,"url=");
+ 
+ 			if (pwdArg && songArg)
+ 			{
+@@ -560,7 +560,7 @@ bool Servent::handshakeAuth(HTTP &http,c
+ 	char user[64],pass[64];
+ 	user[0] = pass[0] = 0;
+ 
+-	char *pwd  = getCGIarg(args, "pass=");
++	const char *pwd  = getCGIarg(args, "pass=");
+ 
+ 	if ((pwd) && strlen(servMgr->password))
+ 	{
+@@ -671,7 +671,7 @@ void Servent::handshakeCMD(char *cmd)
+ 	{
+ 		if (cmpCGIarg(cmd,"cmd=","redirect"))
+ 		{
+-			char *j = getCGIarg(cmd,"url=");
++			const char *j = getCGIarg(cmd,"url=");
+ 			if (j)
+ 			{
+ 				termArgs(cmd);
+@@ -1079,7 +1079,7 @@ void Servent::handshakeCMD(char *cmd)
+ 					index++;
+ 				}
+ 
+-				char *findArg = getCGIarg(cmd,"keywords=");
++				const char *findArg = getCGIarg(cmd,"keywords=");
+ 
+ 				if (hasCGIarg(cmd,"relay"))
+ 				{

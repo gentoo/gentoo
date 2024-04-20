@@ -1,0 +1,15 @@
+Don't clobber toolchain defaults.
+
+https://bugs.gentoo.org/892992
+--- a/configure.ac
++++ b/configure.ac
+@@ -109,7 +109,8 @@ if test "${GCC}" = yes; then
+     AX_APPEND_LINK_FLAGS([-Wl,-z,now])
+     AX_APPEND_LINK_FLAGS([-Wl,-z,noexecstack])
+ fi
+-AX_APPEND_COMPILE_FLAGS([-D_FORTIFY_SOURCE=2])
++
++AX_ADD_FORTIFY_SOURCE
+ 
+ AC_MSG_NOTICE([**************************************** libtool])
+ LT_INIT([disable-static])

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<changelog>https://github.com/kubernetes/kops/tree/master/docs/releases</changelog>
+		<remote-id type="github">kubernetes/kops</remote-id>
+	</upstream>
+</pkgmetadata>

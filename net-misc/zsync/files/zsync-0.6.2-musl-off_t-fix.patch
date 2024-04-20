@@ -1,0 +1,16 @@
+diff --git a/libzsync/sha1.h b/libzsync/sha1.h
+index 3946505..8840570 100644
+--- a/libzsync/sha1.h
++++ b/libzsync/sha1.h
+@@ -11,9 +11,10 @@
+ 
+ #include "config.h"
+ 
+-#ifdef HAVE_INTTYPES_H
++#if defined(HAVE_INTTYPES_H) && defined(__GLIBC__)
+ #include <inttypes.h>
+ #else
++#include <stdint.h>
+ #include <sys/types.h>
+ #endif
+ 

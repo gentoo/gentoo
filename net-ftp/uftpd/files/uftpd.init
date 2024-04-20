@@ -1,0 +1,27 @@
+#!/sbin/openrc-run
+
+depend() {
+	use logger
+	need net
+}
+
+checkconfig() {
+	if [ ! -d ${UFTPD_ROOT} ]
+	then
+		eerror "You need a UFTPD root directory"
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting uftpd"
+	start-stop-daemon --start --exec /usr/sbin/uftpd ${UFTPD_ROOT} ${UFTPD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping uftpd"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/uftpd
+	eend $?
+}

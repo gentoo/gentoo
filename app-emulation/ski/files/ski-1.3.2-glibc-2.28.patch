@@ -1,0 +1,8 @@
+--- a/src/dos.c
++++ b/src/dos.c
+@@ -51,5 +51,2 @@ extern int localtime_r(const __time_t *, __struct_tm *);
+ #include <unistd.h>	/* Also #includes <utime.h> */
+-#if !defined(__FreeBSD__)
+-#include <ustat.h>
+-#endif
+ #include <sys/utsname.h>

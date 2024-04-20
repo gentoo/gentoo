@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/702612
+compile fix for: time_ms was not declared in this scope
+
+Signed-off-by: Joerg Bornkessel <hd_brummy@gentoo.org> (12 Dec 2019) 
+
+diff -Naur freecell-0.0.2.orig/cards.c freecell-0.0.2/cards.c
+--- freecell-0.0.2.orig/cards.c	2019-12-12 21:25:43.000000000 +0100
++++ freecell-0.0.2/cards.c	2019-12-12 21:27:38.000000000 +0100
+@@ -52,7 +52,7 @@
+ 	mX = X;
+ 	mY = Y;
+ 	mStacked = Stacked;
+-	mSeed = time_ms();
++	mSeed = cTimeMs::Now();
+ }
+ 
+ cCardStack::~cCardStack() {

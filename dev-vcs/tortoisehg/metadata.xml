@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>torokhov-s-a@yandex.ru</email>
+		<name>Sergey Torokhov</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>TortoiseHg is a Windows shell extension and a series of 
+			applications for the Mercurial distributed revision control system. 
+			It also includes a Gnome/Nautilus extension and a CLI wrapper
+			application so the TortoiseHg tools 
+			can be used on non-Windows platforms.
+	</longdescription>
+	<upstream>
+		<remote-id type="heptapod">mercurial/tortoisehg/thg</remote-id>
+	</upstream>
+</pkgmetadata>

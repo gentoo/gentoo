@@ -1,0 +1,48 @@
+Remove implicit pointer types conversions.
+
+See also: https://wiki.gentoo.org/wiki/Modern_C_porting
+Bug: https://bugs.gentoo.org/919066
+Upstream PR: https://github.com/gdraheim/zziplib/pull/150
+
+--- a/SDL/SDL_rwops_zzip.c
++++ b/SDL/SDL_rwops_zzip.c
+@@ -15,17 +15,17 @@
+ #define SDL_RWOPS_ZZIP_FILE(_context)  (ZZIP_FILE*) \
+              ((_context)->hidden.unknown.data1)
+ 
+-static int _zzip_seek(SDL_RWops *context, int offset, int whence)
++static Sint64 _zzip_seek(SDL_RWops *context, Sint64 offset, int whence)
+ {
+     return zzip_seek(SDL_RWOPS_ZZIP_FILE(context), offset, whence);
+ }
+ 
+-static int _zzip_read(SDL_RWops *context, void *ptr, int size, int maxnum)
++static size_t _zzip_read(SDL_RWops *context, void *ptr, size_t size, size_t maxnum)
+ {
+     return zzip_read(SDL_RWOPS_ZZIP_FILE(context), ptr, size*maxnum) / size;
+ }
+ 
+-static int _zzip_write(SDL_RWops *context, const void *ptr, int size, int num)
++static size_t _zzip_write(SDL_RWops *context, const void *ptr, size_t size, size_t num)
+ {
+     return 0; /* ignored */
+ }
+--- a/zzip/mmapped.c
++++ b/zzip/mmapped.c
+@@ -664,14 +664,14 @@ zzip_disk_entry_fopen(ZZIP_DISK * disk, ZZIP_DISK_ENTRY * entry)
+     off_t offset = zzip_file_header_to_data(header);
+     if (csize == 0xFFFFu) {
+         struct zzip_extra_zip64* zip64 =
+-           zzip_file_header_to_extras(header);
++         (struct zzip_extra_zip64*)zzip_file_header_to_extras(header);
+         if (ZZIP_EXTRA_ZIP64_CHECK(zip64)) {
+             csize = zzip_extra_zip64_csize(zip64);
+         }
+     }
+     if (offset == 0xFFFFu) {
+         struct zzip_extra_zip64* zip64 =
+-           zzip_file_header_to_extras(header);
++           (struct zzip_extra_zip64*)zzip_file_header_to_extras(header);
+         if (ZZIP_EXTRA_ZIP64_CHECK(zip64)) {
+             offset = zzip_extra_zip64_offset(zip64);
+         }

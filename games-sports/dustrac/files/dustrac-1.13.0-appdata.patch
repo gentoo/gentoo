@@ -1,0 +1,27 @@
+From 5c5c437c2634572da21a22e1f64fac1dc1b296ea Mon Sep 17 00:00:00 2001
+From: Pino Toscano <toscano.pino@tiscali.it>
+Date: Sun, 24 Sep 2017 16:19:51 +0200
+Subject: [PATCH] Install AppData file to the right location
+
+According to the specs [1], the location is now /usr/share/metainfo,
+with appdata left as legacy directory.  Hence, install the AppData file
+to the non-legacy directory.
+
+[1] https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html
+---
+ InstallLinux.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/InstallLinux.cmake b/InstallLinux.cmake
+index 15e69855..3e0443d1 100644
+--- a/InstallLinux.cmake
++++ b/InstallLinux.cmake
+@@ -74,7 +74,7 @@ function(setup_install_targets BIN_PATH DATA_PATH DOC_PATH)
+         install(FILES ${CMAKE_BINARY_DIR}/dustrac-editor.desktop DESTINATION share/applications)
+ 
+         # Install app store meta data
+-        install(FILES src/dustrac.appdata.xml DESTINATION share/appdata)
++        install(FILES src/dustrac.appdata.xml DESTINATION share/metainfo)
+ 
+         # Install icons
+         install(FILES data/icons/dustrac-game.png DESTINATION share/pixmaps)

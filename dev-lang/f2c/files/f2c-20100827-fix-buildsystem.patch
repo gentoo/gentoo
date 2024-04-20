@@ -1,0 +1,28 @@
+--- a/src/makefile.u
++++ b/src/makefile.u
+@@ -1,15 +1,10 @@
+ #	Makefile for f2c, a Fortran 77 to C converter
+ 
+ .SUFFIXES: .c .o
+-CC = cc
+-CFLAGS = -O
+ SHELL = /bin/sh
+ YACC = yacc
+ YFLAGS =
+ 
+-.c.o:
+-	$(CC) -c $(CFLAGS) $*.c
+-
+ OBJECTSd = main.o init.o gram.o lex.o proc.o equiv.o data.o format.o \
+ 	  expr.o exec.o intr.o io.o misc.o error.o mem.o names.o \
+ 	  output.o p1output.o pread.o put.o putpcc.o vax.o formatdata.o \
+@@ -100,9 +95,6 @@
+ 	parse.h parse_args.c pccdefs.h pread.c proc.c put.c putpcc.c \
+ 	sysdep.c sysdep.h sysdeptest.c tokens usignal.h vax.c version.c xsum.c
+ 
+-xsum: xsum.c
+-	$(CC) $(CFLAGS) -o xsum xsum.c
+-
+ #Check validity of transmitted source...
+ xsum.out: xsum $b
+ 	./xsum $b >xsum1.out

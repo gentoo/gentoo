@@ -1,0 +1,29 @@
+#!/sbin/openrc-run
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: ${REDIS_DIR:=/var/lib/openvas/redis}
+: ${REDIS_CONF:=/etc/gvm/redis-openvas.conf}
+: ${REDIS_OPTS:="${REDIS_CONF}"}
+: ${REDIS_USER:=gvm}
+: ${REDIS_GROUP:=gvm}
+: ${REDIS_TIMEOUT:=30}
+
+# https://bugs.gentoo.org/631002#c10
+# Force '--daemonize no' to override the config file
+command="/usr/sbin/redis-server"
+command_args="${REDIS_OPTS} --daemonize no"
+command_background="true"
+command_user="${REDIS_USER}:${REDIS_GROUP}"
+pidfile="/run/${RC_SVCNAME}/redis-server.pid"
+retry="${REDIS_TIMEOUT}"
+directory="${REDIS_DIR}"
+
+start_post() {
+        checkpath -f --mode 0644 --owner ${REDIS_USER}:${REDIS_GROUP} /var/log/gvm/openvas.log
+}
+
+depend() {
+	use localmount logger
+	after keepalived
+}

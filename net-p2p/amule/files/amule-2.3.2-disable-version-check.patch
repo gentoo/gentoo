@@ -1,0 +1,12 @@
+Disable NewVersionCheck by default
+--- a/src/Preferences.cpp
++++ b/src/Preferences.cpp
+@@ -1210,7 +1210,7 @@ void CPreferences::BuildItemList( const
+ 	/**
+ 	 * Version check
+ 	 **/
+-	 NewCfgItem(IDC_NEWVERSION,	(new Cfg_Bool( wxT("/eMule/NewVersionCheck"), s_NewVersionCheck, true )));
++	 NewCfgItem(IDC_NEWVERSION,	(new Cfg_Bool( wxT("/eMule/NewVersionCheck"), s_NewVersionCheck, false )));
+ 
+ 	 /**
+ 	  * Obfuscation

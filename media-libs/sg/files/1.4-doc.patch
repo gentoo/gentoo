@@ -1,0 +1,20 @@
+diff --git a/doc/doxygen/Makefile.am b/doc/doxygen/Makefile.am
+index 3ee562c..7f424e8 100644
+--- a/doc/doxygen/Makefile.am
++++ b/doc/doxygen/Makefile.am
+@@ -29,13 +29,11 @@
+ ## Author:  Michael Holst
+ ## ###########################################################################
+ 
+-docdir = @prefix@/doc/sg
+-
+ doc_DATA = sg_doc
+ 
+ sg_doc: 
+ 	$(doxygen_path) $(top_srcdir)/doc/doxygen/sg.dox
+ 
+ install-docDATA:
+-	mkdir -p $(docdir)
+-	cp -r ../api $(docdir)/
++	mkdir -p $(DESTDIR)/@docdir@
++	cp -r ../api $(DESTDIR)/@docdir@/

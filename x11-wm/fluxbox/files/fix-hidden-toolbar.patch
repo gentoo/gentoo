@@ -1,0 +1,92 @@
+--- a/src/Toolbar.cc
++++ b/src/Toolbar.cc
+@@ -80,18 +80,18 @@ const struct {
+     unsigned int shape;
+ } _values[] = {
+     { /* unused */ },
+-    { Toolbar::TOPLEFT,      "TopLeft",      FbTk::ROT0,   FbTk::Shape::BOTTOMRIGHT | FbTk::Shape::BOTTOMLEFT},
+-    { Toolbar::TOPCENTER,    "TopCenter",    FbTk::ROT0,   FbTk::Shape::TOPRIGHT | FbTk::Shape::TOPLEFT},
+-    { Toolbar::TOPRIGHT,     "TopRight",     FbTk::ROT0,   FbTk::Shape::BOTTOMRIGHT | FbTk::Shape::BOTTOMLEFT},
+-    { Toolbar::BOTTOMLEFT,   "BottomLeft",   FbTk::ROT0,   FbTk::Shape::TOPRIGHT | FbTk::Shape::TOPLEFT},
+-    { Toolbar::BOTTOMCENTER, "BottomCenter", FbTk::ROT0,   FbTk::Shape::TOPRIGHT | FbTk::Shape::TOPLEFT},
+-    { Toolbar::BOTTOMRIGHT,  "BottomRight",  FbTk::ROT0,   FbTk::Shape::TOPRIGHT | FbTk::Shape::TOPLEFT},
+-    { Toolbar::LEFTBOTTOM,   "LeftBottom",   FbTk::ROT270, FbTk::Shape::TOPRIGHT | FbTk::Shape::BOTTOMRIGHT},
+-    { Toolbar::LEFTCENTER,   "LeftCenter",   FbTk::ROT270, FbTk::Shape::TOPRIGHT | FbTk::Shape::BOTTOMRIGHT},
+-    { Toolbar::LEFTTOP,      "LeftTop",      FbTk::ROT270, FbTk::Shape::TOPRIGHT | FbTk::Shape::BOTTOMRIGHT},
+-    { Toolbar::RIGHTBOTTOM,  "RightBottom",  FbTk::ROT90,  FbTk::Shape::TOPLEFT | FbTk::Shape::BOTTOMLEFT},
+-    { Toolbar::RIGHTCENTER,  "RightCenter",  FbTk::ROT90,  FbTk::Shape::TOPLEFT | FbTk::Shape::BOTTOMLEFT},
+-    { Toolbar::RIGHTTOP,     "RightTop",     FbTk::ROT90,  FbTk::Shape::TOPLEFT | FbTk::Shape::BOTTOMLEFT},
++    { Toolbar::TOPLEFT,      "TopLeft",      FbTk::ROT0,   FbTk::Shape::BOTTOMRIGHT                            },
++    { Toolbar::TOPCENTER,    "TopCenter",    FbTk::ROT0,   FbTk::Shape::BOTTOMRIGHT | FbTk::Shape::BOTTOMLEFT  },
++    { Toolbar::TOPRIGHT,     "TopRight",     FbTk::ROT0,   FbTk::Shape::BOTTOMLEFT                             },
++    { Toolbar::BOTTOMLEFT,   "BottomLeft",   FbTk::ROT0,   FbTk::Shape::TOPRIGHT                               },
++    { Toolbar::BOTTOMCENTER, "BottomCenter", FbTk::ROT0,   FbTk::Shape::TOPRIGHT    | FbTk::Shape::TOPLEFT     },
++    { Toolbar::BOTTOMRIGHT,  "BottomRight",  FbTk::ROT0,   FbTk::Shape::TOPLEFT                                },
++    { Toolbar::LEFTBOTTOM,   "LeftBottom",   FbTk::ROT270, FbTk::Shape::TOPRIGHT                               },
++    { Toolbar::LEFTCENTER,   "LeftCenter",   FbTk::ROT270, FbTk::Shape::TOPRIGHT    | FbTk::Shape::BOTTOMRIGHT },
++    { Toolbar::LEFTTOP,      "LeftTop",      FbTk::ROT270, FbTk::Shape::BOTTOMRIGHT                            },
++    { Toolbar::RIGHTBOTTOM,  "RightBottom",  FbTk::ROT90,  FbTk::Shape::TOPLEFT                                },
++    { Toolbar::RIGHTCENTER,  "RightCenter",  FbTk::ROT90,  FbTk::Shape::TOPLEFT     | FbTk::Shape::BOTTOMLEFT  },
++    { Toolbar::RIGHTTOP,     "RightTop",     FbTk::ROT90,  FbTk::Shape::BOTTOMLEFT                             },
+ };
+ 
+ }
+@@ -648,24 +648,29 @@ void Toolbar::setPlacement(Toolbar::Placement where) {
+         break;
+     case TOPCENTER:
+         frame.x += (head_w - static_cast<int>(frame.width))/2 - bw;
++        frame.x_hidden = frame.x;
+         frame.y_hidden += pixel - bw - static_cast<int>(frame.height);
+         break;
+     case TOPRIGHT:
+         frame.x += head_w - static_cast<int>(frame.width) - bw*2;
++        frame.x_hidden = frame.x;
+         frame.y_hidden += pixel - bw - static_cast<int>(frame.height);
+         break;
+     case BOTTOMRIGHT:
+         frame.x += head_w - static_cast<int>(frame.width) - bw*2;
+         frame.y += head_h - static_cast<int>(frame.height) - bw*2;
++        frame.x_hidden = frame.x;
+         frame.y_hidden += head_h - bw - pixel;
+         break;
+     case BOTTOMCENTER: // default is BOTTOMCENTER
+         frame.x += (head_w - static_cast<int>(frame.width))/2 - bw;
+         frame.y += head_h - static_cast<int>(frame.height) - bw*2;
++        frame.x_hidden = frame.x;
+         frame.y_hidden += head_h - bw - pixel;
+         break;
+     case LEFTCENTER:
+         frame.y += (head_h - static_cast<int>(frame.height))/2 - bw;
++        frame.y_hidden = frame.y;
+         frame.x_hidden += pixel - static_cast<int>(frame.width) - bw;
+         break;
+     case LEFTTOP:
+@@ -673,21 +678,24 @@ void Toolbar::setPlacement(Toolbar::Placement where) {
+         break;
+     case LEFTBOTTOM:
+         frame.y = head_h - static_cast<int>(frame.height) - bw*2;
++        frame.y_hidden = frame.y;
+         frame.x_hidden += pixel - static_cast<int>(frame.width) - bw;
+         break;
+     case RIGHTCENTER:
+         frame.x += head_w - static_cast<int>(frame.width) - bw*2;
+-        frame.y += (head_h - static_cast<int>(frame.height))/2 * bw;
+-        frame.x_hidden += static_cast<int>(frame.width) + bw - pixel;
++        frame.y += (head_h - static_cast<int>(frame.height))/2 - bw;
++        frame.x_hidden += head_w - bw - pixel;
++        frame.y_hidden = frame.y;
+         break;
+     case RIGHTTOP:
+         frame.x += head_w - static_cast<int>(frame.width) - bw*2;
+-        frame.x_hidden += static_cast<int>(frame.width) + bw - pixel;
++        frame.x_hidden += head_w - bw - pixel;
+         break;
+     case RIGHTBOTTOM:
+         frame.x += head_w - static_cast<int>(frame.width) - bw*2;
+         frame.y += head_h - static_cast<int>(frame.height) - bw*2;
+-        frame.x_hidden +=   static_cast<int>(frame.width) + bw - pixel;
++        frame.x_hidden += head_w - bw - pixel;
++        frame.y_hidden = frame.y;
+         break;
+     }
+ 

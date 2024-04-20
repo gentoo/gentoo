@@ -1,0 +1,16 @@
+These are intended to be looked at rather than built, this avoids
+installing object files and prevents a build failure with clang16.
+
+https://bugs.gentoo.org/870706
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -7,3 +7,2 @@
+ 	man \
+-	examples \
+ 	doc 
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -196,3 +196,2 @@
+ 	man \
+-	examples \
+ 	doc 

@@ -1,0 +1,11 @@
+--- a/src/Microsoft.PowerShell.ConsoleHost/host/msh/UpdatesNotification.cs
++++ b/src/Microsoft.PowerShell.ConsoleHost/host/msh/UpdatesNotification.cs
+@@ -395,7 +395,7 @@ namespace Microsoft.PowerShell
+             string str = Environment.GetEnvironmentVariable(UpdateCheckEnvVar);
+             if (string.IsNullOrEmpty(str))
+             {
+-                return NotificationType.Default;
++                return NotificationType.Off;
+             }
+ 
+             if (Enum.TryParse(str, ignoreCase: true, out NotificationType type))

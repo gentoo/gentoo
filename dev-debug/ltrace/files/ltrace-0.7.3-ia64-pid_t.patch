@@ -1,0 +1,6 @@
+--- a/sysdeps/linux-gnu/ia64/breakpoint.c
++++ b/sysdeps/linux-gnu/ia64/breakpoint.c
+@@ -26,2 +26,3 @@
+ #include <sys/ptrace.h>
++#include <sys/types.h> /* pid_t */
+ #include <string.h>

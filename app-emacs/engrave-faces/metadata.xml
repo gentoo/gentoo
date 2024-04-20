@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    This package aims to produce a versatile generic core which can process a
+    fontified buffer and elegantly pass the data to any number of backends
+    which can deal with specific output formats.
+  </longdescription>
+  <stabilize-allarches />
+  <upstream>
+    <bugs-to>https://github.com/tecosaur/engrave-faces/issues/</bugs-to>
+    <remote-id type="github">tecosaur/engrave-faces</remote-id>
+  </upstream>
+</pkgmetadata>

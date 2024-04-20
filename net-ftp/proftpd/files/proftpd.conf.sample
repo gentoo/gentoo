@@ -1,0 +1,53 @@
+# This is a sample ProFTPD configuration file for Gentoo Linux (rename
+# it to 'proftpd.conf' for actual use). It establishes a single server
+# and a single anonymous login.
+
+ServerName "ProFTPD Default Server"
+ServerType standalone
+DefaultServer on
+RequireValidShell off
+AuthPAM off
+AuthPAMConfig ftp
+
+# Listen on the standard FTP port 21.
+Port 21
+
+# New directories and files should not be group or world writable.
+Umask 022
+
+# To prevent DoS attacks set the maximum number of child processes
+# to 30. If you need to allow more than 30 concurrent connections
+# at once simply increase this value.
+MaxInstances 30
+
+# The server will run under ftp/ftp.
+User ftp
+Group ftp
+
+# Every FTP sessions is "jailed" into the user's home directory.
+DefaultRoot ~
+
+# Generally files are overwritable.
+AllowOverwrite on
+
+# Disallow the use of the SITE CHMOD command.
+<Limit SITE_CHMOD>
+  DenyAll
+</Limit>
+
+# A basic anonymous FTP account without an upload directory.
+<Anonymous ~ftp>
+  User ftp
+  Group ftp
+
+  # Clients can login with the username "anonymous" and "ftp".
+  UserAlias anonymous ftp
+
+  # Limit the maximum number of parallel anonymous logins to 10.
+  MaxClients 10
+
+  # Prohibit the WRITE command for the anonymous users.
+  <Limit WRITE>
+    DenyAll
+  </Limit>
+</Anonymous>

@@ -1,0 +1,30 @@
+index 97d4ff4..fc14077 100755
+--- a/bin/ert-runner
++++ b/bin/ert-runner
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env bash
+ 
+-ERT_RUNNER="$(dirname $(dirname $0))/ert-runner.el"
++ERT_RUNNER="@SITELISP@/ert-runner.el"
+ 
+ function inside_emacs_24 {
+   if [[ -n $INSIDE_EMACS ]] &&
+@@ -31,9 +31,9 @@ if has_option "--win" $@ || has_option "--no-win" $@ ; then
+   export ERT_RUNNER_OUTFILE=$(mktemp /tmp/ert-runner.XXX)
+ 
+   if has_option "--win" $@; then
+-    "$ERT_RUNNER_EMACS" --load "$ERT_RUNNER" -Q
++    "$ERT_RUNNER_EMACS" --load "$ERT_RUNNER" -q
+   else
+-    "$ERT_RUNNER_EMACS" -nw --load "$ERT_RUNNER" -Q
++    "$ERT_RUNNER_EMACS" -nw --load "$ERT_RUNNER" -q
+   fi
+ 
+   STATUS=$?
+@@ -43,5 +43,5 @@ if has_option "--win" $@ || has_option "--no-win" $@ ; then
+ 
+   exit $STATUS
+ else
+-  "$ERT_RUNNER_EMACS" --script "$ERT_RUNNER" -Q
++  "$ERT_RUNNER_EMACS" --script "$ERT_RUNNER" -q
+ fi

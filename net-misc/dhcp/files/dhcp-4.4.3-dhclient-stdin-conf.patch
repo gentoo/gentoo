@@ -1,0 +1,113 @@
+--- dhcp-4.2.2/client/clparse.c
++++ dhcp-4.2.2/client/clparse.c
+@@ -182,6 +182,10 @@ isc_result_t read_client_conf ()
+ #endif
+ 	}
+ 
++	/* Read any extra configuration from stdin */
++	extern int read_client_conf_stdin (struct interface_info *ip, struct client_config *client);
++	read_client_conf_stdin (NULL, &top_level_config);
++
+ 	/* Set up state and config structures for clients that don't
+ 	   have per-interface configuration statements. */
+ 	config = (struct client_config *)0;
+@@ -211,23 +215,13 @@ isc_result_t read_client_conf ()
+ 	return status;
+ }
+ 
+-int read_client_conf_file (const char *name, struct interface_info *ip,
++int read_client_conf_actual (struct parse *cfile, struct interface_info *ip,
+ 			   struct client_config *client)
+ {
+-	int file;
+-	struct parse *cfile;
+ 	const char *val;
+ 	int token;
+ 	isc_result_t status;
+ 
+-	if ((file = open (name, O_RDONLY)) < 0)
+-		return uerr2isc (errno);
+-
+-	cfile = NULL;
+-	status = new_parse(&cfile, file, NULL, 0, path_dhclient_conf, 0);
+-	if (status != ISC_R_SUCCESS || cfile == NULL)
+-		return status;
+-
+ 	do {
+ 		token = peek_token (&val, (unsigned *)0, cfile);
+ 		if (token == END_OF_FILE)
+@@ -238,10 +232,74 @@ int read_client_conf_file (const char *name, struct interface_info *ip,
+ 	status = (cfile -> warnings_occurred
+ 		  ? DHCP_R_BADPARSE
+ 		  : ISC_R_SUCCESS);
++	return status;
++}
++
++int read_client_conf_file (const char *name, struct interface_info *ip,
++			   struct client_config *client)
++{
++	int file;
++	struct parse *cfile;
++	isc_result_t status;
++	
++	if ((file = open (name, O_RDONLY)) < 0)
++		return uerr2isc (errno);
++
++	cfile = (struct parse *)0;
++	new_parse (&cfile, file, (char *)0, 0, path_dhclient_conf, 0);
++	status = read_client_conf_actual(cfile, ip, client);
+ 	end_parse (&cfile);
+ 	return status;
+ }
+ 
++int read_client_conf_stdin (struct interface_info *ip,
++			    struct client_config *client)
++{
++	int file;
++	char *buffer = NULL, *p;
++	unsigned buflen, len = 0;
++	struct parse *cfile;
++	size_t bytes;
++	isc_result_t status;
++
++	file = fileno(stdin);
++	if (isatty (file))
++		return ISC_R_NOTFOUND;
++	if (fcntl (file, F_SETFL, O_NONBLOCK) < 0)
++		log_fatal ("could not set stdin to non blocking!");
++
++	buflen = BUFSIZ;
++	buffer = malloc (BUFSIZ + 1);
++	p = buffer;
++	do {
++		bytes = read (file, p, BUFSIZ);
++		if (bytes == 0)
++			break;
++		if (bytes == -1)
++			log_fatal ("failed to read stdin!");
++		if (bytes >= BUFSIZ) {
++			buflen += BUFSIZ;
++			len += BUFSIZ;
++			buffer = realloc (buffer, buflen + 1);
++			if (!buffer)
++				log_fatal ("not enough buffer to read stdin!");
++			p = buffer + len;
++		} else {
++			len += bytes;
++			break;
++		}
++	} while(1);
++	buffer[len] = '\0';
++
++	cfile = (struct parse *)0;
++	status = new_parse (&cfile, -1, buffer, len, "stdin", 0);
++	if (status == ISC_R_SUCCESS) {
++		status = read_client_conf_actual (cfile, ip, client);
++		end_parse (&cfile);
++	}
++	free(buffer);
++	return status;
++}
+ 
+ /* lease-file :== client-lease-statements END_OF_FILE
+    client-lease-statements :== <nil>

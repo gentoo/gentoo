@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    parseclj is an Emacs Lisp library for parsing Clojure code and EDN data. It
+    supports several input and output formats, all powered by the same
+    shift-reduce parser function.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/clojure-emacs/parseclj/issues/</bugs-to>
+    <remote-id type="github">clojure-emacs/parseclj</remote-id>
+  </upstream>
+</pkgmetadata>

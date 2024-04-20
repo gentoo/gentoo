@@ -1,0 +1,20 @@
+https://gitlab.xiph.org/xiph/vorbis/-/merge_requests/25
+
+From 63132c52ee4694171f663ecf536ab1236b6c46ba Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 23 Nov 2022 03:27:44 +0000
+Subject: [PATCH] vorbis.m4: fix -Wstrict-prototypes
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/vorbis.m4
++++ b/vorbis.m4
+@@ -67,7 +67,7 @@ dnl
+ #include <vorbis/codec.h>
+ #include <vorbis/vorbisenc.h>
+ 
+-int main ()
++int main (void)
+ {
+     vorbis_block 	vb;
+     vorbis_dsp_state	vd;
+GitLab

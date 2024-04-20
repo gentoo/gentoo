@@ -1,0 +1,36 @@
+# Config file for /etc/init.d/barnyard2
+
+# This file only contains variables needed by the init.d script.
+# All other configuration options are located in the barnyard2.conf file
+
+# This should be the first part of the unified/unified2 log file name (without the time stamp)
+# Ex. If you log files look like this 'snort.unified2.1239801645' then you would use 'snort.unified2'
+SPOOL_FILE="snort.unified2"
+
+# Location of your unified/unified2 log files
+SPOOL_DIR="/var/log/snort"
+
+# Directory to log to
+LOG_DIR="/var/log/barnyard2"
+
+# This MUST match what you set for "config interface:" in your barnyard2.conf
+# If you do not set this correctly then Barnyard2 will not stop when you do a 
+# "/etc/init.d/barnyard2 stop"
+INTERFACE="eth0"
+
+# You probably don't want to change this, but in case you do
+PID_FILE="barnyard2_${INTERFACE}.pid"
+PID_PATH="/var/run"
+
+# The waldo file is located in the SPOOL_DIR to support multipule instances of barnyard2
+WALDO_FILE="${SPOOL_DIR}/barnyard2.waldo"
+CONF="/etc/barnyard2/barnyard2.conf"
+
+# Location of the archive directory if you choose to use it.
+# The ARCHIVE_DIR is located in the SPOOL_DIR to support multipule instances of barnyard2
+#ARCHIVE_DIR="${SPOOL_DIR}/archive"
+
+# This pulls in the options above
+BARNYARD_OPTS="-D -c ${CONF} -d ${SPOOL_DIR} -w ${WALDO_FILE} -f ${SPOOL_FILE} -l ${LOG_DIR}"
+# Or with an archive directory
+#BARNYARD_OPTS="-D -c ${CONF} -d ${SPOOL_DIR} -w ${WALDO_FILE} -f ${SPOOL_FILE} -l ${LOG_DIR} -a ${ARCHIVE_DIR}"

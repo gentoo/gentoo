@@ -1,0 +1,11 @@
+# Config file for /etc/init.d/podman
+
+# Sets the API service daemon log level
+# valid levels: debug, info, warn, error, fatal or panic
+#LOG_LEVEL="error"
+
+# Sets the API service daemon socket
+#SOCKET="unix:///run/podman/podman.sock"
+
+# Configure the user[:group] the API service daemon will run as
+#RUN_AS_USER="root:root"

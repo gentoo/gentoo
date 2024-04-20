@@ -1,0 +1,13 @@
+diff --git a/config/unix.mak b/config/unix.mak
+index e3af578..927b0fc 100644
+--- a/config/unix.mak
++++ b/config/unix.mak
+@@ -55,7 +55,7 @@ LINK_SW		= -L
+ ifeq ($(CFG),debug)
+ OPTIMIZATION	= -g
+ else
+-OPTIMIZATION	= -O
++OPTIMIZATION	= 
+ endif
+ 
+ #

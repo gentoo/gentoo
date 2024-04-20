@@ -1,0 +1,8 @@
+[Unit]
+Description=Mails anomalies in the system logfiles to the administrator
+
+[Timer]
+OnCalendar=hourly
+
+[Install]
+WantedBy=timers.target

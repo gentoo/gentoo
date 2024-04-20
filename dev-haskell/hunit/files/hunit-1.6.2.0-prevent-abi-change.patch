@@ -1,0 +1,20 @@
+From: hololeap <hololeap@protonmail.com>
+Signed-off-by: hololeap <hololeap@protonmail.com>
+
+When dependencies change (for instance switching from USE=-test to USE=test)
+the ABI hash for the package changes, causing reverse-dependencies to break.
+This keeps the dependencies the same whether tests are enabled or not.
+
+diff -urN HUnit-1.6.2.0/HUnit.cabal HUnit-1.6.2.0-r1/HUnit.cabal
+--- HUnit-1.6.2.0/HUnit.cabal	2022-08-28 14:11:57.178837140 -0600
++++ HUnit-1.6.2.0-r1/HUnit.cabal	2022-08-28 14:12:38.558837160 -0600
+@@ -32,7 +32,8 @@
+   build-depends:
+     base ==4.*,
+     call-stack >=0.3.0,
+-    deepseq
++    deepseq,
++    filepath
+   exposed-modules:
+     Test.HUnit.Base
+     Test.HUnit.Lang

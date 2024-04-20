@@ -1,0 +1,45 @@
+--- darksnow-0.7.1/Makefile.in
++++ darksnow-0.7.1/Makefile.in
+@@ -38,8 +38,8 @@
+ 
+ all: darksnow
+ 
+-darksnow: darksnow.o interface.o config_files.o tooltips.o man_gzip
+-	$(CC) darksnow.o interface.o config_files.o tooltips.o -o darksnow  @GTK_LIBS@ @GTK_CFLAGS@ -DVERSION="\"$(VERSION)\""
++darksnow: darksnow.o interface.o config_files.o tooltips.o
++	$(CC) $(CFLAGS) $(LDFLAGS) -DVERSION="\"$(VERSION)\"" darksnow.o interface.o config_files.o tooltips.o -o darksnow @GTK_LIBS@ @GTK_CFLAGS@
+ 
+ darksnow.o: darksnow.c
+ 	$(CC) $(FUNNY) @GTK_CFLAGS@ -DINTLPREFIX="\"$(INTLPREFIX)\"" -DVERSION="\"$(VERSION)\"" -c darksnow.c -o darksnow.o
+@@ -53,19 +53,15 @@
+ tooltips.o: tooltips.c
+ 	$(CC) $(CFLAGS) $(FUNNY) @GTK_CFLAGS@ -DINTLPREFIX="\"$(INTLPREFIX)\"" -DVERSION="\"$(VERSION)\"" -c tooltips.c -o tooltips.o
+ 
+-man_gzip:
+-	gzip -c man/darksnow.1 > man/darksnow.1.gz 
+-
+ clean:
+-	rm -f *.o *~ darksnow man/darksnow.1.gz
++	rm -f *.o *~ darksnow
+ 	rm -rf slack darksnow.tgz
+ 
+ install: darksnow
+-	$(INSTALL) -D --mode=0755 darksnow $(PREFIX)/bin/darksnow
+-	$(INSTALL) -D --mode=0644 documentation/CHANGES $(PREFIX)/share/darksnow/changelog
+-	$(INSTALL) -D --mode=0644 po/pt_BR.mo $(PREFIX)/share/locale/pt_BR/LC_MESSAGES/darksnow.mo
+-	$(INSTALL) -D --mode=0644 icon/darksnow_icon.png $(PREFIX)/share/icons/hicolor/32x32/apps/darksnow.png
+-	$(INSTALL) -D --mode=0644 man/darksnow.1.gz $(PREFIX)/share/man/man1/darksnow.1.gz
++	$(INSTALL) -D --mode=0755 darksnow $(DESTDIR)$(PREFIX)/bin/darksnow
++	$(INSTALL) -D --mode=0644 po/pt_BR.mo $(DESTDIR)$(PREFIX)/share/locale/pt_BR/LC_MESSAGES/darksnow.mo
++	$(INSTALL) -D --mode=0644 icon/darksnow_icon.png $(DESTDIR)$(PREFIX)/share/icons/hicolor/32x32/apps/darksnow.png
++	$(INSTALL) -D --mode=0644 man/darksnow.1 $(DESTDIR)$(PREFIX)/share/man/man1/darksnow.1
+ 
+ make_pkg: darksnow
+ 	echo "Remember to run this option as root!"
+@@ -89,5 +85,5 @@
+ 	/sbin/upgradepkg darksnow-*-1rd.tgz
+ 
+ dist-clean: clean
+-	rm aclocal.m4 config.status config.log man/darksnow.1.gz Makefile
++	rm aclocal.m4 config.status config.log Makefile
+ 	rm -r autom4te.cache

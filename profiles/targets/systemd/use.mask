@@ -1,0 +1,2 @@
+# People running systemd must use systemd-logind instead, bug #478258
+elogind

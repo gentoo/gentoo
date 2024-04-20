@@ -1,0 +1,10 @@
+--- a/po/POTFILES.in
++++ b/po/POTFILES.in
+@@ -57,6 +57,7 @@
+ smsd/pq.c
+ smsd/smsd.c
+ smsd/sqlite.c
++utils/gnokii-configure.glade
+ utils/mgnokiidev.c
+ xgnokii/xgnokii.c
+ xgnokii/xgnokii_calendar.c

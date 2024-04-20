@@ -1,0 +1,25 @@
+Clang16 will not allow implicit library functions by default
+and therefore this test would fail because the function
+exit() from stdlib.h is used. We need to include stdlib.h
+in this test.
+This patch needs to run _before_ eautoreconf.
+
+Bug: https://bugs.gentoo.org/870535
+PR to merge this upstream: https://github.com/juddmon/jpilot/pull/50
+
+Pascal Jäger <pascal.jaeger@leimstift.de> (2022-12-10)
+
+--- a/configure.in
++++ b/configure.in
+@@ -331,7 +331,10 @@ CFLAGS="$CFLAGS $PILOT_FLAGS"
+ save_LIBS="$LIBS"
+ LIBS="$LIBS $PILOT_LIBS"
+ 
+-AC_TRY_COMPILE([#include <pi-version.h>], [
++AC_TRY_COMPILE([
++#include <stdlib.h>
++#include <pi-version.h>
++], [
+    exit(0);
+ ], ,
+  AC_MSG_ERROR([pilot-link header pi-version.h not found])

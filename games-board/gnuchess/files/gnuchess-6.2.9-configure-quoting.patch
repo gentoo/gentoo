@@ -1,0 +1,33 @@
+From 1081b76df1f5d89a312db5bb16bc0da33f50f6fa Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 2 Feb 2023 06:21:31 +0000
+Subject: [PATCH] configure.ac: Fix autoconf quoting breaking AC_FUNC_MEMCMP
+
+See the linked autoconf bug for details, but the gist is that AC_FUNC_MEMCMP
+ends up lacking the needed includes for string.h if a raw 'if' is used as
+opposed to AS_IF.
+
+Quote properly with AS_IF to allow proper generation of the AC_FUNC_MEMCMP
+test and avoid -Wimplicit-function-declaration (which will be fatal in some
+compilers soon, like Clang 16) in its test.
+
+Bug: https://savannah.gnu.org/support/?110530
+--- a/configure.ac
++++ b/configure.ac
+@@ -35,11 +35,11 @@ AC_ARG_WITH(readline,
+ 	ac_cv_use_readline=yes)
+ 
+ dnl Check for readline library _and_ headers
+-if test x"$ac_cv_use_readline" = "xyes"; then
++AS_IF([test x"$ac_cv_use_readline" = "xyes"], [
+ 	AC_CHECK_LIB(ncurses, tputs)
+ 	AC_CHECK_LIB(readline, readline)
+ 	AC_CHECK_HEADERS(readline/readline.h readline/history.h)
+-fi
++])
+ 
+ dnl Checks for header files.
+ AC_HEADER_STDC
+-- 
+2.39.1
+

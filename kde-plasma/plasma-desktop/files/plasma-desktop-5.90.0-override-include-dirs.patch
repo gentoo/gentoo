@@ -1,0 +1,117 @@
+From 45f2c2ce1fc9d4b2f0d6418a95f04a71337239d4 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 6 Apr 2020 00:41:07 +0200
+Subject: [PATCH] Replace input drivers pkg_check_modules calls with manual
+ targets
+
+All they need is one header each, allow include dir overrides.
+
+Evdev - evdev-properties.h
+XorgLibinput - libinput-properties.h
+XorgServer - xserver-properties.h
+---
+ CMakeLists.txt                   |  8 +-------
+ config-gentoo.cmake              | 22 ++++++++++++++++++++++
+ kcms/mouse/CMakeLists.txt        |  6 ------
+ kcms/touchpad/CMakeLists.txt     |  3 ---
+ kcms/touchpad/backends/x11.cmake |  2 +-
+ 5 files changed, 24 insertions(+), 17 deletions(-)
+ create mode 100644 config-gentoo.cmake
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b8868a130..ea950b050 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -224,16 +224,10 @@ set_package_properties(XCB PROPERTIES TYPE REQUIRED)
+ add_feature_info("XCB-XKB" XCB_XKB_FOUND "Required for building kcm/keyboard")
+ add_feature_info("libxft" X11_Xft_FOUND "X FreeType interface library required for font installation")
+ 
+-pkg_check_modules(XORGLIBINPUT xorg-libinput IMPORTED_TARGET)
+-pkg_check_modules(EVDEV xorg-evdev>=2.8.99.1 IMPORTED_TARGET)
+-pkg_check_modules(XORGSERVER xorg-server IMPORTED_TARGET)
++include(config-gentoo.cmake)
+ 
+ ecm_find_qmlmodule(org.kde.pipewire 0.1)
+ 
+-if(XORGLIBINPUT_FOUND)
+-  set(HAVE_XORGLIBINPUT 1)
+-endif()
+-
+ include(ConfigureChecks.cmake)
+ 
+ find_package(PackageKitQt6)
+diff --git a/config-gentoo.cmake b/config-gentoo.cmake
+new file mode 100644
+index 000000000..0d7353c27
+--- /dev/null
++++ b/config-gentoo.cmake
+@@ -0,0 +1,22 @@
++if(BUILD_KCM_MOUSE_X11)
++    add_library(PkgConfig::XORGLIBINPUT INTERFACE IMPORTED)
++    set_property(TARGET PkgConfig::XORGLIBINPUT PROPERTY
++                INTERFACE_INCLUDE_DIRECTORIES "${XORGLIBINPUT_INCLUDE_DIRS}"
++                )
++
++    add_library(PkgConfig::EVDEV INTERFACE IMPORTED)
++    set_property(TARGET PkgConfig::EVDEV PROPERTY
++                INTERFACE_INCLUDE_DIRECTORIES "${EVDEV_INCLUDE_DIRS}"
++                )
++endif()
++
++if(BUILD_KCM_TOUCHPAD_X11)
++    add_library(PkgConfig::XORGSERVER INTERFACE IMPORTED)
++    set_property(TARGET PkgConfig::XORGSERVER PROPERTY
++                INTERFACE_INCLUDE_DIRECTORIES "${XORGSERVER_INCLUDE_DIRS}"
++                )
++endif()
++
++if(BUILD_KCM_MOUSE_X11 OR BUILD_KCM_TOUCHPAD_X11)
++    set(HAVE_XORGLIBINPUT 1)
++endif()
+diff --git a/kcms/mouse/CMakeLists.txt b/kcms/mouse/CMakeLists.txt
+index 639981380..2c9009061 100644
+--- a/kcms/mouse/CMakeLists.txt
++++ b/kcms/mouse/CMakeLists.txt
+@@ -32,12 +32,6 @@ if (BUILD_KCM_MOUSE_KWIN_WAYLAND)
+ endif()
+ 
+ if (BUILD_KCM_MOUSE_X11)
+-    if (NOT EVDEV_FOUND)
+-        list(APPEND MISSING_DEPS "xorg-evdev")
+-    endif()
+-    if (NOT XORGLIBINPUT_FOUND)
+-        list(APPEND MISSING_DEPS "xorg-libinput")
+-    endif()
+     if (NOT X11_Xi_FOUND)
+         list(APPEND MISSING_DEPS "X11_Xi")
+     endif()
+diff --git a/kcms/touchpad/CMakeLists.txt b/kcms/touchpad/CMakeLists.txt
+index 309cb247d..33b4f8428 100644
+--- a/kcms/touchpad/CMakeLists.txt
++++ b/kcms/touchpad/CMakeLists.txt
+@@ -17,9 +17,6 @@ if (BUILD_KCM_TOUCHPAD_X11)
+     if (NOT X11_Xi_FOUND)
+         list(APPEND MISSING_DEPS "X11_Xi")
+     endif()
+-    if (NOT XORGSERVER_FOUND)
+-        list(APPEND MISSING_DEPS "xorg-server")
+-    endif()
+     if (MISSING_DEPS)
+         message(FATAL_ERROR "Missing X11 dependencies for kcm_touchpad: ${MISSING_DEPS}. Install dependencies or set CMake option -DBUILD_KCM_TOUCHPAD_X11=OFF.")
+     endif()
+diff --git a/kcms/touchpad/backends/x11.cmake b/kcms/touchpad/backends/x11.cmake
+index 88bf0c676..33be94c49 100644
+--- a/kcms/touchpad/backends/x11.cmake
++++ b/kcms/touchpad/backends/x11.cmake
+@@ -10,7 +10,7 @@ SET(backend_SRCS
+     backends/x11/xrecordkeyboardmonitor.cpp
+ )
+ 
+-if (XORGLIBINPUT_FOUND)
++if (HAVE_XORGLIBINPUT)
+ 
+     SET(backend_SRCS
+         ${backend_SRCS}
+-- 
+2.43.0
+

@@ -1,0 +1,36 @@
+https://github.com/irmen/Pyro5/commit/8db91b617dd08508053e54dea2a781749a00ffc8.patch
+https://bugs.gentoo.org/915997
+
+From 8db91b617dd08508053e54dea2a781749a00ffc8 Mon Sep 17 00:00:00 2001
+From: Irmen de Jong <irmen@razorvine.net>
+Date: Sat, 21 Oct 2023 21:48:56 +0200
+Subject: [PATCH] made getGetInterface test work with ipv6 localhost
+
+---
+ tests/test_socketutil.py | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/tests/test_socketutil.py b/tests/test_socketutil.py
+index ef0720d..c9467ae 100644
+--- a/tests/test_socketutil.py
++++ b/tests/test_socketutil.py
+@@ -56,10 +56,15 @@ def testGetIP6(self):
+ 
+     def testGetInterface(self):
+         addr = socketutil.get_interface("localhost")
+-        assert addr.version == 4
+-        assert str(addr).startswith("127.")
+-        assert str(addr.ip).startswith("127.0")
+-        assert str(addr.network).startswith("127.0")
++        if addr.version == 6:
++            assert str(addr).startswith("::1")
++            assert str(addr.ip) == "::1"
++            assert str(addr.network).startswith("::1")
++        else:
++            assert addr.version == 4
++            assert str(addr).startswith("127.")
++            assert str(addr.ip).startswith("127.0")
++            assert str(addr.network).startswith("127.0")
+         if has_ipv6:
+             addr = socketutil.get_interface("::1")
+             assert addr.version == 6

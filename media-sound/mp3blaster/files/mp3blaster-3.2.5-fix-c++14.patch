@@ -1,0 +1,39 @@
+Fix -Wnarrowing failures in C++14 mode
+See also: https://bugs.gentoo.org/show_bug.cgi?id=600158
+
+--- a/mpegsound/huffmantable.cc
++++ b/mpegsound/huffmantable.cc
+@@ -550,11 +550,11 @@
+ 
+ const HUFFMANCODETABLE Mpegtoraw::ht[HTN]=
+ {
+-  { 0, 0-1, 0-1, 0,  0, htd33},
++  { 0, (unsigned int)0-1, (unsigned int)0-1, 0,  0, htd33},
+   { 1, 2-1, 2-1, 0,  7,htd01},
+   { 2, 3-1, 3-1, 0, 17,htd02},
+   { 3, 3-1, 3-1, 0, 17,htd03},
+-  { 4, 0-1, 0-1, 0,  0, htd33},
++  { 4, (unsigned int)0-1, (unsigned int)0-1, 0,  0, htd33},
+   { 5, 4-1, 4-1, 0, 31,htd05},
+   { 6, 4-1, 4-1, 0, 31,htd06},
+   { 7, 6-1, 6-1, 0, 71,htd07},
+@@ -564,7 +564,7 @@
+   {11, 8-1, 8-1, 0,127,htd11},
+   {12, 8-1, 8-1, 0,127,htd12},
+   {13,16-1,16-1, 0,511,htd13},
+-  {14, 0-1, 0-1, 0,  0, htd33},
++  {14, (unsigned int)0-1, (unsigned int)0-1, 0,  0, htd33},
+   {15,16-1,16-1, 0,511,htd15},
+   {16,16-1,16-1, 1,511,htd16},
+   {17,16-1,16-1, 2,511,htd16},
+--- a/nmixer/nmixer.h
++++ b/nmixer/nmixer.h
+@@ -26,7 +26,7 @@
+ 
+ #define MIXER_DEVICE "/dev/mixer"
+ #define MYMIN(x, y) ((x) < (y) ? (x) : (y))
+-#define MYVERSION "<<NMixer "VERSION">>"
++#define MYVERSION "<<NMixer " VERSION ">>"
+ 
+ #define BOTH_CHANNELS 0x11
+ #define RIGHT_CHANNEL 0x10

@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index 78f75f9..ee82dda 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -7,7 +7,7 @@ AC_DEFINE_UNQUOTED(SCIM_TABLES_VERSION, "$PACKAGE_VERSION", [The release version
+ 
+ # Init automake stuff
+ AM_INIT_AUTOMAKE
+-AM_CONFIG_HEADER([config.h])
++AC_CONFIG_HEADERS([config.h])
+ 
+ # Init gettext
+ AM_GNU_GETTEXT([external])

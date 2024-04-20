@@ -1,0 +1,15 @@
+--- a/samples/Makefile.am
++++ b/samples/Makefile.am
+@@ -78,12 +78,10 @@
+ #
+ iodbctest_SOURCES	= iodbctest.c
+ iodbctest_LDADD		= ../iodbc/libiodbc.la
+-iodbctest_LDFLAGS	= -static
+ 
+ iodbctestw_CFLAGS	= -DUNICODE
+ iodbctestw_SOURCES	= iodbctest.c
+ iodbctestw_LDADD	= ../iodbc/libiodbc.la
+-iodbctestw_LDFLAGS	= -static
+ 
+ EXTRA_DIST		= $(srcdir)/Makefile.sample 
+ 

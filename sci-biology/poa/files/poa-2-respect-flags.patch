@@ -1,0 +1,38 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,3 @@
+-
+-AR=ar rc
+-
+ TARGETS=poa liblpo.a poa_doc libbflag.a
+ 
+ # align_score.c CAN BE USED TO ADD CUSTOMIZED SCORING FUNCTIONS
+@@ -26,9 +23,8 @@
+ 	stringptr.o
+ 
+ 
+-CC = gcc
+ #CFLAGS= -g -ansi-strict -W -Wall -DUSE_WEIGHTED_LINKS -DUSE_PROJECT_HEADER -I.
+-CFLAGS= -g -DUSE_WEIGHTED_LINKS -DUSE_PROJECT_HEADER -I.
++CPPFLAGS+= -DUSE_WEIGHTED_LINKS -DUSE_PROJECT_HEADER -I.
+ # -I$(HOME)/lib/include
+ # -DREPORT_MAX_ALLOC
+ 
+@@ -37,14 +33,14 @@
+ 
+ liblpo.a: $(LIBOBJECTS)
+ 	rm -f $@
+-	$(AR) $@ $(LIBOBJECTS)
+-	ranlib $@
++	$(AR) rc $@ $(LIBOBJECTS)
++	$(RANLIB) $@
+ 
+ 
+ 
+ # NB: LIBRARY MUST FOLLOW OBJECTS OR LINK FAILS WITH UNRESOLVED REFERENCES!!
+ poa: $(OBJECTS) liblpo.a
+-	$(CC) -o $@ $(OBJECTS) -lm liblpo.a
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJECTS) -lm liblpo.a
+ 
+ what:
+ 	@echo poa: partial-order based sequence alignment program

@@ -1,0 +1,10 @@
+Author: Matteo Bini <matteobin@tiepi.it>
+Description: Fix ftbfs with GCC-13
+Forwarded: https://github.com/alexkay/spek/commit/b1600d9926fa434330171cbebb407d2d0ccdcf03
+--- a/tests/perf.cc
++++ b/tests/perf.cc
+@@ -1,3 +1,4 @@
++#include <cstdint>
+ #include <cstdlib>
+ #include <iostream>
+ #include <fstream>

@@ -1,0 +1,22 @@
+From ecc07dc4f10c2b75e108d8fa7de31324d0e05659 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Wed, 4 Jan 2023 19:17:32 +0100
+Subject: [PATCH] pkg-config: Fix include directory
+
+---
+ freeverb3-3.pc.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/freeverb3-3.pc.in b/freeverb3-3.pc.in
+index 8bbfda0..2403467 100644
+--- a/freeverb3-3.pc.in
++++ b/freeverb3-3.pc.in
+@@ -8,4 +8,4 @@ Description: A library for processing audio effect (reverb, impulse response ...
+ Requires: 
+ Version: @VERSION@
+ Libs: @fftw3f_LIBS@ @fftw3_LIBS@ @fftw3l_LIBS@ -L${libdir} -lfreeverb3
+-Cflags: -I${includedir}/libfreeverb3-2 -I${includedir}/libsamplerate2 @fftw3f_CFLAGS@ @fftw3_CFLAGS@ @fftw3l_CFLAGS@
++Cflags: -I${includedir}/libfreeverb3-3 -I${includedir}/libsamplerate2 @fftw3f_CFLAGS@ @fftw3_CFLAGS@ @fftw3l_CFLAGS@
+-- 
+2.39.0
+

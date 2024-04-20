@@ -1,0 +1,12 @@
+--- a/configure.in
++++ b/configure.in
+@@ -94,6 +94,9 @@ dnl statement.
+ 
+ AC_CANONICAL_SYSTEM
+ 
++dnl Needed for ptsname and friends.
++AC_USE_SYSTEM_EXTENSIONS
++
+ dnl In early versions of Solaris, some libraries are in /usr/ccs/lib,
+ dnl where gcc doesn't look. The tests below for the curses library
+ dnl would thus fail without this directory being added to the search

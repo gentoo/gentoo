@@ -1,0 +1,52 @@
+From 962a66aa12932c7899cda78c4cbda0f581947285 Mon Sep 17 00:00:00 2001
+From: germ <germtoo@outlook.com>
+Date: Mon, 30 Oct 2023 06:16:16 -0400
+Subject: [PATCH 1/1] This applies two apatches to sys-apps/accountsserice
+ https://gitlab.alpinelinux.org/alpine/aports/-/raw/75528d8dc4206a74501799f6a6042be20b80801d/community/accountsservice/musl-fgetspent_r.patch
+ https://gitlab.alpinelinux.org/alpine/aports/-/raw/75528d8dc4206a74501799f6a6042be20b80801d/community/accountsservice/musl-wtmp.patch
+
+--- a/meson.build
++++ b/meson.build
+@@ -103,8 +103,7 @@ elif cc.has_header_symbol('paths.h', '_PATH_WTMPX')
+ 
+   config_h.set('PATH_WTMP', '_PATH_WTMPX')
+ else
+-  path_wtmp = '/var/log/utx.log'
+-  assert(run_command('test', '-e', path_wtmp, check: false).returncode() == 0, 'Do not know which filename to watch for wtmp changes')
++  path_wtmp = '/var/log/wtmp'
+   config_h.set_quoted('PATH_WTMP', path_wtmp)
+ endif
+ 
+--- a/src/daemon.c
++++ b/src/daemon.c
+@@ -215,6 +215,27 @@ remove_cache_files (const gchar *user_name)
+         g_remove (icon_filename);
+ }
+ 
++#ifndef __GLIBC__
++/* Musl libc does not support fgetspent_r(), write own
++* wrapper
++*/
++static int fgetspent_r(FILE *fp, struct spwd *spbuf, char *buf, size_t buflen, struct spwd **spbufp) {
++        struct spwd *shadow_entry = fgetspent(fp);
++        if(!shadow_entry)
++        return -1;
++        size_t namplen = strlen(shadow_entry->sp_namp);
++        size_t pwdplen = strlen(shadow_entry->sp_pwdp);
++
++        if(namplen + pwdplen + 2 > buflen)
++                return -1;
++        *spbufp = memcpy(spbuf, shadow_entry, sizeof(struct spwd));
++        spbuf->sp_namp = strncpy(buf, shadow_entry->sp_namp, namplen + 1);
++        spbuf->sp_pwdp = strncpy(buf + namplen + 1, shadow_entry->sp_pwdp, pwdplen + 1);
++
++        return 0;
++}
++#endif
++
+ static struct passwd *
+ entry_generator_fgetpwent (Daemon       *daemon,
+                            GHashTable   *users,
+-- 
+2.42.0
+

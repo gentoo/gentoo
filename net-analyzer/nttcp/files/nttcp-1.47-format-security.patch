@@ -1,0 +1,132 @@
+--- a/nttcp.c
++++ b/nttcp.c
+@@ -372,7 +372,7 @@
+ #define Message(x)	fMessage(stdout, x)
+ 
+ void Exit(char *s, int ret) {
+-    syslog(LOG_DEBUG, s);
++    syslog(LOG_DEBUG, "%s\n", s);
+     fMessage(stderr,s);
+     exit(ret);
+ }
+@@ -694,7 +694,7 @@
+     register int cnt;
+     if (opt.udp) {
+ 	struct sockaddr_in from;
+-	int len= sizeof(from);
++	socklen_t len= sizeof(from);
+ 	 cnt= recvfrom(fd, buf, count, 0, (struct sockaddr *)&from, &len);
+ 	 SysCalls++;
+     }
+@@ -1150,8 +1150,8 @@
+ int main(int argc, char *argv[]) {
+ 
+     struct sockaddr_in PeerAddr;
+-    int  PeerAddrLeng;
+-    char *DataPortFormat= "dataport: %d\n";
++    socklen_t  PeerAddrLeng;
++    const char DataPortFormat[]= "dataport: %d\n";
+     int DataPort;
+     struct sockaddr_in sinlh;	/* for control socket on local host */
+     int  fd;	     		/* data socket to transport the data */
+@@ -1184,7 +1184,8 @@
+     } 
+     if (opt.inetd) {
+     	/* we simulate inetd behaviour */
+-	int nsrv, srv, fromleng;
++	int nsrv, srv;
++	socklen_t fromleng;
+ 	struct sockaddr_in sinsrv;
+ 	struct sockaddr_in frominet;
+ 	if (opt.Verbose) {
+@@ -1285,7 +1286,7 @@
+ 	    Exit(MsgBuf, 2);
+ 	}
+ 	if (OptionLine[sizeof(OptionLine)-1] != '\0') {
+-	    sprintf(MsgBuf, "%s: optionline longer than %d\n",
++	    sprintf(MsgBuf, "%s: optionline longer than %zd\n",
+ 	      myname, sizeof(OptionLine)-1);
+ 	    Exit(MsgBuf, 3);
+ 	}
+@@ -1308,7 +1309,7 @@
+     	Peer[PeerCount].fin= stdin;
+     	Peer[PeerCount].fout= stdout;
+ 	syslog(LOG_DEBUG,
+-	  "call from %.50 (=%.30s): done remote initial processing\n",
++	  "call from %.50s (=%.30s): done remote initial processing\n",
+ 	  Peer[PeerCount].HostName, Peer[PeerCount].IPName);
+ 	PeerCount++;
+     }
+@@ -1617,7 +1618,7 @@
+ 	sinlh.sin_family = AF_INET;
+ #if defined(MULTICAST)
+ 	if (opt.MulticastChannel) {
+-	    int ml, p, join_group;
++	    int p, join_group;
+ 	    struct ip_mreq mreq;
+ 	    sinlh.sin_port = htons(opt.MulticastPort);
+ 	    if (bind(fd, (struct sockaddr *)&sinlh, sizeof(sinlh)) < 0) {
+@@ -1640,7 +1641,6 @@
+ 		sprintf(MsgBuf, DataPortFormat, DEFAULT_PORT);
+ 
+ 	    /* tell it our clients */
+-	    ml= strlen(MsgBuf);
+ 	    for (p=0; p<PeerCount; p++) {
+ 	    	fputs(MsgBuf, Peer[p].fout);
+ 		fflush(Peer[p].fout);
+@@ -1683,7 +1683,7 @@
+ 	}
+ 	else { /* == TCP */
+ 	    struct sockaddr_in frominet;
+-	    int fromleng;
++	    socklen_t fromleng;
+ 	    fromleng = sizeof(frominet);
+ 	    memset(&frominet, 0, fromleng);
+ 	    AlarmMsg= "accept timed out\n";
+@@ -1694,7 +1694,7 @@
+ 	    SetItVal(0);
+ 	    if (opt.Verbose) {
+ 		struct sockaddr_in peer;
+-		int peerlen = sizeof(peer);
++		socklen_t peerlen = sizeof(peer);
+ 		if (getpeername(fd, (struct sockaddr *)&peer, &peerlen) < 0)
+ 		    exitError("getpeername", 19);
+ 		sprintf(MsgBuf,
+@@ -1732,7 +1732,7 @@
+ 
+     /* print window sizes */
+     if (opt.Verbose) {
+-	int optlen;
++	socklen_t optlen;
+ 	int WinSize;
+ 
+ 	optlen= sizeof(WinSize);
+@@ -1899,8 +1899,8 @@
+ 	 * rcr		real call reate in Calls/s	(float)
+ 	 * ccr		cpu call rate in Calls/s	(float)
+ 	 */
+-	char *iFormat= "%*.*ld";
+-	char *fFormat= "%*.*f";
++	const char iFormat[]= "%*.*ld";
++	const char fFormat[]= "%*.*f";
+ 	char *fs;
+ 	LenStr *TitleLine, *StatLine;
+ 
+@@ -2002,7 +2002,7 @@
+ 		fs+= 2;
+ 	    }
+ 	    else if (*fs == 'l') {
+-		sprintf(MsgBuf, iFormat, fw, fp, opt.BufLen);
++		sprintf(MsgBuf, iFormat, fw, fp, (long int)opt.BufLen);
+ 		TitleStr= "BufLen";
+ 		fs++;
+ 	    }
+@@ -2017,7 +2017,7 @@
+ 		fs++;
+ 	    }
+ 	    else if (*fs == 'c') {
+-		sprintf(MsgBuf, iFormat, fw, fp, SysCalls);
++		sprintf(MsgBuf, iFormat, fw, fp, (long int)SysCalls);
+ 		TitleStr= "Calls";
+ 		fs++;
+ 	    }

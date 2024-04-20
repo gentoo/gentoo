@@ -1,0 +1,23 @@
+--- a/checks/net_hsi_outbound_errors/definitions
++++ b/checks/net_hsi_outbound_errors/definitions
+@@ -9,7 +9,7 @@
+ default = "1"
+ 
+ [sysinfo ifconfig]
+-program = "/sbin/ifconfig"
++program = "/bin/ifconfig"
+ 
+ [exception slow_hsi_receivers]
+ severity = medium
+
+--- a/checks/net_inbound_errors/definitions
++++ b/checks/net_inbound_errors/definitions
+@@ -11,7 +11,7 @@
+ # The above value in percentage
+ 
+ [sysinfo ifconfig]
+-program = "/sbin/ifconfig"
++program = "/bin/ifconfig"
+ 
+ [exception limits_exceeded]
+ severity = medium

@@ -1,0 +1,11 @@
+--- a/Makefile	2022-12-19 22:20:07.216304664 +0100
++++ b/Makefile	2022-12-19 22:20:54.876555007 +0100
+@@ -185,7 +185,7 @@
+ 	$(GPRBUILD) -p $(GPROPTS) $(GPR_STATIC) tools/tools.gpr
+ 
+ build-lib-native:
+-	$(GPRBUILD) -p $(GPROPTS) aws.gpr
++	$(GPRBUILD) -p $(GPROPTS) $(GPR_STATIC) aws.gpr
+ ifeq (${ENABLE_SHARED}, true)
+ 	$(GPRBUILD) -p $(GPROPTS) $(GPR_SHARED) aws.gpr
+ endif

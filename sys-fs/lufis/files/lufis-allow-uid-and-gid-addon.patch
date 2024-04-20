@@ -1,0 +1,29 @@
+--- lufis-0.3.orig/lufis.c	2005-02-05 18:59:56.000000000 +0100
++++ lufis-0.3/lufis.c	2005-02-05 19:00:38.000000000 +0100
+@@ -276,15 +276,21 @@ static int lu_getattr(const char *path, 
+     if(res < 0)
+         return res;
+ 
+-    /* Take uid= and gid= vars when the filesystem returns 1 */
++    // Take uid= and gid= vars when the filesystem returns 1
+     if(fattr.f_uid == (uid_t) 1) {
+-        lu_opt_getint(&lu_cfg, "MOUNT", "uid", &option_uid, 0);
+-        fattr.f_uid = (uid_t) option_uid;
++        if(!lu_opt_getint(&lu_cfg, "MOUNT", "uid", &option_uid, 0))
++		fattr.f_uid = (uid_t) option_uid;
++	else
++		// default to 0 (root) when no argument was supplied
++		fattr.f_uid = (uid_t) 0;
+     }
+ 
+     if(fattr.f_gid == (gid_t) 1) {
+-        lu_opt_getint(&lu_cfg, "MOUNT", "gid", &option_gid, 0);
+-        fattr.f_gid = (gid_t) option_gid;
++        if(!lu_opt_getint(&lu_cfg, "MOUNT", "gid", &option_gid, 0))
++		fattr.f_gid = (gid_t) option_gid;
++	else
++		// default to 0 (root) when no argument was supplied
++		fattr.f_gid = (gid_t) 0;
+     }
+ 
+     stbuf->st_mode    = fattr.f_mode;

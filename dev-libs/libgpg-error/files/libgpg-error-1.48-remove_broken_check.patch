@@ -1,0 +1,20 @@
+This breaks our multilib builds:
+
+  Confirm gpg-error-config works... no
+  ***  Please report to <https://bugs.gnupg.org> with gpg-error-config-test.log
+
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -318,12 +318,4 @@ gpgrt.h: gpg-error.h
+ 	cp gpg-error.h gpgrt.h
+ 
+ gpg-error-config: gpgrt-config gpg-error-config-old gpg-error-config-test.sh
+-	@echo $(ECHO_N) "Confirm gpg-error-config works... $(ECHO_C)"
+-	@if ./gpg-error-config-test.sh --old-new; then \
+-	  echo "good";                                         \
+-	else                                                   \
+-	  echo "no";                                           \
+-	  echo "***  Please report to <https://bugs.gnupg.org> with gpg-error-config-test.log"; \
+-	  exit 1; \
+-	fi
+ 	cp gpg-error-config-old $@

@@ -1,0 +1,17 @@
+Description: Fix FTBS with VDR >=2.3.5
+Origin: http://www.minidvblinux.de/git/?a=commit&p=vdr-plugin-scheduler&h=25981073415e8c74dd5ebe3f7d9d9a9407665f6a
+Author: Andreas McPherson <megax@minidvblinux.de>
+--- a/task.h
++++ b/task.h
+@@ -94,6 +94,11 @@
+ 
+ 
+  public:
++   cTask& operator= (const cTask &Task)
++   {
++     return *this;
++   };
++
+   cTask(void);
+   cTask(const char* Name, const char* Cmd, int AnnounceMode = 0);
+ 

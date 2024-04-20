@@ -1,0 +1,39 @@
+--- a/charsets/Makefile.in
++++ b/charsets/Makefile.in
+@@ -28,13 +28,13 @@
+ 
+ all: @charsetcheck@
+ clean:
+-install: install-dirs install-spc install-charsets
+-install-spc: tex.spc ascii.spc tex.rpl ascii.rpl
++install: install-spc install-charsets
++install-spc: install-dirs tex.spc ascii.spc tex.rpl ascii.rpl
+ 	    $(INSTALL) -m 644 ascii.spc $(installroot)$(LIB_DIR)/ascii$(SPEC_EXT) 
+ 	    $(INSTALL) -m 644 tex.spc $(installroot)$(LIB_DIR)/tex$(SPEC_EXT) 
+ 	    $(INSTALL) -m 644 ascii.rpl $(installroot)$(LIB_DIR)/ascii$(REPL_EXT)
+ 	    $(INSTALL) -m 644 tex.rpl $(installroot)$(LIB_DIR)/tex$(REPL_EXT)
+-install-charsets:
++install-charsets: install-dirs
+ 	for i in *.txt; do\
+ 	   $(INSTALL) -m 0644 $$i $(installroot)$(LIB_DIR);\
+ 	done
+--- a/doc/Makefile.in
++++ b/doc/Makefile.in
+@@ -29,13 +29,13 @@
+             xls2csv.txt xls2csv.ps \
+             wordview.txt wordview.ps build
+ install: @installtargets@
+-install-catdoc: catdoc.1 xls2csv.1 catppt.1
+-	../mkinstalldirs $(installroot)$(mandir)
++install-dirs:
++	../mkinstalldirs $(installroot)$(mandir)/man1
++install-catdoc: install-dirs catdoc.1 xls2csv.1 catppt.1
+ 	$(INSTALL) -m 644 catdoc.1 $(installroot)$(mandir)/man1/catdoc.1
+ 	$(INSTALL) -m 644 xls2csv.1 $(installroot)$(mandir)/man1/xls2csv.1
+ 	$(INSTALL) -m 644 catppt.1 $(installroot)$(mandir)/man1/catppt.1
+-install-wordview:	
+-	../mkinstalldirs $(installroot)$(mandir)
++install-wordview: install-dirs
+ 	$(INSTALL) -m 644 wordview.1 $(installroot)$(mandir)/man1/wordview.1
+ distclean: clean
+ 	$(RM)  Makefile catdoc.1 xls2csv.1 catppt.1 wordview.1

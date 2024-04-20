@@ -1,0 +1,33 @@
+Clang16 will not allow implicit function declarations by default.
+This patch overhauls the source to make it build with clang16 defaults.
+
+This patch was sent upstream via mail.
+Bug: https://bugs.gentoo.org/874012
+
+# Pascal Jäger <pascal.jaeger@leimstift.de> (2022-11-23)
+
+--- a/http.c
++++ b/http.c
+@@ -2,6 +2,7 @@
+ 
+ #include <config.h>
+ 
++#include <ctype.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+--- a/util.c
++++ b/util.c
+@@ -33,8 +33,11 @@
+ #include <errno.h>
+ #include <time.h>
+ #include <libgen.h>
+-#include "url.h"
++#include "ftp.h"
++#include "gopher.h"
++#include "http.h"
+ #include "options.h"
++#include "url.h"
+ 
+ 
+ char output_buf[BUFSIZ];

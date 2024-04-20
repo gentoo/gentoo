@@ -1,0 +1,15 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -117,12 +117,6 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${SIDX_BUILD_OUTPUT_DIRECTORY})
+ # Platform and compiler specific settings
+ #------------------------------------------------------------------------------
+
+-if(NOT WIN32)
+-  # Recommended C++ compilation flags
+-  set(SIDX_COMMON_CXX_FLAGS
+-    "-pedantic -Wall -Wpointer-arith -Wcast-align -Wcast-qual  -Wredundant-decls -Wno-long-long")
+-endif(NOT WIN32)
+-
+ if (APPLE)
+   set(SO_EXT dylib)
+   set(CMAKE_FIND_FRAMEWORK "LAST")

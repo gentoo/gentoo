@@ -1,0 +1,22 @@
+--- a/build.sh
++++ b/build.sh
+@@ -44,8 +44,8 @@
+ #
+ # Try to find wish8.3, tclsh8.3 and openssl
+ #
+-WISH=`FIND "$WISH" "" wish8.4 wish8.3 wish`
+-TCLSH=`FIND "$TCLSH" "" tclsh8.4 tclsh8.3 tclsh`
++WISH=`FIND "$WISH" "" wish wish8.4 wish8.3`
++TCLSH=`FIND "$TCLSH" "" tclsh tclsh8.4 tclsh8.3`
+ OPENSSL=`FIND "$OPENSSL" "$OPENSSL_SEARCH_PATH" openssl ssl`
+ 
+ #
+@@ -88,7 +88,7 @@
+ if test "$USE_OPENSSL" = "true" -a -x "$OPENSSL"
+ then
+   echo "Found OpenSSL program: $OPENSSL"
+-  ENC=`$OPENSSL list-cipher-commands|sort|egrep "^($ENC)\$"|head -1`
++  ENC=`$OPENSSL list-cipher-commands|sort|egrep "^($ENC)\$"|head -n 1`
+   if test -z "$ENC"
+   then
+     echo "Could not find a suitable encryption algorithm."

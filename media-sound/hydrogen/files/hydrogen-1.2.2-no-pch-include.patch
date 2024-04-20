@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/922034
+--- a/src/gui/src/Widgets/FileDialog.h
++++ b/src/gui/src/Widgets/FileDialog.h
+@@ -23,6 +23,7 @@
+ #define FILEDIALOG_H
+ 
+ #include <QDialog>
++#include <QFileDialog>
+ #include <core/Object.h>
+ 
+ /** Custom file dialog checking whether the user has write access to

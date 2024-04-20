@@ -1,0 +1,16 @@
+Tests run against static library (upstream build system):
+We build main as both shared & static, main10 & 12 are static only and linked into main.
+All need PLATFORM_LIBS, so instruct cmake to also link them.
+
+Index: source/CMakeLists.txt
+===================================================================
+--- source.orig/CMakeLists.txt
++++ source/CMakeLists.txt
+@@ -578,6 +578,7 @@ endif()
+ if(SVTHEVC_FOUND)
+     target_link_libraries(x265-static ${SVT_HEVC_LIBRARY})
+ endif()
++target_link_libraries(x265-static ${PLATFORM_LIBS})
+ install(TARGETS x265-static
+     LIBRARY DESTINATION ${LIB_INSTALL_DIR}
+     ARCHIVE DESTINATION ${LIB_INSTALL_DIR})

@@ -1,0 +1,22 @@
+From: Carlos Henrique Lima Melara <charlesmelara@outlook.com>
+Subject: Update the appdata file to comply with the new standard
+Last-Update: 2020-06-27
+
+--- a/mcu8051ide.appdata.xml
++++ b/mcu8051ide.appdata.xml
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <!-- Copyright 2014 Martin Ošmera <martin.osmera@moravia-microsystems.com> -->
+-<application>
+- <id type="desktop">mcu8051ide.desktop</id>
++<component type="desktop-application">
++ <id>mcu8051ide.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <name>MCU 8051 IDE</name>
+@@ -19,4 +19,4 @@
+  <url type="homepage">https://sourceforge.net/projects/mcu8051ide/</url>
+  <updatecontact>martin.osmera@gmail.com</updatecontact>
+  <project_group>Development</project_group>
+-</application>
++</component>

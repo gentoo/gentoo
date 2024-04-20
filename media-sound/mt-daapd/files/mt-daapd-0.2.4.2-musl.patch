@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/716010
+--- a/src/mp3-scanner.c
++++ b/src/mp3-scanner.c
+@@ -378,7 +378,7 @@ int scan_init(char *path) {
+  */
+ int scan_path(char *path) {
+     DIR *current_dir;
+-    char de[sizeof(struct dirent) + MAXNAMLEN + 1]; /* overcommit for solaris */
++    char de[sizeof(struct dirent) + NAME_MAX + 1]; /* overcommit for solaris */
+     struct dirent *pde;
+     int err;
+     char mp3_path[PATH_MAX];
+--- a/src/webserver.c
++++ b/src/webserver.c
+@@ -1029,14 +1029,14 @@ int ws_returnerror(WS_CONNINFO *pwsc,int error, char *description) {
+  * and serves it up
+  */
+ void ws_defaulthandler(WS_PRIVATE *pwsp, WS_CONNINFO *pwsc) {
+-    char path[MAXPATHLEN];
+-    char resolved_path[MAXPATHLEN];
++    char path[PATH_MAX];
++    char resolved_path[PATH_MAX];
+     int file_fd;
+     off_t len;
+ 
+     DPRINTF(E_SPAM,L_WS,"Entering ws_defaulthandler\n");
+ 
+-    snprintf(path,MAXPATHLEN,"%s/%s",pwsp->wsconfig.web_root,pwsc->uri);
++    snprintf(path,PATH_MAX,"%s/%s",pwsp->wsconfig.web_root,pwsc->uri);
+     if(!realpath(path,resolved_path)) {
+         pwsc->error=errno;
+         DPRINTF(E_WARN,L_WS,"Exiting ws_defaulthandler: Cannot resolve %s\n",path);

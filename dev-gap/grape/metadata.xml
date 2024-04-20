@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+  <maintainer type="person">
+    <email>frp.bissey@gmail.com</email>
+    <name>François Bissey</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    GRAPE is a package for computing with graphs and groups, and is
+    primarily designed for constructing and analysing graphs related to
+    groups, finite geometries, and designs.
+  </longdescription>
+  <use>
+    <flag name="bliss">
+      Use <pkg>sci-libs/bliss</pkg> instead of
+      <pkg>sci-mathematics/nauty</pkg> as the backend.
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="github">gap-packages/grape</remote-id>
+  </upstream>
+</pkgmetadata>

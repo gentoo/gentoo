@@ -1,0 +1,27 @@
+--- a/configure.in
++++ b/configure.in
+@@ -467,6 +467,7 @@
+      AC_DEFINE(HAVE_REMOTE_ADMIN)
+ fi
+ 
++PKG_CHECK_MODULES(ncurses,ncurses)
+ 
+ dnl Curses detection: Munged from Midnight Commander's configure.in
+ dnl
+@@ -616,6 +617,16 @@
+ 		AC_DEFINE(USE_NCURSES)
+ 		AC_DEFINE(HAS_CURSES)
+ 		has_curses=true
++	  else
++		if test "$ncurses_LIBS" ; then
++			CURSES_LIBS="$ncurses_LIBS"
++			CURSES_INCLUDEDIR="$ncurses_CFLAGS"
++			search_ncurses=false
++			screen_manager="ncurses"
++			AC_DEFINE(USE_NCURSES)
++			AC_DEFINE(HAS_CURSES)
++			has_curses=true
++		fi
+ 	  fi
+ 	)
+ 

@@ -1,0 +1,48 @@
+Index: sidplay-2.0.9/configure
+===================================================================
+--- sidplay-2.0.9.orig/configure
++++ sidplay-2.0.9/configure
+@@ -19985,11 +19985,11 @@ _ACEOF
+ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+-#include <new.h>
++#include <new>
+ int
+ main ()
+ {
+-char* buf = new(nothrow) char[1024];
++char* buf = new(std::nothrow) char[1024];
+   ;
+   return 0;
+ }
+@@ -20052,11 +20052,11 @@ _ACEOF
+ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+-#include <fstream.h>
++#include <fstream>
+ int
+ main ()
+ {
+-ifstream myTest(ios::in|ios::binary);
++std::ifstream myTest("test.txt", std::ios::in|std::ios::binary);
+   ;
+   return 0;
+ }
+@@ -20118,12 +20118,12 @@ _ACEOF
+ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+-#include <fstream.h>
+-             #include <iomanip.h>
++#include <fstream>
++             #include <iomanip>
+ int
+ main ()
+ {
+-ios::openmode myTest = ios::in;
++std::ios::openmode myTest = std::ios::in;
+   ;
+   return 0;
+ }

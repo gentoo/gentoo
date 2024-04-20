@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index 1330d3f27..c76dba26f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1552,7 +1552,7 @@ AS_IF([test -n "$GCC"], [
+         AS_IF([test "x$with_optim" != x], [
+             OPTIM="$with_optim $OPTIM"
+         ], [
+-            OPTIM="-Os $OPTIM"
++            OPTIM="$OPTIM"
+         ])
+     ])
+ 

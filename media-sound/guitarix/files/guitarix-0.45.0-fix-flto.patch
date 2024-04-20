@@ -1,0 +1,11 @@
+--- a/waftools/cpu_optimization.py
++++ b/waftools/cpu_optimization.py
+@@ -168,7 +168,7 @@ def configure(conf):
+             conf.env['OPT'] = False
+             cpu_model = append_optimization_flags(conf, cxxflags)
+ 
+-    if '-flto' in cxxflags:
++    if any(x.startswith('-flto') for x in cxxflags):
+         conf.env['LTO'] = True
+         cxxflags.append ("-ffat-lto-objects")
+ 

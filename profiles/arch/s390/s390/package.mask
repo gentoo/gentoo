@@ -1,0 +1,6 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-03-20)
+# sys-libs/libunwind doesn't work on s390
+sys-libs/libunwind

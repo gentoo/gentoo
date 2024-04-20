@@ -1,0 +1,12 @@
+--- a/py/mkrules.mk	2021-10-25 12:30:13.723695503 -0000
++++ b/py/mkrules.mk	2021-10-25 12:30:18.460327366 -0000
+@@ -198,9 +198,6 @@
+ # Do not pass COPT here - it's *C* compiler optimizations. For example,
+ # we may want to compile using Thumb, but link with non-Thumb libc.
+ 	$(Q)$(CC) -o $@ $^ $(LIB) $(LDFLAGS)
+-ifndef DEBUG
+-	$(Q)$(STRIP) $(STRIPFLAGS_EXTRA) $@
+-endif
+ 	$(Q)$(SIZE) $$(find $(BUILD) -path "$(BUILD)/build/frozen*.o") $@
+ 
+ clean: clean-prog

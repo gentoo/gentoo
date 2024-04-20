@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="ssl">Enable HTTPS support.</flag>
+		<flag name="gnutls">Use gnutls library for HTTPS support (openssl is the default library for HTTPS support).</flag>
+	</use>
+	<upstream>
+		<changelog>https://lynx.invisible-island.net/current/CHANGES.html</changelog>
+		<remote-id type="github">ThomasDickey/lynx-snapshots</remote-id>
+	</upstream>
+</pkgmetadata>

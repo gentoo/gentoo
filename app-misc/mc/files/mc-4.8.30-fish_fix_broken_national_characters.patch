@@ -1,0 +1,40 @@
+--- a/src/vfs/fish/fish.c
++++ b/src/vfs/fish/fish.c
+@@ -647,7 +647,7 @@ fish_open_archive_int (struct vfs_class *me, struct vfs_s_super *super)
+     /* Set up remote locale to C, otherwise dates cannot be recognized */
+     if (fish_command
+         (me, super, WAIT_REPLY,
+-         "LANG=C LC_ALL=C LC_TIME=C; export LANG LC_ALL LC_TIME;\n" "echo '### 200'\n",
++         "LANG=C.UTF-8 LC_ALL=C.UTF-8 LC_TIME=C.UTF-8; export LANG LC_ALL LC_TIME;\n" "echo '### 200'\n",
+          -1) != COMPLETE)
+         ERRNOR (E_PROTO, -1);
+ 
+--- a/src/vfs/fish/fishdef.h
++++ b/src/vfs/fish/fishdef.h
+@@ -12,7 +12,7 @@
+ /* default 'ls' script */
+ #define FISH_LS_DEF_CONTENT ""                                            \
+ "#LIST /${FISH_FILENAME}\n"                                               \
+-"export LC_TIME=C\n"                                                      \
++"export LC_TIME=C.UTF-8\n"                                                \
+ "ls -Qlan \"/${FISH_FILENAME}\" 2>/dev/null | grep '^[^cbt]' | (\n"       \
+ "while read p l u g s m d y n; do\n"                                      \
+ "    echo \"P$p $u.$g\"\n"                                                \
+@@ -129,7 +129,7 @@
+ 
+ /* default 'retr'  script */
+ #define FISH_GET_DEF_CONTENT ""                                                 \
+-"export LC_TIME=C\n"                                                            \
++"export LC_TIME=C.UTF-8\n"                                                      \
+ "#RETR $FISH_FILENAME\n"                                                        \
+ "if dd if=\"/${FISH_FILENAME}\" of=/dev/null bs=1 count=1 2>/dev/null ; then\n" \
+ "    ls -ln \"/${FISH_FILENAME}\" 2>/dev/null | (\n"                            \
+@@ -181,7 +181,7 @@
+ 
+ /* default 'info'  script */
+ #define FISH_INFO_DEF_CONTENT ""                                          \
+-"export LC_TIME=C\n"                                                      \
++"export LC_TIME=C.UTF-8\n"                                                \
+ "#FISH_HAVE_HEAD         1\n"                                             \
+ "#FISH_HAVE_SED          2\n"                                             \
+ "#FISH_HAVE_AWK          4\n"                                             \

@@ -1,0 +1,24 @@
+https://github.com/net-snmp/net-snmp/pull/493
+
+From 6b70bd4ffa7a905700807eecd3e07a472e2eda55 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 2 Dec 2022 02:31:15 +0000
+Subject: [PATCH 4/4] Search for -ltinfo in configure if needed
+
+Gentoo has been carrying this patch for a while.
+
+Bug: https://bugs.gentoo.org/883945
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.d/config_os_libs2
++++ b/configure.d/config_os_libs2
+@@ -774,6 +774,7 @@ NETSNMP_SEARCH_LIBS([endwin], [curses ncurses], [
+   [HAVE_LIBCURSES=FALSE],,
+   [LIBCURSES])
+ AC_SUBST([HAVE_LIBCURSES])
++NETSNMP_SEARCH_LIBS([cbreak], [tinfo],[LIBCURSES="$LIBCURSES -ltinfo"],,,)
+ AC_SUBST([LIBCURSES])
+ 
+ #   libm for ceil
+-- 
+2.38.1
+

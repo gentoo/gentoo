@@ -1,0 +1,12 @@
+--- a/aufile.c
++++ b/aufile.c
+@@ -217,8 +217,7 @@
+ audio_open(int samp_rate,int disp)
+ {
+  int i;
+-// esd_fd = open(dev_file, O_WRONLY | O_NDELAY);
+- esd_fd = open(audio_dsp, O_WRONLY);
++ esd_fd = open(audio_dsp, O_WRONLY | O_NDELAY);
+  if (esd_fd < 0)
+   {
+    if (disp) perror(audio_dsp);

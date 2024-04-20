@@ -1,0 +1,26 @@
+ https://bugs.gentoo.org/424673
+
+ src/lib/util.cc                     | 1 +
+ src/watch_maildirs/inotify/state.cc | 1 +
+ 2 files changed, 2 insertions(+)
+
+--- a/src/lib/util.cc
++++ b/src/lib/util.cc
+@@ -6,6 +6,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <time.h>
++#include <unistd.h>
+ 
+ #include <sstream>
+ #include <string>
+--- a/src/watch_maildirs/inotify/state.cc
++++ b/src/watch_maildirs/inotify/state.cc
+@@ -1,6 +1,7 @@
+ #include <assert.h>
+ #include <stdlib.h>
+ #include <stdio.h>
++#include <unistd.h>
+ 
+ #include "lib/util.h"
+ #include "state.h"

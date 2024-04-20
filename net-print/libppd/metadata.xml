@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>printing@gentoo.org</email>
+		<name>Gentoo Printing Project</name>
+	</maintainer>
+	<use>
+		<flag name="poppler">Use the <pkg>app-text/poppler</pkg> pdftops filter</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">OpenPrinting/libppd</remote-id>
+	</upstream>
+</pkgmetadata>

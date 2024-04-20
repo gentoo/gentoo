@@ -1,0 +1,87 @@
+--- src/gdb/macosx/macosx-nat-dyld.c
++++ src/gdb/macosx/macosx-nat-dyld.c
+@@ -2083,7 +2083,9 @@
+     case MH_DYLIB:
+     case MH_DYLINKER:
+     case MH_BUNDLE:
++#ifdef MH_KEXT_BUNDLE
+     case MH_KEXT_BUNDLE:
++#endif
+       break;
+     case MH_FVMLIB:
+     case MH_PRELOAD:
+@@ -2412,7 +2414,9 @@
+       break;
+     case MH_DYLINKER:
+     case MH_BUNDLE:
++#ifdef MH_KEXT_BUNDLE
+     case MH_KEXT_BUNDLE:
++#endif
+       entry->reason = dyld_reason_dyld;
+       break;
+     default:
+--- src/gdb/macosx/macosx-nat-dyld-process.c
++++ src/gdb/macosx/macosx-nat-dyld-process.c
+@@ -407,7 +407,9 @@
+     case MH_DYLIB:
+       break;
+     case MH_BUNDLE:
++#ifdef MH_KEXT_BUNDLE
+     case MH_KEXT_BUNDLE:
++#endif
+       break;
+     default:
+       return;
+       return;
+--- src/gdb/macosx/macosx-nat-inferior.c
++++ src/gdb/macosx/macosx-nat-inferior.c
+@@ -2692,6 +2692,7 @@
+   if (tp->private == NULL || tp->private->app_thread_port == 0)
+     return NULL;
+ 
++#ifdef THREAD_IDENTIFIER_INFO_COUNT
+   thread_identifier_info_data_t tident;
+   unsigned int info_count;
+   kern_return_t kret;
+@@ -2719,6 +2720,7 @@
+             }
+         }
+     }
++#endif
+   return buf;
+ }
+ 
+--- src/gdb/macosx/macosx-nat-infthread.c
++++ src/gdb/macosx/macosx-nat-infthread.c
+@@ -809,6 +809,7 @@
+     print_stack_frame (get_selected_frame (NULL), 0, LOCATION);
+     switch_to_thread (current_ptid);
+ 
++#ifdef THREAD_IDENTIFIER_INFO_COUNT
+   thread_identifier_info_data_t tident;
+   info_count = THREAD_IDENTIFIER_INFO_COUNT;
+   kret = thread_info (tid, THREAD_IDENTIFIER_INFO, (thread_info_t) &tident, 
+@@ -878,6 +879,7 @@
+       printf_filtered ("\tcurrent priority: %d\n", pth.pth_priority);
+       printf_filtered ("\tmax priority: %d\n", pth.pth_maxpriority);
+     }
++#endif
+ 
+   printf_filtered ("\tsuspend count: %d", info.suspend_count);
+ 
+@@ -1175,6 +1177,7 @@
+   ui_out_field_fmt (uiout, "mach-port-number", "0x%s", 
+                     paddr_nz (app_thread_name));
+ 
++#ifdef THREAD_IDENTIFIER_INFO_COUNT
+   thread_identifier_info_data_t tident;
+   info_count = THREAD_IDENTIFIER_INFO_COUNT;
+   kret = thread_info (tid, THREAD_IDENTIFIER_INFO, (thread_info_t) &tident, 
+@@ -1207,6 +1210,7 @@
+                               paddr_nz (struct_addr));
+         }
+     }
++#endif
+ }
+ 
+ 

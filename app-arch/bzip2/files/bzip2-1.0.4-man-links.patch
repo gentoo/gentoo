@@ -1,0 +1,12 @@
+http://bugs.gentoo.org/172986
+
+--- a/Makefile
++++ b/Makefile
+@@ -85,4 +85,7 @@
+ 	cp -f bzip2.1 $(PREFIX)/share/man/man1
+ 	chmod a+r $(PREFIX)/share/man/man1/bzip2.1
++	ln -s -f bzip2.1 $(PREFIX)/share/man/man1/bunzip2.1
++	ln -s -f bzip2.1 $(PREFIX)/share/man/man1/bzcat.1
++	ln -s -f bzip2.1 $(PREFIX)/share/man/man1/bzip2recover.1
+ 	cp -f bzlib.h $(PREFIX)/include
+ 	chmod a+r $(PREFIX)/include/bzlib.h

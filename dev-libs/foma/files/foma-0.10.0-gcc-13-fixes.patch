@@ -1,0 +1,149 @@
+From 24fa34e5f3731e2e6995fba25e31a2dbb9df8bb4 Mon Sep 17 00:00:00 2001
+From: Tino Didriksen <mail@tinodidriksen.com>
+Date: Thu, 15 Jun 2023 08:44:54 +0000
+Subject: [PATCH] Fixes for GCC 13 (see https://bugs.debian.org/1037663) and
+ Visual Studio
+
+---
+ foma/cgflookup.c     | 2 +-
+ foma/constructions.c | 2 +-
+ foma/flookup.c       | 2 +-
+ foma/foma.h          | 2 +-
+ foma/fomalib.h       | 2 +-
+ foma/iface.c         | 4 ++--
+ foma/regex.l         | 2 +-
+ foma/regex.y         | 7 +++++--
+ foma/spelling.c      | 2 +-
+ 9 files changed, 14 insertions(+), 11 deletions(-)
+
+diff --git a/foma/cgflookup.c b/foma/cgflookup.c
+index 1cc11be..1bdfddb 100644
+--- a/foma/cgflookup.c
++++ b/foma/cgflookup.c
+@@ -71,7 +71,7 @@ static FILE *INFILE;
+ static struct lookup_chain *chain_head, *chain_tail, *chain_new, *chain_pos;
+ static fsm_read_binary_handle fsrh;
+ 
+-static char *(*applyer)() = &apply_up;  /* Default apply direction = up */
++static char *(*applyer)(struct apply_handle *h, char *word) = &apply_up;  /* Default apply direction = up */
+ static void handle_line(char *s);
+ static void app_print(char *result);
+ static char *get_next_line();
+diff --git a/foma/constructions.c b/foma/constructions.c
+index dec4087..ca66db4 100644
+--- a/foma/constructions.c
++++ b/foma/constructions.c
+@@ -41,7 +41,7 @@ int sort_cmp(const void *a, const void *b) {
+   return (((const struct fsm_state *)a)->state_no - ((const struct fsm_state *)b)->state_no);
+ }
+ 
+-INLINE int add_fsm_arc(struct fsm_state *fsm, int offset, int state_no, int in, int out, int target, int final_state, int start_state);
++int add_fsm_arc(struct fsm_state *fsm, int offset, int state_no, int in, int out, int target, int final_state, int start_state);
+ 
+ struct fsm *fsm_kleene_closure(struct fsm *net, int optionality);
+ 
+diff --git a/foma/flookup.c b/foma/flookup.c
+index 971549d..ecd3db3 100644
+--- a/foma/flookup.c
++++ b/foma/flookup.c
+@@ -77,7 +77,7 @@ static FILE *INFILE;
+ static struct lookup_chain *chain_head, *chain_tail, *chain_new, *chain_pos;
+ static fsm_read_binary_handle fsrh;
+ 
+-static char *(*applyer)() = &apply_up;  /* Default apply direction = up */
++static char *(*applyer)(struct apply_handle *h, char *word) = &apply_up;  /* Default apply direction = up */
+ static void handle_line(char *s);
+ static void app_print(char *result);
+ static char *get_next_line();
+diff --git a/foma/foma.h b/foma/foma.h
+index 06cb9f7..f5a5bfb 100644
+--- a/foma/foma.h
++++ b/foma/foma.h
+@@ -113,7 +113,7 @@ void iface_print_shortest_string();
+ void iface_print_shortest_string_size();
+ void iface_print_name(void);
+ void iface_quit(void);
+-void iface_apply_random(char *(*applyer)(), int limit);
++void iface_apply_random(char *(*applyer)(struct apply_handle *h), int limit);
+ void iface_random_lower(int limit);
+ void iface_random_upper(int limit);
+ void iface_random_words(int limit);
+diff --git a/foma/fomalib.h b/foma/fomalib.h
+index 6f0218a..d937d15 100644
+--- a/foma/fomalib.h
++++ b/foma/fomalib.h
+@@ -307,7 +307,7 @@ FEXPORT struct fsm *flag_eliminate(struct fsm *net, char *name);
+ FEXPORT struct fsm *flag_twosided(struct fsm *net);
+ 
+ /* Compile a rewrite rule */
+-FEXPORT struct fsm *fsm_rewrite();
++FEXPORT struct fsm *fsm_rewrite(struct rewrite_set *all_rules);
+ 
+ /* Boolean tests */
+ FEXPORT int fsm_isempty(struct fsm *net);
+diff --git a/foma/iface.c b/foma/iface.c
+index f41e3ce..7ebd569 100644
+--- a/foma/iface.c
++++ b/foma/iface.c
+@@ -790,7 +790,7 @@ void iface_random_words(int limit) {
+     iface_apply_random(&apply_random_words, limit);
+ }
+ 
+-void iface_apply_random(char *(*applyer)(), int limit) {
++void iface_apply_random(char *(*applyer)(struct apply_handle *h), int limit) {
+     char *result;
+     struct apply_handle *ah;
+     int i;
+@@ -1230,7 +1230,7 @@ void iface_words_file(char *filename, int type) {
+     /* type 0 (words), 1 (upper-words), 2 (lower-words) */
+     FILE *outfile;
+     char *result;
+-    static char *(*applyer)() = &apply_words;
++    static char *(*applyer)(struct apply_handle *h) = &apply_words;
+     struct apply_handle *ah;
+ 
+     if (type == 1) {
+diff --git a/foma/regex.l b/foma/regex.l
+index c303a40..8e3f1e5 100644
+--- a/foma/regex.l
++++ b/foma/regex.l
+@@ -49,7 +49,7 @@ struct parser_vars {
+ struct parser_vars parservarstack[MAX_PARSE_DEPTH];
+ int g_parse_depth = 0;
+ 
+-extern int yyparse();
++extern int yyparse(void *scanner, struct defined_networks *defined_nets, struct defined_functions *defined_funcs);
+ extern int get_iface_lineno(void);
+ extern int rewrite, rule_direction, substituting;
+ extern struct fsmcontexts *contexts;
+diff --git a/foma/regex.y b/foma/regex.y
+index eb00e5e..60ab2a4 100644
+--- a/foma/regex.y
++++ b/foma/regex.y
+@@ -21,8 +21,11 @@
+ #include <string.h>
+ #include "foma.h"
+ #define MAX_F_RECURSION 100
+-extern int yyerror();
+-extern int yylex();
++typedef void* yyscan_t;
++typedef struct YYLTYPE YYLTYPE;
++typedef union YYSTYPE YYSTYPE;
++extern int yyerror(YYLTYPE* yylloc, yyscan_t scanner, struct defined_networks *defined_nets, struct defined_functions *defined_funcs, char *msg);
++extern int yylex(YYSTYPE * yylval_param, YYLTYPE * yylloc_param , yyscan_t yyscanner);
+ extern int my_yyparse(char *my_string, int lineno, struct defined_networks *defined_nets, struct defined_functions *defined_funcs);
+ struct fsm *current_parse;
+ int rewrite, rule_direction;
+diff --git a/foma/spelling.c b/foma/spelling.c
+index ab11e98..ac92bd0 100644
+--- a/foma/spelling.c
++++ b/foma/spelling.c
+@@ -37,7 +37,7 @@
+ #define min_(X, Y)  ((X) < (Y) ? (X) : (Y))
+ 
+ static int calculate_h(struct apply_med_handle *medh, int *intword, int currpos, int state);
+-static struct astarnode *node_delete_min();
++static struct astarnode *node_delete_min(struct apply_med_handle *medh);
+ int node_insert(struct apply_med_handle *medh, int wordpos, int fsmstate, int g, int h, int in, int out, int parent);
+ 
+ char *print_sym(int sym, struct sigma *sigma) {

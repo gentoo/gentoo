@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>codec@gentoo.org</email>
+		<name>Gentoo Codec Project</name>
+	</maintainer>
+	<longdescription>
+		TIFF image library and tools, mostly for scanner and fax
+		support, but also used by GIS and other imaging tools.
+	</longdescription>
+	<upstream>
+		<remote-id type="gitlab">libtiff/libtiff</remote-id>
+		<remote-id type="cpe">cpe:/a:libtiff:libtiff</remote-id>
+		<remote-id type="cpe">cpe:/a:libtiff_project:libtiff</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,29 @@
+gcc-7 fails the build as:
+  clients/memflush.cc: In function 'int main(int, char**)':
+  clients/memflush.cc:42:22: error: ISO C++ forbids comparison between pointer and integer [-fpermissive]
+   if (opt_servers == false)
+                      ^~~~~
+
+opt_servers is declated as 'static char *opt_servers= NULL;'
+diff --git a/clients/memflush.cc b/clients/memflush.cc
+index 8bd0dbf..7641b88 100644
+--- a/clients/memflush.cc
++++ b/clients/memflush.cc
+@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
+ {
+   options_parse(argc, argv);
+ 
+-  if (opt_servers == false)
++  if (!opt_servers)
+   {
+     char *temp;
+ 
+@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
+       opt_servers= strdup(temp);
+     }
+ 
+-    if (opt_servers == false)
++    if (!opt_servers)
+     {
+       std::cerr << "No Servers provided" << std::endl;
+       exit(EXIT_FAILURE);

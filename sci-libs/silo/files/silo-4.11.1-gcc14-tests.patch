@@ -1,0 +1,45 @@
+https://github.com/LLNL/Silo/pull/371
+
+From f0737787eb02093defc30de05a731ffe63c4c6f4 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 17 Mar 2024 07:35:36 +0000
+Subject: [PATCH] tests: add missing header for `difftime`
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+With GCC 14, which makes implicit function declarations an error by default:
+```
+TestReadMask.c: In function ‘ElapsedTime’:
+TestReadMask.c:746:15: error: implicit declaration of function ‘difftime’ [-Wimplicit-function-declaration]
+  746 |     ms = (int)difftime(end_time.tv_sec, start_time.tv_sec);
+      |               ^~~~~~~~
+TestReadMask.c:62:1: note: ‘difftime’ is defined in header ‘<time.h>’; this is probably fixable by adding ‘#include <time.h>’
+   61 | #include <std.c>
+  +++ |+#include <time.h>
+   62 |
+```
+
+Fix the include guards and include <time.h> unconditionally (for difftime) and <string.h>
+unconditionally too (for memcpy).
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/tests/TestReadMask.c
++++ b/tests/TestReadMask.c
+@@ -51,13 +51,12 @@ product endorsement purposes.
+ */
+ #include <stdio.h>
+ #include <silo.h>
++#include <string.h>
+ #ifndef WIN32
+ #include <sys/time.h>
+-#else
+-#include <string.h>
+-#include <time.h>
+ #endif
+ #include <sys/timeb.h>
++#include <time.h>
+ #include <std.c>
+ 
+ /* To compile this program on hyper, here is the command:
+

@@ -1,0 +1,62 @@
+https://github.com/radvd-project/radvd/commit/f4baa88bfd77710a6034e3c23b95ef5efb80f83b
+https://bugs.gentoo.org/880823
+
+From ff7ab0cf445236f30e58531175ba912614fed952 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 17 Nov 2022 22:03:25 +0000
+Subject: [PATCH 1/2] Makefile.am: drop -Wno-implicit-function-declaration
+
+1. Clang 16 makes -Wimplicit-function-declaration error by default
+   (and it's planned that GCC 14 will do the same) so we need to fix
+   the real problem. This is papering over it.
+
+2. It's not true that there's nothing we can do about it. Fix in a follow-up
+   commit.
+
+Bug: https://bugs.gentoo.org/880823
+Fixes: b5e6b09cf914a960ac3b1676b77d3ea9f91821c7
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -66,9 +66,6 @@ radvd_LDADD = \
+ scanner.c: gram.h
+ gram.h: gram.c
+ 
+-libradvd_parser_a_CFLAGS = \
+-	-Wno-implicit-function-declaration
+-
+ libradvd_parser_a_SOURCES = \
+ 	gram.h \
+ 	gram.y \
+
+From e0f5bcd9091a5f7abd423fce9f372c8079849a64 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 17 Nov 2022 22:03:25 +0000
+Subject: [PATCH 2/2] gram.y: Fix -Wimplicit-function-declaration
+
+Clang 16 makes -Wimplicit-function-declaration an error by default.
+
+For more information, see LWN.net [0] or LLVM's Discourse [1], the Gentoo wiki [2],
+or the (new) c-std-porting mailing list [3].
+
+[0] https://lwn.net/Articles/913505/
+[1] https://discourse.llvm.org/t/configure-script-breakage-with-the-new-werror-implicit-function-declaration/65213
+[2] https://wiki.gentoo.org/wiki/Modern_C_porting
+[3] hosted at lists.linux.dev.
+
+Bug: https://bugs.gentoo.org/880823
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/gram.y
++++ b/gram.y
+@@ -20,6 +20,10 @@
+ 
+ #define YYERROR_VERBOSE 1
+ 
++int yylex (void);
++void yyset_in (FILE * _in_str);
++int yylex_destroy (void);
++
+ #if 0 /* no longer necessary? */
+ #ifndef HAVE_IN6_ADDR_S6_ADDR
+ # ifdef __FreeBSD__
+

@@ -1,0 +1,28 @@
+From 9c3212cd6c3f4157e1b9afa5c90d054de1418acf Mon Sep 17 00:00:00 2001
+From: Niels De Graef <ndegraef@redhat.com>
+Date: Fri, 12 Jan 2024 22:57:42 +0100
+Subject: [PATCH] Revert "tests/bluez: Follow PairDevice() API change"
+
+This reverts commit b6b7d41aad9e36e0d0e6ec9822ed2e310923c8fd.
+
+See https://github.com/martinpitt/python-dbusmock/pull/192
+---
+ tests/lib/bluez/backend.vala | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/lib/bluez/backend.vala b/tests/lib/bluez/backend.vala
+index 72c688d3..023117e6 100644
+--- a/tests/lib/bluez/backend.vala
++++ b/tests/lib/bluez/backend.vala
+@@ -39,7 +39,7 @@ namespace org
+ 
+             [DBus (name = "PairDevice")]
+             public abstract void pair_device (string adapter_device_name,
+-                string device_address, int class_=5898764) throws GLib.Error;
++                string device_address) throws GLib.Error;
+ 
+             [DBus (name = "BlockDevice")]
+             public abstract void block_device (string adapter_device_name,
+-- 
+GitLab
+

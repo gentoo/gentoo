@@ -1,0 +1,33 @@
+--- a/config/m4/compiler.m4
++++ b/config/m4/compiler.m4
+@@ -10,7 +10,7 @@
+ #
+ # Initialize CFLAGS
+ #
+-BASE_CFLAGS="-g -Wall -Werror"
++BASE_CFLAGS="-g -Wall"
+ 
+ 
+ #
+--- a/examples/Makefile.am
++++ b/examples/Makefile.am
+@@ -26,7 +26,7 @@ EXAMPLE_CUDA_CFLAGS = $(CFLAGS_PEDANTIC)
+ EXAMPLE_CUDA_CPPFLAGS =
+ endif
+ 
+-EXAMPLE_CCLD_FLAGS = -lucs -I$(includedir) -L$(libdir) -Wall -Werror -Wl,-rpath,$(libdir) \
++EXAMPLE_CCLD_FLAGS = -lucs -I$(includedir) -L$(libdir) -Wall -Wl,-rpath,$(libdir) \
+                      $(EXAMPLE_CUDA_LD_FLAGS) $(EXAMPLE_CUDA_LIBS) $(EXAMPLE_CUDA_CPPFLAGS)
+ 
+ installcheck-local:
+--- a/test/apps/sockaddr/Makefile.am
++++ b/test/apps/sockaddr/Makefile.am
+@@ -12,7 +12,7 @@ noinst_HEADERS = \
+ 	sa_util.h
+ 
+ sa_CXXFLAGS = \
+-	-std=c++11 -g -Wall -Werror
++	-std=c++11 -g -Wall
+ 
+ sa_CPPFLAGS = $(BASE_CPPFLAGS)
+ 

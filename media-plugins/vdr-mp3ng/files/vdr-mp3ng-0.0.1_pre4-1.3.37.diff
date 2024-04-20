@@ -1,0 +1,29 @@
+--- mp3ng-0.9.13-MKIV-pre3/mp3ng.c	2006-02-04 18:26:38.505453250 +0100
++++ mp3ng-0.9.13-MKIV-pre3/mp3ng.vdr-1.3.37.c	2006-02-04 18:31:18.342942000 +0100
+@@ -280,7 +280,7 @@
+   framesPerSecond=SecondsToFrames(1);
+   if(!osd) osd=0;
+   font=cFont::GetFont(fontOsd);
+-  cStatus::MsgReplaying(this,"MP3");
++  cStatus::MsgReplaying(this,"MP3",0,true);
+   
+   
+   clrBackground			= mp3Theme[MP3Setup.osdtheme].clrBackground;
+@@ -307,7 +307,7 @@
+ 
+ void cMP3Control::Stop(void)
+ {
+-  cStatus::MsgReplaying(this,0);
++  cStatus::MsgReplaying(this,"MP3",0,false);
+   delete player; player=0;
+   mgr->Halt();
+   mgr->Flush(); //XXX remove later
+@@ -559,7 +559,7 @@
+       if(changed || mode->Loop!=lastMode->Loop || mode->Shuffle!=lastMode->Shuffle) {
+         snprintf(buf,sizeof(buf),mode->Artist[0]?"[%c%c] (%d/%d) %s - %s":"[%c%c] (%d/%d) %s",
+                   mode->Loop?'L':'.',mode->Shuffle?'S':'.',mode->Num,mode->MaxNum,mode->Title,mode->Artist);
+-        cStatus::MsgReplaying(this,buf);
++        cStatus::MsgReplaying(this,"MP3",buf,true);
+         }
+       }
+ 

@@ -1,0 +1,11 @@
+--- a/src/DotNetOutdated.Core/DotNetOutdated.Core.csproj
++++ b/src/DotNetOutdated.Core/DotNetOutdated.Core.csproj
+@@ -1,7 +1,7 @@
+ <Project Sdk="Microsoft.NET.Sdk">
+ 
+   <PropertyGroup>
+-    <TargetFramework>netstandard2.1</TargetFramework>
++    <TargetFramework>net8.0</TargetFramework>
+     <IsPackable>true</IsPackable>
+     <PackageTags>dotnet;outdated;core;lib</PackageTags>
+     <Description>The core functionality of DotNet Outdated as a library which allows you to embed it into your own applications</Description>

@@ -1,0 +1,15 @@
+needed since https://github.com/bminor/musl/commit/25e6fee27f4a293728dd15b659170e7b9c7db9bc
+--
+diff --git a/pr/include/md/_unixos.h b/pr/include/md/_unixos.h
+index 7d444cd..0099d2c 100644
+--- a/pr/include/md/_unixos.h
++++ b/pr/include/md/_unixos.h
+@@ -589,7 +589,7 @@ typedef off64_t _MDOff64_t;
+ 
+ #elif defined(_PR_HAVE_OFF64_T)
+ typedef struct stat64 _MDStat64;
+-typedef off64_t _MDOff64_t;
++typedef off_t _MDOff64_t;
+ #elif defined(_PR_HAVE_LARGE_OFF_T)
+ typedef struct stat _MDStat64;
+ typedef off_t _MDOff64_t;

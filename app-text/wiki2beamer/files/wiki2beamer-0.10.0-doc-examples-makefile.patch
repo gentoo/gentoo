@@ -1,0 +1,25 @@
+From 9b54418338adec929cdbdbd1b35e542fb6587fa4 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sun, 7 Jul 2019 22:55:53 +0200
+Subject: doc/examples/Makefile: Use system-wide wiki2beamer
+
+---
+ doc/examples/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/examples/Makefile b/doc/examples/Makefile
+index e99253b..aeeb11e 100644
+--- a/doc/examples/Makefile
++++ b/doc/examples/Makefile
+@@ -9,7 +9,7 @@ all: $(patsubst %.wiki, %.pdf, $(WIKIFILES))
+ 
+ %.tex: %.wiki
+ 	@echo "Translating $<"
+-	@python ../../code/wiki2beamer $< > $@
++	@wiki2beamer $< > $@
+ 
+ 
+ %.pdf: %.tex
+-- 
+2.21.0
+

@@ -1,0 +1,20 @@
+As of 0.2.0, no mention of pipdeptree anywhere in the actual code.
+
+--- a/.config/requirements.in
++++ b/.config/requirements.in
+@@ -11,5 +11,4 @@
+ mkdocstrings-python>=0.8.3
+ mkdocstrings>=0.21.2
+ pillow>=9.4.0
+-pipdeptree>=2.4.0
+ pymdown-extensions>=9.9.2
+--- a/.config/requirements.txt
++++ b/.config/requirements.txt
+@@ -42,7 +42,6 @@
+ paginate==0.5.6
+ pathspec==0.11.2
+ pillow==10.0.1
+-pipdeptree==2.13.0
+ platformdirs==3.10.0
+ pycparser==2.21
+ pygments==2.16.1

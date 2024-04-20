@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/916278
+https://salsa.debian.org/science-team/benchmark/-/blob/master/debian/patches/0007-fix-32bit-test.patch?ref_type=heads
+
+Description: Fix 32bit-test
+Author: Anton Gladky <gladk@debian.org>
+Last-Update: 2023-10-17
+
+--- benchmark-1.8.3.orig/test/statistics_gtest.cc
++++ benchmark-1.8.3/test/statistics_gtest.cc
+@@ -28,8 +28,8 @@ TEST(StatisticsTest, StdDev) {
+ TEST(StatisticsTest, CV) {
+   EXPECT_DOUBLE_EQ(benchmark::StatisticsCV({101, 101, 101, 101}), 0.0);
+   EXPECT_DOUBLE_EQ(benchmark::StatisticsCV({1, 2, 3}), 1. / 2.);
+-  EXPECT_DOUBLE_EQ(benchmark::StatisticsCV({2.5, 2.4, 3.3, 4.2, 5.1}),
+-                   0.32888184094918121);
++  EXPECT_NEAR(benchmark::StatisticsCV({2.5, 2.4, 3.3, 4.2, 5.1}),
++                   0.32888184094918121, 1e-7);
+ }
+ 
+ }  // end namespace

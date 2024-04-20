@@ -1,0 +1,48 @@
+https://github.com/sympy/sympy/pull/25968
+
+From 2251ba15d33656fce53668d789c390923eeae919 Mon Sep 17 00:00:00 2001
+From: Jerry James <loganjerry@gmail.com>
+Date: Fri, 8 Dec 2023 15:12:26 -0700
+Subject: [PATCH] Avoid incompatible pointer type error with GCC 14
+
+--- a/sympy/utilities/autowrap.py
++++ b/sympy/utilities/autowrap.py
+@@ -714,7 +714,11 @@ def binary_function(symfunc, expr, **kwargs):
+ _ufunc_outcalls = Template("*((double *)out${outnum}) = ${funcname}(${call_args});")
+ 
+ _ufunc_body = Template("""\
++#ifdef NPY_1_19_API_VERSION
++static void ${funcname}_ufunc(char **args, const npy_intp *dimensions, const npy_intp* steps, void* data)
++#else
+ static void ${funcname}_ufunc(char **args, npy_intp *dimensions, npy_intp* steps, void* data)
++#endif
+ {
+     npy_intp i;
+     npy_intp n = dimensions[0];
+--- a/sympy/utilities/tests/test_autowrap.py
++++ b/sympy/utilities/tests/test_autowrap.py
+@@ -284,7 +284,11 @@ def test_ufuncify_source():
+         {NULL, NULL, 0, NULL}
+ };
+ 
++#ifdef NPY_1_19_API_VERSION
++static void test_ufunc(char **args, const npy_intp *dimensions, const npy_intp* steps, void* data)
++#else
+ static void test_ufunc(char **args, npy_intp *dimensions, npy_intp* steps, void* data)
++#endif
+ {
+     npy_intp i;
+     npy_intp n = dimensions[0];
+@@ -378,7 +382,11 @@ def test_ufuncify_source_multioutput():
+         {NULL, NULL, 0, NULL}
+ };
+ 
++#ifdef NPY_1_19_API_VERSION
++static void multitest_ufunc(char **args, const npy_intp *dimensions, const npy_intp* steps, void* data)
++#else
+ static void multitest_ufunc(char **args, npy_intp *dimensions, npy_intp* steps, void* data)
++#endif
+ {
+     npy_intp i;
+     npy_intp n = dimensions[0];
+

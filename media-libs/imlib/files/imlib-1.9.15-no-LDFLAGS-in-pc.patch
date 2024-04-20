@@ -1,0 +1,16 @@
+Detected by Gentoo QA check:
+
+ * QA Notice: pkg-config files with wrong LDFLAGS detected:
+ * /usr/lib32/pkgconfig/imlib.pc:Libs: -L${libdir} -Wl,-O1 -Wl,--as-needed -Wl,--hash-style=gnu -lImlib  -ljpeg -ltiff -lgif -lpng -lz -lm -lXext   -lSM -lICE -lXext -lX11 
+ * /usr/lib64/pkgconfig/imlib.pc:Libs: -L${libdir} -Wl,-O1 -Wl,--as-needed -Wl,--hash-style=gnu -lImlib  -ljpeg -ltiff -lgif -lpng -lz -lm -lXext   -lSM -lICE -lXext -lX11
+diff --git a/imlib.pc.in b/imlib.pc.in
+index 0a6f276..dc1ef7d 100644
+--- a/imlib.pc.in
++++ b/imlib.pc.in
+@@ -9,5 +9,5 @@ Name: Imlib
+ Description: An image loading and rendering library for X11R6
+ Version: @VERSION@
+ Requires:
+-Libs: -L${libdir} @LDFLAGS@ -lImlib @SUPPORT_LIBS@ @X_LIBS@ @X_PRE_LIBS@ -lXext -lX11 @X_EXTRA_LIBS@
++Libs: -L${libdir} -lImlib @SUPPORT_LIBS@ @X_LIBS@ @X_PRE_LIBS@ -lXext -lX11 @X_EXTRA_LIBS@
+ Cflags: -I${includedir} @X_CFLAGS@

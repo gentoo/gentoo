@@ -1,0 +1,15 @@
+--- a/configure.inc
++++ b/configure.inc
+@@ -1074,11 +1074,11 @@
+     else
+ 	PROG_INSTALL="$DEST"
+     fi
+ 
+     AC_SUB 'INSTALL' "$PROG_INSTALL"
+-    AC_SUB 'INSTALL_PROGRAM' "$PROG_INSTALL -s -m 755"
++    AC_SUB 'INSTALL_PROGRAM' "$PROG_INSTALL -m 755"
+     AC_SUB 'INSTALL_DATA' "$PROG_INSTALL -m 444"
+ 
+     # finally build a little directory installer
+     # if mkdir -p works, use that, otherwise use install -d,
+     # otherwise build a script to do it by hand.

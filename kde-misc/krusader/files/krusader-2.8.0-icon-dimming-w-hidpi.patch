@@ -1,0 +1,26 @@
+From 7ea9f1f0dbdd07cd5c5baae56bb672a7be519932 Mon Sep 17 00:00:00 2001
+From: Wladimir Palant <fqcgithub@palant.de>
+Date: Wed, 8 Mar 2023 17:07:15 +0100
+Subject: [PATCH] Fixed dimming of file icons in HiDPI environments
+
+Discussion: https://invent.kde.org/utilities/krusader/-/merge_requests/119
+---
+ app/Panel/PanelView/krview.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/app/Panel/PanelView/krview.cpp b/app/Panel/PanelView/krview.cpp
+index a974b1ad2..a5b1b3872 100644
+--- a/app/Panel/PanelView/krview.cpp
++++ b/app/Panel/PanelView/krview.cpp
+@@ -297,7 +297,7 @@ QPixmap KrView::processIcon(const QPixmap &icon, bool dim, const QColor & dimCol
+     p.fillRect(0, 0, icon.width(), icon.height(), dimColor);
+     p.setCompositionMode(QPainter::CompositionMode_SourceOver);
+     p.setOpacity((qreal)dimFactor / (qreal)100);
+-    p.drawPixmap(0, 0, icon.width(), icon.height(), pixmap);
++    p.drawPixmap(0, 0, pixmap);
+ 
+     return QPixmap::fromImage(dimmed, Qt::ColorOnly | Qt::ThresholdDither |
+                                 Qt::ThresholdAlphaDither | Qt::NoOpaqueDetection );
+-- 
+GitLab
+

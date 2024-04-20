@@ -1,0 +1,24 @@
+--- a/libpcap_stuff.c
++++ b/libpcap_stuff.c
+@@ -16,8 +16,8 @@
+ #include <string.h>
+ #include <stdlib.h>
+ #include <sys/ioctl.h>
+-#include <net/bpf.h>
+ #include <pcap.h>
++#include <pcap-bpf.h>
+ 
+ #include "globals.h"
+ 
+--- a/script.c
++++ b/script.c
+@@ -23,8 +23,8 @@
+ #include <sched.h>
+ 
+ #include <sys/ioctl.h>
+-#include <net/bpf.h>
+ #include <pcap.h>
++#include <pcap-bpf.h>
+ 
+ #include "release.h"
+ #include "hping2.h"

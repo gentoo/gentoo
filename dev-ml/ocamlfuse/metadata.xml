@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>ml@gentoo.org</email>
+    <name>ML</name>
+  </maintainer>
+  <longdescription lang="en">This is a binding to FUSE for the OCaml programming language, enabling
+you to write multithreaded filesystems in the OCaml language. It has
+been designed with simplicity as a goal, as you can see by looking at
+example/fusexmp.ml. Efficiency has also been a separate goal. The
+Bigarray library is used for read and writes, allowing the library to
+do zero-copy in OCaml land.</longdescription>
+  <upstream>
+    <bugs-to>https://github.com/astrada/ocamlfuse/issues</bugs-to>
+    <remote-id type="github">astrada/ocamlfuse</remote-id>
+    <remote-id type="sourceforge">ocamlfuse</remote-id>
+    <maintainer>
+      <name>Alessandro Strada</name>
+      <email>alessandro.strada@gmail.com</email>
+    </maintainer>
+  </upstream>
+</pkgmetadata>

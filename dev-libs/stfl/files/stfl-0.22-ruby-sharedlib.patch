@@ -1,0 +1,14 @@
+--- stfl-0.22/ruby/Makefile.snippet.orig
++++ stfl-0.22/ruby/Makefile.snippet
+@@ -23,9 +23,9 @@
+ 
+ install: install_ruby
+ 
+-ruby/build_ok: libstfl.a stfl.h ruby/stfl.i swig/*.i
++ruby/build_ok: libstfl.so.$(VERSION) stfl.h ruby/stfl.i swig/*.i
+ 	cd ruby && swig -ruby stfl.i && ruby extconf.rb
+-	$(MAKE) -C ruby clean && $(MAKE) -C ruby LIBS+="../libstfl.a -lncursesw" CFLAGS+="-pthread -I.." DLDFLAGS+="-pthread" DESTDIR=$(DESTDIR) prefix=$(prefix) sitedir=$(prefix)/$(libdir)/ruby
++	$(MAKE) -C ruby clean && $(MAKE) -C ruby LIBS+="../libstfl.so.$(VERSION) -lncursesw" CFLAGS+="-pthread -I.." DLDFLAGS+="-pthread" DESTDIR=$(DESTDIR) prefix=$(prefix) sitedir=$(prefix)/$(libdir)/ruby
+ 	touch ruby/build_ok
+ 
+ install_ruby: ruby/build_ok

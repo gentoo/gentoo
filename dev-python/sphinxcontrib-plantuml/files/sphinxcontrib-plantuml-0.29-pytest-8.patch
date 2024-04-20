@@ -1,0 +1,53 @@
+From 74e31ad4dd8f4fefd5b9e430e4d9caea3002fd97 Mon Sep 17 00:00:00 2001
+From: Yuya Nishihara <yuya@tcha.org>
+Date: Sun, 10 Mar 2024 19:30:21 +0900
+Subject: [PATCH] tests: rename setup/teardown functions for pytest 8.1.1
+ compatibility
+
+I don't know if that's intended, but nose-style setup() is no longer called.
+---
+ tests/test_functional.py | 4 ++--
+ tests/test_svgstyle.py   | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/tests/test_functional.py b/tests/test_functional.py
+index 697b01d..8ef6a3d 100644
+--- a/tests/test_functional.py
++++ b/tests/test_functional.py
+@@ -12,7 +12,7 @@
+ _fakecmd = os.path.join(os.path.dirname(__file__), 'fakecmd.py')
+ 
+ 
+-def setup():
++def setup_module():
+     global _tempdir, _srcdir, _outdir
+     _tempdir = tempfile.mkdtemp()
+     _srcdir = os.path.join(_tempdir, 'src')
+@@ -20,7 +20,7 @@ def setup():
+     os.mkdir(_srcdir)
+ 
+ 
+-def teardown():
++def teardown_module():
+     shutil.rmtree(_tempdir)
+ 
+ 
+diff --git a/tests/test_svgstyle.py b/tests/test_svgstyle.py
+index c62e1ed..a25901f 100644
+--- a/tests/test_svgstyle.py
++++ b/tests/test_svgstyle.py
+@@ -5,12 +5,12 @@
+ from sphinxcontrib import plantuml
+ 
+ 
+-def setup():
++def setup_module():
+     global _tempdir
+     _tempdir = tempfile.mkdtemp()
+ 
+ 
+-def teardown():
++def teardown_module():
+     shutil.rmtree(_tempdir)
+ 
+ 

@@ -1,0 +1,28 @@
+From a4a3984465cb635822953350c571950ae726b539 Mon Sep 17 00:00:00 2001
+From: George Yunaev <gyunaev@ulduzsoft.com>
+Date: Sun, 23 May 2021 15:01:24 -0700
+Subject: [PATCH] Only add Webkit stuff to QT if we're compiling under 5.6.
+ Thanks to @u-235 for reporting.
+
+---
+ src/src.pro | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
+
+diff --git a/src/src.pro b/src/src.pro
+index f502259..e75d6a9 100644
+--- a/src/src.pro
++++ b/src/src.pro
+@@ -60,12 +60,7 @@ FORMS += tab_bookmarks.ui \
+     toolbareditor.ui
+ RESOURCES += resources/images.qrc
+ 
+-QT += webkit \
+-	xml \
+-    network \
+-    widgets \
+-    webkitwidgets \
+-    printsupport
++QT += xml network widgets printsupport
+ 
+ linux-g++*:{
+     LIBS += -lX11

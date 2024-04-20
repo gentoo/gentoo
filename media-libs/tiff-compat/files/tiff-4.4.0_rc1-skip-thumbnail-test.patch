@@ -1,0 +1,32 @@
+https://gitlab.com/libtiff/libtiff/-/merge_requests/334
+
+From 62a49eeb3f0c986c5fcbfc53cd3d7ef2a3fab9b3 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 21 May 2022 01:01:35 +0100
+Subject: [PATCH] test/tiffcp-thumbnail.sh: skip test if tools aren't built
+
+In Gentoo, we avoid building the tools for multilib (32-bit, x86) builds on
+amd64/x86_64 because we only need the library to keep binary applications working.
+
+This causes a test failure in just tiffcp-thumbnail.sh as the 'thumbnail'
+binary isn't built. Skip it if unavailable as it's only a single test.
+
+Fixes: https://gitlab.com/libtiff/libtiff/-/issues/421
+--- a/test/tiffcp-thumbnail.sh
++++ b/test/tiffcp-thumbnail.sh
+@@ -4,7 +4,12 @@
+ #
+ . ${srcdir:-.}/common.sh
+ 
++if [ ! -x "${TIFFCP}" ] || [ ! -x "${THUMBNAIL}" ] ; then
++	# https://gitlab.com/libtiff/libtiff/-/issues/421
++	exit 77
++fi
++
+ outfile1=o-tiffcp-thumbnail-in.tif
+ outfile2=o-tiffcp-thumbnail-out.tif
+ f_test_convert "${TIFFCP} -c g3:1d" "${IMG_MINISWHITE_1C_1B}" "${outfile1}"
+-f_test_convert "${THUMBNAIL}" "${outfile1}" "${outfile2}"
+\ No newline at end of file
++f_test_convert "${THUMBNAIL}" "${outfile1}" "${outfile2}"
+GitLab

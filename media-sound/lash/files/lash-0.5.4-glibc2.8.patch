@@ -1,0 +1,16 @@
+diff --git a/liblash/socket.c b/liblash/socket.c
+index b6e1b25..91caf0f 100644
+--- a/liblash/socket.c
++++ b/liblash/socket.c
+@@ -20,6 +20,11 @@
+ 
+ #define _POSIX_SOURCE /* addrinfo */
+ 
++#ifdef LASH_BUILD
++#define _GNU_SOURCE
++#include "config.h"
++#endif /* LASH_BUILD */
++
+ #include <stdint.h>
+ #include <sys/types.h>
+ #include <sys/socket.h>

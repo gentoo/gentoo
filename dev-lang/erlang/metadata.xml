@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>matthew@gentoo.org</email>
+		<name>Matthew Smith</name>
+	</maintainer>
+	<use>
+		<flag name="kpoll">Enable kernel polling support</flag>
+	</use>
+	<longdescription>
+		Erlang is a programming language designed at the Ericsson
+		Computer Science Laboratory. Open-source Erlang is being
+		released to help encourage the spread of Erlang outside
+		Ericsson.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">erlang/otp</remote-id>
+	</upstream>
+</pkgmetadata>

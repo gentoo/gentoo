@@ -1,0 +1,64 @@
+--- a/tf-tool/tf-tool.c
++++ b/tf-tool/tf-tool.c
+@@ -26,6 +26,9 @@
+ #include <errno.h>
+ #include <libgen.h>
+ #include <pwd.h>
++#include <grp.h>
++#include <sys/stat.h>
++#include <unistd.h>
+ 
+ #include <config.h>
+ #include <libthinkfinger.h>
+@@ -54,6 +57,21 @@
+ 	int swipe_failed;
+ } s_tfdata;
+ 
++int changegroup(const char *groupname,const char *filename)
++{
++	struct group *g;
++	g = getgrnam(groupname);
++	if(g == NULL) {
++		perror("getgrnam:");
++		return 1;
++	}
++	if( chown(filename,-1,g->gr_gid) == -1) {
++		perror("chown: ");
++		return 1;	
++	}
++	return 0;
++}
++
+ static void print_status (int swipe_success, int swiped_required, int swipe_failed)
+ {
+ 	printf ("\rPlease swipe your finger (successful swipes %i/%i, failed swipes: %i)...",
+@@ -64,6 +82,8 @@
+ static void callback (libthinkfinger_state state, void *data)
+ {
+ 	char *str;
++	int err;
++	gid_t gfp;
+ 	s_tfdata *tfdata = (s_tfdata *) data;
+ 
+ 	if (tfdata->verbose == true) {
+@@ -108,8 +128,18 @@
+ 			case TF_STATE_ENROLL_SUCCESS:
+ 				print_status (tfdata->swipe_success, 3, tfdata->swipe_failed);
+ 				printf (" done.\nStoring data (%s)...", tfdata->bir);
+-				fflush (stdout);
+-				break;
++				/*small hack to change group and chmod 640 on created bir file*/
++				err = chmod(tfdata->bir, S_IRUSR | S_IWUSR | S_IRGRP);
++				if(err == -1) { 
++					printf("Couldn't change perms on file %s\n",tfdata->bir);
++					perror("chmod:");
++					fflush(stdout);
++					break;
++				}
++				changegroup("fingerprint",tfdata->bir);
++				fflush(stdout);
++				break;	
++				/*done*/
+ 			case TF_STATE_SWIPE_FAILED:
+ 				print_status (tfdata->swipe_success, 3, ++tfdata->swipe_failed);
+ 				break;

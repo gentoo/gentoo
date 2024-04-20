@@ -1,0 +1,47 @@
+https://lists.gnu.org/archive/html/libtool-patches/2022-12/msg00000.html
+
+From d72817b1ee5d7b666bf30b0234e32423252d6ad8 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 10 Dec 2022 02:00:22 +0000
+Subject: [PATCH] Allow -Werror and -Werror=* through flag filtering
+
+* build-aux/ltmain.in (func_mode_link): allow -Werror and -Werror=* through
+  flat filtering at link time.
+
+  This is needed for detecting likely-runtime problems with LTO using
+  e.g. -Werror=odr or -Werror=lto-type-mismatch.
+
+Bug: https://bugs.gentoo.org/884767
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/build-aux/ltmain.in
++++ b/build-aux/ltmain.in
+@@ -5408,10 +5408,11 @@ func_mode_link ()
+       # -fsanitize=*         Clang/GCC memory and address sanitizer
+       # -fuse-ld=*           Linker select flags for GCC
+       # -Wa,*                Pass flags directly to the assembler
++      # -Werror, -Werror=*   Report (specified) warnings as errors
+       -64|-mips[0-9]|-r[0-9][0-9]*|-xarch=*|-xtarget=*|+DA*|+DD*|-q*|-m*| \
+       -t[45]*|-txscale*|-p|-pg|--coverage|-fprofile-*|-F*|@*|-tp=*|--sysroot=*| \
+       -O*|-g*|-flto*|-fwhopr*|-fuse-linker-plugin|-fstack-protector*|-stdlib=*| \
+-      -specs=*|-fsanitize=*|-fuse-ld=*|-Wa,*)
++      -specs=*|-fsanitize=*|-fuse-ld=*|-Wa,*|-Werror|-Werror=*)
+         func_quote_arg pretty "$arg"
+ 	arg=$func_quote_arg_result
+         func_append compile_command " $arg"
+--- a/build-aux/ltmain.sh
++++ a/build-aux/ltmain.sh
+@@ -5408,10 +5408,11 @@ func_mode_link ()
+       # -fsanitize=*         Clang/GCC memory and address sanitizer
+       # -fuse-ld=*           Linker select flags for GCC
+       # -Wa,*                Pass flags directly to the assembler
++      # -Werror, -Werror=*   Report (specified) warnings as errors
+       -64|-mips[0-9]|-r[0-9][0-9]*|-xarch=*|-xtarget=*|+DA*|+DD*|-q*|-m*| \
+       -t[45]*|-txscale*|-p|-pg|--coverage|-fprofile-*|-F*|@*|-tp=*|--sysroot=*| \
+       -O*|-g*|-flto*|-fwhopr*|-fuse-linker-plugin|-fstack-protector*|-stdlib=*| \
+-      -specs=*|-fsanitize=*|-fuse-ld=*|-Wa,*)
++      -specs=*|-fsanitize=*|-fuse-ld=*|-Wa,*|-Werror|-Werror=*)
+         func_quote_arg pretty "$arg"
+ 	arg=$func_quote_arg_result
+         func_append compile_command " $arg"
+-- 
+2.38.1

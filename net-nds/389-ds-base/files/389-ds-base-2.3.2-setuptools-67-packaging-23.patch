@@ -1,0 +1,167 @@
+https://bugs.gentoo.org/899702
+https://github.com/389ds/389-ds-base/commit/c0e2f68423ddde9bb91250d3f96dfc8617889514
+
+From c0e2f68423ddde9bb91250d3f96dfc8617889514 Mon Sep 17 00:00:00 2001
+From: Viktor Ashirov <vashirov@redhat.com>
+Date: Mon, 13 Feb 2023 18:39:20 +0100
+Subject: [PATCH] Issue 5642 - Build fails against setuptools 67.0.0
+
+Bug Description:
+`setuptools` 67.0.0 vendors `packaging` 23.0 which dropped `LegacyVersion`.
+
+Fix Description:
+Replace `LegacyVersion` with `DSVersion` to compare version strings that are
+not compatible with PEP 440 and PEP 508.
+
+Reviewed by: @mreynolds389, @progier389
+
+Fixes: https://github.com/389ds/389-ds-base/issues/5642
+--- a/src/lib389/lib389/nss_ssl.py
++++ b/src/lib389/lib389/nss_ssl.py
+@@ -23,16 +23,9 @@
+ from lib389.passwd import password_generate
+ from lib389._mapped_object_lint import DSLint
+ from lib389.lint import DSCERTLE0001, DSCERTLE0002
+-from lib389.utils import ensure_str, format_cmd_list
++from lib389.utils import ensure_str, format_cmd_list, DSVersion
+ import uuid
+ 
+-# Setuptools ships with 'packaging' module, let's use it from there
+-try:
+-    from pkg_resources.extern.packaging.version import LegacyVersion
+-# Fallback to a normal 'packaging' module in case 'setuptools' is stripped
+-except:
+-    from packaging.version import LegacyVersion
+-
+ KEYBITS = 4096
+ CA_NAME = 'Self-Signed-CA'
+ CERT_NAME = 'Server-Cert'
+@@ -249,7 +242,7 @@ def openssl_rehash(self, certdir):
+             openssl_version = check_output(['/usr/bin/openssl', 'version']).decode('utf-8').strip()
+         except subprocess.CalledProcessError as e:
+             raise ValueError(e.output.decode('utf-8').rstrip())
+-        rehash_available = LegacyVersion(openssl_version.split(' ')[1]) >= LegacyVersion('1.1.0')
++        rehash_available = DSVersion(openssl_version.split(' ')[1]) >= DSVersion('1.1.0')
+ 
+         if rehash_available:
+             cmd = ['/usr/bin/openssl', 'rehash', certdir]
+--- /dev/null
++++ b/src/lib389/lib389/tests/dsversion_test.py
+@@ -0,0 +1,12 @@
++from lib389.utils import DSVersion
++import pytest
++
++versions = [('1.3.10.1', '1.3.2.1'),
++          ('2.3.2', '1.4.4.4'),
++          ('2.3.2.202302121950git1b4f5a5bf', '2.3.2'),
++          ('1.1.0a', '1.1.0')]
++
++@pytest.mark.parametrize("x,y", versions)
++def test_dsversion(x, y):
++    assert DSVersion(x) > DSVersion(y)
++
+--- a/src/lib389/lib389/utils.py
++++ b/src/lib389/lib389/utils.py
+@@ -42,12 +42,6 @@ def wait(self):
+ import subprocess
+ import math
+ import errno
+-# Setuptools ships with 'packaging' module, let's use it from there
+-try:
+-    from pkg_resources.extern.packaging.version import LegacyVersion
+-# Fallback to a normal 'packaging' module in case 'setuptools' is stripped
+-except:
+-    from packaging.version import LegacyVersion
+ from socket import getfqdn
+ from ldapurl import LDAPUrl
+ from contextlib import closing
+@@ -1218,6 +1212,76 @@ def generate_ds_params(inst_num, role=ReplicaRole.STANDALONE):
+ 
+     return instance_data
+ 
++class DSVersion():
++    def __init__(self, version):
++        self._version = str(version)
++        self._key = _cmpkey(self._version)
++
++    def __str__(self):
++        return self._version
++
++    def __repr__(self):
++        return f"<DSVersion('{self}')>"
++
++    def __hash__(self):
++        return hash(self._key)
++
++    def __lt__(self, other):
++        if not isinstance(other, DSVersion):
++            return NotImplemented
++
++        return self._key < other._key
++
++    def __le__(self, other):
++        if not isinstance(other, DSVersion):
++            return NotImplemented
++
++        return self._key <= other._key
++
++    def __eq__(self, other):
++        if not isinstance(other, DSVersion):
++            return NotImplemented
++
++        return self._key == other._key
++
++    def __ge__(self, other):
++        if not isinstance(other, DSVersion):
++            return NotImplemented
++
++        return self._key >= other._key
++
++    def __gt__(self, other):
++        if not isinstance(other, DSVersion):
++            return NotImplemented
++
++        return self._key > other._key
++
++    def __ne__(self, other):
++        if not isinstance(other, DSVersion):
++            return NotImplemented
++
++        return self._key != other._key
++
++
++def _parse_version_parts(s):
++    for part in re.compile(r"(\d+ | [a-z]+ | \. | -)", re.VERBOSE).split(s):
++
++        if not part or part == ".":
++            continue
++
++        if part[:1] in "0123456789":
++            # pad for numeric comparison
++            yield part.zfill(8)
++        else:
++            yield "*" + part
++
++def _cmpkey(version):
++    parts = []
++    for part in _parse_version_parts(version.lower()):
++        parts.append(part)
++
++    return tuple(parts)
++
+ 
+ def get_ds_version(paths=None):
+     """
+@@ -1245,9 +1309,9 @@ def ds_is_related(relation, *ver, instance=None):
+     if len(ver) > 1:
+         for cmp_ver in ver:
+             if cmp_ver.startswith(ds_ver[:3]):
+-                return ops[relation](LegacyVersion(ds_ver),LegacyVersion(cmp_ver))
++                return ops[relation](DSVersion(ds_ver), DSVersion(cmp_ver))
+     else:
+-        return ops[relation](LegacyVersion(ds_ver), LegacyVersion(ver[0]))
++        return ops[relation](DSVersion(ds_ver), DSVersion(ver[0]))
+ 
+ 
+ def ds_is_older(*ver, instance=None):
+

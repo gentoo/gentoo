@@ -1,0 +1,23 @@
+Index: id3lib-3.8.3/doc/Doxyfile
+===================================================================
+--- a/doc/Doxyfile
++++ b/doc/Doxyfile
+@@ -262,17 +262,7 @@ WARN_FORMAT            = "$file:$line: $
+ # with spaces. 
+ 
+ INPUT                  = ../src \
+-                         ../include/id3/field.h \
+-                         ../include/id3/frame.h \
+-                         ../include/id3/globals.h \
+-                         ../include/id3/misc_support.h \
+-                         ../include/id3/reader.h \
+-                         ../include/id3/readers.h \
+-                         ../include/id3/sized_types.h \
+-                         ../include/id3/tag.h \
+-                         ../include/id3/tag.h \
+-                         ../include/id3/writer.h \
+-                         ../include/id3/writers.h
++                         ../include/id3 \
+ 
+ 
+ # If the value of the INPUT tag contains directories, you can use the 

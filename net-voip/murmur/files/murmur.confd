@@ -1,0 +1,9 @@
+# where to look for the config file
+MURMUR_CONF=/etc/murmur/murmur.ini
+
+# run as this user
+MURMUR_USER=murmur
+
+# HOME directory of MURMUR_USER
+MURMUR_HOME=/var/lib/murmur
+

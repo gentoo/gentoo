@@ -1,0 +1,18 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -94,10 +94,14 @@
+ endif
+ 
+ # Compiler flags
++ifndef CPPFLAGS
++CPPFLAGS = @CPPFLAGS@
++endif
++CPPFLAGS += @DEFS@
+ ifndef CFLAGS
+ CFLAGS = @CFLAGS@
+ endif
+-CFLAGS += -Wall -Wstrict-prototypes -pipe -O2
++CFLAGS += $(CPPFLAGS)
+ 
+ ifndef DFLAGS
+ DFLAGS = @DFLAGS@

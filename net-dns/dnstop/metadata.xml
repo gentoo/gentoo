@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <upstream>
+    <changelog>http://dns.measurement-factory.com/tools/dnstop/src/CHANGES</changelog>
+    <doc>http://dns.measurement-factory.com/tools/dnstop/dnstop.8.html</doc>
+    <remote-id type="github">measurement-factory/dnstop</remote-id>
+    <bugs-to>https://github.com/measurement-factory/dnstop/issues</bugs-to>
+  </upstream>
+</pkgmetadata>

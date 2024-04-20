@@ -1,0 +1,8 @@
+# conf.d file for neard
+#
+# Please check connmand --help for more information.
+# Useful options are:
+#    -d, --debug=DEBUG: Specify debug options to enable
+#    -p, --plugin=NAME: specify plugins to load.
+#    -P, --noplugin=NAME: specify plugins not to load.
+NEARD_OPTS=""

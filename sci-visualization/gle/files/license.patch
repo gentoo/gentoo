@@ -1,0 +1,11 @@
+diff -r -U3 src.orig/CMakeLists.txt src/CMakeLists.txt
+--- src.orig/CMakeLists.txt	2023-04-11 07:46:19.000000000 +0700
++++ src/CMakeLists.txt	2023-04-12 21:54:22.107770167 +0700
+@@ -461,7 +461,6 @@
+ 
+ # documentation file installation in doc folder
+ install(FILES
+-	../doc/LICENSE.txt
+ 	../doc/README.txt
+ 	../doc/ChangeLog.txt
+ 	CONFIGURATIONS Release Debug

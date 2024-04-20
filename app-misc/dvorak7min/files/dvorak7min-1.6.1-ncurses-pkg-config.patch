@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/show_bug.cgi?id=722336
+https://bugs.gentoo.org/show_bug.cgi?id=689986
+https://bugs.gentoo.org/show_bug.cgi?id=698082
+https://bugs.gentoo.org/show_bug.cgi?id=702372
+--- a/Makefile
++++ b/Makefile
+@@ -15,12 +15,13 @@ LIMIT_LENGTH = -DLIMIT_LENGTH=1024
+ 
+ ### That's all ###
+ 
+-CC      = gcc
++PKG_CONFIG ?= pkg-config
++CC      ?= gcc
+ CFLAGS  += -Wall \
+ 	$(PRETTINESS) $(NASTINESS) $(BEEPS) $(FLASHES) $(COLORS) \
+ 	$(LIMIT_LENGTH) $(PROF)
+ LDFLAGS += $(PROF)
+-LIBS    = -lncurses
++LIBS    = $(shell ${PKG_CONFIG} --libs ncurses)
+ 
+ OBJECTS = dvorak7min.o lessons.o
+ HEADERS = lessons.h

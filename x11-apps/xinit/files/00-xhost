@@ -1,0 +1,7 @@
+#!/bin/sh
+# Allow all local connections from the current UID
+# This fixes issues with hostname changes (usually by dhcp clients)
+# see bug 287498 for more info
+
+[ -x /usr/bin/xhost ] && [ -x /usr/bin/id ] &&
+	xhost +si:localuser:`id -un` > /dev/null 2>&1

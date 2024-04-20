@@ -1,0 +1,15 @@
+--- i/configure.ac
++++ w/configure.ac
+@@ -151,12 +151,6 @@ AS_IF([test "x$enable_utmp" = "xyes"], [
+ 	AS_IF([test "x$have_utmpx" != "xyes"],
+ 	      AC_ERROR(Missing utmpx.h))
+ 
+-	AC_CHECK_HEADER(utempter.h, have_utempter=yes, have_utempter=no)
+-	AS_IF([test "x$have_utempter" = "xyes"], [
+-		AC_DEFINE(HAVE_UTEMPTER)
+-		LIBS="$LIBS -lutempter"
+-	])
+-
+ 	AC_MSG_CHECKING(if utmpx struct has ut_host field)
+ 	AC_TRY_COMPILE([#include <utmpx.h>], [
+ 		struct utmpx u;

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://sourceforge.net/p/freecol/bugs/</bugs-to>
+		<doc>https://github.com/FreeCol/freecol/wiki</doc>
+		<remote-id type="sourceforge">freecol</remote-id>
+	</upstream>
+</pkgmetadata>

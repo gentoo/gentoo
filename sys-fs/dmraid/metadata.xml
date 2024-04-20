@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<use>
+		<flag name="intel-led">Enable Intel LED support</flag>
+		<flag name="led">Enable LED support</flag>
+		<flag name="mini">Create a minimal binary suitable for early boot environments</flag>
+	</use>
+	<!-- maintainer-needed -->
+	<longdescription>This software discovers, activates, deactivates and displays properties of software RAID sets eg: ATARAID and contained DOS partitions.</longdescription>
+</pkgmetadata>

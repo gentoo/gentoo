@@ -1,0 +1,11 @@
+--- a/test/test_tfits.c
++++ b/test/test_tfits.c
+@@ -322,7 +322,7 @@
+      *    Test on BINARY tables
+      */
+     say("Test the BINARY table") ;
+-    strcat(filename, srcdir) ;
++    strcpy(filename, srcdir) ;
+     strcat(filename, BIN_TABLE_NAME) ;
+     err += qfits_test_table(filename, 1) ;    
+     

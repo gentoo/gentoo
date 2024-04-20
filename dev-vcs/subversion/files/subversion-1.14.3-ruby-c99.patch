@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/919090
+https://src.fedoraproject.org/rpms/subversion/blob/rawhide/f/subversion-ruby-c99.patch
+
+The Ruby bindings apply the Ruby NIL_P macro to an apr_hash_t * value,
+which some compilers flag as a type error.
+
+Submitted upstream: <https://issues.apache.org/jira/browse/SVN-4915>
+
+--- a/subversion/bindings/swig/include/svn_containers.swg
++++ b/subversion/bindings/swig/include/svn_containers.swg
+@@ -299,7 +299,7 @@
+   $1 = svn_swig_rb_hash_to_apr_hash_svn_string($input, _global_pool);
+   _global_pool = NULL;
+   if (!NIL_P(rb_pool)) {
+-    if (NIL_P($1)) {
++    if ($1 == NULL) {
+       svn_swig_rb_destroy_pool(rb_pool);
+     } else {
+       svn_swig_rb_set_pool_for_no_swig_type($input, rb_pool);
+@@ -373,7 +373,7 @@
+     svn_swig_rb_hash_to_apr_hash_string($input, _global_pool);
+   _global_pool = NULL;
+   if (!NIL_P(rb_pool)) {
+-    if (NIL_P($1)) {
++    if ($1 == NULL) {
+       svn_swig_rb_destroy_pool(rb_pool);
+     } else {
+       svn_swig_rb_set_pool_for_no_swig_type($input, rb_pool);

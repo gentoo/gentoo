@@ -1,0 +1,19 @@
+See https://bugs.gentoo.org/show_bug.cgi?id=471270
+
+--- a/poster.c	2013-05-25 21:41:53.000000000 +0200
++++ b/poster.c	2013-05-25 21:43:41.000000000 +0200
+@@ -812,8 +812,12 @@
+ 			if (!strncmp( c, "(atend)", 7)) atend = 1;
+ 			else
+ 			{	/* pass this DSC to output */
+-				puts( buf);
+-				dsc_cont = 1;
++				/* if it is not another DocumentMedia comment */
++				if (strncmp( buf, "%%DocumentMedia", 15))
++				{
++					puts( buf);
++					dsc_cont = 1;
++				}
+ 			}
+ 		}
+ 		else if ( !strncmp( buf, "%%Pages:", 8 ) )

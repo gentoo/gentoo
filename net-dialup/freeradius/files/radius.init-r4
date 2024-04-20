@@ -1,0 +1,31 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command=/usr/sbin/radiusd
+command_args="${RADIUSD_OPTS}"
+pidfile="${pidfile:-/run/radiusd/radiusd.pid}"
+extra_started_commands="reload"
+
+depend() {
+	need localmount
+	use dns
+}
+
+start_pre() {
+	if [ ! -f /etc/raddb/radiusd.conf ] ; then
+		eerror "No /etc/raddb/radiusd.conf file exists!"
+		return 1
+	fi
+
+	checkpath -m0750 -o "${RADIUSD_USER:-root}:${RADIUSD_GROUP:-root}" -d \
+		$(dirname ${pidfile}) "${RADIUSD_LOGPATH:-/var/log/radius}"
+	checkpath -m0750 -o "${RADIUSD_USER:-root}:${RADIUSD_GROUP:-root}" -d \
+		$(dirname ${pidfile}) /run/radiusd
+}
+
+reload() {
+	ebegin "Reloading radiusd"
+	kill -HUP $(cat ${pidfile})
+	eend $?
+}

@@ -1,0 +1,23 @@
+From 59f5c5d6f302c3cacb212048cb7c30b727e03d91 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Thu, 30 Apr 2020 00:11:42 +1200
+Subject: Include '.' in @INC on Perl 5.28+
+
+---
+ Makefile.PL | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index e607505..51add3f 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -1,5 +1,5 @@
+ # $Id: Makefile.PL 10 1998-12-16 23:02:45Z daniel $
+-
++use lib '.';
+ use inc::Module::Install;
+ 
+ name('Audio-WMA');
+-- 
+2.26.2
+

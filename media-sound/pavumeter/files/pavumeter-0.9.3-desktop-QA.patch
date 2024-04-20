@@ -1,0 +1,16 @@
+--- a/src/pavumeter.desktop
++++ b/src/pavumeter.desktop
+@@ -7,4 +7,4 @@
+ Icon=audio-input-microphone
+ StartupNotify=true
+ Type=Application
+-Categories=Application;AudioVideo;Audio;
++Categories=AudioVideo;Audio;
+--- a/src/pavumeter-record.desktop
++++ b/src/pavumeter-record.desktop
+@@ -7,4 +7,4 @@
+ Icon=audio-input-microphone
+ StartupNotify=true
+ Type=Application
+-Categories=Application;AudioVideo;Audio;
++Categories=AudioVideo;Audio;

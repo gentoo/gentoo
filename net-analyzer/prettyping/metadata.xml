@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+		'prettyping' is a wrapper around the standard 'ping' tool,
+		making the output prettier, more colorful, more compact,
+		and easier to read.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">denilsonsa/prettyping</remote-id>
+	</upstream>
+</pkgmetadata>

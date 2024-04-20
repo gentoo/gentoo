@@ -1,0 +1,13 @@
+[Unit]
+Description=Internet domain name server
+After=network.target
+
+[Service]
+ExecStartPre=/usr/libexec/generate-rndc-key.sh
+ExecStartPre=/usr/sbin/named-checkconf -z /etc/bind/named.conf
+ExecStart=/usr/sbin/named -f -u named
+ExecReload=/usr/sbin/rndc reload
+ExecStop=/usr/sbin/rndc stop
+
+[Install]
+WantedBy=multi-user.target

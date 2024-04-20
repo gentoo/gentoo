@@ -1,0 +1,43 @@
+From c7dda2667b15cb9cf44856bd0d8efc9321eca354 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Mon, 16 Oct 2017 10:27:32 +0100
+Subject: Fix link failure on big-endian platforms.
+
+On powerpc64 tests failed as:
+
+```
+    Failed 2/2 subtests
+    ===(       2;0  0/?  0/?  0/? )=========================================Can't load '.../Digest-GOST-0.06/blib/arch/auto/Digest/GOST/GOST.so' for
+    module Digest::GOST: .../Digest-GOST-0.06/blib/arch/auto/Digest/GOST/GOST.so: undefined symbol: rhash_u32_swap_copy at /usr/lib64/perl5/5.24.3/powerpc64-linux/DynaLoader.pm line 193.
+```
+
+rhash_u32_swap_copy() is a function local to this package.
+Seems to be used only for big-endian case.
+
+The fix is to add missing 'src/byte_order.c' file.
+
+All tests pass with patch applied.
+
+Bug: https://bugs.gentoo.org/608214
+Bug: https://rt.cpan.org/Public/Bug/Display.html?id=120092
+Bug: https://github.com/gray/digest-gost/pull/1
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ GOST.xs | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/GOST.xs b/GOST.xs
+index 1dfd33c..4ea6f35 100644
+--- a/GOST.xs
++++ b/GOST.xs
+@@ -6,6 +6,7 @@
+ #include "ppport.h"
+ 
+ #include "src/gost.c"
++#include "src/byte_order.c"
+ 
+ static int
+ hex_encode (char *dest, const unsigned char *src, int len) {
+-- 
+2.14.2
+

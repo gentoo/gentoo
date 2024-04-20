@@ -1,0 +1,12 @@
+Gentoo-specific workaround due to https://bugs.gentoo.org/383179
+--- a/zip/zunzip.h
++++ b/zip/zunzip.h
+@@ -48,4 +48,8 @@
+ #include <zlib.h>
+ 
++#ifndef OF
++#define OF _Z_OF
++#endif
++
+ #if defined(STRICTUNZIP) || defined(STRICTZIPUNZIP)
+ /* like the STRICT of WIN32, we define a pointer that cannot be converted

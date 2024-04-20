@@ -1,0 +1,19 @@
+diff --git a/config.toml b/config.toml
+index 3768a6e..8345cb1 100644
+--- a/config.toml
++++ b/config.toml
+@@ -1,7 +1,7 @@
+ [terminal]
+ # The VT to run the greeter on. Can be "next", "current" or a number
+ # designating the VT.
+-vt = 1
++vt = 7
+ 
+ # The default session, also known as the greeter.
+ [default_session]
+@@ -13,4 +13,4 @@ command = "agreety --cmd $SHELL"
+ # The user to run the command as. The privileges this user must have depends
+ # on the greeter. A graphical greeter may for example require the user to be
+ # in the `video` group.
+-user = "greeter"
++user = "greetd"

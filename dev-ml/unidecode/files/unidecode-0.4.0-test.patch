@@ -1,0 +1,8 @@
+--- a/test/test_data.ml	2021-01-10 22:20:26.800309802 +0100
++++ b/test/test_data.ml	2021-01-10 22:20:36.290138477 +0100
+@@ -46,4 +46,4 @@
+    Norvegi, Finland, Estoni, Latvi, Litva, Pol'cho, Belarous', OUkraina, \
+    Gurji, Azerbaidjan, Kazakhstan, KHitad, Mongol, KHoito Solongos geһen \
+    arban durben gurenuudte khile zourydag, mun ouһaar ANOU-ai Alyaska \
+-   mojotoi bolon YApon oulastai khile negetei. "
++   mojotoi bolon YApon oulastai khile negetei."

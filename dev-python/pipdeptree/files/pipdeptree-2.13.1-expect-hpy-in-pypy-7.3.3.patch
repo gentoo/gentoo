@@ -1,0 +1,26 @@
+https://github.com/tox-dev/pipdeptree/pull/302
+
+From 8a2ccfe062d8978f010e2e4bd3f8e8b9e46ecbce Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Tue, 14 Nov 2023 08:36:09 +0200
+Subject: [PATCH] Expect hpy in pypy versions >= 7.3.3
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/tests/test_non_host.py
++++ b/tests/test_non_host.py
+@@ -33,7 +33,11 @@ def test_custom_interpreter(
+     if implementation == "CPython":
+         expected = {"pip", "setuptools", "wheel"}
+     elif implementation == "PyPy":
+-        expected = {"cffi", "greenlet", "pip", "readline", "setuptools", "wheel"}
++        # hpy added in 7.3.2, enabled in 7.3.3
++        if sys.pypy_version_info >= (7, 3, 3):
++            expected = {"cffi", "greenlet", "hpy", "pip", "readline", "setuptools", "wheel"}
++        else:
++            expected = {"cffi", "greenlet", "pip", "readline", "setuptools", "wheel"}
+     else:
+         raise ValueError(implementation)
+     if sys.version_info >= (3, 12):
+-- 
+2.42.1
+

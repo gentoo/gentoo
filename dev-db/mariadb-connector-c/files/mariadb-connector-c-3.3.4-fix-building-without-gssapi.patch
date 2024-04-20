@@ -1,0 +1,15 @@
+# https://jira.mariadb.org/browse/CONC-637
+# https://github.com/mariadb-corporation/mariadb-connector-c/commit/4e2408c1cc298ada91b30683501c0c94a6621562
+diff --git a/plugins/auth/CMakeLists.txt b/plugins/auth/CMakeLists.txt
+index ed9be6f3..da0b58e4 100644
+--- a/plugins/auth/CMakeLists.txt
++++ b/plugins/auth/CMakeLists.txt
+@@ -120,7 +120,7 @@ IF(GSSAPI_SOURCES)
+   IF(CMAKE_C_COMPILER_ID MATCHES "Clang")
+     SET_SOURCE_FILES_PROPERTIES(${GSSAPI_SOURCES} PROPERTY COMPILE_FLAGS "-Wno-deprecated-declarations")
+   ENDIF()
+-  IF(have__Wl___as_needed)
++  IF(have__Wl___as_needed AND TARGET auth_gssapi_client)
+     SET_TARGET_PROPERTIES(auth_gssapi_client PROPERTIES LINK_FLAGS "-Wl,--as-needed")
+   ENDIF()
+ ENDIF()

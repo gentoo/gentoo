@@ -1,0 +1,10 @@
+--- a/states/hl/enscript.st
++++ b/states/hl/enscript.st
+@@ -509,6 +509,7 @@ namerules
+   /\b(rfc.*\.txt|draft-.*\.txt)$/		rfc;
+   /\.inf$/i					inf;
+   /\.tex$/					tex;
++  /\.(ebuild|eclass)$/				ebuild;
+   /\.wmlscript$/				wmlscript;
+   /\.wmls$/					wmlscript;
+   /^.*$/					passthrough;

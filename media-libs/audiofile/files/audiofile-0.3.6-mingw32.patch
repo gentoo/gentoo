@@ -1,0 +1,20 @@
+bzero() is a POSIX-specific fuinction.
+x86_64-w64-mingw32-gcc does not provide one.
+
+https://github.com/mpruett/audiofile/commit/d9363a5d16af4ce55eb35c5aad9ca19bb9c53cbe
+
+commit d9363a5d16af4ce55eb35c5aad9ca19bb9c53cbe
+Author: Daniel Verkamp <daniel@drv.nu>
+Date:   Mon Jul 4 21:57:44 2016 -0500
+
+    Replace bzero() with memset().
+
+diff --git a/libaudiofile/CAF.cpp b/libaudiofile/CAF.cpp
+index d2b62ea..5752117 100644
+--- a/libaudiofile/CAF.cpp
++++ b/libaudiofile/CAF.cpp
+@@ -720,3 +720,3 @@ void CAFFile::initALACCompressionParams()
+ 	m_codecData = new Buffer(codecDataSize);
+-	bzero(m_codecData->data(), m_codecData->size());
++	memset(m_codecData->data(), 0, m_codecData->size());
+ 

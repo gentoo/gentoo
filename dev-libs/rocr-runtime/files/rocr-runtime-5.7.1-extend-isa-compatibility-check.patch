@@ -1,0 +1,73 @@
+Combined with matching changes within hip ebuild, this patch allows
+to load compatible kernels whenever possible.
+For example if AMDGPU_TARGETS is set to gfx1030 and some application
+was started on gfx1036, it loads gfx1030 kernel.
+
+Author: Cordell Bloor <cgmb@slerp.xyz>
+https://salsa.debian.org/rocm-team/rocr-runtime/-/blob/master/debian/patches/0004-extend-isa-compatibility-check.patch
+--- src/core/runtime/isa.cpp
++++ src/core/runtime/isa.cpp
+@@ -43,6 +43,7 @@
+ #include "core/inc/isa.h"
+ 
+ #include <algorithm>
++#include <array>
+ #include <cstring>
+ #include <iostream>
+ #include <sstream>
+@@ -69,13 +70,53 @@ bool Wavefront::GetInfo(
+   }
+ }
+ 
++template <class T, std::size_t N>
++static bool Contains(const std::array<T, N>& arr, const T& value) {
++  return std::find(std::begin(arr), std::end(arr), value) != std::end(arr);
++}
++
++static bool IsVersionCompatible(const Isa &code_object_isa,
++                                const Isa &agent_isa) {
++  if (code_object_isa.GetMajorVersion() == agent_isa.GetMajorVersion() &&
++      code_object_isa.GetMinorVersion() == agent_isa.GetMinorVersion()) {
++
++      if (code_object_isa.GetStepping() == agent_isa.GetStepping()) {
++        return true; // exact match
++      }
++
++      // the processor and code object may sometimes be compatible if
++      // they differ only by stepping version
++      if (code_object_isa.GetMajorVersion() == 9 &&
++          code_object_isa.GetMinorVersion() == 0) {
++        const std::array<int32_t, 4> gfx900_equivalent = { 0, 2, 9, 12 };
++        const std::array<int32_t, 5> gfx900_superset = { 0, 2, 6, 9, 12 };
++        if (Contains(gfx900_equivalent, code_object_isa.GetStepping()) &&
++            Contains(gfx900_superset, agent_isa.GetStepping())) {
++          return true; // gfx900 compatible
++        }
++      } else if (code_object_isa.GetMajorVersion() == 10) {
++        if (code_object_isa.GetMinorVersion() == 1) {
++          const std::array<int32_t, 2> gfx1010_equivalent = { 0, 2 };
++          const std::array<int32_t, 4> gfx1010_superset = { 0, 1, 2, 3 };
++          if (Contains(gfx1010_equivalent, code_object_isa.GetStepping()) &&
++              Contains(gfx1010_superset, agent_isa.GetStepping())) {
++            return true; // gfx1010 compatible
++          }
++        } else if (code_object_isa.GetMinorVersion() == 3) {
++          return true; // gfx1030 compatible
++        }
++      }
++    }
++
++  return false;
++}
++
+ /* static */
+ bool Isa::IsCompatible(const Isa &code_object_isa,
+                        const Isa &agent_isa) {
+-  if (code_object_isa.GetVersion() != agent_isa.GetVersion())
++  if (!IsVersionCompatible(code_object_isa, agent_isa))
+     return false;
+ 
+-  assert(code_object_isa.IsSrameccSupported() == agent_isa.IsSrameccSupported()  && agent_isa.GetSramecc() != IsaFeature::Any);
+   if ((code_object_isa.GetSramecc() == IsaFeature::Enabled ||
+         code_object_isa.GetSramecc() == IsaFeature::Disabled) &&
+       code_object_isa.GetSramecc() != agent_isa.GetSramecc())

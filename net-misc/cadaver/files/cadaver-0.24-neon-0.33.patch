@@ -1,0 +1,15 @@
+Trimmed from diffing upstream d0de5ee5276e83ac1b5ff6bde56084a565bff5fb
+to 3c8ecfe9bc8a7fbee58425be69aea89ae3f718e9, which included some
+extraneous bits.
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -35,7 +35,7 @@ AS_HELP_STRING([--disable-netrc],[enable .netrc support]),,
+ 
+ NEON_WITH_LIBS
+ 
+-NE_REQUIRE_VERSIONS([0], [27 28 29 30 31 32])
++NE_REQUIRE_VERSIONS([0], [27 28 29 30 31 32 33])
+ 
+ dnl Don't enable zlib or ACL support in neon
+ NEON_WITHOUT_ZLIB

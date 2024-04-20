@@ -1,0 +1,26 @@
+C99 `inline` is not guaranteed to emit an external definition
+https://www.greenend.org.uk/rjk/tech/inline.html
+Bug: https://bugs.gentoo.org/922958
+
+--- a/utils/exportd/exportd.c
++++ b/utils/exportd/exportd.c
+@@ -53,7 +53,7 @@
+  */
+ inline static void set_signals(void);
+ 
+-inline void
++inline static void
+ cleanup_lockfiles (void)
+ {
+ 	unlink(etab.lockfn);
+--- a/utils/mountd/mountd.c
++++ b/utils/mountd/mountd.c
+@@ -111,7 +111,7 @@
+ 	nfs_svc_unregister(MOUNTPROG, MOUNTVERS_NFSV3);
+ }
+ 
+-static void
++inline static void
+ cleanup_lockfiles (void)
+ {
+ 	unlink(etab.lockfn);

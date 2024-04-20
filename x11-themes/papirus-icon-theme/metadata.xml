@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>pacho@gentoo.org</email>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<bugs-to>https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/issues</bugs-to>
+		<remote-id type="github">PapirusDevelopmentTeam/papirus-icon-theme</remote-id>
+	</upstream>
+</pkgmetadata>

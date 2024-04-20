@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="rtas_errd daemon"
+description="Daemon to read/parse RTAS platform error(s)/event(s)"
+command=/usr/sbin/rtas_errd
+command_args="${rtas_errd_args}"
+command_background=true
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	need localmount
+	use logger
+}

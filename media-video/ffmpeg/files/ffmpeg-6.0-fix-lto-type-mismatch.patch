@@ -1,0 +1,41 @@
+https://ffmpeg.org//pipermail/ffmpeg-devel/2023-November/317055.html
+https://bugs.gentoo.org/907484
+
+From 408882a387f75ae57524073385b47d68339ec486 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Tue, 14 Nov 2023 13:26:47 +0000
+Subject: [PATCH 1/1] swscale/x86/rgb_2_rgb: Add opaque pointer to missed
+ definitions of ff_nv12ToUV
+
+Opaque parameters were previously added to the original definition of
+ff_nv12ToUV, leading to gcc noticing a type mismatch with -Wlto-type-mismatch.
+
+https://git.ffmpeg.org/gitweb/ffmpeg.git/commit/f2de911818fbd7e73343803626b697fd0c968121
+https://bugs.gentoo.org/907484
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+Signed-off-by: Anton Khirnov <anton@khirnov.net>
+--- a/libswscale/x86/rgb2rgb_template.c
++++ b/libswscale/x86/rgb2rgb_template.c
+@@ -1823,7 +1823,8 @@ void RENAME(ff_nv12ToUV)(uint8_t *dstU, uint8_t *dstV,
+                          const uint8_t *src1,
+                          const uint8_t *src2,
+                          int w,
+-                         uint32_t *unused2);
++                         uint32_t *unused2,
++                         void *opq);
+ static void RENAME(deinterleaveBytes)(const uint8_t *src, uint8_t *dst1, uint8_t *dst2,
+                                       int width, int height, int srcStride,
+                                       int dst1Stride, int dst2Stride)
+@@ -1831,7 +1832,7 @@ static void RENAME(deinterleaveBytes)(const uint8_t *src, uint8_t *dst1, uint8_t
+     int h;
+ 
+     for (h = 0; h < height; h++) {
+-        RENAME(ff_nv12ToUV)(dst1, dst2, NULL, src, NULL, width, NULL);
++        RENAME(ff_nv12ToUV)(dst1, dst2, NULL, src, NULL, width, NULL, NULL);
+         src  += srcStride;
+         dst1 += dst1Stride;
+         dst2 += dst2Stride;
+-- 
+2.43.0
+

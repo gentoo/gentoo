@@ -1,0 +1,11 @@
+--- mdadm-4.3/Makefile.orig	2024-03-13 20:11:48.949678469 -0700
++++ mdadm-4.3/Makefile	2024-03-13 20:11:52.773671814 -0700
+@@ -132,7 +132,7 @@
+ MON_LDFLAGS += -pthread
+ endif
+ 
+-LDFLAGS = -Wl,-z,now,-z,noexecstack
++LDFLAGS += -Wl,-z,now,-z,noexecstack
+ 
+ # If you want a static binary, you might uncomment these
+ # LDFLAGS += -static

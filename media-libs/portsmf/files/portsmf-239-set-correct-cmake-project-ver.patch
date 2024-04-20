@@ -1,0 +1,26 @@
+From e26f7ccfc40365f7d32f702d0b66b8f3f7aaa5a2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@aarsen.me>
+Date: Sun, 18 Dec 2022 16:06:15 +0100
+Subject: [PATCH 2/3] Fix up project VERSION declaration
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Forwarded: https://codeberg.org/tenacityteam/portsmf/pulls/11
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9d306f2..9df117f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ cmake_minimum_required(VERSION 3.1)
+ 
+-project(PortSMF VERSION 236 LANGUAGES CXX)
++project(PortSMF VERSION 239 LANGUAGES CXX)
+ set(SOVERSION 1)
+ set(LIBRARY_VERSION 1.0.${CMAKE_PROJECT_VERSION})
+ 
+-- 
+2.39.0
+

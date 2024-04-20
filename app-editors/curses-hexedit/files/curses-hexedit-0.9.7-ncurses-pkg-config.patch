@@ -1,0 +1,34 @@
+use pkg-config to locate ncurses rather than a library search
+
+--- a/configure.in
++++ b/configure.in
+@@ -19,14 +19,9 @@
+ AC_HEADER_STDC
+ AC_PROG_GCC_TRADITIONAL
+ 
+-AC_CHECK_HEADERS(ncurses.h)
+-if test "$ac_cv_header_ncurses_h" = "no"; then
+-  AC_CHECK_HEADERS(curses.h)
+-  if test "$ac_cv_header_curses_h" = "no"; then
+-    echo "*** Cannot find Curses headers, probably not installed"
+-    echo "*** Hexedit will not run without the curses library"
+-  fi
+-fi
++PKG_CHECK_MODULES(NCURSES, ncurses)
++CFLAGS="$CFLAGS $NCURSES_CFLAGS -DHAVE_NCURSES_H=1"
++LIBS="$LIBS $NCURSES_LIBS"
+ 
+ AC_CHECK_HEADERS(fcntl.h getopt.h limits.h sys/ioctl.h unistd.h)
+ AC_HEADER_DIRENT
+@@ -96,11 +91,4 @@ else
+   fi
+ fi
+ 
+-AC_CHECK_LIB(ncurses, newwin, ,
+-    AC_CHECK_LIB(curses, newwin), ,
+-    echo "Hexedit requires the curses library"
+-    echo "Ncurses is freely available: ftp://ftp.gnu.org/pub/gnu/"
+-    exit 1)
+-
+-
+ AC_OUTPUT(Makefile docs/Makefile gnu/Makefile src/Makefile)

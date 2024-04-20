@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/919207
+https://gitlab.freedesktop.org/xorg/app/xdm/-/issues/15
+https://gitlab.freedesktop.org/xorg/app/xdm/-/merge_requests/18
+
+From bccb77746528134aa2e865ca4f44fd9424738b3f Mon Sep 17 00:00:00 2001
+From: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date: Tue, 5 Dec 2023 17:25:28 -0800
+Subject: [PATCH] Fix -Wincompatible-pointer-types warning from gcc (issue #15)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+chooser.c:280:26: warning: passing argument 2 of â€˜XawListChangeâ€™ from
+ incompatible pointer type [-Wincompatible-pointer-types]
+  280 |     XawListChange (list, newTable, size, 0, TRUE);
+      |                          ^~~~~~~~
+      |                          |
+      |                          char **
+In file included from chooser.c:59:
+/usr/include/X11/Xaw/List.h:170:27: note: expected â€˜const char **â€™ but
+ argument is of type â€˜char **â€™
+  170 |  _Xconst char           **list,
+
+Closes: #15
+Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+--- a/chooser/chooser.c
++++ b/chooser/chooser.c
+@@ -277,7 +277,7 @@ RebuildTable (int size)
+ 	    newTable[i] = names->fullname;
+ 	qsort (newTable, size, sizeof (char *), HostnameCompare);
+     }
+-    XawListChange (list, newTable, size, 0, TRUE);
++    XawListChange (list, (_Xconst char **) newTable, size, 0, TRUE);
+     free (NameTable);
+     NameTable = newTable;
+     NameTableSize = size;
+-- 
+GitLab

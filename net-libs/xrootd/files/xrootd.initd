@@ -1,0 +1,32 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+    need net
+    use logger dns
+    provide root-file-server
+}
+
+start_pre() {
+    checkpath -q -d -m 0755 -o xrootd:xrootd /var/run/spool
+    checkpath -q -d -m 0755 -o xrootd:xrootd /var/run/xrootd
+}
+
+start() {
+    ebegin "Starting extended ROOTD file server"
+    start-stop-daemon --start --quiet --user ${XROOTD_USER} \
+	--make-pidfile --pidfile /var/run/${RC_SVCNAME}.pid \
+        --exec /usr/bin/${RC_SVCNAME} --background -- \
+        -c ${XROOTD_CONF} -l ${XROOTD_LOGDIR}/${RC_SVCNAME}.log \
+        ${XROOTD_OPTS}
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping extended ROOTD file server"
+    start-stop-daemon --stop --quiet \
+	--pidfile /var/run/${RC_SVCNAME}.pid \
+	--exec /usr/bin/${RC_SVCNAME}
+    eend $?
+}

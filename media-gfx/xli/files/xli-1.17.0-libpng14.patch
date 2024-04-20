@@ -1,0 +1,14 @@
+http://aur.archlinux.org/packages.php?ID=1676
+http://archwyrm.net/~me/xli-libpng.diff
+
+--- a/png.c
++++ b/png.c
+@@ -27,7 +27,7 @@
+ 	if (ret != 8)
+ 		return 0;
+ 
+-	ret = png_check_sig(buf, 8);
++	ret = !png_sig_cmp(buf, 0, 8);
+ 
+ 	return (ret);
+ }

@@ -1,0 +1,212 @@
+diff -Naur scponly-4.8.orig/CHANGELOG scponly-4.8/CHANGELOG
+--- scponly-4.8.orig/CHANGELOG	2008-01-15 15:26:13.000000000 +0900
++++ scponly-4.8/CHANGELOG	2009-03-18 21:29:48.000000000 +0900
+@@ -1,3 +1,9 @@
++CVS
++	Update the SECURITY document to include a reference to /etc/popt and ~/.popt as
++		they relate to rsync.
++	Fix for rsync-3.0 which now uses a short -e option, with an optional argument as
++		a server side option indicating protocol compatibility.
++
+ scponly v4.8 - jan 14 2008
+ 	fix support for quota and passwd when running within the chroot (exec pre-chroot)
+ 	disallow rsync and svnserve from being run as daemons that listen on a port
+diff -Naur scponly-4.8.orig/SECURITY scponly-4.8/SECURITY
+--- scponly-4.8.orig/SECURITY	2008-01-15 15:26:13.000000000 +0900
++++ scponly-4.8/SECURITY	2009-03-18 21:29:48.000000000 +0900
+@@ -28,6 +28,10 @@
+ 
+ 	  svn, svnserve, rsync, and unison
+ 
++	  Note specifically that rsync uses popt for parsing command line arguments
++	  and popt explicitly checks /etc/popt and $HOME/.popt for aliases. Thus,
++	  users can likely bypass argument checking for rsync.
++
+ 4) Make sure that all files required for the chroot have the IMMUTABLE and
+    UNDELETABLE bits set.  Other bits might also be prudent. See: man 1 chattr.
+ 
+@@ -39,13 +43,16 @@
+    ~/.ssh, ~/.unison, ~/.subversion
+ 
+    NOTE: depending on file permissions in the above, ssh, unison, and
+-   subversion may not work correctly.
++   subversion may not work correctly.  Also note that the location of the
++   above directories is sometimes system dependent, so please check the
++   documentation specific to your system.
+ 
+ 7) Make sure that every directory the users have write permissions to are
+    on a filesystem that is mounted NODEV, NOEXEC.  Eg. Make sure that they
+    cannot execute files that they have permissions to upload.  They should
+    also not need permissions to create any devices.  If the user can't execute
+-   any files that he has access to upload, then you need not worry about the
++   any files that he has access to upload and the executable files on the
++   system are not considered harmful, then you need not worry about the
+    security problems referencing svn/svnserve above!
+ 
+ 8) Monitor your logs!  If you start to see something funny, odd, or strange in
+diff -Naur scponly-4.8.orig/helper.c scponly-4.8/helper.c
+--- scponly-4.8.orig/helper.c	2008-01-15 15:26:13.000000000 +0900
++++ scponly-4.8/helper.c	2009-03-18 21:29:48.000000000 +0900
+@@ -6,17 +6,15 @@
+ #include <sys/types.h>	/* for stat, getpwuid */
+ #include <sys/stat.h>	/* for stat */
+ #include <unistd.h>	/* for exit, access, getpwuid, execve, getopt */
+-#ifdef HAVE_GETOPT_H
+-#include <getopt.h> /* for getopt */
+-#endif
+ #include <errno.h>	/* for debugging */
+ #include <pwd.h>	/* to get username for config parsing */
+ #include <time.h>	/* time */
+ #include <libgen.h>	/* basename */
+ #include <stdlib.h>	/* realloc */
+ #include <syslog.h>
+-#include "scponly.h"
++
+ #include "config.h"
++#include "scponly.h" /* includes getopt */
+ 
+ #ifdef HAVE_GLOB
+ #include <glob.h>	/* for glob() */
+@@ -26,6 +24,11 @@
+ #endif
+ #endif
+ 
++#ifdef RSYNC_COMPAT
++#define RSYNC_ARG_SERVER 0x01
++#define RSYNC_ARG_EXECUTE 0x02
++#endif
++
+ #define MAX(x,y)	( ( x > y ) ? x : y )
+ #define MIN(x,y)	( ( x < y ) ? x : y )
+ 
+@@ -164,6 +167,13 @@
+ 	int			ch;
+ 	int			ac=0;
+ 	int			longopt_index = 0;
++#ifdef RSYNC_COMPAT
++	/* 
++	 * bitwise flag: 0x01 = server, 0x02 = -e.
++	 * Thus 0x03 is allowed and 0x01 is allowed, but 0x02 is not allowed
++	 */
++	int			rsync_flags = 0; 
++#endif /* RSYNC_COMPAT */
+ 
+ 	while (cmdarg != NULL)
+ 	{
+@@ -207,7 +217,7 @@
+ 				 *	otherwise, try a glibc-style reset of the global getopt vars
+ 				 */
+ 				optind=0;
+-#endif
++#endif /* HAVE_OPTRESET */
+ 				/*
+ 				 *	tell getopt to only be strict if the 'opts' is well defined
+ 				 */
+@@ -216,28 +226,49 @@
+ 					
+ 					debug(LOG_DEBUG, "getopt processing returned '%c' (%s)", ch, logstamp());
+ 					
++#ifdef RSYNC_COMPAT
++					if (exact_match(cmdarg->name, PROG_RSYNC) && (ch == 's' || ch == 'e')) {
++						if (ch == 's')
++							rsync_flags |= RSYNC_ARG_SERVER;
++						else
++							/* -e */
++							rsync_flags |= RSYNC_ARG_EXECUTE;
++						debug(LOG_DEBUG, "rsync_flags are now set to: %0x", rsync_flags);
++					}
++					else
++#endif /* RSYNC_COMPAT */
++
+ 					/* if the character is found in badarg, then it's not a permitted option */
+ 					if (cmdarg->badarg != NULL && (strchr(cmdarg->badarg, ch) != NULL))
+ 					{
+ 						syslog(LOG_ERR, "option '%c' or a related long option is not permitted for use with %s (arg was %s) (%s))", 
+-							ch, cmdarg->name, optarg, logstamp());
++							ch, cmdarg->name, (optarg!=NULL ? optarg : "<NULL>"), logstamp());
+ 						return 1;
+ 					}
+ 					else if (cmdarg->strict && ch == '?')
+ 					{
+ 						syslog(LOG_ERR, "an unrecognized option was encountered while processing cmd %s (arg was %s) (%s))", 
+-							cmdarg->name, optarg, logstamp());
++							cmdarg->name, (optarg!=NULL ? optarg : "<NULL>"), logstamp());
+ 						return 1;
+ 					}
+ 				}
+-#elif
++#ifdef RSYNC_COMPAT
++				/* it's not safe if the execute flag was set and server was not set */
++				if ((rsync_flags & RSYNC_ARG_EXECUTE) != 0 && (rsync_flags & RSYNC_ARG_SERVER) == 0) {
++						syslog(LOG_ERR, "option 'e' is not allowed unless '--server' is also set with cmd %s (%s)", 
++							PROG_RSYNC, logstamp());
++						return 1;
++				}
++#endif /* RSYNC_COMPAT */
++
++#elif /* HAVE_GETOPT */
+ 				/*
+ 				 * make sure that processing doesn't continue if we can't validate a rsync check
+ 				 * and if the getopt flag is set.
+ 				 */
+ 				syslog(LOG_ERR, "a getopt() argument check could not be performed for %s, recompile scponly without support for %s or rebuild scponly with getopt", av[0], av[0]);
+ 				return 1;
+-#endif
++#endif /* HAVE_GETOPT */
+ 			}
+ 			else
+ 			/*
+diff -Naur scponly-4.8.orig/scponly.c scponly-4.8/scponly.c
+--- scponly-4.8.orig/scponly.c	2008-01-15 15:28:24.000000000 +0900
++++ scponly-4.8/scponly.c	2009-03-18 21:29:48.000000000 +0900
+@@ -91,16 +91,18 @@
+ 
+ #ifdef RSYNC_COMPAT
+ struct option rsync_longopts[] = {
++	/* options we need to know about that are safe */
++	{"server",			0,	0,		(int)'s'},
+ 	/* I use 'e' for val here because that's what's listed in cmd_arg_t->badarg  */
+-	{"rsh", 			1,	0,		(int)'e'},
++	{"rsh", 			1,	0,		(int)'r'},
+ 	/* the following are disabled because they use daemon mode */
+-	{"daemon",			0,	0,		(int)'e'},
+-	{"rsync-path",		1,	0,		(int)'e'},
+-	{"address",			1,	0,		(int)'e'},
+-	{"port",			1,	0,		(int)'e'},
+-	{"sockopts",		1,	0,		(int)'e'},
+-	{"config",			1,	0,		(int)'e'},
+-	{"no-detach",		0,	0,		(int)'e'},
++	{"daemon",			0,	0,		(int)'d'},
++	{"rsync-path",		1,	0,		(int)'d'},
++	{"address",			1,	0,		(int)'d'},
++	{"port",			1,	0,		(int)'d'},
++	{"sockopts",		1,	0,		(int)'d'},
++	{"config",			1,	0,		(int)'d'},
++	{"no-detach",		0,	0,		(int)'d'},
+ 	{ NULL,				0,	NULL,	0 },
+ 	};
+ #endif
+@@ -157,7 +159,7 @@
+ 	{ PROG_SCP, 		1, 				1,				"SoF",			"dfl:prtvBCc:i:P:q1246S:o:F:", empty_longopts },
+ #endif
+ #ifdef RSYNC_COMPAT
+-	{ PROG_RSYNC, 		1, 				0,				"e",			"e:",			rsync_longopts },
++	{ PROG_RSYNC, 		1, 				0,				"rde",			"e::",			rsync_longopts },
+ #endif	
+ #ifdef UNISON_COMPAT	
+ 	{ PROG_UNISON, 		0, 				0,				"-rshcmd",		NULL, 			empty_longopts },
+diff -Naur scponly-4.8.orig/scponly.h scponly-4.8/scponly.h
+--- scponly-4.8.orig/scponly.h	2008-01-15 15:26:13.000000000 +0900
++++ scponly-4.8/scponly.h	2009-03-18 21:29:48.000000000 +0900
+@@ -1,6 +1,9 @@
+ #include <stdio.h>	/* FILENAME_MAX */
+-#include <getopt.h> /* struct option */ 
+-#include "config.h"
++#include "config.h" /* include before most other files */
++
++#ifdef HAVE_GETOPT_H
++#include <getopt.h> /* for struct option for getopt */
++#endif
+ 
+ #define MAX_USERNAME 32
+ #define MAX_REQUEST (1024)		/* any request exceeding this is truncated */

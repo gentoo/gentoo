@@ -1,0 +1,7 @@
+#!/bin/sh
+#
+# To enable sync via cron, execute "sudo -u gvm touch /etc/gvm/cron-feed-sync-enabled"
+if [[ ! -f /etc/gvm/cron-feed-sync-enabled ]]; then
+   exit
+fi
+sudo -u gvm /usr/bin/greenbone-feed-sync --quiet --type all

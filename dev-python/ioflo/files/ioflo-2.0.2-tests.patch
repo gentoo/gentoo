@@ -1,0 +1,29 @@
+diff --git a/ioflo/aio/tcp/test/test_tcping.py b/ioflo/aio/tcp/test/test_tcping.py
+index f78d43f..ea9cc26 100644
+--- a/ioflo/aio/tcp/test/test_tcping.py
++++ b/ioflo/aio/tcp/test/test_tcping.py
+@@ -12,6 +12,8 @@ import shutil
+ import socket
+ import errno
+ 
++import pytest
++
+ from ioflo.aid.sixing import *
+ from ioflo.aid.consoling import getConsole
+ from ioflo.aio import wiring
+@@ -966,6 +968,7 @@ class BasicTestCase(unittest.TestCase):
+         wireLogBeta.close()
+         console.reinit(verbosity=console.Wordage.concise)
+ 
++    @pytest.mark.skip("Broken on modern python versions")
+     def testTLSConnectionVerifyNeither(self):
+         """
+         Test TLS client server connection with neither verify certs
+@@ -1490,6 +1493,7 @@ class BasicTestCase(unittest.TestCase):
+         wireLogBeta.close()
+         console.reinit(verbosity=console.Wordage.concise)
+ 
++    @pytest.mark.skip("Broken on modern python versions")
+     def testTLSConnectionVerifyBothTLSv1(self):
+         """
+         Test TLS client server connection with neither verify certs

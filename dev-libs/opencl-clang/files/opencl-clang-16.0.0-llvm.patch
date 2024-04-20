@@ -1,0 +1,105 @@
+commit e047ae6bb9cef488781e0b06c5ae9018bacb24c4
+Author: Wenju He <wenju.he@intel.com>
+Date:   Thu May 18 16:01:52 2023 +0800
+
+    Revert to use add_llvm_library and revert linking LLVM libraries (#438)
+    
+    Add cmake option EXCLUDE_LIBS_FROM_ALL to remove a specific llvm library
+    from llvm 'all'.
+    
+    This PR partially reverts 743bd15.
+    This PR addresses #401, #417, #418, #422, and brings back SONAME.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a7d1927..be4fefd 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -298,21 +298,23 @@ else()
+   )
+ endif()
+ 
+-add_library(${TARGET_NAME} SHARED
+-    ${TARGET_INCLUDE_FILES}
+-    ${TARGET_SOURCE_FILES}
+-    $<TARGET_OBJECTS:cl_headers>
+-)
+-
+-# Same CRT compile option are reqiured to avoid link errors on Windows.
+-# MD and MDd are choosed by default for release and debug build in LLVM.
+-# If users set MT or MTd flags, they also need to add the flags for
+-# opencl-clang sources using a custom macro set_msvc_crt_flags.
+-if(COMMAND set_msvc_crt_flags)
+-    set_msvc_crt_flags(${TARGET_NAME})
++set(EXCLUDE_LIBS_FROM_ALL "" CACHE STRING "Space-separated list of LLVM libraries to exclude from all")
++llvm_map_components_to_libnames(ALL_LLVM_LIBS all)
++if (NOT "${EXCLUDE_LIBS_FROM_ALL}" STREQUAL "")
++  list(REMOVE_ITEM ALL_LLVM_LIBS ${EXCLUDE_LIBS_FROM_ALL})
+ endif()
++list(APPEND OPENCL_CLANG_LINK_LIBS ${ALL_LLVM_LIBS})
++
++add_llvm_library(${TARGET_NAME} SHARED
++  ${TARGET_INCLUDE_FILES}
++  ${TARGET_SOURCE_FILES}
++  $<TARGET_OBJECTS:cl_headers>
+ 
+-add_dependencies(${TARGET_NAME} CClangCompileOptions)
++  DEPENDS CClangCompileOptions
++
++  LINK_LIBS
++    ${OPENCL_CLANG_LINK_LIBS}
++  )
+ 
+ if (WIN32)
+     # Enable compiler generation of Control Flow Guard security checks.
+@@ -328,51 +330,6 @@ elseif(UNIX)
+         LINK_FLAGS " -Wl,--no-undefined")
+ endif(WIN32)
+ 
+-# Enable new IN_LIST operator.
+-cmake_policy(SET CMP0057 NEW)
+-set(OTHER_LIBRARIES)
+-if ("NVPTX" IN_LIST LLVM_TARGETS_TO_BUILD)
+-    list(APPEND OTHER_LIBRARIES LLVMNVPTXCodeGen LLVMNVPTXDesc LLVMNVPTXInfo)
+-endif()
+-if ("AMDGPU" IN_LIST LLVM_TARGETS_TO_BUILD)
+-    list(APPEND OTHER_LIBRARIES LLVMAMDGPUCodeGen LLVMAMDGPUAsmParser LLVMAMDGPUDesc LLVMAMDGPUInfo)
+-endif()
+-
+-target_link_libraries( ${TARGET_NAME}
+-                       LINK_PRIVATE
+-                       ${OPENCL_CLANG_LINK_LIBS}
+-                       LLVMX86CodeGen
+-                       LLVMX86AsmParser
+-                       LLVMX86Desc
+-                       LLVMX86Info
+-                       LLVMX86Disassembler
+-                       LLVMAnalysis
+-                       LLVMCodeGen
+-                       LLVMCore
+-                       LLVMipo
+-                       LLVMInstCombine
+-                       LLVMInstrumentation
+-                       LLVMMC
+-                       LLVMMCParser
+-                       LLVMObjCARCOpts
+-                       LLVMOption
+-                       LLVMScalarOpts
+-                       LLVMSupport
+-                       LLVMTransformUtils
+-                       LLVMVectorize
+-                       LLVMAsmPrinter
+-                       LLVMSelectionDAG
+-                       LLVMMCDisassembler
+-                       LLVMProfileData
+-                       LLVMObject
+-                       LLVMBitWriter
+-                       LLVMIRReader
+-                       LLVMAsmParser
+-                       LLVMTarget
+-                       LLVMBitReader
+-                       ${OTHER_LIBRARIES}
+-                      )
+-
+ install(FILES opencl_clang.h
+         DESTINATION include/cclang
+         COMPONENT ${TARGET_NAME})

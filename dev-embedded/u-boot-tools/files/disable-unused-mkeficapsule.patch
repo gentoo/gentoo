@@ -1,0 +1,14 @@
+Disable unused mkeficapsule
+
+`CONFIG_TOOLS_MKEFICAPSULE` requires gnutls to build. Since we don't actually
+expose the tool, we can just disable it.
+
+diff -ur a/configs/tools-only_defconfig b/configs/tools-only_defconfig
+--- a/configs/tools-only_defconfig	2023-01-09 09:07:33.000000000 -0700
++++ b/configs/tools-only_defconfig	2023-08-11 14:01:50.151294889 -0600
+@@ -33,4 +33,4 @@
+ # CONFIG_VIRTIO_SANDBOX is not set
+ # CONFIG_GENERATE_ACPI_TABLE is not set
+ # CONFIG_EFI_LOADER is not set
+-CONFIG_TOOLS_MKEFICAPSULE=y
++# CONFIG_TOOLS_MKEFICAPSULE is not set

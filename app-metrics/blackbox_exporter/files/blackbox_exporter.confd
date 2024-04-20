@@ -1,0 +1,2 @@
+# arguments for prometheus blackbox exporter
+command_args="--config.file=/etc/blackbox_exporter/blackbox.yml"

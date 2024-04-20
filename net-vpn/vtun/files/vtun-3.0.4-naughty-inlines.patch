@@ -1,0 +1,21 @@
+--- a/vtun.h	2016-10-01 23:27:51.000000000 +0200
++++ b/vtun.h	2022-11-27 19:08:02.609754913 +0100
+@@ -232,6 +232,6 @@
+ int  tunnel(struct vtun_host *host);
+ int  read_config(char *file);
+ struct vtun_host * find_host(char *host);
+-inline void clear_nat_hack_flags(int svr);
++void clear_nat_hack_flags(int svr);
+ 
+ #endif
+--- a/cfg_file.y	2022-11-27 19:09:33.380433928 +0100
++++ b/cfg_file.y	2022-11-27 19:09:57.340613164 +0100
+@@ -610,7 +610,7 @@
+ }
+ 
+ /* Clear the VTUN_NAT_HACK flag which are not relevant to the current operation mode */
+-inline void clear_nat_hack_flags(int svr)
++void clear_nat_hack_flags(int svr)
+ {
+ 	if (svr)
+ 		llist_trav(&host_list,clear_nat_hack_server,NULL);

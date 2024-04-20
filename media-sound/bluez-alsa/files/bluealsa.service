@@ -1,0 +1,10 @@
+[Unit]
+Description=Bluetooth Audio ALSA Backend
+Requisite=dbus.service
+After=bluetooth.service dbus.service
+
+[Service]
+ExecStart=/usr/bin/bluealsa
+
+[Install]
+WantedBy=bluetooth.target

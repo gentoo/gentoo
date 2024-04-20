@@ -1,0 +1,13 @@
+We need SLOT 5 here.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -86,7 +86,7 @@
+     )
+ 
+     # Check if sane API is available.
+-    find_package(${KSANECORE_NAME} "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_VERSION_MINOR}" REQUIRED)
++    find_package(${KSANECORE_NAME} "23.08" REQUIRED)
+     add_subdirectory(src)
+     if (BUILD_TESTING)
+ #DONOTCOMPILE         add_subdirectory(autotests)

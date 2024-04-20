@@ -1,0 +1,112 @@
+--- a/configure.in
++++ b/configure.in
+@@ -570,53 +570,7 @@
+       fi
+   done
+ 
+-  for i in $mysql_lib_directory; do
+-      if test -z "$MYSQL_LIB_DIR"; then
+-        str="$i/libmysqlclient.*"
+-        for j in `echo $str`; do
+-          if test -r $j; then
+-            MYSQL_LIB_DIR=$i
+-            break 2
+-          fi
+-        done
+-      fi
+-      if test -z "$MYSQL_LIB_DIR"; then
+-        str="$i/lib/libmysqlclient.*"
+-        for j in `echo $str`; do
+-          if test -r "$j"; then
+-            MYSQL_LIB_DIR="$i/lib"
+-            break 2
+-          fi
+-        done
+-      fi
+-      if test -z "$MYSQL_LIB_DIR"; then
+-        str="$i/mysql/libmysqlclient.*"
+-        for j in `echo $str`; do
+-          if test -r "$j"; then
+-            MYSQL_LIB_DIR="$i/mysql"
+-            break 2
+-          fi
+-        done 
+-      fi
+-      if test -z "$MYSQL_LIB_DIR"; then
+-        str="$i/mysql/lib/libmysqlclient.*"
+-        for j in `echo $str`; do
+-          if test -r "$j"; then
+-            MYSQL_LIB_DIR="$i/mysql/lib"
+-            break 2
+-          fi
+-        done
+-      fi
+-      if test -z "$MYSQL_LIB_DIR"; then
+-        str="$i/lib/mysql/libmysqlclient.*"
+-        for j in `echo $str`; do
+-          if test -r "$j"; then
+-            MYSQL_LIB_DIR="$i/lib/mysql"
+-            break 2
+-          fi
+-        done
+-      fi
+-  done
++  AC_CHECK_LIB([mysqlclient],[mysql_query],[MYSQL_LIB_DIR="$libdir"])
+ 
+   if test -z "$MYSQL_INC_DIR"; then
+     if test "x$mysql_fail" != "xno"; then
+@@ -760,13 +714,7 @@
+     fi
+   else
+ 
+-    str="$ODBC_DIR/lib/libodbc.*"
+-    for j in `echo $str`; do
+-      if test -r "$j"; then 
+-        ODBC_LIB_DIR="$ODBC_DIR/lib"
+-        ODBC_LIB="odbc"
+-      fi
+-    done
++    AC_CHECK_LIB([odbc],[SQLAllocHandle],[ODBC_LIB_DIR="$libdir";ODBC_LIB="odbc"])
+ 
+ dnl    if test -z "$ODBC_LIB_DIR"; then
+ dnl      str="$ODBC_DIR/lib/libiodbc.*"
+@@ -786,7 +734,6 @@
+       fi
+     else
+       AC_MSG_RESULT(yes)
+-      LDFLAGS="${LDFLAGS} -L${ODBC_LIB_DIR}"
+       CPPFLAGS="${CPPFLAGS} -I${ODBC_INC_DIR} -DENABLE_ODBC"
+       LIBS="${LIBS} -l$ODBC_LIB"
+     fi
+@@ -863,21 +810,7 @@
+   fi
+ 
+ 
+-  if test -z "$POSTGRESQL_DIR"; then
+-    for dir in $postgresql_directory; do
+-       for i in "lib" "lib/pgsql"; do
+-         str="$dir/$i/libpq.*"
+-         for j in `echo $str`; do
+-           if test -r $j; then
+-  	     POSTGRESQL_LIB_DIR="$dir/$i"
+-             break 2
+-           fi
+-         done
+-       done
+-   done
+-  else
+-   POSTGRESQL_LIB_DIR="$POSTGRESQL_DIR/lib"
+-  fi
++  AC_CHECK_LIB([pq],[PQexec],[POSTGRESQL_LIB_DIR="$libdir"])
+ 
+   if test -z "$POSTGRESQL_LIB_DIR"; then
+      if test "$postgresql_fail" != "no"; then
+@@ -892,7 +825,7 @@
+      CPPFLAGS="${CPPFLAGS} -I${POSTGRESQL_INC_DIR} -DENABLE_POSTGRESQL"
+      AC_CHECK_LIB(pq, PQexec,, PQLIB="no")
+      if test "x$PQLIB" != "xno"; then
+-        LIBS="${LIBS} -lpq"
++        :
+      else
+         echo
+         echo "   ERROR!  libpq (postgresql) not found!"

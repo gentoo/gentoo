@@ -1,0 +1,41 @@
+From dac9752495d1467d11e30450989194177677f30a Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 21 Oct 2017 14:44:59 2017 +0200
+Subject: [PATCH 2/5] Xsession
+
+Thanks-to: Joakim Tjernlund <joakim.tjernlund@infinera.com>
+Bug: https://bugs.gentoo.org/611210
+
+---
+ data/scripts/Xsession | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/data/scripts/Xsession b/data/scripts/Xsession
+index a971d40..2d84a5a 100755
+--- a/data/scripts/Xsession
++++ b/data/scripts/Xsession
+@@ -39,6 +39,10 @@ case $SHELL in
+     ;;
+ esac
+ 
++# Make D-Bus start properly, see:
++# /etc/X11/xinit/xinitrc.d/80-dbus
++command="$@"
++
+ [ -f /etc/xprofile ] && . /etc/xprofile
+ [ -f /usr/local/etc/xprofile ] && . /usr/local/etc/xprofile
+ [ -f $HOME/.xprofile ] && . $HOME/.xprofile
+@@ -87,8 +91,8 @@ if [ -f "$USERXSESSION" ]; then
+   . "$USERXSESSION"
+ fi
+ 
+-if [ -z "$*" ]; then
++if [ -z "$command" ]; then
+     exec xmessage -center -buttons OK:0 -default OK "Sorry, $DESKTOP_SESSION is no valid session."
+ else
+-    exec $@
++    exec $command
+ fi
+-- 
+2.43.0
+

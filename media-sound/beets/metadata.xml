@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>guillaumeseren@gmail.com</email>
+    <name>Guillaume Seren</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription lang="en">
+        The purpose of beets is to get your music collection right once and for
+        all. It catalogs your collection, automatically improving its metadata as
+        it goes using the MusicBrainz database. (It also downloads cover art for
+        albums it imports.) Then it provides a bouquet of tools for manipulating
+        and accessing your music.
+
+        Because beets is designed as a library, it can do almost anything you can
+        imagine for your music collection. Via plugins, beets becomes a panacea:
+        * Embed and extract album art from files’ tags.
+        * Listen to your library with a music player that speaks the MPD protocol
+        and works with a staggering variety of interfaces.
+        * Fetch lyrics for all your songs from databases on the Web.
+        * Manage your MusicBrainz music collection.
+        * Analyze music files’ metadata from the command line.
+        * Clean up crufty tags left behind by other, less-awesome tools.
+        * Browse your music library graphically through a Web browser and play it
+        in any browser that supports HTML5 Audio.
+
+        If beets doesn’t do what you want yet, writing your own plugin is
+        shockingly simple if you know a little Python.
+  </longdescription>
+  <stabilize-allarches/>
+  <upstream>
+    <remote-id type="pypi">beets</remote-id>
+    <remote-id type="github">beetbox/beets</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,13 @@
+--- a/src/client/menu.c
++++ b/src/client/menu.c
+@@ -726,8 +726,8 @@
+ 	for( i=0 ; i<3 ; i++ )
+ 	    close(i); /* Close STD-IN, -OUT, -ERR */
+ 
+-	system("./tux_serv -e");
+-	/* execlp( "./tux_serv", "-e" );
++	system("tux_serv -e");
++	/* execlp( "tux_serv", "-e" );
+ 	   perror("execlp"); */
+ 	exit(-1);
+     }

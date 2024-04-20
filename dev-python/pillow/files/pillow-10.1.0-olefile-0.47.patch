@@ -1,0 +1,50 @@
+From 0e523d986858e7c0b4acd45ea1c5a3a639e39b4b Mon Sep 17 00:00:00 2001
+From: Andrew Murray <radarhere@users.noreply.github.com>
+Date: Sat, 2 Dec 2023 10:57:16 +1100
+Subject: [PATCH] Fixed closing file pointer with olefile 0.47
+
+---
+ src/PIL/FpxImagePlugin.py | 1 +
+ src/PIL/MicImagePlugin.py | 3 +++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/src/PIL/FpxImagePlugin.py b/src/PIL/FpxImagePlugin.py
+index a878cbfd2..3027ef45b 100644
+--- a/src/PIL/FpxImagePlugin.py
++++ b/src/PIL/FpxImagePlugin.py
+@@ -227,6 +227,7 @@ class FpxImageFile(ImageFile.ImageFile):
+                     break  # isn't really required
+ 
+         self.stream = stream
++        self._fp = self.fp
+         self.fp = None
+ 
+     def load(self):
+diff --git a/src/PIL/MicImagePlugin.py b/src/PIL/MicImagePlugin.py
+index 801318930..e4154902f 100644
+--- a/src/PIL/MicImagePlugin.py
++++ b/src/PIL/MicImagePlugin.py
+@@ -66,6 +66,7 @@ class MicImageFile(TiffImagePlugin.TiffImageFile):
+         self._n_frames = len(self.images)
+         self.is_animated = self._n_frames > 1
+ 
++        self.__fp = self.fp
+         self.seek(0)
+ 
+     def seek(self, frame):
+@@ -87,10 +88,12 @@ class MicImageFile(TiffImagePlugin.TiffImageFile):
+         return self.frame
+ 
+     def close(self):
++        self.__fp.close()
+         self.ole.close()
+         super().close()
+ 
+     def __exit__(self, *args):
++        self.__fp.close()
+         self.ole.close()
+         super().__exit__()
+ 
+-- 
+2.43.0
+

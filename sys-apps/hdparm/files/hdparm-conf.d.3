@@ -1,0 +1,26 @@
+# /etc/conf.d/hdparm: config file for /etc/init.d/hdparm
+
+#
+# Note that options such as -y which force *immediate* power saving options
+# should generally not be placed here.  The hdparm init.d script may run at
+# anytime with respect to other init.d scripts that do system wide drive
+# scans (like the hald script), so they will merely get spun right back up.
+# If you wish to use these options, please use the local.start init.d script
+# instead so that you're guaranteed that it will run last.
+#
+
+# You can either set hdparm arguments for each drive using hdX_args,
+# discX_args, cdromX_args and genericX_args, e.g.
+#
+# hda_args="-d1 -X66"
+# disc1_args="-d1"
+# cdrom0_args="-d1"
+
+# or you can set options for all PATA drives
+pata_all_args="-d1"
+
+# or you can set options for all SATA drives
+sata_all_args=""
+
+# or, you can set hdparm options for all drives
+all_args=""

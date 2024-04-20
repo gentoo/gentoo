@@ -1,0 +1,17 @@
+diff -ruN Cache-Memcached-Fast-0.27.orig/Makefile.PL Cache-Memcached-Fast-0.27/Makefile.PL
+--- Cache-Memcached-Fast-0.27.orig/Makefile.PL	2021-05-22 20:25:50.000000000 +0200
++++ Cache-Memcached-Fast-0.27/Makefile.PL	2021-05-25 21:41:10.991310429 +0200
+@@ -24,6 +24,13 @@
+     },
+ );
+ 
++sub MY::cflags {
++  my $self = shift;
++  my $orig = $self->MM::cflags(@_);
++  $orig =~ s/-flto\b//g;
++  return $orig;
++}
++
+ sub MY::postamble { <<'MAKE' }
+ $(MYEXTLIB): src/Makefile
+ 	cd src && $(MAKE) $(PASTHRU)

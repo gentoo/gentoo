@@ -1,0 +1,19 @@
+commit eae881de61b8622913761d88a79ee827d8dee002
+Author: Eray Aslan <eras@gentoo.org>
+Date:   Mon Jun 6 13:03:44 2011 +0300
+
+    Respect LDFLAGS - bug #337843
+
+diff --git a/Makefile b/Makefile
+index e32ba91..c5240ae 100644
+--- a/Makefile
++++ b/Makefile
+@@ -12,7 +12,7 @@ clean:
+ 	rm -f *.o ripole
+ 
+ ripole: $(OBJS) ripole.[ch]
+-		$(CC) $(CFLAGS) $(OBJS) $(DEFINES) ripole.c -o ripole
++		$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(DEFINES) ripole.c -o ripole
+ 	
+ validate: ripole
+ 		cp ripole validate

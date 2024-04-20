@@ -1,0 +1,35 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+extra_started_commands="reload rotate"
+
+pidfile="/var/run/dnsmasq.pid"
+command="/usr/sbin/dnsmasq"
+command_args="-x ${pidfile} ${DNSMASQ_OPTS}"
+retry="TERM/3/TERM/5"
+
+depend() {
+	provide dns
+	need localmount net
+	after bootmisc
+	use logger
+}
+
+start_pre() {
+	checkpath --owner dnsmasq:dnsmasq \
+		--mode 0644 \
+		--file /var/lib/misc/dnsmasq.leases
+}
+
+reload() {
+	ebegin "Reloading ${RC_SVCNAME}"
+	start-stop-daemon --signal HUP --pidfile "${pidfile}"
+	eend $?
+}
+
+rotate() {
+	ebegin "Reopening ${RC_SVCNAME} log file"
+	start-stop-daemon --signal USR2 --pidfile "${pidfile}"
+	eend $?
+}

@@ -1,0 +1,39 @@
+--- a/Makefile
++++ b/Makefile
+@@ -4,28 +4,16 @@
+ #
+ 
+ # You may need to change these paths
+-X11_CFLAGS=-I/usr/X11R6/include
+-X11_LDLIBS=-L/usr/X11R6/lib -lX11
++X11_CFLAGS = $(shell $(PKG_CONFIG) --cflags x11)
++X11_LDLIBS = $(shell $(PKG_CONFIG) --libs x11)
+ 
+ # Remove the following two lines to disable XINERAMA support
+-XINERAMA_CFLAGS=-DHAVE_LIBXINERAMA
+-XINERAMA_LDLIBS=-lXext -lXinerama
++ifdef USE_XINERAMA
++XINERAMA_CFLAGS = -DHAVE_LIBXINERAMA $(shell $(PKG_CONFIG) --cflags xinerama)
++XINERAMA_LDLIBS = $(shell $(PKG_CONFIG) --libs xinerama)
++endif
+ 
+-CC = gcc
+-CFLAGS = -Wall -O2 $(X11_CFLAGS) $(XINERAMA_CFLAGS)
++CPPFLAGS += $(X11_CFLAGS) $(XINERAMA_CFLAGS)
+ LDLIBS = $(X11_LDLIBS) $(XINERAMA_LDLIBS)
+ 
+-TARGET = pspresent
+-OBJS = pspresent.o gs.o ps.o
+-
+-$(TARGET): $(OBJS)
+-	$(CC) -o $(TARGET) $(OBJS) $(LDLIBS)
+-
+-clean:
+-	rm $(TARGET) $(OBJS)
+-
+-.SUFFIXES:
+-.SUFFIXES: .c .o
+-
+-.c.o:
+-	$(CC) $(CFLAGS) -o $@ -c $<
++pspresent: gs.o ps.o

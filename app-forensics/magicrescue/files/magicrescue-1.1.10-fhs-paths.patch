@@ -1,0 +1,67 @@
+https://github.com/jbj/magicrescue/commit/0426af2a23918d7064d58ac5f9a2a752eb329501
+https://bugs.gentoo.org/875383
+
+From 0426af2a23918d7064d58ac5f9a2a752eb329501 Mon Sep 17 00:00:00 2001
+From: Jonas Jensen <jbj@knef.dk>
+Date: Sun, 29 Aug 2021 20:14:33 +0200
+Subject: [PATCH] Debian's 040_fix-install.patch
+
+Description: fix and modernize install, in accordance with FHS 3.0
+Author: Joao Eriberto Mota Filho <eriberto@debian.org>
+Last-Update: 2020-04-06
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -56,32 +56,32 @@ docs-clean:
+ maintainer-clean: distclean docs-clean
+ 
+ install: all
+-	mkdir -p $(INSTALLDIR)/share/magicrescue/tools \
++	mkdir -p $(INSTALLDIR)/libexec/magicrescue/tools \
+ 	    $(INSTALLDIR)/share/magicrescue/recipes \
+-	    $(INSTALLDIR)/man/man1 \
++	    $(INSTALLDIR)/share/man/man1 \
+ 	    $(INSTALLDIR)/bin
+ 	
+ 	cp magicrescue$(EXE) dupemap$(EXE) magicsort $(INSTALLDIR)/bin/
+ 	cp recipes/* $(INSTALLDIR)/share/magicrescue/recipes/
+-	cp $(DOCS) $(INSTALLDIR)/man/man1
++	cp $(DOCS) $(INSTALLDIR)/share/man/man1
+ 	
+ 	for f in tools/*; do \
+ 	  if [ -x "$$f" ]; then \
+-	    cp -f "$$f" $(INSTALLDIR)/share/magicrescue/tools/; \
++	    cp -f "$$f" $(INSTALLDIR)/libexec/magicrescue/tools/; \
+ 	  fi; \
+ 	done
+-	cp -f tools/laola.pl $(INSTALLDIR)/share/magicrescue/tools/
++	cp -f tools/laola.pl $(INSTALLDIR)/libexec/magicrescue/tools/
++	chmod 755 $(INSTALLDIR)/libexec/magicrescue/tools/laola.pl
+ 
+ uninstall:
+ 	rm -f $(INSTALLDIR)/bin/magicrescue$(EXE)
+ 	rm -f $(INSTALLDIR)/bin/dupemap$(EXE)
+ 	rm -f $(INSTALLDIR)/bin/magicsort
+ 	for f in $(DOCS); do \
+-	   rm -f "$(INSTALLDIR)/man/man1/`basename $$f`"; \
++	   rm -f "$(INSTALLDIR)/share/man/man1/`basename $$f`"; \
+ 	done
+-	rm -rf $(INSTALLDIR)/share/magicrescue/tools
+-	rm -rf $(INSTALLDIR)/share/magicrescue/recipes
+-	-rmdir $(INSTALLDIR)/share/magicrescue
++	rm -rf $(INSTALLDIR)/libexec/magicrescue/
++	rm -rf $(INSTALLDIR)/share/magicrescue/
+ 
+ .PHONY: all clean distclean docs-clean maintainer-clean install uninstall docs
+ 
+--- a/config.d/80magicrescue_defs
++++ b/config.d/80magicrescue_defs
+@@ -1,7 +1,7 @@
+ #!/bin/sh
+ 
+ cat >> config.h << EOF
+-#define COMMAND_PATH "$prefix/share/magicrescue/tools"
++#define COMMAND_PATH "$prefix/libexec/magicrescue/tools"
+ #define RECIPE_PATH  "$prefix/share/magicrescue/recipes"
+ #include "largefile.h"
+ EOF
+

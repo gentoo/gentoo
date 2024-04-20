@@ -1,0 +1,18 @@
+diff --git a/src/Makefile.0 b/src/Makefile.0
+index 35b6180..4fcba2c 100644
+--- a/src/Makefile.0
++++ b/src/Makefile.0
+@@ -18,11 +18,11 @@ make:							# fake target
+ .PRECIOUS: Makefile
+ 
+ procmail: procmail.$(O) $(PM_OBJ) setid
+-	$(CC) $(CFLAGS) $@.$(O) $(PM_OBJ) -o $@ $(LDFLAGS)
++	$(CC) $(CFLAGS) $@.$(O) $(PM_OBJ) -o $@ -Wl,-z,now $(LDFLAGS)
+ 	@test -z "$(STRIP)" || ( echo $(STRIP) $@; $(STRIP) $@ )
+ 
+ lockfile: lockfile.$(O) $(LF_OBJ)
+-	$(CC) $(CFLAGS) $@.$(O) $(LF_OBJ) -o $@ $(LDFLAGS)
++	$(CC) $(CFLAGS) $@.$(O) $(LF_OBJ) -o $@ -Wl,-z,now $(LDFLAGS)
+ 	@test -z "$(STRIP)" || ( echo $(STRIP) $@; $(STRIP) $@ )
+ 
+ formail: formail.$(O) $(FM_OBJ)

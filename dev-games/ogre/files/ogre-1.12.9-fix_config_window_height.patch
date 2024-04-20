@@ -1,0 +1,11 @@
+--- a/Components/Bites/src/OgreGLXConfigDialog.cpp	2020-09-21 15:17:33.783741691 +0200
++++ b/Components/Bites/src/OgreGLXConfigDialog.cpp	2020-09-21 15:17:35.948741768 +0200
+@@ -74,7 +74,7 @@
+ class GLXConfigurator {
+     /* GUI constants */
+     static const int wWidth = 500;      // Width of window
+-    static const int wHeight = 380;     // Height of window
++    static const int wHeight = 340;     // Height of window
+     static const int col1x = 20;        // Starting x of column 1 (labels)
+     static const int col2x = 230;       // Starting x of column 2 (options)
+     static const int col1w = 200;       // Width of column 1 (labels)

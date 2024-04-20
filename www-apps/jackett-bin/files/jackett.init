@@ -1,0 +1,6 @@
+#!/sbin/openrc-run
+
+pidfile="/run/jackett.pid"
+command="/opt/jackett/jackett"
+command_user="jackett:jackett"
+command_background=true

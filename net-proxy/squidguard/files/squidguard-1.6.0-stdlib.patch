@@ -1,0 +1,22 @@
+--- a/configure.ac	2022-12-15 10:33:13.845801113 +0300
++++ b/configure.ac	2022-12-15 10:33:39.828949903 +0300
+@@ -342,6 +342,9 @@
+ LIBS="$LIBS -ldb"
+ AC_RUN_IFELSE([AC_LANG_SOURCE([[
+     #include <db.h>
++    #ifdef HAVE_STDLIB_H
++        #include <stdlib.h>
++    #endif
+     int main() 
+     {
+         int major, minor, patch;
+@@ -377,6 +378,9 @@
+ 
+ AC_RUN_IFELSE([AC_LANG_SOURCE([[
+     #include <db.h>
++    #ifdef HAVE_STDLIB_H
++        #include <stdlib.h>
++    #endif
+     int main() 
+     {
+         int major, minor, patch;

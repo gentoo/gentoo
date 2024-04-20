@@ -1,0 +1,183 @@
+From 18ef12037f4a68772d6840cbaa08aa2da07d2891 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sat, 2 Mar 2024 19:30:54 -0500
+Subject: [PATCH 1/2] configure.ac: don't install binaries as
+ ndo2db_user:ndo2db_group
+
+In configure.ac we were adding two flags to INSTALL_OPTS that change
+the owner:group of all installed files to ndo2db_user:ndo2db_group.
+This is often a security vulnerability, since executables (we have a
+few) are typically installed into everyone's PATH. If root ever
+executes them, the ndo2db_user can take advantage of the situation to
+run malicious code as root.
+
+Fortunately the change in ownership is not really needed. We simply
+drop the INSTALL_OPTS, which are used for nothing else, allowing our
+files to be installed as the user who is doing the installing. When
+installing to one of the system PATHs, that will almost always be
+root.
+---
+ Makefile.in                    |  9 ++++-----
+ configure.ac                   |  2 --
+ docs/docbook/en-en/Makefile.in |  1 -
+ src/Makefile.in                | 31 +++++++++++++++----------------
+ 4 files changed, 19 insertions(+), 24 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 58c9f0f..68774c2 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -37,7 +37,6 @@ INSTALL=@INSTALL@
+ GREP=@GREP@
+ EGREP=@EGREP@
+ 
+-INSTALL_OPTS=@INSTALL_OPTS@
+ OPSYS=@opsys@
+ DIST=@dist_type@
+ 
+@@ -98,10 +97,10 @@ install:
+ 	@echo ""
+ 
+ install-config:
+-	$(INSTALL) -m 775 $(INSTALL_OPTS) -d $(DESTDIR)$(CFGDIR)
+-	$(INSTALL) -m 775 $(INSTALL_OPTS) -d $(DESTDIR)$(PIPEDIR)
+-	$(INSTALL) -m 644 $(INSTALL_OPTS) config/ndo2db.cfg-sample $(DESTDIR)$(CFGDIR)
+-	$(INSTALL) -m 644 $(INSTALL_OPTS) config/ndomod.cfg-sample $(DESTDIR)$(CFGDIR)
++	$(INSTALL) -m 775 -d $(DESTDIR)$(CFGDIR)
++	$(INSTALL) -m 775 -d $(DESTDIR)$(PIPEDIR)
++	$(INSTALL) -m 644 config/ndo2db.cfg-sample $(DESTDIR)$(CFGDIR)
++	$(INSTALL) -m 644 config/ndomod.cfg-sample $(DESTDIR)$(CFGDIR)
+ 	@echo ""
+ 	@echo "*** Config files installed ***"
+ 	@echo ""
+diff --git a/configure.ac b/configure.ac
+index 58b47a4..3279397 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -317,8 +317,6 @@ AC_ARG_WITH(ndo2db_user,AC_HELP_STRING([--with-ndo2db-user=<user>],[sets user na
+ AC_ARG_WITH(ndo2db_group,AC_HELP_STRING([--with-ndo2db-group=<group>],[sets group name to run NDO2DB]),ndo2db_group=$withval,ndo2db_group=nagios)
+ AC_SUBST(ndo2db_user)
+ AC_SUBST(ndo2db_group)
+-INSTALL_OPTS="-o $ndo2db_user -g $ndo2db_group"
+-AC_SUBST(INSTALL_OPTS)
+ 
+ 
+ dnl Does the user want to check for systemd?
+diff --git a/docs/docbook/en-en/Makefile.in b/docs/docbook/en-en/Makefile.in
+index d72b68c..29e1e1e 100644
+--- a/docs/docbook/en-en/Makefile.in
++++ b/docs/docbook/en-en/Makefile.in
+@@ -13,7 +13,6 @@ BINDIR=@bindir@
+ LIBEXECDIR=@libexecdir@
+ DATAROOTDIR=@datarootdir@
+ INSTALL=@INSTALL@
+-INSTALL_OPTS=@INSTALL_OPTS@
+ 
+ 
+ all:
+diff --git a/src/Makefile.in b/src/Makefile.in
+index 532cc82..352a768 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -26,7 +26,6 @@ exec_prefix=@exec_prefix@
+ PIPEDIR=@localstatedir@
+ BINDIR=@bindir@
+ INSTALL=@INSTALL@
+-INSTALL_OPTS=@INSTALL_OPTS@
+ 
+ CC=@CC@
+ 
+@@ -126,9 +125,9 @@ distclean: clean
+ devclean: distclean
+ 
+ install: install-4x
+-	$(INSTALL) -m 774 $(INSTALL_OPTS) file2sock $(DESTDIR)$(BINDIR)
+-	$(INSTALL) -m 774 $(INSTALL_OPTS) log2ndo $(DESTDIR)$(BINDIR)
+-	$(INSTALL) -m 774 $(INSTALL_OPTS) sockdebug $(DESTDIR)$(BINDIR)
++	$(INSTALL) -m 774 file2sock $(DESTDIR)$(BINDIR)
++	$(INSTALL) -m 774 log2ndo $(DESTDIR)$(BINDIR)
++	$(INSTALL) -m 774 sockdebug $(DESTDIR)$(BINDIR)
+ 	@echo ""
+ 	@echo "  Hint: NDOUtils Installation against Nagios v4.x"
+ 	@echo "  completed."
+@@ -147,20 +146,20 @@ install: install-4x
+ 	@echo ""
+ 
+ install-2x:
+-	$(INSTALL) -m 775 $(INSTALL_OPTS) -d $(DESTDIR)$(PIPEDIR)
+-	$(INSTALL) -m 775 $(INSTALL_OPTS) -d $(DESTDIR)$(BINDIR)
+-	$(INSTALL) -m 755 $(INSTALL_OPTS) ndo2db-2x $(DESTDIR)$(BINDIR)/ndo2db
+-	$(INSTALL) -m 755 $(INSTALL_OPTS) ndomod-2x.o $(DESTDIR)$(BINDIR)/ndomod.o
++	$(INSTALL) -m 775 -d $(DESTDIR)$(PIPEDIR)
++	$(INSTALL) -m 775 -d $(DESTDIR)$(BINDIR)
++	$(INSTALL) -m 755 ndo2db-2x $(DESTDIR)$(BINDIR)/ndo2db
++	$(INSTALL) -m 755 ndomod-2x.o $(DESTDIR)$(BINDIR)/ndomod.o
+ 
+ install-3x:
+-	$(INSTALL) -m 775 $(INSTALL_OPTS) -d $(DESTDIR)$(PIPEDIR)
+-	$(INSTALL) -m 775 $(INSTALL_OPTS) -d $(DESTDIR)$(BINDIR)
+-	$(INSTALL) -m 755 $(INSTALL_OPTS) ndo2db-3x $(DESTDIR)$(BINDIR)/ndo2db
+-	$(INSTALL) -m 755 $(INSTALL_OPTS) ndomod-3x.o $(DESTDIR)$(BINDIR)/ndomod.o
++	$(INSTALL) -m 775 -d $(DESTDIR)$(PIPEDIR)
++	$(INSTALL) -m 775 -d $(DESTDIR)$(BINDIR)
++	$(INSTALL) -m 755 ndo2db-3x $(DESTDIR)$(BINDIR)/ndo2db
++	$(INSTALL) -m 755 ndomod-3x.o $(DESTDIR)$(BINDIR)/ndomod.o
+ 
+ install-4x:
+-	$(INSTALL) -m 775 $(INSTALL_OPTS) -d $(DESTDIR)$(PIPEDIR)
+-	$(INSTALL) -m 775 $(INSTALL_OPTS) -d $(DESTDIR)$(BINDIR)
+-	$(INSTALL) -m 755 $(INSTALL_OPTS) ndo2db-4x $(DESTDIR)$(BINDIR)/ndo2db
+-	$(INSTALL) -m 755 $(INSTALL_OPTS) ndomod-4x.o $(DESTDIR)$(BINDIR)/ndomod.o
++	$(INSTALL) -m 775 -d $(DESTDIR)$(PIPEDIR)
++	$(INSTALL) -m 775 -d $(DESTDIR)$(BINDIR)
++	$(INSTALL) -m 755 ndo2db-4x $(DESTDIR)$(BINDIR)/ndo2db
++	$(INSTALL) -m 755 ndomod-4x.o $(DESTDIR)$(BINDIR)/ndomod.o
+ 
+-- 
+2.43.0
+
+From 69a80d6a9bf1196ffcfffa7f756633bb13a62b5f Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sat, 2 Mar 2024 19:52:47 -0500
+Subject: [PATCH 2/2] src/Makefile.in: install all executables with mode 0755
+
+Three executables -- file2sock, log2ndo, and sockdebug -- are
+currently being installed group-writable but not
+world-executable. This is in contrast with the other two executables,
+ndo2db and ndomod.o, that are installed mode 0755.
+
+Having recently removed the INSTALL_OPTS that were altering the
+owner:group of these files, there is no longer any security risk to
+mode 0774. However, 0755 is more consistent with both the rest of our
+executables, and with the typical permissions on /usr/bin that arise
+from the (extremely common) umask of 0022.
+
+We change these three to 0755 for a little bit of extra peace of mind.
+
+changes. Lines starting # with '#' will be ignored, and an empty
+message aborts the commit.  # # Date: Sat Mar 2 19:52:47 2024 -0500 #
+src/Makefile.in #
+---
+ src/Makefile.in | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/Makefile.in b/src/Makefile.in
+index 352a768..e6a1816 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -125,9 +125,9 @@ distclean: clean
+ devclean: distclean
+ 
+ install: install-4x
+-	$(INSTALL) -m 774 file2sock $(DESTDIR)$(BINDIR)
+-	$(INSTALL) -m 774 log2ndo $(DESTDIR)$(BINDIR)
+-	$(INSTALL) -m 774 sockdebug $(DESTDIR)$(BINDIR)
++	$(INSTALL) -m 755 file2sock $(DESTDIR)$(BINDIR)
++	$(INSTALL) -m 755 log2ndo $(DESTDIR)$(BINDIR)
++	$(INSTALL) -m 755 sockdebug $(DESTDIR)$(BINDIR)
+ 	@echo ""
+ 	@echo "  Hint: NDOUtils Installation against Nagios v4.x"
+ 	@echo "  completed."
+-- 
+2.43.0
+

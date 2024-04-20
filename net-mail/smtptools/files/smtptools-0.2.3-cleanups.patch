@@ -1,0 +1,61 @@
+--- a/usmtpd.c
++++ b/usmtpd.c
+@@ -60,8 +60,8 @@
+ /* run */ static const char *reminfo;
+ /* run */ static const char *relayclient;
+ 
+-/* opt */ static unsigned long read_timeout=1200;
+-/* opt */ static unsigned long write_timeout=1200;
++/* opt */ static unsigned long u_read_timeout=1200;
++/* opt */ static unsigned long u_write_timeout=1200;
+ /* opt */ static char *log_spec_str=NULL;
+ /* opt */ static unsigned long aging=0;
+ 
+@@ -108,7 +108,7 @@
+ 			"Use $QMAILQUEUE to override, overrides --maildir\n", "PATH"},
+ 	{'r',"relaydb", UOGO_STRING,&relaydbname,1, 
+ 			"Path to relaying control file", "FILE"},
+-    {'R',"read-timeout", UOGO_ULONG,&read_timeout,0, 
++    {'R',"read-timeout", UOGO_ULONG,&u_read_timeout,0, 
+ 			"Timeout in seconds for reading from remote", "TIMEOUT"},
+     {'s',"max-size", UOGO_ULONG,&maxsize,0,
+ 			"Maximum size of messages\noverridden by $DATABYTES", "LIMIT"},
+@@ -117,7 +117,7 @@
+ 			"Used for DNS and envelope sender checking.\n"
+ 			"Default: accept messages during this time"},
+ 		   /*123456789012345678901234567890123456789012345678901234567890*/
+-    {'W',"write-timeout", UOGO_ULONG,&write_timeout,0, 
++    {'W',"write-timeout", UOGO_ULONG,&u_write_timeout,0, 
+ 			"Timeout in seconds for writing to remote.","TIMEOUT"},
+ 	{0,0}
+ };
+@@ -632,9 +632,9 @@
+ 	}
+ 
+ 	uoio_assign_r(&i,0,read,0);
+-	i.timeout=read_timeout;
++	i.timeout=u_read_timeout;
+ 	uoio_assign_w(&o,1,write,0);
+-	o.timeout=write_timeout;
++	o.timeout=u_write_timeout;
+ 
+ 	if (rblcheck) do_rbl_check(&o);
+ 
+--- a/relaydb.c
++++ b/relaydb.c
+@@ -1,4 +1,5 @@
+ #include "config.h"
++#include <string.h>
+ #include <unistd.h>
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
+--- a/uostr.h
++++ b/uostr.h
+@@ -1,6 +1,7 @@
+ #ifndef UOSTR_H
+ #define UOSTR_H
+ 
++#include <string.h>
+ #include "uocompiler.h" /* P__ */
+ #include "attribs.h"
+ 

@@ -1,0 +1,37 @@
+From e67faca2c0ca955f56cbd22e90941cdcbdc12597 Mon Sep 17 00:00:00 2001
+From: Rod Smith <rodsmith@rodsbooks.com>
+Date: Sat, 16 Apr 2022 09:32:04 -0400
+Subject: [PATCH] Updated guid.cc to deal with minor change in libuuid
+
+---
+ NEWS    | 3 +++
+ guid.cc | 2 +-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/NEWS b/NEWS
+index c7add56..3d90d9a 100644
+--- a/NEWS
++++ b/NEWS
+@@ -1,3 +1,6 @@
++
++- Updated guid.cc to deal with minor change in libuuid.
++
+ 1.0.9 (4/14/2022):
+ ------------------
+ 
+diff --git a/guid.cc b/guid.cc
+index 1e73ab7..d3e4fd5 100644
+--- a/guid.cc
++++ b/guid.cc
+@@ -141,7 +141,7 @@ void GUIDData::Zero(void) {
+ void GUIDData::Randomize(void) {
+    int i, uuidGenerated = 0;
+ 
+-#ifdef _UUID_UUID_H
++#if defined (_UUID_UUID_H) || defined (_UL_LIBUUID_UUID_H)
+    uuid_generate(uuidData);
+    ReverseBytes(&uuidData[0], 4);
+    ReverseBytes(&uuidData[4], 2);
+-- 
+2.36.1
+

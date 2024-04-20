@@ -1,0 +1,15 @@
+--- rotix-0.83.orig/help.c
++++ rotix-0.83/help.c
+@@ -24,8 +24,12 @@
+  * I18N
+ \*/
+ 
++#if I18N
+ #include <libintl.h>
+ #define _(String) gettext (String)
++#else
++#define _(String) (String)
++#endif
+ 
+ /*\
+  *  This function displays the help-information.

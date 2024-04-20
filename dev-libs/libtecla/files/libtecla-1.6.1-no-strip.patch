@@ -1,0 +1,13 @@
+# prevent build system from stripping files (bug #239877).
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -260,7 +260,7 @@
+ install_bin: $(BINDIR) $(PROGRAMS) $(PROGRAMS_R)
+ 	progs="$(PROGRAMS) $(PROGRAMS_R)"; \
+ 	for prog in $$progs; do \
+-	  $(srcdir)/install-sh -c -m 755 -s $$prog $(BINDIR)/; \
++	  $(srcdir)/install-sh -c -m 755 $$prog $(BINDIR)/; \
+ 	done
+ 
+ install: install_lib install_inc install_man install_bin

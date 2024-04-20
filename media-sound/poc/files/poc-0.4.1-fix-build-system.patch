@@ -1,0 +1,30 @@
+--- a/Makefile
++++ b/Makefile
+@@ -4,7 +4,7 @@
+ #
+ # 2005 bl0rg.net
+ 
+-CFLAGS += -Wall -O2
++CFLAGS += -Wall
+ 
+ # Uncomment these flags to add id3 support to mp3cue and mp3cut
+ #CFLAGS += -DWITH_ID3TAG
+@@ -352,8 +352,9 @@
+ 
+ USER  ?= root
+ GROUP ?= root
+-PREFIX:= /usr/local
++PREFIX:= /usr
+ install: install-man
++	install -d -g root -o root $(DESTDIR)/$(PREFIX)/bin
+ 	install -g root -o root -m 0755 mp3cue    $(DESTDIR)/$(PREFIX)/bin
+ 	install -g root -o root -m 0755 mp3cut    $(DESTDIR)/$(PREFIX)/bin
+ 	install -g root -o root -m 0755 mp3length $(DESTDIR)/$(PREFIX)/bin
+@@ -367,6 +368,7 @@
+ 	install -g root -o root -m 0755 pogg-http $(DESTDIR)/$(PREFIX)/bin
+ 
+ install-man:
++	install -d -g root -o root $(DESTDIR)/$(PREFIX)/share/man/man1
+ 	install -g root -o root -m 0644 man/man1/mp3cue.1    $(DESTDIR)/$(PREFIX)/share/man/man1
+ 	install -g root -o root -m 0644 man/man1/mp3cut.1    $(DESTDIR)/$(PREFIX)/share/man/man1
+ 	install -g root -o root -m 0644 man/man1/mp3length.1 $(DESTDIR)/$(PREFIX)/share/man/man1

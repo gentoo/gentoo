@@ -1,0 +1,36 @@
+diff -Nru vmoconv-1.0.orig/src/Makefile.am vmoconv-1.0/src/Makefile.am
+--- vmoconv-1.0.orig/src/Makefile.am	2003-02-17 21:39:18.000000000 +0000
++++ vmoconv-1.0/src/Makefile.am	2009-03-03 21:24:12.000000000 +0000
+@@ -1,32 +1,6 @@
+ 
+-noinst_LTLIBRARIES =		libgsm.la
+-
+ INCLUDES =			-I.
+ 
+-libgsm_la_SOURCES =		add.c            \
+-				code.c           \
+-				debug.c          \
+-				decode.c         \
+-				long_term.c      \
+-				lpc.c            \
+-				preprocess.c     \
+-				rpe.c            \
+-				gsm_destroy.c    \
+-				gsm_decode.c     \
+-				gsm_encode.c     \
+-				gsm_explode.c    \
+-				gsm_implode.c    \
+-				gsm_create.c     \
+-				gsm_print.c      \
+-				gsm_option.c     \
+-				short_term.c     \
+-				table.c		\
+-				proto.h		\
+-				unproto.h	\
+-				config.h	\
+-				private.h	\
+-				gsm.h
+-
+ vmo2wav_LDADD =			-lgsm
+ 
+ vmo2wav_SOURCES =		vmo2wav.c

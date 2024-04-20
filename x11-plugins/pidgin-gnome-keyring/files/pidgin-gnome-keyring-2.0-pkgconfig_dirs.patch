@@ -1,0 +1,32 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,10 +1,11 @@
+ TARGET = gnome-keyring
+ 
+-SECRETFLAGS = `pkg-config --libs --cflags libsecret-1`
+-PURPLEFLAGS = `pkg-config --cflags purple`
+-VERSION = $(shell cat VERSION)
++SECRETFLAGS := $(shell pkg-config --libs --cflags libsecret-1)
++PURPLEFLAGS := $(shell pkg-config --cflags purple)
++PLUGINDIR := $(shell pkg-config --variable=plugindir purple)
++VERSION := $(shell cat VERSION)
+ ifeq ($(strip $(VERSION)),)
+-	VERSION = `git describe --tags`
++	VERSION := $(shell git describe --tags)
+ endif
+ 
+ all: ${TARGET}.so
+@@ -15,11 +16,10 @@
+ 
+ ${TARGET}.so: ${TARGET}.c
+ 
+-	${CC} ${CFLAGS} ${LDFLAGS} -Wall -I. -g -O2 ${TARGET}.c -o ${TARGET}.so -shared -fPIC -DPIC -ggdb ${PURPLEFLAGS} ${SECRETFLAGS} -DVERSION=\"${VERSION}\"
++	${CC} ${CFLAGS} ${LDFLAGS} -Wall -I.   ${TARGET}.c -o ${TARGET}.so -shared -fPIC -DPIC  ${PURPLEFLAGS} ${SECRETFLAGS} -DVERSION=\"${VERSION}\"
+ 
+ install: ${TARGET}.so
+-	mkdir -p ${DESTDIR}/usr/lib/purple-2/
+-	cp ${TARGET}.so ${DESTDIR}/usr/lib/purple-2/
++	install -D ${TARGET}.so ${DESTDIR}/$(PLUGINDIR)/${TARGET}.so
+ 
+ install_local: ${TARGET}.so
+ 	mkdir -p ~/.purple/plugins

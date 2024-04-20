@@ -1,0 +1,9 @@
+https://bugs.gentoo.org/426890
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -5,4 +5,4 @@
+ 		ranking.c ranking.h your.c your.h
+ 
+-CFLAGS = @X_CFLAGS@ @KXL_CFLAGS@
++AM_CFLAGS = @X_CFLAGS@ @KXL_CFLAGS@
+ LIBS = @X_LIBS@ -lX11 @KXL_LIBS@ -lKXL

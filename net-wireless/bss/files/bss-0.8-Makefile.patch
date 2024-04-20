@@ -1,0 +1,34 @@
+https://bugs.gentoo.org/725228
+--- a/Makefile
++++ b/Makefile
+@@ -2,12 +2,10 @@
+ # Pierre BETOUIN <pierre.betouin@security-labs.org>
+ # Modification Ollie Whitehouse <ol at uncon dot org>
+ 
+-CC=gcc
+-MAKE=make
+-CFLAGS=-Wall
++CFLAGS += -Wall
+ 
+-BINDIR=/usr/local/bin
+-ETCDIR=/usr/local/etc
++BINDIR=/usr/bin
++ETCDIR=/usr/etc
+ 
+ BSS_OBJ=bss
+ BSS_SRC=bss.c
+@@ -22,10 +20,10 @@ BSS_LIBS=-lbluetooth
+ all: $(BSS_OBJ)
+ 
+ $(BSS_OBJ): $(BSS_SRC) $(BSS_INC)
+-	$(CC) -c $(BSS_SRC) 
+-	$(CC) -c $(L2P_SRC)
+-	$(CC) -c $(REP_SRC)
+-	$(CC) $(BSS_TMP) $(L2P_TMP) $(REP_TMP) -o $(BSS_OBJ) $(CFLAGS) $(BSS_FLAGS) $(BSS_LIBS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c $(BSS_SRC) 
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c $(L2P_SRC)
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c $(REP_SRC)
++	$(CC) $(LDFLAGS) $(BSS_TMP) $(L2P_TMP) $(REP_TMP) -o $(BSS_OBJ) $(CFLAGS) $(BSS_LIBS)
+ 
+ install:
+ 	strip $(BSS_OBJ)

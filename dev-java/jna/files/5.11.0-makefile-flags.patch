@@ -1,0 +1,34 @@
+--- a/native/Makefile
++++ b/native/Makefile
+@@ -81,7 +81,7 @@ LIBPFX=lib
+ LIBSFX=.so
+ ARSFX=.a
+ JNISFX=$(LIBSFX)
+-CC=gcc
++CC?=gcc
+ LD=$(CC)
+ LIBS=
+ # Default to Sun recommendations for JNI compilation
+@@ -94,10 +94,10 @@ CFLAGS_EXTRA=
+ COUT=-o $@
+ CINCLUDES=$(JAVA_INCLUDES) -I"$(JAVAH)" -I$(FFI_BUILD)/include
+ CDEFINES=-D_REENTRANT
+-PCFLAGS=-W -Wall -Wno-unused -Wno-parentheses
+-CFLAGS=$(PCFLAGS) $(CFLAGS_EXTRA) $(COPT) $(CDEBUG) $(CDEFINES) $(CINCLUDES) \
++PCFLAGS=-Wall -Wno-unused -Wno-parentheses
++CFLAGS+= $(PCFLAGS) $(CFLAGS_EXTRA) $(COPT) $(CDEBUG) $(CDEFINES) $(CINCLUDES) \
+        -DJNA_JNI_VERSION='"$(JNA_JNI_VERSION)"' -DCHECKSUM='"$(CHECKSUM)"'
+-LDFLAGS=-o $@ -shared
++LDFLAGS+= -o $@ -shared
+ ifeq ($(DYNAMIC_LIBFFI),true)
+ CFLAGS += $(shell pkg-config --cflags libffi 2>/dev/null || echo)
+ LIBS += $(shell pkg-config --libs libffi 2>/dev/null || echo -lffi)
+@@ -108,7 +108,7 @@ endif
+ # Avoid bug in X11-based 1.5/1.6 VMs; dynamically load instead of linking
+ # See http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6539705
+ #LIBS=-L"$(LIBDIR)" -ljawt
+-STRIP=strip -x
++STRIP?=strip -x
+ # end defaults
+ 
+ # Android build (cross-compile) requires the android NDK.

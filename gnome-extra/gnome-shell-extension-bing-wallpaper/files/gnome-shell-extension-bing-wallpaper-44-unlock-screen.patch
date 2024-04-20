@@ -1,0 +1,10 @@
+--- a/metadata.json.old	2023-01-24 17:24:07.124529927 +0100
++++ b/metadata.json	2023-01-24 17:24:19.852913263 +0100
+@@ -6,5 +6,6 @@
+     "description": "Sync your wallpaper to today's Microsoft Bing image of the day (the image you see when you visit Bing.com).\n\n *Disclaimer*: this extension is unofficial and not affiliated with Bing or Microsoft in any way. Images are protected by copyright and are licensed only for use as wallpapers.\n\nFeatures:\n* UHD resolution wallpapers\n* Automatically fetches current Bing wallpaper of the day and sets as both lock screen and desktop wallpaper (user selectable on GNOME versions that support it)\n* Doesn't poll continuously - only once per day and on startup (schedules a refresh when Bing is due to update)\n * random mode (from previously downloaded wallpapers)\n *NEW: select/cycle wallpaper through previously downloaded images\n* Language support: English (en), German (de), Dutch (nl), Italian (it), Polish (pl), Chinese (zh_CN, zh_TW), French (fr_FR), Portuguese (pt, pt_BR), Ukrainian (uk), Russian (ru_RU), Spanish (es), Korean (ko), Indonesian (id), Catalan (ca), Norwegian Bokmål (nb) & Nynorsk (ni), Swedish (sv), Arabic (ar), Hungarian (hu) and Japanese (ja) - a HUGE thanks to the translators\n\nThis extension was forked from the NASA APOD extension by Elinvention (https://github.com/Elinvention) and inspired by Bing Desktop Wallpaper Changer by Utkarsh Gupta (https://github.com/UtkarshGpta).\n\nAlways restart GNOME after manually updating extensions. Please report bugs to the GitHub page below:",
+     "version": "44",
+     "url": "https://github.com/neffo/bing-wallpaper-gnome-extension",
+-    "gettext-domain": "BingWallpaper"
++    "gettext-domain": "BingWallpaper",
++    "session-modes": ["user", "unlock-dialog"]
+ }

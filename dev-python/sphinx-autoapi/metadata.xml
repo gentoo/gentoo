@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>marco@sirabella.org</email>
+		<name>Marco Sirabella</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">readthedocs/sphinx-autoapi</remote-id>
+		<remote-id type="pypi">sphinx-autoapi</remote-id>
+		<doc>https://sphinx-autoapi.readthedocs.io</doc>
+		<bugs-to>https://github.com/readthedocs/sphinx-autoapi/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

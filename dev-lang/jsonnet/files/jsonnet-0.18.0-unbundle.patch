@@ -1,0 +1,75 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5df20ca..9e60fae 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -121,7 +121,6 @@ endif()
+ add_subdirectory(include)
+ add_subdirectory(stdlib)
+ add_subdirectory(third_party/md5)
+-add_subdirectory(third_party/rapidyaml/rapidyaml ryml)
+ add_subdirectory(core)
+ add_subdirectory(cpp)
+ add_subdirectory(cmd)
+diff --git a/core/vm.cpp b/core/vm.cpp
+index 4617363..e328df5 100644
+--- a/core/vm.cpp
++++ b/core/vm.cpp
+@@ -23,7 +23,7 @@ limitations under the License.
+ 
+ #include "desugarer.h"
+ #include "json.h"
+-#include "json.hpp"
++#include "nlohmann/json.hpp"
+ #include "md5.h"
+ #include "parser.h"
+ #include "ryml_std.hpp" // include this before any other ryml header
+diff --git a/setup.py b/setup.py
+index 0a2748a..356915d 100644
+--- a/setup.py
++++ b/setup.py
+@@ -13,6 +13,7 @@
+ # limitations under the License.
+ 
+ import os
++import sys
+ from setuptools import setup
+ from setuptools import Extension
+ from setuptools.command.build_ext import build_ext as BuildExt
+@@ -22,28 +23,6 @@ DIR = os.path.abspath(os.path.dirname(__file__))
+ # NOTE: If you are editing the array below then you probably also need
+ # to change MANIFEST.in.
+ LIB_OBJECTS = [
+-    'core/desugarer.o',
+-    'core/formatter.o',
+-    'core/libjsonnet.o',
+-    'core/lexer.o',
+-    'core/parser.o',
+-    'core/pass.o',
+-    'core/static_analysis.o',
+-    'core/string_utils.o',
+-    'core/vm.o',
+-    'third_party/md5/md5.o',
+-    'third_party/rapidyaml/rapidyaml/ext/c4core/src/c4/char_traits.o',
+-    'third_party/rapidyaml/rapidyaml/ext/c4core/src/c4/base64.o',
+-    'third_party/rapidyaml/rapidyaml/ext/c4core/src/c4/language.o',
+-    'third_party/rapidyaml/rapidyaml/ext/c4core/src/c4/memory_util.o',
+-    'third_party/rapidyaml/rapidyaml/ext/c4core/src/c4/format.o',
+-    'third_party/rapidyaml/rapidyaml/ext/c4core/src/c4/time.o',
+-    'third_party/rapidyaml/rapidyaml/ext/c4core/src/c4/memory_resource.o',
+-    'third_party/rapidyaml/rapidyaml/ext/c4core/src/c4/error.o',
+-    'third_party/rapidyaml/rapidyaml/src/c4/yml/parse.o',
+-    'third_party/rapidyaml/rapidyaml/src/c4/yml/preprocess.o',
+-    'third_party/rapidyaml/rapidyaml/src/c4/yml/common.o',
+-    'third_party/rapidyaml/rapidyaml/src/c4/yml/tree.o',
+ ]
+ 
+ MODULE_SOURCES = ['python/_jsonnet.c']
+@@ -72,6 +51,8 @@ jsonnet_ext = Extension(
+     '_jsonnet',
+     sources=MODULE_SOURCES,
+     extra_objects=LIB_OBJECTS,
++    libraries = ['md5', 'jsonnet', 'ryml'],
++    library_dirs = [os.environ.get('CMAKE_BUILD_DIR')],
+     include_dirs = ['include'],
+     language='c++'
+ )

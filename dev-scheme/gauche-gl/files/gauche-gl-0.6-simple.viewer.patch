@@ -1,0 +1,25 @@
+From 723309ac3e7aa031e2ebd6c9b059d94e42006de3 Mon Sep 17 00:00:00 2001
+From: Shiro Kawai <shiro@acm.org>
+Date: Sat, 9 Aug 2014 22:19:04 -1000
+Subject: [PATCH] Fix incorrect macro definition
+
+---
+ lib/gl/simple/viewer.scm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/gl/simple/viewer.scm b/lib/gl/simple/viewer.scm
+index 857b8d7..9a464ce 100644
+--- a/lib/gl/simple/viewer.scm
++++ b/lib/gl/simple/viewer.scm
+@@ -381,7 +381,7 @@
+        (match opts
+          [() (set! default3-var proc)]
+          [(':perspective)  (set! default3-var proc)]
+-         [(':orthographic) (set! default3-var proc)]
++         [(':orthographic) (set! default2-var proc)]
+          [(name)
+           (cond [(name->window name) => (^[win] (ref win'closure) 'key proc)]
+                 [else
+-- 
+2.0.3
+

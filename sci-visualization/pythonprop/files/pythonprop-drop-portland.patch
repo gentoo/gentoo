@@ -1,0 +1,87 @@
+# Drop 'portland' colormap creation. It is done more than once and actual
+# matplotlib do not like redefinitions.
+diff --git a/src/pythonprop/voaAreaPlot.py b/src/pythonprop/voaAreaPlot.py
+index a0bd789..a3bdd48 100644
+--- a/src/pythonprop/voaAreaPlot.py
++++ b/src/pythonprop/voaAreaPlot.py
+@@ -94,7 +94,7 @@ class VOAAreaPlot:
+                     vg_files = [1],
+                     data_type = 1,
+                     time_zone = 0,
+-                    color_map = 'portland',
++                    color_map = 'jet',
+                     face_colour = "white",
+                     filled_contours = False,
+                     plot_contours = False,
+@@ -145,8 +145,6 @@ class VOAAreaPlot:
+         #    print "-180 < Latitude < 180.0, -90 < Longitude < 90"
+         #    sys.exit(1)
+ 
+-        portland = ListedColormap(["#0C3383", "#0b599b","#0a7fb4","#57a18f","#bec255","#f2c438","#f2a638","#ef8235","#e4502a","#d91e1e"])
+-        plt.register_cmap(name='portland', cmap=portland)
+         colMap = color_map
+ 
+         projection = ccrs.PlateCarree()
+@@ -498,8 +496,8 @@ def main(in_file, datadir=None):
+         dest = "color_map",
+         default = 'jet',
+         choices = [ 'autumn', 'bone', 'cool', 'copper', 'gray', \
+-                'hot', 'hsv', 'jet', 'pink', 'spring','summer', 'winter', 'portland' ],
+-        help=_("COLOURMAP - may be one of 'autumn', 'bone', 'cool', 'copper', 'gray', 'hot', 'hsv', 'jet', 'pink', 'spring', 'summer', 'winter' or 'portland'.  Default = 'jet'"))
++                'hot', 'hsv', 'jet', 'pink', 'spring','summer', 'winter' ],
++        help=_("COLOURMAP - may be one of 'autumn', 'bone', 'cool', 'copper', 'gray', 'hot', 'hsv', 'jet', 'pink', 'spring', 'summer' or 'winter'.  Default = 'jet'"))
+     """
+     parser.add_argument("-n", "--interest",
+         dest = "poi_file",
+diff --git a/src/pythonprop/voaAreaPlotgui.py b/src/pythonprop/voaAreaPlotgui.py
+index c001397..9f75acc 100644
+--- a/src/pythonprop/voaAreaPlotgui.py
++++ b/src/pythonprop/voaAreaPlotgui.py
+@@ -84,8 +84,7 @@ class VOAAreaPlotGUI:
+               'pink': _('pink'),
+               'spring': _('spring'),
+               'summer': _('summer'),
+-              'winter': _('winter'),
+-              'portland': _('portland')}
++              'winter': _('winter')}
+ 
+     def __init__(self,
+             data_source_filename,
+diff --git a/src/pythonprop/voaP2PPlot.py b/src/pythonprop/voaP2PPlot.py
+index faf87e6..61fe9b9 100644
+--- a/src/pythonprop/voaP2PPlot.py
++++ b/src/pythonprop/voaP2PPlot.py
+@@ -136,8 +136,6 @@ class VOAP2PPlot:
+ 
+         self.image_defs = self.IMG_TYPE_DICT[self.data_type]
+         self.user_bands = user_bands
+-        portland = ListedColormap(["#0C3383", "#0b599b","#0a7fb4","#57a18f","#bec255","#f2c438","#f2a638","#ef8235","#e4502a","#d91e1e"])
+-        matplotlib.cm.register_cmap(name='portland', cmap=portland)
+ 
+         if plot_groups[0]=='a':
+             num_grp = self.df.get_number_of_groups()
+@@ -375,8 +373,8 @@ def main(data_file, datadir=None):
+         dest="color_map",
+         default='jet',
+         choices = [ 'autumn', 'bone', 'cool', 'copper', 'gray', \
+-                'hot', 'hsv', 'jet', 'pink', 'spring','summer', 'winter', 'portland' ],
+-        help=_("COLOURMAP - may be one of 'autumn', 'bone', 'cool', 'copper', 'gray', 'hot', 'hsv', 'jet', 'pink', 'spring', 'summer', 'winter' or 'portland'.  Default = 'jet'"))
++                'hot', 'hsv', 'jet', 'pink', 'spring','summer', 'winter' ],
++        help=_("COLOURMAP - may be one of 'autumn', 'bone', 'cool', 'copper', 'gray', 'hot', 'hsv', 'jet', 'pink', 'spring', 'summer' or 'winter'.  Default = 'jet'"))
+ 
+     parser.add_argument("-o", "--outfile",
+         dest="save_file",
+diff --git a/src/pythonprop/voaP2PPlotgui.py b/src/pythonprop/voaP2PPlotgui.py
+index e1c120b..0aca557 100644
+--- a/src/pythonprop/voaP2PPlotgui.py
++++ b/src/pythonprop/voaP2PPlotgui.py
+@@ -83,8 +83,7 @@ class VOAP2PPlotGUI:
+               'pink': _('pink'),
+               'spring': _('spring'),
+               'summer': _('summer'),
+-              'winter': _('winter'),
+-              'portland': _('portland')}
++              'winter': _('winter')}
+ 
+ 
+     def __init__(self, data_source_filename, parent = None, datadir=""):

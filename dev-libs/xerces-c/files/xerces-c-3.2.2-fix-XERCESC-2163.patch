@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/673548
+https://bugs.gentoo.org/738140
+https://bugs.gentoo.org/913045
+
+https://issues.apache.org/jira/browse/XERCESC-2163
+https://github.com/apache/xerces-c/pull/7
+
+From db7a8b0cd2a163de1e3ef8c950cf9e708b0b5f98 Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Wed, 2 Jan 2019 15:01:21 -0500
+Subject: [PATCH] build: Install XercesMessages_en_US.cat to
+ /usr/share/xerces-c/msg
+
+Fixes XERCESC-2163
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1198,7 +1198,7 @@ if(XERCES_USE_MSGLOADER_ICONV)
+ 
+   install(
+     FILES "${RESTARGET}"
+-    DESTINATION "${CMAKE_INSTALL_PREFIX}/msg"
++    DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/xerces-c/msg"
+     COMPONENT "runtime")
+ endif()
+ 

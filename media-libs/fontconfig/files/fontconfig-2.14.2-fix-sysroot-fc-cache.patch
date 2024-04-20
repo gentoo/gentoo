@@ -1,0 +1,60 @@
+https://bugs.gentoo.org/907424
+https://gitlab.freedesktop.org/fontconfig/fontconfig/-/commit/2ef790a0dbbab24235d1b8c0325ab4414de5f0a9
+
+From 2ef790a0dbbab24235d1b8c0325ab4414de5f0a9 Mon Sep 17 00:00:00 2001
+From: Tom Anderson <thomasanderson@chromium.org>
+Date: Thu, 9 Feb 2023 01:31:26 +0000
+Subject: [PATCH] Fix filepaths added when scanning with sysroot
+
+This fixes a regression introduced by 76f88e780.  When
+using FONTCONFIG_SYSROOT=/home/tom/test_fonts, strace
+reveals that fontconfig attempted to open /test_fonts/Ahem.ttf
+instead of /home/tom/test_fonts/Ahem.ttf.  The fix is to use
+`s_dir` instead of `dir` in `file_prefix`.
+--- a/src/fcdir.c
++++ b/src/fcdir.c
+@@ -201,7 +201,7 @@ FcDirScanConfig (FcFontSet	*set,
+     DIR			*d;
+     struct dirent	*e;
+     FcStrSet		*files;
+-    FcChar8		*file_prefix, *s_dir = NULL;
++    FcChar8		*file_prefix = NULL, *s_dir = NULL;
+     FcChar8		*base;
+     const FcChar8	*sysroot = FcConfigGetSysRoot (config);
+     FcBool		ret = FcTrue;
+@@ -213,16 +213,6 @@ FcDirScanConfig (FcFontSet	*set,
+     if (!set && !dirs)
+ 	return FcTrue;
+ 
+-    /* freed below */
+-    file_prefix = (FcChar8 *) malloc (strlen ((char *) dir) + 1 + FC_MAX_FILE_LEN + 1);
+-    if (!file_prefix) {
+-	ret = FcFalse;
+-	goto bail;
+-    }
+-    strcpy ((char *) file_prefix, (char *) dir);
+-    strcat ((char *) file_prefix, FC_DIR_SEPARATOR_S);
+-    base = file_prefix + strlen ((char *) file_prefix);
+-
+     if (sysroot)
+ 	s_dir = FcStrBuildFilename (sysroot, dir, NULL);
+     else
+@@ -232,6 +222,16 @@ FcDirScanConfig (FcFontSet	*set,
+ 	goto bail;
+     }
+ 
++    /* freed below */
++    file_prefix = (FcChar8 *) malloc (strlen ((char *) s_dir) + 1 + FC_MAX_FILE_LEN + 1);
++    if (!file_prefix) {
++	ret = FcFalse;
++	goto bail;
++    }
++    strcpy ((char *) file_prefix, (char *) s_dir);
++    strcat ((char *) file_prefix, FC_DIR_SEPARATOR_S);
++    base = file_prefix + strlen ((char *) file_prefix);
++
+     if (FcDebug () & FC_DBG_SCAN)
+ 	printf ("\tScanning dir %s\n", s_dir);
+ 	
+-- 
+GitLab

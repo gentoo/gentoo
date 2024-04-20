@@ -1,0 +1,65 @@
+diff -Naur free42-nologo-3.0.16.orig/gtk/build-intel-lib.sh free42-nologo-3.0.16/gtk/build-intel-lib.sh
+--- free42-nologo-3.0.16.orig/gtk/build-intel-lib.sh	2022-10-29 17:03:11.000000000 +0200
++++ free42-nologo-3.0.16/gtk/build-intel-lib.sh	2022-11-06 22:09:42.384802729 +0100
+@@ -10,13 +10,6 @@
+   fi
+ fi
+ 
+-which gcc >/dev/null
+-if [ $? -eq 0 ]; then
+-  CC=gcc
+-else
+-  CC=cc
+-fi
+-
+ # Hack to support FreeBSD; not 100% sure what this does, but it produces a
+ # library that passes all tests.
+ 
+@@ -64,8 +57,11 @@
+     ;;
+ esac
+ 
++patch -p0 <../intel-lib-custom-cc.patch
++
+ cd LIBRARY
+-$MK $OS_ARG CC=$CC CALL_BY_REF=1 GLOBAL_RND=1 GLOBAL_FLAGS=1 UNCHANGED_BINARY_FLAGS=0 $ENDIAN_ARG
++echo $MK $OS_ARG A=a CC=$CC CALL_BY_REF=1 GLOBAL_RND=1 GLOBAL_FLAGS=1 UNCHANGED_BINARY_FLAGS=0 $ENDIAN_ARG
++$MK $OS_ARG A=a CC=$CC CALL_BY_REF=1 GLOBAL_RND=1 GLOBAL_FLAGS=1 UNCHANGED_BINARY_FLAGS=0 $ENDIAN_ARG
+ mv libbid.a ../../gcc111libbid.a
+ cd ../..
+ ( echo '#ifdef FREE42_FPTEST'; echo 'const char *readtest_lines[] = {'; tr -d '\r' < IntelRDFPMathLib20U1/TESTS/readtest.in | sed 's/^\(.*\)$/"\1",/'; echo '0 };'; echo '#endif' ) > readtest_lines.cc
+diff -Naur free42-nologo-3.0.16.orig/gtk/intel-lib-custom-cc.patch free42-nologo-3.0.16/gtk/intel-lib-custom-cc.patch
+--- free42-nologo-3.0.16.orig/gtk/intel-lib-custom-cc.patch	1970-01-01 01:00:00.000000000 +0100
++++ free42-nologo-3.0.16/gtk/intel-lib-custom-cc.patch	2022-11-06 22:18:35.428433045 +0100
+@@ -0,0 +1,31 @@
++diff -Naur orig/LIBRARY/makefile.iml_head LIBRARY/makefile.iml_head
++--- orig/LIBRARY/makefile.iml_head	2011-07-12 17:26:21.000000000 +0200
+++++ LIBRARY/makefile.iml_head	2022-11-06 22:18:17.048411637 +0100
++@@ -527,12 +527,8 @@
++ CC_TYPES      := gcc cl
++ INTEL_CC_LIST := icc icl
++ 
++-CC_NAME_INDEX := $(call GetIndex,$(CC_NAME),$(CC_NAME_LIST))
++-ifeq ($(CC_NAME_INDEX),)
++-    $(error "Unknown CC_NAME ($(CC_NAME)). Must be one of $(CC_NAME_LIST))
++-endif
++ 
++-CC_INDEX      := $(call GetIndex,$(CC_NAME),$(CC_NAME_LIST))
+++CC_INDEX      := 3
++ CC_TYPE       := $(word $(CC_INDEX),$(CC_TYPE_LIST))
++ CC_TYPE_INDEX := $(call GetIndex,$(CC_TYPE),$(CC_TYPES))
++ 
++@@ -543,13 +539,6 @@
++ _CPP := $(CC_NAME) $(call CcNameSelect,-EP,-EP,-E -P,-EP)
++ _CC  := $(CC_NAME) $(call CcNameSelect,, -nologo,, -nologo)
++ 
++-ifeq ($(origin CC),default)
++-    CC := $(_CC)
++-endif
++-ifeq ($(origin CPP),default)
++-    CPP := $(_CPP)
++-endif
++-
++ CselCc         = $(call Cset,$1,$(call CcTypeSelect,$2,$3))
++ 
++ QOPT           := $(call CselCc, QOPT,        -, /Q      )

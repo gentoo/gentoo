@@ -1,0 +1,12 @@
+move app-text/kramdown-rfc2629 app-text/kramdown-rfc
+move dev-python/PyECLib dev-python/pyeclib
+move sys-auth/solo-python sys-auth/solo1
+move dev-python/setuptools_rust dev-python/setuptools-rust
+move dev-python/lark-parser dev-python/lark
+move dev-python/suds dev-python/suds-community
+move dev-cpp/cpp-taskflow dev-cpp/taskflow
+move app-admin/undertaker-scripts app-admin/gentoo-retirement-scripts
+move dev-python/pep621 dev-python/pyproject-metadata
+move media-sound/mumble net-voip/mumble
+move media-sound/murmur net-voip/murmur
+move media-sound/umurmur net-voip/umurmur

@@ -1,0 +1,20 @@
+--- a/unix/Makefile.in	2023-01-16 08:39:23.021056229 +0100
++++ b/unix/Makefile.in	2023-01-16 08:40:31.485926112 +0100
+@@ -290,7 +290,7 @@
+ SphereFile.o: $(GENERIC_DIR)/SphereFile.c
+ 	$(CC) -c $(CFLAGS) -DUSE_SNACK_STUBS $(GENERIC_DIR)/SphereFile.c
+ 
+-libsnacksphere${SHLIB_SUFFIX}: ${OBJNIST}
++libsnacksphere${SHLIB_SUFFIX}: ${OBJNIST} stublib
+ 	${SHLIB_LD} ${OBJNIST} ${LIBNIST} -o libsnacksphere${SHLIB_SUFFIX}
+ 
+ LIBOGG = @OGGLIBS@ -lc @TCL_LIB_SPEC@ -L. @SNACK_STUB_LIB_FLAG@
+@@ -299,7 +299,7 @@
+ SnackOgg.o: $(GENERIC_DIR)/SnackOgg.c
+ 	$(CC) @OGGINC@ -c $(CFLAGS) -DUSE_SNACK_STUBS $(GENERIC_DIR)/SnackOgg.c
+ 
+-libsnackogg${SHLIB_SUFFIX}: ${OBJOGG}
++libsnackogg${SHLIB_SUFFIX}: ${OBJOGG} stublib
+ 	${SHLIB_LD} ${OBJOGG} ${LIBOGG} -o libsnackogg${SHLIB_SUFFIX}
+ 
+ install:

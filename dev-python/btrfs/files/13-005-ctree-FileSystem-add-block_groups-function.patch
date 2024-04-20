@@ -1,0 +1,58 @@
+
+Patch from:
+https://github.com/knorrie/python-btrfs/commit/be867c10e30b7d8e4d3cfd939a433cc19f362966
+
+From be867c10e30b7d8e4d3cfd939a433cc19f362966 Mon Sep 17 00:00:00 2001
+From: Hans van Kranenburg <hans@knorrie.org>
+Date: Sun, 21 May 2023 18:40:28 +0200
+Subject: [PATCH] WIP ctree: FileSystem: add block_groups function
+
+In the past, I did not really want to add this helper function, since
+it's not just translating some function parameters to another function
+call, but, to get all Block Group objects, we needed to search the Chunk
+tree and get all of them individually. So, to make it more explicit to
+the user of the library that it was a bit weird inefficient process, I
+let the user do that little dance.
+
+Now, with the new Block Group Tree, we can actually just to a cheap
+lookup of a Block Group range! So, well, let's add the convenience
+function now, and let it handle both the old and new case.
+
+Note that the difference in behaviour between error handling for looking
+up a range or a single items stays the same. block_groups(...) will
+return an iterator which has no objects to produce, and block_group(...)
+will throw the ItemNotFoundError.
+--- a/btrfs/ctree.py
++++ b/btrfs/ctree.py
+@@ -866,6 +866,31 @@ def dev_extents(self, min_devid=1, max_devid=ULLONG_MAX):
+         for header, data in btrfs.ioctl.search_v2(self.fd, tree, min_key, max_key):
+             yield DevExtent(header, data)
+ 
++    def block_groups(self, min_vaddr=0, max_vaddr=ULLONG_MAX, nr_items=None):
++        """
++        :param int min_vaddr: Lowest virtual address to search for.
++        :param int max_vaddr: Highest virtual address to search for.
++        :param int nr_items: Maximum amount of items to return. Defaults to no limit.
++        :returns: Block Group items from the Extent Tree or Block Group Tree
++        :rtype: Iterator[:class:`~btrfs.ctree.BlockGroupItem`]
++        """
++        if not self._block_group_tree:
++            for chunk in self.chunks(min_vaddr, max_vaddr, nr_items):
++                try:
++                    yield self.block_group(chunk.vaddr, chunk.length)
++                except btrfs.ctree.ItemNotFoundError:
++                    # This is simply to prevent the program from aborting when a block
++                    # group is removed in between doing the chunks lookup and the block
++                    # group item lookup.
++                    pass
++        else:
++            tree = BLOCK_GROUP_TREE_OBJECTID
++            min_key = Key(min_vaddr, BLOCK_GROUP_ITEM_KEY, 0)
++            max_key = Key(max_vaddr, BLOCK_GROUP_ITEM_KEY, ULLONG_MAX)
++            for header, data in btrfs.ioctl.search_v2(self.fd, tree, min_key, max_key,
++                                                      nr_items=nr_items):
++                yield BlockGroupItem(header, data)
++
+     def block_group(self, vaddr, length=None):
+         """
+         :param int vaddr: Starting virtual address of the block group.

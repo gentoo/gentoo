@@ -1,0 +1,31 @@
+--- mp3ng.c	2005-11-21 12:54:36.000000000 +0100
++++ mp3ng-gentoo.c	2005-12-20 10:29:24.070051500 +0100
+@@ -1775,10 +1775,10 @@
+ {
+   if(!CheckVDRVersion(1,1,29,"mp3ng")) return false;
+   i18n_name=Name();
+-  MP3Sources.Load(AddDirectory(ConfigDirectory(),"mp3sources.conf"));
++  MP3Sources.Load(AddDirectory(ConfigDirectory(),"mp3ng/mp3ngsources"));
+   if(MP3Sources.Count()<1) {
+-     esyslog("ERROR: you should have defined at least one source in mp3sources.conf");
+-     fprintf(stderr,"No source(s) defined in mp3sources.conf\n");
++     esyslog("ERROR: you should have defined at least one source in mp3ngsources");
++     fprintf(stderr,"No source(s) defined in mp3ngsources\n");
+      return false;
+      }
+   InfoCache.Load();
+
+--- player-mp3.c	2005-11-15 23:15:41.000000000 +0100
++++ player-mp3-gentoo.c	2006-01-04 01:39:21.178251500 +0100
+@@ -2073,9 +2073,9 @@
+ 
+   if (!strlen (coverpicture)) {
+       if (!isStream)
+-        strcpy(coverpicture, "/var/cache/images/mp3MKIV-defaultcover.jpg");
++        strcpy(coverpicture, "/usr/share/vdr/mp3ng/mp3MKIV-defaultcover.jpg");
+       else
+-        strcpy(coverpicture, "/var/cache/images/mp3MKIV-streamcover.jpg");
++        strcpy(coverpicture, "/usr/share/vdr/mp3ng/mp3MKIV-streamcover.jpg");
+       }
+ 
+ //  printf("DEBUG 101b: cover = %s\n", imageFile);

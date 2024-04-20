@@ -1,0 +1,53 @@
+# https://github.com/Tontonitch/pnp4nagios/commits/master
+
+diff --git a/share/pnp/application/views/graph_content.php b/share/pnp/application/views/graph_content.php
+index 3ea99dc0..00469ce0 100644
+--- a/share/pnp/application/views/graph_content.php
++++ b/share/pnp/application/views/graph_content.php
+@@ -88,7 +88,8 @@
+ 	# treated like a url fragment when zooming
+ 	$gid = array();
+ 	parse_str(ltrim($this->url, '?'), $gid);
+-	$gid = htmlentities("?host=".urlencode($gid["host"])."&srv=".urlencode($gid["srv"]));
++	$srv = isset($gid['srv']) ? $gid['srv'] : '';
++	$gid = htmlentities("?host=".urlencode($gid["host"])."&srv=".urlencode($srv));
+ 	
+ 	echo "<div start=".$value['TIMERANGE']['start']." end=".$value['TIMERANGE']['end']." style=\"width:".$value['GRAPH_WIDTH']."px; height:".$value['GRAPH_HEIGHT']."px; position:absolute; top:33px\" class=\"graph\" id=\"".$gid."\" ></div>";
+ 	
+diff --git a/share/pnp/application/vendor/fpdf/fpdf.php b/share/pnp/application/vendor/fpdf/fpdf.php
+index cfc09593..efb53b4e 100755
+--- a/share/pnp/application/vendor/fpdf/fpdf.php
++++ b/share/pnp/application/vendor/fpdf/fpdf.php
+@@ -1040,8 +1040,11 @@ protected function _dochecks()
+ 	if(ini_get('mbstring.func_overload') & 2)
+ 		$this->Error('mbstring overloading must be disabled');
+ 	// Ensure runtime magic quotes are disabled
+-	if(get_magic_quotes_runtime())
+-		@set_magic_quotes_runtime(0);
++#       if(get_magic_quotes_runtime())
++#               @set_magic_quotes_runtime(0);
++        if (PHP_VERSION_ID < 70400 && get_magic_quotes_runtime()) {
++            set_magic_quotes_runtime(0);
++        }
+ }
+ 
+ protected function _checkoutput()
+diff --git a/share/pnp/application/vendor/fpdf/fpdi_pdf_parser.php b/share/pnp/application/vendor/fpdf/fpdi_pdf_parser.php
+index 9e6d521a..c044f200 100755
+--- a/share/pnp/application/vendor/fpdf/fpdi_pdf_parser.php
++++ b/share/pnp/application/vendor/fpdf/fpdi_pdf_parser.php
+@@ -305,6 +305,7 @@ protected function _getPageRotation($obj)
+         }
+ 
+         $res = $this->_getPageRotation($obj[1][1]['/Parent']);
++        if(false == $res) return false;
+         if ($res[0] == pdf_parser::TYPE_OBJECT)
+             return $res[1];
+ 
+@@ -344,4 +345,4 @@ protected function _readPages(&$pages, &$result)
+             }
+         }
+     }
+-}
+\ No newline at end of file
++}

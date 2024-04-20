@@ -1,0 +1,144 @@
+diff --git a/crates/uv/tests/pip_compile.rs b/crates/uv/tests/pip_compile.rs
+index 281c8b7f..19df83c2 100644
+--- a/crates/uv/tests/pip_compile.rs
++++ b/crates/uv/tests/pip_compile.rs
+@@ -5509,3 +5509,2 @@ fn expand_env_var_requirements_txt() -> Result<()> {
+ /// Raise an error when an editable's `Requires-Python` constraint is not met.
+-#[test]
+ fn requires_python_editable() -> Result<()> {
+@@ -5763,3 +5762,2 @@ fn no_stream() -> Result<()> {
+ /// Raise an error when a direct URL dependency's `Requires-Python` constraint is not met.
+-#[test]
+ fn requires_python_direct_url() -> Result<()> {
+diff --git a/crates/uv/tests/pip_install.rs b/crates/uv/tests/pip_install.rs
+index ee987fb0..a73e2f25 100644
+--- a/crates/uv/tests/pip_install.rs
++++ b/crates/uv/tests/pip_install.rs
+@@ -952,3 +952,2 @@ fn install_no_index_version() {
+ /// Ref: <https://github.com/astral-sh/uv/issues/1600>
+-#[test]
+ fn install_extra_index_url_has_priority() {
+@@ -2362,3 +2361,2 @@ requires-python = ">=3.11,<3.13"
+ /// Raise an error when an editable's `Requires-Python` constraint is not met.
+-#[test]
+ fn requires_python_editable() -> Result<()> {
+@@ -2811,3 +2809,2 @@ fn dry_run_install_then_upgrade() -> std::result::Result<(), Box<dyn std::error:
+ /// Raise an error when a direct URL's `Requires-Python` constraint is not met.
+-#[test]
+ fn requires_python_direct_url() -> Result<()> {
+diff --git a/crates/uv/tests/pip_install_scenarios.rs b/crates/uv/tests/pip_install_scenarios.rs
+index e9e85a94..353b3c62 100644
+--- a/crates/uv/tests/pip_install_scenarios.rs
++++ b/crates/uv/tests/pip_install_scenarios.rs
+@@ -2246,3 +2246,2 @@ fn post_greater_than_or_equal_post() {
+ /// ```
+-#[test]
+ fn post_less_than_or_equal() {
+@@ -2285,3 +2284,2 @@ fn post_less_than_or_equal() {
+ /// ```
+-#[test]
+ fn post_less_than() {
+@@ -2322,3 +2320,2 @@ fn post_less_than() {
+ /// ```
+-#[test]
+ fn post_local_greater_than() {
+@@ -2363,3 +2360,2 @@ fn post_local_greater_than() {
+ /// ```
+-#[test]
+ fn post_local_greater_than_post() {
+@@ -2531,3 +2527,2 @@ fn post_greater_than_post_not_available() {
+ /// ```
+-#[test]
+ fn package_only_prereleases() {
+@@ -3654,3 +3649,2 @@ fn package_prereleases_specifier_boundary() {
+ /// ```
+-#[test]
+ fn python_version_does_not_exist() {
+@@ -3696,3 +3690,2 @@ fn python_version_does_not_exist() {
+ /// ```
+-#[test]
+ fn python_less_than_current() {
+@@ -3738,3 +3731,2 @@ fn python_less_than_current() {
+ /// ```
+-#[test]
+ fn python_greater_than_current() {
+@@ -3780,3 +3772,2 @@ fn python_greater_than_current() {
+ /// ```
+-#[test]
+ fn python_greater_than_current_patch() {
+@@ -3944,3 +3935,2 @@ fn python_greater_than_current_backtrack() {
+ /// ```
+-#[test]
+ fn python_greater_than_current_excluded() {
+diff --git a/crates/uv/tests/pip_list.rs b/crates/uv/tests/pip_list.rs
+index 9b545ee2..5b202b9c 100644
+--- a/crates/uv/tests/pip_list.rs
++++ b/crates/uv/tests/pip_list.rs
+@@ -101,3 +101,2 @@ fn list_single_no_editable() -> Result<()> {
+ 
+-#[test]
+ fn list_editable() {
+@@ -153,3 +152,2 @@ fn list_editable() {
+ 
+-#[test]
+ fn list_editable_only() {
+@@ -241,3 +239,2 @@ fn list_editable_only() {
+ 
+-#[test]
+ fn list_exclude() {
+diff --git a/crates/uv/tests/pip_sync.rs b/crates/uv/tests/pip_sync.rs
+index 7964d2cc..e0a14a91 100644
+--- a/crates/uv/tests/pip_sync.rs
++++ b/crates/uv/tests/pip_sync.rs
+@@ -1423,3 +1423,2 @@ fn install_git_source_dist_cached() -> Result<()> {
+ /// Check that we show the right messages on cached, registry source distribution installs.
+-#[test]
+ fn install_registry_source_dist_cached() -> Result<()> {
+@@ -2920,3 +2919,2 @@ fn compile_invalid_pyc_invalidation_mode() -> Result<()> {
+ /// Raise an error when an editable's `Requires-Python` constraint is not met.
+-#[test]
+ fn requires_python_editable() -> Result<()> {
+@@ -2988,3 +2986,2 @@ fn no_stream() -> Result<()> {
+ /// Raise an error when a direct URL dependency's `Requires-Python` constraint is not met.
+-#[test]
+ fn requires_python_direct_url() -> Result<()> {
+diff --git a/crates/uv/tests/venv.rs b/crates/uv/tests/venv.rs
+index 94e79ae7..f79ea4e6 100644
+--- a/crates/uv/tests/venv.rs
++++ b/crates/uv/tests/venv.rs
+@@ -76,3 +76,2 @@ impl VenvTestContext {
+ 
+-#[test]
+ fn create_venv() {
+@@ -118,3 +117,2 @@ fn create_venv() {
+ 
+-#[test]
+ fn create_venv_defaults_to_cwd() {
+@@ -139,3 +137,2 @@ fn create_venv_defaults_to_cwd() {
+ 
+-#[test]
+ fn seed() {
+@@ -163,3 +160,2 @@ fn seed() {
+ 
+-#[test]
+ fn seed_older_python_version() {
+@@ -255,3 +251,2 @@ fn create_venv_unknown_python_patch() {
+ 
+-#[test]
+ fn create_venv_python_patch() {
+@@ -278,3 +273,2 @@ fn create_venv_python_patch() {
+ 
+-#[test]
+ fn file_exists() -> Result<()> {
+@@ -307,3 +301,2 @@ fn file_exists() -> Result<()> {
+ 
+-#[test]
+ fn empty_dir_exists() -> Result<()> {
+@@ -334,3 +327,2 @@ fn empty_dir_exists() -> Result<()> {
+ 
+-#[test]
+ fn non_empty_dir_exists() -> Result<()> {
+@@ -408,3 +400,2 @@ fn windows_shims() -> Result<()> {
+ 
+-#[test]
+ fn virtualenv_compatibility() {

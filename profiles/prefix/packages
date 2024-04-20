@@ -1,0 +1,20 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Prefix does not need busybox for emergency recovery,
+# the host have all those tools.
+-*sys-apps/busybox
+
+# Man pages are not essential.
+-*sys-apps/man-pages
+
+# A service manager is not essential.
+-*virtual/service-manager
+
+# we don't want binutils everywhere, only in linux and solaris
+-*sys-devel/binutils
+
+# linux only
+-*sys-process/procps
+-*sys-process/psmisc
+-*sys-apps/kmod

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Grace
+Comment=Numerical Data Processing and Visualization Tool
+Exec=xmgrace
+Icon=grace
+Terminal=false
+Type=Application
+Categories=Graphics;

@@ -1,0 +1,11 @@
+--- a/servers/slapd/back-perl/Makefile.in
++++ b/servers/slapd/back-perl/Makefile.in
+@@ -31,7 +31,7 @@
+ 
+ shared_LDAP_LIBS = $(LDAP_LIBLDAP_R_LA) $(LDAP_LIBLBER_LA)
+ NT_LINK_LIBS = -L.. -lslapd $(@BUILD_LIBS_DYNAMIC@_LDAP_LIBS)
+-UNIX_LINK_LIBS = $(@BUILD_LIBS_DYNAMIC@_LDAP_LIBS)
++UNIX_LINK_LIBS = $(@BUILD_LIBS_DYNAMIC@_LDAP_LIBS) `perl -MExtUtils::Embed -e ldopts`
+ 
+ LIBBASE = back_perl
+ 

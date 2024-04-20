@@ -1,0 +1,16 @@
+Do not install same license for -asan, which avoids QA warning
+Upstream issue: https://github.com/RadeonOpenCompute/ROCm-CompilerSupport/issues/61
+===================================================================
+--- comgr.orig/CMakeLists.txt
++++ comgr/CMakeLists.txt
+@@ -281,10 +281,6 @@ install(FILES
+   "NOTICES.txt"
+   COMPONENT amd-comgr
+   DESTINATION ${CMAKE_INSTALL_DOCDIR})
+-install(FILES
+-  "LICENSE.txt"
+-  COMPONENT asan
+-  DESTINATION ${CMAKE_INSTALL_DOCDIR}-asan)
+ 
+ # Generate the install-tree package.
+ set(AMD_COMGR_PREFIX_CODE "

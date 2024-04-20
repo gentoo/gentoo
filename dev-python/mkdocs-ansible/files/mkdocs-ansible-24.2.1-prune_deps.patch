@@ -1,0 +1,10 @@
+As of 24.2.1, no mention of pipdeptree anywhere in the actual code.
+
+--- a/.config/requirements.in
++++ b/.config/requirements.in
+@@ -11,5 +11,4 @@
+ mkdocstrings-python>=0.8.3
+ mkdocstrings>=0.21.2
+ pillow>=9.4.0
+-pipdeptree>=2.4.0
+ pymdown-extensions>=9.9.2

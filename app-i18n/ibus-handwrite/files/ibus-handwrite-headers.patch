@@ -1,0 +1,20 @@
+--- a/src/handrecog_lucykila.c
++++ b/src/handrecog_lucykila.c
+@@ -14,6 +14,7 @@
+ #include <sys/fcntl.h>
+ #include <sys/mman.h>
+ #include <math.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <glib.h>
+ 
+--- a/src/main.c
++++ b/src/main.c
+@@ -3,6 +3,7 @@
+ #include <unistd.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <ibus.h>
+ #include <locale.h>
+ #include <gtk/gtkgl.h>

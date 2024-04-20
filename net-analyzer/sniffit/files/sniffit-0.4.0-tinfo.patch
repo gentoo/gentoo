@@ -1,0 +1,12 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -12,7 +12,8 @@
+ AC_PROG_CC
+ 
+ # Checks for libraries.
+-AC_CHECK_LIB(ncurses, main, , [AC_MSG_ERROR([Couldn't find libncurses])])
++AC_CHECK_LIB(ncurses, initscr, , [AC_MSG_ERROR([Couldn't find libncurses])])
++AC_SEARCH_LIBS(keypad, tinfo, , [AC_MSG_ERROR([Couldn't find libncurses])])
+ AC_CHECK_LIB(pcap, pcap_open_live, , [AC_MSG_ERROR([Couldn't find libpcap])])
+ 
+ # Checks for header files.

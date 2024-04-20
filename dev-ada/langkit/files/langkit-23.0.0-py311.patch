@@ -1,0 +1,88 @@
+--- a/langkit/expressions/collections.py	2023-02-25 17:31:43.261369482 +0100
++++ b/langkit/expressions/collections.py	2023-02-25 17:32:03.068054949 +0100
+@@ -265,15 +265,15 @@
+             " function"
+         )
+ 
+-        argspec = inspect.getargspec(expr_fn)
++        argspec = inspect.getfullargspec(expr_fn)
+ 
+         check_multiple([
+             (len(argspec.args) in (1, 2),
+              'Invalid collection iteration lambda: only one'
+              ' or two parameters expected'),
+-            (not argspec.varargs and not argspec.keywords,
++            (not argspec.varargs and not argspec.varkw,
+              'Invalid collection iteration lambda: no *args or **kwargs'),
+             (not argspec.defaults,
+              'Invalid collection iteration lambda: No default values allowed'
+                 'Invalid matcher lambda'
+             )
+--- a/langkit/expressions/structs.py	2023-02-25 17:32:21.884756077 +0100
++++ b/langkit/expressions/structs.py	2023-02-25 17:32:32.382589322 +0100
+@@ -1327,9 +1327,9 @@
+         self.matchers = []
+ 
+         for i, match_fn in enumerate(self.matchers_functions):
+-            argspec = inspect.getargspec(match_fn)
++            argspec = inspect.getfullargspec(match_fn)
+             check_source_language(
+                 len(argspec.args) == 1 and
+                 not argspec.varargs and
+-                not argspec.keywords and
++                not argspec.varkw and
+                 (not argspec.defaults or len(argspec.defaults) < 2),
+--- a/langkit/expressions/base.py	2023-02-25 17:29:35.964403798 +0100
++++ b/langkit/expressions/base.py	2023-02-25 17:30:28.362565456 +0100
+@@ -158,11 +158,11 @@
+     fn_arguments = []
+     fn_expr = None
+ 
+-    argspec = inspect.getargspec(fn)
++    argspec = inspect.getfullargspec(fn)
+     defaults = argspec.defaults or []
+ 
+     check_multiple([
+-        (not argspec.varargs or not argspec.keywords, 'Invalid'
++        (not argspec.varargs or not argspec.varkw, 'Invalid'
+          ' function signature: no *args nor **kwargs allowed'),
+ 
+         (len(argspec.args) == len(defaults), 'All parameters '
+@@ -2822,7 +2822,7 @@
+             lambda_fn = None
+ 
+         else:
+-            argspec = inspect.getargspec(lambda_fn)
++            argspec = inspect.getfullargspec(lambda_fn)
+ 
+             var_names = argspec.args
+             var_exprs = argspec.defaults or []
+@@ -2843,10 +2843,10 @@
+         if self.lambda_fn is None:
+             return
+ 
+-        argspec = inspect.getargspec(self.lambda_fn)
++        argspec = inspect.getfullargspec(self.lambda_fn)
+ 
+         check_multiple([
+-            (not argspec.varargs and not argspec.keywords,
++            (not argspec.varargs and not argspec.varkw,
+              'Invalid function for Let expression (*args and **kwargs '
+              'not accepted)'),
+ 
+--- a/langkit/expressions/boolean.py	2023-02-25 17:30:59.820062103 +0100
++++ b/langkit/expressions/boolean.py	2023-02-25 17:31:10.565890137 +0100
+@@ -475,11 +475,11 @@
+         if self.then_expr:
+             return
+ 
+-        argspec = inspect.getargspec(self.then_fn)
++        argspec = inspect.getfullargspec(self.then_fn)
+         check_source_language(
+             len(argspec.args) == 1
+             and not argspec.varargs
+-            and not argspec.keywords
++            and not argspec.varkw
+             and not argspec.defaults,
+             'Invalid lambda for Then expression: exactly one parameter is'
+             ' required, without a default value'

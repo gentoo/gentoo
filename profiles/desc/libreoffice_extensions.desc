@@ -1,0 +1,10 @@
+# Copyright 1999-2012 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+
+# This file contains descriptions of LIBREOFFICE_EXTENSIONS USE_EXPAND flags.
+
+# Keep it sorted.
+nlpsolver - LIBREOFFICE_EXTENSIONS option to build non-linear solver for calc
+scripting-beanshell - LIBREOFFICE_EXTENSIONS option to build beanshell scripts parser
+scripting-javascript - LIBREOFFICE_EXTENSIONS option to build javascript scripts parser 
+wiki-publisher - LIBREOFFICE_EXTENSIONS option to build mediawiki integration

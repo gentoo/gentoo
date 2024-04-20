@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<use>
+		<flag name="assembly">Build with assembly micro-kernels</flag>
+		<flag name="jit">Build with JIT micro-kernels</flag>
+		<flag name="memopt">Build with optimized memory allocation scheme</flag>
+		<flag name="sparse">Build with graph rewriting for sparse inference</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">google/XNNPACK</remote-id>
+	</upstream>
+</pkgmetadata>

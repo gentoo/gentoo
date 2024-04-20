@@ -1,0 +1,10 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,2 @@
+-
+-
+ lsadb:	lsadb.c lsadb.h
+-	gcc -Wall -O2 -o $@ $< && strip $@
+-
+-    
++	${CC} -Wall $(CFLAGS) $(LDFLAGS) -o $@ $<

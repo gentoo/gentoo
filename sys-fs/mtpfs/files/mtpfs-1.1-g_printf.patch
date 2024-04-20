@@ -1,0 +1,10 @@
+diff --git a/mtpfs.h b/mtpfs.h
+index f9532fa..1042a3d 100644
+--- a/mtpfs.h
++++ b/mtpfs.h
+@@ -32,2 +32,5 @@
+ #endif
++#ifdef DEBUG
++#include <glib/gprintf.h>
++#endif
+ 

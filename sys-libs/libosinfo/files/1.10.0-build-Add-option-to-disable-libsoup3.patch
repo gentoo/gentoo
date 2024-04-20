@@ -1,0 +1,50 @@
+https://gitlab.com/libosinfo/libosinfo/-/merge_requests/134
+
+From 7148e47e84199d5ffeb695bcf064400b7fa0da77 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Tue, 15 Feb 2022 12:22:00 -0800
+Subject: [PATCH] build: Add option to disable libsoup3
+
+... and fall back to libsoup2 if disabled. This allows distributions
+that ship both versions to choose which version of libsoup will be
+linked.
+
+Signed-off-by: Matt Turner <mattst88@gmail.com>
+---
+ meson.build       | 2 +-
+ meson_options.txt | 6 ++++++
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index a664402..4f1d2df 100644
+--- a/meson.build
++++ b/meson.build
+@@ -71,7 +71,7 @@ gio_dep = dependency('gio-2.0', version: glib_version_info)
+ gobject_dep = dependency('gobject-2.0', version: glib_version_info)
+ 
+ #  everything else
+-libsoup_dep = dependency('libsoup-3.0', required: false)
++libsoup_dep = dependency('libsoup-3.0', required: get_option('libsoup3'))
+ #    fallback to libsoup2
+ if not libsoup_dep.found()
+   libsoup_dep = dependency('libsoup-2.4')
+diff --git a/meson_options.txt b/meson_options.txt
+index 13fc358..2084677 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -24,6 +24,12 @@ option('enable-vala',
+     description: 'Enable Vala bindings'
+ )
+ 
++option('libsoup3',
++    type: 'feature',
++    value: 'enabled',
++    description: 'Whether to enable libsoup3'
++)
++
+ option('with-pci-ids-path',
+     type: 'string',
+     value: '',
+-- 
+2.34.1
+

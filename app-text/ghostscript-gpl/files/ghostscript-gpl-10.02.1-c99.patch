@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/919065
+https://bugs.ghostscript.com/show_bug.cgi?id=707130
+https://git.ghostscript.com/?p=ghostpdl.git;a=commitdiff;h=b7beb19ad06e
+
+From b7beb19ad06e08b889a44694ff813ed5f6c96da4 Mon Sep 17 00:00:00 2001
+From: Chris Liddell <chris.liddell@artifex.com>
+Date: Thu, 14 Sep 2023 09:01:43 +0100
+Subject: [PATCH] Bug 707130: Cast to void ** to avoid compiler warning
+
+--- a/base/fapi_ft.c
++++ b/base/fapi_ft.c
+@@ -1280,7 +1280,7 @@ gs_fapi_ft_get_scaled_font(gs_fapi_server * a_server, gs_fapi_font * a_font,
+ 
+                 if (a_font->retrieve_tt_font != NULL) {
+                     unsigned int ms;
+-                    code = a_font->retrieve_tt_font(a_font, &own_font_data, &ms);
++                    code = a_font->retrieve_tt_font(a_font, (void **)&own_font_data, &ms);
+                     if (code == 0) {
+                         data_owned = false;
+                         open_args.memory_base = own_font_data;
+-- 
+2.34.1

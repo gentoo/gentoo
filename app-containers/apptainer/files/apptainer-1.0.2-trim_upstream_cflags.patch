@@ -1,0 +1,24 @@
+--- a/mconfig
++++ b/mconfig
+@@ -42,14 +42,14 @@
+ 
+ # user_cflags - user-defined CFLAGS without all the cflags_opts
+ user_cflags="$CFLAGS"
+-cflags_opts="-Wall -Werror -Wfatal-errors -Wno-unknown-warning-option \
++cflags_opts="-Wall -Wfatal-errors -Wno-unknown-warning-option \
+ -Wstrict-prototypes -Wpointer-arith -Wbad-function-cast \
+ -Woverlength-strings -Wframe-larger-than=2047 \
+ -Wno-sign-compare -Wclobbered -Wempty-body -Wmissing-parameter-type \
+ -Wtype-limits -Wunused-parameter -Wunused-but-set-parameter \
+ -Wno-discarded-qualifiers -Wno-incompatible-pointer-types \
+ -pipe -fmessage-length=0 -fPIC"
+-cflags="$CFLAGS -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -fstack-protector --param ssp-buffer-size=4"
++cflags="$CFLAGS -Wformat -Wformat-security -fstack-protector --param ssp-buffer-size=4"
+ ldflags=$LDFLAGS
+ 
+ package_name=apptainer
+--- a/mlocal/frags/go_runtime_opts.mk
++++ b/mlocal/frags/go_runtime_opts.mk
+@@ -1 +1 @@
+-CGO_CFLAGS += -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -fstack-protector --param ssp-buffer-size=4
++CGO_CFLAGS += -O2 -Wformat -Wformat-security -fstack-protector --param ssp-buffer-size=4

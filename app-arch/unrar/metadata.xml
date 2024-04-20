@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<slots>
+		<subslots>Reflect ABI of libunrar.so.</subslots>
+	</slots>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:rarlab:unrar</remote-id>
+	</upstream>
+</pkgmetadata>

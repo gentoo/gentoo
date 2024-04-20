@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="examples">Install the MiniBrowser example application</flag>
+    <flag name="gamepad">Enable gamepad input support via <pkg>dev-libs/libmanette</pkg></flag>
+    <flag name="jumbo-build">Combine source files to speed up build process</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">WebKit/WebKit</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,51 @@
+Backport to fix some clang16 issues.
+https://bugs.gentoo.org/870631
+
+https://github.com/phokz/pwauth/commit/c1e7fd9af0
+From: Philip Prindeville <philipp@redfish-solutions.com>
+Date: Mon, 23 Jul 2018 13:41:47 -0600
+Subject: [PATCH] Quiet compiler warnings for signatures
+
+There are missing/incomplete function declarations.  Also a missing
+header.
+--- a/lastlog.c
++++ b/lastlog.c
+@@ -31,6 +31,8 @@
+  * =======================================================================
+  */
+ 
++#include <time.h>
++
+ #include "pwauth.h"
+ 
+ /* LASTLOG - update the system's lastlog */
+--- a/main.c
++++ b/main.c
+@@ -44,6 +44,7 @@ int server_uids[]= {SERVER_UIDS, 0};
+ #endif
+ 
+ 
++int
+ main(int argc, char **argv)
+ {
+ #ifdef ENV_METHOD
+--- a/pwauth.h
++++ b/pwauth.h
+@@ -127,3 +127,7 @@ extern int haveuid;
+ #ifndef BFSZ
+ # define BFSZ 1024
+ #endif
++
++void snooze(int seconds);
++void lastlog(void);
++int check_auth(char *login, char *passwd);
+--- a/snooze.c
++++ b/snooze.c
+@@ -42,6 +42,7 @@
+  * sleep time, if other pwauth processes are in sleeps.
+  */
+ 
++void
+ snooze(int seconds)
+ {
+     int slfd;

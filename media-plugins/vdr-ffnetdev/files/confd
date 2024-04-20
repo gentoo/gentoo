@@ -1,0 +1,37 @@
+# /etc/conf.d/vdr.ffnetdev
+
+## listen on this port for OSD connect
+#  available Parameter are portnumber
+#  default port 20001
+#
+#VNC_PORT="20001"
+#
+## enable VNC
+#  available Parameter yes | no
+#
+USE_VNC="no"
+
+
+## port number for sending TS
+#  available Parameter ar portnumber
+#  default port 20002
+#
+#TS_PORT="20002"
+#
+## anable TS
+#  availabel Parameter yes | no
+#
+USE_TS="no"
+
+## enable remote control over OSD connection
+#  available parameter yes | no
+#  default no
+#
+REMOTE="no"
+
+## Detail from README
+#
+# Option registers a new remote control object causing VDR to start the 
+# learning procedure for this new remote control if you start
+# VDR and the ffnetdev plugin for the first time. 
+# If you want to control VDR over SVDRP you can simply leave it.

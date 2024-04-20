@@ -1,0 +1,87 @@
+https://salsa.debian.org/haskell-team/DHG_packages/-/blob/master/p/ghc/debian/patches/latomic-subword
+
+commit 90f06a0e015e18c066fe1569fb2add318bec72ca
+Author: Haochen Tong <i@hexchain.org>
+Date:   Mon Oct 11 11:40:56 2021 +0800
+
+    Check for libatomic dependency for atomic operations
+    
+    Some platforms (e.g. RISC-V) require linking against libatomic for some
+    (e.g. sub-word-sized) atomic operations.
+    
+    Fixes #19119.
+
+Index: b/configure.ac
+===================================================================
+--- a/configure.ac
++++ b/configure.ac
+@@ -1286,6 +1286,32 @@ AC_LINK_IFELSE([
+   AC_MSG_RESULT(no)
+ )
+ 
++AC_MSG_CHECKING(whether -latomic is needed for sub-word-sized atomic operations)
++AC_LINK_IFELSE([AC_LANG_PROGRAM([[unsigned char a;]], [[__atomic_fetch_or(&a, 1, __ATOMIC_RELAXED);]])],
++    [
++        AC_MSG_RESULT(no)
++        AC_SUBST([CabalNeedLibatomic],[False])
++        need_latomic=0
++    ],
++    [
++        _save_LIBS=$LIBS
++        LIBS="-latomic"
++        AC_LINK_IFELSE([AC_LANG_PROGRAM([[unsigned char a;]], [[__atomic_fetch_or(&a, 1, __ATOMIC_RELAXED);]])],
++            [
++                AC_MSG_RESULT(yes)
++                AC_SUBST([CabalNeedLibatomic],[True])
++                need_latomic=1
++            ],
++            [
++                AC_SUBST([CabalNeedLibatomic],[False])
++                AC_MSG_ERROR([sub-word-sized atomic operations not available.])
++                need_latomic=0
++            ])
++        LIBS=$_save_LIBS
++    ])
++AC_DEFINE_UNQUOTED([NEED_ATOMIC_LIB], [$need_latomic],
++    [Define to 1 if we need -latomic for sub-word atomic operations.])
++
+ dnl ** check for eventfd which is needed by the I/O manager
+ AC_CHECK_HEADERS([sys/eventfd.h])
+ AC_CHECK_FUNCS([eventfd])
+Index: b/rts/package.conf.in
+===================================================================
+--- a/rts/package.conf.in
++++ b/rts/package.conf.in
+@@ -63,6 +63,9 @@ extra-libraries:
+                              , "elf"
+                              , "dw"             /* for backtraces */
+ #endif
++#if NEED_ATOMIC_LIB
++                             , "atomic"
++#endif
+ 
+ #if defined(INSTALLING)
+ include-dirs:           INCLUDE_DIR FFI_INCLUDE_DIR
+Index: b/rts/rts.cabal.in
+===================================================================
+--- a/rts/rts.cabal.in
++++ b/rts/rts.cabal.in
+@@ -20,6 +20,8 @@ flag libbfd
+   default: @CabalHaveLibbfd@
+ flag mingwex
+   default: @CabalMingwex@
++flag need-atomic
++  default: @CabalNeedLibatomic@
+ flag libdw
+   default: @CabalHaveLibdw@
+ flag libnuma
+@@ -126,6 +128,9 @@ library
+     if flag(need-pthread)
+        -- for pthread_getthreadid_np, pthread_create, ...
+        extra-libraries: pthread
++    if flag(need-atomic)
++       -- for sub-word-sized atomic operations (#19119)
++       extra-libraries: atomic
+     if flag(libbfd)
+        -- for debugging
+        extra-libraries: bfd iberty

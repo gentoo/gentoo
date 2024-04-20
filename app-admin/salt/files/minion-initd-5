@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/salt-minion"
+command_args="${SALT_OPTS}"
+pidfile="/var/run/supervisor-salt-minion.pid"
+daemon_pidfile="/var/run/salt-minion.pid"
+command_args_background="--daemon --pid-file=\"${daemon_pidfile}\""
+name="SALT minion daemon"
+retry="20"
+
+supervisor=supervise-daemon
+output_logger="logger -p daemon.info -t salt-minion.stdout --"
+error_logger="logger -p daemon.err -t salt-minion.error --"
+
+depend() {
+	need net
+	use logger
+}

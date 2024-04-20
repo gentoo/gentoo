@@ -1,0 +1,20 @@
+https://github.com/NetworkConfiguration/dhcpcd/commit/8d12632c670f02d8a685e80c8abad7049d3dd18f
+
+From 8d12632c670f02d8a685e80c8abad7049d3dd18f Mon Sep 17 00:00:00 2001
+From: Roy Marples <roy@marples.name>
+Date: Mon, 13 Nov 2023 15:54:50 +0000
+Subject: [PATCH] Fix privsep builds for prior.
+
+--- a/src/dhcpcd.c
++++ b/src/dhcpcd.c
+@@ -388,9 +388,8 @@ dhcpcd_daemonise(struct dhcpcd_ctx *ctx)
+ 	if (IN_PRIVSEP(ctx))
+ 		ps_daemonised(ctx);
+ 	else
+-#else
+-		dhcpcd_daemonised(ctx);
+ #endif
++		dhcpcd_daemonised(ctx);
+ 
+ 	eloop_event_delete(ctx->eloop, ctx->fork_fd);
+ 	exit_code = EXIT_SUCCESS;

@@ -1,0 +1,70 @@
+From 3a87a4132667f78fc85c54ad89992bbdd02d1e55 Mon Sep 17 00:00:00 2001
+From: Carlos Alberto Lopez Perez <clopez@igalia.com>
+Date: Thu, 6 Oct 2011 03:12:55 +0200
+Subject: [PATCH] Use dynamic structures instead of predefined ones
+
+ * The file /proc/acpi/wakeup can have much more than 25 entries.
+   In my computer (Dell E6420) I have 27 entries.
+   So instead of using an array of [x] entries better use dynamic
+   vectors and push the new entries when a new line from the file
+   is read.
+
+ * The name of the device is not ever 4 characters. For example I
+   have a device called "LID" which is 3 characters long.
+   Instead of using a fixed size for the device we split the line
+   on the first tab (\t) and use the first part.
+---
+ src/acpitool.cpp |   23 +++++++++++------------
+ 1 files changed, 11 insertions(+), 12 deletions(-)
+
+diff --git a/src/acpitool.cpp b/src/acpitool.cpp
+index 2a610a5..71e01d7 100644
+--- a/src/acpitool.cpp
++++ b/src/acpitool.cpp
+@@ -460,16 +460,14 @@ int Show_WakeUp_Devices(int verbose)
+ 
+ int Toggle_WakeUp_Device(const int Device, int verbose)
+ {
+-    ifstream file_in;
+     ofstream file_out;
+-    char *filename, str[50];
+-    int index = 1;
+-    char Name[25][5];            // 25 should be enough I guess, I have only 9 so far //
+-    
++    char *filename; string str;
++    int index = 1; int charindex = 0;
++    std::vector <std::string> Name(index); // Never is enough, use dynamic structures //
+     filename = "/proc/acpi/wakeup";
+     
+-    file_in.open(filename);
+-    if (!file_in)        
++    ifstream file_in(filename, ifstream::in);
++    if (!file_in.good()) // if opening is not successful
+     {
+     	if(!verbose)        
+     	{
+@@ -484,14 +482,15 @@ int Toggle_WakeUp_Device(const int Device, int verbose)
+     	}	
+     }
+     
+-    file_in.getline(str, 50);             // first line are just headers //
++    getline(file_in, str);                // first line are just headers //
+     while(!file_in.eof())                 // count all devices and store their names//
+     {
+-        file_in.getline(str, 50);
+-        if(strlen(str)!=0)                // avoid empty last line //
++        getline(file_in, str);
++        if( str.length() != 0 )           // avoid empty last line //
+         {
+-	    memset(Name[index], '\0', 5);
+-	    strncpy(Name[index], str, 4);
++	    charindex = 0; // reset to zero
++	    while ( (str[++charindex]!='\t')  ); // stop on first tab and get the array index
++	    Name.push_back(str.substr(0,charindex)); // Push the name into the vector
+ 	    index++;
+ 	}
+     }	
+-- 
+1.7.5.4
+
+

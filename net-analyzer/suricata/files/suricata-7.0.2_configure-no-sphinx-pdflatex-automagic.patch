@@ -1,0 +1,20 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -2231,7 +2231,7 @@
+     fi
+ 
+ # sphinx-build for documentation, and also check for a new enough version
+-    AC_PATH_PROG([SPHINX_BUILD], [sphinx-build], [no])
++    SPHINX_BUILD="no"
+     if test "$SPHINX_BUILD" != "no"; then
+         MIN_SPHINX_BUILD_VERSION="3.4.3"
+         sphinx_build_version=$($SPHINX_BUILD --version 2>&1 | cut -d' ' -f2-)
+@@ -2257,7 +2257,7 @@
+     AM_CONDITIONAL([HAVE_SURICATA_MAN], [test "x$have_suricata_man" = "xyes"])
+ 
+ # pdflatex for the pdf version of the user manual
+-    AC_PATH_PROG(HAVE_PDFLATEX, pdflatex, "no")
++    HAVE_PDFLATEX="no"
+     if test "$HAVE_PDFLATEX" = "no"; then
+        enable_pdflatex=no
+     fi

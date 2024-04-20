@@ -1,0 +1,55 @@
+diff --git a/src/fapplication.cpp b/src/fapplication.cpp
+index 72159c99..d6ba26ef 100644
+--- a/src/fapplication.cpp
++++ b/src/fapplication.cpp
+@@ -785,7 +785,7 @@ bool FApplication::loadReferenceModel(const QString & databaseName, bool fullLoa
+ bool FApplication::loadReferenceModel(const QString &  databaseName, bool fullLoad, ReferenceModel * referenceModel)
+ {
+ 	QDir dir = FolderUtils::getAppPartsSubFolder("");
+-	QString dbPath = dir.absoluteFilePath("parts.db");
++	QString dbPath = FolderUtils::getTopLevelDocumentsPath() + "/parts.db";
+ 
+ 	QFileInfo info(dbPath);
+ 	bool dbExists = (info.size() > 0) && !fullLoad;
+@@ -798,7 +798,11 @@ bool FApplication::loadReferenceModel(const QString &  databaseName, bool fullLo
+ 		sha = PartsChecker::getSha(dir.absolutePath());
+ 		if (sha.isEmpty()) {
+ 			DebugDialog::debug(QString("1.6 SHA empty"));
++#ifdef PARTS_COMMIT
++			sha = PARTS_COMMIT;
++#else
+ 			return false;
++#endif
+ 		}
+ 		referenceModel->setSha(sha);
+ 	}
+@@ -2042,7 +2046,7 @@ void FApplication::regeneratePartsDatabase() {
+ void FApplication::regeneratePartsDatabaseAux(QDialog * progressDialog) {
+ 	ReferenceModel * referenceModel = new CurrentReferenceModel();
+ 	QDir dir = FolderUtils::getAppPartsSubFolder("");
+-	QString dbPath = dir.absoluteFilePath("parts.db");
++	QString dbPath = FolderUtils::getTopLevelDocumentsPath() + "/parts.db";
+ 	RegenerateDatabaseThread *thread = new RegenerateDatabaseThread(dbPath, progressDialog, referenceModel);
+ 	connect(thread, SIGNAL(finished()), this, SLOT(regenerateDatabaseFinished()));
+ 	FMessageBox::BlockMessages = true;
+diff --git a/src/version/updatedialog.cpp b/src/version/updatedialog.cpp
+index 58c71da8..c481cdec 100644
+--- a/src/version/updatedialog.cpp
++++ b/src/version/updatedialog.cpp
+@@ -28,6 +28,7 @@ along with Fritzing.  If not, see <http://www.gnu.org/licenses/>.
+ #include "versionchecker.h"
+ #include "modfiledialog.h"
+ #include "../debugdialog.h"
++#include "../utils/folderutils.h"
+ 
+ #include <QVBoxLayout>
+ #include <QPushButton>
+@@ -183,7 +184,7 @@ void UpdateDialog::releasesAvailableSlot() {
+ 		permissionTest.close();
+ 		permissionTest.remove();
+ 		if (count > 0) {
+-			QFile db(repoDir.absoluteFilePath("parts.db"));
++			QFile db(FolderUtils::getTopLevelDocumentsPath() + "/parts.db");
+ 			if (db.open(QFile::Append)) {
+ 				canWrite = true;
+ 				db.close();

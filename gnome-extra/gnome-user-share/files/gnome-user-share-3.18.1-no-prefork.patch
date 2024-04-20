@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/551012
+--- a/data/dav_user_2.4.conf
++++ b/data/dav_user_2.4.conf
+@@ -9,7 +9,6 @@
+ LimitXMLRequestBody 100000
+ 
+ LoadModule unixd_module ${HTTP_MODULES_PATH}/mod_unixd.so
+-LoadModule mpm_prefork_module ${HTTP_MODULES_PATH}/mod_mpm_prefork.so
+ LoadModule dav_module ${HTTP_MODULES_PATH}/mod_dav.so
+ LoadModule dav_fs_module ${HTTP_MODULES_PATH}/mod_dav_fs.so
+ LoadModule authn_core_module ${HTTP_MODULES_PATH}/mod_authn_core.so

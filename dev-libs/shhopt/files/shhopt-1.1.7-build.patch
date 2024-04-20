@@ -1,0 +1,69 @@
+--- a/Makefile
++++ b/Makefile
+@@ -5,17 +5,11 @@
+ VERPAT		= 7
+ VERSION		= $(VERMAJ).$(VERMIN).$(VERPAT)
+ 
+-# Define SHARED as 1 for Linux shared ELF library
+-#SHARED		= 1
+ 
+-ifeq ($(SHARED),1)
+ LIBTARGET	= lib$(DIST).so.$(VERSION)
+ LIBTARGETSO	= lib$(DIST).so
+ LIBTARGETSOMAJ	= $(LIBTARGETSO).$(VERMAJ)
+ CCSHRD		= -fPIC
+-else
+-LIBTARGET	= lib$(DIST).a
+-endif
+ 
+ LIBHEAD		= $(DIST).h
+ TARGETS		= $(LIBTARGET)
+@@ -27,12 +21,9 @@
+ INSTALLPROG	= install -m 755
+ MKDIRP		= install -d -m 755
+ 
+-CC		= gcc
+-OPTIM		= -O2
+-
+ INCDIR		= -I.
+ 
+-CCOPT		= -s -Wall $(OPTIM) $(INCDIR)
++CCOPT		= -Wall $(INCDIR)
+ 
+ # Object files to store in the library
+ LIBOBJS		= shhopt.o
+@@ -44,12 +35,7 @@
+ # that your ar does an implicit ranlib and you do not need to run ranlib
+ # separately.  This error is harmless.
+ $(LIBTARGET): $(LIBOBJS)
+-ifeq ($(SHARED),1)
+-	$(CC) -shared -Wl,-soname,$(LIBTARGETSOMAJ) -o $(LIBTARGET) $(LIBOBJS)
+-else
+-	ar rc $(LIBTARGET) $(LIBOBJS)
+-	ranlib $(LIBTARGET) || true
+-endif
++	$(CC) $(LDFLAGS) -shared -Wl,-soname,$(LIBTARGETSOMAJ) -o $(LIBTARGET) $(LIBOBJS)
+ 
+ # Note that you may need GNU's -liberty if your libc lacks strtoul
+ example: $(LIBTARGET) example.o
+@@ -57,7 +43,7 @@
+ 		-L. -I. -L$(INSTLIBDIR) -I$(INSTINCDIR) -lshhopt
+ 
+ .c.o:
+-	$(CC) $(CCSHRD) -o $@ -c $(CCOPT) $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(CCSHRD) -o $@ -c $(CCOPT) $<
+ 
+ depend dep:
+ 	$(CC) $(INCDIR) -MM *.c >depend
+@@ -66,11 +52,9 @@
+ 	$(MKDIRP) $(INSTLIBDIR) $(INSTINCDIR)
+ 	$(INSTALL) $(LIBTARGET) $(INSTLIBDIR)
+ 	$(INSTALL) $(LIBHEAD) $(INSTINCDIR)
+-ifeq ($(SHARED),1)
+ 	ln -sf $(LIBTARGET) $(INSTLIBDIR)/$(LIBTARGETSOMAJ)
+ 	ln -sf $(LIBTARGETSOMAJ) $(INSTLIBDIR)/$(LIBTARGETSO)
+ 	echo "Now run ldconfig if necessary."
+-endif
+ 
+ clean:
+ 	rm -f *.o core *~ depend

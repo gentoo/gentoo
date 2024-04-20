@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>arthurzam@gentoo.org</email>
+		<name>Arthur Zamarin</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">zaps166/QMPlay2</remote-id>
+	</upstream>
+	<use>
+		<flag name="audiofilters">Build with AudioFilters module</flag>
+		<flag name="avdevice">Build FFmpeg module with libavdevice suport</flag>
+		<flag name="cdio">Build with AudioCD module</flag>
+		<flag name="cuvid">Build with CUVID module</flag>
+		<flag name="extensions">Build with Extensions module and enable other plugins</flag>
+		<flag name="gme">Build Chiptune with GME support</flag>
+		<flag name="inputs">Build with Inputs module</flag>
+		<flag name="libass">Build with SSA/ASS subtitles rendering support</flag>
+		<flag name="notifications">Build additional notifications module</flag>
+		<flag name="pipewire">Build with PipeWire support</flag>
+		<flag name="shaders">Compile Vulkan shaders using <pkg>media-libs/shaderc</pkg></flag>
+		<flag name="videofilters">Build with VideoFilters module</flag>
+		<flag name="visualizations">Build with Visualizations module</flag>
+	</use>
+</pkgmetadata>

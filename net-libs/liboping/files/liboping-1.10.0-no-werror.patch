@@ -1,0 +1,13 @@
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -2,10 +2,6 @@ AUTOMAKE_OPTIONS = foreign no-dependencies
+ 
+ SUBDIRS = mans
+ 
+-if COMPILER_IS_GCC
+-AM_CFLAGS = -Wall -Werror
+-endif
+-
+ include_HEADERS = oping.h
+ lib_LTLIBRARIES = liboping.la
+ 

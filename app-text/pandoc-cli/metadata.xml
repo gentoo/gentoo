@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="lua">Support custom modifications and conversions with the
+pandoc Lua scripting engine.</flag>
+		<flag name="nightly">Add &#39;-nightly-COMPILEDATE&#39; to the output of &#39;--version&#39;.</flag>
+		<flag name="server">Include support for running pandoc as an HTTP server.</flag>
+	</use>
+	<upstream>
+		<remote-id type="hackage">pandoc-cli</remote-id>
+		<remote-id type="github">jgm/pandoc</remote-id>
+	</upstream>
+</pkgmetadata>

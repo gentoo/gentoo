@@ -1,0 +1,23 @@
+fix from upstream
+
+commit 4be5608573b2be2e31f3d2a01446e22e1c9d7839
+Author: Chet Ramey <chet.ramey@case.edu>
+Date:   Wed Jan 27 11:49:50 2021 -0500
+
+    commit bash-20210122 snapshot
+
+diff --git a/lib/readline/signals.c b/lib/readline/signals.c
+index 0943c643b27d..ecaf699e9261 100644
+--- a/signals.c
++++ b/signals.c
+@@ -266,8 +266,10 @@ _rl_handle_signal (int sig)
+     case SIGQUIT:
+ #endif
+ 
++#if defined (HAVE_POSIX_SIGNALS)
+       if (block_sig)
+ 	sigprocmask (SIG_BLOCK, &set, &oset);
++#endif
+ 
+       rl_echo_signal_char (sig);
+       rl_cleanup_after_signal ();

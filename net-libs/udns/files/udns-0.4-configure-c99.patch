@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/874759
+https://bugs.gentoo.org/883285
+https://bugs.gentoo.org/919260
+https://src.fedoraproject.org/rpms/udns/c/27e7b66faa416c13b113e895c204373596282c37?branch=rawhide
+
+Provide autoconf-style fake prototype for socket to avoid implicit
+function declarations.  Otherwise the check will always fail with soem
+C99 compilers.
+
+Avoid incorrect pointer types and a pointer-to-int conversion with
+inet_pton and inet_ntop.
+
+--- a/configure
++++ b/configure
+@@ -75,6 +75,7 @@ int main(int argc, char **argv) {
+ EOF
+ 
+ if ac_library_find_v 'socket and connect' "" "-lsocket -lnsl" <<EOF
++char socket(void); char connect(void);
+ int main() { socket(); connect(); return 0; }
+ EOF
+ then :
+@@ -92,8 +93,8 @@ ac_ign \
+ int main() {
+   char buf[64];
+   long x = 0;
+-  inet_pton(AF_INET, &x, buf);
+-  return inet_ntop(AF_INET, &x, buf, sizeof(buf));
++  inet_pton(AF_INET, (void *) &x, buf);
++  return inet_ntop(AF_INET, (void *) &x, buf, sizeof(buf)) != 0;
+ } 
+ EOF
+ 

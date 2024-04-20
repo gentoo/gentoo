@@ -1,0 +1,33 @@
+--- a/nx-X11/Makefile
++++ b/nx-X11/Makefile
+@@ -70,7 +70,7 @@
+ 	else \
+ 	    exit 0; \
+ 	fi
+-	which $(IMAKE) 1>/dev/null && $(IMAKE_CMD) $(MFLAGS) -s xmakefile -DTOPDIR=$(TOP) -DCURDIR=$(CURRENT_DIR)
++	command -v $(IMAKE) 1>/dev/null && $(IMAKE_CMD) $(MFLAGS) -s xmakefile -DTOPDIR=$(TOP) -DCURDIR=$(CURRENT_DIR)
+ 
+ # don't allow any default rules in this Makefile
+ .SUFFIXES:
+--- a/nx-X11/extras/Mesa_6.4.2/bin/mklib
++++ b/nx-X11/extras/Mesa_6.4.2/bin/mklib
+@@ -285,7 +285,7 @@
+ 		# -linker was not specified, choose default linker now
+ 		if [ $CPLUSPLUS = 1 ] ; then
+ 		    # determine linker and options for C++ code
+-		    if [ `which c++` ] ; then
++		    if [ `command -v c++` ] ; then
+ 			# use Sun c++
+ 			LINK="c++"
+ 		    elif [ `type g++` ] ; then
+--- a/nx-X11/x-indent.sh
++++ b/nx-X11/x-indent.sh
+@@ -2,7 +2,7 @@
+ 
+ # We want GNU indent, so first search for gindent to avoid /usr/bin/indent
+ # on the BSDs, which won't work for us
+-INDENT=$(which gnuindent || which gindent || which indent)
++INDENT=$(command -v gnuindent || command -v gindent || command -v indent)
+ 
+ if [ -z "${INDENT}" ] ; then
+     echo "Could not find indent, sorry..." >&2

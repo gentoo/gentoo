@@ -1,0 +1,30 @@
+https://github.com/HDFGroup/hdf5/commit/9dd36f016a4316b94f5df15856d228de01d304c6
+
+From 9dd36f016a4316b94f5df15856d228de01d304c6 Mon Sep 17 00:00:00 2001
+From: Ryan Schmidt <ryandesign@macports.org>
+Date: Thu, 17 Nov 2022 16:28:44 -0600
+Subject: [PATCH] Simplify & fix check for szlib encoder (#2263)
+
+Return the result rather than setting the exit code. "return" is a
+language keyword whereas "exit" is a function for which the <stdlib.h>
+header has to be included which it wasn't in this test, therefore the
+test would previously fail to identify that the encoder was enabled if
+"-Werror=implicit-function-declaration" was used, which it is by default
+with clang from Xcode 12 and later.
+
+Fixes #2262
+--- a/configure.ac
++++ b/configure.ac
+@@ -1737,10 +1737,7 @@ if test "x$HAVE_SZLIB" = "xyes" -a "x$HAVE_SZLIB_H" = "xyes"; then
+                 #include "szlib.h"
+             ],[[
+                 /* SZ_encoder_enabled returns 1 if encoder is present */
+-                if(SZ_encoder_enabled() == 1)
+-                    exit(0);
+-                else
+-                    exit(1);
++                return SZ_encoder_enabled() != 1;
+             ]])]
+         , [hdf5_cv_szlib_can_encode=yes], [hdf5_cv_szlib_can_encode=no],)]
+    )
+

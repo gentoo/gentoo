@@ -1,0 +1,26 @@
+From 276611ad637334a6e3ea464540b204318f832ba8 Mon Sep 17 00:00:00 2001
+From: Doug Goldstein <cardoe@cardoe.com>
+Date: Wed, 13 Jun 2012 17:49:52 -0500
+Subject: [PATCH] Fix man page directory creation
+
+When building inside of a buildroot, the path for the man page might not
+exist so create it before we attempt to install a file into it.
+---
+ Makefile |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index d9adca9..32ad480 100755
+--- a/Makefile
++++ b/Makefile
+@@ -42,6 +42,7 @@ RANLIB ?= ranlib
+ 
+ install: numad
+ 	mkdir -p ${prefix}/bin
++	mkdir -p ${prefix}/share/man/man8
+ 	install -m 0755 numad ${prefix}/bin
+ 	install -m 0644 numad.8 ${prefix}/share/man/man8
+ 
+-- 
+1.7.3.4
+

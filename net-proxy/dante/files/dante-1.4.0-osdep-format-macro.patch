@@ -1,0 +1,15 @@
+diff -Nuar --exclude '*.orig' --exclude '*.rej' dante-1.4.0.orig/include/osdep.h dante-1.4.0/include/osdep.h
+--- dante-1.4.0.orig/include/osdep.h	2013-10-27 08:24:41.000000000 -0700
++++ dante-1.4.0/include/osdep.h	2014-01-05 15:06:45.346071952 -0800
+@@ -254,9 +254,9 @@
+ #endif /* HAVE_DECL_NONNULL */
+ 
+ #if HAVE_DECL_FORMAT
+-#define FORMAT(x, y, z) format(x, y, z)
++#define FORMAT(...) format(__VA_ARGS__)
+ #else
+-#define FORMAT(x, y, z)
++#define FORMAT(...)
+ #endif /* HAVE_DECL_FORMAT */
+ 
+ #if HAVE_DECL_BOUNDED

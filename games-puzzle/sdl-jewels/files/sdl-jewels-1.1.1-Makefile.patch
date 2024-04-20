@@ -1,0 +1,17 @@
+--- SDL_jewels-1.1.1/Makefile.old	2010-11-13 00:46:47.196000082 +0000
++++ SDL_jewels-1.1.1/Makefile	2010-11-13 01:45:14.516000087 +0000
+@@ -1,11 +1,12 @@
+ EXE = gljewel
+ 
+-CFLAGS = -O2 -Wall $(shell sdl-config --cflags)
+-LDFLAGS = $(shell sdl-config --libs) -lGL -lm
++CFLAGS += -Wall $(shell sdl-config --cflags)
++LIBS = $(shell sdl-config --libs) -lGL -lm
+ 
+ OBJS	= $(EXE).o matrix.o sound.o
+ 
+ $(EXE):	$(OBJS)
++	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@
+ 
+ $(EXE).o: $(EXE).c matrix.h misc.h
+ 

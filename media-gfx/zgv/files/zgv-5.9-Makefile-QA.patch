@@ -1,0 +1,55 @@
+--- a/src/Makefile	2009-09-28 15:31:29.000000000 -0600
++++ b/src/Makefile	2009-09-28 15:56:26.000000000 -0600
+@@ -45,11 +45,11 @@
+ 	readbmp.o readtga.o readpng.o readpcx.o \
+ 	readxvpic.o readmrf.o readxbm.o readxpm.o \
+ 	modesel.o readpcd.o readtiff.o readprf.o zgv_io.o
+ 
+ zgv: $(ZGV_OBJS)
+-	$(CC) $(CFLAGS) -o zgv $(ZGV_OBJS) $(ZGV_LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o zgv $(ZGV_OBJS) $(ZGV_LIBS)
+ 
+ bdf2h: bdf2h.o
+ 	$(CC) $(CFLAGS) -o bdf2h bdf2h.o
+ 
+ install-info: install-info.c
+@@ -59,28 +59,28 @@
+ # installation. Not nice to put this in the install target,
+ # but it's likely to cause problems if I don't.
+ # 
+ install: all
+ 	@if [ "$(BACKEND)" = SVGALIB ]; then \
+-	  echo $(RM) /usr/bin/zgv; \
+-	  $(RM) /usr/bin/zgv; \
+-	  echo install -m 4755 -o root -g root -s zgv $(BINDIR); \
+-	  install -m 4755 -o root -g root -s zgv $(BINDIR); \
++	  echo echo /usr/bin/zgv; \
++	  echo /usr/bin/zgv; \
++	  echo install -m 0755 -o root -g root zgv $(BINDIR); \
++	  install -m 0755 -o root -g root zgv $(BINDIR); \
+ 	fi
+ 	@if [ "$(BACKEND)" = SDL ]; then \
+-	  echo $(RM) /usr/bin/zgv-sdl; \
+-	  $(RM) /usr/bin/zgv-sdl; \
+-	  echo install -m 755 -s zgv $(BINDIR)/zgv-sdl; \
+-	  install -m 755 -s zgv $(BINDIR)/zgv-sdl; \
++	  echo echo /usr/bin/zgv-sdl; \
++	  echo /usr/bin/zgv-sdl; \
++	  echo install -m 755 zgv $(BINDIR)/zgv-sdl; \
++	  install -m 755 zgv $(BINDIR)/zgv-sdl; \
+ 	fi
+ 
+ uninstall:
+-	$(RM) $(BINDIR)/zgv $(BINDIR)/zgv-sdl
++	echo $(BINDIR)/zgv $(BINDIR)/zgv-sdl
+ 
+ clean:
+-	$(RM) *.o *~ zgv bdf2h fontbmps.h install-info
+-	$(RM) rcfile_opt.h rcfile_var.h rcfile_short.h
++	echo *.o *~ zgv bdf2h fontbmps.h install-info
++	echo rcfile_opt.h rcfile_var.h rcfile_short.h
+ 
+ # Dependancies
+ 3deffects.o: 3deffects.c 3deffects.h font.h readnbkey.h zgv.h \
+  rc_config.h rcfile.h mousecur.h rbmenu.h
+ bdf2h.o: bdf2h.c

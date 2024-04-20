@@ -1,0 +1,43 @@
+--- a/configure	2021-09-11 00:22:52.000000000 +0200
++++ b/configure	2022-10-16 17:03:52.235916191 +0200
+@@ -25725,7 +25725,10 @@
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for Qt" >&5
+ $as_echo_n "checking for Qt... " >&6; }
+   # If we have Qt5 or later in the path, we're golden
+-  ver=`qmake --version | grep -o "Qt version ."`
++  if [[ -z $QMAKE ]]; then
++    QMAKE=qmake
++  fi
++  ver=`$QMAKE --version | grep -o "Qt version ."`
+   if test "$ver" ">" "Qt version 4"; then
+     have_qt=yes
+     # This pro file dumps qmake's variables, but it only works on Qt 5 or later
+@@ -25750,21 +25753,21 @@
+ percent.commands = @echo -n "\$(\$(@))\ "
+ QMAKE_EXTRA_TARGETS += percent
+ EOF
+-    qmake $am_have_qt_pro -o $am_have_qt_makefile
++    $QMAKE $am_have_qt_pro -o $am_have_qt_makefile
+     QT_CXXFLAGS=`cd $am_have_qt_dir; make -s -f $am_have_qt_makefile CXXFLAGS INCPATH | tr -d '"'`
+     QT_LIBS=`cd $am_have_qt_dir; make -s -f $am_have_qt_makefile LIBS`
+     rm $am_have_qt_pro $am_have_qt_makefile
+     rmdir $am_have_qt_dir
+ 
+     # Look for specific tools in $PATH
+-    QT_MOC=`which moc`
+-    QT_UIC=`which uic`
+-    QT_RCC=`which rcc`
+-    QT_LRELEASE=`which lrelease`
+-    QT_LUPDATE=`which lupdate`
++    QT_MOC=$QT_BIN_DIR/moc
++    QT_UIC=$QT_BIN_DIR/uic
++    QT_RCC=$QT_BIN_DIR/rcc
++    QT_LRELEASE=$QT_BIN_DIR/lrelease
++    QT_LUPDATE=$QT_BIN_DIR/lupdate
+ 
+     # Get Qt version from qmake
+-    QT_DIR=`qmake --version | grep -o -E /.+`
++    QT_DIR=`$QMAKE --version | grep -o -E /.+`
+ 
+     # All variables are defined, report the result
+     { $as_echo "$as_me:${as_lineno-$LINENO}: result: $have_qt:

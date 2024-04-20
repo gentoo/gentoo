@@ -1,0 +1,21 @@
+
+Patch from:
+https://github.com/knorrie/python-btrfs/commit/9f1698ce16b6ae15bf7b3f9f414e9f08dd052b79
+
+From 9f1698ce16b6ae15bf7b3f9f414e9f08dd052b79 Mon Sep 17 00:00:00 2001
+From: Hans van Kranenburg <hans@knorrie.org>
+Date: Sun, 21 May 2023 17:44:15 +0200
+Subject: [PATCH] ioctl: Fix documentation error in FeatureFlags
+
+The free_space_tree flag is located in compat_ro_flags.
+--- a/btrfs/ioctl.py
++++ b/btrfs/ioctl.py
+@@ -1410,7 +1410,7 @@ class FeatureFlags(object):
+         incompat_flags: mixed_backref|default_subvol|compress_lzo|big_metadata|extended_iref
+         >>> features.incompat_flags & btrfs.ioctl.FEATURE_INCOMPAT_MIXED_GROUPS
+         0
+-        >>> features.incompat_flags & btrfs.ioctl.FEATURE_COMPAT_RO_FREE_SPACE_TREE
++        >>> features.compat_ro_flags & btrfs.ioctl.FEATURE_COMPAT_RO_FREE_SPACE_TREE
+         1
+ 
+     .. note::

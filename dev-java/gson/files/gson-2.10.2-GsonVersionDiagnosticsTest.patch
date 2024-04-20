@@ -1,0 +1,13 @@
+support our versioning schemes
+
+--- a/src/test/java/com/google/gson/functional/GsonVersionDiagnosticsTest.java
++++ b/src/test/java/com/google/gson/functional/GsonVersionDiagnosticsTest.java
+@@ -35,7 +35,7 @@ import org.junit.Test;
+ public class GsonVersionDiagnosticsTest {
+   // We require a patch number, even if it is .0, consistent with https://semver.org/#spec-item-2.
+   private static final Pattern GSON_VERSION_PATTERN =
+-      Pattern.compile("(\\(GSON \\d\\.\\d+\\.\\d)(?:[-.][A-Z]+)?\\)$");
++      Pattern.compile("(\\(GSON \\d\\.\\d+\\.\\d)(?:[-.][A-Z]+|_[a-z]+[0-9]+)?\\)$");
+ 
+   private Gson gson;
+ 

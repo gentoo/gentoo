@@ -1,0 +1,27 @@
+Rebased from original redis-sentinel-5.0-config.patch
+
+diff --git a/sentinel.conf b/sentinel.conf
+index b7b3604f0..a1d7bfea9 100644
+--- a/sentinel.conf
++++ b/sentinel.conf
+@@ -17,7 +17,7 @@ daemonize no
+ # When running daemonized, Redis Sentinel writes a pid file in
+ # /var/run/redis-sentinel.pid by default. You can specify a custom pid file
+ # location here.
+-pidfile /var/run/redis-sentinel.pid
++pidfile /run/redis-sentinel.pid
+ 
+ # Specify the server verbosity level.
+ # This can be one of:
+@@ -31,7 +31,7 @@ loglevel notice
+ # Specify the log file name. Also the empty string can be used to force
+ # Sentinel to log on the standard output. Note that if you use standard
+ # output for logging but daemonize, logs will be sent to /dev/null
+-logfile ""
++logfile "/var/log/redis/sentinel.log"
+ 
+ # To enable logging to the system logger, just set 'syslog-enabled' to yes,
+ # and optionally update the other syslog parameters to suit your needs.
+-- 
+2.41.0
+

@@ -1,0 +1,22 @@
+[Unit]
+Description=Kibana Web Application
+After=network.target
+
+[Service]
+Environment=BABEL_CACHE_PATH=%C/kibana/.babelcache.json
+
+WorkingDirectory=/opt/kibana
+StateDirectory=kibana
+StateDirectoryMode=0750
+CacheDirectory=kibana
+CacheDirectoryMode=0750
+
+User=kibana
+Group=kibana
+
+# DATA_DIR should be set in config (path.data directive)
+# But to comply with OpenRC script, preserve this
+ExecStart=/opt/kibana/bin/kibana --config /etc/kibana/kibana.yml --path.data=%S/kibana
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+--- a/units.c
++++ b/units.c
+@@ -761,7 +761,7 @@
+ }
+ 
+ 
+-#define readerror (goterr=1) && errfile && fprintf
++#define readerror(...) do { goterr=1; if (errfile) fprintf(__VA_ARGS__); } while (0)
+ 
+ #define VAGUE_ERR "%s: error in units file '%s' line %d\n", \
+                        progname, file, linenum

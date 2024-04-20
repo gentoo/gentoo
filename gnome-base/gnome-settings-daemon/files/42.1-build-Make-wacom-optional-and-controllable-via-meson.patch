@@ -1,0 +1,40 @@
+From 1e07481d4fd989828a7237c365e5420f50196ddd Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Thu, 14 Mar 2019 09:43:00 +0200
+Subject: [PATCH] build: Make wacom optional and controllable via meson_options
+
+---
+ meson.build       | 4 ++--
+ meson_options.txt | 1 +
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index a8955a49..0ac4f3ba 100644
+--- a/meson.build
++++ b/meson.build
+@@ -154,8 +154,8 @@ if enable_wayland
+ endif
+ config_h.set10('HAVE_WAYLAND', enable_wayland)
+ 
+-# wacom (disabled for s390/s390x and non Linux platforms)
+-enable_wacom = host_is_linux_not_s390
++# wacom
++enable_wacom = get_option('wacom')
+ if enable_wacom
+   assert(enable_gudev, 'GUDev support is required for wacom support.')
+   libwacom_dep = dependency('libwacom', version: '>= 0.7')
+diff --git a/meson_options.txt b/meson_options.txt
+index 3e04cf64..010053e2 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -9,6 +9,7 @@ option('network_manager', type: 'boolean', value: true, description: 'build with
+ option('rfkill', type: 'boolean', value: true, description: 'build with rfkill support (not optional on Linux platforms)')
+ option('smartcard', type: 'boolean', value: true, description: 'build with smartcard support')
+ option('usb-protection', type: 'boolean', value: true, description: 'build with usb-protection support')
++option('wacom', type: 'boolean', value: true, description: 'build with Wacom devices support')
+ option('wayland', type: 'boolean', value: true, description: 'build with Wayland support')
+ option('wwan', type: 'boolean', value: true, description: 'build with WWAN support')
+ option('colord', type: 'boolean', value: true, description: 'build with colord support')
+-- 
+2.34.1
+

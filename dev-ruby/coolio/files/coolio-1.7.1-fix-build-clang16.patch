@@ -1,0 +1,13 @@
+Bug: https://bugs.gentoo.org/883147
+Upstream PR: https://github.com/tarcieri/cool.io/pull/78
+--- a/ext/libev/ev.c
++++ b/ext/libev/ev.c
+@@ -3768,7 +3768,7 @@ rb_thread_unsafe_dangerous_crazy_blocking_region_end(...);
+ #if defined(HAVE_RB_THREAD_BLOCKING_REGION) || defined(HAVE_RB_THREAD_CALL_WITHOUT_GVL)
+         poll_args.loop = loop;
+         poll_args.waittime = waittime;
+-        rb_thread_call_without_gvl(ev_backend_poll, (void *)&poll_args, RUBY_UBF_IO, 0);
++        rb_thread_call_without_gvl((void *)ev_backend_poll, (void *)&poll_args, RUBY_UBF_IO, 0);
+ #else
+          backend_poll (EV_A_ waittime);
+ #endif

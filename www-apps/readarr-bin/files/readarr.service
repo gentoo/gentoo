@@ -1,0 +1,30 @@
+[Unit]
+Description=An ebook and audiobook collection manager for Usenet and BitTorrent users
+After=syslog.target network.target
+
+[Service]
+User=readarr
+Group=readarr
+
+Type=simple
+ExecStart=/opt/readarr/Readarr
+TimeoutStopSec=20
+KillMode=process
+Restart=always
+
+PrivateTmp=yes
+PrivateDevices=yes
+PrivateMounts=yes
+ProtectHome=yes
+ProtectSystem=full
+NoNewPrivileges=yes
+ProtectHostname=yes
+ProtectClock=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+RestrictRealtime=yes
+
+[Install]
+WantedBy=multi-user.target

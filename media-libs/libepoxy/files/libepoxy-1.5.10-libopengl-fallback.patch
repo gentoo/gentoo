@@ -1,0 +1,42 @@
+From 702a0e6639affa64881b9486bb8c866b9134a5cd Mon Sep 17 00:00:00 2001
+From: "Haelwenn (lanodan) Monnier" <contact@hacktivis.me>
+To: https://github.com/anholt/libepoxy/pull/259
+Date: Fri, 4 Jun 2021 06:35:23 +0200
+Subject: [PATCH] meson.build: Fallback from libGL to libOpenGL when GLX is
+ disabled
+
+---
+ meson.build     | 3 +++
+ src/meson.build | 2 +-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index e0228d1..95b5144 100644
+--- a/meson.build
++++ b/meson.build
+@@ -164,6 +164,9 @@ endif
+ # Dependencies
+ dl_dep = cc.find_library('dl', required: false)
+ gl_dep = dependency('gl', required: false)
++if not gl_dep.found() and not build_glx
++	gl_dep = dependency('opengl', required: false)
++endif
+ egl_dep = dependency('egl', required: false)
+ 
+ # Optional dependencies for tests
+diff --git a/src/meson.build b/src/meson.build
+index 37e28f0..11c4b54 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -93,7 +93,7 @@ libepoxy_dep = declare_dependency(
+ # pkg-config file, for consumers of Epoxy
+ gl_reqs = []
+ if gl_dep.found() and gl_dep.type_name() == 'pkgconfig'
+-  gl_reqs += 'gl'
++  gl_reqs += gl_dep.name()
+ endif
+ if build_egl and egl_dep.found() and egl_dep.type_name() == 'pkgconfig'
+   gl_reqs += 'egl'
+-- 
+2.35.1
+

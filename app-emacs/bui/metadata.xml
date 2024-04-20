@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <upstream>
+    <changelog>https://raw.githubusercontent.com/alezost/bui.el/master/NEWS</changelog>
+    <bugs-to>https://github.com/alezost/bui.el/issues/</bugs-to>
+    <remote-id type="github">alezost/bui.el</remote-id>
+  </upstream>
+  <stabilize-allarches />
+</pkgmetadata>

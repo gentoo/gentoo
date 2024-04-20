@@ -1,0 +1,68 @@
+--- a/cngplp/src/load.c
++++ b/cngplp/src/load.c
+@@ -29,6 +29,17 @@ GModule* g_module = NULL;
+ char pre_lib_name[MAX_PATH];
+ gboolean first_load = TRUE;
+ 
++void (*ShowPDLDialog)(const char* name, int print);
++gboolean (*InitPDLController)(GtkWidget* main_dlg, char *printer_name, const char* print_file, gboolean first_load);
++void (*UpdatePDLData)(int id, const char* value);
++void (*UpdatePDLDataInt)(int id, int value);
++void (*ClosePDLController)();
++void (*SavePDLPrinterData)();
++void (*PrintPDLFile)();
++char* (*GetPDLData)(int id);
++int (*GetPDLDataInt)(int id, int def);
++int (*ExecPDLJobMode)();
++
+ int LoadPDL(GladeXML* main_xml, const char* print_file)
+ {
+ 	GtkWidget* main_dlg = NULL;
+--- a/cngplp/src/load.h
++++ b/cngplp/src/load.h
+@@ -28,15 +28,15 @@
+ 
+ int LoadPDL(GladeXML* main_xml, const char* print_file);
+ void UnLoadPDL();
+-void (*ShowPDLDialog)(const char* name, int print);
+-gboolean (*InitPDLController)(GtkWidget* main_dlg, char *printer_name, const char* print_file, gboolean first_load);
+-void (*UpdatePDLData)(int id, const char* value);
+-void (*UpdatePDLDataInt)(int id, int value);
+-void (*ClosePDLController)();
+-void (*SavePDLPrinterData)();
+-void (*PrintPDLFile)();
+-char* (*GetPDLData)(int id);
+-int (*GetPDLDataInt)(int id, int def);
+-int (*ExecPDLJobMode)();
++extern void (*ShowPDLDialog)(const char* name, int print);
++extern gboolean (*InitPDLController)(GtkWidget* main_dlg, char *printer_name, const char* print_file, gboolean first_load);
++extern void (*UpdatePDLData)(int id, const char* value);
++extern void (*UpdatePDLDataInt)(int id, int value);
++extern void (*ClosePDLController)();
++extern void (*SavePDLPrinterData)();
++extern void (*PrintPDLFile)();
++extern char* (*GetPDLData)(int id);
++extern int (*GetPDLDataInt)(int id, int def);
++extern int (*ExecPDLJobMode)();
+ 
+ #endif
+--- a/cngplp/src/mainwnd.c
++++ b/cngplp/src/mainwnd.c
+@@ -82,6 +82,17 @@ static int g_stdout_fd;
+ static void SaveOptions();
+ static void LoadOptions();
+ 
++extern void (*ShowPDLDialog)(const char* name, int print);
++extern gboolean (*InitPDLController)(GtkWidget* main_dlg, char *printer_name, const char* print_file, gboolean first_load);
++extern void (*UpdatePDLData)(int id, const char* value);
++extern void (*UpdatePDLDataInt)(int id, int value);
++extern void (*ClosePDLController)();
++extern void (*SavePDLPrinterData)();
++extern void (*PrintPDLFile)();
++extern char* (*GetPDLData)(int id);
++extern int (*GetPDLDataInt)(int id, int def);
++extern int (*ExecPDLJobMode)();
++
+ void DisposeMainDlg()
+ {
+ 	int i = 0;

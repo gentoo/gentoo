@@ -1,0 +1,26 @@
+From 0f07fe39585971b4c59f3a9b235e68d9c68184e3 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 14 Dec 2021 01:30:00 +0000
+Subject: [PATCH] Revert SONAME bump
+
+Bug: https://github.com/MITRECND/libnids/issues/9
+---
+ src/Makefile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile.in b/src/Makefile.in
+index e7b6dd8..e72a5da 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -13,7 +13,7 @@ includedir	= @includedir@
+ libdir		= @libdir@
+ mandir		= @mandir@
+ LIBSTATIC      = libnids.a
+-LIBSHARED      = libnids.so.1.26
++LIBSHARED      = libnids.so.1.24
+ 
+ CC		= @CC@
+ CFLAGS		= @CFLAGS@ -DLIBNET_VER=@LIBNET_VER@ -DHAVE_ICMPHDR=@ICMPHEADER@ -DHAVE_TCP_STATES=@TCPSTATES@ -DHAVE_BSD_UDPHDR=@HAVE_BSD_UDPHDR@
+-- 
+2.34.1
+

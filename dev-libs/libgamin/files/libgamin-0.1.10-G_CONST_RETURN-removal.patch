@@ -1,0 +1,67 @@
+From 2a9d32734a2e5125ae77de6c75789e1c6ee24dbe Mon Sep 17 00:00:00 2001
+From: Maciej Piechotka <uzytkownik2@gmail.com>
+Date: Tue, 13 Sep 2011 09:47:05 +0200
+Subject: [PATCH] Fix compilation of recent glib removing G_CONST_RETURN
+
+---
+ server/gam_node.c         |    2 +-
+ server/gam_node.h         |    2 +-
+ server/gam_subscription.c |    2 +-
+ server/gam_subscription.h |    2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/server/gam_node.c b/server/gam_node.c
+index 02358ba..d0302d2 100644
+--- a/server/gam_node.c
++++ b/server/gam_node.c
+@@ -122,7 +122,7 @@ gam_node_set_is_dir(GamNode * node, gboolean is_dir)
+  * it has finished with the string.  If it must keep it longer, it
+  * should makes its own copy.  The returned string must not be freed.
+  */
+-G_CONST_RETURN char *
++const char *
+ gam_node_get_path(GamNode * node)
+ {
+     g_assert(node);
+diff --git a/server/gam_node.h b/server/gam_node.h
+index 02c8692..83349a8 100644
+--- a/server/gam_node.h
++++ b/server/gam_node.h
+@@ -58,7 +58,7 @@ gboolean              gam_node_is_dir              (GamNode         *node);
+ void                  gam_node_set_is_dir          (GamNode         *node,
+ 						   gboolean        is_dir);
+ 	
+-G_CONST_RETURN char  *gam_node_get_path            (GamNode         *node);
++const char           *gam_node_get_path            (GamNode         *node);
+ 
+ GList                *gam_node_get_subscriptions   (GamNode         *node);
+ 
+diff --git a/server/gam_subscription.c b/server/gam_subscription.c
+index dfa3273..4675b34 100644
+--- a/server/gam_subscription.c
++++ b/server/gam_subscription.c
+@@ -141,7 +141,7 @@ gam_subscription_pathlen(GamSubscription * sub)
+  * @param sub the GamSubscription
+  * @returns The path being monitored.  It should not be freed.
+  */
+-G_CONST_RETURN char *
++const char *
+ gam_subscription_get_path(GamSubscription * sub)
+ {
+     if (sub == NULL)
+diff --git a/server/gam_subscription.h b/server/gam_subscription.h
+index d894fbe..e6b4e15 100644
+--- a/server/gam_subscription.h
++++ b/server/gam_subscription.h
+@@ -21,7 +21,7 @@ int                  gam_subscription_pathlen      (GamSubscription *sub);
+ 
+ int                  gam_subscription_get_reqno    (GamSubscription *sub);
+ 
+-G_CONST_RETURN char *gam_subscription_get_path     (GamSubscription *sub);
++const char          *gam_subscription_get_path     (GamSubscription *sub);
+ 
+ GamListener         *gam_subscription_get_listener (GamSubscription *sub);
+ 
+-- 
+1.7.6.1
+

@@ -1,0 +1,20 @@
+From https://gitlab.kitware.com/vtk/vtk/-/commit/57767732c4d54db89004c685022ac828bb51eccd
+
+From 57767732c4d54db89004c685022ac828bb51eccd Mon Sep 17 00:00:00 2001
+From: Andrew Bauer <bauer.andrew.c@gmail.com>
+Date: Wed, 27 Jul 2022 09:31:13 -0400
+Subject: [PATCH 033/614] vtkGeometryFilter: add missing mutex header file
+
+--- a/Filters/Geometry/vtkGeometryFilter.cxx
++++ b/Filters/Geometry/vtkGeometryFilter.cxx
+@@ -52,6 +52,7 @@
+ #include "vtkWedge.h"
+ 
+ #include <memory>
++#include <mutex>
+ 
+ vtkStandardNewMacro(vtkGeometryFilter);
+ vtkCxxSetObjectMacro(vtkGeometryFilter, Locator, vtkIncrementalPointLocator);
+-- 
+2.38.1
+

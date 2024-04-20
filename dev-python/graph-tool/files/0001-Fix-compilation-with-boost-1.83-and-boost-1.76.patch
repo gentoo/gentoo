@@ -1,0 +1,28 @@
+From 005b377fa09c28a5f61f11319f337ceea640f4ab Mon Sep 17 00:00:00 2001
+From: Tiago de Paula Peixoto <tiago@skewed.de>
+Date: Fri, 1 Sep 2023 10:27:28 +0200
+Subject: [PATCH] Fix compilation with boost 1.83 and boost < 1.76 This unites
+ upstream commits: 0a837b40 and 5517e370.
+
+---
+ src/graph/gml.hh | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/graph/gml.hh b/src/graph/gml.hh
+index 7bea0ca3..b4cb84db 100644
+--- a/src/graph/gml.hh
++++ b/src/graph/gml.hh
+@@ -26,6 +26,10 @@
+ #include <boost/variant/get.hpp>
+ #include <boost/spirit/include/support_istream_iterator.hpp>
+ 
++#if BOOST_VERSION >= 107600
++#include <boost/regex/v5/unicode_iterator.hpp>
++#endif
++
+ #include <boost/algorithm/string/replace.hpp>
+ 
+ #include <boost/property_map/dynamic_property_map.hpp>
+-- 
+2.41.0
+

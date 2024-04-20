@@ -1,0 +1,159 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Unmask the flag which corresponds to ARCH.
+-m68k
+
+# James Le Cuirot <chewi@gentoo.org> (2023-08-20)
+# Neither Kerberos implementation is keyworded for m68k yet.
+kerberos
+
+# James Le Cuirot <chewi@gentoo.org> (2022-02-07)
+# GTK is not keyworded or tested.
+gtk
+gtk2
+gtk3
+gtk4
+wxwidgets
+
+# James Le Cuirot <chewi@gentoo.org> (2022-01-30)
+# The app-shells/fish tests fail on m68k, so it remains unkeyworded.
+fish-completion
+
+# James Le Cuirot <chewi@gentoo.org> (2022-01-15)
+# Most of the PostgreSQL tests pass on m68k, but some fail and some hang. I
+# suggest you put your data elsewhere.
+postgres
+
+# James Le Cuirot <chewi@gentoo.org> (2022-01-09)
+# Although Wayland could possibly work in a limited manner, Mesa is required for
+# most things, and that isn't working on m68k.
+wayland
+
+# James Le Cuirot <chewi@gentoo.org> (2022-01-09)
+# vim is keyworded for ~m68k but I'm not testing plugins.
+vim-syntax
+
+# James Le Cuirot <chewi@gentoo.org> (2022-01-01)
+# Hardware that probably doesn't apply to m68k.
+input_devices_elographics
+video_cards_amdgpu
+video_cards_mga
+video_cards_nouveau
+video_cards_r128
+video_cards_radeon
+video_cards_radeonsi
+
+# James Le Cuirot <chewi@gentoo.org> (2021-10-02)
+# Keywording aside, m68k CPUs are too slow for PulseAudio, PipeWire, JACK.
+jack
+pipewire
+pulseaudio
+
+# James Le Cuirot <chewi@gentoo.org> (2021-09-28)
+# Too many unkeyworded dependencies for now.
+efl
+openexr
+subversion
+
+# James Le Cuirot <chewi@gentoo.org> (2021-09-27)
+# The Lua 5.3 tests fail on m68k so it's probably broken. 5.4 works.
+lua_targets_lua5-3
+lua_single_target_lua5-3
+
+# James Le Cuirot <chewi@gentoo.org> (2021-09-27)
+# m68k simply doesn't support SMP.
+mpi
+smp
+
+# James Le Cuirot <chewi@gentoo.org> (2021-09-19)
+# I tried Mesa under qemu-system-m68k with VirtIO-GPU. It didn't work.
+egl
+gles1
+gles2
+opencl
+opengl
+vulkan
+
+# James Le Cuirot <chewi@gentoo.org> (2021-09-17)
+# Ruby just crashes on startup.
+ruby
+
+# James Le Cuirot <chewi@gentoo.org> (2021-08-20)
+# Qt is not keyworded or tested.
+qt5
+qt6
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-04-23)
+# valgrind has no m68k port.
+valgrind
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-03-31)
+# sys-auth/elogind is not keyworded here.
+elogind
+
+# Paul de Vrieze <pauldv@gentoo.org>
+# There is no java in this profile (if there is it must be available). Without
+# this, sys-libs/db has unsolvable dependencies
+java
+
+# USE=audit masked prior to testing on alpha, arm, hppa, ppc64, s390, sh.
+# Bug #184563, (2007-09-18)
+# Robin H. Johnson <robbat2@gentoo.org>
+audit
+
+# Masking these globally, since we don't have X
+gnome
+gnome-keyring
+keyring
+nas
+
+# Masking since net-dns/avahi and net-misc/mDNSResponder are masked
+zeroconf
+
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-08-22)
+# virtual/opencl is not keyworded
+opencl
+
+# Unmask once sys-libs/libunwind gets ported & keyworded.
+unwind
+
+# sys-libs/libseccomp has not been ported to this arch yet #524148
+seccomp
+
+afs
+avif
+bluetooth
+clang
+cups
+dbus
+devil
+diet
+djbfft
+djvu
+emacs
+emf
+graphite
+guile
+hardened
+heif
+latex
+ldap
+lqr
+lua
+mono
+mysql
+nettle
+nss
+ocaml
+octave
+php
+policykit
+qdbm
+R
+rdma
+samba
+slang
+tcl
+tk
+xemacs

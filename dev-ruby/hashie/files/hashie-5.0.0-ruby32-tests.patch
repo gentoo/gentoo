@@ -1,0 +1,71 @@
+From 2b3120ad4a6f54990dfec5b10f5769e3714ab1e8 Mon Sep 17 00:00:00 2001
+From: Peter Goldstein <peter.m.goldstein@gmail.com>
+Date: Fri, 13 Jan 2023 13:53:14 -0500
+Subject: [PATCH] Add Ruby 3.2 to the CI matrix (#571)
+
+* Adds Ruby 3.2 to the CI matrix
+
+* Use object_id rather than trust, as trust is no longer a method on Object in Ruby 3.2.  Condition checked on Psych error based on version of Psych.
+
+* Update danger token
+
+* Add CHANGELOG entry
+
+* Add use of Gem::Version for version comparison
+---
+ .github/workflows/danger.yml |  4 ++--
+ .github/workflows/test.yml   |  1 +
+ CHANGELOG.md                 |  1 +
+ spec/hashie/mash_spec.rb     | 17 ++++++++++++-----
+ spec/hashie/utils_spec.rb    |  2 +-
+ 5 files changed, 17 insertions(+), 8 deletions(-)
+
+diff --git a/spec/hashie/mash_spec.rb b/spec/hashie/mash_spec.rb
+index 03f56683..091748fc 100644
+--- a/spec/hashie/mash_spec.rb
++++ b/spec/hashie/mash_spec.rb
+@@ -137,9 +137,9 @@
+ 
+   include_context 'with a logger' do
+     it 'logs a warning when overriding built-in methods' do
+-      Hashie::Mash.new('trust' => { 'two' => 2 })
++      Hashie::Mash.new('object_id' => { 'two' => 2 })
+ 
+-      expect(logger_output).to match('Hashie::Mash#trust')
++      expect(logger_output).to match('Hashie::Mash#object_id')
+     end
+ 
+     it 'can set keys more than once and does not warn when doing so' do
+@@ -821,9 +821,16 @@ class SubMash < Hashie::Mash
+         expect(mash.company_a.accounts.admin.password).to eq('secret')
+       end
+       it 'can override the value of aliases' do
+-        expect do
+-          Hashie::Mash.load('spec/fixtures/yaml_with_aliases.yml', aliases: false)
+-        end.to raise_error Psych::BadAlias, /base_accounts/
++        require 'psych'
++        if Gem::Version.new(Psych::VERSION) >= Gem::Version.new('5')
++          expect do
++            Hashie::Mash.load('spec/fixtures/yaml_with_aliases.yml', aliases: false)
++          end.to raise_error Psych::AliasesNotEnabled, /Alias parsing was not enabled/
++        else
++          expect do
++            Hashie::Mash.load('spec/fixtures/yaml_with_aliases.yml', aliases: false)
++          end.to raise_error Psych::BadAlias, /base_accounts/
++        end
+       end
+     end
+ 
+diff --git a/spec/hashie/utils_spec.rb b/spec/hashie/utils_spec.rb
+index 0499aa7f..c6be23b1 100644
+--- a/spec/hashie/utils_spec.rb
++++ b/spec/hashie/utils_spec.rb
+@@ -7,7 +7,7 @@ def a_method_to_match_against
+ RSpec.describe Hashie::Utils do
+   describe '.method_information' do
+     it 'states the module or class that a native method was defined in' do
+-      bound_method = method(:trust)
++      bound_method = method(:object_id)
+ 
+       message = Hashie::Utils.method_information(bound_method)
+ 

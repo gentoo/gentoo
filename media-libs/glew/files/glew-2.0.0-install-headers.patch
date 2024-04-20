@@ -1,0 +1,13 @@
+--- glew-2.0.0/Makefile
++++ glew-2.0.0/Makefile
+@@ -226,9 +226,7 @@
+ 
+ install.include:
+ 	$(INSTALL) -d -m 0755 "$(DESTDIR)$(INCDIR)"
+-	$(INSTALL) -m 0644 include/GL/wglew.h "$(DESTDIR)$(INCDIR)/"
+-	$(INSTALL) -m 0644 include/GL/glew.h "$(DESTDIR)$(INCDIR)/"
+-	$(INSTALL) -m 0644 include/GL/glxew.h "$(DESTDIR)$(INCDIR)/"
++	$(INSTALL) -m 0644 include/GL/*.h "$(DESTDIR)$(INCDIR)/"
+ 
+ install.pkgconfig: glew.pc
+ 	$(INSTALL) -d -m 0755 "$(DESTDIR)$(PKGDIR)"

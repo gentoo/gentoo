@@ -1,0 +1,36 @@
+From 7a5f232be2269e74943a029c0e8b1b0124674a6c Mon Sep 17 00:00:00 2001
+Message-ID: <7a5f232be2269e74943a029c0e8b1b0124674a6c.1700576185.git.mprivozn@redhat.com>
+From: Michal Privoznik <mprivozn@redhat.com>
+Date: Mon, 20 Nov 2023 03:18:12 +0100
+Subject: [PATCH] virxml: include <libxml/xmlsave.h> for xmlIndentTreeOutput
+ declaration
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+After libxml2's commit of v2.12.0~101 we no longer get
+xmlIndentTreeOutput declaration by us including just
+libxml/xpathInternals.h and libxml2's header files leakage.
+
+Resolves: https://bugs.gentoo.org/917516
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+Reviewed-by: Ján Tomko <jtomko@redhat.com>
+---
+ src/util/virxml.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/util/virxml.c b/src/util/virxml.c
+index 0c1eae8c3c..4f215a0e59 100644
+--- a/src/util/virxml.c
++++ b/src/util/virxml.c
+@@ -24,6 +24,7 @@
+ #include <math.h>               /* for isnan() */
+ #include <sys/stat.h>
+ 
++#include <libxml/xmlsave.h>
+ #include <libxml/xpathInternals.h>
+ 
+ #include "virerror.h"
+-- 
+2.41.0
+

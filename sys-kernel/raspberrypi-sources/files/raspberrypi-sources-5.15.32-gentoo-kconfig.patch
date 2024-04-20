@@ -1,0 +1,474 @@
+diff --git a/Kconfig b/Kconfig
+index 745bc773f567..16628b0c76d9 100644
+--- a/Kconfig
++++ b/Kconfig
+@@ -5,6 +5,8 @@
+ #
+ mainmenu "Linux/$(ARCH) $(KERNELVERSION) Kernel Configuration"
+ 
++source "distro/Kconfig"
++
+ source "scripts/Kconfig.include"
+ 
+ source "init/Kconfig"
+diff --git a/distro/Kconfig b/distro/Kconfig
+new file mode 100644
+index 000000000000..531a636c959d
+--- /dev/null
++++ b/distro/Kconfig
+@@ -0,0 +1,378 @@
++menu "Gentoo Linux"
++
++config GENTOO_LINUX
++	bool "Gentoo Linux support"
++
++	default y
++
++	select CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
++
++	help
++		In order to boot Gentoo Linux a minimal set of config settings needs to
++		be enabled in the kernel; to avoid the users from having to enable them
++		manually as part of a Gentoo Linux installation or a new clean config,
++		we enable these config settings by default for convenience.
++
++		See the settings that become available for more details and fine-tuning.
++
++config GENTOO_LINUX_UDEV
++	bool "Linux dynamic and persistent device naming (userspace devfs) support"
++
++	depends on GENTOO_LINUX
++	default y if GENTOO_LINUX
++
++	select DEVTMPFS
++	select TMPFS
++	select UNIX
++
++	select MMU
++	select SHMEM
++
++	help
++		In order to boot Gentoo Linux a minimal set of config settings needs to
++		be enabled in the kernel; to avoid the users from having to enable them
++		manually as part of a Gentoo Linux installation or a new clean config,
++		we enable these config settings by default for convenience.
++
++		Currently this only selects TMPFS, DEVTMPFS and their dependencies.
++		TMPFS is enabled to maintain a tmpfs file system at /dev/shm, /run and
++		/sys/fs/cgroup; DEVTMPFS to maintain a devtmpfs file system at /dev.
++
++		Some of these are critical files that need to be available early in the
++		boot process; if not available, it causes sysfs and udev to malfunction.
++
++		To ensure Gentoo Linux boots, it is best to leave this setting enabled;
++		if you run a custom setup, you could consider whether to disable this.
++
++config GENTOO_LINUX_PORTAGE
++	bool "Select options required by Portage features"
++
++	depends on GENTOO_LINUX
++	default y if GENTOO_LINUX
++
++	select CGROUPS
++	select NAMESPACES
++	select IPC_NS
++	select NET_NS
++	select PID_NS
++	select SYSVIPC
++	select USER_NS
++	select UTS_NS
++
++	help
++		This enables options required by various Portage FEATURES.
++		Currently this selects:
++
++		CGROUPS     (required for FEATURES=cgroup)
++		IPC_NS      (required for FEATURES=ipc-sandbox)
++		NET_NS      (required for FEATURES=network-sandbox)
++		PID_NS		(required for FEATURES=pid-sandbox)
++		SYSVIPC     (required by IPC_NS)
++
++
++		It is highly recommended that you leave this enabled as these FEATURES
++		are, or will soon be, enabled by default.
++
++menu "Support for init systems, system and service managers"
++	visible if GENTOO_LINUX
++
++config GENTOO_LINUX_INIT_SCRIPT
++	bool "OpenRC, runit and other script based systems and managers"
++
++	default n
++
++	depends on GENTOO_LINUX
++
++	select BINFMT_SCRIPT
++	select CGROUPS
++	select EPOLL
++	select FILE_LOCKING
++	select INOTIFY_USER
++	select SIGNALFD
++	select TIMERFD
++
++	help
++		The init system is the first thing that loads after the kernel booted.
++
++		These config settings allow you to select which init systems to support;
++		instead of having to select all the individual settings all over the
++		place, these settings allows you to select all the settings at once.
++
++		This particular setting enables all the known requirements for OpenRC,
++		runit and similar script based systems and managers.
++
++		If you are unsure about this, it is best to leave this setting enabled.
++
++menuconfig GENTOO_LINUX_INIT_SYSTEMD
++	bool "systemd"
++	default y
++	depends on GENTOO_LINUX && GENTOO_LINUX_UDEV
++
++	select CGROUPS
++	select DEVTMPFS
++	select DMIID if X86_32 || X86_64 || X86
++	select EPOLL
++	select FHANDLE
++	select INOTIFY_USER
++	select PROC_FS
++	select SIGNALFD
++	select SYSFS
++	select TIMERFD
++	select UNIX
++
++	help
++		The init system is the first thing that loads after the kernel booted.
++
++		These config settings allow you to select which init systems to support;
++		instead of having to select all the individual settings all over the
++		place, these settings allows you to select all the settings at once.
++
++		This particular setting enables all the known requirements for systemd;
++		it also enables suggested optional settings, as the package suggests to.
++
++if GENTOO_LINUX_INIT_SYSTEMD
++
++comment "systemd config options"
++
++config GENTOO_LINUX_INIT_SYSTEMD_CRYPTO
++	bool "Systemd crypto/hash api"
++	default y
++	select CRYPTO_HMAC
++	select CRYPTO_SHA256
++	select CRYPTO_USER_API_HASH
++
++config GENTOO_LINUX_INIT_SYSTEMD_SCSI
++	bool "Support for some SCSI devices serial number retrieval"
++	default n
++	select BLK_DEV_BSG
++
++config GENTOO_LINUX_INIT_SYSTEMD_PRIVATE_NETWORKS
++	bool "Support PrivateNetwork directive in service units"
++	default y
++	select NET_NS
++
++	help
++		systemd-localed.service and other systemd units use
++		PrivateNetwork so this is effectively required
++
++config GENTOO_LINUX_INIT_SYSTEMD_PRIVATE_USERS
++	bool "Support PrivateUsers directive in service units"
++	default y
++	select USER_NS
++
++config GENTOO_LINUX_INIT_SYSTEMD_CPUSHARES
++	bool "Support CPUShares in resource control unit settings"
++	default y
++	select CGROUP_SCHED
++	select FAIR_GROUP_SCHED
++
++config GENTOO_LINUX_INIT_SYSTEMD_CPUQUOTA
++	bool "Support CPUQuota in resource control unit settings"
++	default y
++	select CFS_BANDWIDTH
++
++config GENTOO_LINUX_INIT_SYSTEMD_NETWORK_FILTERING
++	bool "Support network traffic filtering for IP packets and custom network traffic filters in resource control unit settings"
++	default y
++	select BPF
++	select BPF_SYSCALL
++	select BPF_JIT
++	select CGROUP_BPF
++	select HAVE_EBPF_JIT
++
++	help
++		Required for IPAddressDeny=, IPAddressAllow=, IPIngressFilterPath=,
++		IPEgressFilterPath= in resource control unit settings
++
++config GENTOO_LINUX_INIT_SYSTEMD_NETWORK
++	bool "Restrict Sockets and Network Interface access in resource control unit settings"
++	default y
++	select BPF
++	select BPF_SYSCALL
++	select BPF_JIT
++	select CGROUP_BPF
++	select EFIVAR_FS if ( X86_32 || X86_64 || X86 ) && CONFIG_EFI
++	select EFI_PARTITION if ( X86_32 || X86_64 || X86 ) && CONFIG_EFI
++	select HAVE_EBPF_JIT
++
++	help
++		Allow or deny binding a socket address to a socket by matching
++		it with the bind-rule and applying a corresponding action if
++		there is a match. Also restricts the network interfaces that
++		processes of this unit can use.
++
++config GENTOO_LINUX_INIT_SYSTEMD_FILESYSTEMS
++	bool "Support RestrictFileSystems directive in service units"
++	default n
++	depends on !GENTOO_KERNEL_SELF_PROTECTION
++	select BPF
++	select BPF_SYSCALL
++	select BPF_LSM
++	select DEBUG_INFO_BTF
++
++	help
++		Also required to select LSM="...,bpf" or kernel booted with
++		lsm="...,bpf".
++
++config GENTOO_LINUX_INIT_SYSTEMD_OOMD
++	bool "Support systemd-oomd"
++	default y
++	select PSI
++
++config GENTOO_LINUX_INIT_SYSTEMD_VERITY
++	bool "Support signed Verity images"
++	default n
++	select DM_VERITY_VERIFY_ROOTHASH_SIG
++
++config GENTOO_LINUX_INIT_SYSTEMD_OPTIONAL
++	bool "Optional but strongly recommended modules"
++	default y
++	select AUTOFS_FS
++	select IPV6
++	select KCMP
++	select SECCOMP
++	select SECCOMP_FILTER if HAVE_ARCH_SECCOMP_FILTER
++	select TMPFS_XATTR
++
++	select 9P_FS_POSIX_ACL if 9P_FS
++	select BTRFS_FS_POSIX_ACL if BTRFS_FS
++	select CEPH_FS_POSIX_ACL if CEPH_FS
++	select EROFS_FS_POSIX_ACL if EROFS_FS
++	select EXT2_FS_POSIX_ACL if EXT2_FS3
++	select EXT3_FS_POSIX_ACL if EXT3_FS
++	select EXT4_FS_POSIX_ACL if EXT4_FS
++	select F2FS_FS_POSIX_ACL if F2FS_FS
++	select NTFS3_FS_POSIX_ACL if NTFS3_FS
++	select REISERFS_FS_POSIX_ACL if REISERFS_FS
++	select TMPFS_POSIX_ACL if TMPFS
++	select XFS_POSIX_ACL if XFS_FS
++endif
++endmenu
++
++menuconfig GENTOO_KERNEL_SELF_PROTECTION
++	bool "Kernel Self Protection Project"
++	depends on GENTOO_LINUX
++	help
++		Recommended Kernel settings based on the suggestions from the Kernel Self Protection Project
++		See: https://kernsec.org/wiki/index.php/Kernel_Self_Protection_Project/Recommended_Settings
++		Note, there may be additional settings for which the CONFIG_ setting is invisible in menuconfig due
++		to unmet dependencies. Search for GENTOO_KERNEL_SELF_PROTECTION_COMMON and search for
++		GENTOO_KERNEL_SELF_PROTECTION_{X86_64, ARM64, X86_32, ARM} for dependency information on your
++		specific architecture.
++		Note 2: Please see the URL above for numeric settings, e.g. CONFIG_DEFAULT_MMAP_MIN_ADDR=65536
++		for X86_64
++
++if GENTOO_KERNEL_SELF_PROTECTION
++config GENTOO_KERNEL_SELF_PROTECTION_COMMON
++	bool "Enable Kernel Self Protection Project Recommendations"
++
++	depends on GENTOO_LINUX && !ACPI_CUSTOM_METHOD && !COMPAT_BRK && !DEVKMEM && !PROC_KCORE && !COMPAT_VDSO && !KEXEC && !HIBERNATION && !LEGACY_PTYS && !X86_X32 && !MODIFY_LDT_SYSCALL && GCC_PLUGINS && !GENTOO_LINUX_INIT_SYSTEMD_FILESYSTEMS
++
++	select BUG
++	select STRICT_KERNEL_RWX
++	select DEBUG_WX
++	select STACKPROTECTOR
++	select STACKPROTECTOR_STRONG
++	select STRICT_DEVMEM if DEVMEM=y
++	select IO_STRICT_DEVMEM if DEVMEM=y
++	select SYN_COOKIES
++	select DEBUG_CREDENTIALS
++	select DEBUG_NOTIFIERS
++	select DEBUG_LIST
++	select DEBUG_SG
++	select BUG_ON_DATA_CORRUPTION
++	select SCHED_STACK_END_CHECK
++	select SECCOMP if HAVE_ARCH_SECCOMP
++	select SECCOMP_FILTER if HAVE_ARCH_SECCOMP_FILTER
++	select SECURITY_YAMA
++	select SLAB_FREELIST_RANDOM
++	select SLAB_FREELIST_HARDENED
++	select SHUFFLE_PAGE_ALLOCATOR
++	select SLUB_DEBUG
++	select PAGE_POISONING
++	select PAGE_POISONING_NO_SANITY
++	select PAGE_POISONING_ZERO
++	select INIT_ON_ALLOC_DEFAULT_ON
++	select INIT_ON_FREE_DEFAULT_ON
++	select REFCOUNT_FULL
++	select FORTIFY_SOURCE
++	select SECURITY_DMESG_RESTRICT
++	select PANIC_ON_OOPS
++	select GCC_PLUGIN_LATENT_ENTROPY
++	select GCC_PLUGIN_STRUCTLEAK
++	select GCC_PLUGIN_STRUCTLEAK_BYREF_ALL
++	select GCC_PLUGIN_RANDSTRUCT
++	select GCC_PLUGIN_RANDSTRUCT_PERFORMANCE
++
++	help
++		Search for GENTOO_KERNEL_SELF_PROTECTION_{X86_64, ARM64, X86_32, ARM} for dependency
++		information on your specific architecture.  Note 2: Please see the URL above for
++		numeric settings, e.g. CONFIG_DEFAULT_MMAP_MIN_ADDR=65536 for X86_64
++
++config GENTOO_KERNEL_SELF_PROTECTION_X86_64
++	bool "X86_64 KSPP Settings" if GENTOO_KERNEL_SELF_PROTECTION_COMMON
++
++	depends on !X86_MSR && X86_64 && GENTOO_KERNEL_SELF_PROTECTION
++	default n
++
++	select RANDOMIZE_BASE
++	select RANDOMIZE_MEMORY
++	select RELOCATABLE
++	select LEGACY_VSYSCALL_NONE
++	select PAGE_TABLE_ISOLATION
++	select GCC_PLUGIN_STACKLEAK
++	select VMAP_STACK
++
++
++config GENTOO_KERNEL_SELF_PROTECTION_ARM64
++	bool "ARM64 KSPP Settings"
++
++	depends on ARM64
++	default n
++
++	select RANDOMIZE_BASE
++	select RELOCATABLE
++	select ARM64_SW_TTBR0_PAN
++	select CONFIG_UNMAP_KERNEL_AT_EL0
++	select GCC_PLUGIN_STACKLEAK
++	select VMAP_STACK
++
++config GENTOO_KERNEL_SELF_PROTECTION_X86_32
++	bool "X86_32 KSPP Settings"
++
++	depends on !X86_MSR && !MODIFY_LDT_SYSCALL && !M486 && X86_32
++	default n
++
++	select HIGHMEM64G
++	select X86_PAE
++	select RANDOMIZE_BASE
++	select RELOCATABLE
++	select PAGE_TABLE_ISOLATION
++
++config GENTOO_KERNEL_SELF_PROTECTION_ARM
++	bool "ARM KSPP Settings"
++
++	depends on !OABI_COMPAT && ARM
++	default n
++
++	select VMSPLIT_3G
++	select STRICT_MEMORY_RWX
++	select CPU_SW_DOMAIN_PAN
++
++endif
++
++config GENTOO_PRINT_FIRMWARE_INFO
++	bool "Print firmware information that the kernel attempts to load"
++
++	depends on GENTOO_LINUX
++	default y
++
++	help
++		Enable this option to print information about firmware that the kernel
++		is attempting to load.  This information can be accessible via the
++		dmesg command-line utility
++
++		See the settings that become available for more details and fine-tuning.
++
++endmenu
++
+diff --git a/drivers/base/firmware_loader/Kconfig b/drivers/base/firmware_loader/Kconfig
+index 5b24f3959255..3e470a3dab39 100644
+--- a/drivers/base/firmware_loader/Kconfig
++++ b/drivers/base/firmware_loader/Kconfig
+@@ -70,6 +70,7 @@ config EXTRA_FIRMWARE_DIR
+ 
+ config FW_LOADER_USER_HELPER
+ 	bool "Enable the firmware sysfs fallback mechanism"
++	depends on !GENTOO_LINUX_INIT_SYSTEMD
+ 	select FW_LOADER_PAGED_BUF
+ 	help
+ 	  This option enables a sysfs loading facility to enable firmware
+diff --git a/init/Kconfig b/init/Kconfig
+index 11f8a845f259..c826ddeb9ab3 100644
+--- a/init/Kconfig
++++ b/init/Kconfig
+@@ -1008,6 +1008,7 @@ config CFS_BANDWIDTH
+ config RT_GROUP_SCHED
+ 	bool "Group scheduling for SCHED_RR/FIFO"
+ 	depends on CGROUP_SCHED
++	depends on !GENTOO_LINUX_INIT_SYSTEMD
+ 	default n
+ 	help
+ 	  This feature lets you explicitly allocate real CPU bandwidth
+@@ -1272,6 +1273,7 @@ config SCHED_AUTOGROUP
+ config SYSFS_DEPRECATED
+ 	bool "Enable deprecated sysfs features to support old userspace tools"
+ 	depends on SYSFS
++	depends on !GENTOO_LINUX_INIT_SYSTEMD
+ 	default n
+ 	help
+ 	  This option adds code that switches the layout of the "block" class
+diff --git a/mm/Kconfig b/mm/Kconfig
+index c048dea7e342..81a1dfd69adc 100644
+--- a/mm/Kconfig
++++ b/mm/Kconfig
+@@ -305,6 +305,8 @@ config KSM
+ config DEFAULT_MMAP_MIN_ADDR
+ 	int "Low address space to protect from user allocation"
+ 	depends on MMU
++	default 65536 if ( X86_64 || X86_32 || PPC64 || IA64 ) && GENTOO_KERNEL_SELF_PROTECTION
++	default 32768 if ( ARM64 || ARM ) && GENTOO_KERNEL_SELF_PROTECTION
+ 	default 4096
+ 	help
+ 	  This is the portion of low virtual memory which should be protected
+diff --git a/security/Kconfig b/security/Kconfig
+index fe6c0395fa02..6b1b81cd120e 100644
+--- a/security/Kconfig
++++ b/security/Kconfig
+@@ -166,6 +166,7 @@ config HARDENED_USERCOPY
+ config HARDENED_USERCOPY_FALLBACK
+ 	bool "Allow usercopy whitelist violations to fallback to object size"
+ 	depends on HARDENED_USERCOPY
++	depends on !GENTOO_KERNEL_SELF_PROTECTION
+ 	default y
+ 	help
+ 	  This is a temporary option that allows missing usercopy whitelists
+@@ -181,6 +182,7 @@ config HARDENED_USERCOPY_PAGESPAN
+ 	bool "Refuse to copy allocations that span multiple pages"
+ 	depends on HARDENED_USERCOPY
+ 	depends on EXPERT
++	depends on !GENTOO_KERNEL_SELF_PROTECTION
+ 	help
+ 	  When a multi-page allocation is done without __GFP_COMP,
+ 	  hardened usercopy will reject attempts to copy it. There are,
+diff --git a/security/selinux/Kconfig b/security/selinux/Kconfig
+index 9e921fc72538..9e1f7ce887b6 100644
+--- a/security/selinux/Kconfig
++++ b/security/selinux/Kconfig
+@@ -12,6 +12,7 @@ config SECURITY_SELINUX
+ config SECURITY_SELINUX_BOOTPARAM
+ 	bool "NSA SELinux boot parameter"
+ 	depends on SECURITY_SELINUX
++	depends on !GENTOO_KERNEL_SELF_PROTECTION
+ 	default n
+ 	help
+ 	  This option adds a kernel parameter 'selinux', which allows SELinux

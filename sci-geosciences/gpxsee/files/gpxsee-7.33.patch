@@ -1,0 +1,10 @@
+diff -U2 -r GPXSee-7.33.orig/gpxsee.pro GPXSee-7.33/gpxsee.pro
+--- GPXSee-7.33.orig/gpxsee.pro	2020-10-08 03:57:53.000000000 +0700
++++ GPXSee-7.33/gpxsee.pro	2020-10-15 22:26:51.786533119 +0700
+@@ -446,5 +446,5 @@
+ 
+ unix:!macx {
+-    isEmpty(PREFIX):PREFIX = /usr/local
++    PREFIX = /usr
+     DEFINES += PREFIX=\\\"$$PREFIX\\\"
+ 

@@ -1,0 +1,47 @@
+#!/sbin/openrc-run
+
+PIDFILE=/var/run/heartbeat-logd.pid
+
+depend() {
+	need net
+}
+
+BINARY="/usr/%libdir%/heartbeat/ha_logd"
+USER="hacluster"
+GROUP="haclient"
+CONFIG="/etc/logd.cf"
+LOGFILE="/var/log/ha_logger.log"
+
+start() {
+	ebegin "Starting heartbeat non-blocking log service"
+
+	COMMAND_ARGS="-d"
+	[[ -f "${CONFIG}" ]] && COMMAND_ARGS+=" -c ${CONFIG}"
+
+	if [ -n "${RC_UNAME}" ]; then
+		PARAMS="--background --stdout '${LOGFILE}' --stderr '${LOGFILE}' -- ${ARGS}"
+	else
+		PARAMS="-- ${ARGS} >> '${LOGFILE}' 2>&1 &"
+	fi
+	eval ${CHRT} start-stop-daemon \
+		--quiet --start --chdir "${RUNTIMEDIR}" \
+		--pidfile "${PIDFILE}" \
+		--make-pidfile \
+		--exec ${BINARY} ${COMMAND_ARGS} --chuid "${USER}:${GROUP}" \
+		--nicelevel "${NICELEVEL}" \
+		${PARAMS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping heartbeat non-blocking log service"
+	start-stop-daemon --stop --retry 3 --quiet --exec "${BINARY}"
+	rm -f "${PIDFILE}"
+	eend $?
+}
+
+restart() {
+	stop
+	sleep 3
+	start
+}

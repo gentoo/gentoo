@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/910283
+https://github.com/milkytracker/MilkyTracker/commit/7e9171488fc47ad2de646a4536794fda21e7303d
+https://github.com/milkytracker/MilkyTracker/issues/316
+https://github.com/milkytracker/MilkyTracker/issues/318
+
+From 7e9171488fc47ad2de646a4536794fda21e7303d Mon Sep 17 00:00:00 2001
+From: Leon van Kammen <leonvankammen@gmail.com>
+Date: Thu, 6 Jul 2023 14:38:20 +0200
+Subject: [PATCH] possible bugfix: return nPorts
+
+--- a/src/midi/posix/MidiReceiver_pthread.cpp
++++ b/src/midi/posix/MidiReceiver_pthread.cpp
+@@ -145,4 +145,5 @@ unsigned int MidiReceiver::countPorts()
+ 	}
+ 	delete midiin;
+ 	midiin = NULL;
+-}
+\ No newline at end of file
++  return nPorts;
++}

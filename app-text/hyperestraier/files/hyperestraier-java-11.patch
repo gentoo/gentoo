@@ -1,0 +1,78 @@
+--- a/javanative/Database.java
++++ b/javanative/Database.java
+@@ -135,7 +135,7 @@
+   /** last happened error code */
+   private int ecode;
+   /** callback function to inform of database events */
+-  private DatabaseInformer informer;
++  private long informer;
+   //----------------------------------------------------------------
+   // constructors and finalizers
+   //----------------------------------------------------------------
+--- a/javanative/database.c
++++ b/javanative/database.c
+@@ -19,7 +19,7 @@
+ 
+ 
+ /* global variables */
+-JNIEnv *infoenv = NULL;
++static JavaVM* jvm = NULL;
+ 
+ 
+ /* private function prototypes */
+@@ -181,8 +181,8 @@
+     err = TRUE;
+   }
+   (*env)->SetLongField(env, obj, fid, 0);
+-  fid = (*env)->GetFieldID(env, cls, "informer", "L" CLSDBINFO ";");
+-  if((infoobj = (*env)->GetObjectField(env, obj, fid)) != NULL)
++  fid = (*env)->GetFieldID(env, cls, "informer", "J");
++  if((infoobj = (jobject)(*env)->GetLongField(env, obj, fid)) != NULL)
+     (*env)->DeleteGlobalRef(env, infoobj);
+   (*env)->SetObjectField(env, obj, fid, NULL);
+   return err ? FALSE : TRUE;
+@@ -735,16 +735,17 @@
+     throwillarg(env);
+     return;
+   }
+-  fid = (*env)->GetFieldID(env, cls, "informer", "L" CLSDBINFO ";");
+-  if((oldobj = (*env)->GetObjectField(env, obj, fid)) != NULL)
++  fid = (*env)->GetFieldID(env, cls, "informer", "J");
++  if((oldobj = (jobject)(*env)->GetLongField(env, obj, fid)) != NULL)
+     (*env)->DeleteGlobalRef(env, oldobj);
+   (*env)->SetObjectField(env, obj, fid, NULL);
+   if(!(informer = (*env)->NewGlobalRef(env, informer))){
+     throwoutmem(env);
+     return;
+   }
+-  (*env)->SetObjectField(env, obj, fid, informer);
+-  infoenv = env;
++  (*env)->SetLongField(env, obj, fid, (PTRNUM)informer);
++  if(jvm == NULL)
++    (*env)->GetJavaVM(env, &jvm);
+   est_mtdb_set_informer((ESTMTDB *)(PTRNUM)coreptr, dbinform, informer);
+ }
+ 
+@@ -767,10 +768,12 @@
+ 
+ /* callback function for database events */
+ static void dbinform(const char *message, void *opaque){
++  JNIEnv *infoenv;
+   jstring msgobj;
+   jobject opobj;
+   jclass cls;
+   jmethodID mid;
++  (*jvm)->GetEnv(jvm, (void **)&infoenv, JNI_VERSION_1_8);
+   if(!(msgobj = (*infoenv)->NewStringUTF(infoenv, message))) return;
+   opobj = (jobject)opaque;
+   cls = (*infoenv)->GetObjectClass(infoenv, opobj);
+--- a/javanative/myconf.h
++++ b/javanative/myconf.h
+@@ -69,7 +69,6 @@
+ #define CLSDOC         "estraier/Document"
+ #define CLSCOND        "estraier/Condition"
+ #define CLSDB          "estraier/Database"
+-#define CLSDBINFO      "estraier/DatabaseInformer"
+ #define CLSRES         "estraier/Result"
+ 
+ 

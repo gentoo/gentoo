@@ -1,0 +1,33 @@
+https://github.com/mpi4py/mpi4py/pull/452
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+
+From 3adbd69b7219525f32636552394935a0a770896d Mon Sep 17 00:00:00 2001
+From: Lisandro Dalcin <dalcinl@gmail.com>
+Date: Mon, 15 Jan 2024 10:45:38 +0300
+Subject: [PATCH] fix: Fix implementation of MPI.buffer.toreadonly()
+
+---
+ src/mpi4py/MPI/asbuffer.pxi | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/src/mpi4py/MPI/asbuffer.pxi b/src/mpi4py/MPI/asbuffer.pxi
+index 15e06a1..6536c1f 100644
+--- a/src/mpi4py/MPI/asbuffer.pxi
++++ b/src/mpi4py/MPI/asbuffer.pxi
+@@ -257,14 +257,12 @@ cdef class memory:
+ 
+     def toreadonly(self) -> memory:
+         """Return a readonly version of the memory object"""
+-        cdef void *buf = self.view.buf
+-        cdef Py_ssize_t size = self.view.len
+         cdef object obj = self
+         if self.view.obj != NULL:
+             obj = <object>self.view.obj
+         cdef memory mem = memory.__new__(memory)
+-        PyBuffer_FillInfo(&mem.view, obj,
+-                          buf, size, 1, PyBUF_SIMPLE)
++        PyMPI_GetBuffer(obj, &mem.view, PyBUF_SIMPLE)
++        mem.view.readonly = 1
+         return mem
+ 
+     def release(self) -> None:

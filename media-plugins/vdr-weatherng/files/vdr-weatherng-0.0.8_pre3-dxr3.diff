@@ -1,0 +1,17 @@
+fix OSD Problems on dxr3 cards
+http://www.vdr-portal.de/board/thread.php?postid=517188#post517188
+
+Joerg Bornkessel <hd_brummy@gentoo.org> 24 Oct 2006
+
+diff -Naur weatherng-0.0.8-pre3.orig/OsdWeather.c weatherng-0.0.8-pre3/OsdWeather.c
+--- weatherng-0.0.8-pre3.orig/OsdWeather.c	2006-10-24 13:46:22.850099968 +0200
++++ weatherng-0.0.8-pre3/OsdWeather.c	2006-10-24 13:57:12.446697218 +0200
+@@ -379,7 +379,7 @@
+ 
+ #endif               
+ */
+-		colordepth  =  16;
++		colordepth  =   7;
+ 		areadepth   =   4;
+ 
+ 		tArea Area[] = {

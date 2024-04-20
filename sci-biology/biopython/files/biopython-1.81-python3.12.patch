@@ -1,0 +1,11 @@
+--- a/Tests/test_Entrez.orig.py	2023-02-13 04:07:42.000000000 +0100
++++ b/Tests/test_Entrez.py	2023-06-30 14:42:58.177365639 +0200
+@@ -126,7 +126,7 @@
+     :type params: dict
+     :param expected: Expected set of IDs, as colleciton of strings.
+     """
+-    testcase.assertEquals(len(params["id"]), 1)
++    testcase.assertEqual(len(params["id"]), 1)
+     ids_str = params["id"][0]
+     # Compare up to ordering
+     testcase.assertCountEqual(ids_str.split(","), expected)

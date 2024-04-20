@@ -1,0 +1,33 @@
+Usage
+=====
+
+Do
+ $ man 8 kexec
+for full understanding of the underlying kexec command.
+Gentoo offers a wrapper to the bare kexec command through
+/etc/init.d/kexec.
+
+Configuration
+-------------
+
+Configuration is done in /etc/conf.d/kexec, which is self-documented.
+
+Usage
+-----
+
+In Gentoo, kexec is invoked, i.e., the new kernel will be booted when
+rebooting, by reboot (8) command or by pressing Ctrl+Alt+Del.
+
+If you want to use kexec once, just run
+ $ /etc/init.d/kexec start
+
+It'll reserve kexec call at reboot. Later on, you can reboot anytime,
+letting kexec starts another (or the same) kernel. When all is done in
+the runlevel 6 - killing processes, unmounting volumes, etc - kexec
+starts the new kernel instead of doing the normal hardware reboot.
+
+If you want kexec to be run every time you reboot, add it to a runlevel:
+ $ rc-update add kexec <runlevel>
+
+If you want to reboot in the normal way this time, do:
+ $ touch /nokexec

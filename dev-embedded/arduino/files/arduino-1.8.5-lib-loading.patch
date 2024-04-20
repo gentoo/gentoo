@@ -1,0 +1,26 @@
+diff --git a/app/src/cc/arduino/packages/formatter/AStyleInterface.java b/app/src/cc/arduino/packages/formatter/AStyleInterface.java
+index 4224bf164..fa92506ba 100644
+--- a/app/src/cc/arduino/packages/formatter/AStyleInterface.java
++++ b/app/src/cc/arduino/packages/formatter/AStyleInterface.java
+@@ -41,7 +41,7 @@ public class AStyleInterface {
+       loadLib(Base.getContentFile(System.mapLibraryName("msvcp100")));
+       loadLib(Base.getContentFile(System.mapLibraryName("msvcr100")));
+     }
+-    loadLib(new File(Base.getContentFile("lib"), System.mapLibraryName("astylej")));
++    System.loadLibrary("astylej");
+   }
+ 
+   private static void loadLib(File lib) {
+diff --git a/arduino-core/src/processing/app/Platform.java b/arduino-core/src/processing/app/Platform.java
+index 28a7ba0f5..8a943a8ac 100644
+--- a/arduino-core/src/processing/app/Platform.java
++++ b/arduino-core/src/processing/app/Platform.java
+@@ -154,7 +154,7 @@ public class Platform {
+   }
+ 
+   static {
+-    loadLib(new File(BaseNoGui.getContentFile("lib"), System.mapLibraryName("listSerialsj")));
++    System.loadLibrary("listSerialsj");
+   }
+ 
+   private static void loadLib(File lib) {

@@ -1,0 +1,14 @@
+diff --git a/src/libhsakmt.ver b/src/libhsakmt.ver
+index dc17215..964f3d0 100644
+--- a/src/libhsakmt.ver
++++ b/src/libhsakmt.ver
+@@ -75,6 +75,9 @@ hsaKmtSetXNACKMode;
+ hsaKmtGetXNACKMode;
+ hsaKmtOpenSMI;
+ hsaKmtExportDMABufHandle;
++hsaKmtWaitOnMultipleEvents_Ext;
++hsaKmtReplaceAsanHeaderPage;
++hsaKmtWaitOnEvent_Ext;
+ 
+ local: *;
+ };

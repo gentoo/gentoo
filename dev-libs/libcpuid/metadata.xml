@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>bkohler@gentoo.org</email>
+		<name>Ben Kohler</name>
+	</maintainer>
+	<longdescription>
+		<pkg>dev-libs/libcpuid</pkg> is a small C library for x86 (and x86_64)
+		CPU detection and feature extraction. Using it, you can:
+		- get the processor vendor, model, code name, etc.
+		- get information about CPU features such as: number of cores or
+		logical CPUs, cache sizes, CPU clock, etc.
+		- check if the processor implements a specific instruction set such as
+		the SSE2, 3DNow!, etc.
+		- execute the CPUID and RDTSC instructions.
+		- have this all in your commercial application, without getting into
+		trouble.
+	</longdescription>
+	<longdescription lang="fr">
+		<pkg>dev-libs/libcpuid</pkg> est une petite bibliothèque C pour la
+		détection de CPU x86 (et x86_64) et l'extraction de fonctions. En
+		l'utilisant, vous pouvez :
+		- obtenir le vendeur du processeur, le modèle, le nom de code, etc.
+		- obtenir des informations sur les caractéristiques du CPU telles que :
+		le nombre de cœurs ou d'unités logiques, les tailles des caches,
+		l'horloge CPU, etc.
+		- vérifier si le processeur implémente un jeu d'instructions spécifique
+		tel que l'instruction SSE2, 3DNow!, etc.
+		- exécuter les instructions CPUID et RDTSC.
+		- avoir tout cela dans votre application commerciale, sans avoir
+		d'ennuis.
+	</longdescription>
+	<slots>
+		<subslots>Reflect ABI compatibility for libcpuid.so</subslots>
+	</slots>
+	<slots lang="fr">
+		<subslots>
+			Reflétent la compatibilité de l'interface binaire-programme
+			(A.B.I.) de libcpuid.so
+		</subslots>
+	</slots>
+	<upstream>
+		<maintainer status="active">
+			<name>Veselin Georgiev</name>
+		</maintainer>
+		<changelog>https://raw.githubusercontent.com/anrieff/libcpuid/master/ChangeLog</changelog>
+		<doc>http://libcpuid.sourceforge.net/doxy/index.html</doc>
+		<bugs-to>https://github.com/anrieff/libcpuid/issues/</bugs-to>
+		<remote-id type="github">anrieff/libcpuid</remote-id>
+	</upstream>
+</pkgmetadata>

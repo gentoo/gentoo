@@ -1,0 +1,30 @@
+diff -Naur ipadic-2.7.0.orig/Makefile.am ipadic-2.7.0/Makefile.am
+--- ipadic-2.7.0.orig/Makefile.am	2003-09-13 14:37:17.000000000 +0900
++++ ipadic-2.7.0/Makefile.am	2011-09-02 11:03:33.044589641 +0900
+@@ -11,18 +11,18 @@
+ EXTRA_DIST    = $(pre_data) $(lexical_dic) $(manual_files) @PACKAGE@.spec
+ CLEANFILES    = $(gen_data)
+ #
+-matrix.cha table.cha:
++matrix.cha table.cha chadic.lex chadic.dat:
+ 	$(MKDICDIR)/makemat
+ 
+-chadic.da: 
++chadic.da: table.cha
+ 	$(MKDICDIR)/makeda chadic *.dic
+ 
+-install-data-local:
+-	if test -f @CHASEN_CHASENRC_PATH@  ; then \
+-		echo "Please modify @CHASEN_CHASENRC_PATH@"; \
+-	else \
+-		cp chasenrc @CHASEN_CHASENRC_PATH@ ;\
+-	fi
++#install-data-local:
++#	if test -f @CHASEN_CHASENRC_PATH@  ; then \
++#		echo "Please modify @CHASEN_CHASENRC_PATH@"; \
++#	else \
++#		cp chasenrc @CHASEN_CHASENRC_PATH@ ;\
++#	fi
+ 
+ sjis-dist: dist
+ 	gtar xzvf ipadic-@VERSION@.tar.gz

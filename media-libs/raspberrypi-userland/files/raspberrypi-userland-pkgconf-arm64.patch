@@ -1,0 +1,38 @@
+From 6d666d333f2022004fa453b28faad91021cd13d3 Mon Sep 17 00:00:00 2001
+From: crabbedhaloablution
+ <17379795+crabbedhaloablution@users.noreply.github.com>
+Date: Mon, 16 Nov 2020 13:41:12 +0100
+Subject: [PATCH] Only install .pc files for which we build a .so.
+
+Many .so files are not built on arm64, but currently we install
+the .pc files anyway. Fix by including the .pc files in the ARM64
+conditional.
+---
+ CMakeLists.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fe67fc87..8393a8bd 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -11,9 +11,11 @@ SET(PROJECT_APIVER "${PROJECT_VER}")
+ if(ARM64)
+    set(BUILD_MMAL FALSE)
+    set(BUILD_MMAL_APPS FALSE)
++   set(PKGCONFFILES bcm_host.pc)
+ else()
+    set(BUILD_MMAL TRUE)
+    set(BUILD_MMAL_APPS TRUE)
++   set(PKGCONFFILES bcm_host.pc brcmegl.pc brcmglesv2.pc brcmvg.pc vcsm.pc mmal.pc)
+ endif()
+ set(vmcs_root ${PROJECT_SOURCE_DIR})
+ get_filename_component(VIDEOCORE_ROOT . ABSOLUTE)
+@@ -122,7 +124,7 @@ include_directories("${PROJECT_BINARY_DIR}")
+ include(FindPkgConfig QUIET)
+ if(PKG_CONFIG_FOUND)
+ 	# Produce a pkg-config file
+-	foreach(PCFILE bcm_host.pc brcmegl.pc brcmglesv2.pc brcmvg.pc vcsm.pc mmal.pc)
++	foreach(PCFILE IN LISTS PKGCONFFILES)
+ 		configure_file("pkgconfig/${PCFILE}.in" "${PCFILE}" @ONLY)
+ 		install(FILES       "${CMAKE_CURRENT_BINARY_DIR}/${PCFILE}"
+ 			DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig")

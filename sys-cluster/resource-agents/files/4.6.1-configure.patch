@@ -1,0 +1,31 @@
+diff -Naur resource-agents-4.6.1.orig/configure.ac resource-agents-4.6.1/configure.ac
+--- resource-agents-4.6.1.orig/configure.ac	2020-07-13 20:19:50.531288513 +0200
++++ resource-agents-4.6.1/configure.ac	2020-07-13 20:22:23.558906321 +0200
+@@ -487,11 +487,13 @@
+ if test x"${BASH_SHELL}" = x""; then
+    AC_MSG_ERROR(You need bash installed in order to build ${PACKAGE})
+ fi
+-AC_PATH_PROGS(XSLTPROC, xsltproc)
+-AM_CONDITIONAL(BUILD_DOC, test "x$XSLTPROC" != "x" )
+-if test "x$XSLTPROC" = "x"; then
+-   AC_MSG_WARN([xsltproc not installed, unable to (re-)build manual pages])
+-fi
++
++AC_ARG_ENABLE([doc],
++  AS_HELP_STRING([--enable-doc],[Build documentation]))
++AS_IF([test "x$enable_doc" = "xyes"], [
++  AC_PATH_PROGS(XSLTPROC, xsltproc)
++])
++AM_CONDITIONAL([BUILD_DOC], [test "x$enable_doc" = "xyes"] )
+ AC_SUBST(XSLTPROC)
+ AC_PATH_PROGS(XMLCATALOG, xmlcatalog)
+ AC_PATH_PROGS(SSH, ssh, /usr/bin/ssh)
+@@ -859,8 +861,6 @@
+         CFLAGS="$CFLAGS -g"
+ 	enable_fatal_warnings=no
+ else
+-        CFLAGS="$CFLAGS -ggdb3"
+-
+ 	# We had to eliminate -Wnested-externs because of libtool changes
+ 	# Also remove -Waggregate-return because we use one libnet
+ 	# call which returns a struct

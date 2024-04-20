@@ -1,0 +1,16 @@
+From 5679254b7b79e2f091fbb8658af910fe961f4d65 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 4 Nov 2022 01:35:53 +0000
+Subject: [PATCH] Fix -Wimplicit-function-declaration for strerror
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.in
++++ b/configure.in
+@@ -51,6 +51,7 @@ AC_CHECK_FUNC(tempnam,,AC_DEFINE(tempnam,_FP_tempnam))
+ #
+ AC_MSG_CHECKING([for strerror])
+ AC_TRY_LINK([
++#include <string.h>
+ char *blubb() { return (char *) strerror (42); }
+ ],[
+ (void) blubb();

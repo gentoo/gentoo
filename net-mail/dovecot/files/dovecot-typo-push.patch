@@ -1,0 +1,27 @@
+From cd2ff353c6198428219fea76bdd296e5256d97b6 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Tue, 5 Mar 2024 18:15:58 -0800
+Subject: [PATCH] push-notification: fix typo 'module' to '-module'
+
+There is a typo in the Makefile.am where it has 'module` instead of '-module' which causes a build failure with slibtool.
+
+  ld: cannot find module: No such file or directory
+
+With GNU libtool the typo is silently ignored.
+---
+ src/plugins/push-notification/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/plugins/push-notification/Makefile.am b/src/plugins/push-notification/Makefile.am
+index f1527148a0..daa43a2d4d 100644
+--- a/src/plugins/push-notification/Makefile.am
++++ b/src/plugins/push-notification/Makefile.am
+@@ -75,7 +75,7 @@ lib22_push_notification_lua_plugin_la_CFLAGS = $(AM_CPPFLAGS) \
+ 	-I$(top_srcdir)/src/lib-lua \
+ 	-I$(top_srcdir)/src/plugins/mail-lua \
+ 	$(LUA_CFLAGS)
+-lib22_push_notification_lua_plugin_la_LDFLAGS = module -avoid-version
++lib22_push_notification_lua_plugin_la_LDFLAGS = -module -avoid-version
+ module_LTLIBRARIES += \
+ 	lib22_push_notification_lua_plugin.la
+ lib22_push_notification_lua_plugin_la_LIBADD = $(notify_deps) $(LUA_LIBS)

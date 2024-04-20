@@ -1,0 +1,7 @@
+https://bugs.gentoo.org/871513
+--- a/inc/utils.h
++++ b/inc/utils.h
+@@ -52,2 +52,3 @@
+ 
++void		util_alarm(void);
+ void		util_init(void);

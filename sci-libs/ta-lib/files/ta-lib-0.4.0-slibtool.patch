@@ -1,0 +1,92 @@
+Upstream-PR: https://sourceforge.net/p/ta-lib/patches/6/
+From 05375dd96c3bdec814214f37a6c49d4a27079960 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Thu, 12 May 2022 11:13:59 -0700
+Subject: [PATCH] Fix parallel Make issue with slibtool
+
+---
+ configure.in => configure.ac       |  4 ++++
+ src/tools/gen_code/Makefile.am     | 13 ++++++++-----
+ src/tools/gen_code/gen_code_bin.sh | 16 ++++++++++++++++
+ src/tools/ta_regtest/Makefile.am   |  4 ++--
+ 4 files changed, 30 insertions(+), 7 deletions(-)
+ rename configure.in => configure.ac (96%)
+ create mode 100755 src/tools/gen_code/gen_code_bin.sh
+
+diff --git a/configure.in b/configure.ac
+similarity index 96%
+rename from configure.in
+rename to configure.ac
+index d2e5784..359d400 100644
+--- a/configure.in
++++ b/configure.ac
+@@ -35,6 +35,10 @@ AC_FUNC_STRTOD
+ AC_FUNC_VPRINTF
+ AC_CHECK_FUNCS([floor isascii localeconv mblen memmove memset modf pow sqrt strcasecmp strchr strerror strncasecmp strrchr strstr strtol strtoul])
+ 
++# Checks for libm
++AC_CHECK_LIBM
++AC_SUBST([LIBM])
++
+ # Versioning:
+ # Only change this if library is no longer
+ # ABI compatible with previous version
+diff --git a/src/tools/gen_code/Makefile.am b/src/tools/gen_code/Makefile.am
+index cb839c2..2ec2360 100644
+--- a/src/tools/gen_code/Makefile.am
++++ b/src/tools/gen_code/Makefile.am
+@@ -6,9 +6,12 @@ noinst_PROGRAMS = gen_code
+ gen_code_SOURCES = gen_code.c
+ 
+ gen_code_CPPFLAGS = -I../../ta_common
+-gen_code_LDFLAGS = -L../../ta_common -L../../ta_abstract -L../../ta_func
+-gen_code_LDADD = -lta_common -lta_abstract_gc -lta_func -lm
++gen_code_LDFLAGS = -no-undefined
++gen_code_LDADD = \
++	../../ta_common/libta_common.la \
++	../../ta_abstract/libta_abstract_gc.la \
++	../../ta_func/libta_func.la \
++	$(LIBM)
+ 
+-all-local:
+-	$(MAKE) $(AM_MAKEFLAGS) gen_code
+-	cp gen_code ../../../bin
++all-local: gen_code
++	$(LIBTOOL) --mode=execute ./gen_code_bin.sh gen_code
+diff --git a/src/tools/gen_code/gen_code_bin.sh b/src/tools/gen_code/gen_code_bin.sh
+new file mode 100755
+index 0000000..b19fd09
+--- /dev/null
++++ b/src/tools/gen_code/gen_code_bin.sh
+@@ -0,0 +1,16 @@
++#!/bin/sh
++
++# This is a work around for a slibtool bug with --mode=execute
++#
++# With slibtool the gen_code binary is created in the .libs directory while GNU
++# libtool outputs in the same directory as the Makefile. This means that cp(1)
++# needs to be invoked with $(LIBTOOL) --mode=execute.
++#
++# However slibtool currently has a bug where the destination argument is dropped
++# which will result in the command failing.
++#
++# See https://bugs.gentoo.org/790770
++
++set -eu
++
++cp "${1}" ../../../bin
+diff --git a/src/tools/ta_regtest/Makefile.am b/src/tools/ta_regtest/Makefile.am
+index 64229e2..255a87e 100644
+--- a/src/tools/ta_regtest/Makefile.am
++++ b/src/tools/ta_regtest/Makefile.am
+@@ -34,5 +34,5 @@ ta_regtest_CPPFLAGS = -I../../ta_func \
+ 		      -I../../ta_common/mt \
+ 		      -I../../ta_common \
+ 		      -I../../ta_abstract
+-ta_regtest_LDFLAGS = -L../.. -lta_lib \
+-		     -lm
++ta_regtest_LDFLAGS = -no-undefined
++ta_regtest_LDADD = ../../libta_lib.la $(LIBM)
+-- 
+2.35.1
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">                                              
+		<email>sam@gentoo.org</email>                                   
+		<name>Sam James</name>                                          
+	</maintainer>      
+	<longdescription lang="en">
+		lighttpd (pronounced /lighty/) is a secure, fast, compliant, and very
+		flexible web server that has been optimized for high-performance
+		environments. lighttpd uses memory and CPU efficiently and has lower
+		resource use than other popular web servers. Its advanced feature-set
+		(FastCGI, CGI, Auth, Output-Compression, URL-Rewriting and much more)
+		make lighttpd the perfect web server for all systems, small and large.
+	</longdescription>
+	<use>
+		<flag name="brotli">Enable output compression via <pkg>app-arch/brotli</pkg> (recommended)</flag>
+		<flag name="gnutls">Build module for TLS via <pkg>net-libs/gnutls</pkg></flag>
+		<flag name="maxminddb">Add support for geolocation using <pkg>dev-libs/libmaxminddb</pkg></flag>
+		<flag name="mbedtls">Build module for TLS via <pkg>net-libs/mbedtls</pkg></flag>
+		<flag name="mmap">Use mmap when sendfile is not available</flag>
+		<flag name="nettle">Use <pkg>dev-libs/nettle</pkg> as crypto backend</flag>
+		<flag name="nss">Build module for TLS via Mozilla's Network Security Services</flag>
+		<flag name="rrdtool">Enable rrdtool support via mod_rrdtool</flag>
+		<flag name="webdav">Enable webdav properties</flag>
+		<flag name="zlib">Enable output compression via gzip or deflate algorithms from <pkg>sys-libs/zlib</pkg></flag>
+		<flag name="zstd">Enable output compression via Zstandard (<pkg>app-arch/zstd</pkg>) algorithm</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">lighttpd/lighttpd1.4</remote-id>
+		<remote-id type="github">lighttpd/lighttpd2</remote-id>
+	</upstream>
+</pkgmetadata>

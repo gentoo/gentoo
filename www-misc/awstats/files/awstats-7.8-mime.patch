@@ -1,0 +1,12 @@
+diff -ur awstats-7.8-old/wwwroot/cgi-bin/lib/mime.pm awstats-7.8/wwwroot/cgi-bin/lib/mime.pm
+--- awstats-7.8-old/wwwroot/cgi-bin/lib/mime.pm	2020-04-16 09:18:35.000000000 +0000
++++ awstats-7.8/wwwroot/cgi-bin/lib/mime.pm	2020-05-13 09:38:30.654537576 +0000
+@@ -56,7 +56,7 @@
+ 'diskimage', 'Disc and media file extensions',
+ 'vm',        'Virtual Machine image',
+ 'torrent',   'BitTorrent File',
+-'gis',       'GIS File'
++'gis',       'GIS File',
+ 'ebook',     'Ebook File'
+ );
+ 

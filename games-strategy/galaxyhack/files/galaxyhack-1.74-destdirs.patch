@@ -1,0 +1,11 @@
+--- a/Main.cpp
++++ b/Main.cpp
+@@ -184,7 +184,7 @@
+ #ifndef WIN32
+ 	string settingsPath = userHomePath + "settings.dat";
+ 	if (!DoesFileExist(settingsPath))
+-		settingsPath = "settings.dat";
++		settingsPath = "@GAMES_DATADIR@/galaxyhack/settings.dat";
+ #else
+ 	string settingsPath = "settings.dat";
+ #endif

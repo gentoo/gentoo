@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>jaco@uls.co.za</email>
+		<name>Jaco Kroon</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>dek.devel@baisenvar.info</email>
+		<name>Bill Prendergast</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>nic@boet.cc</email>
+		<name>Nic Boet</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="openssl">Use openssl libs for crypto functions</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">benmcollins/libjwt</remote-id>
+	</upstream>
+</pkgmetadata>

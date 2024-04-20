@@ -1,0 +1,118 @@
+https://git.savannah.gnu.org/cgit/freeipmi.git/commit/?id=587b0cce3d0f146c9f97efbf33d599d23217d610
+https://git.savannah.gnu.org/cgit/freeipmi.git/commit/?id=9cc6f981b55d6aa784788674a5a77c5b970bcabe
+https://git.savannah.gnu.org/cgit/freeipmi.git/commit/?id=14c6e2d373173d06fa3f2148629b4d8bdedec0a2
+https://git.savannah.gnu.org/cgit/freeipmi.git/commit/?id=66cf8d0bb7e47d3360389ce427a6303cc0b63d00
+
+From 587b0cce3d0f146c9f97efbf33d599d23217d610 Mon Sep 17 00:00:00 2001
+From: Albert Chu <chu11@llnl.gov>
+Date: Tue, 7 Jan 2020 13:48:12 -0800
+Subject: [PATCH 1/7] ipmi-sensors: Fix header guards
+
+--- a/ipmi-sensors/ipmi-sensors-oem-intel-quanta-qssc-s4r.h
++++ b/ipmi-sensors/ipmi-sensors-oem-intel-quanta-qssc-s4r.h
+@@ -17,7 +17,7 @@
+  */
+ 
+ #ifndef IPMI_SENSORS_OEM_INTEL_QUANTA_QSSC_S4R_H
+-#define IPMI_SENSORS_OEM_INTEL_H
++#define IPMI_SENSORS_OEM_INTEL_QUANTA_QSSC_S4R_H
+ 
+ #include "ipmi-sensors.h"
+ 
+--- a/ipmi-sensors/ipmi-sensors-oem-intel-s2600jf.h
++++ b/ipmi-sensors/ipmi-sensors-oem-intel-s2600jf.h
+@@ -17,7 +17,7 @@
+  */
+ 
+ #ifndef IPMI_SENSORS_OEM_INTEL_S2600JF_H
+-#define IPMI_SENSORS_OEM_INTEL_H
++#define IPMI_SENSORS_OEM_INTEL_S2600JF_H
+ 
+ #include "ipmi-sensors.h"
+ 
+--- a/ipmi-sensors/ipmi-sensors-oem-intel-s2600wp.h
++++ b/ipmi-sensors/ipmi-sensors-oem-intel-s2600wp.h
+@@ -17,7 +17,7 @@
+  */
+ 
+ #ifndef IPMI_SENSORS_OEM_INTEL_S2600WP_H
+-#define IPMI_SENSORS_OEM_INTEL_H
++#define IPMI_SENSORS_OEM_INTEL_S2600WP_H
+ 
+ #include "ipmi-sensors.h"
+ 
+--- a/ipmi-sensors/ipmi-sensors-oem-intel-s5500wb.h
++++ b/ipmi-sensors/ipmi-sensors-oem-intel-s5500wb.h
+@@ -17,7 +17,7 @@
+  */
+ 
+ #ifndef IPMI_SENSORS_OEM_INTEL_S5500WB_H
+-#define IPMI_SENSORS_OEM_INTEL_H
++#define IPMI_SENSORS_OEM_INTEL_S5500WB_H
+ 
+ #include "ipmi-sensors.h"
+ 
+From 9cc6f981b55d6aa784788674a5a77c5b970bcabe Mon Sep 17 00:00:00 2001
+From: Albert Chu <chu11@llnl.gov>
+Date: Tue, 7 Jan 2020 14:06:27 -0800
+Subject: [PATCH 4/7] libipmiconsole: Move header guard macros to top of file
+
+--- a/libipmiconsole/ipmiconsole_defs.h
++++ b/libipmiconsole/ipmiconsole_defs.h
+@@ -24,6 +24,9 @@
+  *  with Ipmiconsole.  If not, see <http://www.gnu.org/licenses/>.
+ \*****************************************************************************/
+ 
++#ifndef IPMICONSOLE_DEFS_H
++#define IPMICONSOLE_DEFS_H
++
+ #ifdef HAVE_CONFIG_H
+ #include "config.h"
+ #endif /* HAVE_CONFIG_H */
+@@ -54,9 +57,6 @@
+ 
+ #include "scbuf.h"
+ 
+-#ifndef IPMICONSOLE_DEFS_H
+-#define IPMICONSOLE_DEFS_H
+-
+ #ifndef MAXHOSTNAMELEN
+ #define MAXHOSTNAMELEN 64
+ #endif /* MAXHOSTNAMELEN */
+From 14c6e2d373173d06fa3f2148629b4d8bdedec0a2 Mon Sep 17 00:00:00 2001
+From: Albert Chu <chu11@llnl.gov>
+Date: Tue, 7 Jan 2020 15:30:39 -0800
+Subject: [PATCH 6/7] libfreeipmi/sel: Add missing functions to header
+
+--- a/libfreeipmi/sel/ipmi-sel-string-supermicro-common.h
++++ b/libfreeipmi/sel/ipmi-sel-string-supermicro-common.h
+@@ -39,4 +39,14 @@ int sel_string_output_supermicro_overheat_event_data1_class_oem (ipmi_sel_ctx_t
+                                                                  unsigned int *wlen,
+                                                                  struct ipmi_sel_system_event_record_data *system_event_record_data);
+ 
++int sel_string_output_supermicro_dimm_event_data2_event_data3 (ipmi_sel_ctx_t ctx,
++                                                               struct ipmi_sel_entry *sel_entry,
++                                                               uint8_t sel_record_type,
++                                                               char *buf,
++                                                               unsigned int buflen,
++                                                               unsigned int flags,
++                                                               unsigned int *wlen,
++                                                               struct ipmi_sel_system_event_record_data *system_event_record_data,
++                                                               int *oem_rv);
++
+ #endif /* IPMI_SEL_STRING_SUPERMICRO_COMMON_H */
+From 66cf8d0bb7e47d3360389ce427a6303cc0b63d00 Mon Sep 17 00:00:00 2001
+From: Albert Chu <chu11@llnl.gov>
+Date: Tue, 7 Jan 2020 15:32:22 -0800
+Subject: [PATCH 7/7] ipmi-sensors: Add missing header to file
+
+--- a/ipmi-sensors/ipmi-sensors-oem-intel.c
++++ b/ipmi-sensors/ipmi-sensors-oem-intel.c
+@@ -34,6 +34,7 @@
+ #include "ipmi-sensors-oem-intel.h"
+ #include "ipmi-sensors-oem-intel-s5500wb.h"
+ #include "ipmi-sensors-oem-intel-s2600jf.h"
++#include "ipmi-sensors-oem-intel-s2600wp.h"
+ #include "ipmi-sensors-oem-intel-quanta-qssc-s4r.h"
+ #include "ipmi-sensors-oem-intel-node-manager.h"
+ 

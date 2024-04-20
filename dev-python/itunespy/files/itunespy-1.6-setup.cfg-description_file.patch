@@ -1,0 +1,9 @@
+index 224a779..0f94f37 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -1,2 +1,2 @@
+ [metadata]
+-description-file = README.md
+\ No newline at end of file
++description_file = README.md
+\ No newline at end of file

@@ -1,0 +1,10 @@
+--- a/configure.in
++++ b/configure.in
+@@ -52,6 +52,7 @@
+         CPPFLAGS="$CPPFLAGS -I$withval"
+     fi
+     AC_CHECK_LIB([ncurses],[newterm,timeout],,[ CPPFLAGS=$OLD_CPPFLAGS ])
++    AC_SEARCH_LIBS([wtimeout],[tinfo])
+     CURSES_CHECKED="1"
+ else
+     CURSES_CHECKED="1"

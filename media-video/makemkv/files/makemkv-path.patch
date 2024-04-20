@@ -1,0 +1,47 @@
+diff -Naur makemkv-oss-1.9.10.orig/makemkvgui/src/api_posix.cpp makemkv-oss-1.9.10/makemkvgui/src/api_posix.cpp
+--- makemkv-oss-1.9.10.orig/makemkvgui/src/api_posix.cpp	2016-04-15 21:35:36.000000000 +0100
++++ makemkv-oss-1.9.10/makemkvgui/src/api_posix.cpp	2016-05-08 13:51:48.761885862 +0100
+@@ -54,8 +54,6 @@
+ 
+     if (AppName[0]==':')
+     {
+-        bool app_found = false;
+-        const char* const* app_locations = ApGetAppLocations();
+         const char* p_env = getenv("MAKEMKVCON");
+ 
+         AppName++;
+@@ -63,6 +61,13 @@
+         if (p_env!=NULL)
+         {
+             strcpy(app_path,p_env);
++        } else {
++            strcpy(app_path,AppName);
++        }
++    } else {
++        strcpy(app_path,AppName);
++    }
++/*
+             app_found = true;
+         } else {
+             for (size_t i=0;app_locations[i]!=NULL;i++)
+@@ -105,7 +110,7 @@
+         }
+         strcpy(p,AppName);
+     }
+-
++*/
+     strcpy(str_guiserver,"guiserver");
+     strcpy(str_apver,verstr);
+ 
+diff -Naur makemkv-oss-1.9.10.orig/makemkvgui/src/spawn_posix.cpp makemkv-oss-1.9.10/makemkvgui/src/spawn_posix.cpp
+--- makemkv-oss-1.9.10.orig/makemkvgui/src/spawn_posix.cpp	2016-04-15 21:35:36.000000000 +0100
++++ makemkv-oss-1.9.10/makemkvgui/src/spawn_posix.cpp	2016-05-08 10:52:37.137598384 +0100
+@@ -70,7 +70,7 @@
+         }
+     }
+ 
+-    err = posix_spawn(&pid,argv[0],&spawn_actions,&spawn_attr,argv,envp);
++    err = posix_spawnp(&pid,argv[0],&spawn_actions,&spawn_attr,argv,envp);
+ 
+     posix_spawn_file_actions_destroy(&spawn_actions);
+     posix_spawnattr_destroy(&spawn_attr);

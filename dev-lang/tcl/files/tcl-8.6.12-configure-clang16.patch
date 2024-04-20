@@ -1,0 +1,31 @@
+https://github.com/tcltk/tcl/commit/5eb33c5c7e9d6b703275b680f337691ecfe38f2a
+
+From 5eb33c5c7e9d6b703275b680f337691ecfe38f2a Mon Sep 17 00:00:00 2001
+From: "jan.nijtmans" <nijtmans@users.sourceforge.net>
+Date: Sun, 7 Nov 2021 21:34:08 +0000
+Subject: [PATCH] Fix [15845d9fd8]: unix/tcl.m4: implicit declaration of exit()
+ in timezone variable checks
+
+--- a/unix/tcl.m4
++++ b/unix/tcl.m4
+@@ -2349,7 +2349,8 @@ AC_DEFUN([SC_TIME_HANDLER], [
+     # (like convex) have timezone functions, etc.
+     #
+     AC_CACHE_CHECK([long timezone variable], tcl_cv_timezone_long, [
+-	AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <time.h>]],
++	AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <time.h>
++#include <stdlib.h>]],
+ 	[[extern long timezone;
+ 	    timezone += 1;
+ 	    exit (0);]])],
+@@ -2361,7 +2362,8 @@ AC_DEFUN([SC_TIME_HANDLER], [
+ 	# On some systems (eg IRIX 6.2), timezone is a time_t and not a long.
+ 	#
+ 	AC_CACHE_CHECK([time_t timezone variable], tcl_cv_timezone_time, [
+-	    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <time.h>]],
++	    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <time.h>
++#include <stdlib.h>]],
+ 	    [[extern time_t timezone;
+ 		timezone += 1;
+ 		exit (0);]])],
+

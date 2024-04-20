@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=Citrix Web Helper
+StartupWMClass=Ctxwebhelper
+NoDisplay=true
+Categories=Network;
+MimeType=x-scheme-handler/receiver;
+Icon=/opt/Citrix/ICAClient/icons/manager.png
+TryExec=/opt/Citrix/ICAClient/util/ctxwebhelper
+Exec=/opt/Citrix/ICAClient/util/ctxwebhelper

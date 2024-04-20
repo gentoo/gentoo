@@ -1,0 +1,29 @@
+From 123123453bd4f3ac87ca6dd641a9028e6e7a29f0 Mon Sep 17 00:00:00 2001
+From: Albert Vaca Cintora <albertvaka@gmail.com>
+Date: Mon, 24 Jul 2023 13:32:30 +0000
+Subject: [PATCH] Sign self-signed certs with SHA256
+
+---
+ plugins/qca-ossl/qca-ossl.cpp | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/plugins/qca-ossl/qca-ossl.cpp b/plugins/qca-ossl/qca-ossl.cpp
+index 893631c9..f340ee2f 100644
+--- a/plugins/qca-ossl/qca-ossl.cpp
++++ b/plugins/qca-ossl/qca-ossl.cpp
+@@ -3470,10 +3470,8 @@ public:
+         X509_EXTENSION *ex;
+ 
+         const EVP_MD *md;
+-        if (priv.key()->type() == PKey::RSA)
+-            md = EVP_sha1();
+-        else if (priv.key()->type() == PKey::DSA)
+-            md = EVP_sha1();
++        if (priv.key()->type() == PKey::RSA || priv.key()->type() == PKey::DSA)
++            md = EVP_sha256();
+         else
+             return false;
+ 
+-- 
+GitLab
+

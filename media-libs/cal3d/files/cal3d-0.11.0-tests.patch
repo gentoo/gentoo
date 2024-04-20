@@ -1,0 +1,11 @@
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -14,7 +14,7 @@
+ EXTRA_DIST = \
+ 	$(wildcard cal3d_converter/base.??f)
+ 
+-TESTS_ENVIRONMENT = sh ./run
++LOG_COMPILER = sh ./run
+ TESTS = converter/skeleton converter/mesh converter/material converter/animation
+ 
+ .PHONY: ${TESTS}

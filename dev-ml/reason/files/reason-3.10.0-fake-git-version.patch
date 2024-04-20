@@ -1,0 +1,10 @@
+--- a/src/refmt/dune
++++ b/src/refmt/dune
+@@ -10,5 +10,5 @@
+   (with-stdout-to
+    %{targets}
+    (progn
+-    (bash "echo let version = \\\"$(git rev-parse --verify HEAD)\\\"")
+-    (bash "echo let short_version = \\\"$(git rev-parse --short HEAD)\\\"")))))
++    (bash "echo let version = \\\"0000000000000000000000000000000000000000\\\"")
++    (bash "echo let short_version = \\\"0000000000000000000000000000000000000000\\\"")))))

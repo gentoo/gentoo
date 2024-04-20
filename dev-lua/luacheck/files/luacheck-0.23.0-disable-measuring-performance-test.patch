@@ -1,0 +1,13 @@
+--- a/spec/cli_spec.lua
++++ b/spec/cli_spec.lua
+@@ -68,10 +68,6 @@
+       assert.equal(0, get_exitcode "spec/samples/good_code.lua --no-config")
+    end)
+ 
+-   it("allows measuring performance", function()
+-      assert.equal(0, get_exitcode "spec/samples/good_code.lua --no-config --profile")
+-   end)
+-
+    it("removes ./ in the beginnings of file names", function()
+       assert.equal([[
+ Checking spec/samples/good_code.lua               OK

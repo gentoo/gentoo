@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/915208
+--- a/libxklavier/libxklavier.public
++++ b/libxklavier/libxklavier.public
+@@ -81,11 +81,10 @@ xkl_engine_set_secondary_groups_mask
+ xkl_engine_set_window_transparent
+ xkl_engine_start_listen
+ xkl_engine_state_change_get_type
+ xkl_engine_stop_listen
+ xkl_engine_ungrab_key
+-xkl_engine_VOID__FLAGS_INT_BOOLEAN
+ xkl_engine_VOID__ENUM_INT_BOOLEAN
+ xkl_get_country_name
+ xkl_get_language_name
+ xkl_get_last_error
+ xkl_restore_names_prop

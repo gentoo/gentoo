@@ -1,0 +1,45 @@
+You will need to provide a database for your drupal installation.  
+
+This assumes you have some knowledge of MySQL, and already have it
+installed and configured. If not, please refer to the Gentoo MySQL
+guide at the following URL:
+
+https://wiki.gentoo.org/wiki/MySQL/Startup_Guide
+
+Once you have a database ready all you need to do is to go to this 
+location
+
+http://${VHOST_HOSTNAME}/${VHOST_APPDIR}
+
+and provide the credentials required for the database access.
+
+If you installed into a vhost, for the above address to be accurate,
+you need to pass -h "<host>" and -d "<install dir>" into webapp_config.
+The protocol is hardcoded, so you'll have to use https:// if you're
+using an SSL / TLS connection.
+
+SECURITY NOTICE: If you use SSL on your Drupal installation, you
+should enable the PHP configuration option 'session.cookie-secure'
+to make it harder for attackers to sniff session cookies.
+
+References:
+CVE-2008-3661
+http://www.php.net/manual/en/session.configuration.php#ini.session.cookie-secure
+http://drupal.org/node/315703
+
+To run Drupal on a web server[1] other than apache, one needs to do
+some work, mostly related to adding the configuration in the .htaccess
+files to the web server config files and enabling redirection.
+For lighttpd you may want to check [2][3] and for nginx [4][5].
+
+ [1] - https://www.drupal.org/requirements/webserver
+ [2] - https://groups.drupal.org/lighttpd
+ [3] - https://www.drupal.org/node/43782
+ [4] - https://www.drupal.org/node/1030854
+ [5] - https://www.nginx.com/resources/wiki/start/topics/recipes/drupal/
+
+PHP-FPM also supports user.ini files with per-directory settings[6].
+
+ [6] - http://php.net/manual/en/configuration.file.per-user.php
+
+After that you can start to use drupal.

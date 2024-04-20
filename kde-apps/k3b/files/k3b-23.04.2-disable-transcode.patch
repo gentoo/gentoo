@@ -1,0 +1,38 @@
+From cc1e0b76f080ed95c1f6e6d66ad806427f373909 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 6 Jul 2023 13:52:04 +0200
+Subject: [PATCH] Revert "Keep transcode until a replacement is implemented."
+
+Make sure users are not presented with a completely broken option.
+
+This reverts commit f7d385a40cc062fa4db46c165f82f437dea82c58.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ libk3b/core/k3bdefaultexternalprograms.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/libk3b/core/k3bdefaultexternalprograms.cpp b/libk3b/core/k3bdefaultexternalprograms.cpp
+index e659fc1f8..2ebf88367 100644
+--- a/libk3b/core/k3bdefaultexternalprograms.cpp
++++ b/libk3b/core/k3bdefaultexternalprograms.cpp
+@@ -37,6 +37,8 @@ void K3b::addDefaultPrograms( K3b::ExternalBinManager* m )
+ // https://bugs.kde.org/show_bug.cgi?id=381131
+ void K3b::addTranscodePrograms(K3b::ExternalBinManager* m)
+ {
++    Q_UNUSED(m);
++    /* Deprecated transcode
+     static const char* const transcodeTools[] =  {"transcode",
+                                              0, // K3b 1.0 only uses the transcode binary
+                                              "tcprobe",
+@@ -48,6 +50,7 @@ void K3b::addTranscodePrograms(K3b::ExternalBinManager* m)
+ 
+     for (int i = 0; transcodeTools[i]; ++i)
+         m->addProgram(new K3b::TranscodeProgram(transcodeTools[i]));
++    */
+ }
+ 
+ 
+-- 
+2.41.0
+

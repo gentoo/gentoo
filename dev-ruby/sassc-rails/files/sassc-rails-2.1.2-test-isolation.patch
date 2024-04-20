@@ -1,0 +1,90 @@
+From d2f47f3f7d6ea382a45b87042dfebde7dfe57b9a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?V=C3=ADt=20Ondruch?= <vondruch@redhat.com>
+Date: Mon, 27 Feb 2023 16:43:07 +0100
+Subject: [PATCH] Run the test cases in isolation
+
+This is to prevent test errors in recent versions of Rails such as:
+
+~~~
+SassRailsTest#test_setup_works:
+FrozenError: can't modify frozen Array: []
+    railties (7.0.4.2) lib/rails/engine.rb:574:in `unshift'
+    railties (7.0.4.2) lib/rails/engine.rb:574:in `block in <class:Engine>'
+    railties (7.0.4.2) lib/rails/initializable.rb:32:in `instance_exec'
+    railties (7.0.4.2) lib/rails/initializable.rb:32:in `run'
+    railties (7.0.4.2) lib/rails/initializable.rb:61:in `block in run_initializers'
+    usr/share/ruby/tsort.rb:228:in `block in tsort_each'
+    usr/share/ruby/tsort.rb:350:in `block (2 levels) in each_strongly_connected_component'
+    usr/share/ruby/tsort.rb:422:in `block (2 levels) in each_strongly_connected_component_from'
+    usr/share/ruby/tsort.rb:422:in `block (2 levels) in each_strongly_connected_component_from'
+    usr/share/ruby/tsort.rb:431:in `each_strongly_connected_component_from'
+    usr/share/ruby/tsort.rb:421:in `block in each_strongly_connected_component_from'
+    railties (7.0.4.2) lib/rails/initializable.rb:50:in `each'
+    railties (7.0.4.2) lib/rails/initializable.rb:50:in `tsort_each_child'
+    usr/share/ruby/tsort.rb:415:in `call'
+    usr/share/ruby/tsort.rb:415:in `each_strongly_connected_component_from'
+    usr/share/ruby/tsort.rb:421:in `block in each_strongly_connected_component_from'
+    railties (7.0.4.2) lib/rails/initializable.rb:50:in `each'
+    railties (7.0.4.2) lib/rails/initializable.rb:50:in `tsort_each_child'
+    usr/share/ruby/tsort.rb:415:in `call'
+    usr/share/ruby/tsort.rb:415:in `each_strongly_connected_component_from'
+    usr/share/ruby/tsort.rb:349:in `block in each_strongly_connected_component'
+    usr/share/ruby/tsort.rb:347:in `each'
+    usr/share/ruby/tsort.rb:347:in `call'
+    usr/share/ruby/tsort.rb:347:in `each_strongly_connected_component'
+    usr/share/ruby/tsort.rb:226:in `tsort_each'
+    usr/share/ruby/tsort.rb:205:in `tsort_each'
+    railties (7.0.4.2) lib/rails/initializable.rb:60:in `run_initializers'
+    railties (7.0.4.2) lib/rails/application.rb:372:in `initialize!'
+    railties (7.0.4.2) lib/rails/railtie.rb:226:in `public_send'
+    railties (7.0.4.2) lib/rails/railtie.rb:226:in `method_missing'
+    builddir/build/BUILD/sassc-rails-2.1.2/usr/share/gems/gems/sassc-rails-2.1.2/test/sassc_rails_test.rb:48:in `initialize_dev!'
+    builddir/build/BUILD/sassc-rails-2.1.2/usr/share/gems/gems/sassc-rails-2.1.2/test/sassc_rails_test.rb:57:in `test_setup_works'
+    minitest (5.17.0) lib/minitest/test.rb:102:in `block (3 levels) in run'
+    minitest (5.17.0) lib/minitest/test.rb:199:in `capture_exceptions'
+    minitest (5.17.0) lib/minitest/test.rb:97:in `block (2 levels) in run'
+    minitest (5.17.0) lib/minitest.rb:296:in `time_it'
+    minitest (5.17.0) lib/minitest/test.rb:96:in `block in run'
+    minitest (5.17.0) lib/minitest.rb:391:in `on_signal'
+    minitest (5.17.0) lib/minitest/test.rb:247:in `with_info_handler'
+    minitest (5.17.0) lib/minitest/test.rb:95:in `run'
+    minitest (5.17.0) lib/minitest.rb:1051:in `run_one_method'
+    minitest (5.17.0) lib/minitest.rb:365:in `run_one_method'
+    minitest (5.17.0) lib/minitest.rb:352:in `block (2 levels) in run'
+    minitest (5.17.0) lib/minitest.rb:351:in `each'
+    minitest (5.17.0) lib/minitest.rb:351:in `block in run'
+    minitest (5.17.0) lib/minitest.rb:391:in `on_signal'
+    minitest (5.17.0) lib/minitest.rb:378:in `with_info_handler'
+    minitest (5.17.0) lib/minitest.rb:350:in `run'
+    minitest (5.17.0) lib/minitest.rb:182:in `block in __run'
+    minitest (5.17.0) lib/minitest.rb:182:in `map'
+    minitest (5.17.0) lib/minitest.rb:182:in `__run'
+    minitest (5.17.0) lib/minitest.rb:159:in `run'
+    minitest (5.17.0) lib/minitest.rb:83:in `block in autorun'
+rails test /builddir/build/BUILD/sassc-rails-2.1.2/usr/share/gems/gems/sassc-rails-2.1.2/test/sassc_rails_test.rb:56
+~~~
+
+This is caused by multiple calls to `initialize!` method and very likely
+due to this commit in Rails:
+
+https://github.com/rails/rails/commit/fe4377098b3800c3998f0583549a414b99b72b19
+---
+ test/sassc_rails_test.rb | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/test/sassc_rails_test.rb b/test/sassc_rails_test.rb
+index f8c36e4..36686cb 100644
+--- a/test/sassc_rails_test.rb
++++ b/test/sassc_rails_test.rb
+@@ -1,8 +1,11 @@
+ # frozen_string_literal: true
+ 
+ require "test_helper"
++require 'active_support/testing/isolation'
+ 
+ class SassRailsTest < MiniTest::Test
++  include ActiveSupport::Testing::Isolation
++
+   attr_reader :app
+   attr_reader :test_dir
+ 

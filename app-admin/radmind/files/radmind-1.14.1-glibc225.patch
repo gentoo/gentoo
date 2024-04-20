@@ -1,0 +1,22 @@
+diff -ruN radmind-1.14.1.orig/transcript.c radmind-1.14.1/transcript.c
+--- radmind-1.14.1.orig/transcript.c	2010-12-13 04:42:49.000000000 +0100
++++ radmind-1.14.1/transcript.c	2017-10-20 23:07:47.126110238 +0200
+@@ -6,6 +6,7 @@
+ #include "config.h"
+ 
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <sys/param.h>
+ #ifdef sun
+ #include <sys/mkdev.h>
+diff -ruN radmind-1.14.1.orig/update.c radmind-1.14.1/update.c
+--- radmind-1.14.1.orig/update.c	2010-12-13 04:42:49.000000000 +0100
++++ radmind-1.14.1/update.c	2017-10-20 23:07:29.173898776 +0200
+@@ -6,6 +6,7 @@
+ #include "config.h"
+ 
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <sys/stat.h>
+ #include <sys/param.h>
+ #ifdef sun

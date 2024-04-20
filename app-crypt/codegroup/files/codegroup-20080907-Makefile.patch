@@ -1,0 +1,19 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,5 @@
+  
+ PROGS = codegroup
+-CFLAGS = -O -Wall
+ PAGER = more
+ 
+ all:	$(PROGS)
+@@ -8,9 +7,6 @@
+ clean:
+ 	rm -f $(PROGS) *.o *.bak *.zip core code.* *.out
+ 
+-codegroup: codegroup.o
+-	$(CC) codegroup.o -o codegroup $(CFLAGS)
+-
+ #   Create zipped archive
+ 
+ RELFILES = Makefile codegroup.1 codegroup.c \

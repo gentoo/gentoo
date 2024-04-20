@@ -1,0 +1,8 @@
+https://bugs.gentoo.org/874501
+--- a/getdate.c
++++ b/getdate.c
+@@ -250,3 +250,3 @@
+ 
+-main (int argc, char *argv[])
++int main (int argc, char *argv[])
+ {

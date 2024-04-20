@@ -1,0 +1,32 @@
+From: Takahide Nojima <nozzy123nozzy@gmail.com>
+Date: Mon, 6 Jan 2020 02:01:42 +0900
+Subject: fixed-stack-smash
+
+Fix stack overflow in engine.c.
+It has 2 overflows.
+  -The 'linebuf' have 4096 bytes,but '\0' puts in 4097th.
+  -The last argument of g_io_channel_read should be
+   'unsigned long' not 'int'.
+
+See https://bugs.debian.org/948527
+---
+ src/engine.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/engine.c b/src/engine.c
+index 1b733fb..6ad3b9a 100644
+--- a/src/engine.c
++++ b/src/engine.c
+@@ -345,10 +345,10 @@ static gboolean process_line ()
+ 
+ static gboolean channel_process_input ()
+ {
+-	static char linebuf[4096];
++	static char linebuf[4096+1];
+ 	char *linep = linebuf;
+ 	char *line;
+-	int bytes_read;
++	gsize bytes_read;
+ #if GLIB_MAJOR_VERSION > 1
+ 	// we need to call this again because we will get new events before returning
+ 	// from this function

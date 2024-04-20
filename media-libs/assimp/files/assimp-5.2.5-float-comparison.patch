@@ -1,0 +1,84 @@
+diff --git a/include/assimp/matrix3x3.inl b/include/assimp/matrix3x3.inl
+index 99d9197..0ffa433 100644
+--- a/include/assimp/matrix3x3.inl
++++ b/include/assimp/matrix3x3.inl
+@@ -140,9 +140,7 @@ const TReal* aiMatrix3x3t<TReal>::operator[] (unsigned int p_iIndex) const {
+ template <typename TReal>
+ AI_FORCE_INLINE
+ bool aiMatrix3x3t<TReal>::operator== (const aiMatrix3x3t<TReal>& m) const {
+-    return a1 == m.a1 && a2 == m.a2 && a3 == m.a3 &&
+-           b1 == m.b1 && b2 == m.b2 && b3 == m.b3 &&
+-           c1 == m.c1 && c2 == m.c2 && c3 == m.c3;
++    return this->Equal(m);
+ }
+ 
+ // ------------------------------------------------------------------------------------------------
+diff --git a/include/assimp/matrix4x4.inl b/include/assimp/matrix4x4.inl
+index 54d176d..0d9da5d 100644
+--- a/include/assimp/matrix4x4.inl
++++ b/include/assimp/matrix4x4.inl
+@@ -328,10 +328,7 @@ const TReal* aiMatrix4x4t<TReal>::operator[](unsigned int p_iIndex) const {
+ template <typename TReal>
+ AI_FORCE_INLINE
+ bool aiMatrix4x4t<TReal>::operator== (const aiMatrix4x4t<TReal>& m) const {
+-    return (a1 == m.a1 && a2 == m.a2 && a3 == m.a3 && a4 == m.a4 &&
+-            b1 == m.b1 && b2 == m.b2 && b3 == m.b3 && b4 == m.b4 &&
+-            c1 == m.c1 && c2 == m.c2 && c3 == m.c3 && c4 == m.c4 &&
+-            d1 == m.d1 && d2 == m.d2 && d3 == m.d3 && d4 == m.d4);
++    return this->Equal(m);
+ }
+ 
+ // ----------------------------------------------------------------------------------------
+diff --git a/include/assimp/quaternion.inl b/include/assimp/quaternion.inl
+index 960e91a..d6bcbe7 100644
+--- a/include/assimp/quaternion.inl
++++ b/include/assimp/quaternion.inl
+@@ -73,7 +73,7 @@ aiQuaterniont<TReal> operator * (const aiMatrix4x4t<TReal>& pMatrix, const aiQua
+ template<typename TReal>
+ bool aiQuaterniont<TReal>::operator== (const aiQuaterniont& o) const
+ {
+-    return x == o.x && y == o.y && z == o.z && w == o.w;
++    return this->Equal(o);
+ }
+ 
+ // ---------------------------------------------------------------------------
+diff --git a/include/assimp/vector2.inl b/include/assimp/vector2.inl
+index 245eb31..cd057fe 100644
+--- a/include/assimp/vector2.inl
++++ b/include/assimp/vector2.inl
+@@ -144,14 +144,14 @@ TReal aiVector2t<TReal>::operator[](unsigned int i) const {
+ template <typename TReal>
+ inline
+ bool aiVector2t<TReal>::operator== (const aiVector2t& other) const {
+-    return x == other.x && y == other.y;
++    return this->Equal(other);
+ }
+ 
+ // ------------------------------------------------------------------------------------------------
+ template <typename TReal>
+ inline
+ bool aiVector2t<TReal>::operator!= (const aiVector2t& other) const {
+-    return x != other.x || y != other.y;
++    return !(*this == other);
+ }
+ 
+ // ---------------------------------------------------------------------------
+diff --git a/include/assimp/vector3.inl b/include/assimp/vector3.inl
+index 28ca2be..daa63e8 100644
+--- a/include/assimp/vector3.inl
++++ b/include/assimp/vector3.inl
+@@ -198,12 +198,12 @@ AI_FORCE_INLINE TReal& aiVector3t<TReal>::operator[](unsigned int i) {
+ // ------------------------------------------------------------------------------------------------
+ template <typename TReal>
+ AI_FORCE_INLINE bool aiVector3t<TReal>::operator== (const aiVector3t<TReal>& other) const {
+-    return x == other.x && y == other.y && z == other.z;
++    return this->Equal(other);
+ }
+ // ------------------------------------------------------------------------------------------------
+ template <typename TReal>
+ AI_FORCE_INLINE bool aiVector3t<TReal>::operator!= (const aiVector3t<TReal>& other) const {
+-    return x != other.x || y != other.y || z != other.z;
++    return !(*this == other);
+ }
+ // ---------------------------------------------------------------------------
+ template<typename TReal>

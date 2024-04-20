@@ -1,0 +1,11 @@
+--- a/configure.in
++++ b/configure.in
+@@ -689,7 +689,7 @@
+    fi
+ fi
+ 
+-AM_CONDITIONAL(XGNOKII, test "x$_support" = "xyes")
++AM_CONDITIONAL(XGNOKII, test "x$x_support" = "xyes")
+ 
+ dnl ======================== Check for libsocket
+ AC_CHECK_LIB(socket, socket)

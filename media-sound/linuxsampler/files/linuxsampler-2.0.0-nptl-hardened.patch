@@ -1,0 +1,15 @@
+Fix breakage caused by undefined behaviour. Using PTHREAD_CANCEL_ASYNCHRONOUS
+is only allowed in pure functions.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=537516
+
+--- linuxsampler-2.0.0/m4/nptl_bug.m4
++++ linuxsampler-2.0.0/m4/nptl_bug.m4
+@@ -47,7 +47,7 @@
+ void* __pthread_launcher(void* p) {
+     // let the thread be killable under any circumstances
+     // (without this function call, this test always succeeds !)
+-    pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, NULL);
++    pthread_setcanceltype(PTHREAD_CANCEL_DEFERRED, NULL);
+ 
+     // this will block this 2nd thread, since we already
+     // locked this mutex by the main thread

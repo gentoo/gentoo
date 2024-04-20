@@ -1,0 +1,27 @@
+From 27f3d4cf2a92a91c078e54d9e67af441df140edc Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sat, 31 Dec 2022 22:08:11 -0500
+Subject: [PATCH 1/1] Makefile.in: fix underlinking of liboutput.
+
+This library uses cairo/pango, and needs to be linked with $CAIRO_LIBS
+when using --as-needed and a linker that knows what it's doing.
+---
+ Makefile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index d836b65..217798c 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -1837,7 +1837,7 @@ am_src_math_libpspp_math_la_OBJECTS = src/math/chart-geometry.lo \
+ 	src/math/wilcoxon-sig.lo
+ src_math_libpspp_math_la_OBJECTS =  \
+ 	$(am_src_math_libpspp_math_la_OBJECTS)
+-src_output_liboutput_la_LIBADD =
++src_output_liboutput_la_LIBADD = $(CAIRO_LIBS)
+ am_src_output_liboutput_la_OBJECTS = src/output/liboutput_la-ascii.lo \
+ 	src/output/liboutput_la-cairo-chart.lo \
+ 	src/output/liboutput_la-cairo-fsm.lo \
+-- 
+2.38.2
+

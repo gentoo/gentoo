@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>robbat2@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>sysadmin@gentoo.org</email>
+		<name>Gentoo Sysadmin Project</name>
+	</maintainer>
+	<use>
+		<flag name="pam">Build PAM module for pluggable login authentication for OATH</flag>
+	</use>
+	<upstream>
+		<remote-id type="gitlab">oath-toolkit/oath-toolkit</remote-id>
+		<remote-id type="savannah-nongnu">oath-toolkit</remote-id>
+	</upstream>
+</pkgmetadata>

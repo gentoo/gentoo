@@ -1,0 +1,22 @@
+--- a/main.c
++++ b/main.c
+@@ -12,6 +12,9 @@
+ 
+ #include <siphon.h>
+ 
++char *device, *logfile;
++int verbose, back;
++
+ void usage (char *);
+ void title(void);
+ 
+--- a/siphon.h
++++ b/siphon.h
+@@ -51,5 +51,5 @@
+ void *parse (void *);
+ void *siphon_log(void *);
+ 
+-char *device, *logfile;
+-int verbose, back;
++extern char *device, *logfile;
++extern int verbose, back;

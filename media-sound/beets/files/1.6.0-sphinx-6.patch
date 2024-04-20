@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/889460
+https://github.com/beetbox/beets/commit/2106f471affd1dab35b4b26187b9c74d034528c5
+
+From 2106f471affd1dab35b4b26187b9c74d034528c5 Mon Sep 17 00:00:00 2001
+From: Jack Wilsdon <jack.wilsdon@gmail.com>
+Date: Sat, 31 Dec 2022 14:23:34 +0000
+Subject: [PATCH] Add missing placeholders to extlinks captions
+
+Sphinx 6.0.0 changed extlinks to always require placeholders in link
+captions. See https://github.com/sphinx-doc/sphinx/commit/93cf1a57d916a1ff96c8e8a0356d0256e40489ac
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -18,10 +18,10 @@
+ 
+ # External links to the bug tracker and other sites.
+ extlinks = {
+-    'bug': ('https://github.com/beetbox/beets/issues/%s', '#'),
+-    'user': ('https://github.com/%s', ''),
+-    'pypi': ('https://pypi.org/project/%s/', ''),
+-    'stdlib': ('https://docs.python.org/3/library/%s.html', ''),
++    'bug': ('https://github.com/beetbox/beets/issues/%s', '#%s'),
++    'user': ('https://github.com/%s', '%s'),
++    'pypi': ('https://pypi.org/project/%s/', '%s'),
++    'stdlib': ('https://docs.python.org/3/library/%s.html', '%s'),
+ }
+ 
+ linkcheck_ignore = [
+

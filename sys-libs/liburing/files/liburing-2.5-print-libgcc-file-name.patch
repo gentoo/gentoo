@@ -1,0 +1,43 @@
+From https://github.com/axboe/liburing/commit/09b8ded9686f33f1044ad8c612f2281b865cd314 Mon Sep 17 00:00:00 2001
+From: Violet Purcell <vimproved@inventati.org>
+Date: Sat, 16 Dec 2023 16:17:09 -0500
+Subject: [PATCH] Link against libgcc based on output of
+ -print-libgcc-file-name
+
+GCC and clang have the -print-libgcc-file-name option to automatically
+print out the correct compiler runtime library to link to. This can be
+helpful in case the runtime library is named something other than libgcc
+(i.e. on a system where only LLVM's compiler-rt is used), or if libgcc
+is in a non-standard directory. If the option fails for whatever reason,
+fall back to using "-lgcc".
+
+Signed-off-by: Violet Purcell <vimproved@inventati.org>
+--- a/configure
++++ b/configure
+@@ -202,6 +202,15 @@ print_and_output_mak "relativelibdir" "$relativelibdir"
+ print_and_output_mak "mandir" "$mandir"
+ print_and_output_mak "datadir" "$datadir"
+ 
++####################################################
++# Check for correct compiler runtime library to link with
++libgcc_link_flag="-lgcc"
++if $cc -print-libgcc-file-name >/dev/null 2>&1; then
++  libgcc_link_flag="$($cc $CFLAGS $LDFLAGS -print-libgcc-file-name)"
++fi
++print_and_output_mak "libgcc_link_flag" "$libgcc_link_flag"
++####################################################
++
+ ##########################################
+ # check for compiler -Wstringop-overflow
+ stringop_overflow="no"
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -47,7 +47,7 @@ ifeq ($(CONFIG_NOLIBC),y)
+ 	liburing_srcs += nolibc.c
+ 	override CFLAGS += -nostdlib -nodefaultlibs -ffreestanding -fno-builtin -fno-stack-protector
+ 	override CPPFLAGS += -nostdlib -nodefaultlibs -ffreestanding -fno-builtin -fno-stack-protector
+-	override LINK_FLAGS += -nostdlib -nodefaultlibs -lgcc
++	override LINK_FLAGS += -nostdlib -nodefaultlibs $(libgcc_link_flag)
+ endif
+ 
+ override CPPFLAGS += -MT "$@" -MMD -MP -MF "$@.d"

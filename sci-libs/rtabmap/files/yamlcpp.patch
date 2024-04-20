@@ -1,0 +1,21 @@
+Index: rtabmap-0.20.13-rolling/tools/EurocDataset/CMakeLists.txt
+===================================================================
+--- rtabmap-0.20.13-rolling.orig/tools/EurocDataset/CMakeLists.txt
++++ rtabmap-0.20.13-rolling/tools/EurocDataset/CMakeLists.txt
+@@ -1,8 +1,5 @@
+ cmake_minimum_required(VERSION 2.8)
+ 
+-FIND_PACKAGE(yaml-cpp QUIET)
+-
+-IF(NOT yaml-cpp_FOUND)
+    find_package(PkgConfig QUIET)
+    IF(PKG_CONFIG_FOUND)
+       pkg_check_modules(yaml_cpp QUIET yaml-cpp)
+@@ -12,7 +9,6 @@ IF(NOT yaml-cpp_FOUND)
+          SET(yaml-cpp_FOUND ${yaml_cpp_FOUND})
+ 	  ENDIF(yaml_cpp_FOUND)
+    ENDIF(PKG_CONFIG_FOUND)
+-ENDIF(NOT yaml-cpp_FOUND)
+ 
+ IF(yaml-cpp_FOUND)
+ 

@@ -1,0 +1,52 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,32 +1,35 @@
+ # Makefile for tcpsound
+ 
+-prefix     = /usr/local
++prefix     = $(DESTDIR)/usr
+ 
+ bindir     = $(prefix)/bin
+-wavdir     = $(prefix)/share/sounds
++wavdir     = $(prefix)/share/tcpsound
+ includedir = $(prefix)/include
+ libdir     = $(prefix)/lib
+-mandir     = $(prefix)/man
++mandir     = $(prefix)/share/man/man1
+ MAN        = tcpsound.1
+ MANGZ      = $(MAN:.1=.1.gz)
+-MKTOOL     = ./mktool
+-CFLAGS     = -c -v -g -W1 -I$(includedir) -L$(libdir) -lSDL -lmba -lpthread
+-CC         = $(MKTOOL)
++MKTOOL     = install
++CFLAGS     += -I$(includedir) 
++LIBS	    = -lSDL -lmba -lpthread
+ 
+ .SUFFIXES: .1 .1.gz
+ 
+-tcpsound: mktool src/tcpsound.c src/sound.h src/sound.c src/parse.h src/parse.c
+-	@$(CC) $(CFLAGS) src/sound.c src/parse.c src/tcpsound.c -o tcpsound
+-play: mktool src/play.c
+-	@$(CC) $(CFLAGS) src/play.c -o play
++tcpsound: src/tcpsound.c src/sound.h src/sound.c src/parse.h src/parse.c
++	$(CC) $(LDFLAGS) $(CFLAGS) src/sound.c src/parse.c src/tcpsound.c -o tcpsound $(LIBS)
++play: src/play.c
++	$(CC) $(LDFLAGS) $(CFLAGS) src/play.c -o play $(LIBS)
+ 
+ mktool:
+ 	cc -g -o mktool mktool.c
+ 
+-install: mktool
+-	$(MKTOOL) -i -m 0755 tcpsound $(bindir)
+-	$(MKTOOL) -i wavs/*.wav $(wavdir)
+-	-$(MKTOOL) -i docs/man/*.1.gz $(mandir)/man1
++install: tcpsound
++	$(MKTOOL) -d $(bindir)
++	$(MKTOOL) -d $(wavdir)
++	$(MKTOOL) -d $(mandir)
++	$(MKTOOL) -m 0755 tcpsound $(bindir)
++	$(MKTOOL) -m 0644 wavs/*.wav $(wavdir)
++	-$(MKTOOL) -m 0644 docs/man/tcpsound.1.gz $(mandir)
+ 	@echo
+ 	@echo installation successful
+ uninstall: mktool

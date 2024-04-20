@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/855011
+
+diff -ruN a/src/Scrollbar.c b/src/Scrollbar.c
+--- a/src/Scrollbar.c
++++ b/src/Scrollbar.c
+@@ -1364,12 +1364,6 @@
+       INFMESSAGE(returning due to LookAhead) ENDMESSAGE(NotifyThumb)
+       return;
+    }
+-    /*
+-       thumbProc is not pretty, but is necessary for backwards
+-       compatibility on those architectures for which it work{s,ed};
+-       the intent is to pass a (truncated) float by value.
+-    */
+-   XtCallCallbacks (w, XtNthumbProc, *(XtPointer*)&TOP);
+    XtCallCallbacks (w, XtNjumpProc, (XtPointer)&TOP);
+    ENDMESSAGE(NotifyThumb)
+ }

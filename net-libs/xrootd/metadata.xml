@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-physics@gentoo.org</email>
+    <name>Gentoo Physics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  XROOTD software framework is a fully generic suite for fast, low latency
+  and scalable data access, which can serve natively any kind of data,
+  organized as a hierarchical filesystem-like namespace, based on the
+  concept of directory.
+  It is usually used with <pkg>sci-physics/root</pkg> and its PROOF
+  facilities for cluster computing in high energy physics.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">xrootd/xrootd</remote-id>
+  </upstream>
+  <use>
+    <flag name="ceph">Enable suport for <pkg>sys-cluster/ceph</pkg> (XrdCeph plugin)</flag>
+    <flag name="fuse">Enable the <pkg>sys-fs/fuse</pkg> filesystem driver</flag>
+    <flag name="http">Enable http protocol support</flag>
+    <flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> for XML parsing (preferred) instead of bundled tinyxml</flag>
+    <flag name="macaroons">Enable support for macaroons with <pkg>dev-libs/libmacaroons</pkg></flag>
+    <flag name="scitokens">Enable support for scitokens with <pkg>dev-cpp/scitokens-cpp</pkg></flag>
+    <flag name="server">Install xrootd server and related plug-ins</flag>
+    <flag name="xrdec">Enable erasure coding support (XrdEc plugin) with <pkg>dev-libs/isa-l</pkg></flag>
+  </use>
+</pkgmetadata>

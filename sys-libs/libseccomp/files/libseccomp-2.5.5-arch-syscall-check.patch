@@ -1,0 +1,45 @@
+From 744c9a897b74ad66d065791593e25a05e4b6f6a1 Mon Sep 17 00:00:00 2001
+From: Michal Privoznik <mprivozn@redhat.com>
+Date: Tue, 1 Nov 2022 11:59:51 +0100
+Subject: [PATCH] src: Make arch-syscall-check work in VPATH build
+
+The aim of arch-syscall-check test is to check for syscalls
+missing implementation. It does so by comparing two files:
+
+  1) src/syscalls.csv
+  2) include/seccomp-syscalls.h
+
+However, due to use of relative paths these files are not found
+when doing a VPATH build. But, we can re-use an idea from GNU
+coreutils and get an absolute path to the source dir. All that's
+needed then is to prefix those two paths with the source dir
+path.
+
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+Acked-by: Tom Hromatka <tom.hromatka@oracle.com>
+Signed-off-by: Paul Moore <paul@paul-moore.com>
+---
+ src/arch-syscall-check | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/arch-syscall-check b/src/arch-syscall-check
+index ae67daa..9c7fd41 100755
+--- a/src/arch-syscall-check
++++ b/src/arch-syscall-check
+@@ -22,8 +22,11 @@
+ # along with this library; if not, see <http://www.gnu.org/licenses>.
+ #
+ 
+-SYSCALL_CSV="./syscalls.csv"
+-SYSCALL_HDR="../include/seccomp-syscalls.h"
++# Based on an idea from GNU coreutils
++abs_topsrcdir="$(unset CDPATH; cd $(dirname $0)/.. && pwd)"
++
++SYSCALL_CSV="$abs_topsrcdir/src/syscalls.csv"
++SYSCALL_HDR="$abs_topsrcdir/include/seccomp-syscalls.h"
+ 
+ function check_snr() {
+ 	(export LC_ALL=C; diff \
+-- 
+2.44.0
+

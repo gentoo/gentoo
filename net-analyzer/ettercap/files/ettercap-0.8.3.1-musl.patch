@@ -1,0 +1,39 @@
+Upsream-PR: https://github.com/Ettercap/ettercap/pull/1220
+Uptream-Commit: https://github.com/Ettercap/ettercap/commit/f03a1174ffccf9343423498fa3c65bd9090d4ce0
+Bug: https://bugs.gentoo.org/897820
+
+From 3ef51159d4e2cea97accb87af08943333fbefb04 Mon Sep 17 00:00:00 2001
+From: Gianfranco Costamagna <costamagnagianfranco@yahoo.it>
+Date: Fri, 3 Mar 2023 21:27:14 +0100
+Subject: [PATCH] Define _GNU_SOURCE to make sure memmem is found when musl
+ library is used. This fixes issue: #1219
+
+Thanks Sam James for the suggestion!
+---
+ include/ec.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/include/ec.h b/include/ec.h
+index fbf048111..561062c2f 100644
+--- a/include/ec.h
++++ b/include/ec.h
+@@ -21,6 +21,9 @@
+ #if !defined (__USE_GNU)   /* for memmem(), strsignal(), etc etc... */
+    #define __USE_GNU
+ #endif
++#if !defined (_GNU_SOURCE) /* for memmem(), strsignal(), etc etc... on musl */
++   #define _GNU_SOURCE
++#endif
+ #ifdef OS_SOLARIS
+    #define _REENTRANT      /* for strtok_r() */
+ #endif
+@@ -28,6 +31,9 @@
+ #if defined (__USE_GNU)
+    #undef __USE_GNU
+ #endif
++#if defined (_GNU_SOURCE)
++   #undef _GNU_SOURCE
++#endif
+ #include <strings.h>
+ #include <unistd.h>
+ #include <time.h>

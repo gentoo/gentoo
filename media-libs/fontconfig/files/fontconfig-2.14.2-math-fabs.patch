@@ -1,0 +1,42 @@
+https://gitlab.freedesktop.org/fontconfig/fontconfig/-/merge_requests/309
+
+From 81d410310ffee8761819e72151ec25efde2f5b24 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 14 Feb 2024 18:12:46 +0000
+Subject: [PATCH] meson: detect-and-use `-lm` for `fabs` in fcmatch
+
+We had a bug report in Gentoo of a sparc64 build failure with -O0:
+```
+FAILED: src/libfontconfig.so.1.13.0
+sparc64-unknown-linux-gnu-gcc  -o src/libfontconfig.so.1.13.0 src/libfontconfig.so.1.13.0.p/fcatomic.c.o src/libfontconfig.so.1.13.0.p/fccache.c.o src/libfontconfig.so.1.13.0.p/fccfg.c.o src/libfontconfig.so.1.13.0.p/fccharset.c.o src/libfontconfig.so.1.13.0.p/fccompat.c.o src/libfontconfig.so.1.13.0.p/fcdbg.c.o src/libfontconfig.so.1.13.0.p/fcdefault.c.o src/libfontconfig.so.1.13.0.p/fcdir.c.o src/libfontconfig.so.1.13.0.p/fcformat.c.o src/libfontconfig.so.1.13.0.p/fcfreetype.c.o src/libfontconfig.so.1.13.0.p/fcfs.c.o src/libfontconfig.so.1.13.0.p/fcptrlist.c.o src/libfontconfig.so.1.13.0.p/fchash.c.o src/libfontconfig.so.1.13.0.p/fcinit.c.o src/libfontconfig.so.1.13.0.p/fclang.c.o src/libfontconfig.so.1.13.0.p/fclist.c.o src/libfontconfig.so.1.13.0.p/fcmatch.c.o src/libfontconfig.so.1.13.0.p/fcmatrix.c.o src/libfontconfig.so.1.13.0.p/fcname.c.o src/libfontconfig.so.1.13.0.p/fcobjs.c.o src/libfontconfig.so.1.13.0.p/fcpat.c.o src/libfontconfig.so.1.13.0.p/fcrange.c.o src/libfontconfig.so.1.13.0.p/fcserialize.c.o src/libfontconfig.so.1.13.0.p/fcstat.c.o src/libfontconfig.so.1.13.0.p/fcstr.c.o src/libfontconfig.so.1.13.0.p/fcweight.c.o src/libfontconfig.so.1.13.0.p/fcxml.c.o src/libfontconfig.so.1.13.0.p/ftglue.c.o -Wl,--as-needed -Wl,--no-undefined -shared -fPIC -Wl,--start-group -Wl,-soname,libfontconfig.so.1 -m64 -g -O0 -mno-app-regs -mcpu=ultrasparc -mtune=ultrasparc -mno-vis -mno-vis2 -mno-vis3 -mno-vis4 -mno-vis4b -mno-cbcond -mno-fmaf -mno-fsmuld -mno-popc -mno-subxc -fno-builtin -fno-fast-math -Wl,-O1 -Wl,--as-needed -Wl,--no-keep-memory /usr/lib64/libfreetype.so /usr/lib64/libexpat.so -Wl,--end-group -pthread
+/usr/lib/gcc/sparc64-unknown-linux-gnu/12/../../../../sparc64-unknown-linux-gnu/bin/ld: src/libfontconfig.so.1.13.0.p/fcmatch.c.o: in function `FcCompareRange':
+/var/tmp/portage/media-libs/fontconfig-2.14.2-r3/work/fontconfig-2.14.2-.sparc64/../fontconfig-2.14.2/src/fcmatch.c:220: undefined reference to `fabs'
+```
+
+Ask Meson to detect `-lm` and add the missing `-lm` for `fabs` usage.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/meson.build
++++ b/meson.build
+@@ -23,7 +23,7 @@ freetype_req = '>= 21.0.15'
+ freetype_req_cmake = '>= 2.8.1'
+ 
+ cc = meson.get_compiler('c')
+-
++math_dep = cc.find_library('m', required: false)
+ 
+ freetype_dep = dependency('freetype2', method: 'pkg-config', version: freetype_req, required: false)
+ 
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -65,7 +65,7 @@ libfontconfig = library('fontconfig',
+   fc_sources, alias_headers, ft_alias_headers, fclang_h, fccase_h, fcobjshash_h,
+   c_args: c_args + fc_extra_c_args,
+   include_directories: incbase,
+-  dependencies: deps,
++  dependencies: [deps, math_dep],
+   install: true,
+   soversion: soversion,
+   version: libversion,
+-- 
+GitLab

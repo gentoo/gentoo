@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/918974
+https://src.fedoraproject.org/rpms/schedtool/c/f84b6a0fdc4b368e2b1c5ea59739f002063e3c9e?branch=rawhide
+
+Invoke decode_error separately with the correct argument types for
+each variant.  This avoids an int-conversion error.
+
+--- a/schedtool.c
++++ b/schedtool.c
+@@ -422,19 +422,14 @@ int set_process(pid_t pid, int policy, int prio)
+ 	struct sched_param p;
+ 	int ret;
+ 
+-	char *msg1="could not set PID %d to %s";
+-	char *msg2="could not set PID %d to raw policy #%d";
+-
+ 	p.sched_priority=prio;
+ 
+ 	/* anything other than 0 indicates error */
+ 	if((ret=sched_setscheduler(pid, policy, &p))) {
+-
+-                /* la la pointer mismatch .. lala */
+-		decode_error((CHECK_RANGE_POLICY(policy) ? msg1 : msg2),
+-			     pid,
+-			     (CHECK_RANGE_POLICY(policy) ? TAB[policy] : policy)
+-			    );
++		if (CHECK_RANGE_POLICY(policy))
++			decode_error("could not set PID %d to %s", pid, TAB[policy]);
++		else
++			decode_error("could not set PID %d to raw policy #%d", pid, policy);
+ 		return(ret);
+ 	}
+ 	return(0);
+

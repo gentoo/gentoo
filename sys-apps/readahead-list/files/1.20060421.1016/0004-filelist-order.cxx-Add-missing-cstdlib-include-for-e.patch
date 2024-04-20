@@ -1,0 +1,22 @@
+https://github.com/robbat2/readahead-list/pull/1
+
+From f0f32adfb4eaf26e33fc1655a22a529961257db9 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 25 Dec 2022 20:38:01 +0000
+Subject: [PATCH 4/6] filelist-order.cxx: Add missing <cstdlib> include for
+ exit()
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/src/filelist-order.cxx
++++ b/src/filelist-order.cxx
+@@ -17,6 +17,7 @@
+ 
+ #include <../config.h>
+ 
++#include <cstdlib>
+ #include <map>
+ #include <set>
+ #include <iostream>
+-- 
+2.39.0
+

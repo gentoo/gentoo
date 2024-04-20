@@ -1,0 +1,15 @@
+Fix build
+
+https://bugs.gentoo.org/912853
+
+--- a/ext/libclementine-tagreader/CMakeLists.txt
++++ b/ext/libclementine-tagreader/CMakeLists.txt
+@@ -37,7 +37,7 @@ add_library(libclementine-tagreader STATIC
+ )
+ 
+ target_link_libraries(libclementine-tagreader
+-  ${PROTOBUF_LIBRARY}
+   libclementine-common
++  ${PROTOBUF_LIBRARY} ${GENTOO_FIX_ABSL_LIBS}
+ )
+ 

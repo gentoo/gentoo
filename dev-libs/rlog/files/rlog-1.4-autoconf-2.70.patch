@@ -1,0 +1,160 @@
+--- rlog-1.4/configure.ac
++++ rlog-1.4/configure.ac
+@@ -64,15 +64,15 @@
+ ACX_PTHREAD
+ 
+ AC_ARG_ENABLE(printffp,
+-    AS_HELP_STRING([--disable-printffp],
+-	    [disables printf attribute on function pointers]),
+-    with_printffp=$enableval,with_printffp="test")
++    [AS_HELP_STRING([--disable-printffp],
++	    [disables printf attribute on function pointers])],
++    [with_printffp=$enableval], [with_printffp="test"])
+ 
+-if test "x$with_printffp" = "xtest"; then
++AS_IF([test "x$with_printffp" = "xtest"], [
+ 
+     # check if we can use printf attribute on a function..
+     AC_MSG_CHECKING(if __printf__ attribute can apply to function pointers)
+-    AC_COMPILE_IFELSE( [[
++    AC_COMPILE_IFELSE([
+ 	    void testfunc(const char *format, ...)
+ 	    { }
+ 	    void (*funcProto)(const char *, ...) 
+@@ -85,28 +85,28 @@
+ 
+ 		return 0;
+ 	    }
+-	 ]],
++	 ], [
+ 	with_printffp="yes",
+-	with_printffp="no")
++	with_printffp="no"])
+ 
+     AC_MSG_RESULT($with_printffp)
+-fi
++])
+ 
+-if test "x$with_printffp" = "xyes"; then
++AS_IF([test "x$with_printffp" = "xyes"], [
+     HAVE_PRINTF_FP_PROTOTYPE="1"
+-else
++], [
+     HAVE_PRINTF_FP_PROTOTYPE="0"
+-fi
++])
+ AC_SUBST(HAVE_PRINTF_FP_PROTOTYPE)
+ 
+ AC_ARG_ENABLE(vararg,
+-    AS_HELP_STRING([--disable-vararg],
+-	    [don't use vararg macros even if the compiler supports them]),
+-    enable_vararg=$enableval)
+-if test "x$enable_vararg" != "xno"; then
++    [AS_HELP_STRING([--disable-vararg],
++	    [don't use vararg macros even if the compiler supports them])],
++    [enable_vararg=$enableval])
++AS_IF([test "x$enable_vararg" != "xno"], [
+     # check if the compiler understands __VA_ARGS__ 
+ AC_MSG_CHECKING(if compiler has C99 variadac macro)
+-AC_COMPILE_IFELSE( [[
++AC_COMPILE_IFELSE([
+ #include <stdio.h>
+ 
+ #define PRINT(FMT, ...) printf( FMT, __VA_ARGS__ )
+@@ -115,7 +115,7 @@
+ {
+     PRINT("hello %s", "world");
+     return 0;
+-} ]], [C99_VARIADAC_MACROS="1" 
++} ], [C99_VARIADAC_MACROS="1" 
+        AC_MSG_RESULT(yes)], 
+     [C99_VARIADAC_MACROS="0"
+      AC_MSG_RESULT(no)])
+@@ -123,7 +123,7 @@
+ 
+ # check if the compiler understands pre-c99 variadac macros
+ AC_MSG_CHECKING(if compiler has pre-C99 variadac macro)
+-AC_COMPILE_IFELSE( [[
++AC_COMPILE_IFELSE([
+ #include <stdio.h>
+ 
+ #define PRINT(FMT, ARGS...) printf( FMT, ##ARGS )
+@@ -132,15 +132,15 @@
+ {
+     PRINT("hello %s", "world");
+     return 0;
+-} ]], [PREC99_VARIADAC_MACROS="1" 
++} ], [PREC99_VARIADAC_MACROS="1" 
+        AC_MSG_RESULT(yes)], 
+     [PREC99_VARIADAC_MACROS="0"
+      AC_MSG_RESULT(no)])
+-else
++], [
+ dnl vararg support disabled
+     C99_VARIADAC_MACROS=0
+     PREC99_VARIADAC_MACROS=0
+-fi # enable_vararg
++]) # enable_vararg
+ 
+ AC_SUBST(C99_VARIADAC_MACROS)
+ AC_SUBST(PREC99_VARIADAC_MACROS)
+@@ -148,42 +148,42 @@
+ 
+ # check if the computer has hardware cycle counter
+ AC_ARG_ENABLE(rdtsc,
+-    AS_HELP_STRING([--enable-rdtsc],
+-	    [use rdtsc for benchmarking rlog in test programs]),
+-    with_rdtsc=$enableval,with_rdtsc="no")
+-if test "x$with_rdtsc" = "xyes"; then
++    [AS_HELP_STRING([--enable-rdtsc],
++	    [use rdtsc for benchmarking rlog in test programs])],
++    [with_rdtsc=$enableval], [with_rdtsc="no"])
++AS_IF([test "x$with_rdtsc" = "xyes"], [
+     AC_DEFINE([USE_RDTSC], [1], [Define to use RDTSC calls for benchmark test])
+-else
++], [
+     AC_DEFINE([USE_RDTSC], [0], [Define to use RDTSC calls for benchmark test])
+-fi
++])
+ 
+ AC_ARG_ENABLE(valgrind,
+-    AS_HELP_STRING([--disable-valgrind],
+-		   [disables valgrind support code.]),
+-    with_valgrind=$enableval, with_valgrind="yes" )
++    [AS_HELP_STRING([--disable-valgrind],
++		   [disables valgrind support code.])],
++    [with_valgrind=$enableval], [with_valgrind="yes"])
+ USE_VALGRIND="0"
+-if test "x$with_valgrind" = "xyes"; then
+-    AC_CHECK_HEADER([valgrind/valgrind.h],
++AS_IF([test "x$with_valgrind" = "xyes"], [
++    AC_CHECK_HEADER([valgrind/valgrind.h], [
+ 	AC_CHECK_DECLS([VALGRIND_PRINTF_BACKTRACE],
+-	    USE_VALGRIND="1",,[#include <valgrind/valgrind.h>]))
+-fi
++	    [USE_VALGRIND="1"],,[#include <valgrind/valgrind.h>])])
++])
+ AC_SUBST(USE_VALGRIND)
+ 
+ 
+ # allow documentation build to be disabled manually
+ AC_ARG_ENABLE(docs,
+-    AS_HELP_STRING([--disable-docs],[disable documentation build]),
+-    build_docs=$enableval, build_docs="yes")
++    [AS_HELP_STRING([--disable-docs],[disable documentation build])],
++    [build_docs=$enableval], [build_docs="yes"])
+ 
+ # check for tools necessary to build documentation
+ AC_PATH_PROG(DOXYGEN, doxygen, [no])
+ AC_PATH_PROG(LATEX, latex, [no])
+ AC_PATH_PROG(PDFLATEX, pdflatex, [no])
+ 
+-AM_CONDITIONAL(BUILD_DOCS, test "x$build_docs" = "xyes" \
++AM_CONDITIONAL([BUILD_DOCS], [test "x$build_docs" = "xyes" \
+ 			     -a "x$DOXYGEN" != "xno" \
+ 			     -a "x$LATEX" != "xno" \
+-			     -a "x$PDFLATEX" != "xno" )
++			     -a "x$PDFLATEX" != "xno"])
+ 
+ AC_CHECK_FUNCS(localtime_r)
+ 

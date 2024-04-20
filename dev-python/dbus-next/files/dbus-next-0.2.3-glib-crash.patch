@@ -1,0 +1,33 @@
+https://github.com/altdesktop/python-dbus-next/pull/114
+https://github.com/altdesktop/python-dbus-next/issues/113
+https://gitlab.gnome.org/GNOME/pygobject/-/issues/525
+
+From 445bc2cd0df80e36154e45ea3c4f268b550890b5 Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Tue, 22 Mar 2022 22:11:01 +1000
+Subject: [PATCH] glib: destroy the _AuthLineSource explicitly
+
+See https://gitlab.gnome.org/GNOME/pygobject/-/issues/525 for an
+explanation, the summary is: we need to explicitly call source.destroy()
+if dispatch returns GLib.SOURCE_REMOVE.
+
+Deleting the source by resetting it to None causes invalid memory
+accesses and eventual crashes.
+
+This can be reproduced with a basic call to
+    bus = dbus_next.glib.MessageBus(bus_type=dbus_next.BusType.SESSION).connect_sync()
+and a GLib.MainLoop() after this call. Run in valgrind --tool=memcheck.
+
+Fixes #113
+--- a/dbus_next/glib/message_bus.py
++++ b/dbus_next/glib/message_bus.py
+@@ -457,7 +457,7 @@ def line_notify(line):
+                 self._stream.write(Authenticator._format_line(resp))
+                 self._stream.flush()
+                 if resp == 'BEGIN':
+-                    self._readline_source = None
++                    self._readline_source.destroy()
+                     authenticate_notify(None)
+                     return True
+             except Exception as e:
+

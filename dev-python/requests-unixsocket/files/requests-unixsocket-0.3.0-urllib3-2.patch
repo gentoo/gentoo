@@ -1,0 +1,45 @@
+From 5a614f60e7b3639758a6b77691b4e0c0d6827e94 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Martin=20Roukala=20=28n=C3=A9=20Peres=29?=
+ <martin.roukala@mupuf.org>
+Date: Fri, 5 May 2023 09:23:41 +0300
+Subject: [PATCH] Inherit HTTPConnection through urllib3.connection, not
+ httplib
+
+By inheriting from `urllib3.connection.HTTPConnection` (that inherits
+from `httplib.HTTPConnection` itself), we can adapt to the internal
+changes in urllib3 2.0 that added a `request()` method that is
+incompatible with httplib.HTTPConnection.request.
+
+This fixes the incompatibility between urllib3 2.0 and requests 1.26+,
+which was the first version that stopped vendoring urllib3.
+
+Reference: https://github.com/docker/docker-py/issues/3113#issuecomment-1531570788
+---
+ requests_unixsocket/adapters.py | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
+
+diff --git a/requests_unixsocket/adapters.py b/requests_unixsocket/adapters.py
+index 83e1400..513c243 100644
+--- a/requests_unixsocket/adapters.py
++++ b/requests_unixsocket/adapters.py
+@@ -3,11 +3,6 @@
+ from requests.adapters import HTTPAdapter
+ from requests.compat import urlparse, unquote
+ 
+-try:
+-    import http.client as httplib
+-except ImportError:
+-    import httplib
+-
+ try:
+     from requests.packages import urllib3
+ except ImportError:
+@@ -16,7 +11,7 @@
+ 
+ # The following was adapted from some code from docker-py
+ # https://github.com/docker/docker-py/blob/master/docker/transport/unixconn.py
+-class UnixHTTPConnection(httplib.HTTPConnection, object):
++class UnixHTTPConnection(urllib3.connection.HTTPConnection, object):
+ 
+     def __init__(self, unix_socket_url, timeout=60):
+         """Create an HTTP connection to a unix domain socket

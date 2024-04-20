@@ -1,0 +1,39 @@
+https://bugs.gentoo.org/874420
+
+From bcf98fe9a674a3784ad1a4f8eecc3b31a7b209a9 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 25 Oct 2022 14:00:23 +0100
+Subject: [PATCH] Fix malloc detection
+
+--- a/m4/getline.m4
++++ b/m4/getline.m4
+@@ -18,6 +18,7 @@ AC_DEFUN([AM_FUNC_GETLINE],
+ #    include <stdio.h>
+ #    include <sys/types.h>
+ #    include <string.h>
++#    include <stdlib.h>
+     int main ()
+     { /* Based on a test program from Karl Heuer.  */
+       char *line = NULL;
+--- a/m4/malloc.m4
++++ b/m4/malloc.m4
+@@ -14,6 +14,7 @@ AC_DEFUN([jm_FUNC_MALLOC],
+ 
+  AC_CACHE_CHECK([for working malloc], jm_cv_func_working_malloc,
+   [AC_TRY_RUN([
++    #include <stdlib.h>
+     char *malloc ();
+     int
+     main ()
+--- a/m4/realloc.m4
++++ b/m4/realloc.m4
+@@ -14,7 +14,8 @@ AC_DEFUN([jm_FUNC_REALLOC],
+ 
+  AC_CACHE_CHECK([for working realloc], jm_cv_func_working_realloc,
+   [AC_TRY_RUN([
+-    char *realloc ();
++    #include <stdlib.h>
++    void *realloc(void *ptr, size_t size);
+     int
+     main ()
+     {

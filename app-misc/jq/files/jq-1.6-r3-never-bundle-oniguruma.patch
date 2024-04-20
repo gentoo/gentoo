@@ -1,0 +1,27 @@
+diff --git a/Makefile.am b/Makefile.am
+index 6344b4e..86d968e 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -47,7 +47,7 @@ AM_YFLAGS = --warnings=all -d
+ 
+ lib_LTLIBRARIES = libjq.la
+ libjq_la_SOURCES = ${LIBJQ_SRC}
+-libjq_la_LIBADD = -lm
++libjq_la_LIBADD = -lm $(onig_LIBS)
+ libjq_la_LDFLAGS = $(onig_LDFLAGS) -export-symbols-regex '^j[qv]_' -version-info 1:4:0
+ 
+ if WIN32
+diff --git a/configure.ac b/configure.ac
+index 280694c..d96026e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -249,6 +249,9 @@ AS_IF([test "x$with_oniguruma" != xno], [
+           onig_CFLAGS="-I${with_oniguruma}/include"
+           onig_LDFLAGS="-L${with_oniguruma}/lib"
+       ])
++   ], [
++	   # with_oniguruma == yes
++	   PKG_CHECK_MODULES([onig], [oniguruma])
+    ])
+    AS_IF([test "x$build_oniguruma" = xno], [
+        # check for ONIGURUMA library, either in /usr or where requested

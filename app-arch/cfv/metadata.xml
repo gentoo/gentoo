@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sbraz@gentoo.org</email>
+		<name>Louis Sautier</name>
+	</maintainer>
+	<longdescription>
+		cfv is a utility to test and create a wide range of checksum
+		verification files. It currently supports testing and creating sfv,
+		sfvmd5, csv, csv2, csv4, md5, bsdmd5, sha1, sha224, sha256, sha384,
+		sha512, torrent and crc files. Test-only support is available for par,
+		par2.
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">cfv</remote-id>
+		<remote-id type="github">cfv-project/cfv</remote-id>
+		<bugs-to>https://github.com/cfv-project/cfv/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

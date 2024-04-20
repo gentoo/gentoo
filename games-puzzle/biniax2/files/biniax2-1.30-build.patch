@@ -1,0 +1,9 @@
+--- a/makefile
++++ b/makefile
+@@ -12,4 +12,4 @@
+ TARGET=biniax2
+ 
+ biniax:
+-	$(CC) $(AUTO) $(FILES) $(INCLUDES) -o $(TARGET) $(LINKTO)
+\ No newline at end of file
++	$(CC) $(CFLAGS) $(LDFLAGS) $(AUTO) $(FILES) $(INCLUDES) -o $(TARGET) $(LINKTO)

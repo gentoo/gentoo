@@ -1,0 +1,170 @@
+diff -uNr ushare-1.1a/configure ushare-1.1b/configure
+--- ushare-1.1a/configure	2007-12-09 08:03:36.000000000 -0500
++++ ushare-1.1b/configure	2012-03-25 17:35:07.000000000 -0400
+@@ -42,6 +42,9 @@
+   echo "  --with-libdlna-dir=DIR      check for libdlna installed in DIR"
+   echo ""
+   echo "Advanced options (experts only):"
++  echo "  --disable-sysconf           disable installation of init files"
++  echo "  --enable-developer          enable developer options"
++  echo "  --disable-developer         disable developer options"
+   echo "  --enable-debug              enable debugging symbols"
+   echo "  --disable-debug             disable debugging symbols"
+   echo "  --disable-strip             disable stripping of executables at installation"
+@@ -164,6 +167,11 @@
+     echo "#define $1 \"$2\"" >> $CONFIG_H
+ }
+ 
++check_cmd_exists(){
++	log check_cmd_exists "$@"
++	which "$@" >>$logfile 2>&1
++}
++
+ check_cmd(){
+     log "$@"
+     "$@" >>$logfile 2>&1
+@@ -300,13 +308,15 @@
+ strip="strip"
+ cpu=`uname -m`
+ optimize="yes"
++sysconf="yes"
++developer="no"
+ debug="no"
+ dostrip="yes"
+ extralibs=""
+ installstrip="-s"
+ cross_compile="no"
+ INSTALL="/usr/bin/install -c"
+-VERSION="1.1a"
++VERSION="1.2.0"
+ system_name=`uname -s 2>&1`
+ 
+ #################################################
+@@ -420,6 +430,12 @@
+   ;;
+   --disable-dlna) dlna="no"
+   ;;
++  --disable-sysconf) sysconf="no"
++  ;;
++  --enable-developer) developer="yes"
++  ;;
++  --disable-developer) developer="no"
++  ;;
+   --enable-debug) debug="yes"
+   ;;
+   --disable-debug) debug="no"
+@@ -584,6 +600,25 @@
+ linux && add_cflags -D_GNU_SOURCE
+ 
+ #################################################
++#   check for developer options
++#################################################
++if enabled developer; then
++  add_cflags -Werror
++  add_cflags -DHAVE_DEVELOPER
++  
++  have_ctags='no'
++  if check_cmd_exists 'ctags'; then
++    have_ctags='yes'
++  fi
++
++  have_etags='no'
++  if check_cmd_exists 'etags'; then
++  	have_etags='yes'
++  fi
++
++fi
++
++#################################################
+ #   check for debug symbols
+ #################################################
+ if enabled debug; then
+@@ -684,6 +719,8 @@
+ echolog "  STRIP              $strip"
+ echolog "  make               $make"
+ echolog "  CPU                $cpu ($tune)"
++echolog "  install sysconf    $sysconf"
++echolog "  developer options  $developer"
+ echolog "  debug symbols      $debug"
+ echolog "  strip symbols      $dostrip"
+ echolog "  optimize           $optimize"
+@@ -724,6 +761,10 @@
+ append_config "LDFLAGS=$LDFLAGS"
+ append_config "INSTALL=$INSTALL"
+ 
++append_config "INSTALL_SYSCONF=$sysconf"
++append_config "DEVELOPER=$developer"
++append_config "HAVE_CTAGS=$have_ctags"
++append_config "HAVE_ETAGS=$have_etags"
+ append_config "DEBUG=$debug"
+ 
+ 
+diff -uNr ushare-1.1a/scripts/Makefile ushare-1.1b/scripts/Makefile
+--- ushare-1.1a/scripts/Makefile	2007-12-09 08:03:36.000000000 -0500
++++ ushare-1.1b/scripts/Makefile	2012-03-25 17:35:07.000000000 -0400
+@@ -3,6 +3,11 @@
+ endif
+ include ../config.mak
+ 
++INSTALL_RULES = 
++ifeq ($(INSTALL_SYSCONF),yes)
++  INSTALL_RULES   += install-sysconf
++endif
++
+ CONF_FILE  = "ushare.conf"
+ INITD_FILE = "ushare"
+ 
+@@ -14,7 +19,9 @@
+ 
+ distclean:
+ 
+-install:
++install: $(INSTALL_RULES)
++
++install-sysconf:
+ 	$(INSTALL) -d $(sysconfdir)
+ 	$(INSTALL) -m 644 $(CONF_FILE) $(sysconfdir)
+ 	$(INSTALL) -d $(sysconfdir)/init.d
+diff -uNr ushare-1.1a/src/Makefile ushare-1.1b/src/Makefile
+--- ushare-1.1a/src/Makefile	2007-12-09 08:03:36.000000000 -0500
++++ ushare-1.1b/src/Makefile	2012-03-25 17:35:07.000000000 -0400
+@@ -3,6 +3,15 @@
+ endif
+ include ../config.mak
+ 
++ifeq ($(DEVELOPER),yes)
++  ifeq ($(HAVE_ETAGS),yes)
++    BUILD_RULES   += TAGS
++  endif
++  ifeq ($(HAVE_CTAGS),yes)
++    BUILD_RULES   += tags
++  endif
++endif
++
+ PROG = ushare
+ 
+ EXTRADIST = ushare.1 \
+@@ -50,7 +59,7 @@
+ 
+ .SUFFIXES: .c .o
+ 
+-all: depend $(PROG)
++all: depend $(BUILD_RULES) $(PROG)
+ 
+ .c.o:
+ 	$(CC) -c $(CFLAGS) $(OPTFLAGS) -o $@ $<
+@@ -58,6 +67,14 @@
+ $(PROG): $(OBJS)
+ 	$(CC) $(OBJS) $(LDFLAGS) $(EXTRALIBS) -o $@
+ 
++TAGS:
++	@rm -f $@; \
++	 ( find -name '*.[chS]' -print ) | xargs etags -a
++
++tags:
++	@rm -f $@; \
++	 ( find -name '*.[chS]' -print ) | xargs ctags -a;
++
+ clean:
+ 	-$(RM) -f *.o $(PROG)
+ 	-$(RM) -f .depend

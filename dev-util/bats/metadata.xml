@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>henning@hennsch.de</email>
+		<name>Henning Schild</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">bats-core/bats-core</remote-id>
+	</upstream>
+	<longdescription lang="en">
+		Bats is a TAP-compliant testing framework for Bash. It provides a simple
+		way to verify that the UNIX programs you write behave as expected.
+
+		A Bats test file is a Bash script with special syntax for defining test
+		cases. Under the hood, each test case is just a function with a description.
+
+		Bats is most useful when testing software written in Bash, but you can use
+		it to test any UNIX program.
+	</longdescription>
+</pkgmetadata>

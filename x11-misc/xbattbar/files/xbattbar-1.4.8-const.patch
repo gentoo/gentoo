@@ -1,0 +1,11 @@
+--- a/xbattbar-check-apm.c
++++ b/xbattbar-check-apm.c
+@@ -210,7 +210,7 @@
+ #define        APM_STAT_LINE_ON        1
+ 
+ typedef struct apm_info {
+-   const char driver_version[10];
++   char driver_version[10];
+    int        apm_version_major;
+    int        apm_version_minor;
+    int        apm_flags;

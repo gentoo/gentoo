@@ -1,0 +1,31 @@
+Based on https://sourceforge.net/p/cntlm/bugs/79/ but rebased on our cntlm-0.93_beta5-buildsystem.patch.
+--- a/Makefile
++++ b/Makefile
+@@ -20,7 +20,7 @@ LIBS		:= $(shell [ $(OS) = "SunOS" ] && echo "-lrt -lsocket -lnsl")
+ LDFLAGS		:= -pthread
+ CYGWIN_REQS	:= cygwin1.dll cyggcc_s-1.dll cygstdc++-6.dll cygrunsrv.exe 
+ 
+-CFLAGS=-D__BSD_VISIBLE -D_ALL_SOURCE -D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=200112 -D_ISOC99_SOURCE -D_REENTRANT -D_BSD_SOURCE -DVERSION=\"'$(VER)'\"
++CFLAGS=-D__BSD_VISIBLE -D_ALL_SOURCE -D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=200112 -D_ISOC99_SOURCE -D_REENTRANT -D_BSD_SOURCE -D_DEFAULT_SOURCE -DVERSION=\"'$(VER)'\"
+ ifeq ($(DEBUG),1)
+ 	CFLAGS	+= -g -O0
+ endif
+--- a/config/gethostname.c
++++ b/config/gethostname.c
+@@ -1,3 +1,5 @@
++#include <stdio.h>
++#include <string.h>
+ #include <unistd.h>
+ 
+ int main(int argc, char **argv) {
+--- a/configure
++++ b/configure
+@@ -67,7 +67,7 @@ rm -f $CONFIG
+ for i in $TESTS; do
+ 	printf "Checking $i... "
+ 	printf "#define config_$i " >> $CONFIG
+-	OUT=`$CC $CFLAGS $LDFLAGS -D_POSIX_C_SOURCE=199506L -D_ISOC99_SOURCE -D_REENTRANT -o config/$i config/$i.c 2>&1`
++	OUT=`$CC $CFLAGS $LDFLAGS -D_POSIX_C_SOURCE=199506L -D_ISOC99_SOURCE -D_DEFAULT_SOURCE -D_REENTRANT -o config/$i config/$i.c 2>&1`
+ 	rc=$?
+ 
+ 	if [ $rc -ne 0 ]; then # -o -n "$OUT" ]; then

@@ -1,0 +1,72 @@
+https://gitlab.freedesktop.org/xorg/xserver/-/commit/f0a187f55d76139225c11ce92ab69816d46db55c
+
+From f0a187f55d76139225c11ce92ab69816d46db55c Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Mon, 29 Jan 2024 10:31:36 +0100
+Subject: [PATCH] xwayland: Use correct pointer types on i386
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+And other 32-bit architectures, where uint32_t and CARD32 are
+not the same type.  Otherwise the build will fail with GCC 14
+with errors like:
+
+../hw/xwayland/xwayland-glamor.c: In function â€˜xwl_glamor_get_formatsâ€™:
+../hw/xwayland/xwayland-glamor.c:291:43: error: passing argument 3 of â€˜xwl_get_formats_for_deviceâ€™ from incompatible pointer type [-Wincompatible-pointer-types]
+  291 |                                           num_formats, formats);
+      |                                           ^~~~~~~~~~~
+      |                                           |
+      |                                           CARD32 * {aka long unsigned int *}
+../hw/xwayland/xwayland-glamor.c:238:38: note: expected â€˜uint32_t *â€™ {aka â€˜unsigned int *â€™} but argument is of type â€˜CARD32 *â€™ {aka â€˜long unsigned int *â€™}
+  238 |                            uint32_t *num_formats, uint32_t **formats)
+      |                            ~~~~~~~~~~^~~~~~~~~~~
+../hw/xwayland/xwayland-glamor.c:291:56: error: passing argument 4 of â€˜xwl_get_formats_for_deviceâ€™ from incompatible pointer type [-Wincompatible-pointer-types]
+  291 |                                           num_formats, formats);
+      |                                                        ^~~~~~~
+      |                                                        |
+      |                                                        CARD32 ** {aka long unsigned int **}
+../hw/xwayland/xwayland-glamor.c:238:62: note: expected â€˜uint32_t **â€™ {aka â€˜unsigned int **â€™} but argument is of type â€˜CARD32 **â€™ {aka â€˜long unsigned int **â€™}
+  238 |                            uint32_t *num_formats, uint32_t **formats)
+      |                                                   ~~~~~~~~~~~^~~~~~~
+../hw/xwayland/xwayland-glamor.c:295:28: error: passing argument 3 of â€˜xwl_get_formatsâ€™ from incompatible pointer type [-Wincompatible-pointer-types]
+  295 |                            num_formats, formats);
+      |                            ^~~~~~~~~~~
+      |                            |
+      |                            CARD32 * {aka long unsigned int *}
+../hw/xwayland/xwayland-glamor.c:217:26: note: expected â€˜uint32_t *â€™ {aka â€˜unsigned int *â€™} but argument is of type â€˜CARD32 *â€™ {aka â€˜long unsigned int *â€™}
+  217 |                uint32_t *num_formats, uint32_t **formats)
+      |                ~~~~~~~~~~^~~~~~~~~~~
+../hw/xwayland/xwayland-glamor.c:295:41: error: passing argument 4 of â€˜xwl_get_formatsâ€™ from incompatible pointer type [-Wincompatible-pointer-types]
+  295 |                            num_formats, formats);
+      |                                         ^~~~~~~
+      |                                         |
+      |                                         CARD32 ** {aka long unsigned int **}
+../hw/xwayland/xwayland-glamor.c:217:50: note: expected â€˜uint32_t **â€™ {aka â€˜unsigned int **â€™} but argument is of type â€˜CARD32 **â€™ {aka â€˜long unsigned int **â€™}
+  217 |                uint32_t *num_formats, uint32_t **formats)
+      |                                       ~~~~~~~~~~~^~~~~~~
+--- a/hw/xwayland/xwayland-glamor.c
++++ b/hw/xwayland/xwayland-glamor.c
+@@ -212,7 +212,7 @@ xwl_screen_get_main_dev(struct xwl_screen *xwl_screen)
+ 
+ static Bool
+ xwl_get_formats(struct xwl_format *format_array, int format_array_len,
+-               uint32_t *num_formats, uint32_t **formats)
++               CARD32 *num_formats, CARD32 **formats)
+ {
+     *num_formats = 0;
+     *formats = NULL;
+@@ -233,9 +233,9 @@ xwl_get_formats(struct xwl_format *format_array, int format_array_len,
+ 
+ static Bool
+ xwl_get_formats_for_device(struct xwl_dmabuf_feedback *xwl_feedback, drmDevice *device,
+-                           uint32_t *num_formats, uint32_t **formats)
++                           CARD32 *num_formats, CARD32 **formats)
+ {
+-    uint32_t *ret = NULL;
++    CARD32 *ret = NULL;
+     uint32_t count = 0;
+ 
+     /* go through all matching sets of tranches for the window's device */
+-- 
+GitLab

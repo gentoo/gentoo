@@ -1,0 +1,11 @@
+--- a/company.el
++++ b/company.el
+@@ -1578,7 +1578,7 @@ end of the match."
+ (defconst company-icons-root
+   (file-name-as-directory
+    (expand-file-name "icons"
+-                     (file-name-directory (or load-file-name buffer-file-name)))))
++                     "@SITEETC@")))
+ 
+ (defcustom company-icon-size '(auto-scale . 16)
+   "Size of icons indicating completion kind in the popup."

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<use>
+		<flag name="drm">Provides abstraction to the DRM drivers (intel,
+			nouveau and vmwgfx at this moment)</flag>
+		<flag name="pango">Adds support for printing text on splash screen and
+			text prompts, e.g. for password</flag>
+		<flag name="split-usr">Enable this if /bin and /usr/bin are separate
+			directories</flag>
+	</use>
+	<longdescription lang="en">
+		Plymouth is an application that runs very early in the boot process
+		(even before the root filesystem is mounted!) that provides a graphical
+		boot animation while the boot process happens in the background.
+
+		It is designed to work on systems with DRM modesetting drivers. Ideally,
+		the goal is to get rid of all flicker during startup.  For systems that
+		don't have DRM mode settings drivers, plymouth falls back to text mode.
+	</longdescription>
+</pkgmetadata>

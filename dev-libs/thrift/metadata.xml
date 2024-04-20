@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
+	</maintainer>
+	<use>
+		<flag name="libevent">Build support for <pkg>dev-libs/libevent</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">apache/thrift</remote-id>
+		<bugs-to>https://issues.apache.org/jira/projects/THRIFT</bugs-to>
+	</upstream>
+</pkgmetadata>

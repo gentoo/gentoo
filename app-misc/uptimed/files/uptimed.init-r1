@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="uptimed - a daemon to record uptime records"
+pidfile="/run/uptimed.pid"
+command="/usr/sbin/uptimed"
+command_user="uptimed"
+
+# The uptimed daemon can create its own PID file, but it doesn't know
+# how to drop privileges. On the other hand, if we run it as a
+# restricted user under start-stop-daemon, the PID file it creates
+# will therefore be owned by a non-root user, and that poses a
+# security risk. To avoid the issue entirely, we run the daemon in the
+# foreground, and then use command_background=true to let OpenRC
+# handle the PID file.
+command_args="-f"
+command_background="true"

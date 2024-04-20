@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_started_commands="reload"
+
+description_reload="Reload the SKK-JISYO.L"
+
+command="/usr/sbin/${RC_SVCNAME}"
+
+depend() {
+	need net
+}
+
+reload() {
+	ebegin "Reloading ${name:-${RC_SVCNAME}}"
+	start-stop-daemon --signal INT --name "${command}"
+	eend ${?}
+}

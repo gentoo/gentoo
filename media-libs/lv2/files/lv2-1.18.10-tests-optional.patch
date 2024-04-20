@@ -1,0 +1,53 @@
+https://gitlab.com/lv2/lv2/-/commit/8726bffa337e6374b04d0739df2812798b2c8858
+
+From 8726bffa337e6374b04d0739df2812798b2c8858 Mon Sep 17 00:00:00 2001
+From: David Robillard <d@drobilla.net>
+Date: Sat, 19 Nov 2022 17:49:14 -0500
+Subject: [PATCH] Avoid test directory entirely if tests are disabled
+
+--- a/meson.build
++++ b/meson.build
+@@ -346,7 +346,9 @@ endif
+ subdir('util')
+ 
+ # Data and build tests
+-subdir('test')
++if not get_option('tests').disabled()
++  subdir('test')
++endif
+ 
+ if not meson.is_subproject()
+   summary('Tests', not get_option('tests').disabled(), bool_yn: true)
+--- a/test/meson.build
++++ b/test/meson.build
+@@ -122,17 +122,15 @@ test_names = [
+ ]
+ 
+ # Build and run tests
+-if not get_option('tests').disabled()
+-  foreach test_name : test_names
+-    test(
++foreach test_name : test_names
++  test(
++    test_name,
++    executable(
+       test_name,
+-      executable(
+-        test_name,
+-        files('test_@0@.c'.format(test_name)),
+-        c_args: c_suppressions,
+-        dependencies: lv2_dep,
+-      ),
+-      suite: 'unit',
+-    )
+-  endforeach
+-endif
++      files('test_@0@.c'.format(test_name)),
++      c_args: c_suppressions,
++      dependencies: lv2_dep,
++    ),
++    suite: 'unit',
++  )
++endforeach
+-- 
+GitLab

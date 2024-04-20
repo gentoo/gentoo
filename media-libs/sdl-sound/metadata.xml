@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>mailto:sdlsound@icculus.org</bugs-to>
+		<!-- stable-1.0 branch -->
+		<remote-id type="github">icculus/SDL_sound</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+Bug: https://bugs.gentoo.org/782553
+
+--- ffmpeg-6.1.1/tools/source2c.orig        2024-03-14 04:53:45.468507151 +0300
++++ ffmpeg-6.1.1/tools/source2c     2024-03-14 04:54:53.503086088 +0300
+@@ -24,6 +24,7 @@
+
+ name=$(basename "$input" | sed 's/.cl$//')
+
++mkdir -p "$(dirname "$output")"
+ cat >$output <<EOF
+ // Generated from $input
+ const char *ff_opencl_source_$name =

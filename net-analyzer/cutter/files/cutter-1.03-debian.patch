@@ -1,0 +1,182 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,5 @@
+ cutter: cutter.c
+-	cc cutter.c -o cutter
++	cc $(CFLAGS) cutter.c -o cutter
+ 
+ clean:
+ 	rm -f cutter.o cutter
+--- a/cutter.c
++++ b/cutter.c
+@@ -57,6 +57,7 @@
+ #include <arpa/inet.h>
+ #include <net/if.h>
+ #include <errno.h>
++#include <time.h>
+ 
+ #define ETHHDR	 sizeof(struct ethhdr)
+ #define TCPHDR	 sizeof(struct tcphdr)
+@@ -149,7 +150,6 @@
+ int getmac(in_addr_t ip, uchar *mac)
+ {
+ 	FILE *id = fopen( "/proc/net/arp", "r" );
+-	union { uchar c[4]; in_addr_t n; } ipu;
+ 	in_addr_t ipn;
+ 	int mac0, mac1, mac2, mac3, mac4, mac5;
+ 	int hwtype, flags;
+@@ -240,7 +240,7 @@
+ 	u_short toport
+ )
+ {
+-	int i_result, raw_sock, rtn;
++	int i_result, raw_sock;
+ 	in_addr_t gateway_ip;
+ 	struct sockaddr_ll myaddr, hisaddr;
+ 	struct tpack tpack;
+@@ -377,7 +377,7 @@
+ 
+ 	for ( ; time(0) < tstart + 15; ) {	// give the peer 15 seconds to respond
+ 		struct sockaddr_ll gotaddr;
+-		int addrlen = sizeof(gotaddr);
++		unsigned int addrlen = sizeof(gotaddr);
+ 		fd_set readfds;
+ 		struct timeval tv;
+ 
+@@ -478,8 +478,7 @@
+ {
+ 	FILE *id = fopen( "/proc/net/ip_conntrack", "r" );
+ 	char src1[32], dst1[32], src2[32], dst2[32];
+-	int sport1, dport1, sport2, dport2, i;
+-	int packets1, packets2, bytes1, bytes2;
++	int sport1, dport1, sport2, dport2;
+ 	in_addr_t src1n, src2n, dst1n, dst2n;
+ 	char buff[1024], *p;
+ 	int found = 0;
+--- a/debian/cutter.8
++++ b/debian/cutter.8
+@@ -0,0 +1,124 @@
++.\"                                      Hey, EMACS: -*- nroff -*-
++.TH CUTTER 8 "April, 2005"
++.SH NAME
++cutter \- cut tcp/ip connections
++.SH SYNOPSIS
++.B cutter
++.IR ipaddress1 \ [ \ port1 \ [ \ ipaddress2 \ [ \ port2 
++\ ] \ ] \ ]
++.br
++.SH DESCRIPTION
++.B Cutter
++is an open source program that allows Linux firewall
++administrators to abort TCP/IP connections routed over the firewall or
++router on which it is run.
++.br
++.SH WARNING
++.B Cutter 
++has been designed for use as a administrators tool for Linux
++firewalls. It's use (as is, or modified) for any other purpose is not
++sanctioned by the author. So - do not use this tool as a parachute, or
++to dry your cat, chill meat, answer your phone, drive you car, teach
++your kids to read or attack other people's computer systems or networks.
++.PP
++This software has been designed for 
++.I legal 
++and 
++.I appropriate 
++use
++by network security administrators and the like. It has been written as
++part of a larger Linux firewall project, targetting at controlling traffic
++from peer-to-peer software such as Kazaa, iMesh and others into and out of
++a private network. It is not designed as a tool for malicious use and the
++author in no way sanctions such use.
++.PP
++Users of the software should be aware that it's actions are easily detectable
++using a number of readily available network monitoring tools, and it makes no
++attempt to disguise it's actions. Malicious use of "cutter" could result in a
++jail sentance in a number of countries around the world.
++.PP
++The author is not responsible for the results of using this software. It
++is provided "as is" in the hope that it will be useful, but no garantees
++are made about it's use.
++.br
++.SH USAGE
++.B Cutter
++can be called using one of the following four syntaxes.
++
++.BI cutter \ ip-address
++
++.B Example: 
++.RS
++.br
++.BI cutter \ 10.10.0.45
++
++Cuts all connections
++passing through the firewall
++between any ports on the specified ip-address (either a "private" or
++"public" address) and any other hosts. This can be used to close down
++all incoming connections to a particular server, all outgoing
++connections from a particular client or all outgoing connections to a
++server.
++.RE
++
++.B cutter 
++.I ip-address port
++
++.B Example: 
++.RS
++.br
++.B cutter 
++.I 200.1.2.3 80
++
++Cuts all connections to or from the
++specified ip-address/port pair. This allows the user to be a little more
++specific than the previous example and allows targetting of specific
++services on specific hosts.
++.RE
++
++.B cutter 
++.I ip-address-1 port-1 ip-address-2
++
++.B Example: 
++.RS
++.br
++.B cutter 
++.I 200.1.2.3 22 10.10.0.45
++
++Cuts all connections between
++ip-address-2 and ip-address-1/port-1. This allows the user to cut
++connections between a specified "client" and a particular service on a
++specified host. Our example closes host 10.10.0.45's SSH connection to
++server 200.1.2.3.
++.RE
++
++.B cutter 
++.I ip-address-1 port-1 ip-address-2 port-2
++
++.B Example: 
++.RS
++.br
++.B cutter 
++.I 200.1.2.3 22 10.10.0.45 32451
++
++Cuts the specific connection between
++the two ip/port number pairs given.
++.RE
++.SH STATUS
++Cutter 1.03 should be considered 
++.B EXPERIMENTAL. 
++The author is releasing a
++tool that works on the systems he has access to (namely: IPCop and
++RedHat Linux), and he is seeking input on it's use on other systems,
++ideas for improvement, offers of sponsorship - etc.
++.PP
++.br
++.SH ADDITIONAL DOCUMENTATION
++This program is documented at
++.UR http://www.lowth.com/cutter/
++.I http://www.lowth.com/cutter/
++.UE
++.SH AUTHOR
++Blars Blarson addapted the README and web page written by Chris Lowth
++into this man page for debian package of cutter.  This man page may be
++distribuated under the terms of the Gnu GPL version 2.

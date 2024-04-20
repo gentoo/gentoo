@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="fuse">Use fuse libraries</flag>
+		<flag name="iso">Install <pkg>app-cdr/cdrtools</pkg> in order to prepare iso images</flag>
+		<flag name="ntfs">Use libntfs-3g library from <pkg>sys-fs/ntfs3g</pkg></flag>
+		<flag name="yasm">Use yasm assembler instead of nasm</flag>
+	</use>
+</pkgmetadata>

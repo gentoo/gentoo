@@ -1,0 +1,34 @@
+From 92aa5f6b272bcdc020a34f8d90f9ef851b5b4504 Mon Sep 17 00:00:00 2001
+From: John Millikin <john@john-millikin.com>
+Date: Mon, 9 Jan 2023 13:54:21 +0900
+Subject: [PATCH] Disable `linux_ext` in wasm32 and fortanix rustdoc builds.
+
+The `std::os::unix` module is stubbed out when building docs for these
+target platforms. The introduction of Linux-specific extension traits
+caused `std::os::net` to depend on sub-modules of `std::os::unix`,
+which broke rustdoc for the `wasm32-unknown-unknown` target.
+
+Adding an additional `#[cfg]` guard solves that rustdoc failure by
+not declaring `linux_ext` on targets with a stubbed `std::os::unix`.
+---
+ library/std/src/os/net/mod.rs | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/library/std/src/os/net/mod.rs b/library/std/src/os/net/mod.rs
+index 5ec267c41e97c..b7046dd7c598c 100644
+--- a/library/std/src/os/net/mod.rs
++++ b/library/std/src/os/net/mod.rs
+@@ -1,4 +1,13 @@
+ //! OS-specific networking functionality.
+ 
++// See cfg macros in `library/std/src/os/mod.rs` for why these platforms must
++// be special-cased during rustdoc generation.
++#[cfg(not(all(
++    doc,
++    any(
++        all(target_arch = "wasm32", not(target_os = "wasi")),
++        all(target_vendor = "fortanix", target_env = "sgx")
++    )
++)))]
+ #[cfg(any(target_os = "linux", target_os = "android", doc))]
+ pub(super) mod linux_ext;

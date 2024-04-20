@@ -1,0 +1,16 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -45,7 +45,12 @@
+ AC_CHECK_FUNCS(getopt_long)
+ AC_CHECK_FUNCS(getaddrinfo)
+ 
+-AM_PATH_LIBGNUTLS(,AC_DEFINE(HAVE_GNUTLS,,"Use libgnutls"))
++AC_ARG_WITH([gnutls],
++            [AS_HELP_STRING([--with-gnutls],
++                            [Enable use of GnuTLS])])
++if test "$with_gnutls" != "no"; then
++  PKG_CHECK_MODULES(LIBGNUTLS, gnutls, AC_DEFINE(HAVE_GNUTLS,,"Use libgnutls"))
++fi
+ 
+ dnl Check -Wall flag of GCC
+ if test "x$GCC" = "xyes"; then

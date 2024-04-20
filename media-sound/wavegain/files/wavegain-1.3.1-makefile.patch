@@ -1,0 +1,7 @@
+--- a/Makefile
++++ b/Makefile
+@@ -0,0 +1,4 @@
++LDLIBS = -lm
++CPPFLAGS += -DHAVE_CONFIG_H
++
++wavegain: audio.o dither.o gain_analysis.o getopt1.o getopt.o main.o misc.o recurse.o

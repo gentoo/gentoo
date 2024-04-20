@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# pcscd.sh: udev external RUN script
+#
+# based on netifrc net.sh helper
+# Copyright 2007 Roy Marples <uberlord@gentoo.org>
+# Distributed under the terms of the GNU General Public License v2
+
+# make sure openrc is managing services
+if [ ! -d /run/openrc ]; then
+	exit 0
+fi
+
+IN_HOTPLUG=1 /etc/init.d/pcscd --quiet start

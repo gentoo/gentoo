@@ -1,0 +1,21 @@
+From 0ca17e2ba8c8f01e51a360903a2009186ff78a1c Mon Sep 17 00:00:00 2001
+From: Olav Reinert <seroton10@gmail.com>
+Date: Sun, 26 Mar 2023 13:48:10 +0200
+Subject: [PATCH] fix: compilation error with GCC 13
+
+---
+ src/helpers/help.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/helpers/help.h b/src/helpers/help.h
+index 1d176f0..b7d02fd 100644
+--- a/src/helpers/help.h
++++ b/src/helpers/help.h
+@@ -18,6 +18,7 @@
+ #define HELP_HELPER
+ 
+ #include <iostream>
++#include <cstdint>
+ 
+ namespace help {
+ 	

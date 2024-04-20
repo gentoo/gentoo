@@ -1,0 +1,30 @@
+# HG changeset patch
+# User Lars Wendler <polynomial-c@gentoo.org>
+# Date 1473084371 -7200
+#      Mon Sep 05 16:06:11 2016 +0200
+# Node ID ae8afbceeed4e446a63ad3111291a98d1390ade2
+# Parent  57c0a14aedcb8eef82d5828721b55aac02847ee7
+configure.ac: search for ncurses' tinfo library if available
+
+ncurses can be built to split out the lowlevel terminfo library
+from ncurses library. In this case there's a libtinfo.so file
+alongside the usual libncurses*.so files.
+This patch adds tinfo to AC_SEARCH_LIBS when ncurses support
+is enabled. Without this patch configure silently fails to find
+tgetflag and thus does not link to ncurses at all.
+I've tested this change on both, ncurses with separate tinfo lib
+and ncurses without separate tinfo lib and in both cases joe
+successfully links against ncurses.
+
+diff --git a/configure.ac b/configure.ac
+--- a/configure.ac
++++ b/configure.ac
+@@ -39,7 +39,7 @@
+ 	curses=$enableval, curses=yes)
+ 
+ if test "$curses" = "yes"; then
+-	search_libs="ncurses curses"
++	search_libs="tinfo ncurses curses"
+ fi
+ 
+ AC_ARG_ENABLE(termcap,

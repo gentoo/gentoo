@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -15,7 +15,7 @@
+ 	mkdir -p bin
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o bin/radamsa radamsa.c
+ 
+-bin/radamsa: radamsa.c
++bin/radamsa:
+ 	mkdir -p bin
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o bin/radamsa radamsa.c
+ 

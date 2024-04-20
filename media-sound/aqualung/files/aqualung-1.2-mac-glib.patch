@@ -1,0 +1,22 @@
+From 1c2a295a72e1e3abc6df40714d9753e311541550 Mon Sep 17 00:00:00 2001
+From: Jeremy Evans <code@jeremyevans.net>
+Date: Wed, 6 Sep 2023 09:02:31 +0100
+Subject: [PATCH] Remove now unnecessary glib include in mac decoder
+
+Pointed out by Daniel Pielmeier.
+---
+ src/decoder/dec_mac.cpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/decoder/dec_mac.cpp b/src/decoder/dec_mac.cpp
+index 6d4b658..f89450d 100644
+--- a/src/decoder/dec_mac.cpp
++++ b/src/decoder/dec_mac.cpp
+@@ -24,7 +24,6 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+-#include <glib.h>
+ 
+ 
+ #include "../undef_ac_pkg.h"

@@ -1,0 +1,140 @@
+do not add -L/-I flags pointing to the paths given by --prefix.
+there's no need and it breaks multilib and cross-compiling.
+
+patch by Mike Frysinger <vapier@gentoo.org>
+
+--- a/autoconf/libFLAC.m4
++++ b/autoconf/libFLAC.m4
+@@ -25,24 +25,8 @@ AC_ARG_ENABLE(libFLACtest,
+ 	      		     [Do not try to compile and run a test libFLAC program]),,
+ 	      		     [enable_libFLACtest=yes])
+ 
+-  if test "x$libFLAC_libraries" != "x" ; then
+-    LIBFLAC_LIBS="-L$libFLAC_libraries"
+-  elif test "x$libFLAC_prefix" != "x" ; then
+-    LIBFLAC_LIBS="-L$libFLAC_prefix/lib"
+-  elif test "x$prefix" != "xNONE" ; then
+-    LIBFLAC_LIBS="-L$prefix/lib"
+-  fi
+-
+   LIBFLAC_LIBS="$LIBFLAC_LIBS -lFLAC -lm"
+ 
+-  if test "x$libFLAC_includes" != "x" ; then
+-    LIBFLAC_CFLAGS="-I$libFLAC_includes"
+-  elif test "x$libFLAC_prefix" != "x" ; then
+-    LIBFLAC_CFLAGS="-I$libFLAC_prefix/include"
+-  elif test "$prefix" != "xNONE"; then
+-    LIBFLAC_CFLAGS="-I$prefix/include"
+-  fi
+-
+   AC_MSG_CHECKING(for libFLAC)
+   no_libFLAC=""
+ 
+--- a/autoconf/libOggFLAC.m4
++++ b/autoconf/libOggFLAC.m4
+@@ -25,24 +25,8 @@ AC_ARG_ENABLE(libOggFLACtest,
+ 	      		     [Do not try to compile and run a test libOggFLAC program]),,
+ 	      [enable_libOggFLACtest=yes])
+ 
+-  if test "x$libOggFLAC_libraries" != "x" ; then
+-    LIBOGGFLAC_LIBS="-L$libOggFLAC_libraries"
+-  elif test "x$libOggFLAC_prefix" != "x" ; then
+-    LIBOGGFLAC_LIBS="-L$libOggFLAC_prefix/lib"
+-  elif test "x$prefix" != "xNONE" ; then
+-    LIBOGGFLAC_LIBS="-L$prefix/lib"
+-  fi
+-
+   LIBOGGFLAC_LIBS="$LIBOGGFLAC_LIBS -lOggFLAC -lFLAC -lm"
+ 
+-  if test "x$libOggFLAC_includes" != "x" ; then
+-    LIBOGGFLAC_CFLAGS="-I$libOggFLAC_includes"
+-  elif test "x$libOggFLAC_prefix" != "x" ; then
+-    LIBOGGFLAC_CFLAGS="-I$libOggFLAC_prefix/include"
+-  elif test "$prefix" != "xNONE"; then
+-    LIBOGGFLAC_CFLAGS="-I$prefix/include"
+-  fi
+-
+   AC_MSG_CHECKING(for libOggFLAC)
+   no_libOggFLAC=""
+ 
+--- a/autoconf/ogg.m4
++++ b/autoconf/ogg.m4
+@@ -26,24 +26,8 @@ AC_ARG_ENABLE(oggtest,
+ 	      		     [Do not try to compile and run a test Ogg program]),,
+ 	      [enable_oggtest=yes])
+ 
+-  if test "x$ogg_libraries" != "x" ; then
+-    OGG_LIBS="-L$ogg_libraries"
+-  elif test "x$ogg_prefix" != "x" ; then
+-    OGG_LIBS="-L$ogg_prefix/lib"
+-  elif test "x$prefix" != "xNONE" ; then
+-    OGG_LIBS="-L$prefix/lib"
+-  fi
+-
+   OGG_LIBS="$OGG_LIBS -logg"
+ 
+-  if test "x$ogg_includes" != "x" ; then
+-    OGG_CFLAGS="-I$ogg_includes"
+-  elif test "x$ogg_prefix" != "x" ; then
+-    OGG_CFLAGS="-I$ogg_prefix/include"
+-  elif test "x$prefix" != "xNONE"; then
+-    OGG_CFLAGS="-I$prefix/include"
+-  fi
+-
+   AC_MSG_CHECKING(for Ogg)
+   no_ogg=""
+ 
+--- a/autoconf/vorbis.m4
++++ b/autoconf/vorbis.m4
+@@ -27,27 +27,10 @@ AC_ARG_ENABLE(vorbistest,
+ 			     [Do not try to compile and run a test Vorbis program]),
+ 	      , [enable_vorbistest=yes])
+ 
+-  if test "x$vorbis_libraries" != "x" ; then
+-    VORBIS_LIBS="-L$vorbis_libraries"
+-  elif test "x$vorbis_prefix" != "x" ; then
+-    VORBIS_LIBS="-L$vorbis_prefix/lib"
+-  elif test "x$prefix" != "xNONE"; then
+-    VORBIS_LIBS="-L$prefix/lib"
+-  fi
+-
+   VORBIS_LIBS="$VORBIS_LIBS -lvorbis -lm"
+   VORBISFILE_LIBS="-lvorbisfile"
+   VORBISENC_LIBS="-lvorbisenc"
+ 
+-  if test "x$vorbis_includes" != "x" ; then
+-    VORBIS_CFLAGS="-I$vorbis_includes"
+-  elif test "x$vorbis_prefix" != "x" ; then
+-    VORBIS_CFLAGS="-I$vorbis_prefix/include"
+-  elif test "x$prefix" != "xNONE"; then
+-    VORBIS_CFLAGS="-I$prefix/include"
+-  fi
+-
+-
+   AC_MSG_CHECKING(for Vorbis)
+   no_vorbis=""
+ 
+--- a/configure.in
++++ b/configure.in
+@@ -91,21 +91,6 @@ else
+   x_config_flag=yes
+ fi
+ 
+-# Checking gcc environment
+-for i in `echo $LIBRARY_PATH|sed -e 's,:, ,g'`; do
+-  LDFLAGS="$LDFLAGS -L${i}"
+-done
+-for i in `echo $C_INCLUDE_PATH|sed -e 's,:, ,g'`; do
+-  CPPFLAGS="$CPPFLAGS -I${i}"
+-done
+-
+-# add $prefix if specified.
+-if test "x$prefix" != xNONE -a "x$prefix" != "x$ac_default_prefix" -a "x$prefix" != "x/usr"; then
+-  LDFLAGS="-L$prefix/lib $LDFLAGS"
+-  SHLDFLAGS="-L$prefix/lib $SHLDFLAGS"
+-  CPPFLAGS="-I$prefix/include $CPPFLAGS"
+-fi
+-
+ dnl add --with-includes, --with-libraries
+ AC_ARG_WITH(includes,
+   AS_HELP_STRING([--with-includes=DIR], [Specify include directories (colon separated)]),

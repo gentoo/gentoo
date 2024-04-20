@@ -1,0 +1,46 @@
+Index: vdr-plugin-wirbelscan-0.0.7/statemachine.c
+===================================================================
+--- vdr-plugin-wirbelscan-0.0.7.orig/statemachine.c	2011-03-24 16:48:43.000000000 +0100
++++ vdr-plugin-wirbelscan-0.0.7/statemachine.c	2012-04-03 19:51:08.813786243 +0200
+@@ -36,12 +36,12 @@
+     while (Running()) cCondWait::SleepMs(5);
+     }; /*TODO: check here periodically for lock and wether we got any data!*/
+ public:
+-  cScanReceiver(tChannelID ChannelID, int AnyPid);
++  cScanReceiver(const cChannel* chan, int AnyPid);
+   virtual ~cScanReceiver() {cReceiver::Detach(); };
+   };
+ 
+-cScanReceiver::cScanReceiver(tChannelID ChannelID, int AnyPid) :
+-     cReceiver(ChannelID, 99, AnyPid), cThread("dummy receiver") { }
++cScanReceiver::cScanReceiver(const cChannel* chan, int AnyPid) :
++     cReceiver(chan, 99), cThread("dummy receiver") {  SetPids(NULL); AddPid(AnyPid); }
+ 
+ ///!-----------------------------------------------------------------
+ ///!  v 0.0.5, store state in lastState if different and print state
+@@ -144,7 +144,7 @@
+          ScannedTransponders.Add(ScannedTransponder);
+ 
+          dev->SwitchChannel(Transponder, false);
+-         aReceiver = new cScanReceiver(Transponder->GetChannelID(), 99);
++         aReceiver = new cScanReceiver(Transponder, 99);
+          dev->AttachReceiver(aReceiver);
+ 
+          cCondWait::SleepMs(1000);
+Index: vdr-plugin-wirbelscan-0.0.7/ttext.c
+===================================================================
+--- vdr-plugin-wirbelscan-0.0.7.orig/ttext.c	2011-03-24 19:29:59.000000000 +0100
++++ vdr-plugin-wirbelscan-0.0.7/ttext.c	2012-04-03 20:03:06.903786678 +0200
+@@ -374,9 +374,10 @@
+      }
+ }
+ 
+-cSwReceiver::cSwReceiver(cChannel * Channel) : cReceiver(Channel->GetChannelID(),
+-   100, Channel->Tpid()), cThread("ttext") {
++cSwReceiver::cSwReceiver(cChannel * Channel) : cReceiver(Channel, 100), cThread("ttext") {
+ 
++   SetPids(NULL);
++   AddPid(Channel->Tpid());
+    stopped = fuzzy = false;
+    channel = Channel;
+    buffer  = new cRingBufferLinear(MEGABYTE(1),184);

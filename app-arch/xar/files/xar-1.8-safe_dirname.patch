@@ -1,0 +1,16 @@
+linuxattr: fix missing symbol safe_dirname
+
+This one was probably missed when they did a global rename to xar_
+prefixed variants.
+
+--- a/lib/linuxattr.c
++++ b/lib/linuxattr.c
+@@ -223,7 +223,7 @@
+ 	if( statfs(file, &sfs) != 0 ) {
+ 		char *tmp, *bname;
+ 		tmp = strdup(file);
+-		bname = safe_dirname(tmp);
++		bname = xar_safe_dirname(tmp);
+ 		statfs(bname, &sfs);
+ 		free(tmp);
+ 		free(bname);

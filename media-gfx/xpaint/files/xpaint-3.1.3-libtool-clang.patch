@@ -1,0 +1,51 @@
+libtool doesn't work if compiling with clang.  Need to add --tag=CC
+Don't hardcode /usr/bin/libtool in gentoo prefix
+See bug https://bugs.gentoo.org/731010
+
+rdlibtool needs to find system libtool in current directory
+See bug https://bugs.gentoo.org/778791
+--- a/configure.ac
++++ b/configure.ac
+@@ -17,6 +17,10 @@
+ AC_LANG_C
+ AM_PROG_AR
+ 
++dnl libtool
++LT_INIT
++AC_SUBST([LIBTOOL_DEPS])
++
+ ## basic types
+ 
+ AC_TYPE_INT8_T
+--- a/xpaintrw/Makefile.am
++++ b/xpaintrw/Makefile.am
+@@ -28,7 +28,8 @@
+ 
+ xpaint_DEFINES = $(ARCH_DEFINES) $(EXTRA_DEFINES) $(XAWLIB_DEFINES)
+ 
+-LIBTOOL = /usr/bin/libtool
++LIBTOOL = ../libtool
++AM_LIBTOOLFLAGS = --tag=CC
+ AM_CFLAGS   = @X_CFLAGS@ @SPECIAL_CFLAGS@ $(xpaint_DEFINES)
+ AM_YFLAGS     = -d
+ CLEANFILES    = 
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -53,12 +53,16 @@
+ dist_man_MANS = xpaint.1 imgmerge.1
+ AM_CFLAGS   = @X_CFLAGS@ @SPECIAL_CFLAGS@ $(xpaint_DEFINES)
+ ACLOCAL_AMFLAGS = -I m4
+-BUILT_SOURCES = version.h DefaultRC.txt.h messages.h XPaint.ad.h xpaint.1
++BUILT_SOURCES = version.h DefaultRC.txt.h messages.h XPaint.ad.h xpaint.1 libtool
+ AM_YFLAGS     = -d
+ CLEANFILES    = preproc substads \
+ 	version.h DefaultRC.txt.h messages.h XPaint.ad.h xpaint.1
+ EXTRA_DIST    = 
+ 
++LIBTOOL_DEPS = @LIBTOOL_DEPS@
++libtool:
++	$(SHELL) ./config.status libtool
++
+ BASE_HDRS = bitmap.h color.h crc32.h \
+ 	Colormap.h ColormapP.h graphic.h hash.h image.h \
+ 	menu.h messages.h misc.h operation.h ops.h \

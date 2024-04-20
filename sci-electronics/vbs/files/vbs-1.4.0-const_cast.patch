@@ -1,0 +1,11 @@
+--- a/common/scp_tab.cc
++++ b/common/scp_tab.cc
+@@ -148,7 +148,7 @@
+ 		nm.replace(0,top.length()+1,"");
+ 	const char * n = nm.c_str();
+ 	size_t full, sub,diff;
+-	char * last_dot = strrchr(n,'.');
++	char * last_dot = const_cast<char*>(strrchr(n,'.'));
+ 	char * ret = 0;
+ 	if (last_dot != 0)
+ 		{

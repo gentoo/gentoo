@@ -1,0 +1,2 @@
+# Define startup options for Kerberos administration server
+KADMIND_OPTS=""

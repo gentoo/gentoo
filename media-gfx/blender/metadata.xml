@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>negril.nx+gentoo@gmail.com</email>
+		<name>Paul Zander</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>darkdefende@gmail.com</email>
+		<name>Sebastian Parborg</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Blender, the open source software for 3D modeling, animation,
+		rendering, post-production, interactive creation and playback.
+	</longdescription>
+	<use>
+		<flag name="alembic">
+			Add support for Alembic through
+			<pkg>media-gfx/alembic</pkg>.
+		</flag>
+		<flag name="bullet">
+			Enable Bullet (Physics Engine).
+		</flag>
+		<flag name="collada">
+			Add support for Collada interchange format through
+			<pkg>media-libs/opencollada</pkg>.
+		</flag>
+		<flag name="color-management">Enable color management via <pkg>media-libs/opencolorio</pkg>.</flag>
+		<flag name="cuda">
+			Build cycles renderer with nVidia CUDA support.
+		</flag>
+		<flag name="hip">
+			Build cycles renderer with AMD HIP support.
+		</flag>
+		<flag name="cycles">
+			Build cycles renderer (requires <pkg>media-libs/openimageio</pkg> and
+			<pkg>dev-libs/boost</pkg>).
+		</flag>
+		<flag name="cycles-bin-kernels">
+			Precompile the cycles render kernels for the CUDA/HIP/OneAPI backends, if they are enabled, at compile time.
+			This makes it so that the user doesn't have to wait for the kernels to compile when they are used for the first time in Blender.
+			If this option is not on, they will be built as needed at runtime.
+		</flag>
+		<flag name="dds">
+			Adds DDS textures support to Blender.
+		</flag>
+		<flag name="embree">
+			Use embree to accelerate certain areas of the Cycles render engine.
+		</flag>
+		<flag name="fluid">
+			Adds fluid simulation support via the built-in Mantaflow library.
+		</flag>
+		<flag name="headless">
+			Build without graphical support (renderfarm, server mode only).
+		</flag>
+		<flag name="nanovdb">
+			Enable nanoVDB support in Cycles. Uses less memory than regular openVDB when rendering.
+		</flag>
+		<flag name="ndof">
+			Enable NDOF input devices (SpaceNavigator and friends).
+		</flag>
+		<flag name="oidn">Enable OpenImageDenoiser Support</flag>
+		<flag name="openimageio">Enable OpenImageIO Support</flag>
+		<flag name="openpgl">Enable path guiding support in Cycles</flag>
+		<flag name="opensubdiv">
+			Add rendering support form OpenSubdiv from Dreamworks Animation
+			through <pkg>media-libs/opensubdiv</pkg>.
+		</flag>
+		<flag name="openvdb">
+			Enable openvdb for volumetric processing, like the voxel remesher. Also enables volumetric GPU preview rendering for Nvidia cards.
+		</flag>
+		<flag name="optix">
+			Add support for NVIDIA's OptiX Raytracing Engine.
+		</flag>
+		<flag name="osl">
+			Add support for OpenShadingLanguage scripting.
+		</flag>
+		<flag name="potrace">
+			Add support for converting bitmaps into Grease pencil line using the potrace library.
+		</flag>
+		<flag name="pugixml">
+			Enable PugiXML support (Used for OpenImageIO, Grease Pencil SVG export)
+		</flag>
+		<flag name="tbb">
+			Use threading building blocks library from <pkg>dev-cpp/tbb</pkg>.
+		</flag>
+	</use>
+</pkgmetadata>

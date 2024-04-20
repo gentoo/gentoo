@@ -1,0 +1,21 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -68,12 +68,12 @@
+     ,
+     [enable_debug=yes])
+ 
+-if test "x$enable_debug" = xyes; then
+-    CFLAGS="-O2 -g -DDEBUG"
+-else
+-	CFLAGS="-O2 -DNDEBUG"
+-fi
+-#AM_CONDITIONAL(ENABLE_DEBUG, test "$enable_debug" = "yes")
++#if test "x$enable_debug" = xyes; then
++#    CFLAGS="-O2 -g -DDEBUG"
++#else
++#	CFLAGS="-O2 -DNDEBUG"
++#fi
++AM_CONDITIONAL(ENABLE_DEBUG, test "$enable_debug" = "yes")
+ 
+ #
+ # Checks for programs.

@@ -1,0 +1,15 @@
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -23,10 +23,10 @@ typespeed.score:
+ 	@touch typespeed.score
+ 
+ install-data-hook:
+-	-chgrp games $(DESTDIR)$(highscoredir)/$(HIGHFILE) && \
++	-chgrp gamestat $(DESTDIR)$(highscoredir)/$(HIGHFILE) && \
+ 	chmod g+w $(DESTDIR)$(highscoredir)/$(HIGHFILE) && \
+ 	chmod o-rwx $(DESTDIR)$(highscoredir)/$(HIGHFILE)
+ 
+ install-exec-hook:
+-	-chgrp games $(DESTDIR)$(bindir)/typespeed && \
++	-chgrp gamestat $(DESTDIR)$(bindir)/typespeed && \
+ 	chmod g+s $(DESTDIR)$(bindir)/typespeed

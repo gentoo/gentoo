@@ -1,0 +1,30 @@
+diff --git a/bin/hipcc.pl b/bin/hipcc.pl
+index a143983..331881e 100755
+--- a/bin/hipcc.pl
++++ b/bin/hipcc.pl
+@@ -180,9 +180,6 @@ if ($HIP_PLATFORM eq "amd") {
+     $HIP_CLANG_RT_LIB = `$HIPCC --print-runtime-dir`;
+     chomp($HIP_CLANG_RT_LIB);
+
+-    if (! defined $HIP_CLANG_INCLUDE_PATH) {
+-        $HIP_CLANG_INCLUDE_PATH = abs_path("$HIP_CLANG_PATH/../lib/clang/$HIP_CLANG_VERSION/include");
+-    }
+     if (! defined $HIP_INCLUDE_PATH) {
+         $HIP_INCLUDE_PATH = "$HIP_PATH/include";
+     }
+@@ -195,15 +192,12 @@ if ($HIP_PLATFORM eq "amd") {
+             print ("HIP_ROCCLR_HOME=$HIP_ROCCLR_HOME\n");
+         }
+         print ("HIP_CLANG_PATH=$HIP_CLANG_PATH\n");
+-        print ("HIP_CLANG_INCLUDE_PATH=$HIP_CLANG_INCLUDE_PATH\n");
+         print ("HIP_INCLUDE_PATH=$HIP_INCLUDE_PATH\n");
+         print ("HIP_LIB_PATH=$HIP_LIB_PATH\n");
+         print ("DEVICE_LIB_PATH=$DEVICE_LIB_PATH\n");
+         print ("HIP_CLANG_RT_LIB=$HIP_CLANG_RT_LIB\n");
+     }
+
+-    $HIPCXXFLAGS .= " -isystem \"$HIP_CLANG_INCLUDE_PATH/..\"";
+-    $HIPCFLAGS .= " -isystem \"$HIP_CLANG_INCLUDE_PATH/..\"";
+     $HIPLDFLAGS .= " -L\"$HIP_LIB_PATH\"";
+     if ($isWindows) {
+       $HIPLDFLAGS .= " -lamdhip64";

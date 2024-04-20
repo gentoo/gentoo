@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/861767
+--- a/src/main/java/org/apache/commons/imaging/formats/png/chunks/PngChunk.java
++++ b/src/main/java/org/apache/commons/imaging/formats/png/chunks/PngChunk.java
+@@ -24,7 +24,7 @@ import org.apache.commons.imaging.common.BinaryFileParser;
+  * A PNG image is composed of several chunks. This is the base class for the chunks,
+  * used by the parser.
+  *
+- * @see <a href="https://en.wikipedia.org/wiki/Portable_Network_Graphics#%22Chunks%22_within_the_file>Portable_Network_Graphics</a>
++ * @see <a href="https://en.wikipedia.org/wiki/Portable_Network_Graphics#%22Chunks%22_within_the_file">Portable_Network_Graphics</a>
+  */
+ public class PngChunk extends BinaryFileParser {
+     public final int length;

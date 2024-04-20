@@ -1,0 +1,41 @@
+From e575ec4fc3654387c7358bd3640877ef32628d2c Mon Sep 17 00:00:00 2001
+From: Jan Beich <jbeich@FreeBSD.org>
+Date: Wed, 22 Nov 2023 19:44:13 +0100
+Subject: [PATCH] meson: also expose present_sync for VT-only after
+ a96d04f19d73
+
+$ meson setup --auto-features=disabled -Ddrm=enabled -Degl=enabled -Dgbm=enabled -Degl-drm=enabled /tmp/mpv_build
+$ meson compile -C /tmp/mpv_build
+[...]
+ld: error: undefined symbol: mp_present_initialize
+>>> referenced by drm_common.c
+>>>               libmpv.so.2.2.0.p/video_out_drm_common.c.o:(vo_drm_init)
+
+ld: error: undefined symbol: present_sync_update_values
+>>> referenced by drm_common.c
+>>>               libmpv.so.2.2.0.p/video_out_drm_common.c.o:(drm_pflip_cb)
+
+ld: error: undefined symbol: present_sync_swap
+>>> referenced by drm_common.c
+>>>               libmpv.so.2.2.0.p/video_out_drm_common.c.o:(drm_pflip_cb)
+
+ld: error: undefined symbol: present_sync_get_info
+>>> referenced by vo_drm.c
+>>>               libmpv.so.2.2.0.p/video_out_vo_drm.c.o:(get_vsync)
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index a3c3430dd47b..6fd5afa5122a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1049,7 +1049,7 @@ if features['xv']
+     sources += files('video/out/vo_xv.c')
+ endif
+ 
+-if features['wayland'] or features['x11']
++if features['wayland'] or features['x11'] or features['drm']
+     sources += ('video/out/present_sync.c')
+ endif
+ 

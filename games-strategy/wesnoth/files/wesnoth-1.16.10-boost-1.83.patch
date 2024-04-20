@@ -1,0 +1,26 @@
+From 136e651d69fc91fa7a4154f8a4a7e977cc46eca4 Mon Sep 17 00:00:00 2001
+From: Pentarctagon <pentarctagon@tutamail.com>
+Date: Thu, 17 Aug 2023 23:19:21 -0500
+Subject: [PATCH] Compile fix for boost 1.83.
+
+Fixes #7849
+---
+ src/gettext.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/gettext.cpp b/src/gettext.cpp
+index 9888dede35ad..fa9b17ba85b2 100644
+--- a/src/gettext.cpp
++++ b/src/gettext.cpp
+@@ -169,7 +169,11 @@ namespace
+ 			return msg;
+ 		}
+ 
++#if BOOST_VERSION < 108300
+ 		const char* get(int domain_id, const char* ctx, const char* sid, int n) const override
++#else
++		const char* get(int domain_id, const char* ctx, const char* sid, bl::count_type n) const override
++#endif
+ 		{
+ 			auto& base = get_base();
+ 			const char* msg = base.get(domain_id, ctx, sid, n);

@@ -1,0 +1,10 @@
+--- libsmbios-2.2.28/src/libsmbios_c/smi/smi_linux.c
++++ libsmbios-2.2.28/src/libsmbios_c/smi/smi_linux.c
+@@ -48,6 +48,7 @@
+ #define bufsize 256
+ 
+ // not in header file. for private use by unit tests.
++LIBSMBIOS_C_DLL_SPEC void set_basedir(const char *); // needed to link tests
+ void set_basedir(const char *newdir)
+ {
+     sysfs_basedir = newdir;

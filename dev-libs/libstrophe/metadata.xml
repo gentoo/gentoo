@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>nex+b-g-o@nexadn.de</email>
+		<name>Adrian Schollmeyer</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">strophe/libstrophe</remote-id>
+		<bugs-to>https://github.com/strophe/libstrophe/issues</bugs-to>
+	</upstream>
+	<longdescription lang="en">
+		libstrophe is a lightweight XMPP client library written
+		in C. It has minimal dependencies and is configurable
+		for various environments.
+	</longdescription>
+</pkgmetadata>

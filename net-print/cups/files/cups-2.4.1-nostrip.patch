@@ -1,0 +1,11 @@
+--- a/config-scripts/cups-compiler.m4	2022-01-27 12:11:42.000000000 +0100
++++ b/config-scripts/cups-compiler.m4	2022-05-01 11:24:58.855033882 +0200
+@@ -30,8 +30,6 @@
+ dnl For debugging, keep symbols, otherwise strip them...
+ AS_IF([test x$enable_debug = xyes -a "x$OPTIM" = x], [
+     OPTIM="-g"
+-], [
+-    INSTALL_STRIP="-s"
+ ])
+ 
+ dnl Debug printfs can slow things down, so provide a separate option for that

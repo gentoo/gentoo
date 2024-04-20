@@ -1,0 +1,47 @@
+diff --git a/conf/gkbuild.cmake b/conf/gkbuild.cmake
+index 0e70a8e..d005f84 100644
+--- a/conf/gkbuild.cmake
++++ b/conf/gkbuild.cmake
+@@ -29,16 +29,7 @@ endif(CYGWIN)
+ if(CMAKE_COMPILER_IS_GNUCC)
+ # GCC opts.
+   set(GK_COPTIONS "${GK_COPTIONS} -std=c99 -fno-strict-aliasing")
+-if(VALGRIND)
+-  set(GK_COPTIONS "${GK_COPTIONS} -march=x86-64 -mtune=generic")
+-else()
+-  set(GK_COPTIONS "${GK_COPTIONS} -march=native")
+-endif(VALGRIND)
+-  if(NOT MINGW)
+-      set(GK_COPTIONS "${GK_COPTIONS} -fPIC")
+-  endif(NOT MINGW)
+-# GCC warnings.
+-  set(GK_COPTIONS "${GK_COPTIONS} -Werror -Wall -pedantic -Wno-unused-function -Wno-unused-but-set-variable -Wno-unused-variable -Wno-unknown-pragmas -Wno-unused-label")
++
+ elseif(${CMAKE_C_COMPILER_ID} MATCHES "Sun")
+ # Sun insists on -xc99.
+   set(GK_COPTIONS "${GK_COPTIONS} -xc99")
+@@ -65,24 +56,10 @@ if(OPENMP)
+ endif(OPENMP)
+ 
+ 
+-# Add various definitions.
+-if(GDB)
+-  set(GK_COPTS "${GK_COPTS} -g")
+-  set(GK_COPTIONS "${GK_COPTIONS} -Werror")
+-else()
+-  set(GK_COPTS "-O3")
+-endif(GDB)
+-
+-
+ if(DEBUG)
+-  set(GK_COPTS "-Og")
+   set(GK_COPTIONS "${GK_COPTIONS} -DDEBUG")
+ endif(DEBUG)
+ 
+-if(GPROF)
+-  set(GK_COPTS "-pg")
+-endif(GPROF)
+-
+ if(NOT ASSERT)
+   set(GK_COPTIONS "${GK_COPTIONS} -DNDEBUG")
+ endif(NOT ASSERT)

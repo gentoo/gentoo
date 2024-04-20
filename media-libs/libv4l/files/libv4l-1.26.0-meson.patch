@@ -1,0 +1,111 @@
+From 11ca2682040d14ba1a3d65e95a6f0dfded5e4365 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Tue, 12 Dec 2023 13:39:21 +0000
+Subject: [PATCH 1/2] meson: Fix building with -Dv4l-utils=false
+
+ir_bpf_enabled was referenced without being defined.
+---
+ meson.build | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/meson.build b/meson.build
+index ab632976..7495a9c2 100644
+--- a/meson.build
++++ b/meson.build
+@@ -358,6 +358,8 @@ subdir('lib')
+ if get_option('v4l-utils')
+     subdir('utils')
+     subdir('contrib')
++else
++    ir_bpf_enabled = false
+ endif
+ 
+ subdir('doc')
+-- 
+2.42.1
+
+From 15343c83e43805223c098e4c5efe9e176343e801 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Tue, 12 Dec 2023 13:59:13 +0000
+Subject: [PATCH 2/2] meson: Allow documentation directory to be specified with
+ -Ddocdir
+
+This is needed by Gentoo Linux QA.
+
+Signed-off-by: James Le Cuirot <chewi@gentoo.org>
+---
+ doc/meson.build   | 2 +-
+ meson.build       | 5 +++++
+ meson_options.txt | 2 ++
+ 3 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/doc/meson.build b/doc/meson.build
+index 8f4437e7..4b23c3de 100644
+--- a/doc/meson.build
++++ b/doc/meson.build
+@@ -20,7 +20,7 @@ doxygen_install_dirs = []
+ doxygen_output = []
+ if get_option('doxygen-html')
+     doxygen_output += 'html'
+-    doxygen_install_dirs += get_option('datadir') / 'doc' / '@0@'.format(meson.project_name())
++    doxygen_install_dirs += docdir
+ endif
+ if get_option('doxygen-man')
+     doxygen_output += 'man'
+diff --git a/meson.build b/meson.build
+index 7495a9c2..0348b43b 100644
+--- a/meson.build
++++ b/meson.build
+@@ -289,6 +289,11 @@ if udevdir == ''
+     udevdir = '/lib/udev'
+ endif
+ 
++docdir = get_option('docdir')
++if docdir == ''
++    docdir = get_option('datadir') / 'doc' / '@0@'.format(meson.project_name())
++endif
++
+ qt5_opengl_test = '''
+ #define GL_GLEXT_PROTOTYPES
+ #define QT_NO_OPENGL_ES_2
+diff --git a/meson_options.txt b/meson_options.txt
+index 2fa046c0..53cf832f 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -32,6 +32,8 @@ option('v4l2-ctl-stream-to', type : 'boolean',
+        description : 'Enable use of --stream-to in v4l2-ctl')
+ 
+ # Directories
++option('docdir', type : 'string',
++       description : 'Set documentation directory')
+ option('gconvsysdir', type : 'string',
+        description : 'Set system gconv directory (default is to autodetect)')
+ option('libv4l1subdir', type : 'string', value : 'libv4l',
+-- 
+2.42.1
+
+From 8927b2e98efa070999fdf2c3c61825e672044ffd Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Mon, 1 Jan 2024 22:05:34 +0000
+Subject: [PATCH] meson: Fix missing v4l2gl dependency on argp
+
+Signed-off-by: James Le Cuirot <chewi@gentoo.org>
+---
+ contrib/test/meson.build | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/contrib/test/meson.build b/contrib/test/meson.build
+index 29b51df6..48ee67b1 100644
+--- a/contrib/test/meson.build
++++ b/contrib/test/meson.build
+@@ -107,6 +107,7 @@ if dep_gl.found() and dep_glu.found() and dep_x11.found()
+     )
+ 
+     v4l2gl_deps = [
++        dep_argp,
+         dep_gl,
+         dep_glu,
+         dep_libv4l2,
+-- 
+2.43.0
+

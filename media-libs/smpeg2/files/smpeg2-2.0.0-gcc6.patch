@@ -1,0 +1,21 @@
+gcc-6 is more strict WRT narrowing:
+error: narrowing conversion of ‘-1’ from ‘int’ to ‘unsigned int’ inside { } [-Wnarrowing]
+
+https://bugs.gentoo.org/594912
+--- a/audio/hufftable.cpp
++++ b/audio/hufftable.cpp
+@@ -552,3 +552,3 @@ const HUFFMANCODETABLE MPEGaudio::ht[HTN]=
+ {
+-  { 0, 0-1, 0-1, 0,  0, htd33},
++  { 0, ~0u, ~0u, 0,  0, htd33},
+   { 1, 2-1, 2-1, 0,  7,htd01},
+@@ -556,3 +556,3 @@ const HUFFMANCODETABLE MPEGaudio::ht[HTN]=
+   { 3, 3-1, 3-1, 0, 17,htd03},
+-  { 4, 0-1, 0-1, 0,  0, htd33},
++  { 4, ~0u, ~0u, 0,  0, htd33},
+   { 5, 4-1, 4-1, 0, 31,htd05},
+@@ -566,3 +566,3 @@ const HUFFMANCODETABLE MPEGaudio::ht[HTN]=
+   {13,16-1,16-1, 0,511,htd13},
+-  {14, 0-1, 0-1, 0,  0, htd33},
++  {14,~0u,  ~0u, 0,  0, htd33},
+   {15,16-1,16-1, 0,511,htd15},

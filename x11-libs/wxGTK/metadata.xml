@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>wxwidgets@gentoo.org</email>
+		<name>Gentoo wxWidgets Project</name>
+	</maintainer>
+	<use>
+		<flag name="gstreamer">
+			Enable the wxMediaCtrl class for playing audio and video through
+			gstreamer.
+		</flag>
+		<flag name="sdl">
+			Use Simple Directmedia Layer (<pkg>media-libs/libsdl</pkg>) for
+			audio.
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">wxpython</remote-id>
+		<remote-id type="github">wxWidgets/wxWidgets</remote-id>
+	</upstream>
+	<slots>
+		<slot name="*">Slots reflect MAJOR.MINOR versions which can
+			be installed in parallel.</slot>
+	</slots>
+</pkgmetadata>

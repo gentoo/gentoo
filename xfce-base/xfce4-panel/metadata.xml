@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>xfce@gentoo.org</email>
+		<name>XFCE Team</name>
+	</maintainer>
+	<use>
+		<flag name="dbusmenu">
+			Enable <pkg>dev-libs/libdbusmenu</pkg> integration
+			(in status notifier plugin)
+		</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,20 @@
+--- a/src/generic_helpers.c
++++ b/src/generic_helpers.c
+@@ -27,6 +27,7 @@
+ 
+ #include <stdlib.h>
+ #include <string.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+--- a/src/terminal_helpers.c
++++ b/src/terminal_helpers.c
+@@ -25,6 +25,7 @@
+ 
+ #include <stdlib.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <unistd.h>
+ #include <stdio.h>
+ #include <string.h>

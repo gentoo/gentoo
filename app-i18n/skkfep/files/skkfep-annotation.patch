@@ -1,0 +1,29 @@
+--- a/kkconv.c
++++ b/kkconv.c
+@@ -645,6 +645,7 @@
+ char c;
+ {
+ 	int l;
++	char *p;
+ 	DicList dlist;
+ 
+ 	kanjiSelectionEffect(0);
+@@ -653,7 +654,17 @@
+ 		if (OkuriInput)
+ 			l += strlen(OkuriBuf);
+ 		csrLeft(l);
+-		writeShells(CurrentCand->candword);
++		p= strrchr(CurrentCand->candword,';');
++		if (p != NULL) {
++			erase(l);
++			csrLeft(l);
++			l -= strlen(p);
++			*p = '\0';
++			writeShells(CurrentCand->candword);
++			*p = ';';
++		} else {
++			writeShells(CurrentCand->candword);
++		}
+ 		if (OkuriInput) {
+ 			writeShells(OkuriBuf);
+ 		}

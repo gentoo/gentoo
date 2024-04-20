@@ -1,0 +1,13 @@
+--- a/getdate.c
++++ b/getdate.c
+@@ -214,7 +214,9 @@
+     				/* Dangerous!  Could upset cron and other
+ 				 * timer related events.
+ 				 */
+-    stime(&new_time);
++    struct timespec s = {0};
++    s.tv_sec = new_time;
++    clock_settime(CLOCK_REALTIME, &s);
+     print_samples(host, first_sample, second_sample);
+     printf("getdate: set time to %s to match host %s\n", 
+ 	   time_to_str(new_time),

@@ -1,0 +1,7 @@
+user psybnc {
+	default {
+		allow spoof
+		allow spoof_all
+		allow spoof_privport
+	}
+}

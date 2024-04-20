@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/sbin/postfwd3"
+command_args="--nodaemon --file ${POSTFWD_CONFIG} --interface=${POSTFWD_LISTEN} \
+	--port=${POSTFWD_PORT} ${POSTFWD_OPTS}"
+command_background=true
+command_user="${POSTFWD_USER}:${POSTFWD_GROUP}"
+pidfile="/run/${RC_SVCNAME}.pid"
+required_files="${POSTFWD_CONFIG}"

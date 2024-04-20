@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/877301
+--- a/Sources/API/Core/System/cl_assert.h
++++ b/Sources/API/Core/System/cl_assert.h
+@@ -33,6 +33,8 @@
+ #ifndef header_cl_assert
+ #define header_cl_assert
+ 
++#include <cstddef>
++
+ #ifdef CL_API_DLL
+ #ifdef CL_CORE_EXPORT
+ #define CL_API_CORE __declspec(dllexport)

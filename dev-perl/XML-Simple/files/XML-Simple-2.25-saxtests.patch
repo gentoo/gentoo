@@ -1,0 +1,45 @@
+From 83774c87a0cc98379bc166fc0f6d028e68063a53 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Tue, 27 Mar 2018 20:11:48 +1300
+Subject: Force XML::SAX::PurePerl for XMLin/XMLout tests
+
+As for some reason, accidentally getting XML::LibXML::SAX
+results in this test failing with encoding problems.
+
+Bug: https://bugs.gentoo.org/625538
+---
+ t/1_XMLin.t  | 3 +++
+ t/2_XMLout.t | 2 ++
+ 2 files changed, 5 insertions(+)
+
+diff --git a/t/1_XMLin.t b/t/1_XMLin.t
+index 84935cd..bd5cf71 100644
+--- a/t/1_XMLin.t
++++ b/t/1_XMLin.t
+@@ -6,6 +6,9 @@ use IO::File;
+ use File::Spec;
+ 
+ use XML::Simple;
++use XML::SAX;
++
++$XML::SAX::ParserPackage = "XML::SAX::PurePerl";
+ 
+ # Initialise filenames and check they're there
+ 
+diff --git a/t/2_XMLout.t b/t/2_XMLout.t
+index 471d9ce..d0d8dcf 100644
+--- a/t/2_XMLout.t
++++ b/t/2_XMLout.t
+@@ -26,7 +26,9 @@ sub ReadFile {
+ }
+ 
+ use XML::Simple;
++use XML::SAX;
+ 
++$XML::SAX::ParserPackage = "XML::SAX::PurePerl";
+ # Confirm error when mandatory parameter missing
+ 
+ $_ = eval {
+-- 
+2.16.2
+

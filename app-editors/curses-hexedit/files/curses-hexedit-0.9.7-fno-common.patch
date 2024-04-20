@@ -1,0 +1,53 @@
+--- a/src/hexedit.h
++++ b/src/hexedit.h
+@@ -340,7 +340,7 @@
+ 
+ 
+    /* Global structure, keep most global variables here. */
+-struct
++struct Globals_t
+ {
+    WINDOW *wmain, *wstatus, *whelp; /* three windows used throughout. */
+    unsigned long filesize;          /* size of the file buffer. */
+@@ -362,7 +362,9 @@
+                                     /* buf end. */
+    int beeping;                     /* Allow beeping or not. */
+    int help_msg_count;              /* Number of messages in help menu. */
+-} Globals;
++};
++
++extern struct Globals_t Globals;
+ 
+ 
+ struct foundit
+@@ -397,7 +399,9 @@
+    int s;
+    struct Change *base;
+    struct Change *top;
+-} UndoStack;
++};
++
++extern struct ChangeLog UndoStack;
+ 
+ 
+ struct FileNames
+--- a/src/main.c
++++ b/src/main.c
+@@ -16,6 +16,7 @@
+ #include "hexedit.h"
+ #include <assert.h>
+ 
++struct Globals_t Globals;
+ 
+ int
+ main (int argc, char **argv)
+--- a/src/undo.c
++++ b/src/undo.c
+@@ -15,6 +15,7 @@
+ #include <assert.h>
+ #include "hexedit.h"
+ 
++struct ChangeLog UndoStack;
+ 
+ void
+ pushUndo (int type, unsigned long offset,

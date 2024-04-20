@@ -1,0 +1,33 @@
+--- a/def.h
++++ b/def.h
+@@ -107,7 +107,7 @@
+  * Given a file address, determine the block number it represents.
+  */
+ #define blockof(off)			((int) ((off) / 4096))
+-#define offsetof(off)			((int) ((off) % 4096))
++#define offsetofmailx(off)			((int) ((off) % 4096))
+ #define positionof(block, offset)	((off_t)(block) * 4096 + (offset))
+ 
+ /*
+--- a/edit.c
++++ b/edit.c
+@@ -133,7 +133,7 @@
+ 			(void)fseek(otf, 0L, SEEK_END);
+ 			size = ftell(otf);
+ 			mp->m_block = blockof(size);
+-			mp->m_offset = offsetof(size);
++			mp->m_offset = offsetofmailx(size);
+ 			mp->m_size = fsize(fp);
+ 			mp->m_lines = 0;
+ 			mp->m_flag |= MODIFY;
+--- a/fio.c
++++ b/fio.c
+@@ -139,7 +139,7 @@
+ 			this.m_size = 0;
+ 			this.m_lines = 0;
+ 			this.m_block = blockof(offset);
+-			this.m_offset = offsetof(offset);
++			this.m_offset = offsetofmailx(offset);
+ 			inhead = 1;
+ 		} else if (linebuf[0] == 0) {
+ 			inhead = 0;

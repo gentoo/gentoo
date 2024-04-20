@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+# SPDX-License-Identifier: MIT
+
+description="Support for NVIDIA Dynamic Boost (only for use with specific laptops)"
+command="nvidia-powerd"
+command_background=true
+pidfile="/var/run/nvidia-powerd.pid"
+
+depend() {
+	need dbus
+}

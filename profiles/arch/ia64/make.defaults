@@ -1,0 +1,31 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+ARCH="ia64"
+ACCEPT_KEYWORDS="ia64 ~ia64"
+
+CHOST="ia64-unknown-linux-gnu"
+CFLAGS="-O2 -pipe"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2017-06-03)
+# Enable USE=libtirpc by default, to ease dependency resolution during
+# the stabilization of glibc-2.26. Bug 657148
+USE="libtirpc"
+
+# Michał Górny <mgorny@gentoo.org> (2014-07-01)
+# Set ABI & DEFAULT_ABI consistently with ${ARCH}, to make ebuild
+# checks simpler.
+ABI="ia64"
+DEFAULT_ABI="ia64"
+MULTILIB_ABIS="ia64"
+LIBDIR_ia64="lib"
+CHOST_ia64="${CHOST}"
+
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
+# Defaults for video drivers
+#VIDEO_CARDS="fbdev mga r128 radeon"
+INPUT_DEVICES="void"
+VIDEO_CARDS="dummy"

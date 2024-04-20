@@ -1,0 +1,12 @@
+diff --git a/setup.py b/setup.py
+index df72a6a..b2082c6 100755
+--- a/setup.py
++++ b/setup.py
+@@ -143,6 +143,7 @@ class InstallCmd(install):
+ 
+   def run(self):
+     install.run(self)
++    return
+     manpages = ['doc/chkcrontab.1']
+     if self.manprefix:
+       for manpage in manpages:

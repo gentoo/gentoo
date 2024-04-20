@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>sparky@bluefang-logic.com</email>
+		<name>Matthew Turnbull</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">linuxmint/cinnamon-control-center</remote-id>
+	</upstream>
+	<use>
+		<flag name="gnome-online-accounts">Enable configuration panel for <pkg>net-libs/gnome-online-accounts</pkg> accounts</flag>
+		<flag name="modemmanager">Enable support for mobile broadband devices using <pkg>net-misc/modemmanager</pkg></flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,36 @@
+# Gentoo bug: https://bugs.gentoo.org/919503
+
+diff --git a/tcpkill.c b/tcpkill.c
+index 1a64d40..de7ad00 100644
+--- a/tcpkill.c
++++ b/tcpkill.c
+@@ -19,6 +19,7 @@
+ #include <err.h>
+ #include <libnet.h>
+ #include <pcap.h>
++#include <inttypes.h>
+ 
+ #include "pcaputil.h"
+ #include "version.h"
+@@ -84,7 +85,7 @@ tcp_kill_cb(u_char *user, const struct pcap_pkthdr *pcap, const u_char *pkt)
+ 		if (libnet_write(l) < 0)
+ 			warn("write");
+ 		
+-		fprintf(stderr, "%s R %lu:%lu(0) win 0\n", ctext, seq, seq);
++		fprintf(stderr, "%s R %"PRIu32":%"PRIu32"(0) win 0\n", ctext, seq, seq);
+ 	}
+ }
+ 
+diff --git a/urlsnarf.c b/urlsnarf.c
+index f46ccf8..d57b9dd 100644
+--- a/urlsnarf.c
++++ b/urlsnarf.c
+@@ -341,7 +341,7 @@ main(int argc, char *argv[])
+ 	}
+ 
+ 	struct pcap_pkthdr *h;
+-	u_char *d;
++	const u_char *d;
+ 	int rc;
+ 	while ((rc = pcap_next_ex(p, &h, &d)) == 1) {
+ 		tt = h->ts.tv_sec;

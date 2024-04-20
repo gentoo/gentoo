@@ -1,0 +1,67 @@
+Fix build
+
+https://bugs.gentoo.org/912853
+
+--- a/3rdparty/libprojectm/CMakeLists.txt
++++ b/3rdparty/libprojectm/CMakeLists.txt
+@@ -24,7 +24,7 @@ set(BUILD_PROJECTM_STATIC ON)
+ set(DISABLE_NATIVE_PRESETS ON)
+ set(DISABLE_MILKDROP_PRESETS OFF)
+ 
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+ 
+ pkg_check_modules(GLEW glew)
+ 
+--- a/3rdparty/qtsingleapplication/CMakeLists.txt
++++ b/3rdparty/qtsingleapplication/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ cmake_minimum_required(VERSION 3.0.0)
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++0x")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++17")
+ 
+ set(SINGLEAPP-SOURCES
+     qtlocalpeer.cpp
+--- a/ext/libclementine-common/CMakeLists.txt
++++ b/ext/libclementine-common/CMakeLists.txt
+@@ -2,7 +2,7 @@ include_directories(${PROTOBUF_INCLUDE_DIRS})
+ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+ 
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++0x")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++17")
+ 
+ set(SOURCES
+   core/closure.cpp
+--- a/ext/libclementine-remote/CMakeLists.txt
++++ b/ext/libclementine-remote/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ include_directories(${PROTOBUF_INCLUDE_DIRS})
+ 
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++0x")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++17")
+ 
+ set(MESSAGES
+   remotecontrolmessages.proto
+--- a/ext/libclementine-tagreader/CMakeLists.txt
++++ b/ext/libclementine-tagreader/CMakeLists.txt
+@@ -3,7 +3,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+ include_directories(${CMAKE_SOURCE_DIR}/ext/libclementine-common)
+ 
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++0x")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++17")
+ 
+ set(MESSAGES
+   tagreadermessages.proto
+--- a/gst/moodbar/CMakeLists.txt
++++ b/gst/moodbar/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ cmake_minimum_required(VERSION 3.0.0)
+ 
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Woverloaded-virtual -Wall --std=c++0x")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Woverloaded-virtual -Wall --std=c++17")
+ 
+ include_directories(${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
+ 

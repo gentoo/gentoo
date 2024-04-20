@@ -1,0 +1,22 @@
+https://github.com/thom311/libnl/pull/360
+
+From 32f84a052a4383299b9f30ad09d2a70c3b2cf2b3 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 31 Aug 2023 06:59:59 +0100
+Subject: [PATCH] Makefile.am: avoid use of non-portable echo arguments
+
+This fixes tests with a non-bash shell as /bin/sh (in this case, dash) which
+does not support `echo -e`. echo itself is portable, but not echo with any arguments.
+
+Use `printf` instead.
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1129,7 +1129,7 @@ EXTRA_DIST += \
+ 
+ %.build-headers-test.c: %
+ 	mkdir -p "$(dir $@)"
+-	echo -e "#include <$$(echo "$<" | sed 's|.*\<include/netlink/|netlink/|')>\nint main(int argc, char **argv) { return 0; }" > $@
++	printf "#include <$$(echo "$<" | sed 's|.*\<include/netlink/|netlink/|')>\nint main(int argc, char **argv) { return 0; }" > $@
+ 
+ %.build-headers-test.o: %.build-headers-test.c
+ 	$(COMPILE) -Wall -Werror -Wno-error=cpp -I$(srcdir)/include -I$(builddir)/include -c -o $@ $<

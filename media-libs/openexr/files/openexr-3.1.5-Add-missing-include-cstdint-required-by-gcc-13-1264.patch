@@ -1,0 +1,44 @@
+From https://github.com/AcademySoftwareFoundation/openexr/commit/c5763cfdf59ef4880dacdb11664782822a0976cd
+From: Cary Phillips <cary@ilm.com>
+Date: Sun, 31 Jul 2022 13:36:03 -0700
+Subject: [PATCH 1/4] Add missing #include <cstdint> required by gcc-13 (#1264)
+
+Originally submitted as #1262, thanks.
+
+Signed-off-by: Cary Phillips <cary@ilm.com>
+
+Adapted changes in exrcheck/main.cpp for 3.1.5 code base on Gentoo (different
+ordering of #included header files compared to current HEAD).
+--- a/src/bin/exrcheck/main.cpp
++++ b/src/bin/exrcheck/main.cpp
+@@ -4,6 +4,7 @@
+ #include <ImfCheckFile.h>
+ #include <ImathConfig.h>
+ 
++#include <cstdint>
+ #include <iostream>
+ #include <fstream>
+ #include <string.h>
+--- a/src/lib/OpenEXR/ImfDeepTiledInputFile.h
++++ b/src/lib/OpenEXR/ImfDeepTiledInputFile.h
+@@ -19,6 +19,7 @@
+ 
+ #include "ImfTileDescription.h"
+ 
++#include <cstdint>
+ #include <ImathBox.h>
+ 
+ OPENEXR_IMF_INTERNAL_NAMESPACE_HEADER_ENTER
+--- a/src/lib/OpenEXR/ImfDeepTiledInputPart.h
++++ b/src/lib/OpenEXR/ImfDeepTiledInputPart.h
+@@ -10,6 +10,7 @@
+ 
+ #include "ImfTileDescription.h"
+ 
++#include <cstdint>
+ #include <ImathBox.h>
+ 
+ OPENEXR_IMF_INTERNAL_NAMESPACE_HEADER_ENTER
+-- 
+2.37.3
+

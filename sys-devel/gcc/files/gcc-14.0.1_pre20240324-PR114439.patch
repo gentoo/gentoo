@@ -1,0 +1,112 @@
+https://bugs.gentoo.org/927657
+https://gcc.gnu.org/PR114439
+https://gcc.gnu.org/git/gitweb.cgi?p=gcc.git;h=de0886d48032332d10e4acb5d15c8789b281b6fe
+
+From de0886d48032332d10e4acb5d15c8789b281b6fe Mon Sep 17 00:00:00 2001
+From: Marek Polacek <polacek@redhat.com>
+Date: Mon, 25 Mar 2024 15:32:20 -0400
+Subject: [PATCH] c++: broken direct-init with trailing array member [PR114439]
+
+can_init_array_with_p is wrongly saying that the init for 's' here:
+
+  struct S {
+    int *list = arr;
+    int arr[];
+  };
+
+  struct A {
+    A() {}
+    S s[2]{};
+  };
+
+is invalid.  But as process_init_constructor_array says, for "non-constant
+initialization of trailing elements with no explicit initializers" we use
+a VEC_INIT_EXPR wrapped in a TARGET_EXPR, built in process_init_constructor.
+
+Unfortunately we didn't have a test for this scenario so I didn't
+realize can_init_array_with_p must handle it.
+
+	PR c++/114439
+
+gcc/cp/ChangeLog:
+
+	* init.cc (can_init_array_with_p): Return true for a VEC_INIT_EXPR
+	wrapped in a TARGET_EXPR.
+
+gcc/testsuite/ChangeLog:
+
+	* g++.dg/init/array65.C: New test.
+---
+ gcc/cp/init.cc                      |  6 ++++-
+ gcc/testsuite/g++.dg/init/array65.C | 38 +++++++++++++++++++++++++++++
+ 2 files changed, 43 insertions(+), 1 deletion(-)
+ create mode 100644 gcc/testsuite/g++.dg/init/array65.C
+
+diff --git a/gcc/cp/init.cc b/gcc/cp/init.cc
+index dbd37d47cbf..a93ce00800c 100644
+--- a/gcc/cp/init.cc
++++ b/gcc/cp/init.cc
+@@ -950,12 +950,16 @@ can_init_array_with_p (tree type, tree init)
+      mem-initializers of a constructor.  */
+   if (DECL_DEFAULTED_FN (current_function_decl))
+     return true;
+-  /* As an extension, we allow copying from a compound literal.  */
+   if (TREE_CODE (init) == TARGET_EXPR)
+     {
+       init = TARGET_EXPR_INITIAL (init);
++      /* As an extension, we allow copying from a compound literal.  */
+       if (TREE_CODE (init) == CONSTRUCTOR)
+ 	return CONSTRUCTOR_C99_COMPOUND_LITERAL (init);
++      /* VEC_INIT_EXPR is used for non-constant initialization of trailing
++	 elements with no explicit initializers.  */
++      else if (TREE_CODE (init) == VEC_INIT_EXPR)
++	return true;
+     }
+ 
+   return false;
+diff --git a/gcc/testsuite/g++.dg/init/array65.C b/gcc/testsuite/g++.dg/init/array65.C
+new file mode 100644
+index 00000000000..0b144f45a9d
+--- /dev/null
++++ b/gcc/testsuite/g++.dg/init/array65.C
+@@ -0,0 +1,38 @@
++// PR c++/114439
++// { dg-do compile { target c++11 } }
++
++struct S {
++  int *list = arr;
++  __extension__ int arr[];
++};
++
++struct R {
++  int *list = arr;
++  int arr[2];
++};
++
++struct A {
++  A() {}
++  S s[2]{};
++};
++
++struct A2 {
++  A2() {}
++  S s[2]{ {}, {} };
++};
++
++struct B {
++  B() {}
++  R r[2]{};
++};
++
++struct B2 {
++  B2() {}
++  R r[2]{ {}, {} };
++};
++
++struct S1 { S1(); };
++struct S2 {
++  S2() {}
++  S1 a[1] {};
++};
+-- 
+2.39.3

@@ -1,0 +1,40 @@
+https://git.samba.org/?p=pam_wrapper.git;a=commitdiff;h=7bd24b0e54995da5f333575f97c9f1fa796fe0f1
+
+From 7bd24b0e54995da5f333575f97c9f1fa796fe0f1 Mon Sep 17 00:00:00 2001
+From: =?utf8?q?Jan=20Kundr=C3=A1t?= <jan.kundrat@cesnet.cz>
+Date: Mon, 6 Nov 2023 18:34:58 +0100
+Subject: [PATCH] die quickly upon mkdir failure
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf8
+Content-Transfer-Encoding: 8bit
+
+We just had this failure in our CI system that's currently running just
+three PAM-wrapped tests in parallel. Since this is a classic TOCTOU race
+(albeit in a test code, and therefore with little to no security
+implications), the `mkdir` can fail, and when that happens it's much
+better to just die quickly rather than continuing as if nothing
+happened.
+
+Signed-off-by: Jan KundrÃ¡t <jan.kundrat@cesnet.cz>
+Reviewed-by: Pavel FilipenskÃ½ <pfilipensky@samba.org>
+Reviewed-by: Andreas Schneider <asn@cryptomilk.org>
+--- a/src/pam_wrapper.c
++++ b/src/pam_wrapper.c
+@@ -893,6 +893,7 @@ static void pwrap_init(void)
+ 		PWRAP_LOG(PWRAP_LOG_ERROR,
+ 			  "Failed to create pam_wrapper config dir: %s - %s",
+ 			  tmp_config_dir, strerror(errno));
++		exit(1);
+ 	}
+ 
+ 	/* Create file with the PID of the the process */
+@@ -1121,6 +1122,7 @@ static void pwrap_init(void)
+ 		PWRAP_LOG(PWRAP_LOG_ERROR,
+ 			  "Failed to create pam_wrapper config dir: %s - %s",
+ 			  tmp_config_dir, strerror(errno));
++		exit(1);
+ 	}
+ 
+ 	/* Create file with the PID of the the process */
+-- 
+2.34.1

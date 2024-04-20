@@ -1,0 +1,18 @@
+Conversion examples
+===================
+
+CCD-RAW -> TIFF, using 'pnmtotiff' from the 'media-libs/netpbm' package:
+
+	$ dcraw -c crw_0001.crw | pnmtotiff -truecolor > crw_0001.tiff
+
+CCD-RAW -> PNG, using 'pnmtopng' from the 'media-libs/netpbm' package:
+
+	$ dcraw -c crw_0001.crw | pnmtopng > crw_0001.png
+
+CCD-RAW -> BMP, using 'ppmtobmp' from the 'media-libs/netpbm' package:
+
+	$ dcraw -c crw_0001.crw | ppmtobmp > crw_0001.bmp
+
+CCD-RAW -> JPEG, using 'cjpeg' from the 'media-libs/jpeg' package:
+
+	$ dcraw -c crw_0001.crw | cjpeg > crw_0001.jpeg

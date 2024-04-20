@@ -1,0 +1,11 @@
+service nrpe {
+	socket_type = stream
+	protocol    = tcp
+	wait        = no
+	user        = nagios
+	group       = nagios
+	server      = /usr/libexec/nrpe
+	server_args = -c /etc/nagios/nrpe.cfg --inetd
+#	only_from   = 127.0.0.1
+	disabled    = yes
+}

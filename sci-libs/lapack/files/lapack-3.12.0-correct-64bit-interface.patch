@@ -1,0 +1,38 @@
+From 26db2da3eb84856d997e05caf9904a6b56eac1e8 Mon Sep 17 00:00:00 2001
+From: Simon Maertens <simon@slmaertens.dev>
+Date: Wed, 29 Nov 2023 14:30:30 +0000
+Subject: [PATCH] Fixed Fortran compiler flags check for nagfor compiler and
+ usage in CBLAS target
+
+---
+ CBLAS/CMakeLists.txt                 | 4 ++++
+ CMAKE/CheckLAPACKCompilerFlags.cmake | 1 +
+ 2 files changed, 5 insertions(+)
+
+diff --git a/CBLAS/CMakeLists.txt b/CBLAS/CMakeLists.txt
+index c276f7da3d..b01d795af9 100644
+--- a/CBLAS/CMakeLists.txt
++++ b/CBLAS/CMakeLists.txt
+@@ -14,6 +14,10 @@ if(CMAKE_Fortran_COMPILER)
+   FortranCInterface_HEADER(${LAPACK_BINARY_DIR}/include/cblas_mangling.h
+                           MACRO_NAMESPACE "F77_"
+                           SYMBOL_NAMESPACE "F77_")
++
++  # Check for any necessary platform specific compiler flags
++  include(CheckLAPACKCompilerFlags)
++  CheckLAPACKCompilerFlags()
+ endif()
+ if(NOT FortranCInterface_GLOBAL_FOUND OR NOT FortranCInterface_MODULE_FOUND)
+   message(WARNING "Reverting to pre-defined include/cblas_mangling.h")
+diff --git a/CMAKE/CheckLAPACKCompilerFlags.cmake b/CMAKE/CheckLAPACKCompilerFlags.cmake
+index ecb5009ae5..653b817583 100644
+--- a/CMAKE/CheckLAPACKCompilerFlags.cmake
++++ b/CMAKE/CheckLAPACKCompilerFlags.cmake
+@@ -177,6 +177,7 @@ elseif( CMAKE_Fortran_COMPILER_ID STREQUAL "NAG" )
+   endif()
+ 
+   # Suppress compiler banner and summary
++  include(CheckFortranCompilerFlag)
+   check_fortran_compiler_flag("-quiet" _quiet)
+   if( _quiet AND NOT ("${CMAKE_Fortran_FLAGS}" MATCHES "[-/]quiet") )
+     set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -quiet")

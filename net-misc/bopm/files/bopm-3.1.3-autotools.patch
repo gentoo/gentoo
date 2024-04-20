@@ -1,0 +1,130 @@
+--- bopm-3.1.3/configure.ac
++++ bopm-3.1.3/configure.ac
+@@ -1,5 +1,6 @@
+ dnl Process this file with autoconf to produce a configure script.
+ AC_INIT(bopm, [3.1.3])
++AC_CONFIG_MACRO_DIR([src/libopm/m4])
+ AC_CONFIG_SRCDIR(src/opercmd.h)
+ AM_CONFIG_HEADER(src/setup.h)
+ AM_INIT_AUTOMAKE()
+--- bopm-3.1.3/Makefile.am
++++ bopm-3.1.3/Makefile.am
+@@ -2,22 +2,9 @@
+ 
+ SUBDIRS = src
+ 
+-data_DATA = bopm.conf.sample bopm.conf.blitzed
++dist_doc_DATA = bopm.conf.sample bopm.conf.blitzed
+ 
+-EXTRA_DIST = ChangeLog contrib INSTALL README bopm.conf.sample bopm.conf.blitzed network-bopm
++EXTRA_DIST = ChangeLog contrib INSTALL README network-bopm
+ 
+-install-data-local:
+-	@if test -f $(sysconfdir)/bopm.conf ; then \
+-		echo "$@ will not overwrite existing $(sysconfdir)/bopm.conf"; \
+-	else \
+-		$(mkinstalldirs) $(sysconfdir); \
+-		echo "$(INSTALL_DATA) bopm.conf.sample $(sysconfdir)/bopm.conf"; \
+-		$(INSTALL_DATA) bopm.conf.sample $(sysconfdir)/bopm.conf; \
+-	fi
+-	$(mkinstalldirs) $(localstatedir)
++dist_sysconf_DATA = bopm.conf
+ 
+-uninstall-local:
+-	@if test -f $(sysconfdir)/bopm.conf ; then \
+-		echo "rm -f $(sysconfdir)/bopm.conf"; \
+-		$(RM) -f $(sysconfdir)/bopm.conf; \
+-	fi
+--- bopm-3.1.3/src/libopm/configure.ac
++++ bopm-3.1.3/src/libopm/configure.ac
+@@ -1,5 +1,6 @@
+ dnl Process this file with autoconf to produce a configure script.
+ AC_INIT(libopm, [0.1])
++AC_CONFIG_MACRO_DIR([m4])
+ AC_CONFIG_SRCDIR(src/libopm.h)
+ AM_CONFIG_HEADER(src/setup.h)
+ AM_INIT_AUTOMAKE()
+--- bopm-3.1.3/src/libopm/m4/etr_socket_nsl.m4
++++ bopm-3.1.3/src/libopm/m4/etr_socket_nsl.m4
+@@ -0,0 +1,81 @@
++dnl @synopsis ETR_SOCKET_NSL
++dnl
++dnl @obsoleted Use LIB_SOCKET_NSL instead.
++dnl
++dnl This macro figures out what libraries are required on this platform
++dnl to link sockets programs. It's usually -lsocket and/or -lnsl or
++dnl neither. We test for all three combinations.
++dnl
++dnl @category Obsolete
++dnl @author Warren Young <warren@etr-usa.com>
++dnl @version 2005-09-02
++dnl @license AllPermissive
++
++AC_DEFUN([ETR_SOCKET_NSL],
++[
++AC_CACHE_CHECK(for libraries containing socket functions,
++ac_cv_socket_libs, [
++        oCFLAGS=$CFLAGS
++
++        AC_TRY_LINK([
++                        #include <sys/types.h>
++                        #include <sys/socket.h>
++                        #include <netinet/in.h>
++                        #include <arpa/inet.h>
++                ],
++                [
++                        struct in_addr add;
++                        int sd = socket(AF_INET, SOCK_STREAM, 0);
++                        inet_ntoa(add);
++                ],
++                ac_cv_socket_libs=-lc, ac_cv_socket_libs=no)
++
++        if test x"$ac_cv_socket_libs" = "xno"
++        then
++                CFLAGS="$oCFLAGS -lsocket"
++                AC_TRY_LINK([
++                                #include <sys/types.h>
++                                #include <sys/socket.h>
++                                #include <netinet/in.h>
++                                #include <arpa/inet.h>
++                        ],
++                        [
++                                struct in_addr add;
++                                int sd = socket(AF_INET, SOCK_STREAM, 0);
++                                inet_ntoa(add);
++                        ],
++                        ac_cv_socket_libs=-lsocket, ac_cv_socket_libs=no)
++        fi
++
++        if test x"$ac_cv_socket_libs" = "xno"
++        then
++                CFLAGS="$oCFLAGS -lsocket -lnsl"
++                AC_TRY_LINK([
++                                #include <sys/types.h>
++                                #include <sys/socket.h>
++                                #include <netinet/in.h>
++                                #include <arpa/inet.h>
++                        ],
++                        [
++                                struct in_addr add;
++                                int sd = socket(AF_INET, SOCK_STREAM, 0);
++                                inet_ntoa(add);
++                        ],
++                        ac_cv_socket_libs="-lsocket -lnsl", ac_cv_socket_libs=no)
++        fi
++
++        CFLAGS=$oCFLAGS
++])
++
++        if test x"$ac_cv_socket_libs" = "xno"
++        then
++                AC_MSG_ERROR([Cannot find socket libraries])
++        elif test x"$ac_cv_socket_libs" = "x-lc"
++        then
++                ETR_SOCKET_LIBS=""
++        else
++                ETR_SOCKET_LIBS="$ac_cv_socket_libs"
++        fi
++
++        AC_SUBST(ETR_SOCKET_LIBS)
++]) dnl ETR_SOCKET_NSL

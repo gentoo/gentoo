@@ -1,0 +1,12 @@
+diff -up ./src/queue.h.orig ./src/queue.h
+--- ./src/queue.h.orig	2016-03-14 10:10:57.000000000 +0100
++++ ./src/queue.h	2016-07-04 17:47:22.480252171 +0200
+@@ -5,7 +5,7 @@
+ #ifndef HTSQ_H
+ #define HTSQ_H
+ 
+-#include "../vendor/include/sys/queue.h"
++#include <sys/queue.h>
+ 
+ /*
+  * Extra LIST-ops

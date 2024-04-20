@@ -1,0 +1,33 @@
+#!/bin/bash
+#
+# /usr/bin/popfile
+#		Shell script wrapper around the popfile perl script
+#
+# Author	Stuart Herbert
+#		(stuart@gentoo.org)
+#
+# Copyright	Released into the public domain
+#
+# ------------------------------------------------------------------------
+
+POPFILE_DIR=/usr/share/popfile
+POPFILE_PL=popfile.pl
+
+if [[ `id -u` != 0 ]] ; then
+	echo "*** error: You must be root to run popfile" >&2
+	exit 1
+fi
+
+if [[ ! -d $POPFILE_DIR ]] ; then
+	echo "*** error: Directory $POPFILE_DIR does not exist" >&2
+	echo "***        Is popfile installed?"
+	exit 1
+fi
+
+if [[ ! -e $POPFILE_DIR/$POPFILE_PL ]] ; then
+	echo "*** error: popfile.pl is missing or not executable" >&2
+	exit 1
+fi
+
+cd $POPFILE_DIR
+exec ./$POPFILE_PL

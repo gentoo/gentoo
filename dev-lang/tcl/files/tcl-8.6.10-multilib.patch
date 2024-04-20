@@ -1,0 +1,11 @@
+--- a/unix/configure.in	2020-12-26 10:39:12.107965844 +0100
++++ b/unix/configure.in	2020-12-26 10:39:44.821378776 +0100
+@@ -773,7 +773,7 @@
+ 
+ eval "TCL_LIB_FILE=${TCL_LIB_FILE}"
+ 
+-test -z "$TCL_LIBRARY" && TCL_LIBRARY='$(prefix)/lib/tcl$(VERSION)'
++test -z "$TCL_LIBRARY" && TCL_LIBRARY='$(libdir)/tcl$(VERSION)'
+ PRIVATE_INCLUDE_DIR='$(includedir)'
+ HTML_DIR='$(DISTDIR)/html'
+ 

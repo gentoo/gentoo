@@ -1,0 +1,45 @@
+defadvice is obsolete in Emacs 30.
+
+--- gnuserv-3.12.8/gnuserv-compat.el
++++ gnuserv-3.12.8/gnuserv-compat.el
+@@ -112,28 +112,27 @@
+   ;; can do!  If the device doesn't represent a live frame, we create
+   ;; the frame as requested.
+ 
+-  (defadvice make-frame (around
+-			 gnuserv-compat-make-frame
+-			 first
+-			 (&optional parameters device)
+-			 activate)
++  (defun gnuserv-compat-make-frame (orig-fun &optional parameters device)
+     (if (and device
+ 	     (frame-live-p device))
+ 	(progn
+ 	  (if parameters
+ 	      (modify-frame-parameters device parameters))
+-	  (setq ad-return-value device))
+-      ad-do-it))
++	  device)
++      (funcall orig-fun parameters)))
++
++  (advice-add 'make-frame :around #'gnuserv-compat-make-frame)
+ 
+   ;; Advise `filtered-frame-list' to ignore the optional device
+   ;; argument.  Here we don't follow the mapping of devices to frames.
+   ;; We just assume that any frame satisfying the predicate will do.
+-  (defadvice filtered-frame-list (around
+-				  gnuserv-compat-filtered-frame-list
+-				  first
+-				  (predicate &optional device)
+-				  activate)
+-    ad-do-it))
++  (defun gnuserv-compat-filtered-frame-list (orig-fun predicate
++						      &optional _device)
++    (funcall orig-fun predicate))
++
++  (advice-add 'filtered-frame-list
++	      :around #'gnuserv-compat-filtered-frame-list)
++  )
+ 
+ 
+ ;; Emulate XEmacs devices.  A device is just a frame. For the most

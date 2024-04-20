@@ -1,0 +1,26 @@
+From 56f7021306fe1dbd3b83981062acf2db7e296447 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 13 Dec 2017 21:38:52 +1300
+Subject: Fix loading ARP.pm on Perl 5.26
+
+This is now broken without '.' in @INC
+---
+ t/ARP.t | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/t/ARP.t b/t/ARP.t
+index 9b3ef08..bab58aa 100755
+--- a/t/ARP.t
++++ b/t/ARP.t
+@@ -6,7 +6,7 @@
+ # change 'tests => 1' to 'tests => last_test_to_print';
+ 
+ use Test::More tests => 1;
+-BEGIN { use_ok('ARP') };
++BEGIN { use_ok('Net::ARP') };
+ 
+ #########################
+ 
+-- 
+2.14.3
+

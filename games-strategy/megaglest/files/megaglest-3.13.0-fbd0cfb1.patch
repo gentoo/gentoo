@@ -1,0 +1,75 @@
+From fbd0cfb17ed759d24aeb577a602b0d97f7895cc2 Mon Sep 17 00:00:00 2001
+From: titiger <titi_linux@megaglest.org>
+Date: Sat, 29 May 2021 02:41:40 +0200
+Subject: [PATCH] get rid of manual wxPaintEvent creation
+
+---
+ source/glest_map_editor/main.cpp | 19 +++++++------------
+ 1 file changed, 7 insertions(+), 12 deletions(-)
+
+diff --git a/source/glest_map_editor/main.cpp b/source/glest_map_editor/main.cpp
+index 3a799c864..889a1dea8 100644
+--- a/source/glest_map_editor/main.cpp
++++ b/source/glest_map_editor/main.cpp
+@@ -545,8 +545,7 @@ MainWindow::~MainWindow() {
+ }
+ 
+ void MainWindow::setDirty(bool val) {
+-	wxPaintEvent ev;
+-	onPaint(ev);
++	refreshThings();
+ 	if (fileModified && val) {
+ 		return;
+ 	}
+@@ -582,8 +581,8 @@ void MainWindow::onMouseDown(wxMouseEvent &event, int x, int y) {
+ 		if (!isDirty()) {
+ 			setDirty(true);
+ 		}
+-		wxPaintEvent ev;
+-		onPaint(ev);
++
++		refreshThings();
+ 	}
+ 	event.Skip();
+ }
+@@ -593,18 +592,16 @@ void MainWindow::onMouseWheelDown(wxMouseEvent &event) {
+ 	if(program == NULL) {
+ 		return;
+ 	}
+-	wxPaintEvent ev;
+ 	program->incCellSize(1);
+-	onPaint(ev);
++	refreshThings();
+ }
+ 
+ void MainWindow::onMouseWheelUp(wxMouseEvent &event) {
+ 	if(program == NULL) {
+ 		return;
+ 	}
+-	wxPaintEvent ev;
+ 	program->incCellSize(-1);
+-	onPaint(ev);
++	refreshThings();
+ }
+ 
+ void MainWindow::onMouseMove(wxMouseEvent &event, int x, int y) {
+@@ -651,8 +648,7 @@ void MainWindow::onMouseMove(wxMouseEvent &event, int x, int y) {
+ 	lastY = y;
+ 
+ 	if (repaint) {
+-		wxPaintEvent ev;
+-		onPaint(ev);
++		refreshThings();
+	}
+ 	event.Skip();
+ }
+@@ -866,8 +862,7 @@ void MainWindow::onMenuEditReset(wxCommandEvent &event) {
+ 	currentFile = "";
+ 	fileName = "New (unsaved) map";
+ 
+-	wxPaintEvent ev;
+-	onPaint(ev);
++	refreshThings();
+ }
+ 
+ void MainWindow::onMenuEditResetPlayers(wxCommandEvent &event) {

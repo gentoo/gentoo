@@ -1,0 +1,29 @@
+https://github.com/htacg/tidy-html5/issues/1012
+https://bugs.gentoo.org/916074
+
+commit e411ad0d2582471fe0961900b2789ee8b5b9cc4c
+Author: Markus Pister <pister@absint.com>
+Date:   Wed Jan 5 08:30:10 2022 +0100
+
+    Attribute 'type' in tag 'ol' allowed for (X)HTML5
+    
+    Mark the attribute 'type' as allowed for tag 'ol' in (X)HTML5.
+    
+    The attribute type was deprecated in HTML4. This decision was reverted
+    for HTML5, see
+    
+        https://www.w3.org/TR/2014/NOTE-html5-diff-20141209/#changed-attributes
+    
+    This fixes htacg#1012.
+
+--- a/src/attrdict.c
++++ b/src/attrdict.c
+@@ -2321,7 +2321,7 @@ const AttrVersion TY_(W3CAttrsFor_OL)[] =
+   { TidyAttr_START,                 xxxx|HT32|H40T|H41T|X10T|H40F|H41F|X10F|xxxx|xxxx|xxxx|xxxx|xxxx|HT50|XH50 },
+   { TidyAttr_STYLE,                 xxxx|xxxx|H40T|H41T|X10T|H40F|H41F|X10F|H40S|H41S|X10S|XH11|xxxx|HT50|XH50 }, /* CORE override */
+   { TidyAttr_TITLE,                 xxxx|xxxx|H40T|H41T|X10T|H40F|H41F|X10F|H40S|H41S|X10S|XH11|XB10|HT50|XH50 }, /* CORE override */
+-  { TidyAttr_TYPE,                  xxxx|HT32|H40T|H41T|X10T|H40F|H41F|X10F|xxxx|xxxx|xxxx|xxxx|xxxx|xxxx|xxxx },
++  { TidyAttr_TYPE,                  xxxx|HT32|H40T|H41T|X10T|H40F|H41F|X10F|xxxx|xxxx|xxxx|xxxx|xxxx|HT50|XH50 },
+   { TidyAttr_XMLNS,                 xxxx|xxxx|xxxx|xxxx|xxxx|xxxx|xxxx|xxxx|xxxx|xxxx|xxxx|XH11|XB10|HT50|XH50 }, /* CORE override */
+   { TidyAttr_XML_LANG,              xxxx|xxxx|xxxx|xxxx|X10T|xxxx|xxxx|X10F|xxxx|xxxx|X10S|XH11|XB10|xxxx|XH50 }, /* CORE override */
+   INCLUDE_CORE_ATTRIBS

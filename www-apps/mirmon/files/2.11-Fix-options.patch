@@ -1,0 +1,34 @@
+Fix option handling.
+
+Add debug option to getopt inputs.
+Add debug option to usage output.
+Add version option to usage output.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+--- mirmon-2.11.orig/mirmon	2020-04-30 13:32:52.803951845 -0700
++++ mirmon-2.11/mirmon	2020-04-30 13:33:58.051641169 -0700
+@@ -1900,12 +1900,14 @@
+ Usage: $prog [-v] [-q] [-t timeout] [-c conf] [-get all|update|url <url>]
+ option v   : be verbose
+ option q   : be quiet
++option d   : debug output
+ option t   : set timeout ; default $TIMEOUT
+ option get : get all       : probe all sites
+            : get update    : probe a selection of the sites (see doc)
+            : get url <url> : probe some <url> (in the mirror-list).
+ option c   : configuration file ; default search :
+              ( $DEF_CNF )
++option version : display version
+ -------------------------------------------------------------------
+ Mirmon normally only reports errors and changes in the mirror list.
+ This is $VERSION.
+@@ -1924,7 +1926,7 @@
+ use Getopt::Long ;
+ Getopt::Long::config ( 'no_ignore_case' ) ;
+ my %opt = () ;
+-Usage '' unless GetOptions ( \%opt, qw(v q t=i get=s c=s version) ) ;
++Usage '' unless GetOptions ( \%opt, qw(d v q t=i get=s c=s version) ) ;
+ Usage "Arg count\n" if @ARGV > 1 ;
+ Usage "Arg count\n" if $opt{get} and $opt{get} eq 'url' and ! @ARGV ;
+ 

@@ -1,0 +1,12 @@
+We install udev to /lib/udev instead, which it doesn't check
+
+--- a/ResourceManager.cpp
++++ b/ResourceManager.cpp
+@@ -895,7 +895,6 @@ void ResourceManager::DetectDevicesThreadFunction()
+     {
+         if(access("/usr/lib/udev/rules.d/60-openrgb.rules", F_OK) != 0)
+         {
+-            udev_not_exist  = true;
+         }
+     }
+     else

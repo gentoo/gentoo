@@ -1,0 +1,147 @@
+From 808b584d22106828aaaa3f2a52b1d076b6e66040 Mon Sep 17 00:00:00 2001
+From: Natanael Copa <ncopa@alpinelinux.org>
+Date: Thu, 11 Sep 2014 08:09:34 +0000
+Subject: [PATCH] provide dn_skipname
+
+Modified for Gentoo to include dn_expand fix
+keep dn_expand available, for musl and glibc-2.34
+also added declaration fix for dn_expand for glibc because we
+cannot include resolv.h, which defines it
+
+---
+ configure.ac                   |  2 +-
+ src/libreplace/__dn_skipname.c | 87 ++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 88 insertions(+), 1 deletion(-)
+ create mode 100644 src/libreplace/__dn_skipname.c
+
+diff --git a/configure.ac b/configure.ac
+index 63e398c..739da3b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -269,6 +269,7 @@
+ 	#endif
+ 	]])
+ 
++AC_CHECK_FUNCS([dn_expand])
+ AC_CHECK_FUNCS([ftruncate gethostname memmove memset socket])
+ AC_CHECK_FUNCS([strchr strcspn strdup strerror])
+ AC_CHECK_FUNCS([strcasecmp strncasecmp strspn strtoul])
+@@ -274,7 +274,7 @@
+ AC_CHECK_FUNCS([gethostbyname inet_ntoa select strrchr strstr strtol])
+ 
+ AC_REPLACE_FUNCS([getopt_long_only strncasecmp])
+-AC_REPLACE_FUNCS([__ns_initparse __ns_name_uncompress __ns_msg_getflag])
++AC_REPLACE_FUNCS([__ns_initparse __ns_name_uncompress __ns_msg_getflag __dn_skipname])
+ dnl Magnus Holmgren says this avoids linking a private function
+ AC_LIBOBJ([__ns_get16])
+ 
+diff --git a/src/libreplace/__dn_skipname.c b/src/libreplace/__dn_skipname.c
+new file mode 100644
+index 0000000..88d48b5
+--- /dev/null
++++ b/src/libreplace/__dn_skipname.c
+@@ -0,0 +1,87 @@
++/* taken from OpenBSD source */
++/*
++ * ++Copyright++ 1985, 1993
++ * -
++ * Copyright (c) 1985, 1993
++ *    The Regents of the University of California.  All rights reserved.
++ * 
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, this list of conditions and the following disclaimer.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ * 3. Neither the name of the University nor the names of its contributors
++ *    may be used to endorse or promote products derived from this software
++ *    without specific prior written permission.
++ * 
++ * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
++ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++ * ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
++ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
++ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
++ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
++ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
++ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
++ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
++ * SUCH DAMAGE.
++ * -
++ * Portions Copyright (c) 1993 by Digital Equipment Corporation.
++ * 
++ * Permission to use, copy, modify, and distribute this software for any
++ * purpose with or without fee is hereby granted, provided that the above
++ * copyright notice and this permission notice appear in all copies, and that
++ * the name of Digital Equipment Corporation not be used in advertising or
++ * publicity pertaining to distribution of the document or software without
++ * specific, written prior permission.
++ * 
++ * THE SOFTWARE IS PROVIDED "AS IS" AND DIGITAL EQUIPMENT CORP. DISCLAIMS ALL
++ * WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES
++ * OF MERCHANTABILITY AND FITNESS.   IN NO EVENT SHALL DIGITAL EQUIPMENT
++ * CORPORATION BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
++ * DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
++ * PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS
++ * ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
++ * SOFTWARE.
++ * -
++ * --Copyright--
++ */
++
++/*
++ * Skip over a compressed domain name. Return the size or -1.
++ */
++#include <sys/types.h>
++#include <resolv.h>
++
++int
++__dn_skipname(const u_char *comp_dn, const u_char *eom)
++{
++	const u_char *cp;
++	int n;
++
++	cp = comp_dn;
++	while (cp < eom && (n = *cp++)) {
++		/*
++		 * check for indirection
++		 */
++		switch (n & INDIR_MASK) {
++		case 0:			/* normal case, n == len */
++			cp += n;
++			continue;
++		case INDIR_MASK:	/* indirection */
++			cp++;
++			break;
++		default:		/* illegal type */
++			return (-1);
++		}
++		break;
++	}
++	if (cp > eom)
++		return (-1);
++	return (cp - comp_dn);
++}
++
++
+-- 
+2.1.0
+
+--- a/src/libreplace/arpa_nameser.h
++++ b/src/libreplace/arpa_nameser.h
+@@ -59,7 +59,10 @@
+ #  define __P(x) x
+ #endif
+ 
++#if defined(HAVE_DN_EXPAND)
++int dn_expand __P((const u_char *, const u_char *, const u_char *, char *, int));
++#endif
+-#if defined( HAVE_ARPA_NAMESER_H ) && defined( HAVE_NS_TYPE )
++#if !defined(HAVE_DN_EXPAND) && defined( HAVE_ARPA_NAMESER_H ) && defined( HAVE_NS_TYPE )
+ #define dn_expand		__dn_expand
+ int		dn_expand __P((const u_char *, const u_char *, const u_char *,
+ 			       char *, int));

@@ -1,0 +1,61 @@
+https://sourceforge.net/p/ttf2pt1/mailman/message/37804025/
+https://bugs.gentoo.org/881321
+
+Avoid implicit ints and implicit function declarations, and build
+failures with future compilers which do not support this pre-C99
+features by default.
+
+--- a/other/bmpfont.h
++++ b/other/bmpfont.h
+@@ -2,7 +2,9 @@
+  * see COPYRIGHT
+  */
+ 
++#include <stdlib.h>
+ 
++void
+ fchkneg(file, line, rc, cmd)
+ 	char *file;
+ 	int line;
+@@ -17,6 +19,7 @@ fchkneg(file, line, rc, cmd)
+ 	}
+ }
+ 
++void
+ fchknull(file, line, rc, cmd)
+ 	char *file;
+ 	int line;
+--- a/other/cmpf.c
++++ b/other/cmpf.c
+@@ -14,7 +14,7 @@
+ 
+ #include "bmpfont.h"
+ 
+-
++int
+ main(ac, av)
+ 	int ac;
+ 	char **av;
+--- a/other/dmpf.c
++++ b/other/dmpf.c
+@@ -14,7 +14,7 @@
+ 
+ #include "bmpfont.h"
+ 
+-
++int
+ main(ac, av)
+ 	int ac;
+ 	char **av;
+--- a/t1asm.c
++++ b/t1asm.c
+@@ -59,6 +59,8 @@ static char portnotice[] =
+ #		define WINDOWS_FUNCTIONS
+ #		include "windows.h"
+ #	endif
++#else
++#  include <unistd.h>
+ #endif
+ 
+ /* int32 must be at least 32-bit and uint16 must be at least 16-bit */
+

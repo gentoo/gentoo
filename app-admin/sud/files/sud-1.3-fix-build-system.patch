@@ -1,0 +1,30 @@
+--- a/login/Makefile.am
++++ b/login/Makefile.am
+@@ -2,5 +2,5 @@
+ ilogin_SOURCES = login.c
+ ilogin_CFLAGS = -Wall
+ 
+-install-data-hook:
+-	chmod 500 $(sbindir)/ilogin
++install-exec-hook:
++	chmod 500 $(DESTDIR)$(sbindir)/ilogin
+--- a/su/Makefile.am
++++ b/su/Makefile.am
+@@ -4,5 +4,5 @@
+ 
+ INCLUDES = -I../sud
+ 
+-install-data-hook:
+-	chmod 555 $(bindir)/suz
++install-exec-hook:
++	chmod 555 $(DESTDIR)$(bindir)/suz
+--- a/sud/Makefile.am
++++ b/sud/Makefile.am
+@@ -7,5 +7,5 @@
+ #INCLUDES = -I..
+ CLEANFILES = conf_lexer.c conf_parser.h conf_parser.c
+ 
+-install-data-hook:
+-	chmod 500 $(sbindir)/sud
++install-exec-hook:
++	chmod 500 $(DESTDIR)$(sbindir)/sud

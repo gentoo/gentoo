@@ -1,0 +1,14 @@
+Fix some missing (transparent) text with libsdl-1.2.15_p20210224
+e.g. empty menus in tuxmath
+--- a/src/t4k_sdl.c
++++ b/src/t4k_sdl.c
+@@ -1401,3 +1401,3 @@
+   /* Use color key for eventual transparency: */
+-  color_key = SDL_MapRGB(bg->format, 30, 30, 30);
++  color_key = SDL_MapRGBA(bg->format, 30, 30, 30, 0xff);
+   SDL_FillRect(bg, NULL, color_key);
+@@ -1448,3 +1448,3 @@
+   SDL_SetColorKey(bg, SDL_SRCCOLORKEY|SDL_RLEACCEL, color_key);
+-  out = SDL_DisplayFormatAlpha(bg);
++  out = SDL_DisplayFormat(bg);
+   SDL_FreeSurface(bg);

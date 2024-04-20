@@ -1,0 +1,16 @@
+From: Sam James <sam@gentoo.org>
+Date: Thu, 13 Jan 2022 06:00:11 +0000
+Subject: [PATCH] Fix underlinking against libm
+
+Bug: https://bugs.gentoo.org/740162
+--- a/configure.ac
++++ b/configure.ac
+@@ -47,6 +47,8 @@ GTK_DOC_CHECK(1.0)
+ # misc checks
+ PKG_CHECK_MODULES(MISC, libgnomecanvas-2.0 x11)
+ 
++AC_SEARCH_LIBS(exp, m)
++
+ # set compilation flags
+ CFLAGS="$CFLAGS $GTK_CFLAGS $MISC_CFLAGS -Wall"
+ LIBS="$LIBS $GTK_LIBS $MISC_LIBS"

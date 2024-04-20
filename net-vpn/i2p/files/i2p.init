@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+command=i2prouter
+pidfile=/var/run/i2p.pid
+command_background=true
+command_progress=true
+command_user=i2p
+stopsig=SIGHUP
+retry=20

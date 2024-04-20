@@ -1,0 +1,39 @@
+From aa0a2998e8894716644ea5fb29fc6f0165add956 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Tue, 2 Nov 2021 20:59:51 +0000
+Subject: [PATCH] Add missing cstddef includes for NULL
+
+---
+ src/lib/base/Event.cpp | 2 ++
+ src/lib/base/Event.h   | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/src/lib/base/Event.cpp b/src/lib/base/Event.cpp
+index cc548fc6..08c5e98f 100644
+--- a/src/lib/base/Event.cpp
++++ b/src/lib/base/Event.cpp
+@@ -19,6 +19,8 @@
+ #include "base/Event.h"
+ #include "base/EventQueue.h"
+ 
++#include <cstddef>
++
+ //
+ // Event
+ //
+diff --git a/src/lib/base/Event.h b/src/lib/base/Event.h
+index 38a2cf11..cb00dccb 100644
+--- a/src/lib/base/Event.h
++++ b/src/lib/base/Event.h
+@@ -21,6 +21,8 @@
+ #include "common/basic_types.h"
+ #include "common/stdmap.h"
+ 
++#include <cstddef>
++
+ class EventData {
+ public:
+     EventData() { }
+-- 
+2.32.0
+

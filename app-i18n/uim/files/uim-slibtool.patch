@@ -1,0 +1,14 @@
+--- a/qt4/common.pro.in
++++ b/qt4/common.pro.in
+@@ -4,8 +4,9 @@
+                @abs_top_srcdir@ @abs_top_srcdir@/uim \
+                @abs_top_srcdir@/replace
+ QMAKE_LIBDIR += @abs_top_builddir@/uim @abs_top_builddir@/replace \
+-                @abs_top_builddir@/replace/.libs @abs_top_builddir@/uim/.libs
+-LIBS += -lreplace -luim -luim-scm
++                @abs_top_builddir@/replace/.libs @abs_top_builddir@/uim/.libs \
++                @abs_top_builddir@/sigscheme/libgcroots/.libs
++LIBS += -lreplace -luim -luim-scm -lgcroots
+ !win32:!embedded:!mac {
+     LIBS += -luim-x-util
+ }

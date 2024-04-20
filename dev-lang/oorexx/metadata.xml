@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Open Object Rexx (ooRexx) is an Open Source project managed by Rexx
+    Language Association (RexxLA) providing a free implementation of Object
+    Rexx. ooRexx is distributed under Common Public License (CPL) v1.0. Object
+    Rexx is an enhancement of classic Rexx; a powerful, full-featured
+    programming language which has a human-oriented syntax.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://sourceforge.net/p/oorexx/bugs/</bugs-to>
+    <remote-id type="sourceforge">oorexx</remote-id>
+  </upstream>
+</pkgmetadata>

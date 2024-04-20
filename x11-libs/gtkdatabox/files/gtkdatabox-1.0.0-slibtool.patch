@@ -1,0 +1,48 @@
+https://sourceforge.net/p/gtkdatabox/git/merge-requests/5/
+https://sourceforge.net/p/gtkdatabox/git/ci/88d2bd66571e083e3beaf0ea6004c1b739a20713/
+
+From 88d2bd66571e083e3beaf0ea6004c1b739a20713 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Thu, 7 Mar 2024 14:29:18 -0800
+Subject: [PATCH] gtk: add missing libm depedency
+
+When building with slibtool it fails with undefined references for libm,
+with GNU libtool it doesn't fails because -no-undefined gets silently
+ignored while slibtool correctly passes -Wl,--no-undefined to the
+linker.
+
+Gentoo issue: https://bugs.gentoo.org/913728
+---
+ configure.ac    | 2 ++
+ gtk/Makefile.am | 5 ++++-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 78b8caa..ac95247 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -40,6 +40,8 @@ AC_PROG_CC_C99
+ AC_PROG_CPP
+ AC_PROG_INSTALL
+ 
++LT_LIB_M
++
+ m4_define([gtk_required_version], [3.4.0])
+ m4_define([pango_required_version], [1.29.0])
+ m4_define([cairo_required_version], [1.10.0])
+diff --git a/gtk/Makefile.am b/gtk/Makefile.am
+index 4a816fb..7d399de 100644
+--- a/gtk/Makefile.am
++++ b/gtk/Makefile.am
+@@ -20,7 +20,10 @@ libgtkdatabox_la_SOURCES= \
+ 
+ libgtkdatabox_la_LDFLAGS= \
+ 		        -version-info $(DATABOX_LT_VERSION)\
+-			-no-undefined \
++			-no-undefined
++
++libgtkdatabox_la_LIBADD= \
++			@LIBM@ \
+ 			@GTK_LIBS@
+ 
+ 

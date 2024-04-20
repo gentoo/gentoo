@@ -1,0 +1,325 @@
+diff --git a/pyarrow/array.pxi b/pyarrow/array.pxi
+index 1416f5f43..058e0eec0 100644
+--- a/pyarrow/array.pxi
++++ b/pyarrow/array.pxi
+@@ -1573,7 +1573,7 @@ cdef class Array(_PandasConvertible):
+         # decoding the dictionary will make sure nulls are correctly handled.
+         # Decoding a dictionary does imply a copy by the way,
+         # so it can't be done if the user requested a zero_copy.
+-        c_options.decode_dictionaries = not zero_copy_only
++        c_options.decode_dictionaries = True
+         c_options.zero_copy_only = zero_copy_only
+         c_options.to_numpy = True
+ 
+@@ -1585,9 +1585,6 @@ cdef class Array(_PandasConvertible):
+         # always convert to numpy array without pandas dependency
+         array = PyObject_to_object(out)
+ 
+-        if isinstance(array, dict):
+-            array = np.take(array['dictionary'], array['indices'])
+-
+         if writable and not array.flags.writeable:
+             # if the conversion already needed to a copy, writeable is True
+             array = array.copy()
+diff --git a/pyarrow/io.pxi b/pyarrow/io.pxi
+index 1897e76ef..b57980b3d 100644
+--- a/pyarrow/io.pxi
++++ b/pyarrow/io.pxi
+@@ -1987,7 +1987,7 @@ def foreign_buffer(address, size, base=None):
+         Object that owns the referenced memory.
+     """
+     cdef:
+-        intptr_t c_addr = address
++        uintptr_t c_addr = address
+         int64_t c_size = size
+         shared_ptr[CBuffer] buf
+ 
+diff --git a/pyarrow/lib.pxd b/pyarrow/lib.pxd
+index 58ec34add..91c7633a7 100644
+--- a/pyarrow/lib.pxd
++++ b/pyarrow/lib.pxd
+@@ -285,6 +285,8 @@ cdef class Tensor(_Weakrefable):
+ 
+     cdef readonly:
+         DataType type
++        bytes _ssize_t_shape
++        bytes _ssize_t_strides
+ 
+     cdef void init(self, const shared_ptr[CTensor]& sp_tensor)
+ 
+diff --git a/pyarrow/src/arrow/python/arrow_to_pandas.cc b/pyarrow/src/arrow/python/arrow_to_pandas.cc
+index e979342b8..8354812ea 100644
+--- a/pyarrow/src/arrow/python/arrow_to_pandas.cc
++++ b/pyarrow/src/arrow/python/arrow_to_pandas.cc
+@@ -2499,6 +2499,8 @@ Status ConvertChunkedArrayToPandas(const PandasOptions& options,
+                                    std::shared_ptr<ChunkedArray> arr, PyObject* py_ref,
+                                    PyObject** out) {
+   if (options.decode_dictionaries && arr->type()->id() == Type::DICTIONARY) {
++    // XXX we should return an error as below if options.zero_copy_only
++    // is true, but that would break compatibility with existing tests.
+     const auto& dense_type =
+         checked_cast<const DictionaryType&>(*arr->type()).value_type();
+     RETURN_NOT_OK(DecodeDictionaries(options.pool, dense_type, &arr));
+diff --git a/pyarrow/src/arrow/python/io.cc b/pyarrow/src/arrow/python/io.cc
+index 43f8297c5..197f8b9d3 100644
+--- a/pyarrow/src/arrow/python/io.cc
++++ b/pyarrow/src/arrow/python/io.cc
+@@ -92,9 +92,12 @@ class PythonFile {
+   Status Seek(int64_t position, int whence) {
+     RETURN_NOT_OK(CheckClosed());
+ 
++    // NOTE: `long long` is at least 64 bits in the C standard, the cast below is
++    // therefore safe.
++
+     // whence: 0 for relative to start of file, 2 for end of file
+-    PyObject* result = cpp_PyObject_CallMethod(file_.obj(), "seek", "(ni)",
+-                                               static_cast<Py_ssize_t>(position), whence);
++    PyObject* result = cpp_PyObject_CallMethod(file_.obj(), "seek", "(Li)",
++                                               static_cast<long long>(position), whence);
+     Py_XDECREF(result);
+     PY_RETURN_IF_ERROR(StatusCode::IOError);
+     return Status::OK();
+@@ -103,16 +106,16 @@ class PythonFile {
+   Status Read(int64_t nbytes, PyObject** out) {
+     RETURN_NOT_OK(CheckClosed());
+ 
+-    PyObject* result = cpp_PyObject_CallMethod(file_.obj(), "read", "(n)",
+-                                               static_cast<Py_ssize_t>(nbytes));
++    PyObject* result = cpp_PyObject_CallMethod(file_.obj(), "read", "(L)",
++                                               static_cast<long long>(nbytes));
+     PY_RETURN_IF_ERROR(StatusCode::IOError);
+     *out = result;
+     return Status::OK();
+   }
+ 
+   Status ReadBuffer(int64_t nbytes, PyObject** out) {
+-    PyObject* result = cpp_PyObject_CallMethod(file_.obj(), "read_buffer", "(n)",
+-                                               static_cast<Py_ssize_t>(nbytes));
++    PyObject* result = cpp_PyObject_CallMethod(file_.obj(), "read_buffer", "(L)",
++                                               static_cast<long long>(nbytes));
+     PY_RETURN_IF_ERROR(StatusCode::IOError);
+     *out = result;
+     return Status::OK();
+diff --git a/pyarrow/tensor.pxi b/pyarrow/tensor.pxi
+index 1afce7f4a..c674663dc 100644
+--- a/pyarrow/tensor.pxi
++++ b/pyarrow/tensor.pxi
+@@ -15,6 +15,9 @@
+ # specific language governing permissions and limitations
+ # under the License.
+ 
++# Avoid name clash with `pa.struct` function
++import struct as _struct
++
+ 
+ cdef class Tensor(_Weakrefable):
+     """
+@@ -31,7 +34,6 @@ cdef class Tensor(_Weakrefable):
+     shape: (2, 3)
+     strides: (12, 4)
+     """
+-
+     def __init__(self):
+         raise TypeError("Do not call Tensor's constructor directly, use one "
+                         "of the `pyarrow.Tensor.from_*` functions instead.")
+@@ -40,6 +42,14 @@ cdef class Tensor(_Weakrefable):
+         self.sp_tensor = sp_tensor
+         self.tp = sp_tensor.get()
+         self.type = pyarrow_wrap_data_type(self.tp.type())
++        self._ssize_t_shape = self._make_shape_or_strides_buffer(self.shape)
++        self._ssize_t_strides = self._make_shape_or_strides_buffer(self.strides)
++
++    def _make_shape_or_strides_buffer(self, values):
++        """
++        Make a bytes object holding an array of `values` cast to `Py_ssize_t`.
++        """
++        return _struct.pack(f"{len(values)}n", *values)
+ 
+     def __repr__(self):
+         return """<pyarrow.Tensor>
+@@ -282,10 +292,8 @@ strides: {0.strides}""".format(self)
+             buffer.readonly = 0
+         else:
+             buffer.readonly = 1
+-        # NOTE: This assumes Py_ssize_t == int64_t, and that the shape
+-        # and strides arrays lifetime is tied to the tensor's
+-        buffer.shape = <Py_ssize_t *> &self.tp.shape()[0]
+-        buffer.strides = <Py_ssize_t *> &self.tp.strides()[0]
++        buffer.shape = <Py_ssize_t *> cp.PyBytes_AsString(self._ssize_t_shape)
++        buffer.strides = <Py_ssize_t *> cp.PyBytes_AsString(self._ssize_t_strides)
+         buffer.suboffsets = NULL
+ 
+ 
+diff --git a/pyarrow/tests/test_gdb.py b/pyarrow/tests/test_gdb.py
+index d0d241cc5..0d12d710d 100644
+--- a/pyarrow/tests/test_gdb.py
++++ b/pyarrow/tests/test_gdb.py
+@@ -885,32 +885,61 @@ def test_arrays_heap(gdb_arrow):
+         ("arrow::DurationArray of type arrow::duration"
+          "(arrow::TimeUnit::NANO), length 2, offset 0, null count 1 = {"
+          "[0] = null, [1] = -1234567890123456789ns}"))
+-    check_heap_repr(
+-        gdb_arrow, "heap_timestamp_array_s",
+-        ("arrow::TimestampArray of type arrow::timestamp"
+-         "(arrow::TimeUnit::SECOND), length 4, offset 0, null count 1 = {"
+-         "[0] = null, [1] = 0s [1970-01-01 00:00:00], "
+-         "[2] = -2203932304s [1900-02-28 12:34:56], "
+-         "[3] = 63730281600s [3989-07-14 00:00:00]}"))
+-    check_heap_repr(
+-        gdb_arrow, "heap_timestamp_array_ms",
+-        ("arrow::TimestampArray of type arrow::timestamp"
+-         "(arrow::TimeUnit::MILLI), length 3, offset 0, null count 1 = {"
+-         "[0] = null, [1] = -2203932303877ms [1900-02-28 12:34:56.123], "
+-         "[2] = 63730281600789ms [3989-07-14 00:00:00.789]}"))
+-    check_heap_repr(
+-        gdb_arrow, "heap_timestamp_array_us",
+-        ("arrow::TimestampArray of type arrow::timestamp"
+-         "(arrow::TimeUnit::MICRO), length 3, offset 0, null count 1 = {"
+-         "[0] = null, "
+-         "[1] = -2203932303345679us [1900-02-28 12:34:56.654321], "
+-         "[2] = 63730281600456789us [3989-07-14 00:00:00.456789]}"))
+-    check_heap_repr(
+-        gdb_arrow, "heap_timestamp_array_ns",
+-        ("arrow::TimestampArray of type arrow::timestamp"
+-         "(arrow::TimeUnit::NANO), length 2, offset 0, null count 1 = {"
+-         "[0] = null, "
+-         "[1] = -2203932303012345679ns [1900-02-28 12:34:56.987654321]}"))
++    if sys.maxsize > 2**32:
++        check_heap_repr(
++            gdb_arrow, "heap_timestamp_array_s",
++            ("arrow::TimestampArray of type arrow::timestamp"
++             "(arrow::TimeUnit::SECOND), length 4, offset 0, null count 1 = {"
++             "[0] = null, [1] = 0s [1970-01-01 00:00:00], "
++             "[2] = -2203932304s [1900-02-28 12:34:56], "
++             "[3] = 63730281600s [3989-07-14 00:00:00]}"))
++        check_heap_repr(
++            gdb_arrow, "heap_timestamp_array_ms",
++            ("arrow::TimestampArray of type arrow::timestamp"
++             "(arrow::TimeUnit::MILLI), length 3, offset 0, null count 1 = {"
++             "[0] = null, [1] = -2203932303877ms [1900-02-28 12:34:56.123], "
++             "[2] = 63730281600789ms [3989-07-14 00:00:00.789]}"))
++        check_heap_repr(
++            gdb_arrow, "heap_timestamp_array_us",
++            ("arrow::TimestampArray of type arrow::timestamp"
++             "(arrow::TimeUnit::MICRO), length 3, offset 0, null count 1 = {"
++             "[0] = null, "
++             "[1] = -2203932303345679us [1900-02-28 12:34:56.654321], "
++             "[2] = 63730281600456789us [3989-07-14 00:00:00.456789]}"))
++        check_heap_repr(
++            gdb_arrow, "heap_timestamp_array_ns",
++            ("arrow::TimestampArray of type arrow::timestamp"
++             "(arrow::TimeUnit::NANO), length 2, offset 0, null count 1 = {"
++             "[0] = null, "
++             "[1] = -2203932303012345679ns [1900-02-28 12:34:56.987654321]}"))
++    else:
++        # Python's datetime is limited to smaller timestamps on 32-bit platforms
++        check_heap_repr(
++            gdb_arrow, "heap_timestamp_array_s",
++            ("arrow::TimestampArray of type arrow::timestamp"
++             "(arrow::TimeUnit::SECOND), length 4, offset 0, null count 1 = {"
++             "[0] = null, [1] = 0s [1970-01-01 00:00:00], "
++             "[2] = -2203932304s [too large to represent], "
++             "[3] = 63730281600s [too large to represent]}"))
++        check_heap_repr(
++            gdb_arrow, "heap_timestamp_array_ms",
++            ("arrow::TimestampArray of type arrow::timestamp"
++             "(arrow::TimeUnit::MILLI), length 3, offset 0, null count 1 = {"
++             "[0] = null, [1] = -2203932303877ms [too large to represent], "
++             "[2] = 63730281600789ms [too large to represent]}"))
++        check_heap_repr(
++            gdb_arrow, "heap_timestamp_array_us",
++            ("arrow::TimestampArray of type arrow::timestamp"
++             "(arrow::TimeUnit::MICRO), length 3, offset 0, null count 1 = {"
++             "[0] = null, "
++             "[1] = -2203932303345679us [too large to represent], "
++             "[2] = 63730281600456789us [too large to represent]}"))
++        check_heap_repr(
++            gdb_arrow, "heap_timestamp_array_ns",
++            ("arrow::TimestampArray of type arrow::timestamp"
++             "(arrow::TimeUnit::NANO), length 2, offset 0, null count 1 = {"
++             "[0] = null, "
++             "[1] = -2203932303012345679ns [too large to represent]}"))
+ 
+     # Decimal
+     check_heap_repr(
+diff --git a/pyarrow/tests/test_io.py b/pyarrow/tests/test_io.py
+index 5a495aa80..17eab871a 100644
+--- a/pyarrow/tests/test_io.py
++++ b/pyarrow/tests/test_io.py
+@@ -36,7 +36,7 @@ from pyarrow import Codec
+ import pyarrow as pa
+ 
+ 
+-def check_large_seeks(file_factory):
++def check_large_seeks(file_factory, expected_error=None):
+     if sys.platform in ('win32', 'darwin'):
+         pytest.skip("need sparse file support")
+     try:
+@@ -45,11 +45,16 @@ def check_large_seeks(file_factory):
+             f.truncate(2 ** 32 + 10)
+             f.seek(2 ** 32 + 5)
+             f.write(b'mark\n')
+-        with file_factory(filename) as f:
+-            assert f.seek(2 ** 32 + 5) == 2 ** 32 + 5
+-            assert f.tell() == 2 ** 32 + 5
+-            assert f.read(5) == b'mark\n'
+-            assert f.tell() == 2 ** 32 + 10
++        if expected_error:
++            with expected_error:
++                file_factory(filename)
++        else:
++            with file_factory(filename) as f:
++                assert f.size() == 2 ** 32 + 10
++                assert f.seek(2 ** 32 + 5) == 2 ** 32 + 5
++                assert f.tell() == 2 ** 32 + 5
++                assert f.read(5) == b'mark\n'
++                assert f.tell() == 2 ** 32 + 10
+     finally:
+         os.unlink(filename)
+ 
+@@ -1137,7 +1142,14 @@ def test_memory_zero_length(tmpdir):
+ 
+ 
+ def test_memory_map_large_seeks():
+-    check_large_seeks(pa.memory_map)
++    if sys.maxsize >= 2**32:
++        expected_error = None
++    else:
++        expected_error = pytest.raises(
++            pa.ArrowCapacityError,
++            match="Requested memory map length 4294967306 "
++                  "does not fit in a C size_t")
++    check_large_seeks(pa.memory_map, expected_error=expected_error)
+ 
+ 
+ def test_memory_map_close_remove(tmpdir):
+diff --git a/pyarrow/tests/test_pandas.py b/pyarrow/tests/test_pandas.py
+index 8fd4b3041..168ed7e42 100644
+--- a/pyarrow/tests/test_pandas.py
++++ b/pyarrow/tests/test_pandas.py
+@@ -2601,8 +2601,9 @@ class TestConvertStructTypes:
+                                        ('yy', np.bool_)])),
+                        ('y', np.int16),
+                        ('z', np.object_)])
+-        # Note: itemsize is not a multiple of sizeof(object)
+-        assert dt.itemsize == 12
++        # Note: itemsize is not necessarily a multiple of sizeof(object)
++        # object_ is 8 bytes on 64-bit systems, 4 bytes on 32-bit systems
++        assert dt.itemsize == (12 if sys.maxsize > 2**32 else 8)
+         ty = pa.struct([pa.field('x', pa.struct([pa.field('xx', pa.int8()),
+                                                  pa.field('yy', pa.bool_())])),
+                         pa.field('y', pa.int16()),
+diff --git a/pyarrow/tests/test_schema.py b/pyarrow/tests/test_schema.py
+index fa75fcea3..8793c9e77 100644
+--- a/pyarrow/tests/test_schema.py
++++ b/pyarrow/tests/test_schema.py
+@@ -681,7 +681,8 @@ def test_schema_sizeof():
+         pa.field('bar', pa.string()),
+     ])
+ 
+-    assert sys.getsizeof(schema) > 30
++    # Note: pa.schema is twice as large on 64-bit systems
++    assert sys.getsizeof(schema) > (30 if sys.maxsize > 2**32 else 15)
+ 
+     schema2 = schema.with_metadata({"key": "some metadata"})
+     assert sys.getsizeof(schema2) > sys.getsizeof(schema)

@@ -1,0 +1,21 @@
+# /etc/bash/bashrc
+
+# Proceed no further in the case of a non-interactive shell.
+if [[ $- != *i* ]]; then
+	return
+fi
+
+# Disable completion when the input buffer is empty. Requires readline support.
+shopt -s no_empty_cmd_completion 2>/dev/null
+
+# Append to HISTFILE rather than overwrite upon exiting, per bug #139609.
+shopt -s histappend
+
+# Initialise PROMPT_COMMAND as an array, which is permitted as of bash 5.1.
+PROMPT_COMMAND=()
+
+for _ in /etc/bash/bashrc.d/*; do
+	if [[ $_ == *.@(bash|sh) && -r $_ ]]; then
+		source "$_"
+	fi
+done

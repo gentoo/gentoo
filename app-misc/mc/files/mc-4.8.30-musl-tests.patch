@@ -1,0 +1,15 @@
+--- a/tests/lib/vfs/path_len.c
++++ b/tests/lib/vfs/path_len.c
+@@ -89,12 +89,6 @@
+         "/тестовый/путь",
+         26
+     },
+-#ifdef HAVE_CHARSET
+-    { /* 3. */
+-        "/#enc:KOI8-R/тестовый/путь",
+-        38
+-    },
+-#endif /* HAVE_CHARSET */
+ };
+ /* *INDENT-ON* */
+ 

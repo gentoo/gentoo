@@ -1,0 +1,24 @@
+From b5c0e78006c2db6929b5ff50e8529de58a00412a Mon Sep 17 00:00:00 2001
+From: auouymous <au@qzx.com>
+Date: Fri, 8 Mar 2024 15:50:04 -0700
+Subject: [PATCH] Replace a "c2 a0" utf-8 sequence in test feed with a space.
+
+This caused html2text >=2024.2.25 to produce a double space and break
+the tests.
+---
+ test/data/allthingsrss/feed.atom | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/data/allthingsrss/feed.atom b/test/data/allthingsrss/feed.atom
+index 074847b..0cf8c33 100644
+--- a/test/data/allthingsrss/feed.atom
++++ b/test/data/allthingsrss/feed.atom
+@@ -47,7 +47,7 @@
+ &lt;/ul&gt;
+ &lt;p&gt;Complete list in the official &lt;a href="http://www.allthingsrss.com/rss2email/changelog"&gt;CHANGELOG&lt;/a&gt;.&lt;/p&gt;
+ &lt;p&gt;&lt;strong&gt;Pause/Unpause&lt;/strong&gt;&lt;/p&gt;
+-&lt;p&gt;Through &lt;code&gt;r2e pause &lt;em&gt;n&lt;/em&gt;&lt;/code&gt; where &lt;em&gt;n&lt;/em&gt; is a feed number, you can temporarily suspend checking that feed for new content. To start checking it again, simply run &lt;code&gt;r2e unpause &lt;em&gt;n&lt;/em&gt;&lt;/code&gt;. When you &lt;code&gt;r2e list&lt;/code&gt;, an asterisk indicates that the feed is currently unpaused and active.&lt;/p&gt;
++&lt;p&gt;Through &lt;code&gt;r2e pause &lt;em&gt;n&lt;/em&gt;&lt;/code&gt; where &lt;em&gt;n&lt;/em&gt; is a feed number, you can temporarily suspend checking that feed for new content. To start checking it again, simply run &lt;code&gt;r2e unpause &lt;em&gt;n&lt;/em&gt;&lt;/code&gt;. When you &lt;code&gt;r2e list&lt;/code&gt;, an asterisk indicates that the feed is currently unpaused and active.&lt;/p&gt;
+ 
+ &lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+ &lt;a href="http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/nYgTsIUsS9pmvRZ6092XGGHnNKg/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/allthingsrss/hJBr/~4/bT-I0iH2vw8" height="1" width="1"/&gt;</content>

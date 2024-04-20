@@ -1,0 +1,11 @@
+[Unit]
+After=network-online.target
+Description=TAS
+
+[Service]
+Environment="LC_ALL=C"
+ExecStart=/usr/bin/IPMITAS
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

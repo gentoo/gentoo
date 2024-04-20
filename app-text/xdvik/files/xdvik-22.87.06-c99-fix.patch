@@ -1,0 +1,40 @@
+From 6d1fbe75ed92a7e1aea9d74e601dace6d24f721b Mon Sep 17 00:00:00 2001
+From: Christopher Fore <csfore@posteo.net>
+Date: Thu, 15 Feb 2024 15:20:34 -0500
+Subject: [PATCH] xdvik/gui: Fix compilation on GCC 14
+
+Starting in GCC 14, what used to be warnings from incompatible pointer
+types are now errors.
+
+https://www.gnu.org/software/gcc/gcc-14/porting_to.html
+
+Error message:
+gui/pagesel.c:541:41: error: passing argument 2 of `XawListChange' from
+incompatible pointer type [-Wincompatible-pointer-types]
+  541 |     XawListChange(LIST_WIDGET, page_info.page_labels, 0,
+      |                                ~~~~~~~~~^~~~~~~~~~~~
+      |                                         |
+      |                                         char **
+
+This mismatch is simply from XawListChange taking in a const whilst the
+argument given was not a const.
+
+Gentoo bug: https://bugs.gentoo.org/919069
+Signed-off-by: Christopher Fore <csfore@posteo.net>
+---
+ texk/xdvik/gui/pagesel.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gui/pagesel.c b/gui/pagesel.c
+index 945ae760fa..913db11264 100644
+--- a/gui/pagesel.c
++++ b/gui/pagesel.c
+@@ -538,7 +538,7 @@ xaw_update_list(void)
+     button_width = get_panel_width() - 2 * (resource.btn_side_spacing + resource.btn_border_width);
+     /* delete and re-create list */
+     ASSERT(total_pages <= (int)page_info.index_size, "");
+-    XawListChange(LIST_WIDGET, page_info.page_labels, 0,
++    XawListChange(LIST_WIDGET, (_Xconst char**) page_info.page_labels, 0,
+ 		  MAX(button_width, pagelist_width), False);
+     /* restore selected item */
+     if (idx != XAW_LIST_NONE) {

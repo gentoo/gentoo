@@ -1,0 +1,74 @@
+--- a/devstatus.c
++++ b/devstatus.c
+@@ -561,8 +561,8 @@
+ cString cPluginDevstatus::SVDRPCommand(const char *Command, const char *Option, int &ReplyCode) {
+   // Process SVDRP commands this plugin implements
+   if(strcasecmp(Command, "DEVSTAT") == 0) {
+-    char* output = NULL;
+-    asprintf(&output, "%s:\n", tr("List of DVB devices"));
++    cString output;
++    output = cString::sprintf("%s:\n", tr("List of DVB devices"));
+     for (int i = 0; i < cDevice::NumDevices(); i++) {
+       cDevice *d = cDevice::GetDevice(i);
+       char* devName = NULL;
+@@ -570,7 +570,7 @@
+       if (d->HasDecoder() || d->IsPrimaryDevice())
+         asprintf(&devInfo, " (%s%s%s)", d->HasDecoder() ? tr("device with decoder") : "", (d->HasDecoder() && d->IsPrimaryDevice()) ? ", " : "", d->IsPrimaryDevice() ? tr("primary device") : "");
+       asprintf(&devName, "--- %s %d%s ---", tr("Device"), i+1, devInfo ? devInfo : "");
+-      asprintf(&output, "%s  %s:\n", output , devName); // add device output and there info's
++      output = cString::sprintf("%s  %s:\n", *output , devName); // add device output and there info's
+       free(devName);
+       if (devInfo)
+         free(devInfo);
+@@ -582,30 +582,29 @@
+           Name = strdup(r->name);
+           char* itemText = NULL;
+           asprintf(&itemText, "%s %s", DAYDATETIME(r->timer->StartTime()), Name);
+-          asprintf(&output, "%s    %s\n", output , itemText);
++          output = cString::sprintf("%s    %s\n", *output , itemText);
+           free(itemText);
+         }
+         Count++;
+       }
+     }
+     if (Count == 0)
+-      asprintf(&output, "%s    %s\n", output, tr("currently no recordings"));
++      output = cString::sprintf("%s    %s\n", *output, tr("currently no recordings"));
+     if (i < cDevice::NumDevices())
+-      asprintf(&output, "%s\n", output);
++      output = cString::sprintf("%s\n", *output);
+     }
+     // we use the default reply code here
+-    // return cString::sprintf("%s", output);
+     return output;
+   }
+ 
+   if(strcasecmp(Command, "RECNUMBER") == 0) {
+-    char* output = NULL;
+-    asprintf(&output, "%s:\n", tr("Number of concurrent recordings"));
++    cString output;
++    output = cString::sprintf("%s:\n", tr("Number of concurrent recordings"));
+     for (int i = 0; i < cDevice::NumDevices(); i++) {
+       cDevice *d = cDevice::GetDevice(i);
+       char* devName = NULL;
+       asprintf(&devName, "%s %d", tr("Device"), i+1);
+-      asprintf(&output, "%s %s:", output , devName); // add device output and there info's
++      output = cString::sprintf("%s %s:", *output , devName); // add device output and there info's
+       free(devName);
+     int Count = 0;
+     for (cRecObj *r = CurrentRecordings.First(); r; r = CurrentRecordings.Next(r)){ // add recordings to the output
+@@ -613,12 +612,11 @@
+         Count++;
+       }
+     }
+-    asprintf(&output, "%s %i\n", output, Count);
++    output = cString::sprintf("%s %i\n", *output, Count);
+     if (i < cDevice::NumDevices())
+-      asprintf(&output, "%s\n", output);
++      output = cString::sprintf("%s\n", *output);
+     }
+     // we use the default reply code here
+-    // return cString::sprintf("%s", output);
+     return output;
+   }
+ 

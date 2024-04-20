@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>tanekliang@gmail.com</email>
+		<name>Yongxiang Liang</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
+	<use>
+		<flag name="onlyplugin">Build only plugin</flag>
+		<flag name="qt6">Build support for QT6</flag>
+		<flag name="staticplugin">Build plugin as static</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">fcitx/fcitx5-qt</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,22 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,6 @@
+-CFLAGS=	 -Wall -g
+-LDFLAGS= -g
+-LIBS=	-lpcap
++#CFLAGS = -Wall -g
++#LDFLAGS = -g
++LIBS = -lpcap
+ 
+ all: dhcpdump dhcpdump.8
+ 
+@@ -15,7 +15,7 @@
+ 		dhcpdump.pod dhcpdump.8
+ 
+ dhcpdump: dhcpdump.o
+-	${CC} ${LDFLAGS} -o $@ dhcpdump.o ${LIBS}
++	$(CC) -DHAVE_STRSEP $(LDFLAGS) -o $@ dhcpdump.o $(LIBS)
+ 
+ dhcpdump.o: dhcpdump.c dhcp_options.h Makefile
+-	${CC} ${CFLAGS} -c -o $@ dhcpdump.c
++	$(CC) -DHAVE_STRSEP $(CFLAGS) -c -o $@ dhcpdump.c

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="check-alignment">extra check on alignment in C layers, which cause lowlevel assert errors. for debugging only.</flag>
+		<flag name="integer-gmp">Whether or not to use GMP for some functions</flag>
+		<flag name="old-toolchain-inliner">use -fgnu89-inline to workaround an old compiler / linker / glibc issue.</flag>
+		<flag name="support-aesni">allow compilation with AESNI on system and architecture that supports it</flag>
+		<flag name="support-deepseq">add deepseq instances for cryptographic types</flag>
+		<flag name="support-pclmuldq">Allow compilation with pclmuldq on architecture that supports it</flag>
+		<flag name="support-rdrand">allow compilation with RDRAND on system and architecture that supports it</flag>
+		<flag name="support-sse">Use SSE optimized version of (BLAKE2, ARGON2)</flag>
+		<flag name="target-attributes">use GCC / clang function attributes instead of global target options.</flag>
+	</use>
+	<upstream>
+		<remote-id type="hackage">crypton</remote-id>
+		<remote-id type="github">kazu-yamamoto/crypton</remote-id>
+	</upstream>
+</pkgmetadata>

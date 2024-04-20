@@ -1,0 +1,5 @@
+app-emulation/virtualbox
+app-emulation/virtualbox-modules
+app-emulation/virtualbox-guest-additions
+app-emulation/virtualbox-additions
+app-emulation/virtualbox-extpack-oracle

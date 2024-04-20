@@ -1,0 +1,27 @@
+In order to do a full eautoreconf we need to remove the double declarations of config.h in configure.in
+
+Bug: https://bugs.gentoo.org/874714
+Bug: https://bugs.gentoo.org/898458
+Patch has been sent to upstream via mail
+
+#  Pascal Jäger <pascal.jaeger@leimstift.de> (2023-09-18)
+
+--- a/autoconf/configure.in
++++ b/autoconf/configure.in
+@@ -60,7 +60,6 @@ AC_PATH_XTRA
+ AC_CHECK_HEADERS(sys/wait.h sys/time.h)
+ AC_CHECK_HEADERS(sys/statvfs.h sys/vfs.h sys/mount.h ustat.h)
+ AC_CHECK_HEADERS(machine/soundcard.h linux/soundcard.h linux/radio.h)
+-AC_CONFIG_HEADER(config.h)
+ 
+ dnl# Check for X
+ 
+@@ -120,8 +119,6 @@ AC_SUBST(with_afterdir)
+ 
+ dnl# Write results
+ 
+-AC_CONFIG_HEADER(config.h)
+-
+ dnl# Common parts of the Makefile
+ MAKEFILEDEFINES=./autoconf/Makefile.defines
+ MAKEFILECOMMON=./autoconf/Makefile.common

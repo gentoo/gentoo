@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/861860
+--- a/src/hashkit/nc_hashkit.h
++++ b/src/hashkit/nc_hashkit.h
+@@ -55,7 +55,7 @@ typedef enum dist_type {
+ #undef DEFINE_ACTION
+ 
+ uint32_t hash_one_at_a_time(const char *key, size_t key_length);
+-void md5_signature(const unsigned char *key, unsigned int length, unsigned char *result);
++void md5_signature(const unsigned char *key, unsigned long length, unsigned char *result);
+ uint32_t hash_md5(const char *key, size_t key_length);
+ uint32_t hash_crc16(const char *key, size_t key_length);
+ uint32_t hash_crc32(const char *key, size_t key_length);

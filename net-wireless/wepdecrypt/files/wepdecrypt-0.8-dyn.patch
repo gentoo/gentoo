@@ -1,0 +1,11 @@
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -8,7 +8,7 @@ wepdecrypt: 	wepdecrypt.o rc4.o wepfilter.o log.o modes.o misc.o verify.o keygen
+ 	modes.o misc.o md5_digest.o  wepserver.o wepclient.o verify.o keygen.o localkeygen.o $(LIBS)
+ 
+ gwepdecrypt: gwepdecrypt.cpp
+-	$(FLTK) --compile gwepdecrypt.cpp
++	$(CXX) $(LDFLAGS) $(CFLAGS) -I. -o $@ gwepdecrypt.cpp $(shell fltk-config --cflags --ldflags) $(LIBS)
+ 
+ wkeygen: wkeygen.c
+ 	$(LD) $(LDFLAGS) $(CFLAGS) -o $@ wkeygen.c $(LIBS)

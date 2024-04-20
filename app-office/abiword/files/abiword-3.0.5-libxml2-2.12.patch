@@ -1,0 +1,25 @@
+https://gitlab.gnome.org/World/AbiWord/-/commit/2a06be6a10a0718f8a3d8e00c317f5042c99a467
+https://bugs.gentoo.org/923394
+
+From 2a06be6a10a0718f8a3d8e00c317f5042c99a467 Mon Sep 17 00:00:00 2001
+From: Jan Tojnar <jtojnar@gmail.com>
+Date: Mon, 11 Dec 2023 01:55:53 +0100
+Subject: [PATCH] Fix build with libxml2 2.12
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+libxml 2.12.0 restructured headers so that xmlFree is no longer in the scope.
+Letâ€™s add the correct include.
+--- a/src/af/util/xp/ut_stringbuf.cpp
++++ b/src/af/util/xp/ut_stringbuf.cpp
+@@ -26,6 +26,7 @@
+ #include <algorithm>
+ 
+ #include <libxml/uri.h>
++#include <libxml/xmlmemory.h>
+ 
+ #include <glib.h>
+ 
+-- 
+GitLab

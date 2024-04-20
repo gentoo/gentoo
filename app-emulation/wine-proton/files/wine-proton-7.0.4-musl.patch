@@ -1,0 +1,17 @@
+Wrongly assumes that futex_waitv is missing if no glibc-only __NR_futex_waitv.
+https://bugs.gentoo.org/868747
+--- a/configure.ac
++++ b/configure.ac
+@@ -2153,2 +2153,5 @@
+ 
++dnl Check for futex_waitv structure members
++AC_CHECK_MEMBERS(struct futex_waitv.val,,,[#include <linux/futex.h>])
++
+ dnl Check for socket structure members
+--- a/dlls/ntdll/unix/fsync.c
++++ b/dlls/ntdll/unix/fsync.c
+@@ -67,2 +67,4 @@
+ # define __NR_futex_waitv 449
++#endif
++#ifndef HAVE_STRUCT_FUTEX_WAITV_VAL
+ # define FUTEX_32 2

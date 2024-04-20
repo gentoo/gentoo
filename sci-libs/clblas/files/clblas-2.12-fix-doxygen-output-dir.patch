@@ -1,0 +1,16 @@
+Description: use system mathjax instead of remote
+Author: Ghislain Antony Vaillant <ghisvail@gmail.com>
+Forwarded: not-needed
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/doc/clBLAS.doxy
++++ b/doc/clBLAS.doxy
+@@ -52,7 +52,7 @@
+ # If a relative path is entered, it will be relative to the location 
+ # where doxygen was started. If left blank the current directory will be used.
+ 
+-OUTPUT_DIRECTORY       = ..\..\bin\clBLAS.doxy
++OUTPUT_DIRECTORY       = 
+ 
+ # If the CREATE_SUBDIRS tag is set to YES, then doxygen will create 
+ # 4096 sub-directories (in 2 levels) under the output directory of each output 

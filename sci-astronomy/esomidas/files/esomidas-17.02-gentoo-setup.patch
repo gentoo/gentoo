@@ -1,0 +1,12 @@
+--- a/install/unix/preinstall	2017-06-29 23:49:01.295996178 +0000
++++ b/install/unix/preinstall	2017-06-29 23:50:21.835445329 +0000
+@@ -124,6 +124,9 @@
+ if [ -d "Debian" -a -f "/etc/debian_version" ];  then
+     system="Debian"
+ 
++elif [ -d "Gentoo" -a -f "/etc/gentoo-release" ];  then
++    system="Gentoo"
++
+ elif [ "$uname" = "Darwin" ]; then
+     system="Darwin"
+ 

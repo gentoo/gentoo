@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>graaff@gentoo.org</email>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-geosciences@gentoo.org</email>
+    <name>Gentoo Geosciences Project</name>
+  </maintainer>
+  <use>
+    <flag name="geoclue">
+      Use <pkg>app-misc/geoclue</pkg> to determine current location
+    </flag>
+    <flag name="libexif">
+      Use <pkg>media-libs/libexif</pkg> for EXIF support
+    </flag>
+    <flag name="oauth">
+      Enable OAuth authentication for OSM
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">viking</remote-id>
+  </upstream>
+</pkgmetadata>

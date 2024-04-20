@@ -1,0 +1,7 @@
+If upstream believes -ffast-math is ok for this part then that is
+fine, but we do not want to override users' -O.
+--- a/3rdparty/soundtouch/CMakeLists.txt
++++ b/3rdparty/soundtouch/CMakeLists.txt
+@@ -43 +43 @@
+-		target_compile_options(pcsx2-soundtouch PRIVATE -Ofast)
++		target_compile_options(pcsx2-soundtouch PRIVATE -ffast-math)

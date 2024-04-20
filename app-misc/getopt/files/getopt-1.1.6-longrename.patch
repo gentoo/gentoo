@@ -1,0 +1,70 @@
+--- a/Makefile
++++ b/Makefile
+@@ -32,7 +32,7 @@ MSGFMT=msgfmt
+ LANGUAGES = ca cs da de es et eu fi fr gl hr hu id it ja nl pl pt_BR ru sl sv tr uk vi zh_CN zh_TW
+ MOFILES:=$(patsubst %,po/%.mo,$(LANGUAGES))
+ 
+-CPPFLAGS=-DLIBCGETOPT=$(LIBCGETOPT) -DWITHOUT_GETTEXT=$(WITHOUT_GETTEXT) -DLOCALEDIR=\"$(localedir)\" -DNOT_UTIL_LINUX -Dprogram_invocation_short_name=\"$(PACKAGE)\"  -Dprogram_version=\"$(VERSION)\"
++CPPFLAGS=-DLIBCGETOPT=$(LIBCGETOPT) -DWITHOUT_GETTEXT=$(WITHOUT_GETTEXT) -DLOCALEDIR=\"$(localedir)\" -DNOT_UTIL_LINUX -Dprogram_invocation_short_name=\"$(PACKAGE)-long\"  -Dprogram_version=\"$(VERSION)\"
+ ifeq ($(LIBCGETOPT),0)
+ CPPFLAGS+=-I./gnu 
+ endif
+@@ -81,7 +81,7 @@ install_po: all_po
+ 	for lang in $(LANGUAGES) ; do \
+ 	  dir=$(localedir)/$$lang/LC_MESSAGES; \
+ 	  $(INSTALL) -m 755 -d $(DESTDIR)$$dir ;\
+-	  $(INSTALL) -m 644 po/$$lang.mo $(DESTDIR)$$dir/getopt.mo  ;\
++	  $(INSTALL) -m 644 po/$$lang.mo $(DESTDIR)$$dir/getopt-long.mo  ;\
+ 	done
+ clean_po:
+ 	$(RM) $(MOFILES)
+--- a/getopt-parse.bash
++++ b/getopt-parse.bash
+@@ -19,7 +19,7 @@
+ # Note that we use `"$@"' to let each command-line parameter expand to a 
+ # separate word. The quotes around `$@' are essential!
+ # We need TEMP as the `eval set --' would nuke the return value of getopt.
+-TEMP=`getopt -o ab:c:: --long a-long,b-long:,c-long:: \
++TEMP=`getopt-long -o ab:c:: --long a-long,b-long:,c-long:: \
+      -n 'example.bash' -- "$@"`
+ 
+ if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
+--- a/getopt-parse.tcsh
++++ b/getopt-parse.tcsh
+@@ -26,7 +26,7 @@
+ # as a list. The ':q`  copies that list without doing any substitutions:
+ # each element of argv becomes a separate argument for getopt. The braces
+ # are needed because the result is also a list.
+-set temp=(`getopt -s tcsh -o ab:c:: --long a-long,b-long:,c-long:: -- $argv:q`)
++set temp=(`getopt-long -s tcsh -o ab:c:: --long a-long,b-long:,c-long:: -- $argv:q`)
+ if ($? != 0) then 
+   echo "Terminating..." >/dev/stderr
+   exit 1
+--- a/getopt.c
++++ b/getopt.c
+@@ -344,12 +344,12 @@ static void __attribute__ ((__noreturn__)) print_help(void)
+ 	fputs(_(" -q, --quiet                  Disable error reporting by getopt(3)\n"), stderr);
+ 	fputs(_(" -Q, --quiet-output           No normal output\n"), stderr);
+ 	fputs(_(" -s, --shell <shell>          Set shell quoting conventions\n"), stderr);
+-	fputs(_(" -T, --test                   Test for getopt(1) version\n"), stderr);
++	fputs(_(" -T, --test                   Test for getopt-long(1) version\n"), stderr);
+ 	fputs(_(" -u, --unquoted               Do not quote the output\n"), stderr);
+ 	fputs(USAGE_SEPARATOR, stderr);
+ 	fputs(USAGE_HELP, stderr);
+ 	fputs(USAGE_VERSION, stderr);
+-	fprintf(stderr, USAGE_MAN_TAIL("getopt(1)"));
++	fprintf(stderr, USAGE_MAN_TAIL("getopt-long(1)"));
+ 	exit(PARAMETER_EXIT_CODE);
+ }
+ 
+--- a/nls.h
++++ b/nls.h
+@@ -29,7 +29,7 @@
+ #ifndef GETOPT_NLS
+ #define GETOPT_NLS
+ 
+-#define PACKAGE "getopt"
++#define PACKAGE "getopt-long"
+ 
+ #if WITHOUT_GETTEXT
+ #define _(Text) (Text)

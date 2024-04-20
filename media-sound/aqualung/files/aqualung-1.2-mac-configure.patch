@@ -1,0 +1,48 @@
+diff -Naur aqualung-1.2_orig/configure.ac aqualung-1.2/configure.ac
+--- aqualung-1.2_orig/configure.ac	2023-08-13 18:12:52.281251038 +0200
++++ aqualung-1.2/configure.ac	2023-08-13 18:13:55.693247259 +0200
+@@ -275,11 +275,11 @@
+         [AQUALUNG_FOUND([lavc])],
+         [AQUALUNG_MISSING([lavc], [$lavc_PKG_ERRORS])])])
+ 
+-AQUALUNG_DETECT([mac], [Monkey's Audio Codec],
+-    [AC_CHECK_LIB([mac], [CreateIAPEDecompress],
+-        [AQUALUNG_FOUND([mac], [-lmac -lstdc++])],
+-        [AQUALUNG_MISSING([mac],
+-            [Monkey's Audio Codec support requires libmac])],
++AQUALUNG_DETECT([MAC], [Monkey's Audio Codec],
++    [AC_CHECK_LIB([MAC], [CreateIAPEDecompress],
++        [AQUALUNG_FOUND([MAC], [-lMAC -lstdc++])],
++        [AQUALUNG_MISSING([MAC],
++            [Monkey's Audio Codec support requires libMAC])],
+         [-lstdc++])])
+ 
+ AQUALUNG_DETECT([mod], [MOD Audio],
+diff -Naur aqualung-1.2_orig/src/decoder/dec_mac.cpp aqualung-1.2/src/decoder/dec_mac.cpp
+--- aqualung-1.2_orig/src/decoder/dec_mac.cpp	2023-08-13 18:20:40.318223141 +0200
++++ aqualung-1.2/src/decoder/dec_mac.cpp	2023-08-13 18:21:33.661219962 +0200
+@@ -31,9 +31,9 @@
+ #define DLLEXPORT
+ 
+ #include "../undef_ac_pkg.h"
+-#include <mac/All.h>
+-#include <mac/MACLib.h>
+-#include <mac/CharacterHelper.h>
++#include <MAC/All.h>
++#include <MAC/MACLib.h>
++#include <MAC/CharacterHelper.h>
+ #include "../undef_ac_pkg.h"
+ #include <config.h>	/* re-establish undefined autoconf macros */
+ 
+diff -Naur aqualung-1.2_orig/src/Makefile.am aqualung-1.2/src/Makefile.am
+--- aqualung-1.2_orig/src/Makefile.am	2023-08-14 00:51:00.972827161 +0200
++++ aqualung-1.2/src/Makefile.am	2023-08-14 00:51:10.563826590 +0200
+@@ -25,7 +25,7 @@
+ aqualung_LDADD = $(LDADD) $(xml_LIBS) $(gtk_LIBS) $(glib_LIBS) \
+                  $(alsa_LIBS) $(jack_LIBS) $(oss_LIBS) $(pulse_LIBS) \
+                  $(sndio_LIBS) $(winmm_LIBS) \
+-                 $(flac_LIBS) $(lame_LIBS) $(lavc_LIBS) $(mac_LIBS) \
++                 $(flac_LIBS) $(lame_LIBS) $(lavc_LIBS) $(MAC_LIBS) \
+                  $(mad_LIBS) $(mod_LIBS) $(mpc_LIBS) $(sndfile_LIBS) \
+                  $(speex_LIBS) $(vorbis_LIBS) $(vorbisenc_LIBS) \
+                  $(wavpack_LIBS) \

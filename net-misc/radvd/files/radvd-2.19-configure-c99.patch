@@ -1,0 +1,46 @@
+https://github.com/radvd-project/radvd/commit/5acb1c64766dfaf37c9745632f99feecf11d1403
+
+From 5acb1c64766dfaf37c9745632f99feecf11d1403 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 3 Feb 2023 02:33:13 +0000
+Subject: [PATCH] configure.ac: Fix -Wint-conversion warnings
+
+These become fatal with Clang 15 and may lead to incorrect configure
+test results.
+
+```
+-ignoreme: warning: incompatible pointer to integer conversion initializing 'int' with an expression of type 'uint16_t[8]' (aka 'unsigned short[8]') [-Wint-conversion]
++ignoreme: error: incompatible pointer to integer conversion initializing 'int' with an expression of type 'uint16_t[8]' (aka 'unsigned short[8]') [-Wint-conversion]
+ int u =  in6_u.s6_addr16;
+     ^    ~~~~~~~~~~~~~~~
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -178,15 +178,19 @@ AC_HEADER_TIME
+ 
+ dnl Checks for typedefs, structures, and compiler characteristics.
+ AC_MSG_CHECKING(whether struct sockaddr_in6 has sin6_scope_id)
+-AC_TRY_COMPILE([#include <sys/types.h>
+-#include <netinet/in.h>], [static struct sockaddr_in6 ac_sin6; int ac_size = 
+-sizeof (ac_sin6.sin6_scope_id);], [AC_MSG_RESULT(yes); AC_DEFINE([HAVE_SIN6_SCOPE_ID],
++AC_TRY_COMPILE([#include <stdint.h>
++#include <sys/types.h>
++#include <netinet/in.h>], [
++static struct sockaddr_in6 ac_sin6;
++uint32_t ac_size = sizeof (ac_sin6.sin6_scope_id);
++], [AC_MSG_RESULT(yes); AC_DEFINE([HAVE_SIN6_SCOPE_ID],
+ 1, [whether struct sockaddr_in6 has sin6_scope_id])],
+ AC_MSG_RESULT(no))
+ 
+ AC_MSG_CHECKING(whether struct in6_addr has u6_addrXX and defines s6_addrXX)
+-AC_TRY_COMPILE([#include <netinet/in.h>], [static struct in6_addr in6_u; 
+-int u =  in6_u.s6_addr16;], [AC_MSG_RESULT(yes); AC_DEFINE([HAVE_IN6_ADDR_S6_ADDR],
++AC_TRY_COMPILE([#include <stdint.h>
++#include <netinet/in.h>], [static struct in6_addr in6_u;
++uint16_t u =  in6_u.s6_addr16[0];], [AC_MSG_RESULT(yes); AC_DEFINE([HAVE_IN6_ADDR_S6_ADDR],
+ 1, [whether struct in6_addr has u6_addrXX and defines s6_addrXX])],
+ AC_MSG_RESULT(no))
+ 
+

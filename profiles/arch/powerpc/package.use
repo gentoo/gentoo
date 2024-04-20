@@ -1,0 +1,10 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Luca Barbato <lu_zero@gentoo.org> (2018-08-12)
+# Default to PowerPC OpenFirmware
+sys-boot/grub:2 grub_platforms_ieee1275
+
+# Doug Goldstein <cardoe@gentoo.org> (2012-10-29)
+# Enable the native arch as the default qemu target
+app-emulation/qemu qemu_softmmu_targets_ppc

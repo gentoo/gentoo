@@ -1,0 +1,10 @@
+# Select yaskkserv server type:
+#  - simple
+#    Without dictionary reloading
+#  - normal
+#  - hairy
+#    With "Server completion" and "Google Japanese Input API"
+YASKKSERV_SERVER_TYPE="normal"
+
+# Options to pass to yaskkserv
+YASKKSERV_OPTS="/usr/share/skk/SKK-JISYO.L.yaskkserv"

@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/803479
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -1062,6 +1062,7 @@
+ AC_PROG_INSTALL
+ AC_PROG_INSTALL_DIRS
+ AC_PROG_MAKE_SET
++AM_PROG_INSTALL_SH
+ 
+ # By default, autoconf sets INSTALL_SCRIPT to '${INSTALL_PROGRAM}'.
+ # That's wrong: it should be set to '${INSTALL}', so that one can

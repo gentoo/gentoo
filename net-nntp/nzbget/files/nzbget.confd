@@ -1,0 +1,15 @@
+# Copyright 1999-2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# /etc/conf.d/nzbget
+# Config file for nzbget init script
+
+# Which user to run nzbget as
+NZBGET_USER="nzbget"
+NZBGET_GROUP="nzbget"
+
+# Location of config file
+NZBGET_CONFIGFILE="/etc/nzbgetd.conf"
+
+# Other options
+NZBGET_OPTS=""

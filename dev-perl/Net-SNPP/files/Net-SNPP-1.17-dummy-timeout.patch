@@ -1,0 +1,42 @@
+From bf788b84b81d244912c4d729d21fb5fa6b131ecd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Mon, 18 Jan 2016 14:33:00 +0100
+Subject: Define dummy Net::SNPP::Server->timeout
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Since libnet-3.08, Net::Cmd subclasses should provide timeout()
+method. Otherwise tests fail like in CPAN RT#111013. See #110978.
+
+This patch returns static 0 value because the first timeout() argument
+is not an object reference. This is probably because Net::SNPP::Server
+does not subclass Net::Cmd properly. See libnet's t/datasend.t for
+example.
+
+Bug: https://rt.cpan.org/Public/Bug/Display.html?id=111013
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ lib/Net/SNPP/Server.pm | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/lib/Net/SNPP/Server.pm b/lib/Net/SNPP/Server.pm
+index 5cb999f..1482ca7 100644
+--- a/lib/Net/SNPP/Server.pm
++++ b/lib/Net/SNPP/Server.pm
+@@ -129,6 +129,12 @@ sub new {
+     return bless( $self, $class );
+ }
+ 
++# Required by Net::Cmd, CPAN RT#111013, #110978
++sub timeout {
++    # The $_[0] is not an object reference, cannot use $self->{Timeout}
++    0;
++}
++
+ =item client()
+ 
+ Calls accept() for you and returns a client handle.  This method
+-- 
+2.15.1
+

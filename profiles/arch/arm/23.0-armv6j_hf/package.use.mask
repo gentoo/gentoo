@@ -1,0 +1,7 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2020-07-04)
+# Rust is available here
+# Bug #728558
+media-video/ffmpeg -rav1e

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+SOCKET=`head -n1 /etc/vmailmgr/cvm-vmailmgr-socket`
+
+exec /usr/bin/softlimit -m 2000000 \
+    /usr/bin/tcpserver -v -p -x /etc/tcp.smtp.cdb \
+    0 pop-3 /var/qmail/bin/pop3front-auth cvm-local:${SOCKET} \
+    /var/qmail/bin/pop3front-maildir .maildir 2>&1
+

@@ -1,0 +1,6 @@
+--- a/yar/graphics.cpp.orig	2004-06-02 14:14:38.174071320 -0400
++++ b/yar/graphics.cpp		2004-06-02 14:14:50.352219960 -0400
+@@ -18,2 +18,3 @@
+ #include "yar.hxx"
++#include <cmath>
+ 

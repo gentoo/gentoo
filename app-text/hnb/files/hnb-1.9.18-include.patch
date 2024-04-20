@@ -1,0 +1,13 @@
+--- a/src/expanded.c
++++ b/src/expanded.c
+@@ -18,9 +18,9 @@
+  * Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+  */
+ 
++#include <string.h>
+ #include "tree.h"
+ #include "cli.h"
+-#define NULL 0
+ 
+ #include "evilloop.h"
+ #include "ctype.h"

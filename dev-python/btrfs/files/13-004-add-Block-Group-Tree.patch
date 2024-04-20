@@ -1,0 +1,110 @@
+
+Patch from:
+https://github.com/knorrie/python-btrfs/commit/7d8dca5bf1211843d8fd5c02b118afddaa53bee8
+
+From 7d8dca5bf1211843d8fd5c02b118afddaa53bee8 Mon Sep 17 00:00:00 2001
+From: Hans van Kranenburg <hans@knorrie.org>
+Date: Sun, 21 May 2023 17:46:06 +0200
+Subject: [PATCH] WIP ctree,ioctl,utils: Add Block Group Tree
+
+When the block_group_tree feature is enabled on a filesystem, we have to
+look up Block Group metadata items in the new Block Group Tree, instead
+of the Extent Tree, where they always were located before.
+
+WIP: We don't want to call the get_features ioctl *every* time we look
+up 1 block group object, but we also cannot just cache the result of it,
+since some feature flags can change while the fs is mounted.
+
+So, this needs some extra work in the features department first to make
+this more nice.
+--- a/btrfs/ctree.py
++++ b/btrfs/ctree.py
+@@ -91,6 +91,7 @@ def _struct_format(s):
+ QUOTA_TREE_OBJECTID = 8  #: Quota tree
+ UUID_TREE_OBJECTID = 9  #: Subvolume UUID tree
+ FREE_SPACE_TREE_OBJECTID = 10  #: Free space tree
++BLOCK_GROUP_TREE_OBJECTID = 11  #: Block group tree
+ 
+ DEV_STATS_OBJECTID = 0  #: Object ID of device statistics in the Device tree.
+ BALANCE_OBJECTID = ULL(-4)  #: Object ID to store balance status. (-4)
+@@ -346,6 +347,7 @@ def _qgroup_objectid(level, subvid):
+     QUOTA_TREE_OBJECTID: 'QUOTA_TREE',
+     UUID_TREE_OBJECTID: 'UUID_TREE',
+     FREE_SPACE_TREE_OBJECTID: 'FREE_SPACE_TREE',
++    BLOCK_GROUP_TREE_OBJECTID: 'BLOCK_GROUP_TREE',
+     BALANCE_OBJECTID: 'BALANCE',
+     ORPHAN_OBJECTID: 'ORPHAN',
+     TREE_LOG_OBJECTID: 'TREE_LOG',
+@@ -765,6 +767,11 @@ def __init__(self, path):
+         self.fsid = _fs_info.fsid
+         self.nodesize = _fs_info.nodesize
+         self.sectorsize = _fs_info.sectorsize
++        # TEMP cached feature flag for block_group_tree TEMP
++        _features = self.features()
++        self._block_group_tree = self.features().compat_ro_flags & \
++                btrfs.ioctl.FEATURE_COMPAT_RO_BLOCK_GROUP_TREE != 0
++        # TEMP cached feature flag for block_group_tree TEMP
+ 
+     def __enter__(self):
+         return self
+@@ -870,7 +877,10 @@ def block_group(self, vaddr, length=None):
+         :raises: :class:`ItemNotFoundError` if no Block Group Item can be found
+             at the address.
+         """
+-        tree = EXTENT_TREE_OBJECTID
++        if not self._block_group_tree:
++            tree = EXTENT_TREE_OBJECTID
++        else:
++            tree = BLOCK_GROUP_TREE_OBJECTID
+         min_offset = length if length is not None else 0
+         max_offset = length if length is not None else ULLONG_MAX
+         min_key = Key(vaddr, BLOCK_GROUP_ITEM_KEY, min_offset)
+@@ -1240,11 +1250,14 @@ class BlockGroupItem(ItemData):
+     The `Block Group` has a 1 to 1 relationship with a `Chunk` and tracks some
+     usage information about a range of virtual address space.
+ 
+-    * Tree: `EXTENT_TREE_OBJECTID` (2)
++    * Tree: `EXTENT_TREE_OBJECTID` (2) or `BLOCK_GROUP_TREE_OBJECTID` (11)
+     * Key objectid: Virtual address.
+     * Key type: `BLOCK_GROUP_ITEM_KEY` (192)
+     * Key offset: Block Group length.
+ 
++    If the block_group_tree feature is enabled on the filesystem, these items
++    can be found inside the Block Group Tree instead of the Extent Tree.
++
+     :ivar int vaddr: Virtual address where the Bock Group starts (taken from
+         the objectid field of the item key).
+     :ivar int length: Block Group length in bytes (taken from the offset field
+--- a/btrfs/ioctl.py
++++ b/btrfs/ioctl.py
+@@ -1325,10 +1325,12 @@ def _compat_flags_str(flags):
+ 
+ FEATURE_COMPAT_RO_FREE_SPACE_TREE = 1 << 0
+ FEATURE_COMPAT_RO_FREE_SPACE_TREE_VALID = 1 << 1
++FEATURE_COMPAT_RO_BLOCK_GROUP_TREE = 1 << 3
+ 
+ _feature_compat_ro_str_map = {
+     FEATURE_COMPAT_RO_FREE_SPACE_TREE: 'free_space_tree',
+     FEATURE_COMPAT_RO_FREE_SPACE_TREE_VALID: 'free_space_tree_valid',
++    FEATURE_COMPAT_RO_BLOCK_GROUP_TREE : 'block_group_tree',
+ }
+ 
+ 
+@@ -1383,6 +1385,7 @@ class FeatureFlags(object):
+ 
+     - FEATURE_COMPAT_RO_FREE_SPACE_TREE
+     - FEATURE_COMPAT_RO_FREE_SPACE_TREE_VALID
++    - FEATURE_COMPAT_RO_BLOCK_GROUP_TREE
+ 
+     Known incompat_flags (available as attribute of this module) are:
+ 
+--- a/btrfs/utils.py
++++ b/btrfs/utils.py
+@@ -436,6 +436,7 @@ def embedded_text_for_str(text):
+     'quota': btrfs.ctree.QUOTA_TREE_OBJECTID,
+     'uuid': btrfs.ctree.UUID_TREE_OBJECTID,
+     'free_space': btrfs.ctree.FREE_SPACE_TREE_OBJECTID,
++    'block_group': btrfs.ctree.BLOCK_GROUP_TREE_OBJECTID,
+     'tree_log': btrfs.ctree.TREE_LOG_OBJECTID,
+     'tree_log_fixup': btrfs.ctree.TREE_LOG_FIXUP_OBJECTID,
+     'tree_reloc': btrfs.ctree.TREE_RELOC_OBJECTID,

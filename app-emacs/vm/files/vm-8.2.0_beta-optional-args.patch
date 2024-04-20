@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/652952
+
+--- vm-8.2.0b-orig/lisp/vm-pcrisis.el
++++ vm-8.2.0b/lisp/vm-pcrisis.el
+@@ -1214,7 +1214,7 @@
+ ;; Functions for vmpc-conditions:
+ ;; -------------------------------------------------------------------
+ 
+-(defun vmpc-none-true-yet (&optional &rest exceptions)
++(defun vmpc-none-true-yet (&rest exceptions)
+   "True if none of the previous evaluated conditions was true.
+ This is a condition that can appear in `vmpc-conditions'.  If EXCEPTIONS are
+ specified, it means none were true except those.  For example, if you wanted

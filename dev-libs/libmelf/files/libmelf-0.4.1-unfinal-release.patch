@@ -1,0 +1,145 @@
+diff -Nuar --exclude enum_sym --exclude configure libmelf-0.4.0.orig//ChangeLog elfsign-0.2.2/melf//ChangeLog
+--- libmelf-0.4.0.orig//ChangeLog	2004-05-03 22:15:29.000000000 -0700
++++ elfsign-0.2.2/melf//ChangeLog	2004-11-30 08:14:39.000000000 -0800
+@@ -1,3 +1,7 @@
++0.4.1
++
++	* Fixed issues with serializing SHT_DYNSYM
++
+ 0.4.0  05/04/2004
+ 
+ 	* Major enhancements to make the library more robust
+diff -Nuar --exclude enum_sym --exclude configure libmelf-0.4.0.orig//configure.in elfsign-0.2.2/melf//configure.in
+--- libmelf-0.4.0.orig//configure.in	2003-11-07 22:08:15.000000000 -0800
++++ elfsign-0.2.2/melf//configure.in	2004-06-05 10:44:17.000000000 -0700
+@@ -25,7 +25,7 @@
+ if test "x$cache_sys_os" = "xSolaris"; then
+ 	SHAREDEXEC="ld -dy -r -o libmelf.so \${OBJS}"
+ else
+-	SHAREDEXEC="\${CC} \${FLAGS} -shared -fPIC \${OBJS} -o libmelf.so"
++	SHAREDEXEC="\${CC} \${FLAGS} -shared \${OBJS} -o libmelf.so"
+ fi
+ 
+ AC_C_BIGENDIAN()
+diff -Nuar --exclude enum_sym --exclude configure libmelf-0.4.0.orig//example/enum_sym.c elfsign-0.2.2/melf//example/enum_sym.c
+--- libmelf-0.4.0.orig//example/enum_sym.c	1969-12-31 16:00:00.000000000 -0800
++++ elfsign-0.2.2/melf//example/enum_sym.c	2004-11-27 18:04:36.000000000 -0800
+@@ -0,0 +1,39 @@
++#include <stdlib.h>
++#include <stdio.h>
++
++#include "melf.h"
++
++void enum_symtab(MELF *melf, ELF_SPEC_HEADER *curr);
++
++int main(int argc, char **argv)
++{
++	ELF_SPEC_HEADER *curr;
++	MELF *melf = melf_open(argv[1], MELF_ACCESS_ALL);
++
++	if (!melf)
++		return 0;
++
++	for (curr = melf_sectionGetEnum(melf);
++	     curr;
++	     curr = melf_sectionEnumNext(melf, curr))
++	{
++		if ((curr->spec.section.sh_type == SHT_DYNSYM) ||
++		    (curr->spec.section.sh_type == SHT_SYMTAB))
++		{
++			enum_symtab(melf, curr);
++		}
++	}
++
++	return 0;
++}
++
++void enum_symtab(MELF *melf, ELF_SPEC_HEADER *curr)
++{
++	Elf32_Sym *sym;
++	unsigned long index = 0;
++
++	while ((sym = melf_symbolTableEnum(melf, curr, index++)))
++	{
++		printf("%s\n", melf_symbolGetName(melf, curr, sym));
++	}
++}
+diff -Nuar --exclude enum_sym --exclude configure libmelf-0.4.0.orig//Makefile.in elfsign-0.2.2/melf//Makefile.in
+--- libmelf-0.4.0.orig//Makefile.in	2003-11-07 22:09:10.000000000 -0800
++++ elfsign-0.2.2/melf//Makefile.in	2004-06-05 10:44:06.000000000 -0700
+@@ -6,7 +6,7 @@
+ DEFINES=@DEFINES@ -DMELF_COMP
+ INCLUDES=-I.
+ PREFIX=@PREFIX@
+-CFLAGS=${DEBUG} ${DEFINES} ${INCLUDES} -Wall -O3
++CFLAGS=${DEBUG} ${DEFINES} ${INCLUDES} -Wall -O3 -fPIC
+ LFLAGS=${DEBUG} ${DEFINES} ${INCLUDES} -Wall -O3 -o
+ LIBS=
+ OBJS=melf.o melf_dynamic.o melf_elf.o melf_list.o melf_note.o melf_program.o melf_reloc.o \
+diff -Nuar --exclude enum_sym --exclude configure libmelf-0.4.0.orig//melf_dynamic.c elfsign-0.2.2/melf//melf_dynamic.c
+--- libmelf-0.4.0.orig//melf_dynamic.c	2004-01-08 23:25:32.000000000 -0800
++++ elfsign-0.2.2/melf//melf_dynamic.c	2004-12-19 13:12:45.000000000 -0800
+@@ -227,7 +227,7 @@
+ 		return NULL;
+ 
+ 	dynamic->content        = (void *)base;
+- 	(unsigned char *)base  += dynamic->contentLength;
++ 	base                    = (Elf32_Dyn *)((char *)base + dynamic->contentLength);
+ 	dynamic->contentLength  = newLength;
+ 
+ 	base->d_tag      = DT_NULL;
+diff -Nuar --exclude enum_sym --exclude configure libmelf-0.4.0.orig//melf_note.c elfsign-0.2.2/melf//melf_note.c
+--- libmelf-0.4.0.orig//melf_note.c	2004-01-08 23:25:56.000000000 -0800
++++ elfsign-0.2.2/melf//melf_note.c	2004-12-19 13:13:16.000000000 -0800
+@@ -204,8 +204,8 @@
+ 	if (!base)
+ 		return NULL;
+ 
+-	note->content          = (void *)base;
+- 	(unsigned char *)base += note->contentLength;
++	note->content = (void *)base;
++ 	base          = (Elf32_Nhdr *)((char *)base + note->contentLength);
+ 	
+ 	memset(base, 0, newLength - note->contentLength);
+ 
+diff -Nuar --exclude enum_sym --exclude configure libmelf-0.4.0.orig//melf_section.c elfsign-0.2.2/melf//melf_section.c
+--- libmelf-0.4.0.orig//melf_section.c	2004-05-03 21:37:29.000000000 -0700
++++ elfsign-0.2.2/melf//melf_section.c	2004-11-27 17:46:45.000000000 -0800
+@@ -485,6 +485,7 @@
+ 			melf_relocInitializeRelaEntryList(melf, sect);
+ 			break;
+ 		case SHT_SYMTAB:
++		case SHT_DYNSYM:
+ 			melf_symbolTableInitializeEntryList(melf, sect);
+ 			break;
+ 		case SHT_DYNAMIC:
+@@ -511,6 +512,7 @@
+ 		case SHT_REL:
+ 		case SHT_RELA:
+ 		case SHT_SYMTAB:
++		case SHT_DYNSYM:
+ 		case SHT_DYNAMIC:
+ 		case SHT_NOTE:
+ 		case SHT_RES:
+@@ -534,6 +536,7 @@
+ 			melf_relocSynchronizeRelaEntryList(melf, sect);
+ 			break;
+ 		case SHT_SYMTAB:
++		case SHT_DYNSYM:
+ 			melf_symbolTableSynchronizeEntryList(melf, sect);
+ 			break;
+ 		case SHT_DYNAMIC:
+diff -Nuar --exclude enum_sym --exclude configure libmelf-0.4.0.orig//stdelf.h.in elfsign-0.2.2/melf//stdelf.h.in
+--- libmelf-0.4.0.orig//stdelf.h.in	2003-06-01 11:13:56.000000000 -0700
++++ elfsign-0.2.2/melf//stdelf.h.in	2004-05-11 07:38:17.000000000 -0700
+@@ -919,8 +919,8 @@
+ #define AT_FLAGS	8		/* Flags */
+ #define AT_ENTRY	9		/* Entry point of program */
+ #define AT_NOTELF	10		/* Program is not ELF */
+-#define AT_UID		11		/* Real uid */
+-#define AT_EUID		12		/* Effective uid */
++#define E_AT_UID		11		/* Real uid */
++#define E_AT_EUID		12		/* Effective uid */
+ #define AT_GID		13		/* Real gid */
+ #define AT_EGID		14		/* Effective gid */
+ #define AT_CLKTCK	17		/* Frequency of times() */

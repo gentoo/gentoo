@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <use>
+    <flag name="hardened">
+      Disable unsafe functions like 'command' and variables like 'uptime'.
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">qalculate</remote-id>
+    <remote-id type="github">Qalculate/libqalculate</remote-id>
+  </upstream>
+</pkgmetadata>

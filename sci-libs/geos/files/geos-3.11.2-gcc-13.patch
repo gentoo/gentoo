@@ -1,0 +1,38 @@
+https://github.com/libgeos/geos/commit/bea3188be44075034fd349f5bb117c943bdb7fb1
+
+From bea3188be44075034fd349f5bb117c943bdb7fb1 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <mail@heiko-becker.de>
+Date: Mon, 23 Jan 2023 15:56:11 +0100
+Subject: [PATCH] Fix build with gcc 13 by including <cstdint> (#805)
+
+In addition to [1]. Otherwise geos fails to build with:
+"geos-3.11.1/include/geos/shape/fractal/HilbertEncoder.h:40:28: error: expected ')' before 'p_level'
+   40 |     HilbertEncoder(uint32_t p_level, geom::Envelope& extent);
+      |                   ~        ^~~~~~~~
+      |                            )
+/var/tmp/paludis/build/sci-libs-geos-3.11.1/work/geos-3.11.1/include/geos/shape/fractal/HilbertEncoder.h:41:5: error: 'uint32_t' does not name a type
+   41 |     uint32_t encode(const geom::Envelope* env);
+      |     ^~~~~~~~"
+
+[1] 0e8d4368b8bd72a7d361286e8523ebce5cff6146
+--- a/include/geos/shape/fractal/HilbertEncoder.h
++++ b/include/geos/shape/fractal/HilbertEncoder.h
+@@ -19,6 +19,7 @@
+ #include <geos/geom/Geometry.h>
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ // Forward declarations
+ namespace geos {
+--- a/tests/unit/capi/GEOSMakeValidTest.cpp
++++ b/tests/unit/capi/GEOSMakeValidTest.cpp
+@@ -9,6 +9,7 @@
+ #include <cstdlib>
+ #include <cmath>
+ #include <cstring>
++#include <cstdint>
+ 
+ #include "capi_test_utils.h"
+ 
+

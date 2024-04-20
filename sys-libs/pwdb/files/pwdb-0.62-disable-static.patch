@@ -1,0 +1,19 @@
+--- a/libpwdb/Makefile
++++ b/libpwdb/Makefile
+@@ -46,7 +46,7 @@
+ %.o : %.c $(HEADERS)
+ 	$(CC) $(CFLAGS) $(DYNAMIC) $(CPPFLAGS) $(TARGET_ARCH) -c $< -o $@
+ 
+-all: $(LIBSTATIC) $(LIBDYNAME) 
++all: $(LIBDYNAME)
+ 
+ 
+ $(LIBDYNAME): $(LIBOBJ)
+@@ -70,7 +70,6 @@
+ 	$(INSTALL) -m 755 $(LIBFILENAME) $(LIBDIR)
+ 	ln -sf $(LIBFILENAME) $(LIBDIR)/$(LIBSONAME)
+ 	ln -sf $(LIBFILENAME) $(LIBDIR)/$(LIBDYNAME)
+-	$(INSTALL) -m 644 $(LIBSTATIC) $(LIBDIR)
+ 
+ clean:
+ 	@rm -f *.so *.a core a.out `find . -name "*.o" -print` `find . -name "*~" -print`

@@ -1,0 +1,13 @@
+Don't try to call 'git log' during configure. This leads to especially confusing
+output if the WORKDIR or S is a git repo for development.
+--- a/configure.ac
++++ b/configure.ac
+@@ -29,7 +29,7 @@ AC_SUBST([PRERELEASE_VERSION],
+ AC_DEFINE([PRERELEASE_VERSION], "PRERELEASE_VERSION_NUMBER",
+           [Prerelease version number of package])
+ 
+-AM_CONDITIONAL([GIT_CHECKOUT], [git log -1 &>/dev/null])
++AM_CONDITIONAL([GIT_CHECKOUT], [false &>/dev/null])
+ 
+ m4_pattern_allow([AM_SILENT_RULES])
+ AM_SILENT_RULES

@@ -1,0 +1,99 @@
+Fixing multiple QA issues
+ * respect user {CC,CXX,LD}FLAGS
+ * fix linking order
+ * make job server for install phase
+
+Don't install ivtv-ctl (bug #333291) and v4l2-ctl (bug #278255)
+Don't install duplicate kernel headers (bug #244584)
+
+https://bugs.gentoo.org/show_bug.cgi?id=321303
+
+Patch written by Kacper Kowalik <xarthisius.kk@gmail.com>
+
+--- a/test/Makefile
++++ b/test/Makefile
+@@ -7,13 +7,13 @@
+ 	ivtv-osd-dma-test ivtv-fb-colormap-test \
+ 	ivtv-fb-16-bit-test ps-analyzer
+ 
+-CFLAGS = -I../utils -D_GNU_SOURCE -O2 -Wall
+-CXXFLAGS = $(CFLAGS)
+-LDFLAGS = -lm
++CFLAGS += -I../utils -D_GNU_SOURCE -Wall
++CXXFLAGS += -I../utils -D_GNU_SOURCE -Wall
++LDLIBS = -lm
+ 
+ all: $(EXES)
+ 
+-install: all
++install:
+
+ clean: 
+ 	rm -f *.o $(EXES)
+--- a/utils/Makefile
++++ b/utils/Makefile
+@@ -9,41 +9,39 @@
+ X86_EXES := ivtvplay ivtv-mpegindex #ivtv-encoder
+ endif
+ 
+-EXES := v4l2-ctl ivtv-ctl ivtv-radio $(X86_EXES)
++EXES := ivtv-radio $(X86_EXES)
+ 
+ BIN := $(EXES) ivtv-tune/ivtv-tune cx25840ctl/cx25840ctl
+ 
+ 
+ HEADERS := linux/ivtv.h linux/ivtvfb.h
+ 
+-CFLAGS = -D_GNU_SOURCE -O2 -Wall -g -I.
+-CXXFLAGS = $(CFLAGS)
++CFLAGS   += -D_GNU_SOURCE -Wall -I.
++CXXFLAGS += -D_GNU_SOURCE -Wall -I.
+ 
+-all:: $(EXES)
+-	$(MAKE) CFLAGS="$(CFLAGS)" -C ivtv-tune
+-	$(MAKE) CFLAGS="$(CFLAGS)" -C cx25840ctl
++all: $(EXES)
++	$(MAKE) $(MAKEOPTS) CFLAGS="$(CFLAGS)" -C ivtv-tune
++	$(MAKE) $(MAKEOPTS) CFLAGS="$(CFLAGS)" -C cx25840ctl
+ 
+ ivtv-ctl: ivtv-ctl.o
+-	$(CC) -lm -o $@ $^
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -lm
+ 
+ v4l2-ctl: v4l2-ctl.o
+-	$(CXX) -lm -o $@ $^
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $^ -lm
+ 
+ v4l2-dbg: v4l2-dbg.o v4l2-driverids.o v4l2-chipids.o
+-	$(CXX) -lm -o $@ $^
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $^ -lm
+ 
+ ivtvplay: ivtvplay.cc
+-	$(CXX) $(CXXFLAGS) -lm -lpthread -o $@ $^
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $^ -lm -lpthread
+ 
+ encoder.o: encoder.c
+ 	$(CC) $(CFLAGS) -DVIDEO_PORT=0 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -c $^
+ 
+ ivtv-encoder: enc_mindex.o enc_chann.o encoder.o
+-	$(CC) -lpthread -o $@ $^
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -lpthread
+ 
+-install: all
+-	install -d $(DESTDIR)/$(HDRDIR)
+-	install -m 0644 $(HEADERS) $(DESTDIR)/$(HDRDIR)
++install:
+ 	install -d $(DESTDIR)/$(BINDIR)
+ 	install -m 0755 $(BIN) $(DESTDIR)/$(BINDIR)
+ 
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,6 @@
+ all clean install:
+-	make -C utils $@
+-	make -C test $@
++	$(MAKE) -C utils $@
++	$(MAKE) -C test $@
+ 
+ distclean: clean
+ 

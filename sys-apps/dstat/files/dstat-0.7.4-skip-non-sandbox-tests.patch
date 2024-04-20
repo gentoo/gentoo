@@ -1,0 +1,18 @@
+diff --git a/Makefile b/Makefile
+index c371f62..42ef84d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -32,10 +32,12 @@ clean:
+ 	rm -f examples/*.pyc plugins/*.pyc
+ 	$(MAKE) -C docs clean
+ 
++TEST_PLUGINS=--cpufreq --disk-tps --dstat-cpu --dstat-ctxt --dstat-mem --dstat --helloworld --md-status --net-packets --proc-count --snooze --test --top-bio-adv --top-bio --top-childwait --top-cpu-adv --top-cpu --top-cputime-avg --top-cputime --top-int --top-io-adv --top-io --top-latency-avg --top-latency --top-mem --top-oom
++
+ test:
+ 	./dstat --version
+ 	./dstat -taf 1 5
+-	./dstat -t --all-plugins 1 5
++	./dstat -t $(TEST_PLUGINS) 1 5
+ 
+ dist: clean
+ 	$(MAKE) -C docs dist

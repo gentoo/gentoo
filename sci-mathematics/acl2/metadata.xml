@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription>
+    ACL2 is a logic and programming language in which you can model computer
+    systems, together with a tool to help you prove properties of those models.
+    "ACL2" denotes "A Computational Logic for Applicative Common Lisp". ACL2 is
+    part of the Boyer-Moore family of provers, for which its authors have
+    received the 2005 ACM Software System Award.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/acl2/acl2/issues/</bugs-to>
+    <remote-id type="github">acl2/acl2</remote-id>
+  </upstream>
+</pkgmetadata>

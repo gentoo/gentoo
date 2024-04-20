@@ -1,0 +1,16 @@
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# the NTP server to get the date from
+RDATE_SERVER="pool.ntp.org"
+
+# Options to pass to rdate
+# "-s" is mandatory to set the system time, and 
+# is passed regardless of this variable.
+RDATE_OPTS="-u"
+
+# How long to wait (in seconds) before giving up.
+# Useful for when you boot and DNS/internet isn't
+# really available but you have your net interface
+# come up with say a static IP.
+RDATE_TIMEOUT=10

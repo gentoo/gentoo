@@ -1,0 +1,79 @@
+Picked up from Debians grig-0.8.1-3
+Description: align affected parts for Hamlib4.0
+Author: Ervin Hegedus <airween@gmail.com>
+--- grig-0.8.1.orig/src/rig-daemon.c
++++ grig-0.8.1/src/rig-daemon.c
+@@ -1674,12 +1674,12 @@ rig_daemon_exec_cmd         (rig_cmd_t c
+ 						   is the current frequency within this range?
+ 						*/
+ 						if (((mode & myrig->state.rx_range_list[i].modes) == mode) &&
+-						    (get->freq1 >= myrig->state.rx_range_list[i].start)    &&
+-						    (get->freq1 <= myrig->state.rx_range_list[i].end)) {
++						    (get->freq1 >= myrig->state.rx_range_list[i].startf)    &&
++						    (get->freq1 <= myrig->state.rx_range_list[i].endf)) {
+ 					
+ 							found_mode = 1;
+-							get->fmin = myrig->state.rx_range_list[i].start;
+-							get->fmax = myrig->state.rx_range_list[i].end;
++							get->fmin = myrig->state.rx_range_list[i].startf;
++							get->fmax = myrig->state.rx_range_list[i].endf;
+ 				
+ 							grig_debug_local (RIG_DEBUG_VERBOSE,
+ 									  _("%s: Found frequency range for mode %d"),
+@@ -2971,7 +2971,7 @@ rig_daemon_exec_cmd         (rig_cmd_t c
+ 			val.i = set->voxdel;
+ 
+ 			/* try to execute command */
+-			retcode = rig_set_level (myrig, RIG_VFO_CURR, RIG_LEVEL_VOX, val);
++			retcode = rig_set_level (myrig, RIG_VFO_CURR, RIG_LEVEL_VOXDELAY, val);
+ 
+ 			/* raise anomaly if execution did not succeed */
+ 			if (retcode != RIG_OK) {
+@@ -2996,7 +2996,7 @@ rig_daemon_exec_cmd         (rig_cmd_t c
+ 			value_t val;
+ 
+ 			/* try to execute command */
+-			retcode = rig_get_level (myrig, RIG_VFO_CURR, RIG_LEVEL_VOX, &val);
++			retcode = rig_get_level (myrig, RIG_VFO_CURR, RIG_LEVEL_VOXDELAY, &val);
+ 
+ 			/* raise anomaly if execution did not succeed */
+ 			if (retcode != RIG_OK) {
+--- grig-0.8.1.orig/src/rig-daemon-check.c
++++ grig-0.8.1/src/rig-daemon-check.c
+@@ -398,12 +398,12 @@ rig_daemon_check_mode     (RIG
+ 			*/
+ 			if (!found_mode &&
+ 			    ((mode & myrig->state.rx_range_list[i].modes) == mode) &&
+-			    (get->freq1 >= myrig->state.rx_range_list[i].start)    &&
+-			    (get->freq1 <= myrig->state.rx_range_list[i].end)) {
++			    (get->freq1 >= myrig->state.rx_range_list[i].startf)    &&
++			    (get->freq1 <= myrig->state.rx_range_list[i].endf)) {
+ 					
+ 				found_mode = 1;
+-				get->fmin = myrig->state.rx_range_list[i].start;
+-				get->fmax = myrig->state.rx_range_list[i].end;
++				get->fmin = myrig->state.rx_range_list[i].startf;
++				get->fmax = myrig->state.rx_range_list[i].endf;
+ 				
+ 				grig_debug_local (RIG_DEBUG_VERBOSE,
+ 						  _("%s: Found frequency range for mode %d"),
+--- grig-0.8.1.orig/src/rig-data.h
++++ grig-0.8.1/src/rig-data.h
+@@ -190,7 +190,7 @@ typedef struct {
+ 
+ #define GRIG_LEVEL_RD (RIG_LEVEL_RFPOWER | RIG_LEVEL_AGC | RIG_LEVEL_SWR | RIG_LEVEL_ALC | \
+                        RIG_LEVEL_STRENGTH | RIG_LEVEL_ATT | RIG_LEVEL_PREAMP | \
+-                       RIG_LEVEL_VOX | RIG_LEVEL_AF | RIG_LEVEL_RF | RIG_LEVEL_SQL | \
++                       RIG_LEVEL_VOXDELAY | RIG_LEVEL_AF | RIG_LEVEL_RF | RIG_LEVEL_SQL | \
+                        RIG_LEVEL_IF | RIG_LEVEL_APF | RIG_LEVEL_NR | RIG_LEVEL_PBT_IN | \
+                        RIG_LEVEL_PBT_OUT | RIG_LEVEL_CWPITCH |          \
+                        RIG_LEVEL_MICGAIN | RIG_LEVEL_KEYSPD | RIG_LEVEL_NOTCHF | \
+@@ -198,7 +198,7 @@ typedef struct {
+                        RIG_LEVEL_VOXGAIN | RIG_LEVEL_ANTIVOX)
+ 
+ #define GRIG_LEVEL_WR (RIG_LEVEL_RFPOWER | RIG_LEVEL_AGC | RIG_LEVEL_ATT | RIG_LEVEL_PREAMP | \
+-                       RIG_LEVEL_VOX | RIG_LEVEL_AF | RIG_LEVEL_RF | RIG_LEVEL_SQL | \
++                       RIG_LEVEL_VOXDELAY | RIG_LEVEL_AF | RIG_LEVEL_RF | RIG_LEVEL_SQL | \
+                        RIG_LEVEL_IF | RIG_LEVEL_APF | RIG_LEVEL_NR | RIG_LEVEL_PBT_IN | \
+                        RIG_LEVEL_PBT_OUT | RIG_LEVEL_CWPITCH |          \
+                        RIG_LEVEL_MICGAIN | RIG_LEVEL_KEYSPD | RIG_LEVEL_NOTCHF | \

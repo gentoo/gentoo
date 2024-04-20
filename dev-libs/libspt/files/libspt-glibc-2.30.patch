@@ -1,0 +1,12 @@
+--- a/libspt.c
++++ b/libspt.c
+@@ -7,9 +7,6 @@
+ #include <time.h>
+ #include <stdio.h>  /* for perror() */
+ #include <signal.h>
+-#ifdef HAVE_PTY_SVR4
+-#include <sys/stropts.h>
+-#endif
+ 
+ struct spt_handle_tag {
+     connection *pconn;

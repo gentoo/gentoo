@@ -1,0 +1,154 @@
+diff -Naur wmforkplop-0.9.3.orig/configure.ac wmforkplop-0.9.3/configure.ac
+--- wmforkplop-0.9.3.orig/configure.ac	2006-12-01 12:32:10.000000000 +0100
++++ wmforkplop-0.9.3/configure.ac	2022-02-21 09:32:50.447638884 +0100
+@@ -1,11 +1,13 @@
+-AC_INIT(wmforkplop.c)
+-AM_INIT_AUTOMAKE(wmforkplop, 0.9.3)
+-AM_CONFIG_HEADER(config.h)
++AC_INIT([wmforkplop], [0.9.3], [http://hules.free.fr/wmforkplop/])
++AM_INIT_AUTOMAKE
++LT_INIT
++AC_CONFIG_MACRO_DIRS([m4])
++AC_CONFIG_HEADERS([config.h])
+ 
+ AC_SUBST(VERSION)
+ 
+ ISODATE=`date +%Y-%m-%d`
+-AC_SUBST(ISODATE)
++AC_SUBST([ISODATE])
+ 
+ AC_CANONICAL_HOST
+ 
+@@ -19,54 +21,48 @@
+ 
+ AC_DEFINE(_GNU_SOURCE,[],[uses GNU extensions])
+ 
+-
+-if test x$GCC = xyes; then
+-  CFLAGS="-O3 -fomit-frame-pointer -ffast-math -Wall -W";
+-fi
+-
+ dnl check for X
+ AC_PATH_X
+ AC_PATH_XTRA
+-if test x$no_x = xyes; then
+-  echo "You need to supply the path to the X headers and libraries with --x-includes=dir and --x-libraries=dir";
+-  exit 1;
+-fi;
++AS_IF(
++  [test "x${no_x}" = "xyes"],
++  [AC_MSG_ERROR([You need to supply the path to the X headers and libraries with --x-includes=dir and --x-libraries=dir])]
++)
+ 
+ LIBS="${X_PRE_LIBS} ${X_LIBS} -lX11 -lXext ${LIBS} ${X_EXTRA_LIBS}"
+ CFLAGS="$CFLAGS $X_CFLAGS"
+ 
+ dnl Checks for library functions.
+-AC_CHECK_HEADERS(linux/hdreg.h)
++AC_CHECK_HEADERS([linux/hdreg.h])
+ 
+-AC_CHECK_PROG([IMLIB2_CONFIG_IN_PATH],[imlib2-config],[yes],[no])
+-if test "x$IMLIB2_CONFIG_IN_PATH" = "xno"; then
+-  AC_ERROR([imlib2-config not found in PATH.. You need to install Imlib2 (and its developpement package)])
+-fi
+-IMLIB2_CFLAGS=$(imlib2-config --cflags)
+-IMLIB2_LIBS=$(imlib2-config --libs)
+-AC_SUBST(IMLIB2_CFLAGS)
+-AC_SUBST(IMLIB2_LIBS)
++AC_CHECK_PROG([PKG_CONFIG_IN_PATH],[pkg-config],[yes],[no])
++AS_IF(
++  [test "x$PKG_CONFIG_IN_PATH" = "xno"],
++  [AC_ERROR([pkg-config not found in PATH.. You need to install pkgconf])]
++)
++
++IMLIB2_CFLAGS=$(pkg-config imlib2 --cflags)
++IMLIB2_LIBS=$(pkg-config imlib2 --libs)
++AC_SUBST([IMLIB2_CFLAGS])
++AC_SUBST([IMLIB2_LIBS])
+ 
+ YELLOW="\\033\\1331;33m"
+ RESET="\\033\\1330m"
+ 
+-PKG_CHECK_MODULES(PACKAGE, [libgtop-2.0 >= 2.7.90], LIBGTOPBUG="no", LIBGTOPBUG="yes")
+-PKG_CHECK_MODULES(PACKAGE, [libgtop-2.0 >= 2.0.0])
+-LIBGTOP_CFLAGS=$PACKAGE_CFLAGS;
+-LIBGTOP_LIBS=$PACKAGE_LIBS;
+-dnl LIBGTOP_LIBS=`pkg-config --libs libgtop-2.0`
+-dnl LIBGTOP_CFLAGS=`pkg-config --cflags libgtop-2.0`
+-AC_SUBST(LIBGTOP_LIBS)
+-AC_SUBST(LIBGTOP_CFLAGS)
+-if test "x$LIBGTOPBUG" = "xyes"; then
+-        AC_DEFINE(LIBGTOP_BUGGY,[],[defined if libgtop < 2.7.90 is used])
+-        echo "Using a buggy version (<2.7.90) of libgtop"
+-else
+-        echo "Using a good version of libgtop"
+-fi
++PKG_CHECK_MODULES([LIBGTOP], [libgtop-2.0 >= 2.7.90], [LIBGTOPBUG="no"], [LIBGTOPBUG="yes"])
++PKG_CHECK_MODULES([LIBGTOP], [libgtop-2.0 >= 2.0.0])
++AC_SUBST([LIBGTOP_LIBS])
++AC_SUBST([LIBGTOP_CFLAGS])
++AS_IF(
++  [test "x$LIBGTOPBUG" = "xyes"],
++  [AC_DEFINE([LIBGTOP_BUGGY], [], [defined if libgtop < 2.7.90 is used])
++   AC_MSG_WARN([Using a buggy version (<2.7.90) of libgtop])],
++  [AC_MSG_NOTICE([Using a good version of libgtop])]
++)
++
+ dnl Checks for the gkrellm plugin
+ build_gkforkplop="yes"
+-AC_ARG_ENABLE(gkrellm,
++AC_ARG_ENABLE([gkrellm],
+  [  --enable-gkrellm        build the gkrellm plugin (requires gtk2 and gkrellm developpement files) (Default is yes)
+   --disable-gkrellm       do not build the gkrellm plugin],
+  [ if   test "x$enableval" = "xno" ; then
+@@ -77,7 +73,7 @@
+ 
+ 
+ dnl GKFORKPLOP DISABLED! IS BROKEN
+-build_gkforkplop="yes"
++build_gkforkplop="no"
+ 
+ 
+ 
+@@ -90,8 +86,8 @@
+   PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])
+   GTK2_CFLAGS=$PACKAGE_CFLAGS;
+   GTK2_LIBS=$PACKAGE_LIBS;
+-  AC_SUBST(GTK2_CFLAGS)
+-  AC_SUBST(GTK2_LIBS)
++  AC_SUBST([GTK2_CFLAGS])
++  AC_SUBST([GTK2_LIBS])
+   SAVECPPFLAGS="$CPPFLAGS"
+   CPPFLAGS="$CFLAGS $GTK2_CFLAGS"
+   AC_CHECK_HEADERS([gkrellm2/gkrellm.h], [ok=1], [ok=0])
+@@ -103,19 +99,7 @@
+   fi
+   CPPFLAGS="$SAVECPPFLAGS"
+ fi
+-AC_SUBST(GKFORKPLOP)
+-
++AC_SUBST([GKFORKPLOP])
+ 
+-AC_OUTPUT(Makefile)
+ 
+-dnl echo "- - - - - - - - - - - - - - - -"
+-dnl echo -e "${YELLOW}wmforkplop    will be built${RESET}"
+-dnl if test "x$build_gkforkplop" = "xno"; then
+-dnl  echo -e "${YELLOW}gkforkplop.so will NOT be built${RESET}"
+-dnl else
+-dnl  echo -e "${YELLOW}gkforkplop.so will be built${RESET}"
+-dnl  echo "Check that the plugin is working properly before installing it with:"
+-dnl  echo "   gkrellm -p ./gkforkplop.so"
+-dnl  echo "and then install the gkrellm plugin with:"
+-dnl  echo "     mv ./gkforkplop.so ~/.gkrellm2/plugins"
+-dnl fi
++AC_OUTPUT([Makefile])
+diff -Naur wmforkplop-0.9.3.orig/Makefile.am wmforkplop-0.9.3/Makefile.am
+--- wmforkplop-0.9.3.orig/Makefile.am	2004-07-11 20:22:33.000000000 +0200
++++ wmforkplop-0.9.3/Makefile.am	2022-02-21 09:32:25.649635912 +0100
+@@ -1,3 +1,5 @@
++ACLOCAL_AMFLAGS = -I m4
++
+ bin_PROGRAMS=wmforkplop
+ noinst_PROGRAMS=@GKFORKPLOP@
+ EXTRA_PROGRAMS=gkforkplop.so

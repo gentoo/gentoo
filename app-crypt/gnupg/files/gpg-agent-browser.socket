@@ -1,0 +1,13 @@
+[Unit]
+Description=GnuPG cryptographic agent and passphrase cache (access for web browsers)
+Documentation=man:gpg-agent(1)
+
+[Socket]
+ListenStream=%t/gnupg/S.gpg-agent.browser
+FileDescriptorName=browser
+Service=gpg-agent.service
+SocketMode=0600
+DirectoryMode=0700
+
+[Install]
+WantedBy=sockets.target

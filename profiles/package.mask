@@ -1,0 +1,997 @@
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+####################################################################
+#
+# When you add an entry to the top of this file, add your name, the date
+# in the UTC timezone with a format of YYYY-MM-DD, and an explanation of why
+# something is getting masked.
+# Please be extremely careful not to commit atoms that are not valid, as it can
+# cause large-scale breakage, especially if it ends up in the daily snapshot.
+#
+## Example:
+##
+## # Dev E. Loper <developer@gentoo.org> (2019-07-01)
+## # Masking  these versions until we can get the
+## # v4l stuff to work properly again
+## =media-video/mplayer-0.90_pre5
+## =media-video/mplayer-0.90_pre5-r1
+#
+# - Best last rites (removal) practices -
+# Include the following info:
+# a) reason for masking
+# b) bug # for the removal (and yes you should have one)
+# c) date of removal (either the date or "in x days")
+#
+## Example:
+##
+## # Dev E. Loper <developer@gentoo.org> (2019-07-01)
+## # Masked for removal in 30 days.  Doesn't work
+## # with new libfoo. Upstream dead, gtk-1, smells
+## # funny. (bug #987654)
+## app-misc/some-package
+
+#--- END OF EXAMPLES ---
+
+# Maciej Barć <xgqt@gentoo.org> (2024-04-20)
+# No reverse dependencies, old packages for mono, uses abandoned mono.eclass.
+# Dotnet Project is not willing to take up those packages.
+# Open bugs: #679440
+# Removal on 2024-05-20
+dev-dotnet/monocalendar
+dev-dotnet/ndesk-dbus
+dev-dotnet/ndesk-dbus-glib
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-04-19)
+# EAPI=6, library only without any reverse dependencies, uses
+# deprecated go eclasses, maintainer-needed.
+# Removal on 2024-05-19, bug #930249
+dev-go/qr
+dev-go/twofactor
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-04-18)
+# Upstream gone, unfetchable, stuck on EAPI 6. Bug 605796
+# Removal on 2024-05-18
+sci-visualization/spectromatic
+
+# Fabian Groffen <grobian@gentoo.org> (2024-04-16)
+# Official latest Python support 3.8, replacement app-metrics/go-carbon
+# is more performant and designed to be a drop-in replacement.
+# Removal on 2024-05-16, bug #929444
+dev-python/carbon
+
+# Fabian Groffen <grobian@gentoo.org> (2024-04-13)
+# Python wrapper around liblmsensors, no reverse dependencies
+# Removal on 2024-05-13, bug #929495
+dev-python/PySensors
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-04-12)
+# EAPI6. Fails to compile with go versions in tree. Upstream is archived.
+# Uses deprecated go eclasses. Maintainer needed, no rev deps.
+# Removal: 2024-05-12.  Bugs #794913, #679348, #771072, #844607.
+app-emulation/runv
+
+# Michał Górny <mgorny@gentoo.org> (2024-04-11)
+# Contains a bug that could render the kernel fail to boot.
+# https://lore.kernel.org/oe-lkp/202403221630.2692c998-oliver.sang@intel.com/
+# The fix is:
+# https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e7d24c0aa8e678f41457d1304e2091cac6fd1a2e
+=sys-kernel/gentoo-kernel-6.6.26
+=sys-kernel/gentoo-kernel-bin-6.6.26
+=sys-kernel/vanilla-kernel-6.6.26
+=sys-kernel/vanilla-kernel-6.8.5
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-04-08)
+# Obsolete java-vm, bugs #848804 #830248.
+# Removal on 2024-05-08
+dev-java/icedtea-bin
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-04-08)
+# Java libraries without consumers.
+# Removal on 2024-05-08, bugs #853100 #716228.
+dev-java/gin
+dev-java/gwt
+dev-java/validation-api
+
+# Ben Kohler <bkohler@gentoo.org> (2024-04-07)
+# Abandoned upstream long ago in favor of Unifi Protect (running only on an
+# official Unifi appliance.  Likely contains lots of security holes in bundled
+# libs.
+# Removal on 2024-05-07.  Bug #928881
+acct-group/unifi-video
+acct-user/unifi-video
+media-video/unifi-video
+
+# Ben Kohler <bkohler@gentoo.org> (2024-04-07)
+# Long ago forked to and obsoleted by sys-apps/memtest86+.  Upstream has
+# abandoned this for their proprietary UEFI-based one (packaged in gentoo as
+# as sys-apps/memtest86-bin).
+# Removal on 2024-05-07.  Bug #502464, #607494, #628528, #750677, #887003,
+# #912973, #920109
+sys-apps/memtest86
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-04-06)
+# Dead upstream for many years, in a state of decay and no revdeps.
+# Removal on 2024-05-06.  Bug #926193, #891791
+net-im/telepathy-connection-managers
+net-libs/sofia-sip
+net-libs/telepathy-accounts-signon
+net-libs/telepathy-farstream
+net-libs/telepathy-qt
+net-voip/telepathy-gabble
+net-voip/telepathy-rakia
+net-voip/telepathy-salut
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-04-06)
+# Dead upstream, as is the whole telepathy stack. Some parts depend on
+# dev-qt/qtwebengine:5.
+# Removal on 2024-05-06.  Bug #926679
+kde-apps/ktp-accounts-kcm
+kde-apps/ktp-approver
+kde-apps/ktp-auth-handler
+kde-apps/ktp-common-internals
+kde-apps/ktp-contact-list
+kde-apps/ktp-contact-runner
+kde-apps/ktp-desktop-applets
+kde-apps/ktp-filetransfer-handler
+kde-apps/ktp-kded-module
+kde-apps/ktp-send-file
+kde-apps/ktp-text-ui
+kde-apps/plasma-telepathy-meta
+net-libs/telepathy-logger-qt
+
+# James Le Cuirot <chewi@gentoo.org> (2024-04-05)
+# Dead upstream and broken beyond repair. Removal on 2024-05-05. Bug #928591.
+games-board/xmille
+
+# Michał Górny <mgorny@gentoo.org> (2024-03-30)
+# NIH package that was added for dev-python/setuptools but is no longer
+# used there.
+# Removal on 2024-04-29.  Bug #928270.
+dev-python/nspektr
+
+# James Le Cuirot <chewi@gentoo.org> (2024-03-30)
+# Old, ugly, broken, and requires OSS sound. Removal on 2024-04-30. Bug #928066.
+games-sports/gracer
+
+# Sam James <sam@gentoo.org> (2024-03-28)
+# Newer releases were signed by a potentially compromised upstream maintainer.
+# There is no evidence that these releases contain malicious code, but masked
+# out of an abundance of caution. See bug #928134.
+sec-keys/openpgp-keys-jiatan
+>=app-arch/xz-utils-5.4.3
+
+# Sam James <sam@gentoo.org> (2024-03-28)
+# Backdoor discovered in release tarballs. DOWNGRADE NOW.
+# https://www.openwall.com/lists/oss-security/2024/03/29/4
+# https://bugs.gentoo.org/928134
+~app-arch/xz-utils-5.5.1_alpha
+~app-arch/xz-utils-5.5.2_beta
+~app-arch/xz-utils-5.6.0
+~app-arch/xz-utils-5.6.1
+
+# Michał Górny <mgorny@gentoo.org> (2024-03-26)
+# Last release in 2012.  No reverse dependencies.
+# Removal on 2024-04-25.  Bug #927524.
+dev-python/simplegeneric
+
+# Michał Górny <mgorny@gentoo.org> (2024-03-26)
+# Unmaintained.  EAPI 6.  Homepage gone.  No keywords for modern
+# architectures.
+# Removal on 2024-04-25.  Bug #927208.
+net-misc/blinkperl
+
+# Michał Górny <mgorny@gentoo.org> (2024-03-26)
+# Unmaintained.  Multiple bugs open.  The current version is from 2018,
+# and it has been discontinued as a separate package since.
+# Removal on 2024-04-25.  Bug #926861.
+net-misc/felix
+
+# Michał Górny <mgorny@gentoo.org> (2024-03-26)
+# Unmaintained.  EAPI 6.  Homepage gone.
+# Removal on 2024-04-25.  Bug #926860.
+app-pda/iripdb
+
+# Michał Górny <mgorny@gentoo.org> (2024-03-26)
+# Unfetchable proprietary fonts.  The alternatives include
+# media-fonts/jomolhari and "Noto Serif Tibetan" from media-fonts/noto.
+# Removal on 2024-04-25.  Bug #926836.
+media-fonts/dzongkha-fonts
+
+# Michał Górny <mgorny@gentoo.org> (2024-03-26)
+# A dead wiget library with no reverse dependencies.  Homepage gone.
+# Removal on 2024-04-25.  Bug #926604.
+x11-libs/scw
+
+# Michał Górny <mgorny@gentoo.org> (2024-03-26)
+# Deprecated upstream and the URL no longer works.
+# Removal on 2024-04-25.  Bug #926550.
+sys-firmware/bluez-firmware
+
+# Michał Górny <mgorny@gentoo.org> (2024-03-26)
+# Unfinished package from 2021 that was added as a short-lived
+# dependency of dev-python/GitPython.  No reverse dependencies remain.
+# Removal on 2024-04-25.  Bug #924683.
+dev-python/sumtypes
+
+# Michał Górny <mgorny@gentoo.org> (2024-03-26)
+# Uses deprecated distutils-r1 API.  The current version is outdated,
+# from mid-2022.  No reverse dependencies.
+# Removal on 2024-04-25.  Bug #910015.
+sci-biology/HTSeq
+
+# Michał Górny <mgorny@gentoo.org> (2024-03-26)
+# Uses deprecated distutils-r1 API.  Depends on dev-qt/qtwebengine:5.
+# Includes the libraries with no other reverse dependencies.
+# Removal on 2024-04-25.  Bug #909996.
+media-libs/libopenshot
+media-libs/libopenshot-audio
+media-video/openshot
+
+# Michał Górny <mgorny@gentoo.org> (2024-03-26)
+# Issues with OpenSSL 3.  Unmaintained.  Last activity in 2019.
+# Removal on 2024-04-25.  Bug #892031.
+sys-auth/pam_ssh
+
+# Michał Górny <mgorny@gentoo.org> (2024-03-26)
+# Fails to compile.  Unmaintained.  Last activity in 2016.
+# Depends on an old wxGTK slot.
+# Removal on 2024-04-25.  Bug #895222.
+app-misc/tek
+
+# Michał Górny <mgorny@gentoo.org> (2024-03-26)
+# Bad C++ code.  Unmaintained.  Carries a number of patches already.
+# No reverse dependencies.
+# Removal on 2024-04-25.  Bug #924925.
+dev-libs/zthread
+
+# Eli Schwartz <eschwartz93@gmail.com> (2024-03-24)
+# Broken with modern compilers, broken with LTO. Upstream website no
+# longer exists. Unmaintained in Gentoo, no reverse dependencies.
+# Removal on 2024-04-23.  Bug #731942, #863041, #898298.
+sci-libs/xgks-pmel
+
+# Michał Górny <mgorny@gentoo.org> (2024-03-23)
+# No maintainer.  Broken tests.  Not ported to PEP517 build.
+# No release since 2020, little activity since.  No revdeps.
+# Removal on 2024-04-22.  Bug #911780.
+dev-python/prov
+
+# Michał Górny <mgorny@gentoo.org> (2024-03-23)
+# Apparently broken.  No tests.  Last code change in 2016.  No revdeps.
+# Removal on 2024-04-22.  Bug #892613.
+dev-python/sphinxcontrib-asyncio
+
+# Conrad Kostecki <conikost@gentoo.org> (2024-03-22)
+# Stuck on old EAPI6. Last stable release over 10 years ago.
+# Not compatible with PHP8. Removal on 2024-04-22.
+dev-php/onphp
+
+# Conrad Kostecki <conikost@gentoo.org> (2024-03-22)
+# Stuck on old EAPI6. PEAR channel long dead.
+# Removal on 2024-04-22.
+dev-php/mockery
+
+# Conrad Kostecki <conikost@gentoo.org> (2024-03-22)
+# Stuck on old EAPI6. Not compatible with PHP7 and newer.
+# Upstream stopped development.
+# Removal on 2024-04-22.
+dev-php/libchart
+
+# Hans de Graaff <graaff@gentoo.org> (2024-03-22)
+# Broken with modern compilers, bug 884249. No longer maintained
+# upstream, last release 5 years ago. No reverse dependencies left. Use
+# dev-ruby/concurrent-ruby instead.
+# Removal on 2024-04-22.
+dev-ruby/atomic
+
+# Rahil Bhimjiani <me@rahil.rocks> (2024-03-17)
+# buildah-1.34.0 isn't getting security fixes from upstream
+# https://github.com/containers/buildah/issues/5320
+=app-containers/buildah-1.34.0
+
+# Eray Aslan <eras@gentoo.org> (2024-03-10)
+# Mask experimental software
+=mail-mta/postfix-3.10*
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-04-16)
+# KDE Plasma 6.0.4, Gear 24.02.2 and Frameworks 6.1.0 mask
+#
+# Don't do anything unless you're intentionally moving to Plasma 6, which is
+# masked still for a reason. If you get this message just from conflicts where
+# you're not trying to do that, please cleanup stale entries in /etc/portage
+# and your world file.
+#
+# Plasma 6 replaces 5. For conflict resolution between KF5- and KF6-packages:
+# - put '-kf6compat' into /etc/portage/profile/use.mask
+# - enable USE=kf6compat globally
+# - if you have the following packages installed, put the following into
+#   /etc/portage/package.use in order to avoid conflicts:
+#       dev-util/kdevelop:5 -gdbui -plasma
+# If you encounter ...
+# - build-time/packaging bugs:
+#   - file a bug after making sure none exists yet for your issue
+# - runtime bugs: https://community.kde.org/Plasma/Plasma_6#How_to_use/test_it
+#   - work with upstream and help test patches using /etc/portage/patches
+~kde-frameworks/frameworkintegration-6.1.0
+~kde-frameworks/attica-6.1.0
+~kde-frameworks/bluez-qt-6.1.0
+~kde-frameworks/breeze-icons-6.1.0
+~kde-frameworks/extra-cmake-modules-6.1.0
+~kde-frameworks/karchive-6.1.0
+~kde-frameworks/kcalendarcore-6.1.0
+~kde-frameworks/kcodecs-6.1.0
+~kde-frameworks/kconfig-6.1.0
+~kde-frameworks/kcoreaddons-6.1.0
+~kde-frameworks/kdbusaddons-6.1.0
+~kde-frameworks/kdnssd-6.1.0
+~kde-frameworks/kguiaddons-6.1.0
+~kde-frameworks/kholidays-6.1.0
+~kde-frameworks/ki18n-6.1.0
+~kde-frameworks/kidletime-6.1.0
+~kde-frameworks/kirigami-6.1.0
+~kde-frameworks/kitemmodels-6.1.0
+~kde-frameworks/kitemviews-6.1.0
+~kde-frameworks/kplotting-6.1.0
+~kde-frameworks/kquickcharts-6.1.0
+~kde-frameworks/ktexttemplate-6.1.0
+~kde-frameworks/kuserfeedback-6.1.0
+~kde-frameworks/kwidgetsaddons-6.1.0
+~kde-frameworks/kwindowsystem-6.1.0
+~kde-frameworks/modemmanager-qt-6.1.0
+~kde-frameworks/networkmanager-qt-6.1.0
+~kde-frameworks/prison-6.1.0
+~kde-frameworks/solid-6.1.0
+~kde-frameworks/sonnet-6.1.0
+~kde-frameworks/syntax-highlighting-6.1.0
+~kde-frameworks/threadweaver-6.1.0
+~kde-frameworks/kauth-6.1.0
+~kde-frameworks/kcolorscheme-6.1.0
+~kde-frameworks/kcompletion-6.1.0
+~kde-frameworks/kcontacts-6.1.0
+~kde-frameworks/kcrash-6.1.0
+~kde-frameworks/kdoctools-6.1.0
+~kde-frameworks/kfilemetadata-6.1.0
+~kde-frameworks/kimageformats-6.1.0
+~kde-frameworks/kjobwidgets-6.1.0
+~kde-frameworks/knotifications-6.1.0
+~kde-frameworks/kpackage-6.1.0
+~kde-frameworks/kpeople-6.1.0
+~kde-frameworks/kpty-6.1.0
+~kde-frameworks/kstatusnotifieritem-6.1.0
+~kde-frameworks/ksvg-6.1.0
+~kde-frameworks/kunitconversion-6.1.0
+~kde-frameworks/syndication-6.1.0
+~kde-frameworks/baloo-6.1.0
+~kde-frameworks/kbookmarks-6.1.0
+~kde-frameworks/kcmutils-6.1.0
+~kde-frameworks/kconfigwidgets-6.1.0
+~kde-frameworks/kdav-6.1.0
+~kde-frameworks/kdeclarative-6.1.0
+~kde-frameworks/kded-6.1.0
+~kde-frameworks/kdesu-6.1.0
+~kde-frameworks/kglobalaccel-6.1.0
+~kde-frameworks/kiconthemes-6.1.0
+~kde-frameworks/kio-6.1.0
+~kde-frameworks/knewstuff-6.1.0
+~kde-frameworks/knotifyconfig-6.1.0
+~kde-frameworks/kparts-6.1.0
+~kde-frameworks/krunner-6.1.0
+~kde-frameworks/kservice-6.1.0
+~kde-frameworks/ktexteditor-6.1.0
+~kde-frameworks/ktextwidgets-6.1.0
+~kde-frameworks/kwallet-6.1.0
+~kde-frameworks/kxmlgui-6.1.0
+~kde-frameworks/purpose-6.1.0
+~kde-frameworks/qqc2-desktop-style-6.1.0
+~kde-plasma/bluedevil-6.0.4
+~kde-plasma/breeze-6.0.4
+~kde-plasma/breeze-grub-6.0.4
+~kde-plasma/breeze-gtk-6.0.4.1
+~kde-plasma/breeze-plymouth-6.0.4.1
+~kde-plasma/discover-6.0.4
+~kde-plasma/drkonqi-6.0.4
+~kde-plasma/flatpak-kcm-6.0.4
+~kde-plasma/kactivitymanagerd-6.0.4
+~kde-plasma/kde-cli-tools-6.0.4
+~kde-plasma/kde-gtk-config-6.0.4
+~kde-plasma/kdecoration-6.0.4
+~kde-plasma/kdeplasma-addons-6.0.4
+~kde-plasma/kgamma-6.0.4
+~kde-plasma/kglobalacceld-6.0.4
+~kde-plasma/kinfocenter-6.0.4
+~kde-plasma/kmenuedit-6.0.4
+~kde-plasma/kpipewire-6.0.4
+~kde-plasma/kscreen-6.0.4
+~kde-plasma/kscreenlocker-6.0.4
+~kde-plasma/ksshaskpass-6.0.4
+~kde-plasma/ksystemstats-6.0.4
+~kde-plasma/kwallet-pam-6.0.4
+~kde-plasma/kwayland-6.0.4
+~kde-plasma/kwayland-integration-6.0.4
+~kde-plasma/kwin-6.0.4
+~kde-plasma/kwrited-6.0.4
+~kde-plasma/layer-shell-qt-6.0.4
+~kde-plasma/libkscreen-6.0.4
+~kde-plasma/libksysguard-6.0.4
+~kde-plasma/libplasma-6.0.4
+~kde-plasma/milou-6.0.4
+~kde-plasma/ocean-sound-theme-6.0.4
+~kde-plasma/oxygen-6.0.4
+~kde-plasma/oxygen-sounds-6.0.4
+~kde-plasma/plasma-activities-6.0.4
+~kde-plasma/plasma-activities-stats-6.0.4
+~kde-plasma/plasma-browser-integration-6.0.4
+~kde-plasma/plasma-desktop-6.0.4
+~kde-plasma/plasma-disks-6.0.4
+~kde-plasma/plasma-firewall-6.0.4
+~kde-plasma/plasma-integration-6.0.4
+~kde-plasma/plasma-meta-6.0.4
+~kde-plasma/plasma-nm-6.0.4
+~kde-plasma/plasma-pa-6.0.4
+~kde-plasma/plasma-sdk-6.0.4
+~kde-plasma/plasma-systemmonitor-6.0.4
+~kde-plasma/plasma-thunderbolt-6.0.4
+~kde-plasma/plasma-vault-6.0.4
+~kde-plasma/plasma-welcome-6.0.4
+~kde-plasma/plasma-workspace-6.0.4
+~kde-plasma/plasma-workspace-wallpapers-6.0.4
+~kde-plasma/plasma5support-6.0.4
+~kde-plasma/plymouth-kcm-6.0.4
+~kde-plasma/polkit-kde-agent-6.0.4
+~kde-plasma/powerdevil-6.0.4
+~kde-plasma/print-manager-6.0.4
+~kde-plasma/qqc2-breeze-style-6.0.4
+~kde-plasma/sddm-kcm-6.0.4
+~kde-plasma/systemsettings-6.0.4
+~kde-plasma/wacomtablet-6.0.4
+~kde-plasma/xdg-desktop-portal-kde-6.0.4
+~kde-apps/baloo-widgets-24.02.2
+~kde-apps/dolphin-24.02.2
+~kde-apps/ffmpegthumbs-24.02.2
+~kde-apps/kate-24.02.2
+~kde-apps/kate-addons-24.02.2
+~kde-apps/kate-lib-24.02.2
+~kde-apps/kde-apps-meta-24.02.2
+~kde-apps/kdecore-meta-24.02.2
+~kde-apps/khelpcenter-24.02.2
+~kde-apps/konsole-24.02.2
+~kde-apps/kwrite-24.02.2
+~kde-apps/kdialog-24.02.2
+~kde-apps/keditbookmarks-24.02.2
+~kde-apps/kfind-24.02.2
+~kde-apps/konqueror-24.02.2
+~www-client/falkon-24.02.2
+~app-accessibility/kontrast-24.02.2
+~kde-apps/kdeaccessibility-meta-24.02.2
+~kde-apps/kmag-24.02.2
+~kde-apps/kmousetool-24.02.2
+~kde-apps/kmouth-24.02.2
+~kde-apps/kdeadmin-meta-24.02.2
+~kde-apps/kcron-24.02.2
+~kde-apps/ksystemlog-24.02.2
+~kde-apps/analitza-24.02.2
+~kde-apps/blinken-24.02.2
+~kde-apps/kalgebra-24.02.2
+~kde-apps/kanagram-24.02.2
+~kde-apps/kbruch-24.02.2
+~kde-apps/kdeedu-meta-24.02.2
+~kde-apps/kgeography-24.02.2
+~kde-apps/khangman-24.02.2
+~kde-apps/kiten-24.02.2
+~kde-apps/klettres-24.02.2
+~kde-apps/kturtle-24.02.2
+~kde-apps/kwordquiz-24.02.2
+~kde-apps/libkeduvocdocument-24.02.2
+~kde-apps/parley-24.02.2
+~kde-apps/bomber-24.02.2
+~kde-apps/bovo-24.02.2
+~kde-apps/granatier-24.02.2
+~kde-apps/kajongg-24.02.2
+~kde-apps/kapman-24.02.2
+~kde-apps/katomic-24.02.2
+~kde-apps/kblackbox-24.02.2
+~kde-apps/kblocks-24.02.2
+~kde-apps/kbounce-24.02.2
+~kde-apps/kbreakout-24.02.2
+~kde-apps/kdegames-meta-24.02.2
+~kde-apps/kdiamond-24.02.2
+~kde-apps/kfourinline-24.02.2
+~kde-apps/kgoldrunner-24.02.2
+~kde-apps/kigo-24.02.2
+~kde-apps/killbots-24.02.2
+~kde-apps/kiriki-24.02.2
+~kde-apps/kjumpingcube-24.02.2
+~kde-apps/klickety-24.02.2
+~kde-apps/klines-24.02.2
+~kde-apps/kmahjongg-24.02.2
+~kde-apps/kmines-24.02.2
+~kde-apps/knavalbattle-24.02.2
+~kde-apps/knetwalk-24.02.2
+~kde-apps/knights-24.02.2
+~kde-apps/kolf-24.02.2
+~kde-apps/kollision-24.02.2
+~kde-apps/konquest-24.02.2
+~kde-apps/kpat-24.02.2
+~kde-apps/kreversi-24.02.2
+~kde-apps/kshisen-24.02.2
+~kde-apps/ksirk-24.02.2
+~kde-apps/ksnakeduel-24.02.2
+~kde-apps/kspaceduel-24.02.2
+~kde-apps/ksquares-24.02.2
+~kde-apps/ksudoku-24.02.2
+~kde-apps/ktuberling-24.02.2
+~kde-apps/kubrick-24.02.2
+~kde-apps/libkdegames-24.02.2
+~kde-apps/libkmahjongg-24.02.2
+~kde-apps/lskat-24.02.2
+~kde-apps/palapeli-24.02.2
+~kde-apps/picmi-24.02.2
+~kde-apps/gwenview-24.02.2
+~kde-apps/kamera-24.02.2
+~kde-apps/kcolorchooser-24.02.2
+~kde-apps/kdegraphics-meta-24.02.2
+~kde-apps/kdegraphics-mobipocket-24.02.2
+~kde-apps/kruler-24.02.2
+~kde-apps/libkdcraw-24.02.2
+~kde-apps/libkexiv2-24.02.2
+~kde-apps/okular-24.02.2
+~kde-apps/spectacle-24.02.2
+~kde-apps/svgpart-24.02.2
+~kde-apps/thumbnailers-24.02.2
+~kde-misc/colord-kde-24.02.2
+~media-gfx/skanpage-24.02.2
+~media-libs/ksanecore-24.02.2
+~kde-apps/audiocd-kio-24.02.2
+~kde-apps/dragon-24.02.2
+~kde-apps/juk-24.02.2
+~kde-apps/kdemultimedia-meta-24.02.2
+~kde-apps/kdenlive-24.02.2
+~kde-apps/libkcddb-24.02.2
+~kde-apps/libkcompactdisc-24.02.2
+~media-sound/elisa-24.02.2
+~media-sound/kasts-24.02.2
+~media-sound/krecorder-24.02.2
+~kde-apps/dolphin-plugins-dropbox-24.02.2
+~kde-apps/kaccounts-integration-24.02.2
+~kde-apps/kaccounts-providers-24.02.2
+~kde-apps/kdenetwork-meta-24.02.2
+~kde-apps/kdenetwork-filesharing-24.02.2
+~kde-apps/kget-24.02.2
+~kde-apps/kio-extras-24.02.2
+~kde-apps/krfb-24.02.2
+~kde-apps/signon-kwallet-extension-24.02.2
+~kde-misc/kdeconnect-24.02.2
+~kde-misc/kio-gdrive-24.02.2
+~net-im/neochat-24.02.2
+~net-im/tokodon-24.02.2
+~net-irc/konversation-24.02.2
+~net-libs/libktorrent-24.02.2
+~net-misc/kio-zeroconf-24.02.2
+~net-news/alligator-24.02.2
+~net-p2p/ktorrent-24.02.2
+~app-office/merkuro-24.02.2
+~dev-libs/kopeninghours-24.02.2
+~dev-libs/kosmindoormap-24.02.2
+~dev-libs/kpublictransport-24.02.2
+~kde-apps/akonadi-24.02.2
+~kde-apps/akonadi-calendar-24.02.2
+~kde-apps/akonadi-contacts-24.02.2
+~kde-apps/akonadi-import-wizard-24.02.2
+~kde-apps/akonadi-mime-24.02.2
+~kde-apps/akonadi-notes-24.02.2
+~kde-apps/akonadi-search-24.02.2
+~kde-apps/akonadiconsole-24.02.2
+~kde-apps/akregator-24.02.2
+~kde-apps/calendarjanitor-24.02.2
+~kde-apps/calendarsupport-24.02.2
+~kde-apps/eventviews-24.02.2
+~kde-apps/grantlee-editor-24.02.2
+~kde-apps/grantleetheme-24.02.2
+~kde-apps/incidenceeditor-24.02.2
+~kde-apps/kaddressbook-24.02.2
+~kde-apps/kalarm-24.02.2
+~kde-apps/kcalutils-24.02.2
+~kde-apps/kdepim-addons-24.02.2
+~kde-apps/kdepim-meta-24.02.2
+~kde-apps/kdepim-runtime-24.02.2
+~kde-apps/kidentitymanagement-24.02.2
+~kde-apps/kimap-24.02.2
+~kde-apps/kitinerary-24.02.2
+~kde-apps/kldap-24.02.2
+~kde-apps/kleopatra-24.02.2
+~kde-apps/kmail-24.02.2
+~kde-apps/kmail-account-wizard-24.02.2
+~kde-apps/kmailtransport-24.02.2
+~kde-apps/kmbox-24.02.2
+~kde-apps/kmime-24.02.2
+~kde-apps/knotes-24.02.2
+~kde-apps/konsolekalendar-24.02.2
+~kde-apps/kontact-24.02.2
+~kde-apps/kontactinterface-24.02.2
+~kde-apps/korganizer-24.02.2
+~kde-apps/kpimtextedit-24.02.2
+~kde-apps/kpkpass-24.02.2
+~kde-apps/ksmtp-24.02.2
+~kde-apps/libgravatar-24.02.2
+~kde-apps/libkdepim-24.02.2
+~kde-apps/libkgapi-24.02.2
+~kde-apps/libkleo-24.02.2
+~kde-apps/libksieve-24.02.2
+~kde-apps/libktnef-24.02.2
+~kde-apps/mailcommon-24.02.2
+~kde-apps/mailimporter-24.02.2
+~kde-apps/mbox-importer-24.02.2
+~kde-apps/messagelib-24.02.2
+~kde-apps/mimetreeparser-24.02.2
+~kde-apps/pim-data-exporter-24.02.2
+~kde-apps/pim-sieve-editor-24.02.2
+~kde-apps/pimcommon-24.02.2
+~kde-misc/zanshin-24.02.2
+~kde-apps/dolphin-plugins-git-24.02.2
+~kde-apps/dolphin-plugins-mercurial-24.02.2
+~kde-apps/dolphin-plugins-subversion-24.02.2
+~kde-apps/kapptemplate-24.02.2
+~kde-apps/kcachegrind-24.02.2
+~kde-apps/kde-dev-utils-24.02.2
+~kde-apps/kdesdk-meta-24.02.2
+~app-cdr/dolphin-plugins-mountiso-24.02.2
+~app-cdr/isoimagewriter-24.02.2
+~app-crypt/keysmith-24.02.2
+~kde-apps/ark-24.02.2
+~kde-apps/filelight-24.02.2
+~kde-apps/kbackup-24.02.2
+~kde-apps/kcalc-24.02.2
+~kde-apps/kcharselect-24.02.2
+~kde-apps/kdebugsettings-24.02.2
+~kde-apps/kdeutils-meta-24.02.2
+~kde-apps/kdf-24.02.2
+~kde-apps/kgpg-24.02.2
+~kde-apps/kteatime-24.02.2
+~kde-apps/ktimer-24.02.2
+~kde-apps/kwalletmanager-24.02.2
+~kde-apps/sweeper-24.02.2
+~kde-apps/yakuake-24.02.2
+~kde-misc/kclock-24.02.2
+~kde-misc/kweather-24.02.2
+~kde-misc/markdownpart-24.02.2
+~sys-block/partitionmanager-24.02.2
+~sys-libs/kpmcore-24.02.2
+=kde-apps/kio-extras-23.08.5-r100
+=kde-apps/libkgapi-23.08.5-r100
+=kde-misc/kio-gdrive-23.08.5-r1
+=kde-plasma/print-manager-23.08.5-r100
+~kde-misc/kio-fuse-5.1.0
+~kde-misc/plasma-pass-1.2.2
+~app-editors/kile-2.9.94
+~dev-db/futuresql-0.1.1
+~dev-libs/appstream-1.0.2
+~dev-libs/kdiagram-3.0.1
+~dev-libs/kirigami-addons-1.1.0
+~dev-libs/ktextaddons-1.5.4
+~dev-libs/kweathercore-0.8.0
+~games-puzzle/skladnik-0.5.2
+~gui-apps/xwaylandvideobridge-0.4.0
+~kde-frameworks/oxygen-icons-6.0.0
+=media-libs/kquickimageeditor-0.3.0-r100
+~media-libs/libqaccessibilityclient-0.6.0
+~media-libs/mpvqt-1.0.0
+~media-libs/phonon-4.12.0
+~media-libs/phonon-vlc-0.12.0
+~media-libs/pulseaudio-qt-1.4.0
+~net-libs/kdsoap-2.2.0
+~net-libs/kdsoap-ws-discovery-client-0.4.0
+~net-libs/signon-ui-0.15_p20231016
+~net-libs/accounts-qt-1.17
+~net-libs/accounts-qml-0.7_p20231028
+~net-libs/signon-oauth2-0.25_p20210102
+=net-libs/signond-8.61-r100
+=net-misc/smb4k-3.2.5-r2
+~sys-auth/polkit-qt-0.200.0
+>=sys-libs/snapd-glib-1.64-r100
+
+# Sam James <sam@gentoo.org> (2024-02-18)
+# Lots of changes, including a port to a new build system. Needs lots of testing.
+=sys-apps/gentoo-functions-1*
+
+# Sam James <sam@gentoo.org> (2024-02-15)
+# May break on some arches b/c of visibility/map changes to ffi_type_longdouble
+=dev-libs/libffi-3.4.5
+
+# Ulrich Müller <ulm@gentoo.org> (2024-02-08)
+# Masked for testing.
+# Test failure in watchpoints.dem, undefined function FresnelC.
+~sci-visualization/gnuplot-6.0.0
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-01-24)
+# app-misc/ddcutil-2.1.0 causes core-dump crashes in
+# kde-plasma/powerdevil[brightness-control].
+~app-misc/ddcutil-2.1.0
+~app-misc/ddcui-0.5.0
+
+# Patrick Lauer <patrick@gentoo.org> (2023-12-23)
+# ROCm-6 builds but has runtime issues for me
+>=dev-libs/roct-thunk-interface-6.0.0
+>=dev-libs/rocr-runtime-6.0.0
+>=dev-libs/rocm-comgr-6.0.0
+>=dev-libs/rocm-device-libs-6.0.0
+>=dev-libs/rocm-opencl-runtime-6.0.0
+>=dev-util/hipcc-6.0.0
+>=dev-util/hip-6.0.0
+>=dev-util/rocminfo-6.0.0
+
+# Sam James <sam@gentoo.org> (2023-12-14)
+# Gentoo's kernel maintainers have decided to discontinue gentoo-sources and
+# gentoo-kernel for old kernel LTS branches because of the resources to require
+# testing and patching them, combined with changing kernel lifecycles.
+#
+# The new policy is to support kernels with genpatches for 3 years after their
+# release.
+#
+# Specifically, 4.14/4.19/5.4 have been dropped. See https://www.mpagano.com/blog/?p=315
+# and http://www.kroah.com/log/blog/2018/08/24/what-stable-kernel-should-i-use/.
+#
+# sys-kernel/vanilla-sources will continue to be provided for all branches
+# until they reach formal upstream EOL.
+#
+<sys-kernel/gentoo-sources-5.10
+<sys-kernel/gentoo-kernel-5.10
+<virtual/dist-kernel-5.10
+
+# Sam James <sam@gentoo.org> (2023-12-09)
+# ext4 corruption bug: https://lore.kernel.org/stable/20231205122122.dfhhoaswsfscuhc3@quack3/ (bug #919675)
+# Please update immediately to the latest versions in each series.
+=sys-kernel/gentoo-sources-6.1.64
+=sys-kernel/gentoo-sources-6.1.64-r1
+=sys-kernel/gentoo-sources-6.1.65
+=sys-kernel/gentoo-kernel-6.1.64
+=sys-kernel/gentoo-kernel-6.1.64-r1
+=sys-kernel/gentoo-kernel-6.1.65
+=sys-kernel/vanilla-sources-6.1.64
+=sys-kernel/vanilla-sources-6.1.65
+=sys-kernel/vanilla-kernel-6.1.64
+=sys-kernel/vanilla-kernel-6.1.65
+
+# Eli Schwartz <eschwartz93@gmail.com> (2023-12-02)
+# Has a bug that breaks sys-apps/portage. Upgrade to 1.3.0-r1 instead.
+# Bug #919072.
+=dev-build/meson-1.3.0
+
+# Sam James <sam@gentoo.org> (2023-11-25)
+# Breaks desktop icon rendering, see bug #904468.
+# Upstream bug: https://gitlab.xfce.org/xfce/xfdesktop/-/issues/242
+=xfce-base/xfdesktop-4.19.2
+=xfce-base/xfdesktop-4.19.1
+
+# Sam James <sam@gentoo.org> (2023-11-22)
+# Further bugs with CoW via copy_file_range (bug #917224, https://github.com/openzfs/zfs/issues/15526).
+# The issue is very similar to bug #815469.
+# ZFS 2.2.1 has a workaround but if you haven't already upgraded your pool to
+# use the new block cloning feature, consider using <zfs-2.2 for now.
+=sys-fs/zfs-2.2.0
+=sys-fs/zfs-kmod-2.2.0
+
+# Sam James <sam@gentoo.org> (2023-11-19)
+# GCC 10 and older no longer receive upstream support or fixes for
+# bugs. Please switch to a newer GCC version using gcc-config.
+# The lowest supported version of GCC is GCC 11.
+<sys-devel/gcc-11
+<sys-devel/kgcc64-11
+
+# Sam James <sam@gentoo.org> (2023-11-05)
+# Mask broken versions:
+# - sys-fs/btrfs-progs-6.6(-r0) was respun upstream.
+# - sys-fs/btrfs-progs-6.6-r1 had the fixed tarball, but contained an upstream
+# bug in the ioctl numbers.
+# Please use sys-fs/btrfs-progs-6.6-r2 or, better, sys-fs/btrfs-progs-6.6.1
+# (identical in functional contents).
+=sys-fs/btrfs-progs-6.6
+=sys-fs/btrfs-progs-6.6-r1
+=sys-fs/btrfs-progs-6.6-r2
+
+# Sam James <sam@gentoo.org> (2023-10-06)
+# Breaks building scipy: https://github.com/cython/cython/issues/5748
+=dev-python/cython-3.0.3
+
+# Sam James <sam@gentoo.org> (2023-09-09)
+# OpenSSL 1.1.x is EOL on 2023-09-11. Please upgrade immediately to >= OpenSSL 3.
+# https://www.openssl.org/blog/blog/2023/03/28/1.1.1-EOL/
+# https://www.openssl.org/blog/blog/2023/06/15/1.1.1-EOL-Reminder/
+# Please run a full world upgrade, especially checking /etc/portage and your world file
+# for old PHP or Ruby references.
+<dev-libs/openssl-3
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2023-07-12)
+# The catalyst-3 branch is outdated and not used by Gentoo
+# Release Engineering anymore. Please either use git master
+# (9999) as all Release Engineering build machines or wait
+# for catalyst-4. Questions or bug reports about catalyst-3
+# may or may not lead to useful results.
+<dev-util/catalyst-4
+
+# Matt Turner <mattst88@gentoo.org> (2023-07-06)
+# GNOME 45 mask
+>=gnome-extra/gnome-logs-45_alpha
+
+# Michał Górny <mgorny@gentoo.org> (2023-06-21)
+# suitesparseconfig-7.0.0 fails to build with multilib enabled
+# because of dependencies that cannot be satisfied.  All the other
+# packages require it.  Bug #908851.
+=sci-libs/amd-3.0.3
+=sci-libs/btf-2.0.3
+=sci-libs/camd-3.0.3
+=sci-libs/ccolamd-3.0.3
+=sci-libs/cholmod-4.0.3
+=sci-libs/colamd-3.0.3
+=sci-libs/cxsparse-4.0.3
+=sci-libs/klu-2.0.3
+=sci-libs/ldl-3.0.3
+=sci-libs/spqr-3.0.3
+=sci-libs/suitesparseconfig-7.0.0
+=sci-libs/umfpack-6.1.0
+
+# Sam James <sam@gentoo.org> (2023-05-10)
+# Lots of package breakage as usual for new versions. Masked until most/all
+# reverse dependencies are fixed. Tracker bug is bug #906077.
+=dev-libs/libfmt-10*
+
+# Ionen Wolkens <ionen@gentoo.org> (2023-03-30)
+# NVIDIA dropped support for the 390.xx branch in December 2022[1].
+#
+# Users are free to unmask and keep using, but be warned it is very
+# likely to be affected by security issues as NVIDIA does not track
+# nor fix these for this branch anymore.
+#
+# Gentoo will keep it packaged for as long as reasonably possible
+# (albeit masked) but no true support will be given nor patches
+# for newer kernels. It is recommended to use 6.1.x LTS kernels or
+# older (6.1.x will be supported until at least December 2026).
+#
+# Major issues will lead to removal without further warning, e.g.
+# if no usable kernels left in tree, or if broken with a newer Xorg.
+#
+# >> It is recommended to switch to nouveau[2] drivers (regardless
+#    of its worse performance), or ideally replace the hardware.
+#
+# [1] https://nvidia.custhelp.com/app/answers/detail/a_id/3142
+# [2] https://wiki.gentoo.org/wiki/Nouveau
+x11-drivers/nvidia-drivers:0/390
+
+# Ben Kohler <bkohler@gentoo.org> (2023-01-30)
+# Breaks too many revdeps for now
+=app-text/discount-3*
+
+# John Helmert III <ajak@gentoo.org> (2022-10-16)
+# <OpenSSL-1.1.1 are EOL and contain known vulnerabilities. Users should
+# migrate to a newer branch.
+<dev-libs/openssl-1.1.1
+
+# Joonas Niilola <juippis@gentoo.org> (2022-04-29)
+# Apparently the "b" in version means "beta". 3.24 is available, we
+# should update to that. #841437
+~sci-physics/bullet-3.22b
+
+# Brian Evans <grknight@gentoo.org> (2022-01-07)
+# The main consumer, phpunit, does not initiate the new timer correctly
+# This is likely to cause issues in tests; Unmask if using for other purposes
+>=dev-php/PHP_Timer-5.0
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-23)
+# Does not support updated dev-java/pdfbox-2.0.24, Bug #803488
+# Blocks (CVE-2018-11797, CVE-2021-{27807,27906,31811,31812})
+dev-tex/pdfannotextractor
+
+# Ionen Wolkens <ionen@gentoo.org> (2021-10-09)
+# Vulkan beta driver branch aimed at Vulkan developers for testing
+# new features. Beside vulkan, it is typically behind the main branch
+# and may be buggier or less secure. Only unmask if really wanted.
+x11-drivers/nvidia-drivers:0/vulkan
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-09-18)
+# dev-build/automake version 1.11 is EOL and is only useful for testing
+# old de-ANSI-fication/ansi2knr/AM_C_PROTOTYPES code. Please uninstall.
+dev-build/automake:1.11
+
+# Joonas Niilola <juippis@gentoo.org> (2021-07-29)
+# Upstream provided migration instructions from 2. -> 3. update,
+# breaks if not all at least many revdeps. #805011 for tracker bug.
+>=net-libs/mbedtls-3.0.0
+
+# Michał Górny <mgorny@gentoo.org> (2021-07-06)
+# Upstream changed license to GPL-3+ in order to deliberately cause
+# incompatiblity with revdep licenses.  Mask until the situation
+# is resolved.  Bug #791259.
+>=media-libs/libopenaptx-0.2.1
+
+# Sam James <sam@gentoo.org> (2021-03-30)
+# Seems to break dev-tex/culmus-latex
+# Masking until we can investigate & fix
+# bug #737406
+=media-fonts/culmus-0.133-r1
+
+# Sam James <sam@gentoo.org> (2021-03-03)
+# Doesn't seem to sync clock correctly
+# in some cases.
+# bug #772998
+~net-misc/openntpd-6.8_p1
+
+# Michał Górny <mgorny@gentoo.org> (2020-11-10)
+# This old Kodi version requires vulnerable dev-python/pillow
+# and prevents users from upgrading.  Masked for the time being.
+# Bug #729672.
+media-plugins/kodi-game-libretro-nestopia
+media-plugins/kodi-game-libretro-dosbox
+
+# Sam James <sam@gentoo.org> (2020-10-05)
+# Masked for testing. New major versions of Guile
+# often break reverse dependencies.
+# Guile in Gentoo is not slotted, so let's be cautious.
+# bug #705554, bug #689408.
+>=dev-scheme/guile-3.0.4
+
+# Matt Turner <mattst88@gentoo.org> (2019-09-01)
+# TeXmacs is the only remaining package in tree that requires guile-1.8, which
+# is unsupported upstream. A TeXmacs port to Guile-2 has been in progress for a
+# few years. Bug #436400
+app-office/texmacs
+<dev-scheme/guile-2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-10-07)
+# Masked for more testing especially of reverse-deps.
+# ogre 1.11/1.12 breakage: bug #834468
+# ogre 2.x breakage: bug #740424
+>=dev-games/ogre-1.11.2
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2018-09-11)
+# Mask transition ebuilds that were needed only for <glibc-2.26
+# We will keep them in the tree as long as we have masked
+# <glibc-2.26.
+~net-libs/libnsl-0
+~net-libs/rpcsvc-proto-0
+
+# Nicolas Bock <nicolasbock@gentoo.org> (2017-10-31)
+# There are multiple unresolved upstream issues with >=jabref-bin-4.0 (#636036).
+# If you still would like to use this version, please report any issues to
+# upstream.
+>=app-text/jabref-bin-4.0
+
+# Michał Górny <mgorny@gentoo.org> (2017-05-22)
+# for Maciej S. Szmigiero <mail@maciej.szmigiero.name>
+# Any version above 5.100.138 breaks b43 driver in various ways.
+# Also, b43 wiki page says to use 5.100.138. Bug #541080.
+>=sys-firmware/b43-firmware-6.30.163.46
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2017-05-21)
+# (and others, updated later)
+# These old versions of toolchain packages (binutils, gcc, glibc) are no
+# longer officially supported and are not suitable for general use. Using
+# these packages can result in build failures (and possible breakage) for
+# many packages, and may leave your system vulnerable to known security
+# exploits.
+# If you still use one of these old toolchain packages, please upgrade (and
+# switch the compiler / the binutils) ASAP. If you need them for a specific
+# (isolated) use case, feel free to unmask them on your system.
+<sys-libs/glibc-2.38-r10
+<sys-libs/binutils-libs-2.40
+<sys-devel/binutils-2.40
+<sys-devel/binutils-hppa64-2.40
+
+# Michael Orlitzky <mjo@gentoo.org> (2017-01-07)
+# This package has some dangerous quality and security issues, but
+# people may still find it useful. It is masked to prevent accidental
+# use. See bugs 603346 and 604998 for more information.
+app-admin/amazon-ec2-init
+
+# Mike Gilbert <floppym@gentoo.org> (2014-03-04)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+www-plugins/chrome-binary-plugins:unstable
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (2009-01-03)
+# These packages are not supposed to be merged directly, instead
+# please use sys-devel/crossdev to install them.
+dev-util/mingw64-runtime
+sys-libs/newlib
+dev-embedded/avr-libc
+sys-devel/nvptx-tools
+sys-devel/clang-crossdev-wrappers

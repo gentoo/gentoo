@@ -1,0 +1,286 @@
+From 5377f5d01adce209b9a148018cab100d5d5a1d4c Mon Sep 17 00:00:00 2001
+From: Aleix Pol <aleixpol@kde.org>
+Date: Tue, 13 Feb 2024 01:25:39 +0100
+Subject: [PATCH] qt: Port to Qt 6
+
+It's what we are using in Discover now.
+diff --git a/.github/workflows/test.yaml b/.github/workflows/test.yaml
+index 8a8668f2..58700c2f 100644
+--- a/.github/workflows/test.yaml
++++ b/.github/workflows/test.yaml
+@@ -55,7 +55,7 @@ jobs:
+       - name: Install dependencies (Fedora)
+         if: startsWith(matrix.image, 'fedora:')
+         run: |
+-          dnf install -y gcc gcc-c++ gobject-introspection-devel glib2-devel gtk-doc json-glib-devel libsoup3-devel ninja-build python3-pip qt5-qtbase-devel qt5-qtdeclarative-devel redhat-rpm-config vala
++          dnf install -y gcc gcc-c++ gobject-introspection-devel glib2-devel gtk-doc json-glib-devel libsoup3-devel ninja-build python3-pip qt6-qtbase-devel qt6-qtdeclarative-devel redhat-rpm-config vala
+ 
+       - name: Install meson
+         if: matrix.image != 'ubuntu:rolling'
+diff --git a/meson.build b/meson.build
+index b9f98d37..26951e9c 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1,7 +1,7 @@
+ project ('snapd-glib', [ 'c', 'cpp' ],
+          version: '1.64',
+-         meson_version: '>= 0.43.0',
+-         default_options : [ 'c_std=c11', 'cpp_std=c++11' ])
++         meson_version: '>= 0.57.0',
++         default_options : [ 'c_std=c11' ])
+ 
+ glib_dep = dependency ('glib-2.0', version: '>= 2.46')
+ gio_dep = dependency ('gio-2.0', version: '>= 2.46')
+@@ -14,9 +14,9 @@ endif
+ json_glib_dep = dependency ('json-glib-1.0', version: '>= 1.1.2')
+ 
+ if get_option ('qt-bindings')
+-  qt5_core_dep = dependency ('qt5', modules: [ 'Core' ])
+-  qt5_network_dep = dependency ('qt5', modules: [ 'Network' ])
+-  qml_dep = dependency ('qt5', modules: [ 'Qml' ])
++  qt6_core_dep = dependency ('qt6', modules: [ 'Core' ])
++  qt6_network_dep = dependency ('qt6', modules: [ 'Network' ])
++  qml_dep = dependency ('qt6', modules: [ 'Qml' ])
+ endif
+ 
+ datadir = join_paths (get_option ('prefix'), get_option ('datadir'))
+diff --git a/snapd-qt/markdown-node.cpp b/snapd-qt/markdown-node.cpp
+index 2be1751e..2e87707b 100644
+--- a/snapd-qt/markdown-node.cpp
++++ b/snapd-qt/markdown-node.cpp
+@@ -62,3 +62,14 @@ QSnapdMarkdownNode *QSnapdMarkdownNode::child (int n) const
+         return NULL;
+     return new QSnapdMarkdownNode (children->pdata[n]);
+ }
++
++QSnapdMarkdownNode & QSnapdMarkdownNode::operator=(const QSnapdMarkdownNode& node)
++{
++    if (&node == this) {
++        return *this;
++    }
++    g_object_unref(wrapped_object);
++    wrapped_object = node.wrapped_object;
++    g_object_ref(wrapped_object);
++    return *this;
++}
+diff --git a/snapd-qt/markdown-parser.cpp b/snapd-qt/markdown-parser.cpp
+index 751592c3..1a305ad9 100644
+--- a/snapd-qt/markdown-parser.cpp
++++ b/snapd-qt/markdown-parser.cpp
+@@ -56,7 +56,7 @@ bool QSnapdMarkdownParser::preserveWhitespace () const
+ QList<QSnapdMarkdownNode> QSnapdMarkdownParser::parse (const QString &text) const
+ {
+     Q_D(const QSnapdMarkdownParser);
+-    g_autoptr(GPtrArray) nodes = snapd_markdown_parser_parse (d->parser, text.toStdString ().c_str ());
++    g_autoptr(GPtrArray) nodes = snapd_markdown_parser_parse (d->parser, text.toUtf8().constData());
+     QList<QSnapdMarkdownNode> nodes_list;
+     for (uint i = 0; i < nodes->len; i++) {
+         SnapdMarkdownNode *node = (SnapdMarkdownNode *) g_ptr_array_index (nodes, i);
+diff --git a/snapd-qt/meson.build b/snapd-qt/meson.build
+index 74687852..48fe650c 100644
+--- a/snapd-qt/meson.build
++++ b/snapd-qt/meson.build
+@@ -9,7 +9,7 @@ if not get_option('soup2')
+ endif
+ 
+ install_header_dir = join_paths (includedir, library_name, 'Snapd')
+-qml_dir = join_paths (libdir, 'qt5', 'qml', qt_name)
++qml_dir = join_paths (libdir, 'qt6', 'qml', qt_name)
+ cmake_dir = join_paths (libdir, 'cmake', qt_name)
+ 
+ source_cpp = [
+@@ -114,19 +114,19 @@ source_private_h = [
+ ]
+ 
+ if get_option ('qt-bindings')
+-  qt5 = import ('qt5')
+-  moc_files = qt5.preprocess (moc_headers: [ source_h, source_private_h ],
+-                              dependencies: [ qt5_core_dep, qt5_network_dep ])
++  qt6 = import ('qt6')
++  moc_files = qt6.preprocess (moc_headers: [ source_h, source_private_h ],
++                              dependencies: [ qt6_core_dep, qt6_network_dep ])
+ 
+   snapd_qt_lib = library (library_name,
+                           source_cpp, moc_files,
+                           version: '1.0.0',
+-                          dependencies: [ qt5_core_dep, qt5_network_dep, glib_dep, gio_dep, snapd_glib_dep ],
++                          dependencies: [ qt6_core_dep, qt6_network_dep, glib_dep, gio_dep, snapd_glib_dep ],
+                           cpp_args: [ '-DQT_NO_SIGNALS_SLOTS_KEYWORDS' ],
+                           install: true)
+ 
+   snapd_qt_dep = declare_dependency (link_with: snapd_qt_lib,
+-                                     dependencies: [ qt5_network_dep ],
++                                     dependencies: [ qt6_network_dep ],
+                                      include_directories: include_directories ('.'))
+ 
+   install_headers (source_h + source_alias_h,
+@@ -160,7 +160,7 @@ if get_option ('qt-bindings')
+     install_data ('qmldir',
+                   install_dir: qml_dir)
+ 
+-    qml_moc_files = qt5.preprocess (moc_headers: 'qml-plugin.h',
++    qml_moc_files = qt6.preprocess (moc_headers: 'qml-plugin.h',
+                                     dependencies: qml_dep)
+     library (qt_name,
+              'qml-plugin.cpp', qml_moc_files,
+diff --git a/tests/meson.build b/tests/meson.build
+index dd4ac7ef..4207244b 100644
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -39,7 +39,7 @@ test_file = configure_file (input: 'test-markdown-glib.test.in',
+ install_data (test_file, install_dir: installed_tests_data_dir)
+ 
+ if get_option ('qt-bindings')
+-  moc_files = qt5.preprocess (moc_headers: [ 'test-qt.h' ])
++  moc_files = qt6.preprocess (moc_headers: [ 'test-qt.h' ])
+ 
+   test_executable = executable ('test-qt',
+                                 'test-qt.cpp', moc_files,
+diff --git a/tests/test-qt.cpp b/tests/test-qt.cpp
+index 04243a51..2bd225cf 100644
+--- a/tests/test-qt.cpp
++++ b/tests/test-qt.cpp
+@@ -2918,32 +2918,32 @@ test_get_connections_attributes ()
+ 
+     check_names_match (connection->plugAttributeNames (), QStringList () << "plug-string-key" << "plug-int-key" << "plug-bool-key" << "plug-number-key");
+     g_assert_true (connection->hasPlugAttribute ("plug-string-key"));
+-    g_assert_true (connection->plugAttribute ("plug-string-key").type () == (QVariant::Type) QMetaType::QString);
++    g_assert_true (connection->plugAttribute ("plug-string-key").metaType().id () == QMetaType::QString);
+     g_assert_true (connection->plugAttribute ("plug-string-key").toString () == "value");
+     g_assert_true (connection->hasPlugAttribute ("plug-int-key"));
+-    g_assert_true (connection->plugAttribute ("plug-int-key").type () == (QVariant::Type) QMetaType::LongLong);
++    g_assert_true (connection->plugAttribute ("plug-int-key").metaType().id () == QMetaType::LongLong);
+     g_assert_cmpint (connection->plugAttribute ("plug-int-key").toLongLong (), ==, 42);
+     g_assert_true (connection->hasPlugAttribute ("plug-bool-key"));
+-    g_assert_true (connection->plugAttribute ("plug-bool-key").type () == (QVariant::Type) QMetaType::Bool);
++    g_assert_true (connection->plugAttribute ("plug-bool-key").metaType().id () == QMetaType::Bool);
+     g_assert_true (connection->plugAttribute ("plug-bool-key").toBool ());
+     g_assert_true (connection->hasPlugAttribute ("plug-number-key"));
+-    g_assert_true (connection->plugAttribute ("plug-number-key").type () == (QVariant::Type) QMetaType::Double);
++    g_assert_true (connection->plugAttribute ("plug-number-key").metaType().id () == QMetaType::Double);
+     g_assert_cmpfloat (connection->plugAttribute ("plug-number-key").toDouble (), ==, 1.25);
+     g_assert_false (connection->hasPlugAttribute ("plug-invalid-key"));
+     g_assert_false (connection->plugAttribute ("plug-invalid-key").isValid ());
+ 
+     check_names_match (connection->slotAttributeNames (), QStringList () << "slot-string-key" << "slot-int-key" << "slot-bool-key" << "slot-number-key");
+     g_assert_true (connection->hasSlotAttribute ("slot-string-key"));
+-    g_assert_true (connection->slotAttribute ("slot-string-key").type () == (QVariant::Type) QMetaType::QString);
++    g_assert_true (connection->slotAttribute ("slot-string-key").metaType().id () == QMetaType::QString);
+     g_assert_true (connection->slotAttribute ("slot-string-key").toString () == "value");
+     g_assert_true (connection->hasSlotAttribute ("slot-int-key"));
+-    g_assert_true (connection->slotAttribute ("slot-int-key").type () == (QVariant::Type) QMetaType::LongLong);
++    g_assert_true (connection->slotAttribute ("slot-int-key").metaType().id () == QMetaType::LongLong);
+     g_assert_cmpint (connection->slotAttribute ("slot-int-key").toLongLong (), ==, 42);
+     g_assert_true (connection->hasSlotAttribute ("slot-bool-key"));
+-    g_assert_true (connection->slotAttribute ("slot-bool-key").type () == (QVariant::Type) QMetaType::Bool);
++    g_assert_true (connection->slotAttribute ("slot-bool-key").metaType().id () == QMetaType::Bool);
+     g_assert_true (connection->slotAttribute ("slot-bool-key").toBool ());
+     g_assert_true (connection->hasSlotAttribute ("slot-number-key"));
+-    g_assert_true (connection->slotAttribute ("slot-number-key").type () == (QVariant::Type) QMetaType::Double);
++    g_assert_true (connection->slotAttribute ("slot-number-key").metaType().id () == QMetaType::Double);
+     g_assert_cmpfloat (connection->slotAttribute ("slot-number-key").toDouble (), ==, 1.25);
+     g_assert_false (connection->hasSlotAttribute ("slot-invalid-key"));
+     g_assert_false (connection->slotAttribute ("slot-invalid-key").isValid ());
+@@ -2952,16 +2952,16 @@ test_get_connections_attributes ()
+     QScopedPointer<QSnapdPlug> plug (getConnectionsRequest->plug (0));
+     check_names_match (plug->attributeNames (), QStringList () << "plug-string-key" << "plug-int-key" << "plug-bool-key" << "plug-number-key");
+     g_assert_true (plug->hasAttribute ("plug-string-key"));
+-    g_assert_true (plug->attribute ("plug-string-key").type () == (QVariant::Type) QMetaType::QString);
++    g_assert_true (plug->attribute ("plug-string-key").metaType().id () == QMetaType::QString);
+     g_assert_true (plug->attribute ("plug-string-key").toString () == "value");
+     g_assert_true (plug->hasAttribute ("plug-int-key"));
+-    g_assert_true (plug->attribute ("plug-int-key").type () == (QVariant::Type) QMetaType::LongLong);
++    g_assert_true (plug->attribute ("plug-int-key").metaType().id () == QMetaType::LongLong);
+     g_assert_cmpint (plug->attribute ("plug-int-key").toLongLong (), ==, 42);
+     g_assert_true (plug->hasAttribute ("plug-bool-key"));
+-    g_assert_true (plug->attribute ("plug-bool-key").type () == (QVariant::Type) QMetaType::Bool);
++    g_assert_true (plug->attribute ("plug-bool-key").metaType().id () == QMetaType::Bool);
+     g_assert_true (plug->attribute ("plug-bool-key").toBool ());
+     g_assert_true (plug->hasAttribute ("plug-number-key"));
+-    g_assert_true (plug->attribute ("plug-number-key").type () == (QVariant::Type) QMetaType::Double);
++    g_assert_true (plug->attribute ("plug-number-key").metaType().id () == QMetaType::Double);
+     g_assert_cmpfloat (plug->attribute ("plug-number-key").toDouble (), ==, 1.25);
+     g_assert_false (plug->hasAttribute ("plug-invalid-key"));
+     g_assert_false (plug->attribute ("plug-invalid-key").isValid ());
+@@ -2970,16 +2970,16 @@ test_get_connections_attributes ()
+     QScopedPointer<QSnapdSlot> slot (getConnectionsRequest->slot (0));
+     check_names_match (slot->attributeNames (), QStringList () << "slot-string-key" << "slot-int-key" << "slot-bool-key" << "slot-number-key");
+     g_assert_true (slot->hasAttribute ("slot-string-key"));
+-    g_assert_true (slot->attribute ("slot-string-key").type () == (QVariant::Type) QMetaType::QString);
++    g_assert_true (slot->attribute ("slot-string-key").metaType().id () == QMetaType::QString);
+     g_assert_true (slot->attribute ("slot-string-key").toString () == "value");
+     g_assert_true (slot->hasAttribute ("slot-int-key"));
+-    g_assert_true (slot->attribute ("slot-int-key").type () == (QVariant::Type) QMetaType::LongLong);
++    g_assert_true (slot->attribute ("slot-int-key").metaType().id () == QMetaType::LongLong);
+     g_assert_cmpint (slot->attribute ("slot-int-key").toLongLong (), ==, 42);
+     g_assert_true (slot->hasAttribute ("slot-bool-key"));
+-    g_assert_true (slot->attribute ("slot-bool-key").type () == (QVariant::Type) QMetaType::Bool);
++    g_assert_true (slot->attribute ("slot-bool-key").metaType().id () == QMetaType::Bool);
+     g_assert_true (slot->attribute ("slot-bool-key").toBool ());
+     g_assert_true (slot->hasAttribute ("slot-number-key"));
+-    g_assert_true (slot->attribute ("slot-number-key").type () == (QVariant::Type) QMetaType::Double);
++    g_assert_true (slot->attribute ("slot-number-key").metaType().id () == QMetaType::Double);
+     g_assert_cmpfloat (slot->attribute ("slot-number-key").toDouble (), ==, 1.25);
+     g_assert_false (slot->hasAttribute ("slot-invalid-key"));
+     g_assert_false (slot->attribute ("slot-invalid-key").isValid ());
+@@ -3123,13 +3123,13 @@ test_get_interfaces_attributes ()
+     QScopedPointer<QSnapdPlug> plug (getInterfacesRequest->plug (0));
+     check_names_match (plug->attributeNames (), QStringList () << "plug-string-key" << "plug-int-key" << "plug-bool-key");
+     g_assert_true (plug->hasAttribute ("plug-string-key"));
+-    g_assert_true (plug->attribute ("plug-string-key").type () == (QVariant::Type) QMetaType::QString);
++    g_assert_true (plug->attribute ("plug-string-key").metaType().id () == QMetaType::QString);
+     g_assert_true (plug->attribute ("plug-string-key").toString () == "value");
+     g_assert_true (plug->hasAttribute ("plug-int-key"));
+-    g_assert_true (plug->attribute ("plug-int-key").type () == (QVariant::Type) QMetaType::LongLong);
++    g_assert_true (plug->attribute ("plug-int-key").metaType().id () == QMetaType::LongLong);
+     g_assert_cmpint (plug->attribute ("plug-int-key").toLongLong (), ==, 42);
+     g_assert_true (plug->hasAttribute ("plug-bool-key"));
+-    g_assert_true (plug->attribute ("plug-bool-key").type () == (QVariant::Type) QMetaType::Bool);
++    g_assert_true (plug->attribute ("plug-bool-key").metaType().id () == QMetaType::Bool);
+     g_assert_true (plug->attribute ("plug-bool-key").toBool ());
+     g_assert_false (plug->hasAttribute ("plug-invalid-key"));
+     g_assert_false (plug->attribute ("plug-invalid-key").isValid ());
+@@ -3138,13 +3138,13 @@ test_get_interfaces_attributes ()
+     QScopedPointer<QSnapdSlot> slot (getInterfacesRequest->slot (0));
+     check_names_match (slot->attributeNames (), QStringList () << "slot-string-key" << "slot-int-key" << "slot-bool-key");
+     g_assert_true (slot->hasAttribute ("slot-string-key"));
+-    g_assert_true (slot->attribute ("slot-string-key").type () == (QVariant::Type) QMetaType::QString);
++    g_assert_true (slot->attribute ("slot-string-key").metaType().id () == QMetaType::QString);
+     g_assert_true (slot->attribute ("slot-string-key").toString () == "value");
+     g_assert_true (slot->hasAttribute ("slot-int-key"));
+-    g_assert_true (slot->attribute ("slot-int-key").type () == (QVariant::Type) QMetaType::LongLong);
++    g_assert_true (slot->attribute ("slot-int-key").metaType().id () == QMetaType::LongLong);
+     g_assert_cmpint (slot->attribute ("slot-int-key").toLongLong (), ==, 42);
+     g_assert_true (slot->hasAttribute ("slot-bool-key"));
+-    g_assert_true (slot->attribute ("slot-bool-key").type () == (QVariant::Type) QMetaType::Bool);
++    g_assert_true (slot->attribute ("slot-bool-key").metaType().id () == QMetaType::Bool);
+     g_assert_true (slot->attribute ("slot-bool-key").toBool ());
+     g_assert_false (slot->hasAttribute ("slot-invalid-key"));
+     g_assert_false (slot->attribute ("slot-invalid-key").isValid ());
+@@ -3894,7 +3894,7 @@ test_find_channels ()
+         if (channel->name () == "stable") {
+             g_assert_true (channel->track () == "latest");
+             g_assert_true (channel->risk () == "stable");
+-            g_assert_true (channel->branch () == NULL);
++            g_assert_true (channel->branch ().isEmpty());
+             g_assert_true (channel->revision () == "REVISION");
+             g_assert_true (channel->version () == "VERSION");
+             g_assert_true (channel->epoch () == "0");
+@@ -3907,7 +3907,7 @@ test_find_channels ()
+             g_assert_true (channel->name () == "beta");
+             g_assert_true (channel->track () == "latest");
+             g_assert_true (channel->risk () == "beta");
+-            g_assert_true (channel->branch () == NULL);
++            g_assert_true (channel->branch ().isEmpty());
+             g_assert_true (channel->revision () == "BETA-REVISION");
+             g_assert_true (channel->version () == "BETA-VERSION");
+             g_assert_true (channel->epoch () == "1");
+@@ -3926,7 +3926,7 @@ test_find_channels ()
+         if (channel->name () == "insider/stable") {
+             g_assert_true (channel->track () == "insider");
+             g_assert_true (channel->risk () == "stable");
+-            g_assert_true (channel->branch () == NULL);
++            g_assert_true (channel->branch ().isEmpty());
+             g_assert_true (channel->releasedAt ().isNull ());
+             matched_track = TRUE;
+         }

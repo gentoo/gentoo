@@ -1,0 +1,64 @@
+--- a/client/MouseRemote.conf
++++ b/client/MouseRemote.conf
+@@ -61,3 +61,35 @@
+ 
+ # Definitions for the DVD device
+ [DVD]
++Power
++ChUp
++ChDown
++Mute
++VolUp
++VolDown
++Play
++Stop
++TxtRes
++Rew
++FF
++0
++1
++2
++3
++4
++5
++6
++7
++8
++9
++Ent
++Pause
++Last
++Disp
++AB
++Shift
++Guide
++Select
++TxtOff
++TxtTrns
++Rec
+--- a/client/MouseRemoteKeys.pl
++++ b/client/MouseRemoteKeys.pl
+@@ -11,6 +11,7 @@
+ 	play =>		0x0d,
+ 	stop =>		0x0e,
+ 	power =>	0x0f,
++	txtres =>	0x1b,
+ 	rew =>		0x1c,
+ 	ff =>		0x1d,
+ 	0 =>		0x40,
+@@ -31,11 +32,13 @@
+ 	'shift' =>	0x6b,
+ 	guide =>	0x6d,
+ 	'select' =>	0x93,
++	txtoff =>       0x9b,
++	txttrns =>      0xeb,
+ 	rec =>		0xff,
+ 
+ 	pc =>		0x2b,
+-	phone =>	0x4b,
++	phone =>	0x4b,	# Marked as F2 on my model
+ 	web =>		0x8b,
+ 	cd =>		0xab,
+-	dvd =>		0xcb,
++	dvd =>		0xcb,	# Marked as F1 on my model
+ );

@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/921140
+https://gitlab.freedesktop.org/pulseaudio/webrtc-audio-processing/-/issues/5
+--- a/webrtc/rtc_base/system/arch.h
++++ b/webrtc/rtc_base/system/arch.h
+@@ -34,7 +34,7 @@
+ #else
+ #define WEBRTC_ARCH_32_BITS
+ #endif
+-#elif defined(_M_IX86) || defined(__i386__)
++#elif defined(__SSE__) && (defined(_M_IX86) || defined(__i386__))
+ #define WEBRTC_ARCH_X86_FAMILY
+ #define WEBRTC_ARCH_X86
+ #define WEBRTC_ARCH_32_BITS

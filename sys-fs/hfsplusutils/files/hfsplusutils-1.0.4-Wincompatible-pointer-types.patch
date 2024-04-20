@@ -1,0 +1,32 @@
+--- a/src/charset.c
++++ b/src/charset.c
+@@ -159,7 +159,7 @@
+  * NAME:	charset->latin1()
+  * DESCRIPTION:	return a Latin-1 (ISO 8859-1) string for MacOS Standard Roman
+  */
+-char *cs_latin1(char *mstr, int *lenptr)
++char *cs_latin1(char *mstr, size_t *lenptr)
+ {
+     int		    ilen, olen, i;
+     char	    *latin1, *ptr;
+--- a/src/charset.h
++++ b/src/charset.h
+@@ -23,6 +23,9 @@
+  *
+  * $Id: charset.h,v 1.1.1.1 2002/03/05 19:50:29 klaus Exp $
+  */
++
++#include <stddef.h>
++
+     /* a two byte unicode character, gnus wchar_t is 4 bytes in linux */
+ typedef unsigned short UCS2;
+ 
+@@ -35,7 +38,7 @@
+      * lenptr may be null in wich case the given strs len is used.
+      * on return *lenptr is set to the returned strings len.
+      * must be free()d */
+-char *cs_latin1(char *, int *);
++char *cs_latin1(char *, size_t *);
+ 
+     /* return a MacOS Standard Roman string for Latin-1 (ISO 8859-1).
+      * lenptr may be null in wich case the given strs len is used.

@@ -1,0 +1,202 @@
+https://gitlab.com/accounts-sso/signond/-/merge_requests/36
+
+From 9b439d09712fe31cbb9b3f30a6cbc75cbbc11d20 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Fri, 7 Apr 2023 16:10:31 +0200
+Subject: [PATCH 09/11] Adjust buildsystem to include correct Qt Major version
+ number
+
+---
+ common-project-config.pri                             |  4 ++--
+ lib/SignOn/SignOnQt5Config.cmake.in                   |  2 +-
+ lib/SignOn/SignOnQt6Config.cmake.in                   |  7 +++++++
+ lib/SignOn/SignOnQt6ConfigVersion.cmake.in            | 10 ++++++++++
+ lib/SignOn/libsignon-qt.pri                           |  2 +-
+ lib/SignOn/libsignon-qt6.pc.in                        | 11 +++++++++++
+ .../signon-plugins-common/signon-plugins-common.pc.in |  2 +-
+ lib/plugins/signon-plugins.pc.in                      |  2 +-
+ lib/signond/SignOn/SignOnExtension.pc.in              |  2 +-
+ tests/libsignon-qt-tests/libsignon-qt-tests.pro       |  2 +-
+ tests/signond-tests/identity-tool.pro                 |  2 +-
+ .../mock-ac-plugin/identity-ac-helper.pro             |  2 +-
+ tests/signond-tests/signond-tests.pri                 |  2 +-
+ 13 files changed, 39 insertions(+), 11 deletions(-)
+ create mode 100644 lib/SignOn/SignOnQt6Config.cmake.in
+ create mode 100644 lib/SignOn/SignOnQt6ConfigVersion.cmake.in
+ create mode 100644 lib/SignOn/libsignon-qt6.pc.in
+
+diff --git a/common-project-config.pri b/common-project-config.pri
+index abe6cf6..af5f425 100644
+--- a/common-project-config.pri
++++ b/common-project-config.pri
+@@ -29,8 +29,8 @@ DEFINES += DEBUG_ENABLED
+ DEFINES += NO_SIGNON_USER
+ 
+ # Library name for CMake and pkg-config
+-LIBSIGNON = libsignon-qt5
+-CMAKE_BASENAME = SignOnQt5
++LIBSIGNON = libsignon-qt$${QT_MAJOR_VERSION}
++CMAKE_BASENAME = SignOnQt$${QT_MAJOR_VERSION}
+ 
+ #-----------------------------------------------------------------------------
+ # setup the installation prefix
+diff --git a/lib/SignOn/SignOnQt5Config.cmake.in b/lib/SignOn/SignOnQt5Config.cmake.in
+index 523fffb..128ee8d 100644
+--- a/lib/SignOn/SignOnQt5Config.cmake.in
++++ b/lib/SignOn/SignOnQt5Config.cmake.in
+@@ -4,4 +4,4 @@
+ 
+ set(SIGNONQT_LIBRARIES $${INSTALL_LIBDIR}/lib$${TARGET}.so)
+ set(SIGNONQT_LIBRARIES_STATIC $${INSTALL_LIBDIR}/lib$${TARGET}.a)
+-set(SIGNONQT_INCLUDE_DIRS $${INSTALL_PREFIX}/include/$${TARGET})
+\ No newline at end of file
++set(SIGNONQT_INCLUDE_DIRS $${INSTALL_PREFIX}/include/$${TARGET})
+diff --git a/lib/SignOn/SignOnQt6Config.cmake.in b/lib/SignOn/SignOnQt6Config.cmake.in
+new file mode 100644
+index 0000000..128ee8d
+--- /dev/null
++++ b/lib/SignOn/SignOnQt6Config.cmake.in
+@@ -0,0 +1,7 @@
++#  SIGNONQT_INCLUDE_DIRS - The libsignon-qt include directories
++#  SIGNONQT_LIBRARIES - The libraries needed to use libsignon-qt
++#  SIGNONQT_LIBRARIES_STATIC - The static version of libsignon-qt
++
++set(SIGNONQT_LIBRARIES $${INSTALL_LIBDIR}/lib$${TARGET}.so)
++set(SIGNONQT_LIBRARIES_STATIC $${INSTALL_LIBDIR}/lib$${TARGET}.a)
++set(SIGNONQT_INCLUDE_DIRS $${INSTALL_PREFIX}/include/$${TARGET})
+diff --git a/lib/SignOn/SignOnQt6ConfigVersion.cmake.in b/lib/SignOn/SignOnQt6ConfigVersion.cmake.in
+new file mode 100644
+index 0000000..616cd60
+--- /dev/null
++++ b/lib/SignOn/SignOnQt6ConfigVersion.cmake.in
+@@ -0,0 +1,10 @@
++set(PACKAGE_VERSION $${PROJECT_VERSION})
++
++if(\"${PACKAGE_VERSION}\" VERSION_LESS \"${PACKAGE_FIND_VERSION}\" )
++   set(PACKAGE_VERSION_COMPATIBLE FALSE)
++else(\"${PACKAGE_VERSION}\" VERSION_LESS \"${PACKAGE_FIND_VERSION}\" )
++   set(PACKAGE_VERSION_COMPATIBLE TRUE)
++   if( \"${PACKAGE_FIND_VERSION}\" STREQUAL \"${PACKAGE_VERSION}\")
++      set(PACKAGE_VERSION_EXACT TRUE)
++   endif( \"${PACKAGE_FIND_VERSION}\" STREQUAL \"${PACKAGE_VERSION}\")
++endif(\"${PACKAGE_VERSION}\" VERSION_LESS \"${PACKAGE_FIND_VERSION}\" )
+diff --git a/lib/SignOn/libsignon-qt.pri b/lib/SignOn/libsignon-qt.pri
+index 1458c50..a318fe8 100644
+--- a/lib/SignOn/libsignon-qt.pri
++++ b/lib/SignOn/libsignon-qt.pri
+@@ -2,7 +2,7 @@ include( ../../common-project-config.pri )
+ include( ../../common-vars.pri )
+ TEMPLATE = lib
+ 
+-TARGET = signon-qt5
++TARGET = signon-qt$${QT_MAJOR_VERSION}
+ 
+ # Input
+ public_headers += \
+diff --git a/lib/SignOn/libsignon-qt6.pc.in b/lib/SignOn/libsignon-qt6.pc.in
+new file mode 100644
+index 0000000..6a1bcb1
+--- /dev/null
++++ b/lib/SignOn/libsignon-qt6.pc.in
+@@ -0,0 +1,11 @@
++prefix=$$INSTALL_PREFIX
++exec_prefix=${prefix}
++libdir=$$INSTALL_LIBDIR
++includedir=${prefix}/include
++
++Name: libsignon-qt6
++Description: Client library for the Single Sign On daemon, Qt6 bindings.
++Version: $$PROJECT_VERSION
++Libs: -L${libdir} -lsignon-qt6
++Requires: Qt6Core
++Cflags: -I${includedir}/signon-qt6 -I${includedir}/signon-qt6/SignOn
+diff --git a/lib/plugins/signon-plugins-common/signon-plugins-common.pc.in b/lib/plugins/signon-plugins-common/signon-plugins-common.pc.in
+index 3d7f3db..8cbc9d4 100644
+--- a/lib/plugins/signon-plugins-common/signon-plugins-common.pc.in
++++ b/lib/plugins/signon-plugins-common/signon-plugins-common.pc.in
+@@ -6,5 +6,5 @@ plugin_includedir=${includedir}/signon-plugins/SignOn
+ Name: signon-plugins-common
+ Description: SignonPluginsCommon
+ Version: $$PROJECT_VERSION
+-Libs.private: -L/usr/lib -lQt5Core
++Libs.private: -L/usr/lib -lQt$${QT_MAJOR_VERSION}Core
+ Cflags:  -I${includedir}/signon-plugins -I${includedir}/signon-plugins/SignOn
+diff --git a/lib/plugins/signon-plugins.pc.in b/lib/plugins/signon-plugins.pc.in
+index 5be38df..8849e5a 100644
+--- a/lib/plugins/signon-plugins.pc.in
++++ b/lib/plugins/signon-plugins.pc.in
+@@ -8,6 +8,6 @@ Name: signon-plugins
+ Description: SignonPlugins
+ Version: $$PROJECT_VERSION
+ Requires: $${LIBSIGNON}
+-Libs.private: -L/usr/lib -lQt5Core
++Libs.private: -L/usr/lib -lQt$${QT_MAJOR_VERSION}Core
+ Cflags:  -I${includedir}/signon-plugins -I${includedir}/signon-plugins/SignOn
+ Libs: -lsignon-plugins
+diff --git a/lib/signond/SignOn/SignOnExtension.pc.in b/lib/signond/SignOn/SignOnExtension.pc.in
+index e439284..ce7ad9c 100644
+--- a/lib/signond/SignOn/SignOnExtension.pc.in
++++ b/lib/signond/SignOn/SignOnExtension.pc.in
+@@ -7,6 +7,6 @@ plugindir=$$SIGNOND_EXTENSIONS_DIR
+ Name: SignOnExtension
+ Description: SignOn extension development 
+ Version: $$PROJECT_VERSION
+-Requires: Qt5Core
++Requires: Qt$${QT_MAJOR_VERSION}Core
+ Libs: -L${libdir} -lsignon-extension
+ Cflags: -I${includedir}/signon-extension
+diff --git a/tests/libsignon-qt-tests/libsignon-qt-tests.pro b/tests/libsignon-qt-tests/libsignon-qt-tests.pro
+index 4dd6ce4..7e44272 100644
+--- a/tests/libsignon-qt-tests/libsignon-qt-tests.pro
++++ b/tests/libsignon-qt-tests/libsignon-qt-tests.pro
+@@ -10,7 +10,7 @@ QT += \
+     testlib
+ QT -= gui
+ 
+-LIBS *= -lsignon-qt5
++LIBS *= -lsignon-qt$${QT_MAJOR_VERSION}
+ QMAKE_LIBDIR += $${TOP_BUILD_DIR}/lib/SignOn
+ QMAKE_RPATHDIR = $${QMAKE_LIBDIR}
+ 
+diff --git a/tests/signond-tests/identity-tool.pro b/tests/signond-tests/identity-tool.pro
+index c90e046..3a99e9d 100644
+--- a/tests/signond-tests/identity-tool.pro
++++ b/tests/signond-tests/identity-tool.pro
+@@ -6,7 +6,7 @@ TARGET = identity-tool
+ QT += core
+ QT -= gui
+ 
+-LIBS += -lsignon-qt5
++LIBS += -lsignon-qt$${QT_MAJOR_VERSION}
+ 
+ QMAKE_LIBDIR += \
+     $${TOP_BUILD_DIR}/lib/signond/SignOn \
+diff --git a/tests/signond-tests/mock-ac-plugin/identity-ac-helper.pro b/tests/signond-tests/mock-ac-plugin/identity-ac-helper.pro
+index 2dac5ad..b78e691 100644
+--- a/tests/signond-tests/mock-ac-plugin/identity-ac-helper.pro
++++ b/tests/signond-tests/mock-ac-plugin/identity-ac-helper.pro
+@@ -6,7 +6,7 @@ TARGET = identity-ac-helper
+ QT += core
+ QT -= gui
+ 
+-LIBS += -lsignon-qt5
++LIBS += -lsignon-qt$${QT_MAJOR_VERSION}
+ 
+ QMAKE_LIBDIR += \
+     $${TOP_BUILD_DIR}/lib/signond/SignOn \
+diff --git a/tests/signond-tests/signond-tests.pri b/tests/signond-tests/signond-tests.pri
+index cbdfae3..74fa5b4 100644
+--- a/tests/signond-tests/signond-tests.pri
++++ b/tests/signond-tests/signond-tests.pri
+@@ -11,7 +11,7 @@ QT -= gui
+ 
+ LIBS += \
+     -lsignon-extension \
+-    -lsignon-qt5
++    -lsignon-qt$${QT_MAJOR_VERSION}
+ 
+ QMAKE_LIBDIR += \
+     $${TOP_BUILD_DIR}/lib/signond/SignOn \
+-- 
+2.43.0
+

@@ -1,0 +1,148 @@
+.TH "UCARP" "8"
+.SH "NAME"
+ucarp \(em Automatic IP failover
+.SH "SYNOPSIS"
+.PP
+\fBucarp\fR [\fB-i, \-\-interface=\fIINTERFACE\fR\fP]  [\fB-s, \-\-srcip=\fIIPADDRESS\fR\fP]
+.br
+[\fB-v, \-\-vhid=\fIVHID\fR\fP]  [\fB-p, \-\-pass=\fIPASSWORD\fR\fP]  [\fB-o, \-\-passfile=\fIPASSFILE\fR\fP]
+.br
+[\fB-P, \-\-preempt\fP]  [\fB-n, \-\-neutral\fP]  [\fB-a, \-\-addr=\fIIPADDR\fR\fP]  [\fB-h, \-\-help\fP]
+.br
+[\fB-b, \-\-advbase=\fISECS\fR\fP]  [\fB-k, \-\-advskew=\fISKEW\fR\fP]  [\fB-u, \-\-upscript=\fISCRIPT\fR\fP]
+.br
+[\fB-d, \-\-downscript=\fISCRIPT\fR\fP]  [\fB-r, \-\-deadratio=\fIRATIO\fR\fP]  [\fB-z, \-\-shutdown\fP]
+.br
+[\fB-B, \-\-daemonize\fP]  [\fB-f, \-\-facility=\fIFACILITY\fR\fP]  [\fB-x, \-\-xparam \fIPARAM\fR\fP]
+.br
+[\fB-S, \-\-ignoreifstate\fP]  [\fB-M, \-\-nomcast\fP]
+.SH "DESCRIPTION"
+.PP
+ucarp allows a pair of hosts to share common IP addresses in
+order to provide automatic failover of an address from one machine to
+another. It is a portable userland implementation of the secure and
+patent-free Common Address Redundancy Protocol, (CARP), OpenBSD's
+alternative to VRRP.
+.SH "OPTIONS"
+.PP
+ucarp supports the following command line options:
+.IP "\fB-i \fIINTERFACE\fR\fP\fB \-\-interface=\fIINTERFACE\fR\fP" 10
+The network interface to bind to.
+.IP "\fB-s \fIIPADDRESS\fR\fP\fB \-\-srcip=\fIIPADDRESS\fR\fP" 10
+The persistent source address, (real IP), associated with this
+interface.
+.IP "\fB-v \fIVHID\fR\fP\fB \-\-vhid=\fIVHID\fR\fP" 10
+The id of the virtual server [1-255].
+.IP "\fB-p \fIPASSWORD\fR\fP\fB \-\-pass=\fIPASSWORD\fR\fP" 10
+The shared password, (this gets encrypted and is not sent in the
+clear).
+.IP "\fB-o \fIPASSFILE\fR\fP\fB \-\-passfile=\fIPASSFILE\fR\fP" 10
+File to read the shared password from. The file specified
+should contain the password on the first line of the file.
+.IP "\fB-P \fP\fB\-\-preempt\fP" 10
+Turn on preemptive failover. This causes an instance of
+ucarp to assume master status right immediately.
+.IP "\fB-n \fP\fB\-\-neutral\fP" 10
+Do not run the downscript on startup when the
+initial state is backup.
+.IP "\fB-a \fIIPADDRESS\fR\fP\fB \-\-addr=\fIIPADDRESS\fR\fP" 10
+The IP address of the virtual server.
+.IP "\fB-h \fP\fB\-\-help\fP" 10
+Display a brief summary of the command line options.
+.IP "\fB-b \fISECONDS\fR\fP\fB \-\-advbase=\fISECONDS\fR\fP" 10
+Interval in seconds that advertisements will occur, (defaults
+to 1 second).
+.IP "\fB-k \fISKEW\fR\fP\fB \-\-advskew=\fISKEW\fR\fP" 10
+Advertisement skew [1-255], (defaults to 0).
+.IP "\fB-u \fICOMMAND\fR\fP\fB \-\-upscript=\fICOMMAND\fR\fP" 10
+Specifies the command to run after ucarp has successfully
+become master, the interface name gets passed as an argument.
+Typically a script used to bring up the virtual address, log the
+result, add routes, clear arp cache entries, etc.
+.IP "\fB-d \fICOMMAND\fR\fP\fB \-\-downscript=\fICOMMAND\fR\fP" 10
+Specifies the command that is run after ucarp has
+transitioned to the backup state, the interface name is passed
+as an argument. This is typically a script used to bring down
+the virtual interface, log the action, remove routes, etc.
+.IP "\fB-r \fIRATIO\fR\fP\fB \-\-deadratio=\fIRATIO\fR\fP" 10
+Ratio used by the backup to determine how long to wait for an
+unresponsive master before considering it dead.
+.IP "\fB-z\fP\fB \-\-shutdown\fP" 10
+Use of this command causes the command specified by the \-d
+argument to be invoked when ucarp shuts down.
+.IP "\fB-B\fP\fB \-\-daemonize\fP" 10
+Causes ucarp to detach from the terminal and run in the
+background as a daemon.
+.IP "\fB-f\fP\fB \-\-facility\fP" 10
+Set the syslog facility, defaults to daemon.
+.IP "\fB-x \fIPARAMETER\fR\fP\fB \-\-xparam=\fIPARAMETER\fR\fP" 10
+Specify an extra parameter to be supplied to the up/down
+scripts.
+.IP "\fB-S\fP\fB \-\-ignoreifstate\fP" 10
+Ignore unplugged network cables. This option is useful when
+ucarp nodes are connected with a crossover cable. Without
+this option the master will transition to backup when the other
+node is powered down, as it no longer has a link (NO-CARRIER).
+
+.IP "\fB-M\fP\fB \-\-nomcast\fP" 10
+Use broadcast instead of multicast advertisements.
+.SH "EXAMPLES"
+.PP
+A host with a real IP of 10.1.1.10 configured to be the master
+in a preemptive configuration with a virtual IP of 10.1.1.252.
+.PP
+.nf
+\fB    \fPucarp \-i eth0 \-s 10.1.1.10 \-v 10 \-p secret \-a 10.1.1.252 \\
+\fB    \fP\-\-upscript=/etc/vip-up.sh \-\-downscript=/etc/vip-down.sh \-P
+.fi
+.PP
+The backup might be configured something like this.
+.PP
+.nf
+\fB    \fPucarp \-i eth0 \-s 10.1.1.11 \-v 10 \-p secret \-a 10.1.1.252 \\
+\fB    \fP\-\-upscript=/etc/vip-up.sh \-\-downscript=/etc/vip-down.sh
+.fi
+.PP
+A machine with a real IP of 192.168.1.19 is the preferred master for
+a virtual IP of 10.1.12.7, broadcasts are sent every 5 seconds.
+.PP
+.nf
+\fB    \fPucarp \-b 5 \-s 192.168.1.19 \-v 27 \-p badpass \-a 10.1.12.7 \\
+\fB    \fP-u /etc/vip-up.sh \-d /etc/vip-down.sh \-z
+.fi
+.PP
+The hot standby with an IP of 192.168.1.20 uses the following
+command, (note the advskew of 50 putting it at a disadvantage and making
+the first machine preferred).
+.PP
+.nf
+\fB    \fPucarp \-b 5 \-k 50 \-s 192.168.1.20 \-v 27 \-p badpass \-a 10.1.12.7 \\
+\fB    \fP-u /etc/vip-up.sh \-d /etc/vip-down.sh \-z
+.fi
+.SH "SIGNALS"
+.PP
+Sending the ucarp process a SIGUSR1 will have it log a status
+line to syslog, eg "Sep 13 12:59:56 localhost ucarp[2654]: [INFO]
+MASTER on eth0 id 1" or "Sep 13 13:00:25 localhost ucarp[2644]: [INFO]
+BACKUP on eth0 id 1"
+.PP
+Sending the ucarp process a SIGUSR2 will cause it to demote itself
+from master to backup, pause 3 seconds, then proceed as usual to listen
+for other masters, and promote itself if necessary. This could be useful
+if you wish another node to take over master.
+
+.SH "AUTHOR"
+.PP
+ucarp was written by Frank Denis, <j@ucarp.org>.
+.PP
+This manual page was written by Eric Evans <eevans@debian.org>
+for the \fBDebian\fP system (but may be used by others).  Permission is
+granted to copy, distribute and/or modify this document under
+the terms of the GNU General Public License, Version 2 or any
+later version published by the Free Software Foundation.
+
+.PP
+On Debian systems, the complete text of the GNU General Public
+License can be found in /usr/share/common-licenses/GPL.
+
+.\" created by instant / docbook-to-man, Wed 10 Aug 2011, 17:40 

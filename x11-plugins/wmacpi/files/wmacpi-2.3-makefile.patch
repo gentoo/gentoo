@@ -1,0 +1,48 @@
+--- a/Makefile
++++ b/Makefile
+@@ -12,9 +12,8 @@ BUILD_CLI = 1
+ # debugging options (don't bother with these)
+ #OPT	= -pg -g
+ 
+-CC	:= gcc
+-CFLAGS	+= $(OPT) -Wall -W -g -ansi
+-LDFLAGS += $(OPT) -lX11 -ldockapp
++CFLAGS	?= -Wall -W -g -ansi
++LIBS += -lX11 -ldockapp
+ 
+ WMSRC	:= wmacpi.c libacpi.c
+ HEADERS := libacpi.h wmacpi.h
+@@ -26,7 +25,7 @@ targets += wmacpi-cli
+ doc_targets += wmacpi-cli.1
+ endif
+ 
+-PREFIX := /usr/local
++PREFIX := /usr
+ 
+ all: $(targets)
+ 
+@@ -37,7 +36,7 @@ WMOBJ := $(patsubst %.c,%.o,$(filter %.c,$(WMSRC)))
+ -include $(WMOBJ:.o=.d)
+ 
+ wmacpi:	$(WMOBJ)
+-	$(CC) -o $@ $^ $(LDFLAGS)
++	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
+ 
+ # for the Debian package, we want to make building the command line tools
+ # optional. So, we hide all the necessary stuff here . . .
+@@ -47,13 +46,13 @@ CLOBJ := $(patsubst %.c,%.o,$(filter %.c,$(CLSRC)))
+ -include $(CLOBJ:.o=.d)
+ 
+ wmacpi-cli: $(CLOBJ)
+-	$(CC) $(LDFLAGS) -o $@ $^
++	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
+ endif
+ 
+ # build per-file dependencies - note that -MM may not be supported
+ # in gcc versions older than 2.95.4, but most likely is.
+ %.d: %.c
+-	gcc -MM $(CFLAGS) $< > $@
++	$(CC) -MM $(CFLAGS) $< > $@
+ 
+ clean:
+ 	rm -f TAGS *.o *~ trace *.out *.bb *.bbg

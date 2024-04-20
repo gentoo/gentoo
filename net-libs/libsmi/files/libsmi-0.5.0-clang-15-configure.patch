@@ -1,0 +1,42 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -43,7 +43,8 @@ CC="$withval")
+ 
+ AC_MSG_CHECKING([for additional required compiler flags])
+ AC_TRY_RUN([#include <stdio.h>
+-  main() {
++  #include <stdlib.h>
++  int main() {
+   #ifdef __SUNPRO_C
+         exit(0);
+   #else
+@@ -105,7 +106,8 @@ dirseparator="$withval", dirseparator="")
+ AC_MSG_CHECKING([for path separator character])
+ if test "$pathseparator" = "" ; then
+   AC_TRY_RUN([#include <stdio.h>
+-    main() {
++    #include <stdlib.h>
++    int main() {
+     #ifdef _WIN32
+ 	  exit(0);
+     #else
+@@ -119,7 +121,8 @@ echo $pathseparator
+ AC_MSG_CHECKING([for dir separator character])
+ if test "$dirseparator" = "" ; then
+   AC_TRY_RUN([#include <stdio.h>
+-    main() {
++    #include <stdlib.h>
++    int main() {
+     #ifdef _WIN32
+ 	  exit(0);
+     #else
+@@ -145,7 +148,8 @@ AC_MSG_CHECKING([for 64 bit types])
+ # if used with the (correct) value -9223372036854775808LL.
+ #
+ AC_TRY_RUN([#include <stdio.h>
+-      main() {
++      #include <stdlib.h>
++      int main() {
+ 	  long long ll;
+ 	  unsigned long long ull;
+ 	  exit(0);

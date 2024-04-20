@@ -1,0 +1,136 @@
+--- aqualung-1.2_orig/src/decoder/dec_mac.cpp	2023-08-13 19:40:59.245935911 +0200
++++ aqualung-1.2/src/decoder/dec_mac.cpp	2023-08-13 19:41:33.660933860 +0200
+@@ -24,6 +24,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <glib.h>
+ 
+ 
+ /* expand this to nothing so there's no error when including MACLib.h */
+@@ -60,16 +61,16 @@
+ 
+ 	mac_pdata_t * pd = (mac_pdata_t *)dec->pdata;
+ 	file_decoder_t * fdec = dec->fdec;
+-	IAPEDecompress * pdecompress = (IAPEDecompress *)pd->decompress;
++        APE::IAPEDecompress * pdecompress = (APE::IAPEDecompress *)pd->decompress;
+ 
+-	int act_read = 0;
++	APE::int64 act_read = 0;
+ 	unsigned long scale = 1 << (pd->bits_per_sample - 1);
+ 	float fbuf[2 * BLOCKS_PER_READ];
+ 	int n = 0;
+ 
+ 	switch (pd->bits_per_sample) {
+ 	case 8:
+-		char data8[2 * BLOCKS_PER_READ];
++		unsigned char data8[2 * BLOCKS_PER_READ];
+ 		pdecompress->GetData(data8, BLOCKS_PER_READ, &act_read);
+ 		if (!act_read) {
+ 			return 1;
+@@ -84,7 +85,7 @@
+ 
+ 	case 16:
+ 		short data16[2 * BLOCKS_PER_READ];
+-		pdecompress->GetData((char *)data16, BLOCKS_PER_READ, &act_read);
++		pdecompress->GetData((unsigned char *)data16, BLOCKS_PER_READ, &act_read);
+ 		if (!act_read) {
+ 			return 1;
+ 		}
+@@ -100,7 +101,7 @@
+ 
+ 	case 32:
+ 		int data32[2 * BLOCKS_PER_READ];
+-		pdecompress->GetData((char *)data32, BLOCKS_PER_READ, &act_read);
++		pdecompress->GetData((unsigned char *)data32, BLOCKS_PER_READ, &act_read);
+ 		if (!act_read) {
+ 			return 1;
+ 		}
+@@ -170,31 +171,33 @@
+ 	mac_pdata_t * pd = (mac_pdata_t *)dec->pdata;
+ 	file_decoder_t * fdec = dec->fdec;
+ 	metadata_t * meta;
+-	IAPEDecompress * pdecompress = (IAPEDecompress *)pd->decompress;
++	APE::IAPEDecompress * pdecompress = (APE::IAPEDecompress *)pd->decompress;
+ 	const char * comp_level = NULL;
+ 
+ 
+ 	int ret = 0;
+ #ifdef __OpenBSD__
+         wchar_t * pUTF16 = GetUTF16FromANSI(filename);
+-#else
+-        wchar_t * pUTF16 = CAPECharacterHelper::GetUTF16FromANSI(filename);
+-#endif
+         pdecompress = CreateIAPEDecompress(pUTF16, &ret);
+         free(pUTF16);
++#else
++        gunichar2 * pUTF16 = g_utf8_to_utf16(filename, -1, NULL, NULL, NULL);
++        pdecompress = CreateIAPEDecompress((wchar_t *)pUTF16, &ret, FALSE, FALSE, FALSE);
++        g_free(pUTF16);
++#endif
+ 
+         if (!pdecompress || ret != ERROR_SUCCESS) {
+                 return DECODER_OPEN_BADLIB;
+         }
+ 
+ 	pd->decompress = (void *)pdecompress;
+-        pd->sample_rate = pdecompress->GetInfo(APE_INFO_SAMPLE_RATE);
+-        pd->bits_per_sample = pdecompress->GetInfo(APE_INFO_BITS_PER_SAMPLE);
+-        pd->bitrate = pdecompress->GetInfo(APE_DECOMPRESS_AVERAGE_BITRATE);
+-        pd->channels = pdecompress->GetInfo(APE_INFO_CHANNELS);
+-        pd->length_in_ms = pdecompress->GetInfo(APE_DECOMPRESS_LENGTH_MS);
+-        pd->block_align = pdecompress->GetInfo(APE_INFO_BLOCK_ALIGN);
+-	pd->compression_level = pdecompress->GetInfo(APE_INFO_COMPRESSION_LEVEL);
++        pd->sample_rate = pdecompress->GetInfo(APE::IAPEDecompress::APE_INFO_SAMPLE_RATE);
++        pd->bits_per_sample = pdecompress->GetInfo(APE::IAPEDecompress::APE_INFO_BITS_PER_SAMPLE);
++        pd->bitrate = pdecompress->GetInfo(APE::IAPEDecompress::APE_DECOMPRESS_AVERAGE_BITRATE);
++        pd->channels = pdecompress->GetInfo(APE::IAPEDecompress::APE_INFO_CHANNELS);
++        pd->length_in_ms = pdecompress->GetInfo(APE::IAPEDecompress::APE_DECOMPRESS_LENGTH_MS);
++        pd->block_align = pdecompress->GetInfo(APE::IAPEDecompress::APE_INFO_BLOCK_ALIGN);
++	pd->compression_level = pdecompress->GetInfo(APE::IAPEDecompress::APE_INFO_COMPRESSION_LEVEL);
+ 
+ 	if ((pd->channels != 1) && (pd->channels != 2)) {
+ 		printf("Sorry, MAC file with %d channels is not supported.\n", pd->channels);
+@@ -218,19 +221,19 @@
+ 	fdec->file_lib = MAC_LIB;
+ 
+ 	switch (pd->compression_level) {
+-	case COMPRESSION_LEVEL_FAST:
++	case APE_COMPRESSION_LEVEL_FAST:
+ 		comp_level = _("Compression: Fast");
+ 		break;
+-	case COMPRESSION_LEVEL_NORMAL:
++	case APE_COMPRESSION_LEVEL_NORMAL:
+ 		comp_level = _("Compression: Normal");
+ 		break;
+-	case COMPRESSION_LEVEL_HIGH:
++	case APE_COMPRESSION_LEVEL_HIGH:
+ 		comp_level = _("Compression: High");
+ 		break;
+-	case COMPRESSION_LEVEL_EXTRA_HIGH:
++	case APE_COMPRESSION_LEVEL_EXTRA_HIGH:
+ 		comp_level = _("Compression: Extra High");
+ 		break;
+-	case COMPRESSION_LEVEL_INSANE:
++	case APE_COMPRESSION_LEVEL_INSANE:
+ 		comp_level = _("Compression: Insane");
+ 		break;
+ 	default:
+@@ -255,7 +258,7 @@
+ mac_decoder_close(decoder_t * dec) {
+ 
+ 	mac_pdata_t * pd = (mac_pdata_t *)dec->pdata;
+-	IAPEDecompress * pdecompress = (IAPEDecompress *)pd->decompress;
++	APE::IAPEDecompress * pdecompress = (APE::IAPEDecompress *)pd->decompress;
+ 
+ 	delete(pdecompress);
+ 	rb_free(pd->rb);
+@@ -294,7 +297,7 @@
+ 	
+ 	mac_pdata_t * pd = (mac_pdata_t *)dec->pdata;
+ 	file_decoder_t * fdec = dec->fdec;
+-	IAPEDecompress * pdecompress = (IAPEDecompress *)pd->decompress;
++	APE::IAPEDecompress * pdecompress = (APE::IAPEDecompress *)pd->decompress;
+ 	char flush_dest;
+ 
+ 	pdecompress->Seek(seek_to_pos);

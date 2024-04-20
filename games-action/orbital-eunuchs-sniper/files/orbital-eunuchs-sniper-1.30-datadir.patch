@@ -1,0 +1,36 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -64,14 +64,12 @@
+  ,dnl default action of assigning shell value
+  with_games_dir="${runtime_datadir}/games"
+ )
+-AC_SUBST(datadir,"${with_games_dir}")
+ AC_DEFINE_UNQUOTED([GAMEDATADIR], "${datadir}/$PACKAGE_NAME",
+                                [Game data directory])
+ 
+ 
+ #These should be automagically determined somehow.
+ #CPU Instruction Set.  Should be automagic.
+-AC_SUBST(CPU_IS,`uname -m`)
+ 
+ 
+ echo $ac_n "ordering crap from http://www.amazon.com/gp/registry/296ST2NHEBO0Z" 1>&6
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,6 +1,4 @@
+-pkgdata_PROGRAMS = snipe2d.@CPU_IS@.dynamic snipe2d.@CPU_IS@.static
+-BUILT_SOURCES = snipe2d
+-bin_SCRIPTS = snipe2d
++bin_PROGRAMS = snipe2d
+ snipe2d_common = \
+  ai.cpp \
+  binds.cpp \
+@@ -28,7 +26,7 @@
+  sexpr/io.c \
+  sexpr/parser.c
+ 
+-snipe2d_@CPU_IS@_dynamic_SOURCES = $(snipe2d_common)
++snipe2d_SOURCES = $(snipe2d_common)
+ 
+ #snipe2d_@CPU_IS@_static_LDFLAGS = -static
+ snipe2d_@CPU_IS@_static_SOURCES = $(snipe2d_common)

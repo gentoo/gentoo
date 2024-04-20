@@ -1,0 +1,416 @@
+From 5587be23bec68281e5d6de2b302dbd2a79ea47aa Mon Sep 17 00:00:00 2001
+From: Corey Berla <corey@berla.me>
+Date: Tue, 13 Sep 2022 15:03:59 -0700
+Subject: [PATCH 1/9] Bump to libnautilus-extension-4
+
+Nautilus 43 comes with libnautilus-extension-4 which has several
+breaking changes
+---
+ configure.ac | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 025289c..737dc26 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -12,7 +12,7 @@ AM_CONFIG_HEADER(config.h)
+ #AC_PROG_INTLTOOL([0.29])
+ 
+ # Dependency checks
+-NAUTILUS_REQUIRED=2.16.0
++NAUTILUS_REQUIRED=43.rc
+ GLIB_REQUIRED=2.14.0
+ 
+ # Used programs
+@@ -26,7 +26,7 @@ if test "x$HAVE_PKGCONFIG" = "xno"; then
+ 	AC_MSG_ERROR(you need to have pkgconfig installed !)
+ fi
+ 
+-PKG_CHECK_MODULES(NAUTILUS, libnautilus-extension >= $NAUTILUS_REQUIRED)
++PKG_CHECK_MODULES(NAUTILUS, libnautilus-extension-4 >= $NAUTILUS_REQUIRED)
+ PKG_CHECK_MODULES(GLIB, glib-2.0 >= $GLIB_REQUIRED)
+ 
+ AC_PATH_PROG([PYTHON3], [python3])
+@@ -84,10 +84,10 @@ AC_MSG_CHECKING([for nautilus extension directory])
+ if test -n "$with_nautilus_extension_dir"; then
+     NAUTILUS_EXTENSION_DIR=$with_nautilus_extension_dir
+ else
+-    NAUTILUS_EXTENSION_DIR=`$PKG_CONFIG --variable=extensiondir libnautilus-extension`
++    NAUTILUS_EXTENSION_DIR=`$PKG_CONFIG --variable=extensiondir libnautilus-extension-4`
+ fi
+ if test -z "$NAUTILUS_EXTENSION_DIR"; then
+-    NAUTILUS_EXTENSION_DIR='${exec_prefix}/lib/nautilus/extension-1.0'
++    NAUTILUS_EXTENSION_DIR='${exec_prefix}/lib/nautilus/extension-4'
+ fi
+ 
+ AC_MSG_RESULT([${NAUTILUS_EXTENSION_DIR}])
+
+From 90067c37aa0894b3e090dc5bdbaa963224226614 Mon Sep 17 00:00:00 2001
+From: Corey Berla <corey@berla.me>
+Date: Tue, 13 Sep 2022 15:06:07 -0700
+Subject: [PATCH 2/9] Update / remove deprecated (now removed) symbols and
+ headers
+
+---
+ src/nautilus-dropbox.c | 9 +++------
+ src/nautilus-dropbox.h | 2 +-
+ 2 files changed, 4 insertions(+), 7 deletions(-)
+
+diff --git a/src/nautilus-dropbox.c b/src/nautilus-dropbox.c
+index c75ccbf..837f9ab 100644
+--- a/src/nautilus-dropbox.c
++++ b/src/nautilus-dropbox.c
+@@ -37,9 +37,7 @@
+ #include <glib-object.h>
+ #include <gtk/gtk.h>
+ 
+-#include <libnautilus-extension/nautilus-extension-types.h>
+-#include <libnautilus-extension/nautilus-menu-provider.h>
+-#include <libnautilus-extension/nautilus-info-provider.h>
++#include <nautilus-extension.h>
+ 
+ #include "g-util.h"
+ #include "dropbox-command-client.h"
+@@ -661,7 +659,6 @@ get_file_items_callback(GHashTable *response, gpointer ud)
+ 
+ static GList *
+ nautilus_dropbox_get_file_items(NautilusMenuProvider *provider,
+-                                GtkWidget            *window,
+ 				GList                *files)
+ {
+   /*
+@@ -888,13 +885,13 @@ on_disconnect(NautilusDropbox *cvs) {
+ 
+ 
+ static void
+-nautilus_dropbox_menu_provider_iface_init (NautilusMenuProviderIface *iface) {
++nautilus_dropbox_menu_provider_iface_init (NautilusMenuProviderInterface *iface) {
+   iface->get_file_items = nautilus_dropbox_get_file_items;
+   return;
+ }
+ 
+ static void
+-nautilus_dropbox_info_provider_iface_init (NautilusInfoProviderIface *iface) {
++nautilus_dropbox_info_provider_iface_init (NautilusInfoProviderInterface *iface) {
+   iface->update_file_info = nautilus_dropbox_update_file_info;
+   iface->cancel_update = nautilus_dropbox_cancel_update;
+   return;
+diff --git a/src/nautilus-dropbox.h b/src/nautilus-dropbox.h
+index 65734be..44faa27 100644
+--- a/src/nautilus-dropbox.h
++++ b/src/nautilus-dropbox.h
+@@ -27,7 +27,7 @@
+ #include <glib.h>
+ #include <glib-object.h>
+ 
+-#include <libnautilus-extension/nautilus-info-provider.h>
++#include <nautilus-extension.h>
+ 
+ #include "dropbox-command-client.h"
+ #include "nautilus-dropbox-hooks.h"
+
+From 3f778e011daad826882893812e0d6290bdf12cba Mon Sep 17 00:00:00 2001
+From: Corey Berla <corey@berla.me>
+Date: Tue, 13 Sep 2022 15:06:46 -0700
+Subject: [PATCH 3/9] Include gtk4 directly
+
+This used to be included from libnautilus-extension, but now that
+Nautilus has been ported to gtk4, there is a desire to separate gtk
+from the extensions
+---
+ configure.ac    | 3 +++
+ src/Makefile.am | 1 +
+ src/dropbox.c   | 3 ---
+ 3 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 737dc26..42b49fa 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -28,6 +28,9 @@ fi
+ 
+ PKG_CHECK_MODULES(NAUTILUS, libnautilus-extension-4 >= $NAUTILUS_REQUIRED)
+ PKG_CHECK_MODULES(GLIB, glib-2.0 >= $GLIB_REQUIRED)
++PKG_CHECK_MODULES(GTK, gtk4 >= 4.6.0)
++
++AC_SUBST(GTK_CFLAGS)
+ 
+ AC_PATH_PROG([PYTHON3], [python3])
+ 
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 15d6687..c521ec5 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -13,6 +13,7 @@ libnautilus_dropbox_la_CFLAGS = 	                \
+ 	$(WARN_CFLAGS)                                  \
+ 	$(DISABLE_DEPRECATED_CFLAGS)					\
+ 	$(NAUTILUS_CFLAGS)                              \
++	$(GTK_CFLAGS)                              \
+ 	$(GLIB_CFLAGS)
+ 
+ if DEBUG
+diff --git a/src/dropbox.c b/src/dropbox.c
+index 0d59559..f52e0fb 100644
+--- a/src/dropbox.c
++++ b/src/dropbox.c
+@@ -27,9 +27,6 @@
+ 
+ #include <glib-object.h>
+ 
+-#include <gdk/gdk.h>
+-#include <gtk/gtk.h>
+-
+ #include "nautilus-dropbox.h"
+ 
+ static GType type_list[1];
+
+From 4188fea5ce15a5bd0ac359e4c18eaa9039413c83 Mon Sep 17 00:00:00 2001
+From: Corey Berla <corey@berla.me>
+Date: Tue, 13 Sep 2022 15:07:54 -0700
+Subject: [PATCH 4/9] Remove old / unnecessary fix
+
+This was causes problems with the build and doesn't appear
+to be necessary anymore
+---
+ src/dropbox.c          | 3 ---
+ src/nautilus-dropbox.c | 9 +--------
+ 2 files changed, 1 insertion(+), 11 deletions(-)
+
+diff --git a/src/dropbox.c b/src/dropbox.c
+index f52e0fb..8162aa9 100644
+--- a/src/dropbox.c
++++ b/src/dropbox.c
+@@ -38,9 +38,6 @@ nautilus_module_initialize (GTypeModule *module) {
+   nautilus_dropbox_register_type (module);
+   type_list[0] = NAUTILUS_TYPE_DROPBOX;
+ 
+-  dropbox_use_nautilus_submenu_workaround
+-    = (NAUTILUS_VERSION_MAJOR < 2 ||
+-       (NAUTILUS_VERSION_MAJOR == 2 && NAUTILUS_VERSION_MINOR <= 22));
+   dropbox_use_operation_in_progress_workaround = TRUE;
+ }
+ 
+diff --git a/src/nautilus-dropbox.c b/src/nautilus-dropbox.c
+index 837f9ab..bc1b5bd 100644
+--- a/src/nautilus-dropbox.c
++++ b/src/nautilus-dropbox.c
+@@ -47,7 +47,7 @@
+ static char *emblems[] = {"dropbox-uptodate", "dropbox-syncing", "dropbox-unsyncable"};
+ gchar *DEFAULT_EMBLEM_PATHS[2] = { EMBLEMDIR , NULL };
+ 
+-gboolean dropbox_use_nautilus_submenu_workaround;
++
+ gboolean dropbox_use_operation_in_progress_workaround;
+ 
+ static GType dropbox_type = 0;
+@@ -628,13 +628,6 @@ nautilus_dropbox_parse_menu(gchar			**options,
+ 	g_object_set_property (G_OBJECT(item), "sensitive", &sensitive);
+       }
+ 
+-      /* taken from nautilus-file-repairer (http://repairer.kldp.net/):
+-       * this code is a workaround for a bug of nautilus
+-       * See: http://bugzilla.gnome.org/show_bug.cgi?id=508878 */
+-      if (dropbox_use_nautilus_submenu_workaround) {
+-	toret = g_list_append(toret, item);
+-      }
+-
+       g_object_unref(item);
+       g_string_free(new_action_string, TRUE);
+       ret++;
+
+From def0ce2b69a5d3fec6e2fab360473c5560b947e6 Mon Sep 17 00:00:00 2001
+From: Corey Berla <corey@berla.me>
+Date: Tue, 13 Sep 2022 15:08:16 -0700
+Subject: [PATCH 5/9] Update code for gtk4
+
+---
+ src/nautilus-dropbox.c | 14 ++++++--------
+ 1 file changed, 6 insertions(+), 8 deletions(-)
+
+diff --git a/src/nautilus-dropbox.c b/src/nautilus-dropbox.c
+index bc1b5bd..b9c10b4 100644
+--- a/src/nautilus-dropbox.c
++++ b/src/nautilus-dropbox.c
+@@ -768,14 +768,13 @@ add_emblem_paths(GHashTable* emblem_paths_response)
+ 
+   gchar **emblem_paths_list;
+   int i;
+-
+-  GtkIconTheme *theme = gtk_icon_theme_get_default();
++  GtkIconTheme *theme = gtk_icon_theme_get_for_display (gdk_display_get_default ());
+ 
+   if (emblem_paths_response &&
+       (emblem_paths_list = g_hash_table_lookup(emblem_paths_response, "path"))) {
+       for (i = 0; emblem_paths_list[i] != NULL; i++) {
+ 	if (emblem_paths_list[i][0])
+-	  gtk_icon_theme_append_search_path(theme, emblem_paths_list[i]);
++	  gtk_icon_theme_add_search_path(theme, emblem_paths_list[i]);
+       }
+   }
+   g_hash_table_unref(emblem_paths_response);
+@@ -794,15 +793,14 @@ remove_emblem_paths(GHashTable* emblem_paths_response)
+       goto exit;
+ 
+   // We need to remove the old paths.
+-  GtkIconTheme * icon_theme = gtk_icon_theme_get_default();
+   gchar ** paths;
+-  gint path_count;
++  GtkIconTheme *theme = gtk_icon_theme_get_for_display (gdk_display_get_default ());
+ 
+-  gtk_icon_theme_get_search_path(icon_theme, &paths, &path_count);
++  paths = gtk_icon_theme_get_search_path(theme);
+ 
+   gint i, j, out = 0;
+   gboolean found = FALSE;
+-  for (i = 0; i < path_count; i++) {
++  for (i = 0; paths[i] != NULL; i++) {
+       gboolean keep = TRUE;
+       for (j = 0; emblem_paths_list[j] != NULL; j++) {
+ 	  if (emblem_paths_list[j][0]) {
+@@ -824,7 +822,7 @@ remove_emblem_paths(GHashTable* emblem_paths_response)
+      accomodate the changes */
+   if (found) {
+     paths[out] = NULL; /* Clear the last one */
+-    gtk_icon_theme_set_search_path(icon_theme, (const gchar **)paths, out);
++    gtk_icon_theme_set_search_path(theme, (const gchar **)paths);
+   }
+ 
+   g_strfreev(paths);
+
+From d0bb693ce7d2e48562e516771afcd310ccb14ae1 Mon Sep 17 00:00:00 2001
+From: Corey Berla <corey@berla.me>
+Date: Sun, 20 Nov 2022 13:56:38 -0800
+Subject: [PATCH 6/9] dropbox: Drop threads_init()
+
+This became unnecessary long ago
+
+https://pygobject.readthedocs.io/en/latest/guide/threading.html#threads-faq
+---
+ dropbox.in | 3 ---
+ 1 file changed, 3 deletions(-)
+ mode change 100755 => 100644 dropbox.in
+
+diff --git a/dropbox.in b/dropbox.in
+old mode 100755
+new mode 100644
+index 4a480bb..31519e2
+--- a/dropbox.in
++++ b/dropbox.in
+@@ -294,14 +294,11 @@ if GUI_AVAILABLE:
+         import gi
+         gi.require_version('Gdk', '3.0')
+         gi.require_version('Gtk', '3.0')
+-        from gi.repository import GObject
+         from gi.repository import Gdk
+         from gi.repository import Gtk
+         from gi.repository import Pango
+         import webbrowser
+ 
+-        GObject.threads_init()
+-
+         load_serialized_images()
+ 
+         global FatalVisibleError
+
+From 1e878e57023370f8932791e90bc6cd8814219c25 Mon Sep 17 00:00:00 2001
+From: Corey Berla <corey@berla.me>
+Date: Sun, 20 Nov 2022 13:57:17 -0800
+Subject: [PATCH 7/9] dropbox: Replace deprecated GObject.idle_add with
+ GLib.idle_add
+
+---
+ dropbox.in | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/dropbox.in b/dropbox.in
+index 31519e2..fc306b0 100644
+--- a/dropbox.in
++++ b/dropbox.in
+@@ -294,6 +294,7 @@ if GUI_AVAILABLE:
+         import gi
+         gi.require_version('Gdk', '3.0')
+         gi.require_version('Gtk', '3.0')
++        from gi.repository import GLib
+         from gi.repository import Gdk
+         from gi.repository import Gtk
+         from gi.repository import Pango
+@@ -328,17 +329,17 @@ if GUI_AVAILABLE:
+                             ret = ()
+                         if not isinstance(ret, tuple):
+                             ret = (ret,)
+-                        GObject.idle_add(self.loop_callback, *ret)
++                        GLib.idle_add(self.loop_callback, *ret)
+ 
+                         if self._stopped:
+                             _thread.exit()
+                 except Exception as e:
+                     print(e)
+                     if self.on_exception is not None:
+-                        GObject.idle_add(self.on_exception, e)
++                        GLib.idle_add(self.on_exception, e)
+                 else:
+                     if self.on_done is not None:
+-                        GObject.idle_add(self.on_done)
++                        GLib.idle_add(self.on_done)
+ 
+             def start(self, *args, **kwargs):
+                 t = threading.Thread(target=self._run, args=args, kwargs=kwargs)
+
+From de01c7f7cab560b226eeb1f1cbcfd348c922e5d4 Mon Sep 17 00:00:00 2001
+From: Corey Berla <corey@berla.me>
+Date: Sun, 20 Nov 2022 13:58:15 -0800
+Subject: [PATCH 8/9] dropbox: Threading set daemon as property
+
+setDaemon() is deprecated
+
+https://docs.python.org/3/library/threading.html#threading.Thread.setDaemon
+---
+ dropbox.in | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/dropbox.in b/dropbox.in
+index fc306b0..4b7f923 100644
+--- a/dropbox.in
++++ b/dropbox.in
+@@ -342,8 +342,7 @@ if GUI_AVAILABLE:
+                         GLib.idle_add(self.on_done)
+ 
+             def start(self, *args, **kwargs):
+-                t = threading.Thread(target=self._run, args=args, kwargs=kwargs)
+-                t.setDaemon(True)
++                t = threading.Thread(target=self._run, args=args, kwargs=kwargs, daemon=True)
+                 t.start()
+ 
+             def stop(self):
+
+From 34024ef1ccc60d905e810057c3e28e0e185eac78 Mon Sep 17 00:00:00 2001
+From: Corey Berla <corey@berla.me>
+Date: Sun, 20 Nov 2022 13:59:46 -0800
+Subject: [PATCH 9/9] dropbox: Stop using GtkStock
+
+It was deprecated in 3.10
+
+https://docs.gtk.org/gtk3/ctor.Button.new_from_stock.html
+---
+ dropbox.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/dropbox.in b/dropbox.in
+index 4b7f923..380818f 100644
+--- a/dropbox.in
++++ b/dropbox.in
+@@ -447,12 +447,12 @@ if GUI_AVAILABLE:
+                 self.user_cancelled = False
+                 self.task = None
+ 
+-                self.ok = ok = Gtk.Button(stock=Gtk.STOCK_OK)
++                self.ok = ok = Gtk.Button.new_with_mnemonic("_OK")
+                 ok.connect('clicked', self.handle_ok)
+                 self.action_area.add(ok)
+                 ok.show()
+ 
+-                cancel = Gtk.Button(stock=Gtk.STOCK_CANCEL)
++                cancel = Gtk.Button.new_with_mnemonic("_Cancel")
+                 cancel.connect('clicked', self.handle_cancel)
+                 self.action_area.add(cancel)
+                 cancel.show()

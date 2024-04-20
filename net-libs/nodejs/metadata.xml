@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<use>
+		<flag name="corepack">Enable the experimental corepack package management tool</flag>
+		<flag name="inspector">Enable V8 inspector</flag>
+		<flag name="npm">Enable NPM package manager</flag>
+		<flag name="pax-kernel">Enable building under a PaX enabled kernel</flag>
+		<flag name="snapshot">Enable snapshot creation for faster startup</flag>
+		<flag name="system-icu">Use system <pkg>dev-libs/icu</pkg> instead of the bundled version</flag>
+		<flag name="system-ssl">Use system OpenSSL instead of the bundled one</flag>
+		<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">nodejs/node</remote-id>
+		<remote-id type="cpe">cpe:/a:nodejs:nodejs</remote-id>
+	</upstream>
+</pkgmetadata>

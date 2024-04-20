@@ -1,0 +1,43 @@
+https://bugs.gentoo.org/632628
+--- a/repmgr/repmgr_net.c
++++ b/repmgr/repmgr_net.c
+@@ -1331,7 +1331,7 @@ __repmgr_listen(env)
+ 	}
+ 
+ 	ret = net_errno;
+-	__db_err(env, ret, why);
++	__db_err(env, ret, "%s", why);
+ clean:	if (s != INVALID_SOCKET)
+ 		(void)closesocket(s);
+ 	return (ret);
+--- a/crypto/aes_method.c
++++ b/crypto/aes_method.c
+@@ -267,6 +267,6 @@ __aes_err(env, err)
+ 		errstr = "AES error unrecognized";
+ 		break;
+ 	}
+-	__db_errx(env, errstr);
++	__db_errx(env, "%s", errstr);
+ 	return;
+ }
+--- a/txn/txn.c
++++ b/txn/txn.c
+@@ -168,7 +168,7 @@ __txn_begin(env, ip, parent, txnpp, flag
+ 
+ 	*txnpp = NULL;
+ 	if ((ret = __os_calloc(env, 1, sizeof(DB_TXN), &txn)) != 0) {
+-		__db_errx(env, TxnAlloc);
++		__db_errx(env, "%s", TxnAlloc);
+ 		return (ret);
+ 	}
+ 
+@@ -315,7 +315,7 @@ __txn_compensate_begin(env, txnpp)
+ 	int ret;
+ 
+ 	if ((ret = __os_calloc(env, 1, sizeof(DB_TXN), &txn)) != 0) {
+-		__db_errx(env, TxnAlloc);
++		__db_errx(env, "%s", TxnAlloc);
+ 		return (ret);
+ 	}
+ 
+

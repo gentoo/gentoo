@@ -1,0 +1,38 @@
+Not upstream b/c already done in 2.3.0:
+https://github.com/miniupnp/miniupnp/commit/c88178650e2551226a88cbc87084014781f81184
+https://github.com/miniupnp/miniupnp/commit/d2f558f659da923144f591be418380a7ff8a8677
+--- a/Makefile
++++ b/Makefile
+@@ -15,7 +15,7 @@ VERSION = $(shell cat VERSION)
+ 
+ ifneq (, $(findstring darwin, $(OS)))
+ JARSUFFIX=mac
+-LIBTOOL ?= $(shell which libtool)
++LIBTOOL ?= $(shell command -v libtool)
+ endif
+ ifneq (, $(findstring linux, $(OS)))
+ JARSUFFIX=linux
+--- a/testminiwget.sh
++++ b/testminiwget.sh
+@@ -24,8 +24,8 @@ EXPECTEDFILE="${TMPD}/expectedfile"
+ DOWNLOADEDFILE="${TMPD}/downloadedfile"
+ PORT=
+ RET=0
+-IPCONFIG=$(which ifconfig)
+-IP=$(which ip)
++IPCONFIG=$(command -v ifconfig)
++IP=$(command -v ip)
+ if [ "$IP" ] ; then
+ 	if ! $IP addr | grep inet6 ; then
+ 		HAVE_IPV6=no
+--- a/updateminiupnpcstrings.sh
++++ b/updateminiupnpcstrings.sh
+@@ -26,7 +26,7 @@ if [ -f /etc/debian_version ]; then
+ 	OS_VERSION=`cat /etc/debian_version`
+ fi
+ # use lsb_release (Linux Standard Base) when available
+-LSB_RELEASE=`which lsb_release`
++LSB_RELEASE=`command -v lsb_release`
+ if [ 0 -eq $? -a -x "${LSB_RELEASE}" ]; then
+ 	OS_NAME=`${LSB_RELEASE} -i -s`
+ 	OS_VERSION=`${LSB_RELEASE} -r -s`

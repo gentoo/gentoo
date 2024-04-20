@@ -1,0 +1,53 @@
+From 91319980ebddf80f797118fd67bf95b509b31725 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20K=2E=20H=C3=BCttel?= <dilfridge@gentoo.org>
+Date: Sat, 26 Feb 2022 19:05:39 +0100
+Subject: [PATCH 2/2] Do not compress manpages, this is done by the package
+ manager
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Andreas K. Hüttel <dilfridge@gentoo.org>
+---
+ man/CMakeLists.txt | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
+
+diff --git a/man/CMakeLists.txt b/man/CMakeLists.txt
+index 499d9297..974aea4b 100644
+--- a/man/CMakeLists.txt
++++ b/man/CMakeLists.txt
+@@ -9,27 +9,23 @@ mark_as_advanced(HELP2MAN)
+ if (HELP2MAN)
+   set(MAN_INCLUDE "${PROJECT_SOURCE_DIR}/man/extra.groff")
+   set(MAN_PAGE "${CMAKE_CURRENT_BINARY_DIR}/xournalpp.1")
+-  set(MAN_FILE "${CMAKE_CURRENT_BINARY_DIR}/xournalpp.1.gz")
+ 
+   add_custom_command(
+-      OUTPUT ${MAN_FILE}
++      OUTPUT ${MAN_PAGE}
+       COMMAND ${HELP2MAN} --no-info -i ${MAN_INCLUDE} -o ${MAN_PAGE} --version-string=${PROJECT_VERSION} --name="open-source hand note-taking program" ${CMAKE_BINARY_DIR}/src/xournalpp
+-      COMMAND gzip -n -f -9 ${MAN_PAGE}
+       DEPENDS ${CMAKE_BINARY_DIR}/src/xournalpp
+   )
+ 
+   set(MAN_PAGE_THUMBNAILER "${CMAKE_CURRENT_BINARY_DIR}/xournalpp-thumbnailer.1")
+-  set(MAN_FILE_THUMBNAILER "${CMAKE_CURRENT_BINARY_DIR}/xournalpp-thumbnailer.1.gz")
+ 
+   add_custom_command(
+-      OUTPUT ${MAN_FILE_THUMBNAILER}
++      OUTPUT ${MAN_PAGE_THUMBNAILER}
+       COMMAND ${HELP2MAN} --no-info  --no-discard-stderr -o ${MAN_PAGE_THUMBNAILER} --version-string=${PROJECT_VERSION} --name="creates thumbnails" ${CMAKE_BINARY_DIR}/src/xoj-preview-extractor/xournalpp-thumbnailer
+-      COMMAND gzip -n -f -9 ${MAN_PAGE_THUMBNAILER}
+       DEPENDS ${CMAKE_BINARY_DIR}/src/xoj-preview-extractor/xournalpp-thumbnailer
+   )
+ 
+-  add_custom_target(manpage ALL DEPENDS ${MAN_FILE} ${MAN_FILE_THUMBNAILER})
+-  install(FILES ${MAN_FILE} ${MAN_FILE_THUMBNAILER} DESTINATION "share/man/man1")
++  add_custom_target(manpage ALL DEPENDS ${MAN_PAGE} ${MAN_PAGE_THUMBNAILER})
++  install(FILES ${MAN_PAGE} ${MAN_PAGE_THUMBNAILER} DESTINATION "share/man/man1")
+ else(HELP2MAN)
+   message("help2man is missing; no man pages will be generated")
+ endif(HELP2MAN)
+-- 
+2.34.1
+

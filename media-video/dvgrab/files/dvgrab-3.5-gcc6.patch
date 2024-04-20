@@ -1,0 +1,25 @@
+commit 8dd729f2cf4cc5b99ad2e3961419cf71d2dfb843
+Author: Aaro Koskinen <aaro.koskinen@iki.fi>
+Date:   Sun May 15 22:44:23 2016 +0300
+
+    iec13818-1.h: fix build with GCC 6.1.0
+    
+    Fix the following build issue with GCC 6.1.0:
+    
+    iec13818-1.h:45:75: error: narrowing conversion of '255' from 'int' to 'char' inside { } [-Wnarrowing]
+     static char bitmask[8] = { 0x01, 0x03, 0x07, 0x0f, 0x1f, 0x3f, 0x7f, 0xff };
+                                                                               ^
+
+diff --git a/iec13818-1.h b/iec13818-1.h
+index 56a4aa0..e964288 100644
+--- a/iec13818-1.h
++++ b/iec13818-1.h
+@@ -42,7 +42,7 @@
+ #define BCD(c) ( ((((c) >> 4) & 0x0f) * 10) + ((c) & 0x0f) )
+ 
+ #define TOBYTES( n ) ( ( n + 7 ) / 8 )
+-static char bitmask[8] = { 0x01, 0x03, 0x07, 0x0f, 0x1f, 0x3f, 0x7f, 0xff };
++static unsigned char bitmask[8] = { 0x01, 0x03, 0x07, 0x0f, 0x1f, 0x3f, 0x7f, 0xff };
+ #define GETBITS( offset, len ) do { \
+ 	unsigned long value = 0; \
+ 	while ( len > 0 ) \

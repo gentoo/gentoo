@@ -1,0 +1,61 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bea0af828..d7a4eed14 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -641,10 +641,6 @@ ELSE ()
+     find_package(doctest)
+ ENDIF ()
+ 
+-IF (NOT WITH_LUAJIT)
+-    ADD_SUBDIRECTORY(contrib/lua-bit)
+-ENDIF ()
+-
+ IF (ENABLE_LUA_REPL MATCHES "ON")
+     ADD_SUBDIRECTORY(contrib/replxx)
+     SET(WITH_LUA_REPL 1)
+@@ -742,7 +738,6 @@ ENDFOREACH (LUA_LIB)
+ 
+ # Install lua fun library
+ INSTALL(FILES "contrib/lua-fun/fun.lua" DESTINATION ${LUALIBDIR})
+-INSTALL(FILES "contrib/lua-argparse/argparse.lua" DESTINATION ${LUALIBDIR})
+ INSTALL(FILES "contrib/lua-tableshape/tableshape.lua" DESTINATION ${LUALIBDIR})
+ INSTALL(FILES "contrib/lua-lupa/lupa.lua" DESTINATION ${LUALIBDIR})
+ INSTALL(FILES "contrib/lua-lpeg/lpegre.lua" DESTINATION ${LUALIBDIR})
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 5dee8e610..a90f8d52d 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -205,10 +205,6 @@ IF (ENABLE_CLANG_PLUGIN MATCHES "ON")
+ 	ADD_DEPENDENCIES(rspamd-server rspamd-clang)
+ ENDIF()
+ 
+-IF (NOT WITH_LUAJIT)
+-	TARGET_LINK_LIBRARIES(rspamd-server rspamd-bit)
+-ENDIF()
+-
+ IF (ENABLE_SNOWBALL MATCHES "ON")
+ 	TARGET_LINK_LIBRARIES(rspamd-server stemmer)
+ ENDIF()
+diff --git a/src/lua/lua_common.c b/src/lua/lua_common.c
+index b543ae5db..7a93934fd 100644
+--- a/src/lua/lua_common.c
++++ b/src/lua/lua_common.c
+@@ -904,10 +904,6 @@ rspamd_lua_wipe_realloc(void *ud,
+ 	return NULL;
+ }
+ 
+-#ifndef WITH_LUAJIT
+-extern int luaopen_bit(lua_State *L);
+-#endif
+-
+ static unsigned int lua_initialized = 0;
+ 
+ lua_State *
+@@ -975,7 +971,6 @@ rspamd_lua_init(bool wipe_mem)
+ 	luaopen_parsers(L);
+ 	luaopen_compress(L);
+ #ifndef WITH_LUAJIT
+-	rspamd_lua_add_preload(L, "bit", luaopen_bit);
+ 	lua_settop(L, 0);
+ #endif
+ 

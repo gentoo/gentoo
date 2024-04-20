@@ -1,0 +1,117 @@
+From d24a34857afc33ed11da9ba62736c0bb9b3e5b94 Mon Sep 17 00:00:00 2001
+From: Rolf Eike Beer <eike@sf-mail.de>
+Date: Thu, 29 Aug 2019 20:35:48 +0200
+Subject: [PATCH 1/2] ask kernel for the correct buffer size to satisfy
+ SIOCGIFCONF before looping
+
+---
+ ipme.c | 41 ++++++++++++++++++++++++++++-------------
+ 1 file changed, 28 insertions(+), 13 deletions(-)
+
+diff --git a/ipme.c b/ipme.c
+index 3c86127..d88785d 100644
+--- a/ipme.c
++++ b/ipme.c
+@@ -52,20 +52,35 @@ int ipme_init()
+   byte_copy(&ix.ip,4,"\0\0\0\0");
+   if (!ipalloc_append(&ipme,&ix)) { return 0; }
+   if ((s = socket(AF_INET,SOCK_STREAM,0)) == -1) return -1;
+- 
+-  len = 256;
+-  for (;;) {
+-    if (!stralloc_ready(&buf,len)) { close(s); return 0; }
+-    buf.len = 0;
++
++  ifc.ifc_buf = 0;
++  ifc.ifc_len = 0;
++
++  /* first pass: just ask what the correct length for all addresses is */
++  len = 0;
++  if (ioctl(s,SIOCGIFCONF,&ifc) >= 0 && ifc.ifc_len > 0) { /* > is for System V */
++    if (!stralloc_ready(&buf,ifc.ifc_len)) { close(s); return 0; }
+     ifc.ifc_buf = buf.s;
+-    ifc.ifc_len = len;
+-    if (ioctl(s,SIOCGIFCONF,&ifc) >= 0) /* > is for System V */
+-      if (ifc.ifc_len + sizeof(*ifr) + 64 < len) { /* what a stupid interface */
+-        buf.len = ifc.ifc_len;
+-        break;
+-      }
+-    if (len > 200000) { close(s); return -1; }
+-    len += 100 + (len >> 2);
++    if (ioctl(s,SIOCGIFCONF,&ifc) >= 0)
++      buf.len = ifc.ifc_len;
++  }
++
++  /* check if we have complete length, otherwise try so sort that out */
++  if (buf.len == 0) {
++    len = 256;
++    for (;;) {
++      if (!stralloc_ready(&buf,len)) { close(s); return 0; }
++      buf.len = 0;
++      ifc.ifc_buf = buf.s;
++      ifc.ifc_len = len;
++      if (ioctl(s,SIOCGIFCONF,&ifc) >= 0) /* > is for System V */
++        if (ifc.ifc_len + sizeof(*ifr) + 64 < len) { /* what a stupid interface */
++          buf.len = ifc.ifc_len;
++          break;
++        }
++      if (len > 200000) { close(s); return -1; }
++      len += 100 + (len >> 2);
++    }
+   }
+   x = buf.s;
+   while (x < buf.s + buf.len) {
+-- 
+2.16.4
+
+From 9d6c05d092e3cf94a6591cd5420f8026fcd4691f Mon Sep 17 00:00:00 2001
+From: Rolf Eike Beer <eike@sf-mail.de>
+Date: Thu, 29 Aug 2019 20:37:03 +0200
+Subject: [PATCH 2/2] ipme: fix detection of multiple IP addresses on the same
+ link
+
+The problem was that the code did another ioctl() to check if the link is
+actually up, and when doing this overwrites the information it is currently
+looking at. The code when sa_len is available copies the current IP address out
+before checking if the link is up. Reorder the code so both branches share more
+code and both work.
+---
+ CHANGES |  2 ++
+ ipme.c  | 14 +++-----------
+ 2 files changed, 5 insertions(+), 11 deletions(-)
+
+diff --git a/ipme.c b/ipme.c
+index d88785d..e163f5b 100644
+--- a/ipme.c
++++ b/ipme.c
+@@ -89,6 +89,9 @@ int ipme_init()
+     len = sizeof(ifr->ifr_name) + ifr->ifr_addr.sa_len;
+     if (len < sizeof(*ifr))
+       len = sizeof(*ifr);
++#else
++    len = sizeof(*ifr);
++#endif
+     if (ifr->ifr_addr.sa_family == AF_INET) {
+       sin = (struct sockaddr_in *) &ifr->ifr_addr;
+       byte_copy(&ix.ip,4,&sin->sin_addr);
+@@ -96,17 +99,6 @@ int ipme_init()
+         if (ifr->ifr_flags & IFF_UP)
+           if (!ipalloc_append(&ipme,&ix)) { close(s); return 0; }
+     }
+-#else
+-    len = sizeof(*ifr);
+-    if (ioctl(s,SIOCGIFFLAGS,x) == 0)
+-      if (ifr->ifr_flags & IFF_UP)
+-        if (ioctl(s,SIOCGIFADDR,x) == 0)
+-	  if (ifr->ifr_addr.sa_family == AF_INET) {
+-	    sin = (struct sockaddr_in *) &ifr->ifr_addr;
+-	    byte_copy(&ix.ip,4,&sin->sin_addr);
+-	    if (!ipalloc_append(&ipme,&ix)) { close(s); return 0; }
+-	  }
+-#endif
+     x += len;
+   }
+   close(s);
+-- 
+2.16.4
+

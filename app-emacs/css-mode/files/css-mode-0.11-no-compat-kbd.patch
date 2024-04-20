@@ -1,0 +1,24 @@
+Function "apropos-macrop" apparently no longer exists in Emacs 24.4.
+Simply remove the code using it, since it was only needed for backwards
+compatibility with Emacs 19 (the "kbd" macro appeared in Emacs 20.1).
+https://bugs.gentoo.org/532358
+
+--- css-mode-0.11-orig/css-mode.el
++++ css-mode-0.11/css-mode.el
+@@ -166,16 +166,6 @@
+   (define-key cssm-mode-map (read-kbd-macro "}") 'cssm-insert-right-brace-and-indent)
+   (define-key cssm-mode-map (read-kbd-macro "M-TAB") 'cssm-complete-property))
+ 
+-;;; Cross-version compatibility layer
+-
+-(when (not (or (apropos-macrop 'kbd)
+-	     (fboundp 'kbd)))
+-    (defmacro kbd (keys)
+-      "Convert KEYS to the internal Emacs key representation.
+-KEYS should be a string constant in the format used for
+-saving keyboard macros (see `insert-kbd-macro')."
+-      (read-kbd-macro keys)))
+-
+ ;;; Auto-indentation support
+ 
+ ; internal

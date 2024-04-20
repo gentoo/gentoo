@@ -1,0 +1,30 @@
+Bug: https://bugs.gentoo.org/887001
+--- a/menues.c
++++ b/menues.c
+@@ -280,7 +280,7 @@ static void readQuadletApp(gpointer callback_data, guint callback_action,
+ 	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dialog->dialog)->vbox),
+ 		table, TRUE, TRUE, 0);
+ 
+-	transactionDialogAddOkClose(dialog, readQuadletAppOk);
++	transactionDialogAddOkClose(dialog, (GtkSignalFunc)readQuadletAppOk);
+ 
+ 	gtk_widget_show_all(dialog->dialog);
+ }
+@@ -336,7 +336,7 @@ static void writeQuadletApp(gpointer callback_data, guint callback_action,
+ 	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dialog->dialog)->vbox),
+ 		table, TRUE, TRUE, 0);
+ 
+-	transactionDialogAddOkClose(dialog, writeQuadletAppOk);
++	transactionDialogAddOkClose(dialog, (GtkSignalFunc)writeQuadletAppOk);
+ 
+ 	gtk_widget_show_all(dialog->dialog);
+ }
+@@ -417,7 +417,7 @@ static void readBlockApp(gpointer callback_data, guint callback_action,
+ 		table, TRUE, TRUE, 0);
+ 
+ 	//dialogAddOkClose(dialog->dialog, readBlockAppOk);
+-	transactionDialogAddOkClose(dialog, readBlockAppOk);
++	transactionDialogAddOkClose(dialog, (GtkSignalFunc)readBlockAppOk);
+ 
+ 	gtk_widget_show_all(dialog->dialog);
+ }

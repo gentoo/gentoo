@@ -1,0 +1,19 @@
+# config file for /etc/init.d/gitlab-runner
+# The convention is that the defaults are shown here, commented out.
+# Do not override these unless you know exactly what you are doing.
+
+# runner_config="/etc/gitlab-runner/config.toml"
+# runner_datadir="/var/lib/gitlab-runner"
+# runner_service="${RC_SVCNAME}"
+# runner_user="gitlab-runner"
+
+# Additional options
+# run /usr/bin/gitlab-runner -h to see available options
+# --config, --user, --service and --working-directory are set by the
+# above variables, so do not add them here.
+# RUNNER_OPTS=""
+
+# Logging
+# runner_logdir="/var/log/gitlab-runner"
+# output_log="${runner_logdir}/gitlab-runner.log"
+# error_log="${runner_logdir}/error.log"

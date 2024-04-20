@@ -1,0 +1,41 @@
+From 2ca1a29e67c9cee591dbab5a323764e435d46b2c Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Sun, 19 Nov 2023 12:53:11 +0200
+Subject: [PATCH] Make qt6 a cmake option instead of letting automagic
+ handle it
+
+* qt_standard_project_setup() is >=qt-6.3 only, so put it under
+  Qt6_Found.
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -11,8 +11,11 @@ set(CMAKE_AUTORCC ON)
+ enable_language(CXX)
+ enable_language(C)
+ 
+-find_package(Qt6 COMPONENTS Core Widgets)
+-if (NOT Qt6_FOUND)
++option(USE_QT6 "Build against QT6" ON)
++
++if (USE_QT6)
++    find_package(Qt6 REQUIRED COMPONENTS Core Widgets)
++else()
+     find_package(Qt5 5.15 REQUIRED COMPONENTS Core Widgets)
+ endif()
+ 
+@@ -22,10 +25,8 @@ message("+ Qt6 found")
+ set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ find_package(Qt6 COMPONENTS Core5Compat REQUIRED)
+-endif()
+-
+-
+ qt_standard_project_setup()
++endif()
+ 
+ 
+ set(PROJECT "tea-qt")
+-- 
+2.42.1
+

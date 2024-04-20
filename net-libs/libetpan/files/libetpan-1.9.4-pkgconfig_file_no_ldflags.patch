@@ -1,0 +1,24 @@
+From 92bbf41fee9b88bd76377bbeed98fdb848f4af09 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Tue, 5 Nov 2019 16:37:14 +0100
+Subject: [PATCH] libetpan.pc.in: Don't put user LDFLAGS into Libs
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ libetpan.pc.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libetpan.pc.in b/libetpan.pc.in
+index cbc1d2c..e0dc774 100644
+--- a/libetpan.pc.in
++++ b/libetpan.pc.in
+@@ -6,5 +6,5 @@ libdir=@libdir@
+ Name: libetpan
+ Description: Libetpan C library.
+ Version: @VERSION@
+-Libs: -L${libdir} -letpan@LIBSUFFIX@ @LDFLAGS@ @SSLLIBS@ @GNUTLSLIB@ @LIBICONV@ @DBLIB@ @LIBS@ @SASLLIBS@
++Libs: -L${libdir} -letpan@LIBSUFFIX@ @SSLLIBS@ @GNUTLSLIB@ @LIBICONV@ @DBLIB@ @LIBS@ @SASLLIBS@
+ Cflags: -I${includedir}
+-- 
+2.24.0
+

@@ -1,0 +1,15 @@
+From: Sam James <sam@gentoo.org>
+Date: Tue, 27 Sep 2022 22:50:12 +0100
+Subject: [PATCH] Add missing <string.h> for strcmp
+
+Bug: https://bugs.gentoo.org/871414
+--- a/sex.c
++++ b/sex.c
+@@ -10,6 +10,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <time.h>
+ #include <ctype.h>
+ 

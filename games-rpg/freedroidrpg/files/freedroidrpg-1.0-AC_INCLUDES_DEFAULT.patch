@@ -1,0 +1,13 @@
+AC_INCLUDES_DEFAULT isn't actually needed and it causes a QA warning.
+
+https://bugs.gentoo.org/921033
+--- a/configure.ac
++++ b/configure.ac
+@@ -402,7 +402,6 @@ dnl Checks for typedefs, structures, and compiler characteristics.
+ SILENT_BOX([Checking types])
+ 
+ AC_HEADER_DIRENT
+-AC_INCLUDES_DEFAULT
+ AC_PROG_EGREP
+ 
+ AC_CHECK_HEADERS_ONCE([sys/time.h])

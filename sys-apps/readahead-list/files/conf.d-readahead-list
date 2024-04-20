@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 2005 Robin H. Johnson <robbat2@orbis-terrarum.net>
+# Distributed under the terms of the GNU General Public License v2
+
+# this list is intended for usage very early
+READAHEAD_LIST_exec_sbin_rc="/etc/readahead-list/exec_sbin_rc"
+
+# per-runlevel
+READAHEAD_LIST_runlevel_boot="/etc/readahead-list/runlevel-boot"
+READAHEAD_LIST_runlevel_default="/etc/readahead-list/runlevel-default"
+
+READAHEAD_LIST_call_early="${READAHEAD_LIST_exec_sbin_rc} ${READAHEAD_LIST_runlevel_boot}"
+READAHEAD_LIST_call_main="${READAHEAD_LIST_runlevel_default}"
+
+# vim: ts=4 sw=4

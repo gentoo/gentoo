@@ -1,0 +1,14 @@
+[Unit]
+Description=Great Internet Mersenne Prime Search client
+After=network.target local-fs.target
+Wants=local-fs.target
+
+[Service]
+User=nobody
+Group=nobody
+ExecStart=/opt/gimps/mprime -w/var/lib/gimps
+StandardOutput=null
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -2,7 +2,7 @@
+            -DDATADIR=\""$(datadir)/lucidlife"\" \
+            -DDOCDIR=\""$(datadir)/doc/lucidlife"\"
+ 
+-LIBS = $(GNOME_LIBS)
++LIBS = $(GNOME_LIBS) -lX11
+ 
+ bin_PROGRAMS = lucidlife
+ 

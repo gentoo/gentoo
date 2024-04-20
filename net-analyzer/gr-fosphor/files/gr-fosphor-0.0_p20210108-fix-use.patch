@@ -1,0 +1,18 @@
+diff --git a/python/bindings/CMakeLists.txt b/python/bindings/CMakeLists.txt
+index b7054da..86e5461 100644
+--- a/python/bindings/CMakeLists.txt
++++ b/python/bindings/CMakeLists.txt
+@@ -54,10 +54,11 @@ endmacro(GR_PYBIND_MAKE)
+ 
+ list(APPEND fosphor_python_files
+     base_sink_c_python.cc
+-    glfw_sink_c_python.cc
+-    qt_sink_c_python.cc
+     python_bindings.cc)
+ 
++list_cond_append(ENABLE_GLFW fosphor_python_files glfw_sink_c_python.cc)
++list_cond_append(ENABLE_QT   fosphor_python_files qt_sink_c_python.cc)
++
+ GR_PYBIND_MAKE(fosphor
+    ../..
+    gr::fosphor

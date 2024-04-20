@@ -1,0 +1,24 @@
+Clang16 will not allow implicit pointer to integer 
+conversions by default. (-Werror=int-conversion by default)
+This patch fixes the pointer to integer conversion.
+
+Bug: https://bugs.gentoo.org/879035
+Patch is upstreamed here: https://answers.launchpad.net/notify-osd/+question/704024
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+--- a/src/bubble-window.c
++++ b/src/bubble-window.c
+@@ -78,8 +78,8 @@ bubble_window_get_accessible (GtkWidget *widget)
+     {
+       AtkObjectFactory *factory = NULL;
+       AtkRegistry *registry = NULL;
+-      GType derived_type = NULL;
+-      GType derived_atk_type = NULL;
++      GType derived_type = 0;
++      GType derived_atk_type = 0;
+ 
+       /*
+        * Figure out whether accessibility is enabled by looking at the
+-- 
+2.38.1
+

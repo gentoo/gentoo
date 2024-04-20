@@ -1,0 +1,154 @@
+From a8be33cd50b5f477f047e845426047da332d6273 Mon Sep 17 00:00:00 2001
+From: Stefan Strogin <steils@gentoo.org>
+Date: Fri, 14 Feb 2020 03:55:13 +0200
+Subject: [PATCH] Fix fixed point math functions (from media-libs/allegro)
+
+Bug: https://bugs.gentoo.org/697090
+Upstream-Status: Inappropriate [no upstream]
+Signed-off-by: Stefan Strogin <steils@gentoo.org>
+---
+ hgrcos.c |  2 +-
+ rec.c    | 58 ++++++++++++++++++++++++++++----------------------------
+ 2 files changed, 30 insertions(+), 30 deletions(-)
+
+diff --git a/hgrcos.c b/hgrcos.c
+index c65b469..442b18f 100644
+--- a/hgrcos.c
++++ b/hgrcos.c
+@@ -34,5 +34,5 @@ fixed hgrsin(fixed theta)
+ 
+ fixed hgrtan(fixed theta)
+ {
+-  return fdiv(hgrcos(theta + 0xc00000), hgrcos(theta));
++  return fixdiv(hgrcos(theta + 0xc00000), hgrcos(theta));
+ }
+diff --git a/rec.c b/rec.c
+index bf6df2e..d02830a 100644
+--- a/rec.c
++++ b/rec.c
+@@ -214,7 +214,7 @@ void SetupLight1(void)
+     {
+       if(line[x] == c1)
+       {
+-        fixed f = fsqrt((x - 128) * (x - 128) + (y - 128) * (y - 128)); /* between 0 and 2 */
++        fixed f = fixsqrt((x - 128) * (x - 128) + (y - 128) * (y - 128)); /* between 0 and 2 */
+         fixed cosine = hgrcos(f << 10);
+         unsigned c = (cosine + 0x10000 + rand() % 0x1000) * 15 / 32768;
+         if(c > 63)
+@@ -223,8 +223,8 @@ void SetupLight1(void)
+       }
+       else if(line[x] == c2)
+       {
+-        fixed f = fsqrt((x - 128) * (x - 128) + (y - 128) * (y - 128)) +
+-                  (fcos(x << 20) + fcos(y << 20)) / 64 + 0x10000;
++        fixed f = fixsqrt((x - 128) * (x - 128) + (y - 128) * (y - 128)) +
++                  (fixcos(x << 20) + fixcos(y << 20)) / 64 + 0x10000;
+                   /* between 0 and 4 */
+         fixed cosine = hgrcos(f << 11);
+         unsigned c = (cosine + 0x10000 + rand() % 0x1000) * 15 / 32768;
+@@ -264,10 +264,10 @@ void ThetaLight(fixed theta)
+    * 3 4
+    * 567
+    */
+-  zpixel[1] = THETALIGHT_AMBIENT + fmul(THETALIGHT_POWER, s);
+-  zpixel[3] = THETALIGHT_AMBIENT + fmul(THETALIGHT_POWER, 0x10000 - c);
+-  zpixel[4] = THETALIGHT_AMBIENT + fmul(THETALIGHT_POWER, c);
+-  zpixel[6] = THETALIGHT_AMBIENT + fmul(THETALIGHT_POWER, 0x10000 - s);
++  zpixel[1] = THETALIGHT_AMBIENT + fixmul(THETALIGHT_POWER, s);
++  zpixel[3] = THETALIGHT_AMBIENT + fixmul(THETALIGHT_POWER, 0x10000 - c);
++  zpixel[4] = THETALIGHT_AMBIENT + fixmul(THETALIGHT_POWER, c);
++  zpixel[6] = THETALIGHT_AMBIENT + fixmul(THETALIGHT_POWER, 0x10000 - s);
+ 
+   zpixel[0] = (zpixel[1] + zpixel[3])/2;
+   zpixel[2] = (zpixel[1] + zpixel[4])/2;
+@@ -304,20 +304,20 @@ void InitSidesPhi(Seven *seven, fixed phi, fixed zBase)
+   fixed m, zCos;
+   int scanlineWidth = 160 / nPlayers;
+ 
+-  if(fcos(phi) == 0)
++  if(fixcos(phi) == 0)
+   {
+     phi -= 0x8000;
+   }
+-  zCos = fdiv(zBase, hgrcos(phi));
++  zCos = fixdiv(zBase, hgrcos(phi));
+   m = hgrtan(phi);
+ 
+   for(i = 0; i < wHt; i++)
+   {
+-    fixed scanline = fdiv(i - wHt / 2, wHt / 2);
+-    fixed mline = fmul(m, scanline);
+-    fixed zLine = fmul(zCos, scanline);
+-    fixed y1 = fdiv(zLine, mline + 0x10000);
+-    fixed x1 = fdiv(zBase, mline + 0x10000);
++    fixed scanline = fixdiv(i - wHt / 2, wHt / 2);
++    fixed mline = fixmul(m, scanline);
++    fixed zLine = fixmul(zCos, scanline);
++    fixed y1 = fixdiv(zLine, mline + 0x10000);
++    fixed x1 = fixdiv(zBase, mline + 0x10000);
+ 
+     if(x1 < 0)
+     {
+@@ -391,10 +391,10 @@ void RotateSides(Seven *seven, int theta)
+     ly = seven->leftY[i];
+     ry = seven->rightY[i];
+ 
+-    seven->leftX[i]  = fmul(lx, c) - fmul(ly, s);
+-    seven->rightX[i] = fmul(rx, c) - fmul(ry, s);
+-    seven->leftY[i]  = fmul(ly, c) + fmul(lx, s);
+-    seven->rightY[i] = fmul(ry, c) + fmul(rx, s);
++    seven->leftX[i]  = fixmul(lx, c) - fixmul(ly, s);
++    seven->rightX[i] = fixmul(rx, c) - fixmul(ry, s);
++    seven->leftY[i]  = fixmul(ly, c) + fixmul(lx, s);
++    seven->rightY[i] = fixmul(ry, c) + fixmul(rx, s);
+   }
+ }
+ 
+@@ -405,10 +405,10 @@ void ScaleSides(Seven *seven, int fac)
+ 
+   for(i = 0; i < wHt; i++)
+   {
+-    seven->leftX[i]  = fmul(seven->leftX[i],  fac);
+-    seven->leftY[i]  = fmul(seven->leftY[i],  fac);
+-    seven->rightX[i] = fmul(seven->rightX[i], fac);
+-    seven->rightY[i] = fmul(seven->rightY[i], fac);
++    seven->leftX[i]  = fixmul(seven->leftX[i],  fac);
++    seven->leftY[i]  = fixmul(seven->leftY[i],  fac);
++    seven->rightX[i] = fixmul(seven->rightX[i], fac);
++    seven->rightY[i] = fixmul(seven->rightY[i], fac);
+   }
+ }
+ 
+@@ -446,22 +446,22 @@ void DisplaceScanlines(Seven *seven, int ticks,
+   {
+     y = i - wHt / 2;
+     xOff = ((a * y / wHt + b) * y / wHt + c) * y / wHt + d +
+-           fmul(hgrcos(theta), amplitude);
+-    xOff += fmul((rand() & 0x7ff) - 0x400, noise);
++           fixmul(hgrcos(theta), amplitude);
++    xOff += fixmul((rand() & 0x7ff) - 0x400, noise);
+     theta += dtheta;
+     heatTheta += dheat;
+ 
+-    yOff = fmul(hgrsin(heatTheta), heat);
++    yOff = fixmul(hgrsin(heatTheta), heat);
+   
+     lx = seven->leftX[i];
+     rx = seven->rightX[i];
+     ly = seven->leftY[i];
+     ry = seven->rightY[i];
+ 
+-    seven->leftX[i]  = lx + fmul(rx - lx, xOff) - fmul(ry - ly, yOff);
+-    seven->rightX[i] = rx + fmul(rx - lx, xOff) - fmul(ry - ly, yOff);
+-    seven->leftY[i]  = ly + fmul(ry - ly, xOff) + fmul(rx - lx, yOff);
+-    seven->rightY[i] = ry + fmul(ry - ly, xOff) + fmul(rx - lx, yOff);
++    seven->leftX[i]  = lx + fixmul(rx - lx, xOff) - fixmul(ry - ly, yOff);
++    seven->rightX[i] = rx + fixmul(rx - lx, xOff) - fixmul(ry - ly, yOff);
++    seven->leftY[i]  = ly + fixmul(ry - ly, xOff) + fixmul(rx - lx, yOff);
++    seven->rightY[i] = ry + fixmul(ry - ly, xOff) + fixmul(rx - lx, yOff);
+   }
+ }
+ 
+-- 
+2.25.0
+

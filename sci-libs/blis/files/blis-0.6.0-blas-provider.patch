@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 2d31fee..7008682 100644
+--- a/Makefile
++++ b/Makefile
+@@ -659,6 +659,8 @@ else
+ 	@$(LINKER) $(SOFLAGS) -o $(LIBBLIS_SO_OUTPUT_NAME) $? $(LDFLAGS)
+ endif
+ endif
++	$(LINKER) $(SOFLAGS) -o $(BASE_LIB_PATH)/$(DEB_LIBBLAS) $? $(LDFLAGS) -Wl,--soname,$(DEB_LIBBLAS) -Wl,--version-script=$(LDS_BLAS)
++	$(LINKER) $(SOFLAGS) -o $(BASE_LIB_PATH)/$(DEB_LIBCBLAS) $? $(LDFLAGS) -Wl,--soname,$(DEB_LIBCBLAS) -Wl,--version-script=$(LDS_CBLAS)
+ 
+ # Local symlink for shared library.
+ # NOTE: We use a '.loc' suffix to avoid filename collisions in case this

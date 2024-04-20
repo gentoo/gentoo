@@ -1,0 +1,21 @@
+From: Arthur Zamarin <arthurzam@gentoo.org>
+Date: Fri, 5 Apr 2024 15:40:57 +0300
+Subject: fix find hunspell using pkg-config
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -884,6 +884,14 @@ if(NOT LYX_EXTERNAL_HUNSPELL)
+     message(STATUS "  * Hunspell:")
+     message(STATUS "     - include: ${HUNSPELL_INCLUDE_DIR}")
+     message(STATUS "     - library: ${HUNSPELL_LIBRARY}")
++elseif(LYX_HUNSPELL)
++	find_package(PkgConfig)
++	pkg_check_modules(HUNSPELL hunspell)
++	set(HUNSPELL_INCLUDE_DIR ${HUNSPELL_INCLUDE_DIRS})
++	set(HUNSPELL_LIBRARY ${HUNSPELL_LIBRARIES})
++    message(STATUS "  * Hunspell:")
++    message(STATUS "     - include: ${HUNSPELL_INCLUDE_DIR}")
++    message(STATUS "     - library: ${HUNSPELL_LIBRARY}")
+ endif()
+
+ foreach(_spell "ASPELL" "ENCHANT" "HUNSPELL")

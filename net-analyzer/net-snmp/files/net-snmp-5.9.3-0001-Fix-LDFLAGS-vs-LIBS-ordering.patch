@@ -1,0 +1,231 @@
+https://github.com/net-snmp/net-snmp/pull/493
+
+From 1151979ecfba1ef10627175549d052cb76ef9d21 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 2 Dec 2022 02:26:29 +0000
+Subject: [PATCH 1/4] Fix LDFLAGS vs LIBS ordering
+
+LDFLAGS must come before both LIBS & any listed objects in order
+for certain valid LDFLAGS, like '-Wl,--as-needed' to work correctly
+(otherwise it'll either take no effect or discard libraries when
+they're needed).
+
+Gentoo has been carrying this patch for a while.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/Makefile.top
++++ b/Makefile.top
+@@ -86,11 +86,11 @@ LIBCURRENT  = 40
+ LIBAGE      = 0
+ LIBREVISION = 0
+ 
+-LIB_LD_CMD      = $(LIBTOOL) --mode=link $(LINKCC) $(CFLAGS) -rpath $(libdir) -version-info $(LIBCURRENT):$(LIBREVISION):$(LIBAGE) @LD_NO_UNDEFINED@ -o
++LIB_LD_CMD      = $(LIBTOOL) --mode=link $(LINKCC) $(CFLAGS) $(LDFLAGS) -rpath $(libdir) -version-info $(LIBCURRENT):$(LIBREVISION):$(LIBAGE) @LD_NO_UNDEFINED@ -o
+ LIB_EXTENSION   = la
+ LIB_VERSION     =
+ LIB_LDCONFIG_CMD = $(LIBTOOL) --mode=finish $(INSTALL_PREFIX)$(libdir)
+-LINK		= $(LIBTOOL) --mode=link $(LINKCC)
++LINK		= $(LIBTOOL) --mode=link $(LINKCC) $(LDFLAGS)
+ # RANLIB 	= @RANLIB@
+ RANLIB		= :
+ 
+--- a/agent/Makefile.in
++++ b/agent/Makefile.in
+@@ -288,26 +288,26 @@ all: agentlib subdirs miblib $(INSTALLBINPROGS) $(INSTALLSBINPROGS)
+ # build stuff targets
+ #
+ getkstat: getkstat.o
+-	$(CC) $(CFLAGS) -o $@ $? $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $? $(LIBS)
+ 
+ getkstat.o: mibgroup/kernel_sunos5.c
+-	$(CC) $(CFLAGS) -o $@ -D_GETKSTAT_TEST -DDODEBUG -c $? 
++	$(CC) $(CFLAGS) -o $@ -D_GETKSTAT_TEST -DDODEBUG -c $?
+ 
+ getmibstat: getmibstat.o
+-	$(CC) $(CFLAGS) -o $@ $? $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $? $(LIBS)
+ 
+ getmibstat.o: mibgroup/kernel_sunos5.c
+-	$(CC) $(CFLAGS) -o $@ -D_GETMIBSTAT_TEST -DDODEBUG -c $? 
++	$(CC) $(CFLAGS) -o $@ -D_GETMIBSTAT_TEST -DDODEBUG -c $?
+ 
+-snmpd$(EXEEXT):	${LAGENTOBJS} $(USELIBS) $(AGENTLIB) $(HELPERLIB) $(MIBLIB) $(LIBTARG) 
+-	$(LINK) $(CFLAGS) -o $@ ${LAGENTOBJS} ${LDFLAGS} ${OUR_AGENT_LIBS}
++snmpd$(EXEEXT):	${LAGENTOBJS} $(USELIBS) $(AGENTLIB) $(HELPERLIB) $(MIBLIB) $(LIBTARG)
++	$(LINK) $(CFLAGS) $(LDFLAGS) -o $@ ${LAGENTOBJS} ${OUR_AGENT_LIBS}
+ 
+ libnetsnmpagent.$(LIB_EXTENSION)$(LIB_VERSION):    ${LLIBAGENTOBJS} $(USELIBS)
+-	$(LIB_LD_CMD) $(AGENTLIB) ${LLIBAGENTOBJS} $(USELIBS) ${LAGENTLIBS} $(LDFLAGS) $(PERLLDOPTS_FOR_LIBS) @AGENTLIBS@
++	$(LIB_LD_CMD) $(AGENTLIB) $(LDFLAGS) ${LLIBAGENTOBJS} $(USELIBS) ${LAGENTLIBS} $(PERLLDOPTS_FOR_LIBS) @AGENTLIBS@
+ 	$(RANLIB) $(AGENTLIB)
+ 
+ libnetsnmpmibs.$(LIB_EXTENSION)$(LIB_VERSION): ${LMIBOBJS} $(AGENTLIB) $(USELIBS) subdirs
+-	$(LIB_LD_CMD) $(MIBLIB) ${LMIBOBJS} $(AGENTLIB) $(USELIBS) $(LDFLAGS) ${LMIBLIBS} $(PERLLDOPTS_FOR_LIBS) @AGENTLIBS@
++	$(LIB_LD_CMD) $(MIBLIB) $(LDFLAGS) ${LMIBOBJS} $(AGENTLIB) $(USELIBS) ${LMIBLIBS} $(PERLLDOPTS_FOR_LIBS) @AGENTLIBS@
+ 	$(RANLIB) $(MIBLIB)
+ 
+ agentlib: $(AGENTLIB)
+--- a/agent/helpers/Makefile.in
++++ b/agent/helpers/Makefile.in
+@@ -32,5 +32,5 @@ LOBJS = dummy.lo
+ all: standardall
+ 
+ libnetsnmphelpers.$(LIB_EXTENSION)$(LIB_VERSION):    $(LOBJS)
+-	$(LIB_LD_CMD) $@ $(LOBJS) $(LDFLAGS)
++	$(LIB_LD_CMD) $@ $(LDFLAGS) $(LOBJS)
+ 	$(RANLIB) $@
+--- a/apps/Makefile.in
++++ b/apps/Makefile.in
+@@ -163,37 +163,37 @@ OTHERUNINSTALL=snmpinformuninstall snmptrapdperluninstall	\
+ # build rules
+ #
+ snmpwalk$(EXEEXT):    snmpwalk.$(OSUFFIX) $(USELIBS)
+-	$(LINK) ${CFLAGS} -o $@ snmpwalk.$(OSUFFIX) ${LDFLAGS} ${LIBS}
++	$(LINK) ${CFLAGS} ${LDFLAGS} -o $@ snmpwalk.$(OSUFFIX) ${LIBS}
+ 
+ snmpbulkwalk$(EXEEXT):    snmpbulkwalk.$(OSUFFIX) $(USELIBS)
+-	$(LINK) ${CFLAGS} -o $@ snmpbulkwalk.$(OSUFFIX) ${LDFLAGS} ${LIBS}
++	$(LINK) ${CFLAGS} ${LDFLAGS} -o $@ snmpbulkwalk.$(OSUFFIX) ${LIBS}
+ 
+ snmpbulkget$(EXEEXT):    snmpbulkget.$(OSUFFIX) $(USELIBS)
+-	$(LINK) ${CFLAGS} -o $@ snmpbulkget.$(OSUFFIX) ${LDFLAGS} ${LIBS}
++	$(LINK) ${CFLAGS} ${LDFLAGS} -o $@ snmpbulkget.$(OSUFFIX) ${LIBS}
+ 
+ snmptranslate$(EXEEXT):    snmptranslate.$(OSUFFIX) $(USELIBS)
+-	$(LINK) ${CFLAGS} -o $@ snmptranslate.$(OSUFFIX) ${LDFLAGS} ${LIBS}
++	$(LINK) ${CFLAGS} ${LDFLAGS} -o $@ snmptranslate.$(OSUFFIX) ${LIBS}
+ 
+ snmpstatus$(EXEEXT):    snmpstatus.$(OSUFFIX) $(USELIBS)
+-	$(LINK) ${CFLAGS} -o $@ snmpstatus.$(OSUFFIX) ${LDFLAGS} ${LIBS}
++	$(LINK) ${CFLAGS} ${LDFLAGS} -o $@ snmpstatus.$(OSUFFIX) ${LIBS}
+ 
+ snmpget$(EXEEXT):    snmpget.$(OSUFFIX) $(USELIBS)
+-	$(LINK) ${CFLAGS} -o $@ snmpget.$(OSUFFIX) ${LDFLAGS} ${LIBS}
++	$(LINK) ${CFLAGS} ${LDFLAGS} -o $@ snmpget.$(OSUFFIX) ${LIBS}
+ 
+ snmpdelta$(EXEEXT):    snmpdelta.$(OSUFFIX) $(USELIBS)
+-	$(LINK) ${CFLAGS} -o $@ snmpdelta.$(OSUFFIX) ${LDFLAGS} ${LIBS}
++	$(LINK) ${CFLAGS} ${LDFLAGS} -o $@ snmpdelta.$(OSUFFIX) ${LIBS}
+ 
+ snmptable$(EXEEXT):    snmptable.$(OSUFFIX) $(USELIBS)
+-	$(LINK) ${CFLAGS} -o $@ snmptable.$(OSUFFIX) ${LDFLAGS} ${LIBS}
++	$(LINK) ${CFLAGS} ${LDFLAGS} -o $@ snmptable.$(OSUFFIX) ${LIBS}
+ 
+ snmptest$(EXEEXT):    snmptest.$(OSUFFIX) $(USELIBS)
+-	$(LINK) ${CFLAGS} -o $@ snmptest.$(OSUFFIX) ${LDFLAGS} ${LIBS}
++	$(LINK) ${CFLAGS} ${LDFLAGS} -o $@ snmptest.$(OSUFFIX) ${LIBS}
+ 
+ snmptrapd$(EXEEXT):    $(TRAPD_OBJECTS) $(USETRAPLIBS) $(INSTALLLIBS)
+-	$(LINK) ${CFLAGS} -o $@ $(TRAPD_OBJECTS) $(INSTALLLIBS) ${LDFLAGS} ${TRAPLIBS}
++	$(LINK) ${CFLAGS} ${LDFLAGS} -o $@ $(TRAPD_OBJECTS) $(INSTALLLIBS) ${TRAPLIBS}
+ 
+ snmptrap$(EXEEXT):    snmptrap.$(OSUFFIX) $(USELIBS)
+-	$(LINK) ${CFLAGS} -o $@ snmptrap.$(OSUFFIX) ${LDFLAGS} ${LIBS}
++	$(LINK) ${CFLAGS} ${LDFLAGS} -o $@ snmptrap.$(OSUFFIX) ${LIBS}
+ 
+ snmpinform$(EXEEXT): snmptrap$(EXEEXT)
+ 	rm -f snmpinform
+@@ -204,40 +204,40 @@ snmptop$(EXEEXT): snmpps$(EXEEXT)
+ 	$(LN_S) snmpps$(EXEEXT) snmptop$(EXEEXT)
+ 
+ snmpset$(EXEEXT):    snmpset.$(OSUFFIX) $(USELIBS)
+-	$(LINK) ${CFLAGS} -o $@ snmpset.$(OSUFFIX) ${LDFLAGS} ${LIBS}
++	$(LINK) ${CFLAGS} ${LDFLAGS} -o $@ snmpset.$(OSUFFIX) ${LIBS}
+ 
+ snmpusm$(EXEEXT):    snmpusm.$(OSUFFIX) $(USELIBS)
+-	$(LINK) ${CFLAGS} -o $@ snmpusm.$(OSUFFIX) ${LDFLAGS} ${LIBS}
++	$(LINK) ${CFLAGS} ${LDFLAGS} -o $@ snmpusm.$(OSUFFIX) ${LIBS}
+ 
+ snmpvacm$(EXEEXT):    snmpvacm.$(OSUFFIX) $(USELIBS)
+-	$(LINK) ${CFLAGS} -o $@ snmpvacm.$(OSUFFIX) ${LDFLAGS} ${LIBS}
++	$(LINK) ${CFLAGS} ${LDFLAGS} -o $@ snmpvacm.$(OSUFFIX) ${LIBS}
+ 
+ snmptls$(EXEEXT):    snmptls.$(OSUFFIX) $(USELIBS)
+-	$(LINK) ${CFLAGS} -o $@ snmptls.$(OSUFFIX) ${LDFLAGS} ${LIBS} 
++	$(LINK) ${CFLAGS} ${LDFLAGS} -o $@ snmptls.$(OSUFFIX) ${LIBS}
+ 
+ agentxtrap$(EXEEXT):    agentxtrap.$(OSUFFIX) $(USEAGENTLIBS)
+-	$(LINK) ${CFLAGS} -o $@ agentxtrap.$(OSUFFIX) ${LDFLAGS} $(USEAGENTLIBS) $(PERLLDOPTS_FOR_APPS) ${LIBS}
++	$(LINK) ${CFLAGS} ${LDFLAGS} -o $@ agentxtrap.$(OSUFFIX) $(USEAGENTLIBS) $(PERLLDOPTS_FOR_APPS) ${LIBS}
+ 
+ snmpgetnext$(EXEEXT):    snmpgetnext.$(OSUFFIX) $(USELIBS)
+-	$(LINK) ${CFLAGS} -o $@ snmpgetnext.$(OSUFFIX) ${LDFLAGS} ${LIBS}
++	$(LINK) ${CFLAGS} ${LDFLAGS} -o $@ snmpgetnext.$(OSUFFIX) ${LIBS}
+ 
+ encode_keychange$(EXEEXT):    encode_keychange.$(OSUFFIX) $(USELIBS)
+-	$(LINK) ${CFLAGS} -o $@ encode_keychange.$(OSUFFIX) ${LDFLAGS} ${LIBS}
++	$(LINK) ${CFLAGS} ${LDFLAGS} -o $@ encode_keychange.$(OSUFFIX) ${LIBS}
+ 
+ snmpdf$(EXEEXT):    snmpdf.$(OSUFFIX) $(USELIBS)
+-	$(LINK) ${CFLAGS} -o $@ snmpdf.$(OSUFFIX) ${LDFLAGS} ${LIBS}
++	$(LINK) ${CFLAGS} ${LDFLAGS} -o $@ snmpdf.$(OSUFFIX) ${LIBS}
+ 
+ snmpps$(EXEEXT):    snmpps.$(OSUFFIX) $(USELIBS)
+-	$(LINK) ${CFLAGS} -o $@ snmpps.$(OSUFFIX) ${LDFLAGS} @LIBCURSES@ ${LIBS}
++	$(LINK) ${CFLAGS} ${LDFLAGS} -o $@ snmpps.$(OSUFFIX) @LIBCURSES@ ${LIBS}
+ 
+ snmpping$(EXEEXT):    snmpping.$(OSUFFIX) $(USELIBS)
+-	$(LINK) ${CFLAGS} -o $@ snmpping.$(OSUFFIX) ${LDFLAGS} ${LIBS} -lm
++	$(LINK) ${CFLAGS} ${LDFLAGS} -o $@ snmpping.$(OSUFFIX) ${LIBS} -lm
+ 
+ snmppcap$(EXEEXT):    snmppcap.$(OSUFFIX) $(USEAGENTLIBS)
+-	$(LINK) ${CFLAGS} -o $@ snmppcap.$(OSUFFIX) ${LDFLAGS} ${USEAGENTLIBS} ${LIBS} -lpcap
++	$(LINK) ${CFLAGS} ${LDFLAGS} -o $@ snmppcap.$(OSUFFIX) ${USEAGENTLIBS} ${LIBS} -lpcap
+ 
+ libnetsnmptrapd.$(LIB_EXTENSION)$(LIB_VERSION): $(LLIBTRAPD_OBJS)
+-	$(LIB_LD_CMD) $@ ${LLIBTRAPD_OBJS} $(MIBLIB) $(MYSQL_LIBS) $(USELIBS) $(PERLLDOPTS_FOR_LIBS) $(LDFLAGS)
++	$(LIB_LD_CMD) $@ $(LDFLAGS) ${LLIBTRAPD_OBJS} $(MIBLIB) $(MYSQL_LIBS) $(USELIBS) $(PERLLDOPTS_FOR_LIBS)
+ 	$(RANLIB) $@
+ 
+ snmpinforminstall:
+--- a/apps/snmpnetstat/Makefile.in
++++ b/apps/snmpnetstat/Makefile.in
+@@ -34,4 +34,4 @@ LIBS=	 ../../snmplib/libnetsnmp.$(LIB_EXTENSION)$(LIB_VERSION) $(VAL_LIBS) @LIBS
+ all: standardall
+ 
+ snmpnetstat$(EXEEXT): ${LOBJS} ${USELIBS}
+-	${LINK} ${CFLAGS} -o $@ ${LOBJS} ${LOCAL_LIBS} ${LDFLAGS} ${LIBS}
++	${LINK} ${CFLAGS} ${LDFLAGS} -o $@ ${LOBJS} ${LOCAL_LIBS} ${LIBS}
+--- a/snmplib/Makefile.in
++++ b/snmplib/Makefile.in
+@@ -229,11 +229,11 @@ all: standardall
+ 
+ # how to build the libraries.
+ libnetsnmp.$(LIB_EXTENSION)$(LIB_VERSION):    $(TOBJS)
+-	$(LIB_LD_CMD) $@ $(TOBJS) $(LDFLAGS) @LNETSNMPLIBS@
++	$(LIB_LD_CMD) $@ $(LDFLAGS) $(TOBJS) @LNETSNMPLIBS@
+ 	$(RANLIB) $@
+ 
+ libsnmp.$(LIB_EXTENSION)$(LIB_VERSION):    $(TOBJS)
+-	$(LIB_LD_CMD) $@ $(TOBJS) $(LDFLAGS) @LNETSNMPLIBS@
++	$(LIB_LD_CMD) $@ $(LDFLAGS) $(TOBJS) @LNETSNMPLIBS@
+ 	$(RANLIB) $@
+ 
+ #
+--- a/testing/Makefile.in
++++ b/testing/Makefile.in
+@@ -64,16 +64,16 @@ test-mibs:
+ 	cd $(srcdir)/rfc1213 ; ./run
+ 
+ etest:    etimetest.o $(PARSEOBJS) $(USELIBS)
+-	${CC} -o $@ etimetest.o $(PARSEOBJS) ${LDFLAGS} ${LIBS} 
++	${CC} ${LDFLAGS} -o $@ etimetest.o $(PARSEOBJS) ${LIBS}
+ 
+ ktest:    keymanagetest.o $(PARSEOBJS) $(USELIBS)
+-	${CC} -o $@ keymanagetest.o $(PARSEOBJS) ${LDFLAGS} ${LIBS} 
++	${CC} ${LDFLAGS} -o $@ keymanagetest.o $(PARSEOBJS) ${LIBS}
+ 
+ misctest:    misctest.o $(PARSEOBJS) $(USELIBS)
+-	${CC} -o $@ misctest.o $(PARSEOBJS) ${LDFLAGS} ${LIBS} 
++	${CC} ${LDFLAGS} -o $@ misctest.o $(PARSEOBJS) ${LIBS}
+ 
+ stest:    scapitest.o $(PARSEOBJS) $(USELIBS)
+-	${CC} -o $@ scapitest.o $(PARSEOBJS) ${LDFLAGS} ${LIBS} 
++	${CC} ${LDFLAGS} -o $@ scapitest.o $(PARSEOBJS) ${LIBS}
+ 
+ clean: testclean
+ 	rm -f *.o core *.core $(TARG)
+-- 
+2.38.1
+

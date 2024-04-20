@@ -1,0 +1,181 @@
+--- a/jscalibrator/Makefile
++++ b/jscalibrator/Makefile
+@@ -59,10 +59,7 @@
+ #CFLAGS = -Wall -O -g \
+ #         `gtk-config --cflags`
+ 
+-CFLAGS = -Wall -O6 -fomit-frame-pointer -funroll-loops -ffast-math \
+-         `gtk-config --cflags`
+-
+-CPPFLAGS = -D__cplusplus
++CPPFLAGS = 
+ 
+ 
+ # ########################################################################
+@@ -76,7 +73,7 @@
+ #   to the LIB line depending on what you have set in the CFLAGS line
+ #   farther above.
+ #
+-LIBS = -ljsw `gtk-config --libs`
++LIBS := -ljsw $(shell gtk-config --libs)
+ 
+ # Library Directories:
+ #
+@@ -85,7 +82,7 @@
+ #   Each argument is of the format -L<dir> where <dir> is the full
+ #   path to the directory.
+ #
+-LIB_DIRS =
++LIB_DIRS = -L../libjsw
+ 
+ # Header File Directories:
+ #
+@@ -95,7 +92,7 @@
+ #   Each argument is of the format -I<dir> where <dir> is the full
+ #   path to the directory.
+ #
+-INC_DIRS =
++INC_DIRS = $(shell gtk-config --cflags) -I../libjsw
+ 
+ 
+ # ########################################################################
+@@ -111,17 +108,13 @@
+ RM      = rm
+ RMFLAGS = -f
+ 
+-CC  = cc
+-CPP = c++
+ BIN = jscalibrator
+ OBJ_C   = $(SRC_C:.c=.o)
+ OBJ_CPP = $(SRC_CPP:.cpp=.o)
+ .c.o:
+-	@echo "Compiling module $*.o"
+-	@+$(CC) -c $*.c $(INC_DIRS) $(CFLAGS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(INC_DIRS) -c $< -o $@
+ .cpp.o:
+-	@echo "Compiling module $*.o"
+-	@+$(CPP) -c $*.cpp $(INC_DIRS) $(CFLAGS) $(CPPFLAGS)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INC_DIRS) -c $< -o $@
+ 
+ 
+ # ########################################################################
+@@ -130,10 +123,7 @@
+ $(BIN): prebuild modules postbuild
+ 
+ modules: $(OBJ_C) $(OBJ_CPP)
+-	@echo  -n "Linking modules..."
+-	@$(CC) $(OBJ_C) $(OBJ_CPP) -o $(BIN) $(LIBS) $(LIB_DIRS)
+-	@echo -n "   "
+-	@-$(LS) $(LSFLAGS) $(BIN)
++	$(CC) $(LDFLAGS) $(OBJ_C) $(OBJ_CPP) -o $(BIN) $(LIB_DIRS) $(LIBS)
+ 
+ prebuild:
+ 	@echo "Building program \"$(BIN)\"..."
+--- a/jswdemos/Makefile
++++ b/jswdemos/Makefile
+@@ -1,5 +1,5 @@
+ # Compiler flags
+-CFLAGS = -g -O2 -Wall
++CFLAGS += -Wall
+ 
+ # Libraries to link to
+ LIB = -ljsw
+@@ -10,10 +10,6 @@
+ # Include paths
+ INC_DIRS =
+ 
+-# Compiler
+-CC = gcc
+-CPP = g++
+-
+ # Utilities
+ RM      = rm
+ RMFLAGS = -f
+@@ -25,22 +21,23 @@
+ 
+ axis:
+ 	@echo "Compiling program \"axis\""
+-	@$(CC) axis.c -o axis $(CFLAGS) $(LIB) $(LIB_DIRS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) axis.c -o axis $(LIB) $(LIB_DIRS)
+ 
+ basic:
+ 	@echo "Compiling program \"basic\""
+-	@$(CC) basic.c -o basic $(CFLAGS) $(LIB) $(LIB_DIRS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) basic.c -o basic $(LIB) $(LIB_DIRS)
+ 
+ button:
+ 	@echo "Compiling program \"button\""
+-	@$(CC) button.c -o button $(CFLAGS) $(LIB) $(LIB_DIRS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) button.c -o button $(LIB) $(LIB_DIRS)
+ 
+ listing:
+ 	@echo "Compiling program \"listing\""
+-	@$(CC) listing.c -o listing $(CFLAGS) $(LIB) $(LIB_DIRS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) listing.c -o listing $(LIB) $(LIB_DIRS)
++
+ waitbtn:
+ 	@echo "Compiling program \"waitbtn\""
+-	@$(CC) waitbtn.c -o waitbtn $(CFLAGS) $(LIB) $(LIB_DIRS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) waitbtn.c -o waitbtn $(LIB) $(LIB_DIRS)
+ 
+ # Clean up intermediate files
+ clean:
+--- a/libjsw/Makefile
++++ b/libjsw/Makefile
+@@ -51,17 +51,15 @@
+ #                               to debug the program.
+ #
+ 
+-CFLAGS = -Wall -O2 -g
+-CFLAGS += -ffast-math
+-
+-CPPFLAGS = -D__cplusplus
++CFLAGS += -fPIC
++CXXFLAGS += -fPIC
+ 
+ 
+ # ########################################################################
+ # Dependant Libraries:
+ #
+ INC_DIRS =
+-LIBS     = -shared
++LIBS     = -shared -Wl,-soname,libjsw.so.1
+ LIB_DIRS =
+ 
+ 
+@@ -76,18 +74,13 @@
+ LS      = ls
+ LSFLAGS = -s -h -c --color=auto
+ 
+-CC  = cc
+-CPP = c++
+ LIB = $(LIBPFX).so.$(LIBVER)
+ OBJ_C   = $(SRC_C:.c=.o)
+ OBJ_CPP = $(SRC_CPP:.cpp=.o)
+ .c.o:
+-	@echo "Compiling module $*.o"
+-	@+$(CC) -c $*.c $(INC_DIRS) $(CFLAGS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(INC_DIRS) -c $< -o $@
+ .cpp.o:
+-	@echo "Compiling module $*.o"
+-	@+$(CPP) -c $*.cpp $(INC_DIRS) $(CFLAGS) $(CPPFLAGS)
+-
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(INC_DIRS) -c $< -o $@
+ 
+ # ########################################################################
+ # Build Rules:
+@@ -95,13 +88,7 @@
+ $(LIB): prebuild modules postbuild
+ 
+ modules: $(OBJ_C) $(OBJ_CPP)
+-	@echo  -n "Linking modules..."
+-	@$(CC) $(OBJ_C) $(OBJ_CPP) -Wl,-soname=$(LIB) -shared -o $(LIB) $(LIBS) $(LIB_DIRS)
+-	@echo -n "   "
+-	@$(RM) $(RMFLAGS) $(LIBPFX).so
+-	@$(LINK) -s $(LIB) $(LIBPFX).so
+-	@$(LINK) -s $(LIB) $(LIBPFX).so.1
+-	@-$(LS) $(LSFLAGS) $(LIB)
++	$(CXX) $(LDFLAGS) $(OBJ_C) $(OBJ_CPP) -o $(LIB) $(LIBS) $(LIB_DIRS)
+ 
+ prebuild:
+ 	@echo "Building library \"$(LIB)\"..."

@@ -1,0 +1,11 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2021-03-20)
+# jit isn't supported on sparc64 and causes a bus error
+# in for grep -P. Debian completely disable it too.
+dev-libs/libpcre jit
+
+# Anna Vyalkova <cyber+gentoo@sysrq.in> (2022-03-13)
+# depends on dev-lisp/sbcl
+dev-lisp/alexandria doc

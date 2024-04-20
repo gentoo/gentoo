@@ -1,0 +1,54 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -20,10 +20,7 @@
+ 
+ # We may have separate source and binary trees -- make sure we can find
+ # dxpcconf.h
+-CPPFLAGS = -I.
+-
+-.C.o:
+-	$(CXX) $(CPPFLAGS) -c $(CXXFLAGS) $<
++CPPFLAGS += -I.
+ 
+ TARGET=	dxpc$(EXEEXT)
+ 
+@@ -53,18 +50,18 @@
+ OBJS=	$(SRCS:.C=.o)
+ 
+ $(TARGET):	$(OBJS)
+-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ $(OBJS) $(LDFLAGS) $(LIBS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
+ 
+ ifeq ($(MINGW32),true)
+ $(SECONDTARGET): $(OBJS)
+-	$(CXX) -mwindows $(CPPFLAGS) $(CXXFLAGS) -o $@ $(OBJS) $(LDFLAGS) $(LIBS)
++	$(CXX) -mwindows $(CXXFLAGS) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
+ endif
+ 
+ pure_$(TARGET):	$(OBJS)
+-	purify $(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ $(OBJS) $(LDFLAGS) $(LIBS)
++	purify $(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
+ 
+ quant_$(TARGET):	$(OBJS) $(OBJS)
+-	quantify $(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ $(OBJS) $(LDFLAGS) $(LIBS)
++	quantify $(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
+ 
+ depends:
+ 	makedepend -f Makefile $(SRCS)
+@@ -72,12 +69,12 @@
+ install: install.bin install.man
+ 
+ install.bin:	$(TARGET)
+-	$(srcdir)/mkinstalldirs $(bindir)
+-	$(INSTALL) $(TARGET) $(bindir)/$(TARGET)
++	$(srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
++	$(INSTALL) $(TARGET) $(DESTDIR)$(bindir)/$(TARGET)
+ 
+ install.man:
+-	$(srcdir)/mkinstalldirs $(man1dir)
+-	$(INSTALL_DATA) $(TARGET).man $(man1dir)/$(TARGET).1
++	$(srcdir)/mkinstalldirs $(DESTDIR)$(man1dir)
++	$(INSTALL_DATA) $(TARGET).man $(DESTDIR)$(man1dir)/$(TARGET).1
+ 
+ clean:
+ 	-rm -f *~ *.o $(TARGET) pure_* quant_* *.bak core gmon.out

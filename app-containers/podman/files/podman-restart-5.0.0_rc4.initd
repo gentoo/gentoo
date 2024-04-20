@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# Copyright 2015-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Start all containers with restart-policy set to always"
+
+command_user="${RUN_AS_USER:=root:root}"
+command="/usr/bin/podman"
+command_args="--log-level ${LOG_LEVEL:=info} start --all --filter restart-policy=always"
+
+depend() {
+	after net
+}
+
+stop() {
+	ebegin "Stopping all containers with restart-policy set to always"
+	${command} \
+		--log-level ${LOG_LEVEL} \
+		stop \
+		$(${command} container ls --filter restart-policy=always -q)
+	eend $? "Failed to stop containers with restart-policy set to always"
+}

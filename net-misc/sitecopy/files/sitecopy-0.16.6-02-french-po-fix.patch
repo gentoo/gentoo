@@ -1,0 +1,22 @@
+From: Ludovic Rousseau <rousseau@debian.org>
+Subject: Fixed the french translation issue
+
+--- sitecopy-0.16.3.orig/po/fr.po	2006-03-12 11:07:42.000000000 +0100
++++ sitecopy-0.16.3/po/fr.po	2007-05-05 10:14:08.000000000 +0200
+@@ -2,7 +2,6 @@
+ # Copyright (C) YEAR Free Software Foundation, Inc.
+ # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+ #
+-#, fuzzy
+ msgid ""
+ msgstr ""
+ "Project-Id-Version: sitecopy 0.9.3\n"
+@@ -12,7 +11,7 @@
+ "Last-Translator: Sylvain Glaize <mokona@puupuu.org>\n"
+ "Language-Team: fr\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=latin-1\n"
++"Content-Type: text/plain; charset=ISO-8859-1\n"
+ "Content-Transfer-Encoding: 8bit\n"
+ 
+ #: src/console_fe.c:119

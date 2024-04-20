@@ -1,0 +1,11 @@
+--- a/setup.cfg	2022-11-06 09:51:58.139499881 +0100
++++ b/setup.cfg	2022-11-06 09:52:15.064237829 +0100
+@@ -1,6 +1,6 @@
+ [metadata]
+-description-file = README.md
+-license_file = LICENSE.txt
++description_file = README.md
++license_files = LICENSE.txt
+ 
+ [bdist_wheel]
+ universal = 1

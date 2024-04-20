@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/668250
+--- a/homepage/ref/pphtp.pl
++++ b/homepage/ref/pphtp.pl
+@@ -6,7 +6,7 @@
+ #  -n include line numbers
+ #  -s include EBNF like syntax
+ 
+-require "hlhtp.pl";
++require "./hlhtp.pl";
+ 
+ 
+ while ($ARGV[0] =~ /^-(.*)/) {

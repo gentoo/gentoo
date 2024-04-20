@@ -1,0 +1,38 @@
+--- a/tclconfig/tcl.m4	2023-01-18 20:03:02.719671952 +0100
++++ b/tclconfig/tcl.m4	2023-01-18 20:07:22.110504323 +0100
+@@ -981,9 +981,7 @@
+     ECHO_VERSION='`echo ${PACKAGE_VERSION}`'
+     TCL_LIB_VERSIONS_OK=ok
+     CFLAGS_DEBUG=-g
+-    CFLAGS_OPTIMIZE=-O
+     if test "$GCC" = "yes" ; then
+-	CFLAGS_OPTIMIZE=-O2
+ 	CFLAGS_WARNING="-Wall -Wno-implicit-int"
+     else
+ 	CFLAGS_WARNING=""
+@@ -1445,7 +1443,6 @@
+ 	    SHLIB_LD_LIBS='${LIBS}'
+ 	    SHLIB_SUFFIX=".so"
+ 
+-	    CFLAGS_OPTIMIZE="-O2 -fomit-frame-pointer"
+ 	    # egcs-2.91.66 on Redhat Linux 6.0 generates lots of warnings 
+ 	    # when you inline the string and math operations.  Turn this off to
+ 	    # get rid of the warnings.
+@@ -3158,17 +3155,6 @@
+     # It makes compiling go faster.  (This is only a performance feature.)
+     #------------------------------------------------------------------------
+ 
+-    if test -z "$no_pipe" -a -n "$GCC"; then
+-	AC_CACHE_CHECK([if the compiler understands -pipe],
+-	    tcl_cv_cc_pipe, [
+-	    hold_cflags=$CFLAGS; CFLAGS="$CFLAGS -pipe"
+-	    AC_TRY_COMPILE(,, tcl_cv_cc_pipe=yes, tcl_cv_cc_pipe=no)
+-	    CFLAGS=$hold_cflags])
+-	if test $tcl_cv_cc_pipe = yes; then
+-	    CFLAGS="$CFLAGS -pipe"
+-	fi
+-    fi
+-
+     #--------------------------------------------------------------------
+     # Common compiler flag setup
+     #--------------------------------------------------------------------

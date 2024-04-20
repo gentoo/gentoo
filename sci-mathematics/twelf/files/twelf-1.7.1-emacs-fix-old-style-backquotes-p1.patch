@@ -1,0 +1,45 @@
+commit 141018e777eecc064909c6f5429c8a0d0c048b5a
+Author: Kartik Singhal <ks@cs.uchicago.edu>
+Date:   Sat Feb 27 16:13:35 2021 -0600
+
+    Fix old-style backquotes, following https://github.com/ProofGeneral/PG/commit/ca601291ddf22739847c629f2d687ab3f68b4786
+
+diff --git a/emacs/twelf.el b/emacs/twelf.el
+index 1e4d46f..57b9cee 100644
+--- a/emacs/twelf.el
++++ b/emacs/twelf.el
+@@ -2884,7 +2884,7 @@ Mode map
+   (setq twelf-server-display-commands (not twelf-server-display-commands)))
+ 
+ (defconst twelf-options-menu
+-  (` ("Options"
++    `("Options"
+       (, (toggle "Display Commands" '(twelf-toggle-server-display-commands)
+ 		 'twelf-server-display-commands))
+       ("chatter"
+@@ -2922,7 +2922,7 @@ Mode map
+       ("Table."
+        ["strategy" (twelf-set-parm "Table.strategy") t]
+        ["strengthen" (twelf-set-parm "Table.strengthen") t])
+-      ["Reset Menubar" twelf-reset-menu t]))
++      ["Reset Menubar" twelf-reset-menu t])
+   "Menu to change options in Twelf mode.")
+ 
+ (defconst twelf-timers-menu
+@@ -2939,12 +2939,12 @@ Mode map
+   "Fontify current buffer using font-lock minor mode.")
+ 
+ (defconst twelf-syntax-menu
+-  (` ("Syntax Highlighting"
++    `("Syntax Highlighting"
+       ["Highlight Declaration" twelf-font-fontify-decl t]
+       ["Highlight Buffer" twelf-font-fontify-buffer t]
+-      ;(, (toggle "Immediate Highlighting" 'toggle-twelf-font-immediate
+-      ;'font-lock-mode))
+-      ))
++      ;;(, (toggle "Immediate Highlighting" 'toggle-twelf-font-immediate
++      ;;'font-lock-mode))
++      )
+   "Menu for syntax highlighting in Twelf mode.")
+ 
+ (easy-menu-define twelf-menu (list twelf-mode-map)

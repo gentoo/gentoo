@@ -1,0 +1,8 @@
+--- a/ui-gtk/UgtkBanner.h
++++ b/ui-gtk/UgtkBanner.h
+@@ -64,7 +64,7 @@
+ 		UgetRssFeed*    feed;
+ 		UgetRssItem*    item;
+ 	} rss;
+-} banner;
++};

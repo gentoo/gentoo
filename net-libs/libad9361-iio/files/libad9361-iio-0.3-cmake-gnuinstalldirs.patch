@@ -1,0 +1,57 @@
+From ef3d58506132072834637f887bc47eb4d0c52a73 Mon Sep 17 00:00:00 2001
+From: Julien Malik <julien.malik@unseenlabs.fr>
+Date: Mon, 29 Nov 2021 17:52:13 +0100
+Subject: [PATCH] cmake: Honor GNUInstallDirs for installation
+
+Library installation dir can be lib, lib64 or lib/<multiarch-tuple>.
+Use the installation paths given by GNUInstallDirs by default, as done in libiio
+
+Signed-off-by: Julien Malik <julien.malik@unseenlabs.fr>
+---
+ CMakeLists.txt | 20 +++++++++-----------
+ 1 file changed, 9 insertions(+), 11 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 04d5c45..475a448 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -70,10 +70,6 @@ elseif (${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD|DragonFly|OpenBSD|NetBSD")
+ endif()
+ add_definitions(-D_POSIX_C_SOURCE=200809L -D__XSI_VISIBLE=500 -DLIBAD9361_EXPORTS=1)
+ 
+-set(INSTALL_LIB_DIR "${CMAKE_INSTALL_PREFIX}/lib"
+-	CACHE PATH "Installation directory for libraries")
+-mark_as_advanced(INSTALL_LIB_DIR)
+-
+ find_library(LIBIIO_LIBRARIES iio)
+ find_path(LIBIIO_INCLUDEDIR iio.h)
+ 
+@@ -109,19 +105,21 @@ configure_file(libad9361-iio.iss.cmakein ${CMAKE_CURRENT_BINARY_DIR}/libad9361-i
+ 
+ set(LIBAD9361_PC ${CMAKE_CURRENT_BINARY_DIR}/libad9361.pc)
+ configure_file(libad9361.pc.cmakein ${LIBAD9361_PC} @ONLY)
+-install(FILES ${LIBAD9361_PC} DESTINATION ${INSTALL_LIB_DIR}/pkgconfig)
+ 
++include(GNUInstallDirs)
+ if(NOT SKIP_INSTALL_ALL)
+ 	install(TARGETS ad9361
+-		ARCHIVE DESTINATION lib
+-		LIBRARY DESTINATION "${INSTALL_LIB_DIR}"
+-		RUNTIME DESTINATION bin
+-		FRAMEWORK DESTINATION lib
+-		PUBLIC_HEADER DESTINATION include)
++		ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++		LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++		RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++		FRAMEWORK DESTINATION ${OSX_INSTALL_FRAMEWORKSDIR}
++		PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
++
++	install(FILES ${LIBAD9361_PC} DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ endif()
+ 
+ set(CMAKE_INSTALL_DOCDIR "" CACHE PATH "documentation root (DATAROOTDIR/doc/${PROJECT_NAME}${LIBAD9361_VERSION_MAJOR}-doc)")
+-include(GNUInstallDirs)
++
+ set(CMAKE_INSTALL_DOCDIR "${CMAKE_INSTALL_DATAROOTDIR}/doc/${PROJECT_NAME}${LIBAD9361_VERSION_MAJOR}-doc")
+ 
+ find_package(Doxygen)

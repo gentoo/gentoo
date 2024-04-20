@@ -1,0 +1,27 @@
+commit 24bedea4085a41130b13934acb4946d456976dfb (HEAD -> master)
+Author: John Helmert III <ajak@gentoo.org>
+Date:   Wed Nov 9 12:33:17 2022 -0600
+
+    disable tests which time out
+
+    These tests time out, but can't reproduce when running manually
+    (outside of sandbox).
+
+    Signed-off-by: John Helmert III <ajak@gentoo.org>
+
+diff --git a/bin/varnishtest/tests/r02686.vtc b/bin/varnishtest/tests.disabled/r02686.vtc
+similarity index 100%
+rename from bin/varnishtest/tests/r02686.vtc
+rename to bin/varnishtest/tests.disabled/r02686.vtc
+diff --git a/bin/varnishtest/tests/r02990.vtc b/bin/varnishtest/tests.disabled/r02990.vtc
+similarity index 100%
+rename from bin/varnishtest/tests/r02990.vtc
+rename to bin/varnishtest/tests.disabled/r02990.vtc
+diff --git a/bin/varnishtest/tests/u00008.vtc b/bin/varnishtest/tests.disabled/u00008.vtc
+similarity index 100%
+rename from bin/varnishtest/tests/u00008.vtc
+rename to bin/varnishtest/tests.disabled/u00008.vtc
+diff --git a/bin/varnishtest/tests/u00009.vtc b/bin/varnishtest/tests.disabled/u00009.vtc
+similarity index 100%
+rename from bin/varnishtest/tests/u00009.vtc
+rename to bin/varnishtest/tests.disabled/u00009.vtc

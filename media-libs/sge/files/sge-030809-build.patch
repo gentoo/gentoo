@@ -1,0 +1,123 @@
+--- a/Makefile
++++ b/Makefile
+@@ -2,7 +2,7 @@
+ 
+ include Makefile.conf
+ 
+-CFLAGS += $(SGE_CFLAGS) -fPIC $(FT_CFLAGS)
++CXXFLAGS += $(SGE_CFLAGS) -fPIC $(FT_CFLAGS)
+ LIBS =$(SGE_LIBS)
+ 
+ SGE_VER = 030809
+@@ -10,20 +10,26 @@
+ 
+ OBJECTS=sge_surface.o sge_primitives.o sge_tt_text.o sge_bm_text.o sge_misc.o sge_textpp.o sge_blib.o sge_rotation.o sge_collision.o sge_shape.o
+ 
+-all:	config $(OBJECTS) 
+-	@ar rsc libSGE.a $(OBJECTS)
++SHARED_LIB=libSGE.so.$(API_VER)
++STATIC_LIB=libSGE.a
+ 
+-$(OBJECTS):	%.o:%.cpp %.h   #Each object depends on thier .cpp and .h file
+-	$(CXX) $(CFLAGS) -c $<
++all:	sge_config.h $(OBJECTS) $(SHARED_LIB) $(STATIC_LIB)
+ 
+-shared: all
+-	$(CXX) $(CFLAGS) -Wl,-soname,libSGE.so.$(API_VER) -fpic -fPIC -shared -o libSGE.so $(OBJECTS) $(LIBS)
++$(STATIC_LIB): $(OBJECTS)
++	$(AR) rsc libSGE.a $(OBJECTS)
+ 
+-shared-strip:	shared
++$(OBJECTS): sge_config.h
++$(OBJECTS):	%.o:%.cpp %.h   #Each object depends on their .cpp and .h file
++	$(CXX) $(CXXFLAGS) -c $<
++
++$(SHARED_LIB): $(OBJECTS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -Wl,-soname,libSGE.so.$(API_VER) -fpic -fPIC -shared -o libSGE.so $(OBJECTS) $(LIBS)
++
++shared-strip:	$(SHARED_LIB)
+ 	@strip libSGE.so
+ 
+ # Building a dll... I have no idea how to do this, but it should be something like below.
+-dll:	config $(OBJECTS)
++dll:	sge_config.h $(OBJECTS)
+ 	dlltool --output-def SGE.def $(OBJECTS)
+ 	dllwrap --driver-name $(CXX) -o SGE.dll --def SGE.def --output-lib libSGE.a --dllname SGE.dll $(OBJECTS) $(LIBS)
+ 
+@@ -33,21 +39,22 @@
+ clean:
+ 	@rm -f *.o *.so *.a *.dll *.def
+ 
+-config:
+-	@echo "/* SGE Config header (generated automatically) */" >sge_config.h
+-	@echo "#define SGE_VER $(SGE_VER)" >>sge_config.h	
++sge_config.h:
++	@echo "/* SGE Config header (generated automatically) */" >sge_config.h.tmp
++	@echo "#define SGE_VER $(SGE_VER)" >>sge_config.h.tmp
+ ifeq ($(C_COMP),y)
+-	@echo "#define _SGE_C_AND_CPP" >>sge_config.h
++	@echo "#define _SGE_C_AND_CPP" >>sge_config.h.tmp
+ endif
+ ifeq ($(USE_FT),n)
+-	@echo "#define _SGE_NOTTF" >>sge_config.h
++	@echo "#define _SGE_NOTTF" >>sge_config.h.tmp
+ endif
+ ifeq ($(USE_IMG),y)
+-	@echo "#define _SGE_HAVE_IMG" >>sge_config.h
++	@echo "#define _SGE_HAVE_IMG" >>sge_config.h.tmp
+ endif
+ ifeq ($(NO_CLASSES),y)
+-	@echo "#define _SGE_NO_CLASSES" >>sge_config.h
++	@echo "#define _SGE_NO_CLASSES" >>sge_config.h.tmp
+ endif
++	mv sge_config.h.tmp sge_config.h
+ 
+ ifneq ($(QUIET),y)
+ 	@echo "== SGE r$(SGE_VER)"
+@@ -70,13 +77,13 @@
+ 	@echo ""	
+ endif
+ 
+-install:	shared
+-	@mkdir -p $(PREFIX_H)
+-	install -c -m 644 sge*.h $(PREFIX_H)
+-	@mkdir -p $(PREFIX)/lib
+-	install -c -m 644 libSGE.a $(PREFIX)/lib
+-	install -c libSGE.so $(PREFIX)/lib/libSGE.so.$(API_VER).$(SGE_VER)
+-	@cd $(PREFIX)/lib;\
++install:	$(SHARED_LIB) $(STATIC_LIB)
++	@mkdir -p $(DESTDIR)$(PREFIX_H)
++	install -c -m 644 sge*.h $(DESTDIR)$(PREFIX_H)
++	@mkdir -p $(DESTDIR)$(PREFIX)/lib
++	install -c -m 644 $(STATIC_LIB) $(DESTDIR)$(PREFIX)/lib
++	install -c libSGE.so $(DESTDIR)$(PREFIX)/lib/libSGE.so.$(API_VER).$(SGE_VER)
++	@cd $(DESTDIR)$(PREFIX)/lib;\
+ 	ln -sf libSGE.so.$(API_VER).$(SGE_VER) libSGE.so.$(API_VER);\
+ 	ln -sf libSGE.so.$(API_VER) libSGE.so
+ 	@echo "** Headerfiles installed in $(PREFIX_H)"
+--- a/Makefile.conf
++++ b/Makefile.conf
+@@ -11,6 +11,7 @@
+ # Compilers (C and C++)
+ CC=gcc
+ CXX=g++
++AR=ar
+ 
+ # Make sure sdl-config is available
+ HAVE_SDL =$(shell if (sdl-config --version) < /dev/null > /dev/null 2>&1; then echo "y"; else echo "n"; fi;)
+@@ -25,11 +26,13 @@
+ PREFIX_H =$(shell sdl-config --prefix)/include/SDL
+ 
+ # Flags passed to the compiler
+-CFLAGS =-Wall -O3 -ffast-math
++CXXFLAGS ?=-O3 -ffast-math
+ SGE_CFLAGS =$(shell sdl-config --cflags)
+ # Uncomment to make some more optimizations
+-#CFLAGS =-Wall -O9 -ffast-math -march=i686
++#CXXFLAGS =-O9 -ffast-math -march=i686
+ 
++# Spit out warnings
++CXXFLAGS += -Wall
+ 
+ # Libs config
+ SGE_LIBS =$(shell sdl-config --libs) -lstdc++

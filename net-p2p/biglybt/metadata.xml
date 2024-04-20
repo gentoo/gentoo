@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/BiglySoftware/BiglyBT/issues</bugs-to>
+		<doc>https://github.com/BiglySoftware/BiglyBT/wiki</doc>
+		<remote-id type="github">BiglySoftware/BiglyBT</remote-id>
+	</upstream>
+</pkgmetadata>

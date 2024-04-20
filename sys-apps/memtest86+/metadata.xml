@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>bkohler@gentoo.org</email>
+	<name>Ben Kohler</name>
+</maintainer>
+<use>
+	<flag name="bios32">Compile a BIOS-bootable 32bit memtest image</flag>
+	<flag name="bios64">Compile a BIOS-bootable 64bit memtest image</flag>
+	<flag name="boot">Install to /boot in addition to /usr/share/memtest86+/</flag>
+	<flag name="uefi32">Compile a EFI32-bootable 32bit memtest image</flag>
+	<flag name="uefi64">Compile a UEFI-bootable 64bit memtest image</flag>
+	<flag name="iso32">Compile a 32bit ISO image</flag>
+	<flag name="iso64">Compile a 64bit ISO image</flag>
+</use>
+<upstream>
+	<remote-id type="github">memtest86plus/memtest86plus</remote-id>
+</upstream>
+</pkgmetadata>

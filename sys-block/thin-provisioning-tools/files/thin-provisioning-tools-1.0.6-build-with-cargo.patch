@@ -1,0 +1,21 @@
+For USE=debug to work, portage needs to run cargo_src_compile(), but if `emake`
+is used in src_install(), it will trigger a rebuild without debug.  If
+cargo_src_install() is used instead, manpages and symlinks won't be installed
+and the binary would have to be moved since there's no way to make cargo install
+to /usr/sbin. So remove $(PDATA_TOOLS) dependency in Makefile instead.  Might as
+well patch out $(STRIP) too.
+
+--- a/Makefile
++++ b/Makefile
+@@ -56,10 +56,9 @@
+ 
+ MANPAGES:=$(patsubst %,man8/%.8,$(TOOLS))
+ 
+-install: $(PDATA_TOOLS) $(MANPAGES)
++install: $(MANPAGES)
+ 	$(INSTALL_DIR) $(BINDIR)
+ 	$(INSTALL_PROGRAM) $(PDATA_TOOLS) $(BINDIR)
+-	$(STRIP) $(BINDIR)/pdata_tools
+ 	ln -s -f pdata_tools $(BINDIR)/cache_check
+ 	ln -s -f pdata_tools $(BINDIR)/cache_dump
+ 	ln -s -f pdata_tools $(BINDIR)/cache_metadata_size

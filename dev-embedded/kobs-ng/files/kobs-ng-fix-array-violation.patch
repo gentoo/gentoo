@@ -1,0 +1,13 @@
+the part array is declared as part[2], so trying to index [2] isn't going to work
+
+--- a/src/mtd.c
++++ b/src/mtd.c
+@@ -786,7 +786,7 @@
+ 		mp->ecc = 1;
+ 	}
+ 
+-	if (md->part[1].fd >= 0 && md->part[2].fd >=0)
++	if (md->part[1].fd >= 0)
+ 		md->flags |= F_MULTICHIP;
+ 
+ 	/* if a second partition has been opened, verify that are compatible */

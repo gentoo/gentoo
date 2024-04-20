@@ -1,0 +1,10 @@
+
+Known Gentoo-related issues:
+============================
+
+- export to HTML/PDF does not work (this feature would need the python module
+  "wkhtmltopdf" which is not packaged for gentoo and most probably will
+  never be - it depends on deprecated Qt WebKit)
+- spellchecking is disabled (would need python module pygtkspellcheck which)
+  is also not packaged for gentoo yet)
+

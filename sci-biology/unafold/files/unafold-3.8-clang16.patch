@@ -1,0 +1,775 @@
+--- a/src/ct-energy.c
++++ b/src/ct-energy.c
+@@ -24,8 +24,8 @@
+ double auPenalty(int, int);
+ double chooseDangle(int, int);
+ double tstackOrDangle(int, int, int);
+-int isHomodimer();
+-int isCircular();
++int isHomodimer(void);
++int isCircular(void);
+ 
+ int readStructure(FILE* file);
+ 
+@@ -87,7 +87,7 @@
+   {NULL, 0, NULL, 0}
+ };
+ 
+-void usage()
++void usage(void)
+ {
+   puts("Usage: ct-energy [OPTION] [FILE]...");
+   puts("");
+@@ -1247,7 +1247,7 @@
+   return 1;
+ }
+ 
+-int isHomodimer()
++int isHomodimer(void)
+ {
+   int i;
+ 
+@@ -1272,7 +1272,7 @@
+   return 1;
+ }
+ 
+-int isCircular()
++int isCircular(void)
+ {
+   return g_prev[0] == g_len && g_next[g_len - 1] % g_len == 1;
+ }
+--- a/src/energy.c
++++ b/src/energy.c
+@@ -15,6 +15,7 @@
+ #endif
+ 
+ #include "energy.h"
++#include "util.h"
+ #include "xmalloc.h"
+ 
+ #ifndef isinf
+--- a/src/hybrid.c
++++ b/src/hybrid.c
+@@ -39,10 +39,10 @@
+ #endif
+ 
+ void initializeMatrix(double**, int, double);
+-void limitBasePairs();
+-void prohibit();
+-void force();
+-void prefilter();
++void limitBasePairs(void);
++void prohibit(void);
++void force(void);
++void prefilter(void);
+ void fillMatrix(double**, int, double);
+ void fillMatrix_noI(double**, int, double);
+ void calculateProb(double**, double*, double*, double**, double**, double, double, int, double);
+@@ -706,7 +706,7 @@
+       matrix[i - 1][n - 1] = (reverse ? R0(n, i) : L0(i, n));
+ }
+ 
+-void limitBasePairs()
++void limitBasePairs(void)
+ {
+   if (g_bpFile)
+     {
+@@ -740,7 +740,7 @@
+     }
+ }
+ 
+-void prohibit()
++void prohibit(void)
+ {
+   int i, j, k;
+   struct constraintListNode *top, *newTop;
+@@ -788,7 +788,7 @@
+ }
+ 
+ #if ENABLE_FORCE
+-void force()
++void force(void)
+ {
+   int i, j, k;
+   struct constraintListNode *top, *newTop;
+@@ -880,7 +880,7 @@
+ 	}
+ } */
+ 
+-void prefilter()
++void prefilter(void)
+ {
+   char** in;
+   int i, j, k, count;
+--- a/src/hybrid-min.c
++++ b/src/hybrid-min.c
+@@ -53,10 +53,10 @@
+ } *pairList;
+ 
+ void initializeMatrices(double);
+-void limitBasePairs();
+-void prohibit();
+-void force();
+-void prefilter();
++void limitBasePairs(void);
++void prohibit(void);
++void force(void);
++void prefilter(void);
+ void fillMatrixL(double);
+ void fillMatrixR(double);
+ void fillMatrixL_noI(double);
+@@ -88,7 +88,7 @@
+ #define min2(a, b) ((a) < (b) ? (a) : (b))
+ ENERGY min4(ENERGY, ENERGY, ENERGY, ENERGY);
+ void pushPairList(int, int, int, ENERGY);
+-void sortPairList();
++void sortPairList(void);
+ 
+ ENERGY *lprime, *rprime;
+ 
+@@ -885,7 +885,7 @@
+ 	}
+ }
+ 
+-void limitBasePairs()
++void limitBasePairs(void)
+ {
+   if (g_bpFile)
+     {
+@@ -919,7 +919,7 @@
+     }
+ }
+ 
+-void prohibit()
++void prohibit(void)
+ {
+   int i, j, k;
+   struct constraintListNode* top;
+@@ -965,7 +965,7 @@
+ }
+ 
+ #if ENABLE_FORCE
+-void force()
++void force(void)
+ {
+   int i, j, k;
+   struct constraintListNode* top;
+@@ -1041,7 +1041,7 @@
+   return length;
+ }
+ 
+-void prefilter()
++void prefilter(void)
+ {
+   int i, j;
+ 
+@@ -1055,7 +1055,7 @@
+ 	}
+ } */
+ 
+-void prefilter()
++void prefilter(void)
+ {
+   char** in;
+   int i, j, k, count;
+@@ -2235,7 +2235,7 @@
+   pairList = node;
+ }
+ 
+-void sortPairList()
++void sortPairList(void)
+ {
+   struct pairListNode *a, *b;
+ 
+--- a/src/hybrid-plot.c
++++ b/src/hybrid-plot.c
+@@ -70,13 +70,13 @@
+ void displayCallbackInput(void);
+ void keyboardCallbackInput(unsigned char, int, int);
+ 
+-void fixLength();
+-void fixGrid();
+-void fixLabels();
+-void fixZoomGrid();
+-void fixZoomLabels();
++void fixLength(void);
++void fixGrid(void);
++void fixLabels(void);
++void fixZoomGrid(void);
++void fixZoomLabels(void);
+ void readFiles(char*);
+-void sortTemps();
++void sortTemps(void);
+ double* inputRecords(FILE*);
+ int filter(int, int);
+ 
+@@ -1157,7 +1157,7 @@
+     }
+ }
+ 
+-void fixLength()
++void fixLength(void)
+ {
+   int m, n;
+ 
+@@ -1177,7 +1177,7 @@
+     }
+ }
+ 
+-void fixGrid()
++void fixGrid(void)
+ {
+   int m;
+ 
+@@ -1193,7 +1193,7 @@
+     g_grid = pow(10, m + 1);
+ }
+ 
+-void fixLabels()
++void fixLabels(void)
+ {
+   int longestNum;
+ 
+@@ -1202,7 +1202,7 @@
+     g_labels += g_grid;
+ }
+ 
+-void fixZoomGrid()
++void fixZoomGrid(void)
+ {
+   int m;
+ 
+@@ -1221,7 +1221,7 @@
+     g_zoomGrid = pow(10, m + 1);
+ }
+ 
+-void fixZoomLabels()
++void fixZoomLabels(void)
+ {
+   int longestNum;
+ 
+@@ -1310,7 +1310,7 @@
+   return scores;
+ }
+ 
+-void sortTemps()
++void sortTemps(void)
+ {
+   int i, j;
+   char* tempC;
+--- a/src/hybrid-plot-ng.c
++++ b/src/hybrid-plot-ng.c
+@@ -24,28 +24,28 @@
+  */
+ 
+ #if HAVE_GD
+-void initPNG();
++void initPNG(void);
+ void titlePNG(char*);
+-void borderPNG();
+-void gridPNG();
++void borderPNG(void);
++void gridPNG(void);
+ void plotDotPNG(int, int, double);
+ void vertCenterPNG(char*, int);
+ void horzCenterPNG(char*, int);
+ void selectionPNG(char*, int);
+ #endif
+ 
+-void initPS();
++void initPS(void);
+ void titlePS(char*);
+-void borderPS();
+-void gridPS();
++void borderPS(void);
++void gridPS(void);
+ void plotDotPS(int, int, double);
+ void vertCenterPS(char*, int);
+ void horzCenterPS(char*, int);
+ void selectionPS(char*, int);
+ 
+-void fixSize();
+-void fixGrid();
+-void fixLabels();
++void fixSize(void);
++void fixGrid(void);
++void fixLabels(void);
+ double* inputRecords(FILE*);
+ int filter(int, int);
+ int (*getColor)(double);
+@@ -114,10 +114,10 @@
+   char* plotFile;
+ 
+   /* functions to call - either PS or PNG */
+-  void (*init)();
++  void (*init)(void);
+   void (*title)(char*);
+-  void (*border)();
+-  void (*grid)();
++  void (*border)(void);
++  void (*grid)(void);
+   void (*plotDot)(int, int, double);
+   void (*vertCenter)(char*, int);
+   void (*horzCenter)(char*, int);
+@@ -474,7 +474,7 @@
+   return 0;
+ }
+ 
+-void initPS()
++void initPS(void)
+ {
+   int i;
+ 
+@@ -517,7 +517,7 @@
+   fprintf(g_file, "(%s) showCenter\n", wordString);
+ }
+ 
+-void borderPS()
++void borderPS(void)
+ {
+   fputs("92 126 moveto\n", g_file);
+   fputs("576 126 lineto\n", g_file);
+@@ -527,7 +527,7 @@
+   fputs("stroke\n", g_file);
+ }
+ 
+-void gridPS()
++void gridPS(void)
+ {
+   double x1, y1;
+   int i, j;
+@@ -639,7 +639,7 @@
+ 
+ #if HAVE_GD
+ 
+-void initPNG()
++void initPNG(void)
+ {
+   int i;
+ 
+@@ -671,12 +671,12 @@
+   gdImageString(g_image, gdFontMediumBold, 306 - 7 * strlen(wordString) / 2, 51, (unsigned char*) wordString, g_black);
+ }
+ 
+-void borderPNG()
++void borderPNG(void)
+ {
+   gdImageRectangle(g_image, 92, 92, 576, 576, g_black);
+ }
+ 
+-void gridPNG()
++void gridPNG(void)
+ {
+   int i, j;
+   char buffer[8];
+@@ -776,7 +776,7 @@
+ 
+ #endif
+ 
+-void fixSize()
++void fixSize(void)
+ {
+   int m, n;
+ 
+@@ -796,7 +796,7 @@
+     }
+ }
+ 
+-void fixGrid()
++void fixGrid(void)
+ {
+   int m;
+ 
+@@ -812,7 +812,7 @@
+     g_grid = pow(10, m + 1);
+ }
+ 
+-void fixLabels()
++void fixLabels(void)
+ {
+   int longestNum;
+ 
+--- a/src/hybrid-ss.c
++++ b/src/hybrid-ss.c
+@@ -47,10 +47,10 @@
+ #define ssOK(i, j) 1
+ #endif
+ 
+-void initializeMatrices();
+-void fillMatrices1();
++void initializeMatrices(void);
++void fillMatrices1(void);
+ void fillMatrices2(double*, double*);
+-void fillMatrices1_noI();
++void fillMatrices1_noI(void);
+ void fillMatrices2_noI(double*, double*);
+ void calculateProb(double*, double*, double*, double*, double*, double);
+ void calculateProb_noI(double*, double*, double*, double*, double*);
+@@ -713,7 +713,7 @@
+ 
+ #include "hybrid-ss_init.h"
+ 
+-void fillMatrices1()
++void fillMatrices1(void)
+ {
+   int i, j, k;
+   FILE* file;
+@@ -783,7 +783,7 @@
+     }
+ }
+ 
+-void fillMatrices1_noI()
++void fillMatrices1_noI(void)
+ {
+   int i, j, k;
+   FILE* file;
+--- a/src/hybrid-ss_init.h
++++ b/src/hybrid-ss_init.h
+@@ -14,7 +14,7 @@
+   return length;
+ } */
+ 
+-void prefilter()
++void prefilter(void)
+ {
+   char** in;
+   int i, j, k, count;
+@@ -45,7 +45,7 @@
+   free(in);
+ }
+ 
+-void initializeMatrices()
++void initializeMatrices(void)
+ {
+   int i, j, k;
+   struct constraintListNode *top, *newTop;
+--- a/src/hybrid-ss-min.c
++++ b/src/hybrid-ss-min.c
+@@ -57,10 +57,10 @@
+   struct pairListNode* next;
+ } *pairList;
+ 
+-void initializeMatrices();
+-void fillMatrices1();
+-void fillMatrices2();
+-void computeQ53();
++void initializeMatrices(void);
++void fillMatrices1(void);
++void fillMatrices2(void);
++void computeQ53(void);
+ void traceback(int, int, int, int*, int*, int*);
+ void traceback_noI(int, int, int, int*, int*, int*);
+ void setStack(int, int, int*, int*);
+@@ -108,7 +108,7 @@
+ int equal(ENERGY, ENERGY);
+ void push(struct stackNode**, int, int, int);
+ void pushPairList(int, int, int, ENERGY);
+-void sortPairList();
++void sortPairList(void);
+ 
+ int g_len;
+ ENERGY *q, *qprime, *qm, *q5, *q3;
+@@ -887,7 +887,7 @@
+   return length;
+ }
+ 
+-void prefilter()
++void prefilter(void)
+ {
+   char** in;
+   int i, j, k, count;
+@@ -918,7 +918,7 @@
+   free(in);
+ }
+ 
+-void initializeMatrices()
++void initializeMatrices(void)
+ {
+   int i, j, k;
+   struct constraintListNode* top;
+@@ -1072,7 +1072,7 @@
+     }
+ }
+ 
+-void fillMatrices1()
++void fillMatrices1(void)
+ {
+   int i, j, k;
+   FILE* file;
+@@ -1181,7 +1181,7 @@
+     }
+ }
+ 
+-void fillMatrices2()
++void fillMatrices2(void)
+ {
+   int i, j, k;
+   FILE* file;
+@@ -1283,7 +1283,7 @@
+     }
+ }
+ 
+-void computeQ53()
++void computeQ53(void)
+ {
+   int i, j;
+ 
+@@ -3137,7 +3137,7 @@
+   pairList = node;
+ }
+ 
+-void sortPairList()
++void sortPairList(void)
+ {
+   struct pairListNode *a, *b;
+ 
+--- a/src/hybrid-ss-noml.c
++++ b/src/hybrid-ss-noml.c
+@@ -45,11 +45,11 @@
+ #define ssOK(i, j) 1
+ #endif
+ 
+-void initializeMatrices();
+-void fillMatrices1();
+-void fillMatrices2();
+-void fillMatrices1_noI();
+-void fillMatrices2_noI();
++void initializeMatrices(void);
++void fillMatrices1(void);
++void fillMatrices2(void);
++void fillMatrices1_noI(void);
++void fillMatrices2_noI(void);
+ void calculateProb(double*, double*, double*, double);
+ void calculateProb_noI(double*, double*, double*, double);
+ void traceback(int*, int*, int*);
+@@ -652,7 +652,7 @@
+   return length;
+ } */
+ 
+-void prefilter()
++void prefilter(void)
+ {
+   char** in;
+   int i, j, k, count;
+@@ -683,7 +683,7 @@
+   free(in);
+ }
+ 
+-void initializeMatrices()
++void initializeMatrices(void)
+ {
+   int i, j, k;
+   struct constraintListNode *top, *newTop;
+@@ -826,7 +826,7 @@
+ 	}
+ }
+ 
+-void fillMatrices1()
++void fillMatrices1(void)
+ {
+   int i, j, k;
+   FILE* file;
+@@ -885,7 +885,7 @@
+     }
+ }
+ 
+-void fillMatrices1_noI()
++void fillMatrices1_noI(void)
+ {
+   int i, j, k;
+   FILE* file;
+@@ -944,7 +944,7 @@
+     }
+ }
+ 
+-void fillMatrices2()
++void fillMatrices2(void)
+ {
+   int i, j;
+   FILE* file;
+@@ -986,7 +986,7 @@
+     }
+ }
+ 
+-void fillMatrices2_noI()
++void fillMatrices2_noI(void)
+ {
+   int i, j;
+   FILE* file;
+--- a/src/hybrid-ss-simple.c
++++ b/src/hybrid-ss-simple.c
+@@ -47,11 +47,11 @@
+ #define ssOK(i, j) 1
+ #endif
+ 
+-void initializeMatrices();
+-void fillMatrices1();
+-void fillMatrices2();
+-void fillMatrices1_noI();
+-void fillMatrices2_noI();
++void initializeMatrices(void);
++void fillMatrices1(void);
++void fillMatrices2(void);
++void fillMatrices1_noI(void);
++void fillMatrices2_noI(void);
+ void calculateProb(double*, double*, double*, double);
+ void calculateProb_noI(double*, double*, double*);
+ void traceback(int*, int*, int*);
+@@ -598,7 +598,7 @@
+ 
+ #include "hybrid-ss_init.h"
+ 
+-void fillMatrices1()
++void fillMatrices1(void)
+ {
+   int i, j, k;
+   FILE* file;
+@@ -658,7 +658,7 @@
+     }
+ }
+ 
+-void fillMatrices1_noI()
++void fillMatrices1_noI(void)
+ {
+   int i, j, k;
+   FILE* file;
+@@ -718,7 +718,7 @@
+     }
+ }
+ 
+-void fillMatrices2()
++void fillMatrices2(void)
+ {
+   int i, j, k;
+   FILE* file;
+@@ -789,7 +789,7 @@
+     }
+ }
+ 
+-void fillMatrices2_noI()
++void fillMatrices2_noI(void)
+ {
+   int i, j, k;
+   FILE* file;
+--- a/src/util.h
++++ b/src/util.h
+@@ -24,18 +24,18 @@
+ 
+ /* #define NO_GU_BASEPAIRS */
+ 
+-int roundInt(double d)
++static int roundInt(double d)
+ {
+   return (int) (d + .5);
+ }
+ 
+-void strcatc(char* str, char c)
++static void strcatc(char* str, char c)
+ {
+   str[strlen(str) + 1] = 0;
+   str[strlen(str)] = c;
+ }
+ 
+-char* filename(char* file)
++static char* filename(char* file)
+ {
+   char* name;
+ 
+@@ -46,7 +46,7 @@
+   return name;
+ }
+ 
+-void checkArray(char** array, unsigned int* available, unsigned int used, unsigned int increment)
++static void checkArray(char** array, unsigned int* available, unsigned int used, unsigned int increment)
+ {
+   if (used == *available)
+     {
+@@ -55,7 +55,7 @@
+     }
+ }
+ 
+-int input(FILE* file, char** name, char** sequence)
++static int input(FILE* file, char** name, char** sequence)
+ {
+   /* read string from file */
+   int current, last, state;
+@@ -120,7 +120,7 @@
+   return 1;
+ }
+ 
+-unsigned char toNum(char c)
++static unsigned char toNum(char c)
+ {
+   c = toupper(c);
+   switch (c)
+@@ -137,7 +137,7 @@
+   return 4;
+ }
+ 
+-int seqcmp(unsigned char* seq1, unsigned char* seq2, int length)
++static int seqcmp(unsigned char* seq1, unsigned char* seq2, int length)
+ {
+   int i;
+ 
+@@ -149,7 +149,7 @@
+   return 0;
+ }
+ 
+-void readSequence(char* file, char** name, char** string, unsigned char** seq, int* len)
++static void readSequence(char* file, char** name, char** string, unsigned char** seq, int* len)
+ {
+   int i;
+   FILE* f;
+@@ -171,14 +171,14 @@
+ }
+ 
+ #ifdef NO_GU_BASEPAIRS
+-const int BPI[6][6] = {{6, 6, 6, 0, 6, 6},
++static const int BPI[6][6] = {{6, 6, 6, 0, 6, 6},
+ 		       {6, 6, 1, 6, 6, 6},
+ 		       {6, 2, 6, 6, 6, 6},
+ 		       {3, 6, 6, 6, 6, 6},
+ 		       {6, 6, 6, 6, 6, 6},
+ 		       {6, 6, 6, 6, 6, 6}};
+ #else
+-const int BPI[6][6] = {{6, 6, 6, 0, 6, 6},
++static const int BPI[6][6] = {{6, 6, 6, 0, 6, 6},
+ 		       {6, 6, 1, 6, 6, 6},
+ 		       {6, 2, 6, 4, 6, 6},
+ 		       {3, 6, 5, 6, 6, 6},
+@@ -187,7 +187,7 @@
+ #endif
+ #define basePairIndex(a, b) BPI[a][b]
+ 
+-int min3(int a, int b, int c)
++static int min3(int a, int b, int c)
+ {
+   if (a <= b && a <= c)
+     return a;
+@@ -196,7 +196,7 @@
+   return c;
+ }
+ 
+-int same(unsigned char* a, unsigned char* b, int len)
++static int same(unsigned char* a, unsigned char* b, int len)
+ {
+   int i;
+ 
+@@ -206,7 +206,7 @@
+   return 1;
+ }
+ 
+-void version(const char* prog)
++static void version(const char* prog)
+ {
+   printf("%s (%s) %s\n", prog, PACKAGE_NAME, PACKAGE_VERSION);
+   puts("By Nicholas R. Markham and Michael Zuker");
+@@ -216,7 +216,7 @@
+   exit(EXIT_SUCCESS);
+ }
+ 
+-void readOrDie(unsigned int num, const char* name, FILE* file, const char* format, ...)
++static void readOrDie(unsigned int num, const char* name, FILE* file, const char* format, ...)
+ {
+   va_list arg;
+   va_start(arg, format);

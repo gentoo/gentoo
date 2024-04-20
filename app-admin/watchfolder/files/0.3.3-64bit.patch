@@ -1,0 +1,11 @@
+--- a/watchd.c
++++ b/watchd.c
+@@ -176,7 +176,7 @@
+ // free(p2tmp);
+ 
+  p2tmp=strchr(p2,0xa);		// Not very nice,
+- p2[(int)p2tmp-(int)p2]=0x00;	// but in fact: It works ;)
++ *(p2+(p2tmp-p2))=0x00;		// but in fact: It works ;)
+ 
+  while (p2[0]==' ') {p2++;}       		     // Again, quick and dirty..
+  while (p1[strlen(p1)-1]==' ') {p1[strlen(p1)-1]=0;} // Need to say anything?;)

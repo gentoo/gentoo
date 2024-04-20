@@ -1,0 +1,6 @@
+move dev-python/lazy_loader dev-python/lazy-loader
+slotmove dev-lang/clojure 1.11 0
+slotmove dev-java/gson 2.6 0
+slotmove dev-java/icu4j 70 0
+move dev-python/django_polymorphic dev-python/django-polymorphic
+move dev-python/octave_kernel dev-python/octave-kernel

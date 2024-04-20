@@ -1,0 +1,85 @@
+Remove newer symbols that does not work on linux-2.6.16.
+
+This is only for Prefix standalone.
+
+Index: glibc-2.19/io/sys/stat.h
+===================================================================
+--- glibc-2.19.orig/io/sys/stat.h
++++ glibc-2.19/io/sys/stat.h
+@@ -361,10 +361,6 @@ extern int mkfifoat (int __fd, const cha
+ #ifdef __USE_ATFILE
+ /* Set file access and modification times relative to directory file
+    descriptor.  */
+-extern int utimensat (int __fd, const char *__path,
+-		      const struct timespec __times[2],
+-		      int __flags)
+-     __THROW __nonnull ((2));
+ #endif
+ 
+ #ifdef __USE_XOPEN2K8
+Index: glibc-2.19/posix/unistd.h
+===================================================================
+--- glibc-2.19.orig/posix/unistd.h
++++ glibc-2.19/posix/unistd.h
+@@ -419,7 +419,6 @@ extern int pipe (int __pipedes[2]) __THR
+ #ifdef __USE_GNU
+ /* Same as pipe but apply flags passed in FLAGS to the new file
+    descriptors.  */
+-extern int pipe2 (int __pipedes[2], int __flags) __THROW __wur;
+ #endif
+ 
+ /* Schedule an alarm.  In SECONDS seconds, the process will get a SIGALRM.
+Index: glibc-2.19/sysdeps/unix/sysv/linux/x86/bits/epoll.h
+===================================================================
+--- glibc-2.19.orig/sysdeps/unix/sysv/linux/x86/bits/epoll.h
++++ glibc-2.19/sysdeps/unix/sysv/linux/x86/bits/epoll.h
+@@ -19,11 +19,5 @@
+ # error "Never use <bits/epoll.h> directly; include <sys/epoll.h> instead."
+ #endif
+ 
+-/* Flags to be passed to epoll_create1.  */
+-enum
+-  {
+-    EPOLL_CLOEXEC = 02000000
+-#define EPOLL_CLOEXEC EPOLL_CLOEXEC
+-  };
+ 
+ #define __EPOLL_PACKED __attribute__ ((__packed__))
+Index: glibc-2.19/sysdeps/unix/sysv/linux/bits/fcntl-linux.h
+===================================================================
+--- glibc-2.19.orig/sysdeps/unix/sysv/linux/bits/fcntl-linux.h
++++ glibc-2.19/sysdeps/unix/sysv/linux/bits/fcntl-linux.h
+@@ -187,8 +187,6 @@
+ # define F_GETPIPE_SZ	1032	/* Set pipe page size array.  */
+ #endif
+ #ifdef __USE_XOPEN2K8
+-# define F_DUPFD_CLOEXEC 1030	/* Duplicate file descriptor with
+-				   close-on-exit set.  */
+ #endif
+ 
+ /* For F_[GET|SET]FD.  */
+Index: glibc-2.19/sysdeps/unix/sysv/linux/sys/epoll.h
+===================================================================
+--- glibc-2.19.orig/sysdeps/unix/sysv/linux/sys/epoll.h
++++ glibc-2.19/sysdeps/unix/sysv/linux/sys/epoll.h
+@@ -101,7 +101,6 @@ extern int epoll_create (int __size) __T
+ 
+ /* Same as epoll_create but with an FLAGS parameter.  The unused SIZE
+    parameter has been dropped.  */
+-extern int epoll_create1 (int __flags) __THROW;
+ 
+ 
+ /* Manipulate an epoll instance "epfd". Returns 0 in case of success,
+Index: glibc-2.19/time/sys/time.h
+===================================================================
+--- glibc-2.19.orig/time/sys/time.h
++++ glibc-2.19/time/sys/time.h
+@@ -140,8 +140,6 @@ extern int utimes (const char *__file, c
+ 
+ #ifdef __USE_BSD
+ /* Same as `utimes', but does not follow symbolic links.  */
+-extern int lutimes (const char *__file, const struct timeval __tvp[2])
+-     __THROW __nonnull ((1));
+ 
+ /* Same as `utimes', but takes an open file descriptor instead of a name.  */
+ extern int futimes (int __fd, const struct timeval __tvp[2]) __THROW;

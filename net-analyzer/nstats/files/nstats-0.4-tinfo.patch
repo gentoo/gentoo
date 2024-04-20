@@ -1,0 +1,18 @@
+--- a/configure.in
++++ b/configure.in
+@@ -15,11 +15,12 @@
+ 
+ AC_TYPE_SIGNAL
+ 
++PKG_CHECK_MODULES(ncurses,ncurses,,AC_MSG_ERROR([ncurses is needed]))
+ 
+ AC_CHECK_LIB(ncurses,initscr,[
+-    NMON_LIB="${NMON_LIB} -lncurses"
+-    BMON_LIB="${BMON_LIB} -lncurses"
+-    CMON_LIB="${CMON_LIB} -lncurses"
++    NMON_LIB="${NMON_LIB} $ncurses_LIBS"
++    BMON_LIB="${BMON_LIB} $ncurses_LIBS"
++    CMON_LIB="${CMON_LIB} $ncurses_LIBS"
+ ],[
+     echo
+     echo "Missing dependency"

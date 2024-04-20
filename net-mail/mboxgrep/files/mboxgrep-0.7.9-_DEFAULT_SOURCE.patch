@@ -1,0 +1,11 @@
+--- a/src/misc.c
++++ b/src/misc.c
+@@ -19,7 +19,7 @@
+   $Id: misc.c,v 1.13 2003/04/06 21:01:49 dspiljar Exp $ */
+ 
+ #define _XOPEN_SOURCE  /* Pull in strptime(3) from time.h */
+-#define _BSD_SOURCE    /* Compensate for _XOPEN_SOURCE to pull in strdup(3)
++#define _DEFAULT_SOURCE    /* Compensate for _XOPEN_SOURCE to pull in strdup(3)
+                         * from string.h. */
+ 
+ #include <config.h>

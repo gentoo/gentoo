@@ -1,0 +1,31 @@
+--- a/uglygs.conf
++++ b/uglygs.conf
+@@ -12,22 +12,23 @@
+ $runmode = "loop";                                              # Run mode, Run as a loop or as a cron Executable
+ 
+ $configfile = "servers.cfg";                                    # The Result file to be passed to other programs
+-$qstat = "qstat/qstat";                                         # The modified qstat file
++$qstat = "GENTOO_DIR/qstat";                                         # The modified qstat file
+ $cat = "/bin/cat";                                              # The cat file location
+-$data = "./data";                                               # Data Directory
+-$tmp = "./tmp";                                                 # Temp Directory
++$data = "GENTOO_DIR/data";                                               # Data Directory
++$tmp = "GENTOO_DIR/tmp";                                                 # Temp Directory
+ $template = "default";						# Template Directory
++$templates = "GENTOO_DIR/templates";				# Template base directory
+ $staticcfgfile = "$data/servers.static";                        # A Static output file to append to final output 
+ 
+ $refresh = "180";						# # If loop is on what is your update rate in sec 
+ 		
+ $serverquery = "n";                                             # Do u want Server Query output y or n
+-$serverqueryfile = "/var/www/html/servers.cfg";                 # The output file for server query 
++$serverqueryfile = "/home/httpd/htdocs/servers.cfg";                 # The output file for server query 
+ 
+ $html = "n";							# Do you want HTML output 
+ $htmlgame="l";							# Game List Sort Order p=by-ping, g=by-game, i=by-IP-address, h=by-hostname, n=by-#-players, l=by-list-order
+ $htmlplayer="F";						# Player List Sort Order P=by-ping, F=by-frags, T=by-team
+-$htmldir = "/var/www/html/uglygs";				# The html output Directory
++$htmldir = "/home/httpd/htdocs/uglygs";				# The html output Directory
+ $htmlfile = "servers";						# The html output file
+ $htmlext = "html";						# THe file Ext eg. html, php, pl, asp
+ $htmlalias = "/uglygs";                                         # The html Directory Alias

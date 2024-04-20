@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/danvratil/qcoro/issues</bugs-to>
+		<remote-id type="github">danvratil/qcoro</remote-id>
+	</upstream>
+	<use>
+		<flag name="network">Build <pkg>dev-qt/qtbase</pkg> network support</flag>
+		<flag name="qml">Enable QML/QtQuick support via <pkg>dev-qt/qtdeclarative</pkg></flag>
+		<flag name="websockets">Build <pkg>dev-qt/qtwebsockets</pkg> support</flag>
+	</use>
+</pkgmetadata>

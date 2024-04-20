@@ -1,0 +1,27 @@
+From ed5ce9c176db2e26ac9915b4d86c3a076a8093ae Mon Sep 17 00:00:00 2001
+From: "Igor V. Kovalenko" <igor.v.kovalenko@gmail.com>
+Date: Fri, 2 Feb 2024 22:00:03 +0300
+Subject: [PATCH] config: Disable alsa and bluez monitors by default
+
+---
+ src/config/wireplumber.conf | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/config/wireplumber.conf b/src/config/wireplumber.conf
+index 822b7967..ca0faa0a 100644
+--- a/src/config/wireplumber.conf
++++ b/src/config/wireplumber.conf
+@@ -64,8 +64,8 @@ wireplumber.profiles = {
+     support.settings = required
+     support.log-settings = required
+     metadata.sm-objects = required
+-    hardware.audio = required
+-    hardware.bluetooth = required
++    #hardware.audio = required
++    #hardware.bluetooth = required
+     hardware.video-capture = required
+     policy.standard = required
+     #policy.role-priority-system = optional
+-- 
+2.43.0
+

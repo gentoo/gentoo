@@ -1,0 +1,12 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Dtach options, which will used, when the `attach` extra command is called.
+# By default, CTRL+D is used, and no redraw is done,
+# when you want to detach from the attached console.
+DTACH_OPTS="-e '^D' -r none"
+
+# Java options for your started server
+# You should at least define some memory settings (-Xms, -Xmx),
+# for maximum memory, as the java default is far to low for Minecraft
+MINECRAFT_OPTS="-Xms1024m -Xmx1024m"

@@ -1,0 +1,52 @@
+https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/1230
+
+From 010f6e751e86207a7e88f3504191bcae2d77b458 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 31 Dec 2023 23:37:19 +0000
+Subject: [PATCH] meson: add option for systemd
+
+Without this, systemd will be used if installed on the system automagically,
+which is a problem if the built e.g. Xwayland is going to be used on a non-systemd
+machine.
+
+Bug: https://bugs.gentoo.org/908254
+Signed-off-by: Sam James <sam@gentoo.org>
+
+diff --git a/include/meson.build b/include/meson.build
+index e6e3d553f..ddc18407e 100644
+--- a/include/meson.build
++++ b/include/meson.build
+@@ -91,7 +91,7 @@ endif
+ 
+ conf_data.set('HAVE_LIBBSD', libbsd_dep.found() ? '1' : false)
+ # Note: this symbol is used by libXtrans.
+-conf_data.set('HAVE_SYSTEMD_DAEMON', libsystemd_daemon_dep.found() ? '1' : false)
++conf_data.set('HAVE_SYSTEMD_DAEMON', build_systemd ? '1' : false)
+ conf_data.set('HAVE_XSHMFENCE', xshmfence_dep.found() ? '1' : false)
+ conf_data.set('WITH_LIBDRM', libdrm_required ? '1' : false)
+ conf_data.set('GLAMOR_HAS_EGL_QUERY_DMABUF',
+diff --git a/meson.build b/meson.build
+index 60164d73b..de984760c 100644
+--- a/meson.build
++++ b/meson.build
+@@ -99,6 +99,7 @@ xkbcomp_dep = dependency('xkbcomp', required: false)
+ xkbfile_dep = dependency('xkbfile')
+ xfont2_dep = dependency('xfont2', version: '>= 2.0')
+ 
++build_systemd = get_option('systemd') == 'true'
+ # libsystemd-daemon was moved into libsystemd in version 209
+ libsystemd_daemon_dep = dependency('libsystemd', version: '>= 209', required: false)
+ if not libsystemd_daemon_dep.found()
+diff --git a/meson_options.txt b/meson_options.txt
+index af094df70..62c539fbd 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -47,6 +47,8 @@ option('listen_unix', type: 'boolean', value: true,
+ option('listen_local', type: 'boolean', value: true,
+        description: 'Listen on local by default')
+ 
++option('systemd', type: 'combo', choices: ['true', 'false', 'auto'], value: 'auto',
++       description: 'Enable systemd-notify support')
+ option('dpms', type: 'boolean', value: true,
+        description: 'Xorg DPMS extension')
+ option('xf86bigfont', type: 'boolean', value: false,

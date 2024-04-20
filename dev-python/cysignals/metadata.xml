@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+
+  <maintainer type="person" proxied="yes">
+    <email>frp.bissey@gmail.com</email>
+    <name>François Bissey</name>
+  </maintainer>
+
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+
+  <longdescription lang="en">
+    When writing Cython code, special care must be taken to ensure that
+    the code can be interrupted with CTRL-C. Since Cython optimizes for
+    speed, it normally does not check for interrupts. The cysignals
+    package provides mechanisms to handle interrupts (and other signals
+    and errors) in Cython code.
+  </longdescription>
+
+  <upstream>
+    <remote-id type="pypi">cysignals</remote-id>
+    <remote-id type="github">sagemath/cysignals</remote-id>
+  </upstream>
+</pkgmetadata>

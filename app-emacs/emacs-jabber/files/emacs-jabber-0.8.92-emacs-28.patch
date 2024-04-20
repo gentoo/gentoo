@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/836817
+
+--- emacs-jabber-0.8.92/jabber-menu.el
++++ emacs-jabber-0.8.92/jabber-menu.el
+@@ -100,7 +100,7 @@
+   (interactive "P")
+   (setq jabber-display-menu (if remove nil t))
+   (force-mode-line-update))
+-(make-obsolete 'jabber-menu "set the variable `jabber-display-menu' instead.")
++(make-obsolete 'jabber-menu 'jabber-display-menu "")
+ 
+ ;; This used to be:
+ ;; (define-key-after global-map [menu-bar jabber-menu] ...)
+--- emacs-jabber-0.8.92/jabber-roster.el
++++ emacs-jabber-0.8.92/jabber-roster.el
+@@ -816,7 +816,7 @@
+ (defalias 'jabber-presence-update-roster 'ignore)
+ ;;jabber-presence-update-roster is not needed anymore.
+ ;;Its work is done in `jabber-process-presence'."
+-(make-obsolete 'jabber-presence-update-roster 'ignore)
++(make-obsolete 'jabber-presence-update-roster 'ignore "")
+ 
+ (defun jabber-next-property (&optional prev)
+   "Return position of next property appearence or nil if there is none.

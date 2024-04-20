@@ -1,0 +1,15 @@
+# Build of tray-monitor should respect LDFLAGS and CFLAGS
+--- src/qt-console/tray-monitor/tray-monitor.pro.in.orig	2023-11-16 16:25:31.840100695 +0100
++++ src/qt-console/tray-monitor/tray-monitor.pro.in	2023-11-16 16:26:26.453913247 +0100
+@@ -41,8 +41,9 @@
+ QMAKE_LINK   = $${LIBTOOL_LINK} $(CXX)
+ QMAKE_INSTALL_PROGRAM = $${LIBTOOL_INSTALL} install -m @SBINPERM@ -p
+ QMAKE_CLEAN += obj/* .libs/* bacula-tray-monitor release/bacula-tray-monitor
+-QMAKE_CXXFLAGS += -DTRAY_MONITOR
+-QMAKE_CFLAGS += -DTRAY_MONITOR
++QMAKE_CXXFLAGS += @CXXFLAGS@ -DTRAY_MONITOR
++QMAKE_CFLAGS += @CFLAGS@ -DTRAY_MONITOR
++QMAKE_LFLAGS += @LDFLAGS@
+ 
+ INSTALLS = bins confs
+ 

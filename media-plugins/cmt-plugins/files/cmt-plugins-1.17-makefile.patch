@@ -1,0 +1,34 @@
+diff --git a/src/Makefile b/src/Makefile
+index 159dd46..5c2c0f4 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -11,8 +11,6 @@ INSTALL_PLUGINS_DIR	=	/usr/lib/ladspa/
+ # GENERAL
+ #
+ 
+-CFLAGS		=	$(INCLUDES) -Wall -Werror -O2 -fPIC
+-CXXFLAGS	=	$(CFLAGS)
+ PLUGIN_LIB	=	../plugins/cmt.so
+ 
+ ###############################################################################
+@@ -63,14 +61,18 @@ PLUGIN_OBJECTS	=							\
+ 
+ plugin:	$(PLUGIN_LIB)
+ 
++%.o: %.cpp
++	$(CXX) $(INCLUDES) $(CFLAGS) -fPIC -c -o $*.o $*.cpp
++
++
+ targets:	$(PLUGIN_LIB)
+ 
+ $(PLUGIN_LIB):	$(PLUGIN_OBJECTS) gcc_exports.map
+-	$(CXX)	-shared							\
++	$(CXX)	$(LDFLAGS)						\
++		-shared							\
+ 		$(CFLAGS)						\
+ 		-fvisibility=hidden					\
+ 		-fvisibility-inlines-hidden				\
+-		-s							\
+ 		-Wl,--version-script=gcc_exports.map			\
+ 		-o $(PLUGIN_LIB)					\
+ 		$(PLUGIN_OBJECTS)					

@@ -1,0 +1,13 @@
+diff --git a/lib/ext/wocky/wocky/wocky-sasl-scram.c b/lib/ext/wocky/wocky/wocky-sasl-scram.c
+index 7261956..c508196 100644
+--- a/lib/ext/wocky/wocky/wocky-sasl-scram.c
++++ b/lib/ext/wocky/wocky/wocky-sasl-scram.c
+@@ -523,7 +523,7 @@ scram_handle_server_final_message (WockySaslScram *self,
+     gchar *message,
+     GError **error)
+ {
+-  gchar attr, *value = NULL;
++  gchar attr = 0, *value = NULL;
+ 
+   if (!scram_get_next_attr_value (&message, &attr, &value) && attr != 'v')
+     goto invalid;

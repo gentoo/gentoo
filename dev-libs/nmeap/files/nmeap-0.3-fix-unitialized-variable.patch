@@ -1,0 +1,11 @@
+--- a/src/nmeap01.c	2005-05-06 20:29:41.000000000 +0200
++++ b/src/nmeap01.c	2018-10-28 19:10:49.000000000 +0100
+@@ -282,7 +282,7 @@
+  */
+ int nmeap_process(nmeap_context_t *context)
+ {
+-    int id;
++    int id = 0;
+     int i;
+     nmeap_sentence_t *s;
+ 	

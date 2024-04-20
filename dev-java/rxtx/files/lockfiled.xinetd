@@ -1,0 +1,13 @@
+service lfd
+{
+	port		= 50001
+	bind		= localhost
+	type		= UNLISTED
+	flags		= REUSE
+	socket_type	= stream
+	wait		= no
+	user		= uucp
+	server		= /usr/sbin/in.lfd
+	log_on_failure	+= USERID
+	disable		= yes
+}

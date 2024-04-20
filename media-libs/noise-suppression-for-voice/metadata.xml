@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Rick Farina</name>
+		<email>zerochaos@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<name>Kacper Słomiński</name>
+		<email>kacper.slominski72@gmail.com</email>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<name>Proxy Maintainers</name>
+		<email>proxy-maint@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">werman/noise-suppression-for-voice</remote-id>
+	</upstream>
+	<use>
+		<flag name="lv2">Enable the LV2 plugin</flag>
+		<flag name="vst">Enable the VST plugin</flag>
+		<flag name="vst3">Enable the VST3 plugin</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,14 @@
+Bug: https://bugs.gentoo.org/895896
+--- a/liblcdf/permstr.cc
++++ b/liblcdf/permstr.cc
+@@ -111,8 +111,8 @@ static int scatter[] = {        /* map characters to random values */
+ void
+ PermString::initialize(const char* s, int length)
+ {
+-    register unsigned char* m = (unsigned char*) s;
+-    register unsigned char* mm;
++    unsigned char* m = (unsigned char*) s;
++    unsigned char* mm;
+ 
+     if (length < 0)
+ 	length = (s ? strlen(s) : 0);

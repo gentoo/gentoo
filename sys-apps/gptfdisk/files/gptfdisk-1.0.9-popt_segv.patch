@@ -1,0 +1,22 @@
+--- a/gptcl.cc
++++ b/gptcl.cc
+@@ -156,9 +156,10 @@
+ 
+    // Assume first non-option argument is the device filename....
+    device = (char*) poptGetArg(poptCon);
+-   poptResetContext(poptCon);
+ 
+    if (device != NULL) {
++      device = strdup(device);
++      poptResetContext(poptCon);
+       JustLooking(); // reset as necessary
+       BeQuiet(); // Tell called functions to be less verbose & interactive
+       if (LoadPartitions((string) device)) {
+@@ -498,6 +499,7 @@
+          cerr << "Error encountered; not saving changes.\n";
+          retval = 4;
+       } // if
++      free(device);
+    } // if (device != NULL)
+    poptFreeContext(poptCon);
+    return retval;

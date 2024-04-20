@@ -1,0 +1,11 @@
+Bug: https://bugs.gentoo.org/897832
+--- a/apps/unix/server/server.c
++++ b/apps/unix/server/server.c
+@@ -50,6 +50,7 @@
+ #include <sys/file.h>
+ #include <sys/stat.h>
+ #include <sys/wait.h>
++#include <fcntl.h>
+ 
+ // #include <net/if.h>
+ // #include <netinet/in.h>

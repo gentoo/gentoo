@@ -1,0 +1,155 @@
+--- chrpath-0.16/Makefile.am	2014-01-12 08:52:21.000000000 +0100
++++ chrpath-0.16-ng/Makefile.am	2019-05-19 11:23:48.352936406 +0200
+@@ -12,11 +12,18 @@
+ 	fakeroot debian/rules binary
+ 
+ chrpath_SOURCES = \
+-	chrpath.c	\
+-	killrpath.c	\
+ 	main.c		\
+-	elf.c		\
+ 	protos.h
++	
++chrpath_LDADD = $(LDLIBS)
++
++lib_LTLIBRARIES = libchrpath32.la libchrpath64.la
++libchrpath32_la_SOURCES = chrpath.c killrpath.c elf.c protos.h
++libchrpath32_la_CFLAGS = -DSIZEOF_VOID_P=4
++libchrpath32_la_LDFLAGS = -avoid-version
++libchrpath64_la_SOURCES = chrpath.c killrpath.c elf.c protos.h
++libchrpath64_la_CFLAGS = -DSIZEOF_VOID_P=8
++libchrpath64_la_LDFLAGS = -avoid-version
+ 
+ EXTRA_DIST = $(man_MANS)
+ 
+--- chrpath-0.16/configure.ac	2014-01-12 09:01:52.000000000 +0100
++++ chrpath-0.16-ng/configure.ac	2019-05-19 11:25:07.158665075 +0200
+@@ -16,6 +16,7 @@
+ dnl Checks for programs.
+ AC_PROG_CC
+ AC_PROG_INSTALL
++AC_PROG_LIBTOOL
+ 
+ dnl Checks for libraries.
+ 
+@@ -26,11 +27,19 @@
+ dnl Checks for typedefs, structures, and compiler characteristics.
+ AC_C_CONST
+ AC_C_BIGENDIAN
+-AC_CHECK_SIZEOF(void *)
+ 
+ dnl Checks for library functions.
+ AC_CHECK_FUNCS(getopt_long)
+ 
++dnl See if we need -ldl on this platform for dlopen
++LDLIBS=
++save_LIBS="$LIBS"
++LIBS=
++AC_SEARCH_LIBS([dlopen], [dl])
++LDLIBS=${LIBS}
++LIBS="${save_LIBS}"
++AC_SUBST([LDLIBS])
++
+ if eval "test x$GCC = xyes"; then
+   for flag in \
+       -W \
+--- chrpath-0.16/main.c	2014-01-14 10:15:59.000000000 +0100
++++ chrpath-0.16-ng/main.c	2019-05-19 11:29:34.648390032 +0200
+@@ -12,13 +12,19 @@
+ #  include "config.h"
+ #endif
+ 
++#include <dlfcn.h>
++#include <elf.h>
++#include <fcntl.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <unistd.h>
+ #ifdef HAVE_GETOPT_H
+ #include <getopt.h>
+ #endif
+-#include "protos.h"
++
++typedef int (*killrpath_t)(const char *filename);
++typedef int (*chrpath_t)(const char *filename, const char *newpath, int convert);
+ 
+ #ifdef HAVE_GETOPT_LONG
+ #  define GETOPT_LONG getopt_long
+@@ -63,6 +69,30 @@
+   printf("\n");
+ }
+ 
++static unsigned
++elf_class(const char *filename)
++{
++   Elf32_Ehdr ehdr;
++   int fd;
++
++   fd = open(filename, O_RDONLY);
++   if (fd == -1)
++     return 0;
++   if (read(fd, &ehdr, sizeof(ehdr)) != sizeof(ehdr))
++   {
++     close(fd);
++     return 0;
++   }
++   close(fd);
++   if ((memcmp(ehdr.e_ident, ELFMAG, SELFMAG) != 0)
++       || (ehdr.e_ident[EI_VERSION] != EV_CURRENT))
++   {
++     fprintf(stderr, "`%s' probably isn't an ELF file.\n", filename);
++     return 0;
++   }
++   return ehdr.e_ident[EI_CLASS];
++}
++
+ int
+ main(int argc, char * const argv[])
+ {
+@@ -75,6 +105,10 @@
+ #ifdef HAVE_GETOPT_LONG
+   int option_index = 0;
+ #endif /* HAVE_GETOPT_LONG */
++  
++  void* dll[2];
++  killrpath_t killrpath[2];
++  chrpath_t chrpath[2];
+ 
+   if (argc < 2)
+     {
+@@ -118,15 +152,32 @@
+         break;
+       }
+   } while (-1 != opt);
++  
++  dll[0] = dlopen("libchrpath32.so", RTLD_LAZY);
++  killrpath[0] = (killrpath_t)dlsym(dll[0], "killrpath");
++  chrpath[0] = (chrpath_t)dlsym(dll[0], "chrpath");
++
++  dll[1] = dlopen("libchrpath64.so", RTLD_LAZY);
++  killrpath[1] = (killrpath_t)dlsym(dll[1], "killrpath");
++  chrpath[1] = (chrpath_t)dlsym(dll[1], "chrpath");
+ 
+   while (optind < argc && (!retval || keep_going))
+     {
++      const char* program = argv[optind++];
++      unsigned eclass = elf_class(program);
++      if (!eclass)
++      {
++        retval = 1;
++        continue;
++      }
+       if (remove)
+-        retval |= killrpath(argv[optind++]);
++        retval |= killrpath[eclass - ELFCLASS32](program);
+       else
+         /* list by default, replace if path is set */
+-        retval |= chrpath(argv[optind++], newpath, convert);
++        retval |= chrpath[eclass - ELFCLASS32](program, newpath, convert);
+     }
+ 
++  dlclose(dll[0]);
++  dlclose(dll[1]);
+   return retval;
+ }

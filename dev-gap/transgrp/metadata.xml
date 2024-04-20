@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+  <maintainer type="person">
+    <email>frp.bissey@gmail.com</email>
+    <name>François Bissey</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    A library of transitive groups.
+
+    Groups of degree 15-30 are due to Alexander Hulpke Degree 32 is due
+    to John Cannon and Derek Holt Degree 34-48 is due to Derek Holt and
+    Gordon Royle. Groups of degree 32 (~30MB) and 48 (~30GB) need to be
+    downloaded separately.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">hulpke/transgrp</remote-id>
+  </upstream>
+</pkgmetadata>

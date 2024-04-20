@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=LanguageTool
+Exec=languagetool-gui
+Type=Application
+Terminal=false
+GenericName=LanguageTool
+Comment=LanguageTool
+StartupNotify=false
+Icon=languagetool
+Categories=Office;

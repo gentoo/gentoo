@@ -1,0 +1,10 @@
+--- a/uis/src/com/biglybt/ui/swt/updater2/SWTUpdateChecker.java
++++ b/uis/src/com/biglybt/ui/swt/updater2/SWTUpdateChecker.java
+@@ -65,7 +65,6 @@ public class SWTUpdateChecker implements UpdatableComponent
+   public static void
+   initialize()
+   {
+-  	PluginInitializer.getDefaultInterface().getUpdateManager().registerUpdatableComponent(new SWTUpdateChecker(),true);
+   }
+ 
+   public SWTUpdateChecker() {

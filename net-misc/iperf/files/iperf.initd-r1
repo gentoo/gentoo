@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="IP bandwidth measurement server"
+command="/usr/bin/iperf"
+
+command_background="yes"
+pidfile="/run/${SVCNAME}.pid"
+command_args="-s ${IPERF_OPTS}"
+
+# note: iperf has a -D/--daemon flag but we seem to hit a bug
+#       where it starts to eat all CPU after client disconnect,
+#       see bug #344875

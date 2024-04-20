@@ -1,0 +1,344 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Sun Mar 31 20:38:49 UTC 2013
+Subject: respect DESTDIR
+
+--- a/libsent/Makefile.in
++++ b/libsent/Makefile.in
+@@ -144,16 +144,16 @@
+ install: install.lib install.include install.bin
+ 
+ install.lib: $(TARGET)
+-	${INSTALL} -d ${libdir}
+-	${INSTALL_DATA} $(TARGET) ${libdir}
++	${INSTALL} -d $(DESTDIR)/${libdir}
++	${INSTALL_DATA} $(TARGET) $(DESTDIR)/${libdir}
+ 
+ install.include:
+-	${INSTALL} -d ${includedir}/sent
+-	${INSTALL_DATA} include/sent/*.h ${includedir}/sent
++	${INSTALL} -d $(DESTDIR)/${includedir}/sent
++	${INSTALL_DATA} include/sent/*.h $(DESTDIR)/${includedir}/sent
+ 
+ install.bin: libsent-config-dist
+-	${INSTALL} -d ${bindir}
+-	${INSTALL_PROGRAM} libsent-config-dist ${bindir}/libsent-config
++	${INSTALL} -d $(DESTDIR)/${bindir}
++	${INSTALL_PROGRAM} libsent-config-dist $(DESTDIR)/${bindir}/libsent-config
+ 
+ clean:
+ 	$(RM) *~ src/*/*~ src/*/*.o src/*/*/*.o src/*/*/*/*.o src/*/*/*/*/*.o include/sent/*~ 
+--- a/libjulius/Makefile.in
++++ b/libjulius/Makefile.in
+@@ -90,16 +90,16 @@
+ install: install.lib install.include install.bin
+ 
+ install.lib: $(TARGET)
+-	${INSTALL} -d ${libdir}
+-	${INSTALL_DATA} $(TARGET) ${libdir}
++	${INSTALL} -d $(DESTDIR)/${libdir}
++	${INSTALL_DATA} $(TARGET) $(DESTDIR)/${libdir}
+ 
+ install.include:
+-	${INSTALL} -d ${includedir}/julius
+-	${INSTALL_DATA} include/julius/*.h ${includedir}/julius 
++	${INSTALL} -d $(DESTDIR)/${includedir}/julius
++	${INSTALL_DATA} include/julius/*.h $(DESTDIR)/${includedir}/julius 
+ 
+ install.bin: libjulius-config-dist
+-	${INSTALL} -d ${bindir}
+-	${INSTALL_PROGRAM} libjulius-config-dist ${bindir}/libjulius-config
++	${INSTALL} -d $(DESTDIR)/${bindir}
++	${INSTALL_PROGRAM} libjulius-config-dist $(DESTDIR)/${bindir}/libjulius-config
+ 
+ depend:
+ 	makedepend -- $(CFLAGS) -- $(OBJSENT)
+--- a/julius/Makefile.in
++++ b/julius/Makefile.in
+@@ -61,8 +61,8 @@
+ install: install.bin
+ 
+ install.bin: $(TARGET)
+-	${INSTALL} -d @bindir@
+-	${INSTALL_PROGRAM} $(TARGET) ${bindir}/${INSTALLTARGET}
++	${INSTALL} -d $(DESTDIR)/@bindir@
++	${INSTALL_PROGRAM} $(TARGET) $(DESTDIR)/${bindir}/${INSTALLTARGET}
+ 
+ depend:
+ 	makedepend -- $(CFLAGS) -- $(OBJSENT)
+--- a/mkbingram/Makefile.in
++++ b/mkbingram/Makefile.in
+@@ -32,8 +32,8 @@
+ install: install.bin
+ 
+ install.bin: $(TARGET)
+-	${INSTALL} -d @bindir@
+-	@INSTALL_PROGRAM@ $(TARGET) @bindir@
++	${INSTALL} -d $(DESTDIR)/@bindir@
++	@INSTALL_PROGRAM@ $(TARGET) $(DESTDIR)/@bindir@
+ 
+ clean:
+ 	$(RM) $(OBJ)
+--- a/mkbinhmm/Makefile.in
++++ b/mkbinhmm/Makefile.in
+@@ -32,8 +32,8 @@
+ install: install.bin
+ 
+ install.bin: mkbinhmm@EXEEXT@ mkbinhmmlist@EXEEXT@
+-	${INSTALL} -d @bindir@
+-	@INSTALL_PROGRAM@ mkbinhmm@EXEEXT@ mkbinhmmlist@EXEEXT@ @bindir@
++	${INSTALL} -d $(DESTDIR)/@bindir@
++	@INSTALL_PROGRAM@ mkbinhmm@EXEEXT@ mkbinhmmlist@EXEEXT@ $(DESTDIR)/@bindir@
+ 
+ clean:
+ 	$(RM) mkbinhmm.o mkbinhmmlist.o
+--- a/adinrec/Makefile.in
++++ b/adinrec/Makefile.in
+@@ -36,8 +36,8 @@
+ install: install.bin
+ 
+ install.bin: $(TARGET)
+-	${INSTALL} -d @bindir@
+-	@INSTALL_PROGRAM@ $(TARGET) @bindir@
++	${INSTALL} -d $(DESTDIR)/@bindir@
++	@INSTALL_PROGRAM@ $(TARGET) $(DESTDIR)/@bindir@
+ 
+ ############################################################
+ 
+--- a/adintool/Makefile.in
++++ b/adintool/Makefile.in
+@@ -36,8 +36,8 @@
+ install: install.bin
+ 
+ install.bin: $(TARGET)
+-	${INSTALL} -d @bindir@
+-	@INSTALL_PROGRAM@ $(TARGET) @bindir@
++	${INSTALL} -d $(DESTDIR)/@bindir@
++	@INSTALL_PROGRAM@ $(TARGET) $(DESTDIR)/@bindir@
+ 
+ ############################################################
+ 
+--- a/mkgshmm/Makefile.in
++++ b/mkgshmm/Makefile.in
+@@ -23,8 +23,8 @@
+ install: install.bin
+ 
+ install.bin: $(TARGET)
+-	${INSTALL} -d @bindir@
+-	@INSTALL_PROGRAM@ $(TARGET) @bindir@
++	${INSTALL} -d $(DESTDIR)/@bindir@
++	@INSTALL_PROGRAM@ $(TARGET) $(DESTDIR)/@bindir@
+ 
+ ############################################################
+ 
+--- a/mkss/Makefile.in
++++ b/mkss/Makefile.in
+@@ -36,8 +36,8 @@
+ install: install.bin
+ 
+ install.bin: $(TARGET)
+-	${INSTALL} -d @bindir@
+-	@INSTALL_PROGRAM@ $(TARGET) @bindir@
++	${INSTALL} -d $(DESTDIR)/@bindir@
++	@INSTALL_PROGRAM@ $(TARGET) $(DESTDIR)/@bindir@
+ 
+ ############################################################
+ 
+--- a/jcontrol/Makefile.in
++++ b/jcontrol/Makefile.in
+@@ -31,19 +31,19 @@
+ install: install.bin
+ 
+ install.bin: $(TARGET)
+-	${INSTALL} -d @bindir@
+-	@INSTALL_PROGRAM@ $(TARGET) @bindir@
++	${INSTALL} -d $(DESTDIR)/@bindir@
++	@INSTALL_PROGRAM@ $(TARGET) $(DESTDIR)/@bindir@/jucontrol
+ 
+ clean:
+ 	$(RM) $(OBJ)
+ 	$(RM) config.log config.cache
+ 	$(RM) *~ core
+-	$(RM) $(TARGET) $(TARGET).exe
++	$(RM) $(TARGET) $(TARGET).exe jucontrol
+ 
+ distclean:
+ 	$(RM) $(OBJ)
+ 	$(RM) config.log config.cache
+ 	$(RM) *~ core
+-	$(RM) $(TARGET) $(TARGET).exe
++	$(RM) $(TARGET) $(TARGET).exe jucontrol
+ 	$(RM) config.status
+ 	$(RM) Makefile
+--- a/gramtools/accept_check/Makefile.in
++++ b/gramtools/accept_check/Makefile.in
+@@ -36,8 +36,8 @@
+ install: install.bin
+ 
+ install.bin: $(TARGET)
+-	${INSTALL} -d @bindir@
+-	@INSTALL_PROGRAM@ $(TARGET) @bindir@
++	${INSTALL} -d $(DESTDIR)/@bindir@
++	@INSTALL_PROGRAM@ $(TARGET) $(DESTDIR)/@bindir@
+ 
+ ############################################################
+ 
+--- a/gramtools/dfa_determinize/Makefile.in
++++ b/gramtools/dfa_determinize/Makefile.in
+@@ -35,8 +35,8 @@
+ install: install.bin
+ 
+ install.bin: $(TARGET)
+-	${INSTALL} -d @bindir@
+-	@INSTALL_PROGRAM@ $(TARGET) @bindir@
++	${INSTALL} -d $(DESTDIR)/@bindir@
++	@INSTALL_PROGRAM@ $(TARGET) $(DESTDIR)/@bindir@
+ 
+ ############################################################
+ 
+--- a/gramtools/dfa_minimize/Makefile.in
++++ b/gramtools/dfa_minimize/Makefile.in
+@@ -34,8 +34,8 @@
+ install: install.bin
+ 
+ install.bin: $(TARGET)
+-	${INSTALL} -d @bindir@
+-	@INSTALL_PROGRAM@ $(TARGET) @bindir@
++	${INSTALL} -d $(DESTDIR)/@bindir@
++	@INSTALL_PROGRAM@ $(TARGET) $(DESTDIR)/@bindir@
+ 
+ ############################################################
+ 
+--- a/gramtools/generate/Makefile.in
++++ b/gramtools/generate/Makefile.in
+@@ -35,8 +35,8 @@
+ install: install.bin
+ 
+ install.bin: $(TARGET)
+-	${INSTALL} -d @bindir@
+-	@INSTALL_PROGRAM@ $(TARGET) @bindir@
++	${INSTALL} -d $(DESTDIR)/@bindir@
++	@INSTALL_PROGRAM@ $(TARGET) $(DESTDIR)/@bindir@
+ 
+ ############################################################
+ 
+--- a/gramtools/gram2sapixml/Makefile.in
++++ b/gramtools/gram2sapixml/Makefile.in
+@@ -17,8 +17,8 @@
+ install: install.bin
+ 
+ install.bin:
+-	${INSTALL} -d @bindir@
+-	@INSTALL_PROGRAM@ $(TARGET) @bindir@
++	${INSTALL} -d $(DESTDIR)/@bindir@
++	@INSTALL_PROGRAM@ $(TARGET) $(DESTDIR)/@bindir@
+ 
+ clean:
+ 	echo nothing to do
+--- a/gramtools/mkdfa/Makefile.in
++++ b/gramtools/mkdfa/Makefile.in
+@@ -18,13 +18,13 @@
+ 
+ install:
+ 	(cd $(SUBDIR); $(MAKE) install)
+-	${INSTALL} -d @bindir@
+-	@INSTALL_PROGRAM@ $(TARGET) @bindir@
++	${INSTALL} -d $(DESTDIR)/@bindir@
++	@INSTALL_PROGRAM@ $(TARGET) $(DESTDIR)/@bindir@
+ 
+ install.bin:
+ 	(cd $(SUBDIR); $(MAKE) install.bin)
+-	${INSTALL} -d @bindir@
+-	@INSTALL_PROGRAM@ $(TARGET) @bindir@
++	${INSTALL} -d $(DESTDIR)/@bindir@
++	@INSTALL_PROGRAM@ $(TARGET) $(DESTDIR)/@bindir@
+ 
+ clean:
+ 	(cd $(SUBDIR); $(MAKE) clean)
+--- a/gramtools/mkdfa/mkfa-1.44-flex/Makefile.in
++++ b/gramtools/mkdfa/mkfa-1.44-flex/Makefile.in
+@@ -43,8 +43,8 @@
+ install: install.bin
+ 
+ install.bin:
+-	${INSTALL} -d @bindir@
+-	@INSTALL_PROGRAM@ $(TARGET) @bindir@
++	${INSTALL} -d $(DESTDIR)/@bindir@
++	@INSTALL_PROGRAM@ $(TARGET) $(DESTDIR)/@bindir@
+ 
+ clean:
+ 	$(RM) *.o *~ core
+--- a/gramtools/nextword/Makefile.in
++++ b/gramtools/nextword/Makefile.in
+@@ -36,8 +36,8 @@
+ install: install.bin
+ 
+ install.bin: $(TARGET)
+-	${INSTALL} -d @bindir@
+-	@INSTALL_PROGRAM@ $(TARGET) @bindir@
++	${INSTALL} -d $(DESTDIR)/@bindir@
++	@INSTALL_PROGRAM@ $(TARGET) $(DESTDIR)/@bindir@
+ 
+ ############################################################
+ 
+--- a/gramtools/yomi2voca/Makefile.in
++++ b/gramtools/yomi2voca/Makefile.in
+@@ -17,8 +17,8 @@
+ install: install.bin
+ 
+ install.bin:
+-	${INSTALL} -d @bindir@
+-	@INSTALL_PROGRAM@ $(TARGET) @bindir@
++	${INSTALL} -d $(DESTDIR)/@bindir@
++	@INSTALL_PROGRAM@ $(TARGET) $(DESTDIR)/@bindir@
+ 
+ clean:
+ 	echo nothing to do
+--- a/generate-ngram/Makefile.in
++++ b/generate-ngram/Makefile.in
+@@ -33,8 +33,8 @@
+ install: install.bin
+ 
+ install.bin: $(TARGET)
+-	${INSTALL} -d @bindir@
+-	@INSTALL_PROGRAM@ $(TARGET) @bindir@
++	${INSTALL} -d $(DESTDIR)/@bindir@
++	@INSTALL_PROGRAM@ $(TARGET) $(DESTDIR)/@bindir@
+ 
+ clean:
+ 	$(RM) $(OBJ) *~ core
+--- a/jclient-perl/Makefile.in
++++ b/jclient-perl/Makefile.in
+@@ -17,8 +17,8 @@
+ install: install.bin
+ 
+ install.bin:
+-	${INSTALL} -d @bindir@
+-	@INSTALL_PROGRAM@ $(TARGET) @bindir@
++	${INSTALL} -d $(DESTDIR)/@bindir@
++	@INSTALL_PROGRAM@ $(TARGET) $(DESTDIR)/@bindir@
+ 
+ clean:
+ 	echo nothing to do
+--- a/man/Makefile.in
++++ b/man/Makefile.in
+@@ -19,16 +19,16 @@
+ install: install.man install.man.ja
+ 
+ install.man:
+-	${INSTALL} -d @mandir@/man1
++	${INSTALL} -d $(DESTDIR)/@mandir@/man1
+ 	for f in *.1; do \
+-	  @INSTALL_DATA@ $$f @mandir@/man1/$$f; \
++	  @INSTALL_DATA@ $$f $(DESTDIR)/@mandir@/man1/$$f; \
+ 	done
+ 
+ install.man.ja:
+-	${INSTALL} -d @mandir@/ja/man1
++	${INSTALL} -d $(DESTDIR)/@mandir@/ja/man1
+ 	cd ja;
+ 	for f in *.1; do \
+-	  @INSTALL_DATA@ $$f @mandir@/ja/man1/$$f; \
++	  @INSTALL_DATA@ $$f $(DESTDIR)/@mandir@/ja/man1/$$f; \
+ 	done
+ 	cd ..
+ 

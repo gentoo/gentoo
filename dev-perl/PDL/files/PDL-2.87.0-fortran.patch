@@ -1,0 +1,26 @@
+diff --git a/Libtmp/Minuit/Makefile.PL b/Libtmp/Minuit/Makefile.PL
+index bd2c933..2268225 100644
+--- a/Libtmp/Minuit/Makefile.PL
++++ b/Libtmp/Minuit/Makefile.PL
+@@ -125,7 +125,7 @@ undef &MY::postamble; # suppress warning
+ 	$orig .= "FFLAGS = $hack_64bit $mycflags \$(OPTIMIZE)\n";
+ 	$orig .= join "\n",map {
+ 	    ("minuitlib/$_\$(OBJ_EXT): minuitlib/$_.f
+-	$mycompiler -c \$(FFLAGS) -o minuitlib/$_\$(OBJ_EXT) minuitlib/$_.f
++	\$(FC) \$(FFLAGS) -fPIC -c -o minuitlib/$_\$(OBJ_EXT) $mycflags minuitlib/$_.f
+ " )} @minuitfiles;
+ 	return $orig;
+ };
+diff --git a/Libtmp/Slatec/Makefile.PL b/Libtmp/Slatec/Makefile.PL
+index 443d53b..b4675f7 100644
+--- a/Libtmp/Slatec/Makefile.PL
++++ b/Libtmp/Slatec/Makefile.PL
+@@ -85,7 +85,7 @@ undef &MY::postamble; # suppress warning
+ 	$orig =~ s/:\s*slatec\.pd/: slatec.pd/;
+ 	$orig .= "FFLAGS = $hack_64bit $mycflags \$(OPTIMIZE)\n";
+ 	join "\n", $orig, map "$_\$(OBJ_EXT): $_.f
+-	$mycompiler -c \$(FFLAGS) -o $_\$(OBJ_EXT) $_.f", @slatecfiles;
++	\$(FC) \$(FFLAGS) -c -fPIC -o $_\$(OBJ_EXT) $mycflags $_.f", @slatecfiles;
+ };
+ 
+ # Remove i386 option for OS X recent versions for better build, dual arch does not work anyway

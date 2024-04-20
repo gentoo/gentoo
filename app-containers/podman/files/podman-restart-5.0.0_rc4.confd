@@ -1,0 +1,9 @@
+# Config file for /etc/init.d/podman-restart
+
+# Sets the podman log level
+# valid levels: debug, info, warn, error, fatal or panic
+#LOG_LEVEL="info"
+
+# Configure the user[:group] the podman will run as
+# Can be useful to manage rootful or rootless containers
+#RUN_AS_USER="root:root"

@@ -1,0 +1,50 @@
+https://github.com/resurrecting-open-source-projects/sniffit/pull/3
+
+From a05340968343d9f61f57506ed00bff0a62d3f38e Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 28 Jul 2022 12:14:44 +0100
+Subject: [PATCH] Fix -Wimplicit-function-declaration
+
+--- a/src/sn_cfgfile.c
++++ b/src/sn_cfgfile.c
+@@ -2,6 +2,7 @@
+ /*   - by          : Brecht Claerhout                                     */
+ /*   - improvements: Shudoh Kazuyuki                                      */
+ 
++#include <ctype.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
+--- a/src/sn_generation.c
++++ b/src/sn_generation.c
+@@ -13,7 +13,9 @@
+ #include "sn_curses.h"
+ #include "sn_defines.h"
+ #include "sn_structs.h"
++#include "sn_packets.h"
+ #include "sn_generation.h"
++#include "sn_interface.h"
+ 
+ extern volatile int screen_busy;
+ 
+--- a/src/sn_interface.c
++++ b/src/sn_interface.c
+@@ -4,6 +4,7 @@
+ #include "sn_config.h"
+ 
+ #ifdef INCLUDE_INTERFACE
++#include <ctype.h>
+ #include <signal.h>
+ #include <termios.h>
+ #include <stdlib.h>
+--- a/src/sniffit.c
++++ b/src/sniffit.c
+@@ -3,6 +3,7 @@
+ 
+ #include "sn_config.h"		/* Config header file */
+ 
++#include <ctype.h>
+ #include <unistd.h>
+ #include <signal.h>
+ #include <stdlib.h>
+

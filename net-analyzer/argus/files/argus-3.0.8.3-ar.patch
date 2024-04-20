@@ -1,0 +1,11 @@
+--- a/common/Makefile.in
++++ b/common/Makefile.in
+@@ -87,7 +87,7 @@
+ all: $(LIBS)
+ 
+ @INSTALL_LIB@/argus_common.a: $(COMMONOBJ)
+-	rm -f $@; ar qc $@ $(COMMONOBJ)
++	rm -f $@; $(AR) qc $@ $(COMMONOBJ)
+ 	-$(RANLIB) $@
+ 
+ scanner.c: scanner.l 

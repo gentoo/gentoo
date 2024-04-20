@@ -1,0 +1,12 @@
+diff --git a/src/sockserv.c b/src/sockserv.c
+index c25f0fb..647188f 100644
+--- a/src/sockserv.c
++++ b/src/sockserv.c
+@@ -31,6 +31,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <unistd.h>
++#include <sys/select.h>
+ 
+ #include "sockserv.h"
+ #include "tlf_curses.h"

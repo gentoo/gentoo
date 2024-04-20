@@ -1,0 +1,29 @@
+From a7630737a37c11478de265e69605befa89b910b4 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 10 Mar 2024 21:12:29 -0400
+Subject: [PATCH] Do not overwrite the user CFLAGS
+
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 088811c..c051a31 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -35,10 +35,10 @@ if (WITH_ZSTD)
+ endif (WITH_ZSTD)
+ 
+ if (WITH_ZSTD)
+-  set(CMAKE_C_FLAGS "-Wall -Wno-deprecated-declarations -Wunused -Wwrite-strings -Wno-strict-aliasing -Wextra -Wshadow -g -DZWRAP_USE_ZSTD=1 -Werror -Wno-discarded-qualifiers ${MYSQL_CFLAGS}")
++  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wno-deprecated-declarations -Wunused -Wwrite-strings -Wextra -Wshadow -DZWRAP_USE_ZSTD=1 -Wno-discarded-qualifiers ${MYSQL_CFLAGS}")
+   include_directories(${MYDUMPER_SOURCE_DIR} ${MYSQL_INCLUDE_DIR} ${GLIB2_INCLUDE_DIR} ${PCRE_INCLUDE_DIR} ${ZLIB_INCLUDE_DIRS} ${ZSTD_INCLUDE_DIR} )
+ else (WITH_ZSTD)
+-  set(CMAKE_C_FLAGS "-Wall -Wno-deprecated-declarations -Wunused -Wwrite-strings -Wno-strict-aliasing -Wextra -Wshadow -g -Werror ${MYSQL_CFLAGS}")
++  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wno-deprecated-declarations -Wunused -Wwrite-strings -Wextra -Wshadow ${MYSQL_CFLAGS}")
+   include_directories(${MYDUMPER_SOURCE_DIR} ${MYSQL_INCLUDE_DIR} ${GLIB2_INCLUDE_DIR} ${PCRE_INCLUDE_DIR} ${ZLIB_INCLUDE_DIRS} )
+ endif (WITH_ZSTD)
+ 
+-- 
+2.43.2
+

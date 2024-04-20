@@ -1,0 +1,11 @@
+--- a/source/duke3d/src/common.cpp
++++ b/source/duke3d/src/common.cpp
+@@ -642,6 +642,8 @@
+ 
+     addsearchpath("/usr/share/games/jfduke3d");
+     addsearchpath("/usr/local/share/games/jfduke3d");
++    addsearchpath("/usr/share/games/duke3d");
++    addsearchpath("/usr/share/duke3d");
+     addsearchpath("/usr/share/games/" APPBASENAME);
+     addsearchpath("/usr/local/share/games/" APPBASENAME);
+     addsearchpath("/app/extensions/extra");

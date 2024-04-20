@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    A Collection of Ridiculously Useful eXtensions for Emacs. crux bundles many
+    useful interactive commands to enhance your overall Emacs experience. Most
+    of the crux commands are related to the editing experience, but there are
+    also a bunch of utility commands that are just very useful to have (e.g.
+    crux-open-with and crux-reopen-as-root). Many of the functions in crux
+    started life as blog posts on Emacs Redux, then were included in Emacs
+    Prelude, before finally being extracted to crux. You can see a full list of
+    blog posts on functions in crux on the tags page.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/bbatsov/crux/issues/</bugs-to>
+    <remote-id type="github">bbatsov/crux</remote-id>
+  </upstream>
+</pkgmetadata>

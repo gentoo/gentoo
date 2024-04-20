@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jstein@gentoo.org</email>
+		<name>Jonas Stein</name>
+	</maintainer>
+	<upstream>
+		<doc>https://reuse.readthedocs.io/</doc>
+		<remote-id type="pypi">reuse</remote-id>
+		<remote-id type="github">fsfe/reuse-tool</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,10 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Dtach options, which will used, when the `attach` extra command is called.
+# By default, CTRL+D is used, and no signal is send,
+# when you want to detach from the attached console.
+dtach_opts="-e '^D' -r none"
+
+# Options for your started OpenTTD server
+openttd_opts=""

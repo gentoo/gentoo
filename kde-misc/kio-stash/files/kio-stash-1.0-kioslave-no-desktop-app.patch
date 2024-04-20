@@ -1,0 +1,43 @@
+From f977b43a47ebf6d26ee0bd6d35e0ac576bbbbf8a Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Fri, 9 Mar 2018 17:48:15 +0100
+Subject: kio slaves aren't desktop applications & drop incorrect provides
+
+Summary:
+https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#sect-Metadata-GenericComponent
+https://www.freedesktop.org/software/appstream/docs/sect-Metadata-Application.html
+
+also it seems a filestash binary isn't actually installed, so drop the
+provides entry for that
+
+Reviewers: shortstheory, bgupta, apol
+
+Reviewed By: apol
+
+Differential Revision: https://phabricator.kde.org/D11187
+---
+ src/org.kde.filestash.appdata.xml | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/src/org.kde.filestash.appdata.xml b/src/org.kde.filestash.appdata.xml
+index d532186..2df1a70 100644
+--- a/src/org.kde.filestash.appdata.xml
++++ b/src/org.kde.filestash.appdata.xml
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="utf-8"?>
+-<component type="desktop">
++<component>
+   <id>org.kde.filestash.desktop</id>
+   <metadata_license>CC0-1.0</metadata_license>
+   <project_license>GPL-2.0</project_license>
+@@ -89,8 +89,5 @@
+       <image>https://cdn.kde.org/screenshots/kio-stash/kio-stash.png</image>
+     </screenshot>
+   </screenshots>
+-  <provides>
+-    <binary>filestash</binary>
+-  </provides>
+   <project_group>KDE</project_group>
+ </component>
+-- 
+cgit v1.1

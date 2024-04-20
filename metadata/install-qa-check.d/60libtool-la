@@ -1,0 +1,42 @@
+# Check if we're installing .la files unnecessarily
+# https://projects.gentoo.org/qa/policy-guide/installed-files.html#pg0303
+
+libtool_la_check() {
+	if [[ ${CATEGORY}/${PN} == dev-libs/libltdl ]] ; then
+		# bug #293921
+		return
+	fi
+
+	# Bail out if there aren't any .la files being installed
+	# TODO: use -d'' w/ newer EAPIs (bash 4.4+)
+	readarray -t files < <(find "${ED}"/usr/lib* -name '*.la' -print 2>/dev/null)
+	[[ -n "${files[@]}" ]] || return
+
+	if grep -q "dev-libs/libltdl" <<<${RDEPEND}; then
+		# Nothing to do here
+		return
+	fi
+
+	# Iterate over all the .la files we are installing to verify there's
+	# a corresponding .a file - they're pointless without a corresponding
+	# static library.
+	local file
+	local dir
+	local base
+	local bad_files=()
+	for file in "${files[@]}" ; do
+		if [[ ! -f ${file%.la}.a ]] ; then
+			bad_files+=( ${file} )
+		fi
+	done
+
+	if [[ -n "${bad_files[@]}" ]] ; then
+		eqawarn "QA Notice: Installing libtool files (.la) without corresponding static libraries!"
+		eqatag -v libtool-la.unnecessary "${bad_files[@]#${D}}"
+	fi
+}
+
+libtool_la_check
+: # guarantee successful exit
+
+# vim:ft=sh

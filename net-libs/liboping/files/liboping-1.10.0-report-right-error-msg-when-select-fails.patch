@@ -1,0 +1,33 @@
+From f9115d65b561adeb6d36ded952949f065ad0a572 Mon Sep 17 00:00:00 2001
+From: Florian Forster <ff@octo.it>
+Date: Thu, 14 Sep 2017 08:37:23 +0200
+Subject: [PATCH] src/liboping.c: Report right error message when select()
+ fails.
+
+After a successful call to gettimeofday(), the value of errno is
+unspecified.
+---
+ src/liboping.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/liboping.c b/src/liboping.c
+index eca5c16..5253e8c 100644
+--- a/src/liboping.c
++++ b/src/liboping.c
+@@ -1465,6 +1465,7 @@ int ping_send (pingobj_t *obj)
+ 				(unsigned) timeout.tv_usec);
+ 
+ 		int status = select (max_fd + 1, &read_fds, &write_fds, NULL, &timeout);
++		int select_errno = errno;
+ 
+ 		if (gettimeofday (&nowtime, NULL) == -1)
+ 		{
+@@ -1474,7 +1475,7 @@ int ping_send (pingobj_t *obj)
+ 
+ 		if (status == -1)
+ 		{
+-			ping_set_errno (obj, errno);
++			ping_set_errno (obj, select_errno);
+ 			dprintf ("select: %s\n", obj->errmsg);
+ 			return (-1);
+ 		}

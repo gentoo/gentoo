@@ -1,0 +1,29 @@
+From 15898de03539ad2376cca591c39c60134a7d4a12 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sat, 3 Feb 2024 08:05:34 -0500
+Subject: [PATCH 1/1] bindings/xml/libxml_xmlparser.c: add stdlib.h include
+
+This file uses malloc() but does not include stdlib.h directly. With
+glibc, that apparently works out just fine... but with musl, it leads
+to implicit declaration warnings/errors, most likely because musl does
+not include stdlib.h transitively via any of the other headers used by
+this file.
+---
+ bindings/xml/libxml_xmlparser.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/bindings/xml/libxml_xmlparser.c b/bindings/xml/libxml_xmlparser.c
+index e4a6d80..28aadf1 100644
+--- a/bindings/xml/libxml_xmlparser.c
++++ b/bindings/xml/libxml_xmlparser.c
+@@ -6,6 +6,7 @@
+  */
+ 
+ #include <stdbool.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <assert.h>
+ 
+-- 
+2.43.0
+

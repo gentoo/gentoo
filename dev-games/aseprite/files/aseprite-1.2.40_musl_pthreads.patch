@@ -1,0 +1,57 @@
+From 27403363708ca72cbbbdb085de27896485c5c422 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Sat, 12 Nov 2022 05:13:08 +0300
+Subject: [PATCH] Don't use pthread_detach() after pthread_join()
+
+After pthread_join() all allocated to thread resources are freed, so
+pthread_detach() after pthread_join() will results in undefined behavior
+with SIGSERV on some libc implementations (like MUSL). According to
+pthread_detach(3), "Either pthread_join(3) or pthread_detach() should be
+called for each thread that an application creates".
+---
+ base/thread.cpp | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/laf/base/thread.cpp b/laf/base/thread.cpp
+index 81c1284..4d5e0ce 100644
+--- a/laf/base/thread.cpp
++++ b/laf/base/thread.cpp
+@@ -55,8 +55,12 @@ thread::thread()
+ 
+ thread::~thread()
+ {
+-  if (joinable())
++  if (joinable()) {
++#if LAF_WINDOWS
++    ::CloseHandle(m_native_handle);
++#endif  
+     detach();
++  }
+ }
+ 
+ bool thread::joinable() const
+@@ -69,6 +73,7 @@ void thread::join()
+   if (joinable()) {
+ #if LAF_WINDOWS
+     ::WaitForSingleObject(m_native_handle, INFINITE);
++    ::CloseHandle(m_native_handle);
+ #else
+     ::pthread_join((pthread_t)m_native_handle, NULL);
+ #endif
+@@ -79,12 +84,7 @@ void thread::join()
+ void thread::detach()
+ {
+   if (joinable()) {
+-#if LAF_WINDOWS
+-    ::CloseHandle(m_native_handle);
+-    m_native_handle = (native_handle_type)0;
+-#else
+-    ::pthread_detach((pthread_t)m_native_handle);
+-#endif
++    m_native_handle = (native_handle_type)NULL;
+   }
+ }
+ 
+-- 
+2.37.4
+

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>juippis@gentoo.org</email>
+    <name>Joonas Niilola</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>virtualization@gentoo.org</email>
+    <name>Gentoo Virtualization Project</name>
+  </maintainer>
+  <use>
+    <flag name="fuidshift">Install the fuidshift binary - currently conflicts with app-containers/lxd</flag>
+  </use>
+  <longdescription>
+    Incus is a modern, secure and powerful system container and virtual machine manager.
+    Incus is a community fork from Canonical's LXD.
+
+    It provides a unified experience for running and managing full Linux systems inside containers
+    or virtual machines. Incus supplies images for a wide number of Linux distributions and is built
+    around a very powerful, yet pretty simple, REST API. Incus scales from one instance on a single
+    machine to a cluster in a full data center rack, making it suitable for running workloads both
+    for development and in production.
+
+    Incus allows you to easily set up a system that feels like a small private cloud. You can run any
+    type of workload in an efficient way while keeping your resources optimized.
+
+    You should consider using Incus if you want to containerize different environments or run virtual
+    machines, or in general run and manage your infrastructure in a cost-effective way.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">canonical/lxd</remote-id>
+  </upstream>
+</pkgmetadata>

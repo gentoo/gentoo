@@ -1,0 +1,195 @@
+--- a/src/environ.c
++++ b/src/environ.c
+@@ -4,7 +4,7 @@
+ #endif
+ #include "environ.h"
+ 
+-int check_env()
++int check_env(void)
+ {
+ 
+ 	if (getenv(SHASH_KEY) != NULL
+@@ -15,7 +15,7 @@
+ }
+ 
+ char *
+- get_env_key()
++ get_env_key(void)
+ {
+ 
+ 	if (getenv(SHASH_KEY) != NULL) {
+@@ -26,7 +26,7 @@
+ 
+ }
+ 
+-char *get_env_bit_mode()
++char *get_env_bit_mode(void)
+ {
+ 
+ 	return getenv(SHASH_KEYMODE);
+--- a/src/environ.h
++++ b/src/environ.h
+@@ -3,7 +3,7 @@
+ #define SHASH_KEY "SHASH_KEY"
+ #define SHASH_KEYMODE "SHASH_KEYMODE"
+ 
+-int check_env();
+-char * get_env_key();
+-char * get_env_bit_mode();
++int check_env(void);
++char * get_env_key(void);
++char * get_env_bit_mode(void);
+ 
+--- a/src/errors.c
++++ b/src/errors.c
+@@ -1,5 +1,7 @@
+ #include <defines.h>
+ 
++#include <stdio.h>
++
+ extern int quiet;
+ 
+ void err_quit(char *errmsg)
+--- a/src/extra.c
++++ b/src/extra.c
+@@ -1,5 +1,10 @@
+ #include <defines.h>
+ 
++#include <pwd.h>
++#include <stdlib.h>
++#include <string.h>
++#include <sys/stat.h>
++
+ #ifdef HAVE_STAT
+ 
+ int check_file(char *filename)
+--- a/src/gaaout.c
++++ b/src/gaaout.c
+@@ -11,6 +11,11 @@
+ #endif
+ #endif
+ 
++void hash_license(void);
++void hash_version(void);
++void list_keygen_algorithms(void);
++int hash_list(void);
++
+ void* gaa_malloc( size_t size) {
+ void* ret;
+ 	ret = malloc(size);
+--- a/src/random.c
++++ b/src/random.c
+@@ -24,7 +24,7 @@
+ static FILE *ffd;
+ 
+ word32
+-get_rand32()
++get_rand32(void)
+ {
+ 	int fd, x;
+ 	word32 rand_data;
+@@ -46,7 +46,7 @@
+ 
+ 
+ word8
+-get_rand8()
++get_rand8(void)
+ {
+ 
+ 	int fd, x;
+@@ -69,7 +69,7 @@
+ 
+ 
+ word32
+-get_safe_rand32()
++get_safe_rand32(void)
+ {
+ 	int fd, x;
+ 	word32 rand_data;
+@@ -91,7 +91,7 @@
+ 
+ 
+ word8
+-get_safe_rand8()
++get_safe_rand8(void)
+ {
+ 
+ 	int fd, x;
+@@ -131,13 +131,13 @@
+ 	return 0;
+ }
+ 
+-void close_rand()
++void close_rand(void)
+ {
+ 	fclose(ffd);
+ }
+ 
+ word32
+-get_o_rand32()
++get_o_rand32(void)
+ {
+ 	int x;
+ 	word32 rand_data;
+@@ -152,7 +152,7 @@
+ }
+ 
+ word8
+-get_o_rand8()
++get_o_rand8(void)
+ {
+ 
+ 	int x;
+--- a/src/random.h
++++ b/src/random.h
+@@ -1,14 +1,14 @@
+ 
+ #ifdef HAVE_DEV_RANDOM
+ 
+-word32 get_rand32();
+-word8 get_rand8();
+-word32 get_safe_rand32();
+-word8 get_safe_rand8();
++word32 get_rand32(void);
++word8 get_rand8(void);
++word32 get_safe_rand32(void);
++word8 get_safe_rand8(void);
+ 
+ int open_rand(int);
+-void close_rand();
+-word32 get_o_rand32();
+-word8 get_o_rand8();
++void close_rand(void);
++word32 get_o_rand32(void);
++word8 get_o_rand8(void);
+ 
+ #endif
+--- a/src/shash.c
++++ b/src/shash.c
+@@ -485,7 +485,7 @@
+ 	}
+ }
+ 
+-int hash_list()
++int hash_list(void)
+ {
+ 	hashid i;
+ 	char *y;
+@@ -715,7 +715,7 @@
+ 	return counter;
+ }
+ 
+-void hash_license()
++void hash_license(void)
+ {
+ 	fprintf(stdout, ("\nCopyright (C) 1999,2001,2002 Nikos Mavroyanopoulos\n"
+ "This program is free software; you can redistribute it and/or modify \n"
+@@ -733,7 +733,7 @@
+ "Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.\n\n"));
+ }
+ 
+-void hash_version()
++void hash_version(void)
+ {
+ 	fprintf(stderr, ("shash v.%s (%s-%s-%s)\n"), VERSION, T_CPU,
+ 		T_VENDOR, T_OS);

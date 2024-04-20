@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+pidfile="/var/run/saned/saned.pid"
+command="/usr/sbin/saned"
+command_args="-a ${SANED_USER:-root}"
+
+start_pre() {
+	checkpath -d -o ${SANED_USER:-root} ${pidfile%/*}
+}

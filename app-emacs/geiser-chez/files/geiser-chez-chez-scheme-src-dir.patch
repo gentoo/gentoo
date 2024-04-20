@@ -1,0 +1,12 @@
+index 7f29927..cc1f4ca 100644
+--- a/geiser-chez.el
++++ b/geiser-chez.el
+@@ -78,7 +78,7 @@ init file at this location in remote host."
+     geiser-chez-binary))
+ 
+ (defvar geiser-chez-scheme-dir
+-  (expand-file-name "src" (file-name-directory load-file-name))
++  (expand-file-name "src" "@SITEETC@")
+   "Directory where the Chez scheme geiser modules are installed.")
+ 
+ (defun geiser-chez--parameters ()

@@ -1,0 +1,16 @@
+Have Makefile respect user chosen PKG_CONFIG
+--- a/Makefile
++++ b/Makefile
+@@ -3,8 +3,10 @@
+ # You may want to rename the binary-file.
+ BIN_FILENAME = gkrellm-countdown
+ 
+-GTK_INCLUDE ?= `pkg-config gtk+-2.0 --cflags`
+-GTK_LIB ?= `pkg-config gtk+-2.0 --libs`
++PKG_CONFIG ?= pkg-config
++
++GTK_INCLUDE ?= $(shell ${PKG_CONFIG} gtk+-2.0 --cflags)
++GTK_LIB ?= $(shell ${PKG_CONFIG} gtk+-2.0 --libs)
+ IMLIB_INCLUDE ?= 
+ IMLIB_LIB ?= 
+ PLUGIN_DIR ?= /usr/local/lib/gkrellm2/plugins

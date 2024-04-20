@@ -1,0 +1,30 @@
+--- a/base/SignalSender.cpp
++++ b/base/SignalSender.cpp
+@@ -11,6 +11,7 @@
+ #include "SignalSender.h"
+ #include "Group.h"
+ #include "Behavior.h"
++#include <cstddef>
+ 
+ SignalSender * SignalSender::p_SignalSender = NULL;
+ 
+--- a/base/Behavior.cpp
++++ b/base/Behavior.cpp
+@@ -9,6 +9,7 @@
+ #include "Private.h"
+ #include "Behavior.h"
+ #include "Group.h"
++#include <cstddef>
+ 
+ Behavior::Behavior() {
+ 	//EM_COUT("Behavior::Behavior", 1);
+--- a/base/BehaviorVisitor.cpp
++++ b/base/BehaviorVisitor.cpp
+@@ -9,6 +9,7 @@
+ #include "BehaviorVisitor.h"
+ #include "Behavior.h"
+ #include "Group.h"
++#include <cstddef>
+ 
+ BehaviorVisitor * BehaviorVisitor::p_BehaviorVisitor = NULL;
+ 

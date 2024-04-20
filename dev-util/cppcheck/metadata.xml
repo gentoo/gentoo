@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
+	</maintainer>
+	<use>
+		<flag name="charts">Enable QtCharts usage in the GUI</flag>
+		<flag name="htmlreport">install cppcheck-htmlreport</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">danmar/cppcheck</remote-id>
+		<remote-id type="sourceforge">cppcheck</remote-id>
+	</upstream>
+</pkgmetadata>

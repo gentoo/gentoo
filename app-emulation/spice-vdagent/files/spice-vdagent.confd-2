@@ -1,0 +1,11 @@
+# The virtual communication port provided by the hypervisor/vm
+# Default: /dev/virtio-ports/com.redhat.spice.0
+#PORT="/dev/virtio-ports/com.redhat.spice.0"
+
+# Userspace Input Device
+# Default: /dev/uinput or /dev/input/uinput
+#DEVICE=""
+
+# Extra arguments for spice-vdagentd
+# Default: none
+#SPICE_VDAGENT_ARGS=""

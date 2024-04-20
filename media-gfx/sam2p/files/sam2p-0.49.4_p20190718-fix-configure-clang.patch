@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/827925
+--- a/configure.in
++++ b/configure.in
+@@ -79,11 +79,11 @@ else
+ fi
+
+ dnl Checks for programs.
+ dnl AC_PROG_CC
+ AC_LANG_CPLUSPLUS
+-CXXFLAGS=" "
++CXXFLAGS="-fPIC"
+ dnl ^^^ set it to non-empty, so AC_PROG_CXX won't include `-g'
+ CCC="$CCC g++"
+ dnl ^^^ check g++ before c++ (see acspecific.m4, grep AC_PROG_CXX)
+ AC_PROG_CXX

@@ -1,0 +1,24 @@
+From 1120713781a5da03a56d3f8d59904c0fd20f6dd6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Leonardo=20Hern=C3=A1ndez=20Hern=C3=A1ndez?=
+ <leohdz172@proton.me>
+Date: Mon, 11 Dec 2023 17:05:26 -0600
+Subject: [PATCH] fix build with -Werror=incompatible-pointer-types
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Leonardo Hernández Hernández <leohdz172@proton.me>
+--- a/rman.c
++++ b/rman.c
+@@ -268,7 +268,7 @@ stricmp(const char *s1, const char *s2) {
+ 	else return 1;
+ }
+ 
+-int lcexceptionscmp(const char **a, const char **b) { return stricmp(*a, *b); }
++int lcexceptionscmp(const void *a, const void *b) { return stricmp((const char *)a, (const char *)b); }
+ 
+ int
+ strincmp(const char *s1, const char *s2, size_t n) {
+-- 
+2.43.0
+

@@ -1,0 +1,46 @@
+From 4e6c67832f53b126d1e54b9398b88f23e75846f3 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Thu, 11 Apr 2024 10:05:30 +0300
+Subject: [PATCH 1/3] Use external GTest suite
+
+---
+ CMakeLists.txt | 22 ++--------------------
+ 1 file changed, 2 insertions(+), 20 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 85afe58..e23d2ca 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -319,27 +319,9 @@ endif(SNAPPY_BUILD_TESTS OR SNAPPY_BUILD_BENCHMARKS)
+ if(SNAPPY_BUILD_TESTS)
+   enable_testing()
+ 
+-  # Prevent overriding the parent project's compiler/linker settings on Windows.
+-  set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+-  set(install_gtest OFF)
+-  set(install_gmock OFF)
+-  set(build_gmock ON)
+-
+   # This project is tested using GoogleTest.
+-  add_subdirectory("third_party/googletest")
+-
+-  # GoogleTest triggers a missing field initializers warning.
+-  if(SNAPPY_HAVE_NO_MISSING_FIELD_INITIALIZERS)
+-    set_property(TARGET gtest
+-        APPEND PROPERTY COMPILE_OPTIONS -Wno-missing-field-initializers)
+-    set_property(TARGET gmock
+-        APPEND PROPERTY COMPILE_OPTIONS -Wno-missing-field-initializers)
+-  endif(SNAPPY_HAVE_NO_MISSING_FIELD_INITIALIZERS)
+-
+-  if(SNAPPY_HAVE_NO_IMPLICIT_INT_FLOAT_CONVERSION)
+-    set_property(TARGET gtest
+-        APPEND PROPERTY COMPILE_OPTIONS -Wno-implicit-int-float-conversion)
+-  endif(SNAPPY_HAVE_NO_IMPLICIT_INT_FLOAT_CONVERSION)
++  find_package(GTest REQUIRED)
++  include(GoogleTest)
+ 
+   add_executable(snappy_unittest "")
+   target_sources(snappy_unittest
+-- 
+2.43.2
+

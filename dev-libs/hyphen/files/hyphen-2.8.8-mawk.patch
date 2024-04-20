@@ -1,0 +1,47 @@
+https://github.com/hunspell/hyphen/commit/3d05509b7ce8c350f4476830b00241025eeae329
+https://github.com/hunspell/hyphen/pull/12
+
+From 3d05509b7ce8c350f4476830b00241025eeae329 Mon Sep 17 00:00:00 2001
+From: Philip Chimento <philip.chimento@gmail.com>
+Date: Sat, 12 Nov 2016 00:36:06 -0800
+Subject: [PATCH] More portable awk script
+
+gensub() is specific to gawk, this uses gsub() instead in order to build
+on platforms that don't have gawk such as macOS.
+---
+ lig.awk | 22 ++++++++++++++--------
+ 1 file changed, 14 insertions(+), 8 deletions(-)
+
+diff --git a/lig.awk b/lig.awk
+index 6737170..4ea5e46 100644
+--- a/lig.awk
++++ b/lig.awk
+@@ -24,14 +24,20 @@ c=b
+ c!=b { print c }
+ 
+ /f[1-9]?$/ {
+-	print gensub("f[1-9]?$", "ﬀ", "g", b);
+-	if (c!=b) print gensub("f[1-9]?$", "ﬀ", "g", c);
+-
+-	print gensub("f[1-9]?$", "ﬁ", "g", b);
+-	if (c!=b) print gensub("f[1-9]?$", "ﬁ", "g", c);
+-
+-	print gensub("f[1-9]?$", "ﬂ", "g", b);
+-	if (c!=b) print gensub("f[1-9]?$", "ﬂ", "g", c);
++	out=b; gsub("f[1-9]?$", "ﬀ", out); print out
++	if (c!=b) {
++		out=c; gsub("f[1-9]?$", "ﬀ", out); print out
++	}
++
++	out=b; gsub("f[1-9]?$", "ﬁ", out); print out
++	if (c!=b) {
++		out=c; gsub("f[1-9]?$", "ﬁ", out); print out
++	}
++
++	out=b; gsub("f[1-9]?$", "ﬂ", out); print out
++	if (c!=b) {
++		out=c; gsub("f[1-9]?$", "ﬂ", out); print out
++	}
+ }
+ 
+ 

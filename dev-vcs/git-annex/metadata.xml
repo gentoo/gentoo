@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="assistant">Enable git-annex assistant and watch command</flag>
+		<flag name="benchmark">Enable benchmarking</flag>
+		<flag name="dbus">Enable dbus support</flag>
+		<flag name="gitlfs">Build with git-lfs library (rather than vendored copy)</flag>
+		<flag name="magicmime">Use libmagic to determine file MIME types</flag>
+		<flag name="pairing">Enable pairing</flag>
+		<flag name="torrentparser">Use haskell torrent library to parse torrent files</flag>
+		<flag name="webapp">Enable git-annex webapp</flag>
+	</use>
+	<upstream>
+		<remote-id type="hackage">git-annex</remote-id>
+	</upstream>
+</pkgmetadata>

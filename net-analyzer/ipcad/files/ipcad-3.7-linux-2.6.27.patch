@@ -1,0 +1,21 @@
+--- a/configure.in
++++ b/configure.in
+@@ -156,6 +156,7 @@
+ ])
+ 
+ AC_CHECK_HEADERS(asm/types.h)
++AC_CHECK_HEADERS(linux/in.h)
+ AC_CHECK_HEADERS(linux/socket.h)
+ AC_CHECK_HEADERS(linux/netlink.h,,,
+ [#ifdef HAVE_LINUX_SOCKET_H
+@@ -164,6 +165,9 @@
+ AC_CHECK_HEADERS(linux/netfilter.h,,,
+ [#ifdef HAVE_LINUX_SOCKET_H
+ #include <linux/socket.h>
++#endif
++#ifdef HAVE_LINUX_IN_H
++#include <linux/in.h>
+ #endif])
+ 
+ AC_CHECK_HEADERS(linux/if.h,,,
+

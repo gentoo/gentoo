@@ -1,0 +1,54 @@
+diff --git a/Makefile b/Makefile
+index 11d0df8..8e9874d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -28,9 +28,8 @@ LOBJS = src/version.o \
+ 
+ GENH = src/version.h
+ 
+-CFLAGS  += -Wall -O0 -g -std=c99 -D_GNU_SOURCE -pipe
+-NO_AS_NEEDED = -Wl,--no-as-needed
+-LDFLAGS = -fPIC $(NO_AS_NEEDED) $(LIBDL) $(PTHREAD)
++CFLAGS  = -Wall -std=c99 -D_GNU_SOURCE
++LIBS    = -ldl -lpthread
+ INC     = 
+ PIC     = -fPIC
+ AR      = $(CROSS_COMPILE)ar
+@@ -41,15 +40,15 @@ LDSO_SUFFIX = so
+ LD_SET_SONAME = -Wl,-soname=
+ INSTALL = ./tools/install.sh
+ 
+-LDSO_PATHNAME = libproxychains4.$(LDSO_SUFFIX)
++LDSO_PATHNAME = libproxychains.$(LDSO_SUFFIX)
+ 
+ SHARED_LIBS = $(LDSO_PATHNAME)
+ ALL_LIBS = $(SHARED_LIBS)
+-PXCHAINS = proxychains4
+-PXCHAINS_D = proxychains4-daemon
++PXCHAINS = proxychains
++PXCHAINS_D = proxychains-daemon
+ ALL_TOOLS = $(PXCHAINS) $(PXCHAINS_D)
+ ALL_CONFIGS = src/proxychains.conf
+-ZSH_COMPLETION = completions/zsh/_proxychains4
++ZSH_COMPLETION = completions/zsh/_proxychains
+ 
+ -include config.mak
+ 
+@@ -93,14 +92,13 @@ src/version.o: src/version.h
+ 	$(CC) $(CPPFLAGS) $(CFLAGS) $(CFLAGS_MAIN) $(INC) $(PIC) -c -o $@ $<
+ 
+ $(LDSO_PATHNAME): $(LOBJS)
+-	$(CC) $(LDFLAGS) $(FAT_LDFLAGS) $(LD_SET_SONAME)$(LDSO_PATHNAME) \
+-		$(USER_LDFLAGS) -shared -o $@ $^ $(SOCKET_LIBS)
++	$(CC) $(LDFLAGS) $(LD_SET_SONAME)$(LDSO_PATHNAME) -shared $(PIC) -o $@ $^ $(LIBS) $(SOCKET_LIBS)
+ 
+ $(PXCHAINS): $(OBJS)
+-	$(CC) $^ $(FAT_BIN_LDFLAGS) $(USER_LDFLAGS) $(LIBDL) -o $@
++	$(CC) $(LDFLAGS) $^ $(FAT_BIN_LDFLAGS) $(USER_LDFLAGS) $(LIBDL) -o $@
+ 
+ $(PXCHAINS_D): $(DOBJS)
+-	$(CC) $^ $(FAT_BIN_LDFLAGS) $(USER_LDFLAGS) -o $@
++	$(CC) $(LDFLAGS) $^ $(FAT_BIN_LDFLAGS) $(USER_LDFLAGS) -o $@
+ 
+ 
+ .PHONY: all clean install install-config install-libs install-tools install-zsh-completion

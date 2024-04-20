@@ -1,0 +1,21 @@
+From 84c66c389cd7a8a47aa5f543726683a19dcca5ff Mon Sep 17 00:00:00 2001
+From: Julian Ospald <hasufell@posteo.de>
+Date: Mon, 19 Feb 2018 20:06:45 +0100
+Subject: [PATCH] MEM: fix possible memory leak wrt #174
+
+---
+ src/alsa.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/alsa.c b/src/alsa.c
+index c46d4d8..d91c79f 100644
+--- a/src/alsa.c
++++ b/src/alsa.c
+@@ -336,6 +336,7 @@ mixer_get_poll_descriptors(const char *hctl, snd_mixer_t *mixer)
+ 	err = snd_mixer_poll_descriptors(mixer, fds, count);
+ 	if (err < 0) {
+ 		ALSA_CARD_ERR(hctl, err, "Couldn't get poll descriptors");
++		g_free(fds);
+ 		return NULL;
+ 	}
+ 

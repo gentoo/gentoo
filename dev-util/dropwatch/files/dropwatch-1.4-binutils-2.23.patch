@@ -1,0 +1,73 @@
+commit a5aa2c3cbae207d12b9f2fded36a47031c55be36
+Author: Andrew Savchenko <bircoph@gmail.com>
+Date:   Thu Nov 17 00:04:47 2016 +0300
+
+    Fix build with recent binutils
+    
+    Gentoo-Bug:         457980
+    Upstream Ticket:    5
+
+--- a/src/lookup.c
++++ b/src/lookup.c
+@@ -27,13 +27,13 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <sys/utsname.h>
+-#include <bfd.h>
+ #include <string.h>
+ #include <unistd.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ 
+ #include "lookup.h"
++#include <bfd.h>
+ 
+ extern struct lookup_methods bfd_methods;
+ extern struct lookup_methods kallsym_methods;
+--- a/src/lookup.h
++++ b/src/lookup.h
+@@ -28,6 +28,9 @@
+ #include <stdlib.h>
+ #include <asm/types.h>
+ 
++// satisfy PR 14072 in bfd.h
++#define PACKAGE 1
++#define PACKAGE_VERSION 1
+ 
+ /*
+  * Initalization routine
+--- a/src/lookup_bfd.c
++++ b/src/lookup_bfd.c
+@@ -25,13 +25,13 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <sys/utsname.h>
+-#include <bfd.h>
+ #include <string.h>
+ #include <unistd.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ 
+ #include "lookup.h"
++#include <bfd.h>
+ 
+ 
+ static int lookup_bfd_init(void)
+--- a/src/lookup_kas.c
++++ b/src/lookup_kas.c
+@@ -25,7 +25,6 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <sys/utsname.h>
+-#include <bfd.h>
+ #include <string.h>
+ #include <unistd.h>
+ #include <sys/types.h>
+@@ -33,6 +32,7 @@
+ #include <sys/queue.h>
+ 
+ #include "lookup.h"
++#include <bfd.h>
+ 
+ struct symbol_entry {
+ 	char *sym_name;

@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/913817
+https://github.com/libunwind/libunwind/issues/520
+https://github.com/libunwind/libunwind/pull/521
+
+From aaf9909c91f1fa875907df8d437bff689e00172e Mon Sep 17 00:00:00 2001
+From: Stephen Webb <swebb@blackberry.com>
+Date: Fri, 26 May 2023 16:22:08 -0400
+Subject: [PATCH] Fix FTBFS on Linux ppc32
+
+Looks like the Linux ucontext structure has changed for PPC at some
+point. This probably needs some kind of version check, or else ancient
+kernels will need to stick with 1.6 or earlier.
+---
+ src/ppc32/ucontext_i.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/ppc32/ucontext_i.h b/src/ppc32/ucontext_i.h
+index 64f8ed878..ee93c6979 100644
+--- a/src/ppc32/ucontext_i.h
++++ b/src/ppc32/ucontext_i.h
+@@ -44,8 +44,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.  */
+ //#define MQ_IDX                36
+ #define LINK_IDX        36
+ 
+-#define _UC_MCONTEXT_GPR(x) ( (void *)&dmy_ctxt.uc_mcontext.gregs[x] - (void *)&dmy_ctxt) )
+-#define _UC_MCONTEXT_FPR(x) ( ((void *)&dmy_ctxt.uc_mcontext.fpregs[x] - (void *)&dmy_ctxt) )
++#define _UC_MCONTEXT_GPR(x) ( ((void *)&dmy_ctxt.uc_mcontext.uc_regs->gregs[x] - (void *)&dmy_ctxt) )
++#define _UC_MCONTEXT_FPR(x) ( ((void *)&dmy_ctxt.uc_mcontext.uc_regs->fpregs.fpregs[x] - (void *)&dmy_ctxt) )
+ 
+ /* These are dummy structures used only for obtaining the offsets of the
+    various structure members. */

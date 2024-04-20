@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Gnuclient
+NoDisplay=true
+Comment=Tell a running Emacs to visit a file
+Comment[de]=In einer laufenden Emacs-Instanz eine Datei öffnen
+Comment[es]=Abrir un archivo en un Emacs corriente
+Comment[fr]=Ouvre un fichier dans une instance d'Emacs qui est déjà lancée
+TryExec=/usr/bin/gnuclient
+Exec=/usr/bin/gnuclient %F
+Terminal=false
+MimeType=text/css;text/english;text/html;text/plain;text/x-c;text/x-chdr;text/x-csrc;text/x-c++;text/x-c++hdr;text/x-c++src;text/x-java;text/x-makefile;text/x-moc;text/x-pascal;text/x-tcl;text/x-tex;application/x-shellscript;

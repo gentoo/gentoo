@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chithanh@gentoo.org</email>
+		<name>Chí-Thanh Christopher Nguyễn</name>
+	</maintainer>
+	<longdescription>Upstream out-of-tree aic8800 linux driver for the following chips:
+AIC8800 AIC8801 AIC8800DC AIC8800DW AIC8800FC</longdescription>
+	<use>
+		<flag name="firmware">Install device firmware</flag>
+	</use>
+</pkgmetadata>

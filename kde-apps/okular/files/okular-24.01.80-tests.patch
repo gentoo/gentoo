@@ -1,0 +1,98 @@
+From 7e5c4aa3760db4dbb76af47e173be3dff229bff7 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 19 Dec 2023 10:13:52 +0100
+Subject: [PATCH] Move tests into existing (auto)tests subdirectories
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ generators/chm/CMakeLists.txt                 | 11 +++--------
+ generators/chm/autotests/CMakeLists.txt       |  7 +++++++
+ generators/chm/autotests/chmgeneratortest.cpp |  2 +-
+ generators/comicbook/CMakeLists.txt           |  9 +++------
+ generators/comicbook/autotests/CMakeLists.txt |  5 +++++
+ 5 files changed, 19 insertions(+), 15 deletions(-)
+ create mode 100644 generators/chm/autotests/CMakeLists.txt
+ create mode 100644 generators/comicbook/autotests/CMakeLists.txt
+
+diff --git a/generators/chm/CMakeLists.txt b/generators/chm/CMakeLists.txt
+index 5d569499f..2784f75fc 100644
+--- a/generators/chm/CMakeLists.txt
++++ b/generators/chm/CMakeLists.txt
+@@ -24,14 +24,9 @@ target_include_directories(okularGenerator_chmlib PRIVATE ${CHM_INCLUDE_DIR} ${L
+ target_link_libraries(okularGenerator_chmlib  okularcore ${CHM_LIBRARY} ${LIBZIP_LIBRARY} KF6::KHtml)
+ 
+ ########### autotests ###############
+-
+-add_definitions( -DKDESRCDIR="${CMAKE_CURRENT_SOURCE_DIR}/" )
+-ecm_add_test(autotests/chmgeneratortest.cpp
+-    TEST_NAME "chmgeneratortest"
+-    LINK_LIBRARIES Qt6::Test KF6::CoreAddons okularcore
+-)
+-
+-target_compile_definitions(chmgeneratortest PRIVATE -DGENERATOR_PATH="$<TARGET_FILE:okularGenerator_chmlib>")
++if(BUILD_TESTING)
++   add_subdirectory(autotests)
++endif()
+ 
+ ########### install files ###############
+ install( PROGRAMS okularApplication_chm.desktop org.kde.mobile.okular_chm.desktop  DESTINATION  ${KDE_INSTALL_APPDIR} )
+diff --git a/generators/chm/autotests/CMakeLists.txt b/generators/chm/autotests/CMakeLists.txt
+new file mode 100644
+index 000000000..36c468156
+--- /dev/null
++++ b/generators/chm/autotests/CMakeLists.txt
+@@ -0,0 +1,7 @@
++add_definitions( -DKDESRCDIR="${CMAKE_CURRENT_SOURCE_DIR}/../" )
++ecm_add_test(chmgeneratortest.cpp
++    TEST_NAME "chmgeneratortest"
++    LINK_LIBRARIES Qt6::Test KF6::CoreAddons okularcore
++)
++
++target_compile_definitions(chmgeneratortest PRIVATE -DGENERATOR_PATH="$<TARGET_FILE:okularGenerator_chmlib>")
+diff --git a/generators/chm/autotests/chmgeneratortest.cpp b/generators/chm/autotests/chmgeneratortest.cpp
+index 2c7696ab1..24742248b 100644
+--- a/generators/chm/autotests/chmgeneratortest.cpp
++++ b/generators/chm/autotests/chmgeneratortest.cpp
+@@ -30,7 +30,7 @@ void ChmGeneratorTest::initTestCase()
+ {
+     Okular::SettingsCore::instance(QStringLiteral("ChmGeneratorTest"));
+     m_document = new Okular::Document(nullptr);
+-    const QString testFile = QStringLiteral(KDESRCDIR "autotests/data/test.chm");
++    const QString testFile = QStringLiteral(KDESRCDIR "data/test.chm");
+     QMimeDatabase db;
+     const QMimeType mime = db.mimeTypeForFile(testFile);
+     QCOMPARE(m_document->openDocument(testFile, QUrl(), mime), Okular::Document::OpenSuccess);
+diff --git a/generators/comicbook/CMakeLists.txt b/generators/comicbook/CMakeLists.txt
+index 2fc8ff710..d92c75905 100644
+--- a/generators/comicbook/CMakeLists.txt
++++ b/generators/comicbook/CMakeLists.txt
+@@ -27,12 +27,9 @@ if (KArchive_HAVE_LZMA)
+ endif()
+ 
+ ########### autotests ###############
+-
+-add_definitions( -DKDESRCDIR="${CMAKE_CURRENT_SOURCE_DIR}/" )
+-ecm_add_test(autotests/comicbooktest.cpp
+-    TEST_NAME "comicbooktest"
+-    LINK_LIBRARIES Qt6::Test KF6::CoreAddons okularcore okular_comicbook
+-)
++if(BUILD_TESTING)
++    add_subdirectory(autotests)
++endif()
+ 
+ ########### install files ###############
+ install( PROGRAMS okularApplication_comicbook.desktop org.kde.mobile.okular_comicbook.desktop  DESTINATION  ${KDE_INSTALL_APPDIR} )
+diff --git a/generators/comicbook/autotests/CMakeLists.txt b/generators/comicbook/autotests/CMakeLists.txt
+new file mode 100644
+index 000000000..6426105e4
+--- /dev/null
++++ b/generators/comicbook/autotests/CMakeLists.txt
+@@ -0,0 +1,5 @@
++add_definitions( -DKDESRCDIR="${CMAKE_CURRENT_SOURCE_DIR}/../" )
++ecm_add_test(comicbooktest.cpp
++    TEST_NAME "comicbooktest"
++    LINK_LIBRARIES Qt6::Test KF6::CoreAddons okularcore okular_comicbook
++)
+-- 
+2.43.0
+

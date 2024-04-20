@@ -1,0 +1,20 @@
+commit 8ed9a7721a406fea7dfc7f0a5eb6e68f3d63a99e
+Author: Eray Aslan <eras@gentoo.org>
+Date:   Fri Jun 3 13:52:55 2011 +0000
+
+    Fix linking against gold
+
+diff --git a/configure.in b/configure.in
+index ac16864..a260652 100644
+--- a/configure.in
++++ b/configure.in
+@@ -587,7 +587,8 @@ fi
+ # OpenSSL
+ if test x"$enable_tls" = x"yes" || test x"$enable_sha1_passwords" = x"yes"
+ then
+-    AC_CHECK_LIB2(ssl, SSL_new, [], AC_MSG_ERROR([[TLS/SHA1 passwords enabled, but can't find libssl]]), -lcrypto)
++    AC_CHECK_LIB(ssl, SSL_new, [], AC_MSG_ERROR([[TLS/SHA1 passwords enabled, but can't find libssl]]))
++    AC_CHECK_LIB(crypto, SHA1_Init, [], AC_MSG_ERROR([[TLS/SHA1 passwords enabled, but can't find libcrypto]]))
+ fi
+ 
+ # GNU dbm

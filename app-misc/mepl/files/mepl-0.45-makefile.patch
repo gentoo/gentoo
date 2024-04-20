@@ -1,0 +1,19 @@
+--- a/Makefile
++++ b/Makefile
+@@ -13,14 +13,9 @@
+ initdir = /etc/rc.d/init.d
+ initdir2 = /etc/init.d
+ 
+-CC	= gcc
+-CFLAGS	= -DMEPLCONFIG=\"$(CONFIGFILE)\"
++CPPFLAGS += -DMEPLCONFIG=\"$(CONFIGFILE)\"
+ 
+-en:	mepl.c
+-	@echo "Type \"make de\" or \"make installde\" for german version."
+-	@echo "Taper \"make fr\" ou \"make installfr\" pour la version française."
+-	@echo "Scrivi \"make it\" or \"make installit\" per la versione italiana."
+-	$(CC) $(CFLAGS) -o mepl mepl.c 
++en:	mepl
+ 
+ de:	mepl.c
+ 	@echo "Type \"make en\" or \"make installen\" for english version."

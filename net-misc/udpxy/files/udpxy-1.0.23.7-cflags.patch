@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/725238
+--- a/Makefile
++++ b/Makefile
+@@ -100,7 +100,7 @@ CORES := core.* core
+ debug ldebug rdebug lean verify touch incbuild 
+ 
+ .c.o :
+-	$(CC) $(ALL_CFLAGS) $(CPPFLAGS) $(CDEFS) $(COPT) -c $< -o $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(CDEFS) $(COPT) -c $< -o $@
+ 
+ release:
+ 	@echo -e "\nMaking a [release] version (use 'debug' target as an alternative)\n"

@@ -1,0 +1,15 @@
+With USE_SYSTEM_NCNN this seemingly(?) tries to check if glslang
+libraries exists only to know if system ncnn has support which is
+already ensured through DEPEND here.
+
+And then the checks fail[1] with modern glslang, so yank out the
+unnecessary block.
+
+[1] https://bugs.gentoo.org/922511
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -99,3 +99,3 @@
+ 
+-if(USE_SYSTEM_NCNN)
++if(0)
+     set(GLSLANG_TARGET_DIR "GLSLANG-NOTFOUND" CACHE PATH "Absolute path to glslangTargets.cmake directory")

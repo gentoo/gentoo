@@ -1,0 +1,10 @@
+--- a/lib/tcp_reorder.c
++++ b/lib/tcp_reorder.c
+@@ -47,6 +47,7 @@
+  */
+ 
+ #include <stdlib.h>
++#include <stdint.h> /* UINT32_MAX */
+ #include <assert.h>
+ #include <stdio.h>
+ #include <libtrace.h>

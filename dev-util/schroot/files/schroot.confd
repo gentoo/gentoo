@@ -1,0 +1,9 @@
+# This is a configuration file for /etc/init.d/schroot; it allows you
+# to perform common modifications to the behavior of schroot
+# initialization without editing the init script.
+
+# What do we want to do with "orphan" sessions when starting or
+# restarting?  Recover them (leave empty or set to "recover") or just
+# end them (set to "end")?
+SESSIONS_RECOVER="recover"
+

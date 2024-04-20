@@ -1,0 +1,10 @@
+--- a/langkit/parsers.py	2022-12-08 23:09:42.178267815 +0100
++++ b/langkit/parsers.py	2022-12-08 22:33:40.755660102 +0100
+@@ -1306,6 +1306,7 @@
+         # ... and we want to memoize the result.
+         self.cached_type = None
+ 
++    @property
+     def can_parse_token_node(self) -> bool:
+         return all(p.can_parse_token_node for p in self.parsers)
+ 

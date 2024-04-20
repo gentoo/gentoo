@@ -1,0 +1,35 @@
+--- a/lib/gnat/aunit.gpr	2022-12-19 22:08:42.000000000 +0100
++++ b/lib/gnat/aunit.gpr	2024-03-01 22:32:34.298510972 +0100
+@@ -50,16 +50,16 @@
+ 
+    package Install is
+       for Artifacts ("share/doc/aunit/pdf")
+-        use ("../../doc/pdf/**");
+-      for Artifacts ("share/doc/aunit/txt")
+-        use ("../../doc/txt/**");
++        use ("../../doc/build/aunit_cb/pdf/**");
++      for Artifacts ("share/doc/@PF@")
++        use ("../../doc/build/aunit_cb/txt/**");
+       for Artifacts ("share/doc/aunit/info")
+-        use ("../../doc/info/**");
+-      for Artifacts ("share/doc/aunit/html")
+-        use ("../../doc/html/**");
++        use ("../../doc/build/aunit_cb/info/**");
++      for Artifacts ("share/doc/@PF@/html")
++        use ("../../doc/build/aunit_cb/html/**");
+ 
+       for Artifacts ("share/gps/plug-ins") use ("../../support/aunit.xml");
+-      for Artifacts ("share/examples/aunit") use ("../../examples/*");
++      for Artifacts ("share/doc/@PF@/examples") use ("../../examples/*");
+    end Install;
+ 
+ end AUnit;
+--- a/doc/share/conf.py	2024-03-01 22:35:22.194546565 +0100
++++ b/doc/share/conf.py	2024-03-01 22:35:34.657400722 +0100
+@@ -95,6 +95,3 @@
+      u'AdaCore', doc_name, doc_name, '')]
+ 
+ 
+-def setup(app):
+-    app.add_lexer('ada', ada_pygments.AdaLexer())
+-    app.add_lexer('gpr', ada_pygments.GNATProjectLexer())

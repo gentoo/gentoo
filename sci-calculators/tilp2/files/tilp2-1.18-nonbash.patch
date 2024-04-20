@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/723314
+--- a/configure.ac
++++ b/configure.ac
+@@ -208,7 +208,7 @@
+ AC_ARG_VAR([CC_FOR_BUILD], [C compiler for programs to be run on the build system])
+ AC_ARG_VAR([CFLAGS_FOR_BUILD], [C compiler flags for CC_FOR_BUILD])
+ AC_MSG_CHECKING([for the host compiler])
+-if test "x$build" == "x$host" ; then
++if test "x$build" = "x$host" ; then
+   # Not cross-compiling.
+   CC_FOR_BUILD=$CC
+   CFLAGS_FOR_BUILD=$CFLAGS

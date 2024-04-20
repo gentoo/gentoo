@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/879883
+https://github.com/madler/zlib/issues/751
+
+This breaks building on sparc with older binutils.
+--- a/configure
++++ b/configure
+@@ -234,10 +234,6 @@ if test "$gcc" -eq 1 && ($cc -c $test.c) >> configure.log 2>&1; then
+   fi
+   case "$uname" in
+   Linux* | linux* | *-linux* | GNU | GNU/* | solaris*)
+-        case "$mname" in
+-        *sparc*)
+-            LDFLAGS="${LDFLAGS} -Wl,--no-warn-rwx-segments" ;;
+-        esac
+         LDSHARED=${LDSHARED-"$cc -shared -Wl,-soname,libz.so.1,--version-script,${SRCDIR}zlib.map"} ;;
+   *BSD | *bsd* | DragonFly)
+         LDSHARED=${LDSHARED-"$cc -shared -Wl,-soname,libz.so.1,--version-script,${SRCDIR}zlib.map"}

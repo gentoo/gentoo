@@ -1,0 +1,10 @@
+--- a/qelectrotech.pro	2021-02-21 10:15:38.000000000 +0100
++++ b/qelectrotech.pro	2021-02-28 21:41:02.221285171 +0100
+@@ -278,7 +278,6 @@
+ 
+ man.path           = $$join(INSTALL_PREFIX,,,$${QET_MAN_PATH})
+ man.files          = man/files/*
+-man.extra          = sh man/compress_man_pages.sh
+ 
+ # L'installation comprend la copie du binaire, des elements, des fichiers de langue et du fichier LICENSE
+ INSTALLS += target elements tbt lang

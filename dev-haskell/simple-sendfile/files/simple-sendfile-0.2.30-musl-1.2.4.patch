@@ -1,0 +1,56 @@
+From c16550e29f6c6cbe35e133c347a82821fa67f284 Mon Sep 17 00:00:00 2001
+From: Violet Purcell <vimproved@inventati.org>
+Date: Sun, 18 Jun 2023 21:52:42 +0000
+Subject: [PATCH] Fix build on musl 1.2.4
+
+Remove references to the deprecated LFS64 compatibility symbols, and
+replace them with the normal interfaces. All calls are automatically 64
+bit on musl, and define _FILE_OFFSET_BITS=64 to make sure calls on glibc
+are 64 bits.
+---
+ Network/Sendfile/Linux.hsc | 15 +++------------
+ 1 file changed, 3 insertions(+), 12 deletions(-)
+
+diff --git a/Network/Sendfile/Linux.hsc b/Network/Sendfile/Linux.hsc
+index 4f7adab..96bfb04 100644
+--- a/Network/Sendfile/Linux.hsc
++++ b/Network/Sendfile/Linux.hsc
+@@ -1,6 +1,8 @@
+ {-# LANGUAGE ForeignFunctionInterface #-}
+ {-# LANGUAGE CPP #-}
+ 
++#define _FILE_OFFSET_BITS 64
++
+ module Network.Sendfile.Linux (
+     sendfile
+   , sendfile'
+@@ -34,9 +36,6 @@ import System.Posix.Types
+ #include <sys/sendfile.h>
+ #include <sys/socket.h>
+ 
+-isLargeOffset :: Bool
+-isLargeOffset = sizeOf (0 :: COff) == 8
+-
+ isLargeSize :: Bool
+ isLargeSize = sizeOf (0 :: CSize) == 8
+ 
+@@ -142,15 +141,7 @@ sendfileloop dst src offp len hook = do
+ 
+ -- Dst Src in order. take care
+ foreign import ccall unsafe "sendfile"
+-    c_sendfile32 :: Fd -> Fd -> Ptr COff -> CSize -> IO CSsize
+-
+-foreign import ccall unsafe "sendfile64"
+-    c_sendfile64 :: Fd -> Fd -> Ptr COff -> CSize -> IO CSsize
+-
+-c_sendfile :: Fd -> Fd -> Ptr COff -> CSize -> IO CSsize
+-c_sendfile
+-  | isLargeOffset = c_sendfile64
+-  | otherwise     = c_sendfile32
++    c_sendfile :: Fd -> Fd -> Ptr COff -> CSize -> IO CSsize
+ 
+ ----------------------------------------------------------------
+ 
+-- 
+2.41.0
+

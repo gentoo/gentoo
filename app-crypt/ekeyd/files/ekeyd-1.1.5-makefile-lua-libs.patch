@@ -1,0 +1,15 @@
+If LUA_V is passed directly to LIBS it ends up being expanded to an empty
+string at link time.
+
+--- a/host/Makefile
++++ b/host/Makefile
+@@ -111,7 +111,8 @@
+ CFLAGS += '-DEKEYD_VERSION_S=""$(EKEYD_VERSION_S)""'
+ CFLAGS += $(EXTRA_CFLAGS)
+ 
+-LIBS += -llua -lm $(LIBDL)
++LUA_LIBS += -llua$(LUA_V) -lm
++LIBS += $(LUA_LIBS) $(LIBDL)
+ LDFLAGS += $(LIBDIRS)
+ 
+ 

@@ -1,0 +1,30 @@
+https://bird.network.cz/pipermail/bird-users/2023-March/016743.html
+See-also: https://bugs.gentoo.org/836713
+Signed-off-by: Petr Vaněk <arkamar at atlas.cz>
+---
+ lib/printf_test.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/lib/printf_test.c b/lib/printf_test.c
+index 47ea905d..ca278975 100644
+--- a/lib/printf_test.c
++++ b/lib/printf_test.c
+@@ -32,11 +32,14 @@ t_simple(void)
+   BSPRINTF(1, "@", buf, "@", 64);
+   BSPRINTF(1, "\xff", buf, "%c", 0xff);
+
++  const char * io_error_str = strerror(EIO);
++  const int io_error_len = strlen(io_error_str);
++
+   errno = 5;
+-  BSPRINTF(18, "Input/output error", buf, "%m");
++  BSPRINTF(io_error_len, io_error_str, buf, "%m");
+   errno = 0;
+
+-  BSPRINTF(18, "Input/output error", buf, "%M", 5);
++  BSPRINTF(io_error_len, io_error_str, buf, "%M", 5);
+
+   BSPRINTF(11, "TeSt%StRiNg", buf, "%s", "TeSt%StRiNg");
+
+--
+2.39.2

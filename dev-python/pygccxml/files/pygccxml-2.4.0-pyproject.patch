@@ -1,0 +1,10 @@
+--- pyproject.toml.orig	2023-11-20 13:59:55.807461669 +0100
++++ pyproject.toml	2023-11-20 14:00:37.335886130 +0100
+@@ -1,5 +1,6 @@
+ [build-system]
+-requires = ["setuptools", "wheel"]
++requires = ["setuptools"]
++build-backend = "setuptools.build_meta"
+ 
+ [project]
+ name = "pygccxml"

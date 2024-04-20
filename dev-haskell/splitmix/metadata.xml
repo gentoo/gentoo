@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="optimised-mixer">Use JavaScript for mix32</flag>
+	</use>
+	<upstream>
+		<remote-id type="hackage">splitmix</remote-id>
+		<remote-id type="github">haskellari/splitmix</remote-id>
+	</upstream>
+</pkgmetadata>

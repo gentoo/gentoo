@@ -1,0 +1,44 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/vde_switch"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	after net.${VDE_TAP}
+}
+
+start_pre() {
+	[ "${VDE_MODPROBE_TUN}" = "yes" ] || return 0
+	modprobe tun
+}
+
+# We have to use start() because the shortform uses --pidfile for s-s-d --start
+# which causes s-s-d to check the pid file before it exists
+start() {
+	VDE_SOCKET="${VDE_SOCKET:-/run/${RC_SVCNAME}.ctl}"
+
+	ebegin "Starting ${RC_SVCNAME}"
+
+	start-stop-daemon --start --exec ${command} -- \
+		--pidfile=${pidfile} \
+		--tap=${VDE_TAP} \
+		--group=${VDE_GROUP} \
+		--mode=660 \
+		--dirmode=770 \
+		--sock=${VDE_SOCKET} \
+		--daemon \
+	${VDE_OPTS}
+	ewaitfile 10 "${VDE_SOCKET}"
+
+	eend $? "Failed to start ${RC_SVCNAME}"
+}
+
+stop_post() {
+	[ "${VDE_MODPROBE_TUN}" = "yes" ] && modprobe --quiet --remove tun
+
+	# Don't fail to stop the service if the "tun" module in use
+	# and the above "modprobe -r" command fails.
+	return 0
+}

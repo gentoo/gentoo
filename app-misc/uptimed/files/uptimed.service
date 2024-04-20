@@ -1,0 +1,10 @@
+[Unit]
+Description=Uptime record tracking daemon
+Documentation=man:uptimed(8) man:uprecords(1)
+
+[Service]
+ExecStartPre=/usr/sbin/uptimed -b
+ExecStart=/usr/sbin/uptimed -f
+
+[Install]
+WantedBy=multi-user.target

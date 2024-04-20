@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+PID=/var/run/gem_server.pid
+
+depend() {
+	need localmount net
+}
+
+start() {
+	ebegin "Starting gem_server"
+	start-stop-daemon --start --user nobody --quiet --background \
+		--make-pidfile --pidfile ${PID} --exec /usr/bin/ruby -- \
+		/usr/bin/gem server ${GEM_SERVER_OPTS}
+	eend ${?}
+}
+
+stop() {
+	ebegin "Stopping gem_server"
+	start-stop-daemon --stop --pidfile ${PID}
+	eend ${?}
+}

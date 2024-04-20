@@ -1,0 +1,13 @@
+diff --git a/maps/mapshared.c b/maps/mapshared.c
+index 47fa7af..0c05d81 100644
+--- a/maps/mapshared.c
++++ b/maps/mapshared.c
+@@ -129,7 +129,7 @@ unsigned short *map, *b_map, *f_map, *c_map, *cf_map, *cb_map;
+ unsigned char *z_map, *sh_map, *o_map, *cz_map, *csh_map, *co_map;
+ unsigned char *search_map;
+ 
+-s_bound bound_box[MAX_BOUNDS]; // WK - not redundant. Used on line 266
++extern s_bound bound_box[MAX_BOUNDS]; // WK - not redundant. Used on line 266
+ 
+ /*! \brief Blit to screen
+  *

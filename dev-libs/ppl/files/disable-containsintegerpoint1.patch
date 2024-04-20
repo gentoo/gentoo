@@ -1,0 +1,38 @@
+From c88aa34ffe31d4314ea87e27a2c974927bcd962e Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Tue, 14 Apr 2020 10:40:29 -0400
+Subject: [PATCH 2/3] tests/Box/Makefile.am: disable the
+ "containsintegerpoint1" test.
+
+There is an upstream report about the "containsintegerpoint1" test
+failing on Arch Linux, so this commit proactively disables it.
+
+Upstream-bug: https://www.cs.unipr.it/mantis/view.php?id=2120
+---
+ tests/Box/Makefile.am | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/tests/Box/Makefile.am b/tests/Box/Makefile.am
+index adfcb8432..56e4fa535 100644
+--- a/tests/Box/Makefile.am
++++ b/tests/Box/Makefile.am
+@@ -73,7 +73,6 @@ congruences1 \
+ constrains1 \
+ constraints1 \
+ contains1 \
+-containsintegerpoint1 \
+ difference1 \
+ discrete1 \
+ disjoint1 \
+@@ -201,8 +200,6 @@ constraints1_SOURCES = constraints1.cc
+ 
+ contains1_SOURCES = contains1.cc
+ 
+-containsintegerpoint1_SOURCES = containsintegerpoint1.cc
+-
+ difference1_SOURCES = difference1.cc
+ 
+ discrete1_SOURCES = discrete1.cc
+-- 
+2.24.1
+

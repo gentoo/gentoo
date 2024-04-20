@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Kotlin is a statically typed language that targets the JVM and JavaScript.
+    It is a general-purpose language intended for industry use. It is developed
+    by a team at JetBrains although it is an OSS language and has external
+    contributors.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/JetBrains/kotlin/issues/</bugs-to>
+    <remote-id type="github">JetBrains/kotlin</remote-id>
+  </upstream>
+</pkgmetadata>

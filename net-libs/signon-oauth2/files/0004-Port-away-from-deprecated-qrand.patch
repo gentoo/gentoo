@@ -1,0 +1,69 @@
+From 039dab8db2e16d02872c6e12c698157e05dc43e2 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sun, 15 Oct 2023 19:02:04 +0200
+Subject: [PATCH 04/10] Port away from deprecated qrand
+
+---
+ src/oauth1plugin.cpp | 7 +++++++
+ src/oauth2plugin.cpp | 6 ++++++
+ 2 files changed, 13 insertions(+)
+
+diff --git a/src/oauth1plugin.cpp b/src/oauth1plugin.cpp
+index 8ec7645..6c38cbb 100644
+--- a/src/oauth1plugin.cpp
++++ b/src/oauth1plugin.cpp
+@@ -94,8 +94,10 @@ public:
+     {
+         TRACE();
+ 
++#if QT_VERSION < QT_VERSION_CHECK(5, 10, 0)
+         // Initialize randomizer
+         qsrand(QTime::currentTime().msec());
++#endif
+     }
+ 
+     ~OAuth1PluginPrivate()
+@@ -437,8 +439,13 @@ QString OAuth1Plugin::createOAuth1Header(const QString &aUrl,
+                       .arg(urlEncode(inData.ConsumerKey())));
+     authHeader.append(DELIMITER);
+     // Nonce
++#if QT_VERSION < QT_VERSION_CHECK(5, 10, 0)
+     unsigned long nonce1 = (unsigned long) qrand();
+     unsigned long nonce2 = (unsigned long) qrand();
++#else
++    unsigned long nonce1 = QRandomGenerator::global()->generate64();
++    unsigned long nonce2 = QRandomGenerator::global()->generate64();
++#endif
+     QString oauthNonce = QString("%1%2").arg(nonce1).arg(nonce2);
+     authHeader.append(EQUAL_WITH_QUOTES.arg(OAUTH_NONCE)
+                       .arg(urlEncode(oauthNonce)));
+diff --git a/src/oauth2plugin.cpp b/src/oauth2plugin.cpp
+index 418e7db..8763f00 100644
+--- a/src/oauth2plugin.cpp
++++ b/src/oauth2plugin.cpp
+@@ -84,8 +84,10 @@ public:
+     {
+         TRACE();
+ 
++#if QT_VERSION < QT_VERSION_CHECK(5, 10, 0)
+         // Initialize randomizer
+         qsrand(QTime::currentTime().msec());
++#endif
+     }
+ 
+     ~OAuth2PluginPrivate()
+@@ -180,7 +182,11 @@ void OAuth2Plugin::sendOAuth2AuthRequest()
+     QString redirectUri = d->m_oauth2Data.RedirectUri();
+     query.addQueryItem(REDIRECT_URI, QUrl::toPercentEncoding(redirectUri));
+     if (!d->m_oauth2Data.DisableStateParameter()) {
++#if QT_VERSION < QT_VERSION_CHECK(5, 10, 0)
+         d->m_state = QString::number(qrand());
++#else
++        d->m_state = QString::number(QRandomGenerator::global()->generate());
++#endif
+         query.addQueryItem(STATE, d->m_state);
+     }
+     QStringList responseType = d->m_oauth2Data.ResponseType();
+-- 
+2.43.0
+

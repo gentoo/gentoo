@@ -1,0 +1,31 @@
+From: https://github.com/djcb/mu/pull/2677
+From: Matthew Smith <matthew@gentoo.org>
+Date: Mon, 1 Apr 2024 11:23:39 +0000
+Subject: [PATCH] mu-utils: Fix build with musl
+
+In musl, `stdout` is a macro that expands to `(stdout)`, and
+`::(stdout)` is not valid C++.
+
+../mu-1.12.2/lib/utils/mu-utils.hh:268:32: error: expected
+  id-expression before '(' token
+ 268 |                              ::stdout);
+     |                                ^~~~~~
+
+Nothing in the Mu namespace is named stdout, so it is safe to drop
+the `::`.
+
+Bug: https://bugs.gentoo.org/928361
+--- a/lib/utils/mu-utils.hh
++++ b/lib/utils/mu-utils.hh
+@@ -265,7 +265,7 @@ bool fputs_encoded (const std::string& str, FILE *stream);
+ template<typename...T>
+ static inline bool mu_print_encoded(fmt::format_string<T...> frm, T&&... args) noexcept {
+ 	return fputs_encoded(fmt::format(frm, std::forward<T>(args)...),
+-			     ::stdout);
++			     stdout);
+ }
+ 
+ /**
+-- 
+2.44.0
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>gentoo.2019@r123.de</email>
+		<name>Robert Siebeck</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		PyAudio provides Python bindings for PortAudio (<pkg>media-libs/portaudio</pkg>),
+		the cross-platform audio I/O library.
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">PyAudio</remote-id>
+	</upstream>
+</pkgmetadata>

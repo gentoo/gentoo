@@ -1,0 +1,24 @@
+--- a/bin2iso19b_linux.c
++++ b/bin2iso19b_linux.c
+@@ -1,6 +1,12 @@
++#ifndef _POSIX_C_SOURCE
++#define _POSIX_C_SOURCE 200809L
++#endif
++
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdlib.h>
++#include <unistd.h>
++#include <sys/types.h>
+ 
+ #define DEBUG 0
+ #define CHECK 0 /* don't bother checking bin for validity... */
+@@ -111,7 +117,7 @@
+    unsigned long size; /* track size in bytes */
+ } tTrack;
+ 
+-buffered_fread(unsigned char *array, unsigned int size) {
++int buffered_fread(unsigned char *array, unsigned int size) {
+    unsigned int i;
+    
+    if(INBUF_WIDX == 0) {    

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dlan@gentoo.org</email>
+		<name>Yixun Lan</name>
+	</maintainer>
+	<longdescription>
+		The boot configuration expands the current kernel command line to support
+		additional key-value data when booting the kernel in an efficient way.
+		This allows administrators to pass a structured-Key config file.
+	</longdescription>
+</pkgmetadata>

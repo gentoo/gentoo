@@ -1,0 +1,116 @@
+From 3ed973b46b50015108a9577a51feec503f06025f Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 2 Mar 2022 04:10:20 +0000
+Subject: [PATCH] Use GNUInstallDirs
+
+---
+ CMakeLists.txt       |  4 ----
+ itpp-config.cmake.in |  2 +-
+ itpp.pc.cmake.in     |  2 +-
+ itpp/CMakeLists.txt  | 23 ++++++++++++-----------
+ 4 files changed, 14 insertions(+), 17 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a2c6958..cd661d1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -172,12 +172,8 @@ endif()
+ option(ITPP_SHARED_LIB "Building IT++ as shared library" on)
+ #set library name here to be available for all targets
+ if (ITPP_SHARED_LIB)
+-  if ((CMAKE_BUILD_TYPE STREQUAL Release) OR (NOT CMAKE_BUILD_TYPE))
+     set (libitpp_target itpp)
+     set (CMAKE_CXX_FLAGS "-DNDEBUG ${CMAKE_CXX_FLAGS}")
+-  else()
+-    set (libitpp_target itpp_debug)
+-  endif()
+ else()
+   set (libitpp_target itpp_static)
+ endif()
+diff --git a/itpp-config.cmake.in b/itpp-config.cmake.in
+index d24b57f..7d31753 100644
+--- a/itpp-config.cmake.in
++++ b/itpp-config.cmake.in
+@@ -2,7 +2,7 @@
+ 
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=${prefix}
+-libdir=${exec_prefix}/lib
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
+ includedir=${prefix}/include
+ 
+ debug_flag=no
+diff --git a/itpp.pc.cmake.in b/itpp.pc.cmake.in
+index d92ce96..ac62b88 100644
+--- a/itpp.pc.cmake.in
++++ b/itpp.pc.cmake.in
+@@ -1,6 +1,6 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=@CMAKE_INSTALL_PREFIX@
+-libdir=@CMAKE_INSTALL_PREFIX@/lib
++libdir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@
+ includedir=@CMAKE_INSTALL_PREFIX@/include
+ 
+ Name: @PACKAGE_NAME@
+diff --git a/itpp/CMakeLists.txt b/itpp/CMakeLists.txt
+index e8c78d3..ee8f587 100644
+--- a/itpp/CMakeLists.txt
++++ b/itpp/CMakeLists.txt
+@@ -24,6 +24,7 @@
+ # with IT++.  If not, see <http://www.gnu.org/licenses/>.
+ #
+ # -------------------------------------------------------------------------
++include(GNUInstallDirs)
+ 
+ file ( GLOB ITPP_SRCS
+        "base/*.cpp"
+@@ -68,18 +69,18 @@ set_target_properties(${libitpp_target} PROPERTIES VERSION ${LIBITPP_VERSION_STR
+ 
+ #library
+ install(TARGETS ${libitpp_target}
+-        RUNTIME DESTINATION bin
+-        LIBRARY DESTINATION lib
+-        ARCHIVE DESTINATION lib)
++        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ #headers
+-install(DIRECTORY ${CMAKE_SOURCE_DIR}/itpp DESTINATION include FILES_MATCHING PATTERN "*.h")
++install(DIRECTORY ${CMAKE_SOURCE_DIR}/itpp DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} FILES_MATCHING PATTERN "*.h")
+ if (WIN32 AND NOT MINGW)
+-  install(FILES ${CMAKE_BINARY_DIR}/itpp/config_msvc.h DESTINATION include/itpp)
++  install(FILES ${CMAKE_BINARY_DIR}/itpp/config_msvc.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/itpp)
+ else()
+-  install(FILES ${CMAKE_BINARY_DIR}/itpp/config.h DESTINATION include/itpp)
++  install(FILES ${CMAKE_BINARY_DIR}/itpp/config.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/itpp)
+ endif()
+-install(FILES ${CMAKE_BINARY_DIR}/itpp/itexports.h DESTINATION include/itpp)
++install(FILES ${CMAKE_BINARY_DIR}/itpp/itexports.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/itpp)
+ 
+ #extra files (MATLAB and python)
+ install(FILES ${CMAKE_SOURCE_DIR}/extras/itsave.m
+@@ -97,7 +98,7 @@ if (HTML_DOCS AND DOXYGEN_FOUND)
+     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+     COMMENT "Generating API documentation with Doxygen" VERBATIM)
+   file(COPY ${CMAKE_SOURCE_DIR}/doc/images/itpp_logo.png DESTINATION ${CMAKE_BINARY_DIR}/html)
+-  install(DIRECTORY ${CMAKE_BINARY_DIR}/html DESTINATION share/doc/itpp)
++  install(DIRECTORY ${CMAKE_BINARY_DIR}/html DESTINATION ${CMAKE_INSTALL_DOCDIR}/itpp)
+ endif()
+ 
+ #itpp-config script for UNIX-like systems
+@@ -108,8 +109,8 @@ if (UNIX)
+   configure_file(${CMAKE_SOURCE_DIR}/itpp-config.cmake.in ${CMAKE_BINARY_DIR}/itpp-config @ONLY)
+   configure_file(${CMAKE_SOURCE_DIR}/itpp-config.1.cmake.in ${CMAKE_BINARY_DIR}/itpp-config.1 @ONLY)
+   configure_file(${CMAKE_SOURCE_DIR}/itpp.pc.cmake.in ${CMAKE_BINARY_DIR}/itpp.pc @ONLY)
+-  install(FILES ${CMAKE_BINARY_DIR}/itpp-config DESTINATION bin PERMISSIONS OWNER_READ OWNER_EXECUTE
++  install(FILES ${CMAKE_BINARY_DIR}/itpp-config DESTINATION ${CMAKE_INSTALL_BINDIR} PERMISSIONS OWNER_READ OWNER_EXECUTE
+     GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+-  install(FILES ${CMAKE_BINARY_DIR}/itpp-config.1 DESTINATION share/man/man1)
+-  install(FILES ${CMAKE_BINARY_DIR}/itpp.pc DESTINATION lib/pkgconfig)
++  install(FILES ${CMAKE_BINARY_DIR}/itpp-config.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
++  install(FILES ${CMAKE_BINARY_DIR}/itpp.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ endif()
+-- 
+2.35.1
+

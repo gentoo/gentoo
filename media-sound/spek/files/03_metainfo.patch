@@ -1,0 +1,66 @@
+Author: Nils Fürniß <contact@nalsai.de>
+Description: Add metainfo file
+Forwarded: https://github.com/alexkay/spek/commit/03d7fb6a1a01e7a0adffd0b083fa4c026efb8f84
+--- a/data/Makefile.am
++++ b/data/Makefile.am
+@@ -6,8 +6,15 @@ desktopdir = $(datadir)/applications
+ desktop_in_files = spek.desktop.in
+ desktop_DATA = spek.desktop
+ 
+-EXTRA_DIST = spek.desktop.in
+-CLEANFILES = spek.desktop
++appdatadir = $(datadir)/metainfo
++appdata_in_files = spek.metainfo.xml.in
++appdata_DATA = spek.metainfo.xml
++
++EXTRA_DIST = spek.desktop.in spek.metainfo.xml.in
++CLEANFILES = spek.desktop spek.metainfo.xml
+ 
+ spek.desktop: spek.desktop.in $(wildcard $(top_srcdir)/po/*po)
+ 	$(AM_V_GEN)$(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
++
++spek.metainfo.xml: spek.metainfo.xml.in $(wildcard $(top_srcdir)/po/*po)
++	$(AM_V_GEN)$(MSGFMT) --xml --template $< -d $(top_srcdir)/po -o $@
+--- a/data/spek.metainfo.xml.in
++++ b/data/spek.metainfo.xml.in
+@@ -0,0 +1,40 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<component type="desktop-application">
++    <id>cc.spek.Spek</id>
++    <metadata_license>CC0-1.0</metadata_license>
++    <project_license>GPL-3.0</project_license>
++    <name>Spek</name>
++    <summary>View spectrograms of your audio files</summary>
++    <description>
++        <p>Spek is an acoustic spectrum analyser written in C and C++. It uses FFmpeg libraries for audio decoding and wxWidgets for the GUI.</p>
++        <ul>
++            <li>Supports all popular lossy and lossless audio file formats thanks to the FFmpeg libraries.</li>
++            <li>Ultra-fast signal processing, uses multiple threads to further speed up the analysis.</li>
++            <li>Shows the codec name and the audio signal parameters.</li>
++            <li>Allows to save the spectrogram as an image file.</li>
++            <li>Drag-and-drop support; associates with common audio file formats.</li>
++            <li>Auto-fitting time, frequency and spectral density rulers.</li>
++            <li>Adjustable spectral density range.</li>
++            <li>Translated into 19 languages.</li>
++        </ul>
++    </description>
++    <screenshots>
++      <screenshot type="default">
++        <image>https://raw.githubusercontent.com/alexkay/spek/b3759bbb7d1108b3193394b941eeee982f15b739/web/flac.png</image>
++      </screenshot>
++    </screenshots>
++	<categories>
++		<category>Audio</category>
++		<category>AudioVideo</category>
++	</categories>
++    <url type="homepage">https://www.spek.cc/</url>
++    <url type="bugtracker">https://github.com/alexkay/spek/issues</url>
++    <developer_name>alexkay</developer_name>
++    <content_rating type="oars-1.1" />
++    <launchable type="desktop-id">spek.desktop</launchable>
++    <releases>
++        <release version="0.8.5" date="2023-01-10"/>
++        <release version="0.8.4" date="2022-07-11"/>
++        <release version="0.8.2" date="2016-01-19"/>
++    </releases>
++</component>

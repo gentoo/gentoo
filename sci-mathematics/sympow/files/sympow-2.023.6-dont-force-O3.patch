@@ -1,0 +1,53 @@
+From d5fd3ce4221705c59dc289f14f5aefc2f974ba41 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Thu, 14 May 2020 18:45:59 -0400
+Subject: [PATCH 1/1] Configure: don't force -O3 in CFLAGS.
+
+The build system already respects the user's CFLAGS. It should respect
+lower -O levels as well. This is a "requirement" on Gentoo.
+---
+ Configure | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/Configure b/Configure
+index 1ef9756..fd5555c 100755
+--- a/Configure
++++ b/Configure
+@@ -104,15 +104,12 @@ CFLAGS=''
+ # return 2 if we did not add $FLAG.
+ try_add_CFLAG()
+ {
+-    # We use -O3 here to really force generation of fused
+-    # multiply-add instructions and to keep floats as much as
+-    # possible in registers.
+     # We compile in the fpu.c which only does
+     # something if the macro x86 is defined.
+     local flag=$1                      # first argument:  C FLAG to test
+     local bypassfputest=${2:-nobypass} # second argument: whether or not bypass the numerical test (default: not)
+     local status=0
+-    if $CC $ORIGINALCFLAGS -Werror $CFLAGS -O3 $flag config/fpubits1.c config/fpubits2.c fpu.c -o config/fpubits 2>/dev/null; then
++    if $CC $ORIGINALCFLAGS -Werror $CFLAGS $flag config/fpubits1.c config/fpubits2.c fpu.c -o config/fpubits 2>/dev/null; then
+         # Compiled successfully, now run it
+         config/fpubits >/dev/null 2>/dev/null
+         status=$?
+@@ -166,7 +163,7 @@ for FLAG in '' '-ffloat-store' '-O0'; do
+ done
+ 
+ # Check the actual FPU precision with our new flags.
+-CC_ARGS="$ORIGINALCFLAGS -O3 $CFLAGS config/fpubits1.c config/fpubits2.c fpu.c -o config/fpubits"
++CC_ARGS="$ORIGINALCFLAGS $CFLAGS config/fpubits1.c config/fpubits2.c fpu.c -o config/fpubits"
+ $CC $CC_ARGS
+ if [ $? -ne 0 ]; then
+ echo >&2 "Error: the command below failed:"
+@@ -256,7 +253,7 @@ echo "CONFEXE = config/endiantuple config/fpubits" >> $FILE
+ ##
+ ##echo "DEFS = $DEFS" >> $FILE
+ 
+-OPT="-O3 ${CFLAGS}" && echo "OPT = $OPT" >> $FILE
++OPT="${CFLAGS}" && echo "OPT = $OPT" >> $FILE
+ 
+ echo "H2MFLAGS = \\" >> $FILE
+ echo "	--manual=\"SYMPOW package\" \\" >> $FILE
+-- 
+2.26.2
+

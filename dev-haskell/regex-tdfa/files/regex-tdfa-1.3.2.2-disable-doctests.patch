@@ -1,0 +1,24 @@
+From: hololeap <hololeap@protonmail.com>
+Signed-off-by: hololeap <hololeap@protonmail.com>
+
+doctests don't seem to work with Setup.hs
+
+The hackage tarball doesn't include cabal.project which seems to be necessary
+for doctest-parallel to work. Even when this file is copied to $S, Setup.hs
+doesn't seem to recognize it.
+
+The necessary flag is not recognized by `./setup configure`:
+    --write-ghc-environment-files=always
+See: <https://cabal.readthedocs.io/en/3.4/cabal-project.html#cfg-field-write-ghc-environment-files>
+
+diff -urN regex-tdfa-1.3.2/regex-tdfa.cabal regex-tdfa-1.3.2-r1/regex-tdfa.cabal
+--- regex-tdfa-1.3.2/regex-tdfa.cabal	2022-08-14 00:42:54.578227087 -0600
++++ regex-tdfa-1.3.2-r1/regex-tdfa.cabal	2022-08-14 00:43:17.428227098 -0600
+@@ -175,6 +175,7 @@
+     ghc-options:        -O2
+ 
+ test-suite doctest
++  buildable:      False
+   type:           exitcode-stdio-1.0
+   hs-source-dirs: test
+   main-is:        DocTestMain.hs

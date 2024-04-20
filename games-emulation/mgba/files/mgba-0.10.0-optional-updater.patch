@@ -1,0 +1,7 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -980,3 +980,3 @@
+ if(BUILD_QT AND (WIN32 OR APPLE OR CMAKE_SYSTEM_NAME STREQUAL "Linux"))
+-	set(BUILD_UPDATER ON)
++	set(BUILD_UPDATER ON CACHE BOOL "")
+ endif()

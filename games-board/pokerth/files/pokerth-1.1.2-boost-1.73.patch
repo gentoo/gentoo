@@ -1,0 +1,42 @@
+From a769887330a317d55e7f64c71a32ad130ffb9307 Mon Sep 17 00:00:00 2001
+From: Stefan Strogin <steils@gentoo.org>
+Date: Mon, 18 May 2020 03:30:53 +0300
+Subject: [PATCH] Fix using boost placeholders (#395)
+
+Bug: https://bugs.gentoo.org/723520
+Upstream-Status: Submitted [https://github.com/pokerth/pokerth/pull/396]
+Signed-off-by: Stefan Strogin <steils@gentoo.org>
+---
+ src/net/common/serveracceptwebhelper.cpp | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/src/net/common/serveracceptwebhelper.cpp b/src/net/common/serveracceptwebhelper.cpp
+index f61d4d77..8701e1e9 100644
+--- a/src/net/common/serveracceptwebhelper.cpp
++++ b/src/net/common/serveracceptwebhelper.cpp
+@@ -29,6 +29,7 @@
+  * as that of the covered work.                                              *
+  *****************************************************************************/
+ 
++#include <boost/bind/bind.hpp>
+ #include <net/serveracceptwebhelper.h>
+ #include <net/sessiondata.h>
+ #include <net/webreceivebuffer.h>
+@@ -58,10 +59,10 @@ ServerAcceptWebHelper::Listen(unsigned serverPort, bool /*ipv6*/, const std::str
+ 
+ 	m_webSocketServer->init_asio(m_ioService.get());
+ 
+-	m_webSocketServer->set_validate_handler(boost::bind(boost::mem_fn(&ServerAcceptWebHelper::validate), this, _1));
+-	m_webSocketServer->set_open_handler(boost::bind(boost::mem_fn(&ServerAcceptWebHelper::on_open), this, _1));
+-	m_webSocketServer->set_close_handler(boost::bind(boost::mem_fn(&ServerAcceptWebHelper::on_close), this, _1));
+-	m_webSocketServer->set_message_handler(boost::bind(boost::mem_fn(&ServerAcceptWebHelper::on_message), this, _1, _2));
++	m_webSocketServer->set_validate_handler(boost::bind(boost::mem_fn(&ServerAcceptWebHelper::validate), this, boost::placeholders::_1));
++	m_webSocketServer->set_open_handler(boost::bind(boost::mem_fn(&ServerAcceptWebHelper::on_open), this, boost::placeholders::_1));
++	m_webSocketServer->set_close_handler(boost::bind(boost::mem_fn(&ServerAcceptWebHelper::on_close), this, boost::placeholders::_1));
++	m_webSocketServer->set_message_handler(boost::bind(boost::mem_fn(&ServerAcceptWebHelper::on_message), this, boost::placeholders::_1, boost::placeholders::_2));
+ 
+ 	m_webSocketServer->listen(serverPort);
+ 	m_webSocketServer->start_accept();
+-- 
+2.26.2
+

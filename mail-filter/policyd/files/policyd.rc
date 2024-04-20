@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+# Copyright 1999-2006 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	before mta
+	provide postfix_greylist
+}
+
+start() {
+	ebegin "Starting policyd"
+	start-stop-daemon --name policyd --start --quiet --exec /usr/sbin/policyd \
+		-- -c ${POLICYD_CONFIG}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping policyd"
+	start-stop-daemon --stop --quiet --pidfile /var/run/policyd.pid
+	eend $?
+}

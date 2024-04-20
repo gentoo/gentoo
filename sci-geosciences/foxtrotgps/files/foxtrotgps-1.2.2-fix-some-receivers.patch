@@ -1,0 +1,41 @@
+https://bugs.gentoo.org/739568
+https://bugs.gentoo.org/806986
+https://bugs.gentoo.org/808883
+https://bugs.gentoo.org/818268
+
+From 86989085a3010cb83a094a788cd83a4654c9eb3c Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 18 Aug 2021 20:18:03 +0100
+Subject: [PATCH] Fix some GPS receivers (and fix build with newer gpsd API 12)
+
+Rebased version of upstream patch:
+https://bazaar.launchpad.net/~foxtrotgps-team/foxtrotgps/trunk/revision/329
+
+See https://github.com/ntpsec/gpsd/commit/d4a4d8d3606fd50f10bcd20096a8a0cdb8b2d427
+re API change.
+
+Bug: https://bugs.gentoo.org/808883
+---
+ src/gps_functions.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/gps_functions.c b/src/gps_functions.c
+index 602b06e..0baea81 100644
+--- a/src/gps_functions.c
++++ b/src/gps_functions.c
+@@ -762,8 +762,10 @@ cb_gpsd_data(GIOChannel *src, GIOCondition condition, gpointer data)
+ 		{
+ 			gpsdata->fix.time = (time_t) 0;
+ 		}
+-#if GPSD_API_MAJOR_VERSION >= 9
+-		gpsdata->valid = (libgps_gpsdata.fix.status != STATUS_NO_FIX);
++#if GPSD_API_MAJOR_VERSION >= 12 && defined(STATUS_UNK)
++		gpsdata->valid = (libgps_gpsdata.fix.status != STATUS_UNK || libgps_gpsdata.fix.mode >= MODE_2D);
++#elif GPSD_API_MAJOR_VERSION >= 10
++		gpsdata->valid = (libgps_gpsdata.fix.status != STATUS_NO_FIX || libgps_gpsdata.fix.mode >= MODE_2D);
+ #else
+ 		gpsdata->valid = (libgps_gpsdata.status != STATUS_NO_FIX);
+ #endif
+-- 
+2.33.1
+

@@ -1,0 +1,10 @@
+#Multiple interfaces allowed. Example: PPPOE_INTERFACE="vlan10 -I vlan11 -I vlan12" and so on.
+#Multiple interfaces allowed. Example: PPPOE_INTERFACE="vlan10 -I vlan11 -I vlan12" and so on.
+
+#PPPOE_INTERFACE=<interface name>
+#AC_NAME=<AC Name>
+#SERVICE_NAME=<Service Name>
+#MAX_SESSIONS=<Max PPPoE Sessions>
+#MAX_SESESSION_PER_MAC=<Max PPPoE Sessions per MAC>
+#LOCAL_IP=<PPP Local IP Addr>
+#OTHER_OPTIONS="-p /etc/ppp/ip-pools"

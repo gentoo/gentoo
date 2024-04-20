@@ -1,0 +1,61 @@
+diff a/src/colour_button.cpp b/src/colour_button.cpp
+--- a/src/colour_button.cpp
++++ b/src/colour_button.cpp
+@@ -18,7 +18,11 @@
+ 
+ #include "dialogs.h"
+ 
++#if BOOST_VERSION >= 106900
++#include <boost/gil.hpp>
++#else
+ #include <boost/gil/gil_all.hpp>
++#endif
+ 
+ AGI_DEFINE_EVENT(EVT_COLOR, agi::Color);
+ 
+diff a/src/subtitles_provider_libass.cpp b/src/subtitles_provider_libass.cpp
+--- a/src/subtitles_provider_libass.cpp
++++ b/src/subtitles_provider_libass.cpp
+@@ -46,7 +46,11 @@
+ #include <libaegisub/util.h>
+ 
+ #include <atomic>
++#if BOOST_VERSION >= 106900
++#include <boost/gil.hpp>
++#else
+ #include <boost/gil/gil_all.hpp>
++#endif
+ #include <memory>
+ #include <mutex>
+ 
+diff a/src/video_frame.cpp b/src/video_frame.cpp
+--- a/src/video_frame.cpp
++++ b/src/video_frame.cpp
+@@ -16,7 +16,11 @@
+ 
+ #include "video_frame.h"
+ 
++#if BOOST_VERSION >= 106900
++#include <boost/gil.hpp>
++#else
+ #include <boost/gil/gil_all.hpp>
++#endif
+ #include <wx/image.h>
+ 
+ namespace {
+diff a/src/video_provider_dummy.cpp b/src/video_provider_dummy.cpp
+--- a/src/video_provider_dummy.cpp
++++ b/src/video_provider_dummy.cpp
+@@ -45,7 +45,11 @@
+ #include <boost/algorithm/string/predicate.hpp>
+ #include <boost/filesystem/path.hpp>
+ #include <libaegisub/format.h>
++#if BOOST_VERSION >= 106900
++#include <boost/gil.hpp>
++#else
+ #include <boost/gil/gil_all.hpp>
++#endif
+ 
+ DummyVideoProvider::DummyVideoProvider(double fps, int frames, int width, int height, agi::Color colour, bool pattern)
+ : framecount(frames)
+

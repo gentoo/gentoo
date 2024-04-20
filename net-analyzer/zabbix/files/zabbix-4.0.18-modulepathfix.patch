@@ -1,0 +1,11 @@
+--- zabbix-4.0.1/configure
++++ zfx/configure
+@@ -12510,7 +12510,7 @@
+ CURL_SSL_CERT_LOCATION="${datadir}/zabbix/ssl/certs"
+ CURL_SSL_KEY_LOCATION="${datadir}/zabbix/ssl/keys"
+ 
+-LOAD_MODULE_PATH="${libdir}/modules"
++LOAD_MODULE_PATH="${libdir}/zabbix"
+ 
+ 
+ 

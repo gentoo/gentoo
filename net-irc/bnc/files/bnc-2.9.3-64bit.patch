@@ -1,0 +1,20 @@
+--- bnc2.9.3-orig/server.c	2005-02-07 01:29:11.000000000 +0000
++++ bnc2.9.3/server.c	2005-09-22 18:10:18.000000000 +0100
+@@ -398,7 +398,7 @@
+ int send_queued(struct lsock *ls)
+ {
+ 	int res;
+-	int length;
++	size_t length;
+ 	char *msg;
+ 
+ 	while(sbuf_getlength(&ls->sendq) > 0)
+@@ -1114,7 +1114,7 @@
+ int dccsend(int fd, struct sbuf *sendq)
+ {
+ 	int res;
+-	int length;
++	size_t length;
+ 	char *msg;
+ 
+ 	

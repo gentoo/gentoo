@@ -1,0 +1,78 @@
+https://bugs.gentoo.org/840137
+https://gitlab.com/sane-project/backends/-/commit/6b99447f5b12758ff015b5c360a6dcbcf9b0a72d
+https://gitlab.com/sane-project/backends/-/issues/597
+https://gitlab.com/sane-project/backends/-/issues/557
+
+From edfc90450ee06149537fadb3095ba4b215c5c4fa Mon Sep 17 00:00:00 2001
+From: Ralph Little <skelband@gmail.com>
+Date: Sun, 2 Oct 2022 18:14:25 -0700
+Subject: [PATCH] genesys: corrections to include file order.
+
+minigtest.h has items that require the definitions in tests_printers.h.
+Pre-GCC-12, this didn't seem to matter but GCC12 seems to have a
+problem with this and requires the template definitions to have already
+appeared.
+--- a/testsuite/backend/genesys/minigtest.cpp
++++ b/testsuite/backend/genesys/minigtest.cpp
+@@ -18,10 +18,10 @@
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+ 
+-#include "minigtest.h"
+-
+ #define DEBUG_DECLARE_ONLY
+ 
++#include "minigtest.h"
++
+ size_t s_num_successes = 0;
+ size_t s_num_failures = 0;
+ 
+--- a/testsuite/backend/genesys/tests_image.cpp
++++ b/testsuite/backend/genesys/tests_image.cpp
+@@ -21,8 +21,8 @@
+ #define DEBUG_DECLARE_ONLY
+ 
+ #include "tests.h"
+-#include "minigtest.h"
+ #include "tests_printers.h"
++#include "minigtest.h"
+ 
+ #include "../../../backend/genesys/image.h"
+ #include "../../../backend/genesys/image_pipeline.h"
+--- a/testsuite/backend/genesys/tests_image_pipeline.cpp
++++ b/testsuite/backend/genesys/tests_image_pipeline.cpp
+@@ -21,8 +21,8 @@
+ #define DEBUG_DECLARE_ONLY
+ 
+ #include "tests.h"
+-#include "minigtest.h"
+ #include "tests_printers.h"
++#include "minigtest.h"
+ 
+ #include "../../../backend/genesys/image_pipeline.h"
+ 
+--- a/testsuite/backend/genesys/tests_motor.cpp
++++ b/testsuite/backend/genesys/tests_motor.cpp
+@@ -21,8 +21,8 @@
+ #define DEBUG_DECLARE_ONLY
+ 
+ #include "tests.h"
+-#include "minigtest.h"
+ #include "tests_printers.h"
++#include "minigtest.h"
+ 
+ #include "../../../backend/genesys/low.h"
+ #include "../../../backend/genesys/enums.h"
+--- a/testsuite/backend/genesys/tests_utilities.cpp
++++ b/testsuite/backend/genesys/tests_utilities.cpp
+@@ -21,8 +21,8 @@
+ #define DEBUG_DECLARE_ONLY
+ 
+ #include "tests.h"
+-#include "minigtest.h"
+ #include "tests_printers.h"
++#include "minigtest.h"
+ 
+ #include "../../../backend/genesys/utilities.h"
+ 
+GitLab

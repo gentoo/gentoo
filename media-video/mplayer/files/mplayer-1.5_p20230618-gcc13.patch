@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/918113
+--- a/libmpcodecs/mp_image.c
++++ b/libmpcodecs/mp_image.c
+@@ -30,6 +30,7 @@
+ #include "libmpcodecs/mp_image.h"
+ #include "libvo/fastmemcpy.h"
+ #include "libavutil/mem.h"
++#include <limits.h>
+ #include "mp_msg.h"
+ 
+ void mp_image_alloc_planes(mp_image_t *mpi) {

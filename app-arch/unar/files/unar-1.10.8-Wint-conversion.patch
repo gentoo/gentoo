@@ -1,0 +1,40 @@
+Without this change, GCC 14 will fail compilation with an error:
+
+XADRAR5Parser.m: In function ‘+[XADRAR5Parser recognizeFileWithHandle:firstBytes:name:]’: XADRAR5Parser.m:79:5: warning: ‘XADRAR5Parser’ may not respond to ‘+signatureLocationInData:’
+   79 |     off_t signatureLocation = [self signatureLocationInData:data];
+      |     ^~~~~
+XADRAR5Parser.m:79:5: warning: (messages without a matching method signature will be assumed to return ‘id’ and accept ‘...’ as arguments)
+XADRAR5Parser.m:79:31: error: initialization of ‘off_t’ {aka ‘long int’} from ‘id’ makes integer from pointer without a cast
+   79 |     off_t signatureLocation = [self signatureLocationInData:data];
+      |                               ^
+
+Submitted upstream: <https://github.com/MacPaw/XADMaster/pull/161>
+
+--- a/XADRAR5Parser.m
++++ b/XADRAR5Parser.m
+@@ -74,12 +74,6 @@ static inline BOOL IsZeroHeaderBlock(RAR5HeaderBlock block) { return IsZeroBlock
+ 	return 8;
+ }
+ 
+-+(BOOL)recognizeFileWithHandle:(CSHandle *)handle firstBytes:(NSData *)data name:(NSString *)name
+-{
+-    off_t signatureLocation = [self signatureLocationInData:data];
+-    return signatureLocation != RAR5SignatureNotFound;
+-}
+-
+ + (off_t)signatureLocationInData:(NSData *)data {
+     const uint8_t *bytes=[data bytes];
+     int length=[data length];
+@@ -98,6 +92,12 @@ static inline BOOL IsZeroHeaderBlock(RAR5HeaderBlock block) { return IsZeroBlock
+     return RAR5SignatureNotFound;
+ }
+ 
+++(BOOL)recognizeFileWithHandle:(CSHandle *)handle firstBytes:(NSData *)data name:(NSString *)name
++{
++    off_t signatureLocation = [self signatureLocationInData:data];
++    return signatureLocation != RAR5SignatureNotFound;
++}
++
+ +(NSArray *)volumesForHandle:(CSHandle *)handle firstBytes:(NSData *)data name:(NSString *)name
+ {
+     // Check if multipart

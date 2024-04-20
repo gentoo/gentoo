@@ -1,0 +1,41 @@
+there are different space characters used in java 21 (narrow space)
+
+--- a/stringtemplate4-ST4-4.3.4/test/org/stringtemplate/v4/test/TestRenderers.java
++++ b/stringtemplate4-ST4-4.3.4/test/org/stringtemplate/v4/test/TestRenderers.java
+@@ -77,6 +77,8 @@ public class TestRenderers extends BaseTest {
+         String expecting = "datetime: 7/5/05, 12:00 AM";
+         if ( javaVersion.startsWith("1.6") || javaVersion.startsWith("1.7") || javaVersion.startsWith("1.8") ) {
+             expecting = "datetime: 7/5/05 12:00 AM";
++        } else if ( javaVersion.startsWith("21") ) {
++            expecting = "datetime: 7/5/05, 12:00 AM";
+         }
+         String result = st.render();
+         assertEquals(expecting, result);
+@@ -106,6 +108,8 @@ public class TestRenderers extends BaseTest {
+         String expecting = " datetime: 7/5/05, 12:00 AM ";
+         if ( javaVersion.startsWith("1.6") || javaVersion.startsWith("1.7") || javaVersion.startsWith("1.8") ) {
+             expecting = " datetime: 7/5/05 12:00 AM ";
++        } else if ( javaVersion.startsWith("21") ) {
++            expecting = " datetime: 7/5/05, 12:00 AM ";
+         }
+         String result = st.render();
+         assertEquals(expecting, result);
+@@ -126,6 +130,8 @@ public class TestRenderers extends BaseTest {
+             String expecting = " datetime: Tuesday, July 5, 2005 at 12:00:00 AM Pacific Daylight Time ";
+             if ( javaVersion.startsWith("1.6") || javaVersion.startsWith("1.7") || javaVersion.startsWith("1.8") ) {
+                 expecting = " datetime: Tuesday, July 5, 2005 12:00:00 AM PDT ";
++            } else if ( javaVersion.startsWith("21") ) {
++                expecting = " datetime: Tuesday, July 5, 2005, 12:00:00 AM Pacific Daylight Time ";
+             }
+             String result = st.render();
+             assertEquals(expecting, result);
+@@ -160,6 +166,9 @@ public class TestRenderers extends BaseTest {
+         ST st = group.getInstanceOf("dateThing");
+         st.add("created", new GregorianCalendar(2005, 7 - 1, 5));
+         String expecting = " time: 12:00:00 AM ";
++        if ( javaVersion.startsWith("21") ) {
++            expecting = " time: 12:00:00 AM ";
++        }
+         String result = st.render();
+         assertEquals(expecting, result);
+     }

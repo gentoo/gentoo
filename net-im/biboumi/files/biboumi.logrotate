@@ -1,0 +1,10 @@
+/var/log/biboumi/*.log {
+	missingok
+	notifempty
+	sharedscripts
+	postrotate
+		for service in /etc/init.d/biboumi*; do
+			rc-service $(basename ${service}) reload > /dev/null
+		done
+	endscript
+}

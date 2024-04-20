@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!--maintainer-needed-->
+	<upstream>
+		<remote-id type="github">sahlberg/libiscsi</remote-id>
+	</upstream>
+	<use>
+		<flag name="rdma">Enable infiniband support via <pkg>sys-cluster/rdma-core</pkg></flag>
+	</use>
+</pkgmetadata>

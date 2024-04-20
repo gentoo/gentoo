@@ -1,0 +1,20 @@
+--- a/test/pcapnav-test1.c
++++ b/test/pcapnav-test1.c
+@@ -1,6 +1,7 @@
+ #include <config.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <time.h> /* ctime() */
+ 
+ #include <pcapnav.h>
+ 
+--- a/test/pcapnav-jump.c
++++ b/test/pcapnav-jump.c
+@@ -1,6 +1,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <pcapnav.h>
++#include <string.h> /* strcmp() */
+ 
+ int 
+ main(int argc, char** argv)

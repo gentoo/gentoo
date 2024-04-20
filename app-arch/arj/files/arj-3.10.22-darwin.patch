@@ -1,0 +1,41 @@
+--- arj-3.10.22/environ.c
++++ arj-3.10.22/environ.c
+@@ -58,7 +58,7 @@
+   #include <sys/ioctl.h>
+   #include <sys/statfs.h>
+   #include <sys/statvfs.h>
+- #elif defined(__FreeBSD__)||defined(__NetBSD__)
++ #elif defined(__FreeBSD__)||defined(__NetBSD__)||defined(__APPLE__)
+   #include <sys/param.h>
+   #include <sys/mount.h>
+  #elif defined(__QNXNTO__)
+--- arj-3.10.22/gnu/configure.in
++++ arj-3.10.22/gnu/configure.in
+@@ -62,6 +62,11 @@
+         DLL_FLAGS="-shared -export-dynamic"
+         LD_STRIP="gnu/stripgcc.lnk"
+ 	;;
++*darwin*)
++	# not ELF
++	DLL_EXT=".dylib"
++	DLL_FLAGS=""
++	;;
+ interix3*)
+ 	# not ELF
+ 	DLL_FLAGS="-shared"
+--- arj-3.10.22/arjcrypt.c
++++ arj-3.10.22/arjcrypt.c
+@@ -329,6 +329,13 @@
+ }
+ #endif
+ 
++#if defined(__APPLE__)
++int main()
++{
++ return(0);
++}
++#endif
++
+ /* External entry */
+ 
+ #if TARGET==DOS

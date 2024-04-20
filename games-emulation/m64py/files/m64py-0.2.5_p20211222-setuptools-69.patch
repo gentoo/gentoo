@@ -1,0 +1,17 @@
+diff --git a/setup.py b/setup.py
+index b68b6e3..270291d 100644
+--- a/setup.py
++++ b/setup.py
+@@ -15,6 +15,12 @@ import distutils.command.build as distutils_build
+ import distutils.command.clean as distutils_clean
+ import setuptools
+ 
++try:
++    import setuptools.modified
++    distutils.dep_util = setuptools.modified
++except ImportError:
++    pass
++
+ # Add the src folder to the path
+ sys.path.insert(0, os.path.realpath("src"))
+ 

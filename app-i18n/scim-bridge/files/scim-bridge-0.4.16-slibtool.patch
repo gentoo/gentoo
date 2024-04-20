@@ -1,0 +1,58 @@
+From 9b46a64aea5adac5b992b4133065b52f527ec881 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sun, 15 May 2022 10:46:17 -0700
+Subject: [PATCH] client-gtk: Fix X11 undefined references
+
+With slibtool the client-gtk build fails with undefined references for
+-lx11. This happens because the build includes -no-undefined and then
+fails to test for the libX11 pkgconfig file.
+
+GNU libtool silently ignores -no-undefined and hides this issue while
+slibtool does not do this.
+---
+ client-gtk/Makefile.am | 7 ++++---
+ configure.ac           | 6 ++++++
+ 2 files changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/client-gtk/Makefile.am b/client-gtk/Makefile.am
+index 4318519..27728b8 100644
+--- a/client-gtk/Makefile.am
++++ b/client-gtk/Makefile.am
+@@ -33,13 +33,14 @@ im_scim_bridge_la_SOURCES = im-scim-bridge-gtk.c \
+ 							scim-bridge-client-imcontext-gtk.c \
+ 							scim-bridge-client-key-event-utility-gtk.c
+ 
+-im_scim_bridge_la_CXXFLAGS=@GTK2_CFLAGS@
+-im_scim_bridge_la_CFLAGS  =@GTK2_CFLAGS@
++im_scim_bridge_la_CXXFLAGS=@GTK2_CFLAGS@ @X11_CFLAGS@
++im_scim_bridge_la_CFLAGS  =@GTK2_CFLAGS@ @X11_CFLAGS@
+ 
+ im_scim_bridge_la_LDFLAGS = -rpath $(moduledir) \
+ 		     -avoid-version -no-undefined \
+ 		     -module \
+-		     @GTK2_LIBS@
++		     @GTK2_LIBS@ \
++		     @X11_LIBS@
+ 
+ im_scim_bridge_la_LIBADD  = $(top_srcdir)/common/libscimbridgecommon.la \
+ 							$(top_srcdir)/client-common/libscimbridgeclientcommon.la
+diff --git a/configure.ac b/configure.ac
+index 4c4b1fb..8b2a7a8 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -205,6 +205,12 @@ else
+   enable_qt4_immodule=no
+ fi
+ 
++if test "$SCIM_BRIDGE_BUILD_IMMODULE" = "1"; then
++  PKG_CHECK_MODULES(X11, [x11])
++  AC_SUBST(X11_LIBS)
++  AC_SUBST(X11_CFLAGS)
++fi
++
+ AM_CONDITIONAL(SCIM_BRIDGE_BUILD_TESTS,
+ 		[test "$enable_tests" = "yes"])
+ 
+-- 
+2.35.1
+

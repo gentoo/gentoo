@@ -1,0 +1,15 @@
+Fix dependency on app-misc/openrgb
+
+--- a/OpenRGBEffectsPlugin.pro
++++ b/OpenRGBEffectsPlugin.pro
+@@ -60,10 +60,6 @@ HEADERS +=
+     OpenRGB/qt/hsv.h                                                                            \
+ 
+ 
+-SOURCES +=                                                                                      \
+-    OpenRGB/RGBController/RGBController.cpp                                                     \
+-    OpenRGB/dependencies/ColorWheel/ColorWheel.cpp                                              \
+-    OpenRGB/qt/hsv.cpp                                                                          \
+ 
+ 
+ #-----------------------------------------------------------------------------------------------#

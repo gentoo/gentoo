@@ -1,0 +1,10 @@
+--- authforce-0.9.9/src/http.c
++++ authforce-0.9.9/src/http.c
+@@ -7,7 +7,6 @@
+ #include <time.h>
+ #ifdef USE_CURL
+ #include <curl/curl.h>
+-#include <curl/types.h>
+ #include <curl/easy.h>
+ #endif /* USE_CURL */
+ #ifdef MEMWATCH

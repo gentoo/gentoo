@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sping@gentoo.org</email>
+		<name>Sebastian Pipping</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">wiki2beamer/wiki2beamer</remote-id>
+		<remote-id type="sourceforge">wiki2beamer</remote-id>
+	</upstream>
+</pkgmetadata>

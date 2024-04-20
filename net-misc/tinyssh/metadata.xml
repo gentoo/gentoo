@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>contact@hacktivis.me</email>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <use>
+    <flag name="sodium">Use <pkg>dev-libs/libsodium</pkg> for cryptography</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">janmojzis/tinyssh</remote-id>
+    <bugs-to>https://github.com/janmojzis/tinyssh/issues</bugs-to>
+  </upstream>
+  <longdescription lang="en">
+Features
+
+    easy auditable - TinySSH has less than 100000 words of code
+    no dynamic memory allocation - TinySSH has all memory statically allocated (less than 1MB)
+    simple configuration - TinySSH can’t be misconfigured
+    reusing code - TinySSH is reusing libraries from CurveCP implementation
+    reusing software - TinySSH is using tcpserver/systemd socket/inetd for TCP connection
+    limited amount of features - TinySSH doesn’t have features such: SSH1 protocol, compression, …
+    no older cryptographic primitives - rsa, dsa, classic diffie-hellman, hmac-md5, hmac-sha1, 3des, arcfour, …
+    no copyright restrictions - TinySSH is in the public domain (see the licence)
+    no dependency on OpenSSL - TinySSH has its own crypto library compatible with NaCl, Libsodium
+    speed - TinySSH can be also compiled using high-speed NaCl library instead of internal.
+
+Security features
+
+    cryptographic library (minimum 128-bit security, side-channel attack resistant, state-of-the-art crypto, …)
+    public-key authentication only (no password or hostbased authentication)
+
+Crypto primitives
+
+    State-of-the-art crypto: ssh-ed25519, curve25519-sha256@libssh.org, chacha20-poly1305@openssh.com
+    Older standard: ecdsa-sha2-nistp256, ecdh-sha2-nistp256, aes256-ctr, hmac-sha2-256 removed in version 20190101
+    Postquantum crypto: sntrup4591761x25519-sha512@tinyssh.org, chacha20-poly1305@openssh.com
+  </longdescription>
+</pkgmetadata>

@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/show_bug.cgi?id=423817
+
+--- dwarves-1.10/ostra/ostra-cg
++++ dwarves-1.10/ostra/ostra-cg
+@@ -10,7 +10,9 @@
+ # under the terms of version 2 of the GNU General Public License as
+ # published by the Free Software Foundation.
+ 
+-import sys, datetime, os, ostra
++import sys
++sys.path.insert(0, "/usr/share/dwarves/runtime/python")
++import datetime, os, ostra
+ 
+ class_def = None
+ 

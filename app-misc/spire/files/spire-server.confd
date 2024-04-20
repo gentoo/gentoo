@@ -1,0 +1,6 @@
+# log file for the spire server.
+# The default is /var/log/spire/spire-server.log
+#logfile=""
+#
+# Extra arguments to pass when starting the spire server.
+#spire_server_args=""

@@ -1,0 +1,10 @@
+--- a/utils/fontdata.c
++++ b/utils/fontdata.c
+@@ -32,6 +32,7 @@
+ #include <string.h>
+ #include <stdlib.h>
+ #include <zlib.h>
++#include <stdlib.h>
+ 
+ int main(argc,argv)
+ int argc;

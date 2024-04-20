@@ -1,0 +1,126 @@
+converting to gettext
+https://bugs.gentoo.org/show_bug.cgi?id=439970
+Signed-of-by: Joerg Bornkessel <hd_brummy@gentoo.org>
+diff -Naur vdr-ffnetdev-0.1.2.orig/ffnetdev.c vdr-ffnetdev-0.1.2/ffnetdev.c
+--- vdr-ffnetdev-0.1.2.orig/ffnetdev.c	2012-10-31 18:32:09.000000000 +0100
++++ vdr-ffnetdev-0.1.2/ffnetdev.c	2012-10-31 18:34:05.000000000 +0100
+@@ -10,7 +10,7 @@
+ 
+ #include <vdr/tools.h>
+ 
+-#include "i18n.h"
++#include <vdr/i18n.h>
+ #include "tsworker.h"
+ #include "netosd.h"
+ #include "ffnetdev.h"
+@@ -22,7 +22,7 @@
+ 
+ 
+ const char *cPluginFFNetDev::VERSION = "0.1.2";
+-const char *cPluginFFNetDev::DESCRIPTION 		= "Full Featured Network Device for Streaming";
++const char *cPluginFFNetDev::DESCRIPTION 		= trNOOP("Full Featured Network Device for Streaming");
+ //const char *cOSDWorker::MAINMENUENTRY 		= "FFNetDev";
+  
+ // --- cNetOSDProvider -----------------------------------------------
+@@ -163,9 +163,6 @@
+ bool cPluginFFNetDev::Start(void)
+ {
+   // Start any background activities the plugin shall perform.
+-  RegisterI18n(Phrases);
+-  
+-  	  
+   cOSDWorker::Init(OSDPort, this);
+   cTSWorker::Init(m_StreamDevice, TSPort, this);
+   cClientControl::Init(ControlPort, this);
+diff -Naur vdr-ffnetdev-0.1.2.orig/Makefile vdr-ffnetdev-0.1.2/Makefile
+--- vdr-ffnetdev-0.1.2.orig/Makefile	2012-10-31 18:32:09.000000000 +0100
++++ vdr-ffnetdev-0.1.2/Makefile	2012-10-31 18:37:10.000000000 +0100
+@@ -50,9 +50,7 @@
+ 
+ ### The object files (add further files here):
+ 
+-COMMONOBJS = i18n.o \
+-	\
+-	tools/source.o tools/select.o tools/socket.o tools/tools.o 
++COMMONOBJS = tools/source.o tools/select.o tools/socket.o tools/tools.o
+ 
+ 
+ SERVEROBJS = $(PLUGIN).o \
+@@ -95,9 +93,34 @@
+ 
+ -include $(DEPFILE)
+ 
++### Internationalization (I18N):
++
++PODIR     = po
++LOCALEDIR = $(VDRDIR)/locale
++I18Npo    = $(wildcard $(PODIR)/*.po)
++I18Nmo    = $(addsuffix .mo, $(foreach file, $(I18Npo), $(basename $(file))))
++I18Ndirs  = $(notdir $(foreach file, $(I18Npo), $(basename $(file))))
++I18Npot   = $(PODIR)/$(PLUGIN).pot
++
++%.mo: %.po
++	msgfmt -c -o $@ $<
++
++$(I18Npot): $(wildcard *.c)
++	xgettext -C -cTRANSLATORS --no-wrap -F -k -ktr -ktrNOOP --msgid-bugs-address='<dev@erichseifert.de>' -o $@ $(wildcard *.c)
++
++$(I18Npo): $(I18Npot)
++	msgmerge -U --no-wrap -F --backup=none -q $@ $<
++
++i18n: $(I18Nmo)
++	@mkdir -p $(LOCALEDIR)
++	for i in $(I18Ndirs); do\
++	    mkdir -p $(LOCALEDIR)/$$i/LC_MESSAGES;\
++	    cp $(PODIR)/$$i.mo $(LOCALEDIR)/$$i/LC_MESSAGES/vdr-$(PLUGIN).mo;\
++	    done
++
+ ### Targets:
+ 
+-all: libvdr-$(PLUGIN).so
++all: libvdr-$(PLUGIN).so i18n
+ 
+ libvdr-$(PLUGIN).so: $(SERVEROBJS) $(COMMONOBJS)
+ 
+@@ -106,6 +129,7 @@
+ 	@cp $@ $(LIBDIR)/$@.$(APIVERSION)
+ 
+ dist: clean
++	@-rm -f $(PODIR)/*.mo $(PODIR)/*.pot
+ 	@-rm -rf $(TMPDIR)/$(ARCHIVE)
+ 	@mkdir $(TMPDIR)/$(ARCHIVE)
+ 	@cp -a * $(TMPDIR)/$(ARCHIVE)
+diff -Naur vdr-ffnetdev-0.1.2.orig/po/de_DE.po vdr-ffnetdev-0.1.2/po/de_DE.po
+--- vdr-ffnetdev-0.1.2.orig/po/de_DE.po	1970-01-01 01:00:00.000000000 +0100
++++ vdr-ffnetdev-0.1.2/po/de_DE.po	2012-10-31 18:38:02.000000000 +0100
+@@ -0,0 +1,30 @@
++# VDR plugin language source file.
++# Copyright (C) 2007 Klaus Schmidinger <kls@cadsoft.de>
++# This file is distributed under the same license as the VDR package.
++# Klaus Schmidinger <kls@cadsoft.de>, 2000
++# Erich Seifert <dev@erichseifert.de>, 2012
++#
++msgid ""
++msgstr ""
++"Project-Id-Version: VDR 1.7.27\n"
++"Report-Msgid-Bugs-To: dev@erichseifert.de\n"
++"POT-Creation-Date: 2012-10-30 14:31+0100\n"
++"PO-Revision-Date: 2012-10-30 14:37+0100\n"
++"Last-Translator: Klaus Schmidinger <kls@cadsoft.de>\n"
++"Language-Team: <vdr@linuxtv.org>\n"
++"Language: \n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=ISO-8859-15\n"
++"Content-Transfer-Encoding: 8bit\n"
++
++#: ffnetdevsetup.c:18
++msgid "auto set as primary device"
++msgstr "Automatisch als prim�res Ger�t festlegen"
++
++#: ffnetdevsetup.c:18
++msgid "no"
++msgstr "nein"
++
++#: ffnetdevsetup.c:18
++msgid "yes"
++msgstr "ja"

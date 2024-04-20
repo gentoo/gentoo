@@ -1,0 +1,56 @@
+Fix building with musl libc
+
+https://github.com/apple/swift-corelibs-libdispatch/pull/594/
+https://bugs.gentoo.org/829158
+https://bugs.gentoo.org/833306
+
+--- a/dispatch/source.h
++++ b/dispatch/source.h
+@@ -32,7 +32,7 @@
+ #endif
+ 
+ #if !defined(_WIN32)
+-#include <sys/signal.h>
++#include <signal.h>
+ #endif
+ 
+ DISPATCH_ASSUME_NONNULL_BEGIN
+--- a/os/generic_unix_base.h
++++ b/os/generic_unix_base.h
+@@ -25,6 +25,14 @@
+ 
+ #if __has_include(<sys/cdefs.h>)
+ #include <sys/cdefs.h>
++#else
++#if defined(__cplusplus)
++#define	__BEGIN_DECLS extern "C" {
++#define	__END_DECLS }
++#else
++#define	__BEGIN_DECLS
++#define	__END_DECLS
++#endif
+ #endif
+ 
+ #ifndef API_AVAILABLE
+--- a/src/shims/getprogname.h
++++ b/src/shims/getprogname.h
+@@ -37,7 +37,7 @@
+ static inline char *
+ getprogname(void)
+ {
+-# if HAVE_DECL_PROGRAM_INVOCATION_SHORT_NAME
++# if HAVE_DECL_PROGRAM_INVOCATION_SHORT_NAME || defined(__linux__)
+ 	return program_invocation_short_name;
+ # elif defined(__ANDROID__)
+ 	return __progname;
+--- a/tests/dispatch_test.c
++++ b/tests/dispatch_test.c
+@@ -34,7 +34,7 @@
+ #define HAS_SYS_EVENT_H 1
+ #include <sys/event.h>
+ #else
+-#include <sys/poll.h>
++#include <poll.h>
+ #endif
+ #elif defined(_WIN32)
+ #include <Windows.h>

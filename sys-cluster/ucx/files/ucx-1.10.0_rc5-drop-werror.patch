@@ -1,0 +1,55 @@
+https://bugs.gentoo.org/789762
+
+From 18df3302b256bce6f61d83a58b2afbc8d788ad5c Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 15 Jun 2021 01:40:48 +0000
+Subject: [PATCH] Drop -Werror
+
+---
+ bindings/java/src/main/native/Makefile.am | 2 +-
+ examples/Makefile.am                      | 2 +-
+ test/apps/sockaddr/Makefile.am            | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/bindings/java/src/main/native/Makefile.am b/bindings/java/src/main/native/Makefile.am
+index 73f9940..6616dae 100644
+--- a/bindings/java/src/main/native/Makefile.am
++++ b/bindings/java/src/main/native/Makefile.am
+@@ -64,7 +64,7 @@ libjucx_la_SOURCES = context.cc \
+                      ucs_constants.cc \
+                      worker.cc
+ 
+-libjucx_la_CXXFLAGS = -fPIC -DPIC -Werror -std=gnu++98
++libjucx_la_CXXFLAGS = -fPIC -DPIC -std=gnu++98
+ 
+ libjucx_la_LIBADD = $(topdir)/src/ucs/libucs.la \
+                     $(topdir)/src/uct/libuct.la \
+diff --git a/examples/Makefile.am b/examples/Makefile.am
+index 05cde27..76c3b18 100644
+--- a/examples/Makefile.am
++++ b/examples/Makefile.am
+@@ -23,7 +23,7 @@ EXAMPLE_CUDA_CFLAGS = $(CFLAGS_PEDANTIC)
+ EXAMPLE_CUDA_CPPFLAGS =
+ endif
+ 
+-EXAMPLE_CCLD_FLAGS = -lucs -I$(includedir) -L$(libdir) -Wall -Werror -Wl,-rpath,$(libdir) \
++EXAMPLE_CCLD_FLAGS = -lucs -I$(includedir) -L$(libdir) -Wall -Wl,-rpath,$(libdir) \
+                      $(EXAMPLE_CUDA_LDFLAGS) $(EXAMPLE_CUDA_CPPFLAGS)
+ 
+ installcheck-local:
+diff --git a/test/apps/sockaddr/Makefile.am b/test/apps/sockaddr/Makefile.am
+index 7ce7a01..2e4ad47 100644
+--- a/test/apps/sockaddr/Makefile.am
++++ b/test/apps/sockaddr/Makefile.am
+@@ -12,7 +12,7 @@ noinst_HEADERS = \
+ 	sa_util.h
+ 
+ sa_CXXFLAGS = \
+-	-std=c++11 -g -Wall -Werror
++	-std=c++11 -Wall
+ 
+ sa_CPPFLAGS = $(BASE_CPPFLAGS)
+ 
+-- 
+2.32.0
+

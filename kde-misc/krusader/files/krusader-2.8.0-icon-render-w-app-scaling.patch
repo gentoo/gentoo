@@ -1,0 +1,50 @@
+From 2bd5cd0db362db944bdea639bf0be33f6f439268 Mon Sep 17 00:00:00 2001
+From: Evgeny Brazgin <xapienz@phystech.edu>
+Date: Sun, 5 Mar 2023 22:48:27 -0800
+Subject: [PATCH 1/2] Add workaround for icon size in HiDPI environment
+
+---
+ app/Panel/PanelView/listmodel.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/app/Panel/PanelView/listmodel.cpp b/app/Panel/PanelView/listmodel.cpp
+index d6ad6c5f8..7731e8951 100644
+--- a/app/Panel/PanelView/listmodel.cpp
++++ b/app/Panel/PanelView/listmodel.cpp
+@@ -177,7 +177,7 @@ QVariant ListModel::data(const QModelIndex& index, int role) const
+             if (properties()->displayIcons) {
+                 if (_justForSizeHint)
+                     return QPixmap(_view->fileIconSize(), _view->fileIconSize());
+-                return _view->getIcon(fileitem);
++                return QIcon(_view->getIcon(fileitem));
+             }
+             break;
+         }
+-- 
+GitLab
+
+
+From f447f96f14fdb4f86ccc1286692accbec535ecb0 Mon Sep 17 00:00:00 2001
+From: Evgeny Brazgin <xapienz@phystech.edu>
+Date: Sun, 12 Mar 2023 21:35:27 -0700
+Subject: [PATCH 2/2] Don't set QStyle::State_None for brief view
+
+---
+ app/Panel/PanelView/krinterbriefview.cpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/app/Panel/PanelView/krinterbriefview.cpp b/app/Panel/PanelView/krinterbriefview.cpp
+index 69496f890..4042c163c 100644
+--- a/app/Panel/PanelView/krinterbriefview.cpp
++++ b/app/Panel/PanelView/krinterbriefview.cpp
+@@ -401,7 +401,6 @@ void KrInterBriefView::paintEvent(QPaintEvent *e)
+     intersectionSet(area, intersectVector);
+ 
+     foreach(const QModelIndex &mndx, intersectVector) {
+-        option.state = QStyle::State_None;
+         option.rect = visualRect(mndx);
+         painter.save();
+ 
+-- 
+GitLab
+

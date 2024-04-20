@@ -1,0 +1,11 @@
+--- a/main.c
++++ b/main.c
+@@ -327,7 +327,7 @@
+ void loadSettings()
+ {
+   int l;
+-  char s[80];
++  char s[200];
+   char home[80];
+   char *r;
+   char *c;

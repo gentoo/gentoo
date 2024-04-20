@@ -1,0 +1,73 @@
+From 0c0a392d319ed495a55f8ad29291c4a7cbd5077a Mon Sep 17 00:00:00 2001
+From: sblondon <stephane.blondon@gmail.com>
+Date: Tue, 19 Mar 2024 19:33:17 +0100
+Subject: [PATCH] Fix syntax warnings in Python3.12 (#17)
+
+Python3.12 added new syntax warning if strings contain invalid sequence.
+
+The change is documented in:
+https://docs.python.org/3/whatsnew/3.12.html#other-language-changes
+---
+ bin/hatop | 34 +++++++++++++++++-----------------
+ 1 file changed, 17 insertions(+), 17 deletions(-)
+
+diff --git a/bin/hatop b/bin/hatop
+index bb69311..9aa9553 100755
+--- a/bin/hatop
++++ b/bin/hatop
+@@ -196,7 +196,7 @@ HAPROXY_CLI_MAXLINES = 1000
+ CLI_MAXLINES = 1000
+ CLI_MAXHIST = 100
+ CLI_INPUT_LIMIT = 200
+-CLI_INPUT_RE = re.compile('[a-zA-Z0-9_:\.\-\+; /#%]')
++CLI_INPUT_RE = re.compile(r'[a-zA-Z0-9_:\.\-\+; /#%]')
+ CLI_INPUT_DENY_CMD = ['prompt', 'set timeout cli', 'quit']
+ 
+ # Note: Only the last 3 lines are visible instantly on 80x25
+@@ -214,20 +214,20 @@ SCREEN_YMAX = 100
+ SCREEN_HPOS = 11
+ 
+ HAPROXY_INFO_RE = {
+-'software_name':    re.compile('^Name:\s*(?P<value>\S+)'),
+-'software_version': re.compile('^Version:\s*(?P<value>\S+)'),
+-'software_release': re.compile('^Release_date:\s*(?P<value>\S+)'),
+-'nproc':            re.compile('^Nbproc:\s*(?P<value>\d+)'),
+-'procn':            re.compile('^Process_num:\s*(?P<value>\d+)'),
+-'pid':              re.compile('^Pid:\s*(?P<value>\d+)'),
+-'uptime':           re.compile('^Uptime:\s*(?P<value>[\S ]+)$'),
+-'maxconn':          re.compile('^Maxconn:\s*(?P<value>\d+)'),
+-'curconn':          re.compile('^CurrConns:\s*(?P<value>\d+)'),
+-'maxpipes':         re.compile('^Maxpipes:\s*(?P<value>\d+)'),
+-'curpipes':         re.compile('^PipesUsed:\s*(?P<value>\d+)'),
+-'tasks':            re.compile('^Tasks:\s*(?P<value>\d+)'),
+-'runqueue':         re.compile('^Run_queue:\s*(?P<value>\d+)'),
+-'node':             re.compile('^node:\s*(?P<value>\S+)'),
++'software_name':    re.compile(r'^Name:\s*(?P<value>\S+)'),
++'software_version': re.compile(r'^Version:\s*(?P<value>\S+)'),
++'software_release': re.compile(r'^Release_date:\s*(?P<value>\S+)'),
++'nproc':            re.compile(r'^Nbproc:\s*(?P<value>\d+)'),
++'procn':            re.compile(r'^Process_num:\s*(?P<value>\d+)'),
++'pid':              re.compile(r'^Pid:\s*(?P<value>\d+)'),
++'uptime':           re.compile(r'^Uptime:\s*(?P<value>[\S ]+)$'),
++'maxconn':          re.compile(r'^Maxconn:\s*(?P<value>\d+)'),
++'curconn':          re.compile(r'^CurrConns:\s*(?P<value>\d+)'),
++'maxpipes':         re.compile(r'^Maxpipes:\s*(?P<value>\d+)'),
++'curpipes':         re.compile(r'^PipesUsed:\s*(?P<value>\d+)'),
++'tasks':            re.compile(r'^Tasks:\s*(?P<value>\d+)'),
++'runqueue':         re.compile(r'^Run_queue:\s*(?P<value>\d+)'),
++'node':             re.compile(r'^node:\s*(?P<value>\S+)'),
+ }
+ 
+ HAPROXY_STAT_MAX_SERVICES = 1000
+@@ -236,9 +236,9 @@ Warning: You have reached the stat parser limit! (%d)
+ Use --filter to parse specific service stats only.
+ ''' % HAPROXY_STAT_MAX_SERVICES
+ HAPROXY_STAT_FILTER_RE = re.compile(
+-        '^(?P<iid>-?\d+)\s+(?P<type>-?\d+)\s+(?P<sid>-?\d+)$')
++        r'^(?P<iid>-?\d+)\s+(?P<type>-?\d+)\s+(?P<sid>-?\d+)$')
+ HAPROXY_STAT_PROXY_FILTER_RE = re.compile(
+-        '^(?P<pxname>[a-zA-Z0-9_:\.\-]+)$')
++        r'^(?P<pxname>[a-zA-Z0-9_:\.\-]+)$')
+ HAPROXY_STAT_COMMENT = '#'
+ HAPROXY_STAT_SEP = ','
+ HAPROXY_STAT_CSV = [

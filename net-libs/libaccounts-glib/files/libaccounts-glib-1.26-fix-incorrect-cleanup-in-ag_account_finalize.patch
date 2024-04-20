@@ -1,0 +1,30 @@
+From 270a66d5efe1453a2be4bad10894b947fdd2923e Mon Sep 17 00:00:00 2001
+From: Alberto Mardegan <mardy@users.sourceforge.net>
+Date: Tue, 4 Oct 2022 20:58:27 +0300
+Subject: [PATCH] ag-account: fix incorrect cleanup in ag_account_finalize
+
+The wrong variable was passed to _ag_account_changes_free(); as a matter
+of facts, this code was always a NOP, since prig->services had already
+been nullified before, but it was a memory leak.
+
+Fixes: https://gitlab.com/accounts-sso/libaccounts-glib/-/issues/13
+---
+ libaccounts-glib/ag-account.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libaccounts-glib/ag-account.c b/libaccounts-glib/ag-account.c
+index 8d6995b..7e67ba7 100644
+--- a/libaccounts-glib/ag-account.c
++++ b/libaccounts-glib/ag-account.c
+@@ -994,7 +994,7 @@ ag_account_finalize (GObject *object)
+     if (priv->changes)
+     {
+         DEBUG_INFO ("Finalizing account with uncommitted changes!");
+-        g_clear_pointer (&priv->services, _ag_account_changes_free);
++        g_clear_pointer (&priv->changes, _ag_account_changes_free);
+     }
+ 
+     G_OBJECT_CLASS (ag_account_parent_class)->finalize (object);
+-- 
+GitLab
+

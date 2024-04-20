@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+# Copyright 2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="microsocks daemon"
+description="Multithreaded, small, efficient SOCKS5 server"
+pidfile="/run/${RC_SVCNAME}.pid"
+command=/usr/bin/microsocks
+command_args="${microsocks_args}"
+command_background=1
+
+depend() {
+	need net
+}

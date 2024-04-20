@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+# SPDX-License-Identifier: MIT
+
+description="Maintain persistent software state in the NVIDIA driver"
+command="nvidia-persistenced"
+command_args="${NVPD_USER:+--user ${NVPD_USER}} ${ARGS}"
+pidfile="/var/run/nvidia-persistenced/nvidia-persistenced.pid"
+
+stop_post() {
+	rmdir "${pidfile%/*}" 2>/dev/null || true
+}

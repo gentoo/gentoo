@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <use>
+    <flag name="aio">Enables file AIO support</flag>
+    <flag name="http">Enable HTTP core support</flag>
+    <flag name="http2">Enable HTTP2 module support</flag>
+    <flag name="http3">Enable HTTP3 module support</flag>
+    <flag name="http-cache">Enable HTTP cache support</flag>
+    <flag name="ktls">Enable Kernel TLS offload (kTLS)</flag>
+    <flag name="libatomic">Use libatomic instead of builtin atomic operations</flag>
+    <flag name="pcre-jit">Enable JIT for pcre</flag>
+    <flag name="pcre2">Enable support for pcre2</flag>
+    <flag name="ssl">Enable HTTPS module for http. Enable SSL/TLS support for POP3/IMAP/SMTP for mail.</flag>
+    <flag name="rtmp">NGINX-based Media Streaming Server</flag>
+  </use>
+  <upstream>
+    <changelog>https://nginx.org/en/CHANGES</changelog>
+    <remote-id type="github">openresty/memc-nginx-module</remote-id>
+    <remote-id type="bitbucket">nginx-goodies/nginx-sticky-module-ng</remote-id>
+    <remote-id type="cpe">cpe:/a:nginx:nginx</remote-id>
+  </upstream>
+</pkgmetadata>

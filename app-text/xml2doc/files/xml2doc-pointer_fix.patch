@@ -1,0 +1,20 @@
+diff -NurdpB xml2doc/src/output_info.c xml2doc-patched/src/output_info.c
+--- xml2doc/src/output_info.c	2003-04-25 05:11:27.000000000 -0500
++++ xml2doc-patched/src/output_info.c	2007-03-14 15:07:59.000000000 -0500
+@@ -9,11 +9,11 @@ void output_info()
+ 		*subject  =  xmlGetProp(Doc[n].cur,"subject"),
+ 		*keywords =  xmlGetProp(Doc[n].cur,"keywords"),
+ 		*trapped  =  xmlGetProp(Doc[n].cur,"trapped");
+-	struct time_t *timet;
+-        struct tm *clk;
+-	
+-	time((time_t *)&timet);		
+-	clk=localtime((const time_t *)&timet);
++	time_t timet;
++	struct tm *clk;
++
++	time(&timet);
++	clk=localtime(&timet);
+ 
+ 	switch(DocS.output)
+ 	{

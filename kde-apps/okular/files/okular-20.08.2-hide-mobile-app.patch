@@ -1,0 +1,27 @@
+From 6f7f17a24a564ffbf712fd5e0917fcabc8d19229 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 17 Sep 2020 20:36:37 +0200
+Subject: [PATCH] Revert "Don't hide the mobile app"
+
+We have no use for this on the desktop, but need it for peruse.
+
+This reverts commit 0991819a497594233b7564755bbc189009188bd0.
+---
+ mobile/app/package/metadata.desktop | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/mobile/app/package/metadata.desktop b/mobile/app/package/metadata.desktop
+index f9432748b..0fcf20843 100644
+--- a/mobile/app/package/metadata.desktop
++++ b/mobile/app/package/metadata.desktop
+@@ -110,6 +110,7 @@ GenericName[zh_TW]=文件檢視器
+ Type=Application
+ Exec=okularkirigami
+ Icon=okular
++NoDisplay=true
+ X-KDE-ParentApp=
+ X-KDE-PluginInfo-Author=Marco Martin
+ X-KDE-PluginInfo-Email=mart@kde.org
+-- 
+2.28.0
+

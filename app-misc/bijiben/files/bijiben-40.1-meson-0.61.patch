@@ -1,0 +1,38 @@
+https://gitlab.gnome.org/GNOME/gnome-notes/-/merge_requests/158.patch
+https://bugs.gentoo.org/831929
+
+From 01ccae2ccb640b2d33fd09c3dfb7d605830b5b0f Mon Sep 17 00:00:00 2001
+From: Michal Vasilek <michal@vasilek.cz>
+Date: Sat, 22 Jan 2022 23:16:37 +0100
+Subject: [PATCH] meson: fix build with meson 0.61
+
+i18n.merge_file doesn't accept positional arguments
+--- a/data/appdata/meson.build
++++ b/data/appdata/meson.build
+@@ -1,7 +1,6 @@
+ info = 'org.gnome.Notes.appdata.xml'
+ 
+ i18n.merge_file(
+-  info,
+   input: info + '.in',
+   output: info,
+   po_dir: po_dir,
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -4,7 +4,6 @@ subdir('appdata')
+ mime = 'org.gnome.Notes.xml'
+ 
+ i18n.merge_file(
+-  mime,
+   input: mime + '.in',
+   output: mime,
+   po_dir: po_dir,
+@@ -18,7 +17,6 @@ desktop_conf = configuration_data()
+ desktop_conf.set ('icon', application_id)
+ 
+ i18n.merge_file(
+-  desktop,
+   type: 'desktop',
+   input: configure_file(
+     input: files (desktop + '.in'),
+GitLab

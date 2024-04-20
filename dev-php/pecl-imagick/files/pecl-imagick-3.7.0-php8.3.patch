@@ -1,0 +1,20 @@
+From 7088edc353f53c4bc644573a79cdcd67a726ae16 Mon Sep 17 00:00:00 2001
+From: FedericoHeichou <federicoheichou@gmail.com>
+Date: Fri, 24 Nov 2023 11:24:00 +0100
+Subject: [PATCH] Fix compilation error "Unterminated preprocessor conditions"
+ in php 8.3
+
+---
+ Imagick.stub.php | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Imagick.stub.php b/Imagick.stub.php
+index 804c0152..49da9386 100644
+--- a/Imagick.stub.php
++++ b/Imagick.stub.php
+@@ -1669,4 +1669,5 @@ public function setInterpolateMethod(int $method): bool{}
+ 	public function setOrientation(int $orientation): bool {}
+ #endif
+ 
++#endif
+ }

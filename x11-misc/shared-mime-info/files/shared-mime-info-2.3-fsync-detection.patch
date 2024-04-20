@@ -1,0 +1,55 @@
+https://gitlab.freedesktop.org/xdg/shared-mime-info/-/commit/7499ac1a85b2487b94e315e6b55c34bcf220295f
+
+From 7499ac1a85b2487b94e315e6b55c34bcf220295f Mon Sep 17 00:00:00 2001
+From: Tobias Mayer <tobim@fastmail.fm>
+Date: Sat, 7 Oct 2023 23:45:47 +0200
+Subject: [PATCH] Fix false positive fdatasync detection on darwin
+
+The `has_function` feature in meson uses different detection methods
+depending on the contents of the `prefix` kwarg [1]:
+
+ * if it contains `#include` directives it will copy the prefix into
+   the test code and check if it compiles
+ * if it doesn't contain an include or isn't specified, `has_function`
+   will forward declare the function and test for it's existence by
+   trying to link it to the default libraries
+
+The latter approach wrongly succeeds for `fdatasync` on darwin because
+the linker binds the function to a system call of the same name. Note
+that this result really is wrong because that system call has not
+the expected semantics of `fdatasync`.
+
+By adding an include for `unistd.h` we can get meson to use the
+first approach and the detection fails.
+
+Note that this has gone unnoticed so far because only recent versions
+of clang (the default compiler on darwin) started to treat implicit
+function declarations as an error.
+
+[1] https://github.com/mesonbuild/meson/blob/583d2815d1a130227f0f4db47e4ab2e80ebb6a61/mesonbuild/compilers/mixins/clike.py#L839-L846
+
+Fixes #211
+---
+ meson.build | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 1780c443..7998a51b 100644
+--- a/meson.build
++++ b/meson.build
+@@ -49,12 +49,7 @@ endif
+ ###############################################################################
+ # Dependencies
+ 
+-check_functions = [
+-    'fdatasync',
+-]
+-foreach function : check_functions
+-    config.set('HAVE_'+function.to_upper(), cc.has_function(function))
+-endforeach
++config.set('HAVE_FDATASYNC', cc.has_function('fdatasync', prefix: '#include <unistd.h>'))
+ 
+ 
+ if get_option('build-translations')
+-- 
+GitLab

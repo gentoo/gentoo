@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>floppym@gentoo.org</email>
+		<name>Mike Gilbert</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<use>
+		<flag name="ftpd">Enable ftpd</flag>
+		<flag name="inetd">Enable inetd</flag>
+		<flag name="rexecd">Enable rexecd</flag>
+		<flag name="rlogind">Enable rlogind</flag>
+		<flag name="rshd">Enable rshd</flag>
+		<flag name="syslogd">Enable syslogd</flag>
+		<flag name="talkd">Enable talkd</flag>
+		<flag name="telnetd">Enable telnetd</flag>
+		<flag name="tftpd">Enable tftpd</flag>
+		<flag name="uucpd">Enable uucpd</flag>
+		<flag name="ftp">Enable ftp</flag>
+		<flag name="dnsdomainname">Enable domainname</flag>
+		<flag name="hostname">Enable hostname</flag>
+		<flag name="ping">Enable ping</flag>
+		<flag name="ping6">Enable ping6</flag>
+		<flag name="rcp">Enable rcp</flag>
+		<flag name="rexec">Enable rexec</flag>
+		<flag name="rlogin">Enable rlogin</flag>
+		<flag name="rsh">Enable rsh</flag>
+		<flag name="logger">Enable logger</flag>
+		<flag name="telnet">Enable telnet</flag>
+		<flag name="tftp">Enable tftp</flag>
+		<flag name="whois">Enable whois</flag>
+		<flag name="ifconfig">Enable ifconfig</flag>
+		<flag name="traceroute">Enable traceroute</flag>
+	</use>
+</pkgmetadata>

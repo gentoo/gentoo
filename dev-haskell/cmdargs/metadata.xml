@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="examples">Build the cmdargs-demo program</flag>
+		<flag name="testprog">Build the test program</flag>
+		<flag name="quotation">Build the Quote module</flag>
+	</use>
+	<upstream>
+		<remote-id type="hackage">cmdargs</remote-id>
+		<remote-id type="github">ndmitchell/cmdargs</remote-id>
+	</upstream>
+</pkgmetadata>

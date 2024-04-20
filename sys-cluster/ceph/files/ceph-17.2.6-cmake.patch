@@ -1,0 +1,80 @@
+https://bugs.gentoo.org/868891
+https://github.com/ceph/ceph/pull/49517
+
+From aa4b3652399b317652407959ee880982d4f648de Mon Sep 17 00:00:00 2001
+From: jinqiang zhang <peeweep@0x0.ee>
+Date: Tue, 20 Dec 2022 04:28:52 +0000
+Subject: [PATCH 1/2] cmake: fix common-msg-objs can't find common-options-objs
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+compile ceph-17.2.5 failed with follow error message:
+
+```
+ceph-17.2.5/src/msg/Messenger.h:723:30: error: ‘class ConfigValues’ has no member named ‘ms_die_on_unhandled_msg’
+```
+
+Add common-options-objs to common-msg-objs's depend to fix it.
+
+Full build log: https://fars.ee/YMqu
+Releated downstream issue: https://bugs.gentoo.org/866449
+Signed-off-by: jinqiang zhang <peeweep@0x0.ee>
+--- a/src/msg/CMakeLists.txt
++++ b/src/msg/CMakeLists.txt
+@@ -48,6 +48,7 @@ add_library(common-msg-objs OBJECT ${msg_srcs})
+ target_compile_definitions(common-msg-objs PRIVATE
+   $<TARGET_PROPERTY:fmt::fmt,INTERFACE_COMPILE_DEFINITIONS>)
+ target_include_directories(common-msg-objs PRIVATE ${OPENSSL_INCLUDE_DIR})
++add_dependencies(common-msg-objs common-options-objs)
+ 
+ if(WITH_DPDK)
+   set(async_dpdk_srcs
+
+From 80e422234acb1f8ffcbe8ee3898cb00f889466a3 Mon Sep 17 00:00:00 2001
+From: jinqiang zhang <peeweep@0x0.ee>
+Date: Tue, 20 Dec 2022 04:36:56 +0000
+Subject: [PATCH 2/2] cmake: fix krbd and rados_snap_set_diff_obj can't find
+ global_legacy_options.h
+
+compile ceph-17.2.5 failed with follow error messages:
+
+1. src/librados/snap_set_diff.cc can't find global_legacy_options.h
+```
+                 from /var/tmp/portage/sys-cluster/ceph-17.2.5-r1/work/ceph-17.2.5/src/librados/snap_set_diff.cc:7:
+/var/tmp/portage/sys-cluster/ceph-17.2.5-r1/work/ceph-17.2.5/src/common/options/legacy_config_opts.h:1:10: fatal error: global_legacy_options.h: No such file or directory
+
+```
+
+2. src/krbd.cc can't find global_legacy_options.h
+
+```
+                 from /var/tmp/portage/sys-cluster/ceph-17.2.5-r1/work/ceph-17.2.5/src/krbd.cc:44:
+/var/tmp/portage/sys-cluster/ceph-17.2.5-r1/work/ceph-17.2.5/src/common/options/legacy_config_opts.h:1:10: fatal error: global_legacy_options.h: No such file or directory
+
+```
+
+Add common-options-objs to depend to let it build ealier, similar with 3b3da64d.
+
+Full build log: https://fars.ee/SZFs
+Releated downstream issue: https://bugs.gentoo.org/868891
+Signed-off-by: jinqiang zhang <peeweep@0x0.ee>
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -614,6 +614,7 @@ add_subdirectory(osdc)
+ add_subdirectory(perfglue)
+ 
+ add_library(rados_snap_set_diff_obj OBJECT librados/snap_set_diff.cc)
++add_dependencies(rados_snap_set_diff_obj common-options-objs)
+ 
+ option(WITH_LIBRADOSSTRIPER "build with libradosstriper support" ON)
+ 
+@@ -867,6 +868,7 @@ add_subdirectory(journal)
+ if(WITH_RBD)
+   if(WITH_KRBD)
+     add_library(krbd STATIC krbd.cc
++      $<TARGET_OBJECTS:common-options-objs>
+       $<TARGET_OBJECTS:parse_secret_objs>)
+     target_link_libraries(krbd keyutils::keyutils)
+   endif()
+

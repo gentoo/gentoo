@@ -1,0 +1,74 @@
+Add a few includes to fix this warning: -Wimplicit-function-declaration
+Bug: https://bugs.gentoo.org/882143
+
+--- a/src/sed/lib/utils.c
++++ b/src/sed/lib/utils.c
+@@ -27,7 +27,8 @@
+ 
+ #ifdef HAVE_STRINGS_H
+ # include <strings.h>
+-#else
++#endif
++#ifdef HAVE_STRING_H
+ # include <string.h>
+ #endif /* HAVE_STRINGS_H */
+ 
+--- a/src/sed/sed/execute.c
++++ b/src/sed/sed/execute.c
+@@ -46,7 +46,8 @@
+ 
+ #ifdef HAVE_STRINGS_H
+ # include <strings.h>
+-#else
++#endif
++#ifdef HAVE_STRING_H
+ # include <string.h>
+ #endif /*HAVE_STRINGS_H*/
+ #ifdef HAVE_MEMORY_H
+--- a/src/sed/sed/fmt.c
++++ b/src/sed/sed/fmt.c
+@@ -22,6 +22,7 @@
+ #include <stdio.h>
+ #include <ctype.h>
+ #include <sys/types.h>
++#include <string.h>
+ 
+ #if HAVE_LIMITS_H
+ # include <limits.h>
+--- a/src/sed/sed/mbcs.c
++++ b/src/sed/sed/mbcs.c
+@@ -17,6 +17,7 @@
+ 
+ #include "sed.h"
+ #include <stdlib.h>
++#include <string.h>
+ 
+ int mb_cur_max;
+ 
+--- a/src/sed/sed/regexp.c
++++ b/src/sed/sed/regexp.c
+@@ -22,6 +22,9 @@
+ #ifdef HAVE_STDLIB_H
+ # include <stdlib.h>
+ #endif
++#ifdef HAVE_STRING_H
++# include <string.h>
++#endif
+ 
+ #ifdef gettext_noop
+ # define N_(String) gettext_noop(String)
+--- a/src/sed/sed/sed.c
++++ b/src/sed/sed/sed.c
+@@ -26,9 +26,10 @@
+ #include <stdio.h>
+ #ifdef HAVE_STRINGS_H
+ # include <strings.h>
+-#else
+-# include <string.h>
+ #endif /*HAVE_STRINGS_H*/
++#ifdef HAVE_STRING_H
++# include <string.h>
++#endif /*HAVE_STRING_H*/
+ #ifdef HAVE_MEMORY_H
+ # include <memory.h>
+ #endif

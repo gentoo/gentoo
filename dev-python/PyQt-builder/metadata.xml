@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+		<name>Gentoo Qt Project</name>
+	</maintainer>
+	<upstream>
+		<changelog>https://github.com/Python-PyQt/PyQt-builder/blob/main/docs/releases.md</changelog>
+		<doc>https://www.riverbankcomputing.com/static/Docs/PyQt-builder/</doc>
+		<remote-id type="github">Python-PyQt/PyQt-builder</remote-id>
+		<remote-id type="pypi">PyQt-builder</remote-id>
+	</upstream>
+</pkgmetadata>

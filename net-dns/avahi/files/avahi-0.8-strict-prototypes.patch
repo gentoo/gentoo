@@ -1,0 +1,38 @@
+https://github.com/lathiat/avahi/pull/405
+
+From 54409e5af9c382117b67674756971f4f1bf646f8 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 5 Nov 2022 23:49:47 +0000
+Subject: [PATCH] configure.ac: fix -Wstrict-prototypes
+
+Fixes errors like:
+```
+-ignoreme: warning: a function definition without a prototype is deprecated in all versions of C and is not supported in C2x [-Wdeprecated-non-prototype]
++ignoreme: error: a function definition without a prototype is deprecated in all versions of C and is not supported in C2x [-Werror,-Wdeprecated-non-prototype]
+ void test_broken_ssp(c)
+      ^
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -99,8 +99,7 @@ if test x"$enable_ssp" = x"yes"; then
+     LDFLAGS="$LDFLAGS -Wl,-z,defs"
+     cat confdefs.h > conftest.c
+     cat >>conftest.c <<_ACEOF
+-void test_broken_ssp(c)
+-    const char *c;
++void test_broken_ssp(const char *c)
+ {
+     char arr[[123]], *p; /* beware of possible double-braces if copying this */
+     for (p = arr; *c; ++p) {
+@@ -300,7 +299,7 @@ AM_CONDITIONAL(TARGET_FREEBSD, test x"$with_distro" = xfreebsd)
+ AM_CONDITIONAL(TARGET_SLACKWARE, test x"$with_distro" = xslackware)
+ 
+ test_gcc_flag() {
+-    AC_LANG_CONFTEST([int main() {}])
++    AC_LANG_CONFTEST([int main(void) {}])
+     $CC -c conftest.c $CFLAGS $@ > /dev/null 2> /dev/null
+     ret=$?
+     rm -f conftest.o
+

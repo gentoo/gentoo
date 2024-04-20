@@ -1,0 +1,5 @@
+CDF_BASE=/usr
+CDF_INC=${CDF_BASE}/include
+CDF_LIB=${CDF_BASE}/lib
+CDF_BIN=${CDF_BASE}/bin
+CDF_HELP=${CDF_BASE}/lib/cdf/help

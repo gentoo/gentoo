@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>dotnet@gentoo.org</email>
+    <name>Gentoo Dotnet Project</name>
+  </maintainer>
+  <longdescription>
+    Nake is a magic task runner tool for .NET Core. It's a hybrid of Shovel and
+    Rake. The DSL for defining tasks is uniquely minimal and it's just plain
+    (naked) C# code! Nake is built on top of the latest Roslyn release so you
+    can use all of the latest C# features in you scripts and even more.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/yevhen/Nake/issues/</bugs-to>
+    <remote-id type="github">yevhen/Nake</remote-id>
+  </upstream>
+</pkgmetadata>

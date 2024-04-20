@@ -1,0 +1,17 @@
+From: https://gitlab.archlinux.org/archlinux/packaging/packages/vtk/-/blob/main/vtk-occt.patch
+From: Sven-Hendrik Haase <svenstaro@archlinux.org>
+diff --git a/IO/OCCT/vtkOCCTReader.h b/IO/OCCT/vtkOCCTReader.h
+index 36a02f5be3..33fa45fccc 100644
+--- a/IO/OCCT/vtkOCCTReader.h
++++ b/IO/OCCT/vtkOCCTReader.h
+@@ -48,8 +48,8 @@ public:
+    * It can be either STEP or IGES.
+    * Default is FILE_FORMAT::STEP
+    */
+-  VTK_DEPRECATED_IN_9_3_0("Use SetFormat with unsigned int instead.")
+-  vtkSetEnumMacro(FileFormat, Format);
++  // VTK_DEPRECATED_IN_9_3_0("Use SetFormat with unsigned int instead.")
++  // vtkSetEnumMacro(FileFormat, Format);
+   vtkSetClampMacro(FileFormat, unsigned int, Format::STEP, Format::IGES);
+   ///@}
+

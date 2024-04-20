@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="buildreadme">Build the readme generator</flag>
+		<flag name="text">While it&#39;s a core value of @prettyprinter@ to use @Text@, there are rare
+circumstances (mostly when @prettyprinter@ arises as a dependency of
+test suites of packages like @bytestring@ or @text@ themselves) when
+this is inconvenient. In this case one can disable this flag, so that
+@prettyprinter@ fallbacks to @String@.</flag>
+	</use>
+	<upstream>
+		<remote-id type="hackage">prettyprinter</remote-id>
+		<remote-id type="github">quchen/prettyprinter</remote-id>
+	</upstream>
+</pkgmetadata>

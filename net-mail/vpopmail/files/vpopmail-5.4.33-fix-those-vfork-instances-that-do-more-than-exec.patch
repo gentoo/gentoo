@@ -1,0 +1,77 @@
+From de58b5d05fdabf2f17d8a6ec3ef804b59a013242 Mon Sep 17 00:00:00 2001
+From: Rolf Eike Beer <eike@sf-mail.de>
+Date: Thu, 21 Aug 2014 17:36:36 +0200
+Subject: [PATCH 2/5] fix those vfork() instances that do more than exec*()
+
+---
+ vdelivermail.c | 4 ++--
+ vpopmail.c     | 8 ++++----
+ vqmaillocal.c  | 2 +-
+ 3 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/vpopmail-5.4.33/vdelivermail.c b/vpopmail-5.4.33/vdelivermail.c
+index 241106e..be83a2a 100644
+--- a/vdelivermail.c
++++ b/vdelivermail.c
+@@ -330,7 +330,7 @@ static pid_t qmail_inject_open(char *address)
+ 
+     if ( pipe(pim) == -1) return 0;
+ 
+-    switch(pid=vfork()){
++    switch(pid=fork()){
+       case -1:
+         close(pim[0]);
+         close(pim[1]);
+@@ -381,7 +381,7 @@ static int fdcopy (int write_fd, int read_fd, const char *extra_headers, size_t
+            !(vpw->pw_gid & NO_SPAMASSASSIN) ) {
+ 
+         if (!pipe(pim)) {
+-          pid = vfork();
++          pid = fork();
+           switch (pid) {
+            case -1:
+             close(pim[0]);
+diff --git a/vpopmail-5.4.33/vpopmail.c b/vpopmail-5.4.33/vpopmail.c
+index 5aaeb32..334a8ab 100644
+--- a/vpopmail.c
++++ b/vpopmail.c
+@@ -1473,9 +1473,9 @@ int update_newu()
+ {
+  int pid;
+ 
+-  pid=vfork();
++  pid=fork();
+   if ( pid==0){
+-			  umask(022);
++    umask(022);
+     execl(QMAILNEWU,"qmail-newu", NULL);
+     exit(127);
+   } else {
+@@ -3366,9 +3366,9 @@ long unsigned tcprules_open()
+   /* create a pair of filedescriptors for our pipe */
+   if (pipe(pim) == -1)  { return(-1);}
+ 
+-  switch( pid=vfork()){
++  switch( pid=fork()){
+    case -1:
+-    /* vfork error. close pipes and exit */
++    /* fork error. close pipes and exit */
+     close(pim[0]); close(pim[1]);
+     return(-1);
+    case 0:
+diff --git a/vpopmail-5.4.33/vqmaillocal.c b/vpopmail-5.4.33/vqmaillocal.c
+index 6d3068c..80efa24 100644
+--- a/vqmaillocal.c
++++ b/vqmaillocal.c
+@@ -359,7 +359,7 @@ long unsigned qmail_inject_open(char *address)
+ 
+         if ( pipe(pim) == -1) return(-1);
+ 
+-        switch(pid=vfork()){
++        switch(pid=fork()){
+         case -1:
+                 close(pim[0]);
+                 close(pim[1]);
+-- 
+1.8.4.5
+

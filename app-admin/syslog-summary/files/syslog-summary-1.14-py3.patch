@@ -1,0 +1,142 @@
+diff --git a/syslog-summary b/syslog-summary
+index abf6381..a658c14 100755
+--- a/syslog-summary
++++ b/syslog-summary
+@@ -35,6 +35,8 @@ Lars Wirzenius <liw@iki.fi>
+ Tommi Virtanen <tv@debian.org>
+ David Paleino <d.paleino@gmail.com>"""
+ 
++from __future__ import print_function
++
+ version = "1.14"
+ 
+ import sys, re, getopt, string
+@@ -62,7 +64,7 @@ def io_error(err, filename, die=True):
+ 		if die:
+ 			traceback.print_exc(file=sys.stderr)
+ 		else:
+-			print "[E] %s [%s(%s) - %s]" % (os.strerror(num), errno.errorcode[num], num, filename)
++			print("[E] %s [%s(%s) - %s]" % (os.strerror(num), errno.errorcode[num], num, filename))
+ 
+ 	if die:
+ 		sys.exit(1)
+@@ -72,7 +74,7 @@ def read_patterns(filename):
+ 	pats = []
+ 	try:
+ 		f = open(filename, "r")
+-	except IOError, e:
++	except IOError as e:
+ 		io_error(e, filename, False)
+ 		return []
+ 	for line in f:
+@@ -91,7 +93,7 @@ def read_states(filename):
+ 		return states
+ 	try:
+ 		f = open(filename, "r")
+-	except IOError, e:
++	except IOError as e:
+ 		io_error(e, filename, False)
+ 		return states
+ 	for line in f:
+@@ -105,9 +107,9 @@ def save_states(filename, states):
+ 		return
+ 	try:
+ 		f = open(filename, "w")
+-	except IOError, e:
++	except IOError as e:
+ 		io_error(e, filename, True)
+-	for filename in states.keys():
++	for filename in list(states.keys()):
+ 		value = states[filename]
+ 		f.write("%s %d %s\n" % (filename, value[0], value[1]))
+ 	f.close()
+@@ -123,7 +125,7 @@ def split_date(line):
+ 		m = pat.match(line)
+ 		if m:
+ 			return line[:m.end()], line[m.end():]
+-	print "line has bad date", "<" + string.rstrip(line) + ">"
++	print("line has bad date", "<" + string.rstrip(line) + ">")
+ 	return None, line
+ 
+ def is_gzipped(filename):
+@@ -152,7 +154,7 @@ def summarize(filename, states):
+ 	order = []
+ 	ignored_count = 0
+ 	if not QUIET:
+-		print "Summarizing %s" % filename
++		print("Summarizing %s" % filename)
+ 	
+ 	# If the file is a gzipped log, open it
+ 	# using the proper function from the gzip
+@@ -162,7 +164,7 @@ def summarize(filename, states):
+ 			file = gzopen(filename, "rb")
+ 		else:
+ 			file = open(filename, "r")
+-	except IOError, e:
++	except IOError as e:
+ 		io_error(e, filename, True)
+ 		
+ 	linecount = 0
+@@ -170,7 +172,7 @@ def summarize(filename, states):
+ 	shaobj = sha1()
+ 	if filename in states:
+ 		oldlines, oldsha = states[filename]
+-		for i in xrange(oldlines):
++		for i in range(oldlines):
+ 			line = file.readline()
+ 			shaobj.update(line)
+ #		print "OLD-new: %s" % shaobj.hexdigest()
+@@ -182,7 +184,7 @@ def summarize(filename, states):
+ 		else:
+ 			linecount = oldlines
+ 	if not QUIET:
+-		print "%8d Lines skipped (already processed)" % linecount
++		print("%8d Lines skipped (already processed)" % linecount)
+ 
+ 	line = file.readline()
+ 	previous = None
+@@ -190,13 +192,13 @@ def summarize(filename, states):
+ 	foo=0
+ 	while line:
+ #		foo+=1
+-		shaobj.update(line)
++		shaobj.update(line.encode())
+ 		linecount += 1
+ 		
+ 		if should_be_ignored(line):
+ 			ignored_count += 1
+ 			if DEBUG:
+-				print "Ignoring: %s" % line
++				print("Ignoring: %s" % line)
+ 			line = file.readline()
+ 		
+ 		date, rest = split_date(line)
+@@ -213,7 +215,7 @@ def summarize(filename, states):
+ 			count = int(repeated.group(1))
+ 			rest = previous
+ 
+-		if counts.has_key(rest):
++		if rest in counts:
+ 			counts[rest] = counts[rest] + count
+ 		else:
+ 			assert count == 1
+@@ -233,14 +235,14 @@ def summarize(filename, states):
+ #	print states
+ 	
+ 	if QUIET and order:
+-		print "Summarizing %s" % filename
++		print("Summarizing %s" % filename)
+ 	if not QUIET or order:
+-		print "%8d Patterns to ignore" % len(ignore_pats)
+-		print "%8d Ignored lines" % ignored_count
++		print("%8d Patterns to ignore" % len(ignore_pats))
++		print("%8d Ignored lines" % ignored_count)
+ 	for rest in order:
+-		print "%8d %s" % (counts[rest], rest),
++		print("%8d %s" % (counts[rest], rest), end='')
+ 	if not QUIET or order:
+-		print
++		print()
+ 
+ def main():
+ 	global ignore_pats, IGNORE_FILENAME, STATE_FILENAME, REPEAT, QUIET, DEBUG

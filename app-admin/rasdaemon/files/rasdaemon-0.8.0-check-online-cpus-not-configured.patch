@@ -1,0 +1,40 @@
+https://bugs.gentoo.org/890286
+https://github.com/mchehab/rasdaemon/issues/77
+https://github.com/mchehab/rasdaemon/commit/f1ea76375281001cdf4a048c1a4a24d86c6fbe48
+
+From f1ea76375281001cdf4a048c1a4a24d86c6fbe48 Mon Sep 17 00:00:00 2001
+From: Zeph / Liz Loss-Cutler-Hull <warp-spam_git@aehallh.com>
+Date: Sun, 9 Jul 2023 04:57:19 -0700
+Subject: [PATCH] Check CPUs online, not configured.
+
+When the number of CPUs detected is greater than the number of CPUs in
+the system, rasdaemon will crash when it receives some events.
+
+Looking deeper, we also fail to use the poll method for similar reasons
+in this case.
+
+All of this can be prevented by checking to see how many CPUs are
+currently online (sysconf(_SC_NPROCESSORS_ONLN)) instead of how many
+CPUs the current kernel was configured to support
+(sysconf(_SC_NPROCESSORS_CONF)).
+
+For the kernel side of the discussion, see https://lore.kernel.org/lkml/CAM6Wdxft33zLeeXHhmNX5jyJtfGTLiwkQSApc=10fqf+rQh9DA@mail.gmail.com/T/
+Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
+---
+ ras-events.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ras-events.c b/ras-events.c
+index a82dab2..5935163 100644
+--- a/ras-events.c
++++ b/ras-events.c
+@@ -350,7 +350,7 @@ static void parse_ras_data(struct pthread_data *pdata, struct kbuffer *kbuf,
+ 
+ static int get_num_cpus(struct ras_events *ras)
+ {
+-	return sysconf(_SC_NPROCESSORS_CONF);
++	return sysconf(_SC_NPROCESSORS_ONLN);
+ #if 0
+ 	char fname[MAX_PATH + 1];
+ 	int num_cpus = 0;
+

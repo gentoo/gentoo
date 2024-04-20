@@ -1,0 +1,24 @@
+https://github.com/gentoo/genkernel/commit/231fdfd9f1c1819d19440627ebe0ea58576a9965
+
+From 231fdfd9f1c1819d19440627ebe0ea58576a9965 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 5 Jul 2023 21:41:39 +0100
+Subject: [PATCH] gkbuilds: cryptsetup: disable asciidoc
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ gkbuilds/cryptsetup.gkbuild | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/gkbuilds/cryptsetup.gkbuild b/gkbuilds/cryptsetup.gkbuild
+index 816df609..c084286c 100644
+--- a/gkbuilds/cryptsetup.gkbuild
++++ b/gkbuilds/cryptsetup.gkbuild
+@@ -11,6 +11,7 @@ src_configure() {
+ 	local myconf=(
+ 		--enable-internal-argon2
+ 		--sbindir=/sbin
++		--disable-asciidoc
+ 		--disable-nls
+ 		--disable-selinux
+ 		--disable-ssh-token

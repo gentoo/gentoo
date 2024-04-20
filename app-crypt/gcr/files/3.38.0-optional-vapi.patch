@@ -1,0 +1,88 @@
+From 6d61774b8556eb4acfa5e7613ee25893d2a7e565 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Tue, 18 Aug 2020 09:36:19 +0300
+Subject: [PATCH 2/2] build: Make vapi optional
+
+---
+ gck/meson.build   | 2 ++
+ gcr/meson.build   | 2 ++
+ meson_options.txt | 5 +++++
+ ui/meson.build    | 2 ++
+ 4 files changed, 11 insertions(+)
+
+diff --git a/gck/meson.build b/gck/meson.build
+index 756b486..a15f4ed 100644
+--- a/gck/meson.build
++++ b/gck/meson.build
+@@ -142,6 +142,7 @@ if get_option('introspection')
+     install: true,
+   )
+ 
++if get_option('vapi')
+   gck_vapi = gnome.generate_vapi('gck-@0@'.format(gck_major_version),
+     sources: gck_gir[0],
+     metadata_dirs: meson.current_source_dir(),
+@@ -153,6 +154,7 @@ if get_option('introspection')
+     install_dir: get_option('datadir') / 'vala' / 'vapi',
+   )
+ endif
++endif
+ 
+ # pkg-config file
+ pkgconfig.generate(gck_lib,
+diff --git a/gcr/meson.build b/gcr/meson.build
+index 06c3a63..cc642cf 100644
+--- a/gcr/meson.build
++++ b/gcr/meson.build
+@@ -204,6 +204,7 @@ if get_option('introspection')
+     install: true,
+   )
+ 
++if get_option('vapi')
+   gcr_vapi = gnome.generate_vapi('gcr-@0@'.format(gcr_major_version),
+     sources: gcr_gir[0],
+     packages: [ 'glib-2.0', 'gio-2.0', gck_vapi ],
+@@ -217,6 +218,7 @@ if get_option('introspection')
+     install: true,
+   )
+ endif
++endif
+ 
+ # pkg-config file
+ pkgconfig.generate(gcr_base_lib,
+diff --git a/meson_options.txt b/meson_options.txt
+index ae0f524..f68cb95 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -18,3 +18,8 @@ option('gpg_path',
+   value: '',
+   description: 'Path to gpg, autodetected if not set',
+ )
++option('vapi',
++  type: 'boolean',
++  value: true,
++  description: 'Generate vapi data (requires vapigen and introspection option)',
++)
+diff --git a/ui/meson.build b/ui/meson.build
+index 477412d..0b89b24 100644
+--- a/ui/meson.build
++++ b/ui/meson.build
+@@ -169,6 +169,7 @@ if get_option('introspection')
+     install: true,
+   )
+ 
++if get_option('vapi')
+   gcr_ui_vapi = gnome.generate_vapi('gcr-ui-@0@'.format(gcr_major_version),
+     sources: gcr_ui_gir[0],
+     packages: [
+@@ -190,6 +191,7 @@ if get_option('introspection')
+     install: true,
+   )
+ endif
++endif
+ 
+ # gcr-viewer
+ gcr_viewer = executable('gcr-viewer',
+-- 
+2.26.2
+

@@ -1,0 +1,32 @@
+--- likwid-likwid-4.3.1/bench/Makefile.org	2018-02-26 14:03:17.706837535 +0800
++++ likwid-likwid-4.3.1/bench/Makefile	2018-02-26 14:04:19.427195208 +0800
+@@ -115,6 +115,7 @@
+ $(BUILD_DIR)/%.o:  $(BUILD_DIR)/%.pas
+ 	@echo "===>  ASSEMBLE  $@"
+ 	$(Q)$(PAS) -i $(PASFLAGS) -o $(BUILD_DIR)/$*.s $<  '$(DEFINES)'
++	@cat ../fix_gnustack.txt >> $(BUILD_DIR)/$*.s
+ 	$(Q)$(AS) $(ASFLAGS)  $(BUILD_DIR)/$*.s -o $@
+ 
+ ifeq ($(findstring $(MAKECMDGOALS),clean),)
+
+diff --git a/fix_gnustack.txt b/fix_gnustack.txt
+new file mode 100644
+index 0000000..965af94
+--- /dev/null
++++ likwid-likwid-4.1.1/fix_gnustack.txt
+@@ -0,0 +1,3 @@
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif
+
+--- likwid-likwid-4.3.1/src/loadData.S.org	2018-02-26 14:06:16.418872121 +0800
++++ likwid-likwid-4.3.1/src/loadData.S	2018-02-26 14:19:03.281289307 +0800
+@@ -41,4 +41,6 @@
+ #endif
+ .size _loadData, .-_loadData
+ 
+-
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif
+

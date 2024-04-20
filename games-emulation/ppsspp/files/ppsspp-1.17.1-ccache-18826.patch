@@ -1,0 +1,33 @@
+From e1ef901fcc2f0acbdff2671a8e07edab3e473c98 Mon Sep 17 00:00:00 2001
+From: Andrew Udvare <audvare@gmail.com>
+Date: Sun, 4 Feb 2024 18:39:18 -0500
+Subject: [PATCH] Add option to disable ccache detection
+
+---
+ CMakeLists.txt | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bfd5e690353e..33570d09c024 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -116,7 +116,6 @@ if(NOT IOS)
+ 	list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/sdl)
+ endif()
+ 
+-include(ccache)
+ include(GNUInstallDirs)
+ 
+ add_definitions(-DASSETS_DIR="${CMAKE_INSTALL_FULL_DATADIR}/ppsspp/assets/")
+@@ -173,6 +172,11 @@ option(USE_SYSTEM_ZSTD "Dynamically link against system zstd" ${USE_SYSTEM_ZSTD}
+ option(USE_SYSTEM_MINIUPNPC "Dynamically link against system miniUPnPc" ${USE_SYSTEM_MINIUPNPC})
+ option(USE_ASAN "Use address sanitizer" OFF)
+ option(USE_UBSAN "Use undefined behaviour sanitizer" OFF)
++option(USE_CCACHE "Use ccache if detected" ON)
++
++if(USE_CACHE)
++	include(ccache)
++endif()
+ 
+ if(UNIX AND NOT (APPLE OR ANDROID) AND VULKAN)
+ 	if(USING_X11_VULKAN)

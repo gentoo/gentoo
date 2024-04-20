@@ -1,0 +1,36 @@
+From dfe3279a365d629ba848f0265108d98d9f12348f Mon Sep 17 00:00:00 2001
+From: Andrew Borodin <aborodin@vmail.ru>
+Date: Sun, 27 Aug 2023 19:32:53 +0300
+Subject: [PATCH] Ticket 4500: mcdiff: segfault when display of line numbers is
+ enabled.
+
+The bug was introduced in 00f84fbf24b5f65381f41c5d6333182bc7921700.
+
+  * (dview_load_options): avoid NULL dereference: don't caclulate the
+    width of line numbers field here because dview->a isn't created yet.
+  * (dview_update): caclulate the width of line numbers field using an
+    actual length of diff lines array.
+
+Signed-off-by: Andrew Borodin <aborodin@vmail.ru>
+--- a/src/diffviewer/ydiff.c
++++ b/src/diffviewer/ydiff.c
+@@ -2366,7 +2366,7 @@ dview_load_options (WDiff * dview)
+         dview->display_symbols = 1;
+     show_numbers = mc_config_get_bool (mc_global.main_config, "DiffView", "show_numbers", FALSE);
+     if (show_numbers)
+-        dview->display_numbers = calc_nwidth ((const GArray * const *) dview->a);
++        dview->display_numbers = 1;
+     tab_size = mc_config_get_int (mc_global.main_config, "DiffView", "tab_size", 8);
+     if (tab_size > 0 && tab_size < 9)
+         dview->tab_size = tab_size;
+@@ -2885,6 +2885,10 @@ dview_update (WDiff * dview)
+     if (height < 2)
+         return;
+ 
++    /* use an actual length of dview->a */
++    if (dview->display_numbers != 0)
++        dview->display_numbers = calc_nwidth ((const GArray * const *) dview->a);
++
+     width1 = dview->half1 + dview->bias;
+     width2 = dview->half2 - dview->bias;
+     if (dview->full)

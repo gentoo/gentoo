@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    Edit buffer regions in separate Emacs buffers, like org-edit-src-code (from
+    the Org package) but for arbitrary regions. Used by markdown-mode.
+  </longdescription>
+  <stabilize-allarches />
+  <upstream>
+    <bugs-to>https://github.com/Fanael/edit-indirect/issues/</bugs-to>
+    <remote-id type="github">Fanael/edit-indirect</remote-id>
+  </upstream>
+</pkgmetadata>

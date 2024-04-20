@@ -1,0 +1,274 @@
+https://bugs.gentoo.org/924387
+https://code.wildfiregames.com/D5219
+
+Index: ps/trunk/libraries/source/fcollada/src/FCollada/FUtils/FUXmlDocument.cpp
+===================================================================
+--- ps/libraries/source/fcollada/src/FCollada/FUtils/FUXmlDocument.cpp
++++ ps/libraries/source/fcollada/src/FCollada/FUtils/FUXmlDocument.cpp
+@@ -2,7 +2,7 @@
+ 	Copyright (C) 2005-2007 Feeling Software Inc.
+ 	Portions of the code are:
+ 	Copyright (C) 2005-2007 Sony Computer Entertainment America
+-	
++
+ 	MIT License: http://www.opensource.org/licenses/mit-license.php
+ */
+ 
+@@ -13,10 +13,12 @@
+ #include "FUFile.h"
+ #include "FCDocument/FCDocument.h"
+ 
++#include <libxml/parser.h>
++
+ #define MAX_FILE_SIZE 10240000
+ //
+ // FUXmlDocument
+-// 
++//
+ 
+ FUXmlDocument::FUXmlDocument(FUFileManager* manager, const fchar* _filename, bool _isParsing)
+ :	isParsing(_isParsing), filename(_filename)
+Index: ps/libraries/source/fcollada/src/FColladaPlugins/FArchiveXML/FArchiveXML.cpp
+===================================================================
+--- ps/libraries/source/fcollada/src/FColladaPlugins/FArchiveXML/FArchiveXML.cpp
++++ ps/libraries/source/fcollada/src/FColladaPlugins/FArchiveXML/FArchiveXML.cpp
+@@ -2,7 +2,7 @@
+ 	Copyright (C) 2005-2007 Feeling Software Inc.
+ 	Portions of the code are:
+ 	Copyright (C) 2005-2007 Sony Computer Entertainment America
+-	
++
+ 	MIT License: http://www.opensource.org/licenses/mit-license.php
+ */
+ 
+@@ -77,6 +77,7 @@
+ #include "FCDocument/FCDVersion.h"
+ #include "FUtils/FUXmlDocument.h"
+ 
++#include <libxml/xmlIO.h>
+ 
+ //
+ // Constants
+@@ -442,7 +443,7 @@
+ 	}
+ 
+ 	if (status) FUError::Error(FUError::DEBUG_LEVEL, FUError::DEBUG_LOAD_SUCCESSFUL);
+-	return status;	
++	return status;
+ }
+ 
+ bool FArchiveXML::ExportFile(FCDocument* fcdocument, const fchar* filePath)
+@@ -515,13 +516,13 @@
+ 	xmlOutputBufferPtr buf = xmlAllocOutputBuffer(NULL);
+ 	xmlNodeDumpOutput(buf, rootNode->doc, rootNode, 0, 0, NULL);
+ 
+-#ifdef LIBXML2_NEW_BUFFER
+-	outData.resize(xmlOutputBufferGetSize(buf) * sizeof(xmlChar));
+-	memcpy(outData.begin(), xmlOutputBufferGetContent(buf), outData.size());
+-#else
+-	outData.resize(buf->buffer->use * sizeof(xmlChar));
+-	memcpy(outData.begin(), buf->buffer->content, outData.size());
+-#endif
++#ifdef LIBXML2_NEW_BUFFER
++	outData.resize(xmlOutputBufferGetSize(buf) * sizeof(xmlChar));
++	memcpy(outData.begin(), xmlOutputBufferGetContent(buf), outData.size());
++#else
++	outData.resize(buf->buffer->use * sizeof(xmlChar));
++	memcpy(outData.begin(), buf->buffer->content, outData.size());
++#endif
+ 
+ 	xmlOutputBufferClose(buf);
+ 	daeDocument.ReleaseXmlData();
+@@ -591,7 +592,7 @@
+ 		else if (IsEquivalent(child->name, DAE_LIBRARY_PMATERIAL_ELEMENT)) n.order = PHYSICS_MATERIAL;
+ 		else if (IsEquivalent(child->name, DAE_LIBRARY_PMODEL_ELEMENT)) n.order = PHYSICS_MODEL;
+ 		else if (IsEquivalent(child->name, DAE_LIBRARY_PSCENE_ELEMENT)) n.order = PHYSICS_SCENE;
+-		else if (IsEquivalent(child->name, DAE_ASSET_ELEMENT)) 
++		else if (IsEquivalent(child->name, DAE_ASSET_ELEMENT))
+ 		{
+ 			// Read in the asset information
+ 			status &= (FArchiveXML::LoadAsset(theDocument->GetAsset(), child));
+@@ -679,9 +680,9 @@
+ 		case IMAGE: status &= (FArchiveXML::LoadImageLibrary(theDocument->GetImageLibrary(), n.node)); break;
+ 		case LIGHT: status &= (FArchiveXML::LoadLightLibrary(theDocument->GetLightLibrary(), n.node)); break;
+ 		case MATERIAL: status &= (FArchiveXML::LoadMaterialLibrary(theDocument->GetMaterialLibrary(), n.node)); break;
+-		case PHYSICS_MODEL: 
++		case PHYSICS_MODEL:
+ 			{
+-				status &= (FArchiveXML::LoadPhysicsModelLibrary(theDocument->GetPhysicsModelLibrary(), n.node)); 
++				status &= (FArchiveXML::LoadPhysicsModelLibrary(theDocument->GetPhysicsModelLibrary(), n.node));
+ 				size_t physicsModelCount = theDocument->GetPhysicsModelLibrary()->GetEntityCount();
+ 				for (size_t physicsModelCounter = 0; physicsModelCounter < physicsModelCount; physicsModelCounter++)
+ 				{
+@@ -790,7 +791,7 @@
+ 	{
+ 		// [staylor] Why is this done here?  Shouldn't it be in FCDExternalReferenceManager?
+ 		// If it is, change it, either way delete the FUAssert (thanks)
+-		//FUAssert(false == true, ;);  
++		// FUAssert(false == true, ;);
+ 		FArchiveXML::RegisterLoadedDocument(theDocument);
+ 		//FCDExternalReferenceManager::RegisterLoadedDocument(theDocument);
+ 	}
+@@ -891,14 +892,14 @@
+ 			// Export the emitter library
+ 			xmlNode* libraryNode = AddChild(typedTechniqueNode, DAE_LIBRARY_EMITTER_ELEMENT);
+ 
+-			if (!theDocument->GetEmitterLibrary()->GetTransientFlag()) 
++			if (!theDocument->GetEmitterLibrary()->GetTransientFlag())
+ 				FArchiveXML::WriteLibrary(theDocument->GetEmitterLibrary(), libraryNode);
+ 		}
+ 
+ 		// Write out the animations
+ 		if (animationLibraryNode != NULL)
+ 		{
+-			if (!theDocument->GetAnimationLibrary()->GetTransientFlag()) 
++			if (!theDocument->GetAnimationLibrary()->GetTransientFlag())
+ 				FArchiveXML::WriteLibrary(theDocument->GetAnimationLibrary(), animationLibraryNode);
+ 		}
+ 
+@@ -978,7 +979,7 @@
+ 	{
+ 		return FArchiveXML::WriteSwitch(object, &objectType->GetParent(), node);
+ 	}
+-	else 
++	else
+ 	{
+ 		FUBreak;
+ 		return NULL;
+@@ -986,7 +987,7 @@
+ }
+ 
+ bool FArchiveXML::LoadAnimationLibrary(FCDObject* object, xmlNode* node)
+-{ 
++{
+ 	return FArchiveXML::LoadLibrary<FCDAnimation>(object, node);
+ }
+ 
+@@ -996,17 +997,17 @@
+ }
+ 
+ bool FArchiveXML::LoadCameraLibrary(FCDObject* object, xmlNode* node)
+-{ 
++{
+ 	return FArchiveXML::LoadLibrary<FCDCamera>(object, node);
+ }
+ 
+ bool FArchiveXML::LoadControllerLibrary(FCDObject* object, xmlNode* node)
+-{ 
++{
+ 	return FArchiveXML::LoadLibrary<FCDController>(object, node);
+ }
+ 
+ bool FArchiveXML::LoadEffectLibrary(FCDObject* object, xmlNode* node)
+-{ 
++{
+ 	return FArchiveXML::LoadLibrary<FCDEffect>(object, node);
+ }
+ 
+@@ -1016,7 +1017,7 @@
+ }
+ 
+ bool FArchiveXML::LoadForceFieldLibrary(FCDObject* object, xmlNode* node)
+-{ 
++{
+ 	return FArchiveXML::LoadLibrary<FCDForceField>(object, node);
+ }
+ 
+Index: ps/source/collada/CommonConvert.cpp
+===================================================================
+--- ps/source/collada/CommonConvert.cpp
++++ ps/source/collada/CommonConvert.cpp
+@@ -1,4 +1,4 @@
+-/* Copyright (C) 2018 Wildfire Games.
++/* Copyright (C) 2023 Wildfire Games.
+  * This file is part of 0 A.D.
+  *
+  * 0 A.D. is free software: you can redistribute it and/or modify
+@@ -28,8 +28,9 @@
+ #include "FUtils/FUDaeSyntax.h"
+ #include "FUtils/FUFileManager.h"
+ 
+-#include <cassert>
+ #include <algorithm>
++#include <cassert>
++#include <libxml/xmlerror.h>
+ 
+ void require_(int line, bool value, const char* type, const char* message)
+ {
+Index: ps/source/collada/XMLFix.cpp
+===================================================================
+--- ps/source/collada/XMLFix.cpp
++++ ps/source/collada/XMLFix.cpp
+@@ -1,4 +1,4 @@
+-/* Copyright (C) 2009 Wildfire Games.
++/* Copyright (C) 2023 Wildfire Games.
+  * This file is part of 0 A.D.
+  *
+  * 0 A.D. is free software: you can redistribute it and/or modify
+@@ -23,6 +23,8 @@
+ 
+ #include "FUtils/FUXmlParser.h"
+ 
++#include <libxml/parser.h>
++
+ /*
+ 
+ Things that are fixed here:
+Index: ps/source/ps/XML/RelaxNG.cpp
+===================================================================
+--- ps/source/ps/XML/RelaxNG.cpp
++++ ps/source/ps/XML/RelaxNG.cpp
+@@ -1,4 +1,4 @@
+-/* Copyright (C) 2021 Wildfire Games.
++/* Copyright (C) 2023 Wildfire Games.
+  * This file is part of 0 A.D.
+  *
+  * 0 A.D. is free software: you can redistribute it and/or modify
+@@ -25,9 +25,11 @@
+ #include "ps/CStr.h"
+ #include "ps/Filesystem.h"
+ 
++#include <libxml/parser.h>
+ #include <libxml/relaxng.h>
+ #include <map>
+ #include <mutex>
++#include <type_traits>
+ 
+ TIMER_ADD_CLIENT(xml_validation);
+ 
+@@ -46,7 +48,8 @@
+ 	g_SchemaCache.clear();
+ }
+ 
+-static void relaxNGErrorHandler(void* UNUSED(userData), xmlErrorPtr error)
++static void relaxNGErrorHandler(void* UNUSED(userData),
++	std::conditional_t<LIBXML_VERSION >= 21200, const xmlError, xmlError>* error)
+ {
+ 	// Strip a trailing newline
+ 	std::string message = error->message;
+Index: ps/source/ps/XML/Xeromyces.cpp
+===================================================================
+--- ps/source/ps/XML/Xeromyces.cpp
++++ ps/source/ps/XML/Xeromyces.cpp
+@@ -1,4 +1,4 @@
+-/* Copyright (C) 2021 Wildfire Games.
++/* Copyright (C) 2023 Wildfire Games.
+  * This file is part of 0 A.D.
+  *
+  * 0 A.D. is free software: you can redistribute it and/or modify
+@@ -33,12 +33,14 @@
+ #include "Xeromyces.h"
+ 
+ #include <libxml/parser.h>
++#include <type_traits>
+ 
+ static std::mutex g_ValidatorCacheLock;
+ static std::map<const std::string, RelaxNGValidator> g_ValidatorCache;
+ static bool g_XeromycesStarted = false;
+ 
+-static void errorHandler(void* UNUSED(userData), xmlErrorPtr error)
++static void errorHandler(void* UNUSED(userData),
++	std::conditional_t<LIBXML_VERSION >= 21200, const xmlError, xmlError>* error)
+ {
+ 	// Strip a trailing newline
+ 	std::string message = error->message;

@@ -1,0 +1,30 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -61,7 +61,6 @@
+ LIBS = -lqdbm @LIBS@
+ LIBLDFLAGS = @LDFLAGS@ -L. -L$(MYLIBDIR) -L$(HOME)/lib -L/usr/local/lib @LIBS@
+ LDFLAGS = @LDFLAGS@ -L. -L$(MYLIBDIR) -L$(HOME)/lib -L/usr/local/lib $(LIBS)
+-LDENV = LD_RUN_PATH=/lib:/usr/lib:$(MYLIBDIR):$(HOME)/lib:/usr/local/lib
+ AR = @AR@
+ ARFLAGS = rcsv
+ RUNENV = LD_LIBRARY_PATH=.:/lib:/usr/lib:$(MYLIBDIR):$(HOME)/lib:/usr/local/lib
+--- a/cgi/Makefile.in
++++ b/cgi/Makefile.in
+@@ -28,7 +28,6 @@
+ CFLAGS = -Wall -ansi -pedantic -fsigned-char -O2
+ LIBS = -lqdbm @LIBS@
+ LDFLAGS = -L$(srcdir)/.. -L$(HOME)/lib -L/usr/local/lib $(LIBS)
+-LDENV = LD_RUN_PATH=/lib:/usr/lib:$(HOME)/lib:/usr/local/lib:$(prefix)/lib
+ 
+ # Install destinations
+ prefix = @prefix@
+--- a/plus/Makefile.in
++++ b/plus/Makefile.in
+@@ -51,7 +51,6 @@
+   -L$(HOME)/lib -L/usr/local/lib $(LIBS)
+ LDFLAGS = @LDFLAGS@ -L. -L$(srcdir)/.. -L$(MYLIBDIR) \
+   -L$(HOME)/lib -L/usr/local/lib -lxqdbm $(LIBS)
+-LDENV = LD_RUN_PATH=/lib:/usr/lib:$(MYLIBDIR):$(HOME)/lib:/usr/local/lib
+ AR = @AR@
+ ARFLAGS = rcsv
+ RUNENV = LD_LIBRARY_PATH=.:..:/lib:/usr/lib:$(MYLIBDIR):$(HOME)/lib:/usr/local/lib

@@ -1,0 +1,50 @@
+From 304013f4c81a13fa2aa3a06628e6a1c57248563c Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Mon, 13 Jun 2011 23:42:44 -0400
+Subject: [PATCH] include stdlib.h for exit
+
+---
+ buttond.c |    1 +
+ liblcd.c  |    1 +
+ putlcd.c  |    1 +
+ 3 files changed, 3 insertions(+), 0 deletions(-)
+
+diff --git a/buttond.c b/buttond.c
+index e99b0dd..40a85ae 100644
+--- a/buttond.c
++++ b/buttond.c
+@@ -16,6 +16,7 @@
+  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  */
+ 
++#include <stdlib.h>
+ #include <string.h>
+ #include <time.h>
+ #include <unistd.h>
+diff --git a/liblcd.c b/liblcd.c
+index e8fcacf..39bceea 100644
+--- a/liblcd.c
++++ b/liblcd.c
+@@ -16,6 +16,7 @@
+  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  */
+ 
++#include <stdlib.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
+diff --git a/putlcd.c b/putlcd.c
+index c193712..18dc0af 100644
+--- a/putlcd.c
++++ b/putlcd.c
+@@ -16,6 +16,7 @@
+  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  */
+ 
++#include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include "liblcd.h"
+-- 
+1.7.3.4
+

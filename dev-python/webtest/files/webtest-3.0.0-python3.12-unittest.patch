@@ -1,0 +1,115 @@
+https://github.com/Pylons/webtest/pull/251
+
+From d82ec5bd2cf3c7109a1d49ad9fa802ae1eae1763 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 29 May 2023 15:54:28 +0100
+Subject: [PATCH] Replace deprecated unittest aliases for Python 3.12
+
+See https://docs.python.org/3.12/whatsnew/3.12.html#removed.
+--- a/tests/test_app.py
++++ b/tests/test_app.py
+@@ -221,7 +221,7 @@ def cookie_app(environ, start_response):
+                     ('Set-Cookie', 'foo=bar;baz'),
+                 ])
+             else:
+-                self.assertEquals(dict(req.cookies),
++                self.assertEqual(dict(req.cookies),
+                                   {'spam': 'eggs', 'foo': 'bar'})
+                 self.assertIn('foo=bar', environ['HTTP_COOKIE'])
+                 self.assertIn('spam=eggs', environ['HTTP_COOKIE'])
+@@ -258,7 +258,7 @@ def cookie_app(environ, start_response):
+                     ('Set-Cookie', 'foo=bar;baz; secure'),
+                 ])
+             else:
+-                self.assertEquals(dict(req.cookies),
++                self.assertEqual(dict(req.cookies),
+                                   {'spam': 'eggs', 'foo': 'bar'})
+                 self.assertIn('foo=bar', environ['HTTP_COOKIE'])
+                 self.assertIn('spam=eggs', environ['HTTP_COOKIE'])
+--- a/tests/test_authorisation.py
++++ b/tests/test_authorisation.py
+@@ -17,7 +17,7 @@ def test_basic_authorization(self):
+         app.authorization = authorization
+ 
+         self.assertIn('HTTP_AUTHORIZATION', app.extra_environ)
+-        self.assertEquals(app.authorization, authorization)
++        self.assertEqual(app.authorization, authorization)
+ 
+         resp = app.get('/')
+         resp.mustcontain('HTTP_AUTHORIZATION: Basic Z2F3ZWw6cGFzc3dk')
+@@ -26,7 +26,7 @@ def test_basic_authorization(self):
+         authtype, value = header.split(' ')
+         auth = (authtype,
+                 b64decode(to_bytes(value)).decode('latin1').split(':'))
+-        self.assertEquals(authorization, auth)
++        self.assertEqual(authorization, auth)
+ 
+         app.authorization = None
+         self.assertNotIn('HTTP_AUTHORIZATION', app.extra_environ)
+@@ -37,7 +37,7 @@ def test_bearer_authorization(self):
+         app.authorization = authorization
+ 
+         self.assertIn('HTTP_AUTHORIZATION', app.extra_environ)
+-        self.assertEquals(app.authorization, authorization)
++        self.assertEqual(app.authorization, authorization)
+ 
+         resp = app.get('/')
+         resp.mustcontain('HTTP_AUTHORIZATION: Bearer 2588409761fcfa3e378bff4fb766e2e2')
+--- a/tests/test_forms.py
++++ b/tests/test_forms.py
+@@ -1031,7 +1031,7 @@ def test_upload_invalid_content(self):
+             single_form.submit("button")
+         except ValueError:
+             e = sys.exc_info()[1]
+-            self.assertEquals(
++            self.assertEqual(
+                 str(e),
+                 u('File content must be %s not %s' % (bytes, int))
+             )
+--- a/tests/test_lint.py
++++ b/tests/test_lint.py
+@@ -62,15 +62,15 @@ class TestMiddleware(unittest.TestCase):
+     @unittest.skipIf(sys.flags.optimize > 0, "skip assert tests if optimize is enabled")
+     def test_lint_too_few_args(self):
+         linter = middleware(application)
+-        with self.assertRaisesRegexp(AssertionError, "Two arguments required"):
++        with self.assertRaisesRegex(AssertionError, "Two arguments required"):
+             linter()
+-        with self.assertRaisesRegexp(AssertionError, "Two arguments required"):
++        with self.assertRaisesRegex(AssertionError, "Two arguments required"):
+             linter({})
+ 
+     @unittest.skipIf(sys.flags.optimize > 0, "skip assert tests if optimize is enabled")
+     def test_lint_no_keyword_args(self):
+         linter = middleware(application)
+-        with self.assertRaisesRegexp(AssertionError, "No keyword arguments "
++        with self.assertRaisesRegex(AssertionError, "No keyword arguments "
+                                                      "allowed"):
+             linter({}, 'foo', baz='baz')
+ 
+@@ -82,7 +82,7 @@ def test_lint_no_keyword_args(self):
+     def test_lint_iterator_returned(self):
+         linter = middleware(lambda x, y: None)  # None is not an iterator
+         msg = "The application must return an iterator, if only an empty list"
+-        with self.assertRaisesRegexp(AssertionError, msg):
++        with self.assertRaisesRegex(AssertionError, msg):
+             linter({'wsgi.input': 'foo', 'wsgi.errors': 'foo'}, 'foo')
+ 
+ 
+@@ -109,13 +109,13 @@ def test_close(self):
+     def test_iter(self):
+         data = to_bytes("A line\nAnother line\nA final line\n")
+         input_wrapper = InputWrapper(BytesIO(data))
+-        self.assertEquals(to_bytes("").join(input_wrapper), data, '')
++        self.assertEqual(to_bytes("").join(input_wrapper), data, '')
+ 
+     def test_seek(self):
+         data = to_bytes("A line\nAnother line\nA final line\n")
+         input_wrapper = InputWrapper(BytesIO(data))
+         input_wrapper.seek(0)
+-        self.assertEquals(to_bytes("").join(input_wrapper), data, '')
++        self.assertEqual(to_bytes("").join(input_wrapper), data, '')
+ 
+ 
+ class TestMiddleware2(unittest.TestCase):
+

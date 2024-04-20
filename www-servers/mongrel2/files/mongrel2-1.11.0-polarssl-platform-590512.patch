@@ -1,0 +1,22 @@
+# Fix missing include for newer mbedtls
+--- a/src/io.h
++++ b/src/io.h
+@@ -6,6 +6,7 @@
+ #endif
+ 
+ #include <stdlib.h>
++#include <mbedtls/platform.h>
+ #include <mbedtls/x509.h>
+ #include <mbedtls/ssl.h>
+ #include "server.h"
+--- a/src/server.h
++++ b/src/server.h
+@@ -39,6 +39,7 @@
+ #include "adt/darray.h"
+ #include "host.h"
+ #include "routing.h"
++#include <mbedtls/platform.h>
+ #include <mbedtls/ssl.h>
+ #include <mbedtls/entropy.h>
+ #include <mbedtls/x509.h>
+

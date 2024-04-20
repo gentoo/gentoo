@@ -1,0 +1,125 @@
+# Copyright 2019-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Eli Schwartz <eschwartz93@gmail.com> (2024-02-05)
+# app-text/mupdf is not stable. bug #923811
+net-print/cups-filters pdf
+net-print/libcupsfilters pdf
+net-print/cups-meta pdf
+
+
+# Sam James <sam@gentoo.org> (2023-12-30)
+# Qt not marked stable here.
+app-text/doxygen gui
+
+# Rolf Eike Beer <eike@sf-mail.de> (2023-12-22)
+# media-libs/libavif isn't stable here
+dev-lang/php avif
+media-libs/gd avif
+www-client/links avif
+
+# Hans de Graaff <graaff@gentoo.org> (2023-03-28)
+# dev-ruby/stringex is not marked stable here yet
+dev-ruby/kramdown unicode
+
+# Sam James <sam@gentoo.org> (2022-09-12)
+# dev-lang/rust lacks wiring up to use our custom rust-bin bootstrap
+# tarball, so force system-bootstrap instead (i.e. force using rust-bin
+# or existing installed rust). bug #842246, bug #869680.
+dev-lang/rust -system-bootstrap
+
+# Sam James <sam@gentoo.org> (2022-06-10)
+# gstreamer not marked stable on sparc
+media-sound/pulseaudio-daemon aptx ldac
+
+# Sam James <sam@gentoo.org> (2022-06-01)
+# media-plugins/gst-plugins-v4l2 not marked stable on sparc
+net-im/pidgin v4l
+
+# Sam James <sam@gentoo.org> (2022-05-11)
+# sys-apps/keyutils not stable here (test failures)
+# ... and samba[client] pulls in cifs-utils which pulls in keyutils.
+# bug #636252
+net-fs/nfs-utils nfsv4
+net-fs/samba client
+gnome-base/gvfs samba
+media-video/ffmpeg samba
+media-video/vlc samba
+
+# Sam James <sam@gentoo.org> (2022-05-10)
+# sys-apps/keyutils not stable here, because of
+# test failures. bug #636252
+app-crypt/mit-krb5 keyutils
+
+# Sam James <sam@gentoo.org> (2022-03-07)
+# sys-cluster/torque not marked stable on sparc
+sys-cluster/openmpi openmpi_rm_pbs
+
+# Marek Szuba <marecki@gentoo.org> (2021-09-10)
+# no stable dev-ruby/{thor,tty-editor} on this arch yet
+# and there are many dependencies to go through before there are
+app-text/htmltidy test
+
+# Michał Górny <mgorny@gentoo.org> (2021-09-07)
+# Reduce the stabilization nightmare.
+dev-python/ipython nbconvert notebook smp
+
+# Michał Górny <mgorny@gentoo.org> (2021-08-11)
+# Indirectly requires wxGTK[gstreamer] that is stable-masked here.
+dev-python/matplotlib wxwidgets
+
+# Sam James <sam@gentoo.org> (2021-02-21)
+# Avoid pulling in a large unkeyworded dep
+# which is largely a desktop application
+# bug #766051
+app-text/dblatex inkscape
+
+# Sam James <sam@gentoo.org> (2021-01-04)
+# Drags in qt which is not stable here
+# bug #763405
+media-libs/libprojectm jack
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-27)
+# app-shells/fish dependency is broken on sparc, bug #727684
+dev-python/argcomplete test
+
+# Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
+# clisp is not stable on sparc
+app-text/texlive-core xindy
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-17)
+# librdkafka is not stable on sparc because of unaligned accesses, bug #717908
+app-admin/syslog-ng kafka
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-17)
+# dovector is not stable on sparc because of unaligned accesses, bug #634822
+mail-filter/maildrop dovecot
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-16)
+# net-misc/pps-tools is not stable on sparc
+net-misc/chrony pps
+net-misc/ntp parse-clocks
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
+# media-libs/kate not stable on sparc
+media-sound/vorbis-tools kate
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
+# dependencies not stable on sparc
+media-video/ffmpeg codec2 dav1d libaom libaribb24 libilbc libtesseract lv2 rubberband vidstab
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-10)
+# gnome-online-accounts not stable on sparc
+gnome-base/gvfs google
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-10)
+# net-libs/mbedtls has no stable keywords
+net-misc/curl curl_ssl_mbedtls mbedtls
+dev-libs/libzip mbedtls
+net-libs/libssh mbedtls
+net-libs/libssh2 mbedtls
+net-vpn/openvpn mbedtls
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-04-04)
+# Needs stable net-libs/webkit-gtk, bug #712260
+app-editors/emacs xwidgets

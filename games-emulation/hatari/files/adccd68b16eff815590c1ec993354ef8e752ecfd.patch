@@ -1,0 +1,36 @@
+From adccd68b16eff815590c1ec993354ef8e752ecfd Mon Sep 17 00:00:00 2001
+From: Thomas Huth <huth@tuxfamily.org>
+Date: Thu, 21 Dec 2023 14:33:19 +0100
+Subject: [PATCH] Fix compiler warning that occurs with link-time optimization
+
+With LTO enable, the build fails with:
+
+ [100%] Linking C executable hatari
+ .../src/cpu/savestate.h:281:14: error: type of 'savestate_fname' does not
+  match original declaration [-Werror=lto-type-mismatch]
+   281 | extern TCHAR savestate_fname[MAX_DPATH];
+       |              ^
+ .../src/cpu/custom.c:40:8: note:
+  'savestate_fname' was previously declared here
+    40 | TCHAR *savestate_fname;
+       |        ^
+ lto1: all warnings being treated as errors
+
+Declare the array according to the definition in the header file to fix it.
+---
+ src/cpu/custom.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/cpu/custom.c b/src/cpu/custom.c
+index 15971ceff..aff0c0253 100644
+--- a/src/cpu/custom.c
++++ b/src/cpu/custom.c
+@@ -37,7 +37,7 @@ extern struct regstruct mmu_backup_regs;
+ evt_t currcycle;
+ /* declared in savestate.h */
+ int savestate_state = 0;
+-TCHAR *savestate_fname;
++TCHAR savestate_fname[MAX_DPATH];
+ /* declared in custom.h */
+ uae_u32 hsync_counter = 0, vsync_counter = 0;
+ #endif

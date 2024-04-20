@@ -1,0 +1,23 @@
+diff -Naur wmapm-3.1.orig/wmgeneral/wmgeneral.c wmapm-3.1/wmgeneral/wmgeneral.c
+--- wmapm-3.1.orig/wmgeneral/wmgeneral.c	1998-08-04 03:49:00.000000000 +0200
++++ wmapm-3.1/wmgeneral/wmgeneral.c	2020-06-13 10:46:38.921354685 +0200
+@@ -50,6 +50,7 @@
+ GC			NormalGC;
+ XpmIcon		wmgen;
+ Pixmap		pixmask;
++Display		*display;
+ 
+   /*****************/
+  /* Mouse Regions */
+diff -Naur wmapm-3.1.orig/wmgeneral/wmgeneral.h wmapm-3.1/wmgeneral/wmgeneral.h
+--- wmapm-3.1.orig/wmgeneral/wmgeneral.h	1998-08-04 03:49:00.000000000 +0200
++++ wmapm-3.1/wmgeneral/wmgeneral.h	2020-06-13 10:46:31.276348472 +0200
+@@ -28,7 +28,7 @@
+  /* Global variable */
+ /*******************/
+ 
+-Display		*display;
++extern Display		*display;
+ 
+   /***********************/
+  /* Function Prototypes */

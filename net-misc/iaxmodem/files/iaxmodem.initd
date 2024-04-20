@@ -1,0 +1,42 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="IAXmodem"
+description_reload="Reread configuration file and make the appropriate changes"
+extra_started_commands="reload"
+command="/usr/sbin/iaxmodem"
+pidfile="/var/run/iaxmodem.pid"
+name="iaxmodem"
+
+depend() {
+	use asterisk
+	need net
+}
+
+start() {
+	ebegin "Starting ${description}"
+	start-stop-daemon --start --quiet --pidfile "${pidfile}" \
+		--env TMPDIR="/tmp" --nice ${IAXMODEM_NICE:-0} --exec "${command}"
+	eend ${?}
+}
+
+stop() {
+	local childs=""
+	ebegin "Stopping ${description}"
+	# start-stop-daemon doesn't kill childs reliable, so we
+	# use a combination of pgrep + start-stop-daemon + kill
+	[ -s "${pidfile}" ] && childs=$(pgrep -P $(cat "${pidfile}"))
+	start-stop-daemon --stop --quiet --pidfile "${pidfile}" --retry TERM/10/KILL/5
+	if eend ${?}; then
+		# if there're still childs running, kill them!
+		[ -n "${childs}" ] && kill -KILL ${childs} 2>/dev/null
+		return 0 
+	fi
+}
+
+reload() {
+	ebegin "Reloading ${description} configuration"
+	start-stop-daemon --stop --signal HUP --pidfile "${pidfile}"
+	eend ${?}
+}

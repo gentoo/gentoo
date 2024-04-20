@@ -1,0 +1,33 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+start() {
+	IFS=$(printf '\n.'); # Set separator (IFS) to <newline><dot>
+	IFS=${IFS%.};        # Remove <dot> - The <dot> was because shells remove trailing newlines with $(..)
+	for line in `grep -v '^[[:space:]]*#' /etc/vtund-start.conf | grep -v '^[[:space:]]*$'`
+	do
+		echo $line | 
+			(IFS=" "
+			 read host server args
+			 if [ "$host" = "--server--" ]; then
+				 ebegin "Starting vtund server"
+				 /usr/sbin/vtund -s -P $server $args
+				 eend $?
+			 else
+				 ebegin "Starting vtund client $host to $server"
+				 /usr/sbin/vtund $args -- $host $server
+				 eend $?
+			 fi)
+	done
+}
+
+stop() {
+	ebegin "Stopping all vtund servers and clients"
+	killall vtund
+	eend $?
+}

@@ -1,0 +1,11 @@
+bug #919481
+--- a/org/antlr/codegen/templates/Java/ST.stg
++++ b/org/antlr/codegen/templates/Java/ST.stg
+@@ -32,6 +32,7 @@
+ @outputFile.imports() ::= <<
+ <@super.imports()>
+ import org.antlr.stringtemplate.*;
++import org.antlr.stringtemplate.StringTemplate;
+ import org.antlr.stringtemplate.language.*;
+ import java.util.HashMap;
+ >>

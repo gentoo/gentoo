@@ -1,0 +1,21 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,9 +1,9 @@
+-CFLAGS=
+-LDFLAGS= -L/usr/X11R6/lib -lXext -lX11 -lXxf86vm -lXxf86dga
++LIBS= $(shell ${PKG_CONFIG} --libs xext x11 xxf86vm xxf86dga)
++INCLUDES= $(shell ${PKG_CONFIG} --cflags xext x11 xxf86vm xxf86dga)
+ prefix=/usr
+ 
+ chgres: chgres.o
+-	$(CC) -o $@ $< $(LDFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< $(LIBS)
+ 
+ install: chgres
+ 	install -D -m 0555 chgres $(prefix)/bin/
+@@ -12,4 +12,4 @@
+ 	rm -f core chgres.o chgres
+ 
+ .c.o:
+-	$(CC) $(CFLAGS) -c $< -o $@
++	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@

@@ -1,0 +1,62 @@
+From: hololeap <hololeap@protonmail.com>
+Signed-off-by: hololeap <hololeap@protonmail.com>
+Bug: https://github.com/fpco/typed-process/pull/60
+
+This flag will toggle the use of some ghc-options in the typed-process-test
+test suite. It is set to default: True.
+
+This is needed for tests to run on some GHC builds which do not support SMP.
+
+diff -urN typed-process-0.2.10.1/typed-process.cabal typed-process-0.2.10.1-r1/typed-process.cabal
+--- typed-process-0.2.10.1/typed-process.cabal	2022-10-28 09:12:23.834918081 -0600
++++ typed-process-0.2.10.1-r1/typed-process.cabal	2022-10-28 09:12:42.724917857 -0600
+@@ -1,6 +1,6 @@
+ cabal-version: 1.12
+ 
+--- This file has been generated from package.yaml by hpack version 0.34.4.
++-- This file has been generated from package.yaml by hpack version 0.35.0.
+ --
+ -- see: https://github.com/sol/hpack
+ 
+@@ -24,6 +24,11 @@
+   type: git
+   location: https://github.com/fpco/typed-process
+ 
++flag smp
++  description: Use flags that depend on GHC supporting a multicore runtime (tests only)
++  manual: True
++  default: True
++
+ library
+   exposed-modules:
+       System.Process.Typed
+@@ -40,9 +45,9 @@
+     , stm
+     , transformers
+     , unliftio-core
++  default-language: Haskell2010
+   if os(windows)
+     cpp-options: -DWINDOWS
+-  default-language: Haskell2010
+ 
+ test-suite typed-process-test
+   type: exitcode-stdio-1.0
+@@ -52,7 +57,6 @@
+       Paths_typed_process
+   hs-source-dirs:
+       test
+-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+   build-depends:
+       async >=2.0
+     , base >=4.12 && <5
+@@ -66,6 +70,10 @@
+     , typed-process
+     , unliftio-core
+   default-language: Haskell2010
++  if flag(smp)
++    ghc-options: -threaded -rtsopts -with-rtsopts=-N
++  else
++    ghc-options: -threaded
+ 
+ test-suite typed-process-test-single-threaded
+   type: exitcode-stdio-1.0

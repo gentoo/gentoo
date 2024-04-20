@@ -1,0 +1,72 @@
+https://github.com/xbmc/xbmc/commit/3dcea03c915f2062d4f8740d66abdf033fba9d6c
+https://bugs.gentoo.org/923041
+
+From 3dcea03c915f2062d4f8740d66abdf033fba9d6c Mon Sep 17 00:00:00 2001
+From: Manuel Lauss <manuel.lauss@gmail.com>
+Date: Fri, 13 Oct 2023 12:27:15 +0200
+Subject: [PATCH] add missing c++ headers
+
+Add a few missing headers which are no longer indirectly included by
+other headers, fixes build with gcc-14
+--- a/xbmc/addons/AddonUpdateRules.cpp
++++ b/xbmc/addons/AddonUpdateRules.cpp
+@@ -12,6 +12,7 @@
+ #include "addons/addoninfo/AddonInfo.h"
+ #include "utils/log.h"
+ 
++#include <algorithm>
+ #include <mutex>
+ 
+ using namespace ADDON;
+--- a/xbmc/addons/binary-addons/AddonDll.cpp
++++ b/xbmc/addons/binary-addons/AddonDll.cpp
+@@ -27,6 +27,7 @@
+ #include "utils/Variant.h"
+ #include "utils/log.h"
+ 
++#include <algorithm>
+ #include <utility>
+ 
+ using namespace KODI::MESSAGING;
+--- a/xbmc/interfaces/json-rpc/TextureOperations.cpp
++++ b/xbmc/interfaces/json-rpc/TextureOperations.cpp
+@@ -14,6 +14,8 @@
+ #include "TextureDatabase.h"
+ #include "utils/Variant.h"
+ 
++#include <algorithm>
++
+ using namespace JSONRPC;
+ 
+ JSONRPC_STATUS CTextureOperations::GetTextures(const std::string &method, ITransportLayer *transport, IClient *client, const CVariant &parameterObject, CVariant &result)
+--- a/xbmc/utils/EGLImage.cpp
++++ b/xbmc/utils/EGLImage.cpp
+@@ -14,6 +14,7 @@
+ #include "utils/StringUtils.h"
+ #include "utils/log.h"
+ 
++#include <algorithm>
+ #include <map>
+ 
+ namespace
+--- a/xbmc/windowing/gbm/drm/DRMConnector.cpp
++++ b/xbmc/windowing/gbm/drm/DRMConnector.cpp
+@@ -11,6 +11,7 @@
+ #include "utils/XTimeUtils.h"
+ #include "utils/log.h"
+ 
++#include <algorithm>
+ #include <map>
+ 
+ using namespace KODI::WINDOWING::GBM;
+--- a/xbmc/windowing/gbm/drm/DRMPlane.cpp
++++ b/xbmc/windowing/gbm/drm/DRMPlane.cpp
+@@ -13,6 +13,8 @@
+ #include "utils/StringUtils.h"
+ #include "utils/log.h"
+ 
++#include <algorithm>
++
+ using namespace KODI::WINDOWING::GBM;
+ 
+ CDRMPlane::CDRMPlane(int fd, uint32_t plane) : CDRMObject(fd), m_plane(drmModeGetPlane(m_fd, plane))

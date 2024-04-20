@@ -1,0 +1,25 @@
+
+Disable the optional libbsd fallback in favor of iproute2's own
+strlcat/strlcpy routines. This prevents automagic linking and
+all sorts of other related problems.
+
+Bug: https://bugs.gentoo.org/911727
+Signed-off-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+
+--- a/configure
++++ b/configure
+@@ -407,14 +407,8 @@ EOF
+     if $CC -I$INCLUDE -o $TMPDIR/strtest $TMPDIR/strtest.c >/dev/null 2>&1; then
+ 	echo "no"
+     else
+-	if ${PKG_CONFIG} libbsd --exists; then
+-		echo 'HAVE_LIBBSD_CFLAGS += -DHAVE_LIBBSD' "$(${PKG_CONFIG} libbsd --cflags)" >>$CONFIG
+-		echo 'HAVE_LIBBSD_LDLIBS +=' "$(${PKG_CONFIG} libbsd --libs)" >> $CONFIG
+-		echo "no"
+-	else
+ 		echo 'CFLAGS += -DNEED_STRLCPY' >>$CONFIG
+ 		echo "yes"
+-	fi
+     fi
+     rm -f $TMPDIR/strtest.c $TMPDIR/strtest
+ }

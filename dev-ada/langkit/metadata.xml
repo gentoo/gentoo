@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>ada@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="shared">Build shared library</flag>
+		<flag name="static-pic">Build static library with pic code</flag>
+	</use>
+	<longdescription lang="en">
+		Langkit (nickname for language kit) is a tool whose purpose is to make
+		it easy to create syntactic and semantic analysis engines. Write a
+		language specification in our Python DSL and Langkit will generate for
+		you an Ada library with bindings for the C and Python programming
+		languages.
+		The generated library is meant to provide a basis to write tooling,
+		including tools working on potentially changing and incorrect code,
+		such as IDEs.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">AdaCore/langkit</remote-id>
+	</upstream>
+</pkgmetadata>

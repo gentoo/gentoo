@@ -1,0 +1,46 @@
+From 6a351680675123ccc0d8fb192f28f3c654979c92 Mon Sep 17 00:00:00 2001
+From: Stefan Gloor <code@stefan-gloor.ch>
+Date: Tue, 28 Nov 2023 20:24:26 +0100
+Subject: [PATCH] Use global python packages instead of virtualenv
+Bug: https://bugs.gentoo.org/918705
+
+The upstream install script creates a .venv and installs the
+dependencies there. This patch allows the normal python packages to be
+used.
+
+Signed-off-by: Stefan Gloor <code@stefan-gloor.ch>
+--- a/gdbinit.py
++++ b/gdbinit.py
+@@ -20,29 +20,6 @@ directory, file = path.split(__file__)
+ directory = path.expanduser(directory)
+ directory = path.abspath(directory)
+ 
+-# Get virtualenv's site-packages path
+-venv_path = os.environ.get("PWNDBG_VENV_PATH")
+-if not venv_path:
+-    venv_path = os.path.join(directory, ".venv")
+-
+-if not os.path.exists(venv_path):
+-    print(f"Cannot find Pwndbg virtualenv directory: {venv_path}: please re-run setup.sh")
+-    sys.exit(1)
+-
+-site_pkgs_path = glob(os.path.join(venv_path, "lib/*/site-packages"))[0]
+-
+-# add virtualenv's site-packages to sys.path and run .pth files
+-site.addsitedir(site_pkgs_path)
+-
+-# remove existing, system-level site-packages from sys.path
+-for site_packages in site.getsitepackages():
+-    if site_packages in sys.path:
+-        sys.path.remove(site_packages)
+-
+-# Set virtualenv's bin path (needed for utility tools like ropper, pwntools etc)
+-bin_path = os.path.join(venv_path, "bin")
+-os.environ["PATH"] = bin_path + os.pathsep + os.environ.get("PATH")
+-
+ # Add gdb-pt-dump directory to sys.path so it can be imported
+ gdbpt = path.join(directory, "gdb-pt-dump")
+ sys.path.append(directory)
+-- 
+2.41.0
+

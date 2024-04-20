@@ -1,0 +1,27 @@
+# Configuration for webfsd init script
+
+WEBFS_PORT=80
+WEBFS_DOCROOT=/var/www/localhost/htdocs
+WEBFS_INDEX=index.html
+WEBFS_LOG=/var/log/webfsd.log
+
+# set server name
+#WEBFS_SERVNAME=
+
+# uncomment to chroot to specified dir
+#WEBFS_CHROOT="/var/www/localhost" 
+
+# max allowed connections (defaults to 32)
+#WEBFS_MAXCONN=50
+
+# uncomment to enable directory listings
+#WEBFS_DIR_LIST=true
+
+# uncomment to enable SSL (you'll need to add -C <cert> -P <pass> to WEBFS_OPTS)
+#WEBFS_SSL=true
+
+# uncomment to enable ipv6
+#WEBFS_IPV6=true
+
+# Add any extra options here. See webfsd for more information.
+#WEBFS_OPTS=""

@@ -1,0 +1,16 @@
+Always expose the use_libc++ option. It's only useful for Clang but cmake.class
+tries to find when we've used CMake options which are unused/unknown and this
+triggers it for GCC builds if we set -Duse_libc++=OFF.
+
+So, always expose the option so we can turn it off without a warning.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -21,7 +21,7 @@ option(build_xmlparser "Automatically update the XML parser modules when updatin
+ option(build_search    "Build external search tools (doxysearch and doxyindexer)" OFF)
+ option(build_doc       "Build user manual (HTML and PDF)" OFF)
+ option(build_doc_chm   "Build user manual (CHM)" OFF)
+-if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
++if (TRUE)
+     option(use_libc++  "Use libc++ as C++ standard library." ON)
+ endif()
+ option(use_libclang    "Add support for libclang parsing." OFF)
