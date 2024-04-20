@@ -3,6 +3,7 @@
 
 EAPI=8
 
+QT6_RESTRICT_TESTS=1 # no tests
 inherit qt6-build
 
 DESCRIPTION="Translation files for the Qt6 framework"
