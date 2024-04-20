@@ -13,7 +13,13 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
 
-DEPEND="dev-libs/spdlog:="
+RDEPEND="
+	dev-libs/libfmt:=
+	dev-libs/spdlog:=
+"
+DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}/${PN}-1.16.14-spdlog-libfmt.patch" )
 
 src_prepare() {
 	# Don't hardcore -Werror
