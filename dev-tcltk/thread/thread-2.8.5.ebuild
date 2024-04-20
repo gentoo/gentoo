@@ -11,6 +11,8 @@ DESCRIPTION="Tcl Thread extension"
 HOMEPAGE="http://www.tcl.tk/"
 SRC_URI="mirror://sourceforge/project/tcl/Thread%20Extension/${PV}/${MY_P}.tar.gz"
 
+S="${WORKDIR}"/${MY_P}
+
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
@@ -21,8 +23,6 @@ RDEPEND="${DEPEND}"
 QA_CONFIG_IMPL_DECL_SKIP=(
 	stat64 # used to test for Large File Support
 )
-
-S="${WORKDIR}"/${MY_P}
 
 PATCHES=( "${FILESDIR}"/${P}-musl.patch )
 
