@@ -98,10 +98,13 @@ RDEPEND="${COMMON_DEPEND}
 	server? ( !net-misc/freerdp:3[server] )
 "
 
-PATCHES=(
-	"${FILESDIR}/freerdp-2.11.2-clang.patch"
-	"${FILESDIR}/freerdp-2.11-Revert-codec-encode-messages-considering-endianness.patch"
-)
+src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/freerdp-2.11.2-clang.patch"
+		"${FILESDIR}/freerdp-2.11-Revert-codec-encode-messages-considering-endianness.patch"
+	)
+	cmake_src_prepare
+}
 
 option() {
 	usex "$1" ON OFF
