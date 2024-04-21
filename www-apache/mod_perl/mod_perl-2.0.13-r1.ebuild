@@ -13,7 +13,7 @@ SRC_URI="mirror://apache/perl/${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="1"
 KEYWORDS="amd64 ~arm ppc ppc64 ~riscv x86"
-IUSE="debug ithreads test"
+IUSE="debug perl_features_ithreads test"
 RESTRICT="!test? ( test )"
 
 # Apache::Reload, Apache::SizeLimit, and Apache::Test are force-unbundled.
@@ -25,11 +25,12 @@ RESTRICT="!test? ( test )"
 # default one, which will likely need threading.
 
 RDEPEND="
-	dev-lang/perl[ithreads=]
+	perl_features_ithreads?  ( || ( >=dev-lang/perl-5.38.2-r3[perl_features_ithreads] <dev-lang/perl-5.38.2-r3[ithreads] ) )
+	!perl_features_ithreads? ( || ( >=dev-lang/perl-5.38.2-r3[-perl_features_ithreads] <dev-lang/perl-5.38.2-r3[-ithreads] ) )
 	>=dev-perl/Apache-Test-1.420.0
 	>=www-servers/apache-2.0.47
 	>=dev-libs/apr-util-1.4
-	!ithreads? ( www-servers/apache[-apache2_mpms_event,-apache2_mpms_worker,apache2_mpms_prefork] )
+	!perl_features_ithreads? ( www-servers/apache[-apache2_mpms_event,-apache2_mpms_worker,apache2_mpms_prefork] )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -75,7 +76,7 @@ src_configure() {
 	_init_apache2_late
 
 	local debug=$(usex debug 1 0)
-	local nothreads=$(usex ithreads 0 1)
+	local nothreads=$(usex perl_features_ithreads 0 1)
 	myconf=(
 		MP_USE_DSO=1
 		MP_APXS=${APXS}
