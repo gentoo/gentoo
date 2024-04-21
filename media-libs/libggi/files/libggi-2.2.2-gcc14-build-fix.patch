@@ -1,0 +1,29 @@
+https://sourceforge.net/p/ggi/patches/9/
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Sun, 21 Apr 2024 22:52:00 +0530
+Subject: [PATCH 1/1] build: Fix building with GCC 14
+
+Newer compiler like GCC 14 and Clang 16 (and greater) enable a few
+compiler options by default that result in build error,
+-Wincompatible-pointer-types being one of them. Thus giving us
+dga.c:392:32: error: assignment to 'ggi_modelist_validate' {aka 'int (*)(ggi_visual *, long int,  ggi_mode *)'} from incompatible pointer type 'int (*)(ggi_visual *, int,  ggi_mode *)' [-Wincompatible-pointer-types]
+  392 |         priv->mlfuncs.validate = ggi_xdga_validate_mode;
+      |                                ^
+
+First reported on Gentoo linux at https://bugs.gentoo.org/930101.
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/display/X/helper/dga/dga.c
++++ b/display/X/helper/dga/dga.c
+@@ -261,7 +261,7 @@ static void ggi_xdga_checkmode_adapt(ggi_mode * m, XDGAMode * dgamode,
+ 
+ /* This function performs the CheckMode operation and returns
+  * the number of the best mode.  */
+-static int ggi_xdga_validate_mode(ggi_visual * vis, int num,
++static int ggi_xdga_validate_mode(ggi_visual * vis, intptr_t num,
+ 				  ggi_mode * mode)
+ {
+ 	ggi_x_priv *priv;
+-- 
+2.44.0
+
