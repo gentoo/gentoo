@@ -22,6 +22,7 @@ fi
 LICENSE="LGPL-2"
 SLOT="0"
 IUSE="gles2 vulkan wayland X"
+REQUIRED_USE="vulkan? ( || ( X wayland ) )"
 
 RDEPEND="
 	media-libs/libglvnd[${MULTILIB_USEDEP},X?]
