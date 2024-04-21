@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~arm ~ppc ~sparc ~x86"
 IUSE="tk"
 
 RDEPEND="
-	dev-lang/perl[ithreads]
+	|| ( >=dev-lang/perl-5.38.2-r3[perl_features_ithreads] <dev-lang/perl-5.38.2-r3[ithreads] )
 	dev-perl/GDGraph
 	dev-perl/HTML-HTMLDoc
 	virtual/perl-DB_File
