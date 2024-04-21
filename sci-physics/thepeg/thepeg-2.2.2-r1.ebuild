@@ -18,7 +18,7 @@ SRC_URI="https://www.hepforge.org/archive/thepeg/${MY_P}.tar.bz2
 		${TEST_URI}/GRV98nlo.LHgrid
 		${TEST_URI}/MRST2001nlo.LHgrid ) )"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0/20"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="emacs fastjet hepmc java lhapdf static-libs test zlib"
