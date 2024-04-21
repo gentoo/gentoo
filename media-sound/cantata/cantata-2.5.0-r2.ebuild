@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -55,7 +55,7 @@ COMMON_DEPEND="
 	zeroconf? ( net-dns/avahi )
 "
 RDEPEND="${COMMON_DEPEND}
-	dev-lang/perl[ithreads]
+	|| ( >=dev-lang/perl-5.38.2-r3[perl_features_ithreads] <dev-lang/perl-5.38.2-r3[ithreads] )
 	|| ( kde-frameworks/breeze-icons:* kde-frameworks/oxygen-icons:* )
 "
 DEPEND="${COMMON_DEPEND}
