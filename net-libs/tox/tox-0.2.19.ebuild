@@ -5,21 +5,16 @@ EAPI=8
 
 inherit cmake systemd
 
+MY_P="c-toxcore-${PV}"
+S="${WORKDIR}/${MY_P}"
+
 DESCRIPTION="Encrypted P2P, messaging, and audio/video calling platform"
 HOMEPAGE="https://tox.chat https://github.com/TokTok/c-toxcore"
-
-if [[ ${PV} == 9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/TokTok/c-toxcore.git"
-else
-	MY_P="c-toxcore-${PV}"
-	SRC_URI="https://github.com/TokTok/c-toxcore/releases/download/v${PV}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
-	S="${WORKDIR}/${MY_P}"
-fi
+SRC_URI="https://github.com/TokTok/c-toxcore/releases/download/v${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0/0.2"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+av debug daemon dht-node experimental ipv6 key-utils log-debug +log-error log-info log-trace log-warn test"
 
 REQUIRED_USE="?? ( log-debug log-error log-info log-trace log-warn )
@@ -110,5 +105,14 @@ src_install() {
 		insinto /etc
 		doins "${FILESDIR}"/tox-bootstrapd.conf
 		systemd_dounit "${FILESDIR}"/tox-bootstrapd.service
+	fi
+}
+
+pkg_postinst() {
+	if use daemon; then
+		elog "Before you can run the daemon, you need to add nodes to"
+		elog "configuration which exists at /etc/tox-bootstrapd.conf"
+		elog "Details about these nodes can be found at https://nodes.tox.chat"
+		elog "Then run, if necessary, #rc-update add tox-dht-daemon default"
 	fi
 }
