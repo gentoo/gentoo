@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,6 +17,8 @@ HOMEPAGE="
 SRC_URI="
 	https://github.com/executablebooks/MyST-Parser/archive/v${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
+	https://github.com/executablebooks/MyST-Parser/pull/811.patch
+		-> ${P}-sphinx-7.2.patch
 "
 S=${WORKDIR}/${MY_P}
 
@@ -42,19 +44,14 @@ BDEPEND="
 		>=dev-python/linkify-it-py-2.0.0[${PYTHON_USEDEP}]
 		dev-python/pytest-regressions[${PYTHON_USEDEP}]
 		dev-python/pytest-param-files[${PYTHON_USEDEP}]
+		>=dev-python/sphinx-7.2.6[${PYTHON_USEDEP}]
 		dev-python/sphinx-pytest[${PYTHON_USEDEP}]
 	)
 "
 
 distutils_enable_tests pytest
 
-python_test() {
-	local EPYTEST_DESELECT=()
-
-	false && [[ ${EPYTHON} == pypy3 ]] && EPYTEST_DESELECT+=(
-		# bad test relying on exact exception messages
-		"tests/test_renderers/test_include_directive.py::test_errors[9-Non-existent path:]"
-	)
-
-	epytest
-}
+PATCHES=(
+	# https://github.com/executablebooks/MyST-Parser/pull/811
+	"${DISTDIR}/${P}-sphinx-7.2.patch"
+)
