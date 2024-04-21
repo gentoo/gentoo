@@ -93,18 +93,12 @@ python_test() {
 	./run.sh * || die "Tests failed with ${EPYTHON}"
 }
 
-python_install() {
-	local my_install_args=(
-		--mandir="${EPREFIX}/usr/share/man"
-		--infodir="${EPREFIX}/usr/share/info"
-		--docdir="${EPREFIX}/usr/share/doc/${PF}"
-	)
-
-	distutils-r1_python_install "${my_install_args[@]}"
-}
-
 src_install() {
 	distutils-r1_src_install
 
-	mv "${D}"/usr/share/doc/{${PN},${PF}} || die
+	# Move misplaced files to correct location
+	doinfo doc/${PN}/${PN}.info
+	rm "${ED}"/usr/share/doc/${PN}/${PN}.{texi,info} || die
+	mv "${ED}"/usr/share/doc/{${PN}/*,${PF}/} || die
+	rmdir "${ED}"/usr/share/doc/${PN} || die
 }
