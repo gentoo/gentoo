@@ -32,12 +32,13 @@ src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS} ${CPPFLAGS}"
 	if use doc; then
 		export VARTEXFONTS="${T}/fonts"
-		emake docs
+		emake docs CC="$(tc-getCC)" CFLAGS="${CFLAGS} ${CPPFLAGS}"
 	fi
 }
 
 src_install() {
-	emake install DESTDIR="${ED}" prefix="/usr" mandir="/usr/share/man"
+	# Do not remove the CC/FLAGS here; bug 930357
+	emake install DESTDIR="${ED}" prefix="/usr" mandir="/usr/share/man" CC="$(tc-getCC)" CFLAGS="${CFLAGS} ${CPPFLAGS}"
 	einstalldocs
 	use doc && dodoc doc/blktrace.pdf btt/doc/btt.pdf
 }
