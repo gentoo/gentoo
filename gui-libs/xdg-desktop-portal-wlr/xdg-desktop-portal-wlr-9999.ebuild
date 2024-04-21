@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -60,6 +60,6 @@ src_install() {
 	meson_src_install
 
 	# bug #915702
-	insinto /usr/share/xdg-desktop-portal/portals
+	insinto /usr/share/xdg-desktop-portal
 	doins "${WORKDIR}/${P}/contrib/wlroots-portals.conf"
 }

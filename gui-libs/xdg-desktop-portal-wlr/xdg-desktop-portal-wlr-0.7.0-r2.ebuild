@@ -43,6 +43,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-portal-config.patch
+)
+
 src_configure() {
 	local emesonargs=()
 
@@ -60,6 +64,6 @@ src_install() {
 	meson_src_install
 
 	# bug #915702
-	insinto /usr/share/xdg-desktop-portal/portals
+	insinto /usr/share/xdg-desktop-portal
 	doins "${WORKDIR}/${P}/contrib/wlroots-portals.conf"
 }
