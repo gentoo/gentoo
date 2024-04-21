@@ -24,7 +24,8 @@ RESTRICT="test" # can we run them on a production system?
 
 ECJ_SLOT="4.27"
 
-COMMON_DEP="dev-java/eclipse-ecj:${ECJ_SLOT}
+COMMON_DEP="dev-java/bnd-annotation:0
+	dev-java/eclipse-ecj:${ECJ_SLOT}
 	dev-java/jax-rpc-api:0
 	>=dev-java/jakartaee-migration-1.0.7-r2:0
 	dev-java/wsdl4j:0"
@@ -35,7 +36,6 @@ RDEPEND="${COMMON_DEP}
 DEPEND="${COMMON_DEP}
 	app-admin/pwgen
 	>=dev-java/ant-1.10.14-r3:0
-	dev-java/bnd-annotation:0
 	dev-java/bnd-ant:0
 	dev-java/bnd-util:0
 	dev-java/bndlib:0
@@ -61,13 +61,13 @@ PATCHES=(
 src_prepare() {
 	default #780585
 	java-pkg-2_src_prepare
-	find -name '*.jar' -type f -delete -print || die
+	java-pkg_clean
 
 	cat > build.properties <<-EOF || die
 		execute.download=false
 		exist=true # skip target="downloadfile-2"
 		ant.jar=$(java-pkg_getjar --build-only ant ant.jar)
-		bnd-annotation.jar=$(java-pkg_getjars --build-only bnd-annotation)
+		bnd-annotation.jar=$(java-pkg_getjars bnd-annotation)
 		bnd-ant.jar=$(java-pkg_getjars --build-only bnd-ant)
 		bnd-util.jar=$(java-pkg_getjars --build-only bnd-util)
 		bnd.jar=$(java-pkg_getjars --build-only bnd)
