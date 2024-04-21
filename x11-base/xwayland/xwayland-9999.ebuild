@@ -45,7 +45,7 @@ COMMON_DEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
-	>=x11-base/xorg-proto-2023.2
+	>=x11-base/xorg-proto-2024.1
 	>=x11-libs/xtrans-1.3.5
 "
 RDEPEND="
