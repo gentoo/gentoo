@@ -49,7 +49,7 @@ src_prepare() {
 src_install() {
 	# For the Help menu items to work, *.html must be in /usr/share/doc/${PF},
 	# and README, changelog, copyright, license, etc. must not be compressed.
-	emake DESTDIR="${D}" install
+	emake DESTDIR="${D}" PREFIX="/usr" install
 	rm -f "${D}"/usr/share/doc/${PF}/*.man || die
 	docompress -x /usr/share/doc
 }
