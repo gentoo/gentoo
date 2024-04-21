@@ -89,7 +89,7 @@ COMMON_DEPEND="
 	dev-libs/libgcrypt:=
 	dev-libs/libltdl:0=
 	sys-libs/libcap
-	perl?					( dev-lang/perl:=[ithreads] )
+	perl?					( || ( >=dev-lang/perl-5.38.2-r3[perl_features_ithreads] <dev-lang/perl-5.38.2-r3[ithreads] ) dev-lang/perl:= )
 	udev?					( virtual/udev )
 	xfs?					( sys-fs/xfsprogs )
 	collectd_plugins_amqp?			( net-libs/rabbitmq-c )
@@ -123,7 +123,7 @@ COMMON_DEPEND="
 	collectd_plugins_oracle?		( dev-db/oracle-instantclient[sdk] )
 	collectd_plugins_ovs_events?		( dev-libs/yajl:= )
 	collectd_plugins_ovs_stats?		( dev-libs/yajl:= )
-	collectd_plugins_perl?			( dev-lang/perl:=[ithreads] )
+	collectd_plugins_perl?			( || ( >=dev-lang/perl-5.38.2-r3[perl_features_ithreads] <dev-lang/perl-5.38.2-r3[ithreads] ) dev-lang/perl:= )
 	collectd_plugins_ping?			( net-libs/liboping )
 	collectd_plugins_postgresql?		( dev-db/postgresql:= )
 	collectd_plugins_procevent?		( dev-libs/yajl:= )
