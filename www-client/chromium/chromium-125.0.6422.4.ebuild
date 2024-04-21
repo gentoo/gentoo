@@ -89,7 +89,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD"
 SLOT="0/beta"
 KEYWORDS="~amd64 ~arm64"
-IUSE_SYSTEM_LIBS="+system-harfbuzz +system-icu +system-png +system-zstd"
+IUSE_SYSTEM_LIBS="+system-harfbuzz +system-icu +system-png +system-zlib +system-zstd"
 IUSE="+X ${IUSE_SYSTEM_LIBS} bindist cups debug ffmpeg-chromium gtk4 +hangouts headless kerberos libcxx +lto +official pax-kernel pgo +proprietary-codecs pulseaudio"
 IUSE+=" qt5 qt6 +screencast selinux +system-toolchain +vaapi +wayland +widevine"
 RESTRICT="!bindist? ( bindist )"
@@ -160,7 +160,7 @@ COMMON_DEPEND="
 	net-misc/curl[ssl]
 	sys-apps/dbus:=
 	media-libs/flac:=
-	sys-libs/zlib:=[minizip]
+	system-zlib? ( sys-libs/zlib:=[minizip] )
 	!headless? (
 		X? ( ${COMMON_X_DEPEND} )
 		>=app-accessibility/at-spi2-core-2.46.0:2
@@ -423,12 +423,15 @@ src_prepare() {
 
 	local PATCHES=(
 		"${FILESDIR}/chromium-cross-compile.patch"
-		"${FILESDIR}/chromium-109-system-zlib.patch"
 		"${FILESDIR}/chromium-111-InkDropHost-crash.patch"
 		"${FILESDIR}/chromium-124-libwebp-shim-sharpyuv.patch"
 		"${FILESDIR}/chromium-125-oauth2-client-switches.patch"
 		"${FILESDIR}/chromium-125-system-zstd.patch"
 	)
+
+	if use system-zlib; then
+		PATCHES+=( "${FILESDIR}/chromium-109-system-zlib.patch" )
+	fi
 
 	if use system-toolchain; then
 		# The patchset is really only required if we're using the system-toolchain
@@ -732,6 +735,10 @@ src_prepare() {
 		keeplibs+=( third_party/libpng )
 	fi
 
+	if ! use system-zlib; then
+		keeplibs+=( third_party/zlib )
+	fi
+
 	if ! use system-zstd; then
 		keeplibs+=( third_party/zstd )
 	fi
@@ -909,13 +916,15 @@ chromium_configure() {
 		libxml
 		libxslt
 		openh264
-		zlib
 	)
 	if use system-icu; then
 		gn_system_libraries+=( icu )
 	fi
 	if use system-png; then
 		gn_system_libraries+=( libpng )
+	fi
+	if use system-zlib; then
+		gn_system_libraries+=( zlib )
 	fi
 	if use system-zstd; then
 		gn_system_libraries+=( zstd )
