@@ -9,24 +9,18 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 inherit java-pkg-2 java-pkg-simple systemd verify-sig
 
 DESCRIPTION="An encrypted network without censorship"
-HOMEPAGE="https://freenetproject.org/"
-# Currently we bundle a binary version of pebble, see bug #905005
+HOMEPAGE="https://www.hyphanet.org"
 PEV="3.1.6"
 SRC_URI="https://github.com/hyphanet/fred/releases/download/build0${PV#*p}/freenet-build0${PV#*p}-source.tar.bz2
 	https://github.com/hyphanet/seedrefs/archive/build01480.tar.gz -> seednodes-0.7.5_p1480.tar.gz
-	https://github.com/hyphanet/fred/commit/49e1a69445.patch -> freenet-java21.patch
-	https://repo1.maven.org/maven2/io/pebbletemplates/pebble/${PEV}/pebble-${PEV}.jar
-	mirror://gentoo/freenet-ant-1.7.1.jar
 	verify-sig? (
 		https://github.com/hyphanet/fred/releases/download/build0${PV#*p}/freenet-build0${PV#*p}-source.tar.bz2.sig
 	)"
 S="${WORKDIR}/freenet-build0${PV#*p}"
 
-# 'SPDX-License-Identifier: BSD-3-Clause'
-# needed for pebble is 'BSD' in Gentoo.
-LICENSE="GPL-2+ GPL-2 MIT BSD-2 BSD Apache-2.0"
+LICENSE="GPL-2+ GPL-2 MIT BSD-2 Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64"
 IUSE="+nss"
 
 CP_DEPEND="
@@ -35,16 +29,17 @@ CP_DEPEND="
 	dev-java/commons-io:1
 	dev-java/fec:0
 	dev-java/freenet-ext:29
+	dev-java/java-service-wrapper:0
 	dev-java/jbitcollider-core:0
 	dev-java/jna:4
 	dev-java/lzma:0
 	dev-java/lzmajio:0
 	dev-java/mersennetwister:0
-	dev-java/java-service-wrapper:0
-	dev-java/unbescape:0
+	dev-java/pebble:0
 "
 
 DEPEND="
+	dev-java/unbescape:0
 	>=virtual/jdk-1.8:*
 	${CP_DEPEND}
 	test? (
@@ -76,13 +71,13 @@ DOCS=(
 )
 
 PATCHES=(
-	"${FILESDIR}/freenet-0.7.5_p1497-ignore-failing-tests.patch"
-	"${DISTDIR}/freenet-java21.patch"
+	"${FILESDIR}/freenet-0.7.5_p1498-ignore-failing-tests.patch"
 )
 
-JAVA_CLASSPATH_EXTRA="java-service-wrapper"
-# pebble packaging resistant
-JAVA_GENTOO_CLASSPATH_EXTRA="${DISTDIR}/pebble-${PEV}.jar"
+JAVA_CLASSPATH_EXTRA="
+	java-service-wrapper
+	unbescape
+"
 JAVA_RESOURCE_DIRS="res"
 JAVA_SRC_DIR="src"
 JAVA_TEST_GENTOO_CLASSPATH="
@@ -157,11 +152,8 @@ src_compile() {
 		done
 	done
 	IFS=${ifs_original}
-	echo "wrapper.java.classpath.$((i++))=/usr/share/freenet/lib/ant.jar" >> freenet-wrapper.conf || die
 	echo "wrapper.java.library.path.2=/usr/$(get_libdir)/java-service-wrapper" >> freenet-wrapper.conf || die
 	echo "wrapper.java.library.path.3=/usr/$(get_libdir)/jna-4" >> freenet-wrapper.conf || die
-
-	cp "${DISTDIR}"/freenet-ant-1.7.1.jar lib/ant.jar || die
 }
 
 src_test() {
@@ -196,8 +188,6 @@ src_test() {
 
 src_install() {
 	java-pkg-simple_src_install
-
-	java-pkg_newjar "${DISTDIR}"/freenet-ant-1.7.1.jar ant.jar
 
 	doinitd "${FILESDIR}"/freenet
 
