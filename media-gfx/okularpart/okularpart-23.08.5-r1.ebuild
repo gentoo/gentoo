@@ -61,6 +61,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-tests.patch" # bug 734138
 	"${FILESDIR}/${P}-only.patch"
 	"${FILESDIR}/${P}-crashfix.patch" # KDE-bug 476207
+	"${FILESDIR}/${P}-implicit-vasprintf.patch" # bug 927683; pending upstream
 )
 
 src_configure() {
