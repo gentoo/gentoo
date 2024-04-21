@@ -8,6 +8,7 @@ inherit go-module shell-completion systemd
 DESCRIPTION="Main implementation of IPFS"
 HOMEPAGE="https://ipfs.io/ https://github.com/ipfs/kubo/"
 SRC_URI="https://github.com/ipfs/${PN}/releases/download/v${PV}/kubo-source.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"
 
 LICENSE="Apache-2.0 BSD BSD-2 CC0-1.0 ISC MIT MPL-2.0"
 SLOT="0"
@@ -21,8 +22,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 DOCS=( CHANGELOG.md CONTRIBUTING.md README.md docs/ )
-
-S="${WORKDIR}"
 
 src_compile() {
 	local mygoargs
