@@ -28,9 +28,14 @@ RDEPEND="
 	media-libs/libglvnd[X?,${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	X? ( x11-libs/libX11[${MULTILIB_USEDEP}] )"
+	X? (
+		x11-base/xorg-proto
+		x11-libs/libX11[${MULTILIB_USEDEP}]
+	)
+"
 BDEPEND="${PYTHON_DEPS}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 PATCHES=( "${FILESDIR}"/libepoxy-1.5.10-use-opengl.pc-without-x.patch )
 
