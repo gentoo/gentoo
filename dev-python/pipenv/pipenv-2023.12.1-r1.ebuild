@@ -30,7 +30,7 @@ RDEPEND="
 	dev-python/dparse[${PYTHON_USEDEP}]
 	>=dev-python/markupsafe-2.0.1[${PYTHON_USEDEP}]
 	>=dev-python/pexpect-4.8.0[${PYTHON_USEDEP}]
-	dev-python/pipdeptree[${PYTHON_USEDEP}]
+	~dev-python/pipdeptree-2.16.2[${PYTHON_USEDEP}]
 	~dev-python/plette-0.4.4[${PYTHON_USEDEP}]
 	>=dev-python/ptyprocess-0.7.0[${PYTHON_USEDEP}]
 	dev-python/pyparsing[${PYTHON_USEDEP}]
