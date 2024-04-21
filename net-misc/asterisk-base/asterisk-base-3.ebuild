@@ -6,7 +6,7 @@ EAPI=8
 inherit systemd tmpfiles
 
 DESCRIPTION="Gentoo Asterisk init scripts"
-HOMEPAGE="https://www.gentoo.org/wiki/No_homepage"
+HOMEPAGE="https://github.com/jkroonza/asterisk-base"
 SRC_URI="https://github.com/jkroonza/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
