@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,10 +13,9 @@ HOMEPAGE="https://padre.perlide.org/"
 
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
-IUSE=""
 
 # Test Deps
-TDEPEND="
+TESTDEPEND="
 	>=dev-perl/Test-MockObject-1.90.0
 	>=dev-perl/Test-Script-1.70.0
 	>=dev-perl/Test-Exception-0.270.0
@@ -26,7 +25,7 @@ TDEPEND="
 "
 
 RDEPEND="
-	dev-lang/perl[ithreads]
+	|| ( >=dev-lang/perl-5.38.2-r3[perl_features_ithreads] <dev-lang/perl-5.38.2-r3[ithreads] )
 	>=dev-lang/perl-5.10.1
 	>=dev-perl/Algorithm-Diff-1.190.0
 	>=dev-perl/Capture-Tiny-0.60.0
@@ -92,7 +91,7 @@ RDEPEND="
 "
 BDEPEND="${RDEPEND}
 	test? (
-		${TDEPEND}
+		${TESTDEPEND}
 	)
 "
 
