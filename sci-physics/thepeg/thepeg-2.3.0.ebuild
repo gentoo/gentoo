@@ -22,6 +22,7 @@ SRC_URI="https://www.hepforge.org/archive/thepeg/${MY_P}.tar.bz2
 			${TEST_URI}/GRV98nlo.LHgrid
 			${TEST_URI}/MRST2001nlo.LHgrid )
 	)"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="0/30"
@@ -47,8 +48,6 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	java? ( virtual/jre:1.8 )
 "
-
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.3-java.patch
