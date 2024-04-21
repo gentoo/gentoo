@@ -9,10 +9,6 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>klondike@gentoo.org</email>
-		<name>Francisco Blas Izquierdo Riera</name>
-	</maintainer>
 	<use>
 		<flag name="doc">Create man pages for the package (requires <pkg>app-text/asciidoc</pkg>)</flag>
 		<flag name="json">Enable JSON support via <pkg>dev-libs/jansson</pkg></flag>
