@@ -1,4 +1,4 @@
-From b7bced77da267e51eaceeef68a213007ba54aa86 Mon Sep 17 00:00:00 2001
+From 6622a4e4a170d6c784d46638a128068ea5203493 Mon Sep 17 00:00:00 2001
 From: Matt Turner <mattst88@gmail.com>
 Date: Thu, 18 Apr 2024 13:24:18 -0400
 Subject: [PATCH] Disable things we don't want
@@ -7,18 +7,19 @@ v2: Enable libglad to satisfy egl dependencies
 v3: Enable most of libutil to fix undefined references in es2gears
 v4: Disable dmabufshare and remove dep on libXext
 v5: Drop trackball.c and showbuffer.c
+v6: Fix disabling GLU
 ---
- meson.build                   |  3 ++-
+ meson.build                   | 13 ++-----------
  src/egl/opengl/meson.build    | 35 ----------------------------------
  src/egl/opengles2/meson.build |  5 -----
  src/meson.build               |  2 --
  src/util/gl_wrap.h            |  2 --
  src/util/meson.build          |  9 +--------
  src/xdemos/meson.build        | 36 -----------------------------------
- 7 files changed, 3 insertions(+), 89 deletions(-)
+ 7 files changed, 3 insertions(+), 99 deletions(-)
 
 diff --git a/meson.build b/meson.build
-index d487a11f..ff360c2e 100644
+index d487a11f..4cd6abf7 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -52,7 +52,7 @@ dep_drm = dependency('libdrm',
@@ -30,10 +31,20 @@ index d487a11f..ff360c2e 100644
    required : get_option('x11'),
    disabler : true
  )
-@@ -97,6 +97,7 @@ if not dep_glu.found() and host_machine.system() != 'darwin'
-   dep_glu = cc.find_library(_glu_name, has_headers: 'GL/glu.h',
-     required : dep_x11.found())
- endif
+@@ -87,16 +87,7 @@ endif
+ 
+ dep_threads = dependency('threads')
+ 
+-dep_glu = dependency('glu', required : false)
+-# GLU is part of OpenGL.Framework
+-if not dep_glu.found() and host_machine.system() != 'darwin'
+-  _glu_name = 'GLU'
+-  if host_machine.system() == 'windows'
+-    _glu_name = 'glu32'
+-  endif
+-  dep_glu = cc.find_library(_glu_name, has_headers: 'GL/glu.h',
+-    required : dep_x11.found())
+-endif
 +dep_glu = disabler()
  
  dep_glx = dependency('glx', required: false, disabler : true)
