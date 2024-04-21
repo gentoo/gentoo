@@ -20,12 +20,13 @@ HOMEPAGE="https://github.com/anholt/libepoxy"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+egl test +X"
+IUSE="test +X"
 
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	egl? ( media-libs/mesa[egl(+),${MULTILIB_USEDEP}] )"
+	media-libs/libglvnd[X?,${MULTILIB_USEDEP}]
+"
 DEPEND="${RDEPEND}
 	X? ( x11-libs/libX11[${MULTILIB_USEDEP}] )"
 BDEPEND="${PYTHON_DEPS}
@@ -35,7 +36,7 @@ PATCHES=( "${FILESDIR}"/libepoxy-1.5.10-use-opengl.pc-without-x.patch )
 
 multilib_src_configure() {
 	local emesonargs=(
-		-Degl=$(usex egl)
+		-Degl=yes
 		-Dglx=$(usex X)
 		$(meson_use X x11)
 		$(meson_use test tests)
