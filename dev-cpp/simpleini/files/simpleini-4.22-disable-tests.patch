@@ -1,14 +1,8 @@
-From f7862c3dd7ad35becc2741f268e3402e89a37666 Mon Sep 17 00:00:00 2001
+https://github.com/brofield/simpleini/pull/75
+https://github.com/brofield/simpleini/commit/f7862c3dd7ad35becc2741f268e3402e89a37666
 From: Alexandre Bouvier <contact@amb.tf>
 Date: Tue, 2 Jan 2024 10:54:44 +0100
 Subject: [PATCH 2/2] cmake: really disable tests (#75)
-
----
- CMakeLists.txt | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 7804947..4b360ad 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -72,5 +72,7 @@ target_include_directories(${PROJECT_NAME} INTERFACE
@@ -20,6 +14,3 @@ index 7804947..4b360ad 100644
 +		add_subdirectory(tests)
 +	endif()
  endif()
--- 
-2.43.2
-

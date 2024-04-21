@@ -1,14 +1,8 @@
-From aeacf861a8ad8add5f4974792a88ffea393e41db Mon Sep 17 00:00:00 2001
+https://github.com/brofield/simpleini/pull/74
+https://github.com/brofield/simpleini/commit/aeacf861a8ad8add5f4974792a88ffea393e41db
 From: Alexandre Bouvier <contact@amb.tf>
 Date: Tue, 2 Jan 2024 08:42:03 +0100
 Subject: [PATCH 1/2] cmake: fix namespace and include dir (#74)
-
----
- CMakeLists.txt | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
-
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 8f09295..7804947 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -48,7 +48,7 @@ configure_package_config_file(${PROJECT_NAME}Config.cmake.in
@@ -39,6 +33,3 @@ index 8f09295..7804947 100644
 +	include(CTest)
  	add_subdirectory(tests)
  endif()
--- 
-2.43.2
-

@@ -16,10 +16,8 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="test? ( dev-cpp/gtest )"
-BDEPEND="test? ( virtual/pkgconfig )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.20-pkgconfig-var.patch
 	"${FILESDIR}"/${P}-include-dir.patch
 	"${FILESDIR}"/${P}-disable-tests.patch
 )
@@ -27,7 +25,8 @@ PATCHES=(
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test)
-		-DSIMPLEINI_USE_SYSTEM_GTEST=ON
+		-DSIMPLEINI_USE_SYSTEM_GTEST=yes
 	)
+
 	cmake_src_configure
 }
