@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<longdescription lang="en">
+		Debootstrap is a tool which will install a Debian base system into
+		a subdirectory of another, already installed system. It doesn't
+		require an installation CD, just access to a Debian repository. It
+		can also be installed and run from another operating system, so,
+		for instance, you can use debootstrap to install Debian onto an
+		unused partition from a running Gentoo system. It can also be used
+		to create a rootfs for a machine of a different architecture, which
+		is known as "cross-debootstrapping".
+	</longdescription>
 	<maintainer type="person">
 		<email>tamiko@gentoo.org</email>
 		<name>Matthias Maier</name>
