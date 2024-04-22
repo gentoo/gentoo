@@ -20,6 +20,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc 
 
 # we always want [pyproject] extra
 RDEPEND="
+	app-alternatives/ninja
+	dev-build/cmake
 	>=dev-python/packaging-21.3[${PYTHON_USEDEP}]
 	>=dev-python/pathspec-0.10.1[${PYTHON_USEDEP}]
 	>=dev-python/pyproject-metadata-0.5[${PYTHON_USEDEP}]
