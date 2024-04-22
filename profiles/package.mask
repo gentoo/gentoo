@@ -280,12 +280,6 @@ dev-php/onphp
 # Removal on 2024-04-22.
 dev-php/mockery
 
-# Conrad Kostecki <conikost@gentoo.org> (2024-03-22)
-# Stuck on old EAPI6. Not compatible with PHP7 and newer.
-# Upstream stopped development.
-# Removal on 2024-04-22.
-dev-php/libchart
-
 # Rahil Bhimjiani <me@rahil.rocks> (2024-03-17)
 # buildah-1.34.0 isn't getting security fixes from upstream
 # https://github.com/containers/buildah/issues/5320
