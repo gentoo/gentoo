@@ -383,7 +383,7 @@ sci-libs/xgks-pmel
 ~kde-plasma/kwallet-pam-6.0.4
 ~kde-plasma/kwayland-6.0.4
 ~kde-plasma/kwayland-integration-6.0.4
-~kde-plasma/kwin-6.0.4
+~kde-plasma/kwin-6.0.4.1
 ~kde-plasma/kwrited-6.0.4
 ~kde-plasma/layer-shell-qt-6.0.4
 ~kde-plasma/libkscreen-6.0.4
