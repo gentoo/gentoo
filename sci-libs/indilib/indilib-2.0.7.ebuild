@@ -42,7 +42,7 @@ DEPEND="${RDEPEND}
 	websocket? ( dev-cpp/websocketpp )
 "
 
-PATCHES=( ${FILESDIR}/${P}-fix-system-httplib.patch )
+PATCHES=( "${FILESDIR}/${P}-fix-system-httplib.patch" )
 
 src_configure() {
 	# -Werror=odr
