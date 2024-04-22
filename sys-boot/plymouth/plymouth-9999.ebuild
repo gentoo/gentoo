@@ -1,5 +1,6 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
 EAPI=8
 
 inherit meson readme.gentoo-r1 flag-o-matic
@@ -30,6 +31,10 @@ BDEPEND="
 
 DEPEND="
 	dev-libs/libevdev
+	>=media-libs/libpng-1.2.16:=
+	virtual/libc
+	x11-libs/libxkbcommon
+	x11-misc/xkeyboard-config
 	drm? ( x11-libs/libdrm )
 	elibc_musl? ( sys-libs/rpmatch-standalone )
 	freetype? ( media-libs/freetype:2 )
@@ -38,7 +43,6 @@ DEPEND="
 		x11-libs/cairo
 		>=x11-libs/gtk+-3.14:3[X]
 	)
-	>=media-libs/libpng-1.2.16:=
 	pango? (
 		x11-libs/cairo
 		>=x11-libs/pango-1.21
@@ -49,14 +53,11 @@ DEPEND="
 		sys-apps/dbus
 		sys-libs/ncurses
 	)
-	virtual/libc
-	x11-libs/libxkbcommon
-	x11-misc/xkeyboard-config
 "
 
 RDEPEND="${DEPEND}
-	selinux? ( sec-policy/selinux-plymouthd )
 	>sys-kernel/dracut-0.37-r3
+	selinux? ( sec-policy/selinux-plymouthd )
 	udev? ( virtual/udev )
 "
 
