@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ src_install() {
 	insinto /usr/share/kitty
 	doins -r shell-integration
 
-	dosym -r {/usr/share/kitty/shell-integration/bash,/etc/bash/bashrc.d}/kitty.bash
+	dosym -r {/usr/share/kitty/shell-integration/bash/,/etc/bash/bashrc.d/90-}kitty.bash
 
 	dosym -r /usr/share/{kitty/shell-integration/fish,fish}/vendor_completions.d/kitty.fish
 	dosym -r /usr/share/{kitty/shell-integration/fish,fish}/vendor_conf.d/kitty-shell-integration.fish
