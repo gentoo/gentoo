@@ -265,11 +265,6 @@ sci-libs/xgks-pmel
 # Removal on 2024-04-22.  Bug #911780.
 dev-python/prov
 
-# Michał Górny <mgorny@gentoo.org> (2024-03-23)
-# Apparently broken.  No tests.  Last code change in 2016.  No revdeps.
-# Removal on 2024-04-22.  Bug #892613.
-dev-python/sphinxcontrib-asyncio
-
 # Rahil Bhimjiani <me@rahil.rocks> (2024-03-17)
 # buildah-1.34.0 isn't getting security fixes from upstream
 # https://github.com/containers/buildah/issues/5320
