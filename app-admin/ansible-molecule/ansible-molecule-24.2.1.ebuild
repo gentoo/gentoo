@@ -48,7 +48,7 @@ RDEPEND="$(python_gen_cond_dep '
 	selinux? ( sys-libs/libselinux[python,${PYTHON_USEDEP}] )
 ')"
 BDEPEND="$(python_gen_cond_dep '
-	<dev-python/setuptools-scm-8[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-7.0.5[${PYTHON_USEDEP}]
 	doc? (
 		dev-python/pillow[truetype,${PYTHON_USEDEP}]
 		media-fonts/roboto
