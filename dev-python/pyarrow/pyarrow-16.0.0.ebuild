@@ -80,6 +80,7 @@ python_test() {
 		tests/interchange/test_interchange_spec.py::test_dtypes
 		tests/test_convert_builtin.py::test_array_to_pylist_roundtrip
 		tests/test_feather.py::test_roundtrip
+		tests/test_pandas.py::test_array_to_pandas_roundtrip
 	)
 
 	if has_version ">=dev-python/numpy-2"; then
