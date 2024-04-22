@@ -1,13 +1,13 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 MY_PV=${PV/_p/-}
 MY_P=${PN}-${MY_PV}
 
-inherit cmake linux-info python-single-r1 toolchain-funcs udev
+inherit cmake linux-info python-single-r1 udev
 
 DESCRIPTION="Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor"
 HOMEPAGE="https://libcec.pulse-eight.com"
