@@ -1,0 +1,53 @@
+https://bugs.gentoo.org/930028
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Mon, 22 Apr 2024 20:16:11 +0530
+Subject: [PATCH 1/1] Fix build with GCC 14
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+GCC 14 enables -Wincompatible-pointer-types and a few other compiler
+flags that results in build errors such as:
+gtk.c:465:28: error: passing argument 1 of ‘gtk_widget_destroy’ from incompatible pointer type [-Wincompatible-pointer-types]
+  465 |         gtk_widget_destroy(fs);
+      |                            ^~
+      |                            |
+      |                            GtkFileSelection * {aka struct _GtkFileSelection *}
+/usr/include/gtk-2.0/gtk/gtkwidget.h:837:65: note: expected ‘GtkWidget *’ {aka ‘struct _GtkWidget *’} but argument is of type ‘GtkFileSelection *’ {aka ‘struct _GtkFileSelection *’}
+  837 | void       gtk_widget_destroy             (GtkWidget           *widget);
+      |                                            ~~~~~~~~~~~~~~~~~~~~~^~~~~~
+gtk.c: In function ‘FileOKSave’:
+gtk.c:473:28: error: passing argument 1 of ‘gtk_widget_destroy’ from incompatible pointer type [-Wincompatible-pointer-types]
+  473 |         gtk_widget_destroy(fs);
+      |                            ^~
+      |                            |
+      |                            GtkFileSelection * {aka struct _GtkFileSelection *}
+
+Using GTK_WIDGET to cast the GtkFileSelection handle to GtkWidget type
+helps with the error, as the funtion gtk_widget_destroy expects a
+GtkWidget type data.
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/src/gtk.c
++++ b/src/gtk.c
+@@ -462,7 +462,7 @@ void            FileOKLoad(GtkWidget * w, GtkFileSelection * fs)
+ /* Get the selected filename and copy it into the global save_filename. */
+ {
+ 	save_filename = g_strdup(gtk_file_selection_get_filename(GTK_FILE_SELECTION(fs)));
+-	gtk_widget_destroy(fs);
++	gtk_widget_destroy(GTK_WIDGET(fs));
+ 	ErrorExitWarn(LoadSettings(), 'w');
+ }
+ 
+@@ -470,7 +470,7 @@ void            FileOKSave(GtkWidget * w, GtkFileSelection * fs)
+ /* Get the selected filename and copy it into the global save_filename. */
+ {
+ 	save_filename = g_strdup(gtk_file_selection_get_filename(GTK_FILE_SELECTION(fs)));
+-	gtk_widget_destroy(fs);
++	gtk_widget_destroy(GTK_WIDGET(fs));
+ 	ErrorExitWarn(SaveSettings(), 'e');
+ }
+ 
+-- 
+2.44.0
+
