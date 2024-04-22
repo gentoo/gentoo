@@ -35,6 +35,8 @@ PATCHES=(
 	# https://bugs.gentoo.org/870970
 	# https://sourceforge.net/p/xsb/bugs/265/
 	"${FILESDIR}"/0001-modern-C-fix-for-implicit-int.patch
+	"${FILESDIR}"/xsb-4.0.0-gcc14-build-fix.patch
+	"${FILESDIR}"/xsb-4.0.0-gcc14-sql.patch
 )
 
 src_prepare() {

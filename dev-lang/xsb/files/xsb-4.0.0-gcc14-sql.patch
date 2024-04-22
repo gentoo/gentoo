@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/949632
+--- a/emu/odbc_xsb.c	2021-03-06 18:46:16.000000000 -0500
++++ b/emu/odbc_xsb.c	2025-02-11 15:49:47.204779582 -0500
+@@ -411,10 +411,10 @@
+   cberrormsgmax=SQL_MAX_MESSAGE_LENGTH-1;
+   if (cur != NULL)
+     rc = SQLError(SQL_NULL_HENV, cur->hdbc, cur->hstmt, szsqlstate,
+-		  pfnativeerror, szerrormsg,cberrormsgmax,pcberrormsg);
++		  (void *)pfnativeerror, szerrormsg,cberrormsgmax,pcberrormsg);
+   else
+     rc = SQLError(SQL_NULL_HENV, NULL, SQL_NULL_HSTMT, szsqlstate,
+-		  pfnativeerror, szerrormsg,cberrormsgmax,pcberrormsg);
++		  (void *)pfnativeerror, szerrormsg,cberrormsgmax,pcberrormsg);
+   if ((rc == SQL_SUCCESS) || (rc == SQL_SUCCESS_WITH_INFO)) {
+     term = makecs(hreg);
+     bld_functor(hreg, pair_psc(insert("odbc_error",2,(Psc)flags[CURRENT_MODULE],&isnew)));
