@@ -176,6 +176,9 @@ app-admin/ansible-molecule doc
 
 # William Hubbs <williamh@gentoo.org> (2023-06-30)
 # multiple repeated issues: Bug: #909394
+# Joonas Niilola <juippis@gentoo.org> (2024-04-22)
+# Can break reverse dependencies (Chromium, Firefox), debugging not always 
+# obvious.
 net-libs/nodejs lto
 
 # Sam James <sam@gentoo.org> (2023-06-29)
