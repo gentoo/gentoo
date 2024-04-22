@@ -50,7 +50,7 @@ src_unpack() {
 		cd "${S}" || die
 		./bootstrap || die
 	else
-		default
+		verify-sig_src_unpack
 	fi
 }
 
