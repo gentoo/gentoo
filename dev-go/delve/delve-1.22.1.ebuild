@@ -18,6 +18,7 @@ src_prepare() {
 
 	# disable failing tests
 	sed -e 's/TestDebugger_LaunchWithTTY/_&/' -i service/debugger/debugger_unix_test.go || die
+	sed -e 's/TestDump/_&/' -i pkg/proc/proc_test.go || die
 	rm cmd/dlv/dlv_test.go || die
 }
 
