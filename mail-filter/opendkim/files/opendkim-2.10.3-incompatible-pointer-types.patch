@@ -1,0 +1,32 @@
+From 514ed1085d7399f7fe3bb53e6ae4693168dd0ab9 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Mon, 22 Apr 2024 07:37:40 -0400
+Subject: [PATCH] opendkim/opendkim.c: add two missing dkimf_dstring_get()
+ calls
+
+This fixes the build with CFLAGS="-Werror=incompatible-pointer-types",
+which some newer compilers are planning to make default.
+
+Gentoo-Bug: https://bugs.gentoo.org/919366
+---
+ opendkim/opendkim.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/opendkim/opendkim.c b/opendkim/opendkim.c
+index d4229e8f..93d05a1e 100644
+--- a/opendkim/opendkim.c
++++ b/opendkim/opendkim.c
+@@ -11656,8 +11656,8 @@ mlfi_eoh(SMFICTX *ctx)
+ 	    (status != 0 || user == NULL || domain == NULL ||
+ 	     user[0] == '\0' || domain[0] == '\0'))
+ 	{
+-		strlcpy(addr, conf->conf_defsender, sizeof addr);
+-		status = dkim_mail_parse(addr, &user, &domain);
++		strlcpy(dkimf_dstring_get(addr), conf->conf_defsender, sizeof addr);
++		status = dkim_mail_parse(dkimf_dstring_get(addr), &user, &domain);
+ 	}
+ #endif /* _FFR_DEFAULT_SENDER */
+ 
+-- 
+2.43.2
+
