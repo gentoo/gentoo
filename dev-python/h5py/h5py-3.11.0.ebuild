@@ -23,11 +23,11 @@ KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~x
 IUSE="examples"
 
 DEPEND="
+	>=dev-python/numpy-1.17.3:=[${PYTHON_USEDEP}]
 	>=sci-libs/hdf5-1.10.4:=[hl(+)]
 "
 RDEPEND="
 	${DEPEND}
-	>=dev-python/numpy-1.17.3[${PYTHON_USEDEP}]
 "
 
 BDEPEND="
