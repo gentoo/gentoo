@@ -270,11 +270,6 @@ dev-python/prov
 # Removal on 2024-04-22.  Bug #892613.
 dev-python/sphinxcontrib-asyncio
 
-# Conrad Kostecki <conikost@gentoo.org> (2024-03-22)
-# Stuck on old EAPI6. Last stable release over 10 years ago.
-# Not compatible with PHP8. Removal on 2024-04-22.
-dev-php/onphp
-
 # Rahil Bhimjiani <me@rahil.rocks> (2024-03-17)
 # buildah-1.34.0 isn't getting security fixes from upstream
 # https://github.com/containers/buildah/issues/5320
