@@ -12,7 +12,7 @@ HOMEPAGE="http://home.thep.lu.se/ThePEG/"
 
 TEST_URI="https://www.hepforge.org/archive/lhapdf/pdfsets/current"
 SRC_URI="https://www.hepforge.org/archive/thepeg/${MY_P}.tar.bz2
-	test? ( hepmc? (
+	test? ( hepmc3? (
 		${TEST_URI}/cteq6ll.LHpdf
 		${TEST_URI}/cteq5l.LHgrid
 		${TEST_URI}/GRV98nlo.LHgrid
@@ -22,14 +22,14 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-3"
 SLOT="0/30"
 KEYWORDS="~amd64 ~x86"
-IUSE="emacs fastjet hepmc java lhapdf static-libs test zlib"
+IUSE="emacs fastjet +hepmc3 java lhapdf static-libs test zlib"
 RESTRICT="!test? ( test )"
 
 CDEPEND="
 	sci-libs/gsl:0=
 	emacs? ( >=app-editors/emacs-23.1:* )
 	fastjet? ( sci-physics/fastjet:0= )
-	hepmc? ( sci-physics/hepmc:3= )
+	hepmc3? ( sci-physics/hepmc:3= )
 	lhapdf? ( >=sci-physics/lhapdf-6.0:0= )
 	zlib? ( sys-libs/zlib:0= )"
 DEPEND="${CDEPEND}
@@ -63,8 +63,8 @@ src_configure() {
 	econf \
 		$(use_enable static-libs static) \
 		$(use_with fastjet fastjet "${EPREFIX}"/usr) \
-		$(use_with hepmc hepmc "${EPREFIX}"/usr) \
-		$(use_with hepmc hepmcversion 3) \
+		$(use_with hepmc3 hepmc "${EPREFIX}"/usr) \
+		$(use_with hepmc3 hepmcversion 3) \
 		$(use_with java javagui) \
 		$(use_with lhapdf lhapdf "${EPREFIX}"/usr) \
 		$(use_with test boost "${EPREFIX}"/usr) \
