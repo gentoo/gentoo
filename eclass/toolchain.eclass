@@ -1462,7 +1462,7 @@ toolchain_src_configure() {
 			# respect USE=graphite here in case the user passes some
 			# graphite flags rather than try strip them out.
 			$(use_with graphite isl)
-			--without-zstd
+			$(use_with zstd)
 			--with-system-zlib
 		)
 
