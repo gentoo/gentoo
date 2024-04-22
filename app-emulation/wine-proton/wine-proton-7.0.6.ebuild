@@ -250,6 +250,10 @@ src_configure() {
 	[[ $($(tc-getCC) ${LDFLAGS} -Wl,--version 2>/dev/null) == mold* ]] &&
 		append-ldflags -fuse-ld=bfd
 
+	# >=wine-proton-9 has proper fixes and builds with gcc-14, but would
+	# rather not have to worry about fixing old branches (bug #924486)
+	append-cflags $(test-flags-CC -Wno-error=incompatible-pointer-types)
+
 	# build using upstream's way (--with-wine64)
 	# order matters: configure+compile 64->32, install 32->64
 	local -i bits
