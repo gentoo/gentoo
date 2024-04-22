@@ -24,7 +24,7 @@ KEYWORDS="~amd64"
 S="${WORKDIR}/${PNGH}-${PV}"
 
 DEPEND="
-	dev-python/numpy[${PYTHON_USEDEP}]
+	<dev-python/numpy-2:=[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	dev-python/pybind11[${PYTHON_USEDEP}]
