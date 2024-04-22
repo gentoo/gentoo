@@ -203,7 +203,7 @@ RDEPEND="
 	png? ( media-libs/libpng:0=[${MULTILIB_USEDEP}] )
 	python? (
 		${PYTHON_DEPS}
-		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/numpy:=[${PYTHON_USEDEP}]
 	)
 	qt5? (
 		dev-qt/qtgui:5
