@@ -27,5 +27,10 @@ RDEPEND="
 	dropbox? ( >=kde-apps/dolphin-plugins-dropbox-${PV}:* )
 	samba? ( >=kde-apps/kdenetwork-filesharing-${PV}:* )
 	screencast? ( >=kde-apps/krfb-${PV}:* )
-	webengine? ( >=kde-misc/kio-gdrive-${PV}:* )
+	webengine? (
+		>=kde-apps/kaccounts-integration-${PV}:*
+		>=kde-apps/kaccounts-providers-${PV}:*
+		>=kde-apps/signon-kwallet-extension-${PV}:*
+		>=kde-misc/kio-gdrive-${PV}:*
+	)
 "
