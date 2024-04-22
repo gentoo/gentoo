@@ -192,6 +192,8 @@ src_install() {
 		"${bindir}"/incus completion bash > "${D}"/usr/share/bash-completion/completions/incus || die
 		"${bindir}"/incus completion fish > "${D}"/usr/share/fish/vendor_completions.d/incus.fish || die
 		"${bindir}"/incus completion zsh > "${D}"/usr/share/zsh/site-functions/_incus || die
+	else
+		ewarn "Shell completion files not installed! Install them manually with incus completion --help"
 	fi
 
 	dodoc AUTHORS
