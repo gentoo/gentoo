@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit go-module linux-info optfeature systemd verify-sig
+inherit go-module linux-info optfeature systemd toolchain-funcs verify-sig
 
 DESCRIPTION="Modern, secure and powerful system container and virtual machine manager"
 HOMEPAGE="https://linuxcontainers.org/incus/introduction/ https://github.com/lxc/incus"
