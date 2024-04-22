@@ -24,6 +24,7 @@ RDEPEND="
 BDEPEND="
 	python? (
 		${PYTHON_DEPS}
+		${DISTUTILS_DEPS}
 		dev-python/setuptools[${PYTHON_USEDEP}]
 	)"
 
