@@ -1,0 +1,11 @@
+--- a/emu/timer_xsb.c
++++ b/emu/timer_xsb.c
+@@ -264,7 +264,7 @@ int make_timed_call(CTXTdeclc xsbTimeout *pptr,  void (*fptr)(xsbTimeout *))
+   pptr->timeout_info.th=th;
+   // below, fptr is pointer to start routine, pptr is pointer to arg-array.
+   // TIMED_THREAD_CREATE_ARG is a cell of timeout_info.
+-  if (pthread_create(TIMED_THREAD_CREATE_ARG, NULL, fptr, pptr)) {
++  if (pthread_create(TIMED_THREAD_CREATE_ARG, NULL, (void *)fptr, pptr)) {
+     xsb_error("SOCKET_REQUEST: Can't create concurrent timer thread\n");
+     return TIMER_SETUP_ERR;
+   }
