@@ -70,3 +70,11 @@ src_configure() {
 src_install() {
 	emake INSTALL_ROOT="${D}" install
 }
+
+pkg_postinst() {
+	if [[ -z "${REPLACING_VERSIONS}" ]] && \
+		! has_version "kde-apps/signon-kwallet-extension:*"; then
+		ewarn "Without kde-apps/signon-kwallet-extension installed, passwords"
+		ewarn "will be saved in plaintext!"
+	fi
+}

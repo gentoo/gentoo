@@ -143,3 +143,11 @@ src_install() {
 
 	multibuild_foreach_variant my_src_install
 }
+
+pkg_postinst() {
+	if [[ -z "${REPLACING_VERSIONS}" ]] && \
+		! has_version "kde-apps/signon-kwallet-extension:*"; then
+		ewarn "Without kde-apps/signon-kwallet-extension installed, passwords"
+		ewarn "will be saved in plaintext!"
+	fi
+}
