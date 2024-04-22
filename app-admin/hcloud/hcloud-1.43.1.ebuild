@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 src_compile() {
-	ego build -o ${PN} -ldflags "-w -X github.com/hetznercloud/cli/internal/version.Version=${PV}-gentoo" ./cmd/${PN}
+	ego build -o ${PN} -ldflags "-w -X github.com/hetznercloud/cli/internal/version.versionPrerelease=gentoo" ./cmd/${PN}
 }
 
 src_test() {
