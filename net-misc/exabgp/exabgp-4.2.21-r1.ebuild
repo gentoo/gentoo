@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{10..12} )
+DISTUTILS_USE_PEP517=setuptools
 inherit tmpfiles systemd distutils-r1
 
 DESCRIPTION="The BGP swiss army knife of networking"
@@ -34,12 +34,14 @@ PATCHES=(
 	"${FILESDIR}/exabgp-4.2.11-healthcheck-allow-disable-metric.patch"
 	"${FILESDIR}/exabgp-4.2.11-healthcheck-fix-log-crash.patch"
 	"${FILESDIR}/exabgp-4.2.11-less-verbose-logging.patch"
+	"${FILESDIR}/exabgp-4.2.21-exabgp.service-to-fix-socket-creation-on-start.patch"
+	"${FILESDIR}/exabgp-4.2.21-patch-embedded-six-for-py312.patch"
 )
 
 distutils_enable_tests pytest
 
 python_test() {
-	./qa/bin/parsing || die "tests fail with ${EPYTHON}"
+	./qa/bin/parsing || die "parsing tests fail with ${EPYTHON}"
 	epytest
 }
 
