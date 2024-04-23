@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,7 +29,7 @@ RDEPEND="
 	glut? ( media-libs/freeglut )
 	gsl? ( >=sci-libs/gsl-2:= )
 	hdf? ( sci-libs/hdf )
-	hdf5? ( >=sci-libs/hdf5-1.8[mpi=] )
+	hdf5? ( >=sci-libs/hdf5-1.8:=[mpi=] )
 	jpeg? ( virtual/jpeg:0 )
 	octave? ( >=sci-mathematics/octave-3.4.0 )
 	openmp? ( sys-cluster/openmpi )
