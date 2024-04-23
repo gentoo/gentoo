@@ -15,8 +15,8 @@ IUSE=""
 
 DEPEND="
 	virtual/mpi
-	sci-libs/hdf5[mpi]
-	"
+	sci-libs/hdf5:=[mpi]
+"
 RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/${P}-mpio.patch" )
