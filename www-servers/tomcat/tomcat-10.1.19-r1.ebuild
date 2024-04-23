@@ -175,6 +175,5 @@ pkg_postinst() {
 	ewarn "has changed from javax.* to jakarta.*. This will almost certainly require code"
 	ewarn "changes to enable applications to migrate from Tomcat 9 and earlier to Tomcat 10 and later."
 
-	einfo "Please read https://wiki.gentoo.org/wiki/Apache_Tomcat and"
-	einfo "https://wiki.gentoo.org/wiki/Project:Java/Tomcat_6_Guide for more information."
+	einfo "Please read https://wiki.gentoo.org/wiki/Apache_Tomcat"
 }
