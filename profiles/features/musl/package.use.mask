@@ -1,6 +1,14 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-04-20)
+# Renderdoc masked on musl, bug #853856
+media-gfx/blender renderdoc
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-04-20)
+# Support for L0 needs RTLD_DEEPBIND, which does not exist on musl.
+media-gfx/blender oneapi
+
 # Akinori Hattori <hattya@gentoo.org> (2024-04-15)
 # app-i18n/nkf is masked on musl
 app-i18n/multiskkserv test
