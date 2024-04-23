@@ -18,7 +18,7 @@ HOMEPAGE="https://apps.kde.org/cantor/ https://edu.kde.org/cantor/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 arm64 ~x86"
 # TODO: restore +analitza once cantor is ported to Qt6
 IUSE="julia lua postscript python qalculate R"
 
