@@ -48,7 +48,7 @@ case ${PV} in
 
 				# Add in the mirror URL too.
 				SRC_URI+=" ${patch_url/${upstream_url_base}/${mirror_url_base}}"
-				SRC_URI+=" verify-sig? ( ${patch_url/${upstream_url_base}/${mirror_url_base}} )"
+				SRC_URI+=" verify-sig? ( ${patch_url/${upstream_url_base}/${mirror_url_base}}.sig )"
 
 				MY_PATCHES+=( "${DISTDIR}"/${mangled_patch_ver} )
 			done
