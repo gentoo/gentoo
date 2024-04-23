@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Michael Mair-Keimberger <mmk@levelnine.at> (2024-04-23)
+# EAPI6. Upstream is archived. Probably should have been masked with app-emulation/runv.
+# Removal on 2024-05-23.  Bugs #912365, #679832, #844604
+app-emulation/hyperd
+
+# Michael Mair-Keimberger <mmk@levelnine.at> (2024-04-23)
 # Homepage points to a gambling site. No sources and many alternatives available.
 # Removal on 2024-05-23.  Bugs #909821. #762349
 media-sound/cdplay
