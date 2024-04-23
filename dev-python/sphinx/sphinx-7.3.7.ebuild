@@ -60,8 +60,7 @@ BDEPEND="
 	test? (
 		app-text/dvipng
 		>=dev-python/cython-3.0.0[${PYTHON_USEDEP}]
-		dev-python/filelock[${PYTHON_USEDEP}]
-		dev-python/html5lib[${PYTHON_USEDEP}]
+		>=dev-python/defusedxml-0.7.1[${PYTHON_USEDEP}]
 		>=dev-python/setuptools-67.0[${PYTHON_USEDEP}]
 		dev-texlive/texlive-fontsextra
 		dev-texlive/texlive-latexextra
