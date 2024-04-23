@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -60,7 +60,7 @@ if is_release ; then
 
 			# Add in the mirror URL too.
 			SRC_URI+=" ${patch_url/${upstream_url_base}/${mirror_url_base}}"
-			SRC_URI+=" verify-sig? ( ${patch_url/${upstream_url_base}/${mirror_url_base}} )"
+			SRC_URI+=" verify-sig? ( ${patch_url/${upstream_url_base}/${mirror_url_base}}.sig )"
 
 			MY_PATCHES+=( "${DISTDIR}"/${mangled_patch_ver} )
 		done
