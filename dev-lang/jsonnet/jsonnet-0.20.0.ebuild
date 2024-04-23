@@ -1,22 +1,24 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{9..11} )
+DISTUTILS_EXT=1
+PYTHON_COMPAT=( pypy3 python3_{9..12} )
 
 inherit cmake toolchain-funcs flag-o-matic distutils-r1
 
 DESCRIPTION="A data templating language for app and tool developers"
 HOMEPAGE="https://jsonnet.org/"
 SRC_URI="https://github.com/google/jsonnet/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-IUSE="custom-optimization doc examples python test"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+IUSE="custom-optimization doc examples python test"
+
 RDEPEND="
 	dev-cpp/rapidyaml:=
 	dev-cpp/nlohmann_json:=
