@@ -45,6 +45,7 @@ RDEPEND="net-misc/curl
 
 DEPEND="
 	${RDEPEND}
+	elibc_musl? ( sys-libs/queue-standalone )
 	static-libs? ( ${LIB_DEPEND} )
 "
 

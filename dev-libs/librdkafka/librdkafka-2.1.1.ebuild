@@ -44,6 +44,7 @@ RDEPEND="!static-libs? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 
 DEPEND="
 	${RDEPEND}
+	elibc_musl? ( sys-libs/queue-standalone )
 	static-libs? ( ${LIB_DEPEND} )
 "
 
