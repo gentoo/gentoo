@@ -65,6 +65,7 @@ CMAKE_SKIP_TESTS=(
 	# may try to use v4l2 or hardware acceleration depending on availability
 	tst_qscreencapture_integration
 	tst_qscreencapturebackend
+	tst_qvideoframebackend
 	# fails with offscreen rendering
 	tst_qvideoframecolormanagement
 	tst_qwindowcapturebackend
