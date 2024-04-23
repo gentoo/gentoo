@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2024-04-23)
+# Added in 2005 and not updated since.  Homepage and source mirrors
+# are gone.  Needs patches to even build.
+# Removal on 2024-05-23.  Bug #928594.
+media-video/vstrip
+
+# Michał Górny <mgorny@gentoo.org> (2024-04-23)
 # Obsolete Pidgin plugin.  Last supported in 2008, removed from plugin
 # list in 2019.
 # Removal on 2024-05-23.  Bug #928578.
