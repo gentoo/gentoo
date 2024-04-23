@@ -42,14 +42,14 @@ RDEPEND="
 	)
 	cgns? (
 		sci-libs/cgnslib
-		sci-libs/hdf5[mpi=]
+		sci-libs/hdf5:=[mpi=]
 	)
 	eigen? ( dev-cpp/eigen )
 	gmm? ( sci-mathematics/gmm )
 	jpeg? ( media-libs/libjpeg-turbo )
 	med? (
 		sci-libs/med[mpi=]
-		sci-libs/hdf5[mpi=]
+		sci-libs/hdf5:=[mpi=]
 	)
 	metis? ( >=sci-libs/metis-5.2.0 )
 	mpi? ( virtual/mpi[cxx] )
@@ -71,7 +71,8 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.9.5-opencascade.patch
-	"${FILESDIR}"/${PN}-4.11.1-metis-5-2.patch
+	"${FILESDIR}"/${P}_gcc13_fix_cstdint_include.patch
+	"${FILESDIR}"/${P}-metis-5-2.patch
 )
 
 pkg_setup() {
