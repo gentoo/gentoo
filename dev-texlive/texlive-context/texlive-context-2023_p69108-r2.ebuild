@@ -74,10 +74,36 @@ DEPEND="
 	>=app-text/texlive-core-2023[xetex,luajittex?]
 "
 
+TEXLIVE_MODULE_BINSCRIPTS="
+	texmf-dist/scripts/context/stubs-mkiv/unix/contextjit
+	texmf-dist/scripts/context/stubs-mkiv/unix/luatools
+	texmf-dist/scripts/context/stubs-mkiv/unix/mtxrunjit
+
+	texmf-dist/scripts/context/stubs/unix/texexec
+	texmf-dist/scripts/context/stubs/unix/texmfstart
+"
+
 src_prepare() {
 	default
 	# No need to install these .exe
 	rm -rf texmf-dist/scripts/context/stubs/{mswin,win64} || die
+}
+
+src_install() {
+	texlive-module_src_install
+
+	local mtxrun=/usr/share/texmf-dist/scripts/context/lua/mtxrun.lua
+	fperms 755 "${mtxrun}"
+	newbin - mtxrun <<-EOF
+	#!/bin/sh
+	export TEXMF_DIST="${EPREFIX}/usr/share/texmf-dist"
+	exec ${mtxrun} "\$@"
+EOF
+
+	newbin - context <<-EOF
+	#!/bin/sh
+	exec mtxrun --script context "\$@"
+EOF
 }
 
 TL_MODULE_INFORMATION="For using ConTeXt mkII simply use 'texexec' to generate
