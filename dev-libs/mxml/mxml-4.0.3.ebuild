@@ -20,8 +20,6 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/${PN}-4.0.2-rename-man-page.patch" )
-
 src_prepare() {
 	default
 
