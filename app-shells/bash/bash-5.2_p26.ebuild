@@ -81,6 +81,8 @@ if [[ -n ${GENTOO_PATCH_VER} ]] ; then
 	SRC_URI+=" https://dev.gentoo.org/~${GENTOO_PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${GENTOO_PATCH_VER}-patches.tar.xz"
 fi
 
+S="${WORKDIR}/${MY_P}"
+
 LICENSE="GPL-3+"
 SLOT="0"
 if is_release ; then
@@ -103,8 +105,6 @@ BDEPEND="
 	pgo? ( dev-util/gperf )
 	verify-sig? ( sec-keys/openpgp-keys-chetramey )
 "
-
-S="${WORKDIR}/${MY_P}"
 
 # EAPI 8 tries to append it but it doesn't exist here
 QA_CONFIGURE_OPTIONS="--disable-static"
