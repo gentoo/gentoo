@@ -10,8 +10,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-		RetroShare is a Free and Open Source cross-platform, Friend-2-Friend
-		secure decentralised communication platform.
+		RetroShare is a Free and Open Source, cross-platform, Friend-2-Friend,
+		secure and decentralised communication platform.
 		It lets you to securely chat and share files with your friends, family
 		and even unknown people using PGP to authenticate peers and OpenSSL
 		to encrypt all communication.
