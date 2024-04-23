@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Michael Mair-Keimberger <mmk@levelnine.at> (2024-04-23)
+# Library with no customers (no revdeps). Homepage offline. Sources offline.
+# Removal on 2024-05-23.  Bug #909581.
+dev-games/hawknl
+
+# Michael Mair-Keimberger <mmk@levelnine.at> (2024-04-23)
 # Library with no customers (no revdeps). Sources offline.
 # Removal on 2024-05-23.  Bugs #909527, #906350, #631436 
 dev-games/poker-eval
