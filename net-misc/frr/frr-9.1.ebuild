@@ -99,6 +99,11 @@ src_compile() {
 	use doc && emake -C doc html
 }
 
+src_test() {
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	default
+}
+
 src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
