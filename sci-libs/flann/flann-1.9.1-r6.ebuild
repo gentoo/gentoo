@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ DEPEND="
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-5.5 )
 	mpi? (
 		dev-libs/boost:=[mpi]
-		sci-libs/hdf5[mpi]
+		sci-libs/hdf5:=[mpi]
 	)
 	!mpi? ( !sci-libs/hdf5[mpi] )
 	octave? ( >=sci-mathematics/octave-3.6.4-r1:= )
