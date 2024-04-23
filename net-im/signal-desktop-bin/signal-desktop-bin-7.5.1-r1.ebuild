@@ -16,7 +16,7 @@ S="${WORKDIR}"
 LICENSE="GPL-3 MIT MIT-with-advertising BSD-1 BSD-2 BSD Apache-2.0 ISC openssl ZLIB APSL-2 icu Artistic-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="-* amd64"
-IUSE="+sound"
+IUSE="+sound tray-icon"
 RESTRICT="splitdebug"
 
 RDEPEND="
@@ -78,6 +78,10 @@ src_install() {
 
 	if has_version media-sound/apulse[-sdk] && ! has_version media-sound/pulseaudio; then
 		sed -i 's/Exec=/Exec=apulse /g' usr/share/applications/signal-desktop.desktop || die
+	fi
+
+	if use tray-icon; then
+		sed -i 's/%U/--use-tray-icon %U/g' usr/share/applications/signal-desktop.desktop || die
 	fi
 
 	doins -r usr/share/applications
