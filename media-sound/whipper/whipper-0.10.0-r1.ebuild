@@ -3,9 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..11} )
-
 DISTUTILS_USE_PEP517="setuptools"
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -17,7 +16,9 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="media-libs/libsndfile:="
+DEPEND="
+	media-libs/libsndfile:=
+"
 # bug https://bugs.gentoo.org/923339
 # upstream https://github.com/whipper-team/whipper/issues/605
 # upstream https://github.com/whipper-team/whipper/issues/606
@@ -32,14 +33,20 @@ RDEPEND="
 	<dev-python/ruamel-yaml-0.18.0[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	media-libs/mutagen[${PYTHON_USEDEP}]
-	media-sound/sox[flac]"
+	media-sound/sox[flac]
+"
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
-	test? ( dev-python/twisted[${PYTHON_USEDEP}] )"
+	test? (
+		dev-python/twisted[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests unittest
 
-PATCHES=( "${FILESDIR}/${PN}-0.7.0-cdparanoia-name-fix.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-0.7.0-cdparanoia-name-fix.patch"
+)
 
 python_prepare_all() {
 	# accurip test totally depends on network access
