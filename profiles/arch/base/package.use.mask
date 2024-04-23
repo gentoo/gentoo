@@ -3,7 +3,7 @@
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-04-20)
 # only keyworded for amd64 currently
-media-gfx/blender gnome
+media-gfx/blender gnome oneapi renderdoc vulkan
 
 # Ionen Wolkens <ionen@gentoo.org> (2024-04-16)
 # dev-qt/qtlanguageserver:6 currently has very few keywords
