@@ -153,7 +153,7 @@ src_test() {
 src_install() {
 	export GOPATH="${S}/_dist"
 
-	if [[ "${GOARCH}" != "amd64" ]]; then
+	if tc-is-cross-compiler ; then
 		local bindir="_dist/bin/linux_${GOARCH}"
 	else
 		local bindir="_dist/bin"
