@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
-PYTHON_COMPAT=( pypy3 python3_{9..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit cmake toolchain-funcs flag-o-matic distutils-r1
 
