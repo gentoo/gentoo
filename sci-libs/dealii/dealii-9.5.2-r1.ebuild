@@ -18,7 +18,7 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/dealii/dealii.git"
 	SRC_URI=""
 else
-	DOC_PV=9.4.1
+	DOC_PV=9.5.0
 	SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz
 		verify-sig? ( https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz.asc )
 		doc? (
@@ -34,7 +34,7 @@ IUSE="
 	adolc arborx assimp arpack cgal cpu_flags_x86_avx cpu_flags_x86_avx512f
 	cpu_flags_x86_sse2 cuda +debug doc +examples ginkgo gmsh +gsl hdf5
 	+lapack metis mpi muparser opencascade p4est petsc scalapack slepc
-	+sparse static-libs sundials symengine trilinos
+	+sparse sundials symengine trilinos
 "
 
 # TODO: add slepc use flag once slepc is packaged for gentoo-science
@@ -52,11 +52,12 @@ RDEPEND="dev-libs/boost:=
 	adolc? ( sci-libs/adolc )
 	arpack? ( sci-libs/arpack[mpi=] )
 	assimp? ( media-libs/assimp:= )
+	cgal? ( sci-mathematics/cgal )
 	cuda? ( dev-util/nvidia-cuda-toolkit )
 	ginkgo? ( sci-libs/ginkgo )
 	gmsh? ( sci-libs/gmsh )
 	gsl? ( sci-libs/gsl:= )
-	hdf5? ( sci-libs/hdf5[mpi=] )
+	hdf5? ( sci-libs/hdf5:=[mpi=] )
 	lapack? ( virtual/lapack )
 	metis? (
 		>=sci-libs/metis-5
@@ -72,7 +73,12 @@ RDEPEND="dev-libs/boost:=
 	sparse? ( sci-libs/umfpack )
 	sundials? ( sci-libs/sundials:= )
 	symengine? ( >=sci-libs/symengine-0.4:= )
-	trilinos? ( sci-libs/trilinos )"
+	trilinos? ( sci-libs/trilinos )
+	|| (
+		dev-cpp/kokkos
+		sci-libs/trilinos
+	)
+	"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -82,7 +88,6 @@ BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-dealii )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9.1.1-no-ld-flags.patch
 	"${FILESDIR}"/${PN}-9.4.2-base-mpi.cc-remove-superfluous-explicit-instantiatio.patch
 	"${FILESDIR}"/${PN}-9.4.2-base-mpi.h-mark-a-template-variable-to-have-const-in.patch
 )
@@ -119,7 +124,6 @@ src_configure() {
 		-DDEAL_II_WITH_GMSH="$(usex gmsh)"
 		-DDEAL_II_WITH_GSL="$(usex gsl)"
 		-DDEAL_II_WITH_HDF5="$(usex hdf5)"
-		-DDEAL_II_WITH_KOKKOS="$(usex trilinos)"
 		-DDEAL_II_WITH_LAPACK="$(usex lapack)"
 		-DDEAL_II_WITH_METIS="$(usex metis)"
 		-DDEAL_II_WITH_MPI="$(usex mpi)"
@@ -132,10 +136,7 @@ src_configure() {
 		-DDEAL_II_WITH_SUNDIALS="$(usex sundials)"
 		-DDEAL_II_WITH_SYMENGINE="$(usex symengine)"
 		-DDEAL_II_WITH_UMFPACK="$(usex sparse)"
-		-DBUILD_SHARED_LIBS="$(usex !static-libs)"
-		-DDEAL_II_PREFER_STATIC_LIBS="$(usex static-libs)"
 		-DDEAL_II_WITH_TBB=ON
-		-DDEAL_II_WITH_TASKFLOW=OFF
 		-DDEAL_II_WITH_TRILINOS="$(usex trilinos)"
 	)
 
@@ -156,11 +157,6 @@ src_configure() {
 		mycmakeargs+=( -DDEAL_II_HAVE_SSE2=yes )
 		append-cxxflags "-msse2"
 	fi
-
-	# Unconditionally enable strict C++17 standard. This is necessary for
-	# USE=cgal and USE=kokkos and safe to set for all presently supported
-	# compilers
-	append-cxxflags "-std=c++17"
 
 	cmake_src_configure
 }

@@ -54,7 +54,7 @@ RDEPEND="dev-libs/boost:=
 	ginkgo? ( sci-libs/ginkgo )
 	gmsh? ( sci-libs/gmsh )
 	gsl? ( sci-libs/gsl:= )
-	hdf5? ( sci-libs/hdf5[mpi=] )
+	hdf5? ( sci-libs/hdf5:=[mpi=] )
 	lapack? ( virtual/lapack )
 	metis? (
 		>=sci-libs/metis-5
