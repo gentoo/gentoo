@@ -166,7 +166,7 @@ NJS_MODULE_URI="https://github.com/nginx/njs/archive/${NJS_MODULE_PV}.tar.gz"
 NJS_MODULE_WD="${WORKDIR}/njs-${NJS_MODULE_PV}"
 
 # nginx-tests (http://hg.nginx.org/nginx-tests, BSD-2)
-NGINX_TESTS_REV="24482e311749"
+NGINX_TESTS_REV="0b5ec15c62ed"
 
 # We handle deps below ourselves
 SSL_DEPS_SKIP=1
