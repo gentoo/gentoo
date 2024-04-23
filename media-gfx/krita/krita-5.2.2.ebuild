@@ -95,9 +95,9 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-4.3.1-tests-optional.patch"
 	"${FILESDIR}/${PN}-5.1.5-sip-6.8.patch" # bug 919139
-	"${FILESDIR}/${PN}-5.1.5-libjxl-0.9.patch" # bug 922524
-	"${FILESDIR}/${PN}-5.2.2-fftw.patch"
-	"${FILESDIR}/${PN}-5.2.2-openjpeg.patch"
+	"${FILESDIR}/${P}-libjxl-0.9.patch" # bug 922524
+	"${FILESDIR}/${P}-fftw.patch"
+	"${FILESDIR}/${P}-openjpeg.patch"
 )
 
 pkg_setup() {
