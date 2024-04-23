@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2024-04-23)
+# Unmaintained.  Last release in 2003.  Carries a ton of patches.
+# Removal on 2024-05-23.  Bug #928731.
+net-analyzer/tcpstat
+
+# Michał Górny <mgorny@gentoo.org> (2024-04-23)
 # Added in 2005 and not updated since.  Homepage and source mirrors
 # are gone.  Needs patches to even build.
 # Removal on 2024-05-23.  Bug #928594.
