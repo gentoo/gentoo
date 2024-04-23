@@ -13,6 +13,7 @@ fi
 
 DESCRIPTION="Tests for compliance with X RENDER extension"
 HOMEPAGE="https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/test/rendercheck"
+LICENSE="MIT GPL-2+"
 
 RDEPEND="
 	x11-libs/libXrender
