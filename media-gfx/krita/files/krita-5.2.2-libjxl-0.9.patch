@@ -1,0 +1,93 @@
+From ace7edcca6ad322581ab39620f21ccf3ffbd3b5a Mon Sep 17 00:00:00 2001
+From: Timo Gurr <timo.gurr@gmail.com>
+Date: Fri, 5 Jan 2024 14:04:50 +0000
+Subject: [PATCH] Fix build with libjxl 0.9.0
+
+Fix build with libjxl 0.9.0
+
+BUG:478987
+
+Test Plan
+---------
+
+* Upgrade to libjxl 0.9.0
+* Apply patch from MR and build krita (5.2.2)
+* Open/Display a sample image e.g. https://jpegxl.info/test-page/red-room.jxl
+
+Formalities Checklist
+---------------------
+
+- [x] I confirmed this builds.
+- [x] I confirmed Krita ran and the relevant functions work (Could successfully open/display a sample image https://jpegxl.info/test-page/red-room.jxl).
+- [ ] I tested the relevant unit tests and can confirm they are not broken. (If not possible, don't hesitate to ask for help!)
+- [x] I made sure my commits build individually and have good descriptions as per [KDE guidelines](https://community.kde.org/Policies/Commit_Policy).
+- [x] I made sure my code conforms to the standards set in the HACKING file.
+- [x] I can confirm the code is licensed and attributed appropriately, and that unattributed code is mine, as per [KDE Licensing Policy](https://community.kde.org/Policies/Licensing_Policy).
+
+_**Reminder: the reviewer is responsible for merging the patch, this is to ensure at the least two people can build the patch. In case a patch breaks the build, both the author and the reviewer should be contacted to fix the build.**_
+_**If this is not possible, the commits shall be reverted, and a notification with the reasoning and any relevant logs shall be sent to the mailing list, kimageshop@kde.org.**_
+---
+ plugins/impex/jxl/JPEGXLImport.cpp | 15 ++++++++++++++-
+ 1 file changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/plugins/impex/jxl/JPEGXLImport.cpp b/plugins/impex/jxl/JPEGXLImport.cpp
+index 573bae41247..f5b989b3b70 100644
+--- a/plugins/impex/jxl/JPEGXLImport.cpp
++++ b/plugins/impex/jxl/JPEGXLImport.cpp
+@@ -511,7 +511,9 @@ JPEGXLImport::convert(KisDocument *document, QIODevice *io, KisPropertiesConfigu
+             JxlColorEncoding colorEncoding{};
+             if (JXL_DEC_SUCCESS
+                 == JxlDecoderGetColorAsEncodedProfile(dec.get(),
++#if JPEGXL_NUMERIC_VERSION < JPEGXL_COMPUTE_NUMERIC_VERSION(0, 9, 0)
+                                                       nullptr,
++#endif
+                                                       JXL_COLOR_PROFILE_TARGET_DATA,
+                                                       &colorEncoding)) {
+                 const TransferCharacteristics transferFunction = [&]() {
+@@ -635,7 +637,12 @@ JPEGXLImport::convert(KisDocument *document, QIODevice *io, KisPropertiesConfigu
+                 size_t iccSize = 0;
+                 QByteArray iccProfile;
+                 if (JXL_DEC_SUCCESS
+-                    != JxlDecoderGetICCProfileSize(dec.get(), nullptr, JXL_COLOR_PROFILE_TARGET_DATA, &iccSize)) {
++                    != JxlDecoderGetICCProfileSize(dec.get(),
++#if JPEGXL_NUMERIC_VERSION < JPEGXL_COMPUTE_NUMERIC_VERSION(0,9,0)
++                                                   nullptr,
++#endif
++                                                   JXL_COLOR_PROFILE_TARGET_DATA,
++                                                   &iccSize)) {
+                     errFile << "ICC profile size retrieval failed";
+                     document->setErrorMessage(i18nc("JPEG-XL errors", "Unable to read the image profile."));
+                     return ImportExportCodes::ErrorWhileReading;
+@@ -643,7 +650,9 @@ JPEGXLImport::convert(KisDocument *document, QIODevice *io, KisPropertiesConfigu
+                 iccProfile.resize(static_cast<int>(iccSize));
+                 if (JXL_DEC_SUCCESS
+                     != JxlDecoderGetColorAsICCProfile(dec.get(),
++#if JPEGXL_NUMERIC_VERSION < JPEGXL_COMPUTE_NUMERIC_VERSION(0,9,0)
+                                                       nullptr,
++#endif
+                                                       JXL_COLOR_PROFILE_TARGET_DATA,
+                                                       reinterpret_cast<uint8_t *>(iccProfile.data()),
+                                                       static_cast<size_t>(iccProfile.size()))) {
+@@ -657,7 +666,9 @@ JPEGXLImport::convert(KisDocument *document, QIODevice *io, KisPropertiesConfigu
+                 if (!d.m_info.uses_original_profile) {
+                     if (JXL_DEC_SUCCESS
+                         != JxlDecoderGetICCProfileSize(dec.get(),
++#if JPEGXL_NUMERIC_VERSION < JPEGXL_COMPUTE_NUMERIC_VERSION(0,9,0)
+                                                        nullptr,
++#endif
+                                                        JXL_COLOR_PROFILE_TARGET_ORIGINAL,
+                                                        &iccTargetSize)) {
+                         errFile << "ICC profile size retrieval failed";
+@@ -667,7 +678,9 @@ JPEGXLImport::convert(KisDocument *document, QIODevice *io, KisPropertiesConfigu
+                     iccTargetProfile.resize(static_cast<int>(iccTargetSize));
+                     if (JXL_DEC_SUCCESS
+                         != JxlDecoderGetColorAsICCProfile(dec.get(),
++#if JPEGXL_NUMERIC_VERSION < JPEGXL_COMPUTE_NUMERIC_VERSION(0,9,0)
+                                                           nullptr,
++#endif
+                                                           JXL_COLOR_PROFILE_TARGET_ORIGINAL,
+                                                           reinterpret_cast<uint8_t *>(iccTargetProfile.data()),
+                                                           static_cast<size_t>(iccTargetProfile.size()))) {
+-- 
+GitLab
+
