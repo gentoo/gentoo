@@ -40,6 +40,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
+		dev-python/defusedxml[${PYTHON_USEDEP}]
 		<dev-python/linkify-it-py-3[${PYTHON_USEDEP}]
 		>=dev-python/linkify-it-py-2.0.0[${PYTHON_USEDEP}]
 		dev-python/pytest-regressions[${PYTHON_USEDEP}]
@@ -56,26 +57,15 @@ src_prepare() {
 		# https://github.com/executablebooks/MyST-Parser/pull/811
 		"${DISTDIR}/${P}-sphinx-7.2.patch"
 	)
+	if has_version '>=dev-python/sphinx-7.3'; then
+		PATCHES+=(
+			# https://github.com/executablebooks/MyST-Parser/pull/915
+			"${FILESDIR}/${P}-sphinx-7.3.patch"
+		)
+	fi
 
 	default
 
 	# unpin docutils
 	sed -i -e '/docutils/s:,<[0-9.]*::' pyproject.toml || die
-}
-
-python_test() {
-	local EPYTEST_DESELECT=()
-
-	if has_version ">=dev-python/sphinx-7.3"; then
-		EPYTEST_DESELECT+=(
-			# https://github.com/executablebooks/MyST-Parser/issues/913
-			'tests/test_renderers/test_fixtures_sphinx.py::test_syntax_elements[298-Sphinx Role containing backtick:]'
-			'tests/test_renderers/test_fixtures_sphinx.py::test_sphinx_directives[341-versionadded (`sphinx.domains.changeset.VersionChange`):]'
-			tests/test_sphinx/test_sphinx_builds.py::test_references_singlehtml
-			tests/test_sphinx/test_sphinx_builds.py::test_heading_slug_func
-			tests/test_sphinx/test_sphinx_builds.py::test_gettext_html
-		)
-	fi
-
-	epytest
 }
