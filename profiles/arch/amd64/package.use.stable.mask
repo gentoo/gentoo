@@ -17,11 +17,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Ionen Wolkens <ionen@gentoo.org> (2024-04-16)
-# Temporary mask to give a little bit of time before stabilizing
-# the just added dev-qt/qtlanguageserver-6.7.0 for amd64
-dev-qt/qtdeclarative:6 qmlls
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-17)
 # Experimental, virt-firmware is keyworded only unstable
 sys-kernel/installkernel efistub
