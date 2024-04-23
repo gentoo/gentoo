@@ -23,5 +23,10 @@ RDEPEND="
 	>=dev-python/bitarray-2.9.0[${PYTHON_USEDEP}]
 	dev-python/gfloat[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	test? (
+		dev-python/hypothesis[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests pytest
