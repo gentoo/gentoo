@@ -9,6 +9,11 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="nbd">
+			Support export as an nbd device
+		</flag>
+	</use>
 	<upstream>
 		<remote-id type="google-code">s3backer</remote-id>
 		<remote-id type="github">archiecobbs/s3backer</remote-id>
