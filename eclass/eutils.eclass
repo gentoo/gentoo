@@ -1,13 +1,13 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
 # @ECLASS: eutils.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
 # @SUPPORTED_EAPIS: 6
 # @BLURB: many extra (but common) functions that are used in ebuilds
 # @DEPRECATED: native package manager functions, more specific eclasses
-# @DEAD
 
 if [[ -z ${_EUTILS_ECLASS} ]]; then
 _EUTILS_ECLASS=1
