@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Michael Mair-Keimberger <mmk@levelnine.at> (2024-04-23)
+# ppc only package, EAPI6, dead upstream
+# Removal on 2024-05-23.  Bugs #930195, #725758
+sys-apps/mouseemu
+
+# Michael Mair-Keimberger <mmk@levelnine.at> (2024-04-23)
 # From it's Homepage: TTYtter is dead. Long live Oysttyer.
 # that was ~10 years ago, and oysttyer is now archived too.
 # Removal on 2024-05-23.  Bugs #912842, #489232
