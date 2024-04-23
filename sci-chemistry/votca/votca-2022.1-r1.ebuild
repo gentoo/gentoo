@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,7 +41,7 @@ RDEPEND="
 	sci-libs/fftw:3.0=
 	dev-lang/perl
 	gromacs? ( sci-chemistry/gromacs:=[gmxapi-legacy(+)] )
-	sci-libs/hdf5[cxx]
+	sci-libs/hdf5:=[cxx]
 	sci-libs/libxc
 	sci-libs/libint:2
 "
