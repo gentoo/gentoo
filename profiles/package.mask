@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2024-04-23)
+# Unmaintained GTK+2 application.  Last update in 2005.
+# Alternatives include media-sound/fmit and media-sound/lingot.
+# Removal on 2024-05-23.  Bug #928512.
+media-sound/pitchtune
+
+# Michał Górny <mgorny@gentoo.org> (2024-04-23)
 # Ancient.  Homepage gone.  There are many alternative network testing
 # tools, such as net-misc/iperf.
 # Removal on 2024-05-23.  Bug #928133.
