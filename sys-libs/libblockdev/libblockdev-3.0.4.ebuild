@@ -75,6 +75,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 PATCHES=(
 	"${FILESDIR}/libblockdev-3.0.4-add-non-systemd-method-for-distro-info.patch"
+	"${FILESDIR}/libblockdev-3.0.4-lld.patch"
 )
 
 pkg_setup() {

@@ -1,0 +1,32 @@
+From 44a3b48d980a531b8a8b079d5892555cc3b29335 Mon Sep 17 00:00:00 2001
+From: Michal Rostecki <vadorovsky@protonmail.com>
+Date: Tue, 23 Apr 2024 20:07:56 +0200
+Subject: [PATCH] build: Fix linking with LLD
+
+LLD is strict about specifying link dependencies and it complains about
+libuuid not being provided in LDFLAGS when linking tool binaries.
+
+See https://bugs.gentoo.org/910487
+
+Fixes: #1020
+---
+ tools/Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tools/Makefile.am b/tools/Makefile.am
+index 06e46d26e..817af8139 100644
+--- a/tools/Makefile.am
++++ b/tools/Makefile.am
+@@ -4,10 +4,10 @@ bin_PROGRAMS = lvm-cache-stats vfat-resize
+ lvm_cache_stats_CFLAGS   = $(GLIB_CFLAGS) $(BYTESIZE_CFLAGS) -Wall -Wextra -Werror
+ lvm_cache_stats_CPPFLAGS = -I${builddir}/../include/
+ lvm_cache_stats_LDFLAGS  = -Wl,--no-undefined
+-lvm_cache_stats_LDADD    = ${builddir}/../src/lib/libblockdev.la $(GLIB_LIBS) $(BYTESIZE_LIBS)
++lvm_cache_stats_LDADD    = ${builddir}/../src/lib/libblockdev.la $(GLIB_LIBS) $(BYTESIZE_LIBS) $(UUID_LIBS)
+ 
+ vfat_resize_CFLAGS   = $(GLIB_CFLAGS) $(BYTESIZE_CFLAGS) $(PARTED_CFLAGS) $(PARTED_FS_CFLAGS) -Wall -Wextra -Werror
+ vfat_resize_CPPFLAGS = -I${builddir}/../include/
+ vfat_resize_LDFLAGS  = -Wl,--no-undefined
+-vfat_resize_LDADD    = ${builddir}/../src/lib/libblockdev.la $(GLIB_LIBS) $(BYTESIZE_LIBS) $(PARTED_LIBS) $(PARTED_FS_LIBS)
++vfat_resize_LDADD    = ${builddir}/../src/lib/libblockdev.la $(GLIB_LIBS) $(BYTESIZE_LIBS) $(PARTED_LIBS) $(PARTED_FS_LIBS) $(UUID_LIBS)
+ endif
