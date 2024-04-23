@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,8 +6,8 @@ EAPI=8
 inherit flag-o-matic fortran-2 qmake-utils
 
 DESCRIPTION="A mesh and field I/O library and scientific database"
-HOMEPAGE="https://wci.llnl.gov/simulation/computer-codes/silo"
-SRC_URI="https://wci.llnl.gov/sites/wci/files/2021-09/${P}-bsd.tgz"
+HOMEPAGE="https://software.llnl.gov/Silo/"
+SRC_URI="https://github.com/LLNL/Silo/releases/download/${PV}/${P}-bsd.tar.xz"
 S="${WORKDIR}/${P}-bsd"
 
 LICENSE="BSD"
@@ -22,25 +22,30 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	net-dialup/lrzsz
 	virtual/szip
-	hdf5? ( sci-libs/hdf5 )
+	hdf5? ( sci-libs/hdf5:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/linguist-tools:5"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-hdf5.patch
-	"${FILESDIR}"/${P}-test-disable-largefile.patch
-	"${FILESDIR}"/${P}-tests.patch
-	"${FILESDIR}"/${P}-testsuite-python-write.patch
-	"${FILESDIR}"/${P}-widgets.patch
-	"${FILESDIR}"/${P}-qtbindir.patch
+	"${FILESDIR}"/${PN}-4.11-test-disable-largefile.patch
+	"${FILESDIR}"/${PN}-4.11-tests.patch
+	"${FILESDIR}"/${PN}-4.11-testsuite-python-write.patch
+	"${FILESDIR}"/${PN}-4.11-widgets.patch
+	"${FILESDIR}"/${PN}-4.11-qtbindir.patch
+	"${FILESDIR}"/${PN}-4.11.1-gcc14-tests.patch
 )
 
 src_configure() {
+	# bug #862927 and https://github.com/LLNL/Silo/issues/248
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	# add fflags for fixing test bug on matf77.f
 	# see https://github.com/LLNL/Silo/issues/234
 	append-fflags $(test-flags-F77 -fallow-argument-mismatch)
 
+	CONFIG_SHELL="${BROOT}"/bin/bash \
 	QMAKE=$(qt5_get_bindir)/qmake \
 	QT_BIN_DIR=$(qt5_get_bindir) \
 	econf \
