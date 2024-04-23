@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Michael Mair-Keimberger <mmk@levelnine.at> (2024-04-23)
+# Homepage points to a gambling site. No sources and many alternatives available.
+# Removal on 2024-05-23.  Bugs #909821. #762349
+media-sound/cdplay
+
+# Michael Mair-Keimberger <mmk@levelnine.at> (2024-04-23)
 # Homepage and SRC_URI broken, depends on old OSS (/dev/dsp), polish only programm
 # Removal on 2024-05-23.  Bugs #909625, #729134. #870541
 app-accessibility/powiedz
