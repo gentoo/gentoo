@@ -34,6 +34,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2024-04-23)
+# Unmaintained in Gentoo and seriously outdated.  Its only reverse
+# dependency is app-admin/testdisk, and the current TestDisk versions
+# do not build against this version anyway
+# Removal on 2024-05-23.  Bug #927076.
+app-forensics/libewf
+
+# Michał Górny <mgorny@gentoo.org> (2024-04-23)
 # Superseded by dev-python/tinycss2.  No revdeps.
 # Removal on 2024-05-23.  Bug #930503.
 dev-python/tinycss

@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2024-04-23)
+# app-forensics/libewf is being removed (TestDisk does not build
+# successfully with our version anyway).
+app-admin/testdisk ewf
+
 # Mike Gilbert <floppym@gentoo.org> (2024-04-18)
 # Wayland client is broken/deprecated by upstream. Bug 930197.
 >=net-misc/freerdp-3 wayland
