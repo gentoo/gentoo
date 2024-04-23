@@ -23,7 +23,8 @@ RESTRICT="!test? ( test )"
 BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	virtual/lapack
-	virtual/mpi"
+	virtual/mpi[fortran]
+"
 DEPEND="${RDEPEND}"
 
 PATCHES=( "${DISTDIR}/${P}-gcc10.patch" )
