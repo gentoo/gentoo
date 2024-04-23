@@ -73,6 +73,8 @@ else
 	SRC_URI+=" verify-sig? ( mirror://gnu/${PN}/${MY_P}.tar.gz.sig ftp://ftp.cwru.edu/pub/readline/${MY_P}.tar.gz.sig )"
 fi
 
+S="${WORKDIR}/${MY_P}"
+
 if ! is_release ; then
 	inherit autotools
 fi
@@ -88,8 +90,6 @@ RDEPEND=">=sys-libs/ncurses-5.9-r3:=[static-libs?,unicode(+)?,${MULTILIB_USEDEP}
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	verify-sig? ( sec-keys/openpgp-keys-chetramey )"
-
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.0-no_rpath.patch
