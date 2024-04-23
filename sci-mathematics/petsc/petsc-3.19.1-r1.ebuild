@@ -27,7 +27,7 @@ RDEPEND="
 	afterimage? ( media-libs/libafterimage )
 	boost? ( dev-libs/boost )
 	fftw? ( sci-libs/fftw:3.0[mpi?] )
-	hdf5? ( sci-libs/hdf5[mpi?] )
+	hdf5? ( sci-libs/hdf5:=[mpi?] )
 	hypre? ( >=sci-libs/hypre-2.18.0[int64?,mpi?] )
 	metis? ( >=sci-libs/parmetis-4 )
 	mpi? ( virtual/mpi[fortran?] )
