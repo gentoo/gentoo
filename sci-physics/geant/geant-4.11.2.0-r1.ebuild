@@ -28,7 +28,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="geant4"
 SLOT="4/$(ver_cut 1-4)"
 
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+data debug doc examples freetype gdml geant3 hdf5 inventor motif opengl
 	qt5 raytracerx static-libs tbb threads trajectories vtk"
 
@@ -46,7 +46,7 @@ RDEPEND="
 	data? ( ~sci-physics/geant-data-4.11.2.0 )
 	doc? ( app-doc/geant-docs )
 	gdml? ( dev-libs/xerces-c )
-	hdf5? ( sci-libs/hdf5[threads?] )
+	hdf5? ( sci-libs/hdf5:=[threads?] )
 	inventor? ( media-libs/SoXt )
 	motif? ( x11-libs/motif:0 )
 	opengl? ( virtual/opengl )
@@ -67,7 +67,6 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.11.0.2-musl-avoid-execinfo.patch
-	"${FILESDIR}"/${PN}-4.11.2.1-find-soxt-noversion.patch
 )
 
 src_configure() {
