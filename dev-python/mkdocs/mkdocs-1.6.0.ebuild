@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv"
 
 # https://bugs.gentoo.org/873349
 # Building documentation requires packaging: callouts and mkdocs-autorefs
