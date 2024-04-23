@@ -53,6 +53,8 @@ PATCHES=(
 
 	# https://codeberg.org/shelter/reschroot/pulls/6
 	"${FILESDIR}"/${PN}-1.6.13-resize-reserve.patch
+
+	"${FILESDIR}"/${PN}-1.16.13_p2-boost-1.85.0.patch
 )
 
 src_unpack() {
