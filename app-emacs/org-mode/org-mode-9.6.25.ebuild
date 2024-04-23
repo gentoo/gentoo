@@ -5,9 +5,9 @@ EAPI=8
 
 inherit elisp readme.gentoo-r1
 
-MY_P="${PN}-release_${PV}"
 DESCRIPTION="An Emacs mode for notes and project planning"
 HOMEPAGE="https://www.orgmode.org/"
+MY_P="${PN}-release_${PV}"
 SRC_URI="https://git.savannah.gnu.org/cgit/emacs/${PN}.git/snapshot/${MY_P}.tar.gz"
 S="${WORKDIR}"/${MY_P}
 
