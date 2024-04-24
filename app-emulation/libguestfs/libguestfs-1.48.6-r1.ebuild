@@ -70,7 +70,7 @@ COMMON_DEPEND="
 		dev-perl/String-ShellQuote
 	)
 	python? ( ${PYTHON_DEPS} )
-	fuse? ( sys-fs/fuse:= )
+	fuse? ( sys-fs/fuse:0 )
 	gtk? (
 		sys-apps/dbus
 		x11-libs/gtk+:3
