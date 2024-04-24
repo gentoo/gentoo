@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~sparc"
+KEYWORDS="~amd64 ~arm ~ppc ~sparc"
 
 RDEPEND="
 	dev-python/jaraco-classes[${PYTHON_USEDEP}]
