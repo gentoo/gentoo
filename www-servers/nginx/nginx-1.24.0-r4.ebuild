@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,6 +11,7 @@ EAPI=8
 #	* sane packaging
 #	* builds cleanly
 #	* does not need a patch for nginx core
+# - Update NGINX_TESTS_REV to the current available revision and run tests.
 # - TODO: test the google-perftools module (included in vanilla tarball)
 
 # prevent perl-module from adding automagic perl DEPENDs
@@ -159,16 +160,19 @@ GEOIP2_MODULE_URI="https://github.com/leev/ngx_http_geoip2_module/archive/${GEOI
 GEOIP2_MODULE_WD="${WORKDIR}/ngx_http_geoip2_module-${GEOIP2_MODULE_PV}"
 
 # njs-module (https://github.com/nginx/njs, as-is)
-NJS_MODULE_PV="0.7.12"
+NJS_MODULE_PV="0.8.4"
 NJS_MODULE_P="njs-${NJS_MODULE_PV}"
 NJS_MODULE_URI="https://github.com/nginx/njs/archive/${NJS_MODULE_PV}.tar.gz"
 NJS_MODULE_WD="${WORKDIR}/njs-${NJS_MODULE_PV}"
+
+# nginx-tests (http://hg.nginx.org/nginx-tests, BSD-2)
+NGINX_TESTS_REV="0b5ec15c62ed"
 
 # We handle deps below ourselves
 SSL_DEPS_SKIP=1
 AUTOTOOLS_AUTO_DEPEND="no"
 
-inherit autotools lua-single ssl-cert toolchain-funcs perl-module systemd pax-utils
+inherit autotools lua-single multiprocessing ssl-cert toolchain-funcs perl-module systemd pax-utils
 
 DESCRIPTION="Robust, small and high performance http and reverse proxy server"
 HOMEPAGE="https://nginx.org"
@@ -201,17 +205,17 @@ SRC_URI="https://nginx.org/download/${P}.tar.gz
 	nginx_modules_http_vhost_traffic_status? ( ${HTTP_VHOST_TRAFFIC_STATUS_MODULE_URI} -> ${HTTP_VHOST_TRAFFIC_STATUS_MODULE_P}.tar.gz )
 	nginx_modules_stream_geoip2? ( ${GEOIP2_MODULE_URI} -> ${GEOIP2_MODULE_P}.tar.gz )
 	nginx_modules_stream_javascript? ( ${NJS_MODULE_URI} -> ${NJS_MODULE_P}.tar.gz )
-	rtmp? ( ${RTMP_MODULE_URI} -> ${RTMP_MODULE_P}.tar.gz )"
+	rtmp? ( ${RTMP_MODULE_URI} -> ${RTMP_MODULE_P}.tar.gz )
+	test? ( https://hg.nginx.org/nginx-tests/archive/${NGINX_TESTS_REV}.tar.gz -> nginx-tests-${NGINX_TESTS_REV}.tar.gz )"
 
 LICENSE="BSD-2 BSD SSLeay MIT GPL-2 GPL-2+
 	nginx_modules_http_security? ( Apache-2.0 )
 	nginx_modules_http_push_stream? ( GPL-3 )"
 
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv ~x86 ~amd64-linux ~x86-linux"
 
-# Package doesn't provide a real test suite
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 NGINX_MODULES_STD="access auth_basic autoindex browser charset empty_gif
 	fastcgi geo grpc gzip limit_req limit_conn map memcached mirror
@@ -252,7 +256,7 @@ NGINX_MODULES_3RD="
 	stream_javascript
 "
 
-IUSE="aio debug +http +http2 +http-cache libatomic pcre +pcre2 pcre-jit rtmp selinux ssl threads vim-syntax"
+IUSE="aio debug +http +http2 +http-cache libatomic pcre +pcre2 pcre-jit rtmp selinux ssl test threads vim-syntax"
 
 for mod in $NGINX_MODULES_STD; do
 	IUSE="${IUSE} +nginx_modules_http_${mod}"
@@ -324,7 +328,24 @@ RDEPEND="${CDEPEND}
 DEPEND="${CDEPEND}
 	arm? ( dev-libs/libatomic_ops )
 	libatomic? ( dev-libs/libatomic_ops )"
-BDEPEND="nginx_modules_http_brotli? ( virtual/pkgconfig )"
+BDEPEND="
+	nginx_modules_http_brotli? ( virtual/pkgconfig )
+	test? (
+		dev-lang/perl
+		dev-perl/Cache-Memcached
+		dev-perl/Cache-Memcached-Fast
+		dev-perl/CryptX
+		dev-perl/FCGI
+		dev-perl/GD
+		dev-perl/Net-SSLeay
+	)"
+# Unpackaged perl modules which would be used by tests
+# Protocol::WebSocket
+# SCGI
+
+# Uwsgi doesn't start in tests
+# www-servers/uwsgi
+
 PDEPEND="vim-syntax? ( app-vim/nginx-syntax )"
 
 REQUIRED_USE="pcre-jit? ( pcre )
@@ -813,6 +834,19 @@ src_install() {
 		docinto ${HTTP_LDAP_MODULE_P}
 		dodoc "${HTTP_LDAP_MODULE_WD}"/example.conf
 	fi
+}
+
+src_test() {
+	pushd "${WORKDIR}"/nginx-tests-"${NGINX_TESTS_REV}" > /dev/null || die
+
+	# FIXME: unsure why uwsgi fails to start
+	rm uwsgi*.t || die
+
+	local -x TEST_NGINX_BINARY="${S}/objs/nginx"
+	local -x TEST_NGINX_VERBOSE=1
+
+	prove -v -j $(makeopts_jobs) . || die
+	popd > /dev/null || die
 }
 
 pkg_postinst() {
