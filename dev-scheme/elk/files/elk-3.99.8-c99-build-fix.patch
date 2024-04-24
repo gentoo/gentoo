@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/928675
+--- a/lib/xwidgets/xaw/list.c
++++ b/lib/xwidgets/xaw/list.c
+@@ -2,15 +2,15 @@
+ #include <X11/Xaw/List.h>
+ 
+ 
+-static const char **Get_List (Object x) {
++static char **Get_List (Object x) {
+     register int i, n;
+     register char *s;
+-    register const char **l;
++    register char **l;
+     Alloca_Begin;
+ 
+     Check_List (x);
+     n = Fast_Length (x);
+-    l = (const char **)XtMalloc ((n+1) * sizeof (char *));
++    l = (char **)XtMalloc ((n+1) * sizeof (char *));
+     for (i = 0; i < n; i++, x = Cdr (x)) {
+         Get_Strsym_Stack (Car (x), s);
+         l[i] = XtNewString (s);
+--- a/include/extern.h
++++ b/include/extern.h
+@@ -442,7 +442,7 @@ extern Object P_String_Fill (Object, Object);
+ extern Object P_Substringp (Object, Object);
+ extern Object P_CI_Substringp (Object, Object);
+ extern int String_Getc (Object);
+-extern void String_Ungetc (Object, register int);
++extern void String_Ungetc (Object, int);
+ 
+ /* Symbols, variables, frequently used Scheme objects
+  */
