@@ -23,6 +23,7 @@ REQUIRED_USE="
 	?? ( libupnp miniupnp )
 	service? ( || ( cli jsonapi ) )"
 
+# NOTE(setan): rapodjson might not be needed at runtime if not using jsonapi
 RDEPEND="
 	app-arch/bzip2
 	dev-libs/openssl:0=
