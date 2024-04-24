@@ -17,7 +17,7 @@ IUSE="+X"
 
 RDEPEND="
 	app-text/hunspell:=
-	dev-qt/qtbase:6[cups,dbus,gui,widgets]
+	dev-qt/qtbase:6[dbus,gui,widgets]
 	dev-qt/qtsvg:6
 	X? ( x11-libs/libX11 )
 "
