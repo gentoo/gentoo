@@ -268,11 +268,14 @@ dev-python/nspektr
 games-sports/gracer
 
 # Sam James <sam@gentoo.org> (2024-03-28)
-# Newer releases were signed by a potentially compromised upstream maintainer.
+# Newer 5.4.x releases were signed by a potentially compromised upstream maintainer.
 # There is no evidence that these releases contain malicious code, but masked
 # out of an abundance of caution. See bug #928134.
 sec-keys/openpgp-keys-jiatan
->=app-arch/xz-utils-5.4.3
+~app-arch/xz-utils-5.4.3
+~app-arch/xz-utils-5.4.4
+~app-arch/xz-utils-5.4.5
+~app-arch/xz-utils-5.4.6
 
 # Sam James <sam@gentoo.org> (2024-03-28)
 # Backdoor discovered in release tarballs. DOWNGRADE NOW.
