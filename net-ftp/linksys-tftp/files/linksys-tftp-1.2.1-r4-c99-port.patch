@@ -1,0 +1,572 @@
+Following patches are by Richard Narron from https://bugs.gentoo.org/928051
+--- linksys-tftp-1.2.1/tftpsubs.c	2024-04-16 08:27:50.310449884 -0700
++++ linksys-tftp-1.2.1/tftpsubs.c	2024-04-16 08:53:26.084521570 -0700
+@@ -38,6 +38,7 @@ static char sccsid[] = "@(#)tftpsubs.c	5
+ // modified tftp header to include pass
+ #include <tftp.h>
+ #include <stdio.h>
++#include <unistd.h>
+ 
+ #define PKTSIZE (1432+4) /* SEGSIZE+4 */      /* should be moved to tftp.h */
+ 
+@@ -60,14 +61,22 @@ static int current;     /* index of buff
+ int newline = 0;        /* fillbuf: in middle of newline expansion */
+ int prevchar = -1;      /* putbuf: previous char (cr check) */
+ 
+-struct tftphdr *rw_init();
++/* functions declared in this program */
++struct tftphdr *w_init();
++struct tftphdr *r_init();
++struct tftphdr *rw_init(int x);
++int readit(FILE *file,  struct tftphdr **dpp, int convert);
++int read_ahead(FILE *file, int convert);
++int writeit(FILE *file, struct tftphdr **dpp, int ct, int convert);
++int write_behind( FILE *file, int convert);
++int synchnet(int        f);
+ 
+ struct tftphdr *w_init() { return rw_init(0); }         /* write-behind */
+ struct tftphdr *r_init() { return rw_init(1); }         /* read-ahead */
+ 
+-struct tftphdr *
+-rw_init(x)              /* init for either read-ahead or write-behind */
+-int x;                  /* zero for write-behind, one for read-head */
++/* init for either read-ahead or write-behind */
++struct tftphdr *rw_init(int x)
++                     /* zero for write-behind, one for read-head */
+ {
+ 	newline = 0;            /* init crlf flag */
+ 	prevchar = -1;
+@@ -82,10 +91,8 @@ int x;                  /* zero for writ
+ /* Have emptied current buffer by sending to net and getting ack.
+    Free it and return next buffer filled with data.
+  */
+-readit(file, dpp, convert)
+-	FILE *file;                     /* file opened for read */
+-	struct tftphdr **dpp;
+-	int convert;                    /* if true, convert to ascii */
++int readit(FILE *file,  struct tftphdr **dpp, int convert)
++    /* file opened for read               if true, convert to ascii */
+ {
+ 	struct bf *b;
+ 
+@@ -104,9 +111,9 @@ readit(file, dpp, convert)
+  * fill the input buffer, doing ascii conversions if requested
+  * conversions are  lf -> cr,lf  and cr -> cr, nul
+  */
+-read_ahead(file, convert)
+-	FILE *file;                     /* file opened for read */
+-	int convert;                    /* if true, convert to ascii */
++int read_ahead(FILE *file, int convert)  
++	/* file opened for read */
++			/* if true, convert to ascii */
+ {
+ 	register int i;
+ 	register char *p;
+@@ -154,16 +161,14 @@ read_ahead(file, convert)
+ 	       *p++ = c;
+ 	}
+ 	b->counter = (int)(p - dp->th_data);
++        return 0;
+ }
+ 
+ /* Update count associated with the buffer, get new buffer
+    from the queue.  Calls write_behind only if next buffer not
+    available.
+  */
+-writeit(file, dpp, ct, convert)
+-	FILE *file;
+-	struct tftphdr **dpp;
+-	int convert;
++int writeit(FILE *file, struct tftphdr **dpp, int ct, int convert)
+ {
+ 	bfs[current].counter = ct;      /* set size of data to write */
+ 	current = !current;             /* switch to other buffer */
+@@ -180,9 +185,7 @@ writeit(file, dpp, ct, convert)
+  * Note spec is undefined if we get CR as last byte of file or a
+  * CR followed by anything else.  In this case we leave it alone.
+  */
+-write_behind(file, convert)
+-	FILE *file;
+-	int convert;
++int write_behind( FILE *file, int convert)
+ {
+ 	char *buf;
+ 	int count;
+@@ -238,9 +241,8 @@ skipit:
+  * when trace is active).
+  */
+ 
+-int
+-synchnet(f)
+-int	f;		/* socket to flush */
++int synchnet(int        f)
++        /* socket to flush */
+ {
+ 	int i, j = 0;
+ 	char rbuf[PKTSIZE];
+@@ -258,4 +260,5 @@ int	f;		/* socket to flush */
+ 			return(j);
+ 		}
+ 	}
++        return 0;   /* should never get here */
+ }
+--- linksys-tftp-1.2.1/tftp.c	2024-04-16 08:27:50.328449885 -0700
++++ linksys-tftp-1.2.1/tftp.c	2024-04-15 21:26:36.259371211 -0700
+@@ -47,6 +47,13 @@ extern  int     rexmtval;
+ extern  int     maxtimeout;
+ extern	int	segsize;
+ 
++/* functions from tftpsubs */
++extern int readit(FILE *file,  struct tftphdr **dpp, int convert);
++extern int read_ahead(FILE *file, int convert);
++extern int writeit(FILE *file, struct tftphdr **dpp, int ct, int convert);
++extern int write_behind( FILE *file, int convert);
++extern int synchnet(int f);
++
+ #define PKTSIZE    (1432+4) /* SEGSIZE+4 */
+ char    ackbuf[PKTSIZE];
+ int	timeout;
+@@ -57,6 +64,19 @@ jmp_buf	timeoutbuf;
+ #define OACK	6
+ #endif
+ 
++/* functions declared herein */
++void timer(int sig);
++void parseoack(char *cp, int sz);
++void sendfile(int fd, char *name, char *mode, char *linkpass);
++void recvfile(int fd, char *name, char *mode, char *linkpass);
++int makerequest(int request, char *name, struct tftphdr *tp, char *mode, char *linkpass);
++void nak(int error);
++void topts(char *cp, int sz);
++void tpacket(char *s, struct tftphdr *tp, int n);
++void startclock();
++void stopclock();
++void printstats(char *direction, unsigned long amount);
++
+ void timer(int sig)
+ {
+ 
+@@ -72,9 +92,7 @@ void timer(int sig)
+ /*
+  * Parse an OACK package and set blocksize accordingly
+  */
+-parseoack(cp, sz)
+-	char *cp;
+-	int sz;
++void parseoack(char *cp, int sz)
+ {
+ 	int n;
+ 	
+@@ -106,11 +124,7 @@ parseoack(cp, sz)
+ /*
+  * Send the requested file.
+  */
+-sendfile(fd, name, mode, linkpass)
+-	int fd;
+-	char *name;
+-	char *mode;
+-	char *linkpass;
++void sendfile(int fd, char *name, char *mode, char *linkpass)
+ {
+ 	register struct tftphdr *ap;       /* data and ack packets */
+ 	struct tftphdr *r_init(), *dp;
+@@ -211,7 +225,7 @@ send_data:
+ 					printf("protocol violation\n");
+ 					longjmp(toplevel, -1);
+ 				}
+-				parseoack(&ap->th_stuff, n - 2);
++                                parseoack(ap->th_stuff, n - 2);
+ 				break;
+ 			}
+ 		}
+@@ -231,11 +245,7 @@ abort:
+ /*
+  * Receive a file.
+  */
+-recvfile(fd, name, mode, linkpass)
+-	int fd;
+-	char *name;
+-	char *mode;
+-	char *linkpass;
++void recvfile(int fd, char *name, char *mode, char *linkpass)
+ {
+ 	register struct tftphdr *ap;
+ 	struct tftphdr *dp, *w_init();
+@@ -336,7 +346,7 @@ send_ack:
+ 					longjmp(toplevel, -1);
+ 				}
+ 				waitforoack = 0;
+-				parseoack(&dp->th_stuff, n - 2);
++                                parseoack(dp->th_stuff, n - 2);
+ 				ap->th_opcode = htons((u_short)ACK);
+ 				ap->th_block = htons(0);
+ 				size = 4;
+@@ -362,10 +372,7 @@ abort:
+ 		printstats("Received", amount);
+ }
+ 
+-makerequest(request, name, tp, mode, linkpass)
+-	int request;
+-	char *name, *mode, *linkpass;
+-	struct tftphdr *tp;
++int makerequest(int request, char *name, struct tftphdr *tp, char *mode, char *linkpass)
+ {
+ 	register char *cp;
+ 
+@@ -404,8 +411,7 @@ struct errmsg {
+  * standard TFTP codes, or a UNIX errno
+  * offset by 100.
+  */
+-nak(error)
+-	int error;
++void nak(int error)
+ {
+ 	register struct tftphdr *tp;
+ 	int length;
+@@ -431,9 +437,7 @@ nak(error)
+ 		perror("nak");
+ }
+ 
+-topts(cp, sz)
+-	char *cp;
+-	int sz;
++void topts(char *cp, int sz)
+ {
+ 	int n, i = 0;
+ 	
+@@ -454,10 +458,7 @@ topts(cp, sz)
+ 	}
+ }
+ 
+-tpacket(s, tp, n)
+-	char *s;
+-	struct tftphdr *tp;
+-	int n;
++void tpacket(char *s, struct tftphdr *tp, int n)
+ {
+ 	static char *opcodes[] =
+ 	   { "#0", "RRQ", "WRQ", "DATA", "ACK", "ERROR", "OACK" };
+@@ -505,17 +506,15 @@ struct timeval tstart;
+ struct timeval tstop;
+ struct timezone zone;
+ 
+-startclock() {
++void startclock() {
+ 	gettimeofday(&tstart, &zone);
+ }
+ 
+-stopclock() {
++void stopclock() {
+ 	gettimeofday(&tstop, &zone);
+ }
+ 
+-printstats(direction, amount)
+-char *direction;
+-unsigned long amount;
++void printstats(char *direction, unsigned long amount)
+ {
+ 	double delta;
+ 			/* compute delta in 1/10's second units */
+--- linksys-tftp-1.2.1/main.c	2024-04-16 08:27:50.327449884 -0700
++++ linksys-tftp-1.2.1/main.c	2024-04-15 21:36:43.035399534 -0700
+@@ -33,6 +33,7 @@ static char sccsid[] = "@(#)main.c	5.8 (
+ #include <sys/file.h>
+ 
+ #include <netinet/in.h>
++#include <arpa/inet.h>
+ 
+ #include <signal.h>
+ #include <stdio.h>
+@@ -43,7 +44,11 @@ static char sccsid[] = "@(#)main.c	5.8 (
+ #include <stdlib.h>
+ #include <string.h>
+ #include <unistd.h>
+-#include <sys/sendfile.h>
++/* #include <sys/sendfile.h> */
++
++/* routines from tftp.c */
++extern void sendfile(int fd, char *name, char *mode, char *linkpass);
++extern void recvfile(int fd, char *name, char *mode, char *linkpass);
+ 
+ #define	TIMEOUT		5		/* secs between rexmt's */
+ 
+@@ -64,9 +69,13 @@ struct	servent *sp;
+ 
+ int	segsize = 512;
+ 
+-int	quit(), help(), setverbose(), settrace(), status();
+-int     get(), put(), setpeer(), modecmd(), setrexmt(), settimeout();
+-int     setbinary(), banner(), setascii(), setblocksize();
++/* local routines */
++int     quit(), help(), setverbose(), settrace(), status(), command();
++int     get(), getusage(), put(), putusage();
++int     setpeer(), modecmd(), setrexmt(), settimeout(), status();
++int     setbinary(),  setascii(); 
++void    setmode(), makeargv();
++int     setblocksize(), banner(); 
+ 
+ #define HELPINDENT (sizeof("connect"))
+ 
+@@ -114,8 +123,7 @@ struct	cmd *getcmd();
+ char	*index();
+ char	*rindex();
+ 
+-int main(argc, argv)
+-	char *argv[];
++int main(int argc, char *argv[])
+ {
+ 	struct sockaddr_in sin;
+ 	int top;
+@@ -147,13 +155,12 @@ int main(argc, argv)
+ 	top = setjmp(toplevel) == 0;
+ 	for (;;)
+ 		command(top);
++        return 0;
+ }
+ 
+ char    hostname[100];
+ 
+-setpeer(argc, argv)
+-	int argc;
+-	char *argv[];
++int setpeer(int argc, char *argv[])
+ {
+ 	struct hostent *host;
+ 
+@@ -187,6 +194,7 @@ setpeer(argc, argv)
+ 		port = htons(port);
+ 	}
+ 	connected = 1;
++        return 0;
+ }
+ 
+ struct	modes {
+@@ -201,8 +209,7 @@ struct	modes {
+ 	{ 0,		0 }
+ };
+ 
+-modecmd(argc, argv)
+-	char *argv[];
++int modecmd(int argc, char *argv[])
+ {
+ 	register struct modes *p;
+ 	char *sep;
+@@ -234,18 +241,17 @@ modecmd(argc, argv)
+ 	return 0;
+ }
+ 
+-setbinary(argc, argv)
+-char *argv[];
+-{       setmode("octet");
++int setbinary(int argc, char *argv[])
++{
++        setmode("octet");
+ }
+ 
+-setascii(argc, argv)
+-char *argv[];
+-{       setmode("netascii");
+-}
++int setascii(int argc, char *argv[])
++{
++        setmode("netascii");
++ }
+ 
+-setmode(newmode)
+-char *newmode;
++void setmode(char *newmode)
+ {
+ 	strcpy(mode, newmode);
+ 	if (verbose)
+@@ -256,8 +262,7 @@ char *newmode;
+  * Send file(s).
+  */
+ 
+-put(argc, argv)
+-	char *argv[];
++int put(int argc, char *argv[])
+ {
+ 	int fd;
+ 	register int n;
+@@ -286,8 +291,7 @@ put(argc, argv)
+ 		return 0;
+ }
+ 
+-putusage(s)
+-	char *s;
++int putusage(char *s)
+ {
+ 	printf("usage: %s file [linksys pass] (you must be connected)\n", s);
+ 	return 0;
+@@ -296,8 +300,7 @@ putusage(s)
+ /*
+  * Receive file(s).
+  */
+-get(argc, argv)
+-	char *argv[];
++int get(int argc, char *argv[])
+ {
+ 	int fd;
+ 	register int n;
+@@ -327,16 +330,15 @@ get(argc, argv)
+ 		return 0;
+ }
+ 
+-getusage(s)
+-char * s;
++int getusage(char *s)
+ {
+ 	printf("usage: %s file [linksys pass] (you must be connected)\n", s);
++        return 0;
+ }
+ 
+ int	rexmtval = TIMEOUT;
+ 
+-setrexmt(argc, argv)
+-	char *argv[];
++int setrexmt(int argc, char *argv[])
+ {
+ 	int t;
+ 
+@@ -357,12 +359,12 @@ setrexmt(argc, argv)
+ 		printf("%d: bad value\n", t);
+ 	else
+ 		rexmtval = t;
++        return 0;
+ }
+ 
+ int	maxtimeout = 5 * TIMEOUT;
+ 
+-settimeout(argc, argv)
+-	char *argv[];
++int settimeout(int argc, char *argv[])
+ {
+ 	int t;
+ 
+@@ -383,10 +385,10 @@ settimeout(argc, argv)
+ 		printf("%d: bad value\n", t);
+ 	else
+ 		maxtimeout = t;
++        return 0;
+ }
+ 
+-status(argc, argv)
+-	char *argv[];
++int status(int argc, char *argv[])
+ {
+ 	if (connected)
+ 		printf("Connected to %s.\n", hostname);
+@@ -396,6 +398,7 @@ status(argc, argv)
+ 		verbose ? "on" : "off", trace ? "on" : "off");
+ 	printf("Rexmt-interval: %d seconds, Max-timeout: %d seconds\n",
+ 		rexmtval, maxtimeout);
++	return 0;
+ }
+ 
+ void intr(int sig)
+@@ -408,8 +411,7 @@ void intr(int sig)
+ /*
+  * Command parser.
+  */
+-command(top)
+-	int top;
++int command(int top)
+ {
+ 	register struct cmd *c;
+ 
+@@ -438,11 +440,10 @@ command(top)
+ 		}
+ 		(*c->handler)(margc, margv);
+ 	}
++        return 0;
+ }
+ 
+-struct cmd *
+-getcmd(name)
+-	register char *name;
++struct cmd *getcmd(register char *name)
+ {
+ 	register char *p, *q;
+ 	register struct cmd *c, *found;
+@@ -473,7 +474,7 @@ getcmd(name)
+ /*
+  * Slice a string up into argc/argv.
+  */
+-makeargv()
++void makeargv()
+ {
+ 	register char *cp;
+ 	register char **argp = margv;
+@@ -496,7 +497,7 @@ makeargv()
+ }
+ 
+ /*VARARGS*/
+-quit()
++int quit()
+ {
+ 	exit(0);
+ }
+@@ -504,9 +505,7 @@ quit()
+ /*
+  * Help command.
+  */
+-help(argc, argv)
+-	int argc;
+-	char *argv[];
++int help(int argc, char *argv[])
+ {
+ 	register struct cmd *c;
+ 
+@@ -527,24 +526,26 @@ help(argc, argv)
+ 		else
+ 			printf("%s\n", c->help);
+ 	}
++        return 0;
+ }
+ 
+ /*VARARGS*/
+-settrace()
++int settrace()
+ {
+ 	trace = !trace;
+ 	printf("Packet tracing %s.\n", trace ? "on" : "off");
++        return 0;
+ }
+ 
+ /*VARARGS*/
+-setverbose()
++int setverbose()
+ {
+ 	verbose = !verbose;
+ 	printf("Verbose mode %s.\n", verbose ? "on" : "off");
++        return 0;
+ }
+ 
+-setblocksize(argc, argv)
+-	char *argv[];
++int setblocksize(int argc, char *argv[])
+ {
+ 	int t;
+ 
+@@ -565,8 +566,9 @@ setblocksize(argc, argv)
+ 		printf("%d: bad value\n", t);
+ 	else
+ 		segsize = t;
++        return 0;
+ }
+-banner() {
++int banner() {
+ 	printf("TJ Shelton\tredsand [at] redsand.net\n");
+ 	printf("Mike Lynn\tabaddon [at] 802.11ninja.net\n");
+ 	printf("Linksys TFTP Client for *BSD/Linux\tThe Firmware gets sexier\n");
+Following is to fix one last missing include on musl systems
+--- linksys-tftp-1.2.1.orig/main.c      2024-04-24 10:53:18.768850587 +0000
++++ linksys-tftp-1.2.1/main.c   2024-04-24 10:56:29.329427589 +0000
+@@ -44,6 +44,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <unistd.h>
++#include <fcntl.h>
+ /* #include <sys/sendfile.h> */
+ 
+ /* routines from tftp.c */
