@@ -23,7 +23,10 @@ RDEPEND=">=dev-haskell/cmdargs-0.10:=
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-3.0.0.0
-	test? ( dev-util/shelltestrunner )
+	test? (
+		dev-util/shelltestrunner
+		sys-apps/grep[pcre]
+	)
 "
 
 src_install() {
