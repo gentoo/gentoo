@@ -6,7 +6,7 @@ EAPI="8"
 inherit linux-info systemd
 
 DESCRIPTION="Modify realtime scheduling policy and priority of IRQ handlers"
-HOMEPAGE="https://www.rncbc.org/archive/#rtirq"
+HOMEPAGE="https://github.com/rncbc/rtirq"
 SRC_URI="https://www.rncbc.org/archive/${P}.tar.gz
 	https://www.rncbc.org/archive/old/${P}.tar.gz"
 
