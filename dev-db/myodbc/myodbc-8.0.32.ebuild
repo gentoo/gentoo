@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,6 +12,7 @@ MY_P="${MY_PN}-${PV/_p/r}-src"
 DESCRIPTION="ODBC driver for MySQL"
 HOMEPAGE="https://dev.mysql.com/downloads/connector/odbc/"
 SRC_URI="https://dev.mysql.com/get/Downloads/Connector-ODBC/${MAJOR}/${MY_P}.tar.gz"
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="${MAJOR}"
@@ -22,22 +23,21 @@ RDEPEND="
 	>=dev-db/mysql-connector-c-8.0:0=[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
-S=${WORKDIR}/${MY_P}
 
 # Careful!
 DRIVER_NAME="${PN}-${SLOT}"
 
-# Patch document path so it doesn't install files to /usr
 PATCHES=(
+	# Patch document path so it doesn't install files to /usr
 	"${FILESDIR}/${MAJOR}-cmake-doc-path.patch"
 	"${FILESDIR}/${PN}-8.0.19-cxxlinkage.patch"
 	"${FILESDIR}/${PN}-8.0.32-include-string.patch"
 )
 
 src_prepare() {
-	# Remove Tests
+	# Remove tests
 	sed -i -e "s/ADD_SUBDIRECTORY(test)//" \
-		"${S}/CMakeLists.txt"
+		"${S}/CMakeLists.txt" || die
 
 	cmake_src_prepare
 }
@@ -69,6 +69,8 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	debug-print-function ${FUNCNAME} "$@"
+
+	rm -rf "${ED}"/usr/test || die
 
 	dodir /usr/share/${PN}-${SLOT}
 	for i in odbc.ini odbcinst.ini; do
