@@ -21,6 +21,7 @@
 	</longdescription>
 	<use>
 		<flag name="audio-notify">Enables native sound notifications</flag>
+		<flag name="experimental">Use experimental features in net-libs/tox</flag>
 		<flag name="games">Enables some small mini-games</flag>
 		<flag name="llvm">Enables support for LLVM Address Sanitizer</flag>
 		<flag name="notification">Enables desktop notifications with libnotify, with sound support.</flag>
