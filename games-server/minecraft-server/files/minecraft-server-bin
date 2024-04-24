@@ -9,7 +9,7 @@ MINECRAFT_OPTS="nogui"
 set -- /opt/openjdk-bin-21.* /usr/lib*/openjdk-21
 while ! [ -d "${1}" ]; do
 	if [ ${#} -eq 1 ]; then
-		echo "Error: No JAVA 17 runtime found!"
+		echo "Error: No JAVA 21 runtime found!"
 		exit 1
 	fi
 
