@@ -8,7 +8,7 @@ inherit cmake desktop flag-o-matic xdg-utils pax-utils
 if [[ ${PV} == *9999 ]]
 then
 	EGIT_REPO_URI="https://github.com/dolphin-emu/dolphin"
-	EGIT_SUBMODULES=( Externals/mGBA/mgba )
+	EGIT_SUBMODULES=( Externals/gtest Externals/implot/implot Externals/enet/enet Externals/fmt/fmt Externals/libspng/libspng Externals/mGBA/mgba Externals/rcheevos/rcheevos Externals/tinygltf/tinygltf Externals/VulkanMemoryAllocator Externals/zlib-ng/zlib-ng )
 	inherit git-r3
 else
 	EGIT_COMMIT=0f2540a0d1133950467845f20b1e003181147781
@@ -40,18 +40,15 @@ RDEPEND="
 	app-arch/xz-utils:=
 	app-arch/zstd:=
 	dev-libs/hidapi:=
-	>=dev-libs/libfmt-8:=
 	dev-libs/lzo:=
 	dev-libs/pugixml:=
 	media-libs/cubeb:=
 	media-libs/libpng:=
 	media-libs/libsfml:=
 	media-libs/mesa[egl(+)]
-	net-libs/enet:1.3
 	net-libs/mbedtls:=
 	net-misc/curl:=
 	sys-libs/readline:=
-	sys-libs/zlib:=[minizip]
 	x11-libs/libXext
 	x11-libs/libXi
 	x11-libs/libXrandr
@@ -94,14 +91,22 @@ declare -A KEEP_BUNDLED=(
 
 	[Bochs_disasm]=LGPL-2.1+
 	[cpp-optparse]=MIT
+	# FIXME: libfmt versions >= 10 are currently masked
+	[fmt]=MIT
 	[imgui]=MIT
+	[implot]=MIT
 	[glslang]=BSD
+	[tinygltf]=MIT
+	# FIXME: latest git requires enet >= 1.3.18, avaiable ebuild is 1.3.17
+	[enet]=MIT
 
 	# FIXME: xxhash can't be found by cmake
 	[xxhash]=BSD-2
 
-	# FIXME: requires minizip-ng
-	#[minizip]=ZLIB
+	[zlib-ng]=ZLIB
+
+	[minizip]=ZLIB
+	[libspng]=BSD-2
 
 	[FreeSurround]=GPL-2+
 	[soundtouch]=LGPL-2.1+
@@ -112,8 +117,12 @@ declare -A KEEP_BUNDLED=(
 	[mGBA]=MPL-2.0
 
 	[picojson]=BSD-2
+	[expr]=MIT
 	[rangeset]=ZLIB
+	[FatFs]=BSD
+	[rcheevos]=MIT
 	[gtest]= # (build-time only)
+	[VulkanMemoryAllocator]=MIT
 )
 
 src_prepare() {
@@ -139,9 +148,6 @@ src_prepare() {
 	if ! use vulkan; then
 		sed -i -e '/Externals\/glslang/d' CMakeLists.txt || die
 	fi
-
-	# Allow regular minizip.
-	sed -i -e '/minizip/s:>=2[.]0[.]0::' CMakeLists.txt || die
 
 	# Remove dirty suffix: needed for netplay
 	sed -i -e 's/--dirty/&=""/' CMakeLists.txt || die
@@ -174,7 +180,6 @@ src_configure() {
 		-DFASTLOG=$(usex log)
 		-DOPROFILING=$(usex profile)
 		-DUSE_DISCORD_PRESENCE=$(usex discord-presence)
-		-DUSE_SHARED_ENET=ON
 		-DUSE_UPNP=$(usex upnp)
 
 		# Undo cmake.eclass's defaults.
