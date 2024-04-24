@@ -21,11 +21,9 @@ REQUIRED_USE="
 	?? ( libupnp miniupnp )
 	service? ( || ( cli jsonapi ) )"
 
-# NOTE(setan): rapodjson might not be needed at runtime if not using jsonapi
 RDEPEND="
 	app-arch/bzip2
 	dev-libs/openssl:0=
-	>=dev-libs/rapidjson-1.1.0
 	sys-libs/zlib
 	keyring? ( app-crypt/libsecret )
 	gui? (
@@ -47,7 +45,9 @@ RDEPEND="
 	!sqlcipher? ( dev-db/sqlite:3 )
 	plugins? ( media-libs/speex )"
 
+# NOTE(setan): rapidjson might not be needed if not using jsonapi. This is to be tested
 DEPEND="${RDEPEND}
+	>=dev-libs/rapidjson-1.1.0
 	gui? ( dev-qt/designer:5 )"
 
 BDEPEND="dev-build/cmake
