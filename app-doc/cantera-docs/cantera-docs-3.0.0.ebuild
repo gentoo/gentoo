@@ -8,12 +8,11 @@ inherit desktop xdg
 DESCRIPTION="Documentation API reference for Cantera package libraries"
 HOMEPAGE="https://cantera.org"
 SRC_URI="https://github.com/band-a-prend/gentoo-overlay/releases/download/ct-docs-${PV}/${P}_modified_menu.tar.xz -> ${P}.tar.xz"
+S="${WORKDIR}/"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~riscv ~x86"
-
-S="${WORKDIR}/"
 
 src_install() {
 	insinto /usr/share/cantera/doc/
