@@ -73,6 +73,8 @@ src_configure() {
 	# bug 907898
 	use elibc_musl && append-flags -D_LARGEFILE64_SOURCE
 
+	# REVIEW: qmake is deprecated
+	# https://github.com/RetroShare/RetroShare/tree/master/jsonapi-generator
 	eqmake5 CONFIG+="${qconfigs[*]}" \
 		RS_MAJOR_VERSION=$(ver_cut 1) RS_MINOR_VERSION=$(ver_cut 2) \
 		RS_MINI_VERSION=$(ver_cut 3) RS_EXTRA_VERSION="-gentoo-${PR}" \
