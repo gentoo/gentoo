@@ -9,9 +9,7 @@ DESCRIPTION="Friend to Friend secure communication and sharing application"
 HOMEPAGE="https://retroshare.cc"
 SRC_URI="http://download.opensuse.org/repositories/network:/retroshare/Debian_Testing/retroshare-common_${PV}.orig.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/RetroShare"
-# REVIEW(setan): we could build from the link belowe to be closer to upstream
-# but this requires git modules
-# https://github.com/RetroShare/RetroShare/archive/refs/tags/{PV}.tar.gz
+# NOTE: GitHub releases/archive is impractical to build so we use the OBS repo
 
 LICENSE="AGPL-3 Apache-2.0 CC-BY-SA-4.0 GPL-2 GPL-3 LGPL-3"
 SLOT="0"
