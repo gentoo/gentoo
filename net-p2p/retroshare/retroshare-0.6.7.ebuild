@@ -5,7 +5,7 @@ EAPI=7
 
 inherit flag-o-matic desktop qmake-utils xdg
 
-DESCRIPTION="F2F, private and secure file sharing application"
+DESCRIPTION="Friend to Friend secure communication and sharing application"
 HOMEPAGE="https://retroshare.cc"
 SRC_URI="http://download.opensuse.org/repositories/network:/retroshare/Debian_Testing/retroshare-common_${PV}.orig.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/RetroShare"
