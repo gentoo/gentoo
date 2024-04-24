@@ -1,0 +1,18 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -339,15 +339,6 @@
+             [AC_MSG_RESULT(no)])
+         CFLAGS="${TMPCFLAGS}"
+ 
+-        #compile-time best-practices errors for certain libc functions, provides checks of buffer lengths and memory regions
+-        AC_MSG_CHECKING(for -D_FORTIFY_SOURCE=2)
+-        TMPCFLAGS="${CFLAGS}"
+-        CFLAGS="${CFLAGS} -D_FORTIFY_SOURCE=2"
+-        AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]], [[]])],[SECCFLAGS="${SECCFLAGS} -D_FORTIFY_SOURCE=2"
+-            AC_MSG_RESULT(yes)],
+-            [AC_MSG_RESULT(no)])
+-        CFLAGS="${TMPCFLAGS}"
+-
+         #compile-time warnings about misuse of format strings
+         AC_MSG_CHECKING(for -Wformat -Wformat-security)
+         TMPCFLAGS="${CFLAGS}"
