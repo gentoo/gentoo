@@ -10,7 +10,7 @@ inherit bash-completion-r1 flag-o-matic toolchain-funcs
 UPSTREAM_PATCH_COMMITS=()
 DESCRIPTION="DMI (Desktop Management Interface) table related utilities"
 HOMEPAGE="https://www.nongnu.org/dmidecode/"
-SRC_URI="https://savannah.nongnu.org/download/${PN}/${P}.tar.xz"
+SRC_URI="mirror://nongnu/${PN}/${P}.tar.xz"
 for commit in "${UPSTREAM_PATCH_COMMITS[@]}" ; do
 	SRC_URI+=" https://git.savannah.gnu.org/cgit/dmidecode.git/patch/?id=${commit} -> ${P}-${commit}.patch"
 	UPSTREAM_PATCHES+=( "${DISTDIR}"/${P}-${commit}.patch )
