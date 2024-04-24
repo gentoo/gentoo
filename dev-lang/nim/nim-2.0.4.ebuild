@@ -107,7 +107,7 @@ src_test() {
 		--hint:UserRaw:on
 	)
 	local -a testament_args=(
-		--skipFrom:"${FILESDIR}/${PN}-1.6.14-testament-skipfile.txt"
+		--skipFrom:"${FILESDIR}/${PN}-2.0.4-testament-skipfile.txt"
 		--nim:"bin/nim"
 		--targets:"$(usex test-js 'c js' 'c')"
 	)
