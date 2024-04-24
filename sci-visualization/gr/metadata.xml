@@ -8,4 +8,7 @@
   <use>
     <flag name="agg">Enable the libagg anti-grain rendering engine</flag>
   </use>
+  <upstream>
+    <remote-id type="github">sciapp/gr</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]]; then
 	[[ "${EGIT_BRANCH}" == "" ]] && die "Please set a git branch"
 else
 	SRC_URI="https://github.com/fastfetch-cli/fastfetch/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~loong ~mips ~ppc ppc64 ~riscv ~sparc ~x86"
 fi
 
 LICENSE="MIT nvidia-gpu? ( NVIDIA-NVLM )"

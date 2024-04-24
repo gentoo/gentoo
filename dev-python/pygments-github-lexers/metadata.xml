@@ -6,7 +6,7 @@
     <name>Patrick McLean</name>
   </maintainer>
   <upstream>
-    <remote-id type="pypi">pygments-github-lexers </remote-id>
+    <remote-id type="pypi">pygments-github-lexers</remote-id>
     <remote-id type="github">liluo/pygments-github-lexers</remote-id>
   </upstream>
 </pkgmetadata>

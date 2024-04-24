@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -16,6 +16,10 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Sam James <sam@gentoo.org> (2024-04-24)
+# sys-apps/flashrom is not marked stable on ppc64 yet
+sys-apps/fwupd flashrom
 
 # Sam James <sam@gentoo.org> (2024-02-07)
 # grpc not stable here

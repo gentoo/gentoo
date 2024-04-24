@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		Using the uSWID tool or Python API allows one to create, convert and merge
+		Software Bill of Materials (SBoM) metadata to and from a number of different
+		formats including SWID, coSWID, CycloneDX, SPDX and goSWID. It can also import
+		SBoM metadata from .ini files, pkgconfig files, PE binaries including EFI ones,
+		and various unspecified firmware files as long as they include the coSWID SBoM
+		header. Last but not least, it can be used to embed coSWID SBoM metadata
+		into PE/EFI binaries.
+	</longdescription>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">uswid</remote-id>
+		<remote-id type="github">hughsie/python-uswid</remote-id>
+	</upstream>
+</pkgmetadata>

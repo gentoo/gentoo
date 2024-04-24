@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,6 +16,8 @@ SRC_URI="
 		-> ${PN}-0.14.0-xscreensaver.patch
 	https://github.com/profanity-im/profanity/commit/b8817470.patch
 		-> ${PN}-0.14.0-plugins-install.patch
+	https://github.com/profanity-im/profanity/commit/6b9d0e86.patch
+		-> ${PN}-0.14.0-fix-test-lto.patch
 "
 
 LICENSE="GPL-3"
@@ -67,6 +69,7 @@ PATCHES=(
 	"${DISTDIR}/${PN}-0.14.0-ox-carbons.patch"
 	"${DISTDIR}/${PN}-0.14.0-xscreensaver.patch"
 	"${DISTDIR}/${PN}-0.14.0-plugins-install.patch"
+	"${DISTDIR}/${PN}-0.14.0-fix-test-lto.patch"
 )
 
 pkg_setup() {

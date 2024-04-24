@@ -32,6 +32,7 @@ sys-kernel/installkernel -grub
 net-libs/pjproject srtp
 net-misc/asterisk srtp
 
+# Marek Szuba <marecki@gentoo.org> (2024-04-24)
 # Sam James <sam@gentoo.org> (2024-01-05)
 # sys-apps/keyutils not stable here, because of test failures. bug #636252
 app-benchmarks/stress-ng keyutils
@@ -40,6 +41,7 @@ app-emulation/qemu keyutils
 net-fs/samba ads
 net-fs/cifs-utils ads creds pam
 sys-auth/sssd keyutils
+>=sys-libs/libblockdev-3.0.0 cryptsetup
 sys-libs/libnvme keyutils
 
 # Sam James <sam@gentoo.org> (2024-01-02)

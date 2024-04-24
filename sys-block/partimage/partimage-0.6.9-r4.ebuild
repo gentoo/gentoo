@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ppc ~riscv ~sparc x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ~riscv ~sparc x86"
 IUSE="nls nologin pam ssl static"
 REQUIRED_USE="static? ( !pam )"
 

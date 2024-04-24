@@ -7,7 +7,7 @@ XORG_TARBALL_SUFFIX="xz"
 inherit xorg-3
 
 DESCRIPTION="create a shadow directory of symbolic links to another directory tree"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ppc ppc64 sparc x86"
 
 RDEPEND="
 	elibc_glibc? (

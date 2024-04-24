@@ -9,6 +9,7 @@ MY_P="${PN}${SLOT}-${PV}"
 DESCRIPTION="Epson Inkjet Printer Driver 2 (ESC/P-R) for Linux"
 HOMEPAGE="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 SRC_URI="https://download3.ebz.epson.net/dsc/f/03/00/15/33/96/607198a4f064daa9e7931913eaf27f3a58125f2b/${MY_P}-1.tar.gz"
+S="${WORKDIR}/${MY_P}"
 LICENSE="EPSON LGPL-2.1+"
 KEYWORDS="amd64"
 
@@ -16,8 +17,6 @@ QA_FLAGS_IGNORED="/usr/lib64/libescpr2.so.1.0.0"
 
 DEPEND="net-print/cups"
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${MY_P}"
 
 src_configure() {
 	econf \

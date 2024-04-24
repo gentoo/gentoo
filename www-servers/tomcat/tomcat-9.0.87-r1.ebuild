@@ -174,6 +174,5 @@ pkg_postinst() {
 	einfo "Ebuilds of Tomcat support running multiple instances. To manage Tomcat instances, run:"
 	einfo "  ${EPREFIX}/usr/share/${PN}-${SLOT}/gentoo/tomcat-instance-manager.bash --help"
 
-	einfo "Please read https://wiki.gentoo.org/wiki/Apache_Tomcat and"
-	einfo "https://wiki.gentoo.org/wiki/Project:Java/Tomcat_6_Guide for more information."
+	einfo "Please read https://wiki.gentoo.org/wiki/Apache_Tomcat"
 }
