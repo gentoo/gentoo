@@ -23,8 +23,8 @@ RDEPEND="
 	acct-user/minecraft
 	app-misc/dtach
 	|| (
-		dev-java/openjdk:17
-		dev-java/openjdk-bin:17
+		dev-java/openjdk:21
+		dev-java/openjdk-bin:21
 	)
 "
 
