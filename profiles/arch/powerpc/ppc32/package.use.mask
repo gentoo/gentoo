@@ -22,7 +22,7 @@ app-emulation/qemu keyutils
 net-fs/cifs-utils ads creds pam
 net-fs/samba ads
 sys-auth/sssd keyutils
-sys-libs/libblockdev cryptsetup
+>=sys-libs/libblockdev-3.0.0 cryptsetup
 sys-libs/libnvme keyutils
 
 # Michał Górny <mgorny@gentoo.org> (2023-10-15)
