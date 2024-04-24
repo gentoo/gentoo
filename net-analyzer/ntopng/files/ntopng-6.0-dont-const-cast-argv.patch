@@ -1,0 +1,34 @@
+The patch is borrowed from upstream https://github.com/ntop/ntopng
+
+https://github.com/ntop/ntopng/commit/5069aa4a6259bd0830a33f2ece980612dba5ace9
+
+commit 5069aa4a6259bd0830a33f2ece980612dba5ace9 (HEAD -> 6.0-stable, origin/6.0-stable)
+Author: Denis Pronin <dannftk@yandex.ru>
+Date:   Sat Jun 8 09:29:51 2024 +0300
+
+    fix building when rrd_tune() function has const char** as the 2nd param (#8442)
+    
+    Signed-off-by: Denis Pronin <dannftk@yandex.ru>
+
+diff --git a/src/LuaEngineNtop.cpp b/src/LuaEngineNtop.cpp
+index 42e41822c..ea8e3769f 100644
+--- a/src/LuaEngineNtop.cpp
++++ b/src/LuaEngineNtop.cpp
+@@ -21,6 +21,8 @@
+ 
+ #include "ntop_includes.h"
+ 
++#include <type_traits>
++
+ extern "C" {
+ #include "rrd.h"
+ };
+@@ -6296,7 +6298,7 @@ static int ntop_rrd_tune(lua_State *vm) {
+   filename = argv[1];
+ 
+   reset_rrd_state();
+-  status = rrd_tune(argc, (char **)argv);
++  status = rrd_tune(argc, (std::conditional<std::is_same<decltype(rrd_tune), int(int, const char **)>::value, const char **, char **>::type)argv);
+ 
+   if (status != 0) {
+     char *err = rrd_get_error();
