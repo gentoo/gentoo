@@ -1,8 +1,6 @@
-Hardened profiles now set -D_FORTIFY_SOURCE=3, do not let upstream weaken it.
-
 --- a/configure.ac
 +++ b/configure.ac
-@@ -206,18 +206,6 @@
+@@ -204,18 +204,6 @@
  fi
  
  dnl -----------------------------------------------
@@ -11,7 +9,7 @@ Hardened profiles now set -D_FORTIFY_SOURCE=3, do not let upstream weaken it.
 -AC_MSG_CHECKING(for gcc support of FORTIFY_SOURCE)
 -TMPCFLAGS="${CFLAGS}"
 -CFLAGS="${CFLAGS} -D_FORTIFY_SOURCE=2"
--AC_TRY_COMPILE(,,[gcc_have_fortify_source=yes],[gcc_have_fortify_source=no])
+-AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]], [[]])],[gcc_have_fortify_source=yes],[gcc_have_fortify_source=no])
 -AC_MSG_RESULT($gcc_have_fortify_source)
 -if test "$gcc_have_fortify_source" != "yes"; then
 -    CFLAGS="${TMPCFLAGS}"

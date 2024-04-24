@@ -5,7 +5,7 @@ EAPI=8
 
 inherit autotools
 
-DESCRIPTION="security-aware parser for the HTTP protocol and the related bits and pieces"
+DESCRIPTION="Security-aware parser for the HTTP protocol and the related bits and pieces"
 HOMEPAGE="https://github.com/OISF/libhtp"
 SRC_URI="https://github.com/OISF/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -18,7 +18,7 @@ RDEPEND="sys-libs/zlib"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.5.43-configure_fortify_source.patch
+	"${FILESDIR}"/${PN}-0.5.48-configure_fortify_source.patch
 )
 
 # false positive -- function specific to dev-libs/libiconv, which is only used
