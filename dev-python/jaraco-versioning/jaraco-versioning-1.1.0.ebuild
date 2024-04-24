@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~sparc"
+KEYWORDS="~amd64 ~arm ~ppc ~sparc"
 
 RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
