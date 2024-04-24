@@ -44,16 +44,15 @@ RDEPEND="
 	)
 	libupnp? ( net-libs/libupnp:= )
 	miniupnp? ( net-libs/miniupnpc:= )
-	service? ( dev-qt/qtcore:5 )
 	sqlcipher? ( dev-db/sqlcipher )
 	!sqlcipher? ( dev-db/sqlite:3 )
 	plugins? ( media-libs/speex )"
 
 DEPEND="${RDEPEND}
-	dev-qt/qtcore:5
 	gui? ( dev-qt/designer:5 )"
 
 BDEPEND="dev-build/cmake
+	dev-qt/qtcore:5
 	virtual/pkgconfig
 	jsonapi? ( app-text/doxygen )"
 
