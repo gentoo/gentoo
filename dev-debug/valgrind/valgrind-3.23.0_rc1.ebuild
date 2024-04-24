@@ -115,6 +115,7 @@ src_configure() {
 
 src_test() {
 	# fxsave.o, tronical.o have textrels
+	# -fno-strict-aliasing: https://bugs.kde.org/show_bug.cgi?id=486093
 	emake CFLAGS="${CFLAGS} -fno-strict-aliasing" LDFLAGS="${LDFLAGS} -Wl,-z,notext" check
 }
 
