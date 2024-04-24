@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>arthurzam@gentoo.org</email>
+		<name>Arthur Zamarin</name>
+	</maintainer>
+	<use>
+		<flag name="X">
+			Link application against X11 libraries which adds
+			support for virtual desktop awareness and tab DND
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">tsujan/FeatherNotes</remote-id>
+	</upstream>
+</pkgmetadata>
