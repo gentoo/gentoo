@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,6 +29,14 @@ BDEPEND="
 	)"
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	# fix compatibility with >=dev-python/bcrypt-4.1
+	# https://foss.heptapod.net/python-libs/passlib/-/issues/190
+	sed -i -e '/bcrypt/s:__about__\.::' passlib/handlers/bcrypt.py || die
+
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	local EPYTEST_DESELECT=(
