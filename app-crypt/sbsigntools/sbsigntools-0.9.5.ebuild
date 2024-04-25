@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="GPL-3 LGPL-3 LGPL-2.1 CC0-1.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~riscv ~x86"
 IUSE=""
 
 RDEPEND="
