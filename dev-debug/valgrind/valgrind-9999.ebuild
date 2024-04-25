@@ -75,6 +75,8 @@ src_configure() {
 		--with-gdbscripts-dir="${EPREFIX}"/usr/share/gdb/auto-load
 	)
 
+	tc-is-lto && myconf+=( --enable-lto )
+
 	# Respect ar, bug #468114
 	tc-export AR
 
@@ -87,7 +89,6 @@ src_configure() {
 	# -fstack-protector-strong See -fstack-protector (bug #620402)
 	# -m64 -mx32			for multilib-portage, bug #398825
 	# -fharden-control-flow-redundancy: breaks runtime ('jump to the invalid address stated on the next line')
-	# -flto*                fails to build, bug #858509
 	filter-flags -fomit-frame-pointer
 	filter-flags -fstack-protector
 	filter-flags -fstack-protector-all
