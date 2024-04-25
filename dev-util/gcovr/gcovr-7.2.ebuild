@@ -185,6 +185,65 @@ python_test() {
 		"wspace-html"
 	)
 
+	local cc cc_ver
+	cc="$(tc-get-compiler-type)"
+	case "${cc}" in
+		gcc)
+			cc_ver="$(gcc-major-version)"
+
+			# a bunch of tests are broken on gcc-14
+			# https://bugs.gentoo.org/930680
+			if [[ $(gcc-major-version) -ge 14 ]]; then
+				test_build_deselect+=(
+					"calls-json"
+					"decisions-neg-delta-json"
+					"different-function-lines-separate-lcov"
+					"different-function-lines-use-0-lcov"
+					"different-function-lines-use-max-lcov"
+					"different-function-lines-use-min-lcov"
+					"dot-lcov"
+					"excl-branch-lcov"
+					"excl-line-json"
+					"excl-line-lcov"
+					"excl-line-branch-lcov"
+					"excl-line-custom-lcov"
+					"exclude-directories-relative-lcov"
+					"exclude-lines-by-pattern-lcov"
+					"exclude-relative-lcov"
+					"exclude-relative-from-unfiltered-tracefile-lcov"
+					"filter-absolute-lcov"
+					"filter-absolute-from-unfiltered-tracefile-lcov"
+					"filter-relative-lcov"
+					"filter-relative-from-unfiltered-tracefile-lcov"
+					"filter-relative-lib-lcov"
+					"filter-relative-lib-from-unfiltered-tracefile-lcov"
+					"linked-lcov"
+					"nested-lcov"
+					"nested2-lcov"
+					"nested3-lcov"
+					"no-markers-json"
+					"no-markers-lcov"
+					"noncode-json"
+					"noncode-lcov"
+					"oos-lcov"
+					"oos2-lcov"
+					"shadow-json"
+					"simple1-txt"
+					"simple1-json"
+					"simple1-dir-json"
+					"simple1-stdout-json"
+					"simple1-stdout-lcov"
+					"threaded-lcov"
+					"update-data-lcov"
+					"wspace-lcov"
+				)
+			fi
+		;;
+		clang) cc_ver="$(clang-major-version)";;
+		# placeholder since tests need CC_REFERENCE to be string-number
+		*) cc_ver=1;;
+	esac
+
 	readarray -t EPYTEST_DESELECT < <(printf 'gcovr/tests/test_gcovr.py::test_build[%s]\n' "${test_build_deselect[@]}")
 
 	EPYTEST_DESELECT+=(
@@ -193,16 +252,6 @@ python_test() {
 		gcovr/tests/test_args.py::test_multiple_output_formats_to_stdout
 		gcovr/tests/test_args.py::test_multiple_output_formats_to_stdout_1
 	)
-
-	local cc cc_ver
-	cc="$(tc-get-compiler-type)"
-	case "${cc}" in
-		gcc) cc_ver="$(gcc-major-version)";;
-		clang) cc_ver="$(clang-major-version)";;
-		# placeholder since tests need CC_REFERENCE to be string-number
-		*) cc_ver=1
-	esac
-
 	local -x CC_REFERENCE="${cc}-${cc_ver}"
 
 	epytest gcovr
