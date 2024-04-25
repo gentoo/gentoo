@@ -61,6 +61,31 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+src_test() {
+	# top-level "tests" directory contains tests both for hatch
+	# and hatchling
+	cd "${WORKDIR}/${MY_P}" || die
+
+	# sigh; standalone test suites are overrated, right?
+	echo "__version__ = '${PV}'" > src/hatch/_version.py || die
+	local -x PYTHONPATH="src:${PYTHONPATH}"
+
+	# do not require uv for portability, sigh
+	mkdir "${T}/bin" || die
+	cat > "${T}/bin/uv" <<-EOF || die
+		#!/bin/sh
+		exit 127
+	EOF
+	chmod +x "${T}/bin/uv" || die
+	local -x PATH=${T}/bin:${PATH}
+
+	# tests mock cargo subprocess call but the backend raises if CARGO
+	# is not set and shutil.which() can't find it
+	local -x CARGO=cargo
+
+	distutils-r1_src_test
+}
+
 python_test() {
 	if ! has "${EPYTHON}" "${PYTHON_TESTED[@]/_/.}"; then
 		einfo "Skipping tests on ${EPYTHON}"
@@ -68,25 +93,13 @@ python_test() {
 	fi
 
 	local -x EPYTEST_DESELECT=(
-		# these run pip to install stuff
-		tests/backend/dep/test_core.py::test_dependency_found
-		tests/backend/dep/test_core.py::test_extra_met
-		tests/backend/dep/test_core.py::test_extra_no_dependencies
-		tests/backend/dep/test_core.py::test_extra_unmet
-		tests/backend/dep/test_core.py::test_unknown_extra
-		tests/backend/dep/test_core.py::test_version_unmet
+		# most of these run uv to install stuff
+		# the few remaining tests aren't worth running
+		tests/backend/dep/test_core.py
 		# broken if CARGO is set
 		tests/backend/builders/test_binary.py::TestBuildBootstrap::test_no_cargo
 	)
 
-	# top-level "tests" directory contains tests both for hatch
-	# and hatchling
-	cd "${WORKDIR}/${MY_P}" || die
-	local -x PYTHONPATH="src:${PYTHONPATH}"
-	# sigh; standalone test suites are overrated, right?
-	echo "__version__ = '${PV}'" > src/hatch/_version.py || die
-	# tests mock cargo subprocess call but the backend raises if CARGO
-	# is not set and shutil.which() can't find it
-	local -x CARGO=cargo
-	epytest tests/backend
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest -p pytest_mock tests/backend
 }
