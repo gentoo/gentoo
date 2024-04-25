@@ -34,7 +34,7 @@ for card in ${VIDEO_CARDS}; do
 done
 
 IUSE="${IUSE_VIDEO_CARDS}
-	cpu_flags_x86_sse2 d3d9 debug gles1 +gles2 +llvm
+	cpu_flags_x86_sse2 d3d9 debug +llvm
 	lm-sensors opencl +opengl osmesa +proprietary-codecs selinux
 	test unwind vaapi valgrind vdpau vulkan
 	vulkan-overlay wayland +X xa zink +zstd"
@@ -57,8 +57,7 @@ REQUIRED_USE="
 	video_cards_r300?   ( x86? ( llvm ) amd64? ( llvm ) )
 	vdpau? ( X )
 	xa? ( X )
-	X? ( gles1? ( opengl ) gles2? ( opengl ) )
-	zink? ( vulkan || ( opengl gles1 gles2 ) )
+	zink? ( opengl vulkan )
 "
 
 LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.119"
@@ -349,20 +348,6 @@ multilib_src_configure() {
 	use vulkan-overlay && vulkan_layers+=",overlay"
 	emesonargs+=(-Dvulkan-layers=${vulkan_layers#,})
 
-	if use opengl || use gles1 || use gles2; then
-		emesonargs+=(
-			-Degl=enabled
-			-Dgbm=enabled
-			-Dglvnd=true
-		)
-	else
-		emesonargs+=(
-			-Degl=disabled
-			-Dgbm=disabled
-			-Dglvnd=false
-		)
-	fi
-
 	if use opengl && use X; then
 		emesonargs+=(-Dglx=dri)
 	else
@@ -377,8 +362,11 @@ multilib_src_configure() {
 		-Ddri3=enabled
 		-Dexpat=enabled
 		$(meson_use opengl)
-		$(meson_feature gles1)
-		$(meson_feature gles2)
+		$(meson_feature opengl gbm)
+		$(meson_feature opengl gles1)
+		$(meson_feature opengl gles2)
+		$(meson_feature opengl glvnd)
+		$(meson_feature opengl egl)
 		$(meson_feature llvm)
 		$(meson_feature lm-sensors lmsensors)
 		$(meson_use osmesa)
