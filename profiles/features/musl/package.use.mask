@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-04-25)
+# No Level-Zero on musl
+sys-apps/hwloc l0
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-04-20)
 # Renderdoc masked on musl, bug #853856
 media-gfx/blender renderdoc

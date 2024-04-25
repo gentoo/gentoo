@@ -16,7 +16,7 @@ SRC_URI="
 LICENSE="BSD"
 SLOT="0/15"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="cairo +cpuid cuda debug nvml +pci static-libs svg udev valgrind xml X video_cards_nvidia"
+IUSE="cairo +cpuid cuda debug doc l0 nvml +pci rocm static-libs svg udev valgrind xml X video_cards_nvidia"
 
 # opencl: opencl support dropped with x11-drivers/ati-drivers being removed (bug #582406).
 #         anyone with hardware is welcome to step up and help test to get it re-added.
@@ -25,11 +25,14 @@ RDEPEND="
 	>=sys-libs/ncurses-5.9-r3:=[${MULTILIB_USEDEP}]
 	cairo? ( >=x11-libs/cairo-1.12.14-r4[X?,svg(+)?,${MULTILIB_USEDEP}] )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.19-r1:= )
+	doc? ( app-text/doxygen )
+	l0? ( dev-libs/level-zero:= )
 	nvml? ( x11-drivers/nvidia-drivers[${MULTILIB_USEDEP}] )
 	pci? (
 		>=sys-apps/pciutils-3.3.0-r2[${MULTILIB_USEDEP}]
 		>=x11-libs/libpciaccess-0.13.1-r1[${MULTILIB_USEDEP}]
 	)
+	rocm? ( dev-util/rocm-smi:= )
 	udev? ( virtual/libudev:= )
 	xml? ( >=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}] )
 	video_cards_nvidia? (
@@ -86,9 +89,13 @@ multilib_src_configure() {
 		--runstatedir="${EPREFIX}/run"
 		$(multilib_native_use_enable cuda)
 		$(multilib_native_use_enable video_cards_nvidia gl)
+		$(multilib_native_use_enable l0 levelzero)
+		$(multilib_native_use_enable rocm rsmi)
+		$(multilib_native_use_with rocm rocm "${ESYSROOT}/usr")
 		$(use_enable cairo)
 		$(use_enable cpuid)
 		$(use_enable debug)
+		$(use_enable doc doxygen)
 		$(use_enable udev libudev)
 		$(use_enable nvml)
 		$(use_enable pci)
@@ -110,11 +117,13 @@ multilib_src_install_all() {
 		;;
 	esac
 
+	use doc && dodoc -r doc/doxygen-doc/html
+
 	mv "${ED}"/usr/share/bash-completion/completions/hwloc{,-annotate} || die
 	bashcomp_alias hwloc-annotate \
 		hwloc-{diff,ps,compress-dir,gather-cpuid,distrib,info,bind,patch,calc,ls,gather-topology}
 	bashcomp_alias hwloc-annotate lstopo{,-no-graphics}
 
 	find "${ED}" -name '*.la' -delete || die
-	newicon "${DISTDIR}/lstopo.png" "${PN}"
+	newicon -s 512 "${DISTDIR}/lstopo.png" ${PN}.png
 }
