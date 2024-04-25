@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
-BIN_COMMIT=224074bca448815e421a59266864c23041531a42
+TEST_IMAGES_COMMIT=1121036015c70cdbb3015e5c5ba0aaaf7d3d6021
 DESCRIPTION="Python library for reading and writing image data"
 HOMEPAGE="
 	https://imageio.readthedocs.io/en/stable/
@@ -19,19 +19,14 @@ SRC_URI="
 	https://github.com/imageio/imageio/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 	test? (
-		https://github.com/imageio/imageio-binaries/raw/${BIN_COMMIT}/images/chelsea.png
-			-> ${PN}-chelsea.png
-		https://github.com/imageio/imageio-binaries/raw/${BIN_COMMIT}/images/cockatoo.mp4
-			-> ${PN}-cockatoo.mp4
+		https://github.com/imageio/test_images/archive/${TEST_IMAGES_COMMIT}.tar.gz
+			-> imageio-test_images-${TEST_IMAGES_COMMIT}.gh.tar.gz
 	)
 "
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-# over 50% of tests rely on Internet
-PROPERTIES="test_network"
-RESTRICT="test"
 
 RDEPEND="
 	<dev-python/numpy-2[${PYTHON_USEDEP}]
@@ -39,13 +34,10 @@ RDEPEND="
 	>=dev-python/pillow-8.3.2[${PYTHON_USEDEP}]
 	media-libs/freeimage
 "
-# requests for fsspec[github]
 BDEPEND="
 	test? (
-		dev-python/fsspec[${PYTHON_USEDEP}]
 		>=dev-python/imageio-ffmpeg-0.4.9-r1[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
-		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/tifffile[${PYTHON_USEDEP}]
 	)
 "
@@ -59,28 +51,42 @@ src_prepare() {
 	)
 
 	if use test; then
-		mkdir -p "${HOME}"/.imageio/images || die
-		local i
-		for i in chelsea.png cockatoo.mp4; do
-			cp "${DISTDIR}/${PN}-${i}" "${HOME}/.imageio/images/${i}" || die
-		done
+		mv "${WORKDIR}/test_images-${TEST_IMAGES_COMMIT}" .test_images || die
+		# upstream tries to update the image cache, and invalidates it
+		# if "git pull" fails
+		sed -i -e 's:git pull:true:' tests/conftest.py || die
+		# ffmpeg tests expect it there
+		mkdir -p "${HOME}/.imageio/images" || die
+		cp .test_images/cockatoo.mp4 "${HOME}/.imageio/images" || die
 	fi
 
 	distutils-r1_src_prepare
 }
 
 python_test() {
+	local EPYTEST_IGNORE=(
+		# uses fsspec to grab prebuilt .so from GitHub, sigh
+		tests/test_freeimage.py
+	)
+
 	local EPYTEST_DESELECT=(
-		# Fails because of system installed freeimage
-		tests/test_core.py::test_findlib2
+		# Note: upstream has a needs_internet marker but it is also
+		# used to mark tests that require test_images checkout that we
+		# supply
+
 		# Tries to download ffmpeg binary ?!
 		tests/test_ffmpeg.py::test_get_exe_installed
 		# blocked by our patch
 		tests/test_core.py::test_fetching
 		tests/test_core.py::test_request
-		# known broken
-		# https://github.com/imageio/imageio/issues/890
-		tests/test_freeimage.py::test_exr_write
+		# Internet
+		tests/test_bsdf.py::test_from_url
+		tests/test_core.py::test_mvolread_out_of_bytes
+		tests/test_core.py::test_request_read_sources
+		tests/test_pillow.py::test_gif_first_p_frame
+		tests/test_pillow.py::test_png_remote
+		tests/test_pillow_legacy.py::test_png_remote
+		tests/test_swf.py::test_read_from_url
 		# requires pillow-heif, also possibly Internet
 		tests/test_pillow.py::test_avif_remote
 		tests/test_pillow.py::test_heif_remote
