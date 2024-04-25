@@ -55,7 +55,7 @@ RDEPEND="
 	)
 	editor? ( x11-libs/pango )
 	examples? ( x11-libs/pango )
-	gles2? ( media-libs/mesa[gles2,wayland] )
+	gles2? ( media-libs/mesa[gles2(+),wayland] )
 	jpeg? ( media-libs/libjpeg-turbo:0= )
 	lcms? ( >=media-libs/lcms-2.9:2 )
 	pipewire? ( >=media-video/pipewire-0.3:= )

@@ -59,7 +59,7 @@ RDEPEND="
 	editor? ( x11-libs/pango )
 	examples? ( x11-libs/pango )
 	gles2? (
-		media-libs/mesa[gles2,wayland]
+		media-libs/mesa[gles2(+),wayland]
 	)
 	pipewire? ( >=media-video/pipewire-0.3:= )
 	rdp? ( >=net-misc/freerdp-2.3.0:2=[server] )
