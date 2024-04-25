@@ -33,6 +33,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Maciej Barć <xgqt@gentoo.org> (2024-04-25)
+# Mask "app-emacs/windows" and reverse dependencies.
+# Very old package failing to compile with modern GNU Emacs.
+# Additionally all 3 packages do not have any definitive repository nor VCS.
+# Open bugs: #930655
+# Removal on 2024-05-25.
+app-emacs/basic-toolkit
+app-emacs/buffer-extension
+app-emacs/windows
+
 # Matt Turner <mattst88@gentoo.org> (2024-04-25)
 # Masked for testing
 =dev-util/intel_clc-24.1*
