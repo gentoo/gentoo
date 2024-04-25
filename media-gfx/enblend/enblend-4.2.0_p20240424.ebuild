@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Image Blending with Multiresolution Splines"
 HOMEPAGE="http://enblend.sourceforge.net/"
-SRC_URI="https://dev.gentoo.org/~soap/distfiles/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.xz"
 
 S=${WORKDIR}/enblend
 
