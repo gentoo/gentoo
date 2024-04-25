@@ -1,23 +1,20 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="Open BEAGLE, a versatile EC/GA/GP framework"
-SRC_URI="mirror://sourceforge/beagle/${P}.tar.gz"
 HOMEPAGE="https://chgagne.github.io/beagle/"
+SRC_URI="mirror://sourceforge/beagle/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="LGPL-2.1"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc examples static-libs"
 
-RDEPEND="
-	sys-libs/zlib
-	!app-misc/beagle
-	!dev-libs/libbeagle"
-DEPEND="${RDEPEND}
-	doc? ( app-text/doxygen )"
+RDEPEND="sys-libs/zlib"
+DEPEND="${RDEPEND}"
+BDEPEND="doc? ( app-text/doxygen )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0.3-gcc43.patch"
@@ -27,8 +24,10 @@ PATCHES=(
 
 src_prepare() {
 	default
-	sed -e "s:@LIBS@:@LIBS@ -lpthread:" \
-		-i PACC/Threading/Makefile.in || die
+	sed -e "s:@LIBS@:& -lpthread:" -i PACC/Threading/Makefile.in || die
+
+	# fix build with C++17, bug #898274
+	sed -e "s/register //" -i PACC/Util/{MTRand.hpp,Tokenizer.cpp} || die
 }
 
 src_configure() {
