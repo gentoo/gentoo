@@ -63,8 +63,9 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/xwayland-drop-redundantly-installed-files.patch
-	"${FILESDIR}"/xwayland-23.2.3-systemd-automagic.patch
+	"${FILESDIR}"/${PN}-drop-redundantly-installed-files.patch
+	"${FILESDIR}"/${PN}-23.2.3-systemd-automagic.patch
+	"${FILESDIR}"/${PN}-23.3.6-test-Skip-Xwayland-test-early-if-PIGLIT_DIR-XTEST_DI.patch
 )
 
 src_configure() {
