@@ -23,9 +23,18 @@ RDEPEND="
 	${DEPEND}
 	>=dev-java/ant-1.10.14-r3:0
 	dev-java/swt:3.7[cairo]
-	>=virtual/jdk-1.8
+	media-libs/fontconfig
+	media-libs/freetype
+	media-libs/libpulse
 	sys-libs/ncurses-compat:5[abi_x86_32(-)]
 	sys-libs/zlib[abi_x86_32(-)]
+	>=virtual/jdk-1.8
+	x11-libs/libX11
+	x11-libs/libXdamage
+	x11-libs/libXext
+	x11-libs/libXfixes
+	x11-libs/libXrender
+
 "
 
 QA_PREBUILT="*"
