@@ -307,7 +307,7 @@ RDEPEND="
 		>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]
 	)
 	vpx? ( >=media-libs/libvpx-1.4.0:=[${MULTILIB_USEDEP}] )
-	vulkan? ( >=media-libs/vulkan-loader-1.3.255:=[${MULTILIB_USEDEP}] )
+	vulkan? ( >=media-libs/vulkan-loader-1.3.277:=[${MULTILIB_USEDEP}] )
 	X? (
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
@@ -329,7 +329,7 @@ DEPEND="${RDEPEND}
 	amf? ( media-libs/amf-headers )
 	ladspa? ( >=media-libs/ladspa-sdk-1.13-r2[${MULTILIB_USEDEP}] )
 	v4l? ( sys-kernel/linux-headers )
-	vulkan? ( >=dev-util/vulkan-headers-1.3.255 )
+	vulkan? ( >=dev-util/vulkan-headers-1.3.277 )
 "
 
 # += for verify-sig above
@@ -365,6 +365,7 @@ REQUIRED_USE="
 	shaderc? ( vulkan !glslang )
 	soc? ( libdrm )
 	test? ( encode )
+	vulkan? ( threads )
 	${GPL_REQUIRED_USE}
 	${CPU_REQUIRED_USE}"
 RESTRICT="
