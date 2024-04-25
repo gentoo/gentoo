@@ -1,0 +1,282 @@
+# Copyright 2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+CRATES="
+	addr2line@0.21.0
+	adler@1.0.2
+	ahash@0.8.7
+	aho-corasick@1.1.2
+	alloc-no-stdlib@2.0.4
+	alloc-stdlib@0.2.2
+	allocator-api2@0.2.16
+	android-tzdata@0.1.1
+	android_system_properties@0.1.5
+	ansi_term@0.12.1
+	anstream@0.6.7
+	anstyle-parse@0.2.3
+	anstyle-query@1.0.2
+	anstyle-wincon@3.0.2
+	anstyle@1.0.4
+	anyhow@1.0.79
+	async-compression@0.3.15
+	async-compression@0.4.5
+	async-recursion@1.0.5
+	async-stream-impl@0.3.5
+	async-stream@0.3.5
+	async-trait@0.1.77
+	async_zip@0.0.12
+	atty@0.2.14
+	autocfg@1.1.0
+	backtrace@0.3.69
+	base64@0.13.1
+	bincode@1.3.3
+	bitflags@1.3.2
+	bitflags@2.4.1
+	brotli-decompressor@2.5.1
+	brotli@3.4.0
+	bumpalo@3.14.0
+	bytecount@0.6.7
+	bytes@1.5.0
+	bzip2-sys@0.1.11+1.0.8
+	bzip2@0.4.4
+	cc@1.0.83
+	cfg-if@1.0.0
+	charset@0.1.3
+	chrono@0.4.31
+	clap@2.34.0
+	clap@4.4.17
+	clap_builder@4.4.17
+	clap_lex@0.6.0
+	colorchoice@1.0.0
+	convert_case@0.4.0
+	core-foundation-sys@0.8.6
+	crc32fast@1.3.2
+	crossbeam-channel@0.5.11
+	crossbeam-deque@0.8.5
+	crossbeam-epoch@0.9.18
+	crossbeam-queue@0.3.11
+	crossbeam-utils@0.8.19
+	crossbeam@0.8.4
+	ctor@0.2.6
+	data-encoding@2.5.0
+	deflate64@0.1.6
+	derive_more@0.99.17
+	diff@0.1.13
+	directories-next@2.0.0
+	dirs-sys-next@0.1.2
+	dyn-clonable-impl@0.9.0
+	dyn-clonable@0.9.0
+	dyn-clone@1.0.16
+	encoding_rs@0.8.33
+	encoding_rs_io@0.1.7
+	env_logger@0.10.1
+	equivalent@1.0.1
+	errno@0.3.8
+	fallible-iterator@0.3.0
+	fallible-streaming-iterator@0.1.9
+	fastrand@2.0.1
+	filetime@0.2.23
+	fixedbitset@0.4.2
+	flate2@1.0.28
+	fnv@1.0.7
+	futures-core@0.3.30
+	futures-io@0.3.30
+	futures-macro@0.3.30
+	futures-sink@0.3.30
+	futures-task@0.3.30
+	futures-util@0.3.30
+	generic-array@0.12.4
+	getopts@0.2.21
+	getrandom@0.2.12
+	gimli@0.28.1
+	glob@0.3.1
+	hashbrown@0.12.3
+	hashbrown@0.14.3
+	hashlink@0.8.4
+	heck@0.3.3
+	hermit-abi@0.1.19
+	hermit-abi@0.3.3
+	humantime@2.1.0
+	iana-time-zone-haiku@0.1.2
+	iana-time-zone@0.1.59
+	indexmap@1.9.3
+	indexmap@2.1.0
+	is-terminal@0.4.10
+	itoa@1.0.10
+	jobserver@0.1.27
+	js-sys@0.3.67
+	json_comments@0.2.2
+	lazy_static@1.4.0
+	libc@0.2.152
+	libredox@0.0.1
+	libsqlite3-sys@0.27.0
+	linux-raw-sys@0.4.12
+	lock_api@0.4.11
+	log@0.4.20
+	lzma-sys@0.1.20
+	mailparse@0.14.0
+	memchr@2.7.1
+	mime2ext@0.1.52
+	minimal-lexical@0.2.1
+	miniz_oxide@0.7.1
+	mio@0.8.10
+	nom@7.1.3
+	num-complex@0.2.4
+	num-integer@0.1.45
+	num-iter@0.1.43
+	num-rational@0.2.4
+	num-traits@0.2.17
+	num@0.2.1
+	num_cpus@1.16.0
+	object@0.32.2
+	once_cell@1.19.0
+	parking_lot@0.12.1
+	parking_lot_core@0.9.9
+	paste@1.0.14
+	path-clean@1.0.1
+	petgraph@0.6.4
+	pin-project-internal@1.1.3
+	pin-project-lite@0.2.13
+	pin-project@1.1.3
+	pin-utils@0.1.0
+	pkg-config@0.3.28
+	pretty-bytes@0.2.2
+	pretty_assertions@1.4.0
+	proc-macro-error-attr@1.0.4
+	proc-macro-error@1.0.4
+	proc-macro2@1.0.76
+	quote@1.0.35
+	quoted_printable@0.4.8
+	redox_syscall@0.3.5
+	redox_syscall@0.4.1
+	redox_users@0.4.4
+	regex-automata@0.4.3
+	regex-syntax@0.8.2
+	regex@1.10.2
+	rusqlite@0.30.0
+	rustc-demangle@0.1.23
+	rustc_version@0.4.0
+	rustix@0.38.30
+	ryu@1.0.16
+	schemars@0.8.16
+	schemars_derive@0.8.16
+	scopeguard@1.2.0
+	semver@1.0.21
+	serde@1.0.195
+	serde_derive@1.0.195
+	serde_derive_internals@0.26.0
+	serde_json@1.0.111
+	signal-hook-registry@1.4.1
+	size_format@1.0.2
+	slab@0.4.9
+	smallvec@1.12.0
+	socket2@0.5.5
+	strsim@0.10.0
+	strsim@0.8.0
+	structopt-derive@0.4.18
+	structopt@0.3.26
+	syn@1.0.109
+	syn@2.0.48
+	tempfile@3.9.0
+	termcolor@1.4.1
+	terminal_size@0.3.0
+	textwrap@0.11.0
+	thiserror-impl@1.0.56
+	thiserror@1.0.56
+	tokio-macros@2.2.0
+	tokio-rusqlite@0.5.0
+	tokio-stream@0.1.14
+	tokio-test@0.4.3
+	tokio-util@0.7.10
+	tokio@1.35.1
+	tracing-core@0.1.32
+	tracing@0.1.40
+	tree_magic_mini@3.0.3
+	typenum@1.17.0
+	unicode-ident@1.0.12
+	unicode-segmentation@1.10.1
+	unicode-width@0.1.11
+	utf8parse@0.2.1
+	vcpkg@0.2.15
+	vec_map@0.8.2
+	version_check@0.9.4
+	wasi@0.11.0+wasi-snapshot-preview1
+	wasm-bindgen-backend@0.2.90
+	wasm-bindgen-macro-support@0.2.90
+	wasm-bindgen-macro@0.2.90
+	wasm-bindgen-shared@0.2.90
+	wasm-bindgen@0.2.90
+	winapi-i686-pc-windows-gnu@0.4.0
+	winapi-util@0.1.6
+	winapi-x86_64-pc-windows-gnu@0.4.0
+	winapi@0.3.9
+	windows-core@0.52.0
+	windows-sys@0.48.0
+	windows-sys@0.52.0
+	windows-targets@0.48.5
+	windows-targets@0.52.0
+	windows_aarch64_gnullvm@0.48.5
+	windows_aarch64_gnullvm@0.52.0
+	windows_aarch64_msvc@0.48.5
+	windows_aarch64_msvc@0.52.0
+	windows_i686_gnu@0.48.5
+	windows_i686_gnu@0.52.0
+	windows_i686_msvc@0.48.5
+	windows_i686_msvc@0.52.0
+	windows_x86_64_gnu@0.48.5
+	windows_x86_64_gnu@0.52.0
+	windows_x86_64_gnullvm@0.48.5
+	windows_x86_64_gnullvm@0.52.0
+	windows_x86_64_msvc@0.48.5
+	windows_x86_64_msvc@0.52.0
+	xattr@1.3.1
+	xz2@0.1.7
+	yansi@0.5.1
+	zerocopy-derive@0.7.32
+	zerocopy@0.7.32
+	zstd-safe@5.0.2+zstd.1.5.2
+	zstd-safe@7.0.0
+	zstd-sys@2.0.9+zstd.1.5.5
+	zstd@0.11.2+zstd.1.5.2
+	zstd@0.13.0
+"
+
+declare -A GIT_CRATES=(
+	[tokio-tar]='https://github.com/vorot93/tokio-tar;87338a76092330bc6fe60de95d83eae5597332e1;tokio-tar-%commit%'
+)
+
+inherit cargo optfeature
+
+DESCRIPTION="Like ripgrep, but also search in PDFs, E-Books, Office documents, archives, etc."
+HOMEPAGE="https://github.com/phiresky/ripgrep-all"
+SRC_URI="
+	https://github.com/phiresky/ripgrep-all/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	${CARGO_CRATE_URIS}
+"
+
+LICENSE="AGPL-3+"
+# Dependent crate licenses
+LICENSE+=" 0BSD Apache-2.0 BSD MIT Unicode-DFS-2016"
+SLOT="0"
+KEYWORDS="~amd64"
+
+RDEPEND="
+	app-arch/xz-utils
+	sys-apps/ripgrep
+"
+DEPEND="${RDEPEND}"
+
+QA_FLAGS_IGNORED="
+	usr/bin/rga
+	usr/bin/rga-fzf
+	usr/bin/rga-fzf-open
+	usr/bin/rga-preproc
+"
+
+pkg_postinst() {
+	optfeature "pandoc support" virtual/pandoc
+	optfeature "pdf support" app-text/poppler
+	optfeature "media support" media-video/ffmpeg
+}
