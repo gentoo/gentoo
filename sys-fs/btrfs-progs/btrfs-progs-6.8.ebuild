@@ -122,6 +122,9 @@ src_unpack() {
 src_prepare() {
 	default
 
+	# bug 926288
+	use elibc_musl && eapply "${FILESDIR}/${P}-musl-1.2.5.patch"
+
 	if [[ ${PV} == 9999 ]]; then
 		AT_M4DIR="m4" eautoreconf
 
