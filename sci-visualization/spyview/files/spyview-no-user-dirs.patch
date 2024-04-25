@@ -1,0 +1,15 @@
+diff --git a/source/configure.ac b/source/configure.ac
+index f1d777f..6790257 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -4,7 +4,9 @@ AC_CANONICAL_TARGET
+ AM_INIT_AUTOMAKE(subdir-objects)
+ AC_CONFIG_SRCDIR([spyview/ImageWindow.C])
+ AC_CONFIG_HEADER([config.h])
+-USER_DIRS
++
++# No idea what this is supposed to do or call...
++# USER_DIRS
+ 
+ # For local macros
+ AC_CONFIG_MACRO_DIR([m4])
