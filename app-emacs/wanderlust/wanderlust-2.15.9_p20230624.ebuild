@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,6 +22,11 @@ RDEPEND=">=app-emacs/apel-10.8
 	bbdb? ( app-emacs/bbdb )"
 DEPEND="${RDEPEND}"
 
+ELISP_REMOVE="
+	tests/test-dist.el
+	tests/test-rfc2368.el
+"
+
 SITEFILE="50${PN}-gentoo.el"
 
 src_configure() {
@@ -33,6 +38,10 @@ src_configure() {
 
 src_compile() {
 	emake all info PACKAGE_LISPDIR="NONE"
+}
+
+src_test() {
+	emake test PACKAGE_LISPDIR="NONE"
 }
 
 src_install() {
