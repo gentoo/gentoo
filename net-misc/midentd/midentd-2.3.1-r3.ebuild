@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="ident daemon with masquerading and fake replies support"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
@@ -10,9 +10,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~sparc x86"
-IUSE=""
 
-DEPEND=""
 RDEPEND="dev-lang/perl"
 
 src_prepare() {
