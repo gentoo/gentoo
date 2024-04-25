@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="
-	|| ( virtual/jdk:21 virtual/jre:21 )
+	virtual/jre:21
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
