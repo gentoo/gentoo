@@ -99,11 +99,11 @@ RDEPEND="
 	vaapi? ( >=media-libs/libva-1.2.1-r1:0= )
 	nvenc? ( >=media-libs/nv-codec-headers-11.1.5.3 )
 	vdpau? ( >=x11-libs/libvdpau-0.7 )
-	vulkan? ( >=media-libs/vulkan-loader-1.3.255:= )
+	vulkan? ( >=media-libs/vulkan-loader-1.3.277:= )
 "
 
 DEPEND="${RDEPEND}
-	vulkan? ( >=dev-util/vulkan-headers-1.3.255 )
+	vulkan? ( >=dev-util/vulkan-headers-1.3.277 )
 "
 BDEPEND="
 	>=dev-build/make-3.81
@@ -112,6 +112,7 @@ BDEPEND="
 "
 
 REQUIRED_USE="
+	vulkan? ( threads )
 	${CPU_REQUIRED_USE}"
 RESTRICT="
 	test
