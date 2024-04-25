@@ -31,6 +31,7 @@ BDEPEND="
 		dev-python/anyio[${PYTHON_USEDEP}]
 		dev-python/boto3[${PYTHON_USEDEP}]
 		dev-python/moto[${PYTHON_USEDEP}]
+		dev-python/redis[${PYTHON_USEDEP}]
 		dev-python/trio[${PYTHON_USEDEP}]
 	)
 "
