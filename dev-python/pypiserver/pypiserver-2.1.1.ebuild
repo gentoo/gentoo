@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 RDEPEND="
 	dev-python/bottle[${PYTHON_USEDEP}]
