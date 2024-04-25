@@ -24,7 +24,7 @@ KEYWORDS="amd64 arm arm64 ~ia64 ~m68k ppc ppc64 ~riscv ~s390 x86"
 BDEPEND="
 	test? (
 		dev-python/jaraco-test[${PYTHON_USEDEP}]
-		<dev-python/pytest-8.1[${PYTHON_USEDEP}]
+		=dev-python/pytest-8.0*[${PYTHON_USEDEP}]
 	)
 "
 
