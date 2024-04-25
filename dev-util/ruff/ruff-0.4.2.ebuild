@@ -49,8 +49,8 @@ CRATES="
 	clap_derive@4.5.4
 	clap_lex@0.7.0
 	clearscreen@3.0.0
-	codspeed-criterion-compat@2.4.1
-	codspeed@2.4.1
+	codspeed-criterion-compat@2.5.0
+	codspeed@2.5.0
 	colorchoice@1.0.0
 	colored@2.1.0
 	console@0.15.8
@@ -64,9 +64,7 @@ CRATES="
 	crossbeam-channel@0.5.12
 	crossbeam-deque@0.8.5
 	crossbeam-epoch@0.9.18
-	crossbeam-queue@0.3.11
 	crossbeam-utils@0.8.19
-	crossbeam@0.8.4
 	crunchy@0.2.2
 	darling@0.20.8
 	darling_core@0.20.8
@@ -112,7 +110,7 @@ CRATES="
 	ignore@0.4.22
 	imara-diff@0.1.5
 	imperative@1.0.5
-	indexmap@2.2.5
+	indexmap@2.2.6
 	indicatif@0.17.8
 	indoc@2.0.5
 	inotify-sys@0.1.5
@@ -147,12 +145,14 @@ CRATES="
 	lsp-types@0.95.1
 	matchers@0.1.0
 	matches@0.1.10
+	matchit@0.8.1
 	memchr@2.7.2
 	mimalloc@0.1.39
 	minimal-lexical@0.2.1
 	miniz_oxide@0.7.2
 	mio@0.8.11
 	natord@1.0.9
+	newtype-uuid@1.1.0
 	nix@0.28.0
 	nom@7.1.3
 	notify@6.1.1
@@ -169,6 +169,7 @@ CRATES="
 	paste@1.0.14
 	path-absolutize@3.1.1
 	path-dedot@3.1.1
+	path-slash@0.2.1
 	pathdiff@0.2.1
 	peg-macros@0.8.2
 	peg-runtime@0.8.2
@@ -186,9 +187,9 @@ CRATES="
 	portable-atomic@1.6.0
 	ppv-lite86@0.2.17
 	pretty_assertions@1.4.0
-	proc-macro2@1.0.80
+	proc-macro2@1.0.81
 	pyproject-toml@0.9.0
-	quick-junit@0.3.6
+	quick-junit@0.4.0
 	quick-xml@0.31.0
 	quote@1.0.36
 	rand@0.8.5
@@ -220,10 +221,10 @@ CRATES="
 	scoped-tls@1.0.1
 	seahash@4.1.0
 	serde-wasm-bindgen@0.6.5
-	serde@1.0.197
-	serde_derive@1.0.197
+	serde@1.0.198
+	serde_derive@1.0.198
 	serde_derive_internals@0.26.0
-	serde_json@1.0.115
+	serde_json@1.0.116
 	serde_repr@0.1.18
 	serde_spanned@0.6.5
 	serde_test@1.0.176
@@ -244,15 +245,15 @@ CRATES="
 	strum_macros@0.26.2
 	subtle@2.5.0
 	syn@1.0.109
-	syn@2.0.59
+	syn@2.0.60
 	tempfile@3.10.1
 	terminal_size@0.3.0
 	terminfo@0.8.0
 	test-case-core@3.3.1
 	test-case-macros@3.3.1
 	test-case@3.3.1
-	thiserror-impl@1.0.58
-	thiserror@1.0.58
+	thiserror-impl@1.0.59
+	thiserror@1.0.59
 	thread_local@1.1.8
 	tikv-jemalloc-sys@0.5.4+5.3.0-patched
 	tikv-jemallocator@0.5.4
