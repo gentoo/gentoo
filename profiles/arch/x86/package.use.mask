@@ -109,10 +109,6 @@ net-misc/seafile-client shibboleth
 sci-mathematics/yacas gui
 sci-physics/root qt5
 
-# Michał Górny <mgorny@gentoo.org> (2022-11-16)
-# spirv-llvm-translator is not keyworded x86.
-dev-libs/libclc spirv
-
 # Ionen Wolkens <ionen@gentoo.org> (2022-11-07)
 # Vulkan is usable here.
 media-video/mpv -vulkan

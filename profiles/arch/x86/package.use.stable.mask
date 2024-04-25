@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2024-04-25)
+# spirv-llvm-translator is not stable on x86.
+dev-libs/libclc spirv
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-21)
 # Experimental, virt-firmware is keyworded only unstable
 sys-kernel/installkernel efistub
