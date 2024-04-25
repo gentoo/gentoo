@@ -250,7 +250,7 @@ BDEPEND="
 		>=virtual/rust-${RUST_MIN_VER}[profiler(-)]
 	)
 	>=dev-build/gn-${GN_MIN_VER}
-	<dev-build/ninja-1.12
+	dev-build/ninja
 	dev-lang/perl
 	>=dev-util/gperf-3.0.3
 	dev-vcs/git
@@ -428,6 +428,7 @@ src_prepare() {
 		"${FILESDIR}/chromium-124-libwebp-shim-sharpyuv.patch"
 		"${FILESDIR}/chromium-125-oauth2-client-switches.patch"
 		"${FILESDIR}/chromium-125-system-zstd.patch"
+		"${FILESDIR}/chromium-125-ninja-1-12.patch"
 	)
 
 	if use system-toolchain; then
