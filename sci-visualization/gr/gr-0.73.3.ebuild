@@ -43,7 +43,7 @@ REQUIRED_USE="cairo? ( truetype )"
 
 src_configure() {
 	if use agg ; then
-		mycmakeargs+=( -DAGG_LIBRARY=libagg.so -DAGG_INCLUDE_DIR=/usr/include/agg2 )
+		mycmakeargs+=( -DAGG_LIBRARY=/usr/$(get_libdir)/libagg.so -DAGG_INCLUDE_DIR=/usr/include/agg2 )
 	else
 		mycmakeargs+=( -DAGG_LIBRARY= )
 	fi
