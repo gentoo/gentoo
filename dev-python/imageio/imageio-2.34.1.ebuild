@@ -39,6 +39,10 @@ BDEPEND="
 		>=dev-python/imageio-ffmpeg-0.4.9-r1[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/tifffile[${PYTHON_USEDEP}]
+		|| (
+			media-video/ffmpeg[openh264]
+			media-video/ffmpeg[x264]
+		)
 	)
 "
 
@@ -90,6 +94,8 @@ python_test() {
 		# requires pillow-heif, also possibly Internet
 		tests/test_pillow.py::test_avif_remote
 		tests/test_pillow.py::test_heif_remote
+		# not important, requires random system libs
+		tests/test_core.py::test_findlib2
 	)
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
