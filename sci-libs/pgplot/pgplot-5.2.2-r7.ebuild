@@ -11,8 +11,8 @@ DESCRIPTION="FORTRAN/C device-independent scientific graphic library"
 HOMEPAGE="https://www.astro.caltech.edu/~tjp/pgplot/"
 SRC_URI="ftp://ftp.astro.caltech.edu/pub/pgplot/${MY_P}.tar.gz"
 
-SLOT="0"
 LICENSE="free-noncomm"
+SLOT="0"
 KEYWORDS="amd64 ~arm ~ia64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc motif static-libs tk"
 
