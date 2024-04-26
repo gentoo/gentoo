@@ -21,6 +21,7 @@ REQUIRED_USE="
 	dri? ( X drm )
 	X? ( vaapi )
 	wayland? ( drm )
+	tools? ( vaapi )
 "
 
 RDEPEND="
@@ -57,6 +58,7 @@ multilib_src_configure() {
 		-DBUILD_TESTS="$(usex test)"
 		# Tools fails to compile for 32 bit
 		-DBUILD_TOOLS="$(multilib_native_usex tools)"
+		-DTOOLS_ENABLE_X11="$(multilib_native_usex tools $(usex X))"
 		-DENABLE_WAYLAND="$(usex wayland)"
 		-DENABLE_X11="$(usex X)"
 		-DENABLE_DRI3="$(usex dri)"
