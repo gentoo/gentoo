@@ -18,8 +18,8 @@ KEYWORDS=""
 IUSE="cdb ${USE_RUBY//ruby/ruby_targets_ruby}"
 
 DEPEND="${RUBY_DEPS}
-	app-i18n/skktools
 	app-alternatives/awk
+	app-i18n/skktools
 	cdb? (
 		|| (
 			dev-db/tinycdb
