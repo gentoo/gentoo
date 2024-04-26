@@ -61,8 +61,6 @@ src_configure() {
 		"$(meson_use doc docs)"
 		"$(meson_use introspection)"
 		"$(meson_use qml qml-bindings)"
-		"$(meson_use qt5)"
-		"$(meson_use qt6)"
 		"$(meson_use vala vala-bindings)"
 		-Dsoup2=false
 	)
