@@ -113,8 +113,13 @@ src_configure() {
 		-DUSE_LINKED_FFMPEG=yes
 		-DUSE_VTUNE=no
 		-DUSE_VULKAN=$(usex vulkan)
+
+		# Note that upstream hardly support wayland, may or may not work
 		-DWAYLAND_API=$(usex wayland)
-		-DX11_API=yes # X libs are currently hard-required either way
+		# Not optional given libX11 is hard-required either way and upstream
+		# seemingly has no intention to drop the requirement at the moment
+		# https://github.com/PCSX2/pcsx2/issues/11149
+		-DX11_API=yes
 
 		# not packaged due to bug #885471, but still disable for no automagic
 		-DCMAKE_DISABLE_FIND_PACKAGE_Libbacktrace=yes
