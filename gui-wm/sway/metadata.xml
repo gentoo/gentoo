@@ -22,7 +22,6 @@
 		something else.
 	</longdescription>
 	<use>
-		<flag name="grimshot">Install 'grimshot': script for taking screenshots</flag>
 		<flag name="swaybar">Install 'swaybar': sway's status bar component</flag>
 		<flag name="swaynag">Install 'swaynag': shows a message with buttons</flag>
 		<flag name="tray">Enable support for StatusNotifierItem tray specification</flag>
