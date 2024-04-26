@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
 JAVA_PKG_IUSE="doc source"
 
@@ -52,7 +52,7 @@ KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="binary emacs"
 
-COMMON_DEP="dev-java/ant-core:0
+COMMON_DEP=">=dev-java/ant-1.10.14-r3:0
 	dev-java/jline:2"
 
 DEPEND="${COMMON_DEP}
@@ -60,7 +60,7 @@ DEPEND="${COMMON_DEP}
 		>=dev-java/sbt-${SBTV}:0
 		media-gfx/graphviz
 	)
-	>=virtual/jdk-1.8:*
+	<=virtual/jdk-17:*
 	app-arch/xz-utils:0"
 
 RDEPEND="${COMMON_DEP}
@@ -100,7 +100,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	java-pkg_getjars ant-core,jline-2,sbt
+	java-pkg_getjars ant,jline-2,sbt
 
 	if ! use binary; then
 		local a
@@ -117,16 +117,11 @@ src_prepare() {
 		# gentoo patch (by gienah) to stop it calling git log in the build
 		eapply "${FILESDIR}/${PN}-2.12.10-no-git.patch"
 
-		local SBT_PVR="$(java-config --query=PVR --package=sbt)"
-		sed -e "s@sbt.version=${SBTV}@sbt.version=${SBT_PVR}@" \
-			-i "${S}/project/build.properties" \
-			|| die "Could not set sbt.version=${SBT_PVR} in project/build.properties"
-
 		cat <<- EOF > "${S}/sbt"
 			#!/bin/bash
 			gjl_package=sbt
 			gjl_jar="sbt-launch.jar"
-			gjl_java_args="-Dsbt.version=${SBT_PVR} -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -Duser.home="${WORKDIR}""
+			gjl_java_args="-Dsbt.version=${SBTV} -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -Duser.home="${WORKDIR}""
 			source "${EPREFIX}"/usr/share/java-config-2/launcher/launcher.bash
 		EOF
 		chmod u+x "${S}/sbt" || die
