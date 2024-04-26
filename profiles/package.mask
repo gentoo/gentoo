@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-04-26)
+# Broken and reported as such upstream. EAPI=6.
+# Removal: 2024-05-26.  Bug #912842.
+net-misc/ttytter
+
 # Maciej Barć <xgqt@gentoo.org> (2024-04-25)
 # Mask "app-emacs/windows" and reverse dependencies.
 # Very old package failing to compile with modern GNU Emacs.
