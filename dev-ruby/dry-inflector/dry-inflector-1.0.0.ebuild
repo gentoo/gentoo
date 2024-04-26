@@ -19,7 +19,7 @@ HOMEPAGE="https://dry-rb.org/gems/dry-inflector/"
 SRC_URI="https://github.com/dry-rb/dry-inflector/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~hppa ~sparc"
+KEYWORDS="~amd64 ~hppa ~ppc64 ~sparc"
 SLOT="$(ver_cut 1)"
 IUSE="test"
 
