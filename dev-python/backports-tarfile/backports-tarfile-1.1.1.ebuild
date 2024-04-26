@@ -19,7 +19,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ia64 ~m68k ppc ppc64 ~riscv ~s390 x86"
+KEYWORDS="amd64 arm arm64 ~ia64 ~loong ~m68k ppc ppc64 ~riscv ~s390 x86"
 
 BDEPEND="
 	test? (
