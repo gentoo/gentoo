@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit desktop gnome2-utils python-single-r1 readme.gentoo-r1
 
 DESCRIPTION="Fully featured markdown editor, supports github markdown dialect"
