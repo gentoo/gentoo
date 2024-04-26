@@ -39,7 +39,7 @@ BDEPEND="
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTS=$(usex test)
-		-DUSE_SSH=$(usex ssh)
+		-DUSE_SSH=$(usex ssh ON OFF)
 		-DUSE_GSSAPI=$(usex gssapi ON OFF)
 		-DUSE_HTTP_PARSER=system
 		-DREGEX_BACKEND=pcre2
