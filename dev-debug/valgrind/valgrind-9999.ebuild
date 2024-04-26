@@ -37,8 +37,14 @@ IUSE="mpi"
 
 DEPEND="mpi? ( virtual/mpi )"
 RDEPEND="${DEPEND}"
-if [[ ${PV} != 9999 ]] ; then
-	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-valgrind )"
+if [[ ${PV} == 9999 ]] ; then
+	# Needed for man pages
+	BDEPEND+="
+		app-text/docbook-xsl-stylesheets
+		dev-libs/libxslt
+	"
+else
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-valgrind )"
 fi
 
 PATCHES=(
@@ -121,13 +127,13 @@ src_test() {
 }
 
 src_install() {
-	default
-
-	if [[ ${PV} == "9999" ]]; then
-		# Otherwise FAQ.txt won't exist:
-		emake -C docs FAQ.txt
+	if [[ ${PV} == 9999 ]]; then
+		# TODO: Could do HTML docs too with 'all-docs'
+		emake -C docs man-pages FAQ.txt
 		mv docs/FAQ.txt . || die "Couldn't move FAQ.txt"
 	fi
+
+	default
 
 	dodoc FAQ.txt
 
