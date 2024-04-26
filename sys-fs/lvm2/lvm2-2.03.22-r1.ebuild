@@ -68,6 +68,7 @@ PATCHES=(
 	# For upstream -- review and forward:
 	"${FILESDIR}"/${PN}-2.03.20-dmeventd-no-idle-exit.patch
 	"${FILESDIR}"/${PN}-2.03.20-freopen-musl.patch
+	"${FILESDIR}"/${PN}-2.03.22-autoconf-2.72-egrep.patch
 )
 
 pkg_setup() {
