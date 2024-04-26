@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake elisp-common java-pkg-2 java-ant-2
 
@@ -11,6 +11,7 @@ DESCRIPTION="Advanced development platform for intelligent, distributed applicat
 HOMEPAGE="http://mozart2.org/"
 SRC_URI="https://github.com/mozart/mozart2/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~keri/distfiles/mozart/${P}-gentoo-patchset-${PATCHSET_VER}.tar.gz"
+S="${WORKDIR}/${PN}2-${PV}"
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -24,15 +25,14 @@ RDEPEND="dev-libs/boost:=
 	dev-lang/tk:0
 	emacs? ( >=app-editors/emacs-23.1:* )"
 
+# https://bugs.gentoo.org/916882 restrict to <=virtual/jdk-17:*
 DEPEND="${RDEPEND}
-	dev-java/ant-core
-	>=virtual/jdk-1.8:=
+	>=dev-java/ant-1.10.14-r3:0
+	<=virtual/jdk-17:*
 	dev-lang/scala:2.12
 	test? ( dev-cpp/gtest:= )"
 
 SITEFILE="50${PN}-gentoo.el"
-
-S="${WORKDIR}/${PN}2-${PV}"
 
 src_prepare() {
 	if [[ -d "${WORKDIR}"/${PV} ]] ; then
