@@ -1,0 +1,25 @@
+From 439bf8a8cd36796c33ae0b413641338417c9a911 Mon Sep 17 00:00:00 2001
+From: "Brian J. Tarricone" <brian@tarricone.org>
+Date: Thu, 25 Apr 2024 23:28:24 -0700
+Subject: [PATCH] Fix some default settings not being applied on startup
+
+Closes #242.
+---
+ src/xfce-desktop.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/xfce-desktop.c b/src/xfce-desktop.c
+index e79e83305..b4f837ef5 100644
+--- a/src/xfce-desktop.c
++++ b/src/xfce-desktop.c
+@@ -731,6 +731,7 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
+     widget_class->style_updated = xfce_desktop_style_updated;
+ 
+ #define XFDESKTOP_PARAM_FLAGS  (G_PARAM_READWRITE \
++                                | G_PARAM_CONSTRUCT \
+                                 | G_PARAM_STATIC_NAME \
+                                 | G_PARAM_STATIC_NICK \
+                                 | G_PARAM_STATIC_BLURB)
+-- 
+GitLab
+

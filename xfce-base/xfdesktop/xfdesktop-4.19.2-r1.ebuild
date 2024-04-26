@@ -44,6 +44,11 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	# https://gitlab.xfce.org/xfce/xfdesktop/-/issues/242
+	"${FILESDIR}/${P}-settings.patch"
+)
+
 src_configure() {
 	local myconf=(
 		$(use_enable wayland)
