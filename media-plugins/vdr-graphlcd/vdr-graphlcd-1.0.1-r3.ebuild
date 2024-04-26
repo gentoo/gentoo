@@ -1,7 +1,7 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_PN="vdr-plugin-graphlcd"
 MY_P="${MY_PN}-${PV}"
@@ -12,35 +12,21 @@ DESCRIPTION="VDR Plugin: support output on Graphical LCD"
 HOMEPAGE="https://projects.vdr-developer.org/projects/plg-graphlcd"
 SRC_URI="https://projects.vdr-developer.org/git/${MY_PN}.git/snapshot/${MY_P}.tar.bz2"
 
-KEYWORDS="~amd64 ~x86"
-LICENSE="GPL-2"
-SLOT="0"
-
-DEPEND=">=app-misc/graphlcd-base-${PV}
-	media-fonts/corefonts
-	media-video/vdr"
-RDEPEND="${DEPEND}"
-
 S="${WORKDIR}/${MY_P}"
 
-pkg_setup() {
-	vdr-plugin-2_pkg_setup
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
-	if ! getent group lp | grep -q vdr; then
-		einfo
-		einfo "Add user 'vdr' to group 'lp' for full user access to parport device"
-		elog
-		elog "User vdr added to group lp"
-		gpasswd -a vdr lp || die
-	fi
-	if ! getent group usb | grep -q vdr; then
-		einfo
-		einfo "Add user 'vdr' to group 'usb' for full user access to usb device"
-		elog
-		elog "User vdr added to group usb"
-		gpasswd -a vdr usb || die
-	fi
-}
+DEPEND="
+	>=app-misc/graphlcd-base-${PV}
+	media-fonts/corefonts
+	media-video/vdr
+"
+RDEPEND="
+	${DEPEND}
+	acct-user/vdr[graphlcd]
+"
 
 src_prepare() {
 	vdr-plugin-2_src_prepare
