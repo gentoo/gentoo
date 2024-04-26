@@ -1,23 +1,18 @@
-# Copyright 2018-2023 Gentoo Authors
+# Copyright 2018-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-EGIT_REPO_URI="https://gitlab.freedesktop.org/glvnd/libglvnd.git"
-
-if [[ ${PV} = 9999* ]]; then
-	GIT_ECLASS="git-r3"
-fi
-
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 VIRTUALX_REQUIRED=manual
 
-inherit ${GIT_ECLASS} meson-multilib python-any-r1 virtualx
+inherit meson-multilib python-any-r1 virtualx
 
 DESCRIPTION="The GL Vendor-Neutral Dispatch library"
 HOMEPAGE="https://gitlab.freedesktop.org/glvnd/libglvnd"
-if [[ ${PV} = 9999* ]]; then
-	SRC_URI=""
+if [[ ${PV} = 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://gitlab.freedesktop.org/glvnd/${PN}.git"
 else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 	SRC_URI="https://gitlab.freedesktop.org/glvnd/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2 -> ${P}.tar.bz2"
