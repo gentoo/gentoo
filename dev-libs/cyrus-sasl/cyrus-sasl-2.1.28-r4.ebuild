@@ -60,6 +60,13 @@ src_prepare() {
 src_configure() {
 	export CC_FOR_BUILD="$(tc-getBUILD_CC)"
 
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/894684
+	# https://github.com/cyrusimap/cyrus-sasl/pull/771
+	#
+	# Fixed upstream in git master but not released.
+	use srp && filter-lto
+
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# getpassphrase is defined in /usr/include/stdlib.h
 		append-cppflags -DHAVE_GETPASSPHRASE
