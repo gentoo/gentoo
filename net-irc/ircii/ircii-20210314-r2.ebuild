@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,9 +6,9 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="An IRC and ICB client that runs under most UNIX platforms"
+HOMEPAGE="http://eterna23.net/ircii/"
 SRC_URI="https://ircii.warped.com/${P}.tar.bz2
 	https://ircii.warped.com/old/${P}.tar.bz2"
-HOMEPAGE="http://eterna.com.au/ircii/"
 
 LICENSE="BSD"
 SLOT="0"

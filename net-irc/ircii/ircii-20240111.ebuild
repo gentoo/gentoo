@@ -6,10 +6,10 @@ EAPI=8
 inherit toolchain-funcs
 
 DESCRIPTION="An IRC and ICB client that runs under most UNIX platforms"
+HOMEPAGE="http://eterna23.net/ircii/"
 SRC_URI="https://ircii.warped.com/${P}.tar.bz2
 	https://ircii.warped.com/old/${P}.tar.bz2
 	https://dev.gentoo.org/~bkohler/dist/${P}.tar.bz2"
-HOMEPAGE="http://eterna.com.au/ircii/"
 
 LICENSE="BSD"
 SLOT="0"
