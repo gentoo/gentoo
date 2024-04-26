@@ -114,9 +114,10 @@ src_configure() {
 		-DUSE_VTUNE=no
 		-DUSE_VULKAN=$(usex vulkan)
 
-		# Note that upstream hardly support wayland, may or may not work
+		# note that upstream hardly support native wayland, may or may not work
+		# https://github.com/PCSX2/pcsx2/pull/10179
 		-DWAYLAND_API=$(usex wayland)
-		# Not optional given libX11 is hard-required either way and upstream
+		# not optional given libX11 is hard-required either way and upstream
 		# seemingly has no intention to drop the requirement at the moment
 		# https://github.com/PCSX2/pcsx2/issues/11149
 		-DX11_API=yes
