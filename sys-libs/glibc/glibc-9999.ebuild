@@ -1276,6 +1276,11 @@ glibc_src_test() {
 			ewarn "Skipping extra tests because in systemd-nspawn container"
 			XFAIL_TEST_LIST+=( "${XFAIL_NSPAWN_TEST_LIST[@]}" )
 		fi
+		if [[ "$(nice)" == "19" ]] ; then
+			# Expects to be able to increase niceness, which it can't do if
+			# already at the highest nice value
+			XFAIL_TEST_LIST+=( "tst-nice" )
+		fi
 
 		for myt in ${XFAIL_TEST_LIST[@]} ; do
 			myxfailparams+="test-xfail-${myt}=yes "
