@@ -52,6 +52,11 @@ RDEPEND="${DEPEND}
 	app-containers/snapd
 "
 
+PATCHES=(
+	# https://github.com/snapcore/snapd-glib/pull/152
+	"${FILESDIR}/${P}-install-missing-header.patch"
+)
+
 pkg_setup() {
 	vala_setup
 }
