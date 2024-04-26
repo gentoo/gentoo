@@ -853,12 +853,6 @@ sci-libs/xgks-pmel
 # Bug #919072.
 =dev-build/meson-1.3.0
 
-# Sam James <sam@gentoo.org> (2023-11-25)
-# Breaks desktop icon rendering, see bug #904468.
-# Upstream bug: https://gitlab.xfce.org/xfce/xfdesktop/-/issues/242
-=xfce-base/xfdesktop-4.19.2
-=xfce-base/xfdesktop-4.19.1
-
 # Sam James <sam@gentoo.org> (2023-11-22)
 # Further bugs with CoW via copy_file_range (bug #917224, https://github.com/openzfs/zfs/issues/15526).
 # The issue is very similar to bug #815469.
