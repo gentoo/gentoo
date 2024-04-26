@@ -19,6 +19,7 @@ IUSE="keyring cli +gui +jsonapi libupnp +miniupnp +service +sqlcipher plugins"
 REQUIRED_USE="
 	|| ( gui service )
 	?? ( libupnp miniupnp )
+	plugins? ( gui )
 	service? ( || ( cli jsonapi ) )"
 
 RDEPEND="
