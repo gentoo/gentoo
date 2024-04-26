@@ -2,6 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person" proxied="yes">
+    <email>julien@jroy.ca</email>
+    <name>Julien Roy</name>
+  </maintainer>
+  <maintainer type="person" proxied="yes">
     <email>jethro.rosette@outlook.com</email>
     <name>Jethro Rosettenstein</name>
   </maintainer>
