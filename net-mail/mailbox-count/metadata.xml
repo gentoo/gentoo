@@ -13,12 +13,12 @@
     Mailbox-count produces a simple count of mailboxes that exist
     per-domain in some SQL database. The default queries are compatible
     with the schema used by PostfixAdmin but it is possible to supply
-    your own queries via the --summary-query and --detail-query options.
+    your own queries either on the command-line or in a configuration
+    file.
 
     The summary report lists each domain, along with the number of
     mailboxes owned by that domain. The order is determined by the
     summary query, which lists the domains alphabetically by default.
-
     The default detail report shows the same, but also contains a list
     of each individual mailbox (again in alphabetical order) belonging
     to the domains.
