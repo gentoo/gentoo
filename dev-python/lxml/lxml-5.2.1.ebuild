@@ -122,4 +122,5 @@ python_install_all() {
 pkg_postinst() {
 	optfeature "Support for BeautifulSoup as a parser backend" dev-python/beautifulsoup4
 	optfeature "Translates CSS selectors to XPath 1.0 expressions" dev-python/cssselect
+	optfeature "Support for lxml.html.clean sanitizer" dev-python/lxml-html-clean
 }
