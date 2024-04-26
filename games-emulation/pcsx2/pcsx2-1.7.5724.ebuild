@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake desktop fcaps flag-o-matic toolchain-funcs
+inherit cmake desktop fcaps flag-o-matic optfeature toolchain-funcs
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -151,6 +151,10 @@ src_install() {
 
 pkg_postinst() {
 	fcaps -m 0755 cap_net_admin,cap_net_raw=eip usr/lib/${PN}/pcsx2-qt
+
+	# calls aplay (or gst-play/launch-1.0 as fallback in next version)
+	# https://github.com/PCSX2/pcsx2/issues/11141
+	optfeature "UI sound effects support" media-sound/alsa-utils
 
 	if [[ ${REPLACING_VERSIONS##* } ]] &&
 		ver_test ${REPLACING_VERSIONS##* } -lt 1.7; then
