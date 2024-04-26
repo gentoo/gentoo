@@ -4,7 +4,7 @@
 EAPI="8"
 
 DESCRIPTION="Dictionary files for the Migemo and C/Migemo"
-HOMEPAGE="http://openlab.ring.gr.jp/skk/dic.html"
+HOMEPAGE="https://skk-dev.github.io/dict/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
