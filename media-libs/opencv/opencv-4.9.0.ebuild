@@ -145,7 +145,7 @@ RDEPEND="
 	app-arch/bzip2[${MULTILIB_USEDEP}]
 	dev-libs/protobuf:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
-	cuda? ( dev-util/nvidia-cuda-toolkit:= )
+	cuda? ( <dev-util/nvidia-cuda-toolkit-12.4:0= )
 	cudnn? ( dev-libs/cudnn:= )
 	contribdnn? ( dev-libs/flatbuffers:= )
 	contribhdf? ( sci-libs/hdf5:= )
@@ -341,6 +341,10 @@ src_prepare() {
 		cd "${WORKDIR}/${PN}_contrib-${PV}" || die
 		eapply "${FILESDIR}/${PN}_contrib-4.8.1-rgbd.patch"
 		eapply "${FILESDIR}/${PN}_contrib-4.8.1-NVIDIAOpticalFlowSDK-2.0.tar.gz.patch"
+		if has_version ">=dev-util/nvidia-cuda-toolkit-12.4" && use cuda; then
+			# TODO https://github.com/NVIDIA/cccl/pull/1522
+			eapply "${FILESDIR}/${PN}_contrib-4.9.0-cuda-12.4.patch"
+		fi
 		cd "${S}" || die
 
 		! use contribcvv && { rm -R "${WORKDIR}/${PN}_contrib-${PV}/modules/cvv" || die; }
