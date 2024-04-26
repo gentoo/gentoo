@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -59,8 +59,6 @@ src_prepare() {
 
 src_configure() {
 	export CC_FOR_BUILD="$(tc-getBUILD_CC)"
-
-	append-flags -fno-strict-aliasing
 
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# getpassphrase is defined in /usr/include/stdlib.h
