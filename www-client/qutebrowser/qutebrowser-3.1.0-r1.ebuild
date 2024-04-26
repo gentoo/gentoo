@@ -83,6 +83,7 @@ distutils_enable_tests pytest
 
 PATCHES=(
 	"${FILESDIR}"/${P}-qt663-tests.patch
+	"${FILESDIR}"/${P}-pyqt670-tests.patch
 )
 
 src_prepare() {
