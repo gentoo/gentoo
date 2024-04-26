@@ -262,11 +262,20 @@ LICENSE+=" 0BSD Apache-2.0 BSD MIT Unicode-DFS-2016"
 SLOT="0"
 KEYWORDS="~amd64"
 
+IUSE="test"
+RESTRICT="!test? ( test )"
+
 RDEPEND="
 	app-arch/xz-utils
 	sys-apps/ripgrep
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	test? (
+		app-text/poppler
+		virtual/pandoc
+	)
+"
 
 QA_FLAGS_IGNORED="
 	usr/bin/rga
