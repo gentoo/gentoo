@@ -15,7 +15,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 RDEPEND="
 	>=dev-python/lxml-5.2.0[${PYTHON_USEDEP}]
