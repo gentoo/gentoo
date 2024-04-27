@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jason Zaman <perfinion@gentoo.org> (2024-04-27)
+# Sandboxfs was only experimental in Bazel. It was fully removed in Bazel-7
+# Bazel was removed from gentoo in Feb.
+# Removal in 30 days. Bug #930790
+sys-fs/sandboxfs
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-04-27)
 # EAPI=6 package, has issues with implicit function declarations, has
 # issues with incompatible types and more. The only reverse dependency
