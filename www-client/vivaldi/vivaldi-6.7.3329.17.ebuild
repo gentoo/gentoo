@@ -192,11 +192,6 @@ src_prepare() {
 		rm ${VIVALDI_HOME}/libqt6_shim.so || die
 	fi
 
-	# Bug #928519, #928520.
-	if ! use amd64; then
-		rm ${VIVALDI_HOME}/relayproxy-linux || die
-	fi
-
 	eapply_user
 }
 
