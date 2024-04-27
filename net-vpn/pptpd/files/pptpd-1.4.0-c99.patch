@@ -1,6 +1,6 @@
 https://bugs.gentoo.org/920775
 https://bugs.gentoo.org/927333
-
+https://sourceforge.net/p/poptop/bugs/54/
 --- a/compat.c
 +++ b/compat.c
 @@ -10,9 +10,9 @@
