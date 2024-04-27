@@ -22,7 +22,7 @@ DEPEND="
 	dev-libs/miniz
 	dev-libs/openssl:0=
 	media-libs/jg:1=
-	media-libs/libepoxy[egl]
+	media-libs/libepoxy[egl(+)]
 	media-libs/libsdl2[opengl,sound,video]
 	media-libs/speexdsp
 "
