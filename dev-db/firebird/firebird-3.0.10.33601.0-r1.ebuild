@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 MY_P=${PN/f/F}-$(ver_rs 4 '-')
-inherit autotools flag-o-matic
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Relational database offering many ANSI SQL:2003 and some SQL:2008 features"
 HOMEPAGE="https://www.firebirdsql.org/"
@@ -90,6 +90,10 @@ src_prepare() {
 		-e 's:isql :fbsql :w /dev/stdout' \
 		-e 's:ISQL :FBSQL :w /dev/stdout' \
 		src/msgs/messages2.sql | wc -l)" "6" "src/msgs/messages2.sql" # 6 lines
+
+	# bug #917662, bug #924659
+	filter-lto
+	append-flags -fno-strict-aliasing $(test-flags-CXX -fno-lifetime-dse)
 
 	# use gentoo's CXXFLAGS instead of whatever firebird decided on
 	# doesn't replace all firebird's CXXFLAGS, but at least this is last,
