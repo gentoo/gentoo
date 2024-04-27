@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson
+inherit meson pam
 
 DESCRIPTION="The best way to make beautiful and functional wayland widgets"
 HOMEPAGE="https://github.com/Aylur/ags"
@@ -18,16 +18,16 @@ https://github.com/Aylur/${PN}/releases/download/${MY_PV}/node_modules-${MY_PV}.
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="battery bluetooth fetch greetd network notifications power-profiles system-tray +types"
+IUSE="auth battery bluetooth fetch greetd network notifications power-profiles system-tray +types"
 
 DEPEND="
 	dev-libs/glib:2
 	>=dev-libs/gjs-1.73.1
 	virtual/libc
-	sys-libs/pam
 	gui-libs/gtk-layer-shell:0[introspection]
 	media-libs/libpulse[glib,gtk]
 	x11-libs/gtk+:3[wayland,introspection]
+	auth? ( sys-libs/pam )
 "
 
 BDEPEND="
@@ -64,25 +64,20 @@ src_configure() {
 	local emesonargs=(
 		$(meson_use types build_types)
 	)
-	meson_src_configure --libdir "lib/${PN}"
-}
-
-src_compile() {
-	meson_src_compile
+	meson_src_configure
 }
 
 src_install() {
 	meson_src_install
-	# Set the node module install location to the app dir.
-	instinto "${EPREFIX}"/usr/share/com.github.Aylur.ags/
-	# Copy packaged NodeJS modules there.
-	doins -r "node_modules" || die
-	# Create a symlink for the executable
 	dosym -r "${EPREFIX}"/usr/share/com.github.Aylur.ags/com.github.Aylur.ags "${EPREFIX}"/usr/bin/ags || die
+	use auth && dopamd "${FILESDIR}/ags" || die
 }
 
 pkg_postinst() {
 	elog "To learn on how to use ags, please read"
 	elog "https://aylur.github.io/ags-docs/"
 	elog "which describes its usage and configuration."
+
+	elog "NOTE: you have enabled the auth flag which installs a pam file,"
+	elog "please run 'dispatch-conf' to include it."
 }

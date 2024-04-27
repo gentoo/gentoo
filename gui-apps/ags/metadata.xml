@@ -15,14 +15,15 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="bluetooth">Enables support for Bluetooth functionality.</flag>
+		<flag name="auth">Enables authentication support through pam.</flag>
 		<flag name="battery">Enables support for battery monitoring.</flag>
-		<flag name="network">Enables support for network-related features.</flag>
-		<flag name="system-tray">Enables system tray integration.</flag>
-		<flag name="power-profiles">Enables support for power profiles.</flag>
+		<flag name="bluetooth">Enables support for Bluetooth functionality.</flag>
 		<flag name="fetch">Enables fetching capabilities.</flag>
-		<flag name="notifications">Enables integration with notification daemons.</flag>
 		<flag name="greetd">Enables integration with greetd.</flag>
+		<flag name="network">Enables support for network-related features.</flag>
+		<flag name="notifications">Enables integration with notification daemons.</flag>
+		<flag name="power-profiles">Enables support for power profiles.</flag>
+		<flag name="system-tray">Enables system tray integration.</flag>
 		<flag name="types">Builds types into the install.</flag>
 	</use>
 </pkgmetadata>
