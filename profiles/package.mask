@@ -314,11 +314,6 @@ sec-keys/openpgp-keys-jiatan
 ~app-arch/xz-utils-5.6.1
 
 # Michał Górny <mgorny@gentoo.org> (2024-03-26)
-# Deprecated upstream and the URL no longer works.
-# Removal on 2024-04-25.  Bug #926550.
-sys-firmware/bluez-firmware
-
-# Michał Górny <mgorny@gentoo.org> (2024-03-26)
 # Uses deprecated distutils-r1 API.  Depends on dev-qt/qtwebengine:5.
 # Includes the libraries with no other reverse dependencies.
 # Removal on 2024-04-25.  Bug #909996.
