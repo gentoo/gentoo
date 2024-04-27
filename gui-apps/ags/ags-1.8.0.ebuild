@@ -15,7 +15,7 @@ https://github.com/Aylur/${PN}/releases/download/${MY_PV}/${PN}-${MY_PV}.tar.gz 
 https://github.com/Aylur/${PN}/releases/download/${MY_PV}/node_modules-${MY_PV}.tar.gz -> ${P}_node_modules.tar.gz
 "
 
-LICENSE="GPL-3+"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="battery bluetooth fetch greetd network notifications power-profiles system-tray +types"
@@ -23,7 +23,7 @@ IUSE="battery bluetooth fetch greetd network notifications power-profiles system
 DEPEND="
 	dev-libs/glib:2
 	>=dev-libs/gjs-1.73.1
-	sys-libs/glibc
+	virtual/libc
 	sys-libs/pam
 	gui-libs/gtk-layer-shell:0[introspection]
 	media-libs/libpulse[glib,gtk]
@@ -54,10 +54,10 @@ BUILD_DIR="${S}/build"
 src_unpack() {
 	# Unpack the src files into ${S} instead of ${DISTDIR}/ags
 	unpack ${P}.tar.gz
-	mv ${PN} ${S}
+	mv ${PN} "${S}"
 	# Unpack the node modules into the src folder.
 	unpack "${P}_node_modules.tar.gz"
-	mv node_modules ${S}
+	mv node_modules "${S}"
 }
 
 src_configure() {
@@ -74,15 +74,15 @@ src_compile() {
 src_install() {
 	meson_src_install
 	# Set the node module install location to the app dir.
-	instinto "${EPREFIX}/usr/share/com.github.Aylur.ags/"
+	instinto "${EPREFIX}"/usr/share/com.github.Aylur.ags/
 	# Copy packaged NodeJS modules there.
 	doins -r "node_modules" || die
 	# Create a symlink for the executable
-	dosym -r ${EPREFIX}/usr/share/com.github.Aylur.ags/com.github.Aylur.ags ${EPREFIX}/usr/bin/ags || die
+	dosym -r "${EPREFIX}"/usr/share/com.github.Aylur.ags/com.github.Aylur.ags "${EPREFIX}"/usr/bin/ags || die
 }
 
 pkg_postinst() {
 	elog "To learn on how to use ags, please read"
-	elog "https://github.com/Aylur/ags/wiki/configuration"
+	elog "https://aylur.github.io/ags-docs/"
 	elog "which describes its usage and configuration."
 }

@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<upstream>
+		<remote-id type="github">Aylur/ags</remote-id>
+		<bugs-to>https://github.com/Aylur/ags/issues</bugs-to>
+		<changelog>https://github.com/Aylur/ags/blob/main/CHANGELOG.md</changelog>
+	</upstream>
+	<maintainer type="person" proxied="yes">
 		<email>derpdaysyt@hotmail.com</email>
 		<name>DerpDays</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
 		<flag name="bluetooth">Enables support for Bluetooth functionality.</flag>
@@ -16,7 +25,4 @@
 		<flag name="greetd">Enables integration with greetd.</flag>
 		<flag name="types">Builds types into the install.</flag>
 	</use>
-	<longdescription lang="en">
-		The best way to make beautiful and functional wayland widgets (and more)!
-	</longdescription>
 </pkgmetadata>
