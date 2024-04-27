@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="UI for Icinga DB"
 HOMEPAGE="https://icinga.com/docs/icinga-db-web/"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 SRC_URI="https://github.com/Icinga/icingadb-web/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
