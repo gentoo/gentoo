@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# DerpDays <derpdaysyt@hotmail.com> (2024-04-27)
+# Requires dev-lang/typescript which is unavailable on amd64/x32
+gui-apps/ags
+
 # James Le Cuirot <chewi@gentoo.org> (2024-02-17)
 # Requires net-libs/nodejs which is unavailable on amd64/x32.
 net-misc/sunshine

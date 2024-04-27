@@ -17,7 +17,7 @@ https://github.com/Aylur/${PN}/releases/download/${MY_PV}/node_modules-${MY_PV}.
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="battery bluetooth fetch greetd network notifications power-profiles system-tray +types"
 
 DEPEND="
