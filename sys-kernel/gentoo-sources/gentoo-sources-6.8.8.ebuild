@@ -10,12 +10,11 @@ inherit kernel-2
 detect_version
 detect_arch
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa -ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches"
-IUSE="experimental"
-
 DESCRIPTION="Full sources including the Gentoo patchset for the ${KV_MAJOR}.${KV_MINOR} kernel tree"
+HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches"
 SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI}"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa -ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+IUSE="experimental"
 
 pkg_postinst() {
 	kernel-2_pkg_postinst
