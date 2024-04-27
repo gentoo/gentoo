@@ -1,0 +1,31 @@
+diff -Naur a/tools/ipod-lockdown.c b/tools/ipod-lockdown.c
+--- a/tools/ipod-lockdown.c	2013-07-10 14:57:39.000000000 +0100
++++ b/tools/ipod-lockdown.c	2024-04-27 22:28:10.334056758 +0100
+@@ -100,7 +100,7 @@
+ 	plist_get_string_val(ptr, &str);
+ 	if (str != NULL) {
+ 	    ptr = plist_new_string(str);
+-	    plist_dict_insert_item(value, "SerialNumber", ptr);
++	    plist_dict_set_item(value, "SerialNumber", ptr);
+ 	    free(str);
+ 	}
+ 
+@@ -112,15 +112,15 @@
+ 	plist_get_string_val(ptr, &str);
+ 	if (str != NULL) {
+ 	    ptr = plist_new_string(str);
+-	    plist_dict_insert_item(value, "VisibleBuildID", ptr);
++	    plist_dict_set_item(value, "VisibleBuildID", ptr);
+ 	    free(str);
+ 	}
+ 
+ 	ptr = plist_new_string(uuid);
+-	plist_dict_insert_item(value, "FireWireGUID", ptr);
++	plist_dict_set_item(value, "FireWireGUID", ptr);
+ 
+ 	ptr = plist_new_string(uuid);
+-	plist_dict_insert_item(value, "UniqueDeviceID", ptr);
++	plist_dict_set_item(value, "UniqueDeviceID", ptr);
+ 
+ 	plist_to_xml(value, &xml, &xml_length);
+ 
