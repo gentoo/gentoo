@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,6 +40,7 @@ src_prepare() {
 		"${FILESDIR}/${P}-pidfile.patch"
 		"${FILESDIR}/${P}-libdir.patch"
 		"${FILESDIR}/${P}-musl.patch"
+		"${FILESDIR}/${P}-c99.patch"
 	)
 
 	if has_version -d ">=net-dialup/ppp-2.5.0"; then
