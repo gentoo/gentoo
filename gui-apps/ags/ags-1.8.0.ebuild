@@ -70,7 +70,7 @@ src_configure() {
 src_install() {
 	meson_src_install
 	dosym -r "${EPREFIX}"/usr/share/com.github.Aylur.ags/com.github.Aylur.ags "${EPREFIX}"/usr/bin/ags || die
-	use auth && dopamd "${FILESDIR}/ags" || die
+	use auth && ( dopamd "${FILESDIR}/ags" || die )
 }
 
 pkg_postinst() {
