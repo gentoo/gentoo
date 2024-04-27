@@ -12,8 +12,8 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/wmww/gtk4-layer-shell"
 else
-	SRC_URI="https://github.com/wmww/gtk4-layer-shel/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	SRC_URI="https://github.com/wmww/gtk4-layer-shell/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~riscv ~x86"
 fi
 
 DESCRIPTION="Library to create desktop components for Wayland using the Layer Shell protocol"
@@ -22,7 +22,7 @@ HOMEPAGE="https://github.com/wmww/gtk4-layer-shell"
 LICENSE="MIT"
 SLOT="4"
 IUSE="examples gtk-doc introspection test vala"
-KEYWORDS="~amd64"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="vala? ( introspection )"
 
