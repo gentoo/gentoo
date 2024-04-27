@@ -13,11 +13,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="test"
 
-# libical-glib currently (2020-02-29) oddly behind USE=introspection
 RDEPEND="
 	dev-db/sqlite:3
 	>=dev-libs/glib-2.68:2
-	>=dev-libs/libical-3.0.5:0=[introspection(-)]
+	>=dev-libs/libical-3.0.5:0=[glib]
 	>=dev-libs/json-glib-1.0.4
 	>=dev-libs/libmspack-0.4
 	dev-libs/libxml2:2
