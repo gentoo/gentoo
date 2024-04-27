@@ -5,6 +5,23 @@
 		<email>gstreamer@gentoo.org</email>
 		<name>GStreamer package maintainers</name>
 	</maintainer>
+	<longdescription lang="en">
+		GStreamer is a framework for constructing graphs of various filters
+		(termed elements here) that will handle streaming media.
+
+		Any discrete (packetizable) media type is supported, with provisions
+		for automatically determining source type.
+
+		Formatting/framing information is provided
+		with a powerful negotiation framework.
+
+		Plugins are heavily used to provide for all elements,
+		allowing one to construct plugins outside of the GST library,
+		even released binary-only if license require (please don't).
+
+		GStreamer covers a wide range of use cases including: playback,
+		recording, editing, serving streams, voice over ip and video calls.
+	</longdescription>
 	<use>
 		<flag name="orc">Disable some PaX memory protections to allow plugins
 			that use <pkg>dev-lang/orc</pkg> for runtime optimization to be
@@ -12,4 +29,14 @@
 		<flag name="unwind">Enable <pkg>sys-libs/libunwind</pkg> usage for better
 			backtrace support in leaks tracer module</flag>
 	</use>
+	<upstream>
+		<maintainer status="active">
+			<email>tim@centricular.com</email>
+			<name>Tim-Philipp Müller</name>
+		</maintainer>
+		<changelog>https://gstreamer.freedesktop.org/releases/</changelog>
+		<doc>https://gstreamer.freedesktop.org/documentation/gstreamer/gst.html</doc>
+		<bugs-to>https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues</bugs-to>
+		<remote-id type="freedesktop-gitlab">gstreamer/gstreamer</remote-id>
+	</upstream>
 </pkgmetadata>
