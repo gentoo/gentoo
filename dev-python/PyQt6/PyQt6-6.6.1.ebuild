@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -68,7 +68,10 @@ DEPEND="
 	quick? ( >=dev-qt/qtdeclarative-${QT_PV}[opengl] )
 	sensors? ( >=dev-qt/qtsensors-${QT_PV} )
 	serialport? ( >=dev-qt/qtserialport-${QT_PV} )
-	speech? ( >=dev-qt/qtspeech-${QT_PV} )
+	speech? (
+		>=dev-qt/qtdeclarative-${QT_PV}
+		>=dev-qt/qtspeech-${QT_PV}
+	)
 	svg? ( >=dev-qt/qtsvg-${QT_PV} )
 	webchannel? ( >=dev-qt/qtwebchannel-${QT_PV} )
 	websockets? ( >=dev-qt/qtwebsockets-${QT_PV} )
