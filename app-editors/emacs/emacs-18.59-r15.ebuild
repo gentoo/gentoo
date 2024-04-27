@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -73,12 +73,13 @@ src_configure() {
 		-e "s:-lncurses:$("$(tc-getPKG_CONFIG)" --libs ncurses):" \
 		src/s-linux.h || die
 
-	# -O3 and -finline-functions cause segmentation faults at run time.
+	# -O3 and -finline-functions cause segmentation faults at run time;
+	# -flto causes a segmentation fault at compile time.
 	# -Wno-implicit, -Wno-return-type and -Wno-return-mismatch will
 	# quieten newer versions of GCC; feel free to submit a patch adding
 	# all those missing prototypes.
 	strip-flags
-	filter-flags -finline-functions -fpie
+	filter-flags -finline-functions -fpie -flto
 	append-flags -fno-strict-aliasing -Wno-implicit -Wno-return-type \
 		-Wno-return-mismatch
 	append-ldflags $(test-flags -no-pie)	#639562
