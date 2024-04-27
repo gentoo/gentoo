@@ -58,7 +58,7 @@ WLROOTS_RDEPEND="
 "
 WLROOTS_BDEPEND="
 	>=dev-libs/wayland-protocols-1.32
-	dev-util/wayland-scanner
+	dev-util/hyprwayland-scanner
 	virtual/pkgconfig
 "
 RDEPEND="
@@ -91,7 +91,7 @@ BDEPEND="
 	|| ( >=sys-devel/gcc-13:* >=sys-devel/clang-16:* )
 	app-misc/jq
 	dev-build/cmake
-	dev-util/wayland-scanner
+	dev-util/hyprwayland-scanner
 	virtual/pkgconfig
 "
 
