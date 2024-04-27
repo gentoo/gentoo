@@ -2,7 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<upstream>
+		<maintainer status="active">
+			<email>demstof@gmail.com</email>
+			<name>Aylur</name>
+		</maintainer>
 		<remote-id type="github">Aylur/ags</remote-id>
+		<doc>https://aylur.github.io/ags-docs/#documentation</doc>
 		<bugs-to>https://github.com/Aylur/ags/issues</bugs-to>
 		<changelog>https://github.com/Aylur/ags/blob/main/CHANGELOG.md</changelog>
 	</upstream>

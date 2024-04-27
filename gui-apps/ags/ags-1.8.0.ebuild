@@ -11,13 +11,13 @@ HOMEPAGE="https://github.com/Aylur/ags"
 MY_PV="v$PV"
 
 SRC_URI="
-https://github.com/Aylur/${PN}/releases/download/${MY_PV}/${PN}-${MY_PV}.tar.gz -> ${P}.tar.gz
-https://github.com/Aylur/${PN}/releases/download/${MY_PV}/node_modules-${MY_PV}.tar.gz -> ${P}_node_modules.tar.gz
+	https://github.com/Aylur/${PN}/releases/download/${MY_PV}/${PN}-${MY_PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/Aylur/${PN}/releases/download/${MY_PV}/node_modules-${MY_PV}.tar.gz -> ${P}_node_modules.tar.gz
 "
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 IUSE="auth battery bluetooth fetch greetd network notifications power-profiles system-tray +types"
 
 DEPEND="
