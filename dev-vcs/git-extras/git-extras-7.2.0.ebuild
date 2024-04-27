@@ -25,9 +25,16 @@ BDEPEND="
 		$(python_gen_any_dep '
 			>=dev-python/GitPython-3.1.40[${PYTHON_USEDEP}]
 			>=dev-python/pytest-7.2[${PYTHON_USEDEP}]
+			dev-python/testpath[${PYTHON_USEDEP}]
 		')
 	)
 "
+
+python_check_deps() {
+	python_has_version ">=dev-python/GitPython-3.1.40[${PYTHON_USEDEP}]" &&
+		python_has_version ">=dev-python/pytest-7.2[${PYTHON_USEDEP}]" &&
+		python_has_version "dev-python/testpath[${PYTHON_USEDEP}]"
+}
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
