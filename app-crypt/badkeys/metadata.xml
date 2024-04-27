@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person"><email>hanno@gentoo.org</email></maintainer>
+<upstream>
+<remote-id type="github">badkeys/badkeys</remote-id>
+<remote-id type="pypi">badkeys</remote-id>
+</upstream>
+<use>
+<flag name="ssh">Enable ssh scan mode via <pkg>dev-python/paramiko</pkg>.</flag>
+</use>
+</pkgmetadata>
