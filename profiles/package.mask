@@ -331,11 +331,6 @@ net-misc/blinkperl
 net-misc/felix
 
 # Michał Górny <mgorny@gentoo.org> (2024-03-26)
-# Unmaintained.  EAPI 6.  Homepage gone.
-# Removal on 2024-04-25.  Bug #926860.
-app-pda/iripdb
-
-# Michał Górny <mgorny@gentoo.org> (2024-03-26)
 # Unfetchable proprietary fonts.  The alternatives include
 # media-fonts/jomolhari and "Noto Serif Tibetan" from media-fonts/noto.
 # Removal on 2024-04-25.  Bug #926836.
