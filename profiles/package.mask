@@ -382,12 +382,6 @@ sys-auth/pam_ssh
 # Removal on 2024-04-25.  Bug #895222.
 app-misc/tek
 
-# Michał Górny <mgorny@gentoo.org> (2024-03-26)
-# Bad C++ code.  Unmaintained.  Carries a number of patches already.
-# No reverse dependencies.
-# Removal on 2024-04-25.  Bug #924925.
-dev-libs/zthread
-
 # Rahil Bhimjiani <me@rahil.rocks> (2024-03-17)
 # buildah-1.34.0 isn't getting security fixes from upstream
 # https://github.com/containers/buildah/issues/5320
