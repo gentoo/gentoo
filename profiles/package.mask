@@ -388,12 +388,6 @@ app-misc/tek
 # Removal on 2024-04-25.  Bug #924925.
 dev-libs/zthread
 
-# Eli Schwartz <eschwartz93@gmail.com> (2024-03-24)
-# Broken with modern compilers, broken with LTO. Upstream website no
-# longer exists. Unmaintained in Gentoo, no reverse dependencies.
-# Removal on 2024-04-23.  Bug #731942, #863041, #898298.
-sci-libs/xgks-pmel
-
 # Rahil Bhimjiani <me@rahil.rocks> (2024-03-17)
 # buildah-1.34.0 isn't getting security fixes from upstream
 # https://github.com/containers/buildah/issues/5320
