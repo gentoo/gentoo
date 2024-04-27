@@ -47,7 +47,7 @@ RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	net-misc/networkmanager
-	>=net-vpn/eduvpn-common-1.99.0[${PYTHON_USEDEP}]
+	=net-vpn/eduvpn-common-2*[${PYTHON_USEDEP}]
 "
 
 if [[ ${PV} != *9999* ]] ; then
@@ -55,7 +55,7 @@ if [[ ${PV} != *9999* ]] ; then
 fi
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.2.1-desktop.patch"
+	"${FILESDIR}/${PN}-4.3.1-desktop.patch"
 )
 
 pkg_postinst() {
