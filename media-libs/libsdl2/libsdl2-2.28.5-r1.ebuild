@@ -13,9 +13,9 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
 
-IUSE="alsa aqua cpu_flags_ppc_altivec cpu_flags_x86_3dnow cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 custom-cflags dbus doc fcitx4 gles1 gles2 +haptic ibus jack +joystick kms libsamplerate nas opengl oss pipewire pulseaudio sndio +sound static-libs test +threads udev +video vulkan wayland X xscreensaver"
+IUSE="alsa aqua cpu_flags_ppc_altivec cpu_flags_x86_3dnow cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 custom-cflags dbus doc fcitx4 gles1 gles2 +haptic ibus jack +joystick kms libsamplerate nas opengl oss pipewire pulseaudio sndio +sound static-libs test +threads udev +video video_cards_vc4 vulkan wayland X xscreensaver"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	alsa? ( sound )
@@ -39,8 +39,8 @@ COMMON_DEPEND="
 	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
 	dbus? ( >=sys-apps/dbus-1.6.18-r1[${MULTILIB_USEDEP}] )
 	fcitx4? ( app-i18n/fcitx:4 )
-	gles1? ( media-libs/mesa[${MULTILIB_USEDEP},gles1] )
-	gles2? ( >=media-libs/mesa-9.1.6[${MULTILIB_USEDEP},gles2] )
+	gles1? ( media-libs/mesa[${MULTILIB_USEDEP},gles1(+)] )
+	gles2? ( >=media-libs/mesa-9.1.6[${MULTILIB_USEDEP},gles2(+)] )
 	ibus? ( app-i18n/ibus )
 	jack? ( virtual/jack[${MULTILIB_USEDEP}] )
 	kms? (
@@ -62,7 +62,7 @@ COMMON_DEPEND="
 	udev? ( >=virtual/libudev-208:=[${MULTILIB_USEDEP}] )
 	wayland? (
 		>=dev-libs/wayland-1.20[${MULTILIB_USEDEP}]
-		>=media-libs/mesa-9.1.6[${MULTILIB_USEDEP},egl(+),gles2,wayland]
+		>=media-libs/mesa-9.1.6[${MULTILIB_USEDEP},egl(+),gles2(+),wayland]
 		>=x11-libs/libxkbcommon-0.2.0[${MULTILIB_USEDEP}]
 	)
 	X? (
@@ -179,7 +179,7 @@ multilib_src_configure() {
 		$(use_enable sound dummyaudio)
 		$(use_enable wayland video-wayland)
 		--disable-wayland-shared
-		--disable-video-rpi
+		$(use_enable video_cards_vc4 video-rpi)
 		$(use_enable X video-x11)
 		--disable-x11-shared
 		$(use_enable X video-x11-xcursor)
@@ -223,7 +223,6 @@ multilib_src_configure() {
 			SDL_LIBS="-L${BUILD_DIR}/build/.libs -lSDL2"
 			ac_cv_lib_SDL2_ttf_TTF_Init=no
 			CFLAGS="${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
-			LDFLAGS="${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
 		)
 
 		mkdir "${BUILD_DIR}/test" || die
@@ -247,8 +246,7 @@ src_compile() {
 }
 
 multilib_src_test() {
-	unset SDL_GAMECONTROLLERCONFIG SDL_GAMECONTROLLER_USE_BUTTON_LABELS
-	LD_LIBRARY_PATH="${BUILD_DIR}/build/.libs:${LD_LIBRARY_PATH}" emake -Onone -C test check V=1
+	LD_LIBRARY_PATH="${BUILD_DIR}/build/.libs" emake -C test check V=1
 }
 
 multilib_src_install() {
