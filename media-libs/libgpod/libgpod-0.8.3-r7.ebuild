@@ -66,7 +66,7 @@ src_configure() {
 src_install() {
 	default
 	rm "${ED}"/usr/$(get_libdir)/pkgconfig/libgpod-sharp.pc || die
-	use udev && rmdir "${ED}"/tmp || die
+	[[ -d ${ED}/tmp ]] && rmdir "${ED}"/tmp || die
 	find "${ED}" -name '*.la' -type f -delete || die
 }
 
