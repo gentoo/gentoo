@@ -33,7 +33,7 @@ DEPEND="
 	>=gnome-extra/evolution-data-server-${PV}:=[gtk,weather?]
 	>=media-libs/libcanberra-0.25[gtk3]
 	>=net-libs/libsoup-3.0:3.0
-	>=net-libs/webkit-gtk-2.38.0:4.1=[spell?]
+	>=net-libs/webkit-gtk-2.38.0:4.1[spell?]
 	>=x11-libs/cairo-1.9.15[glib]
 	>=x11-libs/gdk-pixbuf-2.24:2
 	>=x11-libs/gtk+-3.22:3
@@ -45,8 +45,6 @@ DEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
 
 	gnome-base/dconf
-	x11-libs/libSM
-	x11-libs/libICE
 
 	archive? ( >=app-arch/gnome-autoar-0.1.1[gtk] )
 	bogofilter? ( mail-filter/bogofilter )
