@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">g15tools</remote-id>
+		<remote-id type="gitlab">menelkir/libg15render</remote-id>
 	</upstream>
 </pkgmetadata>
