@@ -13,7 +13,7 @@ LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="${LLVM_MAJOR}"
 IUSE="+abi_x86_32 abi_x86_64 +clang +debug test"
 # base targets
-IUSE+=" +libfuzzer +memprof +orc +profile +xray"
+IUSE+=" +ctx-profile +libfuzzer +memprof +orc +profile +xray"
 # sanitizer targets, keep in sync with config-ix.cmake
 # NB: ubsan, scudo deliberately match two entries
 SANITIZER_FLAGS=(
@@ -133,6 +133,7 @@ src_configure() {
 		# builtins & crt installed by sys-libs/compiler-rt
 		-DCOMPILER_RT_BUILD_BUILTINS=OFF
 		-DCOMPILER_RT_BUILD_CRT=OFF
+		-DCOMPILER_RT_BUILD_CTX_PROFILE=$(usex ctx-profile)
 		-DCOMPILER_RT_BUILD_LIBFUZZER=$(usex libfuzzer)
 		-DCOMPILER_RT_BUILD_MEMPROF=$(usex memprof)
 		-DCOMPILER_RT_BUILD_ORC=$(usex orc)
