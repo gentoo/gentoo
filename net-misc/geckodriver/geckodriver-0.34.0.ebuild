@@ -200,7 +200,7 @@ LICENSE="MPL-2.0"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 MIT MPL-2.0 Unicode-DFS-2016"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="unchained"
 
