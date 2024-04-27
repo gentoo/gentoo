@@ -1,7 +1,0 @@
-###
-# Calico Felix Agent config
-#
-# The following values are used to configure calico-felix
-#
-
-command_args=""
