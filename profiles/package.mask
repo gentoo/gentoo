@@ -314,11 +314,6 @@ sec-keys/openpgp-keys-jiatan
 ~app-arch/xz-utils-5.6.1
 
 # Michał Górny <mgorny@gentoo.org> (2024-03-26)
-# Last release in 2012.  No reverse dependencies.
-# Removal on 2024-04-25.  Bug #927524.
-dev-python/simplegeneric
-
-# Michał Górny <mgorny@gentoo.org> (2024-03-26)
 # Unmaintained.  EAPI 6.  Homepage gone.  No keywords for modern
 # architectures.
 # Removal on 2024-04-25.  Bug #927208.
