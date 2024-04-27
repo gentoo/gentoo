@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools bash-completion-r1 cuda desktop flag-o-matic systemd toolchain-funcs multilib-minimal
+inherit autotools bash-completion-r1 cuda desktop flag-o-matic systemd toolchain-funcs xdg-utils multilib-minimal
 
 MY_PV="v$(ver_cut 1-2)"
 DESCRIPTION="Displays the hardware topology in convenient formats"
@@ -126,4 +126,12 @@ multilib_src_install_all() {
 
 	find "${ED}" -name '*.la' -delete || die
 	newicon -s 512 "${DISTDIR}/lstopo.png" ${PN}.png
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
