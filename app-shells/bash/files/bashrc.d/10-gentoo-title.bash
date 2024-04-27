@@ -45,6 +45,7 @@ case ${TERM} in
 	foot*         |\
 	rxvt-unicode* |\
 	screen*       |\
+	st-256color   |\
 	tmux*         |\
 	xterm*        )
 		genfun_set_win_title() {

@@ -249,16 +249,26 @@ src_install() {
 
 	default
 
+	my_prefixify() {
+		while read -r; do
+			if [[ $REPLY == *$1* ]]; then
+				REPLY=${REPLY/"/etc/"/"${EPREFIX}/etc/"}
+			fi
+			printf '%s\n' "${REPLY}" || ! break
+		done < "$2" || die
+	}
+
 	dodir /bin
 	mv "${ED}"/usr/bin/bash "${ED}"/bin/ || die
 	dosym bash /bin/rbash
 
 	insinto /etc/bash
 	doins "${FILESDIR}"/bash_logout
-	newins "$(prefixify_ro "${FILESDIR}"/bashrc-r1)" bashrc
+	my_prefixify bashrc.d "${FILESDIR}"/bashrc-r1 | newins - bashrc
 
 	insinto /etc/bash/bashrc.d
-	doins "${FILESDIR}"/bashrc.d/*.bash
+	my_prefixify DIR_COLORS "${FILESDIR}"/bashrc.d/10-gentoo-color.bash | newins - 10-gentoo-color.bash
+	doins "${FILESDIR}"/bashrc.d/10-gentoo-title.bash
 
 	insinto /etc/skel
 	for f in bash{_logout,_profile,rc} ; do

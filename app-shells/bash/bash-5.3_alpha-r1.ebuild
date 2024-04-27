@@ -33,7 +33,7 @@ is_release() {
 
 # The version of readline this bash normally ships with.
 # Note: right now, we don't use the system copy of readline for bash for non-releases.
-READLINE_VER="8.2_p1"
+READLINE_VER="8.3_alpha"
 
 DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html https://git.savannah.gnu.org/cgit/bash.git"
@@ -114,11 +114,6 @@ PATCHES=(
 
 	# Patches from Chet sent to bash-bug ml
 	"${FILESDIR}"/${PN}-5.0-syslog-history-extern.patch
-	"${FILESDIR}"/${PN}-5.2_p15-random-ub.patch
-	"${FILESDIR}"/${PN}-5.2_p15-configure-clang16.patch
-	"${FILESDIR}"/${PN}-5.2_p21-wpointer-to-int.patch
-	"${FILESDIR}"/${PN}-5.2_p21-configure-strtold.patch
-	"${FILESDIR}"/${PN}-5.2_p26-memory-leaks.patch
 )
 
 pkg_setup() {
@@ -188,6 +183,10 @@ src_configure() {
 	# configure warns on use of non-Bison but doesn't abort. The result
 	# may misbehave at runtime.
 	unset YACC
+
+	# wcsnwidth(), substring() issues with -Wlto-type-mismatch, reported
+	# upstream to Chet by email.
+	filter-lto
 
 	local myconf=(
 		--disable-profiling
@@ -296,16 +295,26 @@ src_install() {
 
 	default
 
+	my_prefixify() {
+		while read -r; do
+			if [[ $REPLY == *$1* ]]; then
+				REPLY=${REPLY/"/etc/"/"${EPREFIX}/etc/"}
+			fi
+			printf '%s\n' "${REPLY}" || ! break
+		done < "$2" || die
+	}
+
 	dodir /bin
 	mv "${ED}"/usr/bin/bash "${ED}"/bin/ || die
 	dosym bash /bin/rbash
 
 	insinto /etc/bash
 	doins "${FILESDIR}"/bash_logout
-	newins "$(prefixify_ro "${FILESDIR}"/bashrc-r1)" bashrc
+	my_prefixify bashrc.d "${FILESDIR}"/bashrc-r1 | newins - bashrc
 
 	insinto /etc/bash/bashrc.d
-	doins "${FILESDIR}"/bashrc.d/*.bash
+	my_prefixify DIR_COLORS "${FILESDIR}"/bashrc.d/10-gentoo-color.bash | newins - 10-gentoo-color.bash
+	doins "${FILESDIR}"/bashrc.d/10-gentoo-title.bash
 
 	insinto /etc/skel
 	for f in bash{_logout,_profile,rc} ; do
