@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-04-27)
+# EAPI=6 package, has issues with implicit function declarations, has
+# issues with incompatible types and more. The only reverse dependency
+# is virtual/skkserv, which has other better candidates.
+# Removal on 2024-05-27, bug #930781
+app-i18n/skkserv
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-04-26)
 # Broken and reported as such upstream. EAPI=6.
 # Removal: 2024-05-26.  Bug #912842.
