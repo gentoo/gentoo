@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>gnome@gentoo.org</email>
-    <name>Gentoo GNOME Desktop</name>
-  </maintainer>
-  <upstream>
-    <remote-id type="gnome-gitlab">GNOME/libadwaita</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>gnome@gentoo.org</email>
+		<name>Gentoo GNOME Desktop</name>
+	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<email>alicem@gnome.org</email>
+			<name>Alice Mikhaylenko</name>
+		</maintainer>
+		<changelog>https://gitlab.gnome.org/GNOME/libadwaita/-/blob/main/NEWS</changelog>
+		<doc>https://gnome.pages.gitlab.gnome.org/libadwaita/doc/</doc>
+		<bugs-to>https://gitlab.gnome.org/GNOME/libadwaita/-/issues</bugs-to>
+		<remote-id type="gnome-gitlab">GNOME/libadwaita</remote-id>
+	</upstream>
 </pkgmetadata>
