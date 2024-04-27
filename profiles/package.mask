@@ -314,18 +314,6 @@ sec-keys/openpgp-keys-jiatan
 ~app-arch/xz-utils-5.6.1
 
 # Michał Górny <mgorny@gentoo.org> (2024-03-26)
-# Unmaintained.  Multiple bugs open.  The current version is from 2018,
-# and it has been discontinued as a separate package since.
-# Removal on 2024-04-25.  Bug #926861.
-net-misc/felix
-
-# Michał Górny <mgorny@gentoo.org> (2024-03-26)
-# Unfetchable proprietary fonts.  The alternatives include
-# media-fonts/jomolhari and "Noto Serif Tibetan" from media-fonts/noto.
-# Removal on 2024-04-25.  Bug #926836.
-media-fonts/dzongkha-fonts
-
-# Michał Górny <mgorny@gentoo.org> (2024-03-26)
 # A dead wiget library with no reverse dependencies.  Homepage gone.
 # Removal on 2024-04-25.  Bug #926604.
 x11-libs/scw
