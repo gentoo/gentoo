@@ -1,0 +1,26 @@
+diff -ur a/corec/corec/helpers/CMakeLists.txt b/corec/corec/helpers/CMakeLists.txt
+--- a/corec/corec/helpers/CMakeLists.txt	2024-04-27 08:29:39.265575746 +0000
++++ b/corec/corec/helpers/CMakeLists.txt	2024-04-27 08:33:16.586880084 +0000
+@@ -36,6 +36,9 @@
+ endif(WIN32)
+ target_link_libraries("corec_file" INTERFACE "corec_node" "corec_date")
+ 
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")                       # generate position independent code suitable for shared libraries
++set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -fPIC")                       # generate position independent code suitable for shared libraries
++
+ # Parser API
+ set(corec_parser_SOURCES
+   ${CMAKE_CURRENT_SOURCE_DIR}/parser/buffer.c
+diff -ur a/libmatroska2/CMakeLists.txt b/libmatroska2/CMakeLists.txt
+--- a/libmatroska2/CMakeLists.txt	2024-04-27 08:29:39.269575733 +0000
++++ b/libmatroska2/CMakeLists.txt	2024-04-27 08:31:03.201307061 +0000
+@@ -4,6 +4,9 @@
+ option(CONFIG_LZO1X "Enable lzo (de)compression in libmatroska2" ON)
+ option(CONFIG_NOCODEC_HELPER "Enable Vorbis frame durations in libmatroska2" ON)
+ 
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")                       # generate position independent code suitable for shared libraries
++set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -fPIC")                       # generate position independent code suitable for shared libraries
++
+ set(matroska2_SOURCES
+   ${CMAKE_CURRENT_SOURCE_DIR}/matroskamain.c
+   ${CMAKE_CURRENT_SOURCE_DIR}/matroskablock.c

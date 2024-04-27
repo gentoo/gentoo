@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit cmake
 
 DESCRIPTION="mkvalidator is a command line tool to verify Matroska files for spec conformance"
 HOMEPAGE="https://www.matroska.org/downloads/mkvalidator.html"
@@ -13,22 +13,9 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-src_configure() {
-	tc-export CC CXX
-
-	emake -C corec/tools/coremake
-	mv corec/tools/coremake/coremake . || die
-
-	./coremake $(corec/tools/coremake/system_output.sh) || die
-
-	# fixing generated makefiles
-	sed -i -e 's|^\(LFLAGS.*+=.*\$(LIBS)\)|\1 \$(LDFLAGS)|g' \
-		-e 's|^\(STRIP.*=\)|\1 echo|g' $(find -name "*.mak") || die
-}
-
-src_compile() {
-	emake -j1 V=1 -C ${PN}
-}
+PATCHES=(
+	"${FILESDIR}"/"${P}"-fPIC.patch
+	)
 
 src_install() {
 	dobin release/*/mkv*
