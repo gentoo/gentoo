@@ -34,7 +34,6 @@ BDEPEND="
 DOCS=( CREDITS KEYS NOTICE README )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.2.2-fix-XERCESC-2163.patch
 	"${FILESDIR}"/${PN}-3.2.4-strict-aliasing.patch
 )
 
