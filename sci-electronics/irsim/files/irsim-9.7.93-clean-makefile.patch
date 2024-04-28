@@ -1,0 +1,69 @@
+--- a/Makefile	2024-04-28 12:09:30.171997301 +0000
++++ b/Makefile	2024-04-28 12:12:42.709770097 +0000
+@@ -33,26 +33,26 @@ config:
+ tcllibrary: modules
+ 	@echo --- making Tcl shared-object libraries
+ 	for dir in ${PROGRAMS}; do \
+-		(cd $$dir && ${MAKE} tcl-main); done
++		${MAKE} -C $$dir tcl-main; done
+ 
+ mains: modules
+ 	@echo --- making main programs
+ 	for dir in ${PROGRAMS}; do \
+-		(cd $$dir && ${MAKE} main); done
++		${MAKE} -C $$dir main; done
+ 
+ modules:
+ 	@echo --- making modules
+ 	for dir in ${MODULES}; do \
+-		(cd $$dir && ${MAKE} module); done
++		${MAKE} -C $$dir module; done
+ 
+ libs:
+ 	@echo --- making libraries
+ 	for dir in ${LIBRARIES}; do \
+-		(cd $$dir && ${MAKE} lib); done
++		${MAKE} -C $$dir lib; done
+ 
+ depend:
+ 	for dir in ${MODULES} ${PROGRAMS}; do \
+-		(cd $$dir && ${MAKE} depend); done
++		${MAKE} -C $$dir depend; done
+ 
+ install: $(INSTALL_TARGET)
+ 
+@@ -63,9 +63,9 @@ install-irsim:
+ 
+ install-real: install-dirs
+ 	for dir in ${INSTALL_CAD_DIRS}; do \
+-		(cd $$dir && ${MAKE} install); done
++		${MAKE} -C $$dir install; done
+ 	for dir in ${PROGRAMS}; do \
+-		(cd $$dir && ${MAKE} install); done
++		${MAKE} -C $$dir install; done
+ 
+ install-tcl-dirs:
+ 	${IRSIMDIR}/scripts/mkdirs $(DESTDIR)${BINDIR} $(DESTDIR)${MANDIR} \
+@@ -82,11 +82,11 @@ install-tcl:
+ 
+ install-tcl-real: install-tcl-dirs
+ 	for dir in ${INSTALL_CAD_DIRS} ${PROGRAMS}; do \
+-		(cd $$dir && ${MAKE} install-tcl); done
++		${MAKE} -C $$dir install-tcl; done
+ 
+ clean:
+ 	for dir in ${MODULES} ${PROGRAMS} ${UNUSED_MODULES}; do \
+-		(cd $$dir && ${MAKE} clean); done
++		${MAKE} -C $$dir clean; done
+ 	${RM} *.log
+ 
+ distclean:
+@@ -109,7 +109,7 @@ dist:
+ 
+ clean-mains:
+ 	for dir in ${PROGRAMS}; do \
+-		(cd $$dir && ${RM} $$dir}; done
++		(cd $$dir && ${RM} $$dir); done
+ 
+ tags:
+ 	${RM} tags
