@@ -25,9 +25,9 @@ RDEPEND="
 		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/pyarrow[${PYTHON_USEDEP},parquet]
 		dev-python/unidecode[${PYTHON_USEDEP}]
-		sci-libs/transformers[${PYTHON_USEDEP}]
 	')
 	sci-libs/datasets[${PYTHON_SINGLE_USEDEP}]
+	sci-libs/transformers[${PYTHON_SINGLE_USEDEP}]
 "
 BDEPEND="test? (
 	$(python_gen_cond_dep '
