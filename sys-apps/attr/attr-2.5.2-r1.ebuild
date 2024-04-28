@@ -24,6 +24,10 @@ IUSE="debug nls static-libs"
 
 BDEPEND="nls? ( sys-devel/gettext )"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.5.2-r1-musl-1.2.5.patch"
+)
+
 src_prepare() {
 	default
 
