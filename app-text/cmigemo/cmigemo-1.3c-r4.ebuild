@@ -14,7 +14,7 @@ SRC_URI="mirror://gentoo/${MY_P}.tar.bz2"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc x86"
-IUSE="unicode vim-syntax"
+IUSE="unicode vim"
 
 RDEPEND=">=app-dicts/migemo-dict-200812[unicode=]"
 DEPEND="${RDEPEND}"
@@ -74,7 +74,7 @@ src_install() {
 	mv "${ED}"/usr/share/migemo/${encoding}/*.dat "${ED}"/usr/share/migemo || die
 	rm -rf "${ED}"/usr/share/migemo/{cp932,euc-jp,utf-8}
 
-	if use vim-syntax; then
+	if use vim; then
 		insinto /usr/share/vim/vimfiles/plugin
 		doins tools/migemo.vim
 	fi

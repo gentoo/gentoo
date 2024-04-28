@@ -5,4 +5,7 @@
 		<email>cjk@gentoo.org</email>
 		<name>Cjk</name>
 	</maintainer>
+	<use>
+		<flag name="vim">Install Vim plugin for C/Migemo</flag>
+	</use>
 </pkgmetadata>
