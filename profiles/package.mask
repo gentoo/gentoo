@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2024-04-28)
+# Masked for testing. Tracker bug: bug #930805.
+>=sys-libs/ncurses-6.5
+
 # Jason Zaman <perfinion@gentoo.org> (2024-04-27)
 # Sandboxfs was only experimental in Bazel. It was fully removed in Bazel-7
 # Bazel was removed from gentoo in Feb.
