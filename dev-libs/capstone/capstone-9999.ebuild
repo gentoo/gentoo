@@ -37,8 +37,8 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
 	# Currently "-Werror" is only added in the `next`-development branch, but
-	# not merged into 5.* releases. Eventually this patch may be needed in
-	# version 5 releas line. See bug #911481.
+	# not merged into 5.* releases. Eventually this patch may be needed in the
+	# version 5 release line. See bug #911481.
 	"${FILESDIR}/${P}-werror.patch"
 )
 
