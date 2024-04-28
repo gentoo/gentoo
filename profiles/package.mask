@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Jason Zaman <perfinion@gentoo.org> (2024-04-28)
+# TensorFlow was removed from the tree in feb, Keras applications and
+# preprocessing no longer have any revdeps in the tree. For ML, the
+# recommendation is to install from pip in a venv.
+# Removal in 30 days. Bug #930830
+sci-libs/keras-applications
+sci-libs/keras-preprocessing
+
 # Sam James <sam@gentoo.org> (2024-04-28)
 # Masked for testing. Tracker bug: bug #930805.
 >=sys-libs/ncurses-6.5
