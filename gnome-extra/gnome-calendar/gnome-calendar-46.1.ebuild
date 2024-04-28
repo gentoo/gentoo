@@ -4,7 +4,7 @@
 EAPI=8
 inherit gnome.org gnome2-utils meson virtualx xdg
 
-DESCRIPTION="Manage your online calendars with simple and modern interface"
+DESCRIPTION="Manage your calendars with simple and modern interface"
 HOMEPAGE="https://apps.gnome.org/Calendar/"
 
 LICENSE="GPL-3+"
