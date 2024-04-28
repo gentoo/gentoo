@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ inherit flag-o-matic toolchain-funcs
 
 MY_P="${P}-MIT"
 DESCRIPTION="Migemo library implementation in C"
-HOMEPAGE="http://www.kaoriya.net/#CMIGEMO"
-SRC_URI="http://www.kaoriya.net/dist/var/${MY_P}.tar.bz2"
+HOMEPAGE="https://www.kaoriya.net/software/cmigemo/"
+SRC_URI="mirror://gentoo/${MY_P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
