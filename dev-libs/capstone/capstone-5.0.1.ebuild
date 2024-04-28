@@ -35,6 +35,8 @@ DEPEND="${RDEPEND}
 BDEPEND="${DISTUTILS_DEPS}"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
+RESTRICT="!test? ( test )"
+
 if [[ ${PV} == *_rc* ]]; then
 	# Upstream doesn't flag release candidates (bug 858350)
 	QA_PKGCONFIG_VERSION=""
