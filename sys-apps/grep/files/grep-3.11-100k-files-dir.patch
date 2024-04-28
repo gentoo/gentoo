@@ -1,0 +1,143 @@
+https://bugs.gentoo.org/930825
+https://debbugs.gnu.org/64773
+https://bugs.debian.org/1041588
+https://bugs.debian.org/1041588#105
+
+We backport the following:
+* the fix (https://git.savannah.gnu.org/cgit/gnulib.git/commit/?id=d4d8abb39eb02c555f062b1f83ffcfac999c582f)
+* a test (https://git.savannah.gnu.org/cgit/grep.git/commit/?id=d1c3fbe7722662b449bae23130b644c726473fe3)
+* a fixup commit for the test (https://git.savannah.gnu.org/cgit/grep.git/commit/?id=180e8dd674ede48727c03647dd36c1f8c3379667)
+
+From d4d8abb39eb02c555f062b1f83ffcfac999c582f Mon Sep 17 00:00:00 2001
+From: Bruno Haible <bruno@clisp.org>
+Date: Fri, 5 May 2023 12:02:49 +0200
+Subject: [PATCH] dirfd: Fix bogus override (regression 2023-04-26).
+
+Reported by Bjarni Ingi Gislason <bjarniig@simnet.is> in
+<https://lists.gnu.org/archive/html/bug-gnulib/2023-05/msg00040.html>.
+
+* m4/dirfd.m4 (gl_FUNC_DIRFD): Fix mistake in last change.
+--- a/m4/dirfd.m4
++++ b/m4/dirfd.m4
+@@ -1,4 +1,4 @@
+-# serial 27   -*- Autoconf -*-
++# serial 28   -*- Autoconf -*-
+ 
+ dnl Find out how to get the file descriptor associated with an open DIR*.
+ 
+@@ -40,10 +40,6 @@ AC_DEFUN([gl_FUNC_DIRFD],
+     HAVE_DIRFD=0
+   else
+     HAVE_DIRFD=1
+-    dnl Replace only if the system declares dirfd already.
+-    if test $ac_cv_have_decl_dirfd = yes; then
+-      REPLACE_DIRFD=1
+-    fi
+     dnl Replace dirfd() on native Windows, to support fdopendir().
+     AC_REQUIRE([gl_DIRENT_DIR])
+     if test $DIR_HAS_FD_MEMBER = 0; then
+--- a/configure
++++ b/configure
+@@ -31438,9 +31438,6 @@ printf "%s\n" "$gl_cv_func_dirfd_macro" >&6; }
+     HAVE_DIRFD=0
+   else
+     HAVE_DIRFD=1
+-        if test $ac_cv_have_decl_dirfd = yes; then
+-      REPLACE_DIRFD=1
+-    fi
+ 
+     if test $DIR_HAS_FD_MEMBER = 0; then
+       REPLACE_DIRFD=1
+From d1c3fbe7722662b449bae23130b644c726473fe3 Mon Sep 17 00:00:00 2001
+From: Jim Meyering <meyering@meta.com>
+Date: Fri, 21 Jul 2023 17:42:23 -0700
+Subject: doc: mention the 100,000-entry ENOTSUP bug
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* NEWS: document the fixed bug.
+* tests/100k-entries: New file, to test for this.
+Reported by Vincent Lefevre via Santiago Ruano Rincón in
+https://bugs.gnu.org/64773
+Fixed by gnulib commit v0.1-6175-gd4d8abb39e.
+---
+ tests/100k-entries | 15 +++++++++++++++
+ 2 files changed, 24 insertions(+)
+ create mode 100755 tests/100k-entries
+
+diff --git a/tests/100k-entries b/tests/100k-entries
+new file mode 100755
+index 0000000..382ab3c
+--- /dev/null
++++ b/tests/100k-entries
+@@ -0,0 +1,15 @@
++#!/bin/sh
++# This would make grep-3.11 fail with ENOTSUP and exit 2.
++. "${srcdir=.}/init.sh"; path_prepend_ ../src
++expensive_
++
++fail=0
++
++mkdir t || framework_failure_
++(cd t && seq 100000|xargs touch) || framework_failure_
++
++returns_ 1 grep -r x t > out 2> err
++compare /dev/null out || fail=1
++compare /dev/null err || fail=1
++
++Exit $fail
+-- 
+cgit v1.1
+
+From 180e8dd674ede48727c03647dd36c1f8c3379667 Mon Sep 17 00:00:00 2001
+From: Jim Meyering <meyering@meta.com>
+Date: Sun, 20 Aug 2023 12:42:14 -0700
+Subject: tests: actually package and run the new 100k-entries test
+
+* tests/Makefile.am (TESTS): Include the new test file name,
+100k-entries.
+---
+ tests/Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index d566445..94430a9 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -71,6 +71,7 @@ else
+ endif
+ 
+ TESTS =						\
++  100k-entries					\
+   backref					\
+   backref-alt					\
+   backref-multibyte-slow			\
+-- 
+cgit v1.1
+diff --git a/tests/Makefile.in b/tests/Makefile.in
+index 8ae7bb4..0007f8d 100644
+--- a/tests/Makefile.in
++++ b/tests/Makefile.in
+@@ -1953,6 +1953,7 @@ XFAIL_TESTS = triple-backref glibc-infloop $(am__append_1)
+ # If you're using older glibc you can upgrade to glibc 2.28 or later,
+ # configure --with-included-regex, or ignore the test failure.
+ TESTS = \
++  100k-entries					\
+   backref					\
+   backref-alt					\
+   backref-multibyte-slow			\
+@@ -2430,6 +2431,13 @@ recheck: all $(check_PROGRAMS)
+ 	        am__force_recheck=am--force-recheck \
+ 	        TEST_LOGS="$$log_list"; \
+ 	exit $$?
++100k-entries.log: 100k-entries
++	@p='100k-entries'; \
++	b='100k-entries'; \
++	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
++	--log-file $$b.log --trs-file $$b.trs \
++	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
++	"$$tst" $(AM_TESTS_FD_REDIRECT)
+ backref.log: backref
+ 	@p='backref'; \
+ 	b='backref'; \
