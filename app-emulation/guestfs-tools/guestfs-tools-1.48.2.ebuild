@@ -17,7 +17,9 @@ SRC_URI="https://download.libguestfs.org/${PN}/${MY_PV_1}-${SD}/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0/${MY_PV_1}"
-KEYWORDS="amd64"
+if [[ ${SD} == "stable" ]] ; then
+	KEYWORDS="amd64"
+fi
 IUSE="doc +ocaml +perl test"
 RESTRICT="!test? ( test )"
 
