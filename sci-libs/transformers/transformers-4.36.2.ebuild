@@ -5,7 +5,6 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..12} )
-DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1
 
 DESCRIPTION="State-of-the-art Machine Learning for JAX, PyTorch and TensorFlow"
@@ -22,18 +21,16 @@ KEYWORDS="~amd64"
 RESTRICT="test" # Need some modules, not yet packaged
 
 RDEPEND="
-	sci-libs/tokenizers[${PYTHON_SINGLE_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/filelock[${PYTHON_USEDEP}]
-		dev-python/numpy[${PYTHON_USEDEP}]
-		dev-python/packaging[${PYTHON_USEDEP}]
-		dev-python/pyyaml[${PYTHON_USEDEP}]
-		dev-python/regex[${PYTHON_USEDEP}]
-		dev-python/requests[${PYTHON_USEDEP}]
-		dev-python/tqdm[${PYTHON_USEDEP}]
-		sci-libs/huggingface_hub[${PYTHON_USEDEP}]
-		>=sci-libs/safetensors-0.4.1[${PYTHON_USEDEP}]
-	')
+	dev-python/filelock[${PYTHON_USEDEP}]
+	sci-libs/huggingface_hub[${PYTHON_USEDEP}]
+	dev-python/numpy[${PYTHON_USEDEP}]
+	dev-python/packaging[${PYTHON_USEDEP}]
+	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-python/regex[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
+	sci-libs/safetensors[${PYTHON_USEDEP}]
+	sci-libs/tokenizers[${PYTHON_USEDEP}]
+	dev-python/tqdm[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
