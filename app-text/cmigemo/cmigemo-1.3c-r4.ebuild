@@ -28,9 +28,9 @@ BDEPEND="app-i18n/nkf
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-ldflags.patch
 	# bug #246953
 	"${FILESDIR}"/${P}-gentoo.patch
-	"${FILESDIR}"/${P}-ldflags.patch
 	"${FILESDIR}"/${P}-parallel-build.patch
 	"${FILESDIR}"/${P}-parallel-install.patch
 )
