@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 EAPI=8
 
@@ -49,6 +49,7 @@ src_compile() {
 	ego build ${GOFLAGS} ./cmd/sojuctl
 
 	scdoc <doc/soju.1.scd >doc/soju.1 || die
+	scdoc <doc/sojuctl.1.scd >doc/sojuctl.1 || die
 }
 
 src_install() {
@@ -57,6 +58,7 @@ src_install() {
 	dobin sojuctl
 
 	doman doc/soju.1
+	doman doc/sojuctl.1
 	systemd_dounit contrib/soju.service
 	keepdir /etc/soju
 	insinto /etc/soju
