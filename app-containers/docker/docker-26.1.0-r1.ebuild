@@ -54,6 +54,7 @@ S="${WORKDIR}/${P}/src/${EGO_PN}"
 # https://bugs.gentoo.org/748984 https://github.com/etcd-io/etcd/pull/12552
 PATCHES=(
 	"${FILESDIR}/0001-Openrc-Depend-on-containerd-init-script.patch"
+	"${FILESDIR}/docker-26.1.0-automagic-systemd.patch"
 )
 
 pkg_setup() {
@@ -257,6 +258,8 @@ src_compile() {
 			DOCKER_BUILDTAGS+=" $tag"
 		fi
 	done
+
+	export SYSTEMD=$(usex systemd 1 0)
 
 	# build binaries
 	./hack/make.sh dynbinary || die 'dynbinary failed'

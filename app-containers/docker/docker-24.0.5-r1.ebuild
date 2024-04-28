@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 EGO_PN=github.com/docker/docker
 MY_PV=${PV/_/-}
 inherit linux-info systemd udev golang-vcs-snapshot
-GIT_COMMIT=311b9ff0aa93aa55880e1e5f8871c4fb69583426
+GIT_COMMIT=4ffc61430bbe6d3d405bdf357b766bf303ff3cc5
 
 DESCRIPTION="The core functions you need to create Docker images and run Docker containers"
 HOMEPAGE="https://www.docker.com/"
@@ -13,8 +13,8 @@ SRC_URI="https://github.com/moby/moby/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="apparmor btrfs +container-init device-mapper overlay seccomp selinux"
+KEYWORDS="amd64 ~arm arm64 ppc64 ~riscv ~x86"
+IUSE="apparmor btrfs +container-init device-mapper overlay seccomp selinux systemd"
 
 DEPEND="
 	acct-group/docker
@@ -23,6 +23,7 @@ DEPEND="
 	btrfs? ( >=sys-fs/btrfs-progs-3.16.1 )
 	device-mapper? ( >=sys-fs/lvm2-2.02.89[thin] )
 	seccomp? ( >=sys-libs/libseccomp-2.2.1 )
+	systemd? ( sys-apps/systemd )
 "
 
 # https://github.com/moby/moby/blob/master/project/PACKAGERS.md#runtime-dependencies
@@ -34,8 +35,7 @@ RDEPEND="
 	>=dev-vcs/git-1.7
 	>=app-arch/xz-utils-4.9
 	dev-libs/libltdl
-	>=app-containers/containerd-1.7.3[apparmor?,btrfs?,device-mapper?,seccomp?]
-	>=app-containers/runc-1.1.9[apparmor?,seccomp?]
+	>=app-containers/containerd-1.7.1[apparmor?,btrfs?,device-mapper?,seccomp?]
 	!app-containers/docker-proxy
 	container-init? ( >=sys-process/tini-0.19.0[static] )
 	selinux? ( sec-policy/selinux-docker )
@@ -55,6 +55,7 @@ S="${WORKDIR}/${P}/src/${EGO_PN}"
 # https://bugs.gentoo.org/748984 https://github.com/etcd-io/etcd/pull/12552
 PATCHES=(
 	"${FILESDIR}/0001-Openrc-Depend-on-containerd-init-script.patch"
+	"${FILESDIR}/docker-24.0.5-automagic-systemd.patch"
 )
 
 pkg_setup() {
@@ -263,6 +264,8 @@ src_compile() {
 			DOCKER_BUILDTAGS+=" $tag"
 		fi
 	done
+
+	export SYSTEMD=$(usex systemd 1 0)
 
 	# build binaries
 	./hack/make.sh dynbinary || die 'dynbinary failed'
