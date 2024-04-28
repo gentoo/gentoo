@@ -54,9 +54,33 @@
  else
    " non-builtin version
 -  let g:migemodict = s:SearchDict()
-+  if !exists('g:migemodict')
++  if !get(g:, 'migemodict')
 +    let g:migemodict = s:SearchDict()
 +  endif
    command! -nargs=* Migemo :call <SID>MigemoSearch(<q-args>)
    nnoremap <silent> <leader>mi :call <SID>MigemoSearch('')<cr>
  
+@@ -53,11 +55,6 @@
+       if retval == ''
+         return
+       endif
+-      if has('iconv') && $HOMEDRIVE != ''
+-        let retval = iconv(retval, 'cp932', 'euc-jp')
+-      elseif &encoding != 'euc-jp'
+-        let retval = iconv(retval, &encoding, 'euc-jp')
+-      endif
+       "let retval = system('cmigemo -v -w "'.retval.'" -d "'.g:migemodict.'"')
+       let retval = system('cmigemo -v -w '.retval.' -d "'.g:migemodict.'"')
+       if retval == ''
+@@ -88,11 +85,6 @@
+       echohl None
+       return
+     endif
+-    if has('iconv') && $HOMEDRIVE != ''
+-      let retval = iconv(retval, 'euc-jp', 'cp932')
+-    elseif &encoding != 'euc-jp'
+-      let retval = iconv(retval, 'euc-jp', &encoding)
+-    endif
+   
+     let @/ = retval
+     let v:errmsg = ''
