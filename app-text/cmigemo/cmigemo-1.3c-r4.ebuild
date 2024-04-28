@@ -31,6 +31,8 @@ PATCHES=(
 	# bug #246953
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-ldflags.patch
+	"${FILESDIR}"/${P}-parallel-build.patch
+	"${FILESDIR}"/${P}-parallel-install.patch
 )
 DOCS=( doc/{README_j,TODO_j,vimigemo}.txt )
 
@@ -48,8 +50,7 @@ src_prepare() {
 
 src_compile() {
 	append-flags -fPIC
-	# parallel make b0rked
-	emake -j1 \
+	emake \
 		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
@@ -57,8 +58,7 @@ src_compile() {
 }
 
 src_install() {
-	# parallel make b0rked
-	emake -j1 \
+	emake \
 		prefix="${ED}/usr" \
 		libdir="${ED}/usr/$(get_libdir)" \
 		gcc-install

@@ -9,6 +9,16 @@
  
  include config.mk
  include compile/unix.mak
+--- a/compile/unix.mak
++++ b/compile/unix.mak
+@@ -22,6 +22,7 @@
+ 			$(MKDIR) $$i; \
+ 		fi \
+ 	done
++	touch $@
+ 
+ $(outdir)cmigemo$(EXEEXT): $(objdir)main.$(O) $(libmigemo_LIB)
+ 	$(CC) -o $@ $(objdir)main.$(O) -L. -L$(outdir) -lmigemo $(LDFLAGS)
 --- a/configure
 +++ b/configure
 @@ -31,12 +31,12 @@
