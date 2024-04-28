@@ -9,7 +9,8 @@ if [[ ${PV} = 9999* ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/AgentD/${PN}.git"
 else
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	inherit libtool
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 	SRC_URI="https://infraroot.at/pub/squashfs/${P}.tar.xz"
 fi
 
@@ -30,7 +31,11 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	default
-	[[ ${PV} == "9999" ]] && eautoreconf
+	if [[ ${PV} = "9999" ]]; then
+		eautoreconf
+	else
+		elibtoolize
+	fi
 }
 
 src_configure() {
