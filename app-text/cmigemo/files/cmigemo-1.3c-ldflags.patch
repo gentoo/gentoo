@@ -1,8 +1,6 @@
-diff --git a/compile/Make_gcc.mak b/compile/Make_gcc.mak
-index f042ac6..f91fe92 100644
 --- a/compile/Make_gcc.mak
 +++ b/compile/Make_gcc.mak
-@@ -28,7 +28,7 @@ include compile/clean_unix.mak
+@@ -28,7 +28,7 @@
  #
  $(libmigemo_LIB): $(libmigemo_DSO)
  $(libmigemo_DSO): $(libmigemo_OBJ)
