@@ -270,9 +270,11 @@ texlive-common_update_tlpdb() {
 	touch "${new_tlpdb}" || die
 
 	if [[ -d "${tlpobj}" ]]; then
+		# The "sed -s '$G' below concatenates all tlpobj files separated
+		# by a newline.
 		find "${tlpobj}" -maxdepth 1 -type f -name "*.tlpobj" -print0 |
 			sort -z |
-			xargs -0 --no-run-if-empty cat >> "${new_tlpdb}"
+			xargs -0 --no-run-if-empty sed -s '$G' >> "${new_tlpdb}"
 		assert "generating tlpdb failed"
 	fi
 
