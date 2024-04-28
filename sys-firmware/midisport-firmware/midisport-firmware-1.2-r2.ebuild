@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=8
 
 inherit autotools linux-info udev
 
@@ -13,10 +13,12 @@ LICENSE="Midisport"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="sys-apps/fxload
-	virtual/udev"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+RDEPEND="
+	sys-apps/fxload
+	virtual/udev
+"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 CONFIG_CHECK="~SND_USB_AUDIO"
 
@@ -32,4 +34,12 @@ src_prepare() {
 
 src_configure() {
 	econf --with-udev="$(get_udevdir)"
+}
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
 }
