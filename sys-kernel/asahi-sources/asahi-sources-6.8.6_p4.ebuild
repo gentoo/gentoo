@@ -32,7 +32,7 @@ KERNEL_URI="https://github.com/AsahiLinux/linux/archive/refs/tags/${MY_P}.tar.gz
 SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI}
 "
 
-KEYWORDS="~arm64"
+KEYWORDS="arm64"
 IUSE="rust"
 
 DEPEND="
