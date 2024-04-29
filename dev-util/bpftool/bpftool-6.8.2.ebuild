@@ -87,8 +87,8 @@ src_prepare() {
 		popd || die
 	fi
 
-	# dev-python/docutils installs rst2man.py, not rst2man
-	sed -i -e 's/rst2man/rst2man.py/g' Documentation/Makefile || die
+	# Use rst2man or rst2man.py depending on which one exists (#930076)
+	type -P rst2man >/dev/null || sed -i -e 's/rst2man/rst2man.py/g'
 
 	# remove -Werror (bug 887981)
 	sed -i -e 's/\-Werror//g' ../../lib/bpf/Makefile || die
