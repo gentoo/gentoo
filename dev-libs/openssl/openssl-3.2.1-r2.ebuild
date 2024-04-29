@@ -61,6 +61,7 @@ PATCHES=(
 	# bug 923956 (drop on next version bump)
 	"${FILESDIR}"/${P}-riscv.patch
 	"${FILESDIR}"/${P}-CVE-2024-2511.patch
+	"${FILESDIR}"/${P}-s390x.patch
 )
 
 pkg_setup() {
