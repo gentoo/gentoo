@@ -1,0 +1,28 @@
+https://github.com/nipunn1313/mypy-protobuf has not yet been packaged.
+It adds typing information to Anki and is only needed for development.
+
+I have packaged some of its test-dependencies on ::guru. Unfortunately,
+I'm not too happy yet with the quality of the transitive test-dep
+dev-python/pytest-mypy-plugins. Any help is welcome!
+
+From: Lucio Sauer <watermanpaint@posteo.net>
+--- a/build/configure/src/python.rs
++++ b/build/configure/src/python.rs
+@@ -90,9 +90,7 @@ pub struct GenPythonProto {
+ impl BuildAction for GenPythonProto {
+     fn command(&self) -> &str {
+         "$protoc $
+-        --plugin=protoc-gen-mypy=$protoc-gen-mypy $
+         --python_out=$builddir/pylib $
+-        --mypy_out=$builddir/pylib $
+         -Iproto $in"
+     }
+ 
+@@ -110,7 +108,6 @@ impl BuildAction for GenPythonProto {
+             .collect();
+         build.add_inputs("in", &self.proto_files);
+         build.add_inputs("protoc", inputs![":protoc_binary"]);
+-        build.add_inputs("protoc-gen-mypy", inputs![":pyenv:protoc-gen-mypy"]);
+         build.add_outputs("", python_outputs);
+     }
+ 
