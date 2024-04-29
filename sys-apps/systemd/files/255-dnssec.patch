@@ -1,0 +1,27 @@
+https://github.com/systemd/systemd/commit/d840783db5208219c78d73b9b46ef5daae9fea0a
+
+From d840783db5208219c78d73b9b46ef5daae9fea0a Mon Sep 17 00:00:00 2001
+From: Ronan Pigott <ronan@rjp.ie>
+Date: Mon, 29 Apr 2024 02:17:23 -0700
+Subject: [PATCH] resolved: always progress DS queries
+
+If we request a DS and the resolver offers an unsigned SOA, a new
+auxiliary transaction for the DS will be rejected as a loop, and we
+might not make any progress toward finding the DS we need. Let's ensure
+that we at least always check the parent in this case.
+
+Fixes: 47690634f157 ("resolved: don't request the SOA for every dns label")
+--- a/src/resolve/resolved-dns-transaction.c
++++ b/src/resolve/resolved-dns-transaction.c
+@@ -2618,6 +2618,10 @@ int dns_transaction_request_dnssec_keys(DnsTransaction *t) {
+                                         return r;
+                                 if (r == 0)
+                                         continue;
++
++                                /* If we were looking for the DS RR, don't request it again. */
++                                if (dns_transaction_key(t)->type == DNS_TYPE_DS)
++                                        continue;
+                         }
+ 
+                         r = dnssec_has_rrsig(t->answer, rr->key);
+
