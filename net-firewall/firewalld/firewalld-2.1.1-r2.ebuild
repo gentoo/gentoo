@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit bash-completion-r1 gnome2-utils linux-info optfeature
 inherit plocale python-single-r1 systemd xdg-utils
 
