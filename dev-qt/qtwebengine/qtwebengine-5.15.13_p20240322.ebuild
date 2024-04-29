@@ -98,7 +98,10 @@ BDEPEND="${PYTHON_DEPS}
 	sys-devel/flex
 "
 
-PATCHES=( "${WORKDIR}/${PATCHSET}" )
+PATCHES=(
+	"${WORKDIR}/${PATCHSET}"
+	"${FILESDIR}"/qtwebengine-5.15.13_p20240322-ninja1.12.patch
+)
 
 qtwebengine_check-reqs() {
 	# bug #307861
