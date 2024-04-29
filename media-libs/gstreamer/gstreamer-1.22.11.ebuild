@@ -35,7 +35,7 @@ DOCS=( AUTHORS ChangeLog NEWS MAINTAINERS README.md RELEASE )
 
 multilib_src_configure() {
 	local emesonargs=(
-		-Dtools=$(multilib_is_native_abi && echo enabled || echo disabled)
+		-Dtools=$(usex test enabled $(multilib_is_native_abi && echo enabled || echo disabled))
 		-Dbenchmarks=disabled
 		-Dexamples=disabled
 		-Dcheck=enabled
