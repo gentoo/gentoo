@@ -678,6 +678,7 @@ SRC_URI="${CARGO_CRATE_URIS}
 	-> anki-desktop-ftl-${COMMITS[ftl-desktop]}.gh.tar.gz
 	gui? ( https://git.sr.ht/~antecrescent/gentoo-files/blob/main/app-misc/anki/anki-node_modules-${COMMITS[node_modules]}.tar.xz )
 "
+
 PATCHES=(
 	"${FILESDIR}"/${PV}/configure-offline-build.patch
 	"${FILESDIR}"/${PV}/ninja-gentoo-setup.patch
@@ -687,8 +688,6 @@ PATCHES=(
 	"${FILESDIR}"/${PV}/remove-formatter-dep.patch
 	"${FILESDIR}"/${PV}/remove-yarn-dep.patch
 )
-IUSE="+gui qt6 test"
-RESTRICT="!gui? ( test ) !test? ( test )"
 
 # How to get an up-to-date summary of runtime JS libs' licenses:
 # ./node_modules/.bin/license-checker-rseidelsohn --production --excludePackages anki --summary
@@ -702,7 +701,10 @@ LICENSE+="
 LICENSE+=" Unicode-3.0 openssl"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+
+IUSE="+gui qt6 test"
 REQUIRED_USE="gui? ( ${PYTHON_REQUIRED_USE} )"
+RESTRICT="!gui? ( test ) !test? ( test )"
 
 # Dependencies:
 # Python: python/requirements.{anki,aqt}.in
