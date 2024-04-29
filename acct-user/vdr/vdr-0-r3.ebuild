@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,6 +13,30 @@ DESCRIPTION="VDR (VideoDiskRecorder) service user"
 IUSE="graphlcd legacy-homedir remote serial systemd"
 
 acct-user_add_deps
+
+REQUIRED_USE="
+	remote? ( systemd )
+"
+
+RDEPEND+="
+	graphlcd? (
+		acct-group/lp
+		acct-group/usb
+	)
+	remote? (
+		systemd? (
+			acct-group/input
+		)
+	)
+	serial? (
+		systemd? (
+			acct-group/dialout
+		)
+		!systemd? (
+			acct-group/uucp
+		)
+	)
+"
 
 pkg_setup() {
 	# if user wants to preserve his existing vdr installation,
