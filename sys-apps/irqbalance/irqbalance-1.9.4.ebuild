@@ -12,7 +12,7 @@ S="${WORKDIR}"/${P}/contrib
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ppc ~ppc64 ~riscv ~x86"
 IUSE="caps +numa systemd selinux thermal tui"
 # Hangs
 RESTRICT="test"
