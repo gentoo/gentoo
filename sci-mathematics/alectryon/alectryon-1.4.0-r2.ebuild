@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit elisp-common distutils-r1
 
@@ -13,10 +13,12 @@ HOMEPAGE="https://github.com/cpitclaudel/alectryon/"
 
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
+
 	EGIT_REPO_URI="https://github.com/cpitclaudel/${PN}.git"
 else
 	SRC_URI="https://github.com/cpitclaudel/${PN}/archive/v${PV}.tar.gz
-			-> ${P}.tar.gz"
+		-> ${P}.tar.gz"
+
 	KEYWORDS="~amd64"
 fi
 
@@ -33,7 +35,9 @@ RDEPEND="
 	dev-python/sphinx[${PYTHON_USEDEP}]
 	sci-mathematics/coq-serapi
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+"
 BDEPEND="
 	emacs? (
 		>=app-editors/emacs-23.1:*
@@ -43,7 +47,7 @@ BDEPEND="
 "
 
 DOCS=( CHANGES.rst CITATION.bib README.rst )
-PATCHES=( "${FILESDIR}"/${P}-setup.cfg-version.patch )
+PATCHES=( "${FILESDIR}/${P}-setup.cfg-version.patch" )
 SITEFILE="50${PN}-gentoo.el"
 
 src_compile() {
@@ -66,7 +70,7 @@ src_install() {
 		dodoc ./recipes/sphinx/_build/latex/alectryon-demo.tex
 	fi
 	if use emacs ; then
-		elisp-install ${PN} ./etc/elisp/${PN}.el{,c}
+		elisp-install "${PN}" ./etc/elisp/${PN}.el{,c}
 		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 	fi
 }
