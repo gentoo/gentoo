@@ -14,6 +14,6 @@
         <name>Proxy Maintainers</name>
     </maintainer>
     <upstream>
-        <remote-id type="github">RadeonOpenCompute/ROCT-Thunk-Interface</remote-id>
+        <remote-id type="github">ROCm/ROCT-Thunk-Interface</remote-id>
     </upstream>
 </pkgmetadata>

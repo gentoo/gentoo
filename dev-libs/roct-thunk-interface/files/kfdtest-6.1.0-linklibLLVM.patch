@@ -1,0 +1,31 @@
+https://github.com/ROCm/ROCT-Thunk-Interface/pull/102
+From 6d7d48bb6843405aac2777388edf4c7c2a6f9dc3 Mon Sep 17 00:00:00 2001
+From: Yiyang Wu <xgreenlandforwyy@gmail.com>
+Date: Tue, 30 Apr 2024 13:35:08 +0800
+Subject: [PATCH] Allow linking libLLVM dynamic library rather than separate
+ components
+
+---
+ tests/kfdtest/CMakeLists.txt | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/tests/kfdtest/CMakeLists.txt b/tests/kfdtest/CMakeLists.txt
+index 9d1172e..ccad7f4 100644
+--- a/tests/kfdtest/CMakeLists.txt
++++ b/tests/kfdtest/CMakeLists.txt
+@@ -154,7 +154,11 @@ include_directories(${LLVM_INCLUDE_DIRS})
+ separate_arguments(LLVM_DEFINITIONS_LIST NATIVE_COMMAND ${LLVM_DEFINITIONS})
+ add_definitions(${LLVM_DEFINITIONS_LIST})
+ 
+-llvm_map_components_to_libnames(llvm_libs AMDGPUAsmParser Core Support)
++if (LLVM_LINK_LLVM_DYLIB)
++  set(llvm_libs LLVM)
++else()
++  llvm_map_components_to_libnames(llvm_libs AMDGPUAsmParser Core Support)
++endif()
+ 
+ include_directories(${PROJECT_SOURCE_DIR}/gtest-1.6.0)
+ include_directories(${PROJECT_SOURCE_DIR}/include)
+-- 
+2.44.0
+
