@@ -11,7 +11,7 @@ SRC_URI="https://github.com/libnet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 sparc ~x86"
 
 RDEPEND="
 	net-libs/libnet:1.1
