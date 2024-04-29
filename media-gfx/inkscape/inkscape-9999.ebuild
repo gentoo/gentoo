@@ -64,6 +64,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		dev-python/appdirs[${PYTHON_USEDEP}]
 		dev-python/cachecontrol[${PYTHON_USEDEP}]
 		dev-python/cssselect[${PYTHON_USEDEP}]
+		dev-python/filelock[${PYTHON_USEDEP}]
 		dev-python/lockfile[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/pillow[jpeg?,tiff,webp,${PYTHON_USEDEP}]
