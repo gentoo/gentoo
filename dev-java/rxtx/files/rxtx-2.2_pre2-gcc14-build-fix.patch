@@ -1,0 +1,11 @@
+Bug: https://bugs.gentoo.org/927898
+--- a/src/SerialImp.c
++++ b/src/SerialImp.c
+@@ -79,6 +79,7 @@
+ #include <sys/param.h>
+ #include <sys/utsname.h>
+ #include <pthread.h>
++#include <sys/sysmacros.h>
+ #else
+ #	include "win32termios.h"
+ /*  FIXME  returns 0 in all cases on win32
