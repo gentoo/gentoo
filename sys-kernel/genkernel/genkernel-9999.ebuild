@@ -165,6 +165,13 @@ src_prepare() {
 	for v in $(set |awk -F= '/^VERSION_/{print $1}') ; do
 	export ${v}
 	done
+
+	if use ibm ; then
+		cp "${S}"/arch/ppc64/kernel-2.6{-pSeries,} || die
+	else
+		cp "${S}"/arch/ppc64/kernel-2.6{.g5,} || die
+	fi
+
 }
 
 src_compile() {
