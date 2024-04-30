@@ -73,6 +73,11 @@ _doclang_cfg() {
 			@gentoo-common.cfg
 			@gentoo-common-ld.cfg
 		EOF
+		if [[ ${triple} == x86_64* ]]; then
+			cat >> "${ED}/etc/clang/${tool}.cfg" <<-EOF || die
+				@gentoo-cet.cfg
+			EOF
+		fi
 	done
 
 	if use kernel_Darwin; then
@@ -85,6 +90,11 @@ _doclang_cfg() {
 		# This configuration file is used by the ${triple}-clang-cpp driver.
 		@gentoo-common.cfg
 	EOF
+	if [[ ${triple} == x86_64* ]]; then
+		cat >> "${ED}/etc/clang/${triple}-clang-cpp.cfg" <<-EOF || die
+			@gentoo-cet.cfg
+		EOF
+	fi
 
 	# Install symlinks for triples with other vendor strings since some
 	# programs insist on mangling the triple.
@@ -175,11 +185,9 @@ src_install() {
 		-include "${EPREFIX}/usr/include/gentoo/fortify.h"
 	EOF
 
-	if use amd64; then
-		cat >> "${ED}/etc/clang/gentoo-hardened.cfg" <<-EOF || die
-			-Xarch_host -fcf-protection=$(usex cet full none)
-		EOF
-	fi
+	newins - gentoo-cet.cfg <<-EOF
+		-Xarch_host -fcf-protection=$(usex cet full none)
+	EOF
 
 	if use kernel_Darwin; then
 		newins - gentoo-hardened-ld.cfg <<-EOF
