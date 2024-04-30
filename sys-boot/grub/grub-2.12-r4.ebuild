@@ -21,15 +21,11 @@ PYTHON_COMPAT=( python3_{10..12} )
 WANT_LIBTOOL=none
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/dkiper.gpg
 
-if [[ -n ${GRUB_AUTOGEN} || -n ${GRUB_BOOTSTRAP} ]]; then
-	inherit python-any-r1
-fi
-
 if [[ -n ${GRUB_AUTORECONF} ]]; then
 	inherit autotools
 fi
 
-inherit bash-completion-r1 flag-o-matic multibuild optfeature toolchain-funcs
+inherit bash-completion-r1 flag-o-matic multibuild optfeature python-any-r1 toolchain-funcs
 
 DESCRIPTION="GNU GRUB boot loader"
 HOMEPAGE="https://www.gnu.org/software/grub/"
@@ -168,11 +164,7 @@ src_prepare() {
 
 	default
 
-	if [[ -n ${GRUB_AUTOGEN} || -n ${GRUB_BOOTSTRAP} ]]; then
-		python_setup
-	else
-		export PYTHON=true
-	fi
+	python_setup
 
 	if [[ -n ${GRUB_BOOTSTRAP} ]]; then
 		eautopoint --force
