@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}"/nss-3.87-use-clang-as-bgo892686.patch
 	"${FILESDIR}"/nss-3.90.2-bmo-1885749-disable-ASM-C25519-on-non-X86_64.patch
 	"${FILESDIR}"/nss-3.90-remove-support-of-curve25519.patch
+	"${FILESDIR}/${PN}-3.90.2-backport-D180718.patch"
 )
 
 src_prepare() {
