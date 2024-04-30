@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit desktop optfeature python-single-r1
 
 MY_P="${PN}-$(ver_cut 1-3)"
@@ -11,7 +11,7 @@ MY_P="${PN}-$(ver_cut 1-3)"
 DESCRIPTION="Enriched clone of the game 'Logical' by Rainbow Arts"
 HOMEPAGE="https://pathological.sourceforge.net/"
 SRC_URI="
-	mirror://sourceforge/pathological/${MY_P}.tar.gz
+	https://downloads.sourceforge.net/pathological/${MY_P}.tar.gz
 	mirror://debian/pool/main/p/pathological/${MY_P/-/_}-${PV/*_p}.debian.tar.xz"
 S="${WORKDIR}/${MY_P}"
 

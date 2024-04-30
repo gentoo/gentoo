@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="SNMP Trap Translator"
-SRC_URI="mirror://sourceforge/snmptt/${P/-/_}.tgz"
+SRC_URI="https://downloads.sourceforge.net/snmptt/${P/-/_}.tgz"
 HOMEPAGE="http://www.snmptt.org/"
 LICENSE="GPL-2"
 

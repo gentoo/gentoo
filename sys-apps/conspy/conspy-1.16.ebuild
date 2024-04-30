@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Remote control for Linux virtual consoles"
 HOMEPAGE="http://conspy.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-1/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}-1/${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"

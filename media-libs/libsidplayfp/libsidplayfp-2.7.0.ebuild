@@ -5,11 +5,11 @@ EAPI=8
 
 DESCRIPTION="Library for the sidplay2 fork with resid-fp"
 HOMEPAGE="https://sourceforge.net/projects/sidplay-residfp/"
-SRC_URI="mirror://sourceforge/sidplay-residfp/${PN}/$(ver_cut 1-2)/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/sidplay-residfp/${PN}/$(ver_cut 1-2)/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/6"
-KEYWORDS="~amd64 ~hppa ~riscv ~x86"
+KEYWORDS="amd64 ~hppa ~riscv x86"
 IUSE="static-libs"
 
 src_prepare() {

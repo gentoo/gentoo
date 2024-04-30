@@ -8,7 +8,7 @@ MY_VERS=( 192k 256k 512k 1024k:etos aranym:emutos- )
 
 DESCRIPTION="Single-user single-tasking operating system for 32-bit Atari computer emulators"
 HOMEPAGE="https://emutos.sourceforge.net"
-SRC_URI="$(printf "mirror://sourceforge/emutos/${PN}-%s-${PV}.zip " "${MY_VERS[@]%:*}")"
+SRC_URI="$(printf "https://downloads.sourceforge.net/emutos/${PN}-%s-${PV}.zip " "${MY_VERS[@]%:*}")"
 S=${WORKDIR}
 
 LICENSE="GPL-2"

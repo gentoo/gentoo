@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 # Deps missing for 3.12
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE='xml(+)'
 
 inherit distutils-r1
@@ -13,7 +13,7 @@ inherit distutils-r1
 MY_P=${PN}3-${PV}
 DESCRIPTION="Web-application vulnerability scanner"
 HOMEPAGE="https://wapiti.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_P}.tar.gz"
 S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"

@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Console Progress Bar"
 HOMEPAGE="http://clpbar.sourceforge.net/"
-SRC_URI="mirror://sourceforge/clpbar/${PN}_${PV}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/clpbar/${PN}_${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

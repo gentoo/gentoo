@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="WordPerfect Document import/export library"
 HOMEPAGE="http://libwpd.sf.net"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.xz"
 
 LICENSE="|| ( LGPL-2.1 MPL-2.0 )"
 SLOT="0.10"

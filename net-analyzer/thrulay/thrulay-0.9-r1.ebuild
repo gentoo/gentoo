@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ DESCRIPTION="Measure the capacity of a network by sending a bulk TCP stream over
 HOMEPAGE="http://www.internet2.edu/~shalunov/thrulay/"
 SRC_URI="
 	http://www.internet2.edu/~shalunov/thrulay/${P}.tar.gz
-	mirror://sourceforge/${PN}/${P}.tar.gz"
+	https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 # init.d is GPL-2
 LICENSE="BSD GPL-2"

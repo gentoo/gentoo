@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit toolchain-funcs qmake-utils
 
 DESCRIPTION="Qt-based GUI to configure a space navigator device"
 HOMEPAGE="http://spacenav.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/spacenav/spacenavd%20config%20gui/${PN}%20${PV}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/project/spacenav/spacenavd%20config%20gui/${PN}%20${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Utility that displays its input in a text box on your root window"
 HOMEPAGE="https://sourceforge.net/projects/xrootconsole/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

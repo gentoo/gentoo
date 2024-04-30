@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ DESCRIPTION="GPL Arcade Volleyball"
 HOMEPAGE="https://gav.sourceforge.net/"
 # the themes are behind a lame php-counter script.
 SRC_URI="
-	mirror://sourceforge/gav/${P}.tar.gz
+	https://downloads.sourceforge.net/gav/${P}.tar.gz
 	mirror://gentoo/fabeach.tgz
 	mirror://gentoo/florindo.tgz
 	mirror://gentoo/inverted.tgz

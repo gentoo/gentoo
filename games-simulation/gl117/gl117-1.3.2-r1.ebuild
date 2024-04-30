@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ MY_P="gl-117-${PV}-src"
 DESCRIPTION="Action flight simulator"
 HOMEPAGE="https://sourceforge.net/projects/gl-117/"
 SRC_URI="
-	mirror://sourceforge/gl-117/${MY_P}.tar.bz2
+	https://downloads.sourceforge.net/gl-117/${MY_P}.tar.bz2
 	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"
 S="${WORKDIR}/${MY_P}"
 

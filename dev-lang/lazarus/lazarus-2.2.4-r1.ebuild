@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ FPCVER="3.2.2"
 
 DESCRIPTION="feature rich visual programming environment emulating Delphi"
 HOMEPAGE="https://www.lazarus-ide.org/"
-SRC_URI="mirror://sourceforge/lazarus/${P}-0.tar.gz https://dev.gentoo.org/~amynka/snap/${P}-makefile.patch.bz2"
+SRC_URI="https://downloads.sourceforge.net/lazarus/${P}-0.tar.gz https://dev.gentoo.org/~amynka/snap/${P}-makefile.patch.bz2"
 
 LICENSE="GPL-2 LGPL-2.1-with-linking-exception"
 SLOT="0/2.2" # Note: Slotting Lazarus needs slotting fpc, see DEPEND.

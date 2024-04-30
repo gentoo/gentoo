@@ -1,0 +1,34 @@
+
+This is a backport from
+https://github.com/elogind/elogind/commit/d8dc8f66d6e64dfb45fc55c430a31b08b27c5165?diff=split&w=0
+effectively squashing several commits.
+
+diff -ruN elogind-252.9.orig/meson.build elogind-252.9/meson.build
+--- elogind-252.9.orig/meson.build	2024-05-01 02:51:35.602756227 +1100
++++ elogind-252.9/meson.build	2024-05-01 02:53:31.763434742 +1100
+@@ -655,7 +655,8 @@
+ #         ['pivot_root',        '''#include <stdlib.h>
+ #                                  #include <unistd.h>'''],     # no known header declares pivot_root
+ #endif // 0
+-#if 1 /// elogind supports musl, but upstream refuses to add qsort_r
++#if 1 /// elogind supports musl, but upstream refuses to add qsort_r and has removed basename
++        ['basename',          '''#include <string.h>'''],     # _GNU_SOURCE is defined, so test for GNU basename()
+         ['qsort_r',           '''#include <stdlib.h>'''],
+ #endif // 1
+         ['ioprio_get',        '''#include <sched.h>'''],      # no known header declares ioprio_get
+diff -ruN elogind-252.9.orig/src/basic/musl_missing.h elogind-252.9/src/basic/musl_missing.h
+--- elogind-252.9.orig/src/basic/musl_missing.h	2023-05-15 22:35:29.000000000 +1100
++++ elogind-252.9/src/basic/musl_missing.h	2024-05-01 02:54:48.293885181 +1100
+@@ -44,6 +44,12 @@
+ #  define HAVE_SECURE_GETENV 1
+ #endif // HAVE_[__]SECURE_GETENV
+ 
++#if ! HAVE_BASENAME
++/* Poor man's basename */
++#  define basename(path) \
++        (strrchr(path, '/') ? strrchr(path, '/')+1 : path)
++#endif // HAVE_BASENAME
++
+ /* strndupa may already be defined in another compatibility header */
+ #if !defined(strndupa)
+ #define strndupa(x_src, x_n) \

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,15 +8,15 @@ inherit desktop multiprocessing toolchain-funcs
 DESCRIPTION="The Ur-Quan Masters: Port of Star Control 2"
 HOMEPAGE="https://sc2.sourceforge.net/"
 SRC_URI="
-	mirror://sourceforge/sc2/${P}-src.tgz
-	mirror://sourceforge/sc2/${P}-content.uqm
-	music? ( mirror://sourceforge/sc2/${P}-3domusic.uqm )
-	voice? ( mirror://sourceforge/sc2/${P}-voice.uqm )
+	https://downloads.sourceforge.net/sc2/${P}-src.tgz
+	https://downloads.sourceforge.net/sc2/${P}-content.uqm
+	music? ( https://downloads.sourceforge.net/sc2/${P}-3domusic.uqm )
+	voice? ( https://downloads.sourceforge.net/sc2/${P}-voice.uqm )
 	remix? (
-		mirror://sourceforge/sc2/${PN}-remix-disc1.uqm
-		mirror://sourceforge/sc2/${PN}-remix-disc2.uqm
-		mirror://sourceforge/sc2/${PN}-remix-disc3.uqm
-		mirror://sourceforge/sc2/${PN}-remix-disc4-1.uqm
+		https://downloads.sourceforge.net/sc2/${PN}-remix-disc1.uqm
+		https://downloads.sourceforge.net/sc2/${PN}-remix-disc2.uqm
+		https://downloads.sourceforge.net/sc2/${PN}-remix-disc3.uqm
+		https://downloads.sourceforge.net/sc2/${PN}-remix-disc4-1.uqm
 	)"
 
 LICENSE="CC-BY-2.0 CC-BY-NC-SA-2.5 GPL-2+"

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit multilib toolchain-funcs wrapper wxwidgets xdg
 
 DESCRIPTION="Port of 7-Zip archiver for Unix"
 HOMEPAGE="http://p7zip.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}_src_all.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${PN}_${PV}_src_all.tar.bz2"
 S="${WORKDIR}/${PN}_${PV}"
 
 LICENSE="LGPL-2.1 rar? ( unRAR )"

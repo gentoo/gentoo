@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ MY_P="${PN}V${PV}"
 
 DESCRIPTION="Fast multiple sequence alignments using partial-order graphs"
 HOMEPAGE="http://bioinfo.mbi.ucla.edu/poa/"
-SRC_URI="mirror://sourceforge/poamsa/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/poamsa/${MY_P}.tar.gz"
 
 # According to SF project page
 LICENSE="GPL-2"

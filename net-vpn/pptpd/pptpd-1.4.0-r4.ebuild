@@ -7,7 +7,7 @@ inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Linux Point-to-Point Tunnelling Protocol Server"
 HOMEPAGE="http://poptop.sourceforge.net/"
-SRC_URI="mirror://sourceforge/poptop/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/poptop/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

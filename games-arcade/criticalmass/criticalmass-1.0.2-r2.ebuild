@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ MY_P="CriticalMass-${PV}"
 
 DESCRIPTION="SDL/OpenGL space shoot'em up game"
 HOMEPAGE="https://criticalmass.sourceforge.net/"
-SRC_URI="mirror://sourceforge/criticalmass/${MY_P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/criticalmass/${MY_P}.tar.bz2"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2+ ZLIB"

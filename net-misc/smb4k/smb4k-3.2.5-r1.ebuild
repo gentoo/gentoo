@@ -13,7 +13,7 @@ HOMEPAGE="https://apps.kde.org/smb4k/
 https://sourceforge.net/p/smb4k/home/Home/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
+	SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.xz"
 	KEYWORDS="amd64 ~arm64 ~riscv x86"
 fi
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="An ANSI C implementation of dynamic arrays (approximation of C++ vectors)"
 HOMEPAGE="http://cvector.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}/${MY_PN}-$(ver_cut 1-3)/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${PN}/${MY_PN}-$(ver_cut 1-3)/${MY_P}.tar.gz"
 S="${WORKDIR}"/${MY_P}
 
 LICENSE="LGPL-2.1"

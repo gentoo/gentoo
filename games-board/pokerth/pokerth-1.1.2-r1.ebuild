@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit desktop qmake-utils xdg
 
 DESCRIPTION="Texas Hold'em poker game"
 HOMEPAGE="https://www.pokerth.net/"
-SRC_URI="mirror://sourceforge/pokerth/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/pokerth/${P}.tar.gz"
 
 LICENSE="AGPL-3 GPL-1 GPL-2 GPL-3 BitstreamVera public-domain"
 SLOT="0"

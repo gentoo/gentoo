@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,8 +10,8 @@ MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="LaTeX macros for writing documents following the ABNT norms"
 HOMEPAGE="https://www.abntex.net.br/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz
-	doc? ( mirror://sourceforge/${PN}/${PN}-doc-${MY_PV}.tar.gz )"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_P}.tar.gz
+	doc? ( https://downloads.sourceforge.net/${PN}/${PN}-doc-${MY_PV}.tar.gz )"
 
 LICENSE="LPPL-1.3c"
 SLOT="0"

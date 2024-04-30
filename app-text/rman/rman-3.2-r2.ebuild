@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="PolyGlotMan man page translator AKA RosettaMan"
 HOMEPAGE="https://sourceforge.net/projects/polyglotman/"
-SRC_URI="mirror://sourceforge/polyglotman/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/polyglotman/${P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"

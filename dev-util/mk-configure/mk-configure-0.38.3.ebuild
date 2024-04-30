@@ -7,7 +7,7 @@ inherit multiprocessing toolchain-funcs
 
 DESCRIPTION="Lightweight replacement for GNU autotools"
 HOMEPAGE="https://sourceforge.net/projects/mk-configure/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD BSD-2 GPL-2+ MIT"
 SLOT="0"

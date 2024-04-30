@@ -7,7 +7,7 @@ MY_P=${PN}-${PV:0:4}.${PV:4:2}.${PV:6:2}
 
 DESCRIPTION="Set of 'Rubber Stamp' images which can be used within Tux Paint"
 HOMEPAGE="https://www.tuxpaint.org/stamps"
-SRC_URI="mirror://sourceforge/tuxpaint/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/tuxpaint/${MY_P}.tar.gz"
 S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"

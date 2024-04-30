@@ -7,7 +7,7 @@ inherit flag-o-matic readme.gentoo-r1 toolchain-funcs
 
 DESCRIPTION="Heirloom toolchest - original Unix tools"
 HOMEPAGE="https://heirloom.sourceforge.net/tools.html"
-SRC_URI="mirror://sourceforge/heirloom/heirloom/${PV}/heirloom-${PV}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/heirloom/heirloom/${PV}/heirloom-${PV}.tar.bz2"
 S="${WORKDIR}/heirloom-${PV}"
 
 LICENSE="ZLIB BSD BSD-4 CDDL GPL-2+ LGPL-2.1+ LPL-1.02 Info-ZIP public-domain"

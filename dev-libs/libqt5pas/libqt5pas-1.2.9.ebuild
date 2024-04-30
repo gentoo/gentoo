@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ MY_P="lazarus-2.2.4-0"
 
 DESCRIPTION="Free Pascal Qt5 bindings library updated by lazarus IDE."
 HOMEPAGE="https://gitlab.com/freepascal.org/lazarus/lazarus"
-SRC_URI="mirror://sourceforge/lazarus/${MY_P}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/lazarus/${MY_P}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64 ~x86"
 
 LICENSE="LGPL-3"

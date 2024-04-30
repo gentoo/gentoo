@@ -9,7 +9,7 @@ MY_P="${PN}-$(ver_rs 2 b)"
 
 DESCRIPTION="Dump/restore ext2fs backup utilities"
 HOMEPAGE="https://dump.sourceforge.io/"
-SRC_URI="mirror://sourceforge/dump/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/dump/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"

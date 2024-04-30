@@ -12,7 +12,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://git.code.sf.net/p/qsynth/code"
 	inherit git-r3
 else
-	SRC_URI="mirror://sourceforge/qsynth/${P}.tar.gz"
+	SRC_URI="https://downloads.sourceforge.net/qsynth/${P}.tar.gz"
 	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 fi
 

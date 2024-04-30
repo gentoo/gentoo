@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="utility to test and create .sfv files and create .par files"
 HOMEPAGE="https://pure-sfv.sourceforge.net/"
-SRC_URI="mirror://sourceforge/pure-sfv/${PN}_${PV}_src.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/pure-sfv/${PN}_${PV}_src.tar.gz"
 S="${WORKDIR}"
 
 LICENSE="GPL-2"

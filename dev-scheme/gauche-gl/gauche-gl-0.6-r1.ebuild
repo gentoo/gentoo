@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -9,7 +9,7 @@ MY_P="${P^g}"
 
 DESCRIPTION="OpenGL binding for Gauche"
 HOMEPAGE="https://practical-scheme.net/gauche/"
-SRC_URI="mirror://sourceforge/${PN%-*}/${MY_P}.tgz"
+SRC_URI="https://downloads.sourceforge.net/${PN%-*}/${MY_P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"

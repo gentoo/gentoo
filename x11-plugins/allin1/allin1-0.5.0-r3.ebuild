@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="All in one monitoring dockapp: RAM, CPU, Net, Power, df, seti"
 HOMEPAGE="http://ilpettegolo.altervista.org/linux_allin1.en.shtml"
-SRC_URI="mirror://sourceforge/allinone/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/allinone/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

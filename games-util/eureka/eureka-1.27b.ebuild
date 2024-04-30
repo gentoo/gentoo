@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit desktop toolchain-funcs xdg
 
 DESCRIPTION="Graphical map editor for games using the DOOM engine"
 HOMEPAGE="https://eureka-editor.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}-editor/Eureka/${PV%[a-z]}/${P}-source.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}-editor/Eureka/${PV%[a-z]}/${P}-source.tar.gz"
 S="${WORKDIR}/${P}-source"
 
 LICENSE="GPL-2+"

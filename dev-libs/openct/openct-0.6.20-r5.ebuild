@@ -7,7 +7,7 @@ inherit autotools flag-o-matic udev
 
 DESCRIPTION="library for accessing smart card terminals"
 HOMEPAGE="https://github.com/OpenSC/openct/wiki"
-SRC_URI="mirror://sourceforge/opensc/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/opensc/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

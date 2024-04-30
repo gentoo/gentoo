@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit font
 
 DESCRIPTION="WenQuanYi Unibit CJK font"
 HOMEPAGE="http://wenq.org/wqy2/index.cgi https://sourceforge.net/projects/wqy/"
-SRC_URI="mirror://sourceforge/wqy/${PN}-bdf-${PV/_p/-}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/wqy/${PN}-bdf-${PV/_p/-}.tar.gz"
 S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"

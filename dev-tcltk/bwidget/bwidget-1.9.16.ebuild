@@ -7,7 +7,7 @@ inherit virtualx
 
 DESCRIPTION="High-level widget set for Tcl/Tk"
 HOMEPAGE="http://tcllib.sourceforge.net/"
-SRC_URI="mirror://sourceforge/tcllib/BWidget/${PV}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/tcllib/BWidget/${PV}/${P}.tar.gz"
 
 LICENSE="tcltk"
 SLOT="0"

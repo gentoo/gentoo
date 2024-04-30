@@ -8,7 +8,7 @@ inherit autotools
 
 DESCRIPTION="Library parsing various ebook formats"
 HOMEPAGE="https://sourceforge.net/projects/libebook/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.xz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_P}.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="MPL-2.0"

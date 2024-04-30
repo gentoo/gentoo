@@ -7,7 +7,7 @@ inherit desktop
 
 DESCRIPTION="A tool for controlling amateur radios"
 HOMEPAGE="http://groundstation.sourceforge.net/grig/"
-SRC_URI="mirror://sourceforge/groundstation/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/groundstation/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

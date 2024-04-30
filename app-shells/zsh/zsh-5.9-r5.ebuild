@@ -9,10 +9,10 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~
 
 SRC_URI="https://www.zsh.org/pub/${P}.tar.xz
 	https://www.zsh.org/pub/old/${P}.tar.xz
-	mirror://sourceforge/${PN}/${P}.tar.xz
+	https://downloads.sourceforge.net/${PN}/${P}.tar.xz
 	doc? (
 		https://www.zsh.org/pub/${P}-doc.tar.xz
-		mirror://sourceforge/${PN}/${P}-doc.tar.xz
+		https://downloads.sourceforge.net/${PN}/${P}-doc.tar.xz
 	)"
 
 DESCRIPTION="UNIX Shell similar to the Korn shell"

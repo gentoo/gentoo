@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic toolchain-funcs
 
 DESCRIPTION="Drop in replacement for ueberzug written in C++"
 HOMEPAGE="https://github.com/jstkdng/ueberzugpp/"
@@ -53,7 +53,18 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-libcxx18.patch
+)
+
 src_configure() {
+	if use X && tc-is-clang && has_version sys-libs/libcxx; then
+		# X support makes use of C++20's std::jthread which is currently
+		# marked experimental (at least) in <=libcxx-18 (should limit
+		# version in above libcxx check whenever this becomes unnecessary)
+		append-cxxflags $(test-flags-CXX -fexperimental-library)
+	fi
+
 	# TODO?: wayfire plugin is skipped for now (needs wlroots which is
 	# likely to be messier), but could be handled if there is a demand
 

@@ -7,7 +7,7 @@ MY_P="${P#pidgin-}"
 
 DESCRIPTION="Bot Sentry is a Pidgin plugin to prevent Instant Message (IM) spam"
 HOMEPAGE="https://sourceforge.net/projects/pidgin-bs/"
-SRC_URI="mirror://sourceforge/pidgin-bs/${MY_P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/pidgin-bs/${MY_P}.tar.bz2"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2+"

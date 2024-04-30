@@ -3,14 +3,14 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit cmake desktop optfeature python-single-r1
 
 DESCRIPTION="Shane's Chess Information Database"
 HOMEPAGE="https://scid.sourceforge.net/"
 SRC_URI="
-	mirror://sourceforge/scid/${PN}-code-${PV}.zip
-	mirror://sourceforge/scid/${P}_x64_linux.tar.gz"
+	https://downloads.sourceforge.net/scid/${PN}-code-${PV}.zip
+	https://downloads.sourceforge.net/scid/${P}_x64_linux.tar.gz"
 S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"

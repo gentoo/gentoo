@@ -7,7 +7,7 @@ inherit autotools flag-o-matic pam
 
 DESCRIPTION="Console-based application to efficiently save raw partition data to image file"
 HOMEPAGE="https://www.partimage.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"

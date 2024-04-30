@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit cmake-multilib
 MY_P="${P}-Source"
 DESCRIPTION="SoX Resampler library"
 HOMEPAGE="https://sourceforge.net/p/soxr/wiki/Home/"
-SRC_URI="mirror://sourceforge/soxr/${MY_P}.tar.xz"
+SRC_URI="https://downloads.sourceforge.net/soxr/${MY_P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

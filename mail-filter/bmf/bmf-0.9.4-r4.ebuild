@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Fast and small Bayesian spam filter"
 HOMEPAGE="https://sourceforge.net/projects/bmf/"
-SRC_URI="mirror://sourceforge/bmf/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/bmf/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

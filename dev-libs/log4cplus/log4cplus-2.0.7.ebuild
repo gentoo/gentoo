@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="C++ port of the Log for Java (log4j) logging library"
 HOMEPAGE="https://log4cplus.sourceforge.io/ https://github.com/log4cplus/log4cplus"
-SRC_URI="mirror://sourceforge/project/${PN}/${PN}-stable/${PV}/${P}.tar.xz"
+SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}-stable/${PV}/${P}.tar.xz"
 
 LICENSE="|| ( Apache-2.0 BSD-2 )"
 SLOT="0/3"

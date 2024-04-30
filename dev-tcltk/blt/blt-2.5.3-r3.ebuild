@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ inherit autotools flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="Extension to Tk, adding new widgets, geometry managers, and misc commands"
 HOMEPAGE="https://sourceforge.net/projects/wize/"
-SRC_URI="mirror://sourceforge/wize/${PN}-src-${PV}.zip
+SRC_URI="https://downloads.sourceforge.net/wize/${PN}-src-${PV}.zip
 	https://dev.gentoo.org/~tupone/distfiles/${P}-debian-patches.tar.gz"
 
 IUSE="jpeg static-libs"

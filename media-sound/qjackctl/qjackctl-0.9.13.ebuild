@@ -7,7 +7,7 @@ inherit xdg cmake
 
 DESCRIPTION="Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections"
 HOMEPAGE="https://qjackctl.sourceforge.io/"
-SRC_URI="mirror://sourceforge/qjackctl/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/qjackctl/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

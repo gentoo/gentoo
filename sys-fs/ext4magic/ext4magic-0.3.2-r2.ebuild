@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Tool for recovery of deleted or overwritten files on ext3/ext4 filesystems"
 HOMEPAGE="https://sourceforge.net/projects/ext4magic/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2 FSFAP GPL-2 GPL-2+"
 SLOT="0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,17 +19,17 @@ P_RUPALI="Rupali_01-02-2007"
 
 DESCRIPTION="A collection of Free fonts for the Bangla (Bengali) script"
 HOMEPAGE="http://ekushey.org/index.php/page/otf_bangla_fonts"
-SRC_URI="mirror://sourceforge/ekushey/${P_LOHIT}.ttf
-	mirror://sourceforge/ekushey/${P_MOHUA}.ttf
-	mirror://sourceforge/ekushey/${P_AZAD}.ttf
-	mirror://sourceforge/ekushey/${P_PUJA}.ttf
-	mirror://sourceforge/ekushey/${P_DURGA}.ttf
-	mirror://sourceforge/ekushey/${P_SARASWATII}.ttf
-	mirror://sourceforge/ekushey/${P_SHARIFA}.ttf
-	mirror://sourceforge/ekushey/${P_SUMIT}.ttf
-	mirror://sourceforge/ekushey/${P_PUNARBHABA}.ttf
-	mirror://sourceforge/ekushey/${P_SOLAIMANLIPI}.ttf
-	mirror://sourceforge/ekushey/${P_RUPALI}.ttf"
+SRC_URI="https://downloads.sourceforge.net/ekushey/${P_LOHIT}.ttf
+	https://downloads.sourceforge.net/ekushey/${P_MOHUA}.ttf
+	https://downloads.sourceforge.net/ekushey/${P_AZAD}.ttf
+	https://downloads.sourceforge.net/ekushey/${P_PUJA}.ttf
+	https://downloads.sourceforge.net/ekushey/${P_DURGA}.ttf
+	https://downloads.sourceforge.net/ekushey/${P_SARASWATII}.ttf
+	https://downloads.sourceforge.net/ekushey/${P_SHARIFA}.ttf
+	https://downloads.sourceforge.net/ekushey/${P_SUMIT}.ttf
+	https://downloads.sourceforge.net/ekushey/${P_PUNARBHABA}.ttf
+	https://downloads.sourceforge.net/ekushey/${P_SOLAIMANLIPI}.ttf
+	https://downloads.sourceforge.net/ekushey/${P_RUPALI}.ttf"
 
 LICENSE="GPL-2+ OFL"
 SLOT="0"

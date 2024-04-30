@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Ethernet program loader for the Dreamcast"
 HOMEPAGE="https://cadcdev.sourceforge.net/"
-SRC_URI="mirror://sourceforge/cadcdev/dcload-ip-${PV}-src.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/cadcdev/dcload-ip-${PV}-src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -6,7 +6,7 @@ inherit readme.gentoo-r1 systemd
 
 DESCRIPTION="An IMAP daemon designed specifically for maildirs"
 HOMEPAGE="https://www.courier-mta.org/imap/"
-SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/courier/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

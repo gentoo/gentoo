@@ -26,7 +26,7 @@ else
 	MY_P="${PN/-utils}-${PV/_}"
 	SRC_URI="
 		https://github.com/tukaani-project/xz/releases/download/v${PV/_}/${MY_P}.tar.gz
-		mirror://sourceforge/lzmautils/${MY_P}.tar.gz
+		https://downloads.sourceforge.net/lzmautils/${MY_P}.tar.gz
 		https://tukaani.org/xz/${MY_P}.tar.gz
 		verify-sig? (
 			https://github.com/tukaani-project/xz/releases/download/v${PV/_}/${MY_P}.tar.gz.sig

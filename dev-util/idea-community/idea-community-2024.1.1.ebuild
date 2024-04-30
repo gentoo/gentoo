@@ -4,7 +4,7 @@
 EAPI=8
 inherit desktop wrapper
 
-MY_PV=$(ver_cut 1-2)
+MY_PV=$(ver_cut 1-3)
 
 DESCRIPTION="A complete toolset for web, mobile and enterprise development"
 HOMEPAGE="https://www.jetbrains.com/idea"

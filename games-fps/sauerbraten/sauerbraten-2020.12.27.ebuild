@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit desktop flag-o-matic toolchain-funcs wrapper xdg
 
 DESCRIPTION="Sauerbraten is a FOSS game engine (Cube 2) with freeware game data (Sauerbraten)"
 HOMEPAGE="http://sauerbraten.org/"
-SRC_URI="mirror://sourceforge/sauerbraten/sauerbraten/2020_11_29/sauerbraten_${PV//./_}_linux.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/sauerbraten/sauerbraten/2020_11_29/sauerbraten_${PV//./_}_linux.tar.bz2"
 S="${WORKDIR}"/${PN}
 
 LICENSE="ZLIB freedist"

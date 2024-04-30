@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Window Maker applet that shows your biorhythm"
 HOMEPAGE="https://wmbio.sourceforge.net/"
-SRC_URI="mirror://sourceforge/wmbio/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/wmbio/${P}.tar.gz"
 S="${WORKDIR}/${P}/src"
 
 LICENSE="GPL-2+"

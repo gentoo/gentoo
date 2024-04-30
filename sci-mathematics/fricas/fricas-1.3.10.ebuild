@@ -8,7 +8,7 @@ DESCRIPTION="FriCAS is a fork of Axiom computer algebra system"
 HOMEPAGE="https://fricas.sourceforge.net/
 	https://github.com/fricas/fricas
 	https://fricas.github.io/"
-SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}-full.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${PV}/${P}-full.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="0"

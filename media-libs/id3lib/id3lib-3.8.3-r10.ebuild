@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Id3 library for C/C++"
 HOMEPAGE="https://id3lib.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P/_}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P/_}.tar.gz"
 S="${WORKDIR}/${P/_}"
 
 LICENSE="LGPL-2.1+"

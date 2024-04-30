@@ -18,7 +18,7 @@ DESCRIPTION="UFO: Alien Invasion - X-COM inspired strategy game"
 HOMEPAGE="https://ufoai.org/"
 SRC_URI="
 	https://dev.gentoo.org/~chewi/distfiles/${PN}-code-${COMMIT}.zip
-	mirror://sourceforge/${PN}/${PN}-${DIST_VERSION}-data.tar
+	https://downloads.sourceforge.net/${PN}/${PN}-${DIST_VERSION}-data.tar
 "
 S="${WORKDIR}/${PN}-code-${COMMIT}"
 

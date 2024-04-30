@@ -9,7 +9,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="A Java data mining package"
 HOMEPAGE="https://ml.cms.waikato.ac.nz/weka"
-SRC_URI="mirror://sourceforge/project/weka/weka-3-8/${PV}/weka-${PV//./-}.zip"
+SRC_URI="https://downloads.sourceforge.net/project/weka/weka-3-8/${PV}/weka-${PV//./-}.zip"
 
 SLOT="0"
 LICENSE="GPL-2"

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ MY_MAJ=$(ver_cut 1-2)
 
 DESCRIPTION="C++ library to emulate the C64 SID chip"
 HOMEPAGE="https://sidplay2.sourceforge.net"
-SRC_URI="mirror://sourceforge/sidplay2/${P/_p/-p}.tgz"
+SRC_URI="https://downloads.sourceforge.net/sidplay2/${P/_p/-p}.tgz"
 S="${WORKDIR}"/${PN}-${MY_MAJ}
 
 LICENSE="GPL-2+"

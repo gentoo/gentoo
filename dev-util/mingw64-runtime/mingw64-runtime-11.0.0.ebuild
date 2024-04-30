@@ -7,7 +7,7 @@ inherit crossdev flag-o-matic toolchain-funcs
 
 DESCRIPTION="Free Win64 runtime and import library definitions"
 HOMEPAGE="https://www.mingw-w64.org/"
-SRC_URI="mirror://sourceforge/mingw-w64/mingw-w64/mingw-w64-release/mingw-w64-v${PV}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/mingw-w64/mingw-w64/mingw-w64-release/mingw-w64-v${PV}.tar.bz2"
 S="${WORKDIR}/mingw-w64-v${PV}"
 
 LICENSE="ZPL BSD BSD-2 ISC LGPL-2+ LGPL-2.1+ MIT public-domain tools? ( GPL-3+ )"

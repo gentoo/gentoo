@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs multilib
 
 DESCRIPTION="Simple and small C++ XML parser"
 HOMEPAGE="http://www.grinninglizard.com/tinyxml/index.html"
-SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV//./_}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${PN}_${PV//./_}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
