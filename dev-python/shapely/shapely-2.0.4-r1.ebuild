@@ -26,11 +26,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
 DEPEND="
+	dev-python/numpy:=[${PYTHON_USEDEP}]
 	>=sci-libs/geos-3.9
 "
 RDEPEND="
 	${DEPEND}
-	dev-python/numpy[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	${DEPEND}
