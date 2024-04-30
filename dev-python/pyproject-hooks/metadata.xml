@@ -6,7 +6,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="pypi">pyproject_hooks</remote-id>
+		<remote-id type="pypi">pyproject-hooks</remote-id>
 		<remote-id type="github">pypa/pyproject-hooks</remote-id>
 	</upstream>
 </pkgmetadata>
