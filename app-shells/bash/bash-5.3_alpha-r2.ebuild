@@ -1,6 +1,5 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# shellcheck shell=bash disable=2015,2034
 
 EAPI=8
 
@@ -174,7 +173,6 @@ src_configure() {
 	# upstream to Chet by email.
 	filter-lto
 
-	# shellcheck disable=2207
 	myconf=(
 		--disable-profiling
 
@@ -195,7 +193,6 @@ src_configure() {
 
 	# For descriptions of these, see config-top.h.
 	# bashrc/#26952 bash_logout/#90488 ssh/#24762 mktemp/#574426
-	# shellcheck disable=2046
 	append-cppflags \
 		-DDEFAULT_PATH_VALUE=\'\""${EPREFIX}"/usr/local/sbin:"${EPREFIX}"/usr/local/bin:"${EPREFIX}"/usr/sbin:"${EPREFIX}"/usr/bin:"${EPREFIX}"/sbin:"${EPREFIX}"/bin\"\' \
 		-DSTANDARD_UTILS_PATH=\'\""${EPREFIX}"/bin:"${EPREFIX}"/usr/bin:"${EPREFIX}"/sbin:"${EPREFIX}"/usr/sbin\"\' \
@@ -326,7 +323,6 @@ src_install() {
 		doexe "${@%.o}"
 
 		insinto /usr/include/bash-plugins
-		# shellcheck disable=2035
 		doins *.h builtins/*.h include/*.h lib/{glob/glob.h,tilde/tilde.h}
 	fi
 
