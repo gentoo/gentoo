@@ -12,7 +12,7 @@ inherit bash-completion-r1 python-single-r1
 
 # Whenever you bump a GKPKG, check if you have to move
 # or add new patches!
-VERSION_BCACHE_TOOLS="1.0.8_p20141204"
+VERSION_BCACHE_TOOLS="1.1_p20230217"
 VERSION_BOOST="1.79.0"
 VERSION_BTRFS_PROGS="6.3.2"
 VERSION_BUSYBOX="1.36.1"
