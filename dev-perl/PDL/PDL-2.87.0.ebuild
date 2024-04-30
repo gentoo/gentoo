@@ -7,16 +7,14 @@ DIST_AUTHOR=ETJ
 DIST_VERSION=2.087
 DIST_EXAMPLES=( "Example/*" )
 
-FORTRAN_NEEDED=fortran
-
-inherit perl-module fortran-2
+inherit perl-module toolchain-funcs fortran-2
 
 DESCRIPTION="Perl Data Language for scientific computing"
 
 LICENSE="|| ( Artistic GPL-1+ ) public-domain PerlDL"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+badval doc fortran gd gsl hdf netpbm pdl2 pgplot test"
+IUSE="+badval doc gd gsl hdf netpbm pdl2 pgplot test"
 
 RDEPEND="
 	sys-libs/ncurses:=
@@ -44,7 +42,7 @@ RDEPEND="
 	virtual/perl-Filter-Simple
 	virtual/perl-Storable
 	>=virtual/perl-Text-Balanced-2.50.0
-	fortran? ( >=dev-perl/ExtUtils-F77-1.260.0 )
+	>=dev-perl/ExtUtils-F77-1.260.0
 	gd? ( media-libs/gd )
 	gsl? ( sci-libs/gsl )
 	hdf? (
@@ -73,7 +71,7 @@ BDEPEND="
 	>=virtual/perl-ExtUtils-MakeMaker-7.120.0
 	>=virtual/perl-ExtUtils-ParseXS-3.10.0
 	virtual/perl-File-Path
-	fortran? ( >=dev-perl/ExtUtils-F77-1.130.0 )
+	>=dev-perl/ExtUtils-F77-1.130.0
 	test? (
 		dev-perl/Test-Exception
 		dev-perl/Test-Warn
@@ -90,7 +88,7 @@ PATCHES=(
 
 pkg_setup() {
 	perl_set_version
-	use fortran && fortran-2_pkg_setup
+	fortran-2_pkg_setup
 }
 
 src_prepare() {
@@ -109,12 +107,13 @@ src_configure() {
 		-e "/WITH_GSL/s/=>.*/=> $(use gsl && echo 1 || echo 0),/" \
 		-e "/WITH_GD/s/=>.*/=> $(use gd && echo 1 || echo 0),/" \
 		-e "/WITH_HDF/s/=>.*/=> $(use hdf && echo 1 || echo 0),/" \
-		-e "/WITH_MINUIT/s/=>.*/=> $(use fortran && echo 1|| echo 0),/" \
 		-e "/WITH_PGPLOT/s/=>.*/=> $(use pgplot && echo 1 || echo 0),/" \
 		-e "/WITH_POSIX_THREADS/s/=>.*/=> 1,/" \
 		-e "/WITH_PROJ/s/=>.*/=> $(echo 0),/" \
-		-e "/WITH_SLATEC/s/=>.*/=> $(use fortran && echo 1|| echo 0),/" \
 		perldl.conf || die
+
+	export FC=$(tc-getF77)
+
 	perl-module_src_configure
 }
 
