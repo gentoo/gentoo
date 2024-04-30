@@ -457,7 +457,6 @@ src_prepare() {
 		done
 		PATCHES+=( "${WORKDIR}/ppc64le" )
 		PATCHES+=( "${WORKDIR}/debian/patches/fixes/rust-clanglib.patch" )
-		PATCHES+=( "${WORKDIR}/debian/patches/fixes/blink-fonts-shape-result.patch" )
 	fi
 
 	default
