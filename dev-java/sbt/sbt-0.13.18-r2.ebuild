@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,10 +27,10 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="binary"
 
-# Restrict to jdk:1.8
-# Missing dependency 'object java.lang.Object in compiler mirror', bug #831297
+# Restrict to <=virtual/jdk-17:*
+# Unrecognized VM option 'CMSClassUnloadingEnabled' # , bug #848819
 DEPEND="
-	virtual/jdk:1.8
+	<=virtual/jdk-17:*
 "
 
 RDEPEND="
