@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-gentoo-${PV}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~sparc"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~sparc"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
