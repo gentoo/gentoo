@@ -13,6 +13,7 @@ inherit bash-completion-r1 python-single-r1
 # Whenever you bump a GKPKG, check if you have to move
 # or add new patches!
 VERSION_BCACHE_TOOLS="1.1_p20230217"
+# boost-1.84.0 needs dev-build/b2 packaged
 VERSION_BOOST="1.79.0"
 VERSION_BTRFS_PROGS="6.7.1"
 VERSION_BUSYBOX="1.36.1"
@@ -24,9 +25,12 @@ VERSION_EUDEV="3.2.10"
 VERSION_EXPAT="2.5.0"
 VERSION_E2FSPROGS="1.47.0"
 VERSION_FUSE="2.9.9"
+# gnupg-2.x needs several new deps packaged
 VERSION_GPG="1.4.23"
 VERSION_HWIDS="20210613"
+# open-iscsi-2.1.9 static build not working yet
 VERSION_ISCSI="2.1.8"
+# json-c-0.17 needs gkbuild ported to meson
 VERSION_JSON_C="0.13.1"
 VERSION_KMOD="30"
 VERSION_LIBAIO="0.3.113"
@@ -39,6 +43,7 @@ VERSION_MDADM="4.2"
 VERSION_POPT="1.19"
 VERSION_STRACE="6.7"
 VERSION_THIN_PROVISIONING_TOOLS="0.9.0"
+# unionfs-fuse-3.4 needs fuse:3
 VERSION_UNIONFS_FUSE="2.0"
 VERSION_USERSPACE_RCU="0.14.0"
 VERSION_UTIL_LINUX="2.38.1"
