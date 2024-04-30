@@ -22,7 +22,7 @@ HOMEPAGE="https://pypi.org/project/molecule/ https://github.com/ansible/molecule
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~riscv"
 IUSE="selinux"
 
 # Since around the time of the switch to the yy.m.patchlevel versioning scheme
