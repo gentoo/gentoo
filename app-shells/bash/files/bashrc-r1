@@ -5,8 +5,14 @@ if [[ $- != *i* ]]; then
 	return
 fi
 
-# Disable completion when the input buffer is empty. Requires readline support.
-shopt -s no_empty_cmd_completion 2>/dev/null
+# A convenient function to determine whether bash has readline support.
+genfun_has_readline() [[ $(shopt -p direxpand 2>/dev/null) ]]
+
+# The following two shell options require for bash to have readline support.
+genfun_has_readline &&
+
+# Disable completion when the input buffer is empty.
+shopt -s no_empty_cmd_completion &&
 
 # Append to HISTFILE rather than overwrite upon exiting, per bug #139609.
 shopt -s histappend
@@ -14,8 +20,13 @@ shopt -s histappend
 # Initialise PROMPT_COMMAND as an array, which is permitted as of bash 5.1.
 PROMPT_COMMAND=()
 
+# Don't let the user influence the order of sourcing for bash 5.3 or greater.
+unset -v GLOBSORT
+
 for _ in /etc/bash/bashrc.d/*; do
 	if [[ $_ == *.@(bash|sh) && -r $_ ]]; then
 		source "$_"
 	fi
 done
+
+unset -f genfun_has_readline

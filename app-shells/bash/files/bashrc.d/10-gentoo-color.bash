@@ -14,28 +14,27 @@ elif unset -v COLORTERM; ! gentoo_color=$(tput colors 2>/dev/null); then
 	# and which remain (somewhat) popular. This will rarely happen, so the
 	# list need not be exhaustive.
 	case ${TERM} in
-		*color*     |\
-		*direct*    |\
-		[Ekx]term*  |\
-		alacritty   |\
-		aterm       |\
-		dtterm      |\
-		foot*       |\
-		jfbterm     |\
-		linux       |\
-		mlterm      |\
-		rxvt*       |\
-		screen*     |\
-		st-256color |\
-		tmux*       |\
-		wsvt25*     ) gentoo_color=1
+		*color*    |\
+		*direct*   |\
+		[Ekx]term* |\
+		alacritty  |\
+		aterm      |\
+		dtterm     |\
+		foot*      |\
+		jfbterm    |\
+		linux      |\
+		mlterm     |\
+		rxvt*      |\
+		screen*    |\
+		tmux*      |\
+		wsvt25*    ) gentoo_color=1
 	esac
 elif (( gentoo_color == 16777216 )); then
 	# Truecolor support is available. Advertise it.
 	export COLORTERM=truecolor
 fi
 
-if (( gentoo_color <= 0 )); then
+if (( gentoo_color <= 0 )) || ! genfun_has_readline; then
 	# Define a prompt without color.
 	PS1='\u@\h \w \$ '
 elif (( EUID == 0 )); then
@@ -47,7 +46,7 @@ else
 fi
 
 if (( gentoo_color > 0 )); then
-	# Colorize the output of grep and several coreutils utilities.
+	# Colorize the output of diff(1), grep(1) and a few coreutils utilities.
 	for _ in diff dir grep ls vdir; do
 		alias "$_=$_ --color=auto"
 	done
