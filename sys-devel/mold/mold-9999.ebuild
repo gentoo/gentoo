@@ -65,7 +65,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_DISABLE_PRECOMPILE_HEADERS=ON
 		-DMOLD_ENABLE_QEMU_TESTS=OFF
 		-DMOLD_LTO=OFF # Should be up to the user to decide this with CXXFLAGS.
 		-DMOLD_USE_MIMALLOC=$(usex !kernel_Darwin)

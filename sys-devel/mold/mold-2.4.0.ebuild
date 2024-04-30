@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -69,7 +69,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_DISABLE_PRECOMPILE_HEADERS=ON
 		-DMOLD_ENABLE_QEMU_TESTS=OFF
 		-DMOLD_LTO=OFF # Should be up to the user to decide this with CXXFLAGS.
 		-DMOLD_USE_MIMALLOC=$(usex !kernel_Darwin)
