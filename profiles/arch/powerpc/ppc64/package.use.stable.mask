@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2024-04-30)
+# sys-block/nbdkit is not yet marked stable here
+app-emulation/libvirt nbd
+
 # Sam James <sam@gentoo.org> (2024-04-24)
 # sys-apps/flashrom is not marked stable on ppc64 yet
 sys-apps/fwupd flashrom
