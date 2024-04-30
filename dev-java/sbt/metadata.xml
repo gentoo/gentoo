@@ -7,4 +7,7 @@ The interactive build tool.
 Use Scala to define your tasks. Then run them in parallel from the shell. 
 </longdescription>
 <use><flag name="binary">Install from (Gentoo-compiled) binary instead of building from sources. Set this when you run out of memory during build.</flag></use>
+<upstream>
+<remote-id type="github">sbt/sbt</remote-id>
+</upstream>
 </pkgmetadata>
