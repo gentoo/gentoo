@@ -1930,7 +1930,17 @@ toolchain_src_test() {
 		--manifest="${T}"/${CHOST}.xfail \
 		--produce_manifest &> /dev/null
 
-	local manifest="${GCC_TESTS_COMPARISON_DIR}/${GCC_TESTS_COMPARISON_SLOT}/${CHOST}.xfail"
+	# If there's no manifest available, check older slots, as it's better
+	# than nothing. We start with 10 for the fallback as the first version
+	# we started using --with-major-version-only.
+	local possible_slot
+	for possible_slot in "${GCC_TESTS_COMPARISON_SLOT}" $(seq ${SLOT} -1 10) ; do
+		[[ -f "${GCC_TESTS_COMPARISON_DIR}/${possible_slot}/${CHOST}.xfail" ]] && break
+	done
+	if [[ ${possible_slot} != "${GCC_TESTS_COMPARISON_SLOT}" ]] ; then
+		ewarn "Couldn't find manifest for ${GCC_TESTS_COMPARISON_SLOT}; falling back to ${possible_slot}"
+	fi
+	local manifest="${GCC_TESTS_COMPARISON_DIR}/${possible_slot}/${CHOST}.xfail"
 
 	if [[ -f "${manifest}" ]] ; then
 		# TODO: Distribute some baseline results in e.g. gcc-patches.git?
