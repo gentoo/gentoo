@@ -6,6 +6,6 @@
         <name>Craig Andrews</name>
     </maintainer>
     <upstream>
-        <remote-id type="github">RadeonOpenCompute/rocminfo</remote-id>
+        <remote-id type="github">ROCm/rocminfo</remote-id>
     </upstream>
 </pkgmetadata>
