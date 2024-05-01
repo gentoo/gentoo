@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-05-01)
+# Unmaintained in Gentoo.  Multiple releases behind upstream.  No tests.
+# No Python 3.12.  No (unconditional) reverse dependencies.
+# Removal on 2024-05-31.  Bug #904945.
+dev-python/grpcio
+dev-python/grpcio-testing
+dev-python/grpcio-tools
+
 # Michał Górny <mgorny@gentoo.org> (2024-04-30)
 # NumPy 2 introduces lots of API changes and an ABI change.  Masked
 # for testing and getting <dev-python/numpy-2 where necessary.
