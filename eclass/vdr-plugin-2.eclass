@@ -160,7 +160,6 @@ vdr_create_header_checksum_file() {
 # Plugins failed on compile with wrong path of libsi includes,
 # this can be fixed by 'function + space separated list of files'
 fix_vdr_libsi_include() {
-	eqawarn "QA Notice: Fixing include of libsi-headers"
 	local f
 	for f; do
 		sed -i "${f}" \
@@ -245,7 +244,7 @@ vdr_gettext_missing() {
 
 	local GETTEXT_MISSING=$( grep xgettext Makefile )
 	if [[ -z ${GETTEXT_MISSING} ]]; then
-		eqawarn "QA Notice: Plugin isn't converted to gettext handling!"
+		einfo "Notice: Plugin isn't converted to gettext handling!"
 	fi
 }
 
@@ -306,11 +305,11 @@ vdr_i18n() {
 	if [[ -n ${I18N_OBJECT} ]]; then
 
 		if [[ "${KEEP_I18NOBJECT:-no}" = "yes" ]]; then
-			eqawarn "QA Notice: Forced to keep i18n.o"
+			einfo "Notice: Forced to keep i18n.o"
 		else
 			sed -i "s:i18n.o::g" Makefile \
 				|| die "sed failed to remove i18n from Makefile"
-			eqawarn "QA Notice: OBJECT i18n.o found, removed per sed"
+			einfo "Notice: OBJECT i18n.o found, removed per sed"
 		fi
 	fi
 
@@ -318,7 +317,7 @@ vdr_i18n() {
 	if [[ -n ${I18N_STRING} ]]; then
 		sed -i "s:^extern[[:space:]]*const[[:space:]]*tI18nPhrase://static const tI18nPhrase:" i18n.h \
 			|| die "sed failed to replace tI18nPhrase"
-		eqawarn "QA Notice: obsolete tI18nPhrase found, disabled per sed, please recheck"
+		einfo "Notice: obsolete tI18nPhrase found, disabled per sed"
 	fi
 }
 
@@ -337,7 +336,7 @@ vdr_remove_i18n_include() {
 		|| die "sed failed to remove i18n_include"
 	done
 
-	eqawarn "QA Notice: removed i18n.h include in ${@}"
+	einfo "Notice: removed i18n.h include in ${@}"
 }
 
 # @FUNCTION: vdr-plugin-2_print_enable_command
@@ -568,7 +567,7 @@ vdr-plugin-2_src_install() {
 		DESTDIR="${D%/}" \
 		|| die "emake install (makefile target) failed"
 	else
-		eqawarn "QA Notice: Plugin use still the old Makefile handling"
+		einfo "Notice: Plugin use still the old Makefile handling"
 		insinto "${VDR_PLUGIN_DIR}"
 		doins libvdr-*.so.*
 	fi
