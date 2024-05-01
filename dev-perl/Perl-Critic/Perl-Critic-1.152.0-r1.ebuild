@@ -32,6 +32,7 @@ RDEPEND="
 	dev-perl/PPIx-QuoteLike
 	>=dev-perl/PPIx-Regexp-0.80.0
 	dev-perl/PPIx-Utils
+	dev-perl/Pod-Parser
 	>=dev-perl/Pod-Spell-1
 	>=dev-perl/Readonly-2
 	virtual/perl-Scalar-List-Utils
