@@ -4,6 +4,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-05-01)
+# PERL_FEATURES=debug is not a setting that should be used lightly.
+# If you really need it, then unmask it...
+perl_features_debug
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-04-06)
 # Telepathy is dead and packages masked for removal.
 telepathy
