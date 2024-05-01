@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv"
 IUSE="+dbus mqtt"
 
 RDEPEND="
