@@ -1,0 +1,6 @@
+# Copyright 2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# matoro <matoro_gentoo@matoro.tk> (2024-05-01)
+# Sanitizers supported on 64-bit mips only, #779742
+sys-libs/compiler-rt-sanitizers -dfsan -lsan -msan -tsan -cfi
