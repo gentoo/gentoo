@@ -7,7 +7,7 @@ index b43f753..e8060e5 100644
  
  src_compile() {
 +	# bug 907082
-+	use elibc_musl && append-cppflags -D_LARGEFILE64_SOURCE
++	append-cppflags -D_LARGEFILE64_SOURCE
 +
  	gkmake V=1 mdadm mdmon
  }
