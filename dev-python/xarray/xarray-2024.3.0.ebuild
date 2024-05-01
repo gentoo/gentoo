@@ -6,7 +6,11 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit distutils-r1 pypi
+inherit distutils-r1
+
+# TODO: switch back to pypi in the next release
+MY_PV=2024.03.0
+MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="N-D labeled arrays and datasets in Python"
 HOMEPAGE="
@@ -14,6 +18,11 @@ HOMEPAGE="
 	https://github.com/pydata/xarray/
 	https://pypi.org/project/xarray/
 "
+SRC_URI="
+	https://github.com/pydata/xarray/archive/v${MY_PV}.tar.gz
+		-> ${MY_P}.gh.tar.gz
+"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -21,6 +30,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~riscv ~s390 ~x86"
 IUSE="big-endian"
 
 RDEPEND="
+	<dev-python/numpy-2[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.23[${PYTHON_USEDEP}]
 	>=dev-python/pandas-1.5[${PYTHON_USEDEP}]
 	>=dev-python/packaging-22[${PYTHON_USEDEP}]
@@ -42,32 +52,9 @@ distutils_enable_tests pytest
 
 python_test() {
 	local EPYTEST_DESELECT=(
-		# warning-targeted tests are fragile and not important to end users
-		xarray/tests/test_backends.py::test_no_warning_from_dask_effective_get
-		# TODO: segv in netcdf4-python
-		'xarray/tests/test_backends.py::test_open_mfdataset_manyfiles[netcdf4-20-True-5-5]'
-		'xarray/tests/test_backends.py::test_open_mfdataset_manyfiles[netcdf4-20-True-5-None]'
-		'xarray/tests/test_backends.py::test_open_mfdataset_manyfiles[netcdf4-20-True-None-5]'
-		'xarray/tests/test_backends.py::test_open_mfdataset_manyfiles[netcdf4-20-True-None-None]'
-		xarray/tests/test_backends.py::TestDask::test_save_mfdataset_compute_false_roundtrip
-		# TODO: broken
-		xarray/tests/test_backends.py::TestNetCDF4Data
-		xarray/tests/test_backends.py::TestNetCDF4ViaDaskData
-		# hangs
-		xarray/tests/test_backends.py::TestDask::test_dask_roundtrip
-		# mismatches when pyarrow is installed
-		# https://github.com/pydata/xarray/issues/8092
-		xarray/tests/test_dask.py::TestToDaskDataFrame::test_to_dask_dataframe_2D
-		xarray/tests/test_dask.py::TestToDaskDataFrame::test_to_dask_dataframe_not_daskarray
+		# requires dev-python/cftime
+		'xarray/tests/test_coding_times.py::test_encode_cf_datetime_datetime64_via_dask[mixed-cftime-pandas-encoding-with-prescribed-units-and-dtype]'
 	)
-	local EPYTEST_IGNORE=(
-		# requires datatree_ subpackage that is not part of public API
-		# https://github.com/pydata/xarray/issues/8768
-		xarray/tests/datatree
-	)
-
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-
 	if ! has_version ">=dev-python/scipy-1.4[${PYTHON_USEDEP}]" ; then
 		EPYTEST_DESELECT+=(
 			'xarray/tests/test_missing.py::test_interpolate_na_2d[coords1]'
@@ -87,5 +74,6 @@ python_test() {
 		)
 	fi
 
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
 }
