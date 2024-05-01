@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>qt@gentoo.org</email>
-		<name>Gentoo Qt Project</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 		A very small Qt text editor. It has lots of extra features including syntax
 		highlighting and a built in file manager as well as a built in image viewer.
