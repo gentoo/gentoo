@@ -162,9 +162,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-# TODO: Consider use cases where pipewire is not used for driving audio
-# Doing so with WirePlumber currently involves editing Lua scripts
-PDEPEND=">=media-video/wireplumber-0.4.8-r3"
+PDEPEND=">=media-video/wireplumber-0.5.2"
 
 # Present RDEPEND that are currently always disabled due to the PW
 # code using them being required to be disabled by Gentoo guidelines
@@ -313,16 +311,8 @@ multilib_src_install_all() {
 
 	# Enable required wireplumber alsa and bluez monitors
 	if use sound-server; then
-		# Install sound-server enabler, alsa part, wireplumber 0.4.15 syntax, clean this up with wireplumber dep bump
-		dodir /etc/wireplumber/main.lua.d
-		echo "alsa_monitor.enabled = true" > "${ED}"/etc/wireplumber/main.lua.d/89-gentoo-sound-server-enable-alsa-monitor.lua || die
-
-		# Install sound-server enabler, bluetooth part, wireplumber 0.4.15 syntax, clean this up with wireplumber dep bump
-		dodir /etc/wireplumber/bluetooth.lua.d
-		echo "bluez_monitor.enabled = true" > "${ED}"/etc/wireplumber/bluetooth.lua.d/89-gentoo-sound-server-enable-bluez-monitor.lua || die
-
-		# Install sound-server enabler for wireplumber 0.4.81+ conf syntax
-		insinto /etc/pipewire/wireplumber.conf.d
+		# Install sound-server enabler for wireplumber 0.5.0+ conf syntax
+		insinto /etc/wireplumber/wireplumber.conf.d
 		doins "${FILESDIR}"/gentoo-sound-server-enable-audio-bluetooth.conf
 	fi
 
