@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>vdr@gentoo.org</email>
-		<name>Gentoo VDR Project</name>
-	</maintainer>
-	<use>
-		<flag name="cec">Enable CEC support through <pkg>dev-libs/libcec</pkg></flag>
-		<flag name="bluray">Enable BluRay metadata support through <pkg>media-libs/libbluray</pkg></flag>
-		<flag name="vdr">Compile the vdr output plugin to use local or remote xine as output</flag>
-		<flag name="xine">Compile the xine input plugin for displaying vdr video and OSD</flag>
-	</use>
-	<upstream>
-		<remote-id type="sourceforge">xineliboutput</remote-id>
-	</upstream>
+    <maintainer type="person" proxied="yes">
+        <email>martin.dummer@gmx.net</email>
+        <name>Martin Dummer</name>
+    </maintainer>
+    <maintainer type="project" proxied="proxy">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>vdr@gentoo.org</email>
+        <name>Gentoo VDR Project</name>
+    </maintainer>
+    <use>
+        <flag name="cec">Enable CEC support through <pkg>dev-libs/libcec</pkg></flag>
+        <flag name="bluray">Enable BluRay metadata support through <pkg>media-libs/libbluray</pkg></flag>
+        <flag name="vdr">Compile the vdr output plugin to use local or remote xine as output</flag>
+        <flag name="xine">Compile the xine input plugin for displaying vdr video and OSD</flag>
+    </use>
+    <upstream>
+        <remote-id type="sourceforge">xineliboutput</remote-id>
+    </upstream>
 </pkgmetadata>

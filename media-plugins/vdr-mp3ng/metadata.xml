@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>vdr@gentoo.org</email>
-		<name>Gentoo VDR Project</name>
-		<description>
-			Please contact maintainer before you change something.
-		</description>
-	</maintainer>
-	<longdescription>
-		VDR Plugin to play audio files, supports mp3, wav and ogg audio format.
-		You can provide and edit your own playlists.
-	</longdescription>
+    <maintainer type="person" proxied="yes">
+        <email>martin.dummer@gmx.net</email>
+        <name>Martin Dummer</name>
+    </maintainer>
+    <maintainer type="project" proxied="proxy">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>vdr@gentoo.org</email>
+        <name>Gentoo VDR Project</name>
+    </maintainer>
+    <longdescription>
+        VDR Plugin to play audio files, supports mp3, wav and ogg audio format.
+        You can provide and edit your own playlists.
+    </longdescription>
 </pkgmetadata>
