@@ -88,10 +88,6 @@ sys-apps/openrc s6
 # Qt 6 not keyworded here.
 dev-build/cmake gui
 
-# Rich Freeman <rich0@gentoo.org> (2023-09-13)
-# Tests require shellcheck which is not currently available
-sys-process/systemd-cron test
-
 # Sam James <sam@gentoo.org> (2023-07-21)
 # Requires app-emulation/qemu.
 sys-kernel/gentoo-kernel test

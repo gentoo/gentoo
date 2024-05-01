@@ -39,7 +39,6 @@ sci-physics/lammps hip
 
 # Sam James <sam@gentoo.org> (2022-12-07)
 # Needs unstable media-libs/libvpl
-media-libs/gst-plugins-bad qsv
 media-video/ffmpeg qsv
 
 # Guillermo Joandet <gjoandet@gmail.com> (2022-11-22)

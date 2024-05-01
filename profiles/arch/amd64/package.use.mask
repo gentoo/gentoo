@@ -172,7 +172,6 @@ net-misc/curl -rustls -curl_ssl_rustls
 # Quick Sync Video (through intel-mediasdk or libvpl) is
 # only keyworded on amd64
 media-video/ffmpeg -qsv
-media-libs/gst-plugins-bad -qsv
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-10-07)
 # sys-libs/libsmbios is available here.

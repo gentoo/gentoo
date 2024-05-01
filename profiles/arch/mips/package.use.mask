@@ -261,9 +261,6 @@ media-video/mplayer ladspa
 # app-xemacs/ruby-modes is not keyworded on this arch
 dev-lang/ruby xemacs
 
-# deps missing keywords
-games-strategy/freeciv auth
-
 # Mart Raudsepp <leio@gentoo.org> (2010-09-27)
 # Extra functionality that has external unkeyworded dependencies
 # and is not tested yet

@@ -62,10 +62,6 @@ app-text/doxygen gui
 # Qt 6 not keyworded here.
 dev-build/cmake gui
 
-# Rich Freeman <rich0@gentoo.org> (2023-09-13)
-# Tests require shellcheck which is not currently available
-sys-process/systemd-cron test
-
 # Jon Janzen <jon@jonjanzen.com> (2023-09-11)
 # librttopo has not been tested on this arch
 dev-db/spatialite rttopo
