@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,6 +8,7 @@ inherit cmake desktop xdg flag-o-matic
 DESCRIPTION="A modder-friendly OpenGL source port based on the DOOM engine"
 HOMEPAGE="https://zdoom.org"
 SRC_URI="https://github.com/coelckers/${PN}/archive/g${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-g${PV}"
 
 LICENSE="Apache-2.0 BSD BZIP2 GPL-3 LGPL-2.1+ LGPL-3 MIT
 	non-free? ( Activision ChexQuest3 DOOM-COLLECTORS-EDITION freedist WidePix )"
@@ -26,8 +27,6 @@ DEPEND="
 	sys-libs/zlib
 	gtk? ( x11-libs/gtk+:3 )"
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${PN}-g${PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.7.1-Introduce-the-BUILD_NONFREE-option.patch
@@ -48,7 +47,7 @@ src_prepare() {
 		echo "#define GIT_DESCRIPTION \"g${PV}\""
 		echo "#define GIT_HASH \"0\""
 		echo "#define GIT_TIME \"\""
-	} > "${S}/src/gitinfo.h"
+	} > "${S}/src/gitinfo.h" || die
 
 	cmake_src_prepare
 }
