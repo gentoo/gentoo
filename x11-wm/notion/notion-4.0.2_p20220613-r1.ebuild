@@ -14,7 +14,9 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/raboof/${PN}.git"
 else
-	SRC_URI="https://github.com/raboof/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	inherit vcs-snapshot
+	COMMIT="f161c1b4dbba1ac81d8e9c3d7e5e353058a4d7d1"
+	SRC_URI="https://github.com/raboof/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 	KEYWORDS="~amd64 ~x86"
 fi
