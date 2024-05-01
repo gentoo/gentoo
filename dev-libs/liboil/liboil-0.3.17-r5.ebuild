@@ -21,7 +21,10 @@ BDEPEND="
 	dev-build/gtk-doc-am
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${P}-amd64-cpuid.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-amd64-cpuid.patch
+	"${FILESDIR}"/${P}-c99-configure.patch
+)
 
 src_prepare() {
 	[[ ${CHOST} == *x32 ]] && PATCHES+=( "${FILESDIR}"/${PN}-0.3.17-x32.patch )
@@ -43,6 +46,8 @@ src_configure() {
 	strip-flags
 	filter-flags -O?
 	append-flags -O2
+	# bug #931004
+	filter-lto
 
 	# For use with Clang, which is the only compiler on OSX, bug #576646
 	[[ ${CHOST} == *-darwin* ]] && append-flags -fheinous-gnu-extensions
