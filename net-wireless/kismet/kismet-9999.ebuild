@@ -36,6 +36,8 @@ SLOT="0/${PV}"
 IUSE="libusb lm-sensors mqtt networkmanager +pcre rtlsdr selinux +suid ubertooth udev +wext"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+# upstream said protobuf-26.1 breaks everything
+# details are unclear at this time but adding restriction for safety
 CDEPEND="
 	${PYTHON_DEPS}
 	mqtt? ( app-misc/mosquitto )
@@ -52,7 +54,7 @@ CDEPEND="
 			)
 	libusb? ( virtual/libusb:1 )
 	dev-libs/protobuf-c:=
-	dev-libs/protobuf:=
+	<dev-libs/protobuf-26:=
 	$(python_gen_cond_dep '
 		dev-python/protobuf-python[${PYTHON_USEDEP}]
 		dev-python/websockets[${PYTHON_USEDEP}]
