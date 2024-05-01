@@ -1,0 +1,28 @@
+https://github.com/ROCm/llvm-project/pull/68
+From 1c7e7f872980a5b15fb3d85f8780e78ce3b715b1 Mon Sep 17 00:00:00 2001
+From: Selene <lixueying@mail.bnu.edu.cn>
+Date: Wed, 1 May 2024 17:38:33 +0800
+Subject: [PATCH] Allow link to llvm shared library for current distros
+
+---
+ amd/device-libs/utils/prepare-builtins/CMakeLists.txt | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/amd/device-libs/utils/prepare-builtins/CMakeLists.txt b/amd/device-libs/utils/prepare-builtins/CMakeLists.txt
+index 63661962860a..079dc08e3419 100644
+--- a/utils/prepare-builtins/CMakeLists.txt
++++ b/utils/prepare-builtins/CMakeLists.txt
+@@ -26,5 +26,9 @@ set_target_properties(prepare-builtins PROPERTIES
+   CXX_STANDARD_REQUIRED Yes
+   CXX_EXTENSIONS No)
+ llvm_update_compile_flags(prepare-builtins)
+-llvm_map_components_to_libnames(llvm_libs support core bitreader bitwriter)
++if (LLVM_LINK_LLVM_DYLIB)
++  set(llvm_libs LLVM)
++else()
++  llvm_map_components_to_libnames(llvm_libs support core bitreader bitwriter)
++endif()
+ target_link_libraries(prepare-builtins ${llvm_libs})
+-- 
+2.44.0
+
