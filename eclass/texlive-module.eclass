@@ -359,6 +359,193 @@ texlive-module_src_install() {
 		if [[ -d texmf-doc ]]; then
 			cp -pR texmf-doc "${ED}/usr/share/" || die
 		fi
+
+		if ver_test -ge 2023 && [[ ${CATEGORY} == dev-texlive ]]; then
+			local texlive_core_man_pages=(
+				afm2pl.1
+				aleph.1
+				allcm.1
+				allec.1
+				allneeded.1
+				amstex.1
+				autosp.1
+				axohelp.1
+				bibtex.1
+				chkdvifont.1
+				chktex.1
+				chkweb.1
+				ctangle.1
+				ctie.1
+				ctwill.1
+				ctwill-refsort.1
+				ctwill-twinx.1
+				cweave.1
+				cweb.1
+				detex.1
+				devnag.1
+				deweb.1
+				disdvi.1
+				dt2dv.1
+				dv2dt.1
+				dvi2fax.1
+				dvi2tty.1
+				dvibook.1
+				dviconcat.1
+				dvicopy.1
+				dvidvi.1
+				dvihp.1
+				dvilj.1
+				dvilj2p.1
+				dvilj4.1
+				dvilj4l.1
+				dvilj6.1
+				dvilualatex-dev.1
+				dviluatex.1
+				dvipdfm.1
+				dvipdfmx.1
+				dvipdft.1
+				dvipos.1
+				dvired.1
+				dviselect.1
+				dvispc.1
+				dvitodvi.1
+				dvitomp.1
+				dvitype.1
+				e2pall.1
+				ebb.1
+				eptex.1
+				euptex.1
+				extractbb.1
+				fmtutil.1
+				fmtutil.cnf.5
+				fmtutil-sys.1
+				fontinst.1
+				gftodvi.1
+				gftopk.1
+				gftype.1
+				gsftopk.1
+				hishrink.1
+				histretch.1
+				hitex.1
+				inimf.1
+				initex.1
+				kpsepath.1
+				kpsetool.1
+				kpsewhere.1
+				kpsexpand.1
+				lacheck.1
+				latex.1
+				latex-dev.1
+				luahbtex.1
+				luajittex.1
+				lualatex-dev.1
+				luatex.1
+				makeindex.1
+				makejvf.1
+				mendex.1
+				mf.1
+				mf-nowin.1
+				mft.1
+				mkindex.1
+				mkocp.1
+				mkofm.1
+				mktexfmt.1
+				mktexlsr.1
+				mktexmf.1
+				mktexpk.1
+				mktextfm.1
+				mpost.1
+				msxlint.1
+				odvicopy.1
+				odvitype.1
+				ofm2opl.1
+				opl2ofm.1
+				otangle.1
+				otp2ocp.1
+				outocp.1
+				ovf2ovp.1
+				ovp2ovf.1
+				patgen.1
+				pbibtex.1
+				pdfclose.1
+				pdfetex.1
+				pdflatex.1
+				pdflatex-dev.1
+				pdfopen.1
+				pdftex.1
+				pdftosrc.1
+				pktogf.1
+				pktype.1
+				platex-dev.1
+				pltotf.1
+				pmxab.1
+				pooltype.1
+				ppltotf.1
+				prepmx.1
+				ps2frag.1
+				pslatex.1
+				ptex.1
+				ptftopl.1
+				rubibtex.1
+				rumakeindex.1
+				scor2prt.1
+				synctex.1
+				synctex.5
+				tangle.1
+				tex.1
+				tex2aspc.1
+				texconfig.1
+				texconfig-sys.1
+				texhash.1
+				texlinks.1
+				texlua.1
+				texluac.1
+				tftopl.1
+				tie.1
+				tpic2pdftex.1
+				ttf2afm.1
+				ttfdump.1
+				twill.1
+				upbibtex.1
+				updmap.1
+				updmap.cfg.5
+				updmap-sys.1
+				uplatex-dev.1
+				uppltotf.1
+				uptex.1
+				uptftopl.1
+				vftovp.1
+				vlna.1
+				vptovf.1
+				weave.1
+				xdvipdfmx.1
+				xelatex-dev.1
+				xetex.1
+				xml2pmx.1
+			)
+			local f
+			local grep_expressions=()
+			# Transform texlive_core_man_pages into grep expressions
+			# that will be used to filter out any man page that is
+			# already installed by app-text/texlive-core.
+			for f in "${texlive_core_man_pages[@]}"; do
+				# Ensure that all dots are escaped so that they are
+				# matched literarily. Also wrap the file in '/' and '$'
+				# within the expression.
+				grep_expressions+=(-e "/${f//./\\.}\$")
+			done
+
+			ebegin "Installing man pages"
+			find texmf-dist/doc/man -type f -name '*.[0-9n]' -print |
+				grep -v "${grep_expressions[@]}" |
+				xargs -d '\n' --no-run-if-empty doman
+			[[ "${PIPESTATUS[*]}" =~ ^0(" 0")*$ ]]
+			eend $? || die "error installing man pages"
+
+			# Delete all man pages under texmf-dist/doc/man
+			find texmf-dist/doc/man -type f -name '*.[0-9n]' -delete ||
+				die "error deleting man pages under texmf-dist"
+		fi
 	else
 		if [[ -d texmf-dist/doc ]]; then
 			rm -rf texmf-dist/doc || die
