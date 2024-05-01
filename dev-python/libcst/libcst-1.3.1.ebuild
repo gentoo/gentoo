@@ -146,6 +146,9 @@ RDEPEND="
 BDEPEND="
 	dev-python/setuptools-rust[${PYTHON_USEDEP}]
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
+	test? (
+		dev-python/black[${PYTHON_USEDEP}]
+	)
 "
 
 EPYTEST_XDIST=1
