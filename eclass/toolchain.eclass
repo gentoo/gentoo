@@ -1894,6 +1894,7 @@ gcc_do_make() {
 #---->> src_test <<----
 
 # TODO: add JIT testing
+# TODO: add multilib testing
 toolchain_src_test() {
 	# GCC's testsuite is a special case.
 	#
