@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -113,6 +113,15 @@ src_prepare() {
 	if ! use nls; then
 		sed -e "/SUBDIRS/s/ po//" -i Makefile || die "Failed to sed" # bug #512698
 	fi
+
+	# Remove use of deprecated xmlParseMemory function from the scrobbler
+	# which relies on the old SAX1 parser being available
+	# https://github.com/audacious-media-player/audacious-plugins/commit/c9246b1c8b09553250c40d222115c2c0865779e2
+	eapply "${FILESDIR}/${PN}-libxml2-no_sax1.patch"
+	# Fix bug where including the null byte causes XML parsing errors with
+	# the scrobbler code
+	# https://github.com/audacious-media-player/audacious-plugins/commit/5103ba0f504f1a98cac7babca3a0e45ca969f7f8
+	eapply "${FILESDIR}/${PN}-libxml2-no_null_byte.patch"
 }
 
 src_configure() {
