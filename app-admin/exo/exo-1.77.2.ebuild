@@ -8,13 +8,13 @@ inherit go-module
 DESCRIPTION="Command-line tool for everything at Exoscale: compute, storage, dns"
 HOMEPAGE="https://github.com/exoscale/cli"
 SRC_URI="https://github.com/exoscale/cli/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+S="${WORKDIR}/cli-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND=">=dev-lang/go-1.16:="
-S="${WORKDIR}/cli-${PV}"
 RESTRICT="strip"
 
 src_compile() {
