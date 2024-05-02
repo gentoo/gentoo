@@ -186,7 +186,7 @@ CRATES="
 	yaml-rust@0.4.5
 "
 
-inherit udev cargo
+inherit udev cargo systemd
 
 DESCRIPTION="Automatic brightness adjustment based on screen contents and ALS"
 HOMEPAGE="https://github.com/maximbaz/wluma"
@@ -219,6 +219,7 @@ src_install() {
 
 	insinto /etc/xdg/autostart
 	doins "${FILESDIR}"/wluma.desktop
+	systemd_douserunit "${PN}.service"
 
 	insinto /usr/share/${P}
 	doins config.toml
