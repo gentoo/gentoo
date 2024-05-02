@@ -58,6 +58,7 @@ fi
 : "${XORG_MULTILIB:="no"}"
 
 # we need to inherit autotools first to get the deps
+AUTOTOOLS_AUTO_DEPEND=no
 inherit autotools libtool multilib toolchain-funcs flag-o-matic \
 	${FONT_ECLASS} ${GIT_ECLASS}
 unset FONT_ECLASS GIT_ECLASS
@@ -129,9 +130,7 @@ fi
 
 # Set up autotools shared dependencies
 # Remember that all versions here MUST be stable
-EAUTORECONF_DEPEND+="
-	>=dev-build/libtool-2.2.6a
-	sys-devel/m4"
+EAUTORECONF_DEPEND+=" ${AUTOTOOLS_DEPEND}"
 if [[ ${PN} != util-macros ]] ; then
 	EAUTORECONF_DEPEND+=" >=x11-misc/util-macros-1.18"
 	# Required even by xorg-server
