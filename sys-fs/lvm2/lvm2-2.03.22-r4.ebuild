@@ -135,8 +135,8 @@ src_configure() {
 		myeconfargs+=( --with-thin=internal --with-cache=internal )
 		local texec
 		for texec in check dump repair restore; do
-			myeconfargs+=( --with-thin-${texec}="${EPREFIX}"/sbin/thin_${texec} )
-			myeconfargs+=( --with-cache-${texec}="${EPREFIX}"/sbin/cache_${texec} )
+			myeconfargs+=( --with-thin-${texec}="${EPREFIX}"/usr/sbin/thin_${texec} )
+			myeconfargs+=( --with-cache-${texec}="${EPREFIX}"/usr/sbin/cache_${texec} )
 		done
 	else
 		myeconfargs+=( --with-thin=none --with-cache=none )
