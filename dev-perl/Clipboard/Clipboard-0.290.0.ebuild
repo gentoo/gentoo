@@ -30,6 +30,8 @@ BDEPEND="
 	>=dev-perl/Module-Build-0.280.0
 	test? (
 		>=virtual/perl-Test-Simple-0.880.0
+		x11-misc/xclip
+		x11-misc/xsel
 	)
 "
 
