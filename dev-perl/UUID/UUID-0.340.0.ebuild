@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
 
 BDEPEND="
-	virtual/perl-ExtUtils-MakeMaker
+	>=virtual/perl-ExtUtils-MakeMaker-7.60.0
 	>=dev-perl/Devel-CheckLib-1.140.0
+	test? ( dev-perl/Try-Tiny )
 "
-DEPEND="${RDEPEND}"
