@@ -12,6 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
+	dev-perl/Const-Fast
 	dev-perl/Importer
 	dev-perl/PadWalker
 	>=dev-perl/Path-Tiny-0.144.0
