@@ -13,11 +13,9 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
-IUSE=""
 DEPEND=">=dev-lang/go-1.16:="
-RESTRICT="strip"
-
 S="${WORKDIR}/cli-${PV}"
+RESTRICT="strip"
 
 src_compile() {
 	ego build -mod vendor -o ${PN} -ldflags "-X main.version=${PVR}-gentoo -X main.commit="
