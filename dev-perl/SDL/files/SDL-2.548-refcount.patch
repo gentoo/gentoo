@@ -1,0 +1,27 @@
+https://github.com/PerlGameDev/SDL/pull/308
+
+From fbf151a7481a5fda88bfe766d826fe55476cf4af Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Thu, 28 Mar 2024 13:21:47 +0000
+Subject: [PATCH] Fix reference-counting in set_event_filter
+
+This previously resulted in the following test failure with Perl 5.38.2
+on Debian unstable (https://bugs.debian.org/1064761):
+
+    t/core_events.t ................. 1/? Can't use an undefined value as a subroutine reference during global destruction.
+    t/core_events.t ................. Dubious, test returned 22 (wstat 5632, 0x1600)
+    All 691 subtests passed
+            (less 1 skipped subtest: 690 okay)
+--- a/src/Core/Events.xs
++++ b/src/Core/Events.xs
+@@ -102,7 +102,8 @@ void
+ events_set_event_filter(callback)
+ 	SV* callback
+ 	CODE:
+-		eventfiltersv = callback;
++		SvREFCNT_dec(eventfiltersv);
++		eventfiltersv = SvREFCNT_inc_simple(callback);
+ 		SDL_SetEventFilter((SDL_EventFilter) eventfilter_cb);
+ 
+ AV *
+
