@@ -70,3 +70,10 @@ src_configure() {
 	)
 	cmake_src_configure
 }
+
+src_install() {
+	cmake_src_install
+	local CLANG_EXE="$(get_llvm_prefix)/bin/clang"
+	local bitcodedir="$("${CLANG_EXE}" -print-resource-dir)/$(get_libdir)/amdgcn/bitcode"
+	dosym -r "/usr/lib/amdgcn/bitcode" "${bitcodedir#${EPREFIX}}"
+}
