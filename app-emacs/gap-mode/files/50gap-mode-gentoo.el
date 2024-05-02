@@ -1,0 +1,7 @@
+(add-to-list 'load-path "@SITELISP@")
+(autoload 'gap-mode "gap-mode" "GAP editing mode" t)
+(autoload 'gap "gap-process" "Run GAP in emacs buffer" t)
+(add-to-list 'auto-mode-alist '("\\.g\\'" . gap-mode))
+(add-to-list 'auto-mode-alist '("\\.gap\\'" . gap-mode))
+(add-to-list 'auto-mode-alist '("\\.gd\\'" . gap-mode))
+(add-to-list 'auto-mode-alist '("\\.gi\\'" . gap-mode))
