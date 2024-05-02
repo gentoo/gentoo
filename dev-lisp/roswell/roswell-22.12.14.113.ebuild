@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="A lisp installer and launcher for major environment"
 HOMEPAGE="https://github.com/roswell/roswell"
@@ -22,4 +22,13 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	default
 	eautoreconf
+}
+
+src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/856106
+	# https://github.com/roswell/roswell/issues/584
+	filter-lto
+
+	default
 }
