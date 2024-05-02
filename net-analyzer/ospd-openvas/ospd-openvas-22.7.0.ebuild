@@ -30,6 +30,7 @@ DEPEND="
 	>=dev-python/python-gnupg-0.4.8[${PYTHON_USEDEP}]
 	<dev-python/python-gnupg-0.6.0[${PYTHON_USEDEP}]
 	>=dev-python/paho-mqtt-1.5.1[${PYTHON_USEDEP}]
+	<dev-python/paho-mqtt-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/python-gnupg-0.4.8[${PYTHON_USEDEP}]
 	net-libs/paho-mqtt-c
 	app-misc/mosquitto
