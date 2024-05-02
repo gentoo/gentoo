@@ -43,10 +43,6 @@ BDEPEND="
 	${LUA_DEPS}
 	virtual/pkgconfig"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-4.0.2-gcc14-build-fix.patch
-)
-
 src_configure() {
 	tc-export AR CC PKG_CONFIG
 	export INSTALL_STRIP=""
