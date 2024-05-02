@@ -69,6 +69,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.03.20-dmeventd-no-idle-exit.patch
 	"${FILESDIR}"/${PN}-2.03.20-freopen-musl.patch
 	"${FILESDIR}"/${PN}-2.03.22-autoconf-2.72-egrep.patch
+	"${FILESDIR}"/${PN}-2.03.22-thin-version-checking.patch
 )
 
 pkg_setup() {
