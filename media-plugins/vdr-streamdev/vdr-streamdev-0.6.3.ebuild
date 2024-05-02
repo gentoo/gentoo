@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,6 @@ REQUIRED_USE="|| ( client server )"
 
 DEPEND="acct-user/vdr
 	>=media-video/vdr-2.3"
-BDEPEND="${DEPEND}"
 RDEPEND="${DEPEND}"
 
 QA_FLAGS_IGNORED="
@@ -79,6 +78,7 @@ pkg_postinst() {
 
 	if [[ -e "${EROOT}"/etc/vdr/plugins/streamdev/streamdevhosts.conf ]]; then
 		einfo "move config file to new config DIR ${EROOT}/etc/vdr/plugins/streamdev-server/"
-		mv "${EROOT}"/etc/vdr/plugins/streamdev/streamdevhosts.conf "${EROOT}"/etc/vdr/plugins/streamdev-server/streamdevhosts.conf || die
+		mv "${EROOT}"/etc/vdr/plugins/streamdev/streamdevhosts.conf \
+			"${EROOT}"/etc/vdr/plugins/streamdev-server/streamdevhosts.conf || die
 	fi
 }
