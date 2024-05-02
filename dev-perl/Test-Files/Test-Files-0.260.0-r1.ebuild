@@ -16,6 +16,7 @@ RDEPEND="
 	dev-perl/Class-XSAccessor
 	dev-perl/Const-Fast
 	dev-perl/Data-Compare
+	dev-perl/File-chdir
 	dev-perl/PadWalker
 	>=dev-perl/Path-Tiny-0.144.0
 	dev-perl/Text-Diff
@@ -28,3 +29,8 @@ BDEPEND="
 		dev-perl/Test-Expander
 	)
 "
+
+src_install() {
+	perl-module_src_install
+	find "${ED}" -type f -name '*.perlcriticrc' -delete || die
+}
