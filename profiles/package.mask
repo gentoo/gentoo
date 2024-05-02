@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-05-01)
+# Outdated package, now part of dev-perl/Type-Tiny. Removal in 30 days.
+dev-perl/Type-Tie
+
 # Michał Górny <mgorny@gentoo.org> (2024-05-01)
 # Effectively unmaintained.  EAPI 6.  Keyworded for PowerPC only.
 # Might not work anymore (when I run it, it hangs input to X11 entirely).
