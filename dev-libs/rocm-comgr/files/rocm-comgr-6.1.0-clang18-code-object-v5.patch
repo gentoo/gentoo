@@ -1,0 +1,23 @@
+Merged from https://github.com/ROCm/llvm-project/commit/52161580a9c343813a5f46567864f8a98b655444
+and https://github.com/ROCm/llvm-project/commit/27b8c1c1d04276e6911eadb97b4fbb8b23662e81
+diff --git a/test/mangled_names_test.c b/test/mangled_names_test.c
+index 2374686b6ef1..e5840d221bc0 100644
+--- a/test/mangled_names_test.c
++++ b/test/mangled_names_test.c
+@@ -173,14 +173,14 @@ int main(int argc, char *argv[]) {
+   Status = amd_comgr_populate_mangled_names(DataBc, &numNames);
+   checkError(Status, "amd_comgr_populate_mangled_names");
+ 
+-  if (numNames != 2) {
++  if (numNames != 3) {
+     printf("amd_populate_mangled_names Failed: "
+            "produced %zu bitcode names (expected 2)\n",
+            numNames);
+     exit(1);
+   }
+ 
+-  const char *bcNames[] = {"source1", "source2"};
++  const char *bcNames[] = {"__oclc_ABI_version", "source1", "source2"};
+ 
+   for (size_t I = 0; I < numNames; ++I) {
+     size_t Size;

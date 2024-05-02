@@ -1,0 +1,14 @@
+From https://github.com/ROCm/llvm-project/commit/61986583f3d0825686ba2e0fd8bf899b9d395980
+Clang-18 have updates the warning message.
+===================================================================
+--- comgr.orig/test/compile_log_remarks_test.c
++++ comgr/test/compile_log_remarks_test.c
+@@ -107,7 +107,7 @@ int main(int argc, char *argv[]) {
+              AMD_COMGR_DATA_KIND_SOURCE, 1);
+ 
+   checkLogs("AMD_COMGR_ACTION_CODEGEN_BC_TO_ASSEMBLY", DataSetAsm,
+-            "remark: <unknown>:0:0: 8 stack bytes in function "
++            "remark: <unknown>:0:0: 8 stack bytes in function 'f' "
+             "[-Rpass-analysis=prologepilog]");
+ 
+   Status = amd_comgr_destroy_data_set(DataSetCl);
