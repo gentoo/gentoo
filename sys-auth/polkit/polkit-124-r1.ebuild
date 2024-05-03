@@ -24,17 +24,7 @@ LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="+daemon +duktape examples gtk +introspection kde pam selinux systemd test"
-# https://gitlab.freedesktop.org/polkit/polkit/-/issues/181 for test restriction
-RESTRICT="!test? ( test ) test"
-
-# This seems to be fixed with 121?
-#if [[ ${PV} == *_p* ]] ; then
-#	RESTRICT="!test? ( test )"
-#else
-#	# Tests currently don't work with meson in the dist tarballs. See
-#	#  https://gitlab.freedesktop.org/polkit/polkit/-/issues/144
-#	RESTRICT="test"
-#fi
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	acct-user/polkitd
@@ -92,6 +82,7 @@ QA_MULTILIB_PATHS="
 PATCHES=(
 	"${FILESDIR}"/${PN}-124-systemd.patch
 	"${FILESDIR}"/${PN}-124-systemd-fixup.patch
+	"${FILESDIR}"/${PN}-124-c99-fixes.patch
 )
 
 python_check_deps() {
