@@ -181,5 +181,5 @@ gpib_config --minor 0 --init-data /usr/share/linux-gpib/hp_82341/hp_82341c_fw.bi
 
 pkg_postinst() {
 	readme.gentoo_print_elog
-	udev_pkg_postinst
+	udev_reload
 }
