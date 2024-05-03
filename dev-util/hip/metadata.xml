@@ -22,6 +22,6 @@
     <name>Sv. Lockal</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">ROCm-Developer-Tools/HIP</remote-id>
+    <remote-id type="github">ROCm/HIP</remote-id>
   </upstream>
 </pkgmetadata>
