@@ -106,6 +106,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-cxxflags.patch"
 	"${FILESDIR}/${P}-fix-desktop-application-name.patch"
 	"${FILESDIR}/${P}-fix-exec-script.patch"
+	"${FILESDIR}/${P}-fix-mpris-script.patch"
 )
 
 src_configure() {
