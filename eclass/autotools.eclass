@@ -33,6 +33,7 @@ _AUTOTOOLS_ECLASS=1
 
 [[ ${EAPI} == 6 ]] && inherit eqawarn
 
+GNUCONFIG_AUTO_DEPEND=no
 inherit gnuconfig libtool
 
 # @ECLASS_VARIABLE: WANT_AUTOCONF
@@ -164,9 +165,12 @@ fi
 # @DESCRIPTION:
 # Contains the combination of requested automake/autoconf/libtool
 # versions in *DEPEND format.
-AUTOTOOLS_DEPEND="${_automake_atom}
+AUTOTOOLS_DEPEND="
+	${GNUCONFIG_DEPEND}
+	${_automake_atom}
 	${_autoconf_atom}
-	${_libtool_atom}"
+	${_libtool_atom}
+"
 RDEPEND=""
 
 # @ECLASS_VARIABLE: AUTOTOOLS_AUTO_DEPEND
