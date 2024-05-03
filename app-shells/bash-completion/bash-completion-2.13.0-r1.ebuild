@@ -36,6 +36,7 @@ BDEPEND="
 		$(python_gen_any_dep '
 			dev-python/pexpect[${PYTHON_USEDEP}]
 			dev-python/pytest[${PYTHON_USEDEP}]
+			dev-python/pytest-forked[${PYTHON_USEDEP}]
 			dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		')
 	)
@@ -78,6 +79,7 @@ strip_completions() {
 python_check_deps() {
 	python_has_version "dev-python/pexpect[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/pytest[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/pytest-forked[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/pytest-xdist[${PYTHON_USEDEP}]"
 }
 
