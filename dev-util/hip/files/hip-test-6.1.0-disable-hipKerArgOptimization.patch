@@ -1,0 +1,24 @@
+Those tests requires >=clang-18 to support -amdgpu-kernarg-preload-count
+index afdf8c4..28b0198 100644
+--- a/unit/module/CMakeLists.txt
++++ b/unit/module/CMakeLists.txt
+@@ -41,9 +41,6 @@ add_custom_target(copyKernel.s
+                   -I${CMAKE_CURRENT_SOURCE_DIR}/../../include --rocm-path=${ROCM_PATH})
+ 
+ if(UNIX)
+-set(TEST_SRC
+-    ${TEST_SRC}
+-    hipKerArgOptimization.cc)
+ 
+ add_custom_target(copiousArgKernel.code
+                   COMMAND ${CMAKE_CXX_COMPILER} --genco ${OFFLOAD_ARCH_STR}
+@@ -106,8 +103,4 @@ hip_add_exe_to_target(NAME ModuleTest
+   TEST_TARGET_NAME build_tests COMMON_SHARED_SRC ${COMMON_SHARED_SRC})
+ 
+ add_dependencies(build_tests copyKernel.code copyKernel.s)
+-if(UNIX)
+-add_dependencies(build_tests copiousArgKernel.code copiousArgKernel0.code copiousArgKernel1.code copiousArgKernel2.code
+-copiousArgKernel3.code copiousArgKernel16.code copiousArgKernel17.code)
+ endif()
+-endif()
+\ No newline at end of file
