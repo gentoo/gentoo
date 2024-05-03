@@ -1,0 +1,16 @@
+Bug: https://bugs.gentoo.org/920642
+--- a/sptagent.c
++++ b/sptagent.c
+@@ -1032,7 +1032,11 @@ set_timefield(struct UTMP *utptr)
+ {
+ #ifdef HAVE_UTMP_UT_TV
+ #ifdef HAVE_GETTIMEOFDAY
+-    gettimeofday(&utptr->ut_tv, NULL);
++    // Refer the NOTES section of https://man7.org/linux/man-pages/man5/utmp.5.html
++    struct timeval tv;
++    gettimeofday(&tv, NULL);
++    (*utptr).ut_tv.tv_sec = tv.tv_sec;
++    (*utptr).ut_tv.tv_usec = tv.tv_usec;
+ #else
+     utptr->ut_tv.tv_sec = time(NULL);
+     utptr->ut_tv.ut_usec = 0;
