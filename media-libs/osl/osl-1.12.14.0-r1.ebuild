@@ -87,6 +87,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/875836
+	# https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/issues/1810
+	filter-lto
+
 	# pick the highest we support
 	local mysimd=()
 	if use cpu_flags_x86_avx512f; then

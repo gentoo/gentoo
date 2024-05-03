@@ -74,6 +74,11 @@ pkg_setup() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/875836
+	# https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/issues/1810
+	filter-lto
+
 	local cpufeature
 	local mysimd=()
 	for cpufeature in "${CPU_FEATURES[@]}"; do
