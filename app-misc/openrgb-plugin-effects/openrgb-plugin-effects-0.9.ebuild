@@ -1,9 +1,9 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit qmake-utils
+inherit flag-o-matic qmake-utils
 
 DESCRIPTION="Plugin for OpenRGB with various Effects that can be synced across devices"
 HOMEPAGE="https://gitlab.com/OpenRGBDevelopers/OpenRGBEffectsPlugin"
@@ -39,6 +39,9 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	filter-lto # Bug 927749
+
 	rm -r OpenRGB || die
 	ln -s "${ESYSROOT}/usr/include/OpenRGB" . || die
 	sed -e '/^GIT_/d' -i *.pro || die
