@@ -183,3 +183,7 @@ pkg_postinst() {
 	readme.gentoo_print_elog
 	udev_reload
 }
+
+pkg_postrm() {
+	udev_reload
+}
