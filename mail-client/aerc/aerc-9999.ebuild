@@ -1,7 +1,8 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit go-module xdg
 
 DESCRIPTION="Email client for your terminal"
@@ -23,8 +24,8 @@ IUSE="notmuch"
 DEPEND="notmuch? ( net-mail/notmuch:= )"
 RDEPEND="${DEPEND}"
 BDEPEND="
-	>=app-text/scdoc-1.9.7
-	>=dev-lang/go-1.13
+	>=app-text/scdoc-1.11.3
+	>=dev-lang/go-1.18
 "
 
 src_unpack() {
@@ -46,7 +47,7 @@ src_install() {
 	emake GOFLAGS="$(usex notmuch "-tags=notmuch" "")" \
 		DESTDIR="${ED}" PREFIX="${EPREFIX}/usr" VERSION="${PV}" install
 	einstalldocs
-dodoc CHANGELOG.md
+	dodoc CHANGELOG.md
 }
 
 pkg_postinst() {
