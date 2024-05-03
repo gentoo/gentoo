@@ -138,6 +138,7 @@ src_prepare() {
 			hardlink/options
 
 			# Fails in sandbox
+			# re ioctl_ns: https://github.com/util-linux/util-linux/issues/2967
 			lsns/ioctl_ns
 			lsfd/mkfds-inotify
 			lsfd/mkfds-symlink
