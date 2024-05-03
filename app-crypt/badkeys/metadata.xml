@@ -8,5 +8,6 @@
 </upstream>
 <use>
 <flag name="ssh">Enable ssh scan mode via <pkg>dev-python/paramiko</pkg>.</flag>
+<flag name="dkim">Enable dkim scan mode via <pkg>dev-python/dnspython</pkg>.</flag>
 </use>
 </pkgmetadata>
