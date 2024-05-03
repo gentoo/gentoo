@@ -230,6 +230,9 @@ multilib_src_configure() {
 		$(use_with ncurses tinfo)
 		$(use_with selinux)
 
+		# TODO: Wire this up (bug #931118)
+		--without-econf
+
 		# TODO: investigate build failure w/ 2.40.1_rc1
 		--disable-liblastlog2
 		--disable-pam-lastlog2
