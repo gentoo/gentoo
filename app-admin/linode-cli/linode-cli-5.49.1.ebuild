@@ -32,8 +32,8 @@ RDEPEND="
 python_install_all() {
 	distutils-r1_python_install_all
 
-	PYTHONPATH=. ${EPYTHON} linodecli --skip-config completion bash > "${T}/${PN}".bash || die
-	PYTHONPATH=. ${EPYTHON} linodecli --skip-config completion fish > "${T}/${PN}".fish || die
+	PYTHONPATH=. ${EPYTHON} linodecli completion bash > "${T}/${PN}".bash || die
+	PYTHONPATH=. ${EPYTHON} linodecli completion fish > "${T}/${PN}".fish || die
 
 	newbashcomp "${T}/${PN}".bash ${PN}
 	newfishcomp "${T}/${PN}".fish ${PN}
