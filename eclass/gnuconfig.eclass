@@ -6,7 +6,7 @@
 # Sam James <sam@gentoo.org>
 # @AUTHOR:
 # Will Woods <wwoods@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Refresh bundled gnuconfig files (config.guess, config.sub)
 # @DESCRIPTION:
 # This eclass is used to automatically update files that typically come with
@@ -17,7 +17,7 @@
 #
 
 case ${EAPI:-0} in
-	5|6|7|8) ;;
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -39,7 +39,7 @@ GNUCONFIG_DEPEND="sys-devel/gnuconfig"
 : "${GNUCONFIG_AUTO_DEPEND:=yes}"
 if [[ ${GNUCONFIG_AUTO_DEPEND} != "no" ]] ; then
 	case ${EAPI} in
-		5|6) DEPEND=${GNUCONFIG_DEPEND} ;;
+		6) DEPEND=${GNUCONFIG_DEPEND} ;;
 		*) BDEPEND=${GNUCONFIG_DEPEND} ;;
 	esac
 fi
@@ -122,7 +122,7 @@ gnuconfig_findnewest() {
 	local prefix
 
 	case ${EAPI} in
-		5|6)
+		6)
 			prefix="${EPREFIX}"
 			;;
 		*)
