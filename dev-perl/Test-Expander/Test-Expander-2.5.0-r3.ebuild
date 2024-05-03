@@ -22,3 +22,8 @@ RDEPEND="
 	dev-perl/Test2-Tools-Explain
 "
 BDEPEND="${RDEPEND}"
+
+src_install() {
+	perl-module_src_install
+	find "${ED}" -type f -name '*.perlcriticrc' -delete || die
+}
