@@ -47,6 +47,7 @@ PDEPEND="miners? ( >=app-misc/tracker-miners-3.6_rc )"
 
 PATCHES=(
 	"${FILESDIR}"/3.6.0-configure-c99.patch
+	"${FILESDIR}"/${PV}-sqlite-3.45.3-compat.patch
 )
 
 python_check_deps() {
