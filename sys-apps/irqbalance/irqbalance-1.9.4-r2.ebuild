@@ -33,6 +33,10 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-irqbalance )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-drop-protectkerneltunables.patch
+)
+
 pkg_setup() {
 	CONFIG_CHECK="~PCI_MSI"
 	linux-info_pkg_setup
