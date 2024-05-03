@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake llvm
+inherit cmake perl-functions llvm
 
 LLVM_MAX_SLOT=17
 
@@ -48,4 +48,7 @@ src_install() {
 	cmake_src_install
 	# rm unwanted copy
 	rm -rf "${ED}/usr/hip" || die
+	# Handle hipvars.pm
+	rm "${ED}/usr/bin/hipvars.pm" || die
+	perl_domodule "${S}"/bin/hipvars.pm
 }
