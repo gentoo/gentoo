@@ -1,0 +1,59 @@
+Bug: https://bugs.gentoo.org/919471
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Fri, 3 May 2024 17:26:49 +0530
+Subject: [PATCH 1/1] Fix c99 build errors.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+GCC 14 (and above) has enabled some compiler flags by default,
+-Wincompatible-pointer-types being one of them. These results in build
+time errors such as
+
+tpserv.c:161:32: error: passing argument 2 of ‘connect’ from incompatible pointer type [-Wincompatible-pointer-types]
+  161 |         if (connect(fd_remote, to_addr, to_addr_len) < 0) {
+      |                                ^~~~~~~
+      |                                |
+      |                                struct sockaddr_in *
+In file included from tpserv.c:11:
+/usr/include/sys/socket.h:126:52: note: expected ‘const struct sockaddr *’ but argument is of type ‘struct sockaddr_in *’
+
+TODO: Find better ways other than type casting.
+Type casting is the only way for now, as chaning the parameter type in
+function defenition would require touching many other parts of the code
+that I'm unfamiliar with.
+
+First reported on Gentoo Linux with GCC 14, please reffer
+https://bugs.gentoo.org/919471 for more details.
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/tpserv/tpserv.c
++++ b/tpserv/tpserv.c
+@@ -148,7 +148,8 @@ static void process_request_connect(int fd, int pid, struct sockaddr_in *from_ad
+ {
+ 	char buf[BUFSIZE];
+ 	struct sockaddr_in local_addr;
+-	int to_addr_len, local_addr_len;
++	int to_addr_len;
++	socklen_t local_addr_len;
+ 	fd_set rset;
+ 	int maxfd, len;
+ 	int fd_remote;
+@@ -158,7 +159,13 @@ static void process_request_connect(int fd, int pid, struct sockaddr_in *from_ad
+ 		exit(1);
+ 	}
+ 	to_addr_len = sizeof(*to_addr);
+-	if (connect(fd_remote, to_addr, to_addr_len) < 0) {
++	/*
++	 *TODO: Find better ways other than type casting.
++	 *Type casting is the only way for now, as chaning the parameter type in
++	 *function defenition would require touching many other parts of the code
++	 *that I'm unfamiliar with.
++	 */
++	if (connect(fd_remote, (const struct sockaddr *)to_addr, to_addr_len) < 0) {
+ 		hunt_log(LOG_ERR, pid, "failed to connect to remote addr\n");
+ 		exit(1);
+ 	}
+-- 
+2.45.0.rc1.218.g7b19149425.dirty
+
