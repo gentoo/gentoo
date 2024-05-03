@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnuconfig.eclass
@@ -24,9 +24,25 @@ esac
 if [[ -z ${_GNUCONFIG_ECLASS} ]] ; then
  _GNUCONFIG_CLASS=1
 
-BDEPEND="sys-devel/gnuconfig"
+# @ECLASS_VARIABLE: GNUCONFIG_DEPEND
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# Contains dependency on gnuconfig in *DEPEND format.
+GNUCONFIG_DEPEND="sys-devel/gnuconfig"
 
-[[ ${EAPI} == [56] ]] && DEPEND="${BDEPEND}"
+# @ECLASS_VARIABLE: GNUCONFIG_AUTO_DEPEND
+# @PRE_INHERIT
+# @DESCRIPTION:
+# Set to 'no' to disable automatically adding to DEPEND.  This lets
+# ebuilds form conditional depends by using ${GNUCONFIG_DEPEND} in
+# their own DEPEND string.
+: "${GNUCONFIG_AUTO_DEPEND:=yes}"
+if [[ ${GNUCONFIG_AUTO_DEPEND} != "no" ]] ; then
+	case ${EAPI} in
+		5|6) DEPEND=${GNUCONFIG_DEPEND} ;;
+		*) BDEPEND=${GNUCONFIG_DEPEND} ;;
+	esac
+fi
 
 # @FUNCTION: gnuconfig_update
 # @USAGE: [file1 file2 ...]
