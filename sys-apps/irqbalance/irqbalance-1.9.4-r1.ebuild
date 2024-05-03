@@ -64,7 +64,7 @@ src_configure() {
 src_install() {
 	meson_src_install
 
-	newinitd "${FILESDIR}"/irqbalance.init.4 irqbalance
+	newinitd "${FILESDIR}"/irqbalance.init.5 irqbalance
 	newconfd "${FILESDIR}"/irqbalance.confd-2 irqbalance
 	systemd_dounit "${WORKDIR}"/${P}/misc/irqbalance.service
 	udev_dorules "${WORKDIR}"/${P}/misc/90-irqbalance.rules
