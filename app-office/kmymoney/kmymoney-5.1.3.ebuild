@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ KFMIN=5.82.0
 QTMIN=5.15.5
 VIRTUALX_REQUIRED="test"
 VIRTUALDBUS_TEST="true"
-inherit ecm kde.org optfeature
+inherit ecm flag-o-matic kde.org optfeature
 
 DESCRIPTION="Personal finance manager based on KDE Frameworks"
 HOMEPAGE="https://kmymoney.org/"
@@ -93,6 +93,11 @@ pkg_setup() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/865943
+	# https://bugs.kde.org/show_bug.cgi?id=486486
+	filter-lto
+
 	local mycmakeargs=(
 		-DENABLE_OFXIMPORTER=ON
 		-DENABLE_WEBENGINE=ON
