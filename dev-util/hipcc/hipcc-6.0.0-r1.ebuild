@@ -40,7 +40,6 @@ src_prepare() {
 	sed -e "s:\$ENV{'DEVICE_LIB_PATH'}:'${EPREFIX}/usr/lib/amdgcn/bitcode':" \
 		-e "s:\$ENV{'HIP_LIB_PATH'}:'${EPREFIX}/usr/$(get_libdir)':" \
 		-e "/HIP.*FLAGS.*isystem.*HIP_INCLUDE_PATH/d" \
-		-e 's:${ROCM_PATH}/usr/bin/rocm_agent_enumerator:/usr/bin/rocm_agent_enumerator:' \
 		-i bin/hipcc.pl || die
 }
 
