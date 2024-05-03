@@ -9,8 +9,9 @@ DESCRIPTION="JSON Object Signing and Encryption (JOSE) for Erlang and Elixir"
 HOMEPAGE="https://github.com/potatosalad/erlang-jose"
 SRC_URI="
 	https://github.com/potatosalad/erlang-jose/archive/${PV}.tar.gz
-	-> erlang-${P}.tar.gz
+		-> erlang-${P}.tar.gz
 "
+
 S="${WORKDIR}/erlang-${P}"
 
 LICENSE="MIT"
