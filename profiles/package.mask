@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-05-04)
+# A really bad quality package with a never-ending stream of unclear
+# test failures, and blocked keywording and stabilization bugs.
+# The bump to the most recent release is blocked by a ton of test
+# regressions.  No reverse dependencies left.
+# Removal on 2024-06-03.  Bug #931151.
+dev-python/dask
+dev-python/dask-expr
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2024-05-01)
 # Outdated package, now part of dev-perl/Type-Tiny. Removal in 30 days.
 dev-perl/Type-Tie
