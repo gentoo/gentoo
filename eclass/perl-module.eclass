@@ -292,7 +292,6 @@ perl-module_src_configure() {
 			PREFIX="${EPREFIX}"/usr \
 			INSTALLDIRS=vendor \
 			INSTALLMAN3DIR='none' \
-			DESTDIR="${D}" \
 			"${myconf_local[@]}"
 		einfo "perl Makefile.PL" "$@"
 		perl Makefile.PL "$@" <<< "${pm_echovar}" \
@@ -452,7 +451,7 @@ perl-module_src_install() {
 		else
 			local myinst_local=("${myinst[@]}")
 		fi
-		emake "${myinst_local[@]}" ${mytargets}
+		emake DESTDIR="${D}" "${myinst_local[@]}" ${mytargets}
 	fi
 
 	case ${EAPI} in
