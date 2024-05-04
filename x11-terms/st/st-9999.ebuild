@@ -66,7 +66,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if ! [[ "${REPLACING_VERSIONS}" ]]; then
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		elog "Please ensure a usable font is installed, like"
 		elog "    media-fonts/corefonts"
 		elog "    media-fonts/dejavu"
