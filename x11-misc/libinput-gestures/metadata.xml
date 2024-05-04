@@ -16,6 +16,9 @@
 	typically an xdotool command to action desktop/window/application
 	keyboard combinations and commands.
 	</longdescription>
+	<use>
+		<flag name="experimental">avoid producing zombie processes</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">bulletmark/libinput-gestures</remote-id>
 	</upstream>
