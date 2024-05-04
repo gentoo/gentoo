@@ -11,7 +11,7 @@ SRC_URI="https://archive.xfce.org/src/thunar-plugins/${PN}/${PV%.*}/${P}.tar.bz2
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="+git +subversion"
 
 RDEPEND=">=dev-libs/glib-2.32:2=
