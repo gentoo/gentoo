@@ -289,6 +289,14 @@ perl-module_src_configure() {
 	elif [[ -f Makefile.PL ]] ; then
 		einfo "Using ExtUtils::MakeMaker"
 		set -- \
+			AR="$(tc-getAR)" \
+			CC="$(tc-getCC)" \
+			LD="$(tc-getCC)" \
+			CPP="$(tc-getCPP)" \
+			NM="$(tc-getNM)" \
+			RANLIB="$(tc-getRANLIB)" \
+			OPTIMIZE="${CFLAGS}" \
+			LDFLAGS="${LDFLAGS}" \
 			PREFIX="${EPREFIX}"/usr \
 			INSTALLDIRS=vendor \
 			INSTALLMAN3DIR='none' \
