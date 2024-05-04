@@ -683,10 +683,10 @@ src_configure() {
 	myconf \
 		-Duseshrplib \
 		-Darchname="${myarch}" \
-		-Dcc="$(tc-getCC)" \
 		-Dar="$(tc-getAR)" \
-		-Dnm="$(tc-getNM)" \
+		-Dcc="$(tc-getCC)" \
 		-Dcpp="$(tc-getCPP)" \
+		-Dnm="$(tc-getNM)" \
 		-Dranlib="$(tc-getRANLIB)" \
 		-Accflags="${CFLAGS} -DNO_PERL_RAND_SEED" \
 		-Doptimize="${CFLAGS}" \
