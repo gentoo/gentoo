@@ -27,6 +27,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.9.1-musl-stdint.patch
+)
+
 src_configure() {
 	local emesonargs=(
 		-Dversion-tag="${PV}"
