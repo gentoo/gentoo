@@ -33,10 +33,6 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-irqbalance )
 "
 
-PATCHES=(
-	"${FILESDIR}"/${P}-drop-protectkerneltunables.patch
-)
-
 pkg_setup() {
 	CONFIG_CHECK="~PCI_MSI"
 	linux-info_pkg_setup
@@ -44,6 +40,11 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	(
+		cd "${WORKDIR}"/${P} || die
+		eapply "${FILESDIR}"/${P}-drop-protectkerneltunables.patch
+	)
 
 	# Follow systemd policies
 	# https://wiki.gentoo.org/wiki/Project:Systemd/Ebuild_policy
