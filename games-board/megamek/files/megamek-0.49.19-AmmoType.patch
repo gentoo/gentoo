@@ -1,0 +1,15 @@
+# src/megamek/common/AmmoType.java:25: error: package org.apache.commons.lang does not exist
+# import org.apache.commons.lang.ArrayUtils;
+#                               ^
+# 
+--- a/src/megamek/common/AmmoType.java
++++ b/src/megamek/common/AmmoType.java
+@@ -22,7 +22,7 @@ import java.util.List;
+ import java.util.Set;
+ import java.util.Vector;
+ 
+-import org.apache.commons.lang.ArrayUtils;
++import org.apache.commons.lang3.ArrayUtils;
+ 
+ import megamek.common.options.OptionsConstants;
+ 
