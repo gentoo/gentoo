@@ -3,6 +3,7 @@
 
 EAPI=8
 DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_OPTIONAL=1
 DISTUTILS_EXT=1
 PYTHON_COMPAT=( python3_{9..12} )
 inherit distutils-r1 cmake
@@ -15,49 +16,47 @@ SRC_URI="https://github.com/onnx/${PN}/archive/refs/tags/v${PV}.tar.gz
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv"
+IUSE="python"
 RESTRICT="test"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
-	dev-python/protobuf-python[${PYTHON_USEDEP}]
-	dev-python/pybind11[${PYTHON_USEDEP}]
+	python? (
+		${PYTHON_DEPS}
+		dev-python/protobuf-python[${PYTHON_USEDEP}]
+		dev-python/pybind11[${PYTHON_USEDEP}]
+	)
 	dev-libs/protobuf:=
 "
 DEPEND="${RDEPEND}"
 
+BDEPEND="python? (
+	${DISTUTILS_DEPS}
+)"
+
+PATCHES=( "${FILESDIR}"/${P}-hidden.patch )
+
 src_prepare() {
 	cmake_src_prepare
-	distutils-r1_src_prepare
-}
-
-python_configure_all() {
-	mycmakeargs=(
-		-DONNX_USE_PROTOBUF_SHARED_LIBS=ON
-		-DONNX_USE_LITE_PROTO=ON
-	)
-	cmake_src_configure
+	use python && distutils-r1_src_prepare
 }
 
 src_configure() {
-	distutils-r1_src_configure
-}
-
-python_compile_all() {
-	cmake_src_compile
-}
-
-src_compile() {
 	mycmakeargs=(
 		-DONNX_USE_PROTOBUF_SHARED_LIBS=ON
 		-DONNX_USE_LITE_PROTO=ON
+		-DONNX_BUILD_SHARED_LIBS=ON
 	)
-	CMAKE_ARGS="${mycmakeargs[@]}" distutils-r1_src_compile
+	cmake_src_configure
+	use python && distutils-r1_src_configure
 }
 
-python_install_all() {
-	cmake_src_install
-	distutils-r1_python_install_all
+src_compile() {
+	cmake_src_compile
+	use python && CMAKE_ARGS="${mycmakeargs[@]}" distutils-r1_src_compile
 }
 
 src_install() {
-	distutils-r1_src_install
+	cmake_src_install
+	use python && distutils-r1_src_install
 }
