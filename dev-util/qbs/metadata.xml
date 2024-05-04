@@ -22,5 +22,6 @@
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
 		<doc>https://doc.qt.io/qbs/</doc>
+		<remote-id type="github">qbs/qbs</remote-id>
 	</upstream>
 </pkgmetadata>
