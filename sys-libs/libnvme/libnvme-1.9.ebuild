@@ -35,6 +35,10 @@ BDEPEND="
 	dev-lang/swig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.9-musl-stdint.patch
+)
+
 src_configure() {
 	local emesonargs=(
 		-Dpython=disabled
