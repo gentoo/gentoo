@@ -6,6 +6,7 @@ EAPI=8
 inherit fcaps meson
 
 RESHADE_COMMIT="9fdbea6892f9959fdc18095d035976c574b268b7"
+WLROOTS_COMMIT="a5c9826e6d7d8b504b07d1c02425e6f62b020791"
 MY_PV=$(ver_rs 3 -)
 MY_PV="${MY_PV//_/-}"
 
@@ -21,6 +22,7 @@ else
 	SRC_URI="
 		https://github.com/ValveSoftware/${PN}/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz
 		https://github.com/Joshua-Ashton/reshade/archive/${RESHADE_COMMIT}.tar.gz -> reshade-${RESHADE_COMMIT}.tar.gz
+		https://github.com/Joshua-Ashton/wlroots/archive/${WLROOTS_COMMIT}.tar.gz -> wlroots-${WLROOTS_COMMIT}.tar.gz
 	"
 	KEYWORDS="~amd64"
 fi
@@ -31,10 +33,12 @@ LICENSE="BSD-2"
 SLOT="0"
 IUSE="pipewire +wsi-layer"
 
+# For when wlroots 0.18 is released.
+# =gui-libs/wlroots-0.18*[X,libinput(+)]
+
 RDEPEND="
 	=dev-libs/libliftoff-0.4*
 	>=dev-libs/wayland-1.21
-	=gui-libs/wlroots-0.17*[X,libinput(+)]
 	>=media-libs/libavif-1.0.0:=
 	>=media-libs/libdisplay-info-0.1.1
 	media-libs/libsdl2[video,vulkan]
@@ -65,7 +69,7 @@ DEPEND="
 	dev-util/vulkan-headers
 	media-libs/glm
 	dev-util/spirv-headers
-	wsi-layer? ( >=media-libs/vkroots-0_p20231108 )
+	wsi-layer? ( >=media-libs/vkroots-0_p20240430 )
 "
 BDEPEND="
 	dev-util/glslang
@@ -97,6 +101,10 @@ src_prepare() {
 	# For 9999, this submodule is not included.
 	mkdir -p thirdparty/SPIRV-Headers/include || die
 	ln -snf "${ESYSROOT}"/usr/include/spirv thirdparty/SPIRV-Headers/include/ || die
+
+	# Until wlroots 0.18 is released.
+	rmdir subprojects/wlroots || die
+	ln -snfT ../../wlroots-${WLROOTS_COMMIT} subprojects/wlroots || die
 }
 
 src_configure() {
@@ -108,4 +116,8 @@ src_configure() {
 		$(meson_use wsi-layer enable_gamescope_wsi_layer)
 	)
 	meson_src_configure
+}
+
+src_install() {
+	meson_src_install --skip-subprojects
 }
