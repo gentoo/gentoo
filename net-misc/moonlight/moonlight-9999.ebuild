@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	media-libs/libglvnd
 	media-libs/libpulse
-	media-libs/libsdl2[haptic,kms,joystick,sound,video]
+	media-libs/libsdl2[gles2,haptic,kms,joystick,sound,video]
 	media-libs/opus
 	media-libs/sdl2-ttf
 	media-video/ffmpeg:=[cuda?,libdrm?]
