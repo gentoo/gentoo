@@ -28,7 +28,6 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		dev-python/dask[${PYTHON_USEDEP}]
 		dev-python/defusedxml[${PYTHON_USEDEP}]
 		>=dev-python/fsspec-2021.5.0[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
