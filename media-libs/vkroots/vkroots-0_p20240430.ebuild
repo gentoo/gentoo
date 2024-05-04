@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,13 +14,14 @@ EAPI=8
 
 inherit meson
 
-COMMIT="d5ef31abc7cb5c69aee4bcb67b10dd543c1ff7ac"
+COMMIT="5106d8a0df95de66cc58dc1ea37e69c99afc9540"
 DESCRIPTION="Simple framework for writing Vulkan layers"
 HOMEPAGE="https://github.com/Joshua-Ashton/vkroots"
 SRC_URI="https://github.com/Joshua-Ashton/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64"
+S="${WORKDIR}/${PN}-${COMMIT}"
 LICENSE="Apache-2.0 MIT LGPL-2.1"
 SLOT="0"
+KEYWORDS="~amd64"
 
 # BDEPEND="
 # 	${PYTHON_DEPS}
@@ -30,8 +31,6 @@ SLOT="0"
 RDEPEND="
 	dev-util/vulkan-headers
 "
-
-S="${WORKDIR}/${PN}-${COMMIT}"
 
 # src_compile() {
 # 	"${PYTHON}" ./gen/make_vkroots --xml "${BROOT}"/usr/share/vulkan/registry/vk.xml || die
