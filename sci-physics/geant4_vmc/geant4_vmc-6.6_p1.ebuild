@@ -27,7 +27,7 @@ RDEPEND="
 	>=sci-physics/geant-4.11.1:=[opengl,geant3?]
 	sci-physics/root:=
 	>=sci-physics/vmc-2.0:=
-	vgm? ( >=sci-physics/vgm-5.1:= )"
+	vgm? ( >=sci-physics/vgm-5.1:=[geant4,root] )"
 DEPEND="${RDEPEND}
 	test? ( >=sci-physics/geant-4.11.1:=[gdml] )"
 BDEPEND="doc? ( app-text/doxygen[dot] )"
