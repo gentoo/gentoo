@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="project">
+		<email>lxqt@gentoo.org</email>
+		<name>LXQt</name>
+	</maintainer>
 	<longdescription lang="en">
 		QTermWidget is an opensource project based on konsole (a KDE application).
 		The main goal of this project is to provide unicode-enabled, embeddable
