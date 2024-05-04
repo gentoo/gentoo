@@ -61,6 +61,16 @@ RDEPEND="
 	x11-libs/libXxf86vm
 	pipewire? ( >=media-video/pipewire-0.3:= )
 	wsi-layer? ( x11-libs/libxcb )
+
+	>=dev-libs/libinput-1.14.0:=
+	media-libs/libglvnd
+	media-libs/mesa[egl(+),gles2(+)]
+	sys-auth/seatd:=
+	virtual/libudev
+	x11-base/xwayland
+	x11-libs/libxcb:=
+	>=x11-libs/pixman-0.42.0
+	x11-libs/xcb-util-wm
 "
 DEPEND="
 	${RDEPEND}
@@ -114,6 +124,13 @@ src_configure() {
 		-Denable_openvr_support=false
 		$(meson_feature pipewire)
 		$(meson_use wsi-layer enable_gamescope_wsi_layer)
+
+		-Dwlroots:xcb-errors=disabled
+		-Dwlroots:examples=false
+		-Dwlroots:renderers=gles2,vulkan
+		-Dwlroots:xwayland=enabled
+		-Dwlroots:backends=drm,libinput
+		-Dwlroots:session=enabled
 	)
 	meson_src_configure
 }
