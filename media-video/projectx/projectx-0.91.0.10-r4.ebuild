@@ -16,6 +16,8 @@ SRC_URI="https://dev.gentoo.org/~billie/distfiles/${PF}.tar.xz
 	https://dev.gentoo.org/~billie/distfiles/${XDG_P}.java.xz
 	https://dev.gentoo.org/~billie/distfiles/${PN}-icon.png"
 
+S="${WORKDIR}/Project-X"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc64 x86"
@@ -34,8 +36,6 @@ DEPEND="
 	>=virtual/jdk-1.8:*
 	app-arch/xz-utils
 "
-
-S="${WORKDIR}/Project-X"
 
 mainclass() {
 	# read Main-Class from MANIFEST.MF
