@@ -6,7 +6,7 @@ EAPI="7"
 TOOLCHAIN_PATCH_SUFFIX="xz"
 TOOLCHAIN_PATCH_DEV="sam"
 PATCH_VER="4"
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit toolchain
 
