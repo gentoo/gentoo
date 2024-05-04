@@ -5,4 +5,7 @@
 		<email>billie@gentoo.org</email>
 		<name>Daniel Pielmeier</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="codeberg">izzy/Adebar</remote-id>
+	</upstream>
 </pkgmetadata>
