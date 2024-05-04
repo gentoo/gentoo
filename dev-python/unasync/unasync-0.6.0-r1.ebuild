@@ -20,10 +20,15 @@ SRC_URI="
 
 LICENSE="|| ( Apache-2.0 MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64"
 
 distutils_enable_sphinx docs/source \
 	dev-python/sphinxcontrib-trio \
 	dev-python/sphinx-rtd-theme
 
 distutils_enable_tests pytest
+
+RDEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/tokenize-rt[${PYTHON_USEDEP}]
+"
