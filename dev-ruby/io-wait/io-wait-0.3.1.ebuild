@@ -29,3 +29,7 @@ all_ruby_prepare() {
 	sed -e '/test_wait_mask_\(negative\|readable\|writable\|zero\)/aomit("Requires working console")' \
 		-i test/io/wait/test_io_wait.rb || die
 }
+
+each_ruby_test() {
+	${RUBY} -Ilib:.:test:test/lib -rhelper -e 'Dir["test/**/test_*.rb"].each{|f| require f}' || die
+}
