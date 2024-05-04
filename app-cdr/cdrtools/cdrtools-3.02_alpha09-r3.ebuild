@@ -11,6 +11,8 @@ DESCRIPTION="A set of tools for CD/DVD reading and recording, including cdrecord
 HOMEPAGE="https://sourceforge.net/projects/cdrtools/"
 SRC_URI="https://downloads.sourceforge.net/${PN}/$([[ -z ${PV/*_alpha*} ]] && echo 'alpha')/${MY_P}.tar.bz2"
 
+S=${WORKDIR}/${P/_alpha[0-9][0-9]}
+
 LICENSE="GPL-2 LGPL-2.1 CDDL-Schily"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
@@ -29,8 +31,6 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 "
-
-S=${WORKDIR}/${P/_alpha[0-9][0-9]}
 
 FILECAPS=(
 	cap_sys_resource,cap_dac_override,cap_sys_admin,cap_sys_nice,cap_net_bind_service,cap_ipc_lock,cap_sys_rawio+ep usr/bin/cdrecord --
