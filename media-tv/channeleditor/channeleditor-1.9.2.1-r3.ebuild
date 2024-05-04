@@ -10,6 +10,8 @@ DESCRIPTION="Editor for VDR channels.conf"
 HOMEPAGE="https://sites.google.com/site/reniershomepage/channeleditor"
 SRC_URI="https://downloads.sourceforge.net/project/channeleditor/channeleditor/$(ver_cut 1-3)/${P/-/_}_src.tar.gz"
 
+S="${WORKDIR}/${PN}"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
@@ -22,8 +24,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-messages.properties.patch
 	"${FILESDIR}"/${P}-messages_en.properties.patch
 )
-
-S="${WORKDIR}/${PN}"
 
 mainclass() {
 	# read Main-Class from MANIFEST.MF
