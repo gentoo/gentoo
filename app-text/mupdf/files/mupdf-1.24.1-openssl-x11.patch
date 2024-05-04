@@ -1,0 +1,19 @@
+--- a/Makerules
++++ b/Makerules
+@@ -274,14 +274,14 @@ else ifeq ($(LINUX_OR_OPENBSD),yes)
+     endif
+   endif
+ 
+-  HAVE_X11 := $(shell $(PKG_CONFIG) --exists x11 xext && echo yes)
++  HAVE_X11 := not-unless-portage-tells-me
+   ifeq ($(HAVE_X11),yes)
+ 	X11_CFLAGS := $(shell $(PKG_CONFIG) --cflags x11 xext)
+ 	X11_LIBS := $(shell $(PKG_CONFIG) --libs x11 xext)
+   endif
+ 
+   ifeq ($(HAVE_LIBCRYPTO),)
+-    HAVE_LIBCRYPTO := $(shell $(PKG_CONFIG) --exists 'libcrypto >= 1.1.0' && echo yes)
++    HAVE_LIBCRYPTO := not-unless-portage-tells-me
+   endif
+   ifeq ($(HAVE_LIBCRYPTO),yes)
+ 	LIBCRYPTO_CFLAGS := $(shell $(PKG_CONFIG) --cflags libcrypto) -DHAVE_LIBCRYPTO
