@@ -272,7 +272,6 @@ perl-module_src_configure() {
 		set -- \
 			--installdirs=vendor \
 			--libdoc= \
-			--destdir="${D}" \
 			--create_packlist=1 \
 			--config ar="$(tc-getAR)" \
 			--config cc="$(tc-getCC)" \
@@ -439,7 +438,7 @@ perl-module_src_install() {
 
 	if [[ -f Build ]]; then
 		mytargets="${mytargets:-install}"
-		mbparams="${mbparams:---pure}"
+		mbparams="${mbparams:---destdir="${D}" --pure}"
 		einfo "./Build ${mytargets} ${mbparams}"
 		./Build ${mytargets} ${mbparams} \
 			|| die "./Build ${mytargets} ${mbparams} failed"
