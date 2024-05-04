@@ -302,6 +302,7 @@ games-strategy/knights-demo
 games-strategy/majesty-demo
 gnome-extra/nautilus-dropbox
 kde-apps/dolphin-plugins-dropbox
+mail-client/thunderbird-bin
 mate-extra/caja-dropbox
 media-gfx/brscan4
 media-libs/amdgpu-pro-vulkan
@@ -335,10 +336,10 @@ net-print/hplip-plugin
 sci-chemistry/cara-bin
 sci-electronics/eagle
 sci-electronics/labone
+sci-libs/mkl
 sci-mathematics/gimps
 sci-misc/jupyterlab-desktop-bin
 sci-misc/netlogo-bin
-sci-libs/mkl
 sys-apps/intune-portal
 sys-apps/ipmicfg
 sys-apps/tas
@@ -351,6 +352,7 @@ www-apps/kibana-bin
 www-apps/prowlarr
 www-apps/radarr
 www-apps/readarr
+www-client/firefox-bin
 www-client/google-chrome
 www-client/google-chrome-beta
 www-client/google-chrome-unstable
@@ -460,5 +462,3 @@ sys-block/wait-for-dri-devices-rules
 
 # rust-bin isn't available on all platforms
 dev-lang/rust-bin
-mail-client/thunderbird-bin
-www-client/firefox-bin
