@@ -275,8 +275,8 @@ perl-module_src_configure() {
 			--create_packlist=1 \
 			--config ar="$(tc-getAR)" \
 			--config cc="$(tc-getCC)" \
-			--config ld="$(tc-getCC)" \
 			--config cpp="$(tc-getCPP)" \
+			--config ld="$(tc-getCC)" \
 			--config nm="$(tc-getNM)" \
 			--config ranlib="$(tc-getRANLIB)" \
 			--config ccflags="${CFLAGS}" \
@@ -291,8 +291,8 @@ perl-module_src_configure() {
 		set -- \
 			AR="$(tc-getAR)" \
 			CC="$(tc-getCC)" \
-			LD="$(tc-getCC)" \
 			CPP="$(tc-getCPP)" \
+			LD="$(tc-getCC)" \
 			NM="$(tc-getNM)" \
 			RANLIB="$(tc-getRANLIB)" \
 			OPTIMIZE="${CFLAGS}" \
