@@ -1,0 +1,20 @@
+# Fix configuration on darwin
+--- a/Makerules
++++ b/Makerules
+@@ -185,11 +185,11 @@ ifeq ($(OS),MINGW)
+ else ifeq ($(OS),MACOS)
+   HAVE_GLUT := yes
+   SYS_GLUT_CFLAGS := -Wno-deprecated-declarations
+-  SYS_GLUT_LIBS := -framework GLUT -framework OpenGL
+-  CC = xcrun cc
+-  AR = xcrun ar
+-  LD = xcrun ld
+-  RANLIB = xcrun ranlib
++  SYS_GLUT_LIBS ?= -framework GLUT -framework OpenGL
++  CC ?= xcrun cc
++  AR ?= xcrun ar
++  LD ?= xcrun ld
++  RANLIB ?= xcrun ranlib
+ 
+   ifneq ($(ARCHFLAGS),)
+     $(warning "MacOS with ARCHFLAGS set. Assuming we are building for arm64, and setting HAVE_LIBCRYPTO to no.")
