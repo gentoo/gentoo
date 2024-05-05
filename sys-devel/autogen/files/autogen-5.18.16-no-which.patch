@@ -1,3 +1,167 @@
+--- a/autoopts/mk-tpl-config.sh
++++ b/autoopts/mk-tpl-config.sh
+@@ -98,7 +98,7 @@ fix_scripts() {
+         st=`sed 1q $f`
+ 
+         case "$st" in
+-        *perl ) echo '#!' `which perl`
++        *perl ) echo '#!' `command -v perl`
+                  sed 1d $f
+                  ;;
+ 
+@@ -124,7 +124,7 @@ find_shell_prog() {
+     case `uname -s` in
+     SunOS )
+       while : ; do
+-        POSIX_SHELL=`which bash`
++        POSIX_SHELL=`command -v bash`
+         test -x "${POSIX_SHELL}" && break
+         POSIX_SHELL=/usr/xpg4/bin/sh
+         test -x "${POSIX_SHELL}" && break
+@@ -139,7 +139,7 @@ find_cat_prog() {
+     do
+         \unalias -a
+         unset -f command cat which
+-        POSIX_CAT=`which cat`
++        POSIX_CAT=`command -v cat`
+         test -x "$POSIX_CAT" && break
+         POSIX_CAT=`
+             PATH=\`command -p getconf CS_PATH\`
+--- a/autoopts/test/defs.in
++++ b/autoopts/test/defs.in
+@@ -40,7 +40,7 @@ cfg_vals()
+     if test "X$BASH_VERSION" = X
+     then
+       # On Solaris, make certain we do not use /bin/sh
+-      sh=`which bash`
++      sh=`command -v bash`
+       test "X$sh" = X && sh=/usr/xpg4/bin/sh
+       BASH_VERSION=not-good-enough
+       export BASH_VERSION
+--- a/autoopts/tpl/agtexi-cmd.tpl
++++ b/autoopts/tpl/agtexi-cmd.tpl
+@@ -779,7 +779,7 @@ DEFINE initialization                   =][=
+ =][= # END-BUILDTREE-ISMS
+ 
+ (shell "CLexe=`echo ${AGexe} | sed 's@/autogen@/columns@'`
+-       test -x \"${CLexe}\" || CLexe=`which columns`")
++       test -x \"${CLexe}\" || CLexe=`command -v columns`")
+ 
+ # END-INSTALL-ONLY-CODE =][=
+ 
+--- a/autoopts/tpl/cmd-doc.tlib
++++ b/autoopts/tpl/cmd-doc.tlib
+@@ -42,7 +42,7 @@
+ :+][+: # END-BUILDTREE-ISMS
+ 
+ (shell "CLexe=`echo ${AGexe} | sed 's@/autogen@/columns@'`
+-       test -x \"${CLexe}\" || CLexe=`which columns`")
++       test -x \"${CLexe}\" || CLexe=`command -v columns`")
+ 
+ # END-INSTALL-ONLY-CODE :+][+:
+ 
+--- a/autoopts/tpl/def2pot.tpl
++++ b/autoopts/tpl/def2pot.tpl
+@@ -68,7 +68,7 @@ ENDDEF                                                       =][=
+ =][= # END-BUILDTREE-ISMS
+ 
+ (shell "CLexe=`echo ${AGexe} | sed 's@/autogen@/columns@'`
+-       test -x \"${CLexe}\" || CLexe=`which columns`")
++       test -x \"${CLexe}\" || CLexe=`command -v columns`")
+ 
+ # END-INSTALL-ONLY-CODE =][= #
+ 
+--- a/autoopts/tpl/getopt.tpl
++++ b/autoopts/tpl/getopt.tpl
+@@ -81,7 +81,7 @@ CASE (suffix) +][+
+ # END-BUILDTREE-ISMS the following code is for installed version:
+     agopts=
+     aocfg=`echo ${AGexe} | sed 's@/[^/]*$@@'`/autoopts-config
+-    test -x "${aocfg}" || aocfg=`which autoopts-config`
++    test -x "${aocfg}" || aocfg=`command -v autoopts-config`
+     tarfile=`${aocfg} libsrc`
+ 
+ # END-INSTALL-ONLY-CODE +]
+--- a/autoopts/tpl/options.tpl
++++ b/autoopts/tpl/options.tpl
+@@ -39,7 +39,7 @@ c
+ =][= # END-BUILDTREE-ISMS
+ 
+ (shell "CLexe=`echo ${AGexe} | sed 's@/autogen@/columns@'`
+-       test -x \"${CLexe}\" || CLexe=`which columns`")
++       test -x \"${CLexe}\" || CLexe=`command -v columns`")
+ 
+ # END-INSTALL-ONLY-CODE     =][=
+ 
+--- a/autoopts/tpl/usage.tlib
++++ b/autoopts/tpl/usage.tlib
+@@ -34,7 +34,7 @@
+ =][= # END-BUILDTREE-ISMS
+ 
+ (shell "CLexe=`echo ${AGexe} | sed 's@/autogen@/columns@'`
+-       test -x \"${CLexe}\" || CLexe=`which columns`")
++       test -x \"${CLexe}\" || CLexe=`command -v columns`")
+ 
+ # END-INSTALL-ONLY-CODE =][=
+ 
+--- a/config/ag_macros.m4
++++ b/config/ag_macros.m4
+@@ -505,7 +505,7 @@ AC_DEFUN([AG_ENABLE_DEBUG],[
+         [Define this if wanting autogen debugging])
+     AC_DEFINE([DEBUG_ENABLED], [1],
+           [Define this if debugging is enabled])
+-    [f=`which dmalloc 2>/dev/null`
++    [f=`command -v dmalloc 2>/dev/null`
+     test -n "$f" && LIBS="${LIBS} -ldmalloc"]
+   fi
+ 
+--- a/config/bootstrap.shlib
++++ b/config/bootstrap.shlib
+@@ -47,16 +47,16 @@ case "${SHELL}" in
+ *[akz]sh) : ;;
+ *)
+   while : ; do
+-    SHELL=`which bash 2>/dev/null`
++    SHELL=`command -v bash 2>/dev/null`
+     test -x "${SHELL}" && break
+ 
+-    SHELL=`which ksh 2>/dev/null`
++    SHELL=`command -v ksh 2>/dev/null`
+     test -x "${SHELL}" && break
+ 
+     SHELL=/usr/xpg4/bin/sh
+     test -x "${SHELL}" && break
+ 
+-    SHELL=`which sh 2>/dev/null`
++    SHELL=`command -v sh 2>/dev/null`
+     test -x "${SHELL}" && break
+ 
+     die "unable to determine which shell to use"
+--- a/config/libopts.m4
++++ b/config/libopts.m4
+@@ -108,9 +108,9 @@ AC_DEFUN([INVOKE_LIBOPTS_MACROS_FIRST],[
+   [while :
+   do
+       test -x "$POSIX_SHELL" && break
+-      POSIX_SHELL=`which bash`
++      POSIX_SHELL=`command -v bash`
+       test -x "$POSIX_SHELL" && break
+-      POSIX_SHELL=`which dash`
++      POSIX_SHELL=`command -v dash`
+       test -x "$POSIX_SHELL" && break
+       POSIX_SHELL=/usr/xpg4/bin/sh
+       test -x "$POSIX_SHELL" && break
+--- a/config/mk-shdefs.in
++++ b/config/mk-shdefs.in
+@@ -109,7 +109,7 @@ configure() {
+     {
+         cmd='`set -o | '${AWK}" '/^allexport/ {print \$2}'"\`
+         cat <<- _EOF_
+-		#! `which echo` this-file-should-be-sourced,-not-executed
++		#! `command -v echo` this-file-should-be-sourced,-not-executed
+ 		# -*- Mode: shell-script -*-
+ 
+ 		case "$cmd" in
 --- a/configure.ac
 +++ b/configure.ac
 @@ -149,9 +149,9 @@ GDnam=getdefs${ac_exeext}
@@ -13,3 +177,25 @@
  else
    AGexe=${ag_top_builddir}/agen5/${AGnam}
    GDexe=${ag_top_builddir}/getdefs/${GDnam}
+--- a/doc/mk-agen-texi.sh
++++ b/doc/mk-agen-texi.sh
+@@ -65,7 +65,7 @@ set_config_values()
+   nl='
+ ' ht='	'
+   . ${top_builddir}/config/shdefs
+-  : ${MAKE=`which make`}
++  : ${MAKE=`command -v make`}
+   : ${srcdir=`pwd`}
+   srcdir=`cd ${srcdir} >/dev/null ; pwd`
+   INCLUDES="${DEFS} "`
+--- a/getdefs/test/defs
++++ b/getdefs/test/defs
+@@ -40,7 +40,7 @@ cfg_vals()
+     if test "X$BASH_VERSION" = X
+     then
+       # On Solaris, make certain we do not use /bin/sh
+-      sh=`which bash`
++      sh=`command -v bash`
+       test "X$sh" = X && sh=/usr/xpg4/bin/sh
+       BASH_VERSION=not-good-enough
+       export BASH_VERSION
