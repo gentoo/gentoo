@@ -1,17 +1,18 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit cmake desktop flag-o-matic python-any-r1
 
 DESCRIPTION="Online multi-player platform 2D shooter"
 HOMEPAGE="https://www.teeworlds.com/"
 SRC_URI="
 	https://github.com/teeworlds/teeworlds/releases/download/${PV}/teeworlds-${PV}-src.tar.gz
-	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"
-S="${WORKDIR}/${P}-src"
+	https://dev.gentoo.org/~ionen/distfiles/${PN}.png
+"
+S=${WORKDIR}/${P}-src
 
 LICENSE="ZLIB"
 SLOT="0"
@@ -27,7 +28,8 @@ RDEPEND="
 		media-sound/wavpack
 	)
 	dev-libs/openssl:=
-	sys-libs/zlib:="
+	sys-libs/zlib:=
+"
 DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}"
 
@@ -37,7 +39,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DCLIENT=$(usex !dedicated)
 		-DCMAKE_DISABLE_FIND_PACKAGE_X11=yes # unused
-		-DPYTHON_EXECUTABLE="${PYTHON}"
 	)
 
 	cmake_src_configure
