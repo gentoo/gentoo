@@ -6,11 +6,11 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="Script for pretty printing of your mails"
-HOMEPAGE="http://muttprint.sourceforge.net"
+HOMEPAGE="https://muttprint.sourceforge.net"
 SRC_URI="https://downloads.sourceforge.net/muttprint/${P}.tar.gz"
 
+LICENSE="GPL-2+"
 SLOT="0"
-LICENSE="GPL-2"
 KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="doc"
 
