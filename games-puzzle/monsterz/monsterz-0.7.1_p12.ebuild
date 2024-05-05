@@ -1,17 +1,18 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit desktop python-single-r1
 
 DESCRIPTION="Puzzle game similar to the famous Bejeweled or Zookeeper"
 HOMEPAGE="http://sam.zoy.org/projects/monsterz/"
 SRC_URI="
 	http://sam.zoy.org/projects/monsterz/${P/_p*}.tar.gz
-	mirror://debian/pool/main/${P::1}/${PN}/${PN}_${PV/_p*}-${PV/*_p}.debian.tar.xz"
-S="${WORKDIR}/${P/_p*}"
+	mirror://debian/pool/main/${P::1}/${PN}/${PN}_${PV/_p*}-${PV/*_p}.debian.tar.xz
+"
+S=${WORKDIR}/${P/_p*}
 
 LICENSE="GPL-1+ LGPL-2+ WTFPL-2"
 SLOT="0"
@@ -22,7 +23,8 @@ RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-python/pygame[${PYTHON_USEDEP}]')
 	media-libs/sdl2-image[png]
-	media-libs/sdl2-mixer[mod]"
+	media-libs/sdl2-mixer[mod]
+"
 BDEPEND="${PYTHON_DEPS}"
 
 PATCHES=(
