@@ -13,7 +13,7 @@ LICENSE="LGPL-3-with-linking-exception"
 
 # Upstream change from canonical to cowsql resetted SONAME, 3 -> 0. bgo#915960
 SLOT="0/0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="lz4 test zfs"
 RESTRICT="!test? ( test )"
 
