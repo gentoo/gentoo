@@ -3,17 +3,18 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit desktop optfeature python-single-r1
 
-MY_P="${PN}-$(ver_cut 1-3)"
+MY_P=${PN}-$(ver_cut 1-3)
 
 DESCRIPTION="Enriched clone of the game 'Logical' by Rainbow Arts"
 HOMEPAGE="https://pathological.sourceforge.net/"
 SRC_URI="
 	https://downloads.sourceforge.net/pathological/${MY_P}.tar.gz
-	mirror://debian/pool/main/p/pathological/${MY_P/-/_}-${PV/*_p}.debian.tar.xz"
-S="${WORKDIR}/${MY_P}"
+	mirror://debian/pool/main/p/pathological/${MY_P/-/_}-${PV/*_p}.debian.tar.xz
+"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -24,10 +25,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	${PYTHON_DEPS}
 	media-libs/sdl2-image[jpeg,png]
-	$(python_gen_cond_dep 'dev-python/pygame[${PYTHON_USEDEP}]')"
+	$(python_gen_cond_dep 'dev-python/pygame[${PYTHON_USEDEP}]')
+"
 BDEPEND="
 	${PYTHON_DEPS}
-	doc? ( media-libs/netpbm[png] )"
+	doc? ( media-libs/netpbm[png] )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-pygame2-compat.patch
