@@ -1,0 +1,34 @@
+Bug: https://bugs.gentoo.org/926167
+--- a/ruby/curia/mod_curia.c
++++ b/ruby/curia/mod_curia.c
+@@ -91,7 +91,7 @@ static VALUE rbcrfatalerror(VALUE vself, VALUE vindex);
+  *************************************************************************************************/
+ 
+ 
+-Init_mod_curia(){
++void Init_mod_curia(){
+   crinit();
+   ccuriaerror = rb_define_class("CuriaError", rb_eStandardError);
+   ccuriaerror_ENOERR = rb_define_class("CuriaError_ENOERR", ccuriaerror);
+--- a/ruby/depot/mod_depot.c
++++ b/ruby/depot/mod_depot.c
+@@ -90,7 +90,7 @@ static VALUE rbdpfatalerror(VALUE vself, VALUE vindex);
+  *************************************************************************************************/
+ 
+ 
+-Init_mod_depot(){
++void Init_mod_depot(){
+   dpinit();
+   cdepoterror = rb_define_class("DepotError", rb_eStandardError);
+   cdepoterror_ENOERR = rb_define_class("DepotError_ENOERR", cdepoterror);
+--- a/ruby/villa/mod_villa.c
++++ b/ruby/villa/mod_villa.c
+@@ -104,7 +104,7 @@ static VALUE rbvltranabort(VALUE vself, VALUE vindex);
+  *************************************************************************************************/
+ 
+ 
+-Init_mod_villa(){
++void Init_mod_villa(){
+   vlinit();
+   cvillaerror = rb_define_class("VillaError", rb_eStandardError);
+   cvillaerror_ENOERR = rb_define_class("VillaError_ENOERR", cvillaerror);
