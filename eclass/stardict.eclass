@@ -56,10 +56,7 @@ SLOT="0"
 IUSE="+zlib"
 
 BDEPEND="
-	|| (
-		>=app-text/stardict-2.4.2
-		app-text/sdcv
-	)
+	app-text/sdcv
 	zlib? (
 		app-arch/gzip
 		app-text/dictd
