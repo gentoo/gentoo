@@ -25,6 +25,12 @@ src_compile() {
 	emake CC="$(tc-getCC)"
 }
 
+src_test() {
+	# TODO: Add an example file we change & compare checksum?
+	# Trivial smoketest (which would've found bug #931225)
+	jhead -V || die
+}
+
 src_install() {
 	dobin ${PN}
 	dodoc *.txt
