@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools toolchain-funcs
 
 DESCRIPTION="Utility to control your cd/dvd drive"
-HOMEPAGE="http://cdctl.sourceforge.net/"
+HOMEPAGE="https://cdctl.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/cdctl/${P}.tar.gz"
 S="${WORKDIR}/${PN}"
 
