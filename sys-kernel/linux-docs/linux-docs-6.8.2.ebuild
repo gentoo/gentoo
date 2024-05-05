@@ -7,16 +7,14 @@ inherit linux-info python-any-r1 toolchain-funcs
 
 MY_P=linux-${PV}
 
-S=${WORKDIR}/${MY_P}
-
 DESCRIPTION="Developer documentation generated from the Linux kernel"
 HOMEPAGE="https://www.kernel.org/"
 SRC_URI="https://www.kernel.org/pub/linux/kernel/v6.x/${MY_P}.tar.xz"
 
+S=${WORKDIR}/${MY_P}
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sparc ~x86"
-
 IUSE="graphviz"
 
 RDEPEND="graphviz? ( >=media-gfx/graphviz-5.0.0 )"
