@@ -4,7 +4,7 @@
 EAPI=8
 
 MODULES_OPTIONAL_USE="modules"
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit autotools linux-mod-r1 python-single-r1 systemd tmpfiles
 
@@ -14,14 +14,14 @@ SRC_URI="https://www.openvswitch.org/releases/${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="debug modules monitor +ssl unwind valgrind"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # Check python/ovs/version.py in tarball for dev-python/ovs dep
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		~dev-python/ovs-2.17.1_p1[${PYTHON_USEDEP}]
+		~dev-python/ovs-2.17.9[${PYTHON_USEDEP}]
 		dev-python/twisted[${PYTHON_USEDEP}]
 		dev-python/zope-interface[${PYTHON_USEDEP}]
 	')
