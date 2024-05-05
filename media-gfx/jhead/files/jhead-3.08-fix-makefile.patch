@@ -10,7 +10,7 @@
 -LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
 -endif
 +CFLAGS ?= -O2
-+LDFLAGS += -fPIC -shared -Wl,-soname,libjhead.so.1
++LFLAGS += -fPIC -shared -Wl,-soname,libjhead.so.1
 +
 +TARGET = libjhead.so.1.0.0
 +TARGET0        = libjhead.so
@@ -36,7 +36,7 @@
  	install -m 0644 jhead.1 $(MANDIR)
 +
 +$(TARGET): $(objs) jhead
-+	${CC} $(LDFLAGS) $(LFLAGS) -o $(TARGET) $(objs)
++	${CC} $(CFLAGS) $(LDFLAGS) $(LFLAGS) -o $(TARGET) $(objs)
 +	ln -s ${TARGET} ${TARGET0}
 +	ln -s ${TARGET} ${TARGET1}
 +	ln -s ${TARGET} ${TARGET2}
