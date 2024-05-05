@@ -5,6 +5,7 @@
 		<email>qt@gentoo.org</email>
 		<name>Gentoo Qt Project</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<changelog>https://github.com/Python-PyQt/PyQt-builder/blob/main/docs/releases.md</changelog>
 		<doc>https://www.riverbankcomputing.com/static/Docs/PyQt-builder/</doc>
