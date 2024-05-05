@@ -3,8 +3,8 @@
 
 EAPI=8
 
-DESCRIPTION="dailystrips automatically downloads your favorite online comics from the web"
-HOMEPAGE="http://dailystrips.sourceforge.net/"
+DESCRIPTION="Dailystrips automatically downloads your favorite online comics from the web"
+HOMEPAGE="https://dailystrips.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/dailystrips/${P}.tar.gz"
 
 LICENSE="GPL-2"
