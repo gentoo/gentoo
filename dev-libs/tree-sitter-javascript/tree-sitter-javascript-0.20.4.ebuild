@@ -10,4 +10,4 @@ HOMEPAGE="https://github.com/tree-sitter/tree-sitter-javascript"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
