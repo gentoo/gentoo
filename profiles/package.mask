@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-05-05)
+# An unmaintained fork of an unmaintained DNS server.  All successive
+# homepages are gone.  Last commit in 2014.  Already carries a lot
+# of patches and hacks.
+# Removal on 2024-06-04.  Bug #928942.
+
+net-dns/mydns
 # Sam James <sam@gentoo.org> (2024-05-05)
 # Fails to build w/ broken dist tarball (bug #931240).
 =app-crypt/tpm2-tss-4.1.0
