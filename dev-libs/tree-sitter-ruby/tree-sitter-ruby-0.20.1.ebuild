@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/tree-sitter/tree-sitter-ruby"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # Highlight tests failing in upstream ci too. The parser works, and
 # we do not currently install the highlight queries.
