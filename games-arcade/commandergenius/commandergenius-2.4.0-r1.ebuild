@@ -1,18 +1,18 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 # note: version >=2.5.0 switches from python to lua
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit cmake flag-o-matic python-single-r1 xdg
 
-MY_P="Commander-Genius-v${PV}"
+MY_P=Commander-Genius-v${PV}
 
 DESCRIPTION="Open Source Commander Keen clone (needs original game files)"
 HOMEPAGE="https://clonekeenplus.sourceforge.io/"
 SRC_URI="https://gitlab.com/Dringgstein/Commander-Genius/-/archive/v${PV}/${MY_P}.tar.bz2"
-S="${WORKDIR}/${MY_P}"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -29,10 +29,12 @@ RDEPEND="
 	sys-libs/zlib[minizip]
 	downloader? ( net-misc/curl )
 	opengl? ( virtual/opengl )
-	python? ( ${PYTHON_DEPS} )"
+	python? ( ${PYTHON_DEPS} )
+"
 DEPEND="
 	${RDEPEND}
-	dev-libs/boost"
+	dev-libs/boost
+"
 BDEPEND="python? ( ${PYTHON_DEPS} )"
 
 PATCHES=(
