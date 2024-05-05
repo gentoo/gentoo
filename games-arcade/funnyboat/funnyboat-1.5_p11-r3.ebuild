@@ -3,15 +3,16 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit desktop python-single-r1 wrapper
 
 DESCRIPTION="Side scrolling shooter game starring a steamboat on the sea"
 HOMEPAGE="https://funnyboat.sourceforge.net/"
 SRC_URI="
 	https://downloads.sourceforge.net/${PN}/${P/_p*}-src.zip
-	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV/_p*}-${PV/*_p}.debian.tar.xz"
-S="${WORKDIR}/${PN}"
+	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV/_p*}-${PV/*_p}.debian.tar.xz
+"
+S=${WORKDIR}/${PN}
 
 LICENSE="BitstreamVera GPL-2 MIT"
 SLOT="0"
@@ -22,10 +23,12 @@ RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-python/pygame[${PYTHON_USEDEP}]')
 	media-libs/sdl2-image[png]
-	media-libs/sdl2-mixer[vorbis]"
+	media-libs/sdl2-mixer[vorbis]
+"
 BDEPEND="
 	${PYTHON_DEPS}
-	app-arch/unzip"
+	app-arch/unzip
+"
 
 PATCHES=(
 	"${WORKDIR}"/debian/patches
@@ -34,7 +37,7 @@ PATCHES=(
 
 src_prepare() {
 	# Drop Debian specific patch
-	rm "${WORKDIR}"/debian/patches/use_debian_vera_ttf.patch || die
+	rm -- "${WORKDIR}"/debian/patches/use_debian_vera_ttf.patch || die
 
 	default
 }
