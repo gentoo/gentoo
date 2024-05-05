@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-	<email>alexander@neuwirth-informatik.de</email>
-	<name>Alexander Puck Neuwirth</name>
+  <email>alexander@neuwirth-informatik.de</email>
+  <name>Alexander Puck Neuwirth</name>
 </maintainer>
 <maintainer type="project">
   <email>sci-physics@gentoo.org</email>
@@ -19,4 +19,7 @@
 <use>
   <flag name="root">Adds support for <pkg>sci-physics/root</pkg></flag>
 </use>
+<upstream>
+  <remote-id type="gitlab">hepcedar/yoda</remote-id>
+</upstream>
 </pkgmetadata>
