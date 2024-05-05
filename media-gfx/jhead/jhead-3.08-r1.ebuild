@@ -28,7 +28,7 @@ src_compile() {
 src_test() {
 	# TODO: Add an example file we change & compare checksum?
 	# Trivial smoketest (which would've found bug #931225)
-	jhead -V || die
+	./jhead -V || die
 }
 
 src_install() {
