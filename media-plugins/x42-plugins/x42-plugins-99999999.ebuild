@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/x42/x42-plugins.git"
 else
-	SRC_URI="http://gareus.org/misc/x42-plugins/${P}.tar.xz"
+	SRC_URI="https://gareus.org/misc/x42-plugins/${P}.tar.xz"
 	KEYWORDS="~amd64"
 fi
 
