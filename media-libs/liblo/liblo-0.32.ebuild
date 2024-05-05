@@ -24,9 +24,6 @@ PATCHES=(
 src_prepare() {
 	default
 
-	# don't build examples by default
-	sed -i '/^SUBDIRS =/s/examples//' Makefile.am || die
-
 	eautoreconf
 }
 
@@ -35,6 +32,8 @@ src_configure() {
 
 	# switching threads on/off breaks ABI, bugs #473282, #473286 and #473356
 	local myeconfargs=(
+		# don't build examples by default
+		--disable-examples
 		--enable-threads
 		--disable-network-tests
 		$(use_enable test tests)
