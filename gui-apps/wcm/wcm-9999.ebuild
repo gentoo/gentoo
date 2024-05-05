@@ -20,7 +20,7 @@ fi
 
 LICENSE="MIT"
 
-RESTRIC="test" # no tests
+RESTRICT="test" # no tests
 
 CDEPEND="
 	dev-libs/libevdev
