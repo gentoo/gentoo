@@ -1,0 +1,22 @@
+From: Bailey Kasin <baileykasin@gmail.com>
+Date: Mon, 02 Oct 2023 23:02:10 -0700
+Subject: [PATCH] use system neowofetch
+
+Signed-off-by: Bailey Kasin <baileykasin@gmail.com>
+Forwarded: not-needed
+
+---
+diff --git a/hyfetch/neofetch_util.py b/hyfetch/neofetch_util.py
+index 17829ac..1fcfcfc 100644
+--- a/hyfetch/neofetch_util.py
++++ b/hyfetch/neofetch_util.py
+@@ -285,7 +285,7 @@ def run_neofetch_cmd(args: str, pipe: bool = False) -> str | None:
+     Run neofetch command
+     """
+     if platform.system() != 'Windows':
+-        full_cmd = ['/usr/bin/env', 'bash', get_command_path(), *shlex.split(args)]
++        full_cmd = ['/usr/bin/neowofetch', *shlex.split(args)]
+ 
+     else:
+         cmd = get_command_path().replace("\\", "/").replace("C:/", "/c/")
+
