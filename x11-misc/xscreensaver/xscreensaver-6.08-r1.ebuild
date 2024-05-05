@@ -3,11 +3,21 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic font optfeature pam strip-linguas
+inherit autotools flag-o-matic font optfeature pam strip-linguas systemd xdg-utils
 
 DESCRIPTION="Modular screen saver and locker for the X Window System"
 HOMEPAGE="https://www.jwz.org/xscreensaver/"
-SRC_URI="https://www.jwz.org/xscreensaver/${P}.1.tar.gz"
+SRC_URI="
+	https://www.jwz.org/xscreensaver/${P}.tar.gz
+	logind-idle-hint? (
+		https://github.com/Flowdalic/xscreensaver/commit/59e7974c42dc08411c9af2a3a644a582c2116f46.patch ->
+			${PN}-6.06-logind-idle-hint.patch
+	)
+	systemd? (
+		 https://github.com/Flowdalic/xscreensaver/commit/376b07ec76cfe1070f498773aaec8fd7030593af.patch ->
+			${PN}-6.07-xscreensaver.service-start-with-no-splash.patch
+	)
+"
 
 # Font license mapping for folder ./hacks/fonts/ as following:
 #   clacon.ttf       -- MIT
@@ -15,15 +25,15 @@ SRC_URI="https://www.jwz.org/xscreensaver/${P}.1.tar.gz"
 #   luximr.ttf       -- bh-luxi (package media-fonts/font-bh-ttf)
 #   OCRAStd.otf      -- unclear, hence dropped
 #   SpecialElite.ttf -- Apache-2.0
-LICENSE="BSD fonts? ( MIT Apache-2.0 )"
+LICENSE="BSD fonts? ( MIT Apache-2.0 ) systemd? ( ISC )"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
-IUSE="elogind fonts +gdk-pixbuf gdm gles glx +gtk jpeg +locking new-login offensive pam +perl +png selinux suid systemd xinerama"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+IUSE="elogind fonts gdm gles glx jpeg +locking logind-idle-hint new-login offensive pam +perl selinux suid systemd xinerama"
 REQUIRED_USE="
 	gles? ( !glx )
 	?? ( elogind systemd )
-	gtk? ( gdk-pixbuf )
 	pam? ( locking )
+	logind-idle-hint? ( || ( elogind systemd ) )
 "
 
 COMMON_DEPEND="
@@ -37,11 +47,9 @@ COMMON_DEPEND="
 	x11-libs/libXt
 	x11-libs/libXxf86vm
 	elogind? ( sys-auth/elogind )
-	gdk-pixbuf? (
-		x11-libs/gdk-pixbuf-xlib
-		>=x11-libs/gdk-pixbuf-2.42.0:2
-	)
-	gtk? ( >=x11-libs/gtk+-2.22.0:3 )
+	x11-libs/gdk-pixbuf-xlib
+	>=x11-libs/gdk-pixbuf-2.42.0:2
+	>=x11-libs/gtk+-3.0.0:3
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	locking? ( virtual/libcrypt:= )
 	new-login? (
@@ -51,7 +59,7 @@ COMMON_DEPEND="
 	virtual/glu
 	virtual/opengl
 	pam? ( sys-libs/pam )
-	png? ( media-libs/libpng:= )
+	media-libs/libpng:=
 	systemd? ( >=sys-apps/systemd-221 )
 	>=x11-libs/libXft-2.1.0
 	xinerama? ( x11-libs/libXinerama )
@@ -80,7 +88,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.31-pragma.patch
 	"${FILESDIR}"/${PN}-6.01-gentoo.patch
-	"${FILESDIR}"/${PN}-5.45-gcc.patch
+	"${FILESDIR}"/${PN}-6.07-gcc.patch
 	"${FILESDIR}"/${PN}-6.01-configure.ac-sandbox.patch
 	"${FILESDIR}"/${PN}-6.01-without-gl-makefile.patch
 	"${FILESDIR}"/${PN}-6.01-non-gtk-install.patch
@@ -88,15 +96,33 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.03-without-gl-configure.patch
 	"${FILESDIR}"/${PN}-6.05-remove-update-icon-cache.patch
 	"${FILESDIR}"/${PN}-6.05-r2-configure-exit-codes.patch
-	"${FILESDIR}"/${PN}-6.05-get-dirs-from-gtk3.0-in-configure.patch
+	"${FILESDIR}"/${PN}-6.07-allow-no-pam.patch
+	"${FILESDIR}"/${PN}-6.07-fix-desktop-files.patch
 )
 
 DOCS=( README{,.hacking} )
 
+# see https://bugs.gentoo.org/898328
+QA_CONFIG_IMPL_DECL_SKIP=( getspnam_shadow )
+
 src_prepare() {
 	default
 
+	# bug #896440
+	mv po/ca.po po/ca.po.old || die
+	iconv -f ISO-8859-15 -t UTF-8 po/ca.po.old >po/ca.po || die
+
 	sed -i configure.ac -e '/^ALL_LINGUAS=/d' || die
+
+	if use systemd; then
+		# Causes "Failed to enable unit: Cannot alias xscreensaver.service as org.jwz.xscreensaver."
+		# after "systemctl --user enable xscreensaver".
+		sed -i -e '/^Alias=org.jwz.xscreensaver.service/d' \
+			driver/xscreensaver.service.in || die
+
+		eapply "${DISTDIR}/${PN}-6.07-xscreensaver.service-start-with-no-splash.patch"
+	fi
+
 	strip-linguas -i po/
 	export ALL_LINGUAS="${LINGUAS}"
 
@@ -127,6 +153,10 @@ src_prepare() {
 		eapply "${FILESDIR}/xscreensaver-6.05-teach-handsy-some-manners.patch"
 	fi
 
+	if use logind-idle-hint; then
+		eapply "${DISTDIR}/${PN}-6.06-logind-idle-hint.patch"
+	fi
+
 	config_rpath_update "${S}"/config.rpath
 
 	# Must be eauto*re*conf, to force the rebuild
@@ -151,17 +181,17 @@ src_configure() {
 	ECONF_OPTS=(
 		$(use_enable locking)
 		$(use_with elogind)
-		$(use_with gdk-pixbuf pixbuf)
+		--with-pixbuf
 		$(use_with gles)
 		$(use_with glx)
-		$(use_with gtk)
+		--with-gtk
 		$(use_with new-login login-manager)
 		$(use_with pam)
 		$(use_with suid setuid-hacks)
 		$(use_with systemd)
 		$(use_with xinerama xinerama-ext)
 		--with-jpeg=$(usex jpeg yes no)
-		--with-png=$(usex png yes no)
+		--with-png=yes
 		--with-xft=yes
 		--with-app-defaults="${EPREFIX}"/usr/share/X11/app-defaults
 		--with-configdir="${EPREFIX}"/usr/share/${PN}/config
@@ -198,15 +228,14 @@ src_install() {
 
 	if use fonts; then
 		# Do not install fonts with unclear licensing
-		rm -v "${ED}${FONTDIR}"/{gallant12x22.ttf,OCRAStd.otf} || die
+		rm -v "${ED}${FONTDIR}"/gallant12x22.ttf || die
 
 		# Do not duplicate font Luxi Mono (of package media-fonts/font-bh-ttf)
 		rm -v "${ED}${FONTDIR}"/luximr.ttf || die
 
 		font_xfont_config
 	else
-		rm -v "${ED}${FONTDIR}"/*.{ttf,otf} || die
-		rmdir -v "${ED}${FONTDIR}" || die #812473
+		rm -rfv "${ED}${FONTDIR}" || die #812473
 	fi
 
 	einstalldocs
@@ -216,14 +245,13 @@ src_install() {
 		pamd_mimic_system ${PN} auth
 	fi
 
-	# bugs #809599, #828869
-	if ! use gtk; then
-		rm "${ED}/usr/bin/xscreensaver-demo" || die
+	if use systemd; then
+		systemd_douserunit "${ED}/usr/share/${PN}/xscreensaver.service"
 	fi
-	# Makefile installs xscreensaver.service regardless of --without-systemd
-	if ! use systemd; then
-		rm "${ED}/usr/share/${PN}/xscreensaver.service" || die
-	fi
+	# Makefile installs xscreensaver.service regardless of
+	# --without-systemd, and if USE=systemd, we will have installed the
+	# unit file already.
+	rm "${ED}/usr/share/${PN}/xscreensaver.service" || die
 
 	# bug #885989
 	fperms 4755 /usr/$(get_libdir)/misc/xscreensaver/xscreensaver-auth
@@ -240,8 +268,11 @@ pkg_postinst() {
 	optfeature 'Bitmap fonts 75dpi' media-fonts/font-adobe-75dpi
 	optfeature 'Bitmap fonts 100dpi' media-fonts/font-adobe-100dpi
 	optfeature 'Truetype font Luxi Mono' media-fonts/font-bh-ttf
+
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	use fonts && font_pkg_postrm
+	xdg_icon_cache_update
 }
