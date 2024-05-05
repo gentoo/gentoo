@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,8 +11,6 @@ DESCRIPTION="The open source, cross platform, free C, C++ and Fortran IDE"
 HOMEPAGE="https://codeblocks.org/"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
-SRC_URI=""
 ESVN_REPO_URI="svn://svn.code.sf.net/p/${PN}/code/trunk"
 ESVN_FETCH_CMD="svn checkout --ignore-externals"
 ESVN_UPDATE_CMD="svn update --ignore-externals"
