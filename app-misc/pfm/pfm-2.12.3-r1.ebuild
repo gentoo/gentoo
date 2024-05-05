@@ -5,8 +5,8 @@ EAPI=7
 
 inherit perl-module
 
-DESCRIPTION="A terminal-based file manager written in Perl"
-HOMEPAGE="http://p-f-m.sourceforge.net/"
+DESCRIPTION="Terminal-based file manager written in Perl"
+HOMEPAGE="https://p-f-m.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/p-f-m/${P}.tar.gz"
 
 LICENSE="GPL-2"
