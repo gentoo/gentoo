@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2024-05-05)
+# A library last bumped in 2004.  Homepage gone.  Carries patches
+# and hacks already.  No reverse dependencies.
+# Removal on 2024-06-04.  Bug #909581.
+dev-games/hawknl
+
+# Michał Górny <mgorny@gentoo.org> (2024-05-05)
 # Effectively unmaintained.  Unpatched vulnerability reported
 # in February.  The Python counterpart is even more outdated.
 # Removal on 2024-06-04.  Bug #924129.
