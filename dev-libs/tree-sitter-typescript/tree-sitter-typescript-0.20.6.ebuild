@@ -11,7 +11,7 @@ S="${WORKDIR}"/${P}/typescript
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 src_prepare() {
 	# fix test corpus path
