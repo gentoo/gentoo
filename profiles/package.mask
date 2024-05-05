@@ -45,13 +45,6 @@ dev-games/poker-eval
 dev-games/hawknl
 
 # Michał Górny <mgorny@gentoo.org> (2024-05-05)
-# Effectively unmaintained.  Unpatched vulnerability reported
-# in February.  The Python counterpart is even more outdated.
-# Removal on 2024-06-04.  Bug #924129.
-dev-python/ovs
-net-misc/openvswitch
-
-# Michał Górny <mgorny@gentoo.org> (2024-05-05)
 # An unmaintained fork of an unmaintained DNS server.  All successive
 # homepages are gone.  Last commit in 2014.  Already carries a lot
 # of patches and hacks.
