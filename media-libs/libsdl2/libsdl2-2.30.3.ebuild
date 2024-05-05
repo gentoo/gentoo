@@ -179,6 +179,7 @@ src_configure() {
 		-DSDL_LIBUDEV=$(usex udev)
 		-DSDL_DBUS=$(usex dbus)
 		-DSDL_IBUS=$(usex ibus)
+		-DSDL_CCACHE=OFF
 		-DSDL_DIRECTX=OFF
 		-DSDL_RPATH=OFF
 		-DSDL_VIDEO_RENDER_D3D=OFF
