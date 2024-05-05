@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-3 )
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit autotools lua-single python-any-r1 xdg
 
 DESCRIPTION="Modification of the classical Freedroid engine into an RPG"
