@@ -1,0 +1,67 @@
+From c04151bb3c12ceab38f0b5bee8e214c5e691afea Mon Sep 17 00:00:00 2001
+From: Alexander Puck Neuwirth <alexander@neuwirth-informatik.de>
+Date: Sun, 5 May 2024 16:06:37 +0000
+Subject: [PATCH 1/2] Update Makefile.am
+
+---
+ Makefile.am | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index bb40b6cd3c..ed50ceb504 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -18,12 +18,15 @@ doc:
+ clean-local:
+ 	@rm -rf a.out
+ 
++if ENABLE_ANALYSES
++
+ install-data-local:
+ 	$(MAKE) -C doc dat json
+ 	$(mkdir_p) $(DESTDIR)$(pkgdatadir)
+ 	$(install_sh_DATA) doc/analists/analyses.dat $(DESTDIR)$(pkgdatadir)/ || true
+ 	$(install_sh_DATA) doc/analists/analyses.json $(DESTDIR)$(pkgdatadir)/ || true
+-
++	
++endif
+ 
+ ## Upload tarballs to HepForge
+ DEST = login.hepforge.org:rivet/downloads/
+-- 
+GitLab
+
+
+From 3399d1e37543d70eee8a9ebb8e0b3e8a9e436f26 Mon Sep 17 00:00:00 2001
+From: Alexander Puck Neuwirth <alexander@neuwirth-informatik.de>
+Date: Sun, 5 May 2024 16:43:57 +0000
+Subject: [PATCH 2/2] Update Makefile.am
+
+---
+ Makefile.am | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index ed50ceb504..7757f7c37e 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -19,13 +19,15 @@ clean-local:
+ 	@rm -rf a.out
+ 
+ if ENABLE_ANALYSES
++if ENABLE_PYEXT
+ 
+ install-data-local:
+ 	$(MAKE) -C doc dat json
+ 	$(mkdir_p) $(DESTDIR)$(pkgdatadir)
+ 	$(install_sh_DATA) doc/analists/analyses.dat $(DESTDIR)$(pkgdatadir)/ || true
+ 	$(install_sh_DATA) doc/analists/analyses.json $(DESTDIR)$(pkgdatadir)/ || true
+-	
++
++endif	
+ endif
+ 
+ ## Upload tarballs to HepForge
+-- 
+GitLab
+

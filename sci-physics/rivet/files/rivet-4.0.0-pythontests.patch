@@ -1,0 +1,35 @@
+From e2deecd9e4d9e3a4c381d69997077d4912efb82d Mon Sep 17 00:00:00 2001
+From: Alexander Puck Neuwirth <alexander@neuwirth-informatik.de>
+Date: Sun, 5 May 2024 13:27:37 +0000
+Subject: [PATCH] Update Makefile.am
+
+---
+ test/Makefile.am | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/test/Makefile.am b/test/Makefile.am
+index b629cc048a..49e5a55f3f 100644
+--- a/test/Makefile.am
++++ b/test/Makefile.am
+@@ -35,13 +35,16 @@ TESTS_ENVIRONMENT = \
+   RIVET_TESTS_SRC=$(srcdir)
+ 
+ TESTS = \
+-testMath testMatVec testCmp testAPI.sh testNaN.sh testBeams \
+-testImport.sh
++testMath testMatVec testCmp testAPI.sh testNaN.sh testBeams
++
++if ENABLE_PYEXT
++TESTS += testImport.sh
+ 
+ if ENABLE_ANALYSES
+ 
+ TESTS += testCmdLine.sh
+ 
++endif
+ endif
+ 
+ EXTRA_DIST = testAPI.hepmc testCmdLine.sh testImport.sh testAPI.sh testNaN.sh
+-- 
+GitLab
+
