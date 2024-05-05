@@ -1,0 +1,18 @@
+https://gitlab.com/listout/gtkdiskfree/-/commit/3e8d72c2e4115e1372edb81ae9e3a9cd682e9c48.patch
+Bug: https://bugs.gentoo.org/923113
+From: Samuel Bauer <samuel.bauer@yahoo.fr>
+Date: Tue, 8 Jun 2021 20:40:21 +0200
+Subject: [PATCH] Use const datas for icon
+
+--- a/src/icons/icon.xpm
++++ b/src/icons/icon.xpm
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * icon_xpm[] = {
++const static char * icon_xpm[] = {
+ "48 48 592 2",
+ "  	c None",
+ ". 	c #C7C7C7",
+-- 
+GitLab
+
