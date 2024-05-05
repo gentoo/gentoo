@@ -6,10 +6,10 @@ EAPI=7
 inherit toolchain-funcs prefix
 
 DESCRIPTION="Console program to recover files based on their headers and footers"
-HOMEPAGE="http://foremost.sourceforge.net/"
+HOMEPAGE="https://foremost.sourceforge.net/"
 #SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 # starting to hate sf.net ...
-SRC_URI="http://foremost.sourceforge.net/pkg/${P}.tar.gz"
+SRC_URI="https://foremost.sourceforge.net/pkg/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
