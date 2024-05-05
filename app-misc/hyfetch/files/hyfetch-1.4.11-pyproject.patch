@@ -1,0 +1,116 @@
+From 4b926d90e8f2a5eebfdd68105facff1f99694f5a Mon Sep 17 00:00:00 2001
+From: Bailey Kasin <baileykasin@gmail.com>
+Date: Thu, 28 Sep 2023 13:05:22 -0700
+Subject: [PATCH] [+] Start switch to pyproject.toml
+
+Signed-off-by: Bailey Kasin <baileykasin@gmail.com>
+---
+ pyproject.toml | 37 +++++++++++++++++++++++++++++++++++
+ setup.py       | 52 ++------------------------------------------------
+ 2 files changed, 39 insertions(+), 50 deletions(-)
+ create mode 100644 pyproject.toml
+ mode change 100755 => 100644 setup.py
+
+diff --git a/pyproject.toml b/pyproject.toml
+new file mode 100644
+index 000000000..d30f10c0b
+--- /dev/null
++++ b/pyproject.toml
+@@ -0,0 +1,38 @@
++[build-system]
++requires = ["setuptools", "typing_extensions"]
++build-backend = "setuptools.build_meta"
++
++[project]
++name = "HyFetch"
++authors = [{ name = "Azalea Gui", email = "me@hydev.org" }]
++description = "neofetch with flags <3"
++readme = "README.md"
++requires-python = ">=3.7"
++license = { text = "MIT License" }
++classifiers = [
++    "License :: OSI Approved :: MIT License",
++    "Programming Language :: Python :: 3",
++    "Programming Language :: Python :: 3.7",
++    "Programming Language :: Python :: 3.8",
++    "Programming Language :: Python :: 3.9",
++    "Programming Language :: Python :: 3.10",
++    "Programming Language :: Python :: 3.11",
++    "Programming Language :: Python :: 3.12",
++]
++dependencies = [
++    "typing_extensions",
++    'psutil ; platform_system=="Windows"',
++    'colorama>=0.4.6 ; platform_system=="Windows"'
++]
++dynamic = ["version"]
++
++[tool.setuptools]
++packages = ["hyfetch", "hyfetch.distros"]
++license-files = ["LICENSE.md"]
++script-files = ["hyfetch/scripts/neowofetch"]
++
++[tool.setuptools.dynamic]
++version = {attr = "hyfetch.__version__"}
++
++[project.scripts]
++hyfetch = "hyfetch.main:run"
+diff --git a/setup.py b/setup.py
+index 95260a40..60684932 100755
+--- a/setup.py	2023-12-02 00:22:33.000000000 -0000
++++ b/setup.py	2024-05-03 08:58:46.479797868 -0000
+@@ -1,52 +1,3 @@
+-#!/usr/bin/env python3
+-from pathlib import Path
+-from setuptools import setup, find_namespace_packages
++from setuptools import setup
+ 
+-# The directory containing this file
+-HERE = Path(__file__).parent
+-
+-# Load version without importing it (see issue #192 if you are confused)
+-for l in (HERE / 'hyfetch' / '__version__.py').read_text().strip().splitlines():
+-    exec(l)
+-
+-# The text of the README file
+-README = (HERE / "README.md").read_text('utf-8')
+-
+-# This call to setup() does all the work
+-setup(
+-    name="HyFetch",
+-    version=VERSION,
+-    description="neofetch with flags <3",
+-    long_description=README,
+-    long_description_content_type="text/markdown",
+-    url="https://github.com/hykilpikonna/HyFetch",
+-    author="Azalea Gui",
+-    author_email="me@hydev.org",
+-    license="MIT",
+-    classifiers=[
+-        "License :: OSI Approved :: MIT License",
+-        "Programming Language :: Python :: 3",
+-        "Programming Language :: Python :: 3.7",
+-        "Programming Language :: Python :: 3.8",
+-        "Programming Language :: Python :: 3.9",
+-        "Programming Language :: Python :: 3.10",
+-        "Programming Language :: Python :: 3.11",
+-    ],
+-    packages=find_namespace_packages(),
+-    package_data={'hyfetch': ['hyfetch/*']},
+-    include_package_data=True,
+-    install_requires=[
+-        # Universal dependencies
+-        'setuptools', 'typing_extensions',
+-        
+-        # Windows dependencies
+-        'psutil ; platform_system=="Windows"',
+-        'colorama>=0.4.6 ; platform_system=="Windows"',
+-    ],
+-    entry_points={
+-        "console_scripts": [
+-            "hyfetch=hyfetch.main:run",
+-        ]
+-    },
+-    scripts=['hyfetch/scripts/neowofetch']
+-)
++setup()

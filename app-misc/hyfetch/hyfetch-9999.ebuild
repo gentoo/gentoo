@@ -1,11 +1,12 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..12} )
-inherit optfeature distutils-r1
+DISTUTILS_USE_PEP517=setuptools
+
+inherit optfeature distutils-r1 shell-completion
 
 DESCRIPTION="Neofetch with LGBTQ+ pride flags!"
 HOMEPAGE="https://github.com/hykilpikonna/hyfetch"
@@ -20,9 +21,26 @@ fi
 LICENSE="MIT"
 SLOT="0"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-9999-pyproject.patch
+	"${FILESDIR}"/${PN}-1.4.11-neofetch.patch
+)
+
 RDEPEND="
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
 "
+
+python_install() {
+	newbashcomp hyfetch/scripts/autocomplete.bash ${PN}
+	newzshcomp hyfetch/scripts/autocomplete.zsh _${PN}
+
+	distutils-r1_python_install
+
+	dodir /usr/bin/
+	mv neofetch "${D}/usr/bin/neowofetch" || die
+
+	rm -r "${D}/usr/lib/${EPYTHON}/site-packages/hyfetch/scripts" || die
+}
 
 pkg_postinst() {
 	optfeature "displaying images" "media-libs/imlib2 www-client/w3m[imlib]"
