@@ -6,10 +6,10 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="Secure file wiping utility based on Peter Gutman's patterns"
-HOMEPAGE="http://wipe.sourceforge.net/"
+HOMEPAGE="https://wipe.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/wipe/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc ~ppc64 x86"
 
