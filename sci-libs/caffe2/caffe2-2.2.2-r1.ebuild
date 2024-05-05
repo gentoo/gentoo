@@ -42,8 +42,7 @@ RDEPEND="
 	dev-libs/pthreadpool
 	dev-libs/sleef
 	virtual/lapack
-	>=sci-libs/onnx-1.12.0
-	<sci-libs/onnx-1.15.0
+	sci-libs/onnx
 	sci-libs/foxi
 	cuda? (
 		=dev-libs/cudnn-8*

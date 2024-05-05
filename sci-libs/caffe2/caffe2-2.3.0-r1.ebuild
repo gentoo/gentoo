@@ -42,11 +42,10 @@ RDEPEND="
 	dev-libs/pthreadpool
 	dev-libs/sleef
 	virtual/lapack
-	>=sci-libs/onnx-1.12.0
-	<sci-libs/onnx-1.15.0
+	sci-libs/onnx
 	sci-libs/foxi
 	cuda? (
-		=dev-libs/cudnn-8*
+		dev-libs/cudnn
 		>=dev-libs/cudnn-frontend-1.0.3:0/8
 		<dev-util/nvidia-cuda-toolkit-12.4.0:=[profiler]
 	)
