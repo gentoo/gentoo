@@ -22,7 +22,7 @@ fi
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-IUSE="+brotli dbi gnutls kerberos ldap +lua maxminddb mbedtls +nettle nss +pcre php sasl selinux ssl test unwind webdav xattr +zlib zstd"
+IUSE="+brotli dbi gnutls kerberos ldap libdeflate +lua maxminddb mbedtls +nettle nss +pcre php sasl selinux ssl test unwind webdav xattr +zlib zstd"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -42,6 +42,7 @@ COMMON_DEPEND="
 	gnutls? ( net-libs/gnutls )
 	kerberos? ( virtual/krb5 )
 	ldap? ( >=net-nds/openldap-2.1.26:= )
+	libdeflate? ( app-arch/libdeflate )
 	lua? ( ${LUA_DEPS} )
 	maxminddb? ( dev-libs/libmaxminddb )
 	mbedtls? ( net-libs/mbedtls )
@@ -116,14 +117,14 @@ src_configure() {
 
 		$(meson_feature dbi with_dbi)
 
-		# Unpackaged in Gentoo
-		-Dwith_libdeflate=disabled
 		# Obsolete
 		-Dwith_fam=disabled
 
 		$(meson_use gnutls with_gnutls)
 		$(meson_feature kerberos with_krb5)
 		$(meson_feature ldap with_ldap)
+
+		$(meson_feature libdeflate with_libdeflate)
 
 		$(meson_feature unwind with_libunwind)
 
