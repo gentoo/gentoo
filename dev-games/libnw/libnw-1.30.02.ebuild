@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Tools and libraries for NWN file manipulation"
 HOMEPAGE="https://sourceforge.net/projects/openknights"
@@ -22,6 +22,7 @@ DOCS=( AUTHORS ChangeLog NEWS README README.tech TODO )
 
 src_prepare() {
 	default
+	eautoreconf
 
 	local f
 	while IFS="" read -d $'\0' -r f; do
