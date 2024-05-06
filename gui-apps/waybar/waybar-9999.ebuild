@@ -58,7 +58,7 @@ RDEPEND="
 	mpd? ( media-libs/libmpdclient )
 	mpris? ( >=media-sound/playerctl-2 )
 	network? ( dev-libs/libnl:3 )
-	pipewire? ( media-video/wireplumber:0/0.4 )
+	pipewire? ( media-video/wireplumber:0/0.5 )
 	pulseaudio? ( media-libs/libpulse )
 	sndio? ( media-sound/sndio:= )
 	systemd? ( sys-apps/systemd:= )
