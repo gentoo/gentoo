@@ -10,7 +10,7 @@ inherit linux-info
 DESCRIPTION="Microsemi Adaptec RAID Controller Command Line Utility"
 HOMEPAGE="https://www.microsemi.com/"
 SRC_URI="http://download.adaptec.com/raid/storage_manager/${PN}_${MY_PV}.zip"
-S="${WORKDIR}/linux"
+S="${WORKDIR}"
 
 LICENSE="Microsemi"
 SLOT="0"
@@ -31,5 +31,5 @@ pkg_setup() {
 }
 
 src_install() {
-	dobin $(usex arm64 'linuxarm_x64/cmdline/' '')arcconf
+	dobin linux$(usex arm64 'arm' '')_x64/cmdline/arcconf
 }
