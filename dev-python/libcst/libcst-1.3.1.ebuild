@@ -154,7 +154,7 @@ BDEPEND="
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
-QA_PREBUILT="usr/lib/py.*/site-packages/libcst/native.*"
+QA_FLAGS_IGNORED="usr/lib/py.*/site-packages/libcst/native.*"
 
 python_test() {
 	local EPYTEST_IGNORE=(
