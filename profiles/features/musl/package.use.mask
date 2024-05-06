@@ -1,6 +1,13 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Robert Förster <Dessa@gmake.de> (2024-05-06)
+# dev-db/mongodb is masked on musl
+dev-libs/mongo-c-driver test
+dev-php/pecl-mongodb test
+dev-python/pymongo test-full
+net-analyzer/zmap mongo
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-04-25)
 # No Level-Zero on musl
 sys-apps/hwloc l0
