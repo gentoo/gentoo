@@ -1,0 +1,12 @@
+Bug: https://bugs.gentoo.org/921255
+--- a/src/ftp.c
++++ b/src/ftp.c
+@@ -634,7 +634,7 @@ static int dtp_open_active(ftp_session *sess, const char *command)
+     char *a, *p;
+     int ret;
+     int listener;
+-    size_t alen;
++    socklen_t alen;
+     struct sockaddr_in addr;
+ 
+     ret = ftp_open(sess);
