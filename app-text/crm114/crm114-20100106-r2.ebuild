@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,7 +25,12 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}"/${MY_P}
 
-PATCHES=( "${FILESDIR}"/${P}-fix-makefile.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-makefile.patch
+	# https://bugs.gentoo.org/854897
+	# Upstream is dead since 2009 so no point submitting this to them.
+	"${FILESDIR}"/0001-fix-broken-function-signatures-for-5-argument-functi.patch
+)
 
 src_prepare() {
 	default
