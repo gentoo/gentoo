@@ -14,6 +14,7 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	dev-perl/Future
+	dev-perl/Test-Deep
 "
 BDEPEND="
 	${RDEPEND}
