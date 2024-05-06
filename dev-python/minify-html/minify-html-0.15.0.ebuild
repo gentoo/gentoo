@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,3 +38,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 
 QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/minify_html/minify_html.*.so"
+
+src_prepare() {
+	sed -i -e '/strip/d' Cargo.toml || die
+	distutils-r1_src_prepare
+}
