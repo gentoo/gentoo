@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools toolchain-funcs
+inherit autotools
 
 DESCRIPTION="Tools and libraries for NWN file manipulation"
 HOMEPAGE="https://sourceforge.net/projects/openknights"
@@ -23,19 +23,9 @@ DOCS=( AUTHORS ChangeLog NEWS README README.tech TODO )
 src_prepare() {
 	default
 	eautoreconf
-
-	local f
-	while IFS="" read -d $'\0' -r f; do
-		einfo "Removing hardcoded CC/CXX from ${f}"
-		sed -i \
-			-e '/^CC =/d' \
-			-e '/^CXX =/d' \
-			"${f}" || die
-	done < <(find "${S}" -name Makefile.in -type f -print0)
 }
 
 src_configure() {
-	tc-export CC CXX
 	econf --disable-static
 }
 
