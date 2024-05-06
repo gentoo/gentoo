@@ -5,7 +5,7 @@ EAPI=7
 
 MY_PN="wxHexEditor"
 WX_GTK_VER=3.0-gtk3
-inherit toolchain-funcs wxwidgets
+inherit flag-o-matic toolchain-funcs wxwidgets
 
 DESCRIPTION="A cross-platform hex editor designed specially for large files"
 HOMEPAGE="https://github.com/EUA/wxHexEditor"
@@ -40,4 +40,9 @@ pkg_setup() {
 src_prepare() {
 	setup-wxwidgets
 	default
+
+	# -Werror=odr, -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/854414
+	# https://github.com/EUA/wxHexEditor/issues/222
+	filter-lto
 }
