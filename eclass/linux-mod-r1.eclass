@@ -1260,7 +1260,7 @@ _modules_update_depmod() {
 
 				# EROOT from -b is not used when looking for configuration
 				# directories, so pass the whole list from kmod's tools/depmod.c
-				--config="${EROOT}"/{etc,run,usr/local/lib,lib}/depmod.d
+				--config="${EROOT}"/{etc,run,{usr/{local/,},}lib}/depmod.d
 			)
 
 		nonfatal edob depmod "${depmodargs[@]}" && return 0
