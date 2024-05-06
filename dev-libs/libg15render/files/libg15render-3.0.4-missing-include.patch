@@ -1,5 +1,6 @@
---- libg15render-3.0.4.orig/pixel.c	2024-04-27 07:06:42.696360311 +0000
-+++ libg15render-3.0.4/pixel.c	2024-04-27 07:07:19.349161271 +0000
+https://gitlab.com/menelkir/libg15render/-/commit/ea940d38ca5c17685e4c13dcdcde43bbd6ec1fea
+--- a/pixel.c
++++ b/pixel.c
 @@ -19,6 +19,7 @@
  #include <fcntl.h>
  #include <stdlib.h>
