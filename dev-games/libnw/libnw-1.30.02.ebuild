@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Tools and libraries for NWN file manipulation"
 HOMEPAGE="https://sourceforge.net/projects/openknights"
@@ -23,9 +23,17 @@ DOCS=( AUTHORS ChangeLog NEWS README README.tech TODO )
 src_prepare() {
 	default
 	eautoreconf
+
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/855314
+	#
+	# Sourceforge software dead since 2006, no point reporting anything.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	econf --disable-static
 }
 
