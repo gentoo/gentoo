@@ -17,11 +17,18 @@ IUSE="raptor"
 RDEPEND="
 	>=net-misc/curl-7.10.0
 	>=dev-libs/libxml2-2.6.8:2
-	raptor? ( media-libs/raptor:2 )"
+	raptor? ( media-libs/raptor:2 )
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-build/gtk-doc-am
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.26-c99-configure.patch
+	"${FILESDIR}"/${PN}-1.26-c99.patch
+)
 
 src_prepare() {
 	default
