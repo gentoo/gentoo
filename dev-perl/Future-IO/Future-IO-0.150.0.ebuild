@@ -20,5 +20,6 @@ BDEPEND="
 		dev-perl/Test-ExpectAndCheck
 		dev-perl/Test-Deep
 		dev-perl/Test-Future-IO-Impl
+		dev-perl/Test2-Suite
 	)
 "
