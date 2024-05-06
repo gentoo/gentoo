@@ -63,6 +63,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.10.0-optional-updater.patch
+	"${FILESDIR}"/${PN}-0.10.3-rapidjson-gcc14-const.patch
 )
 
 pkg_setup() {
