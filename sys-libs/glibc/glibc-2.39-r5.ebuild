@@ -447,9 +447,14 @@ setup_flags() {
 		# relating to failed builds, we strip most CFLAGS out to ensure as few
 		# problems as possible.
 		strip-flags
-		# Lock glibc at -O2; we want to be conservative here.
-		filter-flags '-O?'
-		append-flags -O2
+
+		# Allow -O2 and -O3, but nothing else for now.
+		# TODO: Test -Os, -Oz.
+		if ! is-flagq '-O@(2|3)' ; then
+			# Lock glibc at -O2. We want to be conservative here.
+			filter-flags '-O?'
+			append-flags -O2
+		fi
 	fi
 
 	strip-unsupported-flags
