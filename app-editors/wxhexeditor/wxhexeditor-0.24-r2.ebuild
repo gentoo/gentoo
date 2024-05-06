@@ -14,7 +14,6 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_PN}-v${PV}-src.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
-IUSE=""
 
 DEPEND="
 	app-crypt/mhash
