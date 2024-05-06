@@ -23,6 +23,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.3.0_no-aqlprofiler.patch"
 	"${FILESDIR}/${PN}-5.7.1-extend-isa-compatibility-check.patch"
 	"${FILESDIR}/${PN}-6.1.0-musl.patch"
+	"${FILESDIR}/${PN}-6.1.0-ld-lld.patch"
 )
 
 LICENSE="MIT"
