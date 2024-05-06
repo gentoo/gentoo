@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2024-05-06)
+# Incompatible with latest last.fm APIs, hence useless.
+# Removal on 2024-06-05.  Bug #928115.
+media-libs/lastfmlib
+
 # Michał Górny <mgorny@gentoo.org> (2024-05-05)
 # A library last bumped in 2010.  Homepage gone.  No revdeps.
 # Removal on 2024-06-04.  Bug #909527.
