@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="threads(+)"
 inherit flag-o-matic python-single-r1 waf-utils multilib-minimal
 
@@ -11,7 +11,11 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/jackaudio/${PN}.git"
 else
-	SRC_URI="https://github.com/jackaudio/jack2/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="
+		https://github.com/jackaudio/jack2/archive/refs/tags/v${PV}.tar.gz
+			-> ${P}.tar.gz
+		https://dev.gentoo.org/~ionen/distfiles/${P}-python3.12.patch.xz
+	"
 	KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv x86"
 fi
 
@@ -23,7 +27,8 @@ SLOT="2"
 IUSE="+alsa +classic dbus doc ieee1394 libsamplerate metadata opus pam +tools systemd"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
-	|| ( classic dbus )"
+	|| ( classic dbus )
+"
 
 DEPEND="
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
@@ -35,7 +40,8 @@ DEPEND="
 	ieee1394? ( media-libs/libffado[${MULTILIB_USEDEP}] )
 	metadata? ( sys-libs/db:=[${MULTILIB_USEDEP}] )
 	opus? ( media-libs/opus[custom-modes,${MULTILIB_USEDEP}] )
-	systemd? ( classic? ( sys-apps/systemd:= ) )"
+	systemd? ( classic? ( sys-apps/systemd:= ) )
+"
 RDEPEND="
 	${DEPEND}
 	dbus? (
@@ -46,15 +52,21 @@ RDEPEND="
 	)
 	pam? ( sys-auth/realtime-base )
 	!media-sound/jack-audio-connection-kit
-	!media-video/pipewire[jack-sdk(-)]"
+	!media-video/pipewire[jack-sdk(-)]
+"
 BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
-	doc? ( app-text/doxygen )"
+	doc? ( app-text/doxygen )
+"
 # tools were formerly provided here, pull to maintain expectations
 PDEPEND="tools? ( media-sound/jack-example-tools )"
 
 DOCS=( AUTHORS.rst ChangeLog.rst README.rst README_NETJACK2 )
+
+PATCHES=(
+	"${WORKDIR}"/${P}-python3.12.patch
+)
 
 src_prepare() {
 	default
