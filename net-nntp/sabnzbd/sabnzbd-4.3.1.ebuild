@@ -63,7 +63,7 @@ BDEPEND="
 			dev-python/pytest-httpbin[${PYTHON_USEDEP}]
 			dev-python/pytest-httpserver[${PYTHON_USEDEP}]
 			dev-python/pytest-mock[${PYTHON_USEDEP}]
-			=dev-python/pytest-7.4.4[${PYTHON_USEDEP}]
+			~dev-python/pytest-7.4.4[${PYTHON_USEDEP}]
 			dev-python/requests[${PYTHON_USEDEP}]
 			dev-python/selenium[${PYTHON_USEDEP}]
 			dev-python/tavalidate[${PYTHON_USEDEP}]

@@ -58,11 +58,11 @@ BDEPEND="
 		$(python_gen_cond_dep '
 			dev-python/flaky[${PYTHON_USEDEP}]
 			>=dev-python/lxml-4.5.0[${PYTHON_USEDEP}]
-			dev-python/pyfakefs[${PYTHON_USEDEP}]
+			<dev-python/pyfakefs-5.4.0[${PYTHON_USEDEP}]
 			dev-python/pytest-httpbin[${PYTHON_USEDEP}]
 			dev-python/pytest-httpserver[${PYTHON_USEDEP}]
 			dev-python/pytest-mock[${PYTHON_USEDEP}]
-			dev-python/pytest[${PYTHON_USEDEP}]
+			~dev-python/pytest-7.4.4[${PYTHON_USEDEP}]
 			dev-python/requests[${PYTHON_USEDEP}]
 			dev-python/selenium[${PYTHON_USEDEP}]
 			dev-python/tavalidate[${PYTHON_USEDEP}]
@@ -122,7 +122,7 @@ src_test() {
 	# if stuck, comment out the AUTOLOAD line above, look at the list of loaded
 	# plugins at the top of the pytest output, then translate those into module names
 	# by e.g. checking equery f.
-	local -x PYTEST_PLUGINS=pytest_mock,tavern,tavern._core.pytest,pyfakefs.pytest_plugin
+	local -x PYTEST_PLUGINS=pytest_mock,tavern,tavern._core.pytest,pyfakefs.pytest_plugin,pytest_asyncio.plugin
 
 	epytest -s
 }
