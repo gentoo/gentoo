@@ -1,0 +1,17 @@
+Fix "symbol not defined" when linking with ld.lld >= 17
+https://github.com/ROCm/ROCR-Runtime/issues/204
+--- a/hsacore.so.def
++++ b/hsacore.so.def
+@@ -246,12 +246,6 @@ global:
+ 	hsa_amd_vmem_retain_alloc_handle;
+ 	hsa_amd_vmem_get_alloc_properties_from_handle;
+ 	hsa_amd_agent_set_async_scratch_limit;
+-	hsa_tools_scratch_event_alloc_start;
+-	hsa_tools_scratch_event_alloc_end;
+-	hsa_tools_scratch_event_free_start;
+-	hsa_tools_scratch_event_free_end;
+-	hsa_tools_scratch_event_async_reclaim_start;
+-	hsa_tools_scratch_event_async_reclaim_end;
+ 
+ local:
+     *;
