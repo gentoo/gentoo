@@ -358,7 +358,8 @@ multilib_src_install() {
 	fi
 
 	# This needs to be called AFTER python_install call, bug #689190
-	emake DESTDIR="${D}" install
+	# XXX: -j1 as temporary workaround for bug #931301
+	emake DESTDIR="${D}" install -j1
 }
 
 multilib_src_install_all() {
