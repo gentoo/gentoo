@@ -401,6 +401,14 @@ src_prepare() {
 			"Fix clang check in configure" \
 			"https://github.com/Perl/perl5/issues/21099"
 
+	add_patch "${FILESDIR}/${PN}-zlib-ng.patch" \
+			"100-zlib-ng.patch" \
+			"Add zlib-ng support"
+
+	add_patch "${FILESDIR}/${PN}-update-customized-dat-checksums.diff" \
+			"100-update-customized-dat-checksums.diff" \
+			"Fix failing tests with zlib-ng support"
+
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# do NOT mess with nsl, on Solaris this is always necessary,
 		# when -lsocket is used e.g. to get h_errno
