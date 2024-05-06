@@ -1,0 +1,31 @@
+--- a/src/cursmenu.c
++++ b/src/cursmenu.c
+@@ -35,6 +35,8 @@
+ #include <ctype.h>
+ 
+ #include "gettext.h"
++#include "utf8.h"
++
+ #define _(String) gettext (String)
+ 
+ extern int isUTF8Locale;
+--- a/src/script.h
++++ b/src/script.h
+@@ -90,6 +90,7 @@ extern void seek_label( FILE *script, char *label, char *ref_line );
+ extern int hash_label( char *label );
+ extern void do_exit( FILE *script );
+ 
++void check_script_file_with_current_encoding( FILE *script );
+ 
+ extern void bind_F12 (const char *);	// Defined in gtypist.c
+ 
+--- a/src/utf8.c
++++ b/src/utf8.c
+@@ -18,6 +18,7 @@
+  */
+ 
+ #include "config.h"
++#include "error.h"
+ #include "utf8.h"
+ 
+ #ifdef HAVE_PDCURSES
