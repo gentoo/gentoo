@@ -177,6 +177,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.17-noexecstack.patch
 	"${FILESDIR}"/${PN}-7.20-unwind.patch
 	"${FILESDIR}"/${PN}-8.13-rpath.patch
+	"${FILESDIR}"/${P}-musl-ioctls-header.patch
 )
 
 pkg_pretend() {
