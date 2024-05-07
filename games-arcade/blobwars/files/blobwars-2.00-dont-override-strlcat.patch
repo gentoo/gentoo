@@ -1,0 +1,22 @@
+Stop providing / overriding strlcat and strlcpy to fix the following compile errors:
+
+src/headers.h:60:20: error: ambiguating new declaration of 'void strlcat(char*, const char*, size_t)'
+   60 | static inline void strlcat(char *dest, const char *src, size_t n) { strncat(dest, src, n - 1); }
+      |                    ^~~~~~~
+
+src/headers.h:61:20: error: ambiguating new declaration of 'void strlcpy(char*, const char*, size_t)'
+   61 | static inline void strlcpy(char *dest, const char *src, size_t n) { strncpy(dest, src, n); dest[n - 1] = 0; }
+      |                    ^~~~~~~
+
+diff -up blobwars-2.00/src/headers.h~ blobwars-2.00/src/headers.h
+--- blobwars-2.00/src/headers.h	2015-11-21 23:18:19.000000000 +0100
++++ blobwars-2.00/src/headers.h	2023-07-28 22:25:36.655085088 +0200
+@@ -56,7 +56,7 @@ extern DECLSPEC int SDLCALL SDL_GetGamma
+ #define textdomain(x) while(false)
+ #endif
+ 
+-#if !defined(OpenBSD) && !defined(FreeBSD) && !defined(__APPLE__)
++#if 0 && !defined(OpenBSD) && !defined(FreeBSD) && !defined(__APPLE__)
+ static inline void strlcat(char *dest, const char *src, size_t n) { strncat(dest, src, n - 1); }
+ static inline void strlcpy(char *dest, const char *src, size_t n) { strncpy(dest, src, n); dest[n - 1] = 0; }
+ #endif

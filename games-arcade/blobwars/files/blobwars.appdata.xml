@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014 Ryan Lerch <rlerch@redhat.com> -->
+
+<!-- HOUSEKEEPING, REMOVE THIS COMMENT WHEN THIS GOES UPSTREAM
+EmailAddress: hdegoede@redhat.com
+SentUpstream: 2014-09-18
+-->
+
+<application>
+  <id type="desktop">blobwars.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <summary>Mission and Objective based 2D Platform Game</summary>
+  <description>
+    <p>
+      Blob Wars: Metal Blob Solid is a 2D side scrolling platformer where you control
+      Bob, (a blob secret agent) through 25 missions to rescue other blobs and stop
+      the evil alien leader: Galdov.
+    </p>
+  </description>
+  <url type="homepage">http://www.parallelrealities.co.uk/p/blob-wars-metal-blob-solid.html</url>
+  <screenshots>
+    <screenshot type="default">http://3.bp.blogspot.com/-VGOFb5wKQkE/T4RuJznkWkI/AAAAAAAAA10/u1pyXxBa1yw/s1600/03.jpg</screenshot>
+    <screenshot>http://3.bp.blogspot.com/-oBB_IbOXWEI/T4RuI6G3Y5I/AAAAAAAAA1s/_Tb2v1YrINk/s1600/02.jpg</screenshot>
+    <screenshot>http://3.bp.blogspot.com/-s0v-Lr5WBa0/T4RuH7DbgKI/AAAAAAAAA1k/58HXOP40NIk/s1600/01.jpg</screenshot>
+  </screenshots>
+  <!-- FIXME: change this to an upstream email address for spec updates
+  <updatecontact>someone_who_cares@upstream_project.org</updatecontact>
+   -->
+</application>
