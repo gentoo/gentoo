@@ -42,7 +42,7 @@ LICENSE="
 SLOT="0"
 # unkeyworded for testing
 #KEYWORDS="-* ~amd64 ~x86"
-IUSE="+abi_x86_32 bin-symlinks custom-cflags debug"
+IUSE="+abi_x86_32 bin-symlinks custom-cflags +strip"
 
 RDEPEND="
 	dev-libs/gmp:=
@@ -323,7 +323,7 @@ src_compile() {
 	dostrip -x ${mwtdir}/{${CTARGET}/lib{,32},lib/gcc/${CTARGET}}
 
 	# ... and instead do it here given this saves ~60MB
-	if use !debug; then
+	if use strip; then
 		einfo "Stripping ${CTARGET} static libraries ..."
 		find "${sysroot}"/{,lib/gcc/}${CTARGET} -type f -name '*.a' \
 			-exec ${CTARGET}-strip --strip-unneeded {} + || die
