@@ -106,6 +106,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.2-fix-rpath.patch
 	"${FILESDIR}"/${PN}-2.1.2-fix-openmp-link.patch
 	"${FILESDIR}"/${PN}-2.1.2-rocm-fix-std-cpp17.patch
+	"${FILESDIR}"/${P}-musl.patch
 )
 
 src_prepare() {
