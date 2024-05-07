@@ -89,5 +89,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DIST_ROOT="${ED}" HAVE_ZIPPED_MANPAGES=false install install-dev
+	# XXX: There's a missing dep in the install-dev target, so split it
+	emake DIST_ROOT="${ED}" HAVE_ZIPPED_MANPAGES=false install
+	emake DIST_ROOT="${ED}" HAVE_ZIPPED_MANPAGES=false install-dev
 }
