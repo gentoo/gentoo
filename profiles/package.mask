@@ -60,7 +60,6 @@ dev-games/hawknl
 # homepages are gone.  Last commit in 2014.  Already carries a lot
 # of patches and hacks.
 # Removal on 2024-06-04.  Bug #928942.
-
 net-dns/mydns
 
 # Michał Górny <mgorny@gentoo.org> (2024-05-04)
