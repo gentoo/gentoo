@@ -15,6 +15,7 @@ SRC_URI="https://github.com/onnx/${PN}/archive/refs/tags/v${PV}.tar.gz
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv"
+IUSE="disableStaticReg"
 RESTRICT="test"
 
 RDEPEND="
@@ -36,6 +37,7 @@ python_configure_all()
 		-DONNX_USE_PROTOBUF_SHARED_LIBS=ON
 		-DONNX_USE_LITE_PROTO=ON
 		-DONNX_BUILD_SHARED_LIBS=ON
+		-DONNX_DISABLE_STATIC_REGISTRATION=$(usex disableStaticReg ON OFF)
 	)
 	cmake_src_configure
 }
@@ -49,6 +51,7 @@ src_compile() {
 		-DONNX_USE_PROTOBUF_SHARED_LIBS=ON
 		-DONNX_USE_LITE_PROTO=ON
 		-DONNX_BUILD_SHARED_LIBS=ON
+		-DONNX_DISABLE_STATIC_REGISTRATION=$(usex disableStaticReg ON OFF)
 	)
 	CMAKE_ARGS="${mycmakeargs[@]}" distutils-r1_src_compile
 }
