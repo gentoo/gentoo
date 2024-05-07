@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic systemd udev usr-ldscript toolchain-funcs
+inherit flag-o-matic systemd udev usr-ldscript
 
 DESCRIPTION="XFS filesystem utilities"
 HOMEPAGE="https://xfs.wiki.kernel.org/ https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git/"
@@ -71,6 +71,8 @@ src_configure() {
 	# https://www.spinics.net/lists/linux-xfs/msg30272.html
 	local myconf=(
 		--enable-static
+		# Doesn't do anything beyond adding -flto (bug #930947).
+		--disable-lto
 		--with-crond-dir="${EPREFIX}/etc/cron.d"
 		--with-systemd-unit-dir="$(systemd_get_systemunitdir)"
 		--with-udev-rule-dir="$(get_udevdir)"
@@ -78,12 +80,6 @@ src_configure() {
 		$(use_enable nls gettext)
 		$(use_enable libedit editline)
 	)
-
-	if tc-is-lto ; then
-		myconf+=( --enable-lto )
-	else
-		myconf+=( --disable-lto )
-	fi
 
 	econf "${myconf[@]}"
 }
