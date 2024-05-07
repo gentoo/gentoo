@@ -19,6 +19,8 @@ if [[ ${PV} == *9999 ]]; then
 	SLOT="0"
 else
 	SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
+	# We need this until simdjson is updated to 3.9.1 in nodejs (bug 931150)
+	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/net-libs/nodejs/nodejs-22.1.0-deps-import-simdjson-3.9.1-for-GCC-14.patch.xz"
 	SLOT="0/$(ver_cut 1)"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux ~x64-macos"
 	S="${WORKDIR}/node-v${PV}"
@@ -59,6 +61,10 @@ DEPEND="${RDEPEND}"
 # fatter binaries and set the disk requirement to 22GiB.
 CHECKREQS_MEMORY="8G"
 CHECKREQS_DISK_BUILD="22G"
+
+PATCHES=(
+	"${WORKDIR}"/nodejs-22.1.0-deps-import-simdjson-3.9.1-for-GCC-14.patch
+)
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != "binary" ]]; then
