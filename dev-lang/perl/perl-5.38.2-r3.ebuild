@@ -167,7 +167,7 @@ pkg_pretend() {
 		ewarn "Giving you a chance to abort and read the corresponding news item now..."
 		for n in 10 9 8 7 6 5 4 3 2 1 ; do
 			echo -n "${n} "
-			sleep 1
+			sleep 2
 		done;
 		echo "continuing."
 	fi
