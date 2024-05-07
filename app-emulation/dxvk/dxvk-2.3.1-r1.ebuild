@@ -55,6 +55,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.10.3-wow64-setup.patch
+	"${FILESDIR}"/${PN}-2.3.1-gcc14.patch
 )
 
 pkg_pretend() {
