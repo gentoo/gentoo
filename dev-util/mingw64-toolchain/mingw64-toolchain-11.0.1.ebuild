@@ -42,7 +42,7 @@ LICENSE="
 SLOT="0"
 # unkeyworded for testing
 #KEYWORDS="-* ~amd64 ~x86"
-IUSE="+abi_x86_32 custom-cflags debug"
+IUSE="+abi_x86_32 bin-symlinks custom-cflags debug"
 
 RDEPEND="
 	dev-libs/gmp:=
@@ -50,6 +50,16 @@ RDEPEND="
 	dev-libs/mpfr:=
 	sys-libs/zlib:=
 	virtual/libiconv
+	bin-symlinks? (
+		abi_x86_64? (
+			!cross-x86_64-w64-mingw32/binutils
+			!cross-x86_64-w64-mingw32/gcc
+		)
+		abi_x86_32? (
+			!cross-i686-w64-mingw32/binutils
+			!cross-i686-w64-mingw32/gcc
+		)
+	)
 "
 DEPEND="${RDEPEND}"
 
@@ -300,6 +310,14 @@ src_compile() {
 		popd >/dev/null || die
 	fi
 
+	if use bin-symlinks; then
+		mkdir -p -- "${MWT_D}${EPREFIX}"/usr/bin/ || die
+		local bin
+		for bin in "${sysroot}"/bin/*; do
+			ln -rs -- "${bin}" "${MWT_D}${EPREFIX}"/usr/bin/ || die
+		done
+	fi
+
 	# portage doesn't know the right strip executable to use for CTARGET
 	# and it can lead to .a mangling, notably with 32bit (breaks toolchain)
 	dostrip -x ${mwtdir}/{${CTARGET}/lib{,32},lib/gcc/${CTARGET}}
@@ -319,6 +337,9 @@ src_install() {
 }
 
 pkg_postinst() {
+	use bin-symlinks && has_version dev-util/shadowman && [[ ! ${ROOT} ]] &&
+		eselect compiler-shadow update all
+
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
 		elog "Note that this package is primarily intended for Wine and related"
 		elog "packages to depend on without needing a manual crossdev setup."
@@ -336,4 +357,9 @@ pkg_postinst() {
 		ewarn "is redundant with the *-w64-mingw32/{binutils,gcc,mingw64-runtime}"
 		ewarn "packages and optionally only one needs to be kept."
 	fi
+}
+
+pkg_postrm() {
+	use bin-symlinks && has_version dev-util/shadowman && [[ ! ${ROOT} ]] &&
+		eselect compiler-shadow clean all
 }
