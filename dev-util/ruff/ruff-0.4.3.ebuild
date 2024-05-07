@@ -8,8 +8,9 @@ EAPI=8
 CRATES="
 	Inflector@0.11.4
 	adler@1.0.2
-	ahash@0.8.10
+	ahash@0.8.11
 	aho-corasick@1.1.3
+	allocator-api2@0.2.16
 	android-tzdata@0.1.1
 	android_system_properties@0.1.5
 	anes@0.1.6
@@ -23,16 +24,16 @@ CRATES="
 	anyhow@1.0.82
 	argfile@0.2.0
 	arrayvec@0.7.4
-	autocfg@1.1.0
-	base64@0.21.7
+	autocfg@1.2.0
+	base64@0.22.0
 	bincode@1.3.3
 	bitflags@1.3.2
 	bitflags@2.5.0
 	bstr@1.9.1
-	bumpalo@3.15.3
+	bumpalo@3.16.0
 	cachedir@0.3.1
 	cast@0.3.0
-	cc@1.0.88
+	cc@1.0.95
 	cfg-if@1.0.0
 	cfg_aliases@0.1.1
 	chic@1.2.2
@@ -42,15 +43,15 @@ CRATES="
 	ciborium@0.2.2
 	clap@4.5.4
 	clap_builder@4.5.2
-	clap_complete@4.5.1
+	clap_complete@4.5.2
 	clap_complete_command@0.5.1
 	clap_complete_fig@4.5.0
 	clap_complete_nushell@0.1.11
 	clap_derive@4.5.4
 	clap_lex@0.7.0
 	clearscreen@3.0.0
-	codspeed-criterion-compat@2.5.0
-	codspeed@2.5.0
+	codspeed-criterion-compat@2.6.0
+	codspeed@2.6.0
 	colorchoice@1.0.0
 	colored@2.1.0
 	console@0.15.8
@@ -64,11 +65,15 @@ CRATES="
 	crossbeam-channel@0.5.12
 	crossbeam-deque@0.8.5
 	crossbeam-epoch@0.9.18
+	crossbeam-queue@0.3.11
 	crossbeam-utils@0.8.19
+	crossbeam@0.8.4
 	crunchy@0.2.2
+	ctrlc@3.4.4
 	darling@0.20.8
 	darling_core@0.20.8
 	darling_macro@0.20.8
+	dashmap@5.5.3
 	diff@0.1.13
 	dirs-sys@0.3.7
 	dirs-sys@0.4.1
@@ -76,13 +81,13 @@ CRATES="
 	dirs@5.0.1
 	drop_bomb@0.1.5
 	dyn-clone@1.0.17
-	either@1.10.0
+	either@1.11.0
 	encode_unicode@0.3.6
 	env_filter@0.1.0
 	env_logger@0.11.3
 	equivalent@1.0.1
 	errno@0.3.8
-	fastrand@2.0.1
+	fastrand@2.0.2
 	fern@0.6.2
 	filetime@0.2.23
 	flate2@1.0.28
@@ -91,12 +96,12 @@ CRATES="
 	fs-err@2.11.0
 	fsevent-sys@4.1.0
 	getopts@0.2.21
-	getrandom@0.2.12
+	getrandom@0.2.14
 	glob@0.3.1
 	globset@0.4.14
-	half@2.4.0
+	half@2.4.1
 	hashbrown@0.12.3
-	hashbrown@0.14.3
+	hashbrown@0.14.5
 	heck@0.4.1
 	heck@0.5.0
 	hermit-abi@0.3.9
@@ -124,7 +129,7 @@ CRATES="
 	is-wsl@0.4.0
 	itertools@0.10.5
 	itertools@0.12.1
-	itoa@1.0.10
+	itoa@1.0.11
 	jod-thread@0.1.2
 	js-sys@0.3.69
 	kqueue-sys@1.0.4
@@ -136,18 +141,19 @@ CRATES="
 	libc@0.2.153
 	libcst@1.3.1
 	libcst_derive@1.3.1
-	libmimalloc-sys@0.1.35
-	libredox@0.0.1
+	libmimalloc-sys@0.1.37
+	libredox@0.1.3
 	linked-hash-map@0.5.6
 	linux-raw-sys@0.4.13
+	lock_api@0.4.11
 	log@0.4.21
 	lsp-server@0.7.6
 	lsp-types@0.95.1
 	matchers@0.1.0
 	matches@0.1.10
-	matchit@0.8.1
+	matchit@0.8.2
 	memchr@2.7.2
-	mimalloc@0.1.39
+	mimalloc@0.1.41
 	minimal-lexical@0.2.1
 	miniz_oxide@0.7.2
 	mio@0.8.11
@@ -159,13 +165,14 @@ CRATES="
 	nu-ansi-term@0.46.0
 	nu-ansi-term@0.49.0
 	num-traits@0.2.18
-	num_cpus@1.16.0
 	number_prefix@0.4.0
 	once_cell@1.19.0
 	oorandom@11.1.3
 	option-ext@0.2.0
 	os_str_bytes@6.6.1
 	overload@0.1.1
+	parking_lot@0.12.2
+	parking_lot_core@0.9.9
 	paste@1.0.14
 	path-absolutize@3.1.1
 	path-dedot@3.1.1
@@ -182,7 +189,7 @@ CRATES="
 	phf_codegen@0.11.2
 	phf_generator@0.11.2
 	phf_shared@0.11.2
-	pin-project-lite@0.2.13
+	pin-project-lite@0.2.14
 	pmutil@0.6.1
 	portable-atomic@1.6.0
 	ppv-lite86@0.2.17
@@ -198,53 +205,54 @@ CRATES="
 	rayon-core@1.12.1
 	rayon@1.10.0
 	redox_syscall@0.4.1
-	redox_users@0.4.4
+	redox_users@0.4.5
 	regex-automata@0.1.10
-	regex-automata@0.4.5
+	regex-automata@0.4.6
 	regex-syntax@0.6.29
-	regex-syntax@0.8.2
+	regex-syntax@0.8.3
 	regex@1.10.4
 	result-like-derive@0.5.0
 	result-like@0.5.0
 	ring@0.17.8
 	rust-stemmers@1.2.0
 	rustc-hash@1.1.0
-	rustix@0.38.31
-	rustls-pki-types@1.3.1
-	rustls-webpki@0.102.2
-	rustls@0.22.2
-	rustversion@1.0.14
+	rustix@0.38.34
+	rustls-pki-types@1.5.0
+	rustls-webpki@0.102.3
+	rustls@0.22.4
+	rustversion@1.0.15
 	ryu@1.0.17
 	same-file@1.0.6
-	schemars@0.8.16
-	schemars_derive@0.8.16
+	schemars@0.8.17
+	schemars_derive@0.8.17
 	scoped-tls@1.0.1
+	scopeguard@1.2.0
 	seahash@4.1.0
 	serde-wasm-bindgen@0.6.5
-	serde@1.0.198
-	serde_derive@1.0.198
-	serde_derive_internals@0.26.0
+	serde@1.0.199
+	serde_derive@1.0.199
+	serde_derive_internals@0.29.0
 	serde_json@1.0.116
-	serde_repr@0.1.18
+	serde_repr@0.1.19
 	serde_spanned@0.6.5
 	serde_test@1.0.176
-	serde_with@3.7.0
-	serde_with_macros@3.7.0
+	serde_with@3.8.1
+	serde_with_macros@3.8.1
 	sharded-slab@0.1.7
 	shellexpand@3.1.0
-	shlex@1.3.0
 	similar@2.5.0
 	siphasher@0.3.11
 	smallvec@1.13.2
+	smawk@0.3.2
+	smol_str@0.2.1
 	spin@0.9.8
 	static_assertions@1.1.0
 	strip-ansi-escapes@0.2.0
 	strsim@0.10.0
-	strsim@0.11.0
+	strsim@0.11.1
 	strum@0.26.2
 	strum_macros@0.26.2
 	subtle@2.5.0
-	syn@1.0.109
 	syn@2.0.60
 	tempfile@3.10.1
 	terminal_size@0.3.0
@@ -252,6 +260,7 @@ CRATES="
 	test-case-core@3.3.1
 	test-case-macros@3.3.1
 	test-case@3.3.1
+	textwrap@0.16.1
 	thiserror-impl@1.0.59
 	thiserror@1.0.59
 	thread_local@1.1.8
@@ -262,7 +271,7 @@ CRATES="
 	tinyvec_macros@0.1.1
 	toml@0.8.12
 	toml_datetime@0.6.5
-	toml_edit@0.22.9
+	toml_edit@0.22.12
 	tracing-attributes@0.1.27
 	tracing-core@0.1.32
 	tracing-indicatif@0.3.6
@@ -278,13 +287,14 @@ CRATES="
 	unic-ucd-version@0.9.0
 	unicode-bidi@0.3.15
 	unicode-ident@1.0.12
+	unicode-linebreak@0.1.5
 	unicode-normalization@0.1.23
 	unicode-width@0.1.11
 	unicode_names2@1.2.2
 	unicode_names2_generator@1.2.2
 	unscanny@0.1.0
 	untrusted@0.9.0
-	ureq@2.9.6
+	ureq@2.9.7
 	url@2.5.0
 	utf8parse@0.2.1
 	uuid-macro-internal@1.8.0
@@ -304,34 +314,35 @@ CRATES="
 	wasm-bindgen-test-macro@0.3.42
 	wasm-bindgen-test@0.3.42
 	wasm-bindgen@0.2.92
-	web-sys@0.3.68
+	web-sys@0.3.69
 	webpki-roots@0.26.1
 	which@6.0.1
 	wild@2.2.1
 	winapi-i686-pc-windows-gnu@0.4.0
-	winapi-util@0.1.6
+	winapi-util@0.1.8
 	winapi-x86_64-pc-windows-gnu@0.4.0
 	winapi@0.3.9
 	windows-core@0.52.0
 	windows-sys@0.48.0
 	windows-sys@0.52.0
 	windows-targets@0.48.5
-	windows-targets@0.52.4
+	windows-targets@0.52.5
 	windows_aarch64_gnullvm@0.48.5
-	windows_aarch64_gnullvm@0.52.4
+	windows_aarch64_gnullvm@0.52.5
 	windows_aarch64_msvc@0.48.5
-	windows_aarch64_msvc@0.52.4
+	windows_aarch64_msvc@0.52.5
 	windows_i686_gnu@0.48.5
-	windows_i686_gnu@0.52.4
+	windows_i686_gnu@0.52.5
+	windows_i686_gnullvm@0.52.5
 	windows_i686_msvc@0.48.5
-	windows_i686_msvc@0.52.4
+	windows_i686_msvc@0.52.5
 	windows_x86_64_gnu@0.48.5
-	windows_x86_64_gnu@0.52.4
+	windows_x86_64_gnu@0.52.5
 	windows_x86_64_gnullvm@0.48.5
-	windows_x86_64_gnullvm@0.52.4
+	windows_x86_64_gnullvm@0.52.5
 	windows_x86_64_msvc@0.48.5
-	windows_x86_64_msvc@0.52.4
-	winnow@0.6.5
+	windows_x86_64_msvc@0.52.5
+	winnow@0.6.6
 	winsafe@0.0.19
 	yansi-term@0.1.2
 	yansi@0.5.1
@@ -340,7 +351,7 @@ CRATES="
 	zeroize@1.7.0
 "
 
-inherit cargo shell-completion
+inherit shell-completion cargo
 
 DESCRIPTION="An extremely fast Python linter, written in Rust"
 HOMEPAGE="
@@ -406,7 +417,7 @@ src_compile() {
 		local -x CARGO_FEATURE_UNPREFIXED_MALLOC_ON_SUPPORTED_PLATFORMS=1
 		local -x JEMALLOC_OVERRIDE="${ESYSROOT}/usr/$(get_libdir)"/libjemalloc.so
 	fi
-	cargo_src_compile --bin ruff --bin ruff_shrinking
+	cargo_src_compile --bin ruff
 
 	local releasedir
 	releasedir=target/$(usex 'debug' 'debug' 'release')
@@ -422,7 +433,7 @@ src_test() {
 src_install() {
 	local releasedir=target/$(usex 'debug' 'debug' 'release')
 
-	dobin ${releasedir}/ruff{,_shrinking}
+	dobin ${releasedir}/ruff
 
 	newbashcomp ruff-completion.bash ruff
 	newzshcomp ruff-completion.zsh _ruff
