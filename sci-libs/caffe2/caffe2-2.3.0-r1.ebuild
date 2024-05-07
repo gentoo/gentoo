@@ -264,6 +264,8 @@ src_install() {
 	cp torch/version.py python/torch/ || die
 	python_domodule python/caffe2
 	python_domodule python/torch
-	ln -s ../../../../../include/torch \
-		"${D}$(python_get_sitedir)"/torch/include/torch || die # bug 923269
+
+	# bug 923269
+	: "$(python_get_sitedir)" # store into $_
+	dosym -r /usr/include/torch "${_#"${EPREFIX}"}"/torch/include/torch
 }
