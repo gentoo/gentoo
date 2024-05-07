@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -36,7 +36,10 @@ DEPEND="${RDEPEND}"
 BDEPEND="nls? ( sys-devel/gettext )"
 S="${WORKDIR}"/${MY_P}
 
-PATCHES=( "${FILESDIR}"/${PN}-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-gentoo.patch
+	"${FILESDIR}"/${PN}-underlinking.patch
+)
 
 src_prepare() {
 	default
