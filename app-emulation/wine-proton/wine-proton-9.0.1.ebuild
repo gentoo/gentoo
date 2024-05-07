@@ -264,8 +264,6 @@ src_configure() {
 		$(use_with v4l v4l2)
 		$(use_with xcomposite)
 		$(use_with xinerama)
-
-		--without-vosk # unpackaged, file a bug if you need this
 	)
 
 	filter-lto # build failure
