@@ -84,6 +84,8 @@ src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
 
+	keepdir /var/lib/${PN}/index
+
 	if use emacs; then
 		elisp-install ${PN} lisp/*.el*
 		elisp-site-file-install "${FILESDIR}"/50${PN}-gentoo.el
