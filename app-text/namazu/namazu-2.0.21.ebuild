@@ -39,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-emacs-27.patch
 	"${FILESDIR}"/${PN}-perl-5.18.patch
 	"${FILESDIR}"/${PN}-perl-5.26.patch
+	"${FILESDIR}"/${PN}-tests.patch
 	"${FILESDIR}"/${PN}-underlinking.patch
 	"${FILESDIR}"/${P}-memmove.patch
 )
@@ -74,10 +75,6 @@ src_compile() {
 		rm -f browse*
 		elisp-compile *.el
 	fi
-}
-
-src_test() {
-	emake -j1 check
 }
 
 src_install() {

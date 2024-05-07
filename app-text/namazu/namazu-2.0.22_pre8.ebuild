@@ -39,6 +39,7 @@ S="${WORKDIR}"/${MY_P}
 PATCHES=(
 	"${FILESDIR}"/${PN}-gentoo.patch
 	"${FILESDIR}"/${PN}-configure.patch
+	"${FILESDIR}"/${PN}-tests.patch
 	"${FILESDIR}"/${PN}-underlinking.patch
 )
 
@@ -73,10 +74,6 @@ src_compile() {
 		rm -f browse*
 		elisp-compile *.el
 	fi
-}
-
-src_test() {
-	emake -j1 check
 }
 
 src_install() {
