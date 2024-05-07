@@ -38,6 +38,7 @@ S="${WORKDIR}"/${MY_P}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-gentoo.patch
+	"${FILESDIR}"/${PN}-configure.patch
 	"${FILESDIR}"/${PN}-underlinking.patch
 )
 

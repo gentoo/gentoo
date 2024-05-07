@@ -35,6 +35,7 @@ BDEPEND="nls? ( sys-devel/gettext )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-gentoo.patch
+	"${FILESDIR}"/${PN}-configure.patch
 	"${FILESDIR}"/${PN}-emacs-27.patch
 	"${FILESDIR}"/${PN}-perl-5.18.patch
 	"${FILESDIR}"/${PN}-perl-5.26.patch
