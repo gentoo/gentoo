@@ -20,7 +20,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit autotools git-r3
 else
 	AUTOTOOLS_AUTO_DEPEND=no
-	inherit autotools
+	inherit autotools libtool
 	SRC_URI="https://github.com/seccomp/libseccomp/releases/download/v${PV}/${P}.tar.gz
 		experimental-loong? ( https://github.com/matoro/libseccomp/compare/v${PV}..loongarch-r1.patch
 			-> ${P}-loongarch-r1.patch )"
@@ -78,6 +78,8 @@ src_prepare() {
 	if [[ ${PV} == *9999 ]] || use experimental-loong; then
 		rm -f "include/seccomp.h" || die
 		eautoreconf
+	else
+		elibtoolize
 	fi
 }
 
