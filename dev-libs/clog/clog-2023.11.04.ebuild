@@ -6,7 +6,7 @@ inherit cmake
 
 CommitId=d6860c477c99f1fce9e28eb206891af3c0e1a1d7
 
-DESCRIPTION="CPU INFOrmation library"
+DESCRIPTION="C-style (a-la printf) logging library"
 HOMEPAGE="https://github.com/pytorch/cpuinfo/"
 SRC_URI="https://github.com/pytorch/cpuinfo/archive/${CommitId}.tar.gz
 	-> cpuinfo-${PV}.tar.gz"
