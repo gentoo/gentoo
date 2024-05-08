@@ -13,12 +13,12 @@ LICENSE="free-noncomm"
 SLOT="0"
 KEYWORDS="~amd64"
 
-src_configure() {
-	tc-export CC
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.10.7-LDFLAGS.patch
+)
 
 src_compile() {
-	emake -C src
+	emake -C src CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
