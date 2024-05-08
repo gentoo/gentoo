@@ -1,3 +1,4 @@
+Closes: https://bugs.gentoo.org/880931
 --- a/display/X/helper/dga/dga.c	2024-03-27 20:58:09.954061371 +0400
 +++ b/display/X/helper/dga/dga.c	2024-03-27 20:58:26.408971886 +0400
 @@ -261,7 +261,7 @@
