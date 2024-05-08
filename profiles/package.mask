@@ -302,11 +302,6 @@ app-emulation/runv
 =sys-kernel/vanilla-kernel-6.6.26
 =sys-kernel/vanilla-kernel-6.8.5
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-04-08)
-# Obsolete java-vm, bugs #848804 #830248.
-# Removal on 2024-05-08
-dev-java/icedtea-bin
-
 # Sam James <sam@gentoo.org> (2024-03-28)
 # Newer 5.4.x releases were signed by a potentially compromised upstream maintainer.
 # There is no evidence that these releases contain malicious code, but masked
