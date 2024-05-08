@@ -1,0 +1,12 @@
+Bug: https://bugs.gentoo.org/921572
+--- a/os-daq-modules/daq_nfq.c
++++ b/os-daq-modules/daq_nfq.c
+@@ -391,7 +391,7 @@ static inline int SetPktHdr (
+     DAQ_PktHdr_t* hdr,
+     uint8_t** pkt
+ ) {
+-    int len = nfq_get_payload(nfad, (char**)pkt);
++    int len = nfq_get_payload(nfad, (unsigned char**)pkt);
+ 
+     if ( len <= 0 )
+         return -1;
