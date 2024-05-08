@@ -1,0 +1,29 @@
+diff --git a/html/Makefile.am b/html/Makefile.am
+index b4d21d0..1e5af4c 100644
+--- a/html/Makefile.am
++++ b/html/Makefile.am
+@@ -1,5 +1,5 @@
+ 
+-dist_pkgdata_DATA =   \
++dist_html_DATA =   \
+     cckddasd.html     \
+     fishgui.html      \
+     hercconf.html     \
+@@ -62,7 +62,7 @@ include_sources =           \
+     include/footer.htmlpart \
+     include/header.htmlpart
+ 
+-include_pkgdatadir = $(pkgdatadir)/include
++include_pkgdatadir = $(htmldir)/include
+ 
+ dist_include_pkgdata_DATA = $(include_sources)
+ 
+@@ -120,7 +120,7 @@ images_sources =                        \
+     images/waitoffu.gif                 \
+     images/waitonu.gif
+ 
+-images_pkgdatadir = $(pkgdatadir)/images
++images_pkgdatadir = $(htmldir)/images
+ 
+ dist_images_pkgdata_DATA = $(images_sources)
+ 
