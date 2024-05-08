@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,16 +16,25 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc openmp"
 
-BDEPEND="doc? ( virtual/latex-base )
-        openmp? (
-                || (
-                        sys-devel/gcc[openmp]
-                        sys-devel/clang-runtime[openmp]
-                )
-        )
+BDEPEND="
+	doc? ( virtual/latex-base )
+	openmp? (
+		|| (
+			sys-devel/gcc[openmp]
+			sys-devel/clang-runtime[openmp]
+		)
+	)
 "
 
 PATCHES=( "${FILESDIR}/${P}-incompatible-pointers.patch" )
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
 
 src_prepare() {
 	default
@@ -58,7 +67,7 @@ src_prepare() {
 		CFLAGS="${CFLAGS}"
 		OPT="${CFLAGS}"
 	)
-	use openmp && MAKE_XOPTS+=( OPENMP=1 ) && tc-check-openmp
+	use openmp && MAKE_XOPTS+=( OPENMP=1 )
 	[[ ! -z "${VELVET_MAXKMERLENGTH}" ]] && MAKE_XOPTS+=( MAXKMERLENGTH=${VELVET_MAXKMERLENGTH} )
 	[[ ! -z "${VELVET_CATEGORIES}" ]] && MAKE_XOPTS+=( CATEGORIES=${VELVET_CATEGORIES} )
 	[[ ! -z "${VELVET_BIGASSEMBLY}" ]] && MAKE_XOPTS+=( BIGASSEMBLY=${VELVET_BIGASSEMBLY} )
