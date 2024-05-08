@@ -399,7 +399,6 @@ sec-keys/openpgp-keys-jiatan
 # Includes the libraries with no other reverse dependencies.
 # Removal on 2024-04-25.  Bug #909996.
 media-libs/libopenshot
-media-libs/libopenshot-audio
 
 # Eray Aslan <eras@gentoo.org> (2024-03-10)
 # Mask experimental software
