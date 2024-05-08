@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit linux-info mount-boot savedconfig multiprocessing
+inherit dist-kernel-utils linux-info mount-boot savedconfig multiprocessing
 
 # In case this is a real snapshot, fill in commit below.
 # For normal, tagged releases, leave blank
@@ -29,7 +29,7 @@ LICENSE="GPL-2 GPL-2+ GPL-3 BSD MIT || ( MPL-1.1 GPL-2 )
 	redistributable? ( linux-fw-redistributable BSD-2 BSD BSD-4 ISC MIT )
 	unknown-license? ( all-rights-reserved )"
 SLOT="0"
-IUSE="compress-xz compress-zstd deduplicate initramfs +redistributable savedconfig unknown-license"
+IUSE="compress-xz compress-zstd deduplicate dist-kernel +initramfs +redistributable savedconfig unknown-license"
 REQUIRED_USE="initramfs? ( redistributable )
 	?? ( compress-xz compress-zstd )
 	savedconfig? ( !deduplicate )"
@@ -55,7 +55,14 @@ RDEPEND="!savedconfig? (
 			!sys-firmware/alsa-firmware[alsa_cards_sb16]
 			!sys-firmware/alsa-firmware[alsa_cards_ymfpci]
 		)
-	)"
+	)
+	dist-kernel? ( virtual/dist-kernel )
+"
+IDEPEND="
+	dist-kernel? (
+		initramfs? ( sys-kernel/installkernel )
+	)
+"
 
 QA_PREBUILT="*"
 
@@ -72,8 +79,8 @@ pkg_setup() {
 				eerror "Kernels <5.19 do not support ZSTD-compressed firmware files"
 			fi
 		fi
-		linux-info_pkg_setup
 	fi
+	linux-info_pkg_setup
 }
 
 pkg_pretend() {
@@ -101,7 +108,7 @@ src_prepare() {
 
 	chmod +x copy-firmware.sh || die
 
-	if use initramfs; then
+	if use initramfs && ! use dist-kernel; then
 		if [[ -d "${S}/amd-ucode" ]]; then
 			local UCODETMP="${T}/ucode_tmp"
 			local UCODEDIR="${UCODETMP}/kernel/x86/microcode"
@@ -349,7 +356,13 @@ src_install() {
 
 	popd &>/dev/null || die
 
-	if use initramfs ; then
+	# Instruct Dracut on whether or not we want the microcode in initramfs
+	(
+		insinto /usr/lib/dracut/dracut.conf.d
+		newins - 10-${PN}.conf <<<"early_microcode=$(usex initramfs)"
+	)
+
+	if use initramfs && ! use dist-kernel; then
 		insinto /boot
 		doins "${S}"/amd-uc.img
 	fi
@@ -385,7 +398,12 @@ pkg_postinst() {
 	done
 
 	# Don't forget to umount /boot if it was previously mounted by us.
-	use initramfs && mount-boot_pkg_postinst
+	if use initramfs; then
+		if [[ -z ${ROOT} ]] && use dist-kernel; then
+			dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}"
+		fi
+		mount-boot_pkg_postinst
+	fi
 }
 
 pkg_prerm() {
