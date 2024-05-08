@@ -314,13 +314,6 @@ dev-java/gin
 dev-java/gwt
 dev-java/validation-api
 
-# Ben Kohler <bkohler@gentoo.org> (2024-04-07)
-# Abandoned upstream long ago in favor of Unifi Protect (running only on an
-# official Unifi appliance.  Likely contains lots of security holes in bundled
-# libs.
-# Removal on 2024-05-07.  Bug #928881
-acct-group/unifi-video
-
 # Sam James <sam@gentoo.org> (2024-03-28)
 # Newer 5.4.x releases were signed by a potentially compromised upstream maintainer.
 # There is no evidence that these releases contain malicious code, but masked
