@@ -1,0 +1,18 @@
+--- a/squid/configure	2024-05-08 09:21:15.751063495 -0000
++++ b/squid/configure	2024-05-08 09:22:50.491502934 -0000
+@@ -2493,6 +2493,7 @@
+ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
++#include <stdlib.h>
+ int
+ main ()
+ {
+@@ -3500,6 +3501,7 @@
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+ #include <ctype.h>
++#include <stdlib.h>
+ #if ((' ' & 0x0FF) == 0x020)
+ # define ISLOWER(c) ('a' <= (c) && (c) <= 'z')
+ # define TOUPPER(c) (ISLOWER(c) ? 'A' + ((c) - 'a') : (c))
