@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit linux-info mount-boot
+inherit dist-kernel-utils linux-info mount-boot
 
 # Find updates by searching and clicking the first link (hopefully it's the one):
 # https://www.intel.com/content/www/us/en/search.html?keyword=Processor+Microcode+Data+File
@@ -23,13 +23,20 @@ SRC_URI="https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/arc
 LICENSE="intel-ucode"
 SLOT="0"
 KEYWORDS="-* amd64 x86"
-IUSE="hostonly initramfs +split-ucode vanilla"
-REQUIRED_USE="|| ( initramfs split-ucode )"
+IUSE="dist-kernel hostonly +initramfs +split-ucode vanilla"
+REQUIRED_USE="!dist-kernel? ( || ( initramfs split-ucode ) )"
 
 BDEPEND=">=sys-apps/iucode_tool-2.3"
-
 # !<sys-apps/microcode-ctl-1.17-r2 due to bug #268586
-RDEPEND="hostonly? ( sys-apps/iucode_tool )"
+RDEPEND="
+	dist-kernel? ( virtual/dist-kernel )
+	hostonly? ( sys-apps/iucode_tool )
+"
+IDEPEND="
+	dist-kernel? (
+		initramfs? ( sys-kernel/installkernel )
+	)
+"
 
 RESTRICT="binchecks strip"
 
@@ -132,9 +139,18 @@ src_install() {
 		--list
 	)
 
+	# Instruct Dracut on whether or not we want the microcode in initramfs
+	# Use here 15 instead of 10, intel-microcode overwrites linux-firmware
+	(
+		insinto /usr/lib/dracut/dracut.conf.d
+		newins - 15-${PN}.conf <<<"early_microcode=$(usex initramfs)"
+	)
+
 	# The earlyfw cpio needs to be in /boot because it must be loaded before
 	# rootfs is mounted.
-	use initramfs && dodir /boot && opts+=( --write-earlyfw="${ED}/boot/intel-uc.img" )
+	if ! use dist-kernel && use initramfs; then
+		dodir /boot && opts+=( --write-earlyfw="${ED}/boot/intel-uc.img" )
+	fi
 
 	keepdir /lib/firmware/intel-ucode
 	opts+=( --write-firmware="${ED}/lib/firmware/intel-ucode" )
@@ -188,7 +204,9 @@ pkg_preinst() {
 
 		# The earlyfw cpio needs to be in /boot because it must be loaded before
 		# rootfs is mounted.
-		use initramfs && opts+=( --write-earlyfw=${_initramfs_file} )
+		if ! use dist-kernel && use initramfs; then
+			opts+=( --write-earlyfw=${_initramfs_file} )
+		fi
 
 		if use split-ucode; then
 			opts+=( --write-firmware="${ED}/lib/firmware/intel-ucode" )
@@ -259,7 +277,12 @@ pkg_postrm() {
 
 pkg_postinst() {
 	# Don't forget to umount /boot if it was previously mounted by us.
-	use initramfs && mount-boot_pkg_postinst
+	if use initramfs; then
+		if [[ -z ${ROOT} ]] && use dist-kernel; then
+			dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}"
+		fi
+		mount-boot_pkg_postinst
+	fi
 
 	# We cannot give detailed information if user is affected or not:
 	# If MICROCODE_BLACKLIST wasn't modified, user can still use MICROCODE_SIGNATURES
