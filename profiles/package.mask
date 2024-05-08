@@ -321,15 +321,6 @@ dev-java/validation-api
 # Removal on 2024-05-07.  Bug #928881
 acct-group/unifi-video
 acct-user/unifi-video
-media-video/unifi-video
-
-# Ben Kohler <bkohler@gentoo.org> (2024-04-07)
-# Long ago forked to and obsoleted by sys-apps/memtest86+.  Upstream has
-# abandoned this for their proprietary UEFI-based one (packaged in gentoo as
-# as sys-apps/memtest86-bin).
-# Removal on 2024-05-07.  Bug #502464, #607494, #628528, #750677, #887003,
-# #912973, #920109
-sys-apps/memtest86
 
 # Sam James <sam@gentoo.org> (2024-03-28)
 # Newer 5.4.x releases were signed by a potentially compromised upstream maintainer.
