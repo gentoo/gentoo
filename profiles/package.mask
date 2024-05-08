@@ -320,7 +320,6 @@ dev-java/validation-api
 # libs.
 # Removal on 2024-05-07.  Bug #928881
 acct-group/unifi-video
-acct-user/unifi-video
 
 # Sam James <sam@gentoo.org> (2024-03-28)
 # Newer 5.4.x releases were signed by a potentially compromised upstream maintainer.
