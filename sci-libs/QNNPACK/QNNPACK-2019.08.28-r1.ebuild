@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,6 +10,8 @@ DESCRIPTION="Quantized Neural Networks PACKage"
 HOMEPAGE="https://github.com/pytorch/QNNPACK/"
 SRC_URI="https://github.com/pytorch/${PN}/archive/${CommitId}.tar.gz
 	-> ${P}.tar.gz"
+
+S="${WORKDIR}"/${PN}-${CommitId}
 
 LICENSE="BSD"
 SLOT="0"
@@ -23,13 +25,12 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-libs/FP16
 	dev-libs/FXdiv
+	dev-libs/clog
 "
 
 BDEPEND="test? ( dev-cpp/gtest )"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( static-libs )"
-
-S="${WORKDIR}"/${PN}-${CommitId}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
