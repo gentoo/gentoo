@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -98,7 +98,9 @@ python_prepare_all() {
 }
 
 python_compile_all() {
-	use doc && esetup.py build_sphinx -b html --build-dir=docs/build
+	if use doc ; then
+		sphinx-build -b html docs docs/build || die
+	fi
 }
 
 python_install_all() {
