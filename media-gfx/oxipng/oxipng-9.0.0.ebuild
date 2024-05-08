@@ -107,7 +107,7 @@ LICENSE="
 	|| ( MIT Unlicense )
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~riscv ~x86"
 
 BDEPEND=">=virtual/rust-1.66.0"
 
