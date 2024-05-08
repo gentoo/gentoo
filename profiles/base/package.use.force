@@ -241,6 +241,7 @@ app-shells/bash:0 readline
 dev-lang/python-exec python_targets_python3_10
 dev-lang/python-exec python_targets_python3_11
 dev-lang/python-exec python_targets_python3_12
+dev-lang/python-exec python_targets_python3_13
 dev-lang/python-exec python_targets_pypy3
 
 # Zac Medico <zmedico@gentoo.org> (2010-10-20)
