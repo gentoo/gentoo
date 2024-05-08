@@ -1,4 +1,4 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: acct-group.eclass
@@ -50,12 +50,12 @@ inherit user-info
 # << Eclass variables >>
 
 # @ECLASS_VARIABLE: ACCT_GROUP_NAME
-# @INTERNAL
 # @DESCRIPTION:
 # The name of the group.  This is forced to ${PN} and the policy
-# prohibits it from being changed.
+# prohibits it from being changed.  The variable is left writable for
+# use in overlays; package naming restrictions would prohibit some
+# otherwise-valid group names.
 ACCT_GROUP_NAME=${PN}
-readonly ACCT_GROUP_NAME
 
 # @ECLASS_VARIABLE: ACCT_GROUP_ID
 # @REQUIRED
