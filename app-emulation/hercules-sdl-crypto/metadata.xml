@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>s390@gentoo.org</email>
+		<name>s390 architecture team</name>
+	</maintainer>
+	<longdescription>
+		Simple AES/DES encryption and SHA1/SHA2 hashing library for use by the SDL-Hercules-390 emulator
+	</longdescription>
+	<upstream>
+		<remote-id type="github">SDL-Hercules-390/crypto</remote-id>
+	</upstream>
+</pkgmetadata>
