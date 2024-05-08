@@ -12,7 +12,7 @@ SRC_URI="https://github.com/gap-packages/smallgrp/releases/download/v${PV}/${MY_
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="Artistic-2"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="dev-gap/gapdoc"
 gap-pkg_enable_tests
