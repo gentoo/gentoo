@@ -52,6 +52,11 @@ RDEPEND="
 	)
 	!dev-python/namespace-sphinxcontrib
 "
+# added temporarily because of unconditional import in sphinx.testing.util
+# until we figure out how to deal with it better
+RDEPEND+="
+	dev-python/defusedxml[${PYTHON_USEDEP}]
+"
 BDEPEND="
 	doc? (
 		dev-python/sphinxcontrib-websupport[${PYTHON_USEDEP}]
