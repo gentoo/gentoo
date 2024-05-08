@@ -20,6 +20,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	sys-libs/ncurses:=
 	virtual/libcrypt:=
+	!dev-lang/regina-rexx
 "
 DEPEND="
 	${RDEPEND}
