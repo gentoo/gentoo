@@ -10,8 +10,7 @@ inherit cmake
 DESCRIPTION="Open source implementation of Object Rexx"
 HOMEPAGE="https://www.oorexx.org/about.html
 	https://sourceforge.net/projects/oorexx/"
-SRC_URI="https://sourceforge.net/projects/${PN}/files/${PN}/${PV}/${P}-${APP_REVISION}.tar.gz"
-S="${WORKDIR}/${P}"
+SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}-${APP_REVISION}.tar.gz"
 
 LICENSE="CPL-1.0"
 SLOT="0"
