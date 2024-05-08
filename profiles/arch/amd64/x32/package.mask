@@ -113,7 +113,6 @@ kde-apps/konqueror
 kde-apps/konsolekalendar
 kde-apps/kontact
 kde-apps/korganizer
-kde-apps/ktp-accounts-kcm
 kde-apps/libksieve
 kde-apps/mailcommon
 kde-apps/messagelib
