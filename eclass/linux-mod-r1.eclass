@@ -131,6 +131,15 @@ IDEPEND="
 	sys-apps/kmod[tools]
 "
 
+if [[ ${MODULES_INITRAMFS_IUSE} ]]; then
+	IUSE+=" ${MODULES_INITRAMFS_IUSE}"
+	IDEPEND+="
+		${MODULES_INITRAMFS_IUSE#+}? (
+			sys-kernel/installkernel
+		)
+	"
+fi
+
 if [[ -n ${MODULES_OPTIONAL_IUSE} ]]; then
 	: "${MODULES_OPTIONAL_IUSE#+}? ( | )"
 	RDEPEND=${_/|/${RDEPEND}} DEPEND=${_/|/${DEPEND}} \
@@ -178,6 +187,22 @@ fi
 # that want the Makefile's values to be used by default.
 #
 # May want to look at KERNEL_CHOST before considering this.
+
+# @ECLASS_VARIABLE: MODULES_INITRAMFS_IUSE
+# @DEFAULT_UNSET
+# @PRE_INHERIT
+# @DESCRIPTION:
+# If set, adds the specified USE flag. When this flag is enabled the
+# installed kernel modules are registered for inclusion in the dracut
+# initramfs. Additionally, if distribution kernels are used
+# (USE="dist-kernel") then these kernels are re-installed.
+#
+# The typical recommended value is "initramfs" or "+initramfs" (global
+# IUSE).
+#
+# If MODULES_INITRAMFS_IUSE is not set, or the specified flag is not
+# enabled, then the installed kernel modules are omitted from the
+# dracut initramfs.
 
 # @ECLASS_VARIABLE: MODULES_SIGN_HASH
 # @USER_VARIABLE
@@ -471,6 +496,19 @@ linux-mod-r1_pkg_postinst() {
 	dist-kernel_compressed_module_cleanup "${EROOT}/lib/modules/${KV_FULL}"
 	_modules_update_depmod
 
+	if [[ -z ${ROOT} && ${MODULES_INITRAMFS_IUSE} ]] &&
+		use dist-kernel && use ${MODULES_INITRAMFS_IUSE#+}
+	then
+			dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}"
+	fi
+
+	if has_version virtual/dist-kernel && ! use dist-kernel; then
+		ewarn "virtual/dist-kernel is installed, but USE=\"dist-kernel\""
+		ewarn "is not enabled for ${CATEGORY}/${PN}."
+		ewarn "It's recommended to globally enable the dist-kernel USE flag"
+		ewarn "to automatically trigger initramfs rebuilds on kernel updates"
+	fi
+
 	# post_process ensures modules were installed and that the eclass' USE
 	# are likely not no-ops (unfortunately postinst itself may be missed)
 	[[ -v _MODULES_GLOBAL[ran:post_process] ]] ||
@@ -550,6 +588,7 @@ modules_post_process() {
 	# which can lead to unnecessarily increased size or stale modules)
 #	_modules_process_depmod.d "${mods[@]#"${path}/"}"
 
+	_modules_process_dracut.conf.d "${mods[@]##*/}"
 	_modules_process_strip "${mods[@]}"
 	_modules_process_sign "${mods[@]}"
 	_modules_sanity_modversion "${mods[@]}" # after strip/sign in case broke it
@@ -901,6 +940,21 @@ _modules_process_depmod.d() {
 					echo "override ${BASH_REMATCH[2]} ${KV_FULL} ${BASH_REMATCH[1]}"
 			done
 		)
+	)
+}
+
+# @FUNCTION: _modules_process_dracut.conf.d
+# @USAGE: <module>...
+# @INTERNAL
+# @DESCRIPTION:
+# Create dracut.conf.d snippet defining if module should be included in the
+# initramfs.
+_modules_process_dracut.conf.d() {
+	(
+		insinto /usr/lib/dracut/dracut.conf.d
+		[[ ${MODULES_INITRAMFS_IUSE} ]] && use ${MODULES_INITRAMFS_IUSE#+} &&
+			: add || : omit
+		newins - 10-${PN}.conf <<<"${_}_drivers+=\" ${*%.ko} \""
 	)
 }
 
