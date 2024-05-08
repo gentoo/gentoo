@@ -11,7 +11,7 @@ SRC_URI="https://github.com/abacus-gene/${PN}/archive/refs/tags/${PV}.tar.gz -> 
 
 LICENSE="free-noncomm"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.10.7-LDFLAGS.patch
