@@ -126,7 +126,7 @@ if [[ -x /usr/bin/pypy3 ]]; then
 	test_var PYTHON_SITEDIR pypy3 "/usr/lib*/pypy3.*/site-packages"
 	test_var PYTHON_INCLUDEDIR pypy3 "/usr/include/pypy3.*"
 fi
-test_var PYTHON_PKG_DEP pypy3 '*dev-python/pypy3*:0='
+test_var PYTHON_PKG_DEP pypy3 '*dev-python/pypy3*:='
 test_var PYTHON_SCRIPTDIR pypy3 /usr/lib/python-exec/pypy3
 eoutdent
 
