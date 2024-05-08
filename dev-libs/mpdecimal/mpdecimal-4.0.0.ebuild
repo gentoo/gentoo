@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="BSD-2"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~ppc"
 IUSE="cxx test"
 RESTRICT="!test? ( test )"
 
