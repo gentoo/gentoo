@@ -22,7 +22,7 @@ fi
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-IUSE="+brotli dbi gnutls kerberos ldap libdeflate +lua maxminddb mbedtls +nettle nss +pcre php sasl selinux ssl test unwind webdav xattr +zlib zstd"
+IUSE="+brotli crypto-gnutls crypto-mbedtls crypto-nettle crypto-openssl dbi gnutls kerberos ldap libdeflate +lua maxminddb mbedtls +nettle nss +pcre php sasl selinux ssl test unwind webdav xattr +zlib zstd"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -36,6 +36,10 @@ COMMON_DEPEND="
 	>=dev-libs/xxhash-0.8.2
 	virtual/libcrypt:=
 	brotli? ( app-arch/brotli:= )
+	crypto-gnutls? ( net-libs/gnutls )
+	crypto-mbedtls? ( net-libs/mbedtls )
+	crypto-nettle? ( dev-libs/nettle:= )
+	crypto-openssl? ( >=dev-libs/openssl-0.9.7:= )
 	dbi? (
 		dev-db/libdbi
 	)
@@ -107,8 +111,36 @@ pkg_setup() {
 }
 
 src_configure() {
+
+	local c_defs
+	local with_nettle
+
+	# choose crypto library
+	# (one specific library might be preferred on embedded systems via
+	#  MYMESONARGS with e.g. -DFORCE_blah_CRYPTO)
+	if use crypto-nettle ; then
+		with_nettle=$(meson_use crypto-nettle with_nettle)
+	elif use nettle ; then
+		with_nettle=$(meson_use nettle with_nettle)
+	else
+		if use crypto-mbedtls ; then
+			c_defs+=-DFORCE_MBEDTLS_CRYPTO
+		elif use crypto-openssl ; then
+			c_defs+=-DFORCE_OPENSSL_CRYPTO
+		elif use crypto-gnutls ; then
+			c_defs+=-DFORCE_GNUTLS_CRYPTO
+		fi
+	fi
+
+	local c_args
+	if c_defs ; then
+		c_args=-Dc_args=\"${c_defs[0]}\"
+	fi
+
 	local emesonargs=(
 		-Dmoduledir="$(get_libdir)"/${PN}
+
+		${c_args}
 
 		$(meson_feature brotli with_brotli)
 
@@ -134,7 +166,7 @@ src_configure() {
 		$(meson_feature maxminddb with_maxminddb)
 		$(meson_use mbedtls with_mbedtls)
 
-		$(meson_use nettle with_nettle)
+		${with_nettle}
 		$(meson_use nss with_nss)
 
 		# Obsolete
