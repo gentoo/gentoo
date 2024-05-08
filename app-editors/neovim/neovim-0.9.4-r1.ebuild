@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/neovim/neovim.git"
 else
 	SRC_URI="https://github.com/neovim/neovim/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~x64-macos"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~x64-macos"
 fi
 
 LICENSE="Apache-2.0 vim"
@@ -51,7 +51,7 @@ DEPEND="${LUA_DEPS}
 	>=dev-libs/libuv-1.46.0:=
 	>=dev-libs/libvterm-0.3.3
 	>=dev-libs/msgpack-3.0.0:=
-	>=dev-libs/tree-sitter-0.20.9:=
+	>=dev-libs/tree-sitter-0.20.8:=
 	>=dev-libs/libtermkey-0.22
 	>=dev-libs/unibilium-2.0.0:0=
 "
@@ -67,7 +67,8 @@ BDEPEND+="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.9.0-cmake_lua_version.patch"
-	"${FILESDIR}/${PN}-9999-cmake-darwin.patch"
+	"${FILESDIR}/${PN}-0.9.1-cmake-darwin.patch"
+	"${FILESDIR}/${PN}-0.9.0-cmake-release-type.patch"
 )
 
 src_prepare() {
@@ -81,7 +82,6 @@ src_prepare() {
 }
 
 src_configure() {
-	ln -s "${BROOT}"/usr/bin/luajit "${BUILD_DIR}"/luajit || die
 	# TODO: Investigate USE_BUNDLED, doesn't seem to be needed right now
 	local mycmakeargs=(
 		# appends -flto
