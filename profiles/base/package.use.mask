@@ -605,10 +605,6 @@ app-office/abiword ots
 <sys-devel/clang-17 llvm_targets_Xtensa
 <sys-devel/llvm-17 llvm_targets_Xtensa
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-27)
-# The respective dependencies are masked for removal.
-net-im/telepathy-connection-managers gadu icq meanwhile steam yahoo
-
 # Joonas Niilola <juippis@gentoo.org> (2020-09-23)
 # Highly experimental, may cause breakages when updating. Use with
 # caution!

@@ -433,10 +433,6 @@ app-emulation/xen-tools doc
 # Unkeyworded deps, bug #488724
 app-office/gnumeric libgda
 
-# Pacho Ramos <pacho@gentoo.org> (2013-11-28)
-# Missing keywords, bug #492820
-net-im/telepathy-connection-managers sipe
-
 # Pacho Ramos <pacho@gentoo.org> (2013-10-31)
 # Missing keywords, bug #478254
 gnome-base/gnome classic extras

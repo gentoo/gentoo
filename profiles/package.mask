@@ -331,11 +331,6 @@ media-video/unifi-video
 # #912973, #920109
 sys-apps/memtest86
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-04-06)
-# Dead upstream for many years, in a state of decay and no revdeps.
-# Removal on 2024-05-06.  Bug #926193, #891791
-net-im/telepathy-connection-managers
-
 # Sam James <sam@gentoo.org> (2024-03-28)
 # Newer 5.4.x releases were signed by a potentially compromised upstream maintainer.
 # There is no evidence that these releases contain malicious code, but masked

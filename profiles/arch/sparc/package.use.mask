@@ -604,10 +604,6 @@ gnome-base/gnome classic extras
 # Missing keywords, bug #493156
 media-libs/libgphoto2 serial
 
-# Pacho Ramos <pacho@gentoo.org> (2013-11-28)
-# Missing keywords, bug #492820
-net-im/telepathy-connection-managers sipe
-
 # Pacho Ramos <pacho@gentoo.org> (2013-07-20)
 # Keywords pending, bug #476710
 >=gnome-base/gnome-extra-apps-3.8 games
