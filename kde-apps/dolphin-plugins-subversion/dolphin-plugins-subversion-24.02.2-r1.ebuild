@@ -32,6 +32,11 @@ RDEPEND="${DEPEND}
 	>=kde-apps/kompare-${PVCUT}:*
 "
 
+PATCHES=(
+	# Backport patch to fix ODR: bug #926233
+	"${FILESDIR}"/772a4d712abcf1c6c86f25bd306785815132d886.patch
+)
+
 src_prepare() {
 	ecm_src_prepare
 	# solid, qtdbus only required by mountiso
