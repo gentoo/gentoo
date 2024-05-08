@@ -1,5 +1,4 @@
-diff --git a/velvet_1.2.10.orig/src/readSet.c b/velvet_1.2.10/src/readSet.c
-index f58122e..26e579c 100644
+https://bugs.gentoo.org/919223
 --- a/src/readSet.c
 +++ b/src/readSet.c
 @@ -638,7 +638,8 @@ static void readFastXFile(int fileType, SequencesWriter *seqWriteInfo, char *fil
