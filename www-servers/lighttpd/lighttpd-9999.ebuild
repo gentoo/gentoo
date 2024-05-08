@@ -200,9 +200,10 @@ src_install() {
 
 	# Configs
 	insinto /etc/lighttpd
-	newins "${FILESDIR}"/conf/lighttpd.conf-r2 lighttpd.conf
+	newins "${FILESDIR}"/conf/lighttpd.conf-r3 lighttpd.conf
 	doins "${FILESDIR}"/conf/mod_cgi.conf
 	doins "${FILESDIR}"/conf/mod_fastcgi.conf
+	doins doc/config/conf.d/mime.conf
 
 	# Update lighttpd.conf directives based on conditionals
 	update_config
