@@ -312,7 +312,6 @@ dev-java/icedtea-bin
 # Removal on 2024-05-08, bugs #853100 #716228.
 dev-java/gin
 dev-java/gwt
-dev-java/validation-api
 
 # Sam James <sam@gentoo.org> (2024-03-28)
 # Newer 5.4.x releases were signed by a potentially compromised upstream maintainer.
