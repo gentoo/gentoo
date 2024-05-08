@@ -22,4 +22,8 @@
 		configurable rules that can contain arbitrary notmuch queries to match
 		against any searchable attributes.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">afewmail/afew</remote-id>
+		<remote-id type="pypi">afew</remote-id>
+	</upstream>
 </pkgmetadata>
