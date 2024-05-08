@@ -74,7 +74,6 @@ media-gfx/digikam:5
 media-gfx/luminance-hdr
 media-sound/frescobaldi
 media-sound/teamspeak-client:3
-media-video/openshot
 net-analyzer/nmapsi
 net-libs/signon-ui
 sci-geosciences/qmapshack

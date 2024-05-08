@@ -400,7 +400,6 @@ sec-keys/openpgp-keys-jiatan
 # Removal on 2024-04-25.  Bug #909996.
 media-libs/libopenshot
 media-libs/libopenshot-audio
-media-video/openshot
 
 # Eray Aslan <eras@gentoo.org> (2024-03-10)
 # Mask experimental software
