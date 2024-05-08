@@ -10,7 +10,7 @@ SLOT="0"
 SRC_URI="https://github.com/gap-packages/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-3+"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="examples"
 
 DEPEND="sci-mathematics/gap:="
