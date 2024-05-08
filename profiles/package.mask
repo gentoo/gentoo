@@ -343,12 +343,6 @@ net-voip/telepathy-gabble
 net-voip/telepathy-rakia
 net-voip/telepathy-salut
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-04-06)
-# Dead upstream, as is the whole telepathy stack. Some parts depend on
-# dev-qt/qtwebengine:5.
-# Removal on 2024-05-06.  Bug #926679
-net-libs/telepathy-logger-qt
-
 # Sam James <sam@gentoo.org> (2024-03-28)
 # Newer 5.4.x releases were signed by a potentially compromised upstream maintainer.
 # There is no evidence that these releases contain malicious code, but masked
