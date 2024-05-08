@@ -350,7 +350,6 @@ net-voip/telepathy-salut
 kde-apps/ktp-accounts-kcm
 kde-apps/ktp-approver
 kde-apps/ktp-auth-handler
-kde-apps/ktp-common-internals
 net-libs/telepathy-logger-qt
 
 # Sam James <sam@gentoo.org> (2024-03-28)

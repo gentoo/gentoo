@@ -38,9 +38,6 @@ dev-qt/qtscript:5 scripttools
 # Required by kde-apps/akonadi:5
 dev-qt/qtsql:5 mysql
 
-# Required by kde-apps/ktp-text-ui
-kde-apps/ktp-common-internals otr
-
 # Enable by default, requires kde-frameworks/kwayland
 kde-apps/yakuake absolute-position
 
