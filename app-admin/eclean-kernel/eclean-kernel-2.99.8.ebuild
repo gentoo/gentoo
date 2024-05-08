@@ -6,17 +6,17 @@ EAPI=8
 DISTUTILS_USE_PEP517=flit
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1 pypi
 
 DESCRIPTION="Remove outdated built kernels"
 HOMEPAGE="
 	https://github.com/projg2/eclean-kernel/
 	https://pypi.org/project/eclean-kernel/
 "
-EGIT_REPO_URI="https://github.com/projg2/eclean-kernel.git"
 
 LICENSE="GPL-2+"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~riscv ~x86"
 IUSE="lz4 lzo zstd"
 
 RDEPEND="
