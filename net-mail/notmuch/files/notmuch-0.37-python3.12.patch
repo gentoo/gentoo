@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/929716
+https://github.com/notmuch/notmuch/commit/3771832b013012e408696897215fd0edde7dce37
+
+From 3771832b013012e408696897215fd0edde7dce37 Mon Sep 17 00:00:00 2001
+From: Michael J Gruber <git@grubix.eu>
+Date: Fri, 16 Jun 2023 13:19:26 +0200
+Subject: [PATCH] python: adjust legacy bindings to py 3.12
+
+Py 3.12 finally pulled the plug on the `SafeConfigParser` class which
+has been deprecated since py 3.2.
+
+We use it in the legacy bindings only, so take the easy route of
+importing `ConfigParser` as `SafeConfigParser` and monkey-patching so
+that the class has the expected interface.
+--- a/bindings/python/notmuch/compat.py
++++ b/bindings/python/notmuch/compat.py
+@@ -47,7 +47,10 @@ def encode_utf8(value):
+ 
+         return value
+ else:
+-    from configparser import SafeConfigParser
++    from configparser import ConfigParser as SafeConfigParser
++
++    if not hasattr(SafeConfigParser, 'readfp'):   # py >= 3.12
++        SafeConfigParser.readfp = SafeConfigParser.read_file
+ 
+     class Python3StringMixIn(object):
+         def __str__(self):
+
