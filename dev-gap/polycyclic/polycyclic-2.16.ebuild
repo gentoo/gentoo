@@ -10,7 +10,7 @@ SLOT="0"
 SRC_URI="https://github.com/gap-packages/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # Circular dependency polycyclic->alnuth->polycyclic. There's a global
 # variable called USE_ALNUTH in polycyclic, but setting it to "false"
