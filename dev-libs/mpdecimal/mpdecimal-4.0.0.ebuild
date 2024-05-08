@@ -1,0 +1,61 @@
+# Copyright 2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DESCRIPTION="Correctly-rounded arbitrary precision decimal floating point arithmetic"
+HOMEPAGE="https://www.bytereef.org/mpdecimal/"
+SRC_URI="
+	https://www.bytereef.org/software/mpdecimal/releases/${P}.tar.gz
+	test? (
+		http://speleotrove.com/decimal/dectest.zip
+	)
+"
+
+LICENSE="BSD-2"
+SLOT="$(ver_cut 1)"
+KEYWORDS="~amd64"
+IUSE="cxx test"
+RESTRICT="!test? ( test )"
+
+BDEPEND="
+	test? (
+		app-arch/unzip
+	)
+"
+
+src_unpack() {
+	unpack "${P}.tar.gz"
+	if use test; then
+		mkdir "${P}/tests/testdata" || die
+		cd "${P}/tests/testdata" || die
+		unpack dectest.zip
+	fi
+}
+
+src_prepare() {
+	default
+
+	# sigh
+	sed -i -e "s:/lib:/$(get_libdir):" lib*/.pc/*.pc.in || die
+}
+
+src_configure() {
+	local myconf=(
+		# just COPYRIGHT.txt
+		--docdir=/removeme
+		$(use_enable cxx)
+	)
+
+	local -x LDXXFLAGS="${LDFLAGS}"
+	econf "${myconf[@]}"
+}
+
+src_test() {
+	emake check
+}
+
+src_install() {
+	default
+	rm -r "${ED}/removeme" || die
+}
