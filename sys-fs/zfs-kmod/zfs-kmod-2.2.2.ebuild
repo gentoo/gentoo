@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit autotools dist-kernel-utils flag-o-matic linux-mod-r1 multiprocessing
+MODULES_INITRAMFS_IUSE=+initramfs
+inherit autotools flag-o-matic linux-mod-r1 multiprocessing
 
 DESCRIPTION="Linux ZFS kernel module for sys-fs/zfs"
 HOMEPAGE="https://github.com/openzfs/zfs"
@@ -65,13 +66,6 @@ PATCHES=(
 
 pkg_pretend() {
 	use rootfs || return 0
-
-	if has_version virtual/dist-kernel && ! use dist-kernel; then
-		ewarn "You have virtual/dist-kernel installed, but"
-		ewarn "USE=\"dist-kernel\" is not enabled for ${CATEGORY}/${PN}"
-		ewarn "It's recommended to globally enable dist-kernel USE flag"
-		ewarn "to auto-trigger initrd rebuilds with kernel updates"
-	fi
 }
 
 pkg_setup() {
@@ -192,10 +186,6 @@ pkg_postinst() {
 	[[ -f ${newko[0]} ]] && _old_layout_cleanup
 
 	linux-mod-r1_pkg_postinst
-
-	if [[ -z ${ROOT} ]] && use dist-kernel ; then
-		dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}"
-	fi
 
 	if use x86 || use arm ; then
 		ewarn "32-bit kernels will likely require increasing vmalloc to"
