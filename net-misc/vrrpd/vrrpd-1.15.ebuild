@@ -6,7 +6,7 @@ EAPI=8
 DESCRIPTION="Virtual Router Redundancy Protocol Daemon"
 HOMEPAGE="https://gitlab.com/fredbcode/Vrrpd/"
 GITLAB_SHA1="a318281271973c7430cfa520b540585153454c4b"
-SRC_URI="https://gitlab.com/fredbcode/Vrrpd/-/archive/v${PV}/${P}.tar.gz"
+SRC_URI="https://gitlab.com/fredbcode/Vrrpd/-/archive/v${PV}/${P}.tar.bz2"
 
 S="${WORKDIR}/Vrrpd-v${PV}-${GITLAB_SHA1}"
 
