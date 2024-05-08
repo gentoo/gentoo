@@ -353,7 +353,6 @@ kde-apps/ktp-auth-handler
 kde-apps/ktp-common-internals
 kde-apps/ktp-contact-list
 kde-apps/ktp-contact-runner
-kde-apps/ktp-desktop-applets
 net-libs/telepathy-logger-qt
 
 # Sam James <sam@gentoo.org> (2024-03-28)
