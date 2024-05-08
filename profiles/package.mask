@@ -335,7 +335,6 @@ sys-apps/memtest86
 # Dead upstream for many years, in a state of decay and no revdeps.
 # Removal on 2024-05-06.  Bug #926193, #891791
 net-im/telepathy-connection-managers
-net-libs/sofia-sip
 
 # Sam James <sam@gentoo.org> (2024-03-28)
 # Newer 5.4.x releases were signed by a potentially compromised upstream maintainer.
