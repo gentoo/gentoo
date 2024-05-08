@@ -14,6 +14,9 @@ LUA_COMPAT=( lua5-{3,4} )
 
 inherit lua-single meson systemd
 
+DESCRIPTION="Replacement for pipewire-media-session"
+HOMEPAGE="https://gitlab.freedesktop.org/pipewire/wireplumber"
+
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/pipewire/${PN}.git"
 	EGIT_BRANCH="master"
@@ -22,9 +25,6 @@ else
 	SRC_URI="https://gitlab.freedesktop.org/pipewire/${PN}/-/archive/${PV}/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
-
-DESCRIPTION="Replacement for pipewire-media-session"
-HOMEPAGE="https://gitlab.freedesktop.org/pipewire/wireplumber"
 
 LICENSE="MIT"
 SLOT="0/0.5"
@@ -46,7 +46,6 @@ BDEPEND="
 	sys-devel/gettext
 	test? ( sys-apps/dbus )
 "
-
 DEPEND="
 	${LUA_DEPS}
 	>=dev-libs/glib-2.68
@@ -55,12 +54,8 @@ DEPEND="
 	elogind? ( sys-auth/elogind )
 	systemd? ( sys-apps/systemd )
 "
-
-# Any dev-lua/* deps get declared like this inside RDEPEND:
-#	$(lua_gen_cond_dep '
-#		dev-lua/<NAME>[${LUA_USEDEP}]
-#	')
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
 	system-service? (
 		acct-user/pipewire
 		acct-group/pipewire
@@ -70,7 +65,8 @@ RDEPEND="${DEPEND}
 DOCS=( {NEWS,README}.rst )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.4.81-config-disable-sound-server-parts.patch # defer enabling sound server parts to media-video/pipewire
+	# Defer enabling sound server parts to media-video/pipewire
+	"${FILESDIR}"/${PN}-0.4.81-config-disable-sound-server-parts.patch
 )
 
 src_configure() {
@@ -78,9 +74,11 @@ src_configure() {
 		-Ddaemon=true
 		-Dtools=true
 		-Dmodules=true
-		-Ddoc=disabled # Ebuild not wired up yet (Sphinx, Doxygen?)
-		-Dintrospection=disabled # Only used for Sphinx doc generation
-		-Dsystem-lua=true # We always unbundle everything we can
+		# Ebuild not wired up yet (Sphinx, Doxygen?)
+		-Ddoc=disabled
+		# Only used for Sphinx doc generation
+		-Dintrospection=disabled
+		-Dsystem-lua=true
 		-Dsystem-lua-version=$(ver_cut 1-2 $(lua_get_version))
 		$(meson_feature elogind)
 		$(meson_feature systemd)
@@ -109,6 +107,7 @@ pkg_postinst() {
 		ewarn "or, if it does exist, that any reference to"
 		ewarn "${EROOT}/usr/bin/pipewire-media-session is commented out (begins with a #)."
 	fi
+
 	if use system-service; then
 		ewarn
 		ewarn "WARNING: you have enabled the system-service USE flag, which installs"
