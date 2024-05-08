@@ -72,7 +72,7 @@ CDEPEND="
 	!!x11-drivers/nvidia-drivers[-libglvnd(+)]
 "
 DEPEND="${CDEPEND}
-	>=x11-base/xorg-proto-2021.4.99.2
+	>=x11-base/xorg-proto-2024.1
 	>=x11-libs/xtrans-1.3.5
 	media-fonts/font-util
 	test? ( >=x11-libs/libxcvt-0.1.0 )
@@ -105,13 +105,14 @@ src_configure() {
 	# bug #835653
 	use x86 && replace-flags -Os -O2
 
+	use debug && EMESON_BUILDTYPE=debug
+
 	# localstatedir is used for the log location; we need to override the default
 	#	from ebuild.sh
 	# sysconfdir is used for the xorg.conf location; same applies
 	local emesonargs=(
 		--localstatedir "${EPREFIX}/var"
 		--sysconfdir "${EPREFIX}/etc/X11"
-		-Dbuildtype=$(usex debug debug plain)
 		-Db_ndebug=$(usex debug false true)
 		$(meson_use !minimal dri1)
 		$(meson_use !minimal dri2)

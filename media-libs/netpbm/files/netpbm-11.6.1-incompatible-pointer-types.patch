@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/929019
+
+--- a/converter/other/pnmtorle.c
++++ b/converter/other/pnmtorle.c
+@@ -374,7 +374,7 @@
+         if (cmdline.header) {
+             skipData(ifP, width, height, maxval, format);
+         } else {
+-            rle_addhist(argv, NULL, &hdr);
++            rle_addhist((char**)argv, NULL, &hdr);
+             writeRleHeader(cmdline.alpha, format, width, height, &hdr);
+             writeRleData(verbose, cmdline.alpha, ifP, &hdr,
+                          width, height, maxval, format);

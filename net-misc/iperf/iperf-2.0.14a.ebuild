@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Tool to measure IP bandwidth using UDP or TCP"
 HOMEPAGE="https://sourceforge.net/projects/iperf2/"
-SRC_URI="mirror://sourceforge/${PN}2/${PN}-2.0.13.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}2/${PN}-2.0.13.tar.gz"
 S="${WORKDIR}/${PN}-2.0.13"
 
 LICENSE="HPND"

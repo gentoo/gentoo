@@ -1,17 +1,17 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit desktop flag-o-matic toolchain-funcs
+inherit desktop flag-o-matic toolchain-funcs autotools
 
 DESCRIPTION="Clone of old-school Wizardry(tm) games by SirTech"
 HOMEPAGE="https://icculus.org/gwiz/"
 SRC_URI="https://icculus.org/gwiz/${P}.tar.bz2"
 
-KEYWORDS="~amd64 ~x86"
-SLOT="0"
 LICENSE="GPL-2+"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="media-libs/libsdl[joystick,video]
 	media-libs/sdl-image[png]
@@ -27,6 +27,7 @@ src_prepare() {
 
 	tc-export CC
 	append-cflags -std=gnu89 # build with gcc5 (bug #572532)
+	eautoreconf # fixes configure problems for free (bug #880811)
 }
 
 src_install() {

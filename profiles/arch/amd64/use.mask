@@ -1,8 +1,21 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2024-05-08)
+# Python 3.13 is due for rekeywording due to a new dep.
+-python_targets_python3_13
+-python_single_target_python3_13
+
 # Unmask the flag which corresponds to ARCH.
 -amd64
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-04-14)
+# media-libs/quirc is keyworded on amd64
+-quirc
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-03-28)
+# dev-libs/optix works on amd64
+-optix
 
 # Paul Zander <negril.nx+gentoo@gmail.org> (2024-02-14)
 # sci-libs/atlas works on x86_64

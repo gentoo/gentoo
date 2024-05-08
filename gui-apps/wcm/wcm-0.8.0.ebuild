@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/WayfireWM/wcm"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/WayfireWM/wcm.git"
-	SLOT="0/9999"
+	SLOT="0/0.9"
 else
 	SRC_URI="https://github.com/WayfireWM/wcm/releases/download/v${PV}/${P}.tar.xz"
 	KEYWORDS="amd64 ~arm64 ~x86"
@@ -20,7 +20,7 @@ fi
 
 LICENSE="MIT"
 
-RESTRIC="test" # no tests
+RESTRICT="test" # no tests
 
 CDEPEND="
 	dev-libs/libevdev

@@ -59,9 +59,9 @@ BDEPEND="virtual/pkgconfig"
 DOC_CONTENTS="
 	If this is a clean installation of wpa_supplicant, you
 	have to create a configuration file named
-	${EROOT}/etc/wpa_supplicant/wpa_supplicant.conf
+	/etc/wpa_supplicant/wpa_supplicant.conf
 	An example configuration file is available for reference in
-	${EROOT}/usr/share/doc/${PF}/
+	/usr/share/doc/${PF}/
 "
 
 S="${WORKDIR}/${P}/${PN}"
@@ -393,7 +393,7 @@ src_install() {
 	newconfd "${FILESDIR}/${PN}-conf.d" wpa_supplicant
 
 	exeinto /etc/wpa_supplicant/
-	newexe "${FILESDIR}/wpa_cli.sh" wpa_cli.sh
+	newexe "${FILESDIR}/wpa_cli-r1.sh" wpa_cli.sh
 
 	readme.gentoo_create_doc
 	dodoc ChangeLog {eap_testing,todo}.txt README{,-WPS} \

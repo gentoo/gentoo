@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>bircoph@gentoo.org</email>
-		<name>Andrew Savchenko</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 		sobexsrv is a Bluetooth OBEX server with Bluetooth Security
 		Mode-2 (application triggered security) support. It implements

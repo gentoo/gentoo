@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit flag-o-matic
 MY_PV="$(ver_cut 1-2)"
 DESCRIPTION="Yet another factoring utility"
 HOMEPAGE="https://sourceforge.net/projects/yafu/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_PV}/${PN}-${MY_PV}-src.zip"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_PV}/${PN}-${MY_PV}-src.zip"
 
 SLOT="0"
 LICENSE="public-domain"

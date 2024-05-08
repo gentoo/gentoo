@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ HOMEPAGE="https://jgemu.gitlab.io/"
 
 LICENSE="metapackage"
 SLOT="1"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="+bsnes +cega +gambatte +geolith +jollycv +mednafen melonds +mgba +nestopia +prosystem sameboy +vecx"
 
 RDEPEND="

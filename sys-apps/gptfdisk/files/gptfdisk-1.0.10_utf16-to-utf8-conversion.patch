@@ -1,0 +1,19 @@
+From ade1729d1ca44b34678653fdf12e787e1afc5fd8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ulrich=20M=C3=BCller?= <ulm@gentoo.org>
+Date: Wed, 13 Mar 2024 20:38:37 +0100
+Subject: [PATCH] gptpart.cc: Fix Unicode to UTF-8 conversion in GetDescription
+
+--- a/gptpart.cc
++++ b/gptpart.cc
+@@ -131,7 +131,7 @@ string GPTPart::GetDescription(void) {
+       } // if
+       else {
+          utf8 += (char) ( 0xf0 | ( uni >> 18 ) ) ;
+-         utf8 += (char) ( 0xe0 | ( ( uni >> 12 ) & 0x3f ) ) ;
++         utf8 += (char) ( 0x80 | ( ( uni >> 12 ) & 0x3f ) ) ;
+          utf8 += (char) ( 0x80 | ( ( uni >> 6 ) & 0x3f ) ) ;
+          utf8 += (char) ( 0x80 | ( uni & 0x3f ) ) ;
+       } // if
+-- 
+2.44.0
+

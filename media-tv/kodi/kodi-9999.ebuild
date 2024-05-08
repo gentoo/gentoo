@@ -3,7 +3,7 @@
 
 EAPI=8
 
-CODENAME="Omega"
+CODENAME=""
 
 # libdvd{css,read,nav} are not unbundlable without patching the buildsystem.
 
@@ -63,7 +63,7 @@ else
 	MY_PV=${PV/_p/_r}
 	MY_PV=${MY_PV/_alpha/a}
 	MY_PV=${MY_PV/_beta/b}
-	MY_PV=${MY_PV/_rc/RC}
+	MY_PV=${MY_PV/_rc/rc}
 	MY_PV="${MY_PV}-${CODENAME}"
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI+=" https://github.com/xbmc/xbmc/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
@@ -92,7 +92,7 @@ RESTRICT="!test? ( test )"
 
 # dev-libs/libcec[-cubox] bug #818262
 COMMON_DEPEND="
-	>=dev-libs/flatbuffers-1.12.0:=
+	>=dev-libs/flatbuffers-23.3.3:=
 	>=dev-libs/lzo-2.04:2
 	media-libs/giflib:=
 	>=media-libs/libjpeg-turbo-2.0.4:=
@@ -210,7 +210,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		>=x11-libs/libxkbcommon-0.4.1[wayland]
 	)
 	webserver? (
-		>=net-libs/libmicrohttpd-0.9.55:=[messages(+)]
+		>=net-libs/libmicrohttpd-0.9.77:=[messages(+)]
 	)
 	X? (
 		x11-libs/libX11

@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: ${REDICT_SENTINEL_DIR:=/tmp}
+: ${REDICT_SENTINEL_CONF:=/etc/redict/sentinel.conf}
+: ${REDICT_SENTINEL_USER:=redict}
+: ${REDICT_SENTINEL_GROUP:=redict}
+: ${REDICT_SENTINEL_TIMEOUT:=30}
+
+depend() {
+	use localmount logger
+	after keepalived redict
+}
+
+command="/usr/sbin/redict-sentinel"
+command_args="${REDICT_SENTINEL_CONF}"
+command_background="true"
+command_user="${REDICT_SENTINEL_USER}:${REDICT_SENTINEL_GROUP}"
+pidfile="/run/${RC_SVCNAME}.pid"
+retry="${REDICT_SENTINEL_TIMEOUT}"
+start_stop_daemon_args="--chdir \"${REDICT_SENTINEL_DIR}\""

@@ -1,0 +1,7 @@
+for std::remove_if
+--- a/src/d3d9/d3d9_mem.cpp
++++ b/src/d3d9/d3d9_mem.cpp
+@@ -5,2 +5,3 @@
+ #include "../util/util_likely.h"
++#include <algorithm>
+ #include <utility>

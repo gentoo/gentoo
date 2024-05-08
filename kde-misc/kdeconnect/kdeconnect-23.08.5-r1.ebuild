@@ -9,7 +9,7 @@ KDE_ORG_NAME="${PN}-kde"
 KDE_SELINUX_MODULE="${PN}"
 KFMIN=5.106.0
 QTMIN=5.15.9
-inherit ecm gear.kde.org
+inherit ecm flag-o-matic gear.kde.org
 
 DESCRIPTION="Adds communication between KDE Plasma and your smartphone"
 HOMEPAGE="https://kdeconnect.kde.org/ https://apps.kde.org/kdeconnect/"
@@ -83,6 +83,11 @@ BDEPEND="
 PATCHES=( "${FILESDIR}/${PN}-21.07.80-revert-disable-kpeople.patch" )
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/921648
+	# https://bugs.kde.org/show_bug.cgi?id=480522
+	filter-lto
+
 	local mycmakeargs=(
 		-DBLUETOOTH_ENABLED=$(usex bluetooth)
 		$(cmake_use_find_package pulseaudio KF5PulseAudioQt)

@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}"
 # Data format is licensed Artistic-2
 # Code is licensed GPL-3
 LICENSE="GPL-3 Artistic-2"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # This is one of the four required packages whose dependencies are all
 # listed explicitly.

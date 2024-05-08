@@ -21,10 +21,6 @@
 # Experimental, virt-firmware is keyworded only unstable
 sys-kernel/installkernel efistub
 
-# Ionen Wolkens <ionen@gentoo.org> (2024-03-08)
-# media-libs/libdovi is not stable here yet
-media-libs/libplacebo libdovi
-
 # Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
 # dev-python/pyside6 is not stable here yet
 dev-python/QtPy pyside6
@@ -74,7 +70,6 @@ net-misc/curl rustls curl_ssl_rustls
 
 # Sam James <sam@gentoo.org> (2022-12-07)
 # Needs unstable media-libs/libvpl
-media-libs/gst-plugins-bad qsv
 media-video/ffmpeg qsv
 
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)

@@ -4,7 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_TESTED=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_13 )
 
 inherit distutils-r1 pypi
 
@@ -16,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 
 RDEPEND="
 	>=dev-python/jaraco-functools-1.20[${PYTHON_USEDEP}]
@@ -25,9 +26,21 @@ RDEPEND="
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
-		dev-python/freezegun[${PYTHON_USEDEP}]
-		dev-python/pytest-freezegun[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/freezegun[${PYTHON_USEDEP}]
+			dev-python/pytest-freezegun[${PYTHON_USEDEP}]
+		' "${PYTHON_TESTED[@]}")
 	)
 "
 
 distutils_enable_tests pytest
+
+python_test() {
+	if ! has "${EPYTHON/./_}" "${PYTHON_TESTED[@]}"; then
+		einfo "Skipping tests on ${EPYTHON}"
+		return
+	fi
+
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest -p freezer
+}

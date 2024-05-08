@@ -3,6 +3,11 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <upstream>
+    <maintainer status="active">
+      <email>oleksandr@natalenko.name</email>
+      <name>Oleksandr Natalenko</name>
+    </maintainer>
     <remote-id type="cpe">cpe:/o:linux:linux_kernel</remote-id>
+    <remote-id type="codeberg">pf-kernel/linux</remote-id>
   </upstream>
 </pkgmetadata>

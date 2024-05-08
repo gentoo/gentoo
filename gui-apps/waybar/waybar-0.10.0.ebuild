@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/Alexays/${PN^}.git"
 else
 	SRC_URI="https://github.com/Alexays/${PN^}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 	S="${WORKDIR}/${PN^}-${PV}"
 fi
 
@@ -21,7 +21,6 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="evdev experimental jack +libinput +logind mpd mpris network pipewire pulseaudio sndio systemd test tray +udev upower wifi"
 REQUIRED_USE="
-	mpris? ( logind )
 	upower? ( logind )
 "
 

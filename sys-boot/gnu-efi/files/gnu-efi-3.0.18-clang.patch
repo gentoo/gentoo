@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/930538
+https://github.com/ncroxon/gnu-efi/issues/4
+https://github.com/ncroxon/gnu-efi/pull/5
+https://github.com/ncroxon/gnu-efi/commit/a0111e0df165d49cf34fc4f5fae46fc0921a756d
+
+From a0111e0df165d49cf34fc4f5fae46fc0921a756d Mon Sep 17 00:00:00 2001
+From: Callum Farmer <gmbr3@opensuse.org>
+Date: Wed, 24 Apr 2024 12:04:48 +0100
+Subject: [PATCH] Disable RELRO
+
+No point having PT_GNU_RELRO as ELF data won't exist when merging into PE32+ file
+
+Unbreaks lld usage which complains about linker script
+Fixes ncroxon/gnu-efi#4
+--- a/Make.defaults
++++ b/Make.defaults
+@@ -199,7 +199,7 @@ endif
+ ARFLAGS := rDv
+ ASFLAGS += $(ARCH3264)
+ LDFLAGS	+= -nostdlib --warn-common --no-undefined --fatal-warnings \
+-	   --build-id=sha1 -z nocombreloc
++	   --build-id=sha1 -z nocombreloc -z norelro
+ 
+ ifneq ($(ARCH),arm)
+ export LIBGCC=$(shell $(CC) $(CFLAGS) $(ARCH3264) -print-libgcc-file-name)
+

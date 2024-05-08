@@ -18,7 +18,7 @@ else
 		verify-sig? ( https://github.com/kovidgoyal/kitty/releases/download/v${PV}/${P}.tar.xz.sig )
 	"
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kovidgoyal.gpg
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Fast, feature-rich, GPU-based terminal"
@@ -60,7 +60,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	amd64? ( dev-libs/simde )
+	amd64? ( >=dev-libs/simde-0.8.0-r1 )
 	arm64? ( dev-libs/simde )
 	x86? ( dev-libs/simde )
 	X? (
@@ -144,9 +144,6 @@ src_compile() {
 			replace-flags -ggdb3 -ggdb
 			printf %s "${CFLAGS}"
 		)
-
-	# workaround simde bug with -mxop (bug #926959)
-	append-cppflags -DSIMDE_X86_XOP_NO_NATIVE=1
 
 	local conf=(
 		--disable-link-time-optimization

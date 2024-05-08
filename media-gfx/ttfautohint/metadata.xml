@@ -5,10 +5,6 @@
   <email>matthew@gentoo.org</email>
   <name>Matthew Smith</name>
 </maintainer>
-<maintainer type="person" proxied="yes">
-  <email>lssndrbarbieri@gmail.com</email>
-  <name>Alessandro Barbieri</name>
-</maintainer>
 <slots>
   <subslots>reflect soname of libttfautohint</subslots>
 </slots>

@@ -9,4 +9,7 @@
 		<flag name="binary-laws">Include infrastructure for testing class laws of binary type constructors. Disabling `unary-laws` while keeping `binary-laws` enabled is an unsupported configuration.</flag>
 		<flag name="unary-laws">Include infrastructure for testing class laws of unary type constructors.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">andrewthad/quickcheck-classes</remote-id>
+	</upstream>
 </pkgmetadata>

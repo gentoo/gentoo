@@ -3,12 +3,12 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit optfeature python-r1
 
 DESCRIPTION="Stylish way of giving presentations with Python"
 HOMEPAGE="http://impressive.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN^}/${PV/_/-}/${PN^}-${PV/_/-}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${PN^}/${PV/_/-}/${PN^}-${PV/_/-}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

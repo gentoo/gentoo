@@ -64,7 +64,7 @@ tmpfile=$(mktemp)
 
 inherit python-utils-r1
 
-for minor in {10..12}; do
+for minor in {10..13}; do
 	ebegin "Testing python3.${minor}"
 	eindent
 	test_var EPYTHON "python3_${minor}" "python3.${minor}"
@@ -126,7 +126,7 @@ if [[ -x /usr/bin/pypy3 ]]; then
 	test_var PYTHON_SITEDIR pypy3 "/usr/lib*/pypy3.*/site-packages"
 	test_var PYTHON_INCLUDEDIR pypy3 "/usr/include/pypy3.*"
 fi
-test_var PYTHON_PKG_DEP pypy3 '*dev-python/pypy3*:0='
+test_var PYTHON_PKG_DEP pypy3 '*dev-python/pypy3*:='
 test_var PYTHON_SCRIPTDIR pypy3 /usr/lib/python-exec/pypy3
 eoutdent
 

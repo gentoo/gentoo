@@ -1,24 +1,36 @@
-From 639005a81abf915e7b6450baacf40ede01121cb7 Mon Sep 17 00:00:00 2001
+From 6622a4e4a170d6c784d46638a128068ea5203493 Mon Sep 17 00:00:00 2001
 From: Matt Turner <mattst88@gmail.com>
-Date: Fri, 27 Jan 2023 06:40:05 -0800
+Date: Thu, 18 Apr 2024 13:24:18 -0400
 Subject: [PATCH] Disable things we don't want
 
 v2: Enable libglad to satisfy egl dependencies
 v3: Enable most of libutil to fix undefined references in es2gears
+v4: Disable dmabufshare and remove dep on libXext
+v5: Drop trackball.c and showbuffer.c
+v6: Fix disabling GLU
 ---
- meson.build                   | 13 +++----------
- src/egl/opengl/meson.build    | 28 ---------------------------
+ meson.build                   | 13 ++-----------
+ src/egl/opengl/meson.build    | 35 ----------------------------------
  src/egl/opengles2/meson.build |  5 -----
  src/meson.build               |  2 --
  src/util/gl_wrap.h            |  2 --
- src/util/meson.build          |  7 +------
+ src/util/meson.build          |  9 +--------
  src/xdemos/meson.build        | 36 -----------------------------------
- 7 files changed, 4 insertions(+), 89 deletions(-)
+ 7 files changed, 3 insertions(+), 99 deletions(-)
 
 diff --git a/meson.build b/meson.build
-index 3e39b5a2..6d064ef6 100644
+index d487a11f..4cd6abf7 100644
 --- a/meson.build
 +++ b/meson.build
+@@ -52,7 +52,7 @@ dep_drm = dependency('libdrm',
+   required : get_option('libdrm'),
+   disabler : true
+ )
+-dep_x11 = dependency('x11, xext',
++dep_x11 = dependency('x11',
+   required : get_option('x11'),
+   disabler : true
+ )
 @@ -87,16 +87,7 @@ endif
  
  dep_threads = dependency('threads')
@@ -37,20 +49,23 @@ index 3e39b5a2..6d064ef6 100644
  
  dep_glx = dependency('glx', required: false, disabler : true)
  if not dep_glx.found()
-@@ -165,6 +156,8 @@ else
-   dep_glut = dependency('', required : false)
- endif
- 
-+dep_glut = disabler()
-+
- if dep_glut.found() and (dep_glut.type_name() == 'internal' or
-    cc.has_function('glutInitContextProfile',
-                    dependencies: [dep_glut],
 diff --git a/src/egl/opengl/meson.build b/src/egl/opengl/meson.build
-index 9bca049c..e7122027 100644
+index be536280..e7122027 100644
 --- a/src/egl/opengl/meson.build
 +++ b/src/egl/opengl/meson.build
-@@ -25,27 +25,6 @@ executable(
+@@ -20,39 +20,11 @@
+ 
+ _deps = [dep_gl, dep_m, idep_util]
+ 
+-if target_machine.system() == 'linux'
+-  executable(
+-    'dmabufshare', files('dmabufshare.c'),
+-    dependencies: [_deps, idep_glad, idep_eglut],
+-    install: true
+-  )
+-endif
+ executable(
+   'eglgears', files('eglgears.c'),
    dependencies: [_deps, dep_glu, idep_eglut],
    install: true
  )
@@ -78,7 +93,7 @@ index 9bca049c..e7122027 100644
  
  executable(
    'eglinfo', 'eglinfo.c',
-@@ -53,10 +32,3 @@ executable(
+@@ -60,10 +32,3 @@ executable(
    include_directories: [inc_glad],
    install: true
  )
@@ -131,16 +146,16 @@ index b2ff9c8f..f482df5e 100644
  
  #ifndef GLAPIENTRY
 diff --git a/src/util/meson.build b/src/util/meson.build
-index b4fe614f..e56b456e 100644
+index b4fe614f..d2c42dc2 100644
 --- a/src/util/meson.build
 +++ b/src/util/meson.build
-@@ -22,17 +22,12 @@ inc_util = include_directories('.')
+@@ -22,17 +22,10 @@ inc_util = include_directories('.')
  
  files_libutil = files(
    'glinfo_common.c',
 -  'readtex.c',
-   'showbuffer.c',
-   'trackball.c',
+-  'showbuffer.c',
+-  'trackball.c',
    'matrix.c',
  )
  

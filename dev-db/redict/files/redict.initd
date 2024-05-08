@@ -1,0 +1,25 @@
+#!/sbin/openrc-run
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: ${REDICT_DIR:=/var/lib/redict}
+: ${REDICT_CONF:=/etc/redict/redict.conf}
+: ${REDICT_OPTS:="${REDICT_CONF}"}
+: ${REDICT_USER:=redict}
+: ${REDICT_GROUP:=redict}
+: ${REDICT_TIMEOUT:=30}
+
+# https://bugs.gentoo.org/631002#c10
+# Force '--daemonize no' to override the config file
+command="/usr/sbin/redict-server"
+command_args="${REDICT_OPTS} --daemonize no"
+command_background="true"
+command_user="${REDICT_USER}:${REDICT_GROUP}"
+pidfile="/run/${RC_SVCNAME}.pid"
+retry="${REDICT_TIMEOUT}"
+start_stop_daemon_args="--chdir \"${REDICT_DIR}\""
+
+depend() {
+	use localmount logger
+	after keepalived
+}

@@ -68,6 +68,12 @@ PATCHES=(
 )
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/927071
+	# https://github.com/supercollider/supercollider/issues/6245
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	local mycmakeargs=(
 		-DSC_CLANG_USES_LIBSTDCPP=ON
 		-DINSTALL_HELP=ON

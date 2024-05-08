@@ -161,6 +161,7 @@ RDEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
+	>=dev-texlive/texlive-latex-2023
 "
 
 TEXLIVE_MODULE_BINSCRIPTS="

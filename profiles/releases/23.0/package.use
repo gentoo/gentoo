@@ -1,0 +1,11 @@
+# Copyright 2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-04-10)
+# We want the toolchain to use zstd compression for LTO objects and
+# debug information
+#
+sys-devel/gcc zstd
+sys-devel/binutils zstd
+sys-devel/llvm zstd
+sys-devel/lld zstd

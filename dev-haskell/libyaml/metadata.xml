@@ -9,4 +9,7 @@
 		<flag name="unicode">Enable unicode output. Otherwise, unicode characters will be escaped.</flag>
 		<flag name="system-libyaml">Use the system-wide libyaml instead of the bundled copy</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">snoyberg/yaml</remote-id>
+	</upstream>
 </pkgmetadata>

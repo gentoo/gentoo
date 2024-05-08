@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="\"su\" wrapper which transfers X credentials"
 HOMEPAGE="http://fgouget.free.fr/sux/sux-readme.shtml"
-SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

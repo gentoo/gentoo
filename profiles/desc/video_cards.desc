@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors.
+# Copyright 1999-2024 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of VIDEO_CARDS USE_EXPAND flags.
@@ -21,6 +21,7 @@ lima - VIDEO_CARDS setting to build driver for Mali 200/400 video cards
 mga - VIDEO_CARDS setting to build driver for mga video cards
 nouveau - VIDEO_CARDS setting to build reverse-engineered driver for nvidia cards
 nvidia - VIDEO_CARDS setting to build driver for nvidia video cards
+nvk - VIDEO_CARDS setting to build nouveau vulkan driver for nvidia cards (Turing and newer)
 omap - VIDEO_CARDS setting to build DRM driver for TI OMAP video cards
 qxl - VIDEO_CARDS setting to build driver for qxl (QEMU virtual GPU)
 panfrost - VIDEO_CARDS setting to build driver for Mali 600/700/800 video cards

@@ -28,7 +28,7 @@ else
 	S="${WORKDIR}/${MY_PF}"
 
 	if [[ ${PV} != *_alpha* && ${PV} != *_beta* && ${PV} != *_rc* ]]; then
-		KEYWORDS="amd64 ~arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86 ~ppc-macos"
+		KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86 ~ppc-macos"
 	fi
 
 	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-tor-20230727 )"
@@ -152,6 +152,18 @@ src_test() {
 		:sandbox/open_filename
 		:sandbox/openat_filename
 	)
+
+	if use arm ; then
+		skip_tests+=(
+			# bug #920905
+			# https://gitlab.torproject.org/tpo/core/tor/-/issues/40912
+			:sandbox/opendir_dirname
+			:sandbox/openat_filename
+			:sandbox/chmod_filename
+			:sandbox/chown_filename
+			:sandbox/rename_filename
+		)
+	fi
 
 	# The makefile runs these by parallel by chunking them with a script
 	# but that means we lose verbosity and can't skip individual tests easily

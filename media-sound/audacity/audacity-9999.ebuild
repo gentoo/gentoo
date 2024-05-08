@@ -36,8 +36,12 @@ LICENSE="GPL-2+
 	audiocom? ( ZLIB )
 "
 SLOT="0"
-IUSE="alsa audiocom ffmpeg +flac id3tag +ladspa +lv2 mpg123 ogg
+IUSE="alsa audiocom ffmpeg +flac id3tag +ladspa +lv2 mpg123 +ogg
 	opus +portmixer sbsms test twolame vamp +vorbis wavpack"
+REQUIRED_USE="
+	opus? ( ogg )
+	vorbis? ( ogg )
+"
 RESTRICT="!test? ( test )"
 
 # dev-db/sqlite:3 hard dependency.
@@ -65,7 +69,6 @@ RESTRICT="!test? ( test )"
 RDEPEND="dev-db/sqlite:3
 	dev-libs/expat
 	dev-libs/glib:2
-	dev-libs/rapidjson:=
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	media-libs/libsndfile
@@ -95,9 +98,12 @@ RDEPEND="dev-db/sqlite:3
 		media-libs/sratom
 		media-libs/suil
 	)
-	mpg123? ( media-sound/mpg123 )
+	mpg123? ( media-sound/mpg123-base )
 	ogg? ( media-libs/libogg )
-	opus? ( media-libs/opus )
+	opus? (
+		media-libs/opus
+		media-libs/opusfile
+	)
 	sbsms? ( media-libs/libsbsms )
 	twolame? ( media-sound/twolame )
 	vamp? ( media-libs/vamp-plugin-sdk )
@@ -105,11 +111,12 @@ RDEPEND="dev-db/sqlite:3
 	wavpack? ( media-sound/wavpack )
 "
 DEPEND="${RDEPEND}
+	dev-libs/rapidjson
+	x11-base/xorg-proto
 	test? ( <dev-cpp/catch-3:0 )"
-BDEPEND="
+BDEPEND="|| ( dev-lang/nasm dev-lang/yasm )
 	sys-devel/gettext
-	virtual/pkgconfig
-"
+	virtual/pkgconfig"
 
 PATCHES=(
 	# Equivalent to previous versions
@@ -192,12 +199,13 @@ src_configure() {
 		-Daudacity_use_libmp3lame=system
 		-Daudacity_use_libmpg123=$(usex mpg123 system off)
 		-Daudacity_use_libogg=$(usex ogg system off)
-		-Daudacity_use_libopus=$(usex flac system off)
+		-Daudacity_use_libopus=$(usex opus system off)
 		-Daudacity_use_libsndfile=system
 		-Daudacity_use_libvorbis=$(usex vorbis system off)
 		-Daudacity_use_lv2=$(usex lv2 system off)
 		-Daudacity_use_midi=system
 		-Daudacity_use_nyquist=local
+		-Daudacity_use_opusfile=$(usex opus system off)
 		-Daudacity_use_pch=off
 		-Daudacity_use_portaudio=system
 		-Daudacity_use_portmixer=$(usex portmixer system off)

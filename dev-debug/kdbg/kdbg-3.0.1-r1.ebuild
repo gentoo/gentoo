@@ -10,7 +10,7 @@ inherit ecm
 
 DESCRIPTION="Graphical debugger interface"
 HOMEPAGE="https://www.kdbg.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="5"

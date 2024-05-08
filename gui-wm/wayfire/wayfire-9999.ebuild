@@ -19,7 +19,7 @@ else
 fi
 
 LICENSE="MIT"
-IUSE="+gles3 test X"
+IUSE="+dbus +gles3 test X"
 RESTRICT="!test? ( test )"
 
 # bundled wlroots has the following dependency string according to included headers.
@@ -42,9 +42,8 @@ CDEPEND="
 	x11-libs/libxkbcommon
 	x11-libs/pango
 	x11-libs/pixman
-	X? (
-		x11-libs/libxcb:=
-	)
+	dbus? ( sys-apps/dbus )
+	X? ( x11-libs/libxcb:= )
 "
 
 RDEPEND="
@@ -63,8 +62,9 @@ BDEPEND="
 src_prepare() {
 	default
 
-	sed -e "s:@EPREFIX@:${EPREFIX}:" \
-		"${FILESDIR}"/wayfire-session > "${T}"/wayfire-session || die
+	local dbusrunsession=$(usev dbus dbus-run-session)
+	sed -e "s:@EPREFIX@:${EPREFIX}:g" -e "s:@DBUS_RUN_SESSION@:${dbusrunsession}:" \
+		"${FILESDIR}"/wayfire-session-2 > "${T}"/wayfire-session || die
 	sed -e "s:@EPREFIX@:${EPREFIX}:" \
 		"${FILESDIR}"/wayfire-session.desktop > "${T}"/wayfire-session.desktop || die
 }
@@ -92,14 +92,7 @@ src_install() {
 
 	insinto "/usr/share/wayfire/"
 	doins wayfire.ini
-}
 
-pkg_postinst() {
-	if [ -z "${REPLACING_VERSIONS}" ]; then
-		elog "Wayfire has been installed but the session cannot be used"
-		elog "until you install a configuration file. The default config"
-		elog "file is installed at \"/usr/share/wayfire/wayfire.ini\""
-		elog "To install the file execute"
-		elog "\$ cp /usr/share/wayfire/wayfire.ini ~/.config/wayfire.ini"
-	fi
+	insinto "/etc"
+	doins "${FILESDIR}"/wayfire.env
 }

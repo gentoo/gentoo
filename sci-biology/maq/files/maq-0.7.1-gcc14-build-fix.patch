@@ -1,0 +1,23 @@
+Bug: https://bugs.gentoo.org/921137
+--- a/fastq2bfq.c
++++ b/fastq2bfq.c
+@@ -15,7 +15,7 @@ int64_t fastq2bfq(FILE *fp_fq, const char *fn_bfq, int n_reads)
+ 	char name[256], str[1024];
+ 	int l, is_new = 0, l_prefix = 0;
+ 	bit64_t n;
+-	gzFile *fp = 0;
++	gzFile fp = 0;
+ 	INIT_SEQ(seq); INIT_SEQ(qual);
+ 	seq_set_block_size(256);
+ 	n = 0;
+--- a/simulate.c
++++ b/simulate.c
+@@ -74,7 +74,7 @@ int maq_simutrain(int argc, char *argv[])
+ {
+ 	fqc_t *fqc;
+ 	FILE *fp;
+-	gzFile *fpout;
++	gzFile fpout;
+ 	if (argc < 3) {
+ 		fprintf(stderr, "Usage: maq simutrain <simupars.dat> <known_reads.fastq>\n");
+ 		return 1;

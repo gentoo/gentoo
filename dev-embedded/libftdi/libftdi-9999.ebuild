@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit cmake python-single-r1
 
 MY_P="${PN}1-${PV}"
@@ -42,7 +42,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	doc? ( app-text/doxygen )
-	python? ( dev-lang/swig )
+	python? ( >=dev-lang/swig-4.2.0 )
 "
 
 pkg_setup() {

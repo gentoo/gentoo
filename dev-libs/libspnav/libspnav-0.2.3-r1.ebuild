@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -8,7 +8,7 @@ inherit toolchain-funcs
 MY_PN='spacenav'
 DESCRIPTION="libspnav is a replacement for the magellan library with a cleaner API"
 HOMEPAGE="http://spacenav.sourceforge.net/"
-SRC_URI="mirror://sourceforge/project/${MY_PN}/${MY_PN}%20library%20%28SDK%29/${PN}%20${PV}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/project/${MY_PN}/${MY_PN}%20library%20%28SDK%29/${PN}%20${PV}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ppc64 ~riscv x86"

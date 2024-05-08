@@ -14,7 +14,10 @@ SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ppc ppc64 ~riscv x86"
 IUSE="debug doc"
 
-BDEPEND="doc? ( app-text/doxygen )"
+BDEPEND="
+	x11-base/xorg-proto
+	doc? ( app-text/doxygen )
+"
 DEPEND="x11-libs/libXtst"
 RDEPEND="${DEPEND}"
 

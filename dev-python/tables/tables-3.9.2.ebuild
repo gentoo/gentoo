@@ -19,7 +19,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~hppa ~ia64 ~loong ~ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~loong ~ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+cpudetection examples test"
 RESTRICT="!test? ( test )"
 
@@ -30,6 +30,7 @@ DEPEND="
 	>=dev-libs/c-blosc-1.11.1:0=
 	>=dev-libs/c-blosc2-2.11.0:=
 	dev-libs/lzo:2=
+	<dev-python/numpy-2[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.19.0[${PYTHON_USEDEP}]
 	>=sci-libs/hdf5-1.8.4:=
 "

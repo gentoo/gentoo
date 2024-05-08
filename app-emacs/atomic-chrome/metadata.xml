@@ -16,5 +16,8 @@
   Atomic Chrome for Emacs is also compatible with Firefox via the
   GhostText browser extension.
 </longdescription>
+<upstream>
+  <remote-id type="github">alpha22jp/atomic-chrome</remote-id>
+</upstream>
 <stabilize-allarches/>
 </pkgmetadata>

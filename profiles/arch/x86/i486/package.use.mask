@@ -1,0 +1,8 @@
+# Copyright 2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Ben Kohler <bkohler@gentoo.org> (2024-05-03)
+# Requires thin-provisioning-tools, which requires rust, which cannot currently
+# build/install on i486 or any other CPU class lacking sse2.
+sys-fs/lvm2 thin
+app-containers/docker device-mapper

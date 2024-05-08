@@ -10,7 +10,7 @@ inherit desktop java-pkg-2 java-pkg-simple xdg-utils
 
 DESCRIPTION="Programmer's editor written in Java"
 HOMEPAGE="https://www.jedit.org"
-SRC_URI="mirror://sourceforge/project/jedit/jedit/${PV}/jedit${PV}source.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/project/jedit/jedit/${PV}/jedit${PV}source.tar.bz2"
 S="${WORKDIR}/jEdit"
 
 LICENSE="BSD GPL-2"

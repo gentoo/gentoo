@@ -10,7 +10,7 @@ inherit prefix python-any-r1 qt6-build toolchain-funcs
 
 DESCRIPTION="Library for rendering dynamic web content in Qt6 C++ and QML applications"
 SRC_URI+="
-	https://dev.gentoo.org/~ionen/distfiles/${PN}-6.7-patchset-4.tar.xz
+	https://dev.gentoo.org/~ionen/distfiles/${PN}-6.7-patchset-7.tar.xz
 "
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
@@ -37,6 +37,7 @@ RDEPEND="
 	dev-libs/nspr
 	dev-libs/nss
 	~dev-qt/qtbase-${PV}:6[accessibility=,gui,opengl=,vulkan?,widgets?]
+	~dev-qt/qtdeclarative-${PV}:6[widgets?]
 	~dev-qt/qtwebchannel-${PV}:6[qml?]
 	media-libs/fontconfig
 	media-libs/freetype
@@ -45,6 +46,7 @@ RDEPEND="
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	media-libs/libwebp:=
+	media-libs/mesa[gbm(+)]
 	media-libs/openjpeg:2=
 	media-libs/opus
 	media-libs/tiff:=
@@ -60,6 +62,7 @@ RDEPEND="
 	x11-libs/libXfixes
 	x11-libs/libXrandr
 	x11-libs/libXtst
+	x11-libs/libdrm
 	x11-libs/libxcb:=
 	x11-libs/libxkbcommon
 	x11-libs/libxkbfile
@@ -68,21 +71,13 @@ RDEPEND="
 	geolocation? ( ~dev-qt/qtpositioning-${PV}:6 )
 	kerberos? ( virtual/krb5 )
 	pulseaudio? ( media-libs/libpulse[glib] )
-	qml? ( ~dev-qt/qtdeclarative-${PV}:6 )
 	screencast? (
 		dev-libs/glib:2
-		media-libs/mesa[gbm(+)]
 		media-video/pipewire:=
-		x11-libs/libdrm
 	)
 	system-icu? ( dev-libs/icu:= )
-	vaapi? (
-		media-libs/libva:=[X]
-		media-libs/mesa[gbm(+)]
-		x11-libs/libdrm
-	)
+	vaapi? ( media-libs/libva:=[X] )
 	!vaapi? ( media-libs/libvpx:= )
-	widgets? ( ~dev-qt/qtdeclarative-${PV}:6[widgets] )
 "
 DEPEND="
 	${RDEPEND}
@@ -112,7 +107,6 @@ PATCHES=( "${WORKDIR}"/patches/${PN} )
 
 PATCHES+=(
 	# add extras as needed here, may merge in set if carries across versions
-	"${FILESDIR}"/${PN}-6.7.0-clang18.patch
 )
 
 python_check_deps() {
@@ -242,6 +236,17 @@ src_configure() {
 		# for simplicity. Override with USE=custom-cflags if wanted, please
 		# report if above -march works again so can cleanup.
 		use arm64 && tc-is-gcc && filter-flags '-march=*' '-mcpu=*'
+
+		# skia and xnnpack fail with clang-18 + some(?) -march=native while
+		# can't reproduce with seemingly equivalent =skylake), needs more
+		# looking into as there may be something odd going on (clang bug?).
+		# Note that upstream Qt disallows custom *FLAGS on qtwebengine meaning
+		# we are not supposed to pass -march=native in the first place.
+		# TODO: try dropping this on major Qt and clang bumps
+		# See also: https://groups.google.com/g/skia-discuss/c/DNW4oq3W2fI
+		# (Transform_inl.h:769:21: error: AVX vector <snip> without 'evex512')
+		use amd64 && tc-is-clang && [[ $(clang-major-version) -ge 18 ]] &&
+			filter-flags -march=native
 	fi
 
 	export NINJA NINJAFLAGS=$(get_NINJAOPTS)
@@ -302,6 +307,10 @@ src_install() {
 
 	[[ -e ${D}${QT6_LIBDIR}/libQt6WebEngineCore.so ]] || #601472
 		die "${CATEGORY}/${PF} failed to build anything. Please report to https://bugs.gentoo.org/"
+
+	if use test && use webdriver; then
+		rm -- "${D}${QT6_BINDIR}"/testbrowser || die
+	fi
 }
 
 pkg_postinst() {

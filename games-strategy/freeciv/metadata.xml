@@ -6,10 +6,6 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
-		<flag name="aimodules">Support for dynamically loadable AI
-			modules (server-side)</flag>
-		<flag name="auth">Add authentication capability via
-			mysql, postgres, or sqlite3</flag>
 		<flag name="gtk3">Build the gtk3 client</flag>
 		<flag name="gtk4">Build the gtk4 client</flag>
 		<flag name="json">Add support for JSON via

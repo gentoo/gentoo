@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ MY_P="${PN}${PV/_beta/b}"
 
 DESCRIPTION="Tk Widget Set"
 HOMEPAGE="https://www.tcl.tk/"
-SRC_URI="mirror://sourceforge/tcl/${MY_P}-src.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/tcl/${MY_P}-src.tar.gz"
 
 LICENSE="tcltk"
 SLOT="0/8.6"

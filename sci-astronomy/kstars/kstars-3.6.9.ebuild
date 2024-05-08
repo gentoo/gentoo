@@ -16,7 +16,7 @@ if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	THEIR_PV="2.6.9"
 	SRC_URI="mirror://kde/stable/${PN}/${PN}-${THEIR_PV}.tar.xz"
 	S="${WORKDIR}/${PN}-${THEIR_PV}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="GPL-2+ GPL-3+"

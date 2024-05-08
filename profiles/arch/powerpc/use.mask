@@ -45,10 +45,6 @@ video_cards_amdgpu
 video_cards_radeonsi
 clang
 
-# Jeroen Roovers <jer@gentoo.org> (2015-05-25)
-# PowerPC has no support for this bootloader (bug #550322)
-gnuefi
-
 # These flags should only be used for ppc
 -cpu_flags_ppc_altivec
 -cpu_flags_ppc_vsx

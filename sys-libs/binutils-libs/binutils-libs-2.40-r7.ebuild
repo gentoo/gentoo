@@ -6,7 +6,7 @@ EAPI=7
 PATCH_VER=6
 PATCH_DEV=dilfridge
 
-inherit libtool toolchain-funcs multilib-minimal
+inherit flag-o-matic libtool toolchain-funcs multilib-minimal
 
 MY_PN="binutils"
 MY_P="${MY_PN}-${PV}"
@@ -73,6 +73,8 @@ pkgversion() {
 }
 
 multilib_src_configure() {
+	filter-lto
+
 	local myconf=(
 		--enable-obsolete
 		--enable-shared

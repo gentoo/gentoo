@@ -1,0 +1,35 @@
+Gentoo's dev-java/bnd is unbundled. We're adding the parts here:
+--- a/build.xml
++++ b/build.xml
+@@ -225,7 +225,16 @@
+ 
+   <!-- Classpaths -->
+   <path id="compile.classpath">
++    <pathelement location="${ant.jar}"/>
+     <pathelement location="${bnd.jar}"/>
++    <pathelement location="${bnd-annotation.jar}"/>
++    <pathelement location="${bnd-ant.jar}"/>
++    <pathelement location="${bnd-util.jar}"/>
++    <pathelement location="${bndlib.jar}"/>
++    <pathelement location="${libg.jar}"/>
++    <pathelement location="${osgi-cmpn.jar}"/>
++    <pathelement location="${osgi-core.jar}"/>
++    <pathelement location="${slf4j-api.jar}"/>
+     <pathelement location="${jdt.jar}"/>
+     <pathelement location="${jaxrpc-lib.jar}"/>
+     <pathelement location="${wsdl4j-lib.jar}"/>
+@@ -3924,6 +3933,14 @@ Read the Building page on the Apache Tomcat documentation site for details on ho
+     <!-- Add bnd tasks to project -->
+     <path id="bnd.classpath">
+       <fileset file="${bnd.jar}" />
++      <fileset file="${bnd-annotation.jar}" />
++      <fileset file="${bnd-ant.jar}" />
++      <fileset file="${bnd-util.jar}" />
++      <fileset file="${bndlib.jar}" />
++      <fileset file="${libg.jar}" />
++      <fileset file="${osgi-cmpn.jar}" />
++      <fileset file="${osgi-core.jar}" />
++      <fileset file="${slf4j-api.jar}" />
+     </path>
+ 
+     <taskdef resource="aQute/bnd/ant/taskdef.properties" classpathref="bnd.classpath" />

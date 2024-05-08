@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/apache/commons/vfs2/FileSystemManager.java b/src/main/java/org/apache/commons/vfs2/FileSystemManager.java
+index bb8cc2a..1e26559 100644
+--- a/src/main/java/org/apache/commons/vfs2/FileSystemManager.java
++++ b/src/main/java/org/apache/commons/vfs2/FileSystemManager.java
+@@ -98,7 +98,7 @@ public interface FileSystemManager
+     FileObject resolveFile(String name, FileSystemOptions fileSystemOptions)
+         throws FileSystemException;
+ 
+-    /**                               §
++    /**
+      * Locates a file by name.  The name is resolved as described
+      * <a href="#naming">above</a>.  That is, the name can be either
+      * an absolute URI, an absolute file name, or a relative path to

@@ -1,0 +1,22 @@
+diff --git a/pygments_github_lexers/github.py b/pygments_github_lexers/github.py
+index d2fa4b2..36a5c94 100644
+--- a/pygments_github_lexers/github.py
++++ b/pygments_github_lexers/github.py
+@@ -53,7 +53,7 @@ class Dasm16Lexer(RegexLexer):
+ 
+     # Regexes yo
+     char = r'[a-zA-Z$._0-9@]'
+-    identifier = r'(?:[a-zA-Z$_]' + char + '*|\.' + char + '+)'
++    identifier = r'(?:[a-zA-Z$_]' + char + r'*|\.' + char + '+)'
+     number = r'[+-]?(?:0[xX][a-zA-Z0-9]+|\d+)'
+     binary_number = r'0b[01_]+'
+     instruction = r'(?i)(' + '|'.join(INSTRUCTIONS) + ')'
+@@ -379,7 +379,7 @@ class TOMLLexer(RegexLexer):
+             (r'#.*?$', Comment.Single),
+             (r'"(\\\\|\\"|[^"])*"', String),
+             (r'(true|false)$', Keyword.Constant),
+-            ('[a-zA-Z_][a-zA-Z0-9_\-]*', Name),
++            (r'[a-zA-Z_][a-zA-Z0-9_\-]*', Name),
+ 
+             # Datetime
+             (r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z', Number.Integer),

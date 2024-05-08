@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~xgqt/distfiles/repackaged/${P}.tar.xz"
 
 LICENSE="GPL-3+ FDL-1.2+ GPL-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 RDEPEND="
 	app-emacs/htmlize

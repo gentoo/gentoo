@@ -217,7 +217,7 @@ multilib_src_test() {
 	mkdir "$G_DBUS_COOKIE_SHA1_KEYRING_DIR"
 	chmod 0700 "$G_DBUS_COOKIE_SHA1_KEYRING_DIR"
 
-	meson_src_test --timeout-multiplier 2 --no-suite flaky
+	meson_src_test --timeout-multiplier 20 --no-suite flaky
 }
 
 multilib_src_install() {

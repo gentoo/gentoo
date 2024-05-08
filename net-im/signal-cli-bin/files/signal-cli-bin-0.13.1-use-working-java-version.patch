@@ -20,7 +20,7 @@ Signed-off-by: Julien Roy <julien@jroy.ca>
 +for I in /usr/lib*/openjdk-21 /opt/openjdk-bin-21 /opt/openjdk-jre-bin-21; do
 +	J_TRY="$I/bin/java"
 +	if [ -x "$J_TRY" ] ; then
-+		"$J_TRY" -version 2>&1 | grep --fixed-strings --quiet "17."
++		"$J_TRY" -version 2>&1 | grep --fixed-strings --quiet "21."
 +		if [ $? -eq 0 ] ; then
 +			JAVACMD="$J_TRY"
 +			break

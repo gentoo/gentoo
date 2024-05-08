@@ -5,4 +5,7 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">haskellari/edit-distance</remote-id>
+	</upstream>
 </pkgmetadata>

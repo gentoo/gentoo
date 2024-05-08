@@ -50,8 +50,7 @@ src_prepare() {
 
 src_configure() {
 	# ODR violations (bug #862699). Reported upstream by email on 2024-03-11.
-	# master (>3.6.8) seems to have that original issue fixed but has another
-	# JPEG-related violation.
+	# master seems fixed, so >3.6.8 should be able to drop this.
 	filter-lto
 
 	# bug 908398

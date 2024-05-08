@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit cmake toolchain-funcs xdg-utils python-single-r1
+inherit cmake flag-o-matic toolchain-funcs xdg-utils python-single-r1
 
 MY_P="${PN^}-v${PV}"
 
@@ -33,6 +33,13 @@ RDEPEND="${DEPEND}
 BDEPEND="dev-qt/linguist-tools:5"
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/925901
+	# https://github.com/rizinorg/cutter/pull/3317
+	#
+	# Fixed in git dev. Remove as part of next version bump.
+	filter-lto
+
 	local mycmakeargs=(
 		-DCMAKE_CXX_COMPILER="$(tc-getCXX)"
 		-DCMAKE_C_COMPILER="$(tc-getCC)"

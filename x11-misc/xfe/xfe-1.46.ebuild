@@ -11,7 +11,7 @@ inherit flag-o-matic plocale xdg-utils
 
 DESCRIPTION="MS-Explorer-like minimalist file manager for X"
 HOMEPAGE="http://roland65.free.fr/xfe/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}/${PV}/${P}.tar.xz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

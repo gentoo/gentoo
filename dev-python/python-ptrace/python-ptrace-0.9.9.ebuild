@@ -22,7 +22,7 @@ else
 		https://github.com/vstinner/python-ptrace/archive/${PV}.tar.gz
 			-> ${P}.gh.tar.gz
 	"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2"

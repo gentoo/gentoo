@@ -5,7 +5,7 @@
 		<email>java@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">eclipse-ee4j/jaxb-api</remote-id>
-		<bugs-to>https://github.com/eclipse-ee4j/jaxb-api/issues</bugs-to>
+		<bugs-to>https://github.com/jakartaee/jaxb-api/issues</bugs-to>
+		<remote-id type="github">jakartaee/jaxb-api</remote-id>
 	</upstream>
 </pkgmetadata>

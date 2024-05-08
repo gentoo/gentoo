@@ -425,7 +425,10 @@ meson_src_configure() {
 		export -n {C,CPP,CXX,F,OBJC,OBJCXX,LD}FLAGS PKG_CONFIG_{LIBDIR,PATH}
 		echo meson setup "${MESONARGS[@]}" >&2
 		meson setup "${MESONARGS[@]}"
-	) || die
+	)
+	local rv=$?
+	[[ ${rv} -eq 0 ]] || die -n "configure failed"
+	return ${rv}
 }
 
 # @FUNCTION: meson_src_compile
@@ -435,8 +438,9 @@ meson_src_configure() {
 meson_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	pushd "${BUILD_DIR}" > /dev/null || die
+
 	local mesoncompileargs=(
-		-C "${BUILD_DIR}"
 		--jobs "$(get_makeopts_jobs 0)"
 		--load-average "$(get_makeopts_loadavg 0)"
 	)
@@ -450,7 +454,12 @@ meson_src_compile() {
 
 	set -- meson compile "${mesoncompileargs[@]}"
 	echo "$@" >&2
-	"$@" || die "compile failed"
+	"$@"
+	local rv=$?
+	[[ ${rv} -eq 0 ]] || die -n "compile failed"
+
+	popd > /dev/null || die
+	return ${rv}
 }
 
 # @FUNCTION: meson_src_test
@@ -460,16 +469,22 @@ meson_src_compile() {
 meson_src_test() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	pushd "${BUILD_DIR}" > /dev/null || die
+
 	local mesontestargs=(
 		--print-errorlogs
-		-C "${BUILD_DIR}"
 		--num-processes "$(makeopts_jobs "${MAKEOPTS}")"
 		"$@"
 	)
 
 	set -- meson test "${mesontestargs[@]}"
 	echo "$@" >&2
-	"$@" || die "tests failed"
+	"$@"
+	local rv=$?
+	[[ ${rv} -eq 0 ]] || die -n "tests failed"
+
+	popd > /dev/null || die
+	return ${rv}
 }
 
 # @FUNCTION: meson_install
@@ -479,8 +494,9 @@ meson_src_test() {
 meson_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	pushd "${BUILD_DIR}" > /dev/null || die
+
 	local mesoninstallargs=(
-		-C "${BUILD_DIR}"
 		--destdir "${D}"
 		--no-rebuild
 		"$@"
@@ -488,7 +504,12 @@ meson_install() {
 
 	set -- meson install "${mesoninstallargs[@]}"
 	echo "$@" >&2
-	"$@" || die "install failed"
+	"$@"
+	local rv=$?
+	[[ ${rv} -eq 0 ]] || die -n "install failed"
+
+	popd > /dev/null || die
+	return ${rv}
 }
 
 # @FUNCTION: meson_src_install

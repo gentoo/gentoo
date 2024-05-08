@@ -185,7 +185,7 @@ else
 	SRC_URI="https://github.com/tomchavakis/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 SRC_URI+=" ${NUGET_URIS} "

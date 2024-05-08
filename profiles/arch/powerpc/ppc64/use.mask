@@ -3,6 +3,13 @@
 
 ### THIS FILE IS ONLY FOR PACKAGES MASKED ON BOTH 64-BIT AND 32-BIT USERLAND!!!
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-03-29)
+# not available here (see openexr, opencolorio, opencv)
+openvdb
+embree
+openimageio
+osl
+
 # Michał Górny <mgorny@gentoo.org> (2021-12-31)
 # PyPy3 is keyworded here.
 -python_targets_pypy3

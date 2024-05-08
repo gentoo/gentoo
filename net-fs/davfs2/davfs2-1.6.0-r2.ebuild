@@ -16,7 +16,7 @@ IUSE="nls"
 RESTRICT="test"
 
 RDEPEND="dev-libs/libxml2
-	net-libs/neon
+	<net-libs/neon-0.33.0
 	sys-libs/zlib
 	nls? ( virtual/libintl virtual/libiconv )
 "

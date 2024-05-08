@@ -38,6 +38,14 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.26.1-slibtool.patch #921214
+)
+
+src_prepare() {
+	mate_src_prepare
+}
+
 src_configure() {
 	mate_src_configure \
 		--disable-null \

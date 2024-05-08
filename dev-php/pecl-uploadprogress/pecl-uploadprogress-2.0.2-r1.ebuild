@@ -11,7 +11,7 @@ inherit php-ext-pecl-r3
 DESCRIPTION="An extension to track progress of a file upload"
 LICENSE="PHP-3.01"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="examples"
 
 PATCHES=( "${FILESDIR}/php-debug-testfix.patch" )

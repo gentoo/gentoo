@@ -7,7 +7,7 @@ inherit autotools toolchain-funcs
 
 DESCRIPTION="The Massively Parallel Quantum Chemistry Program"
 HOMEPAGE="http://www.mpqc.org/"
-SRC_URI="mirror://sourceforge/mpqc/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/mpqc/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

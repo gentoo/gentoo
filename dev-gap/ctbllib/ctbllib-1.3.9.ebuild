@@ -10,7 +10,7 @@ SLOT="0"
 SRC_URI="https://www.math.rwth-aachen.de/~Thomas.Breuer/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

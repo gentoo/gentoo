@@ -1,4 +1,4 @@
-# Copyright 2002-2022 Gentoo Authors
+# Copyright 2002-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -12,7 +12,7 @@ COMMIT="15cfb41ff20a052769d753c3262c57ecb050ad71"
 
 DESCRIPTION="DOS Emulator"
 HOMEPAGE="http://www.dosemu.org/"
-SRC_URI="mirror://sourceforge/dosemu/${P_FD}.tgz
+SRC_URI="https://downloads.sourceforge.net/dosemu/${P_FD}.tgz
 	https://dev.gentoo.org/~sam/distfiles/${P}.zip"
 
 LICENSE="GPL-2"

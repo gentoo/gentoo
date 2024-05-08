@@ -85,10 +85,10 @@ multilib_src_configure() {
 		--disable-regenerate-docu
 		--disable-static
 		--disable-Werror
-		# TODO: wire this up now it's more useful as of 1.5.3
+		# TODO: wire this up now it's more useful as of 1.5.3 (bug #931117)
 		--disable-econf
 
-		# TODO: add elogind support
+		# TODO: add elogind support (bug #931115)
 		# lastlog is enabled again for now by us until logind support
 		# is handled. Even then, disabling lastlog will probably need
 		# a news item.

@@ -21,6 +21,12 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+CMAKE_SKIP_TESTS=(
+	# heif plugin is only for Mac, test is normally auto-skipped but may
+	# misbehave with kde-frameworks/kimageformats:6[heif] (bug #927971)
+	tst_qheif
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DQT_FEATURE_jasper=OFF

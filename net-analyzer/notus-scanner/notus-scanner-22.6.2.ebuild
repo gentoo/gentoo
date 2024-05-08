@@ -20,7 +20,7 @@ DEPEND="
 	net-libs/paho-mqtt-c
 	>=dev-python/psutil-5.9[${PYTHON_USEDEP}]
 	>=dev-python/python-gnupg-0.5.1[${PYTHON_USEDEP}]
-	<dev-python/packaging-23.3[${PYTHON_USEDEP}]
+	<dev-python/packaging-24.1[${PYTHON_USEDEP}]
 	>=dev-python/paho-mqtt-1.5.1[${PYTHON_USEDEP}]
 	<dev-python/tomli-3[${PYTHON_USEDEP}]
 "

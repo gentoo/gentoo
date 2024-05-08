@@ -12,7 +12,7 @@ SRC_URI="https://github.com/AOMediaCodec/libavif/archive/v${PV}.tar.gz -> ${P}.t
 LICENSE="BSD-2"
 # See bug #822336 re subslot
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~x86"
 IUSE="+aom dav1d examples extras gdk-pixbuf rav1e svt-av1"
 
 REQUIRED_USE="|| ( aom dav1d )"
@@ -85,17 +85,9 @@ pkg_postinst() {
 		ewarn "Enable aom, rav1e or svt-av1 flag if you want to save .AVIF files."
 	fi
 
-	if use gdk-pixbuf ; then
-		# causes segfault if set, see bug 375615
-		unset __GL_NO_DSO_FINALIZER
-		multilib_foreach_abi gnome2_gdk_pixbuf_update
-	fi
+	use gdk-pixbuf && multilib_foreach_abi gnome2_gdk_pixbuf_update
 }
 
 pkg_postrm() {
-	if use gdk-pixbuf ; then
-		# causes segfault if set, see bug 375615
-		unset __GL_NO_DSO_FINALIZER
-		multilib_foreach_abi gnome2_gdk_pixbuf_update
-	fi
+	use gdk-pixbuf && multilib_foreach_abi gnome2_gdk_pixbuf_update
 }

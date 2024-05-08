@@ -12,7 +12,7 @@ SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-deps.tar
 
 LICENSE="ISC BSD BSD-2 MIT Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~s390 ~x86"
+KEYWORDS="amd64 arm ppc64 ~s390 x86"
 
 DOCS=( README.md CHANGELOG.md doc/GeoIP.conf.md doc/geoipupdate.md )
 

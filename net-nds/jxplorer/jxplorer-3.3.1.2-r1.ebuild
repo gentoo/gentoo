@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,8 +7,8 @@ JAVA_PKG_IUSE="doc source test"
 inherit desktop java-pkg-2 java-ant-2 prefix virtualx
 
 DESCRIPTION="Fully functional LDAP browser written in Java"
-HOMEPAGE="http://jxplorer.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-project.zip"
+HOMEPAGE="https://jxplorer.org/"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}-project.zip"
 S="${WORKDIR}/${PN}"
 
 LICENSE="CAOSL"

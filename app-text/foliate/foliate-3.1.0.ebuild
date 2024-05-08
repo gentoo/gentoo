@@ -4,13 +4,13 @@
 EAPI=8
 PLOCALES="ar cs de el es eu fa_IR fr he hi hr id ie it ko nb nl nn pt_BR ru sv tr uk zh_CN zh_TW"
 inherit meson plocale xdg gnome2-utils
-SRC_URI="https://dev.gentoo.org/~grozin/${P}.tar.bz2"
 DESCRIPTION="gtk ebook reader built with gjs"
 HOMEPAGE="https://github.com/johnfactotum/foliate/"
+SRC_URI="https://dev.gentoo.org/~grozin/${P}.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 BDEPEND="${MESON_DEPEND}"
 RDEPEND=">=dev-libs/gjs-1.76

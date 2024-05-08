@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit libtool
+
 # TODO: Fix upstream dist tarballs to include man pages!
 # https://github.com/libnet/libnet/issues/169
 #
@@ -38,6 +40,11 @@ BDEPEND="
 "
 
 DOCS=( ChangeLog.md README.md doc/MIGRATION.md )
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 src_configure() {
 	local myeconfargs=(

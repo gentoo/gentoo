@@ -1,10 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gstreamer-meson.eclass
 # @MAINTAINER:
 # gstreamer@gentoo.org
 # @AUTHOR:
+# Mart Raudsepp <leio@gentoo.org>
 # Haelwenn (lanodan) Monnier <contact@hacktivis.me>
 # Michał Górny <mgorny@gentoo.org>
 # Gilles Dartiguelongue <eva@gentoo.org>
@@ -12,7 +13,7 @@
 # foser <foser@gentoo.org>
 # zaheerm <zaheerm@gentoo.org>
 # Steven Newbury
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: meson multilib-minimal
 # @BLURB: Helps building core & split gstreamer plugins
 # @DESCRIPTION:
@@ -26,16 +27,24 @@
 # plugin, consider adding media-plugins/gst-plugins-meta dependency, but
 # also list any packages that provide explicitly requested plugins.
 
-# multilib-minimal goes last
-inherit meson multilib toolchain-funcs virtualx xdg-utils multilib-minimal
-
 case "${EAPI:-0}" in
-	7)
+	7|8)
 		;;
 	*)
 		die "EAPI=\"${EAPI}\" is not supported"
 		;;
 esac
+
+PYTHON_COMPAT=( python3_{10..12} )
+[[ ${EAPI} == 8 ]] && inherit python-any-r1
+
+# TODO: Remove after all older versions are gone from tree
+if ver_test ${PV} -lt 1.22.10 ; then
+	inherit virtualx
+fi
+
+# multilib-minimal goes last
+inherit meson multilib toolchain-funcs xdg-utils multilib-minimal
 
 # @ECLASS_VARIABLE: GST_PLUGINS_ENABLED
 # @DESCRIPTION:
@@ -79,25 +88,29 @@ gstreamer_get_plugins() {
 		"${S}/meson_options.txt" || die "Failed to extract options for plugins with external deps"
 	)
 
-	# opencv and hls in gst-plugins-bad are split, can't be properly detected
-	if grep -q "option('opencv'" "${EMESON_SOURCE}"/meson_options.txt ; then
-		GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
-opencv"
-	fi
-	if grep -q "option('hls'" "${EMESON_SOURCE}"/meson_options.txt ; then
-		GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
-hls"
-	fi
+	# meson_options that should be in GST_PLUGINS_EXT_DEPS but automatic parsing above can't catch
+	local extra_options
+	extra_options=(
+		# gst-plugins-base
+		gl
+		# gst-plugins-good
+		qt5
+		qt6
+		soup
+		v4l2
+		ximagesrc
+		# gst-plugins-bad
+		hls
+		opencv
+		wayland
+	)
 
-	# See bug #907483
-	if grep -q "option('qt5'" "${EMESON_SOURCE}"/meson_options.txt ; then
-		GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
-qt5"
-	fi
-	if grep -q "option('qt6'" "${EMESON_SOURCE}"/meson_options.txt ; then
-		GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
-qt6"
-	fi
+	for option in ${extra_options[@]} ; do
+		if grep -q "option('${option}'" "${EMESON_SOURCE}"/meson_options.txt ; then
+			GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
+${option}"
+		fi
+	done
 }
 
 # @FUNCTION: gstreamer_system_package
@@ -120,6 +133,10 @@ gstreamer_system_package() {
 			pc=${tuple#*:}-${SLOT}
 			sed -e "1i${dependency} = dependency('${pc}', required : true)" \
 				-i "${pdir}"/meson.build || die
+			# TODO: Remove conditional applying once older versions are all gone
+			if ver_test ${PV} -gt 1.22.5 ; then
+				sed -e "/meson\.override_dependency[(]pkg_name, ${dependency}[)]/d" -i "${S}"/gst-libs/gst/*/meson.build || die
+			fi
 		done
 	done
 }
@@ -197,6 +214,13 @@ BDEPEND="
 	virtual/pkgconfig
 	virtual/perl-JSON-PP
 "
+[[ ${EAPI} == 8 ]] && BDEPEND="${BDEPEND} ${PYTHON_DEPS}"
+# gst-plugins-{base,good} splits all require glib-utils due to gnome.mkenums_simple meson calls in gst-libs
+# The alternative would be to patch out the subdir calls, but some packages need it themselves too anyways, thus
+# something in a full upgrade path will require it anyways at build time, so not worth the risk.
+if [[ "${GST_ORG_MODULE}" == "gst-plugins-base" ]] || [[ "${GST_ORG_MODULE}" == "gst-plugins-bad" ]]; then
+	BDEPEND="${BDEPEND} dev-util/glib-utils"
+fi
 
 if [[ "${PN}" != "gstreamer" ]]; then
 	RDEPEND="
@@ -219,6 +243,8 @@ if [[ "${PN}" != "${GST_ORG_MODULE}" ]]; then
 	# Export multilib phases used for split builds.
 	multilib_src_install_all() { gstreamer_multilib_src_install_all; }
 else
+	inherit virtualx
+
 	IUSE="nls test"
 	RESTRICT="!test? ( test )"
 	if [[ "${PN}" != "gstreamer" ]]; then
@@ -263,8 +289,7 @@ gstreamer_get_plugin_dir() {
 # @INTERNAL
 # @DESCRIPTION:
 # Contains false-positives.
-# - gst-plugins-bad puts "shm" in external deps
-GST_PLUGINS_ENOAUTO="shm"
+GST_PLUGINS_ENOAUTO=""
 
 # @FUNCTION: gstreamer_multilib_src_configure
 # @DESCRIPTION:
@@ -290,9 +315,14 @@ gstreamer_multilib_src_configure() {
 	if grep -q "option('orc'" "${EMESON_SOURCE}"/meson_options.txt ; then
 		if in_iuse orc ; then
 			gst_conf+=( -Dorc=$(usex orc enabled disabled) )
+			if [[ "${PN}" != "${GST_ORG_MODULE}" ]] && ! _gstreamer_get_has_orc_dep; then
+				eqawarn "QA: IUSE=orc is present while plugin does not seem to support it"
+			fi
 		else
 			gst_conf+=( -Dorc=disabled )
-			eqawarn "QA: IUSE=orc is missing while plugin supports it"
+			if [[ "${PN}" == "${GST_ORG_MODULE}" ]] || _gstreamer_get_has_orc_dep; then
+				eqawarn "QA: IUSE=orc is missing while plugin supports it"
+			fi
 		fi
 	else
 		if in_iuse orc ; then
@@ -305,7 +335,9 @@ gstreamer_multilib_src_configure() {
 			gst_conf+=( -Dintrospection=$(multilib_native_usex introspection enabled disabled) )
 		else
 			gst_conf+=( -Dintrospection=disabled )
-			eqawarn "QA: IUSE=introspection is missing while plugin supports it"
+			if [[ "${PN}" == "${GST_ORG_MODULE}" ]]; then
+				eqawarn "QA: IUSE=introspection is missing while package supports it"
+			fi
 		fi
 	else
 		if in_iuse introspection ; then
@@ -383,6 +415,23 @@ EOF
 		|| die "Failed to extract target filenames from meson-info"
 }
 
+# @FUNCTION: _gstreamer_get_has_orc_dep
+# @INTERNAL
+# @DESCRIPTION:
+# Finds whether plugin appears to use dev-lang/orc or not.
+_gstreamer_get_has_orc_dep() {
+	local has_orc_dep pdir plugin_dir
+	has_orc_dep=0
+
+	for plugin_dir in ${GST_PLUGINS_BUILD_DIR} ; do
+		pdir=$(gstreamer_get_plugin_dir ${plugin_dir})
+		if grep -q "orc_dep" "${S}/${pdir}"/meson.build ; then
+			has_orc_dep=1
+		fi
+	done
+	[[ ${has_orc_dep} -ne 0 ]]
+}
+
 # @FUNCTION: gstreamer_multilib_src_compile
 # @DESCRIPTION:
 # Compiles requested gstreamer plugin.
@@ -408,11 +457,19 @@ gstreamer_multilib_src_compile() {
 	fi
 }
 
+# @FUNCTION: gstreamer-meson_pkg_setup
+# @DESCRIPTION:
+# Proxies python-any-r1_pkg_setup for forward-proofing any future pkg_setup needs.
+# Only exported for EAPI-8.
+gstreamer-meson_pkg_setup() {
+	python-any-r1_pkg_setup
+}
+
 # @FUNCTION: gstreamer_multilib_src_test
 # @DESCRIPTION:
 # Tests the gstreamer plugin (non-split)
 gstreamer_multilib_src_test() {
-	GST_GL_WINDOW=x11 virtx eninja test
+	GST_GL_WINDOW=x11 virtx meson test --timeout-multiplier 5
 }
 
 # @FUNCTION: gstreamer_multilib_src_install
@@ -437,12 +494,23 @@ gstreamer_multilib_src_install() {
 
 # @FUNCTION: gstreamer_multilib_src_install_all
 # @DESCRIPTION:
-# Installs documentation for requested gstreamer plugin
+# Installs documentation and presets for requested gstreamer plugin
 gstreamer_multilib_src_install_all() {
 	local plugin_dir
 
 	for plugin_dir in ${GST_PLUGINS_BUILD_DIR} ; do
 		local dir=$(gstreamer_get_plugin_dir ${plugin_dir})
 		[[ -e ${dir}/README ]] && dodoc "${dir}"/README
+		if [[ ${EAPI} == 8 ]]; then
+			local presets=( "${dir}"/*.prs )
+			if [[ -e ${presets[0]} ]]; then
+				insinto /usr/share/gstreamer-${SLOT}/presets
+				doins "${presets[@]}"
+			fi
+		fi
 	done
 }
+
+if [[ ${EAPI} == 8 ]]; then
+	EXPORT_FUNCTIONS pkg_setup
+fi

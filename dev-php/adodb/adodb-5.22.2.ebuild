@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,6 @@ SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 LICENSE="BSD LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ppc ppc64 sparc x86"
-IUSE=""
 
 # If you want to be picky, we should require that PHP be built with at
 # least one database driver enabled; otherwise adodb isn't going to be

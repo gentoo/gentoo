@@ -14,7 +14,7 @@ SRC_URI="https://www.math.rwth-aachen.de/homes/${MY_PN}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3+"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="sci-mathematics/gap:=
 	sys-libs/ncurses:="

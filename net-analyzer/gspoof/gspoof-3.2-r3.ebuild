@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools desktop
+inherit autotools desktop flag-o-matic
 
 DESCRIPTION="A simple GTK/command line TCP/IP packet generator"
 HOMEPAGE="http://gspoof.sourceforge.net/"
@@ -29,6 +29,17 @@ PATCHES=(
 src_prepare() {
 	default
 	eautoreconf
+}
+
+src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/861158
+	#
+	# Upstream sourceforge is dead. Software last updated in December 2003.
+	# No bug filed.
+	filter-lto
+
+	default
 }
 
 src_compile() {

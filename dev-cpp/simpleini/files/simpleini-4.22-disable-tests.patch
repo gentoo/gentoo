@@ -1,0 +1,16 @@
+https://github.com/brofield/simpleini/pull/75
+https://github.com/brofield/simpleini/commit/f7862c3dd7ad35becc2741f268e3402e89a37666
+From: Alexandre Bouvier <contact@amb.tf>
+Date: Tue, 2 Jan 2024 10:54:44 +0100
+Subject: [PATCH 2/2] cmake: really disable tests (#75)
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -72,5 +72,7 @@ target_include_directories(${PROJECT_NAME} INTERFACE
+ 
+ if(IS_TOPLEVEL_PROJECT)
+ 	include(CTest)
+-	add_subdirectory(tests)
++	if(BUILD_TESTING)
++		add_subdirectory(tests)
++	endif()
+ endif()

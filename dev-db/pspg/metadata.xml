@@ -12,4 +12,7 @@
       supports searching, selecting rows, columns, or block and export
       selected area to clipboard.
     </longdescription>
+    <upstream>
+      <remote-id type="github">okbob/pspg</remote-id>
+    </upstream>
 </pkgmetadata>

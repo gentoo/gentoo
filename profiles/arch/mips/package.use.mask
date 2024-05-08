@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2024-05-01)
+# Sanitizers supported on both 32-bit and 64-bit mips, #779742
+sys-libs/compiler-rt-sanitizers -asan -profile -ubsan -safestack -scudo -xray
+
 # matoro <matoro_gentoo@matoro.tk> (2024-03-21)
 # Test suite is very fragile and doesn't even run on amd64.
 # No real point in running it here right now, bug #804115.
@@ -98,10 +102,6 @@ net-dns/ddclient test
 # Only supported on MIPS.
 dev-lang/gnat-gpl -fixed-point
 sys-devel/gcc -fixed-point
-
-# matoro <matoro_gentoo@matoro.tk> (2022-09-14)
-# Not broken, but better wait on profiles: bug #515694
-dev-lang/rust system-llvm
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-18)
 # app-text/nuspell is not keyworded
@@ -204,11 +204,6 @@ gnome-base/gvfs google
 # x11-libs/libXpresent is not keyworded on mips
 xfce-base/xfwm4 xpresent
 
-# Brian Dolbec <dolsen@gentoo.org> (2017-03-21)
-# This is masked as mongo-db needed for bson use flag
-# which is not keyworded on many arches.
-app-portage/g-sorcery bson
-
 # Mart Raudsepp <leio@gentoo.org> (2017-02-07)
 # dev-python/gmpy fails tests about sizeof (conch), bug 608496
 # dev-python/attrs fails tests on slow mips, couldn't test service_identity test path (crypt), bug 608570
@@ -269,9 +264,6 @@ media-video/mplayer ladspa
 # Richard Brown <rbrown@gentoo.org> (2007-12-23)
 # app-xemacs/ruby-modes is not keyworded on this arch
 dev-lang/ruby xemacs
-
-# deps missing keywords
-games-strategy/freeciv auth
 
 # Mart Raudsepp <leio@gentoo.org> (2010-09-27)
 # Extra functionality that has external unkeyworded dependencies

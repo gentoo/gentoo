@@ -5,7 +5,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 MY_SLOT="$(ver_cut 1-2)"
 MY_PV="$(ver_rs 3 '-')"
@@ -82,6 +82,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/862912
+	# https://tracker.dev.opencascade.org/view.php?id=33091
+	filter-lto
+
 	local mycmakeargs=(
 		-DBUILD_DOC_Overview=$(usex doc)
 		-DBUILD_Inspector=$(usex examples)

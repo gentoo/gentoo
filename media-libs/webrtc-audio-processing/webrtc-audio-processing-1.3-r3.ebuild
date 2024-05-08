@@ -7,7 +7,7 @@ inherit meson-multilib
 
 DESCRIPTION="AudioProcessing library from the webrtc.org codebase"
 HOMEPAGE="https://www.freedesktop.org/software/pulseaudio/webrtc-audio-processing/"
-SRC_URI="https://freedesktop.org/software/pulseaudio/${PN}/${P}.tar.gz"
+SRC_URI="https://freedesktop.org/software/pulseaudio/${PN}/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="1"

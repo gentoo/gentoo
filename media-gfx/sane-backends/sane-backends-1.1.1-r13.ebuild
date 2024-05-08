@@ -195,18 +195,7 @@ MULTILIB_CHOST_TOOLS=(
 src_prepare() {
 	default
 
-	# Patch out the git reference so we can run eautoreconf
-	sed \
-		-e "s/m4_esyscmd_s(\[git describe --dirty\])/${PV}/" \
-		-e '/^AM_MAINTAINER_MODE/d' \
-		-i configure.ac || die
 	eautoreconf
-
-	# Fix for "make check".  Upstream sometimes forgets to update this.
-	local ver=$(./configure --version | awk '{print $NF; exit 0}')
-	sed -i \
-		-e "/by sane-desc 3.5 from sane-backends/s:sane-backends .*:sane-backends ${ver}:" \
-		testsuite/tools/data/html* || die
 
 	# don't bleed user LDFLAGS into pkgconfig files
 	sed 's|@LDFLAGS@ ||' -i tools/*.pc.in || die

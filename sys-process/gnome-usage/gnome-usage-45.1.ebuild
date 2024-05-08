@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Usage"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 RDEPEND="
 	>=dev-libs/libgee-0.8:0.8=

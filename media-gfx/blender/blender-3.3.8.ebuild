@@ -22,8 +22,8 @@ else
 	KEYWORDS="amd64 ~arm ~arm64"
 fi
 
-SLOT="${PV%.*}"
 LICENSE="|| ( GPL-3 BL )"
+SLOT="${PV%.*}"
 IUSE="+bullet +dds +fluid +openexr +tbb \
 	alembic collada +color-management cuda +cycles \
 	debug doc +embree +ffmpeg +fftw +gmp headless jack jemalloc jpeg2k \
@@ -68,7 +68,7 @@ RDEPEND="${PYTHON_DEPS}
 	collada? ( >=media-libs/opencollada-1.6.68 )
 	color-management? ( <media-libs/opencolorio-2.3.0:= )
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
-	embree? ( >=media-libs/embree-3.10.0[raymask] )
+	embree? ( >=media-libs/embree-3.10.0:=[raymask] )
 	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k?,vpx,vorbis,opus,xvid] )
 	fftw? ( sci-libs/fftw:3.0= )
 	gmp? ( dev-libs/gmp )
@@ -94,11 +94,11 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	opensubdiv? ( >=media-libs/opensubdiv-3.4.0 )
 	openvdb? (
-		>=media-gfx/openvdb-9.0.0:=[nanovdb?]
+		<media-gfx/openvdb-11.0.0:=[nanovdb?]
 		dev-libs/c-blosc:=
 	)
 	optix? ( <dev-libs/optix-7.5.0 )
-	osl? ( >=media-libs/osl-1.11.16.0-r3:= )
+	osl? ( <media-libs/osl-1.13:= )
 	pdf? ( media-libs/libharu )
 	potrace? ( media-gfx/potrace )
 	pugixml? ( dev-libs/pugixml )
@@ -214,6 +214,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr, -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/859607
+	# https://projects.blender.org/blender/blender/issues/120444
+	filter-lto
+
 	# Workaround for bug #922600
 	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
 

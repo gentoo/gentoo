@@ -63,6 +63,7 @@ COMMON_DEPEND="
 "
 RDEPEND="
 	${COMMON_DEPEND}
+	!<dev-texlive/texlive-xetex-2023
 "
 DEPEND="
 	${COMMON_DEPEND}

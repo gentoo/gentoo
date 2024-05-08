@@ -325,6 +325,7 @@ src_configure() {
 	)
 
 	filter-lto # build failure
+	filter-flags -Wl,--gc-sections # runtime issues (bug #931329)
 	use custom-cflags || strip-flags # can break in obscure ways at runtime
 
 	# wine uses linker tricks unlikely to work with non-bfd/lld (bug #867097)
@@ -336,6 +337,11 @@ src_configure() {
 			append-ldflags -fuse-ld=lld
 		strip-unsupported-flags
 	fi
+
+	# >=wine-vanilla-9 has proper fixes and builds with gcc-14, but
+	# staging patchset is messier and would rather not have to worry
+	# about it (try to remove on bump now and then, bug #919758)
+	append-cflags $(test-flags-CC -Wno-error=incompatible-pointer-types)
 
 	if use mingw; then
 		use crossdev-mingw || PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
@@ -353,6 +359,12 @@ src_configure() {
 			CROSSCFLAGS="${CROSSCFLAGS:-$(
 				filter-flags '-fstack-protector*' #870136
 				filter-flags '-mfunction-return=thunk*' #878849
+
+				# some bashrc-mv users tend to do CFLAGS="${LDFLAGS}" and then
+				# strip-unsupported-flags miss these during compile-only tests
+				# (primarily done for 23.0 profiles' -z, not full coverage)
+				filter-flags '-Wl,-z,*'
+
 				CC=${mingwcc} test-flags-CC ${CFLAGS:--O2}
 			)}"
 

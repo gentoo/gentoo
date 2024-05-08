@@ -1,6 +1,20 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-04-10)
+# Flipping the zstd USE state is unsafe and can break *tons* of Qt revdeps
+# including many KDE packages and Qt itself without rebuilds due to losing
+# the qt_resourceFeatureZstd@Qt_6 (non-private) symbol making it unrealistic
+# to have [zstd=] everywhere.
+#
+# Given prebuilt revdeps may also need this and that it may speed up
+# resources usage, picking to always enable rather than disable.
+#
+# If *really* want to un-force and disable this, please rebuild all
+# qtbase revdeps after.
+dev-qt/qtbase:6 zstd
+dev-qt/qttools:6 zstd
+
 # Matt Turner <mattst88@gentoo.org> (2024-02-28)
 # A large number of packages still need /usr/bin/pkg-config
 # including meson.eclass consumers.
@@ -50,6 +64,7 @@ sys-devel/clang pie
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-01-13)
 # Force to use installed openjdk{,-bin} for bootstrapping
+dev-java/openjdk:8 system-bootstrap
 dev-java/openjdk:11 system-bootstrap
 dev-java/openjdk:17 system-bootstrap
 dev-java/openjdk:21 system-bootstrap
@@ -226,6 +241,7 @@ app-shells/bash:0 readline
 dev-lang/python-exec python_targets_python3_10
 dev-lang/python-exec python_targets_python3_11
 dev-lang/python-exec python_targets_python3_12
+dev-lang/python-exec python_targets_python3_13
 dev-lang/python-exec python_targets_pypy3
 
 # Zac Medico <zmedico@gentoo.org> (2010-10-20)

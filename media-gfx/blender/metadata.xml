@@ -51,6 +51,9 @@
 		<flag name="embree">
 			Use embree to accelerate certain areas of the Cycles render engine.
 		</flag>
+		<flag name="experimental">
+			Build Experimental Blender Modules
+		</flag>
 		<flag name="fluid">
 			Adds fluid simulation support via the built-in Mantaflow library.
 		</flag>
@@ -64,6 +67,7 @@
 			Enable NDOF input devices (SpaceNavigator and friends).
 		</flag>
 		<flag name="oidn">Enable OpenImageDenoiser Support</flag>
+		<flag name="oneapi">Build OIDN with Intel oneAPI SyCL support</flag>
 		<flag name="openimageio">Enable OpenImageIO Support</flag>
 		<flag name="openpgl">Enable path guiding support in Cycles</flag>
 		<flag name="opensubdiv">
@@ -85,8 +89,14 @@
 		<flag name="pugixml">
 			Enable PugiXML support (Used for OpenImageIO, Grease Pencil SVG export)
 		</flag>
+		<flag name="renderdoc">
+			Build Blender with renderdoc support
+		</flag>
 		<flag name="tbb">
 			Use threading building blocks library from <pkg>dev-cpp/tbb</pkg>.
+		</flag>
+		<flag name="vulkan">
+			Add support for the experimental Vulkan viewport backend
 		</flag>
 	</use>
 </pkgmetadata>

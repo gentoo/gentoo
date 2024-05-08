@@ -10,11 +10,11 @@ inherit java-pkg-2 java-pkg-simple prefix
 DMF="R-${PV/_rc/RC}-202106111600"
 
 DESCRIPTION="Eclipse Compiler for Java"
-HOMEPAGE="https://www.eclipse.org/"
+HOMEPAGE="https://projects.eclipse.org/projects/eclipse.jdt"
 SRC_URI="https://archive.eclipse.org/eclipse/downloads/drops4/${DMF}/ecjsrc-${PV/_rc/RC}.jar"
 
 LICENSE="EPL-1.0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 SLOT="4.20"
 
 BDEPEND="app-arch/unzip"

@@ -93,17 +93,9 @@ pkg_postinst() {
 		ewarn "Enable aom, rav1e or svt-av1 flag if you want to save .AVIF files."
 	fi
 
-	if use gdk-pixbuf ; then
-		# causes segfault if set, see bug 375615
-		unset __GL_NO_DSO_FINALIZER
-		multilib_foreach_abi gnome2_gdk_pixbuf_update
-	fi
+	use gdk-pixbuf && multilib_foreach_abi gnome2_gdk_pixbuf_update
 }
 
 pkg_postrm() {
-	if use gdk-pixbuf ; then
-		# causes segfault if set, see bug 375615
-		unset __GL_NO_DSO_FINALIZER
-		multilib_foreach_abi gnome2_gdk_pixbuf_update
-	fi
+	use gdk-pixbuf && multilib_foreach_abi gnome2_gdk_pixbuf_update
 }

@@ -17,7 +17,7 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_BRANCH="develop"
 else
 	inherit pypi
-	KEYWORDS="~amd64 ~riscv ~x86"
+	KEYWORDS="amd64 ~riscv ~x86"
 fi
 
 LICENSE="Apache-2.0"
@@ -333,6 +333,9 @@ python_test() {
 	[[ ${EPYTHON#*.} -ge 11 ]] && EPYTEST_DESELECT+=(
 		tests/unit/test_master.py::TransportMethodsTest::test_aes_funcs_black
 		tests/unit/test_master.py::TransportMethodsTest::test_clear_funcs_black
+	)
+	[[ ${EPYTHON#*.} -ge 12 ]] && EPYTEST_DESELECT+=(
+		tests/integration/modules/test_hosts.py::HostsModuleTest::test_set_host
 	)
 
 	# testsuite likes lots of files

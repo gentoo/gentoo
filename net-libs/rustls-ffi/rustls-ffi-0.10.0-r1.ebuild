@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -46,7 +46,7 @@ CRATES="
 	winnow-0.4.1
 "
 
-inherit cargo multilib-minimal rust-toolchain
+inherit cargo flag-o-matic multilib-minimal rust-toolchain
 
 DESCRIPTION="C-to-rustls bindings"
 HOMEPAGE="https://github.com/rustls/rustls-ffi"
@@ -74,6 +74,13 @@ src_prepare() {
 	default
 
 	multilib_copy_sources
+}
+
+src_configure() {
+	# bug #927231
+	filter-lto
+
+	multilib-minimal_src_configure
 }
 
 multilib_src_compile() {

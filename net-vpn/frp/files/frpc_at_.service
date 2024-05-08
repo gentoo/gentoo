@@ -4,11 +4,10 @@ After=network.target
 
 [Service]
 Type=simple
-User=nobody
+DynamicUser=yes
 Restart=on-failure
 RestartSec=5s
-ExecStart=/usr/bin/frpc -c /etc/frp/%i.ini
-ExecReload=/usr/bin/frpc reload -c /etc/frp/%i.ini
+ExecStart=/usr/bin/frpc -c /etc/frp/%i.toml
 LimitNOFILE=1048576
 
 [Install]

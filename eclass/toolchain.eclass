@@ -86,8 +86,8 @@ tc_version_is_between() {
 
 # @ECLASS_VARIABLE: TOOLCHAIN_GCC_VALIDATE_FAILURES_VERSION
 # @DESCRIPTION:
-# Version of test comparison script (validate_fails.py) to use.
-: "${GCC_VALIDATE_FAILURES_VERSION:=7bbfb01a32b73842f8908de028703510a0e12057}"
+# Version of test comparison script (validate_failures.py) to use.
+: "${GCC_VALIDATE_FAILURES_VERSION:=a447cd6dee206facb66720bdacf0c765a8b09f33}"
 
 # @ECLASS_VARIABLE: TOOLCHAIN_USE_GIT_PATCHES
 # @DEFAULT_UNSET
@@ -116,6 +116,13 @@ tc_version_is_between() {
 # @DESCRIPTION:
 # Ignore missing baseline/reference data and create new baseline.
 : "${GCC_TESTS_IGNORE_NO_BASELINE:=}"
+
+# @ECLASS_VARIABLE: GCC_TESTS_REGEN_BASELINE
+# @DEFAULT_UNSET
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Ignore baseline/reference data and create new baseline.
+: "${GCC_TESTS_REGEN_BASELINE:=}"
 
 # @ECLASS_VARIABLE: GCC_TESTS_CHECK_TARGET
 # @USER_VARIABLE
@@ -293,7 +300,7 @@ if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] ; then
 	IUSE+=" go"
 	IUSE+=" +sanitize"  TC_FEATURES+=( sanitize )
 	IUSE+=" graphite" TC_FEATURES+=( graphite )
-	IUSE+=" ada"
+	IUSE+=" ada" TC_FEATURES+=( ada )
 	IUSE+=" vtv"
 	IUSE+=" jit"
 	IUSE+=" +pie +ssp pch"
@@ -313,7 +320,7 @@ if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] ; then
 	# See https://gcc.gnu.org/pipermail/gcc-patches/2023-April/615944.html
 	# and https://rust-gcc.github.io/2023/04/24/gccrs-and-gcc13-release.html for why
 	# it was disabled in 13.
-	tc_version_is_at_least 14.0.0_pre20230423 ${PV} && IUSE+=" rust"
+	tc_version_is_at_least 14.0.0_pre20230423 ${PV} && IUSE+=" rust" TC_FEATURES+=( rust )
 fi
 
 if tc_version_is_at_least 10; then
@@ -397,6 +404,12 @@ if tc_has_feature d && tc_version_is_at_least 12.0 ; then
 	# TODO: package some binary we can use, like for Ada
 	# bug #840182
 	BDEPEND+=" d? ( || ( sys-devel/gcc[d(-)] <sys-devel/gcc-12[d(-)] ) )"
+fi
+
+if tc_has_feature rust && tc_version_is_at_least 14.0.0_pre20230421 ; then
+	# This was added upstream in r14-9968-g3e1e73fc995844 as a temporary measure.
+	# See https://inbox.sourceware.org/gcc/34fec7ea-8762-4cac-a1c8-ff54e20e31ed@embecosm.com/
+	BDEPEND+=" rust? ( virtual/rust )"
 fi
 
 PDEPEND=">=sys-devel/gcc-config-2.11"
@@ -523,7 +536,7 @@ get_gcc_src_uri() {
 	[[ -n ${MUSL_VER} ]] && \
 		GCC_SRC_URI+=" $(gentoo_urls gcc-${MUSL_GCC_VER}-musl-patches-${MUSL_VER}.tar.${TOOLCHAIN_PATCH_SUFFIX})"
 
-	GCC_SRC_URI+=" test? ( https://gitweb.gentoo.org/proj/gcc-patches.git/plain/scripts/testsuite-management/validate_failures.py?id=${GCC_VALIDATE_FAILURES_VERSION} -> ${PN}-validate-failures-${GCC_VALIDATE_FAILURES_VERSION}.py )"
+	GCC_SRC_URI+=" test? ( https://gitweb.gentoo.org/proj/gcc-patches.git/plain/scripts/testsuite-management/validate_failures.py?id=${GCC_VALIDATE_FAILURES_VERSION} -> gcc-validate-failures-${GCC_VALIDATE_FAILURES_VERSION}.py )"
 
 	echo "${GCC_SRC_URI}"
 }
@@ -620,7 +633,7 @@ toolchain_src_prepare() {
 	fi
 
 	if use test ; then
-		cp "${DISTDIR}"/${PN}-validate-failures-${GCC_VALIDATE_FAILURES_VERSION}.py "${T}"/validate_failures.py || die
+		cp "${DISTDIR}"/gcc-validate-failures-${GCC_VALIDATE_FAILURES_VERSION}.py "${T}"/validate_failures.py || die
 		chmod +x "${T}"/validate_failures.py || die
 	fi
 
@@ -1449,7 +1462,7 @@ toolchain_src_configure() {
 			# respect USE=graphite here in case the user passes some
 			# graphite flags rather than try strip them out.
 			$(use_with graphite isl)
-			--without-zstd
+			$(use_with zstd)
 			--with-system-zlib
 		)
 
@@ -1616,12 +1629,19 @@ gcc_do_filter_flags() {
 			[[ -z ${x} || ${x} -gt 64 ]] && break
 			l1_cache_size=$(taskset --cpu-list ${x} $(tc-getCC) -Q --help=params -O2 -march=native \
 				| awk '{ if ($1 ~ /^.*param.*l1-cache-size/) print $2; }' || die)
-			[[ -n ${l1_cache_size} && ${l1_cache_size} =~ "^[0-9]+$" ]] || break
+			[[ -n ${l1_cache_size} && ${l1_cache_size} =~ ^[0-9]+$ ]] || break
 			l1_cache_sizes[${l1_cache_size}]=1
 		done
-		# If any of them are different, just pick the first one.
-		if [[ ${#l1_cache_sizes} -gt 1 ]] ; then
-			append-flags --param=l1-cache-size=${l1_cache_size}
+		# If any of them are different, abort. We can't just pass one value of
+		# l1-cache-size because it doesn't cancel out the -march=native one.
+		if [[ ${#l1_cache_sizes[@]} -gt 1 ]] ; then
+			eerror "Different values of l1-cache-size detected!"
+			eerror "GCC will fail to bootstrap when comparing files with these flags."
+			eerror "This CPU is likely big.little/hybrid hardware with power/efficiency cores."
+			eerror "Please install app-misc/resolve-march-native and run 'resolve-march-native'"
+			eerror "to find a safe value of CFLAGS for this CPU. Note that this may vary"
+			eerror "depending on the core it ran on. taskset can be used to fix the cores used."
+			die "Varying l1-cache-size found, aborting (bug #915389, gcc PR#111768)"
 		fi
 	fi
 
@@ -1873,6 +1893,8 @@ gcc_do_make() {
 
 #---->> src_test <<----
 
+# TODO: add JIT testing
+# TODO: add multilib testing
 toolchain_src_test() {
 	# GCC's testsuite is a special case.
 	#
@@ -1901,17 +1923,44 @@ toolchain_src_test() {
 	# the exit code of targets other than 'check' may be unreliable.
 	nonfatal emake -C "${WORKDIR}"/build -k "${GCC_TESTS_CHECK_TARGET}" RUNTESTFLAGS="${GCC_TESTS_RUNTESTFLAGS}"
 
-	if [[ -z ${GCC_TESTS_IGNORE_NO_BASELINE} && -f "${GCC_TESTS_COMPARISON_DIR}/${GCC_TESTS_COMPARISON_SLOT}/${CHOST}.xfail" ]] ; then
+	# Produce an updated failure manifest.
+	einfo "Generating a new failure manifest ${T}/${CHOST}.xfail"
+	rm -f "${T}"/${CHOST}.xfail
+	edo "${T}"/validate_failures.py \
+		--srcpath="${S}" \
+		--build_dir="${WORKDIR}"/build \
+		--manifest="${T}"/${CHOST}.xfail \
+		--produce_manifest &> /dev/null
+
+	# If there's no manifest available, check older slots, as it's better
+	# than nothing. We start with 10 for the fallback as the first version
+	# we started using --with-major-version-only.
+	local possible_slot
+	for possible_slot in "${GCC_TESTS_COMPARISON_SLOT}" $(seq ${SLOT} -1 10) ; do
+		[[ -f "${GCC_TESTS_COMPARISON_DIR}/${possible_slot}/${CHOST}.xfail" ]] && break
+	done
+	if [[ ${possible_slot} != "${GCC_TESTS_COMPARISON_SLOT}" ]] ; then
+		ewarn "Couldn't find manifest for ${GCC_TESTS_COMPARISON_SLOT}; falling back to ${possible_slot}"
+	fi
+	local manifest="${GCC_TESTS_COMPARISON_DIR}/${possible_slot}/${CHOST}.xfail"
+
+	if [[ -f "${manifest}" ]] ; then
 		# TODO: Distribute some baseline results in e.g. gcc-patches.git?
 		# validate_failures.py manifest files support include directives.
-		einfo "Comparing with previous cached results at GCC_TESTS_COMPARISON_DIR=${GCC_TESTS_COMPARISON_DIR}/${GCC_TESTS_COMPARISON_SLOT}/${CHOST}.xfail"
+		einfo "Comparing with previous cached results at ${manifest}"
 
-		edo "${T}"/validate_failures.py \
+		nonfatal edo "${T}"/validate_failures.py \
 			--srcpath="${S}" \
 			--build_dir="${WORKDIR}"/build \
-			--manifest="${GCC_TESTS_COMPARISON_DIR}/${GCC_TESTS_COMPARISON_SLOT}/${CHOST}.xfail"
+			--manifest="${manifest}"
+		ret=$?
+
+		if [[ -n ${GCC_TESTS_REGEN_BASELINE} ]] ; then
+			eerror "GCC_TESTS_REGEN_BASELINE is set, ignoring test result and creating a new baseline..."
+		elif [[ ${ret} != 0 ]]; then
+			die "Tests failed (failures not listed in the baseline data)"
+		fi
 	else
-		# nonfatal first because we want to run again with comparison data if available.
 		nonfatal edo "${T}"/validate_failures.py \
 			--srcpath="${S}" \
 			--build_dir="${WORKDIR}"/build
@@ -1919,23 +1968,18 @@ toolchain_src_test() {
 
 		# We have no reference data saved from a previous run to know if
 		# the failures are tolerable or not, so we bail out.
-		eerror "No reference test data at GCC_TESTS_COMPARISON_DIR=${GCC_TESTS_COMPARISON_DIR}/${GCC_TESTS_COMPARISON_SLOT}/${CHOST}.xfail!"
+		eerror "No reference test data at ${manifest}!"
 		eerror "GCC's tests require a baseline to compare with for any reasonable interpretation of results."
 
 		if [[ -n ${GCC_TESTS_IGNORE_NO_BASELINE} ]] ; then
-			eerror "GCC_TESTS_IGNORE_NO_BASELINE is set, creating new baseline manifest..."
+			eerror "GCC_TESTS_IGNORE_NO_BASELINE is set, ignoring test result and creating a new baseline..."
+		elif [[ -n ${GCC_TESTS_REGEN_BASELINE} ]] ; then
+			eerror "GCC_TESTS_REGEN_BASELINE is set, ignoring test result and creating using a new baseline..."
 		elif [[ ${ret} != 0 ]]; then
-			eerror "(Set GCC_TESTS_IGNORE_NO_BASELINE=1 to make this non-fatal for initial run.)"
+			eerror "(Set GCC_TESTS_IGNORE_NO_BASELINE=1 to make this non-fatal and generate a baseline.)"
 			die "Tests failed (failures occurred with no reference data)"
 		fi
 	fi
-
-	# Produce an updated set of expected results
-	edo "${T}"/validate_failures.py \
-		--srcpath="${S}" \
-		--build_dir="${WORKDIR}"/build \
-		--manifest="${T}"/${CHOST}.xfail \
-		--produce_manifest &> /dev/null
 }
 
 #---->> src_install <<----
@@ -2318,7 +2362,7 @@ create_revdep_rebuild_entry() {
 #---->> pkg_pre* <<----
 
 toolchain_pkg_preinst() {
-	if use test ; then
+	if [[ ${MERGE_TYPE} != binary ]] && use test ; then
 		# Install as orphaned to allow comparison across more versions even
 		# after unmerged. Also useful for historical records and tracking
 		# down regressions a while after they first appeared, but were only
@@ -2475,7 +2519,7 @@ _tc_use_if_iuse() {
 
 is_ada() {
 	gcc-lang-supported ada || return 1
-	_tc_use_if_iuse ada
+	_tc_use_if_iuse cxx && _tc_use_if_iuse ada
 }
 
 is_cxx() {

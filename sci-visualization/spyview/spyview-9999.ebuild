@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,6 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
 
 COMMON_DEPEND="
 	dev-libs/boost:=
@@ -33,6 +32,10 @@ DEPEND="${COMMON_DEPEND}
 
 RDEPEND="${COMMON_DEPEND}
 	sci-visualization/gnuplot"
+
+PATCHES=(
+	"${FILESDIR}/spyview-no-user-dirs.patch"
+)
 
 src_unpack() {
 	if [[ ${PV} == *9999* ]] ; then

@@ -10,7 +10,7 @@ inherit autotools flag-o-matic python-single-r1
 
 DESCRIPTION="Ham radio backend rig control libraries"
 HOMEPAGE="https://www.hamlib.github.io"
-SRC_URI="mirror://sourceforge/hamlib/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/hamlib/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2+ GPL-2+"

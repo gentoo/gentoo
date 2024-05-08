@@ -4,4 +4,7 @@
 	<maintainer type="project">
 		<email>java@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">findbugs</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ DESCRIPTION="Climatology Plugin for OpenCPN (includes CL-DATA)"
 HOMEPAGE="https://github.com/rgleason/climatology_pi"
 SRC_URI="
 	${SRC_URI}
-	mirror://sourceforge/opencpnplugins/climatology_pi/CL-DATA-1.0.tar.xz -> ${PN}-1.0-CL-DATA.tar.xz"
+	https://downloads.sourceforge.net/opencpnplugins/climatology_pi/CL-DATA-1.0.tar.xz -> ${PN}-1.0-CL-DATA.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"

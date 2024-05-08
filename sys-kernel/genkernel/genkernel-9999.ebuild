@@ -12,44 +12,49 @@ inherit bash-completion-r1 python-single-r1
 
 # Whenever you bump a GKPKG, check if you have to move
 # or add new patches!
-VERSION_BCACHE_TOOLS="1.0.8_p20141204"
+VERSION_BCACHE_TOOLS="1.1_p20230217"
+# boost-1.84.0 needs dev-build/b2 packaged
 VERSION_BOOST="1.79.0"
-VERSION_BTRFS_PROGS="6.3.2"
+VERSION_BTRFS_PROGS="6.7.1"
 VERSION_BUSYBOX="1.36.1"
-VERSION_COREUTILS="9.3"
+VERSION_COREUTILS="9.4"
 VERSION_CRYPTSETUP="2.6.1"
 VERSION_DMRAID="1.0.0.rc16-3"
 VERSION_DROPBEAR="2022.83"
 VERSION_EUDEV="3.2.10"
 VERSION_EXPAT="2.5.0"
-VERSION_E2FSPROGS="1.46.4"
+VERSION_E2FSPROGS="1.47.0"
 VERSION_FUSE="2.9.9"
+# gnupg-2.x needs several new deps packaged
 VERSION_GPG="1.4.23"
 VERSION_HWIDS="20210613"
+# open-iscsi-2.1.9 static build not working yet
 VERSION_ISCSI="2.1.8"
+# json-c-0.17 needs gkbuild ported to meson
 VERSION_JSON_C="0.13.1"
-VERSION_KMOD="30"
+VERSION_KMOD="31"
 VERSION_LIBAIO="0.3.113"
-VERSION_LIBGCRYPT="1.9.4"
-VERSION_LIBGPGERROR="1.43"
+VERSION_LIBGCRYPT="1.10.3"
+VERSION_LIBGPGERROR="1.47"
 VERSION_LIBXCRYPT="4.4.36"
-VERSION_LVM="2.02.188"
+VERSION_LVM="2.03.22"
 VERSION_LZO="2.10"
-VERSION_MDADM="4.1"
-VERSION_POPT="1.18"
-VERSION_STRACE="6.4"
+VERSION_MDADM="4.2"
+VERSION_POPT="1.19"
+VERSION_STRACE="6.7"
 VERSION_THIN_PROVISIONING_TOOLS="0.9.0"
+# unionfs-fuse-3.4 needs fuse:3
 VERSION_UNIONFS_FUSE="2.0"
 VERSION_USERSPACE_RCU="0.14.0"
-VERSION_UTIL_LINUX="2.38.1"
-VERSION_XFSPROGS="6.3.0"
-VERSION_XZ="5.4.3"
-VERSION_ZLIB="1.2.13"
+VERSION_UTIL_LINUX="2.39.3"
+VERSION_XFSPROGS="6.4.0"
+VERSION_XZ="5.4.2"
+VERSION_ZLIB="1.3.1"
 VERSION_ZSTD="1.5.5"
 VERSION_KEYUTILS="1.6.3"
 
 COMMON_URI="
-	https://github.com/g2p/bcache-tools/archive/399021549984ad27bf4a13ae85e458833fe003d7.tar.gz -> bcache-tools-${VERSION_BCACHE_TOOLS}.tar.gz
+	https://git.kernel.org/pub/scm/linux/kernel/git/colyli/bcache-tools.git/snapshot/a5e3753516bd39c431def86c8dfec8a9cea1ddd4.tar.gz -> bcache-tools-${VERSION_BCACHE_TOOLS}.tar.gz
 	https://boostorg.jfrog.io/artifactory/main/release/${VERSION_BOOST}/source/boost_${VERSION_BOOST//./_}.tar.bz2
 	https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v${VERSION_BTRFS_PROGS}.tar.xz
 	https://www.busybox.net/downloads/busybox-${VERSION_BUSYBOX}.tar.bz2
@@ -92,7 +97,7 @@ if [[ ${PV} == 9999* ]] ; then
 	S="${WORKDIR}/${P}"
 	SRC_URI="${COMMON_URI}"
 else
-	SRC_URI="https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}.tar.xz
+	SRC_URI="https://dev.gentoo.org/~bkohler/dist/${P}.tar.xz
 		${COMMON_URI}"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
@@ -165,6 +170,13 @@ src_prepare() {
 	for v in $(set |awk -F= '/^VERSION_/{print $1}') ; do
 	export ${v}
 	done
+
+	if use ibm ; then
+		cp "${S}"/arch/ppc64/kernel-2.6{-pSeries,} || die
+	else
+		cp "${S}"/arch/ppc64/kernel-2.6{.g5,} || die
+	fi
+
 }
 
 src_compile() {

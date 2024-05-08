@@ -9,7 +9,7 @@ SRC_URI="https://github.com/kgraefe/pidgin-birthday-reminder/releases/download/v
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="static-libs"
 
 RDEPEND="net-im/pidgin:=[gtk]"

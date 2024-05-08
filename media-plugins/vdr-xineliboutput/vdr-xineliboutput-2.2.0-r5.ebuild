@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ GENTOO_VDR_CONDITIONAL=yes
 
 DESCRIPTION="VDR Plugin: Xinelib PlugIn"
 HOMEPAGE="https://sourceforge.net/projects/xineliboutput/"
-SRC_URI="mirror://sourceforge/${PN#vdr-}/${P}.tgz
+SRC_URI="https://downloads.sourceforge.net/${PN#vdr-}/${P}.tgz
 		http://vdr.websitec.de/download/${PN}/${P}_clang.patch.bz2"
 
 LICENSE="GPL-2+"

@@ -1,0 +1,119 @@
+From 8238a8eaa6a11e9e0d8e10bb84ae87021b78ea2a Mon Sep 17 00:00:00 2001
+From: Ivan Andrus <iandrus@adobe.com>
+Date: Wed, 13 Mar 2024 10:12:10 -0600
+Subject: [PATCH] Fix unknown definitions warning
+
+---
+ gap-mode.el | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/gap-mode.el b/gap-mode.el
+index 148664c..655519a 100644
+--- a/gap-mode.el
++++ b/gap-mode.el
+@@ -590,6 +590,7 @@ end;"
+   (when gap-using-smie
+     (defvar gap-smie-grammar)
+     (declare-function gap-smie-rules "gap-smie")
++    (declare-function smie-setup "smie")
+     (smie-setup gap-smie-grammar #'gap-smie-rules)))
+ 
+ ;;}}}
+-- 
+GitLab
+
+From f8c95d793b1e90e65ca758d10b780592fc9ee2dd Mon Sep 17 00:00:00 2001
+From: Ivan Andrus <iandrus@adobe.com>
+Date: Mon, 29 Apr 2024 19:57:02 -0600
+Subject: [PATCH] Fix unknown definitions warnings
+
+---
+ gap-process.el | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/gap-process.el b/gap-process.el
+index 8fa3062..1161161 100644
+--- a/gap-process.el
++++ b/gap-process.el
+@@ -260,6 +260,8 @@ which is much like GAP's C-l (\\[recenter] can be used to recenter)."
+   (set (make-local-variable 'paragraph-separate) "\\'")
+   (set (make-local-variable 'paragraph-start) comint-prompt-regexp)
+   (require 'gap-mode) ;; for gap-syntax-table and gap-font-lock-keywords
++  (eval-when-compile
++    (defvar gap-syntax-table))
+   (set-syntax-table gap-syntax-table)
+   (set (make-local-variable 'font-lock-defaults) '(gap-font-lock-keywords))
+   (use-local-map gap-process-map)
+@@ -548,6 +550,7 @@ With FULL, send two TABs to GAP to get a full list of completions."
+     (if (not (looking-at "\\_>"))
+         (if (not (re-search-forward "\\_>" nil t))
+             (error "Complete what?")))
++    (declare-function gap-ident-around-point "gap-mode")
+     (setq gap-completion-ident (gap-ident-around-point))
+     (if (not full)
+         (progn
+@@ -613,6 +616,7 @@ With FULL, send two TABs to GAP to get a full list of completions."
+       (setq gap-send-state 'normal))))
+ 
+ (defun gap-completion-at-point-function ()
++  (declare-function gap-ident-around-point-pos "gap-mode")
+   (let ((region (gap-ident-around-point-pos)))
+     (when region
+       (list (car region)
+-- 
+GitLab
+
+From 9722c596b7cb8fe003bac0332bac23c1d98bbe67 Mon Sep 17 00:00:00 2001
+From: Ivan Andrus <iandrus@adobe.com>
+Date: Mon, 29 Apr 2024 18:55:15 -0600
+Subject: [PATCH] Fix reference to free variable warning
+
+---
+ gap-smie.el | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/gap-smie.el b/gap-smie.el
+index 0bc444a..05e64e7 100644
+--- a/gap-smie.el
++++ b/gap-smie.el
+@@ -76,6 +76,12 @@
+ (defun gap-smie-rules (kind token)
+   "SMIE indentation rules for the GAP language.
+ See `smie-rules-function' for meaning of KIND and TOKEN."
++  (require 'gap-mode)
++  (eval-when-compile
++    ;; These are defined in gap-mode which depends on this file
++    (defvar gap-debug-indent)
++    (defvar gap-indent-list)
++    (defvar gap-indent-step))
+   (when (and gap-debug-indent
+              (not (use-region-p)))
+     (message "%s %s" kind token))
+-- 
+GitLab
+
+From 09b4082b6e28141537696bb832c8ecc975ec57d8 Mon Sep 17 00:00:00 2001
+From: Ivan Andrus <iandrus@adobe.com>
+Date: Mon, 29 Apr 2024 19:11:34 -0600
+Subject: [PATCH] Fix unused lexical variable warning
+
+---
+ gap-company.el | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gap-company.el b/gap-company.el
+index abdcd98..725ef15 100644
+--- a/gap-company.el
++++ b/gap-company.el
+@@ -22,7 +22,7 @@
+ 
+ (defun company-gap-backend (command &optional arg &rest ignored)
+   (interactive (list 'interactive))
+-
++  (ignore ignored)
+   (cl-case command
+     (interactive (company-begin-backend 'company-gap-backend))
+ 
+-- 
+GitLab
+

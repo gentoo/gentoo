@@ -1,0 +1,66 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -571,7 +571,7 @@ if test "x${use_modules}" != "xno"; then
+   LDFLAGS=$saved_ldflags
+   LIBS=$saved_libs
+ 
+-  if test "x$have_ltdl" == "xno"; then
++  if test "x$have_ltdl" = "xno"; then
+     AC_MSG_ERROR([libltdl is required to build modules.  Please either specify the location of the libltdl library using --with-ltdl=PREFIX or else disable the building of modules by using --disable-modules])
+   fi
+ 
+@@ -601,18 +601,18 @@ AC_SUBST([LIBLTDL])
+ AC_SUBST([LTDLINCL])
+ 
+ dnl check if we found a C++ compiler
+-if test "x$CXX" == "x"; then
++if test "x$CXX" = "x"; then
+   make_cxxbindings=no
+ fi
+ 
+ dnl check if we found a Fortran 77 compiler
+-if test "x$F77" == "x"; then
++if test "x$F77" = "x"; then
+   make_f77bindings=no
+   make_f95bindings=no
+ fi
+ 
+ dnl check if we found a free-form Fortran compiler
+-if test "x$FC" == "x"; then
++if test "x$FC" = "x"; then
+   make_f95bindings=no
+ fi
+ 
+@@ -641,7 +641,7 @@ fi
+ dnl F77 stuff
+ if test "x$make_f77bindings" != "xno"; then
+   AC_F77_WRAPPERS
+-  if test "x$ac_cv_f77_mangling" == "xunknown"; then
++  if test "x$ac_cv_f77_mangling" = "xunknown"; then
+     make_f77bindings=no
+     make_f95bindings=no
+   fi
+@@ -1065,7 +1065,7 @@ else
+   AC_MSG_RESULT([$use_slim])
+   AC_MSG_CHECKING([for zzip support])
+   AC_MSG_RESULT([$use_zzip])
+-  if test "$use_slim$use_zzip" == "yesyes"; then
++  if test "$use_slim$use_zzip" = "yesyes"; then
+     if test $zzslim_override = "yes"; then
+       AC_MSG_CHECKING([for zzslim support])
+       AC_MSG_RESULT([yes (forced)])
+@@ -1200,11 +1200,11 @@ AC_CONFIG_FILES([test/Makefile])
+ AC_CONFIG_FILES([util/Makefile])
+ 
+ dnl Automake conditionals
+-AM_CONDITIONAL(GETDATA_DEBUG, [test "x$enable_debug" == "xyes"])
++AM_CONDITIONAL(GETDATA_DEBUG, [test "x$enable_debug" = "xyes"])
+ AM_CONDITIONAL(HAVE_SED, [ test "x${SED}" != 'x' ])
+ AM_CONDITIONAL(INTEL_F77_COMPILER,
+-               [test "x$gd_cv_f77_compiler_intel" == "xyes"])
+-AM_CONDITIONAL(INTEL_FC_COMPILER, [test "x$gd_cv_fc_compiler_intel" == "xyes"])
++               [test "x$gd_cv_f77_compiler_intel" = "xyes"])
++AM_CONDITIONAL(INTEL_FC_COMPILER, [test "x$gd_cv_fc_compiler_intel" = "xyes"])
+ AM_CONDITIONAL(INCLUDE_LEGACY_API, [test "x$include_legacy_api" != "xno"])
+ AM_CONDITIONAL(MAKE_CXXBINDINGS, [test "x$make_cxxbindings" = "xyes"])
+ AM_CONDITIONAL(MAKE_F77BINDINGS, [test "x$make_f77bindings" != "xno"])

@@ -1,0 +1,23 @@
+Fixes underlinking math lib in base/CMakeLists.txt
+Bug: https://bugs.gentoo.org/9889
+Upstream PR: https://github.com/greenbone/gvm-libs/pull/811
+
+--- a/base/CMakeLists.txt
++++ b/base/CMakeLists.txt
+@@ -37,6 +37,7 @@ set (HEADERS array.h credentials.h cvss.h drop_privileges.h hosts.h logging.h
+ if (BUILD_STATIC)
+   set (LIBGVM_BASE_NAME gvm_base_static)
+   add_library (gvm_base_static STATIC ${FILES})
++  target_link_libraries(gvm_base_static m)
+   set_target_properties (gvm_base_static PROPERTIES OUTPUT_NAME "gvm_base")
+   set_target_properties (gvm_base_static PROPERTIES CLEAN_DIRECT_OUTPUT 1)
+   set_target_properties (gvm_base_static PROPERTIES PUBLIC_HEADER "${HEADERS}")
+@@ -51,7 +52,7 @@ if (BUILD_SHARED)
+   set_target_properties (gvm_base_shared PROPERTIES VERSION "${CPACK_PACKAGE_VERSION}")
+   set_target_properties (gvm_base_shared PROPERTIES PUBLIC_HEADER "${HEADERS}")
+ 
+-  target_link_libraries (gvm_base_shared LINK_PRIVATE ${GLIB_LDFLAGS} ${LINKER_HARDENING_FLAGS} ${SENTRY_LDFLAGS})
++  target_link_libraries (gvm_base_shared LINK_PRIVATE ${GLIB_LDFLAGS} ${LINKER_HARDENING_FLAGS} ${SENTRY_LDFLAGS} m)
+ endif (BUILD_SHARED)
+ 
+ set (LIBGVM_BASE_NAME

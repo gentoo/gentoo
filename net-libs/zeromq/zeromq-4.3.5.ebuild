@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -40,7 +40,10 @@ src_configure() {
 		$(use_with sodium libsodium)
 		$(use_with doc docs)
 	)
-	econf "${myeconfargs[@]}"
+	# Force bash for configure until the fixes for bug #923922 land in a release
+	# https://github.com/zeromq/zproject/pull/1336
+	# https://github.com/zeromq/libzmq/pull/4651
+	CONFIG_SHELL="${BROOT}"/bin/bash econf "${myeconfargs[@]}"
 }
 
 src_test() {

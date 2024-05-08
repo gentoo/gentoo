@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>alexander@neuwirth-informatik.de</email>
+		<name>Alexander Puck Neuwirth</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>sci-physics@gentoo.org</email>
 		<name>Gentoo Physics Project</name>
@@ -14,8 +18,12 @@
 	</longdescription>
 	<use>
 		<flag name="fastjet">Adds support for <pkg>sci-physics/fastjet</pkg></flag>
-		<flag name="hepmc">Adds support for High Energy Physics Monte Carlo
-		Generators <pkg>sci-physics/hepmc</pkg></flag>
+		<flag name="hepmc">Adds support for High Energy Physics Monte Carlo Generators<pkg>sci-physics/hepmc</pkg></flag>
+		<flag name="hepmc3">Adds support for High Energy Physics Monte Carlo Generators 3<pkg>sci-physics/hepmc</pkg></flag>
 		<flag name="lhapdf">Adds support for <pkg>sci-physics/lhapdf</pkg></flag>
+		<flag name="rivet">Adds support for <pkg>sci-physics/rivet</pkg></flag>
 	</use>
+	<upstream>
+		<doc>https://thepeg.hepforge.org/doxygen/</doc>
+	</upstream>
 </pkgmetadata>

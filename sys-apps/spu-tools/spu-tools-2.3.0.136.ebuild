@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ MY_P="${P/_p/-}"
 
 DESCRIPTION="CELL spu ps and top alike utilities"
 HOMEPAGE="https://sourceforge.net/projects/libspe"
-SRC_URI="mirror://sourceforge/libspe/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/libspe/${MY_P}.tar.gz"
 S="${WORKDIR}/${PN}/src"
 
 LICENSE="GPL-2"

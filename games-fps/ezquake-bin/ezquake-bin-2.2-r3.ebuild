@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,10 +10,10 @@ MY_PN="${PN/-bin/}"
 DESCRIPTION="Quakeworld client with mqwcl functionality and many more features"
 HOMEPAGE="https://ezquake.sourceforge.net/"
 SRC_URI="
-	amd64? ( mirror://sourceforge/${MY_PN}/${MY_PN}_linux-x86_64.${MY_FULL_PV}.tar.gz
-		mirror://sourceforge/${MY_PN}/${MY_PN}_linux64_${PV}.tar.gz )
-	x86? ( mirror://sourceforge/${MY_PN}/${MY_PN}_linux-x86_${MY_FULL_PV}.tar.gz
-		mirror://sourceforge/${MY_PN}/${MY_PN}_linux32_${PV}.tar.gz )
+	amd64? ( https://downloads.sourceforge.net/${MY_PN}/${MY_PN}_linux-x86_64.${MY_FULL_PV}.tar.gz
+		https://downloads.sourceforge.net/${MY_PN}/${MY_PN}_linux64_${PV}.tar.gz )
+	x86? ( https://downloads.sourceforge.net/${MY_PN}/${MY_PN}_linux-x86_${MY_FULL_PV}.tar.gz
+		https://downloads.sourceforge.net/${MY_PN}/${MY_PN}_linux32_${PV}.tar.gz )
 "
 S="${WORKDIR}"/${MY_PN}
 

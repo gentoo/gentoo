@@ -9,6 +9,8 @@ DESCRIPTION="Tool for cutting MPEG files especially for removing commercials"
 HOMEPAGE="https://github.com/baltendorf/ttcut"
 SRC_URI="https://dev.gentoo.org/~billie/distfiles/${P}.tar.gz"
 
+S=${WORKDIR}/${PN}
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
@@ -27,8 +29,6 @@ RDEPEND="
 	media-video/mplayer
 	>=media-video/ffmpeg-1.0.8[encode]
 "
-
-S=${WORKDIR}/${PN}
 
 src_prepare() {
 	default

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit go-module linux-info
+inherit go-module linux-info toolchain-funcs
 
 DESCRIPTION="A tool that facilitates building OCI images"
 HOMEPAGE="https://github.com/containers/buildah"
@@ -27,7 +27,7 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/containers/buildah.git"
 else
 	SRC_URI="https://github.com/containers/buildah/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 arm64"
 fi
 
 RDEPEND="
@@ -42,6 +42,11 @@ RDEPEND="
 	sys-apps/shadow:=
 "
 DEPEND="${RDEPEND}"
+BDEPEND="dev-go/go-md2man"
+
+PATCHES=(
+	"${T}"/dont-call-as-directly-upstream-pr-5436.patch
+)
 
 pkg_pretend() {
 	local CONFIG_CHECK=""
@@ -52,6 +57,34 @@ pkg_pretend() {
 }
 
 src_prepare() {
+	cat <<'EOF' > "${T}/dont-call-as-directly-upstream-pr-5436.patch"
+--- a/Makefile
++++ b/Makefile
+@@ -10,6 +10,8 @@
+ BASHINSTALLDIR = $(PREFIX)/share/bash-completion/completions
+ BUILDFLAGS := -tags "$(BUILDTAGS)"
+ BUILDAH := buildah
++AS ?= as
++STRIP ?= strip
+
+ GO := go
+ GO_LDFLAGS := $(shell if $(GO) version|grep -q gccgo; then echo "-gccgoflags"; else echo "-ldflags"; fi)
+@@ -72,11 +74,11 @@
+ bin/buildah: $(SOURCES) cmd/buildah/*.go internal/mkcw/embed/entrypoint.gz
+	$(GO_BUILD) $(BUILDAH_LDFLAGS) $(GO_GCFLAGS) "$(GOGCFLAGS)" -o $@ $(BUILDFLAGS) ./cmd/buildah
+
+-ifneq ($(shell as --version | grep x86_64),)
++ifneq ($(shell $(AS) --version | grep x86_64),)
+ internal/mkcw/embed/entrypoint: internal/mkcw/embed/entrypoint.s
+	$(AS) -o $(patsubst %.s,%.o,$^) $^
+	$(LD) -o $@ $(patsubst %.s,%.o,$^)
+-	strip $@
++	$(STRIP) $@
+ else
+ .PHONY: internal/mkcw/embed/entrypoint
+ endif
+EOF
+
 	default
 
 	# ensure all  necessary files are there
@@ -98,6 +131,9 @@ src_prepare() {
 		@@ -54 +54 @@
 		-all: bin/buildah bin/imgtype bin/copy bin/tutorial docs
 		+all: bin/buildah docs
+		@@ -123 +123 @@
+		-docs: install.tools ## build the docs on the host
+		+docs: ## build the docs on the host
 		EOF
 		eapply "${T}/disable_tests.patch" || die
 	}
@@ -109,6 +145,8 @@ src_compile() {
 	# https://github.com/gentoo/gentoo/pull/33531#issuecomment-1786107493
 	[[ ${PV} != 9999* ]] && export COMMIT_NO="" GIT_COMMIT=""
 
+	tc-export AS LD STRIP
+	export GOMD2MAN="$(command -v go-md2man)"
 	default
 }
 

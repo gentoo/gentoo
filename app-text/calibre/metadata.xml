@@ -9,8 +9,8 @@
     <name>Eli Schwartz</name>
   </maintainer>
   <upstream>
-    <remote-id type="sourceforge">calibre</remote-id>
     <remote-id type="github">kovidgoyal/calibre</remote-id>
+    <changelog>https://calibre-ebook.com/whats-new</changelog>
   </upstream>
   <use>
     <flag name="font-subsetting">Enable font subsetting support</flag>

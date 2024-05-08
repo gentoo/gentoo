@@ -1,9 +1,9 @@
 # -*-eselect-*-  vim: ft=eselect
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 DESCRIPTION="Manage Zig versions"
-MAINTAINER="bratishkaerik@getgoogleoff.me"
+MAINTAINER="bratishkaerik@landless-city.net"
 
 show_selected_target() {
 	readlink "${EROOT}/usr/bin/zig"

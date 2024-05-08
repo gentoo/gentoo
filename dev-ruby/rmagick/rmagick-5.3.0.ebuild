@@ -25,11 +25,11 @@ RUBY_S="rmagick-${MY_PV}"
 
 LICENSE="Artistic"
 SLOT="$(ver_cut 1)"
-KEYWORDS="amd64 ~hppa ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~hppa ppc ppc64 x86"
 IUSE="doc"
 
 RDEPEND+=" >=media-gfx/imagemagick-6.9.0:="
-DEPEND+=" >=media-gfx/imagemagick-6.9.0 test? ( >=media-gfx/imagemagick-7.1.0:=[jpeg,lqr,lcms,postscript,tiff,webp] media-fonts/dejavu )"
+DEPEND+=" >=media-gfx/imagemagick-6.9.0 test? ( >=media-gfx/imagemagick-7.1.0:=[jpeg,lqr,lcms,postscript,tiff,webp,xml] media-fonts/dejavu )"
 
 ruby_add_bdepend "dev-ruby/pkg-config"
 

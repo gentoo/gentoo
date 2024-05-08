@@ -20,7 +20,7 @@ HOMEPAGE="
 	https://sourceware.org/binutils/
 "
 SRC_URI="
-	mirror://sourceforge/mingw-w64/mingw-w64/mingw-w64-release/mingw-w64-v${MINGW_PV}.tar.bz2
+	https://downloads.sourceforge.net/mingw-w64/mingw-w64/mingw-w64-release/mingw-w64-v${MINGW_PV}.tar.bz2
 	mirror://gnu/binutils/binutils-${BINUTILS_PV}.tar.xz
 "
 if [[ ${GCC_PV} == *-* ]]; then
@@ -210,6 +210,11 @@ src_compile() {
 				CHOST=${CTARGET}
 				filter-flags '-fuse-ld=*'
 				filter-flags '-mfunction-return=thunk*' #878849
+
+				# some bashrc-mv users tend to do CFLAGS="${LDFLAGS}" and then
+				# strip-unsupported-flags miss these during compile-only tests
+				# (primarily done for 23.0 profiles' -z, not full coverage)
+				filter-flags '-Wl,-z,*'
 
 				# -mavx with mingw-gcc has a history of obscure issues and
 				# disabling is seen as safer, e.g. `WINEARCH=win32 winecfg`

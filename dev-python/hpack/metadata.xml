@@ -11,6 +11,7 @@
 			<name>Cory Benfield</name>
 		</maintainer>
 		<remote-id type="pypi">hpack</remote-id>
+		<remote-id type="github">python-hyper/hpack</remote-id>
 	</upstream>
 	<longdescription>This module contains a pure-Python HTTP/2 header encoding
 		(HPACK) logic for use in Python programs that implement HTTP/2. It

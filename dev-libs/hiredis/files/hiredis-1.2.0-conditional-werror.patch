@@ -1,0 +1,24 @@
+From bff171c9fc83f8abed9a283a3da2dc91a5671419 Mon Sep 17 00:00:00 2001
+From: Romain Geissler <romain.geissler@amadeus.com>
+Date: Thu, 13 Jul 2023 12:39:45 +0000
+Subject: [PATCH] Allow disabling the -Werror flag.
+
+Upstream-commit: https://github.com/redis/hiredis/commit/bff171c9fc83f8abed9a283a3da2dc91a5671419
+
+diff --git a/Makefile b/Makefile
+index bd2106b1d..56e3d59be 100644
+--- a/Makefile
++++ b/Makefile
+@@ -39,7 +39,11 @@ export REDIS_TEST_CONFIG
+ CC:=$(shell sh -c 'type $${CC%% *} >/dev/null 2>/dev/null && echo $(CC) || echo gcc')
+ CXX:=$(shell sh -c 'type $${CXX%% *} >/dev/null 2>/dev/null && echo $(CXX) || echo g++')
+ OPTIMIZATION?=-O3
+-WARNINGS=-Wall -Wextra -Werror -Wstrict-prototypes -Wwrite-strings -Wno-missing-field-initializers
++WARNINGS=-Wall -Wextra -Wstrict-prototypes -Wwrite-strings -Wno-missing-field-initializers
++USE_WERROR?=1
++ifeq ($(USE_WERROR),1)
++  WARNINGS+=-Werror
++endif
+ DEBUG_FLAGS?= -g -ggdb
+ REAL_CFLAGS=$(OPTIMIZATION) -fPIC $(CPPFLAGS) $(CFLAGS) $(WARNINGS) $(DEBUG_FLAGS) $(PLATFORM_FLAGS)
+ REAL_LDFLAGS=$(LDFLAGS)

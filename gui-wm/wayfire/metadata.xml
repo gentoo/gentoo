@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <!-- maintainer-needed -->
-    <longdescription>
-        compiz like eye-candy 3D wayland, with low memory footprint.
-        Aims to bring desktop features such as 3D cube, fire burn,
-        fisheye, wrot and all other desktop effects to wayland.
-    </longdescription>
-    <use>
-        <flag name="gles">use libglvnd to do animations more efficiently</flag>
-        <flag name="gles3">Enable OpenGL ES 3.x Features.</flag>
-        <flag name="system-wfconfig">Use the system-wide <pkg>gui-libs/wf-config</pkg> instead of building as a submodule. It will block system-wide <pkg>gui-libs/wf-config</pkg> from being installed.</flag>
-        <flag name="system-wlroots">Use the system-wide <pkg>gui-libs/wlroots</pkg> instead of building as a submodule. It will block system-wide <pkg>gui-libs/wlroots</pkg> from being installed.</flag>
-        <flag name="X">Enable support for X11 applications (XWayland).</flag>
-    </use>
-    <upstream>
-        <remote-id type="github">WayfireWM/wayfire</remote-id>
-    </upstream>
+	<maintainer type="person">
+		<email>ceamac@gentoo.org</email>
+		<name>Viorel Munteanu</name>
+	</maintainer>
+	<longdescription>
+		compiz like eye-candy 3D wayland, with low memory footprint.
+		Aims to bring desktop features such as 3D cube, fire burn,
+		fisheye, wrot and all other desktop effects to wayland.
+	</longdescription>
+	<use>
+		<flag name="gles">use libglvnd to do animations more efficiently</flag>
+		<flag name="gles3">Enable OpenGL ES 3.x Features.</flag>
+		<flag name="system-wfconfig">Use the system-wide <pkg>gui-libs/wf-config</pkg> instead of building as a submodule. It will block system-wide <pkg>gui-libs/wf-config</pkg> from being installed.</flag>
+		<flag name="system-wlroots">Use the system-wide <pkg>gui-libs/wlroots</pkg> instead of building as a submodule. It will block system-wide <pkg>gui-libs/wlroots</pkg> from being installed.</flag>
+		<flag name="X">Enable support for X11 applications (XWayland).</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">WayfireWM/wayfire</remote-id>
+	</upstream>
 </pkgmetadata>

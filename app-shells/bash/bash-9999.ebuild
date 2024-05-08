@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,84 +6,65 @@ EAPI=8
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/chetramey.asc
 inherit flag-o-matic toolchain-funcs prefix verify-sig
 
-# Uncomment if we have a patchset
+# Uncomment if we have a patchset.
 #GENTOO_PATCH_DEV="sam"
 #GENTOO_PATCH_VER="${PV}"
 
-# Official patchlevel
-# See ftp://ftp.cwru.edu/pub/bash/bash-5.1-patches/
-PLEVEL="${PV##*_p}"
-MY_PV="${PV/_p*}"
-MY_PV="${MY_PV/_/-}"
-MY_P="${PN}-${MY_PV}"
+MY_PV=${PV/_p*}
+MY_PV=${MY_PV/_/-}
+MY_P=${PN}-${MY_PV}
 MY_PATCHES=()
 
-is_release() {
-	case ${PV} in
-		9999|*_alpha*|*_beta*|*_rc*)
-			return 1
-			;;
-		*)
-			return 0
-			;;
-	esac
-}
+# Determine the patchlevel.
+case ${PV} in
+	*_p*)
+		PLEVEL=${PV##*_p}
+		;;
+	9999|*_alpha*|*_beta*|*_rc*)
+		# Set a negative patchlevel to indicate that it's a pre-release.
+		PLEVEL=-1
+		;;
+	*)
+		PLEVEL=0
+esac
 
-[[ ${PV} != *_p* ]] && PLEVEL=0
-
-# The version of readline this bash normally ships with.
-# Note: right now, we don't use the system copy of readline for bash for non-releases.
-READLINE_VER="8.2_p1"
+# The version of readline this bash normally ships with. Note that we only use
+# the bundled copy of readline for pre-releases.
+READLINE_VER="8.3_alpha"
 
 DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html https://git.savannah.gnu.org/cgit/bash.git"
 
-if [[ ${PV} == 9999 ]] ; then
+if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/bash.git"
 	EGIT_BRANCH=devel
 	inherit git-r3
-elif is_release ; then
-	SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz"
-	SRC_URI+=" verify-sig? ( mirror://gnu/bash/${MY_P}.tar.gz.sig )"
-
-	if [[ ${PLEVEL} -gt 0 ]] ; then
-		# bash-5.1 -> bash51
-		my_p=${PN}$(ver_rs 1-2 '' $(ver_cut 1-2))
-
-		patch_url=
-		my_patch_index=
-
-		upstream_url_base="mirror://gnu/bash"
-		mirror_url_base="ftp://ftp.cwru.edu/pub/bash"
-
-		for ((my_patch_index=1; my_patch_index <= ${PLEVEL} ; my_patch_index++)) ; do
-			printf -v mangled_patch_ver ${my_p}-%03d ${my_patch_index}
-			patch_url="${upstream_url_base}/${MY_P}-patches/${mangled_patch_ver}"
-
-			SRC_URI+=" ${patch_url}"
-			SRC_URI+=" verify-sig? ( ${patch_url}.sig )"
-
-			# Add in the mirror URL too.
-			SRC_URI+=" ${patch_url/${upstream_url_base}/${mirror_url_base}}"
-			SRC_URI+=" verify-sig? ( ${patch_url/${upstream_url_base}/${mirror_url_base}} )"
-
-			MY_PATCHES+=( "${DISTDIR}"/${mangled_patch_ver} )
-		done
-
-		unset my_p patch_url my_patch_index upstream_url_base mirror_url_base
-	fi
 else
-	SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz"
-	SRC_URI+=" verify-sig? ( mirror://gnu/${PN}/${MY_P}.tar.gz.sig ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz.sig )"
+	my_urls=( {'mirror://gnu/bash','ftp://ftp.cwru.edu/pub/bash'}/"${MY_P}.tar.gz" )
+
+	# bash-5.1 -> bash51
+	my_p=${PN}$(ver_cut 1-2) my_p=${my_p/.}
+
+	for (( my_patch_idx = 1; my_patch_idx <= PLEVEL; my_patch_idx++ )); do
+		printf -v my_patch_ver %s-%03d "${my_p}" "${my_patch_idx}"
+		my_urls+=( {'mirror://gnu/bash','ftp://ftp.cwru.edu/pub/bash'}/"${MY_P}-patches/${my_patch_ver}" )
+		MY_PATCHES+=( "${DISTDIR}/${my_patch_ver}" )
+	done
+
+	SRC_URI="${my_urls[*]} verify-sig? ( ${my_urls[*]/%/.sig} )"
+
+	unset -v my_urls my_p my_patch_idx my_patch_ver
 fi
 
-if [[ -n ${GENTOO_PATCH_VER} ]] ; then
-	SRC_URI+=" https://dev.gentoo.org/~${GENTOO_PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${GENTOO_PATCH_VER}-patches.tar.xz"
+if [[ ${GENTOO_PATCH_VER} ]]; then
+	SRC_URI+=" https://dev.gentoo.org/~${GENTOO_PATCH_DEV:?}/distfiles/${CATEGORY}/${PN}/${PN}-${GENTOO_PATCH_VER:?}-patches.tar.xz"
 fi
+
+S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-3+"
 SLOT="0"
-if is_release ; then
+if (( PLEVEL >= 0 )); then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 IUSE="afs bashlogger examples mem-scramble +net nls plugins pgo +readline"
@@ -92,83 +73,84 @@ DEPEND="
 	>=sys-libs/ncurses-5.2-r2:=
 	nls? ( virtual/libintl )
 "
-if is_release ; then
+if (( PLEVEL >= 0 )); then
 	DEPEND+=" readline? ( >=sys-libs/readline-${READLINE_VER}:= )"
 fi
 RDEPEND="
 	${DEPEND}
 "
-# We only need bison (yacc) when the .y files get patched (bash42-005, bash51-011)
+# We only need bison (yacc) when the .y files get patched (bash42-005, bash51-011).
 BDEPEND="
-	sys-devel/bison
 	pgo? ( dev-util/gperf )
 	verify-sig? ( sec-keys/openpgp-keys-chetramey )
 "
 
-S="${WORKDIR}/${MY_P}"
-
-# EAPI 8 tries to append it but it doesn't exist here
+# EAPI 8 tries to append it but it doesn't exist here.
 QA_CONFIGURE_OPTIONS="--disable-static"
 
 PATCHES=(
 	#"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}/
 
-	# Patches from Chet sent to bash-bug ml
-	"${FILESDIR}"/${PN}-5.0-syslog-history-extern.patch
+	# Patches to or from Chet, posted to the bug-bash mailing list.
+	"${FILESDIR}/${PN}-5.0-syslog-history-extern.patch"
 )
 
 pkg_setup() {
 	# bug #7332
-	if is-flag -malign-double ; then
+	if is-flag -malign-double; then
 		eerror "Detected bad CFLAGS '-malign-double'.  Do not use this"
 		eerror "as it breaks LFS (struct stat64) on x86."
 		die "remove -malign-double from your CFLAGS mr ricer"
 	fi
 
-	if use bashlogger ; then
+	if use bashlogger; then
 		ewarn "The logging patch should ONLY be used in restricted (i.e. honeypot) envs."
 		ewarn "This will log ALL output you enter into the shell, you have been warned."
 	fi
 }
 
 src_unpack() {
-	if [[ ${PV} == 9999 ]] ; then
+	local patch
+
+	if [[ ${PV} == 9999 ]]; then
 		git-r3_src_unpack
 	else
-		if use verify-sig ; then
-			verify-sig_verify_detached "${DISTDIR}"/${MY_P}.tar.gz{,.sig}
+		if use verify-sig; then
+			verify-sig_verify_detached "${DISTDIR}/${MY_P}.tar.gz"{,.sig}
 
-			local patch
-			for patch in "${MY_PATCHES[@]}" ; do
-				verify-sig_verify_detached ${patch}{,.sig}
+			for patch in "${MY_PATCHES[@]}"; do
+				verify-sig_verify_detached "${patch}"{,.sig}
 			done
 		fi
 
-		unpack ${MY_P}.tar.gz
+		unpack "${MY_P}.tar.gz"
 
-		if [[ -n ${GENTOO_PATCH_VER} ]] ; then
-			unpack ${PN}-${GENTOO_PATCH_VER}-patches.tar.xz
+		if [[ ${GENTOO_PATCH_VER} ]]; then
+			unpack "${PN}-${GENTOO_PATCH_VER}-patches.tar.xz"
 		fi
 	fi
 }
 
 src_prepare() {
-	# Include official patches
-	[[ ${PLEVEL} -gt 0 ]] && eapply -p0 "${MY_PATCHES[@]}"
+	# Include official patches.
+	(( PLEVEL > 0 )) && eapply -p0 "${MY_PATCHES[@]}"
 
-	# Clean out local libs so we know we use system ones w/releases.
-	if is_release ; then
-		rm -rf lib/{readline,termcap}/* || die
-		touch lib/{readline,termcap}/Makefile.in || die # for config.status
-		sed -ri -e 's:\$[{(](RL|HIST)_LIBSRC[)}]/[[:alpha:]_-]*\.h::g' Makefile.in || die
+	# Clean out local libs so we know we use system ones w/releases. The
+	# touch utility is invoked for the benefit of config.status.
+	if (( PLEVEL >= 0 )); then
+		rm -rf lib/{readline,termcap}/* \
+		&& touch lib/{readline,termcap}/Makefile.in \
+		&& sed -i -E 's:\$[{(](RL|HIST)_LIBSRC[)}]/[[:alpha:]_-]*\.h::g' Makefile.in \
+		|| die
 	fi
 
 	# Prefixify hardcoded path names. No-op for non-prefix.
 	hprefixify pathnames.h.in
 
-	# Avoid regenerating docs after patches, bug #407985
-	sed -i -r '/^(HS|RL)USER/s:=.*:=:' doc/Makefile.in || die
-	touch -r . doc/* || die
+	# Avoid regenerating docs after patches, bug #407985.
+	sed -i -E '/^(HS|RL)USER/s:=.*:=:' doc/Makefile.in \
+	&& touch -r . doc/* \
+	|| die
 
 	# Sometimes hangs (more noticeable w/ pgo), bug #907403.
 	rm tests/run-jobs || die
@@ -178,14 +160,20 @@ src_prepare() {
 }
 
 src_configure() {
+	local -a myconf
+
 	# Upstream only test with Bison and require GNUisms like YYEOF and
 	# YYERRCODE. The former at least may be in POSIX soon:
 	# https://www.austingroupbugs.net/view.php?id=1269.
 	# configure warns on use of non-Bison but doesn't abort. The result
 	# may misbehave at runtime.
-	unset YACC
+	unset -v YACC
 
-	local myconf=(
+	# wcsnwidth(), substring() issues with -Wlto-type-mismatch, reported
+	# upstream to Chet by email.
+	filter-lto
+
+	myconf=(
 		--disable-profiling
 
 		# Force linking with system curses ... the bundled termcap lib
@@ -203,7 +191,7 @@ src_configure() {
 		$(use_with mem-scramble bash-malloc)
 	)
 
-	# For descriptions of these, see config-top.h
+	# For descriptions of these, see config-top.h.
 	# bashrc/#26952 bash_logout/#90488 ssh/#24762 mktemp/#574426
 	append-cppflags \
 		-DDEFAULT_PATH_VALUE=\'\""${EPREFIX}"/usr/local/sbin:"${EPREFIX}"/usr/local/bin:"${EPREFIX}"/usr/sbin:"${EPREFIX}"/usr/bin:"${EPREFIX}"/sbin:"${EPREFIX}"/bin\"\' \
@@ -214,13 +202,9 @@ src_configure() {
 		-DSSH_SOURCE_BASHRC \
 		$(use bashlogger && echo -DSYSLOG_HISTORY)
 
-	# Don't even think about building this statically without
-	# reading bug #7714 first.  If you still build it statically,
-	# don't come crying to us with bugs ;).
-	#use static && export LDFLAGS="${LDFLAGS} -static"
 	use nls || myconf+=( --disable-nls )
 
-	if is_release ; then
+	if (( PLEVEL >= 0 )); then
 		# Historically, we always used the builtin readline, but since
 		# our handling of SONAME upgrades has gotten much more stable
 		# in the PM (and the readline ebuild itself preserves the old
@@ -234,17 +218,15 @@ src_configure() {
 		myconf+=( --with-installed-readline=. )
 	fi
 
-	if use plugins ; then
-		append-ldflags -Wl,-rpath,"${EPREFIX}"/usr/$(get_libdir)/bash
+	if use plugins; then
+		append-ldflags "-Wl,-rpath,${EPREFIX}/usr/$(get_libdir)/bash"
 	else
-		# Disable the plugins logic by hand since bash doesn't
-		# provide a way of doing it.
+		# Disable the plugins logic by hand since bash doesn't provide
+		# a way of doing it.
 		export ac_cv_func_dl{close,open,sym}=no \
 			ac_cv_lib_dl_dlopen=no ac_cv_header_dlfcn_h=no
 
-		sed -i \
-			-e '/LOCAL_LDFLAGS=/s:-rdynamic::' \
-			configure || die
+		sed -i -e '/LOCAL_LDFLAGS=/s:-rdynamic::' configure || die
 	fi
 
 	# bug #444070
@@ -254,20 +236,37 @@ src_configure() {
 }
 
 src_compile() {
-	# -fprofile-partial-training because upstream note the test suite isn't super comprehensive
-	# See https://documentation.suse.com/sbp/all/html/SBP-GCC-10/index.html#sec-gcc10-pgo
-	local pgo_generate_flags=$(usev pgo "-fprofile-update=atomic -fprofile-dir=${T}/pgo -fprofile-generate=${T}/pgo $(test-flags-CC -fprofile-partial-training)")
-	local pgo_use_flags=$(usev pgo "-fprofile-use=${T}/pgo -fprofile-dir=${T}/pgo $(test-flags-CC -fprofile-partial-training)")
+	local -a pgo_generate_flags pgo_use_flags
+	local flag
 
-	emake CFLAGS="${CFLAGS} ${pgo_generate_flags}"
-	use plugins && emake -C examples/loadables CFLAGS="${CFLAGS} ${pgo_generate_flags}" all others
+	# -fprofile-partial-training because upstream notes the test suite isn't
+	# super comprehensive.
+	# https://documentation.suse.com/sbp/all/html/SBP-GCC-10/index.html#sec-gcc10-pgo
+	if use pgo; then
+		pgo_generate_flags=(
+			-fprofile-update=atomic
+			-fprofile-dir="${T}"/pgo
+			-fprofile-generate="${T}"/pgo
+		)
+		pgo_use_flags=(
+			-fprofile-use="${T}"/pgo
+			-fprofile-dir="${T}"/pgo
+		)
+		if flag=$(test-flags-CC -fprofile-partial-training); then
+			pgo_generate_flags+=( "${flag}" )
+			pgo_use_flags+=( "${flag}" )
+		fi
+	fi
+
+	emake CFLAGS="${CFLAGS} ${pgo_generate_flags[*]}"
+	use plugins && emake -C examples/loadables CFLAGS="${CFLAGS} ${pgo_generate_flags[*]}" all others
 
 	# Build Bash and run its tests to generate profiles.
-	if use pgo ; then
+	if (( ${#pgo_generate_flags[@]} )); then
 		# Used in test suite.
-		unset A
+		unset -v A
 
-		emake CFLAGS="${CFLAGS} ${pgo_generate_flags}" -k check
+		emake CFLAGS="${CFLAGS} ${pgo_generate_flags[*]}" -k check
 
 		if tc-is-clang; then
 			llvm-profdata merge "${T}"/pgo --output="${T}"/pgo/default.profdata || die
@@ -275,14 +274,14 @@ src_compile() {
 
 		# Rebuild Bash using the profiling data we just generated.
 		emake clean
-		emake CFLAGS="${CFLAGS} ${pgo_use_flags}"
-		use plugins && emake -C examples/loadables CFLAGS="${CFLAGS} ${pgo_use_flags}" all others
+		emake CFLAGS="${CFLAGS} ${pgo_use_flags[*]}"
+		use plugins && emake -C examples/loadables CFLAGS="${CFLAGS} ${pgo_use_flags[*]}" all others
 	fi
 }
 
 src_test() {
 	# Used in test suite.
-	unset A
+	unset -v A
 
 	default
 }
@@ -292,62 +291,56 @@ src_install() {
 
 	default
 
+	my_prefixify() {
+		while read -r; do
+			if [[ $REPLY == *$1* ]]; then
+				REPLY=${REPLY/"/etc/"/"${EPREFIX}/etc/"}
+			fi
+			printf '%s\n' "${REPLY}" || ! break
+		done < "$2" || die
+	}
+
 	dodir /bin
-	mv "${ED}"/usr/bin/bash "${ED}"/bin/ || die
+	mv -- "${ED}"/usr/bin/bash "${ED}"/bin/ || die
 	dosym bash /bin/rbash
 
 	insinto /etc/bash
 	doins "${FILESDIR}"/bash_logout
-	doins "$(prefixify_ro "${FILESDIR}"/bashrc)"
+	my_prefixify bashrc.d "${FILESDIR}"/bashrc-r1 | newins - bashrc
 
-	keepdir /etc/bash/bashrc.d
+	insinto /etc/bash/bashrc.d
+	my_prefixify DIR_COLORS "${FILESDIR}"/bashrc.d/10-gentoo-color.bash | newins - 10-gentoo-color.bash
+	doins "${FILESDIR}"/bashrc.d/10-gentoo-title.bash
 
 	insinto /etc/skel
-	for f in bash{_logout,_profile,rc} ; do
-		newins "${FILESDIR}"/dot-${f} .${f}
+	for f in bash{_logout,_profile,rc}; do
+		newins "${FILESDIR}/dot-${f}" ".${f}"
 	done
 
-	local sed_args=(
-		-e 's:#GNU#@::'
-		-e '/#@/d'
-	)
-
-	if ! use readline ; then
-		# bug #432338
-		sed_args+=(
-			-e '/^shopt -s histappend/s:^:#:'
-			-e 's:use_color=true:use_color=false:'
-		)
-	fi
-
-	sed -i \
-		"${sed_args[@]}" \
-		"${ED}"/etc/skel/.bashrc \
-		"${ED}"/etc/bash/bashrc || die
-
-	if use plugins ; then
-		exeinto /usr/$(get_libdir)/bash
-		doexe $(echo examples/loadables/*.o | sed 's:\.o::g')
+	if use plugins; then
+		exeinto "/usr/$(get_libdir)/bash"
+		set -- examples/loadables/*.o
+		doexe "${@%.o}"
 
 		insinto /usr/include/bash-plugins
 		doins *.h builtins/*.h include/*.h lib/{glob/glob.h,tilde/tilde.h}
 	fi
 
-	if use examples ; then
-		for d in examples/{functions,misc,scripts,startup-files} ; do
-			exeinto /usr/share/doc/${PF}/${d}
-			docinto ${d}
-			for f in ${d}/* ; do
-				if [[ ${f##*/} != PERMISSION ]] && [[ ${f##*/} != *README ]] ; then
-					doexe ${f}
+	if use examples; then
+		for d in examples/{functions,misc,scripts,startup-files}; do
+			exeinto "/usr/share/doc/${PF}/${d}"
+			docinto "${d}"
+			for f in "${d}"/*; do
+				if [[ ${f##*/} != @(PERMISSION|*README) ]]; then
+					doexe "${f}"
 				else
-					dodoc ${f}
+					dodoc "${f}"
 				fi
 			done
 		done
 	fi
 
-	# Install bash_builtins.1 and rbash.1
+	# Install bash_builtins.1 and rbash.1.
 	emake -C doc DESTDIR="${D}" install_builtins
 	sed 's:bash\.1:man1/&:' doc/rbash.1 > "${T}"/rbash.1 || die
 	doman "${T}"/rbash.1
@@ -357,15 +350,40 @@ src_install() {
 }
 
 pkg_preinst() {
-	if [[ -e ${EROOT}/etc/bashrc ]] && [[ ! -d ${EROOT}/etc/bash ]] ; then
-		mkdir -p "${EROOT}"/etc/bash
-		mv -f "${EROOT}"/etc/bashrc "${EROOT}"/etc/bash/
+	if [[ -e ${EROOT}/etc/bashrc ]] && [[ ! -d ${EROOT}/etc/bash ]]; then
+		mkdir -p -- "${EROOT}"/etc/bash \
+		&& mv -f -- "${EROOT}"/etc/bashrc "${EROOT}"/etc/bash/ \
+		|| die
 	fi
 }
 
 pkg_postinst() {
-	# If /bin/sh does not exist, provide it
-	if [[ ! -e ${EROOT}/bin/sh ]] ; then
-		ln -sf bash "${EROOT}"/bin/sh
+	local old_ver
+
+	# If /bin/sh does not exist, provide it.
+	if [[ ! -e ${EROOT}/bin/sh ]]; then
+		ln -sf -- bash "${EROOT}"/bin/sh || die
 	fi
+
+	read -r old_ver <<<"${REPLACING_VERSIONS}"
+	if [[ ! $old_ver ]]; then
+		:
+	elif ver_test "$old_ver" -ge "5.2" && ver_test "$old_ver" -ge "5.2_p26-r1"; then
+		return
+	elif ver_test "$old_ver" -lt "5.2" && ver_test "$old_ver" -ge "5.1_p16-r8"; then
+		return
+	fi
+
+	einfo "Files situated under /etc/bash/bashrc.d must now have a suffix of .sh or .bash."
+	einfo ""
+	einfo "Gentoo now defaults to defining PROMPT_COMMAND as an array. Depending on the"
+	einfo "characteristics of the operating environment, this array may contain commands"
+	einfo "to set the window and pane title. Users that choose to customise this variable"
+	einfo "in ~/.bashrc are advised to append their commands, using the following syntax."
+	einfo ""
+	einfo "PROMPT_COMMAND+=('custom command goes here')"
+	einfo ""
+	einfo "Alternatively, users that wish to opt out of Gentoo's window title setting"
+	einfo "behaviour may now do so by either unsetting PROMPT_COMMAND or by re-defining it"
+	einfo "as desired. Previously, there was no formally supported method of opting out."
 }

@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Tomoe GTK+ interface widget library"
 HOMEPAGE="http://tomoe.osdn.jp/"
-SRC_URI="mirror://sourceforge/tomoe/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/tomoe/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

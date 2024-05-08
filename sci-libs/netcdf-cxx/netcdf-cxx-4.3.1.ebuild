@@ -1,7 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit libtool
 
 MYP=${PN}4-${PV}
 DESCRIPTION="C++ library for netCDF"
@@ -23,6 +25,11 @@ S="${WORKDIR}/${MYP}"
 PATCHES=(
 	"${FILESDIR}"/${P}-slibtool.patch
 )
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 src_configure() {
 	econf --disable-static

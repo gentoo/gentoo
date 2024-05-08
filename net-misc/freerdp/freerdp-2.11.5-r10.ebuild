@@ -15,7 +15,7 @@ else
 	MY_P=${P/_/-}
 	S="${WORKDIR}/${MY_P}"
 	SRC_URI="https://pub.freerdp.com/releases/${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Free implementation of the Remote Desktop Protocol"
@@ -98,10 +98,13 @@ RDEPEND="${COMMON_DEPEND}
 	server? ( !net-misc/freerdp:3[server] )
 "
 
-PATCHES=(
-	"${FILESDIR}/freerdp-2.11.2-clang.patch"
-	"${FILESDIR}/freerdp-2.11-Revert-codec-encode-messages-considering-endianness.patch"
-)
+src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/freerdp-2.11.2-clang.patch"
+		"${FILESDIR}/freerdp-2.11-Revert-codec-encode-messages-considering-endianness.patch"
+	)
+	cmake_src_prepare
+}
 
 option() {
 	usex "$1" ON OFF
@@ -155,8 +158,7 @@ src_configure() {
 }
 
 src_test() {
-	local myctestargs=()
-	use elibc_musl && myctestargs+=( -E TestBacktrace )
+	local myctestargs=( -E TestBacktrace )
 	cmake_src_test
 }
 

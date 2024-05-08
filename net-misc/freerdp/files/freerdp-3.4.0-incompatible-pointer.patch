@@ -1,0 +1,279 @@
+https://github.com/FreeRDP/FreeRDP/pull/9992
+https://bugs.gentoo.org/921252
+
+From 0242240ba7a61945607b835f378ff077e4582780 Mon Sep 17 00:00:00 2001
+From: akallabeth <akallabeth@posteo.net>
+Date: Mon, 18 Mar 2024 10:05:30 +0100
+Subject: [PATCH 1/8] [winpr,clipboard] fix incompatible WCHAR pointer
+
+---
+ winpr/libwinpr/clipboard/synthetic_file.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/winpr/libwinpr/clipboard/synthetic_file.c b/winpr/libwinpr/clipboard/synthetic_file.c
+index 14219806c76e..e748f8bea399 100644
+--- a/winpr/libwinpr/clipboard/synthetic_file.c
++++ b/winpr/libwinpr/clipboard/synthetic_file.c
+@@ -276,7 +276,13 @@ static BOOL add_directory_contents_to_list(wClipboard* clipboard, const WCHAR* l
+                                            const WCHAR* remote_name, wArrayList* files)
+ {
+ 	BOOL result = FALSE;
+-	const WCHAR* wildcard = "/\0*\0\0\0";
++	union
++	{
++		const char* c;
++		const WCHAR* w;
++	} wildcard;
++	const char buffer[4] = "/\0*\0\0\0";
++	wildcard.c = buffer;
+ 	const size_t wildcardLen = 3;
+ 
+ 	WINPR_ASSERT(clipboard);
+@@ -290,7 +296,7 @@ static BOOL add_directory_contents_to_list(wClipboard* clipboard, const WCHAR* l
+ 		return FALSE;
+ 
+ 	_wcsncat(namebuf, local_name, len);
+-	_wcsncat(namebuf, wildcard, wildcardLen);
++	_wcsncat(namebuf, wildcard.w, wildcardLen);
+ 
+ 	result = do_add_directory_contents_to_list(clipboard, local_name, remote_name, namebuf, files);
+ 
+
+From b1f60a1d117da2a6775dc12ab7e9b62c95615550 Mon Sep 17 00:00:00 2001
+From: akallabeth <akallabeth@posteo.net>
+Date: Mon, 18 Mar 2024 10:07:17 +0100
+Subject: [PATCH 2/8] [winpr,smartcard] fix incompatible PCSC_SCardListReaders
+ pointer
+
+---
+ winpr/libwinpr/smartcard/smartcard_pcsc.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/winpr/libwinpr/smartcard/smartcard_pcsc.c b/winpr/libwinpr/smartcard/smartcard_pcsc.c
+index fb04d5684aa0..c94b4caafe1e 100644
+--- a/winpr/libwinpr/smartcard/smartcard_pcsc.c
++++ b/winpr/libwinpr/smartcard/smartcard_pcsc.c
+@@ -992,8 +992,14 @@ static LONG WINAPI PCSC_SCardListReadersW(SCARDCONTEXT hContext, LPCWSTR mszGrou
+ 			return SCARD_E_NO_MEMORY;
+ 	}
+ 
+-	status =
+-	    PCSC_SCardListReaders_Internal(hContext, mszGroupsA, (LPSTR*)&mszReadersA, pcchReaders);
++	union
++	{
++		LPSTR* ppc;
++		LPSTR pc;
++	} cnv;
++	cnv.ppc = &mszReadersA;
++
++	status = PCSC_SCardListReaders_Internal(hContext, mszGroupsA, cnv.pc, pcchReaders);
+ 	if (status == SCARD_S_SUCCESS)
+ 	{
+ 		size_t size = 0;
+
+From 48eaca08048918260d4dca05e9522118657e8210 Mon Sep 17 00:00:00 2001
+From: akallabeth <akallabeth@posteo.net>
+Date: Mon, 18 Mar 2024 10:10:39 +0100
+Subject: [PATCH 3/8] [core,license] fix incompatible WCHAR pointer
+
+---
+ libfreerdp/core/license.c | 17 ++++++++++++-----
+ 1 file changed, 12 insertions(+), 5 deletions(-)
+
+diff --git a/libfreerdp/core/license.c b/libfreerdp/core/license.c
+index 99d4fa25fc84..e6c622a6b087 100644
+--- a/libfreerdp/core/license.c
++++ b/libfreerdp/core/license.c
+@@ -2802,18 +2802,25 @@ BOOL license_server_send_request(rdpLicense* license)
+ 	return license_set_state(license, LICENSE_STATE_REQUEST);
+ }
+ 
+-static BOOL license_set_string(const char* what, const char* value, WCHAR** dst, UINT32* dstLen)
++static BOOL license_set_string(const char* what, const char* value, BYTE** bdst, UINT32* dstLen)
+ {
+ 	WINPR_ASSERT(what);
+ 	WINPR_ASSERT(value);
+-	WINPR_ASSERT(dst);
++	WINPR_ASSERT(bdst);
+ 	WINPR_ASSERT(dstLen);
+ 
++	union
++	{
++		WCHAR** w;
++		BYTE** b;
++	} cnv;
++	cnv.b = bdst;
++
+ 	size_t len = 0;
+-	*dst = (BYTE*)ConvertUtf8ToWCharAlloc(value, &len);
+-	if (!*dst || (len > UINT32_MAX / sizeof(WCHAR)))
++	*cnv.w = ConvertUtf8ToWCharAlloc(value, &len);
++	if (!*cnv.w || (len > UINT32_MAX / sizeof(WCHAR)))
+ 	{
+-		WLog_ERR(TAG, "license->ProductInfo: %s == %p || %" PRIu32 " > UINT32_MAX", what, *dst,
++		WLog_ERR(TAG, "license->ProductInfo: %s == %p || %" PRIu32 " > UINT32_MAX", what, *cnv.w,
+ 		         len);
+ 		return FALSE;
+ 	}
+
+From 0717b4de1549390a3404af823bd36db66772abd2 Mon Sep 17 00:00:00 2001
+From: akallabeth <akallabeth@posteo.net>
+Date: Mon, 18 Mar 2024 10:10:59 +0100
+Subject: [PATCH 4/8] [winpr,crt] fix incompatible WCHAR pointer
+
+---
+ winpr/libwinpr/crt/test/TestUnicodeConversion.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/winpr/libwinpr/crt/test/TestUnicodeConversion.c b/winpr/libwinpr/crt/test/TestUnicodeConversion.c
+index a5c4c75e8f71..187a068aedaa 100644
+--- a/winpr/libwinpr/crt/test/TestUnicodeConversion.c
++++ b/winpr/libwinpr/crt/test/TestUnicodeConversion.c
+@@ -24,10 +24,12 @@ typedef struct
+ // TODO: The unit tests do not check for valid code points, so always end the test
+ // strings with a simple ASCII symbol for now.
+ static const testcase_t unit_testcases[] = {
+-	{ "foo", 3, "f\x00o\x00o\x00\x00\x00", 3 },
+-	{ "foo", 4, "f\x00o\x00o\x00\x00\x00", 4 },
++	{ "foo", 3, (const WCHAR*)"f\x00o\x00o\x00\x00\x00", 3 },
++	{ "foo", 4, (const WCHAR*)"f\x00o\x00o\x00\x00\x00", 4 },
+ 	{ "✊🎅ęʥ꣸𑗊a", 19,
+-	  "\x0a\x27\x3c\xd8\x85\xdf\x19\x01\xa5\x02\xf8\xa8\x05\xd8\xca\xdd\x61\x00\x00\x00", 9 }
++	  (const WCHAR*)"\x0a\x27\x3c\xd8\x85\xdf\x19\x01\xa5\x02\xf8\xa8\x05\xd8\xca\xdd\x61\x00\x00"
++	                "\x00",
++	  9 }
+ };
+ 
+ static void create_prefix(char* prefix, size_t prefixlen, size_t buffersize, SSIZE_T rc,
+
+From cab7b59fccabc0f09d659bd499c03dab7e911ffa Mon Sep 17 00:00:00 2001
+From: akallabeth <akallabeth@posteo.net>
+Date: Mon, 18 Mar 2024 10:13:40 +0100
+Subject: [PATCH 5/8] [codec,rfx] explicitly cast return
+
+cast to avoid compilation issues with incompatible-pointer-types
+---
+ libfreerdp/codec/rfx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libfreerdp/codec/rfx.c b/libfreerdp/codec/rfx.c
+index c83cfd5c1ac3..66ed1e04aea2 100644
+--- a/libfreerdp/codec/rfx.c
++++ b/libfreerdp/codec/rfx.c
+@@ -1368,7 +1368,7 @@ const RFX_TILE** rfx_message_get_tiles(const RFX_MESSAGE* message, UINT16* numTi
+ 	WINPR_ASSERT(message);
+ 	if (numTiles)
+ 		*numTiles = message->numTiles;
+-	return message->tiles;
++	return (const RFX_TILE**)message->tiles;
+ }
+ 
+ UINT16 rfx_message_get_tile_count(const RFX_MESSAGE* message)
+
+From 86966912502a3667c111d35dc9ba577a8b209a6d Mon Sep 17 00:00:00 2001
+From: akallabeth <akallabeth@posteo.net>
+Date: Mon, 18 Mar 2024 10:17:29 +0100
+Subject: [PATCH 6/8] [client,common] fix incompatible-pointer-types
+
+use a union to cast to expected types.
+---
+ client/common/file.c | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/client/common/file.c b/client/common/file.c
+index feb37967fc5a..39b08f18c916 100644
+--- a/client/common/file.c
++++ b/client/common/file.c
+@@ -2299,9 +2299,15 @@ BOOL freerdp_client_populate_settings_from_rdp_file(const rdpFile* file, rdpSett
+ 	if (~file->RedirectLocation)
+ 	{
+ 		size_t count = 0;
+-		char** str = CommandLineParseCommaSeparatedValuesEx(LOCATION_CHANNEL_NAME, NULL, &count);
+-		const BOOL rc = freerdp_client_add_dynamic_channel(settings, count, str);
+-		free(str);
++		union
++		{
++			void* pv;
++			char** str;
++			const char** cstr;
++		} cnv;
++		cnv.str = CommandLineParseCommaSeparatedValuesEx(LOCATION_CHANNEL_NAME, NULL, &count);
++		const BOOL rc = freerdp_client_add_dynamic_channel(settings, count, cnv.cstr);
++		free(cnv.pv);
+ 		if (!rc)
+ 			return FALSE;
+ 	}
+
+From dfdb8a849ef78a6e5d1530489ad7f899c62c9c22 Mon Sep 17 00:00:00 2001
+From: akallabeth <akallabeth@posteo.net>
+Date: Mon, 18 Mar 2024 10:18:09 +0100
+Subject: [PATCH 7/8] [channels,drive] fix wrong function usage
+
+_wcslen is for WCHAR, wcslen for wchar_t
+---
+ channels/drive/client/drive_main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/channels/drive/client/drive_main.c b/channels/drive/client/drive_main.c
+index 0fdc2e08ff50..04f8d837fa6b 100644
+--- a/channels/drive/client/drive_main.c
++++ b/channels/drive/client/drive_main.c
+@@ -511,7 +511,7 @@ static UINT drive_process_irp_query_volume_information(DRIVE_DEVICE* drive, IRP*
+ 			/* http://msdn.microsoft.com/en-us/library/cc232101.aspx */
+ 			const WCHAR* diskType =
+ 			    InitializeConstWCharFromUtf8("FAT32", LabelBuffer, ARRAYSIZE(LabelBuffer));
+-			const size_t diskTypeLen = (wcslen(diskType) + 1) * sizeof(WCHAR);
++			const size_t diskTypeLen = (_wcslen(diskType) + 1) * sizeof(WCHAR);
+ 			const size_t length = 12ul + diskTypeLen;
+ 			Stream_Write_UINT32(output, length); /* Length */
+ 
+
+From 00ec91dc16724f7aad8866b4f988baad4c1216a8 Mon Sep 17 00:00:00 2001
+From: akallabeth <akallabeth@posteo.net>
+Date: Mon, 18 Mar 2024 10:25:00 +0100
+Subject: [PATCH 8/8] [server,shadow] cast incompatible pointer
+
+the context pointer to WTSOpenServerA is intentional, cast to LPSTR to
+match definition
+---
+ server/shadow/shadow_client.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/server/shadow/shadow_client.c b/server/shadow/shadow_client.c
+index 0fd52363eb6d..f2a5f63cb188 100644
+--- a/server/shadow/shadow_client.c
++++ b/server/shadow/shadow_client.c
+@@ -252,7 +252,7 @@ static BOOL shadow_client_context_new(freerdp_peer* peer, rdpContext* context)
+ 		goto fail;
+ 
+ 	region16_init(&(client->invalidRegion));
+-	client->vcm = WTSOpenServerA(peer->context);
++	client->vcm = WTSOpenServerA((LPSTR)peer->context);
+ 
+ 	if (!client->vcm || client->vcm == INVALID_HANDLE_VALUE)
+ 		goto fail;
+From 00f4c9612a924f1b87a7dcdd2a5728d9e9616ee6 Mon Sep 17 00:00:00 2001
+From: akallabeth <akallabeth@posteo.net>
+Date: Mon, 18 Mar 2024 19:57:02 +0100
+Subject: [PATCH] [winpr,clipboard] fix WCHAR buffer size
+
+---
+ winpr/libwinpr/clipboard/synthetic_file.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/winpr/libwinpr/clipboard/synthetic_file.c b/winpr/libwinpr/clipboard/synthetic_file.c
+index e748f8bea399..ce70e1efc26e 100644
+--- a/winpr/libwinpr/clipboard/synthetic_file.c
++++ b/winpr/libwinpr/clipboard/synthetic_file.c
+@@ -281,9 +281,9 @@ static BOOL add_directory_contents_to_list(wClipboard* clipboard, const WCHAR* l
+ 		const char* c;
+ 		const WCHAR* w;
+ 	} wildcard;
+-	const char buffer[4] = "/\0*\0\0\0";
++	const char buffer[6] = "/\0*\0\0\0";
+ 	wildcard.c = buffer;
+-	const size_t wildcardLen = 3;
++	const size_t wildcardLen = ARRAYSIZE(buffer) / sizeof(WCHAR);
+ 
+ 	WINPR_ASSERT(clipboard);
+ 	WINPR_ASSERT(local_name);

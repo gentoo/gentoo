@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/924211
+https://gitlab.gnome.org/GNOME/perl-cairo/-/issues/2
+
+--- a/CairoSurface.xs
++++ b/CairoSurface.xs
+@@ -389,7 +389,7 @@ cairo_status_t
+ cairo_surface_set_mime_data (cairo_surface_t *surface, const char *mime_type, SV *data);
+     PREINIT:
+ 	const unsigned char *mime_data;
+-	unsigned long length;
++	STRLEN length;
+     CODE:
+ 	SvREFCNT_inc (data);
+ 	mime_data = (const unsigned char *) SvPV(data, length);

@@ -4,7 +4,7 @@
 EAPI=8
 PYTHON_COMPAT=( python{3_9,3_10,3_11} )
 
-inherit cmake fcaps linux-info optfeature python-single-r1 systemd
+inherit cmake fcaps flag-o-matic linux-info optfeature python-single-r1 systemd
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/netdata/${PN}.git"
@@ -20,7 +20,7 @@ HOMEPAGE="https://github.com/netdata/netdata https://my-netdata.io/"
 
 LICENSE="GPL-3+ MIT BSD"
 SLOT="0"
-IUSE="aclk bpf cloud cups +dbengine ipmi mongodb mysql nfacct nodejs postgres prometheus +python tor xen"
+IUSE="aclk bpf cloud cups +dbengine ipmi mongodb mysql nfacct nodejs postgres prometheus +python systemd tor xen"
 REQUIRED_USE="
 	mysql? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -78,7 +78,8 @@ RDEPEND="
 	xen? (
 		app-emulation/xen-tools
 		dev-libs/yajl
-	)"
+	)
+	systemd? ( sys-apps/systemd )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
@@ -94,6 +95,14 @@ pkg_setup() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/927174
+	# https://github.com/netdata/netdata/issues/17321
+	#
+	# Do not trust with LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_Git=TRUE
 		-DCMAKE_INSTALL_PREFIX=/
@@ -108,6 +117,7 @@ src_configure() {
 		-DENABLE_PLUGIN_XENSTAT=$(usex xen)
 		-DENABLE_PLUGIN_EBPF=$(usex bpf)
 		-DENABLE_PLUGIN_GO=FALSE
+		-DENABLE_PLUGIN_SYSTEMD_JOURNAL=$(usex systemd)
 	)
 	cmake_src_configure
 }

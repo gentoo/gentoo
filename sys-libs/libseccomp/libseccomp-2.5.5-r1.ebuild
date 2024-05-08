@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 multilib-minimal
 
@@ -16,11 +16,15 @@ HOMEPAGE="https://github.com/seccomp/libseccomp"
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/seccomp/libseccomp.git"
 	PRERELEASE="2.6.0"
+	AUTOTOOLS_AUTO_DEPEND=yes
 	inherit autotools git-r3
 else
+	AUTOTOOLS_AUTO_DEPEND=no
+	inherit autotools
 	SRC_URI="https://github.com/seccomp/libseccomp/releases/download/v${PV}/${P}.tar.gz
-		experimental-loong? ( https://dev.gentoo.org/~xen0n/distfiles/${PN}-2.5.5-loongarch64-20231204.patch.xz )"
-	KEYWORDS="-* ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux"
+		experimental-loong? ( https://github.com/matoro/libseccomp/compare/v${PV}..loongarch-r1.patch
+			-> ${P}-loongarch-r1.patch )"
+	KEYWORDS="-* amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="LGPL-2.1"
@@ -39,6 +43,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	${DEPEND}
 	dev-util/gperf
+	experimental-loong? ( ${AUTOTOOLS_DEPEND} )
 	python? (
 		${DISTUTILS_DEPS}
 		dev-python/cython[${PYTHON_USEDEP}]
@@ -49,14 +54,19 @@ PATCHES=(
 	"${FILESDIR}"/libseccomp-python-shared.patch
 	"${FILESDIR}"/libseccomp-2.5.3-skip-valgrind.patch
 	"${FILESDIR}"/libseccomp-2.5.5-which-hunt.patch
+	"${FILESDIR}"/libseccomp-2.5.5-arch-syscall-check.patch
 )
 
 src_prepare() {
 	if use experimental-loong; then
-		PATCHES+=( "${WORKDIR}/${PN}-2.5.5-loongarch64-20231204.patch" )
+		PATCHES+=( "${DISTDIR}/${P}-loongarch-r1.patch" )
 	fi
 
 	default
+
+	if [[ ${PV} == *9999 ]] ; then
+		sed -i -e "s/0.0.0/${PRERELEASE}/" configure.ac || die
+	fi
 
 	if use experimental-loong; then
 		# touch generated files to avoid activating maintainer mode
@@ -65,9 +75,8 @@ src_prepare() {
 		find . -name Makefile.in -exec touch {} + || die
 	fi
 
-	if [[ ${PV} == *9999 ]] ; then
-		sed -i -e "s/0.0.0/${PRERELEASE}/" configure.ac || die
-
+	if [[ ${PV} == *9999 ]] || use experimental-loong; then
+		rm -f "include/seccomp.h" || die
 		eautoreconf
 	fi
 }

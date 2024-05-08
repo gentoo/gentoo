@@ -58,10 +58,6 @@ dev-build/cmake gui
 # x11-libs/gtksourceview:4 not keyworded here
 media-gfx/inkscape sourceview
 
-# Rich Freeman <rich0@gentoo.org> (2023-09-13)
-# Tests require shellcheck which is not currently available on hppa
-sys-process/systemd-cron test
-
 # Matt Turner <mattst88@gentoo.org> (2023-05-30)
 # sys-apps/dbus-broker is not keyworded
 app-accessibility/at-spi2-core dbus-broker

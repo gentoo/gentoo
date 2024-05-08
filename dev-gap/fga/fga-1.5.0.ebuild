@@ -10,6 +10,6 @@ SLOT="0"
 SRC_URI="https://github.com/gap-packages/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 gap-pkg_enable_tests

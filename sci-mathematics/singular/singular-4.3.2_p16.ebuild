@@ -42,6 +42,7 @@ SITEFILE=60${PN}-gentoo.el
 
 PATCHES=(
 	"${FILESDIR}/${P}-test-underlinking.patch"
+	"${FILESDIR}/${P}-lto.patch"
 )
 
 src_prepare() {

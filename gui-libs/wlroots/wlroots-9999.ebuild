@@ -28,7 +28,7 @@ REQUIRED_USE="
 
 DEPEND="
 	>=dev-libs/wayland-1.22.0
-	media-libs/mesa[egl(+),gles2]
+	media-libs/mesa[egl(+),gles2(+)]
 	>=x11-libs/libdrm-2.4.120
 	x11-libs/libxkbcommon
 	>=x11-libs/pixman-0.42.0

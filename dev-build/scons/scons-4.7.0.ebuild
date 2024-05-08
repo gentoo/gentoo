@@ -32,7 +32,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
@@ -76,6 +76,7 @@ src_prepare() {
 			test/TEX/newglossary.py
 			test/TEX/variant_dir_newglossary.py
 			test/Configure/option--config.py
+			test/D/HSTeoh/sconstest-linkingProblem_gdc.py
 			# broken by commas in date, sic!
 			test/option/option-v.py
 			test/Interactive/version.py

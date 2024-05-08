@@ -9,7 +9,8 @@ DESCRIPTION="Console-based mouse driver"
 HOMEPAGE="https://www.nico.schottelius.org/software/gpm/"
 SRC_URI="
 	https://www.nico.schottelius.org/software/${PN}/archives/${P}.tar.lzma
-	mirror://gentoo/${P}-docs.patch.xz"
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-docs.patch.xz
+"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="CPU, memory, swap, network stats for G15 Keyboard"
 HOMEPAGE="https://sourceforge.net/projects/g15daemon/"
-SRC_URI="mirror://sourceforge/g15daemon/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/g15daemon/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

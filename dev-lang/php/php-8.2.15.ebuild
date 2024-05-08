@@ -20,7 +20,7 @@ LICENSE="PHP-3.01
 	unicode? ( BSD-2 LGPL-2.1 )"
 
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ~ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 # We can build the following SAPIs in the given order
 SAPIS="embed cli cgi fpm apache2 phpdbg"
@@ -308,6 +308,12 @@ src_prepare() {
 
 	# https://github.com/php/php-src/issues/12801
 	rm ext/pcre/tests/gh11374.phpt || die
+
+	# This is a memory usage test with hard-coded limits. Whenever the
+	# limits are surpassed... they get increased... but in the meantime,
+	# the tests fail. This is not really a test that end users should
+	# be running pre-install, in my opinion. Bug 927461.
+	rm ext/fileinfo/tests/bug78987.phpt || die
 }
 
 src_configure() {

@@ -1,0 +1,32 @@
+https://github.com/stevegrubb/libcap-ng/commit/75fe3714a8da28f0e2939c4402527782014401dd
+https://github.com/stevegrubb/libcap-ng/pull/52
+
+From b7d21b473badb349bc0d6246b3804a8a2d329f36 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Wed, 3 Apr 2024 17:32:04 -0700
+Subject: [PATCH] utils: link using libcap-ng.la
+
+When linking internal dependencies that were linked using $(LIBTOOL) the
+ideal method is to use the generated libtool archive (.la) file. This
+fixes the build with slibtool which doesn't find -lcap-ng during the
+build and explicitly requires the .la file to be used.
+
+Gentoo Issue: https://bugs.gentoo.org/928450
+Signed-off-by: orbea <orbea@riseup.net>
+---
+ utils/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/utils/Makefile.am b/utils/Makefile.am
+index f430454..97aa021 100644
+--- a/utils/Makefile.am
++++ b/utils/Makefile.am
+@@ -25,7 +25,7 @@ CONFIG_CLEAN_FILES = *.loT *.rej *.orig
+ AUTOMAKE_OPTIONS = no-dependencies
+ EXTRA_DIST = $(man_MANS)
+ AM_CPPFLAGS = -I${top_srcdir} -I${top_srcdir}/src
+-LIBS = -L${top_builddir}/src -lcap-ng
++LDADD = ${top_builddir}/src/libcap-ng.la
+ AM_CFLAGS = -W -Wall -Wshadow ${WFLAGS} -Wundef -D_GNU_SOURCE
+ bin_PROGRAMS = pscap netcap filecap captest
+ man_MANS = pscap.8 netcap.8 filecap.8 captest.8

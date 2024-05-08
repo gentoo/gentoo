@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ S="${WORKDIR}/OpenShadingLanguage-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64"
 
 X86_CPU_FEATURES=(
 	sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4.1 sse4_2:sse4.2
@@ -74,6 +74,11 @@ pkg_setup() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/875836
+	# https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/issues/1810
+	filter-lto
+
 	local cpufeature
 	local mysimd=()
 	for cpufeature in "${CPU_FEATURES[@]}"; do

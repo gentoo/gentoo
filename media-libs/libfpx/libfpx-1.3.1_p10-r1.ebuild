@@ -12,7 +12,7 @@ S="${WORKDIR}/${P/_p/-}"
 
 LICENSE="Flashpix"
 SLOT="0/1"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="static-libs"
 
 PATCHES=(
@@ -30,6 +30,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/859913
+	# https://github.com/ImageMagick/libfpx/issues/6
+	#
+	# Do not trust for LTO either
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	append-ldflags -Wl,--no-undefined
 	econf \
 		$(use_enable static-libs static) \

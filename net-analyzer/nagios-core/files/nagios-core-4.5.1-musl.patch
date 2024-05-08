@@ -1,0 +1,98 @@
+From 19602faf7111203b748a4dc9ccaf3111586a8e96 Mon Sep 17 00:00:00 2001
+From: Sebastian Wolf <swolf@nagios.com>
+Date: Fri, 29 Mar 2024 17:01:52 -0400
+Subject: [PATCH 1/2] Fix #952 - s/uint/unsigned int/g
+
+---
+ Changelog         |  4 ++++
+ lib/t-utils.c     | 10 +++++-----
+ lib/test-dkhash.c |  2 +-
+ 3 files changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/Changelog b/Changelog
+index ec3cd64fc..fcf4742f2 100644
+--- a/Changelog
++++ b/Changelog
+@@ -2,6 +2,10 @@
+ Nagios Core 4 Change Log
+ ########################
+ 
++4.5.2 - 2024-04-30
++------------------
++* Fix build when compiling against musl libc (#952) (Sebastian Wolf)
++
+ 4.5.1 - 2024-02-28
+ -------------------
+ * Fix text rendering in Configuration -> Command Expansion when the command ends in whitespace (Thanks Joran LEREEC for reporting this issue) (Dylan Anderson)
+diff --git a/lib/t-utils.c b/lib/t-utils.c
+index badab7c03..123f114c8 100644
+--- a/lib/t-utils.c
++++ b/lib/t-utils.c
+@@ -1,8 +1,8 @@
+ #include "t-utils.h"
+ 
+ const char *cyan = "", *red = "", *green = "", *yellow = "", *reset = "";
+-uint passed, failed, t_verbose = 0;
+-static uint t_depth;
++unsigned int passed, failed, t_verbose = 0;
++static unsigned int t_depth;
+ static const char *indent_str = "  ";
+ 
+ /* can't be used when a or b has side-effects, but we don't care here */
+@@ -27,9 +27,9 @@ void t_set_colors(int force)
+ 	}
+ }
+ 
+-static void t_indent(uint depth)
++static void t_indent(unsigned int depth)
+ {
+-	uint i;
++	unsigned int i;
+ 	for (i = 0; i < depth; i++) {
+ 		printf("%s", indent_str);
+ 	}
+@@ -136,7 +136,7 @@ int ok_int(int a, int b, const char *name)
+ 	return TEST_FAIL;
+ }
+ 
+-int ok_uint(uint a, uint b, const char *name)
++int ok_unsigned int(unsigned int a, unsigned int b, const char *name)
+ {
+ 	if (a == b) {
+ 		t_pass("%s", name);
+diff --git a/lib/test-dkhash.c b/lib/test-dkhash.c
+index 6db1d7a92..15c2b676c 100644
+--- a/lib/test-dkhash.c
++++ b/lib/test-dkhash.c
+@@ -68,7 +68,7 @@ static struct test_data *ddup(int x, int i, int j)
+ }
+ 
+ struct dkhash_check {
+-	uint entries, count, max, added, removed;
++	unsigned int entries, count, max, added, removed;
+ 	int ent_delta, addrm_delta;
+ };
+ 
+
+From c4f56318e6ecfab85d592ea302d747c80be5f557 Mon Sep 17 00:00:00 2001
+From: Sebastian Wolf <swolf@nagios.com>
+Date: Fri, 29 Mar 2024 17:04:29 -0400
+Subject: [PATCH 2/2] derp
+
+---
+ lib/t-utils.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/t-utils.c b/lib/t-utils.c
+index 123f114c8..24098655f 100644
+--- a/lib/t-utils.c
++++ b/lib/t-utils.c
+@@ -136,7 +136,7 @@ int ok_int(int a, int b, const char *name)
+ 	return TEST_FAIL;
+ }
+ 
+-int ok_unsigned int(unsigned int a, unsigned int b, const char *name)
++int ok_uint(unsigned int a, unsigned int b, const char *name)
+ {
+ 	if (a == b) {
+ 		t_pass("%s", name);

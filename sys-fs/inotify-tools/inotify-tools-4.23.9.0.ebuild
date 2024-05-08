@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~mips ~riscv sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~mips ~ppc64 ~riscv sparc x86"
 IUSE="doc"
 
 BDEPEND="doc? ( app-text/doxygen )"

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ MY_P="TiMidity++-${MY_PV}"
 
 DESCRIPTION="Handy MIDI to WAV converter with OSS and ALSA output support"
 HOMEPAGE="https://timidity.sourceforge.net/"
-SRC_URI="mirror://sourceforge/timidity/${MY_P}.tar.xz"
+SRC_URI="https://downloads.sourceforge.net/timidity/${MY_P}.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2+"

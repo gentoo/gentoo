@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/splattael/minitest-around"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
-IUSE=""
+IUSE="test"
 
 ruby_add_rdepend "dev-ruby/minitest:5"
 
@@ -25,6 +25,8 @@ all_ruby_prepare() {
 	sed -i -e '/bump/ s:^:#:' \
 		-e '/ls-files/d' \
 		-e '/cucumber/ s/,.*$//' minitest-around.gemspec Rakefile || die
+	sed -e '/bundler/ s:^:#:' \
+		-i test/helper.rb Rakefile || die
 }
 
 each_ruby_test() {

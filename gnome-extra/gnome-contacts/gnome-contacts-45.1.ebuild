@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Design/Apps/Contacts"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="+gnome-online-accounts"
 
 VALA_DEPEND="
@@ -20,7 +20,7 @@ VALA_DEPEND="
 	dev-libs/folks[vala(+)]
 	gnome-online-accounts? ( net-libs/gnome-online-accounts[vala] )
 	gnome-extra/evolution-data-server[gtk,vala]
-	>=dev-libs/libportal-0.6:=[vala]
+	>=dev-libs/libportal-0.6:=[gtk,vala]
 "
 RDEPEND="
 	>=dev-libs/folks-0.14.0:=[eds]

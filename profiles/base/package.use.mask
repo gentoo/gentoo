@@ -6,6 +6,27 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2024-04-27)
+# dev-python/uv is nowhere near ready to be stabilized.
+dev-python/build test-rust
+
+# Michał Górny <mgorny@gentoo.org> (2024-04-23)
+# app-forensics/libewf is being removed (TestDisk does not build
+# successfully with our version anyway).
+app-admin/testdisk ewf
+
+# Mike Gilbert <floppym@gentoo.org> (2024-04-18)
+# Wayland client is broken/deprecated by upstream. Bug 930197.
+>=net-misc/freerdp-3 wayland
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-04-06)
+# Depends on last-rited kde-apps/ktp-accounts-kcm
+dev-util/kdevelop reviewboard
+
+# Michał Górny <mgorny@gentoo.org> (2024-03-26)
+# sys-auth/pam_ssh is being last rited, bug #892031.
+sys-auth/pambase pam_ssh
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-22)
 # Building with qt6 requires (masked) kde-frameworks:6
 app-admin/calamares qt6
@@ -22,13 +43,6 @@ app-crypt/pinentry qt6
 # Suffers from unaligned accesses, upstream's working on it.
 # https://github.com/psycopg/psycopg/issues/734
 <=dev-python/psycopg-3.1.18 native-extensions
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-03-10)
-# These packages have RESTRICT="test" and depend on dev-java/ant-junit
-# which is going away. Remove this mask when ebuilds are updated.
-dev-java/ant-ivy test
-dev-java/rhino test
-www-servers/tomcat test
 
 # Guilherme Amadio <amadio@gentoo.org> (2024-03-09)
 # Requires manually installing dependencies, see bug #791802
@@ -171,6 +185,9 @@ app-admin/ansible-molecule doc
 
 # William Hubbs <williamh@gentoo.org> (2023-06-30)
 # multiple repeated issues: Bug: #909394
+# Joonas Niilola <juippis@gentoo.org> (2024-04-22)
+# Can break reverse dependencies (Chromium, Firefox), debugging not always 
+# obvious.
 net-libs/nodejs lto
 
 # Sam James <sam@gentoo.org> (2023-06-29)
@@ -270,7 +287,7 @@ x11-wm/stumpwm doc
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2022-11-25)
 # USE=tbb is broken in 7.7.0
 # https://tracker.dev.opencascade.org/view.php?id=33152
->=sci-libs/opencascade-7.7.0 tbb
+<sci-libs/opencascade-7.7.1 tbb
 
 # Guillermo Joandet <gjoandet@gmail.com> (2022-11-22)
 # app-text/pandoc is not keyworded on most architectures
@@ -588,10 +605,6 @@ app-office/abiword ots
 <sys-devel/clang-17 llvm_targets_Xtensa
 <sys-devel/llvm-17 llvm_targets_Xtensa
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-27)
-# The respective dependencies are masked for removal.
-net-im/telepathy-connection-managers gadu icq meanwhile steam yahoo
-
 # Joonas Niilola <juippis@gentoo.org> (2020-09-23)
 # Highly experimental, may cause breakages when updating. Use with
 # caution!
@@ -617,10 +630,6 @@ dev-python/autobahn xbr
 # Stephan Hartmann <stha09@googlemail.com> (2020-06-28)
 # Mostly intended for development and not for general use.
 >=www-client/chromium-84 headless
-
-# Mikle Kolyada <zlogene@gentoo.org> (2020-06-21)
-# Multiple runtime crashes, see bug #724672
-media-gfx/inkscape jemalloc
 
 # Ben Kohler <bkohler@gentoo.org> (2020-04-29)
 # Dependency pam_wrapper missing for tests, and RESTRICT=test is already set
@@ -829,12 +838,6 @@ sys-devel/gcc vtv
 # Upstream supports using Clang's address sanitizer, but apparently
 # invokes it wrong.
 dev-lang/moarvm asan
-
-# James Le Cuirot <chewi@gentoo.org> (2016-04-10)
-# Slower and less reliable than HotSpot and we don't support Java on
-# any non-HotSpot platforms. Don't unmask these unless you know what
-# you're doing. This has upstream's approval.
-dev-java/icedtea cacao jamvm
 
 # Rick Farina <zerochaos@gentoo.org> (2015-10-06)
 # forward porting this patch is non-trivial, mask for now

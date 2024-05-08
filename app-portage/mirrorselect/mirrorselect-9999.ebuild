@@ -4,7 +4,7 @@
 EAPI="8"
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit edo distutils-r1 prefix
@@ -40,7 +40,7 @@ RDEPEND="
 	>=dev-python/ssl-fetch-${SSL_FETCH_VER}[${PYTHON_USEDEP}]
 "
 
-distutils_enable_tests setup.py
+distutils_enable_tests unittest
 
 python_prepare_all() {
 	python_setup

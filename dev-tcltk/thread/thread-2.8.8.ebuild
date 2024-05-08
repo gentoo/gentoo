@@ -9,7 +9,9 @@ MY_P="${PN}${PV}"
 
 DESCRIPTION="Tcl Thread extension"
 HOMEPAGE="http://www.tcl.tk/"
-SRC_URI="mirror://sourceforge/project/tcl/Thread%20Extension/${PV}/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/project/tcl/Thread%20Extension/${PV}/${MY_P}.tar.gz"
+
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
@@ -21,8 +23,6 @@ RDEPEND="${DEPEND}"
 QA_CONFIG_IMPL_DECL_SKIP=(
 	opendir64 rewinddir64 closedir64 stat64 # used to test for Large File Support on AIX
 )
-
-S="${WORKDIR}"/${MY_P}
 
 PATCHES=( "${FILESDIR}"/${PN}-2.8.5-musl.patch )
 

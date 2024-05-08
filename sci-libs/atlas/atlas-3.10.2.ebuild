@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ LAPACKP=lapack-3.6.0.tgz
 
 DESCRIPTION="Automatically Tuned Linear Algebra Software"
 HOMEPAGE="https://math-atlas.sourceforge.net"
-SRC_URI="mirror://sourceforge/math-atlas/${PN}${PV}.tar.bz2
+SRC_URI="https://downloads.sourceforge.net/math-atlas/${PN}${PV}.tar.bz2
 	fortran? ( lapack? ( http://www.netlib.org/lapack/${LAPACKP} ) )"
 
 LICENSE="BSD"

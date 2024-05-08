@@ -16,6 +16,7 @@
 		Using this tool, you can maintain small, focused, easy-to-review pull
 		requests with little effort.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">VirtusLab/git-machete</remote-id>
 		<remote-id type="pypi">git-machete</remote-id>

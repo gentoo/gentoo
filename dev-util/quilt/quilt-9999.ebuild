@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,6 +27,7 @@ RDEPEND="
 	elibc_SunOS? ( app-misc/getopt )
 	>=sys-apps/coreutils-8.32-r1
 	graphviz? ( media-gfx/graphviz )
+	app-arch/zstd:=
 "
 
 src_prepare() {
@@ -54,7 +55,7 @@ src_install() {
 	newbashcomp bash_completion ${PN}
 
 	rm -rf "${ED}"/usr/share/doc/${PN}
-	dodoc AUTHORS TODO "doc/README" "doc/README.MAIL" "doc/quilt.pdf"
+	dodoc AUTHORS COPYING NEWS TODO "doc/README" "doc/README.MAIL" "doc/quilt.pdf"
 
 	# Remove the compat symlinks
 	rm -rf "${ED}"/usr/share/quilt/compat

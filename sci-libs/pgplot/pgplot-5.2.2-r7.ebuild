@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,8 +11,8 @@ DESCRIPTION="FORTRAN/C device-independent scientific graphic library"
 HOMEPAGE="https://www.astro.caltech.edu/~tjp/pgplot/"
 SRC_URI="ftp://ftp.astro.caltech.edu/pub/pgplot/${MY_P}.tar.gz"
 
-SLOT="0"
 LICENSE="free-noncomm"
+SLOT="0"
 KEYWORDS="amd64 ~arm ~ia64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc motif static-libs tk"
 
@@ -66,6 +66,12 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/862918
+	#
+	# Upstream contact method is email. I have sent one.
+	filter-lto
+
 	# GCC 10 workaround
 	# bug #722190
 	append-fflags $(test-flags-FC -fallow-argument-mismatch)

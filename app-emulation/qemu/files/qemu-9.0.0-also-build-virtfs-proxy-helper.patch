@@ -1,0 +1,35 @@
+From 951325a0c9519d4910d80cc6c7a5728c0dbc4946 Mon Sep 17 00:00:00 2001
+Message-ID: <951325a0c9519d4910d80cc6c7a5728c0dbc4946.1714317553.git.mprivozn@redhat.com>
+From: Matthias Maier <tamiko@43-1.org>
+Date: Mon, 4 Apr 2022 12:56:59 +0200
+Subject: [PATCH] also build virtfs-proxy-helper
+
+The Gentoo ebuild splits the qemu build into a softmmu, user and tool
+phase in order to be able to build and link some of the qemu emulators
+statically. This unfortunately has the consequence that we never
+configure with "have_virtfs" and "have_tools" at the same time.
+
+As a workaround, simply build the virtfs userland unconditionally. After
+all, it is a tiny executable.
+
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+---
+ meson.build | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index c3a2be7b2d..50a5cfcf4e 100644
+--- a/meson.build
++++ b/meson.build
+@@ -2116,8 +2116,6 @@ have_virtfs = get_option('virtfs') \
+     .allowed()
+ 
+ have_virtfs_proxy_helper = get_option('virtfs_proxy_helper') \
+-    .require(host_os != 'darwin', error_message: 'the virtfs proxy helper is incompatible with macOS') \
+-    .require(have_virtfs, error_message: 'the virtfs proxy helper requires that virtfs is enabled') \
+     .disable_auto_if(not have_tools) \
+     .require(libcap_ng.found(), error_message: 'the virtfs proxy helper requires libcap-ng') \
+     .allowed()
+-- 
+2.43.2
+

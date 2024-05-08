@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,15 +6,16 @@ EAPI=8
 inherit meson
 
 MY_P="${PN}-v${PV}"
-SRC_URI="https://download.flashrom.org/releases/${MY_P}.tar.bz2"
-KEYWORDS="amd64 arm arm64 ~loong ppc ~ppc64 ~riscv x86"
-S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Utility for reading, writing, erasing and verifying flash ROM chips"
 HOMEPAGE="https://flashrom.org/Flashrom"
+SRC_URI="https://download.flashrom.org/releases/${MY_P}.tar.bz2"
+
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="amd64 arm arm64 ~loong ppc ~ppc64 ~riscv x86"
 
 # The defaults should match the upstream "default" flags in meson.build
 IUSE_PROGRAMMERS="

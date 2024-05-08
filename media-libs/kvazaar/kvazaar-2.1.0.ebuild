@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ else
 		test? ( https://github.com/silentbicycle/greatest/archive/v${GREATEST_PV}.tar.gz -> greatest-${GREATEST_PV}.tar.gz )"
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
 fi
-inherit autotools flag-o-matic multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="Open-source HEVC encoder"
 HOMEPAGE="http://ultravideo.cs.tut.fi/ https://github.com/ultravideo/kvazaar"
@@ -48,8 +48,6 @@ src_prepare() {
 		rmdir "${S}/greatest" || die
 		mv "${WORKDIR}/greatest-${GREATEST_PV}" "${S}/greatest" || die
 	fi
-	# Some m4 macros append Werror, we do not want that.
-	append-flags "-Wno-error"
 
 	# valgrind isn't available on all archs
 	# also, the valgrind tests fail with new ffmpeg (upstream only tests again ffmpeg 2.6.3)
@@ -59,7 +57,6 @@ src_prepare() {
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
-		--disable-werror \
 		$(use_enable static-libs static)
 }
 

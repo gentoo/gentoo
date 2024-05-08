@@ -19,6 +19,10 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( ${PYTHON_DEPS} )"
 
+PATCHES=(
+	"${FILESDIR}/cmark-0.31.0_fix_api_test.patch"
+)
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }

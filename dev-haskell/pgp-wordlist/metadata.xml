@@ -20,4 +20,7 @@
 		For further information, see
 		&lt;http://en.wikipedia.org/wiki/PGP_word_list Wikipedia&gt;.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">quchen/pgp-wordlist</remote-id>
+	</upstream>
 </pkgmetadata>

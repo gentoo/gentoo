@@ -8,7 +8,7 @@ inherit xorg-3
 
 DESCRIPTION="a dynamic resource editor for X Toolkit applications"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~s390 sparc x86"
 
 RDEPEND="
 	x11-libs/libX11

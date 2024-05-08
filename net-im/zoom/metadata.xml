@@ -11,9 +11,6 @@
     <email>mva@gentoo.org</email>
   </maintainer>
   <use>
-    <flag name="bundled-libjpeg-turbo">
-      Use bundled libturbojpeg instead of <pkg>media-libs/libjpeg-turbo</pkg>
-    </flag>
     <flag name="bundled-qt">
       Use bundled Qt and icu instead of system-wide libs
     </flag>

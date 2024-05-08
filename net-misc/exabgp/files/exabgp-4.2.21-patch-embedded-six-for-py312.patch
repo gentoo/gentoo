@@ -1,0 +1,52 @@
+From: Vincent Bernat <bernat@debian.org>
+Date: Mon, 1 Jan 2024 09:15:39 +0100
+Subject: Patch embedded six for Python 3.12
+
+Closes: #1058181
+---
+ lib/exabgp/vendoring/six.py | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/lib/exabgp/vendoring/six.py b/lib/exabgp/vendoring/six.py
+index 20e866a..5f8f3b0 100644
+--- a/lib/exabgp/vendoring/six.py
++++ b/lib/exabgp/vendoring/six.py
+@@ -71,6 +71,11 @@ def __len__(self):
+             MAXSIZE = int((1 << 63) - 1)
+         del X
+ 
++if PY34:
++    from importlib.util import spec_from_loader
++else:
++    spec_from_loader = None
++
+ 
+ def _add_doc(func, doc):
+     """Add documentation to a function."""
+@@ -182,6 +187,11 @@ def find_module(self, fullname, path=None):
+             return self
+         return None
+ 
++    def find_spec(self, fullname, path, target=None):
++        if fullname in self.known_modules:
++            return spec_from_loader(fullname, self)
++        return None
++
+     def __get_module(self, fullname):
+         try:
+             return self.known_modules[fullname]
+@@ -217,9 +227,13 @@ def get_code(self, fullname):
+         Required, if is_package is implemented"""
+         self.__get_module(fullname)  # eventually raises ImportError
+         return None
+-
+     get_source = get_code  # same as get_code
+ 
++    def create_module(self, spec):
++        return self.load_module(spec.name)
++
++    def exec_module(self, module):
++        pass
+ 
+ _importer = _SixMetaPathImporter(__name__)
+ 

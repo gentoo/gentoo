@@ -48,7 +48,7 @@ case ${PV} in
 
 				# Add in the mirror URL too.
 				SRC_URI+=" ${patch_url/${upstream_url_base}/${mirror_url_base}}"
-				SRC_URI+=" verify-sig? ( ${patch_url/${upstream_url_base}/${mirror_url_base}} )"
+				SRC_URI+=" verify-sig? ( ${patch_url/${upstream_url_base}/${mirror_url_base}}.sig )"
 
 				MY_PATCHES+=( "${DISTDIR}"/${mangled_patch_ver} )
 			done
@@ -57,6 +57,8 @@ case ${PV} in
 		fi
 	;;
 esac
+
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3+"
 SLOT="0/8"  # subslot matches SONAME major
@@ -68,8 +70,6 @@ RDEPEND=">=sys-libs/ncurses-5.9-r3:=[static-libs?,unicode(+)?,${MULTILIB_USEDEP}
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	verify-sig? ( sec-keys/openpgp-keys-chetramey )"
-
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.0-no_rpath.patch

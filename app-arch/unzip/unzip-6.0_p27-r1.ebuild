@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ MY_P="${PN}${MY_PV}"
 
 DESCRIPTION="unzipper for pkzip-compressed files"
 HOMEPAGE="https://infozip.sourceforge.net/UnZip.html"
-SRC_URI="mirror://sourceforge/infozip/${MY_P}.tar.gz
+SRC_URI="https://downloads.sourceforge.net/infozip/${MY_P}.tar.gz
 	mirror://debian/pool/main/u/${PN}/${PN}_${PV/_p/-}.debian.tar.xz"
 
 LICENSE="Info-ZIP"

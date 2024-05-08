@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,6 +23,7 @@ else
 		verify-sig? ( https://github.com/eduvpn/eduvpn-common/releases/download/${PV}/eduvpn-common-${PV}.tar.xz.asc )
 		https://www-user.tu-chemnitz.de/~hamari/eduvpn/${P}-deps.tar.xz
 	"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-3+"

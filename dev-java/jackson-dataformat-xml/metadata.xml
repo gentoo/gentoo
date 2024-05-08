@@ -9,5 +9,6 @@
 	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/FasterXML/jackson-dataformat-xml/issues</bugs-to>
+		<remote-id type="github">FasterXML/jackson-dataformat-xml</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,7 +29,7 @@ SRC_URI="http://qmail.org/${P}.tar.gz
 	https://www.ckdhr.com/ckd/${QMAIL_LARGE_DNS}
 	!vanilla? (
 		highvolume? ( http://qmail.org/${QMAIL_BIGTODO_F} )
-		qmail-spp? ( mirror://sourceforge/qmail-spp/${QMAIL_SPP_F} )
+		qmail-spp? ( https://downloads.sourceforge.net/qmail-spp/${QMAIL_SPP_F} )
 		ssl? (
 			https://mirror.alexh.name/qmail/netqmail/${QMAIL_TLS_F}
 			http://inoa.net/qmail-tls/${QMAIL_TLS_CVE}

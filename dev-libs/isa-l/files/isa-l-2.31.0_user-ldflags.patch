@@ -1,0 +1,10 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -83,6 +83,7 @@
+ -Wl,-z,noexecstack \
+ -Wl,-z,relro \
+ -Wl,-z,now \
++${LDFLAGS} \
+ "
+ AC_MSG_CHECKING([if $LD supports $LDFLAGS])
+ AC_LINK_IFELSE([AC_LANG_PROGRAM([[]], [[

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop toolchain-funcs wrapper
+inherit desktop flag-o-matic toolchain-funcs wrapper
 
 COMMIT="6f873e16d6a1a8f6f59c1e5a75ec5f52ce5c89b6"
 DESCRIPTION="Free version of the well-known city building simulation"
@@ -32,6 +32,14 @@ PATCHES=( "${FILESDIR}/micropolis-fix-clang15.diff" )
 
 src_prepare() {
 	default
+
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/859223
+	# https://gitlab.com/stargo/micropolis/-/issues/1
+	#
+	# Do not trust with LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
 
 	sed -i -e "s|-O3|${CFLAGS}|" \
 		src/tclx/config.mk src/{sim,tcl,tk}/makefile || die

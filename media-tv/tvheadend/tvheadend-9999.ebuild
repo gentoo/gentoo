@@ -3,9 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 
-inherit git-r3 linux-info python-any-r1 systemd toolchain-funcs
+inherit git-r3 linux-info python-single-r1 systemd toolchain-funcs
 
 DESCRIPTION="Tvheadend is a TV streaming server and digital video recorder"
 HOMEPAGE="https://tvheadend.org/"
@@ -13,8 +13,12 @@ EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 
 LICENSE="GPL-3"
 SLOT="0"
-
 IUSE="dbus debug +ddci dvbcsa +dvb +ffmpeg hdhomerun +imagecache +inotify iptv opus satip systemd +timeshift uriparser vpx x264 x265 xmltv zeroconf zlib"
+
+REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
+	ddci? ( dvb )
+"
 
 BDEPEND="
 	${PYTHON_DEPS}
@@ -23,6 +27,7 @@ BDEPEND="
 "
 
 RDEPEND="
+	${PYTHON_DEPS}
 	acct-user/tvheadend
 	virtual/libiconv
 	dbus? ( sys-apps/dbus )
@@ -50,12 +55,11 @@ DEPEND="
 "
 
 RDEPEND+="
+	$(python_gen_cond_dep '
+		dev-python/requests[${PYTHON_USEDEP}]
+	')
 	dvb? ( media-tv/dtv-scan-tables )
 	xmltv? ( media-tv/xmltv )
-"
-
-REQUIRED_USE="
-	ddci? ( dvb )
 "
 
 # Some patches from:
@@ -71,7 +75,7 @@ PATCHES=(
 DOCS=( README.md )
 
 pkg_setup() {
-	python-any-r1_pkg_setup
+	python-single-r1_pkg_setup
 
 	use inotify &&
 		CONFIG_CHECK="~INOTIFY_USER" linux-info_pkg_setup
@@ -130,6 +134,7 @@ src_compile() {
 
 src_install() {
 	default
+	python_fix_shebang "${ED}"/usr/bin/
 
 	newinitd "${FILESDIR}"/tvheadend.initd tvheadend
 	newconfd "${FILESDIR}"/tvheadend.confd tvheadend

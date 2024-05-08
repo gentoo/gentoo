@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-04-02)
+# dev-qt/qtsvg:6 is not keyworded here yet (bug #918896)
+dev-qt/qtdeclarative:6 svg
+
 # Eray Aslan <eras@gentoo.org> (2024-03-08)
 # mongodb dependencies are not keyworded
 mail-mta/postfix mongodb
@@ -28,6 +32,7 @@ sys-kernel/installkernel -grub
 net-libs/pjproject srtp
 net-misc/asterisk srtp
 
+# Marek Szuba <marecki@gentoo.org> (2024-04-24)
 # Sam James <sam@gentoo.org> (2024-01-05)
 # sys-apps/keyutils not stable here, because of test failures. bug #636252
 app-benchmarks/stress-ng keyutils
@@ -36,6 +41,7 @@ app-emulation/qemu keyutils
 net-fs/samba ads
 net-fs/cifs-utils ads creds pam
 sys-auth/sssd keyutils
+>=sys-libs/libblockdev-3.0.0 cryptsetup
 sys-libs/libnvme keyutils
 
 # Sam James <sam@gentoo.org> (2024-01-02)
@@ -81,10 +87,6 @@ sys-apps/openrc s6
 # Sam James <sam@gentoo.org> (2023-09-22)
 # Qt 6 not keyworded here.
 dev-build/cmake gui
-
-# Rich Freeman <rich0@gentoo.org> (2023-09-13)
-# Tests require shellcheck which is not currently available
-sys-process/systemd-cron test
 
 # Sam James <sam@gentoo.org> (2023-07-21)
 # Requires app-emulation/qemu.
@@ -403,10 +405,6 @@ net-misc/scponly unison
 net-analyzer/nagios-plugin-check_raid 3ware aacraid hpa hpsa megaraid-sas mpt-sas2 mpt
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-04)
-# dev-python/pymongo is not keyworded
-app-portage/g-sorcery bson
-
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-04)
 # app-emacs/wanderlust is not keyworded
 app-emacs/elscreen wanderlust
 
@@ -605,10 +603,6 @@ gnome-base/gnome classic extras
 # Pacho Ramos <pacho@gentoo.org> (2013-12-02)
 # Missing keywords, bug #493156
 media-libs/libgphoto2 serial
-
-# Pacho Ramos <pacho@gentoo.org> (2013-11-28)
-# Missing keywords, bug #492820
-net-im/telepathy-connection-managers sipe
 
 # Pacho Ramos <pacho@gentoo.org> (2013-07-20)
 # Keywords pending, bug #476710

@@ -21,8 +21,8 @@
     <flag name="audiocom">Enable integrated uploading to audio.com</flag>
     <flag name="id3tag">Enables ID3 tagging with id3tag library</flag>
     <flag name="lv2">Add support for Ladspa V2</flag>
-    <flag name="mpg123">Use <pkg>media-sound/mpg123</pkg> instead of
-      <pkg>media-libs/libmad</pkg> for decoding MPEG decoding</flag>
+    <flag name="mpg123">Use <pkg>media-sound/mpg123-base</pkg> instead of
+      <pkg>media-libs/libmad</pkg> for MPEG decoding</flag>
     <flag name="portmidi">Enable support for MIDI via <pkg>media-libs/portmidi</pkg></flag>
     <flag name="portmixer">Enable the internal portmixer feature</flag>
     <flag name="portsmf">Enable support for Portable Standard Midi File Library</flag>

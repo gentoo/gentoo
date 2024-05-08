@@ -10,6 +10,7 @@
 		<name>Matt Jolly</name>
 	</maintainer>
 	<use>
+		<flag name="ffmpeg-chromium">(binpkg only) Use Chromium FFmpeg fork (<pkg>media-video/ffmpeg-chromium</pkg>) rather than mainline FFmpeg (<pkg>media-video/ffmpeg</pkg>)</flag>
 		<flag name="debug">Enable DCHECK feature with severity configurable at runtime. Mostly intended for debugging and development, NOT RECOMMENDED for general use.</flag>
 		<flag name="gtk4">Build with GTK4 headers.</flag>
 		<flag name="headless">Build Ozone only with headless backend, NOT RECOMMENDED for general use.</flag>

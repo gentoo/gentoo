@@ -13,7 +13,7 @@ else
 		test? ( https://github.com/silentbicycle/greatest/archive/v${GREATEST_PV}.tar.gz -> greatest-${GREATEST_PV}.tar.gz )"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
-inherit autotools flag-o-matic multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="Open-source HEVC encoder"
 HOMEPAGE="http://ultravideo.cs.tut.fi/ https://github.com/ultravideo/kvazaar"
@@ -51,13 +51,10 @@ src_prepare() {
 		rmdir "${S}/greatest" || die
 		mv "${WORKDIR}/greatest-${GREATEST_PV}" "${S}/greatest" || die
 	fi
-	# Some m4 macros append Werror, we do not want that.
-	append-flags "-Wno-error"
 }
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
-		--disable-werror \
 		$(use_enable static-libs static)
 }
 

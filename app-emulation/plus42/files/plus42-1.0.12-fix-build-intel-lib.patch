@@ -15,7 +15,7 @@ diff -Naur free42-nologo-3.0.16.orig/gtk/build-intel-lib.sh free42-nologo-3.0.16
  # Hack to support FreeBSD; not 100% sure what this does, but it produces a
  # library that passes all tests.
  
-@@ -64,8 +57,11 @@
+@@ -64,8 +57,10 @@
      ;;
  esac
  
@@ -23,8 +23,7 @@ diff -Naur free42-nologo-3.0.16.orig/gtk/build-intel-lib.sh free42-nologo-3.0.16
 +
  cd LIBRARY
 -$MK $OS_ARG CC=$CC CALL_BY_REF=1 GLOBAL_RND=1 GLOBAL_FLAGS=1 UNCHANGED_BINARY_FLAGS=0 $ENDIAN_ARG
-+echo $MK $OS_ARG A=a CC=$CC CALL_BY_REF=1 GLOBAL_RND=1 GLOBAL_FLAGS=1 UNCHANGED_BINARY_FLAGS=0 $ENDIAN_ARG
-+$MK $OS_ARG A=a CC=$CC CALL_BY_REF=1 GLOBAL_RND=1 GLOBAL_FLAGS=1 UNCHANGED_BINARY_FLAGS=0 $ENDIAN_ARG
++$MK $OS_ARG A=a AR_CMD="${AR:-ar} rv" CC=$CC CALL_BY_REF=1 GLOBAL_RND=1 GLOBAL_FLAGS=1 UNCHANGED_BINARY_FLAGS=0 $ENDIAN_ARG
  mv libbid.a ../../gcc111libbid.a
  cd ../..
  ( echo '#ifdef FREE42_FPTEST'; echo 'const char *readtest_lines[] = {'; tr -d '\r' < IntelRDFPMathLib20U1/TESTS/readtest.in | sed 's/^\(.*\)$/"\1",/'; echo '0 };'; echo '#endif' ) > readtest_lines.cc

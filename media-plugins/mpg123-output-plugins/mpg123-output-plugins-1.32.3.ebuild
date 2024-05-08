@@ -9,7 +9,7 @@ inherit flag-o-matic libtool toolchain-funcs
 
 DESCRIPTION="a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3"
 HOMEPAGE="https://www.mpg123.org/"
-SRC_URI="mirror://sourceforge/${MY_PN}/${MY_P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/${MY_PN}/${MY_P}.tar.bz2"
 
 S="${WORKDIR}/${MY_P}"
 

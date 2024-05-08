@@ -1,0 +1,37 @@
+From 684f0d9e5946e92008404b3d5a131edc4f34f7da Mon Sep 17 00:00:00 2001
+From: Arnaud Le Blanc <arnaud.lb@gmail.com>
+Date: Thu, 4 Apr 2024 16:10:28 +0200
+Subject: [PATCH] Fix stream_cookie_seeker signature under musl
+
+---
+ main/streams/cast.c | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/main/streams/cast.c b/main/streams/cast.c
+index 3bad65fbac1f5..8d9f4a9d2d54b 100644
+--- a/main/streams/cast.c
++++ b/main/streams/cast.c
+@@ -104,6 +104,9 @@ static ssize_t stream_cookie_writer(void *cookie, const char *buffer, size_t siz
+ 
+ # ifdef COOKIE_SEEKER_USES_OFF64_T
+ static int stream_cookie_seeker(void *cookie, off64_t *position, int whence)
++# else
++static int stream_cookie_seeker(void *cookie, off_t *position, int whence)
++# endif
+ {
+ 
+ 	*position = php_stream_seek((php_stream *)cookie, (zend_off_t)*position, whence);
+@@ -113,13 +116,6 @@ static int stream_cookie_seeker(void *cookie, off64_t *position, int whence)
+ 	}
+ 	return 0;
+ }
+-# else
+-static int stream_cookie_seeker(void *cookie, zend_off_t position, int whence)
+-{
+-
+-	return php_stream_seek((php_stream *)cookie, position, whence);
+-}
+-# endif
+ 
+ static int stream_cookie_closer(void *cookie)
+ {

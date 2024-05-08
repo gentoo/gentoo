@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
 inherit autotools elisp-common
 
@@ -36,7 +36,12 @@ DEPEND="${RDEPEND}"
 BDEPEND="nls? ( sys-devel/gettext )"
 S="${WORKDIR}"/${MY_P}
 
-PATCHES=( "${FILESDIR}"/${PN}-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-gentoo.patch
+	"${FILESDIR}"/${PN}-configure.patch
+	"${FILESDIR}"/${PN}-tests.patch
+	"${FILESDIR}"/${PN}-underlinking.patch
+)
 
 src_prepare() {
 	default
@@ -71,13 +76,11 @@ src_compile() {
 	fi
 }
 
-src_test() {
-	emake -j1 check
-}
-
 src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
+
+	keepdir /var/lib/${PN}/index
 
 	if use emacs; then
 		elisp-install ${PN} lisp/*.el*

@@ -23,7 +23,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 
 BDEPEND="
-	>=app-editors/emacs-${NEED_EMACS}:*[jpeg,json,libxml2,png,svg]
+	>=app-editors/emacs-${NEED_EMACS}:*[jpeg,json(+),libxml2,png,svg]
 	>=app-emacs/compat-29.1.4.0
 "
 RDEPEND="

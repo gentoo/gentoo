@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,21 +9,20 @@ DESCRIPTION="Android DEvice Backup And Report, using Bash and ADB"
 HOMEPAGE="https://codeberg.org/izzy/Adebar"
 SRC_URI="https://codeberg.org/izzy/Adebar/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
+S="${WORKDIR}/${PN}"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
 RDEPEND="
 	app-shells/bash
 	dev-util/android-tools
 "
 
-S="${WORKDIR}/${PN}"
-
 DISABLE_AUTOFORMATTING="no"
 DOC_CONTENTS="Please refer to the documentation at https://codeberg.org/izzy/Adebar/wiki.
-You can find example configurations at ${ROOT}/usr/share/doc/${PF}.
+You can find example configurations at /usr/share/doc/${PF}.
 To customize, copy to \${XDG_CONFIG_HOME}/${PN} and edit it to your liking.
 Contrary to the documentation, the Gentoo installation does not allow
 configuration files relative to main program ${PN} installed to /usr/bin.

@@ -1,0 +1,42 @@
+https://github.com/arq5x/bedtools2/pull/1087
+
+From eabcd3dcb9caa1fcc17acd43df2ded4170ed1449 Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Thu, 25 Apr 2024 11:18:47 +0200
+Subject: [PATCH] Allow PYTHON from environment
+
+* Distros need to be able to specify exactly which python
+  interpreter to run tests under.
+--- a/test/bigchroms/test-bigchroms.sh
++++ b/test/bigchroms/test-bigchroms.sh
+@@ -28,7 +28,7 @@ check obs abig.bed
+ rm obs
+ 
+ if [[ "$BT_NO_BIG_FILES" != "" ]]; then
+-python make-big-chrom.py
++${PYTHON:-python} make-big-chrom.py
+ 
+ echo -e "    bigchroms.t03...big get fasta \c"
+ $BT getfasta -fi bigx.fasta -bed bigx.bed | tail -1 > obs
+--- a/test/fisher/cmp.sh
++++ b/test/fisher/cmp.sh
+@@ -3,7 +3,7 @@ set -eo pipefail
+ echo "fisher,shuffled"
+ 
+ for i in $(seq 1000); do
+-    fisher=$(python ./sim.py | tail -1 | cut -f 2)
++    fisher=$(${PYTHON:-python} ./sim.py | tail -1 | cut -f 2)
+     shuffle=$(bash shuf.sh)
+     echo "$fisher,$shuffle"
+ done
+--- a/test/genomecov/test-genomecov.sh
++++ b/test/genomecov/test-genomecov.sh
+@@ -288,7 +288,7 @@ CRAM_REFERENCE=test_ref.fa $BT genomecov -ibam empty.cram > obs
+ check obs exp
+ rm obs exp
+ 
+-python mk-deep.py > deep.sam
++${PYTHON:-python} mk-deep.py > deep.sam
+ echo -e "    genomecov.t18...\c"
+ echo "c1	1	1000000" > exp
+ $BT genomecov -d -ibam deep.sam | head -1 > obs

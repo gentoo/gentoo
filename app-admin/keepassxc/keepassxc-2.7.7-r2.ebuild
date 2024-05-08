@@ -16,7 +16,7 @@ if [[ "${PV}" != *9999 ]] ; then
 	else
 		SRC_URI="https://github.com/keepassxreboot/${PN}/releases/download/${PV}/${P}-src.tar.xz"
 
-		KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+		KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 	fi
 else
 	inherit git-r3

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit desktop
 
 DESCRIPTION="Tool for adjusting EXIF tags of your photos with a recorded GPS trace"
 HOMEPAGE="https://dfandrich.github.io/gpscorrelate/"
-SRC_URI="https://github.com/dfandrich/${PN}/releases/download/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/dfandrich/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

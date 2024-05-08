@@ -1,26 +1,26 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI="8"
 
 DESCRIPTION="Dictionary files for the Migemo and C/Migemo"
-HOMEPAGE="http://openlab.ring.gr.jp/skk/dic.html"
+HOMEPAGE="https://skk-dev.github.io/dict/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
-LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+LICENSE="GPL-2+"
 SLOT="0"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="unicode"
 
 src_configure() {
 	if use unicode; then
-		iconv -f euc-jp -t utf-8 migemo-dict > "${T}"/migemo-dict || die
+		iconv -f euc-jp -t utf-8 ${PN} >"${T}"/${PN} || die
 	else
-		cp migemo-dict "${T}"/ || die
+		cp ${PN} "${T}"/ || die
 	fi
 }
 
 src_install() {
-	insinto /usr/share/migemo
-	doins "${T}"/migemo-dict
+	insinto /usr/share/${PN%-*}
+	doins "${T}"/${PN}
 }

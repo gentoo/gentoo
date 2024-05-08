@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 # Can't use gitiles directly until b/19710536 is fixed.
 # This is the name of the latest release branch.
@@ -69,6 +69,7 @@ src_prepare() {
 }
 
 _emake() {
+
 	local arch=$(tc-arch)
 	emake \
 		V=1 \
@@ -85,6 +86,10 @@ _emake() {
 }
 
 src_compile() {
+	# -Werror=lto-type-mismatch in tests
+	# https://bugs.gentoo.org/880175
+	filter-lto
+
 	tc-export CC AR CXX PKG_CONFIG
 	_emake FUZZ_TEST_BINS= TEST_BINS= all
 }

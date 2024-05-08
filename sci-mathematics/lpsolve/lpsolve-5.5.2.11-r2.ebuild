@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Mixed Integer Linear Programming (MILP) solver"
 HOMEPAGE="https://sourceforge.net/projects/lpsolve/"
-SRC_URI="mirror://sourceforge/${PN}/lp_solve_${PV}_source.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/lp_solve_${PV}_source.tar.gz"
 S="${WORKDIR}"/lp_solve_$(ver_cut 1-2)
 
 LICENSE="LGPL-2.1"

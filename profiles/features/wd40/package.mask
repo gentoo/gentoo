@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Agostino Sarubbo <ago@gentoo.org> (2024-04-10)
+# Requires rust on armv4/armv4t/arm5te
+dev-util/bugbite-cli
+dev-util/cargo-nextest
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-19)
 # Requires dev-python/cryptography
 app-emulation/virt-firmware
@@ -91,7 +96,6 @@ dev-python/orjson
 dev-python/os-client-config
 dev-python/osc-lib
 dev-python/paramiko
-dev-python/pendulum
 dev-python/pooch
 dev-python/pydantic
 dev-python/pydantic-core
@@ -128,6 +132,7 @@ dev-python/trustme
 dev-python/trio
 dev-python/trio-websocket
 dev-python/twine
+dev-python/uv
 dev-python/vdirsyncer
 dev-python/watchfiles
 dev-python/wcmatch

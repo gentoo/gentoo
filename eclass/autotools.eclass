@@ -33,6 +33,7 @@ _AUTOTOOLS_ECLASS=1
 
 [[ ${EAPI} == 6 ]] && inherit eqawarn
 
+GNUCONFIG_AUTO_DEPEND=no
 inherit gnuconfig libtool
 
 # @ECLASS_VARIABLE: WANT_AUTOCONF
@@ -149,7 +150,7 @@ if [[ -n ${WANT_AUTOCONF} ]] ; then
 	export WANT_AUTOCONF
 fi
 
-_libtool_atom=">=dev-build/libtool-2.4.7"
+_libtool_atom=">=dev-build/libtool-2.4.7-r3"
 if [[ -n ${WANT_LIBTOOL} ]] ; then
 	case ${WANT_LIBTOOL} in
 		none)   _libtool_atom="" ;;
@@ -164,9 +165,12 @@ fi
 # @DESCRIPTION:
 # Contains the combination of requested automake/autoconf/libtool
 # versions in *DEPEND format.
-AUTOTOOLS_DEPEND="${_automake_atom}
+AUTOTOOLS_DEPEND="
+	${GNUCONFIG_DEPEND}
+	${_automake_atom}
 	${_autoconf_atom}
-	${_libtool_atom}"
+	${_libtool_atom}
+"
 RDEPEND=""
 
 # @ECLASS_VARIABLE: AUTOTOOLS_AUTO_DEPEND

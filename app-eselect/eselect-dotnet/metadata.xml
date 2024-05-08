@@ -6,8 +6,4 @@
     <email>dotnet@gentoo.org</email>
     <name>Gentoo Dotnet Project</name>
   </maintainer>
-  <upstream>
-    <bugs-to>https://gitlab.com/xgqt/eselect-dotnet/-/issues/</bugs-to>
-    <remote-id type="gitlab">xgqt/eselect-dotnet</remote-id>
-  </upstream>
 </pkgmetadata>

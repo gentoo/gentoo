@@ -1,0 +1,27 @@
+From ce49fa7696aadb61bb770bc42181d258af4407de Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 28 Apr 2024 01:36:55 -0400
+Subject: [PATCH] fix obvious typo causing out of bounds memory access
+
+The size in the .h file doesn't match the loop access in the .c file.
+Detected via LTO and -Waggressive-loop-optimizations
+---
+ wmCalendar.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/wmCalendar.c b/wmCalendar.c
+index bf5640b..bfe68a1 100644
+--- a/wmCalendar.c
++++ b/wmCalendar.c
+@@ -71,7 +71,7 @@ void initValues(){
+     for(i = 0; i < 12; ++i) 
+ 	for( j = 0; j < 6; ++j)
+ 	    xdMonth[j][i] = xeMonth[j][i] - xsMonth[j][i] + 1;
+-    for(i = 0; i < 12; ++i) 
++    for(i = 0; i < 10; ++i)
+ 	for( j = 0; j < 2; ++j)
+ 	    xdYear[j][i] = xeYear[j][i] - xsYear[j][i] + 1;
+     for(i = 0; i < MAXBUTTON; ++i) 
+-- 
+2.43.2
+

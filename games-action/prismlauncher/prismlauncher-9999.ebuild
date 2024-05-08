@@ -75,6 +75,7 @@ COMMON_DEPENDS="
 	 qt6? ( >=dev-libs/quazip-1.3:=[qt6(-)] )
 
 	app-text/cmark
+	dev-cpp/tomlplusplus
 	sys-libs/zlib
 "
 

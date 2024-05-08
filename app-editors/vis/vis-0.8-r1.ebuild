@@ -14,7 +14,7 @@ if [ "${PV}" == "9999" ]; then
 else
 	SRC_URI="https://github.com/martanne/vis/releases/download/v${PV}/${P}.tar.gz
 		test? ( https://github.com/martanne/vis-test/releases/download/v${MY_PTV}/vis-test-${MY_PTV}.tar.gz )"
-	KEYWORDS="amd64 arm ~riscv x86"
+	KEYWORDS="amd64 arm ~arm64 ~riscv x86"
 fi
 
 DESCRIPTION="modern, legacy free, simple yet efficient vim-like editor"

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ MY_P="${PN}${PV}"
 
 DESCRIPTION="Tool Command Language"
 HOMEPAGE="http://www.tcl.tk/"
-SRC_URI="mirror://sourceforge/tcl/${PN}-core${PV}-src.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/tcl/${PN}-core${PV}-src.tar.gz"
 
 LICENSE="tcltk"
 SLOT="0/8.6"

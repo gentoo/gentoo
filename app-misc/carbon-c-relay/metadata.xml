@@ -5,6 +5,7 @@
     <email>grobian@gentoo.org</email>
   </maintainer>
   <use>
+    <flag name="client">build and install sendmetric client utility</flag>
     <flag name="lz4">add support for LZ4 compressed transport</flag>
     <flag name="snappy">add support for Snappy compressed transport</flag>
     <flag name="pcre2">use <pkg>dev-libs/libpcre2</pkg> as regex implementation</flag>

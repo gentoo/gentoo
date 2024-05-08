@@ -1,0 +1,92 @@
+From cd6d0e1c593e158b8641529410d95e4b1722d5b2 Mon Sep 17 00:00:00 2001
+From: Dave Dykstra <2129743+DrDaveD@users.noreply.github.com>
+Date: Thu, 4 Jan 2024 17:03:09 -0600
+Subject: [PATCH] Allow stubmaker to work outside of a git repository
+
+https://github.com/hashicorp/vault/pull/24678
+
+Fixes: https://github.com/hashicorp/vault/issues/24677
+---
+ tools/stubmaker/main.go | 58 +++++++++++++++++++++++------------------
+ 1 file changed, 33 insertions(+), 25 deletions(-)
+
+diff --git a/tools/stubmaker/main.go b/tools/stubmaker/main.go
+index 53676e08b8c84..15e95b6a45f60 100644
+--- a/tools/stubmaker/main.go
++++ b/tools/stubmaker/main.go
+@@ -43,15 +43,21 @@ func main() {
+ 		DetectDotGit: true,
+ 	})
+ 	if err != nil {
+-		fatal(err)
++		if err.Error() != "repository does not exist" {
++			fatal(err)
++		}
++		repo = nil
+ 	}
+ 
+-	wt, err := repo.Worktree()
+-	if err != nil {
+-		fatal(err)
+-	}
+-	if !isEnterprise(wt) {
+-		return
++	var wt *git.Worktree
++	if repo != nil {
++		wt, err = repo.Worktree()
++		if err != nil {
++			fatal(err)
++		}
++		if !isEnterprise(wt) {
++			return
++		}
+ 	}
+ 
+ 	// Read the file and figure out if we need to do anything.
+@@ -80,26 +86,28 @@ func main() {
+ 
+ 	// We'd like to write the file, but first make sure that we're not going
+ 	// to blow away anyone's work or overwrite a file already in git.
+-	head, err := repo.Head()
+-	if err != nil {
+-		fatal(err)
+-	}
+-	obj, err := repo.Object(plumbing.AnyObject, head.Hash())
+-	if err != nil {
+-		fatal(err)
+-	}
++	if repo != nil {
++		head, err := repo.Head()
++		if err != nil {
++			fatal(err)
++		}
++		obj, err := repo.Object(plumbing.AnyObject, head.Hash())
++		if err != nil {
++			fatal(err)
++		}
+ 
+-	st, err := wt.Status()
+-	if err != nil {
+-		fatal(err)
+-	}
++		st, err := wt.Status()
++		if err != nil {
++			fatal(err)
++		}
+ 
+-	tracked, err := inGit(wt, st, obj, outputFile)
+-	if err != nil {
+-		fatal(err)
+-	}
+-	if tracked {
+-		fatal(fmt.Errorf("output file %s exists in git, not overwriting", outputFile))
++		tracked, err := inGit(wt, st, obj, outputFile)
++		if err != nil {
++			fatal(err)
++		}
++		if tracked {
++			fatal(fmt.Errorf("output file %s exists in git, not overwriting", outputFile))
++		}
+ 	}
+ 
+ 	// Now we can finally write the file

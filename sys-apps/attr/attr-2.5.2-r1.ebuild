@@ -12,7 +12,7 @@ else
 	inherit libtool
 
 	SRC_URI="mirror://nongnu/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="Extended attributes tools"
@@ -23,6 +23,10 @@ SLOT="0"
 IUSE="debug nls static-libs"
 
 BDEPEND="nls? ( sys-devel/gettext )"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-2.5.2-r1-musl-1.2.5.patch"
+)
 
 src_prepare() {
 	default

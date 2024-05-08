@@ -1,0 +1,463 @@
+From d3759db21195b1e49e171f83f9685bd3b650569a Mon Sep 17 00:00:00 2001
+From: Florian Schlichting <fsfs@debian.org>
+Date: Thu, 23 Mar 2023 22:19:06 +0100
+Subject: [PATCH 01/16] use array_merge instead of "+" to concatenate arrays
+
+I noticed this when looking for other occurrences of davical#288
+
+It likely has no consequences as we're never calling GetElements() with
+a second argument...
+---
+ inc/XMLElement.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/inc/XMLElement.php b/inc/XMLElement.php
+index 08d6cbd..d36bf52 100644
+--- a/inc/XMLElement.php
++++ b/inc/XMLElement.php
+@@ -157,7 +157,7 @@ class XMLElement {
+           $elements[] = $v;
+         }
+         if ( $recursive ) {
+-          $elements = $elements + $v->GetElements($tag,true);
++          $elements = array_merge( $elements, $v->GetElements($tag,true) );
+         }
+       }
+     }
+-- 
+2.43.2
+
+From ff437d2ad1f3e947012a4deedaf79d4f39476fb7 Mon Sep 17 00:00:00 2001
+From: Matthew Hunt <matt@catalyst.net.nz>
+Date: Fri, 9 Jun 2023 12:50:25 +1200
+Subject: [PATCH 02/16] Fix for some deprecations and warnings in PHP8.1
+
+---
+ inc/AuthPlugins.php  |  2 +-
+ inc/AwlDBDialect.php | 10 ++++++----
+ inc/AwlQuery.php     |  2 +-
+ inc/PgQuery.php      | 12 ++++++------
+ 4 files changed, 14 insertions(+), 12 deletions(-)
+
+diff --git a/inc/AuthPlugins.php b/inc/AuthPlugins.php
+index 1b05487..d9fa3dd 100644
+--- a/inc/AuthPlugins.php
++++ b/inc/AuthPlugins.php
+@@ -37,7 +37,7 @@ require_once('DataUpdate.php');
+ function auth_other_awl( $username, $password ) {
+   global $c;
+ 
+-  $authconn = pg_Connect($c->authenticate_hook['config']['connection']);
++  $authconn = pg_connect($c->authenticate_hook['config']['connection']);
+   if ( ! $authconn ) {
+     echo <<<EOERRMSG
+   <html><head><title>Database Connection Failure</title></head><body>
+diff --git a/inc/AwlDBDialect.php b/inc/AwlDBDialect.php
+index fac5a23..f2c5b95 100644
+--- a/inc/AwlDBDialect.php
++++ b/inc/AwlDBDialect.php
+@@ -82,7 +82,7 @@ class AwlDBDialect {
+   *
+   * The database will be opened.
+   *
+-  * @param string $connection_string The PDO connection string, in all it's glory
++  * @param string $connection_string The PDO connection string, in all its glory
+   * @param string $dbuser The database username to connect as
+   * @param string $dbpass The database password to connect with
+   * @param array  $options An array of driver options
+@@ -165,10 +165,12 @@ class AwlDBDialect {
+ 
+     switch ( $this->dialect ) {
+       case 'pgsql':
+-        list( $schema, $table ) = explode('.', $tablename_string, 2);
+-        if ( empty($table) ) {
++        $schema = null;
++        $table = null;
++        if ( strpos($tablename_string, '.') ) {
++          list( $schema, $table ) = explode('.', $tablename_string, 2);
++        } else {
+           $table = $tablename_string;
+-          $schema = null;
+         }
+ 
+         $sql = 'SELECT f.attname AS fieldname, t.typname AS typename, f.atttypmod AS precision FROM pg_attribute f';
+diff --git a/inc/AwlQuery.php b/inc/AwlQuery.php
+index 1547cb7..586b389 100644
+--- a/inc/AwlQuery.php
++++ b/inc/AwlQuery.php
+@@ -162,7 +162,7 @@ class AwlQuery
+   protected $rownum = null;
+ 
+   /**
+-  * number of rows from pg_numrows - use accessor to get value
++  * number of rows from pg_num_rows - use accessor to get value
+   * @var int
+   */
+   protected $rows;
+diff --git a/inc/PgQuery.php b/inc/PgQuery.php
+index 0d2f199..69454d3 100644
+--- a/inc/PgQuery.php
++++ b/inc/PgQuery.php
+@@ -33,7 +33,7 @@
+ */
+ 
+ 
+-if ( ! function_exists('pg_Connect') ) {
++if ( ! function_exists('pg_connect') ) {
+   echo <<<EOERRMSG
+ <html>
+ <head>
+@@ -70,7 +70,7 @@ function connect_configured_database() {
+   if ( isset($c->pg_connect) && is_array($c->pg_connect) ) {
+     foreach( $c->pg_connect AS $k => $v ) {
+       if ( !$dbconn ) {
+-        if ( $dbconn = ((isset($c->use_persistent) && $c->use_persistent) ? pg_pConnect($v) : pg_Connect($v) ) ) break;
++        if ( $dbconn = ((isset($c->use_persistent) && $c->use_persistent) ? pg_pconnect($v) : pg_connect($v) ) ) break;
+       }
+     }
+   }
+@@ -327,7 +327,7 @@ class PgQuery
+   * @access public
+   */
+   /**
+-  * number of rows from pg_numrows - for fetching result
++  * number of rows from pg_num_rows - for fetching result
+   * should be read-only
+   * @var int
+   */
+@@ -492,7 +492,7 @@ class PgQuery
+ 
+     $t1 = microtime(); // get start time
+     $this->result = @pg_exec( $this->connection, $this->querystring ); // execute the query
+-    $this->rows = ($this->result ? pg_numrows($this->result) : -1); // number of rows returned
++    $this->rows = ($this->result ? pg_num_rows($this->result) : -1); // number of rows returned
+     $t2 = microtime(); // get end time
+     $i_took = duration( $t1, $t2 );   // calculate difference
+     $c->total_query_time += $i_took;
+@@ -500,7 +500,7 @@ class PgQuery
+ 
+     if ( !$this->result ) {
+      // query simply failed
+-      $this->errorstring = @pg_errormessage(); // returns database error message
++      $this->errorstring = @pg_last_error(); // returns database error message
+       $this->_log_error( $this->location, 'QF', $this->querystring, $line, $file );
+       $this->_log_error( $this->location, 'QF', $this->errorstring, $line, $file );
+     }
+@@ -637,7 +637,7 @@ class PgQuery
+         $display_value = $row[1];
+         if ( isset($translate) ) $display_value = translate( $display_value );
+         if ( isset($maxwidth) ) $display_value = substr( $display_value, 0, $maxwidth);
+-        $nextrow = "<option value=\"".htmlspecialchars($row[0])."\"$selected>".htmlspecialchars($display_value)."</option>";
++        $nextrow = "<option value=\"".htmlspecialchars($row[0])."\"$selected>".htmlspecialchars($display_value ?? '')."</option>";
+         $result .= $nextrow;
+       }
+     }
+-- 
+2.43.2
+
+From 44e2ee89e5aa4994878520fe5b0e5d1f30205f7c Mon Sep 17 00:00:00 2001
+From: Andrew Ruthven <andrew@etc.gen.nz>
+Date: Sun, 25 Feb 2024 14:25:28 +1300
+Subject: [PATCH 08/16] Explicitly declare all class properties
+
+PHP 8.2.0 has deprecated dynamic creation of properties.
+
+This kind of warning message is displayed:
+
+Deprecated:  Creation of dynamic property DAViCalSession::$login_failed is
+  deprecated in /usr/share/awl/inc/Session.php on line 153
+---
+ inc/MenuSet.php |  6 ++++
+ inc/Session.php | 81 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 87 insertions(+)
+
+diff --git a/inc/MenuSet.php b/inc/MenuSet.php
+index 2da1ced..2d26bff 100644
+--- a/inc/MenuSet.php
++++ b/inc/MenuSet.php
+@@ -65,6 +65,12 @@ class MenuOption {
+   var $submenu_set;
+   /**#@-*/
+ 
++  /**
++  * MenuSet attributes
++  * @var array
++  */
++  var $attributes;
++
+   /**
+   * A reference to this menu option itself
+   * @var reference
+diff --git a/inc/Session.php b/inc/Session.php
+index 5d55f9d..29cfde9 100644
+--- a/inc/Session.php
++++ b/inc/Session.php
+@@ -63,6 +63,12 @@ class Session
+   */
+   var $roles;
+   var $cause = '';
++
++  /**
++  * Session start times for confirmation emails
++  * @var array
++  var $session_start;
++
+   /**#@-*/
+ 
+   /**#@+
+@@ -113,6 +119,55 @@ class Session
+   */
+   var $just_logged_in = false;
+ 
++  /**
++  * The date and time that the user's email address was confirmed.
++  * @var string
++  */
++  var $email_ok;
++
++  /**
++  * The date and time that the user joined (account created).
++  * @var string
++  */
++  var $joined;
++
++  /**
++  * The date and time that the user's record was last updated.
++  * @var string
++  */
++  var $updated;
++
++  /**
++  * The date and time that the user was last used (not used?).
++  * @var string
++  */
++  var $last_used;
++
++  /**
++  * The user's password.
++  * @var string
++  */
++  var $password;
++
++  /**
++  * The user's config_data. I don't know what type this should be as I can't
++  * see any examples of it being used.
++  * @var string
++  */
++  var $config_data;
++
++  /**
++  * The user's data format type.
++  * @var string
++  */
++  var $date_format_type;
++
++  /**
++  * The user's locale.
++  * @var string
++  */
++  var $locale;
++
+   /**
+   * The date and time that the user logged on during their last session.
+   * @var string
+@@ -125,6 +180,32 @@ class Session
+   * @var string
+   */
+   var $last_session_end;
++
++  /**
++  * The date and time that the users session start.
++  * @var string
++  */
++  var $session_start;
++
++  /**
++  * Session config. I don't know what type this should be as I can't see any
++  * examples of it being used.
++  * @var string
++  */
++  var $session_config;
++
++  /**
++  * The date and time that the users session ends.
++  * @var string
++  */
++  var $session_end;
++
++  /**
++  * Flag to indicate if login failed.
++  * @var boolean
++  */
++  var $login_failed = false;
++
+   /**#@-*/
+ 
+   /**
+-- 
+2.43.2
+
+From 45b796e24bc21ba83332aff9f6af7a0108d906b0 Mon Sep 17 00:00:00 2001
+From: Andrew Ruthven <andrew@etc.gen.nz>
+Date: Sun, 25 Feb 2024 23:47:43 +1300
+Subject: [PATCH 10/16] Explicitly declare all class properties (more)
+
+---
+ inc/Session.php | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/inc/Session.php b/inc/Session.php
+index 29cfde9..a064209 100644
+--- a/inc/Session.php
++++ b/inc/Session.php
+@@ -119,6 +119,12 @@ class Session
+   */
+   var $just_logged_in = false;
+ 
++  /**
++  * Is the user active (aka enabled)?
++  * @var boolean
++  */
++  var $active;
++
+   /**
+   * The date and time that the user's email address was confirmed.
+   * @var string
+@@ -200,6 +206,12 @@ class Session
+   */
+   var $session_end;
+ 
++  /**
++  * Current session key
++  * @var string
++  */
++  var $session_key;
++
+   /**
+   * Flag to indicate if login failed.
+   * @var boolean
+-- 
+2.43.2
+
+From b879addd766ab2a54aa92d58c48c26a985c89690 Mon Sep 17 00:00:00 2001
+From: Andrew Ruthven <andrew@etc.gen.nz>
+Date: Wed, 28 Feb 2024 00:57:59 +1300
+Subject: [PATCH 11/16] Ensure we pass a string to htmlspecialchars()
+
+PHP 8.1 deprecated passing null into many functions. This fixes these errors:
+
+Deprecated: htmlspecialchars(): Passing null to parameter #1 ($string) of
+  type string is deprecated in /usr/share/awl/inc/classEditor.php on line 626
+---
+ inc/classEditor.php | 29 ++++++++++++++++++++++++-----
+ 1 file changed, 24 insertions(+), 5 deletions(-)
+
+diff --git a/inc/classEditor.php b/inc/classEditor.php
+index afdd534..36703cd 100644
+--- a/inc/classEditor.php
++++ b/inc/classEditor.php
+@@ -621,28 +621,47 @@ class Editor
+           }
+         }
+         return $field->RenderLabel('<input type="hidden" value="off" name="'.$field_name.'"><input class="entry" type="checkbox" value="on" name="'.$field_name.'"'.$checked.$attributes.'>' );
++
+       case "input":
+         $size = (isset($part3) ? $part3 : 6);
+-        return "<input class=\"entry\" value=\"".htmlspecialchars($field_value)."\" name=\"$field_name\" size=\"$size\"$attributes>";
++        return "<input class=\"entry\" value=\""
++          . (isset($field_value) ? htmlspecialchars($field_value) : '')
++          . "\" name=\"$field_name\" size=\"$size\"$attributes>";
++
+       case "file":
+         $size = (isset($part3) ? $part3 : 30);
+-        return "<input type=\"file\" class=\"entry\" value=\"".htmlspecialchars($field_value)."\" name=\"$field_name\" size=\"$size\"$attributes>";
++        return "<input type=\"file\" class=\"entry\" value=\""
++          . (isset($field_value) ? htmlspecialchars($field_value) : '')
++          . "\" name=\"$field_name\" size=\"$size\"$attributes>";
++
+       case "money":
+         $size = (isset($part3) ? $part3 : 8);
+-        return "<input class=\"money\" value=\"".htmlspecialchars(sprintf("%0.2lf",$field_value))."\" name=\"$field_name\" size=\"$size\"$attributes>";
++        return "<input class=\"money\" value=\""
++          . (isset($field_value) ? htmlspecialchars(sprintf("%0.2lf",$field_value)) : '')
++          . "\" name=\"$field_name\" size=\"$size\"$attributes>";
++
+       case "date":
+         $size = (isset($part3) ? $part3 : 10);
+-        return "<input class=\"date\" value=\"".htmlspecialchars($field_value)."\" name=\"$field_name\" size=\"$size\"$attributes>";
++        return "<input class=\"date\" value=\""
++          . (isset($field_value) ? htmlspecialchars($field_value) : '')
++          . "\" name=\"$field_name\" size=\"$size\"$attributes>";
++
+       case "textarea":
+         list( $cols, $rows ) = explode( 'x', $part3);
+-        return "<textarea class=\"entry\" name=\"$field_name\" rows=\"$rows\" cols=\"$cols\"$attributes>".htmlspecialchars($field_value)."</textarea>";
++        return "<textarea class=\"entry\" name=\"$field_name\" rows=\"$rows\" cols=\"$cols\"$attributes>"
++          . (isset($field_value) ? htmlspecialchars($field_value) : '')
++          . "</textarea>";
++
+       case "hidden":
+         return sprintf( "<input type=\"hidden\" value=\"%s\" name=\"$field_name\">", htmlspecialchars($field_value) );
++
+       case "password":
+         return sprintf( "<input type=\"password\" value=\"%s\" name=\"$field_name\" size=\"10\">", htmlspecialchars($part3) );
++
+       case "encval":
+       case "enc":
+         return htmlspecialchars($field_value);
++
+       case "submit":
+         $action =  ( $this->RecordAvailable ? 'update' : 'insert' );
+         return sprintf('<input type="hidden" name="_editor_action[%s]" value="%s"><input type="submit" class="submit" name="%s" value="%s">',
+-- 
+2.43.2
+
+From 27b37d1eba82c3f9abbc4505179d06abce0fa0d3 Mon Sep 17 00:00:00 2001
+From: Andrew Ruthven <andrew@etc.gen.nz>
+Date: Wed, 28 Feb 2024 01:03:36 +1300
+Subject: [PATCH 12/16] Remove a PHP 7ism
+
+---
+ inc/PgQuery.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/inc/PgQuery.php b/inc/PgQuery.php
+index 69454d3..f2ba9c3 100644
+--- a/inc/PgQuery.php
++++ b/inc/PgQuery.php
+@@ -637,7 +637,7 @@ class PgQuery
+         $display_value = $row[1];
+         if ( isset($translate) ) $display_value = translate( $display_value );
+         if ( isset($maxwidth) ) $display_value = substr( $display_value, 0, $maxwidth);
+-        $nextrow = "<option value=\"".htmlspecialchars($row[0])."\"$selected>".htmlspecialchars($display_value ?? '')."</option>";
++        $nextrow = "<option value=\"".htmlspecialchars($row[0])."\"$selected>" . (isset($display_value) ? htmlspecialchars($display_value) : '') . "</option>";
+         $result .= $nextrow;
+       }
+     }
+-- 
+2.43.2
+
+From 33678418692ab1d82ff4ab064e64d1d7064ec10a Mon Sep 17 00:00:00 2001
+From: Andrew Ruthven <andrew@etc.gen.nz>
+Date: Wed, 28 Feb 2024 08:14:16 +1300
+Subject: [PATCH 13/16] Explicitly declare all class properties (more)
+
+---
+ inc/classBrowser.php | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/inc/classBrowser.php b/inc/classBrowser.php
+index f169c72..850006a 100644
+--- a/inc/classBrowser.php
++++ b/inc/classBrowser.php
+@@ -209,6 +209,7 @@ class Browser
+   var $match_function;
+   var $DivOpen;
+   var $DivClose;
++  var $current_row;
+ 
+   /**
+   * The Browser class constructor
+-- 
+2.43.2
+

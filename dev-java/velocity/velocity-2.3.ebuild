@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -57,6 +57,7 @@ BDEPEND="
 "
 
 S="${WORKDIR}/${PN}-engine-${PV}/${PN}-engine-core"
+PATCHES=( "${FILESDIR}/velocity-2.3-skipSecurityManager.patch" )
 
 JAVA_GENTOO_CLASSPATH="commons-io-1,commons-lang-3.6,slf4j-api"
 JAVA_SRC_DIR="src/main/java"
@@ -89,7 +90,8 @@ JAVA_TEST_EXCLUDES=(
 )
 
 src_prepare() {
-	default
+	default #780585
+	java-pkg-2_src_prepare
 
 	cp -v "${JAVA_SRC_DIR}-templates/org/apache/velocity/runtime/VelocityEngineVersion.java" \
 		"${JAVA_SRC_DIR}/org/apache/velocity/runtime/VelocityEngineVersion.java" || die

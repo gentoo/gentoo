@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,9 +20,12 @@ KEYWORDS="amd64 ~arm arm64 ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux 
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
+RDEPEND="
+	dev-python/six[${PYTHON_USEDEP}]
+"
 BDEPEND="
 	test? (
-		dev-python/six[${PYTHON_USEDEP}]
+		${RDEPEND}
 	)
 "
 

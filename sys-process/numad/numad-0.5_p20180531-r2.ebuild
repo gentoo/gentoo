@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ else
 	# git archive --format=tar.gz --prefix="${P}/" -o ${P}.tar.gz ${EGIT_COMMIT}
 	EGIT_COMMIT="d696d6c413c5b47b4bbae79e29ea132e52095af3"
 	SRC_URI="https://dev.gentoo.org/~gyakovlev/distfiles/${P}.tar.gz"
-	KEYWORDS="~amd64 -arm ~arm64 ~ppc64 ~s390 ~x86"
+	KEYWORDS="amd64 -arm arm64 ppc64 ~s390 x86"
 fi
 
 DESCRIPTION="The NUMA daemon that manages application locality"

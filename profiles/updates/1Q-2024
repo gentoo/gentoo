@@ -97,5 +97,5 @@ move www-apps/jellyfin www-apps/jellyfin-bin
 move www-apps/radarr www-apps/radarr-bin
 move www-apps/lidarr www-apps/lidarr-bin
 move www-apps/prowlarr www-apps/prowlarr-bin
-move www-apps/radarr www-apps/radarr-bin
+move www-apps/readarr www-apps/readarr-bin
 move www-apps/jackett www-apps/jackett-bin

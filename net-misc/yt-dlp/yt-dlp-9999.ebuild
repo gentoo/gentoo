@@ -46,6 +46,8 @@ python_compile() {
 
 python_test() {
 	local EPYTEST_DESELECT=(
+		# fails with FEATURES=network-sandbox
+		test/test_networking.py::TestHTTPRequestHandler::test_connect_timeout
 		# fails with FEATURES=distcc, bug #915614
 		test/test_networking.py::TestYoutubeDLNetworking::test_proxy\[None-expected2\]
 	)

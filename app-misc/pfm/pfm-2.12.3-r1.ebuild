@@ -1,13 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit perl-module
 
-DESCRIPTION="A terminal-based file manager written in Perl"
-HOMEPAGE="http://p-f-m.sourceforge.net/"
-SRC_URI="mirror://sourceforge/p-f-m/${P}.tar.gz"
+DESCRIPTION="Terminal-based file manager written in Perl"
+HOMEPAGE="https://p-f-m.sourceforge.net/"
+SRC_URI="https://downloads.sourceforge.net/p-f-m/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

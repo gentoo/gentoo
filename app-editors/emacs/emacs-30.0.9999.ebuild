@@ -40,7 +40,7 @@ DESCRIPTION="The extensible, customizable, self-documenting real-time display ed
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars tree-sitter valgrind webp wide-int +X xattr Xaw3d xft +xpm xwidgets zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars tree-sitter valgrind webp wide-int +X xattr Xaw3d xft +xpm xwidgets zlib"
 
 X_DEPEND="x11-libs/libICE
 	x11-libs/libSM
@@ -108,7 +108,6 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 		sys-devel/gcc:=[jit(-)]
 		sys-libs/zlib
 	)
-	json? ( dev-libs/jansson:= )
 	kerberos? ( virtual/krb5 )
 	lcms? ( media-libs/lcms:2 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
@@ -118,7 +117,7 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? ( net-libs/gnutls:0= )
 	systemd? ( sys-apps/systemd )
-	tree-sitter? ( dev-libs/tree-sitter )
+	tree-sitter? ( dev-libs/tree-sitter:= )
 	valgrind? ( dev-debug/valgrind )
 	xattr? ( sys-apps/attr )
 	zlib? ( sys-libs/zlib )
@@ -374,7 +373,6 @@ src_configure() {
 		$(use_with gmp libgmp) \
 		$(use_with gpm) \
 		$(use_with jit native-compilation aot) \
-		$(use_with json) \
 		$(use_with kerberos) $(use_with kerberos kerberos5) \
 		$(use_with lcms lcms2) \
 		$(use_with libxml2 xml2) \
@@ -574,6 +572,14 @@ src_install() {
 		use aqua && DOC_CONTENTS+="\\n\\n${EMACS_SUFFIX^}.app is in
 			\"${EPREFIX}/Applications/Gentoo\". You may want to copy or
 			symlink it into /Applications by yourself."
+	fi
+	if ! use mailutils; then
+		DOC_CONTENTS+="\\n\\nThe mailutils USE flag is disabled. If Emacs'
+		own e-mail features are going to be used as an e-mail client
+		(e.g. Rmail), you are strongly encouraged to enable it. If not,
+		Emacs will use its own implementation of movemail; which has
+		fewer features and is less secure. For more information see:
+		https://www.gnu.org/software/emacs/manual/html_node/emacs/Movemail.html"
 	fi
 	tc-is-cross-compiler && DOC_CONTENTS+="\\n\\nEmacs did not write
 		a portable dump file due to being cross-compiled.

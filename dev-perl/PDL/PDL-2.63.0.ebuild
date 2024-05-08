@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ DIST_EXAMPLES=( "Example/*" )
 
 FORTRAN_NEEDED=fortran
 
-inherit perl-module fortran-2
+inherit flag-o-matic perl-module fortran-2
 
 DESCRIPTION="Perl Data Language for scientific computing"
 
@@ -97,6 +97,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/856406
+	# https://github.com/PDLPorters/pdl/issues/468
+	filter-lto
+
 	sed -i \
 		-e '/USE_POGL/s/=>.*/=> 1,/' \
 		-e "/WITH_3D/s/=>.*/=> 1,/" \

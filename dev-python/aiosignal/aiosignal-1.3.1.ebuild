@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,9 +25,15 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc 
 RDEPEND="
 	>=dev-python/frozenlist-1.1.0[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	test? (
+		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests pytest
 
 python_test() {
-	epytest -o addopts=
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest -o addopts= -p asyncio
 }

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib flag-o-matic gnome2-utils
+inherit cmake-multilib gnome2-utils
 
 # This changes frequently.  Please check the testdata submodule when bumping.
 TESTDATA_COMMIT="ff8d743aaba05b3014f17e5475e576242fa979fc"
@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc64 ~riscv ~sparc x86"
 IUSE="+gdk-pixbuf openexr test"
 RESTRICT="!test? ( test )"
 
@@ -46,8 +46,6 @@ DEPEND+="
 "
 
 multilib_src_configure() {
-	filter-lto
-
 	local mycmakeargs=(
 		-DJPEGXL_ENABLE_BENCHMARK=OFF
 		-DJPEGXL_ENABLE_COVERAGE=OFF

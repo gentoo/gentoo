@@ -1,4 +1,4 @@
-# Copyright 2007-2022 Gentoo Authors
+# Copyright 2007-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit font readme.gentoo-r1
 
 DESCRIPTION="WenQuanYi Hei-Ti Style (sans-serif) Chinese outline font"
 HOMEPAGE="http://wenq.org/wqy2/index.cgi?ZenHei"
-SRC_URI="mirror://sourceforge/project/wqy/${PN}-snapshot/${PV}-May/${P}-May.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/project/wqy/${PN}-snapshot/${PV}-May/${P}-May.tar.bz2"
 S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2-with-font-exception"

@@ -1011,26 +1011,14 @@ src_configure() {
 		fi
 	fi
 
-	if use clang ; then
-		# https://bugzilla.mozilla.org/show_bug.cgi?id=1482204
-		# https://bugzilla.mozilla.org/show_bug.cgi?id=1483822
-		# toolkit/moz.configure Elfhack section: target.cpu in ('arm', 'x86', 'x86_64')
-		local disable_elf_hack=
-		if use amd64 ; then
-			disable_elf_hack=yes
-		elif use x86 ; then
-			disable_elf_hack=yes
-		elif use arm ; then
-			disable_elf_hack=yes
-		fi
+	# With profile 23.0 elf-hack=legacy is broken with gcc.
+	# With Firefox-115esr elf-hack=relr isn't available (only in rapid).
+	# Solution: Disable build system's elf-hack completely, and add "-z,pack-relative-relocs"
+	#  manually with gcc.
+	mozconfig_add_options_ac 'elf-hack disabled' --disable-elf-hack
 
-		if [[ -n ${disable_elf_hack} ]] ; then
-			mozconfig_add_options_ac 'elf-hack is broken when using Clang' --disable-elf-hack
-		fi
-	fi
-
-	if use elibc_musl && use arm64 ; then
-		mozconfig_add_options_ac 'elf-hack is broken when using musl/arm64' --disable-elf-hack
+	if use amd64 || use x86 ; then
+		! use clang && append-ldflags "-z,pack-relative-relocs"
 	fi
 
 	# Additional ARCH support

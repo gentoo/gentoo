@@ -14,8 +14,8 @@ SRC_URI="https://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${P}.tar.gz"
 LICENSE="LGPL-2.1 LGPL-3"
 SLOT="3"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv sparc x86"
-IUSE="gtk +introspection"
-RESTRICT="test" # consequence of the -no-mono.patch
+IUSE="gtk +introspection test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/dbus-glib
@@ -35,9 +35,13 @@ BDEPEND="
 	gnome-base/gnome-common
 	virtual/pkgconfig
 	$(vala_depend)
+	test? ( dev-util/dbus-test-runner )
 "
 
-PATCHES=( "${FILESDIR}"/${P}-autotools.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-autotools.patch
+	"${FILESDIR}"/${PN}-12.10.1-tests-werror.patch
+)
 
 src_prepare() {
 	default
@@ -51,9 +55,14 @@ src_configure() {
 	econf \
 		$(use_enable gtk) \
 		$(use_enable introspection) \
+		$(use_enable test tests) \
 		--disable-python \
 		--disable-scrollkeeper \
 		--with-gtk=3
+}
+
+src_test() {
+	emake check XFAIL_TESTS="test-interests test-interests-multi test-max-indicators test-indicator-display test-indicator-display-half"
 }
 
 src_install() {

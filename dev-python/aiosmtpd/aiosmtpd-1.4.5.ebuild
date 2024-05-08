@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 RDEPEND="
 	>=dev-python/atpublic-4.0[${PYTHON_USEDEP}]
@@ -26,6 +26,11 @@ RDEPEND="
 BDEPEND="
 	test? ( >=dev-python/pytest-mock-3.12.0[${PYTHON_USEDEP}] )
 "
+
+EPYTEST_DESELECT=(
+	# Needs dev-vcs/git
+	aiosmtpd/qa/test_0packaging.py::TestVersion
+)
 
 distutils_enable_tests pytest
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ inherit toolchain-funcs java-pkg-opt-2 verify-sig
 DESCRIPTION="Artistic Style is a re-indenter and reformatter for C++, C and Java source code"
 HOMEPAGE="https://astyle.sourceforge.net/ https://gitlab.com/saalen/astyle"
 SRC_URI="
-	mirror://sourceforge/astyle/${P}.tar.bz2
+	https://downloads.sourceforge.net/astyle/${P}.tar.bz2
 	http://www.andre-simon.de/zip/${P}.tar.bz2
 	verify-sig? ( http://www.andre-simon.de/zip/${P}.tar.bz2.asc )
 "

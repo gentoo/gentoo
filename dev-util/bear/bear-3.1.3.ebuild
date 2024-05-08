@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit cmake python-any-r1
+inherit cmake multiprocessing python-any-r1
 
 DESCRIPTION="Build EAR generates a compilation database for clang tooling"
 HOMEPAGE="https://github.com/rizsotto/Bear"
@@ -55,6 +55,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# TODO: remove this when https://bugs.gentoo.org/928346 is fixed
+	export CMAKE_BUILD_PARALLEL_LEVEL=$(makeopts_jobs)
+
 	local mycmakeargs=(
 		-DENABLE_UNIT_TESTS="$(usex test)"
 		-DENABLE_FUNC_TESTS="$(usex test)"

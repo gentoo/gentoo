@@ -4,13 +4,13 @@
 EAPI=8
 
 GENTOO_DEPEND_ON_PERL=no
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_10 )
 
 inherit autotools gnome2-utils flag-o-matic perl-module python-single-r1 xdg
 
 DESCRIPTION="GTK Instant Messenger client"
 HOMEPAGE="https://pidgin.im/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0/2" # libpurple version

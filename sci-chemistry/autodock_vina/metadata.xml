@@ -17,4 +17,7 @@
 		multithreading
 		Journal of Computational Chemistry 31 (2010) 455-461
 	</longdescription>
+	<upstream>
+		<remote-id type="github">ccsb-scripps/AutoDock-Vina</remote-id>
+	</upstream>
 </pkgmetadata>

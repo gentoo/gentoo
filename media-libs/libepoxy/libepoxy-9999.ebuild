@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE='xml(+)'
 inherit meson-multilib python-any-r1 virtualx
 
@@ -20,22 +20,28 @@ HOMEPAGE="https://github.com/anholt/libepoxy"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+egl test +X"
+IUSE="test +X"
 
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	egl? ( media-libs/mesa[egl(+),${MULTILIB_USEDEP}] )"
+	media-libs/libglvnd[X?,${MULTILIB_USEDEP}]
+"
 DEPEND="${RDEPEND}
-	X? ( x11-libs/libX11[${MULTILIB_USEDEP}] )"
+	X? (
+		x11-base/xorg-proto
+		x11-libs/libX11[${MULTILIB_USEDEP}]
+	)
+"
 BDEPEND="${PYTHON_DEPS}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 PATCHES=( "${FILESDIR}"/libepoxy-1.5.10-use-opengl.pc-without-x.patch )
 
 multilib_src_configure() {
 	local emesonargs=(
-		-Degl=$(usex egl)
+		-Degl=yes
 		-Dglx=$(usex X)
 		$(meson_use X x11)
 		$(meson_use test tests)

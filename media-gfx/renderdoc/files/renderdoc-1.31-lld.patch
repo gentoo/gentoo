@@ -1,0 +1,23 @@
+Remove undefined symbols from version script.
+
+Bug: https://bugs.gentoo.org/925578
+--- a/renderdoc/renderdoc.version
++++ b/renderdoc/renderdoc.version
+@@ -6,17 +6,14 @@
+                 egl[A-Z]*;
+                 vk_icd*;
+                 dlopen;
+-                dlsym;
+                 fork;
+                 execl;
+                 execlp;
+                 execle;
+-                execlpe;
+                 execv;
+                 execvp;
+                 execve;
+                 execvpe;
+-                _exit;
+                 RENDERDOC_*;
+                 VK_LAYER_RENDERDOC_*;
+         local:

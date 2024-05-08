@@ -17,7 +17,6 @@
 	</upstream>
 	<use>
 		<flag name="fonts">Install the fonts shipped with XScreenSaver that have clear licensing</flag>
-		<flag name="gdk-pixbuf">Include support for the <pkg>x11-libs/gdk-pixbuf</pkg> library in some demos, which will make it possible for them to read GIF, JPEG, and PNG files as well</flag>
 		<flag name="gdm">Use gdmflexiserver from <pkg>gnome-base/gdm</pkg> instead of <pkg>x11-misc/lightdm</pkg></flag>
 		<flag name="gles" restrict="&gt;=x11-misc/xscreensaver-6.0.2">Emulate OpenGL 1.3 in terms of OpenGL ES 1.x</flag>
 		<flag name="glx" restrict="&gt;=x11-misc/xscreensaver-6.0.2">Use GLX to interface OpenGL and X11 instead of EGL</flag>

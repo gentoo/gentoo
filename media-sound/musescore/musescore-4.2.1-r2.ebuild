@@ -5,7 +5,7 @@ EAPI=8
 
 CHECKREQS_DISK_BUILD=3500M
 VIRTUALX_REQUIRED="test"
-inherit cmake qmake-utils xdg check-reqs virtualx
+inherit cmake flag-o-matic qmake-utils xdg check-reqs virtualx
 
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
@@ -63,9 +63,10 @@ RDEPEND="
 	jack? ( virtual/jack )
 	video? ( media-video/ffmpeg )
 "
+# dev-cpp/gtest is required even when tests are disabled!
 DEPEND="
 	${RDEPEND}
-	test? ( dev-cpp/gtest )
+	dev-cpp/gtest
 "
 
 PATCHES=(
@@ -97,6 +98,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# confuses rcc, bug #908808
+	filter-lto
+
 	# bug #766111
 	export PATH="$(qt5_get_bindir):${PATH}"
 

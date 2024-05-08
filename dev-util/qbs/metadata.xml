@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>pesa@gentoo.org</email>
-		<name>Davide Pesavento</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>qt@gentoo.org</email>
 		<name>Gentoo Qt Project</name>
@@ -26,5 +22,6 @@
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
 		<doc>https://doc.qt.io/qbs/</doc>
+		<remote-id type="github">qbs/qbs</remote-id>
 	</upstream>
 </pkgmetadata>

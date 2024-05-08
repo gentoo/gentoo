@@ -5,4 +5,7 @@
 		<email>cjk@gentoo.org</email>
 		<name>Cjk</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">skk-dev/dict</remote-id>
+	</upstream>
 </pkgmetadata>

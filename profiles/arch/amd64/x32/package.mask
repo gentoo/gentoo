@@ -39,7 +39,6 @@ dev-python/plotly
 dev-python/plotly-geo
 dev-python/chart-studio
 sci-visualization/dash
-sci-visualization/jupyter-dash
 >=dev-python/notebook-7
 dev-python/spyder-notebook
 app-emacs/emacs-ipython-notebook
@@ -114,8 +113,6 @@ kde-apps/konqueror
 kde-apps/konsolekalendar
 kde-apps/kontact
 kde-apps/korganizer
-kde-apps/ktp-accounts-kcm
-kde-apps/ktp-text-ui
 kde-apps/libksieve
 kde-apps/mailcommon
 kde-apps/messagelib
@@ -123,7 +120,6 @@ kde-apps/mbox-importer
 kde-apps/parley
 kde-apps/pim-data-exporter
 kde-apps/pim-sieve-editor
-kde-apps/plasma-telepathy-meta:5
 kde-misc/kio-gdrive
 kde-misc/tellico
 kde-misc/zanshin
@@ -131,7 +127,6 @@ media-gfx/digikam
 media-gfx/luminance-hdr
 media-sound/frescobaldi
 media-sound/teamspeak-client:3
-media-video/openshot
 media-video/vidify
 media-video/vidify-audiosync
 net-analyzer/nmapsi

@@ -1,6 +1,5 @@
-diff -Naur cmigemo-1.3c-MIT.orig/compile/Make_gcc.mak cmigemo-1.3c-MIT/compile/Make_gcc.mak
---- cmigemo-1.3c-MIT.orig/compile/Make_gcc.mak	2003-10-19 16:00:59.000000000 +0900
-+++ cmigemo-1.3c-MIT/compile/Make_gcc.mak	2009-11-08 16:45:32.485952233 +0900
+--- a/compile/Make_gcc.mak
++++ b/compile/Make_gcc.mak
 @@ -14,7 +14,7 @@
  libmigemo	= libmigemo.so
  EXEEXT		=
@@ -10,9 +9,18 @@ diff -Naur cmigemo-1.3c-MIT.orig/compile/Make_gcc.mak cmigemo-1.3c-MIT/compile/M
  
  include config.mk
  include compile/unix.mak
-diff -Naur cmigemo-1.3c-MIT.orig/configure cmigemo-1.3c-MIT/configure
---- cmigemo-1.3c-MIT.orig/configure	2004-06-19 12:50:27.000000000 +0900
-+++ cmigemo-1.3c-MIT/configure	2009-11-08 16:40:42.688962262 +0900
+--- a/compile/unix.mak
++++ b/compile/unix.mak
+@@ -22,6 +22,7 @@
+ 			$(MKDIR) $$i; \
+ 		fi \
+ 	done
++	touch $@
+ 
+ $(outdir)cmigemo$(EXEEXT): $(objdir)main.$(O) $(libmigemo_LIB)
+ 	$(CC) -o $@ $(objdir)main.$(O) -L. -L$(outdir) -lmigemo $(LDFLAGS)
+--- a/configure
++++ b/configure
 @@ -31,12 +31,12 @@
  fi
  
@@ -30,9 +38,8 @@ diff -Naur cmigemo-1.3c-MIT.orig/configure cmigemo-1.3c-MIT/configure
    exit 1
  fi
  
-diff -Naur cmigemo-1.3c-MIT.orig/tools/migemo.vim cmigemo-1.3c-MIT/tools/migemo.vim
---- cmigemo-1.3c-MIT.orig/tools/migemo.vim	2004-02-23 16:32:53.000000000 +0900
-+++ cmigemo-1.3c-MIT/tools/migemo.vim	2009-11-08 16:42:19.572951008 +0900
+--- a/tools/migemo.vim
++++ b/tools/migemo.vim
 @@ -20,7 +20,7 @@
      let dict = globpath(path, "migemo-dict")
    endif
@@ -47,9 +54,33 @@ diff -Naur cmigemo-1.3c-MIT.orig/tools/migemo.vim cmigemo-1.3c-MIT/tools/migemo.
  else
    " non-builtin version
 -  let g:migemodict = s:SearchDict()
-+  if !exists('g:migemodict')
++  if !get(g:, 'migemodict')
 +    let g:migemodict = s:SearchDict()
 +  endif
    command! -nargs=* Migemo :call <SID>MigemoSearch(<q-args>)
    nnoremap <silent> <leader>mi :call <SID>MigemoSearch('')<cr>
  
+@@ -53,11 +55,6 @@
+       if retval == ''
+         return
+       endif
+-      if has('iconv') && $HOMEDRIVE != ''
+-        let retval = iconv(retval, 'cp932', 'euc-jp')
+-      elseif &encoding != 'euc-jp'
+-        let retval = iconv(retval, &encoding, 'euc-jp')
+-      endif
+       "let retval = system('cmigemo -v -w "'.retval.'" -d "'.g:migemodict.'"')
+       let retval = system('cmigemo -v -w '.retval.' -d "'.g:migemodict.'"')
+       if retval == ''
+@@ -88,11 +85,6 @@
+       echohl None
+       return
+     endif
+-    if has('iconv') && $HOMEDRIVE != ''
+-      let retval = iconv(retval, 'euc-jp', 'cp932')
+-    elseif &encoding != 'euc-jp'
+-      let retval = iconv(retval, 'euc-jp', &encoding)
+-    endif
+   
+     let @/ = retval
+     let v:errmsg = ''

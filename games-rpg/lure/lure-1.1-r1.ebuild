@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,13 +11,13 @@ DESCRIPTION="Play as the young peasant named Diermot who has to overthrow an evi
 HOMEPAGE="https://revolution.co.uk/games_catalog/lure-of-the-temptress-copy/"
 SRC_URI="
 	https://raw.githubusercontent.com/scummvm/scummvm/266aef932a8a052df897e4d79b4572e5d169916f/dists/engine-data/lure.dat -> lure-${DAT_PV}.dat
-	l10n_en? ( mirror://sourceforge/scummvm/${P}.zip -> ${PN}-en-${PV}.zip )
-	l10n_es? ( mirror://sourceforge/scummvm/${PN}-es-${PV}.zip )
-	l10n_fr? ( mirror://sourceforge/scummvm/${PN}-fr-${PV}.zip )
-	l10n_de? ( mirror://sourceforge/scummvm/${PN}-de-${PV}.zip )
-	l10n_it? ( mirror://sourceforge/scummvm/${PN}-it-${PV}.zip )
+	l10n_en? ( https://downloads.sourceforge.net/scummvm/${P}.zip -> ${PN}-en-${PV}.zip )
+	l10n_es? ( https://downloads.sourceforge.net/scummvm/${PN}-es-${PV}.zip )
+	l10n_fr? ( https://downloads.sourceforge.net/scummvm/${PN}-fr-${PV}.zip )
+	l10n_de? ( https://downloads.sourceforge.net/scummvm/${PN}-de-${PV}.zip )
+	l10n_it? ( https://downloads.sourceforge.net/scummvm/${PN}-it-${PV}.zip )
 	!l10n_en? ( !l10n_es? ( !l10n_fr? ( !l10n_de? ( !l10n_it?
-		( mirror://sourceforge/scummvm/${P}.zip -> ${PN}-en-${PV}.zip ) ) ) ) )"
+		( https://downloads.sourceforge.net/scummvm/${P}.zip -> ${PN}-en-${PV}.zip ) ) ) ) )"
 S="${WORKDIR}"
 
 LICENSE="lure"

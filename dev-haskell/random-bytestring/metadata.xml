@@ -8,4 +8,7 @@
 	<use>
 		<flag name="pcg">compile with support for PCG from pcg-random</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">larskuhtz/random-bytestring</remote-id>
+	</upstream>
 </pkgmetadata>

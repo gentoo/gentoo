@@ -58,6 +58,7 @@ fi
 : "${XORG_MULTILIB:="no"}"
 
 # we need to inherit autotools first to get the deps
+AUTOTOOLS_AUTO_DEPEND=no
 inherit autotools libtool multilib toolchain-funcs flag-o-matic \
 	${FONT_ECLASS} ${GIT_ECLASS}
 unset FONT_ECLASS GIT_ECLASS
@@ -129,17 +130,13 @@ fi
 
 # Set up autotools shared dependencies
 # Remember that all versions here MUST be stable
-EAUTORECONF_DEPEND+="
-	>=dev-build/libtool-2.2.6a
-	sys-devel/m4"
+EAUTORECONF_DEPEND+=" ${AUTOTOOLS_DEPEND}"
 if [[ ${PN} != util-macros ]] ; then
 	EAUTORECONF_DEPEND+=" >=x11-misc/util-macros-1.18"
 	# Required even by xorg-server
 	[[ ${PN} == "font-util" ]] || EAUTORECONF_DEPEND+=" >=media-fonts/font-util-1.2.0"
 fi
-BDEPEND+=" ${EAUTORECONF_DEPENDS}"
 [[ ${XORG_EAUTORECONF} != no ]] && BDEPEND+=" ${EAUTORECONF_DEPEND}"
-unset EAUTORECONF_DEPENDS
 unset EAUTORECONF_DEPEND
 
 # @ECLASS_VARIABLE: FONT_DIR

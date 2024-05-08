@@ -1,0 +1,14 @@
+Skip the error_info test. This test tries to open fds until exhausted which
+seems to be quite unreliable/brittle.
+--- a/lib/kernel/test/os_SUITE.erl
++++ b/lib/kernel/test/os_SUITE.erl
+@@ -42,8 +42,7 @@ all() ->
+      env,
+      find_executable, unix_comment_in_command, deep_list_command,
+      large_output_command, background_command, message_leak,
+-     close_stdin, max_size_command, perf_counter_api,
+-     error_info].
++     close_stdin, max_size_command, perf_counter_api].
+ 
+ groups() ->
+     [].

@@ -54,6 +54,8 @@ DEPEND="
 BDEPEND="~dev-qt/qtshadertools-${PV}:6"
 
 CMAKE_SKIP_TESTS=(
+	# unimportant and expects all backends to be available (bug #928420)
+	tst_backends
 	# tries to use real alsa or pulseaudio and fails in sandbox
 	tst_qaudiosink
 	tst_qaudiosource
@@ -63,6 +65,7 @@ CMAKE_SKIP_TESTS=(
 	# may try to use v4l2 or hardware acceleration depending on availability
 	tst_qscreencapture_integration
 	tst_qscreencapturebackend
+	tst_qvideoframebackend
 	# fails with offscreen rendering
 	tst_qvideoframecolormanagement
 	tst_qwindowcapturebackend
@@ -84,4 +87,19 @@ src_configure() {
 	)
 
 	qt6-build_src_configure
+}
+
+src_install() {
+	qt6-build_src_install
+
+	if use test; then
+		local delete=( # sigh
+			"${D}${QT6_LIBDIR}"/cmake/Qt6Multimedia/Qt6MockMultimediaPlugin*.cmake
+			"${D}${QT6_MKSPECSDIR}"/modules/qt_plugin_mockmultimediaplugin.pri
+			"${D}${QT6_PLUGINDIR}"/multimedia/libmockmultimediaplugin.*
+			"${D}${QT6_PLUGINDIR}"/multimedia/objects-*
+		)
+		# using -f given not tracking which tests may be skipped or not
+		rm -rf -- "${delete[@]}" || die
+	fi
 }

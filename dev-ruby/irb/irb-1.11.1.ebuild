@@ -17,7 +17,7 @@ SRC_URI="https://github.com/ruby/irb/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="test"
 
 # Ensure a new enough eselect-ruby is present to avoid clobbering the
@@ -28,7 +28,13 @@ ruby_add_rdepend "
 	!<app-eselect/eselect-ruby-20231008
 "
 
-ruby_add_bdepend "test? ( dev-ruby/bundler dev-ruby/test-unit dev-ruby/test-unit-ruby-core )"
+ruby_add_bdepend "
+	test? (
+		dev-ruby/bundler
+		dev-ruby/debug
+		dev-ruby/test-unit
+		dev-ruby/test-unit-ruby-core
+	)"
 
 all_ruby_prepare() {
 	sed -e 's:_relative ":"./:' \

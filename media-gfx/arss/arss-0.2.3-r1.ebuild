@@ -9,7 +9,7 @@ inherit cmake flag-o-matic
 
 DESCRIPTION="Analysis & Resynthesis Sound Spectrograph"
 HOMEPAGE="https://arss.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}/src"
 
 LICENSE="GPL-2+"

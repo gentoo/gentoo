@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="C Unit Test Framework"
 HOMEPAGE="http://cunit.sourceforge.net"
-SRC_URI="mirror://sourceforge/cunit/${MY_P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/cunit/${MY_P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0"

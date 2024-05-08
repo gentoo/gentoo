@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,10 +7,10 @@ inherit desktop wrapper
 
 DESCRIPTION="Classic adventure game"
 HOMEPAGE="https://wiki.scummvm.org/index.php/Soltys"
-SRC_URI="l10n_en? ( mirror://sourceforge/scummvm/${PN}-en-v${PV}.zip )
-	l10n_es? ( mirror://sourceforge/scummvm/${PN}-es-v${PV}.zip )
-	l10n_pl? ( mirror://sourceforge/scummvm/${PN}-pl-v${PV}.zip )
-	!l10n_en? ( !l10n_es? ( !l10n_pl? ( mirror://sourceforge/scummvm/${PN}-en-v${PV}.zip ) ) )
+SRC_URI="l10n_en? ( https://downloads.sourceforge.net/scummvm/${PN}-en-v${PV}.zip )
+	l10n_es? ( https://downloads.sourceforge.net/scummvm/${PN}-es-v${PV}.zip )
+	l10n_pl? ( https://downloads.sourceforge.net/scummvm/${PN}-pl-v${PV}.zip )
+	!l10n_en? ( !l10n_es? ( !l10n_pl? ( https://downloads.sourceforge.net/scummvm/${PN}-en-v${PV}.zip ) ) )
 	http://www.scummvm.org/images/cat-${PN}.png"
 S="${WORKDIR}"
 

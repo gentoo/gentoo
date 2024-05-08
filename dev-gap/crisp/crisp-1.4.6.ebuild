@@ -10,7 +10,7 @@ SLOT="0"
 SRC_URI="https://github.com/bh11/${PN}/releases/download/${P^^}/${P}.tar.bz2"
 
 LICENSE="BSD-2"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 GAP_PKG_HTML_DOCDIR="htm"
 gap-pkg_enable_tests

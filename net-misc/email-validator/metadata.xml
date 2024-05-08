@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+  <longdescription>
+    Validate an email address using three techniques:
+
+    * Ensuring that the length of local and domain parts is within the
+      RFC-specified limits.
+
+    * A syntax check using a regular expression, or the full RFC 5322
+      grammar.
+
+    * Confirmation of valid MX records (or, optionally, 'A'
+      records) for the domain.
+  </longdescription>
+</pkgmetadata>

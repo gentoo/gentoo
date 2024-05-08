@@ -1,0 +1,17 @@
+diff --git a/src/capabilities.rs b/src/capabilities.rs
+--- a/src/capabilities.rs
++++ b/src/capabilities.rs
+@@ -226,10 +226,7 @@ impl<'a> BrowserCapabilities for FirefoxCapabilities<'a> {
+                                 if !data.contains_key("androidPackage")
+                                     && self.version(Some(Path::new(binary))).is_err()
+                                 {
+-                                    return Err(WebDriverError::new(
+-                                        ErrorStatus::InvalidArgument,
+-                                        format!("{} is not a Firefox executable", &**key),
+-                                    ));
++                                    warn!("{} is not a Mozilla Firefox executable", &**key);
+                                 }
+                             } else {
+                                 return Err(WebDriverError::new(
+-- 
+2.40.1

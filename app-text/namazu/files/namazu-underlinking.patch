@@ -1,0 +1,11 @@
+--- a/nmz/Makefile.am
++++ b/nmz/Makefile.am
+@@ -47,7 +47,7 @@
+ 	nmzversion.c
+ 
+ libnmz_la_DEPENDENCIES = @NMZ_LIBOBJS@
+-libnmz_la_LIBADD = @LTLIBINTL@
++libnmz_la_LIBADD = @LTLIBINTL@ @NMZ_LIBOBJS@
+ libnmz_la_LDFLAGS = -version-info $(LTVERSION)
+ 
+ nmzversion.c: nmzversion.c.in

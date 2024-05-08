@@ -1,8 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="NX compression technology core libraries"
 HOMEPAGE="https://github.com/ArcticaProject/nx-libs"
@@ -72,6 +72,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/861680
+	#
+	# inherited from libX11 vendored code. libX11 passes this flag already.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	# From xorg-x11-6.9.0-r3.ebuild
 	pushd nx-X11 || die
 	HOSTCONF="config/cf/host.def"

@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="Convert CD images from ccd (CloneCD) to iso"
 HOMEPAGE="https://sourceforge.net/projects/ccd2iso/"
-SRC_URI="mirror://sourceforge/ccd2iso/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/ccd2iso/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

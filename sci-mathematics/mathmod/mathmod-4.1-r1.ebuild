@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit desktop qmake-utils xdg-utils
 
 DESCRIPTION="Plot parametric and implicit surfaces"
 HOMEPAGE="https://www.facebook.com/pages/MathMod/529510253833102"
-SRC_URI="mirror://sourceforge/${PN}/${P}.src.zip"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.src.zip"
 
 LICENSE="GPL-3"
 SLOT="0"

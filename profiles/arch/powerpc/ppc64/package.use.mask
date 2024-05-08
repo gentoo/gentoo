@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# José de Paula R. N. Assis <espinafre@gmail.com> (2024-03-25)
+# No PyQt6 (which is needed by USE=qt6 for qscintilla-python) on ppc64.
+>=dev-python/qscintilla-python-2.14.1-r1 qt6
+
 # Sam James <sam@gentoo.org> (2024-03-23)
 # dev-qt/qtwebengine not available here
 dev-python/QtPy webengine test
@@ -29,14 +33,6 @@ www-client/firefox hwaccel
 # Done this way also avoids conflicts for users using another default.
 games-engines/openmw -lua_single_target_lua5-1 lua_single_target_luajit
 games-engines/openmw -lua_single_target_lua5-3 -lua_single_target_lua5-4
-
-# Ionen Wolkens <ionen@gentoo.org> (2023-07-26)
-# MPV currently[1] has no plans to support >=lua5-3 making luajit
-# the only choice for maintained lua. Apply mask/force to override
-# the profile's defaults, and invert on arches where not keyworded.
-# Done this way also avoids conflicts for users using another default.
-# [1] https://github.com/mpv-player/mpv/wiki/FAQ#why-does-mpv-not-support-lua-53-or-newer
-media-video/mpv -lua_single_target_lua5-1 lua_single_target_luajit
 
 # Sam James <sam@gentoo.org> (2023-04-14)
 # Needs dev-python/sympy which is not yet keyworded, see bug #892183
@@ -196,11 +192,6 @@ net-vpn/tor seccomp
 net-irc/kvirc kde
 app-arch/p7zip kde
 dev-vcs/subversion kwallet
-
-# Patrice Clement <monsieurp@gentoo.org> (2016-02-08)
-# I would need to keyword an awful lot of packages on ppc64
-# that would need Java 7 otherwise.
-dev-java/ant-apache-bsf python
 
 # Jeroen Roovers <jer@gentoo.org> (2015-12-26)
 # Mask until >sys-cluster/ceph-0.94 goes stable

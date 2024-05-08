@@ -46,13 +46,10 @@ SRC_URI="
 		$(bootstrap_uri x86 ${X86_XPAK})
 		$(bootstrap_uri riscv ${RISCV_XPAK})
 	)
-	riscv? ( https://dev.gentoo.org/~gyakovlev/distfiles/dev-java/openjdk/java17-riscv64.patch )
 "
-# riscv patch origin:
-# https://raw.githubusercontent.com/felixonmars/archriscv-packages/master/java17-openjdk/java17-riscv64.patch
 
 LICENSE="GPL-2-with-classpath-exception"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 ~riscv x86"
 
 IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap lto selinux source system-bootstrap systemtap"
 
@@ -163,7 +160,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	use riscv && eapply "${DISTDIR}"/java17-riscv64.patch
 	default
 	chmod +x configure || die
 }
@@ -230,8 +226,6 @@ src_configure() {
 		--enable-headless-only=$(usex headless-awt yes no)
 		$(tc-is-clang && echo "--with-toolchain-type=clang")
 	)
-
-	use riscv && myconf+=( --with-boot-jdk-jvmargs="-Djdk.lang.Process.launchMechanism=vfork" )
 
 	use lto && myconf+=( --with-jvm-features=link-time-opt )
 

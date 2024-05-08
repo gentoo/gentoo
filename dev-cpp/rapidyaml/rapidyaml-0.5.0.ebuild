@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ SRC_URI="
 		https://github.com/biojppm/c4log/archive/${HASH_C4LOG}.tar.gz
 			-> ${PN}-c4log-${HASH_C4LOG}.tar.gz
 		https://github.com/yaml/yaml-test-suite/archive/${HASH_YAMLTS}.tar.gz
-			-> ${PN}-yaml-test-suite-${HASH_YAMLTS}.tar.gz
+			-> yaml-test-suite-${HASH_YAMLTS}.tar.gz
 	)"
 S="${WORKDIR}/${P}-src"
 

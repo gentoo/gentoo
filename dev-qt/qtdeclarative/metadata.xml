@@ -9,6 +9,7 @@
 		<flag name="localstorage">Build the LocalStorage import for QtQuick (requires QtSql)</flag>
 		<flag name="network">Enable QtNetwork support</flag>
 		<flag name="opengl">Enable OpenGL support</flag>
+		<flag name="qmlls">Build the qmlls tool using <pkg>dev-qt/qtlanguageserver</pkg></flag>
 		<flag name="sql">Enable QtSQL support</flag>
 		<flag name="widgets">Enable QtWidgets support</flag>
 	</use>

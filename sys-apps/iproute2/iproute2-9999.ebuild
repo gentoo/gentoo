@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit edo toolchain-funcs
+inherit edo toolchain-funcs flag-o-matic
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/shemminger/iproute2.git"
@@ -18,7 +18,7 @@ HOMEPAGE="https://wiki.linuxfoundation.org/networking/iproute2"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="atm berkdb bpf caps elf +iptables minimal nfs selinux"
+IUSE="atm berkdb bpf caps elf +iptables minimal nfs selinux split-usr"
 # Needs root
 RESTRICT="test"
 
@@ -49,9 +49,9 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.5.0-mtu.patch # bug #291907
-	"${FILESDIR}"/${PN}-6.5.0-configure-nomagic-nolibbsd.patch # bug #643722 & #911727
+	"${FILESDIR}"/${PN}-6.8.0-configure-nomagic-nolibbsd.patch # bug #643722 & #911727
 	"${FILESDIR}"/${PN}-5.7.0-mix-signal.h-include.patch
-	"${FILESDIR}"/${PN}-6.4.0-disable-libbsd-fallback.patch # bug #911727
+	"${FILESDIR}"/${PN}-6.8.0-disable-libbsd-fallback.patch # bug #911727
 )
 
 src_prepare() {
@@ -104,9 +104,14 @@ src_configure() {
 	fi
 	popd >/dev/null || die
 
+	# build system does not pass CFLAGS to LDFLAGS, as is recommended by GCC upstream
+	# https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html#index-flto
+	# https://bugs.gentoo.org/929233
+	append-ldflags ${CFLAGS}
+
 	# run "configure" script first which will create "config.mk"...
 	# Using econf breaks since 5.14.0 (a9c3d70d902a0473ee5c13336317006a52ce8242)
-	edo ./configure --libbpf_force $(usex bpf on off)
+	edo ./configure --color=auto --libbpf_force $(usex bpf on off)
 
 	# Remove the definitions made by configure and allow them to be overridden
 	# by USE flags below.
@@ -187,7 +192,6 @@ src_install() {
 
 	dodir /bin
 	mv "${ED}"/{s,}bin/ip || die # bug #330115
-	mv "${ED}"/{s,}bin/ss || die # bug #547264
 
 	dolib.a lib/libnetlink.a
 	insinto /usr/include
@@ -196,6 +200,13 @@ src_install() {
 	# Collides with net-analyzer/ifstat
 	# https://bugs.gentoo.org/868321
 	mv "${ED}"/sbin/ifstat{,-iproute2} || die
+
+	if use split-usr ; then
+		# Can remove compatibility symlink in a year: 2023-05-28.
+		# bug #547264
+		mv "${ED}"/sbin/ss "${ED}"/bin/ss || die
+		dosym -r /bin/ss /sbin/ss
+	fi
 
 	if use berkdb ; then
 		keepdir /var/lib/arpd

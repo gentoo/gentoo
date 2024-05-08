@@ -10,6 +10,6 @@
 		<name>Mike Gilbert</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">dracutdevs/dracut</remote-id>
+		<remote-id type="github">dracut-ng/dracut-ng</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -44,6 +44,28 @@ esac
 # a use-conditional build time dependency on virtual/perl-Test-Simple, and
 # the required RESTRICT setting.
 
+# @ECLASS_VARIABLE: PERL_USEDEP
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# An eclass-generated USE-dependency string for the features of the
+# installed Perl. While by far not as critical as for Python, this should
+# be used to depend at least on Perl packages installing compiled
+# (binary) files.
+#
+# Example use:
+# @CODE
+# RDEPEND=dev-perl/DBI[${PERL_USEDEP}]
+# @CODE
+#
+# Example value:
+# @CODE
+# perl_features_debug=,perl_features_ithreads=,perl_features_quadmath=
+# @CODE
+PERL_USEDEP="perl_features_debug=,perl_features_ithreads=,perl_features_quadmath="
+
+GENTOO_PERL_DEPSTRING=" || ( >=dev-lang/perl-5.38.2-r3[${PERL_USEDEP}] <dev-lang/perl-5.38.2-r3 )"
+GENTOO_PERL_USESTRING="perl_features_debug perl_features_ithreads perl_features_quadmath"
+
 case ${EAPI} in
 	7)
 		[[ ${CATEGORY} == perl-core ]] && \
@@ -51,14 +73,16 @@ case ${EAPI} in
 
 		case "${GENTOO_DEPEND_ON_PERL:-yes}" in
 			yes)
-				DEPEND="dev-lang/perl"
-				BDEPEND="dev-lang/perl"
-				RDEPEND="dev-lang/perl:="
+				IUSE=${GENTOO_PERL_USESTRING}
+				DEPEND=${GENTOO_PERL_DEPSTRING}
+				BDEPEND=${GENTOO_PERL_DEPSTRING}
+				RDEPEND="${GENTOO_PERL_DEPSTRING} dev-lang/perl:="
 				;;
 			noslotop)
-				DEPEND="dev-lang/perl"
-				BDEPEND="dev-lang/perl"
-				RDEPEND="dev-lang/perl"
+				IUSE=${GENTOO_PERL_USESTRING}
+				DEPEND=${GENTOO_PERL_DEPSTRING}
+				BDEPEND=${GENTOO_PERL_DEPSTRING}
+				RDEPEND=${GENTOO_PERL_DEPSTRING}
 				;;
 		esac
 
@@ -78,17 +102,18 @@ case ${EAPI} in
 
 		case "${GENTOO_DEPEND_ON_PERL:-yes}" in
 			yes|noslotop)
-				DEPEND="dev-lang/perl"
-				BDEPEND="dev-lang/perl
+				IUSE=${GENTOO_PERL_USESTRING}
+				DEPEND=${GENTOO_PERL_DEPSTRING}
+				BDEPEND="${GENTOO_PERL_DEPSTRING}
 					 test? ( >=virtual/perl-Test-Simple-1 )"
-				IUSE="test"
+				IUSE+=" test"
 				RESTRICT="!test? ( test )"
 				;;&
 			yes)
-				RDEPEND="dev-lang/perl:="
+				RDEPEND="${GENTOO_PERL_DEPSTRING} dev-lang/perl:="
 				;;
 			noslotop)
-				RDEPEND="dev-lang/perl"
+				RDEPEND=${GENTOO_PERL_DEPSTRING}
 				;;
 		esac
 

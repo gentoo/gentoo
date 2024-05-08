@@ -9,14 +9,6 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..12} )
 TMPFILES_OPTIONAL=1
 
-inherit python-any-r1 prefix preserve-libs toolchain-funcs flag-o-matic gnuconfig \
-	multilib systemd multiprocessing tmpfiles
-
-DESCRIPTION="GNU libc C library"
-HOMEPAGE="https://www.gnu.org/software/libc/"
-LICENSE="LGPL-2.1+ BSD HPND ISC inner-net rc PCRE"
-SLOT="2.2"
-
 EMULTILIB_PKG="true"
 
 # Gentoo patchset (ignored for live ebuilds)
@@ -40,6 +32,12 @@ MIN_PAX_UTILS_VER="1.3.3"
 # its seccomp filter!). Please double check this!
 MIN_SYSTEMD_VER="254.9-r1"
 
+inherit python-any-r1 prefix preserve-libs toolchain-funcs flag-o-matic gnuconfig \
+	multilib systemd multiprocessing tmpfiles
+
+DESCRIPTION="GNU libc C library"
+HOMEPAGE="https://www.gnu.org/software/libc/"
+
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 else
@@ -51,6 +49,8 @@ fi
 SRC_URI+=" multilib-bootstrap? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 SRC_URI+=" systemd? ( https://gitweb.gentoo.org/proj/toolchain/glibc-systemd.git/snapshot/glibc-systemd-${GLIBC_SYSTEMD_VER}.tar.gz )"
 
+LICENSE="LGPL-2.1+ BSD HPND ISC inner-net rc PCRE"
+SLOT="2.2"
 IUSE="audit caps cet compile-locales custom-cflags doc gd hash-sysv-compat headers-only +multiarch multilib multilib-bootstrap nscd perl profile selinux +ssp stack-realign +static-libs suid systemd systemtap test vanilla"
 
 # Here's how the cross-compile logic breaks down ...
@@ -213,7 +213,9 @@ XFAIL_NSPAWN_TEST_LIST=(
 dump_build_environment() {
 	einfo ==== glibc build environment ========================================================
 	local v
-	for v in ABI CBUILD CHOST CTARGET CBUILD_OPT CTARGET_OPT CC CXX CPP LD {AS,C,CPP,CXX,LD}FLAGS MAKEINFO NM AR AS STRIP RANLIB OBJCOPY STRINGS OBJDUMP READELF; do
+	for v in ABI CBUILD CHOST CTARGET CBUILD_OPT CTARGET_OPT CC CXX CPP LD \
+		{AS,C,CPP,CXX,LD}FLAGS MAKEINFO NM AR AS STRIP RANLIB OBJCOPY \
+		STRINGS OBJDUMP READELF; do
 		einfo " $(printf '%15s' ${v}:)   ${!v}"
 	done
 	einfo =====================================================================================
@@ -256,7 +258,9 @@ alt_build_headers() {
 		if tc-is-cross-compiler ; then
 			ALT_BUILD_HEADERS=${SYSROOT}$(alt_headers)
 			if [[ ! -e ${ALT_BUILD_HEADERS}/linux/version.h ]] ; then
-				local header_path=$(echo '#include <linux/version.h>' | $(tc-getCPP ${CTARGET}) ${CFLAGS} 2>&1 | grep -o '[^"]*linux/version.h')
+				local header_path=$(echo '#include <linux/version.h>' \
+					| $(tc-getCPP ${CTARGET}) ${CFLAGS} 2>&1 \
+					| grep -o '[^"]*linux/version.h')
 				ALT_BUILD_HEADERS=${header_path%/linux/version.h}
 			fi
 		fi
@@ -443,9 +447,14 @@ setup_flags() {
 		# relating to failed builds, we strip most CFLAGS out to ensure as few
 		# problems as possible.
 		strip-flags
-		# Lock glibc at -O2; we want to be conservative here.
-		filter-flags '-O?'
-		append-flags -O2
+
+		# Allow -O2 and -O3, but nothing else for now.
+		# TODO: Test -Os, -Oz.
+		if ! is-flagq '-O@(2|3)' ; then
+			# Lock glibc at -O2. We want to be conservative here.
+			filter-flags '-O?'
+			append-flags -O2
+		fi
 	fi
 
 	strip-unsupported-flags
@@ -589,10 +598,12 @@ setup_env() {
 	# Reset CC and CXX to the value at start of emerge
 	export CC=${glibc__ORIG_CC:-${CC:-$(tc-getCC ${CTARGET})}}
 	export CXX=${glibc__ORIG_CXX:-${CXX:-$(tc-getCXX ${CTARGET})}}
+	export CPP=${glibc__ORIG_CPP:-${CPP:-$(tc-getCPP ${CTARGET})}}
 
 	# and make sure glibc__ORIG_CC and glibc__ORIG_CXX is defined now.
 	export glibc__ORIG_CC=${CC}
 	export glibc__ORIG_CXX=${CXX}
+	export glibc__ORIG_CPP=${CPP}
 
 	if tc-is-clang && ! use custom-cflags && ! is_crosscompile ; then
 		export glibc__force_gcc=yes
@@ -641,6 +652,7 @@ setup_env() {
 
 		export CC="$(tc-getCC ${CTARGET})"
 		export CXX="$(tc-getCXX ${CTARGET})"
+		export CPP="$(tc-getCPP ${CTARGET})"
 
 		# Always use tuple-prefixed toolchain. For non-native ABI glibc's configure
 		# can't detect them automatically due to ${CHOST} mismatch and fallbacks
@@ -657,6 +669,7 @@ setup_env() {
 	# acts on CC?)
 	export glibc__GLIBC_CC=${CC}
 	export glibc__GLIBC_CXX=${CXX}
+	export glibc__GLIBC_CPP=${CPP}
 
 	export glibc__abi_CFLAGS="$(get_abi_CFLAGS)"
 
@@ -671,6 +684,8 @@ setup_env() {
 
 	# Some of the tests are written in C++, so we need to force our multlib abis in, bug 623548
 	export CXX="${glibc__GLIBC_CXX} ${glibc__abi_CFLAGS} ${CFLAGS}"
+
+	export CPP="${glibc__GLIBC_CPP} ${glibc__abi_CFLAGS} ${CFLAGS}"
 
 	if is_crosscompile; then
 		# Assume worst-case bootstrap: glibc is built for the first time
@@ -1266,6 +1281,11 @@ glibc_src_test() {
 			ewarn "Skipping extra tests because in systemd-nspawn container"
 			XFAIL_TEST_LIST+=( "${XFAIL_NSPAWN_TEST_LIST[@]}" )
 		fi
+		if [[ "$(nice)" == "19" ]] ; then
+			# Expects to be able to increase niceness, which it can't do if
+			# already at the highest nice value
+			XFAIL_TEST_LIST+=( "tst-nice" )
+		fi
 
 		for myt in ${XFAIL_TEST_LIST[@]} ; do
 			myxfailparams+="test-xfail-${myt}=yes "
@@ -1357,9 +1377,11 @@ glibc_do_src_install() {
 		# Move versioned .a file out of libdir to evade portage QA checks
 		# instead of using gen_usr_ldscript(). We fix ldscript as:
 		# "GROUP ( /usr/lib64/libm-<pv>.a ..." -> "GROUP ( /usr/lib64/glibc-<pv>/libm-<pv>.a ..."
-		sed -i "s@\(libm-${upstream_pv}.a\)@${P}/\1@" "${ED}"/$(alt_usrlibdir)/libm.a || die
+		sed -i "s@\(libm-${upstream_pv}.a\)@${P}/\1@" \
+			"${ED}"/$(alt_usrlibdir)/libm.a || die
 		dodir $(alt_usrlibdir)/${P}
-		mv "${ED}"/$(alt_usrlibdir)/libm-${upstream_pv}.a "${ED}"/$(alt_usrlibdir)/${P}/libm-${upstream_pv}.a || die
+		mv "${ED}"/$(alt_usrlibdir)/libm-${upstream_pv}.a \
+			"${ED}"/$(alt_usrlibdir)/${P}/libm-${upstream_pv}.a || die
 	fi
 
 	# We configure toolchains for standalone prefix systems with a sysroot,
@@ -1644,7 +1666,8 @@ pkg_preinst() {
 	# bug #802207
 	if has_version "${CATEGORY}/${PN}[crypt]" && ! has preserve-libs ${FEATURES}; then
 		PRESERVED_OLD_LIBCRYPT=1
-		cp -p "${EROOT}/$(get_libdir)/libcrypt$(get_libname 1)" "${T}/libcrypt$(get_libname 1)" || die
+		cp -p "${EROOT}/$(get_libdir)/libcrypt$(get_libname 1)" \
+			"${T}/libcrypt$(get_libname 1)" || die
 	else
 		PRESERVED_OLD_LIBCRYPT=0
 	fi

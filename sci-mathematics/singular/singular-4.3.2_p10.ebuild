@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit elisp-common
+inherit elisp-common flag-o-matic
 
 MY_PN=Singular
 MY_PV=$(ver_rs 3 '')
@@ -41,6 +41,14 @@ DEPEND="${RDEPEND}"
 SITEFILE=60${PN}-gentoo.el
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/927675
+	# https://github.com/Singular/Singular/issues/1212
+	#
+	# Do not trust with LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	local myconf=(
 		--disable-debug
 		--disable-doc

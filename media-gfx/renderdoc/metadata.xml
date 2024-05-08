@@ -6,9 +6,6 @@
     <name>Matthew Smith</name>
   </maintainer>
   <use>
-    <flag name="pyside2">
-      Expose the QRenderdoc UI to Python scripting to allow for customisation
-    </flag>
     <flag name="qt5">
        Build and install the qrenderdoc GUI
     </flag>

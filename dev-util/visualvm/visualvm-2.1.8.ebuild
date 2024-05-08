@@ -31,7 +31,7 @@ S="${WORKDIR}/${P}/${PN}"
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="7"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 COMMON_DEPEND="
 	dev-java/jmc:0

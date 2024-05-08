@@ -1,0 +1,167 @@
+https://github.com/ppp-project/ppp/pull/463
+https://bugs.gentoo.org/915686
+
+From 77693b89fed6d4110184789f8e7dfd31710f3190 Mon Sep 17 00:00:00 2001
+From: Jaco Kroon <jaco@uls.co.za>
+Date: Thu, 23 Nov 2023 14:54:42 +0200
+Subject: [PATCH] radius: fix the MPPE key decryption for the second-half of
+ the key block.
+
+During he refactor in commit 4cb90c1 the key material used to decrypt
+the second-half of the encrypted block was accidentally updated from:
+
+MD5(radius_secret + crypt[0..15]); to:
+
+MD5(radius_secret + crypt[0..15] + salt)
+
+Which would obviously mismatch.
+
+This also refactors back into what I believe to be a more readable block
+with lower nesting and more comprehensive error reporting.
+
+Closes: #453
+Signed-off-by: Jaco Kroon <jaco@uls.co.za>
+---
+ pppd/plugins/radius/radius.c | 115 +++++++++++++++++------------------
+ 1 file changed, 55 insertions(+), 60 deletions(-)
+
+diff --git a/pppd/plugins/radius/radius.c b/pppd/plugins/radius/radius.c
+index c73ca0b53..e99bc7511 100644
+--- a/pppd/plugins/radius/radius.c
++++ b/pppd/plugins/radius/radius.c
+@@ -897,80 +897,75 @@ radius_setmppekeys2(VALUE_PAIR *vp, REQUEST_INFO *req_info)
+     memcpy(plain, crypt, 32);
+ 
+     ctx = PPP_MD_CTX_new();
+-    if (ctx) {
+-
+-        if (PPP_DigestInit(ctx, PPP_md5())) {
+-
+-            if (PPP_DigestUpdate(ctx, req_info->secret, strlen(req_info->secret))) {
+-
+-                if (PPP_DigestUpdate(ctx, req_info->request_vector, AUTH_VECTOR_LEN)) {
+-
+-                    if (PPP_DigestUpdate(ctx, salt, 2)) {
+-
+-                        buflen = sizeof(buf);
+-                        if (PPP_DigestFinal(ctx, buf, &buflen)) {
+-
+-                            status = 1;
+-                        }
+-                    }
+-                }
+-            }
+-        }
+-
+-        PPP_MD_CTX_free(ctx);
++    if (!ctx) {
++	error("RADIUS: Error creating PPP_MD_CTX for MS-MPPE-%s-Key attribute", type);
++	return -1;
+     }
+ 
+-    if (status) {
+-
+-        for (i = 0; i < 16; i++) {
+-            plain[i] ^= buf[i];
+-        }
++    buflen = sizeof(buf);
++    if (!PPP_DigestInit(ctx, PPP_md5())) {
++	error("RADIUS: Error setting hash algorithm to MD5 for MS-MPPE-%s-Key attribute", type);
++    } else if (!PPP_DigestUpdate(ctx, req_info->secret, strlen(req_info->secret))) {
++	error("RADIUS: Error mixing in radius secret for MS-MPPE-%s-Key attribute", type);
++    } else if (!PPP_DigestUpdate(ctx, req_info->request_vector, AUTH_VECTOR_LEN)) {
++	error("RADIUS: Error mixing in request vector for MS-MPPE-%s-Key attribute", type);
++    } else if (!PPP_DigestUpdate(ctx, salt, 2)) {
++	error("RADIUS: Error mixing in salt for MS-MPPE-%s-Key attribute", type);
++    } else if (!PPP_DigestFinal(ctx, buf, &buflen)) {
++	error("RADIUS: Error finalizing key buffer for MS-MPPE-%s-Key attribute", type);
++    } else {
++	status = 1;
++    }
+ 
+-        if (plain[0] != 16) {
+-            error("RADIUS: Incorrect key length (%d) for MS-MPPE-%s-Key attribute",
+-                  (int) plain[0], type);
+-            return -1;
+-        }
++    PPP_MD_CTX_free(ctx);
+ 
+-        status = 0;
+-        ctx = PPP_MD_CTX_new();
+-        if (ctx) {
+-
+-            if (PPP_DigestInit(ctx, PPP_md5())) {
++    if (!status)
++	return -1;
+ 
+-                if (PPP_DigestUpdate(ctx, req_info->secret, strlen(req_info->secret))) {
++    for (i = 0; i < 16; i++) {
++	plain[i] ^= buf[i];
++    }
+ 
+-                    if (PPP_DigestUpdate(ctx, crypt, 16)) {
++    if (plain[0] != 16) {
++	error("RADIUS: Incorrect key length (%d) for MS-MPPE-%s-Key attribute",
++		(int) plain[0], type);
++	return -1;
++    }
+ 
+-                        if (PPP_DigestUpdate(ctx, salt, 2)) {
++    status = 0;
++    ctx = PPP_MD_CTX_new();
++    if (!ctx) {
++	error("RADIUS: Error creating PPP_MD_CTX for MS-MPPE-%s-Key(2) attribute", type);
++	return -1;
++    }
+ 
+-                            buflen = sizeof(buf);
+-                            if (PPP_DigestFinal(ctx, buf, &buflen)) {
++    buflen = sizeof(buf);
+ 
+-                                status = 1;
+-                            }
+-                        }
+-                    }
+-                }
+-            }
++    if (!PPP_DigestInit(ctx, PPP_md5())) {
++	error("RADIUS: Error setting hash algorithm to MD5 for MS-MPPE-%s-Key(2) attribute", type);
++    } else if (!PPP_DigestUpdate(ctx, req_info->secret, strlen(req_info->secret))) {
++	error("RADIUS: Error mixing in radius secret for MS-MPPE-%s-Key(2) attribute", type);
++    } else if (!PPP_DigestUpdate(ctx, crypt, 16)) {
++	error("RADIUS: Error mixing in crypt vector for MS-MPPE-%s-Key(2) attribute", type);
++    } else if (!PPP_DigestFinal(ctx, buf, &buflen)) {
++	error("RADIUS: Error finalizing key buffer for MS-MPPE-%s-Key(2) attribute", type);
++    } else {
++	status = 1;
++    }
+ 
+-            PPP_MD_CTX_free(ctx);
+-        }
++    PPP_MD_CTX_free(ctx);
+ 
+-        if (status) {
++    if (!status)
++	return -1;
+ 
+-            plain[16] ^= buf[0]; /* only need the first byte */
++    plain[16] ^= buf[0]; /* only need the first byte */
+ 
+-            if (vp->attribute == PW_MS_MPPE_SEND_KEY) {
+-                mppe_set_keys(plain + 1, NULL, 16);
+-            } else {
+-                mppe_set_keys(NULL, plain + 1, 16);
+-            }
+-            return 0;
+-        }
++    if (vp->attribute == PW_MS_MPPE_SEND_KEY) {
++	mppe_set_keys(plain + 1, NULL, 16);
++    } else {
++	mppe_set_keys(NULL, plain + 1, 16);
+     }
+-
+-    return -1;
++    return 0;
+ }
+ #endif /* PPP_WITH_MPPE */
+ 

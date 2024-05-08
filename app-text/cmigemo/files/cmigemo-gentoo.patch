@@ -1,0 +1,74 @@
+--- a/compile/Make_gcc.mak
++++ b/compile/Make_gcc.mak
+@@ -14,7 +14,7 @@
+ libmigemo	= libmigemo.so
+ EXEEXT		=
+ CFLAGS_MIGEMO	= -fPIC
+-LDFLAGS_MIGEMO	= -Wl,-rpath,.,-rpath,/usr/local/lib,-rpath,/usr/lib
++LDFLAGS_MIGEMO	=
+ 
+ include config.mk
+ include compile/unix.mak
+--- a/compile/unix.mak
++++ b/compile/unix.mak
+@@ -22,6 +22,7 @@
+ 			$(MKDIR) $$i; \
+ 		fi \
+ 	done
++	touch $@
+ 
+ $(outdir)cmigemo$(EXEEXT): $(objdir)main.$(O) $(libmigemo_LIB)
+ 	$(CC) -o $@ $(objdir)main.$(O) -L. -L$(outdir) -lmigemo $(LDFLAGS)
+--- a/configure
++++ b/configure
+@@ -31,12 +31,12 @@
+ fi
+ 
+ # Check encoding filter
+-if CHECK_COMMAND qkc ; then
+-  PROGRAM_ENCODEFILTER="qkc -q -u"
+-elif CHECK_COMMAND nkf ; then
++if CHECK_COMMAND nkf ; then
+   PROGRAM_ENCODEFILTER="nkf -x"
++elif CHECK_COMMAND qkc ; then
++  PROGRAM_ENCODEFILTER="qkc -q -u"
+ else
+-  echo "ERROR: Require qkc or nkf installed for encode filter."
++  echo "ERROR: Require nkf or qkc installed for encode filter."
+   exit 1
+ fi
+ 
+--- a/tools/migemo.vim
++++ b/tools/migemo.vim
+@@ -24,10 +24,7 @@
+   endif
+   if dict == ''
+     for path in [
+-          \ '/usr/local/share/migemo/',
+-          \ '/usr/local/share/cmigemo/',
+           \ '/usr/local/share/',
+-          \ '/usr/share/cmigemo/',
+           \ '/usr/share/',
+           \ ]
+       let path = path . a:name
+@@ -50,6 +47,9 @@
+     let dict = s:SearchDict2(&encoding.'/migemo-dict')
+   endif
+   if dict == ''
++    let dict = s:SearchDict2('migemo/migemo-dict')
++  endif
++  if dict == ''
+     let dict = s:SearchDict2('migemo-dict')
+   endif
+   return dict
+@@ -70,7 +70,9 @@
+   nnoremap <Leader>f :call <SID>SearchChar(0)<CR>
+ else
+   " non-builtin version
+-  let g:migemodict = s:SearchDict()
++  if !get(g:, 'migemodict')
++    let g:migemodict = s:SearchDict()
++  endif
+   command! -nargs=* Migemo :call <SID>MigemoSearch(<q-args>)
+   nnoremap <silent> <leader>mi :call <SID>MigemoSearch('')<cr>
+ 

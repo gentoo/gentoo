@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,11 +8,11 @@ inherit gnome2-utils toolchain-funcs
 DESCRIPTION="Traditional game of Brunei"
 HOMEPAGE="https://pasang-emas.sourceforge.net/"
 SRC_URI="
-	mirror://sourceforge/${PN}/${P}.tar.bz2
+	https://downloads.sourceforge.net/${PN}/${P}.tar.bz2
 	extras? (
-		mirror://sourceforge/${PN}/pasang-emas-themes-1.0.tar.bz2
-		mirror://sourceforge/${PN}/pet-marble.tar.bz2
-		mirror://sourceforge/${PN}/pet-fragrance.tar.bz2
+		https://downloads.sourceforge.net/${PN}/pasang-emas-themes-1.0.tar.bz2
+		https://downloads.sourceforge.net/${PN}/pet-marble.tar.bz2
+		https://downloads.sourceforge.net/${PN}/pet-fragrance.tar.bz2
 	)"
 
 LICENSE="GPL-3+"

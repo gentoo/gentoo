@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="sqlite"
 
 # We only package the LTS releases right now
@@ -25,7 +25,7 @@ HOMEPAGE="https://www.qgis.org/"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-IUSE="3d examples georeferencer grass hdf5 mapserver netcdf opencl oracle pdal polar postgres python qml serial test"
+IUSE="3d doc examples +georeferencer grass hdf5 mapserver netcdf opencl oracle pdal polar postgres python qml test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	mapserver? ( python )
@@ -50,15 +50,17 @@ COMMON_DEPEND="
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
+	dev-qt/qtmultimedia:5[widgets]
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtpositioning:5
 	dev-qt/qtprintsupport:5
+	dev-qt/qtserialport:5
 	dev-qt/qtsql:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	media-gfx/exiv2:=
-	>=sci-libs/gdal-3.0.4:=[geos]
+	>=sci-libs/gdal-3.0.4:=[geos,spatialite,sqlite]
 	sci-libs/geos
 	sci-libs/libspatialindex:=
 	>=sci-libs/proj-4.9.3:=
@@ -89,7 +91,7 @@ COMMON_DEPEND="
 			dev-python/numpy[${PYTHON_USEDEP}]
 			dev-python/owslib[${PYTHON_USEDEP}]
 			dev-python/pygments[${PYTHON_USEDEP}]
-			dev-python/PyQt5[designer,gui,network,positioning,printsupport,sql,svg,widgets,${PYTHON_USEDEP}]
+			dev-python/PyQt5[designer,gui,multimedia,network,positioning,printsupport,serialport,sql,svg,widgets,${PYTHON_USEDEP}]
 			dev-python/python-dateutil[${PYTHON_USEDEP}]
 			dev-python/pytz[${PYTHON_USEDEP}]
 			dev-python/pyyaml[${PYTHON_USEDEP}]
@@ -100,7 +102,6 @@ COMMON_DEPEND="
 		')
 	)
 	qml? ( dev-qt/qtdeclarative:5 )
-	serial? ( dev-qt/qtserialport:5 )
 "
 DEPEND="${COMMON_DEPEND}
 	dev-qt/qttest:5
@@ -112,6 +113,7 @@ BDEPEND="${PYTHON_DEPS}
 	dev-qt/linguist-tools:5
 	app-alternatives/yacc
 	app-alternatives/lex
+	doc? ( app-text/doxygen )
 	test? (
 		$(python_gen_cond_dep '
 			dev-python/PyQt5[${PYTHON_USEDEP},testlib]
@@ -154,7 +156,7 @@ src_configure() {
 		-DPEDANTIC=OFF
 		-DUSE_CCACHE=OFF
 		-DWITH_ANALYSIS=ON
-		-DWITH_APIDOC=OFF
+		-DWITH_APIDOC=$(usex doc)
 		-DWITH_GUI=ON
 		-DWITH_INTERNAL_MDAL=ON # not packaged, bug 684538
 		-DWITH_QSPATIALITE=ON
@@ -172,8 +174,8 @@ src_configure() {
 		-DWITH_BINDINGS=$(usex python)
 		-DWITH_CUSTOM_WIDGETS=$(usex python)
 		-DWITH_QUICK=$(usex qml)
-		-DWITH_QT5SERIALPORT=$(usex serial)
 		-DWITH_QTWEBKIT=OFF
+		-DWITH_DRACO=OFF
 	)
 
 	# We list all supported versions *by upstream for this version*

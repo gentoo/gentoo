@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 PATCH_VER=4
 PATCH_DEV=dilfridge
 
-inherit libtool toolchain-funcs multilib-minimal
+inherit flag-o-matic libtool toolchain-funcs multilib-minimal
 
 MY_PN="binutils"
 MY_P="${MY_PN}-${PV}"
@@ -69,6 +69,8 @@ pkgversion() {
 }
 
 multilib_src_configure() {
+	filter-lto
+
 	local myconf=(
 		--enable-obsolete
 		--enable-shared

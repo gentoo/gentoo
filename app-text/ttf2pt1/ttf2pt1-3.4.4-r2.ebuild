@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="True Type Font to Postscript Type 1 Converter"
 HOMEPAGE="https://ttf2pt1.sourceforge.net/"
-SRC_URI="mirror://sourceforge/ttf2pt1/${P}.tgz"
+SRC_URI="https://downloads.sourceforge.net/ttf2pt1/${P}.tgz"
 
 LICENSE="ttf2pt1"
 SLOT="0"

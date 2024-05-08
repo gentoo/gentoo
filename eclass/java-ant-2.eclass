@@ -7,7 +7,7 @@
 # @AUTHOR:
 # kiorky <kiorky@cryptelium.net>
 # Petteri Räty <betelgeuse@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: java-utils-2
 # @BLURB: eclass for ant based Java packages
 # @DESCRIPTION:
@@ -16,7 +16,7 @@
 # or java-pkg-opt-2 eclass.
 
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 

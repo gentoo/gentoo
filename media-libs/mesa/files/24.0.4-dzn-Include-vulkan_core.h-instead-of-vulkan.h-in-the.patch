@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/927636
+
+From 5957778c164bbe95411837f2fd80ad0001b6b7ec Mon Sep 17 00:00:00 2001
+From: Jesse Natalie <jenatali@microsoft.com>
+Date: Fri, 22 Mar 2024 09:15:23 -0700
+Subject: [PATCH] dzn: Include vulkan_core.h instead of vulkan.h in the device
+ enum header
+
+Prevents pulling in X11 "None" define into the DXCore implementation,
+which conflicts with updated DXCore headers.
+
+Closes: https://gitlab.freedesktop.org/mesa/mesa/-/issues/10803
+Part-of: <https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/28339>
+---
+ src/microsoft/vulkan/dzn_physical_device_enum.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/microsoft/vulkan/dzn_physical_device_enum.h b/src/microsoft/vulkan/dzn_physical_device_enum.h
+index 7ecc5d34630..4aec1c2b7c1 100644
+--- a/src/microsoft/vulkan/dzn_physical_device_enum.h
++++ b/src/microsoft/vulkan/dzn_physical_device_enum.h
+@@ -24,7 +24,7 @@
+ #ifndef DZN_PHYSICAL_DEVICE_ENUM_H
+ #define DZN_PHYSICAL_DEVICE_ENUM_H
+ 
+-#include <vulkan/vulkan.h>
++#include <vulkan/vulkan_core.h>
+ 
+ #include <wsl/winadapter.h>
+ 
+-- 

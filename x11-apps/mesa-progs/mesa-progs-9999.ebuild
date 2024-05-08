@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,25 +14,33 @@ if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/demos.git"
 else
-	SRC_URI="https://mesa.freedesktop.org/archive/demos/${MY_P}.tar.bz2
-		https://mesa.freedesktop.org/archive/demos/${PV}/${MY_P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+	SRC_URI="https://mesa.freedesktop.org/archive/demos/${MY_P}.tar.xz
+		https://mesa.freedesktop.org/archive/demos/${PV}/${MY_P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 	S="${WORKDIR}/${MY_P}"
 fi
 LICENSE="LGPL-2"
 SLOT="0"
 IUSE="gles2 vulkan wayland X"
+REQUIRED_USE="vulkan? ( || ( X wayland ) )"
 
 RDEPEND="
-	media-libs/mesa[${MULTILIB_USEDEP},egl(+),gles2?,vulkan?,wayland?,X?]
-	wayland? ( dev-libs/wayland[${MULTILIB_USEDEP}] )
+	media-libs/libglvnd[${MULTILIB_USEDEP},X?]
+	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )
+	wayland? (
+		dev-libs/wayland[${MULTILIB_USEDEP}]
+		gui-libs/libdecor[${MULTILIB_USEDEP}]
+		x11-libs/libxkbcommon[${MULTILIB_USEDEP}]
+	)
 	X? (
 		x11-libs/libX11[${MULTILIB_USEDEP}]
-		x11-libs/libXext[${MULTILIB_USEDEP}]
+		vulkan? (
+			x11-libs/libxcb:=[${MULTILIB_USEDEP}]
+			x11-libs/libxkbcommon[${MULTILIB_USEDEP}]
+		)
 	)
 "
 DEPEND="${RDEPEND}
-	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )
 	wayland? ( >=dev-libs/wayland-protocols-1.12 )
 	X? ( x11-base/xorg-proto )
 "
@@ -43,7 +51,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/9999-Disable-things-we-don-t-want.patch
+	"${FILESDIR}"/${PV}-Disable-things-we-don-t-want.patch
 )
 
 pkg_setup() {
@@ -72,6 +80,7 @@ multilib_src_configure() {
 		-Degl=enabled
 		-Dgles1=disabled
 		$(meson_feature gles2)
+		-Dglut=disabled
 		-Dosmesa=disabled
 		$(meson_feature vulkan)
 		$(meson_feature wayland)

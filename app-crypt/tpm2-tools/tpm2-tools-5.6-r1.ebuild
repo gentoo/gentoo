@@ -42,6 +42,7 @@ PATCHES=(
 	"${WORKDIR}/${PN}-5.6-tpm2_eventlog-Create-raw-and-pretty-print-format-for.patch"
 	"${FILESDIR}/${PN}-5.6-Makefile-am-Dont-require-pandoc-for-tests.patch"
 	"${FILESDIR}/${PN}-5.6-bashism.patch"
+	"${FILESDIR}/${PN}-5.6-test-eventlog.sh-Fix-accidental-deletions.patch"
 )
 
 python_check_deps() {
@@ -73,7 +74,8 @@ src_install() {
 	local utils=( "${ED}"/usr/bin/tpm2_* )
 	utils=("${utils[@]##*/}")
 	# these utiltites don't have bash completions
-	local nobashcomp=( tpm2_encodeobject tpm2_getpolicydigest tpm2_sessionconfig )
+	local nobashcomp=( tpm2_encodeobject tpm2_getpolicydigest\
+			   tpm2_sessionconfig tpm2_tr_encode)
 	mapfile -d $'\0' -t utils < <(printf '%s\0' "${utils[@]}" | grep -Ezvw "${nobashcomp[@]/#/-e}")
 	bashcomp_alias tpm2 "${utils[@]}"
 }

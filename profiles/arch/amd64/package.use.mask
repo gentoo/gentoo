@@ -17,6 +17,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-04-25)
+# ROCm and Level-Zero are amd64-only at the moment
+sys-apps/hwloc -rocm -l0
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-04-20)
+# only keyworded for amd64 currently
+media-gfx/blender -gnome -oneapi -renderdoc -vulkan
+
+# Ionen Wolkens <ionen@gentoo.org> (2024-04-16)
+# dev-qt/qtlanguageserver:6 is keyworded here
+dev-qt/qtdeclarative:6 -qmlls
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-17)
 # virt-firmware is keyworded here
 sys-kernel/installkernel -efistub
@@ -160,7 +172,6 @@ net-misc/curl -rustls -curl_ssl_rustls
 # Quick Sync Video (through intel-mediasdk or libvpl) is
 # only keyworded on amd64
 media-video/ffmpeg -qsv
-media-libs/gst-plugins-bad -qsv
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-10-07)
 # sys-libs/libsmbios is available here.
@@ -238,6 +249,7 @@ sys-libs/compiler-rt-sanitizers -asan -dfsan -lsan -msan -hwasan -tsan
 sys-libs/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
 sys-libs/compiler-rt-sanitizers -gwp-asan
 sys-libs/compiler-rt-sanitizers -libfuzzer -memprof -orc -profile -xray
+sys-libs/compiler-rt-sanitizers -ctx-profile
 
 # Sam James <sam@gentoo.org> (2020-10-24)
 # asm redc is only available on amd64,
@@ -404,10 +416,6 @@ dev-db/mariadb -jdbc
 # Andrew Savchenko <bircoph@gentoo.org> (2016-08-11)
 # PGO is fixed on amd64
 >=www-client/firefox-48 -pgo
-
-# James Le Cuirot <chewi@gentoo.org> (2016-07-26)
-# Only available on some architectures.
-dev-java/icedtea -shenandoah
 
 # Mike Gilbert <floppym@gentoo.org> (2016-06-23)
 # This flag only has meaning on amd64

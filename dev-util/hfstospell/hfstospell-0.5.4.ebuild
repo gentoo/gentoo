@@ -11,7 +11,7 @@ SRC_URI="https://github.com/hfst/hfst-ospell/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 ~loong ~riscv x86"
 IUSE="clang"
 
 DEPEND="app-arch/libarchive:=

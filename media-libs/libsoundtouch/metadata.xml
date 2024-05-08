@@ -6,6 +6,6 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="gitlab">soundtouch/soundtouch</remote-id>
+		<remote-id type="codeberg">soundtouch/soundtouch</remote-id>
 	</upstream>
 </pkgmetadata>

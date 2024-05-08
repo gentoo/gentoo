@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,9 +8,9 @@ HOMEPAGE="https://www.geekbench.com"
 SRC_URI="https://cdn.geekbench.com/Geekbench-${PV}-Linux.tar.gz"
 S="${WORKDIR}/Geekbench-${PV}-Linux"
 
-KEYWORDS="-* amd64 x86"
 LICENSE="geekbench"
 SLOT="4"
+KEYWORDS="-* amd64 x86"
 
 RESTRICT="bindist mirror"
 

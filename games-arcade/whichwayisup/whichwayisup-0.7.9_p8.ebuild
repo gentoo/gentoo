@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit desktop python-single-r1
 
 DESCRIPTION="Traditional and challenging 2D platformer game with a slight rotational twist"
@@ -11,8 +11,9 @@ HOMEPAGE="https://www.oletus.fi/static/whichwayisup/"
 SRC_URI="
 	https://www.oletus.fi/static/whichwayisup/${PN}_b079.zip
 	mirror://debian/pool/main/${P::1}/${PN}/${PN}_${PV/_p*}-${PV/*_p}.debian.tar.xz
-	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"
-S="${WORKDIR}/${PN}"
+	https://dev.gentoo.org/~ionen/distfiles/${PN}.png
+"
+S=${WORKDIR}/${PN}
 
 LICENSE="BitstreamVera CC-BY-3.0 GPL-2"
 SLOT="0"
@@ -23,10 +24,12 @@ RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-python/pygame[${PYTHON_USEDEP}]')
 	media-libs/sdl2-image[png]
-	media-libs/sdl2-mixer[vorbis]"
+	media-libs/sdl2-mixer[vorbis]
+"
 BDEPEND="
 	${PYTHON_DEPS}
-	app-arch/unzip"
+	app-arch/unzip
+"
 
 PATCHES=(
 	"${WORKDIR}"/debian/patches
@@ -34,7 +37,7 @@ PATCHES=(
 
 src_prepare() {
 	# drop Debian specific patch
-	rm "${WORKDIR}"/debian/patches/font_path.patch || die
+	rm -- "${WORKDIR}"/debian/patches/font_path.patch || die
 
 	default
 

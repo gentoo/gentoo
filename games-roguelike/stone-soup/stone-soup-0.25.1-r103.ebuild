@@ -23,18 +23,21 @@ inherit desktop python-any-r1 lua-single xdg-utils toolchain-funcs
 MY_P="stone_soup-${PV}"
 DESCRIPTION="Role-playing roguelike game of exploration and treasure-hunting in dungeons"
 HOMEPAGE="https://crawl.develz.org"
-SLOT="0.25"
+# MY_SLOT to satisfy pkgcheck variable order checking
+MY_SLOT="0.25"
 SRC_URI="
 	https://github.com/crawl/crawl/releases/download/${PV}/${PN/-/_}-${PV}.zip
-	https://dev.gentoo.org/~stasibear/distfiles/${PN}.png -> ${PN}-${SLOT}.png
-	https://dev.gentoo.org/~stasibear/distfiles/${PN}.svg -> ${PN}-${SLOT}.svg
+	https://dev.gentoo.org/~stasibear/distfiles/${PN}.png -> ${PN}-${MY_SLOT}.png
+	https://dev.gentoo.org/~stasibear/distfiles/${PN}.svg -> ${PN}-${MY_SLOT}.svg
 "
 
+S=${WORKDIR}/${MY_P}/source
 # 3-clause BSD: mt19937ar.cc, MSVC/stdint.h
 # 2-clause BSD: all contributions by Steve Noonan and Jesse Luehrs
 # Public Domain|CC0: most of tiles
 # MIT: json.cc/json.h, some .js files in webserver/static/scripts/contrib/
 LICENSE="GPL-2 BSD BSD-2 public-domain CC0-1.0 MIT"
+SLOT="${MY_SLOT}"
 KEYWORDS="amd64 x86"
 IUSE="advpng debug ncurses sound test +tiles"
 RESTRICT="!test? ( test )"
@@ -83,7 +86,6 @@ BDEPEND="
 	app-alternatives/yacc
 	"
 
-S=${WORKDIR}/${MY_P}/source
 PATCHES=(
 	"${FILESDIR}"/make.patch
 	"${FILESDIR}"/rltiles-make.patch

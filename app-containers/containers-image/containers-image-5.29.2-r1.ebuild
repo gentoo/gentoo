@@ -21,6 +21,7 @@ SLOT="0"
 # https://github.com/gentoo/gentoo/pull/35012#discussion_r1473740969
 RESTRICT='test'
 BDEPEND=">=dev-go/go-md2man-2.0.3"
+RDEPEND="!<=app-containers/containers-common-0.57.0"
 PATCHES=(
 	"${FILESDIR}"/moving-policy-json-default-yaml.patch
 	"${FILESDIR}"/prevent-downloading-mods-5.29.2.patch

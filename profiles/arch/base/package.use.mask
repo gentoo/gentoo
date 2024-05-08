@@ -1,6 +1,22 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-04-25)
+# ROCm and Level-Zero are amd64-only at the moment
+sys-apps/hwloc rocm l0
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-04-20)
+# only keyworded for amd64 currently
+media-gfx/blender gnome oneapi renderdoc vulkan
+
+# Ionen Wolkens <ionen@gentoo.org> (2024-04-16)
+# dev-qt/qtlanguageserver:6 currently has very few keywords
+dev-qt/qtdeclarative:6 qmlls
+
+# Mike Gilbert <floppym@gentoo.org> (2024-04-13)
+# Missing keywords on dev-python/looseversion.
+sys-fs/fuse:3 test
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-17)
 # Experimental, only keyworded for amd64 currently
 sys-kernel/installkernel efistub
@@ -119,7 +135,6 @@ net-misc/curl rustls curl_ssl_rustls
 # Quick Sync Video (through intel-mediasdk or oneVPL) is
 # only keyworded on amd64
 media-video/ffmpeg qsv
-media-libs/gst-plugins-bad qsv
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-01)
 # Only supported on ppc64le.
@@ -219,6 +234,7 @@ sys-libs/compiler-rt-sanitizers asan dfsan lsan msan hwasan tsan
 sys-libs/compiler-rt-sanitizers ubsan safestack cfi scudo
 sys-libs/compiler-rt-sanitizers shadowcallstack gwp-asan
 sys-libs/compiler-rt-sanitizers libfuzzer memprof orc profile xray
+sys-libs/compiler-rt-sanitizers ctx-profile
 
 # Sam James <sam@gentoo.org> (2020-10-24)
 # asm redc is only available on amd64,
@@ -367,10 +383,6 @@ dev-db/percona-server tokudb tokudb-backup-plugin
 # Brian Evans <grknight@gentoo.org> (2016-08-18)
 # Mask jdbc as most arches don't support java
 dev-db/mariadb jdbc
-
-# James Le Cuirot <chewi@gentoo.org> (2016-07-26)
-# Only available on some architectures.
-dev-java/icedtea shenandoah
 
 # Mike Gilbert <floppym@gentoo.org> (2016-06-23)
 # This flag only has meaning on amd64

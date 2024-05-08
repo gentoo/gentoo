@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
-inherit linux-info python-r1 systemd
+inherit flag-o-matic linux-info python-r1 systemd
 
 DESCRIPTION="shared storage lock manager"
 HOMEPAGE="https://pagure.io/sanlock"
@@ -18,13 +18,15 @@ IUSE="python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
-	acct-user/${PN}
-	acct-group/${PN}
 	dev-libs/libaio
 	sys-apps/util-linux
 	python? ( ${PYTHON_DEPS} )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="
+	acct-user/${PN}
+	acct-group/${PN}
+	${DEPEND}
+"
 BDEPEND="sys-apps/which"
 
 PATCHES=(
@@ -35,6 +37,11 @@ PATCHES=(
 CONFIG_CHECK="~SOFT_WATCHDOG"
 
 src_compile() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/863734
+	# https://pagure.io/sanlock/issue/10
+	filter-lto
+
 	for d in wdmd src fence_sanlock reset; do
 		emake -C ${d}
 	done

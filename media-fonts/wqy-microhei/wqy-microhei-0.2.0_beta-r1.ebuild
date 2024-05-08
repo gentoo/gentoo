@@ -1,4 +1,4 @@
-# Copyright 2009-2022 Gentoo Authors
+# Copyright 2009-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit font
 
 DESCRIPTION="Droid derived Sans-Serif style CJK font"
 HOMEPAGE="http://wenq.org/wqy2/index.cgi https://sourceforge.net/projects/wqy/"
-SRC_URI="mirror://sourceforge/wqy/${P/_/-}.tar.gz
+SRC_URI="https://downloads.sourceforge.net/wqy/${P/_/-}.tar.gz
 	https://dev.gentoo.org/~dlan/distfiles/${PN}.ttc.xd3"
 S="${WORKDIR}/${PN}"
 

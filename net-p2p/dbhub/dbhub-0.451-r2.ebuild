@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="Hub software for Direct Connect, fork of opendchub"
 HOMEPAGE="https://sourceforge.net/projects/dbhub/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tbz2"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tbz2"
 
 LICENSE="GPL-2"
 SLOT="0"

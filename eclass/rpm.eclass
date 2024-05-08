@@ -1,14 +1,13 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: rpm.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: convenience class for extracting RPMs
 
 case ${EAPI} in
-	6) inherit epatch eqawarn ;;
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
@@ -18,10 +17,7 @@ _RPM_ECLASS=1
 
 inherit estack
 
-case ${EAPI} in
-	6) DEPEND="app-arch/rpm2targz" ;;
-	*) BDEPEND="app-arch/rpm2targz" ;;
-esac
+BDEPEND="app-arch/rpm2targz"
 
 # @FUNCTION: rpm_unpack
 # @USAGE: <rpms>
@@ -86,59 +82,6 @@ rpm_src_unpack() {
 		*)     unpack "${a}" ;;
 		esac
 	done
-}
-
-# @FUNCTION: rpm_spec_epatch
-# @USAGE: [spec]
-# @DEPRECATED: none
-# @DESCRIPTION:
-# Read the specified spec (defaults to ${PN}.spec) and attempt to apply
-# all the patches listed in it.  If the spec does funky things like moving
-# files around, well this won't handle that.
-rpm_spec_epatch() {
-	# no epatch in EAPI 7 and later
-	[[ ${EAPI} == 6 ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}"
-
-	local p spec=$1
-	local dir
-
-	if [[ -z ${spec} ]] ; then
-		# search likely places for the spec file
-		for spec in "${PWD}" "${S}" "${WORKDIR}" ; do
-			spec+="/${PN}.spec"
-			[[ -e ${spec} ]] && break
-		done
-	fi
-	[[ ${spec} == */* ]] \
-		&& dir=${spec%/*} \
-		|| dir=
-
-	ebegin "Applying patches from ${spec}"
-
-	grep '^%patch' "${spec}" | \
-	while read line ; do
-		# expand the %patch line
-		set -- ${line}
-		p=$1
-		shift
-
-		# process the %patch arguments
-		local arg
-		EPATCH_OPTS=
-		for arg in "$@" ; do
-			case ${arg} in
-			-b) EPATCH_OPTS+=" --suffix" ;;
-			*)  EPATCH_OPTS+=" ${arg}" ;;
-			esac
-		done
-
-		# extract the patch name from the Patch# line
-		set -- $(grep "^P${p#%p}: " "${spec}")
-		shift
-		epatch "${dir:+${dir}/}$*"
-	done
-
-	eend
 }
 
 fi

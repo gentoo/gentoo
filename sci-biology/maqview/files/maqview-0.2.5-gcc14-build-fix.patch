@@ -1,0 +1,12 @@
+Bug: https://bugs.gentoo.org/930767
+--- a/socket_view.c
++++ b/socket_view.c
+@@ -267,7 +267,7 @@ int service_core(ViewServer *server, int sock){
+ 
+ int runViewServer(ViewServer *server){
+ 	int i, sock, state;
+-	size_t size;
++	socklen_t size;
+ 	fd_set active_fd_set, read_fd_set;
+ 	struct timeval timeout;
+ 	struct sockaddr_in clientname;

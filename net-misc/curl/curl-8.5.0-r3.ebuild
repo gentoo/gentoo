@@ -86,7 +86,7 @@ RDEPEND="
 			>=dev-libs/openssl-0.9.7:=[sslv3(-)=,static-libs?,${MULTILIB_USEDEP}]
 		)
 		rustls? (
-			net-libs/rustls-ffi:=[${MULTILIB_USEDEP}]
+			~net-libs/rustls-ffi-0.10.0:=[${MULTILIB_USEDEP}]
 		)
 	)
 	zstd? ( app-arch/zstd:=[${MULTILIB_USEDEP}] )
@@ -132,6 +132,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-respect-cflags-3.patch
 	"${FILESDIR}"/${P}-ipv6-configure-c99.patch
 	"${FILESDIR}"/${P}-mpd-stream-http-adjust_pollset.patch
+	"${FILESDIR}"/${PN}-8.6.0-rustls-fixes.patch
 )
 
 src_prepare() {

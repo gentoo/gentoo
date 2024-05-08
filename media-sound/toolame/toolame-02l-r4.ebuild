@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="tooLAME - an optimized mpeg 1/2 layer 2 audio encoder"
 HOMEPAGE="http://www.planckenergy.com"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tgz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

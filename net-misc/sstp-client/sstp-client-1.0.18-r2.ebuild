@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit autotools linux-info
 
 DESCRIPTION="Client implementation of Secure Socket Tunneling Protocol (SSTP)"
 HOMEPAGE="https://sstp-client.sourceforge.net/"
-SRC_URI="mirror://sourceforge/sstp-client/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/sstp-client/${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-ppp-2.5.0-patches.tar.xz"
 
 LICENSE="GPL-2+-with-openssl-exception"

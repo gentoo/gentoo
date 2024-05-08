@@ -16,7 +16,7 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">apache/ant-ivy</remote-id>
-		<doc>https://ant.apache.org/ivy/history/2.5.0</doc>
-		<bugs-to>https://issues.apache.org/jira/browse/IVY </bugs-to>
+		<doc>https://ant.apache.org/ivy/history/2.5.0/</doc>
+		<bugs-to>https://issues.apache.org/jira/browse/IVY</bugs-to>
 	</upstream>
 </pkgmetadata>

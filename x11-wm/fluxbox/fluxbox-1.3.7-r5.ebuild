@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs prefix xdg
 
 DESCRIPTION="X11 window manager featuring tabs and an iconbar"
 HOMEPAGE="http://www.fluxbox.org"
-SRC_URI="mirror://sourceforge/fluxbox/${P}.tar.xz"
+SRC_URI="https://downloads.sourceforge.net/fluxbox/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"

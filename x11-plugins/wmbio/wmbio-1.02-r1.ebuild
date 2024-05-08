@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,12 +7,12 @@ inherit toolchain-funcs
 
 DESCRIPTION="Window Maker applet that shows your biorhythm"
 HOMEPAGE="https://wmbio.sourceforge.net/"
-SRC_URI="mirror://sourceforge/wmbio/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/wmbio/${P}.tar.gz"
 S="${WORKDIR}/${P}/src"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ppc ppc64 sparc x86"
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext

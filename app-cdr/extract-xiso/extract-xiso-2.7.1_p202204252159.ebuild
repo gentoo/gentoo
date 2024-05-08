@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ if [[ ${PV} == *_p* ]] ; then
 	SRC_URI="https://github.com/XboxDev/extract-xiso/archive/refs/tags/build-$(ver_cut 5).tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/${PN}-build-$(ver_cut 5)
 else
-	SRC_URI="mirror://sourceforge/extract-xiso/${P}.tar.gz"
+	SRC_URI="https://downloads.sourceforge.net/extract-xiso/${P}.tar.gz"
 	S="${WORKDIR}"/${PN}
 fi
 

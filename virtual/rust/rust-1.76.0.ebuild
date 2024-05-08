@@ -14,7 +14,7 @@ LICENSE=""
 # neither system nor bundled, so we just hardcode it here.
 SLOT="0/llvm-17"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="rustfmt profiler"
+IUSE="profiler rustfmt"
 
 BDEPEND=""
 RDEPEND="|| (

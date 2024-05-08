@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Simple templatized C++ library for parsing command line arguments"
 HOMEPAGE="http://tclap.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

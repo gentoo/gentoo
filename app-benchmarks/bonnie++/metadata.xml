@@ -5,10 +5,6 @@
 		<email>gokturk@gentoo.org</email>
 		<name>Göktürk Yüksek</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>bircoph@gentoo.org</email>
-		<name>Andrew Savchenko</name>
-	</maintainer>
 	<longdescription>
 		Bonnie++ is based on the Bonnie hard drive benchmark by Tim Bray. This
 		program is used by ReiserFS developers, but can be useful for anyone

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,10 +10,6 @@ SRC_URI="https://github.com/troglobit/editline/releases/download/${PV}/${P}.tar.
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
-
-DEPEND=""
-RDEPEND=""
 
 PATCHES=("${FILESDIR}"/${PN}-1.16.0-rename-man.patch)
 

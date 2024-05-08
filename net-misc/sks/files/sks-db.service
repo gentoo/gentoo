@@ -3,8 +3,13 @@ Description=SKS database thread
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/sks db
+Environment=SKS_DIR=/var/lib/sks
+EnvironmentFile=-/etc/sysconfig/sks
+ExecStartPre=/usr/lib/rc/bin/checkpath --owner sks:sks --directory ${SKS_DIR} ${SKS_DIR}/SKS ${SKS_DIR}/PTree
+ExecStartPre=/usr/lib/rc/bin/checkpath --owner sks:sks --file ${SKS_DIR}/*.log ${SKS_DIR}/KDB/* ${SKS_DIR}/PTree/*
+ExecStart=/usr/bin/sks db ${SKS_OPTIONS} ${SKS_DB_OPTIONS}
 User=sks
+# WorkingDirectory cannot use a variable
 WorkingDirectory=/var/lib/sks
 
 [Install]

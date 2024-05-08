@@ -175,21 +175,22 @@ src_prepare() {
 }
 
 my_src_configure() {
-	local version
+	local version abi_version
 	version=$(ver_cut 1)
+	abi_version="${version}"
 	if use "abi$(( version + 1 ))-compat"; then
-		version=$(( version + 1 ))
+		abi_version=$(( version + 1 ))
 	elif use "abi$(( version - 1 ))-compat"; then
-		version=$(( version - 1 ))
+		abi_version=$(( version - 1 ))
 	elif use "abi$(( version - 2 ))-compat"; then
-		version=$(( version - 2 ))
+		abi_version=$(( version - 2 ))
 	fi
 
 	local mycmakeargs=(
 		-DCMAKE_FIND_PACKAGE_PREFER_CONFIG="yes"
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}/"
 
-		-DOPENVDB_ABI_VERSION_NUMBER="${version}"
+		-DOPENVDB_ABI_VERSION_NUMBER="${abi_version}"
 		-DOPENVDB_BUILD_DOCS="$(usex doc)"
 		-DOPENVDB_BUILD_UNITTESTS="$(usex test)"
 		-DOPENVDB_BUILD_VDB_LOD="$(usex utils)"
@@ -352,6 +353,12 @@ my_src_install() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/926820
+	# https://github.com/AcademySoftwareFoundation/openvdb/issues/1784
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	multibuild_foreach_variant my_src_configure
 }
 

@@ -11,7 +11,7 @@ SRC_URI="https://github.com/linbox-team/givaro/releases/download/v${PV}/${P}.tar
 
 LICENSE="CeCILL-B"
 SLOT="0/9" # soname major
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}/givaro-4.1.1-fix-pc-libdir.patch"
 	"${FILESDIR}/${P}-configure.ac-fix-a-bashism.patch"
 	"${FILESDIR}/${P}-cstdint.patch"
+	"${FILESDIR}/${P}-gcc14.patch"
 )
 
 src_prepare() {

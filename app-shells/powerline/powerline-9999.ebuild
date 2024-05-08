@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 PYPI_NO_NORMALIZE=1
 PYPI_PN="powerline-status"
 DISTUTILS_USE_PEP517=setuptools

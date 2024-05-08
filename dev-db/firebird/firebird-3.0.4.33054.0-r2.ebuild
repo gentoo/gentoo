@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -92,6 +92,10 @@ src_prepare() {
 src_configure() {
 	filter-flags -fprefetch-loop-arrays
 	filter-mfpmath sse
+
+	# bug #917662, bug #924659
+	filter-lto
+	append-flags -fno-strict-aliasing $(test-flags-CXX -fno-lifetime-dse)
 
 	# otherwise this doesnt build with gcc-6
 	# http://tracker.firebirdsql.org/browse/CORE-5099

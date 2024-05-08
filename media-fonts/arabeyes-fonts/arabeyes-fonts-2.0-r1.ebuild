@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit font
 
 DESCRIPTION="Arabeyes Arabic TrueType fonts"
 HOMEPAGE="https://www.arabeyes.org/Khotot#2.0"
-SRC_URI="mirror://sourceforge/arabeyes/${MY_PN}_${PV}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/arabeyes/${MY_PN}_${PV}.tar.bz2"
 S="${WORKDIR}/${MY_PN}_${PV}"
 
 LICENSE="GPL-2"

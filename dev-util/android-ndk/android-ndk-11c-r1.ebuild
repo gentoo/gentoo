@@ -14,7 +14,7 @@ LICENSE="android"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
-RESTRICT="mirror strip installsources test"
+RESTRICT="bindist mirror strip installsources test"
 
 DEPEND="app-arch/p7zip"
 RDEPEND=">=dev-util/android-sdk-update-manager-10

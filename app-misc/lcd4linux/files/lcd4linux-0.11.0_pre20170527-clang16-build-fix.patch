@@ -1,0 +1,12 @@
+Bug: https://bugs.gentoo.org/927453
+--- a/plugin_gps.c
++++ b/plugin_gps.c
+@@ -100,7 +100,7 @@
+ #include <ctype.h>
+ #include <unistd.h>
+ #include <termios.h>		//used for serial port flags
+-#include <asm/fcntl.h>
++#include <fcntl.h>
+ 
+ 
+ /* these should always be included */

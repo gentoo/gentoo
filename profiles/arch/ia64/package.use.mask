@@ -62,10 +62,6 @@ app-text/doxygen gui
 # Qt 6 not keyworded here.
 dev-build/cmake gui
 
-# Rich Freeman <rich0@gentoo.org> (2023-09-13)
-# Tests require shellcheck which is not currently available
-sys-process/systemd-cron test
-
 # Jon Janzen <jon@jonjanzen.com> (2023-09-11)
 # librttopo has not been tested on this arch
 dev-db/spatialite rttopo
@@ -332,10 +328,6 @@ mail-mta/exim redis
 # Many unkeyworded rails deps, bug #650642
 net-analyzer/wireshark doc
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2018-03-18)
-# unkeyworded deps, bug #552330
-app-portage/g-sorcery bson
-
 # Mart Raudsepp <leio@gentoo.org> (2018-01-08)
 # mail-client/evolution[ytnef] requires net-mail/ytnef which is not keyworded
 mail-client/evolution ytnef
@@ -490,10 +482,6 @@ gnome-base/gnome classic extras
 # Pacho Ramos <pacho@gentoo.org> (2013-12-02)
 # Missing keywords, bug #493156
 media-libs/libgphoto2 serial
-
-# Pacho Ramos <pacho@gentoo.org> (2013-11-28)
-# Missing keywords, bug #492820
-net-im/telepathy-connection-managers sipe
 
 # Pacho Ramos <pacho@gentoo.org> (2013-07-20)
 # Keywords pending, bug #476710

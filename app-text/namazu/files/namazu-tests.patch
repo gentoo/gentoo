@@ -1,0 +1,8 @@
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -26,3 +26,5 @@
+ 	rm -rf test-log tmp-data tmp.* idx[0-9]* ja-idx[0-9]*
+ 
+ EXTRA_DIST = $(TESTS) select-data commonfuncs
++
++.NOTPARALLEL:

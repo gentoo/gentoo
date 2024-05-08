@@ -23,5 +23,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">blurb</remote-id>
+		<remote-id type="github">python/core-workflow</remote-id>
 	</upstream>
 </pkgmetadata>

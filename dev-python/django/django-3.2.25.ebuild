@@ -35,6 +35,7 @@ RDEPEND="
 	>=dev-python/asgiref-3.3.4[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	>=dev-python/sqlparse-0.2.2[${PYTHON_USEDEP}]
+	sys-libs/timezone-data
 "
 BDEPEND="
 	test? (

@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="USB multiplex daemon for use with Apple iPhone/iPod Touch devices"
 HOMEPAGE="https://www.libimobiledevice.org/"
-SRC_URI="https://cgit.libimobiledevice.org/${PN}.git/snapshot/${P}.tar.bz2"
+SRC_URI="https://cgit.libimobiledevice.org/${PN}.git/snapshot/${P}.tar.xz"
 LICENSE="GPL-2+ LGPL-2.1+" # tools/*.c is GPL-2+, rest is LGPL-2.1+
 SLOT="0/2.0-6" # based on SONAME of libusbmuxd-2.0.so
 KEYWORDS="amd64 ~arm ~arm64 ~loong ppc ~ppc64 ~riscv ~s390 x86"

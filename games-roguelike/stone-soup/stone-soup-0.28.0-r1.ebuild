@@ -22,39 +22,41 @@ inherit desktop python-any-r1 lua-single xdg-utils toolchain-funcs
 
 DESCRIPTION="Role-playing roguelike game of exploration and treasure-hunting in dungeons"
 HOMEPAGE="https://crawl.develz.org"
-SLOT="0.28"
 
 # Leave empty string if not a _pre release
 COMMITSHA=""
+# MY_SLOT to satisfy pkgcheck variable order checking
+MY_SLOT="0.28"
 if [ -z "${COMMITSHA}" ]; then
 	# This is a proper release
 	SRC_URI="
 		https://github.com/crawl/crawl/releases/download/${PV}/${PN/-/_}-${PV}.zip
-		https://dev.gentoo.org/~stasibear/distfiles/${PN}.png -> ${PN}-${SLOT}.png
-		https://dev.gentoo.org/~stasibear/distfiles/${PN}.svg -> ${PN}-${SLOT}.svg
+		https://dev.gentoo.org/~stasibear/distfiles/${PN}.png -> ${PN}-${MY_SLOT}.png
+		https://dev.gentoo.org/~stasibear/distfiles/${PN}.svg -> ${PN}-${MY_SLOT}.svg
 	"
 	MY_P="stone_soup-${PV}"
 else
 	# This is a _pre release
 	SRC_URI="
 		https://github.com/crawl/crawl/archive/${COMMITSHA}.tar.gz -> ${P}.tar.gz
-		https://dev.gentoo.org/~stasibear/distfiles/${PN}.png -> ${PN}-${SLOT}.png
-		https://dev.gentoo.org/~stasibear/distfiles/${PN}.svg -> ${PN}-${SLOT}.svg
+		https://dev.gentoo.org/~stasibear/distfiles/${PN}.png -> ${PN}-${MY_SLOT}.png
+		https://dev.gentoo.org/~stasibear/distfiles/${PN}.svg -> ${PN}-${MY_SLOT}.svg
 	"
 	MY_P="crawl-${COMMITSHA}/crawl-ref"
 fi
 
+S=${WORKDIR}/${MY_P}/source
 # 3-clause BSD: mt19937ar.cc, MSVC/stdint.h
 # 2-clause BSD: all contributions by Steve Noonan and Jesse Luehrs
 # Public Domain|CC0: most of tiles
 # MIT: json.cc/json.h, some .js files in webserver/static/scripts/contrib/
 LICENSE="GPL-2 BSD BSD-2 public-domain CC0-1.0 MIT"
+SLOT="${MY_SLOT}"
 KEYWORDS="amd64 x86"
 IUSE="advpng debug ncurses sound test +tiles"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
-S=${WORKDIR}/${MY_P}/source
 RDEPEND="
 	${LUA_DEPS}
 	dev-db/sqlite:3

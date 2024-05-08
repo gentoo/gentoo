@@ -1,10 +1,12 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI="8"
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
+DISTUTILS_USE_PEP517="setuptools"
 DISTUTILS_OPTIONAL="1"
+DISTUTILS_EXT="1"
 
 inherit distutils-r1 perl-module toolchain-funcs vcs-snapshot
 
@@ -26,7 +28,7 @@ RDEPEND="python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}"
 BDEPEND="python? (
 		${PYTHON_DEPS}
-		dev-python/setuptools[${PYTHON_USEDEP}]
+		${DISTUTILS_DEPS}
 	)"
 
 src_unpack() {
@@ -40,9 +42,11 @@ src_prepare() {
 		Makefile
 	if use python; then
 		mv "${WORKDIR}"/${PY_P} NKF.python || die
+		sed -i "s/-/_/g" NKF.python/setup.cfg
+
 		eapply "${FILESDIR}"/${PN}-python.patch
 		eapply "${FILESDIR}"/${P}-python-ssize_t.patch
-		eapply "${FILESDIR}"/${PN}-2.1.5-python-ssize_t-deux.patch
+		eapply "${FILESDIR}"/${P}-python-ssize_t-deux.patch
 
 		cd NKF.python || die
 		distutils-r1_src_prepare

@@ -1,0 +1,21 @@
+--- a/vpflib/vpfprop.c	2024-04-04 12:03:43.682864289 +0000
++++ b/vpflib/vpfprop.c	2024-04-04 12:07:30.498441728 +0000
+@@ -840,7 +840,8 @@
+ #endif
+ 
+ {
+-  int32 ncov,i,j,k,n;
++  char ncov;
++  int32 i,j,k,n;
+   char path[255];
+   char **ptr, **coverages, **subset, **fcnames=(char **)NULL;
+ 
+@@ -1447,7 +1447,7 @@
+                  int32 *nfc )
+ #else
+    char **coverage_feature_class_names (library_path, coverage, nfc)
+-      char *library_path, coverage;
++      char *library_path, *coverage;
+       int32 *nfc;
+ #endif
+ 

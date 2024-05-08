@@ -1,0 +1,10 @@
+--- a/CMakeLists.txt	2024-05-04 19:39:17.464135798 +0200
++++ b/CMakeLists.txt	2024-05-04 19:39:23.155068064 +0200
+@@ -496,7 +496,6 @@
+ else()
+   # On non-Windows, hide all symbols we don't need
+   set(ONNX_API_DEFINE "-DONNX_API=__attribute__\(\(__visibility__\(\"default\"\)\)\)")
+-  set_target_properties(onnx_proto PROPERTIES CXX_VISIBILITY_PRESET hidden)
+   set_target_properties(onnx_proto PROPERTIES VISIBILITY_INLINES_HIDDEN 1)
+ endif()
+ target_compile_definitions(onnx_proto PRIVATE ${ONNX_API_DEFINE})

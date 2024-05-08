@@ -8,7 +8,9 @@ inherit desktop edos2unix java-pkg-2 java-ant-2 xdg
 
 DESCRIPTION="Editor for VDR channels.conf"
 HOMEPAGE="https://sites.google.com/site/reniershomepage/channeleditor"
-SRC_URI="mirror://sourceforge/project/channeleditor/channeleditor/$(ver_cut 1-3)/${P/-/_}_src.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/project/channeleditor/channeleditor/$(ver_cut 1-3)/${P/-/_}_src.tar.gz"
+
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -22,8 +24,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-messages.properties.patch
 	"${FILESDIR}"/${P}-messages_en.properties.patch
 )
-
-S="${WORKDIR}/${PN}"
 
 mainclass() {
 	# read Main-Class from MANIFEST.MF

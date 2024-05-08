@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit flag-o-matic meson-multilib udev python-any-r1
 
 DESCRIPTION="An interface for filesystems implemented in userspace"
@@ -14,13 +14,15 @@ LICENSE="GPL-2 LGPL-2.1"
 SLOT="3"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="+suid test"
-RESTRICT="!test? ( test ) test? ( userpriv )"
+RESTRICT="test"
+PROPERTIES="test_privileged"
 
 BDEPEND="
 	virtual/pkgconfig
 	test? (
 		${PYTHON_DEPS}
 		$(python_gen_any_dep 'dev-python/pytest[${PYTHON_USEDEP}]')
+		$(python_gen_any_dep 'dev-python/looseversion[${PYTHON_USEDEP}]')
 	)
 "
 RDEPEND=">=sys-fs/fuse-common-3.3.0-r1"
@@ -28,7 +30,8 @@ RDEPEND=">=sys-fs/fuse-common-3.3.0-r1"
 DOCS=( AUTHORS ChangeLog.rst README.md doc/README.NFS doc/kernel.txt )
 
 python_check_deps() {
-	python_has_version "dev-python/pytest[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/pytest[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/looseversion[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
@@ -50,11 +53,13 @@ multilib_src_configure() {
 }
 
 src_test() {
-	if has sandbox ${FEATURES}; then
-		ewarn "Sandbox enabled, skipping tests"
-	else
-		multilib-minimal_src_test
-	fi
+	# For tests to pass:
+	# sandbox must be disabled.
+	# Write access to /dev/cuse* and /dev/fuse is required.
+	# root must be a member of the portage group; CAP_DAC_OVERRIDE is dropped.
+	# TMPDIR must be short for unix socket paths.
+	local -x TMPDIR=/tmp
+	multilib-minimal_src_test
 }
 
 multilib_src_test() {

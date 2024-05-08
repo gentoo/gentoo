@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="Performs full/incremental backups of local/remote filesystems onto CD-R(W)s"
 HOMEPAGE="https://cdbkup.sourceforge.net/"
-SRC_URI="mirror://sourceforge/cdbkup/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/cdbkup/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="General-purpose library for iRiver's iFP portable audio players"
 HOMEPAGE="https://ifp-driver.sourceforge.net/libifp/"
-SRC_URI="mirror://sourceforge/ifp-driver/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/ifp-driver/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

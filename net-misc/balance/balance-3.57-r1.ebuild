@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit fcaps toolchain-funcs
+inherit fcaps flag-o-matic toolchain-funcs
 
 DESCRIPTION="TCP Load Balancing Port Forwarder"
 HOMEPAGE="https://balance.inlab.net"
@@ -23,6 +23,18 @@ src_prepare() {
 	default
 
 	tc-export CC
+}
+
+src_compile() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/861599
+	# https://sourceforge.net/p/balance/bugs/13/
+	#
+	# Do not trust with LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
+	default
 }
 
 src_install() {

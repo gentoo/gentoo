@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/895298
+
+--- a/src/decls.hpp
++++ b/src/decls.hpp
+@@ -23,6 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #include "config.h"
+
+ #include "umlPackage.hpp"
++#include <cinttypes>
+
+ /* Package processing auxiliary structure:
+    "Declarations" are UML packages (which map to IDL module or C++

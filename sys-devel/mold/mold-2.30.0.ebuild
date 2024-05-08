@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/rui314/mold/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv ~sparc ~x86"
 fi
 
 # mold (MIT)
@@ -30,6 +30,11 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc14.patch
+	"${FILESDIR}"/${PN}-2.30.0-which-hunt.patch
+)
 
 pkg_pretend() {
 	# Requires a c++20 compiler, see #831473
@@ -65,7 +70,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_DISABLE_PRECOMPILE_HEADERS=ON
 		-DMOLD_ENABLE_QEMU_TESTS=OFF
 		-DMOLD_LTO=OFF # Should be up to the user to decide this with CXXFLAGS.
 		-DMOLD_USE_MIMALLOC=$(usex !kernel_Darwin)

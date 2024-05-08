@@ -7,11 +7,11 @@ inherit gnome2 optfeature virtualx
 
 DESCRIPTION="Partition editor for graphically managing your disk partitions"
 HOMEPAGE="https://gparted.org/ https://gitlab.gnome.org/GNOME/gparted/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+ FDL-1.2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86"
 IUSE="kde policykit wayland"
 
 DEPEND="

@@ -11,7 +11,7 @@ SRC_URI="http://www.eurogaran.com/downloads/tpipe/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ppc x86 ~arm64-macos ~x64-macos"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-makefile.patch

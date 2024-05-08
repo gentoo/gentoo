@@ -7,7 +7,7 @@ inherit autotools desktop elisp-common flag-o-matic toolchain-funcs xdg
 
 DESCRIPTION="DVI viewer for X Window System"
 HOMEPAGE="https://xdvi.sourceforge.net/"
-SRC_URI="mirror://sourceforge/xdvi/${P}.tar.gz
+SRC_URI="https://downloads.sourceforge.net/xdvi/${P}.tar.gz
 	https://dev.gentoo.org/~pacho/${PN}/${PN}_192.png"
 S="${WORKDIR}"/${P}/texk/xdvik
 

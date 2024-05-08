@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( luajit )
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 VALA_USE_DEPEND=vapigen
 
 inherit git-r3 lua-single meson python-single-r1 toolchain-funcs vala xdg
@@ -139,7 +139,7 @@ src_prepare() {
 	sed -i -e 's/@PYTHON_PATH@/'${EPYTHON}'/' plug-ins/python/pygimp.interp.in || die
 
 	# Set proper intallation path of documentation logo
-	sed -i -e "s/'gimp-@0@'.format(gimp_app_version)/'gimp-${PVR}'/" data/images/meson.build || die
+	sed -i -e "s/'gimp-@0@'.format(gimp_app_version)/'gimp-${PVR}'/" gimp-data/images/logo/meson.build || die
 }
 
 _adjust_sandbox() {

@@ -1,10 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
+
 inherit distutils-r1
 
 MY_COMMIT="2dbe627c1ec245db206cdc73bf1f9d785f1512d8"
@@ -27,18 +28,16 @@ RDEPEND="
 	)
 	selinux? ( sec-policy/selinux-pyzor )
 "
-DEPEND="
+BDEPEND="
 	test? (
-		gdbm? ( $(python_gen_impl_dep 'gdbm') )
-		redis? ( dev-python/redis[${PYTHON_USEDEP}] )
+		$(python_gen_impl_dep 'gdbm')
+		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/redis[${PYTHON_USEDEP}]
 	)
 "
 
-# TODO: maybe upstream would support skipping tests for which the
-# dependencies are missing?
 REQUIRED_USE="
 	pyzord? ( || ( gdbm redis ) )
-	test? ( gdbm redis )
 "
 
 distutils_enable_sphinx docs

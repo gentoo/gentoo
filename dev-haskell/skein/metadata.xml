@@ -31,4 +31,7 @@
 		This package includes Skein v1.3. Versions of this package
 		before 1.0.0 implemented Skein v1.1.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">meteficha/skein</remote-id>
+	</upstream>
 </pkgmetadata>

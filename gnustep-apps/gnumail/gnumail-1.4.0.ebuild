@@ -12,7 +12,7 @@ HOMEPAGE="https://www.nongnu.org/gnustep-nonfsf/gnumail/"
 SRC_URI="mirror://nongnu/gnustep-nonfsf/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 LICENSE="GPL-2+"
 SLOT="0"
 

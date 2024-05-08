@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="A real-time noise suppression plugin for voice"
 HOMEPAGE="https://github.com/werman/noise-suppression-for-voice"
@@ -44,6 +44,15 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_configure() {
+	# Bug #925672
+	# append-atomic-flags does not work for us in this case, as it can
+	# only test for single integers of given sizes, meanwhile
+	# noise-suppression-for-voice does std::atomic<RnNoiseStats>, where
+	# RnNoiseStats is a struct with 4 uint32_t members.
+	if test-flags-CCLD "-latomic" &>/dev/null; then
+		append-flags -Wl,--push-state,--as-needed,-latomic,--pop-state
+	fi
+
 	local mycmakeargs=(
 		-DBUILD_LADSPA_PLUGIN=$(usex ladspa ON OFF)
 		-DBUILD_LV2_PLUGIN=$(usex lv2 ON OFF)

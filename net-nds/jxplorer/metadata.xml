@@ -6,6 +6,7 @@
 		<name>Java</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">pegacat/jxplorer</remote-id>
 		<remote-id type="sourceforge">jxplorer</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -12,8 +12,9 @@ MAVEN_ID="com.google.code.findbugs:findbugs-annotations:3.0.1"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Annotation defined by the FindBugs tool"
-HOMEPAGE="http://findbugs.sourceforge.net/"
+HOMEPAGE="https://findbugs.sourceforge.net/"
 SRC_URI="https://repo1.maven.org/maven2/com/google/code/findbugs/${PN}/${PV}/${P}-sources.jar"
+S="${WORKDIR}"
 
 LICENSE="LGPL-3"
 SLOT="0"
@@ -37,5 +38,3 @@ RDEPEND="
 	${CP_DEPEND}"
 
 BDEPEND="app-arch/unzip"
-
-S="${WORKDIR}"

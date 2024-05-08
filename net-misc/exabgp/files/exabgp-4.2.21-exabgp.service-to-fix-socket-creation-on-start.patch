@@ -1,0 +1,38 @@
+From: Vincent Bernat <vincent@bernat.ch>
+Date: Sun, 2 May 2021 17:47:10 +0200
+Subject: Patch exabgp.service to fix socket creation on start
+
+Patch from Marco d'Itri.
+
+Closes: #886568.
+---
+ etc/systemd/exabgp.service | 15 ++++++---------
+ 1 file changed, 6 insertions(+), 9 deletions(-)
+
+diff --git a/etc/systemd/exabgp.service b/etc/systemd/exabgp.service
+index 17ce886..b2da5ba 100644
+--- a/etc/systemd/exabgp.service
++++ b/etc/systemd/exabgp.service
+@@ -7,16 +7,13 @@ After=network.target
+ ConditionPathExists=/etc/exabgp/exabgp.conf
+ 
+ [Service]
+-#User=exabgp
+-#Group=exabgp
+ Environment=exabgp_daemon_daemonize=false
+-PermissionsStartOnly=true
+-ExecStartPre=-mkfifo /run/exabgp.in
+-ExecStartPre=-mkfifo /run/exabgp.out
+-ExecStartPre=chmod 600 /run/exabgp.in
+-ExecStartPre=chmod 600 /run/exabgp.out
+-ExecStartPre=chown exabgp.exabgp /run/exabgp.in
+-ExecStartPre=chown exabgp.exabgp /run/exabgp.out
++User=exabgp
++Group=exabgp
++RuntimeDirectory=exabgp
++RuntimeDirectoryMode=0750
++ExecStartPre=-/usr/bin/mkfifo /run/exabgp/exabgp.in
++ExecStartPre=-/usr/bin/mkfifo /run/exabgp/exabgp.out
+ ExecStart=/usr/sbin/exabgp /etc/exabgp/exabgp.conf
+ ExecReload=/bin/kill -USR1 $MAINPID
+ Restart=always

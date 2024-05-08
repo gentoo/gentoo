@@ -5,6 +5,12 @@ EAPI=8
 
 LLVM_COMPAT=( {15..18} ) # see .cmake.conf for minimum
 LLVM_OPTIONAL=1
+
+# behaves very badly when qttools is not already installed, also
+# other issues to handle (clang tests flaky depending on version,
+# and 3rdparty/ tries to FetchContent gtest)
+QT6_RESTRICT_TESTS=1
+
 inherit desktop llvm-r1 optfeature qt6-build
 
 DESCRIPTION="Qt Tools Collection"
@@ -28,11 +34,6 @@ REQUIRED_USE="
 	pixeltool? ( widgets )
 	qdoc? ( clang qml )
 "
-
-# behaves very badly when qttools is not already installed, also
-# other more minor issues (clang tests flaky depending on version,
-# and 3rdparty/ tries to FetchContent gtest)
-RESTRICT="test"
 
 RDEPEND="
 	~dev-qt/qtbase-${PV}:6[network,widgets?]

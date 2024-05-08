@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit flag-o-matic optfeature
+inherit flag-o-matic libtool optfeature
 
 DESCRIPTION="A powerful light-weight programming language designed for extending applications"
 HOMEPAGE="https://www.lua.org/"
@@ -24,6 +24,7 @@ BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
+	elibtoolize
 
 	if use elibc_musl; then
 		# locales on musl are non-functional (#834153)

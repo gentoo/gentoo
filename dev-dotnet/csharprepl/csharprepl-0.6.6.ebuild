@@ -249,7 +249,7 @@ else
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/${MY_P}"
 
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 AZURE_DNCENG_V2_URI="https://pkgs.dev.azure.com/dnceng/public/_apis/packaging/feeds/d1622942-d16f-48e5-bc83-96f4539e7601/nuget/packages"

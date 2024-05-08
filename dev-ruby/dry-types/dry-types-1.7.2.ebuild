@@ -19,7 +19,7 @@ HOMEPAGE="https://dry-rb.org/gems/dry-types/"
 SRC_URI="https://github.com/dry-rb/dry-types/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 SLOT="$(ver_cut 1)"
 IUSE="test"
 
@@ -35,4 +35,5 @@ ruby_add_rdepend "
 ruby_add_bdepend "test? (
 	dev-ruby/dry-monads
 	dev-ruby/dry-struct
+	dev-ruby/warning
 )"

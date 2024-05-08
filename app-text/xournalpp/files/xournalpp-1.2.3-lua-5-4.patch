@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 453695c0..900c6cc3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -146,7 +146,7 @@ find_package(ZLIB REQUIRED)
+ find_package(Threads REQUIRED)
+ 
+ option(ENABLE_PLUGINS "Compile with plugin support" ON)
+-find_package(Lua) # Lua 5.4 is only supported with cmake >=3.18
++find_package(Lua ${LUA_VERSION} EXACT) # Lua 5.4 is only supported with cmake >=3.18
+ message(STATUS "Found Lua: ${Lua_FOUND}")
+ if (Lua_FOUND AND ENABLE_PLUGINS)
+     # currently not fully supported by cmake

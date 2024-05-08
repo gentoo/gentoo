@@ -5,10 +5,6 @@
 		<email>gokturk@gentoo.org</email>
 		<name>Göktürk Yüksek</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>bircoph@gentoo.org</email>
-		<name>Andrew Savchenko</name>
-	</maintainer>
 	<use>
 		<flag name="auto-completion">Enable command-line autocompletion using <pkg>dev-libs/libtecla</pkg></flag>
 	</use>

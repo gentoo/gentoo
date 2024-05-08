@@ -90,7 +90,7 @@ src_configure() {
 		--with-bcrypt
 		--with-yescrypt
 		$(use_enable nls)
-		# TODO: wire up upstream for elogind too
+		# TODO: wire up upstream for elogind too (bug #931119)
 		$(use_enable systemd logind)
 		$(use_with acl)
 		$(use_with audit)

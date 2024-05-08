@@ -251,4 +251,17 @@ if $(ver_test -gt 24.01.75); then
 	esac
 fi
 
+# list of applications ported to KF6 post-24.02 in SLOT=6 having to block SLOT=5
+if $(ver_test -gt 24.04.75); then
+	case ${PN} in
+		audex | \
+		itinerary | \
+		kio-perldoc | \
+		kolourpaint | \
+		signon-kwallet-extension)
+			RDEPEND+=" !${CATEGORY}/${PN}:5" ;;
+		*) ;;
+	esac
+fi
+
 fi

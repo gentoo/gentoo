@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Extensible NMEA-0183 (GPS) data parser in standard C"
 HOMEPAGE="http://nmeap.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

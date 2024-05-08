@@ -1,9 +1,9 @@
-# Copyright 2011-2023 Gentoo Authors
+# Copyright 2011-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit linux-info python-any-r1
@@ -74,6 +74,8 @@ if [[ ${PV} != 9999 ]]; then
 	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-dwmw2 )"
 	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/dwmw2@kernel.org.key"
 fi
+
+QA_CONFIG_IMPL_DECL_SKIP=( memset_s )
 
 CONFIG_CHECK="~TUN"
 

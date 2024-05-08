@@ -1,0 +1,125 @@
+From 8916cb62b0facf45ccb220fd2efd5746fdaf79b8 Mon Sep 17 00:00:00 2001
+From: Adrian Ratiu <adrian.ratiu@collabora.com>
+Date: Mon, 25 Mar 2024 02:19:42 +0200
+Subject: [PATCH] Make libcanberra optional
+
+libcanberra is an old abandoned project whose last release
+was well over a decade ago, despite getting some few fixes
+on its master branch since then, which are unreleased.
+
+My problem with libcanberra is that it can't be built on
+pure wayland systems (no X11 headers) which are becoming
+more common nowadays.
+
+It is the only thing keeping pavucontrol tied to X11, all
+other dependencies (eg gtk+) build fine on pure wayland.
+Since canberra is not a core part of the project, let's
+make it optional so pavucontrol can build & work on
+pure wayland systems.
+
+Ideally in the future libcanberra can be replaced with
+something else, however I don't have the bandwidth to
+take this on for now, so I'm just making it optional.
+
+Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
+---
+ configure.ac           | 9 ++++++++-
+ src/pavuapplication.cc | 2 --
+ src/pavucontrol.cc     | 4 ++++
+ src/sinkwidget.cc      | 5 +++++
+ 4 files changed, 17 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 056ba5e..1b793b8 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -41,10 +41,17 @@ AC_TYPE_SIGNAL
+ AC_HEADER_STDC
+ AX_CXX_COMPILE_STDCXX_11
+ 
+-PKG_CHECK_MODULES(GUILIBS, [ gtkmm-3.0 >= 3.22 sigc++-2.0 libcanberra-gtk3 >= 0.16 json-glib-1.0 ])
++PKG_CHECK_MODULES(GUILIBS, [ gtkmm-3.0 >= 3.22 sigc++-2.0 json-glib-1.0 ])
+ AC_SUBST(GUILIBS_CFLAGS)
+ AC_SUBST(GUILIBS_LIBS)
+ 
++AC_CHECK_LIB([canberra-gtk3], [canberra_gtk_play], [HAVE_LIBCANBERRA=yes], [HAVE_LIBCANBERRA=no])
++AS_IF([test "x$HAVE_LIBCANBERRA" = "xyes"], [
++    AC_DEFINE([HAVE_LIBCANBERRA], [1], [Have libcanberra support.])
++    AC_SUBST(LIBCANBERRA_CFLAGS)
++    AC_SUBST(LIBCANBERRA_LIBS)
++])
++
+ if test -d ../pulseaudio ; then
+    PULSE_CFLAGS='-I$(top_srcdir)/../pulseaudio/src'
+    PULSE_LIBS='-L$(top_srcdir)/../pulseaudio/src/.libs -lpulse -lpulse-mainloop-glib'
+diff --git a/src/pavuapplication.cc b/src/pavuapplication.cc
+index 6773b53..60c016c 100644
+--- a/src/pavuapplication.cc
++++ b/src/pavuapplication.cc
+@@ -24,8 +24,6 @@
+ 
+ #include "i18n.h"
+ 
+-#include <canberra-gtk.h>
+-
+ #include "pavuapplication.h"
+ #include "pavucontrol.h"
+ #include "mainwindow.h"
+diff --git a/src/pavucontrol.cc b/src/pavucontrol.cc
+index 18d5400..ff652be 100644
+--- a/src/pavucontrol.cc
++++ b/src/pavucontrol.cc
+@@ -29,7 +29,9 @@
+ #include <json-glib/json-glib.h>
+ #endif
+ 
++#ifdef HAVE_LIBCANBERRA
+ #include <canberra-gtk.h>
++#endif
+ 
+ #include "pavucontrol.h"
+ #include "i18n.h"
+@@ -916,7 +918,9 @@ MainWindow* pavucontrol_get_window(pa_glib_mainloop *m, bool maximize, bool _ret
+     tab_number = _tab_number;
+     retry = _retry;
+ 
++#ifdef HAVE_LIBCANBERRA
+     ca_context_set_driver(ca_gtk_context_get(), "pulse");
++#endif
+ 
+     mainWindow = MainWindow::create(maximize);
+ 
+diff --git a/src/sinkwidget.cc b/src/sinkwidget.cc
+index f30bd37..41d7bb8 100644
+--- a/src/sinkwidget.cc
++++ b/src/sinkwidget.cc
+@@ -24,7 +24,10 @@
+ 
+ #include "sinkwidget.h"
+ 
++#ifdef HAVE_LIBCANBERRA
+ #include <canberra-gtk.h>
++#endif
++
+ #if HAVE_EXT_DEVICE_RESTORE_API
+ #  include <pulse/format.h>
+ #  include <pulse/ext-device-restore.h>
+@@ -120,6 +123,7 @@ void SinkWidget::executeVolumeUpdate() {
+ 
+     pa_operation_unref(o);
+ 
++#ifdef HAVE_LIBCANBERRA
+     ca_context_playing(ca_gtk_context_get(), 2, &playing);
+     if (playing)
+         return;
+@@ -136,6 +140,7 @@ void SinkWidget::executeVolumeUpdate() {
+                            NULL);
+ 
+     ca_context_change_device(ca_gtk_context_get(), NULL);
++#endif
+ }
+ 
+ void SinkWidget::onMuteToggleButton() {
+-- 
+2.43.2
+

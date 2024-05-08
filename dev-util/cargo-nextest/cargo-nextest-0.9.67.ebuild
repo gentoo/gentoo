@@ -406,6 +406,6 @@ LICENSE+="
 	Unicode-DFS-2016
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 QA_FLAGS_IGNORED="usr/bin/cargo-nextest"

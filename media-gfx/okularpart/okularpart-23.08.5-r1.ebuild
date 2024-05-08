@@ -16,7 +16,7 @@ HOMEPAGE="https://okular.kde.org https://apps.kde.org/okular/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 IUSE="djvu epub mobi +pdf +postscript +tiff"
 
 # slot op: Uses Qt5::CorePrivate
@@ -61,6 +61,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-tests.patch" # bug 734138
 	"${FILESDIR}/${P}-only.patch"
 	"${FILESDIR}/${P}-crashfix.patch" # KDE-bug 476207
+	"${FILESDIR}/${P}-implicit-vasprintf.patch" # bug 927683; pending upstream
 )
 
 src_configure() {

@@ -1,4 +1,4 @@
-# Copyright 2004-2023 Gentoo Authors
+# Copyright 2004-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Library for build EFI Applications"
 HOMEPAGE="https://sourceforge.net/projects/gnu-efi/"
-SRC_URI="mirror://sourceforge/gnu-efi/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/gnu-efi/${P}.tar.bz2"
 
 # inc/, lib/ dirs (README.efilib)
 # - BSD-2

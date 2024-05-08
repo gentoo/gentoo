@@ -21,7 +21,7 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	<dev-python/cryptography-43[${PYTHON_USEDEP}]
@@ -62,5 +62,10 @@ src_test() {
 		)
 	fi
 
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	distutils-r1_src_test
+}
+
+python_test() {
+	epytest -p rerunfailures
 }

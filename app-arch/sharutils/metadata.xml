@@ -6,6 +6,7 @@
   <name>Gentoo Base System</name>
 </maintainer>
 <upstream>
+  <remote-id type="savannah">sharutils</remote-id>
   <remote-id type="cpe">cpe:/a:gnu:sharutils</remote-id>
 </upstream>
 </pkgmetadata>

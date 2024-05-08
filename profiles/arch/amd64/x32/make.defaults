@@ -5,6 +5,11 @@ DEFAULT_ABI="x32"
 ABI="x32"
 MULTILIB_ABIS="amd64 x86 x32"
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-03-29)
+# Appears to be needed so stage1 can build stage3 ...
+# The bug is elsewhere, this is a workaround.
+BOOTSTRAP_USE="${BOOTSTRAP_USE} abi_x86_64"
+
 # Mike Gilbert <floppym@gentoo.org> (2021-09-06)
 # x32 userspace runs on amd64 kernels.
 KERNEL_ABI="amd64"

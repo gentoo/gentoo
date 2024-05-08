@@ -7,7 +7,7 @@ inherit cmake xdg
 
 DESCRIPTION="Qt/C++ wrapper for ALSA sequencer"
 HOMEPAGE="https://drumstick.sourceforge.io/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -49,6 +49,7 @@ src_configure() {
 		-DUSE_FLUIDSYNTH=$(usex fluidsynth)
 		-DUSE_NETWORK=$(usex network)
 		-DUSE_PULSEAUDIO=$(usex pulseaudio)
+		-DUSE_QT=5 # bug 919682
 		-DBUILD_DOCS=$(usex doc)
 	)
 	cmake_src_configure

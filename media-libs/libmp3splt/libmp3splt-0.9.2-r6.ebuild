@@ -7,7 +7,7 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="Library for mp3splt to split mp3 and ogg files without decoding"
 HOMEPAGE="https://mp3splt.sourceforge.net/mp3splt_page/home.php"
-SRC_URI="mirror://sourceforge/${PN:3}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN:3}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

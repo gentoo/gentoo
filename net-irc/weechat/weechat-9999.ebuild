@@ -32,13 +32,14 @@ PLUGINS="+alias +buflist +charset +exec +fifo +fset +logger +relay +scripts +spe
 # dev-lang/php eclass support is lacking, php plugins don't work. bug #705702
 SCRIPT_LANGS="guile lua +perl +python ruby tcl"
 LANGS=" cs de es fr it ja pl ru"
-IUSE="doc enchant man nls selinux test +zstd ${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS}"
+IUSE="doc enchant man nls relay-api selinux test +zstd ${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS}"
 
 REQUIRED_USE="
 	enchant? ( spell )
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	test? ( nls )
+	relay-api? ( relay )
 "
 
 RDEPEND="
@@ -164,6 +165,7 @@ src_configure() {
 		-DENABLE_PERL=$(usex perl)
 		-DENABLE_PYTHON=$(usex python)
 		-DENABLE_RELAY=$(usex relay)
+		-DENABLE_CJSON=$(usex relay-api)
 		-DENABLE_RUBY=$(usex ruby)
 		-DENABLE_SCRIPT=$(usex scripts)
 		-DENABLE_SCRIPTS=$(usex scripts)

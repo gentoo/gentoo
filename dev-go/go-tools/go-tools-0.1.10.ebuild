@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,12 +8,14 @@ DESCRIPTION="Tools that support the Go programming language (godoc, etc.)"
 HOMEPAGE="https://godoc.org/golang.org/x/tools"
 SRC_URI="https://github.com/golang/tools/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
+S=${WORKDIR}/${P#go-}
 
 LICENSE="BSD MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 
-S=${WORKDIR}/${P#go-}
+# Many test failures (bug 904314).
+RESTRICT="test"
 
 src_prepare() {
 	default

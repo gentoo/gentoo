@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Qt WebChannel"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm64 ~loong"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~riscv ~x86"
 fi
 
 IUSE="qml"
@@ -20,7 +20,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_configure() {
-	has_version ">=dev-qt/qtdeclarative-${PV}:6" && #913692
+	has_version "=dev-qt/qtdeclarative-$(ver_cut 1-3)*:6" && #913692
 		local mycmakeargs=( $(cmake_use_find_package qml Qt6Qml) )
 
 	qt6-build_src_configure

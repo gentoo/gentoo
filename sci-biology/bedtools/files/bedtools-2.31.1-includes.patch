@@ -1,0 +1,180 @@
+https://github.com/arq5x/bedtools2/pull/1087
+
+From 3fbf2ddc8ebf0fc1bd492d14a6046aadd59ecadb Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Thu, 25 Apr 2024 11:18:48 +0200
+Subject: [PATCH] Add missing `stdint.h` includes
+
+* Musl is a lot stricter with transitive includes:
+  Bug: https://bugs.gentoo.org/907971
+--- a/src/bamToBed/bamToBed.cpp
++++ b/src/bamToBed/bamToBed.cpp
+@@ -22,6 +22,7 @@ using namespace BamTools;
+ #include <sstream>
+ #include <fstream>
+ #include <stdlib.h>
++#include <stdint.h>
+ 
+ using namespace std;
+ 
+--- a/src/clusterBed/clusterBed.cpp
++++ b/src/clusterBed/clusterBed.cpp
+@@ -12,6 +12,8 @@
+ #include "lineFileUtilities.h"
+ #include "clusterBed.h"
+ 
++#include <stdint.h>
++
+ // = Constructor =
+ BedCluster::BedCluster(string &bedFile, 
+                    int  maxDistance, 
+--- a/src/pairToBed/pairToBed.h
++++ b/src/pairToBed/pairToBed.h
+@@ -22,6 +22,7 @@ using namespace BamTools;
+ #include <vector>
+ #include <iostream>
+ #include <fstream>
++#include <stdint.h>
+ 
+ using namespace std;
+ 
+--- a/src/randomBed/randomBed.h
++++ b/src/randomBed/randomBed.h
+@@ -22,6 +22,7 @@
+ #include <unistd.h>
+ #include <sys/types.h>
+ #include <algorithm>  // for binary search
++#include <stdint.h>
+ using namespace std;
+ 
+ const int MAX_TRIES = 1000000;
+--- a/src/summaryFile/summaryFile.h
++++ b/src/summaryFile/summaryFile.h
+@@ -12,6 +12,8 @@
+ #include "ToolBase.h"
+ #include "ContextSummary.h"
+ 
++#include <stdint.h>
++
+ struct Interval {
+   CHRPOS start;
+   CHRPOS end;
+--- a/src/utils/BamTools/include/BamAlignment.mapping.hpp
++++ b/src/utils/BamTools/include/BamAlignment.mapping.hpp
+@@ -1,3 +1,4 @@
++#include <stdint.h>
+ 
+ struct _RefID_t {
+     operator int32_t() const {return (int32_t)(_ptr()->core.tid);}
+--- a/src/utils/BamTools/include/api/BamAux.h
++++ b/src/utils/BamTools/include/api/BamAux.h
+@@ -1,4 +1,5 @@
+ #include <string>
++#include <stdint.h>
+ 
+ #ifndef BAMAUX_H
+ #define BAMAUX_H
+--- a/src/utils/FileRecordTools/FileReaders/SingleLineDelimTextFileReader.h
++++ b/src/utils/FileRecordTools/FileReaders/SingleLineDelimTextFileReader.h
+@@ -9,6 +9,7 @@
+ #define SINGLELINETEXTFILEREADER_H_
+ 
+ #include <algorithm>
++#include <stdint.h>
+ #include "FileReader.h"
+ #include "string.h"
+ #include "lineFileUtilities.h"
+--- a/src/utils/FileRecordTools/Records/BamRecord.cpp
++++ b/src/utils/FileRecordTools/Records/BamRecord.cpp
+@@ -10,6 +10,8 @@
+ #include "BamFileReader.h"
+ #include "RecordKeyVector.h"
+ 
++#include <stdint.h>
++
+ BamRecord::BamRecord()
+ : _bamChromId(-1)
+ {
+--- a/src/utils/GenomeFile/GenomeFile.h
++++ b/src/utils/GenomeFile/GenomeFile.h
+@@ -19,6 +19,7 @@
+ #include <fstream>
+ #include <cstring>
+ #include <cstdio>
++#include <stdint.h>
+ #include <algorithm> // for bsearch lower_bound()
+ #include "api/BamReader.h"
+ #include "api/BamAux.h"
+--- a/src/utils/GenomeFile/NewGenomeFile.h
++++ b/src/utils/GenomeFile/NewGenomeFile.h
+@@ -14,6 +14,7 @@
+ #define NEW_GENOMEFILE_H
+ 
+ #include <algorithm> // for bsearch lower_bound()
++#include <stdint.h>
+ 
+ #include "BedtoolsTypes.h"
+ 
+--- a/src/utils/bedFilePE/bedFilePE.h
++++ b/src/utils/bedFilePE/bedFilePE.h
+@@ -8,6 +8,7 @@
+ #include <fstream>
+ #include <sstream>
+ #include <cstring>
++#include <stdint.h>
+ #include <algorithm>
+ #include "bedFile.h"
+ #include "lineFileUtilities.h"
+--- a/src/utils/general/ParseTools.cpp
++++ b/src/utils/general/ParseTools.cpp
+@@ -2,7 +2,7 @@
+ #include <climits>
+ #include <cctype>
+ #include <cstring>
+-#include <cstdint>
++#include <stdint.h>
+ #include <cstdio>
+ #include <cstdlib>
+ #include <sstream>
+--- a/src/utils/lineFileUtilities/lineFileUtilities.h
++++ b/src/utils/lineFileUtilities/lineFileUtilities.h
+@@ -4,6 +4,7 @@
+ #include <vector>
+ #include <string>
+ #include <cstring>
++#include <stdint.h>
+ #include <cstdlib>
+ #include <sstream>
+ #include <iostream>
+--- a/src/utils/sequenceUtilities/sequenceUtils.h
++++ b/src/utils/sequenceUtilities/sequenceUtils.h
+@@ -4,6 +4,7 @@
+ #include <string>
+ #include <algorithm>
+ #include <cctype>
++#include <stdint.h>
+ 
+ using namespace std;
+ 
+--- a/src/windowMaker/windowMaker.h
++++ b/src/windowMaker/windowMaker.h
+@@ -12,6 +12,8 @@ Licenced under the GNU General Public License 2.0 license.
+ #include "NewGenomeFile.h"
+ #include "bedFile.h"
+ 
++#include <stdint.h>
++
+ using namespace std;
+ 
+ 
+--- a/src/windowMaker/windowMakerMain.cpp
++++ b/src/windowMaker/windowMakerMain.cpp
+@@ -12,6 +12,8 @@ Licenced under the GNU General Public License 2.0 license.
+ #include "windowMaker.h"
+ #include "version.h"
+ 
++#include <stdint.h>
++
+ using namespace std;
+ 
+ // define our program name

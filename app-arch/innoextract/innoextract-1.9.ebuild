@@ -22,6 +22,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.9-fix-linkage.patch"
+	"${FILESDIR}/${PN}-1.9-boost-1.85.0.patch"
 )
 
 src_configure() {

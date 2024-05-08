@@ -3,16 +3,17 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit meson python-any-r1
 
 DESCRIPTION="EDID and DisplayID library"
 HOMEPAGE="https://gitlab.freedesktop.org/emersion/libdisplay-info"
 SRC_URI="https://gitlab.freedesktop.org/emersion/${PN}/-/releases/${PV}/downloads/${P}.tar.xz"
-KEYWORDS="amd64 arm64 ~loong ppc64 ~riscv x86"
+
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="amd64 arm64 ~loong ppc64 ~riscv x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

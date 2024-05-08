@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ LICENSE="BSD"
 # Always check "Upgrading from ..." in README
 # e.g. https://github.com/redis/hiredis#upgrading-to-110
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 sparc ~x86 ~x64-solaris"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~loong ~ppc ppc64 ~riscv ~s390 sparc x86 ~x64-solaris"
 IUSE="examples ssl static-libs test"
 RESTRICT="!test? ( test )"
 
@@ -27,7 +27,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.0.0-disable-network-tests.patch
+	"${FILESDIR}"/${PN}-1.1.0-disable-network-tests.patch
 )
 
 src_prepare() {
@@ -73,7 +73,7 @@ src_test() {
 	_build hiredis-test
 
 	"${EPREFIX}"/usr/sbin/redis-server - <<< "${REDIS_TEST_CONFIG}" || die
-	./hiredis-test -h 127.0.0.1 -p ${REDIS_PID} -s ${REDIS_SOCK}
+	./hiredis-test -h 127.0.0.1 -p ${REDIS_PORT} -s ${REDIS_SOCK}
 	local ret=$?
 
 	kill "$(<"${REDIS_PID}")" || die

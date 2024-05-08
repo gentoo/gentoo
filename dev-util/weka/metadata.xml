@@ -10,5 +10,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">weka</remote-id>
+		<remote-id type="github">Waikato/weka</remote-id>
 	</upstream>
 </pkgmetadata>

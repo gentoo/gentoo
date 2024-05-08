@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -230,7 +230,12 @@ src_install() {
 	newins - 80${PN} <<-EOF
 		SEARCH_DIRS_MASK="${ecudadir}"
 	EOF
-	# TODO: Add pkgconfig files for installed libraries
+
+	# https://bugs.gentoo.org/926116
+	insinto /etc/sandbox.d
+	newins - 80${PN} <<-EOF
+		SANDBOX_PREDICT="/proc/self/task"
+	EOF
 }
 
 pkg_postinst_check() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,11 +6,11 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="Script for pretty printing of your mails"
-HOMEPAGE="http://muttprint.sourceforge.net"
-SRC_URI="mirror://sourceforge/muttprint/${P}.tar.gz"
+HOMEPAGE="https://muttprint.sourceforge.net"
+SRC_URI="https://downloads.sourceforge.net/muttprint/${P}.tar.gz"
 
+LICENSE="GPL-2+"
 SLOT="0"
-LICENSE="GPL-2"
 KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="doc"
 

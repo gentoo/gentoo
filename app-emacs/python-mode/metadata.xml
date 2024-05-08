@@ -8,5 +8,6 @@
 <stabilize-allarches/>
 <upstream>
   <remote-id type="launchpad">python-mode</remote-id>
+  <remote-id type="gitlab">python-mode-devs/python-mode</remote-id>
 </upstream>
 </pkgmetadata>

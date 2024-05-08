@@ -7,7 +7,7 @@ inherit autotools toolchain-funcs
 
 DESCRIPTION="Portable C library for reading and writing BSB format image files"
 HOMEPAGE="https://libbsb.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

@@ -6,4 +6,7 @@
 		<flag name="frost">Add support for frost boards</flag>
 		<flag name="ssl">Add support for FCP connection over SSL</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">hyphanet/wiki</remote-id>
+	</upstream>
 </pkgmetadata>

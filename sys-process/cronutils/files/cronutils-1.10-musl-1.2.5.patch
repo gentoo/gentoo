@@ -1,0 +1,37 @@
+From cbab73af5a3c218aabd16e3733c77d2b1c541564 Mon Sep 17 00:00:00 2001
+From: Paul Meyer <49727155+katexochen@users.noreply.github.com>
+Date: Wed, 31 Jan 2024 20:12:01 +0100
+Subject: [PATCH] add missing libgen include
+
+Without including libgen.h, build will fail on darwin as basename isn't declared.
+
+Signed-off-by: Paul Meyer <49727155+katexochen@users.noreply.github.com>
+---
+ runalarm.c | 1 +
+ runlock.c  | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/runalarm.c b/runalarm.c
+index fb8617a..95a40ac 100644
+--- a/runalarm.c
++++ b/runalarm.c
+@@ -17,6 +17,7 @@ limitations under the License.
+ #define _GNU_SOURCE /* basename */
+ 
+ #include <errno.h>
++#include <libgen.h>
+ #include <signal.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+diff --git a/runlock.c b/runlock.c
+index 0e446b0..75ac08f 100644
+--- a/runlock.c
++++ b/runlock.c
+@@ -18,6 +18,7 @@ limitations under the License.
+ 
+ #include <errno.h>
+ #include <fcntl.h>
++#include <libgen.h>
+ #include <limits.h>
+ #include <signal.h>
+ #include <stdio.h>

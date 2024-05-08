@@ -7,6 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:gnu:gzip</remote-id>
+		<remote-id type="savannah">gzip</remote-id>
 	</upstream>
 	<use>
 		<flag name="pic">disable optimized assembly code that is not PIC friendly</flag>

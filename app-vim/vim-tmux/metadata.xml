@@ -9,9 +9,6 @@
     <email>shell-tools@gentoo.org</email>
     <name>Gentoo Tools Project</name>
   </maintainer>
-  <maintainer type="person">
-    <email>monsieurp@gentoo.org</email>
-  </maintainer>
   <stabilize-allarches/>
   <upstream>
     <remote-id type="github">tmux-plugins/vim-tmux</remote-id>

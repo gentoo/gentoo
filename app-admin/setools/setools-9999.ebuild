@@ -28,15 +28,16 @@ IUSE="test X"
 RESTRICT="!test? ( test )"
 
 RDEPEND="${PYTHON_DEPS}
-	>=dev-python/networkx-2.0[${PYTHON_USEDEP}]
+	>=dev-python/networkx-2.6[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=sys-libs/libsepol-3.2:=
 	>=sys-libs/libselinux-3.2:=
 	X? (
-		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
+		dev-python/PyQt6[gui,widgets,${PYTHON_USEDEP}]
+		dev-python/pygraphviz[${PYTHON_USEDEP}]
 	)"
 DEPEND="${RDEPEND}"
-BDEPEND=">=dev-python/cython-0.27[${PYTHON_USEDEP}]
+BDEPEND=">=dev-python/cython-0.29.14[${PYTHON_USEDEP}]
 	test? (
 		sys-apps/checkpolicy
 	)"

@@ -9,5 +9,6 @@
 	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/neilalexander/jnacl/issues</bugs-to>
+		<remote-id type="github">neilalexander/jnacl</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>monsieurp@gentoo.org</email>
-		<name>Patrice Clement</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="server">Compile and install Super Mario War server files</flag>
 	</use>

@@ -19,5 +19,6 @@
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:gnu:grep</remote-id>
+		<remote-id type="savannah">grep</remote-id>
 	</upstream>
 </pkgmetadata>

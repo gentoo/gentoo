@@ -2,10 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<stabilize-allarches/>
-	<maintainer type="person">
-		<email>matthew@gentoo.org</email>
-		<name>Matthew Smith</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		Kaitai Struct is a declarative language used for
 		describe various binary data structures, laid out in

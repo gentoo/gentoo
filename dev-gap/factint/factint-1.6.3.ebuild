@@ -13,7 +13,7 @@ SRC_URI="https://github.com/gap-packages/${MY_PN}/releases/download/v${PV}/${MY_
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 GAP_PKG_EXTRA_INSTALL=( tables )
 gap-pkg_enable_tests

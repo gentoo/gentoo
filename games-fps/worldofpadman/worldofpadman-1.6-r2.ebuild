@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,8 +7,8 @@ inherit desktop
 
 DESCRIPTION="A cartoon style multiplayer first-person shooter"
 HOMEPAGE="https://worldofpadman.net/"
-SRC_URI="mirror://sourceforge/${PN}/wop-1.5-unified.zip
-	mirror://sourceforge/${PN}/wop-1.5.x-to-1.6-patch-unified.zip"
+SRC_URI="https://downloads.sourceforge.net/${PN}/wop-1.5-unified.zip
+	https://downloads.sourceforge.net/${PN}/wop-1.5.x-to-1.6-patch-unified.zip"
 S="${WORKDIR}/${P}_svn2178-src"
 
 LICENSE="GPL-2 worldofpadman"

@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Print driver for Hp Deskjet 710, 712, 720, 722, 820, 1000 series"
 HOMEPAGE="http://pnm2ppa.sourceforge.net"
-SRC_URI="mirror://sourceforge/pnm2ppa/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/pnm2ppa/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -11,13 +11,12 @@ inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="WebSocket and WAMP for Twisted and Asyncio"
 HOMEPAGE="
-	https://crossbar.io/autobahn/
 	https://github.com/crossbario/autobahn-python/
 	https://pypi.org/project/autobahn/
 "
 
-SLOT="0"
 LICENSE="MIT"
+SLOT="0"
 KEYWORDS="amd64 arm arm64 ~riscv ~sparc x86"
 IUSE="test xbr"
 RESTRICT="!test? ( test )"
@@ -58,6 +57,11 @@ BDEPEND="
 "
 
 python_prepare_all() {
+	local PATCHES=(
+		# https://github.com/crossbario/autobahn-python/pull/1634
+		"${FILESDIR}/${P}-pytest-asyncio.patch"
+	)
+
 	if use xbr ; then
 		eerror "***************"
 		eerror "Required xbr dependencies are incomplete in Gentoo."
@@ -89,8 +93,11 @@ python_test() {
 	unset USE_TWISTED
 
 	einfo "RE-testing cryptosign and component_aio using asyncio"
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	local -x USE_ASYNCIO=true
-	epytest --pyargs autobahn.wamp.test.test_wamp_{cryptosign,component_aio}
+	epytest -p asyncio --pyargs \
+		autobahn.asyncio.test.test_aio_{raw,web}socket \
+		autobahn.wamp.test.test_wamp_{cryptosign,component_aio}
 	unset USE_ASYNCIO
 
 	rm -f twisted/plugins/dropin.cache || die

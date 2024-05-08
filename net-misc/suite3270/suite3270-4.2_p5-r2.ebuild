@@ -16,7 +16,7 @@ inherit autotools font
 
 DESCRIPTION="Complete 3270 (S390) access package"
 HOMEPAGE="http://x3270.bgp.nu/"
-SRC_URI="mirror://sourceforge/x3270/${MY_P}-src.tgz"
+SRC_URI="https://downloads.sourceforge.net/x3270/${MY_P}-src.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

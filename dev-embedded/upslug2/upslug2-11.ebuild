@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="util for flashing NSLU2 machines remotely"
 HOMEPAGE="http://www.nslu2-linux.org/wiki/Main/UpSlug2"
-SRC_URI="mirror://sourceforge/nslu/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/nslu/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

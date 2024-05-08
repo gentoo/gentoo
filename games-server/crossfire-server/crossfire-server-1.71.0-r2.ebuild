@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,9 +6,9 @@ EAPI=8
 MY_P="${P/-server/}"
 DESCRIPTION="Server for the crossfire clients"
 HOMEPAGE="http://crossfire.real-time.com/"
-SRC_URI="mirror://sourceforge/crossfire/${PN}/${PV}/${MY_P}.tar.bz2
-	mirror://sourceforge/crossfire/${PN}/${PV}/${MY_P}.maps.tar.bz2
-	mirror://sourceforge/crossfire/${PN}/${PV}/${MY_P}.arch.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/crossfire/${PN}/${PV}/${MY_P}.tar.bz2
+	https://downloads.sourceforge.net/crossfire/${PN}/${PV}/${MY_P}.maps.tar.bz2
+	https://downloads.sourceforge.net/crossfire/${PN}/${PV}/${MY_P}.arch.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

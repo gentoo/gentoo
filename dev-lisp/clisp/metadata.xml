@@ -24,5 +24,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">clisp</remote-id>
+		<remote-id type="gitlab">gnu-clisp/clisp</remote-id>
 	</upstream>
 </pkgmetadata>

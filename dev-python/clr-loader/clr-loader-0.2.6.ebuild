@@ -29,7 +29,7 @@ if [[ "${PV}" == *9999* ]] ; then
 else
 	inherit pypi
 
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 SRC_URI+=" ${NUGET_URIS} "

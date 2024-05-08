@@ -1,15 +1,19 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
 DESCRIPTION="Downloads and decodes to the weather report for a given station ID"
-HOMEPAGE="https://www.schwarzvogel.de/software/pymetar/"
+HOMEPAGE="
+	https://www.schwarzvogel.de/software/pymetar/
+	https://github.com/klausman/pymetar/
+	https://pypi.org/project/pymetar/
+"
 SRC_URI="https://www.schwarzvogel.de/pkgs/${P}.tar.gz"
 
 LICENSE="GPL-2"

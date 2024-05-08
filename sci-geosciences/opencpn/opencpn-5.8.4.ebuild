@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 WX_GTK_VER="3.2-gtk3"
-inherit wxwidgets xdg cmake toolchain-funcs
+inherit flag-o-matic wxwidgets xdg cmake toolchain-funcs
 
 DOC_VERSION="4.8.2.0"
 
@@ -46,13 +46,17 @@ BDEPEND="
 	"
 
 src_prepare() {
-	default
 	# see bug #907759
 	sed -i "s/ cc / $(tc-getBUILD_CC) /" "${S}"/CMakeLists.txt
 	cmake_src_prepare
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/927484
+	# https://github.com/OpenCPN/OpenCPN/issues/3782
+	filter-lto
+
 	use doc && HTML_DOCS=( "${S}"/../${PN}/doc/. )
 
 	setup-wxwidgets
@@ -67,7 +71,6 @@ src_configure() {
 }
 
 src_install() {
-	default
 	cmake_src_install
 	mv "${D}/usr/share/doc/${PN}"/* "${D}/usr/share/doc/${PF}" || die
 	rmdir "${D}/usr/share/doc/${PN}"

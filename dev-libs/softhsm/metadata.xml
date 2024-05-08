@@ -6,4 +6,7 @@
 		<flag name="gost">Enable gost algorithm</flag>
 		<flag name="migration-tool">Build db migration tool</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">opendnssec/SoftHSMv2</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -2,7 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>bircoph@gentoo.org</email>
+		<email>dlan@gentoo.org</email>
+		<name>Yixun Lan</name>
 	</maintainer>
 	<longdescription>
 		Privoxy is a non-caching web proxy with advanced filtering

@@ -29,6 +29,9 @@ BDEPEND="
 PATCHES=(
 	# https://bugs.gentoo.org/925503
 	"${FILESDIR}"/${PN}-1.12.0-no-python.patch
+
+	# https://bugs.gentoo.org/928361
+	"${FILESDIR}"/${PN}-1.12.2-musl.patch
 )
 
 SITEFILE="70mu-gentoo-autoload.el"

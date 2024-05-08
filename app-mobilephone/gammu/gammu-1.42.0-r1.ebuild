@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="A tool to handle your cellular phone"
 HOMEPAGE="https://wammu.eu/gammu/"
-SRC_URI="https://dl.cihar.com/${PN}/releases/${P}.tar.bz2"
+SRC_URI="https://dl.cihar.com/${PN}/releases/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

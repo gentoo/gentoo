@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,8 +21,8 @@ SRC_URI="
 "
 S=${WORKDIR}/${MY_P}
 
-SLOT="0"
 LICENSE="BSD"
+SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 DEPEND="
@@ -67,6 +67,8 @@ python_test() {
 	local EPYTEST_DESELECT=(
 		# unreliable, fails on x86
 		tests/test_data_structures.py::TestCompressionParameters::test_estimated_compression_context_size
+		# check for bundled zstd version, fails on other system zstd
+		tests/test_module_attributes.py::TestModuleAttributes::test_version
 	)
 
 	rm -rf zstandard || die

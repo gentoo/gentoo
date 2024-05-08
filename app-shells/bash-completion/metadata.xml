@@ -5,6 +5,10 @@
 		<email>shell-tools@gentoo.org</email>
 		<name>Gentoo Shell Tools Project</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>arthurzam@gentoo.org</email>
+		<name>Arthur Zamarin</name>
+	</maintainer>
 	<use>
 		<flag name="eselect">
 			Support blacklisting of completions via 'eselect bashcomp'.

@@ -1,0 +1,20 @@
+Remove versions from find_package(SoXt/SoWin), bug 928657.
+Patch submitted upstream.
+
+--- a/cmake/Modules/G4InterfaceOptions.cmake
++++ b/cmake/Modules/G4InterfaceOptions.cmake
+@@ -153,12 +153,12 @@ if(GEANT4_USE_INVENTOR)
+     geant4_save_package_variables(Inventor SoQt_DIR)
+   else()
+     if(UNIX)
+-      find_package(SoXt 1.4.0 REQUIRED)
++      find_package(SoXt REQUIRED)
+       check_sobind_version(SoXt 1.4.0)
+       geant4_save_package_variables(Inventor SoXt_DIR)
+       set(GEANT4_USE_INVENTOR_XT ON)
+     elseif(WIN32)
+-      find_package(SoWin 1.4.0 REQUIRED)
++      find_package(SoWin REQUIRED)
+       check_sobind_version(SoWin 1.4.0)
+       geant4_save_package_variables(Inventor SoWin_DIR)
+       set(GEANT4_USE_INVENTOR_WIN ON)

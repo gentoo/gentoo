@@ -7,7 +7,7 @@ inherit autotools flag-o-matic linux-info
 
 DESCRIPTION="Soundcard Oscilloscope for X"
 HOMEPAGE="http://xoscope.sourceforge.net"
-SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -33,10 +33,10 @@ src_prepare() {
 	eautoreconf
 }
 
-src_compile() {
+src_configure() {
 	# -Werror=lto-type-mismatch
 	# https://bugs.gentoo.org/878065
-	# Upstream is a) sourceforge, b) inactive for 3 years. Bug not reported.
+	# https://sourceforge.net/p/xoscope/bugs/23/
 	filter-lto
 
 	default
