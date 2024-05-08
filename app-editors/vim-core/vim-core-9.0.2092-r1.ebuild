@@ -6,7 +6,7 @@ EAPI=8
 # Please bump with app-editors/vim and app-editors/gvim
 
 VIM_VERSION="9.0"
-VIM_PATCHES_VERSION="9.0.1000"
+VIM_PATCHES_VERSION="9.0.2092"
 inherit bash-completion-r1 desktop flag-o-matic prefix toolchain-funcs vim-doc xdg-utils
 
 if [[ ${PV} == 9999* ]] ; then
@@ -15,8 +15,8 @@ if [[ ${PV} == 9999* ]] ; then
 	EGIT_CHECKOUT_DIR=${WORKDIR}/vim-${PV}
 else
 	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> vim-${PV}.tar.gz
-		https://gitweb.gentoo.org/proj/vim-patches.git/snapshot/vim-patches-vim-${VIM_PATCHES_VERSION}-patches.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+		https://git.sr.ht/~xxc3nsoredxx/vim-patches/refs/download/vim-${VIM_PATCHES_VERSION}-patches/vim-${VIM_PATCHES_VERSION}-patches.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 S="${WORKDIR}/vim-${PV}"
 
@@ -34,7 +34,7 @@ BDEPEND="dev-build/autoconf"
 if [[ ${PV} != 9999* ]]; then
 	# Gentoo patches to fix runtime issues, cross-compile errors, etc
 	PATCHES=(
-		"${WORKDIR}/vim-patches-vim-${VIM_PATCHES_VERSION}-patches"
+		"${WORKDIR}/vim-${VIM_PATCHES_VERSION}-patches"
 	)
 fi
 
@@ -108,11 +108,6 @@ src_prepare() {
 
 	# Remove src/auto/configure file.
 	rm -v src/auto/configure || die "rm configure failed"
-
-	# bug 908961
-	if use elibc_musl ; then
-		sed -i -e '/ja.sjis/d' src/po/Make_all.mak || die
-	fi
 }
 
 src_configure() {
@@ -134,7 +129,7 @@ src_configure() {
 	export ac_cv_prog_STRIP="$(type -P true ) faking strip"
 
 	local myconf=(
-		--with-modified-by=Gentoo-${PVR}
+		--with-modified-by="Gentoo-${PVR} (RIP Bram)"
 		--enable-gui=no
 		--without-x
 		--disable-darwin
