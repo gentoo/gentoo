@@ -59,9 +59,9 @@ BDEPEND="virtual/pkgconfig"
 DOC_CONTENTS="
 	If this is a clean installation of wpa_supplicant, you
 	have to create a configuration file named
-	${EROOT}/etc/wpa_supplicant/wpa_supplicant.conf
+	/etc/wpa_supplicant/wpa_supplicant.conf
 	An example configuration file is available for reference in
-	${EROOT}/usr/share/doc/${PF}/
+	/usr/share/doc/${PF}/
 "
 
 S="${WORKDIR}/${P}/${PN}"
