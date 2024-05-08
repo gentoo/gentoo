@@ -9,20 +9,25 @@ PYTHON_COMPAT=( python3_{10..12} )
 
 WEBAPP_MANUAL_SLOT="yes"
 
-inherit lua-single python-single-r1 tmpfiles toolchain-funcs webapp
+inherit lua-single python-single-r1 tmpfiles toolchain-funcs webapp git-r3
 
 [[ -z "${CGIT_CACHEDIR}" ]] && CGIT_CACHEDIR="/var/cache/${PN}/"
 
-GIT_V="2.25.1"
+GIT_V="2.39.0"
 
 DESCRIPTION="a fast web-interface for git repositories"
 HOMEPAGE="https://git.zx2c4.com/cgit/about"
-SRC_URI="https://www.kernel.org/pub/software/scm/git/git-${GIT_V}.tar.xz
-	https://git.zx2c4.com/cgit/snapshot/${P}.tar.xz"
+if [[ ${PV} =~ 9999* ]]; then
+	SRC_URI=""
+	EGIT_REPO_URI="https://git.zx2c4.com/cgit"
+else
+	SRC_URI="https://www.kernel.org/pub/software/scm/git/git-${GIT_V}.tar.xz
+		https://git.zx2c4.com/cgit/snapshot/${P}.tar.xz"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~riscv ~x86"
+KEYWORDS=""
 IUSE="doc +highlight +lua test"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} ) ${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
@@ -60,7 +65,6 @@ src_configure() {
 		rmdir git || die
 		mv "${WORKDIR}"/git-"${GIT_V}" git || die
 	fi
-
 	echo "prefix = ${EPREFIX}/usr" >> cgit.conf || die "echo prefix failed"
 	echo "libdir = ${EPREFIX}/usr/$(get_libdir)" >> cgit.conf || die "echo libdir failed"
 	echo "CGIT_SCRIPT_PATH = ${MY_CGIBINDIR}" >> cgit.conf || die "echo CGIT_SCRIPT_PATH failed"
