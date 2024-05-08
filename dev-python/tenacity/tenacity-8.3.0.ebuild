@@ -21,9 +21,10 @@ KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
+		<dev-python/pytest-8.2[${PYTHON_USEDEP}]
 		dev-python/tornado[${PYTHON_USEDEP}]
 		dev-python/typeguard[${PYTHON_USEDEP}]
 	)
 "
 
-distutils_enable_tests unittest
+distutils_enable_tests pytest
