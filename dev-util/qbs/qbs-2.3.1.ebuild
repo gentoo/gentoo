@@ -43,6 +43,10 @@ CMAKE_SKIP_TESTS=(
 	tst_language
 )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.3.1-qtver.patch
+)
+
 python_check_deps() {
 	# _find_python_module in cmake/QbsDocumentation.cmake
 	python_has_version "dev-python/beautifulsoup4[${PYTHON_USEDEP}]" &&
@@ -64,6 +68,7 @@ src_configure() {
 		-DQBS_INSTALL_MAN_PAGE=yes
 		-DQBS_INSTALL_QCH_DOCS=$(usex doc)
 		-DQBS_LIB_INSTALL_DIR="$(get_libdir)"
+		-DQT_VERSION_MAJOR=6 #931596
 		-DWITH_TESTS=$(usex test)
 		-DWITH_UNIT_TESTS=$(usex test)
 	)
