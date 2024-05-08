@@ -341,7 +341,6 @@ net-libs/telepathy-farstream
 net-libs/telepathy-qt
 net-voip/telepathy-gabble
 net-voip/telepathy-rakia
-net-voip/telepathy-salut
 
 # Sam James <sam@gentoo.org> (2024-03-28)
 # Newer 5.4.x releases were signed by a potentially compromised upstream maintainer.
