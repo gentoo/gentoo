@@ -21,7 +21,7 @@ KEYWORDS="~amd64"
 RDEPEND="
 	<dev-python/bitarray-3[${PYTHON_USEDEP}]
 	>=dev-python/bitarray-2.9.0[${PYTHON_USEDEP}]
-	dev-python/gfloat[${PYTHON_USEDEP}]
+	<dev-python/gfloat-0.1[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
