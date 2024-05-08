@@ -307,11 +307,6 @@ app-emulation/runv
 # Removal on 2024-05-08
 dev-java/icedtea-bin
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-04-08)
-# Java libraries without consumers.
-# Removal on 2024-05-08, bugs #853100 #716228.
-dev-java/gin
-
 # Sam James <sam@gentoo.org> (2024-03-28)
 # Newer 5.4.x releases were signed by a potentially compromised upstream maintainer.
 # There is no evidence that these releases contain malicious code, but masked
