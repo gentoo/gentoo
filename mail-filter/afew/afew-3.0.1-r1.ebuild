@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/afewmail/afew"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 
 RDEPEND="
