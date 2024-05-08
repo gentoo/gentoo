@@ -8,7 +8,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=standalone
 PYTHON_TESTED=( python3_{10..12} pypy3 )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_13 )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1 pypi
@@ -35,7 +35,7 @@ RDEPEND="
 	>=dev-python/wheel-0.37.1-r1[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		>=dev-python/tomli-2.0.1[${PYTHON_USEDEP}]
-	' python3_10 pypy3)
+	' 3.10)
 "
 BDEPEND="
 	${RDEPEND}
