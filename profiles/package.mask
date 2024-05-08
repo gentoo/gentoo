@@ -402,11 +402,6 @@ media-libs/libopenshot
 media-libs/libopenshot-audio
 media-video/openshot
 
-# Michał Górny <mgorny@gentoo.org> (2024-03-26)
-# Issues with OpenSSL 3.  Unmaintained.  Last activity in 2019.
-# Removal on 2024-04-25.  Bug #892031.
-sys-auth/pam_ssh
-
 # Eray Aslan <eras@gentoo.org> (2024-03-10)
 # Mask experimental software
 =mail-mta/postfix-3.10*
