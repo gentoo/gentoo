@@ -33,12 +33,6 @@ RDEPEND="
 	dev-texlive/texlive-latex
 	dev-texlive/texlive-latexextra
 "
-# defusedxml via sphinx.testing
-BDEPEND="
-	test? (
-		dev-python/defusedxml[${PYTHON_USEDEP}]
-	)
-"
 
 distutils_enable_tests pytest
 
