@@ -142,6 +142,7 @@ imagemagick - Enable optional support for the ImageMagick or GraphicsMagick imag
 imap - Add support for IMAP (Internet Mail Application Protocol)
 imlib - Add support for imlib, an image loading and rendering library
 infiniband - Enable Infiniband RDMA transport support
+initramfs - Include kernel modules in the initramfs, and re-install the kernel (only effective for distribution kernels)
 inotify - Enable inotify filesystem monitoring support
 introspection - Add support for GObject based introspection
 iodbc - Add support for iODBC library
