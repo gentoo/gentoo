@@ -349,7 +349,6 @@ net-voip/telepathy-salut
 # Removal on 2024-05-06.  Bug #926679
 kde-apps/ktp-accounts-kcm
 kde-apps/ktp-approver
-kde-apps/ktp-auth-handler
 net-libs/telepathy-logger-qt
 
 # Sam James <sam@gentoo.org> (2024-03-28)
