@@ -4,7 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_TESTED=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_13 )
 
 inherit distutils-r1 pypi
 
@@ -25,9 +26,21 @@ RDEPEND="
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
-		dev-python/freezegun[${PYTHON_USEDEP}]
-		dev-python/pytest-freezegun[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/freezegun[${PYTHON_USEDEP}]
+			dev-python/pytest-freezegun[${PYTHON_USEDEP}]
+		' "${PYTHON_TESTED[@]}")
 	)
 "
 
 distutils_enable_tests pytest
+
+python_test() {
+	if ! has "${EPYTHON/./_}" "${PYTHON_TESTED[@]}"; then
+		einfo "Skipping tests on ${EPYTHON}"
+		return
+	fi
+
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest -p freezer
+}
