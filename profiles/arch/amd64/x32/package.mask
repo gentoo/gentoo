@@ -122,7 +122,6 @@ kde-apps/mbox-importer
 kde-apps/parley
 kde-apps/pim-data-exporter
 kde-apps/pim-sieve-editor
-kde-apps/plasma-telepathy-meta:5
 kde-misc/kio-gdrive
 kde-misc/tellico
 kde-misc/zanshin

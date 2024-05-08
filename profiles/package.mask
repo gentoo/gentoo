@@ -358,7 +358,6 @@ kde-apps/ktp-filetransfer-handler
 kde-apps/ktp-kded-module
 kde-apps/ktp-send-file
 kde-apps/ktp-text-ui
-kde-apps/plasma-telepathy-meta
 net-libs/telepathy-logger-qt
 
 # Sam James <sam@gentoo.org> (2024-03-28)
