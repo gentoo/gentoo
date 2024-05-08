@@ -4,7 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_TESTED=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_13 )
 
 inherit distutils-r1
 
@@ -31,23 +32,29 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		>=dev-python/filelock-3[${PYTHON_USEDEP}]
-		>=dev-python/pytest-mock-2[${PYTHON_USEDEP}]
-		>=dev-python/pytest-rerunfailures-9.1[${PYTHON_USEDEP}]
-		>=dev-python/pytest-xdist-1.34[${PYTHON_USEDEP}]
-		>=dev-python/setuptools-56.0.0[${PYTHON_USEDEP}]
-		>=dev-python/virtualenv-20.0.35[${PYTHON_USEDEP}]
-		>=dev-python/wheel-0.36.0[${PYTHON_USEDEP}]
-		test-rust? (
-			!sparc? ( dev-python/uv )
-		)
+		$(python_gen_cond_dep '
+			>=dev-python/filelock-3[${PYTHON_USEDEP}]
+			>=dev-python/pytest-mock-2[${PYTHON_USEDEP}]
+			>=dev-python/pytest-rerunfailures-9.1[${PYTHON_USEDEP}]
+			>=dev-python/pytest-xdist-1.34[${PYTHON_USEDEP}]
+			>=dev-python/setuptools-56.0.0[${PYTHON_USEDEP}]
+			>=dev-python/virtualenv-20.0.35[${PYTHON_USEDEP}]
+			>=dev-python/wheel-0.36.0[${PYTHON_USEDEP}]
+			test-rust? (
+				!sparc? ( dev-python/uv )
+			)
+		' "${PYTHON_TESTED[@]}")
 	)
 "
 
-EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 python_test() {
+	if ! has "${EPYTHON/./_}" "${PYTHON_TESTED[@]}"; then
+		einfo "Skipping tests on ${EPYTHON}"
+		return
+	fi
+
 	local EPYTEST_DESELECT=(
 		# broken by the presence of flit_core
 		tests/test_util.py::test_wheel_metadata_isolation
@@ -73,5 +80,6 @@ python_test() {
 	fi
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	local EPYTEST_XDIST=1
 	epytest -m "not network" -p pytest_mock -p rerunfailures
 }
