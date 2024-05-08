@@ -17,6 +17,7 @@ else
 fi
 
 LICENSE="MIT"
+IUSE="X"
 SLOT="0"
 
 COMMON_DEPEND="
@@ -29,8 +30,9 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}
 	media-fonts/fontawesome[otf]
 "
-DEPEND="${COMMON_DEPEND}"
-
+DEPEND="${COMMON_DEPEND}
+    X? ( x11-base/xorg-proto )
+"
 BDEPEND="
 	app-text/scdoc
 	sys-devel/gettext
