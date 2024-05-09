@@ -158,6 +158,14 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 # This is a user flag and should under _no circumstances_ be set in the ebuild.
 : "${SKIP_KERNEL_CHECK:=""}"
 
+# @ECLASS_VARIABLE: SKIP_KERNEL_BINPKG_ENV_RESET
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If set, do not reset the kernel environment variables when merging a package
+# as a binpkg.
+# Main use-case is for kernel modules, i.e. linux-mod-r1.eclass.
+# This should be set before running linux-info_pkg_setup
+
 # And to ensure all the weirdness with crosscompile
 inherit toolchain-funcs
 [[ ${EAPI} == 6 ]] && inherit eapi7-ver
@@ -696,12 +704,12 @@ linux-info_get_any_version() {
 		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
 	fi
 
-	if [[ ${MERGE_TYPE} == binary && -z ${LINUX_INFO_BINARY_RESET} ]]; then
+	if [[ ${MERGE_TYPE} == binary && -z ${SKIP_KERNEL_BINPKG_ENV_RESET} ]]; then
 		unset KV_FULL _LINUX_CONFIG_EXISTS_DONE KV_OUT_DIR
-		LINUX_INFO_BINARY_RESET=1
+		SKIP_KERNEL_BINPKG_ENV_RESET=1
 	fi
 
-	if [[ ${MERGE_TYPE} != binary ]] && ! get_version; then
+	if ! get_version; then
 		ewarn "Unable to calculate Linux Kernel version for build, attempting to use running version"
 	fi
 
