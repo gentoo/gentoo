@@ -22,8 +22,11 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm64 ~x86"
 
+DEPEND="
+	dev-python/numpy:=[${PYTHON_USEDEP}]
+"
 RDEPEND="
-	dev-python/numpy[${PYTHON_USEDEP}]
+	${DEPEND}
 "
 BDEPEND="
 	dev-python/pybind11[${PYTHON_USEDEP}]
