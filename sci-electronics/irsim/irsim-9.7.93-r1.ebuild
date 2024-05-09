@@ -23,6 +23,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9.7.79-datadir.patch
 	"${FILESDIR}"/${PN}-9.7.93-clean-makefile.patch
 	"${FILESDIR}"/${PN}-9.7.93-C99-port.patch
+	"${FILESDIR}"/${PN}-9.7.93-Makefile.patch
 )
 
 src_configure() {

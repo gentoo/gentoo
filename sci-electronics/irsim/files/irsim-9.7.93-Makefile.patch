@@ -1,0 +1,15 @@
+--- a/irsim/Makefile
++++ b/irsim/Makefile
+@@ -38,10 +38,10 @@ $(DESTDIR)${BINDIR}/genspktbl:
+ 	${CP} genspktbl $(DESTDIR)${BINDIR}/genspktbl
+ 
+ gentbl:
+-	${CC} ${CFLAGS} ${CPPFLAGS} ${DFLAGS} gentbl.c -o $@ ${LIBS}
++	${CC} ${CFLAGS} ${CPPFLAGS} ${DFLAGS} ${LDFLAGS} gentbl.c -o $@ ${LIBS}
+ 
+ genspktbl:
+-	${CC} ${CFLAGS} ${CPPFLAGS} ${DFLAGS} genspktbl.c -o $@ ${LIBS}
++	${CC} ${CFLAGS} ${CPPFLAGS} ${DFLAGS} ${LDFLAGS} genspktbl.c -o $@ ${LIBS}
+ 
+ install: $(DESTDIR)${BINDIR}/irsim $(DESTDIR)${BINDIR}/gentbl \
+ 		$(DESTDIR)${BINDIR}/genspktbl
