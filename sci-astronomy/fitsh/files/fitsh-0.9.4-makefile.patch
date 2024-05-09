@@ -1,0 +1,302 @@
+* Respect LDFLAGS
+* Fix bashisms in configure
+* Don't pre-compress manpages
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -129,22 +129,22 @@ install: src
+ 	$(INSTALL) -d $(DESTDIR)${libdir}/fitsh/lfit
+ 	$(INSTALL) -m 0644 ./src/linear.$(DLEXT) $(DESTDIR)${libdir}/fitsh/lfit
+ 	$(INSTALL) -d $(DESTDIR)${mandir}/man1
+-	$(INSTALL) -m 0644 ./man/fiarith.1.gz $(DESTDIR)${mandir}/man1
+-	$(INSTALL) -m 0644 ./man/ficalib.1.gz $(DESTDIR)${mandir}/man1
+-	$(INSTALL) -m 0644 ./man/ficombine.1.gz $(DESTDIR)${mandir}/man1
+-	$(INSTALL) -m 0644 ./man/ficonv.1.gz $(DESTDIR)${mandir}/man1
+-	$(INSTALL) -m 0644 ./man/fiheader.1.gz $(DESTDIR)${mandir}/man1
+-	$(INSTALL) -m 0644 ./man/fiign.1.gz $(DESTDIR)${mandir}/man1
+-	$(INSTALL) -m 0644 ./man/fiinfo.1.gz $(DESTDIR)${mandir}/man1
+-	$(INSTALL) -m 0644 ./man/fiphot.1.gz $(DESTDIR)${mandir}/man1
+-	$(INSTALL) -m 0644 ./man/firandom.1.gz $(DESTDIR)${mandir}/man1
+-	$(INSTALL) -m 0644 ./man/fistar.1.gz $(DESTDIR)${mandir}/man1
+-	$(INSTALL) -m 0644 ./man/fitrans.1.gz $(DESTDIR)${mandir}/man1
+-	$(INSTALL) -m 0644 ./man/grcollect.1.gz $(DESTDIR)${mandir}/man1
+-	$(INSTALL) -m 0644 ./man/grmatch.1.gz $(DESTDIR)${mandir}/man1
+-	$(INSTALL) -m 0644 ./man/grtrans.1.gz $(DESTDIR)${mandir}/man1
+-	$(INSTALL) -m 0644 ./man/gropt.1.gz $(DESTDIR)${mandir}/man1
+-	$(INSTALL) -m 0644 ./man/lfit.1.gz $(DESTDIR)${mandir}/man1
++	$(INSTALL) -m 0644 ./man/fiarith.1 $(DESTDIR)${mandir}/man1
++	$(INSTALL) -m 0644 ./man/ficalib.1 $(DESTDIR)${mandir}/man1
++	$(INSTALL) -m 0644 ./man/ficombine.1 $(DESTDIR)${mandir}/man1
++	$(INSTALL) -m 0644 ./man/ficonv.1 $(DESTDIR)${mandir}/man1
++	$(INSTALL) -m 0644 ./man/fiheader.1 $(DESTDIR)${mandir}/man1
++	$(INSTALL) -m 0644 ./man/fiign.1 $(DESTDIR)${mandir}/man1
++	$(INSTALL) -m 0644 ./man/fiinfo.1 $(DESTDIR)${mandir}/man1
++	$(INSTALL) -m 0644 ./man/fiphot.1 $(DESTDIR)${mandir}/man1
++	$(INSTALL) -m 0644 ./man/firandom.1 $(DESTDIR)${mandir}/man1
++	$(INSTALL) -m 0644 ./man/fistar.1 $(DESTDIR)${mandir}/man1
++	$(INSTALL) -m 0644 ./man/fitrans.1 $(DESTDIR)${mandir}/man1
++	$(INSTALL) -m 0644 ./man/grcollect.1 $(DESTDIR)${mandir}/man1
++	$(INSTALL) -m 0644 ./man/grmatch.1 $(DESTDIR)${mandir}/man1
++	$(INSTALL) -m 0644 ./man/grtrans.1 $(DESTDIR)${mandir}/man1
++	$(INSTALL) -m 0644 ./man/gropt.1 $(DESTDIR)${mandir}/man1
++	$(INSTALL) -m 0644 ./man/lfit.1 $(DESTDIR)${mandir}/man1
+ 
+ uninstall:
+ 	rm -f ${bindir}/fiarith
+@@ -164,32 +164,32 @@ uninstall:
+ 	rm -f ${bindir}/gropt
+ 	rm -f ${bindir}/lfit
+ 	rm -f ${libdir}/fitsh/lfit/linear.$(DLEXT)
+-	rm -f ${mandir}/man1/fiarith.1.gz
+-	rm -f ${mandir}/man1/ficalib.1.gz
+-	rm -f ${mandir}/man1/ficombine.1.gz
+-	rm -f ${mandir}/man1/ficonv.1.gz
+-	rm -f ${mandir}/man1/fiheader.1.gz
+-	rm -f ${mandir}/man1/fiign.1.gz
+-	rm -f ${mandir}/man1/fiinfo.1.gz
+-	rm -f ${mandir}/man1/fiphot.1.gz
+-	rm -f ${mandir}/man1/firandom.1.gz
+-	rm -f ${mandir}/man1/fistar.1.gz
+-	rm -f ${mandir}/man1/fitrans.1.gz
+-	rm -f ${mandir}/man1/grcollect.1.gz
+-	rm -f ${mandir}/man1/grmatch.1.gz
+-	rm -f ${mandir}/man1/grtrans.1.gz
+-	rm -f ${mandir}/man1/gropt.1.gz
+-	rm -f ${mandir}/man1/lfit.1.gz
++	rm -f ${mandir}/man1/fiarith
++	rm -f ${mandir}/man1/ficalib
++	rm -f ${mandir}/man1/ficombine
++	rm -f ${mandir}/man1/ficonv
++	rm -f ${mandir}/man1/fiheader
++	rm -f ${mandir}/man1/fiign
++	rm -f ${mandir}/man1/fiinfo
++	rm -f ${mandir}/man1/fiphot
++	rm -f ${mandir}/man1/firandom
++	rm -f ${mandir}/man1/fistar
++	rm -f ${mandir}/man1/fitrans
++	rm -f ${mandir}/man1/grcollect
++	rm -f ${mandir}/man1/grmatch
++	rm -f ${mandir}/man1/grtrans
++	rm -f ${mandir}/man1/gropt
++	rm -f ${mandir}/man1/lfit
+ 
+ HELP2MAN_LIST=fiarith ficalib ficombine ficonv fiheader fiign fiinfo fiphot firandom fistar fitrans grcollect grmatch grtrans gropt lfit 
+ 
+ help2man: src
+ 	mkdir -p ./doc/help2man
+-	cat ./doc/man.brief | while read b name; do $(HELP2MAN) -n "$$name" -N -h --long-help ./src/$$b > ./doc/help2man/$$b.1; $(GZIP) -f ./doc/help2man/$$b.1; done
++	cat ./doc/man.brief | while read b name; do $(HELP2MAN) -n "$$name" -N -h --long-help ./src/$$b > ./doc/help2man/$$b.1; done
+ 
+ man: help2man
+ 	mkdir	-p $(MAN)
+-	for b in $(HELP2MAN_LIST); do cp -p ./doc/help2man/$$b.1.gz $(MAN); done
++	for b in $(HELP2MAN_LIST); do cp -p ./doc/help2man/$$b $(MAN); done
+ 
+ dist:
+ 	rm      -f -r $(DIST)
+@@ -244,7 +244,7 @@ dist:
+ 	mkdir   $(DIST)/src/psn
+ 	cp      -p src/psn/*.[ch] src/psn/Makefile.in $(DIST)/src/psn
+ 	mkdir   $(DIST)/man
+-	cp      -p man/*.1.gz $(DIST)/man
++	cp      -p man/* $(DIST)/man
+ 	mkdir	$(DIST)/misc
+ 	mkdir	$(DIST)/misc/deb
+ 	cp	-p misc/deb/fitsh.control misc/deb/fitsh.list $(DIST)/misc/deb
+@@ -264,9 +264,7 @@ deb-fitsh: src help2man
+ 		cp $$file $(DEB)/fitsh/$$target ; \
+ 	done
+ 	cp      README  $(DEB)/fitsh/usr/share/doc/fitsh/
+-	gzip    $(DEB)/fitsh/usr/share/doc/fitsh/README
+ 	cp      AUTHORS  $(DEB)/fitsh/usr/share/doc/fitsh/
+-	gzip    $(DEB)/fitsh/usr/share/doc/fitsh/AUTHORS
+ 	cat     $(DEB)/fitsh.control | \
+ 	sed     -e "s/__ARCH__/$(DEB_ARCH)/" \
+ 	        -e "s/__VERSION__/$(DEB_VERSION)/" \
+--- a/configure.ac
++++ b/configure.ac
+@@ -232,17 +232,17 @@ dynamic_extensions=yes
+ # our default $(CFLAGS) are:
+ if test -n "$CFLAGS" ; then
+ 	cflags_default=no
+-elif test "${ac_cv_env_host_alias_value}" == "win32" ; then
++elif test "${ac_cv_env_host_alias_value}" = "win32" ; then
+ 	HOST=win32
+ 	CFLAGS="-Wall -pedantic -O3 -Wno-strict-aliasing -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE -DHOST_WIN32"
+ 	cflags_default=yes
+ 	dynamic_extensions=no
+-elif test "${ac_cv_env_host_alias_value}" == "win64" ; then
++elif test "${ac_cv_env_host_alias_value}" = "win64" ; then
+ 	HOST=win64
+ 	CFLAGS="-Wall -pedantic -O3 -Wno-strict-aliasing -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE -DHOST_WIN32 -DHOST_WIN64"
+ 	cflags_default=yes
+ 	dynamic_extensions=no
+-elif test "${CC}" == "tcc"; then
++elif test "${CC}" = "tcc"; then
+ 	CFLAGS="-Wall -pedantic -O3 -Wno-strict-aliasing -fPIC -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE"
+ 	cflags_default=yes
+ else
+@@ -358,19 +358,19 @@ AC_CHECK_LIB(dl,dlclose)
+ 
+ ax_cflags_gcc_no_overlength_strings=no
+ AX_CFLAGS_GCC_OPTION(-Wno-overlength-strings,[],[ax_cflags_gcc_no_overlength_strings=yes])
+-if test $cflags_default == yes && test $ax_cflags_gcc_no_overlength_strings == yes ; then
++if test $cflags_default = yes && test $ax_cflags_gcc_no_overlength_strings = yes ; then
+ 	CFLAGS="$CFLAGS -Wno-overlength-strings"
+ fi
+ 
+ ax_cflags_gcc_no_long_long=no
+ AX_CFLAGS_GCC_OPTION(-Wno-long-long,[],[ax_cflags_gcc_no_long_long=yes])
+-if test $cflags_default == yes && test $ax_cflags_gcc_no_long_long == yes ; then
++if test $cflags_default = yes && test $ax_cflags_gcc_no_long_long = yes ; then
+ 	CFLAGS="$CFLAGS -Wno-long-long"
+ fi
+ 
+ ax_cflags_gcc_no_unused_result=no
+ AX_CFLAGS_GCC_OPTION(-Wno-unused-result,[],[ax_cflags_gcc_no_unused_result=yes])
+-if test $cflags_default == yes && test $ax_cflags_gcc_no_unused_result == yes ; then
++if test $cflags_default = yes && test $ax_cflags_gcc_no_unused_result = yes ; then
+ 	CFLAGS="$CFLAGS -Wno-unused-result"
+ fi
+ 
+@@ -450,7 +450,7 @@ AC_MSG_RESULT([$PAPERSIZE: ${PAPER_WIDTH}x${PAPER_HEIGHT}])
+ ARCH=`uname -m`
+ 
+ AC_MSG_CHECKING([dynamic library extensions (HOST=$HOST)])
+-if test `uname` == Darwin; then
++if test `uname` = Darwin; then
+ 	OSX_VERSION=`sw_vers -productVersion`
+ 	DLEXT=dylib
+ 	DLSWC="-dylib -arch $ARCH -macosx_version_min $OSX_VERSION"
+@@ -459,19 +459,19 @@ if test `uname` == Darwin; then
+ 	DL_TARGETS=linear.dylib
+ 	AC_MSG_RESULT([dylib])
+ 	AC_MSG_NOTICE([OSX linker flags: $DLSWC])
+-elif test "$HOST" == win32; then
++elif test "$HOST" = win32; then
+ 	DLEXT=
+ 	DLSWC=
+ 	DLDYN=
+ 	DLLIB=
+ 	AC_MSG_RESULT([not supported])
+-elif test "$HOST" == win64; then
++elif test "$HOST" = win64; then
+ 	DLEXT=
+ 	DLSWC=
+ 	DLDYN=
+ 	DLLIB=
+ 	AC_MSG_RESULT([not supported])
+-elif test `uname` == NetBSD; then
++elif test `uname` = NetBSD; then
+ 	DLEXT=so
+ 	DLSWC=-shared
+ 	DLDYN=-rdynamic
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -556,22 +556,22 @@ optcalc.o: optcalc.c optcalc.h
+ ###############################################################################
+ 
+ fiarith: fiarith.c fitsh.h $(DEP_FIARITH) $(MOD_FIARITH)
+-	$(CC) $(CFLAGS) -o fiarith fiarith.c $(DEP_FIARITH) $(MOD_FIARITH) $(LIB_FIARITH)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o fiarith fiarith.c $(DEP_FIARITH) $(MOD_FIARITH) $(LIB_FIARITH)
+ 
+ ficalib: ficalib.c fitsh.h $(DEP_FICALIB) $(MOD_FICALIB)
+-	$(CC) $(CFLAGS) -o ficalib ficalib.c $(DEP_FICALIB) $(MOD_FICALIB) $(LIB_FICALIB)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o ficalib ficalib.c $(DEP_FICALIB) $(MOD_FICALIB) $(LIB_FICALIB)
+ 
+ ficombine: ficombine.c fitsh.h $(DEP_FICOMBINE) $(MOD_FICOMBINE)
+-	$(CC) $(CFLAGS) -o ficombine ficombine.c $(DEP_FICOMBINE) $(MOD_FICOMBINE) $(LIB_FICOMBINE)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o ficombine ficombine.c $(DEP_FICOMBINE) $(MOD_FICOMBINE) $(LIB_FICOMBINE)
+ 
+ ficonv: ficonv.c fitsh.h $(DEP_FICONV) $(MOD_FICONV)
+-	$(CC) $(CFLAGS) -o ficonv ficonv.c $(DEP_FICONV) $(MOD_FICONV) $(LIB_FICONV)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o ficonv ficonv.c $(DEP_FICONV) $(MOD_FICONV) $(LIB_FICONV)
+ 
+ fiheader: fiheader.c fitsh.h $(DEP_FIHEADER) $(MOD_FIHEADER)
+-	$(CC) $(CFLAGS) -o fiheader fiheader.c $(DEP_FIHEADER) $(MOD_FIHEADER) $(LIB_FIHEADER)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o fiheader fiheader.c $(DEP_FIHEADER) $(MOD_FIHEADER) $(LIB_FIHEADER)
+ 
+ fiign: fiign.c fitsh.h $(DEP_FIIGN) $(MOD_FIIGN)
+-	$(CC) $(CFLAGS) -o fiign fiign.c $(DEP_FIIGN) $(MOD_FIIGN) $(LIB_FIIGN)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o fiign fiign.c $(DEP_FIIGN) $(MOD_FIIGN) $(LIB_FIIGN)
+ 
+ fiinfo-image.o: fiinfo-image.c fiinfo.h 
+ 	$(CC) $(CFLAGS) -c fiinfo-image.c 
+@@ -580,40 +580,40 @@ fiinfo-pnm.o: fiinfo-pnm.c fiinfo.h
+ 	$(CC) $(CFLAGS) -c fiinfo-pnm.c 
+ 
+ fiinfo: fiinfo.c fiinfo.h fitsh.h $(DEP_FIINFO) $(MOD_FIINFO)
+-	$(CC) $(CFLAGS) -o fiinfo fiinfo.c $(DEP_FIINFO) $(MOD_FIINFO) $(LIB_FIINFO)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o fiinfo fiinfo.c $(DEP_FIINFO) $(MOD_FIINFO) $(LIB_FIINFO)
+ 
+ firandom-eval.o: firandom-eval.c firandom.h
+ 	$(CC) $(CFLAGS) -c firandom-eval.c
+ 
+ firandom: firandom.c fitsh.h $(DEP_FIRANDOM) $(MOD_FIRANDOM)
+-	$(CC) $(CFLAGS) -o firandom firandom.c $(DEP_FIRANDOM) $(MOD_FIRANDOM) $(LIB_FIRANDOM)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o firandom firandom.c $(DEP_FIRANDOM) $(MOD_FIRANDOM) $(LIB_FIRANDOM)
+ 
+ fiphot-io.o: fiphot-io.c fiphot.h
+ 	$(CC) $(CFLAGS) -c fiphot-io.c
+ 
+ fiphot: fiphot.c fitsh.h $(DEP_FIPHOT) $(MOD_FIPHOT)
+-	$(CC) $(CFLAGS) -o fiphot fiphot.c $(DEP_FIPHOT) $(MOD_FIPHOT) $(LIB_FIPHOT)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o fiphot fiphot.c $(DEP_FIPHOT) $(MOD_FIPHOT) $(LIB_FIPHOT)
+ 
+ fistar-io.o: fistar-io.c fistar.h
+ 	$(CC) $(CFLAGS) -c fistar-io.c
+ 
+ fistar: fistar.c fitsh.h $(DEP_FISTAR) $(MOD_FISTAR) fistar.h
+-	$(CC) $(CFLAGS) -o fistar fistar.c $(DEP_FISTAR) $(MOD_FISTAR) $(LIB_FISTAR)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o fistar fistar.c $(DEP_FISTAR) $(MOD_FISTAR) $(LIB_FISTAR)
+ 
+ fitrans: fitrans.c fitsh.h $(DEP_FITRANS) $(MOD_FITRANS)
+-	$(CC) $(CFLAGS) -o fitrans fitrans.c $(DEP_FITRANS) $(MOD_FITRANS) $(LIB_FITRANS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o fitrans fitrans.c $(DEP_FITRANS) $(MOD_FITRANS) $(LIB_FITRANS)
+ 
+ grcollect: grcollect.c fitsh.h $(DEP_GRCOLLECT) $(MOD_GRCOLLECT)
+-	$(CC) $(CFLAGS) -o grcollect grcollect.c $(DEP_GRCOLLECT) $(MOD_GRCOLLECT) $(LIB_GRCOLLECT)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o grcollect grcollect.c $(DEP_GRCOLLECT) $(MOD_GRCOLLECT) $(LIB_GRCOLLECT)
+ 
+ grmatch: grmatch.c fitsh.h $(DEP_GRMATCH) $(MOD_GRMATCH)
+-	$(CC) $(CFLAGS) -o grmatch grmatch.c $(DEP_GRMATCH) $(MOD_GRMATCH) $(LIB_GRMATCH)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o grmatch grmatch.c $(DEP_GRMATCH) $(MOD_GRMATCH) $(LIB_GRMATCH)
+ 
+ grtrans: grtrans.c fitsh.h $(DEP_GRTRANS) $(MOD_GRTRANS)
+-	$(CC) $(CFLAGS) -o grtrans grtrans.c $(DEP_GRTRANS) $(MOD_GRTRANS) $(LIB_GRTRANS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o grtrans grtrans.c $(DEP_GRTRANS) $(MOD_GRTRANS) $(LIB_GRTRANS)
+ 
+ gropt: gropt.c fitsh.h $(DEP_GROPT) $(MOD_GROPT)
+-	$(CC) $(CFLAGS) -o gropt gropt.c $(DEP_GROPT) $(MOD_GROPT) $(LIB_GROPT)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o gropt gropt.c $(DEP_GROPT) $(MOD_GROPT) $(LIB_GROPT)
+ 
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+ 
+@@ -627,7 +627,7 @@ lfit-info.o: lfit-info.c lfit-info.h
+ 	$(CC) $(CFLAGS) -c lfit-info.c
+ 
+ lfit: lfit.c $(DEP_LFIT) $(MOD_LFIT)
+-	$(CC) $(CFLAGS) -o lfit lfit.c $(DEP_LFIT) $(MOD_LFIT) $(DLDYN) $(LIB_LFIT)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o lfit lfit.c $(DEP_LFIT) $(MOD_LFIT) $(DLDYN) $(LIB_LFIT)
+ 
+ linear.o: linear.c 
+ 	$(CC) $(CFLAGS) -c linear.c 
+@@ -639,7 +639,7 @@ linear.$(DLEXT): linear.o
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+ 
+ fic_mpstack: fic_mpstack.c fitsh.h $(DEP_FIC_MPSTACK)
+-	$(CC) $(CFLAGS) -o fic_mpstack fic_mpstack.c $(DEP_FIC_MPSTACK) $(MOD_FIC_MPSTACK) $(LIB_FIC_MPSTACK)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o fic_mpstack fic_mpstack.c $(DEP_FIC_MPSTACK) $(MOD_FIC_MPSTACK) $(LIB_FIC_MPSTACK)
+ 
+ ###############################################################################
+ 
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -633,7 +633,7 @@ linear.o: linear.c
+ 	$(CC) $(CFLAGS) -c linear.c 
+ 
+ linear.$(DLEXT): linear.o
+-	$(LD) -o linear.$(DLEXT) linear.o $(DLSWC) -lc
++	$(CC) $(LDFLAGS) -o linear.$(DLEXT) linear.o $(DLSWC) -lc
+ 	chmod 644 linear.$(DLEXT)
+ 
+ # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
