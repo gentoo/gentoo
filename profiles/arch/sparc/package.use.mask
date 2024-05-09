@@ -146,10 +146,6 @@ dev-libs/libpcre2 jit
 # Unkeyworded dependencies
 dev-util/diffoscope opendocument pascal pdf R
 
-# Matt Turner <mattst88@gentoo.org> (2022-12-16)
-# gui-libs/gtk is not keyworded here
-app-crypt/gcr:4 gtk
-
 # Sam James <sam@gentoo.org> (2022-11-24)
 # Pulls in gjs which is broken on sparc, bug #882071
 app-crypt/libsecret test-rust
