@@ -5,4 +5,7 @@
 	<email>leio@gentoo.org</email>
 	<name>Mart Raudsepp</name>
 </maintainer>
+<upstream>
+	<remote-id type="github">celluloid-player/celluloid</remote-id>
+</upstream>
 </pkgmetadata>
