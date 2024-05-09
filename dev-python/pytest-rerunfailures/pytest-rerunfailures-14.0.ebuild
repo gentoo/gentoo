@@ -26,6 +26,18 @@ RDEPEND="
 distutils_enable_tests pytest
 
 python_test() {
+	local EPYTEST_DESELECT=()
+	if has_version ">=dev-python/pytest-8.2[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			# https://github.com/pytest-dev/pytest-rerunfailures/issues/267
+			tests/test_pytest_rerunfailures.py::test_exception_match_only_rerun_in_dual_query
+			tests/test_pytest_rerunfailures.py::test_exception_matches_only_rerun_query
+			tests/test_pytest_rerunfailures.py::test_exception_matches_rerun_except_query
+			tests/test_pytest_rerunfailures.py::test_exception_not_match_rerun_except_query
+			tests/test_pytest_rerunfailures.py::test_run_session_teardown_once_after_reruns
+		)
+	fi
+
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	local -x PYTEST_PLUGINS=pytest_rerunfailures
 	epytest
