@@ -12,7 +12,12 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/containers/conmon.git"
 else
-	SRC_URI="https://github.com/containers/conmon/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="
+		https://github.com/containers/conmon/archive/v${PV}.tar.gz
+			-> ${P}.tar.gz
+		https://github.com/Flowdalic/conmon/commit/ff8794c5bc0805cc430229728befde16da47b68c.patch
+			-> ${PN}-2.1.11-make-docs-target-not-depend-on-install.tools.patch
+	"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
 fi
 
@@ -26,6 +31,11 @@ RDEPEND="dev-libs/glib:=
 	systemd? ( sys-apps/systemd:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-go/go-md2man"
+
+PATCHES=(
+	# https://github.com/containers/conmon/pull/507
+	"${DISTDIR}"/${PN}-2.1.11-make-docs-target-not-depend-on-install.tools.patch
+)
 
 src_prepare() {
 	# https://github.com/containers/conmon/pull/505
