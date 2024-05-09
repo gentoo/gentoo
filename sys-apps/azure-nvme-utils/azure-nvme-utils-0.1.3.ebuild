@@ -5,12 +5,9 @@ EAPI=8
 
 inherit cmake udev
 
-COMMIT="cbf8c65d0d792b7dfc02dcaa55d5ec3077464ee6"
 DESCRIPTION="Utility to help identify Azure NVMe devices"
 HOMEPAGE="https://github.com/Azure/azure-nvme-utils"
-#SRC_URI="https://github.com/Azure/${PN}/archive/refs/tags/v${PV}/${P}.tar.gz"
-SRC_URI="https://github.com/Azure/${PN}/archive/${COMMIT}/${P}.tar.gz"
-S="${WORKDIR}/${PN}-${COMMIT}"
+SRC_URI="https://github.com/Azure/${PN}/archive/refs/tags/v${PV}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -20,6 +17,10 @@ BDEPEND="
 	doc? ( app-text/pandoc )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-werror.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DAZURE_LUN_CALCULATION_BY_NSID_ENABLED=$(usex lun-fallback)
@@ -27,4 +28,12 @@ src_configure() {
 		-DPANDOC_EXECUTABLE="$(usex doc "${BROOT}"/usr/bin/pandoc no)"
 	)
 	cmake_src_configure
+}
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
 }
