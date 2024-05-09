@@ -1,5 +1,5 @@
---- a/base/sched.c	2024-04-28 12:20:10.022918999 +0000
-+++ b/base/sched.c	2024-04-28 12:23:58.386463448 +0000
+--- a/base/sched.c
++++ b/base/sched.c
 @@ -49,9 +49,7 @@ private	evhdr  ev_array[TSIZE];	    /* u
   * events are found;
   */
@@ -159,8 +159,8 @@
    {
      register int    nevents;
      register evptr  ev, next;
---- a/analyzer/base.c	2024-04-28 12:26:45.143401236 +0000
-+++ b/analyzer/base.c	2024-04-28 12:32:53.397098626 +0000
+--- a/analyzer/base.c
++++ b/analyzer/base.c
 @@ -12,6 +12,7 @@
   *     *********************************************************************
   */
@@ -169,8 +169,8 @@
  #include "ana.h"
  #include "ana_glob.h"
  #include "graphics.h"
---- a/usersubckt/subckt.c	2024-04-28 12:26:45.163401111 +0000
-+++ b/usersubckt/subckt.c	2024-04-28 12:33:41.413798388 +0000
+--- a/usersubckt/subckt.c
++++ b/usersubckt/subckt.c
 @@ -1,6 +1,7 @@
  #include <stdio.h>
  #include <stdlib.h>
@@ -179,8 +179,8 @@
  
  #ifdef TCL_IRSIM
  #include <tk.h>
---- a/base/eval.c	2024-04-28 12:34:37.043450548 +0000
-+++ b/base/eval.c	2024-04-28 12:37:04.703527262 +0000
+--- a/base/eval.c
++++ b/base/eval.c
 @@ -12,6 +12,7 @@
   *     ********************************************************************* 
   */
@@ -272,8 +272,8 @@
    {
      register nptr  n;
      register tptr  l;
---- a/analyzer/defaults.c	2024-04-28 12:34:37.034450604 +0000
-+++ b/analyzer/defaults.c	2024-04-28 12:37:56.488203464 +0000
+--- a/analyzer/defaults.c
++++ b/analyzer/defaults.c
 @@ -68,8 +68,7 @@ private	Assoc assoc[] =
  
  private	char  *irsim = "irsim";
@@ -304,8 +304,8 @@
    {
      return( assoc[ key ].defl );
    }
---- a/irsim/genspktbl.c	2024-04-28 12:34:37.038450579 +0000
-+++ b/irsim/genspktbl.c	2024-04-28 12:41:02.530040185 +0000
+--- a/irsim/genspktbl.c
++++ b/irsim/genspktbl.c
 @@ -49,9 +49,7 @@ double	delaytab[ SPIKETBLSIZE + 1 ][ SPI
  FILE	*F;
  
@@ -378,8 +378,8 @@
    {
      double  N, b, a, x, tmp;
  
---- a/base/network.c	2024-04-28 12:41:53.555721132 +0000
-+++ b/base/network.c	2024-04-28 12:42:11.689607745 +0000
+--- a/base/network.c
++++ b/base/network.c
 @@ -14,6 +14,7 @@
  
  #include <stdio.h>
@@ -388,8 +388,8 @@
  
  #include "defs.h"
  #include "net.h"
---- a/analyzer/graphics.c	2024-04-28 12:41:53.545721195 +0000
-+++ b/analyzer/graphics.c	2024-04-28 12:43:47.122011027 +0000
+--- a/analyzer/graphics.c
++++ b/analyzer/graphics.c
 @@ -51,10 +51,7 @@ private	char   bots_bits[3][2] = { 0x7,
  #define	SAME_COLOR( A, B )	\
      ( (A).red == (B).red and (A).green == (B).green and (A).blue == (B).blue )
@@ -424,8 +424,8 @@
    {
      XGCValues      gcv;
      unsigned long  mask;
---- a/base/globals.h	2024-04-28 12:46:58.066915955 +0000
-+++ b/base/globals.h	2024-04-28 12:47:08.011858981 +0000
+--- a/base/globals.h
++++ b/base/globals.h
 @@ -307,8 +307,8 @@ extern evptr back_sim_time( /*  btime, i
  extern int EnqueueHist( /*  nd, hist, type */ );
  extern void DequeueEvent( /*  nd */ );
@@ -437,8 +437,8 @@
  extern evptr EnqueueOther( /*  type, time */ );
  extern void rm_inc_events( /*  all */ );
  
---- a/analyzer/thread.c	2024-04-28 12:46:58.057916007 +0000
-+++ b/analyzer/thread.c	2024-04-28 12:50:55.220557323 +0000
+--- a/analyzer/thread.c
++++ b/analyzer/thread.c
 @@ -21,6 +21,11 @@ extern Display *display;
  extern Window  window;
  extern Func FGetEvent;
@@ -451,8 +451,8 @@
  pthread_t xloop_thread = 0;
  Func EventHandlerPtr = NULL;
  
---- a/analyzer/event.c	2024-04-28 12:46:58.056916012 +0000
-+++ b/analyzer/event.c	2024-04-28 12:51:03.429510295 +0000
+--- a/analyzer/event.c
++++ b/analyzer/event.c
 @@ -61,8 +61,7 @@ private	int     x_server = 0;
  private	int     x_helper = 0;		/* process id of helper process */
  public	Func    FGetEvent = NULL;	/* used also in thread.c */
@@ -513,8 +513,8 @@
    {
      int   flags;
      char  *senv;
---- a/base/rsim.c	2024-04-28 12:52:49.085904998 +0000
-+++ b/base/rsim.c	2024-04-28 12:54:47.655225725 +0000
+--- a/base/rsim.c
++++ b/base/rsim.c
 @@ -95,6 +95,10 @@ public  float   step_cap_x_trans = 0;	/*
  private int undefseq( /* p, list, lmax */ );
  private int clockit( /* n */ );
@@ -526,8 +526,8 @@
  #ifdef TCL_IRSIM
  extern Tcl_Interp *irsiminterp;
  extern int check_interrupt();
---- a/base/sim.c	2024-04-28 13:06:59.729744120 +0000
-+++ b/base/sim.c	2024-04-28 13:08:52.060038672 +0000
+--- a/base/sim.c
++++ b/base/sim.c
 @@ -22,7 +22,7 @@
   *  2. static power calculations not performed (only useful for nmos anyhow).
   */
@@ -719,8 +719,8 @@
    {
      static int      firstcall = 1;
  
---- a/analyzer/window.c	2024-04-28 13:06:59.720744176 +0000
-+++ b/analyzer/window.c	2024-04-28 13:16:43.176080004 +0000
+--- a/analyzer/window.c
++++ b/analyzer/window.c
 @@ -18,6 +18,7 @@
   */
  #include <stdio.h>
@@ -964,8 +964,8 @@
    {
      char          *val;
      int           nbits;
---- a/irsim/irsim.c	2024-04-28 13:17:14.664882250 +0000
-+++ b/irsim/irsim.c	2024-04-28 13:22:11.241001493 +0000
+--- a/irsim/irsim.c
++++ b/irsim/irsim.c
 @@ -24,8 +24,11 @@
  #include "../usersubckt/subckt.h"
  #endif
@@ -990,8 +990,8 @@
    {
      int  i, arg1, has_param_file;
  
---- a/irsim/gentbl.c	2024-04-28 13:24:29.662121434 +0000
-+++ b/irsim/gentbl.c	2024-04-28 13:25:36.970693497 +0000
+--- a/irsim/gentbl.c
++++ b/irsim/gentbl.c
 @@ -35,7 +35,7 @@ FILE  *out;
  
  

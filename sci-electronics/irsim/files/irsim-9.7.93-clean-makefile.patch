@@ -1,5 +1,5 @@
---- a/Makefile	2024-04-28 12:09:30.171997301 +0000
-+++ b/Makefile	2024-04-28 12:12:42.709770097 +0000
+--- a/Makefile
++++ b/Makefile
 @@ -33,26 +33,26 @@ config:
  tcllibrary: modules
  	@echo --- making Tcl shared-object libraries
