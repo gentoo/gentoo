@@ -1,22 +1,31 @@
-From beccb3024fee949bfb7bdfd19225e93a7cb0e906 Mon Sep 17 00:00:00 2001
+From 77e41ec954f7e366bf4dccbd9c867ff7ddcca600 Mon Sep 17 00:00:00 2001
 From: Matt Turner <mattst88@gmail.com>
 Date: Thu, 18 Apr 2024 13:24:18 -0400
 Subject: [PATCH] Disable things we don't want
 
 ---
- meson.build                   | 13 ++-----------
+ meson.build                   | 15 +++------------
  src/egl/opengl/meson.build    | 28 ---------------------------
  src/egl/opengles2/meson.build |  5 -----
  src/meson.build               |  2 --
  src/util/gl_wrap.h            |  2 --
  src/util/meson.build          |  9 +--------
  src/xdemos/meson.build        | 36 -----------------------------------
- 7 files changed, 3 insertions(+), 92 deletions(-)
+ 7 files changed, 4 insertions(+), 93 deletions(-)
 
 diff --git a/meson.build b/meson.build
-index c1853f94..d1457a35 100644
+index c1853f94..e3012fb0 100644
 --- a/meson.build
 +++ b/meson.build
+@@ -39,7 +39,7 @@ add_project_arguments(
+ dep_m = cc.find_library('m', required : false)
+ dep_winmm = cc.find_library('winmm', required : false)
+ 
+-dep_gl = dependency('gl')
++dep_gl = dependency('opengl')
+ 
+ dep_epoll = dependency('epoll-shim', required : false)
+ dep_gles1 = dependency('glesv1_cm', required : get_option('gles1'))
 @@ -52,7 +52,7 @@ dep_drm = dependency('libdrm',
    required : get_option('libdrm'),
    disabler : true
