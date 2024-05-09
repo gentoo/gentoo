@@ -231,8 +231,9 @@ acct-user_pkg_pretend() {
 	[[ ${ACCT_USER_ID} -ge -1 ]] || die "Ebuild error: ACCT_USER_ID=${ACCT_USER_ID} invalid!"
 	local user_id=${ACCT_USER_ID}
 
-	# check for the override
-	local override_name=${ACCT_USER_NAME^^}
+	# check for the override, use PN in case this is an overlay and
+	# ACCT_USER_NAME is not PN and not valid in a bash variable name
+	local override_name=${PN^^}
 	local override_var=ACCT_USER_${override_name//-/_}_ID
 	if [[ -n ${!override_var} ]]; then
 		user_id=${!override_var}
@@ -274,8 +275,9 @@ acct-user_src_install() {
 	# serialize for override support
 	local ACCT_USER_GROUPS=${ACCT_USER_GROUPS[*]}
 
-	# support make.conf overrides
-	local override_name=${ACCT_USER_NAME^^}
+	# support make.conf overrides, use PN in case this is an overlay and
+	# ACCT_USER_NAME is not PN and not valid in a bash variable name
+	local override_name=${PN^^}
 	override_name=${override_name//-/_}
 	local var
 	for var in ACCT_USER_{ID,COMMENT,SHELL,HOME{,_OWNER,_PERMS},GROUPS}; do
@@ -437,7 +439,7 @@ acct-user_pkg_postinst() {
 		has "${g}" "${groups[@]}" || del_groups+="${del_groups:+, }${g}"
 	done
 	if [[ -n ${del_groups} ]]; then
-		local override_name=${ACCT_USER_NAME^^}
+		local override_name=${PN^^}
 		override_name=${override_name//-/_}
 		ewarn "Removing user ${ACCT_USER_NAME} from group(s): ${del_groups}"
 		ewarn "To retain the user's group membership in the local system"
