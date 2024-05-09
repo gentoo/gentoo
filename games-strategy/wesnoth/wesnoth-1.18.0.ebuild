@@ -92,6 +92,11 @@ src_configure() {
 	cmake_src_configure
 }
 
+src_test() {
+	# Allow SDL_Mixer test to pass, bug #931551
+	SDL_AUDIODRIVER=dummy cmake_src_test
+}
+
 src_install() {
 	local DOCS=( README.md changelog.md )
 	cmake_src_install
