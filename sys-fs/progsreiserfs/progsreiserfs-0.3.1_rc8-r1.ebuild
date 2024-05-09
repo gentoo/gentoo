@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,6 +28,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-autotools.patch
 	"${FILESDIR}"/${PN}-0.3.1_rc8-musl-getopt_internal-fix.patch
+	"${FILESDIR}"/${PN}-0.3.1_rc8-c99-configure.patch
 )
 
 src_prepare() {
