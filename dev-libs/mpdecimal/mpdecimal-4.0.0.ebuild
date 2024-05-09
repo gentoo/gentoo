@@ -47,7 +47,9 @@ src_configure() {
 		$(use_enable cxx)
 	)
 
-	local -x LDXXFLAGS="${LDFLAGS}"
+	# more sigh
+	# https://bugs.gentoo.org/931599
+	local -x LDXXFLAGS="${LDFLAGS}" LD="${CC}" LDXX="${CXX}"
 	econf "${myconf[@]}"
 }
 
