@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 ECM_HANDBOOK="forceoptional"
 KFMIN=5.106.0
 QTMIN=5.15.9
-inherit ecm gear.kde.org
+inherit ecm flag-o-matic gear.kde.org
 
 DESCRIPTION="Straightforward graphical means to format 3.5\" and 5.25\" floppy disks"
 HOMEPAGE="https://apps.kde.org/kfloppy/"
@@ -30,3 +30,12 @@ DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 "
 RDEPEND="${DEPEND}"
+
+src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/926320
+	# https://invent.kde.org/utilities/kfloppy/-/merge_requests/8
+	filter-lto
+
+	cmake_src_configure
+}
