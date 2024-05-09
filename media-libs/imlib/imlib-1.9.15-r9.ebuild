@@ -39,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-underlinking-test.patch #367645
 	"${FILESDIR}"/${P}-no-LDFLAGS-in-pc.patch
 	"${FILESDIR}"/${P}-giflib51-{1,2}.patch #538976
+	"${FILESDIR}"/${P}-c99-configure.patch #898234
 )
 
 src_prepare() {

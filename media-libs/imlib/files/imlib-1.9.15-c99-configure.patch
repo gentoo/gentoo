@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/898234
+--- a/configure.ac
++++ b/configure.ac
+@@ -62,7 +62,7 @@ if test "x$GDK_IMLIB" != x; then
+ #include <glib.h>
+ #include <gmodule.h>
+ #include <stdlib.h>
+-main ()
++int main ()
+ {
+     if (g_module_supported ())
+         exit (0);
+@@ -166,6 +166,7 @@ if test "x$enable_shm" = "xyes"; then
+           #include <sys/types.h>
+           #include <sys/ipc.h>
+           #include <sys/shm.h>
++          #include <stdlib.h>
+           int main()
+           {
+             int id;
