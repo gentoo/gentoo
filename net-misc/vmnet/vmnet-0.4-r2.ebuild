@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A simple virtual networking program - SLIP over stdin/out"
 HOMEPAGE="ftp://ftp.xos.nl/pub/linux/vmnet/"
@@ -30,7 +30,7 @@ PATCHES=(
 
 src_compile() {
 	append-ldflags -Wl,-z,now
-	emake
+	emake CC="$(tc-getCC)"
 }
 
 src_install() {
