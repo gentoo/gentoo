@@ -22,7 +22,6 @@ HOMEPAGE="https://crash-utility.github.io/"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
 # there is no "make test" target, but there is a test.c so the automatic
 # make rules catch it and tests fail
 RESTRICT="test"
