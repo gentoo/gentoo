@@ -96,8 +96,9 @@ acct-group_pkg_pretend() {
 	[[ ${ACCT_GROUP_ID} -ge -1 ]] || die "Ebuild error: ACCT_GROUP_ID=${ACCT_GROUP_ID} invalid!"
 	local group_id=${ACCT_GROUP_ID}
 
-	# check for the override
-	local override_name=${ACCT_GROUP_NAME^^}
+	# check for the override, use PN in case this is an overlay and
+	# ACCT_GROUP_NAME is not PN and not valid in a bash variable name
+	local override_name=${PN^^}
 	local override_var=ACCT_GROUP_${override_name//-/_}_ID
 	if [[ -n ${!override_var} ]]; then
 		group_id=${!override_var}
@@ -132,8 +133,9 @@ acct-group_pkg_pretend() {
 acct-group_src_install() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	# check for the override
-	local override_name=${ACCT_GROUP_NAME^^}
+	# check for the override, use PN in case this is an overlay and
+	# ACCT_GROUP_NAME is not PN and not valid in a bash variable name
+	local override_name=${PN^^}
 	local override_var=ACCT_GROUP_${override_name//-/_}_ID
 	if [[ -n ${!override_var} ]]; then
 		ewarn "${override_var}=${!override_var} override in effect, support will not be provided."
