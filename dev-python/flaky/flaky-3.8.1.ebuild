@@ -26,7 +26,6 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/genty[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 "
