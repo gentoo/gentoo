@@ -1,0 +1,73 @@
+From dbd134ca5a3c639819c6fd503de7e2c72762ada0 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Thu, 14 Dec 2023 09:13:54 -0800
+Subject: [PATCH] libweston,tools: Include libgen.h for basename signature
+Upstream: https://gitlab.freedesktop.org/wayland/weston/-/commit/dbd134ca5a3c639819c6fd503de7e2c72762ada0
+Upstream-Status: Merged in main branch
+
+Latest musl has removed the declaration from string.h [1] as it only
+implements POSIX version alone and string.h in glibc implements GNU
+version of basename. This now results in compile errors on musl.
+
+This might be a warning with older compilers but it is error with
+Clang-17+ as it treats -Wimplicit-function-declaration as error
+
+Switch the use in backlight_init function to use POSIX version
+
+[1] https://git.musl-libc.org/cgit/musl/commit/?id=725e17ed6dff4d0cd22487bb64470881e86a92e7
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+---
+ libweston/backend-drm/libbacklight.c | 8 +++++---
+ tools/zunitc/src/zunitc_impl.c       | 1 +
+ 2 files changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/libweston/backend-drm/libbacklight.c b/libweston/backend-drm/libbacklight.c
+index ca7f2d6806..973d15ff8c 100644
+--- a/libweston/backend-drm/libbacklight.c
++++ b/libweston/backend-drm/libbacklight.c
+@@ -41,6 +41,7 @@
+ #include <drm.h>
+ #include <fcntl.h>
+ #include <malloc.h>
++#include <libgen.h>
+ #include <string.h>
+ #include <errno.h>
+ 
+@@ -167,7 +168,7 @@ struct backlight *backlight_init(struct udev_device *drm_device,
+ 	DIR *backlights = NULL;
+ 	struct dirent *entry;
+ 	enum backlight_type type = 0;
+-	char buffer[100];
++	char buffer[100], basename_buffer[100];
+ 	struct backlight *backlight = NULL;
+ 	int ret;
+ 
+@@ -186,9 +187,10 @@ struct backlight *backlight_init(struct udev_device *drm_device,
+ 	free(path);
+ 	if (ret < 0)
+ 		return NULL;
+-
++	strncpy(basename_buffer, buffer, ret);
+ 	buffer[ret] = '\0';
+-	pci_name = basename(buffer);
++	basename_buffer[ret] = '\0';
++	pci_name = basename(basename_buffer);
+ 
+ 	if (connector_type <= 0)
+ 		return NULL;
+diff --git a/tools/zunitc/src/zunitc_impl.c b/tools/zunitc/src/zunitc_impl.c
+index 18f030158e..9b460fa03b 100644
+--- a/tools/zunitc/src/zunitc_impl.c
++++ b/tools/zunitc/src/zunitc_impl.c
+@@ -27,6 +27,7 @@
+ 
+ #include <errno.h>
+ #include <fcntl.h>
++#include <libgen.h>
+ #include <stdarg.h>
+ #include <stdbool.h>
+ #include <stdio.h>
+-- 
+GitLab
+
