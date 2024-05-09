@@ -8,8 +8,8 @@ inherit autotools
 MY_P=${PN}_${PV}
 
 DESCRIPTION="Really Slick OpenGL Screensavers for XScreenSaver"
-HOMEPAGE="http://rss-glx.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
+HOMEPAGE="https://rss-glx.sourceforge.net"
+SRC_URI="https://sourceforge.net/projects/rss-glx/files/rss-glx/${PV}/${PN}_${PV}.tar.bz2/download"
 
 LICENSE="GPL-2"
 SLOT="0"
