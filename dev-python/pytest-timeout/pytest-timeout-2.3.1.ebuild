@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 
 inherit distutils-r1 pypi
 
@@ -25,7 +25,9 @@ BDEPEND="
 	test? (
 		dev-python/pexpect[${PYTHON_USEDEP}]
 		!hppa? (
-			dev-python/pytest-cov[${PYTHON_USEDEP}]
+			$(python_gen_cond_dep '
+				dev-python/pytest-cov[${PYTHON_USEDEP}]
+			' python3_{10..11} pypy3)
 		)
 	)
 "
@@ -37,7 +39,7 @@ python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	local -x PYTEST_PLUGINS=pytest_timeout
 
-	if has_version dev-python/pytest-cov; then
+	if has_version "dev-python/pytest-cov[${PYTHON_USEDEP}]"; then
 		PYTEST_PLUGINS+=,pytest_cov.plugin
 	else
 		EPYTEST_DESELECT+=(
