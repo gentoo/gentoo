@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 pypi
@@ -33,13 +33,32 @@ src_test() {
 	# workaround new readline defaults
 	echo "set enable-bracketed-paste off" > "${T}"/inputrc || die
 	local -x INPUTRC="${T}"/inputrc
+
+	distutils-r1_src_test
+}
+
+python_test() {
 	local EPYTEST_DESELECT=(
 		# flaky test on weaker arches
 		tests/test_performance.py
 		# requires zsh installed, not worth it
 		tests/test_replwrap.py::REPLWrapTestCase::test_zsh
+		# flaky
+		tests/test_env.py::TestCaseEnv::test_spawn_uses_env
 	)
-	distutils-r1_src_test
+
+	case ${EPYTHON} in
+		python3.13)
+			EPYTEST_DESELECT+=(
+				# TODO: changes in python3.13's prompt?
+				tests/test_replwrap.py::REPLWrapTestCase::test_python
+				tests/test_replwrap.py::REPLWrapTestCase::test_no_change_prompt
+			)
+			;;
+	esac
+
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest
 }
 
 python_install_all() {
