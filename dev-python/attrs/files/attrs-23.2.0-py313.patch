@@ -1,0 +1,93 @@
+From f9ff9135b472c78a7333d6272c62b92217897464 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Lum=C3=ADr=20=27Frenzy=27=20Balhar?=
+ <frenzy.madness@gmail.com>
+Date: Thu, 7 Mar 2024 10:23:46 +0100
+Subject: [PATCH] Fix test_ne in test_cmp.py for Python 3.13 (#1255)
+
+* Fix test_ne in test_cmp.py for Python 3.13
+
+Compiler in Python 3.13+ strips indents from docstrings
+so they need to be compared without it for new Pythons.
+
+Fixes: https://github.com/python-attrs/attrs/issues/1228
+
+* [pre-commit.ci] auto fixes from pre-commit.com hooks
+
+for more information, see https://pre-commit.ci
+
+---------
+
+Co-authored-by: pre-commit-ci[bot] <66853113+pre-commit-ci[bot]@users.noreply.github.com>
+---
+ src/attr/_compat.py |  1 +
+ tests/test_cmp.py   | 11 +++++++----
+ 2 files changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/src/attr/_compat.py b/src/attr/_compat.py
+index 46b05ca..9010047 100644
+--- a/src/attr/_compat.py
++++ b/src/attr/_compat.py
+@@ -14,6 +14,7 @@ PY_3_8_PLUS = sys.version_info[:2] >= (3, 8)
+ PY_3_9_PLUS = sys.version_info[:2] >= (3, 9)
+ PY310 = sys.version_info[:2] >= (3, 10)
+ PY_3_12_PLUS = sys.version_info[:2] >= (3, 12)
++PY_3_13_PLUS = sys.version_info[:2] >= (3, 13)
+ 
+ 
+ if sys.version_info < (3, 8):
+diff --git a/tests/test_cmp.py b/tests/test_cmp.py
+index 07bfc52..b84b66f 100644
+--- a/tests/test_cmp.py
++++ b/tests/test_cmp.py
+@@ -4,10 +4,10 @@
+ Tests for methods from `attrib._cmp`.
+ """
+ 
+-
+ import pytest
+ 
+ from attr._cmp import cmp_using
++from attr._compat import PY_3_13_PLUS
+ 
+ 
+ # Test parameters.
+@@ -54,6 +54,9 @@ order_ids = [c[0].__name__ for c in order_data]
+ cmp_data = eq_data + order_data
+ cmp_ids = eq_ids + order_ids
+ 
++# Compiler strips indents from docstrings in Python 3.13+
++indent = "" if PY_3_13_PLUS else " " * 8
++
+ 
+ class TestEqOrder:
+     """
+@@ -325,7 +328,7 @@ class TestDundersUnnamedClass:
+         method = self.cls.__ne__
+         assert method.__doc__.strip() == (
+             "Check equality and either forward a NotImplemented or\n"
+-            "        return the result negated."
++            f"{indent}return the result negated."
+         )
+         assert method.__name__ == "__ne__"
+ 
+@@ -393,7 +396,7 @@ class TestDundersPartialOrdering:
+         method = self.cls.__ne__
+         assert method.__doc__.strip() == (
+             "Check equality and either forward a NotImplemented or\n"
+-            "        return the result negated."
++            f"{indent}return the result negated."
+         )
+         assert method.__name__ == "__ne__"
+ 
+@@ -465,7 +468,7 @@ class TestDundersFullOrdering:
+         method = self.cls.__ne__
+         assert method.__doc__.strip() == (
+             "Check equality and either forward a NotImplemented or\n"
+-            "        return the result negated."
++            f"{indent}return the result negated."
+         )
+         assert method.__name__ == "__ne__"
+ 
+-- 
+2.45.0
+

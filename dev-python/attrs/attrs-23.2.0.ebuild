@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 
 inherit distutils-r1 pypi
 
@@ -28,7 +28,9 @@ BDEPEND="
 			dev-python/cloudpickle[${PYTHON_USEDEP}]
 		' python3_{10..12})
 		dev-python/hypothesis[${PYTHON_USEDEP}]
-		dev-python/zope-interface[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/zope-interface[${PYTHON_USEDEP}]
+		' python3_{10..12} pypy3)
 	)
 "
 
@@ -37,4 +39,6 @@ distutils_enable_tests pytest
 PATCHES=(
 	# https://github.com/python-attrs/attrs/pull/1249
 	"${FILESDIR}/${P}-pytest-8.patch"
+	# https://github.com/python-attrs/attrs/pull/1255
+	"${FILESDIR}/${P}-py313.patch"
 )
