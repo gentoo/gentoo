@@ -9,7 +9,7 @@ DESCRIPTION="Creating and manipulating undirected and directed graphs"
 HOMEPAGE="https://igraph.org/"
 SRC_URI="https://github.com/igraph/igraph/releases/download/${PV}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0/0"
 KEYWORDS="~amd64 ~x86"
 
