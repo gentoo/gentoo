@@ -39,6 +39,12 @@ BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.2.1-cryptography-fixes-for-newer-version-of-cryptography.patch"
+	"${FILESDIR}/${PN}-2.2.1-Revert-test-skip-some-FAPI-tests-if-testing-agains-t.patch"
+	"${FILESDIR}/${PN}-2.2.1-scripts-update-regex-for-defines.patch"
+	)
+
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
 distutils_enable_tests pytest

@@ -1,0 +1,83 @@
+From a04715c5ef5bc3d6b30b1354d64db1762bc42b9c Mon Sep 17 00:00:00 2001
+From: Erik Larsson <who+github@cnackers.org>
+Date: Fri, 12 Apr 2024 19:49:52 +0200
+Subject: [PATCH 1/2] Revert "test: skip some FAPI tests if testing agains
+ tpm2-tss master branch."
+
+This reverts commit 9e948984676b38f71e923a6e167340dc99554ac0.
+
+Fixed in tpm2-tss master branch, so remove the temporary fixes.
+
+Signed-off-by: Erik Larsson <who+github@cnackers.org>
+---
+ test/test_fapi.py | 19 +++++--------------
+ 1 file changed, 5 insertions(+), 14 deletions(-)
+
+diff --git a/test/test_fapi.py b/test/test_fapi.py
+index f702fc9..6b77c66 100644
+--- a/test/test_fapi.py
++++ b/test/test_fapi.py
+@@ -13,7 +13,7 @@ from cryptography.hazmat.primitives.asymmetric.padding import PSS
+ 
+ from tpm2_pytss import *
+ 
+-from tpm2_pytss.internal.utils import is_bug_fixed, _lib_version_atleast
++from tpm2_pytss.internal.utils import is_bug_fixed
+ 
+ from .TSS2_BaseTest import TpmSimulator
+ from tpm2_pytss.TSS2_Exception import TSS2_Exception
+@@ -614,8 +614,7 @@ class Common:
+         self.fapi.sign(key_path, b"\x22" * 32)
+ 
+     @pytest.mark.skipif(
+-        _lib_version_atleast("tss2-fapi", "4.0.1-170")
+-        or not is_bug_fixed(fixed_in="3.2", backports=["2.4.7", "3.0.5", "3.1.1"]),
++        not is_bug_fixed(fixed_in="3.2", backports=["2.4.7", "3.0.5", "3.1.1"]),
+         reason="tpm2-tss bug, see #2084",
+     )
+     def test_write_authorize_nv(self, esys):
+@@ -662,8 +661,7 @@ class Common:
+             self.fapi.quote(path=key_path, pcrs=[7, 9])
+ 
+     @pytest.mark.skipif(
+-        _lib_version_atleast("tss2-fapi", "4.0.1-170")
+-        or not is_bug_fixed(fixed_in="3.2", backports=["2.4.7", "3.0.5", "3.1.1"]),
++        not is_bug_fixed(fixed_in="3.2", backports=["2.4.7", "3.0.5", "3.1.1"]),
+         reason="tpm2-tss bug, see #2084",
+     )
+     def test_authorize_policy(self, sign_key):
+@@ -728,9 +726,7 @@ class Common:
+             self.fapi.quote(path=key_path, pcrs=[7, 9])
+ 
+     @pytest.mark.skipif(
+-        _lib_version_atleast("tss2-fapi", "4.0.1-170")
+-        or not is_bug_fixed(fixed_in="3.2"),
+-        reason="tpm2-tss bug, see #2080",
++        not is_bug_fixed(fixed_in="3.2"), reason="tpm2-tss bug, see #2080"
+     )
+     def test_policy_signed(self, cryptography_key):
+         # create external signing key used by the signing authority external to the TPM
+@@ -792,10 +788,6 @@ class Common:
+         with pytest.raises(TSS2_Exception):
+             self.fapi.sign(path=key_path, digest=b"\x11" * 32)
+ 
+-    @pytest.mark.skipif(
+-        _lib_version_atleast("tss2-fapi", "4.0.1-170"),
+-        reason="issue on master branch.",
+-    )
+     def test_policy_branched(self):
+         pcr_index = 15
+         pcr_data = b"ABCDEF"
+@@ -913,8 +905,7 @@ class Common:
+         self.fapi.delete(path=nv_path)
+ 
+     @pytest.mark.skipif(
+-        _lib_version_atleast("tss2-fapi", "4.0.1-170")
+-        or not is_bug_fixed(fixed_in="3.2", backports=["2.4.7", "3.0.5", "3.1.1"]),
++        not is_bug_fixed(fixed_in="3.2", backports=["2.4.7", "3.0.5", "3.1.1"]),
+         reason="tpm2-tss bug, see #2089",
+     )
+     def test_policy_action(self):
+-- 
+2.43.2
+
