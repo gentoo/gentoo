@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10,11,12} )
+PYTHON_COMPAT=( python3_{10,11,12,13} )
 LLVM_COMPAT=( {15..18} )
 
 inherit flag-o-matic linux-info llvm-r1 pam python-single-r1 systemd tmpfiles
