@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit flag-o-matic toolchain-funcs
 
@@ -11,13 +11,14 @@ HOMEPAGE="ftp://ftp.xos.nl/pub/linux/vmnet/"
 # So this might be better but it's a different filename
 # http://ftp.debian.org/debian/pool/main/${PN:0:1}/${PN}/${P/-/_}.orig.tar.gz
 # We use the debian patch anyway
-SRC_URI="ftp://ftp.xos.nl/pub/linux/${PN}/${P}.tar.gz
-	mirror://debian/pool/main/${PN:0:1}/${PN}/${P/-/_}-1.diff.gz"
+SRC_URI="
+	ftp://ftp.xos.nl/pub/linux/${PN}/${P}.tar.gz
+	mirror://debian/pool/main/${PN:0:1}/${PN}/${P/-/_}-1.diff.gz
+"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc x86"
-IUSE=""
 
 RDEPEND="sys-apps/net-tools"
 DEPEND="${RDEPEND}"
