@@ -88,6 +88,8 @@ RDEPEND+="
 QA_CONFIG_IMPL_DECL_SKIP=(
 	# gnulib FPs (bug #898370)
 	unreachable MIN alignof static_assert
+	# ... and on musl
+	_exit fpurge statvfs64 re_set_syntax re_compile_pattern re_search re_match
 )
 
 pkg_setup() {
