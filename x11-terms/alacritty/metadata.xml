@@ -3,11 +3,15 @@
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
 		<email>contact@kchibisov.com</email>
-		<name>Kirill Chibisov</name>
+		<name>kirill chibisov</name>
 	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
 	</maintainer>
 	<longdescription lang="en">
 		Alacritty is a terminal emulator with a strong focus on simplicity and performance.
