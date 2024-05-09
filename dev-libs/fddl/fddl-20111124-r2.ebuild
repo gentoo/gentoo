@@ -1,9 +1,9 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit cmake vcs-snapshot
+inherit cmake
 
 DESCRIPTION="Free Decision Diagram Library"
 HOMEPAGE="http://itval.sourceforge.net/ https://github.com/atomopawn/FDDL"
@@ -16,6 +16,8 @@ KEYWORDS="~amd64 ~x86"
 DOCS=( AUTHORS ChangeLog INSTALL RELEASE )
 
 PATCHES=( "${FILESDIR}/${P}-disambiguate-variable-name.patch" )
+
+S="${WORKDIR}"/FDDL-master
 
 src_prepare() {
 	cmake_src_prepare
