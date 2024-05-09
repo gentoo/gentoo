@@ -12,4 +12,7 @@
 		little bit more realistic than the ideal, using the RC time constants
 		to predict the relative timing of events.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">RTimothyEdwards/irsim</remote-id>
+	</upstream>
 </pkgmetadata>
