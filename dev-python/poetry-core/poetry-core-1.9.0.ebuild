@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=standalone
 PYTHON_TESTED=( pypy3 python3_{10..12} )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_13 )
 
 inherit distutils-r1
 
