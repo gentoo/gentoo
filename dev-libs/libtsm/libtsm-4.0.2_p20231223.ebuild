@@ -16,4 +16,7 @@ LICENSE="LGPL-2.1 MIT"
 SLOT="0/4"
 KEYWORDS="~amd64 ~x86"
 
-PATCHES=( "${FILESDIR}/${PN}-cmake.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-cmake.patch"
+	"${FILESDIR}/${PN}-clang16-static_assert-fix.patch"
+)
