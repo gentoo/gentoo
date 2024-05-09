@@ -1,0 +1,1201 @@
+From 565e32f70307a6c1771d19a7dd4041da84358d7f Mon Sep 17 00:00:00 2001
+From: Gabi Falk <gabifalk@gmx.com>
+Date: Thu, 9 May 2024 08:00:00 +0000
+Subject: [PATCH] examples/rlfe/configure.in: Port to modern C (C99)
+To: bug-readline@gnu.org
+Cc: Sam James <sam@gentoo.org>
+
+Due to changes in GCC 14 enabling -Werror=implicit-function-declaration
+and -Werror=implicit-int by default, without this change, this configure
+script fails with:
+configure: error: Can't run the compiler - sorry
+
+AC_USE_SYSTEM_EXTENSIONS is required because pts(4)-related functions
+ptsname(3), grantpt(3), and unlockpt(3) are not exposed otherwise.
+
+Link: https://bugs.gentoo.org/870424
+Link: https://bugs.gentoo.org/919256
+Link: https://lists.gnu.org/archive/html/bug-readline/2024-05/msg00000.html
+Signed-off-by: Gabi Falk <gabifalk@gmx.com>
+---
+ examples/rlfe/configure    | 668 ++++++++++++++++++++-----------------
+ examples/rlfe/configure.in |  88 +++--
+ 2 files changed, 422 insertions(+), 334 deletions(-)
+
+diff --git a/examples/rlfe/configure b/examples/rlfe/configure
+index 3928331..063113d 100755
+--- a/examples/rlfe/configure
++++ b/examples/rlfe/configure
+@@ -1490,115 +1490,6 @@ fi
+ 
+ } # ac_fn_c_try_link
+ 
+-# ac_fn_c_try_run LINENO
+-# ----------------------
+-# Try to link conftest.$ac_ext, and return whether this succeeded. Assumes
+-# that executables *can* be run.
+-ac_fn_c_try_run ()
+-{
+-  as_lineno=${as_lineno-"$1"} as_lineno_stack=as_lineno_stack=$as_lineno_stack
+-  if { { ac_try="$ac_link"
+-case "(($ac_try" in
+-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+-  *) ac_try_echo=$ac_try;;
+-esac
+-eval ac_try_echo="\"\$as_me:${as_lineno-$LINENO}: $ac_try_echo\""
+-$as_echo "$ac_try_echo"; } >&5
+-  (eval "$ac_link") 2>&5
+-  ac_status=$?
+-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+-  test $ac_status = 0; } && { ac_try='./conftest$ac_exeext'
+-  { { case "(($ac_try" in
+-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+-  *) ac_try_echo=$ac_try;;
+-esac
+-eval ac_try_echo="\"\$as_me:${as_lineno-$LINENO}: $ac_try_echo\""
+-$as_echo "$ac_try_echo"; } >&5
+-  (eval "$ac_try") 2>&5
+-  ac_status=$?
+-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+-  test $ac_status = 0; }; }; then :
+-  ac_retval=0
+-else
+-  $as_echo "$as_me: program exited with status $ac_status" >&5
+-       $as_echo "$as_me: failed program was:" >&5
+-sed 's/^/| /' conftest.$ac_ext >&5
+-
+-       ac_retval=$ac_status
+-fi
+-  rm -rf conftest.dSYM conftest_ipa8_conftest.oo
+-  eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
+-  as_fn_set_status $ac_retval
+-
+-} # ac_fn_c_try_run
+-
+-# ac_fn_c_check_func LINENO FUNC VAR
+-# ----------------------------------
+-# Tests whether FUNC exists, setting the cache variable VAR accordingly
+-ac_fn_c_check_func ()
+-{
+-  as_lineno=${as_lineno-"$1"} as_lineno_stack=as_lineno_stack=$as_lineno_stack
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $2" >&5
+-$as_echo_n "checking for $2... " >&6; }
+-if eval \${$3+:} false; then :
+-  $as_echo_n "(cached) " >&6
+-else
+-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+-/* end confdefs.h.  */
+-/* Define $2 to an innocuous variant, in case <limits.h> declares $2.
+-   For example, HP-UX 11i <limits.h> declares gettimeofday.  */
+-#define $2 innocuous_$2
+-
+-/* System header to define __stub macros and hopefully few prototypes,
+-    which can conflict with char $2 (); below.
+-    Prefer <limits.h> to <assert.h> if __STDC__ is defined, since
+-    <limits.h> exists even on freestanding compilers.  */
+-
+-#ifdef __STDC__
+-# include <limits.h>
+-#else
+-# include <assert.h>
+-#endif
+-
+-#undef $2
+-
+-/* Override any GCC internal prototype to avoid an error.
+-   Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-#ifdef __cplusplus
+-extern "C"
+-#endif
+-char $2 ();
+-/* The GNU C library defines this for functions which it implements
+-    to always fail with ENOSYS.  Some functions are actually named
+-    something starting with __ and the normal name is an alias.  */
+-#if defined __stub_$2 || defined __stub___$2
+-choke me
+-#endif
+-
+-int
+-main ()
+-{
+-return $2 ();
+-  ;
+-  return 0;
+-}
+-_ACEOF
+-if ac_fn_c_try_link "$LINENO"; then :
+-  eval "$3=yes"
+-else
+-  eval "$3=no"
+-fi
+-rm -f core conftest.err conftest.$ac_objext \
+-    conftest$ac_exeext conftest.$ac_ext
+-fi
+-eval ac_res=\$$3
+-	       { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_res" >&5
+-$as_echo "$ac_res" >&6; }
+-  eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
+-
+-} # ac_fn_c_check_func
+-
+ # ac_fn_c_check_header_mongrel LINENO HEADER VAR INCLUDES
+ # -------------------------------------------------------
+ # Tests whether HEADER exists, giving a warning if it cannot be compiled using
+@@ -1686,6 +1577,48 @@ fi
+ 
+ } # ac_fn_c_check_header_mongrel
+ 
++# ac_fn_c_try_run LINENO
++# ----------------------
++# Try to link conftest.$ac_ext, and return whether this succeeded. Assumes
++# that executables *can* be run.
++ac_fn_c_try_run ()
++{
++  as_lineno=${as_lineno-"$1"} as_lineno_stack=as_lineno_stack=$as_lineno_stack
++  if { { ac_try="$ac_link"
++case "(($ac_try" in
++  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
++  *) ac_try_echo=$ac_try;;
++esac
++eval ac_try_echo="\"\$as_me:${as_lineno-$LINENO}: $ac_try_echo\""
++$as_echo "$ac_try_echo"; } >&5
++  (eval "$ac_link") 2>&5
++  ac_status=$?
++  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
++  test $ac_status = 0; } && { ac_try='./conftest$ac_exeext'
++  { { case "(($ac_try" in
++  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
++  *) ac_try_echo=$ac_try;;
++esac
++eval ac_try_echo="\"\$as_me:${as_lineno-$LINENO}: $ac_try_echo\""
++$as_echo "$ac_try_echo"; } >&5
++  (eval "$ac_try") 2>&5
++  ac_status=$?
++  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
++  test $ac_status = 0; }; }; then :
++  ac_retval=0
++else
++  $as_echo "$as_me: program exited with status $ac_status" >&5
++       $as_echo "$as_me: failed program was:" >&5
++sed 's/^/| /' conftest.$ac_ext >&5
++
++       ac_retval=$ac_status
++fi
++  rm -rf conftest.dSYM conftest_ipa8_conftest.oo
++  eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
++  as_fn_set_status $ac_retval
++
++} # ac_fn_c_try_run
++
+ # ac_fn_c_check_header_compile LINENO HEADER VAR INCLUDES
+ # -------------------------------------------------------
+ # Tests whether HEADER exists and can be compiled using the include files in
+@@ -1716,6 +1649,73 @@ $as_echo "$ac_res" >&6; }
+   eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
+ 
+ } # ac_fn_c_check_header_compile
++
++# ac_fn_c_check_func LINENO FUNC VAR
++# ----------------------------------
++# Tests whether FUNC exists, setting the cache variable VAR accordingly
++ac_fn_c_check_func ()
++{
++  as_lineno=${as_lineno-"$1"} as_lineno_stack=as_lineno_stack=$as_lineno_stack
++  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $2" >&5
++$as_echo_n "checking for $2... " >&6; }
++if eval \${$3+:} false; then :
++  $as_echo_n "(cached) " >&6
++else
++  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++/* Define $2 to an innocuous variant, in case <limits.h> declares $2.
++   For example, HP-UX 11i <limits.h> declares gettimeofday.  */
++#define $2 innocuous_$2
++
++/* System header to define __stub macros and hopefully few prototypes,
++    which can conflict with char $2 (); below.
++    Prefer <limits.h> to <assert.h> if __STDC__ is defined, since
++    <limits.h> exists even on freestanding compilers.  */
++
++#ifdef __STDC__
++# include <limits.h>
++#else
++# include <assert.h>
++#endif
++
++#undef $2
++
++/* Override any GCC internal prototype to avoid an error.
++   Use char because int might match the return type of a GCC
++   builtin and then its argument prototype would still apply.  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char $2 ();
++/* The GNU C library defines this for functions which it implements
++    to always fail with ENOSYS.  Some functions are actually named
++    something starting with __ and the normal name is an alias.  */
++#if defined __stub_$2 || defined __stub___$2
++choke me
++#endif
++
++int
++main ()
++{
++return $2 ();
++  ;
++  return 0;
++}
++_ACEOF
++if ac_fn_c_try_link "$LINENO"; then :
++  eval "$3=yes"
++else
++  eval "$3=no"
++fi
++rm -f core conftest.err conftest.$ac_objext \
++    conftest$ac_exeext conftest.$ac_ext
++fi
++eval ac_res=\$$3
++	       { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_res" >&5
++$as_echo "$ac_res" >&6; }
++  eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
++
++} # ac_fn_c_check_func
+ cat >config.log <<_ACEOF
+ This file contains any messages produced by compilers while
+ running configure, to aid debugging if configure makes a mistake.
+@@ -3233,32 +3233,223 @@ if test "$ac_res" != no; then :
+ fi
+ 
+ 
+-if test "$cross_compiling" = yes; then :
+-  { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
+-$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
+-as_fn_error $? "cannot run test program while cross compiling
+-See \`config.log' for more details" "$LINENO" 5; }
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for ANSI C header files" >&5
++$as_echo_n "checking for ANSI C header files... " >&6; }
++if ${ac_cv_header_stdc+:} false; then :
++  $as_echo_n "(cached) " >&6
+ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+-main(){exit(0);}
+-_ACEOF
+-if ac_fn_c_try_run "$LINENO"; then :
+-
+-else
+-
+-if test $CC != cc ; then
+-echo "Your $CC failed - restarting with CC=cc" 1>&6
++#include <stdlib.h>
++#include <stdarg.h>
++#include <string.h>
++#include <float.h>
+ 
+-echo "" 1>&6
++int
++main ()
++{
+ 
+-CC=cc
+-export CC
+-exec $0 $configure_args
++  ;
++  return 0;
++}
++_ACEOF
++if ac_fn_c_try_compile "$LINENO"; then :
++  ac_cv_header_stdc=yes
++else
++  ac_cv_header_stdc=no
+ fi
++rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+ 
+-fi
+-rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
++if test $ac_cv_header_stdc = yes; then
++  # SunOS 4.x string.h does not declare mem*, contrary to ANSI.
++  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++#include <string.h>
++
++_ACEOF
++if (eval "$ac_cpp conftest.$ac_ext") 2>&5 |
++  $EGREP "memchr" >/dev/null 2>&1; then :
++
++else
++  ac_cv_header_stdc=no
++fi
++rm -f conftest*
++
++fi
++
++if test $ac_cv_header_stdc = yes; then
++  # ISC 2.0.2 stdlib.h does not declare free, contrary to ANSI.
++  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++#include <stdlib.h>
++
++_ACEOF
++if (eval "$ac_cpp conftest.$ac_ext") 2>&5 |
++  $EGREP "free" >/dev/null 2>&1; then :
++
++else
++  ac_cv_header_stdc=no
++fi
++rm -f conftest*
++
++fi
++
++if test $ac_cv_header_stdc = yes; then
++  # /bin/cc in Irix-4.0.5 gets non-ANSI ctype macros unless using -ansi.
++  if test "$cross_compiling" = yes; then :
++  :
++else
++  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++#include <ctype.h>
++#include <stdlib.h>
++#if ((' ' & 0x0FF) == 0x020)
++# define ISLOWER(c) ('a' <= (c) && (c) <= 'z')
++# define TOUPPER(c) (ISLOWER(c) ? 'A' + ((c) - 'a') : (c))
++#else
++# define ISLOWER(c) \
++		   (('a' <= (c) && (c) <= 'i') \
++		     || ('j' <= (c) && (c) <= 'r') \
++		     || ('s' <= (c) && (c) <= 'z'))
++# define TOUPPER(c) (ISLOWER(c) ? ((c) | 0x40) : (c))
++#endif
++
++#define XOR(e, f) (((e) && !(f)) || (!(e) && (f)))
++int
++main ()
++{
++  int i;
++  for (i = 0; i < 256; i++)
++    if (XOR (islower (i), ISLOWER (i))
++	|| toupper (i) != TOUPPER (i))
++      return 2;
++  return 0;
++}
++_ACEOF
++if ac_fn_c_try_run "$LINENO"; then :
++
++else
++  ac_cv_header_stdc=no
++fi
++rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
++  conftest.$ac_objext conftest.beam conftest.$ac_ext
++fi
++
++fi
++fi
++{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_header_stdc" >&5
++$as_echo "$ac_cv_header_stdc" >&6; }
++if test $ac_cv_header_stdc = yes; then
++
++$as_echo "#define STDC_HEADERS 1" >>confdefs.h
++
++fi
++
++# On IRIX 5.3, sys/types and inttypes.h are conflicting.
++for ac_header in sys/types.h sys/stat.h stdlib.h string.h memory.h strings.h \
++		  inttypes.h stdint.h unistd.h
++do :
++  as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
++ac_fn_c_check_header_compile "$LINENO" "$ac_header" "$as_ac_Header" "$ac_includes_default
++"
++if eval test \"x\$"$as_ac_Header"\" = x"yes"; then :
++  cat >>confdefs.h <<_ACEOF
++#define `$as_echo "HAVE_$ac_header" | $as_tr_cpp` 1
++_ACEOF
++
++fi
++
++done
++
++
++
++  ac_fn_c_check_header_mongrel "$LINENO" "minix/config.h" "ac_cv_header_minix_config_h" "$ac_includes_default"
++if test "x$ac_cv_header_minix_config_h" = xyes; then :
++  MINIX=yes
++else
++  MINIX=
++fi
++
++
++  if test "$MINIX" = yes; then
++
++$as_echo "#define _POSIX_SOURCE 1" >>confdefs.h
++
++
++$as_echo "#define _POSIX_1_SOURCE 2" >>confdefs.h
++
++
++$as_echo "#define _MINIX 1" >>confdefs.h
++
++  fi
++
++
++  { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether it is safe to define __EXTENSIONS__" >&5
++$as_echo_n "checking whether it is safe to define __EXTENSIONS__... " >&6; }
++if ${ac_cv_safe_to_define___extensions__+:} false; then :
++  $as_echo_n "(cached) " >&6
++else
++  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++
++#	  define __EXTENSIONS__ 1
++	  $ac_includes_default
++int
++main ()
++{
++
++  ;
++  return 0;
++}
++_ACEOF
++if ac_fn_c_try_compile "$LINENO"; then :
++  ac_cv_safe_to_define___extensions__=yes
++else
++  ac_cv_safe_to_define___extensions__=no
++fi
++rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
++fi
++{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_safe_to_define___extensions__" >&5
++$as_echo "$ac_cv_safe_to_define___extensions__" >&6; }
++  test $ac_cv_safe_to_define___extensions__ = yes &&
++    $as_echo "#define __EXTENSIONS__ 1" >>confdefs.h
++
++  $as_echo "#define _ALL_SOURCE 1" >>confdefs.h
++
++  $as_echo "#define _GNU_SOURCE 1" >>confdefs.h
++
++  $as_echo "#define _POSIX_PTHREAD_SEMANTICS 1" >>confdefs.h
++
++  $as_echo "#define _TANDEM_SOURCE 1" >>confdefs.h
++
++
++
++if test "$cross_compiling" = yes; then :
++  { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
++$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
++as_fn_error $? "cannot run test program while cross compiling
++See \`config.log' for more details" "$LINENO" 5; }
++else
++  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++int main(){return 0;}
++_ACEOF
++if ac_fn_c_try_run "$LINENO"; then :
++
++else
++
++if test $CC != cc ; then
++echo "Your $CC failed - restarting with CC=cc" 1>&6
++
++echo "" 1>&6
++
++CC=cc
++export CC
++exec $0 $configure_args
++fi
++
++fi
++rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
+   conftest.$ac_objext conftest.beam conftest.$ac_ext
+ fi
+ 
+@@ -3271,7 +3462,7 @@ See \`config.log' for more details" "$LINENO" 5; }
+ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+-main(){exit(0);}
++int main(){return 0;}
+ _ACEOF
+ if ac_fn_c_try_run "$LINENO"; then :
+ 
+@@ -3298,6 +3489,7 @@ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
++int
+ main()
+ {
+   int __something_strange_();
+@@ -3407,7 +3599,7 @@ rm -f conftest*
+ $as_echo "$as_me: checking select..." >&6;}
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+-
++#include <sys/select.h>
+ int
+ main ()
+ {
+@@ -3424,7 +3616,7 @@ else
+ $as_echo "$as_me: checking select with $LIBS..." >&6;}
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+-
++#include <sys/select.h>
+ int
+ main ()
+ {
+@@ -3459,6 +3651,8 @@ else
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
++#include <signal.h>
++#include <unistd.h>
+ 
+ char *nam = "/tmp/conftest$$";
+ 
+@@ -3471,7 +3665,7 @@ char *nam = "/tmp/conftest$$";
+ #define S_IFIFO 0010000
+ #endif
+ 
+-
++int
+ main()
+ {
+ #ifdef FD_SET
+@@ -3485,7 +3679,7 @@ main()
+  * opening RDWR fifo fails in BSD 4.4, but select return values are
+  * right.
+  */
+-  exit(0);
++  return 0;
+ #endif
+   (void)alarm(5);
+ #ifdef POSIX
+@@ -3493,12 +3687,12 @@ main()
+ #else
+   if (mknod(nam, S_IFIFO|0777, 0))
+ #endif
+-    exit(1);
++    return 1;
+   close(0);
+   if (open(nam, O_RDWR | O_NONBLOCK))
+-    exit(1);
++    return 1;
+   if (write(0, "TEST", 4) == -1)
+-    exit(1);
++    return 1;
+ 
+ #else
+ 
+@@ -3506,6 +3700,7 @@ main()
+ #include <sys/socket.h>
+ #include <sys/un.h>
+ 
++int
+ main()
+ {
+   int s1, s2, l;
+@@ -3518,14 +3713,14 @@ main()
+ 
+   (void)alarm(5);
+   if ((s1 = socket(AF_UNIX, SOCK_STREAM, 0)) == -1)
+-    exit(1);
++    return 1;
+   a.sun_family = AF_UNIX;
+   strcpy(a.sun_path, nam);
+   (void) unlink(nam);
+   if (bind(s1, (struct sockaddr *) &a, strlen(nam)+2) == -1)
+-    exit(1);
++    return 1;
+   if (listen(s1, 2))
+-    exit(1);
++    return 1;
+   if (fork() == 0)
+     {
+       if ((s2 = socket(AF_UNIX, SOCK_STREAM, 0)) == -1)
+@@ -3533,12 +3728,12 @@ main()
+       (void)connect(s2, (struct sockaddr *)&a, strlen(nam) + 2);
+       if (write(s2, "HELLO", 5) == -1)
+ 	kill(getppid(), 3);
+-      exit(0);
++      return 0;
+     }
+   l = sizeof(a);
+   close(0);
+   if (accept(s1, (struct sockaddr *)&a, &l))
+-    exit(1);
++    return 1;
+ #endif
+ 
+ 
+@@ -3548,10 +3743,10 @@ main()
+   f = 1;
+ #endif
+   if (select(1, &f, 0, 0, 0) == -1)
+-    exit(1);
++    return 1;
+   if (select(1, &f, &f, 0, 0) != 2)
+-    exit(1);
+-  exit(0);
++    return 1;
++  return 0;
+ }
+ 
+ _ACEOF
+@@ -3572,11 +3767,11 @@ fi
+ $as_echo "$as_me: checking for tgetent..." >&6;}
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+-
++extern char tgetent(void);
+ int
+ main ()
+ {
+-tgetent((char *)0, (char *)0);
++tgetent();
+   ;
+   return 0;
+ }
+@@ -3590,7 +3785,7 @@ LIBS="-lcurses $olibs"
+ $as_echo "$as_me: checking libcurses..." >&6;}
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+-
++extern char tgetent(void);
+ int
+ main ()
+ {
+@@ -3598,7 +3793,7 @@ main ()
+ #ifdef __hpux
+ __sorry_hpux_libcurses_is_totally_broken_in_10_10();
+ #else
+-tgetent((char *)0, (char *)0);
++tgetent();
+ #endif
+ 
+   ;
+@@ -3613,11 +3808,11 @@ else
+ $as_echo "$as_me: checking libtermcap..." >&6;}
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+-
++extern char tgetent(void);
+ int
+ main ()
+ {
+-tgetent((char *)0, (char *)0);
++tgetent();
+   ;
+   return 0;
+ }
+@@ -3630,11 +3825,11 @@ else
+ $as_echo "$as_me: checking libtermlib..." >&6;}
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+-
++extern char tgetent(void);
+ int
+ main ()
+ {
+-tgetent((char *)0, (char *)0);
++tgetent();
+   ;
+   return 0;
+ }
+@@ -3647,11 +3842,11 @@ else
+ $as_echo "$as_me: checking libncurses..." >&6;}
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+-
++extern char tgetent(void);
+ int
+ main ()
+ {
+-tgetent((char *)0, (char *)0);
++tgetent();
+   ;
+   return 0;
+ }
+@@ -3685,10 +3880,13 @@ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
++#include <string.h>
+ extern char *tgoto();
++
++int
+ main()
+ {
+- exit(strcmp(tgoto("%p1%d", 0, 1), "1") ? 0 : 1);
++ return strcmp(tgoto("%p1%d", 0, 1), "1") ? 0 : 1;
+ }
+ _ACEOF
+ if ac_fn_c_try_run "$LINENO"; then :
+@@ -3738,7 +3936,7 @@ sysvr4ptys=
+ if test -c /dev/ptmx ; then
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+-
++#include <stdlib.h>
+ int
+ main ()
+ {
+@@ -3898,6 +4096,10 @@ else
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <stdio.h>
++#include <stdlib.h>
++#include <unistd.h>
++
++int
+ main()
+ {
+   struct stat sb;
+@@ -3905,22 +4107,22 @@ main()
+   int om, m;
+   FILE *fp;
+ 
+-  if (!(x = ttyname(0))) exit(1);
+-  if (stat(x, &sb)) exit(1);
++  if (!(x = ttyname(0))) return 1;
++  if (stat(x, &sb)) return 1;
+   om = sb.st_mode;
+-  if (om & 002) exit(0);
++  if (om & 002) return 0;
+   m = system("mesg y");
+-  if (m == -1 || m == 127) exit(1);
+-  if (stat(x, &sb)) exit(1);
++  if (m == -1 || m == 127) return 1;
++  if (stat(x, &sb)) return 1;
+   m = sb.st_mode;
+-  if (chmod(x, om)) exit(1);
+-  if (m & 002) exit(0);
+-  if (sb.st_gid == getgid()) exit(1);
++  if (chmod(x, om)) return 1;
++  if (m & 002) return 0;
++  if (sb.st_gid == getgid()) return 1;
+   if (!(fp=fopen("conftest_grp", "w")))
+-    exit(1);
++    return 1;
+   fprintf(fp, "%d\n", sb.st_gid);
+   fclose(fp);
+-  exit(0);
++  return 0;
+ }
+ 
+ _ACEOF
+@@ -4166,6 +4368,7 @@ hand()
+   got++;
+ }
+ 
++int
+ main()
+ {
+   /* on hpux we use sigvec to get bsd signals */
+@@ -4174,9 +4377,9 @@ main()
+   kill(getpid(), SIGCLD);
+   kill(getpid(), SIGCLD);
+   if (got < 2)
+-    exit(1);
++    return 1;
+ #endif
+-  exit(0);
++  return 0;
+ }
+ 
+ _ACEOF
+@@ -4193,135 +4396,6 @@ fi
+ 
+ fi
+ 
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for ANSI C header files" >&5
+-$as_echo_n "checking for ANSI C header files... " >&6; }
+-if ${ac_cv_header_stdc+:} false; then :
+-  $as_echo_n "(cached) " >&6
+-else
+-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+-/* end confdefs.h.  */
+-#include <stdlib.h>
+-#include <stdarg.h>
+-#include <string.h>
+-#include <float.h>
+-
+-int
+-main ()
+-{
+-
+-  ;
+-  return 0;
+-}
+-_ACEOF
+-if ac_fn_c_try_compile "$LINENO"; then :
+-  ac_cv_header_stdc=yes
+-else
+-  ac_cv_header_stdc=no
+-fi
+-rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+-
+-if test $ac_cv_header_stdc = yes; then
+-  # SunOS 4.x string.h does not declare mem*, contrary to ANSI.
+-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+-/* end confdefs.h.  */
+-#include <string.h>
+-
+-_ACEOF
+-if (eval "$ac_cpp conftest.$ac_ext") 2>&5 |
+-  $EGREP "memchr" >/dev/null 2>&1; then :
+-
+-else
+-  ac_cv_header_stdc=no
+-fi
+-rm -f conftest*
+-
+-fi
+-
+-if test $ac_cv_header_stdc = yes; then
+-  # ISC 2.0.2 stdlib.h does not declare free, contrary to ANSI.
+-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+-/* end confdefs.h.  */
+-#include <stdlib.h>
+-
+-_ACEOF
+-if (eval "$ac_cpp conftest.$ac_ext") 2>&5 |
+-  $EGREP "free" >/dev/null 2>&1; then :
+-
+-else
+-  ac_cv_header_stdc=no
+-fi
+-rm -f conftest*
+-
+-fi
+-
+-if test $ac_cv_header_stdc = yes; then
+-  # /bin/cc in Irix-4.0.5 gets non-ANSI ctype macros unless using -ansi.
+-  if test "$cross_compiling" = yes; then :
+-  :
+-else
+-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+-/* end confdefs.h.  */
+-#include <ctype.h>
+-#include <stdlib.h>
+-#if ((' ' & 0x0FF) == 0x020)
+-# define ISLOWER(c) ('a' <= (c) && (c) <= 'z')
+-# define TOUPPER(c) (ISLOWER(c) ? 'A' + ((c) - 'a') : (c))
+-#else
+-# define ISLOWER(c) \
+-		   (('a' <= (c) && (c) <= 'i') \
+-		     || ('j' <= (c) && (c) <= 'r') \
+-		     || ('s' <= (c) && (c) <= 'z'))
+-# define TOUPPER(c) (ISLOWER(c) ? ((c) | 0x40) : (c))
+-#endif
+-
+-#define XOR(e, f) (((e) && !(f)) || (!(e) && (f)))
+-int
+-main ()
+-{
+-  int i;
+-  for (i = 0; i < 256; i++)
+-    if (XOR (islower (i), ISLOWER (i))
+-	|| toupper (i) != TOUPPER (i))
+-      return 2;
+-  return 0;
+-}
+-_ACEOF
+-if ac_fn_c_try_run "$LINENO"; then :
+-
+-else
+-  ac_cv_header_stdc=no
+-fi
+-rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
+-  conftest.$ac_objext conftest.beam conftest.$ac_ext
+-fi
+-
+-fi
+-fi
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_header_stdc" >&5
+-$as_echo "$ac_cv_header_stdc" >&6; }
+-if test $ac_cv_header_stdc = yes; then
+-
+-$as_echo "#define STDC_HEADERS 1" >>confdefs.h
+-
+-fi
+-
+-# On IRIX 5.3, sys/types and inttypes.h are conflicting.
+-for ac_header in sys/types.h sys/stat.h stdlib.h string.h memory.h strings.h \
+-		  inttypes.h stdint.h unistd.h
+-do :
+-  as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
+-ac_fn_c_check_header_compile "$LINENO" "$ac_header" "$as_ac_Header" "$ac_includes_default
+-"
+-if eval test \"x\$"$as_ac_Header"\" = x"yes"; then :
+-  cat >>confdefs.h <<_ACEOF
+-#define `$as_echo "HAVE_$ac_header" | $as_tr_cpp` 1
+-_ACEOF
+-
+-fi
+-
+-done
+-
+-
+ for ac_header in sys/stropts.h sys/wait.h sgtty.h sys/select.h
+ do :
+   as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
+diff --git a/examples/rlfe/configure.in b/examples/rlfe/configure.in
+index ad7ce65..aba06c6 100644
+--- a/examples/rlfe/configure.in
++++ b/examples/rlfe/configure.in
+@@ -30,7 +30,9 @@ AC_PROG_CPP
+ AC_PROG_GCC_TRADITIONAL
+ AC_ISC_POSIX
+ 
+-AC_TRY_RUN(main(){exit(0);},,[
++AC_USE_SYSTEM_EXTENSIONS
++
++AC_TRY_RUN([int main(){return 0;}],,[
+ if test $CC != cc ; then
+ AC_NOTE(Your $CC failed - restarting with CC=cc)
+ AC_NOTE()
+@@ -40,7 +42,7 @@ exec $0 $configure_args
+ fi
+ ])
+ 
+-AC_TRY_RUN(main(){exit(0);},,
++AC_TRY_RUN([int main(){return 0;}],,
+ exec 5>&2
+ eval $ac_link
+ AC_NOTE(CC=$CC; CFLAGS=$CFLAGS; LIBS=$LIBS;)
+@@ -48,6 +50,7 @@ AC_NOTE($ac_compile)
+ AC_MSG_ERROR(Can't run the compiler - sorry))
+ 
+ AC_TRY_RUN([
++int
+ main()
+ {
+   int __something_strange_();
+@@ -84,10 +87,10 @@ dnl    ****  select()  ****
+ dnl
+ 
+ AC_CHECKING(select)
+-AC_TRY_LINK(,[select(0, 0, 0, 0, 0);],, 
++AC_TRY_LINK([#include <sys/select.h>],[select(0, 0, 0, 0, 0);],,
+ LIBS="$LIBS -lnet -lnsl"
+ AC_CHECKING(select with $LIBS)
+-AC_TRY_LINK(,[select(0, 0, 0, 0, 0);],, 
++AC_TRY_LINK([#include <sys/select.h>],[select(0, 0, 0, 0, 0);],,
+ AC_MSG_ERROR(!!! no select - no screen))
+ )
+ dnl
+@@ -99,6 +102,8 @@ AC_TRY_RUN([
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
++#include <signal.h>
++#include <unistd.h>
+ 
+ char *nam = "/tmp/conftest$$";
+ 
+@@ -111,7 +116,7 @@ char *nam = "/tmp/conftest$$";
+ #define S_IFIFO 0010000
+ #endif
+ 
+-
++int
+ main()
+ {
+ #ifdef FD_SET
+@@ -125,7 +130,7 @@ main()
+  * opening RDWR fifo fails in BSD 4.4, but select return values are
+  * right.
+  */
+-  exit(0);
++  return 0;
+ #endif
+   (void)alarm(5);
+ #ifdef POSIX
+@@ -133,12 +138,12 @@ main()
+ #else
+   if (mknod(nam, S_IFIFO|0777, 0))
+ #endif
+-    exit(1);
++    return 1;
+   close(0);
+   if (open(nam, O_RDWR | O_NONBLOCK))
+-    exit(1);
++    return 1;
+   if (write(0, "TEST", 4) == -1)
+-    exit(1);
++    return 1;
+ 
+ #else
+ 
+@@ -146,6 +151,7 @@ main()
+ #include <sys/socket.h>
+ #include <sys/un.h>
+ 
++int
+ main()
+ {
+   int s1, s2, l;
+@@ -158,14 +164,14 @@ main()
+ 
+   (void)alarm(5);
+   if ((s1 = socket(AF_UNIX, SOCK_STREAM, 0)) == -1)
+-    exit(1);
++    return 1;
+   a.sun_family = AF_UNIX;
+   strcpy(a.sun_path, nam);
+   (void) unlink(nam);
+   if (bind(s1, (struct sockaddr *) &a, strlen(nam)+2) == -1)
+-    exit(1);
++    return 1;
+   if (listen(s1, 2))
+-    exit(1);
++    return 1;
+   if (fork() == 0)
+     {
+       if ((s2 = socket(AF_UNIX, SOCK_STREAM, 0)) == -1)
+@@ -173,12 +179,12 @@ main()
+       (void)connect(s2, (struct sockaddr *)&a, strlen(nam) + 2);
+       if (write(s2, "HELLO", 5) == -1)
+ 	kill(getppid(), 3);
+-      exit(0);
++      return 0;
+     }
+   l = sizeof(a);
+   close(0);
+   if (accept(s1, (struct sockaddr *)&a, &l))
+-    exit(1);
++    return 1;
+ #endif
+ 
+ 
+@@ -188,10 +194,10 @@ main()
+   f = 1;
+ #endif
+   if (select(1, &f, 0, 0, 0) == -1)
+-    exit(1);
++    return 1;
+   if (select(1, &f, &f, 0, 0) != 2)
+-    exit(1);
+-  exit(0);
++    return 1;
++  return 0;
+ }
+ ],AC_NOTE(- select is ok),
+ AC_NOTE(- select can't count) AC_DEFINE(SELECT_BROKEN))
+@@ -200,33 +206,36 @@ dnl
+ dnl    ****  termcap or terminfo  ****
+ dnl
+ AC_CHECKING(for tgetent)
+-AC_TRY_LINK(,tgetent((char *)0, (char *)0);,,
++AC_TRY_LINK([extern char tgetent(void);],tgetent();,,
+ olibs="$LIBS"
+ LIBS="-lcurses $olibs"
+ AC_CHECKING(libcurses)
+-AC_TRY_LINK(,[
++AC_TRY_LINK([extern char tgetent(void);],[
+ #ifdef __hpux
+ __sorry_hpux_libcurses_is_totally_broken_in_10_10();
+ #else
+-tgetent((char *)0, (char *)0);
++tgetent();
+ #endif
+ ],,
+ LIBS="-ltermcap $olibs"
+ AC_CHECKING(libtermcap)
+-AC_TRY_LINK(,tgetent((char *)0, (char *)0);,,
++AC_TRY_LINK([extern char tgetent(void);],tgetent();,,
+ LIBS="-ltermlib $olibs"
+ AC_CHECKING(libtermlib)
+-AC_TRY_LINK(,tgetent((char *)0, (char *)0);,,
++AC_TRY_LINK([extern char tgetent(void);],tgetent();,,
+ LIBS="-lncurses $olibs"
+ AC_CHECKING(libncurses)
+-AC_TRY_LINK(,tgetent((char *)0, (char *)0);,,
++AC_TRY_LINK([extern char tgetent(void);],tgetent();,,
+ AC_MSG_ERROR(!!! no tgetent - no screen))))))
+ 
+ AC_TRY_RUN([
++#include <string.h>
+ extern char *tgoto();
++
++int
+ main()
+ {
+- exit(strcmp(tgoto("%p1%d", 0, 1), "1") ? 0 : 1);
++ return strcmp(tgoto("%p1%d", 0, 1), "1") ? 0 : 1;
+ }], AC_NOTE(- you use the termcap database),
+ AC_NOTE(- you use the terminfo database) AC_DEFINE(TERMINFO))
+ AC_CHECKING(ospeed)
+@@ -243,7 +252,7 @@ fi
+ AC_CHECKING(for SVR4 ptys)
+ sysvr4ptys=
+ if test -c /dev/ptmx ; then
+-AC_TRY_LINK([],[ptsname(0);grantpt(0);unlockpt(0);],[AC_DEFINE(HAVE_SVR4_PTYS)
++AC_TRY_LINK([#include <stdlib.h>],[ptsname(0);grantpt(0);unlockpt(0);],[AC_DEFINE(HAVE_SVR4_PTYS)
+ sysvr4ptys=1])
+ fi
+ 
+@@ -296,6 +305,10 @@ AC_TRY_RUN([
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <stdio.h>
++#include <stdlib.h>
++#include <unistd.h>
++
++int
+ main()
+ {
+   struct stat sb;
+@@ -303,22 +316,22 @@ main()
+   int om, m;
+   FILE *fp;
+ 
+-  if (!(x = ttyname(0))) exit(1);
+-  if (stat(x, &sb)) exit(1);
++  if (!(x = ttyname(0))) return 1;
++  if (stat(x, &sb)) return 1;
+   om = sb.st_mode;
+-  if (om & 002) exit(0);
++  if (om & 002) return 0;
+   m = system("mesg y");
+-  if (m == -1 || m == 127) exit(1);
+-  if (stat(x, &sb)) exit(1);
++  if (m == -1 || m == 127) return 1;
++  if (stat(x, &sb)) return 1;
+   m = sb.st_mode;
+-  if (chmod(x, om)) exit(1);
+-  if (m & 002) exit(0);
+-  if (sb.st_gid == getgid()) exit(1);
++  if (chmod(x, om)) return 1;
++  if (m & 002) return 0;
++  if (sb.st_gid == getgid()) return 1;
+   if (!(fp=fopen("conftest_grp", "w")))
+-    exit(1);
++    return 1;
+   fprintf(fp, "%d\n", sb.st_gid);
+   fclose(fp);
+-  exit(0);
++  return 0;
+ }
+ ],[
+     if test -f conftest_grp; then
+@@ -420,6 +433,7 @@ hand()
+   got++;
+ }
+ 
++int
+ main()
+ {
+   /* on hpux we use sigvec to get bsd signals */
+@@ -428,9 +442,9 @@ main()
+   kill(getpid(), SIGCLD);
+   kill(getpid(), SIGCLD);
+   if (got < 2)
+-    exit(1);
++    return 1;
+ #endif
+-  exit(0);
++  return 0;
+ }
+ ],,AC_DEFINE(SYSVSIGS))
+ 
