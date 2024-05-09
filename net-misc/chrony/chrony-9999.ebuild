@@ -81,6 +81,11 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.2-systemd-gentoo.patch
 )
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# FP, checks with macro afterwards (bug #907877)
+	recvmmsg
+)
+
 src_prepare() {
 	default
 
