@@ -20,7 +20,7 @@ S="${WORKDIR}"/${MYP}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="cuda distributed fbgemm ffmpeg gloo mkl mpi nnpack +numpy onednn openblas opencl opencv openmp qnnpack rocm xnnpack"
+IUSE="cuda distributed fbgemm ffmpeg flash gloo mkl mpi nnpack +numpy onednn openblas opencl opencv openmp qnnpack rocm xnnpack"
 RESTRICT="test"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -28,7 +28,10 @@ REQUIRED_USE="
 	mpi? ( distributed )
 	gloo? ( distributed )
 	?? ( cuda rocm )
-	rocm? ( || ( ${ROCM_REQUIRED_USE} ) )
+	rocm? (
+		|| ( ${ROCM_REQUIRED_USE} )
+		!flash
+	)
 "
 
 # CUDA 12 not supported yet: https://github.com/pytorch/pytorch/issues/91122
@@ -172,6 +175,7 @@ src_configure() {
 		-DUSE_FAKELOWP=OFF
 		-DUSE_FBGEMM=$(usex fbgemm)
 		-DUSE_FFMPEG=$(usex ffmpeg)
+		-DUSE_FLASH_ATTENTION=$(usex flash)
 		-DUSE_GFLAGS=ON
 		-DUSE_GLOG=ON
 		-DUSE_GLOO=$(usex gloo)
