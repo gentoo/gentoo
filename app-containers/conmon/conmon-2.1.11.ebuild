@@ -28,8 +28,8 @@ DEPEND="${RDEPEND}"
 BDEPEND="dev-go/go-md2man"
 
 src_prepare() {
-	# PR 505 https://github.com/containers/conmon/pull/505
-	echo "${PV}" | tee VERSION || die
+	# https://github.com/containers/conmon/pull/505
+	echo "${PV}" > VERSION || die
 
 	default
 	sed -i -e "s|shell.*--exists libsystemd.* && echo \"0\"|shell echo $(usex systemd 0 1)|g;" Makefile || die
