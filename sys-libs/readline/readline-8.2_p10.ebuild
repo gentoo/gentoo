@@ -93,9 +93,9 @@ BDEPEND="virtual/pkgconfig
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.0-no_rpath.patch
-	"${FILESDIR}"/${PN}-6.2-rlfe-tgoto.patch # bug #385091
 	"${FILESDIR}"/${PN}-7.0-headers.patch
 	"${FILESDIR}"/${PN}-8.0-headers.patch
+	"${FILESDIR}"/${PN}-8.1-rlfe-c99.patch
 
 	# TODO: rebase
 	#"${FILESDIR}"/${PN}-8.0-darwin-shlib-versioning.patch
