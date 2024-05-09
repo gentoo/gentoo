@@ -6,6 +6,7 @@ EAPI=8
 DESCRIPTION="IRSIM is a \"switch-level\" simulator"
 HOMEPAGE="http://opencircuitdesign.com/irsim/"
 SRC_URI="http://opencircuitdesign.com/irsim/archive/${P}.tgz"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-patches.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -19,11 +20,11 @@ DEPEND="${RDEPEND}"
 BDEPEND="app-shells/tcsh"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9.7.72-ldflags.patch
-	"${FILESDIR}"/${PN}-9.7.79-datadir.patch
-	"${FILESDIR}"/${PN}-9.7.93-clean-makefile.patch
-	"${FILESDIR}"/${PN}-9.7.93-C99-port.patch
-	"${FILESDIR}"/${PN}-9.7.93-Makefile.patch
+	"${WORKDIR}"/${P}-patches/${PN}-9.7.72-ldflags.patch
+	"${WORKDIR}"/${P}-patches/${PN}-9.7.79-datadir.patch
+	"${WORKDIR}"/${P}-patches/${PN}-9.7.93-clean-makefile.patch
+	"${WORKDIR}"/${P}-patches/${PN}-9.7.93-C99-port.patch
+	"${WORKDIR}"/${P}-patches/${PN}-9.7.93-Makefile.patch
 )
 
 src_configure() {
