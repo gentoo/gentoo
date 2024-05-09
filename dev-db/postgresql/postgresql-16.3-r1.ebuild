@@ -4,9 +4,9 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10,11,12} )
-LLVM_MAX_SLOT=17
+LLVM_COMPAT=( {15..18} )
 
-inherit flag-o-matic linux-info llvm pam python-single-r1 systemd tmpfiles
+inherit flag-o-matic linux-info llvm-r1 pam python-single-r1 systemd tmpfiles
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
@@ -36,10 +36,10 @@ virtual/libintl
 icu? ( dev-libs/icu:= )
 kerberos? ( app-crypt/mit-krb5 )
 ldap? ( net-nds/openldap:= )
-llvm? (
-	<sys-devel/llvm-18:=
-	<sys-devel/clang-18:=
-)
+llvm? ( $(llvm_gen_dep '
+	sys-devel/clang:${LLVM_SLOT}
+	sys-devel/llvm:${LLVM_SLOT}
+	') )
 lz4? ( app-arch/lz4 )
 pam? ( sys-libs/pam )
 perl? ( >=dev-lang/perl-5.8:= )
@@ -86,7 +86,7 @@ selinux? ( sec-policy/selinux-postgresql )
 "
 
 pkg_setup() {
-	use llvm && llvm_pkg_setup
+	use llvm && llvm-r1_pkg_setup
 
 	use server && CONFIG_CHECK="~SYSVIPC" linux-info_pkg_setup
 
