@@ -95,6 +95,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-neatvnc-0.8.patch
+	"${FILESDIR}"/${PN}-musl-basename.patch
 )
 
 python_check_deps() {
