@@ -121,30 +121,24 @@ anthy
 snapcast
 
 # Unmask ARM-only video-cards
+-video_cards_amdgpu
 -video_cards_exynos
 -video_cards_freedreno
 -video_cards_lima
 -video_cards_nouveau
 -video_cards_panfrost
+-video_cards_radeon
+-video_cards_radeonsi
 -video_cards_tegra
 -video_cards_v3d
 -video_cards_vc4
--video_cards_amdgpu
--video_cards_radeon
--video_cards_radeonsi
-
-# James Le Cuirot <chewi@gentoo.org>
-# Unmask as Vivante is available for arm.
 -video_cards_vivante
 
 # Donnie Berkholz <dberkholz@gentoo.org> (2006-02-05)
 # Modular X: mask for architectures on which they aren't available
 video_cards_mga
-video_cards_r128
-
-# Matt Turner <mattst88@gentoo.org>
-# Mask more VIDEO_CARDs added with mesa-8.0
 video_cards_r100
+video_cards_r128
 video_cards_r200
 video_cards_r300
 video_cards_r600
