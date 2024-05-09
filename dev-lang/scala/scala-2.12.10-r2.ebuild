@@ -57,10 +57,10 @@ COMMON_DEP=">=dev-java/ant-1.10.14-r3:0
 
 DEPEND="${COMMON_DEP}
 	!binary? (
-		>=dev-java/sbt-${SBTV}:0
+		>=dev-java/sbt-${SBTV}-r1:0
 		media-gfx/graphviz
 	)
-	<=virtual/jdk-17:*
+	<=virtual/jdk-11:*
 	app-arch/xz-utils:0"
 
 RDEPEND="${COMMON_DEP}
