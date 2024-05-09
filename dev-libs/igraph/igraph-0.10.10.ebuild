@@ -43,6 +43,7 @@ src_configure() {
 		-DIGRAPH_USE_INTERNAL_LAPACK=OFF
 		-DIGRAPH_USE_INTERNAL_PLFIT=OFF
 		-DIGRAPH_ENABLE_TLS=$(usex threads)
+		-DIGRAPH_WARNINGS_AS_ERRORS=OFF
 		-DBUILD_TESTING=$(usex test)
 	)
 	cmake_src_configure
