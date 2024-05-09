@@ -17,4 +17,11 @@
 		<flag name="minimal">Don't install any PakSets (scenario data)</flag>
 		<flag name="midi">support for background MIDI music via <pkg>media-sound/fluidsynth</pkg></flag>
 	</use>
+	<longdescription lang="en">
+		Simutrans is a freeware and open-source transportation simulator. Your
+		goal is to establish a successful transport company. Transport
+		passengers, mail and goods by rail, road, ship, and even air.
+		Interconnect districts, cities, public buildings, industries and tourist
+		attractions by building a transport network you always dreamed of.
+	</longdescription>
 </pkgmetadata>
