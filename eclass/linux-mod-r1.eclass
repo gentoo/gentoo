@@ -661,6 +661,11 @@ _modules_check_migration() {
 # Handles linux-info bits to provide usable sources, KV_ variables,
 # and CONFIG_CHECK use.
 _modules_prepare_kernel() {
+	# The modules we build are specific to each kernel version, we don't
+	# want to reset the environment to use the user selected kernel version.
+	# Bug 931213, 926063
+	SKIP_KERNEL_BINPKG_ENV_RESET=1
+
 	get_version
 
 	# linux-info allows skipping checks if SKIP_KERNEL_CHECK is set and
