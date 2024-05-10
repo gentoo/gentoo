@@ -46,6 +46,7 @@ BDEPEND="${PYTHON_DEPS}"
 PATCHES=(
 	"${FILESDIR}/${PN}-0.6.0-fix-localca-path.patch"
 	"${FILESDIR}/${PN}-0.5.0-build-sys-Remove-WError.patch"
+	"${FILESDIR}/${PN}-0.8.2-slibtool.patch"
 )
 
 src_prepare() {
