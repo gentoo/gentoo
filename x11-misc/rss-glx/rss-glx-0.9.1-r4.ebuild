@@ -9,7 +9,7 @@ MY_P=${PN}_${PV}
 
 DESCRIPTION="Really Slick OpenGL Screensavers for XScreenSaver"
 HOMEPAGE="https://rss-glx.sourceforge.net"
-SRC_URI="https://sourceforge.net/projects/rss-glx/files/rss-glx/${PV}/${PN}_${PV}.tar.bz2/download -> ${P}.tar.bz"
+SRC_URI="https://sourceforge.net/projects/rss-glx/files/rss-glx/${PV}/${PN}_${PV}.tar.bz2/download -> ${PN}_${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
