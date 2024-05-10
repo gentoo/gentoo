@@ -48,7 +48,7 @@ DEPEND="
 	opengl? (
 		|| (
 			virtual/opengl
-			media-libs/mesa[gles2]
+			media-libs/mesa[gles2(+),opengl]
 			media-libs/mesa[gles1]
 		)
 	)
