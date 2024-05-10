@@ -21,6 +21,10 @@ DEPEND="
 
 S="${WORKDIR}/lazarus/lcl/interfaces/qt6/cbindings"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.0.0-remove-wrapper-of-undefined-method.patch"
+)
+
 src_configure() {
 	eqmake6 Qt6Pas.pro
 }
