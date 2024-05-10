@@ -97,7 +97,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		x11-libs/libxkbcommon
 	)
 	gles? (
-		!raspberry-pi? ( media-libs/mesa[gles2] )
+		!raspberry-pi? ( media-libs/mesa[gles2(+),opengl] )
 	)
 	lcms? ( media-libs/lcms:2 )
 	libusb? ( virtual/libusb:1 )
@@ -122,7 +122,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	!gles? ( media-libs/glu )
 	>=dev-libs/openssl-1.1.1k:0=
 	raspberry-pi? (
-		|| ( media-libs/raspberrypi-userland media-libs/raspberrypi-userland-bin media-libs/mesa[egl(+),gles2,video_cards_vc4] )
+		|| ( media-libs/raspberrypi-userland media-libs/raspberrypi-userland-bin media-libs/mesa[egl(+),gles2(+),opengl,video_cards_vc4] )
 	)
 	pulseaudio? ( media-sound/pulseaudio )
 	samba? ( >=net-fs/samba-3.4.6[smbclient(+)] )
