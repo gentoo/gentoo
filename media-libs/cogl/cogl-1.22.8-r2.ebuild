@@ -36,7 +36,7 @@ DEPEND="
 	>=x11-libs/libXfixes-3
 	>=x11-libs/libXrandr-1.2
 	virtual/opengl
-	gles2? ( media-libs/mesa[gles2] )
+	gles2? ( media-libs/mesa[gles2(+),opengl] )
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
