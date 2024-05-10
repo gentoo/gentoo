@@ -29,7 +29,7 @@ REQUIRED_USE="
 DEPEND="
 	>=dev-libs/wayland-1.22.0
 	media-libs/libglvnd
-	media-libs/mesa[egl(+),gles2(+)]
+	media-libs/mesa[egl(+),gles2(+),opengl]
 	>=x11-libs/libdrm-2.4.114
 	x11-libs/libxkbcommon
 	>=x11-libs/pixman-0.42.0

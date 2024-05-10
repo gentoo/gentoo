@@ -26,7 +26,7 @@ REQUIRED_USE="
 
 DEPEND="
 	>=dev-libs/wayland-1.21.0
-	media-libs/mesa[egl(+),gles2]
+	media-libs/mesa[egl(+),gles2(+),opengl]
 	sys-auth/seatd:=
 	virtual/libudev
 	>=x11-libs/libdrm-2.4.114
