@@ -18,7 +18,7 @@ RDEPEND="
 	media-libs/libopenmpt
 	media-libs/libsdl2[video]
 	media-libs/openal
-	gles2-only? ( media-libs/mesa[gles2] )
+	gles2-only? ( media-libs/mesa[gles2(+),opengl] )
 	!gles2-only? ( virtual/opengl )
 "
 
