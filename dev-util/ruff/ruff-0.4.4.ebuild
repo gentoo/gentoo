@@ -427,6 +427,11 @@ src_compile() {
 }
 
 src_test() {
+	# Gentoo bug #927338
+	if use !elibc_musl && use !elibc_Darwin && use !elibc_bionic; then
+		local -x CARGO_FEATURE_UNPREFIXED_MALLOC_ON_SUPPORTED_PLATFORMS=1
+		local -x JEMALLOC_OVERRIDE="${ESYSROOT}/usr/$(get_libdir)"/libjemalloc.so
+	fi
 	cargo_src_test
 }
 
