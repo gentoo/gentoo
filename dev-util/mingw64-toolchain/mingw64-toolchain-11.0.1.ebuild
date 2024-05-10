@@ -221,6 +221,12 @@ src_compile() {
 				filter-flags '-fuse-ld=*'
 				filter-flags '-mfunction-return=thunk*' #878849
 
+				# support for stack-protector is still new and experimental
+				# for mingw and issues can also be harder to debug + fix for
+				# upstreams using it, if feeling concerned about security
+				# would advise to either not use wine or at least contain it
+				use custom-cflags || filter-flags '-fstack-protector*' #931512
+
 				# some bashrc-mv users tend to do CFLAGS="${LDFLAGS}" and then
 				# strip-unsupported-flags miss these during compile-only tests
 				# (primarily done for 23.0 profiles' -z, not full coverage)
