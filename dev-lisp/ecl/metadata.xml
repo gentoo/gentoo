@@ -14,6 +14,7 @@
 	<use>
 		<flag name="gengc">Use generational garbage collection (experimental)</flag>
 		<flag name="precisegc">Use type information during garbage collection (experimental)</flag>
+		<flag name="unicode">Make the produced lisp support unicode</flag>
 	</use>
 	<upstream>
 		<remote-id type="gitlab">embeddable-common-lisp/ecl</remote-id>
