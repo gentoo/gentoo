@@ -240,6 +240,7 @@ src_configure() {
 
 	# Workaround for build failure with clang-18 and -march=native without
 	# avx512. Does not affect e.g. -march=skylake, only native (bug #931623).
+	# TODO: try to drop this when <=clang-18.1.5 >=18 been gone for some time
 	use amd64 && tc-is-clang && is-flagq -march=native &&
 		[[ $(clang-major-version) -ge 18 ]] &&
 		tc-cpp-is-true "!defined(__AVX512F__)" ${CXXFLAGS} &&
