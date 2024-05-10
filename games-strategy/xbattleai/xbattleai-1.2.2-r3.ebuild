@@ -6,8 +6,8 @@ EAPI=8
 inherit toolchain-funcs autotools
 
 DESCRIPTION="A multi-player game of strategy and coordination"
-HOMEPAGE="https://inf.ug.edu.pl/~piotao/xbattle/mirror/www.lysator.liu.se/XBattleAI/"
-SRC_URI="https://inf.ug.edu.pl/~piotao/xbattle/mirror/www.lysator.liu.se/XBattleAI/${P}.tgz"
+HOMEPAGE="https://inf.ug.edu.pl/~piotao/zasoby/xbattle/mirror/www.lysator.liu.se/XBattleAI/"
+SRC_URI="https://inf.ug.edu.pl/~piotao/zasoby/xbattle/mirror/www.lysator.liu.se/XBattleAI/${P}.tgz"
 
 LICENSE="xbattle"
 SLOT="0"
