@@ -83,8 +83,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/${P}-dbengine.patch" )
-
 FILECAPS=(
 	'cap_dac_read_search,cap_sys_ptrace+ep'
 	'usr/libexec/netdata/plugins.d/apps.plugin'
