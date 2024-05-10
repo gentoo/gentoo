@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/669128#c3
+
+--- a/bash_completion
++++ b/bash_completion
+@@ -2037,7 +2037,7 @@ _comp__init_set_up_service_completions
+ _comp_compgen_kernel_modules()
+ {
+     local _modpath=/lib/modules/$1
+-    _comp_compgen_split -- "$(command ls -RL "$_modpath" 2>/dev/null |
++    _comp_compgen_split -- "$(command ls -RL "$_modpath"/!(source|build) 2>/dev/null |
+         command sed -ne 's/^\(.*\)\.k\{0,1\}o\(\.[gx]z\)\{0,1\}$/\1/p' \
+             -e 's/^\(.*\)\.ko\.zst$/\1/p')"
+ }
