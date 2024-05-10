@@ -35,7 +35,7 @@ RDEPEND="
 	x11-libs/pango
 	curl? ( net-misc/curl:= )
 	ffmpeg? ( media-video/ffmpeg:= )
-	gles2-only? ( media-libs/mesa:=[gles2] )
+	gles2-only? ( media-libs/mesa:=[gles2(+),opengl] )
 	!gles2-only? (
 		>=media-libs/glew-1.5.3:=
 		virtual/opengl:0=
