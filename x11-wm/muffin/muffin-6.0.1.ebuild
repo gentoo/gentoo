@@ -74,7 +74,7 @@ COMDEPEND="
 		>=dev-libs/libinput-1.7:=
 		>=dev-libs/wayland-1.13.0
 		>=dev-libs/wayland-protocols-1.19
-		media-libs/mesa[gbm(+),gles2]
+		media-libs/mesa[gbm(+),gles2(+),opengl]
 		x11-base/xwayland
 		x11-libs/libdrm
 
