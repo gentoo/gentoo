@@ -120,6 +120,7 @@ src_prepare() {
 	for p in $(<"${WORKDIR}"/debian/patches/series) ; do
 		eapply -p1 "${WORKDIR}/debian/patches/${p}"
 	done
+	eapply "${FILESDIR}"/${PN}-5.15.0_p6-configure-c99.patch
 
 	# avoid installing license
 	sed -i -e '/COPYING.LIB/d' CMakeLists.txt || die
