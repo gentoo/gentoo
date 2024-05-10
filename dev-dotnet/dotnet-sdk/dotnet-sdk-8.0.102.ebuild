@@ -108,11 +108,7 @@ QA_FLAGS_IGNORED="
 .*/singlefilehost
 "
 
-pkg_setup() {
-	check-reqs_pkg_setup
-	llvm_pkg_setup
-	python-any-r1_pkg_setup
-
+check_requirements_locale() {
 	if [[ "${MERGE_TYPE}" != binary ]] ; then
 		if use elibc_glibc ; then
 			local locales
@@ -135,6 +131,20 @@ pkg_setup() {
 		export LC_ALL
 		einfo "Successfully switched to the ${LC_ALL} locale."
 	fi
+}
+
+pkg_pretend() {
+	check-reqs_pkg_pretend
+
+	check_requirements_locale
+}
+
+pkg_setup() {
+	check-reqs_pkg_setup
+	llvm_pkg_setup
+	python-any-r1_pkg_setup
+
+	check_requirements_locale
 }
 
 src_prepare() {
