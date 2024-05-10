@@ -68,7 +68,7 @@ COMMON_DEPEND="
 	x11-libs/xcb-util-keysyms
 	x11-libs/xcb-util-wm
 	accessibility? ( media-libs/libqaccessibilityclient:5 )
-	gles2-only? ( media-libs/mesa[gles2] )
+	gles2-only? ( media-libs/mesa[gles2(+),opengl] )
 	lock? ( >=kde-plasma/kscreenlocker-${PVCUT}:5 )
 	plasma? ( >=kde-frameworks/krunner-${KFMIN}:5 )
 	screencast? ( >=media-video/pipewire-0.3:= )
