@@ -49,7 +49,7 @@ RDEPEND="${LUA_DEPS}
 	sys-apps/dbus
 	sys-libs/zlib
 	X? (
-		!opengl? ( media-libs/mesa[egl(+),gles2] )
+		!opengl? ( media-libs/mesa[egl(+),gles2(+),opengl] )
 		media-libs/freetype
 		x11-libs/libX11
 		x11-libs/libXScrnSaver
@@ -113,7 +113,7 @@ RDEPEND="${LUA_DEPS}
 	vnc? ( net-libs/libvncserver )
 	wayland? (
 		dev-libs/wayland
-		media-libs/mesa[gles2,wayland]
+		media-libs/mesa[gles2(+),opengl,wayland]
 		x11-libs/libxkbcommon
 	)
 	webp? ( media-libs/libwebp:= )
