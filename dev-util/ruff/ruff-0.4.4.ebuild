@@ -138,7 +138,7 @@ CRATES="
 	lexical-parse-float@0.8.5
 	lexical-parse-integer@0.8.6
 	lexical-util@0.8.5
-	libc@0.2.153
+	libc@0.2.154
 	libcst@1.3.1
 	libcst_derive@1.3.1
 	libmimalloc-sys@0.1.37
@@ -229,8 +229,8 @@ CRATES="
 	scopeguard@1.2.0
 	seahash@4.1.0
 	serde-wasm-bindgen@0.6.5
-	serde@1.0.199
-	serde_derive@1.0.199
+	serde@1.0.200
+	serde_derive@1.0.200
 	serde_derive_internals@0.29.0
 	serde_json@1.0.116
 	serde_repr@0.1.19
