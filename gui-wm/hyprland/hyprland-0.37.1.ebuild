@@ -40,7 +40,7 @@ WLROOTS_RDEPEND="
 	>=dev-libs/wayland-1.22
 	media-libs/libdisplay-info
 	media-libs/libglvnd
-	media-libs/mesa[egl(+),gles2]
+	media-libs/mesa[egl(+),gles2(+),opengl]
 	sys-apps/hwdata:=
 	sys-auth/seatd:=
 	>=x11-libs/libdrm-2.4.118
