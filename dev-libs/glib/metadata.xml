@@ -14,6 +14,9 @@
       Enable support for listing and extracting from
       ELF resource files with gresource tool
     </flag>
+	<flag name="introspection">
+	  Enable generating introspection data (requires <pkg>dev-libs/gobject-introspection</pkg> )
+	</flag>
     <flag name="mime">
       Pull in shared MIME database that many glib-based
       applications require at runtime to detect or open files. Warning:
