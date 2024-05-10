@@ -40,8 +40,8 @@ RDEPEND="
 	boost? ( dev-libs/boost:= )
 	cg? ( media-gfx/nvidia-cg-toolkit )
 	freeimage? ( media-libs/freeimage )
-	gles2? ( >=media-libs/mesa-9.0.0[gles2] )
-	gles3? ( >=media-libs/mesa-10.0.0[gles2] )
+	gles2? ( >=media-libs/mesa-9.0.0[gles2(+),opengl] )
+	gles3? ( >=media-libs/mesa-10.0.0[gles2(+),opengl] )
 	gl3plus? ( >=media-libs/mesa-9.2.5 )
 	ois? ( dev-games/ois )
 	threads? (
