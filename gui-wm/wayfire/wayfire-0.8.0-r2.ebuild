@@ -29,7 +29,7 @@ WLROOTS_CDEPEND="
 	>=dev-libs/libinput-1.14.0:=
 	>=dev-libs/wayland-1.21
 	media-libs/libglvnd
-	media-libs/mesa[egl(+),gles2]
+	media-libs/mesa[egl(+),gles2(+),opengl]
 	sys-apps/hwdata:=
 	sys-auth/seatd:=
 	>=x11-libs/libdrm-2.4.114:=
