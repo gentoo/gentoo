@@ -10,7 +10,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc sparc ~x86"
 
 RDEPEND="!app-crypt/signify
 	dev-lang/perl"
