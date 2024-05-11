@@ -607,7 +607,7 @@ src_configure() {
 	myconf "-${myndbm}i_ndbm" "-${mygdbm}i_gdbm" "-${mydb}i_db"
 
 	if use alpha && [[ "$(tc-getCC)" = "ccc" ]] ; then
-		ewarn "Perl will not be built with berkdb support, use gcc if you needed it..."
+		ewarn "Perl will not be built with berkdb support, use gcc if you need it..."
 		myconf -Ui_db -Ui_ndbm
 	fi
 
