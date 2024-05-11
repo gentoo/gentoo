@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..13} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="HTTP/2 State-Machine based protocol implementation"
 HOMEPAGE="
@@ -14,7 +14,6 @@ HOMEPAGE="
 	https://github.com/python-hyper/h2/
 	https://pypi.org/project/h2/
 "
-SRC_URI="https://github.com/python-hyper/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
