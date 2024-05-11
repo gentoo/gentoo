@@ -39,11 +39,13 @@ RDEPEND="
 	hepmc2? ( sci-physics/hepmc:2= )
 	lhapdf? ( sci-physics/lhapdf:= )
 	zlib? ( sys-libs/zlib )"
+DEPEND="${RDEPEND}"
 # ROOT is used only when building related tests
-DEPEND="${RDEPEND}
+BDEPEND="
 	test? (
 		root? ( sci-physics/root:= )
-	)"
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}8209-root-noninteractive.patch
