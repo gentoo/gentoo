@@ -34,7 +34,14 @@ go-env_set_compile_environment() {
 	use x86 && export GO386=$(go-env_go386)
 
 	# XXX: Hack for checking ICE (bug #912152, gcc PR113204)
-	has_version -b "sys-devel/gcc[debug]" && filter-lto
+	case ${EAPI} in
+		6)
+			has_version "sys-devel/gcc[debug]" && filter-lto
+			;;
+		*)
+			has_version -b "sys-devel/gcc[debug]" && filter-lto
+			;;
+	esac
 
 	export CGO_CFLAGS="${CGO_CFLAGS:-$CFLAGS}"
 	export CGO_CPPFLAGS="${CGO_CPPFLAGS:-$CPPFLAGS}"
