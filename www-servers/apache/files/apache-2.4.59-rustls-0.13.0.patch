@@ -1,0 +1,544 @@
+From 68a5a569f630b116f30c49384e4f737a5e669bb2 Mon Sep 17 00:00:00 2001
+From: Daniel McCarney <daniel@binaryparadox.net>
+Date: Sun, 21 Apr 2024 15:05:19 -0400
+Subject: [PATCH] test: relax rustls-ffi SSL_VERSION_LIBRARY
+
+The rustls version included in the rustls-ffi version output does not
+always contain three components. E.g. rustls-ffi 0.12.2 uses the version
+string:
+
+  rustls-ffi/0.12.2/rustls/0.22
+
+Notably there is no `.0` after the `0.22` for the Rustls version, and
+this requires the `SSL_VERSION_LIBRARY` regexp be relaxed to allow this.
+---
+ test/modules/tls/test_08_vars.py      | 2 +-
+ test/modules/tls/test_14_proxy_ssl.py | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/modules/tls/test_08_vars.py b/test/modules/tls/test_08_vars.py
+index ad764a7985a..0e3ee74d2df 100644
+--- a/test/modules/tls/test_08_vars.py
++++ b/test/modules/tls/test_08_vars.py
+@@ -59,7 +59,7 @@ def test_tls_08_vars_const(self, env, name: str, value: str):
+ 
+     @pytest.mark.parametrize("name, pattern", [
+         ("SSL_VERSION_INTERFACE", r'mod_tls/\d+\.\d+\.\d+'),
+-        ("SSL_VERSION_LIBRARY", r'rustls-ffi/\d+\.\d+\.\d+/rustls/\d+\.\d+\.\d+'),
++        ("SSL_VERSION_LIBRARY", r'rustls-ffi/\d+\.\d+\.\d+/rustls/\d+\.\d+(\.\d+)?'),
+     ])
+     def test_tls_08_vars_match(self, env, name: str, pattern: str):
+         r = env.tls_get(env.domain_b, f"/vars.py?name={name}")
+diff --git a/test/modules/tls/test_14_proxy_ssl.py b/test/modules/tls/test_14_proxy_ssl.py
+index 2f46c64f710..87e04c28afa 100644
+--- a/test/modules/tls/test_14_proxy_ssl.py
++++ b/test/modules/tls/test_14_proxy_ssl.py
+@@ -100,7 +100,7 @@ def test_tls_14_proxy_ssl_vars_const(self, env, name: str, value: str):
+ 
+     @pytest.mark.parametrize("name, pattern", [
+         ("SSL_VERSION_INTERFACE", r'mod_tls/\d+\.\d+\.\d+'),
+-        ("SSL_VERSION_LIBRARY", r'rustls-ffi/\d+\.\d+\.\d+/rustls/\d+\.\d+\.\d+'),
++        ("SSL_VERSION_LIBRARY", r'rustls-ffi/\d+\.\d+\.\d+/rustls/\d+\.\d+(\.\d+)?'),
+     ])
+     def test_tls_14_proxy_tsl_vars_match(self, env, name: str, pattern: str):
+         if not HttpdTestEnv.has_shared_module("tls"):
+From fd64ac68206232641406c1512e0916d837821db5 Mon Sep 17 00:00:00 2001
+From: Daniel McCarney <daniel@binaryparadox.net>
+Date: Sun, 21 Apr 2024 15:19:50 -0400
+Subject: [PATCH] mod_tls: rustls-ffi 0.10 -> 0.11
+
+See upstream release notes[0] for more information.
+
+Also note that the, ahem, clunkyness of the verifier API is reduced in
+the 0.12 release and this is a transition state.
+
+[0]: https://github.com/rustls/rustls-ffi/releases/tag/v0.11.0
+---
+ .github/workflows/linux.yml |  2 +-
+ modules/tls/tls_cert.c      | 26 ++++++++++++++++++--------
+ modules/tls/tls_cert.h      |  6 +++---
+ modules/tls/tls_core.c      |  4 ++--
+ 4 files changed, 24 insertions(+), 14 deletions(-)
+
+diff --git a/.github/workflows/linux.yml b/.github/workflows/linux.yml
+index 8c45faf5651..1ac41c6b2d6 100644
+--- a/.github/workflows/linux.yml
++++ b/.github/workflows/linux.yml
+@@ -241,7 +241,7 @@ jobs:
+               APR_VERSION=1.7.4
+               APU_VERSION=1.6.3
+               APU_CONFIG="--with-crypto"
+-              RUSTLS_VERSION="v0.10.0"
++              RUSTLS_VERSION="v0.11.0"
+               NO_TEST_FRAMEWORK=1
+               TEST_INSTALL=1
+               TEST_MOD_TLS=1
+diff --git a/modules/tls/tls_cert.c b/modules/tls/tls_cert.c
+index 624535aa444..17a35fc498d 100644
+--- a/modules/tls/tls_cert.c
++++ b/modules/tls/tls_cert.c
+@@ -449,8 +449,8 @@ apr_status_t tls_cert_root_stores_get(
+ 
+ typedef struct {
+     const char *id;
+-    const rustls_client_cert_verifier *client_verifier;
+-    const rustls_client_cert_verifier_optional *client_verifier_opt;
++    const rustls_allow_any_authenticated_client_verifier *client_verifier;
++    const rustls_allow_any_anonymous_or_authenticated_client_verifier *client_verifier_opt;
+ } tls_cert_verifiers_entry_t;
+ 
+ static int verifiers_entry_cleanup(void *ctx, const void *key, apr_ssize_t klen, const void *val)
+@@ -458,11 +458,11 @@ static int verifiers_entry_cleanup(void *ctx, const void *key, apr_ssize_t klen,
+     tls_cert_verifiers_entry_t *entry = (tls_cert_verifiers_entry_t*)val;
+     (void)ctx; (void)key; (void)klen;
+     if (entry->client_verifier) {
+-        rustls_client_cert_verifier_free(entry->client_verifier);
++        rustls_allow_any_authenticated_client_verifier_free(entry->client_verifier);
+         entry->client_verifier = NULL;
+     }
+     if (entry->client_verifier_opt) {
+-        rustls_client_cert_verifier_optional_free(entry->client_verifier_opt);
++        rustls_allow_any_anonymous_or_authenticated_client_verifier_free(entry->client_verifier_opt);
+         entry->client_verifier_opt = NULL;
+     }
+     return 1;
+@@ -514,20 +514,25 @@ static tls_cert_verifiers_entry_t * verifiers_get_or_make_entry(
+ apr_status_t tls_cert_client_verifiers_get(
+     tls_cert_verifiers_t *verifiers,
+     const char *store_file,
+-    const rustls_client_cert_verifier **pverifier)
++    const rustls_allow_any_authenticated_client_verifier **pverifier)
+ {
+     apr_status_t rv = APR_SUCCESS;
+     tls_cert_verifiers_entry_t *entry;
++    struct rustls_allow_any_authenticated_client_builder *verifier_builder = NULL;
+ 
+     entry = verifiers_get_or_make_entry(verifiers, store_file);
+     if (!entry->client_verifier) {
+         rustls_root_cert_store *store;
+         rv = tls_cert_root_stores_get(verifiers->stores, store_file, &store);
+         if (APR_SUCCESS != rv) goto cleanup;
+-        entry->client_verifier = rustls_client_cert_verifier_new(store);
++        verifier_builder = rustls_allow_any_authenticated_client_builder_new(store);
++        entry->client_verifier = rustls_allow_any_authenticated_client_verifier_new(verifier_builder);
+     }
+ 
+ cleanup:
++    if (verifier_builder != NULL) {
++        rustls_allow_any_authenticated_client_builder_free(verifier_builder);
++    }
+     if (APR_SUCCESS == rv) {
+         *pverifier = entry->client_verifier;
+     }
+@@ -540,20 +545,25 @@ apr_status_t tls_cert_client_verifiers_get(
+ apr_status_t tls_cert_client_verifiers_get_optional(
+     tls_cert_verifiers_t *verifiers,
+     const char *store_file,
+-    const rustls_client_cert_verifier_optional **pverifier)
++    const rustls_allow_any_anonymous_or_authenticated_client_verifier **pverifier)
+ {
+     apr_status_t rv = APR_SUCCESS;
+     tls_cert_verifiers_entry_t *entry;
++    struct rustls_allow_any_anonymous_or_authenticated_client_builder *verifier_builder = NULL;
+ 
+     entry = verifiers_get_or_make_entry(verifiers, store_file);
+     if (!entry->client_verifier_opt) {
+         rustls_root_cert_store *store;
+         rv = tls_cert_root_stores_get(verifiers->stores, store_file, &store);
+         if (APR_SUCCESS != rv) goto cleanup;
+-        entry->client_verifier_opt = rustls_client_cert_verifier_optional_new(store);
++        verifier_builder = rustls_client_cert_verifier_optional_builder_new(store);
++        entry->client_verifier_opt = rustls_allow_any_anonymous_or_authenticated_client_verifier_new(verifier_builder);
+     }
+ 
+ cleanup:
++    if (verifier_builder != NULL) {
++        rustls_client_cert_verifier_optional_builder_free(verifier_builder);
++    }
+     if (APR_SUCCESS == rv) {
+         *pverifier = entry->client_verifier_opt;
+     }
+diff --git a/modules/tls/tls_cert.h b/modules/tls/tls_cert.h
+index 6ab3f48ae13..4ac3865dd86 100644
+--- a/modules/tls/tls_cert.h
++++ b/modules/tls/tls_cert.h
+@@ -193,7 +193,7 @@ void tls_cert_verifiers_clear(
+ apr_status_t tls_cert_client_verifiers_get(
+     tls_cert_verifiers_t *verifiers,
+     const char *store_file,
+-    const rustls_client_cert_verifier **pverifier);
++    const rustls_allow_any_authenticated_client_verifier **pverifier);
+ 
+ /**
+  * Get the optional client certificate verifier for the
+@@ -206,6 +206,6 @@ apr_status_t tls_cert_client_verifiers_get(
+ apr_status_t tls_cert_client_verifiers_get_optional(
+     tls_cert_verifiers_t *verifiers,
+     const char *store_file,
+-    const rustls_client_cert_verifier_optional **pverifier);
++    const rustls_allow_any_anonymous_or_authenticated_client_verifier **pverifier);
+ 
+-#endif /* tls_cert_h */
+\ No newline at end of file
++#endif /* tls_cert_h */
+diff --git a/modules/tls/tls_core.c b/modules/tls/tls_core.c
+index 25479392f1a..df29077826d 100644
+--- a/modules/tls/tls_core.c
++++ b/modules/tls/tls_core.c
+@@ -1119,13 +1119,13 @@ static apr_status_t build_server_connection(rustls_connection **pconnection,
+     if (cc->client_auth != TLS_CLIENT_AUTH_NONE) {
+         ap_assert(sc->client_ca);  /* checked in server_setup */
+         if (cc->client_auth == TLS_CLIENT_AUTH_REQUIRED) {
+-            const rustls_client_cert_verifier *verifier;
++            const rustls_allow_any_authenticated_client_verifier *verifier;
+             rv = tls_cert_client_verifiers_get(sc->global->verifiers, sc->client_ca, &verifier);
+             if (APR_SUCCESS != rv) goto cleanup;
+             rustls_server_config_builder_set_client_verifier(builder, verifier);
+         }
+         else {
+-            const rustls_client_cert_verifier_optional *verifier;
++            const rustls_allow_any_anonymous_or_authenticated_client_verifier *verifier;
+             rv = tls_cert_client_verifiers_get_optional(sc->global->verifiers, sc->client_ca, &verifier);
+             if (APR_SUCCESS != rv) goto cleanup;
+             rustls_server_config_builder_set_client_verifier_optional(builder, verifier);
+From 6d565575343ac5ddd674e53b7b9002396cc04375 Mon Sep 17 00:00:00 2001
+From: Daniel McCarney <daniel@binaryparadox.net>
+Date: Sun, 21 Apr 2024 15:37:25 -0400
+Subject: [PATCH] mod_tls: rustls-ffi 0.11 -> 0.12
+
+See upstream release notes for more information:
+
+https://github.com/rustls/rustls-ffi/releases/tag/v0.12.0
+https://github.com/rustls/rustls-ffi/releases/tag/v0.12.1
+https://github.com/rustls/rustls-ffi/releases/tag/v0.12.2
+---
+ .github/workflows/linux.yml |  2 +-
+ modules/tls/tls_cert.c      | 99 ++++++++++++++++++++-----------------
+ modules/tls/tls_cert.h      |  8 +--
+ modules/tls/tls_core.c      | 16 ++++--
+ 4 files changed, 70 insertions(+), 55 deletions(-)
+
+diff --git a/.github/workflows/linux.yml b/.github/workflows/linux.yml
+index 1ac41c6b2d6..3700bc4546a 100644
+--- a/.github/workflows/linux.yml
++++ b/.github/workflows/linux.yml
+@@ -241,7 +241,7 @@ jobs:
+               APR_VERSION=1.7.4
+               APU_VERSION=1.6.3
+               APU_CONFIG="--with-crypto"
+-              RUSTLS_VERSION="v0.11.0"
++              RUSTLS_VERSION="v0.12.2"
+               NO_TEST_FRAMEWORK=1
+               TEST_INSTALL=1
+               TEST_MOD_TLS=1
+diff --git a/modules/tls/tls_cert.c b/modules/tls/tls_cert.c
+index 17a35fc498d..ffb941cae40 100644
+--- a/modules/tls/tls_cert.c
++++ b/modules/tls/tls_cert.c
+@@ -331,11 +331,12 @@ const char *tls_cert_reg_get_id(tls_cert_reg_t *reg, const rustls_certified_key
+ }
+ 
+ apr_status_t tls_cert_load_root_store(
+-    apr_pool_t *p, const char *store_file, rustls_root_cert_store **pstore)
++    apr_pool_t *p, const char *store_file, const rustls_root_cert_store **pstore)
+ {
+     const char *fpath;
+     tls_data_t pem;
+-    rustls_root_cert_store *store = NULL;
++    rustls_root_cert_store_builder *store_builder = NULL;
++    const rustls_root_cert_store *store = NULL;
+     rustls_result rr = RUSTLS_RESULT_OK;
+     apr_pool_t *ptemp = NULL;
+     apr_status_t rv;
+@@ -353,11 +354,17 @@ apr_status_t tls_cert_load_root_store(
+     rv = tls_util_file_load(ptemp, fpath, 0, 1024*1024, &pem);
+     if (APR_SUCCESS != rv) goto cleanup;
+ 
+-    store = rustls_root_cert_store_new();
+-    rr = rustls_root_cert_store_add_pem(store, pem.data, pem.len, 1);
++    store_builder = rustls_root_cert_store_builder_new();
++    rr = rustls_root_cert_store_builder_add_pem(store_builder, pem.data, pem.len, 1);
++    if (RUSTLS_RESULT_OK != rr) goto cleanup;
++
++    rr = rustls_root_cert_store_builder_build(store_builder, &store);
+     if (RUSTLS_RESULT_OK != rr) goto cleanup;
+ 
+ cleanup:
++    if (store_builder != NULL) {
++        rustls_root_cert_store_builder_free(store_builder);
++    }
+     if (RUSTLS_RESULT_OK != rr) {
+         const char *err_descr;
+         rv = tls_util_rustls_error(p, rr, &err_descr);
+@@ -378,7 +385,7 @@ apr_status_t tls_cert_load_root_store(
+ 
+ typedef struct {
+     const char *id;
+-    rustls_root_cert_store *store;
++    const rustls_root_cert_store *store;
+ } tls_cert_root_stores_entry_t;
+ 
+ static int stores_entry_cleanup(void *ctx, const void *key, apr_ssize_t klen, const void *val)
+@@ -421,14 +428,14 @@ void tls_cert_root_stores_clear(tls_cert_root_stores_t *stores)
+ apr_status_t tls_cert_root_stores_get(
+     tls_cert_root_stores_t *stores,
+     const char *store_file,
+-    rustls_root_cert_store **pstore)
++    const rustls_root_cert_store **pstore)
+ {
+     apr_status_t rv = APR_SUCCESS;
+     tls_cert_root_stores_entry_t *entry;
+ 
+     entry = apr_hash_get(stores->file2store, store_file, APR_HASH_KEY_STRING);
+     if (!entry) {
+-        rustls_root_cert_store *store;
++        const rustls_root_cert_store *store;
+         rv = tls_cert_load_root_store(stores->pool, store_file, &store);
+         if (APR_SUCCESS != rv) goto cleanup;
+         entry = apr_pcalloc(stores->pool, sizeof(*entry));
+@@ -449,8 +456,8 @@ apr_status_t tls_cert_root_stores_get(
+ 
+ typedef struct {
+     const char *id;
+-    const rustls_allow_any_authenticated_client_verifier *client_verifier;
+-    const rustls_allow_any_anonymous_or_authenticated_client_verifier *client_verifier_opt;
++    rustls_client_cert_verifier *client_verifier;
++    rustls_client_cert_verifier *client_verifier_opt;
+ } tls_cert_verifiers_entry_t;
+ 
+ static int verifiers_entry_cleanup(void *ctx, const void *key, apr_ssize_t klen, const void *val)
+@@ -458,11 +465,11 @@ static int verifiers_entry_cleanup(void *ctx, const void *key, apr_ssize_t klen,
+     tls_cert_verifiers_entry_t *entry = (tls_cert_verifiers_entry_t*)val;
+     (void)ctx; (void)key; (void)klen;
+     if (entry->client_verifier) {
+-        rustls_allow_any_authenticated_client_verifier_free(entry->client_verifier);
++        rustls_client_cert_verifier_free(entry->client_verifier);
+         entry->client_verifier = NULL;
+     }
+     if (entry->client_verifier_opt) {
+-        rustls_allow_any_anonymous_or_authenticated_client_verifier_free(entry->client_verifier_opt);
++        rustls_client_cert_verifier_free(entry->client_verifier_opt);
+         entry->client_verifier_opt = NULL;
+     }
+     return 1;
+@@ -511,27 +518,43 @@ static tls_cert_verifiers_entry_t * verifiers_get_or_make_entry(
+     return entry;
+ }
+ 
+-apr_status_t tls_cert_client_verifiers_get(
+-    tls_cert_verifiers_t *verifiers,
+-    const char *store_file,
+-    const rustls_allow_any_authenticated_client_verifier **pverifier)
++static apr_status_t tls_cert_client_verifiers_get_internal(
++        tls_cert_verifiers_t *verifiers,
++        const char *store_file,
++        const rustls_client_cert_verifier **pverifier,
++        bool allow_unauthenticated)
+ {
+     apr_status_t rv = APR_SUCCESS;
+     tls_cert_verifiers_entry_t *entry;
+-    struct rustls_allow_any_authenticated_client_builder *verifier_builder = NULL;
++    rustls_result rr = RUSTLS_RESULT_OK;
++    struct rustls_web_pki_client_cert_verifier_builder *verifier_builder = NULL;
+ 
+     entry = verifiers_get_or_make_entry(verifiers, store_file);
+     if (!entry->client_verifier) {
+-        rustls_root_cert_store *store;
++        const rustls_root_cert_store *store;
+         rv = tls_cert_root_stores_get(verifiers->stores, store_file, &store);
+         if (APR_SUCCESS != rv) goto cleanup;
+-        verifier_builder = rustls_allow_any_authenticated_client_builder_new(store);
+-        entry->client_verifier = rustls_allow_any_authenticated_client_verifier_new(verifier_builder);
++        verifier_builder = rustls_web_pki_client_cert_verifier_builder_new(store);
++
++        if (allow_unauthenticated) {
++            rr = rustls_web_pki_client_cert_verifier_builder_allow_unauthenticated(verifier_builder);
++            if (rr != RUSTLS_RESULT_OK) {
++                goto cleanup;
++            }
++        }
++
++        rr = rustls_web_pki_client_cert_verifier_builder_build(verifier_builder, &entry->client_verifier);
++        if (rr != RUSTLS_RESULT_OK) {
++            goto cleanup;
++        }
+     }
+ 
+ cleanup:
+     if (verifier_builder != NULL) {
+-        rustls_allow_any_authenticated_client_builder_free(verifier_builder);
++        rustls_web_pki_client_cert_verifier_builder_free(verifier_builder);
++    }
++    if (rr != RUSTLS_RESULT_OK) {
++        rv = tls_util_rustls_error(verifiers->pool, rr, NULL);
+     }
+     if (APR_SUCCESS == rv) {
+         *pverifier = entry->client_verifier;
+@@ -542,33 +565,19 @@ apr_status_t tls_cert_client_verifiers_get(
+     return rv;
+ }
+ 
+-apr_status_t tls_cert_client_verifiers_get_optional(
++
++apr_status_t tls_cert_client_verifiers_get(
+     tls_cert_verifiers_t *verifiers,
+     const char *store_file,
+-    const rustls_allow_any_anonymous_or_authenticated_client_verifier **pverifier)
++    const rustls_client_cert_verifier **pverifier)
+ {
+-    apr_status_t rv = APR_SUCCESS;
+-    tls_cert_verifiers_entry_t *entry;
+-    struct rustls_allow_any_anonymous_or_authenticated_client_builder *verifier_builder = NULL;
+-
+-    entry = verifiers_get_or_make_entry(verifiers, store_file);
+-    if (!entry->client_verifier_opt) {
+-        rustls_root_cert_store *store;
+-        rv = tls_cert_root_stores_get(verifiers->stores, store_file, &store);
+-        if (APR_SUCCESS != rv) goto cleanup;
+-        verifier_builder = rustls_client_cert_verifier_optional_builder_new(store);
+-        entry->client_verifier_opt = rustls_allow_any_anonymous_or_authenticated_client_verifier_new(verifier_builder);
+-    }
++    return tls_cert_client_verifiers_get_internal(verifiers, store_file, pverifier, false);
++}
+ 
+-cleanup:
+-    if (verifier_builder != NULL) {
+-        rustls_client_cert_verifier_optional_builder_free(verifier_builder);
+-    }
+-    if (APR_SUCCESS == rv) {
+-        *pverifier = entry->client_verifier_opt;
+-    }
+-    else {
+-        *pverifier = NULL;
+-    }
+-    return rv;
++apr_status_t tls_cert_client_verifiers_get_optional(
++    tls_cert_verifiers_t *verifiers,
++    const char *store_file,
++    const rustls_client_cert_verifier **pverifier)
++{
++    return tls_cert_client_verifiers_get_internal(verifiers, store_file, pverifier, true);
+ }
+diff --git a/modules/tls/tls_cert.h b/modules/tls/tls_cert.h
+index 4ac3865dd86..3326f0eb3e7 100644
+--- a/modules/tls/tls_cert.h
++++ b/modules/tls/tls_cert.h
+@@ -128,7 +128,7 @@ const char *tls_cert_reg_get_id(tls_cert_reg_t *reg, const rustls_certified_key
+  * @param pstore the loaded root store on success
+  */
+ apr_status_t tls_cert_load_root_store(
+-    apr_pool_t *p, const char *store_file, rustls_root_cert_store **pstore);
++    apr_pool_t *p, const char *store_file, const rustls_root_cert_store **pstore);
+ 
+ typedef struct tls_cert_root_stores_t tls_cert_root_stores_t;
+ struct tls_cert_root_stores_t {
+@@ -157,7 +157,7 @@ void tls_cert_root_stores_clear(tls_cert_root_stores_t *stores);
+ apr_status_t tls_cert_root_stores_get(
+     tls_cert_root_stores_t *stores,
+     const char *store_file,
+-    rustls_root_cert_store **pstore);
++    const rustls_root_cert_store **pstore);
+ 
+ typedef struct tls_cert_verifiers_t tls_cert_verifiers_t;
+ struct tls_cert_verifiers_t {
+@@ -193,7 +193,7 @@ void tls_cert_verifiers_clear(
+ apr_status_t tls_cert_client_verifiers_get(
+     tls_cert_verifiers_t *verifiers,
+     const char *store_file,
+-    const rustls_allow_any_authenticated_client_verifier **pverifier);
++    const rustls_client_cert_verifier **pverifier);
+ 
+ /**
+  * Get the optional client certificate verifier for the
+@@ -206,6 +206,6 @@ apr_status_t tls_cert_client_verifiers_get(
+ apr_status_t tls_cert_client_verifiers_get_optional(
+     tls_cert_verifiers_t *verifiers,
+     const char *store_file,
+-    const rustls_allow_any_anonymous_or_authenticated_client_verifier **pverifier);
++    const rustls_client_cert_verifier **pverifier);
+ 
+ #endif /* tls_cert_h */
+diff --git a/modules/tls/tls_core.c b/modules/tls/tls_core.c
+index df29077826d..1cef254f103 100644
+--- a/modules/tls/tls_core.c
++++ b/modules/tls/tls_core.c
+@@ -764,8 +764,10 @@ static apr_status_t init_outgoing_connection(conn_rec *c)
+     tls_conf_proxy_t *pc;
+     const apr_array_header_t *ciphersuites = NULL;
+     apr_array_header_t *tls_versions = NULL;
++    rustls_web_pki_server_cert_verifier_builder *verifier_builder = NULL;
++    struct rustls_server_cert_verifier *verifier = NULL;
+     rustls_client_config_builder *builder = NULL;
+-    rustls_root_cert_store *ca_store = NULL;
++    const rustls_root_cert_store *ca_store = NULL;
+     const char *hostname = NULL, *alpn_note = NULL;
+     rustls_result rr = RUSTLS_RESULT_OK;
+     apr_status_t rv = APR_SUCCESS;
+@@ -809,7 +811,10 @@ static apr_status_t init_outgoing_connection(conn_rec *c)
+     if (pc->proxy_ca && strcasecmp(pc->proxy_ca, "default")) {
+         rv = tls_cert_root_stores_get(pc->global->stores, pc->proxy_ca, &ca_store);
+         if (APR_SUCCESS != rv) goto cleanup;
+-        rustls_client_config_builder_use_roots(builder, ca_store);
++        verifier_builder = rustls_web_pki_server_cert_verifier_builder_new(ca_store);
++        rr = rustls_web_pki_server_cert_verifier_builder_build(verifier_builder, &verifier);
++        if (RUSTLS_RESULT_OK != rr) goto cleanup;
++        rustls_client_config_builder_set_server_verifier(builder, verifier);
+     }
+ 
+ #if TLS_MACHINE_CERTS
+@@ -881,6 +886,7 @@ static apr_status_t init_outgoing_connection(conn_rec *c)
+     rustls_connection_set_userdata(cc->rustls_connection, c);
+ 
+ cleanup:
++    if (verifier_builder != NULL) rustls_web_pki_server_cert_verifier_builder_free(verifier_builder);
+     if (builder != NULL) rustls_client_config_builder_free(builder);
+     if (RUSTLS_RESULT_OK != rr) {
+         const char *err_descr = NULL;
+@@ -1119,16 +1125,16 @@ static apr_status_t build_server_connection(rustls_connection **pconnection,
+     if (cc->client_auth != TLS_CLIENT_AUTH_NONE) {
+         ap_assert(sc->client_ca);  /* checked in server_setup */
+         if (cc->client_auth == TLS_CLIENT_AUTH_REQUIRED) {
+-            const rustls_allow_any_authenticated_client_verifier *verifier;
++            const rustls_client_cert_verifier *verifier;
+             rv = tls_cert_client_verifiers_get(sc->global->verifiers, sc->client_ca, &verifier);
+             if (APR_SUCCESS != rv) goto cleanup;
+             rustls_server_config_builder_set_client_verifier(builder, verifier);
+         }
+         else {
+-            const rustls_allow_any_anonymous_or_authenticated_client_verifier *verifier;
++            const rustls_client_cert_verifier *verifier;
+             rv = tls_cert_client_verifiers_get_optional(sc->global->verifiers, sc->client_ca, &verifier);
+             if (APR_SUCCESS != rv) goto cleanup;
+-            rustls_server_config_builder_set_client_verifier_optional(builder, verifier);
++            rustls_server_config_builder_set_client_verifier(builder, verifier);
+         }
+     }
+ 
+From ef690ed43eed53a7b6aaba6027842cdd76d3ccb4 Mon Sep 17 00:00:00 2001
+From: Daniel McCarney <daniel@binaryparadox.net>
+Date: Sun, 21 Apr 2024 13:49:49 -0400
+Subject: [PATCH] mod_tls: rustls-ffi 0.12 -> 0.13
+
+The breaking API changes in this release don't affect `mod_tls`, making
+this an in-place update.
+
+See the upstream release notes[0] for more information.
+
+[0]: https://github.com/rustls/rustls-ffi/releases/tag/v0.13.0
+---
+ .github/workflows/linux.yml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/.github/workflows/linux.yml b/.github/workflows/linux.yml
+index 3700bc4546a..54dcd7b0b32 100644
+--- a/.github/workflows/linux.yml
++++ b/.github/workflows/linux.yml
+@@ -241,7 +241,7 @@ jobs:
+               APR_VERSION=1.7.4
+               APU_VERSION=1.6.3
+               APU_CONFIG="--with-crypto"
+-              RUSTLS_VERSION="v0.12.2"
++              RUSTLS_VERSION="v0.13.0"
+               NO_TEST_FRAMEWORK=1
+               TEST_INSTALL=1
+               TEST_MOD_TLS=1
