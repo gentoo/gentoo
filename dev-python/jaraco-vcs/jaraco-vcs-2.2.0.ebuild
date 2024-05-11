@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~s390 ~x86"
+KEYWORDS="amd64 ~riscv ~s390 ~x86"
 
 RDEPEND="
 	dev-python/jaraco-classes[${PYTHON_USEDEP}]
