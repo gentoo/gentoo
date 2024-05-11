@@ -104,6 +104,8 @@ dev-python/pyfuse3
 dev-python/pymdown-extensions
 dev-python/pyspelling
 dev-python/pyspnego
+dev-python/pyproject-fmt
+dev-python/pyproject-fmt-rust
 dev-python/pytest-jupyter
 dev-python/pytest-localftpserver
 dev-python/pytest-salt-factories
