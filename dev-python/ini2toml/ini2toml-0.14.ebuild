@@ -17,6 +17,7 @@ HOMEPAGE="
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+IUSE="test-rust"
 
 RDEPEND="
 	>=dev-python/packaging-20.7[${PYTHON_USEDEP}]
@@ -27,20 +28,34 @@ BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/configupdater[${PYTHON_USEDEP}]
-		>=dev-python/pyproject-fmt-0.4.0[${PYTHON_USEDEP}]
 		dev-python/tomli[${PYTHON_USEDEP}]
 		dev-python/tomlkit[${PYTHON_USEDEP}]
+		test-rust? (
+			>=dev-python/pyproject-fmt-0.4.0[${PYTHON_USEDEP}]
+		)
 	)
 "
 
 distutils_enable_tests pytest
 
-EPYTEST_IGNORE=(
-	# validate_pyproject is not packaged
-	tests/test_examples.py
-)
-
 src_prepare() {
 	sed -i -e 's:--cov ini2toml --cov-report term-missing::' setup.cfg || die
 	distutils-r1_src_prepare
+}
+
+python_test() {
+	local EPYTEST_IGNORE=(
+		# validate_pyproject is not packaged
+		tests/test_examples.py
+	)
+	local EPYTEST_DESELECT=()
+
+	if ! has_version ">=dev-python/pyproject-fmt-0.4.0[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			tests/test_cli.py::test_auto_formatting
+		)
+	fi
+
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest
 }
