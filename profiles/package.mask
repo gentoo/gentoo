@@ -40,7 +40,6 @@
 dev-go/fuzzy
 dev-go/go-bindata-assetfs
 dev-go/godebug-pretty
-dev-go/goversion
 dev-go/sanitized-anchor-name
 
 # Eli Schwartz <eschwartz93@gmail.com> (2024-05-08)
