@@ -567,9 +567,6 @@ src_configure() {
 	# This flag makes compiling crash in interesting ways
 	filter-flags "-malign-double"
 
-	# Generic LTO broken since 5.28, triggers EUMM failures
-	filter-lto
-
 	# On musl we dont want to use largefile *64 types, since 1) normal
 	# types are 64bit / largefile anyway and 2) the *64 types are going
 	# away in 1.2.4... bug #911233
