@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 
 inherit distutils-r1 multiprocessing pypi
 
@@ -98,7 +98,7 @@ python_test() {
 				'tests/unit/discovery/py_info/test_py_info_exe_based_of.py::test_discover_ok[python-3--bin-]'
 			)
 			;;
-		python3.12)
+		python3.1[23])
 			EPYTEST_DESELECT+=(
 				tests/unit/create/via_global_ref/test_build_c_ext.py
 			)
