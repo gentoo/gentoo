@@ -17,13 +17,6 @@ Link: https://bugs.gentoo.org/870424
 Link: https://bugs.gentoo.org/919256
 Link: https://lists.gnu.org/archive/html/bug-readline/2024-05/msg00000.html
 Signed-off-by: Gabi Falk <gabifalk@gmx.com>
----
- examples/rlfe/configure    | 668 ++++++++++++++++++++-----------------
- examples/rlfe/configure.in |  88 +++--
- 2 files changed, 422 insertions(+), 334 deletions(-)
-
-diff --git a/examples/rlfe/configure b/examples/rlfe/configure
-index 3928331..063113d 100755
 --- a/examples/rlfe/configure
 +++ b/examples/rlfe/configure
 @@ -1490,115 +1490,6 @@ fi
@@ -939,8 +932,6 @@ index 3928331..063113d 100755
  for ac_header in sys/stropts.h sys/wait.h sgtty.h sys/select.h
  do :
    as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
-diff --git a/examples/rlfe/configure.in b/examples/rlfe/configure.in
-index ad7ce65..aba06c6 100644
 --- a/examples/rlfe/configure.in
 +++ b/examples/rlfe/configure.in
 @@ -30,7 +30,9 @@ AC_PROG_CPP
