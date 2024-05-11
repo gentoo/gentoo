@@ -16,7 +16,7 @@ else
 	# The v1.11.2 tag went missing upstream, so use a previously fetched copy.
 	SRC_URI="https://dev.gentoo.org/~zmedico/dist/${P}.tar.gz"
 	SRC_URI+=" https://dev.gentoo.org/~zmedico/dist/${PF}-deps.tar.xz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 # main
