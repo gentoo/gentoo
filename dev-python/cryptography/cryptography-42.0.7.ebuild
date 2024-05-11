@@ -6,7 +6,7 @@ EAPI=8
 CARGO_OPTIONAL=yes
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 CRATES="
@@ -136,6 +136,8 @@ src_prepare() {
 
 python_configure_all() {
 	filter-lto # bug #903908
+
+	export UNSAFE_PYO3_SKIP_VERSION_CHECK=1
 }
 
 python_test() {
