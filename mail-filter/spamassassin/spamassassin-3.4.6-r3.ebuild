@@ -1,23 +1,19 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
-inherit perl-functions systemd toolchain-funcs verify-sig autotools
+inherit perl-functions systemd toolchain-funcs
 
 MY_P="Mail-SpamAssassin-${PV//_/-}"
 DESCRIPTION="An extensible mail filter which can identify and tag spam"
 HOMEPAGE="https://spamassassin.apache.org/"
-SRC_URI="mirror://apache/spamassassin/source/${MY_P}.tar.bz2
-	verify-sig? (
-		https://downloads.apache.org/spamassassin/source/${MY_P}.tar.bz2.asc
-	)
-"
+SRC_URI="mirror://apache/spamassassin/source/${MY_P}.tar.bz2"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="berkdb cron ipv6 ldap mysql postgres qmail sqlite ssl test"
 RESTRICT="!test? ( test )"
 
@@ -30,7 +26,10 @@ REQDEPEND="acct-user/spamd
 	dev-perl/HTML-Parser
 	dev-perl/Net-DNS
 	dev-perl/NetAddr-IP
+	virtual/perl-Archive-Tar
 	virtual/perl-Digest-SHA
+	virtual/perl-IO-Zlib
+	virtual/perl-Time-HiRes
 	ssl? (
 		dev-libs/openssl:0=
 	)"
@@ -44,18 +43,15 @@ REQDEPEND="acct-user/spamd
 # We still need the old Digest-SHA1 because razor2 has not been ported
 # to Digest-SHA.
 OPTDEPEND="app-crypt/gnupg
-	dev-perl/Archive-Zip
 	dev-perl/BSD-Resource
 	dev-perl/Digest-SHA1
-	dev-perl/Email-Address-XS
 	dev-perl/Encode-Detect
 	|| ( dev-perl/GeoIP2 dev-perl/Geo-IP )
-	dev-perl/IO-String
+	dev-perl/HTTP-Date
 	dev-perl/Mail-DKIM
-	dev-perl/Mail-DMARC
 	dev-perl/Mail-SPF
 	dev-perl/Net-Patricia
-	dev-perl/Net-LibIDN2
+	dev-perl/Net-CIDR-Lite
 	dev-util/re2c
 	|| ( net-misc/wget[ssl] net-misc/curl[ssl] )
 	virtual/perl-MIME-Base64
@@ -83,20 +79,13 @@ DEPEND="${REQDEPEND}
 		virtual/perl-Test-Harness
 	)"
 RDEPEND="${REQDEPEND} ${OPTDEPEND}"
-BDEPEND="${RDEPEND}
-	verify-sig? ( sec-keys/openpgp-keys-spamassassin )"
-
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/spamassassin.apache.org.asc
 
 PATCHES=(
 	"${FILESDIR}/mention-geoip.cf-in-init.pre.patch"
-	"${FILESDIR}/4.0.0-tests-dnsbl_subtests.t_001_load-URIDNSBL.patch"
-	"${FILESDIR}/4.0.0-tests-dnsbl_subtests.t_002_no-net.patch"
-	"${FILESDIR}/4.0.0-tests-strip2.t.patch"
-	"${FILESDIR}/4.0.0-DnsResolver-udpsize.patch"
+	"${FILESDIR}/3.4.6-configure-clang16.patch"
 )
 
-# There are a few renames and use-dependent ones in src_install as well.
+# There are a few renames and use-dependent ones in src_istall as well.
 DOCS=(
 	NOTICE TRADEMARK CREDITS UPGRADE USAGE sql/README.bayes
 	sql/README.awl procmailrc.example sample-nonspam.txt
@@ -148,17 +137,9 @@ src_configure() {
 		DATADIR="${EPREFIX}/usr/share/spamassassin" \
 		PERL_BIN="${EPREFIX}/usr/bin/perl" \
 		ENABLE_SSL="$(usex ssl)" \
-		DESTDIR="${D}" \
 		|| die 'failed to create a Makefile using Makefile.PL'
 
 	# Now configure spamc.
-
-	# Run autoreconf to avoid some issues caused by a standard test in the
-	# current autoconf.  Expected to be fixed in next autoconf release, so
-	# these next 3 lines might not be needed for long.  See bug #899782.
-	pushd spamc >/dev/null
-	eautoreconf
-	popd >/dev/null
 	emake CC="$(tc-getCC)" LDFLAGS="${LDFLAGS}" spamc/Makefile
 }
 
@@ -201,7 +182,7 @@ src_install () {
 	newdoc ldap/README README.ldap
 
 	insinto /etc/mail/spamassassin/
-	newins "${FILESDIR}"/geoip-4.0.0.cf geoip.cf
+	doins "${FILESDIR}"/geoip.cf
 	insopts -m0400
 	newins "${FILESDIR}"/secrets.cf secrets.cf.example
 
