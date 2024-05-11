@@ -33,6 +33,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-11)
+# EAPI=6, library only without any reverse dependencies, uses
+# deprecated go eclasses.
+# Removal: 2024-06-10.  Bug #931725.
+dev-go/fuzzy
+dev-go/go-bindata-assetfs
+dev-go/godebug-pretty
+dev-go/goversion
+dev-go/sanitized-anchor-name
+
 # Eli Schwartz <eschwartz93@gmail.com> (2024-05-08)
 # Fails to configure with GCC 14, fails to install with older
 # gcc, unmaintained, upstream website vanished.
