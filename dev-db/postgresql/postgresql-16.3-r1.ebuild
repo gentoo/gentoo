@@ -409,13 +409,6 @@ pkg_config() {
 	# overridden in the initscript
 	sed '/^#unix_socket_directories/,+1d' -i "${PGDATA%/}"/postgresql.conf
 
-	cat <<- EOF >> "${PGDATA%/}"/postgresql.conf
-		# This is here because of https://bugs.gentoo.org/show_bug.cgi?id=518522
-		# On the off-chance that you might need to work with UTF-8 encoded
-		# characters in PL/Perl
-		plperl.on_init = 'use utf8; use re; package utf8; require "utf8_heavy.pl";'
-	EOF
-
 	einfo "The autovacuum function, which was in contrib, has been moved to the main"
 	einfo "PostgreSQL functions starting with 8.1, and starting with 8.4 is now enabled"
 	einfo "by default. You can disable it in the cluster's:"
