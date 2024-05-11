@@ -33,6 +33,7 @@ src_install() {
 
 	einfo "Setting up container for configuration"
 	dodir /etc/${PN}
+	fperms o+x /etc/${PN}  # allow webserver to read config
 
 	# setup config in /etc
 	# we are not allowed to use straight-forward absolute symlink :(
@@ -51,12 +52,4 @@ src_install() {
 
 	webapp_postinst_txt en "${FILESDIR}/postinstall-v0.7-en.txt"
 	webapp_src_install
-
-	if has_version www-servers/apache ; then
-		fowners -R apache:apache /etc/${PN}
-	elif has_version www-servers/nginx ; then
-		fowners -R nginx:nginx /etc/${PN}
-	else
-		einfo "/etc/${PN} must be owned by the webserver user for baikal"
-	fi
 }
