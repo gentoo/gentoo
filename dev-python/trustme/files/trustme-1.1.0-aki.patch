@@ -1,0 +1,96 @@
+From 84e347d9221e304f0158330e5101d23969d424d0 Mon Sep 17 00:00:00 2001
+From: Illia Volochii <illia.volochii@gmail.com>
+Date: Wed, 27 Mar 2024 11:45:41 +0000
+Subject: [PATCH 1/3] Add AKI to child CA certificates
+
+---
+ src/trustme/__init__.py | 14 +++++++++++---
+ tests/test_trustme.py   |  5 +++++
+ 2 files changed, 16 insertions(+), 3 deletions(-)
+
+diff --git a/src/trustme/__init__.py b/src/trustme/__init__.py
+index 5fb24fb..0db1bb0 100644
+--- a/src/trustme/__init__.py
++++ b/src/trustme/__init__.py
+@@ -250,14 +250,22 @@ def __init__(
+             sign_key = parent_cert._private_key
+             parent_certificate = parent_cert._certificate
+             issuer = parent_certificate.subject
+-
+-        self._certificate = (
++            ski_ext = parent_certificate.extensions.get_extension_for_class(
++                x509.SubjectKeyIdentifier)
++            aki = x509.AuthorityKeyIdentifier.from_issuer_subject_key_identifier(ski_ext.value)
++        else:
++            aki = None
++        cert_builder = (
+             _cert_builder_common(name, issuer, self._private_key.public_key())
+             .add_extension(
+                 x509.BasicConstraints(ca=True, path_length=path_length),
+                 critical=True,
+             )
+-            .add_extension(
++        )
++        if aki:
++            cert_builder = cert_builder.add_extension(aki, critical=False)
++        self._certificate = (
++            cert_builder.add_extension(
+                 x509.KeyUsage(
+                     digital_signature=True,  # OCSP
+                     content_commitment=False,
+diff --git a/tests/test_trustme.py b/tests/test_trustme.py
+index 1d901ad..581716e 100644
+--- a/tests/test_trustme.py
++++ b/tests/test_trustme.py
+@@ -200,6 +200,11 @@ def test_intermediate() -> None:
+     assert_is_ca(child_ca_cert)
+     assert child_ca_cert.issuer == ca_cert.subject
+     assert _path_length(child_ca_cert) == 8
++    aki = child_ca_cert.extensions.get_extension_for_class(x509.AuthorityKeyIdentifier)
++    assert aki.critical is False
++    expected_aki_key_id = ca_cert.extensions.get_extension_for_class(
++        x509.SubjectKeyIdentifier).value.digest
++    assert aki.value.key_identifier == expected_aki_key_id
+ 
+     child_server = child_ca.issue_cert("test-host.example.org")
+     assert len(child_server.cert_chain_pems) == 2
+
+From f507a28e0f4d97d63716aa5a81669bb747235f07 Mon Sep 17 00:00:00 2001
+From: Illia Volochii <illia.volochii@gmail.com>
+Date: Wed, 27 Mar 2024 12:02:59 +0000
+Subject: [PATCH 2/3] Fix a typing issue
+
+---
+ src/trustme/__init__.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/trustme/__init__.py b/src/trustme/__init__.py
+index 0db1bb0..d126180 100644
+--- a/src/trustme/__init__.py
++++ b/src/trustme/__init__.py
+@@ -246,6 +246,7 @@ def __init__(
+         )
+         issuer = name
+         sign_key = self._private_key
++        aki: Optional[x509.AuthorityKeyIdentifier]
+         if parent_cert is not None:
+             sign_key = parent_cert._private_key
+             parent_certificate = parent_cert._certificate
+
+From cdd2fd61aae9c92f902932bacd6b39189ecde4b1 Mon Sep 17 00:00:00 2001
+From: Illia Volochii <illia.volochii@gmail.com>
+Date: Wed, 27 Mar 2024 12:09:38 +0000
+Subject: [PATCH 3/3] Add a news entry
+
+---
+ newsfragments/642.bugfix.rst | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 newsfragments/642.bugfix.rst
+
+diff --git a/newsfragments/642.bugfix.rst b/newsfragments/642.bugfix.rst
+new file mode 100644
+index 0000000..9d75e7a
+--- /dev/null
++++ b/newsfragments/642.bugfix.rst
+@@ -0,0 +1 @@
++Add the Authority Key Identifier extension to child CA certificates.
