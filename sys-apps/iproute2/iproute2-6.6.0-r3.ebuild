@@ -55,6 +55,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.6.0-configure-Add-_GNU_SOURCE-to-strlcpy-configure-test.patch
 	"${FILESDIR}"/${PN}-6.6.0-revert-CONF_USR_DIR.patch
 	"${FILESDIR}"/${PN}-6.6.0-makefile-use-usr-share-config.patch
+	"${FILESDIR}"/${PN}-6.6.0-musl-c99.patch # bug #922622
 )
 
 src_prepare() {
