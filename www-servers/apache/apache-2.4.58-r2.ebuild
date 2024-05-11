@@ -148,6 +148,11 @@ LICENSE="Apache-2.0 Apache-1.1"
 SLOT="2"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x64-macos ~x64-solaris"
 
+RDEPEND="
+	apache2_modules_tls? ( >=net-libs/rustls-ffi-0.9.2:= <net-libs/rustls-ffi-11 )
+"
+DEPEND="${RDEPEND}"
+
 PATCHES=(
 	"${FILESDIR}"/libxmlv212.patch
 )
