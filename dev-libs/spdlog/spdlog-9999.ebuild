@@ -28,7 +28,7 @@ BDEPEND="
 	)
 "
 DEPEND="
-	>=dev-libs/libfmt-8.0.0:=
+	>=dev-libs/libfmt-9.1.0-r2[${MULTILIB_USEDEP}]
 "
 RDEPEND="${DEPEND}"
 
