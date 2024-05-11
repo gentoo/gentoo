@@ -12,7 +12,7 @@ SRC_URI+=" https://dev.gentoo.org/~zmedico/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~loong ~riscv"
+KEYWORDS="amd64 ~loong ~riscv"
 IUSE="doc +server"
 
 COMMON_DEPEND="server? (
