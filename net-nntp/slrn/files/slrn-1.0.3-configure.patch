@@ -1,0 +1,48 @@
+https://bugs.gentoo.org/874687
+from
+https://github.com/jedsoft/slrn/pull/1
+edited to current situation (line numbers changed so patch applies cleanly)
+and half of the patch pertaining autotools is dropped
+
+From f550d0ab9e1cd3cfe844022435c3d98af3c18441 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Sat, 4 Feb 2023 15:04:36 +0100
+Subject: [PATCH] autoconf: Fix C99 compatibility issue in the VA_COPY checks
+
+The exit function is called without including <stdlib.h>, resulting
+in an implicit function declarations.  Future compilers will not
+support implicit function declarations by default.  This will lead
+to build failures.
+---
+ autoconf/configure.ac | 3 +++
+ configure             | 3 +++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/configure b/configure
+index faec350..8758172 100755
+--- a/configure
++++ b/configure
+@@ -8307,6 +8307,7 @@ else
+ /* end confdefs.h.  */
+ 
+ 	#include <stdarg.h>
++	#include <stdlib.h>
+ 	void f (int i, ...) {
+ 	va_list args1, args2;
+ 	va_start (args1, i);
+@@ -8352,6 +8353,7 @@ else
+ /* end confdefs.h.  */
+ 
+ 	#include <stdarg.h>
++	#include <stdlib.h>
+ 	void f (int i, ...) {
+ 	va_list args1, args2;
+ 	va_start (args1, i);
+@@ -8397,6 +8399,7 @@ else
+ /* end confdefs.h.  */
+ 
+ 	#include <stdarg.h>
++	#include <stdlib.h>
+ 	void f (int i, ...) {
+ 	va_list args1, args2;
+ 	va_start (args1, i);
