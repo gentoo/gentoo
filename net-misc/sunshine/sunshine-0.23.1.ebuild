@@ -13,13 +13,10 @@ SWS_COMMIT="27b41f5ee154cca0fce4fe2955dd886d04e3a4ed"
 WLRP_COMMIT="2b8d43325b7012cc3f9b55c08d26e50e42beac7d"
 FFMPEG_VERSION="6.1.1"
 
-# To make the node-modules tarball:
+# To make the assets tarball:
 # PV=
-# git fetch
-# git checkout v$PV
-# rm -rf node_modules npm_cache package-lock.json
-# npm_config_cache="${PWD}"/npm_cache npm install --logs-max=0 --omit=optional
-# XZ_OPT=-9 tar --xform="s:^:Sunshine-$PV/:" -Jcf /var/cache/distfiles/sunshine-npm-cache-$PV.tar.xz npm_cache package-lock.json
+# EGIT_OVERRIDE_COMMIT_LIZARDBYTE_SUNSHINE=v$PV ebuild sunshine-9999.ebuild clean compile
+# XZ_OPT=-9 tar --xform="s:^:Sunshine-$PV/:" -Jcf /var/cache/distfiles/sunshine-assets-$PV.tar.xz -C /var/tmp/portage/net-misc/sunshine-9999/work/sunshine-9999 assets/
 
 if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
@@ -40,7 +37,7 @@ else
 		https://gitlab.com/eidheim/Simple-Web-Server/-/archive/${SWS_COMMIT}/Simple-Web-Server-${SWS_COMMIT}.tar.bz2
 		https://gitlab.freedesktop.org/wlroots/wlr-protocols/-/archive/${WLRP_COMMIT}/wlr-protocols-${WLRP_COMMIT}.tar.bz2
 		https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz
-		https://dev.gentoo.org/~chewi/distfiles/${PN}-npm-cache-${PV}.tar.xz
+		https://dev.gentoo.org/~chewi/distfiles/${PN}-assets-${PV}.tar.xz
 	"
 	KEYWORDS="~amd64 ~arm64"
 	S="${WORKDIR}/Sunshine-${PV}"
@@ -181,6 +178,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-custom-ffmpeg.patch
 	"${FILESDIR}"/${PN}-0.22.0-nvcodec.patch
+	"${FILESDIR}"/${PN}-find-npm.patch
 )
 
 # Make this mess a bit simpler.
@@ -188,7 +186,6 @@ CMAKE_IN_SOURCE_BUILD=1
 
 # Make npm behave.
 export npm_config_audit=false
-export npm_config_cache="${S}"/npm_cache
 export npm_config_color=false
 export npm_config_foreground_scripts=true
 export npm_config_loglevel=verbose
@@ -353,6 +350,7 @@ src_configure() {
 		-DSYSTEMD_USER_UNIT_INSTALL_DIR=$(systemd_get_userunitdir)
 		-DUDEV_RULES_INSTALL_DIR=$(get_udevdir)/rules.d
 	)
+	[[ ${PV} = 9999* ]] || mycmakeargs+=( -DNPM="${BROOT}"/bin/true )
 	CMAKE_USE_DIR="${S}" cmake_src_configure
 }
 
@@ -361,7 +359,7 @@ src_compile() {
 	emake -C "${WORKDIR}"/ffmpeg-build V=1 install
 	CMAKE_USE_DIR="${WORKDIR}/build-deps" cmake_src_compile
 	CMAKE_USE_DIR="${WORKDIR}/build-deps" cmake_build install
-	CMAKE_USE_DIR="${S}" npm_config_offline=1 cmake_src_compile
+	CMAKE_USE_DIR="${S}" cmake_src_compile
 }
 
 pkg_postinst() {
