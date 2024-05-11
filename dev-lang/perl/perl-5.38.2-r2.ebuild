@@ -650,7 +650,7 @@ src_configure() {
 	if use prefix ; then
 		# Set a hook to check for each detected library whether it actually works.
 		export libscheck="
-			( echo 'main(){}' > '${T}'/conftest.c &&
+			( echo 'int main(){}' > '${T}'/conftest.c &&
 				$(tc-getCC) -o '${T}'/conftest '${T}'/conftest.c -l\$thislib >/dev/null 2>/dev/null
 			) || xxx=/dev/null"
 
