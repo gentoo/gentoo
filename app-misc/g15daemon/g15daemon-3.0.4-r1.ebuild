@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -66,7 +66,7 @@ src_unpack() {
 	fi
 
 	if use perl ; then
-		unpack "./${P}/lang-bindings/perl-G15Daemon-0.2.tar.gz"
+		unpack "${S}"/contrib/lang-bindings/perl-G15Daemon-0.2.tar.gz
 	fi
 }
 
