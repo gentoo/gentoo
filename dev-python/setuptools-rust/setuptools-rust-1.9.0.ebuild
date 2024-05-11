@@ -5,7 +5,7 @@ EAPI=8
 
 CARGO_OPTIONAL=yes
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 
 CRATES="
 	autocfg@1.1.0
@@ -162,6 +162,8 @@ src_unpack() {
 }
 
 python_test() {
+	local -x UNSAFE_PYO3_SKIP_VERSION_CHECK=1
+
 	local examples=(
 		html-py-ever
 		namespace_package
