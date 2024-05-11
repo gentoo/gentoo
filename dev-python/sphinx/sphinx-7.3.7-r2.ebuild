@@ -52,11 +52,6 @@ RDEPEND="
 	)
 	!dev-python/namespace-sphinxcontrib
 "
-# added temporarily because of unconditional import in sphinx.testing.util
-# until we figure out how to deal with it better
-RDEPEND+="
-	dev-python/defusedxml[${PYTHON_USEDEP}]
-"
 BDEPEND="
 	doc? (
 		dev-python/sphinxcontrib-websupport[${PYTHON_USEDEP}]
@@ -77,6 +72,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/sphinx-3.2.1-doc-link.patch"
 	"${FILESDIR}/sphinx-4.3.2-doc-link.patch"
+	# https://github.com/sphinx-doc/sphinx/pull/12362
+	"${FILESDIR}/${P}-opt-defusedxml.patch"
 )
 
 distutils_enable_tests pytest
