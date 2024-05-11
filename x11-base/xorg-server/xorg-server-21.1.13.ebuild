@@ -104,6 +104,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.18-support-multiple-Files-sections.patch
 	# pending upstream backport, bug #885763
 	"${FILESDIR}"/${PN}-21.1.10-c99.patch
+	# backport of upstream commit, bug #925876
+	"${FILESDIR}"/${PN}-21.1.10-fix-c99-32bit.patch
 )
 
 src_configure() {
