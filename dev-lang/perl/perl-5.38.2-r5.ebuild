@@ -563,6 +563,9 @@ src_configure() {
 	# However, the darwin prefix people have no locale.h ...
 	use elibc_glibc && myconf -Ui_xlocale
 
+	# Perl relies on -fwrapv semantics
+	filter-flags -ftrapv
+
 	# This flag makes compiling crash in interesting ways
 	filter-flags "-malign-double"
 
