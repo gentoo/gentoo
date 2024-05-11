@@ -19,4 +19,7 @@
 		<remote-id type="sourceforge">plantuml</remote-id>
 		<remote-id type="github">plantuml/plantuml</remote-id>
 	</upstream>
+	<use>
+		<flag name="ant-task">Provides classes used to manage PlantUML Ant task</flag>
+	</use>
 </pkgmetadata>
