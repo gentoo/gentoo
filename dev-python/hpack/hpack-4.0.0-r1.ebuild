@@ -14,7 +14,11 @@ HOMEPAGE="
 	https://github.com/python-hyper/hpack/
 	https://pypi.org/project/hpack/
 "
-SRC_URI="https://github.com/python-hyper/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+# PyPI sdist is missing test fixtures, as of 4.0.0
+SRC_URI="
+	https://github.com/python-hyper/hpack/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
