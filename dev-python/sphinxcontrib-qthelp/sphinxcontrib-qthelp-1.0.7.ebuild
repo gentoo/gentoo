@@ -23,7 +23,10 @@ PDEPEND="
 	>=dev-python/sphinx-5[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	test? ( ${PDEPEND} )
+	test? (
+		dev-python/defusedxml[${PYTHON_USEDEP}]
+		${PDEPEND}
+	)
 "
 
 distutils_enable_tests pytest
