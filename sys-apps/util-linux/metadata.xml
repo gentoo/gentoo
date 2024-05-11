@@ -24,6 +24,7 @@
 		su: non-root users may become root
 		</flag>
 		<flag name="tty-helpers">install the mesg/wall/write tools for talking to local users</flag>
+		<flag name="uuidd">build uuidd daemon</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:andries_brouwer:util-linux</remote-id>

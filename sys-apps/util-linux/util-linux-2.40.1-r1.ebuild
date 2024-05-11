@@ -4,9 +4,10 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
+TMPFILES_OPTIONAL=1
 
 inherit toolchain-funcs libtool flag-o-matic bash-completion-r1 \
-	pam python-r1 multilib-minimal multiprocessing systemd
+	pam python-r1 multilib-minimal multiprocessing systemd tmpfiles
 
 MY_PV="${PV/_/-}"
 MY_P="${PN}-${MY_PV}"
@@ -33,7 +34,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2 GPL-3 LGPL-2.1 BSD-4 MIT public-domain"
 SLOT="0"
-IUSE="audit build caps +cramfs cryptsetup fdformat +hardlink kill +logger magic ncurses nls pam python +readline rtas selinux slang static-libs +su +suid systemd test tty-helpers udev unicode"
+IUSE="audit build caps +cramfs cryptsetup fdformat +hardlink kill +logger magic ncurses nls pam python +readline rtas selinux slang static-libs +su +suid systemd test tty-helpers udev unicode uuidd"
 
 # Most lib deps here are related to programs rather than our libs,
 # so we rarely need to specify ${MULTILIB_USEDEP}.
@@ -83,6 +84,10 @@ RDEPEND+="
 	su? (
 		!<sys-apps/shadow-4.7-r2
 		!>=sys-apps/shadow-4.7-r2[su]
+	)
+	uuidd? (
+		acct-user/uuidd
+		virtual/tmpfiles
 	)
 	!net-wireless/rfkill
 "
@@ -230,6 +235,7 @@ multilib_src_configure() {
 		$(use_enable static-libs static)
 		$(use_with ncurses tinfo)
 		$(use_with selinux)
+		$(multilib_native_use_enable uuidd)
 
 		# TODO: Wire this up (bug #931118)
 		--without-econf
@@ -303,6 +309,9 @@ multilib_src_configure() {
 			--enable-libsmartcols
 			--enable-libfdisk
 			--enable-libmount
+
+			# Support uuidd for non-native libuuid
+			$(use_enable uuidd libuuid-force-uuidd)
 		)
 	fi
 
@@ -388,6 +397,10 @@ multilib_src_install_all() {
 		fperms u+s /bin/su
 	fi
 
+	if use uuidd; then
+		newinitd "${FILESDIR}/uuidd.initd" uuidd
+	fi
+
 	# Note:
 	# Bash completion for "runuser" command is provided by same file which
 	# would also provide bash completion for "su" command. However, we don't
@@ -411,5 +424,9 @@ pkg_postinst() {
 	if [[ -z ${REPLACING_VERSIONS} ]] ; then
 		elog "The agetty util now clears the terminal by default. You"
 		elog "might want to add --noclear to your /etc/inittab lines."
+	fi
+
+	if use uuidd; then
+		tmpfiles_process uuidd-tmpfiles.conf
 	fi
 }

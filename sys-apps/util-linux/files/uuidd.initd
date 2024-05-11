@@ -1,0 +1,10 @@
+#!/sbin/openrc-run
+# Copyright 2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command=/usr/sbin/uuidd
+pidfile=/run/uuidd/uuidd.pid
+
+depend() {
+	need clock localmount
+}
