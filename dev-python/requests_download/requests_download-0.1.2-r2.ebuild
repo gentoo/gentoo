@@ -13,7 +13,10 @@ HOMEPAGE="
 	https://github.com/takluyver/requests_download
 	https://pypi.org/project/requests_download/
 "
-SRC_URI="https://github.com/takluyver/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/takluyver/requests_download/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
