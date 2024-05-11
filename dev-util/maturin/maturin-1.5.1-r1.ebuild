@@ -418,7 +418,7 @@ CRATES_TEST="
 	windows_x86_64_msvc@0.48.0
 "
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 inherit cargo distutils-r1 flag-o-matic shell-completion toolchain-funcs
 
 DESCRIPTION="Build and publish crates with pyo3, rust-cpython and cffi bindings"
