@@ -1,0 +1,13 @@
+diff --git a/doc/preprocess.sh b/doc/preprocess.sh
+index c77bb6a..6ee75f2 100755
+--- a/doc/preprocess.sh
++++ b/doc/preprocess.sh
+@@ -1,4 +1,6 @@
+ #! /usr/bin/env bash
+ # Run GCC preprocessor and delete empty lines
+-: ${CPP:=cpp}
+-"${CPP}" -DURI_DOXYGEN -DURI_NO_UNICODE -C -I ../include "$1" | sed -e '/^$/d' -e 's/COMMENT_HACK//g'
++: ${CC:=cc}
++PS4='doc/preprocess.sh|# '
++set -x
++"${CC}" -E -DURI_DOXYGEN -DURI_NO_UNICODE -C -I ../include "$1" | sed -e '/^$/d' -e 's/COMMENT_HACK//g'
