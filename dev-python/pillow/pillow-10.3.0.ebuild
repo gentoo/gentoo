@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 # setuptools wrapper
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 PYTHON_REQ_USE='tk?,threads(+)'
 
 inherit distutils-r1 toolchain-funcs virtualx
@@ -69,6 +69,8 @@ distutils_enable_tests pytest
 PATCHES=(
 	# https://github.com/python-pillow/pillow/pull/7634
 	"${FILESDIR}/${PN}-10.2.0-cross.patch"
+	# https://github.com/python-pillow/Pillow/pull/8050
+	"${FILESDIR}/${P}-py313.patch"
 )
 
 usepil() {
