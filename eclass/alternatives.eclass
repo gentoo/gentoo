@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: alternatives.eclass
@@ -6,7 +6,7 @@
 # maintainer-needed@gentoo.org
 # @AUTHOR:
 # Alastair Tse <liquidx@gentoo.org> (03 Oct 2003)
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Creates symlink to the latest version of multiple slotted packages.
 # @DESCRIPTION:
 # When a package is SLOT'ed, very often we need to have a symlink to the
@@ -42,7 +42,7 @@
 # consider using this unless you are want to do something special.
 
 case ${EAPI} in
-	7) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
