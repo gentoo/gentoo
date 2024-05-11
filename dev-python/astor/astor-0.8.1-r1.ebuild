@@ -10,8 +10,8 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="Read/rewrite/write Python ASTs"
 HOMEPAGE="
-	https://pypi.org/project/astor
-	https://github.com/berkerpeksag/astor
+	https://pypi.org/project/astor/
+	https://github.com/berkerpeksag/astor/
 "
 
 LICENSE="BSD"
