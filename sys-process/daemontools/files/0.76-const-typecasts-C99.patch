@@ -1,0 +1,292 @@
+Memory allocation should have internal accounting and automatically
+free the memory that was allocated and pointed by this, whatever
+type pointer is.
+Also, there's a lot of erroneous assignments of const types, added
+consts everywhere, removed or cast them away only where it was impossible
+https://bugs.gentoo.org/920062
+--- a/pathexec_env.c	2024-05-11 08:21:41.834811961 +0000
++++ b/pathexec_env.c	2024-05-11 08:23:16.190437842 +0000
+@@ -65,5 +65,5 @@
+   e[elen] = 0;
+ 
+   pathexec_run(*argv,argv,e);
+-  alloc_free(e);
++  alloc_free((char *)e);
+ }
+diff '--color=auto' -ru a/buffer.c b/buffer.c
+--- a/buffer.c	2024-06-23 17:46:32.395780947 -0000
++++ b/buffer.c	2024-06-23 17:53:20.305622176 -0000
+@@ -2,7 +2,7 @@
+ 
+ #include "buffer.h"
+ 
+-void buffer_init(buffer *s,int (*op)(int, char*, int),int fd,char *buf,unsigned int len)
++void buffer_init(buffer *s,int (*op)(int, const char*, int),int fd,char *buf,unsigned int len)
+ {
+   s->x = buf;
+   s->fd = fd;
+diff '--color=auto' -ru a/buffer.h b/buffer.h
+--- a/buffer.h	2024-06-23 17:46:32.395780947 -0000
++++ b/buffer.h	2024-06-23 17:56:59.835455791 -0000
+@@ -8,14 +8,14 @@
+   unsigned int p;
+   unsigned int n;
+   int fd;
+-  int (*op)(int, char*, int);
++  int (*op)(int, const char*, int);
+ } buffer;
+ 
+ #define BUFFER_INIT(op,fd,buf,len) { (buf), 0, (len), (fd), (op) }
+ #define BUFFER_INSIZE 8192
+ #define BUFFER_OUTSIZE 8192
+ 
+-extern void buffer_init(buffer *, int (*)(int, char*, int), int, char *, unsigned int);
++extern void buffer_init(buffer *, int (*)(int, const char*, int), int, char *, unsigned int);
+ 
+ extern int buffer_flush(buffer *);
+ extern int buffer_put(buffer *,const char *,unsigned int);
+@@ -49,8 +49,8 @@
+ 
+ extern int buffer_copy(buffer *,buffer *);
+ 
+-extern int buffer_unixread(int,char *,unsigned int);
+-extern int buffer_unixwrite(int, char *, int);
++extern int buffer_unixread(int,const char *,unsigned int);
++extern int buffer_unixwrite(int, const char *, int);
+ 
+ extern buffer *buffer_0;
+ extern buffer *buffer_0small;
+diff '--color=auto' -ru a/buffer_0.c b/buffer_0.c
+--- a/buffer_0.c	2024-06-23 17:46:32.395780947 -0000
++++ b/buffer_0.c	2024-06-23 18:00:19.773386824 -0000
+@@ -2,7 +2,7 @@
+ 
+ #include "buffer.h"
+ 
+-int buffer_0_read(int fd, char *buf, int len)
++int buffer_0_read(int fd, const char *buf, int len)
+ {
+   if (buffer_flush(buffer_1) == -1) return -1;
+   return buffer_unixread(fd,buf,len);
+diff '--color=auto' -ru a/buffer_get.c b/buffer_get.c
+--- a/buffer_get.c	2024-06-23 17:46:32.395780947 -0000
++++ b/buffer_get.c	2024-06-23 17:54:25.506277116 -0000
+@@ -4,7 +4,7 @@
+ #include "byte.h"
+ #include "error.h"
+ 
+-static int oneread(int (*op)(int, char*, int),int fd,char *buf,unsigned int len)
++static int oneread(int (*op)(int, const char*, int),int fd,char *buf,unsigned int len)
+ {
+   int r;
+ 
+diff '--color=auto' -ru a/buffer_put.c b/buffer_put.c
+--- a/buffer_put.c	2024-06-23 17:46:32.395780947 -0000
++++ b/buffer_put.c	2024-06-23 17:51:41.689144081 -0000
+@@ -5,7 +5,7 @@
+ #include "byte.h"
+ #include "error.h"
+ 
+-static int allwrite(int (*op)(int, char*, int),int fd,const char *buf,unsigned int len)
++static int allwrite(int (*op)(int, const char*, int),int fd,const char *buf,unsigned int len)
+ {
+   int w;
+ 
+diff '--color=auto' -ru a/buffer_read.c b/buffer_read.c
+--- a/buffer_read.c	2024-06-23 17:46:32.387780989 -0000
++++ b/buffer_read.c	2024-06-23 18:04:30.854044424 -0000
+@@ -3,7 +3,7 @@
+ #include <unistd.h>
+ #include "buffer.h"
+ 
+-int buffer_unixread(int fd,char *buf,unsigned int len)
++int buffer_unixread(int fd,const char *buf,unsigned int len)
+ {
+-  return read(fd,buf,len);
++  return read(fd,(void *)buf,len);
+ }
+diff '--color=auto' -ru a/buffer_write.c b/buffer_write.c
+--- a/buffer_write.c	2024-06-23 17:46:32.395780947 -0000
++++ b/buffer_write.c	2024-06-23 17:55:26.617953696 -0000
+@@ -3,7 +3,7 @@
+ #include <unistd.h>
+ #include "buffer.h"
+ 
+-int buffer_unixwrite(int fd, char *buf, int len)
++int buffer_unixwrite(int fd, const char *buf, int len)
+ {
+   return write(fd,buf,len);
+ }
+diff '--color=auto' -ru a/byte.h b/byte.h
+--- a/byte.h	2024-06-23 17:46:32.395780947 -0000
++++ b/byte.h	2024-06-23 18:07:46.502998389 -0000
+@@ -4,10 +4,10 @@
+ #define BYTE_H
+ 
+ unsigned int byte_chr(char *s, unsigned int n, int c);
+-unsigned int byte_rchr(char *s, unsigned int n, int c);
+-void byte_copy(char *to, unsigned int n, char *from);
++unsigned int byte_rchr(const char *s, unsigned int n, int c);
++void byte_copy(char *to, unsigned int n, const char *from);
+ void byte_copyr(char *to, unsigned int n, char *from);
+-int byte_diff(char *s, unsigned int n, char *t);
++int byte_diff(char *s, unsigned int n, const char *t);
+ 
+ #define byte_equal(s,n,t) (!byte_diff((s),(n),(t)))
+ 
+diff '--color=auto' -ru a/byte_copy.c b/byte_copy.c
+--- a/byte_copy.c	2024-06-23 17:46:32.395780947 -0000
++++ b/byte_copy.c	2024-06-23 17:48:30.327156821 -0000
+@@ -2,7 +2,7 @@
+ 
+ #include "byte.h"
+ 
+-void byte_copy(char *to, unsigned int n, char *from)
++void byte_copy(char *to, unsigned int n, const char *from)
+ {
+   for (;;) {
+     if (!n) return; *to++ = *from++; --n;
+diff '--color=auto' -ru a/byte_diff.c b/byte_diff.c
+--- a/byte_diff.c	2024-06-23 17:46:32.396780942 -0000
++++ b/byte_diff.c	2024-06-23 17:48:50.431050426 -0000
+@@ -2,7 +2,7 @@
+ 
+ #include "byte.h"
+ 
+-int byte_diff(char *s, unsigned int n, char *t)
++int byte_diff(char *s, unsigned int n, const char *t)
+ {
+   for (;;) {
+     if (!n) return 0; if (*s != *t) break; ++s; ++t; --n;
+diff '--color=auto' -ru a/byte_rchr.c b/byte_rchr.c
+--- a/byte_rchr.c	2024-06-23 17:46:32.396780942 -0000
++++ b/byte_rchr.c	2024-06-23 18:08:32.408752954 -0000
+@@ -2,11 +2,11 @@
+ 
+ #include "byte.h"
+ 
+-unsigned int byte_rchr(char *s, unsigned int n, int c)
++unsigned int byte_rchr(const char *s, unsigned int n, int c)
+ {
+   register char ch;
+-  register char *t;
+-  register char *u;
++  register const char *t;
++  register const char *u;
+ 
+   ch = c;
+   t = s;
+diff '--color=auto' -ru a/multilog.c b/multilog.c
+--- a/multilog.c	2024-06-23 17:46:32.396780942 -0000
++++ b/multilog.c	2024-06-23 18:09:29.152449574 -0000
+@@ -173,7 +173,7 @@
+ 
+ void startprocessor(struct cyclog *d)
+ {
+-  const char *args[4];
++  char *args[4];
+   int fd;
+ 
+   sig_uncatch(sig_term);
+@@ -268,7 +268,7 @@
+   }
+ }
+ 
+-int c_write(int pos,char *buf,int len)
++int c_write(int pos,const char *buf,int len)
+ {
+   struct cyclog *d;
+   int w;
+@@ -446,7 +446,7 @@
+   flagforcerotate = 1;
+ }
+ 
+-int flushread(int fd,char *buf,int len)
++int flushread(int fd,const char *buf,int len)
+ {
+   int j;
+ 
+@@ -468,7 +468,7 @@
+   sig_unblock(sig_term);
+   sig_unblock(sig_alarm);
+ 
+-  len = read(fd,buf,len);
++  len = read(fd,(void *)buf,len);
+ 
+   sig_block(sig_term);
+   sig_block(sig_alarm);
+diff '--color=auto' -ru a/pathexec_run.c b/pathexec_run.c
+--- a/pathexec_run.c	2024-06-23 17:46:32.396780942 -0000
++++ b/pathexec_run.c	2024-06-23 17:59:54.340522801 -0000
+@@ -16,7 +16,7 @@
+   int savederrno;
+ 
+   if (file[str_chr(file,'/')]) {
+-    execve(file,argv,envp);
++    execve(file,(char *const *)argv,(char *const *)envp);
+     return;
+   }
+ 
+@@ -33,7 +33,7 @@
+     if (!stralloc_cats(&tmp,file)) return;
+     if (!stralloc_0(&tmp)) return;
+ 
+-    execve(tmp.s,argv,envp);
++    execve(tmp.s,(char *const *)argv,(char *const *)envp);
+     if (errno != error_noent) {
+       savederrno = errno;
+       if ((errno != error_acces) && (errno != error_perm) && (errno != error_isdir)) return;
+diff '--color=auto' -ru a/supervise.c b/supervise.c
+--- a/supervise.c	2024-06-23 17:46:32.397780936 -0000
++++ b/supervise.c	2024-06-23 18:03:30.334367992 -0000
+@@ -85,7 +85,7 @@
+   write(selfpipe[1],"",1);
+ }
+ 
+-const char *run[2] = { "./run", 0 };
++char * const run[2] = { "./run", 0 };
+ 
+ void trystart(void)
+ {
+diff '--color=auto' -ru a/svscan.c b/svscan.c
+--- a/svscan.c	2024-06-23 17:46:32.385781000 -0000
++++ b/svscan.c	2024-06-23 17:47:36.647440909 -0000
+@@ -101,7 +101,7 @@
+         args[0] = "supervise";
+         args[1] = fn;
+         args[2] = 0;
+-	pathexec_run(*args,args,environ);
++	pathexec_run(*args,args,(const char *const *)environ);
+         strerr_die4sys(111,WARNING,"unable to start supervise ",fn,": ");
+       default:
+ 	x[i].pid = child;
+@@ -120,7 +120,7 @@
+         args[0] = "supervise";
+         args[1] = "log";
+         args[2] = 0;
+-	pathexec_run(*args,args,environ);
++	pathexec_run(*args,args,(const char *const *)environ);
+         strerr_die4sys(111,WARNING,"unable to start supervise ",fn,"/log: ");
+       default:
+ 	x[i].pidlog = child;
+diff '--color=auto' -ru a/tai64n.c b/tai64n.c
+--- a/tai64n.c	2024-06-23 17:46:32.397780936 -0000
++++ b/tai64n.c	2024-06-23 18:05:56.551586243 -0000
+@@ -2,7 +2,7 @@
+ #include "timestamp.h"
+ #include "buffer.h"
+ 
+-int mywrite(int fd,char *buf,int len)
++int mywrite(int fd,const char *buf,int len)
+ {
+   int w;
+   w = buffer_unixwrite(fd,buf,len);
+@@ -13,7 +13,7 @@
+ char outbuf[2048];
+ buffer out = BUFFER_INIT(mywrite,1,outbuf,sizeof outbuf);
+ 
+-int myread(int fd,char *buf,int len)
++int myread(int fd,const char *buf,int len)
+ {
+   int r;
+   buffer_flush(&out);
