@@ -271,5 +271,6 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	optfeature "URL support with USE=lua" net-misc/yt-dlp
+	optfeature "various websites URL support$(usev !lua \
+		" (requires ${PN} with USE=lua)")" net-misc/yt-dlp
 }
