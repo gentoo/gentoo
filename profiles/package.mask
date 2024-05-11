@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-11)
+# EAPI=6, uses deprecated go eclass, archived upstream. Update to
+# usage of go-module.eclass isn't simple.
+# Removal: 2024-06-10.  Bugs #931745, #844598.
+app-emulation/docker-machine
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-11)
 # EAPI=6, library only without any reverse dependencies, uses
 # deprecated go eclasses.
 # Removal: 2024-06-10.  Bug #931725.
