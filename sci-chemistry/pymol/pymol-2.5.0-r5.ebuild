@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ SRC_URI="
 	https://dev.gentoo.org/~pacho/${PN}/${PN}-1.8.4.0.png.xz
 	https://github.com/schrodinger/pymol-open-source/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	"
-LICENSE="BitstreamVera BSD freedist HPND OFL public-domain UoI-NCSA" #844991
+LICENSE="BitstreamVera BSD freedist HPND OFL-1.0 public-domain UoI-NCSA" #844991
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="+netcdf web"
