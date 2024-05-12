@@ -31,7 +31,7 @@ SRC_URI="https://downloads.sourceforge.net/ekushey/${P_LOHIT}.ttf
 	https://downloads.sourceforge.net/ekushey/${P_SOLAIMANLIPI}.ttf
 	https://downloads.sourceforge.net/ekushey/${P_RUPALI}.ttf"
 
-LICENSE="GPL-2+ OFL"
+LICENSE="GPL-2+ OFL-1.0"
 SLOT="0"
 KEYWORDS="amd64 ~loong ~riscv x86"
 IUSE=""
