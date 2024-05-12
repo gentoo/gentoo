@@ -16,9 +16,9 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/danielrichman/${PN}/archive/version-${PV}.tar.gz
-		-> ${MY_P}.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
-S="${WORKDIR}/${MY_P}"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-3+"
 SLOT="0"
