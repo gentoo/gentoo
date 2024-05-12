@@ -194,6 +194,14 @@ src_prepare() {
 	distutils-r1_src_prepare
 }
 
+src_test() {
+	pushd ../libcramjam >/dev/null || die
+	cargo_src_test
+	popd >/dev/null || die
+
+	distutils-r1_src_test
+}
+
 python_test() {
 	local EPYTEST_DESELECT=(
 		# random health check failures
