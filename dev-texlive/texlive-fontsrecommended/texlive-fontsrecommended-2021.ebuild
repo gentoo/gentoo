@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -10,7 +10,7 @@ TEXLIVE_MODULE_SRC_CONTENTS="euro.source fpl.source marvosym.source mathpazo.sou
 inherit  texlive-module
 DESCRIPTION="TeXLive Recommended fonts"
 
-LICENSE=" BSD GPL-1 GPL-2 LPPL-1.3 LPPL-1.3c OFL public-domain TeX TeX-other-free "
+LICENSE=" BSD GPL-1 GPL-2 LPPL-1.3 LPPL-1.3c OFL-1.1 public-domain TeX TeX-other-free "
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE=""
