@@ -19,7 +19,7 @@ else
 	SRC_URI="https://github.com/emacs-lsp/${PN}/archive/${PV}.tar.gz
 		-> ${P}.tar.gz"
 
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 ~arm64"
 fi
 
 LICENSE="GPL-3+"
