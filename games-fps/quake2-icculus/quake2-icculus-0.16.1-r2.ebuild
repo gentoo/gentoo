@@ -7,9 +7,9 @@ inherit desktop flag-o-matic toolchain-funcs
 
 MY_P="quake2-r${PV}"
 DESCRIPTION="The icculus.org Linux port of iD's Quake 2 engine"
-HOMEPAGE="http://icculus.org/quake2/"
-SRC_URI="http://icculus.org/quake2/files/${MY_P}.tar.gz
-	qmax? ( http://icculus.org/quake2/files/maxpak.pak )
+HOMEPAGE="https://icculus.org/quake2/"
+SRC_URI="https://icculus.org/quake2/files/${MY_P}.tar.gz
+	qmax? ( https://icculus.org/quake2/files/maxpak.pak )
 	rogue? ( mirror://idsoftware/quake2/source/roguesrc320.shar.Z )
 	xatrix? ( mirror://idsoftware/quake2/source/xatrixsrc320.shar.Z )"
 S="${WORKDIR}"/${MY_P}
