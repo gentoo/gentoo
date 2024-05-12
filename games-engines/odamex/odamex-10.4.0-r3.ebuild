@@ -9,7 +9,7 @@ inherit cmake desktop prefix wxwidgets xdg
 DESCRIPTION="Online multiplayer free software engine for DOOM"
 HOMEPAGE="https://odamex.net/"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${PN}-src-${PV}.tar.xz"
-
+S="${WORKDIR}/${PN}-src-${PV}"
 LICENSE="GPL-2+ MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
@@ -38,13 +38,12 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="games-util/deutex"
 
-S="${WORKDIR}/${PN}-src-${PV}"
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.3.0-unbundle-fltk.patch
 	"${FILESDIR}"/${PN}-10.4.0-backport-pr928.patch
 	"${FILESDIR}"/${PN}-odalaunch-prefix.patch
 	"${FILESDIR}"/${PN}-lto.patch
+	"${FILESDIR}"/${PN}-musl.patch
 )
 
 src_prepare() {

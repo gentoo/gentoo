@@ -1,0 +1,119 @@
+From deb113e672588879697ae3343c5d3f1616d13503 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 30 Mar 2024 22:39:14 +0000
+Subject: [PATCH] Include <ctime> wherever time_t is used to fix musl
+
+---
+ client/src/m_menu.cpp       | 2 ++
+ client/src/v_screenshot.cpp | 2 ++
+ common/c_dispatch.cpp       | 1 +
+ common/cmdlib.h             | 1 +
+ common/p_user.cpp           | 2 ++
+ server/src/c_console.cpp    | 2 ++
+ server/src/sv_banlist.cpp   | 1 +
+ server/src/sv_banlist.h     | 1 +
+ 8 files changed, 12 insertions(+)
+
+diff --git a/client/src/m_menu.cpp b/client/src/m_menu.cpp
+index 6268e1819..f82cbf40d 100644
+--- a/client/src/m_menu.cpp
++++ b/client/src/m_menu.cpp
+@@ -25,6 +25,8 @@
+ 
+ #include "odamex.h"
+ 
++#include <ctime>
++
+ #include "gstrings.h"
+ #include "c_console.h"
+ #include "c_dispatch.h"
+diff --git a/client/src/v_screenshot.cpp b/client/src/v_screenshot.cpp
+index 2f24cb184..375de5b9d 100644
+--- a/client/src/v_screenshot.cpp
++++ b/client/src/v_screenshot.cpp
+@@ -24,6 +24,8 @@
+ 
+ #include "odamex.h"
+ 
++#include <ctime>
++
+ #include <SDL.h>
+ 
+ #include <stdlib.h>
+diff --git a/common/c_dispatch.cpp b/common/c_dispatch.cpp
+index 504379aad..d30dd4e24 100644
+--- a/common/c_dispatch.cpp
++++ b/common/c_dispatch.cpp
+@@ -26,6 +26,7 @@
+ 
+ #include <sstream>
+ #include <algorithm>
++#include <ctime>
+ 
+ #include "cmdlib.h"
+ #include "c_console.h"
+diff --git a/common/cmdlib.h b/common/cmdlib.h
+index c7041837b..a20be7c4c 100644
+--- a/common/cmdlib.h
++++ b/common/cmdlib.h
+@@ -24,6 +24,7 @@
+ #pragma once
+ 
+ #include <algorithm>
++#include <ctime>
+ 
+ #ifdef _MSC_VER
+ #pragma warning(disable : 4244)     // MIPS
+diff --git a/common/p_user.cpp b/common/p_user.cpp
+index d9a4bb965..461a3ef03 100644
+--- a/common/p_user.cpp
++++ b/common/p_user.cpp
+@@ -26,6 +26,8 @@
+ 
+ #include "odamex.h"
+ 
++#include <ctime>
++
+ #include <limits.h>
+ 
+ #include "cmdlib.h"
+diff --git a/server/src/c_console.cpp b/server/src/c_console.cpp
+index 34fcd19d9..57d7e71e2 100644
+--- a/server/src/c_console.cpp
++++ b/server/src/c_console.cpp
+@@ -24,6 +24,8 @@
+ 
+ #include "odamex.h"
+ 
++#include <ctime>
++
+ #include <stdarg.h>
+ 
+ #include "m_memio.h"
+diff --git a/server/src/sv_banlist.cpp b/server/src/sv_banlist.cpp
+index c271fe68c..36cdf9b63 100644
+--- a/server/src/sv_banlist.cpp
++++ b/server/src/sv_banlist.cpp
+@@ -24,6 +24,7 @@
+ 
+ #include "odamex.h"
+ 
++#include <ctime>
+ #include <sstream>
+ 
+ #include "win32inc.h"
+diff --git a/server/src/sv_banlist.h b/server/src/sv_banlist.h
+index 6096f73fc..f4d686071 100644
+--- a/server/src/sv_banlist.h
++++ b/server/src/sv_banlist.h
+@@ -23,6 +23,7 @@
+ 
+ #pragma once
+ 
++#include <ctime>
+ #include <sstream>
+ 
+ #include "json/json.h"
+-- 
+2.44.0
+
