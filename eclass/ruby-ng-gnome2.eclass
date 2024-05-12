@@ -44,7 +44,6 @@ BDEPEND="virtual/pkgconfig"
 ruby_add_bdepend "
 	dev-ruby/pkg-config
 	test? ( >=dev-ruby/test-unit-2 )"
-SRC_URI="https://downloads.sourceforge.net/ruby-gnome2/ruby-gnome2-all-${PV}.tar.gz"
 HOMEPAGE="https://ruby-gnome.github.io/"
 LICENSE="LGPL-2.1+"
 SLOT="0"
