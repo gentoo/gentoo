@@ -12,7 +12,7 @@ inherit ruby-fakegem
 DESCRIPTION="Font-awesome for the asset pipeline"
 HOMEPAGE="https://github.com/bokmann/font-awesome-rails https://rubygems.org/gems/font-awesome-rails"
 
-LICENSE="MIT OFL"
+LICENSE="MIT OFL-1.1"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
