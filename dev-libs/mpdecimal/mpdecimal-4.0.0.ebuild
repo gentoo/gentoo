@@ -59,5 +59,5 @@ src_test() {
 
 src_install() {
 	default
-	rm -r "${ED}/removeme" || die
+	rm -r "${D}/removeme" || die
 }
