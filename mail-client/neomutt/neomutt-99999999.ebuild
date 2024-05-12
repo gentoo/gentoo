@@ -1,9 +1,12 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit flag-o-matic toolchain-funcs
+
+DESCRIPTION="A small but very powerful text-based mail client"
+HOMEPAGE="https://neomutt.org/"
 
 if [[ ${PV} =~ 99999999$ ]]; then
 	inherit git-r3
@@ -15,9 +18,6 @@ fi
 
 TEST_FILES_COMMIT=8629adab700a75c54e8e28bf05ad092503a98f75
 SRC_URI+=" test? ( https://github.com/${PN}/neomutt-test-files/archive/${TEST_FILES_COMMIT}.tar.gz -> neomutt-test-files-${TEST_FILES_COMMIT}.tar.gz )"
-
-DESCRIPTION="A small but very powerful text-based mail client"
-HOMEPAGE="https://neomutt.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
