@@ -10,7 +10,7 @@ HOMEPAGE="http://www.library.gov.bt/IT/fonts.html"
 SRC_URI="mirror://nongnu/free-tibetan/${PN}/${PN}-alpha${PV:(-2)}.tar.gz"
 S="${WORKDIR}"
 
-LICENSE="OFL"
+LICENSE="OFL-1.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 IUSE=""
