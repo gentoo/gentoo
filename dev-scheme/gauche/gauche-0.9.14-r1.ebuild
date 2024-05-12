@@ -27,7 +27,7 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-ext-ldflags.patch
 	"${FILESDIR}"/${PN}-gauche.m4.patch
-	"${FILESDIR}"/${PN}-info.patch
+	"${FILESDIR}"/${P}-info.patch
 	"${FILESDIR}"/${PN}-xz-info.patch
 )
 DOCS=( AUTHORS ChangeLog HACKING.adoc README.adoc )
