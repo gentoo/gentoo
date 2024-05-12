@@ -1,7 +1,55 @@
+From db3c20829db69b3e7451a167f9f639a89d41491a Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 12 May 2024 14:31:52 -0400
+Subject: [PATCH] remove bogus nan.h header
+
+In theory somehow maybe possibly sort of, glibc has bits/nan.h, and in
+gentoo-historical-2.git:
+
+commit e5551898509b2b7802941b16bb580ef7cf34b488
+Author:     Mike Frysinger <vapier@gentoo.org>
+AuthorDate: Sat Dec 27 14:45:18 2003
+Commit:     Mike Frysinger <vapier@gentoo.org>
+CommitDate: Sat Dec 27 14:45:18 2003
+
+    add rogue/xatrix game support #33029
+
+a patch was added to switch it to including that header instead.
+Helpfully, bits/nan.h has this to say:
+
+#ifndef _MATH_H
+#error "Never use <bits/nan.h> directly; include <math.h> instead."
+#endif
+
+... or at least it does, on versions of glibc that installed such a
+header. In 2.27 the header file was removed entirely.
+
+Now, "fortunately", g_local.h had already included math.h, which meant
+the best efforts of glibc developers to demonstrate this is an error
+were evaded; no error was emitted. Unfortunately, glibc 2.27 is long in
+the past and this code no longer builds, times 2 because now we patched
+it to be extra silly.
+
+Fix it properly this time.
+
+Bug: https://bugs.gentoo.org/33029
+Bug: https://bugs.gentoo.org/738832
+---
+ src/rogue/g_local.h | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/rogue/g_local.h b/src/rogue/g_local.h
+index 6ecbe2d..6746240 100644
 --- a/rogue/g_local.h
 +++ b/rogue/g_local.h
-@@ -24,3 +24,3 @@
+@@ -22,7 +22,6 @@
+ //==================================================================
+ 
  #ifndef _WIN32
 -#include <nan.h>
-+#include <bits/nan.h>
  #define min(a,b) ((a) < (b) ? (a) : (b))
+ #define max(a,b) ((a) > (b) ? (a) : (b))
+ #ifdef __sun__
+-- 
+2.43.2
+
