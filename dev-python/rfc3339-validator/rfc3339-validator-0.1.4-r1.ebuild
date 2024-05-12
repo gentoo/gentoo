@@ -15,7 +15,7 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/naimetti/rfc3339-validator/archive/v${PV}.tar.gz
-		-> ${P}.tar.gz
+		-> ${P}.gh.tar.gz
 "
 
 LICENSE="MIT"
