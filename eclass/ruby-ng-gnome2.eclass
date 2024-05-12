@@ -6,7 +6,7 @@
 # Ruby herd <ruby@gentoo.org>
 # @AUTHOR:
 # Author: Hans de Graaff <graaff@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: ruby-ng
 # @BLURB: An eclass to simplify handling of various ruby-gnome2 parts.
 # @DESCRIPTION:
@@ -14,7 +14,7 @@
 # ruby-gnome2 since they share a very common installation procedure.
 
 case ${EAPI} in
-	7) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
