@@ -14,4 +14,7 @@ number somewhere in a file. wmfire requires very little CPU.
 <use>
 	<flag name="session">Enable session management</flag>
 </use>
+<upstream>
+	<remote-id type="github">kennbr34/wmfire</remote-id>
+</upstream>
 </pkgmetadata>
