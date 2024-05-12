@@ -1,0 +1,92 @@
+bug https://bugs.gentoo.org/928954
+diff -ru a/bristol/bristol.c b/bristol/bristol.c
+--- a/bristol/bristol.c	2024-05-12 16:47:06.017759794 +0000
++++ b/bristol/bristol.c	2024-05-12 16:58:52.643366119 +0000
+@@ -789,7 +789,7 @@
+ 						if (sched_getparam(0, &schedparam) != 0)
+ 							printf("Scheduler getparam failed...\n");
+ 
+-						schedparam.__sched_priority = audiomain.priority - 1;
++						schedparam.sched_priority = audiomain.priority - 1;
+ 						if (sched_setscheduler(0, SCHED_FIFO, &schedparam) == 0)
+ 						{
+ 							if (audiomain.debuglevel)
+@@ -996,10 +996,10 @@
+ 	if (priority != 0)
+ 	{
+ 		policy = SCHED_FIFO;
+-		schedparam.__sched_priority = priority;
++		schedparam.sched_priority = priority;
+ 
+ 		if (pthread_setschedparam(thread, policy, &schedparam) == 0)
+-			printf("rescheduled thread: %i\n", schedparam.__sched_priority);
++			printf("rescheduled thread: %i\n", schedparam.sched_priority);
+ 		else
+ 			printf("could not reschedule thread\n");
+ 	} else
+diff -ru a/include/brighton/brightoninternals.h b/include/brighton/brightoninternals.h
+--- a/include/brighton/brightoninternals.h	2024-05-12 16:47:06.014759813 +0000
++++ b/include/brighton/brightoninternals.h	2024-05-12 16:54:56.042839079 +0000
+@@ -23,6 +23,7 @@
+ #define BRIGHTONINTERNALS_H
+ 
+ #include <stdio.h>
++#include <sys/types.h>
+ 
+ #include "brightondevflags.h"
+ #include "brightonevents.h"
+diff -ru a/libbristolmidi/inetClient.c b/libbristolmidi/inetClient.c
+--- a/libbristolmidi/inetClient.c	2024-05-12 16:47:06.009759844 +0000
++++ b/libbristolmidi/inetClient.c	2024-05-12 16:48:33.048219487 +0000
+@@ -41,6 +41,7 @@
+ #include <signal.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ 
+ #include <strings.h>
+ #include <errno.h>
+diff -ru a/libbristolmidi/inetServer.c b/libbristolmidi/inetServer.c
+--- a/libbristolmidi/inetServer.c	2024-05-12 16:47:06.009759844 +0000
++++ b/libbristolmidi/inetServer.c	2024-05-12 16:50:29.944493765 +0000
+@@ -21,7 +21,7 @@
+ 
+ /*#define DEBUG */
+ 
+-#include <sys/unistd.h>
++#include <unistd.h>
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <sys/stat.h>
+diff -ru a/libbristolmidi/midiTCPDevMan.c b/libbristolmidi/midiTCPDevMan.c
+--- a/libbristolmidi/midiTCPDevMan.c	2024-05-12 16:47:06.009759844 +0000
++++ b/libbristolmidi/midiTCPDevMan.c	2024-05-12 16:51:18.921189705 +0000
+@@ -23,6 +23,7 @@
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <sys/select.h>
++#include <stdlib.h>
+ #include <signal.h>
+ #include <unistd.h>
+ 
+diff -ru a/libbristolmidi/scalaParse.c b/libbristolmidi/scalaParse.c
+--- a/libbristolmidi/scalaParse.c	2024-05-12 16:47:06.009759844 +0000
++++ b/libbristolmidi/scalaParse.c	2024-05-12 16:52:17.040828883 +0000
+@@ -57,6 +57,7 @@
+ #include <string.h>
+ #include <stdio.h>
+ #include <ctype.h>
++#include <stdlib.h>
+ 
+ #include "bristolmidi.h"
+ 
+--- a/bristol/audiothread.c	2024-05-12 17:03:32.379603098 +0000
++++ b/bristol/audiothread.c	2024-05-12 17:05:45.350756293 +0000
+@@ -27,6 +27,7 @@
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #include <pthread.h>
++#include <stdlib.h>
+ 
+ #include "bristol.h"
+ #include "bristolmidi.h"
