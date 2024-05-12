@@ -14,8 +14,8 @@ HOMEPAGE="
 	https://pypi.org/project/fqdn/
 "
 SRC_URI="
-	https://github.com/ypcrts/${PN}/archive/v${PV}.tar.gz
-		-> ${P}.tar.gz
+	https://github.com/ypcrts/fqdn/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
 "
 
 LICENSE="MPL-2.0"
