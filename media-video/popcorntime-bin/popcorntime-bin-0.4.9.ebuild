@@ -1,4 +1,4 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ KEYWORDS="-* ~amd64 ~x86"
 # Electron bundles a bunch of things
 LICENSE="
 	MIT BSD BSD-2 BSD-4 AFL-2.1 Apache-2.0 Ms-PL GPL-2 LGPL-2.1 APSL-2
-	unRAR OFL CC-BY-SA-3.0 MPL-2.0 android public-domain all-rights-reserved
+	unRAR OFL-1.1 CC-BY-SA-3.0 MPL-2.0 android public-domain all-rights-reserved
 "
 SLOT="0"
 RESTRICT="bindist mirror"
