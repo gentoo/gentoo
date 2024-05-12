@@ -359,7 +359,7 @@ src_compile() {
 	emake -C "${WORKDIR}"/ffmpeg-build V=1 install
 	CMAKE_USE_DIR="${WORKDIR}/build-deps" cmake_src_compile
 	CMAKE_USE_DIR="${WORKDIR}/build-deps" cmake_build install
-	CMAKE_USE_DIR="${S}" cmake_src_compile
+	CMAKE_USE_DIR="${S}" npm_config_offline=1 cmake_src_compile
 }
 
 pkg_postinst() {

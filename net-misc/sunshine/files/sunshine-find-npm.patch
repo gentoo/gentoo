@@ -1,36 +1,65 @@
-From 0fa3273af349089b7d62c996fcaea67b10ed2a0c Mon Sep 17 00:00:00 2001
+From 66740900522f42564a2b0bd4e8a435ed24a61725 Mon Sep 17 00:00:00 2001
 From: James Le Cuirot <chewi@gentoo.org>
-Date: Sat, 4 May 2024 23:32:29 +0100
-Subject: [PATCH 1/2] build: Unify asset building by leveraging CMake's env
- command
+Date: Sun, 12 May 2024 17:26:14 +0100
+Subject: [PATCH] Unify asset building and use find_program to find NPM (#2522)
 
-`add_custom_target` can also accept multiple commands to be run in
-sequence. It isn't clear how quoting applies here, but I've tested it,
-and it seems to be behave as expected when spaces are present.
 ---
- cmake/targets/common.cmake  | 7 +++++++
- cmake/targets/unix.cmake    | 6 ------
- cmake/targets/windows.cmake | 6 ------
- 3 files changed, 7 insertions(+), 12 deletions(-)
+ cmake/targets/common.cmake  | 33 +++++++++++++++++++++------------
+ cmake/targets/unix.cmake    |  6 ------
+ cmake/targets/windows.cmake |  6 ------
+ 3 files changed, 21 insertions(+), 24 deletions(-)
 
 diff --git a/cmake/targets/common.cmake b/cmake/targets/common.cmake
-index ee79528c..04d8e954 100644
+index ee79528c..941ef0b7 100644
 --- a/cmake/targets/common.cmake
 +++ b/cmake/targets/common.cmake
-@@ -15,6 +15,13 @@ else()
-     set(NPM_BUILD_HOMEBREW "")
- endif()
+@@ -3,18 +3,6 @@
  
-+#WebUI build
-+add_custom_target(web-ui ALL
-+        WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
-+        COMMENT "Installing NPM Dependencies and Building the Web UI"
-+        COMMAND npm install
-+        COMMAND "${CMAKE_COMMAND}" -E env "SUNSHINE_BUILD_HOMEBREW=${NPM_BUILD_HOMEBREW}" "SUNSHINE_SOURCE_ASSETS_DIR=${NPM_SOURCE_ASSETS_DIR}" "SUNSHINE_ASSETS_DIR=${NPM_ASSETS_DIR}" npm run build)  # cmake-lint: disable=C0301
-+
+ add_executable(sunshine ${SUNSHINE_TARGET_FILES})
+ 
+-# Homebrew build fails the vite build if we set these environment variables
+-# this block must be before the platform specific code
+-if(${SUNSHINE_BUILD_HOMEBREW})
+-    set(NPM_SOURCE_ASSETS_DIR "")
+-    set(NPM_ASSETS_DIR "")
+-    set(NPM_BUILD_HOMEBREW "true")
+-else()
+-    set(NPM_SOURCE_ASSETS_DIR ${SUNSHINE_SOURCE_ASSETS_DIR})
+-    set(NPM_ASSETS_DIR ${CMAKE_BINARY_DIR})
+-    set(NPM_BUILD_HOMEBREW "")
+-endif()
+-
  # platform specific target definitions
  if(WIN32)
      include(${CMAKE_MODULE_PATH}/targets/windows.cmake)
+@@ -49,6 +37,27 @@ endif()
+ 
+ target_compile_options(sunshine PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${SUNSHINE_COMPILE_OPTIONS}>;$<$<COMPILE_LANGUAGE:CUDA>:${SUNSHINE_COMPILE_OPTIONS_CUDA};-std=c++17>)  # cmake-lint: disable=C0301
+ 
++# Homebrew build fails the vite build if we set these environment variables
++if(${SUNSHINE_BUILD_HOMEBREW})
++    set(NPM_SOURCE_ASSETS_DIR "")
++    set(NPM_ASSETS_DIR "")
++    set(NPM_BUILD_HOMEBREW "true")
++else()
++    set(NPM_SOURCE_ASSETS_DIR ${SUNSHINE_SOURCE_ASSETS_DIR})
++    set(NPM_ASSETS_DIR ${CMAKE_BINARY_DIR})
++    set(NPM_BUILD_HOMEBREW "")
++endif()
++
++#WebUI build
++find_program(NPM npm REQUIRED)
++add_custom_target(web-ui ALL
++        WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
++        COMMENT "Installing NPM Dependencies and Building the Web UI"
++        COMMAND "$<$<BOOL:${WIN32}>:cmd;/C>" "${NPM}" install
++        COMMAND "${CMAKE_COMMAND}" -E env "SUNSHINE_BUILD_HOMEBREW=${NPM_BUILD_HOMEBREW}" "SUNSHINE_SOURCE_ASSETS_DIR=${NPM_SOURCE_ASSETS_DIR}" "SUNSHINE_ASSETS_DIR=${NPM_ASSETS_DIR}" "$<$<BOOL:${WIN32}>:cmd;/C>" "${NPM}" run build  # cmake-lint: disable=C0301
++        COMMAND_EXPAND_LISTS
++        VERBATIM)
++
+ # tests
+ if(BUILD_TESTS)
+     add_subdirectory(tests)
 diff --git a/cmake/targets/unix.cmake b/cmake/targets/unix.cmake
 index 5527a987..047a0b3d 100644
 --- a/cmake/targets/unix.cmake
@@ -58,43 +87,6 @@ index e429feaa..341d7c2e 100644
 -        WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 -        COMMENT "Installing NPM Dependencies and Building the Web UI"
 -        COMMAND cmd /C "npm install && set \"SUNSHINE_SOURCE_ASSETS_DIR=${NPM_SOURCE_ASSETS_DIR}\" && set \"SUNSHINE_ASSETS_DIR=${NPM_ASSETS_DIR}\" && npm run build")   # cmake-lint: disable=C0301
--- 
-2.44.0
-
-
-From f7f93c787bc7c6e82296f0b28c1684ba93cb0956 Mon Sep 17 00:00:00 2001
-From: James Le Cuirot <chewi@gentoo.org>
-Date: Sun, 5 May 2024 23:30:36 +0100
-Subject: [PATCH 2/2] build: Use find_program to find NPM so it can be
- overridden
-
-This is useful for Gentoo, which needs to be able to do entirely offline
-builds, because it can override this with `true` while shipping
-pre-compiled assets. Gentoo has tried to ship cached NPM modules
-instead, but it turns out these are very sensitive to the NPM version.
----
- cmake/targets/common.cmake | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
-
-diff --git a/cmake/targets/common.cmake b/cmake/targets/common.cmake
-index 04d8e954..5c489551 100644
---- a/cmake/targets/common.cmake
-+++ b/cmake/targets/common.cmake
-@@ -16,11 +16,12 @@ else()
- endif()
- 
- #WebUI build
-+find_program(NPM npm REQUIRED)
- add_custom_target(web-ui ALL
-         WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
-         COMMENT "Installing NPM Dependencies and Building the Web UI"
--        COMMAND npm install
--        COMMAND "${CMAKE_COMMAND}" -E env "SUNSHINE_BUILD_HOMEBREW=${NPM_BUILD_HOMEBREW}" "SUNSHINE_SOURCE_ASSETS_DIR=${NPM_SOURCE_ASSETS_DIR}" "SUNSHINE_ASSETS_DIR=${NPM_ASSETS_DIR}" npm run build)  # cmake-lint: disable=C0301
-+        COMMAND "${NPM}" install
-+        COMMAND "${CMAKE_COMMAND}" -E env "SUNSHINE_BUILD_HOMEBREW=${NPM_BUILD_HOMEBREW}" "SUNSHINE_SOURCE_ASSETS_DIR=${NPM_SOURCE_ASSETS_DIR}" "SUNSHINE_ASSETS_DIR=${NPM_ASSETS_DIR}" "${NPM}" run build)  # cmake-lint: disable=C0301
- 
- # platform specific target definitions
- if(WIN32)
 -- 
 2.44.0
 
