@@ -139,6 +139,8 @@ _setup-allowed-flags() {
 		-mno-fxsr -mno-hle -mno-rtm -mno-xsave -mno-xsaveopt
 		# gcc 4.9
 		-mno-avx512cd -mno-avx512er -mno-avx512f -mno-avx512pf -mno-sha
+
+		-mevex512 -mno-evex512
 	)
 
 	# Allow some safe individual flags. Should come along with the bug reference.
