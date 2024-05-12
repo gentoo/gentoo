@@ -1,11 +1,12 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 COMMIT="6092368aabdd0dbb0fbceb2766a37b98e0ff6911"
-PYTHON_COMPAT=( python3_{8..11} pypy3 )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
+DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
 
 inherit autotools distutils-r1
