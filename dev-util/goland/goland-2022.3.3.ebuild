@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,7 @@ LICENSE="|| ( JetBrains-business JetBrains-classroom JetBrains-educational JetBr
 	LGPL-3
 	MIT
 	MPL-1.1
-	OFL
+	OFL-1.1
 	ZLIB
 "
 
