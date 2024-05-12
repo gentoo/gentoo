@@ -180,3 +180,8 @@ python_test() {
 
 	[[ ${ret} -ne 0 ]] && die "Tests failed on ${EPYTHON}"
 }
+
+python_test_all() {
+	cd native || die
+	cargo_src_test
+}
