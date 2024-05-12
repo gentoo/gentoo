@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,7 +37,7 @@ SRC_URI="https://redirector.gvt1.com/edgedl/android/studio/ide-zips/${PV}/${P}-l
 
 LICENSE="Apache-2.0 android BSD BSD-2 CDDL-1.1 CPL-0.5
 	EPL-1.0 GPL-2 GPL-2+ JDOM IJG LGPL-2.1 MIT
-	MPL-1.1 MPL-2.0 NPL-1.1 OFL ZLIB"
+	MPL-1.1 MPL-2.0 NPL-1.1 OFL-1.1 ZLIB"
 SLOT="0"
 IUSE="selinux"
 KEYWORDS="~amd64"
