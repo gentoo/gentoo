@@ -67,11 +67,13 @@ CRATES="
 	byteorder@1.5.0
 	bytes@1.5.0
 	cairo-rs@0.18.5
+	cairo-sys-rs@0.18.0
 	camino@1.1.6
 	cassowary@0.3.0
 	cast@0.3.0
 	cc@1.0.83
 	cfg-if@1.0.0
+	cfg-expr@0.15.8
 	cgl@0.3.2
 	chrono@0.4.33
 	ciborium@0.2.2
@@ -495,8 +497,10 @@ CRATES="
 	syn@2.0.48
 	system-configuration@0.5.1
 	system-configuration-sys@0.5.0
+	system-deps@6.2.1
 	takeable-option@0.5.0
 	tar@0.4.40
+	target-lexicon@0.12.14
 	tempfile@3.9.0
 	term_size@0.3.2
 	termcolor@1.4.1
@@ -554,6 +558,7 @@ CRATES="
 	uuid@1.7.0
 	varbincode@0.1.0
 	vcpkg@0.2.15
+	version-compare@0.1.1
 	version_check@0.9.4
 	vswhom@0.1.0
 	vswhom-sys@0.1.2
@@ -686,6 +691,7 @@ RESTRICT=test # tests require network
 PATCHES=(
 	"${FILESDIR}/${PN}-20230320-124340-vendored-sources.patch"
 	"${FILESDIR}/${PN}-20240203-110809-xcb-imdkit.patch"
+	"${FILESDIR}/${PN}-20240203-110809-cairo.patch"
 )
 
 DEPEND="
@@ -698,6 +704,7 @@ DEPEND="
 	media-libs/fontconfig
 	media-libs/mesa
 	sys-apps/dbus
+	x11-libs/cairo[X]
 	x11-libs/libX11
 	x11-libs/libxkbcommon[X,wayland?]
 	x11-libs/xcb-util
