@@ -29,7 +29,7 @@ LICENSE="PyCharm"
 # roman.py is ZPL not "Python 2.1.1 license"
 # Eclipse Distribution License 1.0 is BSD
 LICENSE+=" 0BSD Apache-2.0 BSD BSD-2 CC0-1.0 CC-BY-2.5 CC-BY-3.0 CC-BY-4.0 CDDL-1.1 CPL-1.0 EPL-1.0 GPL-2"
-LICENSE+=" GPL-2-with-classpath-exception ISC JSON LGPL-2.1 LGPL-3 LGPL-3+ libpng MIT MPL-1.1 MPL-2.0 OFL"
+LICENSE+=" GPL-2-with-classpath-exception ISC JSON LGPL-2.1 LGPL-3 LGPL-3+ libpng MIT MPL-1.1 MPL-2.0"
 LICENSE+=" OFL-1.1 public-domain PYTHON unicode Unlicense W3C ZLIB ZPL"
 SLOT="0"
 KEYWORDS="~amd64"
