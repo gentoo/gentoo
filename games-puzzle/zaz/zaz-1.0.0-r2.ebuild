@@ -9,7 +9,7 @@ DESCRIPTION="A puzzle game where the player has to arrange balls in triplets"
 HOMEPAGE="https://sourceforge.net/projects/zaz/"
 SRC_URI="https://downloads.sourceforge.net/zaz/${P}.tar.bz2"
 
-LICENSE="GPL-3 GPL-3+ CC-BY-SA-3.0 OFL"
+LICENSE="GPL-3 GPL-3+ CC-BY-SA-3.0 OFL-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="nls"
