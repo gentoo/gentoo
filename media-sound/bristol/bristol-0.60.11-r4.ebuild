@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Synthesizer keyboard emulation package: Moog, Hammond and others"
-HOMEPAGE="https://sourceforge.net/projects/bristol"
+HOMEPAGE="https://sourceforge.net/projects/bristol/"
 SRC_URI="https://downloads.sourceforge.net/bristol/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-rm_alsa-iatomic.h.patch
 	"${FILESDIR}"/bristol-c99.patch
 	"${FILESDIR}"/0001-configure.ac-fix-various-erroneous-bashisms.patch
+	"${FILESDIR}"/${P}-musl-includes.patch
 )
 
 src_prepare() {
