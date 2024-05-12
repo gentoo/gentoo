@@ -1,18 +1,18 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit desktop wrapper
 
-PATCH_P="${PN}-lnxpatch${PV%.*}-2.tar.bz2"
+PATCH_P="${PN}-lnxpatch${PV%.*}-2.tar.tar"
 DESCRIPTION="Editor's Choice Edition plus Mega Pack for the well-known first-person shooter"
 HOMEPAGE="https://liandri.beyondunreal.com/Unreal_Tournament_2004"
 SRC_URI="
-	http://ut2004.ut-files.com/Patches/Linux/${PATCH_P}
+	http://ut2004.ut-files.com/UT2004/${PATCH_P}
 	https://dev.gentoo.org/~chewi/distfiles/ut2004-v${PV/./-}-linux-dedicated.7z
 "
-
+S="${WORKDIR}/${PN^^}-Patch"
 LICENSE="ut2003"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
@@ -36,7 +36,6 @@ RDEPEND="
 
 BDEPEND="app-arch/p7zip"
 
-S="${WORKDIR}/${PN^^}-Patch"
 DIR="/opt/${PN}"
 
 # The executable pages are required. Bug #114733.
