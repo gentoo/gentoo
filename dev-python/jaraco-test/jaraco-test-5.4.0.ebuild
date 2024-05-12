@@ -28,6 +28,13 @@ RDEPEND="
 
 distutils_enable_tests pytest
 
+src_test() {
+	# workaround namespaces blocking test.support import (sigh!)
+	mv jaraco/test jaraco_test || die
+	rmdir jaraco || die
+	distutils-r1_src_test
+}
+
 python_test() {
 	# while technically these tests are skipped when Internet is
 	# not available (they test whether auto-skipping works), we don't
