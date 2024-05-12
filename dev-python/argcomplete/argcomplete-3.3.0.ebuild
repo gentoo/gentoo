@@ -36,6 +36,8 @@ PATCHES=(
 	# for entry point tests because they read metadata of all installed
 	# packages which can take real long on systems with lots of packages
 	"${FILESDIR}/argcomplete-3.1.6-timeout.patch"
+	# https://github.com/kislyuk/argcomplete/pull/485
+	"${FILESDIR}/${P}-test-bashrc.patch"
 )
 
 python_test() {
