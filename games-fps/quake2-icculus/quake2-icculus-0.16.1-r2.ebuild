@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop toolchain-funcs
+inherit desktop flag-o-matic toolchain-funcs
 
 MY_P="quake2-r${PV}"
 DESCRIPTION="The icculus.org Linux port of iD's Quake 2 engine"
@@ -102,6 +102,14 @@ yesno() {
 }
 
 src_compile() {
+	# -Werror=strict-aliasing, also -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/858752
+	#
+	# Upstream last committed changes in 2006, and that was "Switch from CVS to SVN".
+	# Effectively no mailing list discussion since then (sporadic posts from users).
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	# xatrix fails to build
 	# rogue fails to build
 	local libsuffix
