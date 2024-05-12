@@ -145,5 +145,7 @@ python_test() {
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	rm -rf pydantic_core || die
+	# tests link to libpython, so they fail to link on pypy3
+	[[ ${EPYTHON} != pypy3 ]] && cargo_src_test
 	epytest -p pytest_mock -p timeout
 }
