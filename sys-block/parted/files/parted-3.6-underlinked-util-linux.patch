@@ -1,5 +1,6 @@
 https://bugs.gentoo.org/910487
 https://git.savannah.gnu.org/cgit/parted.git/commit/?id=d22c2d01f62139e0d386d90584cac0705857a571
+https://git.savannah.gnu.org/cgit/parted.git/commit/?id=60b3300ed6d3ba2e7af4ddce55bd873b232d12ff
 
 From d22c2d01f62139e0d386d90584cac0705857a571 Mon Sep 17 00:00:00 2001
 From: Yegor Yefremov <yegorslists@googlemail.com>
@@ -22,5 +23,39 @@ Signed-off-by: Brian C. Lane <bcl@redhat.com>
  dnl Check for libdevmapper
  DM_LIBS=
  if test $ENABLE_DEVICE_MAPPER = yes; then
+-- 
+cgit v1.1
+
+From 60b3300ed6d3ba2e7af4ddce55bd873b232d12ff Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Mon, 12 Jun 2023 10:55:19 -0700
+Subject: bug#64034: [PATCH] libparted: link libparted-fs-resize.so to libuuid
+
+uuid_generate() is used in this library
+Hence, add UUID_LIBS to libparted_fs_resize_la_LIBADD to avoid
+
+"ld.lld: error: undefined reference due to --no-allow-shlib-undefined: uuid_generate"
+
+This is uncovered by lld linker linking fatresize package
+due to this linker defaulting to --no-allow-shlib-undefined.
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+Signed-off-by: Brian C. Lane <bcl@redhat.com>
+---
+ libparted/fs/Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libparted/fs/Makefile.am b/libparted/fs/Makefile.am
+index 41a60d9..7fa8d14 100644
+--- a/libparted/fs/Makefile.am
++++ b/libparted/fs/Makefile.am
+@@ -75,6 +75,7 @@ libparted_fs_resize_la_LDFLAGS =		\
+ EXTRA_DIST += fsresize.sym
+ libparted_fs_resize_la_DEPENDENCIES = $(sym_file)
+ 
++libparted_fs_resize_la_LIBADD  = $(UUID_LIBS)
+ libparted_fs_resize_la_SOURCES = \
+   r/filesys.c			\
+   r/fat/bootsector.c		\
 -- 
 cgit v1.1
