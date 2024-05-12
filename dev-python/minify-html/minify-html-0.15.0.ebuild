@@ -43,3 +43,7 @@ src_prepare() {
 	sed -i -e '/strip/d' Cargo.toml || die
 	distutils-r1_src_prepare
 }
+
+python_test_all() {
+	cargo_src_test
+}
