@@ -154,7 +154,6 @@ src_prepare() {
 	distutils-r1_src_prepare
 }
 
-src_test() {
+python_test_all() {
 	cargo_src_test
-	distutils-r1_src_test
 }
