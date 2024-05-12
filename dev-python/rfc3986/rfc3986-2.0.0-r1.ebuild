@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://rfc3986.rtfd.org/
 	https://github.com/python-hyper/rfc3986/
 	https://pypi.org/project/rfc3986/
-	https://tools.ietf.org/html/rfc3986/
+	https://datatracker.ietf.org/doc/html/rfc3986/
 "
 
 LICENSE="Apache-2.0"
