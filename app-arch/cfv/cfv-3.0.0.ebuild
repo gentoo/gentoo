@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 # Tests fail with pypy3 as of PyPy 7.3.9 / Python 3.9.12
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 optfeature
 
@@ -25,6 +25,13 @@ BDEPEND="
 		app-arch/cksfv
 	)
 "
+
+PATCHES=(
+	# Backported from https://github.com/cfv-project/cfv/commit/5259bcbe3434c6974f7a65cc435dd0b4cfc3f864
+	"${FILESDIR}/${P}-fix-removed-assertequal.patch"
+	# See https://github.com/cfv-project/cfv/pull/53
+	"${FILESDIR}/${P}-fix-removed-imp.patch"
+)
 
 python_prepare_all() {
 	# Remove upstream's attempt to install the man page
