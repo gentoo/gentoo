@@ -13,13 +13,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-src_prepare() {
-	# Automatically compresses manpages, which is a PMS functionality
-	# (and every other distro has the same policy!).
-	sed -i '/gzip -9/d' Makefile || die
-	default
-}
-
 src_install() {
 	emake install DESTDIR="${D}" PREFIX="${EPREFIX}/usr" INITDIR_SYSTEMD="$(systemd_get_userunitdir)"
 }
