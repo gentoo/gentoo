@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/885885
+--- a/parse.c
++++ b/parse.c
+@@ -15,7 +15,7 @@
+  * along with this program; if not, write to the Free Software
+  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  */
+-#define _XOPEN_SOURCE
++#define _XOPEN_SOURCE 700
+ #include <unistd.h>
+ #include <crypt.h>
+ #include <stdio.h>
+--- a/parseldif.c
++++ b/parseldif.c
+@@ -15,7 +15,7 @@
+  * along with this program; if not, write to the Free Software
+  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  */
+-#define _XOPEN_SOURCE
++#define _XOPEN_SOURCE 700
+ #include <unistd.h>
+ #include <stdio.h>
+ #include "common.h"
