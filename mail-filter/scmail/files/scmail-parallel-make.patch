@@ -1,0 +1,19 @@
+--- a/Makefile
++++ b/Makefile
+@@ -24,7 +24,7 @@
+ 
+ all: check-gauche $(TARGET) update-doc
+ 
+-update-doc:
++update-doc: dot.scmail/deliver-rules.sample
+ 	cd doc && make
+ 
+ check-gauche:
+--- a/tests/Makefile
++++ b/tests/Makefile
+@@ -41,3 +41,5 @@
+ 	@rm -f $(TARGET)
+ 	@rm -rf Mail Maildir test.*
+ 
++.NOTPARALLEL:
++
