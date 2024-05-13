@@ -303,11 +303,6 @@ sci-visualization/spectromatic
 # Removal on 2024-05-16, bug #929444
 dev-python/carbon
 
-# Fabian Groffen <grobian@gentoo.org> (2024-04-13)
-# Python wrapper around liblmsensors, no reverse dependencies
-# Removal on 2024-05-13, bug #929495
-dev-python/PySensors
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-04-12)
 # EAPI6. Fails to compile with go versions in tree. Upstream is archived.
 # Uses deprecated go eclasses. Maintainer needed, no rev deps.
