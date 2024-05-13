@@ -13,9 +13,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<use>
-		<flag name="grammar">Build and install grammar language files</flag>
-	</use>
 	<upstream>
 		<bugs-to>https://github.com/helix-editor/helix/issues</bugs-to>
 		<changelog>https://github.com/helix-editor/helix/commits/master</changelog>
