@@ -393,7 +393,7 @@ fi
 
 # TODO: Add a pkg_setup & pkg_pretend check for whether the active compiler
 # supports Ada.
-if tc_has_feature ada ; then
+if [[ ${PN} != gnat-gpl ]] && tc_has_feature ada ; then
 	BDEPEND+=" ada? ( || ( sys-devel/gcc[ada] dev-lang/gnat-gpl[ada] ) )"
 fi
 
