@@ -1,0 +1,37 @@
+From 9e97c827707e9d709180a12ddfa16527e36fc676 Mon Sep 17 00:00:00 2001
+From: Alexandre Bruyelles <git@jack.fr.eu.org>
+Date: Sun, 12 May 2024 19:45:52 +0200
+Subject: [PATCH] fiemap: fiemap_count_shared: use coherent parameter size
+
+Fixes https://github.com/markfasheh/duperemove/issues/344
+
+Signed-off-by: Alexandre Bruyelles <git@jack.fr.eu.org>
+---
+ fiemap.c | 2 +-
+ fiemap.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/fiemap.c b/fiemap.c
+index aa61114431bd..655797dc4d91 100644
+--- a/fiemap.c
++++ b/fiemap.c
+@@ -98,7 +98,7 @@ struct fiemap *do_fiemap(int fd)
+ 	return fiemap;
+ }
+ 
+-int fiemap_count_shared(int fd, size_t start_off, size_t end_off, size_t *shared)
++int fiemap_count_shared(int fd, size_t start_off, size_t end_off, uint64_t *shared)
+ {
+ 	_cleanup_(freep) struct fiemap *fiemap = NULL;
+ 	struct fiemap_extent *extent;
+diff --git a/fiemap.h b/fiemap.h
+index f9eb17b9aa4a..1918c6e96322 100644
+--- a/fiemap.h
++++ b/fiemap.h
+@@ -26,5 +26,5 @@ struct fiemap *do_fiemap(int fd);
+ /*
+  * Count how much of the area between start_off and end_off is shared.
+  */
+-int fiemap_count_shared(int fd, size_t start_off, size_t end_off, size_t *shared);
++int fiemap_count_shared(int fd, size_t start_off, size_t end_off, uint64_t *shared);
+ #endif	/* __FIEMAP_H__ */
