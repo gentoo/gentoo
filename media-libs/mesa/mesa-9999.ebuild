@@ -225,9 +225,10 @@ pkg_pretend() {
 
 	if use xa; then
 		if ! use video_cards_freedreno &&
+		   ! use video_cards_intel &&
 		   ! use video_cards_nouveau &&
 		   ! use video_cards_vmware; then
-			ewarn "Ignoring USE=xa         since VIDEO_CARDS does not contain freedreno, nouveau, or vmware"
+			ewarn "Ignoring USE=xa         since VIDEO_CARDS does not contain freedreno, intel, nouveau, or vmware"
 		fi
 	fi
 
@@ -343,6 +344,7 @@ multilib_src_configure() {
 	fi
 
 	if use video_cards_freedreno ||
+	   use video_cards_intel ||
 	   use video_cards_nouveau ||
 	   use video_cards_vmware; then
 		emesonargs+=($(meson_feature xa gallium-xa))
