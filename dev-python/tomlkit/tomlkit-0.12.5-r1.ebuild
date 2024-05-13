@@ -10,7 +10,7 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="Style preserving TOML library"
 HOMEPAGE="
-	https://github.com/sdispater/tomlkit/
+	https://github.com/python-poetry/tomlkit/
 	https://pypi.org/project/tomlkit/
 "
 

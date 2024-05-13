@@ -12,6 +12,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">tomlkit</remote-id>
-    <remote-id type="github">sdispater/tomlkit</remote-id>
+    <remote-id type="github">python-poetry/tomlkit</remote-id>
   </upstream>
 </pkgmetadata>
