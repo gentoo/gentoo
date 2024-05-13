@@ -1,6 +1,6 @@
 https://bugs.gentoo.org/898234
---- a/configure.ac
-+++ b/configure.ac
+--- a/configure.in
++++ b/configure.in
 @@ -62,7 +62,7 @@ if test "x$GDK_IMLIB" != x; then
  #include <glib.h>
  #include <gmodule.h>
