@@ -1,0 +1,41 @@
+Upstream commit https://code.blicky.net/yorhel/ncdu/commit/a4484f27f3d0a00a7244d1af8ee448c94f587da1
+
+From a4484f27f3d0a00a7244d1af8ee448c94f587da1 Mon Sep 17 00:00:00 2001
+From: Yorhel <git@yorhel.nl>
+Date: Thu, 25 Apr 2024 14:15:43 +0200
+Subject: [PATCH] Build: remove preferred_optimize_mode
+
+Fixes #238
+---
+ Makefile  | 2 +-
+ build.zig | 4 +---
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index bddcc22..14e0c18 100644
+--- a/Makefile
++++ b/Makefile
+@@ -9,7 +9,7 @@ ZIG ?= zig
+ PREFIX ?= /usr/local
+ BINDIR ?= ${PREFIX}/bin
+ MANDIR ?= ${PREFIX}/share/man/man1
+-ZIG_FLAGS ?= --release
++ZIG_FLAGS ?= --release=fast
+ 
+ NCDU_VERSION=$(shell grep 'program_version = "' src/main.zig | sed -e 's/^.*"\(.\+\)".*$$/\1/')
+ 
+diff --git a/build.zig b/build.zig
+index 231c2e6..73e957b 100644
+--- a/build.zig
++++ b/build.zig
+@@ -5,9 +5,7 @@ const std = @import("std");
+ 
+ pub fn build(b: *std.Build) void {
+     const target = b.standardTargetOptions(.{});
+-    const optimize = b.standardOptimizeOption(.{
+-        .preferred_optimize_mode = .ReleaseFast,
+-    });
++    const optimize = b.standardOptimizeOption(.{});
+ 
+     const pie = b.option(bool, "pie", "Build with PIE support (by default false)") orelse false;
+ 
