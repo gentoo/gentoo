@@ -734,7 +734,6 @@ sec-keys/openpgp-keys-jiatan
 ~dev-db/futuresql-0.1.1
 ~dev-libs/appstream-1.0.2
 ~dev-libs/kdiagram-3.0.1
-~dev-libs/kirigami-addons-1.1.0
 ~dev-libs/kirigami-addons-1.2.0
 ~dev-libs/ktextaddons-1.5.4
 ~dev-libs/kweathercore-0.8.0
