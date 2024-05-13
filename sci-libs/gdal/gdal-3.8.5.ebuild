@@ -101,6 +101,7 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.8.0-java21.patch
 	"${FILESDIR}"/${PN}-3.6.4-abseil-cpp-20230125.2-c++17.patch
+	"${FILESDIR}"/${P}-poppler-24.05.0.patch # in 3.9.0
 )
 
 pkg_setup() {
