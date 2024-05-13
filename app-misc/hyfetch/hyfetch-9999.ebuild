@@ -37,7 +37,7 @@ python_install() {
 	distutils-r1_python_install
 
 	dodir /usr/bin/
-	mv neofetch "${D}/usr/bin/neowofetch" || die
+	cp neofetch "${D}/usr/bin/neowofetch" || die
 
 	rm -r "${D}/usr/lib/${EPYTHON}/site-packages/hyfetch/scripts" || die
 }
