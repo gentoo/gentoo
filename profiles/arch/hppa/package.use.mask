@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-13)
+# Requires dev-util/shelltestrunner
+app-arch/mt-st test
+
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # Requires sys-devel/{clang,llvm}:16.
 dev-lang/python jit

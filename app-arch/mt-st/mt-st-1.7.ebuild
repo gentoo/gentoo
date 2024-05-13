@@ -12,6 +12,12 @@ SRC_URI="https://github.com/iustin/mt-st/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
+
+BDEPEND="
+	test? ( dev-util/shelltestrunner )
+"
 
 src_configure() {
 	tc-export CC
