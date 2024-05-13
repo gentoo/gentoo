@@ -11,7 +11,7 @@ SRC_URI="https://fishsoup.net/software/kanjipad/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ppc64 ~x86"
 
 RDEPEND="
 	app-accessibility/at-spi2-core:2
