@@ -215,11 +215,11 @@ pkg_pretend() {
 
 	if use vdpau; then
 		if ! use video_cards_d3d12 &&
-		   ! use video_cards_r300 &&
+		   ! use video_cards_nouveau &&
 		   ! use video_cards_r600 &&
 		   ! use video_cards_radeonsi &&
-		   ! use video_cards_nouveau; then
-			ewarn "Ignoring USE=vdpau      since VIDEO_CARDS does not contain d3d12, r300, r600, radeonsi, or nouveau"
+		   ! use video_cards_virgl; then
+			ewarn "Ignoring USE=vdpau      since VIDEO_CARDS does not contain d3d12, nouveau, r600, radeonsi, or virgl"
 		fi
 	fi
 
@@ -334,10 +334,10 @@ multilib_src_configure() {
 	fi
 
 	if use video_cards_d3d12 ||
-	   use video_cards_r300 ||
+	   use video_cards_nouveau ||
 	   use video_cards_r600 ||
 	   use video_cards_radeonsi ||
-	   use video_cards_nouveau; then
+	   use video_cards_virgl; then
 		emesonargs+=($(meson_feature vdpau gallium-vdpau))
 	else
 		emesonargs+=(-Dgallium-vdpau=disabled)
