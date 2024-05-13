@@ -202,12 +202,14 @@ pkg_pretend() {
 		fi
 	fi
 
+	# VA
 	if use vaapi; then
 		if ! use video_cards_d3d12 &&
+		   ! use video_cards_nouveau &&
 		   ! use video_cards_r600 &&
 		   ! use video_cards_radeonsi &&
-		   ! use video_cards_nouveau; then
-			ewarn "Ignoring USE=vaapi      since VIDEO_CARDS does not contain d3d12, r600, radeonsi, or nouveau"
+		   ! use video_cards_virgl; then
+			ewarn "Ignoring USE=vaapi      since VIDEO_CARDS does not contain d3d12, nouveau, r600, radeonsi, or virgl"
 		fi
 	fi
 
@@ -316,9 +318,10 @@ multilib_src_configure() {
 	fi
 
 	if use video_cards_d3d12 ||
+	   use video_cards_nouveau ||
 	   use video_cards_r600 ||
 	   use video_cards_radeonsi ||
-	   use video_cards_nouveau; then
+	   use video_cards_virgl; then
 		emesonargs+=($(meson_feature vaapi gallium-va))
 		use vaapi && emesonargs+=( -Dva-libs-path="${EPREFIX}"/usr/$(get_libdir)/va/drivers )
 	else
