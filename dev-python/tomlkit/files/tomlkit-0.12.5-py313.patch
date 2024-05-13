@@ -1,0 +1,71 @@
+From 05d9be1c2b2a95a4eb3a53d999f1483dd7abae5a Mon Sep 17 00:00:00 2001
+From: Frost Ming <me@frostming.com>
+Date: Mon, 13 May 2024 10:44:28 +0800
+Subject: [PATCH] fix: Test failures with Python 3.13.0a4:
+ test_dates_behave_like_dates and test_times_behave_like_times (#349)
+
+Fixes #333
+
+Signed-off-by: Frost Ming <me@frostming.com>
+---
+ tests/test_items.py         |  4 ++--
+ tomlkit/items.py            | 15 ++++++++++-----
+ 4 files changed, 20 insertions(+), 8 deletions(-)
+
+diff --git a/tests/test_items.py b/tests/test_items.py
+index 1a71b04..3d2de68 100644
+--- a/tests/test_items.py
++++ b/tests/test_items.py
+@@ -689,7 +689,7 @@ def test_dates_behave_like_dates():
+     assert i.as_string() == "2018-07-22"
+ 
+     i += timedelta(days=1)
+-    assert i == datetime(2018, 7, 23)
++    assert i == date(2018, 7, 23)
+     assert i.as_string() == "2018-07-23"
+ 
+     i -= timedelta(days=2)
+@@ -697,7 +697,7 @@ def test_dates_behave_like_dates():
+     assert i.as_string() == "2018-07-21"
+ 
+     i = i.replace(year=2019)
+-    assert i == datetime(2019, 7, 21)
++    assert i == date(2019, 7, 21)
+     assert i.as_string() == "2019-07-21"
+ 
+     doc = parse("dt = 2018-07-22 # Comment")
+diff --git a/tomlkit/items.py b/tomlkit/items.py
+index ef40a15..661e09c 100644
+--- a/tomlkit/items.py
++++ b/tomlkit/items.py
+@@ -958,9 +958,14 @@ def __new__(cls, year: int, month: int, day: int, *_: Any) -> date:
+         return date.__new__(cls, year, month, day)
+ 
+     def __init__(
+-        self, year: int, month: int, day: int, trivia: Trivia, raw: str
++        self,
++        year: int,
++        month: int,
++        day: int,
++        trivia: Trivia | None = None,
++        raw: str = "",
+     ) -> None:
+-        super().__init__(trivia)
++        super().__init__(trivia or Trivia())
+ 
+         self._raw = raw
+ 
+@@ -1033,10 +1038,10 @@ def __init__(
+         second: int,
+         microsecond: int,
+         tzinfo: tzinfo | None,
+-        trivia: Trivia,
+-        raw: str,
++        trivia: Trivia | None = None,
++        raw: str = "",
+     ) -> None:
+-        super().__init__(trivia)
++        super().__init__(trivia or Trivia())
+ 
+         self._raw = raw
+ 
