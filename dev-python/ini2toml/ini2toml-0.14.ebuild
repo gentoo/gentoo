@@ -17,7 +17,6 @@ HOMEPAGE="
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="test-rust"
 
 RDEPEND="
 	>=dev-python/packaging-20.7[${PYTHON_USEDEP}]
@@ -30,9 +29,6 @@ BDEPEND="
 		dev-python/configupdater[${PYTHON_USEDEP}]
 		dev-python/tomli[${PYTHON_USEDEP}]
 		dev-python/tomlkit[${PYTHON_USEDEP}]
-		test-rust? (
-			>=dev-python/pyproject-fmt-0.4.0[${PYTHON_USEDEP}]
-		)
 	)
 "
 
@@ -50,7 +46,9 @@ python_test() {
 	)
 	local EPYTEST_DESELECT=()
 
-	if ! has_version ">=dev-python/pyproject-fmt-0.4.0[${PYTHON_USEDEP}]"; then
+	# Incompatible with pyproject-fmt-2 API:
+	# https://github.com/abravalheri/ini2toml/issues/103
+	if ! has_version "<dev-python/pyproject-fmt-2[${PYTHON_USEDEP}]"; then
 		EPYTEST_DESELECT+=(
 			tests/test_cli.py::test_auto_formatting
 		)
