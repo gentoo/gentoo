@@ -5,6 +5,6 @@
     <email>robbat2@gentoo.org</email>
   </maintainer>
   <upstream>
-    <remote-id type="github">pwr/Solaar</remote-id>
+    <remote-id type="github">pwr-Solaar/Solaar</remote-id>
   </upstream>
 </pkgmetadata>
