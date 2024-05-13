@@ -39,7 +39,7 @@ RDEPEND="${DEPEND}
 	>=sys-fs/lxcfs-5.0.0
 	sys-fs/squashfs-tools[lzma]
 	virtual/acl"
-BDEPEND=">=dev-lang/go-1.20
+BDEPEND=">=dev-lang/go-1.22
 	nls? ( sys-devel/gettext )
 	verify-sig? ( sec-keys/openpgp-keys-canonical )"
 
