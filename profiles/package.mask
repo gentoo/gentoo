@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-13)
+# EAPI=6, fails to compile, dead upstream, maintainer-needed.
+# Removal: 2024-06-12.  Bugs #931874, #878771.
+media-gfx/raw-thumbnailer
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-13)
 # EAPI=6, fails to compile, library with no reverse dependencies.
 # Removal: 2024-06-12.  Bug #931861.
 sci-libs/cifparse-obj
