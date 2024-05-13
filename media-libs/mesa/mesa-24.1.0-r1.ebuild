@@ -370,10 +370,10 @@ multilib_src_configure() {
 	fi
 
 	gallium_enable -- swrast
+	gallium_enable video_cards_d3d12 d3d12
 	gallium_enable video_cards_freedreno freedreno
 	gallium_enable video_cards_intel crocus i915 iris
 	gallium_enable video_cards_lima lima
-	gallium_enable video_cards_d3d12 d3d12
 	gallium_enable video_cards_nouveau nouveau
 	gallium_enable video_cards_panfrost panfrost
 	gallium_enable video_cards_v3d v3d
@@ -386,8 +386,8 @@ multilib_src_configure() {
 	gallium_enable video_cards_r300 r300
 	gallium_enable video_cards_r600 r600
 	gallium_enable video_cards_radeonsi radeonsi
-	if ! use video_cards_r300 && \
-		! use video_cards_r600; then
+	if ! use video_cards_r300 &&
+	   ! use video_cards_r600; then
 		gallium_enable video_cards_radeon r300 r600
 	fi
 
