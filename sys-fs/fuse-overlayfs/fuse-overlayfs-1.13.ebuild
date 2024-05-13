@@ -11,7 +11,7 @@ SRC_URI="https://github.com/containers/fuse-overlayfs/archive/v${PV}.tar.gz -> $
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv"
 
 DEPEND="sys-fs/fuse:3"
 RDEPEND="${DEPEND}"
