@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ DESCRIPTION="Persistence API"
 HOMEPAGE="https://www.jcp.org/en/jsr/detail?id=220"
 SRC_URI="https://repo1.maven.org/maven2/javax/persistence/${PN/-/.}/${PV}/${PN/-/.}-${PV}-sources.jar"
 
-LICENSE="CDDL"
+LICENSE="EPL-1.0 BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
