@@ -18,17 +18,17 @@
 
         Because beets is designed as a library, it can do almost anything you can
         imagine for your music collection. Via plugins, beets becomes a panacea:
-        * Embed and extract album art from files’ tags.
+        * Embed and extract album art from files' tags.
         * Listen to your library with a music player that speaks the MPD protocol
         and works with a staggering variety of interfaces.
         * Fetch lyrics for all your songs from databases on the Web.
         * Manage your MusicBrainz music collection.
-        * Analyze music files’ metadata from the command line.
+        * Analyze music files' metadata from the command line.
         * Clean up crufty tags left behind by other, less-awesome tools.
         * Browse your music library graphically through a Web browser and play it
         in any browser that supports HTML5 Audio.
 
-        If beets doesn’t do what you want yet, writing your own plugin is
+        If beets doesn't do what you want yet, writing your own plugin is
         shockingly simple if you know a little Python.
   </longdescription>
   <stabilize-allarches/>
