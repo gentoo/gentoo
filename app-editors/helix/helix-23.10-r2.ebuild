@@ -277,14 +277,11 @@ S="${WORKDIR}"
 LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 ISC MIT MPL-2.0 Unicode-DFS-2016 Unlicense ZLIB"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="+grammar"
 
-BDEPEND="grammar? ( dev-vcs/git )"
 RDEPEND="dev-vcs/git"
 
 QA_FLAGS_IGNORED="
 	usr/bin/hx
-	usr/share/helix/runtime/grammars/.*\.so
 "
 
 DOCS=(
@@ -299,7 +296,7 @@ PATCHES=(
 )
 
 src_compile() {
-	use grammar || local -x HELIX_DISABLE_AUTO_GRAMMAR_BUILD=1
+	local -x HELIX_DISABLE_AUTO_GRAMMAR_BUILD=1
 
 	cargo_src_compile
 }
@@ -307,12 +304,10 @@ src_compile() {
 src_install() {
 	cargo_src_install --path helix-term
 
-	rm -r runtime/grammars/.gitkeep || die
-	rm -r runtime/grammars/sources || die
+	insinto /usr/share/helix/runtime
+	doins -r runtime/{queries,themes,tutor}
 
 	insinto /usr/share/helix
-	doins -r runtime
-
 	dodoc -r "${DOCS[@]}"
 
 	doicon -s 256x256 contrib/${PN}.png
@@ -329,11 +324,16 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "The runtime files (grammars, queries, themes) have been"
+	einfo "The runtime files (queries, themes) have been"
 	einfo "installed in '/usr/share/helix/runtime'. The environment variable"
 	einfo "HELIX_RUNTIME was also installed on your system. In running shell instances"
 	einfo "you need to run 'source /etc/profile' to pick up the new variable"
 	einfo "or manually set the environment variable HELIX_RUNTIME=/usr/share/helix/runtime."
+	einfo ""
+	einfo "Grammars are not installed yet. To fetch and install them, run:"
+	einfo ""
+	einfo "  hx --grammar fetch"
+	einfo "  hx --grammar build"
 	xdg_desktop_database_update
 	xdg_icon_cache_update
 }
