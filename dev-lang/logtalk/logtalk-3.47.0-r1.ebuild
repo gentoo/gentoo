@@ -11,7 +11,7 @@ SRC_URI="https://logtalk.org/files/${P}.tar.bz2"
 LICENSE="Apache-2.0"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE="fop xslt"
 
 RDEPEND="
