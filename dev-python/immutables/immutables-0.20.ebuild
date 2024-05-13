@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 
 inherit distutils-r1
 
@@ -40,6 +40,13 @@ python_compile() {
 	# upstream controls NDEBUG explicitly
 	use debug && local -x DEBUG_IMMUTABLES=1
 	local -x IMMUTABLES_EXT=$(usex native-extensions 1 0)
+	case ${EPYTHON} in
+		python3.13)
+			# https://github.com/MagicStack/immutables/issues/116
+			IMMUTABLES_EXT=0
+			;;
+	esac
+
 	distutils-r1_python_compile
 }
 
