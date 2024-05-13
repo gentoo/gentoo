@@ -360,7 +360,7 @@ texlive-module_src_install() {
 			cp -pR texmf-doc "${ED}/usr/share/" || die
 		fi
 
-		if ver_test -ge 2023 && [[ ${CATEGORY} == dev-texlive ]]; then
+		if ver_test -ge 2023 && [[ -d texmf-dist/doc/man && ${CATEGORY} == dev-texlive ]]; then
 			local texlive_core_man_pages=(
 				afm2pl.1
 				aleph.1
