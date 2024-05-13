@@ -13,7 +13,7 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/containers/conmon.git"
 else
 	SRC_URI="https://github.com/containers/conmon/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv"
+	KEYWORDS="amd64 arm64 ~ppc64 ~riscv"
 fi
 
 LICENSE="Apache-2.0"
