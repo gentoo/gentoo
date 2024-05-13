@@ -1,0 +1,29 @@
+Gentoo uses "msgpack-cxx" as library name and adds important
+MSGPACK_NO_BOOST compile definition when msgpack-cxx us installed with USE=-boost
+--- a/tensilelite/Tensile/Source/lib/CMakeLists.txt
++++ b/tensilelite/Tensile/Source/lib/CMakeLists.txt
+@@ -102,22 +102,9 @@ if(TENSILE_USE_LLVM OR TENSILE_USE_MSGPACK)
+ endif()
+ 
+ if(TENSILE_USE_MSGPACK)
+-    find_package(msgpack REQUIRED)
++    find_package(msgpack-cxx REQUIRED)
+     target_compile_definitions(TensileHost PUBLIC -DTENSILE_MSGPACK=1)
+-
+-    if(TARGET msgpackc-cxx)
+-        get_target_property(msgpack_inc msgpackc-cxx INTERFACE_INCLUDE_DIRECTORIES)
+-    elseif(TARGET msgpackc)
+-        get_target_property(msgpack_inc msgpackc INTERFACE_INCLUDE_DIRECTORIES)
+-    endif()
+-
+-    if(DEFINED msgpack_inc)
+-        # include C++ headers manually
+-        # External header includes included as system files
+-        target_include_directories(TensileHost
+-            SYSTEM PRIVATE $<BUILD_INTERFACE:${msgpack_inc}>
+-        )
+-    endif()
++    target_link_libraries(TensileHost PRIVATE msgpack-cxx)
+ endif()
+ 
+ if(TENSILE_USE_LLVM)
