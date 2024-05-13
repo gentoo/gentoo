@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-13)
+# EAPI=6, fails to compile, no reverse dependencies.
+# Removal: 2024-06-12.  Bugs #931860, #891895.
+sci-libs/libghemical
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-11)
 # EAPI=6, uses deprecated go eclass, archived upstream. Update to
 # usage of go-module.eclass isn't simple.
