@@ -14,7 +14,7 @@ SRC_URI="
 			${PN}-6.06-logind-idle-hint.patch
 	)
 	systemd? (
-		 https://github.com/Flowdalic/xscreensaver/commit/376b07ec76cfe1070f498773aaec8fd7030593af.patch ->
+		https://github.com/Flowdalic/xscreensaver/commit/376b07ec76cfe1070f498773aaec8fd7030593af.patch ->
 			${PN}-6.07-xscreensaver.service-start-with-no-splash.patch
 	)
 "
