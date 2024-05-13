@@ -29,7 +29,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.7.1-correct-license-install-dir.patch"
 	"${FILESDIR}/${PN}-6.0.0-extend-isa-compatibility-check.patch"
 	"${FILESDIR}/${PN}-6.0.0-llvm-18-compat.patch"
-	"${FILESDIR}/${PN}-6.1.0-HIPIncludePath-not-needed.patch"
+	"${FILESDIR}/${PN}-6.1.0-enforce-oop-compiler.patch"
+	"${FILESDIR}/${PN}-6.1.0-fix-comgr-default-flags.patch"
 	"${FILESDIR}/${PN}-6.1.0-clang18-option-use-visibility.patch"
 	"${FILESDIR}/${PN}-6.1.0-clang18-code-object-v5.patch"
 	"${FILESDIR}/${PN}-6.1.0-clang18-log_remarks_test.patch"
@@ -47,6 +48,7 @@ RDEPEND=">=dev-libs/rocm-device-libs-${PV}
 		sys-devel/clang:${LLVM_SLOT}=
 		sys-devel/lld:${LLVM_SLOT}=
 	')
+	dev-util/hipcc
 "
 DEPEND="${RDEPEND}"
 
@@ -70,7 +72,12 @@ src_prepare() {
 	sed '/sys::path::append(HIPPath/s,"hip","",' -i src/comgr-env.cpp || die
 	sed "/return LLVMPath;/s,LLVMPath,llvm::SmallString<128>(\"$(get_llvm_prefix)\")," -i src/comgr-env.cpp || die
 	eapply $(prefixify_ro "${FILESDIR}"/${PN}-5.0-rocm_path.patch)
+
 	cmake_src_prepare
+
+	# Replace @CLANG_RESOURCE_DIR@ in patches
+	local CLANG_RESOURCE_DIR="$("$(get_llvm_prefix)"/bin/clang -print-resource-dir)"
+	sed "s,@CLANG_RESOURCE_DIR@,\"${CLANG_RESOURCE_DIR}\"," -i src/comgr-compiler.cpp || die
 }
 
 src_configure() {
