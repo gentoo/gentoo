@@ -1,8 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="WMBiff is a dock applet for WindowMaker which can monitor up to 5 mailboxes"
 HOMEPAGE="https://www.dockapps.net/wmbiff"
@@ -36,5 +36,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/864855
+	# https://groups.google.com/g/wmaker-dev/c/Z9mU9x4qxs0
+	filter-lto
+
 	econf $(use_enable crypt crypto)
 }
