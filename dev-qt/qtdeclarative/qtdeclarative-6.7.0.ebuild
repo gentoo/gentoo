@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 # behaves very badly when qtdeclarative is not already installed, also
 # other more minor issues (installs junk, sandbox/offscreen issues)
