@@ -1,0 +1,56 @@
+Add ability to build without specitying any arch.
+This produces dummy library, which can be linked to other project (like caffe2 in pytorch).
+
+Related upstream bug: https://github.com/ROCm/hipBLASLt/issues/535
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -220,6 +220,10 @@ else()
+     else()
+       find_package(Tensile 4.33.0 EXACT REQUIRED HIP LLVM OpenMP PATHS "${INSTALLED_TENSILE_PATH}")
+     endif()
++    else()  # link to Tensile (required), but don't generate libraries
++      cmake_policy(SET CMP0074 NEW)
++      set(Tensile_ROOT "${CMAKE_SOURCE_DIR}/tensilelite/Tensile")
++      find_package(Tensile REQUIRED HIP LLVM OpenMP)
+     endif()
+ 
+     # setup hipblaslt defines used for both the library and clients
+--- a/library/CMakeLists.txt
++++ b/library/CMakeLists.txt
+@@ -75,7 +75,7 @@ add_library(roc::hipblaslt ALIAS hipblaslt)
+ 
+ # Target compile definitions
+ if(NOT BUILD_CUDA)
+-if( BUILD_WITH_TENSILE )
++if( TRUE )  # link with Tensile is always reqiured
+ 
+   if( BUILD_SHARED_LIBS )
+     target_link_libraries( hipblaslt PRIVATE TensileHost )
+@@ -194,7 +194,7 @@ rocm_install_targets(TARGETS hipblaslt
+                        ${CMAKE_BINARY_DIR}/include
+ )
+ 
+-if ( NOT BUILD_CUDA )
++if ( NOT BUILD_CUDA AND BUILD_WITH_TENSILE )
+     if (WIN32)
+       set( HIPBLASLT_TENSILE_LIBRARY_DIR "\${CPACK_PACKAGING_INSTALL_PREFIX}hipblaslt/bin" CACHE PATH "path to tensile library" )
+     else()
+--- a/library/src/amd_detail/rocblaslt/src/CMakeLists.txt
++++ b/library/src/amd_detail/rocblaslt/src/CMakeLists.txt
+@@ -100,7 +100,16 @@ if( BUILD_WITH_TENSILE )
+   set( Tensile_INC
+     ${CMAKE_CURRENT_SOURCE_DIR}/src/amd_detail/rocblaslt/src/Tensile
+   )
++else()
++  set_target_properties( TensileHost PROPERTIES POSITION_INDEPENDENT_CODE ON )
+ 
++  set( Tensile_SRC
++  src/amd_detail/rocblaslt/src/tensile_host.cpp
++  )
++
++  set( Tensile_INC
++  ${CMAKE_CURRENT_SOURCE_DIR}/src/amd_detail/rocblaslt/src/Tensile
++  )
+ endif( ) # BUILD_WITH_TENSILE
+ 
+ set(DL_LIB dl)

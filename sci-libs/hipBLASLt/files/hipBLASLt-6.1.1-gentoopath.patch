@@ -1,0 +1,24 @@
+--- a/tensilelite/Tensile/Ops/gen_assembly.sh
++++ b/tensilelite/Tensile/Ops/gen_assembly.sh
+@@ -32,7 +32,7 @@ if ! [ -z ${ROCM_PATH+x} ]; then
+     rocm_path=${ROCM_PATH}
+ fi
+ 
+-toolchain=${rocm_path}/llvm/bin/clang++
++toolchain=@LLVM_PATH@/bin/clang++
+ 
+ . ${venv}/bin/activate
+ 
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -97,10 +97,6 @@ endif()
+ # hipBLASLt project
+ project(hipblaslt LANGUAGES CXX)
+ 
+-# Force library install path to lib (CentOS 7 defaults to lib64)
+-set(CMAKE_INSTALL_LIBDIR "lib" CACHE INTERNAL "Installation directory for libraries" FORCE)
+-
+-
+ # Build options
+ option(BUILD_SHARED_LIBS "Build hipBLASLt as a shared library" ON)
+ option(BUILD_CLIENTS_TESTS "Build tests (requires googletest)" OFF)
