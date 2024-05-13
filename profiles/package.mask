@@ -362,8 +362,8 @@ sec-keys/openpgp-keys-jiatan
 # Mask experimental software
 =mail-mta/postfix-3.10*
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-04-16)
-# KDE Plasma 6.0.4, Gear 24.02.2 and Frameworks 6.1.0 mask
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-05-13)
+# KDE Plasma 6.0.4, Gear 24.02.2 and Frameworks 6.2.0 mask
 #
 # Don't do anything unless you're intentionally moving to Plasma 6, which is
 # masked still for a reason. If you get this message just from conflicts where
@@ -381,6 +381,77 @@ sec-keys/openpgp-keys-jiatan
 #   - file a bug after making sure none exists yet for your issue
 # - runtime bugs: https://community.kde.org/Plasma/Plasma_6#How_to_use/test_it
 #   - work with upstream and help test patches using /etc/portage/patches
+~kde-frameworks/frameworkintegration-6.2.0
+~kde-frameworks/attica-6.2.0
+~kde-frameworks/bluez-qt-6.2.0
+~kde-frameworks/breeze-icons-6.2.0
+~kde-frameworks/extra-cmake-modules-6.2.0
+~kde-frameworks/karchive-6.2.0
+~kde-frameworks/kcalendarcore-6.2.0
+~kde-frameworks/kcodecs-6.2.0
+~kde-frameworks/kconfig-6.2.0
+~kde-frameworks/kcoreaddons-6.2.0
+~kde-frameworks/kdbusaddons-6.2.0
+~kde-frameworks/kdnssd-6.2.0
+~kde-frameworks/kguiaddons-6.2.0
+~kde-frameworks/kholidays-6.2.0
+~kde-frameworks/ki18n-6.2.0
+~kde-frameworks/kidletime-6.2.0
+~kde-frameworks/kirigami-6.2.1
+~kde-frameworks/kitemmodels-6.2.0
+~kde-frameworks/kitemviews-6.2.0
+~kde-frameworks/kplotting-6.2.0
+~kde-frameworks/kquickcharts-6.2.0
+~kde-frameworks/ktexttemplate-6.2.0
+~kde-frameworks/kuserfeedback-6.2.0
+~kde-frameworks/kwidgetsaddons-6.2.0
+~kde-frameworks/kwindowsystem-6.2.0
+~kde-frameworks/modemmanager-qt-6.2.0
+~kde-frameworks/networkmanager-qt-6.2.0
+~kde-frameworks/prison-6.2.0
+~kde-frameworks/solid-6.2.0
+~kde-frameworks/sonnet-6.2.0
+~kde-frameworks/syntax-highlighting-6.2.0
+~kde-frameworks/threadweaver-6.2.0
+~kde-frameworks/kauth-6.2.0
+~kde-frameworks/kcolorscheme-6.2.0
+~kde-frameworks/kcompletion-6.2.0
+~kde-frameworks/kcontacts-6.2.0
+~kde-frameworks/kcrash-6.2.0
+~kde-frameworks/kdoctools-6.2.0
+~kde-frameworks/kfilemetadata-6.2.0
+~kde-frameworks/kimageformats-6.2.0
+~kde-frameworks/kjobwidgets-6.2.0
+~kde-frameworks/knotifications-6.2.0
+~kde-frameworks/kpackage-6.2.0
+~kde-frameworks/kpty-6.2.0
+~kde-frameworks/kstatusnotifieritem-6.2.0
+~kde-frameworks/ksvg-6.2.0
+~kde-frameworks/kunitconversion-6.2.0
+~kde-frameworks/syndication-6.2.0
+~kde-frameworks/baloo-6.2.0
+~kde-frameworks/kbookmarks-6.2.0
+~kde-frameworks/kcmutils-6.2.0
+~kde-frameworks/kconfigwidgets-6.2.0
+~kde-frameworks/kdav-6.2.0
+~kde-frameworks/kdeclarative-6.2.0
+~kde-frameworks/kded-6.2.0
+~kde-frameworks/kdesu-6.2.0
+~kde-frameworks/kglobalaccel-6.2.0
+~kde-frameworks/kiconthemes-6.2.0
+~kde-frameworks/kio-6.2.0
+~kde-frameworks/knewstuff-6.2.0
+~kde-frameworks/knotifyconfig-6.2.0
+~kde-frameworks/kparts-6.2.0
+~kde-frameworks/kpeople-6.2.0
+~kde-frameworks/krunner-6.2.0
+~kde-frameworks/kservice-6.2.0
+~kde-frameworks/ktexteditor-6.2.0
+~kde-frameworks/ktextwidgets-6.2.0
+~kde-frameworks/kwallet-6.2.0
+~kde-frameworks/kxmlgui-6.2.0
+~kde-frameworks/purpose-6.2.0
+~kde-frameworks/qqc2-desktop-style-6.2.0
 ~kde-frameworks/frameworkintegration-6.1.0
 ~kde-frameworks/attica-6.1.0
 ~kde-frameworks/bluez-qt-6.1.0
