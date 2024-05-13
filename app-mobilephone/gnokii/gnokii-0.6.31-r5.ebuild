@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 inherit autotools desktop linux-info strip-linguas
 
-HOMEPAGE="https://www.gnokii.org/"
 if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="
 		git://git.savannah.nongnu.org/${PN}.git
@@ -14,6 +14,7 @@ else
 	SRC_URI="https://www.gnokii.org/download/${PN}/${P}.tar.bz2"
 	KEYWORDS="amd64 ~arm64 ~hppa ~ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
+HOMEPAGE="https://www.gnokii.org/"
 DESCRIPTION="User space driver and tools for use with mobile phones"
 
 LICENSE="GPL-2"
@@ -23,6 +24,7 @@ IUSE="bluetooth debug ical irda mysql nls +pcsc-lite postgres sms usb X"
 RDEPEND="
 	!app-mobilephone/smstools
 	dev-libs/glib:2
+	sys-libs/readline:=
 	bluetooth? ( kernel_linux? ( net-wireless/bluez ) )
 	ical? ( dev-libs/libical:= )
 	pcsc-lite? ( sys-apps/pcsc-lite )
@@ -33,7 +35,8 @@ RDEPEND="
 	usb? ( virtual/libusb:0 )
 	X? ( x11-libs/gtk+:2 )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/intltool
 	irda? ( virtual/os-headers )
 	nls? ( sys-devel/gettext )
@@ -56,11 +59,12 @@ PATCHES=(
 )
 
 src_prepare() {
-	[[ ${PV} == *9999 ]] && \
-		PATCHES=(
+	if [[ ${PV} == *9999 ]]; then
+		local PATCHES=(
 			"${FILESDIR}"/${P}-icon.patch
 			"${FILESDIR}"/${P}-translations.patch
 		)
+	fi
 
 	default
 
@@ -85,23 +89,24 @@ src_configure() {
 		config_xdebug="--disable-xdebug"
 	fi
 
-	econf \
-		--disable-static \
-		--enable-security \
-		--disable-unix98test \
-		$(use_enable bluetooth) \
-		${config_xdebug} \
-		$(use_enable debug fulldebug) \
-		$(use_enable debug rlpdebug) \
-		$(use_enable ical libical) \
-		$(use_enable irda) \
-		$(use_enable mysql) \
-		$(use_enable nls) \
-		$(use_enable pcsc-lite libpcsclite) \
-		$(use_enable postgres) \
-		$(use_enable sms smsd) \
-		$(use_enable usb libusb) \
+	local myeconfargs=(
+		--enable-security
+		--disable-unix98test
+		$(use_enable bluetooth)
+		${config_xdebug}
+		$(use_enable debug fulldebug)
+		$(use_enable debug rlpdebug)
+		$(use_enable ical libical)
+		$(use_enable irda)
+		$(use_enable mysql)
+		$(use_enable nls)
+		$(use_enable pcsc-lite libpcsclite)
+		$(use_enable postgres)
+		$(use_enable sms smsd)
+		$(use_enable usb libusb)
 		$(use_with X x)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_test() {
