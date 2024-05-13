@@ -28,8 +28,10 @@ src_prepare() {
 }
 
 src_install() {
-	dobin "${PN}" "${PN}-server" gpg-sign-all
-	doman "${PN}.1"
+	dobin "${PN}" "${PN}-server" gpg-sign-all genrings
+	doman "${PN}.1" "${PN}-server.1"
+	insinto /etc/kup
+	doins kup-server.cfg
 	einstalldocs
 	if use gitolite; then
 		exeinto /usr/libexec/gitolite/commands/
