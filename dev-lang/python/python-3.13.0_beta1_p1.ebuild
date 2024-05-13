@@ -239,6 +239,7 @@ src_configure() {
 			-m test
 			"-j$(makeopts_jobs)"
 			--pgo-extended
+			--verbose3
 			-u-network
 
 			# We use a timeout because of how often we've had hang issues
@@ -408,6 +409,7 @@ src_test() {
 	local -x LOGNAME=buildbot
 
 	local test_opts=(
+		--verbose3
 		-u-network
 		-j "$(makeopts_jobs)"
 
