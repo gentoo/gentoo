@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit edo flag-o-matic go-env optfeature multiprocessing
 inherit python-single-r1 toolchain-funcs xdg
 
