@@ -1,0 +1,26 @@
+In-process compilation breaks compile_source_to_executable test, as it attempts to
+build .so as fatbin, and some options does not work with unpatched LLVM.
+--- a/src/comgr-compiler.cpp
++++ b/src/comgr-compiler.cpp
+@@ -1226,10 +1226,7 @@ amd_comgr_status_t AMDGPUCompiler::compileToFatBin() {
+     return AMD_COMGR_STATUS_ERROR_INVALID_ARGUMENT;
+   }
+ 
+-  // This is a workaround to support HIP OOP Fatbin Compilation
+-  CompileOOP = true;
+   auto Status = processFiles(AMD_COMGR_DATA_KIND_FATBIN, ".fatbin");
+-  CompileOOP = false;
+ 
+   return Status;
+ }
+--- a/src/comgr-compiler.h
++++ b/src/comgr-compiler.h
+@@ -102,7 +102,7 @@ class AMDGPUCompiler {
+   std::string ClangIncludePath;
+   std::string ClangIncludePath2;
+   /// Perform out-of-process compilation.
+-  bool CompileOOP = false;
++  bool CompileOOP = true;
+   /// Precompiled header file paths.
+   llvm::SmallVector<llvm::SmallString<128>, 2> PrecompiledHeaders;
+   /// Arguments common to all driver invocations in the current action.
