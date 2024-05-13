@@ -43,3 +43,4 @@ virgl - VIDEO_CARDS setting to build driver for virgil (virtual 3D GPU)
 virtualbox - VIDEO_CARDS setting to build driver for virtualbox emulation
 vivante - VIDEO_CARDS setting to build etnaviv driver for vivante video cards
 vmware - VIDEO_CARDS setting to build driver for vmware video cards
+zink - VIDEO_CARDS setting to build Zink OpenGL-over-Vulkan Gallium driver
