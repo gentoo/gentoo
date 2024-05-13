@@ -14,4 +14,7 @@
     <flag name="sms">Enable SMS support (build smsd)</flag>
     <flag name="pcsc-lite">Enable smartcard support with <pkg>sys-apps/pcsc-lite</pkg></flag>
   </use>
+  <upstream>
+    <remote-id type="savannah">gnokii</remote-id>
+  </upstream>
 </pkgmetadata>
