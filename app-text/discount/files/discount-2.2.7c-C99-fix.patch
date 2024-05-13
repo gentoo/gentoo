@@ -1,0 +1,38 @@
+FROM: https://github.com/Orc/discount/issues/283
+FROM: Atri Bhattacharya <badshah400@gmail.com>
+
+--- a/main.c
++++ b/main.c
+@@ -100,14 +100,15 @@ free_it(char *object, void *ctx)
+ }
+ 
+ char *
+-external_codefmt(char *src, int len, char *lang)
++external_codefmt(const char *src, const int len, void *lang)
+ {
+     int extra = 0;
+     int i, x;
+     char *res;
++    char *ec_lang = (char *)lang;
+ 
+-    if ( lang == 0 )
+-	lang = "generic_code";
++    if ( ec_lang == 0 )
++	ec_lang = "generic_code";
+ 
+     for ( i=0; i < len; i++) {
+ 	if ( src[i] == '&' )
+@@ -117,11 +118,11 @@ external_codefmt(char *src, int len, cha
+     }
+ 
+     /* 80 characters for the format wrappers */
+-    if ( (res = malloc(len+extra+80+strlen(lang))) ==0 )
++    if ( (res = malloc(len+extra+80+strlen(ec_lang))) ==0 )
+ 	/* out of memory?  drat! */
+ 	return 0;
+ 
+-    sprintf(res, "<pre><code class=\"%s\">\n", lang);
++    sprintf(res, "<pre><code class=\"%s\">\n", ec_lang);
+     x = strlen(res);
+     for ( i=0; i < len; i++ ) {
+ 	switch (src[i]) {
