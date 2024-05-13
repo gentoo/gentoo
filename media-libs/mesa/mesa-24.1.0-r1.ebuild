@@ -198,10 +198,14 @@ pkg_pretend() {
 		if ! use video_cards_d3d12 &&
 		   ! use video_cards_freedreno &&
 		   ! use video_cards_intel &&
+		   ! use video_cards_lavapipe &&
+		   ! use video_cards_nouveau &&
+		   ! use video_cards_nvk &&
+		   ! use video_cards_panfrost &&
 		   ! use video_cards_radeonsi &&
 		   ! use video_cards_v3d &&
-		   ! use video_cards_nvk; then
-			ewarn "Ignoring USE=vulkan     since VIDEO_CARDS does not contain d3d12, freedreno, intel, radeonsi, v3d, or nvk"
+		   ! use video_cards_virgl; then
+			ewarn "Ignoring USE=vulkan     since VIDEO_CARDS does not contain d3d12, freedreno, intel, lavapipe, nouveau, nvk, panfrost, radeonsi, v3d, or virgl"
 		fi
 	fi
 
@@ -397,12 +401,15 @@ multilib_src_configure() {
 	fi
 
 	if use vulkan; then
-		vulkan_enable video_cards_lavapipe swrast
+		vulkan_enable video_cards_d3d12 microsoft-experimental
 		vulkan_enable video_cards_freedreno freedreno
 		vulkan_enable video_cards_intel intel intel_hasvk
-		vulkan_enable video_cards_d3d12 microsoft-experimental
+		vulkan_enable video_cards_lavapipe swrast
+		vulkan_enable video_cards_panfrost panfrost
 		vulkan_enable video_cards_radeonsi amd
 		vulkan_enable video_cards_v3d broadcom
+		vulkan_enable video_cards_vc4 broadcom
+		vulkan_enable video_cards_virgl virtio
 		if use video_cards_nvk; then
 			vulkan_enable video_cards_nvk nouveau
 			if ! multilib_is_native_abi; then
