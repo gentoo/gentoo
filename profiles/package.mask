@@ -740,6 +740,7 @@ sec-keys/openpgp-keys-jiatan
 ~games-puzzle/skladnik-0.5.2
 ~gui-apps/xwaylandvideobridge-0.4.0
 ~kde-frameworks/oxygen-icons-6.0.0
+~media-gfx/kgraphviewer-2.5.0
 =media-libs/kquickimageeditor-0.3.0-r100
 ~media-libs/libqaccessibilityclient-0.6.0
 ~media-libs/mpvqt-1.0.0
