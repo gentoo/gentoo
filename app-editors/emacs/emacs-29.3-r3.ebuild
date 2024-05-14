@@ -101,7 +101,7 @@ X_DEPEND="x11-libs/libICE
 RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 	sys-libs/ncurses:0=
 	acl? ( virtual/acl )
-	alsa? ( media-libs/alsa-lib )
+	alsa? ( media-libs/alsa-lib media-sound/alsa-utils )
 	dbus? ( sys-apps/dbus )
 	games? ( acct-group/gamestat )
 	gmp? ( dev-libs/gmp:0= )
