@@ -1,0 +1,331 @@
+https://bugs.gentoo.org/875437
+diff -ru a/pgdispd/figcurs.c b/pgdispd/figcurs.c
+--- a/pgdispd/figcurs.c	2024-05-14 13:48:50.018175785 +0400
++++ b/pgdispd/figcurs.c	2024-05-14 13:43:58.801142627 +0400
+@@ -55,8 +55,7 @@
+ /* Return Values: */
+ /* Whatever getcurs returns */
+ 
+-int pggcurs(buf)
+-short *buf;
++int pggcurs(short *buf)
+ {
+ 	int getcurs ();
+ 
+@@ -64,8 +63,7 @@
+ }
+ 
+ #ifndef PGDISP
+-int bmgcurs(buf)
+-short *buf;
++int bmgcurs(short *buf)
+ {
+ 	int getcurs ();
+ 
+@@ -79,10 +77,7 @@
+ /* 0	There are no cursor positions to return */
+ /* 1	The buffer was set properly */
+ 
+-int getcurs(buf,curlist,listend)
+-short *buf;
+-struct curpos **curlist;
+-struct curpos **listend;
++int getcurs(short *buf, struct curpos **curlist,struct curpos **listend)
+ {
+ 	struct curpos *tmpptr;
+ 
+@@ -106,8 +101,7 @@
+ /* on the line graphics window. */
+ /* Return Value: 1 (no matter what) */
+ 
+-int pgcursor(event)
+-XEvent event;
++int pgcursor(XEvent event)
+ {
+ 	short val;	/* the "value" of the event" */
+ 
+@@ -159,8 +153,7 @@
+ /* on the bitmap graphics window. */
+ /* Return Value: 1 (no matter what) */
+ 
+-int bmcursor(event)
+-XEvent event;
++int bmcursor(XEvent event)
+ {
+ 	short val;	/* The value associated with the cursor event */
+ 
+@@ -211,9 +204,7 @@
+ /* The getbuttonval routine updates val to correspond to the appropriate */
+ /* keypress. */
+ 
+-void getbuttonval(button,val)
+-unsigned int button;
+-short *val;
++void getbuttonval(unsigned int button, short *val)
+ {
+ 	switch(button)
+ 	{
+@@ -244,9 +235,7 @@
+ /* 0	A modifier key was pressed */
+ /* 1	A regular key was pressed */
+ 
+-int getkeyval(event,val)
+-XEvent event;
+-short *val;
++int getkeyval(XEvent event, short *val)
+ {
+ 	char tmpchr;
+ 	KeySym keysym;
+@@ -264,8 +253,7 @@
+ /* cursor events and does not do anything visible unless this position is */
+ /* different than the previousrecorded line graphics cursor location. */
+ 
+-void pgscurs(x,y)
+-int x,y;
++void pgscurs(int x, int y)
+ {
+ 	if (lgcurses != NULL) return;
+ 
+@@ -285,8 +273,7 @@
+ /* position is different than the previous recorded line graphics cursor */
+ /* location. */
+ 
+-void bmscurs(x,y)
+-int x,y;
++void bmscurs(int x, int y)
+ {
+ 	if (bmcurses != NULL) return;
+ 
+diff -ru a/pgdispd/getcolors.c b/pgdispd/getcolors.c
+--- a/pgdispd/getcolors.c	2024-05-14 13:23:54.984716132 +0400
++++ b/pgdispd/getcolors.c	2024-05-14 13:34:48.860787865 +0400
+@@ -30,17 +30,20 @@
+ static int rovis[]={TrueColor, StaticColor, StaticGray};
+ static int nrovis=sizeof(rovis)/sizeof(rovis[0]);
+ 
+-int getcolors(vistype, visual, cmap, pix, maxcolors, mincolors, depth,
+-	maxdepth, mindepth)
+-int vistype;		/* The type of visual to use */
+-Visual **visual;	/* The visual actually used */
+-Colormap *cmap;		/* The color map actually used */
+-unsigned long *pix;	/* The pixels allocated */
+-int maxcolors;		/* The maximum number of colors to allocate */
+-int mincolors;		/* The minimum number of colors to allocate */
+-int *depth;		/* The depth of the visual actually used */
+-int maxdepth;		/* The maximum allowed visual depth */
+-int mindepth;		/* The minimum allowed visual depth */
++int getcolors(int vistype, Visual **visual, Colormap *cmap,
++              unsigned long *pix, int maxcolors, int mincolors,
++              int *depth,int maxdepth, int mindepth)
++/*
++int vistype;		 The type of visual to use
++Visual **visual;	 The visual actually used
++Colormap *cmap;		 The color map actually used
++unsigned long *pix;	 The pixels allocated
++int maxcolors;		 The maximum number of colors to allocate
++int mincolors;		 The minimum number of colors to allocate
++int *depth;		 The depth of the visual actually used
++int maxdepth;		 The maximum allowed visual depth
++int mindepth;		 The minimum allowed visual depth
++*/
+ {
+ 	XVisualInfo vinfo;	/* The template for our visual */
+ 	unsigned long pmtmp[1];	/* temporary for plane masks */
+diff -ru a/pgdispd/getdata.c b/pgdispd/getdata.c
+--- a/pgdispd/getdata.c	2024-05-14 13:23:54.985716126 +0400
++++ b/pgdispd/getdata.c	2024-05-14 13:46:09.874257376 +0400
+@@ -36,13 +36,13 @@
+ #include "messages.h"
+ 
+ 
+-int getdata(event,rbuf,rbuflen,srcwin,selset)
+-XSelectionEvent event;	/* the event we're handling */
+-short *rbuf;	/* a return buffer, if needed */
+-int *rbuflen;	/* the length of the return buffer.  If it's 0, no return */
++int getdata(XSelectionEvent event, short *rbuf, int *rbuflen, Window srcwin, int *selset)
++/*XSelectionEvent event;	 the event we're handling */
++/*short *rbuf;	 a return buffer, if needed */
++/*int *rbuflen;	 the length of the return buffer.  If it's 0, no return */
+ 		/* message should be sent. */
+-Window srcwin;	/* the source of our data */
+-int *selset;	/* whether or not the selection is owned by a user program */
++/*Window srcwin;	 the source of our data */
++/*int *selset;	 whether or not the selection is owned by a user program */
+ {
+ 	short *buffer;			/* buffer for the data received */
+ 	/* the max buffer length (in 16-bit words) */
+diff -ru a/pgdispd/getvisuals.c b/pgdispd/getvisuals.c
+--- a/pgdispd/getvisuals.c	2024-05-14 13:23:54.984716132 +0400
++++ b/pgdispd/getvisuals.c	2024-05-14 13:39:07.775108180 +0400
+@@ -34,6 +34,10 @@
+ 
+ #define MAX_DEPTH	24	/* the maximum visual depth to use */
+ 
++extern int getcolors(int vistype, Visual **visual, Colormap *cmap,
++              unsigned long *pix, int maxcolors, int mincolors,
++              int *depth, int maxdepth, int mindepth);
++
+ int getvisuals()
+ {
+ 	int i;			/* Silly loop variable */
+@@ -277,10 +281,10 @@
+ 
+ 	if ((bm.colors=getcolors(UseDefaultCmap, &bitvisual, &bitcmap, bm.pix,
+ 		res.maxcolors+res.leavecolors, res.mincolors+res.leavecolors,
+-		&bitdepth))
++		&bitdepth, MAX_DEPTH, 1))
+ 	    || (bm.colors=getcolors(UseRWVisual, &bitvisual, &bitcmap, bm.pix,
+ 		res.maxcolors+res.savecolors, res.mincolors+res.savecolors,
+-		&bitdepth)))
++		&bitdepth, MAX_DEPTH, 1)))
+ 	{ /* success! */
+ 		if (bitcmap == DefaultColormap(display, screen))
+ 		{
+@@ -323,7 +327,7 @@
+ 	while (res.lgcolors > 2)
+ 	{
+ 		if (lg.colors=getcolors(UseROVisual, &linevisual, &linecmap,
+-			lg.pix, res.lgcolors, res.lgcolors, &linedepth)) break;
++			lg.pix, res.lgcolors, res.lgcolors, &linedepth,MAX_DEPTH, 1)) break;
+ 
+ 		/* lower our standards */
+ 		if (res.lgcolors > 16) res.lgcolors=16;
+diff -ru a/pgdispd/handlexevent.c b/pgdispd/handlexevent.c
+--- a/pgdispd/handlexevent.c	2024-05-14 13:23:54.985716126 +0400
++++ b/pgdispd/handlexevent.c	2024-05-14 13:49:17.490990237 +0400
+@@ -46,12 +46,15 @@
+ #include "globals.h"
+ #include "messages.h"
+ 
++extern int pggcurs(short *buf);
++extern int getdata(XSelectionEvent event, short *rbuf, int *rbuflen, Window srcwin, int *selset);
++extern int pgcursor(XEvent event);
++
+ int luttransoff=0;
+ int modluttransoff=0;
+ 
+-int handlexevent(event,go_on)
+-XEvent event;
+-int *go_on;	/* whether the calling routine shoudl exit successfully */
++int handlexevent(XEvent event,int *go_on)
++/* *go_on;	whether the calling routine shoudl exit successfully */
+ {
+ #ifndef PGDISP
+ 	static int slitxs= -1,slitys;	/* the starting point for the slit */
+diff -ru a/pgdispd/mainloop.c b/pgdispd/mainloop.c
+--- a/pgdispd/mainloop.c	2024-05-14 13:23:54.984716132 +0400
++++ b/pgdispd/mainloop.c	2024-05-14 13:41:28.880155175 +0400
+@@ -58,6 +58,9 @@
+ #include "figdisp.h"
+ #include "globals.h"
+ 
++extern int waitevent();
++int handlexevent(XEvent event,int *go_on);
++
+ int mainloop()
+ {
+ 	XEvent event;	/* the current event */
+diff -ru a/pgdispd/pgdisp.c b/pgdispd/pgdisp.c
+--- a/pgdispd/pgdisp.c	2024-05-14 13:23:54.985716126 +0400
++++ b/pgdispd/pgdisp.c	2024-05-14 13:27:23.658462490 +0400
+@@ -43,9 +43,12 @@
+ #undef DEFINE_GLOBALS
+ #undef INC_HEADER_RCS
+ 
+-int main(argc,argv)
+-int argc;
+-char **argv;
++extern int initlock();
++extern int getvisuals();
++extern int initlgwin();
++extern int mainloop();
++
++int main(int argc,char **argv)
+ {
+ 	Display *XOpenDisplay();
+ 
+diff -ru a/pgdispd/proccom.c b/pgdispd/proccom.c
+--- a/pgdispd/proccom.c	2024-05-14 13:23:54.984716132 +0400
++++ b/pgdispd/proccom.c	2024-05-14 13:44:27.000952169 +0400
+@@ -117,11 +117,13 @@
+ /* A trivial macro */
+ #define min(x,y) (((x) > (y)) ? (y) : (x))
+ 
+-int proccom(buf,len,retbuf,retbuflen)
+-unsigned short *buf;	/* the buffer of commands and arguments */
+-int len;	/* the length of the buffer */
+-unsigned short *retbuf;	/* a buffer for return values */
+-int *retbuflen;	/* the length of retbuf */
++extern int pggcurs(short *buf);
++
++int proccom(unsigned short *buf, int len, unsigned short *retbuf, int *retbuflen)
++/*unsigned short *buf;	 the buffer of commands and arguments */
++/*int len;	 the length of the buffer */
++/*unsigned short *retbuf;	 a buffer for return values */
++/*int *retbuflen;	 the length of retbuf */
+ {
+ 	static short bufcont[7];	/* the buffer contents while we're */
+ 					/* working on things */
+diff -ru a/pgdispd/resdb.c b/pgdispd/resdb.c
+--- a/pgdispd/resdb.c	2024-05-14 13:23:54.984716132 +0400
++++ b/pgdispd/resdb.c	2024-05-14 13:29:59.091528701 +0400
+@@ -371,7 +371,7 @@
+ 	char *strtype[20];
+ 	XrmValue value;
+ 	int flags;
+-	char resource[80];
++	char resource[180];
+ 
+ 	(void)sprintf(resource, "%s.bm.geometry", prog);
+ 	if (XrmGetResource(resdb, resource, "*Geometry", strtype, &value)
+diff -ru a/pgdispd/returnbuf.c b/pgdispd/returnbuf.c
+--- a/pgdispd/returnbuf.c	2024-05-14 13:23:54.985716126 +0400
++++ b/pgdispd/returnbuf.c	2024-05-14 13:47:02.256903591 +0400
+@@ -15,10 +15,10 @@
+ #include <X11/Xlib.h>
+ #include <X11/Xatom.h>
+ 
+-void returnbuf(msg,len,destwin)
+-short *msg;	/* the message to send to the client. */
+-int len;	/* The length of the message. */
+-Window destwin;	/* The window who's atom should be changed. */
++void returnbuf(short *msg, int len, Window destwin)
++/*short *msg;	 the message to send to the client. */
++/*int len;	 The length of the message. */
++/*Window destwin;	 The window who's atom should be changed. */
+ {
+ 	/* If the window is still around, then send the reply */
+ 	if (selset) XChangeProperty(display,destwin,selatom,XA_STRING,8,
+diff -ru a/pgdispd/updatelgtitle.c b/pgdispd/updatelgtitle.c
+--- a/pgdispd/updatelgtitle.c	2024-05-14 13:23:54.985716126 +0400
++++ b/pgdispd/updatelgtitle.c	2024-05-14 13:42:06.519900960 +0400
+@@ -15,6 +15,7 @@
+ #include "globals.h"
+ #include <X11/Xlib.h>
+ #include <string.h>
++#include <stdio.h>
+ 
+ void updatelgtitle(x,y)
+ int x,y;	/* cursor position */
+@@ -28,7 +29,7 @@
+ 	int i;
+ 
+ #ifndef _AIX
+-	char *sprintf();
++//	char *sprintf();
+ #endif
+ 
+ 	/* make sure we don't confuse anything. */
+diff -ru a/pgdispd/waitevent.c b/pgdispd/waitevent.c
+--- a/pgdispd/waitevent.c	2024-05-14 13:23:54.985716126 +0400
++++ b/pgdispd/waitevent.c	2024-05-14 13:47:12.777832534 +0400
+@@ -63,6 +63,9 @@
+ #define		SELECT	/* Use the select call to wait */
+ #endif
+ 
++extern int proccom(unsigned short *buf, int len, unsigned short *retbuf, int *retbuflen);
++void returnbuf(short *msg, int len, Window destwin);
++
+ int waitevent()
+ {
+ 	short retbuf;
