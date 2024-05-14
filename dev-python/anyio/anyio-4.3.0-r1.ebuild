@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 
 inherit distutils-r1 pypi
 
@@ -35,8 +35,10 @@ BDEPEND="
 		>=dev-python/hypothesis-4.0[${PYTHON_USEDEP}]
 		>=dev-python/psutil-5.9[${PYTHON_USEDEP}]
 		>=dev-python/pytest-mock-3.6.1[${PYTHON_USEDEP}]
-		>=dev-python/trio-0.23[${PYTHON_USEDEP}]
 		dev-python/trustme[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/trio-0.23[${PYTHON_USEDEP}]
+		' 3.{10..12})
 		amd64? (
 			$(python_gen_cond_dep '
 				>=dev-python/uvloop-0.17[${PYTHON_USEDEP}]
@@ -57,6 +59,24 @@ python_test() {
 		tests/test_sockets.py::TestTCPListener::test_bind_link_local
 	)
 
+	local filter=()
+	if ! has_version ">=dev-python/trio-0.23[${PYTHON_USEDEP}]"; then
+		filter+=( -k "not trio" )
+		EPYTEST_DESELECT+=(
+			tests/test_pytest_plugin.py::test_plugin
+			tests/test_pytest_plugin.py::test_autouse_async_fixture
+			tests/test_pytest_plugin.py::test_cancel_scope_in_asyncgen_fixture
+		)
+	fi
+
+	case ${EPYTHON} in
+		python3.13)
+			EPYTEST_DESELECT+=(
+				'tests/test_fileio.py::TestPath::test_properties[asyncio]'
+			)
+			;;
+	esac
+
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -m 'not network'
+	epytest -m 'not network' "${filter[@]}"
 }
