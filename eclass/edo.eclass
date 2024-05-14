@@ -80,7 +80,6 @@ edob() {
 	[[ -z ${log_name} ]] && log_name="$(basename ${1})"
 
 	local log_file="${T}/${log_name}.log"
-	[[ -f ${log_file} ]] && die "Log file ${log_file} exists. Consider using \"edob -l\""
 
 	ebegin "${message}"
 
