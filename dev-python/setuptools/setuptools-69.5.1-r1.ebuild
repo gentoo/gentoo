@@ -7,7 +7,7 @@ EAPI=8
 # please bump dev-python/ensurepip-setuptools along with this package!
 
 DISTUTILS_USE_PEP517=standalone
-PYTHON_TESTED=( python3_{10..12} pypy3 )
+PYTHON_TESTED=( python3_{10..13} pypy3 )
 PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_13 )
 PYTHON_REQ_USE="xml(+)"
 
@@ -42,7 +42,6 @@ BDEPEND="
 	test? (
 		$(python_gen_cond_dep '
 			dev-python/build[${PYTHON_USEDEP}]
-			dev-python/importlib-metadata[${PYTHON_USEDEP}]
 			>=dev-python/ini2toml-0.9[${PYTHON_USEDEP}]
 			>=dev-python/filelock-3.4.0[${PYTHON_USEDEP}]
 			>=dev-python/jaraco-envs-2.2[${PYTHON_USEDEP}]
@@ -70,7 +69,10 @@ PDEPEND="
 src_prepare() {
 	local PATCHES=(
 		# TODO: remove this when we're 100% PEP517 mode
-		"${FILESDIR}"/setuptools-62.4.0-py-compile.patch
+		"${FILESDIR}/setuptools-62.4.0-py-compile.patch"
+
+		# https://github.com/pypa/setuptools/pull/4357
+		"${FILESDIR}/${P}-py313.patch"
 	)
 
 	distutils-r1_src_prepare
