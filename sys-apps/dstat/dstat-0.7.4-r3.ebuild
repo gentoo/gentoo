@@ -1,9 +1,9 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit python-r1
 
@@ -11,7 +11,7 @@ DESCRIPTION="Versatile replacement for vmstat, iostat and ifstat"
 HOMEPAGE="http://dag.wieers.com/home-made/dstat/"
 SRC_URI="https://github.com/dagwieers/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~x86-linux"
 IUSE="doc examples"
@@ -37,6 +37,10 @@ src_prepare() {
 	default
 }
 
+src_test() {
+	python_foreach_impl emake test
+}
+
 src_install() {
 	python_foreach_impl python_doscript dstat
 
@@ -54,8 +58,4 @@ src_install() {
 	if use doc; then
 		dodoc docs/*.html
 	fi
-}
-
-src_test() {
-	python_foreach_impl emake test
 }
