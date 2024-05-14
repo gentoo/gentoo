@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit toolchain-funcs flag-o-matic
 
 MY_PN=${PN%-*}
 MY_P=${MY_PN}-${PV}
@@ -34,6 +34,14 @@ BDEPEND="
 "
 
 src_compile() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/931907
+	#
+	# Not trivial to fix and its a problem in melonds upstream.
+	# Its also uncertain if this port will be updated in the future.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	emake -C jollygood \
 		CC="$(tc-getCC)" \
 		CXX="$(tc-getCXX)" \
