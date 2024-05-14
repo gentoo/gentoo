@@ -1,0 +1,19 @@
+The apr-config script can automatically adjust its paths to help with
+cross-compiling, but it only does this if apr itself was originally
+cross-compiled, which may not be the case. Forcing it to consider that
+it might be cross-compiled doesn't do any harm though.
+
+Bug: https://bugs.gentoo.org/931829
+
+diff -Naur a/apr-config.in b/apr-config.in
+--- a/apr-config.in	2023-03-13 10:29:04.000000000 +0000
++++ b/apr-config.in	2024-05-14 10:23:28.429984195 +0100
+@@ -48,7 +48,7 @@
+ # NOTE: the following line is modified during 'make install': alter with care!
+ location=@APR_CONFIG_LOCATION@
+ 
+-cross_compiling=@APR_CROSS_COMPILING@
++cross_compiling=maybe
+ 
+ if test "$cross_compiling" != "no"; then
+ 
