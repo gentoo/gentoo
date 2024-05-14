@@ -176,7 +176,6 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-custom-ffmpeg.patch
 	"${FILESDIR}"/${PN}-0.22.0-nvcodec.patch
 )
 
