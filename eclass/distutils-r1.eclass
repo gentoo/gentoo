@@ -189,6 +189,18 @@ esac
 #     ${DISTUTILS_DEPS}"
 # @CODE
 
+# @ECLASS_VARIABLE: DISTUTILS_ALLOW_WHEEL_REUSE
+# @DEFAULT_UNSET
+# @USER_VARIABLE
+# @DESCRIPTION:
+# If set to a non-empty value, the eclass is allowed to reuse a wheel
+# that was built for a prior Python implementation, provided that it is
+# compatible with the current one, rather than building a new one.
+#
+# This is an optimization that can avoid the overhead of calling into
+# the build system in pure Python packages and packages using the stable
+# Python ABI.
+
 if [[ -z ${_DISTUTILS_R1_ECLASS} ]]; then
 _DISTUTILS_R1_ECLASS=1
 
@@ -1585,6 +1597,32 @@ distutils-r1_python_compile() {
 	esac
 
 	if [[ ${DISTUTILS_USE_PEP517} ]]; then
+		if [[ ${DISTUTILS_ALLOW_WHEEL_REUSE} ]]; then
+			local whl
+			for whl in "${!DISTUTILS_WHEELS[@]}"; do
+				# use only wheels corresponding to the current directory
+				if [[ ${PWD} != ${DISTUTILS_WHEELS["${whl}"]} ]]; then
+					continue
+				fi
+
+				# 1. Use pure Python wheels only if we're not expected
+				# to build extensions.  Otherwise, we may end up
+				# not building the extension at all when e.g. PyPy3
+				# is built without one.
+				#
+				# 2. For CPython, we can reuse stable ABI wheels.  Note
+				# that this relies on the assumption that we're building
+				# from the oldest to the newest implementation,
+				# and the wheels are forward-compatible.
+				if [[ ( ! ${DISTUTILS_EXT} && ${whl} == *py3-none-any* ) ||
+					( ${EPYTHON} == python* && ${whl} == *-abi3-* ) ]]
+				then
+					distutils_wheel_install "${BUILD_DIR}/install" "${whl}"
+					return
+				fi
+			done
+		fi
+
 		distutils_pep517_install "${BUILD_DIR}/install"
 		DISTUTILS_WHEELS+=( "${DISTUTILS_WHEEL_PATH}" "${PWD}" )
 	fi
