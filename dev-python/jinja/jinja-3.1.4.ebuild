@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=flit
 PYPI_PN=jinja2
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 pypi
@@ -33,6 +33,11 @@ distutils_enable_tests pytest
 # XXX: handle Babel better?
 
 src_prepare() {
+	local PATCHES=(
+		# https://github.com/pallets/jinja/pull/1979
+		"${FILESDIR}/${P}-py313.patch"
+	)
+
 	# avoid unnecessary dep on extra sphinxcontrib modules
 	sed -i '/sphinxcontrib.log_cabinet/ d' docs/conf.py || die
 
