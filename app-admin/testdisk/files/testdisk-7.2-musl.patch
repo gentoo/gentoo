@@ -1,0 +1,25 @@
+From 2c6780ca1edd0b0ba2e5e86b12634e3cc8475872 Mon Sep 17 00:00:00 2001
+From: Christophe Grenier <grenier@cgsecurity.org>
+Date: Tue, 14 May 2024 17:34:56 +0200
+Subject: [PATCH] src/hdaccess.c: Fix build with musl-1.2.5 See
+ https://github.com/cgsecurity/testdisk/issues/154
+ https://bugs.gentoo.org/931887
+
+---
+ src/hdaccess.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/hdaccess.c b/src/hdaccess.c
+index 91ec7915..9768c07c 100644
+--- a/src/hdaccess.c
++++ b/src/hdaccess.c
+@@ -109,6 +109,9 @@
+ #ifdef HAVE_GLOB_H
+ #include <glob.h>
+ #endif
++#ifdef HAVE_LIBGEN_H
++#include <libgen.h>
++#endif
+ 
+ #if defined(__CYGWIN__) || defined(__MINGW32__)
+ #include "win32.h"

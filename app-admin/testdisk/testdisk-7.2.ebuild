@@ -60,6 +60,8 @@ BDEPEND="gui? ( dev-qt/linguist-tools:5 )"
 DOCS=()
 
 PATCHES=(
+	# https://github.com/cgsecurity/testdisk/commit/2c6780ca1edd0b0ba2e5e86b12634e3cc8475872
+	"${FILESDIR}/${P}-musl.patch"
 )
 
 src_configure() {
