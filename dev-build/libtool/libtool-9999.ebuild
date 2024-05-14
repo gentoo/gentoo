@@ -99,12 +99,12 @@ src_configure() {
 	# Do not bother hardcoding the full path to sed.
 	# Just rely on $PATH. bug #574550
 	export CONFIG_SHELL="${EPREFIX}"/bin/bash
-	export ac_cv_path_SED="$(basename "$(type -P sed)")"
-	export ac_cv_path_EGREP="$(basename "$(type -P grep)") -E"
-	export ac_cv_path_EGREP_TRADITIONAL="$(basename "$(type -P grep)") -E"
-	export ac_cv_path_FGREP="$(basename "$(type -P grep)") -F"
-	export ac_cv_path_GREP="$(basename "$(type -P grep)")"
-	export ac_cv_path_lt_DD="$(basename "$(type -P dd)")"
+	export ac_cv_path_SED="sed"
+	export ac_cv_path_EGREP="grep -E"
+	export ac_cv_path_EGREP_TRADITIONAL="grep -E"
+	export ac_cv_path_FGREP="grep -F"
+	export ac_cv_path_GREP="grep"
+	export ac_cv_path_lt_DD="dd"
 
 	[[ ${CHOST} == *-darwin* ]] && local myconf="--program-prefix=g"
 
