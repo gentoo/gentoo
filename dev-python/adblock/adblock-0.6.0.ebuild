@@ -106,6 +106,9 @@ python_test() {
 		# unimportant (for us) test that uses the dir that we delete below
 		# so pytest does not try to load it while lacking extensions
 		tests/test_typestubs.py::test_functions_and_methods_exist_in_rust
+		# FileNotFound exception test that triggers a new assertion in
+		# python:3.13[debug], not an issue for normal usage (bug #931898)
+		tests/test_engine.py::test_serde_file
 	)
 	local EPYTEST_IGNORE=(
 		# not very meaningful here (e.g. validates changelog),
