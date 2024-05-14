@@ -5,7 +5,12 @@
 		<email>perfinion@gentoo.org</email>
 		<name>Jason Zaman</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>xgqt@gentoo.org</email>
+		<name>Maciej Barć</name>
+	</maintainer>
 	<upstream>
+		<bugs-to>https://gitlab.com/rclone/rclone/-/issues/</bugs-to>
 		<remote-id type="github">rclone/rclone</remote-id>
 	</upstream>
 </pkgmetadata>
