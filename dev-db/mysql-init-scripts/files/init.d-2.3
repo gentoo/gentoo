@@ -18,7 +18,7 @@ depend() {
 }
 
 get_config() {
-	my_print_defaults --defaults-file="$1" mysqld server mariadb |
+	my_print_defaults --defaults-file="$1" client-server mysqld server mariadb |
 	sed -n -e "s/^--$2=//p"
 }
 
