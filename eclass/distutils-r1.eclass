@@ -1532,6 +1532,15 @@ distutils_pep517_install() {
 	DISTUTILS_WHEEL_PATH=${WHEEL_BUILD_DIR}/${wheel}
 }
 
+# @VARIABLE: DISTUTILS_WHEELS
+# @DESCRIPTION:
+# An associative array of wheels created as a result
+# of distutils-r1_python_compile invocations, mapped to the source
+# directories.  Note that this includes only wheels implicitly created
+# by the eclass, and not wheels created as a result of direct
+# distutils_pep517_install calls in the ebuild.
+declare -g -A DISTUTILS_WHEELS=()
+
 # @FUNCTION: distutils-r1_python_compile
 # @USAGE: [additional-args...]
 # @DESCRIPTION:
@@ -1541,6 +1550,7 @@ distutils_pep517_install() {
 #
 # If DISTUTILS_USE_PEP517 is set to any other value, builds a wheel
 # using the PEP517 backend and installs it into ${BUILD_DIR}/install.
+# Path to the wheel is then added to DISTUTILS_WHEELS array.
 #
 # In legacy mode, runs 'esetup.py build'. Any parameters passed to this
 # function will be appended to setup.py invocation, i.e. passed
@@ -1576,6 +1586,7 @@ distutils-r1_python_compile() {
 
 	if [[ ${DISTUTILS_USE_PEP517} ]]; then
 		distutils_pep517_install "${BUILD_DIR}/install"
+		DISTUTILS_WHEELS+=( "${DISTUTILS_WHEEL_PATH}" "${PWD}" )
 	fi
 }
 
