@@ -75,13 +75,13 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.8-cmake.patch # bug 886251
 	"${FILESDIR}"/${PN}-1.5.3-fpic.patch
 	"${FILESDIR}"/${PN}-1.6.1-findhyphen.patch
-	"${FILESDIR}"/${PN}-1.7.0-remove-hello-world-test.patch
 	"${FILESDIR}"/${PN}-1.7.0-fix-icon-version.patch
 	"${FILESDIR}"/${PN}-1.6.1-poppler-24.03.patch
 )
 
 src_prepare() {
 	cmake_src_prepare
+	cmake_run_in scribus cmake_comment_add_subdirectory ui/qml
 
 	# for safety remove files that we patched out
 	rm -r scribus/third_party/hyphen || die
