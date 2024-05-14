@@ -14,6 +14,10 @@
 			to bootstrap pip and setuptools (if disabled, it will
 			be only possible to use venv `--without-pip`)
 		</flag>
+		<flag name="gil">
+			Build with Global Interpreter Lock.  Disable to use
+			the experimental freethreading mode.
+		</flag>
 		<flag name="jit">
 			Enable experimental Just-In-Time compilation support.
 		</flag>
