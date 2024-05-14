@@ -14,6 +14,8 @@ LICENSE="LGPL-2+"
 SLOT="0/${PV}" # FIXME: check soname on next version bump
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="+qt5 qt6 test"
+
+REQUIRED_USE="|| ( qt5 qt6 )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
