@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 
 inherit distutils-r1 pypi
 
@@ -25,7 +25,6 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		>=dev-python/ipython-4.0.1[${PYTHON_USEDEP}]
 		dev-python/pip[${PYTHON_USEDEP}]
 	)
 "
