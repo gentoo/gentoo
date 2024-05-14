@@ -4,8 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_TESTED=( python3_{10..12} pypy3 )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_13 )
+PYTHON_TESTED=( python3_{10..13} pypy3 )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
 
 inherit distutils-r1 pypi
 
@@ -101,12 +101,40 @@ python_test() {
 		testing/test_debugging.py::TestPDB::test_pdb_with_caplog_on_pdb_invocation
 	)
 
-	[[ ${EPYTHON} == pypy3 ]] && EPYTEST_DESELECT+=(
-		# regressions on pypy3.9
-		# https://github.com/pytest-dev/pytest/issues/9787
-		testing/test_skipping.py::test_errors_in_xfail_skip_expressions
-		testing/test_unraisableexception.py
-	)
+	case ${EPYTHON} in
+		pypy3)
+			EPYTEST_DESELECT+=(
+				# regressions on pypy3.9
+				# https://github.com/pytest-dev/pytest/issues/9787
+				testing/test_skipping.py::test_errors_in_xfail_skip_expressions
+				testing/test_unraisableexception.py
+			)
+			;;
+		python3.13)
+			EPYTEST_DESELECT+=(
+				# regressions reproduced via `tox -e py313`
+				# https://github.com/pytest-dev/pytest/issues/12323
+				testing/code/test_excinfo.py::TestFormattedExcinfo::test_repr_traceback_recursion
+				testing/code/test_excinfo.py::TestTraceback_f_g_h::test_traceback_recursion_index
+				testing/code/test_excinfo.py::test_exception_repr_extraction_error_on_recursion
+				testing/code/test_source.py::test_getfslineno
+				testing/test_collection.py::TestSession::test_collect_custom_nodes_multi_id
+				testing/test_collection.py::TestSession::test_collect_protocol_single_function
+				testing/test_collection.py::TestSession::test_collect_subdir_event_ordering
+				testing/test_collection.py::TestSession::test_collect_two_commandline_args
+				testing/test_doctest.py::TestDoctests::test_doctest_linedata_on_property
+				testing/test_doctest.py::TestDoctests::test_doctest_unexpected_exception
+				testing/test_legacypath.py::test_testdir_makefile_ext_none_raises_type_error
+
+				# TODO?
+				testing/code/test_excinfo.py::test_excinfo_no_sourcecode
+
+				# more weird timeouts
+				testing/test_debugging.py::TestPDB::test_pdb_used_outside_test
+				testing/test_debugging.py::TestPDB::test_pdb_used_in_generate_tests
+			)
+			;;
+	esac
 
 	local EPYTEST_XDIST=1
 	epytest
