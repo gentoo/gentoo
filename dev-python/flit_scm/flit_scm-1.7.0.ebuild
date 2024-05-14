@@ -29,6 +29,9 @@ RDEPEND="
 		>=dev-python/tomli-2[${PYTHON_USEDEP}]
 	' 3.8 3.9 3.10 )
 "
+BDEPEND="
+	${RDEPEND}
+"
 
 src_prepare() {
 	# unpin deps
