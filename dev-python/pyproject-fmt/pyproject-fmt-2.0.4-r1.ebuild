@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 
 RDEPEND="
-	~dev-python/pyproject-fmt-rust-1.0.4[${PYTHON_USEDEP}]
+	~dev-python/pyproject-fmt-rust-1.0.6[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		>=dev-python/tomli-2.0.1[${PYTHON_USEDEP}]
 	' 3.10)
