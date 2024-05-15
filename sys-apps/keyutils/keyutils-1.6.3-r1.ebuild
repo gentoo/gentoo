@@ -70,30 +70,38 @@ src_prepare() {
 	multilib_copy_sources
 }
 
-multilib_src_compile() {
-	tc-export AR CC CXX
-	sed -i \
-		-e "1iRPATH = $(usex static -static '')" \
-		-e '/^C.*FLAGS/s|:=|+=|' \
-		-e 's:-Werror::' \
-		-e '/^BUILDFOR/s:=.*:=:' \
-		-e "/^LIBDIR/s:=.*:= /usr/$(get_libdir):" \
-		-e '/^USRLIBDIR/s:=.*:=$(LIBDIR):' \
-		-e "s: /: ${EPREFIX}/:g" \
-		-e '/^NO_ARLIB/d' \
-		Makefile || die
-
-	# We need the static lib in order to statically link programs.
-	if use static ; then
-		export NO_ARLIB=0
-		# Hack the progs to depend on the static lib instead.
-		sed -i \
-			-e '/^.*:.*[$](DEVELLIB)$/s:$(DEVELLIB):$(ARLIB) $(SONAME):' \
-			Makefile || die
-	else
-		export NO_ARLIB=$(usex static-libs 0 1)
+mymake() {
+	local args=(
+		PREFIX="${EPREFIX}/usr"
+		ETCDIR="${EPREFIX}/etc"
+		BINDIR="${EPREFIX}/bin"
+		SBINDIR="${EPREFIX}/sbin"
+		SHAREDIR="${EPREFIX}/usr/share/keyutils"
+		MANDIR="${EPREFIX}/usr/share/man"
+		INCLUDEDIR="${EPREFIX}/usr/include"
+		LIBDIR="${EPREFIX}/usr/$(get_libdir)"
+		USRLIBDIR="${EPREFIX}/usr/$(get_libdir)"
+		CFLAGS="${CFLAGS}"
+		CXXFLAGS="${CXXFLAGS}"
+		RPATH=$(usex static -static '')
+		BUILDFOR=
+		NO_ARLIB="${NO_ARLIB}"
+	)
+	if use static; then
+		args+=( LIB_DEPENDENCY='$(ARLIB)' )
 	fi
-	emake
+	emake "${args[@]}" "$@"
+}
+
+multilib_src_compile() {
+	local NO_ARLIB
+	if use static; then
+		NO_ARLIB=0
+	else
+		NO_ARLIB=$(usex static-libs 0 1)
+	fi
+	tc-export AR CC CXX
+	mymake
 }
 
 multilib_src_test() {
@@ -101,14 +109,13 @@ multilib_src_test() {
 	# older versions already installed in the system.
 	LD_LIBRARY_PATH=${BUILD_DIR} \
 	PATH="${BUILD_DIR}:${PATH}" \
-	emake test
+	mymake test
 }
 
 multilib_src_install() {
 	# Possibly undo the setting for USE=static (see src_compile).
-	export NO_ARLIB=$(usex static-libs 0 1)
-
-	default
+	local NO_ARLIB=$(usex static-libs 0 1)
+	mymake DESTDIR="${D}" install
 }
 
 multilib_src_install_all() {
