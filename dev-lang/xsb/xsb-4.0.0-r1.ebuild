@@ -30,7 +30,12 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"/XSB
 
-PATCHES=( "${WORKDIR}/${PV}" )
+PATCHES=(
+	"${WORKDIR}/${PV}"
+	# https://bugs.gentoo.org/870970
+	# https://sourceforge.net/p/xsb/bugs/265/
+	"${FILESDIR}"/0001-modern-C-fix-for-implicit-int.patch
+)
 
 src_prepare() {
 	default

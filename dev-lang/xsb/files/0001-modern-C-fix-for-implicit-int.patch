@@ -1,0 +1,25 @@
+From 3dd24018e4f5c48c382588dd9d8da5b80056a55b Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Thu, 14 Mar 2024 20:28:31 -0400
+Subject: [PATCH] modern C fix for implicit-int
+
+---
+ build/configure.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/build/configure.in b/build/configure.in
+index d51bfeb..6999565 100644
+--- a/build/configure.in
++++ b/build/configure.in
+@@ -1346,7 +1346,7 @@ LDFLAGS="-Wl,-export-dynamic"
+ AC_MSG_CHECKING([whether loader understands -Wl,-export-dynamic])
+ # Ideally we should use AC_LINK_IFELSE instead of the obsolete AC_TRY_LINK
+ #AC_TRY_LINK([],[], __export_dynamic=yes, __export_dynamic=no)
+-AC_LINK_IFELSE([AC_LANG_SOURCE([[main(){return 0;}]])], __export_dynamic=yes, __export_dynamic=no)
++AC_LINK_IFELSE([AC_LANG_SOURCE([[int main(){return 0;}]])], __export_dynamic=yes, __export_dynamic=no)
+ AC_MSG_RESULT($__export_dynamic)
+ LDFLAGS=$TEMP_LDFLAGS
+ ####### End of test for -export-dynamic option of ld
+-- 
+2.43.2
+
