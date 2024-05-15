@@ -1,0 +1,34 @@
+diff --git a/configure.ac b/configure.ac
+index 3337575..3612f92 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -13,7 +13,7 @@ AC_PROG_INSTALL
+ AC_PROG_CC
+ 
+ AC_CHECK_HEADERS([netinet/in.h stdlib.h string.h unistd.h])
+-AC_CHECK_HEADERS([attr/xattr.h sys/xattr.h])
++AC_CHECK_HEADERS([sys/xattr.h])
+ 
+ AC_C_CONST
+ AC_TYPE_UID_T
+diff --git a/m4/package_attrdev.m4 b/m4/package_attrdev.m4
+index eecdd34..4ec4f66 100644
+--- a/m4/package_attrdev.m4
++++ b/m4/package_attrdev.m4
+@@ -9,7 +9,7 @@ AC_DEFUN([AC_PACKAGE_NEED_GETXATTR_LIBATTR],
+     libattr="-lattr"
+     test -f `pwd`/../attr/libattr/libattr.la && \
+         libattr="`pwd`/../attr/libattr/libattr.la"
+-    test -f /usr/lib/libattr.la && libattr="/usr/lib/libattr.la"
++    test -f ${libdir}/libattr.la && libattr="${libdir}/libattr.la"
+     AC_SUBST(libattr)
+   ])
+ 
+@@ -24,6 +24,6 @@ AC_DEFUN([AC_PACKAGE_NEED_ATTRGET_LIBATTR],
+     libattr="-lattr"
+     test -f `pwd`/../attr/libattr/libattr.la && \
+         libattr="`pwd`/../attr/libattr/libattr.la"
+-    test -f /usr/lib/libattr.la && libattr="/usr/lib/libattr.la"
++    test -f ${libdir}/libattr.la && libattr="${libdir}/libattr.la"
+     AC_SUBST(libattr)
+   ])
