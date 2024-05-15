@@ -78,7 +78,7 @@ src_configure() {
 		--disable-lto
 		--with-crond-dir="${EPREFIX}/etc/cron.d"
 		--with-systemd-unit-dir="$(systemd_get_systemunitdir)"
-		--with-udev-rule-dir="$(get_udevdir)"
+		--with-udev-rule-dir="$(get_udevdir)/rules.d"
 		$(use_enable icu libicu)
 		$(use_enable nls gettext)
 		$(use_enable libedit editline)
