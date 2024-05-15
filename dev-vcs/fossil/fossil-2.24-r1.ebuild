@@ -9,12 +9,15 @@ MY_TAG="8be0372c1051043761320c8ea8669c3cf320c406e5fe18ad36b7be5f844ca73b"
 
 DESCRIPTION="Simple, high-reliability, source control management, and more"
 HOMEPAGE="https://www.fossil-scm.org/home"
-SRC_URI="https://fossil-scm.org/home/tarball/${MY_TAG}/fossil-src-${PV}.tar.gz"
+
+# Arrow can be dropped with next version. Needed to resolve
+# https://bugs.gentoo.org/931862
+SRC_URI="https://fossil-scm.org/home/tarball/${MY_TAG}/fossil-src-${PV}.tar.gz -> fossil-src-${PV}-r1.tar.gz"
 
 S="${WORKDIR}/fossil-src-${PV}"
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~x86"
 IUSE="debug fusefs json system-sqlite +ssl static tcl tcl-stubs
 	  tcl-private-stubs test th1-docs th1-hooks"
 RESTRICT="!test? ( test )"
@@ -42,13 +45,26 @@ DEPEND="${RDEPEND}
 	)
 "
 
-BDEPEND="test? ( dev-lang/tcl )"
+BDEPEND="
+	test? (
+		dev-lang/tcl
+		!riscv? ( json? ( dev-tcltk/tcllib ) )
+	)
+"
 
 PATCHES=(
 	# fossil-2.10-check-lib64-for-tcl.patch: Bug 690828
 	"${FILESDIR}"/fossil-2.10-check-lib64-for-tcl.patch
-	"${FILESDIR}"/fossil-2.24-test-fixes.patch
 )
+
+src_prepare() {
+	eapply -p0 -- \
+		   "${FILESDIR}"/fossil-2.24-test-fixes.patch \
+		   "${FILESDIR}"/fossil-2.24-disable-utf8-tests-1179-1586-1587.patch \
+		   "${FILESDIR}"/fossil-2.24-fix-json-test-content-length.patch
+
+	default
+}
 
 src_configure() {
 	# this is not an autotools situation so don't make it seem like one
@@ -71,10 +87,6 @@ src_configure() {
 	tc-export CC CXX
 	CC_FOR_BUILD=${CC} ./configure ${myconf} || die
 }
-
-# src_test() {
-# 	emake test
-# }
 
 src_install() {
 	dobin fossil
