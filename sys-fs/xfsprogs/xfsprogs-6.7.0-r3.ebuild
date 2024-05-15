@@ -12,7 +12,7 @@ SRC_URI="https://www.kernel.org/pub/linux/utils/fs/xfs/${PN}/${P}.tar.xz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="icu libedit nls selinux"
+IUSE="icu libedit nls selinux static-libs"
 
 RDEPEND="
 	dev-libs/inih
@@ -92,4 +92,8 @@ src_install() {
 	# XXX: There's a missing dep in the install-dev target, so split it
 	emake DIST_ROOT="${ED}" HAVE_ZIPPED_MANPAGES=false install
 	emake DIST_ROOT="${ED}" HAVE_ZIPPED_MANPAGES=false install-dev
+
+	if ! use static-libs; then
+		rm "${ED}/usr/$(get_libdir)/libhandle.a" || die
+	fi
 }
