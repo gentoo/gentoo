@@ -1457,11 +1457,17 @@ distutils_pep517_install() {
 				"${DISTUTILS_ARGS[@]}"
 			)
 
+			local -x NINJAOPTS=$(get_NINJAOPTS)
 			config_settings=$(
 				"${EPYTHON}" - "${cmake_args[@]}" <<-EOF || die
 					import json
+					import os
+					import shlex
 					import sys
+
+					ninjaopts = shlex.split(os.environ["NINJAOPTS"])
 					print(json.dumps({
+						"build.tool-args": ninjaopts,
 						"cmake.args": ";".join(sys.argv[1:]),
 						"cmake.build-type": "${CMAKE_BUILD_TYPE}",
 						"cmake.verbose": True,
