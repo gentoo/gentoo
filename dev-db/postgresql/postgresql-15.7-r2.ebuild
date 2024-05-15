@@ -5,6 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10,11,12,13} )
 LLVM_COMPAT=( {15..18} )
+LLVM_OPTIONAL=1
 
 inherit flag-o-matic linux-info llvm-r1 pam python-single-r1 systemd tmpfiles
 
@@ -21,9 +22,8 @@ LICENSE="POSTGRESQL GPL-2"
 DESCRIPTION="PostgreSQL RDBMS"
 HOMEPAGE="https://www.postgresql.org/"
 
-IUSE="debug doc +icu kerberos ldap llvm +lz4 nls pam perl python
-	  +readline selinux +server systemd ssl static-libs tcl uuid xml
-	  zlib +zstd"
+IUSE="debug doc icu kerberos ldap llvm +lz4 nls pam perl python +readline
+	  selinux +server systemd ssl static-libs tcl uuid xml zlib +zstd"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -34,7 +34,7 @@ acct-user/postgres
 sys-apps/less
 virtual/libintl
 icu? ( dev-libs/icu:= )
-kerberos? ( app-crypt/mit-krb5 )
+kerberos? ( virtual/krb5 )
 ldap? ( net-nds/openldap:= )
 llvm? ( $(llvm_gen_dep '
 	sys-devel/clang:${LLVM_SLOT}

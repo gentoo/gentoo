@@ -5,10 +5,11 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10,11,12,13} )
 LLVM_COMPAT=( {15..18} )
+LLVM_OPTIONAL=1
 
 inherit flag-o-matic linux-info llvm-r1 pam python-single-r1 systemd tmpfiles
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 SLOT=$(ver_cut 1)
 
@@ -22,7 +23,7 @@ DESCRIPTION="PostgreSQL RDBMS"
 HOMEPAGE="https://www.postgresql.org/"
 
 IUSE="debug doc icu kerberos ldap llvm +lz4 nls pam perl python +readline
-	  selinux +server systemd ssl static-libs tcl uuid xml zlib +zstd"
+	  selinux +server systemd ssl static-libs tcl uuid xml zlib"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -49,7 +50,6 @@ ssl? ( >=dev-libs/openssl-0.9.6-r1:0= )
 tcl? ( >=dev-lang/tcl-8:0= )
 xml? ( dev-libs/libxml2 dev-libs/libxslt )
 zlib? ( sys-libs/zlib )
-zstd? ( app-arch/zstd )
 "
 
 # uuid flags -- depend on sys-apps/util-linux for Linux libcs, or if no
@@ -102,7 +102,7 @@ src_prepare() {
 	# hardened and non-hardened environments. (Bug #528786)
 	sed 's/@install_bin@/install -c/' -i src/Makefile.global.in || die
 
-	use server || eapply "${FILESDIR}/${PN}-15_beta3-no-server.patch"
+	use server || eapply "${FILESDIR}/${PN}-14.5-no-server.patch"
 
 	if use pam ; then
 		sed "s/\(#define PGSQL_PAM_SERVICE \"postgresql\)/\1-${SLOT}/" \
@@ -157,7 +157,6 @@ src_configure() {
 		$(use_with xml libxml) \
 		$(use_with xml libxslt) \
 		$(use_with zlib) \
-		$(use_with zstd) \
 		$(use_enable nls)"
 	if use alpha; then
 		myconf+=" --disable-spinlocks"
