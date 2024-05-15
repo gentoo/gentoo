@@ -14,7 +14,7 @@ KEYWORDS="~amd64"
 IUSE="doc +lun-fallback"
 
 BDEPEND="
-	doc? ( app-text/pandoc )
+	doc? ( virtual/pandoc )
 "
 
 PATCHES=(
