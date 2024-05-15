@@ -55,11 +55,13 @@ src_test() {
 src_install() {
 	exeinto /usr/bin
 	doexe "${PN}"
-	doman "${PN}.1"
+	dosym -r "/usr/bin/${PN}" /usr/bin/mount.rclone
+	dosym -r "/usr/bin/${PN}" /usr/bin/rclonefs
 
 	newbashcomp "${PN}.bash" "${PN}"
 	insinto /usr/share/zsh/site-functions
 	newins "${PN}.zsh" "_${PN}"
 
+	doman "${PN}.1"
 	einstalldocs
 }
