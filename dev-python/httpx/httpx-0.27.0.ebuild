@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 
 inherit distutils-r1 optfeature
 
@@ -44,16 +44,22 @@ BDEPEND="
 		dev-python/cryptography[${PYTHON_USEDEP}]
 		dev-python/h2[${PYTHON_USEDEP}]
 		dev-python/socksio[${PYTHON_USEDEP}]
-		dev-python/trio[${PYTHON_USEDEP}]
 		dev-python/trustme[${PYTHON_USEDEP}]
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
 		dev-python/uvicorn[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/trio[${PYTHON_USEDEP}]
+		' 3.{10..12})
 	)
 "
 
 distutils_enable_tests pytest
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/${P}-opt-trio.patch"
+	)
+
 	if ! use cli; then
 		sed -i -e '/^httpx =/d' pyproject.toml || die
 	fi
@@ -63,6 +69,7 @@ src_prepare() {
 }
 
 python_test() {
+	local args=()
 	local EPYTEST_DESELECT=(
 		# Internet
 		tests/client/test_proxies.py::test_async_proxy_close
@@ -73,7 +80,11 @@ python_test() {
 		tests/test_main.py
 	)
 
-	epytest
+	if ! has_version "dev-python/trio[${PYTHON_USEDEP}]"; then
+		args+=( -o filterwarnings= -k "not trio" )
+	fi
+
+	epytest "${args[@]}"
 }
 
 pkg_postinst() {
