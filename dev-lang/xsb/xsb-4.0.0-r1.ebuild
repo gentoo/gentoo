@@ -8,7 +8,7 @@ PATCHSET_VER="3"
 inherit autotools java-pkg-opt-2
 
 DESCRIPTION="XSB is a logic programming and deductive database system"
-HOMEPAGE="http://xsb.sourceforge.net"
+HOMEPAGE="https://xsb.sourceforge.net"
 SRC_URI="https://downloads.sourceforge.net/xsb/XSB-$(ver_rs 1-3 -).tar.gz
 	https://dev.gentoo.org/~keri/distfiles/xsb/${P}-gentoo-patchset-${PATCHSET_VER}.tar.gz"
 
