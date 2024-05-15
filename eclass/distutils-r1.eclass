@@ -279,7 +279,7 @@ _distutils_set_globals() {
 				;;
 			scikit-build-core)
 				bdep+='
-					>=dev-python/scikit-build-core-0.8.2[${PYTHON_USEDEP}]
+					>=dev-python/scikit-build-core-0.9.4[${PYTHON_USEDEP}]
 				'
 				;;
 			setuptools)
@@ -1457,8 +1457,6 @@ distutils_pep517_install() {
 				"${DISTUTILS_ARGS[@]}"
 			)
 
-			# NB: we need to pass strings for boolean fields
-			# https://github.com/scikit-build/scikit-build-core/issues/707
 			config_settings=$(
 				"${EPYTHON}" - "${cmake_args[@]}" <<-EOF || die
 					import json
@@ -1466,8 +1464,8 @@ distutils_pep517_install() {
 					print(json.dumps({
 						"cmake.args": ";".join(sys.argv[1:]),
 						"cmake.build-type": "${CMAKE_BUILD_TYPE}",
-						"cmake.verbose": "true",
-						"install.strip": "false",
+						"cmake.verbose": True,
+						"install.strip": False,
 					}))
 				EOF
 			)
