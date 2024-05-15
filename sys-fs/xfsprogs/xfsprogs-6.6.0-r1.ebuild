@@ -97,3 +97,11 @@ src_install() {
 
 	gen_usr_ldscript -a handle
 }
+
+pkg_postrm() {
+	udev_reload
+}
+
+pkg_postinst() {
+	udev_reload
+}

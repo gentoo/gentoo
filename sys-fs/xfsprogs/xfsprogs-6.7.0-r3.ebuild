@@ -97,3 +97,11 @@ src_install() {
 		rm "${ED}/usr/$(get_libdir)/libhandle.a" || die
 	fi
 }
+
+pkg_postrm() {
+	udev_reload
+}
+
+pkg_postinst() {
+	udev_reload
+}
