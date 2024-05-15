@@ -1,10 +1,10 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 
 inherit distutils-r1
 
@@ -29,8 +29,10 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/packaging[${PYTHON_USEDEP}]
-		>=dev-python/pydantic-2.4.2[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/pydantic-2.4.2[${PYTHON_USEDEP}]
+		' 3.{10..12})
 	)
 "
 
@@ -41,6 +43,12 @@ python_test() {
 		# require unpackaged pytest-examples
 		tests/test_docs.py
 	)
+
+	if ! has_version "dev-python/pydantic[${PYTHON_USEDEP}]"; then
+		EPYTEST_IGNORE+=(
+			tests/test_other.py
+		)
+	fi
 
 	local -x TZ=UTC
 	epytest "${args[@]}"
