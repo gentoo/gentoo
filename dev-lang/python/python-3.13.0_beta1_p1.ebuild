@@ -117,6 +117,14 @@ QA_CONFIG_IMPL_DECL_SKIP=( chflags lchflags )
 
 pkg_pretend() {
 	use test && check-reqs_pkg_pretend
+
+	if ! use gil || use jit; then
+		ewarn "USE=-gil and USE=jit flags are considered experimental upstream.  Using"
+		ewarn "them could lead to unexpected breakage, including race conditions"
+		ewarn "and crashes, respectively.  Please do not file Gentoo bugs, unless"
+		ewarn "you can reproduce the problem with dev-lang/python[gil,-jit].  Instead,"
+		ewarn "please consider reporting freethreading / JIT problems upstream."
+	fi
 }
 
 pkg_setup() {
