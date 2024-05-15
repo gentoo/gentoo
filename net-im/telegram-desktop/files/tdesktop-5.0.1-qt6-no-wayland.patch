@@ -9,8 +9,8 @@ be seen, depending on what upstream thinks about this.
 https://bugs.gentoo.org/928451
 https://github.com/desktop-app/cmake_helpers/commit/a428df5440e76a726abc30924766ac7da0cb381c
 
---- tdesktop-5.0.1-full.orig/Telegram/lib_base/base/platform/linux/base_linux_xdg_activation_token.cpp
-+++ tdesktop-5.0.1-full/Telegram/lib_base/base/platform/linux/base_linux_xdg_activation_token.cpp
+--- a/Telegram/lib_base/base/platform/linux/base_linux_xdg_activation_token.cpp
++++ b/Telegram/lib_base/base/platform/linux/base_linux_xdg_activation_token.cpp
 @@ -15,7 +15,7 @@
  namespace base::Platform {
  
@@ -20,14 +20,14 @@ https://github.com/desktop-app/cmake_helpers/commit/a428df5440e76a726abc30924766
  	const auto window = QGuiApplication::focusWindow();
  	if (!window) {
  		callback({});
---- tdesktop-5.0.1-full.orig/Telegram/lib_ui/ui/platform/linux/ui_utility_linux.cpp
-+++ tdesktop-5.0.1-full/Telegram/lib_ui/ui/platform/linux/ui_utility_linux.cpp
+--- a/Telegram/lib_ui/ui/platform/linux/ui_utility_linux.cpp
++++ b/Telegram/lib_ui/ui/platform/linux/ui_utility_linux.cpp
 @@ -413,7 +413,7 @@
  }
  #endif // !DESKTOP_APP_DISABLE_X11_INTEGRATION
  
 -#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
-+#if !defined DESKTOP_APP_DISABLE_X11_INTEGRATION && QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
++#if !defined DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION && QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
  void ShowWaylandWindowMenu(not_null<QWidget*> widget, const QPoint &point) {
  	static const auto wl_proxy_marshal_array = [] {
  		void (*result)(
@@ -67,8 +67,8 @@ https://github.com/desktop-app/cmake_helpers/commit/a428df5440e76a726abc30924766
  	if (::Platform::IsWayland()) {
  		ShowWaylandWindowMenu(widget, point);
  		return;
---- tdesktop-5.0.1-full.orig/cmake/options.cmake
-+++ tdesktop-5.0.1-full/cmake/options.cmake
+--- a/cmake/options.cmake
++++ b/cmake/options.cmake
 @@ -23,6 +23,13 @@
      )
  endif()
@@ -76,15 +76,15 @@ https://github.com/desktop-app/cmake_helpers/commit/a428df5440e76a726abc30924766
 +if (DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION)
 +    target_compile_definitions(common_options
 +    INTERFACE
-+        DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION
++    	DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION
 +    )
 +endif()
 +
  if (WIN32)
      include(cmake/options_win.cmake)
  elseif (APPLE)
---- tdesktop-5.0.1-full.orig/cmake/variables.cmake
-+++ tdesktop-5.0.1-full/cmake/variables.cmake
+--- a/cmake/variables.cmake
++++ b/cmake/variables.cmake
 @@ -21,6 +21,7 @@
  
  option(DESKTOP_APP_LOTTIE_USE_CACHE "Use caching in lottie animations." ON)
