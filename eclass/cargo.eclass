@@ -329,49 +329,39 @@ _cargo_gen_git_config() {
 cargo_src_unpack() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	mkdir -p "${ECARGO_VENDOR}" "${S}" || die
+	mkdir -p "${ECARGO_VENDOR}" || die
+	mkdir -p "${S}" || die
 
 	local archive shasum pkg
-	local crates=()
 	for archive in ${A}; do
 		case "${archive}" in
 			*.crate)
-				crates+=( "${archive}" )
+				# when called by pkgdiff-mg, do not unpack crates
+				[[ ${PKGBUMPING} == ${PVR} ]] && continue
+
+				ebegin "Loading ${archive} into Cargo registry"
+				tar -xf "${DISTDIR}"/${archive} -C "${ECARGO_VENDOR}/" || die
+				# generate sha256sum of the crate itself as cargo needs this
+				shasum=$(sha256sum "${DISTDIR}"/${archive} | cut -d ' ' -f 1)
+				pkg=$(basename ${archive} .crate)
+				cat <<- EOF > ${ECARGO_VENDOR}/${pkg}/.cargo-checksum.json
+				{
+					"package": "${shasum}",
+					"files": {}
+				}
+				EOF
+				# if this is our target package we need it in ${WORKDIR} too
+				# to make ${S} (and handle any revisions too)
+				if [[ ${P} == ${pkg}* ]]; then
+					tar -xf "${DISTDIR}"/${archive} -C "${WORKDIR}" || die
+				fi
+				eend $?
 				;;
 			*)
-				unpack "${archive}"
+				unpack ${archive}
 				;;
 		esac
 	done
-
-	if [[ ${PKGBUMPING} != ${PVR} ]]; then
-		pushd "${DISTDIR}" >/dev/null || die
-
-		ebegin "Unpacking crates"
-		printf '%s\0' "${crates[@]}" |
-			xargs -0 -P "$(makeopts_jobs)" -n 1 -- \
-				tar -x -C "${ECARGO_VENDOR}" -f
-		assert
-		eend $?
-
-		while read -d '' -r shasum archive; do
-			pkg=${archive%.crate}
-			cat <<- EOF > ${ECARGO_VENDOR}/${pkg}/.cargo-checksum.json || die
-			{
-				"package": "${shasum}",
-				"files": {}
-			}
-			EOF
-
-			# if this is our target package we need it in ${WORKDIR} too
-			# to make ${S} (and handle any revisions too)
-			if [[ ${P} == ${pkg}* ]]; then
-				tar -xf "${archive}" -C "${WORKDIR}" || die
-			fi
-		done < <(sha256sum -z "${crates[@]}" || die)
-
-		popd >/dev/null || die
-	fi
 
 	cargo_gen_config
 }
