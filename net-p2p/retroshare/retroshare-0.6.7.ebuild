@@ -44,7 +44,10 @@ RDEPEND="
 	miniupnp? ( net-libs/miniupnpc:= )
 	sqlcipher? ( dev-db/sqlcipher )
 	!sqlcipher? ( dev-db/sqlite:3 )
-	plugins? ( media-libs/speex )"
+	plugins? (
+		media-libs/speex
+		<media-video/ffmpeg-5
+	)"
 
 # NOTE(setan): rapidjson might not be needed if not using jsonapi. This is to be tested
 DEPEND="${RDEPEND}
