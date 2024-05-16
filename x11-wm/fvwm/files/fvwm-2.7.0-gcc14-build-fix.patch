@@ -1,0 +1,19 @@
+Bug: https://bugs.gentoo.org/921601
+--- a/libs/PictureImageLoader.c
++++ b/libs/PictureImageLoader.c
+@@ -468,6 +468,7 @@ Bool PImageLoadPng(FIMAGE_CMD_ARGS)
+ 		Fpng_set_expand(Fpng_ptr);
+ 	}
+ 
++#if PngSupport
+ 	/* TA:  XXX:  (2011-02-14) -- Happy Valentines Day.
+ 	 *
+ 	 * png_get_color_type() defined in libpng 1.5 now hides a data member
+@@ -492,6 +493,7 @@ Bool PImageLoadPng(FIMAGE_CMD_ARGS)
+ 	{
+ 		hasg = 1;
+ 	}
++#endif
+ 
+ 	if (hasa)
+ 		Fpng_set_expand(Fpng_ptr);
