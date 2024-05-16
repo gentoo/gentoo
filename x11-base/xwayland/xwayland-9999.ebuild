@@ -25,12 +25,12 @@ COMMON_DEPEND="
 	dev-libs/libbsd
 	dev-libs/openssl:=
 	>=dev-libs/wayland-1.21.0
-	>=dev-libs/wayland-protocols-1.30
+	>=dev-libs/wayland-protocols-1.34
 	media-fonts/font-util
 	>=media-libs/libepoxy-1.5.4[X,egl(+)]
 	media-libs/libglvnd[X]
 	>=media-libs/mesa-21.1[X(+),egl(+),gbm(+)]
-	>=x11-libs/libdrm-2.4.109
+	>=x11-libs/libdrm-2.4.116
 	>=x11-libs/libXau-1.0.4
 	x11-libs/libxcvt
 	>=x11-libs/libXdmcp-1.0.2
