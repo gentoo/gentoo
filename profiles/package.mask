@@ -321,12 +321,6 @@ dev-go/twofactor
 # Removal on 2024-05-18
 sci-visualization/spectromatic
 
-# Fabian Groffen <grobian@gentoo.org> (2024-04-16)
-# Official latest Python support 3.8, replacement app-metrics/go-carbon
-# is more performant and designed to be a drop-in replacement.
-# Removal on 2024-05-16, bug #929444
-dev-python/carbon
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-04-12)
 # EAPI6. Fails to compile with go versions in tree. Upstream is archived.
 # Uses deprecated go eclasses. Maintainer needed, no rev deps.
