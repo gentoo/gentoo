@@ -8,7 +8,7 @@ SRC_URI="https://www.lesbonscomptes.com/upmpdcli/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="
 	dev-libs/expat
