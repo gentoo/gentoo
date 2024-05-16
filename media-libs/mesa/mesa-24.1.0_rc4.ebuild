@@ -273,6 +273,8 @@ src_prepare() {
 		bin/symbols-check.py || die # bug #830728
 
 	if use video_cards_nvk; then
+		# revert commit e6f77def
+		sed -e "s/pdev->wsi_device.supports_modifiers = true;//g" -i src/nouveau/vulkan/nvk_wsi.c || die
 		# NVK Subproject Handling
 		pushd "${S}" >/dev/null || die
 		for subpkg in proc-macro2-${PROC_MACRO2_PV} syn-${SYN_PV} quote-${QUOTE_PV} unicode-ident-${UNICODE_IDENT_PV} paste-${PASTE_PV}; do
