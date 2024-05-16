@@ -133,8 +133,8 @@ src_prepare() {
 	if use usb; then
 		# inspired by debian usb support package postinst
 		sed -i -e 's/^[ \t]*VirtualDriver[ \t]*=.*$/&, GenericUSB/' module.ini || die
-		sed -i -e '/\[ICA 3.0\]/a\GenericUSB=on' module.ini || true
-		echo "[GenericUSB]" >> module.ini || true
+		sed -i -e '/\[ICA 3.0\]/a\GenericUSB=on' module.ini || die
+		echo "[GenericUSB]" >> module.ini
 		echo "DriverName=VDGUSB.DLL" >> module.ini
 	fi
 
@@ -281,7 +281,7 @@ src_install() {
 pkg_preinst() {
 	# previous versions of the ebuild created that and left it around
 	# we own it now and avoid conflict warnings with this
-	rm -f "${ROOT}${ICAROOT}/config/module.ini"
+	rm -f "${ROOT}${ICAROOT}/config/module.ini" || die
 }
 
 pkg_postinst() {
