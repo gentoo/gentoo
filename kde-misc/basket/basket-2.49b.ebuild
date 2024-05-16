@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -63,7 +63,12 @@ PATCHES=(
 )
 
 src_prepare() {
+	if has_version ">=dev-libs/libgit2-1.8"; then
+		PATCHES+=( "${FILESDIR}/${P}-libgit2-1.8.patch" ) # bug #928338
+	fi
+
 	ecm_src_prepare
+
 	if ! use test; then
 		sed -e "/add_subdirectory(tests/s/^/#DONT/" -i src/CMakeLists.txt || die
 	fi
