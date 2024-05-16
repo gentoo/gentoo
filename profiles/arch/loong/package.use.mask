@@ -1,6 +1,11 @@
 # Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2024-05-16)
+# dev-ruby/asciidoctor has some really heavy deps, and is not keyworded on
+# loong yet.
+net-misc/chrony html
+
 # WANG Xuerui <xen0n@gentoo.org> (2024-04-04)
 # dev-qt/qtwebengine is not available on loong (no upstream Chromium support,
 # patchset not integrated yet)
