@@ -91,11 +91,16 @@ src_configure() {
 		-Ddocs=false
 		-Ddevel-docs=false
 		-Ddocs-pdf=false
-		-Dxorg=false
-		-Dxnest=false
-		-Dxvfb=false
-		-Dxwayland=true
 	)
+
+	if [[ ${PV} == "9999" ]]; then
+		emesonargs+=(
+			-Dxorg=false
+			-Dxnest=false
+			-Dxvfb=false
+			-Dxwayland=true
+		)
+	fi
 
 	if use libei; then
 		emesonargs+=( -Dxwayland_ei=portal )
