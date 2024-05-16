@@ -7,7 +7,7 @@ inherit flag-o-matic desktop qmake-utils xdg
 
 DESCRIPTION="Friend to Friend secure communication and sharing application"
 HOMEPAGE="https://retroshare.cc"
-SRC_URI="http://download.opensuse.org/repositories/network:/retroshare/Debian_Testing/retroshare-common_${PV}.orig.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://download.opensuse.org/repositories/network:/retroshare/Debian_Testing/retroshare-common_${PV}.orig.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/RetroShare"
 # NOTE: GitHub releases/archive is impractical to build so we use the OBS repo
 
