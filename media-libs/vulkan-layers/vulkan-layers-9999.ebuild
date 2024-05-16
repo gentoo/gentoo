@@ -24,7 +24,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="wayland X"
 
-RDEPEND="~dev-util/spirv-tools-${PV}:=[${MULTILIB_USEDEP}]"
+RDEPEND="~dev-util/spirv-tools-${PV}[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	>=dev-cpp/robin-hood-hashing-3.11.5
