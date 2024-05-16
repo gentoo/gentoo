@@ -62,7 +62,7 @@ RDEPEND="
 	app-crypt/mit-krb5:0/0
 	dev-libs/icu
 	dev-libs/openssl:=
-	dev-util/lttng-ust:0/2.12
+	dev-util/lttng-ust:=
 	sys-libs/zlib:0/1
 "
 BDEPEND="
