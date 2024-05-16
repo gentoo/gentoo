@@ -24,11 +24,11 @@ RESTRICT="!test? ( test )"
 BDEPEND="
 	virtual/pkgconfig
 	test? (
-		>=dev-cpp/catch-3.4.0
+		>=dev-cpp/catch-3.4.0[${MULTILIB_USEDEP}]
 	)
 "
 DEPEND="
-	>=dev-libs/libfmt-8.0.0:=
+	>=dev-libs/libfmt-9.1.0-r2[${MULTILIB_USEDEP}]
 "
 RDEPEND="${DEPEND}"
 
