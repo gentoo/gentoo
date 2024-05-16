@@ -5,6 +5,9 @@
     <email>gnome@gentoo.org</email>
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
+  <use>
+    <flag name="others">Enable other loaders, which are weakly maintained</flag>
+  </use>
   <upstream>
     <remote-id type="cpe">cpe:/a:gnome:gdk-pixbuf</remote-id>
     <remote-id type="gnome-gitlab">GNOME/gdk-pixbuf</remote-id>
