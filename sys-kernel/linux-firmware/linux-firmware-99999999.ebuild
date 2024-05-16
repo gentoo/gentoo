@@ -47,12 +47,6 @@ RDEPEND="!savedconfig? (
 		redistributable? (
 			!sys-firmware/alsa-firmware[alsa_cards_ca0132]
 			!sys-block/qla-fc-firmware
-			!sys-firmware/iwl1000-ucode
-			!sys-firmware/iwl6005-ucode
-			!sys-firmware/iwl6030-ucode
-			!sys-firmware/iwl3160-ucode
-			!sys-firmware/iwl7260-ucode
-			!sys-firmware/iwl3160-7260-bt-ucode
 			!sys-firmware/raspberrypi-wifi-ucode
 		)
 		unknown-license? (
