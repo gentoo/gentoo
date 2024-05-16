@@ -26,7 +26,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~riscv ~s390 ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~hppa ~loong ~riscv ~s390 ~x86"
 IUSE="big-endian"
 
 RDEPEND="
