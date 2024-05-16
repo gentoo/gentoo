@@ -54,6 +54,7 @@ DEPEND="${RDEPEND}
 BDEPEND="dev-build/cmake
 	dev-qt/qtcore:5
 	virtual/pkgconfig
+	gui? ( x11-base/xorg-proto )
 	jsonapi? ( app-text/doxygen )"
 
 src_configure() {
