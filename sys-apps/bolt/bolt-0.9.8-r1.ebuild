@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit linux-info meson udev
+PYTHON_COMPAT=( python3_1{0..2} )
+inherit linux-info python-any-r1 meson udev
 
 DESCRIPTION="Userspace system daemon to enable security levels for Thunderbolt 3"
 HOMEPAGE="https://gitlab.freedesktop.org/bolt/bolt"
@@ -24,12 +25,23 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	test? ( dev-util/umockdev )
+	test? (
+		dev-util/umockdev
+	)
 "
 BDEPEND="
 	app-text/asciidoc
 	dev-util/glib-utils
 	virtual/pkgconfig
+	test? (
+		dev-util/umockdev
+		${PYTHON_DEPS}
+		$(python_gen_any_dep \
+			'dev-python/pygobject[${PYTHON_USEDEP}]' \
+			'dev-python/dbus-python[${PYTHON_USEDEP}]' \
+			'dev-python/python-dbusmock[${PYTHON_USEDEP}]'
+		)
+	)
 "
 
 pkg_setup() {
@@ -44,6 +56,7 @@ pkg_setup() {
 	ERROR_HOTPLUG_PCI="Thunderbolt requires PCI hotplug support."
 
 	linux-info_pkg_setup
+	python-any-r1_pkg_setup
 }
 
 src_configure() {
