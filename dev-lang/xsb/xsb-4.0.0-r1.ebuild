@@ -5,7 +5,7 @@ EAPI=8
 
 PATCHSET_VER="3"
 
-inherit autotools java-pkg-opt-2
+inherit autotools flag-o-matic java-pkg-opt-2
 
 DESCRIPTION="XSB is a logic programming and deductive database system"
 HOMEPAGE="https://xsb.sourceforge.net"
@@ -55,6 +55,12 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing, -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/855659
+	# https://sourceforge.net/p/xsb/bugs/264/
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	cd "${S}"/build
 
 	econf \
