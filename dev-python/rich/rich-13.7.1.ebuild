@@ -27,6 +27,11 @@ RDEPEND="
 	>=dev-python/markdown-it-py-2.2.0[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.13.0[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	test? (
+		>=dev-python/attrs-21.4.0[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests pytest
 
