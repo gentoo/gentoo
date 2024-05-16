@@ -17,7 +17,7 @@ SRC_URI="https://github.com/frostming/${PN}/archive/refs/tags/${PV}.tar.gz -> ${
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 BDEPEND="
 	dev-python/zstandard[${PYTHON_USEDEP}]
