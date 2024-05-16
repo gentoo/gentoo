@@ -26,10 +26,10 @@ SLOT="0/14"
 RESTRICT="test"
 
 BDEPEND="${PYTHON_DEPS}
-	~dev-util/spirv-tools-${PV}:=[${MULTILIB_USEDEP}]
+	~dev-util/spirv-tools-${PV}[${MULTILIB_USEDEP}]
 "
 
-DEPEND="~dev-util/spirv-tools-${PV}:=[${MULTILIB_USEDEP}]"
+DEPEND="~dev-util/spirv-tools-${PV}[${MULTILIB_USEDEP}]"
 RDEPEND="${DEPEND}"
 
 multilib_src_configure() {
