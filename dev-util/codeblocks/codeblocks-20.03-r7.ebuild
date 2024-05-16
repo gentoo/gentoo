@@ -18,7 +18,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.xz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 # USE="fortran" enables FortranProject plugin (updated to v1.8 2021-05-29 [r230])
 # that is delivered with Code::Blocks 20.03 source code.
