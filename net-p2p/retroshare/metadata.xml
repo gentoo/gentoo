@@ -22,6 +22,7 @@
 		<flag name="jsonapi">Enables the new RetroShare JSON API</flag>
 		<flag name="libupnp">Enables UPnP port forwarding via <pkg>net-libs/libupnp</pkg></flag>
 		<flag name="miniupnp">Enables UPnP port forwarding via <pkg>net-libs/miniupnpc</pkg></flag>
+		<flag name="plugins">Enables plugin support</flag>
 		<flag name="service">Enables the new RetroShare service</flag>
 		<flag name="sqlcipher">Enables GXS database encryption via SQLCipher</flag>
 	</use>
