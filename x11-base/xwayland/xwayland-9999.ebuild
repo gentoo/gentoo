@@ -66,10 +66,6 @@ BDEPEND="
 	dev-util/wayland-scanner
 "
 
-PATCHES=(
-	"${FILESDIR}"/xwayland-drop-redundantly-installed-files_v2.patch
-)
-
 src_prepare() {
 	default
 
@@ -128,4 +124,10 @@ src_install() {
 	dosym ../bin/Xwayland /usr/libexec/Xwayland
 
 	meson_src_install
+
+	# Remove files installed by x11-base/xorg-xserver
+	rm \
+		"${ED}"/usr/share/man/man1/Xserver.1 \
+		"${ED}"/usr/$(get_libdir)/xorg/protocol.txt \
+		|| die
 }
