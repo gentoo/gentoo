@@ -19,7 +19,7 @@ HOMEPAGE="https://wayland.freedesktop.org/xserver.html"
 LICENSE="MIT"
 SLOT="0"
 
-IUSE="libei selinux unwind xcsecurity"
+IUSE="libei selinux systemd unwind xcsecurity"
 
 COMMON_DEPEND="
 	dev-libs/libbsd
@@ -41,6 +41,7 @@ COMMON_DEPEND="
 	>=x11-misc/xkeyboard-config-2.4.1-r3
 
 	libei? ( dev-libs/libei )
+	systemd? ( sys-apps/systemd )
 	unwind? ( sys-libs/libunwind )
 "
 DEPEND="
@@ -67,6 +68,7 @@ PATCHES=(
 src_configure() {
 	local emesonargs=(
 		$(meson_use selinux xselinux)
+		$(meson_use systemd systemd_notify)
 		$(meson_use unwind libunwind)
 		$(meson_use xcsecurity)
 		-Ddpms=true
