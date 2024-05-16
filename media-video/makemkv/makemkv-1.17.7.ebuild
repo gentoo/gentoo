@@ -12,7 +12,7 @@ DESCRIPTION="Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs"
 HOMEPAGE="http://www.makemkv.com/"
 SRC_URI="http://www.makemkv.com/download/${MY_P}.tar.gz
 	http://www.makemkv.com/download/${MY_PB}.tar.gz"
-
+S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2 LGPL-2.1 MPL-1.1 MakeMKV-EULA openssl"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
@@ -44,7 +44,6 @@ BDEPEND="
 "
 
 CONFIG_CHECK="~CHR_DEV_SG"
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-path.patch
