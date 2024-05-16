@@ -21,7 +21,7 @@ else
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/${MY_PN}-${PV}/src/${PN}"
 
-	KEYWORDS="amd64 arm ~arm64 ~x86"
+	KEYWORDS="amd64 arm arm64 ~x86"
 fi
 
 LICENSE="MIT"
