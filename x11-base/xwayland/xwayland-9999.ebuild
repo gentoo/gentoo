@@ -19,7 +19,8 @@ HOMEPAGE="https://wayland.freedesktop.org/xserver.html"
 LICENSE="MIT"
 SLOT="0"
 
-IUSE="libei selinux systemd unwind xcsecurity"
+IUSE="libei selinux systemd test unwind xcsecurity"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	dev-libs/libbsd
@@ -48,6 +49,10 @@ DEPEND="
 	${COMMON_DEPEND}
 	>=x11-base/xorg-proto-2024.1
 	>=x11-libs/xtrans-1.3.5
+	test? (
+		x11-misc/rendercheck
+		x11-libs/libX11
+	)
 "
 RDEPEND="
 	${COMMON_DEPEND}
@@ -64,6 +69,14 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/xwayland-drop-redundantly-installed-files_v2.patch
 )
+
+src_prepare() {
+	default
+
+	if ! use test; then
+		sed -i -e "s/dependency('x11')/disabler()/" meson.build || die
+	fi
+}
 
 src_configure() {
 	local emesonargs=(
