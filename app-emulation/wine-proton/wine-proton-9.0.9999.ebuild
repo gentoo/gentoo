@@ -44,7 +44,7 @@ WINE_DLOPEN_DEPEND="
 	dev-libs/libgcrypt:=[${MULTILIB_USEDEP}]
 	media-libs/freetype[${MULTILIB_USEDEP}]
 	media-libs/libglvnd[X,${MULTILIB_USEDEP}]
-	media-libs/vulkan-loader[${MULTILIB_USEDEP}]
+	media-libs/vulkan-loader[X,${MULTILIB_USEDEP}]
 	x11-libs/libXcursor[${MULTILIB_USEDEP}]
 	x11-libs/libXfixes[${MULTILIB_USEDEP}]
 	x11-libs/libXi[${MULTILIB_USEDEP}]
