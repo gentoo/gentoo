@@ -4,7 +4,7 @@
 EAPI=8
 
 MY_PN=SPIRV-Tools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="xml(+)"
 inherit cmake-multilib python-any-r1
 
