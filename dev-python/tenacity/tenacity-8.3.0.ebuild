@@ -21,8 +21,7 @@ KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
-		<dev-python/pytest-8.2[${PYTHON_USEDEP}]
-		dev-python/tornado[${PYTHON_USEDEP}]
+		>=dev-python/tornado-6.4-r1[${PYTHON_USEDEP}]
 		dev-python/typeguard[${PYTHON_USEDEP}]
 	)
 "
