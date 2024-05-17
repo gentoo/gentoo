@@ -33,7 +33,7 @@ RDEPEND="
 		x11-libs/libX11
 		x11-libs/libxcb
 	)
-	!<media-libs/libvpl-2.11.0[tools]
+	>=media-libs/libvpl-2.11.0
 "
 DEPEND="${RDEPEND}
 	wayland? (
