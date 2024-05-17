@@ -35,6 +35,11 @@
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-17)
 # EAPI=6, no maintainer, fails to compile.
+# Removal on 2024-06-16.  Bugs #932097, #542244, #742965.
+x11-plugins/pidgintex
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-17)
+# EAPI=6, no maintainer, fails to compile.
 # Removal on 2024-06-16.  Bugs #932095, #768072, #777747.
 app-forensics/air
 
