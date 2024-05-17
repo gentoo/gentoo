@@ -1,0 +1,18 @@
+ThreadedFileReader.cpp:37:4: error: use of undeclared identifier 'memcpy'
+defs.h:78:14: error: no member named 'clamp' in namespace 'std'
+--- a/pcsx2/CDVD/ThreadedFileReader.h
++++ b/pcsx2/CDVD/ThreadedFileReader.h
+@@ -10,4 +10,5 @@
+ #include <atomic>
+ #include <condition_variable>
++#include <cstring>
+ 
+ class Error;
+--- a/pcsx2/SPU2/defs.h
++++ b/pcsx2/SPU2/defs.h
+@@ -6,4 +6,5 @@
+ #include "GS/MultiISA.h"
+ 
++#include <algorithm>
+ #include <array>
+ 

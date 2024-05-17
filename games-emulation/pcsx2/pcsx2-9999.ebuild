@@ -31,7 +31,6 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	app-arch/lz4:=
 	app-arch/zstd:=
-	dev-libs/libaio
 	dev-qt/qtbase:6[concurrent,gui,widgets]
 	dev-qt/qtsvg:6
 	media-libs/freetype
@@ -80,6 +79,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.4667-flags.patch
 	"${FILESDIR}"/${PN}-1.7.5232-cubeb-automagic.patch
 	"${FILESDIR}"/${PN}-1.7.5700-vanilla-shaderc.patch
+	"${FILESDIR}"/${PN}-1.7.5817-missing-headers.patch
 )
 
 src_prepare() {
