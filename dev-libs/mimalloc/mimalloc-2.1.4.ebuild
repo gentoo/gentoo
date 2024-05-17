@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib
+inherit cmake-multilib flag-o-matic
 
 DESCRIPTION="A compact general purpose allocator with excellent performance"
 HOMEPAGE="https://github.com/microsoft/mimalloc"
@@ -25,13 +25,12 @@ src_configure() {
 		-DMI_BUILD_OBJECT=OFF
 		-DMI_BUILD_STATIC=OFF
 		-DMI_TRACK_VALGRIND=$(usex valgrind)
-
-		# Bug #923177
-		# find_library(... atomic) appears to not work. Fall back to -latomic
-		-DMI_USE_LIBATOMIC=ON
-
 		-DMI_LIBC_MUSL=$(usex elibc_musl)
 	)
+
+	# Bug #923177, #931778: append -latomic if it is available
+	test-flags-CCLD "-latomic" &>/dev/null &&
+		mycmakeargs+=( -DMI_USE_LIBATOMIC=ON )
 
 	cmake-multilib_src_configure
 }
