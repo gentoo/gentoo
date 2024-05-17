@@ -663,7 +663,7 @@ LICENSE+="
 "
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv"
-IUSE="dataframe extra"
+IUSE="dataframe extra X"
 
 DEPEND="
 	>=dev-libs/libgit2-0.99:=
@@ -673,8 +673,10 @@ DEPEND="
 	net-libs/nghttp2:=
 	net-misc/curl
 	dev-db/sqlite:3=
-	x11-libs/libX11
-	x11-libs/libxcb
+	X? (
+		x11-libs/libX11
+		x11-libs/libxcb
+	)
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
