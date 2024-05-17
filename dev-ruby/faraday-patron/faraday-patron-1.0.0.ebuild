@@ -21,7 +21,7 @@ RUBY_S="faraday-patron-1.0"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 ruby_add_bdepend "test? ( dev-ruby/webmock dev-ruby/faraday:1 )"
