@@ -10,7 +10,7 @@ PYTHON_COMPAT=( python3_{10,11,12,13,13} )
 inherit distutils-r1
 
 DESCRIPTION="Python CRC Generator module"
-HOMEPAGE="http://crcmod.sourceforge.net/"
+HOMEPAGE="https://crcmod.sourceforge.net/"
 SRC_URI="
 	https://downloads.sourceforge.net/project/crcmod/crcmod/${P}/${P}.tar.gz
 "
