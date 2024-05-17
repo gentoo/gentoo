@@ -20,7 +20,7 @@ SRC_URI="https://github.com/lostisland/faraday-rack/archive/v${PV}.tar.gz -> ${P
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 ruby_add_bdepend "test? ( dev-ruby/faraday:1 >=dev-ruby/rack-test-0.6 dev-ruby/webmock )"
