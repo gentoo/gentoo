@@ -1444,7 +1444,7 @@ epytest() {
 	set -- "${EPYTHON}" -m pytest "${args[@]}" "${@}" ${EPYTEST_FLAGS}
 
 	echo "${@}" >&2
-	"${@}" || die -n "pytest failed with ${EPYTHON}"
+	"${@}"
 	local ret=${?}
 
 	# remove common temporary directories left over by pytest plugins
@@ -1455,6 +1455,7 @@ epytest() {
 		find "${BUILD_DIR}" -name '*-pytest-*.pyc' -delete || die
 	fi
 
+	[[ ${ret} -ne 0 ]] && die -n "pytest failed with ${EPYTHON}"
 	return ${ret}
 }
 
