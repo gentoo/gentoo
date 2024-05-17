@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,6 +15,8 @@ fi
 
 DESCRIPTION="Ncurses based music player with plugin support for many formats"
 HOMEPAGE="https://cmus.github.io/"
+
+S="${WORKDIR}/${P/_/-}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -65,8 +67,6 @@ RDEPEND="${DEPEND}
 "
 
 DOCS=( AUTHORS README.md )
-
-S="${WORKDIR}/${P/_/-}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.9.1-atomic.patch"
