@@ -11,6 +11,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">fleep</remote-id>
-		<remote-id type="github">floyernick/fleep-py</remote-id>
+		<remote-id type="github">ua-nick/fleep-py</remote-id>
 	</upstream>
 </pkgmetadata>
