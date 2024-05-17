@@ -10,7 +10,7 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="Enumerate IP addresses on the local network adapters"
 HOMEPAGE="
-	https://github.com/pydron/ifaddr/
+	https://github.com/ifaddr/ifaddr/
 	https://pypi.org/project/ifaddr/
 "
 
