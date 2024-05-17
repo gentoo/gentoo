@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-17)
+# EAPI=6, no maintainer, fails to compile.
+# Removal on 2024-06-16.  Bugs #932095, #768072, #777747.
+app-forensics/air
+
 # Sam James <sam@gentoo.org> (2024-05-17)
 # Breaks dev-util/pkgcheck at least, masked pending investigation (bug #932093)
 =dev-python/tree-sitter-0.21.3
