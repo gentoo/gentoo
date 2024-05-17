@@ -4,14 +4,18 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit cmake distutils-r1
 
 MY_P=editorconfig-core-py-${PV}
 TESTVER="abb579e00f2deeede91cb485e53512efab9c6474"
 DESCRIPTION="Clone of EditorConfig core written in Python"
-HOMEPAGE="https://editorconfig.org/"
+HOMEPAGE="
+	https://editorconfig.org/
+	https://github.com/editorconfig/editorconfig-core-py/
+	https://pypi.org/project/EditorConfig/
+"
 SRC_URI="
 	https://github.com/editorconfig/editorconfig-core-py/archive/v${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
