@@ -17,8 +17,12 @@ if [[ "${PV}" == *9999* ]]; then
 
 	EGIT_REPO_URI="https://github.com/mikf/${PN}.git"
 else
-	SRC_URI="https://github.com/mikf/${PN}/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz"
+	SRC_URI="
+		https://github.com/mikf/${PN}/archive/v${PV}.tar.gz
+			-> ${P}.gh.tar.gz
+		https://github.com/mikf/${PN}/commit/5227bb6b1d62ecef5b281592b0d001e7f9c101e3.patch
+			-> ${P}-5227bb6.patch
+	"
 
 	KEYWORDS="amd64 arm arm64 hppa ppc ppc64 ~riscv x86"
 fi
@@ -29,6 +33,8 @@ SLOT="0"
 RDEPEND="
 	>=dev-python/requests-2.11.0[${PYTHON_USEDEP}]
 "
+
+PATCHES=( "${DISTDIR}/${P}-5227bb6.patch" )
 
 distutils_enable_tests unittest
 
