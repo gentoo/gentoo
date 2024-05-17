@@ -76,7 +76,6 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-9.3_p1-deny-shmget-shmat-shmdt-in-preauth-privsep-child.patch"
 	"${FILESDIR}/${PN}-9.4_p1-Allow-MAP_NORESERVE-in-sandbox-seccomp-filter-maps.patch"
 )
 
