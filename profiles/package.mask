@@ -329,12 +329,6 @@ dev-go/twofactor
 # Removal on 2024-05-18
 sci-visualization/spectromatic
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-04-12)
-# EAPI6. Fails to compile with go versions in tree. Upstream is archived.
-# Uses deprecated go eclasses. Maintainer needed, no rev deps.
-# Removal: 2024-05-12.  Bugs #794913, #679348, #771072, #844607.
-app-emulation/runv
-
 # Michał Górny <mgorny@gentoo.org> (2024-04-11)
 # Contains a bug that could render the kernel fail to boot.
 # https://lore.kernel.org/oe-lkp/202403221630.2692c998-oliver.sang@intel.com/
