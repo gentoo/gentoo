@@ -3,12 +3,12 @@
 
 EAPI=8
 
-inherit gear.kde.org cmake
+inherit cmake gear.kde.org
 
 DESCRIPTION="Shared icons, artwork and data files for educational applications"
 
 LICENSE="GPL-2"
-SLOT="5"
+SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE=""
 
