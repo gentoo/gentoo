@@ -16,8 +16,8 @@ HOMEPAGE="
 "
 
 LICENSE="BSD"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 SLOT="0"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
