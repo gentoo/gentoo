@@ -12,4 +12,4 @@ HOMEPAGE="https://github.com/tree-sitter/tree-sitter-json"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 ~arm64 ~s390"
