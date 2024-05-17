@@ -24,6 +24,7 @@ BDEPEND="
 	test? (
 		dev-python/jaraco-functools[${PYTHON_USEDEP}]
 		dev-python/jaraco-itertools[${PYTHON_USEDEP}]
+		dev-python/jaraco-test[${PYTHON_USEDEP}]
 		dev-python/more-itertools[${PYTHON_USEDEP}]
 	)
 "
