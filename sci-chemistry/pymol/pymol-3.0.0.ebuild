@@ -3,8 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
-DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{9..12} )
+DISTUTILS_USE_PEP517="setuptools"
 DISTUTILS_EXT=1
 
 inherit desktop flag-o-matic xdg distutils-r1
@@ -15,6 +15,9 @@ SRC_URI="
 	https://dev.gentoo.org/~pacho/${PN}/${PN}-1.8.4.0.png.xz
 	https://github.com/schrodinger/pymol-open-source/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	"
+
+S="${WORKDIR}"/${PN}-open-source-${PV}
+
 LICENSE="BitstreamVera BSD freedist HPND OFL-1.0 public-domain UoI-NCSA" #844991
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
@@ -39,7 +42,9 @@ RDEPEND="${DEPEND}
 	sci-chemistry/chemical-mime-data
 "
 
-S="${WORKDIR}"/${PN}-open-source-${PV}
+PATCHES=(
+	"${FILESDIR}/${PN}-2.5.0-format-security.patch"
+)
 
 python_prepare_all() {
 	sed \
@@ -55,7 +60,7 @@ python_prepare_all() {
 		-e "s:\['msgpackc'\]:\['msgpack'\]:g" \
 		-i setup.py || die
 
-	append-cxxflags -std=c++0x
+	append-cxxflags -std=c++17
 
 	distutils-r1_python_prepare_all
 }
@@ -76,6 +81,10 @@ python_install() {
 
 python_install_all() {
 	distutils-r1_python_install_all
+
+	# Move data to correct location
+	dodir /usr/share/pymol
+	mv "${D}/$(python_get_sitedir)"/pymol/pymol_path/* "${ED}/usr/share/pymol" || die
 
 	# These environment variables should not go in the wrapper script, or else
 	# it will be impossible to use the PyMOL libraries from Python.
