@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Eli Schwartz <eschwartz93@gmail.com> (2024-05-17)
+# Last updated in 2007, has no reverse dependencies, is unmaintained upstream
+# (in 2010 a version 4 alpha was released using cmake, the project has seen no
+# other activity upstream). Fails to build with dash, lto.
+# Bug #862669, #890423.
+# Removal on 2024-06-16.
+sci-libs/beagle
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-05-14)
 # Breaks build of revdeps.
 ~app-text/poppler-24.05.0
