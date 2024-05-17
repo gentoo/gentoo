@@ -34,7 +34,7 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2024-05-17)
-# Breaks dev-util/pkgcheck at least, masked pending investigation
+# Breaks dev-util/pkgcheck at least, masked pending investigation (bug #932093)
 =dev-python/tree-sitter-0.21.3
 
 # Sam James <sam@gentoo.org> (2024-05-17)
