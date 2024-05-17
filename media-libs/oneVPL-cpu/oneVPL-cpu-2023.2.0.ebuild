@@ -22,7 +22,7 @@ RESTRICT="test"
 BDEPEND="virtual/pkgconfig"
 DEPEND="
 	media-libs/dav1d
-	media-libs/libvpl[experimental?]
+	media-libs/libvpl[experimental(-)?]
 	media-libs/svt-av1
 	media-libs/svt-hevc
 	media-video/ffmpeg
