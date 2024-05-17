@@ -3,25 +3,38 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10,11,12} )
+PYTHON_COMPAT=( python3_{10,11,12,13} )
+LLVM_COMPAT=( {15..18} )
+LLVM_OPTIONAL=1
 
-inherit flag-o-matic git-r3 linux-info meson pam python-single-r1 \
+inherit flag-o-matic linux-info llvm-r1 meson pam python-single-r1 \
 		systemd tmpfiles
 
-KEYWORDS=""
-
-SLOT="9999"
-
-EGIT_REPO_URI="https://git.postgresql.org/git/postgresql.git"
-
-LICENSE="POSTGRESQL GPL-2"
 DESCRIPTION="PostgreSQL RDBMS"
 HOMEPAGE="https://www.postgresql.org/"
+LICENSE="POSTGRESQL GPL-2"
 
-IUSE="debug +icu kerberos ldap llvm +lz4 nls pam perl python +readline
-	selinux server systemd ssl static-libs tcl uuid xml zlib zstd"
+SLOT=$(ver_cut 1)
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+if [[ $PV = *9999* ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://git.postgresql.org/git/postgresql.git"
+else
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+
+	MY_PV=${PV/_/}
+	SRC_URI="https://ftp.postgresql.org/pub/source/v${MY_PV}/postgresql-${MY_PV}.tar.bz2"
+	S="${WORKDIR}/${PN}-${MY_PV}"
+fi
+
+IUSE="debug doc +icu kerberos ldap llvm +lz4 nls pam perl python +readline
+	selinux systemd ssl static-libs tcl test uuid xml zlib zstd"
+
+REQUIRED_USE="
+llvm? ( ${LLVM_REQUIRED_USE} )
+python? ( ${PYTHON_REQUIRED_USE} )
+"
+RESTRICT="!test? ( test )"
 
 CDEPEND="
 >=app-eselect/eselect-postgresql-2.0
@@ -32,20 +45,22 @@ virtual/libintl
 icu? ( dev-libs/icu:= )
 kerberos? ( app-crypt/mit-krb5 )
 ldap? ( net-nds/openldap:= )
-llvm? (
-	sys-devel/llvm:=
-	sys-devel/clang:=
-)
+llvm? ( $(llvm_gen_dep '
+	sys-devel/clang:${LLVM_SLOT}
+	sys-devel/llvm:${LLVM_SLOT}
+	') )
 lz4? ( app-arch/lz4 )
 pam? ( sys-libs/pam )
-perl? ( >=dev-lang/perl-5.8:= )
+perl? ( >=dev-lang/perl-5.14:= )
 python? ( ${PYTHON_DEPS} )
 readline? ( sys-libs/readline:0= )
 ssl? ( >=dev-libs/openssl-0.9.6-r1:0= )
 systemd? ( sys-apps/systemd )
 tcl? ( >=dev-lang/tcl-8:0= )
-uuid? ( dev-libs/ossp-uuid )
-xml? ( dev-libs/libxml2 dev-libs/libxslt )
+xml? (
+	dev-libs/libxml2
+	dev-libs/libxslt
+)
 zlib? ( sys-libs/zlib )
 zstd? ( app-arch/zstd )
 "
@@ -73,37 +88,38 @@ uuid? (
 
 DEPEND="${CDEPEND}
 >=dev-lang/perl-5.8
-app-text/docbook-dsssl-stylesheets
-app-text/docbook-sgml-dtd:4.5
-app-text/docbook-xml-dtd:4.5
-app-text/docbook-xsl-stylesheets
-app-text/openjade
-dev-libs/libxml2
-dev-libs/libxslt
-sys-devel/bison
 app-alternatives/lex
+sys-devel/bison
 nls? ( sys-devel/gettext )
 xml? ( virtual/pkgconfig )
 "
+
 RDEPEND="${CDEPEND}
 selinux? ( sec-policy/selinux-postgresql )
 "
 
-pkg_pretend() {
-	if ! use server; then
-		elog "You are using a live ebuild that uses the current source code as it is"
-		elog "available from PostgreSQL's Git repository at emerge time. Given such,"
-		elog "the Meson build files may be altered by upstream without notice and the"
-		elog "documentation for this live version is not readily available"
-		elog "online. Ergo, the ebuild maintainers will not support building a"
-		elog "client-only and/or document-free version."
-		ewarn "Building server anyway."
-	fi
-}
+# Openjade, docbook, XML, and XSLT are needed to generate manpages and
+# any documentation that may be elected.
+BDEPEND="
+app-text/openjade
+app-text/docbook-dsssl-stylesheets
+app-text/docbook-sgml-dtd:4.5
+app-text/docbook-xml-dtd:4.5
+app-text/docbook-xsl-stylesheets
+dev-libs/libxml2
+dev-libs/libxslt
+test? (
+	>=dev-lang/perl-5.14:=
+	dev-perl/IPC-Run
+	virtual/perl-Test-Simple
+	virtual/perl-ExtUtils-MakeMaker
+)
+"
 
 pkg_setup() {
 	CONFIG_CHECK="~SYSVIPC" linux-info_pkg_setup
 
+	use llvm && llvm-r1_pkg_setup
 	use python && python-single-r1_pkg_setup
 }
 
@@ -118,42 +134,30 @@ src_prepare() {
 	sed 's/@install_bin@/install -c/' -i src/Makefile.global.in || die
 
 	if use pam ; then
-		sed -e "s/\(#define PGSQL_PAM_SERVICE \"postgresql\)/\1-${SLOT}/" \
+		sed "s/\(#define PGSQL_PAM_SERVICE \"postgresql\)/\1-${SLOT}/" \
 			-i src/backend/libpq/auth.c || \
 			die 'PGSQL_PAM_SERVICE rename failed.'
 	fi
 
-	eapply_user
+	default
 }
 
 src_configure() {
-	local emesonargs=()
-
 	case ${CHOST} in
 		*-darwin*|*-solaris*)
 			use nls && append-libs intl
 			;;
 	esac
+	export LDFLAGS_SL="${LDFLAGS}"
+	export LDFLAGS_EX="${LDFLAGS}"
 
-	local i uuid_config=""
-	if use uuid; then
-		for i in ${UTIL_LINUX_LIBC[@]}; do
-			use ${i} && uuid_config="-Duuid=e2fs"
-		done
-
-		emesonargs+=( ${uuid_config:-"-Duuid=ossp"} )
-	fi
-
-	use debug && emesonargs+=( "--debug" )
-
-	local PO="${EPREFIX}"
-	emesonargs+=(
-		--prefix="${PO}/usr/$(get_libdir)/postgresql-${SLOT}"
-		--datadir="${PO}/usr/share/postgresql-${SLOT}"
-		--includedir="${PO}/usr/include/postgresql-${SLOT}"
-		--mandir="${PO}/usr/share/postgresql-${SLOT}/man"
-		--sysconfdir="${PO}/etc/postgresql-${SLOT}"
-		-Dsystem_tzdata="${PO}/usr/share/zoneinfo"
+	local emesonargs=(
+		--prefix="${EPREFIX}/usr/$(get_libdir)/postgresql-${SLOT}"
+		--datadir="${EPREFIX}/usr/share/postgresql-${SLOT}"
+		--includedir="${EPREFIX}/usr/include/postgresql-${SLOT}"
+		--mandir="${EPREFIX}/usr/share/postgresql-${SLOT}/man"
+		--sysconfdir="${EPREFIX}/etc/postgresql-${SLOT}"
+		-Dsystem_tzdata="${EPREFIX}/usr/share/zoneinfo"
 		$(meson_feature icu)
 		$(meson_feature kerberos gssapi)
 		$(meson_feature ldap)
@@ -170,60 +174,64 @@ src_configure() {
 		$(meson_feature xml libxslt)
 		$(meson_feature zlib)
 		$(meson_feature zstd)
+		$(meson_use !alpha spinlocks)
 	)
 
+	use debug && emesonargs+=( "--debug" )
 	use ssl && emesonargs+=( "-Dssl=openssl" )
-	use alpha && emesonargs+=( "-Dspinlocks=false" )
 
-	export LDFLAGS_SL="${LDFLAGS}"
-	export LDFLAGS_EX="${LDFLAGS}"
+	local i uuid_config=""
+	if use uuid; then
+		for i in ${UTIL_LINUX_LIBC[@]}; do
+			use ${i} && uuid_config="-Duuid=e2fs"
+		done
+
+		emesonargs+=( ${uuid_config:-"-Duuid=ossp"} )
+	fi
 
 	meson_src_configure
 }
 
 src_compile() {
 	meson_src_compile
-	meson_src_compile {docs,man}
+
+	if use doc ; then
+		# Generates both manpages and HTML documentation.
+		meson_src_compile docs
+	else
+		meson_src_compile man:alias
+	fi
+}
+
+src_test() {
+	if [[ ${UID} -ne 0 ]] ; then
+		# Some ICU tests fail if LC_CTYPE and LC_COLLATE aren't the same. We set
+		# LC_CTYPE to be equal to LC_COLLATE since LC_COLLATE is set by Portage.
+		local old_ctype=${LC_CTYPE}
+		export LC_CTYPE=${LC_COLLATE}
+		meson_src_test
+		export LC_CTYPE=${old_ctype}
+	else
+		ewarn 'Tests cannot be run as root. Enable "userpriv" in FEATURES.'
+		ewarn 'Skipping.'
+	fi
 }
 
 src_install() {
 	meson_src_install
 
-	dodoc README HISTORY doc/TODO
-	dodoc -r "${BUILD_DIR}"/doc/src/sgml/html
+	sed -e "s|@SLOT@|${SLOT}|g" -e "s|@LIBDIR@|$(get_libdir)|g" \
+		"${FILESDIR}/${PN}.confd-9.3" | newconfd - "${PN}-${SLOT}"
 
-	# postgresql.eselect places the man files of the selected slot, which may
-	# not be this ${SLOT}, hence doins instead of doman
-	insinto /usr/share/postgresql-${SLOT}/man/
-	doins -r "${BUILD_DIR}"/doc/src/sgml/man{1,3,7}
-	docompress /usr/share/postgresql-${SLOT}/man/man{1,3,7}
+	sed -e "s|@SLOT@|${SLOT}|g" -e "s|@LIBDIR@|$(get_libdir)|g" \
+		"${FILESDIR}/${PN}.init-9.3-r1" | newinitd - "${PN}-${SLOT}"
 
-	insinto /etc/postgresql-${SLOT}
+	insinto "/etc/postgresql-${SLOT}"
 	newins src/bin/psql/psqlrc.sample psqlrc
 
-	# Don't delete libpg{port,common}.a (Bug #571046). They're always
-	# needed by extensions utilizing PGXS.
-	use static-libs || \
-		find "${ED}" -name '*.a' ! -name libpgport.a ! -name libpgcommon.a \
-			 -delete
-
-	sed -e "s|@SLOT@|${SLOT}|g" -e "s|@LIBDIR@|$(get_libdir)|g" \
-		"${FILESDIR}/${PN}.confd-9.3" | newconfd - ${PN}-${SLOT}
-
-	sed -e "s|@SLOT@|${SLOT}|g" -e "s|@LIBDIR@|$(get_libdir)|g" \
-		"${FILESDIR}/${PN}.init-9.3-r1" | newinitd - ${PN}-${SLOT}
-
-	if use systemd; then
-		sed -e "s|@SLOT@|${SLOT}|g" -e "s|@LIBDIR@|$(get_libdir)|g" \
-			"${FILESDIR}/${PN}.service-9.6-r1" | \
-			systemd_newunit - ${PN}-${SLOT}.service
-		newtmpfiles "${FILESDIR}"/${PN}.tmpfiles ${PN}-${SLOT}.conf
-	fi
-
-	newbin "${FILESDIR}"/${PN}-check-db-dir ${PN}-${SLOT}-check-db-dir
-
-	use pam && pamd_mimic system-auth ${PN}-${SLOT} auth account session
-
+	# Create slot specific links to their related executables, so that they're
+	# always available. For example, pg_config9999 is always available whereas
+	# the pg_config is controlled by postgresql.eselect.
 	local f bn
 	for f in $(find "${ED}/usr/$(get_libdir)/postgresql-${SLOT}/bin" \
 					-mindepth 1 -maxdepth 1)
@@ -233,7 +241,15 @@ src_install() {
 			  "/usr/bin/${bn}${SLOT/.}"
 	done
 
-	# Create slot specific man pages
+	# Create slot specific man pages so that they're always available. As above
+	# for the executables, make `man pg_config9999` always refer to the same
+	# manpage, whereas postgresql.eselect controls which manpage `man pg_config`
+	# refers.  And, since postgresql.eselect controls the manpages, doman would
+	# actually do the wrong thing for us, hence insinto and doins.
+	insinto "/usr/share/postgresql-${SLOT}/man/"
+	doins -r "${BUILD_DIR}"/doc/src/sgml/man{1,3,7}
+	docompress /usr/share/postgresql-"${SLOT}"/man/man{1,3,7}
+
 	local bn f mansec slotted_name
 	for mansec in 1 3 7 ; do
 		local rel_manpath="../../postgresql-${SLOT}/man/man${mansec}"
@@ -243,54 +259,90 @@ src_install() {
 
 		for f in "${ED}/usr/share/postgresql-${SLOT}/man/man${mansec}"/* ; do
 			bn=$(basename "${f}")
-			slotted_name=${bn%.${mansec}}${SLOT}.${mansec}
+			slotted_name=${bn%."${mansec}"}${SLOT}.${mansec}
 			case ${bn} in
 				TABLE.7|WITH.7)
-					echo ".so ${rel_manpath}/SELECT.7" > ${slotted_name}
+					echo ".so ${rel_manpath}/SELECT.7" > "${slotted_name}"
 					;;
 				*)
-					echo ".so ${rel_manpath}/${bn}" > ${slotted_name}
+					echo ".so ${rel_manpath}/${bn}" > "${slotted_name}"
 					;;
 			esac
 		done
 
-		popd > /dev/null
+		popd > /dev/null || die "popd failed"
 	done
+
+	# All of the use flag influenced installs/removals begin here.
+	use doc && dodoc -r "${BUILD_DIR}"/doc/src/sgml/html
+
+	use pam && pamd_mimic system-auth "${PN}-${SLOT}" auth account session
 
 	if use prefix ; then
 		keepdir /run/postgresql
 		fperms 1775 /run/postgresql
 	fi
+
+	# Don't delete libpg{port,common}.a (Bug #571046). They're always
+	# needed by extensions utilizing PGXS.
+	use static-libs || \
+		find "${ED}" -name '*.a' ! -name libpgport.a ! -name libpgcommon.a \
+			 -delete
+
+	if use systemd; then
+		newbin "${FILESDIR}/${PN}-check-db-dir" "${PN}-${SLOT}-check-db-dir"
+
+		sed -e "s|@SLOT@|${SLOT}|g" -e "s|@LIBDIR@|$(get_libdir)|g" \
+			"${FILESDIR}/${PN}.service-9.6-r1" | \
+			systemd_newunit - "${PN}-${SLOT}.service"
+		newtmpfiles "${FILESDIR}/${PN}.tmpfiles" "${PN}-${SLOT}.conf"
+	fi
 }
 
 pkg_postinst() {
-	use systemd && tmpfiles_process ${PN}-${SLOT}.conf
-	postgresql-config update
+	use systemd && tmpfiles_process "${PN}-${SLOT}.conf"
 
-	elog "If you need a global psqlrc-file, you can place it in:"
-	elog "    ${EROOT}/etc/postgresql-${SLOT}/"
+	# See comment in pkg_postrm().
+	[[ ${SLOT} = $(postgresql-config show) ]] && postgresql-config update
 
-	elog
 	elog "Gentoo specific documentation:"
 	elog "https://wiki.gentoo.org/wiki/PostgreSQL"
 	elog
 	elog "Official documentation:"
-	elog "${EROOT}/usr/share/doc/${PF}/html"
+	if use doc ; then
+		elog "${EROOT}/usr/share/doc/${PF}/html"
+	else
+		elog "https://www.postgresql.org/docs/${SLOT/9999*/devel}/index.html"
+	fi
 	elog
-	elog "The default location of the Unix-domain socket is:"
-	elog "    ${EROOT}/run/postgresql/"
+
+	elog "You can find release notes at:"
+	if use doc ; then
+		elog "${EROOT}/usr/share/doc/${PF}/html/release.html"
+	else
+		elog "https://www.postgresql.org/docs/${SLOT/9999*/devel}/release.html"
+	fi
 	elog
-	elog "Before initializing the database, you may want to edit PG_INITDB_OPTS"
-	elog "so that it contains your preferred locale, and other options, in:"
+
+	elog "If you need a global psqlrc-file, you can place it in:"
+	elog "    ${EROOT}/etc/postgresql-${SLOT}/"
+	elog
+	elog "The next two items only apply when running a server on this machine."
+	elog "------------------------------------------------------------------------"
+	elog "1. You may want to edit PG_INITDB_OPTS in the following file so that it"
+	elog "   contains your preferred locale, and other options, before"
+	elog "   initializing the cluster:"
 	elog "    ${EROOT}/etc/conf.d/postgresql-${SLOT}"
 	elog
-	elog "Then, execute the following command to setup the initial database"
-	elog "environment:"
-	elog "    emerge --config =${CATEGORY}/${PF}"
+	elog "2. Then, run the following command to initialize database cluster:"
+	elog "    emerge --config =${CATEGORY}/${PN}:${SLOT}"
 }
 
 pkg_prerm() {
 	if [[ -z ${REPLACED_BY_VERSION} ]] ; then
+		ewarn "Were you running PostgreSQL ${SLOT} as a server? If no, ignore the rest"
+		ewarn "of this warning."
+		ewarn
 		ewarn "Have you dumped and/or migrated the ${SLOT} database cluster?"
 		ewarn "\thttps://wiki.gentoo.org/wiki/PostgreSQL/QuickStart#Migrating_PostgreSQL"
 
@@ -301,7 +353,11 @@ pkg_prerm() {
 }
 
 pkg_postrm() {
-	postgresql-config update
+	# The links managed by eselect are unversioned only, and would only be
+	# impacted if the selected slot and ebuild slot are the same. For example,
+	# if the selected slot is SLOT+1, then nothing that happened with this
+	# ebuild will impact the unversioned links.
+	[[ ${SLOT} = $(postgresql-config show) ]] && postgresql-config update
 }
 
 pkg_config() {
@@ -358,7 +414,7 @@ pkg_config() {
 	sleep 5
 	eend 0
 
-	if [ -n "$(ls -A ${DATA_DIR} 2> /dev/null)" ] ; then
+	if [[ -n "$(ls -A ${DATA_DIR} 2> /dev/null)" ]] ; then
 		eerror "The given directory, '${DATA_DIR}', is not empty."
 		eerror "Modify DATA_DIR to point to an empty directory."
 		die "${DATA_DIR} is not empty."
@@ -366,9 +422,9 @@ pkg_config() {
 
 	einfo "Creating the data directory ..."
 	if [[ ${EUID} == 0 ]] ; then
-		mkdir -p "${DATA_DIR}"
-		chown -Rf postgres:postgres "${DATA_DIR}"
-		chmod 0700 "${DATA_DIR}"
+		mkdir -p "$(dirname ${DATA_DIR%/})" || die "Couldn't parent dirs"
+		mkdir -m 0700 "${DATA_DIR%/}" || die "Couldn't make DATA_DIR"
+		chown -h postgres:postgres "${DATA_DIR%/}" || die "Couldn't chown"
 	fi
 
 	einfo "Initializing the database ..."
@@ -414,22 +470,5 @@ pkg_config() {
 	else
 		einfo "You should use the '${EROOT}/etc/init.d/postgresql-${SLOT}' script to run PostgreSQL"
 		einfo "instead of 'pg_ctl'."
-	fi
-}
-
-src_test() {
-	if [[ ${UID} -ne 0 ]] ; then
-		# Some ICU tests fail if LC_CTYPE and LC_COLLATE aren't the same. We set
-		# LC_CTYPE to be equal to LC_COLLATE since LC_COLLATE is set by Portage.
-		local old_ctype=${LC_CTYPE}
-		export LC_CTYPE=${LC_COLLATE}
-		meson_src_test
-		export LC_CTYPE=${old_ctype}
-
-		einfo "If you think other tests besides the regression tests are necessary, please"
-		einfo "submit a bug including a patch for this ebuild to enable them."
-	else
-		ewarn 'Tests cannot be run as root. Enable "userpriv" in FEATURES.'
-		ewarn 'Skipping.'
 	fi
 }
