@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2024-05-17)
+# Superseded by dev-python/pathable.  No revdeps.
+# Removal on 2024-06-16.  Bug #932103.
+dev-python/dictpath
+
+# Michał Górny <mgorny@gentoo.org> (2024-05-17)
 # Unmaintained.  Last activity in 2020.  Redundant to stdlib.
 # No revdeps.
 # Removal on 2024-06-16.  Bug #932096.
