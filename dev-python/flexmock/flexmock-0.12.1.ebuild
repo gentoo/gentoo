@@ -4,12 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Testing library to create mocks, stubs and fakes"
-HOMEPAGE="https://flexmock.readthedocs.io/"
+HOMEPAGE="
+	https://flexmock.readthedocs.io/
+	https://github.com/flexmock/flexmock/
+	https://pypi.org/project/flexmock/
+"
 
 LICENSE="BSD"
 SLOT="0"
