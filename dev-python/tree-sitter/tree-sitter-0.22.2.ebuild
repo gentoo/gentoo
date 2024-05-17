@@ -22,7 +22,7 @@ S=${WORKDIR}/py-${P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~s390"
 
 # setuptools is needed for distutils import
 DEPEND=">=dev-libs/tree-sitter-0.22.1:="
