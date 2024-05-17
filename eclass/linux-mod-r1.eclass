@@ -583,10 +583,11 @@ modules_post_process() {
 	(( ${#mods[@]} )) ||
 		die "${FUNCNAME[0]} was called with no installed modules under ${path}"
 
-	# TODO?: find way for sane use with dracut (its 90kernel-modules-extra
-	# parses depmod.d files directly and assumes should include its modules
-	# which can lead to unnecessarily increased size or stale modules)
-#	_modules_process_depmod.d "${mods[@]#"${path}/"}"
+	# TODO?: look into re-introducing after verifying it works as expected,
+	# formerly omitted because dracut's 90kernel-modules-extra parses depmod.d
+	# files directly and assumes should include its modules but we now create
+	# dracut omit files that *hopefully* prevent this
+#	_modules_process_depmod.d "${mods[@]##*/}"
 
 	_modules_process_dracut.conf.d "${mods[@]##*/}"
 	_modules_process_strip "${mods[@]}"
