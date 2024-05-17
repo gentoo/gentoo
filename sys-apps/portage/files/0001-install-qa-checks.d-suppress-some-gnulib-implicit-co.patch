@@ -1,0 +1,42 @@
+From 8256473c6a9fa93e7cf81c46fa920cd522507c21 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Fri, 17 May 2024 01:52:53 -0400
+Subject: [PATCH] install-qa-checks.d: suppress some gnulib implicit configure
+ declarations
+
+These happen in tons of GNU packages because of using gnulib, which
+pulls in macros that check for some functionality and spit out an
+implicit function declaration error if they aren't supported, which is
+*expected*.
+
+Bug: https://bugs.gentoo.org/906027
+Signed-off-by: Eli Schwartz <eschwartz93@gmail.com>
+Closes: https://github.com/gentoo/portage/pull/1323
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ bin/install-qa-check.d/90config-impl-decl | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/bin/install-qa-check.d/90config-impl-decl b/bin/install-qa-check.d/90config-impl-decl
+index 7969dff17..adea7d405 100644
+--- a/bin/install-qa-check.d/90config-impl-decl
++++ b/bin/install-qa-check.d/90config-impl-decl
+@@ -49,6 +49,15 @@ add_default_skips() {
+ 		res_ndestroy
+ 		statacl
+ 	)
++
++	QA_CONFIG_IMPL_DECL_SKIP+=(
++		# Available in c23, these gnulib checks are expected to fail
++		alignof
++		static_assert
++		unreachable
++		# also gnulib, but checks both linux/non-linux headers
++		MIN
++	)
+ }
+ 
+ find_log_targets() {
+-- 
+2.45.1
+

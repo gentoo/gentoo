@@ -106,6 +106,7 @@ PDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-clang-splitdebug.patch
+	"${FILESDIR}"/0001-install-qa-checks.d-suppress-some-gnulib-implicit-co.patch
 )
 
 pkg_pretend() {

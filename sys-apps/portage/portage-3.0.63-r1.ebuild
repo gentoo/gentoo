@@ -108,6 +108,10 @@ PDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/0001-install-qa-checks.d-suppress-some-gnulib-implicit-co.patch
+)
+
 pkg_pretend() {
 	local CONFIG_CHECK="~IPC_NS ~PID_NS ~NET_NS ~UTS_NS"
 
