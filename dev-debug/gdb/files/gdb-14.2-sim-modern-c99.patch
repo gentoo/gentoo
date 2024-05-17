@@ -1,0 +1,765 @@
+https://bugs.gentoo.org/871543
+https://bugs.gentoo.org/919121
+
+From 62695d59e35f1d199a6fc5ddd6f4e4fbd347a016 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Thu, 7 Dec 2023 06:22:32 -0700
+Subject: [PATCH 1/6] sim: m32r: add more cgen prototypes to enable -Werror in
+ most files
+
+(cherry picked from commit 5e43a46efc48eeb4951f498b227aee5eb71c137b)
+---
+ sim/Makefile.in     | 11 -----------
+ sim/m32r/local.mk   | 11 -----------
+ sim/m32r/m32r-sim.h | 29 +++++++++++++++++++++++++++--
+ 3 files changed, 27 insertions(+), 24 deletions(-)
+
+diff --git a/sim/Makefile.in b/sim/Makefile.in
+index 3dd14543450..00b5c2b91fa 100644
+--- a/sim/Makefile.in
++++ b/sim/Makefile.in
+@@ -2471,17 +2471,6 @@ testsuite_common_CPPFLAGS = \
+ # opc2c leaks memory, and therefore makes AddressSanitizer unhappy.  Disable
+ # leak detection while running it.
+ @SIM_ENABLE_ARCH_m32c_TRUE@m32c_OPC2C_RUN = ASAN_OPTIONS=detect_leaks=0 m32c/opc2c$(EXEEXT)
+-@SIM_ENABLE_ARCH_m32r_TRUE@AM_CFLAGS_m32r_cpu.o = -Wno-error
+-@SIM_ENABLE_ARCH_m32r_TRUE@AM_CFLAGS_m32r_cpu2.o = -Wno-error
+-@SIM_ENABLE_ARCH_m32r_TRUE@AM_CFLAGS_m32r_cpux.o = -Wno-error
+-@SIM_ENABLE_ARCH_m32r_TRUE@AM_CFLAGS_m32r_m32r.o = -Wno-error
+-@SIM_ENABLE_ARCH_m32r_TRUE@AM_CFLAGS_m32r_m32r2.o = -Wno-error
+-@SIM_ENABLE_ARCH_m32r_TRUE@AM_CFLAGS_m32r_m32rx.o = -Wno-error
+-@SIM_ENABLE_ARCH_m32r_TRUE@AM_CFLAGS_m32r_mloop.o = -Wno-error
+-@SIM_ENABLE_ARCH_m32r_TRUE@AM_CFLAGS_m32r_mloop2.o = -Wno-error
+-@SIM_ENABLE_ARCH_m32r_TRUE@AM_CFLAGS_m32r_mloopx.o = -Wno-error
+-@SIM_ENABLE_ARCH_m32r_TRUE@AM_CFLAGS_m32r_sem.o = -Wno-error
+-@SIM_ENABLE_ARCH_m32r_TRUE@AM_CFLAGS_m32r_sim_if.o = -Wno-error
+ @SIM_ENABLE_ARCH_m32r_TRUE@AM_CFLAGS_m32r_traps.o = -Wno-error
+ @SIM_ENABLE_ARCH_m32r_TRUE@nodist_m32r_libsim_a_SOURCES = \
+ @SIM_ENABLE_ARCH_m32r_TRUE@	m32r/modules.c
+diff --git a/sim/m32r/local.mk b/sim/m32r/local.mk
+index db545675321..182d8879b43 100644
+--- a/sim/m32r/local.mk
++++ b/sim/m32r/local.mk
+@@ -17,17 +17,6 @@
+ ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ ## Some modules don't build cleanly yet.
+-AM_CFLAGS_%C%_cpu.o = -Wno-error
+-AM_CFLAGS_%C%_cpu2.o = -Wno-error
+-AM_CFLAGS_%C%_cpux.o = -Wno-error
+-AM_CFLAGS_%C%_m32r.o = -Wno-error
+-AM_CFLAGS_%C%_m32r2.o = -Wno-error
+-AM_CFLAGS_%C%_m32rx.o = -Wno-error
+-AM_CFLAGS_%C%_mloop.o = -Wno-error
+-AM_CFLAGS_%C%_mloop2.o = -Wno-error
+-AM_CFLAGS_%C%_mloopx.o = -Wno-error
+-AM_CFLAGS_%C%_sem.o = -Wno-error
+-AM_CFLAGS_%C%_sim_if.o = -Wno-error
+ AM_CFLAGS_%C%_traps.o = -Wno-error
+ 
+ nodist_%C%_libsim_a_SOURCES = \
+diff --git a/sim/m32r/m32r-sim.h b/sim/m32r/m32r-sim.h
+index 0e1bf82ace5..c72be52e18a 100644
+--- a/sim/m32r/m32r-sim.h
++++ b/sim/m32r/m32r-sim.h
+@@ -39,24 +39,42 @@
+ 
+ extern int m32r_decode_gdb_ctrl_regnum (int);
+ 
++/* The other cpu cores reuse m32rbf funcs to avoid duplication, but they don't
++   provide externs to access, and we can't e.g. include decode.h in decodex.h
++   because of all the redefinitions of cgen macros.  */
++
++extern void m32rbf_model_insn_before (SIM_CPU *, int);
++extern void m32rbf_model_insn_after (SIM_CPU *, int, int);
++extern CPUREG_FETCH_FN m32rbf_fetch_register;
++extern CPUREG_STORE_FN m32rbf_store_register;
++extern void m32rbf_h_cr_set (SIM_CPU *, UINT, USI);
++
+ /* Cover macros for hardware accesses.
+    FIXME: Eventually move to cgen.  */
+ #define GET_H_SM() ((CPU (h_psw) & 0x80) != 0)
+ 
+-#ifndef GET_H_CR
+ extern USI  m32rbf_h_cr_get_handler (SIM_CPU *, UINT);
+ extern void m32rbf_h_cr_set_handler (SIM_CPU *, UINT, USI);
++extern USI  m32r2f_h_cr_get_handler (SIM_CPU *, UINT);
++extern void m32r2f_h_cr_set_handler (SIM_CPU *, UINT, USI);
++extern USI  m32rxf_h_cr_get_handler (SIM_CPU *, UINT);
++extern void m32rxf_h_cr_set_handler (SIM_CPU *, UINT, USI);
+ 
++#ifndef GET_H_CR
+ #define GET_H_CR(regno) \
+   XCONCAT2 (WANT_CPU,_h_cr_get_handler) (current_cpu, (regno))
+ #define SET_H_CR(regno, val) \
+   XCONCAT2 (WANT_CPU,_h_cr_set_handler) (current_cpu, (regno), (val))
+ #endif
+ 
+-#ifndef  GET_H_PSW
+ extern UQI  m32rbf_h_psw_get_handler (SIM_CPU *);
+ extern void m32rbf_h_psw_set_handler (SIM_CPU *, UQI);
++extern UQI  m32r2f_h_psw_get_handler (SIM_CPU *);
++extern void m32r2f_h_psw_set_handler (SIM_CPU *, UQI);
++extern UQI  m32rxf_h_psw_get_handler (SIM_CPU *);
++extern void m32rxf_h_psw_set_handler (SIM_CPU *, UQI);
+ 
++#ifndef  GET_H_PSW
+ #define GET_H_PSW() \
+   XCONCAT2 (WANT_CPU,_h_psw_get_handler) (current_cpu)
+ #define SET_H_PSW(val) \
+@@ -72,8 +90,15 @@ extern void m32rbf_h_psw_set_handler (SIM_CPU *, UQI);
+    prototypes for each of the functions it generates.  */
+ extern DI   m32rbf_h_accum_get_handler (SIM_CPU *);
+ extern void m32rbf_h_accum_set_handler (SIM_CPU *, DI);
++extern DI   m32r2f_h_accum_get_handler (SIM_CPU *);
++extern void m32r2f_h_accum_set_handler (SIM_CPU *, DI);
++extern DI   m32rxf_h_accum_get_handler (SIM_CPU *);
++extern void m32rxf_h_accum_set_handler (SIM_CPU *, DI);
++
+ extern DI   m32r2f_h_accums_get_handler (SIM_CPU *, UINT);
+ extern void m32r2f_h_accums_set_handler (SIM_CPU *, UINT, DI);
++extern DI   m32rxf_h_accums_get_handler (SIM_CPU *, UINT);
++extern void m32rxf_h_accums_set_handler (SIM_CPU *, UINT, DI);
+ 
+ #ifndef  GET_H_ACCUM
+ #define GET_H_ACCUM() \
+From 08301d7d82d19da95185a0e133e0b784018dfeac Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Thu, 7 Dec 2023 21:38:11 -0700
+Subject: [PATCH 2/6] sim: m32r: add more cgen prototypes for traps
+
+The traps file uses a bunch of functions directly without prototypes,
+and we can't safely include the relevant cpu*.h files for them.
+
+(cherry picked from commit 190fcd0d6ce07abc4f6ad08d43a3dedd48b27b3e)
+---
+ sim/m32r/m32r-sim.h | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/sim/m32r/m32r-sim.h b/sim/m32r/m32r-sim.h
+index c72be52e18a..875fc23bf3e 100644
+--- a/sim/m32r/m32r-sim.h
++++ b/sim/m32r/m32r-sim.h
+@@ -47,6 +47,18 @@ extern void m32rbf_model_insn_before (SIM_CPU *, int);
+ extern void m32rbf_model_insn_after (SIM_CPU *, int, int);
+ extern CPUREG_FETCH_FN m32rbf_fetch_register;
+ extern CPUREG_STORE_FN m32rbf_store_register;
++extern UQI  m32rbf_h_psw_get (SIM_CPU *);
++extern void m32rbf_h_psw_set (SIM_CPU *, UQI);
++extern UQI  m32r2f_h_psw_get (SIM_CPU *);
++extern void m32r2f_h_psw_set (SIM_CPU *, UQI);
++extern UQI  m32rxf_h_psw_get (SIM_CPU *);
++extern void m32rxf_h_psw_set (SIM_CPU *, UQI);
++extern void m32rbf_h_bpsw_set (SIM_CPU *, UQI);
++extern void m32r2f_h_bpsw_set (SIM_CPU *, UQI);
++extern void m32rxf_h_bpsw_set (SIM_CPU *, UQI);
++extern SI   m32rbf_h_gr_get (SIM_CPU *, UINT);
++extern void m32rbf_h_gr_set (SIM_CPU *, UINT, SI);
++extern USI  m32rbf_h_cr_get (SIM_CPU *, UINT);
+ extern void m32rbf_h_cr_set (SIM_CPU *, UINT, USI);
+ 
+ /* Cover macros for hardware accesses.
+From b7442e6a44ff42108c88bc9a760af0496c1f8f28 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Thu, 7 Dec 2023 21:38:56 -0700
+Subject: [PATCH 3/6] sim: m32r: include more glibc headers for the funcs we
+ use [PR sim/29752]
+
+Not exactly portable, but doesn't make the situation worse here, and
+fixes a lot of implicit function warnings.
+
+Bug: https://sourceware.org/PR29752
+(cherry picked from commit 9c80f001f0d9529f14fbd6f83145c45e9218ad1e)
+---
+ sim/m32r/traps.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/sim/m32r/traps.c b/sim/m32r/traps.c
+index 060b331c28f..80c4360235b 100644
+--- a/sim/m32r/traps.c
++++ b/sim/m32r/traps.c
+@@ -38,9 +38,14 @@
+    NB: The emulation is also missing argument conversion (endian & bitsize)
+    even on Linux hosts.  */
+ #ifdef __linux__
++#include <syslog.h>
++#include <sys/file.h>
++#include <sys/fsuid.h>
++#include <sys/ioctl.h>
+ #include <sys/mman.h>
+ #include <sys/poll.h>
+ #include <sys/resource.h>
++#include <sys/sendfile.h>
+ #include <sys/sysinfo.h>
+ #include <sys/stat.h>
+ #include <sys/time.h>
+From 6bde2b0772e3957d4b743f44f4c5a2808c854b7b Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Thu, 7 Dec 2023 21:40:00 -0700
+Subject: [PATCH 4/6] sim: m32r: fix syslog call
+
+The function returns void, not int.  We only pass one argument to
+syslog (the format), so use %s as the static format instead since
+the emulation layer doesn't handle passing additional arguments.
+
+(cherry picked from commit c26f7543b2ccd006e8251be0b62a4a785ed1cc2f)
+---
+ sim/m32r/traps.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/sim/m32r/traps.c b/sim/m32r/traps.c
+index 80c4360235b..51fe0d484a5 100644
+--- a/sim/m32r/traps.c
++++ b/sim/m32r/traps.c
+@@ -843,7 +843,8 @@ m32r_trap (SIM_CPU *current_cpu, PCADDR pc, int num)
+ 	    break;
+ 
+ 	  case TARGET_LINUX_SYS_syslog:
+-	    result = syslog (arg1, (char *) t2h_addr (cb, &s, arg2));
++	    syslog (arg1, "%s", (char *) t2h_addr (cb, &s, arg2));
++	    result = 0;
+ 	    errcode = errno;
+ 	    break;
+ 
+From 06d0aeef2db08e74cf6797f79960cc4cc6fadad6 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 19 Dec 2023 06:49:41 -0500
+Subject: [PATCH 5/6] sim: frv: enable warnings in memory.c
+
+Fix one minor pointer-sign warning to enable warnings in general
+for this file.  Reading the data as signed and then returning it
+as unsigned should be functionally the same in this case.
+
+(cherry picked from commit 06f05f35856b37bc6db014d0921638932dd5a97a)
+---
+ sim/Makefile.in  | 1 -
+ sim/frv/local.mk | 1 -
+ sim/frv/memory.c | 2 +-
+ 3 files changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/sim/Makefile.in b/sim/Makefile.in
+index 00b5c2b91fa..fca4b9ce3dc 100644
+--- a/sim/Makefile.in
++++ b/sim/Makefile.in
+@@ -2270,7 +2270,6 @@ testsuite_common_CPPFLAGS = \
+ @SIM_ENABLE_ARCH_examples_TRUE@	$(SIM_COMMON_LIBS)
+ 
+ @SIM_ENABLE_ARCH_frv_TRUE@AM_CPPFLAGS_frv = $(SIM_FRV_TRAPDUMP_FLAGS)
+-@SIM_ENABLE_ARCH_frv_TRUE@AM_CFLAGS_frv_memory.o = -Wno-error
+ @SIM_ENABLE_ARCH_frv_TRUE@AM_CFLAGS_frv_sem.o = -Wno-error
+ @SIM_ENABLE_ARCH_frv_TRUE@nodist_frv_libsim_a_SOURCES = \
+ @SIM_ENABLE_ARCH_frv_TRUE@	frv/modules.c
+diff --git a/sim/frv/local.mk b/sim/frv/local.mk
+index fab1c5f48cd..e4940398fd7 100644
+--- a/sim/frv/local.mk
++++ b/sim/frv/local.mk
+@@ -19,7 +19,6 @@
+ AM_CPPFLAGS_%C% = $(SIM_FRV_TRAPDUMP_FLAGS)
+ 
+ ## Some modules don't build cleanly yet.
+-AM_CFLAGS_%C%_memory.o = -Wno-error
+ AM_CFLAGS_%C%_sem.o = -Wno-error
+ 
+ nodist_%C%_libsim_a_SOURCES = \
+diff --git a/sim/frv/memory.c b/sim/frv/memory.c
+index 062eeaed7ad..92644ac36bf 100644
+--- a/sim/frv/memory.c
++++ b/sim/frv/memory.c
+@@ -670,7 +670,7 @@ frvbf_read_imem_USI (SIM_CPU *current_cpu, PCADDR vpc)
+   if (GET_HSR0_ICE (hsr0))
+     {
+       FRV_CACHE *cache;
+-      USI value;
++      SI value;
+ 
+       /* We don't want this to show up in the cache statistics.  That read
+ 	 is done in frvbf_simulate_insn_prefetch.  So read the cache or memory
+From 9e4665f68b943262031e4eb51d52aee69fc7005e Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sun, 24 Dec 2023 03:39:52 -0500
+Subject: [PATCH 6/6] sim: frv: fix -Wincompatible-function-pointer-types
+ warnings [PR sim/29752]
+
+Some compilers warn in the frv code:
+sem.c:24343:41: error: incompatible function pointer types passing
+  'void (SIM_CPU *, UINT, UDI)' (aka 'void (struct _sim_cpu *, unsigned int, unsigned long)')
+  to parameter of type
+  'void (*)(SIM_CPU *, UINT, DI)' (aka 'void (*)(struct _sim_cpu *, unsigned int, long)') [-Wincompatible-function-pointer-types]
+
+This is due to frvbf_h_acc40U_set using UDI for setting the new value,
+but using the common sim_queue_fn_di_write API which uses DI.  The same
+size, but different sign.  We could change frvbf_h_acc40U_set to take a
+DI without changing behavior in practice: the UDI is already passed via
+the queue function which accepts a DI, and frvbf_h_acc40U_set already
+casts the input to UDI before running any operations on it.  However,
+these files are all generated, so manual changes here would be reverted.
+
+Seems like we can only change the register type for all APIs in the cpu
+definition.  This builds cleanly, and passes sim unittests.  Not sure if
+it's 100% the answer, but seems to be the best we have currently.
+
+Bug: https://sourceware.org/PR29752
+(cherry picked from commit 8fed036befd8e87e9a602a5fc926db30aad69af3)
+---
+ cpu/frv.cpu      |  2 +-
+ sim/Makefile.in  |  1 -
+ sim/frv/cpu.c    |  4 ++--
+ sim/frv/cpu.h    | 20 +++++++++---------
+ sim/frv/decode.c | 32 ++++++++++++++--------------
+ sim/frv/local.mk |  3 ---
+ sim/frv/sem.c    | 54 ++++++++++++++++++++++++------------------------
+ 7 files changed, 56 insertions(+), 60 deletions(-)
+
+diff --git a/cpu/frv.cpu b/cpu/frv.cpu
+index cdb169eddc1..3e157d8ffbf 100644
+--- a/cpu/frv.cpu
++++ b/cpu/frv.cpu
+@@ -2933,7 +2933,7 @@
+   (name h-acc40U)
+   (comment "40 bit unsigned accumulator")
+   (attrs PROFILE VIRTUAL)
+-  (type register UDI (64))
++  (type register DI (64))
+   (indices extern-keyword acc-names)
+   ; The accumlator is made up of two 32 bit registers, accgi/acci.
+   ; We want to extract this as a combined 40 unsigned bits
+diff --git a/sim/Makefile.in b/sim/Makefile.in
+index fca4b9ce3dc..5bd9128ab78 100644
+--- a/sim/Makefile.in
++++ b/sim/Makefile.in
+@@ -2270,7 +2270,6 @@ testsuite_common_CPPFLAGS = \
+ @SIM_ENABLE_ARCH_examples_TRUE@	$(SIM_COMMON_LIBS)
+ 
+ @SIM_ENABLE_ARCH_frv_TRUE@AM_CPPFLAGS_frv = $(SIM_FRV_TRAPDUMP_FLAGS)
+-@SIM_ENABLE_ARCH_frv_TRUE@AM_CFLAGS_frv_sem.o = -Wno-error
+ @SIM_ENABLE_ARCH_frv_TRUE@nodist_frv_libsim_a_SOURCES = \
+ @SIM_ENABLE_ARCH_frv_TRUE@	frv/modules.c
+ 
+diff --git a/sim/frv/cpu.c b/sim/frv/cpu.c
+index 195c8a12e17..58404522d15 100644
+--- a/sim/frv/cpu.c
++++ b/sim/frv/cpu.c
+@@ -622,7 +622,7 @@ frvbf_h_acc40S_set (SIM_CPU *current_cpu, UINT regno, DI newval)
+ 
+ /* Get the value of h-acc40U.  */
+ 
+-UDI
++DI
+ frvbf_h_acc40U_get (SIM_CPU *current_cpu, UINT regno)
+ {
+   return GET_H_ACC40U (regno);
+@@ -631,7 +631,7 @@ frvbf_h_acc40U_get (SIM_CPU *current_cpu, UINT regno)
+ /* Set a value for h-acc40U.  */
+ 
+ void
+-frvbf_h_acc40U_set (SIM_CPU *current_cpu, UINT regno, UDI newval)
++frvbf_h_acc40U_set (SIM_CPU *current_cpu, UINT regno, DI newval)
+ {
+   SET_H_ACC40U (regno, newval);
+ }
+diff --git a/sim/frv/cpu.h b/sim/frv/cpu.h
+index fbb6c571c33..6a021e7a61d 100644
+--- a/sim/frv/cpu.h
++++ b/sim/frv/cpu.h
+@@ -351,8 +351,8 @@ USI frvbf_h_accg_get (SIM_CPU *, UINT);
+ void frvbf_h_accg_set (SIM_CPU *, UINT, USI);
+ DI frvbf_h_acc40S_get (SIM_CPU *, UINT);
+ void frvbf_h_acc40S_set (SIM_CPU *, UINT, DI);
+-UDI frvbf_h_acc40U_get (SIM_CPU *, UINT);
+-void frvbf_h_acc40U_set (SIM_CPU *, UINT, UDI);
++DI frvbf_h_acc40U_get (SIM_CPU *, UINT);
++void frvbf_h_acc40U_set (SIM_CPU *, UINT, DI);
+ DI frvbf_h_iacc0_get (SIM_CPU *, UINT);
+ void frvbf_h_iacc0_set (SIM_CPU *, UINT, DI);
+ UQI frvbf_h_iccr_get (SIM_CPU *, UINT);
+@@ -1330,13 +1330,13 @@ union sem_fields {
+     unsigned char in_CCi;
+     unsigned char in_FRinti;
+     unsigned char in_FRintj;
+-    unsigned char in_h_acc40U_UDI_add__INT_index_of__INT_ACC40Uk_1;
++    unsigned char in_h_acc40U_DI_add__INT_index_of__INT_ACC40Uk_1;
+     unsigned char in_h_fr_hi_UHI_add__INT_index_of__INT_FRinti_0;
+     unsigned char in_h_fr_hi_UHI_add__INT_index_of__INT_FRintj_0;
+     unsigned char in_h_fr_lo_UHI_add__INT_index_of__INT_FRinti_0;
+     unsigned char in_h_fr_lo_UHI_add__INT_index_of__INT_FRintj_0;
+     unsigned char out_ACC40Uk;
+-    unsigned char out_h_acc40U_UDI_add__INT_index_of__INT_ACC40Uk_1;
++    unsigned char out_h_acc40U_DI_add__INT_index_of__INT_ACC40Uk_1;
+   } sfmt_cmmachu;
+   struct { /*  */
+     UINT f_ACC40Sk;
+@@ -1490,9 +1490,9 @@ union sem_fields {
+     unsigned char in_CCi;
+     unsigned char in_FRintieven;
+     unsigned char in_FRintjeven;
+-    unsigned char in_h_acc40U_UDI_add__INT_index_of__INT_ACC40Uk_1;
+-    unsigned char in_h_acc40U_UDI_add__INT_index_of__INT_ACC40Uk_2;
+-    unsigned char in_h_acc40U_UDI_add__INT_index_of__INT_ACC40Uk_3;
++    unsigned char in_h_acc40U_DI_add__INT_index_of__INT_ACC40Uk_1;
++    unsigned char in_h_acc40U_DI_add__INT_index_of__INT_ACC40Uk_2;
++    unsigned char in_h_acc40U_DI_add__INT_index_of__INT_ACC40Uk_3;
+     unsigned char in_h_fr_hi_UHI_add__INT_index_of__INT_FRintieven_0;
+     unsigned char in_h_fr_hi_UHI_add__INT_index_of__INT_FRintieven_1;
+     unsigned char in_h_fr_hi_UHI_add__INT_index_of__INT_FRintjeven_0;
+@@ -1502,9 +1502,9 @@ union sem_fields {
+     unsigned char in_h_fr_lo_UHI_add__INT_index_of__INT_FRintjeven_0;
+     unsigned char in_h_fr_lo_UHI_add__INT_index_of__INT_FRintjeven_1;
+     unsigned char out_ACC40Uk;
+-    unsigned char out_h_acc40U_UDI_add__INT_index_of__INT_ACC40Uk_1;
+-    unsigned char out_h_acc40U_UDI_add__INT_index_of__INT_ACC40Uk_2;
+-    unsigned char out_h_acc40U_UDI_add__INT_index_of__INT_ACC40Uk_3;
++    unsigned char out_h_acc40U_DI_add__INT_index_of__INT_ACC40Uk_1;
++    unsigned char out_h_acc40U_DI_add__INT_index_of__INT_ACC40Uk_2;
++    unsigned char out_h_acc40U_DI_add__INT_index_of__INT_ACC40Uk_3;
+   } sfmt_cmqmachu;
+   struct { /*  */
+     UINT f_ACC40Sk;
+diff --git a/sim/frv/decode.c b/sim/frv/decode.c
+index 876dda24c20..1bcbefebb64 100644
+--- a/sim/frv/decode.c
++++ b/sim/frv/decode.c
+@@ -11216,13 +11216,13 @@ frvbf_decode (SIM_CPU *current_cpu, IADDR pc,
+       FLD (in_ACC40Uk) = f_ACC40Uk;
+       FLD (in_FRinti) = f_FRi;
+       FLD (in_FRintj) = f_FRj;
+-      FLD (in_h_acc40U_UDI_add__INT_index_of__INT_ACC40Uk_1) = ((FLD (f_ACC40Uk)) + (1));
++      FLD (in_h_acc40U_DI_add__INT_index_of__INT_ACC40Uk_1) = ((FLD (f_ACC40Uk)) + (1));
+       FLD (in_h_fr_hi_UHI_add__INT_index_of__INT_FRinti_0) = ((FLD (f_FRi)) + (0));
+       FLD (in_h_fr_hi_UHI_add__INT_index_of__INT_FRintj_0) = ((FLD (f_FRj)) + (0));
+       FLD (in_h_fr_lo_UHI_add__INT_index_of__INT_FRinti_0) = ((FLD (f_FRi)) + (0));
+       FLD (in_h_fr_lo_UHI_add__INT_index_of__INT_FRintj_0) = ((FLD (f_FRj)) + (0));
+       FLD (out_ACC40Uk) = f_ACC40Uk;
+-      FLD (out_h_acc40U_UDI_add__INT_index_of__INT_ACC40Uk_1) = ((FLD (f_ACC40Uk)) + (1));
++      FLD (out_h_acc40U_DI_add__INT_index_of__INT_ACC40Uk_1) = ((FLD (f_ACC40Uk)) + (1));
+     }
+ #endif
+ #undef FLD
+@@ -11308,13 +11308,13 @@ frvbf_decode (SIM_CPU *current_cpu, IADDR pc,
+       FLD (in_CCi) = f_CCi;
+       FLD (in_FRinti) = f_FRi;
+       FLD (in_FRintj) = f_FRj;
+-      FLD (in_h_acc40U_UDI_add__INT_index_of__INT_ACC40Uk_1) = ((FLD (f_ACC40Uk)) + (1));
++      FLD (in_h_acc40U_DI_add__INT_index_of__INT_ACC40Uk_1) = ((FLD (f_ACC40Uk)) + (1));
+       FLD (in_h_fr_hi_UHI_add__INT_index_of__INT_FRinti_0) = ((FLD (f_FRi)) + (0));
+       FLD (in_h_fr_hi_UHI_add__INT_index_of__INT_FRintj_0) = ((FLD (f_FRj)) + (0));
+       FLD (in_h_fr_lo_UHI_add__INT_index_of__INT_FRinti_0) = ((FLD (f_FRi)) + (0));
+       FLD (in_h_fr_lo_UHI_add__INT_index_of__INT_FRintj_0) = ((FLD (f_FRj)) + (0));
+       FLD (out_ACC40Uk) = f_ACC40Uk;
+-      FLD (out_h_acc40U_UDI_add__INT_index_of__INT_ACC40Uk_1) = ((FLD (f_ACC40Uk)) + (1));
++      FLD (out_h_acc40U_DI_add__INT_index_of__INT_ACC40Uk_1) = ((FLD (f_ACC40Uk)) + (1));
+     }
+ #endif
+ #undef FLD
+@@ -11394,9 +11394,9 @@ frvbf_decode (SIM_CPU *current_cpu, IADDR pc,
+       FLD (in_ACC40Uk) = f_ACC40Uk;
+       FLD (in_FRintieven) = f_FRi;
+       FLD (in_FRintjeven) = f_FRj;
+-      FLD (in_h_acc40U_UDI_add__INT_index_of__INT_ACC40Uk_1) = ((FLD (f_ACC40Uk)) + (1));
+-      FLD (in_h_acc40U_UDI_add__INT_index_of__INT_ACC40Uk_2) = ((FLD (f_ACC40Uk)) + (2));
+-      FLD (in_h_acc40U_UDI_add__INT_index_of__INT_ACC40Uk_3) = ((FLD (f_ACC40Uk)) + (3));
++      FLD (in_h_acc40U_DI_add__INT_index_of__INT_ACC40Uk_1) = ((FLD (f_ACC40Uk)) + (1));
++      FLD (in_h_acc40U_DI_add__INT_index_of__INT_ACC40Uk_2) = ((FLD (f_ACC40Uk)) + (2));
++      FLD (in_h_acc40U_DI_add__INT_index_of__INT_ACC40Uk_3) = ((FLD (f_ACC40Uk)) + (3));
+       FLD (in_h_fr_hi_UHI_add__INT_index_of__INT_FRintieven_0) = ((FLD (f_FRi)) + (0));
+       FLD (in_h_fr_hi_UHI_add__INT_index_of__INT_FRintieven_1) = ((FLD (f_FRi)) + (1));
+       FLD (in_h_fr_hi_UHI_add__INT_index_of__INT_FRintjeven_0) = ((FLD (f_FRj)) + (0));
+@@ -11406,9 +11406,9 @@ frvbf_decode (SIM_CPU *current_cpu, IADDR pc,
+       FLD (in_h_fr_lo_UHI_add__INT_index_of__INT_FRintjeven_0) = ((FLD (f_FRj)) + (0));
+       FLD (in_h_fr_lo_UHI_add__INT_index_of__INT_FRintjeven_1) = ((FLD (f_FRj)) + (1));
+       FLD (out_ACC40Uk) = f_ACC40Uk;
+-      FLD (out_h_acc40U_UDI_add__INT_index_of__INT_ACC40Uk_1) = ((FLD (f_ACC40Uk)) + (1));
+-      FLD (out_h_acc40U_UDI_add__INT_index_of__INT_ACC40Uk_2) = ((FLD (f_ACC40Uk)) + (2));
+-      FLD (out_h_acc40U_UDI_add__INT_index_of__INT_ACC40Uk_3) = ((FLD (f_ACC40Uk)) + (3));
++      FLD (out_h_acc40U_DI_add__INT_index_of__INT_ACC40Uk_1) = ((FLD (f_ACC40Uk)) + (1));
++      FLD (out_h_acc40U_DI_add__INT_index_of__INT_ACC40Uk_2) = ((FLD (f_ACC40Uk)) + (2));
++      FLD (out_h_acc40U_DI_add__INT_index_of__INT_ACC40Uk_3) = ((FLD (f_ACC40Uk)) + (3));
+     }
+ #endif
+ #undef FLD
+@@ -11502,9 +11502,9 @@ frvbf_decode (SIM_CPU *current_cpu, IADDR pc,
+       FLD (in_CCi) = f_CCi;
+       FLD (in_FRintieven) = f_FRi;
+       FLD (in_FRintjeven) = f_FRj;
+-      FLD (in_h_acc40U_UDI_add__INT_index_of__INT_ACC40Uk_1) = ((FLD (f_ACC40Uk)) + (1));
+-      FLD (in_h_acc40U_UDI_add__INT_index_of__INT_ACC40Uk_2) = ((FLD (f_ACC40Uk)) + (2));
+-      FLD (in_h_acc40U_UDI_add__INT_index_of__INT_ACC40Uk_3) = ((FLD (f_ACC40Uk)) + (3));
++      FLD (in_h_acc40U_DI_add__INT_index_of__INT_ACC40Uk_1) = ((FLD (f_ACC40Uk)) + (1));
++      FLD (in_h_acc40U_DI_add__INT_index_of__INT_ACC40Uk_2) = ((FLD (f_ACC40Uk)) + (2));
++      FLD (in_h_acc40U_DI_add__INT_index_of__INT_ACC40Uk_3) = ((FLD (f_ACC40Uk)) + (3));
+       FLD (in_h_fr_hi_UHI_add__INT_index_of__INT_FRintieven_0) = ((FLD (f_FRi)) + (0));
+       FLD (in_h_fr_hi_UHI_add__INT_index_of__INT_FRintieven_1) = ((FLD (f_FRi)) + (1));
+       FLD (in_h_fr_hi_UHI_add__INT_index_of__INT_FRintjeven_0) = ((FLD (f_FRj)) + (0));
+@@ -11514,9 +11514,9 @@ frvbf_decode (SIM_CPU *current_cpu, IADDR pc,
+       FLD (in_h_fr_lo_UHI_add__INT_index_of__INT_FRintjeven_0) = ((FLD (f_FRj)) + (0));
+       FLD (in_h_fr_lo_UHI_add__INT_index_of__INT_FRintjeven_1) = ((FLD (f_FRj)) + (1));
+       FLD (out_ACC40Uk) = f_ACC40Uk;
+-      FLD (out_h_acc40U_UDI_add__INT_index_of__INT_ACC40Uk_1) = ((FLD (f_ACC40Uk)) + (1));
+-      FLD (out_h_acc40U_UDI_add__INT_index_of__INT_ACC40Uk_2) = ((FLD (f_ACC40Uk)) + (2));
+-      FLD (out_h_acc40U_UDI_add__INT_index_of__INT_ACC40Uk_3) = ((FLD (f_ACC40Uk)) + (3));
++      FLD (out_h_acc40U_DI_add__INT_index_of__INT_ACC40Uk_1) = ((FLD (f_ACC40Uk)) + (1));
++      FLD (out_h_acc40U_DI_add__INT_index_of__INT_ACC40Uk_2) = ((FLD (f_ACC40Uk)) + (2));
++      FLD (out_h_acc40U_DI_add__INT_index_of__INT_ACC40Uk_3) = ((FLD (f_ACC40Uk)) + (3));
+     }
+ #endif
+ #undef FLD
+diff --git a/sim/frv/local.mk b/sim/frv/local.mk
+index e4940398fd7..0caea5ce703 100644
+--- a/sim/frv/local.mk
++++ b/sim/frv/local.mk
+@@ -18,9 +18,6 @@
+ 
+ AM_CPPFLAGS_%C% = $(SIM_FRV_TRAPDUMP_FLAGS)
+ 
+-## Some modules don't build cleanly yet.
+-AM_CFLAGS_%C%_sem.o = -Wno-error
+-
+ nodist_%C%_libsim_a_SOURCES = \
+ 	%D%/modules.c
+ %C%_libsim_a_SOURCES = \
+diff --git a/sim/frv/sem.c b/sim/frv/sem.c
+index 20ac47be764..1f7c65b0530 100644
+--- a/sim/frv/sem.c
++++ b/sim/frv/sem.c
+@@ -24374,7 +24374,7 @@ frvbf_media_overflow (current_cpu, 8);
+ if (GTDI (tmp_tmp, MAKEDI (255, 0xffffffff))) {
+ {
+   {
+-    UDI opval = MAKEDI (255, 0xffffffff);
++    DI opval = MAKEDI (255, 0xffffffff);
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 1), opval);
+     written |= (1 << 12);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -24385,7 +24385,7 @@ frvbf_media_overflow (current_cpu, 4);
+ if (LTDI (tmp_tmp, MAKEDI (0, 0))) {
+ {
+   {
+-    UDI opval = MAKEDI (0, 0);
++    DI opval = MAKEDI (0, 0);
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 1), opval);
+     written |= (1 << 12);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -24394,7 +24394,7 @@ frvbf_media_overflow (current_cpu, 4);
+ }
+ } else {
+   {
+-    UDI opval = tmp_tmp;
++    DI opval = tmp_tmp;
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 1), opval);
+     written |= (1 << 12);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -24580,7 +24580,7 @@ frvbf_media_overflow (current_cpu, 8);
+ if (GTDI (tmp_tmp, MAKEDI (255, 0xffffffff))) {
+ {
+   {
+-    UDI opval = MAKEDI (255, 0xffffffff);
++    DI opval = MAKEDI (255, 0xffffffff);
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 1), opval);
+     written |= (1 << 12);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -24591,7 +24591,7 @@ frvbf_media_overflow (current_cpu, 4);
+ if (LTDI (tmp_tmp, MAKEDI (0, 0))) {
+ {
+   {
+-    UDI opval = MAKEDI (0, 0);
++    DI opval = MAKEDI (0, 0);
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 1), opval);
+     written |= (1 << 12);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -24600,7 +24600,7 @@ frvbf_media_overflow (current_cpu, 4);
+ }
+ } else {
+   {
+-    UDI opval = tmp_tmp;
++    DI opval = tmp_tmp;
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 1), opval);
+     written |= (1 << 12);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -24789,7 +24789,7 @@ frvbf_media_overflow (current_cpu, 8);
+ if (GTDI (tmp_tmp, MAKEDI (255, 0xffffffff))) {
+ {
+   {
+-    UDI opval = MAKEDI (255, 0xffffffff);
++    DI opval = MAKEDI (255, 0xffffffff);
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 1), opval);
+     written |= (1 << 14);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -24800,7 +24800,7 @@ frvbf_media_overflow (current_cpu, 4);
+ if (LTDI (tmp_tmp, MAKEDI (0, 0))) {
+ {
+   {
+-    UDI opval = MAKEDI (0, 0);
++    DI opval = MAKEDI (0, 0);
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 1), opval);
+     written |= (1 << 14);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -24809,7 +24809,7 @@ frvbf_media_overflow (current_cpu, 4);
+ }
+ } else {
+   {
+-    UDI opval = tmp_tmp;
++    DI opval = tmp_tmp;
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 1), opval);
+     written |= (1 << 14);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -25077,7 +25077,7 @@ frvbf_media_overflow (current_cpu, 8);
+ if (GTDI (tmp_tmp, MAKEDI (255, 0xffffffff))) {
+ {
+   {
+-    UDI opval = MAKEDI (255, 0xffffffff);
++    DI opval = MAKEDI (255, 0xffffffff);
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 1), opval);
+     written |= (1 << 18);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -25088,7 +25088,7 @@ frvbf_media_overflow (current_cpu, 4);
+ if (LTDI (tmp_tmp, MAKEDI (0, 0))) {
+ {
+   {
+-    UDI opval = MAKEDI (0, 0);
++    DI opval = MAKEDI (0, 0);
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 1), opval);
+     written |= (1 << 18);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -25097,7 +25097,7 @@ frvbf_media_overflow (current_cpu, 4);
+ }
+ } else {
+   {
+-    UDI opval = tmp_tmp;
++    DI opval = tmp_tmp;
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 1), opval);
+     written |= (1 << 18);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -25117,7 +25117,7 @@ frvbf_media_overflow (current_cpu, 4);
+ if (GTDI (tmp_tmp, MAKEDI (255, 0xffffffff))) {
+ {
+   {
+-    UDI opval = MAKEDI (255, 0xffffffff);
++    DI opval = MAKEDI (255, 0xffffffff);
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 2), opval);
+     written |= (1 << 19);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -25128,7 +25128,7 @@ frvbf_media_overflow (current_cpu, 2);
+ if (LTDI (tmp_tmp, MAKEDI (0, 0))) {
+ {
+   {
+-    UDI opval = MAKEDI (0, 0);
++    DI opval = MAKEDI (0, 0);
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 2), opval);
+     written |= (1 << 19);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -25137,7 +25137,7 @@ frvbf_media_overflow (current_cpu, 2);
+ }
+ } else {
+   {
+-    UDI opval = tmp_tmp;
++    DI opval = tmp_tmp;
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 2), opval);
+     written |= (1 << 19);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -25151,7 +25151,7 @@ frvbf_media_overflow (current_cpu, 2);
+ if (GTDI (tmp_tmp, MAKEDI (255, 0xffffffff))) {
+ {
+   {
+-    UDI opval = MAKEDI (255, 0xffffffff);
++    DI opval = MAKEDI (255, 0xffffffff);
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 3), opval);
+     written |= (1 << 20);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -25162,7 +25162,7 @@ frvbf_media_overflow (current_cpu, 1);
+ if (LTDI (tmp_tmp, MAKEDI (0, 0))) {
+ {
+   {
+-    UDI opval = MAKEDI (0, 0);
++    DI opval = MAKEDI (0, 0);
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 3), opval);
+     written |= (1 << 20);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -25171,7 +25171,7 @@ frvbf_media_overflow (current_cpu, 1);
+ }
+ } else {
+   {
+-    UDI opval = tmp_tmp;
++    DI opval = tmp_tmp;
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 3), opval);
+     written |= (1 << 20);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -25442,7 +25442,7 @@ frvbf_media_overflow (current_cpu, 8);
+ if (GTDI (tmp_tmp, MAKEDI (255, 0xffffffff))) {
+ {
+   {
+-    UDI opval = MAKEDI (255, 0xffffffff);
++    DI opval = MAKEDI (255, 0xffffffff);
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 1), opval);
+     written |= (1 << 20);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -25453,7 +25453,7 @@ frvbf_media_overflow (current_cpu, 4);
+ if (LTDI (tmp_tmp, MAKEDI (0, 0))) {
+ {
+   {
+-    UDI opval = MAKEDI (0, 0);
++    DI opval = MAKEDI (0, 0);
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 1), opval);
+     written |= (1 << 20);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -25462,7 +25462,7 @@ frvbf_media_overflow (current_cpu, 4);
+ }
+ } else {
+   {
+-    UDI opval = tmp_tmp;
++    DI opval = tmp_tmp;
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 1), opval);
+     written |= (1 << 20);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -25482,7 +25482,7 @@ frvbf_media_overflow (current_cpu, 4);
+ if (GTDI (tmp_tmp, MAKEDI (255, 0xffffffff))) {
+ {
+   {
+-    UDI opval = MAKEDI (255, 0xffffffff);
++    DI opval = MAKEDI (255, 0xffffffff);
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 2), opval);
+     written |= (1 << 21);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -25493,7 +25493,7 @@ frvbf_media_overflow (current_cpu, 2);
+ if (LTDI (tmp_tmp, MAKEDI (0, 0))) {
+ {
+   {
+-    UDI opval = MAKEDI (0, 0);
++    DI opval = MAKEDI (0, 0);
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 2), opval);
+     written |= (1 << 21);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -25502,7 +25502,7 @@ frvbf_media_overflow (current_cpu, 2);
+ }
+ } else {
+   {
+-    UDI opval = tmp_tmp;
++    DI opval = tmp_tmp;
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 2), opval);
+     written |= (1 << 21);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -25516,7 +25516,7 @@ frvbf_media_overflow (current_cpu, 2);
+ if (GTDI (tmp_tmp, MAKEDI (255, 0xffffffff))) {
+ {
+   {
+-    UDI opval = MAKEDI (255, 0xffffffff);
++    DI opval = MAKEDI (255, 0xffffffff);
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 3), opval);
+     written |= (1 << 22);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -25527,7 +25527,7 @@ frvbf_media_overflow (current_cpu, 1);
+ if (LTDI (tmp_tmp, MAKEDI (0, 0))) {
+ {
+   {
+-    UDI opval = MAKEDI (0, 0);
++    DI opval = MAKEDI (0, 0);
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 3), opval);
+     written |= (1 << 22);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
+@@ -25536,7 +25536,7 @@ frvbf_media_overflow (current_cpu, 1);
+ }
+ } else {
+   {
+-    UDI opval = tmp_tmp;
++    DI opval = tmp_tmp;
+     sim_queue_fn_di_write (current_cpu, frvbf_h_acc40U_set, ADDSI (FLD (f_ACC40Uk), 3), opval);
+     written |= (1 << 22);
+     CGEN_TRACE_RESULT (current_cpu, abuf, "acc40U", 'D', opval);
