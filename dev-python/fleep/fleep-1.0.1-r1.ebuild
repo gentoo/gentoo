@@ -1,10 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..13} )
+
 inherit distutils-r1
 
 if [[ ${PV} == 9999 ]]; then
@@ -21,7 +22,10 @@ else
 fi
 
 DESCRIPTION="File format determination library for Python"
-HOMEPAGE="https://github.com/floyernick/fleep-py"
+HOMEPAGE="
+	https://github.com/floyernick/fleep-py/
+	https://pypi.org/project/fleep/
+"
 
 LICENSE="MIT"
 SLOT="0"
