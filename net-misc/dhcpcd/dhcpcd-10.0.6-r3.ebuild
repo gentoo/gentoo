@@ -49,6 +49,8 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 )
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-10.0.6-rebinding.patch
+	"${FILESDIR}"/${PN}-10.0.6-crash.patch
 	"${FILESDIR}"/${PN}-10.0.6-fix-lib-check.patch
 )
 
