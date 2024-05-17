@@ -41,12 +41,13 @@ CP_DEPEND="
 	sys-devel/gettext:0[java]
 	www-servers/tomcat:9
 "
+# jdk-11 for bug #932030
 DEPEND="
 	dev-libs/gmp:0=
 	${CP_DEPEND}
-	>=virtual/jdk-1.8:*
+	>=virtual/jdk-11:*
 	test? (
-		dev-java/ant:0[junit4]
+		>=dev-java/ant-1.10.14-r3:0[junit4]
 		dev-java/hamcrest:0
 		dev-java/junit:4
 		dev-java/mockito:4
@@ -74,21 +75,6 @@ EANT_GENTOO_CLASSPATH_EXTRA+=":${S}/router/java/build/router.jar"
 EANT_GENTOO_CLASSPATH_EXTRA+=":${S}/apps/ministreaming/java/build/mstreaming.jar"
 
 DOCS=( README.md history.txt )
-
-pkg_pretend() {
-	# see https://bugs.gentoo.org/831290
-	if [[ "`java-config --show-active-vm`" = *-8 ]] &&
-		[[ "`java-config --query MERGE_VM --package=ant-core`" != *-8 ]]
-	then
-		eerror "dev-java/ant-core was emerged with a newer version of the JDK."
-		eerror "It will fail to build with virtual/jdk:1.8 due to #831290."
-		eerror "Please switch to a newer JDK"
-		eerror "  eselect java-vm set system ..."
-		eerror "Or remerge dev-java/ant-core with virtual/jdk:1.8"
-		eerror "  emerge dev-java/ant-core"
-		die 'bad JDK for ant-core'
-	fi
-}
 
 src_prepare() {
 	default # apply PATCHES
