@@ -1,0 +1,88 @@
+https://bugs.gentoo.org/927403
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7a55616fb6..ee62502267 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3442,81 +3442,6 @@ if(gRPC_INSTALL)
+   )
+ endif()
+ 
+-if(gRPC_BUILD_TESTS)
+-
+-
+-add_library(gtest
+-  third_party/googletest/googlemock/src/gmock-cardinalities.cc
+-  third_party/googletest/googlemock/src/gmock-internal-utils.cc
+-  third_party/googletest/googlemock/src/gmock-matchers.cc
+-  third_party/googletest/googlemock/src/gmock-spec-builders.cc
+-  third_party/googletest/googlemock/src/gmock.cc
+-  third_party/googletest/googletest/src/gtest-assertion-result.cc
+-  third_party/googletest/googletest/src/gtest-death-test.cc
+-  third_party/googletest/googletest/src/gtest-filepath.cc
+-  third_party/googletest/googletest/src/gtest-matchers.cc
+-  third_party/googletest/googletest/src/gtest-port.cc
+-  third_party/googletest/googletest/src/gtest-printers.cc
+-  third_party/googletest/googletest/src/gtest-test-part.cc
+-  third_party/googletest/googletest/src/gtest-typed-test.cc
+-  third_party/googletest/googletest/src/gtest.cc
+-)
+-
+-target_compile_features(gtest PUBLIC cxx_std_14)
+-
+-set_target_properties(gtest PROPERTIES
+-  VERSION ${gRPC_CORE_VERSION}
+-  SOVERSION ${gRPC_CORE_SOVERSION}
+-)
+-
+-if(WIN32 AND MSVC)
+-  set_target_properties(gtest PROPERTIES COMPILE_PDB_NAME "gtest"
+-    COMPILE_PDB_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}"
+-  )
+-  if(gRPC_INSTALL)
+-    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/gtest.pdb
+-      DESTINATION ${gRPC_INSTALL_LIBDIR} OPTIONAL
+-    )
+-  endif()
+-endif()
+-
+-target_include_directories(gtest
+-  PUBLIC $<INSTALL_INTERFACE:${gRPC_INSTALL_INCLUDEDIR}> $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+-  PRIVATE
+-    ${CMAKE_CURRENT_SOURCE_DIR}
+-    ${_gRPC_ADDRESS_SORTING_INCLUDE_DIR}
+-    ${_gRPC_RE2_INCLUDE_DIR}
+-    ${_gRPC_SSL_INCLUDE_DIR}
+-    ${_gRPC_UPB_GENERATED_DIR}
+-    ${_gRPC_UPB_GRPC_GENERATED_DIR}
+-    ${_gRPC_UPB_INCLUDE_DIR}
+-    ${_gRPC_XXHASH_INCLUDE_DIR}
+-    ${_gRPC_ZLIB_INCLUDE_DIR}
+-    third_party/googletest/googletest/include
+-    third_party/googletest/googletest
+-    third_party/googletest/googlemock/include
+-    third_party/googletest/googlemock
+-)
+-target_link_libraries(gtest
+-  ${_gRPC_ALLTARGETS_LIBRARIES}
+-  ${_gRPC_RE2_LIBRARIES}
+-  absl::flat_hash_set
+-  absl::failure_signal_handler
+-  absl::stacktrace
+-  absl::symbolize
+-  absl::flags
+-  absl::flags_parse
+-  absl::flags_reflection
+-  absl::flags_usage
+-  absl::strings
+-  absl::any
+-  absl::optional
+-  absl::variant
+-)
+-
+-
+-endif()
+-
+ 
+ add_library(upb_base_lib
+   third_party/upb/upb/base/status.c
