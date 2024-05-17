@@ -1,10 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..10} )
-DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{10..12} )
+DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_EXT=1
 
 inherit distutils-r1
 
@@ -13,14 +14,15 @@ HOMEPAGE="https://salilab.org/modeller/"
 SRC_URI="https://salilab.org/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="modeller"
+SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples"
-SLOT="0"
 
 RESTRICT="mirror"
 
 DEPEND=">=dev-lang/swig-1.3"
-RDEPEND=""
+
+PATCHES=( "${FILESDIR}/${P}-fix-except.patch" )
 
 INPATH="${EPREFIX}"/opt/modeller${ver}
 
@@ -40,8 +42,6 @@ pkg_setup() {
 python_prepare_all() {
 	sed "s:i386-intel8:${EXECTYPE}:g" -i src/swig/setup.py || die
 	rm -rf modlib/modeller/python_library || die
-	sed -i '1 i\#!/usr/bin/python' bin/modslave.py || die
-	2to3 -w -n modlib/modeller || die
 	distutils-r1_python_prepare_all
 }
 
@@ -77,7 +77,6 @@ python_install_all() {
 	exeinto ${INPATH}/bin
 	doexe bin/{modscript,mod${PV}_${EXECTYPE}} "${T}"/modpy.sh
 
-	python_foreach_impl python_doscript bin/modslave.py
 	dosym ${INPATH}/bin/modscript /opt/bin/mod${PV}
 	dosym ${INPATH}/bin/modpy.sh /opt/bin/modpy.sh
 
