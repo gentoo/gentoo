@@ -12,7 +12,7 @@ S="${WORKDIR}/cromwell-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~x86"
+KEYWORDS="-* x86"
 RESTRICT="${RESTRICT} strip"
 
 src_install() {
