@@ -32,10 +32,13 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_prepare_all() {
+	distutils-r1_python_prepare_all
+
 	# See debian/rules.
 	sed -e "s/__CHANGELOG_VERSION__/${PV}/" lib/debian/_version.py.in \
 		> lib/debian/_version.py || die
-	distutils-r1_python_prepare_all
+	# silence false positives
+	rm -rf debian || die
 }
 
 python_compile_all() {
