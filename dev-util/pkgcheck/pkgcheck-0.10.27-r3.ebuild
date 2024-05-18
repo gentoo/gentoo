@@ -44,6 +44,7 @@ RDEPEND+="
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/pathspec[${PYTHON_USEDEP}]
 	>=dev-python/tree-sitter-0.19.0[${PYTHON_USEDEP}]
+	<dev-python/tree-sitter-0.22.0[${PYTHON_USEDEP}]
 	emacs? (
 		>=app-editors/emacs-24.1:*
 		app-emacs/ebuild-mode

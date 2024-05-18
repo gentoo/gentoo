@@ -55,10 +55,6 @@ x11-plugins/pidgintex
 app-forensics/air
 
 # Sam James <sam@gentoo.org> (2024-05-17)
-# Breaks dev-util/pkgcheck at least, masked pending investigation (bug #932093)
-=dev-python/tree-sitter-0.22.2
-
-# Sam James <sam@gentoo.org> (2024-05-17)
 # Needs adaptation to new build system (bug #932092).
 =net-libs/libupnpp-0.26.4
 

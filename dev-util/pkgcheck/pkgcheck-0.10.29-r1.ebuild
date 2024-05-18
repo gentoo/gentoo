@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_USE_PEP517=standalone
 PYTHON_COMPAT=( python3_{10..12} )
 inherit elisp-common distutils-r1 optfeature
 
@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]] ; then
 		https://github.com/pkgcore/pkgcheck.git"
 	inherit git-r3
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 	inherit pypi
 fi
 
@@ -33,13 +33,13 @@ else
 		>=sys-apps/pkgcore-0.12.25[${PYTHON_USEDEP}]"
 fi
 RDEPEND+="
-	>=dev-libs/tree-sitter-0.20.9:=
-	>=dev-libs/tree-sitter-bash-0.20.5
+	>=dev-libs/tree-sitter-bash-0.21.0[python,${PYTHON_USEDEP}]
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/lazy-object-proxy[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/pathspec[${PYTHON_USEDEP}]
-	>=dev-python/tree-sitter-0.20.4[${PYTHON_USEDEP}]
+	>=dev-python/tree-sitter-0.21.0[${PYTHON_USEDEP}]
+	<dev-python/tree-sitter-0.22.0[${PYTHON_USEDEP}]
 	emacs? (
 		>=app-editors/emacs-24.1:*
 		app-emacs/ebuild-mode
@@ -47,7 +47,7 @@ RDEPEND+="
 	)
 "
 BDEPEND="${RDEPEND}
-	dev-python/wheel
+	>=dev-python/flit-core-3.8[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
@@ -61,10 +61,6 @@ distutils_enable_tests pytest
 
 export USE_SYSTEM_TREE_SITTER_BASH=1
 
-EPYTEST_DESELECT=(
-	tests/checks/test_git.py::TestGitPkgCommitsCheck::test_missing_move
-)
-
 src_compile() {
 	distutils-r1_src_compile
 
@@ -77,7 +73,7 @@ src_compile() {
 
 python_install_all() {
 	local DOCS=( NEWS.rst )
-	[[ ${PV} == *9999 ]] || doman man/*
+	[[ ${PV} == *9999 ]] || doman build/sphinx/man/*
 	distutils-r1_python_install_all
 
 	if use emacs ; then
