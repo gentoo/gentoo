@@ -18,10 +18,9 @@ fi
 
 DESCRIPTION="Run OpenGL applications remotely with full 3D hardware acceleration"
 HOMEPAGE="https://www.virtualgl.org/"
+LICENSE="LGPL-2.1 wxWinLL-3.1 FLTK"
 
 SLOT="0"
-LICENSE="LGPL-2.1 wxWinLL-3.1 FLTK"
-IUSE=""
 
 RDEPEND="
 	media-libs/libjpeg-turbo[${MULTILIB_USEDEP}]
