@@ -11,7 +11,7 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="Persistent dict in Python, backed by SQLite and pickle"
 HOMEPAGE="
-	https://github.com/RaRe-Technologies/sqlitedict/
+	https://github.com/piskvorky/sqlitedict/
 	https://pypi.org/project/sqlitedict/
 "
 
