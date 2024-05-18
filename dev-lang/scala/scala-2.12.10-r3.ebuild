@@ -60,7 +60,7 @@ DEPEND="${COMMON_DEP}
 		>=dev-java/sbt-${SBTV}-r1:0
 		media-gfx/graphviz
 	)
-	<=virtual/jdk-11:*
+	virtual/jdk:1.8
 	app-arch/xz-utils:0"
 
 RDEPEND="${COMMON_DEP}
