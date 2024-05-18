@@ -1,15 +1,16 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 
 inherit distutils-r1
 
 DESCRIPTION="WSGI Transport Adapter for Requests"
 HOMEPAGE="
+	https://github.com/seanbrant/requests-wsgi-adapter/
 	https://pypi.org/project/requests-wsgi-adapter/
 "
 COMMIT_HASH="5b771effb5414096089375a3a36a3e7af1522ae0"
