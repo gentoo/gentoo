@@ -18,7 +18,7 @@ if [[ ${PV} =~ "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/gnuradio/gnuradio/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~riscv ~x86"
 fi
 
 IUSE="+audio +alsa +analog +digital channels ctrlport doc dtv examples fec +filter grc iio jack modtool network oss performance-counters portaudio +qt5 sdl soapy test trellis uhd vocoder +utils wavelet zeromq"
