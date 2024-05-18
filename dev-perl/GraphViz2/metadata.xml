@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>arthurzam@gentoo.org</email>
+    <name>Arthur Zamarin</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">GraphViz2</remote-id>
+    <remote-id type="cpan-module">GraphViz2</remote-id>
+    <remote-id type="cpan-module">GraphViz2::Parse::Regexp</remote-id>
+    <remote-id type="cpan-module">GraphViz2::Parse::STT</remote-id>
+    <remote-id type="cpan-module">GraphViz2::Parse::Yacc</remote-id>
+    <remote-id type="cpan-module">GraphViz2::Parse::Yapp</remote-id>
+  </upstream>
+</pkgmetadata>
