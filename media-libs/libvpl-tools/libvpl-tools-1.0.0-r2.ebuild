@@ -13,19 +13,21 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-IUSE="dri drm test vaapi wayland X"
+IUSE="dri +drm opencl test +vaapi wayland X"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
-	dri? ( X drm )
+	dri? ( X )
+	opencl? ( X )
+	vaapi? ( drm )
+	wayland? ( vaapi )
 	X? ( vaapi )
-	wayland? ( drm )
 "
 
 RDEPEND="
-	x11-libs/libpciaccess
-	vaapi? ( media-libs/libva[X?,wayland?,drm(+)?] )
 	drm? ( x11-libs/libdrm )
+	opencl? ( virtual/opencl )
+	vaapi? ( media-libs/libva[X?,wayland?,drm(+)?] )
 	wayland? (
 		dev-libs/wayland
 	)
@@ -33,25 +35,35 @@ RDEPEND="
 		x11-libs/libX11
 		x11-libs/libxcb
 	)
+	x11-libs/libpciaccess
 	>=media-libs/libvpl-2.11.0
 "
+
 DEPEND="${RDEPEND}
 	wayland? (
 		dev-libs/wayland-protocols
 	)
 "
+
 BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
 		-DBUILD_TESTS="$(usex test)"
+
+		-DBUILD_EXPERIMENTAL="$(usex X)"
 		-DTOOLS_ENABLE_X11="$(usex X)"
+		-DTOOLS_ENABLE_SCREEN_CAPTURE="$(usex X)"
+		-DTOOLS_ENABLE_RENDER="$(usex X)"
+		-DTOOLS_ENABLE_OPENCL="$(usex opencl)"
+
+		-DENABLE_DRI3="$(usex dri)"
+		-DENABLE_DRM="$(usex drm)"
+		-DENABLE_VA="$(usex vaapi)"
 		-DENABLE_WAYLAND="$(usex wayland)"
 		-DENABLE_X11="$(usex X)"
-		-DENABLE_DRI3="$(usex dri)"
-		-DENABLE_VA="$(usex vaapi)"
-		-DENABLE_DRM="$(usex drm)"
+
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
 	)
