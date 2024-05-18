@@ -51,7 +51,9 @@ BDEPEND="
 "
 
 LLVM_COMPONENTS=( compiler-rt cmake llvm/cmake )
-LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support third-party )
+LLVM_TEST_COMPONENTS=(
+	llvm/include/llvm/ProfileData llvm/lib/Testing/Support third-party
+)
 llvm.org_set_globals
 
 python_check_deps() {
