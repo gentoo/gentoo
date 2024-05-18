@@ -9,7 +9,10 @@ PYTHON_COMPAT=( python3_{10..13} pypy3 )
 inherit distutils-r1 pypi
 
 DESCRIPTION="Python wrapper for HTML Tidy (tidylib)"
-HOMEPAGE="http://countergram.com/open-source/pytidylib https://github.com/countergram/pytidylib"
+HOMEPAGE="
+	https://github.com/countergram/pytidylib/
+	https://pypi.org/project/pytidylib/
+"
 
 SLOT="0"
 LICENSE="MIT"
