@@ -3,20 +3,25 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
-DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..13} )
+
 inherit distutils-r1 pypi
 
 DESCRIPTION="An extension class for memory allocation in cython"
-HOMEPAGE="https://pypi.org/project/memory-allocator/
-	https://github.com/sagemath/memory_allocator"
+HOMEPAGE="
+	https://pypi.org/project/memory-allocator/
+	https://github.com/sagemath/memory_allocator/
+"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64"
 
-BDEPEND="dev-python/cython[${PYTHON_USEDEP}]"
+BDEPEND="
+	dev-python/cython[${PYTHON_USEDEP}]
+"
 
 python_test() {
 	# The test script tries to "import memory_allocator.test" which, so
@@ -25,7 +30,6 @@ python_test() {
 	# the "test" module is a compiled extension. To let the search fall
 	# back to the correct location, we temporarily rename the directory
 	# that misleads it.
-	mv memory_allocator mv_memory_allocator || die
-	${EPYTHON} test.py || die
-	mv mv_memory_allocator memory_allocator || die
+	rm -rf memory_allocator || die
+	"${EPYTHON}" test.py || die
 }
