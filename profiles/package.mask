@@ -34,6 +34,14 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2024-05-18)
+# Another abandoned project in the middle of a line of forks.
+# Broken with Python 3.12, with pytest 8 and with numpy 2.  Last
+# upstream activity in September 2023, but bugs remained unanswered
+# before that.
+# Removal on 2024-06-17.  Bug #929433.
+dev-python/aesara
+
+# Michał Górny <mgorny@gentoo.org> (2024-05-18)
 # Superseded by dev-python/pdm-backend.  No revdeps left.
 # Removal on 2024-06-17.  Bug #932160.
 dev-python/pdm-pep517
