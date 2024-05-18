@@ -25,7 +25,6 @@ BDEPEND="${CDEPEND}"
 #		|| ( app-text/pandoc-bin[pandoc-symlink] app-text/pandoc )
 #		dev-python/weasyprint
 #	)
-DEPEND=""
 RDEPEND="${CDEPEND}"
 
 #src_prepare() {
