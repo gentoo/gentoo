@@ -7,11 +7,11 @@ inherit gnome2-utils
 DESCRIPTION="Change your wallpaper daily to the bing.com background image"
 HOMEPAGE="https://github.com/neffo/bing-wallpaper-gnome-extension"
 SRC_URI="https://github.com/neffo/bing-wallpaper-gnome-extension/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/bing-wallpaper-gnome-extension-${PV}"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	dev-libs/glib:2
@@ -19,10 +19,7 @@ RDEPEND="
 	>=gnome-base/gnome-shell-45
 	net-libs/libsoup:3.0
 "
-DEPEND=""
-BDEPEND=""
 
-S="${WORKDIR}/bing-wallpaper-gnome-extension-${PV}"
 extension_uuid="BingWallpaper@ineffable-gmail.com"
 
 PATCHES=(
