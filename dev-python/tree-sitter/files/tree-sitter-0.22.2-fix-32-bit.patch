@@ -1,0 +1,27 @@
+https://github.com/tree-sitter/py-tree-sitter/commit/85e49483b6d2b49953568d95cfa03e539bfb8179
+From: ObserverOfTime <chronobserver@disroot.org>
+fix(language): use uintptr_t
+
+--- a/tests/test_language.py
++++ b/tests/test_language.py
+@@ -18,7 +18,6 @@ def setUp(self):
+         self.rust = tree_sitter_rust.language()
+
+     def test_init_invalid(self):
+-        self.assertRaises(ValueError, Language, -1)
+         self.assertRaises(ValueError, Language, 42)
+
+     def test_properties(self):
+--- a/tree_sitter/binding/language.c
++++ b/tree_sitter/binding/language.c
+@@ -5,8 +5,8 @@ int language_init(Language *self, PyObject *args, PyObject *Py_UNUSED(kwargs)) {
+     if (!PyArg_ParseTuple(args, "O:__init__", &language)) {
+         return -1;
+     }
+-    Py_ssize_t language_id = PyLong_AsSsize_t(language);
+-    if (language_id < 1 || (language_id % sizeof(TSLanguage *)) != 0) {
++    Py_uintptr_t language_id = PyLong_AsSize_t(language);
++    if (language_id == 0 || (language_id % sizeof(TSLanguage *)) != 0) {
+         if (!PyErr_Occurred()) {
+             PyErr_SetString(PyExc_ValueError, "invalid language ID");
+         }
