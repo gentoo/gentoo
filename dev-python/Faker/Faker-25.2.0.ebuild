@@ -36,8 +36,5 @@ distutils_enable_tests pytest
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	local -x PYTEST_PLUGINS=faker.contrib.pytest.plugin
-	local EPYTEST_DESELECT=(
-		tests/providers/test_job.py::TestCsCZ::test_job
-	)
 	epytest
 }
