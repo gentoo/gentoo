@@ -14,8 +14,8 @@ HOMEPAGE="https://github.com/gbouvignies/chemex"
 SRC_URI="https://github.com/gbouvignies/ChemEx/archive/refs/tags/v${PV/_p/-dev}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/ChemEx-${PV/_p/-dev}"
 
-SLOT="0"
 LICENSE="BSD"
+SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
 
