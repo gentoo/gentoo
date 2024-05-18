@@ -10,7 +10,7 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="Performance metrics, based on Coda Hale's Yammer metrics"
 HOMEPAGE="
-	https://pyformance.readthedocs.org/
+	https://pyformance.readthedocs.io/
 	https://github.com/omergertel/pyformance/
 	https://pypi.org/project/pyformance/
 "
