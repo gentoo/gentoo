@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-18)
+# EAPI=6, no reverse dependencies, dead homepage, has issues
+# with modern C, maintainer needed.
+# Removal on 2024-06-17.  Bugs #932168, #906348, #895028, #870640.
+dev-lang/srf
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-18)
 # EAPI6. Fails to compile with go versions in tree. Upstream is archived.
 # Uses deprecated go eclasses. Maintainer needed, no rev deps.
 # Removal on 2024-06-17.  Bugs #932166, #844604, #679832.
