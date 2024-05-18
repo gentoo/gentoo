@@ -367,11 +367,6 @@ dev-dotnet/ndesk-dbus-glib
 dev-go/qr
 dev-go/twofactor
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-04-18)
-# Upstream gone, unfetchable, stuck on EAPI 6. Bug 605796
-# Removal on 2024-05-18
-sci-visualization/spectromatic
-
 # Michał Górny <mgorny@gentoo.org> (2024-04-11)
 # Contains a bug that could render the kernel fail to boot.
 # https://lore.kernel.org/oe-lkp/202403221630.2692c998-oliver.sang@intel.com/
