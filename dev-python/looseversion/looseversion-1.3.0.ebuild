@@ -4,14 +4,14 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 
 inherit pypi distutils-r1
 
 DESCRIPTION="A backwards/forwards-compatible fork of distutils.version.LooseVersion"
 HOMEPAGE="
 	https://pypi.org/project/looseversion/
-	https://github.com/effigies/looseversion
+	https://github.com/effigies/looseversion/
 "
 
 LICENSE="PSF-2"
