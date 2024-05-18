@@ -14,7 +14,7 @@ SRC_URI="https://github.com/brummer10/${PN}/releases/download/V${PV}/guitarix2-$
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="bluetooth debug lv2 nls nsm +standalone zeroconf"
 REQUIRED_USE="|| ( lv2 standalone )"
 
