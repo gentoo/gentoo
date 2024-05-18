@@ -1,0 +1,29 @@
+From 3d9d6bf5c8e703b92e8779e67f05685630c782c3 Mon Sep 17 00:00:00 2001
+From: Adrian Ratiu <adrian.ratiu@collabora.com>
+Date: Mon, 1 Jul 2024 19:01:25 +0300
+Subject: [PATCH] meson.build: fix 0.5.1 -> 0.5.2 release version
+
+0.5.2 was released, however only the version in
+CMakeLists was bumped. Bump the version in meson
+as well.
+
+Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 903c506..3f95774 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1,6 +1,6 @@
+ project('libtypec','c',
+ license: 'MIT',
+-version: '0.5.1',
++version: '0.5.2',
+ default_options : [
+ 	'warning_level=0'])
+ 
+-- 
+2.44.2
+

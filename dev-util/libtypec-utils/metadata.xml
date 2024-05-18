@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <longdescription>
+    “libtypec-utils” provides a set of diagnostic and debug tools
+    to debug system issues around USB-C/USB PD topology, based on
+    the libtypec project.
+  </longdescription>
+  <maintainer type="person" proxied="yes">
+    <name>Adrian Ratiu</name>
+    <email>adrian.ratiu@collabora.com</email>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <maintainer>
+      <name>Rajaram Regupathy</name>
+      <email>rajaram.regupathy@gmail.com</email>
+    </maintainer>
+    <remote-id type="github">Rajaram-Regupathy/libtypec</remote-id>
+  </upstream>
+</pkgmetadata>
