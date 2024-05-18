@@ -21,11 +21,11 @@ SRC_URI="
 	https://dev.gentoo.org/~soap/distfiles/${PN}-patches.tbz2
 	https://dev.gentoo.org/~pacho/${PN}/${PN}_256.png
 "
+S="${WORKDIR}"
 
 LICENSE="molmol"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
-IUSE=""
 
 RDEPEND="
 	|| (
@@ -45,9 +45,6 @@ RDEPEND="
 	x11-apps/xdpyinfo
 "
 DEPEND="${RDEPEND}"
-BDEPEND=""
-
-S="${WORKDIR}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc14-fix.patch
