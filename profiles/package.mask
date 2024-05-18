@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-18)
+# EAPI6. Fails to compile with go versions in tree. Upstream is archived.
+# Uses deprecated go eclasses. Maintainer needed, no rev deps.
+# Removal on 2024-06-17.  Bugs #932166, #844604, #679832.
+app-emulation/hyperd
+
 # Michał Górny <mgorny@gentoo.org> (2024-05-18)
 # Another abandoned project in the middle of a line of forks.
 # Broken with Python 3.12, with pytest 8 and with numpy 2.  Last
