@@ -1,10 +1,10 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 
 inherit distutils-r1
 
@@ -28,6 +28,8 @@ python_test() {
 	local EPYTEST_DESELECT=()
 
 	case ${EPYTHON} in
+		python3.13)
+			;&
 		python3.12)
 			EPYTEST_DESELECT+=(
 				# these tests assume that dict is not sliceable
