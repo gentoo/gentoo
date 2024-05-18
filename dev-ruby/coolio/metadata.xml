@@ -6,6 +6,6 @@
 	<name>Gentoo Ruby Project</name>
 </maintainer>
 <upstream>
-	<remote-id type="github">tarcieri/cool.io</remote-id>
+	<remote-id type="github">socketry/cool.io</remote-id>
 </upstream>
 </pkgmetadata>
