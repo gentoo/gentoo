@@ -10,6 +10,7 @@ inherit gnome2-utils
 DESCRIPTION="Restore the alphabetical ordering of the app grid"
 HOMEPAGE="https://github.com/stuarthayhurst/alphabetical-grid-extension"
 SRC_URI="https://github.com/stuarthayhurst/alphabetical-grid-extension/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/alphabetical-grid-extension-${PV}"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -22,7 +23,6 @@ RDEPEND="
 "
 DEPEND="${COMMON_DEPEND}"
 
-S="${WORKDIR}/alphabetical-grid-extension-${PV}"
 extension_uuid="AlphabeticalAppGrid@stuarthayhurst"
 
 # Tests are only useful for upstream
