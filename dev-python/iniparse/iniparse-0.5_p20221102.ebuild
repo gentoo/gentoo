@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,8 +33,13 @@ BDEPEND="
 	${RDEPEND}
 "
 
+PATCHES=(
+	# https://github.com/candlepin/python-iniparse/pull/29
+	"${FILESDIR}/${P}-py3.11.7.patch"
+)
+
 python_test() {
-	"${EPYTHON}" runtests.py || die
+	"${EPYTHON}" runtests.py -v || die
 }
 
 python_install_all() {
