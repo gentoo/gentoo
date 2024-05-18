@@ -7,5 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="proprietary-codecs">Enable codecs for patent-encumbered audio and video formats.</flag>
+		<flag name="ffmpeg-chromium">Use Chromium FFmpeg fork (<pkg>media-video/ffmpeg-chromium</pkg>) rather than mainline FFmpeg (<pkg>media-video/ffmpeg</pkg>)</flag>
 	</use>
 </pkgmetadata>
