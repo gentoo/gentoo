@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2024-05-19)
+# media-libs/jasper not yet keyworded here: https://bugs.gentoo.org/921559
+media-gfx/graphicsmagick jpeg2k
+
 # José de Paula R. N. Assis <espinafre@gmail.com> (2024-03-25)
 # No PyQt6 (which is needed by USE=qt6 for qscintilla-python) on ppc64.
 >=dev-python/qscintilla-python-2.14.1-r1 qt6
