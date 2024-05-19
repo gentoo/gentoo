@@ -1,6 +1,12 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Fabian Groffen <grobian@gentoo.org> (2024-05-19)
+# Fails to compile due to undefined INT_MAX
+# https://github.com/libarchive/libarchive/issues/2162
+# https://github.com/libarchive/libarchive/commit/6ff1cd1e487ddf545337b88da3f1f5ca69a2f958
+=app-arch/libarchive-3.7.4
+
 # Fabian Groffen <grobian@gentoo.org> (2023-06-23)
 # Fails to link due to missing libintl, already fixed upstream:
 # https://git.savannah.gnu.org/cgit/tar.git/commit/?id=8632df398b2f548465ebe68b8f494c0d6f8d913d
