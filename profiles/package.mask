@@ -198,12 +198,6 @@ dev-python/grpcio
 dev-python/grpcio-testing
 dev-python/grpcio-tools
 
-# Michał Górny <mgorny@gentoo.org> (2024-04-30)
-# NumPy 2 introduces lots of API changes and an ABI change.  Masked
-# for testing and getting <dev-python/numpy-2 where necessary.
->=dev-python/numexpr-2.10
->=dev-python/numpy-2
-
 # Jason Zaman <perfinion@gentoo.org> (2024-04-28)
 # TensorFlow was removed from the tree in feb, Keras applications and
 # preprocessing no longer have any revdeps in the tree. For ML, the
