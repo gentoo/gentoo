@@ -69,6 +69,7 @@ BDEPEND+=" virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.41-flags.patch
 	"${FILESDIR}"/${PN}-1.3.41-perl.patch
+	"${FILESDIR}"/${PN}-1.3.43-bashism.patch
 )
 
 pkg_pretend() {
