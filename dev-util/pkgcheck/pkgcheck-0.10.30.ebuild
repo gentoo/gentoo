@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]] ; then
 		https://github.com/pkgcore/pkgcheck.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~s390"
+	KEYWORDS="~amd64 ~arm ~arm64 ~s390 ~x86"
 	inherit pypi
 fi
 
