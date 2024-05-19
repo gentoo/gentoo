@@ -45,8 +45,6 @@ distutils_enable_tests pytest
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.22.2-unbundle.patch
-	# Fix 32-bit build, upstream, drop on next bump
-	"${FILESDIR}"/${P}-fix-32-bit.patch
 )
 
 src_unpack() {
