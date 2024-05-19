@@ -17,10 +17,11 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~loong ~riscv ~s390 x86"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ~riscv ~s390 ~x86"
 IUSE="big-endian"
 
 RDEPEND="
+	<dev-python/numpy-2[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.23[${PYTHON_USEDEP}]
 	>=dev-python/pandas-1.5[${PYTHON_USEDEP}]
 	>=dev-python/packaging-22[${PYTHON_USEDEP}]
@@ -39,11 +40,6 @@ BDEPEND="
 
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
-
-PATCHES=(
-	# https://github.com/pydata/xarray/pull/8686
-	"${FILESDIR}/${P}-pytest-8.patch"
-)
 
 python_test() {
 	local EPYTEST_DESELECT=(
@@ -64,6 +60,11 @@ python_test() {
 		# https://github.com/pydata/xarray/issues/8092
 		xarray/tests/test_dask.py::TestToDaskDataFrame::test_to_dask_dataframe_2D
 		xarray/tests/test_dask.py::TestToDaskDataFrame::test_to_dask_dataframe_not_daskarray
+	)
+	local EPYTEST_IGNORE=(
+		# requires datatree_ subpackage that is not part of public API
+		# https://github.com/pydata/xarray/issues/8768
+		xarray/tests/datatree
 	)
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
