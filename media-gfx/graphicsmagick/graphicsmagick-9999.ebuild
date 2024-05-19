@@ -7,10 +7,10 @@ inherit autotools toolchain-funcs
 
 MY_P=${P/graphicsm/GraphicsM}
 DESCRIPTION="Collection of tools and libraries for many image formats"
-HOMEPAGE="http://www.graphicsmagick.org/ https://hg.osdn.net/view/graphicsmagick/GM"
+HOMEPAGE="http://www.graphicsmagick.org/ https://foss.heptapod.net/graphicsmagick/graphicsmagick"
 
 if [[ ${PV} == 9999 ]] ; then
-	EHG_REPO_URI="http://hg.code.sf.net/p/${PN}/code"
+	EHG_REPO_URI="https://foss.heptapod.net/${PN}/${PN}"
 	inherit mercurial
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/bobfriesenhahn.asc
