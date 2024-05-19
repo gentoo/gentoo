@@ -33,7 +33,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/gperf
-	media-gfx/graphicsmagick[jpeg,png,svg]
+	media-gfx/graphicsmagick[jpeg,png]
 	sys-devel/gettext
 "
 
