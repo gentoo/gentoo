@@ -9,4 +9,4 @@ inherit vim-spell
 
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 LICENSE="myspell-ru_RU-AlexanderLebedev"
-KEYWORDS="~amd64 ~arm64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~arm64 ppc sparc x86"
