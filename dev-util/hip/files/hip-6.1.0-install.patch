@@ -1,7 +1,6 @@
-Index: clr-rocm-6.1.0/hipamd/CMakeLists.txt
-===================================================================
---- clr-rocm-6.1.0.orig/hipamd/CMakeLists.txt
-+++ clr-rocm-6.1.0/hipamd/CMakeLists.txt
+These files already installed by hipcc, which is a runtime dep
+--- a/hipamd/CMakeLists.txt
++++ b/hipamd/CMakeLists.txt
 @@ -401,16 +401,7 @@ if (NOT ${HIPCC_BIN_DIR} STREQUAL "")
        set(hipcc_bin ${hipcc_bin}.exe)
        set(hipconfig_bin ${hipconfig_bin}.exe)
