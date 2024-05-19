@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Holger Hoffstätte <holger@applied-asynchrony.com> (2024-05-19)
+# media-libs/jasper not yet keyworded here: https://bugs.gentoo.org/921559
+media-gfx/graphicsmagick jpeg2k
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-13)
 # Requires dev-util/shelltestrunner
 app-arch/mt-st test
@@ -28,10 +32,6 @@ dev-lang/php capstone
 # Mart Raudsepp <leio@gentoo.org> (2023-12-25)
 # sys-apps/xdg-desktop-portal not keyworded here yet
 x11-base/xwayland libei
-
-# Holger Hoffstätte <holger@applied-asynchrony.com> (2024-05-19)
-# media-libs/jasper not yet keyworded here: https://bugs.gentoo.org/921559
-media-gfx/graphicsmagick jpeg2k
 
 # James Le Cuirot (2023-12-12)
 # USE=bpf depends on sys-devel/clang which is not keyworded on hppa
