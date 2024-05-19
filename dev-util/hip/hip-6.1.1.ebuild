@@ -7,9 +7,9 @@ DOCS_BUILDER="doxygen"
 DOCS_DEPEND="media-gfx/graphviz"
 ROCM_SKIP_GLOBALS=1
 
-inherit cmake docs flag-o-matic llvm rocm
+LLVM_COMPAT=( 18 )
 
-LLVM_MAX_SLOT=18
+inherit cmake docs flag-o-matic llvm-r1 rocm
 
 TEST_PV=${PV}
 
@@ -21,18 +21,20 @@ SRC_URI="https://github.com/ROCm/clr/archive/refs/tags/rocm-${PV}.tar.gz -> rocm
 S="${WORKDIR}/clr-rocm-${PV}/"
 TEST_S="${WORKDIR}/hip-tests-rocm-${TEST_PV}/catch"
 
-KEYWORDS="~amd64"
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
+KEYWORDS="~amd64"
 
-RESTRICT="!test? ( test )"
 IUSE="debug test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-util/rocminfo-5
-	sys-devel/clang:${LLVM_MAX_SLOT}
+	$(llvm_gen_dep '
+		sys-devel/clang:${LLVM_SLOT}
+	')
 	dev-libs/rocm-comgr:${SLOT}
-	>=dev-libs/rocr-runtime-5.6
+	dev-libs/rocr-runtime:${SLOT}
 	x11-base/xorg-proto
 	virtual/opengl
 "
@@ -61,10 +63,17 @@ src_prepare() {
 	# FindHIP.cmake module. But the reality is some package relies on it.
 	# Set HIP and HIP Clang paths directly, don't search using heuristics
 	sed -e "s:# Search for HIP installation:set(HIP_ROOT_DIR \"${EPREFIX}/usr\"):" \
-		-e "s:#Set HIP_CLANG_PATH:set(HIP_CLANG_PATH \"$(get_llvm_prefix -d ${LLVM_MAX_SLOT})/bin\"):" \
+		-e "s:#Set HIP_CLANG_PATH:set(HIP_CLANG_PATH \"$(get_llvm_prefix -d)/bin\"):" \
 	    -i "${WORKDIR}"/HIP-rocm-${PV}/cmake/FindHIP.cmake || die
 
 	cmake_src_prepare
+
+	# With Clang>17 -amdgpu-early-inline-all=true causes OOMs in dependencies
+	# https://github.com/llvm/llvm-project/issues/86332
+	if [ "$LLVM_SLOT" != "17" ]; then
+		sed -e "s/-mllvm=-amdgpu-early-inline-all=true //" -i hipamd/hip-config-amd.cmake || die
+		sed -e "s/-mllvm=-amdgpu-early-inline-all=true;//" -i "${WORKDIR}"/HIP-rocm-${PV}/hip-lang-config.cmake.in
+	fi
 
 	local PATCHES=(
 		"${FILESDIR}"/hip-test-6.0.2-hipcc-system-install.patch
@@ -90,7 +99,7 @@ src_configure() {
 	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
 
 	local mycmakeargs=(
-		-DCMAKE_PREFIX_PATH="$(get_llvm_prefix "${LLVM_MAX_SLOT}")"
+		-DCMAKE_PREFIX_PATH="$(get_llvm_prefix)"
 		-DCMAKE_BUILD_TYPE=${buildtype}
 		-DCMAKE_SKIP_RPATH=ON
 		-DHIP_PLATFORM=amd
@@ -144,4 +153,19 @@ src_test() {
 	)
 
 	MAKEOPTS="-j1" hip_test_wrapper cmake_src_test
+}
+
+src_install() {
+	cmake_src_install
+
+	# add version file that is required by some libraries
+	mkdir "${ED}"/usr/include/rocm-core || die
+	cat <<EOF > "${ED}"/usr/include/rocm-core/rocm_version.h || die
+#pragma once
+#define ROCM_VERSION_MAJOR $(ver_cut 1)
+#define ROCM_VERSION_MINOR $(ver_cut 2)
+#define ROCM_VERSION_PATCH $(ver_cut 3)
+#define ROCM_BUILD_INFO "$(ver_cut 1-3).0-9999-unknown"
+EOF
+	dosym -r /usr/include/rocm-core/rocm_version.h /usr/include/rocm_version.h
 }
