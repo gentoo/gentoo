@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -28,11 +28,11 @@ DEPEND="
 	)
 	sdl? (
 		media-libs/freetype:2
+		media-libs/libjpeg-turbo:=
 		media-libs/libpng:0=
-		media-libs/libsdl2[sound,threads,video]
+		media-libs/libsdl2[sound,threads(+),video]
 		media-libs/sdl2-mixer[mod,vorbis,wav]
 		sys-libs/zlib
-		virtual/jpeg:0=
 	)
 "
 RDEPEND="${DEPEND}"
