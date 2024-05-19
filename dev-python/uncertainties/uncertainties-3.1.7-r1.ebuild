@@ -11,7 +11,7 @@ inherit distutils-r1 optfeature pypi
 DESCRIPTION="Python module for calculations with uncertainties"
 HOMEPAGE="
 	https://pythonhosted.org/uncertainties/
-	https://github.com/lebigot/uncertainties/
+	https://github.com/lmfit/uncertainties/
 	https://pypi.org/project/uncertainties/
 "
 
@@ -29,7 +29,7 @@ distutils_enable_tests pytest
 distutils_enable_sphinx doc --no-autodoc
 
 src_prepare() {
-	# not used in py3, see https://github.com/lebigot/uncertainties/pull/168
+	# not used in py3, see https://github.com/lmfit/uncertainties/pull/168
 	sed -i -e '/future/d' setup.py || die
 	# fix tests with numpy-2
 	# https://github.com/lmfit/uncertainties/pull/225

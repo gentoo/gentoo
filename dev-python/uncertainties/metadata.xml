@@ -21,7 +21,7 @@
  are what is predicted by error propagation theory.    
   </longdescription>
   <upstream>
-    <remote-id type="github">lebigot/uncertainties</remote-id>
+    <remote-id type="github">lmfit/uncertainties</remote-id>
     <remote-id type="pypi">uncertainties</remote-id>
   </upstream>
 </pkgmetadata>
