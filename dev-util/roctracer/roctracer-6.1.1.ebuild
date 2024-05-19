@@ -4,10 +4,10 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-LLVM_MAX_SLOT=17
+LLVM_COMPAT=( 18 )
 ROCM_VERSION=${PV}
 
-inherit cmake prefix python-any-r1 rocm llvm
+inherit cmake prefix python-any-r1 rocm llvm-r1
 
 DESCRIPTION="Callback/Activity Library for Performance tracing AMD GPU's"
 HOMEPAGE="https://github.com/ROCm/roctracer"
@@ -63,9 +63,8 @@ src_configure() {
 		-DWITH_TESTS=$(usex test)
 	)
 	use test && mycmakeargs+=(
-		-DCMAKE_FIND_DEBUG_MODE=ON
 		-DHIP_ROOT_DIR="${EPREFIX}/usr"
-		-DHIP_CLANG_INSTALL_DIR="$(get_llvm_prefix "${LLVM_MAX_SLOT}")/bin"
+		-DHIP_CLANG_INSTALL_DIR="$(get_llvm_prefix)/bin"
 		-DGPU_TARGETS="$(get_amdgpu_flags)"
 	)
 
