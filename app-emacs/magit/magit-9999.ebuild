@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,6 @@ S="${WORKDIR}/${P}/lisp"
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="libgit"
 
 DOCS=( ../README.md ../docs/AUTHORS.md ../docs/RelNotes )
 ELISP_TEXINFO="../docs/*.texi"
@@ -33,7 +32,6 @@ RDEPEND="
 	>=app-emacs/dash-2.19.1
 	>=app-emacs/transient-0.3.6
 	>=app-emacs/with-editor-3.0.5
-	libgit? ( app-emacs/libegit2 )
 "
 BDEPEND="
 	${RDEPEND}
@@ -45,16 +43,7 @@ RDEPEND+="
 
 src_prepare() {
 	default
-	use libgit || rm magit-libgit.el || die
+
+	rm magit-libgit.el || die
 	echo "(setq magit-version \"${PV}\")" > magit-version.el || die
-}
-
-pkg_postinst() {
-	elisp_pkg_postinst
-
-	if ! use libgit; then
-		einfo "The dependency on app-emacs/libegit2 is optional"
-		einfo "since magit version 3.3.0. Enable the \"libgit\" flag"
-		einfo "if you need the libgit backend."
-	fi
 }
