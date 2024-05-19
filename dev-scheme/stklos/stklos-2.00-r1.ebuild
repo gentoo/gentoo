@@ -23,6 +23,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-ldflags.patch
+	"${FILESDIR}"/${P}-threads.patch
 )
 DOCS=( AUTHORS ChangeLog NEWS.md PACKAGES-USED {PORTING-NOTES,README}.md SUPPORTED-SRFIS )
 
