@@ -13,6 +13,7 @@
 	<use>
 		<flag name="activities">Enable activities KIO worker and fileitem plugin</flag>
 		<flag name="ios">Enable AFC (Apple File Conduit) KIO worker for iOS devices support</flag>
+		<flag name="kf6compat">Disable components colliding with KF6, depend on KF6 components instead</flag>
 		<flag name="man">Enable manpages KIO worker</flag>
 		<flag name="nfs">Enable NFS support using <pkg>net-libs/libtirpc</pkg></flag>
 		<flag name="phonon">Enable file audio preview plugin using <pkg>media-libs/phonon</pkg></flag>
