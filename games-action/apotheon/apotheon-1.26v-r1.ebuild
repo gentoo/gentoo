@@ -1,13 +1,14 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop unpacker xdg-utils
+inherit desktop unpacker xdg
 
 DESCRIPTION="Heroic action game set within the vibrant world of Ancient Greek Mythology"
 HOMEPAGE="https://www.apotheongame.com"
 SRC_URI="${PN}-12302015-bin"
+S="${WORKDIR}/data"
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
@@ -15,13 +16,11 @@ RESTRICT="bindist fetch splitdebug"
 
 RDEPEND="
 	dev-lang/mono
-	media-libs/libsdl2[joystick,opengl,threads,video]
+	media-libs/libsdl2[joystick,opengl,threads(+),video]
 	media-libs/openal
 	media-libs/sdl2-image
 	media-libs/theoraplay
 "
-
-S="${WORKDIR}/data"
 
 DIR="/opt/${PN}"
 QA_PREBUILT="${DIR}/*"
@@ -56,6 +55,3 @@ src_install() {
 	newicon -s 512 Apotheon.png ${PN}.png
 	make_desktop_entry ${PN} "Apotheon"
 }
-
-pkg_postinst() { xdg_icon_cache_update; }
-pkg_postrm() { xdg_icon_cache_update; }
