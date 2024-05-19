@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,6 +31,10 @@ distutils_enable_sphinx doc --no-autodoc
 src_prepare() {
 	# not used in py3, see https://github.com/lebigot/uncertainties/pull/168
 	sed -i -e '/future/d' setup.py || die
+	# fix tests with numpy-2
+	# https://github.com/lmfit/uncertainties/pull/225
+	sed -e "/assert not hasattr(numpy, 'acos')/d" \
+		-i uncertainties/unumpy/test_unumpy.py || die
 	distutils-r1_src_prepare
 }
 
