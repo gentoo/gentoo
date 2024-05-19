@@ -1,0 +1,53 @@
+From c6f625d1c91df9986d79a928b01399dce4beb1cc Mon Sep 17 00:00:00 2001
+From: Michael Catanzaro <mcatanzaro@redhat.com>
+Date: Sat, 18 May 2024 08:25:37 -0500
+Subject: [PATCH] Revert "Cherry-pick 276798@main (f91aeb92bd8e).
+ https://bugs.webkit.org/show_bug.cgi?id=260455"
+
+Unreviewed. This reverts commit 30ad9a720e6b12a6c958fcef0d7dd3f52da485bd.
+
+See: https://bugs.webkit.org/show_bug.cgi?id=274261
+Canonical link: https://commits.webkit.org/274313.257@webkitglib/2.44
+---
+ ...e-muted-scroll-and-seek-crash-expected.txt |  4 --
+ ...ia-source-muted-scroll-and-seek-crash.html | 65 -------------------
+ .../gstreamer/MediaPlayerPrivateGStreamer.cpp | 14 +---
+ 3 files changed, 3 insertions(+), 80 deletions(-)
+ delete mode 100644 LayoutTests/media/media-source/media-source-muted-scroll-and-seek-crash-expected.txt
+ delete mode 100644 LayoutTests/media/media-source/media-source-muted-scroll-and-seek-crash.html
+
+diff --git a/Source/WebCore/platform/graphics/gstreamer/MediaPlayerPrivateGStreamer.cpp b/Source/WebCore/platform/graphics/gstreamer/MediaPlayerPrivateGStreamer.cpp
+index 7b28083fae71..a5fb5d679153 100644
+--- a/Source/WebCore/platform/graphics/gstreamer/MediaPlayerPrivateGStreamer.cpp
++++ b/Source/WebCore/platform/graphics/gstreamer/MediaPlayerPrivateGStreamer.cpp
+@@ -328,8 +328,8 @@ void MediaPlayerPrivateGStreamer::load(const String& urlString)
+         m_fillTimer.stop();
+ 
+     ASSERT(m_pipeline);
+-    setPlaybinURL(url);
+     setVisibleInViewport(player->isVisibleInViewport());
++    setPlaybinURL(url);
+ 
+     GST_DEBUG_OBJECT(pipeline(), "preload: %s", convertEnumerationToString(m_preload).utf8().data());
+     if (m_preload == MediaPlayer::Preload::None && !isMediaSource()) {
+@@ -4027,18 +4027,10 @@ void MediaPlayerPrivateGStreamer::setVisibleInViewport(bool isVisible)
+     if (!isVisible) {
+         GstState currentState;
+         gst_element_get_state(m_pipeline.get(), &currentState, nullptr, 0);
+-        // WebKitMediaSrc cannot properly handle PAUSED -> READY -> PAUSED currently, so we have to avoid transitioning
+-        // back to READY when the player becomes visible.
+-        GstState minimumState = isMediaSource() ? GST_STATE_PAUSED : GST_STATE_READY;
+-        if (currentState >= minimumState)
++        if (currentState > GST_STATE_NULL)
+             m_invisiblePlayerState = currentState;
+         m_isVisibleInViewport = false;
+-        // Avoid setting the pipeline to PAUSED unless the playbin URL has already been set,
+-        // otherwise it will fail, and may leave the pipeline stuck on READY with PAUSE pending.
+-        if (!m_url.isValid())
+-            return;
+-        [[maybe_unused]] auto setStateResult = gst_element_set_state(m_pipeline.get(), GST_STATE_PAUSED);
+-        ASSERT(setStateResult != GST_STATE_CHANGE_FAILURE);
++        gst_element_set_state(m_pipeline.get(), GST_STATE_PAUSED);
+     } else {
+         m_isVisibleInViewport = true;
+         if (m_invisiblePlayerState != GST_STATE_VOID_PENDING)
