@@ -1,6 +1,10 @@
 # Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2024-05-19)
+# media-libs/jasper not yet keyworded here: https://bugs.gentoo.org/921559
+media-gfx/graphicsmagick jpeg2k
+
 # Robin H. Johnson <robbat2@gentoo.org) (2024-03-13)
 # sys-cluster/corosync not yet keyworded, niche use case for mdadm
 sys-fs/mdadm corosync
