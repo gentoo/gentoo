@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop wrapper xdg
 
@@ -12,7 +12,7 @@ MY_PN="Trine Enchanted Edition"
 DESCRIPTION="The original sidescrolling action platformer under the Trine 2 engine"
 HOMEPAGE="https://www.frozenbyte.com/games/trine-enchanted-edition"
 SRC_URI="${MY_P}_humble_linux_full.zip"
-
+S="${WORKDIR}/linux/_enchanted_edition_"
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
@@ -32,7 +32,7 @@ RDEPEND="
 	media-libs/alsa-lib[abi_x86_32]
 	media-libs/freetype:2[abi_x86_32]
 	media-libs/libogg[abi_x86_32]
-	>=media-libs/libsdl2-2.0.3[abi_x86_32,joystick,opengl,sound,threads,video]
+	>=media-libs/libsdl2-2.0.3[abi_x86_32,joystick,opengl,sound,threads(+),video]
 	>=media-libs/libvorbis-1.3[abi_x86_32]
 	>=media-libs/openal-1.15[abi_x86_32]
 	>=sys-devel/gcc-4.6[cxx]
@@ -48,8 +48,6 @@ RDEPEND="
 		x11-libs/libX11[abi_x86_32]
 		x11-libs/pango[abi_x86_32,X]
 	)"
-
-S="${WORKDIR}/linux/_enchanted_edition_"
 
 pkg_nofetch() {
 	einfo "Please buy and download ${SRC_URI} from:"
