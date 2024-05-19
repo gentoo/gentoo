@@ -1,4 +1,4 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ HOMEPAGE="https://ocserv.gitlab.io/www/index.html"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="geoip kerberos +lz4 otp pam radius +seccomp systemd tcpd test"
-RESTRICT="!test? ( test )"
+RESTRICT="test"
 
 BDEPEND+="
 	virtual/pkgconfig
