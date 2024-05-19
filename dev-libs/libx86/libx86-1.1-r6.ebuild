@@ -11,7 +11,7 @@ SRC_URI="https://www.codon.org.uk/~mjg59/${PN}/downloads/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm -ppc -riscv -sparc x86"
+KEYWORDS="amd64 ~arm -ppc -riscv -sparc x86"
 
 PATCHES=(
 	# fix compile failure with linux-headers-2.6.26, bug 235599
