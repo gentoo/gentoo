@@ -14,7 +14,7 @@ SRC_URI="https://fallabs.com/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="bzip2 cxx debug java lzo perl ruby static-libs zlib"
+IUSE="bzip2 cxx java lzo perl ruby static-libs zlib"
 
 RDEPEND="bzip2? ( app-arch/bzip2 )
 	java? ( >=virtual/jre-1.8:* )
@@ -62,14 +62,7 @@ qdbm_foreach_api() {
 				eautoreconf
 				;;
 			configure)
-				case "${u}" in
-				cgi|java|plus)
-					econf $(use_enable debug)
-					;;
-				*)
-					econf
-					;;
-				esac
+				econf
 				;;
 			compile)
 				emake
@@ -100,7 +93,6 @@ src_prepare() {
 		-e "/^CXXFLAGS/s|$| ${CXXFLAGS}|" \
 		-e "/^JAVACFLAGS/s|$| ${JAVACFLAGS}|" \
 		-e 's/make\( \|$\)/$(MAKE)\1/g' \
-		-e '/^debug/,/^$/s/LDFLAGS="[^"]*" //' \
 		Makefile.in {cgi,java,perl,plus,ruby}/Makefile.in || die
 	find -name "*~" -delete || die
 
@@ -122,7 +114,6 @@ each_ruby_prepare() {
 src_configure() {
 	econf \
 		$(use_enable bzip2 bzip) \
-		$(use_enable debug) \
 		$(use_enable lzo) \
 		$(use_enable zlib) \
 		--enable-iconv \
