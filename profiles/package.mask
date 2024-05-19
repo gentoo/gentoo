@@ -805,7 +805,6 @@ sec-keys/openpgp-keys-jiatan
 ~kde-misc/markdownpart-24.04.90
 ~sys-block/partitionmanager-24.04.90
 ~sys-libs/kpmcore-24.04.90
-=kde-apps/kio-extras-23.08.5-r100
 =kde-misc/kio-gdrive-23.08.5-r1
 =kde-plasma/print-manager-23.08.5-r100
 ~kde-misc/kio-fuse-5.1.0
