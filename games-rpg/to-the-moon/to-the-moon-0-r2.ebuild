@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop unpacker wrapper
+inherit desktop unpacker wrapper xdg
 
 MY_PN="ToTheMoon"
 
@@ -25,11 +25,12 @@ QA_PREBUILT="
 
 # TODO: unbundling sdl-sound breaks the game
 RDEPEND="
+	media-libs/libglvnd[X]
+	sys-libs/libxcrypt:0/1
 	sys-libs/zlib
-	virtual/opengl
 	!bundled-libs? (
 		dev-libs/libsigc++:2
-		>=media-libs/libsdl2-2.0.1[X,joystick,opengl,sound,threads,video]
+		>=media-libs/libsdl2-2.0.1[X,joystick,opengl,sound,threads(+),video]
 		media-libs/openal
 		media-libs/sdl2-image[png]
 		media-libs/sdl2-ttf
