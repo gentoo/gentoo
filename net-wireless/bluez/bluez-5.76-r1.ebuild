@@ -258,7 +258,13 @@ multilib_src_install_all() {
 	use doc && dodoc doc/*.txt
 
 	# https://bugs.gentoo.org/929017
-	fperms -R 0555 /etc/bluetooth
+	fperms 0555 /etc/bluetooth
+
+	# https://bugs.gentoo.org/932172
+	if ! use systemd; then
+		keepdir /var/lib/bluetooth
+		fperms 0700 /var/lib/bluetooth
+	fi
 }
 
 pkg_postinst() {
