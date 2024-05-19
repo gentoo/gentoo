@@ -28,7 +28,7 @@ fi
 LICENSE="MIT"
 SLOT="0/${PV%.*}"
 IUSE="bzip2 +cxx debug dynamic-loading fpx heif imagemagick jbig jpeg jpeg2k jpegxl lcms lzma"
-IUSE+=" openmp perl png postscript q16 q32 static-libs svg tcmalloc tiff truetype"
+IUSE+=" openmp perl png postscript q16 q32 static-libs tcmalloc tiff truetype"
 IUSE+=" webp wmf X zlib zstd"
 
 RDEPEND="
@@ -46,7 +46,6 @@ RDEPEND="
 	perl? ( dev-lang/perl:= )
 	png? ( media-libs/libpng:= )
 	postscript? ( app-text/ghostscript-gpl )
-	svg? ( dev-libs/libxml2 )
 	tcmalloc? ( dev-util/google-perftools:= )
 	tiff? ( media-libs/tiff:= )
 	truetype? (
@@ -126,7 +125,6 @@ src_configure() {
 		--with-fontpath="${EPREFIX}"/usr/share/fonts
 		--with-gs-font-dir="${EPREFIX}"/usr/share/fonts/urw-fonts
 		--with-windows-font-dir="${EPREFIX}"/usr/share/fonts/corefonts
-		$(use_with svg xml)
 		$(use_with zlib)
 		$(use_with zstd)
 		$(use_with X x)
