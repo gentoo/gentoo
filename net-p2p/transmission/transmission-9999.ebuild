@@ -1,4 +1,4 @@
-# Copyright 2006-2023 Gentoo Authors
+# Copyright 2006-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -117,6 +117,11 @@ src_configure() {
 	use debug || append-cppflags -DNDEBUG
 
 	cmake_src_configure
+}
+
+src_test() {
+	# https://github.com/transmission/transmission/issues/4763
+	cmake_src_test -E DhtTest.usesBootstrapFile
 }
 
 src_install() {

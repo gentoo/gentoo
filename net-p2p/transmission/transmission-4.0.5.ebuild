@@ -119,6 +119,11 @@ src_configure() {
 	cmake_src_configure
 }
 
+src_test() {
+	# https://github.com/transmission/transmission/issues/4763
+	cmake_src_test -E DhtTest.usesBootstrapFile
+}
+
 src_install() {
 	cmake_src_install
 
