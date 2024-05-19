@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-05-20)
+# Short-lived side-by-side release, now unnecessary as it moved back to
+# kde-apps/kio-extras:5.
+kde-apps/kio-extras-kf5
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-18)
 # EAPI=6, no reverse dependencies, dead homepage, has issues
 # with modern C, maintainer needed.
