@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ REQUIRED_USE="${LUA_REQUIRED_USE}"
 RDEPEND="
 	${LUA_DEPS}
 	media-libs/libglvnd
-	media-libs/libsdl2[joystick,sound,threads,video]
+	media-libs/libsdl2[joystick,sound,threads(+),video]
 	sys-libs/zlib:=[minizip]
 	archive? ( app-arch/libarchive:= )
 	qt6? ( dev-qt/qtbase:6[gui,opengl,widgets,-gles2-only] )
