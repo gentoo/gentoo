@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop wrapper xdg
 
@@ -25,7 +25,7 @@ RDEPEND="
 	media-libs/fontconfig:1.0[abi_x86_32]
 	media-libs/freetype:2[abi_x86_32]
 	media-libs/libpng-compat:1.2[abi_x86_32]
-	media-libs/libsdl2[abi_x86_32,joystick,opengl,sound,threads,video]
+	media-libs/libsdl2[abi_x86_32,joystick,opengl,sound,threads(+),video]
 	net-misc/curl[abi_x86_32]
 	>=sys-devel/gcc-4.6[cxx]
 	>=sys-libs/glibc-2.14
