@@ -26,5 +26,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">graphicsmagick</remote-id>
+		<remote-id type="heptapod">graphicsmagick/graphicsmagick</remote-id>
 	</upstream>
 </pkgmetadata>
