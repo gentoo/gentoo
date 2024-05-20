@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # All extra USE/etc should be specified in sub-profiles.
@@ -39,3 +39,7 @@ VIDEO_CARDS="fbdev mga r128 radeon"
 
 # Enable abi_ppc_64 for packages that don't have it forced.
 ABI_PPC="64"
+
+# Hans de Graaff <graaff@gentoo.org> (2024-05-20)
+# Allow ruby32 stabling: https://bugs.gentoo.org/932285
+RUBY_TARGETS="ruby31"

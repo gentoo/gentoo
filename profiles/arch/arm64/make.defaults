@@ -1,4 +1,4 @@
-# Copyright 2014-2023 Gentoo Authors
+# Copyright 2014-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Main ARM64 (AArch64/ARMv8) profile; endian independent.
@@ -28,3 +28,7 @@ USE="libtirpc"
 # Michał Górny <mgorny@gentoo.org> (2017-03-14)
 # Unhide the ARM-specific USE_EXPANDs.
 USE_EXPAND_HIDDEN="-CPU_FLAGS_ARM"
+
+# Hans de Graaff <graaff@gentoo.org> (2024-05-20)
+# Allow ruby32 stabling: https://bugs.gentoo.org/932285
+RUBY_TARGETS="ruby31"

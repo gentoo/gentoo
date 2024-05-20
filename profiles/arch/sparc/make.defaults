@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ARCH="sparc"
@@ -42,3 +42,7 @@ VIDEO_CARDS="fbdev mga r128 radeon"
 # Enable USE=libtirpc by default, to ease dependency resolution during
 # the stabilization of glibc-2.26. Bug 657148
 USE="libtirpc"
+
+# Hans de Graaff <graaff@gentoo.org> (2024-05-20)
+# Allow ruby32 stabling: https://bugs.gentoo.org/932285
+RUBY_TARGETS="ruby31"
