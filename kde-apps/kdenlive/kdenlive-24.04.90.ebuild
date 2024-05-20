@@ -56,6 +56,7 @@ DEPEND="
 	v4l? ( media-libs/libv4l )
 "
 RDEPEND="${DEPEND}
+	>=kde-frameworks/qqc2-desktop-style-${KFMIN}:6
 	media-video/ffmpeg[encode,libass,sdl,X]
 	media-video/mediainfo
 "
