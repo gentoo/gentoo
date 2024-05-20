@@ -39,7 +39,3 @@ VIDEO_CARDS="fbdev mga r128 radeon"
 
 # Enable abi_ppc_64 for packages that don't have it forced.
 ABI_PPC="64"
-
-# Hans de Graaff <graaff@gentoo.org> (2024-05-20)
-# Allow ruby32 stabling: https://bugs.gentoo.org/932285
-RUBY_TARGETS="ruby31 -ruby32"
