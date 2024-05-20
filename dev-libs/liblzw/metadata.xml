@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<name>Mike Frysinger</name>
-		<email>vapier@gentoo.org</email>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">freestdf</remote-id>
 		<remote-id type="github">vapier/liblzw</remote-id>
