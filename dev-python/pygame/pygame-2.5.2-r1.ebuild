@@ -62,6 +62,8 @@ src_prepare() {
 	local PATCHES=(
 		# https://github.com/pygame/pygame/pull/4035
 		"${FILESDIR}/${P}-error.patch"
+		# https://github.com/pygame/pygame/pull/4236
+		"${FILESDIR}/${P}-gcc-14.patch"
 	)
 
 	# some numpy-related crash (not a regression)
