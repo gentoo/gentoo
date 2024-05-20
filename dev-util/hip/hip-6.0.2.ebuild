@@ -35,9 +35,9 @@ DEPEND="
 	x11-base/xorg-proto
 	virtual/opengl
 "
-BDEPEND="test? ( dev-util/hipcc )"
+BDEPEND="test? ( dev-util/hipcc:${SLOT}[${LLVM_USEDEP}] )"
 RDEPEND="${DEPEND}
-	dev-util/hipcc
+	dev-util/hipcc:${SLOT}[${LLVM_USEDEP}]
 	dev-perl/URI-Encode
 	sys-devel/clang-runtime:=
 	>=dev-libs/roct-thunk-interface-5"

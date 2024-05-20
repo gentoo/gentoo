@@ -34,9 +34,9 @@ DEPEND="
 	x11-base/xorg-proto
 	virtual/opengl
 "
-BDEPEND="test? ( <dev-util/hipcc-6 )"
+BDEPEND="test? ( =dev-util/hipcc-5* )"
 RDEPEND="${DEPEND}
-	dev-util/hipcc
+	=dev-util/hipcc-5*
 	dev-perl/URI-Encode
 	sys-devel/clang-runtime:=
 	>=dev-libs/roct-thunk-interface-5"
