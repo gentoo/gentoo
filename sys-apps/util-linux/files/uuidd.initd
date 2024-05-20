@@ -3,6 +3,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 command=/usr/sbin/uuidd
+command_args_foreground="-FP"
+command_user=uuidd
 pidfile=/run/uuidd/uuidd.pid
 
 depend() {
