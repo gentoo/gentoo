@@ -539,7 +539,10 @@ texlive-module_src_install() {
 			find texmf-dist/doc/man -type f -name '*.[0-9n]' -print |
 				grep -v "${grep_expressions[@]}" |
 				xargs -d '\n' --no-run-if-empty doman
-			[[ "${PIPESTATUS[*]}" =~ ^0(" 0")*$ ]]
+			# The grep in the middle of the pipe may return 1 in case
+			# everything from the input is dropped.
+			# See https://bugs.gentoo.org/931994
+			[[ "${PIPESTATUS[*]}" == "0 "[01]" 0" ]]
 			eend $? || die "error installing man pages"
 
 			# Delete all man pages under texmf-dist/doc/man
