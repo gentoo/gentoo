@@ -24,7 +24,7 @@ SLOT="$(ver_cut 1)"
 IUSE="doc test"
 
 DEPEND="${DEPEND}
-	dev-util/ragel"
+	=dev-util/ragel-6*"
 
 ruby_add_bdepend "dev-ruby/rake
 	doc? ( dev-ruby/rdoc )
