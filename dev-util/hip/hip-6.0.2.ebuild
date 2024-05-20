@@ -7,9 +7,8 @@ DOCS_BUILDER="doxygen"
 DOCS_DEPEND="media-gfx/graphviz"
 ROCM_SKIP_GLOBALS=1
 
-inherit cmake docs flag-o-matic llvm rocm
-
-LLVM_MAX_SLOT=17
+LLVM_COMPAT=( 17 )
+inherit cmake docs flag-o-matic llvm-r1 rocm
 
 TEST_PV=${PV}
 
@@ -28,9 +27,11 @@ IUSE="debug test"
 
 DEPEND="
 	>=dev-util/rocminfo-5
-	sys-devel/clang:${LLVM_MAX_SLOT}
+	$(llvm_gen_dep '
+		sys-devel/clang:${LLVM_SLOT}
+	')
 	dev-libs/rocm-comgr:${SLOT}
-	>=dev-libs/rocr-runtime-5.6
+	dev-libs/rocr-runtime:${SLOT}
 	x11-base/xorg-proto
 	virtual/opengl
 "
@@ -62,8 +63,11 @@ hip_test_wrapper() {
 
 src_prepare() {
 	# hipamd is itself built by cmake, and should never provide a
-	# FindHIP.cmake module.
-	rm -r "${WORKDIR}"/HIP-rocm-${PV}/cmake/FindHIP* || die
+	# FindHIP.cmake module. But the reality is some package relies on it.
+	# Set HIP and HIP Clang paths directly, don't search using heuristics
+	sed -e "s:# Search for HIP installation:set(HIP_ROOT_DIR \"${EPREFIX}/usr\"):" \
+		-e "s:#Set HIP_CLANG_PATH:set(HIP_CLANG_PATH \"$(get_llvm_prefix -d)/bin\"):" \
+	    -i "${WORKDIR}"/HIP-rocm-${PV}/cmake/FindHIP.cmake || die
 
 	# https://github.com/ROCm/HIP/commit/405d029422ba8bb6be5a233d5eebedd2ad2e8bd3
 	# https://github.com/ROCm/clr/commit/ab6d34ae773f4d151e04170c0f4e46c1135ddf3e
@@ -92,10 +96,10 @@ src_configure() {
 
 	# Fix ld.lld linker error: https://github.com/ROCm/HIP/issues/3382
 	# See also: https://github.com/gentoo/gentoo/pull/29097
-	append-ldflags $(tc-flags-CCLD -Wl,--undefined-version)
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
 
 	local mycmakeargs=(
-		-DCMAKE_PREFIX_PATH="$(get_llvm_prefix "${LLVM_MAX_SLOT}")"
+		-DCMAKE_PREFIX_PATH="$(get_llvm_prefix)"
 		-DCMAKE_BUILD_TYPE=${buildtype}
 		-DCMAKE_SKIP_RPATH=ON
 		-DHIP_PLATFORM=amd
@@ -153,6 +157,17 @@ src_test() {
 
 src_install() {
 	cmake_src_install
+
+	# add version file that is required by some libraries
+	mkdir "${ED}"/usr/include/rocm-core || die
+	cat <<EOF > "${ED}"/usr/include/rocm-core/rocm_version.h || die
+#pragma once
+#define ROCM_VERSION_MAJOR $(ver_cut 1)
+#define ROCM_VERSION_MINOR $(ver_cut 2)
+#define ROCM_VERSION_PATCH $(ver_cut 3)
+#define ROCM_BUILD_INFO "$(ver_cut 1-3).0-9999-unknown"
+EOF
+	dosym -r /usr/include/rocm-core/rocm_version.h /usr/include/rocm_version.h
 
 	# files already installed by hipcc, which is a runtime dep
 	rm "${ED}/usr/bin/hipconfig.pl" || die
