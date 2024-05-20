@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/google/${PN}/archive/refs/tags/v${PV}.tar.gz
 LICENSE="BSD BSD-4"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test"
+IUSE="test tools"
 
 RDEPEND="
 	net-misc/curl
@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="test? ( dev-cpp/gtest )"
 RESTRICT="!test? ( test )"
+REQUIRED_USE="elibc_musl? ( !tools )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
@@ -51,5 +52,6 @@ src_prepare() {
 src_configure() {
 	econf \
 		--enable-system-test-libs \
+		$(use_enable tools) \
 		|| die
 }

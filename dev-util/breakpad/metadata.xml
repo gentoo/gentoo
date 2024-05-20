@@ -5,6 +5,9 @@
 		<email>tupone@gentoo.org</email>
 		<name>Tupone Alfredo</name>
 	</maintainer>
+	<use>
+		<flag name="tools">Build tools</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">google/breakpad</remote-id>
 	</upstream>
