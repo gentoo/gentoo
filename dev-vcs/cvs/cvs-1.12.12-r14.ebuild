@@ -6,7 +6,7 @@ EAPI=7
 inherit pam toolchain-funcs
 
 DESCRIPTION="Concurrent Versions System - source code revision control tools"
-HOMEPAGE="http://cvs.nongnu.org/"
+HOMEPAGE="https://cvs.nongnu.org/"
 
 SRC_URI="mirror://gnu/non-gnu/cvs/source/feature/${PV}/${P}.tar.bz2
 	doc? ( mirror://gnu/non-gnu/cvs/source/feature/${PV}/cederqvist-${PV}.html.tar.bz2
