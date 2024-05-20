@@ -362,15 +362,6 @@ dev-python/tinycss
 # Removal on 2024-05-20, bug #930346.
 sys-block/megamgr
 
-# Maciej Barć <xgqt@gentoo.org> (2024-04-20)
-# No reverse dependencies, old packages for mono, uses abandoned mono.eclass.
-# Dotnet Project is not willing to take up those packages.
-# Open bugs: #679440
-# Removal on 2024-05-20
-dev-dotnet/monocalendar
-dev-dotnet/ndesk-dbus
-dev-dotnet/ndesk-dbus-glib
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-04-19)
 # EAPI=6, library only without any reverse dependencies, uses
 # deprecated go eclasses, maintainer-needed.
