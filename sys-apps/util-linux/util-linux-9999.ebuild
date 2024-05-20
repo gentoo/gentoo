@@ -87,7 +87,7 @@ RDEPEND+="
 	)
 	uuidd? (
 		acct-user/uuidd
-		virtual/tmpfiles
+		systemd? ( virtual/tmpfiles )
 	)
 	!net-wireless/rfkill
 "
@@ -425,7 +425,7 @@ pkg_postinst() {
 		elog "might want to add --noclear to your /etc/inittab lines."
 	fi
 
-	if use uuidd; then
+	if use systemd && use uuidd; then
 		tmpfiles_process uuidd-tmpfiles.conf
 	fi
 }
