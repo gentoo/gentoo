@@ -15,7 +15,10 @@ if [ "${PV}" = "9999" ]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/jopohl/urh.git"
 else
-	SRC_URI="https://github.com/jopohl/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	COMMIT="544efd35ac4e0105cb63a31f2dc209c3834bc7bd"
+	SRC_URI="https://github.com/jopohl/urh/archive/${COMMIT}.tar.gz -> ${P}.gh.tar.gz"
+	S="${WORKDIR}/${PN}-${COMMIT}"
+	#SRC_URI="https://github.com/jopohl/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -44,9 +47,9 @@ RDEPEND="${DEPEND}
 
 distutils_enable_tests pytest
 
+PATCHES=( "${FILESDIR}/${PN}-2.9.7-no-numpy-setup.patch" )
+
 python_configure_all() {
-	# Using sed in the live ebuild to avoid patch failure
-	sed -i '/__NUMPY_SETUP__/d' setup.py || die
 	DISTUTILS_ARGS=(
 			$(use_with airspy)
 			$(use_with bladerf)
