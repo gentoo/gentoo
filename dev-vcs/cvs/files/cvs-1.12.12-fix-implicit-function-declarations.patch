@@ -1,0 +1,31 @@
+Clang16 will not allow implicit function declarations by default,
+therefore we need to declare the correct functions from stdlib.h.
+
+Bug: https://bugs.gentoo.org/870835
+Bug: https://bugs.gentoo.org/882225
+
+Pascal Jäger <pascal.jaeger@leimstift.de> (2022-12-04)
+
+--- a/lib/sighandle.c
++++ b/lib/sighandle.c
+@@ -41,8 +41,8 @@
+ #include <stdlib.h>
+ #else
+ #if __STDC__
+-char *calloc(unsigned nelem, unsigned size);
+-char *malloc(unsigned size);
++void *calloc(size_t nelem, size_t size);
++void *malloc(size_t size);
+ #else
+ char *calloc();
+ char *malloc();
+--- a/lib/unlocked-io.h
++++ b/lib/unlocked-io.h
+@@ -79,6 +79,7 @@
+ #if HAVE_DECL_FPUTS_UNLOCKED
+ # undef fputs
+ # define fputs(x,y) fputs_unlocked (x,y)
++extern int fputs_unlocked (const char *x, FILE *y);
+ #else
+ # define fputs_unlocked(x,y) fputs (x,y)
+ #endif
