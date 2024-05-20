@@ -42,7 +42,7 @@ https://salsa.debian.org/rocm-team/rocm-hipamd/-/blob/master/debian/patches/0026
 +}
 +
 +static bool isGfx1010EquivalentProcessor(const std::string& processor) {
-+  return matches(GfxPattern{"gfx101", "02"}, processor);
++  return matches(GfxPattern{"gfx101", "0"}, processor);
 +}
 +
 +static bool isGfx1010SupersetProcessor(const std::string& processor) {
@@ -181,7 +181,7 @@ https://salsa.debian.org/rocm-team/rocm-hipamd/-/blob/master/debian/patches/0026
    }
 --- a/rocclr/device/device.cpp
 +++ b/rocclr/device/device.cpp
-@@ -232,10 +232,49 @@ std::string Isa::isaName() const {
+@@ -234,10 +234,49 @@ std::string Isa::isaName() const {
    return std::string(hsaIsaNamePrefix) + targetId();
  }
  
@@ -211,7 +211,7 @@ https://salsa.debian.org/rocm-team/rocm-hipamd/-/blob/master/debian/patches/0026
 +      }
 +    } else if (codeObjectIsa.versionMajor() == 10) {
 +      if (codeObjectIsa.versionMinor() == 1) {
-+        const std::array<uint32_t, 2> gfx1010_equivalent = { 0, 2 };
++        const std::array<uint32_t, 1> gfx1010_equivalent = { 0 };
 +        const std::array<uint32_t, 4> gfx1010_superset = { 0, 1, 2, 3 };
 +        if (Contains(gfx1010_equivalent, codeObjectIsa.versionStepping()) &&
 +            Contains(gfx1010_superset, agentIsa.versionStepping())) {
