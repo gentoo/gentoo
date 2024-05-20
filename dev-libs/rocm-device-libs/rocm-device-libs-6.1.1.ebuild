@@ -69,6 +69,9 @@ src_configure() {
 		-DLLVM_DIR="$(get_llvm_prefix)"
 	)
 	cmake_src_configure
+	# do not trust CMake with autoselecting Clang, as it autoselects the latest one
+	# producing too modern LLVM bitcode and causing linker errors in other packages
+	CC="$(get_llvm_prefix)/bin/clang" CXX="$(get_llvm_prefix)/bin/clang++" cmake_src_configure
 }
 
 src_install() {
