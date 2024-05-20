@@ -22,4 +22,5 @@ start_stop_daemon_args="--chdir \"${REDICT_DIR}\""
 depend() {
 	use localmount logger
 	after keepalived
+	provide redis
 }
