@@ -11,7 +11,7 @@
 
 # https://bugs.gentoo.org/631002#c10
 # Force '--daemonize no' to override the config file
-command="/usr/sbin/redict-server"
+command="/usr/bin/redict-server"
 command_args="${REDICT_OPTS} --daemonize no"
 command_background="true"
 command_user="${REDICT_USER}:${REDICT_GROUP}"
