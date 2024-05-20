@@ -26,11 +26,11 @@ IUSE="geoip kerberos +lz4 otp pam radius +seccomp systemd tcpd test"
 RESTRICT="!test? ( test )"
 
 BDEPEND+="
+	net-misc/ipcalc
 	virtual/pkgconfig
 	test? (
 		net-libs/gnutls[tools(+)]
 		net-libs/socket_wrapper
-		net-misc/ipcalc
 		net-vpn/openconnect
 		sys-libs/nss_wrapper
 		sys-libs/uid_wrapper
