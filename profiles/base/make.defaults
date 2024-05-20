@@ -94,9 +94,9 @@ XTABLES_ADDONS="quota2 psd pknock lscan length2 ipv4options ipp2p iface geoip fu
 LCD_DEVICES="bayrad cfontz glk hd44780 lb216 lcdm001 mtxorb text"
 
 # Manuel Rüger <mrueg@gentoo.org> (2015-09-09)
+# Hans de Graaff <graaff@gentoo.org> (2024-05-20)
 # Default Ruby build target(s)
-# Updated to add ruby31 on 2023-05-29 and to drop ruby30 on 2023-06-17
-RUBY_TARGETS="ruby31"
+RUBY_TARGETS="ruby31 ruby32"
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2022-10-22)
 # These USE flags are what is common between the various sub-profiles. Stages 2

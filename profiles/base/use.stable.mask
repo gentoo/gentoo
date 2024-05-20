@@ -17,7 +17,6 @@ llvm_slot_18
 
 # Hans de Graaff <graaff@gentoo.org> (2023-12-25)
 # Currently in testing and not ready to go stable yet.
-ruby_targets_ruby32
 ruby_targets_ruby33
 
 # Michael Orlitzky <mjo@gentoo.org> (2023-12-05)
