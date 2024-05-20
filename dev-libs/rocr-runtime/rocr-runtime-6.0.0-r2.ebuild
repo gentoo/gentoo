@@ -33,7 +33,7 @@ COMMON_DEPEND="dev-libs/elfutils
 	x11-libs/libdrm"
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/roct-thunk-interface-${PV}
-	>=dev-libs/rocm-device-libs-${PV}
+	dev-libs/rocm-device-libs:${SLOT}
 	$(llvm_gen_dep '
 		sys-devel/clang:${LLVM_SLOT}=
 		sys-devel/lld:${LLVM_SLOT}=

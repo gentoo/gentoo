@@ -34,6 +34,7 @@ COMMON_DEPEND="dev-libs/elfutils
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/roct-thunk-interface-${PV}
 	>=dev-libs/rocm-device-libs-${PV}
+	<=dev-libs/rocm-device-libs-6.0
 	sys-devel/clang:${LLVM_MAX_SLOT}=
 	sys-devel/lld:${LLVM_MAX_SLOT}="
 RDEPEND="${DEPEND}"
