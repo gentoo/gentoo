@@ -61,7 +61,7 @@ pkg_pretend() {
 }
 
 src_configure() {
-	tc-export CC
+	tc-export CC PKG_CONFIG
 	default
 }
 
