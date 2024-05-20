@@ -11,6 +11,8 @@ DESCRIPTION="Automatic theorem prover for satisfiability modulo theories (SMT) p
 HOMEPAGE="https://cvc4.github.io/"
 SRC_URI="https://github.com/CVC4/CVC4-archived/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
+S="${WORKDIR}"/${PN^^}-archived-${PV}
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -28,8 +30,6 @@ BDEPEND="$(python_gen_any_dep '
 	')
 "
 
-S="${WORKDIR}"/${PN^^}-archived-${PV}
-
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-toml.patch
@@ -38,6 +38,13 @@ PATCHES=(
 
 python_check_deps() {
 	python_has_version "dev-python/tomli[${PYTHON_USEDEP}]"
+}
+
+src_prepare() {
+	cmake_src_prepare
+	if use elibc_musl ; then
+		eapply "${FILESDIR}"/${P}-musl.patch
+	fi
 }
 
 src_configure() {

@@ -1,0 +1,80 @@
+--- a/src/prop/bvminisat/simp/Main.cc	2024-05-20 14:52:26.827202665 +0200
++++ b/src/prop/bvminisat/simp/Main.cc	2024-05-20 14:53:05.967758613 +0200
+@@ -80,11 +80,6 @@
+         setUsageHelp("USAGE: %s [options] <input-file> <result-output-file>\n\n  where input may be either in plain or gzipped DIMACS.\n");
+         // printf("This is MiniSat 2.0 beta\n");
+         
+-#if defined(__linux__)
+-        fpu_control_t oldcw, newcw;
+-        _FPU_GETCW(oldcw); newcw = (oldcw & ~_FPU_EXTENDED) | _FPU_DOUBLE; _FPU_SETCW(newcw);
+-        printf("WARNING: for repeatability, setting FPU to use double precision\n");
+-#endif
+         // Extra options:
+         //
+         IntOption    verb   ("MAIN", "verb",   "Verbosity level (0=silent, 1=some, 2=more).", 1, IntRange(0, 2));
+--- a/src/prop/bvminisat/core/Main.cc	2024-05-20 14:52:35.361105845 +0200
++++ b/src/prop/bvminisat/core/Main.cc	2024-05-20 14:53:27.116518689 +0200
+@@ -80,11 +80,6 @@
+         setUsageHelp("USAGE: %s [options] <input-file> <result-output-file>\n\n  where input may be either in plain or gzipped DIMACS.\n");
+         // printf("This is MiniSat 2.0 beta\n");
+         
+-#if defined(__linux__)
+-        fpu_control_t oldcw, newcw;
+-        _FPU_GETCW(oldcw); newcw = (oldcw & ~_FPU_EXTENDED) | _FPU_DOUBLE; _FPU_SETCW(newcw);
+-        printf("WARNING: for repeatability, setting FPU to use double precision\n");
+-#endif
+         // Extra options:
+         //
+         IntOption    verb   ("MAIN", "verb",   "Verbosity level (0=silent, 1=some, 2=more).", 1, IntRange(0, 2));
+--- a/src/prop/minisat/simp/Main.cc	2024-05-20 14:52:44.044007338 +0200
++++ b/src/prop/minisat/simp/Main.cc	2024-05-20 14:53:39.356379840 +0200
+@@ -81,11 +81,6 @@
+         setUsageHelp("USAGE: %s [options] <input-file> <result-output-file>\n\n  where input may be either in plain or gzipped DIMACS.\n");
+         // printf("This is MiniSat 2.0 beta\n");
+         
+-#if defined(__linux__)
+-        fpu_control_t oldcw, newcw;
+-        _FPU_GETCW(oldcw); newcw = (oldcw & ~_FPU_EXTENDED) | _FPU_DOUBLE; _FPU_SETCW(newcw);
+-        printf("WARNING: for repeatability, setting FPU to use double precision\n");
+-#endif
+         // Extra options:
+         //
+         IntOption    verb   ("MAIN", "verb",   "Verbosity level (0=silent, 1=some, 2=more).", 1, IntRange(0, 2));
+--- a/src/prop/minisat/core/Main.cc	2024-05-20 14:52:50.063939036 +0200
++++ b/src/prop/minisat/core/Main.cc	2024-05-20 14:53:53.834215599 +0200
+@@ -79,11 +79,6 @@
+         setUsageHelp("USAGE: %s [options] <input-file> <result-output-file>\n\n  where input may be either in plain or gzipped DIMACS.\n");
+         // printf("This is MiniSat 2.0 beta\n");
+         
+-#if defined(__linux__)
+-        fpu_control_t oldcw, newcw;
+-        _FPU_GETCW(oldcw); newcw = (oldcw & ~_FPU_EXTENDED) | _FPU_DOUBLE; _FPU_SETCW(newcw);
+-        printf("WARNING: for repeatability, setting FPU to use double precision\n");
+-#endif
+         // Extra options:
+         //
+         IntOption    verb   ("MAIN", "verb",   "Verbosity level (0=silent, 1=some, 2=more).", 1, IntRange(0, 2));
+--- a/src/prop/bvminisat/utils/System.h	2024-05-20 14:54:23.301881326 +0200
++++ b/src/prop/bvminisat/utils/System.h	2024-05-20 14:54:42.030668881 +0200
+@@ -21,9 +21,6 @@
+ #ifndef BVMinisat_System_h
+ #define BVMinisat_System_h
+ 
+-#if defined(__linux__)
+-#include <fpu_control.h>
+-#endif
+ 
+ #include "prop/bvminisat/mtl/IntTypes.h"
+ 
+--- a/src/prop/minisat/utils/System.h	2024-05-20 14:54:28.650820656 +0200
++++ b/src/prop/minisat/utils/System.h	2024-05-20 14:54:55.435516829 +0200
+@@ -21,9 +21,6 @@
+ #ifndef Minisat_System_h
+ #define Minisat_System_h
+ 
+-#if defined(__linux__)
+-#include <fpu_control.h>
+-#endif
+ 
+ #include "prop/minisat/mtl/IntTypes.h"
+ 
