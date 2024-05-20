@@ -50,6 +50,7 @@ BDEPEND=">=dev-build/b2-5.0.0"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.81.0-disable_icu_rpath.patch
 	"${FILESDIR}"/${PN}-1.79.0-build-auto_index-tool.patch
+	"${FILESDIR}"/${PN}-1.85.0-bcp-filesystem.patch
 )
 
 create_user-config.jam() {
