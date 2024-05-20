@@ -99,6 +99,7 @@ llvm_check_deps() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_DISABLE_FIND_PACKAGE_KDEExperimentalPurpose=ON
 		-DCMAKE_DISABLE_FIND_PACKAGE_KF5Purpose=ON
 		-DLLVM_ROOT="$(get_llvm_prefix ${LLVM_SLOT})"
 		$(cmake_use_find_package gdbui KSysGuard)
