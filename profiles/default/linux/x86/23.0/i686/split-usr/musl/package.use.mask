@@ -1,5 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License, v2
+
+# Ian Jordan <immoloism@gmail.com> (2024-05-20)
+# Does not compile with musl-1.2.4+
+sys-devel/gcc sanitize
 
 # Anthony G. Basile <blueness@gentoo.org> (2020-09-06)
 # The patch added for 5.39-r1 breaks on musl i686
