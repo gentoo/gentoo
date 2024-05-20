@@ -27,7 +27,7 @@ IUSE="examples opengl test X"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-python/numpy[${PYTHON_USEDEP}]
+	<dev-python/numpy-2[${PYTHON_USEDEP}]
 	media-libs/freetype
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
