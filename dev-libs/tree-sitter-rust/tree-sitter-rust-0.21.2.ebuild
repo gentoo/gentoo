@@ -12,4 +12,4 @@ HOMEPAGE="https://github.com/tree-sitter/tree-sitter-rust"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~s390 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv ~s390 ~x86"
