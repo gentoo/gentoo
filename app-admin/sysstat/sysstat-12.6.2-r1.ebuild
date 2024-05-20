@@ -6,7 +6,7 @@ EAPI=8
 inherit systemd toolchain-funcs
 
 DESCRIPTION="System performance tools for Linux"
-HOMEPAGE="http://sebastien.godard.pagesperso-orange.fr/"
+HOMEPAGE="https://sysstat.github.io/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
