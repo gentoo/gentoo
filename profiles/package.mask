@@ -102,7 +102,7 @@ dev-python/whichcraft
 sci-libs/beagle
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-05-14)
-# Breaks build of revdeps.
+# Breaks build of revdeps. Bugs #931916, #931917
 ~app-text/poppler-24.05.0
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-13)
