@@ -538,7 +538,7 @@ texlive-module_src_install() {
 			ebegin "Installing man pages"
 			find texmf-dist/doc/man -type f -name '*.[0-9n]' -print |
 				grep -v "${grep_expressions[@]}" |
-				xargs -d '\n' --no-run-if-empty doman
+				xargs -d '\n' --no-run-if-empty nonfatal doman
 			# The grep in the middle of the pipe may return 1 in case
 			# everything from the input is dropped.
 			# See https://bugs.gentoo.org/931994
