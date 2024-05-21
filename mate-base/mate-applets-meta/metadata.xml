@@ -12,6 +12,10 @@
 	<use>
 		<flag name="appindicator">Pull in <pkg>mate-extra/mate-indicator-applet</pkg>
 			for AppIndicator applet</flag>
+		<flag name="bluetooth">Pull in <pkg>net-wireless/blueman</pkg>
+			for bluetooth applet</flag>
+		<flag name="networkmanager">Pull in <pkg>gnome-extra/nm-applet</pkg>
+			for NetworkManager applet</flag>
 		<flag name="sensors">Pull in <pkg>mate-extra/mate-sensors-applet</pkg>
 			for hw sensors applet</flag>
 	</use>
