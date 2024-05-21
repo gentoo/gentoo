@@ -1,0 +1,16 @@
+Fix a build issue due to the missing GNOME_ENABLE_DEBUG macro. 
+Patch by Hao Lin.
+https://bugs.gentoo.org/875056
+
+--- a/libgxim/gximcore.c
++++ b/libgxim/gximcore.c
+@@ -26,9 +26,7 @@
+ #endif
+ 
+ #include <glib/gi18n-lib.h>
+-#ifdef GNOME_ENABLE_DEBUG
+ #include <gdk/gdkx.h>
+-#endif /* GNOME_ENABLE_DEBUG */
+ #include "gximacc.h"
+ #include "gximconnection.h"
+ #include "gximmarshal.h"

@@ -13,6 +13,10 @@ SRC_URI="https://bitbucket.org/tagoh/${PN}/downloads/${P}.tar.bz2"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.5.0-remove-macro.patch
+)
+
 IUSE="${USE_RUBY//ruby/ruby_targets_ruby} static-libs test"
 RESTRICT="!test? ( test )"
 
