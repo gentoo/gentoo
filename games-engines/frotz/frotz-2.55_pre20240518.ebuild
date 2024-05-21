@@ -5,10 +5,11 @@ EAPI=8
 
 inherit toolchain-funcs
 
+COMMIT="f96e6b33d8b13f80258af49b4bb567428870291c"
 DESCRIPTION="Interpreter for Z-code based text games"
 HOMEPAGE="https://661.org/proj/if/frotz/"
-SRC_URI="https://gitlab.com/DavidGriffith/${PN}/-/archive/${PV}/${P}.tar.bz2"
-
+SRC_URI="https://gitlab.com/DavidGriffith/frotz/-/archive/${COMMIT}/frotz-master.tar.bz2 -> ${P}.tar.bz2"
+S="${WORKDIR}/${PN}-${COMMIT}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~riscv ~x86"
@@ -39,7 +40,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.53-uint32.patch
+	"${FILESDIR}"/${PN}-stray-dollar.patch
 )
 
 src_compile() {
@@ -67,7 +68,7 @@ src_install() {
 		DESTDIR="${D}"
 
 	dodoc \
-		AUTHORS ChangeLog CONTRIBUTORS DUMB HOW_TO_PLAY README TODO \
+		AUTHORS ChangeLog CONTRIBUTORS DUMB HOW_TO_PLAY README README.md \
 		doc/frotz.conf-{big,small}
 }
 
