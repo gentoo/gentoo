@@ -11,8 +11,8 @@ EGIT_REPO_URI="https://github.com/ruffle-rs/ruffle.git"
 
 LICENSE="|| ( Apache-2.0 MIT )"
 LICENSE+="
-	Apache-2.0 BSD-2 BSD Boost-1.0 CC0-1.0 ISC UbuntuFontLicense-1.0 MIT
-	MPL-2.0 OFL-1.1 openssl Unicode-DFS-2016 ZLIB
+	Apache-2.0 BSD-2 BSD Boost-1.0 CC0-1.0 ISC MIT MPL-2.0 openssl
+	Unicode-DFS-2016 ZLIB
 " # crates
 SLOT="0"
 IUSE="test"
@@ -34,7 +34,7 @@ DEPEND="
 BDEPEND="
 	virtual/jre:*
 	virtual/pkgconfig
-	>=virtual/rust-1.76
+	>=virtual/rust-1.77
 "
 
 QA_FLAGS_IGNORED="usr/bin/${PN}.*"
