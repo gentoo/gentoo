@@ -29,6 +29,12 @@ BDEPEND="sys-apps/which"
 # Let's fix it upstream after next autogen release if it happens.
 QA_CONFIGURE_OPTIONS+=" --enable-snprintfv-convenience"
 
+QA_CONFIG_IMPL_DECL_SKIP+=(
+	# libgen.h is legacy and linux doesn't include -lgen nor nonstandard
+	# functions. bug #924961
+	pathfind
+)
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.18.16-no-werror.patch
 	"${FILESDIR}"/${PN}-5.18.16-rpath.patch
