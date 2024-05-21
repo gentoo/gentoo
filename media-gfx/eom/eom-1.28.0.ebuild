@@ -7,7 +7,7 @@ inherit mate
 
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 fi
 
 DESCRIPTION="The MATE image viewer"
@@ -22,7 +22,7 @@ COMMON_DEPEND="
 	>=dev-libs/libpeas-1.8.0:0[gtk]
 	>=dev-libs/libxml2-2:2
 	gnome-base/dconf
-	>=mate-base/mate-desktop-1.17.0
+	>=mate-base/mate-desktop-1.28.0
 	sys-libs/zlib
 	x11-libs/cairo
 	>=x11-libs/gdk-pixbuf-2.36.5:2[introspection?,jpeg?,tiff?]
