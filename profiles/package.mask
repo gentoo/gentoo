@@ -832,6 +832,8 @@ sec-keys/openpgp-keys-jiatan
 =net-libs/signond-8.61-r100
 =net-misc/smb4k-3.2.5-r2
 ~sys-auth/polkit-qt-0.200.0
+~app-office/libreoffice-24.2.3.2
+~app-office/libreoffice-l10n-24.2.3.2
 
 # Sam James <sam@gentoo.org> (2024-02-18)
 # Lots of changes, including a port to a new build system. Needs lots of testing.
