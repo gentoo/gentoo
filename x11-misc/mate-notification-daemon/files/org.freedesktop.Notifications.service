@@ -1,3 +1,0 @@
-[D-BUS Service]
-Name=org.freedesktop.Notifications
-Exec=/usr/libexec/mate-notification-daemon
