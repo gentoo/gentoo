@@ -1,14 +1,14 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 
-inherit versionator unpacker udev multilib-minimal
+inherit unpacker udev multilib-minimal
 
-MY_PV_1=$(get_major_version)
-MY_PV_12=$(get_version_component_range 1-2)
+MY_PV_1=$(ver_cut 1)
+MY_PV_12=$(ver_cut 1-2)
 
 DESCRIPTION="SDRplay API/HW driver for all RSPs"
 HOMEPAGE="https://www.sdrplay.com"
@@ -38,13 +38,13 @@ multilib_src_install_all() {
 
 multilib_src_install() {
 	if [ "${MULTILIB_ABI_FLAG}" = "abi_x86_32" ]; then
-		dolib "${S}/i686/libmirsdrapi-rsp.so.${MY_PV_12}"
+		dolib.so "${S}/i686/libmirsdrapi-rsp.so.${MY_PV_12}"
 	fi
 
 	if [ "${MULTILIB_ABI_FLAG}" = "abi_x86_64" ]; then
-		dolib "${S}/x86_64/libmirsdrapi-rsp.so.${MY_PV_12}"
+		dolib.so "${S}/x86_64/libmirsdrapi-rsp.so.${MY_PV_12}"
 	fi
 
-	dosym libmirsdrapi-rsp.so.${MY_PV_12} "${EROOT}usr/$(get_libdir)/libmirsdrapi-rsp.so.${MY_PV_1}"
-	dosym libmirsdrapi-rsp.so.${MY_PV_1} "${EROOT}usr/$(get_libdir)/libmirsdrapi-rsp.so"
+	dosym libmirsdrapi-rsp.so.${MY_PV_12} "${EROOT}/usr/$(get_libdir)/libmirsdrapi-rsp.so.${MY_PV_1}"
+	dosym libmirsdrapi-rsp.so.${MY_PV_1} "${EROOT}/usr/$(get_libdir)/libmirsdrapi-rsp.so"
 }
