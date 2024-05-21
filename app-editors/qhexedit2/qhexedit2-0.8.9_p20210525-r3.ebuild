@@ -11,6 +11,7 @@ DESCRIPTION="Hex editor library, Qt application written in C++ with Python bindi
 HOMEPAGE="https://github.com/Simsys/qhexedit2/"
 SRC_URI="https://github.com/Simsys/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
+S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~riscv x86"
@@ -45,8 +46,6 @@ BDEPEND="
 		')
 	)
 "
-
-S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
 src_prepare() {
 	default
