@@ -18,6 +18,11 @@ RESTRICT="!test? ( test )"
 
 PATCHES=( "${FILESDIR}"/${P}-Werror.patch )
 
+src_prepare() {
+	rm test/test_proc_stat.cpp | dir
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-Dpfs_BUILD_TESTS=$(usex test)
