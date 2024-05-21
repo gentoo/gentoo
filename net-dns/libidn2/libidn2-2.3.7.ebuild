@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-minimal toolchain-funcs verify-sig
+inherit libtool multilib-minimal toolchain-funcs verify-sig
 
 DESCRIPTION="An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)"
 HOMEPAGE="
@@ -34,6 +34,11 @@ BDEPEND="
 "
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libidn.asc
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 multilib_src_configure() {
 	local myconf=(
