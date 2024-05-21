@@ -84,7 +84,7 @@ src_configure() {
 		-DSTATIC_LINKING:BOOL=OFF
 		# bug 809362, 754648
 		-DBUILD_TESTING:BOOL=$(usex test)
-		-DBUILD_FUZZ:BOOL=$(usex fuzzing)
+		-DBUILD_FUZZ:BOOL=OFF
 		-DENABLE_MAN:BOOL=OFF
 	)
 
