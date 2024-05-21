@@ -1,0 +1,30 @@
+From 8e4fdc1c2794e861cd026864607fa6b04c5237cb Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Tue, 21 May 2024 16:10:45 -0400
+Subject: [PATCH] fix incompatible check for libc compat
+
+It relied on implicit function declarations, which are banned starting
+in c99. Result: the check always failed.
+
+See: https://wiki.gentoo.org/wiki/Modern_C_porting#How_do_I_reproduce_these_bugs.3F
+Bug: https://bugs.gentoo.org/900296
+Signed-off-by: Eli Schwartz <eschwartz93@gmail.com>
+---
+ m4/check-libc-compat.m4 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/m4/check-libc-compat.m4 b/m4/check-libc-compat.m4
+index a806cbe..3bb859a 100644
+--- a/m4/check-libc-compat.m4
++++ b/m4/check-libc-compat.m4
+@@ -1,6 +1,6 @@
+ AC_DEFUN([CHECK_PROGNAME], [
+ AC_CACHE_CHECK([if libc defines __progname], ac_cv_libc_defines___progname, [
+-       AC_LINK_IFELSE([AC_LANG_PROGRAM([[]],
++       AC_LINK_IFELSE([AC_LANG_PROGRAM([[#include <stdio.h>]],
+                 [[ extern char *__progname; printf("%s", __progname); ]])],
+         [ ac_cv_libc_defines___progname="yes" ],
+         [ ac_cv_libc_defines___progname="no"
+-- 
+2.44.1
+
