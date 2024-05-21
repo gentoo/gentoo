@@ -44,7 +44,7 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}
-	rdp? ( >=net-misc/freerdp-1.1.0_beta1:*[X] )
+	rdp? ( net-misc/freerdp:*[client] )
 "
 
 src_configure() {
