@@ -7,7 +7,7 @@ inherit mate
 
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 fi
 
 DESCRIPTION="The MATE Terminal"
@@ -28,7 +28,7 @@ COMMON_DEPEND="
 "
 
 RDEPEND="${COMMON_DEPEND}
-	>=mate-base/mate-desktop-1.6
+	>=mate-base/mate-desktop-1.28.0
 	virtual/libintl
 "
 
