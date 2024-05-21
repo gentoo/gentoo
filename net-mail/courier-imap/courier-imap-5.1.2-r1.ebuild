@@ -238,7 +238,7 @@ src_install() {
 pkg_postinst() {
 	# Some users have been reporting that permissions on this directory were
 	# getting scrambled, so let's ensure that they are sane.
-	fperms 0755 "${ROOT}/usr/$(get_libdir)/${PN}"
+	chmod 0755 "${ROOT}/usr/$(get_libdir)/${PN}"
 
 	readme.gentoo_print_elog
 
