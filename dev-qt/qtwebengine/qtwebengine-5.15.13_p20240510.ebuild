@@ -152,8 +152,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	rm "${WORKDIR}/${PATCHSET}"/010-build-without-python-2.patch \
-		"${WORKDIR}/${PATCHSET}"/011-chromium-drop-catapult.patch || die
+	rm "${WORKDIR}/${PATCHSET}"/010-build-without-python-2.patch || die
 
 	if [[ ${PV} == ${QT5_PV}_p* ]]; then
 		# This is made from git, and for some reason will fail w/o .git directories.
