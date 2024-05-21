@@ -46,6 +46,10 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	consttime_memequal
 	SHA256_Init
 	hmac
+	# These may exist on some glibc versions, but the checks fail due to
+	# -Werror / undefined reference no matter what. bug #924825
+	arc4random
+	arc4random_uniform
 )
 
 PATCHES=(
