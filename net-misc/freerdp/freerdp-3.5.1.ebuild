@@ -12,10 +12,14 @@ if [[ ${PV} == *9999 ]]; then
 		2.*) EGIT_BRANCH="stable-2.0";;
 	esac
 else
+	inherit verify-sig
 	MY_P=${P/_/-}
 	S="${WORKDIR}/${MY_P}"
-	SRC_URI="https://pub.freerdp.com/releases/${MY_P}.tar.gz"
+	SRC_URI="https://pub.freerdp.com/releases/${MY_P}.tar.gz
+		verify-sig? ( https://pub.freerdp.com/releases/${MY_P}.tar.gz.asc )"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-akallabeth )"
+	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/akallabeth.asc"
 fi
 
 DESCRIPTION="Free implementation of the Remote Desktop Protocol"
@@ -26,7 +30,7 @@ SLOT="3"
 IUSE="aad alsa cpu_flags_arm_neon +client cups debug +ffmpeg +fuse gstreamer +icu jpeg kerberos openh264 pulseaudio sdl server smartcard systemd test usb valgrind wayland X xinerama xv"
 RESTRICT="!test? ( test )"
 
-BDEPEND="
+BDEPEND+="
 	virtual/pkgconfig
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
