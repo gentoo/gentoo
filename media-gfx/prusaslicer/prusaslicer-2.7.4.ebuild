@@ -17,7 +17,7 @@ S="${WORKDIR}/${MY_PN}-version_${MY_PV}"
 
 LICENSE="AGPL-3 Boost-1.0 GPL-2 LGPL-3 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="test"
 
 RESTRICT="!test? ( test )"
