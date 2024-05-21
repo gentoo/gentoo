@@ -71,6 +71,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-6.8-metadata.patch"
+	"${FILESDIR}/${PN}-6.8-boost-1.85.patch"
 )
 
 pkg_pretend() {
