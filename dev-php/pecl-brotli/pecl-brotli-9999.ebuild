@@ -26,7 +26,7 @@ HOMEPAGE+=" https://github.com/kjdev/php-ext-brotli"
 LICENSE="MIT"
 SLOT="0"
 
-RDEPEND="app-arch/brotli"
+RDEPEND="app-arch/brotli:="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
