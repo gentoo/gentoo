@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MATE_LA_PUNT="yes"
 
@@ -10,9 +10,10 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit mate python-any-r1 virtualx
 
 DESCRIPTION="Atril document viewer for MATE"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 LICENSE="FDL-1.1+ GPL-2+ GPL-3+ LGPL-2+ LGPL-2.1+"
 SLOT="0"
+
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 
 IUSE="caja dbus debug djvu dvi epub +introspection keyring nls +postscript synctex t1lib test tiff xps"
 
