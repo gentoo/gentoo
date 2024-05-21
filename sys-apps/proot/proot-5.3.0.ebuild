@@ -42,7 +42,14 @@ src_compile() {
 		CHECK_VERSION="true" \
 		CAREBUILDENV="ok" \
 		proot $(use care && echo "care")
-	emake -C doc SUFFIX=".py" proot/man.1
+
+	# Docutils >=0.21 dropped .py console scripts
+	# bug #930449
+	if has_version ">=dev-python/docutils-0.21" ; then
+		emake -C doc proot/man.1
+	else
+		emake -C doc SUFFIX=".py" proot/man.1
+	fi
 }
 
 src_install() {
