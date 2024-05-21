@@ -1,14 +1,19 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-MY_P=${PN}-src-${PV}
 inherit toolchain-funcs
 
+MY_P=${PN}-src-${PV}
 DESCRIPTION="A fork of Mupen64 Nintendo 64 emulator, glide64mk2 video plugin"
 HOMEPAGE="https://www.mupen64plus.org/"
-SRC_URI="https://github.com/mupen64plus/${PN}/releases/download/${PV}/${MY_P}.tar.gz"
+SRC_URI="
+	https://github.com/mupen64plus/${PN}/releases/download/${PV}/${MY_P}.tar.gz
+	https://github.com/mupen64plus/mupen64plus-video-glide64mk2/commit/b44b0d1c439bae1cf6c334711ef1ea4d2b565053.patch
+		-> ${P}-boost-1.85.patch
+"
+S=${WORKDIR}/${MY_P}
 
 # TODO: 3dfx licenses
 LICENSE="GPL-2+"
@@ -16,20 +21,25 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gles2-only hires cpu_flags_x86_sse"
 
-RDEPEND=">=games-emulation/mupen64plus-core-2.5:0=[gles2-only=]
+DEPEND="
+	>=games-emulation/mupen64plus-core-2.5:0=[gles2-only=]
 	media-libs/libpng:0=
 	media-libs/libsdl2:0=[video]
 	sys-libs/zlib:0=
 	virtual/opengl:0=
 	gles2-only? ( media-libs/libsdl2:0[gles2] )
-	hires? ( dev-libs/boost:= )"
-DEPEND="${RDEPEND}"
+	hires? ( dev-libs/boost:= )
+"
+RDEPEND="
+	${DEPEND}
+"
 BDEPEND="virtual/pkgconfig"
-
-S=${WORKDIR}/${MY_P}
 
 src_prepare() {
 	default
+
+	# https://github.com/mupen64plus/mupen64plus-video-glide64mk2/commit/b44b0d1c439bae1cf6c334711ef1ea4d2b565053
+	eapply "${DISTDIR}/${P}-boost-1.85.patch"
 
 	# avoid implicitly appending CPU flags
 	sed -i -e 's:-mmmx::g' -e 's:-msse::g' projects/unix/Makefile || die
