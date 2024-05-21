@@ -28,6 +28,7 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
+	media-libs/libglvnd
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
