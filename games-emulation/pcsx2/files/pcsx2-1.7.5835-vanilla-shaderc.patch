@@ -1,0 +1,49 @@
+PCSX2 upstream modifies shaderc[1][2][3] rendering its code incompatible
+with vanilla. We'd rather not package this modified shaderc if it can
+reasonably be avoided, so this does minimal code changes to allow vanilla
+usage.
+
+Disclaimer: as the author of this patch, be warned that I can hardly claim
+to know neither C++ nor shaderc, so it could very well be wrong. If run into
+vulkan/shaderc-related issues, try to reproduce with upstream's AppImage
+before reporting bugs to them as they offer no support for distros' builds.
+
+[1] https://github.com/PCSX2/pcsx2/commit/1cd4ba269854646
+[2] https://github.com/PCSX2/pcsx2/commit/fbfdf1200d27260
+[3] https://github.com/PCSX2/pcsx2/commit/ff7995f0d6caaac
+
+Signed-off-by: Ionen Wolkens <ionen@gentoo.org>
+--- a/pcsx2/GS/Renderers/Vulkan/VKShaderCache.cpp
++++ b/pcsx2/GS/Renderers/Vulkan/VKShaderCache.cpp
+@@ -109,5 +109,5 @@
+ 	X(shaderc_compile_options_set_optimization_level) \
+ 	X(shaderc_compile_options_set_target_env) \
+-	X(shaderc_compilation_status_to_string) \
++	X(shaderc_result_get_compilation_status) \
+ 	X(shaderc_compile_into_spv) \
+ 	X(shaderc_result_release) \
+@@ -217,19 +217,16 @@
+ 	dyn_shaderc::shaderc_compile_options_set_source_language(options, shaderc_source_language_glsl);
+ 	dyn_shaderc::shaderc_compile_options_set_target_env(options, shaderc_target_env_vulkan, 0);
+-	dyn_shaderc::shaderc_compile_options_set_generate_debug_info(options, debug,
+-		debug && GSDeviceVK::GetInstance()->GetOptionalExtensions().vk_khr_shader_non_semantic_info);
++	dyn_shaderc::shaderc_compile_options_set_generate_debug_info(options);
+ 	dyn_shaderc::shaderc_compile_options_set_optimization_level(
+ 		options, debug ? shaderc_optimization_level_zero : shaderc_optimization_level_performance);
+ 
+-	shaderc_compilation_result_t result;
+-	const shaderc_compilation_status status = dyn_shaderc::shaderc_compile_into_spv(
++	shaderc_compilation_result_t result = dyn_shaderc::shaderc_compile_into_spv(
+ 		dyn_shaderc::s_compiler, source.data(), source.length(), static_cast<shaderc_shader_kind>(stage), "source",
+-		"main", options, &result);
+-	if (status != shaderc_compilation_status_success)
++		"main", options);
++	if (dyn_shaderc::shaderc_result_get_compilation_status(result) != shaderc_compilation_status_success)
+ 	{
+ 		const std::string_view errors(result ? dyn_shaderc::shaderc_result_get_error_message(result) :
+ 											   "null result object");
+-		ERROR_LOG("Failed to compile shader to SPIR-V: {}\n{}",
+-			dyn_shaderc::shaderc_compilation_status_to_string(status), errors);
++		ERROR_LOG("Failed to compile shader to SPIR-V: {}", errors);
+ 		DumpBadShader(source, errors);
+ 	}

@@ -27,7 +27,7 @@ IUSE="alsa cpu_flags_x86_sse4_1 +clang jack pulseaudio sndio test vulkan wayland
 REQUIRED_USE="cpu_flags_x86_sse4_1" # dies at runtime if no support
 RESTRICT="!test? ( test )"
 
-# dlopen: libglvnd, qtsvg, vulkan-loader, wayland
+# dlopen: libglvnd, qtsvg, shaderc, vulkan-loader, wayland
 COMMON_DEPEND="
 	app-arch/lz4:=
 	app-arch/zstd:=
@@ -78,8 +78,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.4667-flags.patch
 	"${FILESDIR}"/${PN}-1.7.5232-cubeb-automagic.patch
-	"${FILESDIR}"/${PN}-1.7.5700-vanilla-shaderc.patch
 	"${FILESDIR}"/${PN}-1.7.5817-missing-headers.patch
+	"${FILESDIR}"/${PN}-1.7.5835-vanilla-shaderc.patch
 )
 
 src_prepare() {
