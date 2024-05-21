@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_RECIPE_DOC=""
 RUBY_FAKEGEM_DOCDIR=""
@@ -42,7 +42,7 @@ ruby_add_bdepend "
 	test? (
 		~dev-ruby/railties-${PV}
 		>=dev-ruby/image_processing-1.2:0
-		=dev-ruby/minitest-5.15*:*
+		dev-ruby/minitest:5
 		dev-ruby/mini_magick
 		dev-ruby/mocha
 		dev-ruby/rake
@@ -55,7 +55,7 @@ all_ruby_prepare() {
 	# test run. This also requires handling some gemspecs.
 	sed -e "/\(system_timer\|sdoc\|w3c_validators\|pg\|execjs\|jquery-rails\|'mysql'\|journey\|ruby-prof\|stackprof\|benchmark-ips\|kindlerb\|turbolinks\|coffee-rails\|debugger\|redcarpet\|bcrypt\|uglifier\|aws-sdk-s3\|aws-sdk-sns\|google-cloud-storage\|azure-storage\|blade\|bootsnap\|hiredis\|qunit-selenium\|chromedriver-helper\|redis\|rb-inotify\|stackprof\|websocket-client-simple\|libxml-ruby\|sass-rails\|capybara\|rack-cache\|selenium\|dalli\|listen\|connection_pool\|puma\|mysql2\|webdrivers\|webpacker\|rexml\|webmock\|webrick\|propshaft\|sprockets-export\|rack-test\|terser\|cookiejar\|cgi\|web-console\|trilogy\|error_highlight\|jbuilder\)/ s:^:#:" \
 		-e '/stimulus-rails/,/tailwindcss-rails/ s:^:#:' \
-		-e '/group :\(doc\|job\|lint\|rubocop\|test\)/,/^end/ s:^:#:' \
+		-e '/group :\(doc\|job\|lint\|mdl\|rubocop\|test\)/,/^end/ s:^:#:' \
 		-e '/sqlite/ s/1.6.4/99/' \
 		-i ../Gemfile || die
 	rm ../Gemfile.lock || die
