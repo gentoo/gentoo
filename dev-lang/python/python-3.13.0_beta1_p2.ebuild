@@ -303,6 +303,7 @@ src_configure() {
 		--without-ensurepip
 		--without-lto
 		--with-system-expat
+		--with-system-libmpdec
 		--with-platlibdir=lib
 		--with-pkg-config=yes
 		--with-wheel-pkg-dir="${EPREFIX}"/usr/lib/python/ensurepip
