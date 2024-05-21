@@ -6,6 +6,8 @@ EAPI=8
 TOOLCHAIN_PATCH_DEV="sam"
 PATCH_GCC_VER="13.2.0"
 MUSL_GCC_VER="13.2.0"
+PATCH_VER="16"
+MUSL_VER="2"
 PYTHON_COMPAT=( python3_{10..12} )
 
 if [[ ${PV} == *.9999 ]] ; then
