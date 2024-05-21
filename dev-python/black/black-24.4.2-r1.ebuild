@@ -27,6 +27,7 @@ RDEPEND="
 	>=dev-python/platformdirs-2[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		>=dev-python/tomli-1.1.0[${PYTHON_USEDEP}]
+		>=dev-python/typing-extensions-4.0.1[${PYTHON_USEDEP}]
 	' 3.10)
 "
 BDEPEND="
