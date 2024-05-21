@@ -67,6 +67,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-CGAL-build-fix-v5.4-renames-projection-traits-header.patch
 	"${FILESDIR}"/${P}-Fix-build-issue-with-overloaded-join.patch
 	"${FILESDIR}"/${P}-Remove-double-quoting-of-the-output-file-parameter-f.patch
+	"${FILESDIR}"/${P}-boost-1.85.patch
 )
 
 src_configure() {
