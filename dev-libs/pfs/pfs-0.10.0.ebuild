@@ -16,6 +16,8 @@ KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+PATCHES=( "${FILESDIR}"/${P}-Werror.patch )
+
 src_configure() {
 	local mycmakeargs=(
 		-Dpfs_BUILD_TESTS=$(usex test)
