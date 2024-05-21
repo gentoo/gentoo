@@ -7,7 +7,7 @@ inherit mate
 
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 fi
 
 DESCRIPTION="MATE indicator applet"
@@ -16,7 +16,7 @@ SLOT="0"
 
 COMMON_DEPEND="
 	dev-libs/libayatana-indicator:3
-	>=mate-base/mate-panel-1.17.0
+	>=mate-base/mate-panel-1.28.0
 	>=x11-libs/gtk+-3.22:3
 "
 
