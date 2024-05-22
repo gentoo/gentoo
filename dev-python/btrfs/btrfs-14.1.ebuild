@@ -8,16 +8,22 @@ PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
+MY_P=python-btrfs-${PV}
 DESCRIPTION="Python module to inspect btrfs filesystems"
-HOMEPAGE="https://github.com/knorrie/python-btrfs"
-SRC_URI="https://github.com/knorrie/python-${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+HOMEPAGE="
+	https://github.com/knorrie/python-btrfs/
+	https://pypi.org/project/btrfs/
+"
+SRC_URI="
+	https://github.com/knorrie/python-btrfs/archive/v${PV}.tar.gz
+		-> ${MY_P}.gh.tar.gz
+"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="amd64"
 IUSE="examples"
-
-S="${WORKDIR}/python-${P}"
 
 python_install_all() {
 	if use examples; then
