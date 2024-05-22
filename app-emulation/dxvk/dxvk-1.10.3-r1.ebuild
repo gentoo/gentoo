@@ -79,9 +79,6 @@ src_configure() {
 	# znver4: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110273
 	append-flags -mno-avx
 
-	# gcc14 -fno-omit-frame-pointer ICE workaround (bug #932319)
-	append-flags -fomit-frame-pointer
-
 	if [[ ${CHOST} != *-mingw* ]]; then
 		if [[ ! -v MINGW_BYPASS ]]; then
 			unset AR CC CXX RC STRIP
