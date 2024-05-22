@@ -54,6 +54,12 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	# fix build with USE=-wayland
+	# https://gitlab.xfce.org/xfce/xfce4-panel/-/issues/833
+	"${FILESDIR}/${P}-build.patch"
+)
+
 src_configure() {
 	local myconf=(
 		$(use_enable introspection)
