@@ -3,13 +3,22 @@
 
 EAPI=8
 
-inherit linux-mod-r1
+inherit linux-mod-r1 verify-sig
 
 MY_P="${PN/aes/AES}-v${PV}"
 
 DESCRIPTION="Linux kernel module to encrypt disk partitions with AES cipher"
 HOMEPAGE="https://sourceforge.net/projects/loop-aes/"
-SRC_URI="http://loop-aes.sourceforge.net/loop-AES/${MY_P}.tar.bz2"
+SRC_URI="
+	http://loop-aes.sourceforge.net/loop-AES/${MY_P}.tar.bz2
+	verify-sig? (
+		http://loop-aes.sourceforge.net/loop-AES/${MY_P}.tar.bz2.sign
+			-> ${MY_P}.tar.bz2.sig
+	)
+"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-jariruusu )"
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/jariruusu.asc"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -19,8 +28,6 @@ IUSE="cpu_flags_x86_aes extra-ciphers keyscrub cpu_flags_x86_padlock"
 DEPEND="app-crypt/loop-aes-losetup"
 
 PATCHES=( "${FILESDIR}"/loop-aes-3.7w-build-initrd_explicit-losetup.patch )
-
-S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	linux-mod-r1_pkg_setup
