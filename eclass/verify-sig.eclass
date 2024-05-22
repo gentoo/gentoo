@@ -426,10 +426,14 @@ verify-sig_src_unpack() {
 			verify-sig_verify_detached \
 				"${DISTDIR}/${f%.*}" "${DISTDIR}/${f}"
 		done
-	fi
 
-	# finally, unpack the distfiles
-	default_src_unpack
+		# finally, unpack the distfiles
+		if [[ ${#distfiles[@]} -gt 0 ]]; then
+			unpack "${distfiles[@]}"
+		fi
+	else
+		default_src_unpack
+	fi
 }
 
 fi
