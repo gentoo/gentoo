@@ -1,0 +1,14 @@
+diff --git a/gkbuilds/mdadm.gkbuild b/gkbuilds/mdadm.gkbuild
+index b43f753..e8060e5 100644
+--- a/gkbuilds/mdadm.gkbuild
++++ b/gkbuilds/mdadm.gkbuild
+@@ -16,6 +16,9 @@ src_prepare() {
+ }
+ 
+ src_compile() {
++	# bug 907082
++	append-cppflags -D_LARGEFILE64_SOURCE
++
+ 	gkmake V=1 mdadm mdmon
+ }
+ 
