@@ -126,6 +126,9 @@ src_configure() {
 	# bug #881695
 	filter-lto
 
+	# https://bugs.gentoo.org/927731
+	append-cflags $(test-flags-CC -Wno-error=incompatible-pointer-types)
+
 	local mycmakeargs=(
 		-Wno-dev
 		-DBUILD_TESTING=$(option test)
