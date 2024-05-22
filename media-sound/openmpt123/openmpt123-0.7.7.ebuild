@@ -9,6 +9,7 @@ MY_P="libopenmpt-${PV}+release.autotools"
 DESCRIPTION="libopenmpt-based command line player for tracked music files (modules)"
 HOMEPAGE="https://lib.openmpt.org/libopenmpt/"
 SRC_URI="https://lib.openmpt.org/files/libopenmpt/src/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
@@ -24,8 +25,6 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
