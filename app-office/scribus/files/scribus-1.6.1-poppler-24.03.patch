@@ -9,12 +9,6 @@ Fixes build errors caused by:
 Upstream commit 6e3824d45d42cb806a28a2df84e4ab6bb3587083
 
 Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
----
- scribus/plugins/import/pdf/slaoutput.cpp | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
-
-diff --git a/scribus/plugins/import/pdf/slaoutput.cpp b/scribus/plugins/import/pdf/slaoutput.cpp
-index 4e31e4b6c..3e4a768ec 100644
 --- a/scribus/plugins/import/pdf/slaoutput.cpp
 +++ b/scribus/plugins/import/pdf/slaoutput.cpp
 @@ -1731,7 +1731,11 @@ bool SlaOutputDev::axialShadedFill(GfxState *state, GfxAxialShading *shading, do
