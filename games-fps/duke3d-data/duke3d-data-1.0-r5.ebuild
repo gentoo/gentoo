@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,8 +16,8 @@ inherit cdrom
 DESCRIPTION="Duke Nukem 3D (Atomic Edition) data files"
 HOMEPAGE="https://www.3drealms.com/"
 SRC_URI="
-	demo? ( "ftp://ftp.3drealms.com/share/${MY_P_DEMO}.zip" )
-	gog? ( "${MY_P_GOG}.sh" )
+	demo? ( https://archive.org/download/3dduke13/${MY_P_DEMO}.zip )
+	gog? ( ${MY_P_GOG}.sh )
 "
 S="${WORKDIR}"
 
