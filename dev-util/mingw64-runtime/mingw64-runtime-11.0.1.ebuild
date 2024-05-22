@@ -65,16 +65,11 @@ src_configure() {
 	# (primarily done for 23.0 profiles' -z, not full coverage)
 	filter-flags '-Wl,-z,*'
 
-	if tc-is-gcc; then
-		# -mavx with mingw-gcc has a history of obscure issues and
-		# disabling is seen as safer, e.g. `WINEARCH=win32 winecfg`
-		# crashes with -march=skylake >=wine-8.10, similar issues with
-		# znver4: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110273
-		append-flags -mno-avx
-
-		# gcc14 -fno-omit-frame-pointer ICE workaround (bug #932319)
-		append-flags -fomit-frame-pointer
-	fi
+	# -mavx with mingw-gcc has a history of obscure issues and
+	# disabling is seen as safer, e.g. `WINEARCH=win32 winecfg`
+	# crashes with -march=skylake >=wine-8.10, similar issues with
+	# znver4: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110273
+	tc-is-gcc && append-flags -mno-avx
 
 	strip-unsupported-flags
 
