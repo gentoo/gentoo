@@ -1,0 +1,20 @@
+Issue: https://github.com/ROCm/ROCT-Thunk-Interface/issues/103
+===================================================================
+--- ROCT-Thunk-Interface-rocm-6.1.1.orig/tests/kfdtest/scripts/kfdtest.exclude
++++ ROCT-Thunk-Interface-rocm-6.1.1/tests/kfdtest/scripts/kfdtest.exclude
+@@ -63,6 +63,7 @@ PERMANENT_BLACKLIST_ALL_ASICS=\
+ # failures can be found
+ # NOTE: If you update this alphabetical listing, add the corresponding JIRA ticket for reference
+ #
++# KFDIPCTest.BasicTest are not compatible with upstream amdgpu kernel module
+ # KFDQMTest.GPUDoorbellWrite fails intermittently (KFD-318)
+ # KFDQMTest.mGPUShareBO (KFD-334)
+ # KFDHWSTest.* (SWDEV-193035)
+@@ -72,6 +73,7 @@ PERMANENT_BLACKLIST_ALL_ASICS=\
+ # KFDDBGTest.SuspendQueues (SWDEV-417850)
+ # KFDDBGTest.HitAddressWatch (SWDEV-420281)
+ TEMPORARY_BLACKLIST_ALL_ASICS=\
++"KFDIPCTest.BasicTest:"\
+ "KFDQMTest.GPUDoorbellWrite:"\
+ "KFDQMTest.mGPUShareBO:"\
+ "KFDQMTest.SdmaEventInterrupt:"\

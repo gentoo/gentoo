@@ -37,6 +37,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.1.0-visibility.patch"
 	"${FILESDIR}/kfdtest-6.1.0-linklibLLVM.patch"
 	"${FILESDIR}/kfdtest-6.1.0-libpath.patch"
+	"${FILESDIR}/kfdtest-6.1.0-skipIPCtest.patch"
 )
 
 test_wrapper() {
