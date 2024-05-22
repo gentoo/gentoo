@@ -27,7 +27,10 @@ IUSE="cpu_flags_x86_aes extra-ciphers keyscrub cpu_flags_x86_padlock"
 
 DEPEND="app-crypt/loop-aes-losetup"
 
-PATCHES=( "${FILESDIR}"/loop-aes-3.7w-build-initrd_explicit-losetup.patch )
+PATCHES=(
+	"${FILESDIR}"/loop-aes-3.7w-build-initrd_explicit-losetup.patch
+	"${FILESDIR}"/loop-aes-3.8c-build-initrd_nvme.patch
+)
 
 pkg_setup() {
 	linux-mod-r1_pkg_setup
