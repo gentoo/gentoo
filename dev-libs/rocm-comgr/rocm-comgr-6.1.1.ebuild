@@ -20,6 +20,11 @@ else
 	KEYWORDS="~amd64"
 fi
 
+DESCRIPTION="Radeon Open Compute Code Object Manager"
+HOMEPAGE="https://github.com/ROCm/ROCm-CompilerSupport"
+LICENSE="MIT"
+SLOT="0/$(ver_cut 1-2)"
+
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -36,11 +41,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.1.0-clang18-log_remarks_test.patch"
 	"${FILESDIR}/${PN}-6.1.0-dont-add-nogpulib.patch"
 )
-
-DESCRIPTION="Radeon Open Compute Code Object Manager"
-HOMEPAGE="https://github.com/ROCm/ROCm-CompilerSupport"
-LICENSE="MIT"
-SLOT="0/$(ver_cut 1-2)"
 
 RDEPEND=">=dev-libs/rocm-device-libs-${PV}
 	sys-devel/clang-runtime:=
