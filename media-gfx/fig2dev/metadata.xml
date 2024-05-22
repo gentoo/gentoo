@@ -9,6 +9,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="ghostscript">Require <pkg>app-text/ghostscript-gpl</pkg> to export PDF an bitmap formats</flag>
+	</use>
 	<upstream>
 		<remote-id type="sourceforge">mcj</remote-id>
 	</upstream>
