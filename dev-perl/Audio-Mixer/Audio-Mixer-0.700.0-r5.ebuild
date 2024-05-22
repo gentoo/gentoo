@@ -10,10 +10,10 @@ inherit perl-module
 
 DESCRIPTION="Perl extension for Sound Mixer control"
 
-SLOT="0"
 # License note: Ambiguous
 # https://rt.cpan.org/Ticket/Display.html?id=132448
 LICENSE="GPL-1"
+SLOT="0"
 KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86"
 
 PATCHES=(
