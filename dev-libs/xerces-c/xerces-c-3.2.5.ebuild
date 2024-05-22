@@ -35,6 +35,7 @@ DOCS=( CREDITS KEYS NOTICE README )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.2.4-strict-aliasing.patch
+	"${FILESDIR}"/${P}-cxx17.patch # bug 931105
 )
 
 pkg_setup() {
