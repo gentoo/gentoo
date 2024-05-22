@@ -17,14 +17,15 @@ HOMEPAGE="https://projects.eclipse.org/projects/eclipse.jdt"
 SRC_URI="https://archive.eclipse.org/eclipse/downloads/drops4/${DMF}/ecjsrc-${PV/_rc/RC}.jar"
 
 LICENSE="EPL-1.0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 SLOT="4.27"
 
 BDEPEND="app-arch/unzip"
 COMMON_DEP="app-eselect/eselect-java"
+# jdk-21 for https://bugs.gentoo.org/931195
 DEPEND="${COMMON_DEP}
 	dev-java/ant:0
-	>=virtual/jdk-17:*"
+	>=virtual/jdk-21:*"
 RDEPEND="${COMMON_DEP}
 	>=virtual/jre-11:*"
 
