@@ -61,6 +61,7 @@ pkg_setup() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_CXX_STANDARD=17
 		-DKDB_DEBUG_GUI=$(usex debug)
 		$(cmake_use_find_package mysql MySQL)
 		$(cmake_use_find_package postgres PostgreSQL)
