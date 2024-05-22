@@ -313,9 +313,6 @@ src_configure() {
 				# znver4: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110273
 				append-cflags -mno-avx #912268
 
-				# gcc14 -fno-omit-frame-pointer ICE workaround (bug #932319)
-				append-flags -fomit-frame-pointer
-
 				CC=${CROSSCC} test-flags-CC ${CFLAGS:--O2})}"
 			: "${CROSSLDFLAGS:=$(
 				filter-flags '-fuse-ld=*'
