@@ -30,6 +30,7 @@ PATCHES=( "${FILESDIR}"/${PN}-0.9.75-fix-testsuite-with-lto.patch )
 
 # All checks in libmicrohttpd's configure are correct
 # Gentoo Bug #898662
+# Gentoo Bug #923760
 QA_CONFIG_IMPL_DECL_SKIP=(
 	'pthread_sigmask'
 	'CreateThread'
@@ -64,6 +65,7 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	'sysctlbyname'
 	'usleep'
 	'nanosleep'
+	'stpncpy'
 )
 
 multilib_src_configure() {
