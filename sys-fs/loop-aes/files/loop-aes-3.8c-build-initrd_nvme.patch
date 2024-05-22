@@ -1,0 +1,12 @@
+--- loop-AES-v3.7z.orig/build-initrd.sh.orig	2023-02-27 11:08:09.965971977 -0700
++++ loop-AES-v3.7z/build-initrd.sh	2023-04-17 18:46:32.940350628 -0600
+@@ -967,6 +967,9 @@
+     maybeMakeDiskNode idac0d2p 72  32  0
+     maybeMakeDiskNode idac0d3p 72  48  0
+     maybeMakeDiskNode mmcblk0p 179  0  0
++    maybeMakeDiskNode nvme0n1p 249  0 ""
++    maybeMakeDiskNode nvme1n1p 249  8 ""
++    maybeMakeDiskNode nvme2n1p 249 16 ""
+ 
+     if [ ${mknodCount} != ${mknodRefCount} ] ; then
+         echo "*****************************************************************"
