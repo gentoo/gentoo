@@ -1,5 +1,3 @@
-diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 50eccfc84..d0f9205b3 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -115,9 +115,6 @@ if (SLIC3R_GUI)

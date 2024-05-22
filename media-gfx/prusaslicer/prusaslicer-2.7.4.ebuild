@@ -57,6 +57,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-2.6.0-libexpat-double-definition-fix.patch"
 	"${FILESDIR}/${PN}-2.6.0-dont-force-link-to-wayland-and-x11.patch"
+	"${FILESDIR}/${PN}-2.7.4-boost-1.85.patch"
 )
 
 src_prepare() {
