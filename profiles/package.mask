@@ -492,7 +492,7 @@ sec-keys/openpgp-keys-jiatan
 ~kde-frameworks/kxmlgui-6.2.0
 ~kde-frameworks/purpose-6.2.0
 ~kde-frameworks/qqc2-desktop-style-6.2.0
-~kde-plasma/bluedevil-6.0.5
+~kde-plasma/bluedevil-6.0.5.1
 ~kde-plasma/breeze-6.0.5
 ~kde-plasma/breeze-grub-6.0.5
 ~kde-plasma/breeze-gtk-6.0.5

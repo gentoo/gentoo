@@ -4,7 +4,6 @@
 EAPI=8
 
 ECM_HANDBOOK="forceoptional"
-KDE_ORG_COMMIT="v6.0.5" # workaround for botched upstream tarball
 KFMIN=6.0
 PVCUT=$(ver_cut 1-3)
 QTMIN=6.6.2
