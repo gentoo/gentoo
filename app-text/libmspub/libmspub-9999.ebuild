@@ -1,11 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools flag-o-matic
 
-if [[ ${PV} = *9999 ]]; then
+if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://anongit.freedesktop.org/git/libreoffice/libmspub.git"
 	inherit git-r3
 else
@@ -19,18 +19,18 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="doc static-libs"
 
-BDEPEND="
-	virtual/pkgconfig
-	doc? ( app-text/doxygen )
-"
 RDEPEND="
 	dev-libs/icu:=
 	dev-libs/librevenge
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}
-	dev-libs/boost
 	dev-build/libtool
+	dev-libs/boost
+"
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( app-text/doxygen )
 "
 
 src_prepare() {
@@ -42,8 +42,8 @@ src_prepare() {
 }
 
 src_configure() {
-	# bug 619044
-	append-cxxflags -std=c++14
+	# bug 619044, 932494
+	append-cxxflags -std=c++17
 
 	local myeconfargs=(
 		--disable-werror
