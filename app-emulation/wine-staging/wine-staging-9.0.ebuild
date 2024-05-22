@@ -365,9 +365,6 @@ src_configure() {
 				# (primarily done for 23.0 profiles' -z, not full coverage)
 				filter-flags '-Wl,-z,*'
 
-				# gcc14 -fno-omit-frame-pointer ICE workaround (bug #932319)
-				append-flags -fomit-frame-pointer
-
 				CC=${mingwcc} test-flags-CC ${CFLAGS:--O2}
 			)}"
 
