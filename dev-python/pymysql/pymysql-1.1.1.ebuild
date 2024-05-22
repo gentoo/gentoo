@@ -12,7 +12,7 @@ MY_P="PyMySQL-${PV}"
 DESCRIPTION="Pure-Python MySQL Driver"
 HOMEPAGE="
 	https://github.com/PyMySQL/PyMySQL/
-	https://pypi.org/project/pymysql/
+	https://pypi.org/project/PyMySQL/
 "
 SRC_URI="
 	https://github.com/PyMySQL/PyMySQL/archive/v${PV}.tar.gz
