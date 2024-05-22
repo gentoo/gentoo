@@ -1,0 +1,24 @@
+diff --git a/src/util/io.c b/src/util/io.c
+index c6446826..50c0fd6c 100644
+--- a/src/util/io.c
++++ b/src/util/io.c
+@@ -81,6 +81,7 @@ read_all (
+     return recvd_total;
+ }
+ 
++__attribute__ ((visibility("hidden")))
+ ssize_t
+ write_all (
+     SOCKET fd,
+diff --git a/src/util/io.h b/src/util/io.h
+index 25dd5c45..fec391d8 100644
+--- a/src/util/io.h
++++ b/src/util/io.h
+@@ -70,6 +70,7 @@ read_all (
+  * are detected. This is currently limited to interrupted system calls and
+  * short writes.
+  */
++__attribute__ ((visibility("hidden")))
+ ssize_t
+ write_all (
+     SOCKET fd,
