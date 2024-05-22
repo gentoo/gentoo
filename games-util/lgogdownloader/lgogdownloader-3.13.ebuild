@@ -36,10 +36,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-qt6.patch
-)
-
 src_configure() {
 	local mycmakeargs=(
 		-DUSE_QT_GUI=$(usex gui)
