@@ -252,11 +252,11 @@ else
 	KEYWORDS="amd64"
 fi
 
+SRC_URI+=" ${NUGET_URIS} "
+
 LICENSE="MIT"
 SLOT="0"
 RESTRICT="test"                                                   # Tests fail.
-
-SRC_URI+=" ${NUGET_URIS} "
 
 CHECKREQS_DISK_BUILD="1100M"
 DOTNET_PKG_PROJECTS=( src/Dotnet.Script/Dotnet.Script.csproj )
