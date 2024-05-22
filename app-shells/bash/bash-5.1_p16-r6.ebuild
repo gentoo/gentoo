@@ -96,6 +96,12 @@ BDEPEND="sys-devel/bison
 
 S="${WORKDIR}/${MY_P}"
 
+QA_CONFIG_IMPL_DECL_SKIP+=(
+	# this is fixed in autoconf 2.71, used in bash 5.2. The check fails
+	# regardless of GCC version. bug #916480
+	makedev
+)
+
 PATCHES=(
 	# Patches from Chet sent to bashbug ml
 	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-5.0-syslog-history-extern.patch
