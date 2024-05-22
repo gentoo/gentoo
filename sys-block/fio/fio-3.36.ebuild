@@ -63,6 +63,12 @@ PATCHES=(
 	"${FILESDIR}"/fio-2.2.13-libmtd.patch
 )
 
+QA_CONFIG_IMPL_DECL_SKIP+=(
+	# Internally uses -Werror=implicit-function-declaration for all configure
+	# checks. bug #904276
+	'*'
+)
+
 src_prepare() {
 	default
 
