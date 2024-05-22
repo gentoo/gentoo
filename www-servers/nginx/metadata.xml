@@ -1,24 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
-  <use>
-    <flag name="aio">Enables file AIO support</flag>
-    <flag name="http">Enable HTTP core support</flag>
-    <flag name="http2">Enable HTTP2 module support</flag>
-    <flag name="http3">Enable HTTP3 module support</flag>
-    <flag name="http-cache">Enable HTTP cache support</flag>
-    <flag name="ktls">Enable Kernel TLS offload (kTLS)</flag>
-    <flag name="libatomic">Use libatomic instead of builtin atomic operations</flag>
-    <flag name="pcre-jit">Enable JIT for pcre</flag>
-    <flag name="pcre2">Enable support for pcre2</flag>
-    <flag name="ssl">Enable HTTPS module for http. Enable SSL/TLS support for POP3/IMAP/SMTP for mail.</flag>
-    <flag name="rtmp">NGINX-based Media Streaming Server</flag>
-  </use>
-  <upstream>
-    <changelog>https://nginx.org/en/CHANGES</changelog>
-    <remote-id type="github">openresty/memc-nginx-module</remote-id>
-    <remote-id type="bitbucket">nginx-goodies/nginx-sticky-module-ng</remote-id>
-    <remote-id type="cpe">cpe:/a:nginx:nginx</remote-id>
-  </upstream>
+	<maintainer type="person" proxied="yes">
+		<email>zurabid2016@gmail.com</email>
+		<name>Zurab Kvachadze</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic
+		TCP/UDP proxy server, originally written by Igor Sysoev.
+	</longdescription>
+	<use>
+		<flag name="aio">Enable asynchronous I/O support</flag>
+		<flag name="debug">Enable support for debugging log</flag>
+		<flag name="http">Enable core HTTP support</flag>
+		<flag name="libatomic">
+			Use <pkg>dev-libs/libatomic_ops</pkg> instead of builtin atomic operations
+		</flag>
+		<flag name="mail">Enable POP3/IMAP4/SMTP mail proxy server</flag>
+		<flag name="stream">
+			Enable generic TCP/UDP proxying and load balancing
+		</flag>
+		<!-- NOTE: These are the USE flags for the legacy versions -->
+		<flag name="http2">Enable HTTP2 module support</flag>
+		<flag name="http3">Enable HTTP3 module support</flag>
+		<flag name="http-cache">Enable HTTP cache support</flag>
+		<flag name="ktls">Enable Kernel TLS offload (kTLS)</flag>
+		<flag name="pcre-jit">Enable JIT for pcre</flag>
+		<flag name="pcre2">Enable support for pcre2</flag>
+		<flag name="ssl">
+			Enable HTTPS module for http. Enable SSL/TLS support for POP3/IMAP/SMTP for mail.
+		</flag>
+		<flag name="rtmp">NGINX-based Media Streaming Server</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">nginx/nginx</remote-id>
+		<remote-id type="cpe">cpe:/a:f5:nginx</remote-id>
+		<doc>https://nginx.org/en/docs/</doc>
+		<changelog>https://nginx.org/en/CHANGES</changelog>
+		<bugs-to>https://github.com/nginx/nginx/issues</bugs-to>
+	</upstream>
 </pkgmetadata>
