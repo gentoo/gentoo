@@ -627,6 +627,9 @@ src_configure() {
 	if tc-is-cross-compiler; then
 		append-cflags "-fwrapv"
 
+		# Needed for the CHOST build too (bug #932385)
+		export CFLAGS="${CFLAGS} -D_GNU_SOURCE"
+
 		# bug #913171
 		export HOSTCFLAGS="${CFLAGS_FOR_BUILD} -D_GNU_SOURCE"
 	fi
