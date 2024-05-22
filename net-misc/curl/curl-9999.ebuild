@@ -63,15 +63,15 @@ REQUIRED_USE="
 
 RDEPEND="
 	>=sys-libs/zlib-1.1.4[${MULTILIB_USEDEP}]
-	adns? ( net-dns/c-ares:=[${MULTILIB_USEDEP}] )
+	adns? ( >=net-dns/c-ares-1.16.0:=[${MULTILIB_USEDEP}] )
 	brotli? ( app-arch/brotli:=[${MULTILIB_USEDEP}] )
 	http2? ( >=net-libs/nghttp2-1.12.0:=[${MULTILIB_USEDEP}] )
 	idn? ( net-dns/libidn2:=[static-libs?,${MULTILIB_USEDEP}] )
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 	ldap? ( >=net-nds/openldap-2.0.0:=[static-libs?,${MULTILIB_USEDEP}] )
 	nghttp3? (
-		>=net-libs/nghttp3-0.15.0[${MULTILIB_USEDEP}]
-		>=net-libs/ngtcp2-0.19.1[gnutls,ssl,-openssl,${MULTILIB_USEDEP}]
+		>=net-libs/nghttp3-1.1.0[${MULTILIB_USEDEP}]
+		>=net-libs/ngtcp2-1.2.0[gnutls,ssl,-openssl,${MULTILIB_USEDEP}]
 	)
 	psl? ( net-libs/libpsl[${MULTILIB_USEDEP}] )
 	rtmp? ( media-video/rtmpdump[${MULTILIB_USEDEP}] )
@@ -90,7 +90,7 @@ RDEPEND="
 			>=dev-libs/openssl-0.9.7:=[sslv3(-)=,static-libs?,${MULTILIB_USEDEP}]
 		)
 		rustls? (
-			net-libs/rustls-ffi:=[${MULTILIB_USEDEP}]
+			>=net-libs/rustls-ffi-0.13.0:=[${MULTILIB_USEDEP}]
 		)
 	)
 	zstd? ( app-arch/zstd:=[${MULTILIB_USEDEP}] )
@@ -134,6 +134,7 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 PATCHES=(
 	"${FILESDIR}"/${PN}-prefix-2.patch
 	"${FILESDIR}"/${PN}-respect-cflags-3.patch
+	"${FILESDIR}"/${P}-install-manpage.patch
 )
 
 src_prepare() {
@@ -220,7 +221,6 @@ multilib_src_configure() {
 		$(use_enable ldap)
 		$(use_enable ldap ldaps)
 		--enable-ntlm
-		--disable-ntlm-wb
 		$(use_enable pop3)
 		--enable-rt
 		--enable-rtsp

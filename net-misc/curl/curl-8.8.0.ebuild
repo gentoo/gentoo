@@ -135,6 +135,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-prefix-2.patch
 	"${FILESDIR}"/${PN}-respect-cflags-3.patch
 	"${FILESDIR}"/${P}-install-manpage.patch
+	"${FILESDIR}"/${P}-mbedtls.patch
 )
 
 src_prepare() {
@@ -221,7 +222,6 @@ multilib_src_configure() {
 		$(use_enable ldap)
 		$(use_enable ldap ldaps)
 		--enable-ntlm
-		--disable-ntlm-wb
 		$(use_enable pop3)
 		--enable-rt
 		--enable-rtsp
