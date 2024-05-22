@@ -64,8 +64,8 @@ PATCH_DEV=""
 PATCH_VER=""
 DESCRIPTION="GNU debugger"
 HOMEPAGE="https://sourceware.org/gdb/"
-SRC_URI="
-	${SRC_URI}
+SRC_URI+="
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-sim-modern-c99.patch.xz
 	${PATCH_DEV:+https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${P}-patches-${PATCH_VER}.tar.xz}
 	${PATCH_VER:+mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz}
 "
@@ -117,7 +117,7 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.3.1-verbose-build.patch
-	"${FILESDIR}"/${PN}-14.2-sim-modern-c99.patch
+	"${WORKDIR}"/${PN}-14.2-sim-modern-c99.patch
 )
 
 pkg_setup() {
