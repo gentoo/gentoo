@@ -49,6 +49,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.7.1-no_asan_doc.patch"
 	"${FILESDIR}/${PN}-6.1.0-install.patch"
 	"${FILESDIR}/${PN}-6.1.0-extend-isa-compatibility-check.patch"
+	"${FILESDIR}/${PN}-6.1.1-fix-musl.patch"
 )
 
 hip_test_wrapper() {
@@ -79,6 +80,7 @@ src_prepare() {
 		"${FILESDIR}"/hip-test-6.0.2-hipcc-system-install.patch
 		"${FILESDIR}"/hip-test-5.7.1-remove-incompatible-flag.patch
 		"${FILESDIR}"/hip-test-6.1.0-disable-hipKerArgOptimization.patch
+		"${FILESDIR}"/hip-test-6.1.1-fix-musl.patch
 	)
 	hip_test_wrapper cmake_src_prepare
 }
