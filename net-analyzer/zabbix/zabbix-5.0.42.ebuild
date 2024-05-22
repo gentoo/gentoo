@@ -86,7 +86,6 @@ RDEPEND="${COMMON_DEPEND}
 		virtual/httpd-php:*
 		mysql? ( dev-lang/php[mysqli] )
 		odbc? ( dev-lang/php[odbc] )
-		oracle? ( dev-lang/php[oci8-instant-client] )
 		postgres? ( dev-lang/php[postgres] )
 		sqlite? ( dev-lang/php[sqlite] )
 	)
@@ -227,6 +226,14 @@ src_install() {
 
 		systemd_dounit "${FILESDIR}"/zabbix-proxy.service
 		newtmpfiles "${FILESDIR}"/zabbix-proxy.tmpfiles zabbix-proxy.conf
+	fi
+
+	if use oracle; then
+		ewarn
+		ewarn "Support for Oracle database has been dropped from PHP"
+		ewarn "so to make the web frontend work, you need to install"
+		ewarn "PECL extension for Oracle database."
+		ewarn "For details see https://bugs.gentoo.org/928386"
 	fi
 
 	if use agent; then
