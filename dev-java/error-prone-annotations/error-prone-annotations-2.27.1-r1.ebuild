@@ -17,7 +17,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
-DEPEND=">=virtual/jdk-1.8:*"
+DEPEND=">=virtual/jdk-11:*"
 RDEPEND=">=virtual/jre-1.8:*"
 
 JAVA_AUTOMATIC_MODULE_NAME="com.google.errorprone.annotations"
