@@ -1,6 +1,10 @@
 Remove HIP/ROCM includes ("-isystem /usr/include"), as they break inclusion of <math.h>.
 Add inclusion of Clang resource dir (e.g. /usr/lib/clang/17), as it is used in hip runtime like that.
-Issue: https://github.com/ROCm/clr/issues/82
+Remove hardcoded target to fix HIP on musl.
+
+Issues:
+* https://github.com/ROCm/clr/issues/82
+* https://github.com/ROCm/llvm-project/issues/92
 --- a/src/comgr-compiler.cpp
 +++ b/src/comgr-compiler.cpp
 @@ -1028,9 +1028,8 @@ AMDGPUCompiler::addTargetIdentifierFlags(llvm::StringRef IdentStr,
@@ -15,8 +19,12 @@ Issue: https://github.com/ROCm/clr/issues/82
  
    Args.push_back("-x");
  
-@@ -1055,9 +1054,7 @@ amd_comgr_status_t AMDGPUCompiler::addCompilationFlags() {
-     Args.push_back("x86_64-unknown-linux-gnu");
+@@ -1051,13 +1050,9 @@ amd_comgr_status_t AMDGPUCompiler::addCompilationFlags() {
+   case AMD_COMGR_LANGUAGE_HIP:
+     Args.push_back("hip");
+     Args.push_back("-std=c++11");
+-    Args.push_back("-target");
+-    Args.push_back("x86_64-unknown-linux-gnu");
      Args.push_back("--cuda-device-only");
      Args.push_back("-isystem");
 -    Args.push_back(ROCMIncludePath.c_str());

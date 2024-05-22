@@ -1,0 +1,79 @@
+ROCm 6.0.0 and 6.0.2 releases use mix between LLVM 17 and 18
+forked as https://github.com/RadeonOpenCompute/llvm-project
+which makes some libraries compatible with LLVM 17,
+while other require LLVM 18.
+
+Backports:
+* https://github.com/ROCm/llvm-project/commit/6cbc4dc91dfeb1cf2295cb350866e0b3a07dfee4
+* https://github.com/ROCm/llvm-project/commit/179ec2e67bf882c6bccb27f81db3d80f7eb9946e
+* https://github.com/ROCm/llvm-project/commit/ee123c3d1706bc4346511b1a9032020782576350
+--- a/src/comgr-compiler.cpp
++++ b/src/comgr-compiler.cpp
+@@ -205,7 +205,11 @@ bool AssemblerInvocation::createFromArgs(AssemblerInvocation &Opts,
+   // Parse the arguments.
+   const OptTable &OptTbl = getDriverOptTable();
+ 
++#if LLVM_VERSION_MAJOR == 17
+   const unsigned IncludedFlagsBitmask = options::CC1AsOption;
++#else
++  llvm::opt::Visibility IncludedFlagsBitmask(options::CC1AsOption);
++#endif
+   unsigned MissingArgIndex, MissingArgCount;
+   InputArgList Args = OptTbl.ParseArgs(Argv, MissingArgIndex, MissingArgCount,
+                                        IncludedFlagsBitmask);
+@@ -1041,11 +1045,15 @@ amd_comgr_status_t AMDGPUCompiler::addCompilationFlags() {
+     Args.push_back("cl");
+     Args.push_back("-std=cl1.2");
+     Args.push_back("-cl-no-stdinc");
++    Args.push_back("-mllvm");
++    Args.push_back("-amdgpu-internalize-symbols");
+     break;
+   case AMD_COMGR_LANGUAGE_OPENCL_2_0:
+     Args.push_back("cl");
+     Args.push_back("-std=cl2.0");
+     Args.push_back("-cl-no-stdinc");
++    Args.push_back("-mllvm");
++    Args.push_back("-amdgpu-internalize-symbols");
+     break;
+   case AMD_COMGR_LANGUAGE_HIP:
+     Args.push_back("hip");
+@@ -1605,6 +1613,9 @@ amd_comgr_status_t AMDGPUCompiler::assembleToRelocatable() {
+   Args.push_back("-x");
+   Args.push_back("assembler");
+ 
++  // -nogpulib option not needed for assembling to relocatable
++  NoGpuLib = false;
++
+   return processFiles(AMD_COMGR_DATA_KIND_RELOCATABLE, ".o");
+ }
+ 
+--- a/src/comgr-metadata.cpp
++++ b/src/comgr-metadata.cpp
+@@ -1087,7 +1087,12 @@ amd_comgr_status_t lookUpCodeObject(DataObject *DataP,
+   }
+ 
+   BinaryStreamReader Reader(StringRef(DataP->Data, DataP->Size),
+-                            support::little);
++#if LLVM_VERSION_MAJOR == 17
++                            support::little
++#else
++                            llvm::endianness::little
++#endif
++                            );
+ 
+   StringRef Magic;
+   if (auto EC = Reader.readFixedString(Magic, OffloadBundleMagicLen)) {
+--- a/test/compile_log_remarks_test.c
++++ b/test/compile_log_remarks_test.c
+@@ -107,7 +107,11 @@ int main(int argc, char *argv[]) {
+              AMD_COMGR_DATA_KIND_SOURCE, 1);
+ 
+   checkLogs("AMD_COMGR_ACTION_CODEGEN_BC_TO_ASSEMBLY", DataSetAsm,
++#if LLVM_VERSION_MAJOR == 17
+             "remark: <unknown>:0:0: 8 stack bytes in function "
++#else
++            "remark: <unknown>:0:0: 8 stack bytes in function 'f' "
++#endif
+             "[-Rpass-analysis=prologepilog]");
+ 
+   Status = amd_comgr_destroy_data_set(DataSetCl);
