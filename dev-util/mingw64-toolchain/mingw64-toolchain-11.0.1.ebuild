@@ -237,9 +237,6 @@ src_compile() {
 				# znver4: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110273
 				append-flags -mno-avx
 
-				# gcc14 -fno-omit-frame-pointer ICE workaround (bug #932319)
-				append-flags -fomit-frame-pointer
-
 				strip-unsupported-flags
 				mwt-build "${@:2}"
 			)
