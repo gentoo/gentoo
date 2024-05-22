@@ -22,7 +22,7 @@ IUSE="extra-webapps"
 
 RESTRICT="test" # can we run them on a production system?
 
-ECJ_SLOT="4.27"
+ECJ_SLOT="4.26"
 
 COMMON_DEP="dev-java/bnd-annotation:0
 	dev-java/eclipse-ecj:${ECJ_SLOT}
