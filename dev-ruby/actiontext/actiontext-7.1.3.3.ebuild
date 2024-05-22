@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
@@ -37,7 +37,7 @@ ruby_add_rdepend "
 ruby_add_bdepend "test? (
 	dev-ruby/bundler
 	dev-ruby/importmap-rails
-	dev-ruby/minitest:5.15
+	dev-ruby/minitest:5
 	dev-ruby/mocha
 	dev-ruby/propshaft
 	>=dev-ruby/sqlite3-1.4.0
@@ -50,7 +50,7 @@ all_ruby_prepare() {
 		-e '/stimulus-rails/,/cssbundling-rails/ s:^:#:' \
 		-e '/tailwindcss-rails/,/dartsass-rails/ s:^:#:' \
 		-e '/:job/,/end/ s:^:#:' \
-		-e '/group :\(cable\|doc\|lint\|rubocop\|storage\|test\)/,/^end/ s:^:#:' \
+		-e '/group :\(cable\|doc\|lint\|mdl\|rubocop\|storage\|test\)/,/^end/ s:^:#:' \
 		-e '/sqlite/ s/1.6.4/99/' \
 		-i ../Gemfile || die
 	rm ../Gemfile.lock || die
