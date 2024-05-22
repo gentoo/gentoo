@@ -279,7 +279,6 @@ perl-module_src_configure() {
 			--config ld="$(tc-getCC)" \
 			--config nm="$(tc-getNM)" \
 			--config ranlib="$(tc-getRANLIB)" \
-			--config ccflags="${CFLAGS}" \
 			--config optimize="${CFLAGS}" \
 			--config ldflags="${LDFLAGS}" \
 			"${myconf_local[@]}"
