@@ -144,14 +144,6 @@ multilib_src_configure() {
 	meson_src_configure
 }
 
-amultilib_src_configure() {
-	myconf=(
-		$(use_enable static-libs static)
-	)
-
-	# $(has_version dev-libs/dbus-glib && echo --enable-modular-tests)
-}
-
 multilib_src_compile() {
 	# After the compile, it uses a selinuxfs interface to
 	# check if the SELinux policy has the right support
