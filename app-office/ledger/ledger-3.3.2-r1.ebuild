@@ -67,6 +67,9 @@ src_prepare() {
 	mv doc/ledger{3,}.texi || die "Failed to rename info file name"
 
 	rm -r lib/utfcpp || die
+
+	eapply "${FILESDIR}/convenience.patch"
+	eapply_user
 }
 
 src_configure() {
