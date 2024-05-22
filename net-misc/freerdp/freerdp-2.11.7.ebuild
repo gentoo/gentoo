@@ -106,6 +106,7 @@ src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}/freerdp-2.11.2-clang.patch"
 		"${FILESDIR}/freerdp-2.11-Revert-codec-encode-messages-considering-endianness.patch"
+		"${FILESDIR}/freerdp-2.11.7-type-mismatch.patch"
 	)
 	cmake_src_prepare
 }
