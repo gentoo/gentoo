@@ -4,7 +4,7 @@
 EAPI=8
 
 # Uncomment when introducing a patch which touches configure
-#RSYNC_NEEDS_AUTOCONF=1
+RSYNC_NEEDS_AUTOCONF=1
 PYTHON_COMPAT=( python3_{10..12} )
 inherit flag-o-matic prefix python-single-r1 systemd
 
@@ -86,6 +86,8 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	sed -i -e 's/AC_HEADER_MAJOR_FIXED/AC_HEADER_MAJOR/' configure.ac
 
 	if [[ ${PV} == *9999 || -n ${RSYNC_NEEDS_AUTOCONF} ]] ; then
 		eaclocal -I m4
