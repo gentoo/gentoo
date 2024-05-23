@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Ian Jordan <immoloism@gmail.com> (2024-05-23)
+# Upstream have removed support for this and will no longer be needed when
+# MATE 1.28 is stable. Anyone needing this package will need to notify upstream at
+# https://github.com/mate-desktop/mate-netbook/issues/69 and myself at
+# https://bugs.gentoo.org/932568 Removal on 2024-07-26.
+mate-extra/mate-netbook
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-05-20)
 # Short-lived side-by-side release, now unnecessary as it moved back to
 # kde-apps/kio-extras:5. Removal on 2024-06-04.
