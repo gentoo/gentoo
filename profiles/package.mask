@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-23)
+# Bitrise stack is abandoned in Gentoo, maintainer-needed, awaits
+# version bump, uses deprecated Go eclasses, EAPI=6, fails to compile
+# with modern C.
+# Removal on 2024-06-22.  Bugs #932570, #844688, #717536, #771066, #844700, #844703.
+dev-util/bitrise
+dev-util/envman
+dev-util/stepman
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-05-20)
 # Short-lived side-by-side release, now unnecessary as it moved back to
 # kde-apps/kio-extras:5. Removal on 2024-06-04.
