@@ -1,13 +1,13 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-CMAKE_REMOVE_MODULES_LIST="FindFreetype FindDoxygen FindZLIB"
+CMAKE_REMOVE_MODULES_LIST=( FindFreetype FindDoxygen FindZLIB )
 inherit cmake
 
 IMGUI_PN="imgui"
-IMGUI_PV="1.77"
+IMGUI_PV="1.87"
 IMGUI_P="${IMGUI_PN}-${IMGUI_PV}"
 
 DESCRIPTION="Object-oriented Graphics Rendering Engine"
@@ -16,25 +16,21 @@ SRC_URI="https://github.com/OGRECave/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/ocornut/${IMGUI_PN}/archive/v${IMGUI_PV}.tar.gz -> ${IMGUI_P}.tar.gz"
 
 LICENSE="MIT public-domain"
-SLOT="0/1.12"
+SLOT="0/13.6"
 KEYWORDS="~amd64 ~arm ~x86"
 
-IUSE="assimp +cache cg debug deprecated doc double-precision egl examples +freeimage
+IUSE="assimp bullet +cache cg debug deprecated doc double-precision egl examples +freeimage
 	json +opengl pch profile resman-pedantic tools"
 
-# Note: gles2 USE flag taken out for now. It seems like the Ogre Devs now rely
-#       on HLSL2GLSL (https://github.com/aras-p/hlsl2glslfork) unconditionally
-#       for GLES2. So unless we have an ebuild for that, gles2/3 are off the
-#       table.
-#       ~~sed 2020-04-26 (yamakuzure@gmx.net)
+# Note: gles2 USE flag taken out for now, as even the configuration seems to be broken
+#       ~~sed 2022-12-13 (sven@eden-worx.com)
+#
+# Note: The following dependencies might be considered for new ebuilds
+#  + Vulkan SDK: Vulkan RenderSystem, glslang Plugin. Alternatively use system packages <https://vulkan.lunarg.com/>
 #
 # Note: Without gles2 USE flag, the opengl USE flag is next to useless. But
 #       there are packages which enforce it, so it has to stay.
 #
-# USE="gles2"
-# REQUIRED_USE="
-# 	|| ( gles2 opengl )
-# "
 REQUIRED_USE="
 	examples? ( opengl )
 "
@@ -51,8 +47,9 @@ RDEPEND="
 	x11-libs/libXrandr
 	x11-libs/libXt
 	assimp? ( media-libs/assimp:= )
+	bullet? ( sci-physics/bullet:= )
 	cg? ( media-gfx/nvidia-cg-toolkit )
-	egl? ( media-libs/mesa[egl(+)] )
+	egl? ( media-libs/libglvnd )
 	freeimage? ( media-libs/freeimage )
 	json? ( dev-libs/rapidjson )
 	opengl? (
@@ -61,7 +58,6 @@ RDEPEND="
 	)
 	tools? ( dev-libs/tinyxml[stl] )
 "
-# 	gles2? ( media-libs/mesa[gles2] )
 DEPEND="
 	${RDEPEND}
 	x11-base/xorg-proto
@@ -72,20 +68,17 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-media_path.patch
-	"${FILESDIR}"/${P}-resource_path.patch
-	"${FILESDIR}"/${P}-fix_Simple_demo.patch
-	"${FILESDIR}"/${P}-gentoolize_imgui_inclusion.patch
-	"${FILESDIR}"/${P}-fix_config_window_height.patch
+	"${FILESDIR}"/${PN}-13.5.3-media_path.patch
+	"${FILESDIR}"/${PN}-13.5.3-resource_path.patch
+	"${FILESDIR}"/${PN}-13.5.3-gentoolize_imgui_inclusion.patch
 	"${FILESDIR}"/${PN}-1.10.12-use_system_tinyxml.patch
 )
 
 src_unpack() {
 	unpack ${P}.tar.gz || die "Unpacking ${P}.zip failed"
 
-	# Ogre 1.12.9 includes imgui, but as a submodule, it is not included
-	# in the release. The build system tries to download it, that may
-	# fail and so we are doing it ourselves.
+	# Ogre includes imgui, but as a manual download done by Components/Overlay/CMakeLists.txt
+	# That may fail and so we are doing it ourselves.
 	cd "${S}" || die "Unpack incomplete"
 	unpack ${IMGUI_P}.tar.gz || die "Unpacking ${IMGUI_P}.zip failed"
 }
@@ -127,9 +120,10 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_SKIP_INSTALL_RPATH=yes
+		-DOGRE_ASSERT_MODE=1
 		-DOGRE_BUILD_COMPONENT_BITES=yes
+		-DOGRE_BUILD_COMPONENT_BULLET=$(usex bullet)
 		-DOGRE_BUILD_COMPONENT_CSHARP=no
-		-DOGRE_BUILD_COMPONENT_HLMS=$(usex deprecated)
 		-DOGRE_BUILD_COMPONENT_JAVA=no
 		-DOGRE_BUILD_COMPONENT_OVERLAY=yes
 		-DOGRE_BUILD_COMPONENT_OVERLAY_IMGUI=yes
@@ -140,6 +134,7 @@ src_configure() {
 		-DOGRE_BUILD_COMPONENT_TERRAIN=yes
 		-DOGRE_BUILD_COMPONENT_VOLUME=yes
 		-DOGRE_BUILD_DEPENDENCIES=no
+		-DOGRE_BUILD_PLUGIN_ASSIMP=$(usex assimp)
 		-DOGRE_BUILD_PLUGIN_CG=$(usex cg)
 		-DOGRE_BUILD_PLUGIN_FREEIMAGE=$(usex freeimage)
 		-DOGRE_BUILD_PLUGIN_EXRCODEC=no
@@ -156,16 +151,13 @@ src_configure() {
 		-DOGRE_CONFIG_THREADS=3
 		-DOGRE_CONFIG_THREAD_PROVIDER=std
 		-DOGRE_ENABLE_PRECOMPILED_HEADERS=$(usex pch)
+		-DOGRE_GLSUPPORT_USE_EGL=$(usex egl)
 		-DOGRE_INSTALL_DOCS=$(usex doc)
 		-DOGRE_INSTALL_SAMPLES=$(usex examples)
-		-DOGRE_INSTALL_SAMPLES_SOURCE=$(usex examples)
 		-DOGRE_NODELESS_POSITIONING=$(usex deprecated)
 		-DOGRE_PROFILING=$(usex profile)
 		-DOGRE_RESOURCEMANAGER_STRICT=$(usex resman-pedantic 1 2)
 	)
-#		-DOGRE_BUILD_RENDERSYSTEM_GLES2=$(usex gles2)
-#		-DOGRE_CONFIG_ENABLE_GLES2_CG_SUPPORT=$(usex gles2 $(usex cg) no)
-#		-DOGRE_CONFIG_ENABLE_GLES3_SUPPORT=$(usex gles2)
 
 	cmake_src_configure
 }
@@ -195,7 +187,6 @@ src_install() {
 	if use examples ; then
 		insinto "${SHAREDIR}"
 		doins "${BUILD_DIR}"/bin/samples.cfg
-		doins "${BUILD_DIR}"/bin/tests.cfg
 	fi
 }
 

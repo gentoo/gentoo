@@ -36,7 +36,7 @@ RDEPEND="
 	x11-libs/libXaw
 	x11-libs/libXrandr
 	x11-libs/libXt
-	egl? ( media-libs/mesa[egl(+)] )
+	egl? ( media-libs/libglvnd )
 	freeimage? ( media-libs/freeimage )
 	json? ( dev-libs/rapidjson )
 	opengl? (
@@ -47,7 +47,7 @@ RDEPEND="
 "
 # Dependencies for USE flags that do not work, yet.
 #	cg? ( media-gfx/nvidia-cg-toolkit )
-#	gles2? ( media-libs/mesa[gles2] )
+#	gles2? ( media-libs/libglvnd )
 
 DEPEND="
 	${RDEPEND}
