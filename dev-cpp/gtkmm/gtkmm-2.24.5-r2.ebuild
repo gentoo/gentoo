@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit gnome2 multilib-minimal
 
@@ -23,12 +23,14 @@ RDEPEND="
 	>=dev-cpp/pangomm-2.34.0:1.4[${MULTILIB_USEDEP}]
 	>=dev-libs/libsigc++-2.3.2:2[${MULTILIB_USEDEP}]
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	doc? (
-		media-gfx/graphviz
+		app-text/doxygen
 		dev-libs/libxslt
-		app-text/doxygen )
+		media-gfx/graphviz
+	)
 "
 
 src_prepare() {
@@ -39,7 +41,7 @@ src_prepare() {
 	fi
 
 	if ! use examples; then
-		# don't waste time building tests
+		# don't waste time building examples
 		sed 's/^\(SUBDIRS =.*\)demos\(.*\)$/\1\2/' -i Makefile.am Makefile.in \
 			|| die "sed 2 failed"
 	fi
@@ -59,6 +61,6 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	DOCS="AUTHORS ChangeLog PORTING NEWS README"
+	local DOCS=( AUTHORS ChangeLog PORTING NEWS README )
 	einstalldocs
 }
