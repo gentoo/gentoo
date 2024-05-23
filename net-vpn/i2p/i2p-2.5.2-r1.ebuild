@@ -57,7 +57,7 @@ RDEPEND="
 	${CP_DEPEND}
 	acct-user/i2p
 	acct-group/i2p
-	>=virtual/jre-1.8:*
+	>=virtual/jre-11:*
 "
 
 PATCHES=(
