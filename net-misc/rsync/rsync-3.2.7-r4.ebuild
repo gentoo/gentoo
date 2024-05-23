@@ -93,6 +93,8 @@ pkg_setup() {
 src_prepare() {
 	default
 
+	sed -i -e 's/AC_HEADER_MAJOR_FIXED/AC_HEADER_MAJOR/' configure.ac
+
 	if [[ ${PV} == *9999 || -n ${RSYNC_NEEDS_AUTOCONF} ]] ; then
 		eaclocal -I m4
 		eautoconf -o configure.sh
