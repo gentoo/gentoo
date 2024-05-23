@@ -123,7 +123,6 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	media-libs/mesa[egl(+),gbm(+)?,wayland?,X?]
 	>=media-libs/taglib-1.9.0
 	=media-video/ffmpeg-6*:=[encode,soc(-)?,postproc,vaapi?,vdpau?,X?]
-	sci-libs/kissfft
 	virtual/libiconv
 	virtual/ttf-fonts
 	x11-libs/libdrm
@@ -183,13 +182,13 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		dev-db/mysql-connector-c:=
 	)
 	nfs? (
-		>=net-fs/libnfs-2.0.0:=
+		>=net-fs/libnfs-3.0.0:=
 	)
 	pipewire? (
 		>=media-video/pipewire-0.3.50:=
 	)
 	pulseaudio? (
-		media-libs/libpulse
+		>=media-libs/libpulse-11.0.0
 	)
 	samba? (
 		>=net-fs/samba-3.4.6[smbclient(+)]
@@ -292,13 +291,6 @@ src_prepare() {
 		-e '/dbus_connection_send_with_reply_and_block/s:-1:3000:' \
 		xbmc/platform/linux/*.cpp || die
 
-	# Add all possible names for kissfft libraries
-	for datatype in {float,int16,int32,simd}; do
-		sed -i \
-			-e "s/\(find_library(KISSFFT_LIBRARY NAMES .*\)/\1 kissfft-${datatype} kissfft-${datatype}-openmp/" \
-			cmake/modules/FindKissFFT.cmake || die
-	done
-
 	if tc-is-cross-compiler; then
 		# These tools are automatically built with CMake during a native build
 		# but need to be built in advance using Autotools for a cross build.
@@ -381,13 +373,13 @@ src_configure() {
 
 		#To bundle or not
 		-DENABLE_INTERNAL_CROSSGUID=OFF
+		-DENABLE_INTERNAL_CURL=OFF
 		-DENABLE_INTERNAL_DAV1D=OFF
 		-DENABLE_INTERNAL_FFMPEG="$(usex !system-ffmpeg)"
 		-DENABLE_INTERNAL_FLATBUFFERS=OFF
 		-DENABLE_INTERNAL_FMT=OFF
 		-DENABLE_INTERNAL_FSTRCMP=OFF
 		-DENABLE_INTERNAL_GTEST=OFF
-		-DENABLE_INTERNAL_KISSFFT=OFF
 		-DENABLE_INTERNAL_PCRE=OFF
 		-DENABLE_INTERNAL_RapidJSON=OFF
 		-DENABLE_INTERNAL_SPDLOG=OFF
@@ -457,10 +449,6 @@ src_test() {
 		# Known failing, unreliable test
 		# bug #743938
 		TestCPUInfo.GetCPUFrequency
-		# Test failure stemming from sci-libs/kissfft
-		# The difference between output[2i] and (i==freq1?1.0:0.0) is inf, which exceeds 1e-7, where output[2i]
-		# evaluates to inf,(i==freq1?1.0:0.0) evaluates to 0, and 1e-7 evaluates to 9.9999999999999995e-08.
-		TestRFFT.SimpleSignal
 		# bug #779184
 		# https://github.com/xbmc/xbmc/issues/18594
 		$(usev x86 TestDateTime.SetFromDBTime)
