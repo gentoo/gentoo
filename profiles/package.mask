@@ -367,7 +367,6 @@ sys-block/megamgr
 # deprecated go eclasses, maintainer-needed.
 # Removal on 2024-05-19, bug #930249
 dev-go/qr
-dev-go/twofactor
 
 # Michał Górny <mgorny@gentoo.org> (2024-04-11)
 # Contains a bug that could render the kernel fail to boot.
