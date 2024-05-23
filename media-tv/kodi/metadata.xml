@@ -33,7 +33,7 @@
 		<flag name="xslt">Enable metadata XSLT scrapers support with <pkg>dev-libs/libxslt</pkg></flag>
 	</use>
 	<upstream>
-		<bugs-to>https://trac.kodi.tv/</bugs-to>
+		<bugs-to>https://github.com/xbmc/xbmc/issues/</bugs-to>
 		<doc>https://kodi.wiki/</doc>
 		<remote-id type="github">xbmc/xbmc</remote-id>
 	</upstream>
