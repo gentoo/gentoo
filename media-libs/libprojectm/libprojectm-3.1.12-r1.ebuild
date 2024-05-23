@@ -26,9 +26,9 @@ REQUIRED_USE="
 	pulseaudio? ( qt5 )
 "
 
-RDEPEND="gles2? ( media-libs/mesa[gles2] )
+RDEPEND="
 	media-libs/glm
-	media-libs/mesa[X(+)]
+	media-libs/libglvnd[X(+)]
 	jack? (
 		virtual/jack
 	)

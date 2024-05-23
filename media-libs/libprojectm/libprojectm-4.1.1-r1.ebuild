@@ -22,13 +22,9 @@ LICENSE="LGPL-2"
 SLOT="4"
 IUSE="gles2-only static-libs"
 
-RDEPEND="media-libs/mesa[X(+)]"
+RDEPEND="media-libs/libglvnd[X(+)]"
 
 DEPEND="${RDEPEND}"
-
-PATCHES=(
-	"${FILESDIR}"/libprojectm-4.1.0-patch-include-dir.patch
-)
 
 multilib_prc_prepare() {
 	cmake_src_prepare
