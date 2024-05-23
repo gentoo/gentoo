@@ -5,7 +5,7 @@ EAPI=8
 
 MATE_LA_PUNT="yes"
 
-inherit mate
+inherit mate flag-o-matic
 
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
