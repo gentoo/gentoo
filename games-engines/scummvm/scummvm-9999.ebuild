@@ -48,8 +48,7 @@ DEPEND="
 	opengl? (
 		|| (
 			virtual/opengl
-			media-libs/mesa[gles2]
-			media-libs/mesa[gles1]
+			media-libs/libglvnd
 		)
 	)
 	png? ( media-libs/libpng:0 )
