@@ -20,10 +20,9 @@ COMMON_DEPEND="
 	>=virtual/udev-172
 	x11-libs/libxkbcommon
 	>=dev-libs/libtsm-4.0.0:=
-	media-libs/mesa[X(+)]
+	media-libs/libglvnd[X(+)]
 	drm? ( x11-libs/libdrm
 		>=media-libs/mesa-8.0.3[egl(+),gbm(+)] )
-	gles2? ( >=media-libs/mesa-8.0.3[gles2] )
 	systemd? ( sys-apps/systemd )
 	pango? ( x11-libs/pango dev-libs/glib:2 )
 	pixman? ( x11-libs/pixman )"
