@@ -60,6 +60,8 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtconcurrent-${QTMIN}:5
 "
 
+PATCHES=( "${FILESDIR}"/${P}-cxx17.patch )
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_Qt5WebKitWidgets=ON
