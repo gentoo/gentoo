@@ -9,7 +9,7 @@ inherit mate meson
 
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 fi
 
 DESCRIPTION="MATE default window manager"
@@ -47,7 +47,7 @@ COMMON_DEPEND="
 
 RDEPEND="${COMMON_DEPEND}
 	gnome-extra/zenity
-	>=mate-base/mate-desktop-1.20.0
+	>=mate-base/mate-desktop-1.28.0
 	virtual/libintl
 "
 
