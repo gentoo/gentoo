@@ -28,38 +28,42 @@ HYPRPM_RDEPEND="
 	app-alternatives/ninja
 	dev-build/cmake
 	dev-build/meson
+	dev-libs/libliftoff
 	dev-vcs/git
 	virtual/pkgconfig
 "
 # bundled wlroots has the following dependency string according to included headers.
 # wlroots[drm,gles2-renderer,libinput,x11-backend?,X?]
 # enable x11-backend with X and vice versa
-WLROOTS_RDEPEND="
-	>=dev-libs/libinput-1.14.0:=
-	dev-libs/libliftoff
+WLROOTS_DEPEND="
 	>=dev-libs/wayland-1.22
-	media-libs/libdisplay-info
 	media-libs/libglvnd
-	media-libs/mesa[egl(+),gles2]
-	sys-apps/hwdata:=
-	sys-auth/seatd:=
-	>=x11-libs/libdrm-2.4.118
+	|| (
+		>=media-libs/mesa-24.1.0_rc1[opengl]
+		<media-libs/mesa-24.1.0_rc1[egl(+),gles2]
+	)
+	>=x11-libs/libdrm-2.4.114
 	x11-libs/libxkbcommon
 	>=x11-libs/pixman-0.42.0
+	media-libs/libdisplay-info
+	sys-apps/hwdata
+	>=dev-libs/libinput-1.14.0:=
+	sys-auth/seatd:=
 	virtual/libudev:=
 	X? (
-		x11-base/xwayland
-		x11-libs/libxcb:0=
+		x11-libs/libxcb:=
 		x11-libs/xcb-util-renderutil
 		x11-libs/xcb-util-wm
+		x11-base/xwayland
 	)
 "
-WLROOTS_DEPEND="
-	>=dev-libs/wayland-protocols-1.33
+WLROOTS_RDEPEND="
+	${WLROOTS_DEPEND}
 "
 WLROOTS_BDEPEND="
-	dev-util/glslang
+	>=dev-libs/wayland-protocols-1.32
 	dev-util/wayland-scanner
+	virtual/pkgconfig
 "
 RDEPEND="
 	${HYPRPM_RDEPEND}
@@ -67,8 +71,8 @@ RDEPEND="
 	dev-cpp/tomlplusplus
 	dev-libs/glib:2
 	dev-libs/libinput
-	dev-libs/wayland
-	gui-libs/hyprcursor
+	>=dev-libs/wayland-1.20.0
+	>=gui-libs/hyprcursor-0.1.7
 	media-libs/libglvnd
 	x11-libs/cairo
 	x11-libs/libdrm
@@ -82,9 +86,9 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	${WLROOTS_DEPEND}
-	dev-libs/hyprland-protocols
-	dev-libs/hyprlang
-	>=dev-libs/wayland-protocols-1.25
+	>=dev-libs/hyprland-protocols-0.2
+	>=dev-libs/hyprlang-0.3.2
+	>=dev-libs/wayland-protocols-1.32
 "
 BDEPEND="
 	${WLROOTS_BDEPEND}
@@ -94,6 +98,12 @@ BDEPEND="
 	dev-util/wayland-scanner
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	# https://bugs.gentoo.org/930132
+	# https://github.com/hyprwm/Hyprland/pull/5653
+	"${FILESDIR}/bash-completion-fix-0.39.1.patch"
+)
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} == binary ]] && return
