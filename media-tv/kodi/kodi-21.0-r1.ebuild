@@ -159,7 +159,10 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		x11-libs/libxkbcommon
 	)
 	gles? (
-		media-libs/mesa[gles2]
+		|| (
+			>=media-libs/mesa-24.1.0_rc1[opengl]
+			<media-libs/mesa-24.1.0_rc1[gles2]
+		)
 	)
 	!gles? (
 		media-libs/glu
