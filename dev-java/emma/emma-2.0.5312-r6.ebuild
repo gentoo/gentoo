@@ -61,7 +61,7 @@ src_compile() {
 	JAVA_GENTOO_CLASSPATH_EXTRA+=":emma_ant.jar"
 	rm -r target || die
 
-	use doc && ejavadoc
+	use doc && java-pkg-simple_call_ejavadoc
 }
 
 src_install() {

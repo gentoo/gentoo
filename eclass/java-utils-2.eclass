@@ -218,46 +218,6 @@ JAVA_PKG_COMPILERS_CONF=${JAVA_PKG_COMPILERS_CONF:="/etc/java-config-2/build/com
 # 	ebuild foo.ebuild compile
 # @CODE
 
-# @ECLASS_VARIABLE: JAVADOC_CLASSPATH
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# Comma or space separated list of java packages that are needed for generating
-# javadocs. Can be used to avoid overloading the compile classpath in multi-jar
-# packages if there are jar files which have different dependencies.
-#
-# @CODE
-# Example:
-# 	JAVADOC_CLASSPATH="
-# 		jna-4
-# 		jsch
-# 	"
-# @CODE
-
-# @ECLASS_VARIABLE: JAVADOC_SRC_DIRS
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# An array of directories relative to ${S} which contain the sources of
-# the application. It needs to sit in global scope; if put in src_compile()
-# it would not work.
-# It is needed by the java-pkg-simple.eclass to decide whether to call ejavadoc
-# or not. If this variable is defined then java-pkg-simple_src_compile will not
-# call ejavadoc automatically. ejavadoc has then to be called explicitly from
-# the ebuild. It is meant for usage in multi-jar packages in order to avoid an
-# extra compilation run only for producing the javadocs.
-#
-# @CODE
-# Example:
-#	JAVADOC_SRC_DIRS=(
-#	    "${PN}-core"
-#	    "${PN}-jsch"
-#	    "${PN}-pageant"
-#	    "${PN}-sshagent"
-#	    "${PN}-usocket-jna"
-#	    "${PN}-usocket-nc"
-#	    "${PN}-connector-factory"
-#	)
-# @CODE
-
 # TODO document me
 JAVA_PKG_QA_VIOLATIONS=0
 
@@ -2195,27 +2155,9 @@ ejavadoc() {
 		einfo "javadoc ${javadoc_args} ${@}"
 	fi
 
-	if [[ "${JAVADOC_SRC_DIRS[@]}" ]]; then
-		mkdir -p target/api || die "cannot create target/api"
-		local dependency
-		for dependency in ${JAVADOC_CLASSPATH}; do
-			classpath="${classpath}:$(java-pkg_getjars \
-				--build-only \
-				--with-dependencies \
-				${dependency})"
-		done
-		find "${JAVADOC_SRC_DIRS[@]}" -name '*.java' > sources
-		javadoc \
-			"${javadoc_args}" \
-			-d target/api \
-			-cp "${classpath}" \
-			-quiet \
-			@sources || die "ejavadoc failed"
-	else
-		local args=( javadoc ${javadoc_args} "${@}" )
-		echo "${args[@]}" >&2
-		"${args[@]}" || die "ejavadoc failed"
-	fi
+	local args=( javadoc ${javadoc_args} "${@}" )
+	echo "${args[@]}" >&2
+	"${args[@]}" || die "ejavadoc failed"
 }
 
 # @FUNCTION: java-pkg_filter-compiler

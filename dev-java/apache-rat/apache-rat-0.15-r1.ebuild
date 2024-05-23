@@ -72,9 +72,8 @@ src_compile() {
 	JAVA_GENTOO_CLASSPATH_EXTRA+=":${PN}-tasks.jar"
 	rm -r target || die
 
-	# javadoc is broken for java 17, see https://bugs.gentoo.org/914458
 	JAVADOC_CLASSPATH="${JAVA_GENTOO_CLASSPATH}"
-	use doc && ejavadoc
+	use doc && java-pkg-simple_call_ejavadoc
 }
 
 src_test() {

@@ -89,7 +89,7 @@ src_compile() {
 		charset/src/main/java
 		localespi/src/main/java
 	)
-	use doc && ejavadoc
+	use doc && java-pkg-simple_call_ejavadoc
 }
 
 src_test () {

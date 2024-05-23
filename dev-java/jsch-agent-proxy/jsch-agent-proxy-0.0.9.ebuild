@@ -87,7 +87,7 @@ src_compile() {
 	java-pkg-simple_src_compile
 	rm -fr target || die
 
-	use doc && ejavadoc
+	use doc && java-pkg-simple_call_ejavadoc
 }
 
 src_install() {
