@@ -362,12 +362,6 @@ dev-python/tinycss
 # Removal on 2024-05-20, bug #930346.
 sys-block/megamgr
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-04-19)
-# EAPI=6, library only without any reverse dependencies, uses
-# deprecated go eclasses, maintainer-needed.
-# Removal on 2024-05-19, bug #930249
-dev-go/qr
-
 # Michał Górny <mgorny@gentoo.org> (2024-04-11)
 # Contains a bug that could render the kernel fail to boot.
 # https://lore.kernel.org/oe-lkp/202403221630.2692c998-oliver.sang@intel.com/
