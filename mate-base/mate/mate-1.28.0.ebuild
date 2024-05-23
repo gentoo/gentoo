@@ -16,10 +16,10 @@ HOMEPAGE="https://mate-desktop.org"
 
 LICENSE="metapackage"
 
+S="${WORKDIR}"
+
 SLOT="0"
 IUSE="+base bluetooth help +notification +themes +extras"
-
-S="${WORKDIR}"
 
 RDEPEND="
 	=mate-base/mate-desktop-${MATE_BRANCH}*
