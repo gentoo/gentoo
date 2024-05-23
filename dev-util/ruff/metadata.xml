@@ -10,7 +10,7 @@
 		<name>Eli Schwartz</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">charliermarsh/ruff</remote-id>
+		<remote-id type="github">astral-sh/ruff</remote-id>
 		<remote-id type="pypi">ruff</remote-id>
 	</upstream>
 </pkgmetadata>
