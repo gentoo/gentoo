@@ -444,7 +444,7 @@ sec-keys/openpgp-keys-jiatan
 ~kde-frameworks/kquickcharts-6.2.0
 ~kde-frameworks/ktexttemplate-6.2.0
 ~kde-frameworks/kuserfeedback-6.2.0
-~kde-frameworks/kwidgetsaddons-6.2.0
+~kde-frameworks/kwidgetsaddons-6.2.1
 ~kde-frameworks/kwindowsystem-6.2.0
 ~kde-frameworks/modemmanager-qt-6.2.0
 ~kde-frameworks/networkmanager-qt-6.2.0
