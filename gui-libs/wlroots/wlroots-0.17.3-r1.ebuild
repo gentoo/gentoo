@@ -33,7 +33,7 @@ DEPEND="
 		>=media-libs/mesa-24.1.0_rc1[opengl]
 		<media-libs/mesa-24.1.0_rc1[egl(+),gles2]
 	)
-	>=x11-libs/libdrm-2.4.120
+	>=x11-libs/libdrm-2.4.114
 	x11-libs/libxkbcommon
 	>=x11-libs/pixman-0.42.0
 	drm? (
@@ -66,7 +66,7 @@ RDEPEND="
 	${DEPEND}
 "
 BDEPEND="
-	>=dev-libs/wayland-protocols-1.33
+	>=dev-libs/wayland-protocols-1.32
 	dev-util/wayland-scanner
 	virtual/pkgconfig
 "
