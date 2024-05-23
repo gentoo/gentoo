@@ -90,7 +90,7 @@ src_configure() {
 		-native-compiler "$(usex ocamlopt yes no)"
 	)
 	use debug && myconf+=( -debug )
-	edob sh ./configure "${myconf[@]}"
+	edo sh ./configure "${myconf[@]}"
 }
 
 src_compile() {
