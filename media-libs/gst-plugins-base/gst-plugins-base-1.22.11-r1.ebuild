@@ -43,7 +43,10 @@ REQUIRED_USE="
 # Dependencies needed by opengl library and plugin (enabled via USE gles2 and/or opengl)
 # dmabuf automagic from libdrm headers (drm_fourcc.h) and EGL, so ensure it with USE=egl (platform independent header used only, thus no MULTILIB_USEDEP); provides dmabuf based upload/download/eglimage options
 GL_DEPS="
-	>=media-libs/mesa-9.0[egl(+)?,gbm(+)?,gles2?,wayland?,${MULTILIB_USEDEP}]
+	|| (
+		>=media-libs/mesa-24.1.0_rc1[opengl,wayland?,${MULTILIB_USEDEP}]
+		<media-libs/mesa-24.1.0_rc1[egl(+)?,gbm(+)?,gles2?,wayland?,${MULTILIB_USEDEP}]
+	)
 	egl? (
 		x11-libs/libdrm
 	)
