@@ -33,12 +33,23 @@
 
 #--- END OF EXAMPLES ---
 
+<<<<<<< HEAD
 # Ian Jordan <immoloism@gmail.com> (2024-05-23)
 # Upstream have removed support for this and will no longer be needed when
 # MATE 1.28 is stable. Anyone needing this package will need to notify upstream at
 # https://github.com/mate-desktop/mate-netbook/issues/69 and myself at
 # https://bugs.gentoo.org/932568 Removal on 2024-07-26.
 mate-extra/mate-netbook
+=======
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-23)
+# Bitrise stack is abandoned in Gentoo, maintainer-needed, awaits
+# version bump, uses deprecated Go eclasses, EAPI=6, fails to compile
+# with modern C.
+# Removal on 2024-06-22.  Bugs #932570, #844688, #717536, #771066, #844700, #844703.
+dev-util/bitrise
+dev-util/envman
+dev-util/stepman
+>>>>>>> 733dceabb0fc (packages.mask: last-rite dev-util/{bitrise,envman,stepman})
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-05-20)
 # Short-lived side-by-side release, now unnecessary as it moved back to
