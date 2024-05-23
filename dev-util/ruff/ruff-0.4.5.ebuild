@@ -21,7 +21,7 @@ CRATES="
 	anstyle-query@1.0.2
 	anstyle-wincon@3.0.2
 	anstyle@1.0.6
-	anyhow@1.0.82
+	anyhow@1.0.83
 	argfile@0.2.0
 	arrayvec@0.7.4
 	autocfg@1.2.0
@@ -148,7 +148,6 @@ CRATES="
 	lock_api@0.4.11
 	log@0.4.21
 	lsp-server@0.7.6
-	lsp-types@0.95.1
 	matchers@0.1.0
 	matches@0.1.10
 	matchit@0.8.2
@@ -194,7 +193,7 @@ CRATES="
 	portable-atomic@1.6.0
 	ppv-lite86@0.2.17
 	pretty_assertions@1.4.0
-	proc-macro2@1.0.81
+	proc-macro2@1.0.82
 	pyproject-toml@0.9.0
 	quick-junit@0.4.0
 	quick-xml@0.31.0
@@ -223,16 +222,16 @@ CRATES="
 	rustversion@1.0.15
 	ryu@1.0.17
 	same-file@1.0.6
-	schemars@0.8.17
-	schemars_derive@0.8.17
+	schemars@0.8.19
+	schemars_derive@0.8.19
 	scoped-tls@1.0.1
 	scopeguard@1.2.0
 	seahash@4.1.0
 	serde-wasm-bindgen@0.6.5
-	serde@1.0.200
-	serde_derive@1.0.200
+	serde@1.0.201
+	serde_derive@1.0.201
 	serde_derive_internals@0.29.0
-	serde_json@1.0.116
+	serde_json@1.0.117
 	serde_repr@0.1.19
 	serde_spanned@0.6.5
 	serde_test@1.0.176
@@ -253,7 +252,7 @@ CRATES="
 	strum@0.26.2
 	strum_macros@0.26.2
 	subtle@2.5.0
-	syn@2.0.60
+	syn@2.0.63
 	tempfile@3.10.1
 	terminal_size@0.3.0
 	terminfo@0.8.0
@@ -261,8 +260,8 @@ CRATES="
 	test-case-macros@3.3.1
 	test-case@3.3.1
 	textwrap@0.16.1
-	thiserror-impl@1.0.59
-	thiserror@1.0.59
+	thiserror-impl@1.0.60
+	thiserror@1.0.60
 	thread_local@1.1.8
 	tikv-jemalloc-sys@0.5.4+5.3.0-patched
 	tikv-jemallocator@0.5.4
@@ -350,6 +349,10 @@ CRATES="
 	zerocopy@0.7.32
 	zeroize@1.7.0
 "
+
+declare -A GIT_CRATES=(
+	[lsp-types]='https://github.com/astral-sh/lsp-types;3512a9f33eadc5402cfab1b8f7340824c8ca1439;lsp-types-%commit%'
+)
 
 inherit shell-completion cargo
 
