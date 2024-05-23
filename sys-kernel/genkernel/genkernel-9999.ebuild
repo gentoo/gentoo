@@ -31,7 +31,7 @@ VERSION_HWIDS="20210613"
 # open-iscsi-2.1.9 static build not working yet
 VERSION_ISCSI="2.1.8"
 # json-c-0.17 needs gkbuild ported to meson
-VERSION_JSON_C="0.13.1"
+VERSION_JSON_C="0.17"
 VERSION_KMOD="31"
 VERSION_LIBAIO="0.3.113"
 VERSION_LIBGCRYPT="1.10.3"
