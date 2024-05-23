@@ -16,7 +16,7 @@ REQUIRED_USE="gui? ( ^^ ( qt5 qt6 ) )"
 
 RDEPEND="
 	>=app-crypt/rhash-1.3.3-r2:0=
-	dev-cpp/htmlcxx:0=
+	app-text/htmltidy:=
 	dev-libs/boost:=[zlib]
 	>=dev-libs/jsoncpp-1.7:0=
 	dev-libs/tinyxml2:0=
