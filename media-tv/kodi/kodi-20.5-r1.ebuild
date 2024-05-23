@@ -149,7 +149,10 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	)
 	gles? (
 		!raspberry-pi? (
-			media-libs/mesa[gles2]
+			|| (
+				>=media-libs/mesa-24.1.0_rc1[opengl]
+				<media-libs/mesa-24.1.0_rc1[gles2]
+			)
 		)
 	)
 	!gles? (
@@ -183,7 +186,8 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		|| (
 			media-libs/raspberrypi-userland
 			media-libs/raspberrypi-userland-bin
-			media-libs/mesa[gles2,video_cards_vc4]
+			>=media-libs/mesa-24.1.0_rc1[opengl,video_cards_vc4]
+			<media-libs/mesa-24.1.0_rc1[egl(+),gles2,video_cards_vc4]
 		)
 	)
 	samba? (
