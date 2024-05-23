@@ -17,9 +17,12 @@ if [[ ${MINOR} -eq 0 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 =======
 	KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
+<<<<<<< HEAD
 else
 	KEYWORDS=""
 >>>>>>> d02d712a1fd0 (x11-misc/mozo: stabilize 1.28.0 for amd64, x86)
+=======
+>>>>>>> d00685c39479 (x11-misc/mozo: enable py3.12)
 fi
 
 SLOT="0"
