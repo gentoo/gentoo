@@ -66,6 +66,7 @@ PATCHES=(
 	"${FILESDIR}/qwt2.patch"
 	"${FILESDIR}/cmake.patch"
 	"${FILESDIR}/gv10.patch"
+	"${FILESDIR}/boost.patch"
 )
 
 src_configure() {
