@@ -292,7 +292,7 @@ src_test() {
 		--verbose
 		--workers="$(makeopts_jobs)"
 	)
-	edob lit "${lit_opts[@]}" "${S}/Test"
+	edo lit "${lit_opts[@]}" "${S}/Test"
 }
 
 src_install() {
