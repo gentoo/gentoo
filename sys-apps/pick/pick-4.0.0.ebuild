@@ -34,11 +34,8 @@ QA_CONFIG_IMPL_DECL_SKIP+=(
 
 src_configure() {
 	# not autoconf
+	tc-export CC
 	./configure || die
-}
-
-src_compile() {
-	emake CC="$(tc-getCC)"
 }
 
 src_install() {
