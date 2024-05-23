@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit readme.gentoo-r1 systemd
+inherit autotools readme.gentoo-r1 systemd
 
 DESCRIPTION="An IMAP daemon designed specifically for maildirs"
 HOMEPAGE="https://www.courier-mta.org/imap/"
@@ -65,6 +65,11 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.1.8-aclocal-fix.patch"
 	"${FILESDIR}/${PN}-5.0.8-ar-fix.patch"
 )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	local myconf=""
