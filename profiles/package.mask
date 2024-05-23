@@ -257,11 +257,6 @@ app-emacs/basic-toolkit
 app-emacs/buffer-extension
 app-emacs/windows
 
-# Matt Turner <mattst88@gentoo.org> (2024-04-25)
-# Masked for testing
-=dev-util/intel_clc-24.1*
-=media-libs/mesa-24.1*
-
 # Michał Górny <mgorny@gentoo.org> (2024-04-23)
 # No py3.12, no tests, no maintainer.  Also no revdeps.
 # Removal on 2024-05-23.  Bug #929513.
