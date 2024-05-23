@@ -605,17 +605,6 @@ sec-keys/openpgp-keys-jiatan
 # Test failure in watchpoints.dem, undefined function FresnelC.
 ~sci-visualization/gnuplot-6.0.0
 
-# Patrick Lauer <patrick@gentoo.org> (2023-12-23)
-# ROCm-6 builds but has runtime issues for me
->=dev-libs/roct-thunk-interface-6.0.0
->=dev-libs/rocr-runtime-6.0.0
->=dev-libs/rocm-comgr-6.0.0
->=dev-libs/rocm-device-libs-6.0.0
->=dev-libs/rocm-opencl-runtime-6.0.0
->=dev-util/hipcc-6.0.0
->=dev-util/hip-6.0.0
->=dev-util/rocminfo-6.0.0
-
 # Sam James <sam@gentoo.org> (2023-12-14)
 # Gentoo's kernel maintainers have decided to discontinue gentoo-sources and
 # gentoo-kernel for old kernel LTS branches because of the resources to require
