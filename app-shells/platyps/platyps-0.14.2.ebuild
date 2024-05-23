@@ -342,7 +342,7 @@ src_compile() {
 		-Configuration "${DOTNET_PKG_CONFIGURATION}"
 		-DotnetCli "${DOTNET_PKG_EXECUTABLE}"
 	)
-	edob pwsh -NoProfile -NonInteractive ./build.ps1 "${ps1opts[@]}"
+	edo pwsh -NoProfile -NonInteractive ./build.ps1 "${ps1opts[@]}"
 }
 
 src_install() {
