@@ -361,14 +361,6 @@ dev-python/tinycss
 # Removal on 2024-05-23
 <net-misc/rabbitmq-server-3.13.1
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-04-20)
-# EAPI6 package, with no reverse dependencies. Not really maintained
-# since gentoo's transition to git. Distfile is fetch and mirror
-# restricted, and based on comment in ebuild, the source isn't stable
-# and we can lose the only source for distfile.
-# Removal on 2024-05-20, bug #930346.
-sys-block/megamgr
-
 # Michał Górny <mgorny@gentoo.org> (2024-04-11)
 # Contains a bug that could render the kernel fail to boot.
 # https://lore.kernel.org/oe-lkp/202403221630.2692c998-oliver.sang@intel.com/

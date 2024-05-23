@@ -5,10 +5,6 @@
 # This code assumes 32-bit longs and must therefore be built as a 32-bit binary.
 sys-fs/atari-fdisk
 
-# David Seifert <soap@gentoo.org> (2018-01-03)
-# Requires 32-bit multilib compatibility
-sys-block/megamgr
-
 # James Le Cuirot <chewi@gentoo.org> (2016-08-13)
 # Steam requires amd64 multilib. These are steam-overlay packages.
 dev-util/adobe-air-runtime
