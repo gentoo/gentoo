@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,7 +37,7 @@ DOCS=( CHANGES README )
 SITEFILE="50${PN}-gentoo.el"
 
 src_compile() {
-	edob sh ./build -nointeract
+	edo sh ./build -nointeract
 
 	if use emacs ; then
 		cd "${S}/emacs" || die
@@ -47,7 +47,7 @@ src_compile() {
 }
 
 src_test() {
-	edob sh ./test
+	edo sh ./test
 }
 
 src_install() {
