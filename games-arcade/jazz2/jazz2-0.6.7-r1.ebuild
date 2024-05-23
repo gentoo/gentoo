@@ -15,11 +15,10 @@ IUSE="gles2-only server"
 
 RDEPEND="
 	dev-lang/mono
+	media-libs/libglvnd
 	media-libs/libopenmpt
 	media-libs/libsdl2[video]
 	media-libs/openal
-	gles2-only? ( media-libs/mesa[gles2] )
-	!gles2-only? ( virtual/opengl )
 "
 
 FRAMEWORK="4.5.2"
