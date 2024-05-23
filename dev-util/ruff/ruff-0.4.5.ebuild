@@ -358,12 +358,12 @@ inherit shell-completion cargo
 
 DESCRIPTION="An extremely fast Python linter, written in Rust"
 HOMEPAGE="
-	https://docs.astral.sh/ruff
-	https://github.com/charliermarsh/ruff
+	https://docs.astral.sh/ruff/
+	https://github.com/astral-sh/ruff
 "
 SRC_URI="
 	${CARGO_CRATE_URIS}
-	https://github.com/charliermarsh/ruff/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz
+	https://github.com/astral-sh/ruff/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz
 "
 
 LICENSE="MIT"
