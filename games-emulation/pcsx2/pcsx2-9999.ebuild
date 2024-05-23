@@ -78,7 +78,6 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.4667-flags.patch
 	"${FILESDIR}"/${PN}-1.7.5232-cubeb-automagic.patch
-	"${FILESDIR}"/${PN}-1.7.5817-missing-headers.patch
 	"${FILESDIR}"/${PN}-1.7.5835-vanilla-shaderc.patch
 )
 
