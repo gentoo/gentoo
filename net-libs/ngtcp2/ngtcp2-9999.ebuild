@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/ngtcp2/ngtcp2/"
 LICENSE="MIT"
 SLOT="0/0"
 IUSE="+gnutls openssl +ssl static-libs test"
-REQUIRED_USE="ssl? ( || ( gnutls openssl ) )"
+REQUIRED_USE="ssl? ( || ( gnutls openssl ) ) test? ( static-libs )"
 
 BDEPEND="virtual/pkgconfig"
 RDEPEND="
@@ -43,6 +43,7 @@ multilib_src_configure() {
 		-DENABLE_WOLFSSL=OFF
 		-DCMAKE_DISABLE_FIND_PACKAGE_Libev=ON
 		-DCMAKE_DISABLE_FIND_PACKAGE_Libnghttp3=ON
+		-DBUILD_TESTING=$(usex test)
 	)
 	cmake_src_configure
 }
