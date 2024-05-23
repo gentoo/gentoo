@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit mate python-r1
@@ -13,16 +13,7 @@ LICENSE="GPL-2+ GPL-3+ LGPL-2+ LGPL-2.1+"
 
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
-<<<<<<< HEAD
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
-=======
-	KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
-<<<<<<< HEAD
-else
-	KEYWORDS=""
->>>>>>> d02d712a1fd0 (x11-misc/mozo: stabilize 1.28.0 for amd64, x86)
-=======
->>>>>>> d00685c39479 (x11-misc/mozo: enable py3.12)
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 fi
 
 SLOT="0"
