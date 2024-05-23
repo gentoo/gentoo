@@ -36,20 +36,20 @@ DEPEND="
 	>=x11-libs/libXfixes-3
 	>=x11-libs/libXrandr-1.2
 	virtual/opengl
-	gles2? ( media-libs/mesa[gles2] )
+	gles2? ( media-libs/libglvnd )
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
 	)
 	introspection? ( >=dev-libs/gobject-introspection-1.34.2:= )
 	kms? (
-		media-libs/mesa[egl(+),gbm(+)]
+		media-libs/mesa[gbm(+)]
 		x11-libs/libdrm:=
 	)
 	pango? ( >=x11-libs/pango-1.20.0[introspection?] )
 	wayland? (
 		>=dev-libs/wayland-1.1.90
-		media-libs/mesa[egl(+),wayland]
+		media-libs/mesa[wayland]
 	)
 "
 RDEPEND="${DEPEND}"
