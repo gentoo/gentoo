@@ -113,7 +113,7 @@ src_prepare() {
 
 	# bcprov
 	rm -r core/java/src/net/i2p/crypto/elgamal || die 'unbundle bcprov'
-	sed -e 's,net\.i2p\.crypto\.elgamal\.impl,org.bouncycastle.jce.provider,' \
+	sed \
 		-e 's,net\.i2p\.crypto\.elgamal\.spec,org.bouncycastle.jce.spec,' \
 		-i core/java/src/net/i2p/crypto/{provider/I2PProvider,CryptoConstants}.java ||
 		die 'redirect imports of bcprov'
