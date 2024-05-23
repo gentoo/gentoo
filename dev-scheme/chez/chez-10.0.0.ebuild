@@ -94,7 +94,7 @@ src_configure() {
 		LZ4="$($(tc-getPKG_CONFIG) --libs liblz4)"
 		ZLIB="$($(tc-getPKG_CONFIG) --libs zlib)"
 	)
-	edob sh ./configure "${myconfargs[@]}"
+	edo sh ./configure "${myconfargs[@]}"
 }
 
 src_install() {
