@@ -46,6 +46,8 @@ src_prepare() {
 	rm -r extern || die
 	# force recythonization
 	find src -name '*.cxx' -delete || die
+	# do not require exact taskflow version
+	sed -i -e '/Taskflow/s:3\.3\.0::' CMakeLists.txt || die
 
 	distutils-r1_src_prepare
 
