@@ -14,9 +14,9 @@ fi
 DESCRIPTION="Meta ebuild for MATE, a traditional desktop environment"
 HOMEPAGE="https://mate-desktop.org"
 
-LICENSE="metapackage"
-
 S="${WORKDIR}"
+
+LICENSE="metapackage"
 
 SLOT="0"
 IUSE="+base bluetooth help +notification +themes +extras"
