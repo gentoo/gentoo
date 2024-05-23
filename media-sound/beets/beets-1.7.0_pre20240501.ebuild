@@ -131,8 +131,8 @@ python_compile_all() {
 	if [[ ${PV} == "9999" ]] || [[ ${IS_VCS_SOURCE} == "yes" ]]; then
 		einfo "Building man pages"
 		sphinx-build -b man docs docs/build/man || die "Failed to generate man pages"
-		mkdir ${S}/man || die
-		cp docs/build/man/{beet.1,beetsconfig.5} ${S}/man || die
+		mkdir "${S}/man" || die
+		cp docs/build/man/{beet.1,beetsconfig.5} "${S}/man" || die
 	fi
 }
 
