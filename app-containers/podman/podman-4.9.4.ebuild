@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11,12} )
 
-inherit go-module python-any-r1 tmpfiles linux-info
+inherit go-module python-any-r1 tmpfiles toolchain-funcs linux-info
 
 DESCRIPTION="A tool for managing OCI containers and pods with Docker-compatible CLI"
 HOMEPAGE="https://github.com/containers/podman/ https://podman.io/"
@@ -102,6 +102,12 @@ src_compile() {
 	# For non-live versions, prevent git operations which causes sandbox violations
 	# https://github.com/gentoo/gentoo/pull/33531#issuecomment-1786107493
 	[[ ${PV} != 9999* ]] && export COMMIT_NO="" GIT_COMMIT="" EPOCH_TEST_COMMIT=""
+
+	# Use proper pkg-config to get gpgme cflags and ldflags when
+	# cross-compiling, bug 930982.
+	if tc-is-cross-compiler; then
+		tc-export PKG_CONFIG
+	fi
 
 	# BUILD_SECCOMP is used in the patch to toggle seccomp
 	emake BUILDFLAGS="-v -work -x" GOMD2MAN="go-md2man" BUILD_SECCOMP="$(usex seccomp)" all $(usev wrapper docker-docs)
