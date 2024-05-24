@@ -252,7 +252,7 @@ src_prepare() {
 multilib_src_configure() {
 	local emesonargs=()
 
-	# https://gitlab.freedesktop.org/mesa/mesa/-/issues/11140
+	# bug #932591 and https://gitlab.freedesktop.org/mesa/mesa/-/issues/11140
 	tc-is-gcc && [[ $(gcc-major-version) -ge 14 ]] && filter-lto
 
 	local platforms
