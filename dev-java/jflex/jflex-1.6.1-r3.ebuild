@@ -15,18 +15,21 @@ S="${WORKDIR}/${P}"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~ppc-macos ~x64-macos"
-IUSE="examples test vim-syntax"
+IUSE="ant-task examples test vim-syntax"
 RESTRICT="!test? ( test )"
+REQUIRED_USE="test? ( ant-task )"
 
-CDEPEND=">=dev-java/ant-1.10.14:0"
-
-RDEPEND=">=virtual/jre-1.8:*
+RDEPEND="
+	>=virtual/jre-1.8:*
+	ant-task? ( >=dev-java/ant-1.10.14-r3:0 )
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
-	${CDEPEND}"
+"
 
-DEPEND=">=virtual/jdk-1.8:*
+DEPEND="
+	>=virtual/jdk-1.8:*
+	ant-task? ( >=dev-java/ant-1.10.14-r3:0 )
 	test? ( dev-java/junit:4 )
-	${CDEPEND}"
+"
 
 PDEPEND=">=dev-java/javacup-11b_p20160615:0"
 
@@ -34,6 +37,7 @@ JAVA_SRC_DIR="src/main/java"
 
 src_prepare() {
 	eapply_user
+	java-pkg-2_src_prepare
 
 	# See below for details.
 	eapply "${FILESDIR}/icedtea-arm.patch"
@@ -59,7 +63,12 @@ src_configure() {
 		JAVACUP=$(echo lib/java-cup-*.jar)
 	fi
 
-	JAVA_GENTOO_CLASSPATH_EXTRA="$(java-pkg_getjar --build-only ant ant.jar):${JAVACUP}"
+	JAVA_GENTOO_CLASSPATH_EXTRA="${JAVACUP}"
+	if use ant-task; then
+		JAVA_GENTOO_CLASSPATH_EXTRA+=":$(java-pkg_getjar --build-only ant ant.jar)"
+	else
+		rm src/main/java/jflex/anttask/JFlexTask.java || die
+	fi
 }
 
 jflex_compile() {
@@ -91,7 +100,7 @@ src_install() {
 	java-pkg_dolauncher ${PN} --main ${PN}.Main
 
 	java-pkg_register-dependency javacup javacup-runtime.jar
-	java-pkg_register-ant-task
+	use ant-task && java-pkg_register-ant-task
 
 	use examples && java-pkg_doexamples examples
 	dodoc {changelog,README}.md
