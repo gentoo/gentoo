@@ -30,6 +30,13 @@ src_configure() {
 	# Uses std::auto_ptr (deprecated in c++11, removed in c++17)
 	append-cxxflags "-std=c++14"
 
+	# Skip coredump tests; they fail when sudo sets RLIMIT_CORE = 0.
+	cat >"${T}/kyua.conf" <<-EOF || die
+	syntax(2)
+	test_suites.kyua.run_coredump_tests = "false"
+	EOF
+	local -x KYUA_CONFIG_FILE_FOR_CHECK="${T}/kyua.conf"
+
 	default
 }
 
