@@ -12,4 +12,7 @@
 	<upstream>
 		<remote-id type="github">paul-hammant/qdox</remote-id>
 	</upstream>
+	<use>
+		<flag name="ant-task">Build the ant-task</flag>
+	</use>
 </pkgmetadata>
