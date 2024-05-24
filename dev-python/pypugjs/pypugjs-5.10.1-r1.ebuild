@@ -9,7 +9,10 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit distutils-r1 optfeature
 
 DESCRIPTION="Pug (Jade) syntax adapter for Django, Jinja2 and Mako templates"
-HOMEPAGE="https://github.com/kakulukia/pypugjs"
+HOMEPAGE="
+	https://github.com/kakulukia/pypugjs/
+	https://pypi.org/project/pypugjs/
+"
 SRC_URI="
 	https://github.com/kakulukia/pypugjs/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
@@ -38,6 +41,12 @@ distutils_enable_tests pytest
 src_prepare() {
 	# poetry nonsense
 	sed -i -e 's:\^:>=:' pyproject.toml || die
+	# upstream hardcodes wrong version, and puts test dependencies
+	# in regular depenendencies, so discard the whole thing
+	sed -e "/version/s:5\.9\.12:${PV}:" \
+		-e 's:tool\.poetry\.dependencies:tool.poetry.group.ignored.dependencies:' \
+		-i pyproject.toml || die
+
 	distutils-r1_src_prepare
 }
 
