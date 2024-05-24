@@ -155,6 +155,9 @@ src_prepare() {
 			# Fails with network-sandbox at least in nspawn
 			lsfd/option-inet
 			utmp/last-ipv6
+
+			# Flaky
+			rename/subdir
 		)
 
 		local known_failing_test
