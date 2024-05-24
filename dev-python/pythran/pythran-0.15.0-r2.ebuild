@@ -30,7 +30,7 @@ RDEPEND="
 	dev-cpp/xsimd
 	=dev-python/beniget-0.4*[${PYTHON_USEDEP}]
 	=dev-python/gast-0.5*[${PYTHON_USEDEP}]
-	dev-python/numpy[${PYTHON_USEDEP}]
+	<dev-python/numpy-2[${PYTHON_USEDEP}]
 	>=dev-python/ply-3.4[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
