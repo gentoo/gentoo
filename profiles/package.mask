@@ -489,7 +489,7 @@ sec-keys/openpgp-keys-jiatan
 ~kde-frameworks/kservice-6.2.0
 ~kde-frameworks/ktexteditor-6.2.0
 ~kde-frameworks/ktextwidgets-6.2.0
-~kde-frameworks/kwallet-6.2.0
+~kde-frameworks/kwallet-6.2.1
 ~kde-frameworks/kxmlgui-6.2.0
 ~kde-frameworks/purpose-6.2.0
 ~kde-frameworks/qqc2-desktop-style-6.2.0
