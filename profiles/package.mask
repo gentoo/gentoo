@@ -36,6 +36,9 @@
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2024-05-24)
 # Work in progress.
 =dev-lang/perl-5.40*
+~virtual/perl-Archive-Tar-3.20.10_rc
+~virtual/perl-autodie-2.370.0
+~virtual/perl-bignum-0.670.0
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-23)
 # EAPI=6, maintainer-needed, dead HOMEPAGE, fails to compile.
