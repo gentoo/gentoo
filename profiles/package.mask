@@ -34,6 +34,7 @@
 #--- END OF EXAMPLES ---
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Ian Jordan <immoloism@gmail.com> (2024-05-23)
 # Upstream have removed support for this and will no longer be needed when
 # MATE 1.28 is stable. Anyone needing this package will need to notify upstream at
@@ -41,6 +42,14 @@
 # https://bugs.gentoo.org/932568 Removal on 2024-07-26.
 mate-extra/mate-netbook
 =======
+=======
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-24)
+# EAPI=6, fails tests, maintainer-needed, other QA fails.
+# Removal on 2024-06-23.  Bugs #932627, #888473, #882935.
+x11-wm/stumpwm
+x11-wm/stumpwm-contrib
+
+>>>>>>> 7d76354818cb (x11-wm/stumpwm: last-rite)
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-23)
 # EAPI=6, maintainer-needed, dead HOMEPAGE, fails to compile.
 # Removal on 2024-06-22.  Bugs #932571, #902899, #887625, #853025, #672702.
