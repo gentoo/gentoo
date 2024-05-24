@@ -45,6 +45,7 @@ RDEPEND="
 	!sqlcipher? ( dev-db/sqlite:3 )
 	plugins? (
 		media-libs/speex
+		media-libs/speexdsp
 		<media-video/ffmpeg-5
 	)"
 
