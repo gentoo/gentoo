@@ -12,7 +12,7 @@ S=${WORKDIR}/${P#go-}
 
 LICENSE="BSD MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 
 # Many test failures (bug 904314).
 RESTRICT="test"
