@@ -55,6 +55,11 @@ PATCHES=(
 
 SITEFILE=50"${PN}"-gentoo.el
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# FreeBSD & OpenBSD
+	pthread_set_name_np
+)
+
 src_prepare() {
 	default
 
