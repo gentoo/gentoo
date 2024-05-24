@@ -36,6 +36,14 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+src_prepare() {
+	# remove invalid cffi dependency
+	# https://github.com/tych0/xcffib/pull/167
+	sed -i -e '/dependencies/d' setup.py || die
+
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	rm -rf xcffib || die
 	epytest
