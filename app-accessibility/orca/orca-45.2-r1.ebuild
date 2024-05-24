@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit gnome2 python-single-r1
 
@@ -28,8 +28,13 @@ DEPEND="${PYTHON_DEPS}
 	braille? (
 		$(python_gen_cond_dep '
 			>=app-accessibility/brltty-5.0-r3[python,${PYTHON_USEDEP}]
-			dev-libs/liblouis[python,${PYTHON_USEDEP}]
 		')
+		|| (
+			>=dev-libs/liblouis-3.29.0[${PYTHON_SINGLE_USEDEP}]
+			$(python_gen_cond_dep '
+				<dev-libs/liblouis-3.29.0[python,${PYTHON_USEDEP}]
+			')
+		)
 	)
 "
 RDEPEND="${DEPEND}
