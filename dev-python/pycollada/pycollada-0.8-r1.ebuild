@@ -32,6 +32,11 @@ RDEPEND="
 
 DOCS=( AUTHORS.md COPYING README.markdown )
 
+PATCHES=(
+	# https://github.com/pycollada/pycollada/pull/147
+	"${FILESDIR}/${P}-numpy-2.patch"
+)
+
 distutils_enable_sphinx docs
 distutils_enable_tests unittest
 
