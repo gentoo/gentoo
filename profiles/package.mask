@@ -848,20 +848,6 @@ sec-keys/openpgp-keys-jiatan
 <sys-kernel/gentoo-kernel-5.10
 <virtual/dist-kernel-5.10
 
-# Sam James <sam@gentoo.org> (2023-12-09)
-# ext4 corruption bug: https://lore.kernel.org/stable/20231205122122.dfhhoaswsfscuhc3@quack3/ (bug #919675)
-# Please update immediately to the latest versions in each series.
-=sys-kernel/gentoo-sources-6.1.64
-=sys-kernel/gentoo-sources-6.1.64-r1
-=sys-kernel/gentoo-sources-6.1.65
-=sys-kernel/gentoo-kernel-6.1.64
-=sys-kernel/gentoo-kernel-6.1.64-r1
-=sys-kernel/gentoo-kernel-6.1.65
-=sys-kernel/vanilla-sources-6.1.64
-=sys-kernel/vanilla-sources-6.1.65
-=sys-kernel/vanilla-kernel-6.1.64
-=sys-kernel/vanilla-kernel-6.1.65
-
 # Sam James <sam@gentoo.org> (2023-11-22)
 # Further bugs with CoW via copy_file_range (bug #917224, https://github.com/openzfs/zfs/issues/15526).
 # The issue is very similar to bug #815469.
