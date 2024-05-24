@@ -6,12 +6,7 @@ EAPI=8
 inherit mate
 
 MINOR=$(($(ver_cut 2) % 2))
-if [[ ${MINOR} -eq 0 ]]; then
-<<<<<<< HEAD
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
-=======
 	KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
->>>>>>> 3b222f3634c1 (mate-base/mate-session-manager: Depend on libglvnd, not mesa)
 fi
 
 DESCRIPTION="MATE session manager"
@@ -40,15 +35,8 @@ COMMON_DEPEND="
 	x11-libs/libXrender
 	x11-libs/libXtst
 	x11-libs/pango
-<<<<<<< HEAD
-<<<<<<<< HEAD:mate-base/mate-session-manager/mate-session-manager-1.28.0-r1.ebuild
 	gles2? ( media-libs/mesa[egl(+),gles2,opengl] )
-========
 	gles2? ( media-libs/libglvnd )
->>>>>>>> 3b222f3634c1 (mate-base/mate-session-manager: Depend on libglvnd, not mesa):mate-base/mate-session-manager/mate-session-manager-1.26.1-r1.ebuild
-=======
-	gles2? ( media-libs/libglvnd )
->>>>>>> 3b222f3634c1 (mate-base/mate-session-manager: Depend on libglvnd, not mesa)
 	systemd? ( sys-apps/systemd )
 	elogind? ( sys-auth/elogind )
 "
