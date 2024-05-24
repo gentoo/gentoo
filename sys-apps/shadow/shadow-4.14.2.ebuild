@@ -47,14 +47,6 @@ DEPEND="
 "
 RDEPEND="
 	${COMMON_DEPEND}
-	!<sys-apps/man-pages-5.11-r1
-	!=sys-apps/man-pages-5.12-r0
-	!=sys-apps/man-pages-5.12-r1
-	nls? (
-		!<app-i18n/man-pages-it-5.06-r1
-		!<app-i18n/man-pages-ja-20180315-r1
-		!<app-i18n/man-pages-ru-5.03.2390.2390.20191017-r1
-	)
 	pam? ( >=sys-auth/pambase-20150213 )
 	su? ( !sys-apps/util-linux[su(-)] )
 "
