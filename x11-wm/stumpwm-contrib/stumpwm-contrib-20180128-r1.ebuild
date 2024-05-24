@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit common-lisp-3
 
@@ -18,7 +18,6 @@ fi
 
 LICENSE="GPL-2 GPL-3 BSD-2"
 SLOT="0"
-IUSE=""
 
 RDEPEND=">=x11-wm/stumpwm-1.0.0"
 
