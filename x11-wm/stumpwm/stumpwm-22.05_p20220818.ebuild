@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,13 +27,17 @@ RDEPEND="dev-lisp/alexandria
 		emacs? ( >=app-editors/emacs-23.1:* )"
 DEPEND="${RDEPEND}"
 BDEPEND="sys-apps/texinfo
-		doc? ( virtual/texi2dvi )"
+		doc? (
+			virtual/texi2dvi
+			dev-texlive/texlive-fontsrecommended
+		)"
 
 SITEFILE=70${PN}-gentoo.el
 CLPKGDIR="${CLSOURCEROOT}/${CLPACKAGE}"
 
 install_docs() {
 	local pdffile="${PN}.pdf"
+	export VARTEXFONTS="${T}/fonts"
 
 	texi2pdf -o "${pdffile}" "${PN}.texi.in" && dodoc "${pdffile}" || die
 	cp "${FILESDIR}/README.Gentoo" . && sed -i "s:@VERSION@:${PV}:" README.Gentoo || die
