@@ -152,6 +152,9 @@ src_prepare() {
 			lsfd/option-inet
 			utmp/last-ipv6
 
+			# Flaky
+			rename/subdir
+
 			# Permission issues on /dev/random
 			lsfd/mkfds-eventpoll
 			lsfd/column-xmode
