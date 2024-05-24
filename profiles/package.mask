@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-05-24)
+# Work in progress.
+=dev-lang/perl-5.40*
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-23)
 # EAPI=6, maintainer-needed, dead HOMEPAGE, fails to compile.
 # Removal on 2024-06-22.  Bugs #932571, #902899, #887625, #853025, #672702.
