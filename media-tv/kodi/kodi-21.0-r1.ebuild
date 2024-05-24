@@ -259,8 +259,8 @@ BDEPEND="
 	)
 "
 
-PATHCES=(
-	"${FILESDIR}"/kodi-21-fix-gcc14.ebuild
+PATCHES=(
+	"${FILESDIR}"/kodi-21-fix-gcc14.patch
 )
 
 # bug #544020
