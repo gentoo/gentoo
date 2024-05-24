@@ -12,7 +12,7 @@ S="${WORKDIR}/musl-rpmatch-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~mips ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~mips ~ppc ~ppc64 ~riscv x86"
 IUSE="static-libs"
 
 RDEPEND="!sys-libs/glibc"
