@@ -52,6 +52,9 @@ src_configure() {
 		--host-cc="$(tc-getBUILD_CC)"
 	)
 
+	# Meson will not use a cross-file unless cross_prefix is set.
+	tc-is-cross-compiler && myconf+=( --cross-prefix="${CHOST}-" )
+
 	edo ./configure "${myconf[@]}"
 }
 
