@@ -801,10 +801,6 @@ sec-keys/openpgp-keys-jiatan
 ~app-office/libreoffice-24.2.3.2
 ~app-office/libreoffice-l10n-24.2.3.2
 
-# Sam James <sam@gentoo.org> (2024-02-18)
-# Lots of changes, including a port to a new build system. Needs lots of testing.
-=sys-apps/gentoo-functions-1*
-
 # Ulrich Müller <ulm@gentoo.org> (2024-02-08)
 # Masked for testing.
 # Test failure in watchpoints.dem, undefined function FresnelC.
