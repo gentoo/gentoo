@@ -936,11 +936,6 @@ x11-drivers/nvidia-drivers:0/390
 # Breaks too many revdeps for now
 =app-text/discount-3*
 
-# John Helmert III <ajak@gentoo.org> (2022-10-16)
-# <OpenSSL-1.1.1 are EOL and contain known vulnerabilities. Users should
-# migrate to a newer branch.
-<dev-libs/openssl-1.1.1
-
 # Joonas Niilola <juippis@gentoo.org> (2022-04-29)
 # Apparently the "b" in version means "beta". 3.24 is available, we
 # should update to that. #841437
