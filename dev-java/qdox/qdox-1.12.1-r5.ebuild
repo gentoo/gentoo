@@ -11,31 +11,35 @@ inherit java-pkg-2
 DESCRIPTION="Parser for extracting class/interface/method definitions"
 HOMEPAGE="https://github.com/codehaus/qdox"
 SRC_URI="https://github.com/codehaus/qdox/archive/${P}.tar.gz"
+S="${WORKDIR}/${PN}-${PN}-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="1.12"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~ppc-macos ~x64-macos"
+IUSE="ant-task"
+REQUIRED_USE="test? ( ant-task )"
 
-S="${WORKDIR}/${PN}-${PN}-${PV}"
-
-CDEPEND=">=dev-java/ant-1.10.14-r3:0"
-
-DEPEND=">=virtual/jdk-1.8:*
+DEPEND="
+	>=virtual/jdk-1.8:*
 	dev-java/byaccj:0
-	>=dev-java/jflex-1.6.1:0
+	dev-java/jflex:0
 	dev-java/jmock:1.0
+	ant-task? ( >=dev-java/ant-1.10.14-r3:0 )
 	test? ( dev-java/junit:0 )
-	${CDEPEND}"
+"
 
-RDEPEND=">=virtual/jre-1.8:*
-	${CDEPEND}"
+RDEPEND="
+	>=virtual/jre-1.8:*
+	ant-task? ( >=dev-java/ant-1.10.14-r3:0 )
+"
 
 PATCHES=(
 	"${FILESDIR}/jflex-1.6.1.patch"
 )
 
 src_prepare() {
-	default
+	default #780585
+	java-pkg-2_src_prepare
 
 	if ! use test ; then
 		rm src/java/com/thoughtworks/qdox/tools/QDoxTester.java
@@ -52,10 +56,16 @@ src_compile() {
 	# create jar
 	mkdir -p build/classes || die
 
-	local cp="$(java-pkg_getjars --build-only ant,jmock-1.0)"
+	local cp="$(java-pkg_getjars --build-only jmock-1.0)"
 
 	if use test ; then
 		cp="${cp}:$(java-pkg_getjars --build-only junit)"
+	fi
+
+	if use ant-task ; then
+		cp="${cp}:$(java-pkg_getjars --build-only ant)"
+	else
+		rm src/java/com/thoughtworks/qdox/ant/AbstractQdoxTask.java || die
 	fi
 
 	ejavac -sourcepath . -d build/classes -classpath "${cp}" \
