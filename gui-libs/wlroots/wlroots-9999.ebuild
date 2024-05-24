@@ -11,11 +11,11 @@ HOMEPAGE="https://gitlab.freedesktop.org/wlroots/wlroots"
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/${PN}/${PN}.git"
 	inherit git-r3
-	SLOT="0/9999"
+	SLOT="0.18"
 else
 	SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/releases/${PV}/downloads/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
-	SLOT="0/$(ver_cut 2)"
+	SLOT="$(ver_cut 1-2)"
 fi
 
 LICENSE="MIT"
