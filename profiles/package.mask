@@ -868,10 +868,6 @@ sec-keys/openpgp-keys-jiatan
 <sys-devel/gcc-11
 <sys-devel/kgcc64-11
 
-# Sam James <sam@gentoo.org> (2023-10-06)
-# Breaks building scipy: https://github.com/cython/cython/issues/5748
-=dev-python/cython-3.0.3
-
 # Sam James <sam@gentoo.org> (2023-09-09)
 # OpenSSL 1.1.x is EOL on 2023-09-11. Please upgrade immediately to >= OpenSSL 3.
 # https://www.openssl.org/blog/blog/2023/03/28/1.1.1-EOL/
