@@ -21,12 +21,14 @@ CPU_USE=(
 	arm_{crc32,neon}
 	ppc_{altivec,vsx2,vsx3}
 )
-IUSE="compat ${CPU_USE[@]/#/cpu_flags_} test"
+IUSE="compat minizip ${CPU_USE[@]/#/cpu_flags_} test"
 
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	test? ( dev-cpp/gtest )
+	compat? ( minizip? ( sys-libs/minizip-ng[compat(+)] ) )
+	!compat? ( minizip? ( sys-libs/minizip-ng[-compat] ) )
 "
 RDEPEND="
 	compat? ( !sys-libs/zlib )
