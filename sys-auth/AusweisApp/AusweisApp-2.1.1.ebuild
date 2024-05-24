@@ -11,7 +11,7 @@ SRC_URI="https://github.com/Governikus/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="EUPL-1.2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 BDEPEND="
 	dev-qt/qtshadertools:6
