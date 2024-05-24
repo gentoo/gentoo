@@ -24,7 +24,14 @@ RDEPEND="
 	x11-apps/rgb
 	x11-libs/libXpm
 	!media-gfx/transfig
-	ghostscript? ( app-text/ghostscript-gpl )
+	ghostscript?
+	(
+		app-text/ghostscript-gpl
+		|| (
+			media-gfx/graphicsmagick[imagemagick,jpeg,png,postscript,tiff]
+			media-gfx/imagemagick[jpeg,png,postscript,tiff]
+		)
+	)
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
