@@ -22,12 +22,15 @@ else
 	SRC_URI="
 		https://github.com/ValveSoftware/${PN}/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz
 		https://github.com/Joshua-Ashton/reshade/archive/${RESHADE_COMMIT}.tar.gz -> reshade-${RESHADE_COMMIT}.tar.gz
-		https://github.com/Joshua-Ashton/wlroots/archive/${WLROOTS_COMMIT}.tar.gz -> wlroots-${WLROOTS_COMMIT}.tar.gz
 	"
 	KEYWORDS="~amd64"
+	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
-S="${WORKDIR}/${PN}-${MY_PV}"
+# Until wlroots 0.18 is released.
+SRC_URI+="
+		https://github.com/Joshua-Ashton/wlroots/archive/${WLROOTS_COMMIT}.tar.gz -> wlroots-${WLROOTS_COMMIT}.tar.gz
+"
 
 LICENSE="BSD-2"
 SLOT="0"
