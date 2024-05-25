@@ -265,20 +265,9 @@ app-emacs/buffer-extension
 app-emacs/windows
 
 # Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# No py3.12, no tests, no maintainer.  Also no revdeps.
-# Removal on 2024-05-23.  Bug #929513.
-dev-python/sphinxcontrib-newsfeed
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
 # Broken with py3.12.  Last commit upstream in 2021.  No revdeps.
 # Removal on 2024-05-23.  Bug #929484.
 dev-python/pyannotate
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# Unmaintained.  No py3.12, failing tests.  Last upstream activity
-# in 2020, triggered by our previous last rites.  No revdeps.
-# Removal on 2024-05-23.  Bug #929445.
-dev-python/cgroup-utils
 
 # Michał Górny <mgorny@gentoo.org> (2024-04-23)
 # Unmaintained in Gentoo.  Lacking tests, py3.12 support, outdated.
