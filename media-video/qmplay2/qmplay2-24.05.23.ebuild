@@ -82,7 +82,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_WITH_QT6=$(usex qt6)
 		# core
-		-DUSE_LINK_TIME_OPTIMIZATION=false
 		-DUSE_UPDATES=OFF
 		-DUSE_ALSA=$(usex alsa)
 		-DUSE_AUDIOCD=$(usex cdio)
