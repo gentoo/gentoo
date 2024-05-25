@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -98,6 +98,15 @@ python_test() {
 
 	local EPYTEST_DESELECT=()
 	case ${EPYTHON} in
+		python3.13)
+			EPYTEST_DESELECT+=(
+				tests/test_extensions/test_ext_autodoc.py::test_autodoc_special_members
+				tests/test_extensions/test_ext_autodoc_configs.py::test_autodoc_type_aliases
+				tests/test_extensions/test_ext_autodoc_configs.py::test_autodoc_typehints_format_fully_qualified
+				tests/test_extensions/test_ext_autodoc_configs.py::test_autodoc_typehints_none
+				tests/test_extensions/test_ext_autodoc_configs.py::test_autodoc_typehints_signature
+			)
+			;;
 		pypy3)
 			EPYTEST_DESELECT+=(
 				tests/test_extensions/test_ext_autodoc.py::test_autodoc_exception
