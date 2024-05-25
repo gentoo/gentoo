@@ -1,0 +1,112 @@
+#!/sbin/openrc-run
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="NGINX"
+description="Robust, small and high performance HTTP and reverse proxy server"
+description_configtest="Run NGINX's internal config check."
+description_upgrade="Upgrade the NGINX binary without losing connections."
+description_reload="Reload the NGINX configuration without losing connections."
+
+NGINX_CONFIGFILE=${NGINX_CONFIGFILE:-/etc/nginx/${RC_SVCNAME}.conf}
+NGINX_MAXWAITTIME=${NGINX_MAXWAITTIME:-3}
+
+command="/usr/sbin/nginx"
+start_stop_daemon_args=${NGINX_SSDARGS:-"--wait 1000"}
+pidfile=/run/${RV_SVCNAME}.pid
+user=${NGINX_USER:-nginx}
+group=${NGINX_GROUP:-nginx}
+retry=${NGINX_TERMTIMEOUT:-"TERM/60/KILL/5"}
+
+extra_commands="configtest"
+extra_started_commands="upgrade reload"
+
+depend() {
+	use net dns logger netmount
+}
+
+stop_pre() {
+	if [ "${RC_CMD}" = "restart" ]; then
+		configtest || return 1
+	fi
+}
+
+start() {
+	ebegin "Starting NGINX"
+	set -f
+	local output
+	output="$(start-stop-daemon --start --exec "${command}" -p "${pidfile}" \
+		${start_stop_daemon_args} -- -c "${NGINX_CONFIGFILE}" -g "pid ${pidfile};" 2>&1)"
+	if ! eend $?; then
+		eerror "Failed to start NGINX, please have a look at its output below:"
+		# Delete the last line in a POSIX-compliant way because it contains
+		# "start-stop-daemon failed..."
+		printf '%s\n' "${output}" | sed '$d'
+		eerror "Starting NGINX failed, please correct the errors above"
+		return 1
+	else
+		if [ -n "${output}" ]; then
+			ewarn "NGINX has started successfuly, yet there are warnings:"
+			printf '%s\n' "${output}"
+			ewarn "Please take a notice of the warnings above"
+		fi
+		return 0
+	fi
+}
+
+
+reload() {
+	ebegin "Refreshing NGINX's configuration"
+	start-stop-daemon --signal SIGHUP --pidfile "${pidfile}"
+	eend $? "Failed to reload NGINX's configuration, please correct the errors above"
+}
+
+upgrade() {
+	einfo "Upgrading NGINX"
+	configtest || { eerror "Unable to upgrade NGINX: Configuration check failed";
+					return 1; }
+
+	einfo "Sending USR2 signal to the old binary"
+	start-stop-daemon --signal SIGUSR2 --pidfile "${pidfile}"
+
+	ebegin "Waiting up to ${NGINX_MAXWAITTIME} seconds for NGINX to upgrade"
+	local startdate pidfile_found
+	pidfile_found=0
+	endtime=$(("$(date +%s)" + NGINX_MAXWAITTIME))
+	while [ "$(date +%s)" -le "${endtime}" ]; do
+		if [ -f "${pidfile}" ] && [ -f "${pidfile}.oldbin" ]; then
+			pidfile_found=1
+			break
+		fi
+		sleep 1
+	done
+
+	[ "${pidfile_found}" = 1 ]
+	if ! eend $?; then
+		eerror "NGINX has failed to upgrade in time. This might have been caused either"
+		eerror "by a configuration error, uncaught by the configuration check, or, more"
+		eerror "likely, by NGINX taking more time to load the configuration than is"
+		eerror "allowed by the NGINX_MAXWAITTIME variable"
+		eerror "The maximum waiting time can be adjusted by setting the NGINX_MAXWAITTIME"
+		eerror "variable to a larger value in /etc/conf.d/nginx"
+		return 1
+	fi
+
+	einfo "Sending QUIT signal to the old binary"
+	start-stop-daemon --signal SIGQUIT --pidfile "${pidfile}.oldbin" ||
+		{ eerror "The old NGINX binary may not have been stopped properly: Sending QUIT signal failed";
+		return 1; }
+
+	einfo "The upgrade has completed successfuly"
+}
+
+configtest() {
+	ebegin "Checking NGINX's configuration"
+	local output
+	output="$("${command}" -c "${NGINX_CONFIGFILE}" -t 2>&1)"
+	if ! eend $?; then
+		printf '%s\n' "${output}"
+		eerror "Configuration check failed, please correct the errors above"
+		return 1
+	fi
+}
