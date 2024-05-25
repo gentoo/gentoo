@@ -1,7 +1,7 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Virtual for ${PN#perl-}"
 SLOT="0"
@@ -12,4 +12,4 @@ RDEPEND="
 	dev-lang/perl:=
 "
 
-# this is the dev-lang/perl-5.34 and dev-lang/perl-5.36 and dev-lang/perl-5.38 version but we need the security patch
+# this is the dev-lang/perl-5.34 and dev-lang/perl-5.36 and dev-lang/perl-5.38 and dev-lang/perl-5.40 version but we want the security patch
