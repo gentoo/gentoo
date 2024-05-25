@@ -40,6 +40,12 @@
 ~virtual/perl-autodie-2.370.0
 ~virtual/perl-bignum-0.670.0
 ~virtual/perl-Compress-Raw-Bzip2-2.212.0
+~virtual/perl-CPAN-Meta-Requirements-2.143.0
+~virtual/perl-Data-Dumper-2.189.0
+~virtual/perl-DB_File-1.859.0
+~virtual/perl-Devel-PPPort-3.720.0
+~virtual/perl-Exporter-5.780.0
+~virtual/perl-ExtUtils-CBuilder-0.280.240
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-23)
 # EAPI=6, maintainer-needed, dead HOMEPAGE, fails to compile.
