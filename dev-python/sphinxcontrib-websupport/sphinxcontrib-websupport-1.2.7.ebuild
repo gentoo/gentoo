@@ -4,7 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_TESTED=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_13 )
 
 inherit distutils-r1 pypi
 
@@ -31,8 +32,10 @@ PDEPEND="
 BDEPEND="
 	test? (
 		${PDEPEND}
-		dev-python/sqlalchemy[${PYTHON_USEDEP}]
-		dev-python/whoosh[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/sqlalchemy[${PYTHON_USEDEP}]
+			dev-python/whoosh[${PYTHON_USEDEP}]
+		' "${PYTHON_TESTED[@]}")
 	)
 "
 
