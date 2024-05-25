@@ -44,12 +44,11 @@ S="${WORKDIR}/trunk"
 
 LICENSE="GPL-2+ GPL-3 LGPL-2.1 MIT dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="alsa dbus debug doc dtrace +gui java lvm nls pam pch pulseaudio +opengl python +sdk +sdl +udev vboxwebsrv vde vnc"
+IUSE="alsa dbus debug doc dtrace +gui java lvm nls pam pch pulseaudio +opengl python +sdk +sdl +udev vboxwebsrv vde +vmmraw vnc"
 
 unset WATCOM #856769
 
 COMMON_DEPEND="
-	${PYTHON_DEPS}
 	acct-group/vboxusers
 	app-arch/xz-utils
 	dev-libs/libtpms
@@ -75,6 +74,7 @@ COMMON_DEPEND="
 		x11-libs/libXt
 	)
 	pam? ( sys-libs/pam )
+	python? ( ${PYTHON_DEPS} )
 	sdl? (
 		media-libs/libsdl2[X,video]
 		x11-libs/libX11
@@ -191,9 +191,8 @@ QA_PRESTRIPPED="
 
 REQUIRED_USE="
 	java? ( sdk )
-	python? ( sdk )
+	python? ( sdk ${PYTHON_REQUIRED_USE} )
 	vboxwebsrv? ( java )
-	${PYTHON_REQUIRED_USE}
 "
 
 PATCHES=(
@@ -214,10 +213,6 @@ pkg_pretend() {
 		einfo "No USE=\"opengl\" selected, this build will lack"
 		einfo "the OpenGL feature."
 	fi
-	if ! use python; then
-		einfo "You have disabled the \"python\" USE flag. This will only"
-		einfo "disable the python bindings being installed."
-	fi
 	if ! use nls && use gui; then
 		einfo "USE=\"gui\" also selects USE=\"nls\".  This build"
 		einfo "will have NLS support."
@@ -235,7 +230,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	java-pkg-opt-2_pkg_setup
-	python-single-r1_pkg_setup
+	use python && python-single-r1_pkg_setup
 	linux-mod-r1_pkg_setup
 }
 
@@ -266,6 +261,9 @@ src_prepare() {
 		printf '\n%s\n' "VBOX_WITHOUT_PRECOMPILED_HEADERS=1" \
 			>> LocalConfig.kmk || die
 	fi
+
+	# bug #916002, #488176
+	tc-ld-force-bfd
 
 	# Respect LDFLAGS
 	sed -e "s@_LDFLAGS\.${ARCH}*.*=@& ${LDFLAGS}@g" \
@@ -358,8 +356,6 @@ src_prepare() {
 }
 
 src_configure() {
-	tc-ld-disable-gold # bug #488176
-
 	tc-export AR CC CXX LD RANLIB
 	export HOST_CC="$(tc-getBUILD_CC)"
 
@@ -379,6 +375,7 @@ src_configure() {
 		$(usev !python --disable-python)
 		$(usev vboxwebsrv --enable-webservice)
 		$(usev vde --enable-vde)
+		$(usev !vmmraw --disable-vmmraw)
 		$(usev vnc --enable-vnc)
 	)
 
@@ -409,13 +406,13 @@ src_configure() {
 		-e '/VBOX_LIB_PYTHON.*=/d' \
 		AutoConfig.kmk || die
 
-	cat >> AutoConfig.kmk <<-EOF || die
-		VBOX_WITH_PYTHON=$(usev python 1)
-		VBOX_PATH_PYTHON_INC=$(python_get_includedir)
-		VBOX_LIB_PYTHON=$(python_get_library_path)
-	EOF
-
 	if use python; then
+		cat >> AutoConfig.kmk <<-EOF || die
+			VBOX_WITH_PYTHON=$(usev python 1)
+			VBOX_PATH_PYTHON_INC=$(python_get_includedir)
+			VBOX_LIB_PYTHON=$(python_get_library_path)
+		EOF
+
 		local mangled_python="${EPYTHON#python}"
 		mangled_python="${mangled_python/.}"
 
@@ -432,6 +429,10 @@ src_configure() {
 		EOF
 
 		chmod +x src/libs/xpcom18a4/python/gen_python_deps.py || die
+	else
+		cat >> AutoConfig.kmk <<-EOF || die
+			VBOX_WITH_PYTHON:=
+		EOF
 	fi
 }
 
