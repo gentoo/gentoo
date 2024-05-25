@@ -1,0 +1,11 @@
+[Unit]
+Description=The NGINX HTTP and reverse proxy server
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=forking
+PIDFile=/run/nginx.pid
+ExecStart=nginx
+
+[Install]
+WantedBy=multi-user.target
