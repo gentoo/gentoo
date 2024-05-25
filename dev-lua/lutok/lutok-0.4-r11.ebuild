@@ -7,8 +7,8 @@ LUA_COMPAT=( lua5-{1..4} )
 inherit lua-single
 
 DESCRIPTION="Lightweight C++ API library for Lua"
-HOMEPAGE="https://github.com/jmmv/lutok"
-SRC_URI="https://github.com/jmmv/lutok/releases/download/${P}/${P}.tar.gz"
+HOMEPAGE="https://github.com/freebsd/lutok"
+SRC_URI="https://github.com/freebsd/lutok/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
