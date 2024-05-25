@@ -13,7 +13,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DEPEND=">=virtual/jdk-1.8:*
 	>=dev-java/ant-1.10.14-r1:0"
