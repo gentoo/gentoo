@@ -270,11 +270,6 @@ app-emacs/windows
 dev-python/sphinxcontrib-newsfeed
 
 # Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# Integrated into >=dev-python/pytest-5.0.  No revdeps.
-# Removal on 2024-05-23.  Bug #929496.
-dev-python/pytest-faulthandler
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
 # Broken with py3.12.  Last commit upstream in 2021.  No revdeps.
 # Removal on 2024-05-23.  Bug #929484.
 dev-python/pyannotate
