@@ -48,6 +48,14 @@
 ~virtual/perl-ExtUtils-CBuilder-0.280.240
 ~virtual/perl-ExtUtils-Manifest-1.750.0
 ~virtual/perl-File-Spec-3.900.0
+~virtual/perl-HTTP-Tiny-0.88.0
+~virtual/perl-IO-1.550.0
+~virtual/perl-IO-Compress-2.212.0
+~virtual/perl-IO-Socket-IP-0.420.0
+~virtual/perl-IO-Zlib-1.150.0
+~virtual/perl-Math-BigInt-2.3.2
+~virtual/perl-Math-BigInt-FastCalc-0.501.800
+~virtual/perl-Math-BigRat-2.3.2
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-23)
 # EAPI=6, maintainer-needed, dead HOMEPAGE, fails to compile.
