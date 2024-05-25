@@ -83,6 +83,7 @@ src_configure() {
 		-DBUILD_GLES3=$(usex gles3)
 		-DBUILD_LIBRETRO=$(usex libretro)
 		-DBUILD_QT=$(usex gui)
+		$(usev gui -DFORCE_QT_VERSION=$(usex qt6 6 5))
 		-DBUILD_ROM_TEST=yes #918855
 		-DBUILD_SDL=$(usex sdl) # also used for gamepads in QT build
 		-DBUILD_SUITE=$(usex test)
@@ -90,7 +91,6 @@ src_configure() {
 		-DENABLE_DEBUGGERS=$(usex debug)
 		-DENABLE_GDB_STUB=$(usex debug)
 		-DENABLE_SCRIPTING=$(usex lua)
-		-DFORCE_QT_VERSION=$(usex qt6 6 5)
 		-DMARKDOWN=no #752048
 		-DUSE_DISCORD_RPC=$(usex discord)
 		-DUSE_EDITLINE=$(usex debug)
