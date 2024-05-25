@@ -3,6 +3,7 @@
 
 EAPI=8
 
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/jariruusu.asc"
 inherit linux-mod-r1 verify-sig
 
 MY_P="${PN/aes/AES}-v${PV}"
@@ -16,8 +17,6 @@ SRC_URI="
 			-> ${MY_P}.tar.bz2.sig
 	)
 "
-BDEPEND="verify-sig? ( sec-keys/openpgp-keys-jariruusu )"
-VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/jariruusu.asc"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
@@ -26,6 +25,7 @@ KEYWORDS="~amd64 ~arm ~hppa ~ppc ~sparc ~x86"
 IUSE="cpu_flags_x86_aes extra-ciphers keyscrub cpu_flags_x86_padlock"
 
 DEPEND="app-crypt/loop-aes-losetup"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-jariruusu )"
 
 PATCHES=(
 	"${FILESDIR}"/loop-aes-3.7w-build-initrd_explicit-losetup.patch
