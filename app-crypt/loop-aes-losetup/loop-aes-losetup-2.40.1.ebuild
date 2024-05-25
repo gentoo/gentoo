@@ -10,7 +10,7 @@ MY_P="util-linux-${MY_PV}"
 LOOPAES_P="loop-AES-v3.8c"
 
 DESCRIPTION="Loop-AES losetup utility"
-HOMEPAGE="https://www.kernel.org/pub/linux/utils/util-linux/ https://github.com/util-linux/util-linux"
+HOMEPAGE="https://sourceforge.net/projects/loop-aes/ https://www.kernel.org/pub/linux/utils/util-linux/ https://github.com/util-linux/util-linux"
 SRC_URI="
 	https://www.kernel.org/pub/linux/utils/util-linux/v${PV:0:4}/${MY_P}.tar.xz
 	https://loop-aes.sourceforge.net/loop-AES/${LOOPAES_P}.tar.bz2
