@@ -349,11 +349,6 @@ dev-util/android-ndk
 # Removal on 2024-05-23.  Bug #927076.
 app-forensics/libewf
 
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# Superseded by dev-python/tinycss2.  No revdeps.
-# Removal on 2024-05-23.  Bug #930503.
-dev-python/tinycss
-
 # Matthew Smith <matthew@gentoo.org> (2024-04-23)
 # Security issues (Bug #920682).
 # See the following link for breaking changes:
