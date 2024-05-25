@@ -35,7 +35,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 LICENSE="GPL-2+ GPL-3 LGPL-2.1 MIT dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
-IUSE="alsa dbus debug doc dtrace +gui java lvm nls pam pch pulseaudio +opengl python +sdk +sdl +udev vboxwebsrv vde vnc"
+IUSE="alsa dbus debug doc dtrace +gui java lvm nls pam pch pulseaudio +opengl python +sdk +sdl +udev vboxwebsrv vde +vmmraw vnc"
 
 unset WATCOM #856769
 
@@ -358,6 +358,7 @@ src_configure() {
 		$(usev !python --disable-python)
 		$(usev vboxwebsrv --enable-webservice)
 		$(usev vde --enable-vde)
+		$(usev !vmmraw --disable-vmmraw)
 		$(usev vnc --enable-vnc)
 	)
 
