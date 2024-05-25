@@ -14,7 +14,7 @@ SRC_URI="https://github.com/michaelrsweet/${PN}/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="Mini-XML"
 SLOT="4"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="static-libs test threads"
 RESTRICT="!test? ( test )"
 
