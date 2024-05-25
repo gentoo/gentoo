@@ -34,6 +34,7 @@ RDEPEND="
 
 BDEPEND="
 	test? (
+		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/pytest-httpserver[${PYTHON_USEDEP}]
 	)
 "
@@ -42,5 +43,5 @@ distutils_enable_tests pytest
 
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p pytest_httpserver
+	epytest -o asyncio_mode=auto -p asyncio -p pytest_httpserver
 }
