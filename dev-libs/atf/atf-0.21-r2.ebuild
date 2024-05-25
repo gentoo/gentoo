@@ -6,8 +6,8 @@ EAPI=8
 inherit flag-o-matic
 
 DESCRIPTION="Libraries to write tests in C, C++ and shell"
-HOMEPAGE="https://github.com/jmmv/atf"
-SRC_URI="https://github.com/jmmv/atf/releases/download/${P}/${P}.tar.gz"
+HOMEPAGE="https://github.com/freebsd/atf"
+SRC_URI="https://github.com/freebsd/atf/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="BSD BSD-2"
 SLOT="0"
