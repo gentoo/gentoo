@@ -254,16 +254,6 @@ app-i18n/skkserv
 # Removal: 2024-05-26.  Bug #912842.
 net-misc/ttytter
 
-# Maciej Barć <xgqt@gentoo.org> (2024-04-25)
-# Mask "app-emacs/windows" and reverse dependencies.
-# Very old package failing to compile with modern GNU Emacs.
-# Additionally all 3 packages do not have any definitive repository nor VCS.
-# Open bugs: #930655
-# Removal on 2024-05-25.
-app-emacs/basic-toolkit
-app-emacs/buffer-extension
-app-emacs/windows
-
 # Michał Górny <mgorny@gentoo.org> (2024-04-23)
 # Broken with py3.12.  Last commit upstream in 2021.  No revdeps.
 # Removal on 2024-05-23.  Bug #929484.
