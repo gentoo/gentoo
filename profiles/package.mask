@@ -308,12 +308,6 @@ dev-python/fuse-python
 net-analyzer/tcpstat
 
 # Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# Unmaintained GTK+2 application.  Last update in 2005.
-# Alternatives include media-sound/fmit and media-sound/lingot.
-# Removal on 2024-05-23.  Bug #928512.
-media-sound/pitchtune
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
 # An old, unmaintained theme.  The last revdep stopped using it.
 # Removal on 2024-05-23.  Bug #927764.
 dev-python/sphinx-py3doc-enhanced-theme
