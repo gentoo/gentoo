@@ -21,7 +21,7 @@ LICENSE="MPL-2.0 BSD LGPL-2.1+ public-domain discord? ( MIT )"
 SLOT="0/$(ver_cut 1-2)"
 IUSE="
 	debug discord elf ffmpeg gles2 gles3 gui libretro
-	lua +opengl +sdl +sqlite test
+	lua +opengl qt6 +sdl +sqlite test
 "
 REQUIRED_USE="
 	gui? ( || ( gles2 gles3 opengl ) sqlite )
@@ -43,11 +43,17 @@ RDEPEND="
 	)
 	opengl? ( media-libs/libglvnd )
 	gui? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtmultimedia:5
-		dev-qt/qtnetwork:5
-		dev-qt/qtwidgets:5
+		qt6? (
+			dev-qt/qtbase:6[gui,network,opengl,widgets]
+			dev-qt/qtmultimedia:6
+		)
+		!qt6? (
+			dev-qt/qtcore:5
+			dev-qt/qtgui:5
+			dev-qt/qtmultimedia:5
+			dev-qt/qtnetwork:5
+			dev-qt/qtwidgets:5
+		)
 	)
 	sdl? ( media-libs/libsdl2[sound,joystick,gles2?,opengl?,video] )
 	sqlite? ( dev-db/sqlite:3 )
@@ -63,7 +69,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.10.0-optional-updater.patch
-	"${FILESDIR}"/${PN}-0.10.3-rapidjson-gcc14-const.patch
 )
 
 pkg_setup() {
@@ -82,15 +87,16 @@ src_configure() {
 		-DBUILD_SDL=$(usex sdl) # also used for gamepads in QT build
 		-DBUILD_SUITE=$(usex test)
 		-DBUILD_UPDATER=no
+		-DENABLE_DEBUGGERS=$(usex debug)
+		-DENABLE_GDB_STUB=$(usex debug)
 		-DENABLE_SCRIPTING=$(usex lua)
+		-DFORCE_QT_VERSION=$(usex qt6 6 5)
 		-DMARKDOWN=no #752048
-		-DUSE_DEBUGGERS=$(usex debug)
 		-DUSE_DISCORD_RPC=$(usex discord)
 		-DUSE_EDITLINE=$(usex debug)
 		-DUSE_ELF=$(usex elf)
 		-DUSE_EPOXY=no
 		-DUSE_FFMPEG=$(usex ffmpeg)
-		-DUSE_GDB_STUB=$(usex debug)
 		-DUSE_LIBZIP=no
 		-DUSE_LZMA=yes
 		-DUSE_MINIZIP=yes
@@ -116,10 +122,12 @@ src_install() {
 
 	use !test || rm "${ED}"/usr/bin/mgba-cinema || die
 
-	rm -r "${ED}"/usr/share/doc/${PF}/{LICENSE,licenses} || die
+	rm -r -- "${ED}"/usr/share/doc/${PF}/{LICENSE,licenses} || die
 }
 
 pkg_preinst() {
+	xdg_pkg_preinst
+
 	# hack: .shader/ were directories in <0.11 and are now single (zip) files
 	# named the same, that leads to portage mis-merging and leaving an empty
 	# directory behind rather than the new file
