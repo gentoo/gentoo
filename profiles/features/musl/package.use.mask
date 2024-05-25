@@ -150,6 +150,7 @@ net-misc/iputils rarpd
 # Sam James <sam@gentoo.org> (2021-11-20)
 # Pulls in po4a which doesn't seem to work on musl (wants /usr/bin/locale)
 app-arch/dpkg nls
+app-crypt/loop-aes-losetup nls
 app-emulation/guestfs-tools doc
 app-emulation/libguestfs doc
 app-text/bibletime doc
