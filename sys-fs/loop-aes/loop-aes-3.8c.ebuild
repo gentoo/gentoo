@@ -11,9 +11,9 @@ MY_P="${PN/aes/AES}-v${PV}"
 DESCRIPTION="Linux kernel module to encrypt disk partitions with AES cipher"
 HOMEPAGE="https://sourceforge.net/projects/loop-aes/"
 SRC_URI="
-	http://loop-aes.sourceforge.net/loop-AES/${MY_P}.tar.bz2
+	https://loop-aes.sourceforge.net/loop-AES/${MY_P}.tar.bz2
 	verify-sig? (
-		http://loop-aes.sourceforge.net/loop-AES/${MY_P}.tar.bz2.sign
+		https://loop-aes.sourceforge.net/loop-AES/${MY_P}.tar.bz2.sign
 			-> ${MY_P}.tar.bz2.sig
 	)
 "
