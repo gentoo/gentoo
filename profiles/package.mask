@@ -46,6 +46,8 @@
 ~virtual/perl-Devel-PPPort-3.720.0
 ~virtual/perl-Exporter-5.780.0
 ~virtual/perl-ExtUtils-CBuilder-0.280.240
+~virtual/perl-ExtUtils-Manifest-1.750.0
+~virtual/perl-File-Spec-3.900.0
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-23)
 # EAPI=6, maintainer-needed, dead HOMEPAGE, fails to compile.
