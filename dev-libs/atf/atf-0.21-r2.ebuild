@@ -1,7 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit flag-o-matic
 
 DESCRIPTION="Libraries to write tests in C, C++ and shell"
 HOMEPAGE="https://github.com/jmmv/atf"
@@ -15,6 +17,13 @@ IUSE=""
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}"/${P}-getopt-solaris.patch )
+
+src_configure() {
+	# Uses std::auto_ptr (deprecated in c++11, removed in c++17)
+	append-cxxflags "-std=c++14"
+
+	default
+}
 
 src_install() {
 	default
