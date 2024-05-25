@@ -39,6 +39,7 @@
 ~virtual/perl-Archive-Tar-3.20.10_rc
 ~virtual/perl-autodie-2.370.0
 ~virtual/perl-bignum-0.670.0
+~virtual/perl-Compress-Raw-Bzip2-2.212.0
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-23)
 # EAPI=6, maintainer-needed, dead HOMEPAGE, fails to compile.
