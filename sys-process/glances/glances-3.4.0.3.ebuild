@@ -78,7 +78,6 @@ pkg_postinst() {
 	#	dev-python/couchdb-python \
 	#	dev-python/elasticsearch-py \
 	#	dev-python/influxdb \
-	#	dev-python/kafka-python \
 	#	dev-python/pika \
 	#	dev-python/paho-mqtt \
 	#	dev-python/prometheus-client \
