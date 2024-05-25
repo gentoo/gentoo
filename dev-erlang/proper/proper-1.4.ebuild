@@ -19,7 +19,3 @@ RDEPEND="${DEPEND}"
 
 # tests broken with current erlang 23.x
 RESTRICT="test"
-
-src_configure() {
-	./configure
-}
