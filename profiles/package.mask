@@ -314,12 +314,6 @@ net-analyzer/tcpstat
 media-sound/pitchtune
 
 # Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# Ancient.  Homepage gone.  There are many alternative network testing
-# tools, such as net-misc/iperf.
-# Removal on 2024-05-23.  Bug #928133.
-net-analyzer/gensink
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
 # An old, unmaintained theme.  The last revdep stopped using it.
 # Removal on 2024-05-23.  Bug #927764.
 dev-python/sphinx-py3doc-enhanced-theme
