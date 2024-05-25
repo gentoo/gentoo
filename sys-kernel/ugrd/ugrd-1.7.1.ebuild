@@ -34,7 +34,6 @@ src_install() {
 	# Create the kernel preinst.d directory if it doesn't exist
 	# Install the kernel preinst.d hook
 	# TODO: This should be part of installkernel
-	keepdir /usr/lib/kernel/preinst.d
 	exeinto /usr/lib/kernel/preinst.d
 	doexe hooks/installkernel/51-ugrd.install
 	exeinto /usr/lib/kernel/install.d
