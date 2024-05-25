@@ -136,6 +136,11 @@ DEPEND="
 	${BDEPEND}
 	${RDEPEND}
 	${PYTHON_DEPS}
+	test? (
+		$(python_gen_any_dep '
+			dev-python/pytest[${PYTHON_USEDEP}]
+		')
+	)
 "
 # The 'circular' dependency on dev-python/libvirt-python is because of
 # virt-qemu-qmp-proxy.
@@ -148,6 +153,11 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9.9.0-do-not-use-sysconfig.patch
 	"${FILESDIR}"/${PN}-9.6.0-fix-paths-for-apparmor.patch
 )
+
+python_check_deps() {
+	use test && python_has_version -d "dev-python/pytest[${PYTHON_USEDEP}]"
+	return 0
+}
 
 pkg_setup() {
 	# Check kernel configuration:
