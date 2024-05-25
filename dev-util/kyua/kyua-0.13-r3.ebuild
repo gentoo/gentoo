@@ -6,8 +6,8 @@ EAPI=8
 inherit flag-o-matic
 
 DESCRIPTION="Testing framework for infrastructure software"
-HOMEPAGE="https://github.com/jmmv/kyua"
-SRC_URI="https://github.com/jmmv/kyua/releases/download/${P}/${P}.tar.gz"
+HOMEPAGE="https://github.com/freebsd/kyua"
+SRC_URI="https://github.com/freebsd/kyua/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
