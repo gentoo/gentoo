@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit toolchain-funcs
+inherit edo toolchain-funcs
 
 DESCRIPTION="pgrep(1) and pkill(1) for Darwin"
 HOMEPAGE="https://sourceforge.net/p/pkilldarwin/code/ci/default/tree/"
@@ -12,11 +12,9 @@ SRC_URI="https://dev.gentoo.org/~grobian/distfiles/${P}.tar.xz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~arm64-macos ~ppc-macos ~x64-macos"
-IUSE=""
 
 src_compile() {
-	echo $(tc-getCC) ${CFLAGS} -o pkill ${LDFLAGS} pkill.c
-	$(tc-getCC) ${CFLAGS} -o pkill ${LDFLAGS} pkill.c || die
+	edo $(tc-getCC) ${CFLAGS} -o pkill ${LDFLAGS} pkill.c
 	# don't link, such that the suid trick described below won't make people
 	# suid their pkill too
 	cp pkill pgrep || die
@@ -34,5 +32,5 @@ pkg_postinst() {
 	einfo "of all processes, you will have to make pgrep suid root.  To do so"
 	einfo "you have to perform the following steps:"
 	einfo "  % sudo chown root ${EPREFIX}/usr/bin/pgrep"
-	einfo "  % sudo chmod u+s ${EPREFIX}/usr/bin/prgep"
+	einfo "  % sudo chmod u+s ${EPREFIX}/usr/bin/pgrep"
 }
