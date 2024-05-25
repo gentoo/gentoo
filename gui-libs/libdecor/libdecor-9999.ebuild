@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://gitlab.freedesktop.org/libdecor/libdecor/-/archive/${PV}/${P}.tar.bz2"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~loong"
 fi
 LICENSE="MIT"
 SLOT="0"
