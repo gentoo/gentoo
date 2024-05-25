@@ -287,11 +287,6 @@ dev-python/cgroup-utils
 dev-python/fuse-python
 
 # Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# An old, unmaintained theme.  The last revdep stopped using it.
-# Removal on 2024-05-23.  Bug #927764.
-dev-python/sphinx-py3doc-enhanced-theme
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
 # Unmaintained in Gentoo and seriously outdated.  Its only reverse
 # dependency is app-admin/testdisk, and the current TestDisk versions
 # do not build against this version anyway
