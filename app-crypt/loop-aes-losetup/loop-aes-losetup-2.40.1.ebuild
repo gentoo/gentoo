@@ -20,6 +20,7 @@ SRC_URI="
 	)
 "
 S="${WORKDIR}/${MY_P}"
+
 LICENSE="GPL-2 GPL-3 LGPL-2.1 BSD-4 MIT public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~sparc ~x86"
@@ -27,10 +28,10 @@ IUSE="nls selinux static"
 
 RDEPEND="
 	selinux? ( >=sys-libs/libselinux-2.2.2-r4 )
-	verify-sig? (
-		>=sec-keys/openpgp-keys-karelzak-20230517
-		>=sec-keys/openpgp-keys-jariruusu-20240521
-	)
+"
+DEPEND="
+	${RDEPEND}
+	virtual/os-headers
 "
 BDEPEND="
 	virtual/pkgconfig
@@ -38,10 +39,10 @@ BDEPEND="
 		app-text/po4a
 		sys-devel/gettext
 	)
-"
-DEPEND="
-	${RDEPEND}
-	virtual/os-headers
+	verify-sig? (
+		>=sec-keys/openpgp-keys-karelzak-20230517
+		>=sec-keys/openpgp-keys-jariruusu-20240521
+	)
 "
 
 PATCHES=(
@@ -49,7 +50,6 @@ PATCHES=(
 )
 
 src_unpack() {
-
 	if use verify-sig ; then
 		mkdir "${T}"/verify-sig || die
 		pushd "${T}"/verify-sig &>/dev/null || die
@@ -59,7 +59,7 @@ src_unpack() {
 		# effects on normal unpack.
 		cp "${DISTDIR}"/${MY_P}.tar.xz . || die
 		xz -d ${MY_P}.tar.xz || die
-		verify-sig_verify_detached ${MY_P}.tar "${DISTDIR}"/${MY_P}.tar.sign /usr/share/openpgp-keys/karelzak.asc
+		verify-sig_verify_detached ${MY_P}.tar "${DISTDIR}"/${MY_P}.tar.sign "${BROOT}"/usr/share/openpgp-keys/karelzak.asc
 
 		popd &>/dev/null || die
 		rm -r "${T}"/verify-sig || die
