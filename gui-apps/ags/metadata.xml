@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<maintainer status="active">
+			<email>demstof@gmail.com</email>
+			<name>Aylur</name>
+		</maintainer>
+		<remote-id type="github">Aylur/ags</remote-id>
+		<doc>https://aylur.github.io/ags-docs/#documentation</doc>
+		<bugs-to>https://github.com/Aylur/ags/issues</bugs-to>
+		<changelog>https://github.com/Aylur/ags/blob/main/CHANGELOG.md</changelog>
+	</upstream>
+	<maintainer type="person" proxied="yes">
+		<email>derpdaysyt@hotmail.com</email>
+		<name>DerpDays</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="auth">Enables authentication support through pam.</flag>
+		<flag name="battery">Enables support for battery monitoring.</flag>
+		<flag name="bluetooth">Enables support for Bluetooth functionality.</flag>
+		<flag name="fetch">Enables fetching capabilities.</flag>
+		<flag name="greetd">Enables integration with greetd.</flag>
+		<flag name="network">Enables support for network-related features.</flag>
+		<flag name="notifications">Enables integration with notification daemons.</flag>
+		<flag name="power-profiles">Enables support for power profiles.</flag>
+		<flag name="system-tray">Enables system tray integration.</flag>
+		<flag name="types">Builds types into the install.</flag>
+	</use>
+</pkgmetadata>
