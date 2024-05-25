@@ -3,6 +3,7 @@
 
 EAPI=8
 
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/jariruusu.asc"
 inherit toolchain-funcs libtool flag-o-matic verify-sig
 
 MY_PV="${PV/_/-}"
