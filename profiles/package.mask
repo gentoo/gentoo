@@ -303,11 +303,6 @@ dev-python/guzzle_sphinx_theme
 dev-python/fuse-python
 
 # Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# Unmaintained.  Last release in 2003.  Carries a ton of patches.
-# Removal on 2024-05-23.  Bug #928731.
-net-analyzer/tcpstat
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
 # An old, unmaintained theme.  The last revdep stopped using it.
 # Removal on 2024-05-23.  Bug #927764.
 dev-python/sphinx-py3doc-enhanced-theme
