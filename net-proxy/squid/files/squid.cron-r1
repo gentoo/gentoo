@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# OpenRC init script supports multiple Squid instances, and exposes 'rotate'.
+if command -v rc-service >/dev/null; then
+	SQUID_SERVICES=$(rc-status | awk '/ *squid.* started /{print $1}')
+	for SQUID_SERVICE in $SQUID_SERVICES ; do
+		rc-service "${SQUID_SERVICE}" rotate
+	done
+
+# Systemd unit file supports only a single default squid instance,
+# and no 'rotate' support, so call squid directly.
+elif command -v systemctl >/dev/null; then
+	SQUID_ACTIVE=$(systemctl --type=service --state=active | awk '/^ *squid\.service / {print $1}')
+	[ -n "${SQUID_ACTIVE}" ] && squid -k rotate
+fi

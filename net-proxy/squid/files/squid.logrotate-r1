@@ -1,0 +1,11 @@
+/var/log/squid/*.log {
+    copytruncate
+    compress
+    notifempty
+    missingok
+    sharedscripts
+    postrotate
+      squid -k rotate 2>/dev/null
+    endscript
+}
+
