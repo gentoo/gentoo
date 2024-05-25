@@ -1,0 +1,20 @@
+From b90ce653b99f4efa15e27f4a71a4e251d0b34d2c Mon Sep 17 00:00:00 2001
+From: John Helmert III <ajak@gentoo.org>
+Date: Sat, 25 May 2024 14:21:50 -0700
+Subject: [PATCH] setup.py: install docs to versioned directory
+
+Signed-off-by: John Helmert III <ajak@gentoo.org>
+--- a/setup.py
++++ b/setup.py
+@@ -31,7 +31,7 @@ with builtins.open('README.rst', encoding='utf-8') as f:
+ def get_data_files():
+     return [
+         (
+-            'share/doc/glances',
++            f'share/doc/glances-{version}',
+             ['AUTHORS', 'COPYING', 'NEWS.rst', 'README.rst', "SECURITY.md", 'CONTRIBUTING.md', 'conf/glances.conf'],
+         ),
+         ('share/man/man1', ['docs/man/glances.1']),
+-- 
+2.45.1
+
