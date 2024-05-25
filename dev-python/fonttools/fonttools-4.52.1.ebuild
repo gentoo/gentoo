@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~s390 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~s390 ~x86"
 IUSE="+native-extensions"
 
 RDEPEND="
