@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2024-05-26)
+# Upstream is gone. No longer compiles with modern C compilers. Last
+# release in 2011. No reverse dependencies. Masked for removal on
+# 20240-06-26.
+dev-ruby/uconv
+
 # Michał Górny <mgorny@gentoo.org> (2024-05-26)
 # Upstream broke support for custom ssl_context, and they are still
 # debating what the best way forward is.
