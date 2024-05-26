@@ -72,6 +72,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="${RDEPEND}"
 PDEPEND="
 	!minimal? (
+		>=app-admin/perl-cleaner-2.30
 		>=virtual/perl-CPAN-2.290.0
 		>=virtual/perl-Encode-3.120.0
 		>=virtual/perl-File-Temp-0.230.400-r2
@@ -80,7 +81,6 @@ PDEPEND="
 		virtual/perl-Test-Harness
 	)
 "
-IDEPEND="app-admin/perl-cleaner"
 # bug 390719, bug 523624
 # virtual/perl-Test-Harness is here for the bundled ExtUtils::MakeMaker
 
