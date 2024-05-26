@@ -20,7 +20,6 @@
 		<flag name="openmp">Use OpenMP for parallel code</flag>
 		<flag name="qnnpack">Use QNNPACK</flag>
 		<flag name="rocm">Enable ROCm gpu computing support</flag>
-		<flag name="tensorpipe">Use tensorpipe</flag>
 		<flag name="xnnpack">Use XNNPACK</flag>
 	</use>
 	<upstream>
