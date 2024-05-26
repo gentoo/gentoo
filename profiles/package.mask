@@ -46,7 +46,8 @@ dev-ruby/uconv
 =dev-python/requests-2.32.2
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2024-05-24)
-# Work in progress.
+# Perl 5.40-RC1 mask. Use this block to unmask for testing.
+# It may still change with the final release.
 =dev-lang/perl-5.40*
 ~virtual/perl-Archive-Tar-3.20.10_rc
 ~virtual/perl-autodie-2.370.0
@@ -75,6 +76,13 @@ dev-ruby/uconv
 ~virtual/perl-Safe-2.460.0
 ~virtual/perl-Socket-2.38.0
 ~virtual/perl-Test-Harness-3.480.0
+~virtual/perl-Test-Simple-1.302.199
+~virtual/perl-Text-Tabs+Wrap-2024.1.0
+~virtual/perl-threads-2.400.0
+~virtual/perl-threads-shared-1.690.0
+~virtual/perl-Time-HiRes-1.977.700
+~virtual/perl-Time-Local-1.350.0
+~virtual/perl-version-0.993.0
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-23)
 # EAPI=6, maintainer-needed, dead HOMEPAGE, fails to compile.
