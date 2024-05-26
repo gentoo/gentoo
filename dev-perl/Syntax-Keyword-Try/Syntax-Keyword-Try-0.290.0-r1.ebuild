@@ -17,5 +17,5 @@ BDEPEND="
 	dev-perl/Module-Build
 	dev-perl/XS-Parse-Keyword
 	virtual/perl-ExtUtils-CBuilder
-	test? ( dev-perl/Test2-Suite )
+	test? ( virtual/perl-Test2-Suite )
 "
