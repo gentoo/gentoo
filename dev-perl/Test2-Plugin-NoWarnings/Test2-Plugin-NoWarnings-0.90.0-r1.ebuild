@@ -4,25 +4,23 @@
 EAPI=8
 
 DIST_AUTHOR=DROLSKY
-DIST_VERSION=0.10
+DIST_VERSION=0.09
 inherit perl-module
 
 DESCRIPTION="Fail if tests warn"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 RDEPEND="
 	virtual/perl-Carp
 	>=virtual/perl-Test-Simple-1.302.167
 	virtual/perl-parent
 "
-BDEPEND="
-	${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		virtual/perl-File-Spec
 		dev-perl/IPC-Run3
-		dev-perl/Module-Pluggable
-		dev-perl/Test2-Suite
+		virtual/perl-Test2-Suite
 	)
 "
