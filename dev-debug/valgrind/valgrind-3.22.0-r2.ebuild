@@ -53,6 +53,13 @@ PATCHES=(
 	"${FILESDIR}"/0004-Bug-478624-Valgrind-incompatibility-with-binutils-2..patch
 )
 
+QA_CONFIG_IMPL_DECL_SKIP+=(
+	# "checking if gcc accepts nested functions" but clang cannot handle good
+	# errors and reports both "function definition is not allowed here" and
+	# -Wimplicit-function-declaration. bug #900396
+	foo
+)
+
 src_prepare() {
 	# Correct hard coded doc location
 	sed -i -e "s:doc/valgrind:doc/${PF}:" docs/Makefile.am || die
