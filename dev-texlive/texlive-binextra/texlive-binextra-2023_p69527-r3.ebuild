@@ -8,7 +8,6 @@ TEXLIVE_MODULE_CONTENTS="
 	a2ping.r52964
 	adhocfilelist.r29349
 	arara.r68431
-	asymptote.r67300
 	bundledoc.r64620
 	checklistings.r38300
 	chklref.r52649
@@ -28,7 +27,6 @@ TEXLIVE_MODULE_CONTENTS="
 	dvicopy.r66186
 	dviinfox.r59216
 	dviout-util.r66186
-	dvipng.r66203
 	easydtx.r68514
 	findhyph.r47444
 	fragmaster.r26313
@@ -98,7 +96,6 @@ TEXLIVE_MODULE_DOC_CONTENTS="
 	a2ping.doc.r52964
 	adhocfilelist.doc.r29349
 	arara.doc.r68431
-	asymptote.doc.r67300
 	bundledoc.doc.r64620
 	checklistings.doc.r38300
 	chklref.doc.r52649
@@ -119,7 +116,6 @@ TEXLIVE_MODULE_DOC_CONTENTS="
 	dvicopy.doc.r66186
 	dviinfox.doc.r59216
 	dviout-util.doc.r66186
-	dvipng.doc.r66203
 	easydtx.doc.r68514
 	findhyph.doc.r47444
 	fragmaster.doc.r26313
@@ -206,7 +202,7 @@ inherit texlive-module
 
 DESCRIPTION="TeXLive TeX auxiliary programs"
 
-LICENSE="Apache-2.0 Artistic BSD BSD-2 FDL-1.1 GPL-1 GPL-2 GPL-2+ GPL-3 GPL-3+ LGPL-3 LPPL-1.0 LPPL-1.2 LPPL-1.3 LPPL-1.3c MIT TeX TeX-other-free public-domain"
+LICENSE="Apache-2.0 Artistic BSD BSD-2 FDL-1.1+ GPL-1+ GPL-2 GPL-2+ GPL-3 GPL-3+ LGPL-3 LPPL-1.0 LPPL-1.2 LPPL-1.3 LPPL-1.3c MIT TeX TeX-other-free public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 COMMON_DEPEND="
