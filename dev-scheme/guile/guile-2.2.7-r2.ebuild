@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -58,7 +58,6 @@ src_configure() {
 	econf \
 		--disable-error-on-warning \
 		--disable-rpath \
-		--disable-static \
 		--enable-posix \
 		--without-libgmp-prefix \
 		--without-libiconv-prefix \
