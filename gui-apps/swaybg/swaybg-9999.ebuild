@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,14 +22,11 @@ IUSE="gdk-pixbuf +man"
 
 DEPEND="
 	dev-libs/wayland
-	>=dev-libs/wayland-protocols-1.14
+	>=dev-libs/wayland-protocols-1.26
 	x11-libs/cairo
 	gdk-pixbuf? ( x11-libs/gdk-pixbuf )
 "
-RDEPEND="
-	${DEPEND}
-	!<gui-wm/sway-1.1_alpha1
-"
+RDEPEND="${DEPEND}"
 BDEPEND="
 	dev-util/wayland-scanner
 	virtual/pkgconfig
@@ -38,8 +35,8 @@ BDEPEND="
 
 src_configure() {
 	local emesonargs=(
-		-Dman-pages=$(usex man enabled disabled)
-		-Dgdk-pixbuf=$(usex gdk-pixbuf enabled disabled)
+		$(meson_feature man man-pages)
+		$(meson_feature gdk-pixbuf)
 	)
 
 	meson_src_configure
