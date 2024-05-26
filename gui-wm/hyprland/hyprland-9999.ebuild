@@ -52,6 +52,7 @@ WLROOTS_DEPEND="
 	virtual/libudev:=
 	X? (
 		x11-libs/libxcb:=
+		x11-libs/xcb-util-errors
 		x11-libs/xcb-util-renderutil
 		x11-libs/xcb-util-wm
 		x11-base/xwayland
