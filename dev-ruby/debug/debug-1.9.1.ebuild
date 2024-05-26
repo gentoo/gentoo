@@ -33,6 +33,9 @@ ruby_add_rdepend "
 "
 
 all_ruby_prepare() {
-	sed -i -e "s:require_relative ':require './:" -e 's/__dir__/"."/' ${RUBY_FAKEGEM_GEMSPEC} || die
+	sed -e "s:require_relative ':require './:" \
+		-e 's/__dir__/"."/' \
+		-e 's/git ls-files -z/find * -print0/' \
+		-i ${RUBY_FAKEGEM_GEMSPEC} || die
 	sed -i -e '/bundler/I s:^:#:' Rakefile || die
 }
