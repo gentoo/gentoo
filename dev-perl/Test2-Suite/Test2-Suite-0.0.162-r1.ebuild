@@ -19,7 +19,7 @@ RDEPEND="
 	virtual/perl-Exporter
 	>=dev-perl/Module-Pluggable-2.700.0
 	>=virtual/perl-Scalar-List-Utils-1.130.0
-	>=dev-perl/Term-Table-0.13.0
+	>=virtual/perl-Term-Table-0.13.0
 	>=virtual/perl-Test-Simple-1.302.176
 	virtual/perl-Time-HiRes
 "
