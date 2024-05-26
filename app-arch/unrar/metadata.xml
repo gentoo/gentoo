@@ -5,6 +5,10 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
 	<slots>
 		<subslots>Reflect ABI of libunrar.so.</subslots>
 	</slots>
