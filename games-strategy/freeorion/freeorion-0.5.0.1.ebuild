@@ -18,9 +18,10 @@ IUSE="+client doc test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
+# bug #932780 wrt boost upper bound
 DEPEND="
 	${PYTHON_DEPS}
-	$(python_gen_cond_dep 'dev-libs/boost:=[${PYTHON_USEDEP},nls,python]')
+	$(python_gen_cond_dep '<dev-libs/boost-1.85:=[${PYTHON_USEDEP},nls,python]')
 	sys-libs/zlib:=
 	client? (
 		media-libs/freetype
