@@ -19,7 +19,7 @@ RDEPEND="
 BDEPEND="
 	dev-perl/Module-Build
 	test? (
-		dev-perl/Test2-Suite
+		virtual/perl-Test2-Suite
 		dev-perl/Test-Future-IO-Impl
 		dev-perl/Test-Metrics-Any
 	)
