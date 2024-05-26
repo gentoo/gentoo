@@ -18,7 +18,7 @@ RDEPEND="
 	dev-perl/PadWalker
 	>=dev-perl/Path-Tiny-0.144.0
 	dev-perl/Scalar-Readonly
-	dev-perl/Test2-Suite
+	virtual/perl-Test2-Suite
 	dev-perl/Test2-Tools-Explain
 "
 BDEPEND="${RDEPEND}"
