@@ -38,7 +38,7 @@ DESCRIPTION="TeXLive Portuguese"
 
 LICENSE="GPL-1 GPL-2+ LPPL-1.3 LPPL-1.3c MIT public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 COMMON_DEPEND="
 	>=dev-texlive/texlive-basic-2023
 "
