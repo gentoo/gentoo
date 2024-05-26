@@ -53,6 +53,11 @@ distutils_enable_tests pytest
 # 	dev-python/sphinx-rtd-theme \
 # 	dev-python/myst-parser
 
+PATCHES=(
+	# https://github.com/zeromq/pyzmq/pull/1990
+	"${FILESDIR}/${P}-gcc14.patch"
+)
+
 src_configure() {
 	DISTUTILS_ARGS=(
 		-DZMQ_DRAFT_API="$(usex drafts)"

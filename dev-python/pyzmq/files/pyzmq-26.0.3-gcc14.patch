@@ -1,0 +1,53 @@
+From bc5e214e957eb96c7e23b2c46a075e3850805ff1 Mon Sep 17 00:00:00 2001
+From: Min RK <benjaminrk@gmail.com>
+Date: Thu, 16 May 2024 08:34:51 +0200
+Subject: [PATCH 1/2] cffi: fix type of hint mutex pointer
+
+---
+ zmq/backend/cffi/_cdefs.h | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/zmq/backend/cffi/_cdefs.h b/zmq/backend/cffi/_cdefs.h
+index 6c9a06558..cf27f5b4e 100644
+--- a/zmq/backend/cffi/_cdefs.h
++++ b/zmq/backend/cffi/_cdefs.h
+@@ -75,13 +75,14 @@ void * malloc(size_t sz);
+ void free(void *p);
+ int get_ipc_path_max_len(void);
+ 
++typedef ... mutex_t;
++
+ typedef struct _zhint {
+     void *sock;
+-    void *mutex;
++    mutex_t *mutex;
+     size_t id;
+ } zhint;
+ 
+-typedef ... mutex_t;
+ mutex_t* mutex_allocate();
+ 
+ int zmq_wrap_msg_init_data(zmq_msg_t *msg,
+
+From b180ebc07fc04b0576fef50c3969fd48fa58694d Mon Sep 17 00:00:00 2001
+From: Min RK <benjaminrk@gmail.com>
+Date: Sun, 26 May 2024 00:29:06 +0200
+Subject: [PATCH 2/2] maybe it needs to specify struct
+
+---
+ zmq/backend/cffi/_cdefs.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/zmq/backend/cffi/_cdefs.h b/zmq/backend/cffi/_cdefs.h
+index cf27f5b4e..7833b9b26 100644
+--- a/zmq/backend/cffi/_cdefs.h
++++ b/zmq/backend/cffi/_cdefs.h
+@@ -75,7 +75,7 @@ void * malloc(size_t sz);
+ void free(void *p);
+ int get_ipc_path_max_len(void);
+ 
+-typedef ... mutex_t;
++typedef struct { ...; } mutex_t;
+ 
+ typedef struct _zhint {
+     void *sock;
