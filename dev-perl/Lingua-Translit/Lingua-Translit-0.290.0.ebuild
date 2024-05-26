@@ -10,6 +10,6 @@ inherit perl-module
 DESCRIPTION="Transliterates text between writing systems"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 BDEPEND="virtual/perl-ExtUtils-MakeMaker"
