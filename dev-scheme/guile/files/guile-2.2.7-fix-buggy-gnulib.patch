@@ -1,0 +1,85 @@
+From 76d84a62e84d4206d41ffed16b8baa5af2d1e62f Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 26 May 2024 13:02:54 -0400
+Subject: [PATCH 1/2] fix invalid bash code causing the wrong type of failure
+
+test $var = no
+
+fails if $var is only ever defined after this line. gnulib is brilliant
+software and naturally does exactly this, because it is highly logical
+to only define code after you try to use it.
+
+Probably. It's hard to tell because the actual code that gets run is:
+
+func_gl_gnulib_m4code_5264294aa0a5557541b53c8c741f7f31
+
+since the other sparkling aspect of gnulib's innovative brilliance is
+the realization that *of course* the most robust way to design software
+is to use checksums as *replacements* for function names.
+
+Or, "that time Eli got jiatanned by gnulib".
+
+The quoting was silently "fixed" upstream in:
+https://github.com/coreutils/gnulib/commit/db1ee11e2168af7137db53289a92e306d2277b0b
+
+It is the same "fix" we do here, thus restoring dash <--> bash
+compatibility and preventing:
+
+```
+ * QA Notice: Abnormal configure code
+ *
+ * ./configure: 38012: test: =: unexpected operator
+```
+
+although it seems to me gnulib is just more generally broken.
+---
+ m4/timegm.m4 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/m4/timegm.m4 b/m4/timegm.m4
+index 510e25a..34e5347 100644
+--- a/m4/timegm.m4
++++ b/m4/timegm.m4
+@@ -11,7 +11,7 @@ AC_DEFUN([gl_FUNC_TIMEGM],
+   REPLACE_TIMEGM=0
+   AC_CHECK_FUNCS_ONCE([timegm])
+   if test $ac_cv_func_timegm = yes; then
+-    if test $gl_cv_func_working_mktime = no; then
++    if test "$gl_cv_func_working_mktime" = no; then
+       # Assume that timegm is buggy if mktime is.
+       REPLACE_TIMEGM=1
+     fi
+-- 
+2.44.1
+
+
+From fa98775e2a0bc6e33de851a8bd399635b977d0e6 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 26 May 2024 13:07:25 -0400
+Subject: [PATCH 2/2] gnulib: backport fix for Modern C in round.m4
+
+https://github.com/coreutils/gnulib/commit/f12a7bbb4acaaa72f48e452e04da2a4dd749a664
+
+Fixes undefined exit() by switching it to merely return. That's the
+upstream fix, so use it although arguably one could simply #include the
+headers for functions that are used...
+---
+ m4/round.m4 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/m4/round.m4 b/m4/round.m4
+index 45b7df4..d4ef7f2 100644
+--- a/m4/round.m4
++++ b/m4/round.m4
+@@ -57,7 +57,7 @@ int main()
+     * (double) (1U << ((DBL_MANT_DIG + 3) / 5))
+     * (double) (1U << ((DBL_MANT_DIG + 4) / 5));
+   volatile double x = 0.5 - 0.5 / TWO_MANT_DIG;
+-  exit (x < 0.5 && round (x) != 0.0);
++  return (x < 0.5 && round (x) != 0.0);
+ }]])], [gl_cv_func_round_works=yes], [gl_cv_func_round_works=no],
+         [case "$host_os" in
+            netbsd* | aix*) gl_cv_func_round_works="guessing no";;
+-- 
+2.44.1
+
