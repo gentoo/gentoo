@@ -12,5 +12,5 @@ DESCRIPTION="Acceptance tests for Future::IO implementations"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND="dev-perl/Test2-Suite"
+RDEPEND="virtual/perl-Test2-Suite"
 BDEPEND=">=dev-perl/Module-Build-0.400.400"
