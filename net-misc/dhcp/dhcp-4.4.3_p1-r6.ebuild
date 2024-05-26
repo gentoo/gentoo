@@ -25,6 +25,10 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="+client ipv6 ldap selinux +server ssl vim-syntax"
 
+BDEPEND="
+	acct-group/dhcp
+	acct-user/dhcp
+"
 DEPEND="
 	sys-libs/zlib:=
 	client? (
@@ -42,10 +46,6 @@ RDEPEND="
 	${DEPEND}
 	selinux? ( sec-policy/selinux-dhcp )
 	vim-syntax? ( app-vim/dhcpd-syntax )
-"
-BDEPEND="
-	acct-group/dhcp
-	acct-user/dhcp
 "
 
 PATCHES=(
