@@ -4,7 +4,7 @@
 EAPI=8
 GO_OPTIONAL=1
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit go-module distutils-r1 pypi
@@ -18,7 +18,6 @@ SRC_URI+="
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-RESTRICT+=" test"
 IUSE="jpp-symlink jp-symlink python test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
