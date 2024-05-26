@@ -1,0 +1,23 @@
+From f3bc38235bf39a630035920e29f2f883cae5fffe Mon Sep 17 00:00:00 2001
+From: Matti Picus <matti.picus@gmail.com>
+Date: Sun, 26 May 2024 11:25:43 +0300
+Subject: [PATCH 1/3] BUG: cast missing in PyPy-specific f2py code
+
+---
+ numpy/f2py/cb_rules.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/numpy/f2py/cb_rules.py b/numpy/f2py/cb_rules.py
+index 721e075b6c73..faf8dd401301 100644
+--- a/numpy/f2py/cb_rules.py
++++ b/numpy/f2py/cb_rules.py
+@@ -122,7 +122,7 @@
+ #setdims#
+ #ifdef PYPY_VERSION
+ #define CAPI_ARGLIST_SETITEM(idx, value) PyList_SetItem((PyObject *)capi_arglist_list, idx, value)
+-    capi_arglist_list = PySequence_List(capi_arglist);
++    capi_arglist_list = PySequence_List((PyObject *)capi_arglist);
+     if (capi_arglist_list == NULL) goto capi_fail;
+ #else
+ #define CAPI_ARGLIST_SETITEM(idx, value) PyTuple_SetItem((PyObject *)capi_arglist, idx, value)
+

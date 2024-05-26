@@ -52,6 +52,11 @@ EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 python_prepare_all() {
+	local PATCHES=(
+		# https://github.com/numpy/numpy/pull/26534
+		"${FILESDIR}/${P}-gcc14.patch"
+	)
+
 	append-flags -fno-strict-aliasing
 
 	distutils-r1_python_prepare_all
