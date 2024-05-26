@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,5 +21,5 @@ RDEPEND="
 "
 BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
-	test? ( >=dev-perl/Test2-Suite-0.0.139 )
+	test? ( >=virtual/perl-Test2-Suite-0.0.139 )
 "
