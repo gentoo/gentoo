@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=DROLSKY
 DIST_VERSION=0.16
@@ -11,8 +11,6 @@ DESCRIPTION="Parses ISO8601 formats"
 
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ~ppc64 ~riscv ~s390 ~sparc x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-Carp
@@ -29,6 +27,6 @@ BDEPEND="${RDEPEND}
 		>=virtual/perl-CPAN-Meta-2.120.900
 		virtual/perl-File-Spec
 		>=virtual/perl-Test-Simple-1.302.15
-		>=dev-perl/Test2-Suite-0.0.72
+		>=virtual/perl-Test2-Suite-0.0.72
 	)
 "
