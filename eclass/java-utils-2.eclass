@@ -1646,10 +1646,6 @@ java-pkg_set-current-vm() {
 	export GENTOO_VM=${1}
 }
 
-java-pkg_get-current-vm() {
-	echo ${GENTOO_VM}
-}
-
 java-pkg_current-vm-matches() {
 	has $(java-pkg_get-current-vm) ${@}
 	return $?
