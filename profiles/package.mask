@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-05-26)
+# Upstream broke support for custom ssl_context, and they are still
+# debating what the best way forward is.
+# https://github.com/psf/requests/pull/6667#issuecomment-2124283071
+=dev-python/requests-2.32.2
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2024-05-24)
 # Work in progress.
 =dev-lang/perl-5.40*
