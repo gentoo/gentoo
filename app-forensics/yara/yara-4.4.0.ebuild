@@ -19,7 +19,10 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0/8"
-IUSE="+dex +dotnet +cuckoo +macho +magic profiling python test"
+IUSE="+dex +dotnet +cuckoo +macho +magic profiling python static-libs test"
+# TODO: Allow tests to work against dyn. lib rather than building
+# statically just for tests.
+REQUIRED_USE="test? ( static-libs )"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -44,7 +47,7 @@ src_configure() {
 		$(use_enable dotnet) \
 		$(use_enable macho) \
 		$(use_enable dex) \
-		$(use_enable test static)
+		$(use_enable static-libs static)
 }
 
 src_test() {
@@ -53,8 +56,4 @@ src_test() {
 
 src_install() {
 	default
-
-	# TODO: Allow tests to work against dyn. lib rather than building
-	# statically just for tests.
-	find "${ED}" \( -name '*.a' -o -name '*.la' \) -delete || die
 }
