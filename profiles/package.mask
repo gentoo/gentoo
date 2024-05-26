@@ -68,6 +68,13 @@ dev-ruby/uconv
 ~virtual/perl-Math-BigInt-2.3.2
 ~virtual/perl-Math-BigInt-FastCalc-0.501.800
 ~virtual/perl-Math-BigRat-2.3.2
+~virtual/perl-Module-CoreList-5.202.405.240
+~virtual/perl-Module-Metadata-1.0.38
+~virtual/perl-podlators-5.10.200_rc
+~virtual/perl-Pod-Simple-3.450.0
+~virtual/perl-Safe-2.460.0
+~virtual/perl-Socket-2.38.0
+~virtual/perl-Test-Harness-3.480.0
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-23)
 # EAPI=6, maintainer-needed, dead HOMEPAGE, fails to compile.
