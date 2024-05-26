@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,7 @@ BDEPEND="
 		>=dev-perl/Specio-0.140.0
 		>=virtual/perl-Test-Simple-1.302.15
 		dev-perl/Test-Without-Module
-		>=dev-perl/Test2-Suite-0.0.72
+		>=virtual/perl-Test2-Suite-0.0.72
 		dev-perl/Test2-Plugin-NoWarnings
 	)
 "
