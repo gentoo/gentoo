@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{10..13} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 FORTRAN_NEEDED=lapack
 
-inherit distutils-r1 flag-o-matic fortran-2 pypi toolchain-funcs
+inherit distutils-r1 flag-o-matic fortran-2 pypi
 
 DESCRIPTION="Fast array and numerical python library"
 HOMEPAGE="
@@ -88,17 +88,6 @@ python_test() {
 		# Uses huge amount of memory
 		core/tests/test_mem_overlap.py
 		'core/tests/test_multiarray.py::TestDot::test_huge_vectordot[complex128]'
-
-		# TODO: crashes
-		lib/tests/test_histograms.py::TestHistogram::test_big_arrays
-
-		# likely a test problem
-		# https://github.com/numpy/numpy/issues/25135
-		core/tests/test_cython.py::test_conv_intp
-
-		# flaky
-		f2py/tests/test_crackfortran.py
-		f2py/tests/test_data.py::TestData{,F77}::test_crackedlines
 	)
 
 	if use arm && [[ $(uname -m || echo "unknown") == "armv8l" ]] ; then
@@ -107,52 +96,6 @@ python_test() {
 			core/tests/test_cpu_features.py::Test_ARM_Features::test_features
 		)
 	fi
-
-	if use x86 ; then
-		EPYTEST_DESELECT+=(
-			# https://github.com/numpy/numpy/issues/18388
-			core/tests/test_umath.py::TestRemainder::test_float_remainder_overflow
-			# https://github.com/numpy/numpy/issues/18387
-			random/tests/test_generator_mt19937.py::TestRandomDist::test_pareto
-			# more precision problems
-			core/tests/test_einsum.py::TestEinsum::test_einsum_sums_int16
-		)
-	fi
-
-	if use hppa ; then
-		EPYTEST_DESELECT+=(
-			# TODO: Get selectedrealkind updated!
-			# bug #907228
-			# https://github.com/numpy/numpy/issues/3424 (https://github.com/numpy/numpy/issues/3424#issuecomment-412369029)
-			# https://github.com/numpy/numpy/pull/21785
-			f2py/tests/test_kind.py::TestKind::test_real
-			f2py/tests/test_kind.py::TestKind::test_quad_precision
-		)
-	fi
-
-	if [[ $(tc-endian) == "big" ]] ; then
-		# https://github.com/numpy/numpy/issues/11831 and bug #707116
-		EPYTEST_DESELECT+=(
-			'f2py/tests/test_return_character.py::TestFReturnCharacter::test_all_f77[s1]'
-			'f2py/tests/test_return_character.py::TestFReturnCharacter::test_all_f90[t1]'
-			'f2py/tests/test_return_character.py::TestFReturnCharacter::test_all_f90[s1]'
-			'f2py/tests/test_return_character.py::TestFReturnCharacter::test_all_f77[t1]'
-			f2py/tests/test_kind.py::TestKind::test_int
-		)
-	fi
-
-	case "${ABI}" in
-		alpha|arm|hppa|m68k|o32|ppc|s390|sh|sparc|x86)
-			EPYTEST_DESELECT+=(
-				# too large for 32-bit platforms
-				core/tests/test_ufunc.py::TestUfunc::test_identityless_reduction_huge_array
-				'core/tests/test_multiarray.py::TestDot::test_huge_vectordot[float64]'
-				'core/tests/test_multiarray.py::TestDot::test_huge_vectordot[complex128]'
-			)
-			;;
-		*)
-			;;
-	esac
 
 	case ${EPYTHON} in
 		python3.13)
