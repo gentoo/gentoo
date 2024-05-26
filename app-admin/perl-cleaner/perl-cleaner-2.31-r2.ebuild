@@ -24,13 +24,13 @@ IUSE="pkgcore"
 
 RDEPEND="
 	app-shells/bash
+	dev-lang/perl
 	pkgcore? ( sys-apps/pkgcore )
 	!pkgcore? (
 		app-portage/portage-utils
 		sys-apps/portage
 	)
 "
-PDEPEND="dev-lang/perl"
 
 src_prepare() {
 	default

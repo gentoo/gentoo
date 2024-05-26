@@ -31,7 +31,6 @@ RDEPEND="
 		sys-apps/portage
 	)
 "
-PDEPEND="dev-lang/perl"
 
 src_prepare() {
 	default
