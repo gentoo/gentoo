@@ -12,4 +12,4 @@ DESCRIPTION="Explain tools for Perl's Test2 framework"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-perl/Test2-Suite"
+RDEPEND="virtual/perl-Test2-Suite"
