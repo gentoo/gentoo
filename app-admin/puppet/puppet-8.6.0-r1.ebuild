@@ -24,7 +24,7 @@ ruby_add_rdepend "
 	hiera? ( dev-ruby/hiera )
 	dev-ruby/json:=
 	dev-ruby/semantic_puppet
-	>=dev-ruby/facter-3.0.0
+	>=dev-ruby/facter-4.4.1
 	dev-ruby/deep_merge
 	dev-ruby/concurrent-ruby
 	augeas? ( dev-ruby/ruby-augeas )
