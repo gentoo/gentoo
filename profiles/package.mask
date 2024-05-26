@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Eli Schwartz <eschwartz93@gmail.com> (2024-05-26)
+# Unmaintained, website gone. Last released in 2010. Fails to build
+# with GCC 14, detects and builds against nonexisting dependencies.
+# Fails to authenticate users anyway. Obsoleted and replaced by
+# nss-pam-ldapd which actually works. Bug #908579.
+# Removal on 2024-09-07.
+sys-auth/pam_ldap
+
 # Joonas Niilola <juippis@gentoo.org> (2024-08-07)
 # Upstream doesn't recommend updating from 115 just yet. New
 # installs are fine. Downgrading from 128 to 115 may be impossible
