@@ -36,7 +36,7 @@ inherit texlive-module
 
 DESCRIPTION="TeXLive Portuguese"
 
-LICENSE="GPL-1 GPL-2+ LPPL-1.3 LPPL-1.3c MIT public-domain"
+LICENSE="GPL-1+ GPL-2+ LPPL-1.3 LPPL-1.3c MIT public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 COMMON_DEPEND="

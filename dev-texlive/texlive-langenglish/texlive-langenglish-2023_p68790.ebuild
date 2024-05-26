@@ -90,7 +90,7 @@ inherit texlive-module
 
 DESCRIPTION="TeXLive US and UK English"
 
-LICENSE="CC-BY-3.0 CC-BY-SA-4.0 FDL-1.1 GPL-1 GPL-2 GPL-2+ LPPL-1.2 LPPL-1.3 LPPL-1.3c OPL TeX TeX-other-free public-domain"
+LICENSE="CC-BY-3.0 CC-BY-SA-4.0 FDL-1.1+ GPL-1+ GPL-2 GPL-2+ LPPL-1.2 LPPL-1.3 LPPL-1.3c OPL TeX TeX-other-free public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 COMMON_DEPEND="

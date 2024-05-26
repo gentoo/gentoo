@@ -151,7 +151,7 @@ inherit texlive-module
 
 DESCRIPTION="TeXLive Humanities packages"
 
-LICENSE="GPL-1 LPPL-1.0 LPPL-1.2 LPPL-1.3 LPPL-1.3c"
+LICENSE="GPL-1+ LPPL-1.0 LPPL-1.2 LPPL-1.3 LPPL-1.3c"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 COMMON_DEPEND="

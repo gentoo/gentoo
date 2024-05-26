@@ -178,7 +178,7 @@ inherit texlive-module
 
 DESCRIPTION="TeXLive LaTeX fundamental packages"
 
-LICENSE="GPL-1 GPL-2 LPPL-1.0 LPPL-1.3 LPPL-1.3c public-domain"
+LICENSE="GPL-1+ GPL-2 LPPL-1.0 LPPL-1.3 LPPL-1.3c public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 COMMON_DEPEND="

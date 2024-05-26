@@ -144,7 +144,7 @@ inherit texlive-module
 
 DESCRIPTION="TeXLive Games typesetting"
 
-LICENSE="CC-BY-1.0 CC-BY-SA-4.0 GPL-1 LGPL-2.1 LGPL-3 LPPL-1.2 LPPL-1.3 LPPL-1.3c MIT TeX-other-free public-domain"
+LICENSE="CC-BY-1.0 CC-BY-SA-4.0 GPL-1+ LGPL-2.1 LGPL-3 LPPL-1.2 LPPL-1.3 LPPL-1.3c MIT TeX-other-free public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 COMMON_DEPEND="

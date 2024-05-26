@@ -149,7 +149,7 @@ inherit texlive-module
 
 DESCRIPTION="TeXLive Japanese"
 
-LICENSE="BSD BSD-2 GPL-1 GPL-2 GPL-3 LPPL-1.3 LPPL-1.3c MIT OFL-1.1 TeX TeX-other-free public-domain"
+LICENSE="BSD BSD-2 GPL-1+ GPL-2 GPL-3 LPPL-1.3 LPPL-1.3c MIT OFL-1.1 TeX TeX-other-free public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 COMMON_DEPEND="

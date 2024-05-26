@@ -101,7 +101,7 @@ inherit font texlive-module
 
 DESCRIPTION="TeXLive XeTeX and packages"
 
-LICENSE="Apache-2.0 CC-BY-4.0 CC-BY-SA-4.0 GPL-1 GPL-3 LGPL-2 LPPL-1.2 LPPL-1.3 LPPL-1.3c MIT TeX-other-free public-domain"
+LICENSE="Apache-2.0 CC-BY-4.0 CC-BY-SA-4.0 GPL-1+ GPL-3 LGPL-2+ LPPL-1.2 LPPL-1.3 LPPL-1.3c MIT TeX-other-free public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 COMMON_DEPEND="

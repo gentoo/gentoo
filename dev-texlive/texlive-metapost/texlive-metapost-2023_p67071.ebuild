@@ -122,7 +122,7 @@ inherit texlive-module
 
 DESCRIPTION="TeXLive MetaPost and Metafont packages"
 
-LICENSE="CC-BY-SA-4.0 GPL-1 GPL-2+ GPL-3+ LGPL-2 LPPL-1.3 LPPL-1.3c MIT TeX-other-free public-domain"
+LICENSE="CC-BY-SA-4.0 GPL-1+ GPL-2+ GPL-3+ LGPL-2+ LPPL-1.3 LPPL-1.3c MIT TeX-other-free public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 COMMON_DEPEND="

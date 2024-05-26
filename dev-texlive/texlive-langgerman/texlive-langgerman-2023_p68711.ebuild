@@ -88,7 +88,7 @@ inherit texlive-module
 
 DESCRIPTION="TeXLive German"
 
-LICENSE="FDL-1.1 GPL-1 LPPL-1.3 LPPL-1.3c MIT OPL TeX-other-free"
+LICENSE="FDL-1.1+ GPL-1+ LPPL-1.3 LPPL-1.3c MIT OPL TeX-other-free"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 COMMON_DEPEND="
