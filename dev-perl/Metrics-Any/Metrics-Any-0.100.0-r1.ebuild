@@ -14,5 +14,5 @@ KEYWORDS="~amd64"
 
 BDEPEND="
 	dev-perl/Module-Build
-	test? ( dev-perl/Test2-Suite )
+	test? ( virtual/perl-Test2-Suite )
 "
