@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -43,6 +43,12 @@ PATCHES=(
 	# with latest kernel headers.
 	"${FILESDIR}"/${PN}-3.0.8-linux-headers-5.17.patch
 	"${FILESDIR}"/${PN}-3.0.8-musl-malloc.patch
+)
+
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# missing on musl. Uses handrolled AC_LINK_IFELSE but fails at link time
+	# for older compilers regardless. bug #898828
+	strndupa
 )
 
 src_prepare() {
