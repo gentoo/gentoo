@@ -11,7 +11,7 @@ DESCRIPTION="Oxygen SVG icon theme"
 HOMEPAGE="https://develop.kde.org/frameworks/oxygen-icons/"
 
 LICENSE="LGPL-3"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ppc64 ~riscv ~x86"
 IUSE="test"
 
 RESTRICT="!test? ( test )"
