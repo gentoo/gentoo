@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <use>
-    <!-- leave this global flag defined here to avoid a pkgcheck warning -->
-    <flag name="ipv6">
-      Apply Fefe's patch (https://www.fefe.de/dns/) for ipv6 support.
-    </flag>
-  </use>
+	<maintainer type="person" proxied="yes">
+		<email>jaco@uls.co.za</email>
+		<name>Jaco Kroon</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<!-- leave this global flag defined here to avoid a pkgcheck warning -->
+		<flag name="ipv6">
+			Apply Fefe's patch (https://www.fefe.de/dns/) for ipv6 support.
+		</flag>
+	</use>
 </pkgmetadata>
