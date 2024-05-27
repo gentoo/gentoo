@@ -1,0 +1,34 @@
+Deal with local recv() truncation.
+
+In the case where an upstream cache sends a UDP response that would overflow
+the djb cache's default receive buffer, then djbdns would treat this as an
+invalid response.  The norm nowadays is the send >512b UDP responses,
+especially for TXT RRs.  It looks like up to around 4KB is deemed acceptable in
+most cases I've investigated.
+
+So, in the case where we locally end up reciving a truncated packet by way of
+recv() because the local UDP buffer is too small, treat that like the TC bit
+was set, because really we can know the response was truncated.
+
+Therefor check the irrelevant (inappropriate response) data first, then if the
+buffer was fully received (it might be that the response fits exactly, but
+short of parsing this buffer there is no simple way to confirm this, so just
+assume it's unlikely to get an exact sized buffer back and retry using TCP
+anyway).  Yes, this is a waste of resources in this specific case, but so be
+it.
+
+Signed-off-by: <jaco@uls.co.za>
+
+--- djbdns-1.05.o/dns_transmit.c	2024-05-27 13:20:25.788463090 +0200
++++ djbdns-1.05/dns_transmit.c	2024-05-27 14:13:38.786335627 +0200
+@@ -266,9 +266,9 @@
+       if (errno == error_connrefused) if (d->udploop == 2) return 0;
+       return nextudp(d);
+     }
+-    if ((size_t)r + 1 > sizeof udpbuf) return 0;
+ 
+     if (irrelevant(d,udpbuf,r)) return 0;
++    if ((size_t)r + 1 > sizeof udpbuf) return firsttcp(d); /* if udp overflowed, retry with TCP */
+     if (serverwantstcp(udpbuf,r)) return firsttcp(d);
+     if (serverfailed(udpbuf,r)) {
+       if (d->udploop == 2) return 0;
