@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -13,7 +13,7 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Apache HttpComponents Client"
-HOMEPAGE="https://hc.apache.org/httpcomponents-client"
+HOMEPAGE="https://hc.apache.org/httpcomponents-client-5.2.x/"
 SRC_URI="mirror://apache/httpcomponents/httpclient/source/httpcomponents-client-${PV}-src.tar.gz"
 
 LICENSE="Apache-2.0"
@@ -68,7 +68,13 @@ JAVA_TEST_EXCLUDES=(
 	"org.apache.http.conn.ssl.TestSSLSocketFactory"
 )
 
-src_install() {
-	default
-	java-pkg-simple_src_install
+src_test() {
+	# https://bugs.gentoo.org/923602
+	local vm_version="$(java-config -g PROVIDES_VERSION)"
+	if ver_test "${vm_version}" -ge "17" ; then
+		JAVA_TEST_EXTRA_ARGS+=( --add-opens=java.base/java.lang=ALL-UNNAMED )
+		JAVA_TEST_EXTRA_ARGS+=( --add-opens=java.base/java.net=ALL-UNNAMED )
+		JAVA_TEST_EXTRA_ARGS+=( --add-opens=java.base/java.io=ALL-UNNAMED )
+	fi
+	java-pkg-simple_src_test
 }
