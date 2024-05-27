@@ -28,7 +28,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	>=gui-libs/libadwaita-1.4.0:1[introspection]
+	>=gui-libs/libadwaita-1.5.1:1[introspection]
 	gui-libs/gtk:4[introspection]
 	$(python_gen_cond_dep '
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
