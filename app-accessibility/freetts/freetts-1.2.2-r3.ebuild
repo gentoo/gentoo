@@ -16,14 +16,15 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 ppc64 x86"
 IUSE="jsapi mbrola"
 
+BDEPEND="app-arch/unzip"
+
 DEPEND="virtual/jdk:1.8
-	${RDEPEND}
-	jsapi? ( app-arch/sharutils )"
+	jsapi? ( app-arch/sharutils )
+	mbrola? ( >=app-accessibility/mbrola-3.0.1h-r6 ) "
 
 # Exception in thread "main" java.lang.ClassCastException
 RDEPEND="virtual/jre:1.8
 	mbrola? ( >=app-accessibility/mbrola-3.0.1h-r6 ) "
-BDEPEND="app-arch/unzip"
 
 # Tests aren't present.
 RESTRICT="test"
@@ -35,6 +36,14 @@ DOCS=( ANNOUNCE.txt README.txt RELEASE_NOTES )
 src_prepare() {
 	default #780585
 	java-pkg-2_src_prepare
+
+	sed -e '/source=/s/1.4/8/' \
+		-e '/source=/a target=\"8\"' \
+		-i build.xml || die
+
+	# stop scrambling the build.xml
+	touch "${T}/java-ant-2_src_configure-run"
+
 	# Prepare source directory.
 	mkdir src || die "Failed to create source directory."
 	mv com de src/ || die "Failed to move files to source directory."
