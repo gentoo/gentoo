@@ -18,10 +18,9 @@ IUSE="+client doc test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
-# bug #932780 wrt boost upper bound
 DEPEND="
 	${PYTHON_DEPS}
-	$(python_gen_cond_dep '<dev-libs/boost-1.85:=[${PYTHON_USEDEP},nls,python]')
+	$(python_gen_cond_dep 'dev-libs/boost:=[${PYTHON_USEDEP},nls,python]')
 	sys-libs/zlib:=
 	client? (
 		media-libs/freetype
@@ -50,6 +49,10 @@ BDEPEND="
 	test? ( $(python_gen_cond_dep 'dev-python/pytest[${PYTHON_USEDEP}]') )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-boost1.85.patch
+)
+
 freeorion_check-reqs() {
 	# cc1plus processes may suddenly use ~1.5GB all at once early on (2+GB
 	# if debug symbols) then far less for the rest, check minimal jobs*1.5
@@ -75,6 +78,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-flags -fno-strict-aliasing #932780
 	filter-lto # -Werror=odr issues
 
 	local mycmakeargs=(
