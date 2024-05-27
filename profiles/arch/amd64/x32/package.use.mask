@@ -4,6 +4,10 @@
 # Ben Kohler <bkohler@gentoo.org> (2024-05-27)
 # Runtime issues (bug #925115) and build issues (bug #931092)
 dev-libs/libpcre2 jit
+dev-lang/php jit
+mail-filter/rspawmd jit
+net-proxy/haproxy pcre-jit
+www-servers/varnish jit
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-03-24)
 # Requires unkeyworded dev-qt/qtwebengine
