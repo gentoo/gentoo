@@ -1,0 +1,38 @@
+diff '--color=auto' -ur desktop-3.13.0.orig/CMakeLists.txt desktop-3.13.0/CMakeLists.txt
+--- desktop-3.13.0.orig/CMakeLists.txt	2024-05-26 13:34:36.566090600 -0700
++++ desktop-3.13.0/CMakeLists.txt	2024-05-26 14:25:47.942256544 -0700
+@@ -275,6 +275,10 @@
+ file( GLOB TRANS_FILES ${CMAKE_SOURCE_DIR}/translations/client_*.ts)
+ set(TRANSLATIONS ${TRANS_FILES})
+ 
++set(PLUGIN_PATH CACHE PATH "From where to load plugins. The default is 1) the
++same directory as the executable 2) the Qt plugins directory. This option
++prepends a directory.")
++
+ if(BUILD_CLIENT)
+     add_subdirectory(src)
+     if(NOT BUILD_LIBRARIES_ONLY)
+diff '--color=auto' -ur desktop-3.13.0.orig/config.h.in desktop-3.13.0/config.h.in
+--- desktop-3.13.0.orig/config.h.in	2024-05-26 13:34:36.569423843 -0700
++++ desktop-3.13.0/config.h.in	2024-05-26 14:25:15.675979286 -0700
+@@ -61,4 +61,6 @@
+ 
+ #cmakedefine CFAPI_SHELL_EXTENSIONS_LIB_NAME "@CFAPI_SHELL_EXTENSIONS_LIB_NAME@"
+ 
++#cmakedefine PLUGIN_PATH "@PLUGIN_PATH@"
++
+ #endif
+diff '--color=auto' -ur desktop-3.13.0.orig/src/gui/main.cpp desktop-3.13.0/src/gui/main.cpp
+--- desktop-3.13.0.orig/src/gui/main.cpp	2024-05-26 13:34:36.586090059 -0700
++++ desktop-3.13.0/src/gui/main.cpp	2024-05-26 14:26:18.811880764 -0700
+@@ -125,6 +125,10 @@
+     }
+ #endif
+ 
++#if defined(PLUGIN_PATH)
++    QCoreApplication::addLibraryPath( PLUGIN_PATH );
++#endif
++
+     // if the application is already running, notify it.
+     if (app.isRunning()) {
+         qCInfo(lcApplication) << "Already running, exiting...";
