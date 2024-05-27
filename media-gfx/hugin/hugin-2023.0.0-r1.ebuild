@@ -62,6 +62,9 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# Fix build with boost >=1.85
+	eapply "${FILESDIR}/boost-1.85-932315.patch"
+
 	sed -i \
 		-e "/COMMAND.*GZIP/d" \
 		-e "s/\.gz//g" \
