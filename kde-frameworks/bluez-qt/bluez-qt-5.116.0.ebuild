@@ -10,7 +10,7 @@ inherit ecm frameworks.kde.org udev
 DESCRIPTION="Qt wrapper for Bluez 5 DBus API"
 
 LICENSE="LGPL-2"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE=""
 
 DEPEND="
