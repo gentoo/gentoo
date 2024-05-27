@@ -13,21 +13,28 @@ S="${WORKDIR}/${P}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
+IUSE="ant-task"
 
 DEPEND=">=virtual/jdk-1.8:*
-	>=dev-java/ant-1.10.14-r1:0"
+	ant-task? ( >=dev-java/ant-1.10.14-r3:0 )"
 RDEPEND=">=virtual/jre-1.8:*
-	media-gfx/graphviz"
+	media-gfx/graphviz
+	ant-task? ( >=dev-java/ant-1.10.14-r3:0 )"
 
 JAVA_AUTOMATIC_MODULE_NAME="net.sourceforge.plantuml"
-JAVA_CLASSPATH_EXTRA="ant"
 JAVA_MAIN_CLASS="net.sourceforge.plantuml.Run"
 JAVA_RESOURCE_DIRS="res"
 JAVA_SRC_DIR="src"
 
 src_prepare() {
 	java-pkg-2_src_prepare
+	if use ant-task; then
+		# src/net/sourceforge/plantuml/ant/readme.md
+		JAVA_GENTOO_CLASSPATH+="ant"
+	else
+		rm src/net/sourceforge/plantuml/ant/{CheckZip,PlantUml}Task.java || die
+	fi
 
 	# java-pkg-simple wants resources in a separate directory
 	cp -r src res || die
@@ -39,5 +46,5 @@ src_prepare() {
 
 src_install() {
 	java-pkg-simple_src_install
-	make_desktop_entry plantuml PlantUML
+	make_desktop_entry plantuml
 }
