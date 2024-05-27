@@ -18,11 +18,6 @@ HOMEPAGE="https://openjfx.io"
 SRC_URI="
 	https://github.com/openjdk/jfx/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz
 	https://downloads.gradle.org/distributions/gradle-${EGRADLE_VER}-bin.zip
-	https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-sandbox/7.7.3/lucene-sandbox-7.7.3.jar
-	https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-grouping/7.7.3/lucene-grouping-7.7.3.jar
-	https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-queryparser/7.7.3/lucene-queryparser-7.7.3.jar
-	https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-queries/7.7.3/lucene-queries-7.7.3.jar
-	https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-core/7.7.3/lucene-core-7.7.3.jar
 	https://repo1.maven.org/maven2/org/antlr/antlr4/4.7.2/antlr4-4.7.2-complete.jar
 "
 
@@ -66,6 +61,7 @@ DEPEND="${RDEPEND}
 	dev-java/ant:0
 	dev-java/antlr:4
 	dev-java/antlr:3.5
+	dev-java/lucene:7.7.3
 	dev-java/hamcrest-core:0
 	dev-java/stringtemplate:0
 	virtual/ttf-fonts
@@ -96,6 +92,7 @@ egradle() {
 		--offline
 		--gradle-user-home "${T}/gradle_user_home"
 		--project-cache-dir "${T}/gradle_project_cache"
+		-F "off"
 		#--debug
 	)
 
@@ -171,6 +168,13 @@ src_prepare() {
 	local d="${T}/jars"
 
 	java-pkg_jar-from --build-only --with-dependencies --into "${d}" hamcrest-core
+	java-pkg_jar-from --build-only --with-dependencies --into "${d}" lucene-7.7.3
+	pushd "${d}"
+	for lib in lucene*jar
+	do
+		mv ${lib} ${lib%.jar}-7.7.3.jar
+	done
+	popd
 
 	# already included inside antlr4-complete.jar ...
 	#java-pkg_jar-from --build-only --with-dependencies --into "${d}" antlr-4
