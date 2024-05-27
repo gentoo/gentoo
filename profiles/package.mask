@@ -365,15 +365,16 @@ sec-keys/openpgp-keys-jiatan
 # Mask experimental software
 =mail-mta/postfix-3.10*
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-05-23)
-# KDE Plasma 6.0.5, Gear 24.05.0 and Frameworks 6.2.0 mask
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-05-27)
+# KDE Plasma 6.1 Beta (6.0.90), Gear 24.05.0 and Frameworks 6.2.0 mask
 #
-# Don't do anything unless you're intentionally moving to Plasma 6, which is
-# masked still for a reason. If you get this message just from conflicts where
-# you're not trying to do that, please cleanup stale entries in /etc/portage
-# and your world file.
+# Don't do anything unless you're intentionally moving to Plasma 6, which
+# is masked until bug #926828 is fixed. If you get this message just from
+# conflicts where you're not trying to do that, please cleanup stale entries
+# in /etc/portage and your world file.
 #
-# Plasma 6 replaces 5. For conflict resolution between KF5- and KF6-packages:
+# Plasma 6 replaces 5, while KF6 will be installed alongside KF5 as long as
+# the latter is needed. For conflict resolution between KF5- and KF6-packages:
 # - put '-kf6compat' into /etc/portage/profile/use.mask
 # - enable USE=kf6compat globally
 # - if you have the following packages installed, put the following into
@@ -455,6 +456,69 @@ sec-keys/openpgp-keys-jiatan
 ~kde-frameworks/kxmlgui-6.2.0
 ~kde-frameworks/purpose-6.2.0
 ~kde-frameworks/qqc2-desktop-style-6.2.0
+~kde-plasma/bluedevil-6.0.90
+~kde-plasma/breeze-6.0.90
+~kde-plasma/breeze-grub-6.0.90
+~kde-plasma/breeze-gtk-6.0.90
+~kde-plasma/breeze-plymouth-6.0.90
+~kde-plasma/discover-6.0.90
+~kde-plasma/drkonqi-6.0.90
+~kde-plasma/flatpak-kcm-6.0.90
+~kde-plasma/kactivitymanagerd-6.0.90
+~kde-plasma/kde-cli-tools-6.0.90
+~kde-plasma/kde-gtk-config-6.0.90
+~kde-plasma/kdecoration-6.0.90
+~kde-plasma/kdeplasma-addons-6.0.90
+~kde-plasma/kgamma-6.0.90
+~kde-plasma/kglobalacceld-6.0.90
+~kde-plasma/kinfocenter-6.0.90
+~kde-plasma/kmenuedit-6.0.90
+~kde-plasma/kpipewire-6.0.90
+~kde-plasma/krdp-6.0.90
+~kde-plasma/kscreen-6.0.90
+~kde-plasma/kscreenlocker-6.0.90
+~kde-plasma/ksshaskpass-6.0.90
+~kde-plasma/ksystemstats-6.0.90
+~kde-plasma/kwallet-pam-6.0.90
+~kde-plasma/kwayland-6.0.90
+~kde-plasma/kwayland-integration-6.0.90
+~kde-plasma/kwin-6.0.90.1
+~kde-plasma/kwrited-6.0.90
+~kde-plasma/layer-shell-qt-6.0.90
+~kde-plasma/libkscreen-6.0.90
+~kde-plasma/libksysguard-6.0.90
+~kde-plasma/libplasma-6.0.90
+~kde-plasma/milou-6.0.90
+~kde-plasma/ocean-sound-theme-6.0.90
+~kde-plasma/oxygen-6.0.90
+~kde-plasma/oxygen-sounds-6.0.90
+~kde-plasma/plasma-activities-6.0.90
+~kde-plasma/plasma-activities-stats-6.0.90
+~kde-plasma/plasma-browser-integration-6.0.90
+~kde-plasma/plasma-desktop-6.0.90
+~kde-plasma/plasma-disks-6.0.90
+~kde-plasma/plasma-firewall-6.0.90
+~kde-plasma/plasma-integration-6.0.90
+~kde-plasma/plasma-meta-6.0.90
+~kde-plasma/plasma-nm-6.0.90
+~kde-plasma/plasma-pa-6.0.90
+~kde-plasma/plasma-sdk-6.0.90
+~kde-plasma/plasma-systemmonitor-6.0.90
+~kde-plasma/plasma-thunderbolt-6.0.90
+~kde-plasma/plasma-vault-6.0.90
+~kde-plasma/plasma-welcome-6.0.90
+~kde-plasma/plasma-workspace-6.0.90
+~kde-plasma/plasma-workspace-wallpapers-6.0.90
+~kde-plasma/plasma5support-6.0.90
+~kde-plasma/plymouth-kcm-6.0.90
+~kde-plasma/polkit-kde-agent-6.0.90
+~kde-plasma/powerdevil-6.0.90
+~kde-plasma/print-manager-6.0.90
+~kde-plasma/qqc2-breeze-style-6.0.90
+~kde-plasma/sddm-kcm-6.0.90
+~kde-plasma/systemsettings-6.0.90
+~kde-plasma/wacomtablet-6.0.90
+~kde-plasma/xdg-desktop-portal-kde-6.0.90
 ~kde-plasma/bluedevil-6.0.5.1
 ~kde-plasma/breeze-6.0.5
 ~kde-plasma/breeze-grub-6.0.5
