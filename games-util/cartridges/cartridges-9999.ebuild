@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit gnome2-utils meson python-single-r1 xdg
+inherit gnome2-utils python-single-r1 meson xdg
 
 DESCRIPTION="Simple game launcher written in Python using GTK4 and Libadwaita"
 HOMEPAGE="https://github.com/kra-mo/cartridges/"
@@ -28,7 +28,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	>=gui-libs/libadwaita-1.4.0:1[introspection]
+	>=gui-libs/libadwaita-1.5.1:1[introspection]
 	gui-libs/gtk:4[introspection]
 	$(python_gen_cond_dep '
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
