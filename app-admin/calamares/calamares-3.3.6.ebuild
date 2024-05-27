@@ -44,7 +44,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=dev-qt/qtdeclarative-${QT6_MIN}:6
 		>=dev-qt/qtsvg-${QT6_MIN}:6
 		>=dev-qt/qtwebengine-${QT6_MIN}:6[widgets]
-		dev-qt/kdsingleapplication[qt6]
 		>=kde-frameworks/kconfig-${KF_QT6_MIN}:6
 		>=kde-frameworks/kcoreaddons-${KF_QT6_MIN}:6
 		>=kde-frameworks/kcrash-${KF_QT6_MIN}:6
@@ -66,7 +65,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=dev-qt/qtwebengine-${QT5_MIN}:5[widgets]
 		>=dev-qt/qtwidgets-${QT5_MIN}:5
 		>=dev-qt/qtxml-${QT5_MIN}:5
-		dev-qt/kdsingleapplication[-qt6]
 		>=kde-frameworks/kconfig-${KF_QT5_MIN}:5
 		>=kde-frameworks/kcoreaddons-${KF_QT5_MIN}:5
 		>=kde-frameworks/kcrash-${KF_QT5_MIN}:5
