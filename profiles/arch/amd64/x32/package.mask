@@ -3,6 +3,7 @@
 
 # Ben Kohler <bkohler@gentoo.org> (2024-05-27)
 # Requires libpcre2[jit] which is now masked on x32
+mail-filter/rspamd
 net-analyzer/ossec-hids
 
 # James Le Cuirot <chewi@gentoo.org> (2024-02-17)
