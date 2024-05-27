@@ -45,7 +45,7 @@ BDEPEND="
 	test? (
 		app-text/dvipng[truetype]
 		>=dev-python/ipykernel-5.1.0[${PYTHON_USEDEP}]
-		dev-python/matplotlib[${PYTHON_USEDEP}]
+		>=dev-python/matplotlib-3.9[${PYTHON_USEDEP}]
 		dev-python/nbformat[${PYTHON_USEDEP}]
 		>=dev-python/numpy-1.23[${PYTHON_USEDEP}]
 		dev-python/matplotlib-inline[${PYTHON_USEDEP}]
@@ -88,6 +88,8 @@ PATCHES=(
 	"${FILESDIR}"/2.1.0-substitute-files.patch
 	# https://github.com/ipython/ipython/pull/14441
 	"${FILESDIR}/${P}-pytest-8.patch"
+	# https://github.com/ipython/ipython/pull/14420
+	"${FILESDIR}/${P}-mpl-3.9.patch"
 )
 
 python_prepare_all() {
