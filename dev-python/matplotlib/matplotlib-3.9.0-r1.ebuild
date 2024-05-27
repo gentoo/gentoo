@@ -8,7 +8,7 @@ DISTUTILS_USE_PEP517=meson-python
 PYTHON_COMPAT=( pypy3 python3_{10..12} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
-inherit distutils-r1 flag-o-matic prefix pypi toolchain-funcs virtualx
+inherit distutils-r1 pypi virtualx
 
 FT_PV=2.6.1
 DESCRIPTION="Pure python plotting library with matlab like syntax"
