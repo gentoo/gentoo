@@ -473,6 +473,9 @@ src_prepare() {
 		VSComp2010/Problem2-Invert.dfy
 		auditor/TestAuditor.dfy
 		benchmarks/sequence-race/SequenceRace.dfy
+		c++/extern.dfy
+		c++/functions.dfy
+		c++/tuple.dfy
 		cli/runArgument.dfy
 		comp/CoverageReport.dfy
 		concurrency/06-ThreadOwnership.dfy
