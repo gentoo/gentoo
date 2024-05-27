@@ -25,11 +25,13 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="emacs? ( app-editors/emacs:* )"
 DEPEND="
+	<dev-cpp/abseil-cpp-20240116.2:=[${MULTILIB_USEDEP}]
 	>=dev-cpp/abseil-cpp-20230125:=[${MULTILIB_USEDEP}]
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
 	test? ( >=dev-cpp/gtest-1.9[${MULTILIB_USEDEP}] )
 "
 RDEPEND="
+	<dev-cpp/abseil-cpp-20240116.2:=[${MULTILIB_USEDEP}]
 	>=dev-cpp/abseil-cpp-20230125:=[${MULTILIB_USEDEP}]
 	emacs? ( app-editors/emacs:* )
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
