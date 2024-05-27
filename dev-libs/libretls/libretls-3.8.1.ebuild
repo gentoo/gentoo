@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit libtool
+
 DESCRIPTION="Port of libtls from LibreSSL to OpenSSL"
 HOMEPAGE="https://git.causal.agency/libretls/about/"
 SRC_URI="https://causal.agency/libretls/${P}.tar.gz"
@@ -27,6 +29,11 @@ QA_CONFIG_IMPL_DECL_SKIP+=(
 	# on musl; ignore it since it doesn't even matter. bug #906534
 	__va_copy
 )
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 src_install() {
 	default
