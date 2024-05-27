@@ -1,9 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 JAVA_PKG_IUSE="doc examples source"
+
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="A speech synthesis system written entirely in Java"
@@ -15,10 +16,12 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 ppc64 x86"
 IUSE="jsapi mbrola"
 
-DEPEND=">=virtual/jdk-1.8:*
+DEPEND="virtual/jdk:1.8
 	${RDEPEND}
 	jsapi? ( app-arch/sharutils )"
-RDEPEND=">=virtual/jre-1.8:*
+
+# Exception in thread "main" java.lang.ClassCastException
+RDEPEND="virtual/jre:1.8
 	mbrola? ( >=app-accessibility/mbrola-3.0.1h-r6 ) "
 BDEPEND="app-arch/unzip"
 
@@ -30,7 +33,8 @@ PATCHES=( "${FILESDIR}"/jsapi-gentoo.diff )
 DOCS=( ANNOUNCE.txt README.txt RELEASE_NOTES )
 
 src_prepare() {
-	default
+	default #780585
+	java-pkg-2_src_prepare
 	# Prepare source directory.
 	mkdir src || die "Failed to create source directory."
 	mv com de src/ || die "Failed to move files to source directory."
