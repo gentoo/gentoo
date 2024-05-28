@@ -15,7 +15,7 @@ HOMEPAGE="http://supervisord.org/ https://pypi.org/project/supervisor/"
 
 LICENSE="repoze ZPL BSD HPND GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 
 # setuptools is required because the package uses pkg_resources
 RDEPEND="
