@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2024-05-28)
+# Breaks reverse dependencies like protobuf-c (bug #932857) and protobuf-26.1
+# itself isn't compatible with this abseil-cpp version (bug #932848).
+# In addition, we still need to establish a new approach like a virtual
+# for protobuf because of its abseil dependency - see the discussion in bug #912819.
+~dev-libs/protobuf-26.1
+~dev-cpp/abseil-cpp-20240116.2
+
 # Hans de Graaff <graaff@gentoo.org> (2024-05-26)
 # Upstream is gone. No longer compiles with modern C compilers. Last
 # release in 2011. No reverse dependencies. Masked for removal on
