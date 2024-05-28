@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit autotools python-single-r1 xdg-utils
 
@@ -66,6 +66,7 @@ BDEPEND="
 src_prepare() {
 	default
 	eautomake
+	python_fix_shebang dialogs/mime-settings/helpers/xfce4-compose-mail
 }
 
 src_configure() {

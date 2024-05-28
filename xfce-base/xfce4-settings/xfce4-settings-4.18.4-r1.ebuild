@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit python-single-r1 xdg-utils
 
@@ -51,6 +51,11 @@ BDEPEND="
 	virtual/pkgconfig
 	sys-devel/gettext
 "
+
+src_prepare() {
+	default
+	python_fix_shebang dialogs/mime-settings/helpers/xfce4-compose-mail
+}
 
 src_configure() {
 	local myconf=(
