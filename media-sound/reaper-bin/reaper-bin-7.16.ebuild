@@ -8,7 +8,7 @@ inherit desktop xdg
 DESCRIPTION="Digital audio workstation"
 HOMEPAGE="https://www.reaper.fm"
 
-WDL_COMMIT="ce8eaac26787a8e059cbeb808d566e8bf1438075"
+WDL_COMMIT="5466dcbaf14be31f2ed1fc0ebb352a2ea2852b6d"
 
 SRC_URI="
 	amd64? ( https://www.reaper.fm/files/$(ver_cut 1).x/reaper$(ver_cut 1)$(printf %02d $(( 10#$(ver_cut 2) )))_linux_x86_64.tar.xz )
