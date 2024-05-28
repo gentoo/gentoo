@@ -60,7 +60,7 @@ src_configure() {
 	# elogind conditional block below accordingly first.
 	# DO NOT just change the version, look in configure.ac in which PKG_CHECK_MODULES-sections
 	# libsystemd is used and check if there are new sections where it is used!
-	if ver_test ${PV} -ne 3.50.0; then
+	if ver_test ${PV} -ne 3.52.0; then
 		die "Maintainer has not checked over packages MENU pkg-config deps for elogind support"
 	fi
 
