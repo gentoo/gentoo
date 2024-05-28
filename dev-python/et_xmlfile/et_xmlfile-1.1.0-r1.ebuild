@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{10..13} pypy3 )
 inherit distutils-r1
 
 MY_PV=${PV%.0}
-MY_P=${PN}-${MY_PV}
+MY_P=et_xmlfile-${MY_PV}
 
 DESCRIPTION="An implementation of lxml.xmlfile for the standard library"
 HOMEPAGE="
