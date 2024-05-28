@@ -28,10 +28,9 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_test() {
-	local EPYTEST_IGNORE=(
-		# mypy changes results from version to version
-		tests/mypy
-	)
+	# mypy changes results from version to version
+	# (we can't use EPYTEST_IGNORE because pytest_ignore_collect breaks it)
+	rm -rf tests/mypy || die
 
 	local -x PYTHONDONTWRITEBYTECODE=
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
