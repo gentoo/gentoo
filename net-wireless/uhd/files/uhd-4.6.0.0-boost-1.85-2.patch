@@ -1,0 +1,31 @@
+https://github.com/EttusResearch/uhd/commit/c4863b9b9f8b639260f7797157e8ac4dd81fef93
+https://bugs.gentoo.org/932239#c11
+
+From c4863b9b9f8b639260f7797157e8ac4dd81fef93 Mon Sep 17 00:00:00 2001
+From: Joerg Hofrichter <joerg.hofrichter@ni.com>
+Date: Wed, 17 Apr 2024 13:59:19 +0200
+Subject: [PATCH 26/30] fix compilation with boost 1.85.0
+
+The header boost/filesystem/convenience.hpp was removed with boost 1.85.0
+
+The deprecated extension-related functions were already replaced with
+commit ea586168c596d13d05d145832519755794649ba0
+---
+ host/lib/usrp/mpmd/mpmd_image_loader.cpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/host/lib/usrp/mpmd/mpmd_image_loader.cpp b/host/lib/usrp/mpmd/mpmd_image_loader.cpp
+index ba0f45fad..9824bbf4d 100644
+--- a/lib/usrp/mpmd/mpmd_image_loader.cpp
++++ b/lib/usrp/mpmd/mpmd_image_loader.cpp
+@@ -21,7 +21,6 @@
+ #include <boost/algorithm/string.hpp>
+ #include <boost/archive/iterators/binary_from_base64.hpp>
+ #include <boost/archive/iterators/transform_width.hpp>
+-#include <boost/filesystem/convenience.hpp>
+ #include <boost/optional.hpp>
+ #include <boost/property_tree/xml_parser.hpp>
+ #include <cctype>
+-- 
+2.44.1
+

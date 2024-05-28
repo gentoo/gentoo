@@ -50,6 +50,11 @@ BDEPEND="
 
 S="${WORKDIR}/${P}/host"
 
+PATCHES=(
+	"${FILESDIR}"/uhd-4.6.0.0-boost-1.85-1.patch
+	"${FILESDIR}"/uhd-4.6.0.0-boost-1.85-2.patch
+)
+
 src_unpack() {
 	default
 	mv "uhd-images_${PV}" images || die
