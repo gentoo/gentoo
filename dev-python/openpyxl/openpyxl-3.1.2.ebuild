@@ -43,6 +43,13 @@ PATCHES=(
 python_test() {
 	local EPYTEST_DESELECT=()
 
+	if has_version ">=dev-python/numpy-2[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			# https://foss.heptapod.net/openpyxl/openpyxl/-/issues/2187
+			openpyxl/compat/tests/test_compat.py::test_numpy_tostring
+		)
+	fi
+
 	case ${EPYTHON} in
 		python3.12)
 			EPYTEST_DESELECT+=(
