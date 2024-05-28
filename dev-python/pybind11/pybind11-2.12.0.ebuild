@@ -28,8 +28,8 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		<dev-cpp/catch-3
-		>=dev-cpp/catch-2.13.9
+		<dev-cpp/catch-3:0
+		>=dev-cpp/catch-2.13.9:0
 		dev-libs/boost
 	)
 "
