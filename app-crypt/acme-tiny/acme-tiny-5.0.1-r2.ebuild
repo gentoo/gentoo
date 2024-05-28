@@ -10,7 +10,7 @@ DISTUTILS_USE_PEP517="setuptools"
 inherit distutils-r1
 
 SRC_URI="https://github.com/diafygi/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 DESCRIPTION="A tiny, auditable script for Let's Encrypt's ACME Protocol"
 HOMEPAGE="https://github.com/diafygi/acme-tiny"
