@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit savedconfig toolchain-funcs
 
 MY_P="${PN}-v${PV}"
-WLROOTS_SLOT="0/18"
+WLROOTS_SLOT="0.18"
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://codeberg.org/dwl/dwl.git"
 	inherit git-r3
@@ -19,7 +19,7 @@ if [[ ${PV} == *9999* ]]; then
 			;;
 		9999-r1)
 			EGIT_BRANCH=wlroots-next
-			WLROOTS_SLOT="0/9999"
+			WLROOTS_SLOT="9999"
 			;;
 	esac
 else
@@ -38,7 +38,7 @@ IUSE="X"
 RDEPEND="
 	dev-libs/libinput:=
 	dev-libs/wayland
-	gui-libs/wlroots:${WLROOTS_SLOT}[libinput,session,X?]
+	gui-libs/wlroots:${WLROOTS_SLOT}=[libinput,session,X?]
 	x11-libs/libxkbcommon
 	X? (
 		x11-libs/libxcb:=
