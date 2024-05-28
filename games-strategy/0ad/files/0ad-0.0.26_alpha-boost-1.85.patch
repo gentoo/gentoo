@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/932254
+https://code.wildfiregames.com/file/data/ubpvat3mgrfn6gnaquuq/PHID-FILE-d7xwslolc5hv2vwv66tb/D5267.diff
+
+Index: source/graphics/TextureManager.cpp
+===================================================================
+--- a/source/graphics/TextureManager.cpp
++++ b/source/graphics/TextureManager.cpp
+@@ -806,7 +806,7 @@
+ 				files.push_back(f);
+ 			p = p / GetWstringFromWpath(*it);
+ 		}
+-		return m_TextureConverter.ComputeSettings(GetWstringFromWpath(srcPath.leaf()), files);
++		return m_TextureConverter.ComputeSettings(GetWstringFromWpath(srcPath.filename()), files);
+ 	}
+ 
+ 	/**
+Index: source/lib/file/file_system.cpp
+===================================================================
+--- a/source/lib/file/file_system.cpp
++++ b/source/lib/file/file_system.cpp
+@@ -229,7 +229,11 @@
+ 	try
+ 	{
+ 		if(override_if_exists)
++#if BOOST_VERSION >=107400
++			fs::copy_file(fs::path(path.string()), fs::path(newPath.string()), boost::filesystem::copy_options::overwrite_existing);
++#else
+ 			fs::copy_file(fs::path(path.string()), fs::path(newPath.string()), boost::filesystem::copy_option::overwrite_if_exists);
++#endif
+ 		else
+ 			fs::copy_file(fs::path(path.string()), fs::path(newPath.string()));
+ 	}
