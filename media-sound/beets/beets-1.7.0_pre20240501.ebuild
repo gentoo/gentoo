@@ -24,7 +24,7 @@ else
 	IS_VCS_SOURCE="yes"
 	UPDATE_VERSION="yes"
 	SRC_URI="https://github.com/beetbox/beets/archive/${MY_COMMIT}.tar.gz -> ${P}.gh.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 	S="${WORKDIR}/${PN}-${MY_COMMIT}"
 fi
 
