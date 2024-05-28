@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -190,7 +190,7 @@ src_install() {
 	einstalldocs
 
 	if use doc; then
-		newdoc lib/README.adoc
+		newdoc lib/README.adoc README.lib.adoc
 		dodoc docs/*.txt
 		docinto cables
 		dodoc docs/cables/*
