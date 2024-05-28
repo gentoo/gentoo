@@ -38,7 +38,7 @@ DESCRIPTION="TeXLive Korean"
 
 LICENSE="FDL-1.1+ GPL-1+ GPL-2 LPPL-1.3 LPPL-1.3c OFL-1.1 TeX-other-free public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 COMMON_DEPEND="
 	>=dev-texlive/texlive-langcjk-2023
 "
