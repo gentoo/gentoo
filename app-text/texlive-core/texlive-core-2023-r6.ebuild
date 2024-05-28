@@ -125,7 +125,7 @@ SRC_URI+=" source? ( "
 texlive-common_append_to_src_uri TL_CORE_EXTRA_SRC_CONTENTS
 SRC_URI+=" )"
 
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="cjk X doc source tk +luajittex xetex xindy"
 
 TEXMF_PATH=/usr/share/texmf-dist
