@@ -7,7 +7,10 @@
         <description>Additionally the upstream maintainer</description>
     </maintainer>
     <maintainer type="project" proxied="proxy">
-      <email>proxy-maint@gentoo.org</email>
-      <name>Proxy Maintainers</name>
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
     </maintainer>
+    <upstream>
+        <remote-id type="codeberg">dwl/dwl</remote-id>
+    </upstream>
 </pkgmetadata>
