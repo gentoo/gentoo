@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/git-big-picture/git-big-picture"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="test"
 
 # NOTE: dev-util/cram explictly does not need [${PYTHON_USEDEP}]
