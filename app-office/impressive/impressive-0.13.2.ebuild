@@ -12,7 +12,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${PN^}/${PV/_/-}/${PN^}-${PV/_/
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
