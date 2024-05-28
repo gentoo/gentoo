@@ -93,6 +93,7 @@ src_configure() {
 		-Ddocdir="${EPREFIX}"/usr/share/doc/${PF}
 		-Dhtmldoc=false
 		-Dpdfdoc=false
+		-Dapidoc=false
 		-D88-colors=true
 		-D256-colors=true
 		$(meson_use bittorrent)
