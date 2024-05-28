@@ -18,7 +18,6 @@ HOMEPAGE="https://openjfx.io"
 SRC_URI="
 	https://github.com/openjdk/jfx/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz
 	https://downloads.gradle.org/distributions/gradle-${EGRADLE_VER}-bin.zip
-	https://repo1.maven.org/maven2/org/antlr/antlr4/4.7.2/antlr4-4.7.2-complete.jar
 "
 
 S="${WORKDIR}/jfx-${MY_PV/+/-}"
@@ -59,11 +58,12 @@ DEPEND="${RDEPEND}
 	app-arch/unzip
 	app-arch/zip
 	dev-java/ant:0
-	dev-java/antlr:4
-	dev-java/antlr:3.5
+	dev-java/antlr-tool:4
+	dev-java/antlr-runtime:4
+	dev-java/antlr-runtime:3.5
 	dev-java/lucene:7.7.3
 	dev-java/hamcrest-core:0
-	dev-java/stringtemplate:0
+	dev-java/stringtemplate:4
 	virtual/ttf-fonts
 	virtual/pkgconfig
 "
@@ -79,6 +79,7 @@ PATCHES=(
 	"${FILESDIR}"/${SLOT}/ffmpeg5.patch
 	"${FILESDIR}"/${SLOT}/respect-cc.patch
 	"${FILESDIR}"/${SLOT}/strip-blank-elements-flags.patch
+	"${FILESDIR}"/${SLOT}/antlr-deps.patch
 )
 
 egradle() {
@@ -175,6 +176,10 @@ src_prepare() {
 		mv ${lib} ${lib%.jar}-7.7.3.jar
 	done
 	popd
+	java-pkg_jar-from --build-only --into "${d}" antlr-runtime-4
+	java-pkg_jar-from --build-only --into "${d}" antlr-runtime-3.5 antlr-runtime.jar antlr-runtime-3.5.jar
+	java-pkg_jar-from --build-only --into "${d}" antlr-tool-4
+	java-pkg_jar-from --build-only --into "${d}" stringtemplate-4
 
 	# already included inside antlr4-complete.jar ...
 	#java-pkg_jar-from --build-only --with-dependencies --into "${d}" antlr-4
