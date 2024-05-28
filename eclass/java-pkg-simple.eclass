@@ -456,18 +456,17 @@ java-pkg-simple_call_ejavadoc() {
 	fi
 }
 
-# @FUNCTION: java-pkg-simple_src_compile
+# @FUNCTION: java-pkg-simple_compile_jar
 # @DESCRIPTION:
-# src_compile for simple bare source java packages. Finds all *.java
-# sources in ${JAVA_SRC_DIR}, compiles them with the classpath
-# calculated from ${JAVA_GENTOO_CLASSPATH}, and packages the resulting
-# classes to a single ${JAVA_JAR_FILENAME}. If the file
+# Finds all *.java sources in ${JAVA_SRC_DIR}, compiles them with the
+# classpath calculated from ${JAVA_GENTOO_CLASSPATH}, and packages the
+# resulting classes to a single ${JAVA_JAR_FILENAME}. If the file
 # target/META-INF/MANIFEST.MF exists, it is used as the manifest of the
 # created jar.
 #
 # If USE FLAG 'binary' exists and is set, it will just copy
-# ${JAVA_BINJAR_FILENAME} to ${S} and skip the rest of src_compile.
-java-pkg-simple_src_compile() {
+# ${JAVA_BINJAR_FILENAME} to ${S}.
+java-pkg-simple_compile_jar() {
 	local sources=sources.lst classes=target/classes
 	local moduleinfo modulesourcepath
 
@@ -533,15 +532,6 @@ java-pkg-simple_src_compile() {
 		fi
 	fi
 
-	# javadoc
-	if has doc ${JAVA_PKG_IUSE} && use doc; then
-		if [[ ${JAVADOC_SRC_DIRS} ]]; then
-			einfo "JAVADOC_SRC_DIRS exists, you need to call java-pkg-simple_call_ejavadoc separately"
-		else
-			java-pkg-simple_call_ejavadoc
-		fi
-	fi
-
 	# package
 	local jar_args
 	if [[ -e ${classes}/META-INF/MANIFEST.MF ]]; then
@@ -563,6 +553,31 @@ java-pkg-simple_src_compile() {
 		jar ufmv ${JAVA_JAR_FILENAME} "${T}/add-to-MANIFEST.MF" \
 			|| die "updating MANIFEST.MF failed"
 		rm -f "${T}/add-to-MANIFEST.MF" || die "cannot remove"
+	fi
+}
+
+# @FUNCTION: java-pkg-simple_src_compile
+# @DESCRIPTION:
+# src_compile for simple bare source java packages. Compiles a single
+# jar via java-pkg-simple_compile_jar and calls
+# java-pkg-simple_call_ejavadoc to generate documentation if USE FLAG
+# 'doc' exists and is set.
+java-pkg-simple_src_compile() {
+	java-pkg-simple_compile_jar
+
+	# javadoc
+	if has doc ${JAVA_PKG_IUSE} && use doc; then
+		if has binary ${JAVA_PKG_IUSE} && use binary; then
+			ewarn "Generation of documentation is not supported when installing binary (USE=binary)."
+		elif [[ ${JAVADOC_SRC_DIRS} ]]; then
+			eqawarn "JAVADOC_SRC_DIRS is set and java-pkg-simple_src_compile called."
+			eqawarn "When setting JAVADOC_SRC_DIRS use java-pkg-simple_compile_jar"
+			eqawarn "instead of java-pkg-simple_src_compile for the jar files"
+			eqawarn "and call java-pkg-simple_call_ejavadoc for javadoc."
+			eqawarn "This will become an error in the future."
+		else
+			java-pkg-simple_call_ejavadoc
+		fi
 	fi
 }
 
