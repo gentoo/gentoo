@@ -35,6 +35,11 @@ distutils_enable_sphinx doc \
 	dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://foss.heptapod.net/openpyxl/openpyxl/-/commit/517ce7d21194da275f8083fa2fd7de6977dc7e95
+	"${FILESDIR}/${P}-pytest-8.patch"
+)
+
 python_test() {
 	local EPYTEST_DESELECT=()
 
