@@ -181,9 +181,6 @@ src_prepare() {
 	java-pkg_jar-from --build-only --into "${d}" antlr-tool-4
 	java-pkg_jar-from --build-only --into "${d}" stringtemplate-4
 
-	# already included inside antlr4-complete.jar ...
-	#java-pkg_jar-from --build-only --with-dependencies --into "${d}" antlr-4
-	#java-pkg_jar-from --build-only --with-dependencies --into "${d}" stringtemplate-4
 	sed -i "s#__gentoo_swt_jar__#$(java-pkg_getjars swt-4.10)#" "${S}"/build.gradle || die
 }
 
@@ -240,4 +237,6 @@ src_install() {
 		dodoc -r build/javadoc/.
 		dosym ../../../usr/share/doc/"${PF}" /usr/share/doc/"${PN}-${SLOT}"
 	fi
+
+	java-pkg_regjar "${D}"/usr/$(get_libdir)/${PN}-${SLOT}/lib/*.jar
 }
