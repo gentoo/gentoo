@@ -14,11 +14,8 @@ TEXLIVE_MODULE_CONTENTS="
 	fontinst.r62517
 	fontools.r69241
 	fontware.r66186
-	lcdftypetools.r52851
 	luafindfont.r67468
 	mf2pt1.r61217
-	ps2eps.r62856
-	psutils.r61719
 	t1utils.r57972
 "
 TEXLIVE_MODULE_DOC_CONTENTS="
@@ -30,11 +27,8 @@ TEXLIVE_MODULE_DOC_CONTENTS="
 	fontinst.doc.r62517
 	fontools.doc.r69241
 	fontware.doc.r66186
-	lcdftypetools.doc.r52851
 	luafindfont.doc.r67468
 	mf2pt1.doc.r61217
-	ps2eps.doc.r62856
-	psutils.doc.r61719
 	t1utils.doc.r57972
 "
 TEXLIVE_MODULE_SRC_CONTENTS="
