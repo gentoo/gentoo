@@ -1,0 +1,109 @@
+From fd738093d293739787ae2fd87c67e634c45c7b7b Mon Sep 17 00:00:00 2001
+From: Yuri Konotopov <ykonotopov@gnome.org>
+Date: Tue, 28 May 2024 19:01:57 +0400
+Subject: [PATCH] meson: use discovered python interpreter to run build scripts
+
+See-Also: https://gitlab.gnome.org/GNOME/gnome-browser-extension/-/merge_requests/13
+See-Also: https://bugs.gentoo.org/933072
+---
+ contrib/merge_json.py |  2 --
+ meson.build           | 22 +++++++++++++---------
+ 2 files changed, 13 insertions(+), 11 deletions(-)
+ mode change 100755 => 100644 contrib/merge_json.py
+
+diff --git a/contrib/merge_json.py b/contrib/merge_json.py
+old mode 100755
+new mode 100644
+index 8830a2a..41d22e3
+--- a/contrib/merge_json.py
++++ b/contrib/merge_json.py
+@@ -1,5 +1,3 @@
+-#!/usr/bin/python3
+-
+ import argparse
+ import json
+ import os
+diff --git a/meson.build b/meson.build
+index 3a162b5..9903cd6 100644
+--- a/meson.build
++++ b/meson.build
+@@ -8,19 +8,20 @@ project('gnome-browser-connector',
+ )
+ 
+ # Constants
++CONTRIB_PATH = meson.global_source_root() / 'contrib'
+ MANIFEST_FILENAME = 'org.gnome.browser_connector.json'
+ MANIFEST_LEGACY_FILENAME = 'org.gnome.chrome_gnome_shell.json'
+ 
+ # Dependencies
+ python_module = import('python')
+-py = python_module.find_installation('python3', required: true, modules: [
++py_install = python_module.find_installation('python3', required: true, modules: [
+   'gi'
+ ])
+ 
+ # Configuration used in template files
+ config = configuration_data()
+ config.set('bindir', get_option('prefix') / get_option('bindir'))
+-config.set('python_path', py.path())
++config.set('python_path', py_install.path())
+ 
+ # Install scripts
+ foreach script : ['gnome-browser-connector', 'gnome-browser-connector-host']
+@@ -35,23 +36,24 @@ endforeach
+ # Python module
+ install_subdir(
+   'gnome_browser_connector',
+-  install_dir: py.get_install_dir(),
++  install_dir: py_install.get_install_dir(),
+ )
+ 
+ # Chrome/Chromium connector manifests
+ configure_file(
+-  input: 'contrib' / MANIFEST_FILENAME,
++  input: CONTRIB_PATH / MANIFEST_FILENAME,
+   output: MANIFEST_FILENAME,
+   configuration: config,
+ )
+ configure_file(
+   input: [
+     meson.current_build_dir() / MANIFEST_FILENAME,
+-    'contrib' / MANIFEST_LEGACY_FILENAME,
++    CONTRIB_PATH / MANIFEST_LEGACY_FILENAME,
+   ],
+   output: MANIFEST_LEGACY_FILENAME,
+   command: [
+-    'contrib/merge_json.py',
++    py_install.path(),
++    CONTRIB_PATH / 'merge_json.py',
+     '--output', '@OUTPUT@',
+     '@INPUT@'
+   ],
+@@ -70,11 +72,12 @@ endforeach
+ configure_file(
+   input: [
+     meson.current_build_dir() / MANIFEST_FILENAME,
+-    'contrib/org.gnome.browser_connector.firefox.json',
++    CONTRIB_PATH / 'org.gnome.browser_connector.firefox.json',
+   ],
+   output: 'firefox-' + MANIFEST_FILENAME,
+   command: [
+-    'contrib/merge_json.py',
++    py_install.path(),
++    CONTRIB_PATH / 'merge_json.py',
+     '--delete', 'allowed_origins',
+     '--output', '@OUTPUT@',
+     '@INPUT@'
+@@ -87,7 +90,8 @@ configure_file(
+   ],
+   output: 'firefox-' + MANIFEST_LEGACY_FILENAME,
+   command: [
+-    'contrib/merge_json.py',
++    py_install.path(),
++    CONTRIB_PATH / 'merge_json.py',
+     '--output', '@OUTPUT@',
+     '@INPUT@'
+   ],
+-- 
+GitLab
+
