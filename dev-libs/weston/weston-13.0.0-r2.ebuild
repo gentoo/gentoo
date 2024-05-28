@@ -19,7 +19,7 @@ if [[ ${PV} = *9999* ]]; then
 	SRC_URI="${SRC_PATCHES}"
 else
 	SRC_URI="https://gitlab.freedesktop.org/wayland/${PN}/-/releases/${PV}/downloads/${P}.tar.xz"
-	KEYWORDS="amd64 arm arm64 ~ia64 ~loong ~riscv x86"
+	KEYWORDS="amd64 arm arm64 ~ia64 ~loong ppc64 ~riscv x86"
 fi
 
 LICENSE="MIT CC-BY-SA-3.0"
