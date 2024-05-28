@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Alfredo Tupone <tupone@gentoo.org> (2024-05-28)
+# Not working, bug #931046
+>=sci-libs/caffe2-2.3.0 rocm
+
 # Michał Górny <mgorny@gentoo.org> (2024-05-18)
 # dev-python/aesara is being removed.
 dev-python/sympy aesara
