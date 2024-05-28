@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 CRATES="
 	ahash@0.8.3
@@ -138,6 +138,7 @@ BDEPEND="
 		>=dev-python/ddt-1.4.4[${PYTHON_USEDEP}]
 		>=dev-python/hypothesis-4.24.3[${PYTHON_USEDEP}]
 		>=dev-python/networkx-2.2[${PYTHON_USEDEP}]
+		<dev-python/pytest-8.2[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		<dev-python/qiskit-aer-0.13[${PYTHON_USEDEP}]
 		>=dev-python/scikit-learn-0.20.0[${PYTHON_USEDEP}]
