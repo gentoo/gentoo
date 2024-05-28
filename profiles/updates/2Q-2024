@@ -7,3 +7,4 @@ move dev-python/octave_kernel dev-python/octave-kernel
 slotmove kde-apps/kdeedu-data 5 0
 move dev-perl/Term-Table perl-core/Term-Table
 move dev-perl/Test2-Suite perl-core/Test2-Suite
+move dev-python/et_xmlfile dev-python/et-xmlfile
