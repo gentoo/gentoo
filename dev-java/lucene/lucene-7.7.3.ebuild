@@ -25,8 +25,6 @@ BDEPEND="
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"
 
-RESTRICT="test"  # needs com.carrotsearch.* and others
-
 JAVADOC_SRC_DIRS=( {core,sandbox,queries,queryparser,grouping}/src/java )
 
 src_compile() {
@@ -73,6 +71,7 @@ src_compile() {
 	use doc && ejavadoc
 }
 
+# needs com.carrotsearch.* and others not in portage
 #src_test() {
 #}
 
