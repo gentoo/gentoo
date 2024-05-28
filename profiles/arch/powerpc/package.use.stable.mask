@@ -20,6 +20,7 @@
 # Joonas Niilola <juippis@gentoo.org> (2024-05-28)
 # Depchain-destabilization on ppc (libsecret[test-rust] -> gjs -> spidermonkey)
 app-crypt/libsecret test-rust
+dev-util/glade gjs
 
 # Mart Raudsepp <leio@gentoo.org> (2023-12-25)
 # Libei not stable here yet
