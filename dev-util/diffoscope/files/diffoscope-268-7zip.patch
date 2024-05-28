@@ -1,0 +1,43 @@
+https://salsa.debian.org/reproducible-builds/diffoscope/-/commit/2a361d7dff135d3e832161f587a55a62fcbec9f2
+
+From 2a361d7dff135d3e832161f587a55a62fcbec9f2 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Sat, 25 May 2024 22:41:53 +0100
+Subject: [PATCH] Amend 7zip version test for older 7z versions that include
+ "[64]" string. (Closes: #376)
+
+Without the change `7z` test fails with assertion errors:
+
+    FAILED tests/comparators/test_sevenz.py::test_metadata_diff - AssertionError
+
+This happens because version guard did not work for my ancient `7z`:
+
+    $ 7z | head -n2
+
+    7-Zip [64] 17.05 : Copyright (c) 1999-2021 Igor Pavlov : 2017-08-28
+
+THe change attempts to skip `[64]` identifier. Tested on 7z 17.05 only.
+---
+ tests/comparators/test_sevenz.py | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/tests/comparators/test_sevenz.py b/tests/comparators/test_sevenz.py
+index 1582a0f4..91974701 100644
+--- a/tests/comparators/test_sevenz.py
++++ b/tests/comparators/test_sevenz.py
+@@ -38,7 +38,12 @@ def sevenz_version():
+         out = subprocess.check_output(["7z"])
+     except subprocess.CalledProcessError as e:
+         out = e.output
+-    return out.decode("UTF-8").split()[1].strip()
++    words = out.decode("UTF-8").split()
++    # 7zip 17.04 returns version after "[64]" identifier:
++    #   "7-Zip [64] 17.05 : Copyright (c) 1999-2021 Igor Pavlov : 2017-08-28"
++    if words[1].startswith("["):
++        return words[2].strip()
++    return words[1].strip()
+ 
+ 
+ def test_identification(sevenza):
+-- 
+GitLab
