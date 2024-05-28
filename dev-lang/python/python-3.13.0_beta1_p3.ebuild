@@ -278,6 +278,19 @@ src_configure() {
 
 		# Arch-specific skips.  See #931888 for a collection of these.
 		case ${ARCH} in
+			alpha)
+				profile_task_flags+=(
+					-x test_builtin
+					-x test_cmath
+					-x test_float
+					-x test_math
+					-x test_numeric_tower
+					-x test_os	# PGO only
+					-x test_random
+					-x test_resource # bug 653850
+					-x test_strtod
+				)
+				;;
 			hppa)
 				profile_task_flags+=(
 					-x test_descr
@@ -508,6 +521,20 @@ src_test() {
 				-x test_ctypes
 				-x test_descr
 				-x test_exceptions # bug 931908
+			)
+			;;
+		alpha)
+			test_opts+=(
+				-x test_builtin
+				-x test_capi	# skipped in PGO already
+				-x test_cmath
+				-x test_float
+				-x test_free_threading	# timeout
+				-x test_math
+				-x test_numeric_tower
+				-x test_random
+				-x test_resource # bug 653850
+				-x test_strtod
 			)
 			;;
 	esac
