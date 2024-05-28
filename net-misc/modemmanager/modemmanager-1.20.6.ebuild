@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.freedesktop.org/mobile-broadband/ModemManager/-/archive/
 
 LICENSE="GPL-2+"
 SLOT="0/1" # subslot = dbus interface version, i.e. N in org.freedesktop.ModemManager${N}
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv ~sparc ~x86"
 
 IUSE="elogind gtk-doc +introspection +mbim policykit +qmi +qrtr selinux systemd test +udev vala"
 REQUIRED_USE="
