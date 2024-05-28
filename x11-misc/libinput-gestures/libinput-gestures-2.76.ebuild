@@ -41,6 +41,7 @@ src_test() {
 
 src_install() {
 	default
+	# Actually respect the python target setting
 	python_doscript "${PN}"
 }
 
@@ -50,7 +51,7 @@ pkg_postinst() {
 	elog "You must be in the input group to read the touchpad device."
 
 	if ! has_version x11-libs/gtk+:3 ; then
-		elog "${PN}-setup script supports Gnome 3 via x11-libs/gtk+:3."
+		elog "${PN}-setup script supports GNOME via x11-libs/gtk+:3."
 	fi
 	if ! has_version kde-plasma/kde-cli-tools:5 ; then
 		elog "${PN}-setup script supports Plasma 5 via kde-plasma/kde-cli-tools:5."
