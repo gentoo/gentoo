@@ -205,7 +205,7 @@ DESCRIPTION="TeXLive LaTeX recommended packages"
 
 LICENSE="CC0-1.0 FDL-1.1+ GPL-1+ GPL-2 GPL-2+ LPPL-1.2 LPPL-1.3 LPPL-1.3a LPPL-1.3c MIT TeX-other-free public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 COMMON_DEPEND="
 	>=dev-texlive/texlive-latex-2023
 "
