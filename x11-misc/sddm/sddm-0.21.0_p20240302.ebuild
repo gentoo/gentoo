@@ -36,9 +36,11 @@ COMMON_DEPEND="
 	sys-libs/pam
 	x11-libs/libXau
 	x11-libs/libxcb:=
-	elogind? ( sys-auth/elogind[pam] )
+	elogind? (
+		sys-auth/elogind[pam]
+		sys-power/upower
+	)
 	systemd? ( sys-apps/systemd:=[pam] )
-	!systemd? ( sys-power/upower )
 "
 DEPEND="${COMMON_DEPEND}
 	test? ( >=dev-qt/qtbase-${QTMIN}:6 )
