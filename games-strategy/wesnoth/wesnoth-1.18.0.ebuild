@@ -43,6 +43,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/wesnoth-1.18.0-boost-1.85.patch
+)
+
 src_prepare() {
 	cmake_src_prepare
 
