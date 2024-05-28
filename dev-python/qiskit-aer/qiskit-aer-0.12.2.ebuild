@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 multiprocessing
 
@@ -31,6 +31,7 @@ KEYWORDS="~amd64"
 #
 # <nlohmann_json-3.10.3 for https://github.com/Qiskit/qiskit-aer/issues/1742
 DEPEND="
+	<dev-python/numpy-2[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.16.3[${PYTHON_USEDEP}]
 	<dev-cpp/nlohmann_json-3.10.3
 	>=dev-cpp/nlohmann_json-3.1.1
@@ -51,6 +52,7 @@ BDEPEND="
 	test? (
 		dev-python/ddt[${PYTHON_USEDEP}]
 		dev-python/fixtures[${PYTHON_USEDEP}]
+		<dev-python/pytest-8.2[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 	)
 "
