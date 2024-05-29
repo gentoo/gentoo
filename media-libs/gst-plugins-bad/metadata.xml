@@ -7,5 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="bzip2">Enable bzip2 encoder/decoder plugin</flag>
+		<flag name="v4l2codecs">Enable v4l2 codecs plugin</flag>
 	</use>
 </pkgmetadata>
