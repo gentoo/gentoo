@@ -69,8 +69,9 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.6.2-lowspeed-buffer-size.patch"
-	"${FILESDIR}/systemd_notify.path"
+	"${FILESDIR}/systemd_notify.patch"
 )
+PATCH_NEEDS_AUTOGEN=1
 
 pkg_pretend() {
 	if use i2c; then
@@ -102,7 +103,7 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	if [[ ${PV} == *9999 ]] ; then
+	if [[ ${PV} == *9999 ]] || [[ ${PATCH_NEEDS_AUTOGEN} == 1 ]] ; then
 		./autogen.sh || die
 	fi
 
