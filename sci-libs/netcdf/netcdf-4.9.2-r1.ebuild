@@ -89,8 +89,9 @@ src_configure() {
 }
 
 src_test() {
-	[[ -f "${BUILD_DIR}/nc_test4/run_par_test.sh" ]] && \
-	sed -e 's/mpiexec/mpiexec --use-hwthread-cpus/g' -i "${BUILD_DIR}/nc_test4/run_par_test.sh" || die
+	if [[ -f "${BUILD_DIR}/nc_test4/run_par_test.sh" ]]; then
+		sed -e 's/mpiexec/mpiexec --use-hwthread-cpus/g' -i "${BUILD_DIR}/nc_test4/run_par_test.sh" || die
+	fi
 
 	cmake_src_test
 }
