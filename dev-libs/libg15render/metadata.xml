@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>robbat2@gentoo.org</email>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">g15tools</remote-id>
 		<remote-id type="gitlab">menelkir/libg15render</remote-id>
