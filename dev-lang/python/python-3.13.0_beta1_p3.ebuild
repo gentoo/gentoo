@@ -242,6 +242,68 @@ src_configure() {
 		dbmliborder+="${dbmliborder:+:}gdbm"
 	fi
 
+	# Set baseline test skip flags.
+	COMMON_TEST_SKIPS=(
+		# failures
+		-x test_concurrent_futures
+		-x test_gdb
+	)
+
+	# Arch-specific skips.  See #931888 for a collection of these.
+	case ${ARCH} in
+		alpha)
+			test_opts+=(
+				-x test_builtin
+				-x test_capi
+				-x test_cmath
+				-x test_float
+				# timeout
+				-x test_free_threading
+				-x test_math
+				-x test_numeric_tower
+				-x test_random
+				# bug 653850
+				-x test_resource
+				-x test_strtod
+			)
+			;;
+		ia64)
+			test_opts+=(
+				-x test_ctypes
+				-x test_external_inspection
+			)
+			;;
+		mips)
+			test_opts+=(
+				-x test_ctypes
+				-x test_external_inspection
+				-x test_statistics
+			)
+			;;
+		ppc64)
+			if use big-endian; then
+				test_opts+=( -x test_descr )
+			fi
+			;;
+		riscv)
+			test_opts+=(
+				-x test_urllib2
+			)
+			;;
+		sparc)
+			test_opts+=(
+				# bug 788022
+				-x test_multiprocessing_fork
+				-x test_multiprocessing_forkserver
+
+				-x test_ctypes
+				-x test_descr
+				# bug 931908
+				-x test_exceptions
+			)
+			;;
+	esac
+
 	if use pgo; then
 		local profile_task_flags=(
 			-m test
@@ -254,14 +316,14 @@ src_configure() {
 			# here. It also matches the default upstream PROFILE_TASK.
 			--timeout 1200
 
-			-x test_gdb
+			"${COMMON_TEST_SKIPS[@]}"
+
 			-x test_dtrace
 
 			# All of these seem to occasionally hang for PGO inconsistently
 			# They'll even hang here but be fine in src_test sometimes.
 			# bug #828535 (and related: bug #788022)
 			-x test_asyncio
-			-x test_concurrent_futures
 			-x test_httpservers
 			-x test_logging
 			-x test_multiprocessing_fork
@@ -280,57 +342,33 @@ src_configure() {
 		case ${ARCH} in
 			alpha)
 				profile_task_flags+=(
-					-x test_builtin
-					-x test_cmath
-					-x test_float
-					-x test_math
-					-x test_numeric_tower
-					-x test_os	# PGO only
-					-x test_random
-					-x test_resource # bug 653850
-					-x test_strtod
+					-x test_os
 				)
 				;;
 			hppa)
 				profile_task_flags+=(
 					-x test_descr
-					-x test_exceptions	# bug 931908
+					# bug 931908
+					-x test_exceptions
 					-x test_os
 				)
 				;;
 			ia64)
 				profile_task_flags+=(
-					-x test_ctypes
-					-x test_external_inspection # partial PGO only (flaky in src_test)
-					-x test_signal	# PGO only
-				)
-				;;
-			mips)
-				profile_task_flags+=(
-					-x test_ctypes	# partial PGO only (more fails)
-					-x test_external_inspection	# PGO only
-					-x test_statistics
+					-x test_signal
 				)
 				;;
 			ppc64)
 				if use big-endian; then
 					profile_task_flags+=(
-						-x test_descr
-						-x test_exceptions	# PGO only, bug 931908
+						# bug 931908
+						-x test_exceptions
 					)
 				fi
 				;;
 			riscv)
 				profile_task_flags+=(
 					-x test_statistics
-					-x test_urllib2
-				)
-				;;
-			sparc)
-				profile_task_flags+=(
-					-x test_ctypes
-					-x test_descr
-					-x test_exceptions	# bug 931908
 				)
 				;;
 		esac
@@ -481,63 +519,8 @@ src_test() {
 		--verbose3
 		-u-network
 		-j "$(makeopts_jobs)"
-
-		# fails
-		-x test_concurrent_futures
-		-x test_gdb
+		"${COMMON_TEST_SKIPS[@]}"
 	)
-
-	# Arch-specific skips.  See #931888 for a collection of these.
-	case ${ARCH} in
-		ia64)
-			test_opts+=(
-				-x test_ctypes
-				-x test_external_inspection
-			)
-			;;
-		mips)
-			test_opts+=(
-				-x test_ctypes
-				-x test_external_inspection
-				-x test_statistics
-			)
-			;;
-		ppc64)
-			if use big-endian; then
-				test_opts+=( -x test_descr )
-			fi
-			;;
-		riscv)
-			test_opts+=(
-				-x test_urllib2
-			)
-			;;
-		sparc)
-			test_opts+=(
-				# bug 788022
-				-x test_multiprocessing_fork
-				-x test_multiprocessing_forkserver
-
-				-x test_ctypes
-				-x test_descr
-				-x test_exceptions # bug 931908
-			)
-			;;
-		alpha)
-			test_opts+=(
-				-x test_builtin
-				-x test_capi	# skipped in PGO already
-				-x test_cmath
-				-x test_float
-				-x test_free_threading	# timeout
-				-x test_math
-				-x test_numeric_tower
-				-x test_random
-				-x test_resource # bug 653850
-				-x test_strtod
-			)
-			;;
-	esac
 
 	# workaround docutils breaking tests
 	cat > Lib/docutils.py <<-EOF || die
