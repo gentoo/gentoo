@@ -14,7 +14,7 @@ SRC_URI="https://github.com/soimort/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RESTRICT="test"
 PROPERTIES="test_network"
