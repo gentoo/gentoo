@@ -33,7 +33,7 @@ LICENSE="PSF-2"
 SLOT="${PYVER}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="
-	big-endian bluetooth build +debug +ensurepip examples gdbm +gil jit
+	bluetooth build +debug +ensurepip examples gdbm +gil jit
 	libedit +ncurses pgo +readline +sqlite +ssl test tk valgrind
 "
 REQUIRED_USE="jit? ( ${LLVM_REQUIRED_USE} )"
@@ -250,8 +250,8 @@ src_configure() {
 	)
 
 	# Arch-specific skips.  See #931888 for a collection of these.
-	case ${ARCH} in
-		alpha)
+	case ${CHOST} in
+		alpha*)
 			test_opts+=(
 				-x test_builtin
 				-x test_capi
@@ -268,30 +268,30 @@ src_configure() {
 				-x test_strtod
 			)
 			;;
-		ia64)
+		ia64*)
 			test_opts+=(
 				-x test_ctypes
 				-x test_external_inspection
 			)
 			;;
-		mips)
+		mips*)
 			test_opts+=(
 				-x test_ctypes
 				-x test_external_inspection
 				-x test_statistics
 			)
 			;;
-		ppc64)
-			if use big-endian; then
-				test_opts+=( -x test_descr )
-			fi
+		powerpc64-*) # big endian
+			test_opts+=(
+				-x test_descr
+			)
 			;;
-		riscv)
+		riscv*)
 			test_opts+=(
 				-x test_urllib2
 			)
 			;;
-		sparc)
+		sparc*)
 			test_opts+=(
 				# bug 788022
 				-x test_multiprocessing_fork
@@ -340,13 +340,13 @@ src_configure() {
 		)
 
 		# Arch-specific skips.  See #931888 for a collection of these.
-		case ${ARCH} in
-			alpha)
+		case ${CHOST} in
+			alpha*)
 				profile_task_flags+=(
 					-x test_os
 				)
 				;;
-			hppa)
+			hppa*)
 				profile_task_flags+=(
 					-x test_descr
 					# bug 931908
@@ -354,20 +354,18 @@ src_configure() {
 					-x test_os
 				)
 				;;
-			ia64)
+			ia64*)
 				profile_task_flags+=(
 					-x test_signal
 				)
 				;;
-			ppc64)
-				if use big-endian; then
-					profile_task_flags+=(
-						# bug 931908
-						-x test_exceptions
-					)
-				fi
+			powerpc64-*) # big endian
+				profile_task_flags+=(
+					# bug 931908
+					-x test_exceptions
+				)
 				;;
-			riscv)
+			riscv*)
 				profile_task_flags+=(
 					-x test_statistics
 				)
