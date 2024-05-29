@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2024-05-29)
+# OpenPGP key of malicious xz co-maintainer. This key is no longer used
+# by any ebuilds in tree. Removal on 2024-06-29.
+# Bug #928134.
+sec-keys/openpgp-keys-jiatan
+
 # Sam James <sam@gentoo.org> (2024-05-28)
 # Breaks reverse dependencies like protobuf-c (bug #932857) and protobuf-26.1
 # itself isn't compatible with this abseil-cpp version (bug #932848).
