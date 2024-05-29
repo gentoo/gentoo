@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>github@fraschetti.me</email>
+        <name>MF</name>
+    </maintainer>
+    <upstream>
+        <remote-id type="github">Alex313031/thorium</remote-id>
+    </upstream>
+    <use>
+        <flag name="avx2">Support for AVX2 CPU instructions</flag>
+        <flag name="sse3">Support for SSE3 CPU instructions</flag>
+    </use>
+    <longdescription lang="en">
+        Thorium Browser is a fast and secure browser for the modern web, designed to provide excellent browsing speed and advanced features.
+    </longdescription>
+    <license>
+        <name>BSD-3-Clause-Thorium</name>
+        <text>This package is distributed under the BSD 3-Clause License, which allows redistribution and use in source and binary forms, with modifications, and with conditions for redistribution of both forms. Full license details are available in the LICENSE file provided.</text>
+        <url>https://github.com/Alex313031/thorium/blob/main/LICENSE.md</url>
+    </license>
+</pkgmetadata>

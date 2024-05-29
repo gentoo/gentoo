@@ -12,7 +12,7 @@ SRC_URI="avx2? ( https://github.com/Alex313031/thorium/releases/download/M${PV}/
          sse3? ( https://github.com/Alex313031/thorium/releases/download/M${PV}/thorium-browser_${PV}_SSE3.deb )"
 
 RESTRICT="strip"
-LICENSE="BSD-3-Clause"
+LICENSE="BSD-3-Clause-Thorium"
 SLOT="0"
 KEYWORDS="~amd64"
 
@@ -53,7 +53,14 @@ src_install() {
 
     # Create desktop entry without the file extension for the icon
     make_desktop_entry "thorium-browser" "Thorium Browser" "thorium-browser-128" "Network;WebBrowser;"
+
+	# Install license file
+    local license_dir="/usr/share/licenses/${PN}"
+    dodir "${license_dir}"
+    insinto "${license_dir}"
+    newins "${FILESDIR}/BSD-3-Clause-Thorium" "BSD-3-Clause-Thorium.txt"
 }
 
 # Add multilib-strict-skip flag before any phases
 export PORTAGE_EBUILD_PHASES="multilib-strict-skip ${PORTAGE_EBUILD_PHASES}"
+
