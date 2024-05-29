@@ -1,8 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30 ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_EXTRADOC="README.md"
@@ -18,7 +18,6 @@ SRC_URI="https://github.com/pboling/rspec-pending_for/archive/v${PV}.tar.gz -> $
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
-IUSE=""
 
 ruby_add_rdepend "
 	dev-ruby/rspec-core
