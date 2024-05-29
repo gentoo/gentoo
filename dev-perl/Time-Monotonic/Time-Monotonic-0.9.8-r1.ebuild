@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,9 +12,10 @@ DESCRIPTION="A clock source that only increments and never jumps"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
 
-RDEPEND=""
-BDEPEND="${RDEPEND}
+BDEPEND="
 	>=dev-perl/Module-Build-0.360.400
-	virtual/perl-ExtUtils-CBuilder
-	test? ( virtual/perl-Test-Simple )
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-implicit.patch"
+)
