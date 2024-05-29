@@ -57,8 +57,8 @@ src_install() {
         fi
     done
 
-    # Create desktop entry without the file extension for the icon
-    make_desktop_entry "thorium-browser" "Thorium Browser" "thorium-browser-128" "Network;WebBrowser;"
+	# Create desktop entry without the file extension for the icon
+	make_desktop_entry "thorium-browser" "Thorium Browser" "thorium-browser-128" "Network;WebBrowser;"
 
 	# Install license file
     local license_dir="/usr/share/licenses/${PN}"
@@ -67,4 +67,3 @@ src_install() {
 }
 
 export PORTAGE_EBUILD_PHASES="multilib-strict-skip ${PORTAGE_EBUILD_PHASES}"
-
