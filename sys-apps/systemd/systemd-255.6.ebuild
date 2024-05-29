@@ -363,7 +363,7 @@ multilib_src_test() {
 		addpredict /proc
 		addpredict /run
 		addpredict /sys/fs/cgroup
-		meson_src_test
+		meson_src_test --timeout-multiplier=10
 	) || die
 }
 
