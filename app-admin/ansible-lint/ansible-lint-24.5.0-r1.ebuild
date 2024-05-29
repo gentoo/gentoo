@@ -24,6 +24,7 @@ RDEPEND="
 	>=dev-python/ansible-compat-4.1.11[${PYTHON_USEDEP}]
 	>=dev-python/black-22.8.0[${PYTHON_USEDEP}]
 	>=dev-python/filelock-3.8.0[${PYTHON_USEDEP}]
+	dev-python/importlib-metadata[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-4.17.0[${PYTHON_USEDEP}]
 	>=dev-python/packaging-21.3[${PYTHON_USEDEP}]
 	>=dev-python/pathspec-0.10.3[${PYTHON_USEDEP}]
