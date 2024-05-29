@@ -118,7 +118,7 @@ COMMON_DEPEND="
 	unicode? ( dev-libs/oniguruma:= )
 	valgrind? ( dev-debug/valgrind )
 	webp? ( media-libs/libwebp:0= )
-	xml? ( dev-libs/libxml2 )
+	xml? ( >=dev-libs/libxml2-2.12.5 )
 	xpm? ( x11-libs/libXpm )
 	xslt? ( dev-libs/libxslt )
 	zip? ( dev-libs/libzip:= )
@@ -146,7 +146,6 @@ PHP_MV="$(ver_cut 1)"
 
 PATCHES=(
 	"${FILESDIR}/php-iodbc-header-location.patch"
-	"${FILESDIR}/fix-musl-llvm.patch"
 )
 
 # ARM/Windows functions (bug 923335)
@@ -259,21 +258,18 @@ src_prepare() {
 	   sapi/cli/tests/bug78323.phpt \
 	   || die
 
-	# https://github.com/php/php-src/issues/12801
-	rm ext/pcre/tests/gh11374.phpt || die
-
-	# A new test failure appearing in 8.3.2, mentioned on the PR
-	# where it was likely introduced:
-	#
-	#   https://github.com/php/php-src/pull/13017
-	#
-	rm ext/dom/tests/DOMNode_isEqualNode.phpt || die
-
 	# This is a memory usage test with hard-coded limits. Whenever the
 	# limits are surpassed... they get increased... but in the meantime,
 	# the tests fail. This is not really a test that end users should
 	# be running pre-install, in my opinion. Bug 927461.
 	rm ext/fileinfo/tests/bug78987.phpt || die
+
+	# The expected warnings aren't triggered in this test because we
+	# define session.save_path on the CLI:
+	#
+	#   https://github.com/php/php-src/issues/14368
+	#
+	rm ext/session/tests/gh13856.phpt || die
 }
 
 src_configure() {
@@ -691,11 +687,6 @@ src_test() {
 		export TEST_PHPDBG_EXECUTABLE="${WORKDIR}/sapis-build/phpdbg/sapi/phpdbg/phpdbg"
 	fi
 
-	# The sendmail override prevents ext/imap/tests/bug77020.phpt from
-	# actually trying to send mail, and will be fixed upstream soon:
-	#
-	#   https://github.com/php/php-src/issues/11629
-	#
 	# The IO capture tests need to be disabled because they fail when
 	# std{in,out,err} are redirected (as they are within portage).
 	#
@@ -705,7 +696,6 @@ src_test() {
 		"${TEST_PHP_EXECUTABLE}" -n \
 		"${WORKDIR}/sapis-build/cli/run-tests.php" --offline -n -q \
 		-d "session.save_path=${T}" \
-		-d "sendmail_path=echo >/dev/null" \
 		|| die "tests failed"
 }
 
