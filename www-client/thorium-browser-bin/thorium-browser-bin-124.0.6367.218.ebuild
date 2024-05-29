@@ -1,13 +1,19 @@
+# Copyright 2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
 EAPI=8
+
+CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB en-US es es-419 et fa fi fil fr
+	gu he hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk
+	sl sr sv sw ta te th tr uk ur vi zh-CN zh-TW"
+
 inherit desktop xdg unpacker
 
 DESCRIPTION="Thorium Browser: A fast and secure browser for the modern web."
 HOMEPAGE="https://github.com/Alex313031/thorium"
 
-# Adding USE flags for CPU instruction set
 IUSE="+avx2 sse3"
 
-# Conditional SRC_URI based on USE flags
 SRC_URI="avx2? ( https://github.com/Alex313031/thorium/releases/download/M${PV}/thorium-browser_${PV}_AVX2.deb )
          sse3? ( https://github.com/Alex313031/thorium/releases/download/M${PV}/thorium-browser_${PV}_SSE3.deb )"
 
@@ -56,11 +62,9 @@ src_install() {
 
 	# Install license file
     local license_dir="/usr/share/licenses/${PN}"
-    dodir "${license_dir}"
     insinto "${license_dir}"
     newins "${FILESDIR}/BSD-3-Clause-Thorium" "BSD-3-Clause-Thorium.txt"
 }
 
-# Add multilib-strict-skip flag before any phases
 export PORTAGE_EBUILD_PHASES="multilib-strict-skip ${PORTAGE_EBUILD_PHASES}"
 
