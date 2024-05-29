@@ -17,7 +17,7 @@ HOMEPAGE="
 # Reminder: relicensed to BSD-2-with-patent between 0.4.7 and 0.5.0
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv ~x86"
 
 RDEPEND="
 	dev-python/cbor2[${PYTHON_USEDEP}]
