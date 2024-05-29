@@ -30,7 +30,7 @@ src_unpack() {
 }
 
 src_install() {
-    local install_dir="/opt/thorium-browser"  # Target installation directory
+    local install_dir="/opt/thorium-browser-bin"  # Target installation directory
     dodir "${install_dir}"
     cp -r "${S}/thorium/." "${D}${install_dir}" || die "Failed to copy Thorium files to destination directory"
     fperms 0755 "${install_dir}/thorium" \
@@ -54,7 +54,6 @@ src_install() {
     # Create desktop entry without the file extension for the icon
     make_desktop_entry "thorium-browser" "Thorium Browser" "thorium-browser-128" "Network;WebBrowser;"
 }
-
 
 # Add multilib-strict-skip flag before any phases
 export PORTAGE_EBUILD_PHASES="multilib-strict-skip ${PORTAGE_EBUILD_PHASES}"
