@@ -333,7 +333,7 @@ src_install() {
 		# https://github.com/coin3d/coin/issues/451
 		: \${QT_QPA_PLATFORM:=xcb}
 		export QT_QPA_PLATFORM
-		exec /usr/$(get_libdir)/${PN}/bin/FreeCAD
+		exec /usr/$(get_libdir)/${PN}/bin/FreeCAD \${@}
 		_EOF_
 		mv "${ED}"/usr/$(get_libdir)/${PN}/share/* "${ED}"/usr/share || die "failed to move shared resources"
 	fi

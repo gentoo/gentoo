@@ -165,6 +165,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.21.0-0001-Gentoo-specific-disable-ccache-usage.patch
 	"${FILESDIR}"/${PN}-0.21.1-Gentoo-specific-don-t-check-vcs.patch
 	"${FILESDIR}"/${PN}-0.21.2-vtk9.3-fix.patch
+	"${FILESDIR}"/${PN}-0.21.2-boost-175-1.patch
+	"${FILESDIR}"/${PN}-0.21.2-boost-175-2.patch
+	"${FILESDIR}"/${PN}-0.21.2-boost-175-3.patch
 )
 
 DOCS=( CODE_OF_CONDUCT.md README.md )
@@ -336,7 +339,7 @@ src_install() {
 		# https://github.com/coin3d/coin/issues/451
 		: \${QT_QPA_PLATFORM:=xcb}
 		export QT_QPA_PLATFORM
-		exec /usr/$(get_libdir)/${PN}/bin/FreeCAD
+		exec /usr/$(get_libdir)/${PN}/bin/FreeCAD \${@}
 		_EOF_
 		mv "${ED}"/usr/$(get_libdir)/${PN}/share/* "${ED}"/usr/share || die "failed to move shared resources"
 	fi
