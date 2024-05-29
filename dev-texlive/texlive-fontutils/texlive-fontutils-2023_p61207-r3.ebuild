@@ -16,7 +16,6 @@ TEXLIVE_MODULE_CONTENTS="
 	fontware.r66186
 	luafindfont.r67468
 	mf2pt1.r61217
-	t1utils.r57972
 "
 TEXLIVE_MODULE_DOC_CONTENTS="
 	accfonts.doc.r18835
@@ -29,7 +28,6 @@ TEXLIVE_MODULE_DOC_CONTENTS="
 	fontware.doc.r66186
 	luafindfont.doc.r67468
 	mf2pt1.doc.r61217
-	t1utils.doc.r57972
 "
 TEXLIVE_MODULE_SRC_CONTENTS="
 	albatross.source.r65647
