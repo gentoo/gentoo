@@ -328,6 +328,10 @@ src_prepare() {
 	# the tests fail. This is not really a test that end users should
 	# be running pre-install, in my opinion. Bug 927461.
 	rm ext/fileinfo/tests/bug78987.phpt || die
+
+	# glibc-2.39 compatibility, fixed upstream in
+	# https://github.com/php/php-src/pull/14097
+	rm ext/standard/tests/strings/setlocale_variation3.phpt || die
 }
 
 src_configure() {
