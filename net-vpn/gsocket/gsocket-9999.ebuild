@@ -19,8 +19,18 @@ fi
 LICENSE="BSD-2"
 SLOT="0"
 
-DEPEND="dev-libs/openssl:="
-RDEPEND="${DEPEND}"
+IUSE="test"
+RESTRICT="!test? ( test )"
+
+COMMON_DEPEND="dev-libs/openssl:="
+DEPEND="
+	${COMMON_DEPEND}
+	test? (
+		net-analyzer/netcat
+		net-misc/socat
+	)
+"
+RDEPEND="${COMMON_DEPEND}"
 
 PATCHES=(
 	# https://github.com/hackerschoice/gsocket/pull/104
@@ -36,6 +46,18 @@ src_prepare() {
 		tools/gs_funcs || die "Failed to patch libdir in gs_funcs"
 
 	eautoreconf
+}
+
+src_configure() {
+	econf $(use_enable test tests)
+}
+
+src_test() {
+	cd tests || die
+
+	./run_ft_tests.sh || die
+	# Most of the "gs_tests" seem to fail (probably due the sandbox).
+	./run_gs_tests.sh 4.1 || die
 }
 
 src_install() {
