@@ -37,6 +37,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	dtv? ( filter analog fec )
 	modtool? ( utils )
 	qt5? ( filter )
+	test? ( channels )
 	trellis? ( analog digital )
 	uhd? ( filter analog )
 	vocoder? ( filter analog )
