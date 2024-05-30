@@ -262,6 +262,7 @@ src_configure() {
 				-x test_math
 				-x test_numeric_tower
 				-x test_random
+				-x test_statistics
 				# bug 653850
 				-x test_resource
 				-x test_strtod
