@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="threads(+),xml(+)"
 
 inherit cmake flag-o-matic python-r1
@@ -58,6 +58,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-boost-python.patch"
 	"${FILESDIR}/${P}-python3.7.patch" # bug 701208
 	"${FILESDIR}/${P}-gcc-10.patch" # bug 723302
+	"${FILESDIR}/${PN}-1.11.2-python3.12-remove-imp.patch" # bug 929649
 	# TODO: upstream
 	"${FILESDIR}/${P}-lib_suffix.patch"
 	"${FILESDIR}/${P}-cmake-module-dir.patch"
