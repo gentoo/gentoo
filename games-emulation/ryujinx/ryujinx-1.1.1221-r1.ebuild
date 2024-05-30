@@ -378,6 +378,10 @@ src_test() {
 }
 
 src_install() {
+	# Bug https://bugs.gentoo.org/933075
+	# and bug https://github.com/Ryujinx/Ryujinx/issues/5566
+	dotnet-pkg-base_append-launchervar "GDK_BACKEND=x11"
+
 	dotnet-pkg-base_install
 
 	# "Ryujinx.sh" launcher script is only copied for "linux-x64" RID,
