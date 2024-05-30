@@ -14,7 +14,7 @@ S="${WORKDIR}/powARman-v4l-dvb-saa716x-${REVISION}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="sys-firmware/tt-s2-6400-firmware"
 
