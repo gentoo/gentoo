@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,11 +16,17 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="doc +ocamlopt"
 
 RDEPEND="
-	dev-ml/camlp-streams:=
-	dev-ml/rresult:=
+	dev-ml/astring:=
 	dev-ml/bos:=
+	dev-ml/camlp-streams:=
+	dev-ml/fmt:=
+	dev-ml/fpath:=
+	dev-ml/logs:=
 	dev-ml/pcre-ocaml:=
+	dev-ml/re:=
+	dev-ml/rresult:=
 "
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	egit_clean
