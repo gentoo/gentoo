@@ -9,7 +9,7 @@ DESCRIPTION="Another free touch typing tutor program"
 HOMEPAGE="https://klavaro.sourceforge.io/"
 SRC_URI="https://downloads.sourceforge.net/project/${PN}/${P}.tar.bz2"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
