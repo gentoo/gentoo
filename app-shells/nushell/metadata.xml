@@ -22,5 +22,6 @@
 	<use>
 		<flag name="dataframe">Dataframe feature for nushell</flag>
 		<flag name="extra">Enable less stable or less common commands</flag>
+		<flag name="plugins">Build official plugins</flag>
 	</use>
 </pkgmetadata>
