@@ -12,7 +12,7 @@ LICENSE="BSD GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 
-BDEPEND="dev-python/docutils"
+BDEPEND=">=dev-python/docutils-0.21.2"
 RDEPEND="!<sys-apps/openrc-0.33"
 
 PATCHES=(
@@ -24,7 +24,7 @@ src_install() {
 	exeinto /sbin/
 	doexe script/service
 
-	rst2man.py man8/service.rst > man8/service.8 || die "Failed to generate man page"
+	rst2man man8/service.rst > man8/service.8 || die "Failed to generate man page"
 
 	# FIXME: need to patch to remove *rc.d references, which we don't ship
 	# And should probably add a list of supported options (e.g., start/stop/etc.)
