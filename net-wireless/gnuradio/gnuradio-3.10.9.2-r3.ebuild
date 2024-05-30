@@ -78,7 +78,6 @@ RDEPEND="${PYTHON_DEPS}
 	iio? (
 		net-libs/libiio:=
 		net-libs/libad9361-iio:=
-		!net-wireless/gr-iio
 	)
 	jack? ( virtual/jack )
 	portaudio? ( >=media-libs/portaudio-19_pre )
@@ -142,6 +141,13 @@ src_prepare() {
 	use !oss && sed -i 's#soundcard.h#oss-nonexistent.h#g' cmake/Modules/FindOSS.cmake
 	use !portaudio && sed -i 's#portaudio.h#portaudio-nonexistent.h#g' cmake/Modules/FindPORTAUDIO.cmake
 
+	# remove empty test case (see https://github.com/gnuradio/gnuradio/commit/21df528)
+	# fails with Python 3.12
+	rm "${S}"/gr-digital/python/digital/qa_digital.py || die
+	# fix test failure due to deprecated syntax for numpy
+	# see https://github.com/gnuradio/gnuradio/commit/a306e11
+	sed -i -e "s/np.alltrue/np.all/g" \
+		"${S}"/gnuradio-runtime/python/pmt/qa_pmt_to_python.py || die
 	cmake_src_prepare
 }
 
