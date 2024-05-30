@@ -651,7 +651,6 @@ sec-keys/openpgp-keys-jiatan
 ~kde-apps/kdenetwork-filesharing-24.05.0
 ~kde-apps/kget-24.05.0
 ~kde-apps/kio-extras-24.05.0
-~kde-apps/krdc-24.05.0
 ~kde-apps/krfb-24.05.0
 ~kde-apps/signon-kwallet-extension-24.05.0
 ~kde-misc/kdeconnect-24.05.0
