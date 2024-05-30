@@ -9,9 +9,12 @@
 		<email>media-video@gentoo.org</email>
 		<name>Gentoo Video project</name>
 	</maintainer>
-	<stabilize-allarches/>
+	<use>
+		<flag name="player">Enables preview support with an integrated player</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">otsaloma/gaupol</remote-id>
 		<bugs-to>https://github.com/otsaloma/gaupol/issues</bugs-to>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
