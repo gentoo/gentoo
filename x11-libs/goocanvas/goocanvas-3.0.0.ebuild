@@ -27,6 +27,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/goocanvas-3.0.0-fix-gcc14.patch
+)
+
 src_prepare() {
 	# Do not build demos
 	sed -e 's/^\(SUBDIRS =.*\)demo\(.*\)$/\1\2/' \
