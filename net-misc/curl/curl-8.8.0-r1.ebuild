@@ -136,6 +136,9 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 PATCHES=(
 	"${FILESDIR}"/${PN}-prefix-2.patch
 	"${FILESDIR}"/${PN}-respect-cflags-3.patch
+	"${FILESDIR}"/${P}-install-manpage.patch
+	"${FILESDIR}"/${P}-mbedtls.patch
+	"${FILESDIR}"/${P}-multi_wait-timeout.patch
 )
 
 src_prepare() {
