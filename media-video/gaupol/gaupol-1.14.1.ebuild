@@ -37,10 +37,6 @@ distutils_enable_tests pytest
 
 DOCS=( AUTHORS.md NEWS.md README.md README.aeidon.md )
 
-PATCHES=(
-	"${FILESDIR}/${PN}-1.12-fix-prefix.patch"
-)
-
 python_test() {
 	virtx epytest
 }

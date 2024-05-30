@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,10 +36,6 @@ BDEPEND="
 distutils_enable_tests pytest
 
 DOCS=( AUTHORS.md NEWS.md README.md README.aeidon.md )
-
-PATCHES=(
-	"${FILESDIR}/${PN}-1.12-fix-prefix.patch"
-)
 
 python_test() {
 	virtx epytest
