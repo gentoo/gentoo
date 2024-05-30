@@ -37,6 +37,8 @@ multilib_src_configure() {
 		$(use_with spirv-tools)
 		--disable-doxygen-pdf
 		--without-xcb
+		# let users' flags control lto (bug #933178)
+		vkd3d_cv_cflags__flto_auto=
 	)
 
 	ECONF_SOURCE=${S} econf "${conf[@]}"
