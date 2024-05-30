@@ -45,6 +45,10 @@ DOCS=(
 	doc/VGMhistory.txt
 )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.2-r1-root-6.32-TesselatedSolid.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DCLHEP_DIR="${EPREFIX}/usr"
