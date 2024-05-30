@@ -16,8 +16,8 @@ LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
 
 IUSE="+X aqua +asimage cuda cudnn +davix debug +examples fits fftw fortran
 	+gdml graphviz +gsl +http jupyter libcxx +minuit mpi mysql odbc +opengl
-	oracle postgres pythia6 pythia8 +python qt5 qt6 R +roofit +root7 shadow
-	sqlite +ssl +tbb test +tmva +unuran uring vc +xml xrootd"
+	postgres pythia8 +python qt5 qt6 R +roofit +root7 shadow sqlite +ssl
+	+tbb test +tmva +unuran uring vc +xml xrootd"
 
 if [[ ${PV} =~ "9999" ]] ; then
 	inherit git-r3
@@ -86,7 +86,6 @@ CDEPEND="
 			dev-qt/qtwebengine:6[widgets]
 		)
 	)
-	asimage? ( media-libs/libafterimage[gif,jpeg,png,tiff] )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-9.0 )
 	cudnn? ( dev-libs/cudnn )
 	davix? ( net-libs/davix )
@@ -106,9 +105,7 @@ CDEPEND="
 			dev-db/unixODBC
 		)
 	)
-	oracle? ( dev-db/oracle-instantclient[sdk] )
 	postgres? ( dev-db/postgresql:= )
-	pythia6? ( sci-physics/pythia:6 )
 	pythia8? ( sci-physics/pythia:8 )
 	python? ( ${PYTHON_DEPS} )
 	R? ( dev-lang/R )
@@ -209,7 +206,6 @@ src_configure() {
 		-Dcoverage=OFF
 		-Ddev=OFF
 		-Ddistcc=OFF
-		-Dexceptions=ON
 		-Dfail-on-missing=ON
 		-Dgnuinstall=ON
 		-Dgminimal=OFF
@@ -219,7 +215,6 @@ src_configure() {
 		-Dbuiltin_clang=ON
 		-Dbuiltin_cling=ON
 		-Dbuiltin_openui5=ON
-		-Dbuiltin_afterimage=OFF
 		-Dbuiltin_cfitsio=OFF
 		-Dbuiltin_cppzmq=OFF
 		-Dbuiltin_davix=OFF
@@ -262,26 +257,19 @@ src_configure() {
 		-Dfitsio=$(usex fits)
 		-Dfortran=$(usex fortran)
 		-Dgdml=$(usex gdml)
-		-Dgfal=OFF
 		-Dgviz=$(usex graphviz)
 		-Dhttp=$(usex http)
 		-Dimt=$(usex tbb)
-		-Djemalloc=OFF
 		-Dlibcxx=$(usex libcxx)
 		-Dmathmore=$(usex gsl)
 		-Dminuit=$(usex minuit)
-		-Dminuit2=$(usex minuit)
 		-Dmlp=$(usex tmva)
-		-Dmonalisa=OFF
 		-Dmpi=$(usex mpi)
 		-Dmysql=$(usex mysql)
 		-Dodbc=$(usex odbc)
 		-Dopengl=$(usex opengl)
-		-Doracle=$(usex oracle)
 		-Dpgsql=$(usex postgres)
 		-Dpyroot=$(usex python) # python was renamed to pyroot
-		-Dpyroot_legacy=OFF
-		-Dpythia6=$(usex pythia6)
 		-Dpythia8=$(usex pythia8)
 		-Dqt5web=$(usex qt5)
 		-Dqt6web=$(usex qt6)
@@ -298,7 +286,6 @@ src_configure() {
 		-Dspectrum=ON
 		-Dsqlite=$(usex sqlite)
 		-Dssl=$(usex ssl)
-		-Dtcmalloc=OFF
 		-Dtest_distrdf_dask=OFF
 		-Dtest_distrdf_pyspark=OFF
 		-Dtesting=$(usex test)
