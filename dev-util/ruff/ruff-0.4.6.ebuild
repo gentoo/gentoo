@@ -21,7 +21,7 @@ CRATES="
 	anstyle-query@1.0.2
 	anstyle-wincon@3.0.2
 	anstyle@1.0.6
-	anyhow@1.0.83
+	anyhow@1.0.86
 	argfile@0.2.0
 	arrayvec@0.7.4
 	autocfg@1.2.0
@@ -105,7 +105,6 @@ CRATES="
 	heck@0.4.1
 	heck@0.5.0
 	hermit-abi@0.3.9
-	hexf-parse@0.2.1
 	home@0.5.9
 	humantime@2.1.0
 	iana-time-zone-haiku@0.1.2
@@ -135,13 +134,10 @@ CRATES="
 	kqueue-sys@1.0.4
 	kqueue@1.0.8
 	lazy_static@1.4.0
-	lexical-parse-float@0.8.5
-	lexical-parse-integer@0.8.6
-	lexical-util@0.8.5
-	libc@0.2.154
+	libc@0.2.155
 	libcst@1.3.1
 	libcst_derive@1.3.1
-	libmimalloc-sys@0.1.37
+	libmimalloc-sys@0.1.38
 	libredox@0.1.3
 	linked-hash-map@0.5.6
 	linux-raw-sys@0.4.13
@@ -152,7 +148,7 @@ CRATES="
 	matches@0.1.10
 	matchit@0.8.2
 	memchr@2.7.2
-	mimalloc@0.1.41
+	mimalloc@0.1.42
 	minimal-lexical@0.2.1
 	miniz_oxide@0.7.2
 	mio@0.8.11
@@ -170,7 +166,7 @@ CRATES="
 	option-ext@0.2.0
 	os_str_bytes@6.6.1
 	overload@0.1.1
-	parking_lot@0.12.2
+	parking_lot@0.12.3
 	parking_lot_core@0.9.9
 	paste@1.0.14
 	path-absolutize@3.1.1
@@ -193,7 +189,7 @@ CRATES="
 	portable-atomic@1.6.0
 	ppv-lite86@0.2.17
 	pretty_assertions@1.4.0
-	proc-macro2@1.0.82
+	proc-macro2@1.0.84
 	pyproject-toml@0.9.0
 	quick-junit@0.4.0
 	quick-xml@0.31.0
@@ -222,14 +218,14 @@ CRATES="
 	rustversion@1.0.15
 	ryu@1.0.17
 	same-file@1.0.6
-	schemars@0.8.19
-	schemars_derive@0.8.19
+	schemars@0.8.21
+	schemars_derive@0.8.21
 	scoped-tls@1.0.1
 	scopeguard@1.2.0
 	seahash@4.1.0
 	serde-wasm-bindgen@0.6.5
-	serde@1.0.201
-	serde_derive@1.0.201
+	serde@1.0.203
+	serde_derive@1.0.203
 	serde_derive_internals@0.29.0
 	serde_json@1.0.117
 	serde_repr@0.1.19
@@ -243,7 +239,7 @@ CRATES="
 	siphasher@0.3.11
 	smallvec@1.13.2
 	smawk@0.3.2
-	smol_str@0.2.1
+	smol_str@0.2.2
 	spin@0.9.8
 	static_assertions@1.1.0
 	strip-ansi-escapes@0.2.0
@@ -252,7 +248,7 @@ CRATES="
 	strum@0.26.2
 	strum_macros@0.26.2
 	subtle@2.5.0
-	syn@2.0.63
+	syn@2.0.66
 	tempfile@3.10.1
 	terminal_size@0.3.0
 	terminfo@0.8.0
@@ -260,8 +256,8 @@ CRATES="
 	test-case-macros@3.3.1
 	test-case@3.3.1
 	textwrap@0.16.1
-	thiserror-impl@1.0.60
-	thiserror@1.0.60
+	thiserror-impl@1.0.61
+	thiserror@1.0.61
 	thread_local@1.1.8
 	tikv-jemalloc-sys@0.5.4+5.3.0-patched
 	tikv-jemallocator@0.5.4
