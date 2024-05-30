@@ -173,6 +173,9 @@ src_prepare() {
 		xargs sed -i -e 's|INCLUDEPATH += |&$${QTWEBENGINE_ROOT}_build/include $${QTWEBENGINE_ROOT}/include |' || die
 
 	if use system-icu; then
+		if has_version ">=dev-libs/icu-75.1"; then
+			eapply "${FILESDIR}/${PN}-5.15.14_p20240510-icu-75.patch" # too invasive to apply unconditionally
+		fi
 		# Sanity check to ensure that bundled copy of ICU is not used.
 		# Whole src/3rdparty/chromium/third_party/icu directory cannot be deleted because
 		# src/3rdparty/chromium/third_party/icu/BUILD.gn is used by build system.
