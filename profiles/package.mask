@@ -779,6 +779,7 @@ sec-keys/openpgp-keys-jiatan
 =net-misc/smb4k-3.2.5-r2
 ~sys-auth/polkit-qt-0.200.0
 ~x11-misc/sddm-0.21.0_p20240302
+~app-office/libreoffice-24.2.4.1
 ~app-office/libreoffice-24.2.3.2
 ~app-office/libreoffice-l10n-24.2.3.2
 
