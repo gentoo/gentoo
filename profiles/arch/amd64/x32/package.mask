@@ -132,7 +132,6 @@ kde-misc/zanshin
 media-gfx/digikam
 media-gfx/luminance-hdr
 >=media-gfx/skanpage-24.04.90
->=media-sound/audex-24.04.90
 media-sound/frescobaldi
 media-sound/teamspeak-client:3
 media-video/vidify
