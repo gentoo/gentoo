@@ -1,0 +1,11 @@
+--- a/lib/Fuse_util.c	2024-05-30 14:46:19.594917120 +0200
++++ b/lib/Fuse_util.c	2024-05-30 14:46:39.870690546 +0200
+@@ -354,7 +354,7 @@
+ 
+ #define init_ARGS (struct fuse_conn_info *conn)
+ #define init_CALL_ARGS (conn)
+-#define init_RTYPE void *
++#define init_RTYPE int
+ #define init_CB vres=callback(*init_closure,Val_unit);
+ /* TODO: the result from init is wrong, it should return unit */
+ #define init_RES 
