@@ -10,6 +10,7 @@ inherit desktop multilib-build optfeature pax-utils unpacker xdg
 DESCRIPTION="Team collaboration tool"
 HOMEPAGE="https://slack.com"
 SRC_URI="https://downloads.slack-edge.com/releases/linux/${PV}/prod/x64/${PN}-desktop-${PV}-amd64.deb"
+S="${WORKDIR}"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
@@ -54,8 +55,6 @@ QA_PREBUILT="opt/slack/chrome-sandbox
 	opt/slack/slack
 	opt/slack/swiftshader/libEGL.so
 	opt/slack/swiftshader/libGLESv2.so"
-
-S="${WORKDIR}"
 
 src_prepare() {
 	default
