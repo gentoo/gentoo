@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-05-30)
+# Only up to python 3.11 supported, bug #929546
+<dev-util/kdevelop-python-24.07.50:5 python_single_target_python3_11
+~www-client/falkon-23.08.5 python_single_target_python3_11
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-03-23)
 # Used by pkgcheck, so let's make it easier for all developers to install it
 >=dev-libs/tree-sitter-bash-0.21.0 python
