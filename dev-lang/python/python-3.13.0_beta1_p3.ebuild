@@ -305,6 +305,22 @@ src_configure() {
 			;;
 	esac
 
+	# musl-specific skips
+	use elibc_musl && COMMON_TEST_SKIPS+=(
+		# various musl locale deficiencies
+		-x test__locale
+		-x test_c_locale_coercion
+		-x test_locale
+		-x test_re
+
+		# known issues with find_library on musl
+		# https://bugs.python.org/issue21622
+		-x test_ctypes
+
+		# fpathconf, ttyname errno values
+		-x test_os
+	)
+
 	if use pgo; then
 		local profile_task_flags=(
 			-m test
@@ -371,6 +387,22 @@ src_configure() {
 				)
 				;;
 		esac
+
+		# musl-specific skips
+		use elibc_musl && profile_task_flags+=(
+			# various musl locale deficiencies
+			-x test__locale
+			-x test_c_locale_coercion
+			-x test_locale
+			-x test_re
+
+			# known issues with find_library on musl
+			# https://bugs.python.org/issue21622
+			-x test_ctypes
+
+			# fpathconf, ttyname errno values
+			-x test_os
+		)
 
 		if has_version "app-arch/rpm" ; then
 			# Avoid sandbox failure (attempts to write to /var/lib/rpm)
