@@ -62,11 +62,6 @@ src_configure() {
 src_install() {
 	default
 
-	# Move netserver into sbin as we had it before 2.4 was released with its
-	# autoconf goodness
-	dodir /usr/sbin
-	mv "${ED}"/usr/{bin,sbin}/netserver || die
-
 	# init.d / conf.d
 	newinitd "${FILESDIR}"/${PN}-2.7.0-init netperf
 	newconfd "${FILESDIR}"/${PN}-2.2-conf netperf
