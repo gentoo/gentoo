@@ -1,13 +1,15 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake toolchain-funcs
+inherit cmake
 
+COMMIT="4c613505b2cb"
 DESCRIPTION="Utility to convert hex or dec to binary format"
 HOMEPAGE="https://bitbucket.org/PascalRD/i2bits/"
-SRC_URI="http://unixdev.ru/src/${P}.tar.gz"
+SRC_URI="https://bitbucket.org/PascalRD/i2bits/get/${COMMIT}.tar.gz -> ${P}-bb.tar.gz"
+S="${WORKDIR}/PascalRD-${PN}-${COMMIT}"
 
 LICENSE="WTFPL-2"
 SLOT="0"
