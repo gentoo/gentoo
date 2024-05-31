@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-31)
+# EAPI=6, maintainer-needed, incorrect LICENSE, fails to compile with
+# clang.
+# Removal on 2024-06-30.  Bugs #933241, #889912, #880267, #562822, #930500.
+net-mail/gnubiff
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-31)
 # EAPI=6, no activity upstream, maintianer-needed.
 # Removal on 2024-06-30.  Bugs #933239, #828068.
 app-emulation/phpvirtualbox
