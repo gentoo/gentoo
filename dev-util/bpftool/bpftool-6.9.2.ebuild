@@ -52,8 +52,8 @@ CONFIG_CHECK="~DEBUG_INFO_BTF"
 # it's building from the same tarball, please keep it in sync with perf
 src_unpack() {
 	local paths=(
-		tools/bpf kernel/bpf
-		tools/{arch,build,include,lib,perf,scripts} {scripts,include,lib} "arch/*/lib"
+		kernel/bpf tools/{arch,bpf,build,include,lib,perf,scripts}
+		scripts include lib "arch/*/include" "arch/*/lib" "arch/*/tools"
 	)
 
 	# We expect the tar implementation to support the -j and --wildcards option
