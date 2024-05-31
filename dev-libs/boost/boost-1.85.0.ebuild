@@ -51,6 +51,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.81.0-disable_icu_rpath.patch
 	"${FILESDIR}"/${PN}-1.79.0-build-auto_index-tool.patch
 	"${FILESDIR}"/${PN}-1.85.0-bcp-filesystem.patch
+	"${FILESDIR}"/${PN}-1.85.0-python-numpy-2.patch
 )
 
 create_user-config.jam() {
