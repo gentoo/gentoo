@@ -406,11 +406,20 @@ pkg_postinst() {
 		ewarn "work, be warned that it is not unusual that installers or other helpers"
 		ewarn "will attempt to use 32bit and fail. If do not want full USE=abi_x86_32,"
 		ewarn "note the experimental/WIP USE=wow64 can allow 32bit without multilib."
-	elif use abi_x86_32 && has_version 'x11-drivers/nvidia-drivers[-abi_x86_32]'
-	then
-		ewarn "x11-drivers/nvidia-drivers is installed but is built without"
-		ewarn "USE=abi_x86_32 (ABI_X86=32), hardware acceleration with 32bit"
-		ewarn "applications under ${PN} will likely not be usable."
+	elif use abi_x86_32; then
+		# difficult to tell what is needed from here, but try to warn
+		if has_version 'x11-drivers/nvidia-drivers'; then
+			if has_version 'x11-drivers/nvidia-drivers[-abi_x86_32]'; then
+				ewarn "x11-drivers/nvidia-drivers is installed but is built without"
+				ewarn "USE=abi_x86_32 (ABI_X86=32), hardware acceleration with 32bit"
+				ewarn "applications under ${PN} will likely not be usable."
+				ewarn "Multi-card setups may need this on media-libs/mesa as well."
+			fi
+		elif has_version 'media-libs/mesa[-abi_x86_32]'; then
+			ewarn "media-libs/mesa seems to be in use but is built without"
+			ewarn "USE=abi_x86_32 (ABI_X86=32), hardware acceleration with 32bit"
+			ewarn "applications under ${PN} will likely not be usable."
+		fi
 	fi
 
 	eselect wine update --if-unset || die

@@ -372,11 +372,20 @@ pkg_preinst() {
 pkg_postinst() {
 	[[ -v WINE_HAD_ANY_SLOT ]] || readme.gentoo_print_elog
 
-	if use abi_x86_32 && has_version 'x11-drivers/nvidia-drivers[-abi_x86_32]'
-	then
-		ewarn "x11-drivers/nvidia-drivers is installed but is built without"
-		ewarn "USE=abi_x86_32 (ABI_X86=32), hardware acceleration with 32bit"
-		ewarn "applications under ${PN} will likely not be usable."
+	if use abi_x86_32; then
+		# difficult to tell what is needed from here, but try to warn
+		if has_version 'x11-drivers/nvidia-drivers'; then
+			if has_version 'x11-drivers/nvidia-drivers[-abi_x86_32]'; then
+				ewarn "x11-drivers/nvidia-drivers is installed but is built without"
+				ewarn "USE=abi_x86_32 (ABI_X86=32), hardware acceleration with 32bit"
+				ewarn "applications under ${PN} will likely not be usable."
+				ewarn "Multi-card setups may need this on media-libs/mesa as well."
+			fi
+		elif has_version 'media-libs/mesa[-abi_x86_32]'; then
+			ewarn "media-libs/mesa seems to be in use but is built without"
+			ewarn "USE=abi_x86_32 (ABI_X86=32), hardware acceleration with 32bit"
+			ewarn "applications under ${PN} will likely not be usable."
+		fi
 	fi
 
 	eselect wine update --if-unset || die
