@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit distutils-r1 virtualx xdg-utils
+inherit distutils-r1 optfeature virtualx xdg-utils
 
 DESCRIPTION="A subtitle editor for text-based subtitles"
 HOMEPAGE="https://otsaloma.io/gaupol/ https://github.com/otsaloma/gaupol/"
