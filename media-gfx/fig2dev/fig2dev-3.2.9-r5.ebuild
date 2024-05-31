@@ -27,10 +27,7 @@ RDEPEND="
 	ghostscript?
 	(
 		app-text/ghostscript-gpl
-		|| (
-			media-gfx/graphicsmagick[imagemagick,jpeg,png,postscript,tiff]
-			media-gfx/imagemagick[jpeg,png,postscript,tiff]
-		)
+		virtual/imagemagick-tools[jpeg,png,postscript,tiff]
 	)
 "
 DEPEND="${RDEPEND}"
