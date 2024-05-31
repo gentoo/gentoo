@@ -119,7 +119,7 @@ multilib_src_compile() {
 		local tar_pgo_args=(
 			--mtime=@2718281828
 		)
-		has_version "app-alternatives/tar[gnu]" && tar_pgo_args+=( --sort=name )
+		has_version -b "app-alternatives/tar[gnu]" && tar_pgo_args+=( --sort=name )
 
 		if multilib_is_native_abi ; then
 			(
