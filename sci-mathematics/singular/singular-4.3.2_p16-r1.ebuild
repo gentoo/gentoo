@@ -27,14 +27,14 @@ IUSE="emacs examples polymake +readline"
 # The interactive help uses "info" from sys-apps/texinfo.
 RDEPEND="
 	dev-lang/perl
-	dev-libs/gmp:0
+	dev-libs/gmp:0=
 	dev-libs/ntl:=
 	sci-libs/cddlib
-	sci-mathematics/flint
+	sci-mathematics/flint:=
 	sys-apps/texinfo
 	emacs? ( app-editors/emacs:* )
 	polymake? ( sci-mathematics/polymake )
-	readline? ( sys-libs/readline )
+	readline? ( sys-libs/readline:= )
 "
 DEPEND="${RDEPEND}"
 
