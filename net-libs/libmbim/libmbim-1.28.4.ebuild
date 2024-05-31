@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit bash-completion-r1 meson python-any-r1
 
 DESCRIPTION="Mobile Broadband Interface Model (MBIM) modem protocol helper library"
