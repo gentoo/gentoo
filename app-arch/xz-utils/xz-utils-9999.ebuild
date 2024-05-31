@@ -137,14 +137,14 @@ multilib_src_compile() {
 				# https://packages.altlinux.org/en/sisyphus/srpms/xz/specfiles/#line-80
 				'-0 -C none'
 				'-2 -C crc32'
-				'-6 --arm --lzma2 -C crc64'
-				'-6 --x86 --lzma2=lc=4 -C sha256'
+				$(usev extra-filters '-6 --arm --lzma2 -C crc64')
+				$(usev extra-filters '-6 --x86 --lzma2=lc=4 -C sha256')
 				'-7e --format=lzma'
 
 				# Our own variants
 				''
 				'-9e'
-				'--x86 --lzma2=preset=9e'
+				$(usev extra-filters '--x86 --lzma2=preset=9e')
 			)
 			local test_variant
 			for test_variant in "${test_variants[@]}" ; do
