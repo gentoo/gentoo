@@ -7,11 +7,11 @@ inherit autotools
 
 MY_P=${P/.0/}
 DESCRIPTION="Linux support for Easy Access and Internet Keyboards"
-HOMEPAGE="http://lineak.sourceforge.net"
+HOMEPAGE="https://lineak.sourceforge.net"
 SRC_URI="https://downloads.sourceforge.net/lineak/${MY_P}.tar.gz"
 S="${WORKDIR}"/${MY_P}
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
 IUSE="debug"
