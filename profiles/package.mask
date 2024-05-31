@@ -330,13 +330,6 @@ dev-python/pyannotate
 # Removal on 2024-05-23.  Bug #929453.
 dev-python/fuse-python
 
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# Unmaintained in Gentoo and seriously outdated.  Its only reverse
-# dependency is app-admin/testdisk, and the current TestDisk versions
-# do not build against this version anyway
-# Removal on 2024-05-23.  Bug #927076.
-app-forensics/libewf
-
 # Michał Górny <mgorny@gentoo.org> (2024-04-11)
 # Contains a bug that could render the kernel fail to boot.
 # https://lore.kernel.org/oe-lkp/202403221630.2692c998-oliver.sang@intel.com/
