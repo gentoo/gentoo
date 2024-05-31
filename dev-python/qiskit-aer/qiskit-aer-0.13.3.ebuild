@@ -43,7 +43,7 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	>=dev-python/psutil-5[${PYTHON_USEDEP}]
-	>=dev-python/qiskit-terra-0.45.0[${PYTHON_USEDEP}]
+	>=dev-python/qiskit-0.45.0[${PYTHON_USEDEP}]
 	>=dev-python/scipy-1.0[${PYTHON_USEDEP}]
 "
 BDEPEND="

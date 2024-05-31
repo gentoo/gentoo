@@ -42,7 +42,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	>=dev-python/qiskit-terra-0.25.1-r1[${PYTHON_USEDEP}]
+	>=dev-python/qiskit-0.25.1-r1[${PYTHON_USEDEP}]
 	>=dev-python/scipy-1.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
