@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,14 +9,14 @@ DESCRIPTION="Stub code generator for OCaml"
 HOMEPAGE="https://github.com/xavierleroy/camlidl"
 SRC_URI="https://github.com/xavierleroy/${PN}/archive/${PN}$(ver_rs 0-1 '').tar.gz"
 
+S="${WORKDIR}"/${PN}-${PN}$(ver_rs 0-1 '')
+
 LICENSE="QPL-1.0 LGPL-2"
 SLOT="0/${PV}"
 KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
 
 DEPEND=">=dev-lang/ocaml-3.10.2:=[ocamlopt]"
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}"/${PN}-${PN}$(ver_rs 0-1 '')
 
 PATCHES=(
 	"${FILESDIR}/nowarn.patch"
@@ -39,8 +39,8 @@ src_compile() {
 	ln -s Makefile.unix config/Makefile || die
 
 	# Make
-	emake depend
-	emake -j1 RANLIB="$(tc-getRANLIB)" CPP="$(tc-getPROG CPP cpp)"
+	emake depend CPP="$(tc-getPROG CPP cpp)"
+	emake -j1 RANLIB="$(tc-getRANLIB)"
 }
 
 src_test() {
