@@ -342,8 +342,6 @@ app-forensics/libewf
 # See the following link for breaking changes:
 # https://www.erlang.org/patches/otp-26.2#incompatibilities
 # Removal on 2024-05-23
-<dev-lang/elixir-1.14.5-r2
-=dev-lang/elixir-1.15.6
 <dev-lang/erlang-26.2.1
 
 # Michał Górny <mgorny@gentoo.org> (2024-04-11)
