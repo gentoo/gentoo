@@ -1,6 +1,6 @@
 libbacktrace used to be packaged in Gentoo but was last-rited due
 to [1], and as of [2] pcsx2 no longer let it be optional albeit the
-code to allow this still exists behind __APPLE__ which lacksit.
+code to allow this still exists behind __APPLE__ which lacks it.
 
 May be revisited to see if re-packaging may be sane (not looked
 into the issue much, could potentially mask libbacktrace and pcsx2
