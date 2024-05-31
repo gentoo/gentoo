@@ -320,11 +320,6 @@ app-i18n/skkserv
 net-misc/ttytter
 
 # Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# Broken with py3.12.  Last commit upstream in 2021.  No revdeps.
-# Removal on 2024-05-23.  Bug #929484.
-dev-python/pyannotate
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
 # Unmaintained in Gentoo.  Lacking tests, py3.12 support, outdated.
 # No revdeps.  The alternatives are dev-python/{llfuse,pyfuse3}.
 # Removal on 2024-05-23.  Bug #929453.
