@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-31)
+# EAPI=6, no activity upstream, maintianer-needed.
+# Removal on 2024-06-30.  Bugs #933239, #828068.
+app-emulation/phpvirtualbox
+
 # Sam James <sam@gentoo.org> (2024-05-29)
 # OpenPGP key of malicious xz co-maintainer. This key is no longer used
 # by any ebuilds in tree. Removal on 2024-06-29.
