@@ -57,10 +57,7 @@ pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
 
-	optfeature_header "Gaupol supports those external players"
-	optfeature "MPlayer" media-video/mplayer
-	optfeature "MPV" media-video/mpv
-	optfeature "VLC" media-video/VLC
+	optfeature "external player support" media-video/mplayer media-video/mpv media-video/vlc
 
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		use player && elog "If problems with internal player occur please install media-libs/gst-plugins-ugly."
