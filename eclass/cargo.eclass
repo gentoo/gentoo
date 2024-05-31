@@ -34,7 +34,7 @@ case ${EAPI} in
 		;;
 esac
 
-inherit flag-o-matic multiprocessing toolchain-funcs
+inherit flag-o-matic multiprocessing rust-toolchain toolchain-funcs
 
 [[ ! ${CARGO_OPTIONAL} ]] && BDEPEND="${RUST_DEPEND}"
 
@@ -524,6 +524,21 @@ cargo_src_compile() {
 
 	filter-lto
 	tc-export AR CC CXX PKG_CONFIG
+
+	if tc-is-cross-compiler; then
+		export CARGO_BUILD_TARGET=$(rust_abi)
+		local TRIPLE=${CARGO_BUILD_TARGET//-/_}
+		export CARGO_TARGET_"${TRIPLE^^}"_LINKER=$(tc-getCC)
+
+		# Set vars for cc-rs crate.
+		tc-export_build_env
+		export \
+			HOST_AR=$(tc-getBUILD_AR)
+			HOST_CC=$(tc-getBUILD_CC)
+			HOST_CXX=$(tc-getBUILD_CXX)
+			HOST_CFLAGS=${BUILD_CFLAGS}
+			HOST_CXXFLAGS=${BUILD_CXXFLAGS}
+	fi
 
 	set -- cargo build $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
