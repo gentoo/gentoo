@@ -4,7 +4,7 @@
 EAPI=8
 
 FORTRAN_NEEDED=fortran
-inherit cuda fortran-2 multilib-minimal
+inherit cuda flag-o-matic fortran-2 multilib-minimal
 
 MY_P=${P/-mpi}
 
@@ -91,6 +91,15 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# -Werror=lto-type-mismatch, -Werror=strict-aliasing
+	# The former even prevents successfully running ./configure, but both appear
+	# at `make` time as well.
+	# https://bugs.gentoo.org/913040
+	# https://github.com/open-mpi/ompi/issues/12674
+	# https://github.com/open-mpi/ompi/issues/12675
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	local myconf=(
 		--disable-mpi-java
 		# configure takes a looooong time, but upstream currently force
