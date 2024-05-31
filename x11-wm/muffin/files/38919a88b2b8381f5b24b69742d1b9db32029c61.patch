@@ -1,0 +1,23 @@
+From 38919a88b2b8381f5b24b69742d1b9db32029c61 Mon Sep 17 00:00:00 2001
+From: Leigh Scott <leigh123linux@fedoraproject.org>
+Date: Mon, 5 Feb 2024 16:06:14 +0000
+Subject: [PATCH] Fix compile issue (#683)
+
+(warning becomes an error due to gcc 14 changes.)
+---
+ src/core/prefs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/core/prefs.c b/src/core/prefs.c
+index c07359abc..3161e4be9 100644
+--- a/src/core/prefs.c
++++ b/src/core/prefs.c
+@@ -2258,7 +2258,7 @@ meta_prefs_add_keybinding (const char           *name,
+         }
+       else
+         {
+-          strokes = g_strdupv (bindings);
++          strokes = g_strdupv((gchar **)bindings);
+         }
+ 
+       queue_changed (META_PREF_KEYBINDINGS);
