@@ -319,12 +319,6 @@ app-i18n/skkserv
 # Removal: 2024-05-26.  Bug #912842.
 net-misc/ttytter
 
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# Unmaintained in Gentoo.  Lacking tests, py3.12 support, outdated.
-# No revdeps.  The alternatives are dev-python/{llfuse,pyfuse3}.
-# Removal on 2024-05-23.  Bug #929453.
-dev-python/fuse-python
-
 # Michał Górny <mgorny@gentoo.org> (2024-04-11)
 # Contains a bug that could render the kernel fail to boot.
 # https://lore.kernel.org/oe-lkp/202403221630.2692c998-oliver.sang@intel.com/
