@@ -116,17 +116,22 @@ multilib_src_compile() {
 	if use pgo ; then
 		emake CFLAGS="${CFLAGS} ${pgo_generate_flags}" -k check
 
+		local tar_pgo_args=(
+			--mtime=@2718281828
+		)
+		has_version "app-alternatives/tar[gnu]" && tar_pgo_args+=( --sort=name )
+
 		if multilib_is_native_abi ; then
 			(
 				shopt -s globstar
 
 				tar \
-					--sort=name --mtime=@2718281828 \
+					"${tar_pgo_args[@]}" \
 					-cf xz-pgo-test-01.tar \
 					{"${S}","${BUILD_DIR}"}/**/*.[cho] \
 					{"${S}","${BUILD_DIR}"}/**/*.so* \
 					{"${S}","${BUILD_DIR}"}/**/**.txt \
-					{"${S}","${BUILD_DIR}"}/tests/files \
+					{"${S}","${BUILD_DIR}"}/tests/files
 
 				stat --printf="xz-pgo-test-01.tar.tar size: %s\n" xz-pgo-test-01.tar
 				md5sum xz-pgo-test-01.tar
