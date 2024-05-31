@@ -140,7 +140,7 @@ pkg_setup() {
 src_unpack() {
 	local paths=(
 		kernel/bpf tools/{arch,bpf,build,include,lib,perf,scripts}
-		scripts include lib "arch/*/lib" "arch/*/tools"
+		scripts include lib "arch/*/include" "arch/*/lib" "arch/*/tools"
 	)
 
 	# We expect the tar implementation to support the -j option (both
