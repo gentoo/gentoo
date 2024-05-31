@@ -314,11 +314,6 @@ sys-fs/sandboxfs
 # Removal on 2024-05-27, bug #930781
 app-i18n/skkserv
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-04-26)
-# Broken and reported as such upstream. EAPI=6.
-# Removal: 2024-05-26.  Bug #912842.
-net-misc/ttytter
-
 # Michał Górny <mgorny@gentoo.org> (2024-04-11)
 # Contains a bug that could render the kernel fail to boot.
 # https://lore.kernel.org/oe-lkp/202403221630.2692c998-oliver.sang@intel.com/
