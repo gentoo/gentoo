@@ -252,7 +252,7 @@ src_configure() {
 	# Arch-specific skips.  See #931888 for a collection of these.
 	case ${CHOST} in
 		alpha*)
-			test_opts+=(
+			COMMON_TEST_SKIPS+=(
 				-x test_builtin
 				-x test_capi
 				-x test_cmath
@@ -269,30 +269,30 @@ src_configure() {
 			)
 			;;
 		ia64*)
-			test_opts+=(
+			COMMON_TEST_SKIPS+=(
 				-x test_ctypes
 				-x test_external_inspection
 			)
 			;;
 		mips*)
-			test_opts+=(
+			COMMON_TEST_SKIPS+=(
 				-x test_ctypes
 				-x test_external_inspection
 				-x test_statistics
 			)
 			;;
 		powerpc64-*) # big endian
-			test_opts+=(
+			COMMON_TEST_SKIPS+=(
 				-x test_descr
 			)
 			;;
 		riscv*)
-			test_opts+=(
+			COMMON_TEST_SKIPS+=(
 				-x test_urllib2
 			)
 			;;
 		sparc*)
-			test_opts+=(
+			COMMON_TEST_SKIPS+=(
 				# bug 788022
 				-x test_multiprocessing_fork
 				-x test_multiprocessing_forkserver
