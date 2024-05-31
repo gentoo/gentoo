@@ -301,12 +301,6 @@ sci-libs/keras-preprocessing
 # Masked for testing. Tracker bug: bug #930805.
 >=sys-libs/ncurses-6.5
 
-# Jason Zaman <perfinion@gentoo.org> (2024-04-27)
-# Sandboxfs was only experimental in Bazel. It was fully removed in Bazel-7
-# Bazel was removed from gentoo in Feb.
-# Removal in 30 days. Bug #930790
-sys-fs/sandboxfs
-
 # Michał Górny <mgorny@gentoo.org> (2024-04-11)
 # Contains a bug that could render the kernel fail to boot.
 # https://lore.kernel.org/oe-lkp/202403221630.2692c998-oliver.sang@intel.com/
