@@ -22,16 +22,15 @@ RDEPEND="
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	x11-libs/gtk+:3[introspection]
-	player-integrated? (
-		>=media-libs/gstreamer-1.6
+	player? (
+		>=media-libs/gstreamer-1.6[introspection]
 		media-libs/gst-plugins-bad
 		media-libs/gst-plugins-base[pango]
-		media-libs/gst-plugins-good
 		media-plugins/gst-plugins-gtk
 		media-plugins/gst-plugins-libav
 	)
 	spell? ( app-text/gspell[introspection] )
-"
+" # NOTE(setan): for the integrated player using ugly or good gst-plugins might help
 BDEPEND="
 	sys-devel/gettext
 	test? (
@@ -60,7 +59,6 @@ pkg_postinst() {
 	optfeature "external player support" media-video/mplayer media-video/mpv media-video/vlc
 
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
-		use player && elog "If problems with internal player occur please install media-libs/gst-plugins-ugly."
 		if use spell; then
 			elog ""
 			elog "Spell-checking requires a dictionary, any of app-dicts/myspell-*"
