@@ -101,6 +101,10 @@ BDEPEND="${PYTHON_DEPS}
 
 PATCHES=( "${WORKDIR}/${PATCHSET}" )
 
+python_check_deps() {
+	python_has_version "dev-python/html5lib[${PYTHON_USEDEP}]"
+}
+
 qtwebengine_check-reqs() {
 	# bug #307861
 	eshopts_push -s extglob
