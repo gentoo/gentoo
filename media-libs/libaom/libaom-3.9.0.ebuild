@@ -14,7 +14,7 @@ else
 	# chromium-tools.git/generate-libaom-test-tarball.sh
 	SRC_URI="
 		https://storage.googleapis.com/aom-releases/${P}.tar.gz
-		test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-testdata.tar.xz )
+		test? ( https://deps.gentoo.zip/${CATEGORY}/${P}-testdata.tar.xz )
 	"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
