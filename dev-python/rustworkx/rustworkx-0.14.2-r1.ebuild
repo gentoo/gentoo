@@ -141,6 +141,12 @@ QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/rustworkx/rustworkx.*\\.so"
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://github.com/Qiskit/rustworkx/pull/1156
+	# part of https://github.com/Qiskit/rustworkx/pull/1172
+	"${FILESDIR}/${P}-numpy-2.patch"
+)
+
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	local EPYTEST_DESELECT=(
