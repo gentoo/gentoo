@@ -34,17 +34,17 @@ fi
 LICENSE="GPL-3+ || ( CC0-1.0 Apache-2.0 ) Boost-1.0 CC0-1.0"
 LICENSE+=" elibc_mingw? ( LGPL-3 ISC PSF-2 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~m68k ~mips ~riscv ~sparc ~x86"
 # Enable 'static-c++' by default to make 'gcc' ebuild Just Work: bug #761220
 IUSE="${MY_DOCS_USEFLAG} redis +static-c++ test"
 RESTRICT="!test? ( test )"
 
 # TODO: package NonstdSpan, TlExpected
-# TODO: figure out why blake3 can't be found
 # TODO: upstream httplib patch
 DEPEND="
 	>=app-arch/zstd-1.3.4:=
 	>=dev-cpp/cpp-httplib-0.10.6:=
+	>=dev-libs/blake3-1.4.0:=
 	>=dev-libs/libfmt-8.0.0:=
 	>=dev-libs/xxhash-0.8.0
 	redis? ( >=dev-libs/hiredis-0.13.3:= )
@@ -75,6 +75,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.0-objdump.patch
 	"${FILESDIR}"/${PN}-4.10-avoid-run-user.patch
 	"${FILESDIR}"/${PN}-4.10-unittest-httplib.patch
+	"${FILESDIR}"/${P}-blake3.patch
 )
 
 src_unpack() {
