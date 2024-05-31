@@ -307,13 +307,6 @@ sci-libs/keras-preprocessing
 # Removal in 30 days. Bug #930790
 sys-fs/sandboxfs
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-04-27)
-# EAPI=6 package, has issues with implicit function declarations, has
-# issues with incompatible types and more. The only reverse dependency
-# is virtual/skkserv, which has other better candidates.
-# Removal on 2024-05-27, bug #930781
-app-i18n/skkserv
-
 # Michał Górny <mgorny@gentoo.org> (2024-04-11)
 # Contains a bug that could render the kernel fail to boot.
 # https://lore.kernel.org/oe-lkp/202403221630.2692c998-oliver.sang@intel.com/
