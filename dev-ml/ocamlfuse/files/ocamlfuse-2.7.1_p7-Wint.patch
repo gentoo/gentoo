@@ -1,11 +1,67 @@
---- a/lib/Fuse_util.c	2024-05-30 14:46:19.594917120 +0200
-+++ b/lib/Fuse_util.c	2024-05-30 14:46:39.870690546 +0200
-@@ -354,7 +354,7 @@
+--- a/lib/Fuse_util.c	2024-05-31 19:58:34.910818884 +0200
++++ b/lib/Fuse_util.c	2024-05-31 20:25:27.021700407 +0200
+@@ -293,7 +293,6 @@
+ }
+ 
+ #define FOR_ALL_OPS(MACRO) \
+-    MACRO(init) \
+     MACRO(getattr) \
+     MACRO(readlink) \
+     MACRO(readdir) \
+@@ -344,12 +343,14 @@
+ #define SET_NULL_OP(OPNAME) .OPNAME = NULL,
+ 
+ static struct fuse_operations ops = {
++  SET_NULL_OP(init)
+   FOR_ALL_OPS(SET_NULL_OP)
+ };
+ 
+ static value * ocaml_list_length=NULL;
+ 
+ #define DECLARE_OP_CLOSURE(OPNAME) static value * OPNAME##_closure=NULL;
++DECLARE_OP_CLOSURE(init)
+ FOR_ALL_OPS(DECLARE_OP_CLOSURE)
  
  #define init_ARGS (struct fuse_conn_info *conn)
- #define init_CALL_ARGS (conn)
--#define init_RTYPE void *
-+#define init_RTYPE int
- #define init_CB vres=callback(*init_closure,Val_unit);
- /* TODO: the result from init is wrong, it should return unit */
- #define init_RES 
+@@ -593,6 +594,33 @@
+ #define removexattr_CB vpath = copy_string(path); vres=callback2(*removexattr_closure,vpath,copy_string(name));
+ #define removexattr_RES
+ 
++static void *gm281_ops_init(struct fuse_conn_info *conn)
++{
++  CAMLparam0();
++  CAMLlocal4(vstring, vpath, vres, vtmp);
++  intptr_t res = -1;
++  vres=callback(*init_closure,Val_unit);
++  if (Tag_val(vres)==1) /* Result is not Bad */
++  {
++    res=0;
++  }
++  else
++  {
++    if (Is_block(Field(vres,0)))  /* This is EUNKNOWNERR of int in ocaml */
++	res=-Int_val(Field(Field(vres,0),0));
++    else res=-ml2c_unix_error(Int_val(Field(vres,0)));
++  }
++  CAMLreturnT(void *, (void *)res);
++}
++
++static void *ops_init(struct fuse_conn_info *conn)
++{
++  leave_blocking_section();
++  void *ret = gm281_ops_init(conn);
++  enter_blocking_section();
++  return ret;
++}
++
+ #define CALLBACK(OPNAME) \
+ static OPNAME##_RTYPE gm281_ops_##OPNAME OPNAME##_ARGS \
+ {\
+@@ -634,6 +662,7 @@
+ 
+ void set_fuse_operations(struct fuse_operation_names const *op) 
+ {
++  SET_OPERATION(init)
+   FOR_ALL_OPS(SET_OPERATION)
+ }
+ 
