@@ -11,7 +11,7 @@ inherit distutils-r1 pypi
 DESCRIPTION="ASN.1 library for Python"
 HOMEPAGE="
 	https://pypi.org/project/pyasn1/
-	https://github.com/etingof/pyasn1/
+	https://github.com/pyasn1/pyasn1/
 "
 
 LICENSE="BSD-2"
