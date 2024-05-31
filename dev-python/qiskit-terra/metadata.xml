@@ -23,6 +23,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">Qiskit/qiskit</remote-id>
-		<remote-id type="pypi">qiskit-terra</remote-id>
+		<remote-id type="pypi">qiskit</remote-id>
 	</upstream>
 </pkgmetadata>
