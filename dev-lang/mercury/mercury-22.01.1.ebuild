@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ PATCHSET_VER="2"
 MY_P=${PN}-srcdist-${PV}
 
 DESCRIPTION="Mercury is a modern general-purpose logic/functional programming language"
-HOMEPAGE="https://www.mercurylang.org/index.html"
+HOMEPAGE="https://mercurylang.org"
 SRC_URI="https://dl.mercurylang.org/release/${MY_P}.tar.gz
 	https://dev.gentoo.org/~keri/distfiles/mercury/${P}-gentoo-patchset-${PATCHSET_VER}.tar.gz"
 
