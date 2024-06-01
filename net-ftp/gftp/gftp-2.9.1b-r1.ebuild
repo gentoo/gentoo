@@ -34,6 +34,12 @@ PATCHES=(
 	"${FILESDIR}"/"${P}"-fix-socklen-type.patch
 )
 
+src_prepare() {
+	gnome2_src_prepare
+	# https://github.com/masneyb/gftp/issues/181
+	sed -i -e 's/Icon=gftp.png/Icon=gftp/' docs/gftp.desktop || die
+}
+
 src_configure() {
 	gnome2_src_configure \
 		$(use_enable gtk gtkport) \
