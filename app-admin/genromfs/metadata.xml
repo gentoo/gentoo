@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">genromfs</remote-id>
+		<remote-id type="github">chexum/genromfs</remote-id>
 	</upstream>
 </pkgmetadata>
