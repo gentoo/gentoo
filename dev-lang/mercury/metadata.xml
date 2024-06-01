@@ -5,4 +5,7 @@
   <use>
     <flag name="trail">Support Mercury trail grades</flag>
   </use>
+  <upstream>
+    <remote-id type="github">Mercury-Language/mercury</remote-id>
+  </upstream>
 </pkgmetadata>
