@@ -1,0 +1,68 @@
+--- a/Makefile
++++ b/Makefile
+@@ -13,7 +13,7 @@
+ 	@echo ''
+ 	@false
+ 
+-configure:	configure.in
++configure:	configure.ac
+ 	@echo Generating configure.
+ 	autoconf
+ 
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -11,10 +11,11 @@
+ ################################ Definitions ################################
+ DIR	:= /usr/share/doc
+ 
+-VERSION	:= $(shell git describe --tags --always)
++VERSION	:= 1.2.12
+ 
++CC		:= @CC@
+ CFLAGS	:= @CFLAGS@
+-CFLAGS	+= -Wall -funsigned-char -Os -DFSVS_VERSION='"$(VERSION)"'  -Wno-deprecated-declarations
++CFLAGS	+= -Wall -funsigned-char -DFSVS_VERSION='"$(VERSION)"'  -Wno-deprecated-declarations
+ LDFLAGS	:= @LDFLAGS@
+ FSVS_LDFLAGS = $(LDFLAGS)
+ BASELIBS := -lsvn_subr-1 -lsvn_delta-1 -lsvn_ra-1 -lpcre2-8 -lgdbm -ldl
+@@ -48,11 +49,7 @@
+ 
+ 
+ ################################ Targets ###################################
+-ifeq (@CHROOTER_JAIL@, )
+-all:	deps tags check-version check-dox $(DEST) lsDEST
+-else
+-all:	tools/fsvs-chrooter
+-endif
++all:	fsvs
+ 
+ 
+ check-version: config.h fsvs.c
+@@ -145,18 +142,11 @@
+ 
+ 
+ ################################ Rules ######################################
+-%.o:	%.c
+-	@echo "     CC $<"
+-	@$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<
+ 
+ # if the Makefile has changed, the output will (at least sometimes)
+ # change, too.
+ $(DEST): $(C_FILES:%.c=%.o)
+-	@echo "     Link $@"
+-	@$(CC) $(FSVS_LDFLAGS) $(LDLIBS) $(LIBS) -o $@ $^ $(BASELIBS) $(EXTRALIBS) 
+-ifeq (@ENABLE_RELEASE@, 1)
+-	-strip $@
+-endif
++	$(CC) $(FSVS_LDFLAGS) $(LDLIBS) $(LIBS) -o $@ $^ $(BASELIBS) $(EXTRALIBS) 
+ 
+ 
+ # For debugging: generate preprocessed, generate assembler
+@@ -171,7 +161,6 @@
+ .%.d:	%.c
+ 	@echo "     deps for $<"
+ 	@$(CC) $(CPPFLAGS) $(CFLAGS) -MM $< | perl -pe 's#\bdoc.g-c\b##' > $@
+-include $(D_FILES)
+ 
+ tools/fsvs-chrooter: tools/fsvs-chrooter.c
+ tools/fsvs-chrooter: interface.h config.h
