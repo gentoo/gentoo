@@ -123,6 +123,13 @@ EPYTEST_DESELECT=(
 	# Fails on (unreleased) LLVM 16 with minor difference
 	#tests/comparators/test_macho.py::test_llvm_diff
 	#tests/comparators/test_elf.py::test_libmix_differences
+
+	# Fails with perl-5.40
+	# https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/377
+	tests/comparators/test_epub.py::test_differences
+	tests/comparators/test_zip.py::test_metadata
+	tests/comparators/test_zip.py::test_extra_fields
+	tests/comparators/test_zip.py::test_commented
 )
 
 distutils_enable_tests pytest
