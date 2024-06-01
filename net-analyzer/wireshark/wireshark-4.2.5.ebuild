@@ -24,7 +24,7 @@ else
 	S="${WORKDIR}/${P/_/}"
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~amd64 ~arm64 ~hppa"
+		KEYWORDS="~amd64 ~arm ~arm64 ~hppa"
 	fi
 fi
 
