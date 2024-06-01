@@ -311,6 +311,7 @@ get_distribution_components() {
 			llvm-xray
 			obj2yaml
 			opt
+			reduce-chunk-list
 			sancov
 			sanstats
 			split-file
