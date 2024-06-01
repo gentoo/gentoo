@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.7-readline-6.3.patch
 	"${FILESDIR}"/${P}-fix-params-inconsistency-and-misuse.patch
+	"${FILESDIR}"/${P}-clang.patch
 )
 
 src_prepare() {

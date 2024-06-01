@@ -1,0 +1,65 @@
+Author: Denis Pronin <dannftk@yandex.ru>
+
+Description: if the project is built with clang you will see many errors and 
+compilation failures. This patch is given to fix this issue up
+
+https://bugs.gentoo.org/933169
+
+--- a/plugin/vol/volume.c
++++ b/plugin/vol/volume.c
+@@ -34,8 +34,8 @@
+ 	return max(min(val, high),low);
+ }
+ 
+-static int advise_stripe_size_simple(uint64_t *result, uint64_t block_count,
+-				     uint32_t block_size, int is_default,
++static int advise_stripe_size_simple(uint64_t *result, uint64_t block_count,
++				     uint32_t block_size, int is_default,
+ 				     int forced)
+ {
+ 	/*
+@@ -53,8 +53,8 @@
+ 	return 0;
+ }
+ 
+-static int advise_stripe_size_asym(uint64_t *result, uint64_t block_count,
+-				   uint32_t block_size, int is_default,
++static int advise_stripe_size_asym(uint64_t *result, uint64_t block_count,
++				   uint32_t block_size, int is_default,
+ 				   int forced)
+ {
+ 	uint64_t advised;
+@@ -150,7 +150,7 @@
+ 	return 0;
+ }
+ 
+-static uint64_t default_data_capacity_simple(uint64_t free_blocks)
++static uint64_t default_data_capacity_simple(uint64_t free_blocks, int data_brick)
+ {
+ 	return 0;
+ }
+
+--- a/libreiser4/filesystem.c
++++ b/libreiser4/filesystem.c
+@@ -352,6 +352,10 @@
+ 	return NULL;
+ }
+ 
++void reiser4_format_set_data_capacity(
++	reiser4_format_t *format,
++	count_t blocks);
++
+ void reiser4_set_data_capacity(reiser4_fs_t *fs, fs_hint_t *hint)
+ {
+ 	if (hint->data_capacity == 0) {
+@@ -363,6 +367,10 @@
+ 	reiser4_format_set_data_capacity(fs->format, hint->data_capacity);
+ }
+ 
++void reiser4_format_set_min_occup(
++	reiser4_format_t *format,
++	count_t blocks);
++
+ /**
+  * This is called at the end of the procedure of formatting a partition
+  */
