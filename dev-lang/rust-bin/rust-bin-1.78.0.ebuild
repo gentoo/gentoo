@@ -55,7 +55,7 @@ RESTRICT="strip"
 
 QA_PREBUILT="
 	opt/${P}/bin/.*
-	opt/${P}/lib/.*.so
+	opt/${P}/lib/.*.so*
 	opt/${P}/libexec/.*
 	opt/${P}/lib/rustlib/.*/bin/.*
 	opt/${P}/lib/rustlib/.*/lib/.*
