@@ -20,6 +20,7 @@ DEPEND="
 	dev-ml/stdlib-shims:=
 "
 RDEPEND="${DEPEND}"
+BDEPEND=">=dev-ml/dune-3"
 
 PATCHES=( "${FILESDIR}/${PN}-2.2.7-dune.patch" )
 
