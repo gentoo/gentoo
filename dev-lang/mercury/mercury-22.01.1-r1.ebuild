@@ -12,6 +12,7 @@ DESCRIPTION="Mercury is a modern general-purpose logic/functional programming la
 HOMEPAGE="https://mercurylang.org"
 SRC_URI="https://dl.mercurylang.org/release/${MY_P}.tar.gz
 	https://dev.gentoo.org/~keri/distfiles/mercury/${P}-gentoo-patchset-${PATCHSET_VER}.tar.gz"
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
@@ -20,18 +21,19 @@ KEYWORDS="amd64 x86"
 IUSE="debug doc emacs examples java mono profile readline test threads trail"
 RESTRICT="!test? ( test )"
 
-DEPEND="net-libs/libnsl:0=
+COMMON_DEP="net-libs/libnsl:0=
 	readline? ( sys-libs/readline:= )
-	java? ( >=virtual/jdk-1.8:* )
 	mono? ( dev-lang/mono )
 	doc? ( sys-apps/texinfo )"
 
-RDEPEND="${DEPEND}
-	emacs? ( >=app-editors/emacs-23.1:* )"
+DEPEND="${COMMON_DEP}
+	java? ( >=virtual/jdk-1.8:* )"
+
+RDEPEND="${COMMON_DEP}
+	emacs? ( >=app-editors/emacs-23.1:* )
+	java? ( >=virtual/jre-1.8:* )"
 
 BDEPEND="test? ( sys-libs/timezone-data )"
-
-S="${WORKDIR}"/${MY_P}
 
 SITEFILE=50${PN}-gentoo.el
 
