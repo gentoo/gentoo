@@ -9,11 +9,13 @@ DESCRIPTION="Service and tools for management of snap packages"
 HOMEPAGE="http://snapcraft.io/"
 
 SRC_URI="https://github.com/snapcore/snapd/releases/download/${PV}/snapd_${PV}.vendor.tar.xz -> ${P}.tar.xz"
+SRC_URI+=" https://github.com/snapcore/snapd/commit/1b035da5d873518ee4be31dacb1191c77ce0b644.patch -> ${P}-bug-933073-GNU_SOURCE.patch"
+PATCHES=("${DISTDIR}/${P}-bug-933073-GNU_SOURCE.patch")
 MY_PV=${PV}
-KEYWORDS="~amd64"
-
 LICENSE="GPL-3 Apache-2.0 BSD BSD-2 LGPL-3-with-linking-exception MIT"
 SLOT="0"
+KEYWORDS="~amd64"
+
 IUSE="apparmor +forced-devmode gtk kde systemd"
 REQUIRED_USE="!forced-devmode? ( apparmor ) systemd"
 
