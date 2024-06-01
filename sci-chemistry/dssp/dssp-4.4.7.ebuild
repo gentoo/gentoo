@@ -20,7 +20,9 @@ CDEPEND="
 	>=dev-libs/libmcfp-1.2.2
 	>=sci-libs/libcifpp-7.0.3
 "
-BDEPEND="${CDEPEND}"
+BDEPEND="${CDEPEND}
+	dev-cpp/catch:0
+"
 #	doc? (
 #		|| ( app-text/pandoc-bin[pandoc-symlink] app-text/pandoc )
 #		dev-python/weasyprint
