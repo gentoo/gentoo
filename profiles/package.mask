@@ -802,10 +802,6 @@ sec-keys/openpgp-keys-jiatan
 # may or may not lead to useful results.
 <dev-util/catalyst-4
 
-# Matt Turner <mattst88@gentoo.org> (2023-07-06)
-# GNOME 45 mask
->=gnome-extra/gnome-logs-45_alpha
-
 # Michał Górny <mgorny@gentoo.org> (2023-06-21)
 # suitesparseconfig-7.0.0 fails to build with multilib enabled
 # because of dependencies that cannot be satisfied.  All the other
