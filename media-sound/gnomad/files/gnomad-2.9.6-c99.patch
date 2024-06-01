@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/875239
+https://bugs.debian.org/1066610
+https://salsa.debian.org/debian/gnomad2/-/blob/debian/2.9.6-9/debian/patches/missing-prototypes.patch
+
+Author: Andreas Beckmann <anbe@debian.org>
+Description: fix building with -Werror=implicit-function-declaration
+
+--- a/src/jukebox.c
++++ b/src/jukebox.c
+@@ -27,6 +27,7 @@
+ #include "filenaming.h"
+ #include "util.h"
+ #include "id3read.h"
++#include "tagfile.h"
+ #include <glib.h>
+ #include <glib/gprintf.h>
+ 
+--- a/src/tagfile.c
++++ b/src/tagfile.c
+@@ -20,6 +20,7 @@ Boston, MA 02111-1307, USA.
+ #include "util.h"
+ #include "filesystem.h"
+ #include <taglib/tag_c.h>
++#include <glib/gprintf.h>
+ 
+ /*****************************************************************************
+  * EXPORTED FUNCTIONS
+

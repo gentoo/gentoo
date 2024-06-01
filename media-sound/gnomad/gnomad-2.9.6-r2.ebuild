@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit xdg
 
@@ -24,16 +24,22 @@ RDEPEND="
 	media-libs/libmtp:=
 	media-libs/libnjb
 	media-libs/taglib
-	>=x11-libs/gtk+-2.24:2"
+	>=x11-libs/gtk+-2.24:2
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	nls? (
 		dev-util/intltool
 		sys-devel/gettext
-	)"
+	)
+"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.9.6-fno-common.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.9.6-fno-common.patch
+	"${FILESDIR}"/${PN}-2.9.6-c99.patch
+)
+
 DOCS=( AUTHORS README TODO ) # ChangeLog and NEWS are both outdated
 
 src_configure() {
