@@ -203,6 +203,9 @@ src_configure() {
 		-DPython3_EXECUTABLE="${PYTHON}"
 		-DCMAKE_DISABLE_FIND_PACKAGE_{Asciidoctor,DOXYGEN}=$(usex !doc)
 
+		# Force bundled lemon (bug 933119)
+		-DLEMON_EXECUTABLE=
+
 		$(use androiddump && use pcap && echo -DEXTCAP_ANDROIDDUMP_LIBPCAP=yes)
 		$(usex gui LRELEASE=$(qt5_get_bindir)/lrelease '')
 		$(usex gui MOC=$(qt5_get_bindir)/moc '')
