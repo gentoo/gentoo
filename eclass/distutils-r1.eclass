@@ -364,52 +364,6 @@ _distutils_set_globals() {
 _distutils_set_globals
 unset -f _distutils_set_globals
 
-# @ECLASS_VARIABLE: PATCHES
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# An array containing patches to be applied to the sources before
-# copying them.
-#
-# If unset, no custom patches will be applied.
-#
-# Please note, however, that at some point the eclass may apply
-# additional distutils patches/quirks independently of this variable.
-#
-# Example:
-# @CODE
-# PATCHES=( "${FILESDIR}"/${P}-make-gentoo-happy.patch )
-# @CODE
-
-# @ECLASS_VARIABLE: DOCS
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# An array containing documents installed using dodoc. The files listed
-# there must exist in the directory from which
-# distutils-r1_python_install_all() is run (${S} by default).
-#
-# If unset, the function will instead look up files matching default
-# filename pattern list (from the Package Manager Specification),
-# and install those found.
-#
-# Example:
-# @CODE
-# DOCS=( NEWS README )
-# @CODE
-
-# @ECLASS_VARIABLE: HTML_DOCS
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# An array containing documents installed using dohtml. The files
-# and directories listed there must exist in the directory from which
-# distutils-r1_python_install_all() is run (${S} by default).
-#
-# If unset, no HTML docs will be installed.
-#
-# Example:
-# @CODE
-# HTML_DOCS=( doc/html/. )
-# @CODE
-
 # @ECLASS_VARIABLE: DISTUTILS_IN_SOURCE_BUILD
 # @DEFAULT_UNSET
 # @DESCRIPTION:
