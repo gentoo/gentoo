@@ -27,7 +27,10 @@ RDEPEND="
 	server? ( virtual/httpd-cgi )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="app-arch/unzip"
+BDEPEND="
+	app-alternatives/cpio
+	app-arch/unzip
+"
 
 pkg_setup() {
 	use server && webapp_pkg_setup
