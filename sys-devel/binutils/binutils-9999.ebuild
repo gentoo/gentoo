@@ -373,10 +373,6 @@ src_compile() {
 src_test() {
 	cd "${MY_BUILDDIR}" || die
 
-	# https://sourceware.org/PR31327
-	local -x XZ_OPT="-T1"
-	local -x XZ_DEFAULTS="-T1"
-
 	(
 		# Tests don't expect LTO
 		filter-lto
