@@ -16,8 +16,11 @@ GIT_COMMIT_HASH="795fba0ef1859b39b3bb41ca162ab402177808a5" # branch "python3-mb"
 GIT_DOC_HASH="4303994b67222639ee4c3f55b214020b2f5c75f4"
 SRC_URI="
 	https://github.com/jack-cli-cd-ripper/jack/archive/${GIT_COMMIT_HASH}.tar.gz -> ${P}.tar.gz
-	https://github.com/jack-cli-cd-ripper/jack/raw/${GIT_DOC_HASH}/example.etc.jackrc -> example.etc.jackrc-${PV}
-	https://github.com/jack-cli-cd-ripper/jack/raw/${GIT_DOC_HASH}/jack.man -> jack.man-${PV}"
+	https://github.com/jack-cli-cd-ripper/jack/raw/${GIT_DOC_HASH}/example.etc.jackrc
+		-> example.etc.jackrc-4.1_pre20230723
+	https://github.com/jack-cli-cd-ripper/jack/raw/${GIT_DOC_HASH}/jack.man
+		-> jack.man-4.1_pre20230723
+"
 S="${WORKDIR}/${PN}-${GIT_COMMIT_HASH}"
 
 LICENSE="GPL-2+"
@@ -48,9 +51,9 @@ python_prepare_all() {
 
 python_install_all() {
 	insinto /etc
-	newins "${DISTDIR}/example.etc.jackrc-${PV}" jackrc
+	newins "${DISTDIR}/example.etc.jackrc-4.1_pre20230723" jackrc
 
-	newman "${DISTDIR}/jack.man-${PV}" jack.1
+	newman "${DISTDIR}/jack.man-4.1_pre20230723" jack.1
 
 	local DOCS=( doc/README.md doc/CHANGELOG )
 	local HTML_DOCS=( doc/*.{html,css,gif} )
