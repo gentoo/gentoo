@@ -18,15 +18,21 @@ REQUIRED_USE="server? ( mysql )"
 
 WEBAPP_MANUAL_SLOT="yes"
 
+# TODO: test with other webservers
 RDEPEND="
 	dev-libs/openssl:0=
 	media-libs/libpng:0=
 	!<sci-biology/ucsc-genome-browser-223
 	mysql? ( dev-db/mysql-connector-c:0= )
-	server? ( virtual/httpd-cgi )" # TODO: test with other webservers
+	server? ( virtual/httpd-cgi )
+"
 DEPEND="${RDEPEND} app-arch/unzip"
 
 S="${WORKDIR}/kent"
+
+pkg_setup() {
+	use server && webapp_pkg_setup
+}
 
 src_prepare() {
 	default
