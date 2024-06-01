@@ -39,6 +39,7 @@
 dev-ruby/elasticsearch:6.8.3
 dev-ruby/elasticsearch-api:6.8.3
 dev-ruby/elasticsearch-transport:6.8.3
+dev-ruby/mimemagic:0
 dev-ruby/puppet_forge:2
 dev-ruby/puppet_forge:4
 dev-ruby/rspec-rails:5
