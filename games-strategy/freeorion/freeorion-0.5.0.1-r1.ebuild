@@ -78,8 +78,11 @@ src_prepare() {
 }
 
 src_configure() {
-	append-flags -fno-strict-aliasing #932780
 	filter-lto # -Werror=odr issues
+
+	# TODO: drop this after boost-1.85.0-r0 been gone for some time
+	has_version =dev-libs/boost-1.85.0-r0 &&
+		append-flags -fno-strict-aliasing #932780,933289
 
 	local mycmakeargs=(
 		-DCCACHE_PROGRAM=no
