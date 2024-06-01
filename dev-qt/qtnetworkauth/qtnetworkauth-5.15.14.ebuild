@@ -11,7 +11,7 @@ LICENSE="GPL-3"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${PATCHSET}.tar.xz"
-	KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 fi
 
 IUSE=""
