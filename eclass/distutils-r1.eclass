@@ -206,6 +206,22 @@ esac
 # the build system in pure Python packages and packages using the stable
 # Python ABI.
 
+# @ECLASS_VARIABLE: BUILD_DIR
+# @OUTPUT_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# The current build directory. In global scope, it is supposed to
+# contain an initial build directory; if unset, it defaults to ${S}.
+#
+# When running in multi-impl mode, the BUILD_DIR variable is set
+# by python-r1.eclass.  Otherwise, it is set by distutils-r1.eclass
+# for consistency.
+#
+# Example value:
+# @CODE
+# ${WORKDIR}/foo-1.3-python3_12
+# @CODE
+
 if [[ -z ${_DISTUTILS_R1_ECLASS} ]]; then
 _DISTUTILS_R1_ECLASS=1
 
