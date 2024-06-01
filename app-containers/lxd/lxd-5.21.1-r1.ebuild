@@ -12,7 +12,7 @@ SRC_URI="https://github.com/canonical/lxd/releases/download/${P}/${P}.tar.gz
 )"
 
 LICENSE="Apache-2.0 AGPL-3+ BSD LGPL-3 MIT"
-SLOT="0/stable"
+SLOT="0/lts"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="apparmor nls"
 
