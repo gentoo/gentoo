@@ -24,7 +24,7 @@ IUSE="doc test"
 
 # We track the bundled sqlite version here
 RDEPEND+=" >=dev-db/sqlite-3.45.2:3"
-DEPEND+=" >=dev-db/sqlite-3.45.2:3"
+DEPEND+=" >=dev-db/sqlite-3.45.2:3 <dev-db/sqlite-3.46.0"
 
 ruby_add_bdepend "
 	doc? ( dev-ruby/rdoc )
