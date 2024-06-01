@@ -22,6 +22,7 @@
 
 # Yongxiang Liang <tanekliang@gmail.com> (2024-01-16)
 # Requires qtwebengine, which is not ported to riscv
+pdfium
 webengine
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-14)

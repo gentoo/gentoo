@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -7,6 +7,7 @@
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-02-06)
 # Successful build of dev-qt/qtwebengine depends on 64-bit host
 # Bug #893234
+pdfium
 webengine
 
 # matoro <matoro_gentoo@matoro.tk> (2022-09-29)
