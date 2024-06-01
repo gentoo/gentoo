@@ -21,7 +21,10 @@ RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.0.7-readline-6.3.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.7-readline-6.3.patch
+	"${FILESDIR}"/${P}-fix-params-inconsistency-and-misuse.patch
+)
 
 src_prepare() {
 	printf '#!/bin/sh\ntrue\n' > run-ldconfig

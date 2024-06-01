@@ -1,0 +1,48 @@
+Author: Denis Pronin <dannftk@yandex.ru>
+
+Description: the order of the factual parameters transferred when calling 
+'advise_stripe_size' in progs/mkfs/mkfs.c method of volume type has happened to 
+be invalid. Firstly, there must be given number of blocks, then block size since
+ API of volume requires exactly this order.
+Also there has been observed the fact of inconsistency of some functions 
+definitions in plugin/vol/volume.c do not correspond to the types of function 
+pointers assigned with the definitions mentioned. This patch fixes this 
+circumstance up
+
+https://bugs.gentoo.org/933169
+
+--- a/progs/mkfs/mkfs.c
++++ b/progs/mkfs/mkfs.c
+@@ -112,7 +112,7 @@
+ {
+ 	return plugcall((reiser4_vol_plug_t *)reiser4_profile_plug(PROF_VOL),
+ 			advise_stripe_size, &hint->stripe_size,
+-			hint->blksize, hint->blocks, is_default,
++			hint->blocks, hint->blksize, is_default,
+ 			forced);
+ }
+ 
+--- a/plugin/vol/volume.c
++++ b/plugin/vol/volume.c
+@@ -34,8 +34,8 @@
+ 	return max(min(val, high),low);
+ }
+ 
+-static int advise_stripe_size_simple(uint64_t *result, uint32_t block_size,
+-				     uint64_t block_count, int is_default,
++static int advise_stripe_size_simple(uint64_t *result, uint64_t block_count,
++				     uint32_t block_size, int is_default,
+ 				     int forced)
+ {
+ 	/*
+@@ -53,8 +53,8 @@
+ 	return 0;
+ }
+ 
+-static int advise_stripe_size_asym(uint64_t *result, uint32_t block_size,
+-				   uint64_t block_count, int is_default,
++static int advise_stripe_size_asym(uint64_t *result, uint64_t block_count,
++				   uint32_t block_size, int is_default,
+ 				   int forced)
+ {
+ 	uint64_t advised;
