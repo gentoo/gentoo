@@ -78,6 +78,11 @@ esac
 # for your package (using ${PYTHON_DEPS}) and to either call
 # distutils-r1 default phase functions or call the build system
 # manually.
+#
+# Note that if DISTUTILS_SINGLE_IMPL is used, python-single-r1 exports
+# pkg_setup() function.  In that case, it is necessary to redefine
+# pkg_setup() to call python-single-r1_pkg_setup over correct
+# conditions.
 
 # @ECLASS_VARIABLE: DISTUTILS_SINGLE_IMPL
 # @DEFAULT_UNSET
