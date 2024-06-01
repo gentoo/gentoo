@@ -371,6 +371,7 @@ unset -f _distutils_set_globals
 
 # @ECLASS_VARIABLE: DISTUTILS_IN_SOURCE_BUILD
 # @DEFAULT_UNSET
+# @DEPRECATED: (none)
 # @DESCRIPTION:
 # If set to a non-null value, in-source builds will be enabled.
 # If unset, the default is to use in-source builds when python_prepare()
@@ -384,6 +385,9 @@ unset -f _distutils_set_globals
 # on the sources directly, prepending setup.py arguments with
 # 'build --build-base ${BUILD_DIR}' to enforce keeping & using built
 # files in the specific root.
+#
+# In-source builds are deprecated and no longer supported in PEP517
+# mode.
 
 # @ECLASS_VARIABLE: DISTUTILS_ALL_SUBPHASE_IMPLS
 # @DEFAULT_UNSET
