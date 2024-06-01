@@ -1,34 +1,33 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
+WEBAPP_MANUAL_SLOT="yes"
+# TODO: use WEBAPP_OPTIONAL?
 inherit toolchain-funcs flag-o-matic webapp
 
 DESCRIPTION="The UCSC genome browser suite, also known as Jim Kent's library and GoldenPath"
 HOMEPAGE="http://genome.ucsc.edu/"
 SRC_URI="http://hgdownload.cse.ucsc.edu/admin/jksrc.v${PV}.zip"
+S="${WORKDIR}/kent"
 
 LICENSE="blat"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+mysql +server static-libs"
-
 REQUIRED_USE="server? ( mysql )"
-
-WEBAPP_MANUAL_SLOT="yes"
 
 # TODO: test with other webservers
 RDEPEND="
-	dev-libs/openssl:0=
-	media-libs/libpng:0=
+	dev-libs/openssl:=
+	media-libs/libpng:=
 	!<sci-biology/ucsc-genome-browser-223
-	mysql? ( dev-db/mysql-connector-c:0= )
+	mysql? ( dev-db/mysql-connector-c:= )
 	server? ( virtual/httpd-cgi )
 "
-DEPEND="${RDEPEND} app-arch/unzip"
-
-S="${WORKDIR}/kent"
+DEPEND="${RDEPEND}"
+BDEPEND="app-arch/unzip"
 
 pkg_setup() {
 	use server && webapp_pkg_setup
@@ -72,10 +71,9 @@ src_compile() {
 
 	export MYSQLLIBS="none" MYSQLINC="none" DOCUMENTROOT="none" CGI_BIN="none"
 
-	# TODO: Change ${EPREFIX} to ${ESYSROOT} in EAPI 7
-	# (and ideally use pkg-config here)
-	use mysql && export MYSQLLIBS="-L${EPREFIX%/}/usr/$(get_libdir)/mysql/ -lmysqlclient -lz -lssl" \
-		MYSQLINC="${EPREFIX%/}/usr/include/mysql"
+	# TODO: use pkg-config here
+	use mysql && export MYSQLLIBS="-L${ESYSROOT}/usr/$(get_libdir)/mysql/ -lmysqlclient -lz -lssl" \
+		MYSQLINC="${ESYSROOT}/usr/include/mysql"
 
 	use server && export DOCUMENTROOT="${WORKDIR}/destdir/${MY_HTDOCSDIR}" \
 		CGI_BIN="${WORKDIR}/destdir/${MY_HTDOCSDIR}/cgi-bin"
