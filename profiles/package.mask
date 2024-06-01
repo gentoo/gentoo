@@ -45,9 +45,10 @@ net-mail/gnubiff
 app-emulation/phpvirtualbox
 
 # Sam James <sam@gentoo.org> (2024-05-29)
-# OpenPGP key of malicious xz co-maintainer. This key is no longer used
-# by any ebuilds in tree. Removal on 2024-06-29.
-# Bug #928134.
+# OpenPGP key of malicious upstream xz co-maintainer. This key is no longer
+# used by any ebuilds in tree. Removal on 2024-06-29. This package was already
+# masked a while ago but is now being removed. See the bug for details
+# on the gap. Bug #928134 (GLSA-202403-04).
 sec-keys/openpgp-keys-jiatan
 
 # Sam James <sam@gentoo.org> (2024-05-28)
