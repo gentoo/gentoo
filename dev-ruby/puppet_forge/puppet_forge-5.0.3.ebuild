@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/puppetlabs/forge-ruby"
 
 LICENSE="Apache-2.0"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 PATCHES=( "${FILESDIR}/${PN}-5.0.1-typhoeus.patch" )
 
