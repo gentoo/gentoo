@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic
+inherit autotools flag-o-matic systemd
 
 DESCRIPTION="Terminal multiplexer"
 HOMEPAGE="https://tmux.github.io/"
@@ -83,4 +83,9 @@ src_install() {
 
 	dodoc example_tmux.conf
 	docompress -x /usr/share/doc/${PF}/example_tmux.conf
+
+	if use systemd; then
+		systemd_newuserunit "${FILESDIR}"/tmux.service tmux@.service
+		systemd_newuserunit "${FILESDIR}"/tmux.socket tmux@.socket
+	fi
 }
