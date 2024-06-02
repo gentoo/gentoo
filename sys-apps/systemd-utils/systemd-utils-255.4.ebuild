@@ -384,7 +384,7 @@ multilib_src_compile() {
 	fi
 	if use udev; then
 		targets+=(
-			udev:shared_library
+			libudev
 			src/libudev/libudev.pc
 		)
 		if use test; then
