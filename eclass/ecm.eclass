@@ -584,6 +584,12 @@ ecm_src_configure() {
 			# move handbook outside of doc dir, bug 667138
 			-DKDE_INSTALL_DOCBUNDLEDIR="${EPREFIX}/usr/share/help"
 		)
+
+		# bug 928345
+		# TODO: Eventually it should be put to upstream as to why LIBEXECDIR
+		# in KDEInstallDirsCommon.cmake is set to EXECROOTDIR/LIBDIR/libexec
+		[[ ${_KFSLOT} == 6 ]] && \
+			cmakeargs+=( -DKDE_INSTALL_LIBEXECDIR="${EPREFIX}/usr/libexec" )
 	fi
 
 	# allow the ebuild to override what we set here
