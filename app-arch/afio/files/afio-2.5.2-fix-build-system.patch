@@ -1,0 +1,26 @@
+--- a/Makefile
++++ b/Makefile
+@@ -74,19 +74,14 @@
+ #code can be reviewed manually
+ #MW=-Wtraditional -Wcast-qual -Wcast-align -Wconversion -pedantic -Wlong-long -Wimplicit -Wuninitialized -W -Wshadow -Wsign-compare -Wstrict-prototypes -Wmissing-declarations
+ 
+-CFLAGS1 = -Wall -Wstrict-prototypes -s -O2 -fomit-frame-pointer -Wno-unused-result $(LARGEFILEFLAGS) $(MW)
+-
+-CC=gcc
+-
+ # also using contents of usin CPPFLAGS, CFLAGS, LDFLAGS out of environment
+ # variables, if they exist
+-CFLAGS += $(CFLAGS1) $1 $2 $3 $4 $5 $6 $7 $8 $9 $a $b $c $d $e $(e2) $f $g $I
+-LDFLAGS +=
+-CPPFLAGS +=
++CC ?= gcc
++CFLAGS += -Wall -Wstrict-prototypes
++CPPFLAGS += ${LARGEFILEFLAGS} ${2} ${3} ${6} ${8} ${c} ${d} ${e2} ${f} ${g}
+ 
+ afio : afio.o compfile.o exten.o match.o $M
+-	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) \
+-	afio.o compfile.o exten.o match.o $M -o afio
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
+ 
+ clean:
+ 	rm -f *.o afio
