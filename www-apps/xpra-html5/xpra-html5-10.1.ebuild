@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit python-any-r1
 
 DESCRIPTION="HTML5 client to connect to any xpra server"
