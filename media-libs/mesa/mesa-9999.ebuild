@@ -173,6 +173,7 @@ BDEPEND="
 			>=dev-util/bindgen-0.68.1
 			>=dev-util/cbindgen-0.26.0
 			>=virtual/rust-1.74.1
+			|| ( sys-libs/libunwind sys-libs/llvm-libunwind )
 		)
 	)
 	wayland? ( dev-util/wayland-scanner )

@@ -148,13 +148,15 @@ DEPEND="${RDEPEND}
 		x11-base/xorg-proto
 	)
 "
+# meson-1.4.0 contains a regression, so it fails to compile nouveau/NVK
+# see https://gitlab.freedesktop.org/mesa/mesa/-/issues/10855
 BDEPEND="
 	${PYTHON_DEPS}
 	opencl? (
 		>=virtual/rust-1.62.0
 		>=dev-util/bindgen-0.58.0
+		>=dev-build/meson-1.3.1
 	)
-	>=dev-build/meson-1.4.1
 	app-alternatives/yacc
 	app-alternatives/lex
 	virtual/pkgconfig
@@ -173,6 +175,8 @@ BDEPEND="
 			>=dev-util/bindgen-0.68.1
 			>=dev-util/cbindgen-0.26.0
 			>=virtual/rust-1.74.1
+			<dev-build/meson-1.4.0
+			|| ( sys-libs/libunwind sys-libs/llvm-libunwind )
 		)
 	)
 	wayland? ( dev-util/wayland-scanner )
