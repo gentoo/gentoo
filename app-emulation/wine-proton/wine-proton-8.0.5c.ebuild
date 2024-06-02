@@ -124,6 +124,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.4-noexecstack.patch
 	"${FILESDIR}"/${PN}-8.0.1c-unwind.patch
 	"${FILESDIR}"/${PN}-8.0.4-restore-menubuilder.patch
+	"${FILESDIR}"/${PN}-8.0.5c-vulkan-libm.patch
 )
 
 pkg_pretend() {
