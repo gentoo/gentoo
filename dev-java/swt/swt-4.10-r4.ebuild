@@ -5,59 +5,59 @@ EAPI=8
 
 JAVA_PKG_IUSE="doc source"
 
-inherit flag-o-matic java-pkg-2 java-pkg-simple toolchain-funcs
+inherit flag-o-matic java-pkg-2 java-pkg-simple toolchain-funcs java-osgi
 
 MY_PV="${PV/_rc/RC}"
-MY_DMF="https://download.eclipse.org/eclipse/downloads/drops4/R-${MY_PV}-202312010110"
+MY_DMF="https://archive.eclipse.org/eclipse/downloads/drops4/R-${MY_PV}-201812060815"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="GTK based SWT Library"
 HOMEPAGE="https://www.eclipse.org/swt/"
 SRC_URI="
 	amd64? ( ${MY_DMF}/${MY_P}-gtk-linux-x86_64.zip )
-	arm64? ( ${MY_DMF}/${MY_P}-gtk-linux-aarch64.zip )
 	ppc64? ( ${MY_DMF}/${MY_P}-gtk-linux-ppc64le.zip )"
 
 LICENSE="CPL-1.0 LGPL-2.1 MPL-1.1"
-SLOT="4.30"
-KEYWORDS="amd64 arm64 ppc64"
+SLOT="4.10"
+KEYWORDS="amd64 ppc64"
 IUSE="cairo opengl webkit"
 
+BDEPEND="
+	app-arch/unzip
+	virtual/pkgconfig
+"
 COMMON_DEP="
 	app-accessibility/at-spi2-core:2
 	dev-libs/glib
-	x11-libs/gtk+:3
+	>=x11-libs/gtk+-2.6.8:2
 	x11-libs/libXtst
 	cairo? ( x11-libs/cairo )
-	opengl?	(
+	opengl? (
 		virtual/glu
 		virtual/opengl
 	)
 	webkit? (
-		net-libs/webkit-gtk:4.1
+		net-libs/webkit-gtk:4
 	)"
 DEPEND="${COMMON_DEP}
-	>=virtual/jdk-17:*[-headless-awt]
+	>=virtual/jdk-1.8:*[-headless-awt]
 	x11-base/xorg-proto
 	x11-libs/libX11
 	x11-libs/libXrender
 	x11-libs/libXt
 	x11-libs/libXtst"
-# error: pattern matching in instanceof is not supported in -source 11
 RDEPEND="${COMMON_DEP}
-	>=virtual/jre-17:*"
-BDEPEND="
-	app-arch/unzip
-	virtual/pkgconfig
-"
+	>=virtual/jre-1.8:*
+	x11-libs/libX11"
 
-HTML_DOCS=( about.html )
+# JNI libraries don't need SONAME, bug #253756
+QA_SONAME='usr/lib[^/]*/libswt-[^/]+.so'
 
 JAVA_RESOURCE_DIRS="resources"
 JAVA_SRC_DIR="src"
 
 PATCHES=(
-	"${FILESDIR}/swt-4.27-as-needed-and-flag-fixes.patch"
+	"${FILESDIR}"/${P}-as-needed-and-flag-fixes.patch
 )
 
 src_unpack() {
@@ -66,11 +66,19 @@ src_unpack() {
 }
 
 src_prepare() {
-	default
+	default #780585
 	java-pkg-2_src_prepare
 	# .css stuff is essential at least for running net-p2p/biglybt
 	unzip swt.jar 'org/eclipse/swt/internal/gtk/*.css' -d resources || die
 	java-pkg_clean
+
+	# Define missing g_thread_supported() to be already started.
+	sed -i '1s/^/#define g_thread_supported() 1\n\n/' "${S}"/os_custom.h || die
+
+	# Webext is also in the library directory
+	sed -i 's|findResource([^,]\+|findResource("swt"|' \
+		org/eclipse/swt/browser/WebKit.java || die
+
 	mkdir src || die "mkdir failed"
 	mv org src || die "moving java sources failed"
 	pushd src > /dev/null || die
@@ -141,8 +149,21 @@ src_compile() {
 }
 
 src_install() {
-	java-pkg-simple_src_install
+	local swtArch=${ARCH}
+	use amd64 && swtArch=x86_64
+
+	sed "s/SWT_ARCH/${swtArch}/" "${FILESDIR}/${PN}-${SLOT}-manifest" > "MANIFEST_TMP.MF" || die
+	remove_from_manifest() {
+		local subpkg=$1
+		sed -i -e "/ org.eclipse.swt.internal.$subpkg; x-internal:=true,/d" "MANIFEST_TMP.MF" || die
+	}
+	use cairo || remove_from_manifest cairo
+	use opengl || remove_from_manifest opengl.glx
+	use webkit || remove_from_manifest webkit
+	java-osgi_newjar-fromfile "swt.jar" "MANIFEST_TMP.MF" "Standard Widget Toolkit for GTK 2.0"
 
 	java-pkg_sointo "/usr/$(get_libdir)/swt"
 	java-pkg_doso *.so
+
+	dodoc about.html
 }

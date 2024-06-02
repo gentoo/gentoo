@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc source"
 inherit flag-o-matic java-pkg-2 java-pkg-simple toolchain-funcs
 
 MY_PV="${PV/_rc/RC}"
-MY_DMF="https://download.eclipse.org/eclipse/downloads/drops4/R-${MY_PV}-202402290520"
+MY_DMF="https://download.eclipse.org/eclipse/downloads/drops4/R-${MY_PV}-202309031000"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="GTK based SWT Library"
@@ -17,17 +17,12 @@ SRC_URI="
 	amd64? ( ${MY_DMF}/${MY_P}-gtk-linux-x86_64.zip )
 	arm64? ( ${MY_DMF}/${MY_P}-gtk-linux-aarch64.zip )
 	ppc64? ( ${MY_DMF}/${MY_P}-gtk-linux-ppc64le.zip )"
-S="${WORKDIR}/library"
 
 LICENSE="CPL-1.0 LGPL-2.1 MPL-1.1"
-SLOT="4.31"
+SLOT="4.27"
 KEYWORDS="amd64 arm64 ppc64"
 IUSE="cairo opengl webkit"
 
-BDEPEND="
-	app-arch/unzip
-	virtual/pkgconfig
-"
 COMMON_DEP="
 	app-accessibility/at-spi2-core:2
 	dev-libs/glib
@@ -42,20 +37,24 @@ COMMON_DEP="
 		net-libs/webkit-gtk:4.1
 	)"
 DEPEND="${COMMON_DEP}
-	>=virtual/jdk-17:*[-headless-awt]
+	>=virtual/jdk-11:*[-headless-awt]
 	x11-base/xorg-proto
 	x11-libs/libX11
 	x11-libs/libXrender
 	x11-libs/libXt
 	x11-libs/libXtst"
-# error: pattern matching in instanceof is not supported in -source 11
 RDEPEND="${COMMON_DEP}
-	>=virtual/jre-17:*"
+	>=virtual/jre-1.8:*
+	x11-libs/libX11"
+BDEPEND="
+	app-arch/unzip
+	virtual/pkgconfig
+"
 
-HTML_DOCS=( ../about.html )
+HTML_DOCS=( about.html )
 
-JAVA_RESOURCE_DIRS="../resources"
-JAVA_SRC_DIR="../src"
+JAVA_RESOURCE_DIRS="resources"
+JAVA_SRC_DIR="src"
 
 PATCHES=(
 	"${FILESDIR}/swt-4.27-as-needed-and-flag-fixes.patch"
@@ -67,21 +66,19 @@ src_unpack() {
 }
 
 src_prepare() {
-	default #780585
+	default
 	java-pkg-2_src_prepare
 	# .css stuff is essential at least for running net-p2p/biglybt
-	unzip ../swt.jar 'org/eclipse/swt/internal/gtk/*.css' -d resources || die
+	unzip swt.jar 'org/eclipse/swt/internal/gtk/*.css' -d resources || die
 	java-pkg_clean
-	cd .. || die
-	mkdir resources src || die "mkdir failed"
-	find org -type f -name '*.java' \
-		| xargs \
-		cp --parent -t src -v \
-		|| die "copying resources failed"
-	find org -type f ! -name '*.java' \
-		| xargs \
-		cp --parent -t resources -v \
-		|| die "copying resources failed"
+	mkdir src || die "mkdir failed"
+	mv org src || die "moving java sources failed"
+	pushd src > /dev/null || die
+		find -type f ! -name '*.java' \
+			| xargs \
+			cp --parent -t ../resources -v \
+			|| die "copying resources failed"
+	popd > /dev/null || die
 	cp version.txt resources || die "adding version.txt failed"
 }
 
