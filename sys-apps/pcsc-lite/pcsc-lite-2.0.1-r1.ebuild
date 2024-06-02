@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit python-single-r1 systemd tmpfiles udev multilib-minimal
 
@@ -70,7 +70,7 @@ multilib_src_install_all() {
 		newexe "${FILESDIR}"/pcscd-udev pcscd.sh
 
 		insinto "$(get_udevdir)"/rules.d
-		newins "${FILESDIR}"/99-pcscd-hotplug-r1.rules 99-pcscd-hotplug.rules
+		newins "${FILESDIR}"/99-pcscd-hotplug-r2.rules 99-pcscd-hotplug.rules
 	fi
 
 	python_fix_shebang "${ED}"/usr/bin/pcsc-spy
