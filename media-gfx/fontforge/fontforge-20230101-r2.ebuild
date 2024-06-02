@@ -54,6 +54,7 @@ PATCHES=(
 	"${FILESDIR}"/fontforge-doc-no-warn-error.patch
 	"${FILESDIR}"/${PN}-20230101-workaround-broken-translations.patch
 	"${FILESDIR}"/${PN}-20230101-fix-splinefont-shell-command-injection.patch
+	"${FILESDIR}"/${PN}-20230101-python3.12-distutils-no-more.patch
 )
 
 pkg_setup() {
