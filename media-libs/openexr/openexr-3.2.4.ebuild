@@ -127,6 +127,11 @@ src_configure() {
 src_test() {
 	local CMAKE_SKIP_TESTS=()
 
+	use arm64 && CMAKE_SKIP_TESTS+=(
+		# bug #922247
+		'OpenEXRCore.testDWAACompression'
+		'OpenEXRCore.testDWABCompression'
+	)
 	use x86 && CMAKE_SKIP_TESTS+=(
 		'^OpenEXR.testDwaLookups$'
 	)
