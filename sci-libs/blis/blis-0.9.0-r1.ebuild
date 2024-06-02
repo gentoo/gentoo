@@ -1,10 +1,10 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
-inherit python-any-r1
+PYTHON_COMPAT=( python3_{10..13} )
+inherit python-any-r1 toolchain-funcs
 
 DESCRIPTION="BLAS-like Library Instantiation Software Framework"
 HOMEPAGE="https://github.com/flame/blis"
@@ -13,7 +13,12 @@ SRC_URI="https://github.com/flame/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE="doc eselect-ldso openmp pthread serial static-libs 64bit-index"
+CPU_USE=(
+	cpu_flags_ppc_{vsx,vsx3}
+	cpu_flags_arm_{neon,v7,v8,sve}
+	cpu_flags_x86_{ssse3,avx,fma3,fma4,avx2,avx512vl}
+)
+IUSE="doc eselect-ldso openmp pthread serial static-libs 64bit-index ${CPU_USE[@]}"
 REQUIRED_USE="
 	?? ( openmp pthread serial )
 	?? ( eselect-ldso 64bit-index )"
@@ -25,7 +30,10 @@ DEPEND="
 	)"
 
 RDEPEND="${DEPEND}"
-BDEPEND="${PYTHON_DEPS}"
+BDEPEND="
+	${PYTHON_DEPS}
+	dev-lang/perl
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.6.0-blas-provider.patch
@@ -34,9 +42,31 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.0-rpath.patch
 )
 
+get_confname() {
+	local confname=generic
+	if use x86 || use amd64; then
+		use cpu_flags_x86_ssse3 && confname=penryn
+		use cpu_flags_x86_avx && use cpu_flags_x86_fma3 && confname=sandybridge
+		use cpu_flags_x86_avx && use cpu_flags_x86_fma4 && confname=bulldozer
+		use cpu_flags_x86_avx && use cpu_flags_x86_fma4 && use cpu_flags_x86_fma3 && confname=piledriver
+		use cpu_flags_x86_avx2 && confname=haswell
+		use cpu_flags_x86_avx512vl && confname=skx
+	elif use arm || use arm64; then
+		use arm && confname=arm32
+		use arm64 && confname=arm64
+		use cpu_flags_arm_neon && use cpu_flags_arm_v7 && confname=cortexa9
+		use cpu_flags_arm_v8 && confname=cortexa53
+		use cpu_flags_arm_sve && confname=armsve
+	elif use ppc || use ppc64; then
+		confname=power
+		use cpu_flags_ppc_vsx && confname=power7
+		use cpu_flags_ppc_vsx3 && confname=power9
+	fi
+	echo ${confname}
+}
+
 src_configure() {
 	local BLIS_FLAGS=()
-	local confname
 	# determine flags
 	if use openmp; then
 		BLIS_FLAGS+=( -t openmp )
@@ -46,17 +76,9 @@ src_configure() {
 		BLIS_FLAGS+=( -t no )
 	fi
 	use 64bit-index && BLIS_FLAGS+=( -b 64 -i 64 )
-	# determine config name
-	case "${ARCH}" in
-		"x86" | "amd64")
-			confname=auto ;;
-		"ppc64")
-			confname=generic ;;
-		*)
-			confname=generic ;;
-	esac
+
 	# This is not an autotools configure file. We don't use econf here.
-	./configure \
+	CC="$(tc-getCC)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" ./configure \
 		--enable-verbose-make \
 		--prefix="${BROOT}"/usr \
 		--libdir="${BROOT}"/usr/$(get_libdir) \
@@ -65,7 +87,7 @@ src_configure() {
 		--enable-cblas \
 		"${BLIS_FLAGS[@]}" \
 		--enable-shared \
-		$confname || die
+		$(get_confname) || die
 }
 
 src_compile() {
@@ -75,7 +97,8 @@ src_compile() {
 }
 
 src_test() {
-	LD_LIBRARY_PATH="${S}/lib/haswell" emake check
+	LD_LIBRARY_PATH=lib/$(get_confname) emake testblis-fast
+	./testsuite/check-blistest.sh ./output.testsuite || die
 }
 
 src_install() {
