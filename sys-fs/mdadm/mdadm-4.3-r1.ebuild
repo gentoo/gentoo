@@ -37,6 +37,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}"-4.3-ldflags.patch
 	"${FILESDIR}/${PN}"-4.3-no-udev.patch
 	"${FILESDIR}/${PN}"-4.3-musl125-1.patch
+	"${FILESDIR}/${PN}"-4.3-do-not-call-gcc-directly.patch # 931972
 	"${WORKDIR}/debian/patches/debian/0001-fix-manpages.patch"
 	"${WORKDIR}/debian/patches/debian/0003-host-name-in-default-mailfrom.patch"
 	"${WORKDIR}/debian/patches/debian/0004-exit-gracefully-when-md-device-not-found.patch"
