@@ -199,7 +199,7 @@ src_compile() {
 		# Generates both manpages and HTML documentation.
 		meson_src_compile docs
 	else
-		meson_src_compile man:alias
+		meson_src_compile man
 	fi
 }
 
