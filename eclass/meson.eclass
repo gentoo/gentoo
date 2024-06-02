@@ -440,23 +440,11 @@ meson_src_compile() {
 
 	pushd "${BUILD_DIR}" > /dev/null || die
 
-	local mesoncompileargs=(
-		--jobs "$(get_makeopts_jobs 0)"
-		--load-average "$(get_makeopts_loadavg 0)"
-	)
-
 	case ${MESON_VERBOSE} in
-		OFF) ;;
-		*) mesoncompileargs+=( --verbose ) ;;
+		OFF) NINJA_VERBOSE=OFF eninja "$@" ;;
+		*) eninja "$@" ;;
 	esac
-
-	mesoncompileargs+=( "$@" )
-
-	set -- meson compile "${mesoncompileargs[@]}"
-	echo "$@" >&2
-	"$@"
 	local rv=$?
-	[[ ${rv} -eq 0 ]] || die -n "compile failed"
 
 	popd > /dev/null || die
 	return ${rv}
