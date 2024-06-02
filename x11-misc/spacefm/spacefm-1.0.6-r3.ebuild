@@ -33,7 +33,8 @@ RDEPEND="dev-libs/glib:2
 	x11-misc/shared-mime-info
 	startup-notification? ( x11-libs/startup-notification )
 	video-thumbnails? ( media-video/ffmpegthumbnailer )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
 BDEPEND="dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig"
