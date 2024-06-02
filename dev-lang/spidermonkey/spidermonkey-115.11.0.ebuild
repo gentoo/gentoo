@@ -391,9 +391,8 @@ src_configure() {
 		myeconfargs+=( --disable-real-time-tracing )
 	fi
 
-	if ! use x86 && [[ ${CHOST} != armv*h* ]] ; then
-		myeconfargs+=( --enable-rust-simd )
-	fi
+	# We always end up disabling this at some point due to newer rust versions. bgo#933372
+	myeconfargs+=( --disable-rust-simd )
 
 	# Modifications to better support ARM, bug 717344
 	if use cpu_flags_arm_neon ; then
