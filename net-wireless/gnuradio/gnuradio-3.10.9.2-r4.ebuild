@@ -89,12 +89,12 @@ RDEPEND="${PYTHON_DEPS}
 		dev-qt/qtwidgets:5
 	)
 	soapy? (
-		$(python_gen_cond_dep 'net-wireless/soapysdr:=[${PYTHON_USEDEP}]')
+		net-wireless/soapysdr:=[${PYTHON_SINGLE_USEDEP}]
 	)
 	sdl? ( >=media-libs/libsdl-1.2.0 )
 	trellis? ( dev-python/scipy )
 	uhd? (
-		$(python_gen_cond_dep '>=net-wireless/uhd-3.9.6:=[${PYTHON_SINGLE_USEDEP}]')
+		>=net-wireless/uhd-3.9.6:=[${PYTHON_SINGLE_USEDEP}]
 	)
 	utils? (
 		$(python_gen_cond_dep 'dev-python/click[${PYTHON_USEDEP}]
