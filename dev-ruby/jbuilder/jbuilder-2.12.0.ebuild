@@ -26,6 +26,7 @@ ruby_add_rdepend "
 ruby_add_bdepend "test? (
 	>=dev-ruby/activemodel-5.0.0
 	>=dev-ruby/railties-5.0.0
+	dev-ruby/mocha:2
 )"
 
 all_ruby_prepare() {
