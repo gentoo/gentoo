@@ -37,7 +37,6 @@ IUSE="pipewire +wsi-layer"
 # =gui-libs/wlroots-0.18*[X,libinput(+)]
 
 RDEPEND="
-	=dev-libs/libliftoff-0.5*
 	>=dev-libs/wayland-1.21
 	gui-libs/libdecor
 	>=media-libs/libavif-1.0.0:=
@@ -75,12 +74,16 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	=dev-libs/libliftoff-0.5*
 	>=dev-libs/wayland-protocols-1.34
 	>=dev-libs/stb-20240201-r1
 	dev-util/vulkan-headers
 	media-libs/glm
 	dev-util/spirv-headers
 	wsi-layer? ( >=media-libs/vkroots-0_p20240430 )
+"
+RDEPEND+="
+	dev-libs/libliftoff
 "
 BDEPEND="
 	dev-util/glslang
