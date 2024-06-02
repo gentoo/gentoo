@@ -13,6 +13,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="QEMU Guest Agent (qemu-ga) for use when running inside a VM"
 HOMEPAGE="https://wiki.qemu.org/Features/GuestAgent"
 SRC_URI="http://wiki.qemu.org/download/${MY_P}.tar.xz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2 BSD-2"
 SLOT="0"
@@ -20,11 +21,11 @@ KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86"
 
 RDEPEND="dev-libs/glib"
 DEPEND="${RDEPEND}"
-BDEPEND="${PYTHON_DEPS}
+BDEPEND="
+	${PYTHON_DEPS}
 	dev-lang/perl
-	app-alternatives/ninja"
-
-S="${WORKDIR}/${MY_P}"
+	app-alternatives/ninja
+"
 
 PATCHES=(
 	"${FILESDIR}"/qemu-8.1.0-find-sphinx.patch
