@@ -35,7 +35,7 @@ PATCHES=( "${FILESDIR}"/${P}-Wint-conversion.patch )
 
 check_objc_toolchain() {
 	if tc-is-gcc; then
-		has_version 'sys-devel/gcc[-objc]' &&
+		echo "int main(void) { return 0; }" | $(tc-getCC) -x objective-c - &>/dev/null ||
 			die "GCC requires sys-devel/gcc with USE=objc"
 	elif tc-is-clang; then
 		has_version 'gnustep-base/gnustep-make[-libobjc2]' &&
