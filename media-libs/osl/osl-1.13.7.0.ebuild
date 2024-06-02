@@ -19,7 +19,7 @@ if [[ ${PV} = *9999* ]] ; then
 else
 	# If a development release, please don't keyword!
 	SRC_URI="https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc64"
 	S="${WORKDIR}/OpenShadingLanguage-${PV}"
 fi
 
