@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/921727
+https://github.com/sshock/AFFLIBv3/issues/53
+https://github.com/sshock/AFFLIBv3/commit/01210f488410a23838c54fcc22297cf08ac7de66
+
+From 01210f488410a23838c54fcc22297cf08ac7de66 Mon Sep 17 00:00:00 2001
+From: Phillip Hellewell <sshock@gmail.com>
+Date: Wed, 14 Feb 2024 00:43:56 -0700
+Subject: [PATCH] Fix #53: incompatible pointer types in pyaff.c
+
+--- a/pyaff/afflib.pxd
++++ b/pyaff/afflib.pxd
+@@ -2,7 +2,8 @@ from libc.stdint cimport int64_t, uint32_t, uint64_t
+ from posix.fcntl cimport O_RDONLY
+ 
+ cdef extern from "afflib/afflib.h":
+-    struct AFFILE
++    struct _AFFILE
++    ctypedef _AFFILE AFFILE
+ 
+     enum: AF_MAX_NAME_LEN
+ 
+--- a/pyaff/pyaff.c
++++ b/pyaff/pyaff.c
+@@ -1478,7 +1478,7 @@ struct __pyx_obj_5pyaff_affile;
+  */
+ struct __pyx_obj_5pyaff_affile {
+   PyObject_HEAD
+-  struct AFFILE *af;
++  AFFILE *af;
+   int64_t size;
+ };
+ 
+
