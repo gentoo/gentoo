@@ -27,5 +27,6 @@ RDEPEND="
 	dev-ml/spawn:=
 	dev-ml/stdio:0/0.14.0
 	dev-ml/timezone:0/0.14.0
+	dev-ml/jane-street-headers:0/0.14.0
 "
 DEPEND="${RDEPEND}"
