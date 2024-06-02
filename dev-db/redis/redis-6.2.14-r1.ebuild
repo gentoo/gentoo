@@ -36,9 +36,12 @@ COMMON_DEPEND="
 
 RDEPEND="
 	${COMMON_DEPEND}
+	selinux? ( sec-policy/selinux-redis )
+"
+
+IDEPEND="
 	acct-group/redis
 	acct-user/redis
-	selinux? ( sec-policy/selinux-redis )
 "
 
 BDEPEND="
