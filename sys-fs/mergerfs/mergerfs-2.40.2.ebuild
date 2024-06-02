@@ -18,21 +18,21 @@ IUSE="+xattr"
 DEPEND="
 	xattr? ( sys-apps/attr )
 "
-
 RDEPEND="${DEPEND}"
-
 BDEPEND="sys-devel/gettext"
 
 src_prepare() {
 	default
 
-	# Hand made build system at it's finest.
-	echo -e "#!/bin/sh\ntrue" >tools/update-version || die
-	echo "#pragma once" >src/version.hpp || die
-	echo "static const char MERGERFS_VERSION[] = \"${PV}\";" >>src/version.hpp || die
+	# Hand made build system at its finest.
+	echo -e "#!/bin/sh\ntrue" > buildtools/update-version || die
+	cat <<-EOF > src/version.hpp || die
+	#pragma once
+	static const char MERGERFS_VERSION[] = "${PV}";
+	EOF
 
 	if ! use xattr; then
-		sed 's%USE_XATTR = 1%USE_XATTR = 0%g' -i Makefile || die
+		sed -i -e 's%USE_XATTR = 1%USE_XATTR = 0%g' Makefile || die
 	fi
 }
 
