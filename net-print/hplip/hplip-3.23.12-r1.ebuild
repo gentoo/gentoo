@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10,11} )
 PYTHON_REQ_USE="threads(+),xml(+)"
 
 inherit autotools flag-o-matic linux-info python-single-r1 readme.gentoo-r1 udev
