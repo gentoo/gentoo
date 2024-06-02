@@ -106,10 +106,10 @@ BDEPEND="${PYTHON_DEPS}
 			)
 		)
 	)
-	!clang? ( <virtual/rust-1.78 )
+	!clang? ( virtual/rust )
 	!elibc_glibc? (
 		|| (
-			<dev-lang/rust-1.78
+			dev-lang/rust
 			<dev-lang/rust-bin-1.73
 		)
 	)
