@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE='xml(+)'
 
 inherit distutils-r1
@@ -24,6 +24,10 @@ SRC_URI+=" test? ( https://downloads.sourceforge.net/matroska/test_files/matrosk
 
 LICENSE="MIT"
 SLOT="0"
+
+# The cassettes have bitrotted a bit as of 2024-06-01 but there's
+# a lot of movement upstream on the 'develop' branch towards a new release.
+RESTRICT="test"
 
 BDEPEND="
 	test? (
