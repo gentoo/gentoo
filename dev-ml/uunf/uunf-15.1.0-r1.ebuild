@@ -12,12 +12,12 @@ SRC_URI="https://erratique.ch/software/uunf/releases/${P}.tbz"
 LICENSE="ISC"
 SLOT="0/${PV}"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 DEPEND="
-	dev-ml/topkg:=
-	dev-ml/uutf:=
 	dev-ml/cmdliner:=
+	dev-ml/topkg:=
+	dev-ml/uchar:=
+	dev-ml/uutf:=
 "
 RDEPEND="
 	${DEPEND}
