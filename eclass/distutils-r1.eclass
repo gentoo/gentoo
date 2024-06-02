@@ -566,7 +566,7 @@ distutils_enable_sphinx() {
 }
 
 # @FUNCTION: distutils_enable_tests
-# @USAGE: [--install] <test-runner>
+# @USAGE: <test-runner>
 # @DESCRIPTION:
 # Set up IUSE, RESTRICT, BDEPEND and python_test() for running tests
 # with the specified test runner.  Also copies the current value
@@ -578,10 +578,6 @@ distutils_enable_sphinx() {
 #
 # - unittest: for built-in Python unittest module
 #
-# Additionally, if --install is passed as the first parameter,
-# 'distutils_install_for_testing --via-root' is called before running
-# the test suite.
-#
 # This function is meant as a helper for common use cases, and it only
 # takes care of basic setup.  You still need to list additional test
 # dependencies manually.  If you have uncommon use case, you should
@@ -592,14 +588,9 @@ distutils_enable_sphinx() {
 distutils_enable_tests() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	_DISTUTILS_TEST_INSTALL=
 	case ${1} in
 		--install)
-			if [[ ${DISTUTILS_USE_PEP517} ]]; then
-				die "${FUNCNAME} --install is not implemented in PEP517 mode"
-			fi
-			_DISTUTILS_TEST_INSTALL=1
-			shift
+			die "${FUNCNAME} --install is no longer supported"
 			;;
 	esac
 
@@ -1678,10 +1669,6 @@ distutils-r1_python_test() {
 	fi
 
 	_python_check_EPYTHON
-
-	if [[ ${_DISTUTILS_TEST_INSTALL} ]]; then
-		distutils_install_for_testing
-	fi
 
 	case ${_DISTUTILS_TEST_RUNNER} in
 		pytest)
