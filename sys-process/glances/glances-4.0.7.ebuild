@@ -33,8 +33,8 @@ BDEPEND="doc? ( dev-python/sphinx-rtd-theme )"
 CONFIG_CHECK="~TASK_IO_ACCOUNTING ~TASK_DELAY_ACCT ~TASKSTATS"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.0.6-disable-update-check.patch"
-	"${FILESDIR}/${PN}-4.0.6-doc-install-path.patch"
+	"${FILESDIR}/${PN}-4.0.7-disable-update-check.patch"
+	"${FILESDIR}/${PN}-4.0.7-doc-install-path.patch"
 )
 
 distutils_enable_tests unittest
