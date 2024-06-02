@@ -67,6 +67,10 @@ DEPEND="
 	dev-libs/gobject-introspection
 "
 
+PATCHES=(
+	"${FILESDIR}"/libratbag-0.17-python3.12-imp.patch
+)
+
 src_prepare() {
 	default
 
