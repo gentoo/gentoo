@@ -55,7 +55,7 @@ multilib_src_configure() {
 multilib_src_compile() {
 	meson_src_compile
 	if multilib_is_native_abi && use doc; then
-		meson_src_compile doc
+		meson_src_compile doc/html
 	fi
 }
 
