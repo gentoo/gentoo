@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit distutils-r1
 
 DESCRIPTION="Quickly rewrite git repository history (filter-branch replacement)"
@@ -26,6 +26,14 @@ BDEPEND="
 # the git-archive tarball does not have version info; setuptools-scm
 # requires a valid source of version info, this one is for distros
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
+
+python_prepare_all() {
+	cd .. || die
+	eapply "${FILESDIR}"/git-filter-repo-2.38.0-new-git.patch
+	cd "${S}" || die
+
+	distutils-r1_python_prepare_all
+}
 
 python_test() {
 	cd .. || die
