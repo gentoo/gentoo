@@ -1,4 +1,6 @@
 https://bugs.gentoo.org/929423
+https://github.com/libratbag/libratbag/pull/1569
+https://github.com/libratbag/libratbag/commit/27b0d4a2d9cd21fa9f11a0770d94c578db6324d1
 --- a/tools/toolbox.py
 +++ b/tools/toolbox.py
 @@ -21,7 +21,8 @@
