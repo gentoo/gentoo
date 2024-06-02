@@ -157,7 +157,7 @@ src_configure() {
 	export EXTRA_PYTHON_CFLAGS="${CFLAGS}"
 	export EXTRA_PYTHON_LDFLAGS="${LDFLAGS}"
 
-	# bash as a tepmorary workaround for https://github.com/kdave/btrfs-progs/pull/721
+	# bash as a temporary workaround for https://github.com/kdave/btrfs-progs/pull/721
 	CONFIG_SHELL="${BROOT}"/bin/bash econf "${myeconfargs[@]}"
 }
 
