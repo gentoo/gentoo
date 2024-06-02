@@ -4,7 +4,6 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-
 inherit python-single-r1
 
 MY_COMMIT="80d6c9511da554009415d67e7c0ead1256c1fc41"
@@ -16,7 +15,6 @@ S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 LICENSE="ISC"
 SLOT="0"
-
 KEYWORDS="~amd64 ~riscv ~x86"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -28,6 +26,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="${EPREFIX}"/usr install
+	# Explicit INSTALL= to avoid `which`
+	emake DESTDIR="${D}" PREFIX="${EPREFIX}"/usr INSTALL=install install
 	python_fix_shebang "${ED}"
 }
