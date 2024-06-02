@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# James Le Cuirot <chewi@gentoo.org> (2021-08-20)
+# Requires FFmpeg 7.0, which we don't have yet, so force Chromium fork.
+>=www-client/vivaldi-6.8.3371.4 ffmpeg-chromium
+>=www-client/vivaldi-snapshot-6.8.3371.4 ffmpeg-chromium
+
 # Ionen Wolkens <ionen@gentoo.org> (2024-04-10)
 # Flipping the zstd USE state is unsafe and can break *tons* of Qt revdeps
 # including many KDE packages and Qt itself without rebuilds due to losing
