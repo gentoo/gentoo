@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/933406
+--- a/t/sa_txrep.t
++++ b/t/sa_txrep.t
+@@ -4,7 +4,11 @@ use lib '.'; use lib 't';
+ use SATest; sa_t_init("sa_txrep");
+ 
+ 
+-use Test::More tests => 8;
++use Test::More;
++
++my @dbmods = grep eval "require $_", ('DB_File', 'GDBM_File', 'SDBM_File');
++plan skip_all => "No db module is available" unless @dbmods;
++plan tests => 8;
+ 
+ # ---------------------------------------------------------------------------
+ 
