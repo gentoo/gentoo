@@ -704,123 +704,12 @@ esetup.py() {
 }
 
 # @FUNCTION: distutils_install_for_testing
-# @USAGE: [--via-root|--via-home|--via-venv] [<args>...]
+# @DEPRECATED: DISTUTILS_USE_PEP517=...
 # @DESCRIPTION:
-# Install the package into a temporary location for running tests.
-# Update PYTHONPATH appropriately and set TEST_DIR to the test
-# installation root. The Python packages will be installed in 'lib'
-# subdir, and scripts in 'scripts' subdir (like in BUILD_DIR).
-#
-# Please note that this function should be only used if package uses
-# namespaces (and therefore proper install needs to be done to enforce
-# PYTHONPATH) or tests rely on the results of install command.
-# For most of the packages, tests built in BUILD_DIR are good enough.
-#
-# The function supports three install modes.  These are:
-#
-# --via-root (the default) that uses 'setup.py install --root=...'
-# combined with PYTHONPATH and is recommended for the majority
-# of packages.
-#
-# --via-venv that creates a (non-isolated) venv and installs the package
-# into it via 'setup.py install'.  This mode does not use PYTHONPATH
-# but requires python to be called via PATH.  It may solve a few corner
-# cases that --via-root do not support.
-#
-# --via-home that uses 'setup.py install --home=...'.  This is
-# a historical mode that was mostly broken by setuptools 50.3.0+.
-# If your package does not work with the other two modes but works with
-# this one, please report a bug.
-#
-# Please note that in order to test the solution properly you need
-# to unmerge the package first.
-#
-# This function is not available in PEP517 mode.  The eclass provides
-# a venv-style install unconditionally and therefore it should no longer
-# be necessary.
+# This function used to provide an installed package for running tests.
+# It is no longer implemented, PEP517 mode must be used instead.
 distutils_install_for_testing() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	if [[ ${DISTUTILS_USE_PEP517} ]]; then
-		die "${FUNCNAME} is not implemented in PEP517 mode"
-	fi
-
-	# A few notes about --via-home mode:
-	# 1) 'install --home' is terribly broken on pypy, so we need
-	#    to override --install-lib and --install-scripts,
-	# 2) non-root 'install' complains about PYTHONPATH and missing dirs,
-	#    so we need to set it properly and mkdir them,
-	# 3) it runs a bunch of commands which write random files to cwd,
-	#    in order to avoid that, we add the necessary path overrides
-	#    in _distutils-r1_create_setup_cfg.
-
-	local install_method=root
-	case ${1} in
-		--via-home)
-			[[ ${EAPI} == 7 ]] || die "${*} is banned in EAPI ${EAPI}"
-			install_method=home
-			shift
-			;;
-		--via-root)
-			install_method=root
-			shift
-			;;
-		--via-venv)
-			install_method=venv
-			shift
-			;;
-	esac
-
-	TEST_DIR=${BUILD_DIR}/test
-	local add_args=()
-
-	if [[ ${install_method} == venv ]]; then
-		# create a quasi-venv
-		mkdir -p "${TEST_DIR}"/bin || die
-		ln -s "${PYTHON}" "${TEST_DIR}/bin/${EPYTHON}" || die
-		ln -s "${EPYTHON}" "${TEST_DIR}/bin/python3" || die
-		ln -s "${EPYTHON}" "${TEST_DIR}/bin/python" || die
-		cat > "${TEST_DIR}"/pyvenv.cfg <<-EOF || die
-			include-system-site-packages = true
-		EOF
-
-		# we only do the minimal necessary subset of activate script
-		PATH=${TEST_DIR}/bin:${PATH}
-		# unset PYTHONPATH in order to prevent BUILD_DIR from overriding
-		# venv packages
-		unset PYTHONPATH
-
-		# force root-style install (note: venv adds TEST_DIR to prefixes,
-		# so we need to pass --root=/)
-		add_args=(
-			--root=/
-		)
-	else
-		local bindir=${TEST_DIR}/scripts
-		local libdir=${TEST_DIR}/lib
-		PATH=${bindir}:${PATH}
-		PYTHONPATH=${libdir}:${PYTHONPATH}
-
-		case ${install_method} in
-			home)
-				add_args=(
-					--home="${TEST_DIR}"
-					--install-lib="${libdir}"
-					--install-scripts="${bindir}"
-				)
-				mkdir -p "${libdir}" || die
-				;;
-			root)
-				add_args=(
-					--root="${TEST_DIR}"
-					--install-lib=lib
-					--install-scripts=scripts
-				)
-				;;
-		esac
-	fi
-
-	esetup.py install "${add_args[@]}" "${@}"
+	die "${FUNCNAME} has been removed, please use PEP517 mode instead"
 }
 
 # @FUNCTION: distutils_write_namespace
@@ -1859,9 +1748,7 @@ distutils-r1_run_phase() {
 	else
 		local -x PYTHONPATH="${BUILD_DIR}/lib:${PYTHONPATH}"
 
-		# make PATH local for distutils_install_for_testing calls
-		# it makes little sense to let user modify PATH in per-impl phases
-		# and _all() already localizes it
+		# make PATH local (for historical reasons)
 		local -x PATH=${PATH}
 
 		if _python_impl_matches "${EPYTHON}" 3.{9..11}; then
