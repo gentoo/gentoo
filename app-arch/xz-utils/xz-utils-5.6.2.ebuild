@@ -116,10 +116,14 @@ multilib_src_compile() {
 	if use pgo ; then
 		emake CFLAGS="${CFLAGS} ${pgo_generate_flags}" -k check
 
-		local tar_pgo_args=(
-			--mtime=@2718281828
-		)
-		has_version -b "app-alternatives/tar[gnu]" && tar_pgo_args+=( --sort=name )
+		local tar_pgo_args=()
+
+		if has_version -b "app-alternatives/tar[gnu]" ; then
+			tar_pgo_args+=(
+				--mtime=@2718281828
+				--sort=name
+			)
+		fi
 
 		if multilib_is_native_abi ; then
 			(
