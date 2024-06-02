@@ -1,0 +1,12 @@
+--- hashtables-1.3.1-orig/cbits/sse-42.c	2001-09-09 11:46:40.000000000 +1000
++++ hashtables-1.3.1/cbits/sse-42.c	2024-06-01 12:50:27.039285052 +1000
+@@ -49,8 +49,7 @@
+ #define _MODE (SIDD_UWORD_OPS | SIDD_CMP_EQUAL_EACH)
+ 
+ static inline __m128i cmp_mask(__m128i a, __m128i b) {
+-    const int mode = SIDD_UWORD_OPS | SIDD_CMP_EQUAL_EACH | SIDD_BIT_MASK;
+-    return _mm_cmpistrm(a, b, mode);
++    return _mm_cmpistrm(a, b, SIDD_UWORD_OPS | SIDD_CMP_EQUAL_EACH | SIDD_BIT_MASK);
+ }
+ 
+ static inline int32_t line_result(uint32_t m, int start) {
