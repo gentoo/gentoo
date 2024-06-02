@@ -36,10 +36,8 @@ NTPSEC_REFCLOCK=(
 	shm pps hpgps zyfer arbiter nmea modem local
 )
 
-IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/rclock_}
-
-IUSE="${IUSE_NTPSEC_REFCLOCK} debug doc early heat libbsd nist ntpviz samba seccomp smear" #ionice
-REQUIRED_USE="${PYTHON_REQUIRED_USE} nist? ( rclock_local )"
+IUSE="${NTPSEC_REFCLOCK[@]} debug doc early heat libbsd nist ntpviz samba seccomp smear" #ionice
+REQUIRED_USE="${PYTHON_REQUIRED_USE} nist? ( local )"
 
 # net-misc/pps-tools oncore,pps
 DEPEND="
@@ -49,8 +47,8 @@ DEPEND="
 	sys-libs/libcap
 	libbsd? ( dev-libs/libbsd:0= )
 	seccomp? ( sys-libs/libseccomp )
-	rclock_oncore? ( net-misc/pps-tools )
-	rclock_pps? ( net-misc/pps-tools )
+	oncore? ( net-misc/pps-tools )
+	pps? ( net-misc/pps-tools )
 "
 RDEPEND="
 	${DEPEND}
@@ -99,7 +97,7 @@ src_configure() {
 	local CLOCKSTRING=""
 
 	for refclock in ${NTPSEC_REFCLOCK[@]} ; do
-		if use rclock_${refclock} ; then
+		if use ${refclock} ; then
 			string_127+="$refclock,"
 		fi
 	done
