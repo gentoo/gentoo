@@ -33,7 +33,7 @@ IUSE_GPSD_PROTOCOLS=${GPSD_PROTOCOLS[@]/#/+gpsd_protocols_}
 IUSE="${IUSE_GPSD_PROTOCOLS} bluetooth +cxx dbus debug ipv6 latency-timing ncurses ntp qt5 selinux +shm static systemd test udev usb X"
 REQUIRED_USE="
 	gpsd_protocols_nmea2000? ( gpsd_protocols_aivdm )
-	 ${PYTHON_REQUIRED_USE}
+	${PYTHON_REQUIRED_USE}
 	qt5? ( cxx )
 "
 RESTRICT="!test? ( test )"
@@ -135,10 +135,12 @@ python_prepare_all() {
 		-e "s|@SUPPORT@|https://gpsd.io/SUPPORT.html|" \
 		-e "s|@WEBSITE@|https://gpsd.io/|" \
 		"${S}"/packaging/gpsd-setup.py.in > setup.py || die
+
 	if [[ "${PV}" == *9999* ]]; then
 		# Distutils doesn't like the tilde
-		sed -i s/~dev/-dev/ setup.py
+		sed -i s/~dev/-dev/ setup.py || die
 	fi
+
 	distutils-r1_python_prepare_all
 }
 
