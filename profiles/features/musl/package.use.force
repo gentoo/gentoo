@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2024-06-03)
+# Poor rendering performance otherwise (bug #931215) but it doesn't
+# work on musl.
+kde-plasma/kwin -caps
+
 # Violet Purcell <vimproved@inventati.org> (2023-04-25)
 # SBCL Upstream does not provide musl binaries for bootstrap, use CLisp.
 dev-lisp/sbcl system-bootstrap
