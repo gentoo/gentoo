@@ -61,6 +61,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# TODO: Review https://github.com/bit-team/backintime/blob/dev/CONTRIBUTING.md#dependencies
+	# for deps (some may be optfeatures).
 	pushd common > /dev/null || die
 	# Not autotools
 	./configure --python="${PYTHON}" --no-fuse-group || die
