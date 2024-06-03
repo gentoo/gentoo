@@ -37,7 +37,6 @@ IUSE="alsa debug doc dtrace headless java lvm +opus pam pax-kernel pch pulseaudi
 unset WATCOM #856769
 
 COMMON_DEPEND="
-	${PYTHON_DEPS}
 	acct-group/vboxusers
 	~app-emulation/virtualbox-modules-${PV}
 	>=dev-libs/libxslt-1.1.19
@@ -73,6 +72,7 @@ COMMON_DEPEND="
 	virtual/libcrypt:=
 	lvm? ( sys-fs/lvm2 )
 	opus? ( media-libs/opus )
+	python? ( ${PYTHON_DEPS} )
 	udev? ( >=virtual/udev-171 )
 	vboxwebsrv? ( net-libs/gsoap[-gnutls(-)] )
 	vnc? ( >=net-libs/libvncserver-0.9.9 )
@@ -101,7 +101,6 @@ DEPEND="
 	pulseaudio? ( media-libs/libpulse )
 "
 BDEPEND="
-	${PYTHON_DEPS}
 	>=app-arch/tar-1.34-r2
 	>=dev-build/kbuild-0.1.9998.3127
 	<=dev-build/kbuild-0.1.9998.3500
@@ -122,6 +121,7 @@ BDEPEND="
 		dev-texlive/texlive-fontsextra
 	)
 	java? ( virtual/jdk:1.8 )
+	python? ( ${PYTHON_DEPS} )
 	qt5? ( dev-qt/linguist-tools:5 )
 "
 RDEPEND="
@@ -161,9 +161,8 @@ QA_PRESTRIPPED="
 
 REQUIRED_USE="
 	java? ( sdk )
-	python? ( sdk )
+	python? ( sdk ${PYTHON_REQUIRED_USE} )
 	vboxwebsrv? ( java )
-	${PYTHON_REQUIRED_USE}
 "
 
 PATCHES=(
@@ -199,10 +198,6 @@ pkg_pretend() {
 		einfo "No USE=\"opengl\" selected, this build will lack"
 		einfo "the OpenGL feature."
 	fi
-	if ! use python ; then
-		einfo "You have disabled the \"python\" USE flag. This will only"
-		einfo "disable the python bindings being installed."
-	fi
 
 	# 749273
 	local d=${ROOT}
@@ -216,7 +211,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	java-pkg-opt-2_pkg_setup
-	python-single-r1_pkg_setup
+	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -350,13 +345,13 @@ src_configure() {
 		-e '/VBOX_LIB_PYTHON.*=/d' \
 		AutoConfig.kmk || die
 
-	cat >> AutoConfig.kmk <<-EOF || die
-		VBOX_WITH_PYTHON=$(usev python 1)
-		VBOX_PATH_PYTHON_INC=$(python_get_includedir)
-		VBOX_LIB_PYTHON=$(python_get_library_path)
-	EOF
-
 	if use python ; then
+		cat >> AutoConfig.kmk <<-EOF || die
+			VBOX_WITH_PYTHON=1
+			VBOX_PATH_PYTHON_INC=$(python_get_includedir)
+			VBOX_LIB_PYTHON=$(python_get_library_path)
+		EOF
+
 		local mangled_python="${EPYTHON#python}"
 		mangled_python="${mangled_python/.}"
 
@@ -373,6 +368,10 @@ src_configure() {
 		EOF
 
 		chmod +x src/libs/xpcom18a4/python/gen_python_deps.py || die
+	else
+		cat >> AutoConfig.kmk <<-EOF || die
+			VBOX_WITH_PYTHON:=
+		EOF
 	fi
 }
 
