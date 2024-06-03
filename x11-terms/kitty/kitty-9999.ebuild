@@ -188,5 +188,6 @@ pkg_postinst() {
 	xdg_pkg_postinst
 
 	optfeature "audio-based terminal bell support" media-libs/libcanberra
+	use X && optfeature "X11 startup notification support" x11-libs/startup-notification
 	optfeature "opening links from the terminal" x11-misc/xdg-utils
 }
