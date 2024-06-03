@@ -1,0 +1,148 @@
+From ac9a88c2c59a2d2002a7740a1597a05c819220e0 Mon Sep 17 00:00:00 2001
+From: wmayer <wmayer@users.sourceforge.net>
+Date: Sat, 20 Apr 2024 14:02:38 +0200
+Subject: [PATCH] PySide6: Fixes #13533: QSvgWidget is not a child of QtSvg in
+ PySide6
+
+* Create a compatibility module QtSvgWidgets.py to handle PySide2 & PySide6
+* In the Arch and Material modules use the QtSvgWidgets module
+* Since Qt6 the method QFont.setWeight() doesn't accept an int any more but requires an enum. Since the call of QFont.setBold(True) sets
+  a weight of 75 the extra calls of QFont.setWeight(75) can be safely removed
+---
+ cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake | 3 +++
+ src/Mod/Arch/ArchPrecast.py                        | 8 ++++----
+ src/Mod/Arch/ArchWindow.py                         | 4 ++--
+ src/Mod/Arch/importIFClegacy.py                    | 1 -
+ src/Mod/Draft/DraftGui.py                          | 1 -
+ src/Mod/Material/MaterialEditor.py                 | 6 +++---
+ 6 files changed, 12 insertions(+), 11 deletions(-)
+
+diff --git a/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake b/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake
+index 0569c1fde9f2..fa872e287b59 100644
+--- a/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake
++++ b/cMake/FreeCAD_Helpers/SetupShibokenAndPyside.cmake
+@@ -91,9 +91,12 @@ macro(SetupShibokenAndPyside)
+         file(WRITE ${CMAKE_BINARY_DIR}/Ext/PySide/QtWidgets.py  "from PySide${PYSIDE_MAJOR_VERSION}.QtWidgets import *\n")
+         if(PYSIDE_MAJOR_VERSION LESS 6)
+             file(WRITE ${CMAKE_BINARY_DIR}/Ext/PySide/QtWebEngineWidgets.py  "from PySide${PYSIDE_MAJOR_VERSION}.QtWebEngineWidgets import *\n")
++            file(WRITE ${CMAKE_BINARY_DIR}/Ext/PySide/QtSvgWidgets.py  "from PySide${PYSIDE_MAJOR_VERSION}.QtSvg import QGraphicsSvgItem\n"
++                                                                       "from PySide${PYSIDE_MAJOR_VERSION}.QtSvg import QSvgWidget\n")
+         else()
+             file(WRITE ${CMAKE_BINARY_DIR}/Ext/PySide/QtWebEngineWidgets.py  "from PySide${PYSIDE_MAJOR_VERSION}.QtWebEngineWidgets import *\n"
+                                                                              "from PySide${PYSIDE_MAJOR_VERSION}.QtWebEngineCore import QWebEnginePage\n")
++            file(WRITE ${CMAKE_BINARY_DIR}/Ext/PySide/QtSvgWidgets.py  "from PySide${PYSIDE_MAJOR_VERSION}.QtSvgWidgets import *\n")
+         endif()
+     endif()
+ 
+diff --git a/src/Mod/Arch/ArchPrecast.py b/src/Mod/Arch/ArchPrecast.py
+index 7bb929b10e34..2f482902c1ce 100644
+--- a/src/Mod/Arch/ArchPrecast.py
++++ b/src/Mod/Arch/ArchPrecast.py
+@@ -777,14 +777,14 @@ class _PrecastTaskPanel:
+     def __init__(self):
+ 
+         import FreeCADGui
+-        from PySide import QtCore,QtGui,QtSvg
++        from PySide import QtCore,QtGui,QtSvgWidgets
+         self.form = QtGui.QWidget()
+         self.grid = QtGui.QGridLayout(self.form)
+         self.PrecastTypes = ["Beam","I-Beam","Pillar","Panel","Slab","Stairs"]
+         self.SlabTypes = ["Champagne","Hat"]
+ 
+         # image display
+-        self.preview = QtSvg.QSvgWidget(":/ui/ParametersBeam.svg")
++        self.preview = QtSvgWidgets.QSvgWidget(":/ui/ParametersBeam.svg")
+         self.preview.setMaximumWidth(200)
+         self.preview.setMinimumHeight(120)
+         self.grid.addWidget(self.preview,0,0,1,2)
+@@ -1263,7 +1263,7 @@ class _DentsTaskPanel:
+     def __init__(self):
+ 
+         import FreeCADGui
+-        from PySide import QtCore,QtGui,QtSvg
++        from PySide import QtCore,QtGui,QtSvgWidgets
+         self.form = QtGui.QWidget()
+         self.grid = QtGui.QGridLayout(self.form)
+         self.Rotations = ["N","S","E","O"]
+@@ -1282,7 +1282,7 @@ def __init__(self):
+         self.grid.addWidget(self.buttonRemove,2,1,1,1)
+ 
+         # image display
+-        self.preview = QtSvg.QSvgWidget(":/ui/ParametersDent.svg")
++        self.preview = QtSvgWidgets.QSvgWidget(":/ui/ParametersDent.svg")
+         self.preview.setMaximumWidth(200)
+         self.preview.setMinimumHeight(120)
+         self.grid.addWidget(self.preview,3,0,1,2)
+diff --git a/src/Mod/Arch/ArchWindow.py b/src/Mod/Arch/ArchWindow.py
+index f3c11c5e9c7a..dc9c84f9a8bf 100644
+--- a/src/Mod/Arch/ArchWindow.py
++++ b/src/Mod/Arch/ArchWindow.py
+@@ -34,7 +34,7 @@
+ 
+ if FreeCAD.GuiUp:
+     import FreeCADGui
+-    from PySide import QtCore, QtGui, QtSvg
++    from PySide import QtCore, QtGui, QtSvgWidgets
+     from draftutils.translate import translate
+     from PySide.QtCore import QT_TRANSLATE_NOOP
+     import draftguitools.gui_trackers as DraftTrackers
+@@ -426,7 +426,7 @@ def taskbox(self):
+         self.pic.hide()
+ 
+         # SVG display
+-        self.im = QtSvg.QSvgWidget(":/ui/ParametersWindowFixed.svg")
++        self.im = QtSvgWidgets.QSvgWidget(":/ui/ParametersWindowFixed.svg")
+         self.im.setMaximumWidth(200)
+         self.im.setMinimumHeight(120)
+         grid.addWidget(self.im,4,0,1,2)
+diff --git a/src/Mod/Arch/importIFClegacy.py b/src/Mod/Arch/importIFClegacy.py
+index 037e889ce5b9..256b29056b33 100644
+--- a/src/Mod/Arch/importIFClegacy.py
++++ b/src/Mod/Arch/importIFClegacy.py
+@@ -1795,7 +1795,6 @@ def explorer(filename,schema="IFC2X3_TC1.exp"):
+     tree.headerItem().setText(1, "")
+     tree.headerItem().setText(2, "Item and Properties")
+     bold = QtGui.QFont()
+-    bold.setWeight(75)
+     bold.setBold(True)
+ 
+     #print(ifc.Entities)
+diff --git a/src/Mod/Draft/DraftGui.py b/src/Mod/Draft/DraftGui.py
+index c6e8584f4a71..2471bb66c61a 100644
+--- a/src/Mod/Draft/DraftGui.py
++++ b/src/Mod/Draft/DraftGui.py
+@@ -312,7 +312,6 @@ def setupToolBar(self,task=False):
+         self.promptlabel = self._label("promptlabel", self.layout, hide=task)
+         self.cmdlabel = self._label("cmdlabel", self.layout, hide=task)
+         boldtxt = QtGui.QFont()
+-        boldtxt.setWeight(75)
+         boldtxt.setBold(True)
+         self.cmdlabel.setFont(boldtxt)
+ 
+diff --git a/src/Mod/Material/MaterialEditor.py b/src/Mod/Material/MaterialEditor.py
+index cbcbde924609..28dbe83bc026 100644
+--- a/src/Mod/Material/MaterialEditor.py
++++ b/src/Mod/Material/MaterialEditor.py
+@@ -27,7 +27,7 @@
+ import os
+ from pathlib import PurePath
+ import sys
+-from PySide import QtCore, QtGui, QtSvg
++from PySide import QtCore, QtGui, QtSvgWidgets
+ 
+ import FreeCAD
+ import FreeCADGui
+@@ -92,11 +92,11 @@ def __init__(self, obj=None, prop=None, material=None, card_path="", category="S
+         treeView = widget.treeView
+ 
+         # create preview svg slots
+-        self.widget.PreviewRender = QtSvg.QSvgWidget(self.iconPath + "preview-rendered.svg")
++        self.widget.PreviewRender = QtSvgWidgets.QSvgWidget(self.iconPath + "preview-rendered.svg")
+         self.widget.PreviewRender.setMaximumWidth(64)
+         self.widget.PreviewRender.setMinimumHeight(64)
+         self.widget.topLayout.addWidget(self.widget.PreviewRender)
+-        self.widget.PreviewVector = QtSvg.QSvgWidget(self.iconPath + "preview-vector.svg")
++        self.widget.PreviewVector = QtSvgWidgets.QSvgWidget(self.iconPath + "preview-vector.svg")
+         self.widget.PreviewVector.setMaximumWidth(64)
+         self.widget.PreviewVector.setMinimumHeight(64)
+         self.widget.topLayout.addWidget(self.widget.PreviewVector)

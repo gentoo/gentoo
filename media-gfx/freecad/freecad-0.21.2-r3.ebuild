@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit check-reqs cmake flag-o-matic optfeature python-single-r1 qmake-utils xdg
 
@@ -93,8 +93,8 @@ RDEPEND="
 			$(python_gen_cond_dep '
 				dev-python/matplotlib[${PYTHON_USEDEP}]
 				>=dev-python/pivy-0.6.5[${PYTHON_USEDEP}]
-				dev-python/pyside2[gui,svg,webchannel,webengine,${PYTHON_USEDEP}]
-				dev-python/shiboken2[${PYTHON_USEDEP}]
+				dev-python/pyside2:=[gui,svg,webchannel,webengine,${PYTHON_USEDEP}]
+				dev-python/shiboken2:=[${PYTHON_USEDEP}]
 			' python3_{10..11} )
 		)
 		qt6? (
@@ -109,8 +109,8 @@ RDEPEND="
 			$(python_gen_cond_dep '
 				dev-python/matplotlib[${PYTHON_USEDEP}]
 				>=dev-python/pivy-0.6.5[${PYTHON_USEDEP}]
-				dev-python/pyside6[gui,svg,webchannel,webengine,${PYTHON_USEDEP}]
-				dev-python/shiboken6[${PYTHON_USEDEP}]
+				dev-python/pyside6:=[gui,svg,webchannel,webengine,${PYTHON_USEDEP}]
+				dev-python/shiboken6:=[${PYTHON_USEDEP}]
 			' )
 		)
 	)
@@ -159,7 +159,9 @@ REQUIRED_USE="
 	designer? ( gui )
 	inspection? ( points )
 	path? ( robot )
+	python_single_target_python3_12? ( gui? ( qt6 ) )
 "
+# There is no py3.12 support planned for pyside2
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.21.0-0001-Gentoo-specific-disable-ccache-usage.patch
@@ -189,6 +191,12 @@ src_prepare() {
 	if has_version ">=dev-python/shiboken6-6.7.0"; then
 		# https://bugs.gentoo.org/929973
 		eapply "${FILESDIR}/${PN}-0.21.2-shiboken-6.7.0.patch"
+	fi
+
+	if use qt6; then
+		eapply "${FILESDIR}/${PN}-0.21.2-navcube-qt6.patch"
+		eapply "${FILESDIR}/${PN}-0.21.2-qtsvg-qt6.patch"
+		eapply "${FILESDIR}/${PN}-0.21.2-py312-qt6.patch"
 	fi
 
 	cmake_src_prepare

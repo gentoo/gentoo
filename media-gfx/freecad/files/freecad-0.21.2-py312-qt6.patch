@@ -1,0 +1,186 @@
+From 6043c90462e85fbf15e30ea4c7da7d9a22d570f2 Mon Sep 17 00:00:00 2001
+From: wmayer <wmayer@users.sourceforge.net>
+Date: Wed, 7 Feb 2024 15:25:13 +0100
+Subject: [PATCH] Py3.12: harmonize with upstream of PyCXX
+
+---
+ src/CXX/IndirectPythonInterface.cxx         | 36 +++++++++++++++------
+ src/CXX/Python3/IndirectPythonInterface.hxx |  6 ++--
+ src/CXX/Python3/cxx_extensions.cxx          |  2 +-
+ src/CXX/Python3/cxxextensions.c             | 10 ++++++
+ src/CXX/Version.hxx                         |  2 +-
+ 5 files changed, 42 insertions(+), 14 deletions(-)
+
+diff --git a/src/CXX/IndirectPythonInterface.cxx b/src/CXX/IndirectPythonInterface.cxx
+index 3d810cea88a5..fc9e45cbd64f 100644
+--- a/src/CXX/IndirectPythonInterface.cxx
++++ b/src/CXX/IndirectPythonInterface.cxx
+@@ -122,17 +122,21 @@ static PyTypeObject *ptr__Bytes_Type = NULL;
+ #  endif
+ 
+ #  if PY_MAJOR_VERSION == 2 || !defined( Py_LIMITED_API )
++#    if PY_MAJOR_VERSION == 2 || (PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION <= 11)
+ static int *ptr_Py_DebugFlag = NULL;
+ static int *ptr_Py_InteractiveFlag = NULL;
+ static int *ptr_Py_OptimizeFlag = NULL;
+ static int *ptr_Py_NoSiteFlag = NULL;
+ static int *ptr_Py_VerboseFlag = NULL;
++#    endif
+ 
+-#   if PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION >= 7
++#    if PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION <= 11
++#      if PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION >= 7
+ static const char **ptr__Py_PackageContext = NULL;
+-#   else
++#      else
+ static char **ptr__Py_PackageContext = NULL;
+-#   endif
++#      endif
++#    endif
+ #  endif
+ 
+ #  ifdef Py_REF_DEBUG
+@@ -242,17 +246,21 @@ bool InitialisePythonIndirectInterface()
+     ptr_Py_RefTotal             = GetInt_as_IntPointer( "_Py_RefTotal" );
+ #  endif
+ #  if PY_MAJOR_VERSION == 2 || !defined( Py_LIMITED_API )
++#    if PY_MAJOR_VERSION == 2 || (PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION <= 11)
+     ptr_Py_DebugFlag            = GetInt_as_IntPointer( "Py_DebugFlag" );
+     ptr_Py_InteractiveFlag      = GetInt_as_IntPointer( "Py_InteractiveFlag" );
+     ptr_Py_OptimizeFlag         = GetInt_as_IntPointer( "Py_OptimizeFlag" );
+     ptr_Py_NoSiteFlag           = GetInt_as_IntPointer( "Py_NoSiteFlag" );
+     ptr_Py_VerboseFlag          = GetInt_as_IntPointer( "Py_VerboseFlag" );
++#    endif
+ 
+-#    if PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION >= 7
++#    if PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION <= 11
++#       if PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION >= 7
+     ptr__Py_PackageContext      = GetConstCharPointer_as_ConstCharPointerPointer( "_Py_PackageContext" );
+-#    else
++#       else
+     ptr__Py_PackageContext      = GetCharPointer_as_CharPointerPointer( "_Py_PackageContext" );
+-#    endif
++#       endif
++#     endif
+ #  endif
+ 
+ #  define PYCXX_STANDARD_EXCEPTION( eclass, bclass )
+@@ -397,17 +405,21 @@ PYCXX_EXPORT PyTypeObject *_Bytes_Type()             { return ptr__Bytes_Type; }
+ //    wrap the Python Flag variables
+ //
+ #  if PY_MAJOR_VERSION == 2 || !defined( Py_LIMITED_API )
++#    if PY_MAJOR_VERSION == 2 || (PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION <= 11)
+ PYCXX_EXPORT int &_Py_DebugFlag()                    { return *ptr_Py_DebugFlag; }
+ PYCXX_EXPORT int &_Py_InteractiveFlag()              { return *ptr_Py_InteractiveFlag; }
+ PYCXX_EXPORT int &_Py_OptimizeFlag()                 { return *ptr_Py_OptimizeFlag; }
+ PYCXX_EXPORT int &_Py_NoSiteFlag()                   { return *ptr_Py_NoSiteFlag; }
+ PYCXX_EXPORT int &_Py_VerboseFlag()                  { return *ptr_Py_VerboseFlag; }
++#    endif
+ #  endif
+ 
+-#  if PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION >= 7
++#  if PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION <= 11
++#    if PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION >= 7
+ PYCXX_EXPORT const char *__Py_PackageContext()       { return *ptr__Py_PackageContext; }
+-#  else
++#    else
+ PYCXX_EXPORT char *__Py_PackageContext()             { return *ptr__Py_PackageContext; }
++#    endif
+ #  endif
+ 
+ #  if 0
+@@ -518,15 +530,19 @@ PYCXX_EXPORT PyTypeObject *_Bytes_Type()             { return &PyBytes_Type; }
+ //    wrap flags
+ //
+ # if PY_MAJOR_VERSION == 2 || !defined( Py_LIMITED_API )
++#    if PY_MAJOR_VERSION == 2 || (PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION <= 11)
+ PYCXX_EXPORT int &_Py_DebugFlag()                    { return Py_DebugFlag; }
+ PYCXX_EXPORT int &_Py_InteractiveFlag()              { return Py_InteractiveFlag; }
+ PYCXX_EXPORT int &_Py_OptimizeFlag()                 { return Py_OptimizeFlag; }
+ PYCXX_EXPORT int &_Py_NoSiteFlag()                   { return Py_NoSiteFlag; }
+ PYCXX_EXPORT int &_Py_VerboseFlag()                  { return Py_VerboseFlag; }
+-#  if PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION >= 7
++#    endif
++#  if PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION <= 11
++#   if PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION >= 7
+ PYCXX_EXPORT const char *__Py_PackageContext()       { return _Py_PackageContext; }
+-#  else
++#   else
+ PYCXX_EXPORT char *__Py_PackageContext()             { return _Py_PackageContext; }
++#   endif
+ #  endif
+ # endif
+ 
+diff --git a/src/CXX/Python3/IndirectPythonInterface.hxx b/src/CXX/Python3/IndirectPythonInterface.hxx
+index bf2c15c53f9a..eb4ae4fe63b9 100644
+--- a/src/CXX/Python3/IndirectPythonInterface.hxx
++++ b/src/CXX/Python3/IndirectPythonInterface.hxx
+@@ -149,10 +149,12 @@ PYCXX_EXPORT int &_Py_NoSiteFlag();
+ PYCXX_EXPORT int &_Py_TabcheckFlag();
+ PYCXX_EXPORT int &_Py_VerboseFlag();
+ 
+-#  if PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION >= 7
++# if PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION <= 11
++#   if PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION >= 7
+ PYCXX_EXPORT const char *__Py_PackageContext();
+-#  else
++#   else
+ PYCXX_EXPORT char *__Py_PackageContext();
++#   endif
+ #  endif
+ # endif
+ 
+diff --git a/src/CXX/Python3/cxx_extensions.cxx b/src/CXX/Python3/cxx_extensions.cxx
+index 7371810be4a9..e6eefdafea17 100644
+--- a/src/CXX/Python3/cxx_extensions.cxx
++++ b/src/CXX/Python3/cxx_extensions.cxx
+@@ -152,7 +152,7 @@ PyMethodDef *MethodTable::table()
+ //================================================================================
+ ExtensionModuleBase::ExtensionModuleBase( const char *name )
+ : m_module_name( name )
+-#if defined( Py_LIMITED_API )
++#if defined( Py_LIMITED_API ) || (PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION >= 12)
+ , m_full_module_name( m_module_name )
+ #else
+ , m_full_module_name( __Py_PackageContext() != NULL ? std::string( __Py_PackageContext() ) : m_module_name )
+diff --git a/src/CXX/Python3/cxxextensions.c b/src/CXX/Python3/cxxextensions.c
+index 3b0f8ef7c588..afb9313ad0a8 100644
+--- a/src/CXX/Python3/cxxextensions.c
++++ b/src/CXX/Python3/cxxextensions.c
+@@ -42,6 +42,14 @@ extern "C"
+ {
+ #endif
+ 
++#if PY_MAJOR_VERSION == 3 && PY_MINOR_VERSION >= 13
++PyObject py_object_initializer =
++    {
++    { 1 },
++    NULL    // type must be init'ed by user
++    };
++
++#else
+ PyObject py_object_initializer =
+     {
+     _PyObject_EXTRA_INIT
+@@ -49,6 +57,8 @@ PyObject py_object_initializer =
+     NULL    // type must be init'ed by user
+     };
+ 
++#endif
++
+ #ifdef __cplusplus
+ }
+ #endif
+diff --git a/src/CXX/Version.hxx b/src/CXX/Version.hxx
+index e6069aad335e..59fe3c203b86 100644
+--- a/src/CXX/Version.hxx
++++ b/src/CXX/Version.hxx
+@@ -40,7 +40,7 @@
+ 
+ #define PYCXX_VERSION_MAJOR 7
+ #define PYCXX_VERSION_MINOR 1
+-#define PYCXX_VERSION_PATCH 7
++#define PYCXX_VERSION_PATCH 9
+ #define PYCXX_MAKEVERSION( major, minor, patch ) ((major<<16)|(minor<<8)|(patch))
+ #define PYCXX_VERSION PYCXX_MAKEVERSION( PYCXX_VERSION_MAJOR, PYCXX_VERSION_MINOR, PYCXX_VERSION_PATCH )
+ #endif
