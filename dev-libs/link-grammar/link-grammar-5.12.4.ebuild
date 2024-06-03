@@ -29,6 +29,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-lang/swig:0
 	dev-build/autoconf-archive
+	sys-devel/flex
 	virtual/pkgconfig"
 
 QA_CONFIG_IMPL_DECL_SKIP=(
@@ -61,6 +62,8 @@ my_src_configure() {
 		$(use_enable aspell)
 		$(use_enable hunspell)
 		$(usev hunspell --with-hunspell-dictdir="${EPREFIX}"/usr/share/myspell)
+		# requires flex, since reflex support is flaky, #890158
+		LEX="flex"
 	)
 
 	econf \
