@@ -43,7 +43,10 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}/${PN}-1.94.1-test-timeout.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-1.94.1-test-timeout.patch"
+	"${FILESDIR}/${PN}-1.94.7-skip-test-dep.patch"
+)
 
 S="${WORKDIR}/${MY_P}"
 
