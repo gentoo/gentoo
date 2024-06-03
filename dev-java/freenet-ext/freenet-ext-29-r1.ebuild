@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,10 @@ DEPEND="
 	dev-libs/gmp:0=
 	>=virtual/jdk-1.8:*
 "
-RDEPEND=">=virtual/jre-1.8:*"
+RDEPEND="
+	dev-libs/gmp
+	>=virtual/jre-1.8:*
+"
 
 PATCHES=(
 	"${FILESDIR}/freenet-ext-29-convert-jcpuid.patch"
