@@ -140,6 +140,7 @@ src_configure() {
 
 		--enable-lzo
 		--disable-experimental
+		--disable-python
 		$(use_enable convert)
 		$(use_enable man documentation)
 		$(use_enable elibc_glibc backtrace)
