@@ -66,6 +66,8 @@ PATCHES=(
 	# Fix bad systemd include
 	# https://github.com/linuxmint/cinnamon-session/pull/164
 	"${FILESDIR}/${PN}-6.0.0-fix-optional-systemd.patch"
+	# fix crash on idle
+	"${FILESDIR}"/0001-cs-presence.c-Fix-CsmPresence-idle-handling.patch
 )
 
 src_prepare() {
