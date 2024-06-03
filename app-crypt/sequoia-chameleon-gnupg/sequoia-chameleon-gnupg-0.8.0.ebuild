@@ -369,7 +369,7 @@ LLVM_COMPAT=( {17..18} )
 inherit cargo llvm-r1 xdg-utils
 
 DESCRIPTION="Sequoia's reimplementation of the GnuPG interface"
-HOMEPAGE="https://sequoia-pgp.org/"
+HOMEPAGE="https://sequoia-pgp.org/ https://gitlab.com/sequoia-pgp/sequoia-chameleon-gnupg/"
 SRC_URI="
 	https://gitlab.com/sequoia-pgp/sequoia-chameleon-gnupg/-/archive/v${PV}/${P}-v${PV}.tar.bz2
 	${CARGO_CRATE_URIS}
