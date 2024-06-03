@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1 systemd xdg
@@ -70,8 +70,6 @@ PATCHES=(
 	# https://dev.deluge-torrent.org/ticket/3582
 	"${FILESDIR}/${P}-consoleui-deferred.patch"
 )
-
-RESTRICT=test # Requires python-3.12 enabled dev-python/pytest-twisted
 
 distutils_enable_tests pytest
 
