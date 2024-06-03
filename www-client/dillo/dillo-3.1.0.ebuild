@@ -52,6 +52,10 @@ BDEPEND="
 
 DOCS="AUTHORS ChangeLog README NEWS doc/*.txt doc/README"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-remove-floatref.patch
+)
+
 src_prepare() {
 	default
 	if use test; then
