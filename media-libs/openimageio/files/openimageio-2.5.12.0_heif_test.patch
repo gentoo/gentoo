@@ -1,0 +1,18 @@
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: 2024-06-03
+Subject: [PATCH] create a ref output for libheif1.15
+
+--- a/testsuite/heif/ref/out-libheif1.15-orient.txt	2024-06-01 21:59:05.000000000 +0200
++++ b/testsuite/heif/ref/out-libheif1.15-orient.txt	2024-06-02 17:36:18.069440905 +0200
+@@ -39,6 +39,11 @@
+     Exif:SubsecTimeOriginal: "006"
+     Exif:WhiteBalance: 0 (auto)
+     oiio:ColorSpace: "sRGB"
++Reading ref/Chimera-AV1-8bit-162.avif
++ref/Chimera-AV1-8bit-162.avif :  480 x  270, 3 channel, uint8 heif
++    SHA-1: F8FDAF1BD56A21E3AF99CF8EE7FA45434D2826C7
++    channel list: R, G, B
++    oiio:ColorSpace: "sRGB"
+ Reading ../oiio-images/heif/greyhounds-looking-for-a-table.heic
+ ../oiio-images/heif/greyhounds-looking-for-a-table.heic : 3024 x 4032, 3 channel, uint8 heif
+     SHA-1: 8211F56BBABDC7615CCAF67CBF49741D1A292D2E
