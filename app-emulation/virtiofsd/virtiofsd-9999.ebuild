@@ -63,7 +63,7 @@ CRATES="
 	strsim@0.10.0
 	syn@1.0.98
 	syn@2.0.23
-	syslog@6.0.1
+	syslog@6.1.1
 	termcolor@1.1.3
 	thiserror@1.0.41
 	thiserror-impl@1.0.41
@@ -71,8 +71,8 @@ CRATES="
 	unicode-ident@1.0.2
 	utf8parse@0.2.1
 	version_check@0.9.4
-	vhost@0.10.0
-	vhost-user-backend@0.13.1
+	vhost@0.11.0
+	vhost-user-backend@0.14.0
 	virtio-bindings@0.2.2
 	virtio-queue@0.11.0
 	vm-memory@0.14.0
