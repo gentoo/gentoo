@@ -28,12 +28,11 @@ HOMEPAGE="
 	https://letsencrypt.org/
 "
 
+S="${WORKDIR}/${P}/${PN}"
 LICENSE="Apache-2.0"
 SLOT="0"
 
 IUSE="selinux"
-
-S="${WORKDIR}/${P}/${PN}"
 
 BDEPEND="
 	test? (
