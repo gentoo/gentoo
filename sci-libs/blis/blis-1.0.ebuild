@@ -12,7 +12,7 @@ SRC_URI="https://github.com/flame/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 CPU_USE=(
 	cpu_flags_ppc_{vsx,vsx3}
 	cpu_flags_arm_{neon,v7,v8,sve}
