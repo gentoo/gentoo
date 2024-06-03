@@ -50,8 +50,8 @@ BDEPEND="
 
 PATCHES=(
 	# Fix the paths in the munin plugin to match our install
-	"${FILESDIR}"/nsd_munin_.patch
-	"${FILESDIR}"/${P}-implausible-stats.patch
+	"${FILESDIR}/${PN}-munin-gentoo-paths.patch"
+	"${FILESDIR}/${P}-implausible-stats.patch"
 )
 
 src_prepare() {
