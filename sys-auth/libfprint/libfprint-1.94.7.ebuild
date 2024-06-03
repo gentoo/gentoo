@@ -51,6 +51,8 @@ PATCHES=(
 S="${WORKDIR}/${MY_P}"
 
 src_configure() {
+	# TODO: wire up test deps (cairo, pygobject, etc) for extra tests
+	# currently skipped.
 	local emesonargs=(
 		$(meson_use examples gtk-examples)
 		$(meson_use gtk-doc doc)
