@@ -285,7 +285,7 @@ src_configure() {
 
 	if tc-is-cross-compiler; then
 		# Configure a CBUILD directory when cross-compiling to make tools
-		mkdir "${S}-build" && pushd "${S}-build" >/dev/null || die
+		mkdir -p "${S}-build" && pushd "${S}-build" >/dev/null || die
 		ECONF_SOURCE="${S}" econf_build --without-all --without-x-toolkit
 		popd >/dev/null || die
 		# Don't try to execute the binary for dumping during the build
