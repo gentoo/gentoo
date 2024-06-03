@@ -173,7 +173,6 @@ src_configure() {
 		-DSTOP_ON_WARNING="no"
 		-DUSE_PARTIO="$(usex partio)"
 		-DUSE_PYTHON="$(usex python)"
-		-DPYTHON_VERSION="${EPYTHON/python}"
 		-DUSE_SIMD="$(IFS=","; echo "${mysimd[*]}")"
 		-DUSE_BATCHED="$(IFS=","; echo "${mybatched[*]}")"
 		-DUSE_LIBCPLUSPLUS="$(usex libcxx)"
@@ -195,6 +194,13 @@ src_configure() {
 	if use partio; then
 		mycmakeargs+=(
 			-Dpartio_ROOT="${EPREFIX}/usr"
+		)
+	fi
+
+	if use python; then
+		mycmakeargs+=(
+			"-DPYTHON_VERSION=${EPYTHON#python}"
+			"-DPYTHON_SITE_DIR=$(python_get_sitedir)"
 		)
 	fi
 
