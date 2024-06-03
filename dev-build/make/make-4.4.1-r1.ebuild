@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/make.asc
-inherit flag-o-matic verify-sig
+inherit flag-o-matic unpacker verify-sig
 
 DESCRIPTION="Standard tool to compile source trees"
 HOMEPAGE="https://www.gnu.org/software/make/make.html"
@@ -12,11 +12,11 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/make.git"
 	inherit autotools git-r3
 elif [[ $(ver_cut 3) -ge 90 || $(ver_cut 4) -ge 90 ]] ; then
-	SRC_URI="https://alpha.gnu.org/gnu/make/${P}.tar.gz"
-	SRC_URI+=" verify-sig? ( https://alpha.gnu.org/gnu/make/${P}.tar.gz.sig )"
+	SRC_URI="https://alpha.gnu.org/gnu/make/${P}.tar.lz"
+	SRC_URI+=" verify-sig? ( https://alpha.gnu.org/gnu/make/${P}.tar.lz.sig )"
 else
-	SRC_URI="mirror://gnu/make/${P}.tar.gz"
-	SRC_URI+=" verify-sig? ( mirror://gnu/make/${P}.tar.gz.sig )"
+	SRC_URI="mirror://gnu/make/${P}.tar.lz"
+	SRC_URI+=" verify-sig? ( mirror://gnu/make/${P}.tar.lz.sig )"
 	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
@@ -31,6 +31,7 @@ RDEPEND="
 	nls? ( virtual/libintl )
 "
 BDEPEND="
+	$(unpacker_src_uri_depends)
 	doc? ( virtual/texi2dvi )
 	nls? ( sys-devel/gettext )
 	verify-sig? ( sec-keys/openpgp-keys-make )
@@ -50,7 +51,8 @@ src_unpack() {
 		cd "${S}" || die
 		./bootstrap || die
 	else
-		verify-sig_src_unpack
+		use verify-sig && verify-sig_verify_detached "${DISTDIR}"/${P}.tar.lz{,.sig}
+		unpacker ${P}.tar.lz
 	fi
 }
 
