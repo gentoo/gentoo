@@ -5,12 +5,12 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/wget.asc
-inherit flag-o-matic python-any-r1 toolchain-funcs verify-sig
+inherit flag-o-matic python-any-r1 toolchain-funcs unpacker verify-sig
 
 DESCRIPTION="Network utility to retrieve files from the WWW"
 HOMEPAGE="https://www.gnu.org/software/wget/"
-SRC_URI="mirror://gnu/wget/${P}.tar.gz"
-SRC_URI+=" verify-sig? ( mirror://gnu/wget/${P}.tar.gz.sig )"
+SRC_URI="mirror://gnu/wget/${P}.tar.lz"
+SRC_URI+=" verify-sig? ( mirror://gnu/wget/${P}.tar.lz.sig )"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -44,6 +44,7 @@ DEPEND="
 	static? ( ${LIB_DEPEND} )
 "
 BDEPEND="
+	$(unpacker_src_uri_depends)
 	app-arch/xz-utils
 	dev-lang/perl
 	sys-apps/texinfo
@@ -69,6 +70,11 @@ PATCHES=(
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
+}
+
+src_unpack() {
+	use verify-sig && verify-sig_verify_detached "${DISTDIR}"/${P}.tar.lz{,.sig}
+	unpacker ${P}.tar.lz
 }
 
 src_prepare() {
