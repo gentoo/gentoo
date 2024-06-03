@@ -125,7 +125,6 @@ RDEPEND="
 	java? ( virtual/jre:1.8 )
 "
 BDEPEND="
-	${PYTHON_DEPS}
 	>=app-arch/tar-1.34-r2
 	>=dev-lang/yasm-0.6.2
 	dev-libs/libIDL
@@ -149,6 +148,7 @@ BDEPEND="
 	)
 	gui? ( dev-qt/linguist-tools:5 )
 	nls? ( dev-qt/linguist-tools:5 )
+	python? ( ${PYTHON_DEPS} )
 	java? ( virtual/jdk:1.8 )
 "
 
