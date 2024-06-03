@@ -190,6 +190,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# We want floating-point arithmetic to be correct #933380
+	replace-flags -Ofast -O3
+	append-flags -fno-fast-math -ffp-contract=off
+
 	local myconf
 
 	# Prevents e.g. tests interfering with running Emacs.

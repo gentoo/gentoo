@@ -132,6 +132,9 @@ src_configure() {
 		replace-flags "-O[3-9]" -O2
 	fi
 
+	# We want floating-point arithmetic to be correct #933380
+	append-flags -fno-fast-math -ffp-contract=off
+
 	local myconf
 
 	if use alsa; then
