@@ -1,6 +1,11 @@
 # Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2024-06-03)
+# Requires arch-specific code in python (relocs handling), in addition to
+# sys-devel/{clang,llvm}.
+dev-lang/python jit
+
 # WANG Xuerui <xen0n@gentoo.org> (2024-05-16)
 # dev-ruby/asciidoctor has some really heavy deps, and is not keyworded on
 # loong yet.
