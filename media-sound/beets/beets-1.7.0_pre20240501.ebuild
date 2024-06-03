@@ -57,6 +57,7 @@ DEPEND="
 BDEPEND="
 	doc? (
 		dev-python/sphinx
+		dev-python/pydata-sphinx-theme
 	)
 	$(python_gen_cond_dep '
 		test? (
@@ -124,7 +125,7 @@ python_prepare_all() {
 
 python_compile_all() {
 	if use doc ; then
-		sphinx-build -b html docs docs/build || die
+		sphinx-build -b html docs docs/build/html || die
 	fi
 	# If building from VCS sources we need to generate manpages, then copy them to ${S}/man
 	# We could install mans from the sphinx build path, but to be consistent with pypi for src_install
