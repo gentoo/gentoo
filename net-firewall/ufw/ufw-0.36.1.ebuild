@@ -19,7 +19,12 @@ KEYWORDS="amd64 ~arm arm64 ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
 IUSE="examples ipv6"
 
 RDEPEND="net-firewall/iptables[ipv6(+)?]"
-BDEPEND="sys-devel/gettext"
+BDEPEND="
+	sys-devel/gettext
+	$(python_gen_cond_dep '
+		dev-python/setuptools[${PYTHON_USEDEP}]
+	' python3_12)
+"
 
 PATCHES=(
 	# Move files away from /lib/ufw.
