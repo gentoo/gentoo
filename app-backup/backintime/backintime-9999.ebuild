@@ -29,6 +29,7 @@ DEPEND="
 	$(python_gen_cond_dep '
 		dev-python/dbus-python[${PYTHON_USEDEP}]
 		dev-python/keyring[${PYTHON_USEDEP}]
+		dev-python/packaging[${PYTHON_USEDEP}]
 	')
 "
 RDEPEND="
