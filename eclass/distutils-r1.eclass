@@ -99,7 +99,7 @@ esac
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Enable the PEP 517 mode for the specified build system.  In this mode,
+# Enable the PEP517 mode for the specified build system.  In this mode,
 # the complete build and install is done in python_compile(),
 # a venv-style install tree is provided to python_test(),
 # and python_install() just merges the temporary install tree
@@ -182,7 +182,7 @@ esac
 # This is an eclass-generated build-time dependency string for the build
 # system packages.  This string is automatically appended to BDEPEND
 # unless DISTUTILS_OPTIONAL is used.  This variable is available only
-# in PEP 517 mode.
+# in PEP517 mode.
 #
 # Example use:
 # @CODE
@@ -1221,7 +1221,7 @@ distutils_wheel_install() {
 # @FUNCTION: distutils_pep517_install
 # @USAGE: <root>
 # @DESCRIPTION:
-# Build the wheel for the package in the current directory using PEP 517
+# Build the wheel for the package in the current directory using PEP517
 # backend and install it into <root>.
 #
 # This function is intended for expert use only.  It does not handle
