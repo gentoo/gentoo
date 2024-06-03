@@ -123,9 +123,9 @@ src_prepare() {
 	default
 
 	if [[ ${PV} == 9999 ]]; then
-		AT_M4DIR="m4" eautoreconf
+		local AT_M4DIR=config
+		eautoreconf
 
-		mkdir config || die
 		local automakedir="$(autotools_run_tool --at-output automake --print-libdir)"
 		[[ -e ${automakedir} ]] || die "Could not locate automake directory"
 
