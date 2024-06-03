@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="xml(+)"
-DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1 prefix
 
