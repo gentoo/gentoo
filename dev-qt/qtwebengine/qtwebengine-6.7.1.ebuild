@@ -223,6 +223,8 @@ src_configure() {
 		# prefer no dlopen where possible
 		link_pulseaudio=true
 		rtc_link_pipewire=true
+		# reduce default disk space usage
+		symbol_level=0
 	)
 
 	if use !custom-cflags; then
