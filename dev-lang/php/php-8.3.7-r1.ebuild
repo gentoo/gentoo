@@ -5,7 +5,7 @@ EAPI=8
 
 WANT_AUTOMAKE="none"
 
-inherit flag-o-matic multilib systemd autotools
+inherit flag-o-matic multilib systemd
 
 DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="https://www.php.net/"
@@ -223,12 +223,6 @@ src_prepare() {
 	sed -i "s~^include=.*$~include=${PHP_INI_DIR}/fpm.d/*.conf~" \
 		sapi/fpm/php-fpm.conf.in \
 		|| die 'failed to move the include directory in php-fpm.conf'
-
-	# Emulate buildconf to support cross-compilation
-	rm -fr aclocal.m4 autom4te.cache config.cache \
-		configure main/php_config.h.in || die
-	eautoconf --force
-	eautoheader
 
 	# fails in a network sandbox,
 	#
