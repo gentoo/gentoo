@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DISTUTILS_EXT=1
+#DISTUTILS_USE_PEP517="flit"
 PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE='threads(+)'
 DISTUTILS_USE_SETUPTOOLS=no
@@ -108,7 +108,6 @@ src_configure() {
 		--notests
 		--nopyc
 		--nopyo
-		--enable-pylib ext
 		--refclock="${CLOCKSTRING}"
 		#--build-epoch="$(date +%s)"
 		$(use doc	|| echo "--disable-doc")
@@ -165,12 +164,22 @@ src_install() {
 
 	# move doc files to /usr/share/doc/"${P}"
 	use doc && mv -v "${ED}"/usr/share/doc/"${PN}" "${ED}"/usr/share/doc/"${P}"/html
+
+	waf-utils_src_install --notests
+	ln -svf pylib build/main/ntp
+	wheel_name=$(
+		cd build/main && \
+		gpep517 build-wheel --output-fd 3 --wheel-dir ../.. 3>&1 >&2
+	)
+	python_foreach_impl python_install
+	python_fix_shebang "${ED}"
+	python_optimize
 }
 
 python_install() {
-	waf-utils_src_install --notests
-	python_fix_shebang "${ED}"
-	python_optimize
+	${PYTHON} -m gpep517 \
+		install-wheel "${wheel_name}" \
+		--optimize all --destdir "${D}"
 }
 
 pkg_postinst() {
