@@ -6,6 +6,7 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<use>
+		<flag name="neard">Use <pkg>net-wireless/neard</pkg> to access NFC devices</flag>
 		<flag name="nfc">Enable support for the Near Field Communication protocol</flag>
 	</use>
 	<upstream>
