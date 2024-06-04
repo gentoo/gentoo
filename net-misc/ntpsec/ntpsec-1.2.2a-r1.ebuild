@@ -86,8 +86,6 @@ src_prepare() {
 	fi
 	# remove extra default pool servers
 	sed -i '/use-pool/s/^/#/' "${S}"/etc/ntp.d/default.conf || die
-
-	python_copy_sources
 }
 
 src_configure() {
@@ -118,26 +116,20 @@ src_configure() {
 		$(use smear	&& echo "--enable-leap-smear")
 		$(use debug	&& echo "--enable-debug")
 	)
-
-	distutils-r1_src_configure
-}
-
-python_configure() {
+	python_setup
 	cp -v "${FILESDIR}/flit.toml" "pylib/pyproject.toml"
 	waf-utils_src_configure "${myconf[@]}"
 }
 
-python_compile() {
+src_compile() {
 	waf-utils_src_compile --notests
 }
 
-python_test() {
+src_test() {
 	waf-utils_src_compile check
 }
 
 src_install() {
-	distutils-r1_src_install
-
 	# Install heat generating scripts
 	use heat && dosbin "${S}"/contrib/ntpheat{,usb}
 
