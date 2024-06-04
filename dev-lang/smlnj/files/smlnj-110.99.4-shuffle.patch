@@ -1,0 +1,13 @@
+--- a/base/runtime/c-libs/posix-io/makefile	2024-06-04 08:38:20.192453601 +0200
++++ b/base/runtime/c-libs/posix-io/makefile	2024-06-04 08:39:09.504903619 +0200
+@@ -37,7 +37,9 @@
+         lseek.o \
+         fsync.o
+ 
+-$(LIBRARY)	: $(VERSION) $(OBJS)
++$(LIBRARY)	:
++	$(MAKE) $(VERSION)
++	$(MAKE) $(OBJS)
+ 	rm -rf $(LIBRARY)
+ 	$(AR) $(ARFLAGS) $(LIBRARY) $(OBJS)
+ 	$(RANLIB) $(LIBRARY)
