@@ -20,9 +20,9 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 fi
 
 IUSE="
-	+assistant clang designer distancefieldgenerator gles2-only
-	+linguist opengl pixeltool +qdbus qdoc qml qtattributionsscanner
-	qtdiag qtplugininfo vulkan +widgets zstd
+	+assistant clang designer distancefieldgenerator gles2-only +linguist
+	opengl pixeltool +qdbus qdoc qml qmlls qtattributionsscanner qtdiag
+	qtplugininfo vulkan +widgets zstd
 "
 # note that some tools do not *require* widgets but will skip a sub-tool
 # if not enabled (e.g. linguist gives lrelease but not the GUI linguist6)
@@ -33,6 +33,7 @@ REQUIRED_USE="
 	distancefieldgenerator? ( qml widgets )
 	pixeltool? ( widgets )
 	qdoc? ( clang qml )
+	qmlls? ( assistant qml )
 "
 
 RDEPEND="
@@ -50,6 +51,7 @@ RDEPEND="
 	)
 	qdbus? ( ~dev-qt/qtbase-${PV}:6[dbus,xml] )
 	qml? ( ~dev-qt/qtdeclarative-${PV}:6[widgets?] )
+	qmlls? ( ~dev-qt/qtdeclarative-${PV}:6[qmlls] )
 	qtdiag? ( ~dev-qt/qtbase-${PV}:6[gles2-only=,vulkan=] )
 	widgets? ( ~dev-qt/qtbase-${PV}:6[opengl=] )
 "
@@ -86,6 +88,11 @@ src_configure() {
 		# to lag behind and bundled may work out better for now
 		# https://github.com/litehtml/litehtml/issues/266
 		$(usev assistant -DCMAKE_DISABLE_FIND_PACKAGE_litehtml=ON)
+
+		# USE=qmlls' help plugin may be temporary, upstream has plans to split
+		# QtHelp into another package so that qtdeclarative can depend on it
+		# without a circular dependency with qttools
+		$(cmake_use_find_package qmlls Qt6QmlLSPrivate)
 
 		$(usev designer -DQT_UNITY_BUILD=OFF) # fails to build (QTBUG-122634)
 	)

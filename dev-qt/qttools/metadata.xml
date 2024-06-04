@@ -15,6 +15,7 @@
 		<flag name="qdbus">Build the Qt D-Bus Interface (D-Bus Viewer requires USE=widgets)</flag>
 		<flag name="qdoc">Build Qt Documentation Generator</flag>
 		<flag name="qml">Build QML/QtQuick bindings and imports</flag>
+		<flag name="qmlls">Build the QtHelp plugin for the QML language server</flag>
 		<flag name="qtattributionsscanner">Build Qt Source Code Attribution Scanner</flag>
 		<flag name="qtdiag">Build Qt Diag</flag>
 		<flag name="qtplugininfo">Build Qt Plugin Info</flag>
