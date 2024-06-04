@@ -53,6 +53,7 @@ COMMON_DEPEND="
 # libXi and libXmu are build-only-deps according to FindGLUT.cmake
 DEPEND="${COMMON_DEPEND}
 	dev-libs/boost
+	x11-base/xorg-proto
 	utils? (
 		x11-libs/libXi
 		x11-libs/libXmu
