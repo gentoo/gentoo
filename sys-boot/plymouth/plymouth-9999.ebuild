@@ -56,7 +56,6 @@ DEPEND="
 "
 
 RDEPEND="${DEPEND}
-	>sys-kernel/dracut-0.37-r3
 	selinux? ( sec-policy/selinux-plymouthd )
 	udev? ( virtual/udev )
 "
@@ -116,8 +115,9 @@ src_install() {
 
 pkg_postinst() {
 	readme.gentoo_print_elog
-	if ! has_version "sys-kernel/dracut"; then
-		ewarn "If you want initramfs builder with plymouth support, please emerge"
-		ewarn "sys-kernel/dracut."
+	if ! has_version "sys-kernel/dracut" && ! has_version "sys-kernel/genkernel-next[plymouth]"; then
+		ewarn "Dracut is not installed, you will need an initramfs with plymouth"
+		ewarn "support, you can emerge 'sys-kernel/dracut' or read the plymouth"
+		ewarn "wiki at: https://wiki.gentoo.org/wiki/Plymouth#Building_Initramfs"
 	fi
 }
