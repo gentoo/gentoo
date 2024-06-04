@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit autotools python-any-r1
 
 DESCRIPTION="Exuberant Ctags creates tags files for code browsing in editors"
