@@ -31,7 +31,7 @@ else
 	RESTRICT="test" # the test archive returns LFS references.
 fi
 
-LICENSE="|| ( GPL-3 BL )"
+LICENSE="GPL-3+ cycles? ( Apache-2.0 )"
 SLOT="${PV%.*}"
 IUSE="
 	alembic +bullet collada +color-management cuda +cycles +cycles-bin-kernels
