@@ -39,6 +39,12 @@ BDEPEND="
 "
 IDEPEND="app-eselect/eselect-ctags"
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# manual check for function in a library that doesn't exist, passes -liconv
+	# which either fails to link anyway (glibc) or passes this check (musl)
+	libiconv_open
+)
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
