@@ -42,7 +42,7 @@ DESCRIPTION="TeXLive Graphics and font utilities"
 
 LICENSE="Artistic BSD GPL-1+ GPL-2 LPPL-1.3c TeX TeX-other-free public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 COMMON_DEPEND="
 	>=dev-texlive/texlive-basic-2023
 "
