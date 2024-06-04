@@ -424,7 +424,7 @@ src_prepare() {
 	if tc-is-lto ; then
 		# Respect -flto value, e.g -flto=thin
 		local v="$(get-flag flto)"
-		[[ -n ${v} ]] && LTO_FLAG="--enable-lto=${v}" || LTO_FLAG="--enable-lto"
+		[[ ${v} != -flto ]] && LTO_FLAG="--enable-lto=${v}" || LTO_FLAG="--enable-lto"
 	fi
 	filter-lto
 }
