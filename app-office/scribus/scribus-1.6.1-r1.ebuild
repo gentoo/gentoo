@@ -79,6 +79,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.1-poppler-24.03.patch
 	"${FILESDIR}"/${PN}-1.6.1-poppler-24.05.patch
 	"${FILESDIR}"/${PN}-1.6.1-boost-1.85.patch
+	"${FILESDIR}"/${PN}-1.6.1-boost-1.85-2.patch
 )
 
 src_prepare() {
