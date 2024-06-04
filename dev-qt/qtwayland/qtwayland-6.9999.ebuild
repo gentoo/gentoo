@@ -11,7 +11,7 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
-IUSE="accessibility compositor qml vulkan"
+IUSE="accessibility compositor gnome qml vulkan"
 
 RDEPEND="
 	dev-libs/wayland
@@ -20,6 +20,10 @@ RDEPEND="
 	x11-libs/libxkbcommon
 	compositor? (
 		qml? ( ~dev-qt/qtdeclarative-${PV}:6 )
+	)
+	gnome? (
+		~dev-qt/qtbase-${PV}:6[dbus]
+		~dev-qt/qtsvg-${PV}:6
 	)
 "
 DEPEND="
@@ -41,6 +45,7 @@ src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package qml Qt6Quick)
 		$(qt_feature compositor wayland_server)
+		$(qt_feature gnome wayland_decoration_adwaita)
 	)
 
 	qt6-build_src_configure
