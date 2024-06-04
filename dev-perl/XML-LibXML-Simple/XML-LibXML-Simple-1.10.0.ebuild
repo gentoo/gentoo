@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="XML::LibXML based XML::Simple clone"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 RDEPEND="
 	virtual/perl-Scalar-List-Utils
