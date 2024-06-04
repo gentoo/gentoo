@@ -41,6 +41,7 @@ RDEPEND="
 	gui? ( $(python_gen_impl_dep tk) )
 "
 
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 src_prepare() {
@@ -52,7 +53,7 @@ src_prepare() {
 	fi
 }
 
-src_test() {
+python_test() {
 	local EPYTEST_DESELECT=(
 		# https://gitlab.mister-muffin.de/josch/img2pdf/issues/187
 		src/img2pdf_test.py::test_miff_cmyk8
@@ -65,5 +66,6 @@ src_test() {
 		)
 	fi
 
-	distutils-r1_src_test
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest
 }
