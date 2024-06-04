@@ -1,0 +1,24 @@
+--- a/src/password.c
++++ b/src/password.c
+@@ -300,6 +300,15 @@
+     size_t ic_inbytesleft,
+            ic_outbytesleft;
+ 
++#ifdef DISABLE_ICONV
++    /* support only latin */
++    int i;
++    for (i=0;i<length+1;i++) {
++    out_passwd[i*2] = in_passwd[i];
++	out_passwd[i*2+1] = 0;
++    }
++    return length*2;
++#else
+     // Max length is specified in character, but this function deals
+     // with bytes.  So, multiply by two since we are going to create a
+     // UTF-16 string.
+@@ -349,4 +358,5 @@
+     iconv_close(condesc);
+ 
+     return (max_length - ic_outbytesleft);
++#endif
+ }
