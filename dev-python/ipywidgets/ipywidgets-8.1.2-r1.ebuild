@@ -29,7 +29,9 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
+		dev-python/ipykernel[${PYTHON_USEDEP}]
 		dev-python/jsonschema[${PYTHON_USEDEP}]
+		dev-python/pytz[${PYTHON_USEDEP}]
 	)
 "
 PDEPEND="
