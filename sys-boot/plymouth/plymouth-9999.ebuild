@@ -93,7 +93,10 @@ src_compile() {
 src_install() {
 	meson_src_install
 	insinto /usr/share/plymouth
+
 	newins "${DISTDIR}"/gentoo-logo.png bizcom.png
+	# fix broken symlink
+	dosym ../../bizcom.png /usr/share/plymouth/themes/spinfinity/header-image.png
 
 	if use split-usr; then
 		# Install compatibility symlinks as some rdeps hardcode the paths
@@ -103,14 +106,6 @@ src_install() {
 	fi
 
 	readme.gentoo_create_doc
-
-	# looks like make install create /var/run/plymouth
-	# this is not needed for systemd, same should hold for openrc
-	# so remove
-	rm -rf "${D}"/var/run || die
-
-	# fix broken symlink
-	dosym ../../bizcom.png /usr/share/plymouth/themes/spinfinity/header-image.png
 }
 
 pkg_postinst() {
