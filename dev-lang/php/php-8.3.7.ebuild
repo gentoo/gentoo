@@ -144,10 +144,6 @@ BDEPEND="virtual/pkgconfig"
 
 PHP_MV="$(ver_cut 1)"
 
-PATCHES=(
-	"${FILESDIR}/php-iodbc-header-location.patch"
-)
-
 # ARM/Windows functions (bug 923335)
 QA_CONFIG_IMPL_DECL_SKIP=(
 	__crc32d
@@ -418,10 +414,22 @@ src_configure() {
 
 	# ODBC support
 	if use odbc && use iodbc ; then
+		# Obtain the correct -l and -I flags for the actual build from
+		# pkg-config. We use the "generic" library type to avoid the
+		# (wrong) hard-coded include dir for iodbc.
+		#
+		# We set the pdo_odbc_def_incdir variable because the
+		# ./configure script checks for the headers using "test -f" and
+		# ignores your CFLAGS... and pdo_odbc_def_libdir prevents the
+		# build system from appending a nonsense -L flag.
+		local iodbc_ldflags=$(pkg-config --libs libiodbc)
+		local iodbc_cflags=$(pkg-config --cflags libiodbc)
 		our_conf+=(
+			pdo_odbc_def_libdir="${EPREFIX}/usr/$(get_libdir)"
+			pdo_odbc_def_incdir="${EPREFIX}/usr/include/iodbc"
 			--without-unixODBC
 			--with-iodbc
-			$(use_with pdo pdo-odbc "iODBC,${EPREFIX}/usr")
+			$(use_with pdo pdo-odbc "generic,,iodbc,${iodbc_ldlags},${iodbc_cflags}")
 		)
 	elif use odbc ; then
 		our_conf+=(
