@@ -199,6 +199,18 @@ src_configure() {
 		# trivial, and is often needed (sometimes even when not building tests)
 		-DQT_FEATURE_testlib=ON
 		$(qt_feature xml)
+
+		# let gentoo's defaults and/or users control security *FLAGS
+		-DQT_FEATURE_glibc_fortify_source=OFF
+		-DQT_FEATURE_intelcet=OFF
+		-DQT_FEATURE_libcpp_hardening=OFF
+		-DQT_FEATURE_libstdcpp_assertions=OFF
+		-DQT_FEATURE_relro_now_linker=OFF
+		-DQT_FEATURE_stack_clash_protection=OFF
+		-DQT_FEATURE_stack_protector=OFF
+		-DQT_FEATURE_trivial_auto_var_init_pattern=OFF
+
+		-DQT_INTERNAL_AVOID_OVERRIDING_SYNCQT_CONFIG=ON # would force -O3
 	)
 
 	use gui && mycmakeargs+=(
