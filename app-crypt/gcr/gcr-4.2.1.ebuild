@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..12} )
 
-inherit flag-o-matic gnome.org gnome2-utils meson python-any-r1 vala xdg
+inherit flag-o-matic gnome.org gnome2-utils meson vala xdg
 
 DESCRIPTION="Libraries for cryptographic UIs and accessing PKCS#11 modules"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gcr"
@@ -35,7 +34,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 PDEPEND="app-crypt/gnupg"
 BDEPEND="
-	${PYTHON_DEPS}
 	gtk? ( dev-libs/libxml2:2 )
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
@@ -45,10 +43,6 @@ BDEPEND="
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )
 "
-
-pkg_setup() {
-	python-any-r1_pkg_setup
-}
 
 src_prepare() {
 	default
