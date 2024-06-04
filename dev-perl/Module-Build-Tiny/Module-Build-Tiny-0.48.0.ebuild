@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Tiny replacement for Module::Build"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~loong"
 
 RDEPEND="
 	virtual/perl-CPAN-Meta
