@@ -71,6 +71,7 @@ BDEPEND+="
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.9-remove-asciidoctor-from-config.patch"
 	"${FILESDIR}/${PN}-1.2.2-logrotate.patch"
+	"${FILESDIR}/${PN}-1.2.3-pep517-no-egg.patch"
 )
 
 WAF_BINARY="${S}/waf"
@@ -123,6 +124,7 @@ src_configure() {
 }
 
 python_configure() {
+	cp -v "${FILESDIR}/flit.toml" "pylib/pyproject.toml"
 	waf-utils_src_configure "${myconf[@]}"
 }
 
