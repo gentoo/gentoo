@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Maciej Barć <xgqt@gentoo.org> (2024-06-04)
+# Deprecated git integration backend of "app-emacs/magit".
+# No longer supported by upstream. Fails to compile (bug 928920).
+# Removal on 2024-07-04.
+app-emacs/libegit2
+
 # Mike Gilbert <floppym@gentoo.org> (2024-06-01)
 # Abandoned upstream. No Gentoo maintainer since 2021.
 # Plugin system seems quite broken (bug 887119).
