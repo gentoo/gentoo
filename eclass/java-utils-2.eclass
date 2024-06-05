@@ -2033,13 +2033,23 @@ java-utils-2_pkg_preinst() {
 eant() {
 	debug-print-function ${FUNCNAME} $*
 
-	if [[ ${EBUILD_PHASE} = compile ]]; then
-		java-ant-2_src_configure
-	fi
+	if [[ ${!JAVA_PKG_BSFIX*} ]] \
+		|| [[ ${JAVA_ANT_BSFIX_EXTRA_ARGS} ]] \
+		|| [[ ${JAVA_ANT_CLASSPATH_TAGS} ]] \
+		|| [[ ${JAVA_ANT_JAVADOC_INPUT_DIRS} ]] \
+		|| [[ ${JAVA_ANT_REWRITE_CLASSPATH} ]] \
+		|| [[ ${EANT_BUILD_XML} ]] \
+		|| [[ ${!EANT_GENTOO_CLASSPATH*} ]] \
+		|| [[ ${EANT_TEST_GENTOO_CLASSPATH} ]]
+	then
+		if [[ ${EBUILD_PHASE} = compile ]]; then
+			java-ant-2_src_configure
+		fi
 
-	if ! has java-ant-2 ${INHERITED}; then
-		local msg="You should inherit java-ant-2 when using eant"
-		java-pkg_announce-qa-violation "${msg}"
+		if ! has java-ant-2 ${INHERITED}; then
+			local msg="You should inherit java-ant-2 when using eant"
+			java-pkg_announce-qa-violation "${msg}"
+		fi
 	fi
 
 	local antflags="-Dnoget=true -Dmaven.mode.offline=true -Dbuild.sysclasspath=ignore"
