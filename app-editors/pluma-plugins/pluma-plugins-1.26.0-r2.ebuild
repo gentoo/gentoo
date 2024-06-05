@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	>=dev-libs/libpeas-1.14.1:0[gtk]
-	>=app-editors/gedit-40.0
+	>=app-editors/pluma-1.25.3
 
 	>=dev-libs/glib-2.32:2
 	>=x11-libs/gtk+-3.9:3
@@ -38,7 +38,7 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			app-editors/gedit[python,${PYTHON_SINGLE_USEDEP}]
+			app-editors/pluma[${PYTHON_SINGLE_USEDEP}]
 			dev-libs/libpeas:0[python,${PYTHON_SINGLE_USEDEP}]
 			>=dev-python/dbus-python-0.82[${PYTHON_USEDEP}]
 			dev-python/pycairo[${PYTHON_USEDEP}]
