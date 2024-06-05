@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 
 inherit distutils-r1 toolchain-funcs
 
@@ -112,13 +112,9 @@ python_test() {
 	)
 
 	case ${EPYTHON} in
-		python3.10)
-			EPYTEST_DESELECT+=(
-				tests_python/test_debugger.py::test_frame_eval_limitations
-			)
-			;&
 		python3.11)
 			EPYTEST_DESELECT+=(
+				tests_python/test_debugger.py::test_frame_eval_limitations
 				tests_python/test_debugger.py::test_remote_debugger_threads
 			)
 			;;
