@@ -11,7 +11,7 @@
   </maintainer>
   <stabilize-allarches/>
   <upstream>
-    <remote-id type="pypi">jupyterlab_widgets</remote-id>
+    <remote-id type="pypi">jupyterlab-widgets</remote-id>
     <remote-id type="github">jupyter-widgets/ipywidgets</remote-id>
   </upstream>
 </pkgmetadata>
