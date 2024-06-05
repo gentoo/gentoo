@@ -43,11 +43,11 @@ BDEPEND="
 	test? (
 		>=dev-python/bottle-0.12.7[${PYTHON_USEDEP}]
 		dev-python/flaky[${PYTHON_USEDEP}]
-		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		net-misc/curl[curl_ssl_gnutls(-)=,curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-),http2]
 	)
 "
 
+: ${EPYTEST_TIMEOUT:=120}
 distutils_enable_tests pytest
 
 python_prepare_all() {
@@ -83,7 +83,7 @@ python_test() {
 		tests/option_constants_test.py::OptionConstantsTest::test_socks5_gssapi_nec_setopt
 	)
 
-	epytest -p flaky -p timeout --timeout=120 tests
+	epytest -p flaky tests
 }
 
 python_install_all() {
