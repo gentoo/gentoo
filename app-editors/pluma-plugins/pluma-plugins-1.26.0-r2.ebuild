@@ -65,6 +65,14 @@ pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
+src_configure() {
+	local myeconfargs=(
+		$(use_enable python)
+	)
+
+	econf "${myeconfargs[@]}"
+}
+
 src_install() {
 	mate_src_install
 	use python && python_optimize "${ED}/usr/$(get_libdir)/gedit/plugins/"
