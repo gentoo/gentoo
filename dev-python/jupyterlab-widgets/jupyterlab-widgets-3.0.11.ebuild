@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 BDEPEND="
 	>=dev-python/jupyterlab-4.1.8[${PYTHON_USEDEP}]
