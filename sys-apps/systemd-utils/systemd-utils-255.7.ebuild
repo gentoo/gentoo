@@ -22,7 +22,7 @@ else
 	SRC_URI="https://github.com/systemd/systemd/archive/refs/tags/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 fi
 
-MUSL_PATCHSET="systemd-musl-patches-255.4"
+MUSL_PATCHSET="systemd-musl-patches-255.6"
 SRC_URI+=" elibc_musl? ( https://dev.gentoo.org/~floppym/dist/${MUSL_PATCHSET}.tar.gz )"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
@@ -108,8 +108,10 @@ BDEPEND="
 	$(python_gen_cond_dep "
 		dev-python/jinja[\${PYTHON_USEDEP}]
 		dev-python/lxml[\${PYTHON_USEDEP}]
-		boot? ( >=dev-python/pyelftools-0.30[\${PYTHON_USEDEP}] )
-		ukify? ( test? ( ${PEFILE_DEPEND} ) )
+		boot? (
+			>=dev-python/pyelftools-0.30[\${PYTHON_USEDEP}]
+			test? ( ${PEFILE_DEPEND} )
+		)
 	")
 "
 
@@ -302,7 +304,6 @@ multilib_src_compile() {
 			if use test; then
 				targets+=(
 					systemd-runtest.env
-					test-offline-passwd
 				)
 			fi
 		fi
@@ -314,7 +315,10 @@ multilib_src_compile() {
 				tmpfiles.d/{etc,static-nodes-permissions,var}.conf
 			)
 			if use test; then
-				targets+=( test-tmpfile-util )
+				targets+=(
+					test-offline-passwd
+					test-tmpfile-util
+				)
 			fi
 		fi
 		if use udev; then
