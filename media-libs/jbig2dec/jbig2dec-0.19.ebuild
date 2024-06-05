@@ -10,7 +10,7 @@ DESCRIPTION="A decoder implementation of the JBIG2 image compression format"
 HOMEPAGE="https://jbig2dec.com/"
 SRC_URI="
 	https://github.com/ArtifexSoftware/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-	test? ( http://jbig2dec.sourceforge.net/ubc/jb2streams.zip )
+	test? ( https://jbig2dec.sourceforge.net/ubc/jb2streams.zip )
 "
 
 LICENSE="AGPL-3"
