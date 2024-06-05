@@ -1,0 +1,34 @@
+cdylib-link-lines 0.1.5 fixes missing DT_SONAME on musl builds.
+
+https://bugs.gentoo.org/925368
+https://github.com/rpm-software-management/rpm-sequoia/issues/66
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -275,14 +275,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "cdylib-link-lines"
+-version = "0.1.4"
++version = "0.1.5"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "a317db7ea5b455731e51d7f632762716fa5c0b1098dcaa6221e55e2386d170f2"
+-dependencies = [
+- "serde",
+- "serde_derive",
+- "toml",
+-]
++checksum = "d98eabef08bbdf5afd0b9c0cabb1ac335f7c70447ef095eed85dffd9628b20bc"
+ 
+ [[package]]
+ name = "cexpr"
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -28,7 +28,7 @@ thiserror = "1"
+ 
+ [build-dependencies]
+ anyhow = "1"
+-cdylib-link-lines = "0.1.4"
++cdylib-link-lines = "0.1.5"
+ 
+ [dev-dependencies]
+ assert_cmd = "2.0"

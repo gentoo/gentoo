@@ -37,7 +37,7 @@ CRATES="
 	camellia@0.1.0
 	cast5@0.11.1
 	cc@1.0.83
-	cdylib-link-lines@0.1.4
+	cdylib-link-lines@0.1.5
 	cexpr@0.6.0
 	cfb-mode@0.8.2
 	cfg-if@1.0.0
@@ -235,7 +235,7 @@ CRATES="
 	zeroize_derive@1.4.2
 "
 
-LLVM_MAX_SLOT=17
+LLVM_MAX_SLOT=18
 
 inherit cargo llvm
 
@@ -269,6 +269,8 @@ BDEPEND="
 "
 
 PATCHES=(
+	# fix missing SONAME on musl build
+	"${FILESDIR}/${P}-dep-update.patch"
 	# fix test case for ppc64
 	"${FILESDIR}/${P}-ppc64-fix-testcase.patch"
 )
