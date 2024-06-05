@@ -60,6 +60,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	doc? ( sys-apps/texinfo )
+	pgo? (
+		dev-util/dejagnu
+		app-alternatives/bc
+	)
 	test? (
 		dev-util/dejagnu
 		app-alternatives/bc
