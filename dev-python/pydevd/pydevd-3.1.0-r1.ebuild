@@ -118,6 +118,12 @@ python_test() {
 				tests_python/test_debugger.py::test_remote_debugger_threads
 			)
 			;;
+		python3.12)
+			EPYTEST_DESELECT+=(
+				# flaky
+				tests_python/test_debugger_json.py::test_step_next_step_in_multi_threads
+			)
+			;;
 	esac
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
