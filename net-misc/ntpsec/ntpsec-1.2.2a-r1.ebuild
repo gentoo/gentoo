@@ -3,10 +3,9 @@
 
 EAPI=8
 
-#DISTUTILS_USE_PEP517="flit"
+DISTUTILS_USE_PEP517="flit"
 PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE='threads(+)'
-DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1 flag-o-matic waf-utils systemd
 
