@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -51,6 +51,7 @@ BDEPEND="
 
 PATCHES=(
 	"${WORKDIR}/${PATCHSET}/${PN}-0.7.1-tests-optional.patch" # TODO: upstream
+	"${FILESDIR}/${P}-icu-75.patch" # git master
 )
 
 src_configure() {
