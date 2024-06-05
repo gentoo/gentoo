@@ -23,8 +23,6 @@ IUSE="test-rust"
 RDEPEND="
 	>=dev-python/markupsafe-2.1.1[${PYTHON_USEDEP}]
 "
-# NOTE: remove the loong mask after greenlet gains support for loong
-# see https://github.com/python-greenlet/greenlet/pull/257
 BDEPEND="
 	test? (
 		dev-python/ephemeral-port-reserve[${PYTHON_USEDEP}]
@@ -34,11 +32,6 @@ BDEPEND="
 		test-rust? (
 			dev-python/cryptography[${PYTHON_USEDEP}]
 		)
-		!hppa? ( !ia64? ( !loong? (
-			$(python_gen_cond_dep '
-				dev-python/greenlet[${PYTHON_USEDEP}]
-			' python3_{10..11})
-		) ) )
 	)
 "
 
