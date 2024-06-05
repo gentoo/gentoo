@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,6 +19,6 @@ DEPEND="dev-ml/re:="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	test? (
-		dev-ml/ppx_jane
+		dev-ml/ppx_jane:0/0.14.0
 	)
 "
