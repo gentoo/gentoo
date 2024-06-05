@@ -7,9 +7,7 @@ XORG_DRI=dri
 XORG_EAUTORECONF=yes
 inherit linux-info xorg-3 flag-o-matic
 
-if [[ ${PV} == 9999* ]]; then
-	SRC_URI=""
-else
+if [[ ${PV} != 9999* ]]; then
 	KEYWORDS="~amd64 ~x86"
 	COMMIT_ID=""
 	SRC_URI="https://gitlab.freedesktop.org/xorg/driver/xf86-video-intel/-/archive/${COMMIT_ID}/${P}.tar.bz2"
