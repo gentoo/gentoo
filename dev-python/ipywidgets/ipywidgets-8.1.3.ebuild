@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 RDEPEND="
 	>=dev-python/comm-0.1.3[${PYTHON_USEDEP}]
