@@ -31,6 +31,7 @@ BDEPEND="
 	test? (
 		dev-python/ipykernel[${PYTHON_USEDEP}]
 		dev-python/jsonschema[${PYTHON_USEDEP}]
+		<dev-python/pytest-8.1[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 	)
 "
