@@ -22,6 +22,7 @@ IUSE="debug +sna tools +udev uxa valgrind xvmc"
 
 REQUIRED_USE="
 	|| ( sna uxa )
+	uxa? ( dri )
 "
 RDEPEND="
 	x11-libs/libXext
