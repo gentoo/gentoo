@@ -16,7 +16,7 @@ SLOT="0"
 
 COMMON_DEPEND="
 	dev-libs/libayatana-indicator:3
-	>=mate-base/mate-panel-1.17.0
+	>=mate-base/mate-panel-1.28.0
 	>=x11-libs/gtk+-3.22:3
 "
 
