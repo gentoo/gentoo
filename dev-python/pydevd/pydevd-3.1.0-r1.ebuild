@@ -45,9 +45,11 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 
 	# Drop -O3 and -flto compiler args
+	# Make extension build failures fatal
 	sed -i \
 		-e 's/extra_link_args = extra_compile_args\[\:\]/pass/g' \
 		-e '/extra_compile_args/d' \
+		-e '/except/a\    raise' \
 		setup.py || die
 
 	# Disable tests incompatible with new package versions
