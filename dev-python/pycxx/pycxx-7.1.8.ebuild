@@ -10,7 +10,7 @@ DISTUTILS_USE_SETUPTOOLS=no
 inherit distutils-r1
 
 DESCRIPTION="Set of facilities to extend Python with C++"
-HOMEPAGE="http://cxx.sourceforge.net"
+HOMEPAGE="https://cxx.sourceforge.net"
 SRC_URI="https://downloads.sourceforge.net/cxx/${P}.tar.gz"
 
 LICENSE="BSD"
