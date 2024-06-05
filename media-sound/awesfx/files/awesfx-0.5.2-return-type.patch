@@ -1,0 +1,12 @@
+diff -ru a/alsa.c b/alsa.c
+--- a/alsa.c	2024-06-05 19:43:42.987168221 -0000
++++ b/alsa.c	2024-06-05 19:44:48.530787408 -0000
+@@ -139,7 +139,7 @@
+ 	return snd_hwdep_ioctl(hwdep, SNDRV_EMUX_IOCTL_MISC_MODE, &mode);
+ }
+ 
+-void seq_set_gus_bank(int bank)
++int seq_set_gus_bank(int bank)
+ {
+ 	struct sndrv_emux_misc_mode mode;
+ 	mode.port = -1;
