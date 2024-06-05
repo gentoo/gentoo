@@ -268,6 +268,11 @@ BDEPEND="
 	nettle? ( <sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)) )
 "
 
+PATCHES=(
+	# fix test case for ppc64
+	"${FILESDIR}/${P}-ppc64-fix-testcase.patch"
+)
+
 QA_FLAGS_IGNORED="usr/lib.*/librpm_sequoia.so.1"
 
 llvm_check_deps() {
