@@ -13,7 +13,4 @@
 		Hans Hagen's powerful ConTeXt system, http://pragma-ade.com.
 		Also includes third-party ConTeXt packages.
 	</longdescription>
-	<use>
-		<flag name="luajittex">Add support for LuaJitTeX: LuaTeX based on LuaJIT which is usually faster.</flag>
-	</use>
 </pkgmetadata>

@@ -25,7 +25,6 @@ TEXLIVE_MODULE_CONTENTS="
 	context-vim.r62071
 	context-visualcounter.r47085
 	jmn.r45751
-	luajittex.r66186
 "
 TEXLIVE_MODULE_DOC_CONTENTS="
 	context.doc.r69665
@@ -47,13 +46,10 @@ TEXLIVE_MODULE_DOC_CONTENTS="
 	context-typescripts.doc.r60422
 	context-vim.doc.r62071
 	context-visualcounter.doc.r47085
-	luajittex.doc.r66186
 "
 TEXLIVE_MODULE_SRC_CONTENTS="
 	context-visualcounter.source.r47085
 "
-
-TEXLIVE_MODULE_OPTIONAL_ENGINE="luajittex"
 
 inherit texlive-module
 
@@ -71,7 +67,7 @@ RDEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
-	>=app-text/texlive-core-2023[xetex,luajittex?]
+	>=app-text/texlive-core-2023[xetex]
 "
 
 TEXLIVE_MODULE_BINSCRIPTS="

@@ -22,6 +22,7 @@ TEXLIVE_MODULE_CONTENTS="
 	knuth-local.r57963
 	lua-alt-getopt.r56414
 	luahbtex.r66186
+	luajittex.r66186
 	luatex.r69182
 	metafont.r66186
 	mflogo.r42428
@@ -50,6 +51,7 @@ TEXLIVE_MODULE_DOC_CONTENTS="
 	iftex.doc.r61910
 	lua-alt-getopt.doc.r56414
 	luahbtex.doc.r66186
+	luajittex.doc.r66186
 	luatex.doc.r69182
 	metafont.doc.r66186
 	mflogo.doc.r42428
@@ -95,3 +97,11 @@ TEXLIVE_MODULE_BINSCRIPTS="
 	texmf-dist/scripts/simpdftex/simpdftex
 	texmf-dist/scripts/tlshell/tlshell.tcl
 "
+
+src_prepare() {
+	default
+	if ! use luajittex; then
+		rm -rf texmf-dist/{,scripts,doc}/luajittex
+		rm tlpkg/tlpobj/luajittex.* || die
+	fi
+}
