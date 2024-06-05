@@ -1,8 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit cuda desktop prefix python-single-r1 toolchain-funcs xdg
 
@@ -15,9 +15,10 @@ SRC_URI="
 	${MY_P}.src.tar.gz
 	fetch+https://dev.gentoo.org/~pacho/${PN}/${PN}-1.9.4_alpha57-gentoo-patches.tar.xz
 "
+S="${WORKDIR}/${MY_P}"
+LICENSE="vmd"
 
 SLOT="0"
-LICENSE="vmd"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="cuda gromacs msms povray sqlite tachyon xinerama"
@@ -57,9 +58,6 @@ RDEPEND="${CDEPEND}
 	msms? ( sci-chemistry/msms-bin )
 	povray? ( media-gfx/povray )
 "
-
-S="${WORKDIR}/${MY_P}"
-
 VMD_DOWNLOAD="http://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=VMD"
 
 # Binary only plugin
