@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Maciej Barć <xgqt@gentoo.org> (2024-06-05)
+# Old and experimental Scheme compiler.
+# Bugs: 870472 and 906863
+# Removal on 2024-07-05.
+dev-scheme/scheme48
+
 # Maciej Barć <xgqt@gentoo.org> (2024-06-04)
 # Deprecated git integration backend of "app-emacs/magit".
 # No longer supported by upstream. Fails to compile (bug 928920).
