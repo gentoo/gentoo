@@ -52,7 +52,12 @@ src_compile() {
 }
 
 src_test() {
+	ulimit -s 11530000
 	emake bootstrap
+	if use ocamlopt; then
+		emake opt
+		emake opt.opt
+	fi
 }
 
 src_install() {
