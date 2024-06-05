@@ -42,7 +42,6 @@ BDEPEND="
 		>=dev-python/psutil-5.9[${PYTHON_USEDEP}]
 		>=dev-python/pytest-timeout-2.1.0[${PYTHON_USEDEP}]
 		>=dev-python/python-dateutil-2.8.1[${PYTHON_USEDEP}]
-		>=dev-python/python-xmp-toolkit-2.0.1[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
 			dev-python/tomli[${PYTHON_USEDEP}]
 		' 3.{8..10})

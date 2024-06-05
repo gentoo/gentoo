@@ -18,6 +18,7 @@ HOMEPAGE="
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+IUSE="big-endian"
 
 # Check QPDF_MIN_VERSION in pyproject.toml on bumps, as well as
 # https://qpdf.readthedocs.io/en/stable/release-notes.html.
@@ -42,7 +43,9 @@ BDEPEND="
 		>=dev-python/psutil-5.9[${PYTHON_USEDEP}]
 		>=dev-python/pytest-timeout-2.1.0[${PYTHON_USEDEP}]
 		>=dev-python/python-dateutil-2.8.1[${PYTHON_USEDEP}]
-		>=dev-python/python-xmp-toolkit-2.0.1[${PYTHON_USEDEP}]
+		!big-endian? (
+			>=dev-python/python-xmp-toolkit-2.0.1[${PYTHON_USEDEP}]
+		)
 		$(python_gen_cond_dep '
 			dev-python/tomli[${PYTHON_USEDEP}]
 		' 3.10)
