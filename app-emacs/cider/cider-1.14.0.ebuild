@@ -39,17 +39,20 @@ BDEPEND="
 	test? ( app-emacs/buttercup )
 "
 
+# The "clojure-ts-mode" is currently unpackaged, so remove related tests.
 ELISP_REMOVE="
 	test/${PN}-jar-tests.el
+	test/${PN}-repl-tests.el
+	test/clojure-ts-mode/${PN}-connection-ts-tests.el
+	test/clojure-ts-mode/${PN}-selector-ts-tests.el
+	test/clojure-ts-mode/${PN}-util-ts-tests.el
 	test/enrich/${PN}-docstring-tests.el
 	test/integration/integration-tests.el
 "
 DOCS=( CHANGELOG.md README.md ROADMAP.md refcard )
 SITEFILE="50${PN}-gentoo.el"
 
-src_test() {
-	buttercup -L . -L test --traceback full || die "tests failed"
-}
+elisp-enable-tests buttercup test
 
 src_install() {
 	elisp_src_install
