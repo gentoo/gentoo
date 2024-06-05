@@ -14,6 +14,7 @@
 		<flag name="cjk">Add CJK support for InnoDB fulltext search using <pkg>app-text/mecab</pkg></flag>
 		<flag name="client-libs">Build the client libraries from the server package instead of the C Connector packages (not recommended)</flag>
 		<flag name="experimental">Build experimental features aka "rapid" plugins</flag>
+		<flag name="fido2">Enable FIDO2 support</flag>
 		<flag name="latin1">Use LATIN1 encoding instead of UTF8</flag>
 		<flag name="numa">Enable NUMA support using <pkg>sys-process/numactl</pkg> (NUMA kernel support is also required)</flag>
 		<flag name="profiling">Add support for statement profiling (requires USE=community).</flag>
