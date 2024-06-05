@@ -1,6 +1,10 @@
 # Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Eli Schwartz <eschwartz93@gmail.com> (2024-06-05)
+# tests require pytest-qt which is not keyworded
+app-portage/elogviewer test
+
 # Eray Aslan <eras@gentoo.org> (2024-03-08)
 # mongodb dependencies are not keyworded
 mail-mta/postfix mongodb
