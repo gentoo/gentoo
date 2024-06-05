@@ -122,7 +122,7 @@ src_install() {
 		exeinto "/usr/libexec/munin/plugins"
 		doexe contrib/nsd_munin_
 		insinto "/etc/munin/plugin-conf.d"
-		newins "${FILESDIR}/nsd.munin-conf nsd_munin"
+		newins "${FILESDIR}/nsd.munin-conf" nsd_munin
 	fi
 
 	# Use the upstream-provided systemd service file.
