@@ -12,7 +12,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1 linux-info optfeature tmpfiles ${SRC_ECLASS}
