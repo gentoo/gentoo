@@ -33,7 +33,7 @@ COMMON_DEPEND="
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/pango
-	applet? ( >=mate-base/mate-panel-1.17.0 )
+	applet? ( >=mate-base/mate-panel-1.28.0 )
 	udisks? ( >=sys-fs/udisks-1.90.0:2 )
 "
 
