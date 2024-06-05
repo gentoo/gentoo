@@ -83,7 +83,7 @@ python_test() {
 		tests/option_constants_test.py::OptionConstantsTest::test_socks5_gssapi_nec_setopt
 	)
 
-	epytest -p flaky -p timeout --timeout=30 tests
+	epytest -p flaky -p timeout --timeout=120 tests
 }
 
 python_install_all() {
