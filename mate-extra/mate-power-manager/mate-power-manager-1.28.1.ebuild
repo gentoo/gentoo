@@ -36,13 +36,13 @@ COMMON_DEPEND="
 	x11-libs/libXrandr
 	>=x11-libs/libnotify-0.7:0
 	x11-libs/pango
-	applet? ( >=mate-base/mate-panel-1.17.0 )
+	applet? ( >=mate-base/mate-panel-1.28.0 )
 	keyring? ( >=app-crypt/libsecret-0.11 )
 "
 
 RDEPEND="${COMMON_DEPEND}
 	virtual/libintl
-	policykit? ( >=mate-extra/mate-polkit-1.6 )
+	policykit? ( >=mate-extra/mate-polkit-1.28 )
 	systemd? ( sys-apps/systemd )
 	elogind? ( sys-auth/elogind )
 "
