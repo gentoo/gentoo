@@ -12,7 +12,7 @@ DESCRIPTION="A complete TeX distribution"
 HOMEPAGE="https://tug.org/texlive/"
 SLOT="0"
 LICENSE="BSD GPL-1+ GPL-2 GPL-2+ GPL-3+ MIT TeX-other-free"
-GENTOO_TEX_PATCHES_NUM=3
+GENTOO_TEX_PATCHES_NUM=5
 SRC_URI="
 	https://mirrors.ctan.org/systems/texlive/Source/${MY_P}.tar.xz
 	https://gitweb.gentoo.org/proj/tex-patches.git/snapshot/tex-patches-${GENTOO_TEX_PATCHES_NUM}.tar.bz2
@@ -449,9 +449,6 @@ src_install() {
 
 		dosym "${i%:*}" "/usr/bin/${i#*:}"
 	done
-
-	# https://bugs.gentoo.org/832139
-	rm "${ED}"/usr/bin/tlmgr || die
 
 	texlive-common_handle_config_files
 
