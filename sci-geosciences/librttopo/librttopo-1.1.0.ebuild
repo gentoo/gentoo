@@ -12,7 +12,7 @@ S="${WORKDIR}/librttopo"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 
 RDEPEND="sci-libs/geos"
 DEPEND="${RDEPEND}"
