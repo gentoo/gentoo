@@ -8,7 +8,7 @@ MATE_BRANCH="$(ver_cut 1-2)"
 MINOR=$(($(ver_cut 2) % 2))
 
 if [[ ${MINOR} -eq 0 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 fi
 
 DESCRIPTION="Meta ebuild for MATE, a traditional desktop environment"
