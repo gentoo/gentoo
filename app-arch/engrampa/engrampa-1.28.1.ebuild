@@ -25,7 +25,7 @@ DEPEND="
 	>=x11-libs/gtk+-3.22:3[X]
 	x11-libs/libSM
 	x11-libs/pango
-	caja? ( >=mate-base/caja-1.17.1 )
+	caja? ( >=mate-base/caja-1.28.0 )
 	magic? ( >=sys-apps/file-5.38 )
 "
 RDEPEND="
