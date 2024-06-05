@@ -72,7 +72,7 @@ src_configure() {
 		$(use_enable debug)
 		$(use_enable dri)
 		$(use_enable dri dri3)
-		$(usex dri "--with-default-dri=3")
+		$(usex dri "--with-default-dri=3" "")
 		$(use_enable sna)
 		$(use_enable tools)
 		$(use_enable udev)
