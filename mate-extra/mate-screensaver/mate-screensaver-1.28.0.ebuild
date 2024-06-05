@@ -21,9 +21,9 @@ COMMON_DEPEND="
 	>=dev-libs/dbus-glib-0.71:0
 	>=dev-libs/glib-2.58:2
 	gnome-base/dconf
-	>=mate-base/libmatekbd-1.17.0
-	>=mate-base/mate-desktop-1.17.0
-	>=mate-base/mate-menus-1.21.0
+	>=mate-base/libmatekbd-1.28.0
+	>=mate-base/mate-desktop-1.28.0
+	>=mate-base/mate-menus-1.28.0
 	>=sys-apps/dbus-0.30
 	>=x11-libs/gdk-pixbuf-2.14:2
 	>=x11-libs/libX11-1
@@ -44,7 +44,7 @@ COMMON_DEPEND="
 "
 
 RDEPEND="${COMMON_DEPEND}
-	>=mate-base/mate-session-manager-1.6
+	>=mate-base/mate-session-manager-1.28
 	virtual/libintl
 	mate-base/mate-panel
 "
