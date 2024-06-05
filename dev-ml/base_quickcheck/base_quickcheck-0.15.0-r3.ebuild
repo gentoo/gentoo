@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,8 +15,8 @@ KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
 IUSE="+ocamlopt"
 
 DEPEND="
-	dev-ml/base:=
-	dev-ml/fieldslib:=
+	dev-ml/base:${SLOT}
+	dev-ml/fieldslib:0/${PV}
 	dev-ml/ppx_base:${SLOT}
 	dev-ml/ppx_fields_conv:${SLOT}
 	dev-ml/ppx_let:${SLOT}
