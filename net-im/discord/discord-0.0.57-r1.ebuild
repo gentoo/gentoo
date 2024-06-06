@@ -23,7 +23,7 @@ LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="amd64"
 
-IUSE="appindicator +seccomp"
+IUSE="appindicator +seccomp wayland"
 RESTRICT="bindist mirror strip test"
 
 RDEPEND="
@@ -85,6 +85,12 @@ src_prepare() {
 	sed -i "/Exec/s:/usr/share/discord/Discord:${DESTDIR}/${MY_PN^}:" \
 		"${MY_PN}.desktop" ||
 		die "fixing of exec location on .desktop failed"
+	# USE wayland
+	if use wayland; then
+		sed -i '/Exec/s/Discord/Discord --enable-features=UseOzonePlatform --ozone-platform=wayland/' \
+			"${MY_PN}.desktop" ||
+			die "sed failed for wayland"
+	fi
 	# USE seccomp
 	if ! use seccomp; then
 		sed -i '/Exec/s/Discord/Discord --disable-seccomp-filter-sandbox/' \
