@@ -35,8 +35,9 @@ NTPSEC_REFCLOCK=(
 	shm pps hpgps zyfer arbiter nmea modem local
 )
 
-IUSE="${NTPSEC_REFCLOCK[@]} debug doc early heat libbsd nist ntpviz samba seccomp smear" #ionice
+IUSE="${NTPSEC_REFCLOCK[@]} debug doc early heat libbsd nist ntpviz samba seccomp smear test" #ionice
 REQUIRED_USE="${PYTHON_REQUIRED_USE} nist? ( local )"
+RESTRICT="!test? ( test )"
 
 # net-misc/pps-tools oncore,pps
 DEPEND="
@@ -124,7 +125,11 @@ src_compile() {
 }
 
 src_test() {
-	waf-utils_src_compile check
+	python_test
+}
+
+python_test() {
+	"${EPYTHON}" "${WAF_BINARY}" check -v -j $(makeopts_jobs)
 }
 
 src_install() {
