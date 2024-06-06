@@ -28,6 +28,9 @@ BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 "
 
+# This is a merged PR, remove it on bump
+PATCHES=( "${FILESDIR}/709.patch" )
+
 distutils_enable_tests pytest
 
 src_test() {
