@@ -19,7 +19,7 @@ else
 fi
 
 LICENSE="MIT"
-IUSE="liftoff +libinput +drm +session tinywl lcms vulkan x11-backend xcb-errors X"
+IUSE="liftoff +libinput +drm +session lcms vulkan x11-backend xcb-errors X"
 REQUIRED_USE="
 	drm? ( session )
 	libinput? ( session )
@@ -82,7 +82,7 @@ src_configure() {
 	local meson_backends=$(IFS=','; echo "${backends[*]}")
 	local emesonargs=(
 		$(meson_feature xcb-errors)
-		$(meson_use tinywl examples)
+		-Dexamples=false
 		-Drenderers=$(usex vulkan 'gles2,vulkan' gles2)
 		$(meson_feature X xwayland)
 		-Dbackends=${meson_backends}
@@ -97,10 +97,6 @@ src_configure() {
 src_install() {
 	meson_src_install
 	dodoc docs/*
-
-	if use tinywl; then
-		dobin "${BUILD_DIR}"/tinywl/tinywl
-	fi
 }
 
 pkg_postinst() {
