@@ -130,6 +130,7 @@ PATCHES=(
 	"${WORKDIR}"/${PATCHSET}/${P}-kross-optional.patch # bug 903532
 	"${FILESDIR}"/${P}-use-cmake-FindGSL-module.patch # bug 903343
 	"${FILESDIR}"/${P}-clang-16-configure.patch
+	"${FILESDIR}"/${P}-poppler-24.05.0.patch # bug 933490
 )
 
 pkg_pretend() {
