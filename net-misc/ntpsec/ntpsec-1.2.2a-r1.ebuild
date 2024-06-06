@@ -159,13 +159,13 @@ src_install() {
 	# move doc files to /usr/share/doc/"${P}"
 	use doc && mv -v "${ED}"/usr/share/doc/"${PN}" "${ED}"/usr/share/doc/"${P}"/html
 
-	waf-utils_src_install --notests
 	ln -svf pylib build/main/ntp
 	wheel_name=$(
 		cd build/main && \
 		gpep517 build-wheel --output-fd 3 --wheel-dir ../.. 3>&1 >&2
 	)
 	python_foreach_impl python_install
+	waf-utils_src_install --notests
 	python_fix_shebang "${ED}"
 	python_optimize
 }
