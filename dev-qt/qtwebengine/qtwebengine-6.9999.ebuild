@@ -70,6 +70,7 @@ RDEPEND="
 	designer? ( ~dev-qt/qttools-${PV}:6[designer] )
 	geolocation? ( ~dev-qt/qtpositioning-${PV}:6 )
 	kerberos? ( virtual/krb5 )
+	opengl? ( media-libs/libglvnd[X] )
 	pulseaudio? ( media-libs/libpulse[glib] )
 	screencast? (
 		dev-libs/glib:2
