@@ -18,5 +18,6 @@
 	</upstream>
 	<use>
 		<flag name="acct">User and group management via acct-*/git packages</flag>
+		<flag name="gogit">(EXPERIMENTAL) Use go-git variants of Git commands.</flag>
 	</use>
 </pkgmetadata>
