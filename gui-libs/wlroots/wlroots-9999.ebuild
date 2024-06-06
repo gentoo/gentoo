@@ -19,7 +19,7 @@ else
 fi
 
 LICENSE="MIT"
-IUSE="liftoff +libinput +drm +session tinywl vulkan x11-backend xcb-errors X"
+IUSE="liftoff +libinput +drm +session tinywl lcms vulkan x11-backend xcb-errors X"
 REQUIRED_USE="
 	drm? ( session )
 	libinput? ( session )
@@ -41,6 +41,7 @@ DEPEND="
 		sys-apps/hwdata
 		liftoff? ( >=dev-libs/libliftoff-0.4 )
 	)
+	lcms? ( media-libs/lcms:2 )
 	libinput? ( >=dev-libs/libinput-1.14.0:= )
 	session? (
 		sys-auth/seatd:=
@@ -85,6 +86,7 @@ src_configure() {
 		$(meson_feature X xwayland)
 		-Dbackends=${meson_backends}
 		$(meson_feature session)
+		$(meson_feature lcms color-management)
 	)
 
 	meson_src_configure
