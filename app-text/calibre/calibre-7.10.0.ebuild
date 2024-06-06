@@ -35,7 +35,7 @@ LICENSE="
 	OFL-1.1
 	PSF-2
 "
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 SLOT="0"
 IUSE="+font-subsetting ios speech +system-mathjax test +udisks unrar"
 
