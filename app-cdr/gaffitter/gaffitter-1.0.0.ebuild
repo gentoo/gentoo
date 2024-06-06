@@ -27,8 +27,18 @@ src_prepare() {
 	cmake_src_prepare
 }
 
+src_configure(){
+	local mycmakeargs=(
+		-DCMAKE_SKIP_RPATH=ON
+	)
+	cmake_src_configure
+}
+
 src_install() {
 	newbin "${BUILD_DIR}"/fit ${PN}
+	dolib.so "${BUILD_DIR}"/src/optimizers/liboptimizers.so
+	dolib.so "${BUILD_DIR}"/src/util/libutil.so
+
 	einstalldocs
 
 	if use scripts; then
