@@ -39,7 +39,8 @@ BDEPEND="
 "
 
 src_prepare() {
-	# TODO: depend on >=4.2.2 and drop the patch when it is stable
+	# TODO: depend on >=4.2.2 and remove after 4.2.2 is stable unless bug
+	# #933610 reintroduces slotting hacks (also drop GENTOO_SYSROOT below)
 	has_version '<dev-libs/iniparser-4.2.2:4' &&
 		eapply "${FILESDIR}"/${PN}-0.8.0-gentoo-iniparser4.patch
 
