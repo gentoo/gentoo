@@ -11,6 +11,7 @@
     </maintainer>
     <upstream>
       <remote-id type="sourcehut">~emersion/soju</remote-id>
+      <remote-id type="github">alfredfo/soju-deps</remote-id>
     </upstream>
     <use>
       <flag name="moderncsqlite">Use moderncsqlite, a cgo-free port of
