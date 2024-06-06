@@ -1,8 +1,0 @@
---- a/ext/c4core/cmake/c4Project.cmake
-+++ b/ext/c4core/cmake/c4Project.cmake
-@@ -2762,2 +2762,5 @@
-         if(NOT TARGET gtest)
-+            find_package(GTest REQUIRED)
-+        endif()
-+        if(FALSE)
-             c4_import_remote_proj(gtest ${CMAKE_CURRENT_BINARY_DIR}/ext/gtest
