@@ -558,11 +558,6 @@ multilib_src_install_all() {
 
 	use ukify && python_fix_shebang "${ED}"
 	use boot && secureboot_auto_sign
-
-	if use split-usr; then
-		dosym ../usr/lib/systemd /lib/systemd
-		dosym ../usr/lib/udev /lib/udev
-	fi
 }
 
 add_service() {
@@ -577,8 +572,9 @@ add_service() {
 
 pkg_preinst() {
 	# Migrate /lib/{systemd,udev} to /usr/lib
-	# Symlinks will be installed in the merge phase
 	if use split-usr; then
+		dosym ../usr/lib/systemd /lib/systemd
+		dosym ../usr/lib/udev /lib/udev
 		local d
 		for d in systemd udev; do
 			if [[ -e ${EROOT}/lib/${d} && ! -L ${EROOT}/lib/${d} ]]; then
