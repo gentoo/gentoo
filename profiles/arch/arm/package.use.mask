@@ -283,10 +283,6 @@ net-libs/gnutls test-full
 # Moved from use.mask since they are flags local to one package.
 media-tv/tvheadend hdhomerun
 
-# Patrice Clement <monsieurp@gentoo.org> (2017-09-24)
-# Unmask Raspberry Pi support on arm.
-media-video/mpv -raspberry-pi
-
 # James Le Cuirot <chewi@gentoo.org> (2017-09-20)
 # media-sound/mac's executable segfaults when compressing all but the
 # smallest wav files.
@@ -372,7 +368,6 @@ net-print/hplip -scanner kde
 # MMAL is available on the Raspberry Pi (armv6 & armv7 so far)
 media-video/ffmpeg -mmal
 media-video/ffmpeg-chromium -mmal
-media-video/mpv -mmal
 
 # Alexis Ballier <aballier@gentoo.org> (2015-04-02)
 # Needs ilmbase (openexr), which does not build and is masked on arm.

@@ -171,10 +171,6 @@ dev-db/mariadb jdbc
 # RPI support on arm
 dev-libs/libcec -raspberry-pi
 
-# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (2016-04-13)
-# Requires special hardware to test and stabilize properly.
-media-video/mpv raspberry-pi
-
 # Brian Evans <grknight@gentoo.org> (2016-01-08)
 # net-misc/libteam is not yet stable on arm
 net-misc/networkmanager teamd
