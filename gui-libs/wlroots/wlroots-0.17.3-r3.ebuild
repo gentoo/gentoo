@@ -23,8 +23,11 @@ IUSE="liftoff +libinput +drm +session tinywl vulkan x11-backend xcb-errors X"
 REQUIRED_USE="
 	drm? ( session )
 	libinput? ( session )
+	liftoff? ( drm )
 	xcb-errors? ( || ( x11-backend X ) )
 "
+
+PATCHES=( "${FILESDIR}/${PN}-0.17-fix-automagic-libliftoff.patch" )
 
 RDEPEND="
 	>=dev-libs/wayland-1.22.0
@@ -62,6 +65,8 @@ RDEPEND="
 		x11-base/xwayland
 	)
 "
+
+# TODO: 0.17.4 will add support for libliftoff-0.5
 DEPEND="
 	${RDEPEND}
 	liftoff? (
@@ -89,6 +94,7 @@ src_configure() {
 		$(meson_feature X xwayland)
 		-Dbackends=${meson_backends}
 		$(meson_feature session)
+		$(meson_feature liftoff libliftoff)
 	)
 
 	meson_src_configure

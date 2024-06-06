@@ -23,6 +23,7 @@ IUSE="liftoff +libinput +drm +session tinywl lcms vulkan x11-backend xcb-errors 
 REQUIRED_USE="
 	drm? ( session )
 	libinput? ( session )
+	liftoff? ( drm )
 	xcb-errors? ( || ( x11-backend X ) )
 "
 
@@ -87,6 +88,7 @@ src_configure() {
 		-Dbackends=${meson_backends}
 		$(meson_feature session)
 		$(meson_feature lcms color-management)
+		$(meson_feature liftoff libliftoff)
 	)
 
 	meson_src_configure
