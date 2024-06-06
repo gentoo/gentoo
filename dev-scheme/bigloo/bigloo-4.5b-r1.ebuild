@@ -5,7 +5,7 @@ EAPI=8
 
 inherit elisp-common flag-o-matic toolchain-funcs
 
-MY_PV=${PV/_p/-}  # e.g.: 4.4c_p4 -> 4.4c-4
+MY_PV="${PV/_p/-}"  # e.g.: 4.4c_p4 -> 4.4c-4
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Practical Scheme Compiler with many extensions"
@@ -56,10 +56,10 @@ BDEPEND="
 	sys-apps/texinfo
 "
 
+PATCHES=( "${FILESDIR}/${P}-makefile.patch" )
+
 DOCS=( ChangeLog README.md TODO.org )
 SITEFILE="50${PN}-gentoo.el"
-
-PATCHES="${FILESDIR}/${P}-makefile.patch"
 
 src_prepare() {
 	default
@@ -211,8 +211,9 @@ src_install() {
 
 	einstalldocs
 
-	# Remove static libs, bug #890820, #891041
+	# Remove static libs, bug #890820, #891041, #933665
 	find "${ED}" -name "*.a" -delete || die
+	find "${ED}" -name "*.la" -delete || die
 }
 
 pkg_postinst() {
