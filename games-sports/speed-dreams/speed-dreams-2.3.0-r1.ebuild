@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake desktop flag-o-matic
+inherit cmake java-pkg-2 desktop flag-o-matic
 
 MY_PV="${PV}-r8786"
 
@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug osggraph webstats"
 
-RDEPEND="
+COMMON_DEPEND="
 	dev-games/freesolid
 	dev-libs/expat
 	media-libs/libpng:=
@@ -37,8 +37,13 @@ RDEPEND="
 	osggraph? ( dev-games/openscenegraph:=[png] )
 "
 DEPEND="
-	${RDEPEND}
+	${COMMON_DEPEND}
+	>=virtual/jdk-11:*
 	x11-base/xorg-proto"
+RDEPEND="
+	${COMMON_DEPEND}
+	>=virtual/jre-1.8:*
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.3_rc1-xmlversion-rpath.patch
@@ -48,6 +53,10 @@ src_unpack() {
 	mkdir "${S}" || die
 	cd "${S}"
 	default
+}
+
+src_prepare() {
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -73,6 +82,10 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_compile() {
+	cmake_src_compile
 }
 
 src_install() {
