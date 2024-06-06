@@ -21,9 +21,10 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/glib-2.10.1:2
 	>=dev-libs/ivykis-0.42.4
-	>=dev-libs/libpcre2-10.0
+	>=dev-libs/libpcre2-10.0:=
 	dev-libs/openssl:0=
 	!dev-libs/eventlog
+	>=dev-libs/json-c-0.9:=
 	amqp? ( >=net-libs/rabbitmq-c-0.8.0:=[ssl] )
 	caps? ( sys-libs/libcap )
 	dbi? ( >=dev-db/libdbi-0.9.0 )
@@ -33,7 +34,6 @@ RDEPEND="
 		net-libs/grpc:=
 	)
 	http? ( net-misc/curl )
-	json? ( >=dev-libs/json-c-0.9:= )
 	kafka? ( >=dev-libs/librdkafka-1.0.0:= )
 	mongodb? ( >=dev-libs/mongo-c-driver-1.2.0 )
 	mqtt? ( net-libs/paho-mqtt-c:1.3 )
