@@ -49,6 +49,7 @@ DOCS=( authors.txt bugs.txt changes.txt credits.txt readme.txt )
 PATCHES=(
 	"${FILESDIR}"/${P}-bash-completion.patch
 	"${FILESDIR}"/${P}-find-xxdate.patch
+	"${FILESDIR}"/${P}-shuffle.patch
 )
 SITEFILE=50coccinelle-gentoo.el
 
