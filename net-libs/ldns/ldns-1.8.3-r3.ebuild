@@ -18,7 +18,11 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="test" # missing test directory
 
 BDEPEND="
-	python? ( dev-lang/swig )
+	python? (
+		${PYTHON_DEPS}
+		dev-lang/swig
+		$(python_gen_cond_dep 'dev-python/setuptools[${PYTHON_USEDEP}]')
+	)
 	doc? ( app-text/doxygen )
 "
 DEPEND="
