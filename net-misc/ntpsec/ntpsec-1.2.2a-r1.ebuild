@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517="flit"
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE='threads(+)'
 
 inherit distutils-r1 flag-o-matic waf-utils systemd
@@ -18,6 +18,7 @@ else
 	SRC_URI="
 		https://ftp.ntpsec.org/pub/releases/${P}.tar.gz
 		verify-sig? ( https://ftp.ntpsec.org/pub/releases/${P}.tar.gz.asc )
+		https://waf.io/waf-2.0.27
 	"
 	KEYWORDS="amd64 arm arm64 ~riscv ~x86"
 
@@ -76,6 +77,8 @@ PATCHES=(
 WAF_BINARY="${S}/waf"
 
 src_prepare() {
+	cp -v "${DISTDIR}/waf-2.0.27" "${WAF_BINARY}"
+	chmod -v ugo+x "${WAF_BINARY}"
 	default
 
 	# Remove autostripping of binaries
