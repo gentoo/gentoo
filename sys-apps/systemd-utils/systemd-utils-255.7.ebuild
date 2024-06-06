@@ -573,13 +573,14 @@ add_service() {
 pkg_preinst() {
 	# Migrate /lib/{systemd,udev} to /usr/lib
 	if use split-usr; then
-		dosym ../usr/lib/systemd /lib/systemd
-		dosym ../usr/lib/udev /lib/udev
 		local d
 		for d in systemd udev; do
+			dosym ../usr/lib/${d} /lib/${d}
 			if [[ -e ${EROOT}/lib/${d} && ! -L ${EROOT}/lib/${d} ]]; then
-				cp -rpPT "${EROOT}"/{,usr/}lib/${d} || die
-				rm -r "${EROOT}"/lib/${d} || die
+				einfo "Copying files from '${EROOT}/lib/${d}' to '${EROOT}/usr/lib/${d}'"
+				cp -rpPT "${EROOT}/lib/${d}" "${EROOT}/usr/lib/${d}" || die
+				einfo "Removing '${EROOT}/lib/${d}'"
+				rm -r "${EROOT}/lib/${d}" || die
 			fi
 		done
 	fi
