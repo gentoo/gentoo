@@ -23,7 +23,7 @@ SRC_URI="
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
 IUSE="drafts"
 
 # There are additional test failures if zeromq has the draft api enabled, but pyzmq has it disabled.
@@ -52,6 +52,11 @@ distutils_enable_tests pytest
 # 	dev-python/numpydoc \
 # 	dev-python/sphinx-rtd-theme \
 # 	dev-python/myst-parser
+
+PATCHES=(
+	# https://github.com/zeromq/pyzmq/pull/1990
+	"${FILESDIR}/${P}-gcc14.patch"
+)
 
 src_configure() {
 	DISTUTILS_ARGS=(

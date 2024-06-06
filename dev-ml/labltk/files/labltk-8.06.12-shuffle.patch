@@ -34,3 +34,13 @@
      jg_menu.cmx jg_memo.cmx fileselect.cmx ../support/fileevent.cmx shell.cmi
  typecheck.cmo : ../labltk/tk.cmo ../labltk/text.cmi mytypes.cmi jg_tk.cmo \
      jg_text.cmi jg_message.cmi typecheck.cmi
+--- a/browser/Makefile.shared	2024-06-05 10:08:38.886219581 +0200
++++ b/browser/Makefile.shared	2024-06-05 10:06:05.142920155 +0200
+@@ -71,4 +71,7 @@
+ 
+ shell.cmo: dummy.cmi
+ 
++dummy.cmi: dummy.ml
++	$(CAMLCOMP) $(INCLUDES) $<
++
+ include	.depend

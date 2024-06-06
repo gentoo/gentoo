@@ -1,9 +1,0 @@
---- a/ext/c4core/cmake/c4Project.cmake
-+++ b/ext/c4core/cmake/c4Project.cmake
-@@ -2643,4 +2643,4 @@
-     set(_RUNTIME_INSTALL_DIR   bin/)
--    set(_ARCHIVE_INSTALL_DIR   lib/)
--    set(_LIBRARY_INSTALL_DIR   lib/) # TODO on Windows, ARCHIVE and LIBRARY dirs must be different to prevent name clashes
-+    set(_ARCHIVE_INSTALL_DIR   lib/ CACHE STRING "")
-+    set(_LIBRARY_INSTALL_DIR   lib/ CACHE STRING "")
-     set(_INCLUDE_INSTALL_DIR   include/)

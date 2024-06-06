@@ -10,6 +10,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="drm">Enable support for Digital rights management (DRM)</flag>
+		<flag name="archive">Enable support for CBR and other archive formats using libarchive</flag>
 	</use>
 </pkgmetadata>

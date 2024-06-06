@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,8 +9,8 @@ TOOLCHAIN_GCC_PV=11.3.0
 PR=r0
 
 source tests-common.sh || exit
+source version-funcs.sh || exit
 
-EAPI=6 inherit eapi7-ver
 EAPI=7 inherit toolchain
 
 # Ignore actually running version of gcc and fake new version

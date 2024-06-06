@@ -79,6 +79,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.4667-flags.patch
 	"${FILESDIR}"/${PN}-1.7.5232-cubeb-automagic.patch
 	"${FILESDIR}"/${PN}-1.7.5835-vanilla-shaderc.patch
+	"${FILESDIR}"/${PN}-1.7.5855-no-libbacktrace.patch
 )
 
 src_prepare() {
@@ -120,9 +121,6 @@ src_configure() {
 		# seemingly has no intention to drop the requirement at the moment
 		# https://github.com/PCSX2/pcsx2/issues/11149
 		-DX11_API=yes
-
-		# not packaged due to bug #885471, but still disable for no automagic
-		-DCMAKE_DISABLE_FIND_PACKAGE_Libbacktrace=yes
 
 		# bundled cubeb flags, see media-libs/cubeb and cubeb-automagic.patch
 		-DCHECK_ALSA=$(usex alsa)

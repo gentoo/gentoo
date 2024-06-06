@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="examples"
 
 RDEPEND="
@@ -40,6 +40,7 @@ src_prepare() {
 	distutils-r1_src_prepare
 
 	# magic to ignore async tests sometimes, breaks EPYTEST_IGNORE
+	[[ ${PV} != 0.9.1 ]] && die "Remove this hack"
 	rm conftest.py || die
 }
 

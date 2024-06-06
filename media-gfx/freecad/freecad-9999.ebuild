@@ -94,8 +94,8 @@ RDEPEND="
 			$(python_gen_cond_dep '
 				dev-python/matplotlib[${PYTHON_USEDEP}]
 				>=dev-python/pivy-0.6.5[${PYTHON_USEDEP}]
-				dev-python/pyside2[gui,svg,webchannel,webengine,${PYTHON_USEDEP}]
-				dev-python/shiboken2[${PYTHON_USEDEP}]
+				dev-python/pyside2:=[gui,svg,webchannel,webengine,${PYTHON_USEDEP}]
+				dev-python/shiboken2:=[${PYTHON_USEDEP}]
 			' python3_{10..11} )
 		)
 		qt6? (
@@ -109,8 +109,8 @@ RDEPEND="
 			$(python_gen_cond_dep '
 				dev-python/matplotlib[${PYTHON_USEDEP}]
 				>=dev-python/pivy-0.6.5[${PYTHON_USEDEP}]
-				dev-python/pyside6[gui,svg,webchannel,webengine,${PYTHON_USEDEP}]
-				dev-python/shiboken6[${PYTHON_USEDEP}]
+				dev-python/pyside6:=[gui,svg,webchannel,webengine,${PYTHON_USEDEP}]
+				dev-python/shiboken6:=[${PYTHON_USEDEP}]
 			' )
 		)
 	)
@@ -333,7 +333,7 @@ src_install() {
 		# https://github.com/coin3d/coin/issues/451
 		: \${QT_QPA_PLATFORM:=xcb}
 		export QT_QPA_PLATFORM
-		exec /usr/$(get_libdir)/${PN}/bin/FreeCAD
+		exec /usr/$(get_libdir)/${PN}/bin/FreeCAD \${@}
 		_EOF_
 		mv "${ED}"/usr/$(get_libdir)/${PN}/share/* "${ED}"/usr/share || die "failed to move shared resources"
 	fi

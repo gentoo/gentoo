@@ -105,9 +105,9 @@ inherit texlive-module
 
 DESCRIPTION="TeXLive Cyrillic"
 
-LICENSE="GPL-1 GPL-2 LPPL-1.3 LPPL-1.3c MIT OFL-1.1 TeX-other-free public-domain"
+LICENSE="GPL-1+ GPL-2 LPPL-1.3 LPPL-1.3c MIT OFL-1.1 TeX-other-free public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 COMMON_DEPEND="
 	>=dev-texlive/texlive-basic-2023
 	>=dev-texlive/texlive-latex-2023

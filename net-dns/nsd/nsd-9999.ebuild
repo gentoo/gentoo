@@ -1,9 +1,9 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI="8"
 
-inherit autotools systemd
+inherit autotools systemd tmpfiles
 
 DESCRIPTION="An authoritative only, high performance, open source name server"
 HOMEPAGE="https://www.nlnetlabs.nl/projects/nsd"
@@ -27,7 +27,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="bind8-stats debug dnstap libevent minimal-responses mmap munin +nsec3 ratelimit root-server ssl systemd"
+IUSE="bind8-stats debug +default-znow dnstap +ipv6 +largefile libevent +lto memclean minimal-responses mmap munin +nsec3 packed +pie +radix-tree ratelimit recvmmsg ssl systemd +tfo year2038"
 
 RDEPEND="
 	acct-group/nsd
@@ -49,49 +49,63 @@ BDEPEND="
 "
 
 PATCHES=(
-	# Fix the paths in the munin plugin to match our install
-	"${FILESDIR}"/nsd_munin_.patch
+	"${FILESDIR}/${P}-systemd-no-pidfile.patch"
+	"${FILESDIR}/${PN}-munin-gentoo-paths.patch"
 )
+
+NSD_INITD_VER="2"		# Current version of NSD's OpenRC init.d script.
+NSD_TMPFILESD_VER="1"		# Current version of NSD's tmpfiles.d config.
+
+NSD_DBDIR="/var/db/nsd"		# Default dir for NSD's databases.
+NSD_ZNDIR="/var/lib/nsd"	# Default dir for NSD's zone files.
 
 src_prepare() {
 	default
 
-	# Required to get correct pkg-config macros with USE="systemd"
-	# See bugs #663618 and #758050
+	# Required to get correct pkg-config macros with USE="systemd".
+	# See bugs #663618 & #758050.
 	eautoreconf
 }
 
 src_configure() {
-	local myeconfargs=(
-		--enable-ipv6
-		--enable-largefile
-		--enable-pie
-		--enable-relro-now
-		--enable-tcp-fastopen
-
-		--with-dbfile="${EPREFIX}"/var/db/nsd/nsd.db
-		--with-logfile="${EPREFIX}"/var/log/nsd.log
-		--with-pidfile="${EPREFIX}"/run/nsd/nsd.pid
-		--with-xfrdfile="${EPREFIX}"/var/db/nsd/xfrd.state
-		--with-xfrdir="${EPREFIX}"/var/db/nsd
-		--with-zonelistfile="${EPREFIX}"/var/db/nsd/zone.list
-		--with-zonesdir="${EPREFIX}"/var/lib/nsd
-
+	local myconf=(
 		$(use_enable bind8-stats)
 		$(use_enable bind8-stats zone-stats)
 		$(use_enable debug checking)
+		$(use_enable default-znow relro-now)
 		$(use_enable dnstap)
+		$(use_enable ipv6)
+		$(use_enable largefile)
+		$(use_enable lto flto)
+		$(use_enable memclean)
 		$(use_enable minimal-responses)
 		$(use_enable mmap)
 		$(use_enable nsec3)
+		$(use_enable packed)
+		$(use_enable pie)
+		$(use_enable radix-tree)
 		$(use_enable ratelimit)
-		$(use_enable root-server)
+		$(use_enable recvmmsg)
 		$(use_enable systemd)
+		$(use_enable tfo tcp-fastopen)
 		$(use_with libevent)
 		$(use_with ssl)
+
+		--with-dbfile="${EPREFIX}/${NSD_DBDIR}/nsd.db"
+		--with-logfile="${EPREFIX}/var/log/nsd.log"
+		--with-pidfile="${EPREFIX}/run/nsd/nsd.pid"
+		--with-xfrdfile="${EPREFIX}/${NSD_DBDIR}/xfrd.state"
+		--with-xfrdir="${EPREFIX}/${NSD_DBDIR}"
+		--with-zonelistfile="${EPREFIX}/${NSD_DBDIR}/zone.list"
+		--with-zonesdir="${EPREFIX}/${NSD_ZNDIR}"
 	)
 
-	econf "${myeconfargs[@]}"
+	# This configure switch is only available on a glibc-based system.
+	if use elibc_glibc; then
+		myconf+=( $(use_enable year2038) )
+	fi
+
+	econf "${myconf[@]}"
 }
 
 src_install() {
@@ -99,29 +113,37 @@ src_install() {
 
 	dodoc doc/{ChangeLog,CREDITS,NSD-4-features,NSD-FOR-BIND-USERS,README,RELNOTES,REQUIREMENTS}
 
-	newinitd "${FILESDIR}"/nsd.initd-r1 nsd
+	newinitd "${FILESDIR}/nsd.initd-r${NSD_INITD_VER}" nsd
 
-	# Install munin plugin and config
+	newtmpfiles "${FILESDIR}/nsd.tmpfilesd-r1" nsd.conf
+
+	# Install munin plugin and config, if requested.
 	if use munin ; then
-		exeinto /usr/libexec/munin/plugins
+		exeinto "/usr/libexec/munin/plugins"
 		doexe contrib/nsd_munin_
-		insinto /etc/munin/plugin-conf.d
-		newins "${FILESDIR}"/nsd.munin-conf nsd_munin
+		insinto "/etc/munin/plugin-conf.d"
+		newins "${FILESDIR}/nsd.munin-conf nsd_munin"
 	fi
 
-	systemd_dounit "${FILESDIR}"/nsd.service
+	# Use the upstream-provided systemd service file.
+	systemd_dounit "contrib/nsd.service"
 
 	# Remove the /run directory that usually resides on tmpfs and is
-	# being taken care of by the nsd init script anyway (checkpath)
-	rm -r "${ED}"/run || die "Failed to remove /run"
+	# being taken care of by the nsd init script anyway (checkpath).
+	rm -r "${ED}/run" || die "Failed to remove /run"
 
-	keepdir /var/db/${PN}
+	keepdir "${NSD_DBDIR}"
 }
 
 pkg_postinst() {
-	# database directory, writable by nsd for database updates and zone transfers
-	install -d -m 750 -o nsd -g nsd "${EROOT}"/var/db/nsd
+	# See eclass/tmpfiles.eclass for info.
+	tmpfiles_process nsd.conf
 
-	# zones directory, writable by nsd for zone file updates (nsd-control write)
-	install -d -m 750 -o nsd -g nsd "${EROOT}"/var/lib/nsd
+	# Database directory
+	# Writable by nsd:nsd for database updates and zone transfers.
+	install -d -m 750 -o nsd -g nsd "${EROOT}/${NSD_DBDIR}"
+
+	# Zones directory
+	# Writable by nsd:nsd for zone file updates (via 'nsd-control write').
+	install -d -m 750 -o nsd -g nsd "${EROOT}/${NSD_ZNDIR}"
 }

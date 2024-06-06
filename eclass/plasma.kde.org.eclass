@@ -63,7 +63,7 @@ if [[ ${KDE_BUILD_TYPE} == live ]]; then
 	fi
 elif [[ -z ${KDE_ORG_COMMIT} ]]; then
 	case ${PV} in
-		5.??.[6-9][05]* )
+		5.??.[6-9][05]* | 6.?.[6-9][05]* )
 			_KDE_SRC_URI+="unstable/plasma/$(ver_cut 1-3)/"
 			RESTRICT+=" mirror"
 			;;

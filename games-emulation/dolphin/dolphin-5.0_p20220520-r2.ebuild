@@ -35,7 +35,11 @@ IUSE="
 	profile pulseaudio systemd upnp vulkan
 "
 
-PATCHES=("${FILESDIR}/${P}-libfmt-9.0.0-fix-build.patch")
+PATCHES=(
+	"${FILESDIR}/${P}-libfmt-9.0.0-fix-build.patch"
+	# https://github.com/dolphin-emu/dolphin/pull/12575
+	"${FILESDIR}/${P}-gcc-14.patch"
+)
 
 RDEPEND="
 	app-arch/bzip2:=

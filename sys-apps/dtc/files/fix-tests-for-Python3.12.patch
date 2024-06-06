@@ -1,0 +1,43 @@
+Description: Python3.12 causes breakage for get_mem_rsv in pylibfdt.
+ 
+ Author: Héctor Orón Martínez <zumbi@debian.org>
+
+---
+
+Bug: https://github.com/dgibson/dtc/issues/123
+Bug-Debian: https://bugs.debian.org/1061318
+Bug-Ubuntu: https://launchpad.net/bugs/2051399
+Last-Update: 2024-01-30
+
+--- device-tree-compiler-1.7.0.orig/tests/pylibfdt_tests.py
++++ device-tree-compiler-1.7.0/tests/pylibfdt_tests.py
+@@ -418,9 +418,14 @@ class PyLibfdtBasicTests(unittest.TestCa
+     def testReserveMap(self):
+         """Test that we can access the memory reserve map"""
+         self.assertEqual(2, self.fdt.num_mem_rsv())
+-        self.assertEqual([ 0xdeadbeef00000000, 0x100000],
+-                          self.fdt.get_mem_rsv(0))
+-        self.assertEqual([123456789, 0o10000], self.fdt.get_mem_rsv(1))
++        if sys.version_info.major >= 3 and sys.version_info.minor >= 12:
++            self.assertEqual([0, 0xdeadbeef00000000, 0x100000],
++                             self.fdt.get_mem_rsv(0))
++            self.assertEqual([0, 123456789, 0o10000], self.fdt.get_mem_rsv(1))
++        else:
++            self.assertEqual([0xdeadbeef00000000, 0x100000],
++                             self.fdt.get_mem_rsv(0))
++            self.assertEqual([123456789, 0o10000], self.fdt.get_mem_rsv(1))
+ 
+     def testEmpty(self):
+         """Test that we can create an empty tree"""
+@@ -615,7 +620,10 @@ class PyLibfdtSwTests(unittest.TestCase)
+ 
+         fdt = sw.as_fdt()
+         self.assertEqual(2, fdt.num_mem_rsv())
+-        self.assertEqual([TEST_ADDR_1, TEST_SIZE_1], fdt.get_mem_rsv(0))
++        if sys.version_info.major >= 3 and sys.version_info.minor >= 12:
++            self.assertEqual([0, TEST_ADDR_1, TEST_SIZE_1], fdt.get_mem_rsv(0))
++        else:
++            self.assertEqual([TEST_ADDR_1, TEST_SIZE_1], fdt.get_mem_rsv(0))
+ 
+         # Make sure we can add a few more things
+         with sw.add_node('another'):

@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
@@ -22,7 +22,7 @@ if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
 else
 	inherit pypi
-	KEYWORDS="~amd64 ~riscv"
+	KEYWORDS="amd64 ~riscv"
 fi
 
 DEPEND="
@@ -36,6 +36,9 @@ RDEPEND="
 	dev-python/pyasn1-modules[${PYTHON_USEDEP}]
 	dev-python/pyasn1[${PYTHON_USEDEP}]
 	${DEPEND}
+	$(python_gen_cond_dep '
+		>=dev-lang/python-3.12.1_p1:3.12
+	' python3_12)
 "
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]

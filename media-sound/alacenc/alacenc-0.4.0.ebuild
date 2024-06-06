@@ -15,6 +15,10 @@ KEYWORDS="~amd64 ~x86"
 
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${P}-musl.patch"
+)
+
 src_install() {
 	dobin "${BUILD_DIR}/alacenc"
 	einstalldocs

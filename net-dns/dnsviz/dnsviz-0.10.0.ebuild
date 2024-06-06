@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 optfeature
 
@@ -14,18 +14,15 @@ HOMEPAGE="
 	https://github.com/dnsviz/dnsviz/
 	https://pypi.org/project/dnsviz/
 "
-
 # 0.10.0 is untagged, see https://github.com/dnsviz/dnsviz/issues/122
 SRC_URI="
 	https://github.com/dnsviz/dnsviz/archive/86ceba56e8ed23df0ec091b8750025ac374f3916.tar.gz
 		-> ${P}.gh.tar.gz
 "
-
-SLOT="0"
-
 S="${WORKDIR}/${PN}-86ceba56e8ed23df0ec091b8750025ac374f3916"
 
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"

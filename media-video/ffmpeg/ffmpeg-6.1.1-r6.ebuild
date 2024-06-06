@@ -419,6 +419,14 @@ src_prepare() {
 
 	ln -snf "${FILESDIR}"/chromium.c chromium.c || die
 	echo 'include $(SRC_PATH)/ffbuild/libffmpeg.mak' >> Makefile || die
+
+	# We need to detect LTO usage before multilib stuff and filter-lto is called (bug #923491)
+	if tc-is-lto ; then
+		# Respect -flto value, e.g -flto=thin
+		local v="$(get-flag flto)"
+		[[ ${v} != -flto ]] && LTO_FLAG="--enable-lto=${v}" || LTO_FLAG="--enable-lto"
+	fi
+	filter-lto
 }
 
 multilib_src_configure() {
@@ -510,12 +518,9 @@ multilib_src_configure() {
 	done
 
 	# LTO support, bug #566282, bug #754654, bug #772854
-	if [[ ${ABI} != x86 ]] && tc-is-lto; then
-		# Respect -flto value, e.g -flto=thin
-		local v="$(get-flag flto)"
-		[[ -n ${v} ]] && myconf+=( "--enable-lto=${v}" ) || myconf+=( "--enable-lto" )
+	if [[ ${ABI} != x86 && ! -z ${LTO_FLAG} ]]; then
+		myconf+=( ${LTO_FLAG} )
 	fi
-	filter-lto
 
 	# Mandatory configuration
 	myconf=(

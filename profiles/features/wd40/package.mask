@@ -68,7 +68,7 @@ dev-python/jupyter-lsp
 dev-python/jupyter-server
 dev-python/jupyter-server-mathjax
 dev-python/jupyter-server-terminals
-dev-python/jupyterlab_widgets
+dev-python/jupyterlab-widgets
 dev-python/jupyterlab-server
 dev-python/jupyterlab
 dev-python/keyring

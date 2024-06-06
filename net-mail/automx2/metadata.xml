@@ -10,7 +10,7 @@
 		(autoconfig) in one tool.
 	</longdescription>
 	<upstream>
-		<doc>https://github.com/rseichter/automx2/blob/master/doc/automx2.pdf</doc>
+		<doc>https://rseichter.github.io/automx2/</doc>
 		<maintainer>
 			<email>automx2@seichter.de</email>
 			<name>Ralph Seichter</name>

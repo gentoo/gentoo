@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ DESCRIPTION="Tool to build C libraries"
 # https://rt.cpan.org/Ticket/Display.html?id=133195
 LICENSE="|| ( Artistic GPL-1 )"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~riscv x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

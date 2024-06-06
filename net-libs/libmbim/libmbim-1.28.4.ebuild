@@ -1,8 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit bash-completion-r1 meson python-any-r1
 
 DESCRIPTION="Mobile Broadband Interface Model (MBIM) modem protocol helper library"
@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.freedesktop.org/mobile-broadband/libmbim/-/archive/${PV}
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv x86"
 IUSE="gtk-doc"
 
 RDEPEND="

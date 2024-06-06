@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit autotools python-any-r1
 
 DESCRIPTION="Exuberant Ctags creates tags files for code browsing in editors"
@@ -38,6 +38,12 @@ BDEPEND="
 	test? ( ${PYTHON_DEPS} )
 "
 IDEPEND="app-eselect/eselect-ctags"
+
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# manual check for function in a library that doesn't exist, passes -liconv
+	# which either fails to link anyway (glibc) or passes this check (musl)
+	libiconv_open
+)
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1
@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~riscv x86"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 
 RDEPEND="
 	dev-python/decorator[${PYTHON_USEDEP}]

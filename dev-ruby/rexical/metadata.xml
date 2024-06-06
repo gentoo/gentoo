@@ -6,6 +6,6 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">tenderlove/rexical</remote-id>
+    <remote-id type="github">sparklemotion/rexical</remote-id>
   </upstream>
 </pkgmetadata>

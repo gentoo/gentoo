@@ -43,11 +43,16 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}/${PN}-1.94.1-test-timeout.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-1.94.1-test-timeout.patch"
+	"${FILESDIR}/${PN}-1.94.7-skip-test-dep.patch"
+)
 
 S="${WORKDIR}/${MY_P}"
 
 src_configure() {
+	# TODO: wire up test deps (cairo, pygobject, etc) for extra tests
+	# currently skipped.
 	local emesonargs=(
 		$(meson_use examples gtk-examples)
 		$(meson_use gtk-doc doc)

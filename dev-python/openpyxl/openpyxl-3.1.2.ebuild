@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 
 inherit distutils-r1
 
@@ -22,7 +22,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos"
 
 RDEPEND="
-	dev-python/et_xmlfile[${PYTHON_USEDEP}]
+	dev-python/et-xmlfile[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
@@ -35,8 +35,20 @@ distutils_enable_sphinx doc \
 	dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://foss.heptapod.net/openpyxl/openpyxl/-/commit/517ce7d21194da275f8083fa2fd7de6977dc7e95
+	"${FILESDIR}/${P}-pytest-8.patch"
+)
+
 python_test() {
 	local EPYTEST_DESELECT=()
+
+	if has_version ">=dev-python/numpy-2[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			# https://foss.heptapod.net/openpyxl/openpyxl/-/issues/2187
+			openpyxl/compat/tests/test_compat.py::test_numpy_tostring
+		)
+	fi
 
 	case ${EPYTHON} in
 		python3.12)

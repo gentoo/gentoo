@@ -67,7 +67,7 @@ else
 	MY_PV="${MY_PV}-${CODENAME}"
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI+=" https://github.com/xbmc/xbmc/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+	KEYWORDS="amd64 arm64 ~riscv ~x86"
 	S=${WORKDIR}/xbmc-${MY_PV}
 fi
 
@@ -259,8 +259,8 @@ BDEPEND="
 	)
 "
 
-PATHCES=(
-	"${FILESDIR}"/kodi-21-fix-gcc14.ebuild
+PATCHES=(
+	"${FILESDIR}"/kodi-21-fix-gcc14.patch
 )
 
 # bug #544020

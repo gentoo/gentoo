@@ -28,6 +28,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-wreturn-type.patch
+	"${FILESDIR}"/${PN}-1.04.00-cxx-std.patch
 )
 
 src_prepare() {

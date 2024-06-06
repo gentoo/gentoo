@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,6 +16,11 @@ KEYWORDS="amd64 ppc sparc x86"
 PATCHES=(
 	"${FILESDIR}"/${P}-format-security.patch
 	"${FILESDIR}"/${PN}-4.9.5-respect-AR.patch
+)
+
+QA_CONFIG_IMPL_DECL_SKIP+=(
+	# check for "DEC Alpha running OSF/1", fails safely regardless of -Werror=*.
+	statfs
 )
 
 src_prepare() {

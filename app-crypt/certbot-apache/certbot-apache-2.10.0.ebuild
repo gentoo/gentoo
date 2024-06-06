@@ -32,10 +32,9 @@ HOMEPAGE="
 	https://letsencrypt.org/
 "
 
+S="${WORKDIR}/${PARENT_P}/${PN}"
 LICENSE="Apache-2.0"
 SLOT="0"
-
-S="${WORKDIR}/${PARENT_P}/${PN}"
 
 BDEPEND="
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )

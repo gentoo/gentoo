@@ -14,5 +14,6 @@
 </longdescription>
 <upstream>
   <remote-id type="sourceforge">mathmod</remote-id>
+  <remote-id type="github">parisolab/mathmod</remote-id>
 </upstream>
 </pkgmetadata>

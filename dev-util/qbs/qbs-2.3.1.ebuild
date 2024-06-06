@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit cmake flag-o-matic python-any-r1
+inherit cmake flag-o-matic python-any-r1 toolchain-funcs
 
 DESCRIPTION="Modern build tool for software projects"
 HOMEPAGE="https://doc.qt.io/qbs/"
@@ -61,6 +61,10 @@ src_configure() {
 	# temporary workaround for musl-1.2.4 (bug #906929), this ideally
 	# needs fixing in qtbase as *64 usage comes from its headers' macros
 	use elibc_musl && append-lfs-flags
+
+	# fails to build with gcc:14 and -O3 (bug #933187)
+	tc-is-gcc && [[ $(gcc-major-version) -ge 14 ]] &&
+		replace-flags -O3 -O2
 
 	local mycmakeargs=(
 		-DQBS_DOC_INSTALL_DIR="${EPREFIX}"/usr/share/doc/${PF}

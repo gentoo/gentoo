@@ -5,4 +5,7 @@
 	<email>freedesktop-bugs@gentoo.org</email>
 	<name>Gentoo Freedesktop Project</name>
 </maintainer>
+<upstream>
+	<remote-id type="freedesktop-gitlab">media-player-info/media-player-info</remote-id>
+</upstream>
 </pkgmetadata>

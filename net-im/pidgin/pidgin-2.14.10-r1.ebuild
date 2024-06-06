@@ -106,7 +106,6 @@ DEFAULT_PRPLS="irc,jabber,simple"
 
 # List of plugins
 #   app-accessibility/pidgin-festival
-#   net-im/librvp
 #   x11-plugins/guifications
 #	x11-plugins/msn-pecan
 #   x11-plugins/pidgin-encryption

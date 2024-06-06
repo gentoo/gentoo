@@ -1,0 +1,22 @@
+From aa54ba73df4d42878130c99688be35acf10725a0 Mon Sep 17 00:00:00 2001
+From: ppphp <kevinniub@gmail.com>
+Date: Sat, 30 Mar 2024 13:52:32 +0800
+Subject: [PATCH] fix: c++20 deprecate copy_option
+
+---
+ src/Gui/PreferencePackManager.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Gui/PreferencePackManager.cpp b/src/Gui/PreferencePackManager.cpp
+index e0e6184a3147..e1773a436852 100644
+--- a/src/Gui/PreferencePackManager.cpp
++++ b/src/Gui/PreferencePackManager.cpp
+@@ -224,7 +224,7 @@ void Gui::PreferencePackManager::importConfig(const std::string& packName,
+     auto savedPreferencePacksDirectory =
+         fs::path(App::Application::getUserAppDataDir()) / "SavedPreferencePacks";
+     auto cfgFilename = savedPreferencePacksDirectory / packName / (packName + ".cfg");
+-    fs::copy_file(path, cfgFilename, fs::copy_option::overwrite_if_exists);
++    fs::copy_file(path, cfgFilename, fs::copy_options::overwrite_existing);
+     rescan();
+ }
+ 

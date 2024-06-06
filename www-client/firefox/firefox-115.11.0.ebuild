@@ -56,7 +56,7 @@ SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}
 DESCRIPTION="Firefox Web Browser"
 HOMEPAGE="https://www.mozilla.com/firefox"
 
-KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
+KEYWORDS="amd64 arm64 ppc64 ~riscv x86"
 
 SLOT="esr"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
@@ -114,10 +114,13 @@ BDEPEND="${PYTHON_DEPS}
 	>=dev-util/cbindgen-0.24.3
 	net-libs/nodejs
 	virtual/pkgconfig
-	!clang? ( >=virtual/rust-1.65 )
+	!clang? (
+		>=virtual/rust-1.65
+		<virtual/rust-1.78
+	)
 	!elibc_glibc? (
 		|| (
-			dev-lang/rust
+			<dev-lang/rust-1.78
 			<dev-lang/rust-bin-1.73
 		)
 	)

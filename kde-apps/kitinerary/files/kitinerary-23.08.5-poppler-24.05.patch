@@ -1,0 +1,37 @@
+From 6a0a4f455d58b96b8965667a7eb057abd244d87e Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Sun, 21 Apr 2024 11:14:42 +0200
+Subject: [PATCH] Compile with newer poppler
+
+And remove ancient poppler ifdefs
+---
+ src/lib/pdf/pdfdocument.cpp              | 5 +++++
+ 1 file changed, 5 insertions(+), 0 deletions(-)
+
+diff --git a/src/lib/pdf/pdfdocument.cpp b/src/lib/pdf/pdfdocument.cpp
+index 417a0b85..f829e645 100644
+--- a/src/lib/pdf/pdfdocument.cpp
++++ b/src/lib/pdf/pdfdocument.cpp
+@@ -22,6 +22,7 @@
+ #include <PDFDoc.h>
+ #include <PDFDocEncoding.h>
+ #include <Stream.h>
++#include <UTF.h>
+ 
+ #include <cmath>
+ 
+@@ -330,7 +307,11 @@ QString gooStringToUnicode(const std::unique_ptr<GooString> &s)
+         return {};
+     }
+ 
++#if KPOPPLER_VERSION >= QT_VERSION_CHECK(24, 5, 0)
++    if (hasUnicodeByteOrderMark(s->toStr()) || hasUnicodeByteOrderMarkLE(s->toStr())) {
++#else
+     if (s->hasUnicodeMarker() || s->hasUnicodeMarkerLE()) {
++#endif
+         return QString::fromUtf16(reinterpret_cast<const char16_t*>(s->toStr().c_str()), s->toStr().size() / 2);
+     } else {
+         int len = 0;
+-- 
+GitLab
+

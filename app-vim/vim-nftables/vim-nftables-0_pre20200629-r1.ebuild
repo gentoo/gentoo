@@ -1,4 +1,4 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/nfnty/${PN}/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.
 S="${WORKDIR}/${PN}-${COMMIT_ID}"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 PATCHES=(
 	"${FILESDIR}/vim-nftables-0_pre2020062901-no-expandtab.patch"

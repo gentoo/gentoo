@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_IN_SOURCE_BUILD=1
 DISTUTILS_USE_SETUPTOOLS=no
 
@@ -19,7 +19,12 @@ KEYWORDS="amd64 ~arm arm64 ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
 IUSE="examples ipv6"
 
 RDEPEND="net-firewall/iptables[ipv6(+)?]"
-BDEPEND="sys-devel/gettext"
+BDEPEND="
+	sys-devel/gettext
+	$(python_gen_cond_dep '
+		dev-python/setuptools[${PYTHON_USEDEP}]
+	' python3_12)
+"
 
 PATCHES=(
 	# Move files away from /lib/ufw.

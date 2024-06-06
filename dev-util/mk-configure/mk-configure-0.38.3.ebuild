@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD BSD-2 GPL-2+ MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 # TODO: investigate
 RESTRICT="test"

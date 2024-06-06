@@ -1,17 +1,17 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{8..12} )
 inherit distutils-r1 gnome2-utils optfeature plocale virtualx xdg
 
 PLOCALES="ca cs de el es fa fi fr gl hr hu id it ja ko nb nl pa pl pt_BR ru sv tr uk zh_CN zh_TW"
 
 DESCRIPTION="Drop-down terminal for GNOME"
-HOMEPAGE="http://guake-project.org/"
+HOMEPAGE="https://guake.github.io/"
 SRC_URI="https://github.com/Guake/guake/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="GPL-2+"

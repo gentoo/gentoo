@@ -10,28 +10,28 @@ HOMEPAGE="https://github.com/libjxl/libjxl/"
 
 EGIT_REPO_URI="https://github.com/libjxl/libjxl.git"
 EGIT_SUBMODULES=(
-	third_party/libjpeg-turbo
 	third_party/skcms
 	third_party/testdata
 )
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="+gdk-pixbuf openexr test"
+IUSE="+gdk-pixbuf gif jpeg openexr +png test"
+REQUIRED_USE="test? ( png )"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	app-arch/brotli:=[${MULTILIB_USEDEP}]
 	>=dev-cpp/highway-1.0.7[${MULTILIB_USEDEP}]
-	media-libs/giflib:=[${MULTILIB_USEDEP}]
 	>=media-libs/lcms-2.13:2[${MULTILIB_USEDEP}]
-	media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}]
-	media-libs/libpng:=[${MULTILIB_USEDEP}]
 	gdk-pixbuf? (
 		dev-libs/glib:2
 		x11-libs/gdk-pixbuf:2
 	)
+	gif? ( media-libs/giflib:=[${MULTILIB_USEDEP}] )
+	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	openexr? ( media-libs/openexr:= )
+	png? ( media-libs/libpng:=[${MULTILIB_USEDEP}] )
 "
 RDEPEND="
 	${DEPEND}
@@ -48,6 +48,10 @@ multilib_src_configure() {
 		-DJPEGXL_ENABLE_FUZZERS=OFF
 		-DJPEGXL_ENABLE_SJPEG=OFF
 		-DJPEGXL_WARNINGS_AS_ERRORS=OFF
+
+		-DCMAKE_DISABLE_FIND_PACKAGE_GIF=$(usex !gif)
+		-DCMAKE_DISABLE_FIND_PACKAGE_JPEG=$(usex !jpeg)
+		-DCMAKE_DISABLE_FIND_PACKAGE_PNG=$(usex !png)
 
 		-DJPEGXL_ENABLE_SKCMS=OFF
 		-DJPEGXL_ENABLE_VIEWERS=OFF

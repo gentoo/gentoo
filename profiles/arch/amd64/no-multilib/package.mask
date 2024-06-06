@@ -23,7 +23,6 @@ app-emulation/crossover-bin
 app-emulation/q4wine
 dev-embedded/libftd2xx
 dev-embedded/openocd
-dev-util/android-ndk
 dev-util/android-sdk-update-manager
 dev-util/biew
 games-action/badland

@@ -33,8 +33,8 @@ LICENSE="PSF-2"
 SLOT="${PYVER}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="
-	bluetooth build +debug +ensurepip examples gdbm +gil jit libedit
-	+ncurses pgo +readline +sqlite +ssl test tk valgrind
+	big-endian bluetooth build +debug +ensurepip examples gdbm +gil jit
+	libedit +ncurses pgo +readline +sqlite +ssl test tk valgrind
 "
 REQUIRED_USE="jit? ( ${LLVM_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
@@ -276,6 +276,52 @@ src_configure() {
 			-x test_capi
 		)
 
+		# Arch-specific skips.  See #931888 for a collection of these.
+		case ${ARCH} in
+			hppa)
+				profile_task_flags+=(
+					-x test_descr
+					-x test_exceptions	# bug 931908
+					-x test_os
+				)
+				;;
+			ia64)
+				profile_task_flags+=(
+					-x test_ctypes
+					-x test_external_inspection # partial PGO only (flaky in src_test)
+					-x test_signal	# PGO only
+				)
+				;;
+			mips)
+				profile_task_flags+=(
+					-x test_ctypes	# partial PGO only (more fails)
+					-x test_external_inspection	# PGO only
+					-x test_statistics
+				)
+				;;
+			ppc64)
+				if use big-endian; then
+					profile_task_flags+=(
+						-x test_descr
+						-x test_exceptions	# PGO only, bug 931908
+					)
+				fi
+				;;
+			riscv)
+				profile_task_flags+=(
+					-x test_statistics
+					-x test_urllib2
+				)
+				;;
+			sparc)
+				profile_task_flags+=(
+					-x test_ctypes
+					-x test_descr
+					-x test_exceptions	# bug 931908
+				)
+				;;
+		esac
+
 		if has_version "app-arch/rpm" ; then
 			# Avoid sandbox failure (attempts to write to /var/lib/rpm)
 			profile_task_flags+=(
@@ -428,13 +474,43 @@ src_test() {
 		-x test_gdb
 	)
 
-	if use sparc ; then
-		# bug #788022
-		test_opts+=(
-			-x test_multiprocessing_fork
-			-x test_multiprocessing_forkserver
-		)
-	fi
+	# Arch-specific skips.  See #931888 for a collection of these.
+	case ${ARCH} in
+		ia64)
+			test_opts+=(
+				-x test_ctypes
+				-x test_external_inspection
+			)
+			;;
+		mips)
+			test_opts+=(
+				-x test_ctypes
+				-x test_external_inspection
+				-x test_statistics
+			)
+			;;
+		ppc64)
+			if use big-endian; then
+				test_opts+=( -x test_descr )
+			fi
+			;;
+		riscv)
+			test_opts+=(
+				-x test_urllib2
+			)
+			;;
+		sparc)
+			test_opts+=(
+				# bug 788022
+				-x test_multiprocessing_fork
+				-x test_multiprocessing_forkserver
+
+				-x test_ctypes
+				-x test_descr
+				-x test_exceptions # bug 931908
+			)
+			;;
+	esac
 
 	# workaround docutils breaking tests
 	cat > Lib/docutils.py <<-EOF || die

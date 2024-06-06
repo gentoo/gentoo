@@ -24,7 +24,7 @@ else
 	IS_VCS_SOURCE="yes"
 	UPDATE_VERSION="yes"
 	SRC_URI="https://github.com/beetbox/beets/archive/${MY_COMMIT}.tar.gz -> ${P}.gh.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 	S="${WORKDIR}/${PN}-${MY_COMMIT}"
 fi
 
@@ -43,12 +43,13 @@ RDEPEND="
 		>=media-libs/mutagen-1.33[${PYTHON_USEDEP}]
 		>=dev-python/musicbrainzngs-0.4[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
-		dev-python/requests-oauthlib[${PYTHON_USEDEP}]
-		dev-python/requests[${PYTHON_USEDEP}]
-		dev-python/unidecode[${PYTHON_USEDEP}]
-		dev-python/reflink[${PYTHON_USEDEP}]
 		dev-python/confuse[${PYTHON_USEDEP}]
 		dev-python/mediafile[${PYTHON_USEDEP}]
+		dev-python/reflink[${PYTHON_USEDEP}]
+		dev-python/requests-oauthlib[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
+		dev-python/typing-extensions[${PYTHON_USEDEP}]
+		dev-python/unidecode[${PYTHON_USEDEP}]
 	')"
 DEPEND="
 	${RDEPEND}
@@ -56,6 +57,7 @@ DEPEND="
 BDEPEND="
 	doc? (
 		dev-python/sphinx
+		dev-python/pydata-sphinx-theme
 	)
 	$(python_gen_cond_dep '
 		test? (
@@ -123,7 +125,7 @@ python_prepare_all() {
 
 python_compile_all() {
 	if use doc ; then
-		sphinx-build -b html docs docs/build || die
+		sphinx-build -b html docs docs/build/html || die
 	fi
 	# If building from VCS sources we need to generate manpages, then copy them to ${S}/man
 	# We could install mans from the sphinx build path, but to be consistent with pypi for src_install

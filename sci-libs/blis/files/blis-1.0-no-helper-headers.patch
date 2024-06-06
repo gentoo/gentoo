@@ -1,0 +1,13 @@
+Don't install one-line "helper header" cblas.h into /usr/include,
+as it conflicts with sci-libs/lapack.
+--- a/Makefile
++++ b/Makefile
+@@ -1052,7 +1052,7 @@ endif
+ 
+ # --- Install header rules ---
+ 
+-install-headers: check-env $(MK_INCL_DIR_INST) install-helper-headers
++install-headers: check-env $(MK_INCL_DIR_INST)
+ 
+ # Rule for installing main headers.
+ $(MK_INCL_DIR_INST): $(HEADERS_TO_INSTALL) $(CONFIG_MK_FILE)

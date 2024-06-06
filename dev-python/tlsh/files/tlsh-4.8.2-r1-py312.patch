@@ -1,0 +1,25 @@
+Use PyVarObject_HEAD_INIT instead PyObject_HEAD_INIT
+
+--- a/tlshmodule.cpp
++++ b/tlshmodule.cpp
+@@ -59,7 +59,7 @@
+ #include <Python.h>
+ #include <new>
+ #include <bytesobject.h>
+-#include "tlsh.h"
++#include <tlsh/tlsh.h>
+
+ // to generate the "T1" hashes introduced in TLSH 4.0.0
+ // see 4.0.0 from 26/Mar/2020 at https://github.com/trendmicro/tlsh/blob/master/Change_History.md
+@@ -286,10 +286,7 @@ static PyGetSetDef Tlsh_getsetters[] = {
+ };
+
+ static PyTypeObject tlsh_TlshType = {
+-    PyObject_HEAD_INIT(NULL)
+-#if PY_MAJOR_VERSION < 3
+-    0,                         /* ob_size */
+-#endif
++    PyVarObject_HEAD_INIT(NULL, 0)
+     "tlsh.Tlsh",               /* tp_name */
+     sizeof(tlsh_TlshObject),   /* tp_basicsize */
+     0,                         /* tp_itemsize */

@@ -22,7 +22,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0 SSPL-1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 -riscv"
+KEYWORDS="amd64 ~arm64 -riscv"
 CPU_FLAGS="cpu_flags_x86_avx"
 IUSE="debug kerberos mongosh ssl +tools ${CPU_FLAGS}"
 
@@ -74,6 +74,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.0.5-boost-1.81-extra.patch"
 	"${FILESDIR}/${PN}-5.0.16-arm64-assert.patch"
 	"${FILESDIR}/${PN}-4.4.29-no-enterprise.patch"
+	"${FILESDIR}/${PN}-5.0.26-boost-1.85.patch"
 )
 
 python_check_deps() {

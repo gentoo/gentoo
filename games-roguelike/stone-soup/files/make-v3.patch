@@ -1,5 +1,5 @@
---- a/Makefile	2023-04-08 18:39:09.818483802 -0500
-+++ b/Makefile	2023-04-08 18:44:54.509321177 -0500
+--- a/Makefile	2024-05-27 19:43:53.339479403 -0500
++++ b/Makefile	2024-05-27 19:45:08.737841222 -0500
 @@ -206,7 +206,7 @@
  uname_S := $(shell sh -c 'uname -s 2>/dev/null || echo not')
  uname_M := $(shell sh -c 'uname -m 2>/dev/null || echo not')
@@ -82,16 +82,27 @@
  WINARCH := $(shell $(GXX) -dumpmachine | grep -q x64_64 && echo win64 || echo win32)
  
  export SRC_VERSION
-@@ -1644,7 +1630,7 @@
+@@ -1645,13 +1631,13 @@
  	$(COPY) dat/tiles/stone_soup_icon-512x512.png $(prefix_fp)/share/icons/hicolor/512x512/apps/$(XDG_NAME).png
  	$(COPY) dat/tiles/stone_soup_icon.svg $(prefix_fp)/share/icons/hicolor/scalable/apps/$(XDG_NAME).svg
  
 -install: all install-data
+-	[ -d $(prefix_fp)/$(bin_prefix) ] || mkdir -p $(prefix_fp)/$(bin_prefix)
+-	$(COPY) $(GAME) $(prefix_fp)/$(bin_prefix)/
+-	$(STRIP) $(prefix_fp)/$(bin_prefix)/$(GAME)
 +install: install-data
- 	[ -d $(prefix_fp)/$(bin_prefix) ] || mkdir -p $(prefix_fp)/$(bin_prefix)
- 	$(COPY) $(GAME) $(prefix_fp)/$(bin_prefix)/
- 	$(STRIP) $(prefix_fp)/$(bin_prefix)/$(GAME)
-@@ -1901,9 +1887,6 @@
++	[ -d $(prefix_fp)$(bin_prefix) ] || mkdir -p $(prefix_fp)$(bin_prefix)
++	$(COPY) $(GAME) $(prefix_fp)$(bin_prefix)/
++	$(STRIP) $(prefix_fp)$(bin_prefix)/$(GAME)
+ ifeq ($(USE_DGAMELAUNCH),)
+-	$(CHOWN) $(INSTALL_UGRP) $(prefix_fp)/$(bin_prefix)/$(GAME) || true
+-	$(CHMOD) $(MCHMOD) $(prefix_fp)/$(bin_prefix)/$(GAME) || true
++	$(CHOWN) $(INSTALL_UGRP) $(prefix_fp)$(bin_prefix)/$(GAME) || true
++	$(CHMOD) $(MCHMOD) $(prefix_fp)$(bin_prefix)/$(GAME) || true
+ endif
+ 
+ clean: clean-rltiles clean-webserver clean-android clean-monster clean-catch2 \
+@@ -1905,9 +1891,6 @@
  
  dat/tiles/%.png: $(RLTILES)/%.png
  	$(QUIET_PNGCRUSH)$(PNGCRUSH) $< $@

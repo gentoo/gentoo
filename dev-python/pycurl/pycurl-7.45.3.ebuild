@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="curl_ssl_gnutls +curl_ssl_openssl examples ssl"
 
 # Depend on a curl with curl_ssl_* USE flags.
@@ -43,11 +43,11 @@ BDEPEND="
 	test? (
 		>=dev-python/bottle-0.12.7[${PYTHON_USEDEP}]
 		dev-python/flaky[${PYTHON_USEDEP}]
-		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		net-misc/curl[curl_ssl_gnutls(-)=,curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-),http2]
 	)
 "
 
+: ${EPYTEST_TIMEOUT:=120}
 distutils_enable_tests pytest
 
 python_prepare_all() {
@@ -83,7 +83,7 @@ python_test() {
 		tests/option_constants_test.py::OptionConstantsTest::test_socks5_gssapi_nec_setopt
 	)
 
-	epytest -p flaky -p timeout --timeout=30 tests
+	epytest -p flaky tests
 }
 
 python_install_all() {

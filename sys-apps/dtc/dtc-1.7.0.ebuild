@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit meson python-single-r1
 
 if [[ ${PV} == 9999 ]] ; then
@@ -44,6 +44,7 @@ DOCS=(
 PATCHES=(
 	"${FILESDIR}"/${P}-meson-tests.patch
 	"${FILESDIR}"/${P}-meson-macos.patch
+	"${FILESDIR}"/fix-tests-for-Python3.12.patch
 )
 
 pkg_setup() {

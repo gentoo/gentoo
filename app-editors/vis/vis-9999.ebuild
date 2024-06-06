@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-MY_PTV=0.5
+VIS_TEST_COMMIT="783b7ef67aa360f0b9bd44fa5ea47e644bc49d69"
 LUA_COMPAT=( lua5-2 lua5-3 lua5-4 )
 
 inherit lua-single
@@ -12,8 +12,10 @@ if [ "${PV}" == "9999" ]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/martanne/vis.git"
 else
-	SRC_URI="https://github.com/martanne/vis/releases/download/v${PV}/${P}.tar.gz
-		test? ( https://github.com/martanne/vis-test/releases/download/v${MY_PTV}/vis-test-${MY_PTV}.tar.gz )"
+	SRC_URI="
+		https://github.com/martanne/vis/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+		test? ( https://github.com/martanne/vis-test/archive/${VIS_TEST_COMMIT}.tar.gz -> vis-test-${VIS_TEST_COMMIT}.tar.gz )
+	"
 	KEYWORDS="~amd64 ~arm ~riscv ~x86"
 fi
 
@@ -26,12 +28,15 @@ REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
 # - Known to also work with NetBSD curses
-DEPEND="dev-libs/libtermkey
+DEPEND="
+	dev-libs/libtermkey
 	sys-apps/acl
 	ncurses? ( sys-libs/ncurses:0= )
 	lua? ( ${LUA_DEPS} )
-	tre? ( dev-libs/tre )"
-RDEPEND="${DEPEND}
+	tre? ( dev-libs/tre )
+"
+RDEPEND="
+	${DEPEND}
 	app-eselect/eselect-vi
 	lua? (
 		$(lua_gen_cond_dep 'dev-lua/lpeg[${LUA_USEDEP}]')
@@ -51,14 +56,8 @@ src_prepare() {
 	if use test; then
 		if [ ! "${PV}" == "9999" ]; then
 			rm -r test || die
-			mv "${WORKDIR}/vis-test-${MY_PTV}" test || die
+			mv "${WORKDIR}/vis-test-${VIS_TEST_COMMIT}" test || die
 		fi
-
-		# https://bugs.gentoo.org/722014 https://github.com/martanne/vis-test/pull/22
-		sed -i 's;./ccan-config > config.h;./ccan-config "${CC}" ${CFLAGS} > config.h;' test/core/Makefile || die
-
-		# https://github.com/martanne/vis-test/pull/29
-		sed -i 's;cpp -P;${CPP:-cpp} -P;' test/vim/test.sh || die
 
 		# https://github.com/martanne/vis-test/issues/27 a Werror clone
 		sed -i 's;|| strstr(output, "warning");;' test/core/ccan-config.c || die

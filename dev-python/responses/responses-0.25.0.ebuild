@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 
 inherit distutils-r1 pypi
 
@@ -34,6 +34,7 @@ RDEPEND="
 
 BDEPEND="
 	test? (
+		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/pytest-httpserver[${PYTHON_USEDEP}]
 	)
 "
@@ -42,5 +43,5 @@ distutils_enable_tests pytest
 
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p pytest_httpserver
+	epytest -o asyncio_mode=auto -p asyncio -p pytest_httpserver
 }

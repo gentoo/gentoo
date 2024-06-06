@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="CPL-1.0 LGPL-2.1 MPL-1.1"
 SLOT="3.7"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 IUSE="cairo opengl"
 
 BDEPEND="

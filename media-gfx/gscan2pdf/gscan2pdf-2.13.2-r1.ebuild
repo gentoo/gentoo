@@ -58,7 +58,7 @@ BDEPEND="
 
 		app-text/djvu[jpeg,tiff]
 		app-text/poppler[utils]
-		app-text/tesseract[-opencl,osd(+),png,tiff]
+		app-text/tesseract[-opencl(-),osd(+),png,tiff]
 		app-text/unpaper
 		media-gfx/imagemagick[djvu,jpeg,png,tiff,perl,postscript,truetype]
 		media-gfx/sane-backends[sane_backends_test]

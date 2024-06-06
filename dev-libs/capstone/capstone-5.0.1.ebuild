@@ -35,7 +35,7 @@ DEPEND="${RDEPEND}
 BDEPEND="${DISTUTILS_DEPS}"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-distutils_enable_tests setup.py
+RESTRICT="!test? ( test )"
 
 if [[ ${PV} == *_rc* ]]; then
 	# Upstream doesn't flag release candidates (bug 858350)
@@ -89,4 +89,8 @@ src_install() {
 	if ! use static-libs ; then
 		find "${ED}" -name '*.a' -delete || die
 	fi
+}
+
+python_test() {
+	emake check
 }

@@ -372,7 +372,7 @@ else
 	SRC_URI="https://github.com/dafny-lang/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 SRC_URI+="
@@ -473,6 +473,9 @@ src_prepare() {
 		VSComp2010/Problem2-Invert.dfy
 		auditor/TestAuditor.dfy
 		benchmarks/sequence-race/SequenceRace.dfy
+		c++/extern.dfy
+		c++/functions.dfy
+		c++/tuple.dfy
 		cli/runArgument.dfy
 		comp/CoverageReport.dfy
 		concurrency/06-ThreadOwnership.dfy

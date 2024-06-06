@@ -5,6 +5,6 @@
 		<email>ejabberd@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">manopapad/proper</remote-id>
+		<remote-id type="github">proper-testing/proper</remote-id>
 	</upstream>
 </pkgmetadata>

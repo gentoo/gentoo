@@ -75,7 +75,6 @@ src_configure() {
 	local emesonargs=(
 		$(meson_feature man man-pages)
 		$(meson_feature tray)
-		$(meson_feature X xwayland)
 		$(meson_feature swaybar gdk-pixbuf)
 		$(meson_use swaynag)
 		$(meson_use swaybar)

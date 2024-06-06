@@ -19,7 +19,7 @@ fi
 
 LICENSE="ZLIB"
 SLOT="0"
-IUSE="doc libnotify test"
+IUSE="doc test"
 
 RESTRICT="!test? ( test )"
 
@@ -32,7 +32,6 @@ RDEPEND="
 	x11-libs/gdk-pixbuf
 	>=x11-libs/gtk+-3.20:3
 	x11-libs/pango
-	libnotify? ( x11-libs/libnotify )
 "
 # Tests are run under virtx
 DEPEND="
@@ -52,7 +51,6 @@ src_configure() {
 	local -a emesonargs=(
 		-Djson=enabled
 		$(meson_feature doc docs)
-		$(meson_feature libnotify notify)
 	)
 	meson_src_configure
 }

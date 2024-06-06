@@ -16,7 +16,7 @@ SRC_URI="https://github.com/AcademySoftwareFoundation/${PN}/archive/v${PV}.tar.g
 LICENSE="MPL-2.0"
 OPENVDB_ABI=$(ver_cut 1)
 SLOT="0/$PV"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="abi$((OPENVDB_ABI + 1))-compat +abi${OPENVDB_ABI}-compat abi$((OPENVDB_ABI - 1))-compat abi$((OPENVDB_ABI - 2))-compat alembic ax +blosc cpu_flags_x86_avx cpu_flags_x86_sse4_2
 	cuda doc examples jpeg +nanovdb numpy openexr png python static-libs test utils zlib"
 RESTRICT="!test? ( test )"

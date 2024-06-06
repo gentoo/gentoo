@@ -1,0 +1,66 @@
+From 1181acfe30557d6646511df8d98d82589878a570 Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Tue, 4 Jun 2024 12:18:11 +0000
+Subject: [PATCH] Fix writing ICEAuthority file
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Commit 9398f6cf8933055b31506ba155aef2fc2b3561d7 "Remove iceauth
+dependency" introduced two bugs:
+
+1) "fp" is never closed, so the generated auth data stays buffered in
+   memory for some indeterminate time and the file stays empty on disk.
+   This completely breaks authentication and thus also session restore.
+
+2) Checking the return value of IceWriteAuthFileEntry() is inverted (the
+   function returns non-zero on success), so warnings are printed iff
+   everything goes well.
+
+BUG: 487912
+
+
+(cherry picked from commit 0dcf34458d99b07a3d9054ae0c86c656e0dfa7aa)
+
+Co-authored-by: Tomáš Trnka <tomastrnka@gmx.com>
+---
+ ksmserver/server.cpp | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/ksmserver/server.cpp b/ksmserver/server.cpp
+index f88de40dba4..bba6b13ffae 100644
+--- a/ksmserver/server.cpp
++++ b/ksmserver/server.cpp
+@@ -333,7 +333,7 @@ Status SetAuthentication(int count, IceListenObj *listenObjs, IceAuthDataEntry *
+             file_entry->auth_name = strdup("MIT-MAGIC-COOKIE-1");
+             file_entry->auth_data = strdup((*authDataEntries)[i].auth_data);
+             file_entry->auth_data_length = MAGIC_COOKIE_LEN;
+-            if (IceWriteAuthFileEntry(fp, file_entry) != 0) {
++            if (IceWriteAuthFileEntry(fp, file_entry) == 0) {
+                 qWarning("Failed to write ice auth file entry");
+             }
+             IceFreeAuthFileEntry(file_entry);
+@@ -357,7 +357,7 @@ Status SetAuthentication(int count, IceListenObj *listenObjs, IceAuthDataEntry *
+             file_entry->auth_name = strdup("MIT-MAGIC-COOKIE-1");
+             file_entry->auth_data = strdup((*authDataEntries)[i + 1].auth_data);
+             file_entry->auth_data_length = MAGIC_COOKIE_LEN;
+-            if (IceWriteAuthFileEntry(fp, file_entry) != 0) {
++            if (IceWriteAuthFileEntry(fp, file_entry) == 0) {
+                 qWarning("Failed to write xsmp ice auth file entry");
+             }
+             IceFreeAuthFileEntry(file_entry);
+@@ -366,6 +366,11 @@ Status SetAuthentication(int count, IceListenObj *listenObjs, IceAuthDataEntry *
+         IceSetPaAuthData(2, &(*authDataEntries)[i]);
+     }
+ 
++    if (fclose(fp) != 0) {
++        qWarning() << "Could not close ICEAuthority file";
++        return 0;
++    }
++
+     return (1);
+ }
+ 
+-- 
+GitLab
+

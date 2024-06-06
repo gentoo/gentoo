@@ -7,9 +7,7 @@ XORG_DRI=dri
 XORG_EAUTORECONF=yes
 inherit linux-info xorg-3 flag-o-matic
 
-if [[ ${PV} == 9999* ]]; then
-	SRC_URI=""
-else
+if [[ ${PV} != 9999* ]]; then
 	KEYWORDS="~amd64 ~x86"
 	COMMIT_ID=""
 	SRC_URI="https://gitlab.freedesktop.org/xorg/driver/xf86-video-intel/-/archive/${COMMIT_ID}/${P}.tar.bz2"
@@ -22,6 +20,7 @@ IUSE="debug +sna tools +udev uxa valgrind xvmc"
 
 REQUIRED_USE="
 	|| ( sna uxa )
+	uxa? ( dri )
 "
 RDEPEND="
 	x11-libs/libXext
@@ -72,7 +71,7 @@ src_configure() {
 		$(use_enable debug)
 		$(use_enable dri)
 		$(use_enable dri dri3)
-		$(usex dri "--with-default-dri=3")
+		$(usex dri "--with-default-dri=3" "")
 		$(use_enable sna)
 		$(use_enable tools)
 		$(use_enable udev)

@@ -11,8 +11,8 @@ inherit distutils-r1 pypi
 DESCRIPTION="Auto-generate API documentation for Python projects"
 HOMEPAGE="https://pdoc3.github.io/pdoc/"
 
-SLOT="0"
 LICENSE="AGPL-3+"
+SLOT="0"
 KEYWORDS="amd64 ~x86"
 
 RDEPEND="

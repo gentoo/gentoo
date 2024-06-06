@@ -41,6 +41,9 @@ all_ruby_prepare() {
 
 	# Avoid test that uses the console and hangs on user input
 	rm -f test/pry_test.rb || die
+
+	# Avoid a test broken by newer irb versions.
+	rm -f test/irb_test.rb || die
 }
 
 each_ruby_test() {

@@ -16,6 +16,7 @@
   <use>
     <flag name="bpf">Enable support for eBPF features with <pkg>dev-libs/libbpf</pkg></flag>
     <flag name="babeltrace">Enable <pkg>dev-util/babeltrace</pkg> support</flag>
+    <flag name="capstone">Use <pkg>dev-libs/capstone</pkg> for disassembly support</flag>
     <flag name="clang">Enable builtin clang and LLVM support</flag>
     <flag name="doc">
       Build documentation and man pages. With this USE flag disabled,

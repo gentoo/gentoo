@@ -1,0 +1,75 @@
+https://github.com/curl/curl/pull/13825
+From: Stefan Eissing <stefan@eissing.org>
+Date: Wed, 29 May 2024 17:13:34 +0200
+Subject: [PATCH] fix multi_wait() timeout handling
+
+- determine the actual poll timeout *after* all sockets
+  have been collected. Protocols and connection filters may
+  install new timeouts during collection.
+- add debug logging to test1533 where the mistake was noticed
+- refs #13782
+--- a/lib/multi.c
++++ b/lib/multi.c
+@@ -1366,13 +1366,6 @@ static CURLMcode multi_wait(struct Curl_multi *multi,
+   if(timeout_ms < 0)
+     return CURLM_BAD_FUNCTION_ARGUMENT;
+ 
+-  /* If the internally desired timeout is actually shorter than requested from
+-     the outside, then use the shorter time! But only if the internal timer
+-     is actually larger than -1! */
+-  (void)multi_timeout(multi, &timeout_internal);
+-  if((timeout_internal >= 0) && (timeout_internal < (long)timeout_ms))
+-    timeout_ms = (int)timeout_internal;
+-
+   memset(ufds, 0, ufds_len * sizeof(struct pollfd));
+   memset(&ps, 0, sizeof(ps));
+ 
+@@ -1476,6 +1469,14 @@ static CURLMcode multi_wait(struct Curl_multi *multi,
+ #endif
+ #endif
+ 
++  /* We check the internal timeout *AFTER* we collected all sockets to
++   * poll. Collecting the sockets may install new timers by protocols
++   * and connection filters.
++   * Use the shorter one of the internal and the caller requested timeout. */
++  (void)multi_timeout(multi, &timeout_internal);
++  if((timeout_internal >= 0) && (timeout_internal < (long)timeout_ms))
++    timeout_ms = (int)timeout_internal;
++
+ #if defined(ENABLE_WAKEUP) && defined(USE_WINSOCK)
+   if(nfds || use_wakeup) {
+ #else
+--- a/tests/libtest/Makefile.inc
++++ b/tests/libtest/Makefile.inc
+@@ -487,7 +487,7 @@ lib1551_SOURCES = lib1551.c $(SUPPORTFILES)
+ lib1552_SOURCES = lib1552.c $(SUPPORTFILES) $(TESTUTIL)
+ lib1552_LDADD = $(TESTUTIL_LIBS)
+ 
+-lib1553_SOURCES = lib1553.c $(SUPPORTFILES) $(TESTUTIL)
++lib1553_SOURCES = lib1553.c $(SUPPORTFILES) $(TSTTRACE) $(TESTUTIL)
+ lib1553_LDADD = $(TESTUTIL_LIBS)
+ 
+ lib1554_SOURCES = lib1554.c $(SUPPORTFILES)
+--- a/tests/libtest/lib1553.c
++++ b/tests/libtest/lib1553.c
+@@ -24,6 +24,7 @@
+ #include "test.h"
+ 
+ #include "testutil.h"
++#include "testtrace.h"
+ #include "warnless.h"
+ #include "memdebug.h"
+ 
+@@ -74,6 +75,12 @@ CURLcode test(char *URL)
+   easy_setopt(curls, CURLOPT_XFERINFOFUNCTION, xferinfo);
+   easy_setopt(curls, CURLOPT_NOPROGRESS, 1L);
+ 
++  libtest_debug_config.nohex = 1;
++  libtest_debug_config.tracetime = 1;
++  test_setopt(curls, CURLOPT_DEBUGDATA, &libtest_debug_config);
++  easy_setopt(curls, CURLOPT_DEBUGFUNCTION, libtest_debug_cb);
++  easy_setopt(curls, CURLOPT_VERBOSE, 1L);
++
+   multi_add_handle(multi, curls);
+ 
+   multi_perform(multi, &still_running);

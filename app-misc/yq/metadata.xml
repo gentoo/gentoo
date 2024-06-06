@@ -12,4 +12,9 @@
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
 	</maintainer>
+	<use>
+		<flag name="yq-symlink">
+			Create a yq symlink to yq-python.
+		</flag>
+	</use>
 </pkgmetadata>

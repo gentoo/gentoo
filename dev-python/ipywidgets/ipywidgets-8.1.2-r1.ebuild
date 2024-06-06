@@ -25,11 +25,14 @@ RDEPEND="
 	>=dev-python/ipython_genutils-0.2.0[${PYTHON_USEDEP}]
 	>=dev-python/traitlets-4.3.1[${PYTHON_USEDEP}]
 	>=dev-python/widgetsnbextension-4.0.10[${PYTHON_USEDEP}]
-	>=dev-python/jupyterlab_widgets-3.0.10[${PYTHON_USEDEP}]
+	>=dev-python/jupyterlab-widgets-3.0.10[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
+		dev-python/ipykernel[${PYTHON_USEDEP}]
 		dev-python/jsonschema[${PYTHON_USEDEP}]
+		<dev-python/pytest-8.1[${PYTHON_USEDEP}]
+		dev-python/pytz[${PYTHON_USEDEP}]
 	)
 "
 PDEPEND="

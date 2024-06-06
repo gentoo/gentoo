@@ -40,7 +40,7 @@ RDEPEND="
 	mpi? ( virtual/mpi[${MULTILIB_USEDEP},cxx,threads] )
 	python? (
 		${PYTHON_DEPS}
-		numpy? ( dev-python/numpy[${PYTHON_USEDEP}] )
+		numpy? ( dev-python/numpy:=[${PYTHON_USEDEP}] )
 	)
 	zlib? ( sys-libs/zlib:=[${MULTILIB_USEDEP}] )
 	zstd? ( app-arch/zstd:=[${MULTILIB_USEDEP}] )"
@@ -51,6 +51,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.81.0-disable_icu_rpath.patch
 	"${FILESDIR}"/${PN}-1.79.0-build-auto_index-tool.patch
 	"${FILESDIR}"/${PN}-1.85.0-bcp-filesystem.patch
+	"${FILESDIR}"/${PN}-1.85.0-python-numpy-2.patch
 )
 
 create_user-config.jam() {

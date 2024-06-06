@@ -13,8 +13,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv 
 
 RDEPEND="net-dns/libidn2:="
 DEPEND="net-dns/libidn2:="
-BDEPEND="${RDEPEND}
-	dev-perl/Module-Build
+BDEPEND="
+	${RDEPEND}
 	virtual/perl-ExtUtils-CBuilder
 	virtual/perl-ExtUtils-ParseXS
 	dev-perl/Module-Build

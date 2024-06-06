@@ -1,0 +1,31 @@
+adapt RootGM::TessellatedSolid for ROOT 6.32.00
+
+Bug: https://github.com/vmc-project/vgm/pull/16
+---
+ packages/RootGM/source/solids/TessellatedSolid.cxx | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+--- a/packages/RootGM/source/solids/TessellatedSolid.cxx
++++ b/packages/RootGM/source/solids/TessellatedSolid.cxx
+@@ -178,13 +178,16 @@ VGM::ThreeVector RootGM::TessellatedSolid::Vertex(int ifacet, int index) const
+ {
+   CheckVertexIndex(ifacet, index);
+ 
+-  const TGeoFacet& facet = fTessellated->GetFacet(ifacet);
++#if ROOT_VERSION_CODE > ROOT_VERSION(6, 30, 4)
++  const auto& rvertex =  fTessellated->GetVertex((fTessellated->GetFacet(ifacet))[index]);
++#else
++  const auto& rvertex =  fTessellated->GetFacet(ifacet).GetVertex(index);
++#endif
+ 
+   VGM::ThreeVector vertex;
+-  vertex.push_back(facet.GetVertex(index).fVec[0] * RootGM::Units::Length());
+-  vertex.push_back(facet.GetVertex(index).fVec[1] * RootGM::Units::Length());
+-  vertex.push_back(facet.GetVertex(index).fVec[2] * RootGM::Units::Length());
++  vertex.push_back(rvertex.fVec[0] * RootGM::Units::Length());
++  vertex.push_back(rvertex.fVec[1] * RootGM::Units::Length());
++  vertex.push_back(rvertex.fVec[2] * RootGM::Units::Length());
+ 
+   return vertex;
+ }
+-

@@ -40,13 +40,14 @@ RDEPEND="
 		dev-python/munkres[${PYTHON_USEDEP}]
 		>=media-libs/mutagen-1.33[${PYTHON_USEDEP}]
 		>=dev-python/musicbrainzngs-0.4[${PYTHON_USEDEP}]
-		dev-python/pyyaml[${PYTHON_USEDEP}]
-		dev-python/requests-oauthlib[${PYTHON_USEDEP}]
-		dev-python/requests[${PYTHON_USEDEP}]
-		dev-python/unidecode[${PYTHON_USEDEP}]
-		dev-python/reflink[${PYTHON_USEDEP}]
 		dev-python/confuse[${PYTHON_USEDEP}]
 		dev-python/mediafile[${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+		dev-python/reflink[${PYTHON_USEDEP}]
+		dev-python/requests-oauthlib[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
+		dev-python/typing-extensions[${PYTHON_USEDEP}]
+		dev-python/unidecode[${PYTHON_USEDEP}]
 	')"
 DEPEND="
 	${RDEPEND}
@@ -54,6 +55,7 @@ DEPEND="
 BDEPEND="
 	doc? (
 		dev-python/sphinx
+		dev-python/pydata-sphinx-theme
 	)
 	$(python_gen_cond_dep '
 		test? (
@@ -109,7 +111,7 @@ src_prepare() {
 	sed -i -e "/--cov=beets/,+9d" setup.cfg || die "Failed to disable code coverage options in setup.cfg"
 	# Update the version if we're not building from pypy; it's probably a _pre or live ebuild.
 	if  [[ ${PV} == "9999" ]] || [[ ${UPDATE_VERSION} == "yes" ]]; then
-		    sed -i -e "s/version=\".*\"/version=\"${PV}\"/" setup.py || die "Failed to update version in VCS sources"
+		    sed -i -e "s/version='.*'/version='${PV}'/" setup.py || die "Failed to update version in VCS sources"
 			sed -i -e "s/__version__ = \".*\"/__version__ = \"${PV}\"/" beets/__init__.py
 	fi
 	default
@@ -121,7 +123,7 @@ python_prepare_all() {
 
 python_compile_all() {
 	if use doc ; then
-		sphinx-build -b html docs docs/build || die
+		sphinx-build -b html docs docs/build/html || die
 	fi
 	# If building from VCS sources we need to generate manpages, then copy them to ${S}/man
 	# We could install mans from the sphinx build path, but to be consistent with pypi for src_install

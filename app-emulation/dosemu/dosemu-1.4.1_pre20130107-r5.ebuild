@@ -57,6 +57,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-lto.patch
 	"${FILESDIR}"/${P}-as.patch
 	"${FILESDIR}"/${P}-nm.patch
+	"${FILESDIR}"/${P}-pcm_write_interleaved-incompatiible-pointer-type.patch
 )
 
 pkg_pretend() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,6 +26,8 @@ RDEPEND="
 	sys-libs/zlib:=[minizip]"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}/${PN}-2.5.0-boost-1.85.patch" )
 
 src_configure() {
 	# bug 618960

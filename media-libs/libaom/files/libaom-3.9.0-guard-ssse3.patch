@@ -1,0 +1,67 @@
+https://bugs.chromium.org/p/aomedia/issues/detail?id=3578#c6
+https://bugs.gentoo.org/933429
+
+From 8670445106036383c1f55c08b1a3283bd0accf7a Mon Sep 17 00:00:00 2001
+From: Wan-Teh Chang <wtc@google.com>
+Date: Mon, 3 Jun 2024 11:13:53 -0700
+Subject: [PATCH] Guard DECLS(ssse3), FNS(ssse3) with #if HAVE_SSSE3
+
+The aom_dsp/x86/variance_sse2.c file is compiled if the ENABLE_SSE2
+cmake option is enabled. The file also contains some SSSE3 code. That
+code should only be compiled if the ENABLE_SSSE3 cmake option is
+enabled.
+
+Bug: aomedia:3578
+Change-Id: I86685862e7da9506bd551b76228cdc9920c68ab1
+(cherry picked from commit afb5237d908bd04ce6ea15eae85db4a54cba289c)
+---
+ aom_dsp/x86/variance_sse2.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/aom_dsp/x86/variance_sse2.c b/aom_dsp/x86/variance_sse2.c
+index 81b30072a5..e71244f1c7 100644
+--- a/aom_dsp/x86/variance_sse2.c
++++ b/aom_dsp/x86/variance_sse2.c
+@@ -415,7 +415,9 @@ unsigned int aom_mse16x16_sse2(const uint8_t *src, int src_stride,
+   DECL(8, opt);    \
+   DECL(16, opt)
+ 
++#if HAVE_SSSE3
+ DECLS(ssse3);
++#endif
+ #undef DECLS
+ #undef DECL
+ 
+@@ -491,7 +493,9 @@ DECLS(ssse3);
+   FN(4, 4, 4, 2, 2, opt, (int32_t), (int32_t))
+ #endif
+ 
++#if HAVE_SSSE3
+ FNS(ssse3)
++#endif
+ 
+ #undef FNS
+ #undef FN
+@@ -508,7 +512,9 @@ FNS(ssse3)
+   DECL(8, opt);    \
+   DECL(16, opt)
+ 
++#if HAVE_SSSE3
+ DECLS(ssse3);
++#endif
+ #undef DECL
+ #undef DECLS
+ 
+@@ -588,7 +594,9 @@ DECLS(ssse3);
+   FN(4, 4, 4, 2, 2, opt, (uint32_t), (int32_t))
+ #endif
+ 
++#if HAVE_SSSE3
+ FNS(ssse3)
++#endif
+ 
+ #undef FNS
+ #undef FN
+-- 
+2.45.2
+

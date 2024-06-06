@@ -4,7 +4,7 @@
 EAPI=8
 
 # Some additional tests are run if Python is found
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit cmake flag-o-matic fortran-2 python-any-r1
 
 DESCRIPTION="BLAS, CBLAS, LAPACK, LAPACKE reference implementations"

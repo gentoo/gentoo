@@ -1,0 +1,25 @@
+From 91457bbdee2422c7f0372688cf72d021cf222073 Mon Sep 17 00:00:00 2001
+From: ppphp <kevinniub@gmail.com>
+Date: Sat, 30 Mar 2024 19:17:56 +0800
+Subject: [PATCH] add version check macro for compatibility
+
+---
+ src/Gui/PreferencePackManager.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/Gui/PreferencePackManager.cpp b/src/Gui/PreferencePackManager.cpp
+index e1773a436852..dfc54240c00c 100644
+--- a/src/Gui/PreferencePackManager.cpp
++++ b/src/Gui/PreferencePackManager.cpp
+@@ -224,7 +224,11 @@ void Gui::PreferencePackManager::importConfig(const std::string& packName,
+     auto savedPreferencePacksDirectory =
+         fs::path(App::Application::getUserAppDataDir()) / "SavedPreferencePacks";
+     auto cfgFilename = savedPreferencePacksDirectory / packName / (packName + ".cfg");
++#if BOOST_VERSION >= 107400
+     fs::copy_file(path, cfgFilename, fs::copy_options::overwrite_existing);
++#else
++    fs::copy_file(path, cfgFilename, fs::copy_option::overwrite_if_exists);
++#endif
+     rescan();
+ }
+ 

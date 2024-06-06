@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 source tests-common.sh || exit
+# TODO: hack because tests-common don't implement ver_cut
+source version-funcs.sh || exit
 
 inherit dist-kernel-utils
-# TODO: hack because tests-common don't implement ver_cut
-EAPI=6 inherit eapi7-ver
 
 test_PV_to_KV() {
 	local kv=${1}

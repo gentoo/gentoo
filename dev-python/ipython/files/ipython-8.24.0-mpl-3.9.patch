@@ -1,0 +1,72 @@
+diff --git a/IPython/core/pylabtools.py b/IPython/core/pylabtools.py
+index 1f5a11f37e..4287834418 100644
+--- a/IPython/core/pylabtools.py
++++ b/IPython/core/pylabtools.py
+@@ -345,8 +345,10 @@ def find_gui_and_backend(gui=None, gui_select=None):
+             backend = matplotlib.rcParamsOrig["backend"]
+             backend, gui = backend_registry.resolve_backend(backend)
+         else:
++            gui = _convert_gui_to_matplotlib(gui)
+             backend, gui = backend_registry.resolve_gui_or_backend(gui)
+ 
++        gui = _convert_gui_from_matplotlib(gui)
+         return gui, backend
+ 
+     # Fallback to previous behaviour (Matplotlib < 3.9)
+@@ -509,10 +511,28 @@ def _list_matplotlib_backends_and_gui_loops() -> list[str]:
+     if _matplotlib_manages_backends():
+         from matplotlib.backends.registry import backend_registry
+ 
+-        ret = backend_registry.list_all() + backend_registry.list_gui_frameworks()
++        ret = backend_registry.list_all() + [
++            _convert_gui_from_matplotlib(gui)
++            for gui in backend_registry.list_gui_frameworks()
++        ]
+     else:
+         from IPython.core import pylabtools
+ 
+         ret = list(pylabtools.backends.keys())
+ 
+     return sorted(["auto"] + ret)
++
++
++# Matplotlib and IPython do not always use the same gui framework name.
++# Always use the approprate one of these conversion functions when passing a
++# gui framework name to/from Matplotlib.
++def _convert_gui_to_matplotlib(gui: str | None) -> str | None:
++    if gui and gui.lower() == "osx":
++        return "macosx"
++    return gui
++
++
++def _convert_gui_from_matplotlib(gui: str | None) -> str | None:
++    if gui and gui.lower() == "macosx":
++        return "osx"
++    return gui
+diff --git a/IPython/core/tests/test_pylabtools.py b/IPython/core/tests/test_pylabtools.py
+index 4099f04044..6bddb34807 100644
+--- a/IPython/core/tests/test_pylabtools.py
++++ b/IPython/core/tests/test_pylabtools.py
+@@ -276,11 +276,11 @@ def test_figure_no_canvas():
+         # name is gui
+         ("gtk3", "gtk3", "gtk3agg"),
+         ("gtk4", "gtk4", "gtk4agg"),
+-        ("headless", "headless", "agg"),
++        ("headless", None, "agg"),
+         ("osx", "osx", "macosx"),
+         ("qt", "qt", "qtagg"),
+         ("qt5", "qt5", "qt5agg"),
+-        ("qt6", "qt6", "qt6agg"),
++        ("qt6", "qt6", "qtagg"),
+         ("tk", "tk", "tkagg"),
+         ("wx", "wx", "wxagg"),
+         # name is backend
+@@ -301,8 +301,6 @@ def test_figure_no_canvas():
+         ("qtcairo", "qt", "qtcairo"),
+         ("qt5agg", "qt5", "qt5agg"),
+         ("qt5cairo", "qt5", "qt5cairo"),
+-        ("qt6agg", "qt", "qt6agg"),
+-        ("qt6cairo", "qt", "qt6cairo"),
+         ("tkagg", "tk", "tkagg"),
+         ("tkcairo", "tk", "tkcairo"),
+         ("webagg", "webagg", "webagg"),

@@ -141,6 +141,7 @@ fi
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.0-redhat.patch
+	"${FILESDIR}"/${PN}-4.2.5-http2-test.patch
 )
 
 python_check_deps() {
@@ -202,6 +203,9 @@ src_configure() {
 	mycmakeargs+=(
 		-DPython3_EXECUTABLE="${PYTHON}"
 		-DCMAKE_DISABLE_FIND_PACKAGE_{Asciidoctor,DOXYGEN}=$(usex !doc)
+
+		# Force bundled lemon (bug 933119)
+		-DLEMON_EXECUTABLE=
 
 		$(use androiddump && use pcap && echo -DEXTCAP_ANDROIDDUMP_LIBPCAP=yes)
 		$(usex gui LRELEASE=$(qt5_get_bindir)/lrelease '')
@@ -268,11 +272,6 @@ src_configure() {
 
 src_test() {
 	cmake_build test-programs
-
-	EPYTEST_DESELECT=(
-		# TODO: investigate
-		suite_follow_multistream.py::case_follow_multistream::test_follow_http2_multistream
-	)
 
 	# https://www.wireshark.org/docs/wsdg_html_chunked/ChTestsRunPytest.html
 	epytest \

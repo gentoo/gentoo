@@ -12,7 +12,6 @@
 		<flag name="opencv">Enable OpenCV support via <pkg>media-libs/opencv</pkg></flag>
 		<flag name="openvdb">Enable OpenVDB support via <pkg>media-gfx/openvdb</pkg></flag>
 		<flag name="ptex">Enable Ptex texture mapping system file support via <pkg>media-libs/ptex</pkg></flag>
-		<flag name="qt5">Build iv with Qt5</flag>
 		<flag name="qt6">Build iv with Qt6</flag>
 		<flag name="tools">Build the command-line tools</flag>
 	</use>

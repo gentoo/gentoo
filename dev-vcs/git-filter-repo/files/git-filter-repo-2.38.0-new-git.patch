@@ -1,0 +1,30 @@
+https://github.com/newren/git-filter-repo/issues/523
+https://github.com/newren/git-filter-repo/pull/526
+
+From 1db1650e6e14443a5a8163213434aec5e190f193 Mon Sep 17 00:00:00 2001
+From: Vladimir Petko <vladimir.petko@canonical.com>
+Date: Fri, 8 Dec 2023 15:05:34 +1300
+Subject: [PATCH] support git 2.43
+
+Git 2.43 changes --mark-tags to --[no-]mark-tags and --reencode to --[no-]reencode. Use both options for the detection check.
+
+Signed-off-by: Vladimir Petko <vladimir.petko@canonical.com>
+--- a/git-filter-repo
++++ b/git-filter-repo
+@@ -2067,13 +2067,13 @@ EXAMPLES
+     if b'--anonymize-map' not in output: # pragma: no cover
+       global date_format_permissive
+       date_format_permissive = False
+-    if b'--mark-tags' not in output: # pragma: no cover
++    if not any(x in output for x in [b'--mark-tags',b'--[no-]mark-tags']): # pragma: no cover
+       global write_marks
+       write_marks = False
+       if args.state_branch:
+         # We need a version of git-fast-export with --mark-tags
+         raise SystemExit(_("Error: need git >= 2.24.0"))
+-    if b'--reencode' not in output: # pragma: no cover
++    if not any(x in output for x in [b'--reencode',  b'--[no-]reencode']): # pragma: no cover
+       if args.preserve_commit_encoding:
+         # We need a version of git-fast-export with --reencode
+         raise SystemExit(_("Error: need git >= 2.23.0"))
+

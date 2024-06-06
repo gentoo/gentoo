@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -57,7 +57,6 @@ src_prepare() {
 	java-pkg-2_src_prepare
 	mkdir resources || die
 	cp -r {,resources/}java || die
-	rm -r resources/java/com/gitlab/pdftk_java/com/lowagie/text/pdf/codec || die
 	find resources/java -type f \( -name '*.java' -o -name '*.sh' \) -exec rm -rf {} + || die
 }
 

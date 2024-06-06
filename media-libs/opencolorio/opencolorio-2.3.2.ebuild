@@ -16,7 +16,7 @@ LICENSE="BSD"
 SLOT="0/$(ver_cut 1-2)"
 # minizip-ng: ~arm ~arm64 ~ppc64 ~riscv
 # osl: ~riscv
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 CPU_USE=(
 	x86_{avx,avx2,avx512f,f16c,sse2,sse3,sse4_1,sse4_2,ssse3}
 	# requires https://github.com/DLTcollab/sse2neon

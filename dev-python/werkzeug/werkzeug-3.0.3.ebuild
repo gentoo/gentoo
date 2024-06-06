@@ -17,14 +17,12 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="test-rust"
 
 RDEPEND="
 	>=dev-python/markupsafe-2.1.1[${PYTHON_USEDEP}]
 "
-# NOTE: remove the loong mask after greenlet gains support for loong
-# see https://github.com/python-greenlet/greenlet/pull/257
 BDEPEND="
 	test? (
 		dev-python/ephemeral-port-reserve[${PYTHON_USEDEP}]
@@ -34,11 +32,6 @@ BDEPEND="
 		test-rust? (
 			dev-python/cryptography[${PYTHON_USEDEP}]
 		)
-		!hppa? ( !ia64? ( !loong? (
-			$(python_gen_cond_dep '
-				dev-python/greenlet[${PYTHON_USEDEP}]
-			' python3_{10..11})
-		) ) )
 	)
 "
 

@@ -5,3 +5,8 @@ slotmove dev-java/icu4j 70 0
 move dev-python/django_polymorphic dev-python/django-polymorphic
 move dev-python/octave_kernel dev-python/octave-kernel
 slotmove kde-apps/kdeedu-data 5 0
+move dev-perl/Term-Table perl-core/Term-Table
+move dev-perl/Test2-Suite perl-core/Test2-Suite
+move dev-python/et_xmlfile dev-python/et-xmlfile
+move dev-python/qiskit-terra dev-python/qiskit
+move dev-python/jupyterlab_widgets dev-python/jupyterlab-widgets

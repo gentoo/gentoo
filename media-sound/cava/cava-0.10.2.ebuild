@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="MIT Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="alsa jack +ncurses pipewire portaudio pulseaudio sdl sndio"
 
 RDEPEND="
@@ -38,11 +38,12 @@ BDEPEND="
 	sdl? ( dev-build/autoconf-archive )
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.8.0-gentoo-iniparser4.patch
-)
-
 src_prepare() {
+	# TODO: depend on >=4.2.2 and remove after 4.2.2 is stable unless bug
+	# #933610 reintroduces slotting hacks (also drop GENTOO_SYSROOT below)
+	has_version '<dev-libs/iniparser-4.2.2:4' &&
+		eapply "${FILESDIR}"/${PN}-0.8.0-gentoo-iniparser4.patch
+
 	default
 
 	echo ${PV} > version || die

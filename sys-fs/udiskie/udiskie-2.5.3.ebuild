@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 pypi xdg-utils
 
@@ -11,7 +11,7 @@ HOMEPAGE="https://pypi.org/project/udiskie/ https://github.com/coldfix/udiskie"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="libnotify"
 
 RDEPEND="dev-python/docopt[${PYTHON_USEDEP}]

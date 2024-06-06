@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -90,7 +90,8 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/spamassassin.apache.org.asc
 
 PATCHES=(
 	"${FILESDIR}/mention-geoip.cf-in-init.pre.patch"
-	"${FILESDIR}/4.0.0-tests-dnsbl_subtests.t.patch"
+	"${FILESDIR}/4.0.0-tests-dnsbl_subtests.t_001_load-URIDNSBL.patch"
+	"${FILESDIR}/4.0.0-tests-dnsbl_subtests.t_002_no-net.patch"
 	"${FILESDIR}/4.0.0-tests-strip2.t.patch"
 	"${FILESDIR}/4.0.0-DnsResolver-udpsize.patch"
 	"${FILESDIR}/4.0.0-sa-update-rdatastr.patch"

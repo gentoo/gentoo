@@ -26,7 +26,7 @@ fi
 
 LICENSE="BSD curl ISC test? ( BSD-4 )"
 SLOT="0"
-IUSE="+adns +alt-svc brotli +ftp gnutls gopher +hsts +http2 idn +imap kerberos ldap mbedtls nghttp3 +openssl +pop3"
+IUSE="+adns +alt-svc brotli debug +ftp gnutls gopher +hsts +http2 idn +imap kerberos ldap mbedtls nghttp3 +openssl +pop3"
 IUSE+=" +psl +progress-meter rtmp rustls samba +smtp ssh ssl sslv3 static-libs test telnet +tftp websockets zstd"
 # These select the default SSL implementation
 IUSE+=" curl_ssl_gnutls curl_ssl_mbedtls +curl_ssl_openssl curl_ssl_rustls"
@@ -129,12 +129,13 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	mach_absolute_time
 	setmode
 	_fseeki64
+	# custom AC_LINK_IFELSE code fails to link even without -Werror
+	OSSL_QUIC_client_method
 )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-prefix-2.patch
 	"${FILESDIR}"/${PN}-respect-cflags-3.patch
-	"${FILESDIR}"/${P}-install-manpage.patch
 )
 
 src_prepare() {
@@ -278,6 +279,12 @@ multilib_src_configure() {
 		--with-zsh-functions-dir="${EPREFIX}"/usr/share/zsh/site-functions
 	)
 
+	if use debug; then
+		myconf+=(
+			--enable-debug
+		)
+	fi
+
 	if use test && multilib_is_native_abi && ( use http2 || use nghttp3 ); then
 		myconf+=(
 			--with-test-nghttpx="${BROOT}/usr/bin/nghttpx"
@@ -366,4 +373,12 @@ multilib_src_install_all() {
 	einstalldocs
 	find "${ED}" -type f -name '*.la' -delete || die
 	rm -rf "${ED}"/etc/ || die
+}
+
+pkg_postinst() {
+	if use debug; then
+		ewarn "USE=debug has been selected, enabling debug codepaths and making cURL extra verbose."
+		ewarn "Use this _only_ for testing. Debug builds should _not_ be used in anger."
+		ewarn "hic sunt dracones; you have been warned."
+	fi
 }

@@ -6,20 +6,24 @@
 		<name>Joshua Kinard</name>
 	</maintainer>
 	<use>
-		<flag name="bind8-stats">Enables BIND8 like NSTATS and XSTATS</flag>
+		<flag name="bind8-stats">Enables BIND8 like NSTATS and XSTATS and statistics in nsd-control</flag>
+		<flag name="default-znow">Enable full relocation binding at load-time (RELRO NOW, to protect GOT and .dtor areas)</flag>
 		<flag name="dnstap">Enable the structured binary log format</flag>
-		<flag name="libevent">Use libevent or libev, useful when zone
-			count is high</flag>
-		<flag name="minimal-responses">If minimal responses are disabled,
-			responses are more likely to get truncated, resulting in TCP
-			fallback</flag>
+		<flag name="ipv6">Enable IPv6 support</flag>
+		<flag name="largefile">Enables support for large files</flag>
+		<flag name="libevent">Use libevent or libev, useful when zone count is high</flag>
+		<flag name="mmap">Use mmap(2) instead of malloc(3); currently experimental</flag>
+		<flag name="memclean">Cleanup memory (at exit) for eg. valgrind, memcheck</flag>
+		<flag name="minimal-responses">If minimal responses are disabled, responses are more likely to get truncated, resulting in TCP fallback</flag>
+		<flag name="munin">Install a plugin for <pkg>net-analyzer/munin</pkg> to graph statistical data from nsd</flag>
 		<flag name="nsec3">Enable NSEC3 support</flag>
-		<flag name="ratelimit">Enables ratelimiting, based on query name,
-			type and source</flag>
-		<flag name="root-server">Configure NSD as a root server</flag>
-		<flag name="munin">
-			Install a plugin for <pkg>net-analyzer/munin</pkg> to graph
-			statistical data from nsd.</flag>
+		<flag name="packed">Enable packed structure alignment; uses less memory but has unaligned reads</flag>
+		<flag name="radix-tree">Use a radix tree for main lookups instead of a red-black tree</flag>
+		<flag name="ratelimit">Enables ratelimiting, based on query name, type and source</flag>
+		<flag name="recvmmsg">Enable recvmmsg and sendmmsg compilation, faster but some kernel versions may have implementation problems for IPv6</flag>
+		<flag name="root-server">Configure NSD as a root server (OBSOLETE: removed in >=4.9.x)</flag>
+		<flag name="tfo">Enable TCP Fast Open</flag>
+		<flag name="year2038">Support timestamps after 2038 (glibc only!)</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">NLnetLabs/nsd</remote-id>

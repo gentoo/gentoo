@@ -13,11 +13,9 @@
 		<flag name="gamepad">Enable gamepad input support</flag>
 		<flag name="libmpv">Enable the shared library and headers (used by frontends / plugins)</flag>
 		<flag name="lua">Enable Lua scripting, OSC (On Screen Controller) GUI, and <pkg>net-misc/yt-dlp</pkg> support</flag>
-		<flag name="mmal">Enable Multi-Media Abstraction Layer (MMAL) decoding support: Available e.g. on the Raspberry Pi</flag>
 		<flag name="opengl">Enable support for OpenGL-based video backends
 			(Note: deprecated for X11, USE=egl provides the newer support for -gpu-api=opengl)</flag>
 		<flag name="pipewire">Enable sound support via native PipeWire backend</flag>
-		<flag name="raspberry-pi">Enable support for the Raspberry Pi</flag>
 		<flag name="rubberband">Enable high quality pitch correction via <pkg>media-libs/rubberband</pkg></flag>
 		<flag name="sdl">Enable <pkg>media-libs/libsdl2</pkg> based video and audio outputs
 			(Note: these outputs exist for compatibility reasons only, avoid if possible)</flag>

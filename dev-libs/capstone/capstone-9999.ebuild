@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,14 +35,14 @@ DEPEND="${RDEPEND}
 BDEPEND="${DISTUTILS_DEPS}"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
+RESTRICT="!test? ( test )"
+
 PATCHES=(
 	# Currently "-Werror" is only added in the `next`-development branch, but
-	# not merged into 5.* releases. Eventually this patch may be needed in
-	# version 5 releas line. See bug #911481.
+	# not merged into 5.* releases. Eventually this patch may be needed in the
+	# version 5 release line. See bug #911481.
 	"${FILESDIR}/${P}-werror.patch"
 )
-
-distutils_enable_tests setup.py
 
 if [[ ${PV} == *_rc* ]]; then
 	# Upstream doesn't flag release candidates (bug 858350)
@@ -96,4 +96,8 @@ src_install() {
 	if ! use static-libs ; then
 		find "${ED}" -name '*.a' -delete || die
 	fi
+}
+
+python_test() {
+	emake check
 }

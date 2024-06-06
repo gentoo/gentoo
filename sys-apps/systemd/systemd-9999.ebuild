@@ -175,8 +175,10 @@ BDEPEND="
 	$(python_gen_cond_dep "
 		dev-python/jinja[\${PYTHON_USEDEP}]
 		dev-python/lxml[\${PYTHON_USEDEP}]
-		boot? ( >=dev-python/pyelftools-0.30[\${PYTHON_USEDEP}] )
-		ukify? ( test? ( ${PEFILE_DEPEND} ) )
+		boot? (
+			>=dev-python/pyelftools-0.30[\${PYTHON_USEDEP}]
+			test? ( ${PEFILE_DEPEND} )
+		)
 	")
 "
 
@@ -278,8 +280,6 @@ multilib_src_configure() {
 		# Disable compatibility with sysvinit
 		-Dsysvinit-path=
 		-Dsysvrcnd-path=
-		# Avoid infinite exec recursion, bug 642724
-		-Dtelinit-path="${EPREFIX}/lib/sysvinit/telinit"
 		# no deps
 		-Dima=true
 		-Ddefault-hierarchy=$(usex cgroup-hybrid hybrid unified)

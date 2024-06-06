@@ -15,7 +15,7 @@ else
 	S="${WORKDIR}/${MY_P/_/-}"
 fi
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1 linux-info optfeature tmpfiles ${SRC_ECLASS}

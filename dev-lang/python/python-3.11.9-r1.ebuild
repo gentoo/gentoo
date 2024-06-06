@@ -250,6 +250,22 @@ src_configure() {
 			-x test_tools
 		)
 
+		# musl-specific skips
+		use elibc_musl && profile_task_flags+=(
+			# various musl locale deficiencies
+			-x test__locale
+			-x test_c_locale_coercion
+			-x test_locale
+			-x test_re
+
+			# known issues with find_library on musl
+			# https://bugs.python.org/issue21622
+			-x test_ctypes
+
+			# fpathconf, ttyname errno values
+			-x test_os
+		)
+
 		if has_version "app-arch/rpm" ; then
 			# Avoid sandbox failure (attempts to write to /var/lib/rpm)
 			profile_task_flags+=(
@@ -412,6 +428,22 @@ src_test() {
 			-x test_multiprocessing_forkserver
 		)
 	fi
+
+	# musl-specific skips
+	use elibc_musl && test_opts+=(
+		# various musl locale deficiencies
+		-x test__locale
+		-x test_c_locale_coercion
+		-x test_locale
+		-x test_re
+
+		# known issues with find_library on musl
+		# https://bugs.python.org/issue21622
+		-x test_ctypes
+
+		# fpathconf, ttyname errno values
+		-x test_os
+	)
 
 	# workaround docutils breaking tests
 	cat > Lib/docutils.py <<-EOF || die

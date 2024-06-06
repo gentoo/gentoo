@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit python-any-r1
 
 DESCRIPTION="HTML5 client to connect to any xpra server"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/Xpra-org/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="brotli +gzip minify"
 
 BDEPEND="

@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ben Kohler <bkohler@gentoo.org> (2024-05-27)
+# Requires libpcre2[jit] which is now masked on x32
+mail-filter/rspamd
+net-analyzer/ossec-hids
+
 # James Le Cuirot <chewi@gentoo.org> (2024-02-17)
 # Requires net-libs/nodejs which is unavailable on amd64/x32.
 net-misc/sunshine
@@ -33,7 +38,7 @@ sci-geosciences/viking
 # Jupyterlab and friends require net-libs/nodejs
 dev-python/jupyterlab
 dev-python/jupyterlab-lsp
-dev-python/jupyterlab_widgets
+dev-python/jupyterlab-widgets
 dev-python/jupyter-server-proxy
 sci-misc/jupyterlab-desktop-bin
 dev-python/plotly
@@ -127,7 +132,6 @@ kde-misc/zanshin
 media-gfx/digikam
 media-gfx/luminance-hdr
 >=media-gfx/skanpage-24.04.90
->=media-sound/audex-24.04.90
 media-sound/frescobaldi
 media-sound/teamspeak-client:3
 media-video/vidify

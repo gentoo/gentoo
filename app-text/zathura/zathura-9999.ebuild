@@ -22,19 +22,19 @@ fi
 
 LICENSE="ZLIB"
 SLOT="0/5.6"
-IUSE="seccomp sqlite synctex test"
+IUSE="seccomp synctex test"
 
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-libs/girara-0.4.1
+	>=dev-libs/girara-0.4.3
 	>=dev-libs/glib-2.50:2
 	dev-libs/json-glib
 	sys-apps/file
 	x11-libs/cairo
 	>=x11-libs/gtk+-3.22:3
+	>=dev-db/sqlite-3.6.23:3
 	seccomp? ( sys-libs/libseccomp )
-	sqlite? ( >=dev-db/sqlite-3.6.23:3 )
 	synctex? ( app-text/texlive-core )
 "
 DEPEND="
@@ -50,7 +50,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/zathura-0.5.4-disable-seccomp-tests.patch"
+	"${FILESDIR}"/${P}-disable-seccomp-tests.patch
 )
 
 src_configure() {
@@ -58,7 +58,6 @@ src_configure() {
 		-Dconvert-icon=disabled
 		-Dmanpages=disabled
 		-Dseccomp=$(usex seccomp enabled disabled)
-		-Dsqlite=$(usex sqlite enabled disabled)
 		-Dsynctex=$(usex synctex enabled disabled)
 		)
 	meson_src_configure

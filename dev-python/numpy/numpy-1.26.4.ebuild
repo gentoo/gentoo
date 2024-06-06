@@ -24,7 +24,7 @@ SLOT="0"
 # is barely supported anyway, see bug #914358.
 IUSE="+lapack"
 if [[ ${PV} != *_[rab]* ]] ; then
-	KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
 RDEPEND="
@@ -113,6 +113,14 @@ python_test() {
 			random/tests/test_generator_mt19937.py::TestRandomDist::test_pareto
 			# more precision problems
 			core/tests/test_einsum.py::TestEinsum::test_einsum_sums_int16
+			# https://github.com/numpy/numpy/issues/24548
+			f2py/tests/test_kind.py::TestKind::test_int
+		)
+	fi
+
+	if use ppc64 ; then
+		EPYTEST_DESELECT+=(
+			core/tests/test_cpu_features.py::TestEnvPrivation::test_impossible_feature_enable
 		)
 	fi
 

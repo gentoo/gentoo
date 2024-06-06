@@ -1,4 +1,4 @@
-# Copyright 2007-2022 Gentoo Authors
+# Copyright 2007-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-osgi.eclass
@@ -6,7 +6,7 @@
 # java@gentoo.org
 # @AUTHOR:
 # Java maintainers <java@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 8
 # @PROVIDES: java-utils-2
 # @BLURB: Java OSGi eclass
 # @DESCRIPTION:
@@ -16,7 +16,7 @@
 # could extend this so that Gentoo Java system would be fully OSGi compliant.
 
 case ${EAPI} in
-	7|8) ;;
+	8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 

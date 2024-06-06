@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..11} )
 LUA_COMPAT=( lua5-{1,2,3,4} luajit )
 
-inherit flag-o-matic meson lua-single python-any-r1
+inherit flag-o-matic meson lua-single python-single-r1
 
 DESCRIPTION="Advanced and well-established text-mode web browser"
 HOMEPAGE="http://elinks.or.cz/"
@@ -23,9 +23,12 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="bittorrent brotli bzip2 debug finger ftp gopher gpm gnutls guile idn"
-IUSE+=" javascript lua lzma +mouse nls nntp perl samba ssl test tre unicode X xml zlib zstd"
+IUSE+=" javascript lua lzma +mouse nls nntp perl python samba ssl test tre unicode X xml zlib zstd"
 RESTRICT="!test? ( test )"
-REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
+REQUIRED_USE="
+	lua? ( ${LUA_REQUIRED_USE} )
+	python? ( ${PYTHON_REQUIRED_USE} )
+"
 
 RDEPEND="
 	>=sys-libs/ncurses-5.2:=[unicode(+)]
@@ -43,6 +46,7 @@ RDEPEND="
 	lua? ( ${LUA_DEPS} )
 	lzma? ( app-arch/xz-utils )
 	perl? ( dev-lang/perl:= )
+	python? ( ${PYTHON_DEPS} )
 	samba? ( net-fs/samba )
 	ssl? (
 		!gnutls? ( dev-libs/openssl:= )
@@ -60,7 +64,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
 BDEPEND="
-	${PYTHON_DEPS}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 	test? (
@@ -71,7 +74,7 @@ BDEPEND="
 pkg_setup() {
 	use lua && lua-single_pkg_setup
 
-	python-any-r1_pkg_setup
+	use python && python-single-r1_pkg_setup
 }
 
 src_configure() {
@@ -90,6 +93,7 @@ src_configure() {
 		-Ddocdir="${EPREFIX}"/usr/share/doc/${PF}
 		-Dhtmldoc=false
 		-Dpdfdoc=false
+		-Dapidoc=false
 		-D88-colors=true
 		-D256-colors=true
 		$(meson_use bittorrent)
@@ -119,7 +123,7 @@ src_configure() {
 		$(meson_use nls)
 		$(meson_use nntp)
 		$(meson_use perl)
-		-Dpython=false
+		$(meson_use python)
 		-Dquickjs=false
 		-Druby=false
 		$(meson_use samba smb)

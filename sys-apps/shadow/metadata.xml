@@ -6,7 +6,6 @@
 		<name>Gentoo Base System</name>
 	</maintainer>
 	<use>
-		<flag name="bcrypt">build the bcrypt password encryption algorithm</flag>
 		<flag name="su">build the su program</flag>
 	</use>
 	<slots>

@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/932255
+--- a/src/filesystem.cpp
++++ b/src/filesystem.cpp
+@@ -30,6 +30,7 @@
+ #include "serialization/unicode.hpp"
+ #include "utils/general.hpp"
+ 
++#include <boost/filesystem/directory.hpp>
+ #include <boost/filesystem/fstream.hpp>
+ #include <boost/iostreams/device/file_descriptor.hpp>
+ #include <boost/iostreams/stream.hpp>
+

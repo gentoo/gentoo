@@ -101,7 +101,6 @@ my_src_install() {
 	)
 
 	meson_src_install
-	python_fix_shebang "${pydirs[@]}"
 	python_optimize "${pydirs[@]}"
 }
 

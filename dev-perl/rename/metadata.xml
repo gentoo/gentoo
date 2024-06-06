@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>perl@gentoo.org</email>
-    <name>Gentoo Perl Project</name>
-  </maintainer>
-  <upstream>
-    <remote-id type="cpan">rename</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>perl@gentoo.org</email>
+		<name>Gentoo Perl Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">rename</remote-id>
+		<remote-id type="github">pstray/rename</remote-id>
+		<maintainer>
+			<name>Peder Stray</name>
+			<email>peder.stray@gmail.com</email>
+		</maintainer>
+	</upstream>
 </pkgmetadata>

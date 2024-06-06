@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 arm ~mips ~s390 ~sparc x86"
+KEYWORDS="amd64 arm ~mips ~s390 sparc x86"
 
 DOCS=( README )
 

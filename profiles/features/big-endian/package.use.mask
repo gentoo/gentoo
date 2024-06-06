@@ -1,5 +1,14 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2024-06-05)
+# media-libs/exempi is seriously broken on big endian platforms.
+# https://gitlab.freedesktop.org/libopenraw/exempi/-/merge_requests/8#note_2277243
+app-misc/tracker-miners xmp
+games-fps/eduke32 xmp
+gnome-extra/nemo xmp
+media-gfx/eog xmp
+media-libs/gexiv2 test
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-16)
 # media-libs/libvpx casualties (#700902)

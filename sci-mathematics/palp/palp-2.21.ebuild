@@ -16,7 +16,7 @@ SRC_URI="https://gitlab.com/stringstuwien/PALP/-/archive/v${PV}/PALP-v${PV}.tar.
 S="${WORKDIR}/PALP-v${PV}"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # The "mori.x" program pipes input to "Singular".
 RDEPEND="sci-mathematics/singular"

@@ -10,6 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">util-linux/util-linux</remote-id>
 		<remote-id type="sourceforge">loop-aes</remote-id>
 	</upstream>
 </pkgmetadata>

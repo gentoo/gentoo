@@ -6,6 +6,6 @@
 		<name>Craig Andrews</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">ngtcp2/ngtcp2</remote-id>
+		<remote-id type="github">ngtcp2/nghttp3</remote-id>
 	</upstream>
 </pkgmetadata>

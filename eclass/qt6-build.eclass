@@ -122,7 +122,7 @@ qt6-build_src_prepare() {
 	fi
 
 	_qt6-build_prepare_env
-	_qt6-build_match_cpu_flags
+	_qt6-build_sanitize_cpu_flags
 
 	# LTO cause test failures in several components (e.g. qtcharts,
 	# multimedia, scxml, wayland, webchannel, ...).
@@ -235,34 +235,6 @@ _qt6-build_create_user_facing_links() {
 	done < "${BUILD_DIR}"/user_facing_tool_links.txt || die
 }
 
-# @FUNCTION: _qt6-build_match_cpu_flags
-# @INTERNAL
-# @DESCRIPTION:
-# Try to adjust -m* cpu CXXFLAGS so that they match a configuration
-# accepted by Qt's headers, see bug #908420.
-_qt6-build_match_cpu_flags() {
-	use amd64 || use x86 || return 0
-
-	local flags=() intrin intrins
-	while IFS=' ' read -ra intrins; do
-		[[ ${intrins[*]} == *=[^_]* && ${intrins[*]} == *=_* ]] &&
-			for intrin in "${intrins[@]%=*}"; do
-				[[ ${intrin} ]] && flags+=( -mno-${intrin} )
-			done
-	done < <(
-		$(tc-getCXX) -E -P ${CXXFLAGS} ${CPPFLAGS} - <<-EOF | tail -n 2
-			avx2=__AVX2__ =__BMI__ =__BMI2__ =__F16C__ =__FMA__ =__LZCNT__ =__POPCNT__
-			avx512f=__AVX512F__ avx512bw=__AVX512BW__ avx512cd=__AVX512CD__ avx512dq=__AVX512DQ__ avx512vl=__AVX512VL__
-		EOF
-		assert
-	)
-
-	if (( ${#flags[@]} )); then
-		einfo "Adjusting CXXFLAGS for https://bugs.gentoo.org/908420 with: ${flags[*]}"
-		append-cxxflags "${flags[@]}"
-	fi
-}
-
 # @FUNCTION: _qt6-build_prepare_env
 # @INTERNAL
 # @DESCRIPTION:
@@ -287,6 +259,63 @@ _qt6-build_prepare_env() {
 	readonly QT6_QMLDIR=${QT6_ARCHDATADIR}/qml
 	readonly QT6_SYSCONFDIR=${EPREFIX}/etc/xdg
 	readonly QT6_TRANSLATIONDIR=${QT6_DATADIR}/translations
+}
+
+# @FUNCTION: _qt6-build_sanitize_cpu_flags
+# @INTERNAL
+# @DESCRIPTION:
+# Qt hardly support use of -mno-* or -march=native for unusual CPUs
+# (or VMs) that support incomplete x86-64 feature levels, and attempts
+# to allow this anyway has worked poorly.  This instead tries to detect
+# unusual configurations and fallbacks to generic -march=x86-64* if so
+# (bug #898644,#908420,#913400,#933374).
+_qt6-build_sanitize_cpu_flags() {
+	# less of an issue with non-amd64, will revisit only if needed
+	use amd64 || return 0
+
+	local cpuflags=(
+		# list of checked cpu features by qtbase in configure.cmake
+		aes avx avx2 avx512{bw,cd,dq,er,f,ifma,pf,vbmi,vbmi2,vl}
+		f16c rdrnd rdseed sha sse2 sse3 sse4_1 sse4_2 ssse3 vaes
+
+		# extras checked by qtbase's qsimd_p.h
+		bmi bmi2 f16c fma lzcnt popcnt
+	)
+
+	# check if any known problematic -mno-* C(XX)FLAGS
+	if ! is-flagq "@($(IFS='|'; echo "${cpuflags[*]/#/-mno-}"))"; then
+		# check if qsimd_p.h (search for "enable all") will accept -march
+		: "$($(tc-getCXX) -E -P ${CXXFLAGS} ${CPPFLAGS} - <<-EOF | tail -n 1
+				#if (defined(__AVX2__) && (__BMI__ + __BMI2__ + __F16C__ + __FMA__ + __LZCNT__ + __POPCNT__) != 6) || \
+					(defined(__AVX512F__) && (__AVX512BW__ + __AVX512CD__ + __AVX512DQ__ + __AVX512VL__) != 4)
+				bad
+				#endif
+			EOF
+			assert
+		)"
+		[[ ${_} == bad ]] || return 0 # *should* be fine as-is
+	fi
+
+	# determine highest(known) usable x86-64 feature level
+	local march=$(
+		$(tc-getCXX) -E -P ${CXXFLAGS} ${CPPFLAGS} - <<-EOF | tail -n 1
+			default
+			#if (__CRC32__ + __LAHF_SAHF__ + __POPCNT__ + __SSE3__ + __SSE4_1__ + __SSE4_2__ + __SSSE3__) == 7
+			x86-64-v2
+			#  if (__AVX__ + __AVX2__ + __BMI__ + __BMI2__ + __F16C__ + __FMA__ + __LZCNT__ + __MOVBE__ + __XSAVE__) == 9
+			x86-64-v3
+			#    if (__AVX512BW__ + __AVX512CD__ + __AVX512DQ__ + __AVX512F__ + __AVX512VL__ + __EVEX256__ + __EVEX512__) == 7
+			x86-64-v4
+			#    endif
+			#  endif
+			#endif
+		EOF
+		assert
+	)
+
+	filter-flags '-march=*' "${cpuflags[@]/#/-m}" "${cpuflags[@]/#/-mno-}"
+	[[ ${march} == x86-64* ]] && append-flags $(test-flags-CXX -march=${march})
+	einfo "C(XX)FLAGS were adjusted due to Qt limitations: ${CXXFLAGS}"
 }
 
 fi

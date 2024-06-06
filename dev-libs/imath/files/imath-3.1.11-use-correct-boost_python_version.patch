@@ -1,0 +1,17 @@
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: 2024-06-03
+Subject: [PATCH] only try to find versioned boost::python
+
+diff --git a/src/python/CMakeLists.txt b/src/python/CMakeLists.txt
+index 1bc1e54..c71ce42 100644
+--- a/src/python/CMakeLists.txt
++++ b/src/python/CMakeLists.txt
+@@ -139,8 +139,6 @@ if(Boost_NO_BOOST_CMAKE)
+ endif()
+ 
+ find_package(Boost OPTIONAL_COMPONENTS
+-  python
+-  python${Python_VERSION_MAJOR}
+   ${PYIMATH_BOOST_PY_COMPONENT})
+ set(_pyimath_have_perver_boost)
+ if(PYIMATH_BOOST_PY_COMPONENT)

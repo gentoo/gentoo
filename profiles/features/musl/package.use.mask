@@ -1,6 +1,16 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2024-06-03)
+# Poor rendering performance otherwise (bug #931215) but it doesn't
+# work on musl.
+kde-plasma/kwin caps
+
+# Violet Purcell <vimproved@inventati.org> (2024-05-15)
+# Python does not support JIT on musl, see
+# https://peps.python.org/pep-0744/#support.
+dev-lang/python jit
+
 # Robert Förster <Dessa@gmake.de> (2024-05-06)
 # dev-db/mongodb is masked on musl
 dev-libs/mongo-c-driver test
@@ -150,6 +160,7 @@ net-misc/iputils rarpd
 # Sam James <sam@gentoo.org> (2021-11-20)
 # Pulls in po4a which doesn't seem to work on musl (wants /usr/bin/locale)
 app-arch/dpkg nls
+app-crypt/loop-aes-losetup nls
 app-emulation/guestfs-tools doc
 app-emulation/libguestfs doc
 app-text/bibletime doc

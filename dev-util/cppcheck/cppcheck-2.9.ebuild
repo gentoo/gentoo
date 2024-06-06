@@ -8,7 +8,7 @@ EAPI=8
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_SINGLE_IMPL=1
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit distutils-r1 cmake
 
 DESCRIPTION="Static analyzer of C/C++ code"
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/danmar/cppcheck/archive/refs/tags/${PV}.tar.gz -> ${
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
 IUSE="htmlreport pcre qt5 test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"

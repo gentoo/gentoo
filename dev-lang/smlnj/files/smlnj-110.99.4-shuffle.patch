@@ -1,0 +1,36 @@
+--- a/base/runtime/c-libs/posix-io/makefile	2024-06-04 08:38:20.192453601 +0200
++++ b/base/runtime/c-libs/posix-io/makefile	2024-06-04 08:39:09.504903619 +0200
+@@ -37,7 +37,8 @@
+         lseek.o \
+         fsync.o
+ 
+-$(LIBRARY)	: $(VERSION) $(OBJS)
++$(LIBRARY)	: $(VERSION)
++	$(MAKE) $(OBJS)
+ 	rm -rf $(LIBRARY)
+ 	$(AR) $(ARFLAGS) $(LIBRARY) $(OBJS)
+ 	$(RANLIB) $(LIBRARY)
+--- a/base/runtime/objs/makefile	2024-06-04 09:26:03.961409055 +0200
++++ b/base/runtime/objs/makefile	2024-06-04 09:27:12.461586788 +0200
+@@ -113,7 +113,8 @@
+ 	(cd $(MP_DIR); $(MAKE) MAKE="$(MAKE)" clean)
+ 
+ 
+-$(RUNTIME):	$(VERSION) main.o $(OBJS) $(ALL_LIBS)
++$(RUNTIME): $(VERSION)
++	$(MAKE) main.o $(OBJS) $(ALL_LIBS)
+ 	$(CC) -o $(RUNTIME) $(CFLAGS) $(LDFLAGS) main.o $(OBJS) $(ALL_LIBS) $(LD_LIBS)
+ 
+ $(RUNTIME_A):	$(VERSION) main.o $(OBJS) $(ALL_LIBS)
+--- a/base/runtime/c-libs/posix-signal/makefile	2024-06-04 09:32:49.906560537 +0200
++++ b/base/runtime/c-libs/posix-signal/makefile	2024-06-04 09:33:12.811305204 +0200
+@@ -21,7 +21,8 @@
+ OBJS =	posix-signal-lib.o \
+ 	osval.o
+ 
+-$(LIBRARY)	: $(VERSION) $(OBJS)
++$(LIBRARY)	: $(VERSION)
++	$(MAKE) $(OBJS)
+ 	rm -rf $(LIBRARY)
+ 	$(AR) $(ARFLAGS) $(LIBRARY) $(OBJS)
+ 	$(RANLIB) $(LIBRARY)

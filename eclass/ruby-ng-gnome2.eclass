@@ -6,7 +6,7 @@
 # Ruby herd <ruby@gentoo.org>
 # @AUTHOR:
 # Author: Hans de Graaff <graaff@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: ruby-ng
 # @BLURB: An eclass to simplify handling of various ruby-gnome2 parts.
 # @DESCRIPTION:
@@ -14,7 +14,7 @@
 # ruby-gnome2 since they share a very common installation procedure.
 
 case ${EAPI} in
-	7) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -44,17 +44,11 @@ BDEPEND="virtual/pkgconfig"
 ruby_add_bdepend "
 	dev-ruby/pkg-config
 	test? ( >=dev-ruby/test-unit-2 )"
-SRC_URI="https://downloads.sourceforge.net/ruby-gnome2/ruby-gnome2-all-${PV}.tar.gz"
 HOMEPAGE="https://ruby-gnome.github.io/"
 LICENSE="LGPL-2.1+"
 SLOT="0"
-if ver_test -ge "3.4.0"; then
-	SRC_URI="https://github.com/ruby-gnome/ruby-gnome/archive/${PV}.tar.gz -> ruby-gnome2-${PV}.tar.gz"
-	RUBY_S=ruby-gnome-${PV}/${RUBY_FAKEGEM_NAME}
-else
-	SRC_URI="https://downloads.sourceforge.net/ruby-gnome2/ruby-gnome2-all-${PV}.tar.gz"
-	RUBY_S=ruby-gnome2-all-${PV}/${RUBY_FAKEGEM_NAME}
-fi
+SRC_URI="https://github.com/ruby-gnome/ruby-gnome/archive/${PV}.tar.gz -> ruby-gnome2-${PV}.tar.gz"
+RUBY_S=ruby-gnome-${PV}/${RUBY_FAKEGEM_NAME}
 
 ruby-ng-gnome2_all_ruby_prepare() {
 	# Avoid compilation of dependencies during test.

@@ -18,13 +18,13 @@ DESCRIPTION="An extension library to access a SQLite database from Ruby"
 HOMEPAGE="https://github.com/sparklemotion/sqlite3-ruby"
 LICENSE="BSD"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 SLOT="0"
 IUSE="doc test"
 
 # We track the bundled sqlite version here
 RDEPEND+=" >=dev-db/sqlite-3.45.2:3"
-DEPEND+=" >=dev-db/sqlite-3.45.2:3"
+DEPEND+=" >=dev-db/sqlite-3.45.2:3 <dev-db/sqlite-3.46.0"
 
 ruby_add_bdepend "
 	doc? ( dev-ruby/rdoc )

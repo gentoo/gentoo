@@ -36,7 +36,7 @@ else
 	PATCHES=("${WORKDIR}/patch")
 	SLOT="${PV%%.*}"
 	[[ ${PV} == *.*.* ]] && SLOT+="-vcs"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
@@ -223,6 +223,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# We want floating-point arithmetic to be correct #933380
+	replace-flags -Ofast -O3
+	append-flags -fno-fast-math -ffp-contract=off
+
 	local myconf
 
 	# Prevents e.g. tests interfering with running Emacs.
@@ -345,7 +349,7 @@ src_configure() {
 
 	if tc-is-cross-compiler; then
 		# Configure a CBUILD directory when cross-compiling to make tools
-		mkdir "${S}-build" && pushd "${S}-build" >/dev/null || die
+		mkdir -p "${S}-build" && pushd "${S}-build" >/dev/null || die
 		ECONF_SOURCE="${S}" econf_build --without-all --without-x-toolkit
 		popd >/dev/null || die
 		# Don't try to execute the binary for dumping during the build
@@ -462,7 +466,7 @@ src_test() {
 
 	# Redirect GnuPG's sockets, in order not to exceed the 108 char limit
 	# for socket paths on Linux.
-	mkdir "${T}"/gpg || die
+	mkdir -p "${T}"/gpg || die
 	local f
 	for f in browser extra ssh; do
 		printf "%%Assuan%%\nsocket=%s\n" "${T}/gpg/S.${f}" \

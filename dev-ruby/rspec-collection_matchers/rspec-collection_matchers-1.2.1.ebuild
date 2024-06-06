@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/rspec/rspec-collection_matchers"
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/rspec-expectations-3.0.0"

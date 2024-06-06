@@ -19,7 +19,7 @@ unset commit
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="-* ~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv x86"
 IUSE="selinux"
 
 RDEPEND="selinux? ( sec-policy/selinux-dmidecode )"

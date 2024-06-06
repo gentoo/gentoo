@@ -9,7 +9,4 @@
 		<email>dlan@gentoo.org</email>
 		<name>Yixun Lan</name>
 	</maintainer>
-	<use>
-		<flag name="udis86">Enable support for <pkg>dev-libs/udis86</pkg> disassembler library</flag>
-	</use>
 </pkgmetadata>

@@ -1,0 +1,80 @@
+https://github.com/EttusResearch/uhd/commit/ea586168c596d13d05d145832519755794649ba0
+https://bugs.gentoo.org/932239#c10
+
+From ea586168c596d13d05d145832519755794649ba0 Mon Sep 17 00:00:00 2001
+From: Martin Braun <martin.braun@ettus.com>
+Date: Thu, 28 Mar 2024 17:28:57 +0100
+Subject: [PATCH 08/30] lib: Replace deprecated boost::filesystem usage
+
+Recent versions of Boost were throwing compiler warnings due to usage of
+deprecated functions. Our minimum version of Boost (1.65) already
+provides the replacements, so this commit simply updates these
+deprecated use cases.
+---
+ host/lib/usrp/mpmd/mpmd_image_loader.cpp                 | 6 ++----
+ host/lib/usrp/x300/x300_image_loader.cpp                 | 4 ++--
+ host/lib/usrp_clock/octoclock/octoclock_image_loader.cpp | 2 +-
+ 3 files changed, 5 insertions(+), 7 deletions(-)
+
+diff --git a/host/lib/usrp/mpmd/mpmd_image_loader.cpp b/host/lib/usrp/mpmd/mpmd_image_loader.cpp
+index 31b6387ab..ba0f45fad 100644
+--- a/lib/usrp/mpmd/mpmd_image_loader.cpp
++++ b/lib/usrp/mpmd/mpmd_image_loader.cpp
+@@ -27,8 +27,6 @@
+ #include <cctype>
+ #include <fstream>
+ #include <iterator>
+-#include <sstream>
+-#include <streambuf>
+ #include <string>
+ #include <vector>
+ 
+@@ -271,7 +269,7 @@ static uhd::usrp::component_files_t bin_dts_to_component_files(
+     // DTS component struct
+     // First, we need to determine the name
+     const std::string base_name =
+-        boost::filesystem::change_extension(fpga_path, "").string();
++        boost::filesystem::path(fpga_path).replace_extension("").string();
+     if (base_name == fpga_path) {
+         const std::string err_msg(
+             "Can't cut extension from FPGA filename... " + fpga_path);
+@@ -340,7 +338,7 @@ static void mpmd_send_fpga_to_device(
+         UHD_LOG_TRACE("MPMD IMAGE LOADER", "FPGA path: " << fpga_path);
+ 
+         // If the fpga_path is a lvbitx file, parse it as such
+-        if (boost::filesystem::extension(fpga_path) == ".lvbitx") {
++        if (boost::filesystem::path(fpga_path).extension() == ".lvbitx") {
+             all_component_files = lvbitx_to_component_files(fpga_path, delay_reload);
+         } else {
+             all_component_files = bin_dts_to_component_files(fpga_path, delay_reload);
+diff --git a/host/lib/usrp/x300/x300_image_loader.cpp b/host/lib/usrp/x300/x300_image_loader.cpp
+index d7a64d4d0..a84dba420 100644
+--- a/lib/usrp/x300/x300_image_loader.cpp
++++ b/lib/usrp/x300/x300_image_loader.cpp
+@@ -138,8 +138,8 @@ static void x300_validate_image(x300_session_t& session)
+             boost::format("Could not find image at path \"%s\".") % session.filepath));
+     }
+ 
+-    std::string extension = fs::extension(session.filepath);
+-    session.lvbitx        = (extension == ".lvbitx");
++    const std::string extension = fs::path(session.filepath).extension().string();
++    session.lvbitx              = (extension == ".lvbitx");
+ 
+     if (session.lvbitx) {
+         extract_from_lvbitx(session);
+diff --git a/host/lib/usrp_clock/octoclock/octoclock_image_loader.cpp b/host/lib/usrp_clock/octoclock/octoclock_image_loader.cpp
+index 930c5d758..4c39790c7 100644
+--- a/lib/usrp_clock/octoclock/octoclock_image_loader.cpp
++++ b/lib/usrp_clock/octoclock/octoclock_image_loader.cpp
+@@ -95,7 +95,7 @@ static void octoclock_validate_firmware_image(octoclock_session_t& session)
+                                      % session.image_filepath));
+     }
+ 
+-    std::string extension = fs::extension(session.image_filepath);
++    const std::string extension = fs::path(session.image_filepath).extension().string();
+     if (extension == ".bin") {
+         octoclock_read_bin(session);
+     } else if (extension == ".hex") {
+-- 
+2.44.1
+

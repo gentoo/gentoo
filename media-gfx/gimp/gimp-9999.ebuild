@@ -208,7 +208,7 @@ _rename_plugins() {
 	einfo 'Renaming plug-ins to not collide with pre-2.10.6 file layout (bug #664938)...'
 	local prename=gimp-org-
 	(
-		cd "${ED}"/usr/$(get_libdir)/gimp/2.99/plug-ins || exit 1
+		cd "${ED}"/usr/$(get_libdir)/gimp/3.0/plug-ins || exit 1
 		for plugin_slash in $(ls -d1 */); do
 			plugin=${plugin_slash%/}
 			if [[ -f ${plugin}/${plugin} ]]; then

@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1 systemd xdg
@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://git.deluge-torrent.org/${PN}"
 else
 	SRC_URI="http://download.deluge-torrent.org/source/$(ver_cut 1-2)/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv"
 fi
 
 LICENSE="GPL-2"

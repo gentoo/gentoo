@@ -428,6 +428,7 @@ pkg_preinst() {
 	sed -i "s/@VIDEOGID@/${g}/" "${ED}"/etc/modprobe.d/nvidia.conf || die
 
 	# try to find driver mismatches using temporary supported-gpus.json
+	# TODO?: automatically check "kernelopen" bit for USE=kernel-open compat
 	for g in $(grep -l 0x10de /sys/bus/pci/devices/*/vendor 2>/dev/null); do
 		g=$(grep -io "\"devid\":\"$(<${g%vendor}device)\"[^}]*branch\":\"[0-9]*" \
 			"${ED}"/usr/share/nvidia/supported-gpus.json 2>/dev/null)
@@ -484,9 +485,9 @@ pkg_postinst() {
 
 	if use kernel-open && [[ ! -v NV_HAD_KERNEL_OPEN ]]; then
 		ewarn
-		ewarn "Open source variant of ${PN} was selected, be warned it is experimental"
-		ewarn "and only for modern GPUs (e.g. GTX 1650+). Try to disable if run into issues."
-		ewarn "Please also see: ${EROOT}/usr/share/doc/${PF}/html/kernel_open.html"
+		ewarn "Open source variant of ${PN} was selected, note that it requires"
+		ewarn "Turing/Ampere+ GPUs (aka GTX 1650+). Try disabling if run into issues."
+		ewarn "Also see: ${EROOT}/usr/share/doc/${PF}/html/kernel_open.html"
 	fi
 
 	if use wayland && use modules && [[ ! -v NV_HAD_WAYLAND ]]; then

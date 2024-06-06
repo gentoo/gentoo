@@ -1,0 +1,12 @@
+https://github.com/apache/spamassassin/commit/20c6a5a78e31877b3d4fa379d6a011d6112aabb9
+--- a/t/dnsbl_subtests.t
++++ b/t/dnsbl_subtests.t
+@@ -14,6 +14,8 @@ use Test::More;
+ 
+ use Errno qw(EADDRINUSE EACCES);
+ 
++plan skip_all => "Net tests disabled" unless conf_bool('run_net_tests');
++
+ use constant HAS_NET_DNS_NAMESERVER => eval { require Net::DNS::Nameserver; };
+ plan skip_all => "Net::DNS::Nameserver in unavailable on this system" unless (HAS_NET_DNS_NAMESERVER);
+ plan  tests => 46;

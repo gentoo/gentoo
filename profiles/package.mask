@@ -33,12 +33,117 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-06-06)
+# Causes crashes in pure Python modules, e.g. dev-python/freezegun.
+=dev-lang/python-3.13.0_beta2
+
+# Maciej Barć <xgqt@gentoo.org> (2024-06-05)
+# Old and experimental Scheme compiler.
+# Bugs: 870472 and 906863
+# Removal on 2024-07-05.
+dev-scheme/scheme48
+
+# Maciej Barć <xgqt@gentoo.org> (2024-06-04)
+# Deprecated git integration backend of "app-emacs/magit".
+# No longer supported by upstream. Fails to compile (bug 928920).
+# Removal on 2024-07-04.
+app-emacs/libegit2
+
+# Mike Gilbert <floppym@gentoo.org> (2024-06-01)
+# Abandoned upstream. No Gentoo maintainer since 2021.
+# Plugin system seems quite broken (bug 887119).
+# Removal on 2024-07-01.
+sys-fs/reiser4progs
+sys-libs/libaal
+
+# Hans de Graaff <graaff@gentoo.org> (2024-06-01)
+# Old ruby31-only slots. Please use a newer slot of these
+# packages. Masked for removal on 2024-07-01.
+dev-ruby/elasticsearch:6.8.3
+dev-ruby/elasticsearch-api:6.8.3
+dev-ruby/elasticsearch-transport:6.8.3
+dev-ruby/mimemagic:0
+dev-ruby/puppet_forge:2
+dev-ruby/puppet_forge:4
+dev-ruby/rspec-rails:5
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-31)
+# EAPI=6, maintainer-needed, incorrect LICENSE, fails to compile with
+# clang.
+# Removal on 2024-06-30.  Bugs #933241, #889912, #880267, #562822, #930500.
+net-mail/gnubiff
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-31)
+# EAPI=6, no activity upstream, maintianer-needed.
+# Removal on 2024-06-30.  Bugs #933239, #828068.
+app-emulation/phpvirtualbox
+
+# Sam James <sam@gentoo.org> (2024-05-29)
+# OpenPGP key of malicious upstream xz co-maintainer. This key is no longer
+# used by any ebuilds in tree. Removal on 2024-06-29. This package was already
+# masked a while ago but is now being removed. See the bug for details
+# on the gap. Bug #928134 (GLSA-202403-04).
+sec-keys/openpgp-keys-jiatan
+
+# Sam James <sam@gentoo.org> (2024-05-28)
+# Breaks reverse dependencies like protobuf-c (bug #932857) and protobuf-26.1
+# itself isn't compatible with this abseil-cpp version (bug #932848).
+# In addition, we still need to establish a new approach like a virtual
+# for protobuf because of its abseil dependency - see the discussion in bug #912819.
+~dev-libs/protobuf-26.1
+~dev-cpp/abseil-cpp-20240116.2
+
+# Hans de Graaff <graaff@gentoo.org> (2024-05-26)
+# Upstream is gone. No longer compiles with modern C compilers. Last
+# release in 2011. No reverse dependencies. Masked for removal on
+# 20240-06-26.
+dev-ruby/uconv
+
+# Michał Górny <mgorny@gentoo.org> (2024-05-26)
+# Upstream broke support for custom ssl_context, and they are still
+# debating what the best way forward is.
+# https://github.com/psf/requests/pull/6667#issuecomment-2124283071
+=dev-python/requests-2.32.2
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2024-05-24)
-# Work in progress.
+# Perl 5.40-RC1 mask. Use this block to unmask for testing.
+# It may still change with the final release.
 =dev-lang/perl-5.40*
 ~virtual/perl-Archive-Tar-3.20.10_rc
 ~virtual/perl-autodie-2.370.0
 ~virtual/perl-bignum-0.670.0
+~virtual/perl-Compress-Raw-Bzip2-2.212.0
+~virtual/perl-CPAN-Meta-Requirements-2.143.0
+~virtual/perl-Data-Dumper-2.189.0
+~virtual/perl-DB_File-1.859.0
+~virtual/perl-Devel-PPPort-3.720.0
+~virtual/perl-Exporter-5.780.0
+~virtual/perl-ExtUtils-CBuilder-0.280.240
+~virtual/perl-ExtUtils-Manifest-1.750.0
+~virtual/perl-File-Spec-3.900.0
+~virtual/perl-HTTP-Tiny-0.88.0
+~virtual/perl-IO-1.550.0
+~virtual/perl-IO-Compress-2.212.0
+~virtual/perl-IO-Socket-IP-0.420.0
+~virtual/perl-IO-Zlib-1.150.0
+~virtual/perl-Math-BigInt-2.3.2
+~virtual/perl-Math-BigInt-FastCalc-0.501.800
+~virtual/perl-Math-BigRat-2.3.2
+~virtual/perl-Module-CoreList-5.202.405.240
+~virtual/perl-Module-CoreList-5.202.406.40
+~virtual/perl-Module-Metadata-1.0.38
+~virtual/perl-podlators-5.10.200_rc
+~virtual/perl-Pod-Simple-3.450.0
+~virtual/perl-Safe-2.460.0
+~virtual/perl-Socket-2.38.0
+~virtual/perl-Test-Harness-3.480.0
+~virtual/perl-Test-Simple-1.302.199
+~virtual/perl-Text-Tabs+Wrap-2024.1.0
+~virtual/perl-threads-2.400.0
+~virtual/perl-threads-shared-1.690.0
+~virtual/perl-Time-HiRes-1.977.700
+~virtual/perl-Time-Local-1.350.0
+~virtual/perl-version-0.993.0
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-23)
 # EAPI=6, maintainer-needed, dead HOMEPAGE, fails to compile.
@@ -121,10 +226,6 @@ dev-python/whichcraft
 # Bug #862669, #890423.
 # Removal on 2024-06-16.
 sci-libs/beagle
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-05-14)
-# Breaks build of revdeps. Bugs #931916, #931917
-~app-text/poppler-24.05.0
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-13)
 # EAPI=6, fails to compile, archived upstream, uses deprecated go eclasses.
@@ -224,151 +325,9 @@ dev-python/grpcio
 dev-python/grpcio-testing
 dev-python/grpcio-tools
 
-# Jason Zaman <perfinion@gentoo.org> (2024-04-28)
-# TensorFlow was removed from the tree in feb, Keras applications and
-# preprocessing no longer have any revdeps in the tree. For ML, the
-# recommendation is to install from pip in a venv.
-# Removal in 30 days. Bug #930830
-sci-libs/keras-applications
-sci-libs/keras-preprocessing
-
 # Sam James <sam@gentoo.org> (2024-04-28)
 # Masked for testing. Tracker bug: bug #930805.
 >=sys-libs/ncurses-6.5
-
-# Jason Zaman <perfinion@gentoo.org> (2024-04-27)
-# Sandboxfs was only experimental in Bazel. It was fully removed in Bazel-7
-# Bazel was removed from gentoo in Feb.
-# Removal in 30 days. Bug #930790
-sys-fs/sandboxfs
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-04-27)
-# EAPI=6 package, has issues with implicit function declarations, has
-# issues with incompatible types and more. The only reverse dependency
-# is virtual/skkserv, which has other better candidates.
-# Removal on 2024-05-27, bug #930781
-app-i18n/skkserv
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-04-26)
-# Broken and reported as such upstream. EAPI=6.
-# Removal: 2024-05-26.  Bug #912842.
-net-misc/ttytter
-
-# Maciej Barć <xgqt@gentoo.org> (2024-04-25)
-# Mask "app-emacs/windows" and reverse dependencies.
-# Very old package failing to compile with modern GNU Emacs.
-# Additionally all 3 packages do not have any definitive repository nor VCS.
-# Open bugs: #930655
-# Removal on 2024-05-25.
-app-emacs/basic-toolkit
-app-emacs/buffer-extension
-app-emacs/windows
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# No py3.12, no tests, no maintainer.  Also no revdeps.
-# Removal on 2024-05-23.  Bug #929513.
-dev-python/sphinxcontrib-newsfeed
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# Integrated into >=dev-python/pytest-5.0.  No revdeps.
-# Removal on 2024-05-23.  Bug #929496.
-dev-python/pytest-faulthandler
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# Broken with py3.12.  Last commit upstream in 2021.  No revdeps.
-# Removal on 2024-05-23.  Bug #929484.
-dev-python/pyannotate
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# No py3.12, broken.  Upstream literally tells people to use a fork
-# "for the time being".  No revdeps.
-# Removal on 2024-05-23.  Bug #929461.
-dev-python/kafka-python
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# Unmaintained.  No py3.12, failing tests.  Last upstream activity
-# in 2020, triggered by our previous last rites.  No revdeps.
-# Removal on 2024-05-23.  Bug #929445.
-dev-python/cgroup-utils
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# Unmaintained Sphinx theme.  Last commit in 2021.  No revdeps.
-# Removal on 2024-05-23.  Bug #929458.
-dev-python/guzzle_sphinx_theme
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# Unmaintained in Gentoo.  Lacking tests, py3.12 support, outdated.
-# No revdeps.  The alternatives are dev-python/{llfuse,pyfuse3}.
-# Removal on 2024-05-23.  Bug #929453.
-dev-python/fuse-python
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# Unmaintained.  Last release in 2003.  Carries a ton of patches.
-# Removal on 2024-05-23.  Bug #928731.
-net-analyzer/tcpstat
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# Added in 2005 and not updated since.  Homepage and source mirrors
-# are gone.  Needs patches to even build.
-# Removal on 2024-05-23.  Bug #928594.
-media-video/vstrip
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# Obsolete Pidgin plugin.  Last supported in 2008, removed from plugin
-# list in 2019.
-# Removal on 2024-05-23.  Bug #928578.
-net-im/librvp
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# Unmaintained GTK+2 application.  Last update in 2005.
-# Alternatives include media-sound/fmit and media-sound/lingot.
-# Removal on 2024-05-23.  Bug #928512.
-media-sound/pitchtune
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# Ancient.  Homepage gone.  There are many alternative network testing
-# tools, such as net-misc/iperf.
-# Removal on 2024-05-23.  Bug #928133.
-net-analyzer/gensink
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# An old, unmaintained theme.  The last revdep stopped using it.
-# Removal on 2024-05-23.  Bug #927764.
-dev-python/sphinx-py3doc-enhanced-theme
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# Unmaintained in Gentoo and seriously outdated.  EAPI 6.  No revdeps.
-# There seem to be an up-to-date ebuilds in ::mva.
-# Removal on 2024-05-23.  Bug #928070.
-dev-util/android-ndk
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# Unmaintained in Gentoo and seriously outdated.  Its only reverse
-# dependency is app-admin/testdisk, and the current TestDisk versions
-# do not build against this version anyway
-# Removal on 2024-05-23.  Bug #927076.
-app-forensics/libewf
-
-# Michał Górny <mgorny@gentoo.org> (2024-04-23)
-# Superseded by dev-python/tinycss2.  No revdeps.
-# Removal on 2024-05-23.  Bug #930503.
-dev-python/tinycss
-
-# Matthew Smith <matthew@gentoo.org> (2024-04-23)
-# Security issues (Bug #920682).
-# See the following link for breaking changes:
-# https://www.erlang.org/patches/otp-26.2#incompatibilities
-# Removal on 2024-05-23
-<dev-lang/elixir-1.14.5-r2
-=dev-lang/elixir-1.15.6
-<dev-lang/erlang-26.2.1
-
-# Matthew Smith <matthew@gentoo.org> (2024-04-23)
-# Security issues (Bug #918527) and blocking cleanup of vulnerable
-# dev-lang/erlang versions. Please upgrade.
-# https://www.rabbitmq.com/docs/upgrade
-# Removal on 2024-05-23
-<net-misc/rabbitmq-server-3.13.1
 
 # Michał Górny <mgorny@gentoo.org> (2024-04-11)
 # Contains a bug that could render the kernel fail to boot.
@@ -403,15 +362,16 @@ sec-keys/openpgp-keys-jiatan
 # Mask experimental software
 =mail-mta/postfix-3.10*
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-05-23)
-# KDE Plasma 6.0.5, Gear 24.05.0 and Frameworks 6.2.0 mask
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-05-27)
+# KDE Plasma 6.1 Beta (6.0.90), Gear 24.05.0 and Frameworks 6.2.0 mask
 #
-# Don't do anything unless you're intentionally moving to Plasma 6, which is
-# masked still for a reason. If you get this message just from conflicts where
-# you're not trying to do that, please cleanup stale entries in /etc/portage
-# and your world file.
+# Don't do anything unless you're intentionally moving to Plasma 6, which
+# is masked until bug #926828 is fixed. If you get this message just from
+# conflicts where you're not trying to do that, please cleanup stale entries
+# in /etc/portage and your world file.
 #
-# Plasma 6 replaces 5. For conflict resolution between KF5- and KF6-packages:
+# Plasma 6 replaces 5, while KF6 will be installed alongside KF5 as long as
+# the latter is needed. For conflict resolution between KF5- and KF6-packages:
 # - put '-kf6compat' into /etc/portage/profile/use.mask
 # - enable USE=kf6compat globally
 # - if you have the following packages installed, put the following into
@@ -493,68 +453,69 @@ sec-keys/openpgp-keys-jiatan
 ~kde-frameworks/kxmlgui-6.2.0
 ~kde-frameworks/purpose-6.2.0
 ~kde-frameworks/qqc2-desktop-style-6.2.0
-~kde-plasma/bluedevil-6.0.5.1
-~kde-plasma/breeze-6.0.5
-~kde-plasma/breeze-grub-6.0.5
-~kde-plasma/breeze-gtk-6.0.5
-~kde-plasma/breeze-plymouth-6.0.5
-~kde-plasma/discover-6.0.5
-~kde-plasma/drkonqi-6.0.5
-~kde-plasma/flatpak-kcm-6.0.5
-~kde-plasma/kactivitymanagerd-6.0.5
-~kde-plasma/kde-cli-tools-6.0.5
-~kde-plasma/kde-gtk-config-6.0.5
-~kde-plasma/kdecoration-6.0.5
-~kde-plasma/kdeplasma-addons-6.0.5
-~kde-plasma/kgamma-6.0.5
-~kde-plasma/kglobalacceld-6.0.5
-~kde-plasma/kinfocenter-6.0.5
-~kde-plasma/kmenuedit-6.0.5
-~kde-plasma/kpipewire-6.0.5
-~kde-plasma/kscreen-6.0.5
-~kde-plasma/kscreenlocker-6.0.5
-~kde-plasma/ksshaskpass-6.0.5
-~kde-plasma/ksystemstats-6.0.5
-~kde-plasma/kwallet-pam-6.0.5
-~kde-plasma/kwayland-6.0.5
-~kde-plasma/kwayland-integration-6.0.5
-~kde-plasma/kwin-6.0.5
-~kde-plasma/kwrited-6.0.5
-~kde-plasma/layer-shell-qt-6.0.5
-~kde-plasma/libkscreen-6.0.5
-~kde-plasma/libksysguard-6.0.5
-~kde-plasma/libplasma-6.0.5
-~kde-plasma/milou-6.0.5
-~kde-plasma/ocean-sound-theme-6.0.5
-~kde-plasma/oxygen-6.0.5
-~kde-plasma/oxygen-sounds-6.0.5
-~kde-plasma/plasma-activities-6.0.5
-~kde-plasma/plasma-activities-stats-6.0.5
-~kde-plasma/plasma-browser-integration-6.0.5
-~kde-plasma/plasma-desktop-6.0.5
-~kde-plasma/plasma-disks-6.0.5
-~kde-plasma/plasma-firewall-6.0.5
-~kde-plasma/plasma-integration-6.0.5
-~kde-plasma/plasma-meta-6.0.5
-~kde-plasma/plasma-nm-6.0.5
-~kde-plasma/plasma-pa-6.0.5
-~kde-plasma/plasma-sdk-6.0.5
-~kde-plasma/plasma-systemmonitor-6.0.5
-~kde-plasma/plasma-thunderbolt-6.0.5
-~kde-plasma/plasma-vault-6.0.5
-~kde-plasma/plasma-welcome-6.0.5
-~kde-plasma/plasma-workspace-6.0.5
-~kde-plasma/plasma-workspace-wallpapers-6.0.5
-~kde-plasma/plasma5support-6.0.5
-~kde-plasma/plymouth-kcm-6.0.5
-~kde-plasma/polkit-kde-agent-6.0.5
-~kde-plasma/powerdevil-6.0.5
-~kde-plasma/print-manager-6.0.5
-~kde-plasma/qqc2-breeze-style-6.0.5
-~kde-plasma/sddm-kcm-6.0.5
-~kde-plasma/systemsettings-6.0.5
-~kde-plasma/wacomtablet-6.0.5
-~kde-plasma/xdg-desktop-portal-kde-6.0.5
+~kde-plasma/bluedevil-6.0.90
+~kde-plasma/breeze-6.0.90
+~kde-plasma/breeze-grub-6.0.90
+~kde-plasma/breeze-gtk-6.0.90
+~kde-plasma/breeze-plymouth-6.0.90
+~kde-plasma/discover-6.0.90
+~kde-plasma/drkonqi-6.0.90
+~kde-plasma/flatpak-kcm-6.0.90
+~kde-plasma/kactivitymanagerd-6.0.90
+~kde-plasma/kde-cli-tools-6.0.90
+~kde-plasma/kde-gtk-config-6.0.90
+~kde-plasma/kdecoration-6.0.90
+~kde-plasma/kdeplasma-addons-6.0.90
+~kde-plasma/kgamma-6.0.90
+~kde-plasma/kglobalacceld-6.0.90
+~kde-plasma/kinfocenter-6.0.90
+~kde-plasma/kmenuedit-6.0.90
+~kde-plasma/kpipewire-6.0.90
+~kde-plasma/krdp-6.0.90
+~kde-plasma/kscreen-6.0.90
+~kde-plasma/kscreenlocker-6.0.90
+~kde-plasma/ksshaskpass-6.0.90
+~kde-plasma/ksystemstats-6.0.90
+~kde-plasma/kwallet-pam-6.0.90
+~kde-plasma/kwayland-6.0.90
+~kde-plasma/kwayland-integration-6.0.90
+~kde-plasma/kwin-6.0.90.1
+~kde-plasma/kwrited-6.0.90
+~kde-plasma/layer-shell-qt-6.0.90
+~kde-plasma/libkscreen-6.0.90
+~kde-plasma/libksysguard-6.0.90
+~kde-plasma/libplasma-6.0.90
+~kde-plasma/milou-6.0.90
+~kde-plasma/ocean-sound-theme-6.0.90
+~kde-plasma/oxygen-6.0.90
+~kde-plasma/oxygen-sounds-6.0.90
+~kde-plasma/plasma-activities-6.0.90
+~kde-plasma/plasma-activities-stats-6.0.90
+~kde-plasma/plasma-browser-integration-6.0.90
+~kde-plasma/plasma-desktop-6.0.90
+~kde-plasma/plasma-disks-6.0.90
+~kde-plasma/plasma-firewall-6.0.90
+~kde-plasma/plasma-integration-6.0.90
+~kde-plasma/plasma-meta-6.0.90
+~kde-plasma/plasma-nm-6.0.90
+~kde-plasma/plasma-pa-6.0.90
+~kde-plasma/plasma-sdk-6.0.90
+~kde-plasma/plasma-systemmonitor-6.0.90
+~kde-plasma/plasma-thunderbolt-6.0.90
+~kde-plasma/plasma-vault-6.0.90
+~kde-plasma/plasma-welcome-6.0.90
+~kde-plasma/plasma-workspace-6.0.90
+~kde-plasma/plasma-workspace-wallpapers-6.0.90
+~kde-plasma/plasma5support-6.0.90
+~kde-plasma/plymouth-kcm-6.0.90
+~kde-plasma/polkit-kde-agent-6.0.90
+~kde-plasma/powerdevil-6.0.90
+~kde-plasma/print-manager-6.0.90
+~kde-plasma/qqc2-breeze-style-6.0.90
+~kde-plasma/sddm-kcm-6.0.90
+~kde-plasma/systemsettings-6.0.90
+~kde-plasma/wacomtablet-6.0.90
+~kde-plasma/xdg-desktop-portal-kde-6.0.90
 ~kde-apps/baloo-widgets-24.05.0
 ~kde-apps/dolphin-24.05.0
 ~kde-apps/kate-24.05.0
@@ -673,7 +634,6 @@ sec-keys/openpgp-keys-jiatan
 ~kde-apps/kdenetwork-filesharing-24.05.0
 ~kde-apps/kget-24.05.0
 ~kde-apps/kio-extras-24.05.0
-~kde-apps/krdc-24.05.0
 ~kde-apps/krfb-24.05.0
 ~kde-apps/signon-kwallet-extension-24.05.0
 ~kde-misc/kdeconnect-24.05.0
@@ -805,8 +765,9 @@ sec-keys/openpgp-keys-jiatan
 =net-libs/signond-8.61-r100
 =net-misc/smb4k-3.2.5-r2
 ~sys-auth/polkit-qt-0.200.0
-~app-office/libreoffice-24.2.3.2
-~app-office/libreoffice-l10n-24.2.3.2
+~x11-misc/sddm-0.21.0_p20240302
+~app-office/libreoffice-24.2.4.1
+=app-office/libreoffice-24.2.3.2-r10
 
 # Ulrich Müller <ulm@gentoo.org> (2024-02-08)
 # Masked for testing.
@@ -864,10 +825,6 @@ sec-keys/openpgp-keys-jiatan
 # for catalyst-4. Questions or bug reports about catalyst-3
 # may or may not lead to useful results.
 <dev-util/catalyst-4
-
-# Matt Turner <mattst88@gentoo.org> (2023-07-06)
-# GNOME 45 mask
->=gnome-extra/gnome-logs-45_alpha
 
 # Michał Górny <mgorny@gentoo.org> (2023-06-21)
 # suitesparseconfig-7.0.0 fails to build with multilib enabled

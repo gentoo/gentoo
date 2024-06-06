@@ -1,0 +1,29 @@
+--- a/Makefile	2023-01-24 08:35:02.515456277 +0100
++++ b/Makefile	2023-01-24 08:35:45.459755298 +0100
+@@ -81,7 +81,7 @@
+ cstubs.public = cstubs_structs cstubs cstubs_inverted
+ cstubs.dir = src/cstubs
+ cstubs.subproject_deps = ctypes
+-cstubs.deps = str integers
++cstubs.deps = bigarray-compat str integers
+ cstubs.install = yes
+ cstubs.install_native_objects = yes
+ cstubs.extra_hs = $(package_integers_path)/ocaml_integers.h
+@@ -93,7 +93,7 @@
+ ctypes-foreign.public = dl libffi_abi foreign
+ ctypes-foreign.dir = src/ctypes-foreign
+ ctypes-foreign.subproject_deps = ctypes
+-ctypes-foreign.deps = integers
++ctypes-foreign.deps = bigarray-compat integers
+ ctypes-foreign.install = yes
+ ctypes-foreign.install_native_objects = yes
+ ctypes-foreign.extra_cs = dl_stubs.c
+@@ -111,7 +111,7 @@
+ ctypes-top.public = ctypes_printers
+ ctypes-top.dir = src/ctypes-top
+ ctypes-top.install = yes
+-ctypes-top.deps = compiler-libs integers
++ctypes-top.deps = bigarray-compat compiler-libs integers
+ ctypes-top.subproject_deps = ctypes
+ ctypes-top.install_native_objects = yes
+ 

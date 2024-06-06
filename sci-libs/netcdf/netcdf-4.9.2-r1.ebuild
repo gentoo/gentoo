@@ -13,7 +13,7 @@ S="${WORKDIR}"/${PN}-c-${PV}
 LICENSE="UCAR-Unidata"
 # SONAME of libnetcdf.so
 SLOT="0/19"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 -riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 -riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="blosc bzip2 +dap doc examples hdf +hdf5 mpi szip test zstd"
 RESTRICT="!test? ( test )"
 
@@ -89,8 +89,9 @@ src_configure() {
 }
 
 src_test() {
-	[[ -f "${BUILD_DIR}/nc_test4/run_par_test.sh" ]] && \
-	sed -e 's/mpiexec/mpiexec --use-hwthread-cpus/g' -i "${BUILD_DIR}/nc_test4/run_par_test.sh" || die
+	if [[ -f "${BUILD_DIR}/nc_test4/run_par_test.sh" ]]; then
+		sed -e 's/mpiexec/mpiexec --use-hwthread-cpus/g' -i "${BUILD_DIR}/nc_test4/run_par_test.sh" || die
+	fi
 
 	cmake_src_test
 }

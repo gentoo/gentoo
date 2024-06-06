@@ -22,7 +22,7 @@ SRC_URI="
 LICENSE="BSD"
 SLOT="0/31" # based on SONAME
 # -ppc -sparc because broken on big endian, bug #818424
-KEYWORDS="~amd64 ~arm ~arm64 ~loong -ppc ~ppc64 ~riscv -sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ~loong -ppc ~ppc64 ~riscv -sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 
 IUSE="cpu_flags_x86_avx doc examples large-stack utils test threads"
 REQUIRED_USE="doc? ( utils )"
@@ -125,13 +125,18 @@ src_configure() {
 }
 
 src_test() {
-    local CMAKE_SKIP_TESTS=()
+	local CMAKE_SKIP_TESTS=()
 
-    use x86 && CMAKE_SKIP_TESTS+=(
-        '^OpenEXR.testDwaLookups$'
-    )
+	use arm64 && CMAKE_SKIP_TESTS+=(
+		# bug #922247
+		'OpenEXRCore.testDWAACompression'
+		'OpenEXRCore.testDWABCompression'
+	)
+	use x86 && CMAKE_SKIP_TESTS+=(
+		'^OpenEXR.testDwaLookups$'
+	)
 
-    cmake_src_test
+	cmake_src_test
 }
 
 src_install() {

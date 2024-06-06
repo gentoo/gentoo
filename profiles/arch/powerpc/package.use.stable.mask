@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2024-05-28)
+# Depchain-destabilization on ppc (libsecret[test-rust] -> gjs -> spidermonkey)
+app-crypt/libsecret test-rust
+dev-util/glade gjs
+
 # Mart Raudsepp <leio@gentoo.org> (2023-12-25)
 # Libei not stable here yet
 x11-base/xwayland libei
@@ -40,7 +45,7 @@ media-sound/jack2 ieee1394
 
 # Sam James <sam@gentoo.org> (2020-07-30)
 # vulkan-loader and glslang are not yet stable on ppc
-media-libs/mesa vulkan vulkan-overlay zink
+media-libs/mesa video_cards_zink vulkan vulkan-overlay zink
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-12-12)
 # Needs stable net-libs/webkit-gtk, bug #684702

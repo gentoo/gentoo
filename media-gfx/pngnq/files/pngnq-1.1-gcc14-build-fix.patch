@@ -1,0 +1,34 @@
+Bug: https://bugs.gentoo.org/919210
+Reported upstream: https://sourceforge.net/p/pngnq/patches/7/
+--- a/src/pngcomp.c
++++ b/src/pngcomp.c
+@@ -503,7 +503,7 @@ void printstats(struct statistics* stats, struct blockstats* bstats){
+   printf("Mean pixel color error: %f \n",stats->mean_error);
+   printf("Maximum pixel color error: %f \n",stats->max_error);
+   printf("Standard Deviation of error: %f\n",stats->stddev_error);
+-  printf("Image Dimensions %ld x %ld \n",image1_info.width,image1_info.height);
++  printf("Image Dimensions %lld x %lld \n", (long long int)image1_info.width, (long long int)image1_info.height);
+   printf("Number of pixels: %ld \n",stats->n_pixels);
+   printf("Number of exact pixels: %ld\n",stats->correct_pixels);
+   printf("Percentage correct pixels: %f\n",(float)stats->correct_pixels/(float)stats->n_pixels*100.0);
+--- a/src/rwpng.h
++++ b/src/rwpng.h
+@@ -29,6 +29,7 @@
+ 
+   ---------------------------------------------------------------------------*/
+ 
++#include "pngconf.h"
+ #ifndef TRUE
+ #  define TRUE 1
+ #  define FALSE 0
+@@ -65,8 +66,8 @@ typedef struct _rwpng_color_struct {
+ 
+ typedef struct _mainprog_info {
+     double gamma;
+-    ulg width;			/* read/write */
+-    ulg height;			/* read/write */
++    png_uint_32 width;	/* read/write */
++    png_uint_32 height;	/* read/write */
+     ulg rowbytes;		/* read */
+     void *png_ptr;		/* read/write */
+     void *info_ptr;		/* read/write */

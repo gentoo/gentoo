@@ -1,11 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
-
-inherit cmake python-r1
+PYTHON_COMPAT=( python3_{10..12} )
+inherit cmake python-single-r1
 
 DESCRIPTION="vendor and platform neutral SDR support library"
 HOMEPAGE="https://github.com/pothosware/SoapySDR"
@@ -22,39 +21,33 @@ fi
 
 LICENSE="Boost-1.0"
 SLOT="0/${PV}"
-
 IUSE="bladerf hackrf python rtlsdr plutosdr uhd"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )"
-DEPEND="${RDEPEND}
-	python? ( dev-lang/swig:0 )
+DEPEND="${RDEPEND}"
+BDEPEND="python? ( dev-lang/swig:0 )"
+PDEPEND="
+	bladerf? ( net-wireless/soapybladerf )
+	hackrf? ( net-wireless/soapyhackrf )
+	rtlsdr? ( net-wireless/soapyrtlsdr )
+	plutosdr? ( net-wireless/soapyplutosdr )
+	uhd? ( net-wireless/soapyuhd )
 "
-PDEPEND="bladerf? ( net-wireless/soapybladerf )
-		hackrf? ( net-wireless/soapyhackrf )
-		rtlsdr? ( net-wireless/soapyrtlsdr )
-		plutosdr? ( net-wireless/soapyplutosdr )
-		uhd? ( net-wireless/soapyuhd )"
+
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
 
 src_configure() {
-	configuration() {
-		mycmakeargs+=(
-			-DENABLE_PYTHON=ON
-			-DBUILD_PYTHON3=ON
-		)
-	}
-
-	if use python; then
-		python_foreach_impl configuration
-	fi
+	local mycmakeargs=(
+		-DENABLE_PYTHON3=$(usex python)
+	)
 
 	cmake_src_configure
 }
 
 src_install() {
 	cmake_src_install
-
-	if use python; then
-		python_foreach_impl python_optimize
-	fi
+	use python && python_optimize
 }

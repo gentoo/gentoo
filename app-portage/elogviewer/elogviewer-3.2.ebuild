@@ -1,13 +1,13 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 DISABLE_AUTOFORMATTING=true
 
-inherit desktop python-single-r1 readme.gentoo-r1
+inherit desktop python-single-r1 readme.gentoo-r1 virtualx
 
 DESCRIPTION="Elog viewer for Gentoo"
 HOMEPAGE="https://github.com/Synss/elogviewer"
@@ -16,8 +16,9 @@ SRC_URI="https://github.com/Synss/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc ~riscv x86"
-IUSE=""
+IUSE="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RESTRICT="!test? ( test )"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
@@ -25,10 +26,14 @@ RDEPEND="${PYTHON_DEPS}
 		>=sys-apps/portage-2.1[${PYTHON_USEDEP}]
 	')
 "
-DEPEND="${RDEPEND}
-	$(python_gen_cond_dep '
-		dev-python/setuptools[${PYTHON_USEDEP}]
-	')
+BDEPEND="
+	test? (
+		${RDEPEND}
+		$(python_gen_cond_dep '
+			dev-python/pyfakefs[${PYTHON_USEDEP}]
+			dev-python/pytest-qt[${PYTHON_USEDEP}]
+		')
+	)
 "
 
 DOC_CONTENTS="In order to use this software, you need to activate
@@ -45,6 +50,11 @@ To start the software as a user, add yourself to the portage group."
 
 src_compile() {
 	rm -f Makefile
+}
+
+src_test() {
+	export PYTEST_QT_API=pyqt5
+	virtx epytest
 }
 
 src_install() {

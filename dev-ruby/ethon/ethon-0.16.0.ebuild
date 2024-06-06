@@ -24,7 +24,12 @@ RDEPEND+=" net-misc/curl"
 
 ruby_add_rdepend ">=dev-ruby/ffi-1.15.0"
 
-ruby_add_bdepend "test? ( dev-ruby/sinatra dev-ruby/mime-types )"
+ruby_add_bdepend "test? (
+	|| ( dev-ruby/rackup dev-ruby/rack:2.2 )
+	dev-ruby/sinatra
+	dev-ruby/mime-types
+	dev-ruby/webrick
+)"
 
 all_ruby_prepare() {
 	rm Gemfile || die

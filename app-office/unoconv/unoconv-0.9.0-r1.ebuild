@@ -1,10 +1,12 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9,10} )
-inherit python-single-r1
+DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_SINGLE_IMPL=1
+PYTHON_COMPAT=( python3_{9..12} )
+inherit distutils-r1
 
 DESCRIPTION="Convert between document formats supported by LibreOffice"
 HOMEPAGE="http://dag.wiee.rs/home-made/unoconv/"

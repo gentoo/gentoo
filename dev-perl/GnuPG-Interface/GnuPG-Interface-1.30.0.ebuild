@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,6 +24,10 @@ BDEPEND="
 	${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.360.0
 "
+
+PATCHES=(
+	"${FILESDIR}"/GnuPG-Interface-1.30.0-which-hunt.patch
+)
 
 src_test() {
 	# Nearly all tests succeed with this patchset and GnuPG 2.1 when running outside the

@@ -24,7 +24,7 @@ else
 	S="${WORKDIR}"/${PN}-${MY_PV}
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+		KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 	fi
 fi
 
@@ -157,7 +157,7 @@ src_configure() {
 	export EXTRA_PYTHON_CFLAGS="${CFLAGS}"
 	export EXTRA_PYTHON_LDFLAGS="${LDFLAGS}"
 
-	# bash as a tepmorary workaround for https://github.com/kdave/btrfs-progs/pull/721
+	# bash as a temporary workaround for https://github.com/kdave/btrfs-progs/pull/721
 	CONFIG_SHELL="${BROOT}"/bin/bash econf "${myeconfargs[@]}"
 }
 

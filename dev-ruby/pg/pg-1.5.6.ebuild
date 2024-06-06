@@ -41,6 +41,11 @@ all_ruby_prepare() {
 		-e 's/__dir__/"."/' \
 		-i ${RUBY_FAKEGEM_GEMSPEC} || die
 
+	# Don't allow sudo calls that try to tinker with /etc/hosts (bug #933234)
+	sed -e '/sudo/ s:^:#:' -i spec/helpers.rb || die
+	sed -e '/refreshs DNS address while conn.reset/ s/it/xit/' \
+		-i spec/pg/connection_spec.rb || die
+
 	# Avoid tests that assume IPv4
 	sed -i -e '/expect.*hostaddr/ s:^:#:' spec/pg/connection_spec.rb || die
 

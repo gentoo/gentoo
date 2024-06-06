@@ -1,0 +1,30 @@
+# Include endian.h because otherwise constants like BYTE_ORDER,
+# LITTLE_ENDIAN or BIG_ENDIAN as well as functions like
+# toBigEndian are missing when building with musl.
+# On glibc these symbols are present without including
+# endian.h, however including it anyway is fine.
+#
+# Related bug: https://bugs.gentoo.org/927902
+--- a/types.h
++++ b/types.h
+@@ -40,6 +40,7 @@
+ #include <fstream>
+ #include <array>
+ #include <cstdint>
++#include <endian.h>
+ 
+ class Error : public std::runtime_error
+ {
+# There is no typedef for uint in musl, so replace it
+# Upstream PR: https://github.com/flacon/alacenc/pull/4
+--- a/atoms.cpp
++++ b/atoms.cpp
+@@ -655,7 +655,7 @@ OutFile &operator<<(OutFile &os, const FreeAtom &atom)
+ {
+     os << uint32_t(atom.mSize);
+     os << "free";
+-    for (uint i = 0; i < atom.mSize - 8; ++i) {
++    for (unsigned int i = 0; i < atom.mSize - 8; ++i) {
+         os << '\0';
+     }
+     return os;
