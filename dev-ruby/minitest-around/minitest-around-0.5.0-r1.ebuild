@@ -29,6 +29,11 @@ all_ruby_prepare() {
 		-i test/helper.rb Rakefile || die
 }
 
+each_ruby_prepare() {
+	sed -e "/spawn_test/,/^end/ s:ruby:${RUBY}:" \
+		-i test/around_spec.rb || die
+}
+
 each_ruby_test() {
 	for f in test/*_{test,spec}.rb ; do
 		${RUBY} -S rake test:isolated TEST="${f}" || die
