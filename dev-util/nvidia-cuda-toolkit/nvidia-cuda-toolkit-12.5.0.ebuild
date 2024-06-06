@@ -264,7 +264,9 @@ src_install() {
 	rm "${ED}"/${cudadir}/targets/x86_64-linux/lib/lib64 || die
 
 	# Remove dead gdb plugins
-	rm "${ED}"/${cudadir}/bin/cuda-gdb-python3.{8,9}-tui || die
+	if use debugger; then
+		rm "${ED}"/${cudadir}/bin/cuda-gdb-python3.{8,9}-tui || die
+	fi
 
 	newenvd - 99cuda <<-EOF
 		PATH=${ecudadir}/bin${pathextradirs}
