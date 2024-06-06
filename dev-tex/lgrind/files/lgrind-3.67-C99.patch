@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/738850
+--- a/source/lgutil.c	2024-06-06 06:52:58.640473365 -0000
++++ b/source/lgutil.c	2024-06-06 06:55:33.117783827 -0000
+@@ -277,7 +277,7 @@
+ 	char linebuf[201], *cp;
+ 	varsubst *varsubsts=NULL, *substitem, *substlistpos;
+ 
+-	if (f==NULL) return;
++	if (f==NULL) return NULL;
+ 	while (!feof(f))
+ 	{
+ 		fscanf(f, "%200[^\n]", linebuf);
