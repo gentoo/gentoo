@@ -34,7 +34,13 @@ DEPEND="
 	>=sys-kernel/linux-headers-2.6.34
 	test? ( dev-libs/check )
 "
-BDEPEND="python? ( dev-lang/swig )"
+BDEPEND="python? (
+			dev-lang/swig
+			$(python_gen_cond_dep '
+				dev-python/setuptools[${PYTHON_USEDEP}]
+			' python3_12)
+		)
+"
 
 CONFIG_CHECK="~AUDIT"
 
