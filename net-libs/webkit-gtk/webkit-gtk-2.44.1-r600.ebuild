@@ -155,6 +155,8 @@ src_prepare() {
 	eapply "${FILESDIR}"/2.42.3-arm64-non-jumbo-fix-925621.patch
 	# Fix USE=-jumbo-build on all arches
 	eapply "${FILESDIR}"/${PV}-non-unified-build-fixes.patch
+	# Fix building on riscv, bug 933675
+	eapply "${FILESDIR}"/${PV}-riscv.patch
 }
 
 src_configure() {
