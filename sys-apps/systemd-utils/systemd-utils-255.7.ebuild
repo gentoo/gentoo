@@ -86,7 +86,6 @@ RDEPEND="${COMMON_DEPEND}
 		acct-group/usb
 		acct-group/video
 		!sys-apps/gentoo-systemd-integration
-		!sys-apps/hwids[udev]
 		!<sys-fs/udev-250
 		!sys-fs/eudev
 	)
