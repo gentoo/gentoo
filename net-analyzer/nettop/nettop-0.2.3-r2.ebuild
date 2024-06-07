@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,8 +6,8 @@ EAPI=8
 inherit autotools toolchain-funcs
 
 DESCRIPTION="top-like program for network activity"
-HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
-SRC_URI="mirror://gentoo/${P}.tar.gz"
+HOMEPAGE="https://web.archive.org/web/20060615083852/http://srparish.net/software/"
+SRC_URI="https://web.archive.org/web/20060705095248if_/http://srparish.net:80/software/nettop-0.2.3.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
