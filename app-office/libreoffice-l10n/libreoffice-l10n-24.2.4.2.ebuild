@@ -24,7 +24,8 @@ IUSE="offlinehelp"
 # when changing the language lists, please be careful to preserve the spaces (bug 491728)
 #
 # "en:en-US" for mapping from Gentoo "en" to upstream "en-US" etc.
-LANGUAGES_HELP=" am ar ast bg bn-IN bn bo bs ca-valencia ca cs da de dz el en-GB en:en-US en-ZA eo es et eu fi fr gl gu he hi hr hu id is it ja ka km ko lo lt lv mk nb ne nl nn om pl pt-BR pt ro ru si sid sk sl sq sv ta tg tr ug uk vi zh-CN zh-TW "
+# TODO: Try re-add LANGUAGES_HELP=km again (bug #933765)
+LANGUAGES_HELP=" am ar ast bg bn-IN bn bo bs ca-valencia ca cs da de dz el en-GB en:en-US en-ZA eo es et eu fi fr gl gu he hi hr hu id is it ja ka ko lo lt lv mk nb ne nl nn om pl pt-BR pt ro ru si sid sk sl sq sv ta tg tr ug uk vi zh-CN zh-TW "
 LANGUAGES="${LANGUAGES_HELP}af as be br brx ckb cy dgo dsb fa fur fy ga gd gug hsb kab kk kmr-Latn kn kok ks lb mai ml mn mni mr my nr nso oc or pa:pa-IN rw sa:sa-IN sat sd sr-Latn sr ss st sw-TZ szl te th tn ts tt uz ve vec xh zu "
 
 for lang in ${LANGUAGES_HELP}; do
