@@ -48,6 +48,12 @@ python_test() {
 		EPYTEST_DESELECT+=(
 			'xarray/tests/test_missing.py::test_interpolate_na_2d[coords1]'
 		)
+
+		if ! has_version "dev-python/scipy[${PYTHON_USEDEP}]" ; then
+			EPYTEST_DESELECT+=(
+				xarray/tests/test_calendar_ops.py::test_interp_calendar
+			)
+		fi
 	fi
 
 	if use big-endian ; then
