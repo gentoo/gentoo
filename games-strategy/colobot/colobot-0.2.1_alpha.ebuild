@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -50,6 +50,12 @@ DEPEND+="
 "
 
 src_prepare() {
+	local PATCHES=(
+		# fixed upstream as part of:
+		# https://github.com/colobot/colobot/commit/1b69589302c2ac92c6befd2880a03b4b07c7f820
+		"${FILESDIR}/${P}-gcc14.patch"
+	)
+
 	cmake_src_prepare
 
 	# we need to call it explicitly to help Ninja figure out the deps
