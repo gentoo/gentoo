@@ -228,7 +228,6 @@ SRC_URI+=" ${NUGET_URIS} "
 
 LICENSE="BSD-2"
 SLOT="0"
-RESTRICT="test"         # Tests fail.
 
 CHECKREQS_DISK_BUILD="2G"
 DOTNET_PKG_RESTORE_EXTRA_ARGS=(
@@ -238,6 +237,11 @@ DOTNET_PKG_RESTORE_EXTRA_ARGS=(
 DOTNET_PKG_BUILD_EXTRA_ARGS=( "${DOTNET_PKG_RESTORE_EXTRA_ARGS[@]}" )
 DOTNET_PKG_TEST_EXTRA_ARGS=( "${DOTNET_PKG_RESTORE_EXTRA_ARGS[@]}" )
 DOTNET_PKG_PROJECTS=( Jint.Repl/Jint.Repl.csproj )
+DOTNET_PKG_BAD_PROJECTS=(
+	Jint.Benchmark/Jint.Benchmark.csproj
+	Jint.Tests.Test262/Jint.Tests.Test262.csproj
+	Jint.Tests/Jint.Tests.csproj
+)
 
 pkg_setup() {
 	check-reqs_pkg_setup
