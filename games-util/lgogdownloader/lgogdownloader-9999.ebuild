@@ -31,7 +31,6 @@ DEPEND="
 "
 
 BDEPEND="
-	sys-apps/help2man
 	virtual/pkgconfig
 "
 
