@@ -173,10 +173,6 @@ sys-auth/pambase sssd
 # Needs dev-ruby/asciidoctor which has a lot of unstable deps
 net-analyzer/wireshark doc
 
-# Matthias Maier <tamiko@gentoo.org> (2018-03-18)
-# dev-libs/capstone hasn't been stabilized yet
-app-emulation/qemu capstone
-
 # Kent Fredric <kentnl@gentoo.org> (2018-03-03)
 # Not an officially supported configuration, as it causes unpredictable
 # fragility and/or dependency headaches due to the very narrow interop window
