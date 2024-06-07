@@ -276,12 +276,6 @@ dev-go/sanitized-anchor-name
 net-irc/ninja
 
 # Sam James <sam@gentoo.org> (2024-05-06)
-# Long-deprecated upstream, replaced by (unpackaged) Twitter::API.
-# Twitter's API has changed at least once since the last release of Net::Twitter.
-# Removal on 2024-06-05.  Bug #931295.
-dev-perl/Net-Twitter
-
-# Sam James <sam@gentoo.org> (2024-05-06)
 # Incompatible with latest last.fm APIs, hence useless.
 # Removal on 2024-06-05.  Bug #928115.
 media-libs/lastfmlib
