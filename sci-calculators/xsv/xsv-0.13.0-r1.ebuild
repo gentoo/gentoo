@@ -1,7 +1,7 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 CRATES="
 aho-corasick-0.7.18
@@ -56,7 +56,7 @@ inherit cargo
 
 DESCRIPTION="A fast CSV command line toolkit written in Rust"
 HOMEPAGE="https://github.com/BurntSushi/xsv"
-SRC_URI="$(cargo_crate_uris ${CRATES})
+SRC_URI="${CARGO_CRATE_URIS}
 	https://github.com/BurntSushi/xsv/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="|| ( MIT Unlicense ) Apache-2.0 Boost-1.0 MIT Unlicense"
 SLOT="0"
@@ -64,6 +64,8 @@ KEYWORDS="amd64"
 IUSE=""
 
 BDEPEND="${RUST_DEPEND}"
+
+QA_FLAGS_IGNORED="usr/bin/${PN}"
 
 src_prepare() {
 	rm Cargo.lock || die "Failed to remove stale Cargo.lock"
