@@ -48,7 +48,7 @@ python_prepare_all() {
 	sed -i "s@^lib_dirs = .*@lib_dirs = ['${ROOT:-/}usr/$(get_libdir)']@" "${S}"/setup.py || \
 		die "failed to set lib_dirs"
 
-	use X || PATCHES+=( "${FILESDIR}"/setools-4.4.2-remove-gui.patch )
+	use X || PATCHES+=( "${FILESDIR}"/setools-4.5.1-remove-gui.patch )
 	distutils-r1_python_prepare_all
 }
 
