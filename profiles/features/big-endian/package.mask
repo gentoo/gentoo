@@ -1,6 +1,10 @@
 # Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2024-06-07)
+# dev-python/tables is broken on big endian platforms.  Bug #922235.
+dev-python/tables
+
 # Michał Górny <mgorny@gentoo.org> (2024-06-05)
 # media-libs/exempi is seriously broken on big endian platforms.
 # https://gitlab.freedesktop.org/libopenraw/exempi/-/merge_requests/8#note_2277243
