@@ -62,6 +62,8 @@ BDEPEND="
 	test? (
 		${PYTHON_DEPS}
 		dev-util/dejagnu
+		sys-devel/bison
+		sys-devel/flex
 	)
 	verify-sig? ( sec-keys/openpgp-keys-jimmeyering )
 "
