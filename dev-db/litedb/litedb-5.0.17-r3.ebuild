@@ -3,9 +3,9 @@
 
 EAPI=8
 
-MY_PN=LiteDB
+MY_PN="LiteDB"
 
-DOTNET_PKG_COMPAT=7.0
+DOTNET_PKG_COMPAT=8.0
 NUGETS="
 benchmarkdotnet.annotations@0.12.0
 benchmarkdotnet@0.12.0
@@ -267,7 +267,7 @@ pkg_setup() {
 
 src_install() {
 	dotnet-pkg-base_install
-	dotnet-pkg-base_dolauncher "/usr/share/${P}/LiteDB.Shell" "${PN}-shell"
+	dotnet-pkg-base_dolauncher "/usr/share/${P}/${MY_PN}.Shell" "${PN}-shell"
 
 	einstalldocs
 }
