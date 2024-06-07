@@ -186,6 +186,8 @@ DEPEND="emacs? ( >=app-editors/emacs-23.1:* )
 		dev-python/pygments[${PYTHON_USEDEP}]
 	)"
 
+REQUIRED_USE="rust? ( !$(python_gen_useflags 'python3_12') )"
+
 SITEFILE="70${PN}-gentoo.el"
 
 RESTRICT="!test? ( test )"
