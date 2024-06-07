@@ -1,0 +1,37 @@
+From 2674676fe3b01cc9652a5922badc9b044080fce7 Mon Sep 17 00:00:00 2001
+From: Lu Yahan <yahan@iscas.ac.cn>
+Date: Wed, 8 May 2024 16:34:24 +0800
+Subject: [PATCH] tools: fix riscv64 build failed
+
+---
+ tools/v8_gypfiles/v8.gyp | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/tools/v8_gypfiles/v8.gyp b/tools/v8_gypfiles/v8.gyp
+index 1e2b3645132aab..ab96e0c7d2c1f2 100644
+--- a/tools/v8_gypfiles/v8.gyp
++++ b/tools/v8_gypfiles/v8.gyp
+@@ -1150,6 +1150,23 @@
+           'sources': [
+             '<!@pymod_do_main(GN-scraper "<(V8_ROOT)/BUILD.gn"  "\\"v8_base_without_compiler.*?v8_enable_wasm_gdb_remote_debugging.*?v8_current_cpu == \\"riscv64\\".*?sources \\+= ")',
+           ],
++          'conditions': [
++            ['v8_enable_webassembly==1', {
++              'conditions': [
++                ['(_toolset=="host" and host_arch=="arm64" or _toolset=="target" and target_arch=="arm64") or (_toolset=="host" and host_arch=="riscv64" or _toolset=="target" and target_arch=="riscv64") or (_toolset=="host" and host_arch=="x64" or _toolset=="target" and target_arch=="x64")', {
++                  'sources': [
++                    '<(V8_ROOT)/src/trap-handler/handler-inside-posix.cc',
++                    '<(V8_ROOT)/src/trap-handler/handler-outside-posix.cc',
++                  ],
++                }],
++                ['(_toolset=="host" and host_arch=="x64" or _toolset=="target" and target_arch=="x64") and (OS=="linux" or OS=="mac" or OS=="win")', {
++                  'sources': [
++                    '<(V8_ROOT)/src/trap-handler/handler-outside-simulator.cc',
++                  ],
++                }],
++              ],
++            }],
++          ],
+         }],
+         ['v8_target_arch=="loong64"', {
+           'sources': [
