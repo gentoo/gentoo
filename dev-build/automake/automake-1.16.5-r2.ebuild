@@ -10,7 +10,8 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit python-any-r1
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/jimmeyering.asc
+inherit python-any-r1 verify-sig
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/r/${PN}.git"
@@ -22,6 +23,10 @@ else
 			mirror://gnu/${PN}/${P}.tar.xz
 			https://alpha.gnu.org/pub/gnu/${PN}/${MY_P}.tar.xz
 			https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-1.16.5-tests-c99.patch.xz
+			verify-sig? (
+				mirror://gnu/${PN}/${P}.tar.xz.sig
+				https://alpha.gnu.org/pub/gnu/${PN}/${MY_P}.tar.xz.sig
+			)
 		"
 		KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 	else
@@ -61,6 +66,7 @@ BDEPEND="
 		sys-devel/bison
 		sys-devel/flex
 	)
+	verify-sig? ( sec-keys/openpgp-keys-jimmeyering )
 "
 
 PATCHES=(
@@ -76,6 +82,11 @@ PATCHES=(
 pkg_setup() {
 	# Avoid python-any-r1_pkg_setup
 	:
+}
+
+src_unpack() {
+	use verify-sig && verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.sig}
+	default
 }
 
 src_prepare() {
