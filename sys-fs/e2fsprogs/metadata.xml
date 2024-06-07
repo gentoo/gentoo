@@ -6,6 +6,7 @@
 		<name>Gentoo Base System</name>
 	</maintainer>
 	<use>
+		<flag name="archive">Add support for mke2fs to read a tarball as input. This allows not needing privileges. Needs <pkg>app-arch/libarchive</pkg>.</flag>
 		<flag name="cron">Install e2scrub_all cron script</flag>
 		<flag name="fuse">Build fuse2fs, a FUSE file system client for ext2/ext3/ext4 file systems</flag>
 		<flag name="tools">Build extfs tools (mke2fs, e2fsck, tune2fs, etc.)</flag>
