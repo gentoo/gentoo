@@ -4,7 +4,7 @@
 EAPI=8
 
 ECM_TEST="true"
-KFMIN=5.245.0
+KFMIN=6.3.0
 QTMIN=6.6.2
 inherit ecm kde.org linux-info tmpfiles
 
