@@ -13,7 +13,7 @@ SRC_URI="ftp://ftp.astro.caltech.edu/pub/pgplot/${MY_P}.tar.gz"
 
 LICENSE="free-noncomm"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ia64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc motif static-libs tk"
 
 RDEPEND="
