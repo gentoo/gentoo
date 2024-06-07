@@ -22,6 +22,7 @@ useful for text console application developers including:
 - Customizable layout for all widgets
 - Easy interface for creating HTML screen shots
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">urwid</remote-id>
 		<remote-id type="github">urwid/urwid</remote-id>
