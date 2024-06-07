@@ -5,7 +5,7 @@ EAPI=8
 
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="true"
-KFMIN=6.2.0
+KFMIN=6.3.0
 PVCUT=$(ver_cut 1-3)
 QTMIN=6.7.1
 inherit ecm plasma.kde.org optfeature
@@ -110,6 +110,7 @@ RDEPEND="${COMMON_DEPEND}
 	>=kde-frameworks/qqc2-desktop-style-${KFMIN}:6
 	>=kde-plasma/kde-cli-tools-${PVCUT}:*
 	>=kde-plasma/oxygen-${PVCUT}:6
+	kde-plasma/plasma-mimeapps-list
 	media-fonts/noto-emoji
 	sys-apps/util-linux
 	x11-apps/setxkbmap
