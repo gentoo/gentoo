@@ -318,12 +318,6 @@ dev-python/dask-expr
 dev-perl/Type-Tie
 
 # Michał Górny <mgorny@gentoo.org> (2024-05-01)
-# Effectively unmaintained.  EAPI 6.  Keyworded for PowerPC only.
-# Might not work anymore (when I run it, it hangs input to X11 entirely).
-# Removal on 2024-05-31.  Bug #930195.
-sys-apps/mouseemu
-
-# Michał Górny <mgorny@gentoo.org> (2024-05-01)
 # Unmaintained in Gentoo.  Multiple releases behind upstream.  No tests.
 # No Python 3.12.  No (unconditional) reverse dependencies.
 # Removal on 2024-05-31.  Bug #904945.
