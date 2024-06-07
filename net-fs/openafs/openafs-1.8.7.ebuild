@@ -74,7 +74,7 @@ pkg_pretend() {
 		ewarn "Gentoo supports kernels which are supported by OpenAFS"
 		ewarn "which are limited to the kernel versions: < ${KERNEL_LIMIT}"
 		ewarn ""
-		ewarn "You are free to utilize epatch_user to provide whatever"
+		ewarn "You are free to utilize eapply_user to provide whatever"
 		ewarn "support you feel is appropriate, but will not receive"
 		ewarn "support as a result of those changes."
 		ewarn ""
