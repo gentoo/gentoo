@@ -57,6 +57,7 @@ RDEPEND="
 		virtual/libcrypt:=
 	)
 	python? ( ${PYTHON_DEPS} )
+	relay-api? ( dev-libs/cJSON )
 	ruby? (
 		|| (
 			dev-lang/ruby:3.3
