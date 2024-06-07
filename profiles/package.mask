@@ -297,13 +297,6 @@ dev-games/poker-eval
 # Removal on 2024-06-04.  Bug #909581.
 dev-games/hawknl
 
-# Michał Górny <mgorny@gentoo.org> (2024-05-05)
-# An unmaintained fork of an unmaintained DNS server.  All successive
-# homepages are gone.  Last commit in 2014.  Already carries a lot
-# of patches and hacks.
-# Removal on 2024-06-04.  Bug #928942.
-net-dns/mydns
-
 # Michał Górny <mgorny@gentoo.org> (2024-05-04)
 # A really bad quality package with a never-ending stream of unclear
 # test failures, and blocked keywording and stabilization bugs.
