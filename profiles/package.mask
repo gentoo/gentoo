@@ -275,11 +275,6 @@ dev-go/sanitized-anchor-name
 # Removal on 2024-06-08.
 net-irc/ninja
 
-# Sam James <sam@gentoo.org> (2024-05-06)
-# Incompatible with latest last.fm APIs, hence useless.
-# Removal on 2024-06-05.  Bug #928115.
-media-libs/lastfmlib
-
 # Michał Górny <mgorny@gentoo.org> (2024-05-04)
 # A really bad quality package with a never-ending stream of unclear
 # test failures, and blocked keywording and stabilization bugs.
