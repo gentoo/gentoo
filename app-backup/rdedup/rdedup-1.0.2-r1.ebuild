@@ -61,6 +61,8 @@ KEYWORDS="~amd64"
 RDEPEND=">=dev-libs/libsodium-1.0.11:="
 DEPEND="${RDEPEND}"
 
+QA_FLAGS_IGNORED="usr/bin/${PN}"
+
 src_prepare() {
 	default
 	ln -sf "${WORKDIR}/cargo_home/gentoo/rdedup-lib-${PV}" lib || die
