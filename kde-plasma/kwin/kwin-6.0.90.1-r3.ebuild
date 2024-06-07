@@ -6,7 +6,7 @@ EAPI=8
 KDE_ORG_COMMIT=4b3f6a4312c02243c33d01e38ce2827664cae8ac
 ECM_HANDBOOK="optional"
 ECM_TEST="true"
-KFMIN=6.2.0
+KFMIN=6.3.0
 PVCUT=$(ver_cut 1-3)
 QTMIN=6.7.1
 inherit ecm plasma.kde.org
