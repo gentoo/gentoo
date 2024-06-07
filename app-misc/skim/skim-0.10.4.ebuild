@@ -119,7 +119,7 @@ LICENSE="MIT"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 MIT MPL-2.0 Unicode-DFS-2016"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 
 QA_FLAGS_IGNORED="usr/bin/sk"
 
