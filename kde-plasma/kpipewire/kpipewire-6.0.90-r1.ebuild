@@ -24,6 +24,7 @@ COMMON_DEPEND="
 	media-libs/libepoxy
 	media-libs/libglvnd
 	media-libs/libva:=
+	media-libs/mesa[opengl]
 	media-video/ffmpeg:=
 	>=media-video/pipewire-0.3:=
 	x11-libs/libdrm
