@@ -22,7 +22,7 @@ HOMEPAGE="
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~hppa ~loong ~riscv ~x86"
-IUSE="full-support minimal test X"
+IUSE="big-endian full-support minimal test X"
 RESTRICT="!test? ( test )"
 
 RECOMMENDED_DEPEND="
@@ -42,7 +42,6 @@ OPTIONAL_DEPEND="
 	>=dev-python/matplotlib-3.6.1[${PYTHON_USEDEP}]
 	>=dev-python/openpyxl-3.0.7[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-1.4.36[${PYTHON_USEDEP}]
-	>=dev-python/tables-3.7.0[${PYTHON_USEDEP}]
 	>=dev-python/tabulate-0.8.10[${PYTHON_USEDEP}]
 	>=dev-python/xarray-2022.3.0[${PYTHON_USEDEP}]
 	>=dev-python/xlrd-2.0.1[${PYTHON_USEDEP}]
@@ -52,6 +51,9 @@ OPTIONAL_DEPEND="
 		>=dev-python/scipy-1.8.1[${PYTHON_USEDEP}]
 		dev-python/statsmodels[${PYTHON_USEDEP}]
 	) ) ) )
+	!big-endian? (
+		>=dev-python/tables-3.7.0[${PYTHON_USEDEP}]
+	)
 	X? (
 		|| (
 			>=dev-python/PyQt5-5.15.6[${PYTHON_USEDEP}]
