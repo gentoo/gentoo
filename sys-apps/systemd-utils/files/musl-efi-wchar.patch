@@ -1,0 +1,29 @@
+From c4050bd401611f6223c00e58ac9c26b9caccd286 Mon Sep 17 00:00:00 2001
+From: Violet Purcell <vimproved@inventati.org>
+Date: Sat, 9 Sep 2023 13:10:53 -0400
+Subject: [PATCH] efi: append -D__DEFINED_wchar_t to LDFLAGS
+
+This forces systemd-boot to use the wchar_t type defined from
+__WCHAR_TYPE__ in efi.h, instead of the wchar_t defined in musl's
+alltypes.h. Adapted from openembedded's solution.
+
+Signed-off-by: Violet Purcell <vimproved@inventati.org>
+---
+ src/boot/efi/meson.build | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/boot/efi/meson.build b/src/boot/efi/meson.build
+index 2773eaf286..3c1e09c729 100644
+--- a/src/boot/efi/meson.build
++++ b/src/boot/efi/meson.build
+@@ -130,6 +130,7 @@ efi_includes = [fundamental_include, include_directories('.')]
+ 
+ efi_c_args = [
+         '-DSD_BOOT=1',
++        '-D__DEFINED_wchar_t',
+         '-ffreestanding',
+         '-fno-strict-aliasing',
+         '-fshort-wchar',
+-- 
+2.42.0
+

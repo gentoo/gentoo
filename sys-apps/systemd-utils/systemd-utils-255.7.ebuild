@@ -138,6 +138,7 @@ src_prepare() {
 	if use elibc_musl; then
 		PATCHES+=(
 			"${WORKDIR}/${MUSL_PATCHSET}"
+			"${FILESDIR}/musl-efi-wchar.patch"
 		)
 	fi
 	default
