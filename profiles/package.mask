@@ -768,8 +768,7 @@ sec-keys/openpgp-keys-jiatan
 ~x11-misc/sddm-0.21.0_p20240302
 ~app-backup/kup-0.10.0
 ~app-text/kjots-6.0.0
-~app-office/libreoffice-24.2.4.1
-=app-office/libreoffice-24.2.3.2-r10
+=app-office/libreoffice-24.2.4.2-r10
 
 # Ulrich Müller <ulm@gentoo.org> (2024-02-08)
 # Masked for testing.
