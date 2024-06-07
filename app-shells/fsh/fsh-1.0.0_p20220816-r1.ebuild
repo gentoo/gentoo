@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DOTNET_PKG_COMPAT=7.0
+DOTNET_PKG_COMPAT=8.0
 NUGETS="
 dotnet-xunit@2.3.1
 fsharp.compiler.service@26.0.1
@@ -291,7 +291,7 @@ SRC_URI+=" ${NUGET_URIS} "
 LICENSE="MIT"
 SLOT="0"
 
-DOTNET_PKG_PROJECTS=( src/FSH.fsproj )
+DOTNET_PKG_PROJECTS=( "src/${PN^^}.fsproj" )
 DOTNET_PKG_BUILD_EXTRA_ARGS=( -p:RollForward=Major )
 DOTNET_PKG_TEST_EXTRA_ARGS=( "${DOTNET_PKG_BUILD_EXTRA_ARGS[@]}" )
 
