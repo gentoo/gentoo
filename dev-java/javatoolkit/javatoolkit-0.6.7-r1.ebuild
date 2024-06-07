@@ -17,6 +17,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+
 python_prepare_all() {
 	hprefixify src/py/buildparser src/py/findclass setup.py
 	distutils-r1_python_prepare_all
