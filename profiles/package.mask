@@ -289,14 +289,6 @@ media-libs/lastfmlib
 dev-python/dask
 dev-python/dask-expr
 
-# Michał Górny <mgorny@gentoo.org> (2024-05-01)
-# Unmaintained in Gentoo.  Multiple releases behind upstream.  No tests.
-# No Python 3.12.  No (unconditional) reverse dependencies.
-# Removal on 2024-05-31.  Bug #904945.
-dev-python/grpcio
-dev-python/grpcio-testing
-dev-python/grpcio-tools
-
 # Sam James <sam@gentoo.org> (2024-04-28)
 # Masked for testing. Tracker bug: bug #930805.
 >=sys-libs/ncurses-6.5
