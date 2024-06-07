@@ -286,11 +286,6 @@ dev-perl/Net-Twitter
 # Removal on 2024-06-05.  Bug #928115.
 media-libs/lastfmlib
 
-# Michał Górny <mgorny@gentoo.org> (2024-05-05)
-# A library last bumped in 2010.  Homepage gone.  No revdeps.
-# Removal on 2024-06-04.  Bug #909527.
-dev-games/poker-eval
-
 # Michał Górny <mgorny@gentoo.org> (2024-05-04)
 # A really bad quality package with a never-ending stream of unclear
 # test failures, and blocked keywording and stabilization bugs.
