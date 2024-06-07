@@ -29,7 +29,6 @@ BDEPEND="
 		$(python_gen_any_dep '
 			dev-python/pexpect[${PYTHON_USEDEP}]
 			dev-python/pytest[${PYTHON_USEDEP}]
-			dev-python/pytest-forked[${PYTHON_USEDEP}]
 			dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		')
 	)
@@ -37,6 +36,10 @@ BDEPEND="
 PDEPEND="
 	>=app-shells/gentoo-bashcomp-20140911
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.14.0-optimize-kernel-modules.patch
+)
 
 strip_completions() {
 	# Remove unwanted completions.
@@ -72,7 +75,6 @@ strip_completions() {
 python_check_deps() {
 	python_has_version "dev-python/pexpect[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/pytest[${PYTHON_USEDEP}]" &&
-	python_has_version "dev-python/pytest-forked[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/pytest-xdist[${PYTHON_USEDEP}]"
 }
 
@@ -96,7 +98,7 @@ src_prepare() {
 		eapply "${WORKDIR}"/bashcomp2/bash-completion-blacklist-support.patch
 	fi
 
-	eapply_user
+	default
 	eautoreconf
 }
 
@@ -123,7 +125,7 @@ src_test() {
 	# used in pytest tests
 	local -x NETWORK=none
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	local -x PYTEST_PLUGINS=xdist.plugin,pytest_forked
+	local -x PYTEST_PLUGINS=xdist.plugin
 	emake -C completions check
 	epytest
 }
