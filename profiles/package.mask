@@ -291,12 +291,6 @@ media-libs/lastfmlib
 # Removal on 2024-06-04.  Bug #909527.
 dev-games/poker-eval
 
-# Michał Górny <mgorny@gentoo.org> (2024-05-05)
-# A library last bumped in 2004.  Homepage gone.  Carries patches
-# and hacks already.  No reverse dependencies.
-# Removal on 2024-06-04.  Bug #909581.
-dev-games/hawknl
-
 # Michał Górny <mgorny@gentoo.org> (2024-05-04)
 # A really bad quality package with a never-ending stream of unclear
 # test failures, and blocked keywording and stabilization bugs.
