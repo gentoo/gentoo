@@ -401,7 +401,7 @@ multilib_src_compile() {
 		meson_src_compile "${targets[@]}"
 	fi
 	if [[ ${#optional_targets[@]} -ne 0 ]]; then
-		nonfatal meson_src_compile "${optional_targets[@]}"
+		ninja ${NINJAOPTS} "${optional_targets[@]}"
 	fi
 }
 
