@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-GNOME_ORG_MODULE="gnome-themes-extra"
+EAPI=8
 
+GNOME_ORG_MODULE="gnome-themes-extra"
 inherit gnome.org multilib-minimal
 
 DESCRIPTION="Adwaita GTK+2 theme engine"
@@ -25,7 +25,6 @@ BDEPEND="
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
-		--disable-static \
 		--enable-gtk2-engine \
 		--disable-gtk3-engine \
 		GTK_UPDATE_ICON_CACHE=$(type -P true)
