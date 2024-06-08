@@ -1,6 +1,5 @@
-diff -ur streamtuner-0.99.99.orig/src/plugins/live365/live365.c streamtuner-0.99.99/src/plugins/live365/live365.c
---- streamtuner-0.99.99.orig/src/plugins/live365/live365.c	2004-12-19 12:27:03.000000000 +0200
-+++ streamtuner-0.99.99/src/plugins/live365/live365.c	2009-01-18 20:03:35.000000000 +0200
+--- a/src/plugins/live365/live365.c
++++ b/src/plugins/live365/live365.c
 @@ -1411,7 +1411,7 @@
  
    st_action_register("record-stream", _("Record a stream"), "xterm -e streamripper %q");
@@ -10,9 +9,8 @@ diff -ur streamtuner-0.99.99.orig/src/plugins/live365/live365.c streamtuner-0.99
  
    return TRUE;
  }
-diff -ur streamtuner-0.99.99.orig/src/plugins/local/local.c streamtuner-0.99.99/src/plugins/local/local.c
---- streamtuner-0.99.99.orig/src/plugins/local/local.c	2004-12-13 09:39:29.000000000 +0200
-+++ streamtuner-0.99.99/src/plugins/local/local.c	2009-01-18 20:03:49.000000000 +0200
+--- a/src/plugins/local/local.c
++++ b/src/plugins/local/local.c
 @@ -1057,7 +1057,7 @@
  
    init_handler();
@@ -22,9 +20,8 @@ diff -ur streamtuner-0.99.99.orig/src/plugins/local/local.c streamtuner-0.99.99/
    st_action_register("view-web", _("Open a web page"), "epiphany %q");
  
    return TRUE;
-diff -ur streamtuner-0.99.99.orig/src/plugins/shoutcast/shoutcast.c streamtuner-0.99.99/src/plugins/shoutcast/shoutcast.c
---- streamtuner-0.99.99.orig/src/plugins/shoutcast/shoutcast.c	2004-12-19 17:21:00.000000000 +0200
-+++ streamtuner-0.99.99/src/plugins/shoutcast/shoutcast.c	2009-01-18 20:03:42.000000000 +0200
+--- a/src/plugins/shoutcast/shoutcast.c
++++ b/src/plugins/shoutcast/shoutcast.c
 @@ -959,7 +959,7 @@
  
    init_handler();
@@ -34,9 +31,8 @@ diff -ur streamtuner-0.99.99.orig/src/plugins/shoutcast/shoutcast.c streamtuner-
    st_action_register("record-stream", _("Record a stream"), "xterm -e streamripper %q");
    st_action_register("view-web", _("Open a web page"), "epiphany %q");
  
-diff -ur streamtuner-0.99.99.orig/src/plugins/xiph/xiph.c streamtuner-0.99.99/src/plugins/xiph/xiph.c
---- streamtuner-0.99.99.orig/src/plugins/xiph/xiph.c	2004-12-13 11:57:33.000000000 +0200
-+++ streamtuner-0.99.99/src/plugins/xiph/xiph.c	2009-01-18 20:04:17.000000000 +0200
+--- a/src/plugins/xiph/xiph.c
++++ b/src/plugins/xiph/xiph.c
 @@ -957,7 +957,7 @@
    init_handler();
  
@@ -46,9 +42,8 @@ diff -ur streamtuner-0.99.99.orig/src/plugins/xiph/xiph.c streamtuner-0.99.99/sr
  
    return TRUE;
  }
-diff -ur streamtuner-0.99.99.orig/src/streamtuner/st-preselections.c streamtuner-0.99.99/src/streamtuner/st-preselections.c
---- streamtuner-0.99.99.orig/src/streamtuner/st-preselections.c	2004-12-13 11:57:52.000000000 +0200
-+++ streamtuner-0.99.99/src/streamtuner/st-preselections.c	2009-01-18 20:04:02.000000000 +0200
+--- a/src/streamtuner/st-preselections.c
++++ b/src/streamtuner/st-preselections.c
 @@ -390,7 +390,7 @@
  {
    st_preselections_init_handler();

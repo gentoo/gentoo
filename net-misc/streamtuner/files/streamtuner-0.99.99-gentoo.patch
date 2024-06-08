@@ -1,6 +1,50 @@
-diff -ur streamtuner-0.99.99.orig/data/streamtuner.pc.in streamtuner-0.99.99/data/streamtuner.pc.in
---- streamtuner-0.99.99.orig/data/streamtuner.pc.in	2004-12-11 04:03:20.000000000 +0200
-+++ streamtuner-0.99.99/data/streamtuner.pc.in	2007-07-29 09:40:44.000000000 +0300
+--- a/configure.ac
++++ b/configure.ac
+@@ -23,14 +23,6 @@
+ AM_CONFIG_HEADER(config.h)
+ AC_PROG_LIBTOOL
+ 
+-if $CONFIG_SHELL ./libtool --features | grep "enable shared" >/dev/null 2>&1; then :; else
+-	if test "$enable_shared" = no; then
+-		AC_MSG_ERROR([streamtuner requires shared libraries: do not use --disable-shared])
+-	else
+-		AC_MSG_ERROR([streamtuner requires shared libraries but the target system does not support them])
+-	fi
+-fi
+-
+ ### i18n
+ 
+ GETTEXT_PACKAGE=AC_PACKAGE_NAME
+@@ -49,9 +41,6 @@
+ 
+ # check for ANSI C headers
+ AC_HEADER_STDC
+-if test $ac_cv_header_stdc != yes; then
+-	AC_MSG_ERROR([ANSI C headers not present])
+-fi
+ 
+ ### build dependencies
+ 
+@@ -62,7 +51,7 @@
+ 
+ AM_PATH_GTK_2_0(2.4.0,, [AC_MSG_ERROR([unable to find the GTK+ library])])
+ 
+-AM_PATH_CURL(7.10.8,, [AC_MSG_ERROR([unable to find the libcurl library])])
++PKG_CHECK_MODULES([CURL], [libcurl >= 7.10.8])
+ 
+ if ST_FEATURE_ENABLED(xiph); then
+ 	PKG_CHECK_MODULES(LIBXML, libxml-2.0,, [ST_FEATURE_DISABLE(xiph, [libxml not found])])
+@@ -70,7 +59,7 @@
+ 
+ if ST_FEATURE_ENABLED(local); then
+ 	if ST_FEATURE_ENABLED(local-metadata); then
+-		AM_PATH_TAGLIB_C(1.2,, [ST_FEATURE_DISABLE(local-metadata, [TagLib not found])])
++		PKG_CHECK_MODULES([TAGLIB], [taglib_c])
+ 	fi
+ else
+ 	if ST_FEATURE_ENABLED(local-metadata); then
+--- a/data/streamtuner.pc.in
++++ b/data/streamtuner.pc.in
 @@ -1,9 +1,8 @@
  prefix=@prefix@
  includedir=@includedir@/streamtuner
@@ -12,21 +56,19 @@ diff -ur streamtuner-0.99.99.orig/data/streamtuner.pc.in streamtuner-0.99.99/dat
  Requires: gmodule-2.0 gtk+-2.0
 -Cflags: -I${includedir} -I${oldincludedir}
 +Cflags: -I${includedir}
-diff -ur streamtuner-0.99.99.orig/docs/reference/Makefile.in streamtuner-0.99.99/docs/reference/Makefile.in
---- streamtuner-0.99.99.orig/docs/reference/Makefile.in	2004-12-21 17:31:18.000000000 +0200
-+++ streamtuner-0.99.99/docs/reference/Makefile.in	2007-07-29 09:41:15.000000000 +0300
-@@ -517,7 +517,7 @@
- @ENABLE_GTK_DOC_TRUE@	rm -rf $(srcdir)/html 
- @ENABLE_GTK_DOC_TRUE@	mkdir $(srcdir)/html
- @ENABLE_GTK_DOC_TRUE@	cd $(srcdir)/html && gtkdoc-mkhtml $(DOC_MODULE) ../$(DOC_MAIN_SGML_FILE)
--@ENABLE_GTK_DOC_TRUE@	sed -i "" -e \
-+@ENABLE_GTK_DOC_TRUE@	sed -i -e \
- @ENABLE_GTK_DOC_TRUE@		's/background: #ffeeee/background: #daffd1/g; \
- @ENABLE_GTK_DOC_TRUE@		 s/border: solid 1px #ffaaaa/border: solid 1px #74ff54/g; \
- @ENABLE_GTK_DOC_TRUE@		 s/background: #eeeeff/background: #feffde/g; \
-diff -ur streamtuner-0.99.99.orig/help/omf.make streamtuner-0.99.99/help/omf.make
---- streamtuner-0.99.99.orig/help/omf.make	2004-03-23 18:17:10.000000000 +0200
-+++ streamtuner-0.99.99/help/omf.make	2007-07-29 09:42:50.000000000 +0300
+--- a/docs/gtk-doc.make
++++ b/docs/gtk-doc.make
+@@ -95,7 +95,7 @@
+ 	rm -rf $(srcdir)/html 
+ 	mkdir $(srcdir)/html
+ 	cd $(srcdir)/html && gtkdoc-mkhtml $(DOC_MODULE) ../$(DOC_MAIN_SGML_FILE)
+-	sed -i "" -e \
++	sed -i -e \
+ 		's/background: #ffeeee/background: #daffd1/g; \
+ 		 s/border: solid 1px #ffaaaa/border: solid 1px #74ff54/g; \
+ 		 s/background: #eeeeff/background: #feffde/g; \
+--- a/help/omf.make
++++ b/help/omf.make
 @@ -42,7 +42,9 @@
  	for file in $(omffile); do \
  		$(INSTALL_DATA) $(srcdir)/$$file.out $(DESTDIR)$(omf_dest_dir)/$$file; \
@@ -38,9 +80,27 @@ diff -ur streamtuner-0.99.99.orig/help/omf.make streamtuner-0.99.99/help/omf.mak
  
  uninstall-local-omf:
  	-for file in $(srcdir)/*.omf; do \
-diff -ur streamtuner-0.99.99.orig/src/streamtuner/st-category-store.c streamtuner-0.99.99/src/streamtuner/st-category-store.c
---- streamtuner-0.99.99.orig/src/streamtuner/st-category-store.c	2004-12-18 11:17:32.000000000 +0200
-+++ streamtuner-0.99.99/src/streamtuner/st-category-store.c	2007-07-29 09:41:46.000000000 +0300
+--- a/src/sglib/Makefile.am
++++ b/src/sglib/Makefile.am
+@@ -6,6 +6,5 @@
+ 	sg-parser.h				\
+ 	sg-util.c				\
+ 	sg-util.h
+-libsglib_la_LDFLAGS = -static
+ 
+ AM_CPPFLAGS = $(WARN_CFLAGS) $(GLIB_CFLAGS)
+--- a/src/sgtk/Makefile.am
++++ b/src/sgtk/Makefile.am
+@@ -21,7 +21,6 @@
+ 	sgtk-util.h
+ nodist_libsgtk_la_SOURCES =			\
+ 	$(top_srcdir)/art/auth.h
+-libsgtk_la_LDFLAGS = -static
+ 
+ AM_CPPFLAGS = $(WARN_CFLAGS) $(GTK_CFLAGS) \
+ 	-I$(top_srcdir)/src/sglib
+--- a/src/streamtuner/st-category-store.c
++++ b/src/streamtuner/st-category-store.c
 @@ -356,7 +356,6 @@
  {
    STCategoryBag **bag = data;
@@ -58,9 +118,8 @@ diff -ur streamtuner-0.99.99.orig/src/streamtuner/st-category-store.c streamtune
  }
  
  static gboolean
-diff -ur streamtuner-0.99.99.orig/src/streamtuner/st-network-preferences-page.c streamtuner-0.99.99/src/streamtuner/st-network-preferences-page.c
---- streamtuner-0.99.99.orig/src/streamtuner/st-network-preferences-page.c	2004-12-16 15:05:07.000000000 +0200
-+++ streamtuner-0.99.99/src/streamtuner/st-network-preferences-page.c	2007-07-29 09:43:21.000000000 +0300
+--- a/src/streamtuner/st-network-preferences-page.c
++++ b/src/streamtuner/st-network-preferences-page.c
 @@ -183,10 +183,10 @@
    st_preferences_bind_boolean(GTK_TOGGLE_BUTTON(page->priv->proxy_check),
  			      &st_settings.proxy_enabled);
@@ -74,9 +133,8 @@ diff -ur streamtuner-0.99.99.orig/src/streamtuner/st-network-preferences-page.c 
  				ST_TRANSFER_PROXY_SOCKS5);
    st_preferences_bind_string(GTK_ENTRY(page->priv->server_entry),
  			     &st_settings.proxy_server);
-diff -ur streamtuner-0.99.99.orig/src/streamtuner/st-preferences.c streamtuner-0.99.99/src/streamtuner/st-preferences.c
---- streamtuner-0.99.99.orig/src/streamtuner/st-preferences.c	2004-10-17 20:43:18.000000000 +0300
-+++ streamtuner-0.99.99/src/streamtuner/st-preferences.c	2007-07-29 09:43:21.000000000 +0300
+--- a/src/streamtuner/st-preferences.c
++++ b/src/streamtuner/st-preferences.c
 @@ -140,13 +140,13 @@
  }
  
@@ -93,9 +151,8 @@ diff -ur streamtuner-0.99.99.orig/src/streamtuner/st-preferences.c streamtuner-0
    g_signal_connect(radio, "toggled", G_CALLBACK(st_preferences_radio_toggled_h), ptr);
  }
  
-diff -ur streamtuner-0.99.99.orig/src/streamtuner/st-preferences.h streamtuner-0.99.99/src/streamtuner/st-preferences.h
---- streamtuner-0.99.99.orig/src/streamtuner/st-preferences.h	2004-10-17 20:42:06.000000000 +0300
-+++ streamtuner-0.99.99/src/streamtuner/st-preferences.h	2007-07-29 09:43:21.000000000 +0300
+--- a/src/streamtuner/st-preferences.h
++++ b/src/streamtuner/st-preferences.h
 @@ -42,7 +42,7 @@
  void st_preferences_bind_int_spin	(GtkSpinButton		*spin,
  					 int			*ptr);
@@ -105,9 +162,8 @@ diff -ur streamtuner-0.99.99.orig/src/streamtuner/st-preferences.h streamtuner-0
  					 int			value);
  
  #endif /* _ST_PREFERENCES_H */
-diff -ur streamtuner-0.99.99.orig/src/streamtuner/st-shell.c streamtuner-0.99.99/src/streamtuner/st-shell.c
---- streamtuner-0.99.99.orig/src/streamtuner/st-shell.c	2004-12-20 18:09:03.000000000 +0200
-+++ streamtuner-0.99.99/src/streamtuner/st-shell.c	2007-07-29 09:43:21.000000000 +0300
+--- a/src/streamtuner/st-shell.c
++++ b/src/streamtuner/st-shell.c
 @@ -465,8 +465,10 @@
  static void
  st_shell_make_window (STShell *shell)

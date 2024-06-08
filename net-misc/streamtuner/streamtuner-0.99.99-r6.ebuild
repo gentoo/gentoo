@@ -1,14 +1,16 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
+GNOME2_EAUTORECONF="yes"
 inherit gnome2
 
 DESCRIPTION="Stream directory browser for browsing internet radio streams"
 HOMEPAGE="https://www.nongnu.org/streamtuner/"
-SRC_URI="https://savannah.nongnu.org/download/${PN}/${P}.tar.gz
-	 https://savannah.nongnu.org/download/${PN}/${P}-pygtk-2.6.diff"
+SRC_URI="
+	https://savannah.nongnu.org/download/${PN}/${P}.tar.gz
+	https://savannah.nongnu.org/download/${PN}/${P}-pygtk-2.6.diff"
 
 LICENSE="BSD"
 SLOT="0"
@@ -20,12 +22,11 @@ RDEPEND="
 	net-misc/curl
 	xiph? ( dev-libs/libxml2:2 )
 	>=media-libs/taglib-1.2
-	x11-misc/xdg-utils
-"
-DEPEND="${RDEPEND}
+	x11-misc/xdg-utils"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-build/gtk-doc-am
-	virtual/pkgconfig
-"
+	virtual/pkgconfig"
 
 src_prepare() {
 	eapply "${FILESDIR}"/${P}-gentoo.patch
