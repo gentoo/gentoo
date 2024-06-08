@@ -1,10 +1,6 @@
 # Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# James Le Cuirot <chewi@gentoo.org> (2024-04-26)
-# Temporary mask while we get dev-libs/weston keywords in order.
-gui-libs/gtk test
-
 # Marek Szuba <marecki@gentoo.org> (2023-12-05)
 # Needs USE=video_cards_amdgpu, which IS available on ppc64le.
 >=sys-apps/fwupd-1.9.10 -amdgpu
