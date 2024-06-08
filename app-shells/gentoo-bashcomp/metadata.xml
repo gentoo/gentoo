@@ -12,5 +12,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="gentoo">proj/gentoo-bashcomp</remote-id>
+		<remote-id type="github">gentoo/gentoo-bashcomp</remote-id>
 	</upstream>
 </pkgmetadata>
