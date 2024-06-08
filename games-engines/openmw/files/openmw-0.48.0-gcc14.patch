@@ -11,3 +11,14 @@ https://bugs.gentoo.org/925105
  
  #include <boost/filesystem/path.hpp>
  #include <boost/filesystem/fstream.hpp>
+--- a/apps/openmw/mwstate/charactermanager.hpp
++++ b/apps/openmw/mwstate/charactermanager.hpp
+@@ -1,6 +1,8 @@
+ #ifndef GAME_STATE_CHARACTERMANAGER_H
+ #define GAME_STATE_CHARACTERMANAGER_H
+
++#include <list>
++
+ #include <boost/filesystem/path.hpp>
+
+ #include "character.hpp"
