@@ -19,6 +19,6 @@
     <pkg>sci-mathematics/octave</pkg></flag>
   </use>
   <upstream>
-    <remote-id type="github">mariusmuja/flann</remote-id>
+    <remote-id type="github">flann-lib/flann</remote-id>
   </upstream>
 </pkgmetadata>
