@@ -254,6 +254,15 @@ multilib_src_configure() {
 	fi
 }
 
+have_dmi() {
+	# see dmi_arches in meson.build
+	case ${CHOST} in
+		aarch64*|arm*|ia64*|i?86*|loongarch64*|mips*|x86_64*)
+			return 0 ;;
+	esac
+	return 1
+}
+
 multilib_src_compile() {
 	local targets=() optional_targets=()
 	if multilib_is_native_abi; then
@@ -327,7 +336,6 @@ multilib_src_compile() {
 				systemd-hwdb
 				ata_id
 				cdrom_id
-				dmi_memory_id
 				fido_id
 				iocost
 				mtd_probe
@@ -360,6 +368,9 @@ multilib_src_compile() {
 				# Needed for tests
 				rules.d/99-systemd.rules
 			)
+			if have_dmi; then
+				targets+=( dmi_memory_id )
+			fi
 			if use test; then
 				targets+=(
 					test-fido-id-desc
@@ -475,8 +486,13 @@ multilib_src_install() {
 			dosym ../../bin/udevadm /usr/lib/systemd/systemd-udevd
 
 			exeinto /usr/lib/udev
-			set_rpath {ata_id,cdrom_id,dmi_memory_id,fido_id,iocost,mtd_probe,scsi_id,v4l_id}
-			doexe {ata_id,cdrom_id,dmi_memory_id,fido_id,iocost,mtd_probe,scsi_id,v4l_id}
+			set_rpath {ata_id,cdrom_id,fido_id,iocost,mtd_probe,scsi_id,v4l_id}
+			doexe {ata_id,cdrom_id,fido_id,iocost,mtd_probe,scsi_id,v4l_id}
+
+			if have_dmi; then
+				set_rpath dmi_memory_id
+				doexe dmi_memory_id
+			fi
 
 			rm -f rules.d/99-systemd.rules
 			insinto /usr/lib/udev/rules.d
