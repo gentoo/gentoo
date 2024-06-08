@@ -9,6 +9,7 @@
 		<email>arthurzam@gentoo.org</email>
 		<name>Arthur Zamarin</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="gentoo">proj/gentoo-bashcomp</remote-id>
 	</upstream>
