@@ -3,7 +3,6 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <use>
-    <flag name="erlang">Support Mercury Erlang grade</flag>
     <flag name="trail">Support Mercury trail grades</flag>
   </use>
 </pkgmetadata>
