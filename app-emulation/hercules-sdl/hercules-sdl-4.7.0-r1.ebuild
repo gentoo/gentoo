@@ -25,23 +25,26 @@ FILECAPS=(
 	-M 755 cap_net_admin+ep usr/bin/hercifc
 )
 
-RDEPEND="
-	!app-emulation/hercules
+COMMON_DEPEND="
 	dev-libs/libltdl
 	net-libs/libnsl:0
 	sys-libs/zlib
 	bzip2? ( app-arch/bzip2 )
 	object-rexx? ( dev-lang/oorexx )
 	regina-rexx? ( dev-lang/regina-rexx )"
-DEPEND="${RDEPEND}
+RDEPEND="
+	!app-emulation/hercules
+	!app-arch/tapeutils
+	${COMMON_DEPEND}"
+DEPEND="
+	${COMMON_DEPEND}
 	~app-emulation/hercules-sdl-crypto-${PV}
 	~app-emulation/hercules-sdl-decnumber-${PV}
 	~app-emulation/hercules-sdl-softfloat-${PV}
 	~app-emulation/hercules-sdl-telnet-${PV}"
 # Neither package support needs to be compiled-in for tests,
 # but the "rexx" command needs to be available
-BDEPEND="${RDEPEND}
-	test? ( || ( dev-lang/regina-rexx dev-lang/oorexx ) )"
+BDEPEND="test? ( || ( dev-lang/regina-rexx dev-lang/oorexx ) )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.4.1-htmldir.patch"
