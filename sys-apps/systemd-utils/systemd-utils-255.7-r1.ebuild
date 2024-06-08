@@ -257,6 +257,8 @@ multilib_src_configure() {
 have_dmi() {
 	# see dmi_arches in meson.build
 	case ${CHOST} in
+		mips64*)
+			return 1 ;;
 		aarch64*|arm*|ia64*|i?86*|loongarch64*|mips*|x86_64*)
 			return 0 ;;
 	esac
