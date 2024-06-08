@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-GNOME_ORG_MODULE="gnome-themes-extra"
+EAPI=8
 
+GNOME_ORG_MODULE="gnome-themes-extra"
 inherit autotools gnome.org xdg
 
 DESCRIPTION="Standard Themes for GNOME Applications"
@@ -36,7 +36,6 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--disable-static \
 		--disable-gtk2-engine \
 		--disable-gtk3-engine \
 		GTK_UPDATE_ICON_CACHE=$(type -P true)
