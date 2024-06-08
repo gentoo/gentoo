@@ -8,9 +8,12 @@ type declarations.
 Upstream has switched to Meson, and it does not seem to use this
 particular check anymore.
 
+https://bugs.gentoo.org/651522
+Remove the insane check for isinf(), since every sane compiler nowadays supports it.
+
 --- a/configure.in
 +++ b/configure.in
-@@ -197,7 +197,7 @@ if test "$png_ok" = yes; then
+@@ -183,7 +183,7 @@
                    png_structp pp;
  		  png_infop info; 
  		  png_colorp cmap; 
@@ -19,4 +22,35 @@ particular check anymore.
                   png_ok=yes,
                   png_ok=no)
    LDFLAGS="${old_LDFLAGS}"
-
+@@ -378,28 +378,9 @@
+ 
+ dnl Platform-specific fixes.
+ dnl 
+-
+-dnl Sun Forte C provides isinf() in the unbundled -lsunmath. Solaris
+-dnl declares finite() in ieeefp.h. It's preferrable not to link 
+-dnl to -lsunmath as it's not present on all machines.
+-have_isinf=no
+-AC_CHECK_HEADERS(math.h,
+-        AC_CHECK_LIB(m,isinf,
+-                have_isinf=yes))
+-
+-if test "$have_isinf" = "no"; then
+-    AC_CHECK_HEADER(ieeefp.h,
+-             [AC_CHECK_FUNC(finite, 
+-	               AC_DEFINE(HAVE_IEEEFP_H,1,
+-		                 [Define if finite() is defined in ieeefp.h]),
+-                       AC_MSG_ERROR([Can't find a definition of neither 
+-                                     finite nor isinf]))],
+-             [AC_MSG_ERROR(Can't find neither a definition of
+-	                   isinf nor ieeefp.h)])
+-else
+-    AC_DEFINE([HAVE_ISINF], 1, 
+-              [Define if the isinf() function is available])
+-fi
++dnl every modern compiler supports C99's isinf()
++AC_DEFINE([HAVE_ISINF], 1, 
++          [Define if the isinf() function is available])
+ 
+ dnl Alpha needs -mieee or we get a segfault
+ dnl This shouldn't be needed but is here until a real solution is found
