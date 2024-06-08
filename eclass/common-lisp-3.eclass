@@ -1,17 +1,17 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: common-lisp-3.eclass
 # @MAINTAINER:
 # Common Lisp project <common-lisp@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: functions to support the installation of Common Lisp libraries
 # @DESCRIPTION:
 # Since Common Lisp libraries share similar structure, this eclass aims
 # to provide a simple way to write ebuilds with these characteristics.
 
 case ${EAPI} in
-	6|7) ;;
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -121,7 +121,8 @@ common-lisp-install-sources() {
 
 	local fpredicate=$(common-lisp-get-fpredicate "${ftype}")
 
-	for path in "${@}" ; do
+	local path
+	for path ; do
 		if [[ -f ${path} ]] ; then
 			common-lisp-install-one-source ${fpredicate} "${path}" "$(dirname "${path}")"
 		elif [[ -d ${path} ]] ; then
@@ -148,7 +149,7 @@ common-lisp-install-sources() {
 # Installs ${1} asdf file in CLSOURCEROOT/CLPACKAGE and symlinks it in
 # CLSYSTEMROOT.
 common-lisp-install-one-asdf() {
-	[[ $# != 1 ]] && die "${FUNCNAME[0]} must receive exactly one argument"
+	[[ $# -eq 1 ]] || die "${FUNCNAME[0]} must receive exactly one argument"
 
 	# the suffix «.asd» is optional
 	local source=${1%.asd}.asd
@@ -166,9 +167,11 @@ common-lisp-install-one-asdf() {
 common-lisp-install-asdf() {
 	dodir "${CLSYSTEMROOT}"
 
-	[[ $# = 0 ]] && set - ${CLSYSTEMS}
-	[[ $# = 0 ]] && set - $(find . -type f -name \*.asd)
-	for sys in "${@}" ; do
+	[[ $# -eq 0 ]] && set - ${CLSYSTEMS}
+	[[ $# -eq 0 ]] && set - $(find . -type f -name \*.asd)
+
+	local sys
+	for sys ; do
 		common-lisp-install-one-asdf ${sys}
 	done
 }
@@ -187,6 +190,7 @@ common-lisp-3_src_install() {
 # Outputs an installed Common Lisp implementation. Transverses
 # CLIMPLEMENTATIONS to find it.
 common-lisp-find-lisp-impl() {
+	local lisp
 	for lisp in ${CLIMPLEMENTATIONS} ; do
 		[[ "$(best_version dev-lisp/${lisp})" ]] && echo "${lisp}" && return
 	done
@@ -203,7 +207,7 @@ common-lisp-find-lisp-impl() {
 #   * CL_LOAD: load a certain file
 #   * CL_EVAL: eval a certain expression at startup
 common-lisp-export-impl-args() {
-	if [[ $# != 1 ]]; then
+	if [[ $# -ne 1 ]]; then
 		eerror "Usage: ${FUNCNAME[0]} lisp-implementation"
 		die "${FUNCNAME[0]}: wrong number of arguments: $#"
 	fi
