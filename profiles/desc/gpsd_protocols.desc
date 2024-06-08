@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of possible protocols for gpsd package.
@@ -17,14 +17,10 @@ gpsclock - GPSclock protocol support
 greis - Javad GREIS protocol support
 isync - Isync protocol support
 itrax - iTrax protocol support
-mtk3301 - MTK-3301 protocol support
 navcom - Navcom protocol support
-nmea0183 - NMEA protocol support
 nmea2000 - NMEA2000/CAN support
-ntrip - NTRIP protocol support
 oceanserver - OceanServer protocol support
 oncore - OnCore protocol support
-passthrough - Pass through JSON data
 rtcm104v2 - RTCM104V2 protocol support
 rtcm104v3 - RTCM104V3 protocol support
 sirf - SiRF protocol support
