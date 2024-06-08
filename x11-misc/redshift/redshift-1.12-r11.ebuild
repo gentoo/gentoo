@@ -13,7 +13,7 @@ SRC_URI="https://github.com/jonls/${PN}/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
+KEYWORDS="amd64 arm64 ppc64 ~riscv x86"
 IUSE="appindicator geoclue gtk nls"
 
 COMMON_DEPEND=">=x11-libs/libX11-1.4
