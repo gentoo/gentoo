@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-08)
+# EAPI=6, not maintained since cvs days. Keyworded for x86 and ppc
+# only. Fails to compile with modern C.
+# Removal on 2024-07-08.  Bugs #933824, #927783.
+net-p2p/gnut
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-07)
 # EAPI=6, no reverse dependencies, failing tests, various QA issues.
 # Removal on 2024-07-07.  Bugs #933768, #849923, #882403, #837020,
