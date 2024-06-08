@@ -26,7 +26,7 @@ X86_CPU_FEATURES=(
 )
 CPU_FEATURES=( ${X86_CPU_FEATURES[@]/#/cpu_flags_x86_} )
 
-IUSE="doc gui partio qt6 test ${CPU_FEATURES[@]%:*} python"
+IUSE="debug doc gui partio qt6 test ${CPU_FEATURES[@]%:*} python"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -124,8 +124,13 @@ src_configure() {
 		-DPYTHON_VERSION="${EPYTHON/python}"
 		-DUSE_SIMD="$(IFS=","; echo "${mysimd[*]}")"
 		-DUSE_BATCHED="$(IFS=","; echo "${mybatched[*]}")"
-		-DVEC_REPORT=yes
 	)
+
+	if use debug; then
+		mycmakeargs+=(
+			-DVEC_REPORT="yes"
+		)
+	fi
 
 	if use gui; then
 		mycmakeargs+=( -DUSE_QT=yes )

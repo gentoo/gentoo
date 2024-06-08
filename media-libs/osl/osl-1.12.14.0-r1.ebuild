@@ -32,7 +32,7 @@ X86_CPU_FEATURES=(
 )
 CPU_FEATURES=( "${X86_CPU_FEATURES[@]/#/cpu_flags_x86_}" )
 
-IUSE="doc gui libcxx nofma partio qt6 test ${CPU_FEATURES[*]%:*} python"
+IUSE="debug doc gui libcxx nofma partio qt6 test ${CPU_FEATURES[*]%:*} python"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -177,10 +177,15 @@ src_configure() {
 		-DUSE_BATCHED="$(IFS=","; echo "${mybatched[*]}")"
 		-DUSE_LIBCPLUSPLUS="$(usex libcxx)"
 		-DUSE_OPTIX="no"
-		-DVEC_REPORT="yes"
 
 		-DOpenImageIO_ROOT="${EPREFIX}/usr"
 	)
+
+	if use debug; then
+		mycmakeargs+=(
+			-DVEC_REPORT="yes"
+		)
+	fi
 
 	if use gui; then
 		mycmakeargs+=( -DUSE_QT="yes" )
