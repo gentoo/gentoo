@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
@@ -17,11 +17,13 @@ IUSE="debug doc nls static-libs usb"
 RDEPEND="
 	dev-libs/glib:2
 	usb? ( virtual/libusb:1 )
-	nls? ( virtual/libintl )"
-
-DEPEND="${RDEPEND}
+	nls? ( virtual/libintl )
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+"
 
 DOCS=( AUTHORS LOGO NEWS README ChangeLog docs/api.txt )
 
@@ -31,23 +33,24 @@ src_prepare() {
 }
 
 src_configure() {
-	# --disable-libusb $(use_enable usb libusb10) would enable virtual/libusb:1
-	econf \
-		--disable-rpath \
-		$(use_enable static-libs static) \
-		$(use_enable debug logging) \
-		$(use_enable nls) \
-		$(use_enable usb libusb) \
+	local myeconfargs=(
+		--disable-rpath
+		$(use_enable static-libs static)
+		$(use_enable debug logging)
+		$(use_enable nls)
+		$(use_enable usb libusb)
 		$(use_enable usb libusb10)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	use doc && HTML_DOCS+=( docs/html/. )
 	default
-	find "${D}" -name '*.la' -delete || die
+	find "${D}" -type f -name '*.la' -delete || die
 }
 
 pkg_postinst() {
-	elog "Please read README in ${EROOT%/}/usr/share/doc/${PF}"
+	elog "Please read README in ${EROOT}/usr/share/doc/${PF}"
 	elog "if you encounter any problem with a link cable"
 }
