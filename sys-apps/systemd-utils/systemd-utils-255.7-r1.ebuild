@@ -357,6 +357,8 @@ multilib_src_compile() {
 				rules.d/50-udev-default.rules
 				rules.d/60-persistent-storage.rules
 				rules.d/64-btrfs.rules
+				# Needed for tests
+				rules.d/99-systemd.rules
 			)
 			if use test; then
 				targets+=(
