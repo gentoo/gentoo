@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>alsa-bugs@gentoo.org</email>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="alisp">Enable support for ALISP (ALSA LISP) interpreter for advanced features.</flag>
 	</use>
