@@ -245,10 +245,6 @@ x11-plugins/pidgintex
 # Removal on 2024-06-16.  Bugs #932095, #768072, #777747.
 app-forensics/air
 
-# Sam James <sam@gentoo.org> (2024-05-17)
-# Needs adaptation to new build system (bug #932092).
-=net-libs/libupnpp-0.26.4
-
 # Michał Górny <mgorny@gentoo.org> (2024-05-17)
 # A Python < 3.3 backport of shutil.which().  No revdeps left.
 # Removal on 2024-06-16.  Bug #932088.

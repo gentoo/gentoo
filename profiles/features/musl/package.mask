@@ -356,11 +356,7 @@ sys-block/hpssacli
 sys-block/megacli
 www-apps/chromedriver-bin
 www-apps/grafana-bin
-www-apps/jellyfin
 www-apps/kibana-bin
-www-apps/prowlarr
-www-apps/radarr
-www-apps/readarr
 www-client/firefox-bin
 www-client/google-chrome
 www-client/google-chrome-beta

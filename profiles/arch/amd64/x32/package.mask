@@ -138,7 +138,6 @@ media-video/vidify
 media-video/vidify-audiosync
 net-analyzer/nmapsi
 >=net-im/neochat-24.02.0
-=net-im/tokodon-24.02*
 net-im/whatsie
 net-libs/signon-ui
 sci-geosciences/qmapshack

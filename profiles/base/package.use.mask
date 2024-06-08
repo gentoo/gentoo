@@ -277,10 +277,6 @@ sci-libs/vtk debug
 # See also: https://bugs.gentoo.org/891499
 sys-libs/libomp llvm_targets_AMDGPU
 
-# Sam James <sam@gentoo.org> (2023-01-21)
-# Fails to compile: https://github.com/libffi/libffi/issues/760
-<dev-libs/libffi-3.4.4-r4 exec-static-trampoline
-
 # Joonas Niilola <juippis@gentoo.org> (2023-01-08)
 # Doesn't compile currently, bug #853094.
 >=net-dialup/freeradius-3.2.0 oracle
