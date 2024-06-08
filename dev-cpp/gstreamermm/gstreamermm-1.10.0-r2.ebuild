@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit gnome2 virtualx
 
@@ -19,21 +19,22 @@ RDEPEND="
 	>=media-libs/gst-plugins-base-${PV}:1.0
 	>=dev-cpp/glibmm-2.47.6:2
 	>=dev-cpp/libxmlpp-2.14:2.6
-	>=dev-libs/libsigc++-2:2
-"
+	>=dev-libs/libsigc++-2:2"
 DEPEND="${RDEPEND}
+	test? (
+		dev-cpp/gtest
+		>=media-libs/gst-plugins-base-${PV}:1.0[X,ogg,theora,vorbis]
+		>=media-libs/gst-plugins-good-${PV}:1.0
+		>=media-plugins/gst-plugins-jpeg-${PV}:1.0
+	)"
+BDEPEND="
 	dev-cpp/mm-common
 	virtual/pkgconfig
 	doc? (
 		app-text/doxygen
 		dev-libs/libxslt
-		media-gfx/graphviz )
-	test? (
-		dev-cpp/gtest
-		>=media-libs/gst-plugins-base-${PV}:1.0[X,ogg,theora,vorbis]
-		>=media-libs/gst-plugins-good-${PV}:1.0
-		>=media-plugins/gst-plugins-jpeg-${PV}:1.0 )
-"
+		media-gfx/graphviz
+	)"
 # eautoreconf:
 #	dev-cpp/mm-common
 
