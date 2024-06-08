@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/933486
+https://github.com/rpm-software-management/rpm-sequoia/pull/69
+
+From 5038bc2c342d54668e476f8a22e5e1c8bfff003d Mon Sep 17 00:00:00 2001
+From: Takuya Wakazono <pastalian46@gmail.com>
+Date: Wed, 5 Jun 2024 18:26:37 +0900
+Subject: [PATCH] Look for symbols in opd section
+
+ppc64 binary has function symbols in opd section instead of text
+section.
+---
+ tests/symbols.rs | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/symbols.rs b/tests/symbols.rs
+index 9375619..c16dd9b 100644
+--- a/tests/symbols.rs
++++ b/tests/symbols.rs
+@@ -39,6 +39,7 @@ fn symbols() -> anyhow::Result<()> {
+     for line in output.split("\n") {
+         if line.contains("g    DF .text")
+             || line.contains("g    DO .data")
++            || line.contains("g    DF .opd")
+         {
+             let symbol = line.split(' ').last().expect("a word");
+             symbols.push(symbol);
