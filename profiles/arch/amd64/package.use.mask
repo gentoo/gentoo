@@ -21,6 +21,10 @@
 # Pulls in kde-apps/kgpg is keyworded here
 >=kde-apps/kdeutils-meta-24.05.1 -gpg
 
+# Jared Allard <jared@rgst.io> (2024-06-21)
+# uasm and jwasm include amd64-specific ASM
+app-arch/7zip -uasm -jwasm
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-04-25)
 # ROCm and Level-Zero are amd64-only at the moment
 sys-apps/hwloc -rocm -l0
