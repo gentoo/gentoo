@@ -1,6 +1,10 @@
 # Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfred Wingate <parona@protonmail.com> (2025-04-16)
+# Requires virtual/jre which is not available on riscv
+dev-db/mysql doc
+
 # Alfredo Tupone <tupone@gentoo.org> (2025-04-15)
 # drop dev-ml test 
 dev-ml/duration test
