@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-08)
+# EAPI=6, no reverse dependencies, fails to compile with LLVM or musl,
+# various QA issues.
+# Removal on 2024-07-08.  Bugs #933837, #832891, #740364, #751697, #403627.
+media-sound/herrie
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-08)
 # EAPI=6, fetch restricted, waiting for a version bump.
 # Removal on 2024-07-08.  Bug #933836.
 sci-libs/coinhsl
