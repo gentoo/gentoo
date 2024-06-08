@@ -220,7 +220,6 @@ dev-libs/mongo-c-driver test
 # LuaJIT does not support riscv
 app-text/texlive-core luajittex
 dev-texlive/texlive-basic luajittex
-dev-texlive/texlive-context luajittex
 media-gfx/gimp lua
 www-servers/nginx nginx_modules_http_lua
 

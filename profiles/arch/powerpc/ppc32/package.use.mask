@@ -25,7 +25,6 @@ app-crypt/mit-krb5 keyutils
 app-emulation/qemu keyutils
 net-fs/cifs-utils ads creds pam
 net-fs/samba ads
-sys-auth/sssd keyutils
 >=sys-libs/libblockdev-3.0.0 cryptsetup
 sys-libs/libnvme keyutils
 
