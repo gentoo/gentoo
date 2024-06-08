@@ -34,6 +34,16 @@
 #--- END OF EXAMPLES ---
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-08)
+# Various apache modules with no reverse dependencies, EAPI=6,
+# some maintainer-needed.
+# Removal on 2024-07-08.  Bugs #933847, #742452.
+www-apache/mod_authnz_external
+www-apache/mod_authz_unixgroup
+www-apache/mod_maxminddb
+www-apache/mod_vdbh
+www-apache/modsec-flameeyes
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-08)
 # EAPI=6, maintainer-needed, no reverse dependencies.
 # Removal on 2024-07-08.  Bugs #933846, #598678, #916203.
 sys-power/powernowd
