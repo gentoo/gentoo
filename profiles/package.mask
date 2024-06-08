@@ -33,6 +33,23 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-06-08)
+# Prereleases of Xfce 4.20.  Masking upon popular request, due to
+# a large number of regressions in every new release.
+>=xfce-base/exo-4.19
+>=xfce-base/garcon-4.19
+>=xfce-base/libxfce4ui-4.19
+>=xfce-base/libxfce4util-4.19
+>=xfce-base/thunar-4.19
+>=xfce-base/tumbler-4.19
+>=xfce-base/xfce4-appfinder-4.19
+>=xfce-base/xfce4-panel-4.19
+>=xfce-base/xfce4-power-manager-4.19
+>=xfce-base/xfce4-session-4.19
+>=xfce-base/xfce4-settings-4.19
+>=xfce-base/xfconf-4.19
+>=xfce-base/xfdesktop-4.19
+
 # David Seifert <soap@gentoo.org> (2024-06-08)
 # Last release 12 years ago, clearly abandoned upstream, EAPI 6, no
 # other major distro still carries this.
