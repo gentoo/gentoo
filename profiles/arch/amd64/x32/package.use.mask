@@ -5,7 +5,7 @@
 # Runtime issues (bug #925115) and build issues (bug #931092)
 dev-libs/libpcre2 jit
 dev-lang/php jit
-mail-filter/rspawmd jit
+mail-filter/rspamd jit
 net-proxy/haproxy pcre-jit
 www-servers/varnish jit
 
