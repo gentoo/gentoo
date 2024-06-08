@@ -1,12 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit common-lisp-3
 
 DESCRIPTION="CLX is the Common Lisp interface to the X11 protocol primarily for SBCL"
-HOMEPAGE="http://www.cliki.net/CLX"
+HOMEPAGE="https://www.cliki.net/CLX"
 SRC_URI="https://github.com/sharplispers/clx/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
@@ -15,8 +15,7 @@ KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="doc"
 
 DEPEND="sys-apps/texinfo
-		doc? ( virtual/texi2dvi )"
-RDEPEND="!dev-lisp/cl-${PN}"
+	doc? ( virtual/texi2dvi )"
 
 src_compile() {
 	cd manual || die
