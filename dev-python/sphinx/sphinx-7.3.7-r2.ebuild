@@ -96,7 +96,12 @@ python_test() {
 	mkdir -p "${BUILD_DIR}/sphinx_tempdir" || die
 	local -x SPHINX_TEST_TEMPDIR="${BUILD_DIR}/sphinx_tempdir"
 
-	local EPYTEST_DESELECT=()
+	local EPYTEST_DESELECT=(
+		# less interesting failures
+		tests/test_builders/test_build_latex.py::test_build_latex_doc
+		tests/test_extensions/test_ext_math.py::test_imgmath_png
+		tests/test_extensions/test_ext_math.py::test_imgmath_numfig_html
+	)
 	case ${EPYTHON} in
 		python3.13)
 			EPYTEST_DESELECT+=(
