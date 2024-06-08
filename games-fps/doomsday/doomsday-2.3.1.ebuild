@@ -3,13 +3,13 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit cmake flag-o-matic python-any-r1 qmake-utils readme.gentoo-r1 xdg
 
 DESCRIPTION="A modern gaming engine for Doom, Heretic, and Hexen"
-HOMEPAGE="https://www.dengine.net"
+HOMEPAGE="https://dengine.net"
 SRC_URI="https://downloads.sourceforge.net/project/deng/Doomsday%20Engine/${PV}/${P}.tar.gz"
-
+S="${WORKDIR}/${P}/${PN}"
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
@@ -42,8 +42,6 @@ PDEPEND="
 	demo? ( games-fps/doom-data )
 	freedoom? ( games-fps/freedoom )
 "
-
-S="${WORKDIR}/${P}/${PN}"
 
 DOC_CONTENTS="You need to copy Doom, Doom 2, Chex Quest, Heretic, Hexen, HexenDD, or Doom64 wads to a folder of your choice and then tell the game engine where that folder is. This is different to older versions, which had separate launchers for each game and required the files to be in a specific place."
 
