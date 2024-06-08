@@ -183,10 +183,6 @@ net-misc/wget ssl
 # is maintained for experts only.
 sys-libs/libcxx libcxxabi
 
-# Matt Turner <mattst88@gentoo.org> (2019-09-01)
-# <dev-scheme/guile-2 is package.mask'd, so force USE=guile2
-media-sound/lilypond guile2
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-08-17)
 # USE=-cxx us a sure way to break native install as modern gcc
 # requires C++ to bootstrap. But in rare cases it's useful
