@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2024-06-08)
+# Last release 12 years ago, clearly abandoned upstream, EAPI 6, no
+# other major distro still carries this.
+# Removal on 2024-07-08. Bug #933825.
+app-i18n/imhangul
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-08)
 # EAPI=6, not maintained since cvs days. Keyworded for x86 and ppc
 # only. Fails to compile with modern C.
