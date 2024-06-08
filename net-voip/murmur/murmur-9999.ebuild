@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake flag-o-matic systemd readme.gentoo-r1 tmpfiles
 
@@ -17,10 +17,8 @@ if [[ "${PV}" == 9999 ]] ; then
 		'-*'
 		3rdparty/cmake-compiler-flags
 		3rdparty/FindPythonInterpreter
-		3rdparty/gsl
+		3rdparty/flag-icons
 		3rdparty/minhook
-		3rdparty/opus
-		3rdparty/rnnoise-src
 		3rdparty/speexdsp
 		3rdparty/tracy
 	)
@@ -33,11 +31,10 @@ else
 	else
 		MY_PV="${PV/_/-}"
 		MY_P="${MY_PN}-${MY_PV}"
-		SRC_URI="https://github.com/mumble-voip/mumble/releases/download/${MY_PV}/${MY_P}.tar.gz
-			https://dl.mumble.info/${MY_P}.tar.gz"
-		S="${WORKDIR}/${MY_PN}-${PV/_*}.src"
+		SRC_URI="https://github.com/mumble-voip/mumble/releases/download/v${MY_PV}/${MY_P}.tar.gz"
+		S="${WORKDIR}/${MY_PN}-${PV/_*}"
 	fi
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 LICENSE="BSD"
@@ -48,6 +45,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	acct-group/murmur
 	acct-user/murmur
+	dev-cpp/ms-gsl
 	>=dev-libs/openssl-1.0.0b:0=
 	>=dev-libs/protobuf-2.2.0:=
 	dev-qt/qtcore:5
@@ -102,11 +100,10 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING="$(usex test)"
+		-Dbundled-gsl="OFF"
 		-Dclient="OFF"
-		-Dg15="OFF"
 		-Dice="$(usex ice)"
 		-DMUMBLE_INSTALL_SYSCONFDIR="/etc/murmur"
-		-Doverlay="OFF"
 		-Dserver="ON"
 		-DMUMBLE_INSTALL_SERVICEFILEDIR=$(systemd_get_systemunitdir)
 		-DMUMBLE_INSTALL_SYSUSERSDIR=$(systemd_get_userunitdir)
@@ -145,6 +142,10 @@ src_install() {
 	keepdir /var/lib/murmur /var/log/murmur
 	fowners -R murmur /var/lib/murmur /var/log/murmur
 	fperms 750 /var/lib/murmur /var/log/murmur
+
+	mv "${ED}"/etc/murmur/mumble-server.ini "${ED}"/etc/murmur/murmur.ini || die
+	mv "${ED}"/usr/lib/systemd/system/mumble-server.service "${ED}"/usr/lib/systemd/system/murmur.service || die
+	sed -ie 's|mumble-server\.ini|murmur.ini|' "${ED}"/usr/lib/systemd/system/murmur.service || die
 
 	readme.gentoo_create_doc
 }
