@@ -1,7 +1,7 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 GNOME2_EAUTORECONF="yes"
 inherit gnome2
@@ -24,21 +24,20 @@ RDEPEND="
 	dev-libs/popt
 	>=media-libs/freetype-2
 	>=media-libs/libart_lgpl-2
-	media-libs/libpng:0
+	media-libs/libpng:=
 	sys-libs/zlib
 	x11-libs/gtk+:2
 	x11-libs/pango
 	cairo? ( x11-libs/cairo )
 	doc? (
 		app-text/docbook-xml-dtd:4.5
-		app-text/docbook-xsl-stylesheets )
-"
-DEPEND="${RDEPEND}
+		app-text/docbook-xsl-stylesheets
+	)"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/intltool
 	virtual/pkgconfig
 	doc? ( dev-libs/libxslt )"
-
-DOCS=( AUTHORS ChangeLog KNOWN_BUGS MAINTAINERS NEWS README RELEASE-PROCESS THANKS TODO )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.97.0-gnome-doc.patch #159381 , upstream #470812 #558690
@@ -83,6 +82,7 @@ src_configure() {
 
 src_install() {
 	gnome2_src_install
+	dodoc KNOWN_BUGS RELEASE-PROCESS
 
 	# Install second desktop file for integrated mode (bug #415495, upstream #588208)
 	sed -e 's|^Exec=dia|Exec=dia --integrated|' \
