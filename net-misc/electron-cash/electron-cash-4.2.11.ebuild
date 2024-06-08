@@ -147,10 +147,6 @@ src_install() {
 	distutils-r1_src_install
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
 	xdg_icon_cache_update
 	xdg_desktop_database_update
