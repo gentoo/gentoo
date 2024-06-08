@@ -8,7 +8,4 @@
 	<longdescription lang="en">
 LilyPond is an automated engraving system. It formats music beautifully and automatically, and has a friendly syntax for its input files.
 	</longdescription>
-	<use>
-		<flag name="guile2">Enable experimental support for Guile 2</flag>
-	</use>
 </pkgmetadata>
