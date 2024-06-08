@@ -25,6 +25,7 @@ RDEPEND="
 	|| (
 		dev-lang/ocaml:0/4.14
 		dev-lang/ocaml:0/4.14.1
+		dev-lang/ocaml:0/4.14.2
 	)
 	emacs? (
 		>=app-editors/emacs-23.1:*
@@ -51,6 +52,8 @@ src_unpack() {
 	if has_version "dev-lang/ocaml:0/4.14" ; then
 		mv ${P}-414 "${S}" || die
 	elif has_version "dev-lang/ocaml:0/4.14.1" ; then
+		mv ${P}-414 "${S}" || die
+	elif has_version "dev-lang/ocaml:0/4.14.2" ; then
 		mv ${P}-414 "${S}" || die
 	fi
 }
