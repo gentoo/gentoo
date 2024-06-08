@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=8
 
 inherit autotools gnome2-utils prefix
 
@@ -12,11 +12,12 @@ SRC_URI="http://bonobo.gnome.gr.jp/~nakai/immodule/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
-IUSE=""
 
-RDEPEND="app-i18n/freewnn
+RDEPEND="
+	app-i18n/freewnn
 	x11-libs/gtk+:2"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig"
 
@@ -30,7 +31,6 @@ src_prepare() {
 	default
 	eprefixify ${PN}.c
 
-	mv configure.{in,ac} || die
 	eautoreconf
 }
 
