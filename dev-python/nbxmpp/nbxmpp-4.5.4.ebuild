@@ -19,8 +19,8 @@ SRC_URI="
 "
 S=${WORKDIR}/${MY_P}
 
-SLOT="0"
 LICENSE="GPL-3"
+SLOT="0"
 KEYWORDS="amd64 arm64 ~loong ~riscv x86"
 
 RDEPEND="
