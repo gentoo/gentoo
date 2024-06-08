@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 inherit python-single-r1 xdg desktop
 
 DESCRIPTION="Collection of tools useful for audio production"
@@ -24,7 +24,8 @@ IUSE="a2jmidid pulseaudio opengl"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="${PYTHON_DEPS}
+CDEPEND="
+	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/dbus-python[${PYTHON_USEDEP}]
 		dev-python/PyQt5[dbus,gui,opengl?,svg,widgets,${PYTHON_USEDEP}]
@@ -32,14 +33,18 @@ RDEPEND="${PYTHON_DEPS}
 	media-sound/jack_capture
 	virtual/jack
 	a2jmidid? ( media-sound/a2jmidid[dbus] )
-	pulseaudio? ( || (
-		media-video/pipewire[jack-sdk]
-		media-sound/pulseaudio-daemon[jack]
-	) )
-"
-DEPEND="${RDEPEND}"
+	pulseaudio? (
+		|| (
+			media-video/pipewire[jack-sdk]
+			media-sound/pulseaudio-daemon[jack]
+		)
+	)"
+RDEPEND="${CDEPEND}"
+DEPEND="${CDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.9.1-fix-clang.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.1-fix-clang.patch
+)
 
 src_prepare() {
 	sed -i -e "s/python3/${EPYTHON}/" \

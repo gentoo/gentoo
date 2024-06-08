@@ -1,15 +1,15 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 inherit python-single-r1 xdg desktop
 
 DESCRIPTION="Collection of tools useful for audio production"
 HOMEPAGE="https://kx.studio//Applications:Cadence"
 
-if [[ ${PV} == "9999" ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/falkTX/Cadence.git"
 else
@@ -36,9 +36,8 @@ CDEPEND="
 	a2jmidid? ( media-sound/a2jmidid[dbus] )
 	pulseaudio? (
 		|| (
-			media-sound/pulseaudio-daemon[jack]
 			media-video/pipewire[jack-sdk]
-			<media-sound/pulseaudio-15.99.1[daemon(+),jack]
+			media-sound/pulseaudio-daemon[jack]
 		)
 	)"
 RDEPEND="${CDEPEND}"
