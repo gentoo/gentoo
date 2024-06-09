@@ -15,7 +15,7 @@ TEST_CHECK_VER=1.1.1
 
 JAVA_PKG_IUSE="test"
 
-inherit java-pkg-2 java-ant-2
+inherit java-pkg-2
 
 DESCRIPTION="General-purpose programming language with an emphasis on functional programming"
 HOMEPAGE="https://clojure.org/
@@ -50,6 +50,9 @@ SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="amd64 x86 ~x86-linux"
 RESTRICT="!test? ( test )"
 
+BDEPEND="
+	>=dev-java/ant-1.10.14-r3
+"
 RDEPEND="
 	>=virtual/jre-1.8:*
 "
@@ -65,7 +68,7 @@ DOCS=( changes.md CONTRIBUTING.md readme.txt )
 
 src_prepare() {
 	default
-	java-utils-2_src_prepare
+	java-pkg-2_src_prepare
 
 	ln -rs \
 		../spec.alpha-${SPEC_ALPHA_VER}/src/main/clojure/clojure/spec \
