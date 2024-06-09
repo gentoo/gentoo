@@ -14,7 +14,10 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE="emacs +ocamlopt test"
-RESTRICT="!test? ( test )"
+
+# Tests fail unexpectedly on Tinderbox. See https://bugs.gentoo.org/933857
+# RESTRICT="!test? ( test )"
+RESTRICT="test"
 
 RDEPEND="
 	<dev-lang/ocaml-5
