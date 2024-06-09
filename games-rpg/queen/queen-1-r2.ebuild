@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit desktop wrapper
 
@@ -34,7 +34,7 @@ SRC_URI="
 	l10n_it? ( ${SF_BASE_URL}${FILE_IT} )
 	http://www.scummvm.org/images/cat-queen.png
 "
-
+S="${WORKDIR}"
 LICENSE="queen"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
@@ -55,8 +55,6 @@ DEPEND="${RDEPEND}
 	l10n_he? ( app-arch/unzip )
 	l10n_it? ( app-arch/unzip )
 "
-
-S=${WORKDIR}
 
 src_unpack() {
 	if use l10n_de ; then
