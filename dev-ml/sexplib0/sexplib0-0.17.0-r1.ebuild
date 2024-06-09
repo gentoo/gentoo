@@ -11,7 +11,7 @@ SRC_URI="https://github.com/janestreet/sexplib0/archive/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="0/${PV}"
+SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+ocamlopt"
 
