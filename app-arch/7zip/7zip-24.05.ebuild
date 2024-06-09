@@ -99,6 +99,7 @@ src_compile() {
 		args+=( MY_ASM=uasm )
 	fi
 
+	mkdir -p "${bdir}" || die  # Bug: https://bugs.gentoo.org/933619
 	emake ${args[@]}
 	popd > /dev/null || die "Unable to switch directory"
 }
