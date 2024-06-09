@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Colored and full-featured pretty print of Perl data structures and objects"
 
 SLOT="0"
-KEYWORDS="~amd64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 ~loong ~riscv ~x86"
 
 RDEPEND="
 	virtual/perl-File-Spec
