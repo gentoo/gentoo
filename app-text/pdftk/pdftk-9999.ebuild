@@ -15,6 +15,8 @@ HOMEPAGE="https://gitlab.com/pdftk-java/pdftk"
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/pdftk-java/pdftk/"
+	SRC_URI="https://gitlab.com/pdftk-java/pdftk/-/commit/3f1918c831c919d0a8fcf18c36cf40118398b995.patch ->
+		${P}-bc176.patch"
 	S="${WORKDIR}/pdftk-${PV}"
 else
 	SRC_URI="https://gitlab.com/pdftk-java/pdftk/-/archive/v${PV}/pdftk-v${PV}.tar.bz2"
@@ -27,7 +29,7 @@ SLOT="0"
 
 # Switch back to bcprov:0 once pdftk updates its bcprov dependency.
 CP_DEPEND="
-	dev-java/bcprov:1.74
+	dev-java/bcprov:0
 	dev-java/commons-lang:3.6
 "
 
@@ -46,6 +48,8 @@ RDEPEND="
 
 DOCS=( CHANGELOG.md README.md )
 
+PATCHES=( "${DISTDIR}/pdftk-9999-bc176.patch" )
+
 JAVA_MAIN_CLASS="com.gitlab.pdftk_java.pdftk"
 JAVA_RESOURCE_DIRS="resources/java"
 JAVA_SRC_DIR="java"
@@ -54,6 +58,7 @@ JAVA_TEST_GENTOO_CLASSPATH="junit-4,system-rules"
 JAVA_TEST_SRC_DIR="test"
 
 src_prepare() {
+	default #780585
 	java-pkg-2_src_prepare
 	mkdir resources || die
 	cp -r {,resources/}java || die
