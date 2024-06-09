@@ -14,7 +14,6 @@ LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64"
 IUSE="+ocamlopt"
-RESTRICT="test"
 
 BDEPEND="
 	>=dev-ml/dune-3.11
