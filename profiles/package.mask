@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # James Le Cuirot <chewi@gentoo.org> (2024-06-09)
+# Super ancient and broken 32-bit only port. Package ECWolf instead.
+# Removal on 2024-07-09.  Bug #926467.
+games-fps/wolfgl
+
+# James Le Cuirot <chewi@gentoo.org> (2024-06-09)
 # Download no longer available, license prevents mirroring.
 # Removal on 2024-07-09.  Bug #791115.
 games-strategy/darwinia-demo
