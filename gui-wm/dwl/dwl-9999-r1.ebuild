@@ -63,7 +63,7 @@ DEPEND="
 "
 BDEPEND="
 	>=dev-libs/wayland-protocols-1.32
-	dev-util/wayland-scanner
+	>=dev-util/wayland-scanner-1.23
 	virtual/pkgconfig
 "
 
