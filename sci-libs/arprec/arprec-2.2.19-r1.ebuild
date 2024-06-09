@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 FORTRAN_NEEDED=fortran
 FORTRAN_STANDARD=90
@@ -11,9 +11,10 @@ inherit autotools fortran-2
 DESCRIPTION="Arbitrary precision float arithmetics and functions"
 HOMEPAGE="https://crd-legacy.lbl.gov/~dhbailey/mpdist/"
 SRC_URI="https://crd.lbl.gov/~dhbailey/mpdist/${P}.tar.gz"
+S="${WORKDIR}/${PN}"
 
-SLOT="0"
 LICENSE="BSD"
+SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="cpu_flags_x86_fma3 cpu_flags_x86_fma4 doc fortran qd static-libs"
 
@@ -24,20 +25,22 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gold.patch
 )
 
-S="${WORKDIR}/${PN}"
-
 src_prepare() {
 	default
+	sed -e '/TESTS =/s/ io//' -i tests/Makefile.am || die # bug 526960
+
 	eautoreconf
 }
 
 src_configure() {
-	econf \
-		--enable-shared \
-		$(use_enable static-libs static) \
-		$(use_enable cpu_flags_x86_fma$(usex cpu_flags_x86_fma3 3 4) fma) \
-		$(use_enable fortran) \
+	local myeconfargs=(
+		--enable-shared
+		$(use_enable static-libs static)
+		$(use_enable cpu_flags_x86_fma$(usex cpu_flags_x86_fma3 3 4) fma)
+		$(use_enable fortran)
 		$(use_enable qd)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
@@ -75,10 +78,10 @@ src_install() {
 	fi
 
 	if ! use doc; then
-		rm "${ED%/}"/usr/share/doc/${PF}/*.pdf || die
+		rm "${ED}"/usr/share/doc/${PF}/*.pdf || die
 	fi
 
 	if ! use static-libs; then
-		find "${D}" -name '*.la' -delete || die
+		find "${D}" -type f -name '*.la' -delete || die
 	fi
 }
