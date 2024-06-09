@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,8 @@ FPCVER="3.2.2"
 
 DESCRIPTION="feature rich visual programming environment emulating Delphi"
 HOMEPAGE="https://www.lazarus-ide.org/"
-SRC_URI="mirror://sourceforge/lazarus/${P}-0.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/lazarus/${P}-0.tar.gz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2 LGPL-2.1-with-linking-exception"
 SLOT="0/2.2" # Note: Slotting Lazarus needs slotting fpc, see DEPEND.
@@ -36,17 +37,16 @@ DEPEND="
 	>=dev-lang/fpc-${FPCVER}[source]
 	>=sys-devel/binutils-2.19.1-r1:=
 	gui? (
-	    gtk2? ( x11-libs/gtk+:2 )
-	    gtk? ( x11-libs/gtk+:3 )
-	    qt5? ( dev-libs/libqt5pas:0/2.2 )
-	    qt6? ( dev-libs/libqt6pas:0/2.2 )
-)"
+		gtk2? ( x11-libs/gtk+:2 )
+		gtk? ( x11-libs/gtk+:3 )
+		qt5? ( dev-libs/libqt5pas:0/2.2 )
+		qt6? ( dev-libs/libqt6pas:0/2.2 )
+	)
+"
 BDEPEND="net-misc/rsync"
 RDEPEND="${DEPEND}"
 
 RESTRICT="strip" #269221
-
-S="${WORKDIR}/${PN}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-makefile.patch
