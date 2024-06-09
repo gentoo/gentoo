@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -48,7 +48,7 @@ src_test() {
 src_install() {
 	default
 
-	# Makefile logic is broken in 4.6, let's wait a bit given history and
+	# Makefile logic is broken in 4.8, let's wait a bit given history and
 	# go with hack for now.
 	mv "${ED}"/usr/$(get_libdir)/pkgconfig "${ED}"/usr/usr/$(get_libdir)/pkgconfig || die
 	mv "${ED}"/usr/usr/* "${ED}"/usr || die
