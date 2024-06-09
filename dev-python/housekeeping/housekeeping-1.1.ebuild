@@ -18,8 +18,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-distutils_enable_tests pytest
-
 RDEPEND="
 	>=dev-python/typing-extensions-4.4[${PYTHON_USEDEP}]
 "
@@ -27,6 +25,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		>=dev-python/kgb-7.1.1[${PYTHON_USEDEP}]
-		>=dev-python/pytest-7.3.1[${PYTHON_USEDEP}]
 	)
 "
+
+distutils_enable_tests pytest
