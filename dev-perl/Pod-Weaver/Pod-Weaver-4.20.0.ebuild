@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Weave together a Pod document from an outline"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	>=dev-perl/Config-MVP-2.0.0
