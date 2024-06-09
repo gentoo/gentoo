@@ -135,6 +135,9 @@ src_prepare() {
 	# https://bugs.gentoo.org/737660
 	sed -i -e "s:-j0:-j$(makeopts_jobs):" Makefile.pre.in || die
 
+	# breaks tests when using --with-wheel-pkg-dir
+	rm -r Lib/test/wheeldata || die
+
 	eautoreconf
 }
 
