@@ -4,7 +4,7 @@
 EAPI=8
 
 # TODO: vim-plugin, although it's not clear how to make it work here
-inherit elisp-common dune
+inherit elisp-common dune edo
 
 DESCRIPTION="Context sensitive completion for OCaml in Vim and Emacs"
 HOMEPAGE="https://github.com/ocaml/merlin/"
@@ -17,23 +17,22 @@ IUSE="emacs +ocamlopt test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	<dev-lang/ocaml-5
+	>=dev-lang/ocaml-4.14.1
 	dev-lang/ocaml:=[ocamlopt?]
-	dev-ml/csexp:=
-	>=dev-ml/yojson-2.0.0:=
-	dev-ml/menhir:=
 	>=dev-ml/dune-2.9:=
-	|| (
-		dev-lang/ocaml:0/4.14
-		dev-lang/ocaml:0/4.14.1
-		dev-lang/ocaml:0/4.14.2
-	)
+	>=dev-ml/yojson-2.0.0:=
+	dev-ml/csexp:=
+	dev-ml/menhir:=
 	emacs? (
 		>=app-editors/emacs-23.1:*
 		app-emacs/auto-complete
 		app-emacs/company-mode
 	)
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+"
 # NOTICE: Block dev-ml/seq (which is a back-port of code to ocaml <4.07)
 # because it breaks merlin builds.
 # https://github.com/ocaml/merlin/issues/1500
@@ -49,12 +48,10 @@ SITEFILE="50${PN}-gentoo.el"
 src_unpack() {
 	default
 
-	if has_version "dev-lang/ocaml:0/4.14" ; then
-		mv ${P}-414 "${S}" || die
-	elif has_version "dev-lang/ocaml:0/4.14.1" ; then
-		mv ${P}-414 "${S}" || die
-	elif has_version "dev-lang/ocaml:0/4.14.2" ; then
-		mv ${P}-414 "${S}" || die
+	if has_version "=dev-lang/ocaml-4.14*" ; then
+		edo mv "${P}-414" "${S}"
+	elif has_version "dev-lang/ocaml" ; then
+		die "Currently installed version of OCaml is not yet supported"
 	fi
 }
 
