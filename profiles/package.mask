@@ -185,9 +185,8 @@ dev-ruby/uconv
 =dev-python/requests-2.32.2
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2024-05-24)
-# Perl 5.40-RC1 mask. Use this block to unmask for testing.
-# It may still change with the final release.
-=dev-lang/perl-5.40*
+# Perl 5.40.0 mask. Use this block to unmask for testing.
+~dev-lang/perl-5.40.0
 ~virtual/perl-Archive-Tar-3.20.10_rc
 ~virtual/perl-autodie-2.370.0
 ~virtual/perl-bignum-0.670.0
@@ -208,8 +207,6 @@ dev-ruby/uconv
 ~virtual/perl-Math-BigInt-2.3.2
 ~virtual/perl-Math-BigInt-FastCalc-0.501.800
 ~virtual/perl-Math-BigRat-2.3.2
-~virtual/perl-Module-CoreList-5.202.405.240
-~virtual/perl-Module-CoreList-5.202.406.40
 ~virtual/perl-Module-CoreList-5.202.406.90
 ~virtual/perl-Module-Metadata-1.0.38
 ~virtual/perl-podlators-5.10.200_rc
