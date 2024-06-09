@@ -210,6 +210,7 @@ dev-ruby/uconv
 ~virtual/perl-Math-BigRat-2.3.2
 ~virtual/perl-Module-CoreList-5.202.405.240
 ~virtual/perl-Module-CoreList-5.202.406.40
+~virtual/perl-Module-CoreList-5.202.406.90
 ~virtual/perl-Module-Metadata-1.0.38
 ~virtual/perl-podlators-5.10.200_rc
 ~virtual/perl-Pod-Simple-3.450.0
