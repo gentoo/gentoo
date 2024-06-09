@@ -35,10 +35,11 @@
 
 # Alfredo Tupone <tupone@gentoo.org> (2024-06-09)
 # Not ready for testing
+>=dev-lang/ocaml-5
 dev-ml/sexplib0:0/0.17
 dev-ml/ocaml_intrinsics:0/0.17
 dev-ml/ocaml_intrinsics_kernel:0/0.17
->=dev-lang/ocaml-5
+dev-ml/base:0/0.17
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-08)
 # EAPI=6, waiting for a version bump, not maintained for many years.
