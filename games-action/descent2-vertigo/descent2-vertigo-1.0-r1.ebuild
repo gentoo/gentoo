@@ -1,20 +1,18 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit cdrom estack
 
 DESCRIPTION="Data files for Descent 2: The Vertigo Series"
 HOMEPAGE="https://www.interplay.com"
-
+S="${WORKDIR}"
 LICENSE="descent-data"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="videos"
 RESTRICT="bindist"
-
-S="${WORKDIR}"
 
 src_unpack() {
 	cdrom_get_cds vertigo/d2x.hog:hoard.ham
