@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,6 +11,7 @@ MY_PN="s25client"
 DESCRIPTION="Open source remake of The Settlers II: Gold Edition (needs original data files)"
 HOMEPAGE="https://www.siedler25.org/"
 SRC_URI="https://github.com/Return-To-The-Roots/${MY_PN}/releases/download/v${PV}/${MY_PN}_src_v${PV}.tar.gz"
+S="${WORKDIR}/${MY_PN}_v${PV}"
 LICENSE="GPL-2+ GPL-3 Boost-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
@@ -42,9 +43,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.0_pre20200723-cmake_lua_version.patch
 	"${FILESDIR}"/${PN}-0.9.5-gcc-13.patch
+	"${FILESDIR}"/${PN}-0.9.5-boost.patch
 )
-
-S="${WORKDIR}/${MY_PN}_v${PV}"
 
 # Build type is checked but blank is valid.
 CMAKE_BUILD_TYPE=
