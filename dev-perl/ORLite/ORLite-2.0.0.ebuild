@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Extremely light weight SQLite-specific ORM"
 
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv ~x86"
 
 RDEPEND="
 	>=virtual/perl-File-Path-2.08
