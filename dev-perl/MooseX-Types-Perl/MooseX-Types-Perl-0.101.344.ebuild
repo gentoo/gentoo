@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Moose types that check against Perl syntax"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	dev-perl/MooseX-Types
