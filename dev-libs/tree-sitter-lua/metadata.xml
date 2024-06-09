@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>matthew@gentoo.org</email>
+		<name>Matthew Smith</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>sarnex@gentoo.org</email>
+		<name>Nick Sarnie</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>brahmajit.xyz@gmail.com</email>
+		<name>Brahmajit Das</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">tree-sitter-grammars/tree-sitter-lua</remote-id>
+	</upstream>
+</pkgmetadata>
