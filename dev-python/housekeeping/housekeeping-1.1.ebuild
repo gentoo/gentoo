@@ -27,5 +27,6 @@ RDEPEND="
 BDEPEND="
 	test? (
 		>=dev-python/kgb-7.1.1[${PYTHON_USEDEP}]
+		>=dev-python/pytest-7.3.1[${PYTHON_USEDEP}]
 	)
 "
