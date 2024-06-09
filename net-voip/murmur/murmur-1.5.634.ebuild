@@ -144,8 +144,9 @@ src_install() {
 	fperms 750 /var/lib/murmur /var/log/murmur
 
 	mv "${ED}"/etc/murmur/mumble-server.ini "${ED}"/etc/murmur/murmur.ini || die
-	mv "${ED}"/usr/lib/systemd/system/mumble-server.service "${ED}"/usr/lib/systemd/system/murmur.service || die
-	sed -ie 's|mumble-server\.ini|murmur.ini|' "${ED}"/usr/lib/systemd/system/murmur.service || die
+	mv "${D}/$(systemd_get_systemunitdir)/mumble-server.service" \
+		"${D}/$(systemd_get_systemunitdir)/murmur.service" || die
+	sed -i 's|mumble-server\.ini|murmur.ini|' "${D}/$(systemd_get_systemunitdir)/murmur.service" || die
 
 	readme.gentoo_create_doc
 }
