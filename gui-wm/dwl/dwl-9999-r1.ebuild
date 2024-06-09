@@ -40,7 +40,7 @@ LICENSE="CC0-1.0 GPL-3+ MIT"
 SLOT="0"
 IUSE="X"
 
-RDEPEND="
+CDEPEND="
 	${WLROOTS_DEP}
 	dev-libs/libinput:=
 	dev-libs/wayland
@@ -50,10 +50,15 @@ RDEPEND="
 		x11-libs/xcb-util-wm
 	)
 "
-
+RDEPEND="
+	${CDEPEND}
+	X? (
+		x11-base/xwayland
+	)
+"
 # uses <linux/input-event-codes.h>
 DEPEND="
-	${RDEPEND}
+	${CDEPEND}
 	sys-kernel/linux-headers
 "
 BDEPEND="
