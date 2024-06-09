@@ -1,0 +1,22 @@
+Bug: https://bugs.gentoo.org/933867
+
+diff --git a/gccLinux64.mak b/gccLinux64.mak
+index 9d4431a..e4fb10f 100644
+--- a/gccLinux64.mak
++++ b/gccLinux64.mak
+@@ -31,13 +31,13 @@ include gccmod.inc
+ 
+ #.c.o:
+ #	$(CC) -c $(inc_dirs) $(c_flags) -o $(OUTD)/$*.o $<
+-$(OUTD)/%.o: %.c
++$(OUTD)/%.o: %.c | $(OUTD)
+ 	$(CC) -D __UNIX__ -c $(inc_dirs) $(c_flags) $(CFLAGS) $(CPPFLAGS) -o $(OUTD)/$*.o $<
+ 
+ all:  $(OUTD) $(OUTD)/$(TARGET1)
+ 
+ $(OUTD):
+-	mkdir $(OUTD)
++	mkdir -p $(OUTD)
+ 
+ $(OUTD)/$(TARGET1) : $(OUTD)/main.o $(proj_obj)
+ ifeq ($(DEBUG),0)
