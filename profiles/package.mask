@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (2024-06-09)
+# Download no longer available, license prevents mirroring.
+# Removal on 2024-07-09.  Bug #791115.
+games-strategy/darwinia-demo
+
 # Alfredo Tupone <tupone@gentoo.org> (2024-06-09)
 # Not ready for testing
 >=dev-lang/ocaml-5
