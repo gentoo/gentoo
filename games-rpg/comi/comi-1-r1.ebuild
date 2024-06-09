@@ -8,7 +8,7 @@ inherit cdrom estack desktop wrapper xdg
 DESCRIPTION="The Curse of Monkey Island, the third game in the series"
 HOMEPAGE="https://en.wikipedia.org/wiki/The_Curse_of_Monkey_Island"
 SRC_URI="https://dev.gentoo.org/~chewi/distfiles/${PN}.jpg"
-
+S="${WORKDIR}"
 LICENSE="comi"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -16,8 +16,6 @@ IUSE="doc"
 RESTRICT="bindist"
 
 RDEPEND=">=games-engines/scummvm-0.4.0"
-
-S="${WORKDIR}"
 
 dotar() {
 	cd "${CDROM_ABSMATCH%/*}" || die
