@@ -12,6 +12,7 @@ FPCVER="3.2.2"
 DESCRIPTION="feature rich visual programming environment emulating Delphi"
 HOMEPAGE="https://www.lazarus-ide.org/"
 SRC_URI="https://downloads.sourceforge.net/lazarus/${P}-0.tar.gz"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-3.0-makefile.patch.xz"
 S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2 LGPL-2.1-with-linking-exception"
@@ -49,7 +50,7 @@ RDEPEND="${DEPEND}"
 RESTRICT="strip" #269221
 
 PATCHES=(
-	"${FILESDIR}"/${P}-makefile.patch
+	"${WORKDIR}"/${PN}-3.0-makefile.patch
 )
 
 src_prepare() {
