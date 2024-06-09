@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl extension to model fractions"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 RDEPEND="
 	virtual/perl-Carp
