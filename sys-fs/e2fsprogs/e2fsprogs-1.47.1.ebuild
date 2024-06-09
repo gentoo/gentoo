@@ -57,6 +57,11 @@ src_prepare() {
 	# violation due to mktexfmt invocation
 	rm -r doc || die "Failed to remove doc dir"
 
+	cat <<-'EOF' > tests/m_rootdir_acl/script || die
+	echo "$test_name: $test_description: skipped (bgo#905221, fails on btrfs)"
+	return 0
+	EOF
+
 	# Prevent included intl cruft from building, bug #81096
 	sed -i -r \
 		-e 's:@LIBINTL@:@LTLIBINTL@:' \
