@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # James Le Cuirot <chewi@gentoo.org> (2024-06-09)
+# Long dead upstream. Probably broken. Use games-emulation/dolphin instead.
+# Removal on 2024-07-09.  Bug #739140.
+games-emulation/gcube
+
+# James Le Cuirot <chewi@gentoo.org> (2024-06-09)
 # Super ancient and broken 32-bit only port. Package ECWolf instead.
 # Removal on 2024-07-09.  Bug #926467.
 games-fps/wolfgl
