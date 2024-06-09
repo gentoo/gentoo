@@ -15,6 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 PATCHES=(
 	"${FILESDIR}/build-fix.patch"
+	"${FILESDIR}/makefile-dep-fix.patch"
 )
 
 src_prepare() {
