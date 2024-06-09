@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
@@ -15,11 +15,13 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="doc static-libs test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=media-libs/libogg-1.2.0"
-DEPEND="${RDEPEND}
+DEPEND=">=media-libs/libogg-1.2.0"
+RDEPEND="${DEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )
-	test? ( app-text/docbook-sgml-utils )"
+	test? ( app-text/docbook-sgml-utils )
+"
 
 PATCHES=( "${FILESDIR}/${P}-destdir.patch" )
 
@@ -27,7 +29,7 @@ src_prepare() {
 	default
 
 	if ! use doc; then
-		sed -i -e '/AC_CHECK_PROG/s:doxygen:dIsAbLe&:' configure.ac || die
+		sed -e '/AC_CHECK_PROG/s:doxygen:dIsAbLe&:' -i configure.ac || die
 	fi
 
 	AT_M4DIR="m4" eautoreconf
@@ -40,5 +42,6 @@ src_configure() {
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -delete || die "Pruning failed"
+	mv "${ED}"/usr/share/doc/${PN} "${ED}"/usr/share/doc/${PF} || die # bug 808159
+	find "${D}" -type f -name '*.la' -delete || die
 }
