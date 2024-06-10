@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Thomas Bettler <thomas.bettler@gmail.com> (2024-06-10)
+# requires dev-libs/apache-arrow which is net yet keyworded
+sci-libs/gdal parquet
+
 # Sam James <sam@gentoo.org> (2024-05-19)
 # media-libs/jasper not yet keyworded here: https://bugs.gentoo.org/921559
 media-gfx/graphicsmagick jpeg2k
