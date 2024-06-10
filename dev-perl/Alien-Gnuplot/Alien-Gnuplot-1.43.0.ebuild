@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Find and verify functionality of the gnuplot executable"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	>=dev-perl/Alien-Build-0.250.0
