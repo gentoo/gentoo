@@ -11,13 +11,15 @@ MY_P="apache-${P/-servlet-api/}-src"
 DESCRIPTION="Tomcat's Servlet API 2.3/JSP API 1.2 implementation"
 HOMEPAGE="https://tomcat.apache.org/"
 SRC_URI="https://archive.apache.org/dist/tomcat/tomcat-4/v${PV}/src/${MY_P}.tar.gz"
-DEPEND=">=virtual/jdk-1.8"
-RDEPEND=">=virtual/jre-1.8"
+
+S="${WORKDIR}/${MY_P}/servletapi"
+
 LICENSE="Apache-2.0"
 SLOT="2.3"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE=""
-S="${WORKDIR}/${MY_P}/servletapi"
+
+DEPEND=">=virtual/jdk-1.8"
+RDEPEND=">=virtual/jre-1.8"
 
 JAVA_RESOURCE_DIRS="res/src/share"
 JAVA_SRC_DIR="src/share"
