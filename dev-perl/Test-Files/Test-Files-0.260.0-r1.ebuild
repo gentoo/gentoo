@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A Test::Builder based module to ease testing with files and dirs"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	dev-perl/Class-XSAccessor
