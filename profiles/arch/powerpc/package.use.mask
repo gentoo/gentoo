@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Thomas Bettler <thomas.bettler@gmail.com> (2024-06-10)
+# requires dev-libs/apache-arrow which is net yet keyworded
+sci-libs/gdal parquet
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-13)
 # Requires dev-util/shelltestrunner
 app-arch/mt-st test
