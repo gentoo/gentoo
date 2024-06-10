@@ -37,9 +37,6 @@ BDEPEND="
 	test? (
 		dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-vcs/git
-		!s390? ( !sparc? (
-			dev-vcs/mercurial
-		) )
 	)
 "
 # setuptools are used to build C extensions
@@ -72,11 +69,6 @@ src_test() {
 }
 
 python_test() {
-	local args=()
-	if ! has_version dev-vcs/mercurial; then
-		args+=( -k "not [hg" )
-	fi
-
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest "${args[@]}"
+	epytest -k "not [hg"
 }
