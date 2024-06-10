@@ -1,6 +1,7 @@
 Revert of https://gcc.gnu.org/git/?p=gcc.git;a=commitdiff;h=59e4c98173a79fcaa2c33253261409f38856c384
 for now to fix cross fixincludes builds.
 
+https://gcc.gnu.org/PR115416
 https://bugs.gentoo.org/905118
 https://bugs.gentoo.org/925204
 https://bugs.gentoo.org/926059
