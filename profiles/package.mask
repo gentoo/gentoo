@@ -82,7 +82,6 @@ www-apps/wiliki
 # Various apache modules with no reverse dependencies, EAPI=6,
 # some maintainer-needed.
 # Removal on 2024-07-08.  Bugs #933847, #742452.
-www-apache/mod_maxminddb
 www-apache/mod_vdbh
 www-apache/modsec-flameeyes
 
