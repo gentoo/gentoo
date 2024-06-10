@@ -13,7 +13,7 @@ DESCRIPTION="Perl Data Language for scientific computing"
 
 LICENSE="|| ( Artistic GPL-1+ ) public-domain PerlDL"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="+badval doc gd gsl hdf netpbm pdl2 pgplot test"
 
 RDEPEND="
