@@ -28,7 +28,6 @@ DEPEND="
 "
 BDEPEND="
 	>=dev-python/cython-3[${PYTHON_USEDEP}]
-	dev-python/rapidfuzz-capi[${PYTHON_USEDEP}]
 	>=dev-python/scikit-build-0.16.2[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
