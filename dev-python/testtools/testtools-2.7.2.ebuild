@@ -27,6 +27,7 @@ BDEPEND="
 		>=dev-python/fixtures-2.0.0[${PYTHON_USEDEP}]
 		dev-python/testscenarios[${PYTHON_USEDEP}]
 		dev-python/testresources[${PYTHON_USEDEP}]
+		dev-python/twisted[${PYTHON_USEDEP}]
 	)
 "
 
