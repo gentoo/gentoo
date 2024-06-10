@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 
 inherit distutils-r1
 
@@ -36,6 +36,11 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/aio-libs/frozenlist/issues/588#issuecomment-2139078800
+	"${FILESDIR}/${P}-py313.patch"
+)
 
 python_compile() {
 	# pypy is not using the C extension
