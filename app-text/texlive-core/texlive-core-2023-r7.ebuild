@@ -193,15 +193,11 @@ RDEPEND="
 S="${WORKDIR}/${MY_P}"
 BUILDDIR="${WORKDIR}/${P}_build"
 
-src_unpack() {
-	default
-
-	mkdir -p "${BUILDDIR}" || die "failed to create build dir"
-}
-
 RELOC_TARGET=texmf-dist
 
 src_prepare() {
+	mkdir "${BUILDDIR}" || die "failed to create build dir"
+
 	cd "${WORKDIR}" || die
 
 	# From texlive-module.eclass.
