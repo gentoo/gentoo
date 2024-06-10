@@ -33,9 +33,6 @@ BDEPEND="
 		dev-python/build[${PYTHON_USEDEP}]
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
 		dev-vcs/git
-		!sparc? (
-			dev-vcs/mercurial
-		)
 	)
 "
 
