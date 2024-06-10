@@ -31,16 +31,20 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-python_test() {
-	[[ ${PV} != 1.6.0 ]] && die "Recheck the deselect, please"
-	local EPYTEST_DESELECT=()
-	if [[ ${EPYTHON} == python3.12 ]]; then
-		EPYTEST_DESELECT+=(
-			# failing due to warnings coming from pytest
-			# https://github.com/gentoo/gentoo/pull/31151
-			testing/test_xfail_behavior.py::test_xfail
-		)
-	fi
+src_prepare() {
+	local PATCHES=(
+		# https://github.com/pytest-dev/pytest-forked/pull/90
+		"${FILESDIR}/${P}-pytest-8.patch"
+	)
 
-	epytest -p no:flaky -o tmp_path_retention_count=1
+	distutils-r1_src_prepare
+
+	# this is not printed when loaded via PYTEST_PLUGINS
+	sed -i -e '/loaded_pytest_plugins/d' testing/test_xfail_behavior.py || die
+}
+
+python_test() {
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	local -x PYTEST_PLUGINS=pytest_forked
+	epytest -o tmp_path_retention_count=1
 }
