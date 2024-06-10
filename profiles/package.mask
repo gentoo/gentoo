@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-06-10)
+# Merged into dev-python/rapidfuzz.  No revdeps left.
+# Removal on 2024-07-10.  Bug #934002.
+dev-python/rapidfuzz-capi
+
 # Viorel Munteanu <ceamac@gentoo.org> (2024-06-10)
 # Masked for removal in 30 days.  EAPI 6, unmaintained, last upstream
 # release in 2011, no upstream activity since 2013.
