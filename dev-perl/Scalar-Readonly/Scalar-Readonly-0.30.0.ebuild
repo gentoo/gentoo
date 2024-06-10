@@ -10,4 +10,4 @@ inherit perl-module
 DESCRIPTION="Functions for controlling whether any scalar variable is read-only"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
