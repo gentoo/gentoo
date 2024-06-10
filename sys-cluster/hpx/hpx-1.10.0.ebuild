@@ -17,8 +17,8 @@ inherit check-reqs cmake multiprocessing python-single-r1
 DESCRIPTION="C++ runtime system for parallel and distributed applications"
 HOMEPAGE="https://hpx.stellar-group.org/"
 
-SLOT="0"
 LICENSE="Boost-1.0"
+SLOT="0"
 IUSE="examples jemalloc mpi papi +perftools tbb zlib"
 # tests fail to compile
 RESTRICT="test"
