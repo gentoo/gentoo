@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 pypi
@@ -27,13 +27,20 @@ BDEPEND="
 		>=dev-python/fixtures-2.0.0[${PYTHON_USEDEP}]
 		dev-python/testscenarios[${PYTHON_USEDEP}]
 		dev-python/testresources[${PYTHON_USEDEP}]
-		dev-python/twisted[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/twisted[${PYTHON_USEDEP}]
+		' 3.{10..12})
 	)
 "
 
 distutils_enable_sphinx doc
 
 python_test() {
-	"${PYTHON}" -m testtools.run testtools.tests.test_suite ||
+	cp testtools/tests/__init__.py test_suite.py || die
+	if ! has_version "dev-python/twisted[${PYTHON_USEDEP}]"; then
+		sed -i -e '/twistedsupport/d' test_suite.py || die
+	fi
+
+	"${EPYTHON}" -m testtools.run test_suite.test_suite ||
 		die "tests failed under ${EPYTHON}"
 }
