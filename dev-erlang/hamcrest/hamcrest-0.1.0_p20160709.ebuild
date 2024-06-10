@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~hanno/distfiles/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ~sparc x86"
+KEYWORDS="amd64 ~arm ~sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
