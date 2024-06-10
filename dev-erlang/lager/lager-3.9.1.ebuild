@@ -12,7 +12,7 @@ SRC_URI="https://github.com/erlang-lager/${PN}/archive/${PV}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~sparc ~x86"
 
 DEPEND=">=dev-erlang/goldrush-0.1.9"
 RDEPEND="${DEPEND}"
