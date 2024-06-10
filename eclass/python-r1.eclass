@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-r1.eclass
@@ -594,6 +594,8 @@ _python_multibuild_wrapper() {
 
 	local -x EPYTHON PYTHON
 	local -x PATH=${PATH} PKG_CONFIG_PATH=${PKG_CONFIG_PATH}
+	local PYTHON_USEDEP="python_targets_${MULTIBUILD_VARIANT}(-)"
+	local PYTHON_SINGLE_USEDEP="python_single_target_${MULTIBUILD_VARIANT}(-)"
 	_python_export "${MULTIBUILD_VARIANT}" EPYTHON PYTHON
 	_python_wrapper_setup
 
