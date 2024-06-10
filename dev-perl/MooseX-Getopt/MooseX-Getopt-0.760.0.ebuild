@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A Moose role for processing command line options"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 RDEPEND="
 	virtual/perl-Carp
