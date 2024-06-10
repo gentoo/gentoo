@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2024-06-10)
+# Requires ieee-long-double, i.e. ppc64le with 23.0
+# profiles and up, #892183
+dev-python/sympy
+
 # Rahil Bhimjiani <me@rahil.rocks> (2024-03-20)
 # https://bugs.gentoo.org/925111
 app-containers/podman
