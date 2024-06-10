@@ -8,10 +8,6 @@
 # Allow ruby32 stabling: https://bugs.gentoo.org/932285
 ruby_targets_ruby32
 
-# Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
-# Qt6 is not stable here yet
-qt6
-
 # Sam James <sam@gentoo.org> (2022-01-16)
 # net-libs/gnome-online-accounts is not marked stable on arm yet
 gnome-online-accounts

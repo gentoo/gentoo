@@ -12,10 +12,6 @@ atlas
 # media-libs/jasper is not stable
 jasper
 
-# Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
-# Qt6 is not stable here yet
-qt6
-
 # Sam James <sam@gentoo.org> (2020-11-10)
 # media-gfx/openvdb is not stable on x86
 # ... and has failing tests right now anyway

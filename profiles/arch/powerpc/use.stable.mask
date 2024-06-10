@@ -1,12 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
-
-# Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
-# Qt6 is not stable here yet
-qt6
 
 # Matt Turner <mattst88@gentoo.org> (2018-04-25)
 # Dropped stable keywords
