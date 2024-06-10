@@ -9,7 +9,7 @@ inherit perl-module
 DESCRIPTION="Expansion of test functionality that is frequently used while testing"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	dev-perl/Const-Fast
