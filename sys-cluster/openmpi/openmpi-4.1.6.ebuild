@@ -104,6 +104,8 @@ multilib_src_configure() {
 		--with-libltdl="${EPREFIX}/usr"
 		--with-libevent="${EPREFIX}/usr"
 		--with-libevent-libdir="${EPREFIX}/usr/$(get_libdir)"
+		# unkeyworded, lacks multilib. Do not automagically build against it.
+		--with-pmix=internal
 
 		# Re-enable for 5.0!
 		# See https://github.com/open-mpi/ompi/issues/9697#issuecomment-1003746357
