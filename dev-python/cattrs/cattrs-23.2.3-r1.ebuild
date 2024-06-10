@@ -25,9 +25,9 @@ IUSE="test-rust"
 
 RDEPEND="
 	>=dev-python/attrs-20.1.0[${PYTHON_USEDEP}]
+	>=dev-python/typing-extensions-4.1.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/exceptiongroup[${PYTHON_USEDEP}]
-		>=dev-python/typing-extensions-4.1.0[${PYTHON_USEDEP}]
 	' 3.10)
 "
 BDEPEND="
