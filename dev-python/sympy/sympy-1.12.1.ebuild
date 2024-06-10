@@ -48,6 +48,11 @@ RDEPEND="
 	symengine? ( dev-python/symengine[${PYTHON_USEDEP}] )
 	texmacs? ( app-office/texmacs )
 "
+BDEPEND="
+	test? (
+		dev-python/hypothesis[${PYTHON_USEDEP}]
+	)
+"
 
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
