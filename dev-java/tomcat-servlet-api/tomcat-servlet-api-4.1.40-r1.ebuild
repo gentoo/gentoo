@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 JAVA_PKG_IUSE="doc source"
 
-inherit java-pkg-2 java-ant-2
+inherit java-pkg-2 java-pkg-simple
 
 MY_P="apache-${P/-servlet-api/}-src"
 DESCRIPTION="Tomcat's Servlet API 2.3/JSP API 1.2 implementation"
@@ -19,20 +19,15 @@ KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-mac
 IUSE=""
 S="${WORKDIR}/${MY_P}/servletapi"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+JAVA_RESOURCE_DIRS="res/src/share"
+JAVA_SRC_DIR="src/share"
 
-	einfo "Removing bundled jars and classes"
-	find "${WORKDIR}/${MY_P}" '(' -name '*.class' -o -name '*.jar' ')' -delete
-}
-
-EANT_BUILD_TARGET="all"
-
-src_install() {
-	java-pkg_dojar dist/lib/servlet.jar
-
-	use doc && java-pkg_dohtml -r dist/docs/*
-	use source && java-pkg_dosrc src/share/javax
-	dodoc dist/README.txt
+src_prepare() {
+	java-pkg-2_src_prepare
+	mkdir src/share/javax/servlet/{,jsp/}resources || die
+	mv src/share/dtd/web-app* src/share/javax/servlet/resources || die
+	mv src/share/dtd/* src/share/javax/servlet/jsp/resources || die
+	mkdir res || die
+	find src -type f ! -name '*.java' ! -name '*.gif' \
+		| xargs cp --parent -t res || die
 }
