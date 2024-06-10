@@ -77,6 +77,7 @@ src_configure() {
 		-DENABLE_ZLIB=yes
 		-DENABLE_SYSTEM_YYJSON=yes
 		-DIS_MUSL=$(usex elibc_musl)
+		-DINSTALL_LICENSE=no
 
 		-DENABLE_CHAFA=$(usex chafa)
 		-DENABLE_DBUS=$(usex dbus)
@@ -107,10 +108,4 @@ src_configure() {
 	append-cppflags -DNDEBUG
 
 	cmake_src_configure
-}
-
-src_install() {
-	cmake_src_install
-
-	rm -r "${ED}"/usr/share/licenses || die
 }
