@@ -68,7 +68,6 @@ www-apps/wiliki
 # Removal on 2024-07-08.  Bugs #933847, #742452.
 www-apache/mod_authnz_external
 www-apache/mod_authz_unixgroup
-www-apache/mod_maxminddb
 www-apache/mod_vdbh
 www-apache/modsec-flameeyes
 
