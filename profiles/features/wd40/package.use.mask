@@ -87,6 +87,7 @@ dev-libs/tree-sitter-c-sharp test
 dev-libs/tree-sitter-cpp test
 dev-libs/tree-sitter-css test
 dev-libs/tree-sitter-embedded-template test
+dev-libs/tree-sitter-gleam test
 dev-libs/tree-sitter-go test
 dev-libs/tree-sitter-haskell test
 dev-libs/tree-sitter-html test
@@ -95,15 +96,22 @@ dev-libs/tree-sitter-javascript test
 dev-libs/tree-sitter-jsdoc test
 dev-libs/tree-sitter-json test
 dev-libs/tree-sitter-julia test
+dev-libs/tree-sitter-lua test
+dev-libs/tree-sitter-markdown test
+dev-libs/tree-sitter-markdown-inline test
 dev-libs/tree-sitter-ocaml test
 dev-libs/tree-sitter-php test
 dev-libs/tree-sitter-python test
 dev-libs/tree-sitter-ql test
+dev-libs/tree-sitter-query test
 dev-libs/tree-sitter-ruby test
 dev-libs/tree-sitter-rust test
 dev-libs/tree-sitter-scala test
 dev-libs/tree-sitter-tsq test
+dev-libs/tree-sitter-tsx test
 dev-libs/tree-sitter-typescript test
+dev-libs/tree-sitter-vim test
+dev-libs/tree-sitter-vimdoc test
 
 # Sam James <sam@gentoo.org> (2022-11-19)
 # GNOME packages pulling in e.g. gjs which then needs Rust.
