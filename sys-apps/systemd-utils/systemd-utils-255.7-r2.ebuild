@@ -132,6 +132,7 @@ pkg_setup() {
 
 src_prepare() {
 	local PATCHES=(
+		"${FILESDIR}/systemd-utils-255-musl-fgetxxent.patch"
 	)
 
 	if use elibc_musl; then
