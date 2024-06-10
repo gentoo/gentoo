@@ -10,6 +10,6 @@ inherit perl-module
 DESCRIPTION="Explain tools for Perl's Test2 framework"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="virtual/perl-Test2-Suite"
