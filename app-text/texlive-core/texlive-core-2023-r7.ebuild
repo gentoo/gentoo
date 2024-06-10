@@ -385,6 +385,20 @@ src_compile() {
 		&& cat "${T}/updmap_update3" > "texmf-dist/web2c/updmap.cfg"
 }
 
+src_test() {
+	cd "${BUILDDIR}" || die
+
+	sed -i \
+		-e 's;uptexdir/nissya.test;;' \
+		-e 's;uptexdir/upbibtex.test;;' \
+		texk/web2c/Makefile || die
+	sed -i \
+		-e 's;dvispc.test;;' \
+		texk/dviout-util/Makefile || die
+
+	emake check
+}
+
 src_install() {
 	cd "${BUILDDIR}" || die
 	dodir ${TEXMF_PATH:-/usr/share/texmf-dist}/web2c
