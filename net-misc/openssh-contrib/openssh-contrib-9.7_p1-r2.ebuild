@@ -107,6 +107,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/openssh-9.3_p1-deny-shmget-shmat-shmdt-in-preauth-privsep-child.patch"
 	"${FILESDIR}/openssh-9.4_p1-Allow-MAP_NORESERVE-in-sandbox-seccomp-filter-maps.patch"
+	"${FILESDIR}/openssh-9.7_p1-config-tweaks.patch"
 )
 
 pkg_pretend() {
@@ -330,23 +331,6 @@ src_configure() {
 	econf "${myconf[@]}"
 }
 
-insert_include() {
-	local file=${1} options=${2} includedir=${3}
-
-	local snippet=$(cat <<-EOF || die
-	# Make sure that all ${options//,/ or } options are below this Include!
-	Include "${includedir}/*.conf"
-	EOF
-	)
-
-	# Catch "Option ", "#Option " or "# Option ".
-	local regexp_options=${options//,/|}
-
-	# Insert the snippet before the comment block immediately preceeding the
-	# first matching option. There may be blank lines in-between.
-	sed -i -z -r "s:\n(#[^\n]*\n)*\s*#?\s*(${regexp_options})\b:\n${snippet//$'\n'/\\n}\n\0:" "${file}" || die
-}
-
 create_config_dropins() {
 	local locale_vars=(
 		# These are language variables that POSIX defines.
@@ -377,17 +361,17 @@ create_config_dropins() {
 	ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==
 	EOF
 
-	# Move sshd's Subsystem option to a drop-in file.
-	sed -i "/[Ss]ubsystem/{
-		w ${WORKDIR}/etc/ssh/sshd_config.d/9999999gentoo-subsystem.conf
-		d }" "${S}"/sshd_config || die
-
 	cat <<-EOF > "${WORKDIR}"/etc/ssh/sshd_config.d/9999999gentoo.conf || die
 	# Allow client to pass locale environment variables (bug #367017)
 	AcceptEnv ${locale_vars[*]}
 
 	# Allow client to pass COLORTERM to match TERM (bug #658540)
 	AcceptEnv COLORTERM
+	EOF
+
+	cat <<-EOF > "${WORKDIR}"/etc/ssh/sshd_config.d/9999999gentoo-subsystem.conf || die
+	# override default of no subsystems
+	Subsystem	sftp	${EPREFIX}/usr/libexec/sftp-server
 	EOF
 
 	if use pam ; then
@@ -411,10 +395,6 @@ create_config_dropins() {
 
 src_compile() {
 	default
-
-	insert_include "${S}"/ssh_config 'Host,Match' "${EPREFIX}"/etc/ssh/ssh_config.d
-	insert_include "${S}"/sshd_config 'Match' "${EPREFIX}"/etc/ssh/sshd_config.d
-
 	create_config_dropins
 }
 
