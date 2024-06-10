@@ -37,7 +37,7 @@ SLOT="$(ver_cut 1-2)"
 # -arm -hppa -mips -ppc -x86 -x86-linux
 # -ppc for bug #761715
 KEYWORDS="~amd64 -arm -hppa ~ia64 -mips -ppc ~riscv ~s390 ~sparc -x86 ~amd64-linux -x86-linux ~x64-macos ~x64-solaris"
-IUSE="cjk cracklib debug doc fido2 jemalloc kerberos ldap numa +perl profiling router selinux +server tcmalloc test"
+IUSE="cjk cracklib debug doc fido2 jemalloc kerberos ldap numa +perl profiling router selinux +server systemd tcmalloc test"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -50,6 +50,7 @@ REQUIRED_USE="
 	numa? ( server )
 	profiling? ( server )
 	router? ( server )
+	systemd? ( server )
 	tcmalloc? ( server )
 	test? ( server )
 "
@@ -253,10 +254,13 @@ src_configure() {
 	# Bug #114895, bug #110149
 	filter-flags "-O" "-O[01]"
 
-	if has sandbox ${FEATURES} ; then
-		# bug #823656
-		append-cppflags -DGTEST_NO_DEATH_TEST=1
-	fi
+	# See patches and bug #823656
+	append-cppflags -DGTEST_NO_DEATH_TEST=1
+
+	# Debug build type used extensively to add preprocessor definitions
+	use debug && CMAKE_BUILD_TYPE="Debug"
+
+	use doc && HTML_DOCS=( "${BUILD_DIR}/doxygen/html" )
 
 	local mycmakeargs=(
 		-Wno-dev # less irrelevant noise
@@ -295,27 +299,40 @@ src_configure() {
 		-DMYSQL_MAINTAINER_MODE=OFF # Enables -Werror
 		-DWITH_DEFAULT_COMPILER_OPTIONS=OFF # Don't mangle flags
 
-		-DENABLED_LOCAL_INFILE=ON # Should LOAD DATA LOCAL be enabled by default?
+		-DWITH_DEBUG=$(usex debug ON OFF)
+		# debug hack wrt #497532
+		-DCMAKE_C_FLAGS_RELWITHDEBINFO="$(usev !debug '-DNDEBUG' )"
+		-DCMAKE_CXX_FLAGS_RELWITHDEBINFO="$(usev !debug '-DNDEBUG' )"
 
 		# Causes issues on musl bug #922808
 		-DWITH_BUILD_ID=OFF
 
+		-DENABLED_LOCAL_INFILE=ON # Should LOAD DATA LOCAL be enabled by default?
+
 		-DWITHOUT_CLIENTLIBS=YES
 
-		-DWITH_ROUTER=$(usex router ON OFF)
+		-DENABLED_PROFILING=$(usex profiling)
+		-DWITHOUT_SERVER=$(usex server OFF ON)
 		-DWITH_LIBWRAP=ON
+		-DWITH_ROUTER=$(usex router ON OFF)
+		-DWITH_SYSTEMD=$(usex systemd ON OFF)
 
 		-DWITH_AUTHENTICATION_LDAP=$(usex ldap ON OFF)
 		-DWITH_AUTHENTICATION_KERBEROS=$(usex kerberos ON OFF)
 		-DWITH_AUTHENTICATION_WEBAUTHN=$(usex fido2 ON OFF)
 
+		# Valid options differ.
+		# With some none is disabled, while with others empty is disabled.
 		-DWITH_CURL=system
 		-DWITH_EDITLINE=bundled # Using bundled editline to get CTRL+C working
 		-DWITH_FIDO=$(usex fido2 system none)
 		-DWITH_ICU=$(usex server system none)
+		-DWITH_JEMALLOC=$(usex jemalloc)
 		-WITH_KERBEROS=$(usex kerberos system none)
 		-WITH_LDAP=$(usex ldap system none)
 		-DWITH_LZ4=system
+		-DWITH_MECAB=$(usex cjk system)
+		-DWITH_NUMA=$(usex numa ON OFF)
 		-DWITH_PROTOBUF=$(usex server bundled none) # Cannot handle protobuf >23 bug #912797
 		# Our dev-libs/rapidjson doesn't carry necessary fixes for std::regex
 		# see extra/RAPIDJSON-README
@@ -327,21 +344,22 @@ src_configure() {
 
 		-DWITH_UNIT_TESTS=$(usex test ON OFF)
 		-DINSTALL_MYSQLTESTDIR=$(usev test 'share/mysql/mysql-test')
-
 	)
 
-	if use debug ; then
-		CMAKE_BUILD_TYPE="Debug"
-		# Debug build type used extensively to add preprocessor definitions
+	if use server ; then
 		mycmakeargs+=(
-			-DWITH_DEBUG=ON
-		)
-	else
-		# debug hack wrt #497532
-		mycmakeargs+=(
-			-DCMAKE_C_FLAGS_RELWITHDEBINFO="$(usev !debug '-DNDEBUG' )"
-			-DCMAKE_CXX_FLAGS_RELWITHDEBINFO="$(usev !debug '-DNDEBUG' )"
-			-DWITH_DEBUG=OFF
+			-DWITH_EXTRA_CHARSETS=all
+
+			# Storage engines
+			-DWITH_ARCHIVE_STORAGE_ENGINE=ON
+			-DWITH_BLACKHOLE_STORAGE_ENGINE=ON
+			-DWITH_CSV_STORAGE_ENGINE=ON
+			-DWITH_EXAMPLE_STORAGE_ENGINE=OFF
+			-DWITH_FEDERATED_STORAGE_ENGINE=ON
+			-DWITH_HEAP_STORAGE_ENGINE=ON
+			-DWITH_INNOBASE_STORAGE_ENGINE=ON
+			-DWITH_MYISAMMRG_STORAGE_ENGINE=ON
+			-DWITH_MYISAM_STORAGE_ENGINE=ON
 		)
 	fi
 
@@ -367,35 +385,6 @@ src_configure() {
 			-DDEFAULT_COLLATION=utf8mb4_0900_ai_ci
 		)
 	fi
-
-	if use server ; then
-		mycmakeargs+=(
-			-DENABLED_PROFILING=$(usex profiling)
-			-DWITH_EXTRA_CHARSETS=all
-
-			-DWITH_JEMALLOC=$(usex jemalloc)
-			-DWITH_MECAB=$(usex cjk system none)
-			-DWITH_NUMA=$(usex numa ON OFF)
-
-			# Storage engines
-			-DWITH_ARCHIVE_STORAGE_ENGINE=ON
-			-DWITH_BLACKHOLE_STORAGE_ENGINE=ON
-			-DWITH_CSV_STORAGE_ENGINE=ON
-			-DWITH_EXAMPLE_STORAGE_ENGINE=OFF
-			-DWITH_FEDERATED_STORAGE_ENGINE=ON
-			-DWITH_HEAP_STORAGE_ENGINE=ON
-			-DWITH_INNOBASE_STORAGE_ENGINE=ON
-			-DWITH_MYISAMMRG_STORAGE_ENGINE=ON
-			-DWITH_MYISAM_STORAGE_ENGINE=ON
-		)
-	else
-		mycmakeargs+=(
-			-DWITHOUT_SERVER=ON
-			-DWITH_SYSTEMD=OFF
-		)
-	fi
-
-	use doc && HTML_DOCS=( "${BUILD_DIR}/doxygen/html" )
 
 	cmake_src_configure
 }
@@ -543,6 +532,8 @@ src_test() {
 		"innodb.sdi;0;Skip this test when MySQL has been built with other storage engines than InnoDB"
 
 		"rpl.rpl_json;0;Known failure - no upstream bug yet"
+
+		"sys_vars.build_id_basic;0;build_id disabled in build"
 	)
 
 	local -a CMAKE_SKIP_TESTS=(
