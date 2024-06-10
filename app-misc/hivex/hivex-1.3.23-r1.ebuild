@@ -5,7 +5,7 @@ EAPI=8
 
 USE_RUBY="ruby31 ruby32"
 RUBY_OPTIONAL=yes
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit perl-module ruby-ng python-single-r1 strip-linguas
 
 DESCRIPTION="Library for reading and writing Windows Registry 'hive' binary files"
