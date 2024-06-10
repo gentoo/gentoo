@@ -13,8 +13,8 @@ HOMEPAGE="https://git.sr.ht/~whynothugo/aiohttp-oauthlib"
 SRC_URI="https://git.sr.ht/~whynothugo/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-v${PV}"
 
-SLOT="0"
 LICENSE="ISC"
+SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 
 RDEPEND="
