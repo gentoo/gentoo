@@ -38,8 +38,14 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	sed -i -e 's:--cov::' pytest.ini || die
+	local PATCHES=(
+		# https://github.com/jsonpickle/jsonpickle/pull/512
+		"${FILESDIR}/${P}-numpy-2.patch"
+	)
+
 	distutils-r1_python_prepare_all
+
+	sed -i -e 's:--cov::' pytest.ini || die
 	export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 }
 
