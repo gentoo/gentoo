@@ -1,0 +1,58 @@
+From 2e1e371c0a9eeaa015615b5a9f6826ec071a2e4a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 10 Jun 2024 14:41:37 +0200
+Subject: [PATCH] cmake: Use GNUInstallDirs for configurable install
+ directories
+
+Use the standard GNUInstallDirs CMake module to provide configurable
+install directories rather than hardcoding `bin`, `lib`, etc.  Most
+importantly, this fixes install on modern 64-bit systems that use
+`lib64` rather than `lib`.
+---
+ CMakeLists.txt | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4758091..6546b69 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -7,6 +7,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
+ include(CMakeDependentOption)
++include(GNUInstallDirs)
+ 
+ option(BUILD_SHARED_LIBS "Compile shared libraries" OFF)
+ option(STORM_SKIP_INSTALL "Skip installing files" OFF)
+@@ -360,14 +361,14 @@ endif()
+ if (NOT STORM_SKIP_INSTALL)
+     install(TARGETS ${LIBRARY_NAME}
+         EXPORT ${PROJECT_NAME}Config
+-        RUNTIME DESTINATION bin
+-        LIBRARY DESTINATION lib
+-        ARCHIVE DESTINATION lib
++        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+         FRAMEWORK DESTINATION /Library/Frameworks
+-        PUBLIC_HEADER DESTINATION include
+-        INCLUDES DESTINATION include)
++        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
++        INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+ 
+-        install(EXPORT ${PROJECT_NAME}Config NAMESPACE ${PROJECT_NAME}:: DESTINATION share/${PROJECT_NAME})
++        install(EXPORT ${PROJECT_NAME}Config NAMESPACE ${PROJECT_NAME}:: DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME})
+ 
+         #CPack configurtion
+         SET(CPACK_GENERATOR "DEB" "RPM")
+@@ -401,6 +402,6 @@ if(STORM_BUILD_TESTS)
+     find_package(ALSA REQUIRED)
+     add_executable(StormLib_test ${TEST_SRC_FILES})
+     target_link_libraries(StormLib_test ${LIBRARY_NAME} ${ALSA_LIBRARIES})
+-    install(TARGETS StormLib_test RUNTIME DESTINATION bin)
++    install(TARGETS StormLib_test RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+ endif()
+ 
+-- 
+2.45.2
+
