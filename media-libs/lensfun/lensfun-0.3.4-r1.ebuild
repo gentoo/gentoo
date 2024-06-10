@@ -26,6 +26,9 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	$(python_gen_cond_dep '
+		dev-python/setuptools[${PYTHON_USEDEP}]
+	')
 	doc? (
 		app-text/doxygen
 		dev-python/docutils
