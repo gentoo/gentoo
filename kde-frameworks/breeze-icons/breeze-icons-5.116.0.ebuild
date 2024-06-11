@@ -31,15 +31,11 @@ python_check_deps() {
 	python_has_version "dev-python/lxml[${PYTHON_USEDEP}]"
 }
 
-src_prepare() {
-	cmake_src_prepare
-	use test || cmake_comment_add_subdirectory autotests
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DPython_EXECUTABLE="${PYTHON}"
 		-DBINARY_ICONS_RESOURCE=OFF
+		-DBUILD_TESTING=$(usex test)
 	)
 	cmake_src_configure
 }
