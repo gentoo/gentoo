@@ -9,7 +9,7 @@ SRC_URI="https://github.com/symfony/yaml/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~hppa ppc ppc64 ~s390 sparc x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ppc64 ~s390 sparc x86"
 IUSE="test"
 RESTRICT="test"
 
