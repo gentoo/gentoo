@@ -16,8 +16,8 @@ IUSE="+ocamlopt"
 
 DEPEND="
 	>=dev-lang/ocaml-5
-	dev-ml/base:${SLOT}
-	>=dev-ml/ppxlib-0.32.1:=
+	dev-ml/base:${SLOT}[ocamlopt?]
+	>=dev-ml/ppxlib-0.32.1:=[ocamlopt?]
 "
 RDEPEND="${DEPEND}"
 BDEPEND=">=dev-ml/dune-3.11"

@@ -18,7 +18,7 @@ RESTRICT="test"
 
 DEPEND="
 	dev-ml/dune-configurator:=
-	dev-ml/ocaml_intrinsics_kernel:${SLOT}
+	dev-ml/ocaml_intrinsics_kernel:${SLOT}[ocamlopt?]
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
