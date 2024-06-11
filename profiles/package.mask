@@ -182,6 +182,7 @@ dev-ml/stdio:0/0.17
 dev-ml/ppx_cold:0/0.17
 dev-ml/ppxlib_jane
 dev-ml/ppx_compare:0/0.17
+dev-ml/ppx_enumerate:0/0.17
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-08)
 # EAPI=6, waiting for a version bump, not maintained for many years.
