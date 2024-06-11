@@ -461,12 +461,6 @@ sci-libs/cifparse-obj
 # Removal: 2024-06-12.  Bugs #931860, #891895.
 sci-libs/libghemical
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-11)
-# EAPI=6, library only without any reverse dependencies, uses
-# deprecated go eclasses.
-# Removal: 2024-06-10.  Bug #931725.
-dev-go/sanitized-anchor-name
-
 # Sam James <sam@gentoo.org> (2024-04-28)
 # Masked for testing. Tracker bug: bug #930805.
 >=sys-libs/ncurses-6.5
