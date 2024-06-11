@@ -15,19 +15,18 @@ if [[ ${PV} = "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/pirxthepilot/wtfis.git"
 else
 	SRC_URI="https://github.com/pirxthepilot/wtfis/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
-	KEYWORDS="amd64 ~loong x86"
+	KEYWORDS="~amd64 ~loong ~x86"
 fi
 
 LICENSE="MIT"
 SLOT="0"
 
 RDEPEND="
-	>=dev-python/pydantic-2.0.3[${PYTHON_USEDEP}]
-	>=dev-python/python-dotenv-1.0.0[${PYTHON_USEDEP}]
-	>=dev-python/requests-2.31.0[${PYTHON_USEDEP}]
-	>=dev-python/rich-13.4.2[${PYTHON_USEDEP}]
-	<dev-python/rich-13.5.0[${PYTHON_USEDEP}]
-	>=net-analyzer/shodan-1.29.1[${PYTHON_USEDEP}]
+	>=dev-python/pydantic-2.7.2[${PYTHON_USEDEP}]
+	>=dev-python/python-dotenv-1.0.1[${PYTHON_USEDEP}]
+	>=dev-python/requests-2.32.3[${PYTHON_USEDEP}]
+	>=dev-python/rich-13.7.1[${PYTHON_USEDEP}]
+	>=net-analyzer/shodan-1.31.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
