@@ -1,0 +1,16 @@
+--- a/eduvpn/data/share/applications/org.eduvpn.client.desktop
++++ b/eduvpn/data/share/applications/org.eduvpn.client.desktop
+@@ -7,4 +7,4 @@ Comment=a GUI to connect to eduVPN using OpenVPN and WireGuard
+ Icon=org.eduvpn.client
+ Terminal=false
+ StartupWMClass=org.eduvpn.client
+-
++Categories=Network;Dialup
+--- a/eduvpn/data/share/applications/org.letsconnect-vpn.client.desktop
++++ b/eduvpn/data/share/applications/org.letsconnect-vpn.client.desktop
+@@ -7,4 +7,4 @@ Comment=a GUI to connect to Let's Connect! using OpenVPN and WireGuard
+ Icon=org.letsconnect-vpn.client
+ Terminal=false
+ StartupWMClass=org.letsconnect-vpn.client
+-
++Categories=Network;Dialup
