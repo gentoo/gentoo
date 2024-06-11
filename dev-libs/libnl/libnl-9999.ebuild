@@ -96,6 +96,17 @@ multilib_src_compile() {
 	fi
 }
 
+multilib_src_test() {
+	CK_VERBOSITY=verbose emake check VERBOSE=1
+
+	if multilib_is_native_abi && use python ; then
+		pushd python > /dev/null || die
+		# TODO: run python/tests/test-create-bridge.py
+		distutils-r1_src_test
+		popd > /dev/null || die
+	fi
+}
+
 multilib_src_install() {
 	default
 
