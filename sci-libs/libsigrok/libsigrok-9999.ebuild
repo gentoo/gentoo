@@ -5,11 +5,11 @@ EAPI="8"
 
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit autotools python-r1 java-pkg-opt-2 udev xdg-utils
+inherit python-r1 java-pkg-opt-2 udev xdg-utils
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
-	inherit git-r3
+	inherit git-r3 autotools
 else
 	SRC_URI="https://sigrok.org/download/source/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
@@ -19,8 +19,8 @@ DESCRIPTION="Basic hardware drivers for logic analyzers and input/output file fo
 HOMEPAGE="https://sigrok.org/wiki/Libsigrok"
 
 LICENSE="GPL-3"
-SLOT="0/4"
-IUSE="bluetooth +cxx ftdi hidapi java parport python serial static-libs test +udev usb"
+SLOT="0/9999"
+IUSE="bluetooth +cxx ftdi hidapi java nettle parport python serial static-libs test +udev usb"
 REQUIRED_USE="java? ( cxx )
 	python? ( cxx ${PYTHON_REQUIRED_USE} )"
 
@@ -34,6 +34,7 @@ LIB_DEPEND="
 	cxx? ( dev-cpp/glibmm:2[static-libs(+)] )
 	ftdi? ( dev-embedded/libftdi:1[static-libs(+)] )
 	hidapi? ( >=dev-libs/hidapi-0.8.0 )
+	nettle? ( dev-libs/nettle:=[static-libs(+)] )
 	parport? ( sys-libs/libieee1284[static-libs(+)] )
 	python? (
 		${PYTHON_DEPS}
@@ -64,15 +65,6 @@ DEPEND="${LIB_DEPEND//\[static-libs(+)]}
 
 S="${WORKDIR}"/${P}
 
-PATCHES=(
-	# https://sigrok.org/bugzilla/show_bug.cgi?id=1527
-	"${FILESDIR}/${P}-swig-4.patch"
-	# https://sigrok.org/bugzilla/show_bug.cgi?id=1526
-	"${FILESDIR}/${P}-check-0.15.patch"
-	# https://bugs.gentoo.org/878395
-	"${FILESDIR}/${PN}-0.5.2-swig-4.1.patch"
-)
-
 pkg_setup() {
 	use python && python_setup
 	java-pkg-opt-2_pkg_setup
@@ -83,7 +75,7 @@ src_unpack() {
 }
 
 sigrok_src_prepare() {
-	eautoreconf
+	[[ ${PV} == *9999* ]] && eautoreconf
 }
 
 src_prepare() {
@@ -97,6 +89,7 @@ sigrok_src_configure() {
 		$(use_with bluetooth libbluez) \
 		$(use_with ftdi libftdi) \
 		$(use_with hidapi libhidapi) \
+		$(use_with nettle libnettle) \
 		$(use_with parport libieee1284) \
 		$(use_with serial libserialport) \
 		$(use_with usb libusb) \
