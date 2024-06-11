@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit php-pear-r2
 DESCRIPTION="Creating, validating, processing HTML forms methods (PHP5 optimize)"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc64 ~sparc ~x86"
 IUSE="examples"
 
 DEPEND=">=dev-lang/php-5.4.0:*"
