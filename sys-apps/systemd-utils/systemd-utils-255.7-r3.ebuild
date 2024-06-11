@@ -513,8 +513,8 @@ multilib_src_install() {
 			doman man/udev_*.3
 		fi
 		if use ukify; then
-			exeinto /usr/lib/systemd
-			doexe ukify
+			dobin ukify
+			dosym ../../bin/ukify /usr/lib/systemd/ukify
 			doman man/ukify.1
 		fi
 	fi
