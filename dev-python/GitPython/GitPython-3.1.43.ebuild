@@ -39,6 +39,9 @@ BDEPEND="
 	test? (
 		>=dev-python/ddt-1.1.1[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/typing-extensions[${PYTHON_USEDEP}]
+		' 3.10)
 	)
 "
 
