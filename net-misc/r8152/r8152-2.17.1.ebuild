@@ -24,6 +24,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.16.3-kernel-6.4.10-fix.patch
 	"${FILESDIR}"/${PN}-2.16.3-asus-c5000-support.patch
 	"${FILESDIR}"/${PN}-2.17.1-kernel-6.8-strscpy.patch
+	"${FILESDIR}"/${PN}-2.17.1-kernel-6.9-fix.patch
 )
 
 src_compile() {
