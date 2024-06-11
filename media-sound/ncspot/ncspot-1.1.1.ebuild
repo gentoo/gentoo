@@ -510,7 +510,7 @@ LICENSE+="
 	|| ( LGPL-3 MPL-2.0 )
 "
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 IUSE="clipboard cover mpris ncurses +notify pulseaudio"
 
