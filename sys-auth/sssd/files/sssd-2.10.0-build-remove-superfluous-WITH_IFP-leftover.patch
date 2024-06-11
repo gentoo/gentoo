@@ -1,0 +1,33 @@
+From 3476355e8368358f6bc17ec93fb057b739094c3a Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Fri, 18 Oct 2024 12:37:01 +0200
+Subject: [PATCH 1/2] build: remove superfluous WITH_IFP leftover
+
+```
+$ autoreconf && configure
+...
+./configure: line 18674: WITH_IFP: command not found
+```
+
+Fixes: 2.10.0-beta2-63-ge5140ab08
+
+Reviewed-by: Alexey Tikhonov <atikhono@redhat.com>
+---
+ configure.ac | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 380c16ba8..b5222ae97 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -187,7 +187,6 @@ WITH_SUBID_LIB_PATH
+ WITH_PASSKEY
+ WITH_SSH
+ WITH_SSH_KNOWN_HOSTS_PROXY
+-WITH_IFP
+ WITH_LIBSIFP
+ WITH_SYSLOG
+ WITH_SAMBA
+-- 
+2.45.2
+
