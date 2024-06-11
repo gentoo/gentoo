@@ -119,7 +119,6 @@ net-vpn/networkmanager-vpnc gtk
 # Michał Górny <mgorny@gentoo.org> (2022-07-29)
 # More packages requiring dev-python/cryptography or its revdeps.
 app-admin/salt keyring neutron
-dev-python/dask test
 dev-python/docker test
 dev-python/google-api-python-client test
 dev-python/httpx-socks test

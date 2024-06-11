@@ -89,7 +89,6 @@ python_test() {
 pkg_postinst() {
 	optfeature "FITS io capability" dev-python/astropy
 	optfeature "GTK" dev-python/pygtk
-	optfeature "Parallel computation" dev-python/dask
 	optfeature "io plugin providing most standard formats" dev-python/imread
 	optfeature "plotting" dev-python/matplotlib
 	optfeature "wavelet transformations" dev-python/pywavelets
