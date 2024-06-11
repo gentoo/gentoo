@@ -17,11 +17,11 @@ IUSE="+ocamlopt"
 RDEPEND="
 	>=dev-lang/ocaml-5
 	dev-ml/base:${SLOT}[ocamlopt?]
-	dev-ml/ppx_compare:${SLOT}
-	dev-ml/ppx_sexp_conv:${SLOT}
+	dev-ml/ppx_compare:${SLOT}[ocamlopt?]
+	dev-ml/ppx_sexp_conv:${SLOT}[ocamlopt?]
 	>=dev-ml/ppxlib-0.32.1:=[ocamlopt?]
 	dev-ml/ppxlib_jane:${SLOT}[ocamlopt?]
-	dev-ml/sexplib0:${SLOT}
+	dev-ml/sexplib0:${SLOT}[ocamlopt?]
 "
 DEPEND="${RDEPEND}"
 BDEPEND=">=dev-ml/dune-3.11"
