@@ -3,60 +3,31 @@
 
 EAPI=8
 
-inherit cmake edo flag-o-matic
+ROCM_SKIP_GLOBALS=1
+inherit cmake edo flag-o-matic rocm
 
 DESCRIPTION="Radeon Open Compute OpenCL Compatible Runtime"
-HOMEPAGE="https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime"
+HOMEPAGE="https://github.com/ROCm-Developer-Tools/clr"
 
-if [[ ${PV} == *9999 ]] ; then
-	EGIT_REPO_URI="https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime"
-	EGIT_CLR_REPO_URI="https://github.com/ROCm-Developer-Tools/ROCclr"
-	inherit git-r3
-	S="${WORKDIR}/${P}"
-else
-	SRC_URI="https://github.com/ROCm-Developer-Tools/ROCclr/archive/rocm-${PV}.tar.gz -> rocclr-${PV}.tar.gz
-	https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/archive/rocm-${PV}.tar.gz -> rocm-opencl-runtime-${PV}.tar.gz"
-	S="${WORKDIR}/ROCm-OpenCL-Runtime-rocm-${PV}"
-fi
+SRC_URI="https://github.com/ROCm-Developer-Tools/clr/archive/refs/tags/rocm-${PV}.tar.gz -> rocm-clr-${PV}.tar.gz"
+S="${WORKDIR}/clr-rocm-${PV}/"
 
 LICENSE="Apache-2.0 MIT"
 SLOT="0/$(ver_cut 1-2)"
+KEYWORDS="~amd64"
 IUSE="debug test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=dev-libs/rocr-runtime-5.3
-	>=dev-libs/rocm-comgr-5.3
-	>=dev-libs/rocm-device-libs-5.3
+RDEPEND=">=dev-libs/rocr-runtime-6.0
+	>=dev-libs/rocm-comgr-6.0
+	>=dev-libs/rocm-device-libs-6.0
 	>=virtual/opencl-3
 	media-libs/mesa[-opencl]"
-DEPEND="${RDEPEND}
-	dev-util/opencl-headers"
+DEPEND="${RDEPEND}"
 BDEPEND=">=dev-build/rocm-cmake-5.3
 	media-libs/glew
 	test? ( >=x11-apps/mesa-progs-8.5.0[X] )
-	"
-
-CLR_S="${WORKDIR}/ROCclr-rocm-${PV}"
-
-src_unpack () {
-if [[ ${PV} == "9999" ]]; then
-		git-r3_fetch
-		git-r3_checkout
-		git-r3_fetch "${EGIT_CLR_REPO_URI}"
-		git-r3_checkout "${EGIT_CLR_REPO_URI}" "${CLR_S}"
-	else
-		default
-	fi
-}
-src_prepare() {
-	cmake_src_prepare
-
-	pushd ${CLR_S} || die
-	# Bug #753377
-	# patch re-enables accidentally disabled gfx800 family
-	eapply "${FILESDIR}/${PN}-5.0.2-enable-gfx800.patch"
-	popd || die
-}
+"
 
 src_configure() {
 	# -Werror=strict-aliasing
@@ -75,45 +46,28 @@ src_configure() {
 
 	local mycmakeargs=(
 		-Wno-dev
-		-DROCCLR_PATH="${CLR_S}"
-		-DAMD_OPENCL_PATH="${S}"
 		-DROCM_PATH="${EPREFIX}/usr"
 		-DBUILD_TESTS=$(usex test ON OFF)
 		-DEMU_ENV=ON
-		-DBUILD_ICD=OFF
+		-DBUILD_ICD=ON
 		-DFILE_REORG_BACKWARD_COMPATIBILITY=OFF
+		-DCLR_BUILD_OCL=on
 	)
 	cmake_src_configure
 }
 
 src_install() {
 	insinto /etc/OpenCL/vendors
-	doins config/amdocl64.icd
+	doins opencl/config/amdocl64.icd
 
-	cd "${BUILD_DIR}" || die
+	cd "${BUILD_DIR}"/opencl || die
 	insinto /usr/lib64
 	doins amdocl/libamdocl64.so
 	doins tools/cltrace/libcltrace.so
 }
 
-# Copied from rocm.eclass. This ebuild does not need amdgpu_targets
-# USE_EXPANDS, so it should not inherit rocm.eclass; it only uses the
-# check_amdgpu function in src_test. Rename it to check-amdgpu to avoid
-# pkgcheck warning.
-check-amdgpu() {
-	for device in /dev/kfd /dev/dri/render*; do
-		addwrite ${device}
-		if [[ ! -r ${device} || ! -w ${device} ]]; then
-			eerror "Cannot read or write ${device}!"
-			eerror "Make sure it is present and check the permission."
-			ewarn "By default render group have access to it. Check if portage user is in render group."
-			die "${device} inaccessible"
-		fi
-	done
-}
-
 src_test() {
-	check-amdgpu
+	check_amdgpu
 	cd "${BUILD_DIR}"/tests/ocltst || die
 	export OCL_ICD_FILENAMES="${BUILD_DIR}"/amdocl/libamdocl64.so
 	local instruction1="Please start an X server using amdgpu driver (not Xvfb!),"
