@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..11} )
-PYTHON_REQ_USE="xml(+)"
 
+PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_REQ_USE="xml(+)"
 inherit meson python-any-r1 systemd vala xdg
 
-DESCRIPTION="A location information D-Bus service"
+DESCRIPTION="Location information D-Bus service"
 HOMEPAGE="https://gitlab.freedesktop.org/geoclue/geoclue/-/wikis/home"
 SRC_URI="https://gitlab.freedesktop.org/geoclue/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
@@ -30,8 +30,7 @@ RDEPEND="${DEPEND}
 	acct-user/geoclue
 	sys-apps/dbus
 "
-BDEPEND="
-	${PYTHON_DEPS}
+BDEPEND="${PYTHON_DEPS}
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	gtk-doc? (
