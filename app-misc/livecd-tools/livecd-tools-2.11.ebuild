@@ -53,6 +53,10 @@ src_install() {
 	doins -r lib/keymaps
 
 	if use dist-kernel; then
+		# Copying Genkernel's hack to create /mnt/gentoo until a cleaner
+		# solution is created.
+		dodir /mnt/gentoo
+
 		insinto /etc/kernel/config.d
 		dodir /etc/kernel/config.d
 
