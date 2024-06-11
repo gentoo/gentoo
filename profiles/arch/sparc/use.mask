@@ -4,6 +4,11 @@
 # Unmask the flag which corresponds to ARCH.
 -sparc
 
+# matoro <matoro_gentoo@matoro.tk> (2024-06-11)
+# Extensive use of unaligned access, no plans to fix, #636552
+# https://github.com/memcached/memcached/issues/902
+memcached
+
 # Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
 # Needs bug #918896 for missing Qt6 keywords
 qt6

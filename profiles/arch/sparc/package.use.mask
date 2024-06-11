@@ -1,6 +1,13 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2024-06-11)
+# net-misc/memcached casualties, #636552
+# https://github.com/memcached/memcached/issues/902
+dev-python/pylibmc test
+dev-python/pytest-services test
+net-ftp/proftpd memcache
+
 # Sam James <sam@gentoo.org> (2024-05-19)
 # media-libs/jasper not yet keyworded here: https://bugs.gentoo.org/921559
 media-gfx/graphicsmagick jpeg2k
