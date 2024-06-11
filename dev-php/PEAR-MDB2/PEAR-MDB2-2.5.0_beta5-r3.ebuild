@@ -10,7 +10,7 @@ inherit php-pear-r2
 DESCRIPTION="Database Abstraction Layer"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc64 ~s390 ~sparc ~x86"
 IUSE="mssql mysql mysqli postgres sqlite"
 
 RDEPEND="dev-php/PEAR-PEAR"
