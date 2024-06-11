@@ -7,7 +7,7 @@ TS_BINDINGS=( python )
 
 inherit tree-sitter-grammar
 
-DESCRIPTION="Lua grammar for Tree-sitter"
+DESCRIPTION="Vimdoc grammar for Tree-sitter"
 HOMEPAGE="https://github.com/neovim/tree-sitter-vimdoc"
 SRC_URI="https://github.com/neovim/tree-sitter-vimdoc/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
