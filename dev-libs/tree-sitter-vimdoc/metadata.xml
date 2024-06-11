@@ -13,4 +13,7 @@
 		<email>mva@gentoo.org</email>
 		<name>Vadim Misbakh-Soloviov</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">neovim/tree-sitter-vimdoc</remote-id>
+	</upstream>
 </pkgmetadata>
