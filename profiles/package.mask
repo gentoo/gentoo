@@ -476,13 +476,6 @@ dev-go/go-bindata-assetfs
 dev-go/godebug-pretty
 dev-go/sanitized-anchor-name
 
-# Eli Schwartz <eschwartz93@gmail.com> (2024-05-08)
-# Fails to configure with GCC 14, fails to install with older
-# gcc, unmaintained, upstream website vanished.
-# Bug #731180, #861461, #888577, #889930.
-# Removal on 2024-06-08.
-net-irc/ninja
-
 # Sam James <sam@gentoo.org> (2024-04-28)
 # Masked for testing. Tracker bug: bug #930805.
 >=sys-libs/ncurses-6.5
