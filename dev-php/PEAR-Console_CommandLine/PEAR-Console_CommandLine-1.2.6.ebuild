@@ -20,7 +20,7 @@ RDEPEND="dev-lang/php:*
 	dev-php/PEAR-Exception"
 
 # Beware, the test suite really needs PEAR-PEAR.
-DEPEND="test? ( ${RDEPEND} dev-php/PEAR-PEAR )"
+BDEPEND="test? ( ${RDEPEND} dev-php/PEAR-PEAR )"
 
 src_prepare() {
 	# There's one occurrence of @data_dir@ that needs to be replaced
