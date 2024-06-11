@@ -30,6 +30,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-py3.13.patch
+)
+
 src_prepare() {
 	default
 
