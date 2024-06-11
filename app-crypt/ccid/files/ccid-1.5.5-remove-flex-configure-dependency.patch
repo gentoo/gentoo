@@ -1,13 +1,68 @@
-Bug: https://bugs.gentoo.org/221361
-Reverts upstream commit eec7cdf0 & 41270c2
+From 7e2207a07979b6c1b206024e83e22ca2bbd4e17c Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Mon, 10 Jun 2024 22:02:37 -0400
+Subject: [PATCH] make building work again when flex is not installed
 
+This explicitly reverts commit eec7cdf03dda2bd26e320ead73b91da5a9d86443
+because it was a bad idea.
+
+The motivating bug report was https://github.com/LudovicRousseau/PCSC/issues/124
+and the issue there occurred when building from a git clone, running
+./bootstrap && ./configure && make, and having:
+
+- configure succeed
+- make "succeeeds" at having $LEX run, do nothing and fail to generate
+  required sources
+- compiling nonexistent files fail with highly confusing errors
+
+The autoconf manual has always documented the correct way to handle this
+is to check if lex is unavailable, and set it to the famous automake
+wrapper "missing", which checks if a program is missing at build time
+rather than at ./configure time, and fails the build if the rule cannot
+be run. This means:
+
+When building from a git clone, if flex is not available then
+- configure succeeds
+- make fails to run $LEX, and tells you to install flex
+
+The previous attempt to fix the highly confusing error instead resulted
+in configure erroring out, and saying flex is required, even when it is
+*not* required because a `make dist` tarball was used, which contains
+pregenerated tokenparser.c for the express purpose of making flex
+unnecessary.
+
+See autoconf documentation on $LEX:
+https://www.gnu.org/software/autoconf/manual/autoconf-2.72/html_node/Particular-Programs.html#index-AC_005fPROG_005fLEX-1
+
+And automake documentation on why to use "missing":
+https://www.gnu.org/software/automake/manual/html_node/maintainer_002dmode.html
+
+Signed-off-by: Eli Schwartz <eschwartz93@gmail.com>
+---
+ configure.ac | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index eb2370f..c012f2a 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -33,7 +33,5 @@
+@@ -33,7 +33,10 @@ AC_PROG_INSTALL
  AC_PROG_MAKE_SET
  AC_PROG_LN_S
--AC_PROG_LEX([noyywrap])
+ AC_PROG_LEX([noyywrap])
 -AS_IF([test $LEX = ":"], [AC_MSG_ERROR([no lex or flex found])])
++AS_IF([test $LEX = ":"], [
++       AM_MISSING_PROG(MISSINGLEX, [flex])
++       LEX=$MISSINGLEX]
++)
  AM_PROG_AR
  PKG_PROG_PKG_CONFIG
+ 
+@@ -331,4 +334,3 @@ AC_CONFIG_FILES(Makefile
+ 	examples/Makefile)
+ 
+ AC_OUTPUT
+-
+-- 
+2.44.2
 
