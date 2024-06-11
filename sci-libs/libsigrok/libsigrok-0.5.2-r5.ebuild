@@ -71,6 +71,8 @@ PATCHES=(
 	"${FILESDIR}/${P}-check-0.15.patch"
 	# https://bugs.gentoo.org/878395
 	"${FILESDIR}/${PN}-0.5.2-swig-4.1.patch"
+
+	"${FILESDIR}/${P}-py313.patch"
 )
 
 pkg_setup() {
