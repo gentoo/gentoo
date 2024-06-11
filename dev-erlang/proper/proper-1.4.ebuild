@@ -12,7 +12,7 @@ SRC_URI="https://github.com/proper-testing/proper/archive/v${PV}.tar.gz
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~sparc x86"
 
 DEPEND=">=dev-lang/erlang-17.1:="
 RDEPEND="${DEPEND}"
