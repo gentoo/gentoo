@@ -7,7 +7,7 @@ TS_BINDINGS=( python )
 
 inherit tree-sitter-grammar
 
-DESCRIPTION="Lua grammar for Tree-sitter"
+DESCRIPTION="Tree-sitter query grammar for Tree-sitter"
 HOMEPAGE="https://github.com/tree-sitter-grammars/tree-sitter-query"
 SRC_URI="https://github.com/tree-sitter-grammars/tree-sitter-query/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
