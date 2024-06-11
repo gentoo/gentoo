@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 CRATES="
 	ahash@0.8.11
@@ -90,6 +90,8 @@ BDEPEND="
 QA_FLAGS_IGNORED=".*"
 
 distutils_enable_tests pytest
+
+export UNSAFE_PYO3_SKIP_VERSION_CHECK=1
 
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
