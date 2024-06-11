@@ -10,7 +10,7 @@ inherit tree-sitter-grammar
 MY_PN=tree-sitter-markdown
 MY_P=${MY_PN}-${PV}
 
-DESCRIPTION="Lua grammar for Tree-sitter"
+DESCRIPTION="Markdown-inline grammar for Tree-sitter"
 HOMEPAGE="https://github.com/tree-sitter-grammars/tree-sitter-markdown"
 SRC_URI="https://github.com/tree-sitter-grammars/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 S="${WORKDIR}"/${MY_P}/${MY_PN}-inline
