@@ -17,6 +17,8 @@ SRC_URI="
 	https://mirrors.ctan.org/systems/texlive/Source/${MY_P}.tar.xz
 	https://gitweb.gentoo.org/proj/tex-patches.git/snapshot/tex-patches-${GENTOO_TEX_PATCHES_NUM}.tar.bz2
 		-> gentoo-tex-patches-${GENTOO_TEX_PATCHES_NUM}.tar.bz2
+	https://raw.githubusercontent.com/debian-tex/texlive-bin/58a00e704a15ec3dd8abbf3826f28207eb095251/debian/patches/1054218.patch
+		-> texlive-core-2023-pdflatex-big-endian-fix.patch
 "
 
 # Macros that are not a part of texlive-sources or or pulled in from collection-binextra
@@ -220,6 +222,10 @@ src_prepare() {
 
 	local patch_dir="${WORKDIR}/tex-patches-${GENTOO_TEX_PATCHES_NUM}"
 	eapply "${patch_dir}"
+
+	# Can be dropped in texlive 2024
+	# https://git.texlive.info/texlive/commit/?id=c45afdc843154fcb09b583f54a2f802c6069b50e
+	eapply "${DISTDIR}"/texlive-core-2023-pdflatex-big-endian-fix.patch
 
 	default
 
