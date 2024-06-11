@@ -10,6 +10,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://gitlab.gnome.org/nE0sIghT/gnome-browser-connector/-/issues</bugs-to>
+		<bugs-to>https://gitlab.gnome.org/GNOME/gnome-browser-connector/-/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
