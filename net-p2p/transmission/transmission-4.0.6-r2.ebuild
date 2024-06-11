@@ -46,7 +46,7 @@ COMMON_DEPEND="
 	mbedtls? ( net-libs/mbedtls:0= )
 	net-libs/libnatpmp
 	>=net-libs/libpsl-0.21.1
-	<net-libs/miniupnpc-2.2.8:=
+	net-libs/miniupnpc:=
 	>=net-misc/curl-7.28.0[ssl]
 	sys-libs/zlib:=
 	nls? ( virtual/libintl )
@@ -75,6 +75,10 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	${ACCT_DEPEND}
 "
+
+PATCHES=(
+	"${FILESDIR}/transmission-4.0.6-miniupnpc-2.2.8.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
