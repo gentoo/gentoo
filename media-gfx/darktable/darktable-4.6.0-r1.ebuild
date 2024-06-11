@@ -69,7 +69,6 @@ DEPEND="dev-db/sqlite:3
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	media-libs/tiff:=
-	net-libs/libsoup:2.4
 	net-misc/curl
 	sys-libs/zlib:=
 	x11-libs/cairo
