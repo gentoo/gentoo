@@ -1,0 +1,22 @@
+From 4eea320592cc1766b8f679df22c3431a93a74d7e Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@remirepo.net>
+Date: Thu, 1 Apr 2021 10:37:33 +0200
+Subject: [PATCH] fromArray is static
+
+---
+ Table.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Table.php b/Table.php
+index dbfec73..139433b 100755
+--- a/Table.php
++++ b/Table.php
+@@ -223,7 +223,7 @@ function __construct($align = CONSOLE_TABLE_ALIGN_LEFT,
+      * @return Console_Table|string  A Console_Table object or the generated
+      *                               table.
+      */
+-    function fromArray($headers, $data, $returnObject = false)
++    static function fromArray($headers, $data, $returnObject = false)
+     {
+         if (!is_array($headers) || !is_array($data)) {
+             return false;
