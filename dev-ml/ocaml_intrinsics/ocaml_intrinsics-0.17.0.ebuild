@@ -17,7 +17,7 @@ IUSE="+ocamlopt"
 RESTRICT="test"
 
 DEPEND="
-	dev-ml/dune-configurator:=
+	dev-ml/dune-configurator:=[ocamlopt?]
 	dev-ml/ocaml_intrinsics_kernel:${SLOT}[ocamlopt?]
 "
 RDEPEND="${DEPEND}"
