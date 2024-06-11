@@ -10,6 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
+		<flag name="fits">Enable support for loading/exporting FITS images</flag>
 		<flag name="vector-icons">Enable support for vector icons (experimental)</flag>
 	</use>
 	<upstream>

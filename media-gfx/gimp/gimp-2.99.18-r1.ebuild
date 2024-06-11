@@ -16,7 +16,7 @@ SRC_URI="mirror://gimp/v$(ver_cut 1-2)/${P}.tar.xz"
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0/3"
 
-IUSE="X aalib alsa doc gnome heif javascript jpeg2k jpegxl lua mng openexr openmp postscript python test udev unwind vala vector-icons webp wmf xpm"
+IUSE="X aalib alsa doc fits gnome heif javascript jpeg2k jpegxl lua mng openexr openmp postscript python test udev unwind vala vector-icons webp wmf xpm"
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -57,6 +57,7 @@ COMMON_DEPEND="
 	>=x11-libs/libXmu-1.1.4
 	aalib? ( media-libs/aalib )
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
+	fits? ( sci-libs/cfitsio )
 	heif? ( >=media-libs/libheif-1.13.0:= )
 	javascript? ( dev-libs/gjs )
 	jpeg2k? ( >=media-libs/openjpeg-2.3.1:2= )
@@ -173,11 +174,13 @@ src_configure() {
 		-Denable-multiproc=true
 		-Dappdata-test=disabled
 		-Dbug-report-url=https://bugs.gentoo.org/
+		-Dilbm=disabled
 		-Dlibbacktrace=false
 		-Dwebkit-unmaintained=false
 		$(meson_feature aalib aa)
 		$(meson_feature alsa)
 		$(meson_feature doc gi-docgen)
+		$(meson_feature fits)
 		$(meson_feature heif)
 		$(meson_feature javascript)
 		$(meson_feature jpeg2k jpeg2000)
