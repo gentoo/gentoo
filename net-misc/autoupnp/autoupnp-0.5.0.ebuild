@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="libnotify"
 
 DEPEND="
-	net-libs/miniupnpc:0=
+	<net-libs/miniupnpc-2.2.8:0=
 	libnotify? ( x11-libs/libtinynotify:0= )
 "
 RDEPEND="
