@@ -9,6 +9,7 @@ inherit cmake flag-o-matic lua-single toolchain-funcs xdg
 
 DESCRIPTION="A virtual lighttable and darkroom for photographers"
 HOMEPAGE="https://www.darktable.org/"
+S="${WORKDIR}/${P/_/~}"
 LICENSE="GPL-3 CC-BY-3.0"
 SLOT="0"
 
@@ -19,7 +20,7 @@ if [[ ${PV} == *9999 ]]; then
 	LANGS=" af ca cs da de el es fi fr gl he hu it ja nb nl pl pt-BR pt-PT ro ru sk sl sq sv th uk zh-CN zh-TW"
 else
 	#DOC_PV=$(ver_cut 1-2)
-	DOC_PV="4.4"
+	DOC_PV="4.6"
 	MY_PV="${PV/_/}"
 	MY_P="${P/_/.}"
 
@@ -40,7 +41,6 @@ IUSE="avif colord cpu_flags_x86_avx cpu_flags_x86_sse3 cups doc gamepad geolocat
 	${LANGS// / l10n_}"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
-
 RESTRICT="!test? ( test )"
 
 # It is sometimes requested, by both users and certain devs, to have sys-devel/gcc[graphite]
@@ -69,7 +69,6 @@ DEPEND="dev-db/sqlite:3
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	media-libs/tiff:=
-	net-libs/libsoup:2.4
 	net-misc/curl
 	sys-libs/zlib:=
 	x11-libs/cairo
@@ -98,10 +97,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.0_jsonschema-automagic.patch
 	"${FILESDIR}"/${PN}-3.4.1_libxcf-cmake.patch
 	"${FILESDIR}"/${PN}-4.2.1_cmake-musl.patch
-	"${FILESDIR}"/${PN}-4.4.2_fix-has-attribute-musl.patch
+	"${FILESDIR}"/${PN}-4.8.0_fix-has-attribute-musl.patch
 )
-
-S="${WORKDIR}/${P/_/~}"
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
@@ -133,6 +130,7 @@ src_prepare() {
 }
 
 src_configure() {
+	CMAKE_BUILD_TYPE="Release"
 	local mycmakeargs=(
 		-DBUILD_CURVE_TOOLS=$(usex tools)
 		-DBUILD_NOISE_TOOLS=$(usex tools)
@@ -170,7 +168,10 @@ src_configure() {
 src_install() {
 	cmake_src_install
 	# This USE flag is masked for -9999
-	use doc && dodoc "${DISTDIR}"/${PN}-usermanual-${DOC_PV}.*.pdf
+	if use doc; then
+		dodoc "${DISTDIR}"/${PN}-usermanual-${DOC_PV}.en.pdf
+		use l10n_uk && dodoc "${DISTDIR}"/${PN}-usermanual-${DOC_PV}.uk.pdf
+	fi
 
 	if use nls; then
 		for lang in ${LANGS} ; do

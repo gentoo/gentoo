@@ -9,7 +9,6 @@ inherit cmake flag-o-matic lua-single toolchain-funcs xdg
 
 DESCRIPTION="A virtual lighttable and darkroom for photographers"
 HOMEPAGE="https://www.darktable.org/"
-S="${WORKDIR}/${P/_/~}"
 LICENSE="GPL-3 CC-BY-3.0"
 SLOT="0"
 
@@ -33,14 +32,15 @@ else
 			)
 		)"
 
-	KEYWORDS="amd64 ~arm64 -x86"
-	LANGS=" cs de es fi fr hu it ja nl pl pt-BR ru sl sq uk zh-CN zh-TW"
+	KEYWORDS="~amd64 ~arm64 -x86"
+	LANGS=" cs de es fi fr hu it ja nl pl pt-BR ru sl sq tr uk zh-CN zh-TW"
 fi
 
 IUSE="avif colord cpu_flags_x86_avx cpu_flags_x86_sse3 cups doc gamepad geolocation keyring gphoto2 graphicsmagick heif jpeg2k jpegxl kwallet lto lua midi nls opencl openmp openexr test tools webp
 	${LANGS// / l10n_}"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
+
 RESTRICT="!test? ( test )"
 
 # It is sometimes requested, by both users and certain devs, to have sys-devel/gcc[graphite]
@@ -69,7 +69,6 @@ DEPEND="dev-db/sqlite:3
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	media-libs/tiff:=
-	net-libs/libsoup:2.4
 	net-misc/curl
 	sys-libs/zlib:=
 	x11-libs/cairo
@@ -98,8 +97,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.0_jsonschema-automagic.patch
 	"${FILESDIR}"/${PN}-3.4.1_libxcf-cmake.patch
 	"${FILESDIR}"/${PN}-4.2.1_cmake-musl.patch
-	"${FILESDIR}"/${PN}-4.8.0_fix-has-attribute-musl.patch
+	"${FILESDIR}"/${PN}-4.4.2_fix-has-attribute-musl.patch
 )
+
+S="${WORKDIR}/${P/_/~}"
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
