@@ -1,0 +1,24 @@
+From 8da1d4c91dff53db6d903730855ed6a02252e53d Mon Sep 17 00:00:00 2001
+From: Marko Lindqvist <cazfi74@gmail.com>
+Date: Wed, 17 Apr 2024 07:02:20 +0300
+Subject: [PATCH] Qt: Add Q_OBJECT for fc_shortcut_popup
+
+See RM #462
+
+Signed-off-by: Marko Lindqvist <cazfi74@gmail.com>
+---
+ client/gui-qt/shortcuts.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/client/gui-qt/shortcuts.h b/client/gui-qt/shortcuts.h
+index 7574ce4f8e..9d02d1c3f6 100644
+--- a/client/gui-qt/shortcuts.h
++++ b/client/gui-qt/shortcuts.h
+@@ -155,6 +155,7 @@ class line_edit : public QLineEdit
+ **************************************************************************/
+ class fc_shortcut_popup : public QDialog
+ {
++  Q_OBJECT
+ public:
+   fc_shortcut_popup(QWidget *parent);
+   void run(fc_shortcut *s);

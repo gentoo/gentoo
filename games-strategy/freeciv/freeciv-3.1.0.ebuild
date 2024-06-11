@@ -92,6 +92,7 @@ pkg_setup() {
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.0_beta4-fix-manpage-install-location.patch
+	"${FILESDIR}"/${P}-qt6.patch # from git master
 )
 
 src_prepare() {
