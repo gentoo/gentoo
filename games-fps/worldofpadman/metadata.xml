@@ -9,6 +9,6 @@
     <flag name="maps">Install extra maps (PadPack)</flag>
   </use>
   <upstream>
-    <remote-id type="sourceforge">worldofpadman</remote-id>
+    <remote-id type="github">PadWorld-Entertainment/worldofpadman</remote-id>
   </upstream>
 </pkgmetadata>
