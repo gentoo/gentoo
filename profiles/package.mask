@@ -465,8 +465,6 @@ sci-libs/libghemical
 # EAPI=6, library only without any reverse dependencies, uses
 # deprecated go eclasses.
 # Removal: 2024-06-10.  Bug #931725.
-dev-go/go-bindata-assetfs
-dev-go/godebug-pretty
 dev-go/sanitized-anchor-name
 
 # Sam James <sam@gentoo.org> (2024-04-28)
