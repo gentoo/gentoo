@@ -11,7 +11,7 @@ SRC_URI="https://github.com/zetacomponents/${MY_PN}/archive/${PV}.tar.gz -> ${P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~hppa ppc ppc64 ~s390 sparc x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ppc64 ~s390 sparc x86"
 
 RDEPEND="dev-lang/php:*[iconv(-)]"
 
