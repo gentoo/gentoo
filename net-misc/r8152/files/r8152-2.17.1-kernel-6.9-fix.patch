@@ -1,0 +1,117 @@
+From: https://github.com/wget/realtek-r8152-linux/pull/41
+From a5b3b4a882a3a637ccfa447dc7d2e84eac9ef0fc Mon Sep 17 00:00:00 2001
+From: "oleg.hoefling" <oleg.hoefling@gmail.com>
+Date: Wed, 22 May 2024 00:44:37 +0200
+Subject: [PATCH] add compat for 6.9.X kernels
+
+Signed-off-by: oleg.hoefling <oleg.hoefling@gmail.com>
+--- a/r8152.c
++++ b/r8152.c
+@@ -950,7 +950,10 @@ struct r8152 {
+ 		void (*up)(struct r8152 *tp);
+ 		void (*down)(struct r8152 *tp);
+ 		void (*unload)(struct r8152 *tp);
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,9,0)
++		int (*eee_get)(struct r8152 *tp, struct ethtool_keee *eee);
++		int (*eee_set)(struct r8152 *tp, struct ethtool_keee *eee);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,0)
+ 		int (*eee_get)(struct r8152 *tp, struct ethtool_eee *eee);
+ 		int (*eee_set)(struct r8152 *tp, struct ethtool_eee *eee);
+ #endif /* LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,0) */
+@@ -19099,7 +19102,11 @@ static void rtl8152_get_strings(struct net_device *dev, u32 stringset, u8 *data)
+ }
+ 
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,9,0)
++static int r8152_get_eee(struct r8152 *tp, struct ethtool_keee *eee)
++#else
+ static int r8152_get_eee(struct r8152 *tp, struct ethtool_eee *eee)
++#endif
+ {
+ 	u32 lp, adv, supported = 0;
+ 	u16 val;
+@@ -19115,17 +19122,32 @@ static int r8152_get_eee(struct r8152 *tp, struct ethtool_eee *eee)
+ 
+ 	eee->eee_enabled = tp->eee_en;
+ 	eee->eee_active = !!(supported & adv & lp);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,9,0)
++	ethtool_convert_legacy_u32_to_link_mode(eee->supported, supported);
++	ethtool_convert_legacy_u32_to_link_mode(eee->advertised, tp->eee_adv);
++	ethtool_convert_legacy_u32_to_link_mode(eee->lp_advertised, lp);
++#else
+ 	eee->supported = supported;
+ 	eee->advertised = tp->eee_adv;
+ 	eee->lp_advertised = lp;
++#endif
+ 
+ 	return 0;
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,9,0)
++static int r8152_set_eee(struct r8152 *tp, struct ethtool_keee *eee)
++#else
+ static int r8152_set_eee(struct r8152 *tp, struct ethtool_eee *eee)
++#endif
+ {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,9,0)
++	u32 advertised = 0;
++	ethtool_convert_link_mode_to_legacy_u32(&advertised, eee->advertised);
++	u16 val = ethtool_adv_to_mmd_eee_adv_t(advertised);
++#else
+ 	u16 val = ethtool_adv_to_mmd_eee_adv_t(eee->advertised);
+-
++#endif
+ 	tp->eee_en = eee->eee_enabled;
+ 	tp->eee_adv = val;
+ 
+@@ -19134,7 +19156,11 @@ static int r8152_set_eee(struct r8152 *tp, struct ethtool_eee *eee)
+ 	return 0;
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,9,0)
++static int r8153_get_eee(struct r8152 *tp, struct ethtool_keee *eee)
++#else
+ static int r8153_get_eee(struct r8152 *tp, struct ethtool_eee *eee)
++#endif
+ {
+ 	u32 lp, adv, supported = 0;
+ 	u16 val;
+@@ -19150,15 +19176,25 @@ static int r8153_get_eee(struct r8152 *tp, struct ethtool_eee *eee)
+ 
+ 	eee->eee_enabled = tp->eee_en;
+ 	eee->eee_active = !!(supported & adv & lp);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,9,0)
++	ethtool_convert_legacy_u32_to_link_mode(eee->supported, supported);
++	ethtool_convert_legacy_u32_to_link_mode(eee->advertised, tp->eee_adv);
++	ethtool_convert_legacy_u32_to_link_mode(eee->lp_advertised, lp);
++#else
+ 	eee->supported = supported;
+ 	eee->advertised = tp->eee_adv;
+ 	eee->lp_advertised = lp;
++#endif
+ 
+ 	return 0;
+ }
+ 
+ static int
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,9,0)
++rtl_ethtool_get_eee(struct net_device *net, struct ethtool_keee *edata)
++#else
+ rtl_ethtool_get_eee(struct net_device *net, struct ethtool_eee *edata)
++#endif
+ {
+ 	struct r8152 *tp = netdev_priv(net);
+ 	int ret;
+@@ -19185,7 +19221,11 @@ rtl_ethtool_get_eee(struct net_device *net, struct ethtool_eee *edata)
+ }
+ 
+ static int
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,9,0)
++rtl_ethtool_set_eee(struct net_device *net, struct ethtool_keee *edata)
++#else
+ rtl_ethtool_set_eee(struct net_device *net, struct ethtool_eee *edata)
++#endif
+ {
+ 	struct r8152 *tp = netdev_priv(net);
+ 	int ret;
