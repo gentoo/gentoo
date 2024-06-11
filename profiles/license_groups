@@ -43,7 +43,7 @@ FREE-SOFTWARE @FSF-APPROVED @OSI-APPROVED-FREE @MISC-FREE
 
 # FSF-approved licenses for "free documentation" and "works of
 # practical use besides software and documentation" (including fonts)
-FSF-APPROVED-OTHER Arphic CC-BY-2.0 CC-BY-2.5 CC-BY-3.0 CC-BY-4.0 CC-BY-SA-2.0 CC-BY-SA-2.5 CC-BY-SA-3.0 CC-BY-SA-4.0 FDL-1.1 FDL-1.1+ FDL-1.2 FDL-1.2+ FDL-1.3 FDL-1.3+ Free-Art-1.2 Free-Art-1.3 GPL-1 GPL-1+ GPL-2 GPL-2+ GPL-3 GPL-3+ IPAfont OFL OFL-1.0 OFL-1.1 OPL
+FSF-APPROVED-OTHER Arphic CC-BY-2.0 CC-BY-2.5 CC-BY-3.0 CC-BY-4.0 CC-BY-SA-2.0 CC-BY-SA-2.5 CC-BY-SA-3.0 CC-BY-SA-4.0 FDL-1.1 FDL-1.1+ FDL-1.2 FDL-1.2+ FDL-1.3 FDL-1.3+ Free-Art-1.2 Free-Art-1.3 GPL-1 GPL-1+ GPL-2 GPL-2+ GPL-3 GPL-3+ IPAfont OFL-1.0 OFL-1.1 OPL
 
 # Misc licenses for free documents and other works (including fonts)
 # that follow the definition at https://freedomdefined.org/ but are NOT
@@ -84,7 +84,7 @@ OSI-APPROVED @OSI-APPROVED-FREE @OSI-APPROVED-NONFREE
 EULA 2dboy-EULA AMD-GPU-PRO-EULA android AnyDesk-TOS Aseprite-EULA baudline bestcrypt CAPYBARA-EULA Coherent-Graphics Dell-EULA ETQW f.lux FAH-EULA-2014 Flightradar24 Gameplay-Group-EULA geekbench genymotion GIMPS GOG-EULA google-chrome Intel-SDP Introversion JoyPixels LOKI-EULA MakeMKV-EULA Microsemi microsoft-edge Microsoft-vscode Mojang MTA-0.5 NVIDIA-CUDA NVIDIA-SDK Ookla OPERA-2018 PAPERS-PLEASE PassMark-EULA PICO-8 Primate-Plunge PUEL-11 Q3AEULA-20000111 QUAKE4 RAR sfpg SPS Steam supermicro Synology teamspeak3 teamspeak5 TeamViewer THINKTANKS TIK ubiquiti ut2003 ut2003-demo Vivaldi worklog-assistant WPS-EULA zi-labone
 
 # Deprecated license labels, used by repoman and pkgcheck
-DEPRECATED OFL
+#DEPRECATED (currently none)
 
 # Local Variables:
 # mode: conf-space
