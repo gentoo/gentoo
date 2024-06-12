@@ -446,11 +446,6 @@ media-gfx/raw-thumbnailer
 # Removal: 2024-06-12.  Bug #931861.
 sci-libs/cifparse-obj
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-13)
-# EAPI=6, fails to compile, no reverse dependencies.
-# Removal: 2024-06-12.  Bugs #931860, #891895.
-sci-libs/libghemical
-
 # Sam James <sam@gentoo.org> (2024-04-28)
 # Masked for testing. Tracker bug: bug #930805.
 >=sys-libs/ncurses-6.5
