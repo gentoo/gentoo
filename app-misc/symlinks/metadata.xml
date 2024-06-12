@@ -10,6 +10,9 @@
 		Each link is prefixed with a classification of relative, absolute,
 		dangling, messy, lengthy or other_fs. Symlinks can also convert
 		absolute links (within the same filesystem) to relative links and can
-		delete messy and dangling links. 
+		delete messy and dangling links.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">brandt/symlinks</remote-id>
+	</upstream>
 </pkgmetadata>
