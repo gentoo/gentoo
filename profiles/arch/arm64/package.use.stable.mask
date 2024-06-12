@@ -10,9 +10,8 @@ app-emulation/qemu capstone
 sys-kernel/installkernel efistub
 
 # Mart Raudsepp <leio@gentoo.org> (2024-03-03)
-# media-libs/libdisplay-info (drm) and dev-libs/libliftoff (liftoff)
-# are not stable yet on arm64
->=gui-libs/wlroots-0.17.0 drm liftoff
+# dev-libs/libliftoff (liftoff) not stable yet on arm64
+>=gui-libs/wlroots-0.17.0 liftoff
 
 # Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
 # dev-python/PyQt6 and dev-python/pyside6 are not stable here yet
