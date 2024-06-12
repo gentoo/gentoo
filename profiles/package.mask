@@ -39,7 +39,6 @@
 # They are all unmaintained, most of the ebuilds are still EAPI 6, and together
 # they have around 40 bugs.
 # Removal: 2024-07-11.  Bug #933998.
-dev-php/PEAR-Auth_SASL
 dev-php/PEAR-Cache
 dev-php/PEAR-Cache_Lite
 dev-php/PEAR-Console_Getargs
