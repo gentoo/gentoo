@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,6 @@ SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/refs/tags/v${PV}.tar.g
 LICENSE="Khronos-CLHPP"
 SLOT="0"
 KEYWORDS="amd64 ppc64 x86"
-IUSE="test"
 
 # Tests require CMock (NOT cmocka), which is currently not in Gentoo
 # and has been found to be extremely awkward to package.
@@ -33,7 +32,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_DOCS=OFF
 		-DBUILD_EXAMPLES=OFF
-		-DBUILD_TESTING=$(usex test)
+		-DBUILD_TESTING=OFF
 	)
 	cmake_src_configure
 }
