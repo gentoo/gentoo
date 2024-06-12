@@ -189,6 +189,7 @@ dev-ml/ppx_here:0/0.17
 dev-ml/ppx_let:0/0.17
 dev-ml/ppx_sexp_message:0/0.17
 dev-ml/ppx_sexp_value:0/0.17
+dev-ml/ppx_assert:0/0.17
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-08)
 # EAPI=6, waiting for a version bump, not maintained for many years.
