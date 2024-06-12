@@ -7,16 +7,13 @@
 # @SUPPORTED_EAPIS: 8
 # @BLURB: helps map gentoo arches to rust ABIs
 # @DESCRIPTION:
-# This eclass contains a src_unpack default phase function, and
-# helper functions, to aid in proper rust-ABI handling for various
-# gentoo arches.
+# This eclass contains helper functions, to aid in proper rust-ABI handling for
+# various gentoo arches.
 
 case ${EAPI} in
 	8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-inherit multilib-build
 
 # @ECLASS_VARIABLE: RUST_TOOLCHAIN_BASEURL
 # @DESCRIPTION:
@@ -55,24 +52,6 @@ rust_abi() {
 		x86_64*musl)  echo x86_64-unknown-linux-musl;;
 		*)            echo ${CTARGET};;
   esac
-}
-
-# @FUNCTION: rust_all_abis
-# @DESCRIPTION:
-# Outputs a list of all the enabled Rust ABIs
-rust_all_abis() {
-	if use multilib; then
-		local abi
-		local ALL_ABIS=()
-		for abi in $(multilib_get_enabled_abis); do
-			ALL_ABIS+=( $(rust_abi $(get_abi_CHOST ${abi})) )
-		done
-		local abi_list
-		IFS=, eval 'abi_list=${ALL_ABIS[*]}'
-		echo ${abi_list}
-	else
-		rust_abi
-	fi
 }
 
 # @FUNCTION: rust_arch_uri
