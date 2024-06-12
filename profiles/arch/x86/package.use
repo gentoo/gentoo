@@ -1,6 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ben Kohler <bkohler@gentoo.org> (2024-06-12)
+# Disable thin volume support by default since it reuqires sse2 which most
+# x86 cpus will lack
+sys-fs/lvm2 -thin
+
 # Ben Kohler <bkohler@gentoo.org> (2022-06-07)
 # Enable BIOS target by default
 sys-apps/memtest86+ bios32
