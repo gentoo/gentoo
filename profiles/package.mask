@@ -440,11 +440,6 @@ app-emulation/docker-machine-kvm
 # Removal: 2024-06-12.  Bugs #931874, #878771.
 media-gfx/raw-thumbnailer
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-13)
-# EAPI=6, fails to compile, library with no reverse dependencies.
-# Removal: 2024-06-12.  Bug #931861.
-sci-libs/cifparse-obj
-
 # Sam James <sam@gentoo.org> (2024-04-28)
 # Masked for testing. Tracker bug: bug #930805.
 >=sys-libs/ncurses-6.5
