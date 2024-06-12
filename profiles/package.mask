@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-12)
+# EAPI=6, maintainer needed, no reverse dependencies. Not maintained in
+# gentoo for a long time.
+# Removal on 2024-07-12.  Bugs #934156, #636422.
+net-misc/bfgminer
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-12)
 # EAPI=6, library with no reverse dependencies, fails tests, has
 # issues with modern C.
 # Removal on 2024-07-12.  Bugs #934133, #725622, #813240.
