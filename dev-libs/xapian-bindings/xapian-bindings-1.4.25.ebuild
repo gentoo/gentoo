@@ -27,7 +27,7 @@ S="${WORKDIR}/${P}" # need this here, some inherited eclasses change it
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 arm ~hppa ~ia64 ~mips ~ppc ppc64 ~sparc ~x86"
 IUSE="java lua mono perl php python ruby tcl"
 REQUIRED_USE="
 	|| ( java lua mono perl php python ruby tcl )
