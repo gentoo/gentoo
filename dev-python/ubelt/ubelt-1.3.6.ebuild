@@ -40,3 +40,8 @@ EPYTEST_DESELECT=(
 	# relies on passwd home being equal to ${HOME}
 	ubelt/util_path.py::userhome:0
 )
+
+EPYTEST_IGNORE=(
+	# asserts for running on win32 in global scope
+	ubelt/_win32_jaraco.py
+)
