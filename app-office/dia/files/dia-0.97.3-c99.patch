@@ -1,0 +1,284 @@
+https://bugs.gentoo.org/883069
+https://src.fedoraproject.org/rpms/dia/raw/rawhide/f/dia-0.97.3-const-ft_vector.patch
+https://src.fedoraproject.org/rpms/dia/blob/rawhide/f/dia-0.97.3-g_test_add_data_func_1.patch
+https://src.fedoraproject.org/rpms/dia/blob/rawhide/f/dia-0.97.3-g_test_add_data_func_2.patch
+https://src.fedoraproject.org/rpms/dia/blob/rawhide/f/dia-0.97.3-get_data_size.patch
+
+From e5557aa1d396bc3ca80240f7b5c0a1831a5cf209 Mon Sep 17 00:00:00 2001
+From: Hans Breuer <hans@breuer.org>
+Date: Sat, 4 May 2013 15:20:15 +0200
+Subject: [PATCH] [warningectomy] initialization from incompatible pointer type
+
+FT_Outline_Funcs take const FT_Vector* nowadays.
+--- a/plug-ins/postscript/diapsft2renderer.c
++++ b/plug-ins/postscript/diapsft2renderer.c
+@@ -61,16 +61,16 @@ void draw_bezier_outline(DiaPsRenderer *renderer,
+ 			 double pos_y
+ 			 );
+ /* Countour traveling functions */
+-static int paps_move_to( FT_Vector* to,
++static int paps_move_to( const FT_Vector* to,
+ 			 void *user_data);
+-static int paps_line_to( FT_Vector*  to,
++static int paps_line_to( const FT_Vector*  to,
+ 			 void *user_data);
+-static int paps_conic_to( FT_Vector*  control,
+-			  FT_Vector*  to,
++static int paps_conic_to( const FT_Vector*  control,
++			  const FT_Vector*  to,
+ 			  void *user_data);
+-static int paps_cubic_to( FT_Vector*  control1,
+-			  FT_Vector*  control2,
+-			  FT_Vector*  to,
++static int paps_cubic_to( const FT_Vector*  control1,
++			  const FT_Vector*  control2,
++			  const FT_Vector*  to,
+ 			  void *user_data);
+ 
+ static void dia_ps_ft2_renderer_class_init (DiaPsFt2RendererClass *klass);
+@@ -111,7 +111,7 @@ set_font(DiaRenderer *self, DiaFont *font, real height)
+ /*======================================================================
+   outline traversing functions.
+   ----------------------------------------------------------------------*/
+-static int paps_move_to( FT_Vector* to,
++static int paps_move_to( const FT_Vector* to,
+ 			 void *user_data)
+ {
+   OutlineInfo *outline_info = (OutlineInfo*)user_data;
+@@ -121,7 +121,7 @@ static int paps_move_to( FT_Vector* to,
+   return 0;
+ }
+ 
+-static int paps_line_to( FT_Vector*  to,
++static int paps_line_to( const FT_Vector*  to,
+ 			 void *user_data)
+ {
+   OutlineInfo *outline_info = (OutlineInfo*)user_data;
+@@ -131,8 +131,8 @@ static int paps_line_to( FT_Vector*  to,
+   return 0;
+ }
+ 
+-static int paps_conic_to( FT_Vector*  control,
+-			  FT_Vector*  to,
++static int paps_conic_to( const FT_Vector*  control,
++			  const FT_Vector*  to,
+ 			  void *user_data)
+ {
+   OutlineInfo *outline_info = (OutlineInfo*)user_data;
+@@ -144,9 +144,9 @@ static int paps_conic_to( FT_Vector*  control,
+   return 0;
+ }
+ 
+-static int paps_cubic_to( FT_Vector*  control1,
+-			  FT_Vector*  control2,
+-			  FT_Vector*  to,
++static int paps_cubic_to( const FT_Vector*  control1,
++			  const FT_Vector*  control2,
++			  const FT_Vector*  to,
+ 			  void *user_data)
+ {
+   OutlineInfo *outline_info = (OutlineInfo*)user_data;
+-- 
+GitLab
+
+From caddfcab250fe677ecf294fad835b71e6b10cf26 Mon Sep 17 00:00:00 2001
+From: Hans Breuer <hans@breuer.org>
+Date: Fri, 3 Oct 2014 22:26:36 +0200
+Subject: [PATCH] [warningectomy] incompatible pointer types passing ...
+
+test-boundingbox.c:152:58: warning: incompatible pointer types passing 'void (const struct _TestBeziers *)' to parameter of type 'GTestDataFunc' (aka 'void (*)(gconstpointer)') [-Wincompatible-pointer-types]
+      g_test_add_data_func (testpath, &_test_beziers[i], _check_one_bezier);
+                                                         ^~~~~~~~~~~~~~~~~
+test-svg.c:117:55: warning: incompatible pointer types passing 'void (const PathData *)' to parameter of type 'GTestDataFunc' (aka 'void (*)(gconstpointer)') [-Wincompatible-pointer-types]
+      g_test_add_data_func (testpath, &_test_path[i], _check_one_path);
+                                                      ^~~~~~~~~~~~~~~
+--- a/tests/test-boundingbox.c
++++ b/tests/test-boundingbox.c
+@@ -132,8 +132,9 @@ static struct _TestBeziers {
+ #undef BEZ
+ 
+ static void
+-_check_one_bezier (const struct _TestBeziers *test)
++_check_one_bezier (gconstpointer p)
+ {
++  const struct _TestBeziers *test = p;
+   Rectangle rect;
+   PolyBBExtras extra = {0, T*.7, T*.7, T*.7, 0 };
+   
+Backport from https://gitlab.gnome.org/GNOME/dia/-/commit/9c481f649414190bf8d6741cbca1777e9766756b
+
+--- a/tests/test-objects.c
++++ b/tests/test-objects.c.g_test_add_data_func_2
+@@ -39,8 +39,9 @@
+ int num_objects = 0;
+ 
+ static void
+-_test_creation (const DiaObjectType *type)
++_test_creation (gconstpointer user_data)
+ {
++  const DiaObjectType *type = (const DiaObjectType *)user_data;
+   int i;
+   Handle *h1 = NULL, *h2 = NULL;
+   Point point = {0, 0};
+@@ -112,8 +113,9 @@
+ }
+ 
+ static void
+-_test_copy (const DiaObjectType *type)
++_test_copy (gconstpointer user_data)
+ {
++  const DiaObjectType *type = (const DiaObjectType *)user_data;
+   Handle *h1 = NULL, *h2 = NULL;
+   Point from = {0, 0};
+   DiaObject *oc, *o = type->ops->create (&from, type->default_user_data, &h1, &h2);
+@@ -172,8 +174,9 @@
+ }
+ 
+ static void
+-_test_movement (const DiaObjectType *type)
++_test_movement (gconstpointer user_data)
+ {
++  const DiaObjectType *type = (const DiaObjectType *)user_data;
+   Handle *h1 = NULL, *h2 = NULL;
+   Point from = {0, 0};
+   DiaObject *o = type->ops->create (&from, type->default_user_data, &h1, &h2);
+@@ -215,8 +218,9 @@
+ }
+ 
+ static void
+-_test_change (const DiaObjectType *type)
++_test_change (gconstpointer user_data)
+ {
++  const DiaObjectType *type = (const DiaObjectType *)user_data;
+   Handle *h1 = NULL, *h2 = NULL;
+   Point from = {0, 0};
+   DiaObject *o = type->ops->create (&from, type->default_user_data, &h1, &h2);
+
+Backport from https://gitlab.gnome.org/GNOME/dia/-/commit/f57ea2685034ddbafc19f35d9b525a12283d7c24
+
+--- a/lib/prop_geomtypes.c
++++ b/lib/prop_geomtypes.c.get_data_size
+@@ -129,9 +129,10 @@
+ }
+ 
+ static int 
+-realprop_get_data_size(RealProperty *prop)
++realprop_get_data_size(void)
+ {
+-  return sizeof (prop->real_data);
++  RealProperty prop;
++  return sizeof (prop.real_data);
+ }
+ 
+ static const PropertyOps realprop_ops = {
+@@ -242,9 +243,10 @@
+ }
+ 
+ static int 
+-lengthprop_get_data_size(LengthProperty *prop)
++lengthprop_get_data_size(void)
+ {
+-  return sizeof (prop->length_data);
++  LengthProperty prop;
++  return sizeof (prop.length_data);
+ }
+ 
+ static const PropertyOps lengthprop_ops = {
+@@ -358,9 +360,10 @@
+ }
+ 
+ static int 
+-fontsizeprop_get_data_size(FontsizeProperty *prop)
++fontsizeprop_get_data_size(void)
+ {
+-  return sizeof (prop->fontsize_data);
++  FontsizeProperty prop;
++  return sizeof (prop.fontsize_data);
+ }
+ 
+ static const PropertyOps fontsizeprop_ops = {
+--- a/lib/prop_inttypes.c
++++ b/lib/prop_inttypes.c.get_data_size
+@@ -122,9 +122,10 @@
+ }
+ 
+ static int 
+-charprop_get_data_size(CharProperty *prop)
++charprop_get_data_size(void)
+ {
+-  return sizeof (prop->char_data);
++  CharProperty prop;
++  return sizeof (prop.char_data);
+ }
+ 
+ 
+@@ -229,9 +230,10 @@
+ }
+ 
+ static int 
+-boolprop_get_data_size(BoolProperty *prop)
++boolprop_get_data_size(void)
+ {
+-  return sizeof (prop->bool_data);
++  BoolProperty prop;
++  return sizeof (prop.bool_data);
+ }
+ 
+ 
+@@ -339,9 +341,10 @@
+ }
+ 
+ static int 
+-intprop_get_data_size(IntProperty *prop)
++intprop_get_data_size(void)
+ {
+-  return sizeof (prop->int_data);
++  IntProperty prop;
++  return sizeof (prop.int_data);
+ }
+ 
+ static const PropertyOps intprop_ops = {
+--- a/lib/prop_text.c
++++ b/lib/prop_text.c.get_data_size
+@@ -208,9 +208,10 @@
+ }
+ 
+ static int 
+-stringprop_get_data_size(StringProperty *prop)
++stringprop_get_data_size(void)
+ {
+-  return sizeof (prop->string_data); /* only the pointer */
++  StringProperty prop;
++  return sizeof (prop.string_data); /* only the pointer */
+ }
+ 
+ static StringListProperty *
+--- a/lib/properties.h
++++ b/lib/properties.h.get_data_size
+@@ -116,7 +116,7 @@
+                                          void *base, guint offset, guint offset2);
+ typedef void (*PropertyType_SetFromOffset)(Property *prop,
+                                          void *base, guint offset, guint offset2);
+-typedef int (*PropertyType_GetDataSize)(Property *prop);
++typedef int (*PropertyType_GetDataSize)(void);
+ 
+ 
+ struct _PropertyOps {
+--- a/objects/custom/custom_object.c
++++ b/objects/custom/custom_object.c.get_data_size
+@@ -372,14 +372,7 @@
+       info->prop_offsets[i].name = info->props[i].name;
+       info->prop_offsets[i].type = info->props[i].type;
+       info->prop_offsets[i].offset = offs;
+-      /* FIXME:
+-	 custom_object.c:328: warning: passing arg 1 of pointer to function 
+-	 from incompatible pointer type
+-	 We don't have a Property* here so there is not much we can do about.
+-	 Maybe it even works cause the sizeof() in *_get_data_size can be
+-	 calculated at compile time. Anyway, a mess ;) --hb
+-      */
+-      size = info->props[i].ops->get_data_size (&info->props[i]);
++      size = info->props[i].ops->get_data_size ();
+       info->ext_attr_size += size;
+       offs += size;
+     }
