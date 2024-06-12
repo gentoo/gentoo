@@ -93,7 +93,6 @@ dev-php/PEAR-Net_LDAP2
 dev-php/PEAR-Net_POP3
 dev-php/PEAR-Net_Ping
 dev-php/PEAR-Net_SmartIRC
-dev-php/PEAR-Net_Socket
 dev-php/PEAR-Net_Traceroute
 dev-php/PEAR-Net_URL
 dev-php/PEAR-Net_URL2
