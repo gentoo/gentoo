@@ -17,7 +17,7 @@ S="${WORKDIR}/${PN}-engine-${MY_COMMIT}/${PN}-engine-core"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 CP_DEPEND="
 	>=dev-java/commons-io-2.8.0:1
