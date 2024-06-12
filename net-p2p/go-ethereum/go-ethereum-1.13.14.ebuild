@@ -27,18 +27,16 @@ src_install() {
 
 	dobin build/bin/geth
 
+	# TODO: replace with wildcard
 	if use devtools; then
 		dobin build/bin/abidump
 		dobin build/bin/abigen
 		dobin build/bin/bootnode
-		dobin build/bin/checkpoint-admin
 		dobin build/bin/clef
 		dobin build/bin/devp2p
 		dobin build/bin/ethkey
 		dobin build/bin/evm
-		dobin build/bin/faucet
 		dobin build/bin/p2psim
-		dobin build/bin/puppeth
 		dobin build/bin/rlpdump
 	fi
 }
