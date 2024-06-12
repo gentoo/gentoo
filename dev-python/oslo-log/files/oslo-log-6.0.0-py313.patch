@@ -1,0 +1,80 @@
+From 60c39a3b874f027f690b49c987daa31c37bfb0e6 Mon Sep 17 00:00:00 2001
+From: Michał Górny <mgorny@gentoo.org>
+Date: Tue, 11 Jun 2024 21:35:58 +0200
+Subject: [PATCH] Replace deprecated logging.warn() calls with logging.warning()
+
+Replace the deprecated logging.warn() calls with logging.warning().
+The former were undocumented, deprecated since Python 3.3 and eventually
+removed in Python 3.13.
+
+See: https://docs.python.org/3.13/whatsnew/3.13.html#logging
+Partial-Bug: 2069084
+Change-Id: I6d1ee13409fe84cd54b7a3aa3ed862bc6e33f1c3
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+
+diff --git a/oslo_log/tests/unit/test_log.py b/oslo_log/tests/unit/test_log.py
+index d17d20a..7c066ae 100644
+--- a/oslo_log/tests/unit/test_log.py
++++ b/oslo_log/tests/unit/test_log.py
+@@ -1115,7 +1115,7 @@
+         self.assertIn(infoexpected, self.stream.getvalue())
+         self.assertEqual('\033[00;36m', infocolor)
+ 
+-        self.colorlog.warn(warn_msg, context=ctxt)
++        self.colorlog.warning(warn_msg, context=ctxt)
+         self.assertIn(infoexpected, self.stream.getvalue())
+         self.assertIn(warnexpected, self.stream.getvalue())
+         self.assertEqual('\033[01;33m', warncolor)
+@@ -1266,7 +1266,7 @@
+         self.mylog.info(info_message, context=ctxt)
+         self.assertEqual(infoexpected, self.stream.getvalue())
+ 
+-        self.mylog.warn(warn_message, context=ctxt)
++        self.mylog.warning(warn_message, context=ctxt)
+         self.assertEqual(infoexpected + warnexpected, self.stream.getvalue())
+ 
+     def test_domain_in_log_msg(self):
+@@ -1590,11 +1590,11 @@
+             stream = self.set_root_stream()
+             log = logging.getLogger("a.a")
+             log.info("info")
+-            log.warn("warn")
++            log.warning("warn")
+             self.assertEqual("warn\n", stream.getvalue())
+         stream = self.set_root_stream()
+         log.info("info")
+-        log.warn("warn")
++        log.warning("warn")
+         self.assertEqual("info\nwarn\n", stream.getvalue())
+ 
+ 
+From cd5eb0fdf4d74150d8e3b014ef43ad0d0cbb9a5d Mon Sep 17 00:00:00 2001
+From: Michał Górny <mgorny@gentoo.org>
+Date: Tue, 11 Jun 2024 21:45:05 +0200
+Subject: [PATCH] Update test_rfc5424_isotime_format_no_microseconds output for py3.13
+
+In Python 3.13, the isotime format does not include microseconds anymore
+if they are zero.  Update the test to account for both possibilities.
+
+Closes-Bug: 2069084
+Change-Id: I8fc022e5ad0df8ec4bd413de12106390d9dbc0f1
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+
+diff --git a/oslo_log/tests/unit/test_log.py b/oslo_log/tests/unit/test_log.py
+index 7c066ae..3176c1c 100644
+--- a/oslo_log/tests/unit/test_log.py
++++ b/oslo_log/tests/unit/test_log.py
+@@ -996,7 +996,10 @@
+         self.config(logging_default_format_string="%(isotime)s %(message)s")
+ 
+         message = "test"
+-        expected = "2015-12-16T13:54:26.000000+00:00 %s\n" % message
++        if sys.version_info >= (3, 13):
++            expected = "2015-12-16T13:54:26+00:00 %s\n" % message
++        else:
++            expected = "2015-12-16T13:54:26.000000+00:00 %s\n" % message
+ 
+         self.log.info(message)
+ 
