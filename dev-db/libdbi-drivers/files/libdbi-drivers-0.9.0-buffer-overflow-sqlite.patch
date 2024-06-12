@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/933427
+https://sourceforge.net/p/libdbi-drivers/libdbi-drivers/ci/7657c4c688c021d5f42a38e998c876d1739d5d8f
+--- a/drivers/sqlite3/dbd_sqlite3.c
++++ b/drivers/sqlite3/dbd_sqlite3.c
+@@ -585,7 +585,8 @@
+   unsigned char *temp;
+   size_t len;
+ 
+-  if ((temp = malloc(from_length*2)) == NULL) {
++  /* allocate an extra byte for NULL and two for the quotes */
++  if ((temp = malloc(2*from_length+1+2)) == NULL) {
+     return 0;
+   }
+ 
