@@ -487,6 +487,10 @@ multilib_src_install() {
 			set_rpath udevadm systemd-hwdb
 			dobin udevadm systemd-hwdb
 			dosym ../../bin/udevadm /usr/lib/systemd/systemd-udevd
+			if use split-usr; then
+				# elogind installs udev rules that hard-code /bin/udevadm
+				dosym ../usr/bin/udevadm /bin/udevadm
+			fi
 
 			exeinto /usr/lib/udev
 			set_rpath {ata_id,cdrom_id,fido_id,iocost,mtd_probe,scsi_id,v4l_id}
