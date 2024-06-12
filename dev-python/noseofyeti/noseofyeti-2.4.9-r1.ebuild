@@ -31,3 +31,9 @@ EPYTEST_DESELECT=(
 	# requires alt-pytest-asyncio
 	tests/test_using_pytest.py::TestPyTest::test_it_collects_tests_correctly
 )
+
+src_install() {
+	distutils-r1_src_install
+	# delete the black .pth thingy, it breaks building CPython (sigh!)
+	find "${ED}" -name '*.pth' -delete || die
+}
