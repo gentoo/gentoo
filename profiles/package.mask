@@ -435,11 +435,6 @@ sci-libs/beagle
 # Removal: 2024-06-12.  Bugs #931879, #734186.
 app-emulation/docker-machine-kvm
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-13)
-# EAPI=6, fails to compile, dead upstream, maintainer-needed.
-# Removal: 2024-06-12.  Bugs #931874, #878771.
-media-gfx/raw-thumbnailer
-
 # Sam James <sam@gentoo.org> (2024-04-28)
 # Masked for testing. Tracker bug: bug #930805.
 >=sys-libs/ncurses-6.5
