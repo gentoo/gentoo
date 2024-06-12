@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2024-06-12)
+# dev-libs/libliftoff not yet marked stable here
+gui-libs/wlroots liftoff
+
 # Sam James <sam@gentoo.org> (2024-04-30)
 # sys-block/nbdkit is not yet marked stable here
 app-emulation/libvirt nbd
