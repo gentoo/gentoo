@@ -9,8 +9,8 @@ inherit edo multilib-minimal verify-sig
 DESCRIPTION="C library that resolves names asynchronously"
 HOMEPAGE="https://c-ares.org/"
 SRC_URI="
-	https://c-ares.org/download/${P}.tar.gz
-	verify-sig? ( https://c-ares.org/download/${P}.tar.gz.asc )
+	https://github.com/c-ares/c-ares/releases/download/cares-${PV//./_}/${P}.tar.gz
+	verify-sig? ( https://github.com/c-ares/c-ares/releases/download/cares-${PV//./_}/${P}.tar.gz.asc )
 "
 
 # ISC for lib/{bitncmp.c,inet_ntop.c,inet_net_pton.c} (bug #912405)
