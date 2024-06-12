@@ -30,9 +30,6 @@ BDEPEND="
 	test? (
 		dev-python/jaraco-path[${PYTHON_USEDEP}]
 		dev-vcs/git
-		!s390? ( !sparc? (
-			dev-vcs/mercurial
-		) )
 	)
 "
 
