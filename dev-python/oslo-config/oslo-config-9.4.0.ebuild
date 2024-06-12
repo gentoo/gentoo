@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
 PYPI_PN=${PN/-/.}
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1 pypi
 
@@ -46,6 +46,11 @@ BDEPEND="
 distutils_enable_tests unittest
 
 src_prepare() {
+	local PATCHES=(
+		# https://review.opendev.org/c/openstack/oslo.log/+/921797
+		"${FILESDIR}/${P}-py313.patch"
+	)
+
 	# broken by some dep upgrade
 	sed -i -e '/DeprecationWarningTestsNoOsloLog/,$d' \
 		oslo_config/tests/test_cfg.py || die
