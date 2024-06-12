@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfred Wingate <parona@protonmail.com> (2024-05-08)
+# Requires virtual/jre which is not available on s390
+dev-db/mysql doc
+
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # Requires sys-devel/{clang,llvm}:16.
 dev-lang/python jit
