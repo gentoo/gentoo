@@ -1,0 +1,37 @@
+commit c9246b1c8b09553250c40d222115c2c0865779e2
+Author: Thomas Lange <thomas-lange2@gmx.de>
+Date:   Sat Nov 25 21:11:29 2023 +0100
+
+    scrobbler2: Don't use deprecated xmlParseMemory function
+    
+    It's only available with the old SAX1 handler which
+    may not be enabled anymore for recent libxml2 versions.
+    
+    Its successor xmlReadMemory() was introduced with version 2.6.0,
+    released in 2003. No real need for a version check then.
+
+diff --git a/src/scrobbler2/scrobbler.h b/src/scrobbler2/scrobbler.h
+index 9236a3159..78f0fdc41 100644
+--- a/src/scrobbler2/scrobbler.h
++++ b/src/scrobbler2/scrobbler.h
+@@ -14,6 +14,7 @@
+ #include <pthread.h>
+ #include <string.h>
+ #include <glib.h>
++#include <libxml/parser.h>
+ #include <libxml/xpath.h>
+ 
+ //audacious includes
+diff --git a/src/scrobbler2/scrobbler_xml_parsing.cc b/src/scrobbler2/scrobbler_xml_parsing.cc
+index 6f2a6d31a..3320a32b0 100644
+--- a/src/scrobbler2/scrobbler_xml_parsing.cc
++++ b/src/scrobbler2/scrobbler_xml_parsing.cc
+@@ -10,7 +10,7 @@ static gboolean prepare_data () {
+     received_data[received_data_size] = '\0';
+     AUDDBG("Data received from last.fm:\n%s\n%%%%End of data%%%%\n", received_data);
+ 
+-    doc = xmlParseMemory(received_data, received_data_size+1);
++    doc = xmlReadMemory(received_data, received_data_size+1, nullptr, nullptr, 0);
+     received_data_size = 0;
+     if (doc == nullptr) {
+         AUDDBG("Document not parsed successfully.\n");
