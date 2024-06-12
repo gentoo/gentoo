@@ -30,10 +30,7 @@ RDEPEND="
 "
 
 BDEPEND="
-	|| (
-		>=dev-python/cython-3.0.2-r1[${PYTHON_USEDEP}]
-		<dev-python/cython-3[${PYTHON_USEDEP}]
-	)
+	>=dev-python/cython-3.0.2-r1[${PYTHON_USEDEP}]
 	virtual/krb5
 	test? (
 		dev-python/k5test[${PYTHON_USEDEP}]
