@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,7 +38,7 @@ timeit() {
 	local xr avg
 	for x in real user; do
 		xr="${x}[*]"
-		avg=$(dc -S 3 -e "${ITERATIONS} ${RUNS} * ${!xr} + + / p")
+		avg=$(dc -e "3 k ${ITERATIONS} ${RUNS} * ${!xr} + + / p")
 
 		printf '%s %4.0f it/s\n' "${x}" "${avg}"
 	done
