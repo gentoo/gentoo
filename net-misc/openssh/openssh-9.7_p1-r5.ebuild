@@ -3,63 +3,33 @@
 
 EAPI=8
 
-inherit user-info optfeature flag-o-matic autotools pam systemd toolchain-funcs verify-sig
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/openssh.org.asc
+inherit user-info flag-o-matic autotools optfeature pam systemd toolchain-funcs verify-sig
 
 # Make it more portable between straight releases
 # and _p? releases.
-MY_P=${P/-contrib/}
-PARCH=${MY_P/_}
+PARCH=${P/_}
 
-# PV to USE for HPN patches
-#HPN_PV="${PV^^}"
-HPN_PV="8.5_P1"
-
-HPN_VER="15.2"
-HPN_PATCHES=(
-	openssh-${HPN_PV/./_}-hpn-DynWinNoneSwitch-${HPN_VER}.diff
-	openssh-${HPN_PV/./_}-hpn-PeakTput-${HPN_VER}.diff
-)
-HPN_GLUE_PATCH="openssh-9.6_p1-hpn-${HPN_VER}-glue.patch"
-HPN_PATCH_DIR="HPN-SSH%%20${HPN_VER/./v}%%20${HPN_PV/_P/p}"
-
-X509_VER="15.0"
-X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
-X509_PATCH="${X509_PATCH/p2/p1}"
-X509_GLUE_PATCH="openssh-${PV}-X509-glue-${X509_VER}.patch"
-#X509_HPN_GLUE_PATCH="${MY_P}-hpn-${HPN_VER}-X509-${X509_VER}-glue.patch"
-X509_HPN_GLUE_PATCH="${MY_P}-hpn-${HPN_VER}-X509-${X509_VER%.1}-glue.patch"
-
-DESCRIPTION="Port of OpenBSD's free SSH release with HPN/X509 patches"
+DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="https://www.openssh.com/"
-SRC_URI="mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
-	${HPN_VER:+hpn? (
-		$(printf "https://downloads.sourceforge.net/project/hpnssh/Patches/${HPN_PATCH_DIR}/%s\n" "${HPN_PATCHES[@]}")
-		https://dev.gentoo.org/~chutzpah/dist/openssh/${HPN_GLUE_PATCH}.xz
-	)}
-	${X509_VER:+X509? (
-		https://roumenpetrov.info/openssh/x509-${X509_VER}/${X509_PATCH}
-		https://dev.gentoo.org/~chutzpah/dist/openssh/${X509_GLUE_PATCH}.xz
-		${HPN_VER:+hpn? ( https://dev.gentoo.org/~chutzpah/dist/openssh/${X509_HPN_GLUE_PATCH}.xz )}
-	)}
+SRC_URI="
+	mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
 	verify-sig? ( mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz.asc )
 "
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/openssh.org.asc
 S="${WORKDIR}/${PARCH}"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 # Probably want to drop ssl defaulting to on in a future version.
-IUSE="abi_mips_n32 audit debug hpn kerberos ldns libedit livecd pam +pie security-key selinux +ssl static test X X509 xmss"
+IUSE="abi_mips_n32 audit debug kerberos ldns libedit livecd pam +pie security-key selinux +ssl static test xmss"
 
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
-	hpn? ( ssl )
 	ldns? ( ssl )
 	pie? ( !static )
 	static? ( !kerberos !pam )
-	X509? ( ssl !xmss !security-key )
 	xmss? ( ssl  )
 	test? ( ssl )
 "
@@ -74,6 +44,7 @@ LIB_DEPEND="
 		net-libs/ldns[ecdsa(+),ssl(+)]
 	)
 	libedit? ( dev-libs/libedit:=[static-libs(+)] )
+	security-key? ( >=dev-libs/libfido2-1.5.0:=[static-libs(+)] )
 	selinux? ( >=sys-libs/libselinux-1.28[static-libs(+)] )
 	ssl? ( >=dev-libs/openssl-1.1.1l-r1:0=[static-libs(+)] )
 	virtual/libcrypt:=[static-libs(+)]
@@ -94,7 +65,7 @@ DEPEND="
 "
 RDEPEND="
 	${RDEPEND}
-	!net-misc/openssh
+	!net-misc/openssh-contrib
 	pam? ( >=sys-auth/pambase-20081028 )
 	!prefix? ( sys-apps/shadow )
 "
@@ -105,24 +76,40 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/openssh-9.3_p1-deny-shmget-shmat-shmdt-in-preauth-privsep-child.patch"
-	"${FILESDIR}/openssh-9.4_p1-Allow-MAP_NORESERVE-in-sandbox-seccomp-filter-maps.patch"
-	"${FILESDIR}/openssh-9.7_p1-config-tweaks.patch"
+	"${FILESDIR}/${PN}-9.4_p1-Allow-MAP_NORESERVE-in-sandbox-seccomp-filter-maps.patch"
+	"${FILESDIR}/${PN}-9.6_p1-fix-xmss-c99.patch"
+	"${FILESDIR}/${PN}-9.7_p1-config-tweaks.patch"
 )
 
 pkg_pretend() {
-	# this sucks, but i'd rather have people unable to `emerge -u openssh`
-	# than not be able to log in to their server any more
-	local missing=()
-	check_feature() { use "${1}" && [[ -z ${!2} ]] && missing+=( "${1}" ); }
-	check_feature hpn HPN_VER
-	check_feature X509 X509_PATCH
-	if [[ ${#missing[@]} -ne 0 ]] ; then
-		eerror "Sorry, but this version does not yet support features"
-		eerror "that you requested: ${missing[*]}"
-		eerror "Please mask ${PF} for now and check back later:"
-		eerror " # echo '=${CATEGORY}/${PF}' >> /etc/portage/package.mask"
-		die "Missing requested third party patch."
+	local i enabled_eol_flags disabled_eol_flags
+	for i in hpn sctp X509; do
+		if has_version "net-misc/openssh[${i}]"; then
+			enabled_eol_flags+="${i},"
+			disabled_eol_flags+="-${i},"
+		fi
+	done
+
+	if [[ -n ${enabled_eol_flags} && ${OPENSSH_EOL_USE_FLAGS_I_KNOW_WHAT_I_AM_DOING} != yes ]]; then
+		# Skip for binary packages entirely because of environment saving, bug #907892
+		[[ ${MERGE_TYPE} == binary ]] && return
+
+		ewarn "net-misc/openssh does not support USE='${enabled_eol_flags%,}' anymore."
+		ewarn "The Base system team *STRONGLY* recommends you not rely on this functionality,"
+		ewarn "since these USE flags required third-party patches that often trigger bugs"
+		ewarn "and are of questionable provenance."
+		ewarn
+		ewarn "If you must continue relying on this functionality, switch to"
+		ewarn "net-misc/openssh-contrib. You will have to remove net-misc/openssh from your"
+		ewarn "world file first: 'emerge --deselect net-misc/openssh'"
+		ewarn
+		ewarn "In order to prevent loss of SSH remote login access, we will abort the build."
+		ewarn "Whether you proceed with disabling the USE flags or switch to the -contrib"
+		ewarn "variant, when re-emerging you will have to set"
+		ewarn
+		ewarn "  OPENSSH_EOL_USE_FLAGS_I_KNOW_WHAT_I_AM_DOING=yes"
+
+		die "Building net-misc/openssh[${disabled_eol_flags%,}] without OPENSSH_EOL_USE_FLAGS_I_KNOW_WHAT_I_AM_DOING=yes"
 	fi
 
 	# Make sure people who are using tcp wrappers are notified of its removal. #531156
@@ -132,113 +119,13 @@ pkg_pretend() {
 	fi
 }
 
-src_unpack() {
-	default
-
-	# We don't have signatures for HPN, X509, so we have to write this ourselves
-	use verify-sig && verify-sig_verify_detached "${DISTDIR}"/${PARCH}.tar.gz{,.asc}
-}
-
 src_prepare() {
-	sed -i \
-		-e "/_PATH_XAUTH/s:/usr/X11R6/bin/xauth:${EPREFIX}/usr/bin/xauth:" \
-		pathnames.h || die
-
 	# don't break .ssh/authorized_keys2 for fun
 	sed -i '/^AuthorizedKeysFile/s:^:#:' sshd_config || die
 
 	[[ -d ${WORKDIR}/patches ]] && PATCHES+=( "${WORKDIR}"/patches )
 
-	eapply -- "${PATCHES[@]}"
-
-	local PATCHSET_VERSION_MACROS=()
-
-	if use X509 ; then
-		pushd "${WORKDIR}" &>/dev/null || die
-		eapply "${WORKDIR}/${X509_GLUE_PATCH}"
-		popd &>/dev/null || die
-
-		eapply "${WORKDIR}"/${X509_PATCH%.*}
-		eapply "${FILESDIR}/openssh-9.0_p1-X509-uninitialized-delay.patch"
-
-		# We need to patch package version or any X.509 sshd will reject our ssh client
-		# with "userauth_pubkey: could not parse key: string is too large [preauth]"
-		# error
-		einfo "Patching package version for X.509 patch set ..."
-		sed -i \
-			-e "s/^AC_INIT(\[OpenSSH\], \[Portable\]/AC_INIT([OpenSSH], [${X509_VER}]/" \
-			"${S}"/configure.ac || die "Failed to patch package version for X.509 patch"
-
-		einfo "Patching version.h to expose X.509 patch set ..."
-		sed -i \
-			-e "/^#define SSH_PORTABLE.*/a #define SSH_X509               \"-PKIXSSH-${X509_VER}\"" \
-			"${S}"/version.h || die "Failed to sed-in X.509 patch version"
-		PATCHSET_VERSION_MACROS+=( 'SSH_X509' )
-	fi
-
-	if use hpn ; then
-		local hpn_patchdir="${T}/openssh-${PV}-hpn${HPN_VER}"
-		mkdir "${hpn_patchdir}" || die
-		cp $(printf -- "${DISTDIR}/%s\n" "${HPN_PATCHES[@]}") "${hpn_patchdir}" || die
-		pushd "${hpn_patchdir}" &>/dev/null || die
-		eapply "${WORKDIR}/${HPN_GLUE_PATCH}"
-		use X509 && eapply "${WORKDIR}/${X509_HPN_GLUE_PATCH}"
-		popd &>/dev/null || die
-
-		eapply "${hpn_patchdir}"
-
-		use X509 || eapply "${FILESDIR}/openssh-9.6_p1-hpn-version.patch"
-
-		einfo "Patching Makefile.in for HPN patch set ..."
-		sed -i \
-			-e "/^LIBS=/ s/\$/ -lpthread/" \
-			"${S}"/Makefile.in || die "Failed to patch Makefile.in"
-
-		einfo "Patching version.h to expose HPN patch set ..."
-		sed -i \
-			-e "/^#define SSH_PORTABLE/a #define SSH_HPN         \"-hpn${HPN_VER//./v}\"" \
-			"${S}"/version.h || die "Failed to sed-in HPN patch version"
-		PATCHSET_VERSION_MACROS+=( 'SSH_HPN' )
-
-		if [[ -n "${HPN_DISABLE_MTAES}" ]] ; then
-			# Before re-enabling, check https://bugs.gentoo.org/354113#c6
-			# and be sure to have tested it.
-			einfo "Disabling known non-working MT AES cipher per default ..."
-
-			cat > "${T}"/disable_mtaes.conf <<- EOF
-
-			# HPN's Multi-Threaded AES CTR cipher is currently known to be broken
-			# and therefore disabled per default.
-			DisableMTAES yes
-			EOF
-			sed -i \
-				-e "/^#HPNDisabled.*/r ${T}/disable_mtaes.conf" \
-				"${S}"/sshd_config || die "Failed to disabled MT AES ciphers in sshd_config"
-
-			sed -i \
-				-e "/AcceptEnv.*_XXX_TEST$/a \\\tDisableMTAES\t\tyes" \
-				"${S}"/regress/test-exec.sh || die "Failed to disable MT AES ciphers in test config"
-		fi
-	fi
-
-	if use X509 || use hpn ; then
-		einfo "Patching sshconnect.c to use SSH_RELEASE in send_client_banner() ..."
-		sed -i \
-			-e "s/PROTOCOL_MAJOR_2, PROTOCOL_MINOR_2, SSH_VERSION/PROTOCOL_MAJOR_2, PROTOCOL_MINOR_2, SSH_RELEASE/" \
-			"${S}"/sshconnect.c || die "Failed to patch send_client_banner() to use SSH_RELEASE (sshconnect.c)"
-
-		einfo "Patching sshd.c to use SSH_RELEASE in sshd_exchange_identification() ..."
-		sed -i \
-			-e "s/PROTOCOL_MAJOR_2, PROTOCOL_MINOR_2, SSH_VERSION/PROTOCOL_MAJOR_2, PROTOCOL_MINOR_2, SSH_RELEASE/" \
-			"${S}"/sshd.c || die "Failed to patch sshd_exchange_identification() to use SSH_RELEASE (sshd.c)"
-
-		einfo "Patching version.h to add our patch sets to SSH_RELEASE ..."
-		sed -i \
-			-e "s/^#define SSH_RELEASE.*/#define SSH_RELEASE     SSH_VERSION SSH_PORTABLE ${PATCHSET_VERSION_MACROS[*]}/" \
-			"${S}"/version.h || die "Failed to patch SSH_RELEASE (version.h)"
-	fi
-
-	eapply_user #473004
+	default
 
 	# These tests are currently incompatible with PORTAGE_TMPDIR/sandbox
 	sed -e '/\t\tpercent \\/ d' \
@@ -314,13 +201,13 @@ src_configure() {
 		$(use_with pam)
 		$(use_with pie)
 		$(use_with selinux)
-		$(usex X509 '' "$(use_with security-key security-key-builtin)")
+		$(use_with security-key security-key-builtin)
 		$(use_with ssl openssl)
 		$(use_with ssl ssl-engine)
 	)
 
 	if use elibc_musl; then
-		# musl defines bogus values for UTMP_FILE and WTMP_FILE
+		# musl defines bogus values for UTMP_FILE and WTMP_FILE (bug #753230)
 		myconf+=( --disable-utmp --disable-wtmp )
 	fi
 
@@ -371,7 +258,7 @@ create_config_dropins() {
 
 	cat <<-EOF > "${WORKDIR}"/etc/ssh/sshd_config.d/9999999gentoo-subsystem.conf || die
 	# override default of no subsystems
-	Subsystem	sftp	${EPREFIX}/usr/libexec/sftp-server
+	Subsystem	sftp	${EPREFIX}/usr/$(get_libdir)/misc/sftp-server
 	EOF
 
 	if use pam ; then
@@ -409,7 +296,7 @@ src_test() {
 		tests+=( tests )
 	fi
 
-	local -x SUDO= SSH_SK_PROVIDER= TEST_SSH_UNSAFE_PERMISSIONS=1 REGRESS_INTEROP_PUTTY=1
+	local -x SUDO= SSH_SK_PROVIDER= TEST_SSH_UNSAFE_PERMISSIONS=1
 	mkdir -p "${HOME}"/.ssh || die
 	emake -j1 "${tests[@]}" </dev/null
 }
@@ -426,9 +313,7 @@ src_install() {
 	fi
 
 	doman contrib/ssh-copy-id.1
-	dodoc CREDITS OVERVIEW README* TODO sshd_config
-	use hpn && dodoc HPN-README
-	use X509 || dodoc ChangeLog
+	dodoc ChangeLog CREDITS OVERVIEW README* TODO sshd_config
 
 	rmdir "${ED}"/var/empty || die
 
@@ -441,6 +326,7 @@ src_install() {
 	insopts -m0644
 	insinto /etc/ssh
 	doins -r "${WORKDIR}"/etc/ssh/ssh_config.d
+	doins "${WORKDIR}"/etc/ssh/ssh_revoked_hosts
 	diropts -m0700
 	insopts -m0600
 	doins -r "${WORKDIR}"/etc/ssh/sshd_config.d
@@ -508,17 +394,5 @@ pkg_postinst() {
 		elog "Be aware that by disabling openssl support in openssh, the server and clients"
 		elog "no longer support dss/rsa/ecdsa keys.  You will need to generate ed25519 keys"
 		elog "and update all clients/servers that utilize them."
-	fi
-
-	if use hpn && [[ -n "${HPN_DISABLE_MTAES}" ]] ; then
-		elog ""
-		elog "HPN's multi-threaded AES CTR cipher is currently known to be broken"
-		elog "and therefore disabled at runtime per default."
-		elog "Make sure your sshd_config is up to date and contains"
-		elog ""
-		elog "  DisableMTAES yes"
-		elog ""
-		elog "Otherwise you maybe unable to connect to this sshd using any AES CTR cipher."
-		elog ""
 	fi
 }
