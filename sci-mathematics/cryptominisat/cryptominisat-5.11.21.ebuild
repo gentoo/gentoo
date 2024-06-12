@@ -31,6 +31,10 @@ DEPEND="
 	${RDEPEND}
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-5.11.21-unistd.patch"
+)
+
 src_configure() {
 	local -a mycmakeargs=(
 		-DNOBREAKID=ON

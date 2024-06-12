@@ -1,0 +1,12 @@
+index f0a9e33..85286be 100644
+--- a/src/picosat/picosat.c
++++ b/src/picosat/picosat.c
+@@ -8148,7 +8148,7 @@ picosat_stats (PS * ps)
+ #else
+ #include <sys/time.h>
+ #include <sys/resource.h>
+-#include <sys/unistd.h>
++#include <unistd.h>
+ #endif
+ 
+ double
