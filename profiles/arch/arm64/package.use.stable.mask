@@ -9,10 +9,6 @@ app-emulation/qemu capstone
 # Experimental, virt-firmware is keyworded only unstable
 sys-kernel/installkernel efistub
 
-# Mart Raudsepp <leio@gentoo.org> (2024-03-03)
-# dev-libs/libliftoff (liftoff) not stable yet on arm64
->=gui-libs/wlroots-0.17.0 liftoff
-
 # Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
 # dev-python/PyQt6 and dev-python/pyside6 are not stable here yet
 dev-python/QtPy pyqt6 pyside6
