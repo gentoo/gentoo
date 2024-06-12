@@ -6,6 +6,7 @@
     <name>X11</name>
   </maintainer>
   <use>
+    <flag name="amd-llvm">Enable LLVM backend for RadeonSI and Radv drivers.</flag>
     <flag name="d3d9">Enable Direct 3D9 API through Nine state tracker. Can be used together with patched wine.</flag>
     <flag name="gles1">Enable GLESv1 support.</flag>
     <flag name="llvm">Enable LLVM backend for Gallium3D.</flag>
