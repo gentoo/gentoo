@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit distutils-r1 pypi
+inherit distutils-r1 pypi toolchain-funcs
 
 DESCRIPTION="Mock library for boto"
 HOMEPAGE="
@@ -56,7 +56,7 @@ BDEPEND="
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
-python_test() {
+src_test() {
 	local EPYTEST_DESELECT=(
 		# TODO
 		tests/test_firehose/test_firehose_put.py::test_put_record_http_destination
@@ -119,6 +119,26 @@ python_test() {
 		tests/test_stepfunctions/parser
 	)
 
+	# test for 32-bit time_t
+	"$(tc-getCC)" ${CFLAGS} ${CPPFLAGS} -c -x c - -o /dev/null <<-EOF &>/dev/null
+		#include <sys/types.h>
+		int test[sizeof(time_t) >= 8 ? 1 : -1];
+	EOF
+
+	if [[ ${?} -eq 0 ]]; then
+		einfo "time_t is at least 64-bit long"
+	else
+		einfo "time_t is smaller than 64 bits, will skip broken tests"
+		EPYTEST_DESELECT+=(
+			tests/test_acm/test_acm.py::test_request_certificate_with_optional_arguments
+			tests/test_s3/test_multiple_accounts_server.py::TestAccountIdResolution::test_with_custom_request_header
+			tests/test_s3/test_server.py::test_s3_server_post_cors_multiple_origins
+		)
+		EPYTEST_IGNORE+=(
+			tests/test_route53domains/test_route53domains_domain.py
+		)
+	fi
+
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	local -x TZ=UTC
 
@@ -150,6 +170,10 @@ python_test() {
 		tests/test_utilities/test_threaded_server.py::TestThreadedMotoServer::test_server_is_reachable
 	)
 
+	distutils-r1_src_test
+}
+
+python_test() {
 	EPYTEST_XDIST= epytest "${serial_tests[@]}"
 
 	EPYTEST_DESELECT+=( "${serial_tests[@]}" )
