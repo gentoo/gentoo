@@ -29,6 +29,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.9.1-musl-stdint.patch
+	"${FILESDIR}"/${PN}-2.9.1-musl.patch
 )
 
 src_configure() {
