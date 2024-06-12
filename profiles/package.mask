@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-12)
+# EAPI=6, library with no reverse dependencies, fails tests, has
+# issues with modern C.
+# Removal on 2024-07-12.  Bugs #934133, #725622, #813240.
+sci-libs/o2scl
+
 # Viorel Munteanu <ceamac@gentoo.org> (2024-06-11)
 # dev-php/pear, dev-php/PEAR-* and their reverse dependencies: mask for removal
 # in 30 days.
