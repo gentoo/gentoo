@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,17 @@ RESTRICT="test"
 
 S="${WORKDIR}/cli-v${PV}-${GIT_COMMIT}"
 
+src_prepare() {
+	default
+
+	sed -i 's;check_update: true;check_update: false;' internal/config/config.yaml.lock || die
+}
+
 src_compile() {
+	emake \
+		GLAB_VERSION=v${PV} \
+		gen-config
+
 	emake \
 		GLAB_VERSION=v${PV} \
 		build manpage
