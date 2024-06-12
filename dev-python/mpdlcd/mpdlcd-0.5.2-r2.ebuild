@@ -1,16 +1,22 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517="setuptools"
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1
 
 DESCRIPTION="A small tool to display the MPD status on a LCDproc server"
-HOMEPAGE="https://github.com/rbarrois/mpdlcd"
-SRC_URI="https://github.com/rbarrois/${PN}/archive/refs/tags/${P}.tar.gz -> ${P}.gh.tar.gz"
+HOMEPAGE="
+	https://github.com/rbarrois/mpdlcd/
+	https://pypi.org/project/mpdlcd/
+"
+SRC_URI="
+	https://github.com/rbarrois/mpdlcd/archive/refs/tags/${P}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="BSD"
