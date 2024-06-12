@@ -12,7 +12,7 @@ TMPFILES_OPTIONAL=1
 EMULTILIB_PKG="true"
 
 # Gentoo patchset (ignored for live ebuilds)
-PATCH_VER=8
+PATCH_VER=9
 PATCH_DEV=dilfridge
 
 # gcc mulitilib bootstrap files version
