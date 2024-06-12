@@ -1,11 +1,19 @@
 #!/bin/bash
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 source tests-common.sh || exit
+source version-funcs.sh || exit
 
 inherit linux-info
+
+use() {
+	case $1 in
+		kernel_linux) return 0 ;;
+	esac
+	die "${FUNCNAME[0]}: unknown flag"
+}
 
 test_get_running_version() {
 	local test_kv=$1 major=$2 minor=$3 patch=$4 extra=$5
