@@ -14,7 +14,7 @@ HOMEPAGE="https://grass.osgeo.org/"
 LICENSE="GPL-2"
 
 if [[ ${PV} =~ "9999" ]]; then
-	SLOT="0/8.4"
+	SLOT="0/8.3"
 else
 	SLOT="0/$(ver_cut 1-2 ${PV})"
 fi
@@ -100,6 +100,11 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 	X? ( dev-lang/swig )"
+
+PATCHES=(
+	# bug 746590
+	"${FILESDIR}/${PN}-flock.patch"
+)
 
 pkg_setup() {
 	if use lapack; then
