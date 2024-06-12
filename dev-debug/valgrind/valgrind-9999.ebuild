@@ -98,7 +98,7 @@ src_prepare() {
 		cp "${S}"/coregrind/link_tool_exe_{linux,solaris}.in
 	fi
 
-	if [[ -d "${WORKDIR}"/${VALGRIND_PATCH_TARBALL} ]] ; then
+	if [[ ${PV} != 9999 && -d "${WORKDIR}"/${VALGRIND_PATCH_TARBALL} ]] ; then
 		PATCHES+=( "${WORKDIR}"/${VALGRIND_PATCH_TARBALL} )
 	fi
 
