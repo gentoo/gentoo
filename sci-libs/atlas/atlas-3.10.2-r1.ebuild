@@ -1,11 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 FORTRAN_NEEDED=fortran
 
-inherit fortran-2 toolchain-funcs versionator
+inherit fortran-2 toolchain-funcs
 
 LAPACKP=lapack-3.6.0.tgz
 
@@ -13,16 +13,12 @@ DESCRIPTION="Automatically Tuned Linear Algebra Software"
 HOMEPAGE="https://math-atlas.sourceforge.net"
 SRC_URI="https://downloads.sourceforge.net/math-atlas/${PN}${PV}.tar.bz2
 	fortran? ( lapack? ( http://www.netlib.org/lapack/${LAPACKP} ) )"
+S="${WORKDIR}/ATLAS"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc fortran generic lapack static-libs threads"
-
-RDEPEND=""
-DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/ATLAS"
 
 PATCHES=(
 	"${FILESDIR}/${P}-x32-support.patch"
@@ -48,9 +44,9 @@ src_configure() {
 	[[ ${mycc} == *gcc* ]] && mycc=gcc
 	atlas_configure() {
 		local myconf=(
-			--prefix="${ED}/usr"
-			--libdir="${ED}/usr/$(get_libdir)"
-			--incdir="${ED}/usr/include"
+			--prefix="/usr"
+			--libdir="/usr/$(get_libdir)"
+			--incdir="/usr/include"
 			--cc="$(tc-getCC)"
 			"-D c -DWALL"
 			"-C acg '${mycc}'"
@@ -143,7 +139,7 @@ src_test() {
 atlas_install_libs() {
 	local libname=$(basename ${1%.*})
 	einfo "Installing ${libname}"
-	local soname=${libname}.so.$(get_major_version)
+	local soname=${libname}.so.$(ver_cut 1)
 	shift
 	pushd "${S}_shared"/lib > /dev/null
 	${LINK:-$(tc-getCC)} ${LDFLAGS} -shared -Wl,-soname=${soname} \
