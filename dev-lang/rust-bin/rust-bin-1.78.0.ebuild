@@ -27,6 +27,9 @@ SRC_URI+=" mips? (
 		!big-endian? ( ${GENTOO_BIN_BASEURI}/${MY_P}-mips64el-unknown-linux-gnuabi64.tar.xz )
 	)
 )"
+SRC_URI+=" riscv? (
+	elibc_musl? ( ${GENTOO_BIN_BASEURI}/${MY_P}-riscv64gc-unknown-linux-musl.tar.xz )
+)"
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4"
 SLOT="stable"
