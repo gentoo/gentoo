@@ -1,0 +1,16 @@
+--- a/tests/test_non_host.py	2024-06-12 21:33:13.696206671 +0200
++++ b/tests/test_non_host.py	2024-06-12 21:46:40.146193582 +0200
+@@ -32,10 +32,10 @@
+     result = virtualenv.cli_run([str(tmp_path / "venv"), "--activators", ""])
+     py = str(result.creator.exe.relative_to(tmp_path))
+     cmd = ["", f"--python={result.creator.exe}"] if args_joined else ["", "--python", py]
+-    mocker.patch("pipdeptree._discovery.sys.argv", cmd)
++    mocker.patch("pipdeptree._discovery.sys.argv", [*cmd, "-j"])
+     main()
+     out, _ = capfd.readouterr()
+-    found = {i.split("==")[0] for i in out.splitlines()}
++    found = {i["package"]["package_name"] for i in json.loads(out)}
+     implementation = python_implementation()
+     if implementation == "CPython":
+         expected = {"pip", "setuptools", "wheel"}
+
