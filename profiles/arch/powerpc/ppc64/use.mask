@@ -1,7 +1,11 @@
-# Copyright 2008-2023 Gentoo Authors
+# Copyright 2008-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ### THIS FILE IS ONLY FOR PACKAGES MASKED ON BOTH 64-BIT AND 32-BIT USERLAND!!!
+
+# Sam James <sam@gentoo.org> (2024-06-13)
+# Needs as-yet-unkeyworded KF6 (bug #934215)
+kf6compat
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-03-29)
 # not available here (see openexr, opencolorio, opencv)
