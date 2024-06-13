@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -54,7 +54,8 @@ multilib_src_configure() {
 		-DABSL_ENABLE_INSTALL=TRUE
 		-DABSL_USE_EXTERNAL_GOOGLETEST=ON
 		-DABSL_PROPAGATE_CXX_STD=TRUE
-		-DABSL_BUILD_TEST_HELPERS=$(usex test ON OFF)
+		# TEST_HELPERS needed for protobuf (bug #915902)
+		-DABSL_BUILD_TEST_HELPERS=ON
 		-DABSL_BUILD_TESTING=$(usex test ON OFF)
 		$(usex test -DBUILD_TESTING=ON '') # intentional usex, it used both variables for tests.
 	)
