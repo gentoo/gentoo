@@ -18,7 +18,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/unicorn-engine/unicorn"
 else
 	SRC_URI="https://github.com/unicorn-engine/unicorn/archive/${MY_PV}.tar.gz -> ${P}.gh.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 S="${WORKDIR}/${PN}-${MY_PV}"
@@ -35,6 +35,11 @@ BDEPEND="virtual/pkgconfig
 	python? ( ${DISTUTILS_DEPS} )"
 
 UNICORN_TARGETS="x86 arm aarch64 riscv mips sparc m68k ppc s390x tricore"
+
+PATCHES=(
+	"${FILESDIR}/${P}-strict-prototypes.patch"
+	"${FILESDIR}/${P}-old-style-declaration.patch"
+)
 
 # suppress warning wrt 'implicit function declaration' in config logs due to
 # auto-detection of some libc functions (bug #906919)
