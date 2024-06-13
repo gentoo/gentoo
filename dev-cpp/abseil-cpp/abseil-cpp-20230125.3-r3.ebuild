@@ -16,13 +16,11 @@ SLOT="0/${PV%%.*}.0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="test"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
-
+RDEPEND=">=dev-cpp/gtest-1.13.0[${MULTILIB_USEDEP}]"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
 	test? (
-		>=dev-cpp/gtest-1.13.0
 		sys-libs/timezone-data
 	)
 "
