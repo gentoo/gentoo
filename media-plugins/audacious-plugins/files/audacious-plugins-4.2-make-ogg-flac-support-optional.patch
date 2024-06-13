@@ -1,0 +1,61 @@
+From 49e0dc8eeb620651174c983236fa65c688295584 Mon Sep 17 00:00:00 2001
+From: Thomas Lange <thomas-lange2@gmx.de>
+Date: Wed, 31 Aug 2022 01:20:11 +0200
+Subject: [PATCH] flac: Make Ogg FLAC support optional. Closes: #1181
+
+If Ogg FLAC support is available depends on how the
+FLAC library was compiled (-DWITH_OGG=ON/OFF).
+
+See also: https://xiph.org/flac/api/group__flac__stream__decoder.html#details
+---
+ src/flac/plugin.cc | 25 +++++++++++++++++++++----
+ 1 file changed, 21 insertions(+), 4 deletions(-)
+
+diff --git a/src/flac/plugin.cc b/src/flac/plugin.cc
+index b84bd458a..da435d2fc 100644
+--- a/src/flac/plugin.cc
++++ b/src/flac/plugin.cc
+@@ -52,13 +52,22 @@ bool FLACng::init()
+         eof_callback, write_callback, metadata_callback, error_callback,
+         &s_cinfo);
+ 
+-    if (ret1 != FLAC__STREAM_DECODER_INIT_STATUS_OK ||
+-        ret2 != FLAC__STREAM_DECODER_INIT_STATUS_OK)
++    if (ret1 != FLAC__STREAM_DECODER_INIT_STATUS_OK)
+     {
+-        AUDERR("Could not initialize the FLAC decoders!\n");
++        AUDERR("Could not initialize the main FLAC decoder!\n");
+         return false;
+     }
+ 
++    if (ret2 != FLAC__STREAM_DECODER_INIT_STATUS_OK)
++    {
++        /* Only treat this as error if Ogg FLAC support is available */
++        if (FLAC_API_SUPPORTS_OGG_FLAC)
++        {
++            AUDERR("Could not initialize the Ogg FLAC decoder!\n");
++            return false;
++        }
++    }
++
+     s_decoder = std::move(flac_decoder);
+     s_ogg_decoder = std::move(ogg_flac_decoder);
+ 
+@@ -117,8 +126,16 @@ bool FLACng::play(const char *filename, VFSFile &file)
+     Index<char> play_buffer;
+     bool error = false;
+     bool stream = (file.fsize() < 0);
++    bool _is_ogg_flac = is_ogg_flac(file);
+     auto tuple = stream ? get_playback_tuple() : Tuple();
+-    auto decoder = is_ogg_flac(file) ? s_ogg_decoder.get() : s_decoder.get();
++    auto decoder = _is_ogg_flac && FLAC_API_SUPPORTS_OGG_FLAC
++                       ? s_ogg_decoder.get() : s_decoder.get();
++
++    if (_is_ogg_flac && !FLAC_API_SUPPORTS_OGG_FLAC)
++    {
++        AUDWARN("Ogg FLAC file detected, but your FLAC library does not support "
++                "this format. Falling back to the main FLAC decoder.\n");
++    }
+ 
+     s_cinfo.fd = &file;
+ 
