@@ -571,8 +571,8 @@ src_test() {
 }
 
 src_install() {
-	dobin target/$(usex debug "debug" "release")/yr
-	dolib.so target/$(usex debug "debug" "release")/*.so
+	dobin "$(cargo_target_dir)"/yr
+	dolib.so "$(cargo_target_dir)"/*.so
 
 	wrap_python ${FUNCNAME}
 }
