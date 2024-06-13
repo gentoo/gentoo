@@ -281,7 +281,7 @@ python_install_all() {
 		RM_CONTRIB+=( chg )
 	fi
 	if use rust; then
-		dobin rust/target/release/rhg
+		dobin "rust/$(cargo_target_dir)/rhg"
 	fi
 
 	for f in ${RM_CONTRIB[@]}; do
