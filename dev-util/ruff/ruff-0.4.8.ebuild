@@ -415,7 +415,7 @@ src_compile() {
 	cargo_src_compile --bin ruff
 
 	local releasedir
-	releasedir=target/$(usex 'debug' 'debug' 'release')
+	releasedir=$(cargo_target_dir)
 
 	${releasedir}/ruff generate-shell-completion bash > ruff-completion.bash || die
 	${releasedir}/ruff generate-shell-completion zsh > ruff-completion.zsh || die
@@ -431,7 +431,7 @@ src_test() {
 }
 
 src_install() {
-	local releasedir=target/$(usex 'debug' 'debug' 'release')
+	local releasedir=$(cargo_target_dir)
 
 	dobin ${releasedir}/ruff
 
