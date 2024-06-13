@@ -4,6 +4,7 @@
 # Sam James <sam@gentoo.org> (2024-06-13)
 # Needs as-yet-unkeyworded KF6 (bug #934215)
 app-crypt/pinentry qt6
+app-office/libreoffice qt6
 
 # WANG Xuerui <xen0n@gentoo.org> (2024-06-03)
 # Requires arch-specific code in python (relocs handling), in addition to
