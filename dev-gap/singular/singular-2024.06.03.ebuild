@@ -6,10 +6,9 @@ EAPI=8
 inherit gap-pkg
 
 DESCRIPTION="GAP interface to sci-mathematics/singular"
-SLOT="0"
 SRC_URI="https://github.com/gap-packages/${PN}/releases/download/v${PV}/${P}.tar.gz"
-
 LICENSE="GPL-2+"
+SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="sci-mathematics/singular"
