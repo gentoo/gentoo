@@ -347,44 +347,6 @@ dev-ruby/uconv
 # https://github.com/psf/requests/pull/6667#issuecomment-2124283071
 =dev-python/requests-2.32.2
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-05-24)
-# Perl 5.40.0 mask. Use this block to unmask for testing.
-~dev-lang/perl-5.40.0
-~virtual/perl-Archive-Tar-3.20.10_rc
-~virtual/perl-autodie-2.370.0
-~virtual/perl-bignum-0.670.0
-~virtual/perl-Compress-Raw-Bzip2-2.212.0
-~virtual/perl-CPAN-Meta-Requirements-2.143.0
-~virtual/perl-Data-Dumper-2.189.0
-~virtual/perl-DB_File-1.859.0
-~virtual/perl-Devel-PPPort-3.720.0
-~virtual/perl-Exporter-5.780.0
-~virtual/perl-ExtUtils-CBuilder-0.280.240
-~virtual/perl-ExtUtils-Manifest-1.750.0
-~virtual/perl-File-Spec-3.900.0
-~virtual/perl-HTTP-Tiny-0.88.0
-~virtual/perl-IO-1.550.0
-~virtual/perl-IO-Compress-2.212.0
-~virtual/perl-IO-Socket-IP-0.420.0
-~virtual/perl-IO-Zlib-1.150.0
-~virtual/perl-Math-BigInt-2.3.2
-~virtual/perl-Math-BigInt-FastCalc-0.501.800
-~virtual/perl-Math-BigRat-2.3.2
-~virtual/perl-Module-CoreList-5.202.406.90
-~virtual/perl-Module-Metadata-1.0.38
-~virtual/perl-podlators-5.10.200_rc
-~virtual/perl-Pod-Simple-3.450.0
-~virtual/perl-Safe-2.460.0
-~virtual/perl-Socket-2.38.0
-~virtual/perl-Test-Harness-3.480.0
-~virtual/perl-Test-Simple-1.302.199
-~virtual/perl-Text-Tabs+Wrap-2024.1.0
-~virtual/perl-threads-2.400.0
-~virtual/perl-threads-shared-1.690.0
-~virtual/perl-Time-HiRes-1.977.700
-~virtual/perl-Time-Local-1.350.0
-~virtual/perl-version-0.993.0
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-23)
 # EAPI=6, maintainer-needed, dead HOMEPAGE, fails to compile.
 # Removal on 2024-06-22.  Bugs #932571, #902899, #887625, #853025, #672702.
