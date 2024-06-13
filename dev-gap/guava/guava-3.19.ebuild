@@ -3,13 +3,12 @@
 
 EAPI=8
 
-inherit flag-o-matic gap-pkg toolchain-funcs
+inherit gap-pkg toolchain-funcs
 
 DESCRIPTION="GAP package for computing with error-correcting codes"
-SLOT="0"
 SRC_URI="https://github.com/gap-packages/${PN}/releases/download/v${PV}/${P}.tar.gz"
-
 LICENSE="|| ( GPL-2 GPL-3 )"
+SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="sci-mathematics/gap"
@@ -26,9 +25,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# https://github.com/gap-packages/guava/issues/90
-	append-cflags -Wno-error=strict-prototypes
-
 	# This will run the top-level fake ./configure...
 	gap-pkg_src_configure
 
