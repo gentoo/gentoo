@@ -5,6 +5,7 @@
 # Requires ieee-long-double, i.e. ppc64le with 23.0
 # profiles and up, #892183
 dev-python/sympy
+dev-python/symengine
 
 # Rahil Bhimjiani <me@rahil.rocks> (2024-03-20)
 # https://bugs.gentoo.org/925111

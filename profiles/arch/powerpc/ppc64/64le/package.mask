@@ -4,6 +4,7 @@
 # matoro <matoro_gentoo@matoro.tk> (2024-06-10)
 # Unmask for ppc64le, #892183
 -dev-python/sympy
+-dev-python/symengine
 
 # Michał Górny <mgorny@gentoo.org> (2024-04-24)
 # Unmask ppc64le binpkg.
