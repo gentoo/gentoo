@@ -13,6 +13,7 @@ LICENSE="ISC"
 SLOT="0/10"
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="bzip2 curl test threads tools cpu_flags_x86_sse2 cpu_flags_x86_ssse3"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	app-alternatives/yacc
