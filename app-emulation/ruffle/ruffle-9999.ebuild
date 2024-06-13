@@ -75,9 +75,7 @@ src_install() {
 	make_desktop_entry ${PN} ${PN^} ${PN} "AudioVideo;Player;Emulator;" \
 		"MimeType=application/x-shockwave-flash;application/vnd.adobe.flash.movie;"
 
-	# TODO: swap with /gentoo after https://github.com/gentoo/gentoo/pull/29510
-	cd target/$(usex debug{,} release) || die
-
+	cd "$(cargo_target_dir)" || die
 	newbin ${PN}_desktop ${PN}
 	newbin exporter ${PN}_exporter
 	dobin ${PN}_scanner
