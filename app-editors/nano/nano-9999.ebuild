@@ -21,7 +21,6 @@ IUSE="debug justify magic minimal ncurses nls +spell unicode"
 
 RDEPEND="
 	>=sys-libs/ncurses-5.9-r1:=[unicode(+)?]
-	sys-libs/ncurses:=
 	magic? ( sys-apps/file )
 	nls? ( virtual/libintl )
 "
