@@ -290,9 +290,9 @@ src_compile() {
 }
 
 src_install() {
-	newlib.so target/$(usex debug debug release)/librpm_sequoia.so librpm_sequoia.so.1
+	newlib.so "$(cargo_target_dir)"/librpm_sequoia.so librpm_sequoia.so.1
 	dosym librpm_sequoia.so.1 /usr/$(get_libdir)/librpm_sequoia.so
 
 	insinto /usr/$(get_libdir)/pkgconfig
-	doins target/$(usex debug debug release)/rpm-sequoia.pc
+	doins "$(cargo_target_dir)"/rpm-sequoia.pc
 }
