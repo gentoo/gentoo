@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/elem/${PN}-src-${PV}-Linux.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 sparc ~x86"
+KEYWORDS="amd64 ~x86"
 
 DEPEND="x11-libs/xforms"
 RDEPEND="${DEPEND}"
