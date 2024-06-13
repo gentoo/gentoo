@@ -505,7 +505,7 @@ src_configure() {
 src_compile() {
 	cargo_src_compile
 
-	ATUIN_BIN="target/$(usex debug debug release)/${PN}"
+	ATUIN_BIN="$(cargo_target_dir)/${PN}"
 
 	# Prepare shell completion generation
 	mkdir completions || die
