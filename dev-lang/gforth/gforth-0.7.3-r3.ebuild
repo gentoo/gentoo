@@ -1,12 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit elisp-common
 
 DESCRIPTION="GNU Forth is a fast and portable implementation of the ANSI Forth language"
-HOMEPAGE="https://www.gnu.org/software/gforth"
+HOMEPAGE="https://www.gnu.org/software/gforth/"
 SRC_URI="mirror://gnu/gforth/${P}.tar.gz"
 
 LICENSE="GPL-3"
@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv ~x86 ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="+check emacs"
 
 DEPEND="dev-libs/ffcall
+	dev-libs/libltdl
 	emacs? ( >=app-editors/emacs-23.1:* )"
 RDEPEND="${DEPEND}"
 
