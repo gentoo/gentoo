@@ -18,9 +18,9 @@ fi
 
 DESCRIPTION="Lightweight user-defined software stacks for high-performance computing"
 HOMEPAGE="https://hpc.github.io/charliecloud/"
+LICENSE="Apache-2.0"
 
 SLOT="0"
-LICENSE="Apache-2.0"
 IUSE="ch-image doc"
 
 # Extensive test suite exists, but downloads container images
@@ -30,6 +30,9 @@ RESTRICT="test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+BDEPEND="
+	virtual/pkgconfig
+"
 RDEPEND="${PYTHON_DEPS}
 	elibc_musl? ( sys-libs/argp-standalone )
 "
