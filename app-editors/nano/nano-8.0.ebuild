@@ -3,8 +3,6 @@
 
 EAPI=8
 
-inherit flag-o-matic
-
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/nano.git"
 	inherit autotools git-r3
