@@ -35,6 +35,11 @@ BDEPEND+="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/libnftnl-1.2.6-lld-0.patch"
+	"${FILESDIR}/libnftnl-1.2.6-lld-1.patch"
+)
+
 pkg_setup() {
 	if kernel_is ge 3 13; then
 		CONFIG_CHECK="~NF_TABLES"
