@@ -44,7 +44,7 @@ src_unpack() {
 
 src_prepare() {
 	default
-	sed -i -e "s|m0755 bin|m0755 target/$(usex debug debug release)|g;" Makefile || die
+	sed -i -e "s|m0755 bin|m0755 $(cargo_target_dir)|g;" Makefile || die
 }
 
 src_compile() {
