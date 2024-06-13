@@ -6,7 +6,7 @@
 # maintainer-needed@gentoo.org
 # @AUTHOR:
 # Amadeusz Żołnowski <aidecoe@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Build Erlang/OTP projects using dev-util/rebar.
 # @DESCRIPTION:
 # An eclass providing functions to build Erlang/OTP projects using
@@ -20,7 +20,7 @@
 # installation in a generic way for Erlang/OTP structured projects.
 
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -33,9 +33,6 @@ BDEPEND="
 	dev-util/rebar:0
 	>=sys-apps/gawk-4.1
 "
-if [[ ${EAPI} == 6 ]]; then
-	DEPEND+=" ${BDEPEND}"
-fi
 
 # @ECLASS_VARIABLE: REBAR_APP_SRC
 # @DESCRIPTION:
@@ -252,7 +249,7 @@ rebar_src_install() {
 	[[ -d bin ]] && for bin in bin/*; do dobin "$bin"; done
 
 	if [[ -d priv ]]; then
-		cp -pR priv "${ED%/}${dest}/" || die "failed to install priv/"
+		cp -pR priv "${ED}${dest}/" || die "failed to install priv/"
 	fi
 
 	einstalldocs
