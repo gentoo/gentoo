@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,13 @@ quiet() {
 sc() { EBUILD_PHASE=install quiet save_config "$@" ; }
 rc() { EBUILD_PHASE=prepare quiet restore_config "$@" ; }
 
-cleanup() { rm -rf "${ED}"/* "${T}"/* "${WORKDIR}"/* ; }
+cleanup() {
+	# make sure that these variables exist
+	[[ -n ${ED} && -n ${T} && -n ${WORKDIR} ]] \
+		|| { die "${FUNCNAME[0]}: undefined variable"; exit 1; }
+	rm -rf "${ED}"/* "${T}"/* "${WORKDIR}"/*
+}
+
 test-it() {
 	local ret=0
 	tbegin "$@"
@@ -26,7 +32,7 @@ test-it() {
 	: $(( ret |= $? ))
 	pushd "${WORKDIR}" >/dev/null
 	: $(( ret |= $? ))
-	test
+	test_sc
 	: $(( ret |= $? ))
 	popd >/dev/null
 	: $(( ret |= $? ))
@@ -34,21 +40,21 @@ test-it() {
 	cleanup
 }
 
-test() {
+test_sc() {
 	touch f || return 1
 	sc f || return 1
 	[[ -f ${ED}/etc/portage/savedconfig/${CATEGORY}/${PF} ]]
 }
 test-it "simple save_config"
 
-test() {
+test_sc() {
 	touch a b c || return 1
 	sc a b c || return 1
 	[[ -d ${ED}/etc/portage/savedconfig/${CATEGORY}/${PF} ]]
 }
 test-it "multi save_config"
 
-test() {
+test_sc() {
 	mkdir dir || return 1
 	touch dir/{a,b,c} || return 1
 	sc dir || return 1
@@ -58,14 +64,14 @@ test-it "dir save_config"
 
 PORTAGE_CONFIGROOT=${D}
 
-test() {
+test_sc() {
 	echo "ggg" > f || return 1
 	rc f || return 1
 	[[ $(<f) == "ggg" ]]
 }
 test-it "simple restore_config"
 
-test() {
+test_sc() {
 	echo "ggg" > f || return 1
 	rc f || return 1
 	[[ $(<f) == "ggg" ]] || return 1
