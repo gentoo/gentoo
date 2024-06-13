@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -262,10 +262,7 @@ src_prepare() {
 
 	if use prefix ; then
 		# bug #757309
-		sed -i \
-			-e 's:/usr/local/opt/gettext/:/do/not/look/elsewhere/:g' \
-			-e 's:/opt/homebrew/:/do/not/look/elsewhere/:g' \
-			config.mak.uname || die
+		eapply "${FILESDIR}"/git-2.37.2-darwin-prefix-gettext.patch
 	fi
 
 	sed -i \
@@ -571,6 +568,7 @@ src_install() {
 	local contrib_objects=(
 		buildsystems
 		fast-import
+		hg-to-git
 		hooks
 		remotes2config.sh
 		rerere-train.sh

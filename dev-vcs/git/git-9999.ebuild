@@ -58,7 +58,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+blksha1 +curl cgi doc keyring +gpg highlight +iconv mediawiki +nls +pcre perforce +perl +safe-directory selinux subversion tk +webdav xinetd cvs test"
+IUSE="+blksha1 +curl cgi doc keyring +gpg highlight +iconv make-symlinks mediawiki +nls +pcre perforce +perl +safe-directory selinux subversion tk +webdav xinetd cvs test"
 
 # Common to both DEPEND and RDEPEND
 DEPEND="
@@ -174,6 +174,7 @@ exportmakeopts() {
 		$(usex perl 'INSTALLDIRS=vendor NO_PERL_CPAN_FALLBACKS=YesPlease' NO_PERL=YesPlease)
 
 		$(usev elibc_musl NO_REGEX=NeedsStartEnd)
+		$(usev make-symlinks INSTALL_SYMLINKS=YesPlease)
 		$(usev !cvs NO_CVS=YesPlease)
 		$(usev !iconv NO_ICONV=YesPlease)
 		$(usev !nls NO_GETTEXT=YesPlease)
