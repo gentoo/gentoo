@@ -4,6 +4,7 @@
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">pypa/pyproject-metadata</remote-id>
 		<remote-id type="pypi">pyproject-metadata</remote-id>
