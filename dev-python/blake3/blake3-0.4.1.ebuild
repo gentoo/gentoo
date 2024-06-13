@@ -113,6 +113,11 @@ src_unpack() {
 }
 
 src_prepare() {
+	local PATCHES=(
+		# https://github.com/oconnor663/blake3-py/pull/44
+		"${FILESDIR}/${P}-gcc14.patch"
+	)
+
 	# sed the package name and version to improve compatibility
 	sed -e 's:blake3_experimental_c:blake3:' \
 		-e "s:0[.]0[.]1:${PV}:" \
