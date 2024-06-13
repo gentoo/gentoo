@@ -10,17 +10,9 @@ app-office/libreoffice qt6
 # No PyQt6 (which is needed by USE=qt6 for qscintilla-python) on x86.
 >=dev-python/qscintilla-python-2.14.1-r1 qt6
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-03-24)
-# Requires unkeyworded dev-qt/qtwebengine
-net-p2p/ktorrent rss
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-21)
 # virt-firmware is keyworded here
 sys-kernel/installkernel -efistub
-
-# Guilherme Amadio <amadio@gentoo.org> (2024-03-09)
-# Qt6 not keyworded on x86
-sci-physics/root qt6
 
 # Sam James <sam@gentoo.org> (2024-03-04)
 # Miscompiles rust and fails to bootstrap (bug #923278)
@@ -111,8 +103,9 @@ kde-misc/kio-gdrive share
 net-irc/quassel urlpreview
 net-misc/fatrat bittorrent
 net-misc/seafile-client shibboleth
+net-p2p/ktorrent rss
 sci-mathematics/yacas gui
-sci-physics/root qt5
+sci-physics/root qt5 qt6
 
 # Ionen Wolkens <ionen@gentoo.org> (2022-11-07)
 # Vulkan is usable here.
