@@ -175,7 +175,7 @@ src_install() {
 	emake \
 		DESTDIR="${D}" \
 		DATADIR="${ED}/usr/share" \
-		PDATA_TOOLS="target/$(usex debug debug release)/pdata_tools" \
+		PDATA_TOOLS="$(cargo_target_dir)/pdata_tools" \
 		install
 
 	einstalldocs
