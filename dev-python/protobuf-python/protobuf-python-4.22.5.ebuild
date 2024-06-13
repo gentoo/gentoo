@@ -56,6 +56,7 @@ PARENT_PATCHES=(
 
 # Here for patches within "python/" subdirectory.
 PATCHES=(
+	"${FILESDIR}/${PN}-4.22.5-python.patch"
 )
 
 python_prepare_all() {
