@@ -74,6 +74,11 @@ src_compile() {
 	fi
 }
 
+src_test() {
+	local -x srcdir="${S}"/src
+	cmake-multilib_src_test
+}
+
 multilib_src_install_all() {
 	find "${ED}" -name "*.la" -delete || die
 
