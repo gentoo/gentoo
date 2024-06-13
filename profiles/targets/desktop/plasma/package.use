@@ -4,6 +4,7 @@
 # Sam James <sam@gentoo.org> (2024-06-13)
 # Needed by dependencies of KDE Plasma and KDE Gear
 app-crypt/gpgme qt6
+app-crypt/pinentry qt6
 app-crypt/qca qt6
 app-text/poppler qt6
 dev-libs/qtkeychain qt6
