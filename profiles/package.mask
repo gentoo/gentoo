@@ -101,7 +101,6 @@ dev-php/PEAR-Net_DNSBL
 dev-php/PEAR-Net_IDNA2
 dev-php/PEAR-Net_IPv4
 dev-php/PEAR-Net_IPv6
-dev-php/PEAR-Net_LDAP2
 dev-php/PEAR-Net_POP3
 dev-php/PEAR-Net_Ping
 dev-php/PEAR-Net_SmartIRC
