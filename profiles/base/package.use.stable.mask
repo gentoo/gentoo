@@ -4,6 +4,11 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-06-13)
+# Building with qt6 requires (masked) kde-frameworks:6
+app-admin/calamares qt6
+app-crypt/pinentry qt6
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-04-14)
 # Qt6 dependencies are not yet available in stable. Moreover,
 # Qt6 support in freecad is not completely finished.
