@@ -224,6 +224,6 @@ src_install() {
 
 	mkdir -p "${D}"/usr/$(get_libdir)/firefox || die "Failed to create /usr/lib*/firefox directory."
 	exeinto /usr/$(get_libdir)/firefox
-	doexe target/release/geckodriver
+	doexe "$(cargo_target_dir)"/geckodriver
 	dosym -r /usr/$(get_libdir)/firefox/geckodriver /usr/bin/geckodriver
 }
