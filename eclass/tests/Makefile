@@ -1,5 +1,5 @@
 SH_FILES := $(wildcard *.sh)
-TEST_FILES := $(filter-out tests-common.sh, $(SH_FILES))
+TEST_FILES := $(filter-out tests-common.sh version-funcs.sh, $(SH_FILES))
 TEST_OK_FILES := $(patsubst %.sh, .%.sh.ok,$ $(TEST_FILES))
 
 # We cache a successful test result if the testfile itself did not
