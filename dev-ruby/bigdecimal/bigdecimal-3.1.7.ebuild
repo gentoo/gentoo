@@ -20,6 +20,8 @@ KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~
 SLOT="0"
 IUSE="test"
 
+ruby_add_bdepend "test? ( dev-ruby/test-unit dev-ruby/test-unit-ruby-core )"
+
 all_ruby_prepare() {
 	sed -e '/^source_version/,/^end/ s:^:#:' \
 		-e "/s.version/ s/= source_version/= '${PV}'/" \
