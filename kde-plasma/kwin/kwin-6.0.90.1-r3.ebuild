@@ -118,6 +118,10 @@ BDEPEND="
 "
 PDEPEND=">=kde-plasma/kde-cli-tools-${PVCUT}:*"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.0.90.1-libcxx.patch
+)
+
 src_prepare() {
 	ecm_src_prepare
 
