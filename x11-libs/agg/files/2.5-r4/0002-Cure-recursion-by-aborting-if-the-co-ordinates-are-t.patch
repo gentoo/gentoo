@@ -1,0 +1,40 @@
+From e269fe9b62af6fe314cebe0ee7a6d6d1a4a84d1c Mon Sep 17 00:00:00 2001
+From: Tom Hughes <tom@compton.nu>
+Date: Sun, 19 May 2013 11:03:26 +0100
+Subject: [PATCH 02/15] Cure recursion by aborting if the co-ordinates are to
+ big to handle
+
+---
+ include/agg_rasterizer_cells_aa.h | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/include/agg_rasterizer_cells_aa.h b/include/agg_rasterizer_cells_aa.h
+index d3bb138..3a616d9 100644
+--- a/include/agg_rasterizer_cells_aa.h
++++ b/include/agg_rasterizer_cells_aa.h
+@@ -40,7 +40,8 @@
+ #define AGG_RASTERIZER_CELLS_AA_INCLUDED
+ 
+ #include <string.h>
+-#include <math.h>
++#include <cstdlib>
++#include <limits>
+ #include "agg_math.h"
+ #include "agg_array.h"
+ 
+@@ -333,6 +334,12 @@ namespace agg
+         {
+             int cx = (x1 + x2) >> 1;
+             int cy = (y1 + y2) >> 1;
++
++            // Bail if values are so large they are likely to wrap
++            if ((std::abs(x1) >= std::numeric_limits<int>::max()/2) || (std::abs(y1) >= std::numeric_limits<int>::max()/2) ||
++                (std::abs(x2) >= std::numeric_limits<int>::max()/2) || (std::abs(y2) >= std::numeric_limits<int>::max()/2))
++                    return;
++
+             line(x1, y1, cx, cy);
+             line(cx, cy, x2, y2);
+         }
+-- 
+1.8.1.4
+
