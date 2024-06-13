@@ -1,4 +1,4 @@
-# Copyright 2002-2023 Gentoo Authors
+# Copyright 2002-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: toolchain-funcs.eclass
@@ -1251,6 +1251,16 @@ tc-is-lto() {
 	esac
 	rm -f "${f}" || die
 	return "${ret}"
+}
+
+# @FUNCTION: tc-has-64bit-time_t
+# @RETURN: Shell true if time_t is at least 64 bits long, false otherwise
+tc-has-64bit-time_t() {
+	$(tc-getCC) ${CFLAGS} ${CPPFLAGS} -c -x c - -o /dev/null <<-EOF &>/dev/null
+		#include <sys/types.h>
+		int test[sizeof(time_t) >= 8 ? 1 : -1];
+	EOF
+	return $?
 }
 
 fi
