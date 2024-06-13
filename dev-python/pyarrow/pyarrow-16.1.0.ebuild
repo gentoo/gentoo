@@ -39,6 +39,11 @@ EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 src_prepare() {
+	local PATCHES=(
+		# https://github.com/apache/arrow/pull/42099
+		"${FILESDIR}/${P}-numpy-2.patch"
+	)
+
 	# cython's -Werror
 	sed -i -e '/--warning-errors/d' CMakeLists.txt || die
 	distutils-r1_src_prepare
@@ -82,14 +87,6 @@ python_test() {
 		tests/test_feather.py::test_roundtrip
 		tests/test_pandas.py::test_array_to_pandas_roundtrip
 	)
-
-	if has_version ">=dev-python/numpy-2"; then
-		EPYTEST_DESELECT+=(
-			# https://github.com/apache/arrow/issues/41319
-			tests/test_array.py::test_numpy_array_protocol
-			tests/test_table.py::test_numpy_array_protocol
-		)
-	fi
 
 	cd "${T}" || die
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1

@@ -1,0 +1,65 @@
+diff --git a/pyarrow/tests/parquet/common.py b/pyarrow/tests/parquet/common.py
+index 8365ed5b28543..c3094ee20b34c 100644
+--- a/pyarrow/tests/parquet/common.py
++++ b/pyarrow/tests/parquet/common.py
+@@ -83,7 +83,7 @@ def _random_integers(size, dtype):
+     iinfo = np.iinfo(dtype)
+     return np.random.randint(max(iinfo.min, platform_int_info.min),
+                              min(iinfo.max, platform_int_info.max),
+-                             size=size).astype(dtype)
++                             size=size, dtype=dtype)
+ 
+ 
+ def _range_integers(size, dtype):
+diff --git a/pyarrow/tests/test_array.py b/pyarrow/tests/test_array.py
+index 88394c77e429d..1032ab9add3ca 100644
+--- a/pyarrow/tests/test_array.py
++++ b/pyarrow/tests/test_array.py
+@@ -3398,7 +3398,7 @@ def test_numpy_array_protocol():
+     result = np.asarray(arr)
+     np.testing.assert_array_equal(result, expected)
+ 
+-    if Version(np.__version__) < Version("2.0"):
++    if Version(np.__version__) < Version("2.0.0.dev0"):
+         # copy keyword is not strict and not passed down to __array__
+         result = np.array(arr, copy=False)
+         np.testing.assert_array_equal(result, expected)
+diff --git a/pyarrow/tests/test_pandas.py b/pyarrow/tests/test_pandas.py
+index be2c5b14e68b0..ba9d6a3c01391 100644
+--- a/pyarrow/tests/test_pandas.py
++++ b/pyarrow/tests/test_pandas.py
+@@ -780,7 +780,7 @@ def test_integer_no_nulls(self):
+             info = np.iinfo(dtype)
+             values = np.random.randint(max(info.min, np.iinfo(np.int_).min),
+                                        min(info.max, np.iinfo(np.int_).max),
+-                                       size=num_values)
++                                       size=num_values, dtype=dtype)
+             data[dtype] = values.astype(dtype)
+             fields.append(pa.field(dtype, arrow_dtype))
+ 
+diff --git a/pyarrow/tests/test_table.py b/pyarrow/tests/test_table.py
+index a58010d083e92..f40759de50c8c 100644
+--- a/pyarrow/tests/test_table.py
++++ b/pyarrow/tests/test_table.py
+@@ -3281,7 +3281,7 @@ def test_numpy_array_protocol(constructor):
+     table = constructor([[1, 2, 3], [4.0, 5.0, 6.0]], names=["a", "b"])
+     expected = np.array([[1, 4], [2, 5], [3, 6]], dtype="float64")
+ 
+-    if Version(np.__version__) < Version("2.0"):
++    if Version(np.__version__) < Version("2.0.0.dev0"):
+         # copy keyword is not strict and not passed down to __array__
+         result = np.array(table, copy=False)
+         np.testing.assert_array_equal(result, expected)
+diff --git a/scripts/test_leak.py b/scripts/test_leak.py
+index f2bbe8d051bf9..86a87f5e742e8 100644
+--- a/scripts/test_leak.py
++++ b/scripts/test_leak.py
+@@ -98,7 +98,7 @@ def func():
+ 
+ 
+ def test_ARROW_8801():
+-    x = pd.to_datetime(np.random.randint(0, 2**32, size=2**20),
++    x = pd.to_datetime(np.random.randint(0, 2**32, size=2**20, dtype=np.int64),
+                        unit='ms', utc=True)
+     table = pa.table(pd.DataFrame({'x': x}))
+ 
