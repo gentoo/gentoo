@@ -791,10 +791,10 @@ src_compile() {
 
 src_install() {
 	exeinto /usr/bin
-	doexe target/$(usex debug "debug" "release")/wezterm
-	doexe target/$(usex debug "debug" "release")/wezterm-gui
-	doexe target/$(usex debug "debug" "release")/wezterm-mux-server
-	doexe target/$(usex debug "debug" "release")/strip-ansi-escapes
+	doexe "$(cargo_target_dir)/wezterm"
+	doexe "$(cargo_target_dir)/wezterm-gui"
+	doexe "$(cargo_target_dir)/wezterm-mux-server"
+	doexe "$(cargo_target_dir)/strip-ansi-escapes"
 
 	insinto /usr/share/icons/hicolor/128x128/apps
 	newins assets/icon/terminal.png org.wezfurlong.wezterm.png
