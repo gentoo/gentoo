@@ -16,6 +16,5 @@
 <use>
 	<flag name="cpudetection">Enables runtime CPU detection (useful for bindist, compatibility on other CPUs)</flag>
 	<flag name="gpl">Build GPL code. Should be enabled unless you require LGPL binaries.</flag>
-	<flag name="mmal">Enables Multi-Media Abstraction Layer (MMAL) decoding support: Available e.g. on the Raspberry Pi.</flag>
 </use>
 </pkgmetadata>
