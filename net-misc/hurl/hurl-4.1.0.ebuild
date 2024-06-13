@@ -195,8 +195,7 @@ QA_FLAGS_IGNORED=(
 QA_PRESTRIPPED="${QA_FLAGS_IGNORED[*]}"
 
 src_install() {
-	local target_dir="$(usex debug debug release)"
-	dobin target/"${target_dir}"/hurl{,fmt}
+	dobin "$(cargo_target_dir)"/hurl{,fmt}
 	doman docs/manual/hurl{,fmt}.1
 
 	dodoc CHANGELOG.md README.md LICENSE
