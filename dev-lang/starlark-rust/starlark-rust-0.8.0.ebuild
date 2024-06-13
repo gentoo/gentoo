@@ -195,11 +195,11 @@ src_prepare() {
 
 src_test() {
 	source "${FILESDIR}/test/features.bash" || die
-	test-features_main "${PWD}/target/release/starlark" || die
+	test-features_main "${PWD}/$(cargo_target_dir)/starlark" || die
 }
 
 src_install() {
-	dobin target/release/starlark
+	dobin "$(cargo_target_dir)/starlark"
 	ln "${ED}/usr/bin/starlark"{,-rust} || die
 	dodoc -r {docs,{CHANGELOG,README}.md}
 }
