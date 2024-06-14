@@ -40,6 +40,7 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-23.3-disable-32-bit-tests.patch"
 	"${FILESDIR}/${PN}-23.3-static_assert-failure.patch"
+	"${FILESDIR}/${PN}-23.3-messages_lite-template-instances.patch"
 )
 
 DOCS=( CONTRIBUTORS.txt README.md )
