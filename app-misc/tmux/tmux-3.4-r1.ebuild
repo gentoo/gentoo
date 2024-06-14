@@ -42,8 +42,12 @@ RDEPEND="
 	vim-syntax? ( app-vim/vim-tmux )
 "
 
-# BSD only functions
-QA_CONFIG_IMPL_DECL_SKIP=( strtonum recallocarray )
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# BSD only functions
+	strtonum recallocarray
+	# missing on musl, tmux has fallback impl which it uses
+	b64_ntop
+)
 
 DOCS=( CHANGES README )
 
