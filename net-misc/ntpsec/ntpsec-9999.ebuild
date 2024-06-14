@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517="flit"
 PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE='threads(+)'
 
-inherit distutils-r1 flag-o-matic waf-utils systemd
+inherit distutils-r1 flag-o-matic multiprocessing waf-utils systemd
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -116,7 +116,7 @@ src_configure() {
 		$(use debug	&& echo "--enable-debug")
 	)
 	python_setup
-	cp -v "${FILESDIR}/flit.toml" "pylib/pyproject.toml"
+	cp -v "${FILESDIR}/flit.toml" "pylib/pyproject.toml" || die
 	waf-utils_src_configure "${myconf[@]}"
 }
 
@@ -129,7 +129,7 @@ src_test() {
 }
 
 python_test() {
-	"${EPYTHON}" "${WAF_BINARY}" check -v -j $(makeopts_jobs)
+	"${EPYTHON}" "${WAF_BINARY}" check -v -j $(makeopts_jobs) || die
 }
 
 src_install() {
@@ -160,10 +160,10 @@ src_install() {
 	# move doc files to /usr/share/doc/"${P}"
 	use doc && mv -v "${ED}"/usr/share/doc/"${PN}" "${ED}"/usr/share/doc/"${P}"/html
 
-	ln -svf pylib build/main/ntp
+	ln -svf pylib build/main/ntp || die
 	wheel_name=$(
 		cd build/main && \
-		gpep517 build-wheel --output-fd 3 --wheel-dir ../.. 3>&1 >&2
+		gpep517 build-wheel --output-fd 3 --wheel-dir ../.. 3>&1 >&2 || die
 	)
 	python_foreach_impl python_install
 	waf-utils_src_install --notests
@@ -174,7 +174,7 @@ src_install() {
 python_install() {
 	${PYTHON} -m gpep517 \
 		install-wheel "${wheel_name}" \
-		--optimize all --destdir "${D}"
+		--optimize all --destdir "${D}" || die
 }
 
 pkg_postinst() {
