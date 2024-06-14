@@ -33,7 +33,7 @@ DEPEND="
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:6
 	>=kde-frameworks/kwindowsystem-${KFMIN}:6
 	>=kde-plasma/libplasma-${PVCUT}:6
-	net-print/cups
+	>=net-print/cups-2.4
 "
 RDEPEND="${DEPEND}
 	!<kde-plasma/print-manager-23.08.5-r100:5
