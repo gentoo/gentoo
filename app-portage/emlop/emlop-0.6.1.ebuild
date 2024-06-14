@@ -100,12 +100,12 @@ src_install() {
 	cargo_src_install
 	dodoc README.md CHANGELOG.md
 	# bash
-	./target/$(usex debug debug release)/emlop complete bash > emlop || die
+	"$(cargo_target_dir)"/emlop complete bash > emlop || die
 	dobashcomp emlop
 	# zsh
-	./target/$(usex debug debug release)/emlop complete zsh > _emlop || die
+	"$(cargo_target_dir)"/emlop complete zsh > _emlop || die
 	dozshcomp _emlop
 	# fish
-	./target/$(usex debug debug release)/emlop complete fish > emlop.fish || die
+	"$(cargo_target_dir)"/emlop complete fish > emlop.fish || die
 	dofishcomp emlop.fish
 }
