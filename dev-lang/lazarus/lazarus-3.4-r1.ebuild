@@ -19,20 +19,21 @@ LICENSE="GPL-2 LGPL-2.1-with-linking-exception"
 SLOT="0/3.0" # Note: Slotting Lazarus needs slotting fpc, see DEPEND.
 KEYWORDS="~amd64 ~x86"
 IUSE="+gui gtk2 gtk qt5 qt6 extras"
+# TODO: Drop REQUIRED_USE per QA policy for USE=gui
 REQUIRED_USE="gui? ( ^^ ( gtk2 gtk qt5 qt6 ) ) extras? ( gui )"
 
 # Pascal ignores CFLAGS and does its own stripping. Nothing else can be done about it.
 QA_FLAGS_IGNORED="
-/usr/share/lazarus/startlazarus \
-/usr/share/lazarus/lazarus \
-/usr/share/lazarus/tools/lazres \
-/usr/share/lazarus/tools/lrstolfm \
-/usr/share/lazarus/tools/updatepofiles \
-/usr/share/lazarus/tools/svn2revisioninc \
-/usr/share/lazarus/lazbuild \
-/usr/share/lazarus/components/chmhelp/lhelp/lhelp"
-
-QA_PRESTRIPPED=${QA_FLAGS_IGNORED}
+	usr/share/lazarus/startlazarus
+	usr/share/lazarus/lazarus
+	usr/share/lazarus/tools/lazres
+	usr/share/lazarus/tools/lrstolfm
+	usr/share/lazarus/tools/updatepofiles
+	usr/share/lazarus/tools/svn2revisioninc
+	usr/share/lazarus/lazbuild
+	usr/share/lazarus/components/chmhelp/lhelp/lhelp
+"
+QA_PRESTRIPPED="${QA_FLAGS_IGNORED}"
 
 DEPEND="
 	>=dev-lang/fpc-${FPCVER}[source]
@@ -66,12 +67,12 @@ src_prepare() {
 
 src_compile() {
 	# bug #732758
-	if ( use gui ) ; then
-		if ( use gtk2 ) ; then
+	if use gui ; then
+		if use gtk2 ; then
 			export LCL_PLATFORM=gtk2
-		elif ( use gtk ) ; then
+		elif use gtk ; then
 			export LCL_PLATFORM=gtk3
-		elif ( use qt5 ) ; then
+		elif use qt5 ; then
 			export LCL_PLATFORM=qt5
 		else
 			export LCL_PLATFORM=qt6
@@ -79,10 +80,11 @@ src_compile() {
 	else
 		export LCL_PLATFORM=nogui
 	fi
-	if ( use gui ) ; then
-		emake all $(usex extras "bigide lhelp" "") -j1 || die "make failed!"
+
+	if use gui ; then
+		emake -j1 all $(usev extras "bigide lhelp")
 	else
-		emake lazbuild -j1 || die "make failed!"
+		emake -j1 lazbuild
 	fi
 }
 
