@@ -59,6 +59,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-python3.7.patch" # bug 701208
 	"${FILESDIR}/${P}-gcc-10.patch" # bug 723302
 	"${FILESDIR}/${PN}-1.11.2-python3.12-remove-imp.patch" # bug 929649
+	"${FILESDIR}/${PN}-1.11.1-python3.12-distutils.patch" # bug 929649
 	# TODO: upstream
 	"${FILESDIR}/${P}-lib_suffix.patch"
 	"${FILESDIR}/${P}-cmake-module-dir.patch"
