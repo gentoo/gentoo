@@ -27,7 +27,8 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake_use_find_package qml Qt6Quick)
+		# TODO: WITH_MULTIMEDIA?
+		-DWITH_QUICK=$(usex qml)
 	)
 
 	ecm_src_configure
