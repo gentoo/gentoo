@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-14)
+# EAPI=6, many compilation issues, upstream is gone, not maintained for
+# many years.
+# Removal on 2024-07-14.  Bugs #934240.
+sci-electronics/vbs
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-14)
 # EAPI=6, dead upstream website, Gentoo is last distribution to
 # package it.
 # Removal on 2024-07-14.  Bug #934232.
