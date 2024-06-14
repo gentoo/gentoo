@@ -28,7 +28,7 @@ RESTRICT="test"                      # Only validations, the appdata one fails.
 
 RDEPEND="
 	>=gui-libs/gtk-4.12.5:4
-	>=gui-libs/libadwaita-1.4.2:1[introspection,vala]
+	>=gui-libs/libadwaita-1.5.0:1[introspection,vala]
 	app-text/poppler:=[cairo,introspection]
 	dev-libs/glib:2
 	dev-libs/gobject-introspection
