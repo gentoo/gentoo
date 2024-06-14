@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -159,7 +159,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv"
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 
 src_install() {
-	local build_dir="$(dirname $(find target/ -name ${PN}.bash -print -quit))"
+	local build_dir="$(dirname $(find "$(cargo_target_dir)" -name ${PN}.bash -print -quit))"
 
 	newbashcomp "${build_dir}/${PN}.bash" "${PN}"
 
