@@ -101,7 +101,7 @@ RDEPEND="${COMMON_DEPEND}
 	x11-base/xwayland[libei]
 "
 DEPEND="${COMMON_DEPEND}
-	>=dev-libs/plasma-wayland-protocols-1.11.1
+	>=dev-libs/plasma-wayland-protocols-1.13.0
 	>=dev-libs/wayland-protocols-1.34
 	>=dev-qt/qttools-${QTMIN}:6[widgets]
 	>=dev-qt/qtbase-${QTMIN}:6[concurrent]
