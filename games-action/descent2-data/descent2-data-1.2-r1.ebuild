@@ -97,10 +97,14 @@ src_prepare() {
 	# Patch to 1.2 if necessary
 	if use cdinstall; then
 		if [[ $(md5sum data/descent2.ham) != 7f30c3d7d4087b8584b49012a53ce022* ]]; then
-			local i
-			for i in *.xdelta; do
-				xdelta3 -d -s data/"${i%.*}" "${i}" data/"${i%.*}".new || die
-				mv data/"${i%.*}"{.new,} || die
+			local x dir
+			for x in *.xdelta; do
+				case "${x}" in
+					*.txt.xdelta) dir=doc ;;
+					*) dir=data ;;
+				esac
+				xdelta3 -d -s "${dir}/${x%.*}" "${x}" "${dir}/${x%.*}.new" || die
+				mv "${dir}/${x%.*}"{.new,} || die
 			done
 		fi
 	fi
