@@ -78,10 +78,6 @@ RDEPEND="
 	xattr? ( kernel_linux? (
 		>=sys-apps/install-xattr-0.3
 	) )
-	!<app-admin/logrotate-3.8.0
-	!<app-portage/gentoolkit-0.4.6
-	!<app-portage/repoman-2.3.10
-	!~app-portage/repoman-3.0.0
 "
 # coreutils-6.4 rdep is for date format in emerge-webrsync #164532
 # NOTE: FEATURES=installsources requires debugedit and rsync
