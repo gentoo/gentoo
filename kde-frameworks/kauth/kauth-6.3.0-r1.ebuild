@@ -17,7 +17,7 @@ DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui]
 	=kde-frameworks/kcoreaddons-${PVCUT}*:6
 	policykit? (
-		=kde-frameworks/kwindowsystem-${PVCUT}*:6
+		=kde-frameworks/kwindowsystem-${PVCUT}*:6[wayland]
 		>=sys-auth/polkit-qt-0.113.0[qt6(-)]
 	)
 "
