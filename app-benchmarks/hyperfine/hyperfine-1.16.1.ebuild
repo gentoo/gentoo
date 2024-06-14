@@ -159,7 +159,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv"
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 
 src_install() {
-	local build_dir="$(dirname $(find target/ -name ${PN}.bash -print -quit))"
+	local build_dir="$(dirname $(find "$(cargo_target_dir)" -name ${PN}.bash -print -quit))"
 
 	newbashcomp "${build_dir}/${PN}.bash" "${PN}"
 
