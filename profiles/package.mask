@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-14)
+# EAPI=6, not maintained for ~7 years in gentoo, waiting for version
+# bump. Fetch restricted, and fails to build after manual fetch.
+# Removal on 2024-07-14.  Bugs #934228, #686860, #686858, #686856.
+sci-chemistry/namd
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-14)
 # EAPI=6, not maintained in Gentoo for a long time. procheck is
 # fetch restricted, and the file you download from upstream
 # doesn't match size and manifests. aqua depends on procheck.
