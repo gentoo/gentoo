@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-python/setuptools-42.0.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/tomli[${PYTHON_USEDEP}]
-	' 3.{9..10})
+	' 3.10)
 	>=dev-python/wheel-0.32.0[${PYTHON_USEDEP}]
 "
 
@@ -43,9 +43,15 @@ BDEPEND="
 distutils_enable_sphinx docs \
 	dev-python/sphinx-rtd-theme \
 	dev-python/sphinx-issues
+# note: tests are unstable with xdist
 distutils_enable_tests pytest
 
 src_prepare() {
+	local PATCHES=(
+		# https://github.com/scikit-build/scikit-build/pull/1087
+		"${FILESDIR}/${P}-setuptools-69.3.patch"
+	)
+
 	# not packaged
 	sed -i -e '/cmakedomain/d' docs/conf.py || die
 	distutils-r1_src_prepare
@@ -63,6 +69,9 @@ python_test() {
 			;;
 	esac
 
-	epytest -m "not isolated and not nosetuptoolsscm"
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest -p pytest_mock \
+		-m "not isolated and not nosetuptoolsscm" \
+		-o tmp_path_retention_count=1
 	rm -r "${BUILD_DIR}/install$(python_get_sitedir)"/{easy-install.pth,*.egg,*.egg-link} || die
 }
