@@ -18,8 +18,8 @@ S="${WORKDIR}/${PN}"
 LICENSE="GPL-2 LGPL-2.1-with-linking-exception"
 SLOT="0/3.0" # Note: Slotting Lazarus needs slotting fpc, see DEPEND.
 KEYWORDS="~amd64 ~x86"
-IUSE="+gui gtk2 gtk qt6 extras"
-REQUIRED_USE="extras? ( gui )"
+IUSE="+gui gtk2 gtk qt5 qt6 extras"
+REQUIRED_USE="gui? ( ^^ ( gtk2 gtk qt5 qt6 ) ) extras? ( gui )"
 
 # Pascal ignores CFLAGS and does its own stripping. Nothing else can be done about it.
 QA_FLAGS_IGNORED="
@@ -40,6 +40,7 @@ DEPEND="
 	gui? (
 		gtk2? ( x11-libs/gtk+:2 )
 		gtk? ( x11-libs/gtk+:3 )
+		qt5? ( dev-libs/libqt5pas:0/3.0 )
 		qt6? ( dev-libs/libqt6pas:0/3.0 )
 	)
 "
@@ -70,6 +71,8 @@ src_compile() {
 			export LCL_PLATFORM=gtk2
 		elif ( use gtk ) ; then
 			export LCL_PLATFORM=gtk3
+		elif ( use qt5 ) ; then
+			export LCL_PLATFORM=qt5
 		else
 			export LCL_PLATFORM=qt6
 		fi
