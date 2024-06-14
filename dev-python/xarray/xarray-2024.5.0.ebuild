@@ -69,6 +69,17 @@ python_test() {
 		)
 	fi
 
+	if [[ ${ABI} != *64* ]]; then
+		EPYTEST_DESELECT+=(
+			# these tests hardcode object sizes for 64-bit arches
+			# https://github.com/pydata/xarray/issues/9127
+			xarray/tests/test_dataarray.py::TestDataArray::test_repr_multiindex
+			xarray/tests/test_dataarray.py::TestDataArray::test_repr_multiindex_long
+			xarray/tests/test_dataset.py::TestDataset::test_repr_multiindex
+			xarray/tests/test_formatting.py::test_array_repr_dtypes_unix
+		)
+	fi
+
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
 }
