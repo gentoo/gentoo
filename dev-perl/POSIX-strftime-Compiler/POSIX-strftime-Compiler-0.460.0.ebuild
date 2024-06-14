@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="GNU C library compatible strftime for loggers and servers"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="minimal"
 
 RDEPEND="
