@@ -13,7 +13,7 @@ SRC_URI="https://downloads.sourceforge.net/lazarus/${MY_P}.tar.gz -> ${P}.tar.gz
 S="${WORKDIR}/lazarus/lcl/interfaces/qt6/cbindings"
 
 LICENSE="LGPL-3"
-SLOT="0/2.2"
+SLOT="0/3.0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="
