@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-14)
+# EAPI=6, dead upstream website, Gentoo is last distribution to
+# package it.
+# Removal on 2024-07-14.  Bug #934232.
+sci-chemistry/xyza2pipe
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-14)
 # EAPI=6, not maintained for ~7 years in gentoo, waiting for version
 # bump. Fetch restricted, and fails to build after manual fetch.
 # Removal on 2024-07-14.  Bugs #934228, #686860, #686858, #686856.
