@@ -367,7 +367,7 @@ src_install() {
 
 	doman "${T}"/${PN}.1
 
-	local build_dir=( target/$(usex debug{,} release)/build/${PN}-*/out )
+	local build_dir=( "$(cargo_target_dir)"/build/${PN}-*/out )
 	cd ${build_dir[0]} || die
 
 	newbashcomp ${PN}.bash ${PN}
