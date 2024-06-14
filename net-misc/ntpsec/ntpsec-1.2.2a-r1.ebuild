@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517="flit"
 PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE='threads(+)'
@@ -137,10 +138,15 @@ src_configure() {
 
 src_compile() {
 	waf-utils_src_compile --notests
+
+	ln -svf pylib build/main/ntp || die
+	cd build/main || die
+	distutils-r1_src_compile
 }
 
 src_test() {
-	python_test
+	cd build/main || die
+	distutils-r1_src_test
 }
 
 python_test() {
@@ -176,20 +182,10 @@ src_install() {
 	use doc && mv -v "${ED}"/usr/share/doc/"${PN}" "${ED}"/usr/share/doc/"${P}"/html
 
 	ln -svf pylib build/main/ntp || die
-	wheel_name=$(
-		cd build/main && \
-		gpep517 build-wheel --output-fd 3 --wheel-dir ../.. 3>&1 >&2 || die
-	)
-	python_foreach_impl python_install
+	distutils-r1_src_install
 	waf-utils_src_install --notests
 	python_fix_shebang "${ED}"
 	python_optimize
-}
-
-python_install() {
-	${PYTHON} -m gpep517 \
-		install-wheel "${wheel_name}" \
-		--optimize all --destdir "${D}" || die
 }
 
 pkg_postinst() {
