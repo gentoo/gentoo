@@ -12,9 +12,10 @@ DESCRIPTION="Backend part of Paperwork (Python API, no UI)"
 HOMEPAGE="https://gitlab.gnome.org/World/OpenPaperwork"
 # Update from release hash at:
 # https://gitlab.gnome.org/World/OpenPaperwork/paperwork/-/tags
-REL_HASH="0bea4054"
+REL_HASH="3f51346f"
 SRC_URI="https://gitlab.gnome.org/World/OpenPaperwork/paperwork/-/archive/${PV}/paperwork-${PV}.tar.bz2
 	https://download.openpaper.work/data/paperwork/master_${REL_HASH}/data.tar.gz -> paperwork-data-${PV}.tar.gz"
+S=${WORKDIR}/paperwork-${PV}/${PN}
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -44,17 +45,10 @@ BDEPEND="
 		media-libs/libinsane
 	)
 "
-S=${WORKDIR}/paperwork-${PV}/${PN}
 
 distutils_enable_tests unittest
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
-
-src_prepare() {
-	default
-	cd "${WORKDIR}"/paperwork-${PV} || die
-	eapply "${FILESDIR}"/${P}-cairo_workaround.patch
-}
 
 python_compile() {
 	emake l10n_compile
