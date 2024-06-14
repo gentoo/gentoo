@@ -261,6 +261,7 @@ dev-ml/ppx_typerep_conv:0/0.17
 dev-ml/ppx_tydi:0/0.17
 dev-ml/capitalization:0/0.17
 dev-ml/ppx_string_conv:0/0.17
+dev-ml/ppx_stable_witness:0/0.17
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-08)
 # EAPI=6, waiting for a version bump, not maintained for many years.
