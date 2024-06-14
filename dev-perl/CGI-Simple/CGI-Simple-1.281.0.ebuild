@@ -12,7 +12,7 @@ DESCRIPTION="A Simple totally OO CGI interface that is CGI.pm compliant"
 # Bug: https://bugs.gentoo.org/721422
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 
 BDEPEND="
 	dev-perl/Module-Build
