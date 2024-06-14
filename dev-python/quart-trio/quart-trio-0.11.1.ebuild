@@ -37,6 +37,11 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://github.com/pgjones/quart-trio/commit/805686abfd9963be26d59d9da9b11faddd583d11
+	"${FILESDIR}/${P}-trio-0.25.patch"
+)
+
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest -o addopts= -p trio
