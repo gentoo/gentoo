@@ -9,7 +9,7 @@ PYTHON_REQ_USE='threads(+)'
 
 inherit distutils-r1 flag-o-matic multiprocessing waf-utils systemd
 
-if [[ ${PV} == *9999* ]]; then
+if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/NTPsec/ntpsec.git"
 else
@@ -75,6 +75,17 @@ PATCHES=(
 )
 
 WAF_BINARY="${S}/waf"
+
+src_unpack() {
+	if [[ ${PV} == 9999 ]] ; then
+		git-r3_src_unpack
+	elif use verify-sig ; then
+		# Needed for downloaded waf which is unsigned
+		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.gz{,.asc}
+	fi
+
+	default
+}
 
 src_prepare() {
 	default
