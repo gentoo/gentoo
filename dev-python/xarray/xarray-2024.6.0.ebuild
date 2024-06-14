@@ -21,7 +21,6 @@ KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
 IUSE="big-endian"
 
 RDEPEND="
-	<dev-python/numpy-2[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.23[${PYTHON_USEDEP}]
 	>=dev-python/pandas-2.0[${PYTHON_USEDEP}]
 	>=dev-python/packaging-23.1[${PYTHON_USEDEP}]
@@ -77,6 +76,17 @@ python_test() {
 			xarray/tests/test_dataarray.py::TestDataArray::test_repr_multiindex_long
 			xarray/tests/test_dataset.py::TestDataset::test_repr_multiindex
 			xarray/tests/test_formatting.py::test_array_repr_dtypes_unix
+		)
+	fi
+
+	if has_version ">=dev-python/numpy-2[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			xarray/tests/test_dataset.py::TestDataset::test_polyfit_warnings
+			# https://github.com/pandas-dev/pandas/issues/56996
+			xarray/tests/test_backends.py::test_use_cftime_false_standard_calendar_in_range
+			# TODO
+			'xarray/tests/test_dtypes.py::test_maybe_promote[q-expected19]'
+			'xarray/tests/test_dtypes.py::test_maybe_promote[Q-expected20]'
 		)
 	fi
 
