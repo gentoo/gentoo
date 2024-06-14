@@ -1,0 +1,35 @@
+https://bugs.gentoo.org/932791
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Fri, 14 Jun 2024 17:48:26 +0000
+Subject: [PATCH 1/1] src/libmpd-playlist.c: Return 0 instead of NULL
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+First reported on Gentoo Linux with GCC 14. GCC 14 comes with
+-Wint-conversion enabled, thus resulting in build errors such as
+libmpd-playlist.c: In function ‘mpd_playlist_load’:
+libmpd-playlist.c:783:24: error: returning ‘void *’ from a function with return type ‘int’ makes integer from pointer without a cast [-Wint-conversion]
+  783 |                 return NULL;
+      |                        ^~~~
+make[2]: *** [Makefile:367: libmpd-playlist.lo] Error 1
+
+NULL is defined as ((void *)0) where as mpd_playlist_load has a return
+type of int, thus returning 0 would be more appropriate.
+
+Refer: https://bugs.gentoo.org/932791
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/src/libmpd-playlist.c
++++ b/src/libmpd-playlist.c
+@@ -780,7 +780,7 @@ int mpd_playlist_load(MpdObj *mi, const char *path)
+ 	if(mpd_lock_conn(mi))
+ 	{
+ 		debug_printf(DEBUG_ERROR,"lock failed\n");
+-		return NULL;
++		return 0;
+ 	}
+     mpd_sendLoadCommand(mi->connection,path);
+ 	mpd_finishCommand(mi->connection);
+-- 
+2.45.2
+
