@@ -522,7 +522,7 @@ python_compile_all() {
 	use !doc || mdbook build -d html guide || die
 
 	if ! tc-is-cross-compiler; then
-		local maturin=target/$(usex debug{,} release)/maturin
+		local maturin=$(cargo_target_dir)/maturin
 		${maturin} completions bash > "${T}"/${PN} || die
 		${maturin} completions fish > "${T}"/${PN}.fish || die
 		${maturin} completions zsh > "${T}"/_${PN} || die
