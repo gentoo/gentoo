@@ -29,21 +29,10 @@ IUSE="apidoc build doc gentoo-dev +ipc +native-extensions +rsync-verify selinux 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
-# setuptools is still needed as a workaround for Python 3.12+ for now.
-# https://github.com/mesonbuild/meson/issues/7702
-#
-# >=meson-1.2.1-r1 for bug #912051
 BDEPEND="
 	${PYTHON_DEPS}
 	>=app-arch/tar-1.27
-	>=dev-build/meson-1.2.1-r1
-	|| (
-		>=dev-build/meson-1.3.0-r1
-		<dev-build/meson-1.3.0
-	)
-	$(python_gen_cond_dep '
-		dev-python/setuptools[${PYTHON_USEDEP}]
-	' python3_12)
+	>=dev-build/meson-1.3.0-r1
 	>=sys-apps/sed-4.0.5
 	sys-devel/patch
 	!build? ( $(python_gen_impl_dep 'ssl(+)') )
