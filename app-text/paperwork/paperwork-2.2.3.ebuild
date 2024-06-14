@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,9 +12,10 @@ DESCRIPTION="a personal document manager for scanned documents (and PDFs)"
 HOMEPAGE="https://gitlab.gnome.org/World/OpenPaperwork"
 # Update from release hash at:
 # https://gitlab.gnome.org/World/OpenPaperwork/paperwork/-/tags
-REL_HASH="0bea4054"
+REL_HASH="620eb580"
 SRC_URI="https://gitlab.gnome.org/World/OpenPaperwork/paperwork/-/archive/${PV}/paperwork-${PV}.tar.bz2
 	https://download.openpaper.work/data/paperwork/master_${REL_HASH}/data.tar.gz -> paperwork-data-${PV}.tar.gz"
+S=${WORKDIR}/paperwork-${PV}/${PN}-gtk
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -35,8 +36,6 @@ DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	sys-apps/which
 	sys-devel/gettext"
-
-S=${WORKDIR}/paperwork-${PV}/${PN}-gtk
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
