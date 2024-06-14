@@ -187,7 +187,7 @@ src_configure() {
 }
 
 src_install() {
-	local DOCS=( AUTHORS ChangeLog* INSTALL* NEWS README* TODO* )
+	local DOCS=( AUTHORS ChangeLog* INSTALL* NEWS README* )
 	default
 
 	# Makefile install claws-mail.png in /usr/share/icons/hicolor/48x48/apps
