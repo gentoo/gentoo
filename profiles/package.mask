@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-14)
+# EAPI=6, maintainer-needed, no reverse dependencies.
+# Removal on 2024-07-14.  Bugs #934227, #898840.
+www-misc/log-toolkit
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-13)
 # EAPI=6, maintainer-needed, waiting for a bump, various failures
 # with modern C.
