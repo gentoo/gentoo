@@ -96,7 +96,7 @@ QA_FLAGS_IGNORED="usr/bin/${PN}"
 src_compile() {
 	cargo_src_compile
 
-	GIT_ABSORB_BIN="target/$(usex debug debug release)/${PN}"
+	GIT_ABSORB_BIN="$(cargo_target_dir)/${PN}"
 
 	# Prepare shell completion generation
 	mkdir completions || die
