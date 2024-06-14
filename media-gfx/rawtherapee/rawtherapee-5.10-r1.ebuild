@@ -9,6 +9,7 @@ inherit cmake flag-o-matic toolchain-funcs xdg-utils
 DESCRIPTION="A powerful cross-platform raw image processing program"
 HOMEPAGE="https://www.rawtherapee.com/"
 SRC_URI="https://rawtherapee.com/shared/source/${MY_P}.tar.xz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -40,7 +41,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-S="${WORKDIR}/${MY_P}"
+PATCHES=( "${FILESDIR}"/rawtherapee-5.10-fix-linking-with-libjpeg-turbo.patch )
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
