@@ -49,7 +49,7 @@ BDEPEND="
 		dev-python/uvicorn[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
 			dev-python/trio[${PYTHON_USEDEP}]
-		' 3.{10..12})
+		' 3.{10..13})
 	)
 "
 
