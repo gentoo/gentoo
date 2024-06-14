@@ -308,14 +308,14 @@ QA_FLAGS_IGNORED="usr/bin/procs"
 src_install() {
 	cargo_src_install
 
-	target/$(usex debug debug release)/procs --gen-completion bash || die
+	"$(cargo_target_dir)"/procs --gen-completion bash || die
 	newbashcomp procs.bash procs
 
-	target/$(usex debug debug release)/procs --gen-completion zsh || die
+	"$(cargo_target_dir)"/procs --gen-completion zsh || die
 	insinto /usr/share/zsh/site-functions
 	doins _procs
 
-	target/$(usex debug debug release)/procs --gen-completion fish || die
+	"$(cargo_target_dir)"/procs --gen-completion fish || die
 	insinto /usr/share/fish/vendor_completions.d
 	doins procs.fish
 }
