@@ -3,20 +3,22 @@
 
 EAPI=8
 
-# Get PV from lcl/interfaces/qt5/cbindings/Qt5Pas.pro
+# Get PV from lcl/interfaces/qt6/cbindings/Qt6Pas.pro
 inherit qmake-utils
+
+LAZARUS_PV=3.0
 
 # We want to keep the version here in correspondence with dev-lang/lazarus
 # so dev-lang/lazarus can use the bindings.
-MY_P="lazarus-3.0-0"
+MY_P="lazarus-${LAZARUS_PV}-0"
 
 DESCRIPTION="Free Pascal Qt5 bindings library updated by lazarus IDE"
 HOMEPAGE="https://gitlab.com/freepascal.org/lazarus/lazarus"
-SRC_URI="https://downloads.sourceforge.net/lazarus/${MY_P}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/lazarus/${MY_P}.tar.gz"
 S="${WORKDIR}/lazarus/lcl/interfaces/qt5/cbindings"
 
 LICENSE="LGPL-3"
-SLOT="0/3.0"
+SLOT="0/${LAZARUS_PV}"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="

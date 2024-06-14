@@ -9,7 +9,7 @@ MY_P="lazarus-2.2.4-0"
 
 DESCRIPTION="Free Pascal Qt5 bindings library updated by lazarus IDE."
 HOMEPAGE="https://gitlab.com/freepascal.org/lazarus/lazarus"
-SRC_URI="https://downloads.sourceforge.net/lazarus/${MY_P}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/lazarus/${MY_P}.tar.gz"
 KEYWORDS="~amd64 ~x86"
 
 LICENSE="LGPL-3"
