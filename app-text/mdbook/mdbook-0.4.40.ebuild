@@ -280,7 +280,7 @@ src_compile() {
 		if tc-is-cross-compiler; then
 			ewarn "html docs were skipped due to cross-compilation"
 		else
-			target/$(usex debug{,} release)/${PN} build -d html guide || die
+			"$(cargo_target_dir)"/${PN} build -d html guide || die
 		fi
 	fi
 }
