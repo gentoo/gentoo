@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 # custom wrapper over setuptools
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1
 
