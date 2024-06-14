@@ -28,10 +28,12 @@ CP_DEPEND="
 RDEPEND="${CP_DEPEND}
 	>=virtual/jre-1.8:*"
 JAVACC_SLOT="7.0.13"
+
+#934306  restrict to >=virtual/jdk-11:*
 DEPEND="${CP_DEPEND}
 	dev-java/javacc:${JAVACC_SLOT}
 	dev-java/testng:0
-	>=virtual/jdk-1.8:*"
+	>=virtual/jdk-11:*"
 
 JAVA_TEST_RESOURCE_DIRS="src/test"
 JAVA_TEST_SRC_DIR="src/test"
