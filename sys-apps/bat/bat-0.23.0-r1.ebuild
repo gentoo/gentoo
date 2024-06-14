@@ -218,8 +218,8 @@ src_install() {
 
 	einstalldocs
 
-	local build_dir=( target/$(usex debug{,} release)/build/${PN}-*/out )
-	cd ${build_dir[0]} || die "Cannot change directory to ${PN} build"
+	local build_dir=( "$(cargo_target_dir)"/build/${PN}-*/out )
+	cd "${build_dir[0]}" || die "Cannot change directory to ${PN} build"
 
 	doman assets/manual/bat.1
 
