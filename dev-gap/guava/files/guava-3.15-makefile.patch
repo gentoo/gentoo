@@ -1,3 +1,8 @@
+The autoreconf is not needed at all; upstream ships a ./configure
+script. The ./configure _is_ needed at some point, but our ebuilds do
+it in src_configure. And since "desauto" is part of the default
+top-level "make" target, we have to patch out the extra invocation.
+
 diff --git a/Makefile.in b/Makefile.in
 index 573f2bd..aa565f4 100644
 --- a/Makefile.in

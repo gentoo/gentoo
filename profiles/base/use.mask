@@ -13,10 +13,6 @@ perl_features_debug
 # Telepathy is dead and packages masked for removal.
 telepathy
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2023-12-15)
-# KF6 is not in ::gentoo yet. Move to stable.use.mask on KF6 intro.
-kf6compat
-
 # Hans de Graaff <graaff@gentoo.org> (2023-08-19)
 # Ruby 3.0 is not compatible with OpenSSL 3. Please upgrade to a newer
 # Ruby version.

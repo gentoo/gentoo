@@ -78,6 +78,11 @@ esac
 # for your package (using ${PYTHON_DEPS}) and to either call
 # distutils-r1 default phase functions or call the build system
 # manually.
+#
+# Note that if DISTUTILS_SINGLE_IMPL is used, python-single-r1 exports
+# pkg_setup() function.  In that case, it is necessary to redefine
+# pkg_setup() to call python-single-r1_pkg_setup over correct
+# conditions.
 
 # @ECLASS_VARIABLE: DISTUTILS_SINGLE_IMPL
 # @DEFAULT_UNSET
@@ -94,7 +99,7 @@ esac
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Enable the PEP 517 mode for the specified build system.  In this mode,
+# Enable the PEP517 mode for the specified build system.  In this mode,
 # the complete build and install is done in python_compile(),
 # a venv-style install tree is provided to python_test(),
 # and python_install() just merges the temporary install tree
@@ -177,7 +182,7 @@ esac
 # This is an eclass-generated build-time dependency string for the build
 # system packages.  This string is automatically appended to BDEPEND
 # unless DISTUTILS_OPTIONAL is used.  This variable is available only
-# in PEP 517 mode.
+# in PEP517 mode.
 #
 # Example use:
 # @CODE
@@ -200,6 +205,22 @@ esac
 # This is an optimization that can avoid the overhead of calling into
 # the build system in pure Python packages and packages using the stable
 # Python ABI.
+
+# @ECLASS_VARIABLE: BUILD_DIR
+# @OUTPUT_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# The current build directory. In global scope, it is supposed to
+# contain an initial build directory; if unset, it defaults to ${S}.
+#
+# When running in multi-impl mode, the BUILD_DIR variable is set
+# by python-r1.eclass.  Otherwise, it is set by distutils-r1.eclass
+# for consistency.
+#
+# Example value:
+# @CODE
+# ${WORKDIR}/foo-1.3-python3_12
+# @CODE
 
 if [[ -z ${_DISTUTILS_R1_ECLASS} ]]; then
 _DISTUTILS_R1_ECLASS=1
@@ -364,54 +385,9 @@ _distutils_set_globals() {
 _distutils_set_globals
 unset -f _distutils_set_globals
 
-# @ECLASS_VARIABLE: PATCHES
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# An array containing patches to be applied to the sources before
-# copying them.
-#
-# If unset, no custom patches will be applied.
-#
-# Please note, however, that at some point the eclass may apply
-# additional distutils patches/quirks independently of this variable.
-#
-# Example:
-# @CODE
-# PATCHES=( "${FILESDIR}"/${P}-make-gentoo-happy.patch )
-# @CODE
-
-# @ECLASS_VARIABLE: DOCS
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# An array containing documents installed using dodoc. The files listed
-# there must exist in the directory from which
-# distutils-r1_python_install_all() is run (${S} by default).
-#
-# If unset, the function will instead look up files matching default
-# filename pattern list (from the Package Manager Specification),
-# and install those found.
-#
-# Example:
-# @CODE
-# DOCS=( NEWS README )
-# @CODE
-
-# @ECLASS_VARIABLE: HTML_DOCS
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# An array containing documents installed using dohtml. The files
-# and directories listed there must exist in the directory from which
-# distutils-r1_python_install_all() is run (${S} by default).
-#
-# If unset, no HTML docs will be installed.
-#
-# Example:
-# @CODE
-# HTML_DOCS=( doc/html/. )
-# @CODE
-
 # @ECLASS_VARIABLE: DISTUTILS_IN_SOURCE_BUILD
 # @DEFAULT_UNSET
+# @DEPRECATED: (none)
 # @DESCRIPTION:
 # If set to a non-null value, in-source builds will be enabled.
 # If unset, the default is to use in-source builds when python_prepare()
@@ -425,6 +401,9 @@ unset -f _distutils_set_globals
 # on the sources directly, prepending setup.py arguments with
 # 'build --build-base ${BUILD_DIR}' to enforce keeping & using built
 # files in the specific root.
+#
+# In-source builds are deprecated and no longer supported in PEP517
+# mode.
 
 # @ECLASS_VARIABLE: DISTUTILS_ALL_SUBPHASE_IMPLS
 # @DEFAULT_UNSET
@@ -587,7 +566,7 @@ distutils_enable_sphinx() {
 }
 
 # @FUNCTION: distutils_enable_tests
-# @USAGE: [--install] <test-runner>
+# @USAGE: <test-runner>
 # @DESCRIPTION:
 # Set up IUSE, RESTRICT, BDEPEND and python_test() for running tests
 # with the specified test runner.  Also copies the current value
@@ -599,10 +578,6 @@ distutils_enable_sphinx() {
 #
 # - unittest: for built-in Python unittest module
 #
-# Additionally, if --install is passed as the first parameter,
-# 'distutils_install_for_testing --via-root' is called before running
-# the test suite.
-#
 # This function is meant as a helper for common use cases, and it only
 # takes care of basic setup.  You still need to list additional test
 # dependencies manually.  If you have uncommon use case, you should
@@ -613,14 +588,9 @@ distutils_enable_sphinx() {
 distutils_enable_tests() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	_DISTUTILS_TEST_INSTALL=
 	case ${1} in
 		--install)
-			if [[ ${DISTUTILS_USE_PEP517} ]]; then
-				die "${FUNCNAME} --install is not implemented in PEP517 mode"
-			fi
-			_DISTUTILS_TEST_INSTALL=1
-			shift
+			die "${FUNCNAME} --install is no longer supported"
 			;;
 	esac
 
@@ -734,123 +704,12 @@ esetup.py() {
 }
 
 # @FUNCTION: distutils_install_for_testing
-# @USAGE: [--via-root|--via-home|--via-venv] [<args>...]
+# @DEPRECATED: DISTUTILS_USE_PEP517=...
 # @DESCRIPTION:
-# Install the package into a temporary location for running tests.
-# Update PYTHONPATH appropriately and set TEST_DIR to the test
-# installation root. The Python packages will be installed in 'lib'
-# subdir, and scripts in 'scripts' subdir (like in BUILD_DIR).
-#
-# Please note that this function should be only used if package uses
-# namespaces (and therefore proper install needs to be done to enforce
-# PYTHONPATH) or tests rely on the results of install command.
-# For most of the packages, tests built in BUILD_DIR are good enough.
-#
-# The function supports three install modes.  These are:
-#
-# --via-root (the default) that uses 'setup.py install --root=...'
-# combined with PYTHONPATH and is recommended for the majority
-# of packages.
-#
-# --via-venv that creates a (non-isolated) venv and installs the package
-# into it via 'setup.py install'.  This mode does not use PYTHONPATH
-# but requires python to be called via PATH.  It may solve a few corner
-# cases that --via-root do not support.
-#
-# --via-home that uses 'setup.py install --home=...'.  This is
-# a historical mode that was mostly broken by setuptools 50.3.0+.
-# If your package does not work with the other two modes but works with
-# this one, please report a bug.
-#
-# Please note that in order to test the solution properly you need
-# to unmerge the package first.
-#
-# This function is not available in PEP517 mode.  The eclass provides
-# a venv-style install unconditionally and therefore it should no longer
-# be necessary.
+# This function used to provide an installed package for running tests.
+# It is no longer implemented, PEP517 mode must be used instead.
 distutils_install_for_testing() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	if [[ ${DISTUTILS_USE_PEP517} ]]; then
-		die "${FUNCNAME} is not implemented in PEP517 mode"
-	fi
-
-	# A few notes about --via-home mode:
-	# 1) 'install --home' is terribly broken on pypy, so we need
-	#    to override --install-lib and --install-scripts,
-	# 2) non-root 'install' complains about PYTHONPATH and missing dirs,
-	#    so we need to set it properly and mkdir them,
-	# 3) it runs a bunch of commands which write random files to cwd,
-	#    in order to avoid that, we add the necessary path overrides
-	#    in _distutils-r1_create_setup_cfg.
-
-	local install_method=root
-	case ${1} in
-		--via-home)
-			[[ ${EAPI} == 7 ]] || die "${*} is banned in EAPI ${EAPI}"
-			install_method=home
-			shift
-			;;
-		--via-root)
-			install_method=root
-			shift
-			;;
-		--via-venv)
-			install_method=venv
-			shift
-			;;
-	esac
-
-	TEST_DIR=${BUILD_DIR}/test
-	local add_args=()
-
-	if [[ ${install_method} == venv ]]; then
-		# create a quasi-venv
-		mkdir -p "${TEST_DIR}"/bin || die
-		ln -s "${PYTHON}" "${TEST_DIR}/bin/${EPYTHON}" || die
-		ln -s "${EPYTHON}" "${TEST_DIR}/bin/python3" || die
-		ln -s "${EPYTHON}" "${TEST_DIR}/bin/python" || die
-		cat > "${TEST_DIR}"/pyvenv.cfg <<-EOF || die
-			include-system-site-packages = true
-		EOF
-
-		# we only do the minimal necessary subset of activate script
-		PATH=${TEST_DIR}/bin:${PATH}
-		# unset PYTHONPATH in order to prevent BUILD_DIR from overriding
-		# venv packages
-		unset PYTHONPATH
-
-		# force root-style install (note: venv adds TEST_DIR to prefixes,
-		# so we need to pass --root=/)
-		add_args=(
-			--root=/
-		)
-	else
-		local bindir=${TEST_DIR}/scripts
-		local libdir=${TEST_DIR}/lib
-		PATH=${bindir}:${PATH}
-		PYTHONPATH=${libdir}:${PYTHONPATH}
-
-		case ${install_method} in
-			home)
-				add_args=(
-					--home="${TEST_DIR}"
-					--install-lib="${libdir}"
-					--install-scripts="${bindir}"
-				)
-				mkdir -p "${libdir}" || die
-				;;
-			root)
-				add_args=(
-					--root="${TEST_DIR}"
-					--install-lib=lib
-					--install-scripts=scripts
-				)
-				;;
-		esac
-	fi
-
-	esetup.py install "${add_args[@]}" "${@}"
+	die "${FUNCNAME} has been removed, please use PEP517 mode instead"
 }
 
 # @FUNCTION: distutils_write_namespace
@@ -1362,7 +1221,7 @@ distutils_wheel_install() {
 # @FUNCTION: distutils_pep517_install
 # @USAGE: <root>
 # @DESCRIPTION:
-# Build the wheel for the package in the current directory using PEP 517
+# Build the wheel for the package in the current directory using PEP517
 # backend and install it into <root>.
 #
 # This function is intended for expert use only.  It does not handle
@@ -1700,10 +1559,6 @@ distutils-r1_python_test() {
 
 	_python_check_EPYTHON
 
-	if [[ ${_DISTUTILS_TEST_INSTALL} ]]; then
-		distutils_install_for_testing
-	fi
-
 	case ${_DISTUTILS_TEST_RUNNER} in
 		pytest)
 			epytest
@@ -1893,9 +1748,7 @@ distutils-r1_run_phase() {
 	else
 		local -x PYTHONPATH="${BUILD_DIR}/lib:${PYTHONPATH}"
 
-		# make PATH local for distutils_install_for_testing calls
-		# it makes little sense to let user modify PATH in per-impl phases
-		# and _all() already localizes it
+		# make PATH local (for historical reasons)
 		local -x PATH=${PATH}
 
 		if _python_impl_matches "${EPYTHON}" 3.{9..11}; then

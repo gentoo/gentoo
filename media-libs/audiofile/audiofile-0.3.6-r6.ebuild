@@ -10,7 +10,7 @@ HOMEPAGE="https://audiofile.68k.org/"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/1" # subslot = soname major version
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="flac"
 
 RDEPEND="flac? ( >=media-libs/flac-1.2.1:=[${MULTILIB_USEDEP}] )"

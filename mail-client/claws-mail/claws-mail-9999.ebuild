@@ -117,8 +117,6 @@ PATCHES=(
 
 src_prepare() {
 	default
-	sed -e "s/webkit2gtk-4.0/webkit2gtk-4.1/" -i configure.ac || die
-
 	eautoreconf
 }
 
@@ -187,7 +185,7 @@ src_configure() {
 }
 
 src_install() {
-	local DOCS=( AUTHORS ChangeLog* INSTALL* NEWS README* TODO* )
+	local DOCS=( AUTHORS ChangeLog* INSTALL* NEWS README* )
 	default
 
 	# Makefile install claws-mail.png in /usr/share/icons/hicolor/48x48/apps

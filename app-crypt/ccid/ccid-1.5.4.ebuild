@@ -29,7 +29,7 @@ PATCHES=(
 src_prepare() {
 	default
 
-	eautoconf
+	eautoreconf
 }
 
 src_configure() {

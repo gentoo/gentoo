@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit vdr-plugin-2
 
@@ -9,15 +9,15 @@ DESCRIPTION="VDR Plugin: CD-PLAYER"
 HOMEPAGE="https://www.uli-eckhardt.de/vdr/cdplayer.en.shtml"
 SRC_URI="https://www.uli-eckhardt.de/vdr/download/${P}.tgz"
 
-KEYWORDS="~amd64 ~x86"
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="cdparanoia"
 
-DEPEND=">=media-video/vdr-2
-		>=dev-libs/libcdio-0.8.0
-		>=media-libs/libcddb-1.3.0
-		cdparanoia? ( >=dev-libs/libcdio-paranoia-0.90 )"
+DEPEND="media-video/vdr
+	dev-libs/libcdio
+	media-libs/libcddb
+	cdparanoia? ( dev-libs/libcdio-paranoia )"
 RDEPEND="${DEPEND}"
 
 src_prepare() {

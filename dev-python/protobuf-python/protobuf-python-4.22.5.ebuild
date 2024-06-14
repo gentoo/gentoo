@@ -24,7 +24,7 @@ else
 		https://github.com/protocolbuffers/protobuf/archive/v${PARENT_PV}.tar.gz
 			-> ${PARENT_P}.tar.gz
 	"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~loong ~mips ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 
 DESCRIPTION="Google's Protocol Buffers - Python bindings"
@@ -56,6 +56,7 @@ PARENT_PATCHES=(
 
 # Here for patches within "python/" subdirectory.
 PATCHES=(
+	"${FILESDIR}/${PN}-4.22.5-python.patch"
 )
 
 python_prepare_all() {

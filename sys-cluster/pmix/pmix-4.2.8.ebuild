@@ -1,7 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit flag-o-matic libtool
 
 DESCRIPTION="The Process Management Interface (PMI) Exascale"
 HOMEPAGE="https://openpmix.github.io/"
@@ -23,7 +25,16 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+src_prepare() {
+	default
+	elibtoolize
+}
+
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://github.com/openpmix/openpmix/issues/3350
+	filter-lto
+
 	econf \
 		--disable-werror \
 		$(use_enable debug) \
@@ -32,6 +43,8 @@ src_configure() {
 
 src_install() {
 	default
+
+	find "${ED}" -name '*.la' -delete || die
 
 	# bug #884765
 	mv "${ED}"/usr/bin/pquery "${ED}"/usr/bin/pmix-pquery || die

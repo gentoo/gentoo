@@ -1,6 +1,21 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2024-06-13)
+# Needed by dependencies of KDE Plasma and KDE Gear
+app-crypt/gpgme qt6
+app-crypt/pinentry qt6
+app-crypt/qca qt6
+app-text/poppler qt6
+dev-libs/qtkeychain qt6
+media-libs/phonon qt6
+media-libs/phonon-vlc qt6
+net-libs/accounts-qml qt6
+net-libs/accounts-qt qt6
+net-libs/signond qt6
+net-libs/signon-oauth2 qt6
+sys-auth/polkit-qt qt6
+
 # Alfred Wingate <parona@protonmail.com> (2023-12-25)
 # Prefer wayland over X with REQUIRED_USE: ^^ ( gbm wayland X )
 >=media-tv/kodi-20.2 wayland -X

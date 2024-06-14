@@ -277,14 +277,15 @@ BDEPEND+="
 	dev-libs/libpcre2:*
 	>=kde-frameworks/extra-cmake-modules-${KFMIN}:*
 "
-RDEPEND+=" >=kde-frameworks/kf-env-4"
 if [[ ${ECM_TEST} != false ]]; then
 	IUSE+=" test"
 	RESTRICT+=" !test? ( test )"
 fi
 if [[ ${_KFSLOT} == 6 ]]; then
+	RDEPEND+=" >=kde-frameworks/kf-env-6"
 	COMMONDEPEND+=" dev-qt/qtbase:${_KFSLOT}"
 else
+	RDEPEND+=" >=kde-frameworks/kf-env-4"
 	COMMONDEPEND+=" dev-qt/qtcore:${_KFSLOT}"
 	if [[ ${ECM_TEST} != false ]]; then
 		DEPEND+=" test? ( dev-qt/qttest:5 )"

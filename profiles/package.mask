@@ -33,6 +33,55 @@
 
 #--- END OF EXAMPLES ---
 
+# Maciej Barć <xgqt@gentoo.org> (2024-06-14)
+# EAPI=6, now shipped in official gambit and so it fails to merge from file
+# collision. Bug: #832334
+# Removal on 2024-07-14.
+dev-scheme/termite
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-14)
+# EAPI=6, no reverse dependencies, maintainer-needed, installation
+# blocked by iproute2.
+# Removal on 2024-07-14.  Bugs #934242, #430816.
+net-misc/arpd
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-14)
+# EAPI=6, many compilation issues, upstream is gone, not maintained for
+# many years.
+# Removal on 2024-07-14.  Bugs #934240.
+sci-electronics/vbs
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-14)
+# EAPI=6, dead upstream website, Gentoo is last distribution to
+# package it.
+# Removal on 2024-07-14.  Bug #934232.
+sci-chemistry/xyza2pipe
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-14)
+# EAPI=6, not maintained for ~7 years in gentoo, waiting for version
+# bump. Fetch restricted, and fails to build after manual fetch.
+# Removal on 2024-07-14.  Bugs #934228, #686860, #686858, #686856.
+sci-chemistry/namd
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-14)
+# EAPI=6, not maintained in Gentoo for a long time. procheck is
+# fetch restricted, and the file you download from upstream
+# doesn't match size and manifests. aqua depends on procheck.
+# Removal on 2024-07-14.  Bugs #928067, #928068.
+sci-chemistry/aqua
+sci-chemistry/procheck
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-14)
+# EAPI=6, maintainer-needed, no reverse dependencies.
+# Removal on 2024-07-14.  Bugs #934227, #898840.
+www-misc/log-toolkit
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-13)
+# EAPI=6, maintainer-needed, waiting for a bump, various failures
+# with modern C.
+# Removal on 2024-07-13.  Bugs #934200, #711348, #726634, #831750.
+app-misc/blink1
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-12)
 # EAPI=6, maintainer needed, no reverse dependencies. Not maintained in
 # gentoo for a long time.
@@ -190,6 +239,22 @@ dev-ml/ppx_let:0/0.17
 dev-ml/ppx_sexp_message:0/0.17
 dev-ml/ppx_sexp_value:0/0.17
 dev-ml/ppx_assert:0/0.17
+dev-ml/jane-street-headers:0/0.17
+dev-ml/ppx_optcomp:0/0.17
+dev-ml/jst-config:0/0.17
+dev-ml/time_now:0/0.17
+dev-ml/ppx_inline_test:0/0.17
+dev-ml/ppx_bench:0/0.17
+dev-ml/splittable_random:0/0.17
+dev-ml/base_quickcheck:0/0.17
+dev-ml/ppx_stable:0/0.17
+dev-ml/ppx_string:0/0.17
+dev-ml/ppx_expect:0/0.17
+dev-ml/parsexp:0/0.17
+dev-ml/sexplib:0/0.17
+dev-ml/variantslib:0/0.17
+dev-ml/ppx_variants_conv:0/0.17
+dev-ml/ppx_log:0/0.17
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-08)
 # EAPI=6, waiting for a version bump, not maintained for many years.
@@ -331,44 +396,6 @@ dev-ruby/uconv
 # https://github.com/psf/requests/pull/6667#issuecomment-2124283071
 =dev-python/requests-2.32.2
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-05-24)
-# Perl 5.40.0 mask. Use this block to unmask for testing.
-~dev-lang/perl-5.40.0
-~virtual/perl-Archive-Tar-3.20.10_rc
-~virtual/perl-autodie-2.370.0
-~virtual/perl-bignum-0.670.0
-~virtual/perl-Compress-Raw-Bzip2-2.212.0
-~virtual/perl-CPAN-Meta-Requirements-2.143.0
-~virtual/perl-Data-Dumper-2.189.0
-~virtual/perl-DB_File-1.859.0
-~virtual/perl-Devel-PPPort-3.720.0
-~virtual/perl-Exporter-5.780.0
-~virtual/perl-ExtUtils-CBuilder-0.280.240
-~virtual/perl-ExtUtils-Manifest-1.750.0
-~virtual/perl-File-Spec-3.900.0
-~virtual/perl-HTTP-Tiny-0.88.0
-~virtual/perl-IO-1.550.0
-~virtual/perl-IO-Compress-2.212.0
-~virtual/perl-IO-Socket-IP-0.420.0
-~virtual/perl-IO-Zlib-1.150.0
-~virtual/perl-Math-BigInt-2.3.2
-~virtual/perl-Math-BigInt-FastCalc-0.501.800
-~virtual/perl-Math-BigRat-2.3.2
-~virtual/perl-Module-CoreList-5.202.406.90
-~virtual/perl-Module-Metadata-1.0.38
-~virtual/perl-podlators-5.10.200_rc
-~virtual/perl-Pod-Simple-3.450.0
-~virtual/perl-Safe-2.460.0
-~virtual/perl-Socket-2.38.0
-~virtual/perl-Test-Harness-3.480.0
-~virtual/perl-Test-Simple-1.302.199
-~virtual/perl-Text-Tabs+Wrap-2024.1.0
-~virtual/perl-threads-2.400.0
-~virtual/perl-threads-shared-1.690.0
-~virtual/perl-Time-HiRes-1.977.700
-~virtual/perl-Time-Local-1.350.0
-~virtual/perl-version-0.993.0
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-23)
 # EAPI=6, maintainer-needed, dead HOMEPAGE, fails to compile.
 # Removal on 2024-06-22.  Bugs #932571, #902899, #887625, #853025, #672702.
@@ -483,415 +510,6 @@ sec-keys/openpgp-keys-jiatan
 # Eray Aslan <eras@gentoo.org> (2024-03-10)
 # Mask experimental software
 =mail-mta/postfix-3.10*
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-06-07)
-# KDE Plasma 6.1 Beta (6.0.90), Gear 24.05.0 and Frameworks 6.3.0 mask
-#
-# Don't do anything unless you're intentionally moving to Plasma 6, which
-# is masked until bug #926828 is fixed. If you get this message just from
-# conflicts where you're not trying to do that, please cleanup stale entries
-# in /etc/portage and your world file.
-#
-# Plasma 6 replaces 5, while KF6 will be installed alongside KF5 as long as
-# the latter is needed. For conflict resolution between KF5- and KF6-packages:
-# - put '-kf6compat' into /etc/portage/profile/use.mask
-# - enable USE=kf6compat globally
-# - if you have the following packages installed, put the following into
-#   /etc/portage/package.use in order to avoid conflicts:
-#       dev-util/kdevelop:5 -gdbui -plasma
-# If you encounter ...
-# - build-time/packaging bugs:
-#   - file a bug after making sure none exists yet for your issue
-# - runtime bugs: https://community.kde.org/Plasma/Plasma_6#How_to_use/test_it
-#   - work with upstream and help test patches using /etc/portage/patches
-~kde-frameworks/frameworkintegration-6.3.0
-~kde-frameworks/attica-6.3.0
-~kde-frameworks/bluez-qt-6.3.0
-~kde-frameworks/breeze-icons-6.3.0
-~kde-frameworks/extra-cmake-modules-6.3.0
-~kde-frameworks/karchive-6.3.0
-~kde-frameworks/kcalendarcore-6.3.0
-~kde-frameworks/kcodecs-6.3.0
-~kde-frameworks/kconfig-6.3.0
-~kde-frameworks/kcoreaddons-6.3.0
-~kde-frameworks/kdbusaddons-6.3.0
-~kde-frameworks/kdnssd-6.3.0
-~kde-frameworks/kguiaddons-6.3.0
-~kde-frameworks/kholidays-6.3.0
-~kde-frameworks/ki18n-6.3.0
-~kde-frameworks/kidletime-6.3.0
-~kde-frameworks/kirigami-6.3.0
-~kde-frameworks/kitemmodels-6.3.0
-~kde-frameworks/kitemviews-6.3.0
-~kde-frameworks/kplotting-6.3.0
-~kde-frameworks/kquickcharts-6.3.0
-~kde-frameworks/ktexttemplate-6.3.0
-~kde-frameworks/kuserfeedback-6.3.0
-~kde-frameworks/kwidgetsaddons-6.3.0
-~kde-frameworks/kwindowsystem-6.3.0
-~kde-frameworks/modemmanager-qt-6.3.0
-~kde-frameworks/networkmanager-qt-6.3.0
-~kde-frameworks/prison-6.3.0
-~kde-frameworks/solid-6.3.0
-~kde-frameworks/sonnet-6.3.0
-~kde-frameworks/syntax-highlighting-6.3.0
-~kde-frameworks/threadweaver-6.3.0
-~kde-frameworks/kauth-6.3.0
-~kde-frameworks/kcolorscheme-6.3.0
-~kde-frameworks/kcompletion-6.3.0
-~kde-frameworks/kcontacts-6.3.0
-~kde-frameworks/kcrash-6.3.0
-~kde-frameworks/kdoctools-6.3.0
-~kde-frameworks/kfilemetadata-6.3.0
-~kde-frameworks/kimageformats-6.3.0
-~kde-frameworks/kjobwidgets-6.3.0
-~kde-frameworks/knotifications-6.3.0
-~kde-frameworks/kpackage-6.3.0
-~kde-frameworks/kpty-6.3.0
-~kde-frameworks/kstatusnotifieritem-6.3.0
-~kde-frameworks/ksvg-6.3.0
-~kde-frameworks/kunitconversion-6.3.0
-~kde-frameworks/syndication-6.3.0
-~kde-frameworks/baloo-6.3.0
-~kde-frameworks/kbookmarks-6.3.0
-~kde-frameworks/kcmutils-6.3.0
-~kde-frameworks/kconfigwidgets-6.3.0
-~kde-frameworks/kdav-6.3.0
-~kde-frameworks/kdeclarative-6.3.0
-~kde-frameworks/kded-6.3.0
-~kde-frameworks/kdesu-6.3.0
-~kde-frameworks/kglobalaccel-6.3.0
-~kde-frameworks/kiconthemes-6.3.0
-~kde-frameworks/kio-6.3.0
-~kde-frameworks/knewstuff-6.3.0
-~kde-frameworks/knotifyconfig-6.3.0
-~kde-frameworks/kparts-6.3.0
-~kde-frameworks/kpeople-6.3.0
-~kde-frameworks/krunner-6.3.0
-~kde-frameworks/kservice-6.3.0
-~kde-frameworks/ktexteditor-6.3.0
-~kde-frameworks/ktextwidgets-6.3.0
-~kde-frameworks/kwallet-6.3.0
-~kde-frameworks/kxmlgui-6.3.0
-~kde-frameworks/purpose-6.3.0
-~kde-frameworks/qqc2-desktop-style-6.3.0
-~kde-plasma/bluedevil-6.0.90
-~kde-plasma/breeze-6.0.90
-~kde-plasma/breeze-grub-6.0.90
-~kde-plasma/breeze-gtk-6.0.90
-~kde-plasma/breeze-plymouth-6.0.90
-~kde-plasma/discover-6.0.90
-~kde-plasma/drkonqi-6.0.90
-~kde-plasma/flatpak-kcm-6.0.90
-~kde-plasma/kactivitymanagerd-6.0.90
-~kde-plasma/kde-cli-tools-6.0.90
-~kde-plasma/kde-gtk-config-6.0.90
-~kde-plasma/kdecoration-6.0.90
-~kde-plasma/kdeplasma-addons-6.0.90
-~kde-plasma/kgamma-6.0.90
-~kde-plasma/kglobalacceld-6.0.90
-~kde-plasma/kinfocenter-6.0.90
-~kde-plasma/kmenuedit-6.0.90
-~kde-plasma/kpipewire-6.0.90
-~kde-plasma/krdp-6.0.90
-~kde-plasma/kscreen-6.0.90
-~kde-plasma/kscreenlocker-6.0.90
-~kde-plasma/ksshaskpass-6.0.90
-~kde-plasma/ksystemstats-6.0.90
-~kde-plasma/kwallet-pam-6.0.90
-~kde-plasma/kwayland-6.0.90
-~kde-plasma/kwayland-integration-6.0.90
-~kde-plasma/kwin-6.0.90.1
-~kde-plasma/kwrited-6.0.90
-~kde-plasma/layer-shell-qt-6.0.90
-~kde-plasma/libkscreen-6.0.90
-~kde-plasma/libksysguard-6.0.90
-~kde-plasma/libplasma-6.0.90
-~kde-plasma/milou-6.0.90
-~kde-plasma/ocean-sound-theme-6.0.90
-~kde-plasma/oxygen-6.0.90
-~kde-plasma/oxygen-sounds-6.0.90
-~kde-plasma/plasma-activities-6.0.90
-~kde-plasma/plasma-activities-stats-6.0.90
-~kde-plasma/plasma-browser-integration-6.0.90
-~kde-plasma/plasma-desktop-6.0.90
-~kde-plasma/plasma-disks-6.0.90
-~kde-plasma/plasma-firewall-6.0.90
-~kde-plasma/plasma-integration-6.0.90
-~kde-plasma/plasma-meta-6.0.90
-~kde-plasma/plasma-nm-6.0.90
-~kde-plasma/plasma-pa-6.0.90
-~kde-plasma/plasma-sdk-6.0.90
-~kde-plasma/plasma-systemmonitor-6.0.90
-~kde-plasma/plasma-thunderbolt-6.0.90
-~kde-plasma/plasma-vault-6.0.90
-~kde-plasma/plasma-welcome-6.0.90
-~kde-plasma/plasma-workspace-6.0.90
-~kde-plasma/plasma-workspace-wallpapers-6.0.90
-~kde-plasma/plasma5support-6.0.90
-~kde-plasma/plymouth-kcm-6.0.90
-~kde-plasma/polkit-kde-agent-6.0.90
-~kde-plasma/powerdevil-6.0.90
-~kde-plasma/print-manager-6.0.90
-~kde-plasma/qqc2-breeze-style-6.0.90
-~kde-plasma/sddm-kcm-6.0.90
-~kde-plasma/systemsettings-6.0.90
-~kde-plasma/wacomtablet-6.0.90
-~kde-plasma/xdg-desktop-portal-kde-6.0.90
-~kde-apps/baloo-widgets-24.05.0
-~kde-apps/dolphin-24.05.0
-~kde-apps/kate-24.05.0
-~kde-apps/kate-addons-24.05.0
-~kde-apps/kate-lib-24.05.0
-~kde-apps/kde-apps-meta-24.05.0
-~kde-apps/kdecore-meta-24.05.0
-~kde-apps/khelpcenter-24.05.0
-~kde-apps/konsole-24.05.0
-~kde-apps/kwrite-24.05.0
-~kde-apps/kdialog-24.05.0
-~kde-apps/keditbookmarks-24.05.0
-~kde-apps/kfind-24.05.0
-~kde-apps/konqueror-24.05.0
-~www-client/falkon-24.05.0
-~app-accessibility/kontrast-24.05.0
-~kde-apps/kdeaccessibility-meta-24.05.0
-~kde-apps/kmag-24.05.0
-~kde-apps/kmousetool-24.05.0
-~kde-apps/kmouth-24.05.0
-~kde-apps/kdeadmin-meta-24.05.0
-~kde-apps/kcron-24.05.0
-~kde-apps/ksystemlog-24.05.0
-~kde-apps/analitza-24.05.0
-~kde-apps/blinken-24.05.0
-~kde-apps/kalgebra-24.05.0
-~kde-apps/kanagram-24.05.0
-~kde-apps/kbruch-24.05.0
-~kde-apps/kdeedu-data-24.05.0
-~kde-apps/kdeedu-meta-24.05.0
-~kde-apps/kgeography-24.05.0
-~kde-apps/khangman-24.05.0
-~kde-apps/kiten-24.05.0
-~kde-apps/klettres-24.05.0
-~kde-apps/kturtle-24.05.0
-~kde-apps/kwordquiz-24.05.0
-~kde-apps/libkeduvocdocument-24.05.0
-~kde-apps/parley-24.05.0
-~games-puzzle/skladnik-24.05.0
-~kde-apps/bomber-24.05.0
-~kde-apps/bovo-24.05.0
-~kde-apps/granatier-24.05.0
-~kde-apps/kajongg-24.05.0
-~kde-apps/kapman-24.05.0
-~kde-apps/katomic-24.05.0
-~kde-apps/kblackbox-24.05.0
-~kde-apps/kblocks-24.05.0
-~kde-apps/kbounce-24.05.0
-~kde-apps/kbreakout-24.05.0
-~kde-apps/kdegames-meta-24.05.0
-~kde-apps/kdiamond-24.05.0
-~kde-apps/kfourinline-24.05.0
-~kde-apps/kgoldrunner-24.05.0
-~kde-apps/kigo-24.05.0
-~kde-apps/killbots-24.05.0
-~kde-apps/kiriki-24.05.0
-~kde-apps/kjumpingcube-24.05.0
-~kde-apps/klickety-24.05.0
-~kde-apps/klines-24.05.0
-~kde-apps/kmahjongg-24.05.0
-~kde-apps/kmines-24.05.0
-~kde-apps/knavalbattle-24.05.0
-~kde-apps/knetwalk-24.05.0
-~kde-apps/knights-24.05.0
-~kde-apps/kolf-24.05.0
-~kde-apps/kollision-24.05.0
-~kde-apps/konquest-24.05.0
-~kde-apps/kpat-24.05.0
-~kde-apps/kreversi-24.05.0
-~kde-apps/kshisen-24.05.0
-~kde-apps/ksirk-24.05.0
-~kde-apps/ksnakeduel-24.05.0
-~kde-apps/kspaceduel-24.05.0
-~kde-apps/ksquares-24.05.0
-~kde-apps/ksudoku-24.05.0
-~kde-apps/ktuberling-24.05.0
-~kde-apps/kubrick-24.05.0
-~kde-apps/libkdegames-24.05.0
-~kde-apps/libkmahjongg-24.05.0
-~kde-apps/lskat-24.05.0
-~kde-apps/palapeli-24.05.0
-~kde-apps/picmi-24.05.0
-~kde-apps/gwenview-24.05.0
-~kde-apps/kamera-24.05.0
-~kde-apps/kcolorchooser-24.05.0
-~kde-apps/kdegraphics-meta-24.05.0
-~kde-apps/kdegraphics-mobipocket-24.05.0
-~kde-apps/kolourpaint-24.05.0
-~kde-apps/kruler-24.05.0
-~kde-apps/libkdcraw-24.05.0
-~kde-apps/libkexiv2-24.05.0
-~kde-apps/libksane-24.05.0
-~kde-apps/okular-24.05.0
-~kde-apps/spectacle-24.05.0
-~kde-apps/svgpart-24.05.0
-~kde-apps/thumbnailers-24.05.0
-~kde-misc/colord-kde-24.05.0
-~media-gfx/skanpage-24.05.0
-~media-libs/ksanecore-24.05.0
-~kde-apps/audiocd-kio-24.05.0
-~kde-apps/dragon-24.05.0
-~kde-apps/ffmpegthumbs-24.05.0
-~kde-apps/juk-24.05.0
-~kde-apps/kdemultimedia-meta-24.05.0
-~kde-apps/kdenlive-24.05.0
-~kde-apps/libkcddb-24.05.0
-~kde-apps/libkcompactdisc-24.05.0
-~media-sound/audex-24.05.0
-~media-sound/elisa-24.05.0
-~media-sound/kasts-24.05.0
-~media-sound/krecorder-24.05.0
-~kde-apps/dolphin-plugins-dropbox-24.05.0
-~kde-apps/kaccounts-integration-24.05.0
-~kde-apps/kaccounts-providers-24.05.0
-~kde-apps/kdenetwork-meta-24.05.0
-~kde-apps/kdenetwork-filesharing-24.05.0
-~kde-apps/kget-24.05.0
-~kde-apps/kio-extras-24.05.0
-~kde-apps/krfb-24.05.0
-~kde-apps/signon-kwallet-extension-24.05.0
-~kde-misc/kdeconnect-24.05.0
-~kde-misc/kio-gdrive-24.05.0
-~net-im/neochat-24.05.0
-~net-im/tokodon-24.05.0
-~net-irc/konversation-24.05.0
-~net-libs/libktorrent-24.05.0
-~net-misc/kio-zeroconf-24.05.0
-~net-news/alligator-24.05.0
-~net-p2p/ktorrent-24.05.0
-~app-office/merkuro-24.05.0
-~dev-libs/kopeninghours-24.05.0
-~dev-libs/kosmindoormap-24.05.0
-~dev-libs/kpublictransport-24.05.0
-~kde-apps/akonadi-24.05.0
-~kde-apps/akonadi-calendar-24.05.0
-~kde-apps/akonadi-contacts-24.05.0
-~kde-apps/akonadi-import-wizard-24.05.0
-~kde-apps/akonadi-mime-24.05.0
-~kde-apps/akonadi-notes-24.05.0
-~kde-apps/akonadi-search-24.05.0
-~kde-apps/akonadiconsole-24.05.0
-~kde-apps/akregator-24.05.0
-~kde-apps/calendarjanitor-24.05.0
-~kde-apps/calendarsupport-24.05.0
-~kde-apps/eventviews-24.05.0
-~kde-apps/grantlee-editor-24.05.0
-~kde-apps/grantleetheme-24.05.0
-~kde-apps/incidenceeditor-24.05.0
-~kde-apps/kaddressbook-24.05.0
-~kde-apps/kalarm-24.05.0
-~kde-apps/kcalutils-24.05.0
-~kde-apps/kdepim-addons-24.05.0
-~kde-apps/kdepim-meta-24.05.0
-~kde-apps/kdepim-runtime-24.05.0
-~kde-apps/kidentitymanagement-24.05.0
-~kde-apps/kimap-24.05.0
-~kde-apps/kitinerary-24.05.0
-~kde-apps/kldap-24.05.0
-~kde-apps/kleopatra-24.05.0
-~kde-apps/kmail-24.05.0
-~kde-apps/kmail-account-wizard-24.05.0
-~kde-apps/kmailtransport-24.05.0
-~kde-apps/kmbox-24.05.0
-~kde-apps/kmime-24.05.0
-~kde-apps/knotes-24.05.0
-~kde-apps/konsolekalendar-24.05.0
-~kde-apps/kontact-24.05.0
-~kde-apps/kontactinterface-24.05.0
-~kde-apps/korganizer-24.05.0
-~kde-apps/kpimtextedit-24.05.0
-~kde-apps/kpkpass-24.05.0
-~kde-apps/ksmtp-24.05.0
-~kde-apps/libgravatar-24.05.0
-~kde-apps/libkdepim-24.05.0
-~kde-apps/libkgapi-24.05.0
-~kde-apps/libkleo-24.05.0
-~kde-apps/libksieve-24.05.0
-~kde-apps/libktnef-24.05.0
-~kde-apps/mailcommon-24.05.0
-~kde-apps/mailimporter-24.05.0
-~kde-apps/mbox-importer-24.05.0
-~kde-apps/messagelib-24.05.0
-~kde-apps/mimetreeparser-24.05.0
-~kde-apps/pim-data-exporter-24.05.0
-~kde-apps/pim-sieve-editor-24.05.0
-~kde-apps/pimcommon-24.05.0
-~kde-misc/zanshin-24.05.0
-~dev-util/kio-perldoc-24.05.0
-~kde-apps/dolphin-plugins-git-24.05.0
-~kde-apps/dolphin-plugins-mercurial-24.05.0
-~kde-apps/dolphin-plugins-subversion-24.05.0
-~kde-apps/kapptemplate-24.05.0
-~kde-apps/kcachegrind-24.05.0
-~kde-apps/kde-dev-utils-24.05.0
-~kde-apps/kdesdk-meta-24.05.0
-~app-cdr/dolphin-plugins-mountiso-24.05.0
-~app-cdr/isoimagewriter-24.05.0
-~app-crypt/keysmith-24.05.0
-~app-editors/ghostwriter-24.05.0
-~kde-apps/ark-24.05.0
-~kde-apps/filelight-24.05.0
-~kde-apps/kbackup-24.05.0
-~kde-apps/kcalc-24.05.0
-~kde-apps/kcharselect-24.05.0
-~kde-apps/kdebugsettings-24.05.0
-~kde-apps/kdeutils-meta-24.05.0
-~kde-apps/kdf-24.05.0
-~kde-apps/kgpg-24.05.0
-~kde-apps/kteatime-24.05.0
-~kde-apps/ktimer-24.05.0
-~kde-apps/kwalletmanager-24.05.0
-~kde-apps/sweeper-24.05.0
-~kde-apps/yakuake-24.05.0
-~kde-misc/kclock-24.05.0
-~kde-misc/kweather-24.05.0
-~kde-misc/markdownpart-24.05.0
-~sys-block/partitionmanager-24.05.0
-~sys-libs/kpmcore-24.05.0
-=kde-misc/kio-gdrive-23.08.5-r1
-=kde-plasma/print-manager-23.08.5-r100
-~kde-misc/kio-fuse-5.1.0
-~kde-misc/plasma-pass-1.2.2
-~app-editors/kile-2.9.94
-~dev-db/futuresql-0.1.1
-~dev-libs/appstream-1.0.3
-~dev-libs/kdiagram-3.0.1
-~dev-libs/kirigami-addons-1.2.1
-~dev-libs/ktextaddons-1.5.4
-~dev-libs/kweathercore-0.8.0
-~dev-util/massif-visualizer-0.8.0
-~games-puzzle/skladnik-0.5.2
-~gui-apps/xwaylandvideobridge-0.4.0
-~kde-frameworks/oxygen-icons-6.0.0
-~media-gfx/kgraphviewer-2.5.0
-=media-libs/kquickimageeditor-0.3.0-r100
-~media-libs/libqaccessibilityclient-0.6.0
-~media-libs/mpvqt-1.0.0
-~media-libs/phonon-4.12.0
-~media-libs/phonon-vlc-0.12.0
-~media-libs/pulseaudio-qt-1.5.0
-~net-libs/kdsoap-2.2.0
-~net-libs/kdsoap-ws-discovery-client-0.4.0
-~net-libs/signon-ui-0.15_p20231016
-~net-libs/accounts-qt-1.17
-~net-libs/accounts-qml-0.7_p20231028
-~net-libs/signon-oauth2-0.25_p20210102
-=net-libs/signond-8.61-r100
-=net-misc/smb4k-3.2.5-r2
-~net-misc/smb4k-3.2.71
-~sys-auth/polkit-qt-0.200.0
-~x11-misc/sddm-0.21.0_p20240302
-~app-backup/kup-0.10.0
-~app-text/kjots-6.0.0
-=app-office/libreoffice-24.2.4.2-r10
 
 # Ulrich Müller <ulm@gentoo.org> (2024-02-08)
 # Masked for testing.

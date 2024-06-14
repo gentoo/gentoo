@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
-DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_USE_PEP517=poetry
 PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="sqlite"
 
@@ -108,10 +108,10 @@ src_prepare() {
 	# https://github.com/beetbox/beets/commit/8b4983fe7cae9397acd3e23602e419d8dc1041d4
 	# merged code coverage into standard test runs; since we disable coverage globally
 	# we need to sed out some 'addopts' for coverage in setup.cfg that cause tests to choke.
-	sed -i -e "/--cov=beets/,+9d" setup.cfg || die "Failed to disable code coverage options in setup.cfg"
+	#sed -i -e "/--cov=beets/,+9d" setup.cfg || die "Failed to disable code coverage options in setup.cfg"
 	# Update the version if we're not building from pypy; it's probably a _pre or live ebuild.
 	if  [[ ${PV} == "9999" ]] || [[ ${UPDATE_VERSION} == "yes" ]]; then
-		    sed -i -e "s/version='.*'/version='${PV}'/" setup.py || die "Failed to update version in VCS sources"
+		    sed -i -e "s/^version = \".*\"$/version = \"${PV}\"/" pyproject.toml || die "Failed to update version in VCS sources"
 			sed -i -e "s/__version__ = \".*\"/__version__ = \"${PV}\"/" beets/__init__.py
 	fi
 	default
@@ -141,7 +141,7 @@ python_test() {
 	local EPYTEST_DESELECT=(
 		test/test_ui.py::CompletionTest::test_completion
 	)
-	epytest -n$(makeopts_jobs) -v
+	epytest -n$(makeopts_jobs) -v --no-cov
 }
 
 python_install_all() {

@@ -5,6 +5,11 @@
     <email>sci-astronomy@gentoo.org</email>
     <name>Gentoo Astronomy Project</name>
   </maintainer>
+  <maintainer type="person">
+    <email>mgorny@gentoo.org</email>
+    <name>Michał Górny</name>
+    <!-- for dev-python/fitsio -->
+  </maintainer>
   <use>
     <flag name="tools">
       Build optional utilities (cookbook fitscopy imcopy smem speed testprog fpack funpack)

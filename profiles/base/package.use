@@ -3,7 +3,7 @@
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-05-30)
 # Only up to python 3.11 supported, bug #929546
-<dev-util/kdevelop-python-24.07.50:5 python_single_target_python3_11
+<dev-util/kdevelop-python-24.05.1:5 python_single_target_python3_11
 ~www-client/falkon-23.08.5 python_single_target_python3_11
 dev-python/pyside2 python_targets_python3_11
 dev-python/shiboken2 python_targets_python3_11

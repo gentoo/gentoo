@@ -11,7 +11,7 @@ DESCRIPTION="A SNMP Perl Module"
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 sparc x86"
 
 src_install() {
 	perl-module_src_install

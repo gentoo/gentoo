@@ -1,15 +1,19 @@
 #!/bin/bash
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 source tests-common.sh || exit
 
-EAPI=6
+EAPI=8
 
 inherit rebar
 
 EPREFIX="${tmpdir}/fakeroot"
 S="${WORKDIR}/${P}"
+
+get_libdir() {
+	echo lib
+}
 
 setup() {
 	mkdir -p "${S}" || die

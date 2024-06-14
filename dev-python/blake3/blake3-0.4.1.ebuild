@@ -6,7 +6,7 @@ EAPI=8
 CARGO_OPTIONAL=1
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 CRATES="
 	arrayref@0.3.7
@@ -113,6 +113,11 @@ src_unpack() {
 }
 
 src_prepare() {
+	local PATCHES=(
+		# https://github.com/oconnor663/blake3-py/pull/44
+		"${FILESDIR}/${P}-gcc14.patch"
+	)
+
 	# sed the package name and version to improve compatibility
 	sed -e 's:blake3_experimental_c:blake3:' \
 		-e "s:0[.]0[.]1:${PV}:" \

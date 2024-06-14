@@ -1,0 +1,70 @@
+https://github.com/ukoethe/vigra/commit/1203cccaed97c276d7c3cf6886730d03f6e8dfc6
+
+(But with some edits for more distutils removals & rebase.)
+
+From 1203cccaed97c276d7c3cf6886730d03f6e8dfc6 Mon Sep 17 00:00:00 2001
+From: Mark Harfouche <mark.harfouche@gmail.com>
+Date: Sat, 30 Sep 2023 16:25:08 -0400
+Subject: [PATCH] Do not use distutils since it is deprecated
+
+--- a/vigranumpy/setup.py.cmake2.in
++++ b/vigranumpy/setup.py.cmake2.in
+@@ -1,5 +1,8 @@
+-import distutils, ctypes.util, shutil, os, sys
+-from distutils.core import setup
++import ctypes.util
++import shutil
++import os
++import sys
++from setuptools import setup
+ 
+ # copy the required DLLs to the directory $vigranumpy_tmp_dir/dlls
+ # if additional libraries are linked dynamically (e.g. tiff, png)
+--- a/vigranumpy/setup.py.in
++++ b/vigranumpy/setup.py.in
+@@ -1,5 +1,9 @@
+-import distutils, ctypes.util, shutil, os, sys
+-from distutils.core import setup
++import ctypes.util
++import shutil
++import os
++import sys
++from setuptools import setup
++
+ 
+ # copy the required DLLs to the directory $vigranumpy_tmp_dir/dlls
+ # if additional libraries are linked dynamically (e.g. tiff, png)
+
+--- a/config/FindVIGRANUMPY_DEPENDENCIES.cmake
++++ b/config/FindVIGRANUMPY_DEPENDENCIES.cmake
+@@ -40,7 +40,7 @@ IF(PYTHONINTERP_FOUND)
+     #
+     ######################################################################
+     execute_process(COMMAND ${PYTHON_EXECUTABLE} -c
+-                    "from distutils.sysconfig import *; print(get_python_inc())"
++                    "import sysconfig; print(sysconfig.get_paths()['include'])"
+                     OUTPUT_VARIABLE PYTHON_INCLUDE OUTPUT_STRIP_TRAILING_WHITESPACE)
+     SET(PYTHON_INCLUDE_PATH ${PYTHON_INCLUDE}
+         CACHE PATH "Path to Python include files"
+@@ -66,10 +66,10 @@ IF(PYTHONINTERP_FOUND)
+             set(PYTHON_LIBRARY_NAME python${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR})
+         ELSE()
+             execute_process(COMMAND ${PYTHON_EXECUTABLE} -c
+-                             "from distutils.sysconfig import *; print(get_config_var('LDLIBRARY'))"
++                             "import sysconfig; print(sysconfig.get_config_var('LDLIBRARY'))"
+                               OUTPUT_VARIABLE PYTHON_LIBRARY_NAME OUTPUT_STRIP_TRAILING_WHITESPACE)
+             execute_process(COMMAND ${PYTHON_EXECUTABLE} -c
+-                             "from distutils.sysconfig import *; print(get_config_var('LIBDIR'))"
++                             "import sysconfig; print(sysconfig.get_config_var('LIBDIR'))"
+                                OUTPUT_VARIABLE PYTHON_LIBRARY_PREFIX OUTPUT_STRIP_TRAILING_WHITESPACE)
+         ENDIF()
+         FIND_LIBRARY(PYTHON_LIBRARIES ${PYTHON_LIBRARY_NAME} HINTS "${PYTHON_LIBRARY_PREFIX}" "${PYTHON_PREFIX}"
+@@ -139,7 +139,7 @@ IF(PYTHONINTERP_FOUND)
+     ######################################################################
+     IF(NOT DEFINED VIGRANUMPY_INSTALL_DIR OR VIGRANUMPY_INSTALL_DIR MATCHES "^$")
+         execute_process(COMMAND ${PYTHON_EXECUTABLE} -c
+-                         "from distutils.sysconfig import *; print(get_python_lib(1))"
++                         "import sysconfig; print(sysconfig.get_paths()['purelib'])"
+                           OUTPUT_VARIABLE PYTHON_SITE_PACKAGES OUTPUT_STRIP_TRAILING_WHITESPACE)
+         FILE(TO_CMAKE_PATH ${PYTHON_SITE_PACKAGES} VIGRANUMPY_INSTALL_DIR)
+     ENDIF()

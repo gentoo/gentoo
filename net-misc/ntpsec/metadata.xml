@@ -27,6 +27,21 @@
 		<flag name="rclock_nmea">NMEA GPS driver</flag>
 		<flag name="rclock_modem">NIST/USNO/PTB Modem Time Services</flag>
 		<flag name="rclock_local">Support for undisciplined local clock (not recommended)</flag>
+		<flag name="oncore">Oncore driver</flag>
+		<flag name="trimble">Trimble driver</flag>
+		<flag name="truetime">Trutime driver (deprecated)</flag>
+		<flag name="gpsd">Enable gpsd daemon support</flag>
+		<flag name="jjy">JJY driver</flag>
+		<flag name="generic">Enable support for generic time radios and GPSDOs</flag>
+		<flag name="spectracom">Spectracom driver</flag>
+		<flag name="shm">Obtain refclock info from shared memory-segment</flag>
+		<flag name="pps">PPS cesium clock driver</flag>
+		<flag name="hpgps">Hewlett Packard GPS driver</flag>
+		<flag name="zyfer">Zyfer driver</flag>
+		<flag name="arbiter">Arbiter 1088A/B GPS driver</flag>
+		<flag name="nmea">NMEA GPS driver</flag>
+		<flag name="modem">NIST/USNO/PTB Modem Time Services</flag>
+		<flag name="local">Support for undisciplined local clock (not recommended)</flag>
 		<flag name="smear">Specify the interval over which a leap second is applied (experimental)</flag>
 	</use>
 </pkgmetadata>

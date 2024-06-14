@@ -319,12 +319,15 @@ java-pkg_doexamples() {
 # arguments are passed through to find.
 #
 # @CODE
+# Parameters:
+# $1 - jar file
+# $2 - resource tree directory
+# $* - arguments to pass to find
+#
+# Example:
 #	java-pkg_addres ${PN}.jar resources ! -name "*.html"
 # @CODE
 #
-# @param $1 - jar file
-# @param $2 - resource tree directory
-# @param $* - arguments to pass to find
 java-pkg_addres() {
 	debug-print-function ${FUNCNAME} $*
 
@@ -1637,10 +1640,6 @@ java-pkg_set-current-vm() {
 	export GENTOO_VM=${1}
 }
 
-java-pkg_get-current-vm() {
-	echo ${GENTOO_VM}
-}
-
 java-pkg_current-vm-matches() {
 	has $(java-pkg_get-current-vm) ${@}
 	return $?
@@ -2813,7 +2812,7 @@ java-pkg_die() {
 	echo "!!! When you file a bug report, please include the following information:" >&2
 	echo "GENTOO_VM=${GENTOO_VM}  CLASSPATH=\"${CLASSPATH}\" JAVA_HOME=\"${JAVA_HOME}\"" >&2
 	echo "JAVACFLAGS=\"${JAVACFLAGS}\" COMPILER=\"${GENTOO_COMPILER}\"" >&2
-	echo "and of course, the output of emerge --info =${P}" >&2
+	echo "and of course, the output of emerge --info =${CATEGORY}/${PF}" >&2
 }
 
 
@@ -2931,7 +2930,7 @@ java-pkg_ensure-dep() {
 #		if is-java-strict; then
 #			die "${dev_error}"
 #		else
-			eqawarn "java-pkg_ensure-dep: ${dev_error}"
+			eqawarn "QA Notice: java-pkg_ensure-dep: ${dev_error}"
 #			eerror "Because you have ${target_pkg} installed,"
 #			eerror "the package will build without problems, but please"
 #			eerror "report this to https://bugs.gentoo.org."
@@ -2942,7 +2941,7 @@ java-pkg_ensure-dep() {
 #		if is-java-strict; then
 #			die "${dev_error}"
 #		else
-			eqawarn "java-pkg_ensure-dep: ${dev_error}"
+			eqawarn "QA Notice: java-pkg_ensure-dep: ${dev_error}"
 #			eerror "The package will build without problems, but may fail to run"
 #			eerror "if you don't have ${target_pkg} installed,"
 #			eerror "so please report this to https://bugs.gentoo.org."

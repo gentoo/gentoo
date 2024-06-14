@@ -65,7 +65,7 @@ S=${WORKDIR}/${MY_P}
 LICENSE="GPL-3+"
 SLOT="0"
 if (( PLEVEL >= 0 )); then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 IUSE="afs bashlogger examples mem-scramble +net nls plugins +readline"
 
@@ -331,16 +331,16 @@ pkg_postinst() {
 		return
 	fi
 
-	einfo "Files situated under /etc/bash/bashrc.d must now have a suffix of .sh or .bash."
-	einfo ""
-	einfo "Gentoo now defaults to defining PROMPT_COMMAND as an array. Depending on the"
-	einfo "characteristics of the operating environment, this array may contain commands"
-	einfo "to set the window and pane title. Users that choose to customise this variable"
-	einfo "in ~/.bashrc are advised to append their commands, using the following syntax."
-	einfo ""
-	einfo "PROMPT_COMMAND+=('custom command goes here')"
-	einfo ""
-	einfo "Alternatively, users that wish to opt out of Gentoo's window title setting"
-	einfo "behaviour may now do so by either unsetting PROMPT_COMMAND or by re-defining it"
-	einfo "as desired. Previously, there was no formally supported method of opting out."
+	ewarn "Files situated under /etc/bash/bashrc.d must now have a suffix of .sh or .bash."
+	ewarn ""
+	ewarn "Gentoo now defaults to defining PROMPT_COMMAND as an array. Depending on the"
+	ewarn "characteristics of the operating environment, this array may contain commands"
+	ewarn "to set the window and pane title. Users that choose to customise this variable"
+	ewarn "in ~/.bashrc are advised to append their commands, using the following syntax."
+	ewarn ""
+	ewarn "PROMPT_COMMAND+=('custom command goes here')"
+	ewarn ""
+	ewarn "Alternatively, users that wish to opt out of Gentoo's window title setting"
+	ewarn "behaviour may now do so by either unsetting PROMPT_COMMAND or by re-defining it"
+	ewarn "as desired. Previously, there was no formally supported method of opting out."
 }

@@ -45,6 +45,7 @@ RDEPEND="
 	!sys-cluster/mpich
 	!sys-cluster/mpich2
 	!sys-cluster/nullmpi
+	!sys-cluster/pmix
 	>=dev-libs/libevent-2.0.22:=[${MULTILIB_USEDEP},threads(+)]
 	dev-libs/libltdl:0[${MULTILIB_USEDEP}]
 	>=sys-apps/hwloc-2.0.2:=[${MULTILIB_USEDEP}]
@@ -103,6 +104,8 @@ multilib_src_configure() {
 		--with-libltdl="${EPREFIX}/usr"
 		--with-libevent="${EPREFIX}/usr"
 		--with-libevent-libdir="${EPREFIX}/usr/$(get_libdir)"
+		# unkeyworded, lacks multilib. Do not automagically build against it.
+		--with-pmix=internal
 
 		# Re-enable for 5.0!
 		# See https://github.com/open-mpi/ompi/issues/9697#issuecomment-1003746357

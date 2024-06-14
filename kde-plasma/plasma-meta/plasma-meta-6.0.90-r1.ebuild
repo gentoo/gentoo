@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit toolchain-funcs
+
 DESCRIPTION="Merge this to pull in all Plasma 6 packages"
 HOMEPAGE="https://kde.org/plasma-desktop/"
 
@@ -118,6 +120,17 @@ RDEPEND="${RDEPEND}
 "
 
 pkg_postinst() {
+	if [[ $(tc-get-cxx-stdlib) == "libc++" ]] ; then
+		# Workaround for bug #923292 (KDE-bug 479679)
+		ewarn "plasmashell and other KDE Plasma components are known to misbehave"
+		ewarn "when built with sys-libs/libcxx, e.g. crashing when right-clicking"
+		ewarn "on a panel. See bug #923292."
+		ewarn ""
+		ewarn "A possible (no warranty!) workaround is building sys-libs/libcxx and"
+		ewarn "sys-libs/libcxxabi with the following in package.env:"
+		ewarn " MYCMAKEARGS=\"-DLIBCXX_TYPEINFO_COMPARISON_IMPLEMENTATION=1\""
+	fi
+
 	if ! use qt5 && has_version dev-qt/qtgui; then
 		ewarn "KF5- and Qt5-based applications will exhibit various integration bugs"
 		ewarn "and generally look out of place in Plasma 6 without the dependencies"

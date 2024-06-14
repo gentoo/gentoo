@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: rebar.eclass
@@ -6,7 +6,7 @@
 # maintainer-needed@gentoo.org
 # @AUTHOR:
 # Amadeusz Żołnowski <aidecoe@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Build Erlang/OTP projects using dev-util/rebar.
 # @DESCRIPTION:
 # An eclass providing functions to build Erlang/OTP projects using
@@ -20,7 +20,7 @@
 # installation in a generic way for Erlang/OTP structured projects.
 
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -33,9 +33,6 @@ BDEPEND="
 	dev-util/rebar:0
 	>=sys-apps/gawk-4.1
 "
-if [[ ${EAPI} == 6 ]]; then
-	DEPEND+=" ${BDEPEND}"
-fi
 
 # @ECLASS_VARIABLE: REBAR_APP_SRC
 # @DESCRIPTION:
@@ -63,7 +60,7 @@ _rebar_find_dep() {
 	local p
 	local result
 
-	pushd "${EPREFIX}/$(get_erl_libs)" >/dev/null || return 1
+	pushd "${EPREFIX}$(get_erl_libs)" >/dev/null || return 1
 	for p in ${pn} ${pn}-*; do
 		if [[ -d ${p} ]]; then
 			# Ensure there's at most one matching.
@@ -102,7 +99,7 @@ erebar() {
 
 	(( $# > 0 )) || die "erebar: at least one target is required"
 
-	local -x ERL_LIBS="${EPREFIX}/$(get_erl_libs)"
+	local -x ERL_LIBS="${EPREFIX}$(get_erl_libs)"
 	[[ ${1} == eunit ]] && local -x ERL_LIBS="."
 
 	rebar -v skip_deps=true "$@" || die -n "rebar $@ failed"
@@ -123,7 +120,7 @@ rebar_fix_include_path() {
 
 	local pn="${1}"
 	local rebar_config="${2:-rebar.config}"
-	local erl_libs="${EPREFIX}/$(get_erl_libs)"
+	local erl_libs="${EPREFIX}$(get_erl_libs)"
 	local p
 
 	p="$(_rebar_find_dep "${pn}")" \
@@ -212,7 +209,7 @@ rebar_src_prepare() {
 rebar_src_configure() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local -x ERL_LIBS="${EPREFIX}/$(get_erl_libs)"
+	local -x ERL_LIBS="${EPREFIX}$(get_erl_libs)"
 	default
 }
 
@@ -252,7 +249,7 @@ rebar_src_install() {
 	[[ -d bin ]] && for bin in bin/*; do dobin "$bin"; done
 
 	if [[ -d priv ]]; then
-		cp -pR priv "${ED%/}/${dest}/" || die "failed to install priv/"
+		cp -pR priv "${ED}${dest}/" || die "failed to install priv/"
 	fi
 
 	einstalldocs

@@ -45,17 +45,9 @@ dev-util/kdevelop reviewboard
 # sys-auth/pam_ssh is being last rited, bug #892031.
 sys-auth/pambase pam_ssh
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-22)
-# Building with qt6 requires (masked) kde-frameworks:6
-app-admin/calamares qt6
-
 # Viorel Munteanu <ceamac@gentoo.org> (2024-03-19)
 # The live version needs a new BDEPEND for doc
 =app-emulation/virtualbox-9999 doc
-
-# Sam James <sam@gentoo.org> (2024-03-18)
-# Needs masked KF6 for Wayland at least.
-app-crypt/pinentry qt6
 
 # Guilherme Amadio <amadio@gentoo.org> (2024-03-09)
 # Requires manually installing dependencies, see bug #791802

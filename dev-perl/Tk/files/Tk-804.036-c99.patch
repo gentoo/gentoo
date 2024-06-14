@@ -1,0 +1,56 @@
+https://bugs.gentoo.org/919179
+https://src.fedoraproject.org/rpms/perl-Tk/raw/rawhide/f/perl-Tk-c99.patch
+https://github.com/eserte/perl-tk/pull/91
+--- a/config/unsigned.c
++++ b/config/unsigned.c
+@@ -1,15 +1,16 @@
++#include <stdio.h>
+ int main()
+ {
+  char x[] = "\377";
+  if (x[0] > 0)
+   {
+    printf("char is unsigned type\n");
+-   exit(0);
++   return 0;
+   }
+  else
+   {
+    printf("char is signed type\n");
+-   exit(1);
++   return 1;
+   }
+ }
+ 
+--- a/pTk/config/Hstrdup.c
++++ b/pTk/config/Hstrdup.c
+@@ -7,7 +7,7 @@ int main()
+ {char *e;
+  char *p = strdup(STRING);
+  if (!p || strcmp(p,STRING))
+-  exit(1);
++  return 1;
+  return 0;
+ }
+ 
+--- a/pTk/mTk/generic/tkEvent.c
++++ b/pTk/mTk/generic/tkEvent.c
+@@ -1153,6 +1153,7 @@ TkEventDeadWindow(winPtr)
+ Time
+ TkCurrentTime(dispPtr, fallbackCurrent)
+     TkDisplay *dispPtr;		/* Display for which the time is desired. */
++    int fallbackCurrent;
+ {
+     register XEvent *eventPtr;
+     ThreadSpecificData *tsdPtr = (ThreadSpecificData *)
+--- a/pTk/mTk/generic/tkImage.c
++++ b/pTk/mTk/generic/tkImage.c
+@@ -1083,6 +1083,8 @@ int x;
+ int y;
+ int width;
+ int height;
++int imgWidth;
++int imgHeight;
+ {
+     Tk_Tile tile = (Tk_Tile) clientData;
+     Tk_TileChange *handler;

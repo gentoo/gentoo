@@ -4,3 +4,4 @@
 # matoro <matoro_gentoo@matoro.tk>
 # Requires USE=ieee-long-double, so mask on 17.0, #892183
 dev-python/sympy
+dev-python/symengine

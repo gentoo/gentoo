@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="sourceforge">saxon</remote-id>
 	</upstream>
+	<use>
+		<flag name="ant-task">BUILD and register the ant-task</flag>
+	</use>
 </pkgmetadata>

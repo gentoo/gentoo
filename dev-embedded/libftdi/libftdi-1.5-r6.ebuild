@@ -46,6 +46,10 @@ BDEPEND="
 	python? ( >=dev-lang/swig-4.2.0 )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-py312.patch
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
