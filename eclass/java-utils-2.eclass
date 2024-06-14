@@ -34,12 +34,6 @@ export WANT_JAVA_CONFIG="2"
 
 has test ${JAVA_PKG_IUSE} && RESTRICT+=" !test? ( test )"
 
-# this eclass must be inherited after java-pkg-2 or java-pkg-opt-2
-# bug #207098
-if ! has java-pkg-2 ${INHERITED} && ! has java-pkg-opt-2 ${INHERITED}; then
-	eerror "java-utils-2 eclass must not be inherited directly."
-fi
-
 # @VARIABLE: JAVA_PKG_E_DEPEND
 # @INTERNAL
 # @DESCRIPTION:
