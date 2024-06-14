@@ -40,7 +40,7 @@ BDEPEND="
 		$(python_gen_cond_dep '
 			dev-python/pytest-trio[${PYTHON_USEDEP}]
 			dev-python/trio[${PYTHON_USEDEP}]
-		' 3.{10..12})
+		' 3.{10..13})
 	)
 "
 
