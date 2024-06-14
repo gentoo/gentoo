@@ -17,7 +17,8 @@ fi
 
 # mold (MIT)
 #  - xxhash (BSD-2)
-LICENSE="MIT BSD-2"
+#  - siphash ( MIT CC0-1.0 )
+LICENSE="MIT BSD-2 CC0-1.0"
 SLOT="0"
 
 RDEPEND="
