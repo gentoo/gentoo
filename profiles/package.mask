@@ -256,6 +256,7 @@ dev-ml/variantslib:0/0.17
 dev-ml/ppx_variants_conv:0/0.17
 dev-ml/ppx_log:0/0.17
 dev-ml/ppx_ignore_instrumentation:0/0.17
+dev-ml/typerep:0/0.17
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-08)
 # EAPI=6, waiting for a version bump, not maintained for many years.
