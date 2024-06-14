@@ -3,9 +3,10 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517="flit"
-PYTHON_COMPAT=( python3_{10..13} )
+DISTUTILS_EXT=1
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE='threads(+)'
+DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1 flag-o-matic waf-utils systemd
 
@@ -19,7 +20,7 @@ else
 		https://ftp.ntpsec.org/pub/releases/${P}.tar.gz
 		verify-sig? ( https://ftp.ntpsec.org/pub/releases/${P}.tar.gz.asc )
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~riscv ~x86"
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-ntpsec )"
 fi
@@ -35,9 +36,10 @@ NTPSEC_REFCLOCK=(
 	shm pps hpgps zyfer arbiter nmea modem local
 )
 
-IUSE="${NTPSEC_REFCLOCK[@]} debug doc early heat libbsd nist ntpviz samba seccomp smear test" #ionice
-REQUIRED_USE="${PYTHON_REQUIRED_USE} nist? ( local )"
-RESTRICT="!test? ( test )"
+IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/rclock_}
+
+IUSE="${IUSE_NTPSEC_REFCLOCK} debug doc early heat libbsd nist ntpviz samba seccomp smear" #ionice
+REQUIRED_USE="${PYTHON_REQUIRED_USE} nist? ( rclock_local )"
 
 # net-misc/pps-tools oncore,pps
 DEPEND="
@@ -47,8 +49,8 @@ DEPEND="
 	sys-libs/libcap
 	libbsd? ( dev-libs/libbsd:0= )
 	seccomp? ( sys-libs/libseccomp )
-	oncore? ( net-misc/pps-tools )
-	pps? ( net-misc/pps-tools )
+	rclock_oncore? ( net-misc/pps-tools )
+	rclock_pps? ( net-misc/pps-tools )
 "
 RDEPEND="
 	${DEPEND}
@@ -71,7 +73,6 @@ BDEPEND+="
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.9-remove-asciidoctor-from-config.patch"
 	"${FILESDIR}/${PN}-1.2.2-logrotate.patch"
-	"${FILESDIR}/${PN}-1.2.3-pep517-no-egg.patch"
 )
 
 WAF_BINARY="${S}/waf"
@@ -86,6 +87,8 @@ src_prepare() {
 	fi
 	# remove extra default pool servers
 	sed -i '/use-pool/s/^/#/' "${S}"/etc/ntp.d/default.conf || die
+
+	python_copy_sources
 }
 
 src_configure() {
@@ -96,7 +99,7 @@ src_configure() {
 	local CLOCKSTRING=""
 
 	for refclock in ${NTPSEC_REFCLOCK[@]} ; do
-		if use ${refclock} ; then
+		if use rclock_${refclock} ; then
 			string_127+="$refclock,"
 		fi
 	done
@@ -106,6 +109,7 @@ src_configure() {
 		--notests
 		--nopyc
 		--nopyo
+		--enable-pylib ext
 		--refclock="${CLOCKSTRING}"
 		#--build-epoch="$(date +%s)"
 		$(use doc	|| echo "--disable-doc")
@@ -115,24 +119,25 @@ src_configure() {
 		$(use smear	&& echo "--enable-leap-smear")
 		$(use debug	&& echo "--enable-debug")
 	)
-	python_setup
-	cp -v "${FILESDIR}/flit.toml" "pylib/pyproject.toml"
+
+	distutils-r1_src_configure
+}
+
+python_configure() {
 	waf-utils_src_configure "${myconf[@]}"
 }
 
-src_compile() {
+python_compile() {
 	waf-utils_src_compile --notests
 }
 
-src_test() {
-	python_test
-}
-
 python_test() {
-	"${EPYTHON}" "${WAF_BINARY}" check -v -j $(makeopts_jobs)
+	waf-utils_src_compile check
 }
 
 src_install() {
+	distutils-r1_src_install
+
 	# Install heat generating scripts
 	use heat && dosbin "${S}"/contrib/ntpheat{,usb}
 
@@ -159,22 +164,12 @@ src_install() {
 
 	# move doc files to /usr/share/doc/"${P}"
 	use doc && mv -v "${ED}"/usr/share/doc/"${PN}" "${ED}"/usr/share/doc/"${P}"/html
-
-	ln -svf pylib build/main/ntp
-	wheel_name=$(
-		cd build/main && \
-		gpep517 build-wheel --output-fd 3 --wheel-dir ../.. 3>&1 >&2
-	)
-	python_foreach_impl python_install
-	waf-utils_src_install --notests
-	python_fix_shebang "${ED}"
-	python_optimize
 }
 
 python_install() {
-	${PYTHON} -m gpep517 \
-		install-wheel "${wheel_name}" \
-		--optimize all --destdir "${D}"
+	waf-utils_src_install --notests
+	python_fix_shebang "${ED}"
+	python_optimize
 }
 
 pkg_postinst() {
