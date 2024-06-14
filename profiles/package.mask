@@ -268,6 +268,7 @@ dev-ml/ppx_module_timer:0/0.17
 dev-ml/ppx_disable_unused_warnings:0/0.17
 dev-ml/ppx_custom_printf:0/0.17
 dev-ml/bin_prot:0/0.17
+dev-ml/ppx_bin_prot:0/0.17
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-08)
 # EAPI=6, waiting for a version bump, not maintained for many years.
