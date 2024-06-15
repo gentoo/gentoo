@@ -17,6 +17,7 @@ media-video/mpv -lua_single_target_lua5-1 lua_single_target_luajit
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-03-24)
 # Requires unkeyworded dev-qt/qtwebengine (and revdeps)
 kde-apps/kleopatra pim
+kde-plasma/plasma-nm openconnect
 net-irc/quassel urlpreview
 net-p2p/ktorrent rss
 

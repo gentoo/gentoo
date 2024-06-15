@@ -88,6 +88,7 @@ kde-apps/kdenetwork-meta bittorrent
 kde-apps/kleopatra pim
 kde-apps/umbrello php
 kde-misc/kio-gdrive share
+kde-plasma/plasma-nm openconnect
 net-irc/quassel urlpreview
 net-misc/fatrat bittorrent
 net-misc/seafile-client shibboleth

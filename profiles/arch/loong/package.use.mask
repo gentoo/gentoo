@@ -1,6 +1,10 @@
 # Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-06-15)
+# Requires unkeyworded dev-qt/qtwebengine (and revdeps)
+kde-plasma/plasma-nm openconnect
+
 # Sam James <sam@gentoo.org> (2024-06-13)
 # Needs as-yet-unkeyworded KF6 (bug #934215)
 app-crypt/pinentry qt6
