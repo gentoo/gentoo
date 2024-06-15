@@ -45,9 +45,9 @@ DESCRIPTION="Utils for managing LZMA compressed files"
 HOMEPAGE="https://tukaani.org/xz/"
 
 # See top-level COPYING file as it outlines the various pieces and their licenses.
-LICENSE="0BSD LGPL-2.1+ GPL-2+ doc? ( CC-BY-SA-4.0 )"
+LICENSE="public-domain LGPL-2.1+ GPL-2+"
 SLOT="0"
-IUSE="cpu_flags_arm_crc32 doc +extra-filters pgo nls static-libs"
+IUSE="doc +extra-filters pgo nls static-libs"
 
 if [[ ${PV} != 9999 ]] ; then
 	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-lassecollin-20240529 )"
@@ -75,7 +75,6 @@ multilib_src_configure() {
 		$(multilib_native_use_enable doc)
 		$(use_enable nls)
 		$(use_enable static-libs static)
-		$(use_enable cpu_flags_arm_crc32 arm64-crc32)
 	)
 
 	if ! multilib_is_native_abi ; then
@@ -110,7 +109,6 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	# -fprofile-partial-training because upstream note the test suite isn't super comprehensive
-	# TODO: revisit that now we have the tar/xz loop below?
 	# See https://documentation.suse.com/sbp/all/html/SBP-GCC-10/index.html#sec-gcc10-pgo
 	local pgo_generate_flags=$(usev pgo "-fprofile-update=atomic -fprofile-dir=${T}/${ABI}-pgo -fprofile-generate=${T}/${ABI}-pgo $(test-flags-CC -fprofile-partial-training)")
 	local pgo_use_flags=$(usev pgo "-fprofile-use=${T}/${ABI}-pgo -fprofile-dir=${T}/${ABI}-pgo $(test-flags-CC -fprofile-partial-training)")
@@ -119,52 +117,6 @@ multilib_src_compile() {
 
 	if use pgo ; then
 		emake CFLAGS="${CFLAGS} ${pgo_generate_flags}" -k check
-
-		local tar_pgo_args=()
-
-		if has_version -b "app-alternatives/tar[gnu]" ; then
-			tar_pgo_args+=(
-				--mtime=@2718281828
-				--sort=name
-			)
-		fi
-
-		if multilib_is_native_abi ; then
-			(
-				shopt -s globstar
-
-				tar \
-					"${tar_pgo_args[@]}" \
-					-cf xz-pgo-test-01.tar \
-					{"${S}","${BUILD_DIR}"}/**/*.[cho] \
-					{"${S}","${BUILD_DIR}"}/**/.libs/* \
-					{"${S}","${BUILD_DIR}"}/**/**.txt \
-					{"${S}","${BUILD_DIR}"}/tests/files
-
-				stat --printf="xz-pgo-test-01.tar.tar size: %s\n" xz-pgo-test-01.tar || die
-				md5sum xz-pgo-test-01.tar || die
-			)
-
-			local test_variants=(
-				# Borrowed from ALT Linux
-				# https://packages.altlinux.org/en/sisyphus/srpms/xz/specfiles/#line-80
-				'-0 -C none'
-				'-2 -C crc32'
-				"$(usev extra-filters '-6 --arm --lzma2 -C crc64')"
-				"$(usev extra-filters '-6 --x86 --lzma2=lc=4 -C sha256')"
-				'-7e --format=lzma'
-
-				# Our own variants
-				''
-				'-9e'
-				"$(usev extra-filters '--x86 --lzma2=preset=9e')"
-			)
-			local test_variant
-			for test_variant in "${test_variants[@]}" ; do
-				"${BUILD_DIR}"/src/xz/xz -c ${test_variant} xz-pgo-test-01.tar | "${BUILD_DIR}"/src/xz/xz -c -d - > /dev/null
-				assert "Testing '${test_variant}' variant failed"
-			done
-		fi
 
 		if tc-is-clang; then
 			llvm-profdata merge "${T}"/${ABI}-pgo --output="${T}"/${ABI}-pgo/default.profdata || die
