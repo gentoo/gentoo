@@ -1,0 +1,1324 @@
+From aa096f3c96d8f4a736be7fdb48103daffd332296 Mon Sep 17 00:00:00 2001
+From: Christian Hergert <chergert@redhat.com>
+Date: Mon, 4 Mar 2024 14:09:53 -0800
+Subject: [PATCH] a11y: implement GtkAccessibleText
+
+This is an initial implementaiton of GtkAccessibleText which was added
+to GTK for 4.14. It attempts to implement things in a very similar
+fashion to the previous code for GTK 3 although considerable effort was
+made to simplify and improve readability as to how it works.
+
+Currently, this supports reading back what you type and what has changed
+on screen. It is not yet 1:1 what the GTK 3 a11y implementation did
+because ATK was doing many other things (including proxying keyboard
+keys) to the other side of the a11y bus. That appears to improve
+readback by screen readers in the form of "backspace" and what character
+was deleted.
+
+I expect things to get closer to 1:1 but that work is going to have to
+be done inside of GTK itself first and should not require much if
+anything here.
+
+A new VteTerminal:enable-a11y feature flag property has been added
+because I'm concerned about enabling this by default until the a11y bus
+learns to be more lazy. Currently there is no way to "do nothing" until
+a peer (e.g. screenreader) is interested in the contents.
+
+Ideally, we would have a short-circuit like is currently implemented
+by checking vte_terminal_get_enable_a11y() to avoid any sort of
+contents calculation when there are no a11y observers.
+
+It also allows disabling the GTK 3 a11y implementation just to keep
+some symmetry between the APIs.
+
+Currently, this does not implement "text-scrolled" like the GTK 3
+implementation does as I'm not sure yet if there is a benefit.
+---
+ src/meson.build       |  13 +-
+ src/vte.cc            |  11 +
+ src/vte/vteterminal.h |   7 +
+ src/vteaccess-gtk4.cc | 874 ++++++++++++++++++++++++++++++++++++++++++
+ src/vteaccess-gtk4.h  |  25 ++
+ src/vteaccess.cc      |  21 +
+ src/vtegtk.cc         |  97 ++++-
+ src/vtegtk.hh         |   1 +
+ src/vteinternal.hh    |   8 +
+ 10 files changed, 1053 insertions(+), 10 deletions(-)
+ create mode 100644 src/vteaccess-gtk4.cc
+ create mode 100644 src/vteaccess-gtk4.h
+
+diff --git a/src/meson.build b/src/meson.build
+index 3f89f492..6d1b4b2b 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -18,11 +18,16 @@ subdir('vte')
+ 
+ src_inc = include_directories('.')
+ 
+-a11y_sources = files(
++a11y_gtk3_sources = files(
+   'vteaccess.cc',
+   'vteaccess.h',
+ )
+ 
++a11y_gtk4_sources = files(
++  'vteaccess-gtk4.cc',
++  'vteaccess-gtk4.h',
++)
++
+ debug_sources = files(
+   'debug.cc',
+   'debug.h',
+@@ -300,7 +305,7 @@ if get_option('gtk3')
+   libvte_gtk3_public_deps = libvte_common_public_deps + [gtk3_dep,]
+ 
+   if get_option('a11y')
+-    libvte_gtk3_sources += a11y_sources
++    libvte_gtk3_sources += a11y_gtk3_sources
+   endif
+ 
+   libvte_gtk3 = shared_library(
+@@ -349,6 +354,10 @@ if get_option('gtk4')
+   libvte_gtk4_deps = libvte_common_deps + [gtk4_dep,]
+   libvte_gtk4_public_deps = libvte_common_public_deps + [gtk4_dep,]
+ 
++  if get_option('a11y')
++    libvte_gtk4_sources += a11y_gtk4_sources
++  endif
++
+   libvte_gtk4 = shared_library(
+     vte_gtk4_api_name,
+     sources: libvte_gtk4_sources,
+diff --git a/src/vte.cc b/src/vte.cc
+index a8a0e22c..4d9bf411 100644
+--- a/src/vte.cc
++++ b/src/vte.cc
+@@ -10132,6 +10132,17 @@ Terminal::set_text_blink_mode(TextBlinkMode setting)
+         return true;
+ }
+ 
++bool
++Terminal::set_enable_a11y(bool setting)
++{
++        if (setting == m_enable_a11y)
++                return false;
++
++        m_enable_a11y = setting;
++
++        return true;
++}
++
+ bool
+ Terminal::set_enable_bidi(bool setting)
+ {
+diff --git a/src/vte/vteterminal.h b/src/vte/vteterminal.h
+index 9c2e2dae..7f4bf6df 100644
+--- a/src/vte/vteterminal.h
++++ b/src/vte/vteterminal.h
+@@ -388,6 +388,13 @@ _VTE_PUBLIC
+ void vte_terminal_set_delete_binding(VteTerminal *terminal,
+ 				     VteEraseBinding binding) _VTE_CXX_NOEXCEPT _VTE_GNUC_NONNULL(1);
+ 
++/* Accessibility */
++_VTE_PUBLIC
++void vte_terminal_set_enable_a11y(VteTerminal *terminal,
++                                  gboolean enable_a11y) _VTE_CXX_NOEXCEPT _VTE_GNUC_NONNULL(1);
++_VTE_PUBLIC
++gboolean vte_terminal_get_enable_a11y(VteTerminal *terminal) _VTE_CXX_NOEXCEPT _VTE_GNUC_NONNULL(1);
++
+ /* BiDi and shaping */
+ _VTE_PUBLIC
+ void vte_terminal_set_enable_bidi(VteTerminal *terminal,
+diff --git a/src/vteaccess-gtk4.cc b/src/vteaccess-gtk4.cc
+new file mode 100644
+index 00000000..f42e7578
+--- /dev/null
++++ b/src/vteaccess-gtk4.cc
+@@ -0,0 +1,874 @@
++/*
++ * Copyright © 2024 Christian Hergert
++ * Copyright © 2002,2003 Red Hat, Inc.
++ *
++ * This library is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU Lesser General Public License as published
++ * by the Free Software Foundation, either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public License
++ * along with this library.  If not, see <https://www.gnu.org/licenses/>.
++ */
++
++#include "config.h"
++
++#include "vteinternal.hh"
++#include "vteaccess-gtk4.h"
++
++#define GDK_ARRAY_NAME char_positions
++#define GDK_ARRAY_TYPE_NAME CharPositions
++#define GDK_ARRAY_ELEMENT_TYPE int
++#define GDK_ARRAY_BY_VALUE 1
++#define GDK_ARRAY_PREALLOC 8
++#define GDK_ARRAY_NO_MEMSET
++#include "gdkarrayimpl.c"
++
++typedef struct _VteAccessibleTextContents
++{
++        /* A GdkArrayImpl of attributes per byte */
++        VteCharAttrList attrs;
++
++        /* The byte position within the UTF-8 string where each visible
++         * character starts.
++         */
++        CharPositions characters;
++
++        /* The character position within the UTF-8 string where each line
++         * break occurs. To get byte offset, use @characters.
++         */
++        CharPositions linebreaks;
++
++        /* The UTF-8 string encoded as bytes so that we may reference it
++         * using GBytes for "substrings". However @string does include a
++         * trailing NUL byte in it's size so that the a11y infrastructure
++         * may elide some string copies.
++         */
++        GBytes *string;
++
++        /* Number of bytes in @string excluding trailing NUL. */
++        gsize n_bytes;
++
++        /* Number of unicode characters in @string. */
++        gsize n_chars;
++
++        /* The character position (not bytes) of the caret in @string */
++        gsize caret;
++
++        /* Cached column/row of the caret updated each time we are notified
++         * of the caret having moved. We cache this so that we can elide
++         * extraneous notifications after snapshoting. We will update the
++         * carent position synchronously when notified so @caret may always
++         * be relied upon as correct.
++         */
++        long cached_caret_column;
++        long cached_caret_row;
++} VteAccessibleTextContents;
++
++typedef struct _VteAccessibleText
++{
++        VteTerminal               *terminal;
++        VteAccessibleTextContents  contents[2];
++        guint                      contents_flip : 1;
++} VteAccessibleText;
++
++static inline gboolean
++_pango_color_equal(const PangoColor *a,
++                   const PangoColor *b)
++{
++        return a->red   == b->red &&
++               a->green == b->green &&
++               a->blue  == b->blue;
++}
++
++static void
++vte_accessible_text_contents_init (VteAccessibleTextContents *contents)
++{
++        vte_char_attr_list_init (&contents->attrs);
++        char_positions_init (&contents->characters);
++        char_positions_init (&contents->linebreaks);
++        contents->string = nullptr;
++        contents->n_bytes = 0;
++        contents->n_chars = 0;
++        contents->caret = 0;
++        contents->cached_caret_row = 0;
++        contents->cached_caret_column = 0;
++}
++
++static void
++vte_accessible_text_contents_clear (VteAccessibleTextContents *contents)
++{
++        vte_char_attr_list_clear (&contents->attrs);
++        char_positions_clear (&contents->characters);
++        char_positions_clear (&contents->linebreaks);
++        g_clear_pointer (&contents->string, g_bytes_unref);
++        contents->n_bytes = 0;
++        contents->n_chars = 0;
++        contents->caret = 0;
++        contents->cached_caret_row = 0;
++        contents->cached_caret_column = 0;
++}
++
++static void
++vte_accessible_text_contents_reset (VteAccessibleTextContents *contents)
++{
++        vte_char_attr_list_set_size (&contents->attrs, 0);
++        char_positions_set_size (&contents->characters, 0);
++        char_positions_set_size (&contents->linebreaks, 0);
++        g_clear_pointer (&contents->string, g_bytes_unref);
++        contents->n_bytes = 0;
++        contents->n_chars = 0;
++        contents->caret = 0;
++        contents->cached_caret_row = 0;
++        contents->cached_caret_column = 0;
++}
++
++static const char *
++vte_accessible_text_contents_get_string (VteAccessibleTextContents *contents,
++                                         gsize                     *len)
++{
++        const char *ret;
++
++        if (contents->string == nullptr || g_bytes_get_size (contents->string) == 0) {
++                *len = 0;
++                return "";
++        }
++
++        ret = (const char *)g_bytes_get_data (contents->string, len);
++
++        if (*len > 0) {
++                (*len)--;
++        }
++
++        return ret;
++}
++
++static int
++vte_accessible_text_contents_offset_from_xy (VteAccessibleTextContents *contents,
++                                             int x,
++                                             int y)
++{
++        int offset;
++        int linebreak;
++        int next_linebreak;
++
++        if (y >= int(char_positions_get_size (&contents->linebreaks))) {
++                y = int(char_positions_get_size (&contents->linebreaks)) - 1;
++                if (y < 0) {
++                        return 0;
++                }
++        }
++
++        linebreak = *char_positions_index (&contents->linebreaks, y);
++        if (y + 1 == int(char_positions_get_size (&contents->linebreaks))) {
++                next_linebreak = int(char_positions_get_size (&contents->characters));
++        } else {
++                next_linebreak = *char_positions_index (&contents->linebreaks, y + 1);
++        }
++
++        offset = linebreak + x;
++        if (offset >= next_linebreak) {
++                offset = next_linebreak - 1;
++        }
++
++        return offset;
++}
++
++static gunichar
++vte_accessible_text_contents_get_char_at (VteAccessibleTextContents *contents,
++                                          guint                      offset)
++{
++        const char *str;
++
++        if (contents->string == nullptr)
++                return 0;
++
++        if (offset >= contents->n_chars)
++                return 0;
++
++        g_assert (offset < char_positions_get_size (&contents->characters));
++
++        str = (const char *)g_bytes_get_data (contents->string, nullptr);
++        str += *char_positions_index (&contents->characters, offset);
++
++        return g_utf8_get_char (str);
++
++}
++
++static GBytes *
++_g_string_free_to_bytes_with_nul (GString *str)
++{
++        /* g_string_free_to_bytes() will have a trailing-NUL but not include it
++         * in the size of the GBytes. We want the size included in our GBytes
++         * so that GtkAccessibleText may avoid some copies.
++         */
++        gsize len = str->len + 1;
++        return g_bytes_new_take (g_string_free (str, FALSE), len);
++}
++
++static inline gsize
++vte_accessible_text_contents_find_caret (VteAccessibleTextContents *contents,
++                                         long                       ccol,
++                                         long                       crow)
++{
++        g_assert (contents != nullptr);
++
++        /* Get the offsets to the beginnings of each line. */
++        gsize caret = 0;
++        for (gsize i = 0; i < char_positions_get_size (&contents->characters); i++) {
++                /* Get the attributes for the current cell. */
++                int offset = *char_positions_index (&contents->characters, i);
++                const struct _VteCharAttributes *attrs = vte_char_attr_list_get (&contents->attrs, offset);
++
++                /* If this cell is "before" the cursor, move the caret to be "here". */
++                if ((attrs->row < crow) ||
++                    ((attrs->row == crow) && (attrs->column < ccol))) {
++                        caret = i + 1;
++                }
++        }
++
++        return caret;
++}
++
++static void
++vte_accessible_text_contents_snapshot (VteAccessibleTextContents *contents,
++                                       VteTerminal               *terminal)
++{
++        auto impl = _vte_terminal_get_impl (terminal);
++        GString *gstr = g_string_new (nullptr);
++
++        try {
++                impl->get_text_displayed_a11y (gstr, &contents->attrs);
++        } catch (...) {
++                g_string_truncate (gstr, 0);
++        }
++
++        if (vte_char_attr_list_get_size (&contents->attrs) >= G_MAXINT) {
++                g_string_truncate (gstr, 0);
++                return;
++        }
++
++        /* Get the offsets to the beginnings of each character. */
++        int i = 0;
++        const char *next = gstr->str;
++        int n_attrs = int(vte_char_attr_list_get_size (&contents->attrs));
++        while (i < n_attrs) {
++                char_positions_append (&contents->characters, &i);
++                next = g_utf8_next_char (next);
++                if (next != nullptr) {
++                        i = next - gstr->str;
++                        continue;
++                }
++                break;
++        }
++
++        /* Find offsets for the beginning of lines. */
++        gsize n_chars = char_positions_get_size (&contents->characters);
++        int row;
++        for (i = 0, row = 0; i < int(n_chars); i++) {
++                /* Get the attributes for the current cell. */
++                int offset = *char_positions_index (&contents->characters, i);
++                const struct _VteCharAttributes *attrs = vte_char_attr_list_get (&contents->attrs, offset);
++
++                /* If this character is on a row different from the row
++                 * the character we looked at previously was on, then
++                 * it's a new line and we need to keep track of where
++                 * it is. */
++                if ((i == 0) || (attrs->row != row)) {
++                        _vte_debug_print (VTE_DEBUG_ALLY,
++                                          "Row %d/%ld begins at %d.\n",
++                                          int(char_positions_get_size (&contents->linebreaks)),
++                                          attrs->row, i);
++                        char_positions_append (&contents->linebreaks, &i);
++                }
++
++                row = attrs->row;
++        }
++
++        /* Add the final line break. */
++        char_positions_append (&contents->linebreaks, &i);
++
++        /* Update the caret position. */
++        long ccol, crow;
++        vte_terminal_get_cursor_position (terminal, &ccol, &crow);
++        _vte_debug_print (VTE_DEBUG_ALLY, "Cursor at (%ld, " "%ld).\n", ccol, crow);
++        gsize caret = vte_accessible_text_contents_find_caret (contents, ccol, crow);
++
++        contents->n_bytes = gstr->len;
++        contents->n_chars = n_chars;
++        contents->string = _g_string_free_to_bytes_with_nul (gstr);
++        contents->caret = caret;
++        contents->cached_caret_column = ccol;
++        contents->cached_caret_row = crow;
++
++        _vte_debug_print (VTE_DEBUG_ALLY,
++                          "Refreshed accessibility snapshot, "
++                          "%ld cells, %ld characters.\n",
++                          long(vte_char_attr_list_get_size(&contents->attrs)),
++                          long(char_positions_get_size (&contents->characters)));
++}
++
++static GBytes *
++vte_accessible_text_contents_slice (VteAccessibleTextContents *contents,
++                                    guint                      start,
++                                    guint                      end)
++{
++        static const char empty[] = {0};
++        guint start_offset;
++        guint end_offset;
++
++        g_assert (contents != nullptr);
++
++        if (contents->string == nullptr)
++                return g_bytes_new_static (empty, sizeof empty);
++
++        if (start > contents->n_chars)
++                start = contents->n_chars;
++
++        if (end > contents->n_chars)
++                end = contents->n_chars;
++
++        if (end < start)
++                std::swap (end, start);
++
++        g_assert (start <= char_positions_get_size (&contents->characters));
++        g_assert (end <= char_positions_get_size (&contents->characters));
++
++        if (start == char_positions_get_size (&contents->characters))
++                start_offset = g_bytes_get_size (contents->string);
++        else
++                start_offset = *char_positions_index (&contents->characters, start);
++
++        if (end == char_positions_get_size (&contents->characters))
++                end_offset = g_bytes_get_size (contents->string);
++        else
++                end_offset = *char_positions_index (&contents->characters, end);
++
++        g_assert (start_offset <= end_offset);
++
++        if (start_offset == end_offset)
++                return g_bytes_new_static (empty, sizeof empty);
++
++        return g_bytes_new_from_bytes (contents->string, start_offset, end_offset - start_offset);
++}
++
++static void
++vte_accessible_text_free (VteAccessibleText *state)
++{
++        vte_accessible_text_contents_clear (&state->contents[0]);
++        vte_accessible_text_contents_clear (&state->contents[1]);
++        state->terminal = nullptr;
++        g_free (state);
++}
++
++static VteAccessibleText *
++vte_accessible_text_get (VteTerminal *terminal)
++{
++        return (VteAccessibleText *)g_object_get_data (G_OBJECT (terminal), "VTE_ACCESSIBLE_TEXT");
++}
++
++static GBytes *
++vte_accessible_text_get_contents (GtkAccessibleText *accessible,
++                                  guint              start,
++                                  guint              end)
++{
++        VteTerminal *terminal = VTE_TERMINAL (accessible);
++        VteAccessibleText *state = vte_accessible_text_get (terminal);
++        VteAccessibleTextContents *contents = nullptr;
++
++        g_assert (VTE_IS_TERMINAL (terminal));
++        g_assert (state != nullptr);
++        g_assert (state->terminal == terminal);
++
++        contents = &state->contents[state->contents_flip];
++
++        return vte_accessible_text_contents_slice (contents, start, end);
++}
++
++static GBytes *
++vte_accessible_text_get_contents_at (GtkAccessibleText            *accessible,
++                                     guint                         offset,
++                                     GtkAccessibleTextGranularity  granularity,
++                                     guint                        *start,
++                                     guint                        *end)
++{
++        VteTerminal *terminal = VTE_TERMINAL (accessible);
++        VteAccessibleText *state = vte_accessible_text_get (terminal);
++        VteAccessibleTextContents *contents;
++
++        g_assert (VTE_IS_TERMINAL (terminal));
++        g_assert (state != nullptr);
++        g_assert (state->terminal == terminal);
++
++        auto impl = _vte_terminal_get_impl (terminal);
++
++        contents = &state->contents[state->contents_flip];
++
++        if (contents->string == nullptr) {
++                return nullptr;
++        }
++
++        if (offset > contents->n_chars) {
++                offset = contents->n_chars;
++        }
++
++        switch (granularity) {
++        case GTK_ACCESSIBLE_TEXT_GRANULARITY_CHARACTER: {
++                *start = offset;
++                *end = offset + 1;
++                return vte_accessible_text_contents_slice (contents, offset, offset + 1);
++        }
++
++        case GTK_ACCESSIBLE_TEXT_GRANULARITY_LINE: {
++                guint char_offset = *char_positions_index (&contents->characters, offset);
++                guint line;
++
++                for (line = 0;
++                     line < char_positions_get_size (&contents->linebreaks);
++                     line++) {
++                        guint line_offset = *char_positions_index (&contents->linebreaks, line);
++
++                        if (line_offset > char_offset) {
++                                line--;
++                                break;
++                        }
++                }
++
++                _vte_debug_print (VTE_DEBUG_ALLY,
++                                  "Character %u is on line %u.\n",
++                                  offset, line);
++
++                *start = *char_positions_index (&contents->linebreaks, line);
++                if (line + 1 < char_positions_get_size (&contents->linebreaks))
++                        *end = *char_positions_index (&contents->linebreaks, line + 1);
++                else
++                        *end = contents->n_chars;
++
++                return vte_accessible_text_contents_slice (contents, *start, *end);
++        }
++
++        case GTK_ACCESSIBLE_TEXT_GRANULARITY_WORD: {
++                gunichar ch = vte_accessible_text_contents_get_char_at (contents, offset);
++
++                if (ch == 0 || !impl->is_word_char (ch))
++                        break;
++
++                *start = offset;
++                *end = offset;
++
++                while (*start > 0 &&
++                       (ch = vte_accessible_text_contents_get_char_at (contents, *start - 1)) &&
++                       impl->is_word_char (ch)) {
++                        (*start)--;
++                }
++
++                while (*end < contents->n_chars &&
++                       (ch = vte_accessible_text_contents_get_char_at (contents, *end + 1)) &&
++                       impl->is_word_char (ch)) {
++                        (*end)++;
++                }
++
++                return vte_accessible_text_contents_slice (contents, *start, *end);
++        }
++
++        case GTK_ACCESSIBLE_TEXT_GRANULARITY_SENTENCE:
++        case GTK_ACCESSIBLE_TEXT_GRANULARITY_PARAGRAPH:
++        default:
++                break;
++        }
++
++        return nullptr;
++}
++
++static guint
++vte_accessible_text_get_caret_position (GtkAccessibleText *accessible)
++{
++        VteTerminal *terminal = VTE_TERMINAL (accessible);
++        VteAccessibleText *state = vte_accessible_text_get (terminal);
++
++        g_assert (VTE_IS_TERMINAL (accessible));
++        g_assert (state != nullptr);
++        g_assert (state->terminal == terminal);
++
++        return state->contents[state->contents_flip].caret;
++}
++
++static gboolean
++vte_accessible_text_get_selection (GtkAccessibleText       *accessible,
++                                   gsize                   *n_ranges,
++                                   GtkAccessibleTextRange **ranges)
++{
++        VteTerminal *terminal = VTE_TERMINAL (accessible);
++        VteAccessibleText *state = vte_accessible_text_get (terminal);
++
++        g_assert (VTE_IS_TERMINAL (terminal));
++        g_assert (ranges != nullptr);
++
++        *n_ranges = 0;
++        *ranges = nullptr;
++
++        try {
++                auto impl = _vte_terminal_get_impl (terminal);
++                VteAccessibleTextContents *contents = &state->contents[state->contents_flip];
++                GtkAccessibleTextRange range;
++
++                if (impl->m_selection_resolved.empty() ||
++                    impl->m_selection[vte::to_integral(vte::platform::ClipboardType::PRIMARY)] == nullptr)
++                        return FALSE;
++
++                auto start_column = impl->m_selection_resolved.start_column();
++                auto start_row = impl->m_selection_resolved.start_row();
++                auto end_column = impl->m_selection_resolved.end_column();
++                auto end_row = impl->m_selection_resolved.end_row();
++
++                auto start_offset = vte_accessible_text_contents_offset_from_xy (contents, start_column, start_row);
++                auto end_offset = vte_accessible_text_contents_offset_from_xy (contents, end_column, end_row);
++
++                range.start = gsize(start_offset);
++                range.length = gsize(end_offset - start_offset);
++
++                *n_ranges = 1;
++                *ranges = (GtkAccessibleTextRange *)g_memdup2 (&range, sizeof range);
++
++                return TRUE;
++        } catch (...) { }
++
++        return FALSE;
++}
++
++static gboolean
++vte_accessible_text_get_attributes (GtkAccessibleText        *accessible,
++                                    guint                     offset,
++                                    gsize                    *n_ranges,
++                                    GtkAccessibleTextRange  **ranges,
++                                    char                   ***attribute_names,
++                                    char                   ***attribute_values)
++{
++        VteTerminal *terminal = VTE_TERMINAL (accessible);
++        VteAccessibleText *state = vte_accessible_text_get (terminal);
++        VteAccessibleTextContents *contents;
++        struct _VteCharAttributes cur_attr;
++        struct _VteCharAttributes attr;
++        GtkAccessibleTextRange range;
++        struct {
++                const char *name;
++                const char *value;
++        } attrs[4];
++        char fg_color[16];
++        char bg_color[16];
++        guint n_attrs = 0;
++        guint start = 0;
++        guint end = 0;
++        guint i;
++
++        g_assert (VTE_IS_TERMINAL (accessible));
++        g_assert (ranges != nullptr);
++        g_assert (attribute_names != nullptr);
++        g_assert (attribute_values != nullptr);
++
++        contents = &state->contents[state->contents_flip];
++
++        *n_ranges = 0;
++        *ranges = nullptr;
++        *attribute_names = nullptr;
++        *attribute_values = nullptr;
++
++        attr = *vte_char_attr_list_get (&contents->attrs, offset);
++        start = 0;
++        for (i = offset; i--;) {
++                cur_attr = *vte_char_attr_list_get (&contents->attrs, i);
++                if (!_pango_color_equal (&cur_attr.fore, &attr.fore) ||
++                    !_pango_color_equal (&cur_attr.back, &attr.back) ||
++                    cur_attr.underline != attr.underline ||
++                    cur_attr.strikethrough != attr.strikethrough) {
++                        start = i + 1;
++                        break;
++                }
++        }
++        end = vte_char_attr_list_get_size (&contents->attrs) - 1;
++        for (i = offset + 1; i < vte_char_attr_list_get_size (&contents->attrs); i++) {
++                cur_attr = *vte_char_attr_list_get (&contents->attrs, i);
++                if (!_pango_color_equal (&cur_attr.fore, &attr.fore) ||
++                    !_pango_color_equal (&cur_attr.back, &attr.back) ||
++                    cur_attr.underline != attr.underline ||
++                    cur_attr.strikethrough != attr.strikethrough) {
++                        end = i - 1;
++                        break;
++                }
++        }
++
++        range.start = start;
++        range.length = end - start;
++
++        if (range.length == 0)
++                return FALSE;
++
++        if (attr.underline) {
++                attrs[n_attrs].name = "underline";
++                attrs[n_attrs].value = "true";
++                n_attrs++;
++        }
++
++        if (attr.strikethrough) {
++                attrs[n_attrs].name = "strikethrough";
++                attrs[n_attrs].value = "true";
++                n_attrs++;
++        }
++
++        g_snprintf (fg_color, sizeof fg_color, "%u,%u,%u",
++                    attr.fore.red, attr.fore.green, attr.fore.blue);
++        attrs[n_attrs].name = "fg-color";
++        attrs[n_attrs].value = fg_color;
++        n_attrs++;
++
++        g_snprintf (bg_color, sizeof bg_color, "%u,%u,%u",
++                    attr.back.red, attr.back.green, attr.back.blue);
++        attrs[n_attrs].name = "bg-color";
++        attrs[n_attrs].value = bg_color;
++        n_attrs++;
++
++        *attribute_names = g_new0 (char *, n_attrs + 1);
++        *attribute_values = g_new0 (char *, n_attrs + 1);
++        *n_ranges = 1;
++        *ranges = (GtkAccessibleTextRange *)g_memdup2 (&range, sizeof range);
++
++        for (i = 0; i < n_attrs; i++) {
++                (*attribute_names)[i] = g_strdup (attrs[i].name);
++                (*attribute_values)[i] = g_strdup (attrs[i].value);
++        }
++
++        return TRUE;
++}
++
++void
++_vte_accessible_text_iface_init (GtkAccessibleTextInterface *iface)
++{
++        iface->get_attributes = vte_accessible_text_get_attributes;
++        iface->get_caret_position = vte_accessible_text_get_caret_position;
++        iface->get_contents = vte_accessible_text_get_contents;
++        iface->get_contents_at = vte_accessible_text_get_contents_at;
++        iface->get_selection = vte_accessible_text_get_selection;
++}
++
++static void
++vte_accessible_text_contents_changed (VteTerminal       *terminal,
++                                      VteAccessibleText *state)
++{
++        VteAccessibleTextContents *next = nullptr;
++        VteAccessibleTextContents *prev = nullptr;
++        const char *nextstr;
++        const char *prevstr;
++        gsize prevlen;
++        gsize nextlen;
++
++        g_assert (VTE_IS_TERMINAL (terminal));
++        g_assert (state != nullptr);
++        g_assert (state->terminal == terminal);
++
++        if (!vte_terminal_get_enable_a11y (terminal))
++          return;
++
++        prev = &state->contents[state->contents_flip];
++        next = &state->contents[!state->contents_flip];
++
++        /* Get a new snapshot of contents so that we can compare this to the
++         * previous contents. That way we can discover if it was a backspace
++         * that occurred or if it's more than that.
++         *
++         * We do not filp state->contents_flip immediately so that we can
++         * allow the AT context the ability to access the current contents
++         * on DELETE operations.
++         */
++        vte_accessible_text_contents_reset (next);
++        vte_accessible_text_contents_snapshot (next, state->terminal);
++
++        nextstr = vte_accessible_text_contents_get_string (next, &nextlen);
++        prevstr = vte_accessible_text_contents_get_string (prev, &prevlen);
++
++        vte_assert_cmpint (char_positions_get_size (&prev->characters), ==, prev->n_chars);
++        vte_assert_cmpint (char_positions_get_size (&next->characters), ==, next->n_chars);
++
++        /* NOTE:
++         *
++         * The code below is based upon what vteaccess.cc did for GTK 3.
++         * It does not do any sort of appropriate diffing to try to handle
++         * scrolling correctly. That would be a good idea to implement in
++         * the longer term.
++         *
++         * It just looks for a long prefix match, and then a long suffix
++         * match and attempts to diff what is between those to end points.
++         */
++
++        const char *prevc = prevstr;
++        const char *nextc = nextstr;
++        gsize offset = 0;
++
++        /* Find the beginning of changes */
++        while ((offset < prev->n_chars) && (offset < next->n_chars)) {
++                gunichar prevch = g_utf8_get_char (prevc);
++                gunichar nextch = g_utf8_get_char (nextc);
++
++                if (prevch != nextch) {
++                        break;
++                }
++
++                offset++;
++
++                prevc = g_utf8_next_char (prevc);
++                nextc = g_utf8_next_char (nextc);
++        }
++
++        /* Find the end of changes */
++        gsize next_end = next->n_chars;
++        gsize prev_end = prev->n_chars;
++
++        prevc = prevstr + prevlen;
++        nextc = nextstr + nextlen;
++
++        while ((next_end > offset) && (prev_end > offset)) {
++                prevc = g_utf8_prev_char (prevc);
++                nextc = g_utf8_prev_char (nextc);
++
++                gunichar prevch = g_utf8_get_char (prevc);
++                gunichar nextch = g_utf8_get_char (nextc);
++
++                if (prevch != nextch) {
++                        break;
++                }
++
++                next_end--;
++                prev_end--;
++        }
++
++        if (offset < prev_end) {
++                gtk_accessible_text_update_contents (GTK_ACCESSIBLE_TEXT (terminal),
++                                                     GTK_ACCESSIBLE_TEXT_CONTENT_CHANGE_REMOVE,
++                                                     offset, prev_end);
++        }
++
++        state->contents_flip = !state->contents_flip;
++
++        if (offset < next_end) {
++                gtk_accessible_text_update_contents (GTK_ACCESSIBLE_TEXT (terminal),
++                                                     GTK_ACCESSIBLE_TEXT_CONTENT_CHANGE_INSERT,
++                                                     offset, next_end);
++        }
++
++        if (prev->caret != next->caret) {
++                gtk_accessible_text_update_caret_position (GTK_ACCESSIBLE_TEXT (terminal));
++        }
++}
++
++static void
++vte_accessible_text_cursor_moved (VteTerminal       *terminal,
++                                  VteAccessibleText *state)
++{
++        VteAccessibleTextContents *contents = nullptr;
++
++        g_assert (VTE_IS_TERMINAL (terminal));
++        g_assert (state != nullptr);
++        g_assert (state->terminal == terminal);
++
++        if (!vte_terminal_get_enable_a11y (terminal))
++          return;
++
++        contents = &state->contents[state->contents_flip];
++
++        long ccol, crow;
++        vte_terminal_get_cursor_position (terminal, &ccol, &crow);
++        if (ccol == contents->cached_caret_column && crow == contents->cached_caret_row) {
++                return;
++        }
++
++        _vte_debug_print (VTE_DEBUG_ALLY, "Cursor at (%ld, " "%ld).\n", ccol, crow);
++
++        contents->cached_caret_column = ccol;
++        contents->cached_caret_row = crow;
++        contents->caret = vte_accessible_text_contents_find_caret (contents, ccol, crow);
++
++        gtk_accessible_text_update_caret_position (GTK_ACCESSIBLE_TEXT (terminal));
++}
++
++static void
++vte_accessible_text_window_title_changed (VteTerminal       *terminal,
++                                          VteAccessibleText *state)
++{
++        const char *window_title;
++
++        g_assert (VTE_IS_TERMINAL (terminal));
++        g_assert (state != nullptr);
++        g_assert (state->terminal == terminal);
++
++        if (!vte_terminal_get_enable_a11y (terminal))
++          return;
++
++        window_title = vte_terminal_get_window_title (terminal);
++
++        gtk_accessible_update_property (GTK_ACCESSIBLE (terminal),
++                                        GTK_ACCESSIBLE_PROPERTY_DESCRIPTION, window_title ? window_title : "",
++                                        GTK_ACCESSIBLE_VALUE_UNDEFINED);
++}
++
++static void
++vte_accessible_text_selection_changed (VteTerminal       *terminal,
++                                       VteAccessibleText *state)
++{
++        g_assert (VTE_IS_TERMINAL (terminal));
++        g_assert (state != nullptr);
++        g_assert (state->terminal == terminal);
++
++        if (!vte_terminal_get_enable_a11y (terminal))
++          return;
++
++        gtk_accessible_text_update_caret_position (GTK_ACCESSIBLE_TEXT (terminal));
++        gtk_accessible_text_update_selection_bound (GTK_ACCESSIBLE_TEXT (terminal));
++}
++
++void
++_vte_accessible_text_init (GtkAccessibleText *accessible)
++{
++        VteTerminal *terminal = VTE_TERMINAL (accessible);
++        VteAccessibleText *state;
++
++        state = g_new0 (VteAccessibleText, 1);
++        state->terminal = terminal;
++
++        vte_accessible_text_contents_init (&state->contents[0]);
++        vte_accessible_text_contents_init (&state->contents[1]);
++
++        g_object_set_data_full (G_OBJECT (terminal),
++                                "VTE_ACCESSIBLE_TEXT",
++                                state,
++                                (GDestroyNotify)vte_accessible_text_free);
++
++        g_signal_connect (terminal,
++                          "contents-changed",
++                          G_CALLBACK (vte_accessible_text_contents_changed),
++                          state);
++        g_signal_connect (terminal,
++                          "cursor-moved",
++                          G_CALLBACK (vte_accessible_text_cursor_moved),
++                          state);
++        g_signal_connect (terminal,
++                          "selection-changed",
++                          G_CALLBACK (vte_accessible_text_selection_changed),
++                          state);
++        g_signal_connect (terminal,
++                          "window-title-changed",
++                          G_CALLBACK (vte_accessible_text_window_title_changed),
++                          state);
++
++        const char *window_title = vte_terminal_get_window_title (terminal);
++
++        gtk_accessible_update_property (GTK_ACCESSIBLE (accessible),
++                                        GTK_ACCESSIBLE_PROPERTY_DESCRIPTION, window_title ? window_title : "",
++                                        GTK_ACCESSIBLE_PROPERTY_HAS_POPUP, TRUE,
++                                        GTK_ACCESSIBLE_PROPERTY_LABEL, "Terminal",
++                                        GTK_ACCESSIBLE_PROPERTY_MULTI_LINE, TRUE,
++                                        GTK_ACCESSIBLE_VALUE_UNDEFINED);
++}
+diff --git a/src/vteaccess-gtk4.h b/src/vteaccess-gtk4.h
+new file mode 100644
+index 00000000..37b09c7b
+--- /dev/null
++++ b/src/vteaccess-gtk4.h
+@@ -0,0 +1,25 @@
++/*
++ * Copyright © 2024 Christian Hergert
++ *
++ * This library is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU Lesser General Public License as published
++ * by the Free Software Foundation, either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public License
++ * along with this library.  If not, see <https://www.gnu.org/licenses/>.
++ */
++
++#include <gtk/gtk.h>
++
++G_BEGIN_DECLS
++
++void _vte_accessible_text_iface_init (GtkAccessibleTextInterface *iface);
++void _vte_accessible_text_init       (GtkAccessibleText          *accessible);
++
++G_END_DECLS
+diff --git a/src/vteaccess.cc b/src/vteaccess.cc
+index fff918dc..c1c1a4c0 100644
+--- a/src/vteaccess.cc
++++ b/src/vteaccess.cc
+@@ -386,6 +386,12 @@ _vte_terminal_accessible_text_modified(VteTerminalAccessible* accessible)
+ 	glong offset, caret_offset, olen, clen;
+ 	gint old_snapshot_caret;
+ 
++        auto widget = gtk_accessible_get_widget(GTK_ACCESSIBLE(accessible));
++        auto terminal = VTE_TERMINAL(widget);
++
++        if (!vte_terminal_get_enable_a11y (terminal))
++                return;
++
+ 	old_snapshot_caret = priv->snapshot_caret;
+ 	priv->snapshot_contents_invalid = TRUE;
+ 	vte_terminal_accessible_update_private_data_if_needed(accessible,
+@@ -541,6 +547,9 @@ _vte_terminal_accessible_text_scrolled(VteTerminalAccessible* accessible,
+         auto widget = gtk_accessible_get_widget(GTK_ACCESSIBLE(accessible));
+         auto terminal = VTE_TERMINAL(widget);
+ 
++        if (!vte_terminal_get_enable_a11y (terminal))
++                return;
++
+         row_count = vte_terminal_get_row_count(terminal);
+ 	if (((howmuch < 0) && (howmuch <= -row_count)) ||
+ 	    ((howmuch > 0) && (howmuch >= row_count))) {
+@@ -793,6 +802,9 @@ vte_terminal_accessible_invalidate_cursor(VteTerminal *terminal, gpointer data)
+         VteTerminalAccessible *accessible = (VteTerminalAccessible *)data;
+ 	VteTerminalAccessiblePrivate *priv = (VteTerminalAccessiblePrivate *)_vte_terminal_accessible_get_instance_private(accessible);
+ 
++        if (!vte_terminal_get_enable_a11y (terminal))
++                return;
++
+ 	_vte_debug_print(VTE_DEBUG_ALLY,
+ 			"Invalidating accessibility cursor.\n");
+ 	priv->snapshot_caret_invalid = TRUE;
+@@ -807,6 +819,9 @@ vte_terminal_accessible_title_changed(VteTerminal *terminal, gpointer data)
+ {
+         VteTerminalAccessible *accessible = (VteTerminalAccessible *)data;
+ 
++        if (!vte_terminal_get_enable_a11y (terminal))
++                return;
++
+ 	atk_object_set_description(ATK_OBJECT(accessible), vte_terminal_get_window_title(terminal));
+ }
+ 
+@@ -820,6 +835,9 @@ vte_terminal_accessible_visibility_notify(VteTerminal *terminal,
+ 	GtkWidget *widget;
+ 	gboolean visible;
+ 
++        if (!vte_terminal_get_enable_a11y (terminal))
++                return FALSE;
++
+ 	visible = event->state != GDK_VISIBILITY_FULLY_OBSCURED;
+ 	/* The VISIBLE state indicates that this widget is "visible". */
+ 	atk_object_notify_state_change(ATK_OBJECT(accessible),
+@@ -851,6 +869,9 @@ vte_terminal_accessible_selection_changed (VteTerminal *terminal,
+ {
+         VteTerminalAccessible *accessible = (VteTerminalAccessible *)data;
+ 
++        if (!vte_terminal_get_enable_a11y (terminal))
++                return;
++
+ 	g_signal_emit_by_name (accessible, "text_selection_changed");
+ }
+ 
+diff --git a/src/vtegtk.cc b/src/vtegtk.cc
+index c713a95a..6ece18e9 100644
+--- a/src/vtegtk.cc
++++ b/src/vtegtk.cc
+@@ -65,9 +65,11 @@
+ #include <cairo-gobject.h>
+ 
+ #if WITH_A11Y
+-#if VTE_GTK == 3
+-#include "vteaccess.h"
+-#endif /* VTE_GTK == 3 */
++# if VTE_GTK == 3
++#  include "vteaccess.h"
++# elif VTE_GTK == 4
++#  include "vteaccess-gtk4.h"
++# endif
+ #endif /* WITH_A11Y */
+ 
+ #if WITH_ICU
+@@ -155,6 +157,14 @@ private:
+         std::shared_ptr<vte::platform::Widget> m_widget;
+ };
+ 
++#if defined(WITH_A11Y) && VTE_GTK == 4
++# define VTE_IMPLEMENT_ACCESSIBLE \
++  G_IMPLEMENT_INTERFACE(GTK_TYPE_ACCESSIBLE_TEXT, \
++                        _vte_accessible_text_iface_init)
++#else
++# define VTE_IMPLEMENT_ACCESSIBLE
++#endif
++
+ #if VTE_DEBUG
+ G_DEFINE_TYPE_WITH_CODE(VteTerminal, vte_terminal, GTK_TYPE_WIDGET,
+                         {
+@@ -163,6 +173,7 @@ G_DEFINE_TYPE_WITH_CODE(VteTerminal, vte_terminal, GTK_TYPE_WIDGET,
+                         }
+                         g_type_add_class_private (g_define_type_id, sizeof (VteTerminalClassPrivate));
+                         G_IMPLEMENT_INTERFACE(GTK_TYPE_SCROLLABLE, nullptr)
++                        VTE_IMPLEMENT_ACCESSIBLE
+                         if (_vte_debug_on(VTE_DEBUG_LIFECYCLE)) {
+                                 g_printerr("vte_terminal_get_type()\n");
+                         })
+@@ -173,7 +184,8 @@ G_DEFINE_TYPE_WITH_CODE(VteTerminal, vte_terminal, GTK_TYPE_WIDGET,
+                                         g_type_add_instance_private(g_define_type_id, sizeof(VteTerminalPrivate));
+                         }
+                         g_type_add_class_private (g_define_type_id, sizeof (VteTerminalClassPrivate));
+-                        G_IMPLEMENT_INTERFACE(GTK_TYPE_SCROLLABLE, nullptr))
++                        G_IMPLEMENT_INTERFACE(GTK_TYPE_SCROLLABLE, nullptr)
++                        VTE_IMPLEMENT_ACCESSIBLE)
+ #endif
+ 
+ static inline auto
+@@ -901,6 +913,10 @@ try
+         gtk_widget_set_has_window(&terminal->widget, FALSE);
+ #endif
+ 
++#if defined(WITH_A11Y) && VTE_GTK == 4
++        _vte_accessible_text_init (GTK_ACCESSIBLE_TEXT (terminal));
++#endif
++
+ 	place = vte_terminal_get_instance_private(terminal);
+         new (place) VteTerminalPrivate{terminal};
+ }
+@@ -1017,6 +1033,9 @@ try
+                 case PROP_DELETE_BINDING:
+                         g_value_set_enum (value, widget->delete_binding());
+                         break;
++                case PROP_ENABLE_A11Y:
++                        g_value_set_boolean (value, vte_terminal_get_enable_a11y (terminal));
++                        break;
+                 case PROP_ENABLE_BIDI:
+                         g_value_set_boolean (value, vte_terminal_get_enable_bidi (terminal));
+                         break;
+@@ -1172,6 +1191,9 @@ try
+                 case PROP_DELETE_BINDING:
+                         vte_terminal_set_delete_binding (terminal, (VteEraseBinding)g_value_get_enum (value));
+                         break;
++                case PROP_ENABLE_A11Y:
++                        vte_terminal_set_enable_a11y (terminal, g_value_get_boolean (value));
++                        break;
+                 case PROP_ENABLE_BIDI:
+                         vte_terminal_set_enable_bidi (terminal, g_value_get_boolean (value));
+                         break;
+@@ -2286,6 +2308,22 @@ vte_terminal_class_init(VteTerminalClass *klass)
+                                    VTE_ERASE_AUTO,
+                                    (GParamFlags) (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS | G_PARAM_EXPLICIT_NOTIFY));
+ 
++        /**
++         * VteTerminal:enable-a11y:
++         *
++         * Controls whether or not a11y is enabled for the widget.
++         *
++         * Since: 0.78
++         */
++        pspecs[PROP_ENABLE_A11Y] =
++                g_param_spec_boolean ("enable-a11y", NULL, NULL,
++#if VTE_GTK == 3
++                                      TRUE,
++#else
++                                      FALSE,
++#endif
++                                      (GParamFlags) (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS | G_PARAM_EXPLICIT_NOTIFY));
++
+         /**
+          * VteTerminal:enable-bidi:
+          *
+@@ -2712,10 +2750,12 @@ vte_terminal_class_init(VteTerminalClass *klass)
+         err.assert_no_error();
+ #endif
+ 
+-#if VTE_GTK == 3
+ #if WITH_A11Y
++#if VTE_GTK == 3
+         /* a11y */
+         gtk_widget_class_set_accessible_type(widget_class, VTE_TYPE_TERMINAL_ACCESSIBLE);
++#elif VTE_GTK == 4
++        gtk_widget_class_set_accessible_role(widget_class, GTK_ACCESSIBLE_ROLE_TERMINAL);
+ #endif
+ #endif
+ }
+@@ -5709,6 +5749,53 @@ catch (...)
+         vte::log_exception();
+ }
+ 
++/**
++ * vte_terminal_get_enable_a11y:
++ * @terminal: a #VteTerminal
++ *
++ * Checks whether the terminal communicates with a11y backends
++ *
++ * Returns: %TRUE if a11y is enabled, %FALSE if not
++ *
++ * Since: 0.78
++ */
++gboolean
++vte_terminal_get_enable_a11y(VteTerminal *terminal) noexcept
++try
++{
++        g_return_val_if_fail(VTE_IS_TERMINAL(terminal), false);
++        return IMPL(terminal)->m_enable_a11y;
++}
++catch (...)
++{
++        vte::log_exception();
++        return false;
++}
++
++/**
++ * vte_terminal_set_enable_a11y:
++ * @terminal: a #VteTerminal
++ * @enable_a11y: %TRUE to enable a11y support
++ *
++ * Controls whether or not the terminal will communicate with a11y backends.
++ *
++ * Since: 0.78
++ */
++void
++vte_terminal_set_enable_a11y(VteTerminal *terminal,
++                             gboolean enable_a11y) noexcept
++try
++{
++        g_return_if_fail(VTE_IS_TERMINAL(terminal));
++
++        if (IMPL(terminal)->set_enable_a11y(enable_a11y != FALSE))
++                g_object_notify_by_pspec(G_OBJECT(terminal), pspecs[PROP_ENABLE_A11Y]);
++}
++catch (...)
++{
++        vte::log_exception();
++}
++
+ /**
+  * vte_terminal_get_enable_bidi:
+  * @terminal: a #VteTerminal
+diff --git a/src/vtegtk.hh b/src/vtegtk.hh
+index 566c8508..87259680 100644
+--- a/src/vtegtk.hh
++++ b/src/vtegtk.hh
+@@ -80,6 +80,7 @@ enum {
+         PROP_CURRENT_DIRECTORY_URI,
+         PROP_CURRENT_FILE_URI,
+         PROP_DELETE_BINDING,
++        PROP_ENABLE_A11Y,
+         PROP_ENABLE_BIDI,
+         PROP_ENABLE_FALLBACK_SCROLLING,
+         PROP_ENABLE_SHAPING,
+diff --git a/src/vteinternal.hh b/src/vteinternal.hh
+index 07a9e993..6e2c2e7f 100644
+--- a/src/vteinternal.hh
++++ b/src/vteinternal.hh
+@@ -799,6 +799,13 @@ public:
+         const char *m_hyperlink_hover_uri; /* data is owned by the ring */
+         long m_hyperlink_auto_id{0};
+ 
++        /* Accessibility support */
++#if VTE_GTK == 3
++        bool m_enable_a11y{true};
++#elif VTE_GTK == 4
++        bool m_enable_a11y{false};
++#endif
++
+         /* RingView and friends */
+         vte::base::RingView m_ringview;
+         bool m_enable_bidi{true};
+@@ -1528,6 +1535,7 @@ public:
+         bool set_cursor_style(CursorStyle style);
+         bool set_delete_binding(EraseMode binding);
+         auto delete_binding() const noexcept { return m_delete_binding; }
++        bool set_enable_a11y(bool setting);
+         bool set_enable_bidi(bool setting);
+         bool set_enable_shaping(bool setting);
+         bool set_encoding(char const* codeset,
+-- 
+2.43.1
+
