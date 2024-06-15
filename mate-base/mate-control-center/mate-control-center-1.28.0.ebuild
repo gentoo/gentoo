@@ -69,7 +69,6 @@ PATCHES=(
 src_configure() {
 	mate_src_configure \
 		--disable-update-mimedb \
-		--with-appindicator \
 		$(use_enable nls) \
 		$(use_enable debug)
 }
