@@ -21,7 +21,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-python/pygobject-3:3[${PYTHON_USEDEP}]
-	>=mate-base/mate-menus-1.21.0[introspection]
+	>=mate-base/mate-menus-1.28.0[introspection]
 	x11-libs/gdk-pixbuf:2[introspection]
 	>=x11-libs/gtk+-3.12:3[introspection]
 "
