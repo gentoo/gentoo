@@ -62,7 +62,7 @@ BDEPEND="
 DOCS=( AUTHORS MAILING-LIST NEWS README )
 
 # gnulib FPs
-QA_CONFIG_IMPL_DECL_SKIP=( unreachable MIN alignof static_assert )
+QA_CONFIG_IMPL_DECL_SKIP=( unreachable MIN alignof static_assert fpurge )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.24.5-libproxy-no-debug.patch
