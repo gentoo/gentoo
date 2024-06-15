@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-06-15)
+# Stop-gap compatibility package.  Upstreams really need to move away
+# from the removed cgi module rather than rely on this.
+dev-python/legacy-cgi
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-03-10)
 # ant-core should no longer be ussed as of version 1.10.14 or higher.
 # It is now completely integrated in dev-java/ant and will be removed after a
