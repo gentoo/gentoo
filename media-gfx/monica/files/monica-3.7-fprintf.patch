@@ -1,0 +1,46 @@
+--- monica-3.7.orig/monica.cpp	2024-06-15 10:16:59.594465873 -0700
++++ monica-3.7/monica.cpp	2024-06-15 10:17:18.277749251 -0700
+@@ -1301,9 +1301,9 @@
+           while (fgets (buffer, BUF_SIZE, f_r)) {
+ 	        if (strstr(buffer, ". .monicarc")) {//skip old entries
+ 	           continue;  
+-	        } else fprintf(f_w, buffer);
++	        } else fprintf(f_w, "%s", buffer);
+           }
+-		  fprintf(f_w, ". .monicarc   #monitor calibration");
++		  fprintf(f_w, "%s", ". .monicarc   #monitor calibration");
+           fclose(f_w);
+           // script edited, so back up the original and put the ".tmp" in its place
+           rename(fn_r.c_str(), fn_old.c_str());
+@@ -1348,18 +1348,18 @@
+          while (fgets (buffer, BUF_SIZE, f_r)) {
+            if (buffer[0] != '#') {
+ 	         if (!wrote_monicarc) {//add line for calling .monicarc
+-	           fprintf(f_w, "$HOME/.monicarc   #monitor calibration\n");
++	           fprintf(f_w, "%s", "$HOME/.monicarc   #monitor calibration\n");
+ 	           wrote_monicarc = 1;
+ 	         }
+ 	         if (strstr(buffer, "xgamma")) {
+ 	           strcpy(mod_buffer, "#");
+ 	           strncat(mod_buffer, buffer, BUF_SIZE);
+ 	           mod_buffer[BUF_SIZE + 1] = '\0';
+-	           fprintf(f_w, mod_buffer);
++	           fprintf(f_w, "%s", mod_buffer);
+ 	         } else if (strstr(buffer, "$HOME/.monicarc")) {//skip old entries of .monicarc
+ 	            continue;  
+-	         } else fprintf(f_w, buffer);
+-           } else fprintf(f_w, buffer);
++	         } else fprintf(f_w, "%s", buffer);
++           } else fprintf(f_w, "%s", buffer);
+          }
+ 
+          fclose(f_w);
+@@ -1395,7 +1395,7 @@
+ 				if (strstr(buffer, str_to_remove.c_str())) {
+ 					continue;  
+ 			  } else {
+-			    fprintf(f_w, buffer);
++			    fprintf(f_w, "%s", buffer);
+ 					line_count += 1;
+ 			  }
+ 			}
