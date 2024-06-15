@@ -23,7 +23,7 @@ COMMON_DEPEND="
 	>=x11-libs/gtk+-3.22:3
 	>=gnome-base/libgtop-2.23.1:2=
 	dev-libs/libxml2
-	>=mate-base/caja-1.17
+	>=mate-base/caja-1.28.0
 	x11-libs/libSM
 	virtual/libintl
 "
