@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/neovim/neovim.git"
 else
 	SRC_URI="https://github.com/neovim/neovim/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~x64-macos"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="Apache-2.0 vim"
@@ -52,7 +52,7 @@ DEPEND="${LUA_DEPS}
 	>=dev-libs/libuv-1.46.0:=
 	>=dev-libs/libvterm-0.3.3
 	>=dev-libs/msgpack-3.0.0:=
-	>=dev-libs/tree-sitter-0.22.6:=
+	>=dev-libs/tree-sitter-0.20.9:=
 	=dev-libs/tree-sitter-bash-0.21*
 	=dev-libs/tree-sitter-c-0.21*
 	=dev-libs/tree-sitter-lua-0.1*
@@ -62,7 +62,6 @@ DEPEND="${LUA_DEPS}
 	=dev-libs/tree-sitter-vim-0.4*
 	=dev-libs/tree-sitter-vimdoc-2*
 	>=dev-libs/unibilium-2.0.0:0=
-	>=dev-libs/libutf8proc-2.9.0:=
 "
 RDEPEND="
 	${DEPEND}
@@ -106,7 +105,7 @@ src_install() {
 
 	# install a default configuration file
 	insinto /etc/vim
-	newins "${FILESDIR}"/sysinit.vim-r1 sysinit.vim
+	doins "${FILESDIR}"/sysinit.vim
 
 	# symlink tree-sitter parsers
 	dodir /usr/share/nvim/runtime
