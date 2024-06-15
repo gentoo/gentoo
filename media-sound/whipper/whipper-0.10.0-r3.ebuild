@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="
-	media-libs/libsndfile:=
+	media-libs/libsndfile:=[-minimal]
 "
 RDEPEND="
 	${DEPEND}
