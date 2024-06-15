@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} pypy3 )
-inherit python-any-r1 meson-multilib
+inherit python-any-r1 toolchain-funcs meson-multilib
 
 DESCRIPTION="LC3 is an efficient low latency audio codec"
 HOMEPAGE="https://github.com/google/liblc3"
@@ -50,7 +50,8 @@ multilib_src_configure() {
 
 multilib_src_test() {
 	if multilib_is_native_abi; then
-		V= emake -C "${S}" test CFLAGS:="${CPPFLAGS} ${CFLAGS} -I"$("${EPYTHON}" -c "import numpy;print(numpy.get_include())")""
+		V= emake -C "${S}" test CC="$(tc-getCC)" \
+			CFLAGS:="${CPPFLAGS} ${CFLAGS} -I"$("${EPYTHON}" -c "import numpy;print(numpy.get_include())")""
 	else
 		ewarn "Skipping test for non-native ABI: ${ABI}"
 	fi
