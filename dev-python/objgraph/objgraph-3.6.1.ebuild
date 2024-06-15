@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 
 inherit distutils-r1 pypi
 
@@ -45,6 +45,12 @@ python_test() {
 				# repr() mismatch
 				tests.py::StringRepresentationTest::test_short_repr_mocked_instance_method_bound
 				tests.py::StringRepresentationTest::test_short_repr_mocked_instance_method_bound_with_mocked_name
+			)
+			;;
+		python3.13)
+			EPYTEST_DESELECT+=(
+				# https://github.com/mgedmin/objgraph/issues/80
+				tests.py::StringRepresentationTest::test_edge_label_frame_locals
 			)
 			;;
 	esac
