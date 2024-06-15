@@ -20,7 +20,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
 
 DEPEND="
-	=dev-libs/libgit2-1.8*:=
+	<dev-libs/libgit2-1.9:=
+	>=dev-libs/libgit2-1.8.1:=
 "
 BDEPEND="
 	>=dev-python/cffi-1.16.0:=[${PYTHON_USEDEP}]
