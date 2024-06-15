@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-15)
+# EAPI=6, no reverse dependencies, manifest doesn't match upstream.
+# Removal on 2024-07-15.  Bugs #934365, #832746.
+sci-chemistry/xds-bin
+
 # Cédric Krier <cedk@gentoo.org> (2023-06-15)
 # critical regression with potential data loss:
 # https://lists.mercurial-scm.org/pipermail/mercurial-devel/2024-June/297954.html
