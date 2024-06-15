@@ -16,8 +16,6 @@ LICENSE="FDL-1.1+ GPL-2+ LGPL-2+"
 SLOT="0"
 IUSE="+applet +elogind keyring policykit systemd test"
 
-REQUIRED_USE="^^ ( elogind systemd )"
-
 # Interactive testsuite.
 RESTRICT="test"
 
