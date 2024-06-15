@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>s390@gentoo.org</email>
-		<name>s390 architecture team</name>
+	<maintainer type="person" proxied="yes">
+		<email>matoro_gentoo@matoro.tk</email>
+		<name>Matoro Mahri</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
 		Regina is a Rexx interpreter. Rexx is a programming language that was
