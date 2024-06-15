@@ -1,0 +1,39 @@
+https://bugs.gentoo.org/740798
+https://cgit.freebsd.org/ports/plain/sysutils/safecat/files/patch-Makefile    
+
+    sysutils/safecat: avoid duplicating object files in library
+    
+    Previously byte_copy.o and str_len.o were added to str.a, and then
+    specified as objects on the safecat link command line along with str.
+    When linking with lld this produces duplicate symbol errors like:
+    
+    /usr/bin/ld: error: duplicate symbol: byte_copy
+    >>> defined at byte_copy.c
+    >>>            byte_copy.o:(byte_copy) in archive str.a
+    >>> defined at byte_copy.c
+    >>>            byte_copy.o(.text+0x0)
+    
+    As these symbols are provided by str.a just avoid listing the object
+    files as well.
+--- safecat-1.13/Makefile.orig	2004-08-16 20:50:09.000000000 -0400
++++ safecat-1.13/Makefile	2017-11-23 16:49:00.505811000 -0500
+@@ -219,14 +219,14 @@
+ 
+ safecat: \
+ load safecat.o getln.a str.a stralloc.a strerr.a substdio.a alloc.o \
+-alloc_re.o byte_copy.o byte_cr.o envread.o error.o error_str.o fmt_uint64.o \
+-hostname.o sig.o stat_dir.o str_diffn.o str_len.o substdio_copy.o \
++alloc_re.o byte_cr.o envread.o error.o error_str.o fmt_uint64.o \
++hostname.o sig.o stat_dir.o str_diffn.o substdio_copy.o \
+ substdi.o substdio.o taia_fmtfrac.o taia_now.o taia_tai.o tempfile.o \
+ writefile.o
+-	./load safecat getln.a str.a stralloc.a strerr.a substdio.a \
+-	alloc.o alloc_re.o byte_copy.o byte_cr.o envread.o error.o \
++	./load safecat getln.a stralloc.a strerr.a substdio.a str.a \
++	alloc.o alloc_re.o byte_cr.o envread.o error.o \
+ 	error_str.o fmt_uint64.o hostname.o sig.o stat_dir.o str_diffn.o \
+-	str_len.o substdi.o substdio.o substdio_copy.o taia_fmtfrac.o \
++	substdi.o substdio.o substdio_copy.o taia_fmtfrac.o \
+ 	taia_now.o taia_tai.o tempfile.o writefile.o
+ 
+ safecat.0: \
