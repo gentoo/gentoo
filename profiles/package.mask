@@ -289,6 +289,7 @@ dev-ml/ppx_diff:0/0.17
 dev-ml/int_repr:0/0.17
 dev-ml/base_bigstring:0/0.17
 dev-ml/core:0/0.17
+dev-ml/uopt:0/0.17
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-08)
 # EAPI=6, waiting for a version bump, not maintained for many years.
