@@ -1,0 +1,13 @@
+# See https://sourceforge.net/p/wsjt/mailman/message/58778025/
+diff --git a/qmap/libqmap/decode0.f90 b/qmap/libqmap/decode0.f90
+index 55a58dc..ed58cd2 100755
+--- a/qmap/libqmap/decode0.f90
++++ b/qmap/libqmap/decode0.f90
+@@ -2,6 +2,7 @@ subroutine decode0(dd,ss,savg)
+ 
+   use timer_module, only: timer
+   parameter (NSMAX=60*96000)
++  parameter (NFFT=32768)
+ 
+   real*4 dd(2,NSMAX),ss(400,NFFT),savg(NFFT)
+   real*8 fcenter

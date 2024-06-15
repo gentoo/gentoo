@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.2.0-werror.patch"
 	"${FILESDIR}/${PN}-2.3.0-drop-docs.patch"
 	"${FILESDIR}/${PN}-clang.patch"
+	"${FILESDIR}/${P}-fix_NFFT.patch"
 )
 
 DOCS=( AUTHORS BUGS NEWS README THANKS )
