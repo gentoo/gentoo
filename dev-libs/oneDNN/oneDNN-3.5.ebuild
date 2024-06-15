@@ -39,10 +39,6 @@ BDEPEND="
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-3.3.3-include-cstdint.patch"
-)
-
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
@@ -122,7 +118,10 @@ src_test() {
 	local CMAKE_SKIP_TESTS=(
 		# Crashes in sandbox (see #922886 and #923013);
 		# waits for sys-apps/sandbox-2.39 release and stabilization.
-		test_graph_unit_cpu
+		test_graph_unit_interface
+		test_graph_unit_dnnl_layout_propagator
+		test_graph_unit_dnnl_op_executable
+		test_graph_unit_utils
 	)
 
 	if use openmp ; then
