@@ -34,12 +34,13 @@ SRC_URI="
 	$(abi_uri ppc64le ppc64)
 	$(abi_uri x64 amd64)
 	$(abi_uri x64 amd64 musl)
+	$(abi_uri riscv64 riscv)
 "
 
 DESCRIPTION="Prebuilt Java JDK binaries provided by Eclipse Temurin"
 HOMEPAGE="https://adoptium.net"
 LICENSE="GPL-2-with-classpath-exception"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
 IUSE="alsa cups headless-awt selinux source"
 
 RDEPEND="
