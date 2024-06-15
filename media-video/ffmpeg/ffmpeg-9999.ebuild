@@ -60,7 +60,7 @@ else # Release
 fi
 FFMPEG_REVISION="${PV#*_p}"
 
-SLOT="0/${FFMPEG_SUBSLOT}"
+S=${WORKDIR}/${P/_/-}
 LICENSE="
 	!gpl? ( LGPL-2.1 )
 	gpl? ( GPL-2 )
@@ -84,6 +84,7 @@ LICENSE="
 	)
 	samba? ( GPL-3 )
 "
+SLOT="0/${FFMPEG_SUBSLOT}"
 if [ "${PV#9999}" = "${PV}" ] ; then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
 fi
@@ -372,8 +373,6 @@ RESTRICT="
 	!test? ( test )
 	gpl? ( openssl? ( bindist ) fdk? ( bindist ) )
 "
-
-S=${WORKDIR}/${P/_/-}
 
 PATCHES=(
 	"${FILESDIR}"/chromium-r2.patch
