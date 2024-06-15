@@ -34,6 +34,13 @@
 #--- END OF EXAMPLES ---
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-15)
+# EAPI=6, no reverse dependencies, not packaged on other distributions,
+# waiting for a version bump (which is hard since ebuild used debian
+# patches). Not really maintained in Gentoo for a long time.
+# Removal on 2024-07-15.  Bugs #934366, #871378, #716084, #924302.
+sci-astronomy/predict
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-15)
 # EAPI=6, no reverse dependencies, manifest doesn't match upstream.
 # Removal on 2024-07-15.  Bugs #934365, #832746.
 sci-chemistry/xds-bin
