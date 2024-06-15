@@ -1,0 +1,62 @@
+Fix compilation with clang.
+
+Clang does not support nested functions (a gcc extension), so move it outside.
+
+Compiling with _FORTIFY_SOURCE and -ffreestanding results in
+nanojpeg.c:(.text+0xa28): undefined reference to `__memset_chk'
+
+See also: https://bugs.gentoo.org/881131
+
+--- a/filesystems/crc32c.c
++++ b/filesystems/crc32c.c
+@@ -22,25 +22,24 @@
+ 
+ static uint32_t crc32c_table [256];
+ 
+-static void
+-init_crc32c_table (void)
++uint32_t reflect (uint32_t ref, int len)
+ {
+-  auto uint32_t reflect (uint32_t ref, int len);
+-  uint32_t reflect (uint32_t ref, int len)
+-    {
+-      uint32_t result = 0;
+-      int i;
++  uint32_t result = 0;
++  int i;
+ 
+-      for (i = 1; i <= len; i++)
+-        {
+-          if (ref & 1)
+-            result |= 1 << (len - i);
+-          ref >>= 1;
+-        }
+-
+-      return result;
++  for (i = 1; i <= len; i++)
++    {
++      if (ref & 1)
++        result |= 1 << (len - i);
++      ref >>= 1;
+     }
+ 
++  return result;
++}
++
++static void
++init_crc32c_table (void)
++{
+   static int crc32c_table_inited;
+   if(crc32c_table_inited)
+ 	  return;
+--- a/libeg/nanojpeg.c
++++ b/libeg/nanojpeg.c
+@@ -112,6 +112,8 @@
+ #ifndef _NANOJPEG_H
+ #define _NANOJPEG_H
+ 
++#undef _FORTIFY_SOURCE
++
+ // Modified: Map libc-style free() and malloc() to their EFI equivalents....
+ #define free MyFreePool
+ #define malloc AllocatePool
