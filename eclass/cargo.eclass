@@ -319,6 +319,16 @@ _cargo_gen_git_config() {
 	fi
 }
 
+# @FUNCTION: cargo_target_dir
+# @DESCRIPTION:
+# Return the directory within target that contains the build, e.g.
+# target/aarch64-unknown-linux-gnu/release.
+cargo_target_dir() {
+	local abi
+	tc-is-cross-compiler && abi=/$(rust_abi)
+	echo "${CARGO_TARGET_DIR:-target}${abi}/$(usex debug debug release)"
+}
+
 # @FUNCTION: cargo_src_unpack
 # @DESCRIPTION:
 # Unpacks the package and the cargo registry.
