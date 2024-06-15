@@ -58,6 +58,14 @@ pkg_setup() {
 	fi
 }
 
+src_prepare() {
+	# broken test, apparently doesn't like our timezone-data
+	# https://github.com/llvm/llvm-project/pull/89537
+	rm ../libcxx/test/std/time/time.zone/time.zone.timezone/time.zone.members/get_info.local_time.pass.cpp || die
+
+	cmake_src_prepare
+}
+
 test_compiler() {
 	$(tc-getCXX) ${CXXFLAGS} ${LDFLAGS} "${@}" -o /dev/null -x c++ - \
 		<<<'int main() { return 0; }' &>/dev/null
