@@ -22,11 +22,11 @@ COMMON_DEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
 	>=dev-libs/dbus-glib-0.74
 	>=dev-libs/glib-2.50:2
-	>=dev-libs/libmateweather-1.17.0
+	>=dev-libs/libmateweather-1.28.0
 	>=dev-libs/libxml2-2.5:2
 	>=gnome-base/libgtop-2.12.0:2=
 	>=gnome-extra/gucharmap-3.0:2.90
-	>=mate-base/mate-panel-1.25.2
+	>=mate-base/mate-panel-1.28.0
 	>=net-wireless/wireless-tools-28_pre9:0
 	>=sys-apps/dbus-1.10.0
 	x11-libs/gdk-pixbuf:2
@@ -49,7 +49,7 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}
 	mate-base/caja
 	mate-base/mate-desktop
-	>=mate-base/mate-settings-daemon-1.6
+	>=mate-base/mate-settings-daemon-1.28.0
 	virtual/libintl
 "
 
