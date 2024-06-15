@@ -1,25 +1,22 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit versionator
-
-MY_P=${PN/-ppds}-$(replace_version_separator 2 '-')
+EAPI=8
 
 DESCRIPTION="linuxprinting.org PPD files for postscript printers"
 HOMEPAGE="http://www.linuxprinting.org/foomatic.html"
-SRC_URI="http://linuxprinting.org/download/foomatic/${MY_P}.tar.xz"
+SRC_URI="http://linuxprinting.org/download/foomatic/${PN/-ppds}-$(ver_rs 2 -).tar.xz"
+S=${WORKDIR}/${PN/-ppds}-$(ver_cut 3)
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
-IUSE=""
 
-S="${WORKDIR}/${PN/-ppds}-$(get_version_component_range 3 ${PV})"
+PATCHES=(
+	"${FILESDIR}/Makefile.in-4.0.20120117.patch"
+)
 
 src_prepare() {
-	eapply "${FILESDIR}/Makefile.in-4.0.20120117.patch"
 	rm db/source/PPD/Kyocera/ReadMe.htm || die # bug #559008
 	default
 }
