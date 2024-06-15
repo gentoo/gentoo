@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,6 +10,7 @@ PYTHON_COMPAT=( python3_{10..12} pypy3 )
 inherit distutils-r1 pypi
 
 DESCRIPTION="Use requests to talk HTTP via a UNIX domain socket"
+# TODO: replace with requests-unixsocket2?
 HOMEPAGE="
 	https://github.com/msabramo/requests-unixsocket/
 	https://pypi.org/project/requests-unixsocket/
@@ -33,6 +34,8 @@ BDEPEND="
 PATCHES=(
 	# https://github.com/msabramo/requests-unixsocket/pull/69
 	"${FILESDIR}/${P}-urllib3-2.patch"
+	# https://github.com/msabramo/requests-unixsocket/pull/72
+	"${FILESDIR}/${P}-requests-2.32.2.patch"
 )
 
 distutils_enable_tests pytest
