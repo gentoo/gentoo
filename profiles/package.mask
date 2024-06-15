@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Cédric Krier <cedk@gentoo.org> (2023-06-15)
+# critical regression with potential data loss:
+# https://lists.mercurial-scm.org/pipermail/mercurial-devel/2024-June/297954.html
+# Bug #934138
+~dev-vcs/mercurial-6.7
+~dev-vcs/mercurial-6.7.1
+~dev-vcs/mercurial-6.7.2
+~dev-vcs/mercurial-6.7.3
+
 # Maciej Barć <xgqt@gentoo.org> (2024-06-14)
 # EAPI=6, now shipped in official gambit and so it fails to merge from file
 # collision. Bug: #832334
