@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 
 inherit distutils-r1 optfeature pypi
 
@@ -43,13 +43,15 @@ python_test() {
 		# https://github.com/gawel/pyquery/issues/248
 		tests/test_pyquery.py::TestXMLNamespace::test_selector_html
 	)
-	if [[ ${EPYTHON} == python3.12 ]]; then
-		EPYTEST_DESELECT+=(
-			# doctest failing because of changed repr()
-			# https://github.com/gawel/pyquery/issues/249
-			pyquery/pyquery.py::pyquery.pyquery.PyQuery.serialize_dict
-		)
-	fi
+	case ${EPYTHON} in
+		python3.1[23])
+			EPYTEST_DESELECT+=(
+				# doctest failing because of changed repr()
+				# https://github.com/gawel/pyquery/issues/249
+				pyquery/pyquery.py::pyquery.pyquery.PyQuery.serialize_dict
+			)
+			;;
+	esac
 
 	epytest
 }
