@@ -13,8 +13,8 @@ HOMEPAGE="
 	https://github.com/tikitu/jsmin/
 "
 
-KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
 
 distutils_enable_tests unittest
