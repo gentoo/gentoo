@@ -59,12 +59,6 @@ DEPEND="${RDEPEND}
 	test? ( =dev-cpp/catch-2* )
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-2.6.0-libexpat-double-definition-fix.patch"
-	"${FILESDIR}/${PN}-2.6.0-dont-force-link-to-wayland-and-x11.patch"
-	"${FILESDIR}/${PN}-2.7.4-boost-1.85.patch"
-)
-
 src_prepare() {
 	if has_version ">=sci-libs/opencascade-7.8.0"; then
 		eapply "${FILESDIR}/prusaslicer-2.7.2-opencascade-7.8.0.patch"
