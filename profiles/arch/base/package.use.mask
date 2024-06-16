@@ -102,6 +102,7 @@ www-servers/apache apache2_modules_tls
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-04-22)
 # snap only works on amd64
+gnome-extra/gnome-software snap
 kde-plasma/discover snap
 
 # Sam James <sam@gentoo.org> (2023-04-03)
