@@ -3,7 +3,9 @@
 
 EAPI=8
 
-WX_GTK_VER="3.0-gtk3" # odalaunch crashes with 3.2. Check it before updating!
+# odalaunch crashes with 3.2. Check it before updating!
+# https://github.com/odamex/odamex/issues/879
+WX_GTK_VER="3.0-gtk3"
 inherit cmake desktop prefix wxwidgets xdg
 
 DESCRIPTION="Online multiplayer free software engine for DOOM"
