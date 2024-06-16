@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit cmake python-r1
+inherit cmake flag-o-matic python-r1
 
 DESCRIPTION="Android platform tools (adb, fastboot, and mkbootimg)"
 HOMEPAGE="https://github.com/nmeum/android-tools/ https://developer.android.com/"
@@ -54,11 +54,26 @@ src_prepare() {
 	eapply "${S}/patches/libziparchive/0004-Remove-the-useless-dependency-on-gtest.patch"
 
 	cd "${S}" || die
+
+	# why do we depend on libandroidfw? It is never linked to or used.
+	# https://github.com/nmeum/android-tools/issues/148
+	sed -i '/libandroidfw/d' vendor/CMakeLists.txt || die
+	rm -r vendor/base || die
+
 	rm -r patches || die
 	cmake_src_prepare
 }
 
 src_configure() {
+	# -Werror=odr, -Werror=lto-type-mismatch
+	#
+	# https://bugs.gentoo.org/858311
+	# https://issuetracker.google.com/issues/347247969
+	#
+	# and in vendored f2fs-tools copy:
+	# https://bugs.gentoo.org/863896
+	filter-lto
+
 	local mycmakeargs=(
 		# Statically link the bundled boringssl
 		-DCMAKE_BUILD_TYPE=Release \
