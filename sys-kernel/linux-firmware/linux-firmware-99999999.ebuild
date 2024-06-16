@@ -23,7 +23,7 @@ else
 fi
 
 DESCRIPTION="Linux firmware files"
-HOMEPAGE="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git"
+HOMEPAGE="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git"
 
 LICENSE="GPL-2 GPL-2+ GPL-3 BSD MIT || ( MPL-1.1 GPL-2 )
 	redistributable? ( linux-fw-redistributable BSD-2 BSD BSD-4 ISC MIT )
@@ -75,9 +75,7 @@ pkg_setup() {
 			use compress-zstd && CONFIG_CHECK="~FW_LOADER_COMPRESS_ZSTD"
 		else
 			use compress-xz && CONFIG_CHECK="~FW_LOADER_COMPRESS"
-			if use compress-zstd; then
-				eerror "Kernels <5.19 do not support ZSTD-compressed firmware files"
-			fi
+			use compress-zstd && eerror "Kernels <5.19 do not support ZSTD-compressed firmware files"
 		fi
 	fi
 	linux-info_pkg_setup
@@ -351,7 +349,6 @@ src_install() {
 
 		find . -type f ! -path "./amd-ucode/*" -print0 | \
 			xargs -0 -P $(makeopts_jobs) -I'{}' ${compressor} '{}' || die
-
 	fi
 
 	popd &>/dev/null || die
@@ -369,14 +366,10 @@ src_install() {
 }
 
 pkg_preinst() {
-	if use savedconfig; then
-		ewarn "USE=savedconfig is active. You must handle file collisions manually."
-	fi
+	use savedconfig && ewarn "USE=savedconfig is active. You must handle file collisions manually."
 
 	# Fix 'symlink is blocked by a directory' Bug #871315
-	if has_version "<${CATEGORY}/${PN}-20220913-r2" ; then
-		rm -rf "${EROOT}"/lib/firmware/qcom/LENOVO/21BX
-	fi
+	has_version "<${CATEGORY}/${PN}-20220913-r2" && rm -rf "${EROOT}"/lib/firmware/qcom/LENOVO/21BX
 
 	# Make sure /boot is available if needed.
 	use initramfs && mount-boot_pkg_preinst
@@ -390,9 +383,9 @@ pkg_postinst() {
 	for ver in ${REPLACING_VERSIONS}; do
 		if ver_test ${ver} -lt 20190514; then
 			elog
-			elog 'Starting with version 20190514, installation of many firmware'
-			elog 'files is controlled by USE flags. Please review your USE flag'
-			elog 'and package.license settings if you are missing some files.'
+			elog "Starting with version 20190514, installation of many firmware"
+			elog "files is controlled by USE flags. Please review your USE flag"
+			elog "and package.license settings if you are missing some files."
 			break
 		fi
 	done
