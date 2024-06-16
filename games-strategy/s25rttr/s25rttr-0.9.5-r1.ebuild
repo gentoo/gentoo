@@ -19,14 +19,15 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
-RDEPEND="${LUA_DEPS}
+RDEPEND="
+	${LUA_DEPS}
 	app-arch/bzip2
 	dev-libs/boost:=[nls]
 	>=media-libs/libsamplerate-0.1.9
 	>=media-libs/libsdl2-2.0.10-r2[opengl,sound,video]
 	media-libs/libsndfile
 	media-libs/sdl2-mixer[vorbis,wav]
-	net-libs/miniupnpc
+	net-libs/miniupnpc:=
 	virtual/opengl
 "
 
@@ -44,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.0_pre20200723-cmake_lua_version.patch
 	"${FILESDIR}"/${PN}-0.9.5-gcc-13.patch
 	"${FILESDIR}"/${PN}-0.9.5-boost.patch
+	"${FILESDIR}"/${PN}-0.9.5-miniupnpc.patch
 )
 
 # Build type is checked but blank is valid.
