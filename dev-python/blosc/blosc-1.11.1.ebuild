@@ -45,6 +45,11 @@ BDEPEND="
 
 DOCS=( ANNOUNCE.rst README.rst RELEASE_NOTES.rst )
 
+PATCHES=(
+	# https://github.com/Blosc/python-blosc/pull/329
+	"${FILESDIR}/${P}-numpy-2.patch"
+)
+
 src_configure() {
 	export USE_SYSTEM_BLOSC=1
 	export BLOSC_DIR="${EPREFIX}/usr"
