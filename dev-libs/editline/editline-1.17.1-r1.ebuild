@@ -1,17 +1,28 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="line editing library for UNIX call compatible with the FSF readline"
-HOMEPAGE="https://troglobit.com/projects/editline/"
-SRC_URI="https://github.com/troglobit/editline/releases/download/${PV}/${P}.tar.xz"
+HOMEPAGE="https://troglobit.com/projects/editline/
+	https://github.com/troglobit/editline/"
+
+if [[ "${PV}" == *9999* ]] ; then
+	inherit git-r3
+
+	EGIT_REPO_URI="https://github.com/troglobit/${PN}.git"
+else
+	SRC_URI="https://github.com/troglobit/${PN}/releases/download/${PV}/${P}.tar.xz"
+
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="Apache-2.0"
-SLOT="0"
-KEYWORDS="~amd64 ~x86"
+SLOT="0/1.0.2"
 
-PATCHES=("${FILESDIR}"/${PN}-1.16.0-rename-man.patch)
+PATCHES=(
+	"${FILESDIR}/${PN}-1.16.0-rename-man.patch"
+)
 
 src_prepare() {
 	default
@@ -28,6 +39,5 @@ src_configure() {
 src_install() {
 	default
 
-	# package installs .pc file
-	find "${D}" -name '*.la' -delete || die
+	find "${D}" -type f -name "*.la" -delete || die
 }
