@@ -54,8 +54,8 @@ multilib_src_configure() {
 	# explicitly specified.  See #903923
 	# The cmake build sets these, but the meson build doesn't, so set it manually.
 	# https://github.com/facebook/zstd/blob/979b047/build/cmake/CMakeModules/AddZstdCompilationFlags.cmake#L77-L82
-	append-flags $(test-flags "-Wa,--noexecstack")
-	append-ldflags $(test-flags "-Wl,-z,noexecstack")
+	append-flags $(test-flags-CCLD "-Wa,--noexecstack")
+	append-ldflags $(test-flags-CCLD "-Wl,-z,noexecstack")
 
 	local emesonargs=(
 		-Ddefault_library=$(multilib_native_usex static-libs both shared)
