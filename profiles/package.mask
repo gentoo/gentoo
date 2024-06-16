@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-16)
+# No release since 2021-06-10 and effectively declared unmaintained by
+# upstream since then; now conflicting with Plasma 6 by pulling in old
+# kde-plasma/libksysguard:5. Removal on 2024-08-24.
+kde-plasma/ksysguard
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-06-16)
 # After most protocol support is gone, there is barely anything usable
 # left in kde-apps/kopete. It is also unmaintained and still depends on
 # kf5-portingaids, as well as conflicting kde-apps in slot 5. bug #760555
