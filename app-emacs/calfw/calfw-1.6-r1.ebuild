@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit elisp
 
@@ -20,6 +20,10 @@ BDEPEND="${RDEPEND}"
 S="${WORKDIR}/emacs-${PN}-${PV}"
 SITEFILE="50${PN}-gentoo.el"
 DOCS="readme.md"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-time-ranges.patch
+)
 
 src_prepare() {
 	elisp_src_prepare
