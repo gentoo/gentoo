@@ -556,19 +556,3 @@ src_install() {
 		ln -s "../../../bin/idle${PYVER}" "${scriptdir}/idle" || die
 	fi
 }
-
-pkg_postinst() {
-	local v
-	for v in ${REPLACING_VERSIONS}; do
-		if ver_test "${v}" -lt 3.11.0_beta4-r2; then
-			ewarn "Python 3.11.0b4 has changed its module ABI.  The .pyc files"
-			ewarn "installed previously are no longer valid and will be regenerated"
-			ewarn "(or ignored) on the next import.  This may cause sandbox failures"
-			ewarn "when installing some packages and checksum mismatches when removing"
-			ewarn "old versions.  To actively prevent this, rebuild all packages"
-			ewarn "installing Python 3.11 modules, e.g. using:"
-			ewarn
-			ewarn "  emerge -1v /usr/lib/python3.11/site-packages"
-		fi
-	done
-}
