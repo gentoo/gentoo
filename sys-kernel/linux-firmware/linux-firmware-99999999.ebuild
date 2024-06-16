@@ -66,6 +66,10 @@ IDEPEND="
 
 QA_PREBUILT="*"
 
+pkg_pretend() {
+	use initramfs && mount-boot_pkg_pretend
+}
+
 pkg_setup() {
 	if use compress-xz || use compress-zstd ; then
 		local CONFIG_CHECK
@@ -79,10 +83,6 @@ pkg_setup() {
 		fi
 	fi
 	linux-info_pkg_setup
-}
-
-pkg_pretend() {
-	use initramfs && mount-boot_pkg_pretend
 }
 
 src_unpack() {
@@ -136,8 +136,9 @@ src_prepare() {
 	# whitelist of misc files
 	local misc_files=(
 		copy-firmware.sh
+		LICEN[CS]E.*
+		README*
 		WHENCE
-		README
 	)
 
 	# whitelist of images with a free software license
@@ -276,14 +277,6 @@ src_prepare() {
 }
 
 src_install() {
-	./copy-firmware.sh $(usex deduplicate '' '--ignore-duplicates') -v "${ED}/lib/firmware" || die
-
-	pushd "${ED}/lib/firmware" &>/dev/null || die
-
-	# especially use !redistributable will cause some broken symlinks
-	einfo "Removing broken symlinks ..."
-	find * -xtype l -print -delete || die
-
 	if use savedconfig; then
 		if [[ -s "${S}/${PN}.conf" ]]; then
 			local files_to_keep="${T}/files_to_keep.lst"
@@ -306,6 +299,14 @@ src_install() {
 			fi
 		fi
 	fi
+
+	./copy-firmware.sh $(usex deduplicate '' '--ignore-duplicates') -v "${ED}/lib/firmware" || die
+
+	pushd "${ED}/lib/firmware" &>/dev/null || die
+
+	# especially use !redistributable will cause some broken symlinks
+	einfo "Removing broken symlinks ..."
+	find * -xtype l -print -delete || die
 
 	# remove empty directories, bug #396073
 	find -type d -empty -delete || die
@@ -363,6 +364,10 @@ src_install() {
 		insinto /boot
 		doins "${S}"/amd-uc.img
 	fi
+
+	dodoc README.md
+	# some licenses require copyright and permission notice to be included
+	use bindist && dodoc WHENCE LICEN[CS]E.*
 }
 
 pkg_preinst() {

@@ -138,9 +138,9 @@ src_prepare() {
 	# whitelist of misc files
 	local misc_files=(
 		copy-firmware.sh
-		README.md
-		WHENCE
 		LICEN[CS]E.*
+		README*
+		WHENCE
 	)
 
 	# whitelist of images with a free software license
@@ -293,6 +293,7 @@ src_install() {
 
 	! use deduplicate && FW_OPTIONS+=( "--ignore-duplicates" )
 	FW_OPTIONS+=( "${ED}/lib/firmware" )
+
 	./copy-firmware.sh "${FW_OPTIONS[@]}"
 
 	pushd "${ED}/lib/firmware" &>/dev/null || die
