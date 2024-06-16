@@ -505,11 +505,6 @@ dev-python/dictpath
 # Removal on 2024-06-16.  Bug #932096.
 dev-python/cached-property
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-17)
-# EAPI=6, no maintainer, fails to compile.
-# Removal on 2024-06-16.  Bugs #932097, #542244, #742965.
-x11-plugins/pidgintex
-
 # Sam James <sam@gentoo.org> (2024-04-28)
 # Masked for testing. Tracker bug: bug #930805.
 >=sys-libs/ncurses-6.5
