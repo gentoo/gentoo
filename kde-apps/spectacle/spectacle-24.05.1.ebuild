@@ -8,7 +8,7 @@ ECM_TEST="forceoptional"
 PVCUT=$(ver_cut 1-3)
 KFMIN=6.3.0
 QTMIN=6.6.2
-inherit ecm gear.kde.org
+inherit ecm flag-o-matic gear.kde.org
 
 DESCRIPTION="Screenshot capture utility"
 HOMEPAGE="https://apps.kde.org/spectacle/"
@@ -62,6 +62,10 @@ BDEPEND="
 "
 
 src_configure() {
+	# bug #932501
+	filter-lto
+	append-flags -fno-strict-aliasing
+
 	local mycmakeargs=(
 		$(cmake_use_find_package share KF6Purpose)
 	)
