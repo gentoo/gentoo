@@ -93,7 +93,9 @@ multilib_src_configure() {
 			# those are used by default, depending on preset
 			--enable-match-finders=hc3,hc4,bt4
 
-			# CRC64 is used by default, though some (old?) files use CRC32
+			# CRC64 is used by default, though 7-Zip uses CRC32 by default.
+			# Also, XZ Embedded in Linux doesn't support CRC64, so
+			# kernel modules and friends are CRC32.
 			--enable-checks=crc32,crc64
 		)
 	fi
