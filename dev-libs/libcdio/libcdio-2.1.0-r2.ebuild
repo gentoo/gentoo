@@ -39,6 +39,7 @@ MULTILIB_WRAPPED_HEADERS=(
 PATCHES=(
 	"${FILESDIR}/${PN}-2.1.0-ncurses_pkgconfig.patch"
 	"${FILESDIR}/${P}-realpath-test-fix.patch"
+	"${FILESDIR}/${P}-no-lfs-shims.patch"
 )
 
 src_prepare() {
