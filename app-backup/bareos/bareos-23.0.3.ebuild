@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 CMAKE_WARN_UNUSED_CLI=no
 
 inherit python-any-r1 systemd cmake tmpfiles flag-o-matic
@@ -21,18 +21,18 @@ fi
 DESCRIPTION="Featureful client/server network backup suite"
 HOMEPAGE="https://www.bareos.org/"
 
+LICENSE="AGPL-3"
+SLOT="0"
+IUSE="X acl ceph clientonly cpu_flags_x86_avx +director glusterfs ipv6 lmdb
+	logwatch ndmp readline scsi-crypto split-usr
+	static +storage-daemon systemd tcpd test vim-syntax vmware xattr"
+
 # some tests still fail propably due to missing bits in src_test -> TODO
 RESTRICT="mirror test"
 #RESTRICT="
 #	mirror
 #	!test? ( test )
 #"
-
-LICENSE="AGPL-3"
-SLOT="0"
-IUSE="X acl ceph clientonly cpu_flags_x86_avx +director glusterfs ipv6 lmdb
-	logwatch ndmp readline scsi-crypto split-usr
-	static +storage-daemon systemd tcpd test vim-syntax vmware xattr"
 
 # get cmake variables from core/cmake/BareosSetVariableDefaults.cmake
 DEPEND="
@@ -103,7 +103,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-21-cmake-gentoo.patch"
 	"${FILESDIR}/${PN}-22.0.2-werror.patch"
 	"${FILESDIR}/${PN}-21.1.2-no-automagic-ccache.patch"
-	"${FILESDIR}/${PN}-22.1.2-include-algorithm.patch"
 )
 
 pkg_pretend() {
