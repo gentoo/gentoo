@@ -1,0 +1,23 @@
+From 4b0ec2e0e36b839161a4ef15da1c2a39ee325af4 Mon Sep 17 00:00:00 2001
+From: Arkadiusz Bokowy <arkadiusz.bokowy@gmail.com>
+Date: Wed, 5 Jun 2024 22:30:17 +0200
+Subject: [PATCH] Check for sequencer read/write access before test
+
+Fixes #718
+---
+ test/test-alsa-midi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/test-alsa-midi.c b/test/test-alsa-midi.c
+index 45e09d73..7ee80f96 100644
+--- a/test/test-alsa-midi.c
++++ b/test/test-alsa-midi.c
+@@ -161,7 +161,7 @@ int main(int argc, char *argv[]) {
+ 
+ 	/* Check whether current host supports ALSA sequencer. If not, then
+ 	 * there is no point in running this test, because it will fail. */
+-	if (access("/dev/snd/seq", F_OK) != 0) {
++	if (access("/dev/snd/seq", F_OK | R_OK | W_OK) != 0) {
+ 		warn("ALSA sequencer not available, skipping test!");
+ 		return 77 /* magic number for skipping tests */;
+ 	}

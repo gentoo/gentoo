@@ -1,0 +1,31 @@
+https://github.com/arkq/bluez-alsa/commit/14a02d1b06d0ba34c5b61516d7a3c1d6fc467567
+
+From 14a02d1b06d0ba34c5b61516d7a3c1d6fc467567 Mon Sep 17 00:00:00 2001
+From: Jochen Sprickerhof <jspricke@debian.org>
+Date: Wed, 15 May 2024 08:37:53 +0200
+Subject: [PATCH] Fix include for freeaptx library
+
+---
+ src/codec-aptx.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/codec-aptx.c b/src/codec-aptx.c
+index a3f056f..e69858d 100644
+--- a/src/codec-aptx.c
++++ b/src/codec-aptx.c
+@@ -21,7 +21,11 @@
+ # include <stdlib.h>
+ #endif
+ 
+-#include <openaptx.h>
++#if WITH_LIBFREEAPTX
++# include <freeaptx.h>
++#else
++# include <openaptx.h>
++#endif
+ 
+ #include "shared/log.h"
+ 
+-- 
+2.42.2
+
