@@ -1,0 +1,31 @@
+Description: Fix compatibility with wxWidgets 3.2
+Author: Scott Talbert <swt@techie.net>
+Last-Update: 2022-10-17
+Forwarded: no
+
+--- a/src/HexDialogs.cpp
++++ b/src/HexDialogs.cpp
+@@ -420,7 +420,7 @@ void FindDialog::OnChar( wxKeyEvent& eve
+ 	}
+ 
+ void FindDialog::EventHandler( wxCommandEvent& event ){
+-	WX_CLEAR_ARRAY(parent->HighlightArray )
++	WX_CLEAR_ARRAY(parent->HighlightArray );
+ 	parent->HighlightArray.Shrink();
+ 
+ 	if( event.GetId() == btnFind->GetId())
+--- a/src/HexEditorCtrl/HexEditorCtrl.cpp
++++ b/src/HexEditorCtrl/HexEditorCtrl.cpp
+@@ -64,9 +64,9 @@ HexEditorCtrl::~HexEditorCtrl( void ){
+ 	Dynamic_Disconnector();
+ 	Clear();
+ 
+-	WX_CLEAR_ARRAY(MainTagArray)
+-	WX_CLEAR_ARRAY(HighlightArray)
+-   WX_CLEAR_ARRAY(CompareArray)
++	WX_CLEAR_ARRAY(MainTagArray);
++	WX_CLEAR_ARRAY(HighlightArray);
++	WX_CLEAR_ARRAY(CompareArray);
+ 
+    MainTagArray.Shrink();
+    HighlightArray.Shrink();
