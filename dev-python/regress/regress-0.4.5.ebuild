@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 
 CRATES="
 	ahash@0.8.3
@@ -68,3 +68,5 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv"
 
 distutils_enable_tests pytest
+
+QA_FLAGS_IGNORED="usr/lib/py.*/site-packages/regress/regress.*.so"
