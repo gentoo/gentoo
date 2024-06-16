@@ -55,6 +55,14 @@ src_configure() {
 	export BLOSC_DIR="${EPREFIX}/usr"
 }
 
+python_compile() {
+	distutils-r1_python_compile
+
+	# scikit-build is broken and reuses the same build
+	# https://github.com/scikit-build/scikit-build/issues/633
+	rm -r _skbuild || die
+}
+
 python_test() {
 	"${EPYTHON}" -m blosc.test -v || die
 }
