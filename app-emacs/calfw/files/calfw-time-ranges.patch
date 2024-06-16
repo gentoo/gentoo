@@ -1,0 +1,40 @@
+From 7b5d5b66c772ec9ae12c8b67fbcc4a7d43f86209 Mon Sep 17 00:00:00 2001
+From: Maxime Wack <MaximeWack@users.noreply.github.com>
+Date: Wed, 3 Feb 2021 12:51:20 +0100
+Subject: [PATCH 1/1] Fix cfw:org-get-timerange to display the correct
+ timerange
+
+Re-use start-date, as permitted by let*
+
+Fix the double displaying of timeranges with times
+---
+ calfw-org.el | 13 ++++++-------
+ 1 file changed, 6 insertions(+), 7 deletions(-)
+
+diff --git a/calfw-org.el b/calfw-org.el
+index 4590f1c..f098a76 100644
+--- a/calfw-org.el
++++ b/calfw-org.el
+@@ -238,14 +238,13 @@ If TEXT does not have a range, return nil."
+ 				(match-string 1 extra)))
+ 		      (total-days (string-to-number
+ 				   (match-string 2 extra)))
+-		      (start-date (time-subtract
+-				   (org-read-date nil t date-string)
+-				   (seconds-to-time (* 3600 24 (- cur-day 1)))))
++		      (start-date (org-read-date nil t date-string))
+ 		      (end-date (time-add
+-				 (org-read-date nil t date-string)
+-				 (seconds-to-time (* 3600 24 (- total-days cur-day))))))
+-		 (list (calendar-gregorian-from-absolute (time-to-days start-date))
+-		       (calendar-gregorian-from-absolute (time-to-days end-date)) text))
++				 start-date
++				 (seconds-to-time (* 3600 24 (- total-days 1))))))
++		       (unless (= cur-day total-days)
++             (list (calendar-gregorian-from-absolute (time-to-days start-date))
++		                  (calendar-gregorian-from-absolute (time-to-days end-date)) text)))
+ 	     )))))
+
+ (defun cfw:org-schedule-period-to-calendar (begin end)
+--
+2.44.2
