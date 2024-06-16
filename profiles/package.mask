@@ -501,11 +501,6 @@ dev-python/aesara
 # Removal on 2024-06-17.  Bug #932160.
 dev-python/pdm-pep517
 
-# Michał Górny <mgorny@gentoo.org> (2024-05-17)
-# Superseded by dev-python/pathable.  No revdeps.
-# Removal on 2024-06-16.  Bug #932103.
-dev-python/dictpath
-
 # Sam James <sam@gentoo.org> (2024-04-28)
 # Masked for testing. Tracker bug: bug #930805.
 >=sys-libs/ncurses-6.5
