@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 
 inherit distutils-r1 pypi
 
@@ -22,15 +22,26 @@ distutils_enable_tests pytest
 
 python_test() {
 	local EPYTEST_DESELECT=()
-	if [[ ${EPYTHON} == pypy3 ]]; then
-		# regressions with pypy3.10
-		# https://github.com/PyCQA/pyflakes/issues/779
-		EPYTEST_DESELECT+=(
-			pyflakes/test/test_api.py::CheckTests::test_eofSyntaxError
-			pyflakes/test/test_api.py::CheckTests::test_misencodedFileUTF8
-			pyflakes/test/test_api.py::CheckTests::test_multilineSyntaxError
-		)
-	fi
+	case ${EPYTHON} in
+		pypy3)
+			# regressions with pypy3.10
+			# https://github.com/PyCQA/pyflakes/issues/779
+			EPYTEST_DESELECT+=(
+				pyflakes/test/test_api.py::CheckTests::test_eofSyntaxError
+				pyflakes/test/test_api.py::CheckTests::test_misencodedFileUTF8
+				pyflakes/test/test_api.py::CheckTests::test_multilineSyntaxError
+			)
+			;;
+		python3.13)
+			EPYTEST_DESELECT+=(
+				# failing due to improved error message
+				# https://github.com/PyCQA/pyflakes/issues/812
+				pyflakes/test/test_api.py::IntegrationTests::test_errors_syntax
+				pyflakes/test/test_api.py::TestMain::test_errors_syntax
+			)
+			;;
+	esac
 
+	local -X PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
 }
