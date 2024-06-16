@@ -478,7 +478,12 @@ REQUIRED_USE="
 "
 RDEPEND="server? ( acct-user/atuin )"
 DEPEND="test? ( dev-db/postgresql )"
-BDEPEND=">=virtual/rust-1.71.0"
+# protobuf can be dropped after atuin 18.3.0, since upstream switched to
+# protox with 9fa223eaaf0e ("chore(build): compile protobufs with protox (#2122)")
+BDEPEND="
+	dev-libs/protobuf
+	>=virtual/rust-1.71.0
+"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 
