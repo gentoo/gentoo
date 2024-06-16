@@ -158,11 +158,14 @@ multilib_src_compile() {
 
 				# Our own variants
 				''
+				'-e'
 				'-9e'
+				"$(usev extra-filters '--x86 --lzma2=preset=6e')"
 				"$(usev extra-filters '--x86 --lzma2=preset=9e')"
 			)
 			local test_variant
 			for test_variant in "${test_variants[@]}" ; do
+				einfo "Testing '${test_variant}' variant"
 				"${BUILD_DIR}"/src/xz/xz -c ${test_variant} xz-pgo-test-01.tar | "${BUILD_DIR}"/src/xz/xz -c -d - > /dev/null
 				assert "Testing '${test_variant}' variant failed"
 			done
