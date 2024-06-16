@@ -78,6 +78,7 @@ CRATES="
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
+# py3.13: https://github.com/messense/nh3/issues/45
 PYTHON_COMPAT=( pypy3 python3_{10..12} )
 
 inherit cargo distutils-r1 pypi
