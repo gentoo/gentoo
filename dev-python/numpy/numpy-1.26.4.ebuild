@@ -54,6 +54,9 @@ EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 python_prepare_all() {
+	# bug #922457
+	filter-lto
+	# https://github.com/numpy/numpy/issues/25004
 	append-flags -fno-strict-aliasing
 
 	distutils-r1_python_prepare_all
