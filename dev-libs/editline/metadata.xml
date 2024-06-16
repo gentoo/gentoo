@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<upstream>
-		<remote-id type="github">troglobit/editline</remote-id>
-	</upstream>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Editline is a line editing library for UNIX. It can be linked into
+    almost any program to provide command line editing and history. It is
+    call compatible with the FSF readline library, but is a fraction of the
+    size (and offers fewer features). The small size, lack of dependencies
+    and the free license should make this library interesting to many
+    embedded developers seeking a replacement for the GNU readline library.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/troglobit/editline/issues/</bugs-to>
+    <remote-id type="github">troglobit/editline</remote-id>
+  </upstream>
 </pkgmetadata>
