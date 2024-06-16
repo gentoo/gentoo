@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-06-16)
+# After most protocol support is gone, there is barely anything usable
+# left in kde-apps/kopete. It is also unmaintained and still depends on
+# kf5-portingaids, as well as conflicting kde-apps in slot 5. bug #760555
+# Removal on 2024-07-24.
+kde-apps/kopete
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-15)
 # EAPI=6, fetch restricted, and the file not available to download
 # any more.
