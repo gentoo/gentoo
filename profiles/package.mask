@@ -520,14 +520,6 @@ app-forensics/air
 # Removal on 2024-06-16.  Bug #932088.
 dev-python/whichcraft
 
-# Eli Schwartz <eschwartz93@gmail.com> (2024-05-17)
-# Last updated in 2007, has no reverse dependencies, is unmaintained upstream
-# (in 2010 a version 4 alpha was released using cmake, the project has seen no
-# other activity upstream). Fails to build with dash, lto.
-# Bug #862669, #890423.
-# Removal on 2024-06-16.
-sci-libs/beagle
-
 # Sam James <sam@gentoo.org> (2024-04-28)
 # Masked for testing. Tracker bug: bug #930805.
 >=sys-libs/ncurses-6.5
