@@ -994,7 +994,7 @@ glibc_do_configure() {
 	# worth protecting from stack smashes.
 	myconf+=( --enable-stack-protector=$(usex ssp strong no) )
 
-	# Keep a whitelist of targets supporing IFUNC. glibc's ./configure
+	# Keep a whitelist of targets supporting IFUNC. glibc's ./configure
 	# is not robust enough to detect proper support:
 	#    https://bugs.gentoo.org/641216
 	#    https://sourceware.org/PR22634#c0
