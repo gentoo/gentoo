@@ -1933,7 +1933,7 @@ _distutils-r1_compare_installed_files() {
 	# Perform the check only if at least one potentially reusable wheel
 	# has been produced.  Nonpure packages (e.g. NumPy) may install
 	# interpreter configuration details into sitedir.
-	if [[ ${!DISTUTILS_WHEELS[*]} != *-none-any.whl* &&
+	if [[ ${!DISTUTILS_WHEELS[*]} != *py3-none-any.whl* &&
 			${!DISTUTILS_WHEELS[*]} != *-abi3-*.whl ]]; then
 		return
 	fi
