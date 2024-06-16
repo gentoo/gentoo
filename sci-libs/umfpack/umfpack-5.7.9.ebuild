@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit libtool toolchain-funcs
 
 DESCRIPTION="Unsymmetric multifrontal sparse LU factorization library"
 HOMEPAGE="https://people.engr.tamu.edu/davis/suitesparse.html"
@@ -22,6 +22,11 @@ DEPEND="
 	virtual/blas
 	cholmod? ( sci-libs/cholmod )"
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 src_configure() {
 	econf \
