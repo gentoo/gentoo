@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1 pypi
 
@@ -24,12 +24,6 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
-
-src_prepare() {
-	# https://github.com/maxtepkeev/python-redmine/pull/332
-	sed -i -e 's:assertEquals:assertEqual:' tests/*.py || die
-	distutils-r1_src_prepare
-}
 
 python_test() {
 	epytest -o addopts=
