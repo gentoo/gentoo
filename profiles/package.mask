@@ -506,12 +506,6 @@ dev-python/pdm-pep517
 # Removal on 2024-06-16.  Bug #932103.
 dev-python/dictpath
 
-# Michał Górny <mgorny@gentoo.org> (2024-05-17)
-# Unmaintained.  Last activity in 2020.  Redundant to stdlib.
-# No revdeps.
-# Removal on 2024-06-16.  Bug #932096.
-dev-python/cached-property
-
 # Sam James <sam@gentoo.org> (2024-04-28)
 # Masked for testing. Tracker bug: bug #930805.
 >=sys-libs/ncurses-6.5
