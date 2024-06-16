@@ -103,6 +103,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-libxml2-2.12.patch
 	# https://code.wildfiregames.com/D5267
 	"${FILESDIR}"/${P}-boost-1.85.patch
+	"${FILESDIR}"/${P}-miniupnpc.patch
 )
 
 pkg_setup() {
