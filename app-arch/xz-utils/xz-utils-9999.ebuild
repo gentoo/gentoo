@@ -103,7 +103,7 @@ multilib_src_configure() {
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		export gl_cv_posix_shell="${EPREFIX}"/bin/sh
 
-		# Undo Solaris-based defaults pointing to /usr/xpg5/bin
+		# Undo Solaris-based defaults pointing to /usr/xpg4/bin
 		myconf+=( --disable-path-for-script )
 	fi
 
