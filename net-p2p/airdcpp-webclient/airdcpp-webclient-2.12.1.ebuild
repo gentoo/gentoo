@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 
 inherit cmake python-any-r1 systemd
 
@@ -11,9 +11,9 @@ DESCRIPTION="Cross-platform Direct Connect client"
 HOMEPAGE="https://airdcpp-web.github.io/"
 SRC_URI="https://github.com/airdcpp-web/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="amd64 ~riscv x86"
 LICENSE="GPL-2+"
 SLOT="0"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="debug nat-pmp +tbb +webui"
 
 RDEPEND="
@@ -37,6 +37,10 @@ BDEPEND="
 	${PYTHON_DEPS}
 "
 PDEPEND="webui? ( www-apps/airdcpp-webui )"
+
+PATCHES=(
+	"${FILESDIR}/${P}-miniupnpc-2.2.8.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
