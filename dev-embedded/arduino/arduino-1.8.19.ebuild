@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit java-pkg-2 java-ant-2 desktop xdg-utils
 
 DESCRIPTION="An open-source AVR electronics prototyping platform"
-HOMEPAGE="https://arduino.cc/ https://github.com/arduino/"
+HOMEPAGE="https://www.arduino.cc/ https://github.com/arduino/"
 
 AVR_VERSION="1.8.3"
 EXAMPLES_VERSION="1.9.1"
@@ -15,7 +15,7 @@ PLUGIN_VERSION="0.12.0"
 SRC_URI="https://github.com/arduino/Arduino/archive/${PV}.tar.gz -> ${P}.tar.gz
 	https://downloads.arduino.cc/cores/avr-${AVR_VERSION}.tar.bz2 -> ${PN}-avr-${AVR_VERSION}.tar.bz2
 	https://github.com/arduino/arduino-examples/archive/refs/tags/${EXAMPLES_VERSION}.zip -> ${PN}-examples-${EXAMPLES_VERSION}.zip
-	https://github.com/arduino-libraries/WiFi101-FirmwareUpdater-Plugin/releases/download/v${PLUGIN_VERSION}/WiFi101-Updater-ArduinoIDE-Plugin-${PLUGIN_VERSION}.zip -> ${PN}-WiFi101-Updater-ArduinoIDE-Plugin-${PLUGIN_VERSION}.zip
+	https://github.com/arduino/WiFi101-FirmwareUpdater-Plugin/releases/download/v${PLUGIN_VERSION}/WiFi101-Updater-ArduinoIDE-Plugin-${PLUGIN_VERSION}.zip -> ${PN}-WiFi101-Updater-ArduinoIDE-Plugin-${PLUGIN_VERSION}.zip
 	"
 
 LICENSE="GPL-2 LGPL-2.1 CC-BY-SA-3.0"
