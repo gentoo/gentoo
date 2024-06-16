@@ -1,0 +1,79 @@
+https://github.com/google/woff2/commit/23a34adec39d7cef30c1eebbf775a1ea5cc43c53
+
+From 23a34adec39d7cef30c1eebbf775a1ea5cc43c53 Mon Sep 17 00:00:00 2001
+From: David Benjamin <davidben@google.com>
+Date: Thu, 26 Oct 2023 10:16:05 -0400
+Subject: [PATCH] Fix undefined type-punning when loading/storing words
+
+Despite common practice, type-punning integer types out of buffers is
+undefined in C and C++. It's both a strict aliasing violation on access,
+and if the pointer isn't aligned, an alignment violation on cast. Being
+undefined, the compiler is allowed to arbitrarily miscompile the code
+when we rely on it.
+
+Instead, the two legal ways to pull a uint32_t out of a buffer are to
+either use memcpy, or load byte by byte and use shifts. In both cases,
+a good compiler should be smart enough to recognize what we're doing and
+generate reasonable code. Since there was already fallback code for the
+latter (for a middle-endian architecture?), I went ahead and switched to
+that.
+
+This change is needed to fix UBSan violations in Chromium.
+--- a/src/store_bytes.h
++++ b/src/store_bytes.h
+@@ -27,15 +27,8 @@ inline size_t StoreU32(uint8_t* dst, size_t offset, uint32_t x) {
+ }
+ 
+ inline size_t Store16(uint8_t* dst, size_t offset, int x) {
+-#if defined(WOFF_LITTLE_ENDIAN)
+-  *reinterpret_cast<uint16_t*>(dst + offset) =
+-      ((x & 0xFF) << 8) | ((x & 0xFF00) >> 8);
+-#elif defined(WOFF_BIG_ENDIAN)
+-  *reinterpret_cast<uint16_t*>(dst + offset) = static_cast<uint16_t>(x);
+-#else
+   dst[offset] = x >> 8;
+   dst[offset + 1] = x;
+-#endif
+   return offset + 2;
+ }
+ 
+@@ -47,17 +40,8 @@ inline void StoreU32(uint32_t val, size_t* offset, uint8_t* dst) {
+ }
+ 
+ inline void Store16(int val, size_t* offset, uint8_t* dst) {
+-#if defined(WOFF_LITTLE_ENDIAN)
+-  *reinterpret_cast<uint16_t*>(dst + *offset) =
+-      ((val & 0xFF) << 8) | ((val & 0xFF00) >> 8);
+-  *offset += 2;
+-#elif defined(WOFF_BIG_ENDIAN)
+-  *reinterpret_cast<uint16_t*>(dst + *offset) = static_cast<uint16_t>(val);
+-  *offset += 2;
+-#else
+   dst[(*offset)++] = val >> 8;
+   dst[(*offset)++] = val;
+-#endif
+ }
+ 
+ inline void StoreBytes(const uint8_t* data, size_t len,
+--- a/src/woff2_common.cc
++++ b/src/woff2_common.cc
+@@ -19,16 +19,8 @@ uint32_t ComputeULongSum(const uint8_t* buf, size_t size) {
+   uint32_t checksum = 0;
+   size_t aligned_size = size & ~3;
+   for (size_t i = 0; i < aligned_size; i += 4) {
+-#if defined(WOFF_LITTLE_ENDIAN)
+-    uint32_t v = *reinterpret_cast<const uint32_t*>(buf + i);
+-    checksum += (((v & 0xFF) << 24) | ((v & 0xFF00) << 8) |
+-      ((v & 0xFF0000) >> 8) | ((v & 0xFF000000) >> 24));
+-#elif defined(WOFF_BIG_ENDIAN)
+-    checksum += *reinterpret_cast<const uint32_t*>(buf + i);
+-#else
+-    checksum += (buf[i] << 24) | (buf[i + 1] << 16) |
+-      (buf[i + 2] << 8) | buf[i + 3];
+-#endif
++    checksum +=
++        (buf[i] << 24) | (buf[i + 1] << 16) | (buf[i + 2] << 8) | buf[i + 3];
+   }
+ 
+   // treat size not aligned on 4 as if it were padded to 4 with 0's
+
