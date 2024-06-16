@@ -1,6 +1,9 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Resolve conflict between Plasma 6 and KDevelop 24.05
+>=dev-util/kdevelop-24.05.1:5 -plasma
+
 # Sam James <sam@gentoo.org> (2024-06-13)
 # Needed by dependencies of KDE Plasma and KDE Gear
 app-crypt/gpgme qt6
