@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-06-17)
+# A compatibility shim for ancient versions of flake8.  Upstream project
+# is gone.  No revdeps.
+# Removal on 2024-07-17.  Bug #934466.
+dev-python/flake8-polyfill
+
 # Hans de Graaff <graaff@gentoo.org> (2024-06-17)
 # Obsolete slot with failing tests. Use the newer slot instead. No
 # reverse dependencies. Masked for removal on 2024-07-17.
