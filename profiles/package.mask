@@ -487,12 +487,6 @@ kde-apps/kio-extras-kf5
 # Removal on 2024-06-17.  Bugs #932168, #906348, #895028, #870640.
 dev-lang/srf
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-18)
-# EAPI6. Fails to compile with go versions in tree. Upstream is archived.
-# Uses deprecated go eclasses. Maintainer needed, no rev deps.
-# Removal on 2024-06-17.  Bugs #932166, #844604, #679832.
-app-emulation/hyperd
-
 # Sam James <sam@gentoo.org> (2024-04-28)
 # Masked for testing. Tracker bug: bug #930805.
 >=sys-libs/ncurses-6.5
