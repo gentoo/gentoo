@@ -1,0 +1,85 @@
+# -*- conf -*-
+# broken, bug https://bugs.gentoo.org/930542
+tests/c/temit.nim
+tests/ccgbugs/t10964.nim
+tests/niminaction/Chapter3/ChatApp/src/client.nim
+tests/niminaction/Chapter3/various3.nim
+tests/niminaction/Chapter6/WikipediaStats/concurrency.nim
+tests/niminaction/Chapter6/WikipediaStats/concurrency_regex.nim
+tests/niminaction/Chapter6/WikipediaStats/parallel_counts.nim
+tests/niminaction/Chapter8/sdl/sdl_test.nim
+tests/parallel/tdeepcopy.nim
+tests/parallel/tdeepcopy2.nim
+tests/parallel/tflowvar.nim
+tests/parallel/tlet_spawn.nim
+tests/parallel/tpi.nim
+tests/parallel/tsysspawn.nim
+tests/parallel/twaitany.nim
+tests/stdlib/thttpclient_ssl.nim
+tests/stdlib/tthreadpool.nim
+# broken
+tests/assert/tassert_c.nim
+tests/async/tasync_traceback.nim
+tests/coroutines/twait.nim
+tests/dll/nimhcr_unit.nim
+tests/errmsgs/t14444.nim
+tests/errmsgs/t23536.nim
+tests/errmsgs/tcall_with_default_arg.nim
+tests/errmsgs/tproper_stacktrace.nim
+tests/errmsgs/tproper_stacktrace2.nim
+tests/errmsgs/tproper_stacktrace3.nim
+tests/exception/t13115.nim
+tests/exception/t22469.nim
+tests/js/tmangle.nim
+tests/js/twritestacktrace.nim
+tests/lent/tbasic_lent_check.nim
+tests/misc/trunner.nim
+tests/misc/tsizeof4.nim
+tests/misc/tstrace.nim
+tests/misc/twarningaserror.nim
+tests/parser/t20922.nim
+tests/pragmas/thintprocessing.nim
+tests/pragmas/tused.nim
+tests/pragmas/twarning_off.nim
+tests/range/tcompiletime_range_checks.nim
+tests/stdlib/tos.nim
+tests/stdlib/tstackframes.nim
+tests/stdlib/tstats.nim
+tests/system/talloc.nim
+tests/testament/tshould_not_work.nim
+# broken on musl + llvm
+tests/coroutines/tgc.nim
+tests/coroutines/twait.nim
+tests/misc/t18077.nim
+tests/misc/temit.nim
+tests/nimdoc/t15916.nim
+tests/nimdoc/trunnableexamples.nim
+tests/nimdoc/trunnableexamples2.nim
+tests/objects/tobjcov.nim
+tests/objects/toop1.nim
+tests/stdlib/tencodings.nim
+tests/stdlib/tgetaddrinfo.nim
+tests/stdlib/tstdlib_various.nim
+tests/stdlib/tstreams.nim
+tests/stdlib/ttimes.nim
+tests/vm/tvmmisc.nim
+# require network
+tests/stdlib/thttpclient.nim
+tests/stdlib/tnetconnect.nim
+tests/stdlib/tssl.nim
+# don't work without megatest
+tests/misc/tjoinable.nim
+tests/testament/tjoinable.nim
+# don't work with "--hint:all:off" hack
+tests/concepts/t3330.nim
+tests/stylecheck/t20397_2.nim
+tests/stylecheck/treject.nim
+tests/stylecheck/tusages.nim
+# need external dependencies
+tests/manyloc/keineschweine/keineschweine.nim
+tests/manyloc/nake/nakefile.nim
+tests/niminaction/Chapter7/Tweeter/src/tweeter.nim
+# need functional valgrind
+tests/destructor/tnewruntime_strutils.nim
+tests/destructor/tv2_raise.nim
+tests/views/tsplit_into_openarray.nim
