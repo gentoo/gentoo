@@ -32,7 +32,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/kirigami-${KFMIN}:6
 "
 RDEPEND="${COMMON_DEPEND}
-	>=dev-qt/qt5compat-${QTMIN}:6[qml]
+	>=dev-qt/qtmultimedia-${QTMIN}:6[qml]
 	>=kde-frameworks/qqc2-desktop-style-${KFMIN}:6
 	kde-plasma/libplasma:6
 "
