@@ -1,10 +1,6 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Eray Aslan <eras@gentoo.org> (2024-06-16)
-# mongodb needed for tests which is not keyworded for arm64
-dev-libs/mongo-c-driver test
-
 # Sam James <sam@gentoo.org> (2024-06-13)
 # Needs as-yet-unkeyworded KF6 (bug #934215)
 app-crypt/pinentry qt6
