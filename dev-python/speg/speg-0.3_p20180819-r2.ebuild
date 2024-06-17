@@ -15,8 +15,8 @@ HOMEPAGE="https://github.com/avakar/speg/"
 SRC_URI="https://github.com/avakar/speg/archive/${MY_COMMIT}.tar.gz -> ${P}.gh.tar.gz"
 S=${WORKDIR}/${PN}-${MY_COMMIT}
 
-SLOT="0"
 LICENSE="MIT"
+SLOT="0"
 KEYWORDS="amd64 arm64 ~ppc ~riscv x86"
 
 RDEPEND="
