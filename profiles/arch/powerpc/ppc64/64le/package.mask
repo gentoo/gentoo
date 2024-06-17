@@ -1,18 +1,9 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# matoro <matoro_gentoo@matoro.tk> (2024-06-10)
-# Unmask for ppc64le, #892183
--dev-python/sympy
--dev-python/symengine
-
 # Michał Górny <mgorny@gentoo.org> (2024-04-24)
 # Unmask ppc64le binpkg.
 -dev-python/pypy-exe-bin
-
-# Rahil Bhimjiani <me@rahil.rocks> (2024-03-20)
-# https://bugs.gentoo.org/925111
--app-containers/podman
 
 # Sam James <sam@gentoo.org> (2022-01-18)
 # No bootstrap binary available on big endian PPC64 right now, but there is
@@ -72,11 +63,6 @@
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-14)
 # works fine on little-endian
 -x11-drivers/xf86-video-amdgpu
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-02-04)
-# Temurin ppc64 build is little-endian only
-# so we can use bins.
--dev-java/openjdk-bin
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2018-04-11)
 # ltrace is not ported to powerpc64le yet.
