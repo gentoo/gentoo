@@ -323,6 +323,7 @@ PATCHES=(
 
 	# git master
 	"${FILESDIR}/${PN}-24.2.3.2-fix-bashism.patch" # bug #928733
+	"${FILESDIR}/${PN}-24.2.4.2-no-std-basic_string-int.patch" # bug #923950
 	# bug #917618, thx to Debian:
 	"${WORKDIR}/${PN}-24.2.3.2-icu-74/${PN}-24.2.3.2-icu-74.2-reviewed-breakIterator-customizations.patch"
 	"${WORKDIR}/${PN}-24.2.3.2-icu-74/${PN}-24.2.3.2-icu-74.2-breakiterator-updates.patch"
