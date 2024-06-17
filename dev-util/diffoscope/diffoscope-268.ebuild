@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="ncurses"
-inherit distutils-r1
+inherit distutils-r1 toolchain-funcs
 
 DESCRIPTION="Will try to get to the bottom of what makes files or directories different"
 HOMEPAGE="https://diffoscope.org/ https://pypi.org/project/diffoscope/"
@@ -133,3 +133,19 @@ EPYTEST_DESELECT=(
 )
 
 distutils_enable_tests pytest
+
+src_test() {
+	case $(tc-get-ptr-size) in
+		4)
+			EPYTEST_IGNORE+=(
+				# Needs fixing in Perl itself (bug #934443)
+				tests/comparators/test_epub.py
+				tests/comparators/test_zip.py
+			)
+			;;
+		*)
+			;;
+	esac
+
+	distutils-r1_src_test
+}
