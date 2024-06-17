@@ -30,11 +30,6 @@ media-libs/libplacebo -shaderc
 # Qt 6 not keyworded here.
 dev-build/cmake gui
 
-# Joonas Niilola <juippis@gentoo.org> (2023-08-24)
-# media-video/libva-utils is masked on ppc64, so hwaccel on Firefox
-# wouldn't work.
-www-client/firefox hwaccel
-
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2023-08-14)
 # OpenMW is only playtested with LuaJIT, and in fact unit tests fail with Lua-5.
 # Therefore apply mask/force to override the profile's defaults, and invert on
