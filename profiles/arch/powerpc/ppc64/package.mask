@@ -1,10 +1,6 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Jimi Huotari <chiitoo@gentoo.org> (2023-01-11)
-# Requires media-libs/libva since 29.0.0.
->=media-video/obs-studio-29.0.0
-
 # Michał Górny <mgorny@gentoo.org> (2022-08-25)
 # Only ppc64le binpkg is provided.
 dev-python/pypy-exe-bin
@@ -60,12 +56,6 @@ sys-kernel/gentoo-kernel
 sys-kernel/gentoo-kernel-bin
 sys-kernel/vanilla-kernel
 virtual/dist-kernel
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-21)
-# buggy on big-endian
-media-libs/libva
-media-video/libva-utils
-media-plugins/gst-plugins-vaapi
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-14)
 # buggy on big-endian
