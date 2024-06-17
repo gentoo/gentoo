@@ -22,28 +22,19 @@ inherit desktop edo flag-o-matic java-pkg-opt-2 linux-info multilib optfeature p
 
 PATCHES_PV="7.0.16"
 ORIGIN_PN="VirtualBox"
-ORIGIN_PV=${PATCHES_PV}
+ORIGIN_PV=${PV%_pre*}
 
 MY_PN=virtualbox
 MY_PV=${PV#*_pre}
+MY_P=${ORIGIN_PN}-${ORIGIN_PV}
 
-PATCHES_DIR="${WORKDIR}"/${PN}-${MY_PV}
+PATCHES_DIR="${WORKDIR}"/${PN}-dev-${MY_PV}
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/ https://github.com/cyberus-technology/virtualbox-kvm"
-SRC_URI="https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-${PATCHES_PV}.tar.bz2"
-if [[ ${PV} == *9999* ]]; then
-	inherit git-r3
-
-	ORIGIN_PV=${PATCHES_PV}
-	EGIT_REPO_URI="https://github.com/cyberus-technology/virtualbox-kvm"
-else
-	ORIGIN_PV=${PV%_pre*}
-	PATCHES_DIR="${WORKDIR}"/${PN}-dev-${MY_PV}
-	SRC_URI+=" https://github.com/cyberus-technology/virtualbox-kvm/archive/dev-${MY_PV}.tar.gz -> ${P}.tar.gz"
-fi
-MY_P=${ORIGIN_PN}-${ORIGIN_PV}
-SRC_URI+="
+SRC_URI="
+	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-${PATCHES_PV}.tar.bz2
+	https://github.com/cyberus-technology/virtualbox-kvm/archive/dev-${MY_PV}.tar.gz -> ${P}.tar.gz
 	https://download.virtualbox.org/virtualbox/${ORIGIN_PV}/${MY_P}.tar.bz2
 	gui? ( !doc? ( https://dev.gentoo.org/~ceamac/${CATEGORY}/${MY_PN}/${MY_PN}-help-${ORIGIN_PV}.tar.xz ) )
 "
@@ -237,11 +228,6 @@ pkg_pretend() {
 pkg_setup() {
 	java-pkg-opt-2_pkg_setup
 	use python && python-single-r1_pkg_setup
-}
-
-src_unpack() {
-	[[ ${PV} == *9999* ]] && git-r3_src_unpack
-	default
 }
 
 src_prepare() {
