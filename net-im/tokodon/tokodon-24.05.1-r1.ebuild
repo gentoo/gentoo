@@ -38,7 +38,7 @@ DEPEND="
 	>=kde-frameworks/purpose-${KFMIN}:6
 	>=kde-frameworks/qqc2-desktop-style-${KFMIN}:6
 	mpv? ( media-libs/mpvqt )
-	!mpv? ( >=dev-qt/qtsvg-${QTMIN}:6 )
+	!mpv? ( >=dev-qt/qtmultimedia-${QTMIN}:6[qml] )
 	webengine? ( >=dev-qt/qtwebview-${QTMIN}:6 )
 "
 RDEPEND="${DEPEND}
