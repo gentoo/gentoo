@@ -20,6 +20,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/nowarn.patch"
+	"${FILESDIR}/${P}-destdir.patch"
 )
 
 src_prepare() {
@@ -56,7 +57,7 @@ src_install() {
 	dodir /usr/bin
 	dodir /usr/$(get_libdir)/ocaml/stublibs
 	# Install
-	emake BINDIR="${ED}/usr/bin" OCAMLLIB="${D}${libdir}" RANLIB="$(tc-getRANLIB)" install
+	emake DESTDIR="${D}" BINDIR="${ED}/usr/bin" RANLIB="$(tc-getRANLIB)" install
 
 	# Add package header
 	sed -e "s/@VERSION/${P}/g" "${FILESDIR}/META.camlidl" >	"${D}${libdir}/META.camlidl" || die
