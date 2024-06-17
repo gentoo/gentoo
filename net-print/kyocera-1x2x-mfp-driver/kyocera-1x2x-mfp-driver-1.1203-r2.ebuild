@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="Printer descriptions (PPDs) and filters for Kyocera 1x2x MFP"
 HOMEPAGE="http://www.kyoceradocumentsolutions.eu"
@@ -9,49 +9,35 @@ SRC_URI="LinuxDrv_${PV}_FS-1x2xMFP.zip"
 
 LICENSE="GPL-2 kyocera-mita-ppds"
 SLOT="0"
-
 KEYWORDS="-* ~amd64"
 
-IUSE_L10N=(en ar cs de el es fr he hu it ko pl pt ro ru th tr vi zh-CN zh-TW)
+IUSE_L10N=( en ar cs de el es fr he hu it ko pl pt ro ru th tr vi zh-CN zh-TW )
 IUSE="+rastertokpsl-fix +${IUSE_L10N[@]/#/l10n_}"
 REQUIRED_USE="|| ( ${IUSE_L10N[@]/#/l10n_} )"
+RESTRICT="fetch mirror"
 
 RDEPEND="net-print/cups"
-DEPEND="app-arch/unzip"
-RESTRICT="fetch mirror"
+BDEPEND="app-arch/unzip"
+
 QA_PREBUILT="/usr/libexec/cups/filter/rastertokpsl"
 
 get_tarball_name() {
 	# Note the capitalization inconsistency. Don't "fix" that.
-	case "$1" in
-		ar) echo arabic ;;
-		cs) echo czech ;;
-		de) echo German ;;
-		el) echo greek ;;
-		en) echo English ;;
-		es) echo Spanish ;;
-		fr) echo French ;;
-		he) echo hebrew ;;
-		hu) echo hungarian ;;
-		it) echo Italian ;;
-		ko) echo Korean ;;
-		pl) echo polish ;;
-		pt) echo Portuguese ;;
-		ro) echo romanian ;;
-		ru) echo russian ;;
-		th) echo thai ;;
-		tr) echo turkish ;;
-		vi) echo vietnamese ;;
-		zh-CN) echo simplified ;;
-		zh-TW) echo traditional ;;
-		*) die ;;
-	esac
+	declare -A animals=(
+		[ar]=arabic [cs]=czech [de]=German [el]=greek [en]=English
+		[es]=Spanish [fr]=French [he]=hebrew [hu]=hungarian [it]=Italian
+		[ko]=Korean [pl]=polish [pt]=Portuguese [ro]=romanian [ru]=russian
+		[th]=thai [tr]=turkish [vi]=vietnamese [zh-CN]=simplified [zh-TW]=traditional
+	)
+	echo "${animals[$1]}"
 }
 
 pkg_nofetch() {
-	einfo "Please, navigate your browser to the following URL and manually"
+	einfo "Please, navigate your browser to the following URL, select"
+	einfo "'Support - Downloads' in the menu, select 'FS-1025MFP',"
+	einfo "select 'Linux print driver (${PV})', accept EULA, and manually"
 	einfo "download the file named '${A}', then put it into your DISTDIR."
-	einfo "https://www.kyoceradocumentsolutions.eu/index/service/dlc.false.driver.FS1025MFP._.EN.html"
+	einfo "https://www.kyoceradocumentsolutions.eu/en/support/downloads.name-L2V1L2VuL21mcC9GUzExMjVNRlA=.html"
 	einfo
 	einfo "Consider keeping a local copy of the file since there're chances"
 	einfo "the company is going to eventually stop hosting it for whatever"
