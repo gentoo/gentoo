@@ -320,6 +320,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-7.6-unused-qt5network.patch"
 	"${FILESDIR}/${PN}-24.2-unused-qt6network.patch"
 
+	# 24.8 branch
+	"${FILESDIR}/${P}-no-std-basic_string-int.patch" # bug #923950
+
 	# git master
 	# bug #917618, thx to Debian:
 	"${WORKDIR}/${PN}-24.2.3.2-icu-74/${PN}-24.2.3.2-icu-74.2-reviewed-breakIterator-customizations.patch"
