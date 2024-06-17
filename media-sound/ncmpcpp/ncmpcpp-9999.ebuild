@@ -1,18 +1,18 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools git-r3
 
-DESCRIPTION="featureful ncurses based MPD client inspired by ncmpc"
+DESCRIPTION="Featureful ncurses based MPD client inspired by ncmpc"
 HOMEPAGE="
 	https://rybczak.net/ncmpcpp/
 	https://github.com/ncmpcpp/ncmpcpp/
 "
 EGIT_REPO_URI="https://github.com/ncmpcpp/ncmpcpp"
-LICENSE="GPL-2"
 
+LICENSE="GPL-2"
 SLOT="0"
 IUSE="clock outputs taglib visualizer"
 
@@ -26,18 +26,15 @@ RDEPEND="
 	taglib? ( media-libs/taglib )
 	visualizer? ( sci-libs/fftw:3.0= )
 "
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
-
-	sed -i -e '/^docdir/d' {,doc/}Makefile.am || die
-	sed -i -e 's|COPYING||g' Makefile.am || die
-
 	eautoreconf
+
+	sed -i -e '/^docdir/d' {,doc/}Makefile{.am,.in} || die
+	sed -i -e 's|COPYING||g' Makefile{.am,.in} || die
 }
 
 src_configure() {
@@ -60,7 +57,7 @@ src_install() {
 pkg_postinst() {
 	echo
 	elog "Example configuration files have been installed at"
-	elog "${ROOT}/usr/share/doc/${PF}"
+	elog "${EROOT}/usr/share/doc/${PF}"
 	elog "${P} uses ~/.ncmpcpp/config and ~/.ncmpcpp/bindings"
 	elog "as user configuration files."
 	echo
