@@ -6,7 +6,7 @@
 		<name>Gentoo Science Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">ashb/sphinx-argparse</remote-id>
+		<remote-id type="github">sphinx-doc/sphinx-argparse</remote-id>
 		<remote-id type="pypi">sphinx-argparse</remote-id>
 	</upstream>
 </pkgmetadata>
