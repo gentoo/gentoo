@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,12 +31,17 @@ multilib_src_configure() {
 	local myeconfargs=(
 		--disable-doxygen-docs
 		--disable-examples
+		--disable-valgrind-testing
+		--disable-version-from-git
 		$([[ ${CHOST} == *-darwin* ]] && echo "--disable-asm-optimizations")
+
 		$(use_enable cpu_flags_x86_avx avx)
 		$(use_enable cxx cpplibs)
 		$(use_enable debug)
 		$(use_enable ogg)
 		$(use_enable static-libs static)
+
+		$(multilib_native_enable programs)
 
 		# cross-compile fix (bug #521446)
 		# no effect if ogg support is disabled
@@ -47,6 +52,8 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
+	# configure has --enable-exhaustive-tests we could pass...
+	# there's also --disable-thorough-test.
 	if [[ ${UID} != 0 ]]; then
 		# Parallel tests work for CMake but don't for autotools as of 1.4.3
 		# https://github.com/xiph/flac/commit/aaffdcaa969c19aee9dc89be420eae470b55e405
