@@ -38,11 +38,6 @@
 # reverse dependencies. Masked for removal on 2024-07-17.
 dev-ruby/net-imap:0
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-17)
-# EAPI=6, fetch restricted with source gone.
-# Removal on 2024-07-17.  Bug #934456.
-net-print/kyocera-1x2x-mfp-driver
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-16)
 # No release since 2021-06-10 and effectively declared unmaintained by
 # upstream since then; now conflicting with Plasma 6 by pulling in old
@@ -55,12 +50,6 @@ kde-plasma/ksysguard
 # kf5-portingaids, as well as conflicting kde-apps in slot 5. bug #760555
 # Removal on 2024-07-24.
 kde-apps/kopete
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-15)
-# EAPI=6, fetch restricted, and the file not available to download
-# any more.
-# Removal on 2024-07-15.  Bug #934368.
-net-print/kyocera-1x2x-mfp-driver
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-15)
 # EAPI=6, no reverse dependencies, not packaged on other distributions,
