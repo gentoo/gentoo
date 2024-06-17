@@ -287,6 +287,7 @@ perf_make() {
 		NO_ZLIB=
 		TCMALLOC=$(usex tcmalloc 1 "")
 		WERROR=0
+		DEBUG=$(usex debug 1 "")
 		LIBDIR="/usr/libexec/perf-core"
 		libdir="${EPREFIX}/usr/$(get_libdir)"
 		plugindir="${EPREFIX}/usr/$(get_libdir)/perf/plugins"
