@@ -24,16 +24,11 @@ S=${WORKDIR}/${P/_/}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
-IUSE="aesara examples imaging ipython latex mathml opengl pdf png pyglet symengine texmacs"
+IUSE="examples imaging ipython latex mathml opengl pdf png pyglet symengine texmacs"
 
 RDEPEND="
 	dev-python/mpmath[${PYTHON_USEDEP}]
 	dev-python/pexpect[${PYTHON_USEDEP}]
-	aesara? (
-		$(python_gen_cond_dep '
-			dev-python/aesara[${PYTHON_USEDEP}]
-		' python3_{10..11})
-	)
 	imaging? ( dev-python/pillow[${PYTHON_USEDEP}] )
 	ipython? ( dev-python/ipython[${PYTHON_USEDEP}] )
 	latex? (

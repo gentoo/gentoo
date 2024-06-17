@@ -10,10 +10,6 @@
 # Not working, bug #931046
 >=sci-libs/caffe2-2.3.0 rocm
 
-# Michał Górny <mgorny@gentoo.org> (2024-05-18)
-# dev-python/aesara is being removed.
-dev-python/sympy aesara
-
 # Sam James <sam@gentoo.org> (2024-05-09)
 # Experimental option upstream which seems undertested and underdocumented.
 # Fails to build with stricter C compilers too (bug #919685).
@@ -191,7 +187,7 @@ app-admin/ansible-molecule doc
 # William Hubbs <williamh@gentoo.org> (2023-06-30)
 # multiple repeated issues: Bug: #909394
 # Joonas Niilola <juippis@gentoo.org> (2024-04-22)
-# Can break reverse dependencies (Chromium, Firefox), debugging not always 
+# Can break reverse dependencies (Chromium, Firefox), debugging not always
 # obvious.
 net-libs/nodejs lto
 

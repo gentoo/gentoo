@@ -157,11 +157,6 @@ sys-kernel/installkernel -systemd-boot -ukify -uki
 # dev-python/pyopengl fails tests
 dev-python/sympy opengl
 
-# WANG Xuerui <xen0n@gentoo.org> (2023-04-16)
-# dev-python/aesara doesn't work on loong yet (due to hardcoding -m64 in its
-# cc invocations)
-dev-python/sympy aesara
-
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-06)
 # dev-cpp/glog fails tests, needs checking
 media-libs/opencv glog contribsfm
