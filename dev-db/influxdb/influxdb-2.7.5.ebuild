@@ -207,7 +207,10 @@ KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+	<virtual/rust-1.78.0
+"
 
 DEPEND="
 	acct-group/influxdb
