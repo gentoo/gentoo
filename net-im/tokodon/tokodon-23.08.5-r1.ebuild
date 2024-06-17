@@ -40,5 +40,7 @@ DEPEND="
 	>=kde-frameworks/qqc2-desktop-style-${KFMIN}:5
 	>=kde-frameworks/sonnet-${KFMIN}:5[qml]
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	>=kde-frameworks/purpose-${KFMIN}:5
+"
 BDEPEND="virtual/pkgconfig"
