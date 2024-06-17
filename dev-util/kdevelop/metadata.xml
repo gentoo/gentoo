@@ -12,6 +12,5 @@
 		<flag name="gdbui">Enable GUI for attaching GDB to a running process</flag>
 		<flag name="hex">Enable hex editor plugin via <pkg>app-editors/okteta</pkg></flag>
 		<flag name="qmake">Enable support for QMake build system</flag>
-		<flag name="reviewboard">Enable reviewboard support</flag>
 	</use>
 </pkgmetadata>
