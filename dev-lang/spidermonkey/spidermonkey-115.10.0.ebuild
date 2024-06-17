@@ -78,7 +78,7 @@ BDEPEND="${PYTHON_DEPS}
 			clang? (
 				sys-devel/lld:18
 				sys-devel/clang:18
-				virtual/rust:0/llvm-18
+				<virtual/rust-1.78:0/llvm-18
 			)
 		)
 		(
@@ -106,10 +106,10 @@ BDEPEND="${PYTHON_DEPS}
 			)
 		)
 	)
-	!clang? ( virtual/rust )
+	!clang? ( <virtual/rust-1.78 )
 	!elibc_glibc? (
 		|| (
-			dev-lang/rust
+			<dev-lang/rust-1.78
 			<dev-lang/rust-bin-1.73
 		)
 	)
