@@ -41,7 +41,6 @@
     <remote-id type="github">nim-lang/Nim</remote-id>
   </upstream>
   <use>
-    <flag name="experimental">Apply experimental patches</flag>
     <flag name="test-js">Enable tests that require Node.js</flag>
   </use>
 </pkgmetadata>
