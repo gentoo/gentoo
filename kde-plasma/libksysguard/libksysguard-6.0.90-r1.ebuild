@@ -3,7 +3,6 @@
 
 EAPI=8
 
-ECM_DESIGNERPLUGIN="true"
 ECM_TEST="true"
 KFMIN=6.3.0
 QTMIN=6.7.1
