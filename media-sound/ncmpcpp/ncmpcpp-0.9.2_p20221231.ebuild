@@ -8,8 +8,12 @@ inherit autotools
 NCMPCPP_COMMIT="9f44edf0b1d74da7cefbd498341d59bc52f6043f"
 
 DESCRIPTION="Featureful ncurses based MPD client inspired by ncmpc"
-HOMEPAGE="https://ncmpcpp.rybczak.net/ https://github.com/ncmpcpp/ncmpcpp"
+HOMEPAGE="
+	https://rybczak.net/ncmpcpp/
+	https://github.com/ncmpcpp/ncmpcpp/
+"
 SRC_URI="https://github.com/ncmpcpp/ncmpcpp/archive/${NCMPCPP_COMMIT}.tar.gz -> ${P}.gh.tar.gz"
+S="${WORKDIR}/${PN}-${NCMPCPP_COMMIT}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -17,9 +21,9 @@ KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc x86"
 IUSE="clock outputs taglib visualizer"
 
 RDEPEND="
+	>=media-libs/libmpdclient-2.1
 	dev-libs/boost:=[icu,nls]
 	dev-libs/icu:=
-	media-libs/libmpdclient
 	net-misc/curl
 	sys-libs/ncurses:=[unicode(+)]
 	sys-libs/readline:=
@@ -28,8 +32,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-S="${WORKDIR}/${PN}-${NCMPCPP_COMMIT}"
 
 src_prepare() {
 	default
