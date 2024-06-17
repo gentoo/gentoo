@@ -481,12 +481,6 @@ dev-util/stepman
 # kde-apps/kio-extras:5. Removal on 2024-06-04.
 kde-apps/kio-extras-kf5
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-18)
-# EAPI=6, no reverse dependencies, dead homepage, has issues
-# with modern C, maintainer needed.
-# Removal on 2024-06-17.  Bugs #932168, #906348, #895028, #870640.
-dev-lang/srf
-
 # Sam James <sam@gentoo.org> (2024-04-28)
 # Masked for testing. Tracker bug: bug #930805.
 >=sys-libs/ncurses-6.5
