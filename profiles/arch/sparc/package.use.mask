@@ -7,6 +7,7 @@
 dev-python/pylibmc test
 dev-python/pytest-services test
 net-ftp/proftpd memcache
+dev-ruby/dalli test
 
 # Sam James <sam@gentoo.org> (2024-05-19)
 # media-libs/jasper not yet keyworded here: https://bugs.gentoo.org/921559
