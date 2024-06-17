@@ -501,11 +501,6 @@ app-emulation/hyperd
 # Removal on 2024-06-17.  Bug #929433.
 dev-python/aesara
 
-# Michał Górny <mgorny@gentoo.org> (2024-05-18)
-# Superseded by dev-python/pdm-backend.  No revdeps left.
-# Removal on 2024-06-17.  Bug #932160.
-dev-python/pdm-pep517
-
 # Sam James <sam@gentoo.org> (2024-04-28)
 # Masked for testing. Tracker bug: bug #930805.
 >=sys-libs/ncurses-6.5

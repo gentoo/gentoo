@@ -58,11 +58,6 @@ net-p2p/bitcoind
 # Bug 915779
 dev-qt/qtscript:5
 
-# Michał Górny <mgorny@gentoo.org> (2023-06-18)
-# Superseded by dev-python/pdm-backend.  The migration guide is at:
-# https://pdm-backend.fming.dev/migration/
-dev-python/pdm-pep517
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-06-10)
 # Obsolete transitional meta package. Switch to media-libs/libpulse
 # which ensures a sound server is installed via PDEPEND.
