@@ -307,7 +307,7 @@ unset COMMONDEPEND
 # @DESCRIPTION:
 # Determine if the current GCC version is acceptable, otherwise die.
 _ecm_check_gcc_version() {
-	if [[ ${MERGE_TYPE} != binary && -v ${KDE_GCC_MINIMAL} ]] && tc-is-gcc; then
+	if [[ ${MERGE_TYPE} != binary && -v KDE_GCC_MINIMAL ]] && tc-is-gcc; then
 
 		local version=$(gcc-version)
 
