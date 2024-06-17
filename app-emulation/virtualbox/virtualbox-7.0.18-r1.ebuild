@@ -148,8 +148,8 @@ BDEPEND="
 	)
 	gui? ( dev-qt/linguist-tools:5 )
 	nls? ( dev-qt/linguist-tools:5 )
-	python? ( ${PYTHON_DEPS} )
 	java? ( virtual/jdk:1.8 )
+	python? ( ${PYTHON_DEPS} )
 "
 
 QA_FLAGS_IGNORED="
