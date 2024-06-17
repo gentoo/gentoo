@@ -26,5 +26,5 @@ PATCHES=(
 )
 
 python_test() {
-	"${EPYTHON}" test.py test.py test.py &> /dev/null || die
+	../Testing/python_test.sh "${EPYTHON}" || die
 }

@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,5 +30,5 @@ src_prepare() {
 }
 
 python_test() {
-	"${EPYTHON}" test.py test.py test.py &> /dev/null || die
+	../Testing/python_test.sh "${EPYTHON}" || die
 }
