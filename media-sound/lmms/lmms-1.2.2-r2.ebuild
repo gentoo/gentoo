@@ -71,6 +71,7 @@ S="${WORKDIR}/${PN}"
 PATCHES=(
 	"${FILESDIR}/${PN}-1.2.2-no_compress_man.patch" #733284
 	"${FILESDIR}/${PN}-1.2.2-plugin-path.patch" #907285
+	"${FILESDIR}/${PN}-1.2.2-kwidgetsaddons.patch"
 )
 
 src_configure() {
