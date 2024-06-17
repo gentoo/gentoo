@@ -6,13 +6,13 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit distutils-r1 virtualx xdg-utils
+inherit distutils-r1 optfeature virtualx xdg-utils
 
 DESCRIPTION="A subtitle editor for text-based subtitles"
-HOMEPAGE="https://otsaloma.io/gaupol/ https://github.com/otsaloma/gaupol/"
+HOMEPAGE="https://otsaloma.io/gaupol/"
 SRC_URI="https://github.com/otsaloma/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2+"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="spell"
@@ -48,10 +48,9 @@ python_test() {
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
+
+	optfeature "External player support" media-video/mplayer media-video/mpv media-video/vlc
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
-		elog "The integrated video player requires media-plugins/gst-plugins-gtk."
-		elog ""
-		elog "External video previewing support requires MPV, MPlayer or VLC."
 		if use spell; then
 			elog ""
 			elog "Spell-checking requires a dictionary, any of app-dicts/myspell-*"
