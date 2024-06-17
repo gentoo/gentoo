@@ -88,8 +88,14 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
-	# bug #461302
-	emake check </dev/null
+	local ps="${BUILD_DIR}/src/ps/pscommand"
+	if [[ $("${ps}" --no-headers -o cls -q $$) == IDL ]]; then
+		# bug 708230
+		ewarn "Skipping tests due to SCHED_IDLE"
+	else
+		# bug #461302
+		emake check </dev/null
+	fi
 }
 
 multilib_src_install() {
