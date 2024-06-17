@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2024-06-17)
+# Obsolete slot with failing tests. Use the newer slot instead. No
+# reverse dependencies. Masked for removal on 2024-07-17.
+dev-ruby/net-imap:0
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-17)
 # EAPI=6, fetch restricted with source gone.
 # Removal on 2024-07-17.  Bug #934456.
