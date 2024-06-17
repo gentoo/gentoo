@@ -1,5 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Joonas Niilola <juippis@gentoo.org> (2023-08-24)
+# media-video/libva-utils is masked on ppc64, so hwaccel on Firefox
+# wouldn't work.
+www-client/firefox hwaccel
 
 # Georgy Yakovlev (2022-02-16)
 # dev-python/networkx is keyworded here
