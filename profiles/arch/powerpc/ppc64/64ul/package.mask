@@ -11,6 +11,10 @@ dev-python/symengine
 # https://bugs.gentoo.org/925111
 app-containers/podman
 
+# Jimi Huotari <chiitoo@gentoo.org> (2023-01-11)
+# Requires media-libs/libva since 29.0.0, which is masked here.
+>=media-video/obs-studio-29.0.0
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
 # Not all dependencies keyworded
 net-im/telegram-desktop
