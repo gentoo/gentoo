@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-17)
+# EAPI=6, fetch restricted with source gone.
+# Removal on 2024-07-17.  Bug #934456.
+net-print/kyocera-1x2x-mfp-driver
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-16)
 # No release since 2021-06-10 and effectively declared unmaintained by
 # upstream since then; now conflicting with Plasma 6 by pulling in old
