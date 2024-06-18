@@ -10,7 +10,6 @@ QTMIN=6.7.1
 inherit ecm plasma.kde.org python-single-r1 systemd
 
 DESCRIPTION="Plasma crash handler, gives the user feedback if a program crashed"
-SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${PN}-5.27.8-revert-add-sentry-support.patch.xz"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
