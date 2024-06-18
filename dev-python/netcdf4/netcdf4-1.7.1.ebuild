@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYPI_PN=netCDF4
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1 optfeature pypi
 
