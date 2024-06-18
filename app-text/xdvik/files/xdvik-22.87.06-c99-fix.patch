@@ -34,7 +34,7 @@ index 945ae760fa..913db11264 100644
      /* delete and re-create list */
      ASSERT(total_pages <= (int)page_info.index_size, "");
 -    XawListChange(LIST_WIDGET, page_info.page_labels, 0,
-+    XawListChange(LIST_WIDGET, (_Xconst char**) page_info.page_labels, 0,
++    XawListChange(LIST_WIDGET, (const char**) page_info.page_labels, 0,
  		  MAX(button_width, pagelist_width), False);
      /* restore selected item */
      if (idx != XAW_LIST_NONE) {
