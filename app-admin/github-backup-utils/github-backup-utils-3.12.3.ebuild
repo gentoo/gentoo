@@ -26,15 +26,15 @@ RDEPEND="app-misc/jq
 	sys-apps/moreutils"
 
 # tests invoke parallel & rsync
-DEPEND="test? (
-	${RDEPEND}
-	dev-util/checkbashisms
-	${PYTHON_DEPS}
-)"
+# DEPEND="test? (
+#	${RDEPEND}
+#	dev-util/checkbashisms
+#	${PYTHON_DEPS}
+#)"
 
-pkg_setup() {
-	use test && python-any-r1_pkg_setup
-}
+# pkg_setup() {
+#	use test && python-any-r1_pkg_setup
+#}
 
 src_compile() {
 	:;
