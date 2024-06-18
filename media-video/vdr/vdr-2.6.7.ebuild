@@ -120,7 +120,7 @@ src_prepare() {
 
 	use naludump && eapply "${FILESDIR}/${PN}-2.6.1_naludump.patch"
 	use permashift && eapply "${FILESDIR}/${PN}-2.6.1-patch-for-permashift.patch"
-	use pinplugin && eapply "${FILESDIR}/${PN}-2.6.1_pinplugin.patch"
+	use pinplugin && eapply "${FILESDIR}/${P}_pinplugin.patch"
 	use ttxtsubs && eapply "${DISTDIR}/${P}_ttxtsubs_v2.patch"
 	use menuorg && eapply "${DISTDIR}/vdr-menuorg-2.3.x.diff"
 	use mainmenuhooks && eapply "${FILESDIR}/${PN}-2.4.1_mainmenuhook-1.0.1.patch"
