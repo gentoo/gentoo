@@ -25,7 +25,7 @@ RESTRICT="!test? ( test )"
 # Bug 865351: tests requires <dev-cpp/catch-3
 BDEPEND="
 	test? (
-		<dev-cpp/catch-3
+		=dev-cpp/catch-2*
 		dev-lang/go
 	)
 "
