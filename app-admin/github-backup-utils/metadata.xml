@@ -6,6 +6,7 @@
     <name>William Hubbs</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">github/backup-utils</remote-id>
+  <remote-id type="github">github/backup-utils</remote-id>
+  <bugs-to>https://support.github.com</bugs-to>
   </upstream>
 </pkgmetadata>
