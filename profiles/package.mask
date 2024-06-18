@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jakov Smolić <jsmolic@gentoo.org> (2024-06-18)
+# Outdated by several versions, very difficult to package due to the
+# complicated Cargo dependency management.
+# Removal on 2024-07-18. Bug #922378.
+app-emulation/cloud-hypervisor
+
 # Michał Górny <mgorny@gentoo.org> (2024-06-17)
 # A compatibility shim for ancient versions of flake8.  Upstream project
 # is gone.  No revdeps.
