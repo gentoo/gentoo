@@ -21,6 +21,7 @@
 	<use>
 		<flag name="acl">Installs acl support</flag>
 		<flag name="cron">Installs cron file</flag>
+		<flag name="cronhourly">Installs cron file for hourly run rather than daily</flag>
 		<flag name="selinux">Installs Security Enhanced Linux support</flag>
 	</use>
 	<upstream>
