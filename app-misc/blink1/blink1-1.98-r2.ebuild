@@ -41,6 +41,8 @@ RDEPEND="dev-libs/hidapi
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}/${P}-ldflags.patch" )
+
 pkg_setup() {
 	## check for USB HID kernel support
 	linux-info_pkg_setup
