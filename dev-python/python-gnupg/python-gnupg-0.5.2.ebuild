@@ -21,9 +21,9 @@ SRC_URI="
 	)
 "
 
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv sparc x86"
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv sparc x86"
 
 # Need gnupg[nls] for avoiding decode errors and possible hangs
 # w/ e.g. sec-keys/openpgp-keys-gentoo-developers but other pkgs too.
