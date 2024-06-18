@@ -7,6 +7,8 @@ inherit autotools flag-o-matic toolchain-funcs
 
 MY_PN=${PN/-gpl}
 MY_P="${MY_PN}-${PV/_}"
+PVM=$(ver_cut 1-2)
+PVM_S=$(ver_rs 1-2 "")
 
 # Use https://gitweb.gentoo.org/proj/codec/ghostscript-gpl-patches.git/ for patches
 # See 'index' branch for README
@@ -14,7 +16,7 @@ MY_PATCHSET="ghostscript-gpl-10.0-patches.tar.xz"
 
 DESCRIPTION="Interpreter for the PostScript language and PDF"
 HOMEPAGE="https://ghostscript.com/ https://git.ghostscript.com/?p=ghostpdl.git;a=summary"
-SRC_URI="https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/${PV}/${MY_P}.tar.xz"
+SRC_URI="https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs${PVM_S}/${MY_P}.tar.xz"
 if [[ -n "${MY_PATCHSET}" ]] ; then
 	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${MY_PATCHSET}"
 fi
