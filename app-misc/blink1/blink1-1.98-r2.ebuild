@@ -30,6 +30,8 @@ SLOT="0"
 LICENSE="CC-BY-SA-3.0"
 IUSE="doc examples +tool mini-tool server"
 
+REQUIRED_USE="|| ( tool mini-tool server )"
+
 RDEPEND="dev-libs/hidapi
 	virtual/libusb:1
 	virtual/libudev
@@ -43,12 +45,6 @@ pkg_setup() {
 	linux-info_pkg_setup
 	CONFIG_CHECK="USB_HID"
 	check_extra_config
-	## check for acceptable USE flag settings
-	if ! ( use tool || use mini-tool || use server ); then
-		eerror "At least one of the following USE flags must be enabled:"
-		eerror "tool, mini-tool, server"
-		die "unacceptable USE flag settings"
-	fi
 }
 
 src_compile() {
