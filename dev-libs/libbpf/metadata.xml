@@ -4,10 +4,6 @@
   <maintainer type="person">
     <email>chutzpah@gentoo.org</email>
   </maintainer>
-  <maintainer type="person">
-    <email>jsmolic@gentoo.org</email>
-    <name>Jakov Smolić</name>
-  </maintainer>
   <upstream>
     <remote-id type="github">libbpf/libbpf</remote-id>
   </upstream>
