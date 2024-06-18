@@ -25,9 +25,9 @@ SRC_URI="https://github.com/todbot/blink1/archive/v${MY_PV}.tar.gz -> ${MY_P}.ta
 
 S="${WORKDIR}/${MY_P}"
 
-KEYWORDS="~amd64 ~x86"
-SLOT="0"
 LICENSE="CC-BY-SA-3.0"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc examples +tool mini-tool server"
 
 REQUIRED_USE="|| ( tool mini-tool server )"
