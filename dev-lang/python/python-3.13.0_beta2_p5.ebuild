@@ -247,6 +247,9 @@ src_configure() {
 		# failures
 		-x test_concurrent_futures
 		-x test_gdb
+		# test_asyncio_repl_is_ok is flaky
+		# https://github.com/python/cpython/issues/119909
+		-x test_repl
 	)
 
 	# Arch-specific skips.  See #931888 for a collection of these.
