@@ -178,11 +178,11 @@ multilib_src_compile() {
 multilib_src_install() {
 	default
 
-	# bug #934370 and bug #450436
-	if ! tc-is-static-only && [[ ! -f "${ED}/usr/$(get_libdir)/liblzma.so" ]] ; then
-		eerror "Sanity check for liblzma.so failed."
+	# bug #934370 and bug #450436 (and bug #934515)
+	if ! tc-is-static-only && [[ ! -f "${ED}/usr/$(get_libdir)/liblzma$(get_libname)" ]] ; then
+		eerror "Sanity check for liblzma$(get_libname) failed."
 		eerror "Shared library wasn't built, possible libtool bug"
-		[[ -z ${I_KNOW_WHAT_I_AM_DOING} ]] && die "liblzma.so not found in build, aborting"
+		[[ -z ${I_KNOW_WHAT_I_AM_DOING} ]] && die "liblzma$(get_libname) not found in build, aborting"
 	fi
 }
 
