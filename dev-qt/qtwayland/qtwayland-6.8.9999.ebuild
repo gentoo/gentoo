@@ -39,6 +39,12 @@ CMAKE_SKIP_TESTS=(
 	# needs a compositor/opengl, skip the extra trouble
 	tst_surface
 	tst_xdgdecorationv1
+	# known failing with wayland-1.23.0 (or at least with offscreen), not
+	# believed to result in critical runtime issues so skip until this is
+	# looked at upstream (https://bugreports.qt.io/browse/QTBUG-126379)
+	tst_client
+	tst_compositor
+	tst_scaling
 )
 
 src_configure() {
