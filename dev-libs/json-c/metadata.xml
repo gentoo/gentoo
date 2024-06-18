@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>jsmolic@gentoo.org</email>
-    <name>Jakov Smolić</name>
-  </maintainer>
-  <maintainer type="person" proxied="yes">
-    <email>luka.perkov@sartura.hr</email>
-    <name>Luka Perkov</name>
-  </maintainer>
-  <maintainer type="project" proxied="proxy">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-  </maintainer>
+  <!-- maintainer-needed -->
   <longdescription lang="en">
     JSON-C is a JSON implementation written in C. It implements a
     reference counting object model that allows you to easily
