@@ -125,7 +125,7 @@ src_configure() {
 		-DBUILD_DEVELOPER_DOCS=$(usex doc)
 		-DWITH_TESTS=$(usex test)
 
-		# TODO?: try to unbundle with =no when syntax-highlighting:6 exists
+		# TODO: try unbundling now that slot 6 exists+unmasked (bug #934462)
 		-DBUILD_LIBRARY_KSYNTAXHIGHLIGHTING=yes
 
 		# Much can be optional, but do not want to flood users (or maintainers)
