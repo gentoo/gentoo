@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
 PYPI_PN=${PN/-/.}
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 
 inherit distutils-r1 pypi
 
@@ -28,6 +28,11 @@ RDEPEND="
 distutils_enable_tests unittest
 
 src_prepare() {
+	local PATCHES=(
+		# https://github.com/zopefoundation/zope.exceptions/issues/34
+		"${FILESDIR}/${P}-py313.patch"
+	)
+
 	# strip rdep specific to namespaces
 	sed -i -e "/'setuptools'/d" setup.py || die
 	distutils-r1_src_prepare
