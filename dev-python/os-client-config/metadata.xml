@@ -11,6 +11,7 @@
   </maintainer>
   <stabilize-allarches/>
   <upstream>
+    <remote-id type="github">openstack/os-client-config</remote-id>
     <remote-id type="pypi">os-client-config</remote-id>
   </upstream>
 </pkgmetadata>
