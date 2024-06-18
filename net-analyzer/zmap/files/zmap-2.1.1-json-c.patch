@@ -1,0 +1,31 @@
+From 5473b6a907ff47e813e8ac3509a0f63d1253023b Mon Sep 17 00:00:00 2001
+From: Martin Milata <martin@martinmilata.cz>
+Date: Wed, 1 Jul 2020 16:47:18 +0200
+Subject: [PATCH] Fix build against json-c-0.14 (#609)
+
+The new pkgconfig file contains two include directories:
+
+  Cflags: -I${includedir} -I${includedir}/json-c
+
+Apparently pkg_check_modules returns them as a semicolon-separated
+string ("CMake list"), which causes the build to fail when appended
+directly to CMAKE_C_FLAGS.
+
+Origin: backport, https://github.com/zmap/zmap/commit/5473b6a907ff47e813e8ac3509a0f63d1253023b
+Applied-Upstream: 3.0
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+Index: zmap-2.1.1/CMakeLists.txt
+===================================================================
+--- zmap-2.1.1.orig/CMakeLists.txt	2024-01-23 15:29:55.436869754 -0500
++++ zmap-2.1.1/CMakeLists.txt	2024-01-23 15:30:32.505023070 -0500
+@@ -72,6 +72,7 @@
+     endif()
+ 
+     add_definitions("-DJSON")
++    string(REPLACE ";" " " JSON_CFLAGS "${JSON_CFLAGS}")
+     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${JSON_CFLAGS}")
+ endif()
+ 

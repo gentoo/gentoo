@@ -33,6 +33,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.1-always-install-config.patch
+	"${FILESDIR}"/${PN}-2.1.1-json-c.patch
 )
 
 FILECAPS=( cap_net_raw=ep usr/sbin/zmap )
