@@ -92,13 +92,13 @@ src_configure() {
 		$(use_with libevent)
 		$(use_with ssl)
 
-		--with-dbfile="${EPREFIX}/${NSD_DBDIR}/nsd.db"
+		--with-dbfile="${EPREFIX}${NSD_DBDIR}/nsd.db"
 		--with-logfile="${EPREFIX}/var/log/nsd.log"
 		--with-pidfile="${EPREFIX}/run/nsd.pid"
-		--with-xfrdfile="${EPREFIX}/${NSD_DBDIR}/xfrd.state"
-		--with-xfrdir="${EPREFIX}/${NSD_DBDIR}"
-		--with-zonelistfile="${EPREFIX}/${NSD_DBDIR}/zone.list"
-		--with-zonesdir="${EPREFIX}/${NSD_ZNDIR}"
+		--with-xfrdfile="${EPREFIX}${NSD_DBDIR}/xfrd.state"
+		--with-xfrdir="${EPREFIX}${NSD_DBDIR}"
+		--with-zonelistfile="${EPREFIX}${NSD_DBDIR}/zone.list"
+		--with-zonesdir="${EPREFIX}${NSD_ZNDIR}"
 	)
 
 	# This configure switch is only available on a glibc-based system.
