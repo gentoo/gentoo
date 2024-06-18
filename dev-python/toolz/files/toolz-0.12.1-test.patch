@@ -1,0 +1,88 @@
+From b79a954ca5fa6801c3a3dc6b39fa523be33884a8 Mon Sep 17 00:00:00 2001
+From: Adam Williamson <awilliam@redhat.com>
+Date: Fri, 14 Jun 2024 13:43:24 -0700
+Subject: [PATCH 1/2] test_excepts: fudge changed indentation in Python 3.13
+
+Signed-off-by: Adam Williamson <awilliam@redhat.com>
+---
+ toolz/tests/test_functoolz.py | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/toolz/tests/test_functoolz.py b/toolz/tests/test_functoolz.py
+index 555cf48d..a28c2a77 100644
+--- a/toolz/tests/test_functoolz.py
++++ b/toolz/tests/test_functoolz.py
+@@ -738,10 +738,13 @@ def f(a, b):
+ def test_excepts():
+     # These are descriptors, make sure this works correctly.
+     assert excepts.__name__ == 'excepts'
++    # in Python < 3.13 the second line is indented, in 3.13+
++    # it is not, strip all lines to fudge it
++    testlines = "\n".join((line.strip() for line in excepts.__doc__.splitlines()))
+     assert (
+         'A wrapper around a function to catch exceptions and\n'
+-        '    dispatch to a handler.\n'
+-    ) in excepts.__doc__
++        'dispatch to a handler.\n'
++    ) in testlines
+ 
+     def idx(a):
+         """idx docstring
+
+From 832e81d28882d1235c704de95e1d075ee61976c1 Mon Sep 17 00:00:00 2001
+From: Adam Williamson <awilliam@redhat.com>
+Date: Fri, 14 Jun 2024 16:03:30 -0700
+Subject: [PATCH 2/2] test_inspect_wrapped_property: handle fixed wrapper
+ inspection
+
+Python upstream recently fixed the behavior of inspect with
+wrappers: https://github.com/python/cpython/issues/112006 . The
+assertion here relies on the broken behavior, we only get None
+if `inspect(Wrapped)` fails and raises `ValueError`. Now it
+works, we actually get the correct answer, 1. This changes it so
+we assert the correct thing depending on the Python version (the
+fix was backported to 3.11.9 and 3.12.3, so the check has to be a
+bit complicated).
+
+Signed-off-by: Adam Williamson <awilliam@redhat.com>
+---
+ toolz/tests/test_inspect_args.py | 21 +++++++++++++++++++--
+ 1 file changed, 19 insertions(+), 2 deletions(-)
+
+diff --git a/toolz/tests/test_inspect_args.py b/toolz/tests/test_inspect_args.py
+index 93408eb5..f26dbc64 100644
+--- a/toolz/tests/test_inspect_args.py
++++ b/toolz/tests/test_inspect_args.py
+@@ -2,6 +2,7 @@
+ import inspect
+ import itertools
+ import operator
++import sys
+ import toolz
+ from toolz.functoolz import (curry, is_valid_args, is_partial_args, is_arity,
+                              num_required_args, has_varargs, has_keywords)
+@@ -482,6 +483,22 @@ def __wrapped__(self):
+     wrapped = Wrapped(func)
+     assert inspect.signature(func) == inspect.signature(wrapped)
+ 
+-    assert num_required_args(Wrapped) is None
+-    _sigs.signatures[Wrapped] = (_sigs.expand_sig((0, lambda func: None)),)
++    # inspect.signature did not used to work properly on wrappers,
++    # but it was fixed in Python 3.11.9, Python 3.12.3 and Python
++    # 3.13+
++    inspectbroken = True
++    if sys.version_info.major > 3:
++        inspectbroken = False
++    if sys.version_info.major == 3:
++        if sys.version_info.minor == 11 and sys.version_info.micro > 8:
++            inspectbroken = False
++        if sys.version_info.minor == 12 and sys.version_info.micro > 2:
++            inspectbroken = False
++        if sys.version_info.minor > 12:
++            inspectbroken = False
++
++    if inspectbroken:
++        assert num_required_args(Wrapped) is None
++        _sigs.signatures[Wrapped] = (_sigs.expand_sig((0, lambda func: None)),)
++
+     assert num_required_args(Wrapped) == 1
