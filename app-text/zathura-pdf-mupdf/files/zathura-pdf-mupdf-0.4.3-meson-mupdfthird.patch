@@ -1,0 +1,42 @@
+# The dependencies mupdfthird, leptonica and tesseract seem to not be actually used
+# anymore, hence exclude them.
+# Upstream issue: https://github.com/pwmt/zathura-pdf-mupdf/issues/73
+--- a/meson.build
++++ b/meson.build
+@@ -23,7 +23,6 @@ girara = dependency('girara-gtk3')
+ glib = dependency('glib-2.0')
+ cairo = dependency('cairo')
+ mupdf = dependency('mupdf', required: false, version: '>=@0@.@1@'.format(mupdf_required_version_major, mupdf_required_version_minor))
+-mupdfthird = cc.find_library('mupdf-third')
+ 
+ build_dependencies = [
+   zathura,
+@@ -46,17 +45,15 @@ if not mupdf.found()
+     error('mupdf @0@.@1@ or newer is required'.format(mupdf_required_version_major, mupdf_required_version_minor))
+   endif
+ 
+-  build_dependencies += [mupdf, mupdfthird]
++  build_dependencies += [mupdf]
+ else
+   # build from Debian's libmupdf-dev
+-  build_dependencies += [mupdf, mupdfthird]
++  build_dependencies += [mupdf]
+ 
+   libjpeg = dependency('libjpeg')
+   libjbig2dec = cc.find_library('jbig2dec')
+   libopenjp2 = dependency('libopenjp2')
+   gumbo = dependency('gumbo')
+-  tesseract = dependency('tesseract')
+-  leptonica = dependency('lept')
+   mujs = dependency('mujs')
+ 
+   build_dependencies += [
+@@ -64,8 +61,6 @@ else
+     libjbig2dec,
+     libopenjp2,
+     gumbo,
+-    tesseract,
+-    leptonica,
+     mujs
+   ]
+ endif
