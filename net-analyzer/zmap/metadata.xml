@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>jsmolic@gentoo.org</email>
-    <name>Jakov Smolić</name>
-  </maintainer>
+  <!-- maintainer-needed -->
   <longdescription>
 ZMap is an open-source network scanner that enables researchers to easily 
 perform Internet-wide network studies. With a single machine and a well 
