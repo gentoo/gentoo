@@ -33,6 +33,7 @@ IUSE="doc examples +tool mini-tool server"
 REQUIRED_USE="|| ( tool mini-tool server )"
 
 RDEPEND="dev-libs/hidapi
+	mini-tool? ( virtual/libusb:0 )
 	virtual/libusb:1
 	virtual/libudev
 	sys-apps/attr
