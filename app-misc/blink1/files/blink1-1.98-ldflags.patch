@@ -1,0 +1,10 @@
+--- a/commandline/Makefile
++++ b/commandline/Makefile
+@@ -229,6 +229,7 @@
+ 
+ # static doesn't work on Ubuntu 13+
+ #EXEFLAGS = -static
++EXEFLAGS = $(LDFLAGS)
+ LIBFLAGS = -shared -o $(LIBTARGET) $(LIBS)
+ EXE=
+ 
