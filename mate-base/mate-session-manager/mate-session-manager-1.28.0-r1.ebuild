@@ -55,6 +55,7 @@ DEPEND="${COMMON_DEPEND}
 	x11-libs/xtrans
 "
 BDEPEND="
+	dev-build/autoconf-archive
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
