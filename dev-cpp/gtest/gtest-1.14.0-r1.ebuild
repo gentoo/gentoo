@@ -51,7 +51,12 @@ multilib_src_configure() {
 		-Dgmock_build_tests=$(usex test)
 		-Dgtest_build_tests=$(usex test)
 	)
-	use test && mycmakeargs+=( -DPython3_EXECUTABLE="${PYTHON}" )
+	if use test; then
+		if use x86 || use x86-linux; then
+			append-cxxflags -ffloat-store # bug #905007
+		fi
+		mycmakeargs+=( -DPython3_EXECUTABLE="${PYTHON}" )
+	fi
 
 	cmake_src_configure
 }
