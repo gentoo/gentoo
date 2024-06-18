@@ -10,11 +10,11 @@ inherit distutils-r1
 
 DESCRIPTION="Python library that makes exceptions handling and inspection easier"
 HOMEPAGE="
-	https://github.com/sdispater/crashtest/
+	https://github.com/python-poetry/crashtest/
 	https://pypi.org/project/crashtest/
 "
 SRC_URI="
-	https://github.com/sdispater/crashtest/archive/${PV}.tar.gz
+	https://github.com/python-poetry/crashtest/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

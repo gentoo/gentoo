@@ -7,7 +7,7 @@
   </maintainer>
   <stabilize-allarches/>
   <upstream>
-    <remote-id type="github">sdispater/crashtest</remote-id>
+    <remote-id type="github">python-poetry/crashtest</remote-id>
     <remote-id type="pypi">crashtest</remote-id>
   </upstream>
 </pkgmetadata>
