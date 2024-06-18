@@ -15,7 +15,7 @@ SRC_URI="https://archive.chirpmyradio.com/${PN}_next/next-${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+gui radioreference"
 
 RDEPEND="$(python_gen_cond_dep '
