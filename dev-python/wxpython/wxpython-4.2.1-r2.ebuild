@@ -59,6 +59,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.2.0-cython-3.patch"
 	"${FILESDIR}/${PN}-4.2.1-integer-division-for-randint.patch"
 	"${FILESDIR}/${PN}-4.2.1-x86-time.patch"
+	"${FILESDIR}/${PN}-4.2.1-doxygen-1.9.7.patch"
 )
 
 python_prepare_all() {
