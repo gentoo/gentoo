@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>jsmolic@gentoo.org</email>
-		<name>Jakov Smolić</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="caps">Use <pkg>sys-libs/libcap</pkg> to enable unprivileged run support</flag>
 		<flag name="llvm">Use <pkg>sys-devel/llvm</pkg></flag>
