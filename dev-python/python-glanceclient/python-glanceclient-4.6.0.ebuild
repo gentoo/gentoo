@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -40,11 +40,17 @@ BDEPEND="
 		dev-python/tempest[${PYTHON_USEDEP}]
 		dev-python/testscenarios[${PYTHON_USEDEP}]
 		dev-python/testtools[${PYTHON_USEDEP}]
-		<dev-python/urllib3-2[${PYTHON_USEDEP}]
 	)
 "
 
 distutils_enable_tests unittest
+
+PATCHES=(
+	# combined patch for urllib3-2 and py3.12 test failures
+	# https://bugs.launchpad.net/python-glanceclient/+bug/2069684
+	# https://bugs.launchpad.net/python-glanceclient/+bug/2069682
+	"${FILESDIR}/${P}-test.patch"
+)
 
 python_test() {
 	# functional tests require cloud instance access
