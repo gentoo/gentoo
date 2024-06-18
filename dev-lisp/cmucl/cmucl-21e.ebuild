@@ -17,7 +17,7 @@ S="${WORKDIR}"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="-* ~x86"
+KEYWORDS="-* x86"
 IUSE="doc gui source"
 
 CDEPEND=">=dev-lisp/asdf-2.33-r3:=
