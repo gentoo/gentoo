@@ -44,7 +44,10 @@ DEPEND="
 	${RDEPEND}
 "
 BDEPEND="
-	doc? ( app-text/doxygen )
+	doc? (
+		app-text/doxygen[dot]
+		app-text/texlive
+	)
 "
 
 DOCS="AUTHORS ChangeLog README NEWS doc/*.txt doc/README"
