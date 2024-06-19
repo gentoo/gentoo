@@ -15,7 +15,7 @@ MY_PV=${MY_PV/_/-}
 MY_P=${PN}-${MY_PV}
 MY_PATCHES=()
 
-# Determine the patchlevel. See ftp://ftp.gnu.org/gnu/bash/bash-5.3-patches/.
+# Determine the patchlevel. See ftp://ftp.gnu.org/gnu/bash/bash-5.2-patches/.
 case ${PV} in
 	*_p*)
 		PLEVEL=${PV##*_p}
@@ -30,7 +30,7 @@ esac
 
 # The version of readline this bash normally ships with. Note that we only use
 # the bundled copy of readline for pre-releases.
-READLINE_VER="8.3_alpha"
+READLINE_VER="8.2_p1"
 
 DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html https://git.savannah.gnu.org/cgit/bash.git"
@@ -93,6 +93,11 @@ PATCHES=(
 
 	# Patches to or from Chet, posted to the bug-bash mailing list.
 	"${FILESDIR}/${PN}-5.0-syslog-history-extern.patch"
+	"${FILESDIR}/${PN}-5.2_p15-random-ub.patch"
+	"${FILESDIR}/${PN}-5.2_p15-configure-clang16.patch"
+	"${FILESDIR}/${PN}-5.2_p21-wpointer-to-int.patch"
+	"${FILESDIR}/${PN}-5.2_p21-configure-strtold.patch"
+	"${FILESDIR}/${PN}-5.2_p26-memory-leaks.patch"
 )
 
 pkg_setup() {
@@ -168,10 +173,6 @@ src_configure() {
 	# configure warns on use of non-Bison but doesn't abort. The result
 	# may misbehave at runtime.
 	unset -v YACC
-
-	# wcsnwidth(), substring() issues with -Wlto-type-mismatch, reported
-	# upstream to Chet by email.
-	filter-lto
 
 	myconf=(
 		--disable-profiling
@@ -311,6 +312,9 @@ src_install() {
 	insinto /etc/bash/bashrc.d
 	my_prefixify DIR_COLORS "${FILESDIR}"/bashrc.d/10-gentoo-color.bash | newins - 10-gentoo-color.bash
 	doins "${FILESDIR}"/bashrc.d/10-gentoo-title.bash
+	if [[ ! ${EPREFIX} ]]; then
+		doins "${FILESDIR}"/bashrc.d/15-gentoo-bashrc-check.bash
+	fi
 
 	insinto /etc/skel
 	for f in bash{_logout,_profile,rc}; do

@@ -5,16 +5,15 @@ if [[ $- != *i* ]]; then
 	return
 fi
 
-# A convenient function to determine whether bash has readline support.
-genfun_has_readline() [[ $(shopt -p direxpand 2>/dev/null) ]]
+# Disable errexit in case the user enabled it then chose to re-source this file.
+shopt -u -o errexit
 
-# The following two shell options require for bash to have readline support.
-genfun_has_readline &&
+# Disable completion when the input buffer is empty. Mute STDERR because this
+# option is only present in the case that bash was built with readline support.
+shopt -s no_empty_cmd_completion 2>/dev/null &&
 
-# Disable completion when the input buffer is empty.
-shopt -s no_empty_cmd_completion &&
-
-# Append to HISTFILE rather than overwrite upon exiting, per bug #139609.
+# Append to HISTFILE rather than overwrite upon exiting, per bug #139609. This
+# option also requires for bash to have been built with readline support.
 shopt -s histappend
 
 # Initialise PROMPT_COMMAND as an array, which is permitted as of bash 5.1.
@@ -28,5 +27,3 @@ for _ in /etc/bash/bashrc.d/*; do
 		source "$_"
 	fi
 done
-
-unset -f genfun_has_readline

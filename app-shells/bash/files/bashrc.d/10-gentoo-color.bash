@@ -34,7 +34,8 @@ elif (( gentoo_color == 16777216 )); then
 	export COLORTERM=truecolor
 fi
 
-if (( gentoo_color <= 0 )) || ! genfun_has_readline; then
+# For direxpand to be missing indicates that bash is lacking readline support.
+if (( gentoo_color <= 0 )) || [[ ! $(shopt -p direxpand 2>/dev/null) ]]; then
 	# Define a prompt without color.
 	PS1='\u@\h \w \$ '
 elif (( EUID == 0 )); then
