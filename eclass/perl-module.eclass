@@ -63,7 +63,7 @@ esac
 # @CODE
 PERL_USEDEP="perl_features_debug=,perl_features_ithreads=,perl_features_quadmath="
 
-GENTOO_PERL_DEPSTRING=" || ( >=dev-lang/perl-5.38.2-r3[${PERL_USEDEP}] <dev-lang/perl-5.38.2-r3 )"
+GENTOO_PERL_DEPSTRING=">=dev-lang/perl-5.38.2-r3[${PERL_USEDEP}]"
 GENTOO_PERL_USESTRING="perl_features_debug perl_features_ithreads perl_features_quadmath"
 
 case ${EAPI} in
