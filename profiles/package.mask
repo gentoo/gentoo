@@ -127,12 +127,6 @@ sci-chemistry/procheck
 # Removal on 2024-07-14.  Bugs #934227, #898840.
 www-misc/log-toolkit
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-13)
-# EAPI=6, maintainer-needed, waiting for a bump, various failures
-# with modern C.
-# Removal on 2024-07-13.  Bugs #934200, #711348, #726634, #831750.
-app-misc/blink1
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-12)
 # EAPI=6, maintainer needed, no reverse dependencies. Not maintained in
 # gentoo for a long time.
