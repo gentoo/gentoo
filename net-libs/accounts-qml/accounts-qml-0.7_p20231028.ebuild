@@ -109,7 +109,7 @@ src_compile() {
 	if use doc; then
 		local qtanybindir
 		if has_version "dev-qt/qttools:6[qdoc]"; then
-			qtanybindir="$(qt6_get_libdir)"
+			qtanybindir="$(qt6_get_libdir)/qt6/bin/"
 		elif has_version "dev-qt/qdoc:5"; then
 			qtanybindir="$(qt5_get_bindir)"
 		else
@@ -126,6 +126,6 @@ src_install() {
 
 	local QT_QPA_PLATFORM=offscreen
 	multibuild_foreach_variant my_src_install
-	use doc && local HTML_DOCS=( doc/html )
+	use doc && local HTML_DOCS=( doc )
 	einstalldocs
 }
