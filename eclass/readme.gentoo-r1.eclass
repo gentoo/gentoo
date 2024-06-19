@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: readme.gentoo-r1.eclass
@@ -34,8 +34,8 @@ esac
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If non-empty, DOC_CONTENTS information will be strictly respected,
-# not getting it automatically formatted by fmt. If empty, it will
-# rely on fmt for formatting and 'echo -e' options to tweak lines a bit.
+# not getting it automatically formatted by fold. If empty, it will
+# rely on fold for formatting and 'echo -e' options to tweak lines a bit.
 
 # @ECLASS_VARIABLE: FORCE_PRINT_ELOG
 # @DEFAULT_UNSET
