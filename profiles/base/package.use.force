@@ -13,6 +13,7 @@ kde-plasma/kwin caps
 
 # James Le Cuirot <chewi@gentoo.org> (2024-06-02)
 # Requires FFmpeg 7.0, which we don't have yet, so force Chromium fork.
+>=dev-libs/nwjs-0.88.0 ffmpeg-chromium
 >=www-client/vivaldi-6.8.3371.4 ffmpeg-chromium
 >=www-client/vivaldi-snapshot-6.8.3371.4 ffmpeg-chromium
 
