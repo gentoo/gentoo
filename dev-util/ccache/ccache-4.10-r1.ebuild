@@ -34,7 +34,7 @@ fi
 LICENSE="GPL-3+ || ( CC0-1.0 Apache-2.0 ) Boost-1.0 CC0-1.0"
 LICENSE+=" elibc_mingw? ( LGPL-3 ISC PSF-2 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 # Enable 'static-c++' by default to make 'gcc' ebuild Just Work: bug #761220
 IUSE="${MY_DOCS_USEFLAG} redis +static-c++ test"
 RESTRICT="!test? ( test )"
