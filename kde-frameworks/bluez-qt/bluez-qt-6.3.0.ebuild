@@ -4,7 +4,7 @@
 EAPI=8
 
 QTMIN=6.6.2
-inherit ecm frameworks.kde.org udev
+inherit ecm frameworks.kde.org
 
 DESCRIPTION="Qt wrapper for Bluez 5 DBus API"
 
@@ -18,14 +18,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-src_configure() {
-	local mycmakeargs=(
-		-DUDEV_RULES_INSTALL_DIR="$(get_udevdir)/rules.d"
-	)
-
-	ecm_src_configure
-}
-
 src_test() {
 	local CMAKE_SKIP_TESTS=(
 		# bug 668196, hangs
@@ -33,14 +25,4 @@ src_test() {
 	)
 	# parallel tests fail, bug 609248
 	ecm_src_test -j1
-}
-
-pkg_postinst() {
-	ecm_pkg_postinst
-	udev_reload
-}
-
-pkg_postrm() {
-	ecm_pkg_postrm
-	udev_reload
 }
