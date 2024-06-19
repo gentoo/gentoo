@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License, v2
 
+# Sam James <sam@gentoo.org> (2024-06-16)
+# Avoid pulling in sys-libs/compiler-rt-sanitizers which fails to build
+# See bug #928936.
+sys-devel/clang-runtime sanitize
+
 # Ian Jordan <immoloism@gmail.com> (2024-05-20)
 # Does not compile with musl-1.2.4+
 sys-devel/gcc sanitize
