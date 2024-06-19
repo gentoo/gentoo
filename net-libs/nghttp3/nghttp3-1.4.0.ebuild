@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/ngtcp2/nghttp3/releases/download/v${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~riscv ~x86"
 fi
 
 DESCRIPTION="HTTP/3 library written in C"
