@@ -402,10 +402,6 @@ net-p2p/gnut
 # #741444, #831092, #862717.
 sci-libs/h5part
 
-# Michał Górny <mgorny@gentoo.org> (2024-06-06)
-# Causes crashes in pure Python modules, e.g. dev-python/freezegun.
-=dev-lang/python-3.13.0_beta2
-
 # Maciej Barć <xgqt@gentoo.org> (2024-06-05)
 # Old and experimental Scheme compiler.
 # Bugs: 870472 and 906863
