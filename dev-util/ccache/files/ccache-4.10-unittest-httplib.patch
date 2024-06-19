@@ -1,12 +1,26 @@
-TODO: send upstream (in Gentoo, we don't rename it to cpp-httplib, so need to check for that as a library too)
+https://github.com/ccache/ccache/pull/1465
+https://github.com/ccache/ccache/commit/a641e5ea3087752af71e60690dcf3ed3c1dbc56a
+
+From a641e5ea3087752af71e60690dcf3ed3c1dbc56a Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 8 Jun 2024 15:11:48 +0100
+Subject: [PATCH] build: Find CppHttplib named libhttplib.so as well (#1465)
+
+On Gentoo, the library name is 'httplib', not 'cpp-httplib'. Search
+for that first (as it appears to be "more vanilla"), then fall back
+to 'cpp-httplib'.
 --- a/cmake/FindCppHttplib.cmake
 +++ b/cmake/FindCppHttplib.cmake
-@@ -12,7 +12,7 @@ else()
+@@ -12,7 +12,11 @@ else()
      if(NOT "${CMAKE_MATCH_0}" STREQUAL "" AND "${_cpphttplib_version_string}" VERSION_GREATER_EQUAL "${CppHttplib_FIND_VERSION}")
        # Some dists like Fedora package cpp-httplib as a single header while some
        # dists like Debian package it as a traditional library.
 -      find_library(CPPHTTPLIB_LIBRARY cpp-httplib)
 +      find_library(CPPHTTPLIB_LIBRARY httplib)
++      if(NOT CPPHTTPLIB_LIBRARY)
++        find_library(CPPHTTPLIB_LIBRARY cpp-httplib)
++      endif()
++
        if(CPPHTTPLIB_LIBRARY)
          message(STATUS "Using system CppHttplib (${CPPHTTPLIB_LIBRARY})")
          add_library(dep_cpphttplib UNKNOWN IMPORTED)
