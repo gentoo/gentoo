@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,15 +7,13 @@ MY_PN="UglifyJS"
 DESCRIPTION="JavaScript parser, minifier, compressor and beautifier toolkit"
 HOMEPAGE="https://lisperator.net/uglifyjs/"
 SRC_URI="https://github.com/mishoo/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-
+S="${WORKDIR}/${MY_PN}-${PV}"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 BDEPEND="net-libs/nodejs[npm]"
 RDEPEND="net-libs/nodejs"
-
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 NPM_FLAGS=(
 	--audit false
