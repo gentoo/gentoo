@@ -1,56 +1,43 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit linux-info
+inherit linux-info toolchain-funcs
 
 DESCRIPTION="blink(1) USB RGB LED status light control suite"
 HOMEPAGE="https://blink1.thingm.com/"
-
-## github release tarball
-MY_PV=${PV/_rc/rc}
-MY_P="${PN}-${MY_PV}"
-SRC_URI="https://github.com/todbot/blink1/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
-
-## selfmade tarball
-#MY_PVR=${PVR/_rc/rc}
-#MY_P="${PN}-${MY_PVR}"
-#SRC_URI="https://dev.gentoo.org/~wschlich/src/${CATEGORY}/${PN}/${MY_P}.tar.gz"
-
-## github commit tarball
-#MY_GIT_COMMIT="1e9c012bd79cb99a53a22980fbaa6f97801e7c03"
-#MY_P="todbot-${PN}-${MY_GIT_COMMIT:0:7}"
-#SRC_URI="https://github.com/todbot/${PN}/tarball/${MY_GIT_COMMIT} -> ${PF}.tar.gz"
-
-S="${WORKDIR}/${MY_P}"
+SRC_URI="https://github.com/todbot/blink1/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S=${WORKDIR}/${P}
 
 LICENSE="CC-BY-SA-3.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc examples +tool mini-tool server"
-
 REQUIRED_USE="|| ( tool mini-tool server )"
 
-RDEPEND="dev-libs/hidapi
-	mini-tool? ( virtual/libusb:0 )
-	virtual/libusb:1
-	virtual/libudev
+RDEPEND="
+	dev-libs/hidapi
 	sys-apps/attr
-	sys-libs/libcap"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	sys-libs/libcap
+	virtual/libudev
+	virtual/libusb:1
+	mini-tool? ( virtual/libusb:0 )
+"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/${P}-ldflags.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-ldflags.patch"
+)
 
 pkg_setup() {
-	## check for USB HID kernel support
+	local CONFIG_CHECK="USB_HID"
 	linux-info_pkg_setup
-	CONFIG_CHECK="USB_HID"
-	check_extra_config
 }
 
 src_compile() {
+	tc-export CC
 	if use tool; then
 		pushd commandline &>/dev/null
 		# USBLIB_TYPE=HIDAPI
