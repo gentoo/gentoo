@@ -6,7 +6,7 @@ EAPI=8
 # Bump with app-emulation/guestfs-tools and app-emulation/libguestfs-appliance (if any new release there)
 
 LUA_COMPAT=( lua5-1 )
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit autotools flag-o-matic linux-info lua-single perl-functions python-single-r1 strip-linguas toolchain-funcs
 
