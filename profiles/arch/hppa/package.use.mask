@@ -4,6 +4,12 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sam James <sam@gentoo.org> (2024-06-19)
+# The systemd implementation of installkernel doesn't currently support
+# updating the 'initramfs.img' and 'vmlinuz' symlinks that palo needs,
+# and palo is the only bootloader for HPPA.
+sys-kernel/installkernel systemd
+
 # Holger Hoffstätte <holger@applied-asynchrony.com> (2024-05-19)
 # media-libs/jasper not yet keyworded here: https://bugs.gentoo.org/921559
 media-gfx/graphicsmagick jpeg2k
