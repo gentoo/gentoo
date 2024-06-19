@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>beatussum@protonmail.com</email>
+		<name>Mattéo Rossillol‑‑Laruelle</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<stabilize-allarches/>
 	<use>
 		<flag name="standard">Install standard folder version</flag>
@@ -19,7 +26,6 @@
 		<flag name="ubuntu">Install ubuntu folder version</flag>
 		<flag name="dracula">Install dracula folder version</flag>
 		<flag name="nord">Install nord folder version</flag>
-		<flag name="kde">Install dynamic color version for KDE plasma (folder color follows the colorscheme)</flag>
 		<flag name="hardlink">Hardlink duplicate icons to greatly reduce installation size</flag>
 	</use>
 	<use lang="fr">
@@ -38,7 +44,6 @@
 		<flag name="ubuntu">Installer la variante de couleur des dossiers spécifique à Ubuntu</flag>
 		<flag name="dracula">Installer la variante de couleur des dossiers spécifique à Dracula</flag>
 		<flag name="nord">Installer la variante de couleur des dossiers « nord »</flag>
-		<flag name="kde">Installer la variante de couleur dynamique pour KDE Plasma (la couleur des dossiers suit le thème de couleur)</flag>
 		<flag name="hardlink">Créer des liens durs pour les icônes doublons afin de grandement réduire la taille à l'installation</flag>
 	</use>
 	<upstream>
