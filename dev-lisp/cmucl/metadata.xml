@@ -33,6 +33,5 @@ ANSI Common Lisp standard. Here is a summary of its main features:
 <flag name="doc">Installs package documentation</flag>
 <flag name="gui">Build CLX, CLM, or Hemlock</flag>
 <flag name="source">Include source code for CMUCL in installation</flag>
-<flag name="X">Build CLX, CLM, or Hemlock</flag>
 </use>
 </pkgmetadata>
