@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1 pypi
 
@@ -24,7 +24,9 @@ BDEPEND="
 		dev-python/django[${PYTHON_USEDEP}]
 		dev-python/pytest-django[${PYTHON_USEDEP}]
 		>=dev-python/sybil-6[${PYTHON_USEDEP}]
-		>=dev-python/twisted-18[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/twisted-18[${PYTHON_USEDEP}]
+		' 3.{10..12})
 		sys-libs/timezone-data
 	)
 "
@@ -42,6 +44,20 @@ python_test() {
 		testfixtures/tests/test_shouldwarn.py::ShouldWarnTests::test_filter_missing
 		testfixtures/tests/test_shouldwarn.py::ShouldWarnTests::test_filter_present
 	)
+	case ${EPYTHON} in
+		python3.13)
+			EPYTEST_DESELECT+=(
+				# changed exception message
+				testfixtures/tests/test_replace.py::TestReplaceWithInterestingOriginsNotStrict::test_invalid_attribute_on_instance_of_slotted_cl
+			)
+	esac
+
+	local EPYTEST_IGNORE=()
+	if ! has_version "dev-python/twisted[${PYTHON_USEDEP}]"; then
+		EPYTEST_IGNORE+=(
+			testfixtures/tests/test_twisted.py
+		)
+	fi
 
 	epytest
 }
