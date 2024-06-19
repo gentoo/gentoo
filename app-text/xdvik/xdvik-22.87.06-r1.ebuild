@@ -17,6 +17,9 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390
 
 IUSE="motif neXt Xaw3d emacs"
 
+# require >=libXaw-1.0.16 for suitable XawListChange API, see
+# - https://bugs.gentoo.org/919069
+# - https://gitlab.freedesktop.org/xorg/lib/libxaw/-/commit/d0fcbd9722ad691ca0b5873c98e8e9c236fa718b
 DEPEND=">=media-libs/freetype-2.9.1-r2:2
 	x11-libs/libX11
 	x11-libs/libXi
@@ -29,7 +32,7 @@ DEPEND=">=media-libs/freetype-2.9.1-r2:2
 		neXt? ( x11-libs/neXtaw )
 		!neXt? (
 			Xaw3d? ( x11-libs/libXaw3d )
-			!Xaw3d? ( x11-libs/libXaw )
+			!Xaw3d? ( >=x11-libs/libXaw-1.0.16 )
 		)
 	)
 	dev-libs/kpathsea:="
@@ -42,7 +45,6 @@ BDEPEND="app-alternatives/lex
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-22.87.06-configure-clang16.patch
-	"${FILESDIR}"/${PN}-22.87.06-c99-fix.patch
 )
 
 src_prepare() {
