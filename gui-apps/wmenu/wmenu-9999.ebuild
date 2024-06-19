@@ -6,14 +6,15 @@ EAPI=8
 inherit meson
 
 DESCRIPTION="dynamic menu for wlroots compositors, maintains the look and feel of dmenu"
-HOMEPAGE="https://sr.ht/~adnano/wmenu/"
+HOMEPAGE="https://codeberg.org/adnano/wmenu/"
 
 if [[ "${PV}" == *9999* ]]; then
-	EGIT_REPO_URI="https://git.sr.ht/~adnano/wmenu"
+	EGIT_REPO_URI="https://codeberg.org/adnano/wmenu.git"
 	inherit git-r3
 else
-	SRC_URI="https://git.sr.ht/~adnano/wmenu/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	SRC_URI="https://codeberg.org/adnano/wmenu/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}"
+	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="MIT"
