@@ -195,7 +195,6 @@ esac
 # @CODE
 
 # @ECLASS_VARIABLE: DISTUTILS_ALLOW_WHEEL_REUSE
-# @DEFAULT_UNSET
 # @USER_VARIABLE
 # @DESCRIPTION:
 # If set to a non-empty value, the eclass is allowed to reuse a wheel
@@ -205,6 +204,7 @@ esac
 # This is an optimization that can avoid the overhead of calling into
 # the build system in pure Python packages and packages using the stable
 # Python ABI.
+DISTUTILS_ALLOW_WHEEL_REUSE=1
 
 # @ECLASS_VARIABLE: BUILD_DIR
 # @OUTPUT_VARIABLE
@@ -1933,7 +1933,7 @@ _distutils-r1_compare_installed_files() {
 	# Perform the check only if at least one potentially reusable wheel
 	# has been produced.  Nonpure packages (e.g. NumPy) may install
 	# interpreter configuration details into sitedir.
-	if [[ ${!DISTUTILS_WHEELS[*]} != *-none-any.whl* &&
+	if [[ ${!DISTUTILS_WHEELS[*]} != *py3-none-any.whl* &&
 			${!DISTUTILS_WHEELS[*]} != *-abi3-*.whl ]]; then
 		return
 	fi
