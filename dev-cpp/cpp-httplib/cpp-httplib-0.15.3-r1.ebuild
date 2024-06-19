@@ -30,7 +30,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	brotli? ( app-arch/brotli:=[${MULTILIB_USEDEP}] )
-	ssl? ( dev-libs/openssl:=[${MULTILIB_USEDEP}] )
+	ssl? ( >=dev-libs/openssl-3.0.13:=[${MULTILIB_USEDEP}] )
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
 "
 DEPEND="
