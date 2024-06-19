@@ -9,12 +9,12 @@ PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1
 
+DESCRIPTION="Disk and file backed cache"
 HOMEPAGE="
 	https://grantjenks.com/docs/diskcache/
 	https://github.com/grantjenks/python-diskcache/
 	https://pypi.org/project/diskcache/
 "
-DESCRIPTION="Disk and file backed cache"
 SRC_URI="
 	https://github.com/grantjenks/python-diskcache/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
