@@ -1,0 +1,13 @@
+diff --git a/python/tests/test_cvec.py b/python/tests/test_cvec.py
+index 73ee6549..e21418fc 100755
+--- a/python/tests/test_cvec.py
++++ b/python/tests/test_cvec.py
+@@ -43,7 +43,7 @@ class aubio_cvec_test_case(TestCase):
+         spec = cvec(1024)
+         spec.phas[39:-1] = -np.pi
+         assert_equal(spec.phas[0:39], 0)
+-        assert_equal(spec.phas[39:-1], -np.pi)
++        assert_equal(spec.phas[39:-1], np.asanyarray(-np.pi, spec.phas.dtype))
+         assert_equal(spec.norm, 0)
+ 
+     def test_assign_cvec_with_other_cvec(self):

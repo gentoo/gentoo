@@ -50,9 +50,11 @@ DOCS=( AUTHORS ChangeLog README.md )
 PYTHON_SRC_DIR="${S}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.4.9-docdir.patch
+	"${FILESDIR}"/${P}-docdir.patch
+	"${FILESDIR}"/${P}-gcc-14.patch
+	"${FILESDIR}"/${P}-numpy-2.patch
+	"${FILESDIR}"/${P}-remove-universal-newlines.patch
 	"${FILESDIR}"/ffmpeg5.patch
-	"${FILESDIR}"/${PN}-0.4.9-remove-universal-newlines.patch
 )
 
 src_prepare() {

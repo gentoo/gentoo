@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE='threads(+)'
 inherit distutils-r1 waf-utils
 
@@ -22,7 +22,7 @@ SRC_URI="
 LICENSE="GPL-3"
 SLOT="0/5"
 KEYWORDS="~amd64 ~loong ~ppc ~ppc64 ~sparc ~x86"
-IUSE="doc double-precision examples ffmpeg fftw jack libsamplerate sndfile python test"
+IUSE="blas doc double-precision examples ffmpeg fftw jack libsamplerate sndfile python test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	?? ( double-precision libsamplerate )
@@ -32,6 +32,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	blas? ( virtual/cblas )
 	ffmpeg? ( >=media-video/ffmpeg-2.6:0= )
 	fftw? ( sci-libs/fftw:3.0= )
 	jack? ( virtual/jack )
@@ -47,10 +48,8 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	app-text/txt2man
 	virtual/pkgconfig
-	doc? (
-		app-text/doxygen
-		dev-python/sphinx[${PYTHON_USEDEP}]
-	)
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 "
 BDEPEND="${DISTUTILS_DEPS}"
 
@@ -59,13 +58,23 @@ PYTHON_SRC_DIR="${S}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-docdir.patch
+	"${FILESDIR}"/${P}-gcc-14.patch
+	"${FILESDIR}"/${P}-numpy-2.patch
 	"${FILESDIR}"/ffmpeg5.patch
 )
 
 src_prepare() {
 	default
 
-	sed -e "s:doxygen:doxygen_disabled:" -i wscript || die
+	# In case when aubio is already installed, calling of the
+	# `sphinx` function at the wscript causes a python interpreter
+	# crash on `import aubio` if aubio was built with <numpy-2,
+	# but current version of numpy is >=2.
+	# Additionally, it causes duplication of the documentation.
+	sed \
+		-e '/\(doxygen\|sphinx\)(bld)$/d' \
+		-e "s/package = 'blas'/package = 'cblas'/" \
+		-i wscript || die
 
 	sed -e "s/, 'sphinx.ext.intersphinx'//" -i doc/conf.py || die
 
@@ -77,7 +86,9 @@ src_prepare() {
 	fi
 
 	# update waf to fix Python 3.12 compatibility
+	python_setup
 	sed -r \
+		-e "s:python:${PYTHON}:" \
 		-e "s:(WAFVERSION=).*:\1${WAFVERSION}:" \
 		-e "s:(WAFURL=).*:\1'${DISTDIR}/${WAFTARBALL}':" \
 		-e 's:^fetchwaf$:cp "${WAFURL}" "${WAFTARBALL}":' \
@@ -91,6 +102,7 @@ src_configure() {
 	local mywafconfargs=(
 		--enable-complex
 		--docdir="${EPREFIX}"/usr/share/doc/${PF}
+		$(use_enable blas)
 		$(use_enable doc docs)
 		$(use_enable double-precision double)
 		$(use_enable fftw fftw3)
@@ -122,8 +134,8 @@ src_compile() {
 			pushd "${S}"/doc &>/dev/null || die
 			python_setup
 			LD_LIBRARY_PATH="${S}/build/src:${LD_LIBRARY_PATH}" \
-			PYTHONPATH="${S%%/}-${EPYTHON/./_}/lib${PYTHONPATH:+:${PYTHONPATH}}" \
-			emake dirhtml
+			PYTHONPATH="${S%%/}-${EPYTHON/./_}/install/usr/lib/${EPYTHON}/site-packages:${PYTHONPATH}" \
+			emake html
 		fi
 
 		cd "${S}" || die
@@ -160,7 +172,7 @@ src_install() {
 	if use doc; then
 		dodoc doc/*.txt
 		docinto html
-		dodoc -r doc/_build/dirhtml/.
+		dodoc -r doc/_build/html/.
 	fi
 
 	find "${ED}" -name "*.a" -delete || die
