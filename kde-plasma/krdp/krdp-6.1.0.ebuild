@@ -40,3 +40,5 @@ RDEPEND="${COMMON_DEPEND}
 	>=kde-frameworks/kirigami-${KFMIN}:6
 "
 BDEPEND=">=kde-frameworks/kcmutils-${KFMIN}:6"
+
+PATCHES=( "${FILESDIR}/${PN}-6.0.90-cmake.patch" ) # fixed in 6.1.1
