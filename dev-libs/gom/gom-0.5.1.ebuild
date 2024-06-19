@@ -25,8 +25,7 @@ RDEPEND="
 		>=dev-python/pygobject-3.16:3[${PYTHON_USEDEP}] )
 "
 DEPEND="${RDEPEND}
-	gtk-doc? ( dev-util/gtk-doc
-		app-text/docbook-xml-dtd:4.3 )
+	gtk-doc? ( dev-util/gi-docgen )
 	virtual/pkgconfig
 	test? ( x11-libs/gdk-pixbuf:2 )
 "
