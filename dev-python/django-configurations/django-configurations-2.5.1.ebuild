@@ -37,6 +37,12 @@ BDEPEND="
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
+PATCHES=(
+	# Update for dj-database-url == 2.2.0
+	# https://github.com/jazzband/django-configurations/issues/387
+	"${FILESDIR}/${P}-test.patch"
+)
+
 python_test() {
 	local -x DJANGO_SETTINGS_MODULE=tests.settings.main
 	local -x DJANGO_CONFIGURATION=Test
