@@ -526,7 +526,7 @@ get_gcc_src_uri() {
 		GCC_SRC_URI="mirror://gcc/snapshots/${SNAPSHOT}/gcc-${SNAPSHOT}.tar.xz"
 	else
 		GCC_SRC_URI="
-			mirror://gcc/gcc-${GCC_PV}/gcc-${GCC_RELEASE_VER}.tar.xz
+			mirror://gcc/releases/gcc-${GCC_PV}/gcc-${GCC_RELEASE_VER}.tar.xz
 			mirror://gnu/gcc/gcc-${GCC_PV}/gcc-${GCC_RELEASE_VER}.tar.xz
 		"
 	fi
