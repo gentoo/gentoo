@@ -1,0 +1,11 @@
+Bug: https://bugs.gentoo.org/896426
+--- a/commands.c
++++ b/commands.c
+@@ -26,6 +26,7 @@
+ #include <errno.h>
+ #include <string.h>
+ #include <signal.h>
++#include <fcntl.h>
+ 
+ #include "config.h"
+ #include "cdtool.h"
