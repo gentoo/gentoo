@@ -1,11 +1,13 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-SRC_URI="https://github.com/flatpak/${PN}/releases/download/${PV}/${P}.tar.xz"
+inherit meson
+
 DESCRIPTION="Tool to build flatpaks from source"
 HOMEPAGE="http://flatpak.org/"
+SRC_URI="https://github.com/flatpak/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
@@ -21,6 +23,8 @@ RDEPEND="
 	dev-libs/json-glib:=
 	net-misc/curl:=
 	yaml? ( dev-libs/libyaml:= )
+	dev-libs/appstream[compose(-)]
+	dev-util/debugedit
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -35,8 +39,9 @@ BDEPEND="
 PATCHES=("${FILESDIR}/flatpak-builder-1.2.2-musl.patch")
 
 src_configure() {
-	econf \
-		$(use_enable doc documentation) \
-		$(use_enable doc docbook-docs) \
-		$(use_with yaml)
+	local emesonargs=(
+        $(meson_feature doc docs)
+        $(meson_feature yaml)
+    )
+	meson_src_configure
 }
