@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/rdiff-backup/rdiff-backup"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 # Tests use a tox environment and separate steps for test env preparation
 RESTRICT="test"
 
