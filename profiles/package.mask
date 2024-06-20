@@ -34,6 +34,13 @@
 #--- END OF EXAMPLES ---
 
 # James Le Cuirot <chewi@gentoo.org> (2024-06-20)
+# Ancient, dead upstream, X11-based, probably doesn't work any more, and there
+# are better ways of running games in different sessions now.
+# Removal on 2024-07-20.  Bug #934640.
+games-util/xgame
+games-util/xgame-gtk2
+
+# James Le Cuirot <chewi@gentoo.org> (2024-06-20)
 # Apparently a good game, but you cannot buy the full Linux version any more.
 # Get the HD version from Steam or the Windows original from GOG instead.
 # Removal on 2024-07-20.  Bug #934637.
