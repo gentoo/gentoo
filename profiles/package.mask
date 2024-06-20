@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Martin Dummer <martin.dummer@gmx.net> (2024-06-20)
+# Upstream dead, was an optional package for a reverse dependency
+# which is gone.
+# Removal on 2024-07-20.  Bug #791904
+media-video/vdr2jpeg
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-20)
 # EAPI=6, no reverse dependencies, waiting for a version bump.
 # Removal on 2024-07-20.  Bugs #934619, #730758, #713760.
