@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (2024-06-20)
+# Apparently a good game, but you cannot buy the full Linux version any more.
+# Get the HD version from Steam or the Windows original from GOG instead.
+# Removal on 2024-07-20.  Bug #934637.
+games-strategy/majesty-demo
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-20)
 # EAPI=6, keyworded for x86 only (making it hard to debug), has
 # open bugs for modern C and not using correct toolchain commands.
