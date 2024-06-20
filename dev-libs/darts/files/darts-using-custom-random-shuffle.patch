@@ -1,0 +1,44 @@
+From dbf839b982ecb8f3456c14195204d9d1a8a18a7d Mon Sep 17 00:00:00 2001
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Sun, 14 May 2023 11:15:13 +0530
+Subject: [PATCH] Using custom random_shuffle
+
+C++17 have removed random_shuffle (deprecated in C++14). Upstream seems
+dead too, hence using custom implementation of random_shuffle from
+https://en.cppreference.com/w/cpp/algorithm/random_shuffle.
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+Bug: https://bugs.gentoo.org/902851
+--- a/src/lexicon.h
++++ b/src/lexicon.h
+@@ -11,6 +11,18 @@
+ 
+ #include "./mersenne-twister.h"
+ 
++template<class RandomIt, class RandomFunc>
++void random_shuffle(RandomIt first, RandomIt last, RandomFunc&& r)
++{
++    typedef typename std::iterator_traits<RandomIt>::difference_type diff_t;
++ 
++    for (diff_t i = last - first - 1; i > 0; --i)
++    {
++        using std::swap;
++        swap(first[i], first[r(i + 1)]);
++    }
++}
++
+ namespace Darts {
+ 
+ class Lexicon {
+@@ -60,7 +72,7 @@ class Lexicon {
+   void randomize() {
+     Darts::MersenneTwister mt(
+         static_cast<Darts::MersenneTwister::int_type>(std::time(NULL)));
+-    std::random_shuffle(keys_.begin(), keys_.end(), mt);
++    random_shuffle(keys_.begin(), keys_.end(), mt);
+   }
+ 
+   void split();
+-- 
+2.40.1
+
