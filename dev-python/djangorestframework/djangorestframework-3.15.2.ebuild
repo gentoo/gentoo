@@ -40,13 +40,6 @@ BDEPEND="
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
-	tests/test_description.py::TestViewNamesAndDescriptions::test_markdown
-
-	# require coreapi (but not skipped properly)
-	tests/schemas/test_managementcommand.py::GenerateSchemaTests::test_coreapi_renders_default_schema_with_custom_title_url_and_desc
-	tests/schemas/test_managementcommand.py::GenerateSchemaTests::test_coreapi_renders_openapi_json_schema
-	tests/schemas/test_managementcommand.py::GenerateSchemaTests::test_renders_corejson_schema
-
 	# upstream is removing pytz, apparently it's not tested anymore
 	# https://github.com/encode/django-rest-framework/discussions/9342
 	tests/test_fields.py::TestPytzNaiveDayLightSavingTimeTimeZoneDateTimeField::test_invalid_inputs
