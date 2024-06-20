@@ -4,6 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+# py3.13: https://github.com/encode/django-rest-framework/discussions/9445
 PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
