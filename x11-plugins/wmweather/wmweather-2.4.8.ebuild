@@ -10,7 +10,7 @@ S="${WORKDIR}/${P}/src"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~mips ~ppc ppc64 ~sparc ~x86"
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext
