@@ -93,4 +93,7 @@ pkg_postinst() {
 		elog "Additionally, /etc/logrotate.conf may need to be modified"
 		elog "for your particular needs. See man logrotate for details."
 	fi
+
+	# fix initial warning message "... is world-readable and thus can be locked from other unprivileged users"
+	chmod 0640 /var/lib/misc/logrotate.status &>/dev/null
 }
