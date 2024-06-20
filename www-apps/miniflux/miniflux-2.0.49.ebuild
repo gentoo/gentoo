@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~riscv"
+KEYWORDS="amd64 ppc64 ~riscv"
 
 RESTRICT="test" # requires network access
 
