@@ -51,24 +51,17 @@ PATCHES=(
 )
 
 src_unpack() {
-	if use verify-sig ; then
-		mkdir "${T}"/verify-sig || die
-		pushd "${T}"/verify-sig &>/dev/null || die
-
-		# Upstream sign the decompressed .tar
-		# Let's do it separately in ${T} then cleanup to avoid external
-		# effects on normal unpack.
-		cp "${DISTDIR}"/${MY_P}.tar.xz . || die
-		xz -d ${MY_P}.tar.xz || die
-		verify-sig_verify_detached ${MY_P}.tar "${DISTDIR}"/${MY_P}.tar.sign "${BROOT}"/usr/share/openpgp-keys/karelzak.asc
-
-		popd &>/dev/null || die
-		rm -r "${T}"/verify-sig || die
+	# Upstream sign the decompressed .tar
+	if use verify-sig; then
+		einfo "Unpacking ${MY_P}.tar.xz ..."
+		verify-sig_verify_detached - "${DISTDIR}"/${MY_P}.tar.sign \
+			< <(xz -cd "${DISTDIR}"/${MY_P}.tar.xz | tee >(tar -x)) "${BROOT}"/usr/share/openpgp-keys/karelzak.asc
+		assert "Unpack failed"
 
 		verify-sig_verify_detached "${DISTDIR}"/${LOOPAES_P}.tar.bz2{,.sign}
+	else
+		default
 	fi
-
-	default
 }
 
 src_prepare() {
