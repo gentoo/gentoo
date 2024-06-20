@@ -9,6 +9,6 @@ DESCRIPTION="PHP class interface to TCP sockets"
 LICENSE="BSD-2"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 arm ~hppa ~ppc64 ~s390 ~sparc ~x86"
 
 RDEPEND=">=dev-php/PEAR-PEAR-1.10.1"
