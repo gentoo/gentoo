@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
 
 RDEPEND="
 	>=dev-python/jaraco-functools-1.20[${PYTHON_USEDEP}]
@@ -27,8 +27,7 @@ BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		$(python_gen_cond_dep '
-			dev-python/freezegun[${PYTHON_USEDEP}]
-			dev-python/pytest-freezegun[${PYTHON_USEDEP}]
+			dev-python/pytest-freezer[${PYTHON_USEDEP}]
 		' "${PYTHON_TESTED[@]}")
 	)
 "
