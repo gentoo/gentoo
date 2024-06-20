@@ -6,7 +6,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">jackrosenthal/python-cgi</remote-id>
+		<remote-id type="github">jackrosenthal/legacy-cgi</remote-id>
 		<remote-id type="pypi">legacy-cgi</remote-id>
 	</upstream>
 </pkgmetadata>
