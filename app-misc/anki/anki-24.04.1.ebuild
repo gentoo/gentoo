@@ -777,7 +777,7 @@ BDEPEND="
 		${PYTHON_DEPS}
 		app-alternatives/ninja
 		app-arch/unzip
-		net-libs/nodejs
+		>=net-libs/nodejs-20.12.1
 		$(python_gen_cond_dep 'dev-python/wheel[${PYTHON_USEDEP}]')
 		qt6?	( $(python_gen_cond_dep 'dev-python/PyQt6[${PYTHON_USEDEP}]') )
 		!qt6?	( $(python_gen_cond_dep 'dev-python/PyQt5[${PYTHON_USEDEP}]') )
