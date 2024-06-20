@@ -808,18 +808,6 @@ BDEPEND="
 QA_FLAGS_IGNORED="usr/bin/anki-sync-server
 	usr/lib/python.*/site-packages/anki/_rsbridge.so"
 
-DOC_CONTENTS="Users with add-ons that still rely on Anki's Qt5 GUI can either
-switch to ${CATEGORY}/${PN}[-qt6], or temporarily set the environment variable
-ENABLE_QT5_COMPAT to 1 to have Anki install the previous compatibility code.
-The latter option has additional runtime dependencies. Please take a look
-at this package's optional runtime features for a complete listing.
-\n\nIn an early 2024 update, ENABLE_QT5_COMPAT will be removed, so this is not
-a long-term solution.
-\n\nAnki's user manual is located online at https://docs.ankiweb.net/
-\nAnki's add-on developer manual is located online at
-https://addon-docs.ankiweb.net/
-"
-
 pkg_setup() {
 	export PROTOC_BINARY="${BROOT}"/usr/bin/protoc
 	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
@@ -925,12 +913,24 @@ src_test() {
 	sed -i -e "s/\(cargo nextest run\).*\\$/\1 ${nextest_opts[*]} \\$/" \
 		"${S}"/build/ninja_gen/src/cargo.rs || die
 
+	local runner
 	for runner in pytest rust_test jest; do
 		${MY_RUNNER} check:${runner}
 	done
 }
 
 src_install() {
+	local DOC_CONTENTS="Users with add-ons that still rely on Anki's Qt5 GUI can either
+	switch to ${CATEGORY}/${PN}[-qt6], or temporarily set the environment variable
+	ENABLE_QT5_COMPAT to 1 to have Anki install the previous compatibility code.
+	The latter option has additional runtime dependencies. Please take a look
+	at this package's optional runtime features for a complete listing.
+	\n\nIn an early 2024 update, ENABLE_QT5_COMPAT will be removed, so this is not
+	a long-term solution.
+	\n\nAnki's user manual is located online at https://docs.ankiweb.net/
+	\nAnki's add-on developer manual is located online at
+	https://addon-docs.ankiweb.net/"
+
 	readme.gentoo_create_doc
 	if use gui; then
 		pushd qt/bundle/lin > /dev/null || die
@@ -942,6 +942,7 @@ src_install() {
 		popd || die
 		use doc && dodoc -r out/python/sphinx/html
 
+		local w
 		for w in out/wheels/*.whl; do
 			unzip "${w}" -d out/wheels || die
 		done
