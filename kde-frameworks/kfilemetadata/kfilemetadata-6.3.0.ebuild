@@ -49,7 +49,7 @@ src_configure() {
 		$(cmake_use_find_package epub EPub)
 		$(cmake_use_find_package exif LibExiv2)
 		$(cmake_use_find_package ffmpeg FFmpeg)
-		$(cmake_use_find_package mobi QMobipocket)
+		$(cmake_use_find_package mobi QMobipocket6)
 		$(cmake_use_find_package pdf Poppler)
 		$(cmake_use_find_package taglib Taglib)
 	)
