@@ -11,7 +11,7 @@ SRC_URI="https://github.com/tesseract-ocr/${PN}/archive/${PV}.tar.gz -> ${P}.tar
 
 LICENSE="Apache-2.0"
 SLOT="0/5"
-KEYWORDS="~alpha amd64 ~arm arm64 ~mips ~ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="doc float32 jpeg opencl openmp png static-libs tiff training webp"
 
 COMMON_DEPEND=">=media-libs/leptonica-1.74:=[${MULTILIB_USEDEP},zlib,tiff?,jpeg?,png?,webp?]
