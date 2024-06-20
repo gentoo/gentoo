@@ -18,8 +18,8 @@ else
 	MY_PV="v${PV/_/-}"
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI="
-		https://www.kernel.org/pub/linux/kernel/people/kdave/${PN}/${MY_P}.tar.xz
-		verify-sig? ( https://www.kernel.org/pub/linux/kernel/people/kdave/${PN}/${MY_P}.tar.sign )
+		https://mirrors.edge.kernel.org/pub/linux/kernel/people/kdave/${PN}/${MY_P}.tar.xz
+		verify-sig? ( https://mirrors.edge.kernel.org/pub/linux/kernel/people/kdave/${PN}/${MY_P}.tar.sign )
 	"
 	S="${WORKDIR}"/${PN}-${MY_PV}
 
