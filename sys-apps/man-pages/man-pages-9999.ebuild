@@ -100,6 +100,8 @@ src_unpack() {
 		verify-sig_verify_detached - "${DISTDIR}"/${P}.tar.sign \
 			< <(xz -cd "${DISTDIR}"/${P}.tar.xz | tee >(tar -x))
 		assert "Unpack failed"
+
+		unpack man-pages-gentoo-${GENTOO_PATCH}.tar.bz2
 	else
 		default
 	fi
