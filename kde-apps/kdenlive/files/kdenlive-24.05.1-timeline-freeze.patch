@@ -1,0 +1,29 @@
+From 8be0e826471332bb739344ebe1859298c46e9e0f Mon Sep 17 00:00:00 2001
+From: Jean-Baptiste Mardelle <jb@kdenlive.org>
+Date: Tue, 18 Jun 2024 10:50:24 +0200
+Subject: [PATCH] Fix timeline duration not correctly updated, resulting in
+ audio/video freeze in timeline after 5 min Related to #1885
+
+---
+ src/timeline2/model/timelinemodel.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/timeline2/model/timelinemodel.cpp b/src/timeline2/model/timelinemodel.cpp
+index 0bb8cb89ae..342324c77f 100644
+--- a/src/timeline2/model/timelinemodel.cpp
++++ b/src/timeline2/model/timelinemodel.cpp
+@@ -5111,9 +5111,9 @@ void TimelineModel::updateDuration()
+     }
+     if (duration != current) {
+         // update black track length
+-        m_blackClip->block();
++        m_blackClip->lock();
+         m_blackClip->set("out", duration + TimelineModel::seekDuration);
+-        m_blackClip->unblock();
++        m_blackClip->unlock();
+         Q_EMIT durationUpdated(m_uuid);
+         if (m_masterStack) {
+             Q_EMIT m_masterStack->dataChanged(QModelIndex(), QModelIndex(), {});
+-- 
+GitLab
+
