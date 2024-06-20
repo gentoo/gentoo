@@ -59,6 +59,7 @@ src_unpack() {
 		assert "Unpack failed"
 
 		verify-sig_verify_detached "${DISTDIR}"/${LOOPAES_P}.tar.bz2{,.sign}
+		unpack ${LOOPAES_P}.tar.bz2
 	else
 		default
 	fi
