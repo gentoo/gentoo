@@ -50,6 +50,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.2-javajars.patch
 )
 
+src_unpack() {
+	unpack ${P}.tar.gz
+}
+
 src_prepare() {
 	default
 	cp "${DISTDIR}"/pdfbox-${MY_PDFBOX_VER}.jar pdfbox.jar || die
@@ -62,13 +66,11 @@ src_compile() {
 }
 
 src_install() {
-#	newbin scripts/pdfannotextractor.pl pdfannotextractor
-
 	java-pkg_dojar scripts/pax.jar pdfbox.jar fontbox.jar
-
 	java-pkg_dolauncher ${PN} --main pax.PDFAnnotExtractor
 
-	insinto ${TEXMF}
-	doins -r tex
+	insinto ${TEXMF}/latex/pax
+	doins tex/pax.sty
+
 	dodoc README
 }
