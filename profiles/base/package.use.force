@@ -1,11 +1,6 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Ionen Wolkens <ionen@gentoo.org> (2024-06-18)
-# Disabling currently breaks build with USE=gstreamer, so forcing as
-# a quick workaround until this is more closely looked at (bug #934582)
->=dev-qt/qtmultimedia-6.7.2 v4l
-
 # Sam James <sam@gentoo.org> (2024-06-03)
 # Poor rendering performance otherwise (bug #931215).
 kde-plasma/kwin caps

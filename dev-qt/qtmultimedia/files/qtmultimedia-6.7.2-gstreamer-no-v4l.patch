@@ -1,0 +1,20 @@
+# https://bugs.gentoo.org/934582
+
+--- a/src/plugins/multimedia/gstreamer/mediacapture/qgstreamercamera.cpp
++++ b/src/plugins/multimedia/gstreamer/mediacapture/qgstreamercamera.cpp
+@@ -718,6 +718,7 @@ int QGstreamerCamera::getV4L2Parameter(quint32 id) const
+         return control.value;
+     });
+ }
++#endif // QT_CONFIG(linux_v4l)
+ 
+ QGstreamerCustomCamera::QGstreamerCustomCamera(QCamera *camera)
+     : QGstreamerCameraBase{
+@@ -766,6 +767,4 @@ void QGstreamerCustomCamera::setActive(bool active)
+     emit activeChanged(active);
+ }
+ 
+-#endif
+-
+ QT_END_NAMESPACE
+
