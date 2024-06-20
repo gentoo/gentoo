@@ -10,7 +10,7 @@
 # @BLURB: install a doc file shown via elog messages
 # @DESCRIPTION:
 # An eclass for installing a README.gentoo doc file recording tips
-# shown via elog messages. With this eclass, those elog messages will only be
+# shown via elog messages.  With this eclass, those elog messages will only be
 # shown at first package installation and a file for later reviewing will be
 # installed under /usr/share/doc/${PF}
 #
@@ -34,7 +34,7 @@ esac
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If non-empty, DOC_CONTENTS information will be strictly respected,
-# not getting it automatically formatted by fold. If empty, it will
+# not getting it automatically formatted by fold.  If empty, it will
 # rely on fold for formatting and 'echo -e' options to tweak lines a bit.
 
 # @ECLASS_VARIABLE: FORCE_PRINT_ELOG
@@ -50,7 +50,7 @@ esac
 # @FUNCTION: readme.gentoo_create_doc
 # @DESCRIPTION:
 # Create doc file with ${DOC_CONTENTS} variable (preferred) and, if not set,
-# look for "${FILESDIR}/README.gentoo" contents. You can use
+# look for "${FILESDIR}/README.gentoo" contents.  You can use
 # ${FILESDIR}/README.gentoo-${SLOT} also.
 # Usually called at src_install phase.
 readme.gentoo_create_doc() {
@@ -84,7 +84,7 @@ readme.gentoo_create_doc() {
 
 # @FUNCTION: readme.gentoo_print_elog
 # @DESCRIPTION:
-# Print elog messages with "${T}"/README.gentoo contents. They will be
+# Print elog messages with "${T}"/README.gentoo contents.  They will be
 # shown only when package is installed at first time.
 # Usually called at pkg_postinst phase.
 #
