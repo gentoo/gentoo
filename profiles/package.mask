@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Martin Dummer <martin.dummer@gmx.net> (2024-06-21)
+# Upstream dead, was an optional package for a reverse dependency
+# which is gone.
+# Removal on 2024-07-21.  Bug #791904
+media-video/vdr2jpeg
+
 # James Le Cuirot <chewi@gentoo.org> (2024-06-20)
 # Ancient, dead upstream, X11-based, probably doesn't work any more, and there
 # are better ways of running games in different sessions now.
