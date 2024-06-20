@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,13 +35,14 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-EPYTEST_DESELECT=(
-	# Needs network access
-	libcloud/test/compute/test_ovh.py::OvhTests::test_list_nodes_invalid_region
-	libcloud/test/test_connection.py::BaseConnectionClassTestCase::test_connection_timeout_raised
-)
-
 src_prepare() {
+	local PATCHES=(
+		# https://github.com/apache/libcloud/pull/2014
+		"${FILESDIR}/${P}-pytest-8.2.patch"
+	)
+
+	distutils-r1_src_prepare
+
 	if use examples; then
 		mkdir examples || die
 		mv example_*.py examples || die
@@ -49,8 +50,19 @@ src_prepare() {
 
 	# needed for tests
 	cp libcloud/test/secrets.py-dist libcloud/test/secrets.py || die
+}
 
-	distutils-r1_src_prepare
+python_test() {
+	local EPYTEST_DESELECT=(
+		# Needs network access
+		libcloud/test/compute/test_ovh.py::OvhTests::test_list_nodes_invalid_region
+		libcloud/test/test_connection.py::BaseConnectionClassTestCase::test_connection_timeout_raised
+		# TODO
+		libcloud/test/test_init.py::TestUtils::test_init_once_and_debug_mode
+	)
+
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest
 }
 
 src_install() {
