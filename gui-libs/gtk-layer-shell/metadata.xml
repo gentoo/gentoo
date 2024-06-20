@@ -5,6 +5,10 @@
 		<name>Haelwenn (lanodan) Monnier</name>
 		<email>contact@hacktivis.me</email>
 	</maintainer>
+		<maintainer type="person" proxied="yes" restrict="&gt;gui-libs/gtk-layer-shell-4">
+		<name>DerpDays</name>
+		<email>derpdaysyt@hotmail.com</email>
+	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
@@ -12,4 +16,12 @@
 	<upstream>
 		<remote-id type="github">wmww/gtk-layer-shell</remote-id>
 	</upstream>
+	<slots>
+		<slot name="0">
+			GTK 3 Layer shell
+		</slot>
+		<slot name="4">
+			GTK 4 Layer shell
+		</slot>
+	</slots>
 </pkgmetadata>
