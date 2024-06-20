@@ -12,7 +12,7 @@ SRC_URI="https://data.iana.org/root-anchors/root-anchors.xml -> root-anchors-${P
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ~ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos"
 IUSE=""
 
 BDEPEND=">=dev-perl/XML-XPath-1.420.0"
