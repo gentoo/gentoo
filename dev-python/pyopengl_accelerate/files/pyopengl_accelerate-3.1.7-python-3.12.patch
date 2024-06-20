@@ -1,0 +1,291 @@
+From 11a78b3e3753cec7a56a3e83663f7d3d355a555b Mon Sep 17 00:00:00 2001
+From: "Mike C. Fletcher" <mcfletch@vrplumber.com>
+Date: Tue, 8 Aug 2023 09:48:39 -0400
+Subject: [PATCH] PYTHON3.12 Support python3.12 via cython 3.x wrappers
+
+Still can't include python 3.12 in build/test operations as the
+numpy dependency can't compile on any of my machines.
+---
+ accelerate/OpenGL_accelerate/formathandler.pxd |  1 +
+ accelerate/OpenGL_accelerate/wrapper.pxd       |  2 ++
+ accelerate/setup.py                            |  8 +++++++-
+ accelerate/src/arraydatatype.pyx               |  2 ++
+ accelerate/src/buffers_formathandler.pyx       |  2 ++
+ accelerate/src/errorchecker.pyx                |  1 +
+ accelerate/src/formathandler.pyx               |  1 +
+ accelerate/src/latebind.pyx                    |  1 +
+ accelerate/src/nones_formathandler.pyx         |  1 +
+ accelerate/src/numpy_formathandler.pyx         |  3 ++-
+ accelerate/src/vbo.pyx                         |  7 ++++---
+ accelerate/src/wrapper.pyx                     | 15 ++++++++-------
+ setup.py                                       |  5 ++---
+ test-requirements.txt                          |  1 +
+ tox.ini                                        |  3 +--
+ 15 files changed, 36 insertions(+), 17 deletions(-)
+
+diff --git a/accelerate/OpenGL_accelerate/formathandler.pxd b/accelerate/OpenGL_accelerate/formathandler.pxd
+index 0cd583ba..ec7d2c6f 100644
+--- a/accelerate/OpenGL_accelerate/formathandler.pxd
++++ b/accelerate/OpenGL_accelerate/formathandler.pxd
+@@ -1,4 +1,5 @@
+ """Cython import description for formathandler types"""
++#cython: language_level=3
+ 
+ cdef class FormatHandler:
+ 	cdef public int ERROR_ON_COPY
+diff --git a/accelerate/OpenGL_accelerate/wrapper.pxd b/accelerate/OpenGL_accelerate/wrapper.pxd
+index c7f5b003..05013ee4 100644
+--- a/accelerate/OpenGL_accelerate/wrapper.pxd
++++ b/accelerate/OpenGL_accelerate/wrapper.pxd
+@@ -1,4 +1,6 @@
+ """Importable Cython declarations for wrapper module"""
++#cython: language_level=3
++
+ cdef class cArgConverter:
+ 	cdef object c_call( self, tuple pyArgs, int index, object baseOperation )
+ cdef class pyArgConverter:
+diff --git a/accelerate/setup.py b/accelerate/setup.py
+index a5faebf3..9011d68f 100644
+--- a/accelerate/setup.py
++++ b/accelerate/setup.py
+@@ -2,7 +2,12 @@
+ """Builds accelleration functions for PyOpenGL
+ """
+ 
+-from setuptools import setup, Extension
++import sys
++
++if sys.version_info[:2] < (3, 12):
++    from setuptools import setup, Extension
++else:
++    from distutils.core import setup, Extension
+ 
+ try:
+     from Cython.Distutils import build_ext
+@@ -42,6 +47,7 @@ def cython_extension(
+             # that we use throughout our code...
+             #    ('NPY_NO_DEPRECATED_API','NPY_1_7_API_VERSION'),
+         ],
++        compiler_directives={'language_level': "3"} if have_cython else {},
+     )
+ 
+ 
+diff --git a/accelerate/src/arraydatatype.pyx b/accelerate/src/arraydatatype.pyx
+index 568fbf01..fc00a07b 100644
+--- a/accelerate/src/arraydatatype.pyx
++++ b/accelerate/src/arraydatatype.pyx
+@@ -1,4 +1,6 @@
+ """Cython-coded Array-handling accelerator module"""
++#cython: language_level=3
++
+ import ctypes
+ import OpenGL
+ from OpenGL._null import NULL as _NULL
+diff --git a/accelerate/src/buffers_formathandler.pyx b/accelerate/src/buffers_formathandler.pyx
+index 2951e9c9..2ed7596f 100644
+--- a/accelerate/src/buffers_formathandler.pyx
++++ b/accelerate/src/buffers_formathandler.pyx
+@@ -1,4 +1,6 @@
+ """Cython memoryview implementation of buffer-api format handler"""
++#cython: language_level=3
++
+ from ctypes import c_void_p
+ from OpenGL_accelerate.formathandler cimport FormatHandler
+ import traceback, weakref
+diff --git a/accelerate/src/errorchecker.pyx b/accelerate/src/errorchecker.pyx
+index 2ed72af3..f0962186 100644
+--- a/accelerate/src/errorchecker.pyx
++++ b/accelerate/src/errorchecker.pyx
+@@ -1,4 +1,5 @@
+ """Cython-coded GL-error-check module"""
++#cython: language_level=3
+ from OpenGL import _configflags
+ 
+ cdef class _ErrorChecker:
+diff --git a/accelerate/src/formathandler.pyx b/accelerate/src/formathandler.pyx
+index 6e040145..8ea30ded 100644
+--- a/accelerate/src/formathandler.pyx
++++ b/accelerate/src/formathandler.pyx
+@@ -1,4 +1,5 @@
+ """Cython-coded base FormatHandler implementation"""
++#cython: language_level=3
+ 
+ cdef class FormatHandler:
+ 	"""PyOpenGL "Format" plugin implementation
+diff --git a/accelerate/src/latebind.pyx b/accelerate/src/latebind.pyx
+index 7d55da8d..cd58a975 100644
+--- a/accelerate/src/latebind.pyx
++++ b/accelerate/src/latebind.pyx
+@@ -1,4 +1,5 @@
+ """General pattern which does late-bound calls"""
++#cython: language_level=3
+ 
+ cdef class LateBind:
+     """Provides a __call__ which dispatches to self._finalCall
+diff --git a/accelerate/src/nones_formathandler.pyx b/accelerate/src/nones_formathandler.pyx
+index 25b8568a..5c55102e 100644
+--- a/accelerate/src/nones_formathandler.pyx
++++ b/accelerate/src/nones_formathandler.pyx
+@@ -1,4 +1,5 @@
+ """Accelerator for None-as-an-array format handler operations"""
++#cython: language_level=3
+ from OpenGL_accelerate.formathandler cimport FormatHandler
+ 
+ cdef class NoneHandler(FormatHandler):
+diff --git a/accelerate/src/numpy_formathandler.pyx b/accelerate/src/numpy_formathandler.pyx
+index 0c01d78e..47ed919b 100644
+--- a/accelerate/src/numpy_formathandler.pyx
++++ b/accelerate/src/numpy_formathandler.pyx
+@@ -1,4 +1,5 @@
+ """Accelerator for numpy format handler operations"""
++#cython: language_level=3
+ from ctypes import c_void_p
+ import numpy as np
+ cimport numpy as np
+@@ -121,7 +122,7 @@ cdef class NumpyHandler(FormatHandler):
+             c_dims = PyArray_ContiguousFromAny( 
+                 [int(x) for x in dims], np.NPY_INTP, 1,1 
+             )
+-        except (ValueError,TypeError), err:
++        except (ValueError,TypeError) as err:
+             dims = (int(dims),)
+             c_dims = PyArray_ContiguousFromAny( 
+                 dims, np.NPY_INTP, 1,1 
+diff --git a/accelerate/src/vbo.pyx b/accelerate/src/vbo.pyx
+index f3e204e5..458d2c71 100644
+--- a/accelerate/src/vbo.pyx
++++ b/accelerate/src/vbo.pyx
+@@ -1,4 +1,5 @@
+ """Cython-coded VBO implementation"""
++#cython: language_level=3
+ import ctypes, weakref
+ from OpenGL_accelerate.formathandler cimport FormatHandler
+ from OpenGL import error
+@@ -188,7 +189,7 @@ cdef class VBO:
+         buffers = self.get_implementation().glGenBuffers(1)
+         try:
+             self.buffer = long( buffers )
+-        except (TypeError,ValueError), err:
++        except (TypeError,ValueError) as err:
+             self.buffer = buffers[0]
+         self.target = self.c_resolve( self.target_spec )
+         self.usage = self.c_resolve( self.usage_spec )
+@@ -222,11 +223,11 @@ cdef class VBO:
+             self.created = False
+             try:
+                 self.get_implementation().glDeleteBuffers(1, ctypes.c_uint32( self.buffer))
+-            except (AttributeError, error.NullFunctionError), err:
++            except (AttributeError, error.NullFunctionError) as err:
+                 pass
+             try:
+                 self.get_implementation()._DELETERS_.pop( id(self))
+-            except KeyError, err:
++            except KeyError as err:
+                 pass
+     def bind( self ):
+         """Bind this buffer for use in vertex calls"""
+diff --git a/accelerate/src/wrapper.pyx b/accelerate/src/wrapper.pyx
+index 82d9f0ec..42680e94 100644
+--- a/accelerate/src/wrapper.pyx
++++ b/accelerate/src/wrapper.pyx
+@@ -1,4 +1,5 @@
+ """Cython-coded implementation of wrapper module"""
++#cython: language_level=3
+ import ctypes
+ from OpenGL import error
+ from OpenGL._null import NULL as _NULL
+@@ -64,7 +65,7 @@ cdef class CArgCalculatorElement:
+                 return self.c_converter.c_call( pyArgs, self.index, self.wrapper )
+             elif self.callable:
+                 return self.converter.__call__( pyArgs, self.index, self.wrapper )
+-        except Exception, err:
++        except Exception as err:
+             err.args += ( self.index, self.wrapper )
+             raise
+         return self.converter
+@@ -122,7 +123,7 @@ cdef class PyArgCalculatorElement:
+                 return self.converter( 
+                     args[self.index], self.wrapper, args 
+                 )
+-        except Exception, err:
++        except Exception as err:
+             if hasattr( err, 'args' ):
+                 err.args += ( self.converter, )
+             raise
+@@ -190,13 +191,13 @@ cdef class CArgumentCalculator:
+                 # heavy operation.
+                 try:
+                     result[i] = (<cArgumentConverter>converter).c_call( cArgs[i] )
+-                except Exception, err:
++                except Exception as err:
+                     err.args += (converter,)
+                     raise
+             else:
+                 try:
+                     result[i] = converter( cArgs[i] )
+-                except Exception, err:
++                except Exception as err:
+                     err.args += (converter,)
+                     raise
+         return result
+@@ -224,7 +225,7 @@ cdef class DefaultCConverter(cArgConverter):
+     cdef object c_call( self, tuple pyArgs, int index, object baseOperation ):
+         try:
+             return pyArgs[ self.index ]
+-        except IndexError, err:
++        except IndexError as err:
+             raise ValueError(
+                 """Expected parameter index %r, but pyArgs only length %s"""%(
+                 self.index,
+@@ -309,10 +310,10 @@ cdef class Wrapper:
+             cArguments = cArgs
+         try:
+             result = self.wrappedOperation( *cArguments )
+-        except (ctypes.ArgumentError,TypeError,AttributeError), err:
++        except (ctypes.ArgumentError,TypeError,AttributeError) as err:
+             err.args = err.args + (cArguments,)
+             raise err
+-        except error.GLError, err:
++        except error.GLError as err:
+             err.cArgs = cArgs 
+             err.pyArgs = pyArgs
+             raise err
+diff --git a/setup.py b/setup.py
+index 57a656b3..9c99241c 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,8 +1,7 @@
+ #! /usr/bin/env python
+-"""PyOpenGL setup script (setuptools-based)
+-"""
++"""PyOpenGL setup script distutils/setuptools/pip based"""
+ import sys, os
+-from setuptools import setup
++from distutils.core import setup
+ from distutils.command.install_data import install_data
+ 
+ extra_commands = {}
+diff --git a/test-requirements.txt b/test-requirements.txt
+index 2343fed0..be33ae71 100644
+--- a/test-requirements.txt
++++ b/test-requirements.txt
+@@ -1,4 +1,5 @@
+ tox
++pip >= 23 ; python_version >= '3.12'
+ pytest
+ pygame; python_version < '3.11'
+ pygame >= '2.1.3.dev8'; python_version >= '3.11'
+diff --git a/tox.ini b/tox.ini
+index 0b99fcfd..a7397f56 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -11,8 +11,7 @@ passenv =
+     HOME
+     USER
+ deps=
+-    pip
+-    -Ur{toxinidir}/test-requirements.txt
++    -r{toxinidir}/test-requirements.txt
+     num1: numpy
+     accel1: ./accelerate
+ #install_command = pip install -I {opts} {packages}
