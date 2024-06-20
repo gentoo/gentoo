@@ -4,6 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=pdm-backend
+# py3.13: https://github.com/pawamoy/markdown-exec/issues/58
 PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
