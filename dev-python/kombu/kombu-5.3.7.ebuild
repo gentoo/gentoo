@@ -32,7 +32,7 @@ BDEPEND="
 		>=dev-python/msgpack-0.3.0[${PYTHON_USEDEP}]
 		dev-python/pycurl[${PYTHON_USEDEP}]
 		>=dev-python/pymongo-4.1.1[${PYTHON_USEDEP}]
-		dev-python/pytest-freezegun[${PYTHON_USEDEP}]
+		dev-python/pytest-freezer[${PYTHON_USEDEP}]
 		dev-python/zstandard[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 		>=dev-python/pyyaml-3.10[${PYTHON_USEDEP}]
