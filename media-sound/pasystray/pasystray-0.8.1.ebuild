@@ -12,7 +12,7 @@ SRC_URI="https://github.com/christophgysin/${PN}/archive/refs/tags/${PV}.tar.gz 
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~x86"
-IUSE="libnotify zeroconf"
+IUSE="libnotify zeroconf X appindicator"
 
 RDEPEND="
 	dev-libs/glib
@@ -22,6 +22,7 @@ RDEPEND="
 	)
 	x11-libs/gtk+:3
 	x11-libs/libX11
+	appindicator? ( dev-libs/libappindicator )
 	zeroconf? ( net-dns/avahi )
 	libnotify? ( x11-libs/libnotify )
 "
@@ -37,6 +38,8 @@ src_prepare() {
 
 src_configure() {
 	econf \
+		$(use_enable X x11) \
+		$(use_enable appindicator appindicator) \
 		$(use_enable libnotify notify) \
 		$(use_enable zeroconf avahi)
 }
