@@ -1,0 +1,35 @@
+From 7b67706cbd30811ca555e14f8c43c6485ac77092 Mon Sep 17 00:00:00 2001
+From: P Purkayastha <ppurka@gmail.com>
+Date: Sat, 17 Feb 2024 23:11:10 +0000
+Subject: [PATCH 1/1] Fix compilation when gcc 14 is used. See
+ https://bugs.gentoo.org/924712
+
+---
+ log.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/log.c b/log.c
+index 07973a6..34b21a4 100644
+--- a/log.c
++++ b/log.c
+@@ -140,7 +140,7 @@ void log_show_window()
+ 	GtkCellRenderer *renderer;
+ 	gchar *ids[] = {"Log viewer", NULL};
+ 
+-	builder = get_gtk_builder(&ids);
++	builder = get_gtk_builder(ids);
+ 
+ 	tv = GTK_TREE_VIEW(gtk_builder_get_object(builder, "log_list"));
+ 	gtk_tree_view_set_model(tv, GTK_TREE_MODEL(log));
+@@ -163,7 +163,7 @@ void log_show_window()
+ 							   NULL);
+ 	gtk_tree_view_append_column(tv, column);
+ 
+-	dialog = gtk_builder_get_object(builder, "Log viewer");
++	dialog = GTK_WIDGET(gtk_builder_get_object(builder, "Log viewer"));
+ 	g_signal_connect(G_OBJECT(dialog),
+ 			 "response", (GCallback) log_dialog_response, NULL);
+ 
+-- 
+2.43.0
+
