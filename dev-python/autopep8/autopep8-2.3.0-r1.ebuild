@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
-	>=dev-python/pycodestyle-2.11.0[${PYTHON_USEDEP}]
+	>=dev-python/pycodestyle-2.12.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/tomli[${PYTHON_USEDEP}]
 	' 3.10)
