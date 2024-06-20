@@ -27,13 +27,12 @@ src_prepare() {
 	# Bug 718138, 870031, 870061.
 	local x cpp=
 	for x in {${CHOST}-,}{,clang-}cpp; do
-		if type -P "${x}" >/dev/null; then
-			cpp=${x}
+		if cpp="$(type -P "${x}")"; then
 			break
 		fi
 	done
 	[[ -n ${cpp} ]] || die "Unable to find cpp"
-	sed -i -e "s/CPP = \"cpp\";/CPP = \"${cpp}\";/" rpcgen/rpc_main.c || die
+	sed -i -e "s|CPP = \"/lib/cpp\";|CPP = \"${cpp}\";|" rpcgen/rpc_main.c || die
 }
 
 src_install() {
