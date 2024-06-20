@@ -5,4 +5,7 @@
 		<name>Gentoo TeX Project</name>
 		<email>tex@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">bastien-roucaries/latex-pax</remote-id>
+	</upstream>
 </pkgmetadata>
