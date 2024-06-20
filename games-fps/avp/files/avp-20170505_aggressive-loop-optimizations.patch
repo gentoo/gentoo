@@ -1,0 +1,26 @@
+From e619db32c0d0c358c806bf4f0c9af6ba8fcd513d Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Wed, 11 Nov 2020 02:22:35 +0300
+Subject: [PATCH] Fix -Waggressive-loop-optimizations warning
+
+decal.Vertices only have 4 entries, but loop tries to make 5.
+---
+ src/avp/decal.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/avp/decal.c b/src/avp/decal.c
+index b8a3fac..bc15c54 100644
+--- a/src/avp/decal.c
++++ b/src/avp/decal.c
+@@ -1082,7 +1082,7 @@ void ScanHModelForDecals(DISPLAYBLOCK *objectPtr, SECTION_DATA *sectionDataPtr)
+ 				decal.ModuleIndex = playerPherModule->m_index;
+ 				decal.UOffset = 0;
+ 
+-				for(i=0; i<5; i++)
++				for(i=0; i<4; i++)
+ 				{
+ 					decal.Vertices[i] = sectionDataPtr->Decals[d].Vertices[i];
+ 					RotateVector(&(decal.Vertices[i]),&(sectionDataPtr->SecMat));
+-- 
+2.26.2
+
