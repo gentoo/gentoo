@@ -1,5 +1,16 @@
 --- a/Makefile
 +++ b/Makefile
+@@ -54,8 +54,8 @@
+ 
+ # Mandatory compiler flags:
+ 
+-CFLAGS   += -fPIC
+-CXXFLAGS += -fPIC
++CFLAGS   += -fPIC -std=c++14
++CXXFLAGS += -fPIC -std=c++14
+ 
+ # Common include files:
+ 
 @@ -124,7 +124,7 @@
  VDRVERSION = $(shell sed -ne '/define VDRVERSION/s/^.*"\(.*\)".*$$/\1/p' config.h)
  APIVERSION = $(shell sed -ne '/define APIVERSION/s/^.*"\(.*\)".*$$/\1/p' config.h)
