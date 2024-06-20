@@ -7,7 +7,7 @@ EAPI=8
 JAVA_PKG_IUSE="doc source"
 MAVEN_PROVIDES="com.${PN}:${PN}-core:${PV} com.${PN}:${PN}-ui:${PV}"
 
-inherit desktop java-pkg-2 java-pkg-simple xdg
+inherit desktop java-pkg-2 java-pkg-simple optfeature xdg
 
 DESCRIPTION="Feature-filled Bittorrent client based on the Azureus open source project"
 HOMEPAGE="https://www.biglybt.com"
@@ -99,4 +99,12 @@ src_install() {
 		java-pkg_dosrc "uis/src/*"
 	fi
 	default
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+
+	optfeature_header "If you are using plugin proxies you might want to swap them for these native packages:"
+	optfeature "I2P SOCKS proxy" net-vpn/i2p net-vpn/i2pd
+	optfeature "TOR SOCKS proxy" net-vpn/tor
 }
