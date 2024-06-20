@@ -157,3 +157,7 @@ slang
 tcl
 tk
 xemacs
+
+# Andreas K. Hüttel <dilfridge@gentoo.org>
+# Requires 32bit alignment, so we mask it for the moment
+python_targets_python3_13

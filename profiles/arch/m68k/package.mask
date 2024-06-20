@@ -1,0 +1,6 @@
+# Copyright 2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Andreas K. Hüttel <dilfridge@gentoo.org>
+# Requires 32bit alignment, so we mask it for the moment
+dev-lang/python:3.13
