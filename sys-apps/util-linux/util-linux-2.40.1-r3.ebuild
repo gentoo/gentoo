@@ -116,18 +116,10 @@ src_unpack() {
 	fi
 
 	if use verify-sig ; then
-		mkdir "${T}"/verify-sig || die
-		pushd "${T}"/verify-sig &>/dev/null || die
-
 		# Upstream sign the decompressed .tar
-		# Let's do it separately in ${T} then cleanup to avoid external
-		# effects on normal unpack.
-		cp "${DISTDIR}"/${MY_P}.tar.xz . || die
-		xz -d ${MY_P}.tar.xz || die
-		verify-sig_verify_detached ${MY_P}.tar "${DISTDIR}"/${MY_P}.tar.sign
-
-		popd &>/dev/null || die
-		rm -r "${T}"/verify-sig || die
+		verify-sig_verify_detached \
+			<(xz -cd "${DISTDIR}"/${MY_P}.tar.xz) \
+			"${DISTDIR}"/${MY_P}.tar.sign
 	fi
 
 	default
