@@ -70,6 +70,9 @@ src_configure() {
 	else
 		echo "NO_LUA = 1" >> cgit.conf || die "echo NO_LUA failed"
 	fi
+	if use elibc_musl; then
+		echo 'export NO_REGEX=NeedsStartEnd' >> cgit.conf || die "echo export NO_REGEX=NeedsStartEnd failed"
+	fi
 }
 
 src_compile() {
