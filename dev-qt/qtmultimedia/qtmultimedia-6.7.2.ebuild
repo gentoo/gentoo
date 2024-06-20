@@ -53,6 +53,10 @@ DEPEND="
 "
 BDEPEND="~dev-qt/qtshadertools-${PV}:6"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gstreamer-no-v4l.patch
+)
+
 CMAKE_SKIP_TESTS=(
 	# unimportant and expects all backends to be available (bug #928420)
 	tst_backends
