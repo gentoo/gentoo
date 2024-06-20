@@ -12,7 +12,7 @@ SRC_URI="https://github.com/pear/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${M
 S="${WORKDIR}/${MY_P}"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 arm ~hppa ~ppc64 ~sparc x86"
+KEYWORDS="amd64 arm ~hppa ~ppc64 ~sparc x86"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 
