@@ -95,21 +95,14 @@ src_unpack() {
 	fi
 
 	if [[ ${PV} != *_rc* ]] && ! [[ ${MAN_PAGES_GENTOO_DIST} -eq 1 ]] && use verify-sig ; then
-		mkdir "${T}"/verify-sig || die
-		pushd "${T}"/verify-sig &>/dev/null || die
-
 		# Upstream sign the decompressed .tar
-		# Let's do it separately in ${T} then cleanup to avoid external
-		# effects on normal unpack.
-		cp "${DISTDIR}"/${P}.tar.xz . || die
-		xz -d ${P}.tar.xz || die
-		verify-sig_verify_detached ${P}.tar "${DISTDIR}"/${P}.tar.sign
-
-		popd &>/dev/null || die
-		rm -r "${T}"/verify-sig || die
+		einfo "Unpacking ${P}.tar.xz ..."
+		verify-sig_verify_detached - "${DISTDIR}"/${P}.tar.sign \
+			< <(xz -cd "${DISTDIR}"/${P}.tar.xz | tee >(tar -x))
+		assert "Unpack failed"
+	else
+		default
 	fi
-
-	default
 }
 
 src_prepare() {
