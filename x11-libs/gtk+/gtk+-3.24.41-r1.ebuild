@@ -37,6 +37,7 @@ COMMON_DEPEND="
 	colord? ( >=x11-misc/colord-0.1.9:0=[${MULTILIB_USEDEP}] )
 	cups? ( >=net-print/cups-2.0[${MULTILIB_USEDEP}] )
 	introspection? ( >=dev-libs/gobject-introspection-1.39:= )
+	sysprof? ( >=dev-util/sysprof-capture-3.33.2:3[${MULTILIB_USEDEP}] )
 	wayland? (
 		>=dev-libs/wayland-1.14.91[${MULTILIB_USEDEP}]
 		>=dev-libs/wayland-protocols-1.32
@@ -57,7 +58,6 @@ COMMON_DEPEND="
 	)
 "
 DEPEND="${COMMON_DEPEND}
-	sysprof? ( >=dev-util/sysprof-capture-3.33.2:4[${MULTILIB_USEDEP}] )
 	X? ( x11-base/xorg-proto )
 "
 RDEPEND="${COMMON_DEPEND}
@@ -95,16 +95,15 @@ MULTILIB_CHOST_TOOLS=(
 PATCHES=(
 	# gtk-update-icon-cache is installed by dev-util/gtk-update-icon-cache
 	"${FILESDIR}"/${PN}-3.24.36-update-icon-cache.patch
+	# Gentoo-specific patch to add a "poison" macro support, allowing other ebuilds
+	# with USE="-wayland -X" to trick gtk into claiming that it wasn't built with
+	# such support.
+	# https://bugs.gentoo.org/624960
+	"${FILESDIR}"/0001-gdk-add-a-poison-macro-to-hide-GDK_WINDOWING_.patch
 )
 
 src_prepare() {
 	default
-
-	# Force sysprof-capture-4 instead of checking sysprof-capture-3 first; either is
-	# fine as far as deps are concerned, as it static links, but sysprof-capture-3
-	# links to glib which would be done statically if there's glib[static-libs],
-	# making the whole of gtk+ static link to glib instead of dynamic linking to glib.
-	sed -i -e "s/'sysprof-capture-3'/'sysprof-capture-4'/g" meson.build || die
 
 	# The border-image-excess-size.ui test is known to fail on big-endian platforms
 	# See https://gitlab.gnome.org/GNOME/gtk/-/issues/5904
