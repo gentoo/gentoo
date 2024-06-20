@@ -95,6 +95,10 @@ MULTILIB_CHOST_TOOLS=(
 PATCHES=(
 	# gtk-update-icon-cache is installed by dev-util/gtk-update-icon-cache
 	"${FILESDIR}"/${PN}-3.24.36-update-icon-cache.patch
+	# Gentoo-specific patch to add a "poison" macro support, allowing other ebuilds
+	# with USE="-wayland -X" to trick gtk into claiming that it wasn't built with
+	# such support.
+	"${FILESDIR}"/0001-gdk-add-a-poison-macro-to-hide-GDK_WINDOWING_.patch
 )
 
 src_prepare() {
