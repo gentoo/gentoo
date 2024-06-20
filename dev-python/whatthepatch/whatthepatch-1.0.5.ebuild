@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,5 +17,11 @@ HOMEPAGE="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm64 ~ppc64 x86"
+
+EPYTEST_DESELECT=(
+	# the test measures performance of the patch parser together with test data
+	# preparation, which can take long time in some interpreters, bug #907243
+	tests/test_patch.py::PatchTestSuite::test_huge_patch
+)
 
 distutils_enable_tests pytest
