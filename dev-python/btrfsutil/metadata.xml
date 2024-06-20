@@ -4,4 +4,7 @@
 	<maintainer type="project">
 		<email>base-system@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">kdave/btrfs-progs</remote-id>
+	</upstream>
 </pkgmetadata>
