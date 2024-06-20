@@ -41,5 +41,5 @@ python_test() {
 	fi
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p freezegun
+	epytest -p freezer
 }
