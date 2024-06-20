@@ -635,11 +635,6 @@ x11-drivers/nvidia-drivers:0/390
 # This is likely to cause issues in tests; Unmask if using for other purposes
 >=dev-php/PHP_Timer-5.0
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-11-23)
-# Does not support updated dev-java/pdfbox-2.0.24, Bug #803488
-# Blocks (CVE-2018-11797, CVE-2021-{27807,27906,31811,31812})
-dev-tex/pdfannotextractor
-
 # Ionen Wolkens <ionen@gentoo.org> (2021-10-09)
 # Vulkan beta driver branch aimed at Vulkan developers for testing
 # new features. Beside vulkan, it is typically behind the main branch
