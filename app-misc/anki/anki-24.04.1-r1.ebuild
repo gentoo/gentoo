@@ -716,7 +716,7 @@ LICENSE+=" Unicode-3.0 openssl"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="+gui qt6 test"
+IUSE="doc +gui qt6 test"
 REQUIRED_USE="gui? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!gui? ( test ) !test? ( test )"
 
@@ -773,6 +773,12 @@ BDEPEND="
 	dev-libs/protobuf
 	virtual/pkgconfig
 	>=virtual/rust-1.75.0
+	doc? (
+		$(python_gen_cond_dep '
+			>=dev-python/sphinx-7.2.6[${PYTHON_USEDEP}]
+			dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
+			dev-python/sphinx-autoapi[${PYTHON_USEDEP}]')
+	)
 	gui? (
 		${PYTHON_DEPS}
 		app-alternatives/ninja
@@ -846,6 +852,10 @@ src_prepare() {
 		mkdir -p out/pyenv/bin || die
 		ln -s "${PYTHON}" out/pyenv/bin/python || die
 		# TODO: ln -s "${BROOT}/usr/bin/protoc-gen-mypy" out/pyenv/bin || die
+		if use doc; then
+			ln -s "${BROOT}"/usr/bin/sphinx-apidoc out/pyenv/bin || die
+			ln -s "${BROOT}"/usr/bin/sphinx-build out/pyenv/bin || die
+		fi
 
 		# Anki's Qt detection mechanism falls back to Qt5 Python bindings, if Qt6
 		# Python bindings don't get imported successfully.
@@ -890,6 +900,7 @@ src_compile() {
 
 		_cargo_env cargo_src_compile -p runner
 		edo ${MY_RUNNER} wheels
+		use doc && edo ${MY_RUNNER} python:sphinx
 	else
 		cargo_src_compile --package anki-sync-server
 	fi
@@ -931,6 +942,8 @@ src_install() {
 		insinto /usr/share/mime/packages
 		doins anki.xml
 		popd || die
+		use doc && dodoc -r out/python/sphinx/html
+
 		for w in out/wheels/*.whl; do
 			unzip "${w}" -d out/wheels || die
 		done
