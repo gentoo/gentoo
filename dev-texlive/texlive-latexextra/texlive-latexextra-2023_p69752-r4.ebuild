@@ -1038,7 +1038,6 @@ TEXLIVE_MODULE_CONTENTS="
 	patchcmd.r41379
 	pauldoc.r16005
 	pawpict.r21629
-	pax.r63509
 	pbalance.r67201
 	pbox.r24807
 	pbsheet.r24830
@@ -2560,7 +2559,6 @@ TEXLIVE_MODULE_DOC_CONTENTS="
 	patchcmd.doc.r41379
 	pauldoc.doc.r16005
 	pawpict.doc.r21629
-	pax.doc.r63509
 	pbalance.doc.r67201
 	pbox.doc.r24807
 	pbsheet.doc.r24830
@@ -3678,7 +3676,6 @@ TEXLIVE_MODULE_SRC_CONTENTS="
 	patchcmd.source.r41379
 	pauldoc.source.r16005
 	pawpict.source.r21629
-	pax.source.r63509
 	pbalance.source.r67201
 	pbox.source.r24807
 	pbsheet.source.r24830
@@ -3981,7 +3978,6 @@ TEXLIVE_MODULE_BINSCRIPTS="
 	texmf-dist/scripts/makedtx/makedtx.pl
 	texmf-dist/scripts/pagelayout/pagelayoutapi
 	texmf-dist/scripts/pagelayout/textestvis
-	texmf-dist/scripts/pax/pdfannotextractor.pl
 	texmf-dist/scripts/perltex/perltex.pl
 	texmf-dist/scripts/pygmentex/pygmentex.py
 	texmf-dist/scripts/splitindex/splitindex.pl
