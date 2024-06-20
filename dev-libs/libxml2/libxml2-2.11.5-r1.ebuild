@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -53,7 +53,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 if [[ ${PV} == 9999 ]] ; then
-	BDEPEND+=" dev-build/gtk-doc-am"
+	BDEPEND+=" dev-util/gtk-doc-am"
 fi
 
 MULTILIB_CHOST_TOOLS=(
@@ -71,7 +71,7 @@ src_unpack() {
 		unpack ${tarname}
 
 		if [[ -n ${PATCHSET_VERSION} ]] ; then
-			unpack ${PN}-${PATCHSET_VERSION}.tar.xz
+			unpack ${PN}-${PATCHSET_VERSION}.tar.bz2
 		fi
 	fi
 
@@ -139,6 +139,7 @@ multilib_src_compile() {
 	if multilib_is_native_abi && use python ; then
 		NATIVE_BUILD_DIR="${BUILD_DIR}"
 		python_foreach_impl run_in_build_dir libxml2_py_emake all
+
 	fi
 
 	# Remove all references to $SYSROOT from installed files
