@@ -5,7 +5,11 @@ After=network.target
 [Service]
 User=tox
 Group=tox
+#Since the daemon can use around 600 tcp sockets,
+#increase the soft limit on open files to 4096
+LimitNOFILE=4096
 RuntimeDirectory=tox-bootstrapd
+RuntimeDirectoryMode=750
 PIDFile=/run/tox-bootstrapd/tox-bootstrapd.pid
 WorkingDirectory=/var/lib/tox-bootstrapd
 ExecStart=/usr/bin/tox-bootstrapd --config /etc/tox-bootstrapd.conf

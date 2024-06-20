@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{9,10,11} )
+PYTHON_COMPAT=( python3_{9,10,11,12} )
 
 inherit python-single-r1 xdg
 
@@ -101,8 +101,8 @@ src_configure() {
 	if ! use X; then
 		export DISABLE_X11=1
 	fi
-	#include strings.h fixes undefined reference to strcasecmp()
-	#defining _GNU_SOURCE fixes undefined reference to strcasestr()
+	#Including strings.h fixes undefined reference to strcasecmp()
+	#Defining _GNU_SOURCE fixes undefined reference to strcasestr()
 	export USER_CFLAGS="${CFLAGS} -include strings.h -D _GNU_SOURCE"
 	export USER_LDFLAGS="${LDFLAGS}"
 	#set install directory to /usr.

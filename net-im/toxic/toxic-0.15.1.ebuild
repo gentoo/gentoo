@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9,10,11} )
+PYTHON_COMPAT=( python3_{10,11,12} )
 
 inherit python-single-r1 xdg
 
@@ -13,15 +13,15 @@ SRC_URI="https://github.com/JFreegman/toxic/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="+audio-notify debug games llvm notification png python qrcode +sound +video +X"
+KEYWORDS="~amd64 ~x86"
+IUSE="+audio-notify debug experimental games llvm notification png python qrcode +sound +video +X"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 	video? ( sound X ) "
 
 BDEPEND="dev-libs/libconfig:=
 	virtual/pkgconfig"
 
-RDEPEND="net-libs/tox:=
+RDEPEND=">=net-libs/tox-0.2.19:=
 	net-misc/curl
 	sys-kernel/linux-headers
 	sys-libs/ncurses:=
@@ -29,8 +29,9 @@ RDEPEND="net-libs/tox:=
 		media-libs/freealut
 		media-libs/openal
 	)
-	notification? ( x11-libs/libnotify )
 	debug? ( llvm? ( sys-devel/llvm:* ) )
+	experimental? ( net-libs/tox[experimental] )
+	notification? ( x11-libs/libnotify )
 	python? ( ${PYTHON_DEPS} )
 	qrcode? (
 		media-gfx/qrencode:=
@@ -63,8 +64,6 @@ src_prepare() {
 	sed -i -e 's/?=/=/g' Makefile || die "Unable to change assignment of CFLAGS and LDFLAGS"
 	#Fix incomplete invocation of python-config
 	sed -i -e "s/--ldflags/--ldflags --embed/" cfg/checks/python.mk || die "Unable to fix python linking"
-	#This is to fix incorrect include statements of NAME_MAX and PATH_MAX macros
-	eapply -p0 "${FILESDIR}/${P}-NAME_MAX-and-PATH_MAX.patch" || die "Unable to fix include statements"
 }
 
 src_configure() {
@@ -76,6 +75,9 @@ src_configure() {
 		if use llvm; then
 			export ENABLE_ASAN=1
 		fi
+	fi
+	if use experimental; then
+		export ENABLE_TOX_EXPERIMENTAL=1
 	fi
 	if ! use games; then
 		export DISABLE_GAMES=1
@@ -102,8 +104,9 @@ src_configure() {
 		export DISABLE_X11=1
 	fi
 	#Including strings.h fixes undefined reference to strcasecmp()
+	#Including linux/limits.h fixes undefinded reference to NAME_MAX and PATH_MAX macros
 	#Defining _GNU_SOURCE fixes undefined reference to strcasestr()
-	export USER_CFLAGS="${CFLAGS} -include strings.h -D _GNU_SOURCE"
+	export USER_CFLAGS="${CFLAGS} -include strings.h -include linux/limits.h -D _GNU_SOURCE"
 	export USER_LDFLAGS="${LDFLAGS}"
 	#set install directory to /usr.
 	sed -i -e "s,/usr/local,${EPREFIX}/usr,g" cfg/global_vars.mk || die "Failed to set install directory!"
