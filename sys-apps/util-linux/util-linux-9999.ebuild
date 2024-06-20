@@ -115,14 +115,15 @@ src_unpack() {
 		return
 	fi
 
-	if use verify-sig ; then
-		# Upstream sign the decompressed .tar
-		verify-sig_verify_detached \
-			<(xz -cd "${DISTDIR}"/${MY_P}.tar.xz) \
-			"${DISTDIR}"/${MY_P}.tar.sign
+	# Upstream sign the decompressed .tar
+	if use verify-sig; then
+		einfo "Unpacking ${MY_P}.tar.xz ..."
+		verify-sig_verify_detached - "${DISTDIR}"/${MY_P}.tar.sign \
+			< <(xz -cd "${DISTDIR}"/${MY_P}.tar.xz | tee >(tar -x))
+		assert "Unpack failed"
+	else
+		default
 	fi
-
-	default
 }
 
 src_prepare() {
