@@ -10,7 +10,7 @@ SRC_URI="https://www.dockapps.net/download/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext
