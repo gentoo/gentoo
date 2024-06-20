@@ -108,6 +108,14 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	# Gentoo-specific patch to add a "poison" macro support, allowing other ebuilds
+	# with USE="-wayland -X" to trick gtk into claiming that it wasn't built with
+	# such support.
+	# https://bugs.gentoo.org/624960
+	"${FILESDIR}"/0001-gdk-add-a-poison-macro-to-hide-GDK_WINDOWING_.patch
+)
+
 python_check_deps() {
 	python_has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]" || return
 }
