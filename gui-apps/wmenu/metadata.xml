@@ -10,6 +10,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourcehut">~adnano/wmenu</remote-id>
+		<remote-id type="codeberg">adnano/wmenu</remote-id>
 	</upstream>
 </pkgmetadata>
