@@ -469,7 +469,7 @@ LICENSE="MIT"
 LICENSE+=" Apache-2.0 BSD Boost-1.0 ISC MIT MPL-2.0 Unicode-DFS-2016 openssl"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE="+client server test +sync"
+IUSE="+client +daemon server test +sync"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	|| ( client server )
@@ -496,6 +496,7 @@ DOCS=(
 src_configure() {
 	local myfeatures=(
 		$(usev client)
+		$(usev daemon)
 		$(usev server)
 		$(usev sync)
 	)

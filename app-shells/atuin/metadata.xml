@@ -15,6 +15,7 @@
 	</maintainer>
 	<use>
 		<flag name="client">Enable the autin client</flag>
+		<flag name="daemon">Enable the autin background daemon on the client</flag>
 		<flag name="server">Enable the autin server</flag>
 		<flag name="sync">Enable the server-sync feature in the autin client</flag>
 	</use>
