@@ -1,0 +1,42 @@
+diff --git a/BlockOut/Makefile b/BlockOut/Makefile
+index 0cdfa00..7e5b531 100644
+--- a/BlockOut/Makefile
++++ b/BlockOut/Makefile
+@@ -71,6 +71,10 @@ LFLAGS   =      -L $(SDL_LIBS) \
+ 
+ endif
+ 
++ifdef GAME_DATA_PREFIX
++CXXFLAGS += -DBL2_HOME=\"$(GAME_DATA_PREFIX)\"
++endif
++
+ 
+ #--------------------------------------------------------------------
+ 
+diff --git a/BlockOut/Utils.cpp b/BlockOut/Utils.cpp
+index 4ccd8df..eb37e88 100644
+--- a/BlockOut/Utils.cpp
++++ b/BlockOut/Utils.cpp
+@@ -206,13 +206,21 @@ BOOL CheckEnv() {
+     printf("Please set the HOME variable to your home directory (ex: HOME=/users/jeanluc)\n");
+     return FALSE;
+   }
+-    
++
++#ifndef BL2_HOME
++
+   char *blockoutHome = getenv("BL2_HOME");
+   if( blockoutHome==NULL ) {
+     printf("BL2_HOME environement variable if not defined !\n");
+     printf("Please set the BL2_HOME to the BlockOut II installation directory (ex: BL2_HOME=/usr/local/bl2).\n");
+     return FALSE;
+   }
++#else
++
++  char const *blockoutHome = BL2_HOME;
++
++#endif
++
+   strcpy( bl2Home , blockoutHome );
+     
+   char bl2Dir[512];
