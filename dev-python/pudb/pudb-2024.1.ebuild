@@ -4,14 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1 pypi optfeature
 
 DESCRIPTION="A full-screen, console-based Python debugger"
-HOMEPAGE="https://documen.tician.de/pudb/
-	https://github.com/inducer/pudb
-	https://pypi.org/project/pudb/"
+HOMEPAGE="
+	https://documen.tician.de/pudb/
+	https://github.com/inducer/pudb/
+	https://pypi.org/project/pudb/
+"
 
 LICENSE="MIT"
 SLOT="0"
