@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Ionen Wolkens <ionen@gentoo.org> (2024-06-18)
-# Disabling currently breaks build with USE=gstreamer, so forcing
-# as a quick workaround until this is more closely looked at
-# (does not need libv4l, and is trivial either way).
+# Disabling currently breaks build with USE=gstreamer, so forcing as
+# a quick workaround until this is more closely looked at (bug #934582)
 >=dev-qt/qtmultimedia-6.7.2 v4l
 
 # Sam James <sam@gentoo.org> (2024-06-03)
