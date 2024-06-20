@@ -1686,10 +1686,20 @@ gcc_do_filter_flags() {
 
 	# These are set here so we have something sane at configure time
 	if is_crosscompile ; then
+		local orig_CFLAGS="${CFLAGS}"
+
 		# Set this to something sane for both native and target
 		CFLAGS="-O2 -pipe"
-		FFLAGS=${CFLAGS}
-		FCFLAGS=${CFLAGS}
+		FFLAGS="${CFLAGS}"
+		FCFLAGS="${CFLAGS}"
+
+		# If the original CFLAGS set by the user have debugging
+		# symbol settings in them, let's try to (weakly) preserve
+		# that. It'll make debugging cross-compilers easier.
+		# bug #792321.
+		if [[ "${orig_CFLAGS}" =~ -g?(gdb)?([1-9]) ]] ; then
+			CFLAGS+=" ${BASH_REMATCH[0]}"
+		fi
 
 		# "hppa2.0-unknown-linux-gnu" -> hppa2_0_unknown_linux_gnu
 		local VAR="CFLAGS_"${CTARGET//[-.]/_}
