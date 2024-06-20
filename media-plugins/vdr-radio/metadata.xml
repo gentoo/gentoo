@@ -13,8 +13,11 @@
         <email>vdr@gentoo.org</email>
         <name>Gentoo VDR Project</name>
     </maintainer>
+    <upstream>
+        <remote-id type="github">vdr-projects/vdr-plugin-radio</remote-id>
+    </upstream>
     <longdescription>
-        This Plugin display a background image while the vdr is switcht to radio channels.
-        Also it supports RDS on radio channels.
+        This Plugin displays a background image while the vdr is switched to radio channels.
+        It also supports RDS text on radio channels.
     </longdescription>
 </pkgmetadata>
