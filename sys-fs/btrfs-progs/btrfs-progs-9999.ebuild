@@ -94,29 +94,17 @@ pkg_setup() {
 	: # Prevent python-any-r1_python_setup
 }
 
-src_unpack() {
-	if [[ ${PV} == 9999 ]] ; then
-		git-r3_src_unpack
-		return
-	fi
-
-	if in_iuse verify-sig && use verify-sig ; then
-		mkdir "${T}"/verify-sig || die
-		pushd "${T}"/verify-sig &>/dev/null || die
-
-		# Upstream sign the decompressed .tar
-		# Let's do it separately in ${T} then cleanup to avoid external
-		# effects on normal unpack.
-		cp "${DISTDIR}"/${MY_P}.tar.xz . || die
-		xz -d ${MY_P}.tar.xz || die
-		verify-sig_verify_detached ${MY_P}.tar "${DISTDIR}"/${MY_P}.tar.sign
-
-		popd &>/dev/null || die
-		rm -r "${T}"/verify-sig || die
-	fi
-
-	default
-}
+if [[ ${PV} != 9999 ]]; then
+	src_unpack() {
+		if use verify-sig ; then
+			# Upstream sign the decompressed .tar
+			verify-sig_verify_detached \
+				<(xz -cd "${DISTDIR}"/${MY_P}.tar.xz) \
+				"${DISTDIR}"/${MY_P}.tar.sign
+		fi
+		default
+	}
+fi
 
 src_prepare() {
 	default
