@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-20)
+# EAPI=6, keyworded for x86 only (making it hard to debug), has
+# open bugs for modern C and not using correct toolchain commands.
+# Removal on 2024-07-20.  Bugs #934621, #925090, #724078, #727438.
+dev-debug/ald
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-20)
 # EAPI=6, no reverse dependencies, waiting for a version bump.
 # Removal on 2024-07-20.  Bugs #934619, #730758, #713760.
 media-gfx/dawn
