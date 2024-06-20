@@ -35,18 +35,19 @@ distutils_enable_sphinx doc \
 	dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest
 
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# https://foss.heptapod.net/openpyxl/openpyxl/-/issues/2187
+	sed -i -e 's:float_:float64:' openpyxl/compat/tests/test_compat.py || die
+}
+
 python_test() {
 	local EPYTEST_DESELECT=(
 		# GC assumptions (pypy)
 		openpyxl/tests/test_iter.py::test_file_descriptor_leak
 	)
 
-	if has_version ">=dev-python/numpy-2[${PYTHON_USEDEP}]"; then
-		EPYTEST_DESELECT+=(
-			# https://foss.heptapod.net/openpyxl/openpyxl/-/issues/2187
-			openpyxl/compat/tests/test_compat.py::test_numpy_tostring
-		)
-	fi
-
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
 }
