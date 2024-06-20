@@ -1,0 +1,578 @@
+From e0a55f9c0efe483849d86738ec1e5c757fcf275d Mon Sep 17 00:00:00 2001
+From: Devin Carr <dcarr@cloudflare.com>
+Date: Mon, 13 Nov 2023 17:10:59 -0800
+Subject: [PATCH] TUN-7965: Remove legacy incident status page check
+
+---
+ cmd/cloudflared/tunnel/configuration.go   |   1 -
+ supervisor/cloudflare_status_page.go      | 117 -------
+ supervisor/cloudflare_status_page_test.go | 384 ----------------------
+ supervisor/tunnel.go                      |  17 -
+ 4 files changed, 519 deletions(-)
+ delete mode 100644 supervisor/cloudflare_status_page.go
+ delete mode 100644 supervisor/cloudflare_status_page_test.go
+
+diff --git a/cmd/cloudflared/tunnel/configuration.go b/cmd/cloudflared/tunnel/configuration.go
+index 68780b00634..1a1c4ff4d7f 100644
+--- a/cmd/cloudflared/tunnel/configuration.go
++++ b/cmd/cloudflared/tunnel/configuration.go
+@@ -228,7 +228,6 @@ func prepareTunnelConfig(
+ 		EdgeIPVersion:   edgeIPVersion,
+ 		EdgeBindAddr:    edgeBindAddr,
+ 		HAConnections:   c.Int(haConnectionsFlag),
+-		IncidentLookup:  supervisor.NewIncidentLookup(),
+ 		IsAutoupdated:   c.Bool("is-autoupdated"),
+ 		LBPool:          c.String("lb-pool"),
+ 		Tags:            tags,
+diff --git a/supervisor/cloudflare_status_page.go b/supervisor/cloudflare_status_page.go
+deleted file mode 100644
+index c31069c270b..00000000000
+--- a/supervisor/cloudflare_status_page.go
++++ /dev/null
+@@ -1,117 +0,0 @@
+-package supervisor
+-
+-import (
+-	"encoding/json"
+-	"io"
+-	"net/http"
+-	"strings"
+-	"time"
+-
+-	"github.com/cloudflare/golibs/lrucache"
+-)
+-
+-// StatusPage.io API docs:
+-// https://www.cloudflarestatus.com/api/v2/#incidents-unresolved
+-const (
+-	activeIncidentsURL    = "https://yh6f0r4529hb.statuspage.io/api/v2/incidents/unresolved.json"
+-	argoTunnelKeyword     = "argo tunnel"
+-	incidentDetailsPrefix = "https://www.cloudflarestatus.com/incidents/"
+-)
+-
+-// IncidentLookup is an object that checks for active incidents in
+-// the Cloudflare infrastructure.
+-type IncidentLookup interface {
+-	ActiveIncidents() []Incident
+-}
+-
+-// NewIncidentLookup returns a new IncidentLookup instance that caches its
+-// results with a 1-minute TTL.
+-func NewIncidentLookup() IncidentLookup {
+-	return newCachedIncidentLookup(fetchActiveIncidents)
+-}
+-
+-type IncidentUpdate struct {
+-	Body string
+-}
+-
+-type Incident struct {
+-	Name    string
+-	ID      string           `json:"id"`
+-	Updates []IncidentUpdate `json:"incident_updates"`
+-}
+-
+-type StatusPage struct {
+-	Incidents []Incident
+-}
+-
+-func (i Incident) URL() string {
+-	return incidentDetailsPrefix + i.ID
+-}
+-
+-func parseStatusPage(data []byte) (*StatusPage, error) {
+-	var result StatusPage
+-	err := json.Unmarshal(data, &result)
+-	return &result, err
+-}
+-
+-func isArgoTunnelIncident(i Incident) bool {
+-	if strings.Contains(strings.ToLower(i.Name), argoTunnelKeyword) {
+-		return true
+-	}
+-	for _, u := range i.Updates {
+-		if strings.Contains(strings.ToLower(u.Body), argoTunnelKeyword) {
+-			return true
+-		}
+-	}
+-	return false
+-}
+-
+-func fetchActiveIncidents() (incidents []Incident) {
+-	resp, err := http.Get(activeIncidentsURL)
+-	if err != nil {
+-		return
+-	}
+-	defer resp.Body.Close()
+-	body, err := io.ReadAll(resp.Body)
+-	if err != nil {
+-		return
+-	}
+-	statusPage, err := parseStatusPage(body)
+-	if err != nil {
+-		return
+-	}
+-	for _, i := range statusPage.Incidents {
+-		if isArgoTunnelIncident(i) {
+-			incidents = append(incidents, i)
+-		}
+-	}
+-	return incidents
+-}
+-
+-type cachedIncidentLookup struct {
+-	cache          *lrucache.LRUCache
+-	ttl            time.Duration
+-	uncachedLookup func() []Incident
+-}
+-
+-func newCachedIncidentLookup(uncachedLookup func() []Incident) *cachedIncidentLookup {
+-	return &cachedIncidentLookup{
+-		cache:          lrucache.NewLRUCache(1),
+-		ttl:            time.Minute,
+-		uncachedLookup: uncachedLookup,
+-	}
+-}
+-
+-// We only need one cache entry. Always use the empty string as its key.
+-const cacheKey = ""
+-
+-func (c *cachedIncidentLookup) ActiveIncidents() []Incident {
+-	if cached, ok := c.cache.GetNotStale(cacheKey); ok {
+-		if incidents, ok := cached.([]Incident); ok {
+-			return incidents
+-		}
+-	}
+-	incidents := c.uncachedLookup()
+-	c.cache.Set(cacheKey, incidents, time.Now().Add(c.ttl))
+-	return incidents
+-}
+diff --git a/supervisor/cloudflare_status_page_test.go b/supervisor/cloudflare_status_page_test.go
+deleted file mode 100644
+index a86fb63ffd4..00000000000
+--- a/supervisor/cloudflare_status_page_test.go
++++ /dev/null
+@@ -1,384 +0,0 @@
+-package supervisor
+-
+-import (
+-	"testing"
+-	"time"
+-
+-	"github.com/cloudflare/golibs/lrucache"
+-	"github.com/stretchr/testify/assert"
+-)
+-
+-func TestParseStatusPage(t *testing.T) {
+-	testCases := []struct {
+-		input  []byte
+-		output *StatusPage
+-		fail   bool
+-	}{
+-		{
+-			input: []byte(`<html>
+-				<head><title>504 Gateway Time-out</title></head>
+-				<body><center><h1>504 Gateway Time-out</h1></center></body>
+-			</html>`),
+-			output: nil,
+-			fail:   true,
+-		},
+-		{
+-			input: []byte(`{
+-				"page": {
+-					"id": "yh6f0r4529hb",
+-					"name": "Cloudflare",
+-					"url": "https://www.cloudflarestatus.com",
+-					"time_zone": "Etc/UTC",
+-					"updated_at": "2019-01-10T20:11:38.750Z"
+-				},
+-				"incidents": [
+-					{
+-						"name": "Cloudflare API service issues",
+-						"status": "resolved",
+-						"created_at": "2018-09-17T19:29:21.132Z",
+-						"updated_at": "2018-09-18T07:45:41.313Z",
+-						"monitoring_at": "2018-09-17T21:35:06.492Z",
+-						"resolved_at": "2018-09-18T07:45:41.290Z",
+-						"shortlink": "http://stspg.io/7f079791e",
+-						"id": "q746ybtyb6q0",
+-						"page_id": "yh6f0r4529hb",
+-						"incident_updates": [
+-							{
+-								"status": "resolved",
+-								"body": "Cloudflare has resolved the issue and the service have resumed normal operation.",
+-								"created_at": "2018-09-18T07:45:41.290Z",
+-								"updated_at": "2018-09-18T07:45:41.290Z",
+-								"display_at": "2018-09-18T07:45:41.290Z",
+-								"affected_components": [
+-									{
+-										"code": "g4tb35rs9yw7",
+-										"name": "Cloudflare customer dashboard and APIs - Cloudflare APIs",
+-										"old_status": "operational",
+-										"new_status": "operational"
+-									}
+-								],
+-								"deliver_notifications": true,
+-								"tweet_id": null,
+-								"id": "zl5g2pl5zhfs",
+-								"incident_id": "q746ybtyb6q0",
+-								"custom_tweet": null
+-							},
+-							{
+-								"status": "monitoring",
+-								"body": "Cloudflare has implemented a fix for this issue and is currently monitoring the results.\r\n\r\nWe will update the status once the issue is resolved.",
+-								"created_at": "2018-09-17T21:35:06.492Z",
+-								"updated_at": "2018-09-17T21:35:06.492Z",
+-								"display_at": "2018-09-17T21:35:06.492Z",
+-								"affected_components": [
+-									{
+-										"code": "g4tb35rs9yw7",
+-										"name": "Cloudflare customer dashboard and APIs - Cloudflare APIs",
+-										"old_status": "degraded_performance",
+-										"new_status": "operational"
+-									}
+-								],
+-								"deliver_notifications": false,
+-								"tweet_id": null,
+-								"id": "0001sv3chdnx",
+-								"incident_id": "q746ybtyb6q0",
+-								"custom_tweet": null
+-							},
+-							{
+-								"status": "investigating",
+-								"body": "We are continuing to investigate this issue.",
+-								"created_at": "2018-09-17T19:30:08.049Z",
+-								"updated_at": "2018-09-17T19:30:08.049Z",
+-								"display_at": "2018-09-17T19:30:08.049Z",
+-								"affected_components": [
+-									{
+-										"code": "g4tb35rs9yw7",
+-										"name": "Cloudflare customer dashboard and APIs - Cloudflare APIs",
+-										"old_status": "operational",
+-										"new_status": "degraded_performance"
+-									}
+-								],
+-								"deliver_notifications": false,
+-								"tweet_id": null,
+-								"id": "qdr164tfpq7m",
+-								"incident_id": "q746ybtyb6q0",
+-								"custom_tweet": null
+-							},
+-							{
+-								"status": "investigating",
+-								"body": "Cloudflare is investigating issues with APIs and Page Rule delays for Page Rule updates.  Cloudflare Page Rule service delivery is unaffected and is operating normally.  Also, these issues do not affect the Cloudflare CDN and therefore, do not impact customer websites.",
+-								"created_at": "2018-09-17T19:29:21.201Z",
+-								"updated_at": "2018-09-17T19:29:21.201Z",
+-								"display_at": "2018-09-17T19:29:21.201Z",
+-								"affected_components": [
+-									{
+-										"code": "g4tb35rs9yw7",
+-										"name": "Cloudflare customer dashboard and APIs - Cloudflare APIs",
+-										"old_status": "operational",
+-										"new_status": "operational"
+-									}
+-								],
+-								"deliver_notifications": false,
+-								"tweet_id": null,
+-								"id": "qzl2n0q8tskg",
+-								"incident_id": "q746ybtyb6q0",
+-								"custom_tweet": null
+-							}
+-						],
+-						"components": [
+-							{
+-								"status": "operational",
+-								"name": "Cloudflare APIs",
+-								"created_at": "2014-10-09T03:32:07.158Z",
+-								"updated_at": "2019-01-01T22:58:30.846Z",
+-								"position": 2,
+-								"description": null,
+-								"showcase": false,
+-								"id": "g4tb35rs9yw7",
+-								"page_id": "yh6f0r4529hb",
+-								"group_id": "1km35smx8p41",
+-								"group": false,
+-								"only_show_if_degraded": false
+-							}
+-						],
+-						"impact": "minor"
+-					},
+-					{
+-						"name": "Web Analytics Delays",
+-						"status": "resolved",
+-						"created_at": "2018-09-17T18:05:39.907Z",
+-						"updated_at": "2018-09-17T22:53:05.078Z",
+-						"monitoring_at": null,
+-						"resolved_at": "2018-09-17T22:53:05.057Z",
+-						"shortlink": "http://stspg.io/cb208928c",
+-						"id": "wqfk9mzs5qt1",
+-						"page_id": "yh6f0r4529hb",
+-						"incident_updates": [
+-							{
+-								"status": "resolved",
+-								"body": "Cloudflare has resolved the issue and Web Analytics have resumed normal operation.",
+-								"created_at": "2018-09-17T22:53:05.057Z",
+-								"updated_at": "2018-09-17T22:53:05.057Z",
+-								"display_at": "2018-09-17T22:53:05.057Z",
+-								"affected_components": [
+-									{
+-										"code": "4c231tkdlpcl",
+-										"name": "Cloudflare customer dashboard and APIs - Analytics",
+-										"old_status": "degraded_performance",
+-										"new_status": "operational"
+-									}
+-								],
+-								"deliver_notifications": false,
+-								"tweet_id": null,
+-								"id": "93y1w00yqzk4",
+-								"incident_id": "wqfk9mzs5qt1",
+-								"custom_tweet": null
+-							},
+-							{
+-								"status": "investigating",
+-								"body": "There is a delay in processing Cloudflare Web Analytics. This affects timely delivery of customer data.\n\nThese delays do not impact analytics for DNS and Rate Limiting.",
+-								"created_at": "2018-09-17T18:05:40.033Z",
+-								"updated_at": "2018-09-17T18:05:40.033Z",
+-								"display_at": "2018-09-17T18:05:40.033Z",
+-								"affected_components": [
+-									{
+-										"code": "4c231tkdlpcl",
+-										"name": "Cloudflare customer dashboard and APIs - Analytics",
+-										"old_status": "operational",
+-										"new_status": "degraded_performance"
+-									}
+-								],
+-								"deliver_notifications": false,
+-								"tweet_id": null,
+-								"id": "362t6lv0vrpk",
+-								"incident_id": "wqfk9mzs5qt1",
+-								"custom_tweet": null
+-							}
+-						],
+-						"components": [
+-							{
+-								"status": "operational",
+-								"name": "Analytics",
+-								"created_at": "2014-11-13T11:54:10.191Z",
+-								"updated_at": "2018-12-31T08:20:52.349Z",
+-								"position": 3,
+-								"description": "Customer data",
+-								"showcase": false,
+-								"id": "4c231tkdlpcl",
+-								"page_id": "yh6f0r4529hb",
+-								"group_id": "1km35smx8p41",
+-								"group": false,
+-								"only_show_if_degraded": false
+-							}
+-						],
+-						"impact": "minor"
+-					}
+-				]
+-			}`),
+-			output: &StatusPage{
+-				Incidents: []Incident{
+-					Incident{
+-						Name: "Cloudflare API service issues",
+-						ID:   "q746ybtyb6q0",
+-						Updates: []IncidentUpdate{
+-							IncidentUpdate{
+-								Body: "Cloudflare has resolved the issue and the service have resumed normal operation.",
+-							},
+-							IncidentUpdate{
+-								Body: "Cloudflare has implemented a fix for this issue and is currently monitoring the results.\r\n\r\nWe will update the status once the issue is resolved.",
+-							},
+-							IncidentUpdate{
+-								Body: "We are continuing to investigate this issue.",
+-							},
+-							IncidentUpdate{
+-								Body: "Cloudflare is investigating issues with APIs and Page Rule delays for Page Rule updates.  Cloudflare Page Rule service delivery is unaffected and is operating normally.  Also, these issues do not affect the Cloudflare CDN and therefore, do not impact customer websites.",
+-							},
+-						},
+-					},
+-					Incident{
+-						Name: "Web Analytics Delays",
+-						ID:   "wqfk9mzs5qt1",
+-						Updates: []IncidentUpdate{
+-							IncidentUpdate{
+-								Body: "Cloudflare has resolved the issue and Web Analytics have resumed normal operation.",
+-							},
+-							IncidentUpdate{
+-								Body: "There is a delay in processing Cloudflare Web Analytics. This affects timely delivery of customer data.\n\nThese delays do not impact analytics for DNS and Rate Limiting.",
+-							},
+-						},
+-					},
+-				},
+-			},
+-			fail: false,
+-		},
+-	}
+-
+-	for _, testCase := range testCases {
+-		output, err := parseStatusPage(testCase.input)
+-		if testCase.fail {
+-			assert.Error(t, err)
+-		} else {
+-			assert.Nil(t, err)
+-			assert.Equal(t, testCase.output, output)
+-		}
+-	}
+-}
+-
+-func TestIsArgoTunnelIncident(t *testing.T) {
+-	testCases := []struct {
+-		input  Incident
+-		output bool
+-	}{
+-		{
+-			input:  Incident{},
+-			output: false,
+-		},
+-		{
+-			input:  Incident{Name: "An Argo Tunnel incident"},
+-			output: true,
+-		},
+-		{
+-			input:  Incident{Name: "an argo tunnel incident"},
+-			output: true,
+-		},
+-		{
+-			input:  Incident{Name: "an aRgO TuNnEl incident"},
+-			output: true,
+-		},
+-		{
+-			input:  Incident{Name: "an argotunnel incident"},
+-			output: false,
+-		},
+-		{
+-			input:  Incident{Name: "irrelevant"},
+-			output: false,
+-		},
+-		{
+-			input: Incident{
+-				Name: "irrelevant",
+-				Updates: []IncidentUpdate{
+-					IncidentUpdate{Body: "irrelevant"},
+-					IncidentUpdate{Body: "an Argo Tunnel incident"},
+-					IncidentUpdate{Body: "irrelevant"},
+-				},
+-			},
+-			output: true,
+-		},
+-		{
+-			input: Incident{
+-				Name: "an Argo Tunnel incident",
+-				Updates: []IncidentUpdate{
+-					IncidentUpdate{Body: "irrelevant"},
+-					IncidentUpdate{Body: "irrelevant"},
+-					IncidentUpdate{Body: "irrelevant"},
+-				},
+-			},
+-			output: true,
+-		},
+-	}
+-	for _, testCase := range testCases {
+-		actual := isArgoTunnelIncident(testCase.input)
+-		assert.Equal(t, testCase.output, actual, "Test case failed: %v", testCase.input)
+-	}
+-}
+-
+-func TestIncidentURL(t *testing.T) {
+-	incident := Incident{
+-		ID: "s6k0dnn5347b",
+-	}
+-	assert.Equal(t, "https://www.cloudflarestatus.com/incidents/s6k0dnn5347b", incident.URL())
+-}
+-
+-func TestNewCachedIncidentLookup(t *testing.T) {
+-	c := newCachedIncidentLookup(func() []Incident { return nil })
+-	assert.Equal(t, time.Minute, c.ttl)
+-	assert.Equal(t, 1, c.cache.Capacity())
+-}
+-
+-func TestCachedIncidentLookup(t *testing.T) {
+-	expected := []Incident{
+-		Incident{
+-			Name: "An incident",
+-			ID:   "incidentID",
+-		},
+-	}
+-
+-	var shouldCallUncachedLookup bool
+-	c := &cachedIncidentLookup{
+-		cache: lrucache.NewLRUCache(1),
+-		ttl:   50 * time.Millisecond,
+-		uncachedLookup: func() []Incident {
+-			if !shouldCallUncachedLookup {
+-				t.Fatal("uncachedLookup shouldn't have been called")
+-			}
+-			return expected
+-		},
+-	}
+-
+-	shouldCallUncachedLookup = true
+-	assert.Equal(t, expected, c.ActiveIncidents())
+-
+-	shouldCallUncachedLookup = false
+-	assert.Equal(t, expected, c.ActiveIncidents())
+-	assert.Equal(t, expected, c.ActiveIncidents())
+-
+-	time.Sleep(50 * time.Millisecond)
+-	shouldCallUncachedLookup = true
+-	assert.Equal(t, expected, c.ActiveIncidents())
+-}
+-
+-func TestCachedIncidentLookupDoesntPanic(t *testing.T) {
+-	expected := []Incident{
+-		Incident{
+-			Name: "An incident",
+-			ID:   "incidentID",
+-		},
+-	}
+-	c := &cachedIncidentLookup{
+-		cache:          lrucache.NewLRUCache(1),
+-		ttl:            50 * time.Millisecond,
+-		uncachedLookup: func() []Incident { return expected },
+-	}
+-	c.cache.Set(cacheKey, 42, time.Now().Add(30*time.Minute))
+-	actual := c.ActiveIncidents()
+-	assert.Equal(t, expected, actual)
+-}
+diff --git a/supervisor/tunnel.go b/supervisor/tunnel.go
+index eacda710b32..345145b1dd0 100644
+--- a/supervisor/tunnel.go
++++ b/supervisor/tunnel.go
+@@ -47,7 +47,6 @@ type TunnelConfig struct {
+ 	EdgeIPVersion      allregions.ConfigIPVersion
+ 	EdgeBindAddr       net.IP
+ 	HAConnections      int
+-	IncidentLookup     IncidentLookup
+ 	IsAutoupdated      bool
+ 	LBPool             string
+ 	Tags               []tunnelpogs.Tag
+@@ -436,9 +435,6 @@ func (e *EdgeTunnelServer) serveTunnel(
+ 			connLog.ConnAwareLogger().Err(err).Msg("Register tunnel error from server side")
+ 			// Don't send registration error return from server to Sentry. They are
+ 			// logged on server side
+-			if incidents := e.config.IncidentLookup.ActiveIncidents(); len(incidents) > 0 {
+-				connLog.ConnAwareLogger().Msg(activeIncidentsMsg(incidents))
+-			}
+ 			return err.Cause, !err.Permanent
+ 		case *connection.EdgeQuicDialError:
+ 			return err, false
+@@ -675,16 +671,3 @@ func (cf *connectedFuse) Connected() {
+ func (cf *connectedFuse) IsConnected() bool {
+ 	return cf.fuse.Value()
+ }
+-
+-func activeIncidentsMsg(incidents []Incident) string {
+-	preamble := "There is an active Cloudflare incident that may be related:"
+-	if len(incidents) > 1 {
+-		preamble = "There are active Cloudflare incidents that may be related:"
+-	}
+-	incidentStrings := []string{}
+-	for _, incident := range incidents {
+-		incidentString := fmt.Sprintf("%s (%s)", incident.Name, incident.URL())
+-		incidentStrings = append(incidentStrings, incidentString)
+-	}
+-	return preamble + " " + strings.Join(incidentStrings, "; ")
+-}

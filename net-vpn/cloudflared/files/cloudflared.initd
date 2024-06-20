@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/cloudflared"
+command_args="${CLOUDFLARED_OPTS} --no-autoupdate"
+command_background="yes"
+command_user="${USER:-cloudflared}:${GROUP:-cloudflared}"
+description="Argo Tunnel client"
+name="Argo Tunnel client"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	need net
+}
