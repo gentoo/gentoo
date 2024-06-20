@@ -5,4 +5,10 @@
 		<email>tex@gentoo.org</email>
 		<name>Gentoo TeX Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">rrthomas/pdfjam</remote-id>
+	</upstream>
+	<use>
+		<flag name="extras">Install unsupported extra utilities like pdfnup, pdfjoin and pdf90</flag>
+	</use>
 </pkgmetadata>
