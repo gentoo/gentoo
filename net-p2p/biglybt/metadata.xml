@@ -4,9 +4,18 @@
 	<maintainer type="project">
 		<email>java@gentoo.org</email>
 	</maintainer>
+	<longdescription>
+		BiglyBT is a BitTorrent client based on Vuze (previously Azureus) which first released in 2003.
+
+		It's killer feature is integration with I2P and TOR anonymyzing networks.
+		They are available as plugins or can be used with your local node using SOCKS.
+		BiglyBT is the only client in acrive development that can work on clearnet and I2P simultaneously,
+		cross-seeding the torrents and swarm-merging them.
+	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/BiglySoftware/BiglyBT/issues</bugs-to>
 		<doc>https://github.com/BiglySoftware/BiglyBT/wiki</doc>
 		<remote-id type="github">BiglySoftware/BiglyBT</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
