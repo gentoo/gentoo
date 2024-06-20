@@ -52,21 +52,17 @@ src_unpack() {
 	if [[ ${PV} == 9999 ]] ; then
 		git-r3_src_unpack
 		return
-	elif use verify-sig ; then
-		mkdir "${T}"/verify-sig || die
-		pushd "${T}"/verify-sig &>/dev/null || die
-
-		# Upstream sign the decompressed .tar
-		# Let's do it separately in ${T} then cleanup to avoid external
-		# effects on normal unpack.
-		xz -d -c "${DISTDIR}"/${MY_P}.tar.xz > ${MY_P}.tar || die
-		verify-sig_verify_detached ${MY_P}.tar "${DISTDIR}"/${MY_P}.tar.sign
-
-		popd &>/dev/null || die
-		rm -r "${T}"/verify-sig || die
 	fi
 
-	default
+	# Upstream sign the decompressed .tar
+	if use verify-sig; then
+		einfo "Unpacking ${MY_P}.tar.xz ..."
+		verify-sig_verify_detached - "${DISTDIR}"/${MY_P}.tar.sign \
+			< <(xz -cd "${DISTDIR}"/${MY_P}.tar.xz | tee >(tar -x))
+		assert "Unpack failed"
+	else
+		default
+	fi
 }
 
 src_prepare() {
