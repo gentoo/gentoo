@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,11 +9,10 @@ MY_P="${PN}_${PV}"
 DESCRIPTION="A Magnetic Scrolls Interpreter for playing a collection of old text adventures"
 HOMEPAGE="https://www.dettus.net/dMagnetic/"
 SRC_URI="https://www.dettus.net/${PN}/${MY_P}.tar.bz2"
+S="${WORKDIR}/${MY_P}"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~m68k ~x86"
-
-S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
