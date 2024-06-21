@@ -1,7 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
+inherit autotools
 
 DESCRIPTION="Sayura Sinhala input method for SCIM"
 HOMEPAGE="http://www.sayura.net/im/"
@@ -13,21 +15,28 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 RDEPEND=">=app-i18n/scim-0.99.8"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/scim-sayura-0.3.3-gcc45.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc45.patch
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
-	econf --disable-static
+	econf
 }
 
 src_install() {
-	HTML_DOCS=( doc/{index.html,style.css} )
+	local HTML_DOCS=( doc/{index.html,style.css} )
 	default
 
 	use doc && dodoc doc/sayura.pdf
 
 	# plugin module, no point in .la files
-	find "${D}" -name '*.la' -delete || die
+	find "${D}" -type f -name '*.la' -delete || die
 }
