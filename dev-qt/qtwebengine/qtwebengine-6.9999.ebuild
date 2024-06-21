@@ -221,11 +221,9 @@ src_configure() {
 	)
 
 	local mygnargs=(
-		# prevent pdfium from looking for it if disabled (bug #934635)
-		use_pulseaudio=$(usex pulseaudio true false)
 		# prefer no dlopen where possible
-		link_pulseaudio=true
-		rtc_link_pipewire=true
+		$(usev pulseaudio link_pulseaudio=true)
+		$(usev screencast rtc_link_pipewire=true)
 		# reduce default disk space usage
 		symbol_level=0
 	)
