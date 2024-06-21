@@ -50,6 +50,12 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+src_prepare() {
+	distutils-r1_src_prepare
+
+	find -name selenium-manager -delete || die
+}
+
 python_test() {
 	if ! has "${EPYTHON/./_}" "${PYTHON_TESTED[@]}"; then
 		einfo "Skipping tests on ${EPYTHON}"
