@@ -111,6 +111,7 @@ src_configure() {
 		-Drootprefix="${EPREFIX}/"
 		-Dbashcompletiondir="${EPREFIX}/usr/share/bash-completion/completions"
 		-Dman=auto
+		-Dpolkit=$(usex policykit true false)
 		-Dsmack=true
 		-Dcgroup-controller=openrc
 		-Ddefault-hierarchy=${cgroupmode}
