@@ -39,6 +39,7 @@ RDEPEND="
 	virtual/perl-Getopt-Long
 	dev-perl/File-Which
 	>=virtual/jre-11
+	!<dev-texlive/texlive-latexextra-2023_p69752-r4
 "
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
