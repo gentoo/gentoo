@@ -1,0 +1,191 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -20,8 +20,8 @@ AC_PROG_CC
+ AC_PROG_INSTALL
+ 
+ dnl XXX - Solaris sux.
+-AC_CHECK_LIB(socket, socket)
+-AC_CHECK_LIB(nsl, gethostbyname)
++AC_SEARCH_LIBS(socket, socket)
++AC_SEARCH_LIBS(gethostbyname, nsl)
+ 
+ dnl XXX - we need WinPcap developer's pack under Cygwin for win32
+ 
+@@ -33,11 +33,11 @@ case $host_os in
+ 	if test -d /usr/include/mingw ; then
+ 		CPPFLAGS="$CPPFLAGS -mno-cygwin"
+ 		CFLAGS="$CFLAGS -mno-cygwin"
+-		AC_DEFINE(WIN32_LEAN_AND_MEAN, 1, 
++		AC_DEFINE(WIN32_LEAN_AND_MEAN, 1,
+ 		    [Define for faster code generation.])
+ 		AC_CHECK_LIB(ws2_32, main)
+ 		AC_CHECK_LIB(iphlpapi, main)
+-		AC_DEFINE(snprintf, _snprintf, 
++		AC_DEFINE(snprintf, _snprintf,
+ 		    [Use MingW32's internal snprintf])
+ 	else
+ 		AC_MSG_ERROR([need MingW32 package to build under Cygwin])
+@@ -84,92 +84,9 @@ if test $neederr = yes; then
+    AC_LIBOBJ(err)
+ fi
+ 
+-dnl Checks for libpcap
+-AC_MSG_CHECKING(for libpcap)
+-AC_ARG_WITH(libpcap,
+-[  --with-libpcap=DIR      use libpcap build directory],
+-[ case "$withval" in
+-  yes|no)
+-     AC_MSG_RESULT(no)
+-     ;;
+-  *)
+-     AC_MSG_RESULT($withval)
+-     if test -f $withval/pcap.h -a -f $withval/libpcap.a; then
+-        owd=`pwd`
+-        if cd $withval; then withval=`pwd`; cd $owd; fi
+-	PCAPINC="-I$withval -I$withval/bpf"
+-	PCAPLIB="-L$withval -lpcap"
+-     else
+-        AC_MSG_ERROR(pcap.h or libpcap.a not found in $withval)
+-     fi
+-     ;;
+-  esac ],
+-[ if test -f ${prefix}/include/pcap.h; then
+-     PCAPINC="-I${prefix}/include"
+-     PCAPLIB="-L${prefix}/lib -lpcap"
+-  elif test -f /usr/include/pcap/pcap.h; then
+-     PCAPINC="-I/usr/include/pcap"
+-     PCAPLIB="-lpcap"
+-  elif test -f /usr/include/pcap.h; then
+-     PCAPLIB="-lpcap"
+-  else
+-     AC_MSG_RESULT(no)
+-     AC_MSG_ERROR(libpcap not found)
+-  fi
+-  AC_MSG_RESULT(yes) ]
+-)
+ AC_SUBST(PCAPINC)
+ AC_SUBST(PCAPLIB)
+ 
+-dnl Checks for (installed) libdnet
+-AC_ARG_WITH(libdnet,
+-[  --with-libdnet=DIR      use libdnet in DIR],
+-[ case "$withval" in
+-  yes|no)
+-     AC_MSG_ERROR(Please specify directory containing dnet-config when using --with-libdnet)
+-     ;;
+-  *)
+-     AC_MSG_CHECKING(for libdnet)
+-     AC_MSG_RESULT($withval)
+-     if test -f $withval/src/libdnet.a; then
+-	DNETINC="-I$withval/include"
+-	DNETLIB="-L$withval/src -ldnet `$withval/dnet-config --libs`"
+-     elif test -x $withval/bin/dnet-config; then
+-	DNETINC="`$withval/bin/dnet-config --cflags`"
+-	DNETLIB="`$withval/bin/dnet-config --libs`"
+-     else
+-        AC_MSG_RESULT(no)
+-        AC_MSG_ERROR(dnet-config not found in $withval/bin)
+-     fi
+-     ;;
+-  esac
+-  AC_MSG_RESULT(yes) ],
+-[ dnl This is the default case so let's just use AC_PATH_PROG! --CPK.
+-  AC_PATH_PROG(dnetconfig, dnet-config, "no")
+-  if test "$dnetconfig" = "no"; then
+-     AC_MSG_ERROR(dnet-config not found)
+-  else
+-     DNETINC="`$dnetconfig --cflags`"
+-     DNETLIB="`$dnetconfig --libs`"
+-  fi]
+-)
+-
+-dnl We still need to check whether it's dnet or dumbnet as
+-dnl for example on Debian. We test by looking at the content
+-dnl of DNETLIB and derive from the library name what version
+-dnl we're dealing with. If we find a libdumbnet, we prefix
+-dnl compat/libdnet to our inclusion path. It provides a dnet.h
+-dnl that transparently includes dumbnet.h for those systems. --CPK.
+-AC_MSG_CHECKING([whether libdnet is a libdumbnet])
+-if test `echo $DNETLIB | sed -e '/dumb/=;d'`; then
+-     AC_MSG_RESULT(yes)
+-     AC_DEFINE(HAVE_DUMBNET, 1,
+-		[Define if our libdnet is a libdumbnet])
+-     DNETCOMPAT="compat/libdnet"
+-else
+-     AC_MSG_RESULT(no)
+-fi
+-
+ AC_SUBST(DNETCOMPAT)
+ AC_SUBST(DNETINC)
+ AC_SUBST(DNETLIB)
+@@ -180,50 +97,16 @@ then
+ else
+ 	CFLAGS="-I$DNETCOMPAT $DNETINC"
+ fi
++save_LIBS=$LIBS
+ LIBS=$DNETLIB
+ 
+-dnl Checks for libevent
+-AC_MSG_CHECKING(for libevent)
+-AC_ARG_WITH(libevent,
+-[  --with-libevent=DIR     use libevent build directory],
+-[ case "$withval" in
+-  yes|no)
+-     AC_MSG_RESULT(no)
+-     ;;
+-  *)
+-     AC_MSG_RESULT($withval)
+-     if test -f $withval/event.h -a -f $withval/libevent.a; then
+-        owd=`pwd`
+-        if cd $withval; then withval=`pwd`; cd $owd; fi
+-        EVENTINC="-I$withval"
+-        EVENTLIB="-L$withval -levent"
+-     else
+-        AC_MSG_ERROR(event.h or libevent.a not found in $withval)
+-     fi
+-     ;;
+-  esac ],
+-[ if test -f ${prefix}/include/event.h; then
+-     EVENTINC="-I${prefix}/include"
+-     EVENTLIB="-L${prefix}/lib -levent"
+-  elif test -f /usr/include/event/event.h; then
+-     EVENTINC="-I/usr/include/event"
+-     EVENTLIB="-levent"
+-  elif test -f /usr/include/event.h; then
+-     EVENTLIB="-levent"
+-  else
+-     AC_MSG_RESULT(no)
+-     AC_MSG_ERROR(libevent not found)
+-  fi
+-  AC_MSG_RESULT(yes) ]
+-)
+ AC_SUBST(EVENTINC)
+ AC_SUBST(EVENTLIB)
+ 
+ CFLAGS=$EVENTINC
+ LIBS=$EVENTLIB
+ 
+-CFLAGS=""
+-LIBS=""
++LIBS=$save_LIBS
+ 
+ AC_HEADER_SYS_WAIT
+ AC_CHECK_HEADERS(fcntl.h sys/ioctl.h sys/time.h unistd.h)
+@@ -271,7 +154,7 @@ AC_EGREP_CPP(yes,
+ #ifdef BSD4_4
+   yes
+ #endif
+-], 
++],
+ 	AC_EGREP_CPP(yes,
+ 	[#include <sys/param.h>
+ 	 #ifdef OpenBSD
+@@ -285,7 +168,7 @@ AC_EGREP_CPP(yes,
+           ),
+ 	  AC_MSG_RESULT([good byte order])
+ )
+-	
++
+ AC_MSG_CHECKING([for sin_len in struct sockaddr_in])
+ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+  #include <sys/types.h>
