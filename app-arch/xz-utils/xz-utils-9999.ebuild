@@ -156,9 +156,7 @@ multilib_src_compile() {
 				# Our own variants
 				''
 				'-e'
-				'-9e'
 				"$(usev extra-filters '--x86 --lzma2=preset=6e')"
-				"$(usev extra-filters '--x86 --lzma2=preset=9e')"
 			)
 			local test_variant
 			for test_variant in "${test_variants[@]}" ; do
