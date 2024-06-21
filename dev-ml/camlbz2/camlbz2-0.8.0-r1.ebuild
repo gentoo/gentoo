@@ -15,5 +15,6 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+ocamlopt"
 
-DEPEND="app-arch/bzip2"
+DEPEND="app-arch/bzip2
+	dev-ml/stdlib-shims:=[ocamlopt?]"
 RDEPEND="${DEPEND}"
