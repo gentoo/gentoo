@@ -1,0 +1,878 @@
+diff -ru a/configure b/configure
+--- a/configure	2024-02-21 22:52:44.853840610 +0000
++++ b/configure	2024-02-21 22:52:56.166068627 +0000
+@@ -2296,6 +2296,7 @@
+ enable_largefile
+ enable_year2038
+ enable_threads
++with_libtextstyle
+ with_gnu_ld
+ enable_rpath
+ with_libtextstyle_prefix
+@@ -2977,6 +2978,7 @@
+ Optional Packages:
+   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
+   --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
++  --with-libtextstyle     support fancy colors [default=auto]
+   --with-gnu-ld           assume the C compiler uses GNU ld [default=no]
+   --with-libtextstyle-prefix[=DIR]  search for libtextstyle in DIR/include and DIR/lib
+   --without-libtextstyle-prefix     don't search for libtextstyle in includedir and libdir
+@@ -3305,7 +3307,7 @@
+ #define $2 innocuous_$2
+ 
+ /* System header to define __stub macros and hopefully few prototypes,
+-   which can conflict with char $2 (); below.  */
++   which can conflict with char $2 (void); below.  */
+ 
+ #include <limits.h>
+ #undef $2
+@@ -3316,7 +3318,7 @@
+ #ifdef __cplusplus
+ extern "C"
+ #endif
+-char $2 ();
++char $2 (void);
+ /* The GNU C library defines this for functions which it implements
+     to always fail with ENOSYS.  Some functions are actually named
+     something starting with __ and the normal name is an alias.  */
+@@ -4110,9 +4112,7 @@
+ /* Most of the following tests are stolen from RCS 5.7 src/conf.sh.  */
+ struct buf { int x; };
+ struct buf * (*rcsopen) (struct buf *, struct stat *, int);
+-static char *e (p, i)
+-     char **p;
+-     int i;
++static char *e (char **p, int i)
+ {
+   return p[i];
+ }
+@@ -4163,6 +4163,7 @@
+ extern int printf (const char *, ...);
+ extern int dprintf (int, const char *, ...);
+ extern void *malloc (size_t);
++extern void free (void *);
+ 
+ // Check varargs macros.  These examples are taken from C99 6.10.3.5.
+ // dprintf is used instead of fprintf to avoid needing to declare
+@@ -8969,6 +8970,20 @@
+ 
+ 
+ 
++  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether to link against libtextstyle" >&5
++printf %s "checking whether to link against libtextstyle... " >&6; }
++
++# Check whether --with-libtextstyle was given.
++if test ${with_libtextstyle+y}
++then :
++  withval=$with_libtextstyle;
++else $as_nop
++  with_libtextstyle=auto
++fi
++
++  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $with_libtextstyle" >&5
++printf "%s\n" "$with_libtextstyle" >&6; }
++
+ 
+       if test "X$prefix" = "XNONE"; then
+     acl_final_prefix="$ac_default_prefix"
+@@ -9641,6 +9656,9 @@
+       ;;
+   esac
+ 
++  if test "x$with_libtextstyle" != xno
++then :
++
+ 
+ 
+ 
+@@ -10223,6 +10241,18 @@
+ 
+ 
+ 
++fi
++
++  if test "x$with_libtextstyle" = xyes -a "x$HAVE_LIBTEXTSTYLE" != xyes
++then :
++  { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
++printf "%s\n" "$as_me: error: in \`$ac_pwd':" >&2;}
++as_fn_error $? "--with-libtextstyle was given, but test for libtextstyle failed
++
++See \`config.log' for more details" "$LINENO" 5; }
++
++fi
++
+ { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for inline" >&5
+ printf %s "checking for inline... " >&6; }
+ if test ${ac_cv_c_inline+y}
+@@ -10289,7 +10319,7 @@
+ 
+ 
+ 
+-  if test $HAVE_LIBTEXTSTYLE = yes; then
++  if test "x$HAVE_LIBTEXTSTYLE" = xyes; then
+     TEXTSTYLE_H=
+   else
+     TEXTSTYLE_H=textstyle.h
+@@ -12551,23 +12581,23 @@
+         if $JAVAC --version 2>/dev/null | sed -e 1q | grep gcj > /dev/null; then
+             if $JAVAC --version 2>/dev/null | sed -e 's,^[^0-9]*,,' -e 1q | sed -e '/^4\.[012]/d' | grep '^[4-9]' >/dev/null; then
+                         rm -f conftest.class
+-        if { echo "$as_me:12554: $JAVAC -d . conftest.java" >&5
++        if { echo "$as_me:12584: $JAVAC -d . conftest.java" >&5
+              $JAVAC -d . conftest.java >&5 2>&1
+            } \
+            && test -f conftest.class \
+            && expr `func_classfile_version conftest.class` '<=' $cfversion >/dev/null 2>&5; then
+                     rm -f conftest.class
+           rm -f conftestfail.class
+-          if { echo "$as_me:12561: $JAVAC -fsource=$source_version -d . conftest.java" >&5
++          if { echo "$as_me:12591: $JAVAC -fsource=$source_version -d . conftest.java" >&5
+                $JAVAC -fsource="$source_version" -d . conftest.java >&5 2>&1
+              } \
+              && test -f conftest.class \
+              && expr `func_classfile_version conftest.class` '<=' $cfversion >/dev/null 2>&5 \
+-             && { echo "$as_me:12566: $JAVAC -d . conftestfail.java" >&5
++             && { echo "$as_me:12596: $JAVAC -d . conftestfail.java" >&5
+                   $JAVAC -d . conftestfail.java >&5 2>&1
+                 } \
+              && test -f conftestfail.class \
+-             && ! { echo "$as_me:12570: $JAVAC -fsource=$source_version -d . conftestfail.java" >&5
++             && ! { echo "$as_me:12600: $JAVAC -fsource=$source_version -d . conftestfail.java" >&5
+                     $JAVAC -fsource="$source_version" -d . conftestfail.java >&5 2>&1
+                   }; then
+             CONF_JAVAC="$JAVAC -fsource=$source_version"
+@@ -12581,7 +12611,7 @@
+         else
+                     rm -f conftest.class
+           rm -f conftestfail.class
+-          if { echo "$as_me:12584: $JAVAC -fsource=$source_version -ftarget=$target_version -d . conftest.java" >&5
++          if { echo "$as_me:12614: $JAVAC -fsource=$source_version -ftarget=$target_version -d . conftest.java" >&5
+                $JAVAC -fsource="$source_version" -ftarget="$target_version" -d . conftest.java >&5 2>&1
+              } \
+              && test -f conftest.class \
+@@ -12594,7 +12624,7 @@
+       else
+                 if test "$target_version" = 1.4 && test "$source_version" = 1.4; then
+                     rm -f conftest.class
+-          if { echo "$as_me:12597: $JAVAC -d . conftest.java" >&5
++          if { echo "$as_me:12627: $JAVAC -d . conftest.java" >&5
+                $JAVAC -d . conftest.java >&5 2>&1
+              } \
+              && test -f conftest.class; then
+@@ -12606,7 +12636,7 @@
+           if test "$target_version" = 1.4 && test "$source_version" = 1.3; then
+                                     javac_works=
+             rm -f conftest.class
+-            if { echo "$as_me:12609: $JAVAC -d . conftest.java" >&5
++            if { echo "$as_me:12639: $JAVAC -d . conftest.java" >&5
+                  $JAVAC -d . conftest.java >&5 2>&1
+                } \
+                && test -f conftest.class; then
+@@ -12614,7 +12644,7 @@
+             fi
+             javac_noassert_works=
+             rm -f conftest.class
+-            if { echo "$as_me:12617: $JAVAC -fno-assert -d . conftest.java" >&5
++            if { echo "$as_me:12647: $JAVAC -fno-assert -d . conftest.java" >&5
+                  $JAVAC -fno-assert -d . conftest.java >&5 2>&1
+                } \
+                && test -f conftest.class; then
+@@ -12622,11 +12652,11 @@
+             fi
+             if test -n "$javac_works" && test -n "$javac_noassert_works"; then
+               rm -f conftestfail.class
+-              if { echo "$as_me:12625: $JAVAC -d . conftestfail.java" >&5
++              if { echo "$as_me:12655: $JAVAC -d . conftestfail.java" >&5
+                    $JAVAC -d . conftestfail.java >&5 2>&1
+                  } \
+                  && test -f conftestfail.class \
+-                 && ! { echo "$as_me:12629: $JAVAC -fno-assert -d . conftestfail.java" >&5
++                 && ! { echo "$as_me:12659: $JAVAC -fno-assert -d . conftestfail.java" >&5
+                         $JAVAC -fno-assert -d . conftestfail.java >&5 2>&1
+                       }; then
+                                 javac_works=
+@@ -12654,23 +12684,23 @@
+         esac
+       fi
+       rm -f conftest.class
+-      if { echo "$as_me:12657: $JAVAC -d . conftest.java" >&5
++      if { echo "$as_me:12687: $JAVAC -d . conftest.java" >&5
+            $JAVAC -d . conftest.java >&5 2>&1
+          } \
+          && test -f conftest.class \
+          && expr `func_classfile_version conftest.class` '<=' $cfversion >/dev/null 2>&5; then
+                 rm -f conftest.class
+         rm -f conftestfail.class
+-        if { echo "$as_me:12664: $JAVAC -source $source_version -d . conftest.java" >&5
++        if { echo "$as_me:12694: $JAVAC -source $source_version -d . conftest.java" >&5
+              $JAVAC -source "$source_version" -d . conftest.java >&5 2>&1
+            } \
+            && test -f conftest.class \
+            && expr `func_classfile_version conftest.class` '<=' $cfversion >/dev/null 2>&5 \
+-           && { echo "$as_me:12669: $JAVAC -d . conftestfail.java" >&5
++           && { echo "$as_me:12699: $JAVAC -d . conftestfail.java" >&5
+                 $JAVAC -d . conftestfail.java >&5 2>&1
+               } \
+            && test -f conftestfail.class \
+-           && ! { echo "$as_me:12673: $JAVAC -source $source_version -d . conftestfail.java" >&5
++           && ! { echo "$as_me:12703: $JAVAC -source $source_version -d . conftestfail.java" >&5
+                   $JAVAC -source "$source_version" -d . conftestfail.java >&5 2>&1
+                 }; then
+           CONF_JAVAC="$JAVAC -source $source_version"
+@@ -12683,23 +12713,23 @@
+         fi
+       else
+                         rm -f conftest.class
+-        if { echo "$as_me:12686: $JAVAC -target $target_version -d . conftest.java" >&5
++        if { echo "$as_me:12716: $JAVAC -target $target_version -d . conftest.java" >&5
+              $JAVAC -target "$target_version" -d . conftest.java >&5 2>&1
+            } \
+            && test -f conftest.class \
+            && expr `func_classfile_version conftest.class` '<=' $cfversion >/dev/null 2>&5; then
+                     rm -f conftest.class
+           rm -f conftestfail.class
+-          if { echo "$as_me:12693: $JAVAC -target $target_version -source $source_version -d . conftest.java" >&5
++          if { echo "$as_me:12723: $JAVAC -target $target_version -source $source_version -d . conftest.java" >&5
+                $JAVAC -target "$target_version" -source "$source_version" -d . conftest.java >&5 2>&1
+              } \
+              && test -f conftest.class \
+              && expr `func_classfile_version conftest.class` '<=' $cfversion >/dev/null 2>&5 \
+-             && { echo "$as_me:12698: $JAVAC -target $target_version -d . conftestfail.java" >&5
++             && { echo "$as_me:12728: $JAVAC -target $target_version -d . conftestfail.java" >&5
+                   $JAVAC -target "$target_version" -d . conftestfail.java >&5 2>&1
+                 } \
+              && test -f conftestfail.class \
+-             && ! { echo "$as_me:12702: $JAVAC -target $target_version -source $source_version -d . conftestfail.java" >&5
++             && ! { echo "$as_me:12732: $JAVAC -target $target_version -source $source_version -d . conftestfail.java" >&5
+                     $JAVAC -target "$target_version" -source "$source_version" -d . conftestfail.java >&5 2>&1
+                   }; then
+             CONF_JAVAC="$JAVAC -target $target_version -source $source_version"
+@@ -12712,7 +12742,7 @@
+           fi
+         else
+                                         rm -f conftest.class
+-          if { echo "$as_me:12715: $JAVAC -target $target_version -source $source_version -d . conftest.java" >&5
++          if { echo "$as_me:12745: $JAVAC -target $target_version -source $source_version -d . conftest.java" >&5
+                $JAVAC -target "$target_version" -source "$source_version" -d . conftest.java >&5 2>&1
+              } \
+              && test -f conftest.class \
+@@ -12845,28 +12875,28 @@
+ 
+                 if test -z "$HAVE_JAVACOMP" && test -n "$HAVE_GCJ_IN_PATH"; then
+             if gcj --version 2>/dev/null | sed -e 's,^[^0-9]*,,' -e 1q | sed -e '/^3\.[01]/d' | grep '^[3-9]' >/dev/null; then
+-                if { echo "$as_me:12848: gcj -C -d . conftestlib.java" >&5
++                if { echo "$as_me:12878: gcj -C -d . conftestlib.java" >&5
+              gcj -C -d . conftestlib.java >&5 2>&1
+            }; then
+                     if gcj --version 2>/dev/null | sed -e 's,^[^0-9]*,,' -e 1q | sed -e '/^4\.[012]/d' | grep '^[4-9]' >/dev/null; then
+                                     rm -f conftest.class
+-            if { echo "$as_me:12853: gcj -C -d . conftest.java" >&5
++            if { echo "$as_me:12883: gcj -C -d . conftest.java" >&5
+                  gcj -C -d . conftest.java >&5 2>&1
+                } \
+                && test -f conftest.class \
+                && expr `func_classfile_version conftest.class` '<=' $cfversion >/dev/null 2>&5; then
+                             rm -f conftest.class
+               rm -f conftestfail.class
+-              if { echo "$as_me:12860: gcj -C -fsource=$source_version -d . conftest.java" >&5
++              if { echo "$as_me:12890: gcj -C -fsource=$source_version -d . conftest.java" >&5
+                    gcj -C -fsource="$source_version" -d . conftest.java >&5 2>&1
+                  } \
+                  && test -f conftest.class \
+                  && expr `func_classfile_version conftest.class` '<=' $cfversion >/dev/null 2>&5 \
+-                 && { echo "$as_me:12865: gcj -C -d . conftestfail.java" >&5
++                 && { echo "$as_me:12895: gcj -C -d . conftestfail.java" >&5
+                       gcj -C -d . conftestfail.java >&5 2>&1
+                     } \
+                  && test -f conftestfail.class \
+-                 && ! { echo "$as_me:12869: gcj -C -fsource=$source_version -d . conftestfail.java" >&5
++                 && ! { echo "$as_me:12899: gcj -C -fsource=$source_version -d . conftestfail.java" >&5
+                         gcj -C -fsource="$source_version" -d . conftestfail.java >&5 2>&1
+                       }; then
+                 CONF_JAVAC="gcj -C -fsource=$source_version"
+@@ -12880,7 +12910,7 @@
+             else
+                             rm -f conftest.class
+               rm -f conftestfail.class
+-              if { echo "$as_me:12883: gcj -C -fsource=$source_version -ftarget=$target_version -d . conftest.java" >&5
++              if { echo "$as_me:12913: gcj -C -fsource=$source_version -ftarget=$target_version -d . conftest.java" >&5
+                    gcj -C -fsource="$source_version" -ftarget="$target_version" -d . conftest.java >&5 2>&1
+                  } \
+                  && test -f conftest.class \
+@@ -12893,7 +12923,7 @@
+           else
+                                                 if test "$target_version" = 1.4 && test "$source_version" = 1.4; then
+               rm -f conftest.class
+-              if { echo "$as_me:12896: gcj -C -d . conftest.java" >&5
++              if { echo "$as_me:12926: gcj -C -d . conftest.java" >&5
+                    gcj -C -d . conftest.java >&5 2>&1
+                  } \
+                  && test -f conftest.class; then
+@@ -12904,7 +12934,7 @@
+             else
+               if test "$target_version" = 1.4 && test "$source_version" = 1.3; then
+                                                 rm -f conftest.class
+-                if { echo "$as_me:12907: gcj -C -fno-assert -d . conftest.java" >&5
++                if { echo "$as_me:12937: gcj -C -fno-assert -d . conftest.java" >&5
+                      gcj -C -fno-assert -d . conftest.java >&5 2>&1
+                    } \
+                    && test -f conftest.class; then
+@@ -12913,7 +12943,7 @@
+                   HAVE_JAVACOMP=1
+                 else
+                   rm -f conftest.class
+-                  if { echo "$as_me:12916: gcj -C -d . conftest.java" >&5
++                  if { echo "$as_me:12946: gcj -C -d . conftest.java" >&5
+                        gcj -C -d . conftest.java >&5 2>&1
+                      } \
+                      && test -f conftest.class; then
+@@ -12938,23 +12968,23 @@
+           esac
+         fi
+                         rm -f conftest.class
+-        if { echo "$as_me:12941: javac -d . conftest.java" >&5
++        if { echo "$as_me:12971: javac -d . conftest.java" >&5
+              javac -d . conftest.java >&5 2>&1
+            } \
+            && test -f conftest.class \
+            && expr `func_classfile_version conftest.class` '<=' $cfversion >/dev/null 2>&5; then
+                     rm -f conftest.class
+           rm -f conftestfail.class
+-          if { echo "$as_me:12948: javac -source $source_version -d . conftest.java" >&5
++          if { echo "$as_me:12978: javac -source $source_version -d . conftest.java" >&5
+                javac -source "$source_version" -d . conftest.java >&5 2>&1
+              } \
+              && test -f conftest.class \
+              && expr `func_classfile_version conftest.class` '<=' $cfversion >/dev/null 2>&5 \
+-             && { echo "$as_me:12953: javac -d . conftestfail.java" >&5
++             && { echo "$as_me:12983: javac -d . conftestfail.java" >&5
+                   javac -d . conftestfail.java >&5 2>&1
+                 } \
+              && test -f conftestfail.class \
+-             && ! { echo "$as_me:12957: javac -source $source_version -d . conftestfail.java" >&5
++             && ! { echo "$as_me:12987: javac -source $source_version -d . conftestfail.java" >&5
+                     javac -source "$source_version" -d . conftestfail.java >&5 2>&1
+                   }; then
+             CONF_JAVAC="javac -source $source_version"
+@@ -12967,23 +12997,23 @@
+           fi
+         else
+                               rm -f conftest.class
+-          if { echo "$as_me:12970: javac -target $target_version -d . conftest.java" >&5
++          if { echo "$as_me:13000: javac -target $target_version -d . conftest.java" >&5
+                javac -target "$target_version" -d . conftest.java >&5 2>&1
+              } \
+              && test -f conftest.class \
+              && expr `func_classfile_version conftest.class` '<=' $cfversion >/dev/null 2>&5; then
+                         rm -f conftest.class
+             rm -f conftestfail.class
+-            if { echo "$as_me:12977: javac -target $target_version -source $source_version -d . conftest.java" >&5
++            if { echo "$as_me:13007: javac -target $target_version -source $source_version -d . conftest.java" >&5
+                  javac -target "$target_version" -source "$source_version" -d . conftest.java >&5 2>&1
+                } \
+                && test -f conftest.class \
+                && expr `func_classfile_version conftest.class` '<=' $cfversion >/dev/null 2>&5 \
+-               && { echo "$as_me:12982: javac -target $target_version -d . conftestfail.java" >&5
++               && { echo "$as_me:13012: javac -target $target_version -d . conftestfail.java" >&5
+                     javac -target "$target_version" -d . conftestfail.java >&5 2>&1
+                   } \
+                && test -f conftestfail.class \
+-               && ! { echo "$as_me:12986: javac -target $target_version -source $source_version -d . conftestfail.java" >&5
++               && ! { echo "$as_me:13016: javac -target $target_version -source $source_version -d . conftestfail.java" >&5
+                       javac -target "$target_version" -source "$source_version" -d . conftestfail.java >&5 2>&1
+                     }; then
+               CONF_JAVAC="javac -target $target_version -source $source_version"
+@@ -12996,7 +13026,7 @@
+             fi
+           else
+                                                 rm -f conftest.class
+-            if { echo "$as_me:12999: javac -target $target_version -source $source_version -d . conftest.java" >&5
++            if { echo "$as_me:13029: javac -target $target_version -source $source_version -d . conftest.java" >&5
+                  javac -target "$target_version" -source "$source_version" -d . conftest.java >&5 2>&1
+                } \
+                && test -f conftest.class \
+@@ -17607,22 +17637,23 @@
+ 		int use_ebcdic (int i) {
+ 		  return ebcdic_mm[i] + ebcdic_ii[i];
+ 		}
+-		extern int foo;
+-
+-int
+-main (void)
+-{
+-return use_ascii (foo) == use_ebcdic (foo);
+-  ;
+-  return 0;
+-}
++		int
++		main (int argc, char **argv)
++		{
++		  /* Intimidate the compiler so that it does not
++		     optimize the arrays away.  */
++		  char *p = argv[0];
++		  ascii_mm[1] = *p++; ebcdic_mm[1] = *p++;
++		  ascii_ii[1] = *p++; ebcdic_ii[1] = *p++;
++		  return use_ascii (argc) == use_ebcdic (*p);
++		}
+ _ACEOF
+-if ac_fn_c_try_compile "$LINENO"
++if ac_fn_c_try_link "$LINENO"
+ then :
+-  if grep BIGenDianSyS conftest.$ac_objext >/dev/null; then
++  if grep BIGenDianSyS conftest$ac_exeext >/dev/null; then
+ 	      ac_cv_c_bigendian=yes
+ 	    fi
+-	    if grep LiTTleEnDian conftest.$ac_objext >/dev/null ; then
++	    if grep LiTTleEnDian conftest$ac_exeext >/dev/null ; then
+ 	      if test "$ac_cv_c_bigendian" = unknown; then
+ 		ac_cv_c_bigendian=no
+ 	      else
+@@ -17631,7 +17662,8 @@
+ 	      fi
+ 	    fi
+ fi
+-rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
++rm -f core conftest.err conftest.$ac_objext conftest.beam \
++    conftest$ac_exeext conftest.$ac_ext
+ else $as_nop
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+@@ -19408,22 +19440,23 @@
+ 		int use_ebcdic (int i) {
+ 		  return ebcdic_mm[i] + ebcdic_ii[i];
+ 		}
+-		extern int foo;
+-
+-int
+-main (void)
+-{
+-return use_ascii (foo) == use_ebcdic (foo);
+-  ;
+-  return 0;
+-}
++		int
++		main (int argc, char **argv)
++		{
++		  /* Intimidate the compiler so that it does not
++		     optimize the arrays away.  */
++		  char *p = argv[0];
++		  ascii_mm[1] = *p++; ebcdic_mm[1] = *p++;
++		  ascii_ii[1] = *p++; ebcdic_ii[1] = *p++;
++		  return use_ascii (argc) == use_ebcdic (*p);
++		}
+ _ACEOF
+-if ac_fn_c_try_compile "$LINENO"
++if ac_fn_c_try_link "$LINENO"
+ then :
+-  if grep BIGenDianSyS conftest.$ac_objext >/dev/null; then
++  if grep BIGenDianSyS conftest$ac_exeext >/dev/null; then
+ 	      ac_cv_c_bigendian=yes
+ 	    fi
+-	    if grep LiTTleEnDian conftest.$ac_objext >/dev/null ; then
++	    if grep LiTTleEnDian conftest$ac_exeext >/dev/null ; then
+ 	      if test "$ac_cv_c_bigendian" = unknown; then
+ 		ac_cv_c_bigendian=no
+ 	      else
+@@ -19432,7 +19465,8 @@
+ 	      fi
+ 	    fi
+ fi
+-rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
++rm -f core conftest.err conftest.$ac_objext conftest.beam \
++    conftest$ac_exeext conftest.$ac_ext
+ else $as_nop
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+@@ -25883,8 +25917,8 @@
+         LIBS=$save_LIBS
+         test $gl_pthread_api = yes && break
+       done
+-      echo "$as_me:25886: gl_pthread_api=$gl_pthread_api" >&5
+-      echo "$as_me:25887: LIBPTHREAD=$LIBPTHREAD" >&5
++      echo "$as_me:25920: gl_pthread_api=$gl_pthread_api" >&5
++      echo "$as_me:25921: LIBPTHREAD=$LIBPTHREAD" >&5
+ 
+       gl_pthread_in_glibc=no
+       # On Linux with glibc >= 2.34, libc contains the fully functional
+@@ -25910,7 +25944,7 @@
+ 
+           ;;
+       esac
+-      echo "$as_me:25913: gl_pthread_in_glibc=$gl_pthread_in_glibc" >&5
++      echo "$as_me:25947: gl_pthread_in_glibc=$gl_pthread_in_glibc" >&5
+ 
+       # Test for libpthread by looking for pthread_kill. (Not pthread_self,
+       # since it is defined as a macro on OSF/1.)
+@@ -25930,8 +25964,14 @@
+ 
+ /* Override any GCC internal prototype to avoid an error.
+    Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-char pthread_kill ();
++   builtin and then its argument prototype would still apply.
++   The 'extern "C"' is for builds by C++ compilers;
++   although this is not generally supported in C code supporting it here
++   has little cost and some practical benefit (sr 110532).  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char pthread_kill (void);
+ int
+ main (void)
+ {
+@@ -25989,8 +26029,14 @@
+ 
+ /* Override any GCC internal prototype to avoid an error.
+    Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-char pthread_kill ();
++   builtin and then its argument prototype would still apply.
++   The 'extern "C"' is for builds by C++ compilers;
++   although this is not generally supported in C code supporting it here
++   has little cost and some practical benefit (sr 110532).  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char pthread_kill (void);
+ int
+ main (void)
+ {
+@@ -26033,8 +26079,14 @@
+ 
+ /* Override any GCC internal prototype to avoid an error.
+    Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-char pthread_kill ();
++   builtin and then its argument prototype would still apply.
++   The 'extern "C"' is for builds by C++ compilers;
++   although this is not generally supported in C code supporting it here
++   has little cost and some practical benefit (sr 110532).  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char pthread_kill (void);
+ int
+ main (void)
+ {
+@@ -26064,7 +26116,7 @@
+ 
+         fi
+       fi
+-      echo "$as_me:26067: LIBPMULTITHREAD=$LIBPMULTITHREAD" >&5
++      echo "$as_me:26119: LIBPMULTITHREAD=$LIBPMULTITHREAD" >&5
+     fi
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether POSIX threads API is available" >&5
+ printf %s "checking whether POSIX threads API is available... " >&6; }
+@@ -26107,8 +26159,14 @@
+ 
+ /* Override any GCC internal prototype to avoid an error.
+    Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-char sched_yield ();
++   builtin and then its argument prototype would still apply.
++   The 'extern "C"' is for builds by C++ compilers;
++   although this is not generally supported in C code supporting it here
++   has little cost and some practical benefit (sr 110532).  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char sched_yield (void);
+ int
+ main (void)
+ {
+@@ -26146,8 +26204,14 @@
+ 
+ /* Override any GCC internal prototype to avoid an error.
+    Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-char sched_yield ();
++   builtin and then its argument prototype would still apply.
++   The 'extern "C"' is for builds by C++ compilers;
++   although this is not generally supported in C code supporting it here
++   has little cost and some practical benefit (sr 110532).  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char sched_yield (void);
+ int
+ main (void)
+ {
+@@ -26292,8 +26356,8 @@
+         LIBS=$save_LIBS
+         test $gl_pthread_api = yes && break
+       done
+-      echo "$as_me:26295: gl_pthread_api=$gl_pthread_api" >&5
+-      echo "$as_me:26296: LIBPTHREAD=$LIBPTHREAD" >&5
++      echo "$as_me:26359: gl_pthread_api=$gl_pthread_api" >&5
++      echo "$as_me:26360: LIBPTHREAD=$LIBPTHREAD" >&5
+ 
+       gl_pthread_in_glibc=no
+       # On Linux with glibc >= 2.34, libc contains the fully functional
+@@ -26319,7 +26383,7 @@
+ 
+           ;;
+       esac
+-      echo "$as_me:26322: gl_pthread_in_glibc=$gl_pthread_in_glibc" >&5
++      echo "$as_me:26386: gl_pthread_in_glibc=$gl_pthread_in_glibc" >&5
+ 
+       # Test for libpthread by looking for pthread_kill. (Not pthread_self,
+       # since it is defined as a macro on OSF/1.)
+@@ -26339,8 +26403,14 @@
+ 
+ /* Override any GCC internal prototype to avoid an error.
+    Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-char pthread_kill ();
++   builtin and then its argument prototype would still apply.
++   The 'extern "C"' is for builds by C++ compilers;
++   although this is not generally supported in C code supporting it here
++   has little cost and some practical benefit (sr 110532).  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char pthread_kill (void);
+ int
+ main (void)
+ {
+@@ -26398,8 +26468,14 @@
+ 
+ /* Override any GCC internal prototype to avoid an error.
+    Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-char pthread_kill ();
++   builtin and then its argument prototype would still apply.
++   The 'extern "C"' is for builds by C++ compilers;
++   although this is not generally supported in C code supporting it here
++   has little cost and some practical benefit (sr 110532).  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char pthread_kill (void);
+ int
+ main (void)
+ {
+@@ -26442,8 +26518,14 @@
+ 
+ /* Override any GCC internal prototype to avoid an error.
+    Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-char pthread_kill ();
++   builtin and then its argument prototype would still apply.
++   The 'extern "C"' is for builds by C++ compilers;
++   although this is not generally supported in C code supporting it here
++   has little cost and some practical benefit (sr 110532).  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char pthread_kill (void);
+ int
+ main (void)
+ {
+@@ -26473,7 +26555,7 @@
+ 
+         fi
+       fi
+-      echo "$as_me:26476: LIBPMULTITHREAD=$LIBPMULTITHREAD" >&5
++      echo "$as_me:26558: LIBPMULTITHREAD=$LIBPMULTITHREAD" >&5
+     fi
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether POSIX threads API is available" >&5
+ printf %s "checking whether POSIX threads API is available... " >&6; }
+@@ -26516,8 +26598,14 @@
+ 
+ /* Override any GCC internal prototype to avoid an error.
+    Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-char sched_yield ();
++   builtin and then its argument prototype would still apply.
++   The 'extern "C"' is for builds by C++ compilers;
++   although this is not generally supported in C code supporting it here
++   has little cost and some practical benefit (sr 110532).  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char sched_yield (void);
+ int
+ main (void)
+ {
+@@ -26555,8 +26643,14 @@
+ 
+ /* Override any GCC internal prototype to avoid an error.
+    Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-char sched_yield ();
++   builtin and then its argument prototype would still apply.
++   The 'extern "C"' is for builds by C++ compilers;
++   although this is not generally supported in C code supporting it here
++   has little cost and some practical benefit (sr 110532).  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char sched_yield (void);
+ int
+ main (void)
+ {
+@@ -26617,8 +26711,14 @@
+ 
+ /* Override any GCC internal prototype to avoid an error.
+    Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-char thrd_create ();
++   builtin and then its argument prototype would still apply.
++   The 'extern "C"' is for builds by C++ compilers;
++   although this is not generally supported in C code supporting it here
++   has little cost and some practical benefit (sr 110532).  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char thrd_create (void);
+ int
+ main (void)
+ {
+@@ -27092,8 +27192,8 @@
+         LIBS=$save_LIBS
+         test $gl_pthread_api = yes && break
+       done
+-      echo "$as_me:27095: gl_pthread_api=$gl_pthread_api" >&5
+-      echo "$as_me:27096: LIBPTHREAD=$LIBPTHREAD" >&5
++      echo "$as_me:27195: gl_pthread_api=$gl_pthread_api" >&5
++      echo "$as_me:27196: LIBPTHREAD=$LIBPTHREAD" >&5
+ 
+       gl_pthread_in_glibc=no
+       # On Linux with glibc >= 2.34, libc contains the fully functional
+@@ -27119,7 +27219,7 @@
+ 
+           ;;
+       esac
+-      echo "$as_me:27122: gl_pthread_in_glibc=$gl_pthread_in_glibc" >&5
++      echo "$as_me:27222: gl_pthread_in_glibc=$gl_pthread_in_glibc" >&5
+ 
+       # Test for libpthread by looking for pthread_kill. (Not pthread_self,
+       # since it is defined as a macro on OSF/1.)
+@@ -27139,8 +27239,14 @@
+ 
+ /* Override any GCC internal prototype to avoid an error.
+    Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-char pthread_kill ();
++   builtin and then its argument prototype would still apply.
++   The 'extern "C"' is for builds by C++ compilers;
++   although this is not generally supported in C code supporting it here
++   has little cost and some practical benefit (sr 110532).  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char pthread_kill (void);
+ int
+ main (void)
+ {
+@@ -27198,8 +27304,14 @@
+ 
+ /* Override any GCC internal prototype to avoid an error.
+    Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-char pthread_kill ();
++   builtin and then its argument prototype would still apply.
++   The 'extern "C"' is for builds by C++ compilers;
++   although this is not generally supported in C code supporting it here
++   has little cost and some practical benefit (sr 110532).  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char pthread_kill (void);
+ int
+ main (void)
+ {
+@@ -27242,8 +27354,14 @@
+ 
+ /* Override any GCC internal prototype to avoid an error.
+    Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-char pthread_kill ();
++   builtin and then its argument prototype would still apply.
++   The 'extern "C"' is for builds by C++ compilers;
++   although this is not generally supported in C code supporting it here
++   has little cost and some practical benefit (sr 110532).  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char pthread_kill (void);
+ int
+ main (void)
+ {
+@@ -27273,7 +27391,7 @@
+ 
+         fi
+       fi
+-      echo "$as_me:27276: LIBPMULTITHREAD=$LIBPMULTITHREAD" >&5
++      echo "$as_me:27394: LIBPMULTITHREAD=$LIBPMULTITHREAD" >&5
+     fi
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether POSIX threads API is available" >&5
+ printf %s "checking whether POSIX threads API is available... " >&6; }
+@@ -27316,8 +27434,14 @@
+ 
+ /* Override any GCC internal prototype to avoid an error.
+    Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-char sched_yield ();
++   builtin and then its argument prototype would still apply.
++   The 'extern "C"' is for builds by C++ compilers;
++   although this is not generally supported in C code supporting it here
++   has little cost and some practical benefit (sr 110532).  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char sched_yield (void);
+ int
+ main (void)
+ {
+@@ -27355,8 +27479,14 @@
+ 
+ /* Override any GCC internal prototype to avoid an error.
+    Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-char sched_yield ();
++   builtin and then its argument prototype would still apply.
++   The 'extern "C"' is for builds by C++ compilers;
++   although this is not generally supported in C code supporting it here
++   has little cost and some practical benefit (sr 110532).  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char sched_yield (void);
+ int
+ main (void)
+ {
+@@ -28226,8 +28356,14 @@
+ 
+ /* Override any GCC internal prototype to avoid an error.
+    Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-char posix_spawn ();
++   builtin and then its argument prototype would still apply.
++   The 'extern "C"' is for builds by C++ compilers;
++   although this is not generally supported in C code supporting it here
++   has little cost and some practical benefit (sr 110532).  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char posix_spawn (void);
+ int
+ main (void)
+ {
+@@ -33864,8 +34000,14 @@
+ 
+ /* Override any GCC internal prototype to avoid an error.
+    Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-char clock_gettime ();
++   builtin and then its argument prototype would still apply.
++   The 'extern "C"' is for builds by C++ compilers;
++   although this is not generally supported in C code supporting it here
++   has little cost and some practical benefit (sr 110532).  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char clock_gettime (void);
+ int
+ main (void)
+ {
