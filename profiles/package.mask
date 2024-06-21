@@ -33,6 +33,25 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-21)
+# Last dev-php/* EAPI=6 packages, and reverse dependencies of them.
+# composer has active security vulnerabilities. Others are waiting
+# for version bumps, and unbundling of dependencies.
+# Removal on 2024-07-21.  Bugs #934666.
+dev-php/phpDocumentor
+dev-php/phpcov
+dev-php/phpdepend
+dev-php/phpdocumentor-reflection-common
+dev-php/phpdocumentor-reflection-docblock
+dev-php/phpdocumentor-type-resolver
+dev-php/stringparser_bbcode
+dev-php/symfony-config
+dev-php/symfony-console
+dev-php/symfony-dependency-injection
+dev-php/symfony-event-dispatcher
+dev-php/symfony-yaml
+dev-php/composer
+
 # Hans de Graaff <graaff@gentoo.org> (2024-06-21)
 # Obsolete slot. Please use a newer slot instead.
 # Masked for removal on 2024-07-21.
