@@ -54,10 +54,6 @@ if [[ ${PV} != *9999* ]] ; then
 	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-eduvpn-20240307 )"
 fi
 
-PATCHES=(
-	"${FILESDIR}/${PN}-4.3.1-desktop.patch"
-)
-
 pkg_postinst() {
 	xdg_icon_cache_update
 }
