@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2024-06-21)
+# Obsolete slot. Please use a newer slot instead.
+# Masked for removal on 2024-07-21.
+dev-ruby/public_suffix:4
+
 # Martin Dummer <martin.dummer@gmx.net> (2024-06-21)
 # Upstream dead, was an optional package for a reverse dependency
 # which is gone.
