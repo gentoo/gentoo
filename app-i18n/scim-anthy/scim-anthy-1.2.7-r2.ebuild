@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ppc sparc x86"
+KEYWORDS="amd64 ~arm sparc x86"
 IUSE="+gtk3 nls kasumi"
 
 DEPEND="
