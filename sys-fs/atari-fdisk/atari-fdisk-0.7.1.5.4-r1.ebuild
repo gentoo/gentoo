@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 SLOT="0"
 # Note: The code assumes sizeof(long) == 4 everywhere. 64-bit platforms need to
 # build a 32-bit binary below to avoid memory corruption issues.
-KEYWORDS="~amd64 ~m68k ~x86"
+KEYWORDS="~amd64 ~m68k x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.7.1.5.4-prompt-logic.patch
