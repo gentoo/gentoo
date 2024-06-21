@@ -8,7 +8,7 @@ DESCRIPTION="A workspace manager for GNUstep"
 HOMEPAGE="https://gnustep.github.io/experience/GWorkspace.html"
 SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/usr-apps/${P}.tar.gz"
 
-KEYWORDS="amd64 ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 LICENSE="GPL-2"
 SLOT="0"
 
