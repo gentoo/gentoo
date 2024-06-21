@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools libtool bash-completion-r1
 
 DESCRIPTION="Library and tools for managing linux kernel modules"
-HOMEPAGE="https://git.kernel.org/?p=utils/kernel/kmod/kmod.git"
+HOMEPAGE="https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git"
 
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/utils/kernel/${PN}/${PN}.git"
