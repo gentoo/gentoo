@@ -17,7 +17,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0"
 SLOT="10.1"
-KEYWORDS="~amd64 ~arm ~arm64 ~amd64-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~amd64-linux"
 IUSE="extra-webapps"
 
 RESTRICT="test" # can we run them on a production system?
