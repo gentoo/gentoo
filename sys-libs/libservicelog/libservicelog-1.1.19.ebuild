@@ -13,6 +13,7 @@ SLOT="0"
 LICENSE="GPL-2+"
 KEYWORDS="~ppc ~ppc64"
 IUSE="static-libs"
+RESTRICT="test" # bug 801235
 
 DEPEND="
 	dev-db/sqlite:=

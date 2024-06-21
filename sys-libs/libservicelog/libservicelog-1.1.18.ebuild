@@ -11,6 +11,7 @@ SLOT="0"
 LICENSE="LGPL-2.1+"
 KEYWORDS="ppc ppc64"
 IUSE="static-libs"
+RESTRICT="test" # bug 801235
 
 DEPEND="
 	dev-db/sqlite:=
