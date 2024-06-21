@@ -20,7 +20,12 @@ RDEPEND="
 	dev-python/pygments
 	dev-texlive/texlive-latexextra
 "
-BDEPEND="doc? ( dev-texlive/texlive-fontsextra )"
+BDEPEND="
+	doc? (
+		dev-texlive/texlive-fontsextra
+		dev-texlive/texlive-latexextra
+	)
+"
 
 DOCS=( ../CHANGES.md ../README.md )
 
