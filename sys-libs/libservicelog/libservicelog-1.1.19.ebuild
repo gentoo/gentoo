@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/power-ras/libservicelog"
 
 SLOT="0"
 LICENSE="GPL-2+"
-KEYWORDS="ppc ~ppc64"
+KEYWORDS="ppc ppc64"
 IUSE="static-libs"
 RESTRICT="test" # bug 801235
 
