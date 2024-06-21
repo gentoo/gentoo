@@ -11,7 +11,7 @@ SRC_URI="http://www.jeenyus.net/linux/software/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~mips ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~hppa ~mips ppc ~sparc ~x86"
 RESTRICT="test"
 
 DEPEND="sys-apps/groff"
