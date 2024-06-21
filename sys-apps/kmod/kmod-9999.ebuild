@@ -18,7 +18,7 @@ fi
 
 LICENSE="LGPL-2"
 SLOT="0"
-IUSE="debug doc +lzma pkcs7 split-usr static-libs +tools +zlib +zstd"
+IUSE="debug doc +lzma pkcs7 static-libs +tools +zlib +zstd"
 
 # Upstream does not support running the test suite with custom configure flags.
 # I was also told that the test suite is intended for kmod developers.
@@ -79,6 +79,8 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--bindir="${EPREFIX}/bin"
+		--sbindir="${EPREFIX}/sbin"
 		--enable-shared
 		--with-bashcompletiondir="$(get_bashcompdir)"
 		$(use_enable debug)
@@ -99,10 +101,12 @@ src_install() {
 
 	find "${ED}" -type f -name "*.la" -delete || die
 
-	if use tools && use split-usr; then
-		# Move modprobe to /sbin to match CONFIG_MODPROBE_PATH from kernel
-		rm "${ED}/usr/bin/modprobe" || die
-		dosym ../usr/bin/kmod /sbin/modprobe
+	if use tools; then
+		local cmd
+		for cmd in depmod insmod modprobe rmmod; do
+			rm "${ED}"/bin/${cmd} || die
+			dosym ../bin/kmod /sbin/${cmd}
+		done
 	fi
 
 	cat <<-EOF > "${T}"/usb-load-ehci-first.conf
