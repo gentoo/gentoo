@@ -10,7 +10,6 @@ HOMEPAGE="https://www.teamspeak.com/"
 SRC_URI="https://files.teamspeak-services.com/pre_releases/client/${PV/_/-}/teamspeak-client.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"
 
-KEYWORDS=""
 LICENSE="teamspeak5 || ( GPL-2 GPL-3 LGPL-3 )"
 SLOT="5"
 
