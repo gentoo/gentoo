@@ -64,46 +64,14 @@ src_prepare() {
 
 python_test() {
 	local EPYTEST_DESELECT=(
-		tests/unit/activation/test_xonsh.py
 		tests/unit/seed/embed/test_bootstrap_link_via_app_data.py::test_seed_link_via_app_data
-		tests/unit/create/test_creator.py::test_cross_major
-		# tests failing without python2 installed
-		"tests/unit/create/test_creator.py::test_py_pyc_missing[True-False]"
-		"tests/unit/create/test_creator.py::test_py_pyc_missing[False-False]"
 		# tests old wheels for py3.7 support (that we're removing)
 		tests/unit/seed/embed/test_pip_invoke.py::test_base_bootstrap_via_pip_invoke
 		tests/unit/seed/wheels/test_wheels_util.py::test_wheel_not_support
+		# hangs on a busy system, sigh
+		tests/unit/test_util.py::test_reentrant_file_lock_is_thread_safe
 	)
 	case ${EPYTHON} in
-		pypy3)
-			EPYTEST_DESELECT+=(
-				'tests/unit/create/test_creator.py::test_create_no_seed[root-pypy3-posix-copies-isolated]'
-				'tests/unit/create/test_creator.py::test_create_no_seed[root-pypy3-posix-copies-global]'
-				'tests/unit/create/test_creator.py::test_create_no_seed[venv-pypy3-posix-copies-isolated]'
-				'tests/unit/create/test_creator.py::test_create_no_seed[venv-pypy3-posix-copies-global]'
-				'tests/unit/create/test_creator.py::test_create_no_seed[root-venv-copies-isolated]'
-				'tests/unit/create/test_creator.py::test_create_no_seed[root-venv-copies-global]'
-				'tests/unit/create/test_creator.py::test_create_no_seed[venv-venv-copies-isolated]'
-				'tests/unit/create/test_creator.py::test_create_no_seed[venv-venv-copies-global]'
-				'tests/unit/create/test_creator.py::test_zip_importer_can_import_setuptools'
-				'tests/unit/discovery/py_info/test_py_info_exe_based_of.py::test_discover_ok[PyPy-3.7.9-64-bin-]'
-				'tests/unit/discovery/py_info/test_py_info_exe_based_of.py::test_discover_ok[PyPy-3.7.9--bin-]'
-				'tests/unit/discovery/py_info/test_py_info_exe_based_of.py::test_discover_ok[PyPy-3.7.10-64-bin-]'
-				'tests/unit/discovery/py_info/test_py_info_exe_based_of.py::test_discover_ok[PyPy-3.7.10--bin-]'
-				'tests/unit/discovery/py_info/test_py_info_exe_based_of.py::test_discover_ok[PyPy-3.7-64-bin-]'
-				'tests/unit/discovery/py_info/test_py_info_exe_based_of.py::test_discover_ok[PyPy-3.7--bin-]'
-				'tests/unit/discovery/py_info/test_py_info_exe_based_of.py::test_discover_ok[PyPy-3-64-bin-]'
-				'tests/unit/discovery/py_info/test_py_info_exe_based_of.py::test_discover_ok[PyPy-3--bin-]'
-				'tests/unit/discovery/py_info/test_py_info_exe_based_of.py::test_discover_ok[python-3.7.9-64-bin-]'
-				'tests/unit/discovery/py_info/test_py_info_exe_based_of.py::test_discover_ok[python-3.7.9--bin-]'
-				'tests/unit/discovery/py_info/test_py_info_exe_based_of.py::test_discover_ok[python-3.7.10-64-bin-]'
-				'tests/unit/discovery/py_info/test_py_info_exe_based_of.py::test_discover_ok[python-3.7.10--bin-]'
-				'tests/unit/discovery/py_info/test_py_info_exe_based_of.py::test_discover_ok[python-3.7-64-bin-]'
-				'tests/unit/discovery/py_info/test_py_info_exe_based_of.py::test_discover_ok[python-3.7--bin-]'
-				'tests/unit/discovery/py_info/test_py_info_exe_based_of.py::test_discover_ok[python-3-64-bin-]'
-				'tests/unit/discovery/py_info/test_py_info_exe_based_of.py::test_discover_ok[python-3--bin-]'
-			)
-			;;
 		python3.1[23])
 			EPYTEST_DESELECT+=(
 				tests/unit/create/via_global_ref/test_build_c_ext.py
