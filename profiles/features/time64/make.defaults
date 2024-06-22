@@ -1,3 +1,15 @@
 # Copyright 2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Many profiles and stages override CFLAGS etc, and need then to eat their
+# own dogfood. For those who don't...
+__COMMON_FLAGS_TIME64="-D_FILE_OFFSET_BITS=64 -D_TIME_BITS=64"
+
+CFLAGS="${CFLAGS} ${__COMMON_FLAGS_TIME64}"
+CXXFLAGS="${CXXFLAGS} ${__COMMON_FLAGS_TIME64}"
+FCFLAGS="${FCFLAGS} ${__COMMON_FLAGS_TIME64}"
+FFLAGS="${FFLAGS} ${__COMMON_FLAGS_TIME64}"
+
+# We need to switch this explicitly on since it's explicitly disabled
+# in profiles otherwise.
+enable_year2038="yes"
