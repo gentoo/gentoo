@@ -13,7 +13,7 @@ S="${WORKDIR}"
 
 LICENSE="geekbench"
 SLOT="5"
-KEYWORDS="-* amd64 ~arm64"
+KEYWORDS="-* amd64 arm64"
 
 RESTRICT="bindist mirror"
 
