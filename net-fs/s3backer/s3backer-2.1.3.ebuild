@@ -5,21 +5,29 @@ EAPI=8
 
 inherit autotools
 
-DESCRIPTION="FUSE-based single file backing store via Amazon S3"
+DESCRIPTION="A filesystem that contains a single file backed by Amazon S3"
 HOMEPAGE="https://github.com/archiecobbs/s3backer"
 SRC_URI="https://github.com/archiecobbs/s3backer/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="nbd"
 
-RDEPEND="dev-libs/expat
+RDEPEND="
+	dev-libs/expat
 	dev-libs/openssl:0=
 	net-misc/curl
 	sys-fs/fuse:0
-	sys-libs/zlib"
+	sys-libs/zlib
+	nbd? ( sys-block/nbd sys-block/nbdkit )
+"
 DEPEND="${RDEPEND}
-	elibc_musl? ( sys-libs/queue-standalone )"
+	elibc_musl? ( sys-libs/queue-standalone )
+"
+BDEPEND="
+	virtual/pkgconfig
+"
 
 src_prepare() {
 	default
@@ -31,6 +39,14 @@ src_prepare() {
 	eautoreconf
 }
 
-src_compile() {
-	emake CFLAGS="${CFLAGS}"
+src_configure() {
+	econf $(use_enable nbd)
+}
+
+src_install() {
+	default
+
+	if use nbd ; then
+		rm "${ED}/usr/$(get_libdir)/nbdkit/plugins/nbdkit-s3backer-plugin.la" || die
+	fi
 }
