@@ -8,9 +8,9 @@ HOMEPAGE="https://www.geekbench.com/"
 SRC_URI="amd64? ( https://cdn.geekbench.com/GeekbenchML-${PV}-Linux.tar.gz )"
 S="${WORKDIR}/GeekbenchML-${PV}-Linux"
 
-KEYWORDS="-* amd64"
 LICENSE="geekbench"
 SLOT="6"
+KEYWORDS="-* amd64"
 
 RESTRICT="bindist mirror"
 
