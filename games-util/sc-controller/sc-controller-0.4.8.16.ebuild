@@ -32,10 +32,6 @@ RDEPEND="
 	wayland? ( gui-libs/gtk-layer-shell[introspection(+)] )
 "
 
-PATCHES=(
-	"${FILESDIR}"/${P}-py12.patch
-)
-
 distutils_enable_tests pytest
 
 pkg_setup() {
