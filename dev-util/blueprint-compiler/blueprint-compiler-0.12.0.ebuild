@@ -19,7 +19,7 @@ else
 	SRC_URI="https://gitlab.gnome.org/jwestman/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2"
 	S="${WORKDIR}/${PN}-v${PV}"
 
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 ~arm ~x86"
 fi
 
 LICENSE="LGPL-3+"
