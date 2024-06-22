@@ -18,8 +18,6 @@ else
 		verify-sig? ( https://github.com/kovidgoyal/kitty/releases/download/v${PV}/${P}.tar.xz.sig )
 	"
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kovidgoyal.gpg
-	# x86 currently still works but note that upstream has dropped support and
-	# may ignore issues: https://github.com/kovidgoyal/kitty/commit/29cb128fd
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 fi
 
