@@ -43,7 +43,6 @@ PDEPEND="
 
 LLVM_COMPONENTS=(
 	clang clang-tools-extra cmake
-	llvm/lib/Transforms/Hello
 )
 LLVM_MANPAGES=1
 LLVM_TEST_COMPONENTS=(
