@@ -10,7 +10,6 @@ inherit git-r3 linux-info python-single-r1 systemd toolchain-funcs
 DESCRIPTION="Tvheadend is a TV streaming server and digital video recorder"
 HOMEPAGE="https://tvheadend.org/"
 EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
-
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="dbus debug +ddci dvbcsa +dvb +ffmpeg hdhomerun +imagecache +inotify iptv opus satip systemd +timeshift uriparser vpx x264 x265 xmltv zeroconf zlib"
