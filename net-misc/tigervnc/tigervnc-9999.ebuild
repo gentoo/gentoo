@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,8 +6,8 @@ EAPI=8
 CMAKE_IN_SOURCE_BUILD=1
 inherit autotools cmake flag-o-matic java-pkg-opt-2 optfeature systemd xdg
 
-XSERVER_VERSION="21.1.8"
-XSERVER_PATCH_VERSION="21.1.1"
+XSERVER_VERSION="21.1.13"
+XSERVER_PATCH_VERSION="21"
 
 DESCRIPTION="Remote desktop viewer display system"
 HOMEPAGE="https://tigervnc.org"
@@ -121,7 +121,6 @@ src_prepare() {
 		cd unix/xserver || die
 		eapply ../xserver${XSERVER_PATCH_VERSION}.patch
 		eautoreconf
-		sed -i 's:\(present.h\):../present/\1:' os/utils.c || die
 		sed -i '/strcmp.*-fakescreenfps/,/^        \}/d' os/utils.c || die
 
 		if use drm; then
@@ -173,7 +172,6 @@ src_configure() {
 			--enable-dri2 \
 			--with-pic \
 			--without-dtrace \
-			--disable-present \
 			--with-sha1=libcrypto
 	fi
 }
@@ -185,7 +183,7 @@ src_compile() {
 		# deps of the vnc module and the module itself
 		local d subdirs=(
 			fb xfixes Xext dbe $(usex opengl glx "") $(usev dri3) randr render
-			damageext miext Xi xkb composite dix mi os hw/vnc
+			damageext miext Xi xkb composite dix mi os present hw/vnc
 		)
 		for d in "${subdirs[@]}"; do
 			emake -C unix/xserver/"${d}"
@@ -201,7 +199,7 @@ src_install() {
 		rm -v "${ED}"/usr/$(get_libdir)/xorg/modules/extensions/libvnc.la || die
 
 		newconfd "${FILESDIR}"/${PN}-1.13.1.confd ${PN}
-		newinitd "${FILESDIR}"/${PN}-1.13.1.initd ${PN}
+		newinitd "${FILESDIR}"/${PN}-1.13.90.initd ${PN}
 
 		systemd_douserunit unix/vncserver/vncserver@.service
 
@@ -217,7 +215,11 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	use server && elog 'OpenRC users: please migrate to one service per display as documented here'	#FIXME: add link
+	use server && [[ -n ${REPLACING_VERSIONS} ]] && ver_test "${REPLACING_VERSIONS}" -lt 1.13.1-r3 && {
+		elog 'OpenRC users: please migrate to one service per display as documented here:'
+		elog 'https://wiki.gentoo.org/wiki/TigerVNC#Migrating_from_1.13.1-r2_or_lower:'
+		elog
+	}
 
 	local OPTIONAL_DM="gnome-base/gdm x11-misc/lightdm x11-misc/sddm x11-misc/slim"
 	use server && \
