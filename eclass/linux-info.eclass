@@ -6,7 +6,7 @@
 # kernel@gentoo.org
 # @AUTHOR:
 # Original author: John Mylchreest <johnm@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: eclass used for accessing kernel related information
 # @DESCRIPTION:
 # This eclass is used as a central eclass for accessing kernel
@@ -28,7 +28,7 @@
 # get_running_version
 
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -37,7 +37,6 @@ _LINUX_INFO_ECLASS=1
 
 # A Couple of env vars are available to effect usage of this eclass
 # These are as follows:
-
 
 # @ECLASS_VARIABLE: CHECKCONFIG_DONOTHING
 # @USER_VARIABLE
@@ -51,7 +50,7 @@ _LINUX_INFO_ECLASS=1
 # @DESCRIPTION:
 # A string containing the directory of the target kernel sources. The default value is
 # "/usr/src/linux"
-KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
+KERNEL_DIR="${KERNEL_DIR:-${ROOT}/usr/src/linux}"
 
 # @ECLASS_VARIABLE: CONFIG_CHECK
 # @DEFAULT_UNSET
@@ -87,7 +86,6 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 # CONFIG_CHECK="CFG" with ERROR_<CFG>="Error Message" will die
 # CONFIG_CHECK="~CFG" with ERROR_<CFG>="Error Message" calls eerror without dying
 # CONFIG_CHECK="~CFG" with WARNING_<CFG>="Warning Message" calls ewarn without dying
-
 
 # @ECLASS_VARIABLE: KBUILD_OUTPUT
 # @DEFAULT_UNSET
@@ -168,7 +166,6 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 
 # And to ensure all the weirdness with crosscompile
 inherit toolchain-funcs
-[[ ${EAPI} == 6 ]] && inherit eapi7-ver
 
 # @FUNCTION: set_arch_to_kernel
 # @DESCRIPTION:
@@ -636,7 +633,7 @@ get_version() {
 	# caught before this if they are.
 	if [[ -z ${OUTPUT_DIR} ]] ; then
 		# Try to locate a kernel that is most relevant for us.
-		for OUTPUT_DIR in "${SYSROOT}" "${ROOT%/}" "" ; do
+		for OUTPUT_DIR in "${SYSROOT}" "${ROOT}" "" ; do
 			OUTPUT_DIR+="/lib/modules/${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}${KV_EXTRA}${KV_LOCAL}/build"
 			if [[ -e ${OUTPUT_DIR} ]] ; then
 				break
@@ -664,10 +661,10 @@ get_running_version() {
 
 	local kv=$(uname -r)
 
-	if [[ -f ${ROOT%/}/lib/modules/${kv}/source/Makefile ]]; then
-		KERNEL_DIR=$(readlink -f "${ROOT%/}/lib/modules/${kv}/source")
-		if [[ -f ${ROOT%/}/lib/modules/${kv}/build/Makefile ]]; then
-			KBUILD_OUTPUT=$(readlink -f "${ROOT%/}/lib/modules/${kv}/build")
+	if [[ -f ${ROOT}/lib/modules/${kv}/source/Makefile ]]; then
+		KERNEL_DIR=$(readlink -f "${ROOT}/lib/modules/${kv}/source")
+		if [[ -f ${ROOT}/lib/modules/${kv}/build/Makefile ]]; then
+			KBUILD_OUTPUT=$(readlink -f "${ROOT}/lib/modules/${kv}/build")
 		fi
 		get_version && return 0
 	fi
@@ -711,7 +708,6 @@ linux-info_get_any_version() {
 		die "Unable to determine any Linux Kernel version, please report a bug"
 	fi
 }
-
 
 # ebuild check functions
 # ---------------------------------------
