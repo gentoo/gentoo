@@ -14,7 +14,7 @@ else
 	SRC_URI="
 		https://github.com/thxomas/bdaddr/archive/${MY_COMMIT}.tar.gz
 			-> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 ~arm64"
 	S="${WORKDIR}/${PN}-${MY_COMMIT}"
 fi
 
