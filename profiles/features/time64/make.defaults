@@ -5,7 +5,7 @@
 # own dogfood. For those who don't...
 __COMMON_FLAGS_TIME64="-D_FILE_OFFSET_BITS=64 -D_TIME_BITS=64"
 
-CFLAGS="${CFLAGS} ${__COMMON_FLAGS_TIME64}"
+CFLAGS="${CFLAGS} ${__COMMON_FLAGS_TIME64} -Werror=implicit-function-declaration -Werror=implicit-int -Werror=incompatible-pointer-types -Werror=return-type -Werror=int-conversion"
 CXXFLAGS="${CXXFLAGS} ${__COMMON_FLAGS_TIME64}"
 FCFLAGS="${FCFLAGS} ${__COMMON_FLAGS_TIME64}"
 FFLAGS="${FFLAGS} ${__COMMON_FLAGS_TIME64}"
