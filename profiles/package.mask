@@ -529,11 +529,6 @@ sec-keys/openpgp-keys-jiatan
 # 20240-06-26.
 dev-ruby/uconv
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-23)
-# EAPI=6, maintainer-needed, dead HOMEPAGE, fails to compile.
-# Removal on 2024-06-22.  Bugs #932571, #902899, #887625, #853025, #672702.
-x11-plugins/pidgin-rhythmbox
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-05-20)
 # Short-lived side-by-side release, now unnecessary as it moved back to
 # kde-apps/kio-extras:5. Removal on 2024-06-04.
