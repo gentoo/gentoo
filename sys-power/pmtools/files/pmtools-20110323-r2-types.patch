@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/874702#c8
+--- pmtools-orig/madt/madt.c	2005-11-12 04:07:04.000000000 +1100
++++ pmtools/madt/madt.c	2024-06-06 12:04:59.554214977 +1000
+@@ -42,7 +42,7 @@
+ /* read standard input
+  * write decoded madt to standard output
+  */
+-get_next_entry(acpi_table_entry_header * entry_header)
++int get_next_entry(acpi_table_entry_header * entry_header)
+ {
+ 	size_t retval;
+ 
+@@ -53,7 +53,7 @@
+ 
+ u8	buffer[1024];
+ 
+-main()
++int main()
+ {
+ 	size_t retval;
+ 	struct acpi_table_madt *madt_header;
