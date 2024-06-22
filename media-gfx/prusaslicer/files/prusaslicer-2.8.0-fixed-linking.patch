@@ -1,0 +1,19 @@
+--- a/src/slic3r/CMakeLists.txt
++++ b/src/slic3r/CMakeLists.txt
+@@ -376,6 +376,7 @@ set(SLIC3R_GUI_SOURCES
+ )
+ 
+ find_package(NanoSVG REQUIRED)
++find_package(OpenSSL REQUIRED)
+ 
+ if (APPLE)
+     list(APPEND SLIC3R_GUI_SOURCES
+@@ -404,7 +405,7 @@ endforeach()
+ 
+ encoding_check(libslic3r_gui)
+ 
+-target_link_libraries(libslic3r_gui libslic3r avrdude libcereal imgui libvgcode GLEW::GLEW OpenGL::GL hidapi libcurl ${wxWidgets_LIBRARIES} NanoSVG::nanosvg NanoSVG::nanosvgrast)
++target_link_libraries(libslic3r_gui libslic3r avrdude libcereal imgui libvgcode GLEW::GLEW OpenGL::GL hidapi libcurl ${wxWidgets_LIBRARIES} NanoSVG::nanosvg NanoSVG::nanosvgrast OpenSSL::SSL OpenSSL::Crypto)
+ 
+ if (MSVC)
+     target_link_libraries(libslic3r_gui Setupapi.lib)

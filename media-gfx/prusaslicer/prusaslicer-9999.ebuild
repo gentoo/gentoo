@@ -61,6 +61,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.8.0-missing-includes.patch"
+	"${FILESDIR}/${PN}-2.8.0-fixed-linking.patch"
 )
 
 src_prepare() {
