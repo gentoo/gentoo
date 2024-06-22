@@ -6,12 +6,12 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit distutils-r1 linux-info xdg
 
 DESCRIPTION="User-mode driver and GTK-based GUI for Steam Controllers and others"
-HOMEPAGE="https://github.com/Ryochan7/sc-controller/"
-SRC_URI="https://github.com/Ryochan7/sc-controller/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/C0rn3j/sc-controller/"
+SRC_URI="https://github.com/C0rn3j/sc-controller/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 BSD CC-BY-3.0 CC0-1.0 LGPL-2.1 MIT PSF-2 ZLIB"
 SLOT="0"
@@ -31,6 +31,10 @@ RDEPEND="
 	udev? ( games-util/game-device-udev-rules )
 	wayland? ( gui-libs/gtk-layer-shell[introspection(+)] )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-py12.patch
+)
 
 distutils_enable_tests pytest
 
