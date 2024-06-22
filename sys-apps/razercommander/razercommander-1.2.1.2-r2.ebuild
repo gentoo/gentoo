@@ -1,23 +1,31 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 MY_PN="razerCommander"
-MY_P=${MY_PN}-${PV}
+MY_P="${MY_PN}-${PV}"
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{11..12} )
 
 inherit meson python-single-r1 xdg
 
 DESCRIPTION="GTK contol center for managing Razer peripherals on Linux"
 HOMEPAGE="https://gitlab.com/gabmus/razerCommander/"
-SRC_URI="https://gitlab.com/gabmus/${MY_PN}/-/archive/${PV}/${MY_P}.tar.gz"
-S="${WORKDIR}"/${MY_P}
+
+if [[ "${PV}" == *9999* ]] ; then
+	inherit git-r3
+
+	EGIT_REPO_URI="https://gitlab.com/gabmus/${MY_PN}.git"
+else
+	SRC_URI="https://gitlab.com/gabmus/${MY_PN}/-/archive/${PV}/${MY_P}.tar.gz"
+	S="${WORKDIR}/${MY_P}"
+
+	KEYWORDS="amd64 ~x86"
+fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
@@ -28,7 +36,9 @@ RDEPEND="
 		sys-apps/openrazer[client,daemon,${PYTHON_USEDEP}]
 	')
 "
-BDEPEND="${RDEPEND}"
+BDEPEND="
+	${RDEPEND}
+"
 
 src_install() {
 	meson_src_install
