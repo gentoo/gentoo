@@ -3,13 +3,14 @@
 
 EAPI=8
 
-inherit bash-completion-r1
+inherit shell-completion
 
 DESCRIPTION="Screen capture utility using imlib2 library"
 HOMEPAGE="https://github.com/resurrecting-open-source-projects/scrot"
 if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/resurrecting-open-source-projects/${PN}"
 	inherit autotools git-r3
+	LIVE_BDEPEND="dev-build/autoconf-archive"
 else
 	SRC_URI="https://github.com/resurrecting-open-source-projects/${PN}/releases/download/${PV}/${P}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
@@ -34,15 +35,14 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	x11-base/xorg-proto
-	elibc_musl? ( sys-libs/queue-standalone )
 "
 BDEPEND="
-	dev-build/autoconf-archive
+	${LIVE_BDEPEND}
 	virtual/pkgconfig
 "
 
 DOCS=(
-	AUTHORS ChangeLog README.md
+	AUTHORS ChangeLog README.md FAQ.md
 )
 
 src_prepare() {
@@ -54,5 +54,6 @@ src_prepare() {
 src_install() {
 	default
 
-	newbashcomp "${FILESDIR}"/${PN}-1.7.bash-completion ${PN}
+	dozshcomp  etc/zsh-completion/_scrot
+	dobashcomp etc/bash-completion/scrot
 }
