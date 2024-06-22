@@ -6,6 +6,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# NRK <nrk@disroot.org> (2024-06-20)
+# Fails to build on newer icu.
+# https://bugs.gentoo.org/933863
+# https://github.com/naelstrof/slop/issues/172
+x11-misc/slop icu
+
 # Alfredo Tupone <tupone@gentoo.org> (2024-05-28)
 # Not working, bug #931046
 >=sci-libs/caffe2-2.3.0 rocm
