@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+dmenu test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="test? ( dev-cpp/catch:1 )"
+BDEPEND="test? ( dev-cpp/catch:0 )"
 DEPEND="
 	dev-libs/libfmt:=
 	dev-libs/spdlog:=
