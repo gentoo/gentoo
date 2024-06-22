@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_EXTRADOC="README.md"
@@ -19,9 +19,8 @@ HOMEPAGE="https://github.com/ai/autoprefixer-rails"
 SRC_URI="https://github.com/ai/autoprefixer-rails/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 
-KEYWORDS="~amd64"
 SLOT="$(ver_cut 1)"
-IUSE=""
+KEYWORDS="~amd64"
 
 DEPEND+="test? ( net-libs/nodejs )"
 
