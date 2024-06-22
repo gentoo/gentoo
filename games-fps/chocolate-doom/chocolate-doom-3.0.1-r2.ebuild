@@ -1,16 +1,16 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit autotools prefix python-any-r1 xdg
 
 DESCRIPTION="A Doom source port that is minimalist and historically accurate"
 HOMEPAGE="https://www.chocolate-doom.org"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${P}.tar.gz
 	https://gist.githubusercontent.com/vilhelmgray/28d4713cb6387ad62ab76cfac1443355/raw/f7600d93ca45a5102969b8f89974a3c36a3563f5/${P}-overhaul-manpages-add-parameters.patch"
-
+S="${WORKDIR}/${PN}-${P}"
 LICENSE="BSD GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
@@ -21,14 +21,17 @@ DEPEND="
 	media-libs/sdl2-mixer[midi?,vorbis?]
 	media-libs/sdl2-net
 	libsamplerate? ( media-libs/libsamplerate )
-	png? ( media-libs/libpng:= )"
-RDEPEND="${DEPEND}"
-# ${PYTHON_DEPS} for bash-completion
+	png? ( media-libs/libpng:= )
+"
+
+RDEPEND="
+	${DEPEND}
+"
+
+# ${PYTHON_DEPS} for bash-completion and docs.
 BDEPEND="
 	${PYTHON_DEPS}
-	doc? ( ${PYTHON_DEPS} )"
-
-S="${WORKDIR}/${PN}-${P}"
+"
 
 PATCHES=(
 	"${DISTDIR}/${P}-overhaul-manpages-add-parameters.patch"
