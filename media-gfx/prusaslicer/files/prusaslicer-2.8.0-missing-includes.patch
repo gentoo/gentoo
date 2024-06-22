@@ -8,6 +8,21 @@
  #include <boost/nowide/fstream.hpp>
  
  #include "libslic3r/libslic3r.h"
+--- a/src/slic3r/GUI/RulerForDoubleSlider.cpp
++++ b/src/slic3r/GUI/RulerForDoubleSlider.cpp
+@@ -4,6 +4,12 @@
+ ///|/
+ #include "RulerForDoubleSlider.hpp"
+ #include "libslic3r/CustomGCode.hpp"
++#include "../../libslic3r/libslic3r.h"
++
++#include <algorithm>
++#include <cmath>
++#include <numeric>
++#include <iterator>
+ 
+ using namespace Slic3r;
+ using namespace CustomGCode;
 --- a/src/slic3r/GUI/UserAccountCommunication.cpp
 +++ b/src/slic3r/GUI/UserAccountCommunication.cpp
 @@ -9,6 +9,7 @@
