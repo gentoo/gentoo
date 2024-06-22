@@ -9,7 +9,7 @@ inherit cmake python-single-r1
 MY_PN=dwarves
 MY_P=${MY_PN}-${PV%%_p*}
 
-DESCRIPTION="pahole (Poke-a-Hole) and other DWARF2 utilities"
+DESCRIPTION="pahole (Poke-a-Hole) and other DWARF utilities"
 HOMEPAGE="https://git.kernel.org/cgit/devel/pahole/pahole.git/"
 
 if [[ ${PV} == 9999 ]] ; then

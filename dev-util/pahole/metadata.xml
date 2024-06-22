@@ -7,7 +7,7 @@
   </maintainer>
   <longdescription lang="en">
     The more-than-seven dwarves is a collection of tools that allows
-    to inspect and query the DWARF2 information present in ELF files
+    to inspect and query the DWARF information present in ELF files
     built with full debug information. These tools include pahole
     (Poke-a-hole) and codiff, and were originally designed to inspect
     the Linux kernel and its modules, but can be used in for
