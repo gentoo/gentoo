@@ -3,9 +3,13 @@
 
 EAPI="8"
 
+GLIBC_PV="2.39"
+GLIBC_P="glibc-${GLIBC_PV}"
+
 DESCRIPTION="Database for the m17n library"
 HOMEPAGE="https://savannah.nongnu.org/projects/m17n https://git.savannah.nongnu.org/cgit/m17n/m17n-db.git"
-SRC_URI="mirror://nongnu/m17n/${P}.tar.gz"
+SRC_URI="mirror://nongnu/m17n/${P}.tar.gz
+	elibc_musl? ( mirror://gnu/glibc/${GLIBC_P}.tar.xz )"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -14,6 +18,20 @@ IUSE=""
 
 RDEPEND="virtual/libintl"
 BDEPEND="sys-devel/gettext"
+
+CHARMAPS="${GLIBC_P}/localedata/charmaps"
+
+src_unpack() {
+	unpack ${P}.tar.gz
+
+	if use elibc_musl; then
+		tar xf "${DISTDIR}"/${GLIBC_P}.tar.xz ${CHARMAPS} || die
+	fi
+}
+
+src_configure() {
+	econf $(usex elibc_musl "--with-charmaps=${WORKDIR}/${CHARMAPS}" "")
+}
 
 src_install() {
 	default
