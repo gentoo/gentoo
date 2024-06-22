@@ -199,7 +199,7 @@ src_install() {
 		rm -v "${ED}"/usr/$(get_libdir)/xorg/modules/extensions/libvnc.la || die
 
 		newconfd "${FILESDIR}"/${PN}-1.13.1.confd ${PN}
-		newinitd "${FILESDIR}"/${PN}-1.13.1.initd ${PN}
+		newinitd "${FILESDIR}"/${PN}-1.13.90.initd ${PN}
 
 		systemd_douserunit unix/vncserver/vncserver@.service
 
@@ -215,9 +215,10 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	use server && {
+	use server && [[ -n ${REPLACING_VERSIONS} ]] && ver_test "${REPLACING_VERSIONS}" -lt 1.13.1-r3 && {
 		elog 'OpenRC users: please migrate to one service per display as documented here:'
 		elog 'https://wiki.gentoo.org/wiki/TigerVNC#Migrating_from_1.13.1-r2_or_lower:'
+		elog
 	}
 
 	local OPTIONAL_DM="gnome-base/gdm x11-misc/lightdm x11-misc/sddm x11-misc/slim"

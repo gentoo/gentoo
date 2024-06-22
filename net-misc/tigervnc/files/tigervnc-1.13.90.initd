@@ -1,0 +1,91 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+# shellcheck shell=sh
+
+# Create symlinks for all displays.
+# For example for display :1, run `ln -s tigervnc /etc/init.d/tigervnc.1`
+# Then `rc-update add tigervnc.1 default`
+# For compatibility, /etc/init.d/tigervnc will start all displays.
+
+DISPLAYS=${SVCNAME#*.}
+if [ "$DISPLAYS" = "tigervnc" ]; then
+	should_warn=1
+	DISPLAYS=$(grep -v "^#" /etc/tigervnc/vncserver.users | sed -e 's/=.*//' -e 's/^://')
+fi
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ -n "${DISPLAYS}" ]; then
+		if [ "$1" = "start" ]; then
+			for display in $DISPLAYS; do
+				user="$(grep "^:${display}" /etc/tigervnc/vncserver.users)"
+				user=${user#*=}
+				# bug #690046
+				if [ -z "${user}" ]; then
+					eerror "User is not defined for display :${display} in /etc/tigervnc/vncserver.users"
+					return 1
+				# 1.13.90 changed the default config directory to ~/.config/tigervnc
+				# but still supports ~/.vnc if not found
+				elif ! runuser -l "${user}" -s /bin/bash -c \
+					"[[ ( -d ${XDG_CONFIG_HOME:-~/.config}/tigervnc && -f ${XDG_CONFIG_HOME:-~/.config}/tigervnc/passwd ) || ( ! -d ${XDG_CONFIG_HOME:-~/.config}/tigervnc && -f ~/.vnc/passwd ) ]]"; then
+					eerror "There are no passwords defined for user ${user}."
+					return 1
+				elif [ -e "/tmp/.X11-unix/X${display}" ]; then
+					eerror "Display :${display} appears to be already in use because of /tmp/.X11-unix/X${display}"
+					eerror "Remove this file if there is no X server for :${display}"
+					return 1
+				elif [ -e "/tmp/.X${display}-lock" ]; then
+					eerror "Display :${display} appears to be already in use because of /tmp/.X${display}-lock"
+					eerror "Remove this file if there is no X server for :${display}"
+					return 1
+				fi
+				FREEDISPLAYS="${FREEDISPLAYS} ${display}"
+			done
+		fi
+		return 0
+	else
+		eerror 'There are no displays configured in /etc/tigervnc/vncserver.users'
+		return 1
+	fi
+}
+
+checkwarn() {
+	if [ "${should_warn}" = "1" ]; then
+		ewarn 'Running /etc/init.d/tigervnc in compatibility mode'
+		ewarn 'Please migrate to one service per display as detailed here:'
+		ewarn 'https://wiki.gentoo.org/wiki/TigerVNC#Migrating_from_1.13.1-r2_or_lower:'
+	fi
+}
+
+start() {
+	checkwarn
+	FREEDISPLAYS=""
+	checkconfig start || return 1
+	for display in $FREEDISPLAYS; do
+		[ -n "${TIGERVNC_XSESSION_FILE}" ] && export TIGERVNC_XSESSION_FILE
+		ebegin "Starting TigerVNC server :${display}"
+		start-stop-daemon --start --pidfile=/run/vncsession-":${display}".pid /usr/libexec/vncsession-start -- ":${display}"
+		eend $?
+	done
+}
+
+stop() {
+	checkconfig stop || return 2
+	for display in $DISPLAYS; do
+		ebegin "Stopping TigerVNC server :${display}"
+		start-stop-daemon --stop --pidfile=/run/vncsession-":${display}".pid
+		eend $?
+	done
+	# Do not fail if a server is missing
+	/bin/true
+}
+
+restart() {
+        svc_stop
+        svc_start
+}
