@@ -139,8 +139,6 @@ MODULAR_X_DEPEND="
 
 COMMON_DEPEND="
 	${MODULAR_X_DEPEND}
-	!app-text/epspdf
-	!app-text/pdfjam
 	sys-libs/zlib
 	>=media-libs/harfbuzz-1.4.5:=[icu,graphite]
 	>=media-libs/libpng-1.2.43-r2:0=
