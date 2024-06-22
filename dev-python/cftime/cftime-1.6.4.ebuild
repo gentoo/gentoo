@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~riscv ~s390 x86"
+KEYWORDS="amd64 arm64 ~loong ~riscv ~s390 x86"
 
 DEPEND="
 	>=dev-python/numpy-1.26.0[${PYTHON_USEDEP}]
