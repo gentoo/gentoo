@@ -1,0 +1,65 @@
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 35101cef2..5934e9f95 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -395,6 +395,7 @@ def pip_editable_parts(
+             "-m",
+             "pip",
+             "install",
++            "--no-build-isolation",
+             "--target",
+             pip_self_install_path,
+             "-e",
+diff --git a/tests/functional/test_config_settings.py b/tests/functional/test_config_settings.py
+index 3f88d9c39..857722dd1 100644
+--- a/tests/functional/test_config_settings.py
++++ b/tests/functional/test_config_settings.py
+@@ -118,6 +118,7 @@ def test_config_settings_implies_pep517(
+     )
+     result = script.pip(
+         "wheel",
++        "--no-build-isolation",
+         "--config-settings",
+         "FOO=Hello",
+         pkg_path,
+diff --git a/tests/functional/test_install.py b/tests/functional/test_install.py
+index eaea12a16..e19446385 100644
+--- a/tests/functional/test_install.py
++++ b/tests/functional/test_install.py
+@@ -685,7 +685,7 @@ def test_link_hash_in_dep_fails_require_hashes(
+     # Build a wheel for pkga and compute its hash.
+     wheelhouse = tmp_path / "wheehouse"
+     wheelhouse.mkdir()
+-    script.pip("wheel", "--no-deps", "-w", wheelhouse, project_path)
++    script.pip("wheel", "--no-build-isolation", "--no-deps", "-w", wheelhouse, project_path)
+     digest = hashlib.sha256(
+         wheelhouse.joinpath("pkga-1.0-py3-none-any.whl").read_bytes()
+     ).hexdigest()
+@@ -903,7 +903,7 @@ def test_editable_install__local_dir_setup_requires_with_pyproject(
+         "setup(name='dummy', setup_requires=['simplewheel'])\n"
+     )
+ 
+-    script.pip("install", "--find-links", shared_data.find_links, "-e", local_dir)
++    script.pip("install", "--no-build-isolation", "--find-links", shared_data.find_links, "-e", local_dir)
+ 
+ 
+ def test_install_pre__setup_requires_with_pyproject(
+diff --git a/tests/functional/test_self_update.py b/tests/functional/test_self_update.py
+index c50755220..1331a87c3 100644
+--- a/tests/functional/test_self_update.py
++++ b/tests/functional/test_self_update.py
+@@ -11,12 +11,12 @@ def test_self_update_editable(script: Any, pip_src: Any) -> None:
+     # Step 1. Install pip as non-editable. This is expected to succeed as
+     # the existing pip in the environment is installed in editable mode, so
+     # it only places a .pth file in the environment.
+-    proc = script.pip("install", pip_src)
++    proc = script.pip("install", "--no-build-isolation", pip_src)
+     assert proc.returncode == 0
+     # Step 2. Using the pip we just installed, install pip *again*, but
+     # in editable mode. This could fail, as we'll need to uninstall the running
+     # pip in order to install the new copy, and uninstalling pip while it's
+     # running could fail. This test is specifically to ensure that doesn't
+     # happen...
+-    proc = script.pip("install", "-e", pip_src)
++    proc = script.pip("install", "--no-build-isolation", "-e", pip_src)
+     assert proc.returncode == 0
