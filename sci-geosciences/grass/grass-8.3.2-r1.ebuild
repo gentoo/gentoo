@@ -14,7 +14,7 @@ HOMEPAGE="https://grass.osgeo.org/"
 LICENSE="GPL-2"
 
 if [[ ${PV} =~ "9999" ]]; then
-	SLOT="0/8.4"
+	SLOT="0/8.3"
 else
 	SLOT="0/$(ver_cut 1-2 ${PV})"
 fi
@@ -36,7 +36,7 @@ else
 	S="${WORKDIR}/${MY_P}"
 fi
 
-IUSE="blas bzip2 cxx fftw geos lapack las mysql netcdf nls odbc opencl opengl openmp pdal png postgres readline sqlite svm threads tiff truetype X zstd"
+IUSE="blas bzip2 cxx fftw geos lapack las mysql netcdf nls odbc opencl opengl openmp pdal png postgres readline sqlite threads tiff truetype X zstd"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	opengl? ( X )"
@@ -48,6 +48,7 @@ RDEPEND="
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/ply[${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
+		dev-python/six[${PYTHON_USEDEP}]
 	')
 	sci-libs/gdal:=
 	sys-libs/gdbm:=
@@ -75,7 +76,6 @@ RDEPEND="
 	postgres? ( >=dev-db/postgresql-8.4:= )
 	readline? ( sys-libs/readline:= )
 	sqlite? ( dev-db/sqlite:3 )
-	svm? ( sci-libs/libsvm:= )
 	tiff? ( media-libs/tiff:= )
 	truetype? ( media-libs/freetype:2 )
 	X? (
@@ -100,6 +100,11 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 	X? ( dev-lang/swig )"
+
+PATCHES=(
+	# bug 746590
+	"${FILESDIR}/${PN}-flock.patch"
+)
 
 pkg_setup() {
 	if use lapack; then
@@ -202,7 +207,6 @@ src_configure() {
 		$(use_with las liblas "${EPREFIX}"/usr/bin/liblas-config)
 		$(use_with netcdf netcdf "${EPREFIX}"/usr/bin/nc-config)
 		$(use_with geos geos "${EPREFIX}"/usr/bin/geos-config)
-		$(use_with svm libsvm)
 		$(use_with X x)
 		$(use_with zstd)
 	)
