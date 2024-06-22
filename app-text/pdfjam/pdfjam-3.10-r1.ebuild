@@ -52,7 +52,7 @@ src_install() {
 		cd ../pdfjam-extras-${PDFJAM_EXTRAS_COMMIT} || die
 
 		dobin bin/*
-		dodoc README.md
+		newdoc README.md README-extras.md
 		doman man1/*
 	fi
 }
