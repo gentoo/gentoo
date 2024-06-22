@@ -539,7 +539,6 @@ x11-plugins/pidgin-rhythmbox
 # version bump, uses deprecated Go eclasses, EAPI=6, fails to compile
 # with modern C.
 # Removal on 2024-06-22.  Bugs #932570, #844688, #717536, #771066, #844700, #844703.
-dev-util/bitrise
 dev-util/envman
 dev-util/stepman
 
