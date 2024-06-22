@@ -59,6 +59,10 @@ DEPEND="${RDEPEND}
 	test? ( =dev-cpp/catch-2* )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.8.0-missing-include.patch"
+)
+
 src_prepare() {
 	if has_version ">=sci-libs/opencascade-7.8.0"; then
 		eapply "${FILESDIR}/prusaslicer-2.7.2-opencascade-7.8.0.patch"

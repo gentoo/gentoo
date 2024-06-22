@@ -1,0 +1,10 @@
+--- a/src/slic3r/GUI/UserAccountCommunication.cpp
++++ b/src/slic3r/GUI/UserAccountCommunication.cpp
+@@ -9,6 +9,7 @@
+ #include <boost/log/trivial.hpp>
+ #include <boost/beast/core/detail/base64.hpp>
+ #include <boost/algorithm/string.hpp>
++#include <boost/nowide/convert.hpp>
+ #include <curl/curl.h>
+ #include <string>
+ 
