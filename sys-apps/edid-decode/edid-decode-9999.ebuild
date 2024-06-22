@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,6 @@ EGIT_REPO_URI="https://git.linuxtv.org/${PN}.git"
 DESCRIPTION="Decode EDID data in a human-readable format"
 HOMEPAGE="https://git.linuxtv.org/edid-decode.git/"
 
-KEYWORDS=""
 LICENSE="MIT"
 SLOT="0"
 IUSE="examples"

@@ -13,9 +13,9 @@ HOMEPAGE="https://git.linuxtv.org/edid-decode.git/"
 SRC_URI="https://dev.gentoo.org/~conikost/distfiles/${P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
-KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
 IUSE="examples"
 
 src_compile() {
