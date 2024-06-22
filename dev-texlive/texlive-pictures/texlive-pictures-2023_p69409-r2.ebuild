@@ -598,7 +598,7 @@ DESCRIPTION="TeXLive Graphics, pictures, diagrams"
 
 LICENSE="Apache-2.0 BSD-2 CC-BY-3.0 CC-BY-4.0 CC-BY-SA-1.0 CC-BY-SA-3.0 CC-BY-SA-4.0 CC0-1.0 FDL-1.1+ GPL-1+ GPL-2 GPL-3 GPL-3+ ISC LPPL-1.0 LPPL-1.2 LPPL-1.3 LPPL-1.3c MIT TeX-other-free public-domain"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 COMMON_DEPEND="
 	>=dev-texlive/texlive-basic-2023
 "
