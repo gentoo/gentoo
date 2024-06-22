@@ -11,7 +11,6 @@
 		fairly recent system designs based on the PCI bus.
 	</longdescription>
 	<use>
-		<flag name="dinput">Enable legacy Dinput mode instead of Xinput for older controllers.</flag>
 		<flag name="experimental">Enable hardware from devbranch, which may be unstable or unusable.</flag>
 		<flag name="fluidsynth">Enable MIDI support through <pkg>media-sound/fluidsynth</pkg>.</flag>
 		<flag name="munt">Enable MIDI MT-32 support through <pkg>media-libs/munt-mt32emu</pkg>.</flag>
