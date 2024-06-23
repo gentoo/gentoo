@@ -107,7 +107,6 @@ RDEPEND="
 	thunderbolt? ( >=kde-plasma/plasma-thunderbolt-${PV}:${SLOT} )
 	!unsupported? (
 		!gui-apps/qt6ct
-		!sys-apps/xdg-desktop-portal-gnome
 	)
 	wacom? ( >=kde-plasma/wacomtablet-${PV}:${SLOT} )
 	wallpapers? ( >=kde-plasma/plasma-workspace-wallpapers-${PV}:${SLOT} )
