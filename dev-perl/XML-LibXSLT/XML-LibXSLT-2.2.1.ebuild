@@ -12,7 +12,7 @@ DESCRIPTION="A Perl module to parse XSL Transformational sheets using GNOME's li
 # https://github.com/shlomif/perl-XML-LibXSLT/issues/5
 LICENSE="|| ( Artistic GPL-1+ ) MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	virtual/perl-Encode
