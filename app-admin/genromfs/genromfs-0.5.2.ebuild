@@ -7,8 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Create space-efficient, small, read-only romfs filesystems"
 HOMEPAGE="https://romfs.sourceforge.net/"
-SRC_URI="https://github.com/chexum/${PN}/archive/refs/tags/${PV}.tar.gz
-	-> ${P}.gh.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
