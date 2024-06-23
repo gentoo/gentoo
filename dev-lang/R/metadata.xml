@@ -24,4 +24,7 @@
 	<upstream>
 		<remote-id type="github">wch/r-source</remote-id>
 	</upstream>
+	<use>
+		<flag name="libdeflate">Use <pkg>app-arch/libdeflate</pkg> rather than <pkg>sys-libs/zlib</pkg> for lazy-loaded R objects.</flag>
+	</use>
 </pkgmetadata>

@@ -18,7 +18,7 @@ SRC_URI="
 LICENSE="|| ( GPL-2 GPL-3 ) LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~hppa ~ia64 ~loong ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
-IUSE="cairo doc icu java jpeg lapack lto minimal nls openmp perl png prefix profile readline test tiff tk X"
+IUSE="cairo doc icu java jpeg +libdeflate lto minimal nls openmp perl png prefix profile readline test tiff tk X"
 
 REQUIRED_USE="
 	png? ( || ( cairo X ) )
@@ -37,23 +37,26 @@ DEPEND="
 	dev-libs/libpcre2:=
 	>=dev-libs/tre-0.8.0_p20210321[approx]
 	net-misc/curl
-	virtual/blas
 	sys-libs/zlib[minizip]
 	sys-apps/coreutils
+	sys-libs/timezone-data
+	virtual/blas
+	virtual/lapack
 	cairo? (
 		x11-libs/cairo:=[X=]
 		x11-libs/pango:=
 	)
 	icu? ( dev-libs/icu:= )
 	jpeg? ( media-libs/libjpeg-turbo:= )
-	kernel_linux? ( net-libs/libtirpc )
-	lapack? ( virtual/lapack )
+	kernel_linux? ( net-libs/libtirpc:= )
+	libdeflate? ( app-arch/libdeflate )
 	perl? ( dev-lang/perl )
 	png? ( media-libs/libpng:= )
 	readline? ( sys-libs/readline:= )
 	tiff? ( media-libs/tiff:= )
 	tk? ( dev-lang/tk:= )
 	X? (
+		x11-libs/libX11
 		x11-libs/libXmu
 		x11-libs/libXt
 	)"
@@ -108,9 +111,6 @@ src_prepare() {
 	sed -e 's:\.\./manual/:manual/:g' \
 		-i $(grep -Flr ../manual/ doc) || die "sed for HTML links failed"
 
-	use lapack &&
-		export LAPACK_LIBS="$($(tc-getPKG_CONFIG) --libs lapack)"
-
 	use perl &&
 		export PERL5LIB="${S}/share/perl:${PERL5LIB:+:}${PERL5LIB}"
 
@@ -145,9 +145,11 @@ src_configure() {
 		--disable-R-framework \
 		--disable-R-static-lib \
 		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)" \
+		--with-lapack="$($(tc-getPKG_CONFIG) --libs lapack)" \
 		rdocdir="${EPREFIX}/usr/share/doc/${PF}" \
 		--with-system-tre \
 		--without-aqua \
+		--without-newAccelerate \
 		$(use_enable java) \
 		$(use_enable lto lto R) \
 		$(use_enable nls) \
@@ -157,7 +159,7 @@ src_configure() {
 		$(use_with cairo) \
 		$(use_with icu ICU) \
 		$(use_with jpeg jpeglib) \
-		$(use_with lapack) \
+		$(use_with libdeflate libdeflate-compression) \
 		$(use_with !minimal recommended-packages) \
 		$(use_with png libpng) \
 		$(use_with readline) \
