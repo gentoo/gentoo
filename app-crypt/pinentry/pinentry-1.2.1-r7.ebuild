@@ -17,7 +17,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv 
 IUSE="caps efl emacs gtk keyring ncurses qt5 wayland X"
 
 DEPEND="
-	>=dev-libs/libassuan-2.1
+	>=dev-libs/libassuan-2.1:=
 	>=dev-libs/libgcrypt-1.6.3
 	>=dev-libs/libgpg-error-1.17
 	efl? ( dev-libs/efl[X] )
