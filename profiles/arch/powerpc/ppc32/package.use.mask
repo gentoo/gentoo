@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-04)
+# KF6 and media-libs/phonon have dropped ppc keyword
+app-office/texstudio video
+net-irc/kvirc phonon
+
 # Matt Jolly <kangie@gentoo.org> (2024-08-14)
 # QUIC dependencies are not keyworded
 net-misc/curl http3 quic curl_quic_openssl curl_quic_ngtcp2
