@@ -23,7 +23,7 @@ RESTRICT="test"
 
 DEPEND="
 	>=app-crypt/gpgme-1.16.0:=[cxx,qt5]
-	dev-libs/libassuan
+	dev-libs/libassuan:=
 	dev-libs/libgpg-error
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5

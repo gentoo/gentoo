@@ -23,7 +23,7 @@ RESTRICT="test"
 
 DEPEND="
 	>=app-crypt/gpgme-1.23.1-r1:=[cxx,qt6]
-	dev-libs/libassuan
+	dev-libs/libassuan:=
 	dev-libs/libgpg-error
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,network,widgets]
 	>=kde-apps/kmime-${PVCUT}:6
