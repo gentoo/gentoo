@@ -127,7 +127,8 @@ pkg_postinst() {
 		ewarn ""
 		ewarn "A possible (no warranty!) workaround is building sys-libs/libcxx and"
 		ewarn "sys-libs/libcxxabi with the following in package.env:"
-		ewarn " MYCMAKEARGS=\"-DLIBCXX_TYPEINFO_COMPARISON_IMPLEMENTATION=1\""
+		ewarn " MYCMAKEARGS=\"-DLIBCXX_TYPEINFO_COMPARISON_IMPLEMENTATION=2\""
+		ewarn "You may then need to rebuild dev-qt/* and kde-*/*."
 	fi
 
 	if ! use qt5 && has_version dev-qt/qtgui; then
