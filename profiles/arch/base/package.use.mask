@@ -1,6 +1,12 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-06-23)
+# Pulls in kde-apps/kgpg which requires kde-apps/akonadi, which is as
+# part of the KDE PIM stack (big, requiring QtWebengine) only keyworded
+# on amd64 and arm64.
+>=kde-apps/kdeutils-meta-24.05.1 gpg
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-04-25)
 # ROCm and Level-Zero are amd64-only at the moment
 sys-apps/hwloc rocm l0
