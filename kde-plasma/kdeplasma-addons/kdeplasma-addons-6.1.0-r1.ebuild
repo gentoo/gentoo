@@ -59,7 +59,7 @@ src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package alternate-calendar ICU)
 		$(cmake_use_find_package share KF6Purpose)
-		$(cmake_use_find_package webengine Qt6WebEngine)
+		$(cmake_use_find_package webengine Qt6WebEngineQuick)
 	)
 
 	ecm_src_configure
