@@ -4,12 +4,12 @@
 EAPI=8
 
 DESCRIPTION="Serial To Network Proxy"
-SRC_URI="https://downloads.sourceforge.net/ser2net/${P}.tar.gz"
 HOMEPAGE="https://sourceforge.net/projects/ser2net"
+SRC_URI="https://downloads.sourceforge.net/ser2net/${P}.tar.gz"
 
-KEYWORDS="amd64 ppc x86"
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="amd64 ppc x86"
 IUSE="tcpd"
 
 DEPEND="tcpd? ( sys-apps/tcp-wrappers )"
