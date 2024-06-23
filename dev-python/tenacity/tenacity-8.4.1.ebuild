@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 
 inherit distutils-r1 pypi
 
@@ -21,9 +21,23 @@ KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
-		>=dev-python/tornado-6.4-r1[${PYTHON_USEDEP}]
-		dev-python/typeguard[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/tornado-6.4-r1[${PYTHON_USEDEP}]
+			dev-python/typeguard[${PYTHON_USEDEP}]
+		' 3.{10..12})
 	)
 "
 
 distutils_enable_tests pytest
+
+python_test() {
+	local EPYTEST_IGNORE=()
+	if ! has_version ">=dev-python/tornado-6.4-r1[${PYTHON_USEDEP}]"; then
+		EPYTEST_IGNORE+=(
+			tests/test_tornado.py
+		)
+	fi
+
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest
+}
