@@ -179,6 +179,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-custom-ffmpeg.patch
 	"${FILESDIR}"/${PN}-0.22.0-nvcodec.patch
 	"${FILESDIR}"/${PN}-find-npm.patch
+	"${FILESDIR}"/${PN}-miniupnpc.patch
 )
 
 # Make this mess a bit simpler.
