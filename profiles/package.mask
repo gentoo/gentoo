@@ -547,11 +547,6 @@ sec-keys/openpgp-keys-jiatan
 # 20240-06-26.
 dev-ruby/uconv
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-05-20)
-# Short-lived side-by-side release, now unnecessary as it moved back to
-# kde-apps/kio-extras:5. Removal on 2024-06-04.
-kde-apps/kio-extras-kf5
-
 # Sam James <sam@gentoo.org> (2024-04-28)
 # Masked for testing. Tracker bug: bug #930805.
 >=sys-libs/ncurses-6.5
