@@ -1,25 +1,11 @@
-From: Violet Purcell <vimproved@inventati.org>
-Date: Thu, 21 Sep 2023 19:08:39 -0400
-Subject: [PATCH] Fix build with LLD
-
-LLVM's LLD handles the -retain-symbols-file option (used by
--export-symbols-regex in libtool) differently from GNU ld, causing
-undefined references during link. This commit removes the
--export-symbols-regex option from libcalf_la_LDFLAGS since by default
-libtool exports all symbols anyway, so it should not be necessary.
-
-Signed-off-by: Violet Purcell <vimproved@inventati.org>
-
-rebased
-
 --- a/src/Makefile.am
 +++ b/src/Makefile.am
 @@ -53,7 +53,7 @@ libcalflv2gui_la_SOURCES = gui.cpp gui_config.cpp gui_controls.cpp ctl_curve.cpp
  if USE_DEBUG
- libcalflv2gui_la_LDFLAGS = -rpath $(pkglibdir) -avoid-version -module -lexpat $(GUI_DEPS_LIBS) -disable-static  -Wl,-z,nodelete
+ libcalflv2gui_la_LDFLAGS = -rpath $(pkglibdir) -avoid-version -module -lexpat $(GUI_DEPS_LIBS) -disable-static
  else
--libcalflv2gui_la_LDFLAGS = -rpath $(pkglibdir) -avoid-version -module -lexpat -export-symbols-regex "lv2ui_descriptor" $(GUI_DEPS_LIBS) -disable-static  -Wl,-z,nodelete
-+libcalflv2gui_la_LDFLAGS = -rpath $(pkglibdir) -avoid-version -module -lexpat $(GUI_DEPS_LIBS) -disable-static  -Wl,-z,nodelete
- endif
+-libcalflv2gui_la_LDFLAGS = -rpath $(pkglibdir) -avoid-version -module -lexpat -export-symbols-regex "lv2ui_descriptor" $(GUI_DEPS_LIBS) -disable-static
++libcalflv2gui_la_LDFLAGS = -rpath $(pkglibdir) -avoid-version -module -lexpat $(GUI_DEPS_LIBS) -disable-static
  endif
  
+ if HAVE_LD_NODELETE
