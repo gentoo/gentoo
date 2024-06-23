@@ -39,7 +39,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.2.5-dont-force-O3.patch
+	"${FILESDIR}"/${PN}-0.4.0-dont-force-O3.patch
 )
 
 src_prepare() {
