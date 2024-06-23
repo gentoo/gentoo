@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vcs-snapshot.eclass
 # @MAINTAINER:
 # mgorny@gentoo.org
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: support eclass for unpacking VCS snapshot tarballs
 # @DESCRIPTION:
 # THIS ECLASS IS NOT NECESSARY FOR MODERN GITHUB AND GITLAB SNAPSHOTS.
@@ -43,7 +43,6 @@
 # in ${WORKDIR}/${P} and ${WORKDIR}/${P}-otherstuff respectively.
 
 case ${EAPI} in
-	6) inherit eqawarn ;;
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
@@ -103,13 +102,10 @@ vcs-snapshot_src_unpack() {
 	done
 
 	if [[ ! ${renamed_any} ]]; then
-		local w=eerror
-		[[ ${EAPI} == 6 ]] && w=eqawarn
-		"${w}" "${FUNCNAME} did not find any archives that needed renaming."
-		"${w}" "Please verify that its usage is really necessary, and remove"
-		"${w}" "the inherit if it is not."
-
-		[[ ${w} == eerror ]] && die "${FUNCNAME}: Unnecessary usage detected"
+		eerror "${FUNCNAME} did not find any archives that needed renaming."
+		eerror "Please verify that its usage is really necessary, and remove"
+		eerror "the inherit if it is not."
+		die "${FUNCNAME}: Unnecessary usage detected"
 	fi
 }
 
