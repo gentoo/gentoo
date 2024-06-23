@@ -57,7 +57,7 @@ BDEPEND=">=kde-frameworks/kcmutils-${KFMIN}:6"
 
 src_configure() {
 	local mycmakeargs=(
-		-DHAVE_DDCUTIL=$(usex brightness-control)
+		$(cmake_use_find_package brightness-control DDCUtil)
 		$(cmake_use_find_package caps Libcap)
 	)
 
