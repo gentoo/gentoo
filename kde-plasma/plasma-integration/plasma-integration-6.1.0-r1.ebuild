@@ -60,6 +60,7 @@ COMMON_DEPEND="
 		>=kde-frameworks/knotifications-${KF5MIN}:5
 		>=kde-frameworks/kwindowsystem-${KF5MIN}:5
 		>=kde-frameworks/kxmlgui-${KF5MIN}:5
+		>=kde-plasma/kwayland-${KF5MIN}:5
 	)
 "
 DEPEND="${COMMON_DEPEND}
