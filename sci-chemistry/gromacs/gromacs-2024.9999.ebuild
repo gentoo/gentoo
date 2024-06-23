@@ -26,7 +26,7 @@ else
 		doc? ( https://ftp.gromacs.org/manual/manual-${PV/_/-}.pdf )
 		test? ( https://ftp.gromacs.org/regressiontests/regressiontests-${PV/_/-}.tar.gz )"
 	# since 2022 arm support was dropped (but not arm64)
-	KEYWORDS="~amd64 -arm ~arm64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+	KEYWORDS="~amd64 -arm ~arm64 ~riscv ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 
 ACCE_IUSE="cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_fma4 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_avx512f cpu_flags_arm_neon"
