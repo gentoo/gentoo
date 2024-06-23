@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
-PLOCALES="ace af ar ca cs da de eo es et eu fr hr hu id it ja ka kn ko nb nl pl pt pt_BR ru sl sr_Cyrl sv uk vi zh_Hans zh_Hant"
+PLOCALES="ace af ar ca cs da de eo es et eu fr hr hu id it ja ka kn ko nb nl pl pt pt_BR ru sl sr sr_Cyrl sv uk vi zh_Hans zh_Hant"
 
 inherit perl-module plocale
 
