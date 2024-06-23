@@ -25,7 +25,7 @@ RDEPEND="
 	)
 	gpgme? (
 		app-crypt/gpgme:=
-		dev-libs/libassuan
+		dev-libs/libassuan:=
 		dev-libs/libgpg-error
 	)
 	http2? ( net-libs/nghttp2 )
