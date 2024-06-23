@@ -26,6 +26,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	!!<dev-python/setuptools-rust-1.8.0
 	>=dev-python/jaraco-text-3.7.0-r1[${PYTHON_USEDEP}]
 	>=dev-python/more-itertools-8.12.0-r1[${PYTHON_USEDEP}]
 	>=dev-python/ordered-set-4.0.2-r1[${PYTHON_USEDEP}]
