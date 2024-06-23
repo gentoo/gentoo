@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ BDEPEND="
 	>=app-crypt/gnupg-2.0.17-r1[smartcard]"
 DEPEND="
 	>=dev-libs/libgpg-error-1.4
-	>=dev-libs/libassuan-2.0.0"
+	>=dev-libs/libassuan-2.0.0:="
 RDEPEND="
 	${DEPEND}
 	${BDEPEND}"
