@@ -1,0 +1,21 @@
+upstream PR with fix: https://github.com/gphoto/libgphoto2/pull/977
+--- a/libgphoto2_port/libgphoto2_port/libgphoto2_port.ver	2024-03-28 06:27:36.576508646 +0000
++++ b/libgphoto2_port/libgphoto2_port/libgphoto2_port.ver	2024-03-28 06:28:09.394166837 +0000
+@@ -71,7 +71,6 @@
+ 
+ # These are only supposed to be used by libgphoto2 internally.
+ LIBGPHOTO2_INTERNAL {
+-	gpi_gphoto_port_type_map;
+ 	gpi_enum_to_string;
+ 	gpi_string_to_enum;
+ 	gpi_string_to_flag;
+--- a/libgphoto2_port/gphoto2/gphoto2-port-info-list.h	2024-03-28 06:27:36.577508636 +0000
++++ b/libgphoto2_port/gphoto2/gphoto2-port-info-list.h	2024-03-28 06:28:38.914859366 +0000
+@@ -62,7 +62,6 @@
+ 
+ #ifdef _GPHOTO2_INTERNAL_CODE
+ #include <gphoto2/gphoto2-port-log.h>
+-extern const StringFlagItem gpi_gphoto_port_type_map[];
+ #endif
+ 
+ int gp_port_info_new (GPPortInfo *info);
