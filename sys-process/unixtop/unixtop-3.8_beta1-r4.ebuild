@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
@@ -14,9 +14,11 @@ SLOT="0"
 KEYWORDS="~amd64-linux ~x64-solaris"
 IUSE=""
 
-RDEPEND="sys-libs/ncurses"
-DEPEND="${RDEPEND}
-	!sys-process/procps"
+DEPEND="sys-libs/ncurses:="
+RDEPEND="
+	${RDEPEND}
+	!sys-process/procps
+"
 
 S=${WORKDIR}/top-${PV/_/}
 
