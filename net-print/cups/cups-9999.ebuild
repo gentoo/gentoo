@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	SRC_URI="https://github.com/OpenPrinting/cups/releases/download/v${MY_PV}/cups-${MY_PV}-source.tar.gz"
 	if [[ ${PV} != *_beta* && ${PV} != *_rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+		KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 	fi
 fi
 
@@ -30,16 +30,14 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="acl dbus debug kerberos openssl pam selinux static-libs systemd test usb X xinetd zeroconf"
 
-# As of 2.4.2, they don't actually seem to be interactive (they pass some flags
-# by default to input for us), but they fail on some greyscale issue w/ poppler?
-RESTRICT="!test? ( test ) test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	acct-group/lp
 	acct-group/lpadmin
 	virtual/pkgconfig
 "
-DEPEND="
+COMMON_DEPEND="
 	app-text/libpaper:=
 	sys-libs/zlib
 	acl? (
@@ -60,13 +58,17 @@ DEPEND="
 	xinetd? ( sys-apps/xinetd )
 	zeroconf? ( >=net-dns/avahi-0.6.31-r2[dbus,${MULTILIB_USEDEP}] )
 "
+# if libcupsfilters is installed, more tests are run. They fail without at least one of the two formats enabled.
+DEPEND="
+	${COMMON_DEPEND}
+	test? ( || ( net-print/libcupsfilters[jpeg] net-print/libcupsfilters[png] ) )
+"
 RDEPEND="
-	${DEPEND}
+	${COMMON_DEPEND}
 	acct-group/lp
 	acct-group/lpadmin
 	selinux? ( sec-policy/selinux-cups )
 "
-PDEPEND=">=net-print/cups-filters-1.0.43"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.4.1-nostrip.patch"
@@ -163,7 +165,6 @@ multilib_src_configure() {
 		$(use_enable kerberos gssapi)
 		$(multilib_native_use_enable pam)
 		$(use_enable static-libs static)
-		$(use_enable test unit-tests)
 		--with-tls=$(usex openssl openssl gnutls)
 		$(use_with systemd ondemand systemd)
 		$(multilib_native_use_enable usb libusb)
@@ -218,7 +219,12 @@ multilib_src_test() {
 	mkdir "${T}"/cups-tests || die
 
 	# We only build some of CUPS for multilib, so can't run the tests.
-	multilib_is_native_abi && default
+	if multilib_is_native_abi; then
+		# avoid building *and running* test binaries in src_compile
+		# https://github.com/OpenPrinting/cups/commit/b1d42061e9286f50eefc851ed906d17c6e80c4b0
+		emake UNITTESTS=unittests
+		default
+	fi
 }
 
 multilib_src_install() {
