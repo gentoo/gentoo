@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ IUSE=""
 
 RDEPEND="
 	>=app-crypt/gpgme-1.18.0:=
-	>=dev-libs/libassuan-2.5.6
+	>=dev-libs/libassuan-2.5.6:=
 	>=dev-libs/libgpg-error-1.47
 "
 DEPEND="${RDEPEND}"
