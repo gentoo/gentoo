@@ -142,7 +142,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/expat
 	dev-libs/hyphen
 	dev-libs/icu:=
-	dev-libs/libassuan
+	dev-libs/libassuan:=
 	dev-libs/libgpg-error
 	>=dev-libs/liborcus-0.18.0:0/0.18
 	dev-libs/librevenge
