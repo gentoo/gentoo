@@ -6,6 +6,7 @@ EAPI=8
 # These don't necessarily have to align with the upstream release.
 BUILD_DEPS_COMMIT="2aafe061cd52a944cb3b5f86d1f25e9ad2a19bec"
 ENET_COMMIT="04e27590670a87a7cd40f5a05cda97467e4e25a3"
+INPUTTINO_COMMIT="8a33706a146787a1ed3666ce52888634dd16cb86"
 MOONLIGHT_COMMIT="cbd0ec1b25edfb8ee8645fffa49ff95b6e04c70e"
 NANORS_COMMIT="e9e242e98e27037830490b2a752895ca68f75f8b"
 TRAY_COMMIT="4d8b798cafdd11285af9409c16b5f792968e0045"
@@ -28,6 +29,8 @@ else
 			-> LizardByte-build-deps-${BUILD_DEPS_COMMIT}.tar.gz
 		https://github.com/cgutman/enet/archive/${ENET_COMMIT}.tar.gz
 			-> moonlight-enet-${ENET_COMMIT}.tar.gz
+		https://github.com/games-on-whales/inputtino/archive/${INPUTTINO_COMMIT}.tar.gz
+			-> inputtino-${INPUTTINO_COMMIT}.tar.gz
 		https://github.com/moonlight-stream/moonlight-common-c/archive/${MOONLIGHT_COMMIT}.tar.gz
 			-> moonlight-common-c-${MOONLIGHT_COMMIT}.tar.gz
 		https://github.com/sleepybishop/nanors/archive/${NANORS_COMMIT}.tar.gz
@@ -123,7 +126,7 @@ REQUIRED_USE="
 "
 
 CDEPEND="
-	dev-libs/boost:=[nls]
+	>=dev-libs/boost-1.85:=[nls]
 	dev-libs/libevdev
 	dev-libs/openssl:=
 	media-libs/opus
@@ -208,7 +211,7 @@ src_unpack() {
 
 		local EGIT_REPO_URI="https://github.com/LizardByte/Sunshine.git"
 		local EGIT_SUBMODULES=(
-			third-party/{moonlight-common-c{,/enet},nanors,tray,Simple-Web-Server,wlr-protocols}
+			third-party/{inputtino,moonlight-common-c{,/enet},nanors,tray,Simple-Web-Server,wlr-protocols}
 		)
 		unset EGIT_CHECKOUT_DIR EGIT_COMMIT EGIT_BRANCH
 		git-r3_src_unpack
@@ -222,6 +225,7 @@ src_unpack() {
 		find moonlight-common-c-${MOONLIGHT_COMMIT} "${S}"/third-party build-deps/ffmpeg_sources \
 			-mindepth 1 -type d -empty -delete || die
 		ln -snf ../enet-${ENET_COMMIT} moonlight-common-c-${MOONLIGHT_COMMIT}/enet || die
+		ln -snf ../../inputtino-${INPUTTINO_COMMIT} "${S}"/third-party/inputtino || die
 		ln -snf ../../moonlight-common-c-${MOONLIGHT_COMMIT} "${S}"/third-party/moonlight-common-c || die
 		ln -snf ../../nanors-${NANORS_COMMIT} "${S}"/third-party/nanors || die
 		ln -snf ../../tray-${TRAY_COMMIT} "${S}"/third-party/tray || die
@@ -332,7 +336,10 @@ src_configure() {
 	CMAKE_USE_DIR="${WORKDIR}/build-deps" cmake_src_configure
 
 	local mycmakeargs=(
+		-DBUILD_SHARED_LIBS=no
+		-DBOOST_USE_STATIC=no
 		-DBUILD_TESTS=no
+		-DCCACHE_FOUND=no
 		-DCMAKE_DISABLE_FIND_PACKAGE_Git=yes
 		-DFFMPEG_PLATFORM_LIBRARIES="$(usex svt-av1 SvtAv1Enc '');$(usex vaapi 'va;va-drm' '');$(usev x264);$(usev x265)"
 		-DFFMPEG_PREPARED_BINARIES="${S}"/third-party/ffmpeg
