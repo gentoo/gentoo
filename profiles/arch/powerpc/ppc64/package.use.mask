@@ -59,10 +59,6 @@ sci-libs/symengine tcmalloc
 # https://github.com/rustsec/rustsec/issues/707
 dev-util/cargo-audit fix
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2022-07-17)
-# dev-python/pyside2 is not keyworded
-www-client/falkon python
-
 # Jimi Huotari <chiitoo@gentoo.org> (2022-05-08)
 # Not keyworded here yet.
 lxqt-base/lxqt-meta desktop-portal
