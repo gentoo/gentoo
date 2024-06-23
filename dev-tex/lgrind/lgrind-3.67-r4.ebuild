@@ -1,21 +1,23 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit latex-package toolchain-funcs
 
 DESCRIPTION="A pretty printer for various programming languages with tex output"
 SRC_URI="https://dev.gentoo.org/~dilfridge/distfiles/${P}.tgz"
+S=${WORKDIR}/${PN}
 
 LICENSE="BSD LGrind-Jacobson"
 SLOT="0"
 KEYWORDS="amd64 ppc ~sparc x86"
 IUSE="examples"
 
-S=${WORKDIR}/${PN}
 
-PATCHES=( "${FILESDIR}/${P}-fgets.patch" )
+PATCHES=( "${FILESDIR}/${P}-fgets.patch"
+	  "${FILESDIR}/${P}-C99.patch"
+)
 
 src_prepare() {
 	echo 'CFLAGS+=-DDEFSFILE=\"$(DEFSFILE)\" -DVERSION=\"$(VERSION)\"' > source/Makefile || die "Fixing Makefile failed"
