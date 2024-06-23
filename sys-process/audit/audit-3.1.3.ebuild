@@ -46,7 +46,7 @@ BDEPEND="
 CONFIG_CHECK="~AUDIT"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.0.8-musl-malloc.patch
+	"${FILESDIR}"/${PN}-3.1.3-musl-malloc.patch
 )
 
 QA_CONFIG_IMPL_DECL_SKIP=(
