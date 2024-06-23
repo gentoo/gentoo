@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~x86 ~a
 IUSE="+ocamlopt X"
 
 RDEPEND="dev-lang/tk:=
-	>=dev-lang/ocaml-4.14:=[ocamlopt?,X(+)?]"
+	>=dev-lang/ocaml-5:=[ocamlopt?,X(+)?]"
 DEPEND="${RDEPEND}
 	dev-ml/findlib
 "

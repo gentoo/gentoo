@@ -415,6 +415,7 @@ dev-ml/async_rpc_kernel:0/0.17
 dev-ml/async_log:0/0.17
 dev-ml/textutils:0/0.17
 dev-ml/async:0/0.17
+>=dev-ml/labltk-8.06.14
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-08)
 # EAPI=6, waiting for a version bump, not maintained for many years.
