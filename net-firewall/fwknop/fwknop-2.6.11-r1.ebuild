@@ -24,7 +24,7 @@ DEPEND="
 	gdbm? ( sys-libs/gdbm )
 	gpg? (
 		app-crypt/gpgme:=
-		dev-libs/libassuan
+		dev-libs/libassuan:=
 		dev-libs/libgpg-error
 	)
 	iptables? ( net-firewall/iptables )
