@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>perfinion@gentoo.org</email>
+		<name>Jason Zaman</name>
+	</maintainer>
+
+	<longdescription>
+		Serial to network interface, a proxy that allows telnet/tcp connections
+		to be made to serial ports on a machine.
+	</longdescription>
+
 	<upstream>
 		<remote-id type="sourceforge">ser2net</remote-id>
+		<remote-id type="github">cminyard/ser2net</remote-id>
 	</upstream>
 </pkgmetadata>
