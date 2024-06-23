@@ -71,7 +71,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_Hunspell=ON # requires fixing bug 634122
 		$(cmake_use_find_package activities PlasmaActivities)
-		$(cmake_use_find_package speech Qt6TextToSpeech)
+		$(cmake_use_find_package speech QtTextToSpeech)
 	)
 	ecm_src_configure
 }
