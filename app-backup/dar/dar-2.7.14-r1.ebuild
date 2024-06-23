@@ -36,7 +36,7 @@ RDEPEND="
 	)
 	gpg? (
 		app-crypt/gpgme:=
-		dev-libs/libassuan
+		dev-libs/libassuan:=
 	)
 	lz4? ( app-arch/lz4:= )
 	lzo? ( dev-libs/lzo:2 )
