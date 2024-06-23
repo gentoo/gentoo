@@ -1,0 +1,37 @@
+From 1167500b9da76febe85342e09b1bf9eeaf367ca6 Mon Sep 17 00:00:00 2001
+From: MithicSpirit <rpc01234@gmail.com>
+Date: Fri, 10 May 2024 17:51:59 -0400
+Subject: [PATCH] nit(91-sbctl.install): consistent syntax for tests
+
+Unifies usage of testing commands like `[]`, `test`, and `[[]]` to just
+use `[]` everywhere. This also improves compatibility, as `[[]]` is not
+available in POSIX sh.
+
+Bug: https://bugs.gentoo.org/934768
+Signed-off-by: Steffen Winter <steffen.winter@proton.me>
+--- a/contrib/kernel-install/91-sbctl.install
++++ b/contrib/kernel-install/91-sbctl.install
+@@ -31,7 +31,7 @@ add)
+ 
+ 	# exit without error if keys don't exist
+ 	# https://github.com/Foxboron/sbctl/issues/187
+-	if ! test -d /usr/share/secureboot/keys; then
++	if ! [ -d /usr/share/secureboot/keys ]; then
+ 		echo "Secureboot key directory doesn't exist, not signing!"
+ 		exit 0
+ 	fi
+@@ -39,10 +39,10 @@ add)
+ 	sbctl sign -s "$IMAGE_FILE" 1>/dev/null
+ 	;;
+ remove)
+-	if [[ -e "$IMAGE_FILE" ]]; then
+-	    [ "$KERNEL_INSTALL_VERBOSE" -gt 0 ] &&
+-		printf 'sbctl: Removing kernel %s from signing database\n' "$IMAGE_FILE"
+-	    sbctl remove-file "$IMAGE_FILE" 1>/dev/null
++	if [ -e "$IMAGE_FILE" ]; then
++		[ "$KERNEL_INSTALL_VERBOSE" -gt 0 ] &&
++			printf 'sbctl: Removing kernel %s from signing database\n' "$IMAGE_FILE"
++		sbctl remove-file "$IMAGE_FILE" 1>/dev/null
+ 	fi
+ 	;;
+ esac
