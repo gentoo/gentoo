@@ -140,10 +140,6 @@ x11-themes/arc-theme cinnamon
 # Bug #728558
 media-video/ffmpeg -rav1e
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-02)
-# media-libs/libplacebo is keyworded
-media-video/vlc -libplacebo
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-06-07)
 # works on ppc64
 app-emulation/qemu -spice -usbredir

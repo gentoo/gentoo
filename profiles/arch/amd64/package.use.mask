@@ -150,10 +150,6 @@ dev-lang/ruby -jit
 # pytables is available here.
 dev-python/tables -cpudetection
 
-# Craig Andrews <candrews@gentoo.org> (2023-03-09)
-# media-libs/libplacebo is keyworded here
-media-video/ffmpeg -libplacebo
-
 # Yiyang Wu <xgreenlandforwyy@gmail.com> (2023-01-27)
 # AMDGPU enablement depends on dev-libs/rocr-runtime, ~amd64 only
 # See also: https://bugs.gentoo.org/891499
@@ -332,10 +328,6 @@ dev-java/openjdk:11 -javafx
 # dev-lang/spidermonkey:60[jit] fails to build on most platforms, but does
 # build on amd64.
 >=dev-lang/spidermonkey-60 -jit
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-05-09)
-# media-libs/libplacebo is keyworded on amd64
-media-video/vlc -libplacebo
 
 # Denis Lisov <dennis.lissov@gmail.com> (2019-05-09)
 # Overlay can only be built on amd64 and x86

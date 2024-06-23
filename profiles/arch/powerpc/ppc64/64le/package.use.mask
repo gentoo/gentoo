@@ -5,10 +5,6 @@
 # Needs USE=video_cards_amdgpu, which IS available on ppc64le.
 >=sys-apps/fwupd-1.9.10 -amdgpu
 
-# Craig Andrews <candrews@gentoo.org> (2023-03-09)
-# media-libs/libplacebo is keyworded here
-media-video/ffmpeg -libplacebo
-
 # Joonas Niilola <juippis@gentoo.org> (2022-11-10)
 # Doesn't work on ppc64, #871921
 sci-mathematics/gmp-ecm custom-tune
