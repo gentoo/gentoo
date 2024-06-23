@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ RDEPEND="
 	dev-db/sqlite:3
 	|| ( app-accessibility/at-spi2-atk dev-libs/atk )
 	dev-libs/glib:2
-	dev-libs/libassuan
+	dev-libs/libassuan:=
 	dev-libs/libgpg-error
 	>=dev-libs/libstrophe-0.12.2
 	media-libs/harfbuzz:=
