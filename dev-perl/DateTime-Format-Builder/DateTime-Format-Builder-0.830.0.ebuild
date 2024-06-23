@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Create DateTime parser classes and objects"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="minimal test"
 RESTRICT="!test? ( test )"
 
