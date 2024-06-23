@@ -282,6 +282,17 @@ _qt6-build_sanitize_cpu_flags() {
 		bmi bmi2 f16c fma lzcnt popcnt
 	)
 
+	# extras only needed by chromium in qtwebengine
+	# (see also chromium's ebuild wrt bug #530248,#544702,#546984,#853646)
+	[[ ${PN} == qtwebengine ]] && cpuflags+=(
+		mmx xop
+
+		# unclear if these two are really needed given (current) chromium
+		# does not pass these flags, albeit it may side-disable something
+		# else so keeping as a safety (like chromium's ebuild does)
+		fma4 sse4a
+	)
+
 	# check if any known problematic -mno-* C(XX)FLAGS
 	if ! is-flagq "@($(IFS='|'; echo "${cpuflags[*]/#/-mno-}"))"; then
 		# check if qsimd_p.h (search for "enable all") will accept -march
