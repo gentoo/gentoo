@@ -20,6 +20,10 @@ BDEPEND="app-text/asciidoc
 
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/foxboron.asc"
 
+PATCHES=(
+	"${FILESDIR}/sbctl-0.14-installkernel-bashism.patch"
+)
+
 src_unpack() {
 	if use verify-sig; then
 		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.gz{,.sig}
