@@ -4,14 +4,14 @@
 # @ECLASS: common-lisp-3.eclass
 # @MAINTAINER:
 # Common Lisp project <common-lisp@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: functions to support the installation of Common Lisp libraries
 # @DESCRIPTION:
 # Since Common Lisp libraries share similar structure, this eclass aims
 # to provide a simple way to write ebuilds with these characteristics.
 
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -27,14 +27,14 @@ CLIMPLEMENTATIONS="sbcl clisp clozurecl cmucl ecl gcl abcl"
 # @DESCRIPTION:
 # Default path of Common Lisp libraries sources. Sources will
 # be installed into ${CLSOURCEROOT}/${CLPACKAGE}.
-CLSOURCEROOT="${ROOT%/}"/usr/share/common-lisp/source
+CLSOURCEROOT="${ROOT}"/usr/share/common-lisp/source
 
 # @ECLASS_VARIABLE: CLSYSTEMROOT
 # @DESCRIPTION:
 # Default path to find any asdf file. Any asdf files will be
 # symlinked in ${CLSYSTEMROOT}/${CLSYSTEM} as they may be in
 # an arbitrarily deeply nested directory under ${CLSOURCEROOT}/${CLPACKAGE}.
-CLSYSTEMROOT="${ROOT%/}"/usr/share/common-lisp/systems
+CLSYSTEMROOT="${ROOT}"/usr/share/common-lisp/systems
 
 # @ECLASS_VARIABLE: CLPACKAGE
 # @DESCRIPTION:
