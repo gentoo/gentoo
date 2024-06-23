@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 VIM_PLUGIN_VIM_VERSION="7.1"
 
@@ -15,12 +15,10 @@ LICENSE="BSD"
 SLOT=0
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="
-	${RDEPEND}"
-
 RDEPEND="
 	dev-lang/ghc[doc]
-	net-misc/wget"
+	net-misc/wget
+"
 
 VIM_PLUGIN_HELPFILES="haskellmode"
 VIM_PLUGIN_MESSAGES="filetype"
