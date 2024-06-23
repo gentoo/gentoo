@@ -25,6 +25,9 @@ src_prepare() {
 	eapply "${FILESDIR}/${P}-gentoo.diff"
 	eapply "${FILESDIR}/${P}_vdr-1.5.4-compile.diff"
 	eapply "${FILESDIR}/${P}_compilefix.patch"
+
+	# do not call g++ directly, Bug #934766
+	sed -e 's|MAKEDEP = g++ -MM -MG|MAKEDEP = $(CXX) -MM -MG|' -i Makefile || die
 }
 
 src_install() {
