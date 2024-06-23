@@ -51,6 +51,9 @@ src_prepare() {
 
 	# upstream author forgot to update version information
 	sed -e "s:1.5.3:1.5.4:" -i fritzbox.cpp || die
+
+	# remove non-functional tests, #934764
+	rm -rf ./test/ ./lib*/test/ || die
 }
 
 pkg_postinst() {
