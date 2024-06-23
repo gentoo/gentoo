@@ -30,7 +30,7 @@ RESTRICT="!test? ( test )"
 # Existence of executables is checked during configuration.
 # Note: On each bump, update dep bounds on each version from configure.ac!
 DEPEND="
-	>=dev-libs/libassuan-2.5.0
+	>=dev-libs/libassuan-2.5.0:=
 	>=dev-libs/libgcrypt-1.8.0:=
 	>=dev-libs/libgpg-error-1.38
 	>=dev-libs/libksba-1.4.0
