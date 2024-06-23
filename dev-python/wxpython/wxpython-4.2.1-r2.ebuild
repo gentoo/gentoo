@@ -67,6 +67,13 @@ python_prepare_all() {
 		eapply "${FILESDIR}/${PN}-4.2.0-no-webkit.patch"
 	fi
 
+	# sip assumes unconditional C99 support since 6.8.4
+	# which breaks when trying to use "sip/siplib/bool.cpp"
+	# https://github.com/Python-SIP/sip/commit/29fb3df49ff37df7aab9d5666fd72de95ac9e7f8
+	if has_version ">=dev-python/sip-6.8.4"; then
+		sed -i '\|sip/siplib/bool\.cpp|d' wscript || die
+	fi
+
 	distutils-r1_python_prepare_all
 }
 
