@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-23)
+# EAPI=6, waiting for a version bump, no reverse-dependencies.
+# Removal on 2024-07-23.  Bugs #934756, #924303.
+sci-astronomy/scamp
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-22)
 # EAPI=6, no reverse-dependencies, various issues with modern C,
 # installs libtools files.
