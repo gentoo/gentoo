@@ -286,7 +286,7 @@ vdr_linguas_support() {
 			|| die "sed failed for Linguas"
 	done
 
-	strip-linguas ${PLUGIN_LINGUAS} en
+	strip-linguas ${PLUGIN_LINGUAS}
 }
 
 # @FUNCTION: vdr_i18n
