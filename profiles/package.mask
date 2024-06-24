@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# NHOrus <jy6x2b32pie9@yahoo.com> (2024-06-24)
+# Last release was 18 years ago, last time code was touched was 9 years ago
+# Software is broken, ebuild is broken, there's healthy replacement in
+# the tree, net-misc/whois
+# Bugs #871429, #504844, #881619, #900284, #919809.
+# Will be removed in 30 days
+net-misc/jwhois
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-23)
 # EAPI=6, waiting for a version bump, no reverse-dependencies.
 # Removal on 2024-07-23.  Bugs #934756, #924303.
