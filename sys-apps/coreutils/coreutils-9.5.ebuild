@@ -225,7 +225,7 @@ src_test() {
 
 	local xfail_tests=(
 		# bug #629660
-		#tests/dd/no-allocate.sh
+		tests/dd/no-allocate.sh
 
 		# bug #675802
 		tests/env/env-S
