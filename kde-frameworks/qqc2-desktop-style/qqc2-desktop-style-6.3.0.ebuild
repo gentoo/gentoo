@@ -29,3 +29,8 @@ RDEPEND="${DEPEND}
 	>=dev-qt/qt5compat-${QTMIN}:6
 "
 BDEPEND=">=dev-qt/qttools-${QTMIN}:6[linguist]"
+
+CMAKE_SKIP_TESTS=(
+	# bug 926509
+	animationspeedmodifiertest
+)
