@@ -331,10 +331,9 @@ src_install() {
 			if use milter ; then
 				# Note: only keep the "unix" ClamdSocket and MilterSocket!
 				sed -e "s:^\(Example\):\# \1:" \
-					-e "s:^#\(PidFile) .*\:\1 ${EPREFIX}/run/clamav-milter.pid:" \
+					-e "s:^\#\(PidFile\) .*:\1 ${EPREFIX}/run/clamav-milter.pid:" \
 					-e "s/^#\(ClamdSocket unix:.*\)/\1/" \
 					-e "s/^#\(User .*\)/\1/" \
-					-e "s/^#\(MilterSocket unix:.*\)/\1/" \
 					-e "s:^\#\(LogFile\) .*:\1 ${EPREFIX}/var/log/clamav/clamav-milter.log:" \
 					"${ED}"/etc/clamav/clamav-milter.conf.sample > \
 					"${ED}"/etc/clamav/clamav-milter.conf || die
