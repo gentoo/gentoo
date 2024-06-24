@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# NHOrus <jy6x2b32pie9@yahoo.com> (2024-06-24)
+# Masked for removal in 30 days.
+# It's a dependency of cinelerra, written for cinelerra.
+# We don't ship cinelerra. It should be removed when we removed cinelerra
+#
+# Bugs #871387, #907261, #712480, #931765.
+media-libs/libmpeg3
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-23)
 # EAPI=6, waiting for a version bump, no reverse-dependencies.
 # Removal on 2024-07-23.  Bugs #934756, #924303.
