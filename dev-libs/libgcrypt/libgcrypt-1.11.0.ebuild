@@ -52,6 +52,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-multilib-syspath.patch
 	"${FILESDIR}"/${PN}-powerpc-darwin.patch
 	"${FILESDIR}"/${P}-s390x.patch
+	"${FILESDIR}"/${P}-o-flag-munging.patch
 )
 
 MULTILIB_CHOST_TOOLS=(
