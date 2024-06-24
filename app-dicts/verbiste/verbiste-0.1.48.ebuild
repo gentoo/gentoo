@@ -12,7 +12,8 @@ SRC_URI="http://sarrazip.com/dev/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~riscv ~x86"
-IUSE="gtk"
+IUSE="gtk test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/libxml2-2.4.0:2
@@ -22,6 +23,10 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
+	test? (
+		dev-lang/perl
+		dev-perl/XML-Parser
+	)
 "
 
 src_configure() {
@@ -32,6 +37,10 @@ src_configure() {
 		$(use_with gtk gtk-app)
 	)
 	econf "${myeconfargs[@]}"
+}
+
+src_test() {
+	emake VERBOSE=1 check
 }
 
 src_install() {
