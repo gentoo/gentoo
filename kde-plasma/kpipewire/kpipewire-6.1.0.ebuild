@@ -16,6 +16,8 @@ SLOT="6"
 KEYWORDS="~amd64"
 IUSE=""
 
+RESTRICT="test" # bug 926511, fixed in 6.2
+
 COMMON_DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui]
 	>=dev-qt/qtdeclarative-${QTMIN}:6
