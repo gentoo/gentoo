@@ -1,0 +1,46 @@
+https://bugs.gentoo.org/934771
+https://git.gnupg.org/cgi-bin/gitweb.cgi?p=pinentry.git;a=commit;h=a39ba412ab24721d4edb6476156371f8bf1d3ff9
+
+From a39ba412ab24721d4edb6476156371f8bf1d3ff9 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Fri, 28 Jul 2023 14:09:11 +0900
+Subject: [PATCH] build: Update libassuan.m4 for libassuan version 3 in future.
+
+* m4/libassuan.m4: Update from libassuan master.
+
+--
+
+New libassuan 3 has backward compatible API.
+
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+--- a/m4/libassuan.m4
++++ b/m4/libassuan.m4
+@@ -9,7 +9,7 @@ dnl This file is distributed in the hope that it will be useful, but
+ dnl WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+ dnl implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ dnl SPDX-License-Identifier: FSFULLR
+-# Last-changed: 2022-11-01
++# Last-changed: 2023-07-26
+ 
+ dnl
+ dnl Common code used for libassuan detection [internal]
+@@ -89,6 +89,7 @@ AC_DEFUN([_AM_PATH_LIBASSUAN_COMMON],
+ 
+   if test $ok = yes; then
+     AC_MSG_RESULT([yes ($libassuan_config_version)])
++    AC_DEFINE(LIBASSUAN_API_REQUESTED, $req_libassuan_api, Requested API version for libassuan)
+   else
+     AC_MSG_RESULT(no)
+   fi
+@@ -104,6 +105,8 @@ AC_DEFUN([_AM_PATH_LIBASSUAN_COMMON],
+         AC_MSG_CHECKING([LIBASSUAN API version])
+         if test "$req_libassuan_api" -eq "$tmp" ; then
+           AC_MSG_RESULT(okay)
++        elif test "$req_libassuan_api" -eq 2 -a "$tmp" -eq 3; then
++          AC_MSG_RESULT(okay)
+         else
+           ok=no
+           AC_MSG_RESULT([does not match.  want=$req_libassuan_api got=$tmp.])
+-- 
+2.30.2
+

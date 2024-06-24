@@ -58,6 +58,9 @@ src_prepare() {
 
 	unset FLTK_CONFIG
 
+	# bug #934771
+	rm m4/libassuan.m4 || die
+
 	eautoreconf
 }
 
