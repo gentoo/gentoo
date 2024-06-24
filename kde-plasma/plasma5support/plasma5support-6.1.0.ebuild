@@ -17,6 +17,8 @@ SLOT="6"
 KEYWORDS="~amd64"
 IUSE=""
 
+RESTRICT="test" # bug 926347
+
 DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,sql,widgets]
 	>=dev-qt/qtdeclarative-${QTMIN}:6
