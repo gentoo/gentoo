@@ -304,13 +304,9 @@ src_install() {
 			# fundamentally flawed, and the maintainer is not up to
 			# the task of fixing it.
 			dotmpfiles "${FILESDIR}/tmpfiles.d/clamav.conf"
-			systemd_newunit "${FILESDIR}/clamd_at.service-0.104.0" "clamd@.service"
-			systemd_dounit "${FILESDIR}/clamd.service"
-			systemd_newunit "${FILESDIR}/freshclamd.service-r1" \
-							"freshclamd.service"
 		fi
 
-				if use clamapp ; then
+		if use clamapp ; then
 			# Modify /etc/{clamd,freshclam}.conf to be usable out of the box
 			sed -e "s:^\(Example\):\# \1:" \
 				-e "s:^#\(PidFile\) .*:\1 ${EPREFIX}/run/clamd.pid:" \
@@ -399,6 +395,13 @@ pkg_postinst() {
 		ewarn "clamd service now starts only the clamd daemon itself. You"
 		ewarn "should add freshclam (and perhaps clamav-milter) to any"
 		ewarn "runlevels that previously contained clamd."
+	else
+		if [[ -n "${REPLACING_VERSIONS}" ]] && ver_test "${REPLACING_VERSIONS}" -le 1.3.1; then
+			ewarn "From 1.3.1-r1 the Gentoo-provided systemd services have been"
+			ewarn "Retired in favour of using the units shipped by upstream."
+			ewarn "Ensure that any required services are configured and started."
+			ewarn "clamd@.service has been retired as part of this transition."
+		fi
 	fi
 
 	if [[ -z ${REPLACING_VERSIONS} ]] && use clamonacc; then
@@ -406,4 +409,5 @@ pkg_postinst() {
 		einfo "can be enabled, and may not produce any output if not properly"
 		einfo "configured. Read the appropriate man page if clamonacc is desired."
 	fi
+
 }
