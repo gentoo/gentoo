@@ -63,3 +63,8 @@ src_configure() {
 
 	ecm_src_configure
 }
+
+src_test() {
+	# bug 926513
+	ecm_src_test -j1
+}
