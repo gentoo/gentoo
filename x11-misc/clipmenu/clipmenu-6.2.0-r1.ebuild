@@ -12,7 +12,7 @@ SRC_URI="https://github.com/cdown/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Unlicense"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="+dmenu fzf rofi"
+IUSE="+dmenu fzf rofi xdotool"
 REQUIRED_USE="?? ( dmenu fzf rofi )"
 
 RDEPEND="
@@ -21,6 +21,7 @@ RDEPEND="
 	dmenu? ( x11-misc/dmenu )
 	fzf? ( app-shells/fzf )
 	rofi? ( x11-misc/rofi )
+    xdotool? ( x11-misc/xdotool )
 "
 
 src_prepare() {
