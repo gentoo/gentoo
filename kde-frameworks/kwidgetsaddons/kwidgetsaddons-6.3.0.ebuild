@@ -22,6 +22,8 @@ CMAKE_SKIP_TESTS=(
 	kdatecomboboxtest
 	# bug 697866
 	ksqueezedtextlabelautotest
+	# bug 926508
+	ktooltipwidgettest
 	# bug 808216
 	ktwofingertaptest
 	ktwofingerswipetest
