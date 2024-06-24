@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<changelog>https://github.com/hyprwm/hyprutils/releases</changelog>
+		<bugs-to>https://github.com/hyprwm/hyprutils/issues</bugs-to>
+		<remote-id type="github">hyprwm/hyprutils</remote-id>
+	</upstream>
+</pkgmetadata>
