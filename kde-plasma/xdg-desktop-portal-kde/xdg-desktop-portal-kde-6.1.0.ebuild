@@ -58,3 +58,8 @@ BDEPEND="
 	>=dev-qt/qtwayland-${QTMIN}:6
 	virtual/pkgconfig
 "
+
+CMAKE_SKIP_TESTS=(
+	# bugs: 926483, wants dbus/X11
+	colorschemetest
+)
