@@ -29,4 +29,6 @@ CMAKE_SKIP_TESTS=(
 	runnermanagersinglerunnermodetest
 	# bug 838502
 	runnermanagertest
+	# bug 926502, needs dbus
+	threadingtest
 )
