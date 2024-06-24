@@ -42,3 +42,8 @@ src_configure() {
 
 	ecm_src_configure
 }
+
+CMAKE_SKIP_TESTS=(
+	# bugs: 921359, requires virtualx
+	openglinfosourcetest
+)
