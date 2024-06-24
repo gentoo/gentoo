@@ -21,7 +21,7 @@ CMAKE_DOCS_USEFLAG="+doc"
 CMAKE_MAKEFILE_GENERATOR="emake"
 CMAKE_REMOVE_MODULES_LIST=( none )
 inherit bash-completion-r1 cmake flag-o-matic multiprocessing \
-	toolchain-funcs virtualx xdg-utils
+	toolchain-funcs xdg-utils
 
 MY_P="${P/_/-}"
 
@@ -238,7 +238,9 @@ src_test() {
 		-E "(BootstrapTest|BundleUtilities|CMakeOnly.AllFindModules|CompileOptions|CTest.UpdateCVS|Fortran|RunCMake.CompilerLauncher|RunCMake.CPack_(DEB|RPM)|TestUpload|RunCMake.CMP0125)" \
 	)
 
-	virtx cmake_src_test
+	local -x QT_QPA_PLATFORM=offscreen
+
+	cmake_src_test
 }
 
 src_install() {
