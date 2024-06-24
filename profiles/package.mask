@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # NHOrus <jy6x2b32pie9@yahoo.com> (2024-06-24)
+# Package is twenty years dead and many years unused by anything in the tree.
+# Tree cleaning is a mercy at this point.
+# Bugs #314835, #632432, #827131, #874429, #908830, #925513, #934808.
+www-misc/htdig
+
+# NHOrus <jy6x2b32pie9@yahoo.com> (2024-06-24)
 # Masked for removal in 30 days.
 # It's a dependency of cinelerra, written for cinelerra.
 # We don't ship cinelerra. It should be removed when we removed cinelerra
