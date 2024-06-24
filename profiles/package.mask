@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Aliaksei Urbanski <aliaksei.urbanski@gmail.com> (2024-06-24)
+# Js2Py is vulnerable to a sandbox escape (CVE-2024-28397)
+# Please remove it or upgrade to the latest revision!
+<dev-python/js2py-0.74-r1
+
 # NHOrus <jy6x2b32pie9@yahoo.com> (2024-06-24)
 # Masked for removal in 30 days.
 # It's a dependency of cinelerra, written for cinelerra.
