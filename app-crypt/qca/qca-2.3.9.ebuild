@@ -7,10 +7,11 @@ inherit cmake kde.org multibuild out-of-source-utils qmake-utils
 
 DESCRIPTION="Qt Cryptographic Architecture (QCA)"
 HOMEPAGE="https://userbase.kde.org/QCA"
+SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="2"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="botan debug doc examples gcrypt gpg logger nss pkcs11 +qt5 qt6 sasl softstore +ssl test"
 REQUIRED_USE="|| ( qt5 qt6 )"
 
