@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# NHOrus <jy6x2b32pie9@yahoo.com> (2024-06-24)
+# This package is obsolete, dead and unmaintained, completely superseded by pam_winbind.so in samba
+# Drop from tree in 30 days
+# Bug #931766.
+sys-auth/pam_smb
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-23)
 # EAPI=6, waiting for a version bump, no reverse-dependencies.
 # Removal on 2024-07-23.  Bugs #934756, #924303.
