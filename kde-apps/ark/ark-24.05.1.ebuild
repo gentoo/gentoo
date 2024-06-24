@@ -62,7 +62,8 @@ src_test() {
 	local myctestargs=(
 		# bug 822177: kerfuffle-addtoarchivetest: may segfault or hang indefinitely
 		# bug 827840: plugins-clirartest: continuously broken with translations installed
-		-E "(kerfuffle-addtoarchivetest|plugins-clirartest)"
+		# bug 932499: kerfuffle-extracttest: failing upstream and disabled in 24.05.2
+		-E "(kerfuffle-addtoarchivetest|plugins-clirartest|kerfuffle-extracttest)"
 	)
 
 	ecm_src_test
