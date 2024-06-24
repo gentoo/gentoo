@@ -269,10 +269,6 @@ dev-ruby/capybara test
 # pre-built, no ARM support
 net-wireless/gr-osmosdr sdrplay
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-06-03)
-# net-wireless/soapysdr not keyworded
-net-wireless/gr-osmosdr soapy
-
 # Markus Meier <maekke@gentoo.org> (2018-05-30)
 # unkeyworded deps for bug #621434
 net-analyzer/zmap mongo
