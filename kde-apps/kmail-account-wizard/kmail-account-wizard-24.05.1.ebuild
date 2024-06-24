@@ -18,6 +18,8 @@ SLOT="6"
 KEYWORDS="~amd64"
 IUSE=""
 
+RESTRICT="test" # bug 926456; requires akonadi server
+
 DEPEND="
 	>=app-crypt/gpgme-1.23.1-r1:=[cxx,qt6]
 	>=dev-libs/qtkeychain-0.14.2:=[qt6]
