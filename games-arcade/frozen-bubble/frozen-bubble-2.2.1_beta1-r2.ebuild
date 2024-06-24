@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,6 +44,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-Werror.patch
 	"${FILESDIR}"/${P}-fix-buffer-size.patch
+	"${FILESDIR}"/${P}-perl-5.40.patch
 )
 
 src_configure() {
