@@ -104,7 +104,6 @@ multilib_src_configure() {
 	# switch (enabling the libxml2 debug module). See bug #100898.
 	libxml2_configure() {
 		ECONF_SOURCE="${S}" econf \
-			--enable-ipv6 \
 			$(use_with ftp) \
 			$(use_with debug run-debug) \
 			$(use_with icu) \
