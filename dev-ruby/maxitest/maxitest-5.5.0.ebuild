@@ -23,7 +23,7 @@ IUSE="test"
 
 ruby_add_rdepend ">=dev-ruby/minitest-5.14.0:* <dev-ruby/minitest-5.24.0:*"
 
-ruby_add_bdepend "test? ( dev-ruby/bundler )"
+ruby_add_bdepend "test? ( dev-ruby/bundler >=dev-ruby/minitest-5.21.0 )"
 
 all_ruby_prepare() {
 	rm -f Gemfile.lock || die
@@ -31,7 +31,6 @@ all_ruby_prepare() {
 	sed -e 's:_relative ": "./:' \
 		-i ${RUBY_FAKEGEM_GEMSPEC} || die
 	sed -e '/\(debug\|bump\)/ s:^:#:' \
-		-e 'agem "mutex_m"' \
 		-i Gemfile || die
 
 	sed -e '/shows backtrace for/askip' \
