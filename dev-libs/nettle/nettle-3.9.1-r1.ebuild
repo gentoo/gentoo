@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -82,6 +82,13 @@ multilib_src_configure() {
 		# openssl is just used for benchmarks (bug #427526)
 		--disable-openssl
 	)
+
+	# https://git.lysator.liu.se/nettle/nettle/-/issues/7
+	if use cpu_flags_ppc_altivec && ! tc-cpp-is-true "defined(__VSX__) && __VSX__ == 1" "${CPPFLAGS}" "${CFLAGS}" ; then
+		ewarn "cpu_flags_ppc_altivec is enabled, but nettle's asm requires >=P7."
+		ewarn "Disabling, sorry! See bug #920234."
+		myeconfargs+=( --disable-power-altivec )
+	fi
 
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
