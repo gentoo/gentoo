@@ -40,6 +40,9 @@ src_test() {
 		kdirwatch_stat_unittest
 		# bugs 665682
 		kformattest
+		# bug 770781
+		kaboutdatatest
+		klistopenfilesjobtest_unix
 	)
 	# bug 619656
 	ecm_src_test -j1
