@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~sparc"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~sparc"
 # The vast majority of tests require Internet access.
 PROPERTIES="test_network"
 RESTRICT="test"
