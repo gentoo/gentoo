@@ -382,6 +382,22 @@ kernel-build_src_install() {
 	local module_ver
 	module_ver=$(<"${relfile}") || die
 
+	# warn when trying to "make" a dist-kernel
+	cat <<-EOF >> "${ED}${kernel_dir}/Makefile" || die
+
+		_GENTOO_IS_USER_SHELL:=\$(shell [ -t 0 ] && echo 1)
+		ifdef _GENTOO_IS_USER_SHELL
+		\$(warning !!!! WARNING !!!!)
+		\$(warning This kernel was configured and installed by the package manager.)
+		\$(warning "make" should not be run manually here.)
+		\$(warning See also: https://wiki.gentoo.org/wiki/Project:Distribution_Kernel)
+		\$(warning See also: https://wiki.gentoo.org/wiki/Kernel/Configuration)
+		\$(warning !!!! WARNING !!!!)
+		endif
+	EOF
+	# add a dist-kernel identifier file
+	echo "${CATEGORY}/${PF}:${SLOT}" > "${ED}${kernel_dir}/dist-kernel" || die
+
 	# fix source tree and build dir symlinks
 	dosym "../../../${kernel_dir}" "/lib/modules/${module_ver}/build"
 	dosym "../../../${kernel_dir}" "/lib/modules/${module_ver}/source"
