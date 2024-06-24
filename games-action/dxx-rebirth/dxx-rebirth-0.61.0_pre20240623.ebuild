@@ -3,8 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
-MY_COMMIT="ad9452d51b7ccd7d2ad7fe56318f21898a3c2d43"
+PYTHON_COMPAT=( python3_{10..12} )
+MY_COMMIT="e8dd751d8a5cae375000fe7d3881e9da77075ab0"
 
 # Games under Gentoo are marked as 'testing' by convention
 #
@@ -48,7 +48,7 @@ IUSE="+d1x +d2x +data debug editor +flac ipv6 +joystick l10n_de +midi +mp3 +musi
 #
 # PNG support enables writing screenshots as PNG instead of TGA (for
 # USE=opengl) or PCX (for USE=-opengl).
-DEPEND="dev-games/physfs[hog,mvl,zip]
+DEPEND=">=dev-games/physfs-3[hog,mvl,zip]
 	opengl? (
 		virtual/opengl
 		virtual/glu )
