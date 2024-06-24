@@ -21,6 +21,7 @@ RDEPEND="
 	systemd? ( sys-apps/systemd )
 	!systemd? ( virtual/cron )
 "
+PATCHES=( "${FILESDIR}/${P}-script-fix.patch" )
 
 src_prepare() {
 	# Fix config path into watching service
