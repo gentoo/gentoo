@@ -17,6 +17,8 @@ IUSE=""
 CMAKE_SKIP_TESTS=(
 	# bugs: 864250
 	kstandardactiontest
+	# bug 926497
+	klanguagenametest
 )
 
 RDEPEND="
