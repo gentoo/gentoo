@@ -61,6 +61,7 @@ src_configure() {
 src_test() {
 	local CMAKE_SKIP_TESTS=(
 		kerfuffle-addtoarchivetest # bug 822177: may segfault or hang indefinitely
+		kerfuffle-extracttest # bug 932499: failing upstream and disabled in 24.05.2
 		kerfuffle-loadtest # bug 985815: reqs dependencies not easily available
 		plugins-clirartest # bug 827840: continuously broken w/ translations installed
 	)
