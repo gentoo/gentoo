@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -62,11 +62,10 @@ PATCHES=(
 	"${FILESDIR}/${P}-missing-include.patch" # bug 920043
 )
 
-src_test() {
-	# test needs DBus, bug 675548
-	local myctestargs=(
-		-E "(Test.KDED.DBusTabletService)"
-	)
-
-	ecm_src_test
-}
+CMAKE_SKIP_TESTS=(
+	# test needs DBus, bugs 675548, 920558
+	Test.KDED.DBusTabletService
+	Test.KDED.TabletHandler
+	Test.KDED.XInputAdaptor # SEGFAULT
+	Test.KDED.XsetWacomAdaptor # SEGFAULT
+)
