@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -40,7 +40,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.0.2-set-build-id.patch"
 	"${FILESDIR}/${PN}-5.3.3-remove-cmake-doxygen-commands.patch"
 	"${FILESDIR}/${PN}-5.3.3-disable-Werror.patch"
-	"${FILESDIR}/0001-SWDEV-352878-LLVM-pkg-search-directly-using-find_dep.patch"
+	"${FILESDIR}/${PN}-5.3.3-0001-SWDEV-352878-LLVM-pkg-search-directly-using-find_dep.patch"
 )
 
 S="${WORKDIR}/hipamd-rocm-${PV}"
@@ -78,9 +78,11 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-5.1.3-rocm-path.patch"
 	eapply "${FILESDIR}/${PN}-5.1.3-fno-stack-protector.patch"
 	eapply "${FILESDIR}/${PN}-5.3.3-correct-ldflag.patch"
-	eapply "${FILESDIR}/0001-SWDEV-344620-hipcc-fails-to-parse-version-of-clang-i.patch"
-	eapply "${FILESDIR}/0002-SWDEV-355608-Remove-clang-include-path-2996.patch"
-	eapply "${FILESDIR}/0003-SWDEV-352878-Removed-relative-path-based-CLANG-inclu.patch"
+
+	eapply "${FILESDIR}/${PN}-5.3.3-0002-SWDEV-344620-hipcc-fails-to-parse-version-of-clang-i.patch"
+	eapply "${FILESDIR}/${PN}-5.3.3-0003-SWDEV-355608-Remove-clang-include-path-2996.patch"
+	eapply "${FILESDIR}/${PN}-5.3.3-0004-SWDEV-352878-Removed-relative-path-based-CLANG-inclu.patch"
+
 	eapply "${FILESDIR}/${PN}-5.4.3-fix-HIP_CLANG_PATH-detection.patch"
 	# Setting HSA_PATH to "/usr" results in setting "-isystem /usr/include"
 	# which makes "stdlib.h" not found when using "#include_next" in header files;
