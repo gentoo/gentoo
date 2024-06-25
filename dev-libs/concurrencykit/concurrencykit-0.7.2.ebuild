@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0 BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 
 # The 'libck.so' has a name collision.
 # See bug #616762 for more information.
