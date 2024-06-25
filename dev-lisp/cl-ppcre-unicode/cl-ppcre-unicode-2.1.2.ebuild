@@ -14,7 +14,7 @@ S="${WORKDIR}/cl-ppcre-${PV}"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~sparc ~x86"
 
 RDEPEND="~dev-lisp/cl-ppcre-${PV}
 	dev-lisp/cl-unicode"
