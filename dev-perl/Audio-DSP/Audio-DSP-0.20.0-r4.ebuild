@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl interface to *NIX digital audio device"
 
 SLOT="0"
-KEYWORDS="~amd64 sparc ~x86"
+KEYWORDS="amd64 sparc ~x86"
 
 src_test() {
 	local MODULES=(
