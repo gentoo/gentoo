@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Eksblowfish block cipher"
 
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 
 RDEPEND="
 	virtual/perl-Carp
