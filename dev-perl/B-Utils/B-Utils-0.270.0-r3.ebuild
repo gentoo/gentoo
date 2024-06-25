@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Helper functions for op tree manipulation"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ~ppc ~ppc64 x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ppc ~ppc64 x86"
 
 # needs Scalar::Util
 RDEPEND="
