@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl interface to Alec Muffett's Cracklib"
 
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="sys-libs/cracklib"
 DEPEND="${RDEPEND}"
