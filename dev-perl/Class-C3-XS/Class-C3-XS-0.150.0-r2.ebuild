@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="XS speedups for Class::C3"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~ia64 ppc ~sparc ~x86"
 
 RDEPEND="
 	virtual/perl-XSLoader
