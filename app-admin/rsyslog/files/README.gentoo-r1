@@ -34,6 +34,6 @@ Important changes
 
    Before version 8.2404.0-r1 there was an additional input socket in
    "/var/empty/dev/log" (default chroot location) in 8.2404.0-r1 that socket
-   was removed form the default configuration. Users can enable that socket
+   was removed from the default configuration. Users can enable that socket
    if they need to on their own but it shouldn't be necessary when running new
-   versions of openssh.
+   versions of OpenSSH.
