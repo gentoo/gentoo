@@ -13,5 +13,6 @@
 		<flag name="dmenu">Use dmenu as default launcher</flag>
 		<flag name="rofi">Use rofi as default launcher</flag>
 		<flag name="fzf">Use fzf as default launcher</flag>
+		<flag name="xdotool">Add support for ignoring specified applications</flag>
 	</use>
 </pkgmetadata>
