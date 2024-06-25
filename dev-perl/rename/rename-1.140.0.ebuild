@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Filename renaming utility based on perl regular expression"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 src_install() {
 	perl-module_src_install
