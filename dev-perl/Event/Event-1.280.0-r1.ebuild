@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Fast, generic event loop"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~ia64 ~ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~ia64 ppc ppc64 sparc x86"
 
 BDEPEND="
 	virtual/perl-ExtUtils-MakeMaker
