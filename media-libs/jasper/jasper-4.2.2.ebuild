@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/jasper-software/jasper.git"
 else
 	SRC_URI="https://github.com/jasper-software/${PN}/archive/version-${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm arm64 ~loong ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~loong x86"
 	S="${WORKDIR}/${PN}-version-${PV}"
 fi
 
