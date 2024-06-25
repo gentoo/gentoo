@@ -1,0 +1,120 @@
+https://gcc.gnu.org/PR115602
+https://gcc.gnu.org/git/?p=gcc.git;a=patch;h=c43c74f6ec795a586388de7abfdd20a0040f6f16
+
+From c43c74f6ec795a586388de7abfdd20a0040f6f16 Mon Sep 17 00:00:00 2001
+From: Richard Biener <rguenther@suse.de>
+Date: Mon, 24 Jun 2024 09:52:39 +0200
+Subject: [PATCH] tree-optimization/115602 - SLP CSE results in cycles
+
+The following prevents SLP CSE to create new cycles which happened
+because of a 1:1 permute node being present where its child was then
+CSEd to the permute node.  Fixed by making a node only available to
+CSE to after recursing.
+
+	PR tree-optimization/115602
+	* tree-vect-slp.cc (vect_cse_slp_nodes): Delay populating the
+	bst-map to avoid cycles.
+
+	* gcc.dg/vect/pr115602.c: New testcase.
+---
+ gcc/testsuite/gcc.dg/vect/pr115602.c | 27 +++++++++++++++++++++++
+ gcc/tree-vect-slp.cc                 | 33 ++++++++++++++++++----------
+ 2 files changed, 48 insertions(+), 12 deletions(-)
+ create mode 100644 gcc/testsuite/gcc.dg/vect/pr115602.c
+
+diff --git a/gcc/testsuite/gcc.dg/vect/pr115602.c b/gcc/testsuite/gcc.dg/vect/pr115602.c
+new file mode 100644
+index 00000000000..9a208d1d950
+--- /dev/null
++++ b/gcc/testsuite/gcc.dg/vect/pr115602.c
+@@ -0,0 +1,27 @@
++/* { dg-do compile } */
++
++typedef struct {
++  double x, y;
++} pointf;
++struct {
++  pointf focus;
++  double zoom;
++  pointf devscale;
++  char button;
++  pointf oldpointer;
++} gvevent_motion_job;
++char gvevent_motion_job_4;
++double gvevent_motion_pointer_1, gvevent_motion_pointer_0;
++void gvevent_motion() {
++  double dx = (gvevent_motion_pointer_0 - gvevent_motion_job.oldpointer.x) /
++              gvevent_motion_job.devscale.x,
++         dy = (gvevent_motion_pointer_1 - gvevent_motion_job.oldpointer.y) /
++              gvevent_motion_job.devscale.y;
++  if (dx && dy < .0001)
++    return;
++  switch (gvevent_motion_job_4)
++  case 2: {
++    gvevent_motion_job.focus.x -= dy / gvevent_motion_job.zoom;
++    gvevent_motion_job.focus.y += dx / gvevent_motion_job.zoom;
++  }
++}
+diff --git a/gcc/tree-vect-slp.cc b/gcc/tree-vect-slp.cc
+index e84aeabef94..b47b7e8c979 100644
+--- a/gcc/tree-vect-slp.cc
++++ b/gcc/tree-vect-slp.cc
+@@ -6079,35 +6079,44 @@ vect_optimize_slp_pass::run ()
+ static void
+ vect_cse_slp_nodes (scalar_stmts_to_slp_tree_map_t *bst_map, slp_tree& node)
+ {
++  bool put_p = false;
+   if (SLP_TREE_DEF_TYPE (node) == vect_internal_def
+       /* Besides some VEC_PERM_EXPR, two-operator nodes also
+ 	 lack scalar stmts and thus CSE doesn't work via bst_map.  Ideally
+ 	 we'd have sth that works for all internal and external nodes.  */
+       && !SLP_TREE_SCALAR_STMTS (node).is_empty ())
+     {
+-      if (slp_tree *leader = bst_map->get (SLP_TREE_SCALAR_STMTS (node)))
++      slp_tree *leader = bst_map->get (SLP_TREE_SCALAR_STMTS (node));
++      if (leader)
+ 	{
+-	  if (*leader != node)
+-	    {
+-	      if (dump_enabled_p ())
+-		dump_printf_loc (MSG_NOTE, vect_location,
+-				 "re-using SLP tree %p for %p\n",
+-				 (void *)*leader, (void *)node);
+-	      vect_free_slp_tree (node);
+-	      (*leader)->refcnt += 1;
+-	      node = *leader;
+-	    }
++	  /* We've visited this node already.  */
++	  if (!*leader || *leader == node)
++	    return;
++
++	  if (dump_enabled_p ())
++	    dump_printf_loc (MSG_NOTE, vect_location,
++			     "re-using SLP tree %p for %p\n",
++			     (void *)*leader, (void *)node);
++	  vect_free_slp_tree (node);
++	  (*leader)->refcnt += 1;
++	  node = *leader;
+ 	  return;
+ 	}
+ 
+-      bst_map->put (SLP_TREE_SCALAR_STMTS (node).copy (), node);
++      /* Avoid creating a cycle by populating the map only after recursion.  */
++      bst_map->put (SLP_TREE_SCALAR_STMTS (node).copy (), nullptr);
+       node->refcnt += 1;
++      put_p = true;
+       /* And recurse.  */
+     }
+ 
+   for (slp_tree &child : SLP_TREE_CHILDREN (node))
+     if (child)
+       vect_cse_slp_nodes (bst_map, child);
++
++  /* Now record the node for CSE in other siblings.  */
++  if (put_p)
++    bst_map->put (SLP_TREE_SCALAR_STMTS (node).copy (), node);
+ }
+ 
+ /* Optimize the SLP graph of VINFO.  */
+-- 
+2.43.0

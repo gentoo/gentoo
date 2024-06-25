@@ -49,5 +49,6 @@ src_prepare() {
 
 	toolchain_src_prepare
 
+	eapply "${FILESDIR}"/${P}-PR115602.patch
 	eapply_user
 }
