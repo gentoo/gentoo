@@ -24,9 +24,6 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~x64-macos"
 
-CP_DEPEND="
-	dev-java/commons-logging:0
-"
 COMMON_DEPEND="virtual/latex-base"
 DEPEND="
 	${COMMON_DEPEND}
@@ -34,8 +31,8 @@ DEPEND="
 "
 BDEPEND="app-arch/unzip"
 RDEPEND="
-	${CP_DEPEND}
-	${COMMIN_DEPEND}
+	dev-java/commons-logging:0
+	${COMMON_DEPEND}
 	virtual/perl-Getopt-Long
 	dev-perl/File-Which
 	>=virtual/jre-11
@@ -43,9 +40,6 @@ RDEPEND="
 "
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
-EANT_GENTOO_CLASSPATH="
-	commons-logging
-"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.2-javajars.patch
@@ -69,6 +63,7 @@ src_compile() {
 src_install() {
 	java-pkg_dojar scripts/pax.jar pdfbox.jar fontbox.jar
 	java-pkg_dolauncher ${PN} --main pax.PDFAnnotExtractor
+	java-pkg_addcp "$(java-pkg_getjars --runtime-only --with-dependencies commons-logging)"
 
 	insinto ${TEXMF}/latex/pax
 	doins tex/pax.sty
