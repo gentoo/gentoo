@@ -34,7 +34,6 @@ DEPEND="
 	')
 "
 RDEPEND="${DEPEND}
-	>=dev-libs/rocm-device-libs-6.1.1
 	!<dev-util/hip-5.7"
 
 PATCHES=(
