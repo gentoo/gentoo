@@ -27,7 +27,8 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-CVE-2024-28397.patch
+	"${FILESDIR}/${PN}-0.74-CVE-2024-28397.patch"
+	"${FILESDIR}/${PN}-0.74-py312-load_attr.patch"
 )
 
 python_test() {
