@@ -105,7 +105,7 @@ BDEPEND="${PYTHON_DEPS}
 			)
 		)
 	)
-	!clang? ( <virtual/rust-1.78 )
+	!clang? ( virtual/rust )
 	virtual/pkgconfig
 	test? (
 		$(python_gen_any_dep 'dev-python/six[${PYTHON_USEDEP}]')
