@@ -9,7 +9,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription lang="en">
+	<longdescription>
 		Nicotine+ is a FOSS client for the proprietary Soulseek file sharing
 		network that is used mainly for sharing music.
 		It acts as the improved version of the official client SoulseekQt.
@@ -17,8 +17,10 @@
 		It is written in Python and has a GTK-based GUI.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">Nicotine-Plus/nicotine-plus</remote-id>
 		<bugs-to>https://github.com/nicotine-plus/nicotine-plus/issues</bugs-to>
+		<changelog>https://github.com/nicotine-plus/nicotine-plus/releases</changelog>
+		<doc>https://github.com/nicotine-plus/nicotine-plus/tree/master/doc</doc>
+		<remote-id type="github">nicotine-plus/nicotine-plus</remote-id>
 	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>
