@@ -69,7 +69,15 @@ QA_PREBUILT="*"
 PATCHES=( "${FILESDIR}"/${PN}-copy-firmware-r4.patch )
 
 pkg_pretend() {
-	use initramfs && mount-boot_pkg_pretend
+	if use initramfs; then
+		if [[ -z ${ROOT} ]] && use dist-kernel; then
+			# Check, but don't die because we can fix the problem and then
+			# emerge --config ... to re-run installation.
+			nonfatal mount-boot_check_status
+		else
+			mount-boot_pkg_pretend
+		fi
+	fi
 }
 
 pkg_setup() {
@@ -379,7 +387,7 @@ pkg_preinst() {
 	fi
 
 	# Make sure /boot is available if needed.
-	use initramfs && mount-boot_pkg_preinst
+	use initramfs && ! use dist-kernel && mount-boot_pkg_preinst
 }
 
 pkg_postinst() {
@@ -397,21 +405,22 @@ pkg_postinst() {
 		fi
 	done
 
-	# Don't forget to umount /boot if it was previously mounted by us.
 	if use initramfs; then
 		if [[ -z ${ROOT} ]] && use dist-kernel; then
 			dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}"
+		else
+			# Don't forget to umount /boot if it was previously mounted by us.
+			mount-boot_pkg_postinst
 		fi
-		mount-boot_pkg_postinst
 	fi
 }
 
 pkg_prerm() {
 	# Make sure /boot is mounted so that we can remove /boot/amd-uc.img!
-	use initramfs && mount-boot_pkg_prerm
+	use initramfs && ! use dist-kernel && mount-boot_pkg_prerm
 }
 
 pkg_postrm() {
 	# Don't forget to umount /boot if it was previously mounted by us.
-	use initramfs && mount-boot_pkg_postrm
+	use initramfs && ! use dist-kernel && mount-boot_pkg_postrm
 }
