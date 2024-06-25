@@ -132,6 +132,7 @@ IDEPEND="
 "
 
 if [[ ${MODULES_INITRAMFS_IUSE} ]]; then
+	inherit mount-boot-utils
 	IUSE+=" ${MODULES_INITRAMFS_IUSE}"
 	IDEPEND+="
 		${MODULES_INITRAMFS_IUSE#+}? (
@@ -328,9 +329,19 @@ fi
 #  3. perform various sanity checks to fail early on issues
 linux-mod-r1_pkg_setup() {
 	debug-print-function ${FUNCNAME[0]} "${@}"
-	[[ ${MERGE_TYPE} != binary ]] || return 0
 	_MODULES_GLOBAL[ran:pkg_setup]=1
 	_modules_check_function ${#} 0 0 || return 0
+
+	if [[ -z ${ROOT} && ${MODULES_INITRAMFS_IUSE} ]] &&
+		use dist-kernel && use ${MODULES_INITRAMFS_IUSE#+}
+	then
+		# Check, but don't die because we can fix the problem and then
+		# emerge --config ... to re-run installation.
+		nonfatal mount-boot_check_status
+	fi
+
+	[[ ${MERGE_TYPE} != binary ]] || return 0
+
 	_modules_check_migration
 
 	_modules_prepare_kernel
