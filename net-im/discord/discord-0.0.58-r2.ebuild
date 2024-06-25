@@ -15,7 +15,7 @@ CHROMIUM_LANGS="
 inherit chromium-2 desktop linux-info optfeature unpacker xdg
 
 DESCRIPTION="All-in-one voice and text chat for gamers"
-HOMEPAGE="https://discordapp.com"
+HOMEPAGE="https://discord.com/"
 SRC_URI="https://dl.discordapp.net/apps/linux/${MY_PV}/${MY_PN}-${MY_PV}.tar.gz"
 S="${WORKDIR}/${MY_PN^}"
 
@@ -81,21 +81,20 @@ src_prepare() {
 	pushd "locales/" >/dev/null || die "location change for language cleanup failed"
 	chromium_remove_language_paks
 	popd >/dev/null || die "location reset for language cleanup failed"
+
 	# fix .desktop exec location
-	sed -i "/Exec/s:/usr/share/discord/Discord:${DESTDIR}/${MY_PN^}:" \
+	sed --in-place --expression "/^Exec=/s:/usr/share/discord/Discord:/usr/bin/${MY_PN}:" \
 		"${MY_PN}.desktop" ||
 		die "fixing of exec location on .desktop failed"
-	# USE wayland
-	if use wayland; then
-		sed -i '/Exec/s/Discord/Discord --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime/' \
-			"${MY_PN}.desktop" ||
-			die "sed failed for wayland"
-	fi
-	# USE seccomp
-	if ! use seccomp; then
-		sed -i '/Exec/s/Discord/Discord --disable-seccomp-filter-sandbox/' \
-			"${MY_PN}.desktop" ||
-			die "sed failed for seccomp"
+
+	# Update exec location in launcher
+	sed --expression "s:@@DESTDIR@@:${DESTDIR}:" \
+		"${FILESDIR}/launcher.sh" > "${T}/launcher.sh" || die "updating of exec location in launcher failed"
+
+	# USE seccomp in launcher
+	if use seccomp; then
+		sed --in-place --expression '/^SECCOMP=/s/false/true/' \
+			"${T}/launcher.sh" || die "sed failed for seccomp"
 	fi
 }
 
@@ -123,7 +122,8 @@ src_install() {
 	# See #903616 and #890595
 	[[ -x chrome_crashpad_handler ]] && doins chrome_crashpad_handler
 
-	dosym "${DESTDIR}/${MY_PN^}" "/usr/bin/${MY_PN}"
+	exeinto "/usr/bin"
+	newexe "${T}/launcher.sh" "discord" || die "failing to install launcher"
 
 	# https://bugs.gentoo.org/898912
 	if use appindicator; then
