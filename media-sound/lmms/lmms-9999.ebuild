@@ -79,7 +79,6 @@ src_configure() {
 		-DWANT_SWH=FALSE
 		-DWANT_CMT=FALSE
 		-DWANT_CALF=FALSE
-		-DWANT_QT5=TRUE
 		-DWANT_ALSA=$(usex alsa)
 		-DWANT_JACK=$(usex jack)
 		-DWANT_GIG=$(usex libgig)
