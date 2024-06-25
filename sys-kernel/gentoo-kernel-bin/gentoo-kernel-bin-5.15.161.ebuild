@@ -108,6 +108,11 @@ src_test() {
 }
 
 src_install() {
+	local kernel_dir="${BINPKG}/image/usr/src/linux-${KPV}"
+
+	# Overwrite the identifier in the prebuilt package
+	echo "${CATEGORY}/${PF}:${SLOT}" > "${kernel_dir}/dist-kernel" || die
+
 	mv "${BINPKG}"/image/{lib,usr} "${ED}"/ || die
 
 	# FIXME: requires proper mount-boot
