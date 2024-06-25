@@ -1,0 +1,14 @@
+bug https://bugs.gentoo.org/918709
+patch from https://github.com/ROCm/rocm_smi_lib/issues/170#issuecomment-2130745220
+upstreamed in https://github.com/ROCm/rocm_smi_lib/commit/7fdc6e56c40ed6f02c888dcb1492944a9373ba74
+--- a/include/rocm_smi/rocm_smi_utils.h 2024-05-25 00:02:19.127412816 -0400
++++ b/include/rocm_smi/rocm_smi_utils.h 2024-05-25 00:03:25.359416227 -0400
+@@ -149,7 +149,7 @@
+   __forceinline ~ScopeGuard() {
+     if (!dismiss_) release_();
+   }
+-  __forceinline ScopeGuard& operator=(const ScopeGuard& rhs) {
++  __forceinline ScopeGuard& operator=(ScopeGuard& rhs) {
+     dismiss_ = rhs.dismiss_;
+     release_ = rhs.release_;
+     rhs.dismiss_ = true;
