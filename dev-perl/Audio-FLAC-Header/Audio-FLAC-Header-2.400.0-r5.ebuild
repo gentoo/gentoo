@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Access to FLAC audio metadata"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 RDEPEND="media-libs/flac:="
 DEPEND="${RDEPEND}"
