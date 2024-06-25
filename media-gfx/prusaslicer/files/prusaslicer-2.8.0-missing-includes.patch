@@ -8,27 +8,12 @@
  #include <boost/nowide/fstream.hpp>
  
  #include "libslic3r/libslic3r.h"
---- a/src/slic3r/GUI/RulerForDoubleSlider.cpp
-+++ b/src/slic3r/GUI/RulerForDoubleSlider.cpp
-@@ -4,6 +4,12 @@
- ///|/
- #include "RulerForDoubleSlider.hpp"
- #include "libslic3r/CustomGCode.hpp"
-+#include "../../libslic3r/libslic3r.h"
-+
-+#include <algorithm>
-+#include <cmath>
-+#include <numeric>
-+#include <iterator>
- 
- using namespace Slic3r;
- using namespace CustomGCode;
 --- a/src/slic3r/GUI/UserAccountCommunication.cpp
 +++ b/src/slic3r/GUI/UserAccountCommunication.cpp
-@@ -9,6 +9,7 @@
- #include <boost/log/trivial.hpp>
- #include <boost/beast/core/detail/base64.hpp>
- #include <boost/algorithm/string.hpp>
+@@ -13,6 +13,7 @@
+ #include <boost/filesystem.hpp>
+ #include <boost/nowide/cstdio.hpp>
+ #include <boost/nowide/fstream.hpp>
 +#include <boost/nowide/convert.hpp>
  #include <curl/curl.h>
  #include <string>
