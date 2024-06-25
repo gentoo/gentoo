@@ -173,7 +173,6 @@ src_unpack() {
 		git-r3_src_unpack
 		S="${S}/rust-src" cargo_live_src_unpack
 	else
-		unpack ${P}.tar.gz
 		cargo_src_unpack
 	fi
 }
