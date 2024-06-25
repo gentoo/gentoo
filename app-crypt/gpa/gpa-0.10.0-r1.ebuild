@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools xdg
 
 DESCRIPTION="The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG"
-HOMEPAGE="http://gpa.wald.intevation.org"
+HOMEPAGE="https://gnupg.org/software/gpa/"
 SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
 # Backport of upstream changes to 0.10.0
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-autoconf.patch.xz"
