@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -51,7 +51,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.1.3-fix-hip_prof_gen.patch"
 	"${FILESDIR}/${PN}-5.1.3-correct-sample-install-location.patch"
 	"${FILESDIR}/${PN}-5.1.3-remove-cmake-doxygen-commands.patch"
-	"${FILESDIR}/0001-SWDEV-316128-HIP-surface-API-support.patch"
+	"${FILESDIR}/${PN}-5.1.3-0001-SWDEV-316128-HIP-surface-API-support.patch"
 	"${FILESDIR}/${PN}-5.1.3-llvm-15-noinline-keyword.patch"
 )
 
