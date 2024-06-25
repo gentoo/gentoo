@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl interface to GnuPG"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~riscv x86"
+KEYWORDS="amd64 ~hppa ~ppc ~riscv x86"
 
 RDEPEND="
 	>=app-crypt/gnupg-1.4
