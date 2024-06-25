@@ -9,7 +9,10 @@ inherit autotools bash-completion-r1 check-reqs db-use desktop edo multiprocessi
 
 DESCRIPTION="Reference implementation of the Bitcoin cryptocurrency"
 HOMEPAGE="https://bitcoincore.org/"
-SRC_URI="https://github.com/bitcoin/bitcoin/archive/v${PV}.tar.gz -> ${P/-core}.tar.gz"
+SRC_URI="
+	https://github.com/bitcoin/bitcoin/archive/v${PV}.tar.gz -> ${P/-core}.tar.gz
+	https://github.com/bitcoin/bitcoin/commit/8acdf66540834b9f9cf28f16d389e8b6a48516d5.patch?full_index=1 -> ${PN}-miniupnpc-2.2.8-compat.patch
+"
 S="${WORKDIR}/${P/-core}"
 
 LICENSE="MIT"
@@ -91,6 +94,7 @@ DOCS=(
 )
 
 PATCHES=(
+	"${DISTDIR}/${PN}-miniupnpc-2.2.8-compat.patch"
 	"${FILESDIR}/26.0-syslibs.patch"
 	"${FILESDIR}/26.0-init.patch"
 )
