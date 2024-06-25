@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit systemd toolchain-funcs
+inherit optfeature systemd toolchain-funcs
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -168,9 +168,5 @@ pkg_postinst() {
 		elog "https://bugs.gentoo.org/show_bug.cgi?id=477356"
 	fi
 
-	if ! has_version net-dns/bind-tools; then
-		elog
-		elog "If you activate the lookup-hostname hook to look up your hostname"
-		elog "using the dns, you need to install net-dns/bind-tools."
-	fi
+	optfeature "lookup-hostname hook" net-dns/bind-tools
 }
