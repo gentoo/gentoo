@@ -28,6 +28,7 @@ RDEPEND="${PYTHON_DEPS}
 	>=dev-cpp/msgpack-cxx-6.0.0
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/msgpack[${PYTHON_USEDEP}]
+	dev-python/joblib[${PYTHON_USEDEP}]
 	=dev-util/hip-6*
 	>=dev-util/rocm-smi-4.3.0
 	$(llvm_gen_dep '
