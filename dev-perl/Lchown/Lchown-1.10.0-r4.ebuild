@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Use the lchown(2) system call from Perl"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm64 ~ppc ~ppc64 ~sparc x86"
 
 BDEPEND="
 	${RDEPEND}
