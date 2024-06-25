@@ -48,7 +48,6 @@ RDEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-5.7.1-no_asan_doc.patch"
 	"${FILESDIR}/${PN}-6.1.0-install.patch"
-	"${FILESDIR}/${PN}-6.1.0-extend-isa-compatibility-check.patch"
 	"${FILESDIR}/${PN}-6.1.1-fix-musl.patch"
 )
 
@@ -60,6 +59,16 @@ hip_test_wrapper() {
 }
 
 src_prepare() {
+	# NOTE We do this head stand to safe the patch size.
+	# NOTE Adjust when we drop 5.7.1
+	sed \
+		-e 's:kAmdgcnTargetTriple:AMDGCN_TARGET_TRIPLE:g' \
+		-i hipamd/src/hip_code_object.cpp || die
+	eapply "${FILESDIR}/${PN}-5.7.1-extend-isa-compatibility-check.patch"
+	sed \
+		-e 's:AMDGCN_TARGET_TRIPLE:kAmdgcnTargetTriple:g' \
+		-i hipamd/src/hip_code_object.cpp || die
+
 	# hipamd is itself built by cmake, and should never provide a
 	# FindHIP.cmake module. But the reality is some package relies on it.
 	# Set HIP and HIP Clang paths directly, don't search using heuristics

@@ -1,0 +1,35 @@
+From e188c092a987c45caf2ea4651686ea631ca47c3d Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Tue, 25 Jun 2024 15:22:33 +0200
+Subject: [PATCH] prepare usage of old patch
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+---
+ hipamd/src/hip_code_object.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/hipamd/src/hip_code_object.cpp b/hipamd/src/hip_code_object.cpp
+index 6b3a6d0..fef89df 100644
+--- a/hipamd/src/hip_code_object.cpp
++++ b/hipamd/src/hip_code_object.cpp
+@@ -410,7 +410,7 @@ static bool isCodeObjectCompatibleWithDevice(std::string co_triple_target_id,
+   if (co_triple_target_id == agent_triple_target_id) return true;
+ 
+   // Parse code object triple target id
+-  if (!consume(co_triple_target_id, std::string(kAmdgcnTargetTriple) + '-')) {
++  if (!consume(co_triple_target_id, std::string(AMDGCN_TARGET_TRIPLE) + '-')) {
+     return false;
+   }
+ 
+@@ -423,7 +423,7 @@ static bool isCodeObjectCompatibleWithDevice(std::string co_triple_target_id,
+   if (!co_triple_target_id.empty()) return false;
+ 
+   // Parse agent isa triple target id
+-  if (!consume(agent_triple_target_id, std::string(kAmdgcnTargetTriple) + '-')) {
++  if (!consume(agent_triple_target_id, std::string(AMDGCN_TARGET_TRIPLE) + '-')) {
+     return false;
+   }
+ 
+-- 
+2.45.2
+
