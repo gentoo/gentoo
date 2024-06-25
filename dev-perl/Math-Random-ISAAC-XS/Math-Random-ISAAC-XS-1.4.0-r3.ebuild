@@ -12,7 +12,7 @@ DESCRIPTION="C implementation of the ISAAC PRNG algorithm"
 
 LICENSE="public-domain || ( Artistic GPL-1+ )"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="minimal"
 
 RDEPEND="
