@@ -17,9 +17,7 @@
 # /usr/src/linux-${PV} containing the kernel image in its standard
 # location and System.map.
 #
-# The eclass exports src_test, pkg_postinst and pkg_postrm.
-# Additionally, the inherited mount-boot eclass exports pkg_pretend.
-# It also stubs out pkg_preinst and pkg_prerm defined by mount-boot.
+# The eclass exports src_test, pkg_preinst, pkg_postinst and pkg_postrm.
 
 # @ECLASS_VARIABLE: KERNEL_IUSE_GENERIC_UKI
 # @PRE_INHERIT
@@ -50,7 +48,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-inherit dist-kernel-utils mount-boot multiprocessing toolchain-funcs
+inherit dist-kernel-utils mount-boot-utils multiprocessing toolchain-funcs
 
 SLOT="${PV}"
 IUSE="+initramfs test"
@@ -526,6 +524,10 @@ kernel-install_test() {
 kernel-install_pkg_pretend() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	# Check, but don't die because we can fix the problem and then
+	# emerge --config ... to re-run installation.
+	nonfatal mount-boot_check_status
+
 	if ! has_version -d sys-kernel/linux-firmware; then
 		ewarn "sys-kernel/linux-firmware not found installed on your system."
 		ewarn "This package provides various firmware files that may be needed"
@@ -665,27 +667,8 @@ kernel-install_install_all() {
 		fi
 	fi
 
-	local success=
-	# not an actual loop but allows error handling with 'break'
-	while :; do
-		nonfatal mount-boot_check_status || break
-
-		nonfatal dist-kernel_install_kernel "${module_ver}" \
-			"${kernel_dir}/${image_path}" "${kernel_dir}/System.map" || break
-
-		success=1
-		break
-	done
-
-	if [[ ! ${success} ]]; then
-		eerror
-		eerror "The kernel files were copied to disk successfully but the kernel"
-		eerror "was not deployed successfully.  Once you resolve the problems,"
-		eerror "please run the equivalent of the following command to try again:"
-		eerror
-		eerror "    emerge --config ${CATEGORY}/${PN}:${SLOT}"
-		die "Kernel install failed, please fix the problems and run emerge --config ${CATEGORY}/${PN}:${SLOT}"
-	fi
+	dist-kernel_install_kernel "${module_ver}" "${kernel_dir}/${image_path}" \
+		"${kernel_dir}/System.map"
 }
 
 # @FUNCTION: kernel-install_pkg_postinst
@@ -716,15 +699,6 @@ kernel-install_pkg_postinst() {
 		ewarn
 		ewarn "[1]: https://wiki.gentoo.org/wiki/Systemd#Automatic_mounting_of_partitions_at_boot"
 	fi
-}
-
-# @FUNCTION: kernel-install_pkg_prerm
-# @DESCRIPTION:
-# Stub out mount-boot.eclass.
-kernel-install_pkg_prerm() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	# (no-op)
 }
 
 # @FUNCTION: kernel-install_pkg_postrm
@@ -774,5 +748,5 @@ kernel-install_compress_modules() {
 
 fi
 
-EXPORT_FUNCTIONS src_test pkg_preinst pkg_postinst pkg_prerm pkg_postrm
+EXPORT_FUNCTIONS src_test pkg_preinst pkg_postinst pkg_postrm
 EXPORT_FUNCTIONS pkg_config pkg_pretend

@@ -26,7 +26,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-inherit toolchain-funcs
+inherit mount-boot-utils toolchain-funcs
 
 # @FUNCTION: dist-kernel_get_image_path
 # @DESCRIPTION:
@@ -79,11 +79,38 @@ dist-kernel_install_kernel() {
 	local image=${2}
 	local map=${3}
 
-	ebegin "Installing the kernel via installkernel"
-	# note: .config is taken relatively to System.map;
-	# initrd relatively to bzImage
-	ARCH=$(tc-arch-kernel) installkernel "${version}" "${image}" "${map}"
-	eend ${?} || die -n "Installing the kernel failed"
+	local success=
+	# not an actual loop but allows error handling with 'break'
+	while true; do
+		nonfatal mount-boot_check_status || break
+
+		ebegin "Installing the kernel via installkernel"
+		# note: .config is taken relatively to System.map;
+		# initrd relatively to bzImage
+		ARCH=$(tc-arch-kernel) installkernel "${version}" "${image}" "${map}" || break
+		eend ${?} || die -n "Installing the kernel failed"
+
+		success=1
+		break
+	done
+
+	if [[ ! ${success} ]]; then
+		# Fallback string, if the identifier file is not found
+		local kernel="<name of your kernel pakcage>:<kernel version>"
+		# Try to read dist-kernel identifier to more accurately instruct users
+		local k_id_file=${image%$(dist-kernel_get_image_path)}/dist-kernel
+		if [[ -f ${k_id_file} ]]; then
+			kernel=\'\=$(<${k_id_file})\'
+		fi
+
+		eerror
+		eerror "The kernel was not deployed successfully. Inspect the failure"
+		eerror "in the logs above and once you resolve the problems please"
+		eerror "run the equivalent of the following command to try again:"
+		eerror
+		eerror "    emerge --config ${kernel}"
+		die "Kernel install failed, please fix the problems and run emerge --config"
+	fi
 }
 
 # @FUNCTION: dist-kernel_reinstall_initramfs
