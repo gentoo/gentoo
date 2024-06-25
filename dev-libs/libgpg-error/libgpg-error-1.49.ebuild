@@ -10,7 +10,7 @@ EAPI=8
 # any subsequent ones linked within so you're covered for a while.)
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gnupg.asc
-inherit multilib-minimal toolchain-funcs verify-sig
+inherit libtool multilib-minimal toolchain-funcs verify-sig
 
 DESCRIPTION="Contains error handling functions used by GnuPG software"
 HOMEPAGE="https://www.gnupg.org/related_software/libgpg-error"
@@ -42,6 +42,7 @@ MULTILIB_CHOST_TOOLS=(
 
 src_prepare() {
 	default
+	elibtoolize
 
 	if use prefix ; then
 		# don't hardcode /usr/xpg4/bin/sh as shell on Solaris
