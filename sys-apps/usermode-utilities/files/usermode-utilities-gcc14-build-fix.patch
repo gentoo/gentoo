@@ -1,0 +1,13 @@
+Bug: https://bugs.gentoo.org/933391
+--- a/umlfs/uml_mount.c
++++ b/umlfs/uml_mount.c
+@@ -11,7 +11,8 @@ static int init_fuse(int argc, char **argv)
+ 
+ 	if (fuse_parse_cmdline(&args, &mountpoint, NULL, NULL) == -1)
+ 		return -EINVAL;
+-        return fuse_mount(mountpoint, &args);
++
++	return fuse_mount(mountpoint, (char *)&args);
+ }
+ 
+ int main(int argc, char **argv)
