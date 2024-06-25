@@ -1137,7 +1137,7 @@ java-pkg_jarfrom() {
 }
 
 # @FUNCTION: java-pkg_getjars
-# @USAGE: [--build-only] [--with-dependencies] <package1>[,<package2>...]
+# @USAGE: [--build-only] [--runtime-only] [--with-dependencies] <package1>[,<package2>...]
 # @DESCRIPTION:
 # Get the classpath provided by any number of packages
 # Among other things, this can be passed to 'javac -classpath' or 'ant -lib'.
@@ -1157,6 +1157,7 @@ java-pkg_jarfrom() {
 # Parameters:
 #	--build-only - makes the jar(s) not added into package.env DEPEND line.
 #	  (assumed automatically when called inside src_test)
+#	--runtime-only - marks the jar(s) not added into package.env RDEPEND line.
 #	--with-dependencies - get jars also from requested package's dependencies
 #	  transitively.
 # $1 - list of packages to get jars from
@@ -1165,6 +1166,7 @@ java-pkg_jarfrom() {
 java-pkg_getjars() {
 	debug-print-function ${FUNCNAME} $*
 
+	local dep_constraint
 	local build_only=""
 	local deep=""
 
@@ -1173,6 +1175,9 @@ java-pkg_getjars() {
 	while [[ "${1}" == --* ]]; do
 		if [[ "${1}" = "--build-only" ]]; then
 			build_only="build"
+			dep_constraint="build"
+		elif [[ "${1}" = "--runtime-only" ]]; then
+			dep_constraint="runtime"
 		elif [[ "${1}" = "--with-dependencies" ]]; then
 			deep="--with-dependencies"
 		else
@@ -1191,7 +1196,7 @@ java-pkg_getjars() {
 	debug-print "${pkgs}:${jars}"
 
 	for pkg in ${pkgs//,/ }; do
-		java-pkg_ensure-dep "${build_only}" "${pkg}"
+		java-pkg_ensure-dep "${dep_constraint}" "${pkg}"
 	done
 
 	for pkg in ${pkgs//,/ }; do
@@ -1807,7 +1812,6 @@ java-pkg_ant-tasks-depend() {
 		return 0
 	fi
 }
-
 
 # @FUNCTION: ejunit_
 # @INTERNAL
