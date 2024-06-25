@@ -33,6 +33,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #649858
+	append-flags -fno-delete-null-pointer-checks
+
 	# Uses removed 'register' keyword, bug #894178
 	append-cxxflags -std=c++03
 
