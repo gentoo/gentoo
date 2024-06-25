@@ -15,9 +15,13 @@ TEST_PV=${PV}
 
 DESCRIPTION="C++ Heterogeneous-Compute Interface for Portability"
 HOMEPAGE="https://github.com/ROCm/clr"
-SRC_URI="https://github.com/ROCm/clr/archive/refs/tags/rocm-${PV}.tar.gz -> rocm-clr-${PV}.tar.gz
+SRC_URI="
+	https://github.com/ROCm/clr/archive/refs/tags/rocm-${PV}.tar.gz -> rocm-clr-${PV}.tar.gz
 	https://github.com/ROCm/HIP/archive/refs/tags/rocm-${PV}.tar.gz -> hip-${PV}.tar.gz
-	https://github.com/ROCm/hip-tests/archive/refs/tags/rocm-${TEST_PV}.tar.gz -> hip-test-${TEST_PV}.tar.gz"
+	test? (
+		https://github.com/ROCm/hip-tests/archive/refs/tags/rocm-${TEST_PV}.tar.gz -> hip-test-${TEST_PV}.tar.gz
+	)
+"
 S="${WORKDIR}/clr-rocm-${PV}/"
 TEST_S="${WORKDIR}/hip-tests-rocm-${TEST_PV}/catch"
 
@@ -55,7 +59,7 @@ hip_test_wrapper() {
 	local CMAKE_USE_DIR="${TEST_S}"
 	local BUILD_DIR="${TEST_S}_build"
 	cd "${TEST_S}" || die
-	$@
+	"${@}"
 }
 
 src_prepare() {
@@ -74,24 +78,26 @@ src_prepare() {
 	# Set HIP and HIP Clang paths directly, don't search using heuristics
 	sed -e "s:# Search for HIP installation:set(HIP_ROOT_DIR \"${EPREFIX}/usr\"):" \
 		-e "s:#Set HIP_CLANG_PATH:set(HIP_CLANG_PATH \"$(get_llvm_prefix -d)/bin\"):" \
-	    -i "${WORKDIR}"/HIP-rocm-${PV}/cmake/FindHIP.cmake || die
+		-i "${WORKDIR}/HIP-rocm-${PV}/cmake/FindHIP.cmake" || die
 
 	cmake_src_prepare
 
 	# With Clang>17 -amdgpu-early-inline-all=true causes OOMs in dependencies
 	# https://github.com/llvm/llvm-project/issues/86332
-	if [ "$LLVM_SLOT" != "17" ]; then
+	if [ "$LLVM_SLOT" -le "17" ]; then
 		sed -e "s/-mllvm=-amdgpu-early-inline-all=true //" -i hipamd/hip-config-amd.cmake || die
-		sed -e "s/-mllvm=-amdgpu-early-inline-all=true;//" -i "${WORKDIR}"/HIP-rocm-${PV}/hip-lang-config.cmake.in
+		sed -e "s/-mllvm=-amdgpu-early-inline-all=true;//" -i "${WORKDIR}/HIP-rocm-${PV}/hip-lang-config.cmake.in"
 	fi
 
-	local PATCHES=(
-		"${FILESDIR}"/hip-test-6.0.2-hipcc-system-install.patch
-		"${FILESDIR}"/hip-test-5.7.1-remove-incompatible-flag.patch
-		"${FILESDIR}"/hip-test-6.1.0-disable-hipKerArgOptimization.patch
-		"${FILESDIR}"/hip-test-6.1.1-fix-musl.patch
-	)
-	hip_test_wrapper cmake_src_prepare
+	if use test; then
+		local PATCHES=(
+			"${FILESDIR}"/hip-test-6.0.2-hipcc-system-install.patch
+			"${FILESDIR}"/hip-test-5.7.1-remove-incompatible-flag.patch
+			"${FILESDIR}"/hip-test-6.1.0-disable-hipKerArgOptimization.patch
+			"${FILESDIR}"/hip-test-6.1.1-fix-musl.patch
+		)
+		hip_test_wrapper cmake_src_prepare
+	fi
 }
 
 src_configure() {
@@ -121,6 +127,7 @@ src_configure() {
 		-DCLR_BUILD_HIP=ON
 		-DHIPCC_BIN_DIR="${EPREFIX}/usr/bin"
 		-DOpenGL_GL_PREFERENCE="GLVND"
+		-DCMAKE_DISABLE_FIND_PACKAGE_Git="yes"
 	)
 
 	cmake_src_configure
@@ -171,12 +178,13 @@ src_install() {
 
 	# add version file that is required by some libraries
 	mkdir "${ED}"/usr/include/rocm-core || die
-	cat <<EOF > "${ED}"/usr/include/rocm-core/rocm_version.h || die
-#pragma once
-#define ROCM_VERSION_MAJOR $(ver_cut 1)
-#define ROCM_VERSION_MINOR $(ver_cut 2)
-#define ROCM_VERSION_PATCH $(ver_cut 3)
-#define ROCM_BUILD_INFO "$(ver_cut 1-3).0-9999-unknown"
-EOF
+	cat <<-EOF > "${ED}"/usr/include/rocm-core/rocm_version.h || die
+		#pragma once
+		#define ROCM_VERSION_MAJOR $(ver_cut 1)
+		#define ROCM_VERSION_MINOR $(ver_cut 2)
+		#define ROCM_VERSION_PATCH $(ver_cut 3)
+		#define ROCM_BUILD_INFO "$(ver_cut 1-3).0-9999-unknown"
+	EOF
+
 	dosym -r /usr/include/rocm-core/rocm_version.h /usr/include/rocm_version.h
 }
