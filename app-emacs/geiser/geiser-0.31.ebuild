@@ -15,7 +15,7 @@ if [[ "${PV}" == *9999* ]] ; then
 else
 	SRC_URI="https://gitlab.com/emacs-${PN}/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="BSD"
