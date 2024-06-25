@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 ROCM_SKIP_GLOBALS=1
 
 inherit cmake rocm flag-o-matic
@@ -19,7 +20,7 @@ DEPEND="=dev-util/hip-6*"
 
 IUSE_TARGETS=( gfx908 gfx90a gfx940 gfx941 gfx942 gfx1100 gfx1101 gfx1102 )
 IUSE_TARGETS=( "${IUSE_TARGETS[@]/#/amdgpu_targets_}" )
-ROCM_USEDEP_OPTFLAGS=${IUSE_TARGETS[@]/%/(-)?}
+ROCM_USEDEP_OPTFLAGS=${IUSE_TARGETS[*]/%/(-)?}
 ROCM_USEDEP=${ROCM_USEDEP_OPTFLAGS// /,}
 ROCM_REQUIRED_USE=" || ( ${IUSE_TARGETS[*]} )"
 
@@ -31,7 +32,7 @@ BDEPEND="
 	dev-build/rocm-cmake
 "
 
-IUSE="${IUSE_TARGETS[@]/#/+} test"
+IUSE="${IUSE_TARGETS[*]/#/+} test"
 
 REQUIRED_USE="${ROCM_REQUIRED_USE}"
 
@@ -51,7 +52,7 @@ src_configure() {
 		-DAMDGPU_TARGETS="$(get_amdgpu_flags)"
 		-DROCM_SYMLINK_LIBS=OFF
 		-DROCWMMA_BUILD_SAMPLES=OFF
-		-DROCWMMA_BUILD_TESTS=$(usex test ON OFF)
+		-DROCWMMA_BUILD_TESTS="$(usex test)"
 	)
 	use test && mycmakeargs+=(-DROCWMMA_USE_SYSTEM_GOOGLETEST=ON)
 	CC=hipcc CXX=hipcc cmake_src_configure
