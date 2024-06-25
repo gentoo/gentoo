@@ -134,6 +134,9 @@ src_install() {
 		fi
 	fi
 
+	# Overwrite the identifier in the prebuilt package
+	echo "${CATEGORY}/${PF}:${SLOT}" > "${kernel_dir}/dist-kernel" || die
+
 	mv "${BINPKG}"/image/{lib,usr} "${ED}"/ || die
 
 	# FIXME: requires proper mount-boot
