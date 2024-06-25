@@ -13,7 +13,7 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gnupg.asc
 inherit libtool multilib-minimal toolchain-funcs verify-sig
 
 DESCRIPTION="Contains error handling functions used by GnuPG software"
-HOMEPAGE="https://www.gnupg.org/related_software/libgpg-error"
+HOMEPAGE="https://www.gnupg.org/related_software/libgpg-error/"
 SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
 SRC_URI+=" verify-sig? ( mirror://gnupg/${PN}/${P}.tar.bz2.sig )"
 
