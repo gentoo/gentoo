@@ -9,7 +9,7 @@ SRC_URI="https://github.com/ROCm/hipother/archive/refs/tags/rocm-${PV}.tar.gz ->
 S="${WORKDIR}/hipother-rocm-${PV}"
 
 LICENSE="MIT"
-SLOT="0/$(ver_cut 1)"
+SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 
 src_install() {
