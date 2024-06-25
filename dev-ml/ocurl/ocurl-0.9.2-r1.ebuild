@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit findlib
 
@@ -14,10 +14,8 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 arm arm64 ~ppc ppc64 x86"
 IUSE="examples +ocamlopt"
 
-RDEPEND=">=net-misc/curl-7.9.8
-	dev-ml/lwt:=
-	dev-ml/camlp4:=
-	>=dev-lang/ocaml-3.12:=[ocamlopt?]"
+RDEPEND="net-misc/curl
+	dev-ml/lwt:=[ocamlopt?]"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
