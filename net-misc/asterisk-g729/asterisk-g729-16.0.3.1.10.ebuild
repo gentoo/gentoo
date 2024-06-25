@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -22,7 +22,7 @@ amd64? (
 
 LICENSE="Digium"
 SLOT="0/${AST_PV}"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64 x86"
 
 RDEPEND="=net-misc/asterisk-$(ver_cut 1)*"
 
