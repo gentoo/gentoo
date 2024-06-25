@@ -24,8 +24,10 @@ RDEPEND="
 	>=x11-libs/gtk+-2.10.0:2=
 "
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig
-	nls? ( sys-devel/gettext )"
+BDEPEND="
+	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
+"
 
 PATCHES=(
 	"${WORKDIR}"/${P}-autoconf.patch
@@ -33,7 +35,12 @@ PATCHES=(
 
 src_prepare() {
 	default
-	sed -i 's/Application;//' gpa.desktop
+
+	sed -i 's/Application;//' gpa.desktop || die
+
+	# bug #934802 (can drop on next release > 0.10.0)
+	rm m4/libassuan.m4 || die
+
 	eautoreconf
 }
 
