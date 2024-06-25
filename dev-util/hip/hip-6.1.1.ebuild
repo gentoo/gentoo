@@ -29,25 +29,42 @@ LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 
-IUSE="debug test"
+IUSE="debug +hip opencl test video_cards_amdgpu video_cards_nvidia"
 RESTRICT="!test? ( test )"
 
+REQUIRED_USE="
+	|| ( hip opencl )
+	^^ ( video_cards_amdgpu video_cards_nvidia )
+"
+
 DEPEND="
-	>=dev-util/rocminfo-5
-	$(llvm_gen_dep '
-		sys-devel/clang:${LLVM_SLOT}
-	')
-	dev-libs/rocm-comgr:${SLOT}
-	dev-libs/rocr-runtime:${SLOT}
+	video_cards_amdgpu? (
+		>=dev-util/rocminfo-5
+		$(llvm_gen_dep '
+			sys-devel/clang:${LLVM_SLOT}
+		')
+		dev-libs/rocm-comgr:${SLOT}
+		dev-libs/rocr-runtime:${SLOT}
+	)
+	video_cards_nvidia? (
+		dev-libs/hipother:${SLOT}
+	)
 	x11-base/xorg-proto
 	virtual/opengl
 "
-BDEPEND="test? ( dev-util/hipcc:${SLOT}[${LLVM_USEDEP}] )"
+BDEPEND="
+	video_cards_amdgpu? (
+		dev-util/hipcc:${SLOT}[${LLVM_USEDEP}]
+	)
+"
 RDEPEND="${DEPEND}
-	dev-util/hipcc:${SLOT}[${LLVM_USEDEP}]
-	dev-perl/URI-Encode
 	sys-devel/clang-runtime:=
-	>=dev-libs/roct-thunk-interface-5"
+	video_cards_amdgpu? (
+		dev-util/hipcc:${SLOT}[${LLVM_USEDEP}]
+		>=dev-libs/rocm-device-libs-${PV}
+		>=dev-libs/roct-thunk-interface-5
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.7.1-no_asan_doc.patch"
@@ -117,27 +134,50 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DCMAKE_PREFIX_PATH="$(get_llvm_prefix)"
-		-DCMAKE_BUILD_TYPE=${buildtype}
 		-DCMAKE_SKIP_RPATH=ON
-		-DHIP_PLATFORM=amd
+		-D__HIP_ENABLE_PCH="no"
+
+		-DCLR_BUILD_HIP="$(usex hip)"
+		-DCLR_BUILD_OCL="$(usex opencl)"
+
 		-DHIP_COMMON_DIR="${WORKDIR}/HIP-rocm-${PV}"
-		-DROCM_PATH="${EPREFIX}/usr"
-		-DUSE_PROF_API=0
-		-DFILE_REORG_BACKWARD_COMPATIBILITY=OFF
-		-DCLR_BUILD_HIP=ON
 		-DHIPCC_BIN_DIR="${EPREFIX}/usr/bin"
+		-DROCM_PATH="${EPREFIX}/usr"
+		-DUSE_PROF_API="no"
+		-DFILE_REORG_BACKWARD_COMPATIBILITY="no"
+
 		-DOpenGL_GL_PREFERENCE="GLVND"
 		-DCMAKE_DISABLE_FIND_PACKAGE_Git="yes"
 	)
+
+	if use video_cards_amdgpu; then
+		mycmakeargs+=(
+			-DHIP_PLATFORM="amd"
+		)
+	elif use video_cards_nvidia; then
+		mycmakeargs+=(
+			-DHIPNV_DIR="${EPREFIX}/usr"
+			-DHIP_PLATFORM="nvidia"
+		)
+	fi
 
 	cmake_src_configure
 
 	if use test; then
 		local mycmakeargs=(
-			-DROCM_PATH="${BUILD_DIR}"/hipamd
-			-DHIP_PLATFORM=amd
 			-DCMAKE_MODULE_PATH="${TEST_S}/external/Catch2/cmake/Catch2"
 		)
+		if use video_cards_amdgpu; then
+			mycmakeargs+=(
+				-DROCM_PATH="${BUILD_DIR}/hipamd"
+				-DHIP_PLATFORM="amd"
+			)
+		elif use video_cards_nvidia; then
+			mycmakeargs+=(
+				-DROCM_PATH="${BUILD_DIR}/hipother"
+				-DHIP_PLATFORM="nvidia"
+			)
+		fi
 		HIP_PATH="${EPREFIX}/usr" hip_test_wrapper cmake_src_configure
 	fi
 }
@@ -187,4 +227,12 @@ src_install() {
 	EOF
 
 	dosym -r /usr/include/rocm-core/rocm_version.h /usr/include/rocm_version.h
+
+	if use video_cards_nvidia; then
+		newenvd - 99hipconfig <<-EOF
+			HIP_PLATFORM="nvidia"
+			HIP_RUNTIME="cuda"
+			CUDA_PATH="${EPREFIX}/opt/cuda"
+		EOF
+	fi
 }
