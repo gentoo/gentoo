@@ -13,7 +13,7 @@ SRC_URI="https://github.com/edicl/${PN}/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~sparc x86"
+KEYWORDS="amd64 ~ppc ~riscv ~sparc x86"
 
 DEPEND="virtual/commonlisp
 	dev-lisp/flexi-streams"
