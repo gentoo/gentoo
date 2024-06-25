@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,6 +18,6 @@ DESCRIPTION="Generates a HTML report of your SimpleCov ruby code coverage result
 HOMEPAGE="https://github.com/simplecov-ruby/simplecov-html"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~riscv x86"
 SLOT="$(ver_cut 1-2)"
 IUSE="doc"
