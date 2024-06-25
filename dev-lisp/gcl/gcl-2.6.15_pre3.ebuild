@@ -27,7 +27,11 @@ DEPEND="${RDEPEND}
 	app-text/texi2html
 	>=dev-build/autoconf-2.52"
 
-PATCHES=( "${WORKDIR}"/${PF}-spelling.patch )
+PATCHES=(
+	"${WORKDIR}"/${PF}-spelling.patch
+	# bug 893938
+	"${FILESDIR}"/${PN}-2.6.15-riscv.patch
+)
 S="${WORKDIR}"/${PN}-Version_2_6_15pre3/${PN}
 
 src_configure() {

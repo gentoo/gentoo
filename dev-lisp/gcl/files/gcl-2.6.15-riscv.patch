@@ -1,0 +1,67 @@
+From bc3324432b859477feed47e7db0e97dd33b61d1f Mon Sep 17 00:00:00 2001
+From: Camm Maguire <camm@transcendence.maguirefamily.org>
+Date: Fri, 23 Feb 2024 07:47:26 -0500
+Subject: update relocs for riscv64
+
+---
+ gcl/h/elf64_riscv64_reloc.h | 44 +++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 43 insertions(+), 1 deletion(-)
+
+diff --git a/gcl/h/elf64_riscv64_reloc.h b/gcl/h/elf64_riscv64_reloc.h
+index c2f8232..08e94ce 100644
+--- a/h/elf64_riscv64_reloc.h
++++ b/h/elf64_riscv64_reloc.h
+@@ -23,8 +23,50 @@
+     case R_RISCV_JAL:
+       break;
+     case R_RISCV_64:
+-      store_val(where,MASK(64),(s+a));
++      store_val(where,~0L,(s+a));
+       break;
+     case R_RISCV_32:
+       store_val(where,MASK(32),(s+a));
+       break;
++    case R_RISCV_32_PCREL:
++      store_val(where,MASK(32),(s+a)-p);
++      break;
++    case R_RISCV_ADD8:
++      add_val(where,MASK(8),(s+a));
++      break;
++    case R_RISCV_ADD16:
++      add_val(where,MASK(16),(s+a));
++      break;
++    case R_RISCV_ADD32:
++      add_val(where,MASK(32),(s+a));
++      break;
++    case R_RISCV_ADD64:
++      add_val(where,~0L,(s+a));
++      break;
++    case R_RISCV_SUB6:
++      add_val(where,MASK(6),-(s+a));
++      break;
++    case R_RISCV_SUB8:
++      add_val(where,MASK(8),-(s+a));
++      break;
++    case R_RISCV_SUB16:
++      add_val(where,MASK(16),-(s+a));
++      break;
++    case R_RISCV_SUB32:
++      add_val(where,MASK(32),-(s+a));
++      break;
++    case R_RISCV_SUB64:
++      add_val(where,~0L,-(s+a));
++      break;
++    case R_RISCV_SET6:
++      store_val(where,MASK(6),(s+a));
++      break;
++    case R_RISCV_SET8:
++      store_val(where,MASK(8),(s+a));
++      break;
++    case R_RISCV_SET16:
++      store_val(where,MASK(16),(s+a));
++      break;
++    case R_RISCV_SET32:
++      store_val(where,MASK(32),(s+a));
++      break;
+-- 
+cgit v1.1
