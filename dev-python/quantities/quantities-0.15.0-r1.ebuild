@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,8 +24,11 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 
+# >=dev-python/numpy-2 is not currently supported,
+# see https://github.com/python-quantities/python-quantities/pull/232
 RDEPEND="
 	>=dev-python/numpy-1.20[$PYTHON_USEDEP]
+	<dev-python/numpy-2[$PYTHON_USEDEP]
 "
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
