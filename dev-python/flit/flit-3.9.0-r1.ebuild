@@ -18,8 +18,6 @@ RDEPEND="
 	dev-python/docutils[${PYTHON_USEDEP}]
 	>=dev-python/flit-core-${PV}[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/requests_download[${PYTHON_USEDEP}]
-	dev-python/tomli[${PYTHON_USEDEP}]
 	dev-python/tomli-w[${PYTHON_USEDEP}]
 "
 BDEPEND="${RDEPEND}
