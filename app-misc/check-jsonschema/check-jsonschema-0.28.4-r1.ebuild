@@ -24,7 +24,9 @@ RDEPEND="
 	dev-python/regress[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/tomli[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/tomli[${PYTHON_USEDEP}]
+	' 3.10)
 "
 BDEPEND="
 	test? (
