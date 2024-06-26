@@ -1,6 +1,9 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WARNING: UnmatchedProfilePackageUnmask has a bug with false positives here
+# https://github.com/pkgcore/pkgcheck/issues/685
+
 # matoro <matoro_gentoo@matoro.tk> (2024-06-10)
 # Unmask for ppc64le, #892183
 -dev-python/sympy
