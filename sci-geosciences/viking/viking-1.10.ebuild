@@ -7,14 +7,15 @@ inherit autotools xdg-utils
 
 DESCRIPTION="GPS data editor and analyzer"
 HOMEPAGE="https://github.com/viking-gps/viking/"
-IUSE="doc +exif libexif geoclue gps +magic nls oauth"
 SRC_URI="
 	https://github.com/viking-gps/${PN}/archive/${P}.tar.gz
 	doc? ( https://github.com/viking-gps/${PN}/releases/download/${P}/${PN}.pdf )"
+S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="doc +exif libexif geoclue gps +magic nls oauth"
 
 COMMONDEPEND="
 	app-arch/bzip2
@@ -47,7 +48,7 @@ DEPEND="${COMMONDEPEND}
 	sys-devel/gettext
 "
 
-S="${WORKDIR}/${PN}-${P}"
+PATCHES=( "${FILESDIR}/${P}-terraserver.patch" )
 
 src_prepare() {
 	default
