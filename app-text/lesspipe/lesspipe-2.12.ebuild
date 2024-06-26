@@ -50,6 +50,7 @@ src_install() {
 	#   . /usr/share/bash-completion/less_completion
 	#   Or consider installing the file less_completion in /etc/bashcompletion.d
 	rm "${ED}"/usr/share/bash-completion/less_completion || die
+	rmdir "${ED}"/usr/share/bash-completion || die
 	insinto /etc/bash_completion.d
 	doins less_completion
 }
