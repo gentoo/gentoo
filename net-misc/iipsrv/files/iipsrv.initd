@@ -1,0 +1,32 @@
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="IIPImage server"
+
+command="/usr/sbin/iipsrv"
+command_args="--bind ${HOST}:${PORT}"
+command_user="${USER}:${GROUP}"
+command_background=true
+
+extra_started_commands="reload"
+description_reload="Empty internal caches"
+
+pidfile="/run/${RC_SVCNAME}.pid"
+
+
+start_pre()
+{
+	if [ ${LOGFILE} != "syslog" ]; then
+		# Make sure logfile is writable
+		checkpath --quiet --file --owner ${command_user} ${LOGFILE}
+	fi
+}
+
+
+reload()
+{
+	ebegin "Reloading ${RC_SVCNAME}"
+	start-stop-daemon --signal HUP --pidfile "${pidfile}"
+	eend $?
+}
