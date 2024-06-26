@@ -35,7 +35,6 @@ RDEPEND="
 		>=dev-python/rapidfuzz-3.7.0[${PYTHON_USEDEP}]
 		>=dev-python/rich-13.7.1[${PYTHON_USEDEP}]
 		>=dev-python/scipy-1.13.0[${PYTHON_USEDEP}]
-		>=dev-python/tomli-2.0.1[${PYTHON_USEDEP}]
 	')
 "
 DEPEND="${RDEPEND}"
