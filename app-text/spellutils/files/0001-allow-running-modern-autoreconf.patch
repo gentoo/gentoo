@@ -1,0 +1,52 @@
+From afd4a8c7b29f812621caaa44c5dff3549cbde2ee Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Wed, 26 Jun 2024 10:44:56 -0400
+Subject: [PATCH] allow running modern autoreconf
+
+The release tarball uses autoconf 2.13 and the configure.in uses things
+that no longer work.
+---
+ Makefile.am  | 2 +-
+ configure.in | 8 +++++---
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 3eecd1a..e21e0c3 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -2,7 +2,7 @@
+ 
+ AUTOMAKE_OPTIONS = foreign
+ 
+-SUBDIRS = intl po
++SUBDIRS = po
+ 
+ bin_PROGRAMS = pospell newsbody
+ 
+diff --git a/configure.in b/configure.in
+index 9730ada..26ffd1a 100644
+--- a/configure.in
++++ b/configure.in
+@@ -1,6 +1,7 @@
+ dnl Process this file with autoconf to produce a configure script.
+-AC_INIT(pospell.c)
+-AM_INIT_AUTOMAKE(spellutils, 0.7)
++AC_INIT([spellutils],[0.7])
++AC_CONFIG_SRCDIR([pospell.c])
++AM_INIT_AUTOMAKE
+ AM_CONFIG_HEADER(config.h)
+ 
+ dnl Set of available languages.
+@@ -22,7 +23,8 @@ AC_TYPE_SIZE_T
+ AC_TYPE_PID_T
+ 
+ dnl internationalization macros
+-AM_GNU_GETTEXT
++AM_GNU_GETTEXT([external])
++AM_GNU_GETTEXT_VERSION([@GETTEXT_VERSION@])
+ if test "x$prefix" != xNONE; then
+ 	LOCALEDIR=$prefix/share/locale
+ else
+-- 
+2.44.2
+
