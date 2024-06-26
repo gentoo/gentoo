@@ -26,6 +26,6 @@
 		</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">OpenImageDenoise/oidn</remote-id>
+		<remote-id type="github">RenderKit/oidn</remote-id>
 	</upstream>
 </pkgmetadata>
