@@ -18,6 +18,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="X qrcode wayland"
+REQUIRED_USE="|| ( X wayland )"
 
 DEPEND="
 	>=dev-libs/glib-2.60.0
