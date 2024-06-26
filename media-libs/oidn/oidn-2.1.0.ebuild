@@ -43,6 +43,16 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.1.0-amdgpu-targets.patch"
 )
 
+src_prepare() {
+	if use hip; then
+		# https://bugs.gentoo.org/930391
+		sed "/-Wno-unused-result/s:): --rocm-path=${EPREFIX}/usr/lib):" \
+			-i devices/hip/CMakeLists.txt || die
+	fi
+
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DOIDN_DEVICE_CUDA=$(usex cuda)
