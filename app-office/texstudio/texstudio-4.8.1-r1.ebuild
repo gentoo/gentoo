@@ -15,11 +15,12 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="+adwaita test video"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	app-text/hunspell:=
 	app-text/poppler:=[qt6]
-	dev-libs/quazip:=[qt6]
+	dev-libs/quazip:=[qt6(+)]
 	dev-qt/qt5compat[icu]
 	dev-qt/qtdeclarative:6
 	dev-qt/qtbase[icu]
