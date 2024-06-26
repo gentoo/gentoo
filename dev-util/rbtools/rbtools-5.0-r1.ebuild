@@ -16,7 +16,7 @@ S="${WORKDIR}/rbtools-release-${PV}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="test"
 
 RDEPEND="
 	>=dev-python/certifi-2023.5.7[${PYTHON_USEDEP}]
@@ -40,7 +40,7 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}/${P}-importlib-resources.patch" )
+PATCHES=( "${FILESDIR}/${P}-importlib-resources.patch" "${FILESDIR}/${P}-scmtool-crash.patch" )
 
 DOCS=( AUTHORS NEWS README.md )
 
