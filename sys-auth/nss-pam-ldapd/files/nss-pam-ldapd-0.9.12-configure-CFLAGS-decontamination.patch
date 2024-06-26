@@ -1,0 +1,55 @@
+diff --git a/configure.ac b/configure.ac
+index 12bf35c..beb13bf 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -101,39 +101,25 @@ then
+ fi
+ 
+ # check for debugging options
++DEBUG_CFLAGS=""
+ AC_ARG_ENABLE(debug,
+               AS_HELP_STRING([--enable-debug],
+                              [enable extensive debugging and logging]),
+-              [if test "x$enableval" != "xno" ; then CFLAGS="-g -DDEBUG $CFLAGS" ; fi])
++              [AS_IF([test "x$enableval" != "xno"],
++		    [AX_APPEND_COMPILE_FLAGS([-g -DDEBUG],[DEBUG_CFLAGS])]
++              )])
++AC_SUBST([DEBUG_CFLAGS])
+ 
+ # check for extra compiler warnings
+-DESIRED_CFLAGS=""
++EXTRA_CFLAGS=""
+ AC_ARG_ENABLE(warnings,
+               AS_HELP_STRING([--enable-warnings],
+                              [enable extra compiler warnings (gcc)]),
+-              [if test "x$enableval" != "no"
+-               then
+-                 CFLAGS="$CFLAGS -pedantic -Wall -Wshadow -Wpointer-arith -Wcast-align -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs -Waggregate-return -Wmissing-declarations -Wunused -Wformat=2 -Wswitch-default -Wswitch-enum -Wfloat-equal -Wbad-function-cast -Wredundant-decls"
+-                 DESIRED_CFLAGS="$DESIRED_CFLAGS -Wextra -Wdeclaration-after-statement -Werror-implicit-function-declaration -Werror=implicit"
+-               fi])
+-test_gcc_flag() {
+-  AC_LANG_CONFTEST([AC_LANG_PROGRAM()])
+-  $CC -c conftest.c $CFLAGS $@ > /dev/null 2> /dev/null
+-  ret=$?
+-  rm -f conftest.o
+-  return $ret
+-}
+-for flag in $DESIRED_CFLAGS
+-do
+-  AC_MSG_CHECKING([whether $CC accepts $flag])
+-  if test_gcc_flag $flag
+-  then
+-    CFLAGS="$CFLAGS $flag"
+-    AC_MSG_RESULT([yes])
+-  else
+-    AC_MSG_RESULT([no])
+-  fi
+-done
++              [AS_IF([test "x$enableval" != "xno"],[
++                 AX_APPEND_COMPILE_FLAGS([-pedantic -Wall -Wshadow -Wpointer-arith -Wcast-align -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs -Waggregate-return -Wmissing-declarations -Wunused -Wformat=2 -Wswitch-default -Wswitch-enum -Wfloat-equal -Wbad-function-cast -Wredundant-decls],[EXTRA_CFLAGS],[-Werror])
++                 AX_APPEND_COMPILE_FLAGS([-Wextra -Wdeclaration-after-statement -Werror-implicit-function-declaration -Werror=implicit],[EXTRA_CFLAGS],[-Werror])
++               ])])
++AC_SUBST([EXTRA_CFLAGS])
+ 
+ # check for Position Independent Code compiler option
+ PIC_CFLAGS=""
