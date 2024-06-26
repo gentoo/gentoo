@@ -1,0 +1,180 @@
+diff '--color=auto' -ur a/configure b/configure
+--- a/configure	2024-06-26 07:53:51.700710687 +0000
++++ b/configure	2024-06-26 07:53:57.009682258 +0000
+@@ -916,7 +916,7 @@
+ #line 917 "configure"
+ #include "confdefs.h"
+ 
+-main(){return(0);}
++int main(void){return(0);}
+ EOF
+ if { (eval echo configure:922: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+   ac_cv_prog_cc_works=yes
+@@ -1107,7 +1107,7 @@
+ #line 1108 "configure"
+ #include "confdefs.h"
+ 
+-int main() {
++int main(void) {
+ 
+ /* Ultrix mips cc rejects this.  */
+ typedef int charset[2]; const charset x;
+@@ -1326,6 +1326,7 @@
+ #line 1327 "configure"
+ #include "confdefs.h"
+ #include <ctype.h>
++#include <stdlib.h>
+ #define ISLOWER(c) ('a' <= (c) && (c) <= 'z')
+ #define TOUPPER(c) (ISLOWER(c) ? 'A' + ((c) - 'a') : (c))
+ #define XOR(e, f) (((e) && !(f)) || (!(e) && (f)))
+@@ -1465,8 +1466,8 @@
+ #line 1466 "configure"
+ #include "confdefs.h"
+ 
+-int main() {
+-} $ac_kw foo() {
++int main(void) {
++} $ac_kw int foo(void) {
+ ; return 0; }
+ EOF
+ if { (eval echo configure:1473: \"$ac_compile\") 1>&5; (eval $ac_compile) 2>&5; }; then
+@@ -1538,7 +1539,7 @@
+ #line 1539 "configure"
+ #include "confdefs.h"
+ #include <alloca.h>
+-int main() {
++int main(void) {
+ char *p = alloca(2 * sizeof(int));
+ ; return 0; }
+ EOF
+@@ -1592,7 +1593,7 @@
+ # endif
+ #endif
+ 
+-int main() {
++int main(void) {
+ char *p = (char *) alloca(1);
+ ; return 0; }
+ EOF
+@@ -1673,7 +1674,7 @@
+     builtin and then its argument prototype would still apply.  */
+ char $ac_func();
+ 
+-int main() {
++int main(void) {
+ 
+ /* The GNU C library defines this for functions which it implements
+     to always fail with ENOSYS.  Some functions are actually named
+@@ -1819,7 +1820,7 @@
+     builtin and then its argument prototype would still apply.  */
+ char $ac_func();
+ 
+-int main() {
++int main(void) {
+ 
+ /* The GNU C library defines this for functions which it implements
+     to always fail with ENOSYS.  Some functions are actually named
+@@ -1941,7 +1942,7 @@
+ #endif
+ 
+ int
+-main()
++main(void)
+ {
+ 	char *data, *data2, *data3;
+ 	int i, pagesize;
+@@ -2088,7 +2089,7 @@
+     builtin and then its argument prototype would still apply.  */
+ char $ac_func();
+ 
+-int main() {
++int main(void) {
+ 
+ /* The GNU C library defines this for functions which it implements
+     to always fail with ENOSYS.  Some functions are actually named
+@@ -2145,7 +2146,7 @@
+     builtin and then its argument prototype would still apply.  */
+ char $ac_func();
+ 
+-int main() {
++int main(void) {
+ 
+ /* The GNU C library defines this for functions which it implements
+     to always fail with ENOSYS.  Some functions are actually named
+@@ -2200,7 +2201,7 @@
+ #line 2201 "configure"
+ #include "confdefs.h"
+ #include <locale.h>
+-int main() {
++int main(void) {
+ return LC_MESSAGES
+ ; return 0; }
+ EOF
+@@ -2299,7 +2300,7 @@
+ #line 2300 "configure"
+ #include "confdefs.h"
+ #include <libintl.h>
+-int main() {
++int main(void) {
+ return (int) gettext ("")
+ ; return 0; }
+ EOF
+@@ -2334,7 +2335,7 @@
+     builtin and then its argument prototype would still apply.  */
+ char bindtextdomain();
+ 
+-int main() {
++int main(void) {
+ bindtextdomain()
+ ; return 0; }
+ EOF
+@@ -2374,7 +2375,7 @@
+     builtin and then its argument prototype would still apply.  */
+ char gettext();
+ 
+-int main() {
++int main(void) {
+ gettext()
+ ; return 0; }
+ EOF
+@@ -2629,7 +2630,7 @@
+ #line 2630 "configure"
+ #include "confdefs.h"
+ 
+-int main() {
++int main(void) {
+ main()
+ ; return 0; }
+ EOF
+diff '--color=auto' -ru spellutils-0.7-old/configure spellutils-0.7/configure
+--- spellutils-0.7-old/configure	2024-06-26 08:06:39.831597506 +0000
++++ spellutils-0.7/configure	2024-06-26 08:07:02.114478185 +0000
+@@ -1894,11 +1894,9 @@
+ #include <fcntl.h>
+ #include <sys/mman.h>
+ 
+-/* This mess was copied from the GNU getpagesize.h.  */
+-#ifndef HAVE_GETPAGESIZE
+-# ifdef HAVE_UNISTD_H
+-#  include <unistd.h>
+-# endif
++#include <unistd.h>
++#include <stdlib.h>
++#include <sys/stat.h>
+ 
+ /* Assume that all systems that can run configure have sys/param.h.  */
+ # ifndef HAVE_SYS_PARAM_H
+@@ -1934,12 +1931,10 @@
+ #  endif /* no HAVE_SYS_PARAM_H */
+ # endif /* no _SC_PAGESIZE */
+ 
+-#endif /* no HAVE_GETPAGESIZE */
+-
+ #ifdef __cplusplus
+ extern "C" { void *malloc(unsigned); }
+ #else
+-char *malloc();
++//char *malloc();
+ #endif
+ 
+ int
