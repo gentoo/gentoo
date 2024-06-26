@@ -43,7 +43,7 @@ S="${WORKDIR}"
 
 LICENSE="intel-ucode"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64 x86"
 IUSE="dist-kernel hostonly +initramfs +split-ucode vanilla"
 REQUIRED_USE="!dist-kernel? ( || ( initramfs split-ucode ) )"
 RESTRICT="binchecks strip"
