@@ -26,6 +26,10 @@
       Install <pkg>net-analyzer/fping</pkg> required for fancy ping
       monitoring. Disabling the flag does not remove any plugins.
     </flag>
+    <!-- leave this global flag defined here to avoid a pkgcheck warning -->
+    <flag name="ipv6">
+      Enable ipv6 checks.
+    </flag>
     <flag name="ssh">
       Install <pkg>net-misc/openssh</pkg> required for monitoring SSH
       servers. Disabling the flag does not remove any plugins.
