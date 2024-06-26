@@ -50,6 +50,12 @@ src_prepare() {
 		addpredict "/proc/self/task/"
 	fi
 
+	if use hip; then
+		# https://bugs.gentoo.org/930391
+		sed "/-Wno-unused-result/s:): --rocm-path=${EPREFIX}/usr/lib):" \
+			-i devices/hip/CMakeLists.txt || die
+	fi
+
 	sed -e "/^install.*llvm_macros.cmake.*cmake/d" -i CMakeLists.txt || die
 
 	cmake_src_prepare
