@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -40,7 +40,7 @@ RDEPEND="
 		dev-qt/qtopengl:5
 	)
 	pulseaudio? (
-		media-sound/pulseaudio
+		media-libs/libpulse
 	)
 	sdl? ( >=media-libs/libsdl2-2.0.5 )
 	sys-libs/zlib"
@@ -70,4 +70,5 @@ src_configure() {
 src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
+	find "${ED}" -name '*.a' -delete || die
 }
