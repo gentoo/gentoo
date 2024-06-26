@@ -149,6 +149,8 @@ PATCHES=(
 
 	# Make submodule output quiet
 	"${FILESDIR}"/git-2.21.0-quiet-submodules-testcase.patch
+
+	"${FILESDIR}"/git-2.45.2-support-GIT_IGNORE_INSECURE_OWNER-environment.patch
 )
 
 pkg_setup() {
@@ -249,14 +251,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	if ! use safe-directory ; then
-		# This patch neuters the "safe directory" detection.
-		# bugs #838271, #838223
-		PATCHES+=(
-			"${FILESDIR}"/git-2.37.2-unsafe-directory.patch
-		)
-	fi
-
 	default
 
 	if use prefix ; then
@@ -630,6 +624,15 @@ src_install() {
 		fi
 	}
 	plocale_for_each_disabled_locale rm_loc
+
+	if ! use safe-directory ; then
+		# Globally setting GIT_IGNORE_INSECURE_OWNER=true neuters
+		# the "safe directory" detection.
+		# bugs #838271, #838223
+		newenvd - 50git-ignore-insecure-owner <<-EOF
+		GIT_IGNORE_INSECURE_OWNER=true
+EOF
+	fi
 }
 
 pkg_postinst() {
