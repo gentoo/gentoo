@@ -21,6 +21,11 @@ fi
 LICENSE="BSD"
 SLOT="0"
 
+DEPEND="
+	x11-libs/pixman
+"
+RDEPEND="${DEPEND}"
+
 # Disable tests since as per upstream, tests require a theme to be installed
 # See also https://github.com/hyprwm/hyprcursor/commit/94361fd8a75178b92c4bb24dcd8c7fac8423acf3
 RESTRICT="test"
