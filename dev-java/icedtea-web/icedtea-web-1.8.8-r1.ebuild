@@ -4,14 +4,14 @@
 EAPI=8
 
 README_GENTOO_SUFFIX="-r3"
-CRATES="dunce-0.1.1"
+CRATES="dunce@0.1.1"
 
 inherit autotools bash-completion-r1 cargo java-pkg-2 readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="FOSS Java browser plugin and Web Start implementation"
 HOMEPAGE="https://github.com/AdoptOpenJDK/IcedTea-Web"
 SRC_URI="https://github.com/AdoptOpenJDK/${PN}/archive/${P}.tar.gz
-	$(cargo_crate_uris ${CRATES})"
+	${CARGO_CRATE_URIS}"
 LICENSE="GPL-2 GPL-2-with-linking-exception LGPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm64 ppc64 x86"
