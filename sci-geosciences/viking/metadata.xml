@@ -21,5 +21,6 @@
   </use>
   <upstream>
     <remote-id type="sourceforge">viking</remote-id>
+    <remote-id type="github">viking-gps/viking</remote-id>
   </upstream>
 </pkgmetadata>
