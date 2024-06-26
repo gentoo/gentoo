@@ -1,0 +1,13 @@
+Unable to replicate error myself, but fix for https://bugs.gentoo.org/792204
+from https://github.com/projectM-visualizer/projectm/issues/449
+diff '--color=auto' -ru a/src/projectM-qt/qprojectmwidget.hpp b/src/projectM-qt/qprojectmwidget.hpp
+--- a/src/projectM-qt/qprojectmwidget.hpp	2024-06-26 10:48:30.825008203 -0000
++++ b/src/projectM-qt/qprojectmwidget.hpp	2024-06-26 10:49:03.265800570 -0000
+@@ -23,6 +23,7 @@
+ #define QPROJECTM_WIDGET_HPP
+ 
+ #include <iostream>
++#include <GL/gl.h>
+ #include "qprojectm.hpp"
+ #include <QGLWidget>
+ #include <QMutex>
