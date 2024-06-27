@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+# Copyright 2024 Gentoo Authors
+# This script is installed by sys-firmware/intel-microcode, it is executed by
+# systemd's kernel-install, NOT by the traditional installkernel. I.e. this
+# plugin is run when the systemd USE flag is enabled or
+# SYSTEMD_KERNEL_INSTALL=1 is set in the environment.
+
+COMMAND="${1}"
+
+if [[ ${COMMAND} != add ]]; then
+	exit 0
+fi
+
+if [[ ${KERNEL_INSTALL_INITRD_GENERATOR} == dracut ]]; then
+	# Dracut bundles microcode in its initramfs images
+	[[ ${KERNEL_INSTALL_VERBOSE} == 1 ]] && echo \
+		"initrd_generator=${KERNEL_INSTALL_INITRD_GENERATOR} bundles CPU microcode, nothing to do here."
+	exit 0
+fi
+
+# do nothing if somehow iucode_tool is not installed
+if ! command -v iucode_tool >/dev/null; then
+	[[ ${KERNEL_INSTALL_VERBOSE} == 1 ]] && echo \
+		"iucode_tool command not available"
+	exit 1
+fi
+
+# use same opts as intel-microcode.ebuild
+opts=(
+	--write-earlyfw="${KERNEL_INSTALL_STAGING_AREA}/microcode-intel"
+	--overwrite
+	--strict-checks
+	--no-ignore-broken
+	--no-downgrade
+)
+
+if [[ ${KERNEL_INSTALL_VERBOSE} == 1 ]]; then
+	echo "Generating Intel CPU Microcode early initramfs image..."
+	opts+=(
+		--list-all
+		--list
+	)
+fi
+
+iucode_tool /lib/firmware/intel-ucode "${opts[@]}" ||
+	{ echo "iucode_tool failed" && exit 1; }
