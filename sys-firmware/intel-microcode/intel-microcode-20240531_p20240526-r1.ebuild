@@ -152,6 +152,16 @@ src_install() {
 		insinto /usr/lib/dracut/dracut.conf.d
 		newins - 15-${PN}.conf <<<"early_microcode=$(usex initramfs)"
 	)
+	if use initramfs; then
+		# Install installkernel/kernel-install hooks for non-dracut initramfs
+		# generators that don't bundled the microcode
+		(
+			exeinto /usr/lib/kernel/preinst.d
+			doexe "${FILESDIR}/35-intel-microcode.install"
+			exeinto /usr/lib/kernel/install.d
+			doexe "${FILESDIR}/35-intel-microcode-systemd.install"
+		)
+	fi
 
 	# The earlyfw cpio needs to be in /boot because it must be loaded before
 	# rootfs is mounted.
