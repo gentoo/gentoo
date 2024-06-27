@@ -1,0 +1,48 @@
+diff --git a/mpfi-1.5.4.orig/src/div_ext.c b/mpfi-1.5.4/src/div_ext.c
+index 30cd3db..52b37cd 100644
+--- a/src/div_ext.c
++++ b/src/div_ext.c
+@@ -59,17 +59,17 @@ mpfi_div_ext (mpfi_ptr res1, mpfi_ptr res2, mpfi_srcptr op1, mpfi_srcptr op2)
+       mpfr_init2 (tmp1, mpfi_get_prec(res1));
+       mpfr_init2 (tmp2, mpfi_get_prec(res2));
+       if ( mpfr_number_p (&(op2->left)) ) {
+-        tmp = mpfr_div (&(tmp2), &(op1->right), &(op2->left), MPFI_RNDD);
++        tmp = mpfr_div (&(tmp2[0]), &(op1->right), &(op2->left), MPFI_RNDD);
+       }
+       else { /* denominator has infinite left endpoint */
+-        mpfr_set_zero (&(tmp2), 1);
++        mpfr_set_zero (&(tmp2[0]), 1);
+       }
+ 
+       if ( mpfr_number_p (&(op2->right)) ) {
+-        tmp = mpfr_div ( &(tmp1), &(op1->right), &(op2->right), MPFI_RNDU);
++        tmp = mpfr_div ( &(tmp1[0]), &(op1->right), &(op2->right), MPFI_RNDU);
+       }
+       else { /* denominator has infinite right endpoint */
+-        mpfr_set_zero( &(tmp1), -1);
++        mpfr_set_zero( &(tmp1[0]), -1);
+       }
+ 
+       mpfr_set_inf (&(res1->left), -1);
+@@ -86,17 +86,17 @@ mpfi_div_ext (mpfi_ptr res1, mpfi_ptr res2, mpfi_srcptr op1, mpfi_srcptr op2)
+       mpfr_init2 (tmp1, mpfi_get_prec(res1));
+       mpfr_init2 (tmp2, mpfi_get_prec(res2));
+       if ( mpfr_number_p (&(op2->left)) ) {
+-        tmp = mpfr_div (&(tmp1), &(op1->left), &(op2->left), MPFI_RNDU);
++        tmp = mpfr_div (&(tmp1[0]), &(op1->left), &(op2->left), MPFI_RNDU);
+       }
+       else { /* denominator has infinite left endpoint */
+-        mpfr_set_zero (&(tmp1), -1);
++        mpfr_set_zero (&(tmp1[0]), -1);
+       }
+ 
+       if ( mpfr_number_p (&(op2->right)) ) {
+-        tmp = mpfr_div ( &(tmp2), &(op1->left), &(op2->right), MPFI_RNDD);
++        tmp = mpfr_div ( &(tmp2[0]), &(op1->left), &(op2->right), MPFI_RNDD);
+       }
+       else { /* denominator has infinite right endpoint */
+-        mpfr_set_zero( &(tmp2), 1);
++        mpfr_set_zero( &(tmp2[0]), 1);
+       }
+       mpfr_set_inf (&(res1->left), -1);
+       mpfr_set (&(res1->right), tmp1, MPFI_RNDU);

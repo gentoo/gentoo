@@ -20,6 +20,8 @@ DEPEND="
 	dev-libs/mpfr:0="
 RDEPEND="${DEPEND}"
 
+PATCHES=("${FILESDIR}/${P}-c99-incompatible-pointers.patch")
+
 src_prepare() {
 	default
 	eautoreconf
