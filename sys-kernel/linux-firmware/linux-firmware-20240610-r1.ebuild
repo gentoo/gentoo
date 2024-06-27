@@ -102,7 +102,6 @@ src_unpack() {
 }
 
 src_prepare() {
-
 	default
 
 	find . -type f -not -perm 0644 -print0 \
@@ -110,27 +109,12 @@ src_prepare() {
 		|| die
 
 	chmod +x copy-firmware.sh || die
+	cp "${FILESDIR}/${PN}-make-amd-ucode-img.bash" "${T}/make-amd-ucode-img" || die
+	chmod +x "${T}/make-amd-ucode-img" || die
 
 	if use initramfs && ! use dist-kernel; then
 		if [[ -d "${S}/amd-ucode" ]]; then
-			local UCODETMP="${T}/ucode_tmp"
-			local UCODEDIR="${UCODETMP}/kernel/x86/microcode"
-			mkdir -p "${UCODEDIR}" || die
-			echo 1 > "${UCODETMP}/early_cpio"
-
-			local amd_ucode_file="${UCODEDIR}/AuthenticAMD.bin"
-			cat "${S}"/amd-ucode/*.bin > "${amd_ucode_file}" || die "Failed to concat amd cpu ucode"
-
-			if [[ ! -s "${amd_ucode_file}" ]]; then
-				die "Sanity check failed: '${amd_ucode_file}' is empty!"
-			fi
-
-			pushd "${UCODETMP}" &>/dev/null || die
-			find . -print0 | cpio --quiet --null -o -H newc -R 0:0 > "${S}"/amd-uc.img
-			popd &>/dev/null || die
-			if [[ ! -s "${S}/amd-uc.img" ]]; then
-				die "Failed to create '${S}/amd-uc.img'!"
-			fi
+			"${T}/make-amd-ucode-img" "${S}" "${S}/amd-ucode" || die
 		else
 			# If this will ever happen something has changed which
 			# must be reviewed
@@ -357,6 +341,17 @@ src_install() {
 		insinto /usr/lib/dracut/dracut.conf.d
 		newins - 10-${PN}.conf <<<"early_microcode=$(usex initramfs)"
 	)
+	if use initramfs; then
+		# Install installkernel/kernel-install hooks for non-dracut initramfs
+		# generators that don't bundled the microcode
+		dobin "${T}/make-amd-ucode-img"
+		(
+			exeinto /usr/lib/kernel/preinst.d
+			doexe "${FILESDIR}/35-amd-microcode.install"
+			exeinto /usr/lib/kernel/install.d
+			doexe "${FILESDIR}/35-amd-microcode-systemd.install"
+		)
+	fi
 
 	if use initramfs && ! use dist-kernel; then
 		insinto /boot
