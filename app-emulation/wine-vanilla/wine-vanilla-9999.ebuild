@@ -8,7 +8,7 @@ inherit autotools flag-o-matic multilib multilib-build optfeature
 inherit prefix toolchain-funcs wrapper
 
 WINE_GECKO=2.47.4
-WINE_MONO=9.1.0
+WINE_MONO=9.2.0
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
