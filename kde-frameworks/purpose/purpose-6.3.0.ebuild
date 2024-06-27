@@ -12,7 +12,7 @@ inherit ecm frameworks.kde.org optfeature xdg-utils
 DESCRIPTION="Library for providing abstractions to get the developer's purposes fulfilled"
 
 LICENSE="LGPL-2.1+"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="bluetooth kaccounts"
 
 # requires running environment
