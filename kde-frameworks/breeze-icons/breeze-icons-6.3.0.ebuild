@@ -10,7 +10,7 @@ inherit cmake flag-o-matic frameworks.kde.org python-any-r1 xdg
 DESCRIPTION="Breeze SVG icon theme"
 
 LICENSE="LGPL-3"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="test"
 
 RESTRICT="!test? ( test )"
