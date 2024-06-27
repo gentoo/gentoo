@@ -36,6 +36,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-configure.patch
+	"${FILESDIR}"/${PN}-clang.patch
 	"${FILESDIR}"/${PN}-freetype.patch
 	"${FILESDIR}"/${PN}-ftconfig.patch
 	"${FILESDIR}"/${PN}-ispell.patch

@@ -1,0 +1,21 @@
+https://git.savannah.nongnu.org/cgit/m17n/m17n-lib.git/commit/?id=624b987e7b252e223de0bdbe148cd56aef0da28f
+
+From 624b987e7b252e223de0bdbe148cd56aef0da28f Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Thu, 4 May 2023 13:57:49 +0200
+Subject: Add missing int in example/medit.c
+
+Resolves: https://savannah.nongnu.org/bugs/index.php?64106
+
+--- a/example/medit.c
++++ b/example/medit.c
+@@ -662,7 +662,7 @@ static void MenuHelpProc (Widget, XEvent *, String *, Cardinal *);
+    off the current input method, otherwide turn on the input method
+    input_method_table[$IDX].  */
+ void
+-select_input_method (idx)
++select_input_method (int idx)
+ {
+   int previous_input_method = current_input_method;
+ 
+
