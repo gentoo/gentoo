@@ -4,8 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_TESTED=( pypy3 python3_{10..12} )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 
 inherit distutils-r1
 
@@ -44,10 +43,10 @@ BDEPEND="
 	test? (
 		$(python_gen_cond_dep '
 			dev-python/ipython[${PYTHON_USEDEP}]
-			dev-python/pip[${PYTHON_USEDEP}]
-			dev-python/scipy[${PYTHON_USEDEP}]
-		' "${PYTHON_TESTED[@]}")
+		' 3.{10..12})
+		dev-python/pip[${PYTHON_USEDEP}]
 		dev-python/packaging[${PYTHON_USEDEP}]
+		dev-python/scipy[${PYTHON_USEDEP}]
 		dev-python/wheel[${PYTHON_USEDEP}]
 		virtual/cblas
 		!!dev-python/setuptools-declarative-requirements
@@ -97,6 +96,12 @@ python_test() {
 					pythran/tests/test_set.py::TestSet::test_fct_symmetric_difference_update
 				)
 				;;
+			python3.13)
+				EPYTEST_DESELECT+=(
+					# repr() differences?
+					pythran/tests/test_xdoc.py::TestDoctest::test_tutorial
+					pythran/tests/test_xdoc.py::TestDoctest::test_utils
+				)
 		esac
 	fi
 
