@@ -15,7 +15,7 @@ DESCRIPTION="Plasma library and runtime components based upon KF6 and Qt6"
 
 LICENSE="LGPL-2+"
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="gles2-only wayland"
 
 RESTRICT="test"
