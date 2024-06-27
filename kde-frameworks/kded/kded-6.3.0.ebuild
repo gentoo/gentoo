@@ -12,7 +12,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Central daemon of KDE workspaces"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="+man"
 
 DEPEND="
