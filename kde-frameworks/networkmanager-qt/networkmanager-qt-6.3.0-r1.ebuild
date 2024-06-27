@@ -9,7 +9,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="NetworkManager bindings for Qt"
 
 LICENSE="LGPL-2"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="teamd"
 
 DEPEND="
