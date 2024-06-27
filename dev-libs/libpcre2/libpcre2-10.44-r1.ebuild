@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/philiphazel.asc
-inherit libtool multilib-minimal verify-sig
+inherit libtool multilib-minimal toolchain-funcs verify-sig
 
 MY_P="pcre2-${PV/_rc/-RC}"
 
@@ -67,6 +67,10 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# Workaround for bug #934977 (libtool-2.5.0), drop when dist tarball
+	# uses newer libtool with the fix.
+	export ac_cv_prog_ac_ct_FILECMD='file' FILECMD='file'
+
 	local myeconfargs=(
 		--enable-pcre2-8
 		--enable-shared
@@ -99,6 +103,13 @@ multilib_src_install() {
 		DESTDIR="${D}" \
 		$(multilib_is_native_abi || echo "bin_PROGRAMS= dist_html_DATA=") \
 		install
+
+	# bug #934977
+	if ! tc-is-static-only && [[ ! -f "${ED}/usr/$(get_libdir)/libpcre2-8$(get_libname)" ]] ; then
+		eerror "Sanity check for libpcre2-8$(get_libname) failed."
+		eerror "Shared library wasn't built, possible libtool bug"
+		[[ -z ${I_KNOW_WHAT_I_AM_DOING} ]] && die "libpcre2-8$(get_libname) not found in build, aborting"
+	fi
 }
 
 multilib_src_install_all() {
