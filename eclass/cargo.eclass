@@ -41,7 +41,7 @@ inherit flag-o-matic multiprocessing rust-toolchain toolchain-funcs
 IUSE="${IUSE} debug"
 
 ECARGO_HOME="${WORKDIR}/cargo_home"
-ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
+ECARGO_VENDOR="${ECARGO_HOME}/gentoo-vendor"
 
 # @ECLASS_VARIABLE: CRATES
 # @DEFAULT_UNSET
