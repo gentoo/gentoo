@@ -11,7 +11,7 @@ else
 	COMMIT=ae072f901671b68861da9577e3e12e350a9053d5
 	SRC_URI="https://github.com/${PN}/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 QTMIN=6.7.1
