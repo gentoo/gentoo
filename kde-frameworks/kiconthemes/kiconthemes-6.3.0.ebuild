@@ -11,7 +11,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Framework for icon theming and configuration"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 RESTRICT="test" # bug 574770
