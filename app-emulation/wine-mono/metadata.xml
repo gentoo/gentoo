@@ -13,7 +13,12 @@
 		purpose.
 	</longdescription>
 	<use>
-		<flag name="shared">Install pre-unpacked files which do not need to be copied into the Wine prefix</flag>
+		<flag name="shared">
+			Install pre-unpacked files which do not need to
+			be copied into the Wine prefix (note that this
+			requires the default top-level Z: drive to be
+			kept for out-of-prefix files to be readable)
+		</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">madewokherd/wine-mono</remote-id>
