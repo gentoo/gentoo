@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 
 inherit bash-completion-r1 distutils-r1 pypi
 
@@ -28,6 +28,11 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/tqdm/tqdm/pull/1594
+	"${FILESDIR}/${P}-py313.patch"
+)
 
 EPYTEST_IGNORE=(
 	# Skip unpredictable performance tests
