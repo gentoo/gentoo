@@ -1,0 +1,85 @@
+--- a/loaders/meson.build	2024-03-17 15:23:20.000000000 -0300
++++ b/loaders/meson.build	2024-03-24 18:08:48.108940185 -0300
+@@ -20,58 +20,10 @@
+ target_dir = meson.project_build_root() / 'cargo_target'
+ manifest = meson.project_source_root() / 'Cargo.toml'
+ 
+-cargo_options = [
+-  '--profile', profile,
+-  '--manifest-path', manifest,
+-]
+-
+-cargo_env = {
+-  # Don't use $HOME/.cargo/ for this
+-  'CARGO_HOME': meson.project_build_root() / 'cargo',
+-  # Gettext translation
+-  'LOCALEDIR': get_option('prefix') / get_option('localedir'),
+-  # Git commit for debugging
+-  'GIT_DESCRIBE': run_command(
+-      'git',
+-      '-C', meson.project_source_root(),
+-      'rev-parse', '--short', 'HEAD',
+-      check: false
+-    ).stdout().strip(),
+-}
+-
+ test_args = []
+ foreach loader : get_option('loaders')
+   test_args += ['-p', loader]
+ 
+-  cargo_build = custom_target(
+-    loader,
+-    build_by_default: true,
+-    build_always_stale: true,
+-    output: loader + '-bin',
+-    console: true,
+-    env: cargo_env,
+-    command: [
+-      cargo_bin, 'build',
+-      '--target-dir', target_dir / 'loaders',
+-      [cargo_options, [ '--package', loader ]],
+-    ],
+-  )
+-
+-  custom_target(
+-    loader + '-cp-binary',
+-    depends: cargo_build,
+-    build_by_default: true,
+-    build_always_stale: true,
+-    install: true,
+-    install_dir: libexecdir,
+-    output: loader,
+-    command: [
+-      'cp',
+-      target_dir / 'loaders' / rust_target / loader,
+-      '@OUTPUT@',
+-    ],
+-  )
+-
+   i18n.merge_file(
+       type: 'desktop',
+       input: configure_file(
+@@ -125,21 +77,4 @@
+     env += { 'GLYCIN_DATA_DIR': destdir + datadir  }
+   endif
+ 
+-  test(
+-    'cargo-test',
+-    cargo_bin,
+-    args: [
+-      'test',
+-      '-p', 'tests',
+-      test_args,
+-      '--target-dir', target_dir / 'tests',
+-      cargo_options,
+-      '--',
+-      '--test-threads=1',
+-      '--nocapture',
+-    ],
+-    env: env,
+-    is_parallel: false,
+-    timeout: 1800,
+-  )
+-endif
+\ No newline at end of file
++endif
