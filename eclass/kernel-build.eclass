@@ -20,6 +20,14 @@
 # the kernel and installing it along with its modules and subset
 # of sources needed to build external modules.
 
+# @ECLASS_VARIABLE: KV_FULL
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# A string containing the full kernel release version, e.g.
+# '6.9.6-gentoo-dist'. This is used to ensure consistency between the
+# kernel's release version and Gentoo's tooling. This is set by
+# kernel-build_src_configure() once we have a kernel.release file.
+
 case ${EAPI} in
 	8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
@@ -225,6 +233,12 @@ kernel-build_src_configure() {
 	emake O="${WORKDIR}"/modprep "${MAKEARGS[@]}" olddefconfig
 	emake O="${WORKDIR}"/modprep "${MAKEARGS[@]}" modules_prepare
 	cp -pR "${WORKDIR}"/modprep "${WORKDIR}"/build || die
+
+	# Now that we have a release file, set KV_FULL
+	if [[ -z ${KV_FULL} ]]; then
+		local relfile=${WORKDIR}/build/include/config/kernel.release
+		KV_FULL=$(<"${relfile}") || die
+	fi
 }
 
 # @FUNCTION: kernel-build_src_compile
@@ -254,20 +268,15 @@ kernel-build_src_test() {
 		INSTALL_MOD_PATH="${T}" INSTALL_MOD_STRIP="${strip_args}" \
 		modules_install
 
-	local dir_ver=${PV}${KV_LOCALVERSION}
-	local relfile=${WORKDIR}/build/include/config/kernel.release
-	local module_ver
-	module_ver=$(<"${relfile}") || die
-
-	kernel-install_test "${module_ver}" \
+	kernel-install_test "${KV_FULL}" \
 		"${WORKDIR}/build/$(dist-kernel_get_image_path)" \
-		"${T}/lib/modules/${module_ver}"
+		"${T}/lib/modules/${KV_FULL}"
 }
 
 # @FUNCTION: kernel-build_src_install
 # @DESCRIPTION:
 # Install the built kernel along with subset of sources
-# into /usr/src/linux-${PV}.  Install the modules.  Save the config.
+# into /usr/src/linux-${KV_FULL}.  Install the modules.  Save the config.
 kernel-build_src_install() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -304,8 +313,7 @@ kernel-build_src_install() {
 	# note: we're using mv rather than doins to save space and time
 	# install main and arch-specific headers first, and scripts
 	local kern_arch=$(tc-arch-kernel)
-	local dir_ver=${PV}${KV_LOCALVERSION}
-	local kernel_dir=/usr/src/linux-${dir_ver}
+	local kernel_dir=/usr/src/linux-${KV_FULL}
 
 	if use sparc ; then
 		# We don't want tc-arch-kernel's sparc64, even though we do
@@ -378,10 +386,6 @@ kernel-build_src_install() {
 	# strip empty directories
 	find "${D}" -type d -empty -exec rmdir {} + || die
 
-	local relfile=${ED}${kernel_dir}/include/config/kernel.release
-	local module_ver
-	module_ver=$(<"${relfile}") || die
-
 	# warn when trying to "make" a dist-kernel
 	cat <<-EOF >> "${ED}${kernel_dir}/Makefile" || die
 
@@ -399,12 +403,12 @@ kernel-build_src_install() {
 	echo "${CATEGORY}/${PF}:${SLOT}" > "${ED}${kernel_dir}/dist-kernel" || die
 
 	# fix source tree and build dir symlinks
-	dosym "../../../${kernel_dir}" "/lib/modules/${module_ver}/build"
-	dosym "../../../${kernel_dir}" "/lib/modules/${module_ver}/source"
+	dosym "../../../${kernel_dir}" "/lib/modules/${KV_FULL}/build"
+	dosym "../../../${kernel_dir}" "/lib/modules/${KV_FULL}/source"
 	if [[ "${image_path}" == *vmlinux* ]]; then
-		dosym "../../../${kernel_dir}/${image_path}" "/lib/modules/${module_ver}/vmlinux"
+		dosym "../../../${kernel_dir}/${image_path}" "/lib/modules/${KV_FULL}/vmlinux"
 	else
-		dosym "../../../${kernel_dir}/${image_path}" "/lib/modules/${module_ver}/vmlinuz"
+		dosym "../../../${kernel_dir}/${image_path}" "/lib/modules/${KV_FULL}/vmlinuz"
 	fi
 
 	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
@@ -435,7 +439,7 @@ kernel-build_src_install() {
 				--conf "${T}/empty-file"
 				--confdir "${T}/empty-directory"
 				--kernel-image "${image}"
-				--kmoddir "${ED}/lib/modules/${dir_ver}"
+				--kmoddir "${ED}/lib/modules/${KV_FULL}"
 				--kver "${dir_ver}"
 				--verbose
 				--compress="xz -9e --check=crc32"
@@ -462,7 +466,7 @@ kernel-build_src_install() {
 				--linux="${image}"
 				--initrd="${image%/*}/initrd"
 				--cmdline="${KERNEL_GENERIC_UKI_CMDLINE}"
-				--uname="${dir_ver}"
+				--uname="${KV_FULL}"
 				--output="${image%/*}/uki.efi"
 			)
 
@@ -520,7 +524,7 @@ kernel-build_pkg_postinst() {
 			ewarn
 			ewarn "MODULES_SIGN_KEY was not set, this means the kernel build system"
 			ewarn "automatically generated the signing key. This key was installed"
-			ewarn "in ${EROOT}/usr/src/linux-${PV}${KV_LOCALVERSION}/certs"
+			ewarn "in ${EROOT}/usr/src/linux-${KV_FULL}/certs"
 			ewarn "and will also be included in any binary packages."
 			ewarn "Please take appropriate action to protect the key!"
 			ewarn
