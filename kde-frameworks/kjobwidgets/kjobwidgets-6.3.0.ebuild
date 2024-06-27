@@ -10,7 +10,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Framework providing assorted widgets for showing the progress of jobs"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 # slot op: Uses Qt6::GuiPrivate for qtx11extras_p.h
