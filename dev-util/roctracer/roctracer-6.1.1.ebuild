@@ -43,6 +43,7 @@ python_check_deps() {
 
 pkg_setup() {
 	python-any-r1_pkg_setup
+	llvm-r1_pkg_setup
 }
 
 src_prepare() {
