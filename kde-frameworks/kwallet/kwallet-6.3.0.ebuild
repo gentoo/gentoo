@@ -10,7 +10,7 @@ inherit ecm frameworks.kde.org optfeature
 DESCRIPTION="Framework providing desktop-wide storage for passwords"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="gpg +man"
 
 DEPEND="
