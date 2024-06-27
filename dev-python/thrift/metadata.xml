@@ -3,6 +3,7 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <upstream>
+    <remote-id type="github">apache/thrift</remote-id>
     <remote-id type="pypi">thrift</remote-id>
   </upstream>
 </pkgmetadata>

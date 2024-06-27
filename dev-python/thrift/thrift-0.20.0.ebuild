@@ -9,7 +9,11 @@ PYTHON_COMPAT=( python3_{9..12} )
 inherit distutils-r1
 
 DESCRIPTION="Python implementation of Thrift"
-HOMEPAGE="https://pypi.org/project/thrift/ https://thrift.apache.org/"
+HOMEPAGE="
+	https://pypi.org/project/thrift/
+	https://thrift.apache.org/
+	https://github.com/apache/thrift
+"
 SRC_URI="https://downloads.apache.org/${PN}/${PV}/${P}.tar.gz"
 S="${WORKDIR}/${P}/lib/py"
 
