@@ -20,4 +20,9 @@ S="${WORKDIR}/${P}/lib/py"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~riscv x86 ~amd64-linux ~x86-linux"
-RESTRICT="test"
+
+distutils_enable_tests unittest
+
+python_test() {
+	eunittest test
+}
