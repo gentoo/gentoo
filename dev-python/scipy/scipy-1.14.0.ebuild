@@ -9,7 +9,7 @@ DISTUTILS_USE_PEP517=meson-python
 PYTHON_COMPAT=( pypy3 python3_{10..12} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit fortran-2 distutils-r1
+inherit flag-o-matic fortran-2 distutils-r1
 
 DESCRIPTION="Scientific algorithms library for Python"
 HOMEPAGE="
@@ -94,6 +94,9 @@ python_configure_all() {
 		-Dlapack=lapack
 		-Duse-pythran=$(usex fortran true false)
 	)
+
+	# https://bugs.gentoo.org/932721
+	has_version '>=dev-python/numpy-2.0.0' && filter-lto
 
 	# hide real scipy, to prevent pythran crashing when scipy is being
 	# rebuilt for new numpy ABI
