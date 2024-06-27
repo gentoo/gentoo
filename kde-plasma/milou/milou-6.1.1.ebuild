@@ -14,7 +14,7 @@ HOMEPAGE="https://invent.kde.org/plasma/milou"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 DEPEND="
