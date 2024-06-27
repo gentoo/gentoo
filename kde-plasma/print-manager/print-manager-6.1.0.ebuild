@@ -12,7 +12,7 @@ DESCRIPTION="Manage CUPS print jobs and printers in Plasma"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="+gtk"
 
 DEPEND="
