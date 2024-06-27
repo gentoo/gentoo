@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # shellcheck disable=SC2207
 
 EAPI=8
 
-inherit autotools optfeature systemd tmpfiles
+inherit optfeature systemd tmpfiles
 
 DESCRIPTION="A real-time web log analyzer and interactive viewer in a terminal"
 HOMEPAGE="https://goaccess.io"
@@ -38,8 +38,6 @@ src_prepare() {
 		-e '/db-path/s|tmp|var/lib/goaccess|' \
 		-e '/geoip-database/s|local/||' config/goaccess.conf \
 		|| die "sed failed for goaccess.conf"
-
-	eautoreconf
 }
 
 src_configure() {
