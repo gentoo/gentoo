@@ -14,7 +14,7 @@ DESCRIPTION="Qt Platform Theme integration plugins for the Plasma workspaces"
 
 LICENSE="LGPL-2+"
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="qt5"
 
 # requires running kde environment
