@@ -11,7 +11,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Framework providing an assortment of configuration-related widgets"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 CMAKE_SKIP_TESTS=(
