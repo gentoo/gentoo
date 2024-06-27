@@ -13,7 +13,7 @@ SRC_URI="https://github.com/lunarmodules/luacheck/archive/refs/tags/v${PV}.tar.g
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
