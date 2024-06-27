@@ -243,6 +243,7 @@ app-emulation/crossover-bin
 app-misc/kryoflux-dtc
 app-office/libreoffice-bin
 app-office/libreoffice-bin-debug
+app-office/onlyoffice-bin
 app-text/master-pdf-editor
 app-text/zotero-bin
 dev-db/ocp
