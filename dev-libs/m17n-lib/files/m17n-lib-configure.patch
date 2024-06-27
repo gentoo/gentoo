@@ -1,17 +1,28 @@
 --- a/configure.ac
 +++ b/configure.ac
-@@ -96,8 +96,8 @@
+@@ -96,8 +96,11 @@
  
  dnl Checks which levels of APIs should be compiled.
  
 -AC_ARG_ENABLE(gui,
 -	      AS_HELP_STRING([--enable-gui],[enable GUI level APIs (default is YES)]))
++PKG_PROG_PKG_CONFIG
++AM_CONDITIONAL([HAVE_PKG_CONFIG], [test "x$PKG_CONFIG" != x])
++
 +AC_ARG_WITH(gui,
 +	    AS_HELP_STRING([--with-gui],[enable GUI level APIs (default is YES)]))
  
  AM_CONDITIONAL(WITH_GUI, test x$with_gui != xno)
  
-@@ -125,6 +125,9 @@
+@@ -117,14 +120,14 @@
+ 
+ M17N_EXT_LIBS=
+ 
+-PKG_PROG_PKG_CONFIG
+-AM_CONDITIONAL([HAVE_PKG_CONFIG], [test "x$PKG_CONFIG" != x])
+-
+ if test "x$no_x" != "xyes"; then
+   AC_DEFINE(HAVE_X11, 1, [Define to 1 if you have X11.])
    X11_LD_FLAGS="-lXt -lX11"
    M17N_EXT_LIBS="$M17N_EXT_LIBS X11"
  
