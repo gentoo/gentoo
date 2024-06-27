@@ -6,7 +6,7 @@ EAPI="8"
 inherit autotools
 
 DESCRIPTION="Multilingual Library for Unix/Linux"
-HOMEPAGE="https://savannah.nongnu.org/projects/m17n https://git.savannah.nongnu.org/cgit/m17n/m17n-lib.git"
+HOMEPAGE="https://www.nongnu.org/m17n/"
 SRC_URI="mirror://nongnu/m17n/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
