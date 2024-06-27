@@ -10,7 +10,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Framework providing additional widgets for item models"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 DEPEND=">=dev-qt/qtbase-${QTMIN}:6[gui,widgets]"
