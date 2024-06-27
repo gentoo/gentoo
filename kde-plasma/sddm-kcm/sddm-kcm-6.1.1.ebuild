@@ -13,7 +13,7 @@ HOMEPAGE="https://invent.kde.org/plasma/sddm-kcm"
 
 LICENSE="GPL-2+"
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 DEPEND="
