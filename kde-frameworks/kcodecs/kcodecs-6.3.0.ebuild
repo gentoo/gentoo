@@ -9,7 +9,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Framework for manipulating strings using various encodings"
 
 LICENSE="GPL-2+ LGPL-2+"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 BDEPEND="
