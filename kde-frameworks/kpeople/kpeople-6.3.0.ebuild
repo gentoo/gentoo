@@ -12,7 +12,7 @@ DESCRIPTION="KDE contact person abstraction library"
 HOMEPAGE="https://invent.kde.org/frameworks/kpeople"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 DEPEND="
