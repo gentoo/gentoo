@@ -1,0 +1,60 @@
+From 442c048b70f5d19a1f3050981b5b8fe4e2f239e4 Mon Sep 17 00:00:00 2001
+From: Alexander Puck Neuwirth <alexander@neuwirth-informatik.de>
+Date: Sun, 5 May 2024 10:40:07 +0000
+Subject: [PATCH 1/2] Only install bash_completion when python is available
+
+---
+ bin/Makefile.am | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/bin/Makefile.am b/bin/Makefile.am
+index d7d52430..5c809cf1 100644
+--- a/bin/Makefile.am
++++ b/bin/Makefile.am
+@@ -15,8 +15,15 @@ if ENABLE_ROOT
+ dist_bin_SCRIPTS += yoda2root root2yoda
+ endif
+ 
+-endif
+ 
+ ## bash completion
+-bashcompdir = $(DESTDIR)$(sysconfdir)/bash_completion.d
+-dist_bashcomp_DATA = yoda-completion
++dist_pkgdata_DATA = yoda-completion
++bashcomp_dir = $(DESTDIR)$(sysconfdir)/bash_completion.d
++install-data-local:
++	$(mkdir_p) $(bashcomp_dir)
++	$(install_sh_DATA) $(srcdir)/yoda-completion $(bashcomp_dir)/
++uninstall-local:
++	rm -f $(bashcomp_dir)/yoda-completion
++else
++EXTRA_DIST += yoda-completion
++endif
+-- 
+GitLab
+
+
+From 527872534d4c859fe9e3fc443bcec59e005800e6 Mon Sep 17 00:00:00 2001
+From: Alexander Puck Neuwirth <alexander@neuwirth-informatik.de>
+Date: Sun, 5 May 2024 10:44:12 +0000
+Subject: [PATCH 2/2] Update Makefile.am
+
+---
+ bin/Makefile.am | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/bin/Makefile.am b/bin/Makefile.am
+index 5c809cf1..e059f554 100644
+--- a/bin/Makefile.am
++++ b/bin/Makefile.am
+@@ -1,5 +1,7 @@
+ dist_bin_SCRIPTS = yoda-config
+ 
++EXTRA_DIST =
++
+ if ENABLE_PYEXT
+ 
+ ## YODA file listing, diffing and modifying
+-- 
+GitLab
+
