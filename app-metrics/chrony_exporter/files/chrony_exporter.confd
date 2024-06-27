@@ -1,0 +1,2 @@
+# arguments for chrony_exporter
+command_args="--collector.tracking --collector.sources"

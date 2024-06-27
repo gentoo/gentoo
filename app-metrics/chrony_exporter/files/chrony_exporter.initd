@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 2016-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Prometheus chrony metrics exporter"
+pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
+user=${user:-${RC_SVCNAME}}
+group=${group:-${RC_SVCNAME}}
+
+command="/usr/bin/chrony_exporter"
+command_args="${command_args}"
+command_background="true"
+start_stop_daemon_args="--user ${user} --group ${group}"
+
+depend() {
+	after chronyd
+}
