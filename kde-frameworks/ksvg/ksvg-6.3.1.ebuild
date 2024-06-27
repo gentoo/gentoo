@@ -10,7 +10,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Components for handling SVGs"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 DEPEND="
