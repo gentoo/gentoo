@@ -13,7 +13,7 @@ HOMEPAGE+=" https://community.kde.org/Plasma/Browser_Integration"
 
 LICENSE="GPL-3+"
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 RDEPEND="
