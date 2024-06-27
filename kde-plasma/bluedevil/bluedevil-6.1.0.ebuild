@@ -14,7 +14,7 @@ HOMEPAGE="https://invent.kde.org/plasma/bluedevil"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 # kde-frameworks/kwindowsystem[X]: Unconditional use of KX11Extras
