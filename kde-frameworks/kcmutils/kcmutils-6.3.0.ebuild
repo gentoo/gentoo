@@ -11,7 +11,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Framework to work with KDE System Settings modules"
 
 LICENSE="LGPL-2"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 DEPEND="
