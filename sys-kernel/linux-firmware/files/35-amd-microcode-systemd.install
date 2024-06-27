@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+# Copyright 2024 Gentoo Authors
+# This script is installed by sys-kernel/linux-firmware, it is executed by
+# systemd's kernel-install, NOT by the traditional installkernel. I.e. this
+# plugin is run when the systemd USE flag is enabled or
+# SYSTEMD_KERNEL_INSTALL=1 is set in the environment.
+
+COMMAND="${1}"
+
+if [[ ${COMMAND} != add ]]; then
+	exit 0
+fi
+
+if [[ ${KERNEL_INSTALL_INITRD_GENERATOR} == dracut ]]; then
+	# Dracut bundles microcode in its initramfs images
+	[[ ${KERNEL_INSTALL_VERBOSE} == 1 ]] && echo \
+		"initrd_generator=${KERNEL_INSTALL_INITRD_GENERATOR} bundles CPU microcode, nothing to do here."
+	exit 0
+fi
+
+# do nothing if somehow make-amd-ucode-img is not installed
+if ! command -v make-amd-ucode-img >/dev/null; then
+	[[ ${KERNEL_INSTALL_VERBOSE} == 1 ]] && echo \
+		"make-amd-ucode-img command not available"
+	exit 1
+fi
+
+[[ ${KERNEL_INSTALL_VERBOSE} == 1 ]] && echo \
+	"Generating AMD CPU Microcode early initramfs image..."
+
+make-amd-ucode-img \
+	${KERNEL_INSTALL_STAGING_AREA}/microcode-amd \
+	/lib/firmware/amd-ucode ||
+		{ echo "make-amd-ucode-img failed" && exit 1; }
