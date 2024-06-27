@@ -15,5 +15,6 @@
     </maintainer>
     <upstream>
         <remote-id type="sourceforge">dvdplugin</remote-id>
+        <remote-id type="github">vdr-projects/vdr-plugin-dvd</remote-id>
     </upstream>
 </pkgmetadata>

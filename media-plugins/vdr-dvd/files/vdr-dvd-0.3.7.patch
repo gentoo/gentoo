@@ -1,0 +1,40 @@
+--- a/Makefile
++++ b/Makefile
+@@ -82,7 +82,7 @@
+ 
+ # Dependencies:
+ 
+-MAKEDEP = g++ -MM -MG
++MAKEDEP = $(CXX) -MM -MG
+ DEPFILE = .dependencies
+ $(DEPFILE): Makefile
+ 	@$(MAKEDEP) $(DEFINES) $(INCLUDES) $(OBJS:%.o=%.c) > $@
+--- a/player-dvd.c
++++ b/player-dvd.c
+@@ -598,7 +598,7 @@
+                 sp=2;
+         }
+ #if VDRVERSNUM < 20103
+-        DeviceTrickSpeed(sp);
++        DeviceTrickSpeed(sp,true);
+ #else
+         DeviceTrickSpeed(sp,playDir == pdForward);
+ #endif
+@@ -3092,7 +3092,7 @@
+     }
+ 
+     uint16_t audioStreamLanguageCode = GetAudioTrackLanguageCode(currentNavAudioTrack);
+-    char audioLanguageStr[3] = {audioStreamLanguageCode, audioStreamLanguageCode >> 8, 0};
++    char audioLanguageStr[3] = {static_cast<char>(audioStreamLanguageCode), static_cast<char>(audioStreamLanguageCode >> 8), 0};
+     if (GetAudioStreamNumbers() > 1)
+         sprintf(buffer,"%s %d/%d %s", audioStreamLanguageCode != 0xFFFF ? audioLanguageStr : "", GetCurrentNavAudioTrackIdx() + 1, GetAudioStreamNumbers() - 1, audioTypeDescr);
+     else
+@@ -3110,7 +3110,7 @@
+     }
+ 
+     int subtitleStreamLanguageCode = GetSubtitleLanguageCode(currentNavSubpStream);
+-    char subtitleLanguageStr[3] = {subtitleStreamLanguageCode, subtitleStreamLanguageCode >> 8, 0};
++    char subtitleLanguageStr[3] = {static_cast<char>(subtitleStreamLanguageCode), static_cast<char>(subtitleStreamLanguageCode >> 8), 0};
+ 
+     if(GetSubtitleStreamNumbers() > 2)
+         sprintf(buffer,"%s %d/%d", subtitleStreamLanguageCode !=0xFFFF ? subtitleLanguageStr : "", GetCurrentNavSubpStreamIdx(), GetSubtitleStreamNumbers() - 1);
