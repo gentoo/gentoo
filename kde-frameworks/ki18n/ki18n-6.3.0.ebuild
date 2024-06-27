@@ -10,7 +10,7 @@ inherit ecm frameworks.kde.org python-single-r1
 DESCRIPTION="Framework based on Gettext for internationalizing user interface text"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
