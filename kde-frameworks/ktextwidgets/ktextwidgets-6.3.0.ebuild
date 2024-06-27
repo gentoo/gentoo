@@ -11,7 +11,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Framework providing an assortment of widgets for displaying and editing text"
 
 LICENSE="LGPL-2+ LGPL-2.1+"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="speech"
 
 DEPEND="
