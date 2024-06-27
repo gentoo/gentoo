@@ -10,7 +10,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Tools to generate documentation in various formats from DocBook files"
 
 LICENSE="MIT"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="nls"
 
 DEPEND="
