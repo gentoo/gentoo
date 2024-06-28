@@ -403,6 +403,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	app-arch/zstd
 "
 
 QA_FLAGS_IGNORED="usr/bin/.*"
@@ -437,6 +438,7 @@ src_compile() {
 }
 
 src_test() {
+	local -x ZSTD_SYS_USE_PKG_CONFIG=1
 	# Gentoo bug #927338
 	if use !elibc_musl && use !elibc_Darwin && use !elibc_bionic; then
 		local -x CARGO_FEATURE_UNPREFIXED_MALLOC_ON_SUPPORTED_PLATFORMS=1
