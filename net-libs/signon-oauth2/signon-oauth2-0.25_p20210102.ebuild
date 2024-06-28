@@ -21,7 +21,7 @@ else
 		SRC_URI="https://gitlab.com/accounts-sso/${MY_PN}/-/archive/${MY_PV}/${MY_P}.tar.bz2 -> ${P}.tar.bz2"
 		S="${WORKDIR}/${MY_P}"
 	fi
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="OAuth2 plugin for Signon daemon"
