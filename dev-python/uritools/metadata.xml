@@ -19,10 +19,7 @@
 		URIs and URI references, and for conveniently creating URIs from their
 		individual components.
 	</longdescription>
-	<maintainer type="person">
-		<email>marecki@gentoo.org</email>
-		<name>Marek Szuba</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">uritools</remote-id>

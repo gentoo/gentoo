@@ -7,10 +7,6 @@
 
 		Testinfra aims to be a Serverspec equivalent in Python.
 	</longdescription>
-	<maintainer type="person">
-		<email>marecki@gentoo.org</email>
-		<name>Marek Szuba</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 		<name>Python</name>

@@ -8,10 +8,7 @@
 		be collected by Prometheus, but other push/pull collections can be added
 		as plugins.
 	</longdescription>
-	<maintainer type="person">
-		<email>marecki@gentoo.org</email>
-		<name>Marek Szuba</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<upstream>
 		<bugs-to>https://github.com/jupp0r/prometheus-cpp/issues</bugs-to>
 		<doc lang="en">https://jupp0r.github.io/prometheus-cpp/</doc>

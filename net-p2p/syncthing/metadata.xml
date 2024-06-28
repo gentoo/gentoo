@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>marecki@gentoo.org</email>
-    <name>Marek Szuba</name>
-  </maintainer>
+  <!-- maintainer-needed -->
   <longdescription lang="en">
       Syncthing replaces proprietary sync and cloud services with something open, trustworthy and decentralized.
       Your data is your data alone and you deserve to choose where it is stored, if it is shared with some third party and how it's transmitted over the Internet.

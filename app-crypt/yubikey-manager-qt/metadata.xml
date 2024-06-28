@@ -5,10 +5,6 @@
 		<email>soap@gentoo.org</email>
 		<name>David Seifert</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>marecki@gentoo.org</email>
-		<name>Marek Szuba</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="github">Yubico/yubikey-manager-qt</remote-id>
 	</upstream>

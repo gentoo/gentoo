@@ -29,10 +29,6 @@
 		* Runs natively on Windows, Linux, OS X and FreeBSD.
 		* Supports multiple languages, translated by the community.
 	</longdescription>
-	<maintainer type="person">
-		<email>marecki@gentoo.org</email>
-		<name>Marek Szuba</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>

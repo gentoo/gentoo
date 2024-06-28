@@ -5,10 +5,6 @@
 		<email>jsmolic@gentoo.org</email>
 		<name>Jakov Smolić</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>marecki@gentoo.org</email>
-		<name>Marek Szuba</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="github">i3/i3lock</remote-id>
 	</upstream>
