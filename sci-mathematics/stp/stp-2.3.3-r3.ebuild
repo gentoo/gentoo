@@ -100,12 +100,18 @@ src_configure() {
 	fi
 
 	local -a mycmakeargs=(
-		-DTEST_C_API=OFF  # C API test fail
 		-DNOCRYPTOMINISAT=$(usex cryptominisat 'OFF' 'ON')  # double negation
 		-DENABLE_PYTHON_INTERFACE=$(usex python)
 		-DENABLE_ASSERTIONS=$(usex test)
 		-DENABLE_TESTING=$(usex test)
 	)
+
+	if use test ; then
+		mycmakeargs+=(
+			-DTEST_C_API=OFF  # C API test fail
+		)
+	fi
+
 	cmake_src_configure
 }
 

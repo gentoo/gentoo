@@ -78,9 +78,6 @@ src_configure() {
 	fi
 
 	local -a mycmakeargs=(
-		# -DGTEST_PREFIX="${BROOT}/usr/$(get_libdir)/cmake/GTest"
-
-		-DTEST_C_API=OFF  # C API test fail
 		-DUSE_RISS=OFF
 
 		# Cryptominisat switches
@@ -91,6 +88,13 @@ src_configure() {
 		-DENABLE_ASSERTIONS=$(usex test)
 		-DENABLE_TESTING=$(usex test)
 	)
+
+	if use test ; then
+		mycmakeargs+=(
+			-DTEST_C_API=OFF  # C API test fail
+		)
+	fi
+
 	cmake_src_configure
 }
 
