@@ -64,9 +64,11 @@ _IDEPEND_BASE="
 	!initramfs? (
 		>=sys-kernel/installkernel-14
 	)
-	initramfs? || (
-		>=sys-kernel/installkernel-14[dracut(-)]
-		>=sys-kernel/installkernel-14[ugrd(-)]
+	initramfs? (
+		|| (
+			>=sys-kernel/installkernel-14[dracut(-)]
+			>=sys-kernel/installkernel-14[ugrd(-)]
+		)
 	)
 "
 
