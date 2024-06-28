@@ -79,6 +79,7 @@ RDEPEND="
 	gtk? (
 		>=kde-plasma/breeze-gtk-${PV}:${SLOT}
 		>=kde-plasma/kde-gtk-config-${PV}:${SLOT}
+		sys-apps/xdg-desktop-portal-gtk
 		x11-misc/appmenu-gtk-module
 	)
 	kwallet? ( >=kde-plasma/kwallet-pam-${PV}:${SLOT} )
