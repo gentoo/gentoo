@@ -20,7 +20,7 @@ else
 		"
 		S="${WORKDIR}/${PN}-module-VERSION_${PV}"
 	fi
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="QML bindings for accounts-qt and signond"
