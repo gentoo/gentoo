@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>pinkbyte@gentoo.org</email>
-		<name>Sergey Popov</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="abyss">Build the Abyss mini web-server.</flag>
 		<flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> to parse XML instead of the internal expat library.</flag>

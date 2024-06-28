@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>pinkbyte@gentoo.org</email>
-		<name>Sergey Popov</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 	PRoot is a user-space implementation of chroot, mount --bind, and binfmt_misc.
 	This means that users don't need any privilege or setup to do things like: using an arbitrary directory as the new root filesystem,
