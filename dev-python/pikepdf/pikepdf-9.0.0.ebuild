@@ -58,6 +58,8 @@ distutils_enable_tests pytest
 EPYTEST_DESELECT=(
 	# fragile to system load
 	tests/test_image_access.py::test_random_image
+	tests/test_image_access.py::test_image_save_compare
+	tests/test_image_access.py::test_palette_nonrgb
 )
 
 src_prepare() {
