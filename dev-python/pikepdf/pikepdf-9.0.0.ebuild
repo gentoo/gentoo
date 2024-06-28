@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 
 inherit distutils-r1 pypi
 
@@ -61,8 +61,14 @@ EPYTEST_DESELECT=(
 )
 
 src_prepare() {
-	sed -e '/-n auto/d' -i pyproject.toml || die
+	local PATCHES=(
+		# https://github.com/pikepdf/pikepdf/commit/6831e87bb94322b7ca53964a57ba575861b5916c
+		"${FILESDIR}/${P}-py313.patch"
+	)
+
 	distutils-r1_src_prepare
+
+	sed -e '/-n auto/d' -i pyproject.toml || die
 }
 
 python_test() {

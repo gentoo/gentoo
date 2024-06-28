@@ -1,0 +1,26 @@
+From 6831e87bb94322b7ca53964a57ba575861b5916c Mon Sep 17 00:00:00 2001
+From: Elliott Sales de Andrade <quantum.analyst@gmail.com>
+Date: Wed, 19 Jun 2024 18:35:06 -0400
+Subject: [PATCH] Fix tests with Python 3.13
+
+The exception message changed to:
+```
+property '' of 'Page' object has no deleter
+```
+---
+ tests/test_page.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_page.py b/tests/test_page.py
+index 3e5cc345..05455a93 100644
+--- a/tests/test_page.py
++++ b/tests/test_page.py
+@@ -293,7 +293,7 @@ def test_page_attrs(graph):
+ 
+     del graph.pages[0].Resources
+     with pytest.raises(
+-        AttributeError, match=r"can't delete|property of 'Page' object has no deleter"
++        AttributeError, match=r"can't delete|property( '')? of 'Page' object has no deleter"
+     ):
+         del graph.pages[0].obj
+     del graph.pages[0]['/Contents']
