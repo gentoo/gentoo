@@ -12,7 +12,7 @@ else
 	COMMIT=eef943f0edf3beee8ecb85d4a9dae3656002fc24
 	SRC_URI="https://gitlab.com/accounts-sso/${PN}/-/archive/${COMMIT}/${PN}-${COMMIT}.tar.bz2 -> ${P}.tar.bz2"
 	S="${WORKDIR}/${PN}-${COMMIT}"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="~amd64 arm64"
 fi
 
 DESCRIPTION="Online accounts signon UI"
