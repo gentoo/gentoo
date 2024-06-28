@@ -7,7 +7,7 @@ ETYPE="sources"
 CKV="$(ver_cut 1-3)"
 K_SECURITY_UNSUPPORTED="1"
 K_WANT_GENPATCHES="base extras"
-K_GENPATCHES_VER="12"
+K_GENPATCHES_VER="6"
 K_NODRYRUN="1"
 
 inherit kernel-2
@@ -59,9 +59,7 @@ UNIPATCH_STRICTORDER="yes"
 UNIPATCH_LIST="
 	${FILESDIR}/asahi-6.8-config-gentoo-Drop-RANDSTRUCT-from-GENTOO_KERNEL_SEL.patch
 	${FILESDIR}/asahi-6.8.2_revert_spi_stable_asahi.patch
-	${DISTDIR}/linux-asahi-6.8.9-6.patch
-	${FILESDIR}/asahi-sources-6.6.0_p16-enable-speakers-stage1.patch
-	${FILESDIR}/asahi-sources-6.6.0_p16-enable-speakers-stage2.patch
+	${DISTDIR}/linux-${ASAHI_TAG}.patch
 "
 
 src_prepare() {
