@@ -38,13 +38,13 @@ RDEPEND="app-i18n/uchardet
 	dev-libs/fribidi
 	dev-libs/glib:2
 	dev-libs/libfmt:=
+	dev-libs/libsigc++:2
 	dev-libs/libxml2:2
-	dev-libs/spdlog:=
 	>=x11-libs/vte-0.70.2:2.91
 	net-misc/curl
-	x11-libs/cairo
-	x11-libs/gtk+:3
-	x11-libs/pango"
+	x11-libs/cairo[X]
+	x11-libs/gtk+:3[X]
+	x11-libs/pango[X]"
 
 DEPEND="${PYTHON_DEPS}
 	${RDEPEND}"
