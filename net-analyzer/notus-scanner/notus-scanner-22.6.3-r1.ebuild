@@ -22,7 +22,9 @@ DEPEND="
 	>=dev-python/python-gnupg-0.5.1[${PYTHON_USEDEP}]
 	<dev-python/packaging-24.1[${PYTHON_USEDEP}]
 	>=dev-python/paho-mqtt-1.5.1[${PYTHON_USEDEP}]
-	<dev-python/tomli-3[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		<dev-python/tomli-3[${PYTHON_USEDEP}]
+	' 3.10)
 "
 
 RDEPEND="
