@@ -20,7 +20,7 @@ RDEPEND="
 	>=x11-libs/gtk+-2.24.0:2
 	exif? ( >=media-gfx/exiv2-0.14:= )
 	gsf? ( >=gnome-extra/libgsf-1.12:= )
-	pdf? ( >=app-text/poppler-0.18:= )
+	pdf? ( >=app-text/poppler-0.18:=[cairo] )
 	samba? ( gnome-base/gvfs[samba] )
 	taglib? ( >=media-libs/taglib-1.4 )
 "
