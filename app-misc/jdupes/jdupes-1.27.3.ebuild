@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ if [[ "${PV}" == *9999 ]] ; then
 else
 	SRC_URI="https://codeberg.org/jbruchon/jdupes/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/${PN}
-	KEYWORDS="amd64"
+	KEYWORDS="amd64 ~arm64"
 fi
 LICENSE="MIT"
 SLOT="0"
