@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~arm64"
 RDEPEND="
 	app-misc/pax-utils
 	>=dev-python/zenlib-2.1.2[${PYTHON_USEDEP}]
-	>=dev-python/pycpio-1.1.2[${PYTHON_USEDEP}]
+	>=dev-python/pycpio-1.2.1[${PYTHON_USEDEP}]
 	sys-apps/pciutils
 "
 
@@ -37,9 +37,8 @@ src_install() {
 	doexe hooks/installkernel/52-ugrd.install
 	exeinto /usr/lib/kernel/install.d
 	doexe hooks/kernel-install/52-ugrd.install
-	# Install bash and zsh completion scripts
-	dobashcomp completion/ugrd
-	dozshcomp completion/_ugrd
+	dobashcomp completion/ugrd  # Install bash autocomplete script
+	dozshcomp completion/_ugrd  # Install zsh autocomplete script
 }
 
 pkg_postinst() {
