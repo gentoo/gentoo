@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1
 
@@ -61,6 +61,23 @@ python_test() {
 		tests/integration/test_tornado.py
 		tests/integration/test_aiohttp.py
 	)
+
+	case ${EPYTHON} in
+		python3.13)
+			EPYTEST_DESELECT+=(
+				# SSL problems, might be weak bundle in pytest-httpbin
+				# https://github.com/kevin1024/vcrpy/issues/848
+				"tests/integration/test_urllib2.py::test_cross_scheme"
+				"tests/integration/test_urllib2.py::test_decorator[https]"
+				"tests/integration/test_urllib2.py::test_get_data[https]"
+				"tests/integration/test_urllib2.py::test_post_data[https]"
+				"tests/integration/test_urllib2.py::test_post_decorator[https]"
+				"tests/integration/test_urllib2.py::test_post_unicode_data[https]"
+				"tests/integration/test_urllib2.py::test_response_code[https]"
+				"tests/integration/test_urllib2.py::test_response_headers[https]"
+			)
+			;;
+	esac
 
 	local -x REQUESTS_CA_BUNDLE=$("${EPYTHON}" -m pytest_httpbin.certs)
 	epytest -m 'not online'
