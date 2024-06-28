@@ -7,6 +7,7 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
 PYPI_PN=${PN/-/_}
+# keep compat in sync with PyQt5 or else it confuses some revdeps
 PYTHON_COMPAT=( python3_{10..13} )
 inherit distutils-r1 pypi
 
