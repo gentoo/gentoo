@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/tree-sitter/tree-sitter-css"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 PATCHES=(
 	# https://bugs.gentoo.org/928010
