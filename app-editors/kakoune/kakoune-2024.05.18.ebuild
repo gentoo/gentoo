@@ -6,7 +6,7 @@ EAPI=8
 inherit toolchain-funcs
 
 DESCRIPTION="Modal editor inspired by vim"
-HOMEPAGE="http://kakoune.org/ https://github.com/mawww/kakoune"
+HOMEPAGE="https://kakoune.org/ https://github.com/mawww/kakoune"
 SRC_URI="https://github.com/mawww/kakoune/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="Unlicense"
