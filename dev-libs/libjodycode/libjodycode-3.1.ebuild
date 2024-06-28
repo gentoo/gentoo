@@ -9,7 +9,7 @@ SRC_URI="https://github.com/jbruchon/libjodycode/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 ~arm64 ~riscv"
 
 # missing test script
 # https://github.com/jbruchon/jdupes/issues/191
