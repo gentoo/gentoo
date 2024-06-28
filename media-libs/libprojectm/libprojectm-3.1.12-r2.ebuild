@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools xdg
 
 DESCRIPTION="A graphical music visualization plugin similar to milkdrop"
 HOMEPAGE="https://github.com/projectM-visualizer/projectm"
