@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<upstream>
-		<remote-id type="github">pre-commit/pre-commit</remote-id>
-		<remote-id type="pypi">pre-commit</remote-id>
-	</upstream>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">pre-commit/pre-commit</remote-id>
+    <remote-id type="pypi">pre-commit</remote-id>
+  </upstream>
 </pkgmetadata>
