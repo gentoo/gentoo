@@ -36,14 +36,6 @@ RDEPEND="${DEPEND}
 "
 BDEPEND="dev-lang/sassc"
 
-src_configure() {
-	local mycmakeargs=(
-		-DDATA_INSTALL_DIR="${EPREFIX}/usr/share"
-	)
-
-	ecm_src_configure
-}
-
 pkg_postinst() {
 	ecm_pkg_postinst
 	elog "If you notice missing icons in your GTK applications, you may have to install"
