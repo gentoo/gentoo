@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
 
@@ -11,8 +11,9 @@ MY_PV=$(ver_rs 1- '_')
 MY_P="${PN}_${MY_PV}"
 
 DESCRIPTION="The leading SQL relational database engine written in Java"
-HOMEPAGE="http://hsqldb.org"
+HOMEPAGE="https://hsqldb.org"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_P}.zip"
+S="${WORKDIR}/${PN}"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
@@ -33,8 +34,6 @@ PATCHES=(
 	"${FILESDIR}/resolve-config-softlinks.patch"
 	"${FILESDIR}/${P}-java7.patch"
 )
-
-S="${WORKDIR}/${PN}"
 
 HSQLDB_JAR=/usr/share/hsqldb/lib/hsqldb.jar
 HSQLDB_HOME=/var/lib/hsqldb
@@ -90,7 +89,7 @@ src_test() {
 }
 
 src_install() {
-	java-pkg_dojar lib/hsql*.jar
+	java-pkg_dojar lib/hsql{db{,util},tool,jdbc}.jar
 
 	if use doc; then
 		dodoc doc/*.txt
