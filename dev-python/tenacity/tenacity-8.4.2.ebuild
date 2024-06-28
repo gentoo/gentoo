@@ -21,10 +21,8 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~sparc ~x86"
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
-		$(python_gen_cond_dep '
-			>=dev-python/tornado-6.4-r1[${PYTHON_USEDEP}]
-			dev-python/typeguard[${PYTHON_USEDEP}]
-		' 3.{10..12})
+		>=dev-python/tornado-6.4-r1[${PYTHON_USEDEP}]
+		dev-python/typeguard[${PYTHON_USEDEP}]
 	)
 "
 
