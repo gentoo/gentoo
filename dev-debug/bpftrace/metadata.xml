@@ -11,6 +11,11 @@
   </maintainer>
   <maintainer type="person">
     <email>chutzpah@gentoo.org</email>
+    <name>Patrick McLean</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>dlan@gentoo.org</email>
+    <name>Yixun Lan</name>
   </maintainer>
   <use>
     <flag name="fuzzing">Build bpftrace for fuzzing</flag>
