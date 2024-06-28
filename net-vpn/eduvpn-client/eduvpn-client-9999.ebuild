@@ -47,16 +47,12 @@ RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	net-misc/networkmanager
-	>=net-vpn/eduvpn-common-1.99.0[${PYTHON_USEDEP}]
+	=net-vpn/eduvpn-common-2*[${PYTHON_USEDEP}]
 "
 
 if [[ ${PV} != *9999* ]] ; then
 	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-eduvpn-20240307 )"
 fi
-
-PATCHES=(
-	"${FILESDIR}/${PN}-desktop.patch"
-)
 
 pkg_postinst() {
 	xdg_icon_cache_update

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
@@ -33,7 +33,7 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="openvpn wireguard"
+IUSE="openvpn"
 RESTRICT="test"
 
 RDEPEND="
@@ -54,11 +54,9 @@ wrap_python() {
 }
 
 pkg_pretend() {
-	if use wireguard; then
-		CONFIG_CHECK="~WIREGUARD"
-		WARNING_WIREGUARD="You must enable WIREGUARD to use wireguard."
-		check_extra_config
-	fi
+	CONFIG_CHECK="~WIREGUARD"
+	WARNING_WIREGUARD="You must enable WIREGUARD to use wireguard."
+	check_extra_config
 }
 
 src_unpack() {
@@ -72,16 +70,15 @@ src_unpack() {
 	default_src_unpack
 }
 
-src_prepare() {
-	default
-
-	mkdir -p wrappers/python/eduvpn_common/lib || die
-
-	wrap_python ${FUNCNAME}
-}
-
 src_compile() {
 	default
+
+	# Install shared library into the python directory so the python packaging
+	# magic can find it.
+	pushd wrappers/python >/dev/null || die
+	emake install-lib
+	popd >/dev/null || die
+
 	wrap_python ${FUNCNAME}
 }
 
@@ -91,7 +88,5 @@ src_test() {
 }
 
 src_install() {
-	# The shared library is installed within the python package. There is no
-	# need to call the default routine.
 	wrap_python ${FUNCNAME}
 }
