@@ -20,7 +20,9 @@ COMMON_DEPEND="
 	acct-user/gvm
 	net-misc/rsync
 	>=net-analyzer/gvmd-22.5.0
-	>=dev-python/tomli-2.0.1[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>dev-python/tomli-2.0.1[${PYTHON_USEDEP}]
+	' 3.10)
 	>=dev-python/rich-13.2.0[${PYTHON_USEDEP}]
 	>=dev-python/shtab-1.7.0[${PYTHON_USEDEP}]
 "
