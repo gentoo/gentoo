@@ -542,16 +542,15 @@ kernel-install_pkg_pretend() {
 
 	if ! use initramfs && ! has_version "${CATEGORY}/${PN}[-initramfs]"; then
 		ewarn
-		ewarn "WARNING: The standard Gentoo distribution kernel configuration"
-		ewarn "requires an initramfs to reliably boot! You have disabled the"
-		ewarn "initramfs USE flag, as a result, dracut was not pulled in as a"
-		ewarn "dependency. Please ensure that you are either overriding the standard"
-		ewarn "configuration or that an alternative initramfs generation"
-		ewarn "is installed and installkernel is configured to use it."
+		ewarn "WARNING: The standard Gentoo distribution kernel configuration requires an"
+		ewarn "initramfs to reliably boot! You have disabled the initramfs USE flag, so"
+		ewarn "Dracut was not pulled in as a dependency."
+		ewarn "sys-kernel/installkernel is not configured to use an initramfs generator,"
+		ewarn "please ensure that an initramfs generator is installed, and installkernel"
+		ewarn "is configured to use it."
 		ewarn
-		ewarn "This is an advanced use case, you are on your own to ensure"
-		ewarn "that your system is bootable!"
-		ewarn
+		ewarn "If an initramfs is not used, this is an advanced use case where"
+		ewarn "you are on your own to ensure that your system is bootable!"
 	fi
 }
 
