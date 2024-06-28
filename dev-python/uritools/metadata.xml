@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
 	<longdescription lang="en">
 		For various reasons, ``urllib.parse`` and its Python 2 predecessor
 		``urlparse`` are not compliant with current Internet standards.  As
@@ -19,7 +23,6 @@
 		URIs and URI references, and for conveniently creating URIs from their
 		individual components.
 	</longdescription>
-	<!-- maintainer-needed -->
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">uritools</remote-id>
