@@ -12,7 +12,7 @@ HOMEPAGE="https://api.kde.org/polkit-qt-1/html/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${KDE_ORG_NAME}/${KDE_ORG_NAME}-${PV}.tar.xz"
-	KEYWORDS="~amd64 ~arm arm64 ~loong ~ppc ppc64 ~riscv x86"
+	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ppc64 ~riscv x86"
 fi
 
 LICENSE="LGPL-2"
