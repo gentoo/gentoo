@@ -15,7 +15,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
 --- a/cmake/templates/hpxcxx.in
 +++ b/cmake/templates/hpxcxx.in
 @@ -1,4 +1,4 @@
--#! @PYTHON_EXECUTABLE@
+-#! @Python_EXECUTABLE@
 +#! /usr/bin/env python
  #
  # Copyright (c) 2014 Steven R. Brandt
@@ -23,7 +23,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
 --- a/cmake/templates/hpxrun.py.in
 +++ b/cmake/templates/hpxrun.py.in
 @@ -1,4 +1,4 @@
--#! @PYTHON_EXECUTABLE@
+-#! @Python_EXECUTABLE@
 +#! /usr/bin/env python
  #
  # Copyright (c) 2014 Thomas Heller
