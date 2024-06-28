@@ -104,6 +104,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.0_spi-master.patch
 	"${FILESDIR}"/${PN}-1.3.0-c99.patch
 	"${FILESDIR}"/${PN}-1.3.0-llvm-dummyflasher.patch
+	"${FILESDIR}"/${PN}-1.3.0-libflashrom.patch
 )
 
 DOCS=( README Documentation/ )

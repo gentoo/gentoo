@@ -1,0 +1,32 @@
+commit b544f055c32dd9c839cdf49009531decb80af8e5
+Author: Fabian Groffen <grobian@gentoo.org>
+Date:   Fri Jun 28 20:46:25 2024 +0200
+
+    libflashrom.map: remove non-existant functions
+    
+    Remove symbol names from the map that do not exist in the code.
+    https://bugs.gentoo.org/928955
+    
+    Change-Id: I30bab842d9cbd2daaa9902fd3223f47145cb0e7f
+    Signed-off-by: Fabian Groffen <grobian@gentoo.org>
+
+diff --git a/libflashrom.map b/libflashrom.map
+index 77abf727..e1cdfa6a 100644
+--- a/libflashrom.map
++++ b/libflashrom.map
+@@ -1,7 +1,5 @@
+ LIBFLASHROM_1.0 {
+   global:
+-    flashrom_board_info;
+-    flashrom_chipset_info;
+     flashrom_data_free;
+     flashrom_flag_get;
+     flashrom_flag_set;
+@@ -9,7 +7,6 @@ LIBFLASHROM_1.0 {
+     flashrom_flash_getsize;
+     flashrom_flash_probe;
+     flashrom_flash_release;
+-    flashrom_flashchip_info;
+     flashrom_image_read;
+     flashrom_image_verify;
+     flashrom_image_write;
