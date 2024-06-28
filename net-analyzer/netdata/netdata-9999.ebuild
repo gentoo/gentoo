@@ -4,7 +4,7 @@
 EAPI=8
 PYTHON_COMPAT=( python{3_9,3_10,3_11,3_12} )
 
-inherit cmake fcaps flag-o-matic linux-info optfeature python-single-r1 systemd
+inherit cmake fcaps linux-info optfeature python-single-r1 systemd
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/netdata/${PN}.git"
@@ -95,14 +95,6 @@ pkg_setup() {
 }
 
 src_configure() {
-	# -Werror=strict-aliasing
-	# https://bugs.gentoo.org/927174
-	# https://github.com/netdata/netdata/issues/17321
-	#
-	# Do not trust with LTO either.
-	append-flags -fno-strict-aliasing
-	filter-lto
-
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_Git=TRUE
 		-DCMAKE_INSTALL_PREFIX=/
