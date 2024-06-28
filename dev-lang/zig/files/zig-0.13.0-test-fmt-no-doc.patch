@@ -1,0 +1,17 @@
+# Docs contain examples of badly formatted code,
+# so they should be excluded for test-fmt to pass.
+# In the upstream, the "doc" directory
+# was removed from fmt_include_paths in
+# https://github.com/ziglang/zig/commit/cb1d1bdf
+
+--- a/build.zig
++++ b/build.zig
+@@ -428,7 +428,7 @@
+     }
+     const optimization_modes = chosen_opt_modes_buf[0..chosen_mode_index];
+ 
+-    const fmt_include_paths = &.{ "doc", "lib", "src", "test", "tools", "build.zig" };
++    const fmt_include_paths = &.{ "lib", "src", "test", "tools", "build.zig" };
+     const fmt_exclude_paths = &.{"test/cases"};
+     const do_fmt = b.addFmt(.{
+         .paths = fmt_include_paths,
