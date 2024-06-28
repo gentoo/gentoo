@@ -14,7 +14,4 @@
 		<flag name="gtk2">Use gtk:2 for widgets.</flag>
 		<flag name="extras">Build a lot of extra packages, including lhelp chm viewer program.</flag>
 	</use>
-	<upstream>
-		<remote-id type="sourceforge">downloads</remote-id>
-	</upstream>
 </pkgmetadata>
