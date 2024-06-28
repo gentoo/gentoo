@@ -78,8 +78,6 @@ usepil() {
 }
 
 python_configure_all() {
-	# It's important that these flags are also passed during the install phase
-	# as well. Make sure of that if you change the lines below. See bug 661308.
 	cat >> setup.cfg <<-EOF || die
 		[build_ext]
 		disable_platform_guessing = True
