@@ -1,0 +1,98 @@
+diff --git a/tests/test_partial_and_macros.py b/tests/test_partial_and_macros.py
+index 6fd4503..3ce0a33 100644
+--- a/tests/test_partial_and_macros.py
++++ b/tests/test_partial_and_macros.py
+@@ -1,5 +1,6 @@
+ import functools
+ import pytest
++import re
+ import sys
+ 
+ import makefun
+@@ -11,6 +12,11 @@ except ImportError:
+ 
+ PY2 = sys.version_info < (3, )
+ 
++# Python 3.13 dedents docstrings, earlier versions just strip initial
++# whitespace.  Use a regexp to get a consistently dedented docstring
++# for comparison across Python versions.
++DOCSTRING_NORMALIZE_RE = re.compile(r"^ +", re.MULTILINE)
++
+ 
+ def test_doc():
+     def foo(x, y):
+@@ -41,15 +47,15 @@ def test_doc():
+ 
+     sig_actual_call = ref_sig_str.replace("*, ", "")
+ 
+-    assert bar.__doc__ \
++    assert DOCSTRING_NORMALIZE_RE.sub("", bar.__doc__) \
+            == """<This function is equivalent to 'foo%s', see original 'foo' doc below.>
+ 
+-        a `foo` function
++a `foo` function
+ 
+-        :param x:
+-        :param y:
+-        :return:
+-        """ % sig_actual_call
++:param x:
++:param y:
++:return:
++""" % sig_actual_call
+ 
+ 
+ def test_partial():
+@@ -78,16 +84,16 @@ def test_partial():
+ 
+     sig_actual_call = "(x, y='hello', a)"  # if PY2 else "(x, *, y='hello', a)"
+ 
+-    assert foo.__doc__.replace("=KW_ONLY_ARG!", "") \
++    assert DOCSTRING_NORMALIZE_RE.sub("", foo.__doc__.replace("=KW_ONLY_ARG!", "")) \
+            == """<This function is equivalent to 'foo%s', see original 'foo' doc below.>
+ 
+-        a `foo` function
++a `foo` function
+ 
+-        :param x:
+-        :param y:
+-        :param a:
+-        :return:
+-        """ % sig_actual_call
++:param x:
++:param y:
++:param a:
++:return:
++""" % sig_actual_call
+ 
+ 
+ def test_issue_57():
+@@ -127,9 +133,7 @@ def test_create_with_partial():
+     assert m() == -1
+     assert m.i == 1
+     # the doc remains untouched in create_function as opposed to wraps, this is normal
+-    assert m.__doc__ == """partial(func, *args, **keywords) - new function with partial application
+-    of the given arguments and keywords.
+-"""
++    assert m.__doc__ == functools.partial.__doc__
+ 
+ 
+ def test_args_order_and_kind():
+@@ -161,11 +165,12 @@ def test_args_order_and_kind():
+         # it is possible to keyword-partialize a positional-only argument...
+         fp_ref = functools.partial(f, b=0)
+ 
+-        # but 'signature' does not support it !
+-        with pytest.raises(ValueError):
+-            signature(fp_ref)
+-
+-        # assert str(signature(fp_ref)) == "(c, /, *, d, **e)"
++        # but 'signature' does not support it before Python 3.12.4 !
++        if sys.version_info < (3, 12, 4):
++            with pytest.raises(ValueError):
++                signature(fp_ref)
++        else:
++            assert str(signature(fp_ref)) == "(a, c, /, *, d, **e)"
+ 
+         # so we do not support it
+         with pytest.raises(NotImplementedError):
