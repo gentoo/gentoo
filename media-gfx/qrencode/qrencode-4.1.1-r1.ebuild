@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-minimal
+inherit multilib-minimal optfeature
 
 DESCRIPTION="C library for encoding data in a QR Code symbol"
 HOMEPAGE="https://fukuchi.org/works/qrencode/"
@@ -40,4 +40,8 @@ multilib_src_test() {
 multilib_src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
+}
+
+pkg_postinst() {
+	optfeature "Install to decode the generated QR codes" media-gfx/zbar
 }
