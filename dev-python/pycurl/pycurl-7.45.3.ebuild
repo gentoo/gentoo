@@ -81,6 +81,10 @@ python_test() {
 		# TODO
 		tests/option_constants_test.py::OptionConstantsTest::test_proxy_tlsauth
 		tests/option_constants_test.py::OptionConstantsTest::test_socks5_gssapi_nec_setopt
+		# curl 8.8.0+
+		tests/memory_mgmt_test.py::MemoryMgmtTest::test_ioctlfunction_collection
+		tests/option_constants_test.py::OptionConstantsTest::test_krb4level
+		tests/option_constants_test.py::OptionConstantsTest::test_krblevel
 	)
 
 	epytest -p flaky tests
