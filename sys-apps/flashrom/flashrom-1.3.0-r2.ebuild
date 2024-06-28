@@ -107,6 +107,15 @@ PATCHES=(
 
 DOCS=( README Documentation/ )
 
+src_prepare() {
+	default
+	if use elibc_musl ; then
+		# skip failing test #908539
+		sed -i -e 's/-DCONFIG_LINUX_MTD=1/-UCONFIG_LINUX_MTD/' \
+			meson.build || die
+	fi
+}
+
 src_configure() {
 	local programmers="$(printf '%s,' $(for flag in ${IUSE_PROGRAMMERS//+/}; do usev ${flag}; done))"
 	programmers="${programmers%,}"
