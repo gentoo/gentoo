@@ -67,6 +67,7 @@ src_configure() {
 		-DCMAKE_INSTALL_LIBDIR="$(get_libdir)"
 		-DBUILD_WITH_L0="$(usex l0)"
 		-DDISABLE_LIBVA="$(usex !vaapi)"
+		-DNEO_DISABLE_LD_GOLD="ON"
 		-DNEO__METRICS_LIBRARY_INCLUDE_DIR="${ESYSROOT}/usr/include"
 		-DKHRONOS_GL_HEADERS_DIR="${ESYSROOT}/usr/include"
 		-DOCL_ICD_VENDORDIR="${EPREFIX}/etc/OpenCL/vendors"
