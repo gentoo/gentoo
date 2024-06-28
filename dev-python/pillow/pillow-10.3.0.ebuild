@@ -80,6 +80,7 @@ usepil() {
 python_configure_all() {
 	cat >> setup.cfg <<-EOF || die
 		[build_ext]
+		debug = True
 		disable_platform_guessing = True
 		$(usepil truetype)_freetype = True
 		$(usepil jpeg)_jpeg = True
