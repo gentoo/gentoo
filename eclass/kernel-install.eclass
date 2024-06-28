@@ -63,7 +63,10 @@ _IDEPEND_BASE="
 		>=sys-kernel/installkernel-14
 	)
 	initramfs? (
-		>=sys-kernel/installkernel-14[dracut(-)]
+		|| (
+			>=sys-kernel/installkernel-14[dracut(-)]
+			>=sys-kernel/installkernel-14[ugrd(-)]
+		)
 	)
 "
 
@@ -190,7 +193,7 @@ if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
 	"
 	IDEPEND="
 		generic-uki? (
-			>=sys-kernel/installkernel-14[-dracut(-),-ukify(-)]
+			>=sys-kernel/installkernel-14[-dracut(-),-ugrd(-),-ukify(-)]
 		)
 		!generic-uki? (
 			${_IDEPEND_BASE}
@@ -543,16 +546,26 @@ kernel-install_pkg_pretend() {
 
 	if ! use initramfs && ! has_version "${CATEGORY}/${PN}[-initramfs]"; then
 		ewarn
-		ewarn "WARNING: The standard configuration of the Gentoo distribution"
-		ewarn "kernels requires an initramfs! You have disabled the initramfs"
-		ewarn "USE flag and as a result dracut was not pulled in as a dependency."
-		ewarn "Please ensure that you are either overriding the standard"
-		ewarn "configuration or that an alternative initramfs generation plugin"
-		ewarn "is installed for your installkernel implementation!"
+		ewarn "WARNING: The default distribution kernel configuration is designed"
+		ewarn "to be used with an initramfs! Although possible, there is no guarantee"
+		ewarn "that distribution kernels will boot without an initramfs."
 		ewarn
-		ewarn "This is an advanced use case, you are on your own to ensure"
-		ewarn "that your system is bootable!"
-		ewarn
+		ewarn "You have disabled the initramfs USE flag, and as a result the package manager"
+        ewarn "will not enforce the configuration of an initramfs generator in"
+        ewarn "sys-kernel/installkernel."
+        ewarn
+		ewarn "If you wish to use a custom initramfs generator, then please ensure that" 
+        ewarn "/sbin/installkernel is capable of calling it via a kernel installation hook,"
+        ewarn "and is also configured to use it via /etc/kernel/install.conf."
+        ewarn
+        ewarn "If you wish to boot without an initramfs, then please ensure that"
+        ewarn "all kernel drivers required to boot your system are built into the"
+        ewarn "kernel by modifying the default distribution kernel configuration"
+        ewarn "using /etc/kernel/config.d"
+        ewarn
+		ewarn "Please refer to the installkernel and distribution kernel documentation:"
+		ewarn "    https://wiki.gentoo.org/wiki/Installkernel"
+        ewarn "    https://wiki.gentoo.org/wiki/Project:Distribution_Kernel"
 	fi
 }
 
