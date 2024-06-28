@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# NHOrus <jy6x2b32pie9@yahoo.com> (2024-06-28)
+# games-puzzle/seatris: last rites
+# Twenty-year-old tetris clone with upstream that wasn't touched since,
+# broken code and broken autoconf.
+# Removed after 2024-08-01
+# Bug: https://bugs.gentoo.org/935057
+games-puzzle/seatris
+
 # Michał Górny <mgorny@gentoo.org> (2024-07-01)
 # Refuses to boot if initramfs was built with an older systemd version
 # that enabled "cgroups v1".  Bug #935261.
