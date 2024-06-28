@@ -65,7 +65,10 @@ _IDEPEND_BASE="
 		>=sys-kernel/installkernel-14
 	)
 	initramfs? (
-		>=sys-kernel/installkernel-14[dracut(-)]
+		|| (
+			>=sys-kernel/installkernel-14[dracut(-)]
+			>=sys-kernel/installkernel-14[ugrd(-)]
+		)
 	)
 "
 
@@ -192,7 +195,7 @@ if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
 	"
 	IDEPEND="
 		generic-uki? (
-			>=sys-kernel/installkernel-14[-dracut(-),-ukify(-)]
+			>=sys-kernel/installkernel-14[-dracut(-),-ugrd(-),-ukify(-)]
 		)
 		!generic-uki? (
 			${_IDEPEND_BASE}
@@ -541,16 +544,18 @@ kernel-install_pkg_pretend() {
 
 	if ! use initramfs && ! has_version "${CATEGORY}/${PN}[-initramfs]"; then
 		ewarn
-		ewarn "WARNING: The standard configuration of the Gentoo distribution"
-		ewarn "kernels requires an initramfs! You have disabled the initramfs"
-		ewarn "USE flag and as a result dracut was not pulled in as a dependency."
-		ewarn "Please ensure that you are either overriding the standard"
-		ewarn "configuration or that an alternative initramfs generation plugin"
-		ewarn "is installed for your installkernel implementation!"
+		ewarn "WARNING: The standard Gentoo distribution kernel configuration is designed"
+		ewarn "to be used with an initramfs! Although possible, there is no guarantee"
+		ewarn "distribution kernels will boot without an initramfs."
 		ewarn
-		ewarn "This is an advanced use case, you are on your own to ensure"
-		ewarn "that your system is bootable!"
+		ewarn "The initramfs USE flag is disabled, and sys-kernel/installkernel is not"
+		ewarn "configured to use an initrd_generator, so an initramfs will not be built."
+		ewarn "Please ensure that an initramfs generator is installed, and installkernel"
+		ewarn "is configured to use it."
 		ewarn
+		ewarn "If a custom initramfs generator is used, installkernel must be"
+		ewarn "configured to use it. Please refer to the installkernel documentation:"
+		ewarn "https://wiki.gentoo.org/wiki/Installkernel#initrd_generator"
 	fi
 }
 
