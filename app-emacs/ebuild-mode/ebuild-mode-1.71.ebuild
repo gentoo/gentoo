@@ -24,5 +24,6 @@ pkg_postinst() {
 	optfeature "ebuild commands support" sys-apps/portage
 	optfeature "additional development tools" dev-util/pkgdev
 	optfeature "ebuild QA utilities" dev-util/pkgcheck
+	optfeature "XML syntax validation" app-emacs/nxml-gentoo-schemas
 	optfeature "generating HTML from GLEPs" dev-python/docutils-glep
 }
