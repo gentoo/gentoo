@@ -95,7 +95,6 @@ python_configure_all() {
 		$(usepil zlib)_zlib = True
 	EOF
 
-	# We have patched in this env var.
 	tc-export PKG_CONFIG
 }
 
