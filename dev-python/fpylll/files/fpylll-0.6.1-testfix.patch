@@ -1,0 +1,24 @@
+From fc432b21fa7e4b9891f5b761b3539989eb958f2b Mon Sep 17 00:00:00 2001
+From: "Martin R. Albrecht" <martinralbrecht@googlemail.com>
+Date: Sun, 28 Jan 2024 17:19:42 +0000
+Subject: [PATCH] we are not testing this code here
+
+avoids side-effects from doctest order
+---
+ src/fpylll/fplll/gso.pyx | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/fpylll/fplll/gso.pyx b/src/fpylll/fplll/gso.pyx
+index 3879f29b..e42a00b2 100644
+--- a/src/fpylll/fplll/gso.pyx
++++ b/src/fpylll/fplll/gso.pyx
+@@ -568,8 +568,7 @@ cdef class MatGSO:
+         >>> M = GSO.Mat(A)
+         >>> M.float_type
+         'double'
+-        >>> FPLLL.set_precision(100)
+-        53
++        >>> _ = FPLLL.set_precision(100)
+         >>> M = GSO.Mat(A, float_type='mpfr')
+         >>> M.float_type
+         'mpfr'
