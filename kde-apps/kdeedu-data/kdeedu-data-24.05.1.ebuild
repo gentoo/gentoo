@@ -14,7 +14,7 @@ IUSE=""
 
 BDEPEND="
 	dev-qt/qtbase:6
-	kde-frameworks/extra-cmake-modules:0
+	>=kde-frameworks/extra-cmake-modules-6.0:0
 "
 
 src_prepare() {
