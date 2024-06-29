@@ -38,3 +38,4 @@ move app-laptop/tuxedo-keyboard app-laptop/tuxedo-drivers
 move dev-libs/clhpp dev-cpp/clhpp
 move games-puzzle/ksokoban games-puzzle/skladnik
 move dev-python/python-sense-hat dev-python/sense-hat
+move app-pda/gtkpod media-sound/gtkpod
