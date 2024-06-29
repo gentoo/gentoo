@@ -20,8 +20,15 @@ RDEPEND="acct-group/elasticsearch
 	sys-libs/zlib
 	virtual/jre:17"
 
-QA_PREBUILT="usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/\(bin\|lib\)/.*"
-QA_PRESTRIPPED="usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/\(bin\|lib\)/.*"
+QA_FLAGS_IGNORED="usr/share/elasticsearch/lib/platform/linux-x64/*.so"
+QA_PREBUILT="
+	usr/share/elasticsearch/lib/platform/linux-x64/*.so
+	usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/\(bin\|lib\)/.*
+"
+QA_PRESTRIPPED="
+	usr/share/elasticsearch/lib/platform/linux-x64/*.so
+	usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/\(bin\|lib\)/.*
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-env.patch"
