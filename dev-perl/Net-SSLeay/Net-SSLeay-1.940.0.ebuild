@@ -36,6 +36,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.88-fix-network-tests.patch"
+	"${FILESDIR}/${PN}-1.940.0-avoid-runtime-check.patch"
 )
 
 PERL_RM_FILES=(
