@@ -1,0 +1,26 @@
+From 5219e8c5181b3a819b89032766340d5c1b11c3c5 Mon Sep 17 00:00:00 2001
+From: Luca Barbato <lu_zero@gentoo.org>
+Date: Sat, 29 Jun 2024 21:10:06 +0200
+Subject: [PATCH] Remove the runtime check
+
+Makes simpler to cross-build. At least for Gentoo it is fine since we
+control the versions on our own.
+---
+ Makefile.PL | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 94c72f2..d4b1aea 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -196,7 +196,6 @@ EOM
+         exit MISSING_PREREQ;
+     }
+ 
+-    check_openssl_version($prefix, $exec);
+     my %args = (
+         CCCDLFLAGS => $opts->{cccdlflags},
+         OPTIMIZE => $opts->{optimize},
+-- 
+2.45.2
+
