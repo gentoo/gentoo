@@ -4,7 +4,7 @@
 EAPI=8
 
 DESCRIPTION="Small, fast and conformant XML pull parser written in C"
-HOMEPAGE="http://faxpp.sourceforge.net/"
+HOMEPAGE="https://faxpp.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
