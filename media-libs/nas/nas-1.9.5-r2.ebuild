@@ -7,7 +7,7 @@ inherit flag-o-matic multilib multilib-minimal toolchain-funcs
 
 DESCRIPTION="Network Audio System"
 HOMEPAGE="https://radscan.com/nas.html"
-SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-1.9.5-patches.tar.xz"
 
 LICENSE="HPND MIT"
@@ -41,6 +41,7 @@ DOCS=( BUILDNOTES FAQ HISTORY README RELEASE TODO )
 
 PATCHES=(
 	"${WORKDIR}"/${PN}-1.9.5-patches
+	"${FILESDIR}"/${PN}-1.9.5-gcc14-build-fix.patch
 )
 
 src_prepare() {
