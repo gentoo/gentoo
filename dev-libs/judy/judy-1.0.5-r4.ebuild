@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="A C library that implements a dynamic array"
-HOMEPAGE="http://judy.sourceforge.net/"
+HOMEPAGE="https://judy.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/judy/Judy-${PV}.tar.gz"
 
 LICENSE="LGPL-2.1"
