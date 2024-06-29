@@ -19,6 +19,10 @@ src_prepare() {
 	eapply_user
 }
 
+src_compile() {
+	emake MANFORMAT="man"
+}
+
 src_install() {
 	emake DESTDIR="${D}" LIBDIR="/usr/$(get_libdir)" MANFORMAT="man" install
 }
