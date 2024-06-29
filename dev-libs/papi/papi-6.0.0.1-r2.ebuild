@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,8 +6,8 @@ EAPI=8
 inherit autotools fortran-2 toolchain-funcs
 
 DESCRIPTION="Performance Application Programming Interface"
-HOMEPAGE="http://icl.cs.utk.edu/papi/"
-SRC_URI="http://icl.cs.utk.edu/projects/${PN}/downloads/${P}.tar.gz"
+HOMEPAGE="https://icl.cs.utk.edu/papi/"
+SRC_URI="https://icl.cs.utk.edu/projects/${PN}/downloads/${P}.tar.gz"
 S="${WORKDIR}/${P}/src"
 
 LICENSE="BSD"
