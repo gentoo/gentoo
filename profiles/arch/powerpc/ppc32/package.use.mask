@@ -13,10 +13,6 @@ sys-devel/clang-runtime openmp
 # Fails tests, potential false negatives #911402
 app-antivirus/clamav system-mspack
 
-# Sam James <sam@gentoo.org> (2024-01-17)
-# The generated code is too large and it takes ages to build, bug #922249.
-dev-python/mypy native-extensions
-
 # Marek Szuba <marecki@gentoo.org> (2024-04-24)
 # Sam James <sam@gentoo.org> (2024-01-05)
 # sys-apps/keyutils not stable here, because of test failures. bug #636252
