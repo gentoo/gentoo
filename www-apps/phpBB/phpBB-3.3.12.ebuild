@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,6 +8,7 @@ inherit webapp
 DESCRIPTION="An open-source PHP-based bulletin board package"
 HOMEPAGE="https://www.phpbb.com/"
 SRC_URI="https://download.phpbb.com/pub/release/$(ver_cut 1-2)/${PV}/${P}.tar.bz2"
+S="${WORKDIR}/${PN}${PV%%.*}"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~sparc ~x86"
 IUSE="ftp gd mssql mysqli postgres sqlite zlib"
@@ -19,13 +20,12 @@ PHP_RDEPEND="(
 )"
 
 RDEPEND="|| (
+	${PHP_RDEPEND//@SLOT@/8.3}
 	${PHP_RDEPEND//@SLOT@/8.2}
 	${PHP_RDEPEND//@SLOT@/8.1}
 )"
 
 need_httpd_cgi
-
-S="${WORKDIR}/${PN}${PV%%.*}"
 
 src_install() {
 	webapp_src_preinst
