@@ -5,4 +5,8 @@
 		<email>ceamac@gentoo.org</email>
 		<name>Viorel Munteanu</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>immoloism@gmail.com</email>
+		<name>Ian Jordan</name>
+	</maintainer>
 </pkgmetadata>
