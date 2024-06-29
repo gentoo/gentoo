@@ -6,6 +6,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2024-06-29)
+# JIT is experimental and prone to break packages.  Should you choose
+# to use it, please do not file Gentoo bugs and report any issues you
+# hit upstream.
+dev-lang/python jit
+
 # Sam James <sam@gentoo.org> (2024-06-24)
 # Breaks installed gems in hard-to-debug ways.
 # bug #887223, bug #891367, bug #903891, bug #917139
