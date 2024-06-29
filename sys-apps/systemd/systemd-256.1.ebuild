@@ -28,7 +28,7 @@ inherit bash-completion-r1 linux-info meson-multilib optfeature pam python-singl
 inherit secureboot systemd toolchain-funcs udev
 
 DESCRIPTION="System and service manager for Linux"
-HOMEPAGE="http://systemd.io/"
+HOMEPAGE="https://systemd.io/"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
