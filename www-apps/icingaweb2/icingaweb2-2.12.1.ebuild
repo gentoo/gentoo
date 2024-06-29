@@ -6,7 +6,7 @@ EAPI=7
 inherit depend.apache multilib
 
 DESCRIPTION="Icinga Web 2 - Frontend for icinga2"
-HOMEPAGE="http://www.icinga.org/"
+HOMEPAGE="https://icinga.com/"
 
 if [[ ${PV} == *9999 ]];then
 	inherit git-r3
