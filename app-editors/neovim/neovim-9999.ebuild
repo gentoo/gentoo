@@ -53,6 +53,7 @@ DEPEND="${LUA_DEPS}
 	>=dev-libs/msgpack-3.0.0:=
 	>=dev-libs/tree-sitter-0.22.6:=
 	>=dev-libs/unibilium-2.0.0:0=
+	>=dev-libs/libutf8proc-2.9.0:=
 "
 RDEPEND="
 	${DEPEND}
