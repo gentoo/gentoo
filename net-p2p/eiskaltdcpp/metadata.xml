@@ -12,7 +12,6 @@
 		<flag name="cli">Enable sample cli based on readline</flag>
 		<flag name="daemon">Enable eiskaltdcpp-daemon</flag>
 		<flag name="dht">Enable DHT (distributed hash table) support for libeiskaltdcpp</flag>
-		<flag name="gold">Use gold.ld instead of ld</flag>
 		<flag name="libcanberra">Enable sound notifications support over libcanberra in EiskaltDC++ Gtk</flag>
 		<flag name="minimal">Don't install headers</flag>
 	</use>
