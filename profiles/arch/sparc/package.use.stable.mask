@@ -7,7 +7,6 @@ net-print/cups-filters pdf
 net-print/libcupsfilters pdf
 net-print/cups-meta pdf
 
-
 # Sam James <sam@gentoo.org> (2023-12-30)
 # Qt not marked stable here.
 app-text/doxygen gui
