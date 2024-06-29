@@ -56,7 +56,9 @@ src_prepare() {
 }
 
 src_configure() {
-	# See https://github.com/intel/compute-runtime/issues/531
+	# Filtered for two reasons:
+	# 1) https://github.com/intel/compute-runtime/issues/528
+	# 2) bug #930199
 	filter-lto
 
 	local mycmakeargs=(
