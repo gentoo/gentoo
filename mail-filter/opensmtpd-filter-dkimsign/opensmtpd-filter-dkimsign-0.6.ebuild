@@ -6,6 +6,7 @@ EAPI=8
 DESCRIPTION="OpenSMTPD filter for signing mail with DKIM"
 HOMEPAGE="https://imperialat.at/dev/filter-dkimsign/"
 SRC_URI="https://imperialat.at/releases/filter-dkimsign-${PV}.tar.gz -> ${P}.tar.gz"
+S=${WORKDIR}/${P#opensmtpd-}
 
 LICENSE="BSD"
 SLOT="0"
@@ -16,9 +17,6 @@ DEPEND="
 	dev-libs/openssl
 	"
 RDEPEND="${DEPEND}"
-BDEPEND=""
-
-S=${WORKDIR}/${P#opensmtpd-}
 
 src_prepare() {
 	mv -f Makefile.gnu Makefile
