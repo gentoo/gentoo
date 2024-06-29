@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI="8"
 PYTHON_COMPAT=( python3_{10..12} )
 
 inherit python-r1 toolchain-funcs multilib-minimal
@@ -114,17 +114,4 @@ multilib_src_install() {
 multiib_src_install_all() {
 	python_setup
 	python_fix_shebang "${ED}"/usr/libexec/selinux/semanage_migrate_store
-}
-
-pkg_postinst() {
-	# Migrate the SELinux semanage configuration store if not done already
-	local selinuxtype=$(awk -F'=' '/SELINUXTYPE=/ {print $2}' "${EROOT}"/etc/selinux/config 2>/dev/null)
-	if [ -n "${selinuxtype}" ] && [ ! -d "${EROOT}"/var/lib/selinux/${selinuxtype}/active ] ; then
-		ewarn "Since the 2.4 SELinux userspace, the policy module store is moved"
-		ewarn "from /etc/selinux to /var/lib/selinux. The migration will be run now."
-		ewarn "If there are any issues, it can be done manually by running:"
-		ewarn "/usr/libexec/selinux/semanage_migrate_store"
-		ewarn "For more information, please see"
-		ewarn "- https://github.com/SELinuxProject/selinux/wiki/Policy-Store-Migration"
-	fi
 }
