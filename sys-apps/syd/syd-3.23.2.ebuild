@@ -29,16 +29,16 @@ CRATES="
 	bumpalo@3.16.0
 	caps@0.5.5
 	cast@0.3.0
-	cc@1.0.101
+	cc@1.0.102
 	cfg-if@1.0.0
 	cfg_aliases@0.2.1
 	chrono@0.4.38
 	ciborium-io@0.2.2
 	ciborium-ll@0.2.2
 	ciborium@0.2.2
-	clap@4.5.7
-	clap_builder@4.5.7
-	clap_derive@4.5.5
+	clap@4.5.8
+	clap_builder@4.5.8
+	clap_derive@4.5.8
 	clap_lex@0.7.1
 	colorchoice@1.0.1
 	const-hex@1.12.0
@@ -132,7 +132,7 @@ CRATES="
 	nu-ansi-term@0.46.0
 	num-traits@0.2.19
 	num_cpus@1.16.0
-	object@0.36.0
+	object@0.36.1
 	oci-spec@0.6.5
 	once_cell@1.19.0
 	oorandom@11.1.3
