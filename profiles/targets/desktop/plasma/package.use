@@ -87,7 +87,6 @@ sys-libs/zlib minizip
 # Keep existing defaults after dropping IUSE=phonon from make.defaults
 <app-office/calligra-3.3 phonon
 kde-apps/kio-extras phonon
-kde-apps/kio-extras-kf5 phonon
 kde-apps/marble phonon
 
 # Required by kde-plasma/plasma-meta
