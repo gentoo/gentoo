@@ -239,6 +239,19 @@ kernel-build_src_configure() {
 		local relfile=${WORKDIR}/build/include/config/kernel.release
 		KV_FULL=$(<"${relfile}") || die
 	fi
+
+	# Make sure we are about to build the correct kernel
+	if [[ ${PV} != *9999 ]]; then
+		local expected_ver=$(dist-kernel_PV_to_KV "${PV}")
+
+		if [[ ${KV_FULL} != ${expected_ver}* ]]; then
+			eerror "Kernel version does not match PV!"
+			eerror "Source version: ${KV_FULL}"
+			eerror "Expected (PV*): ${expected_ver}*"
+			eerror "Please ensure you are applying the correct patchset."
+			die "Kernel version mismatch: got ${KV_FULL}, expected ${expected_ver}*"
+		fi
+	fi
 }
 
 # @FUNCTION: kernel-build_src_compile
