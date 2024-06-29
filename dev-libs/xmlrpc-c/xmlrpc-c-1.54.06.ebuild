@@ -5,13 +5,13 @@ EAPI=8
 
 inherit toolchain-funcs
 
-# Upstream maintains 3 release channels: http://xmlrpc-c.sourceforge.net/release.html
+# Upstream maintains 3 release channels: https://xmlrpc-c.sourceforge.net/release.html
 # 1. Only the "Super Stable" series is released as a tarball
-# 2. SVN tagging of releases seems spotty: http://svn.code.sf.net/p/xmlrpc-c/code/release_number/
+# 2. SVN tagging of releases seems spotty: https://svn.code.sf.net/p/xmlrpc-c/code/release_number/
 # Because of this, we are following the "Super Stable" release channel
 
 DESCRIPTION="A lightweight RPC library based on XML and HTTP"
-HOMEPAGE="http://xmlrpc-c.sourceforge.net/"
+HOMEPAGE="https://xmlrpc-c.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tgz"
 
 LICENSE="BSD"
