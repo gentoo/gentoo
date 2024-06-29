@@ -469,6 +469,7 @@ sci-libs/coinhsl
 # Michał Górny <mgorny@gentoo.org> (2024-06-08)
 # Prereleases of Xfce 4.20.  Masking upon popular request, due to
 # a large number of regressions in every new release.
+>=dev-build/xfce4-dev-tools-4.19
 >=xfce-base/exo-4.19
 >=xfce-base/garcon-4.19
 >=xfce-base/libxfce4ui-4.19
