@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,6 +17,8 @@ IUSE="debug openmp cpu_flags_x86_sse2 png static-libs"
 BDEPEND="virtual/pkgconfig"
 DEPEND="png? ( media-libs/libpng:= )"
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-testfix.patch" )
 
 # NEWS and ChangeLog are empty as of 2020-01-01, and README.md
 # didn't make it into the release tarball.
