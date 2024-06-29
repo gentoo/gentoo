@@ -82,8 +82,8 @@ python_configure_all() {
 		[build_ext]
 		debug = True
 		disable_platform_guessing = True
-		vendor_raqm = False
-		vendor_fribidi = False
+		$(usex truetype "vendor_raqm = False" "") # BUG 935124
+		$(usex truetype "vendor_fribidi = False" "") # ditto
 		$(usepil truetype)_freetype = True
 		$(usepil jpeg)_jpeg = True
 		$(usepil jpeg2k)_jpeg2000 = True
