@@ -558,12 +558,6 @@ sec-keys/openpgp-keys-jiatan
 ~dev-libs/protobuf-26.1
 ~dev-cpp/abseil-cpp-20240116.2
 
-# Hans de Graaff <graaff@gentoo.org> (2024-05-26)
-# Upstream is gone. No longer compiles with modern C compilers. Last
-# release in 2011. No reverse dependencies. Masked for removal on
-# 20240-06-26.
-dev-ruby/uconv
-
 # Sam James <sam@gentoo.org> (2024-04-28)
 # Masked for testing. Tracker bug: bug #930805.
 >=sys-libs/ncurses-6.5
