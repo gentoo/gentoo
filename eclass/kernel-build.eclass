@@ -235,14 +235,22 @@ kernel-build_src_configure() {
 	cp -pR "${WORKDIR}"/modprep "${WORKDIR}"/build || die
 
 	# Now that we have a release file, set KV_FULL
+	local relfile=${WORKDIR}/build/include/config/kernel.release
 	if [[ -z ${KV_FULL} ]]; then
-		local relfile=${WORKDIR}/build/include/config/kernel.release
 		KV_FULL=$(<"${relfile}") || die
 	fi
 
 	# Make sure we are about to build the correct kernel
 	if [[ ${PV} != *9999 ]]; then
 		local expected_ver=$(dist-kernel_PV_to_KV "${PV}")
+		local expected_rel=$(<"${relfile}")
+
+		if [[ ${KV_FULL} != ${expected_rel} ]]; then
+			eerror "KV_FULL mismatch!"
+			eerror "KV_FULL:  ${KV_FULL}"
+			eerror "Expected: ${expected_rel}"
+			die "KV_FULL mismatch: got ${KV_FULL}, expected ${expected_rel}"
+		fi
 
 		if [[ ${KV_FULL} != ${expected_ver}* ]]; then
 			eerror "Kernel version does not match PV!"
