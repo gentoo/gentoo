@@ -24,7 +24,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake LIBCRYPTOPC="libcrypto"
+	emake LIBCRYPTOPC="libcrypto" MANFORMAT="man"
 }
 
 src_install() {
