@@ -14,7 +14,7 @@ if [[ "${PV}" == 9999* ]]; then
 else
 	SRC_URI="
 		https://github.com/caddyserver/caddy/archive/v${PV}.tar.gz -> ${P}.tar.gz
-		https://github.com/rahilarious/gentoo-distfiles/releases/download/${P}/deps.tar.xz -> ${P}-deps.tar.xz
+		https://dev.gentoo.org/~zmedico/dist/${PF}-deps.tar.xz
 		https://github.com/caddyserver/dist/archive/refs/tags/v${PV}.tar.gz -> ${P}-docs.tar.gz
 "
 	KEYWORDS="~amd64 ~arm64 ~loong ~riscv"
