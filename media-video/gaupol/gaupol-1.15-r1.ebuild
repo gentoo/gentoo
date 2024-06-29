@@ -15,14 +15,12 @@ SRC_URI="https://github.com/otsaloma/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="spell"
 
 RDEPEND="
 	app-text/iso-codes
 	dev-python/charset-normalizer[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	x11-libs/gtk+:3[introspection]
-	spell? ( app-text/gspell[introspection] )
 "
 BDEPEND="
 	sys-devel/gettext
@@ -49,17 +47,13 @@ pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
 
-	optfeature "External player support" media-video/mplayer media-video/mpv media-video/vlc
-	if [[ -z ${REPLACING_VERSIONS} ]]; then
-		if use spell; then
-			elog ""
-			elog "Spell-checking requires a dictionary, any of app-dicts/myspell-*"
-			elog "or app-text/aspell with the appropriate L10N variable."
-			elog ""
-			elog "Additionally, make sure that app-text/enchant has the correct flags enabled:"
-			elog "USE=hunspell for myspell dictionaries and USE=aspell for aspell dictionaries."
-		fi
-	fi
+	optfeature "Spellchecking with myspell* dictionaries" \
+			   "app-text/gspell[introspection] app-text/enchant[aspell]" \
+			   "app-text/gspell[introspection] app-text/enchant[hunspell]" \
+			   "app-text/gspell[introspection] app-text/enchant[nuspell]"
+
+	optfeature "external player" media-video/mplayer media-video/mpv media-video/vlc
+	# optfeature "internal player support" TODO(setan): add this
 }
 
 pkg_postrm() {
