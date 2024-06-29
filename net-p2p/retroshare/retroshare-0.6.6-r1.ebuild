@@ -40,7 +40,7 @@ RDEPEND="
 		x11-libs/libXScrnSaver
 	)
 	libupnp? ( net-libs/libupnp:= )
-	miniupnp? ( net-libs/miniupnpc:= )
+	miniupnp? ( net-libs/miniupnpc:0/17 )
 	service? ( dev-qt/qtcore:5 )
 	sqlcipher? ( dev-db/sqlcipher )
 	!sqlcipher? ( dev-db/sqlite:3 )"

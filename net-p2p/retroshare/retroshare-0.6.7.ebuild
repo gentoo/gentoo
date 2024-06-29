@@ -10,6 +10,7 @@ HOMEPAGE="https://retroshare.cc"
 SRC_URI="https://download.opensuse.org/repositories/network:/retroshare/Debian_Testing/retroshare-common_${PV}.orig.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/RetroShare"
 # NOTE: GitHub releases/archive is impractical to build so we use the OBS repo
+# REVIEW: OBS repo squashes point releases (0.6.7 = 0.6.7.2)
 
 LICENSE="AGPL-3 Apache-2.0 CC-BY-SA-4.0 GPL-2 GPL-3 LGPL-3"
 SLOT="0"
@@ -40,7 +41,7 @@ RDEPEND="
 		x11-libs/libXScrnSaver
 	)
 	libupnp? ( net-libs/libupnp:= )
-	miniupnp? ( net-libs/miniupnpc:= )
+	miniupnp? ( net-libs/miniupnpc:0/17 )
 	sqlcipher? ( dev-db/sqlcipher )
 	!sqlcipher? ( dev-db/sqlite:3 )
 	plugins? (
