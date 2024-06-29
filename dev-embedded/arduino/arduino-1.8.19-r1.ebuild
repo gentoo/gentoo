@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit java-pkg-2 desktop xdg-utils
+inherit java-pkg-2 desktop xdg
 
 DESCRIPTION="An open-source AVR electronics prototyping platform"
 HOMEPAGE="https://www.arduino.cc/ https://github.com/arduino/"
@@ -116,6 +116,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_icon_cache_update
+	xdg_pkg_postinst
 	[[ ! -x /usr/bin/avr-g++ ]] && ewarn "Missing avr-g++; you need to crossdev -s4 avr"
 }
