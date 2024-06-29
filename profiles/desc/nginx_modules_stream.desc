@@ -1,20 +1,24 @@
-# Copyright 1999-2017 Gentoo Foundation.
+# Copyright 1999-2025 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of NGINX_MODULES_STREAM USE_EXPAND flags.
 
 # Keep it sorted.
-access - This module allows limiting access to certain client addresses.
-geo - This module creates variables, whose values depend on the IP-address of the client.
-geoip - This module creates variables based on the IP-address of the client matched against the MaxMind GeoIP binary files.
-geoip2 - This module creates variables based on the IP-address of the client matched against the MaxMind GeoIP2 binary files.
-javascript - This module implements location and variable handlers in nginScript.
-limit_conn - This module is used to limit the number of connections per the defined key.
-map - This module allows you to classify, or map a set of values into a different set of values and store the result in a variable.
-realip - This module allows to change the client's IP address to value from request header (e. g. X-Real-IP or X-Forwarded-For).
-return - This module allows sending a specified value to the client and then closing the connection.
-split_clients - This module provides A/B testing support.
-ssl_preread - This module allows extracting information from the ClientHello message without terminating SSL/TLS.
-upstream_hash - This module provides the ability to distribute upstream requests based on hashed key value.
-upstream_least_conn - This module provides the ability to distribute upstream requests using load balancing methods.
-upstream_zone - This module makes it possible to define a shared memory zone that keeps the group's configuration and run-time state that are shared between worker processes.
+access - Add support for a simple host-based access control
+geo - Add support for creating variables whose values depend on the client IP-address
+geoip - Add support for creating variables whose values depend on the client IP-address, using the precompiled MaxMind databases
+geoip2 - Add support for creating variables whose values depend on the client IP-address, using the precompiled MaxMind GeoIP2 databases
+javascript - Add support for implementing location and variable handlers in njs - a subset of the JavaScript language
+limit_conn - Add support for limiting the number of connections per a defined key, e.g. the number of connections from a single IP address
+map - Add support for creating variables whose values depend on the values of other variables
+pass - Add support for passing the accepted connection directly to any configured listening socket in "http", "stream", "mail", and other similar modules
+realip - Add support for setting the client address and optional port to those sent in the specified header field (e.g. "X-Real-IP" or "X-Forwarded-For")
+return - Add support for sending a specified value to the client and then closing the connection
+set - Add support for setting a value for a variable
+split_clients - Add support for creating variables suitable for A/B testing, also known as split testing
+ssl - Add SSL/TLS protocol support to a stream proxy server
+ssl_preread - Add support for extracting information from the ClientHello message without terminating SSL/TLS connection
+upstream_hash - Add support for distributing upstream requests based on hashed key value
+upstream_least_conn - Add support for passing upstream requests to the server with the least number of active connections
+upstream_random - Add support for passing upstream requests to a randomly selected server
+upstream_zone - Add support for defining a shared memory zone that keeps the group's configuration and run-time state that are shared between worker processes
