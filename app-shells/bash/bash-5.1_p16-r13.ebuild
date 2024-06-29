@@ -15,7 +15,7 @@ MY_PV=${MY_PV/_/-}
 MY_P=${PN}-${MY_PV}
 MY_PATCHES=()
 
-# Determine the patchlevel. See ftp://ftp.gnu.org/gnu/bash/bash-5.3-patches/.
+# Determine the patchlevel. See ftp://ftp.gnu.org/gnu/bash/bash-5.1-patches/.
 case ${PV} in
 	*_p*)
 		PLEVEL=${PV##*_p}
@@ -30,7 +30,7 @@ esac
 
 # The version of readline this bash normally ships with. Note that we only use
 # the bundled copy of readline for pre-releases.
-READLINE_VER="8.3_alpha"
+READLINE_VER="8.1"
 
 DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html https://git.savannah.gnu.org/cgit/bash.git"
@@ -65,9 +65,9 @@ S=${WORKDIR}/${MY_P}
 LICENSE="GPL-3+"
 SLOT="0"
 if (( PLEVEL >= 0 )); then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
-IUSE="afs bashlogger examples mem-scramble +net nls plugins pgo +readline"
+IUSE="afs bashlogger examples mem-scramble +net nls plugins +readline"
 
 DEPEND="
 	>=sys-libs/ncurses-5.2-r2:=
@@ -81,18 +81,25 @@ RDEPEND="
 "
 # We only need bison (yacc) when the .y files get patched (bash42-005, bash51-011).
 BDEPEND="
-	pgo? ( dev-util/gperf )
+	sys-devel/bison
 	verify-sig? ( sec-keys/openpgp-keys-chetramey )
 "
 
 # EAPI 8 tries to append it but it doesn't exist here.
 QA_CONFIGURE_OPTIONS="--disable-static"
 
+QA_CONFIG_IMPL_DECL_SKIP+=(
+	# this is fixed in autoconf 2.71, used in bash 5.2. The check fails
+	# regardless of GCC version. bug #916480
+	makedev
+)
+
 PATCHES=(
 	#"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}/
 
 	# Patches to or from Chet, posted to the bug-bash mailing list.
 	"${FILESDIR}/${PN}-5.0-syslog-history-extern.patch"
+	"${FILESDIR}/${PN}-5.1_p16-configure-clang16.patch"
 )
 
 pkg_setup() {
@@ -152,9 +159,6 @@ src_prepare() {
 	&& touch -r . doc/* \
 	|| die
 
-	# Sometimes hangs (more noticeable w/ pgo), bug #907403.
-	rm tests/run-jobs || die
-
 	eapply -p0 "${PATCHES[@]}"
 	eapply_user
 }
@@ -168,10 +172,6 @@ src_configure() {
 	# configure warns on use of non-Bison but doesn't abort. The result
 	# may misbehave at runtime.
 	unset -v YACC
-
-	# wcsnwidth(), substring() issues with -Wlto-type-mismatch, reported
-	# upstream to Chet by email.
-	filter-lto
 
 	myconf=(
 		--disable-profiling
@@ -236,54 +236,11 @@ src_configure() {
 }
 
 src_compile() {
-	local -a pgo_generate_flags pgo_use_flags
-	local flag
+	emake
 
-	# -fprofile-partial-training because upstream notes the test suite isn't
-	# super comprehensive.
-	# https://documentation.suse.com/sbp/all/html/SBP-GCC-10/index.html#sec-gcc10-pgo
-	if use pgo; then
-		pgo_generate_flags=(
-			-fprofile-update=atomic
-			-fprofile-dir="${T}"/pgo
-			-fprofile-generate="${T}"/pgo
-		)
-		pgo_use_flags=(
-			-fprofile-use="${T}"/pgo
-			-fprofile-dir="${T}"/pgo
-		)
-		if flag=$(test-flags-CC -fprofile-partial-training); then
-			pgo_generate_flags+=( "${flag}" )
-			pgo_use_flags+=( "${flag}" )
-		fi
+	if use plugins; then
+		emake -C examples/loadables all others
 	fi
-
-	emake CFLAGS="${CFLAGS} ${pgo_generate_flags[*]}"
-	use plugins && emake -C examples/loadables CFLAGS="${CFLAGS} ${pgo_generate_flags[*]}" all others
-
-	# Build Bash and run its tests to generate profiles.
-	if (( ${#pgo_generate_flags[@]} )); then
-		# Used in test suite.
-		unset -v A
-
-		emake CFLAGS="${CFLAGS} ${pgo_generate_flags[*]}" -k check
-
-		if tc-is-clang; then
-			llvm-profdata merge "${T}"/pgo --output="${T}"/pgo/default.profdata || die
-		fi
-
-		# Rebuild Bash using the profiling data we just generated.
-		emake clean
-		emake CFLAGS="${CFLAGS} ${pgo_use_flags[*]}"
-		use plugins && emake -C examples/loadables CFLAGS="${CFLAGS} ${pgo_use_flags[*]}" all others
-	fi
-}
-
-src_test() {
-	# Used in test suite.
-	unset -v A
-
-	default
 }
 
 src_install() {
@@ -371,22 +328,31 @@ pkg_postinst() {
 	read -r old_ver <<<"${REPLACING_VERSIONS}"
 	if [[ ! $old_ver ]]; then
 		:
-	elif ver_test "$old_ver" -ge "5.2" && ver_test "$old_ver" -ge "5.2_p26-r1"; then
+	elif ver_test "$old_ver" -ge "5.2" && ver_test "$old_ver" -ge "5.2_p26-r6"; then
 		return
-	elif ver_test "$old_ver" -lt "5.2" && ver_test "$old_ver" -ge "5.1_p16-r8"; then
+	elif ver_test "$old_ver" -lt "5.2" && ver_test "$old_ver" -ge "5.1_p16-r13"; then
 		return
 	fi
 
-	ewarn "Files situated under /etc/bash/bashrc.d must now have a suffix of .sh or .bash."
-	ewarn ""
-	ewarn "Gentoo now defaults to defining PROMPT_COMMAND as an array. Depending on the"
-	ewarn "characteristics of the operating environment, this array may contain commands"
-	ewarn "to set the window and pane title. Users that choose to customise this variable"
-	ewarn "in ~/.bashrc are advised to append their commands, using the following syntax."
-	ewarn ""
-	ewarn "PROMPT_COMMAND+=('custom command goes here')"
-	ewarn ""
-	ewarn "Alternatively, users that wish to opt out of Gentoo's window title setting"
-	ewarn "behaviour may now do so by either unsetting PROMPT_COMMAND or by re-defining it"
-	ewarn "as desired. Previously, there was no formally supported method of opting out."
+	while read -r; do ewarn "${REPLY}"; done <<'EOF'
+Files situated under /etc/bash/bashrc.d must now have a suffix of .sh or .bash.
+
+Gentoo now defaults to defining PROMPT_COMMAND as an array. Depending on the
+characteristics of the operating environment, this array may contain a command
+to set the terminal's window title. Those already choosing to customise the
+PROMPT_COMMAND variable are now advised to append their commands like so:
+
+PROMPT_COMMAND+=('custom command goes here')
+
+Gentoo no longer defaults to having bash manipulate the window title in the case
+that the terminal is controlled by sshd(8), unless screen or tmux are in use.
+Those wanting to set the title unconditionally may adjust ~/.bashrc - or create
+a custom /etc/bash/bashrc.d drop-in - to set PROMPT_COMMMAND like so:
+
+PROMPT_COMMAND=(genfun_set_win_title)
+
+Those who would prefer for bash never to interfere with the window title may
+now opt out of the default title setting behaviour, either with the "unset -v
+PROMPT_COMMAND" command or by re-defining PROMPT_COMMAND as desired.
+EOF
 }
