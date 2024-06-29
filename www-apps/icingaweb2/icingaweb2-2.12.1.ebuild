@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit depend.apache multilib
+inherit depend.apache
 
 DESCRIPTION="Icinga Web 2 - Frontend for icinga2"
 HOMEPAGE="https://icinga.com/"
