@@ -13,7 +13,6 @@ KEYWORDS="amd64 ~arm64 x86"
 
 DEPEND="dev-lang/php:*"
 RDEPEND="${DEPEND}"
-BDEPEND=""
 
 src_install() {
 	insinto "/usr/share/icinga-php/vendor"
