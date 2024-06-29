@@ -21,4 +21,7 @@
 	<use>
 		<flag name="plplot">Build with <pkg>sci-libs/plplot</pkg> to allow diagnostic plots during processing</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">astromatic/scamp</remote-id>
+	</upstream>
 </pkgmetadata>
