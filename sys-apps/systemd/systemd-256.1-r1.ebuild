@@ -495,6 +495,11 @@ pkg_postinst() {
 		ebegin "Reexecuting system manager (systemd)"
 		systemctl daemon-reexec
 		eend $? || FAIL=1
+
+		# https://lists.freedesktop.org/archives/systemd-devel/2024-June/050466.html
+		ebegin "Signaling user managers to reexec"
+		systemctl kill --kill-whom='main' --signal='SIGRTMIN+25' 'user@*.service'
+		eend $?
 	fi
 
 	if [[ ${FAIL} ]]; then
