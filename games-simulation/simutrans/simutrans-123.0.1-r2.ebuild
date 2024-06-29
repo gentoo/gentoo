@@ -35,7 +35,7 @@ DEPEND="
 	sys-libs/zlib
 	midi? ( media-sound/fluidsynth:=[sdl] )
 	truetype? ( media-libs/freetype )
-	upnp? ( net-libs/miniupnpc:= )
+	upnp? ( <net-libs/miniupnpc-2.2.8:= )
 	zstd? ( app-arch/zstd )
 "
 RDEPEND="
