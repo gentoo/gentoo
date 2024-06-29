@@ -85,7 +85,14 @@ RDEPEND="${PYTHON_DEPS}
 	fftw? ( sci-libs/fftw:3.0= )
 	gmp? ( dev-libs/gmp )
 	gnome? ( gui-libs/libdecor )
-	hip? ( >=dev-util/hip-5.7:= )
+	hip? (
+		llvm_slot_17? (
+			dev-util/hip:0/5.7=
+		)
+		llvm_slot_18? (
+			>=dev-util/hip-6.1:=[llvm_slot_18(-)]
+		)
+	)
 	jack? ( virtual/jack )
 	jemalloc? ( dev-libs/jemalloc:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
