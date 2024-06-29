@@ -1,9 +1,10 @@
-# Copyright 2010 Gentoo Foundation.
+# Copyright 2010-2025 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of NGINX_MODULES_MAIL USE_EXPAND flags.
 
 # Keep it sorted.
-imap - This module provides IMAP proxy capability.
-pop3 - This module provides POP3 proxy capability.
-smtp - This module provides SMTP proxy capability.
+imap - Add support for proxying IMAP messages
+pop3 - Add support for proxying POP3 messages
+smtp - Add support for proxying SMTP messages
+ssl - Add SSL/TLS protocol support to a mail proxy server (implicit TLS, STARTTLS, etc.)
