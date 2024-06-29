@@ -188,10 +188,6 @@ www-client/chromium widevine
 # requires media-libs/sdl2-image, which is not yet keyworded
 app-emulation/qemu sdl-image
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
-# requires fwupd, which is not yet keyworded
-kde-plasma/discover firmware
-
 # Rick Farina <zerochaos@gentoo.org> (2020-01-03)
 # ubertooth needs net-libs/libbtbb and net-wireless/ubertooth which aren't keyworded
 net-wireless/kismet ubertooth
