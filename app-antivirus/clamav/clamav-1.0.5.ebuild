@@ -291,14 +291,8 @@ src_install() {
 
 	if ! use libclamav-only ; then
 		if use systemd ; then
-			# The tmpfiles entry is behind USE=systemd because the
-			# upstream OpenRC service files should (and do) ensure that
-			# the directories they need exist and have the correct
-			# permissions without the help of opentmpfiles. There are
-			# years-old root exploits in opentmpfiles, the design is
-			# fundamentally flawed, and the maintainer is not up to
-			# the task of fixing it.
-			dotmpfiles "${FILESDIR}/tmpfiles.d/clamav.conf"
+			# OpenRC services do not need tmpfiles
+			dotmpfiles "${FILESDIR}/tmpfiles.d/clamav-r1.conf"
 			systemd_newunit "${FILESDIR}/clamd_at.service-0.104.0" "clamd@.service"
 			systemd_dounit "${FILESDIR}/clamd.service"
 			systemd_newunit "${FILESDIR}/freshclamd.service-r1" \
