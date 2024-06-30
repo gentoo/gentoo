@@ -24,9 +24,7 @@ BDEPEND="
 		dev-python/django[${PYTHON_USEDEP}]
 		dev-python/pytest-django[${PYTHON_USEDEP}]
 		>=dev-python/sybil-6[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			>=dev-python/twisted-18[${PYTHON_USEDEP}]
-		' 3.{10..12})
+		>=dev-python/twisted-18[${PYTHON_USEDEP}]
 		sys-libs/timezone-data
 	)
 "
