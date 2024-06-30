@@ -1,0 +1,95 @@
+From acd5bf60b9d4a35d00c90bfdca7f89e4ff4a4ff7 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Thu, 30 May 2024 19:44:38 -0400
+Subject: [PATCH] meson: fix webrtc-audio-processing dependency ignoring
+ configure args
+
+Most dependencies use meson "feature" options for optional
+functionality. This allows people to disable them, if they don't want
+them, through the power of tristate decision-making.
+
+This particular dependency does something a bit more complicated than
+can be described by simply passing feature options to the required
+kwarg. It:
+
+- tries to look for two different names of the dependency
+- selects different version ranges, depending on the dependency name
+- has a hole in the middle of the versions
+
+Unfortunately, `required: false` for the first dependency isn't
+equivalent to a tristate decision-making process. We have to manually
+code the logic ourselves.
+
+The problem is that when we look up the first name, we cannot pass the
+feature option in because if the option is force enabled, then the
+dependency lookup fails and configuration never tries to find the older
+version instead.
+
+But also, we can't just say it *isn't* required, because if the option
+is force *disabled* but it is installed on the system, we still find it
+and build against it.
+
+One solution would be using meson 0.60's support for multiple dependency
+names:
+
+```
+dependency('webrtc-audio-processing-1', 'webrtc-audio-processing',
+    version : ['>= 0.2'],
+    required: get_option('echo-cancel-webrtc'),
+)
+```
+
+Unfortunately, this too doesn't work since we could end up detecting 1.1
+(the hole in the middle) which is invalid.
+
+Instead, we do a bit of checking for tristate values before deciding to
+invoke `dependency()`. This lets us guarantee that disabled dependencies
+are well and truly disabled.
+
+Bug: https://bugs.gentoo.org/933218
+Fixes: #3678
+---
+ meson.build | 25 +++++++++++++++----------
+ 1 file changed, 15 insertions(+), 10 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index cda60112f..72d275086 100644
+--- a/meson.build
++++ b/meson.build
+@@ -393,18 +393,23 @@ cdata.set('HAVE_GSTREAMER_DEVICE_PROVIDER', get_option('gstreamer-device-provide
+ summary({'gstreamer DMA_DRM support': gst_dma_drm_found}, bool_yn: true, section: 'Backend')
+ cdata.set('HAVE_GSTREAMER_DMA_DRM', gst_dma_drm_found)
+ 
+-webrtc_dep = dependency('webrtc-audio-processing-1',
+-  version : ['>= 1.2' ],
+-  required : false)
+-cdata.set('HAVE_WEBRTC1', webrtc_dep.found())
+-if webrtc_dep.found()
++if get_option('echo-cancel-webrtc').disabled()
++  webrtc_dep = dependency('', required: false)
+   summary({'WebRTC Echo Canceling >= 1.2': webrtc_dep.found()}, bool_yn: true, section: 'Misc dependencies')
+ else
+-  webrtc_dep = dependency('webrtc-audio-processing',
+-    version : ['>= 0.2', '< 1.0'],
+-    required : get_option('echo-cancel-webrtc'))
+-  cdata.set('HAVE_WEBRTC', webrtc_dep.found())
+-  summary({'WebRTC Echo Canceling < 1.0': webrtc_dep.found()}, bool_yn: true, section: 'Misc dependencies')
++  webrtc_dep = dependency('webrtc-audio-processing-1',
++    version : ['>= 1.2' ],
++    required : false)
++  cdata.set('HAVE_WEBRTC1', webrtc_dep.found())
++  if webrtc_dep.found()
++    summary({'WebRTC Echo Canceling >= 1.2': webrtc_dep.found()}, bool_yn: true, section: 'Misc dependencies')
++  else
++    webrtc_dep = dependency('webrtc-audio-processing',
++      version : ['>= 0.2', '< 1.0'],
++      required : get_option('echo-cancel-webrtc'))
++    cdata.set('HAVE_WEBRTC', webrtc_dep.found())
++    summary({'WebRTC Echo Canceling < 1.0': webrtc_dep.found()}, bool_yn: true, section: 'Misc dependencies')
++  endif
+ endif
+ 
+ # On FreeBSD and MidnightBSD, epoll-shim library is required for eventfd() and timerfd()
+-- 
+GitLab
+

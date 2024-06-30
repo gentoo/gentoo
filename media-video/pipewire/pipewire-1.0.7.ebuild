@@ -175,6 +175,9 @@ PDEPEND=">=media-video/wireplumber-0.5.2"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.25-enable-failed-mlock-warning.patch
+	# https://bugs.gentoo.org/933218
+	# https://gitlab.freedesktop.org/pipewire/pipewire/-/merge_requests/2028
+	"${FILESDIR}"/${P}-automagic-webrtc-audio-processing.patch
 )
 
 pkg_setup() {
