@@ -14,8 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/sphinxygen/
 "
 SRC_URI="
-	https://gitlab.com/drobilla/sphinxygen/-/archive/v${PV}/${PN}-v${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+	https://gitlab.com/drobilla/sphinxygen/-/archive/v${PV}/${PN}-v${PV}.tar.bz2
 "
 S="${WORKDIR}/${PN}-v${PV}"
 
