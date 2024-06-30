@@ -176,6 +176,9 @@ src_test() {
 python_test() {
 	EPYTEST_XDIST= epytest "${serial_tests[@]}"
 
-	EPYTEST_DESELECT+=( "${serial_tests[@]}" )
+	local EPYTEST_DESELECT+=(
+		"${EPYTEST_DESELECT[@]}"
+		"${serial_tests[@]}"
+	)
 	epytest -m 'not network'
 }
