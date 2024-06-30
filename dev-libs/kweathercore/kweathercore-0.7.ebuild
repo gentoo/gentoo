@@ -27,9 +27,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-src_test() {
-	local myctestargs=(
-		-E "locationquerytest"
-	)
-	ecm_src_test
-}
+CMAKE_SKIP_TESTS=(
+	locationquerytest
+	# bug 906392
+	metnoparsertest
+)
