@@ -17,7 +17,7 @@ HOMEPAGE="https://community.kde.org/KDE_PIM/akonadi"
 LICENSE="LGPL-2.1+"
 SLOT="6"
 KEYWORDS="~amd64"
-IUSE="+kaccounts +mysql postgres sqlite tools xml"
+IUSE="+mysql postgres sqlite tools +webengine xml"
 
 REQUIRED_USE="|| ( mysql postgres sqlite ) test? ( tools )"
 
@@ -36,7 +36,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/kitemmodels-${KFMIN}:6
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:6
 	>=kde-frameworks/kxmlgui-${KFMIN}:6
-	kaccounts? (
+	webengine? (
 		kde-apps/kaccounts-integration:6
 		>=net-libs/accounts-qt-1.16_p20220803[qt6]
 	)
@@ -65,9 +65,9 @@ pkg_setup() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake_use_find_package kaccounts AccountsQt6)
-		$(cmake_use_find_package kaccounts KAccounts6)
 		-DBUILD_TOOLS=$(usex tools)
+		$(cmake_use_find_package webengine AccountsQt6)
+		$(cmake_use_find_package webengine KAccounts6)
 		$(cmake_use_find_package xml LibXml2)
 	)
 
