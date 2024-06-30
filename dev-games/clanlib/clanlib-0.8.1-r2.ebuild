@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Multi-platform game development library"
 HOMEPAGE="https://github.com/sphair/ClanLib"
@@ -67,6 +67,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/855308
+	# Fixed in newer versions
+	# Do not trust with LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	# clanSound only controls mikmod/vorbis so there's
 	# no need to pass --{en,dis}able-clanSound ...
 	# clanDisplay only controls X, SDL, OpenGL plugins
