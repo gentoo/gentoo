@@ -28,6 +28,7 @@ RDEPEND="
 		media-libs/glu
 	)
 	nsight? (
+		app-crypt/mit-krb5
 		dev-libs/libpfm
 		dev-libs/wayland
 		dev-qt/qtwayland:6
