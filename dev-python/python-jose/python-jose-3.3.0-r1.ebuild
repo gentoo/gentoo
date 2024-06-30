@@ -37,8 +37,12 @@ distutils_enable_tests pytest
 distutils_enable_sphinx docs
 
 python_prepare_all() {
-	sed -e '/pytest-runner/d' \
-		-i setup.py || die
-	sed -e '/addopts/d' -i setup.cfg || die
+	local PATCHES=(
+		# https://github.com/mpdavis/python-jose/commit/19677540e74eba4392be53ae434b561cf74ad9a6
+		"${FILESDIR}/${P}-test.patch"
+	)
+
 	distutils-r1_python_prepare_all
+	sed -e '/pytest-runner/d' -i setup.py || die
+	sed -e '/addopts/d' -i setup.cfg || die
 }
