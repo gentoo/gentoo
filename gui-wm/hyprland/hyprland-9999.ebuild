@@ -45,7 +45,7 @@ WLROOTS_DEPEND="
 	>=x11-libs/libdrm-2.4.114
 	x11-libs/libxkbcommon
 	>=x11-libs/pixman-0.42.0
-	media-libs/libdisplay-info
+	media-libs/libdisplay-info:=
 	sys-apps/hwdata
 	>=dev-libs/libinput-1.14.0:=
 	sys-auth/seatd:=
