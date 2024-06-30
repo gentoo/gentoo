@@ -50,6 +50,11 @@ RDEPEND="${DEPEND}
 "
 BDEPEND=">=kde-frameworks/kcmutils-${KFMIN}:5"
 
+CMAKE_SKIP_TESTS=(
+	# bug 816591
+	smbmountmodeltest
+)
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package usb USB1)
