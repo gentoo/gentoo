@@ -13,7 +13,7 @@ DESCRIPTION="Library for providing abstractions to get the developer's purposes 
 
 LICENSE="LGPL-2.1+"
 KEYWORDS="~amd64 ~arm64"
-IUSE="bluetooth kaccounts"
+IUSE="bluetooth webengine"
 
 # requires running environment
 RESTRICT="test"
@@ -29,7 +29,7 @@ DEPEND="
 	=kde-frameworks/knotifications-${PVCUT}*:6
 	=kde-frameworks/kservice-${PVCUT}*:6
 	=kde-frameworks/prison-${PVCUT}*:6
-	kaccounts? (
+	webengine? (
 		kde-apps/kaccounts-integration:6
 		>=net-libs/accounts-qt-1.16_p20220803[qt6]
 	)
@@ -38,9 +38,9 @@ RDEPEND="${DEPEND}
 	!${CATEGORY}/${PN}:5[-kf6compat(-)]
 	>=kde-frameworks/kdeclarative-${PVCUT}:6
 	bluetooth? ( =kde-frameworks/bluez-qt-${PVCUT}*:6 )
-	kaccounts? ( >=net-libs/accounts-qml-0.7_p20231028[qt6] )
+	webengine? ( >=net-libs/accounts-qml-0.7_p20231028[qt6] )
 "
-BDEPEND="kaccounts? ( dev-util/intltool )"
+BDEPEND="webengine? ( dev-util/intltool )"
 
 src_prepare() {
 	ecm_src_prepare
@@ -51,7 +51,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake_use_find_package kaccounts KAccounts6)
+		$(cmake_use_find_package webengine KAccounts6)
 	)
 
 	ecm_src_configure
