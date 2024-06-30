@@ -13,8 +13,8 @@ HOMEPAGE="https://pypi.org/project/humanfriendly/
 	https://github.com/xolox/python-humanfriendly/
 	https://humanfriendly.readthedocs.io/"
 
-SLOT="0"
 LICENSE="MIT"
+SLOT="0"
 KEYWORDS="amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 
 # This is completely broken
