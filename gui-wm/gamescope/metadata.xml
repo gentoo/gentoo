@@ -9,6 +9,7 @@
 		<remote-id type="github">ValveSoftware/gamescope</remote-id>
 	</upstream>
 	<use>
+		<flag name="libei">Enable emulated input using <pkg>dev-libs/libei</pkg></flag>
 		<flag name="pipewire">Enable screen capture via PipeWire</flag>
 		<flag name="wsi-layer">Enable the WSI layer (required for HDR)</flag>
 	</use>
