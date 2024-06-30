@@ -6,7 +6,7 @@ EAPI=8
 inherit toolchain-funcs
 
 DESCRIPTION="Python implementation for microcontrollers"
-HOMEPAGE="https://github.com/micropython/micropython"
+HOMEPAGE="https://micropython.org https://github.com/micropython/micropython"
 SRC_URI="https://micropython.org/resources/source/${P}.tar.xz"
 
 LICENSE="MIT"
