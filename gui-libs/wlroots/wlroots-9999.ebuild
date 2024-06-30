@@ -38,7 +38,7 @@ DEPEND="
 	x11-libs/libxkbcommon
 	>=x11-libs/pixman-0.42.0
 	drm? (
-		media-libs/libdisplay-info
+		media-libs/libdisplay-info:=
 		sys-apps/hwdata
 		liftoff? ( >=dev-libs/libliftoff-0.4 )
 	)
