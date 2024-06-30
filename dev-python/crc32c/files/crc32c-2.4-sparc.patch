@@ -1,0 +1,34 @@
+From 9d94ecbfe2363c7adf49bddbf31871764faf4f41 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 30 Jun 2024 16:00:34 +0200
+Subject: [PATCH] Fix char signedness issue in _crc32c_sw_slicing_by_8()
+
+Fix `_crc32c_sw_slicing_by_8()` to use `unsigned char` for `p_buf`,
+to fix incorrect results on platforms with signed `char` such as SPARC.
+The code has been casting `unsigned char *` to `char *` for no apparent
+reason, and this broke the bitshifts in the big endian blocks.
+
+Particularly,
+
+    crc ^= *(p_buf++) << 16
+
+would be XOR-ed against `0xffee0000` rather than `0x00ee0000`.
+
+Fixes #43
+---
+ crc32c_sw.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/crc32c_sw.c b/crc32c_sw.c
+index 8382749..67409c9 100644
+--- a/crc32c_sw.c
++++ b/crc32c_sw.c
+@@ -490,7 +490,7 @@ const uint32_t crc_tableil8_o88[256] =
+ 
+ uint32_t _crc32c_sw_slicing_by_8(uint32_t crc, unsigned const char* data, unsigned long length)
+ {
+-	const char* p_buf = (const char*) data;
++	unsigned const char* p_buf = data;
+ 	size_t initial_bytes = (sizeof(uint32_t) - (intptr_t)p_buf) & (sizeof(uint32_t) - 1);
+ 	size_t li;
+ 	size_t running_length;

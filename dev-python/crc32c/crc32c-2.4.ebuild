@@ -23,6 +23,11 @@ IUSE="cpu_flags_arm_crc32 cpu_flags_x86_sse4_2"
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://github.com/ICRAR/crc32c/pull/44
+	"${FILESDIR}/${P}-sparc.patch"
+)
+
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	local -x CRC32C_SW_MODE
