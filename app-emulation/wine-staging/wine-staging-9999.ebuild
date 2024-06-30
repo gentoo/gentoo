@@ -37,8 +37,8 @@ SLOT="${PV}"
 IUSE="
 	+X +abi_x86_32 +abi_x86_64 +alsa capi crossdev-mingw cups dos
 	llvm-libunwind custom-cflags +fontconfig +gecko gphoto2 +gstreamer
-	kerberos +mingw +mono netapi nls opencl +opengl osmesa pcap perl
-	pulseaudio samba scanner +sdl selinux smartcard +ssl +strip
+	kerberos +mingw +mono netapi nls odbc opencl +opengl osmesa pcap
+	perl pulseaudio samba scanner +sdl selinux smartcard +ssl +strip
 	+truetype udev udisks +unwind usb v4l +vulkan wayland wow64
 	+xcomposite xinerama
 "
@@ -95,6 +95,7 @@ WINE_COMMON_DEPEND="
 		media-libs/gst-plugins-base:1.0[${MULTILIB_USEDEP}]
 		media-libs/gstreamer:1.0[${MULTILIB_USEDEP}]
 	)
+	odbc? ( dev-db/unixODBC[${MULTILIB_USEDEP}] )
 	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
 	pcap? ( net-libs/libpcap[${MULTILIB_USEDEP}] )
 	pulseaudio? ( media-libs/libpulse[${MULTILIB_USEDEP}] )
@@ -297,6 +298,7 @@ src_configure() {
 		$(use_with mingw)
 		$(use_with netapi)
 		$(use_with nls gettext)
+		$(use_with odbc)
 		$(use_with opencl)
 		$(use_with opengl)
 		$(use_with osmesa)
