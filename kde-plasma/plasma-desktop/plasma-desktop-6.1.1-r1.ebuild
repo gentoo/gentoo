@@ -17,7 +17,7 @@ SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${XORGHDRS}.tar.xz"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
 KEYWORDS="~amd64 ~arm64"
-IUSE="ibus kaccounts scim screencast sdl +semantic-desktop"
+IUSE="ibus scim screencast sdl +semantic-desktop webengine"
 
 RESTRICT="test" # missing selenium-webdriver-at-spi
 
@@ -84,13 +84,13 @@ COMMON_DEPEND="
 		dev-libs/glib:2
 		x11-libs/xcb-util-keysyms
 	)
-	kaccounts? (
-		kde-apps/kaccounts-integration:6
-		>=net-libs/accounts-qt-1.16_p20220803[qt6]
-	)
 	scim? ( app-i18n/scim )
 	sdl? ( media-libs/libsdl2[joystick] )
 	semantic-desktop? ( >=kde-frameworks/baloo-${KFMIN}:6 )
+	webengine? (
+		kde-apps/kaccounts-integration:6
+		>=net-libs/accounts-qt-1.16_p20220803[qt6]
+	)
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/wayland-protocols-1.25
@@ -115,8 +115,8 @@ RDEPEND="${COMMON_DEPEND}
 	sys-apps/util-linux
 	x11-apps/setxkbmap
 	x11-misc/xdg-user-dirs
-	kaccounts? ( >=net-libs/signon-oauth2-0.25_p20210102[qt6] )
 	screencast? ( >=kde-plasma/kpipewire-${PVCUT}:6 )
+	webengine? ( >=net-libs/signon-oauth2-0.25_p20210102[qt6] )
 "
 BDEPEND="
 	dev-util/intltool
@@ -151,10 +151,10 @@ src_configure() {
 		-DXORGSERVER_INCLUDE_DIRS="${WORKDIR}/${XORGHDRS}"/include
 		-DCMAKE_DISABLE_FIND_PACKAGE_PackageKitQt6=ON # not packaged
 		$(cmake_use_find_package ibus GLIB2)
-		$(cmake_use_find_package kaccounts AccountsQt6)
-		$(cmake_use_find_package kaccounts KAccounts6)
 		$(cmake_use_find_package sdl SDL2)
 		$(cmake_use_find_package semantic-desktop KF6Baloo)
+		$(cmake_use_find_package webengine AccountsQt6)
+		$(cmake_use_find_package webengine KAccounts6)
 	)
 
 	ecm_src_configure

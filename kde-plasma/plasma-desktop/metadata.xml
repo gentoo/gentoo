@@ -12,5 +12,6 @@
 		<flag name="ibus">Use ibus input method via <pkg>app-i18n/ibus</pkg></flag>
 		<flag name="kaccounts">Build the OpenDesktop integration plugin</flag>
 		<flag name="scim">Enable applets that use <pkg>app-i18n/scim</pkg></flag>
+		<flag name="webengine">Build the OpenDesktop integration plugin</flag>
 	</use>
 </pkgmetadata>
