@@ -154,7 +154,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	)
 	gbm? (
 		>=dev-libs/libinput-1.10.5:=
-		media-libs/libdisplay-info
+		media-libs/libdisplay-info:=
 		x11-libs/libxkbcommon
 	)
 	gles? (
