@@ -19,8 +19,8 @@ IUSE="doc gnutls python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
-	>=app-pda/libplist-2.2.0:= <app-pda/libplist-2.3
-	>=app-pda/libusbmuxd-2.0.2:=
+	>=app-mobiledevice/libplist-2.2.0:= <app-mobiledevice/libplist-2.3
+	>=app-mobiledevice/libusbmuxd-2.0.2:=
 	gnutls? (
 		dev-libs/libgcrypt:0
 		>=dev-libs/libtasn1-1.1
@@ -31,7 +31,7 @@ RDEPEND="
 	)
 	python? (
 		${PYTHON_DEPS}
-		app-pda/libplist[python(-),${PYTHON_USEDEP}]
+		app-mobiledevice/libplist[python(-),${PYTHON_USEDEP}]
 	)
 "
 DEPEND="

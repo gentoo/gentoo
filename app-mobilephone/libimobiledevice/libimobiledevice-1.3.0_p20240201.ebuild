@@ -19,9 +19,9 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~x86"
 IUSE="doc gnutls readline static-libs"
 
 RDEPEND="
-	app-pda/libimobiledevice-glue:=
-	>=app-pda/libplist-2.3:=
-	>=app-pda/libusbmuxd-2.0.2:=
+	app-mobiledevice/libimobiledevice-glue:=
+	>=app-mobiledevice/libplist-2.3:=
+	>=app-mobiledevice/libusbmuxd-2.0.2:=
 	gnutls? (
 		dev-libs/libgcrypt:0
 		>=dev-libs/libtasn1-1.1

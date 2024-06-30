@@ -20,9 +20,9 @@ IUSE="selinux systemd"
 
 DEPEND="
 	acct-user/usbmux
-	>=app-pda/libimobiledevice-1.3.0:=
-	app-pda/libimobiledevice-glue:=
-	>=app-pda/libplist-2.3:=
+	>=app-mobiledevice/libimobiledevice-1.3.0:=
+	app-mobiledevice/libimobiledevice-glue:=
+	>=app-mobiledevice/libplist-2.3:=
 	virtual/libusb:1=
 "
 RDEPEND="
