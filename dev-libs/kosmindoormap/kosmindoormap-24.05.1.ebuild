@@ -39,6 +39,9 @@ BDEPEND="
 	app-alternatives/yacc
 "
 
+# Pending: https://invent.kde.org/libraries/kosmindoormap/-/merge_requests/40
+PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TOOLS_ONLY=$(usex !gui)
