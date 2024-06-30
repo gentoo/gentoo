@@ -15,8 +15,8 @@ HOMEPAGE="
 "
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm64"
 SLOT="0"
+KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="
 	dev-python/autoprop[${PYTHON_USEDEP}]
