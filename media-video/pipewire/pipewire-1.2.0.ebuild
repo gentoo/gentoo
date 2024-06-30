@@ -175,6 +175,8 @@ PDEPEND=">=media-video/wireplumber-0.5.2"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.25-enable-failed-mlock-warning.patch
+	# https://gitlab.freedesktop.org/pipewire/pipewire/-/merge_requests/2061
+	"${FILESDIR}"/${P}-automagic-gsettings.patch
 )
 
 pkg_setup() {

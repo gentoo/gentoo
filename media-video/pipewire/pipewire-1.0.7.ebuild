@@ -178,6 +178,8 @@ PATCHES=(
 	# https://bugs.gentoo.org/933218
 	# https://gitlab.freedesktop.org/pipewire/pipewire/-/merge_requests/2028
 	"${FILESDIR}"/${P}-automagic-webrtc-audio-processing.patch
+	# https://gitlab.freedesktop.org/pipewire/pipewire/-/merge_requests/2061
+	"${FILESDIR}"/${P}-automagic-gsettings.patch
 )
 
 pkg_setup() {
