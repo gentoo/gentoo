@@ -15,10 +15,10 @@ HOMEPAGE="https://apps.kde.org/ksudoku/"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
 KEYWORDS="~amd64"
-IUSE="opengl"
+IUSE=""
 
 DEPEND="
-	>=dev-qt/qtbase-${QTMIN}:6[gui,opengl?,widgets,xml]
+	>=dev-qt/qtbase-${QTMIN}:6[gui,opengl,widgets,xml]
 	>=dev-qt/qtsvg-${QTMIN}:6
 	>=kde-apps/libkdegames-${PVCUT}:6
 	>=kde-frameworks/karchive-${KFMIN}:6
@@ -33,19 +33,9 @@ DEPEND="
 	>=kde-frameworks/kjobwidgets-${KFMIN}:6
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:6
 	>=kde-frameworks/kxmlgui-${KFMIN}:6
-	opengl? (
-		media-libs/libglvnd
-		virtual/glu
-	)
+	media-libs/libglvnd
+	virtual/glu
 "
 RDEPEND="${DEPEND}"
 # TODO: || ( 7zip gzip )
 BDEPEND="app-alternatives/gzip"
-
-src_configure() {
-	local mycmakeargs=(
-		$(cmake_use_find_package opengl Qt6OpenGL)
-		$(cmake_use_find_package opengl OpenGL)
-	)
-	ecm_src_configure
-}
