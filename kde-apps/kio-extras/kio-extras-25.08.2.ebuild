@@ -48,8 +48,8 @@ DEPEND="
 		kde-plasma/plasma-activities-stats:6
 	)
 	ios? (
-		app-pda/libimobiledevice:=
-		app-pda/libplist:=
+		app-mobilephone/libimobiledevice:=
+		app-mobilephone/libplist:=
 	)
 	libproxy? (
 		>=kde-frameworks/knotifications-${KFMIN}:6
