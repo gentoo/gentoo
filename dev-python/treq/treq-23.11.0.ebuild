@@ -25,10 +25,7 @@ RDEPEND="
 	>=dev-python/hyperlink-21.0.0[${PYTHON_USEDEP}]
 	dev-python/incremental[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.1.0[${PYTHON_USEDEP}]
-	|| (
-		>=dev-python/twisted-18.7.0[ssl(-),${PYTHON_USEDEP}]
-		>=dev-python/twisted-18.7.0[crypt(-),${PYTHON_USEDEP}]
-	)
+	>=dev-python/twisted-18.7.0[ssl(-),${PYTHON_USEDEP}]
 "
 BDEPEND="
 	dev-python/incremental[${PYTHON_USEDEP}]
