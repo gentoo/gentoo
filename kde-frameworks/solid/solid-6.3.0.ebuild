@@ -19,8 +19,8 @@ RDEPEND="
 	sys-fs/udisks:2
 	virtual/libudev:=
 	ios? (
-		app-pda/libimobiledevice:=
-		app-pda/libplist:=
+		app-mobiledevice/libimobiledevice:=
+		app-mobiledevice/libplist:=
 	)
 "
 DEPEND="${RDEPEND}
