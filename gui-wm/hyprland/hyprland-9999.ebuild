@@ -73,7 +73,7 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/libinput
 	>=dev-libs/wayland-1.20.0
-	>=gui-libs/hyprcursor-0.1.7
+	>=gui-libs/hyprcursor-0.1.9
 	media-libs/libglvnd
 	x11-libs/cairo
 	x11-libs/libdrm
@@ -87,16 +87,17 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	${WLROOTS_DEPEND}
-	>=dev-libs/hyprland-protocols-0.2
+	>=dev-libs/hyprland-protocols-0.3
 	>=dev-libs/hyprlang-0.3.2
-	>=dev-libs/wayland-protocols-1.34
+	>=dev-libs/wayland-protocols-1.36
+	>=gui-libs/hyprutils-0.1.5
 "
 BDEPEND="
 	${WLROOTS_BDEPEND}
 	|| ( >=sys-devel/gcc-13:* >=sys-devel/clang-16:* )
 	app-misc/jq
 	dev-build/cmake
-	dev-util/hyprwayland-scanner
+	>=dev-util/hyprwayland-scanner-0.3.8
 	virtual/pkgconfig
 "
 
@@ -125,20 +126,4 @@ src_configure() {
 	)
 
 	meson_src_configure
-}
-
-src_install() {
-	# First install everything except wlroots to avoid conflicts.
-	meson_src_install --skip-subprojects wlroots
-	# Then install development files (mainly wlroots) for bug #916760.
-	meson_src_install --tags devel
-
-	# Wlroots headers are required by hyprland-plugins and the pkgconfig file expects
-	# them to be in /usr/include/hyprland/wlroots, despite this they aren't installed there.
-	# Ideally you could override includedir per subproject and the install tags would
-	# be granular enough to only install headers. But its not requiring this.
-	mkdir "${ED}"/usr/include/hyprland/wlroots || die
-	mv "${ED}"/usr/include/wlr "${ED}"/usr/include/hyprland/wlroots || die
-	# devel tag includes wlroots .pc and .a files still
-	rm -rf "${ED}"/usr/$(get_libdir)/ || die
 }
