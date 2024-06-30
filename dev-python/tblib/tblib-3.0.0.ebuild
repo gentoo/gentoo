@@ -23,9 +23,7 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		$(python_gen_cond_dep '
-			dev-python/twisted[${PYTHON_USEDEP}]
-		' 3.{10..12})
+		dev-python/twisted[${PYTHON_USEDEP}]
 	)
 "
 
