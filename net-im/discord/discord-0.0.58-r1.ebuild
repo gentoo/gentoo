@@ -87,7 +87,7 @@ src_prepare() {
 		die "fixing of exec location on .desktop failed"
 	# USE wayland
 	if use wayland; then
-		sed -i '/Exec/s/Discord/Discord --enable-features=UseOzonePlatform --ozone-platform=wayland/' \
+		sed -i '/Exec/s/Discord/Discord --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime/' \
 			"${MY_PN}.desktop" ||
 			die "sed failed for wayland"
 	fi
