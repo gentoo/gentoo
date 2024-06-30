@@ -13,7 +13,7 @@ LICENSE="LGPL-2.1+"
 SLOT="0/0.1.0"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ppc ~ppc64 ~riscv ~s390 x86"
 
-RDEPEND=">=app-pda/libplist-2.3:="
+RDEPEND=">=app-mobilephone/libplist-2.3:="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 

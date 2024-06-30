@@ -11,8 +11,8 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-RDEPEND=">=app-pda/libimobiledevice-1.3.0:=
-	>=app-pda/libplist-2.3.0:=
+RDEPEND=">=app-mobilephone/libimobiledevice-1.3.0:=
+	>=app-mobilephone/libplist-2.3.0:=
 	>=dev-libs/libzip-0.8"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
