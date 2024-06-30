@@ -28,6 +28,6 @@ DEPEND="${RDEPEND}
 CMAKE_SKIP_TESTS=(
 	# bug #566648 (access to /dev/dri/card0 denied)
 	kcontacts-picturetest
-	# bug #838502 (again some Qt translations loading related err...)
-	kcontacts-addresstest
+	# bugs #712798, 838502 (again some Qt translations loading related err...)
+	kcontacts-{address,phonenumber}test
 )
