@@ -21,7 +21,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	app-pda/usbmuxd
+	app-mobilephone/usbmuxd
 	dev-qt/qtbase:6[gui,widgets]
 	dev-util/android-tools"
 DEPEND="${RDEPEND}"
