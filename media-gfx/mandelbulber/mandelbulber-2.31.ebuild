@@ -21,7 +21,7 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtconcurrent:5
 	dev-qt/qtgui:5
-	dev-qt/qtmultimedia:5
+	dev-qt/qtmultimedia:5[qml]
 	dev-qt/qtnetwork:5
 	dev-qt/qttest:5
 	dev-qt/qtwidgets:5
