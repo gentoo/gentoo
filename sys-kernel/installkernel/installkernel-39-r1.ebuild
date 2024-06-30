@@ -17,11 +17,12 @@ S="${WORKDIR}/${PN}-gentoo-${PV}"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x86-linux"
-IUSE="dracut efistub grub refind systemd systemd-boot uki ukify"
+IUSE="dracut efistub grub refind systemd systemd-boot ugrd uki ukify"
 REQUIRED_USE="
 	systemd-boot? ( systemd )
 	ukify? ( uki )
 	?? ( efistub grub refind systemd-boot )
+	?? ( dracut ugrd )
 "
 
 RDEPEND="
@@ -53,6 +54,7 @@ RDEPEND="
 			sys-apps/systemd-utils[boot(-)]
 		)
 	)
+	ugrd? ( sys-kernel/ugrd )
 	ukify? (
 		|| (
 			sys-apps/systemd[boot(-),ukify(-)]
@@ -123,6 +125,8 @@ src_install() {
 				echo "uki_generator=none" >> "${T}/install.conf" || die
 			fi
 		fi
+	elif use ugrd; then
+		echo "initrd_generator=ugrd" >> "${T}/install.conf" || die
 	else
 		echo "initrd_generator=none" >> "${T}/install.conf" || die
 	fi
