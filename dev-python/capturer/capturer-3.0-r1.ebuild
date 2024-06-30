@@ -12,8 +12,8 @@ HOMEPAGE="https://capturer.readthedocs.io/en/latest/
 	https://pypi.org/project/capturer/
 	https://github.com/xolox/python-capturer"
 
-SLOT="0"
 LICENSE="MIT"
+SLOT="0"
 KEYWORDS="amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="dev-python/humanfriendly[${PYTHON_USEDEP}]"
