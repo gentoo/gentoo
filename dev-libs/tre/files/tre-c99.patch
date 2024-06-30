@@ -1,0 +1,23 @@
+https://github.com/laurikari/tre/pull/49/commits/9c049c8c50a50a4f101aa45dd34bd138af7ed3cf
+https://bugs.gentoo.org/932740
+
+--- a/python/tre-python.c
++++ b/python/tre-python.c
+@@ -365,7 +365,7 @@ PyTrePattern_search(TrePatternObject *self, PyObject *args)
+ 
+   if (PyUnicode_Check(pstring))
+     {
+-      Py_ssize_t len = PyUnicode_GetSize(pstring);
++      Py_ssize_t len = PyUnicode_GET_LENGTH(pstring);
+       wchar_t *buf = calloc(sizeof(wchar_t), len);
+       if(!buf)
+         {
+@@ -502,7 +502,7 @@ PyTre_ncompile(PyObject *self, PyObject *args)
+ 
+   if (upattern != NULL)
+     {
+-      Py_ssize_t len = PyUnicode_GetSize(upattern);
++      Py_ssize_t len = PyUnicode_GET_LENGTH(upattern);
+       wchar_t *buf = calloc(sizeof(wchar_t), len);
+       if(!buf)
+         {
