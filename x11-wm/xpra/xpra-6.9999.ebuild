@@ -51,6 +51,7 @@ TEST_DEPEND="
 	server? (
 		x11-base/xorg-server[-minimal,xvfb]
 		x11-drivers/xf86-input-void
+		x11-drivers/xf86-video-dummy
 	)
 	webcam? ( media-video/v4l2loopback )
 	xinerama? ( x11-libs/libfakeXinerama )
