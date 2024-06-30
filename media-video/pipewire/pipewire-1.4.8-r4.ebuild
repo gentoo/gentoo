@@ -64,7 +64,7 @@ LICENSE="MIT LGPL-2.1+ GPL-2"
 # ABI was broken in 0.3.42 for https://gitlab.freedesktop.org/pipewire/wireplumber/-/issues/49
 SLOT="0/0.4"
 IUSE="${PIPEWIRE_DOCS_USEFLAG} bluetooth elogind dbus doc echo-cancel extra ffmpeg fftw flatpak gstreamer gsettings ieee1394 jack-client jack-sdk liblc3 loudness lv2"
-IUSE+=" modemmanager pipewire-alsa readline roc selinux sound-server ssl system-service systemd test v4l X zeroconf"
+IUSE+=" pulseaudio modemmanager pipewire-alsa readline roc selinux sound-server ssl system-service systemd test v4l X zeroconf"
 
 # Once replacing system JACK libraries is possible, it's likely that
 # jack-client IUSE will need blocking to avoid users accidentally
@@ -78,6 +78,7 @@ IUSE+=" modemmanager pipewire-alsa readline roc selinux sound-server ssl system-
 #   If that works, pulseaudio defaults are loaded into alsa-lib runtime replacing default PCM and CTL.
 #   When pipewire-alsa will be able to perform similar check, pipewire-alsa can be enabled unconditionally.
 # - ffmpeg is only used for pw-cat. We don't build the spa plugin which receives barely any activity.
+# TODO: should we add "pulseaudio? ( sound-server)"? is libpipewire-module-pulse-tunnel.so useful without sound-server?
 REQUIRED_USE="
 	ffmpeg? ( extra )
 	bluetooth? ( dbus )
@@ -159,6 +160,7 @@ RDEPEND="
 	lv2? ( media-libs/lilv )
 	modemmanager? ( >=net-misc/modemmanager-1.10.0 )
 	pipewire-alsa? ( >=media-libs/alsa-lib-1.2.10[${MULTILIB_USEDEP}] )
+	pulseaudio? ( media-libs/libpulse )
 	sound-server? ( !media-sound/pulseaudio-daemon )
 	roc? ( >=media-libs/roc-toolkit-0.4.0:= )
 	readline? ( sys-libs/readline:= )
@@ -308,6 +310,8 @@ multilib_src_configure() {
 		$(meson_native_use_feature X x11)
 		$(meson_native_use_feature X x11-xfixes)
 		$(meson_native_use_feature X libcanberra)
+
+		$(meson_native_use_feature pulseaudio libpulse)
 
 		# TODO
 		-Dsnap=disabled
