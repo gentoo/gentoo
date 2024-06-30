@@ -1,7 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit autotools
 
 DESCRIPTION="Multi-platform game development library"
 HOMEPAGE="https://github.com/sphair/ClanLib"
@@ -48,6 +50,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-docbuilder.patch"
 	"${FILESDIR}/${P}-glibc2.34.patch"
 	"${FILESDIR}/${P}-gcc12.patch"
+	"${FILESDIR}"/${P}-makefile-duplicate-headers.patch
 )
 
 DOCS=(
@@ -57,6 +60,7 @@ DOCS=(
 
 src_prepare() {
 	default
+	eautoreconf
 	# See #739358
 	sed -i -e "s:libdir=\${exec_prefix}/lib:libdir=@libdir@:g" \
 		pkgconfig/*.pc.in || die

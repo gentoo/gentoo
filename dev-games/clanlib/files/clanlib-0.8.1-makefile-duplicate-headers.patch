@@ -1,0 +1,29 @@
+From 54eb2a8e72f782792ab53d7c989deec52059990a Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 30 Jun 2024 19:24:50 -0400
+Subject: [PATCH] build: fix duplicated header in Makefile.am
+
+Regenerating configure/Makefiles with newer autotools versions results
+in build failures: a more optimized routine is used for installing
+headers in bulk, which is sensitive to listing the same file twice as
+part of a single `install ...` invocation. Not present in newer clanlib
+versions.
+---
+ Sources/API/Makefile.am | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/Sources/API/Makefile.am b/Sources/API/Makefile.am
+index 5686330..8dcb56e 100644
+--- a/Sources/API/Makefile.am
++++ b/Sources/API/Makefile.am
+@@ -232,7 +232,6 @@ clanCore_includes = \
+ 	Core/System/event_trigger.h \
+ 	Core/System/console_window.h \
+ 	Core/System/keep_alive.h \
+-	Core/System/log.h \
+ 	Core/System/crash_reporter.h \
+ 	Core/System/call_stack.h \
+ 	Core/System/clanstring.h \
+-- 
+2.44.2
+
