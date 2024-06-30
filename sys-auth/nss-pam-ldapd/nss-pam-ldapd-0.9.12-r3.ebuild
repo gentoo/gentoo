@@ -40,6 +40,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
+	dev-build/autoconf-archive
 	test? ( dev-python/pylint[${PYTHON_USEDEP}] )
 "
 RDEPEND+=" selinux? ( sec-policy/selinux-nslcd )"
@@ -51,6 +52,7 @@ PATCHES=(
 	"${FILESDIR}"/nss-pam-ldapd-0.9.11-tests.patch
 	"${FILESDIR}"/nss-pam-ldapd-0.9.11-tests-py39.patch
 	"${FILESDIR}"/nss-pam-ldapd-0.9.12-netdb-defines.patch
+	"${FILESDIR}"/nss-pam-ldapd-0.9.12-configure-CFLAGS-decontamination.patch
 )
 
 pkg_setup() {
@@ -62,6 +64,10 @@ src_prepare() {
 
 	touch pynslcd/__init__.py || die "Could not create __init__.py for pynslcd"
 	mv pynslcd/pynslcd.py pynslcd/main.py || die
+
+	find "${S}" -name Makefile.am -exec \
+	sed -e '/^AM_CFLAGS/ s/$/ \$(DEBUG_CFLAGS) \$(EXTRA_CFLAGS)/g' \
+	-i {} \; || die
 
 	eautoreconf
 }
