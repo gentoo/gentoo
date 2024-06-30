@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
-	dev-python/numpy[${PYTHON_USEDEP}]
+	<dev-python/numpy-2[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	!hppa? (
 		dev-python/scipy[${PYTHON_USEDEP}]
