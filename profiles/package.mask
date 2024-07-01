@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (2024-07-01)
+# Ancient, dead upstream, generally awful.
+# Removal on 2024-08-01.  Bugs #935307, #935308, #935309.
+games-arcade/spacerider
+games-arcade/tuxdash
+games-arcade/xsfcave
+
 # NHOrus <jy6x2b32pie9@yahoo.com> (2024-06-28)
 # games-puzzle/seatris: last rites
 # Twenty-year-old tetris clone with upstream that wasn't touched since,
