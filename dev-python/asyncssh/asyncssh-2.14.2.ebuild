@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-py313.patch"
 )
 
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
 distutils_enable_sphinx docs
 
