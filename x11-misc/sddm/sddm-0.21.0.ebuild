@@ -145,8 +145,8 @@ pkg_postinst() {
 		elog "  to the troubleshooting section."
 	fi
 
-	optfeature "Weston DisplayServer support (EXPERIMENTAL)" dev-libs/weston
-	optfeature "KWin DisplayServer support (EXPERIMENTAL)" kde-plasma/kwin
+	optfeature "Weston DisplayServer support (EXPERIMENTAL)" "dev-libs/weston[kiosk]"
+	optfeature "KWin DisplayServer support (EXPERIMENTAL)" "kde-plasma/kwin"
 
 	systemd_reenable sddm.service
 }
