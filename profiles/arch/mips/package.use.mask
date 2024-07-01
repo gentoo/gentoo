@@ -3,6 +3,16 @@
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-07-01)
 # simplify the dep tree
+dev-python/click doc
+dev-python/cython doc
+dev-python/flake8 doc
+dev-python/flask doc
+dev-python/flit doc
+dev-python/greenlet doc
+dev-python/outcome doc
+dev-python/pytest-cov doc
+dev-python/pytest-trio doc
+dev-python/stevedore doc
 dev-python/sphinx-autodoc-typehints test
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-29)
