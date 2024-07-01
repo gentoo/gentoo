@@ -13,7 +13,7 @@ LICENSE="GPL-3"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 
-IUSE="curl doc fftw +glpk gnuplot gui hdf5 imagemagick java json klu opengl portaudio postscript +qhull +qrupdate readline sndfile +sparse spqr ssl sundials X zlib"
+IUSE="curl doc fftw +glpk gnuplot gui hdf5 imagemagick java json klu portaudio postscript +qhull +qrupdate readline sndfile +sparse spqr ssl sundials zlib"
 
 # Although it is listed in INSTALL.OCTAVE as a build tool, Octave runs
 # "makeinfo" from sys-apps/texinfo at runtime to convert its texinfo
@@ -45,12 +45,6 @@ COMMON_DEPS="
 	imagemagick? ( media-gfx/graphicsmagick:=[cxx] )
 	json? ( dev-libs/rapidjson )
 	klu? ( sci-libs/klu:= )
-	opengl? (
-		media-libs/freetype:=
-		media-libs/fontconfig:=
-		virtual/glu
-		x11-libs/gl2ps:=
-	)
 	portaudio? ( media-libs/portaudio )
 	postscript? (
 		app-text/epstool
@@ -59,6 +53,11 @@ COMMON_DEPS="
 	)
 	gui? (
 		dev-qt/qtbase:6[gui,opengl,network,widgets]
+		media-libs/fontconfig:=
+		media-libs/freetype:=
+		virtual/glu
+		x11-libs/gl2ps:=
+		x11-libs/libX11:=
 		x11-libs/qscintilla:=[qt6]
 	)
 	qhull? ( media-libs/qhull:= )
@@ -82,7 +81,6 @@ COMMON_DEPS="
 		klu? ( >=sci-libs/sundials-4:=[sparse] )
 		!klu? ( >=sci-libs/sundials-4:= )
 	)
-	X? ( x11-libs/libX11:= )
 "
 RDEPEND="${COMMON_DEPS}
 	java? ( >=virtual/jre-1.8:* )"
@@ -99,11 +97,6 @@ BDEPEND="
 	)
 	qrupdate? ( app-misc/pax-utils )
 	sparse? ( app-misc/pax-utils )
-"
-
-REQUIRED_USE="
-	gui? ( X )
-	opengl? ( gui )
 "
 
 PATCHES=(
@@ -161,7 +154,6 @@ src_configure() {
 		$(use_with glpk)
 		$(use_with hdf5)
 		$(use_with imagemagick magick GraphicsMagick++)
-		$(use_with opengl)
 		$(use_with klu)
 		$(use_with portaudio)
 		$(use_with qhull qhull_r)
@@ -177,7 +169,6 @@ src_configure() {
 		$(use_with ssl openssl)
 		$(use_with sundials sundials_ida)
 		$(use_with sundials sundials_nvecserial)
-		$(use_with X x)
 	)
 
 	# Tell autoconf where to find qt binaries, fix bug #837752
@@ -187,9 +178,17 @@ src_configure() {
 			RCC="$(qt6_get_bindir)/../libexec/rcc" \
 			LRELEASE="$(qt6_get_bindir)/lrelease" \
 			QHELPGENERATOR="$(qt6_get_bindir)/../libexec/qhelpgenerator"
-		myeconfargs+=( "--with-qt=6" )
+		myeconfargs+=(
+			"--with-opengl"
+			"--with-qt=6"
+			"--with-x"
+		)
 	else
-		myeconfargs+=( "--without-qt" )
+		myeconfargs+=(
+			"--without-opengl"
+			"--without-qt"
+			"--without-x"
+		)
 	fi
 
 	econf "${myeconfargs[@]}"
