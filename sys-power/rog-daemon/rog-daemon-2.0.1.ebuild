@@ -6,8 +6,8 @@ EAPI=8
 inherit meson
 
 DESCRIPTION="Lightweight and modular ASUS ROG control daemon"
-HOMEPAGE="https://github.com/mechakotik/${PN}"
-SRC_URI="https://github.com/mechakotik/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/mechakotik/rog-daemon"
+SRC_URI="https://github.com/mechakotik/rog-daemon/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
