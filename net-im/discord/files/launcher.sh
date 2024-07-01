@@ -6,7 +6,7 @@ declare -a discord_parameters
 
 SECCOMP=false
 
-[[ ! "${SECCOMP}" ]] && discord_parameters+=( --disable-seccomp-filter-sandbox )
+"${SECCOMP}" || discord_parameters+=( --disable-seccomp-filter-sandbox )
 
 [[ -n "${WAYLAND_DISPLAY}" ]] && discord_parameters+=(
 	--enable-features=UseOzonePlatform
