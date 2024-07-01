@@ -148,6 +148,7 @@ src_configure() {
 		-DUSE_COLORD=$(usex colord)
 		-DUSE_GMIC=OFF
 		-DUSE_GRAPHICSMAGICK=$(usex graphicsmagick)
+		-DUSE_HEIF=$(usex heif)
 		-DUSE_JXL=$(usex jpegxl)
 		-DUSE_KWALLET=$(usex kwallet)
 		-DUSE_LIBSECRET=$(usex keyring)
