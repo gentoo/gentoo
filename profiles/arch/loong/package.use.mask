@@ -1,6 +1,13 @@
 # Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-07-01)
+# USE="kf6compat,kaccounts" depends on kde-frameworks/purpose:6[webengine]
+# which is package.use.mask'ed on these arches. We cannot mask the
+# combination specifically but in reality kaccounts is useless without
+# additional dev-qt/qtwebengine revdeps.
+kde-frameworks/purpose:5 kaccounts
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-15)
 # Requires unkeyworded dev-qt/qtwebengine (and revdeps)
 kde-plasma/plasma-nm openconnect
