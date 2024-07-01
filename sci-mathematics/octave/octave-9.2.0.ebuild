@@ -26,7 +26,7 @@ IUSE="curl doc fftw fltk +glpk gnuplot gui hdf5 imagemagick java json klu opengl
 # flags whose existing descriptions conflict with the obvious way we
 # would want to use them in octave. In any case, upstream doesn't really
 # support imagemagick, only graphicsmagick (bug 864785).
-RDEPEND="
+COMMON_DEPS="
 	app-arch/bzip2
 	app-arch/unzip
 	app-arch/zip
@@ -44,7 +44,6 @@ RDEPEND="
 	gnuplot? ( sci-visualization/gnuplot )
 	hdf5? ( sci-libs/hdf5:= )
 	imagemagick? ( media-gfx/graphicsmagick:=[cxx] )
-	java? ( >=virtual/jre-1.8:* )
 	json? ( dev-libs/rapidjson )
 	klu? ( sci-libs/klu:= )
 	opengl? (
@@ -98,7 +97,10 @@ RDEPEND="
 	)
 	X? ( x11-libs/libX11:= )
 "
-DEPEND="${RDEPEND}"
+RDEPEND="${COMMON_DEPS}
+	java? ( >=virtual/jre-1.8:* )"
+DEPEND="${COMMON_DEPS}
+	java? ( >=virtual/jdk-1.8:* )"
 BDEPEND="
 	dev-util/gperf
 	virtual/pkgconfig
@@ -108,7 +110,6 @@ BDEPEND="
 		dev-texlive/texlive-metapost
 		virtual/latex-base
 	)
-	java? ( >=virtual/jdk-1.8:* )
 	qt5? ( dev-qt/linguist-tools:5 )
 	qrupdate? ( app-misc/pax-utils )
 	sparse? ( app-misc/pax-utils )
