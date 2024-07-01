@@ -8,13 +8,12 @@ inherit webapp
 DESCRIPTION="A glossy Matrix collaboration client for the web"
 HOMEPAGE="https://element.io/"
 SRC_URI="https://github.com/vector-im/element-web/releases/download/v${PV}/${PN}-v${PV}.tar.gz"
+S=${WORKDIR}/${PN}-v${PV}
 
 LICENSE="Apache-2.0"
 KEYWORDS="~amd64 ~riscv ~x86"
 
 need_httpd
-
-S=${WORKDIR}/${PN}-v${PV}
 
 src_install() {
 	webapp_src_preinst
