@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-MY_COMMIT="e8dd751d8a5cae375000fe7d3881e9da77075ab0"
+MY_COMMIT="27cbf1ba87e6d60809c43246e2eef760fcd26d13"
 
 # Games under Gentoo are marked as 'testing' by convention
 #
