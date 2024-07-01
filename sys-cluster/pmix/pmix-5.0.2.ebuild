@@ -35,9 +35,17 @@ src_configure() {
 	# https://github.com/openpmix/openpmix/issues/3350
 	filter-lto
 
-	econf \
-		$(use_enable debug) \
+	local myeconfargs=(
+		# These are alternatives. We must use the one in DEPEND, and also
+		# prevent automagic fallbacks.
+		--with-libevent
+		--without-libev
+
+		$(use_enable debug)
 		$(use_with munge)
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
