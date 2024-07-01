@@ -34,7 +34,7 @@ BDEPEND="
 PATCHES=(
 	# https://github.com/tox-dev/pipdeptree/pull/302
 	"${FILESDIR}/pipdeptree-2.17.0-expect-hpy-in-pypy-7.3.3.patch"
-	"${FILESDIR}/pipdeptree-2.13.2-fix-pypy-7.3.14.patch"
+	"${FILESDIR}/pipdeptree-2.18.1-fix-pypy-7.3.14.patch"
 )
 
 distutils_enable_tests pytest
