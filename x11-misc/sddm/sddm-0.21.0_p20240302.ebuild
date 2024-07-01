@@ -41,7 +41,7 @@ COMMON_DEPEND="
 	!systemd? ( sys-power/upower )
 "
 DEPEND="${COMMON_DEPEND}
-	test? ( >=dev-qt/qtbase-${QTMIN}:6[network,test] )
+	test? ( >=dev-qt/qtbase-${QTMIN}:6 )
 "
 RDEPEND="${COMMON_DEPEND}
 	X? ( x11-base/xorg-server )
