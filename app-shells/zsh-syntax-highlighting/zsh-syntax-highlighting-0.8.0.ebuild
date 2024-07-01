@@ -10,7 +10,7 @@ if [[ "${PV}" = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/zsh-users/${PN}.git"
 else
 	SRC_URI="https://github.com/zsh-users/zsh-syntax-highlighting/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 fi
 
 DESCRIPTION="Fish shell like syntax highlighting for zsh"
