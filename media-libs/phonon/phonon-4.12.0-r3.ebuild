@@ -15,7 +15,7 @@ fi
 
 LICENSE="|| ( LGPL-2.1 LGPL-3 ) !pulseaudio? ( || ( GPL-2 GPL-3 ) )"
 SLOT="0"
-IUSE="debug designer pulseaudio +qt5 qt6 +vlc"
+IUSE="debug designer minimal pulseaudio +qt5 qt6"
 REQUIRED_USE="|| ( qt5 qt6 )"
 
 DEPEND="
@@ -50,7 +50,7 @@ BDEPEND="
 	qt6? ( dev-qt/qttools:6[linguist] )
 "
 PDEPEND="
-	vlc? ( >=media-libs/phonon-vlc-0.12.0[qt5?,qt6?] )
+	!minimal? ( >=media-libs/phonon-vlc-0.12.0[qt5?,qt6?] )
 "
 
 pkg_setup() {
