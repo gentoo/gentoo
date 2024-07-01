@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1 optfeature pypi
 
@@ -35,9 +35,9 @@ BDEPEND="
 	)
 "
 
-EPYTEST_DESELECT=(
-	# https://github.com/ronf/asyncssh/pull/578
-	tests/test_process.py::_TestAsyncFileRedirection::test_stdout_aiofile
+PATCHES=(
+	# https://github.com/ronf/asyncssh/issues/616
+	"${FILESDIR}/${P}-py313.patch"
 )
 
 distutils_enable_tests pytest
