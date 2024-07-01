@@ -8,6 +8,10 @@
 sys-devel/binutils default-gold gold
 sys-devel/binutils-hppa64 default-gold gold
 
+# Zen <dev@pyl.onl> (2024-07-01)
+# UGRD is not keyworded everywhere yet
+sys-kernel/installkernel ugrd
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-23)
 # Pulls in kde-apps/kgpg which requires kde-apps/akonadi, which is as
 # part of the KDE PIM stack (big, requiring QtWebengine) only keyworded

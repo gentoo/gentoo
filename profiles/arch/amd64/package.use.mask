@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Zen <dev@pyl.onl> (2024-07-01)
+# Unmask the ugrd flag for installkernel. It is keyworded here
+sys-kernel/installkernel -ugrd
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-23)
 # Pulls in kde-apps/kgpg which is keyworded here
 >=kde-apps/kdeutils-meta-24.05.1 -gpg
