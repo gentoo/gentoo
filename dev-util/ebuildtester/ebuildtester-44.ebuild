@@ -14,8 +14,6 @@ HOMEPAGE="https://ebuildtester.readthedocs.io/"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-containers/docker
@@ -23,12 +21,11 @@ RDEPEND="
 	sys-fs/fuse
 "
 
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
+BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
-	dev-python/sphinx[${PYTHON_USEDEP}]
 "
 
+distutils_enable_sphinx docs dev-python/sphinx-rtd-theme
 distutils_enable_tests unittest
 
 src_install() {
