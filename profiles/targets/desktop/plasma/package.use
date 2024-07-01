@@ -96,5 +96,5 @@ kde-plasma/kwin lock
 media-video/pipewire sound-server
 
 # Expected to be available by default in Plasma
-kde-frameworks/purpose kaccounts
-kde-plasma/plasma-desktop kaccounts
+kde-frameworks/purpose:5 kaccounts
+kde-plasma/plasma-desktop:5 kaccounts
