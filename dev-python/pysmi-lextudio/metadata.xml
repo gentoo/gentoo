@@ -7,7 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="pypi">pyasn1-modules</remote-id>
-		<remote-id type="github">pyasn1/pyasn1-modules</remote-id>
+		<remote-id type="pypi">pysmi-lextudio</remote-id>
+		<remote-id type="github">lextudio/pysmi</remote-id>
 	</upstream>
 </pkgmetadata>
