@@ -13,7 +13,7 @@ LICENSE="GPL-3"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 
-IUSE="curl doc fftw fltk +glpk gnuplot gui hdf5 imagemagick java json klu opengl portaudio postscript +qhull +qrupdate +qt5 qt6 readline sndfile +sparse spqr ssl sundials X zlib"
+IUSE="curl doc fftw +glpk gnuplot gui hdf5 imagemagick java json klu opengl portaudio postscript +qhull +qrupdate readline sndfile +sparse spqr ssl sundials X zlib"
 
 # Although it is listed in INSTALL.OCTAVE as a build tool, Octave runs
 # "makeinfo" from sys-apps/texinfo at runtime to convert its texinfo
@@ -39,7 +39,6 @@ COMMON_DEPS="
 	virtual/lapack
 	curl? ( net-misc/curl:= )
 	fftw? ( sci-libs/fftw:3.0= )
-	fltk? ( >=x11-libs/fltk-1.3:1=[opengl,xft] )
 	glpk? ( sci-mathematics/glpk:= )
 	gnuplot? ( sci-visualization/gnuplot )
 	hdf5? ( sci-libs/hdf5:= )
@@ -59,20 +58,8 @@ COMMON_DEPS="
 		>=media-gfx/fig2dev-3.2.9-r1
 	)
 	gui? (
-		qt5? (
-			dev-qt/qtcore:5
-			dev-qt/qtgui:5
-			dev-qt/qthelp:5
-			dev-qt/qtnetwork:5
-			dev-qt/qtopengl:5
-			dev-qt/qtprintsupport:5
-			dev-qt/qtwidgets:5
-			x11-libs/qscintilla:=[qt5]
-		)
-		qt6? (
-			dev-qt/qtbase:6[gui,opengl,network,widgets]
-			x11-libs/qscintilla:=[qt6]
-		)
+		dev-qt/qtbase:6[gui,opengl,network,widgets]
+		x11-libs/qscintilla:=[qt6]
 	)
 	qhull? ( media-libs/qhull:= )
 	qrupdate? ( sci-libs/qrupdate:= )
@@ -110,36 +97,13 @@ BDEPEND="
 		dev-texlive/texlive-metapost
 		virtual/latex-base
 	)
-	qt5? ( dev-qt/linguist-tools:5 )
 	qrupdate? ( app-misc/pax-utils )
 	sparse? ( app-misc/pax-utils )
 "
 
-# There are three ways to plot in Octave:
-#
-#   1. The old gnuplot renderer
-#   2. The OpenGL renderer using the FLTK backend
-#   3. The OpenGL renderer using the Qt backend
-#
-# It's possible to use the Qt GUI without OpenGL, but OpenGL rendering
-# is all that FLTK is used for, so it doesn't make sense to enable
-# USE=fltk without USE=opengl.
-#
-# Building without either USE=gnuplot or USE=opengl is technically legal,
-# but will leave you unable to plot anything.
-#
-# Octave's FLTK support is unofficially deprecated, in the sense that
-# you'll often get "why are you using FLTK?" in response to
-# bugs. (Upstream bug 59321 for a random example.) In the future, it
-# will probably make sense to merge USE=opengl and USE=X into USE=qt[56],
-# dropping USE=fltk entirely.
 REQUIRED_USE="
-	?? ( qt5 qt6 )
-	fltk? ( opengl X )
 	gui? ( X )
-	qt5? ( gui )
-	qt6? ( gui )
-	opengl? ( || ( fltk gui ) )
+	opengl? ( gui )
 "
 
 PATCHES=(
@@ -164,27 +128,6 @@ src_configure() {
 	use hdf5 && has_version sci-libs/hdf5[mpi] && \
 		export CXX=mpicxx CC=mpicc FC=mpif77 F77=mpif77
 
-	# Tell autoconf where to find qt binaries, fix bug #837752
-	local gui_with
-	if use qt5 ; then
-		export MOC="$(qt5_get_bindir)/moc" \
-			UIC="$(qt5_get_bindir)/uic" \
-			RCC="$(qt5_get_bindir)/rcc" \
-			LRELEASE="$(qt5_get_bindir)/lrelease" \
-			QCOLLECTIONGENERATOR="$(qt5_get_bindir)/qcollectiongenerator" \
-			QHELPGENERATOR="$(qt5_get_bindir)/qhelpgenerator"
-		gui_with="--with-qt=5"
-	elif use qt6 ; then
-		export MOC="$(qt6_get_bindir)/../libexec/moc" \
-			UIC="$(qt6_get_bindir)/../libexec/uic" \
-			RCC="$(qt6_get_bindir)/../libexec/rcc" \
-			LRELEASE="$(qt6_get_bindir)/lrelease" \
-			QHELPGENERATOR="$(qt6_get_bindir)/../libexec/qhelpgenerator"
-		gui_with="--with-qt=6"
-	else
-		gui_with="--without-qt"
-	fi
-
 	# Some of these use_with flags are a bit mismatched. The configure
 	# script offers only --without-foo, and detects "foo" automatically
 	# unless --without-foo is specified. Passing --with-foo is not an
@@ -201,12 +144,11 @@ src_configure() {
 		--enable-shared
 		--with-z
 		--with-bz2
+		--without-fltk
 
 		# bug #901965
 		--without-libiconv-prefix
 		--without-libreadline-prefix
-
-		${gui_with}
 
 		$(use_enable doc docs)
 		$(use_enable java)
@@ -220,7 +162,6 @@ src_configure() {
 		$(use_with hdf5)
 		$(use_with imagemagick magick GraphicsMagick++)
 		$(use_with opengl)
-		$(use_with fltk)
 		$(use_with klu)
 		$(use_with portaudio)
 		$(use_with qhull qhull_r)
@@ -238,6 +179,18 @@ src_configure() {
 		$(use_with sundials sundials_nvecserial)
 		$(use_with X x)
 	)
+
+	# Tell autoconf where to find qt binaries, fix bug #837752
+	if use gui ; then
+		export MOC="$(qt6_get_bindir)/../libexec/moc" \
+			UIC="$(qt6_get_bindir)/../libexec/uic" \
+			RCC="$(qt6_get_bindir)/../libexec/rcc" \
+			LRELEASE="$(qt6_get_bindir)/lrelease" \
+			QHELPGENERATOR="$(qt6_get_bindir)/../libexec/qhelpgenerator"
+		myeconfargs+=( "--with-qt=6" )
+	else
+		myeconfargs+=( "--without-qt" )
+	fi
 
 	econf "${myeconfargs[@]}"
 }
