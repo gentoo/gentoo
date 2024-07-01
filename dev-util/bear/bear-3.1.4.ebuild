@@ -3,31 +3,34 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
-inherit cmake python-any-r1
+inherit cmake multiprocessing python-any-r1
 
 DESCRIPTION="Build EAR generates a compilation database for clang tooling"
 HOMEPAGE="https://github.com/rizsotto/Bear"
 SRC_URI="https://github.com/rizsotto/Bear/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${P^}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-cpp/nlohmann_json-3.7.3:=
-	>=dev-db/sqlite-3.14:=
-	dev-libs/libfmt:=
+	dev-cpp/abseil-cpp:=
+	>=dev-cpp/nlohmann_json-3.11.2:=
+	>=dev-libs/libfmt-9.1.0:=
 	dev-libs/protobuf:=
-	>=dev-libs/spdlog-1.5:=
-	>=net-libs/grpc-1.26:=
+	>=dev-libs/spdlog-1.11.0:=
+	>=net-libs/grpc-1.49.2:=
 "
 
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	test? (
-		>=dev-cpp/gtest-1.10
+		>=dev-cpp/gtest-1.13
 	)
 "
 
@@ -41,10 +44,6 @@ BDEPEND="
 	)
 "
 
-RESTRICT="!test? ( test )"
-
-S="${WORKDIR}/${P^}"
-
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
@@ -56,6 +55,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# TODO: remove this when https://bugs.gentoo.org/928346 is fixed
+	export CMAKE_BUILD_PARALLEL_LEVEL=$(makeopts_jobs)
+
 	local mycmakeargs=(
 		-DENABLE_UNIT_TESTS="$(usex test)"
 		-DENABLE_FUNC_TESTS="$(usex test)"
