@@ -22,7 +22,7 @@ IUSE="alsa debug gif gpm pop postgres ldap xface nas dnd X jpeg tiff png motif f
 X_DEPEND="x11-libs/libXt x11-libs/libXmu x11-libs/libXext x11-misc/xbitmaps"
 
 RDEPEND="
-	berkdb? ( >=sys-libs/db-4:= !!<sys-libs/db-4 )
+	berkdb? ( >=sys-libs/db-4:= )
 	gdbm? ( >=sys-libs/gdbm-1.8.3:=[berkdb(+)] )
 	>=sys-libs/zlib-1.1.4
 	>=dev-libs/openssl-0.9.6:0=
