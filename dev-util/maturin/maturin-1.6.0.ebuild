@@ -549,6 +549,9 @@ python_test() {
 		# to find the system's dev-python/uv (not worth the trouble)
 		--skip develop_hello_world::case_2
 		--skip develop_pyo3_ffi_pure::case_2
+		# fails on sparc since rust-1.74 (bug #934573), skip for now given
+		# should not affect the pep517 backend which is all we need on sparc
+		$(usev sparc '--skip build_context::test::test_macosx_deployment_target')
 	)
 
 	cargo_src_test -- "${skip[@]}"
