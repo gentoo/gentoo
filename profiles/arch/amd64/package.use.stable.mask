@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Zen <dev@pyl.onl> (2024-07-01)
+# There is no stable version of ugrd, only allow usage with the testing versions    
+sys-kernel/installkernel ugrd
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-17)
 # Experimental, virt-firmware is keyworded only unstable
 sys-kernel/installkernel efistub

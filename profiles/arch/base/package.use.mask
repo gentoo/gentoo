@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Zen <dev@pyl.onl> (2024-07-01)
+# No UGRD packages are stable, masks the experimental ugrd flag for
+# installkernel
+sys-kernel/installkernel ugrd
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-04-25)
 # ROCm and Level-Zero are amd64-only at the moment
 sys-apps/hwloc rocm l0
