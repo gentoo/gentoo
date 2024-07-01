@@ -94,8 +94,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=x11-misc/xdg-utils-1.0.2-r2
 	font-subsetting? ( $(python_gen_cond_dep 'dev-python/fonttools[${PYTHON_USEDEP}]') )
 	ios? (
-		>=app-pda/usbmuxd-1.0.8
-		>=app-pda/libimobiledevice-1.2.0
+		>=app-mobiledevice/usbmuxd-1.0.8
+		>=app-mobiledevice/libimobiledevice-1.2.0
 	)
 	speech? ( $(python_gen_cond_dep 'app-accessibility/speech-dispatcher[python,${PYTHON_USEDEP}]') )
 	system-mathjax? ( >=dev-libs/mathjax-3:= )

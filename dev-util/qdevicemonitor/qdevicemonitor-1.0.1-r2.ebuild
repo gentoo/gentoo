@@ -21,7 +21,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	app-pda/usbmuxd
+	app-mobiledevice/usbmuxd
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5

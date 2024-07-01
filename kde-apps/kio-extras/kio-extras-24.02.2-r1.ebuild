@@ -51,8 +51,8 @@ DEPEND="
 		>=kde-plasma/plasma-activities-stats-${KFMIN}:5
 	)
 	ios? (
-		app-pda/libimobiledevice:=
-		app-pda/libplist:=
+		app-mobiledevice/libimobiledevice:=
+		app-mobiledevice/libplist:=
 	)
 	mtp? ( >=media-libs/libmtp-1.1.16:= )
 	nfs? ( net-libs/libtirpc:= )

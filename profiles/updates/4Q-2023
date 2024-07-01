@@ -39,3 +39,11 @@ move app-laptop/tuxedo-keyboard app-laptop/tuxedo-drivers
 move dev-libs/clhpp dev-cpp/clhpp
 move games-puzzle/ksokoban games-puzzle/skladnik
 move dev-python/python-sense-hat dev-python/sense-hat
+move app-pda/gtkpod media-sound/gtkpod
+move app-pda/ideviceinstaller app-mobilephone/ifuse
+move app-pda/ifuse app-mobilephone/ifuse
+move app-pda/ipad_charge app-mobilephone/ipad_charge
+move app-pda/libimobiledevice app-mobilephone/libimobiledevice
+move app-pda/libimobiledevice-glue app-mobilephone/libimobiledevice-glue
+move app-pda/libplist app-mobilephone/libplist
+move app-pda/libusbmuxd app-mobilephone/libusbmuxd

@@ -69,7 +69,7 @@ COMMON_DEPEND="
 "
 COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	airplay? (
-		>=app-pda/libplist-2.0.0
+		>=app-mobiledevice/libplist-2.0.0
 		net-libs/shairplay
 	)
 	alsa? ( >=media-libs/alsa-lib-1.1.4.1 )

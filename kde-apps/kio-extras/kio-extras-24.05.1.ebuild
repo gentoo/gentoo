@@ -49,8 +49,8 @@ DEPEND="
 		kde-plasma/plasma-activities-stats:6
 	)
 	ios? (
-		app-pda/libimobiledevice:=
-		app-pda/libplist:=
+		app-mobiledevice/libimobiledevice:=
+		app-mobiledevice/libplist:=
 	)
 	mtp? ( >=media-libs/libmtp-1.1.16:= )
 	openexr? ( media-libs/openexr:= )

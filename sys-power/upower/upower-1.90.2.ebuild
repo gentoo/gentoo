@@ -27,8 +27,8 @@ DEPEND="
 		>=dev-libs/libgudev-236:=
 		virtual/udev
 		ios? (
-			>=app-pda/libimobiledevice-1:=
-			>=app-pda/libplist-2:=
+			>=app-mobiledevice/libimobiledevice-1:=
+			>=app-mobiledevice/libplist-2:=
 		)
 	)
 "
