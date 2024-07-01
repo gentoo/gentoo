@@ -56,5 +56,5 @@ src_configure() {
 
 src_install() {
 	ecm_src_install
-	use kdesu && dosym ../$(get_libdir)/libexec/kf6/kdesu /usr/bin/kdesu
+	use kdesu && dosym ../libexec/kf6/kdesu /usr/bin/kdesu
 }
