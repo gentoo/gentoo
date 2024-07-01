@@ -422,6 +422,9 @@ openssh_maybe_restart() {
 		systemctl try-restart sshd
 		eend $?
 	elif [[ -d /run/openrc ]]; then
+		# We don't check for sshd -t here because the OpenRC init script
+		# has a stop_pre() which does checkconfig, i.e. we defer to it
+		# to give nicer output for a failed sanity check.
 		ewarn "The ebuild will now attempt to restart OpenSSH to avoid"
 		ewarn "bricking the running instance. See bug #709748."
 		ebegin "Attempting to restart openssh via 'rc-service -q --ifstarted --nodeps sshd restart'"
