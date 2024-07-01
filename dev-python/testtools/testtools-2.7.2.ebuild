@@ -27,11 +27,13 @@ BDEPEND="
 		>=dev-python/fixtures-2.0.0[${PYTHON_USEDEP}]
 		dev-python/testscenarios[${PYTHON_USEDEP}]
 		dev-python/testresources[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			dev-python/twisted[${PYTHON_USEDEP}]
-		' 3.{10..12})
+		dev-python/twisted[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-2.7.2-twisted-fix.patch"
+)
 
 distutils_enable_sphinx doc
 
