@@ -80,7 +80,7 @@ LICENSE="Apache-2.0"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0-with-LLVM-exceptions BSD MIT Unicode-DFS-2016"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 BDEPEND="
 	dev-python/setuptools-rust[${PYTHON_USEDEP}]
