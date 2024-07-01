@@ -95,6 +95,7 @@ BDEPEND="
 		dev-texlive/texlive-metapost
 		virtual/latex-base
 	)
+	gui? ( dev-qt/qttools:6[linguist] )
 	qrupdate? ( app-misc/pax-utils )
 	sparse? ( app-misc/pax-utils )
 "
