@@ -93,8 +93,14 @@ src_prepare() {
 
 	# USE seccomp in launcher
 	if use seccomp; then
-		sed --in-place --expression '/^SECCOMP=/s/false/true/' \
+		sed --in-place --expression '/^EBUILD_SECCOMP=/s/false/true/' \
 			"${T}/launcher.sh" || die "sed failed for seccomp"
+	fi
+
+	# USE wayland in launcher
+	if use wayland; then
+		sed --in-place --expression '/^EBUILD_WAYLAND=/s/false/true/' \
+			"${T}/launcher.sh" || die "sed failed for wayland"
 	fi
 }
 
