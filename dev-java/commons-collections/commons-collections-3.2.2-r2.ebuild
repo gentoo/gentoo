@@ -19,7 +19,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos"
 
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/commons.apache.org.asc"
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/commons.apache.org.asc"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-commons )"
 # broken with jdk:21 - https://bugs.gentoo.org/916445
 DEPEND="
@@ -40,12 +40,4 @@ JAVA_TEST_SRC_DIR="src/test"
 src_prepare() {
 	default #780585
 	java-pkg-2_src_prepare
-}
-
-src_test() {
-	if [[ "${ARCH}" = "ppc" ]]; then
-		einfo "tests are disabled on ppc"
-	else
-		java-pkg-simple_src_test
-	fi
 }
