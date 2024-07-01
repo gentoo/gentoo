@@ -58,9 +58,7 @@ CRATES="
 	borsh-derive@1.5.0
 	borsh@1.5.0
 	bracoxide@0.1.3
-	brotli-decompressor@2.5.1
 	brotli-decompressor@4.0.0
-	brotli@3.5.0
 	brotli@5.0.0
 	bstr@1.9.1
 	bumpalo@3.16.0
@@ -105,6 +103,7 @@ CRATES="
 	const-random@0.1.18
 	const_format@0.2.32
 	const_format_proc_macros@0.2.32
+	convert_case@0.6.0
 	core-foundation-sys@0.8.6
 	core-foundation@0.9.4
 	cpufeatures@0.2.12
@@ -137,6 +136,7 @@ CRATES="
 	dlib@0.5.2
 	dlv-list@0.5.2
 	doc-comment@0.3.3
+	doctest-file@1.0.0
 	downcast-rs@1.2.1
 	dtoa-short@0.3.4
 	dtoa@1.0.9
@@ -191,7 +191,7 @@ CRATES="
 	gethostname@0.4.3
 	getrandom@0.2.14
 	gimli@0.28.1
-	git2@0.18.3
+	git2@0.19.0
 	gjson@0.8.1
 	glob-match@0.2.1
 	glob@0.3.1
@@ -225,7 +225,7 @@ CRATES="
 	inotify-sys@0.1.5
 	inotify@0.9.6
 	instant@0.1.12
-	interprocess@2.1.0
+	interprocess@2.2.0
 	inventory@0.3.15
 	is-docker@0.2.0
 	is-terminal@0.4.12
@@ -255,7 +255,7 @@ CRATES="
 	libc@0.2.154
 	libflate@1.4.0
 	libflate_lz77@1.2.0
-	libgit2-sys@0.16.2+1.7.2
+	libgit2-sys@0.17.0+1.8.1
 	libloading@0.8.3
 	libm@0.2.8
 	libmimalloc-sys@0.1.38
@@ -331,7 +331,7 @@ CRATES="
 	openssl@0.10.64
 	ordered-multimap@0.7.3
 	os_display@0.1.3
-	os_pipe@1.1.5
+	os_pipe@1.2.0
 	owo-colors@4.0.0
 	papergrid@0.10.0
 	parking_lot@0.12.2
@@ -363,22 +363,23 @@ CRATES="
 	planus@0.3.1
 	platform-info@2.0.3
 	polars-arrow-format@0.1.0
-	polars-arrow@0.39.2
-	polars-compute@0.39.2
-	polars-core@0.39.2
-	polars-error@0.39.2
-	polars-io@0.39.2
-	polars-json@0.39.2
-	polars-lazy@0.39.2
-	polars-ops@0.39.2
-	polars-parquet@0.39.2
-	polars-pipe@0.39.2
-	polars-plan@0.39.2
-	polars-row@0.39.2
-	polars-sql@0.39.2
-	polars-time@0.39.2
-	polars-utils@0.39.2
-	polars@0.39.2
+	polars-arrow@0.40.0
+	polars-compute@0.40.0
+	polars-core@0.40.0
+	polars-error@0.40.0
+	polars-expr@0.40.0
+	polars-io@0.40.0
+	polars-json@0.40.0
+	polars-lazy@0.40.0
+	polars-ops@0.40.0
+	polars-parquet@0.40.0
+	polars-pipe@0.40.0
+	polars-plan@0.40.0
+	polars-row@0.40.0
+	polars-sql@0.40.0
+	polars-time@0.40.0
+	polars-utils@0.40.0
+	polars@0.40.0
 	pori@0.0.0
 	portable-atomic@1.6.0
 	powerfmt@0.2.0
@@ -496,7 +497,7 @@ CRATES="
 	snap@1.1.1
 	socket2@0.5.7
 	sqlparser@0.39.0
-	sqlparser@0.45.0
+	sqlparser@0.47.0
 	stability@0.2.0
 	stable_deref_trait@1.2.0
 	stacker@0.1.15
@@ -510,7 +511,6 @@ CRATES="
 	strip-ansi-escapes@0.2.0
 	strsim@0.11.1
 	strum@0.26.2
-	strum_macros@0.25.3
 	strum_macros@0.26.2
 	supports-color@2.1.0
 	supports-color@3.0.0
@@ -579,13 +579,12 @@ CRATES="
 	utf-8@0.7.6
 	utf8-width@0.1.7
 	utf8parse@0.2.1
-	uu_cp@0.0.25
-	uu_mkdir@0.0.25
-	uu_mktemp@0.0.25
-	uu_mv@0.0.25
-	uu_uname@0.0.25
-	uu_whoami@0.0.25
-	uucore@0.0.25
+	uu_cp@0.0.26
+	uu_mkdir@0.0.26
+	uu_mktemp@0.0.26
+	uu_mv@0.0.26
+	uu_uname@0.0.26
+	uu_whoami@0.0.26
 	uucore@0.0.26
 	uucore_procs@0.0.26
 	uuhelp_parser@0.0.26
