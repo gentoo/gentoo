@@ -4,10 +4,13 @@
 
 declare -a discord_parameters
 
-SECCOMP=false
+# Variables set during ebuild configuration
+EBUILD_SECCOMP=false
+EBUILD_WAYLAND=false
 
-"${SECCOMP}" || discord_parameters+=( --disable-seccomp-filter-sandbox )
+"${EBUILD_SECCOMP}" || discord_parameters+=( --disable-seccomp-filter-sandbox )
 
+"${EBUILD_WAYLAND}" && \
 [[ -n "${WAYLAND_DISPLAY}" ]] && discord_parameters+=(
 	--enable-features=UseOzonePlatform
 	--ozone-platform=wayland
