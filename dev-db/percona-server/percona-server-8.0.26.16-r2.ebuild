@@ -17,7 +17,7 @@ MY_MAJOR_PV=$(ver_cut 1-2)
 MY_RELEASE_NOTES_URI="https://www.percona.com/doc/percona-server/${MY_MAJOR_PV}/"
 
 # Patch version
-PATCH_SET="https://dev.gentoo.org/~whissi/dist/percona-server/${PN}-8.0.26.16-patches-01.tar.xz"
+PATCH_SET="mirror://gentoo/fb/${PN}-8.0.26.16-patches-01.tar.xz"
 
 SRC_URI="https://www.percona.com/downloads/${MY_PN}-${MY_MAJOR_PV}/${MY_PN}-${MY_PV}/source/tarball/${PN}-${MY_PV}.tar.gz
 	https://dl.bintray.com/boostorg/release/${MY_BOOST_VERSION}/source/boost_$(ver_rs 1- _ ${MY_BOOST_VERSION}).tar.bz2
