@@ -19,7 +19,7 @@ else
 		SRC_URI="https://mirrors.edge.kernel.org/pub/linux/kernel/firmware/${P}.tar.xz"
 	fi
 
-	KEYWORDS="~amd64"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 DESCRIPTION="Linux firmware files"
@@ -66,6 +66,18 @@ IDEPEND="
 
 QA_PREBUILT="*"
 
+pkg_pretend() {
+	if use initramfs; then
+		if [[ -z ${ROOT} ]] && use dist-kernel; then
+			# Check, but don't die because we can fix the problem and then
+			# emerge --config ... to re-run installation.
+			nonfatal mount-boot_check_status
+		else
+			mount-boot_pkg_pretend
+		fi
+	fi
+}
+
 pkg_setup() {
 	if use compress-xz || use compress-zstd ; then
 		local CONFIG_CHECK
@@ -81,18 +93,6 @@ pkg_setup() {
 		fi
 	fi
 	linux-info_pkg_setup
-}
-
-pkg_pretend() {
-	if use initramfs; then
-		if [[ -z ${ROOT} ]] && use dist-kernel; then
-			# Check, but don't die because we can fix the problem and then
-			# emerge --config ... to re-run installation.
-			nonfatal mount-boot_check_status
-		else
-			mount-boot_pkg_pretend
-		fi
-	fi
 }
 
 src_unpack() {
@@ -120,7 +120,7 @@ src_prepare() {
 
 	if use initramfs && ! use dist-kernel; then
 		if [[ -d "${S}/amd-ucode" ]]; then
-			."/${T}/make-amd-ucode-img" "${S}/amd-ucode" "${S}/amd-ucode.img" || die
+			"${T}/make-amd-ucode-img" "${S}" "${S}/amd-ucode" || die
 		else
 			# If this will ever happen something has changed which
 			# must be reviewed
