@@ -3,17 +3,21 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic linux-info pam systemd toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/squid.gpg
+inherit autotools flag-o-matic linux-info pam systemd toolchain-funcs verify-sig
 
 DESCRIPTION="Full-featured web proxy cache"
-HOMEPAGE="http://www.squid-cache.org/"
+HOMEPAGE="https://www.squid-cache.org/"
 
 MY_PV_MAJOR=$(ver_cut 1)
 # Upstream patch ID for the most recent bug-fixed update to the formal release.
 #r=-20181117-r0022167
 r=
 if [[ -z ${r} ]]; then
-	SRC_URI="http://static.squid-cache.org/Versions/v${MY_PV_MAJOR}/${P}.tar.xz"
+	SRC_URI="
+		http://static.squid-cache.org/Versions/v${MY_PV_MAJOR}/${P}.tar.xz
+		verify-sig? ( http://static.squid-cache.org/Versions/v${MY_PV_MAJOR}/${P}.tar.xz.asc )
+	"
 else
 	SRC_URI="http://static.squid-cache.org/Versions/v${MY_PV_MAJOR}/${P}${r}.tar.bz2"
 	S="${S}${r}"
@@ -21,7 +25,7 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="caps gnutls pam ldap samba sasl kerberos nis radius ssl snmp selinux logrotate test ecap"
 IUSE+=" esi ssl-crtd mysql postgres sqlite systemd perl qos tproxy +htcp valgrind +wccp +wccpv2"
 RESTRICT="!test? ( test )"
@@ -72,12 +76,13 @@ BDEPEND="
 	dev-lang/perl
 	ecap? ( virtual/pkgconfig )
 	test? ( dev-util/cppunit )
+	verify-sig? ( sec-keys/openpgp-keys-squid )
 "
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.2-gentoo.patch
 	"${FILESDIR}"/${PN}-4.17-use-system-libltdl.patch
-	"${FILESDIR}"/${PN}-6.4-gcc14-algorithm.patch
+	"${FILESDIR}"/${PN}-6.9-memleak_fix.patch
 )
 
 pkg_pretend() {
@@ -349,14 +354,14 @@ src_install() {
 	fi
 
 	newconfd "${FILESDIR}"/squid.confd-r2 squid
-	newinitd "${FILESDIR}"/squid.initd-r6 squid
+	newinitd "${FILESDIR}"/squid.initd-r7 squid
 
 	if use logrotate ; then
 		insinto /etc/logrotate.d
-		newins "${FILESDIR}"/squid.logrotate squid
+		newins "${FILESDIR}"/squid.logrotate-r1 squid
 	else
 		exeinto /etc/cron.weekly
-		newexe "${FILESDIR}"/squid.cron squid.cron
+		newexe "${FILESDIR}"/squid.cron-r1 squid.cron
 	fi
 
 	diropts -m0750 -o squid -g squid
