@@ -41,11 +41,6 @@
 # Bug: https://bugs.gentoo.org/935057
 games-puzzle/seatris
 
-# Michał Górny <mgorny@gentoo.org> (2024-07-01)
-# Refuses to boot if initramfs was built with an older systemd version
-# that enabled "cgroups v1".  Bug #935261.
->=sys-apps/systemd-256
-
 # Sam James <sam@gentoo.org> (2024-06-25)
 # Subvolume printing is broken: https://github.com/kdave/btrfs-progs/issues/829
 =sys-fs/btrfs-progs-6.9.1
