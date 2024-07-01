@@ -102,6 +102,7 @@ kde-apps/cantor
 kde-apps/eventviews
 kde-apps/grantlee-editor
 kde-apps/incidenceeditor
+kde-apps/kaccounts-integration:6
 kde-apps/kaccounts-providers
 kde-apps/kaddressbook
 kde-apps/kalarm

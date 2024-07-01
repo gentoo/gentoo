@@ -53,6 +53,7 @@ kde-apps/knotes
 kde-apps/kdepim-meta
 kde-apps/kdepim-addons
 kde-apps/kaddressbook
+kde-apps/kaccounts-integration:6
 kde-apps/kaccounts-providers
 kde-apps/akonadiconsole
 kde-apps/akonadi-calendar
