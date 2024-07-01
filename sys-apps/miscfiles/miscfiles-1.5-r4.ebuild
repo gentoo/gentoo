@@ -8,7 +8,7 @@ DESCRIPTION="Miscellaneous files"
 HOMEPAGE="https://savannah.gnu.org/projects/miscfiles/"
 # https://www.unicode.org/Public/${UNI_PV}/ucd/UnicodeData.txt
 SRC_URI="mirror://gnu/miscfiles/${P}.tar.gz
-	https://distfiles.gentoo.org/distfiles/0b/UnicodeData-${UNI_PV}.txt.xz"
+	mirror://gentoo/0b/UnicodeData-${UNI_PV}.txt.xz"
 
 LICENSE="GPL-2 unicode"
 SLOT="0"
