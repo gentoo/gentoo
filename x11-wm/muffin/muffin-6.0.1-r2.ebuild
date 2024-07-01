@@ -14,7 +14,7 @@ SRC_URI="https://github.com/linuxmint/muffin/archive/${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="BSD GPL-2+ LGPL-2+ LGPL-2.1+ MIT SGI-B-2.0"
 SLOT="0"
 IUSE="input_devices_wacom +introspection screencast sysprof systemd test udev wayland video_cards_nvidia"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
 REQUIRED_USE="wayland? ( udev )"
 
 # Dependencies listed in meson order
