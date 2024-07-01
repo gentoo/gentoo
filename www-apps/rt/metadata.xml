@@ -10,6 +10,8 @@
 		<name>Gentoo Webapps</name>
 	</maintainer>
 	<use>
+		<flag name="apache">Add <pkg>www-servers/apache</pkg> support</flag>
 		<flag name="lighttpd">Add <pkg>www-servers/lighttpd</pkg> support</flag>
+		<flag name="nginx">Add <pkg>www-servers/nginx</pkg> support</flag>
 	</use>
 </pkgmetadata>
