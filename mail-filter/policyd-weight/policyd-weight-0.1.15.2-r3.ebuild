@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,8 +11,7 @@ DESCRIPTION="Weighted Policy daemon for Postfix"
 HOMEPAGE="http://www.policyd-weight.org/"
 SRC_URI="
 	http://www.policyd-weight.org/releases/${P}.tar.gz
-	mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz
-	https://dev.gentoo.org/~whissi/dist/${PN}/${P}-patches-${PATCH_VER}.tar.xz
+	mirror://gentoo/b9/${P}-patches-${PATCH_VER}.tar.xz
 "
 
 LICENSE="GPL-2"
