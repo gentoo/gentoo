@@ -49,7 +49,10 @@ BDEPEND="
 "
 RESTRICT="test" # Opens the program and doesn't close it.
 
-PATCHES=( "${FILESDIR}"/${PN}-124.0-disable-svn-check.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-124.0-disable-svn-check.patch
+	"${FILESDIR}"/${PN}-124.1-fix-miniupnpc-api.patch
+)
 
 src_unpack() {
 	unpack "simutrans-src-${MY_PV}.zip"
