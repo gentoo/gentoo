@@ -216,6 +216,47 @@ fi
 # @DESCRIPTION:
 # It is almost equivalent to ${JAVA_RESOURCE_DIRS} in src_test.
 
+# @ECLASS_VARIABLE: JAVADOC_CLASSPATH
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Comma or space separated list of java packages that are needed for generating
+# javadocs. Can be used to avoid overloading the compile classpath in multi-jar
+# packages if there are jar files which have different dependencies.
+#
+# @CODE
+# Example:
+# 	JAVADOC_CLASSPATH="
+# 		jna-4
+# 		jsch
+# 	"
+# @CODE
+
+# @ECLASS_VARIABLE: JAVADOC_SRC_DIRS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# An array of directories relative to ${S} which contain the sources of
+# the application. It needs to sit in global scope; if put in src_compile()
+# it would not work.
+# It is needed to decide whether to call java-pkg-simple_call_ejavadoc or not.
+# If this variable is defined then java-pkg-simple_src_compile will not call
+# java-pkg-simple_call_ejavadoc automatically. java-pkg-simple_call_ejavadoc
+# has then to be called explicitly from the ebuild. It is meant for usage in
+# multi-jar packages in order to avoid an extra compilation run only for
+# producing the javadocs.
+#
+# @CODE
+# Example:
+#	JAVADOC_SRC_DIRS=(
+#	    "${PN}-core"
+#	    "${PN}-jsch"
+#	    "${PN}-pageant"
+#	    "${PN}-sshagent"
+#	    "${PN}-usocket-jna"
+#	    "${PN}-usocket-nc"
+#	    "${PN}-connector-factory"
+#	)
+# @CODE
+
 # @FUNCTION: java-pkg-simple_getclasspath
 # @USAGE: java-pkg-simple_getclasspath
 # @INTERNAL
@@ -265,6 +306,34 @@ java-pkg-simple_getclasspath() {
 	classpath=${classpath#:}
 
 	debug-print "CLASSPATH=${classpath}"
+}
+
+# @FUNCTION: java-pkg-simple_getmodules
+# @USAGE: java-pkg-simple_getmodules
+# @INTERNAL
+# @DESCRIPTION:
+# Get proper ${moduleinfo} and ${modulesourcepath} from provided pathes.
+# We use it inside java-pkg-simple_src_compile, java-pkg-simple_do_ejavadoc and
+# java-pkg-simple_src_test.
+#
+# Note that the variables "moduleinfo" and "modulesourcepath" need to be
+# defined before calling this function.
+java-pkg-simple_getmodules() {
+	debug-print-function ${FUNCNAME} $*
+
+	local moduleinfostring
+	moduleinfostring="$(find "$@" -name module-info.java)" || die
+	readarray -t moduleinfo <<<"${moduleinfostring}" || die
+	if [[ ${#moduleinfo[@]} -gt 1 ]]; then
+		local module modulename
+		for module in "${moduleinfo[@]}"; do
+			modulename="$(grep -Po '(?<=module ).*(?= {)' "${module}")" || die
+			modulesourcepath+=( --module-source-path "${modulename}=${module%/module-info.java}" )
+		done
+	fi
+
+	debug-print "MODULEINFO=${moduleinfo[*]}"
+	debug-print "MODULESOURCEPATH=${modulesourcepath[*]}"
 }
 
 # @FUNCTION: java-pkg-simple_test_with_pkgdiff_
@@ -335,19 +404,71 @@ java-pkg-simple_prepend_resources() {
 	done
 }
 
-# @FUNCTION: java-pkg-simple_src_compile
+# @FUNCTION: java-pkg-simple_call_ejavadoc
+# @USAGE: java-pkg-simple_call_ejavadoc
 # @DESCRIPTION:
-# src_compile for simple bare source java packages. Finds all *.java
-# sources in ${JAVA_SRC_DIR}, compiles them with the classpath
-# calculated from ${JAVA_GENTOO_CLASSPATH}, and packages the resulting
-# classes to a single ${JAVA_JAR_FILENAME}. If the file
+# Calls ejavadoc to generate documentation from source files found in
+# JAVADOC_SRC_DIRS. If this variable is not set, take JAVA_SRC_DIR
+# instead.
+java-pkg-simple_call_ejavadoc() {
+	local sources=docsources.lst apidoc=target/api
+	local moduleinfo modulesourcepath
+
+	if ! [[ ${JAVADOC_SRC_DIRS} ]]; then
+		local JAVADOC_SRC_DIRS
+		JAVADOC_SRC_DIRS=( "${JAVA_SRC_DIR[@]}" )
+	fi
+
+	local classpath=""
+	java-pkg-simple_getclasspath
+	local dependency
+	for dependency in ${JAVADOC_CLASSPATH}; do
+		classpath="${classpath}:$(java-pkg_getjars \
+			--build-only \
+			--with-dependencies \
+			${dependency})"
+	done
+
+	# gather sources
+	# if target < 9, we need to compile module-info.java separately
+	# as this feature is not supported before Java 9
+	local target="$(java-pkg_get-target)"
+	if [[ ${target#1.} -lt 9 ]]; then
+		find "${JAVADOC_SRC_DIRS[@]}" -name \*.java ! -name module-info.java > ${sources}
+	else
+		find "${JAVADOC_SRC_DIRS[@]}" -name \*.java > ${sources}
+	fi
+	java-pkg-simple_getmodules "${JAVADOC_SRC_DIRS[@]}"
+
+	# create the target directory
+	mkdir -p ${apidoc} || die
+
+	if [[ -z ${moduleinfo} ]] || [[ ${target#1.} -lt 9 ]]; then
+		ejavadoc -d ${apidoc} \
+			-encoding ${JAVA_ENCODING} -docencoding UTF-8 -charset UTF-8 \
+			${classpath:+-classpath ${classpath}} ${JAVADOC_ARGS:- -quiet} \
+			@${sources} || die "javadoc failed"
+	else
+		ejavadoc -d ${apidoc} "${modulesourcepath[@]}" \
+			-encoding ${JAVA_ENCODING} -docencoding UTF-8 -charset UTF-8 \
+			${classpath:+--module-path ${classpath}} ${JAVADOC_ARGS:- -quiet} \
+			@${sources} || die "javadoc failed"
+	fi
+}
+
+# @FUNCTION: java-pkg-simple_compile_jar
+# @DESCRIPTION:
+# Finds all *.java sources in ${JAVA_SRC_DIR}, compiles them with the
+# classpath calculated from ${JAVA_GENTOO_CLASSPATH}, and packages the
+# resulting classes to a single ${JAVA_JAR_FILENAME}. If the file
 # target/META-INF/MANIFEST.MF exists, it is used as the manifest of the
 # created jar.
 #
 # If USE FLAG 'binary' exists and is set, it will just copy
-# ${JAVA_BINJAR_FILENAME} to ${S} and skip the rest of src_compile.
-java-pkg-simple_src_compile() {
-	local sources=sources.lst classes=target/classes apidoc=target/api moduleinfo
+# ${JAVA_BINJAR_FILENAME} to ${S}.
+java-pkg-simple_compile_jar() {
+	local sources=sources.lst classes=target/classes
+	local moduleinfo modulesourcepath
 
 	# do not compile if we decide to install binary jar
 	if has binary ${JAVA_PKG_IUSE} && use binary; then
@@ -373,7 +494,7 @@ java-pkg-simple_src_compile() {
 	else
 		find "${JAVA_SRC_DIR[@]}" -name \*.java > ${sources}
 	fi
-	moduleinfo=$(find "${JAVA_SRC_DIR[@]}" -name module-info.java)
+	java-pkg-simple_getmodules "${JAVA_SRC_DIR[@]}"
 
 	# create the target directory
 	mkdir -p ${classes} || die "Could not create target directory"
@@ -387,7 +508,7 @@ java-pkg-simple_src_compile() {
 		ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
 			${classpath:+-classpath ${classpath}} ${JAVAC_ARGS} @${sources}
 	else
-		ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
+		ejavac -d ${classes} "${modulesourcepath[@]}" -encoding ${JAVA_ENCODING}\
 			${classpath:+--module-path ${classpath}} --module-version ${PV}\
 			${JAVAC_ARGS} @${sources}
 	fi
@@ -399,35 +520,15 @@ java-pkg-simple_src_compile() {
 
 			JAVA_PKG_WANT_SOURCE="9"
 			JAVA_PKG_WANT_TARGET="9"
-			ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
+			ejavac -d ${classes} "${modulesourcepath[@]}" -encoding ${JAVA_ENCODING}\
 				${classpath:+--module-path ${classpath}} --module-version ${PV}\
-				${JAVAC_ARGS} "${moduleinfo}"
+				${JAVAC_ARGS} "${moduleinfo[@]}"
 
 			JAVA_PKG_WANT_SOURCE=${tmp_source}
 			JAVA_PKG_WANT_TARGET=${tmp_target}
 		else
 			eqawarn "Need at least JDK 9 to compile module-info.java in src_compile."
 			eqawarn "Please adjust DEPEND accordingly. See https://bugs.gentoo.org/796875#c3"
-		fi
-	fi
-
-	# javadoc
-	if has doc ${JAVA_PKG_IUSE} && use doc; then
-		if [[ ${JAVADOC_SRC_DIRS} ]]; then
-			einfo "JAVADOC_SRC_DIRS exists, you need to call ejavadoc separately"
-		else
-			mkdir -p ${apidoc}
-			if [[ -z ${moduleinfo} ]] || [[ ${target#1.} -lt 9 ]]; then
-				ejavadoc -d ${apidoc} \
-					-encoding ${JAVA_ENCODING} -docencoding UTF-8 -charset UTF-8 \
-					${classpath:+-classpath ${classpath}} ${JAVADOC_ARGS:- -quiet} \
-					@${sources} || die "javadoc failed"
-			else
-				ejavadoc -d ${apidoc} \
-					-encoding ${JAVA_ENCODING} -docencoding UTF-8 -charset UTF-8 \
-					${classpath:+--module-path ${classpath}} ${JAVADOC_ARGS:- -quiet} \
-					@${sources} || die "javadoc failed"
-			fi
 		fi
 	fi
 
@@ -452,6 +553,31 @@ java-pkg-simple_src_compile() {
 		jar ufmv ${JAVA_JAR_FILENAME} "${T}/add-to-MANIFEST.MF" \
 			|| die "updating MANIFEST.MF failed"
 		rm -f "${T}/add-to-MANIFEST.MF" || die "cannot remove"
+	fi
+}
+
+# @FUNCTION: java-pkg-simple_src_compile
+# @DESCRIPTION:
+# src_compile for simple bare source java packages. Compiles a single
+# jar via java-pkg-simple_compile_jar and calls
+# java-pkg-simple_call_ejavadoc to generate documentation if USE FLAG
+# 'doc' exists and is set.
+java-pkg-simple_src_compile() {
+	java-pkg-simple_compile_jar
+
+	# javadoc
+	if has doc ${JAVA_PKG_IUSE} && use doc; then
+		if has binary ${JAVA_PKG_IUSE} && use binary; then
+			ewarn "Generation of documentation is not supported when installing binary (USE=binary)."
+		elif [[ ${JAVADOC_SRC_DIRS} ]]; then
+			eqawarn "JAVADOC_SRC_DIRS is set and java-pkg-simple_src_compile called."
+			eqawarn "When setting JAVADOC_SRC_DIRS use java-pkg-simple_compile_jar"
+			eqawarn "instead of java-pkg-simple_src_compile for the jar files"
+			eqawarn "and call java-pkg-simple_call_ejavadoc for javadoc."
+			eqawarn "This will become an error in the future."
+		else
+			java-pkg-simple_call_ejavadoc
+		fi
 	fi
 }
 
@@ -503,7 +629,8 @@ java-pkg-simple_src_install() {
 # in the "generated-test" directory as content of this directory is preserved,
 # whereas content of target/test-classes is removed.
 java-pkg-simple_src_test() {
-	local test_sources=test_sources.lst classes=target/test-classes moduleinfo
+	local test_sources=test_sources.lst classes=target/test-classes
+	local moduleinfo modulesourcepath
 	local tests_to_run classpath
 
 	# do not continue if the USE FLAG 'test' is explicitly unset
@@ -542,7 +669,7 @@ java-pkg-simple_src_test() {
 	else
 		find "${JAVA_TEST_SRC_DIR[@]}" -name \*.java > ${test_sources}
 	fi
-	moduleinfo=$(find "${JAVA_TEST_SRC_DIR[@]}" -name module-info.java)
+	java-pkg-simple_getmodules "${JAVA_TEST_SRC_DIR[@]}"
 
 	# compile
 	if [[ -s ${test_sources} ]]; then
@@ -550,7 +677,7 @@ java-pkg-simple_src_test() {
 			ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
 				${classpath:+-classpath ${classpath}} ${JAVAC_ARGS} @${test_sources}
 		else
-			ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
+			ejavac -d ${classes} "${modulesourcepath[@]}" -encoding ${JAVA_ENCODING}\
 				${classpath:+--module-path ${classpath}} --module-version ${PV}\
 				${JAVAC_ARGS} @${test_sources}
 		fi
@@ -563,9 +690,9 @@ java-pkg-simple_src_test() {
 
 			JAVA_PKG_WANT_SOURCE="9"
 			JAVA_PKG_WANT_TARGET="9"
-			ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
+			ejavac -d ${classes} "${modulesourcepath[@]}" -encoding ${JAVA_ENCODING}\
 				${classpath:+--module-path ${classpath}} --module-version ${PV}\
-				${JAVAC_ARGS} "${moduleinfo}"
+				${JAVAC_ARGS} "${moduleinfo[@]}"
 
 			JAVA_PKG_WANT_SOURCE=${tmp_source}
 			JAVA_PKG_WANT_TARGET=${tmp_target}
