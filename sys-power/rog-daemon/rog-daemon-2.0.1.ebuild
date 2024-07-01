@@ -3,13 +3,11 @@
 
 EAPI=8
 
-inherit meson git-r3
+inherit meson
 
 DESCRIPTION="Lightweight and modular ASUS ROG control daemon"
-HOMEPAGE="https://github.com/mechakotik/rog-daemon"
-
-EGIT_REPO_URI="https://github.com/mechakotik/rog-daemon.git"
-EGIT_COMMIT="v2.0.1"
+HOMEPAGE="https://github.com/mechakotik/${PN}"
+SRC_URI="https://github.com/mechakotik/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
