@@ -36,7 +36,6 @@ src_configure() {
 	filter-lto
 
 	econf \
-		--disable-werror \
 		$(use_enable debug) \
 		$(use_with munge)
 }
