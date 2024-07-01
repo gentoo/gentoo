@@ -9,7 +9,6 @@
   Octave is a high-level language, primarily intended for numerical computations. It provides a convenient command line interface for solving linear and nonlinear problems numerically, and for performing other numerical experiments. It may also be used as a batch-oriented language.
   </longdescription>
   <use>
-    <flag name="fltk">Use <pkg>x11-libs/fltk</pkg> as the backend for the OpenGL renderer in the absence of the Qt GUI</flag>
     <flag name="glpk">Add support for <pkg>sci-mathematics/glpk</pkg> for linear programming</flag>
     <flag name="gnuplot">Use <pkg>sci-visualization/gnuplot</pkg> to render plots if OpenGL is unavailable</flag>
     <flag name="imagemagick">Use <pkg>media-gfx/graphicsmagick</pkg> to read and write images</flag>
