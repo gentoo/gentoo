@@ -190,8 +190,8 @@ check_cgroup_layout() {
 	eerror "This system appears to be booted with the 'hybrid' cgroup layout."
 	eerror "This layout obsolete and is disabled in systemd."
 
-	if grep -qF 'systemd.legacy_systemd_cgroup_controller' /proc/cmdline; then
-		eerror "Remove the systemd.legacy_systemd_cgroup_controller option"
+	if grep -qF 'systemd.unified_cgroup_hierarchy'; then
+		eerror "Remove the systemd.unified_cgroup_hierarchy option"
 		eerror "from the kernel command line and reboot."
 		die "hybrid cgroup layout detected"
 	fi
