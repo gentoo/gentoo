@@ -143,7 +143,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.1.0-pkgbuilddir.patch
-	"${FILESDIR}"/${PN}-9.1.0-omit-qtchooser-qtver.patch
+	"${FILESDIR}"/${PN}-9.2.0-omit-qtchooser-qtver.patch
 )
 
 src_prepare() {
