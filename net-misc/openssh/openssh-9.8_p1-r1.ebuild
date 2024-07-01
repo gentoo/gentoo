@@ -395,4 +395,37 @@ pkg_postinst() {
 		elog "no longer support dss/rsa/ecdsa keys.  You will need to generate ed25519 keys"
 		elog "and update all clients/servers that utilize them."
 	fi
+
+	openssh_maybe_restart
+}
+
+openssh_maybe_restart() {
+	local ver
+	declare -a versions
+	read -ra versions <<<"${REPLACING_VERSIONS}"
+	for ver in "${versions[@]}"; do
+		# Exclude 9.8_p1 because it didn't have the safety check
+		[[ ${ver} == 9.8_p1 ]] && break
+
+		if [[ ${ver%_*} == "${PV%_*}" ]]; then
+			# No major version change has occurred
+			return
+		fi
+	done
+
+	if [[ ${ROOT} ]]; then
+		return
+	elif [[ -d /run/systemd/system ]] && sshd -t >/dev/null 2>&1; then
+		ewarn "The ebuild will now attempt to restart OpenSSH to avoid"
+		ewarn "bricking the running instance. See bug #709748."
+		ebegin "Attempting to restart openssh via 'systemctl try-restart sshd'"
+		systemctl try-restart sshd
+		eend $?
+	elif [[ -d /run/openrc ]]; then
+		ewarn "The ebuild will now attempt to restart OpenSSH to avoid"
+		ewarn "bricking the running instance. See bug #709748."
+		ebegin "Attempting to restart openssh via 'rc-service -q --ifstarted --nodeps sshd restart'"
+		rc-service -q --ifstarted --nodeps sshd restart
+		eend $?
+	fi
 }
