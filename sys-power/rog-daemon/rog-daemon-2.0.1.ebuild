@@ -10,7 +10,6 @@ HOMEPAGE="https://github.com/mechakotik/rog-daemon"
 
 EGIT_REPO_URI="https://github.com/mechakotik/rog-daemon.git"
 EGIT_COMMIT="v2.0.1"
-EGIT_CLONE_TYPE="shallow"
 
 LICENSE="GPL-3"
 SLOT="0"
