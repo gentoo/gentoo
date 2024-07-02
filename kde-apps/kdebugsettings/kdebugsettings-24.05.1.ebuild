@@ -13,7 +13,7 @@ HOMEPAGE="https://apps.kde.org/kdebugsettings/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 RESTRICT="test"
