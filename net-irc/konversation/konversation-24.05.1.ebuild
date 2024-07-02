@@ -13,7 +13,7 @@ HOMEPAGE="https://konversation.kde.org https://apps.kde.org/konversation/"
 
 LICENSE="GPL-2"
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="+crypt"
 
 DEPEND="
