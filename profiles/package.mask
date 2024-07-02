@@ -541,7 +541,7 @@ dev-ruby/rspec-rails:5
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-31)
 # EAPI=6, maintainer-needed, incorrect LICENSE, fails to compile with
 # clang.
-# Removal on 2024-06-30.  Bugs #933241, #889912, #880267, #562822, #930500.
+# Removal on 2024-07-09.  Bugs #933241, #889912, #880267, #562822, #930500.
 net-mail/gnubiff
 
 # Sam James <sam@gentoo.org> (2024-05-28)
