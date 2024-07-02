@@ -14,9 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="systemd +profile +fan-curve +mux +panel-od"
 
-# C++20 support is required
 BDEPEND="
-	|| ( >=sys-devel/gcc-8 >=sys-devel/clang-17 )
+	|| ( sys-devel/gcc sys-devel/clang )
 	dev-build/meson
 "
 
