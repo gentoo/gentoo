@@ -8,6 +8,6 @@ HOMEPAGE="https://kde.org/plasma-desktop"
 
 LICENSE="metapackage"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 
 RDEPEND="kde-plasma/print-manager:6"
