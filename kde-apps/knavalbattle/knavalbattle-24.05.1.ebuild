@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/knavalbattle/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 DEPEND="
