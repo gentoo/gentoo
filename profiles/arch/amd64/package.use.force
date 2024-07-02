@@ -1,5 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# James Le Cuirot <chewi@gentoo.org> (2024-07-02)
+# Needed to build gcc. Force here rather than using BDEPEND to simplify
+# cross-compile scenarios.
+sys-devel/binutils cet
 
 # Michał Górny <mgorny@gentoo.org> (2023-10-06)
 # Require ABIs matching MULTILIB_ABIS in gcc dependencies -- otherwise
