@@ -16,11 +16,6 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 
-# "import file mismatch" when in S, "attempted relative import with no
-# known parent package" when in BUILD_DIR/install/.../borg/testsuite.
-# Needs work.
-RESTRICT="test"
-
 DEPEND="
 	app-arch/lz4
 	app-arch/zstd
@@ -41,9 +36,33 @@ BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/pkgconfig[${PYTHON_USEDEP}]
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
+	test? (
+		dev-python/python-dateutil[${PYTHON_USEDEP}]
+	)
 "
 
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
+
+python_test() {
+	local EPYTEST_DESELECT=(
+		# Needs pytest-benchmark fixture
+		benchmark.py::test_
+
+		# TODO:
+		# Following tests fail because of additional warning in the output:
+		#   ResourceWarning: unclosed file <_io.BufferedReader name=14>
+		# which is not expected in asserts
+		archiver.py::ArchiverTestCase::test_create_content_from_command_with_failed_command
+		archiver.py::ArchiverTestCase::test_create_paths_from_command_with_failed_command
+		archiver.py::RemoteArchiverTestCase::test_create_content_from_command_with_failed_command
+		archiver.py::RemoteArchiverTestCase::test_create_paths_from_command_with_failed_command
+	)
+
+	# This disables fuse releated tests
+	local -x BORG_FUSE_IMPL="none"
+	epytest --pyargs borg.testsuite
+}
 
 src_install() {
 	distutils-r1_src_install
