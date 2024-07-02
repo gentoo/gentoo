@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit desktop flag-o-matic toolchain-funcs
 
 DESCRIPTION="Teletext viewer for X11"
-HOMEPAGE="http://www.goron.de/~froese/"
+HOMEPAGE="https://gitlab.com/alevt/alevt"
 SRC_URI="http://www.goron.de/~froese/alevt/${P}.tar.gz"
 
 LICENSE="GPL-2"
