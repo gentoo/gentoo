@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/audex/ https://userbase.kde.org/Audex"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 DEPEND="
