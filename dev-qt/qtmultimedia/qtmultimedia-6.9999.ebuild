@@ -22,7 +22,9 @@ REQUIRED_USE="
 
 RDEPEND="
 	~dev-qt/qtbase-${PV}:6[gui,network,opengl=,vulkan=,widgets]
-	alsa? ( media-libs/alsa-lib )
+	alsa? (
+		!pulseaudio? ( media-libs/alsa-lib )
+	)
 	ffmpeg? (
 		~dev-qt/qtbase-${PV}:6[X=,concurrent,eglfs=]
 		media-video/ffmpeg:=[vaapi?]
@@ -77,7 +79,6 @@ src_configure() {
 
 	local mycmakeargs=(
 		$(cmake_use_find_package qml Qt6Qml)
-		$(qt_feature alsa)
 		$(qt_feature ffmpeg)
 		$(qt_feature gstreamer)
 		$(usev gstreamer $(qt_feature opengl gstreamer_gl))
@@ -85,6 +86,17 @@ src_configure() {
 		$(qt_feature v4l linux_v4l)
 		$(qt_feature vaapi)
 	)
+
+	# ALSA backend is experimental off-by-default and can take priority
+	# causing problems (bug #935146), disable if USE=pulseaudio is set
+	# (also do not want unnecessary usage of ALSA plugins -> pulse)
+	if use alsa && use pulseaudio; then
+		# einfo should be enough given pure-ALSA users tend to disable pulse
+		einfo "Warning: USE=alsa is ignored when USE=pulseaudio is set"
+		mycmakeargs+=( -DQT_FEATURE_alsa=OFF )
+	else
+		mycmakeargs+=( $(qt_feature alsa) )
+	fi
 
 	qt6-build_src_configure
 }
