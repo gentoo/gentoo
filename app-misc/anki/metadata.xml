@@ -19,6 +19,12 @@
 		quickly, easily and efficiently as possible.
 	</longdescription>
 	<upstream>
+		<bugs-to>https://forums.ankiweb.net/c/anki/21</bugs-to>
+		<changelog>https://github.com/ankitects/anki/releases</changelog>
+		<doc>https://docs.ankiweb.net/</doc>
+		<maintainer status="active">
+			<name>Damien Elmes</name>
+		</maintainer>
 		<remote-id type="github">ankitects/anki</remote-id>
 	</upstream>
 	<use>
