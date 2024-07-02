@@ -25,6 +25,7 @@ SLOT="0/${PV}"
 IUSE="+ocamlopt"
 
 RDEPEND="
+	<dev-ml/num-1.5:=
 	>=dev-lang/ocaml-4.08.0:=[ocamlopt?]
 	dev-ml/batteries:=
 	dev-ml/camlp-streams:=
