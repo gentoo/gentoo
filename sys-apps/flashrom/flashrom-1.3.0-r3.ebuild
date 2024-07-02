@@ -103,7 +103,6 @@ BDEPEND="test? ( dev-util/cmocka )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.0_spi-master.patch
 	"${FILESDIR}"/${PN}-1.3.0-c99.patch
-	"${FILESDIR}"/${PN}-1.3.0-llvm-dummyflasher.patch
 	"${FILESDIR}"/${PN}-1.3.0-libflashrom.patch
 )
 
@@ -116,6 +115,11 @@ src_prepare() {
 		sed -i -e 's/-DCONFIG_LINUX_MTD=1/-UCONFIG_LINUX_MTD/' \
 			meson.build || die
 	fi
+
+	# enable warnings
+	sed -i \
+		-e 's:^warning_flags = \[:warning_flags = \[ '"'-Wall'"' \]\nno = \[:' \
+		meson.build || die
 }
 
 src_configure() {
