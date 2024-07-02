@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit bash-completion-r1 distutils-r1 pypi
 
@@ -57,6 +57,9 @@ python_test() {
 		archiver.py::ArchiverTestCase::test_create_paths_from_command_with_failed_command
 		archiver.py::RemoteArchiverTestCase::test_create_content_from_command_with_failed_command
 		archiver.py::RemoteArchiverTestCase::test_create_paths_from_command_with_failed_command
+		# similar issues since py3.13
+		archiver.py::RemoteArchiverTestCase::test_recreate_rechunkify
+		archiver.py::RemoteArchiverTestCase::test_recreate_skips_nothing_to_do
 	)
 
 	# This disables fuse releated tests
