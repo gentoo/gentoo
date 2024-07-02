@@ -13,7 +13,7 @@ HOMEPAGE="https://invent.kde.org/plasma/breeze-gtk"
 
 LICENSE="LGPL-2.1+"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE=""
 
 BDEPEND="${PYTHON_DEPS}
