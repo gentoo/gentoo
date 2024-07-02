@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index 0be7802..d19c8ec 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -50,7 +55,7 @@
+ if test "x${REVISION}" != "xr0"
+ then
+ 	# force debug mode for a SVN working copy
+-	CFLAGS="-g -Wall"
++	CFLAGS+=" -Wall"
+ else
+ 	REVISION="-1"
+ fi
