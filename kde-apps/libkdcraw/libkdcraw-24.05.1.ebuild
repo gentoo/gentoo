@@ -11,7 +11,7 @@ DESCRIPTION="Digital camera raw image library wrapper"
 
 LICENSE="GPL-2+"
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 DEPEND="
