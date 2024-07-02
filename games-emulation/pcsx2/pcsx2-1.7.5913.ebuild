@@ -81,6 +81,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.5232-cubeb-automagic.patch
 	"${FILESDIR}"/${PN}-1.7.5835-vanilla-shaderc.patch
 	"${FILESDIR}"/${PN}-1.7.5855-no-libbacktrace.patch
+	"${FILESDIR}"/${PN}-1.7.5913-musl-cache.patch
 )
 
 src_prepare() {
@@ -106,6 +107,10 @@ src_configure() {
 		local -x CC=${CHOST}-clang CXX=${CHOST}-clang++
 		strip-unsupported-flags
 	fi
+
+	# pthread_attr_setaffinity_np is not supported on musl, may be possible
+	# to remove if bundled lzma code is updated like 7zip did (bug #935298)
+	use elibc_musl && append-cppflags -DZ7_AFFINITY_DISABLE
 
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=no
