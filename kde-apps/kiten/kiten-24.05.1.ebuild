@@ -13,7 +13,7 @@ HOMEPAGE="https://apps.kde.org/kiten/ https://edu.kde.org/kiten/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 DEPEND="
