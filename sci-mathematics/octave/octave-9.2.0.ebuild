@@ -152,6 +152,9 @@ src_configure() {
 		$(use_with fftw fftw3f)
 		$(use_enable fftw fftw-threads)
 		$(use_with glpk)
+		$(use_with gui opengl)
+		$(use_with gui qt 6)
+		$(use_with gui x)
 		$(use_with hdf5)
 		$(use_with imagemagick magick GraphicsMagick++)
 		$(use_with klu)
@@ -178,17 +181,6 @@ src_configure() {
 			RCC="$(qt6_get_bindir)/../libexec/rcc" \
 			LRELEASE="$(qt6_get_bindir)/lrelease" \
 			QHELPGENERATOR="$(qt6_get_bindir)/../libexec/qhelpgenerator"
-		myeconfargs+=(
-			$(use_with gui opengl)
-			$(use_with gui x)
-			"--with-qt=6"
-		)
-	else
-		myeconfargs+=(
-			$(use_with gui opengl)
-			$(use_with gui x)
-			"--without-qt"
-		)
 	fi
 
 	econf "${myeconfargs[@]}"
