@@ -15,7 +15,7 @@ HOMEPAGE="https://invent.kde.org/libraries/kpublictransport
 
 LICENSE="LGPL-2+"
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="networkmanager"
 
 RDEPEND="
