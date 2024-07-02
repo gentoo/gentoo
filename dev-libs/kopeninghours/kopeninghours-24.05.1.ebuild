@@ -17,7 +17,7 @@ https://invent.kde.org/libraries/kopeninghours"
 
 LICENSE="LGPL-2+"
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="python"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
