@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit cmake python-r1
 
@@ -22,35 +22,32 @@ fi
 
 LICENSE="MIT NCSA-AMD"
 SLOT="0/$(ver_cut 1-2)"
-IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND=""
 RDEPEND="${PYTHON_DEPS}"
-BDEPEND=""
+
+S="${WORKDIR}/rocm_smi_lib-rocm-${PV}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.0.2-gcc12-memcpy.patch
-	"${FILESDIR}"/${PN}-5.1.3-detect-builtin-amdgpu.patch
+	"${FILESDIR}"/${PN}-5.7.1-set-soversion.patch
+	"${FILESDIR}"/${PN}-5.7.1-no-strip.patch
+	"${FILESDIR}"/${PN}-5.7.1-remove-example.patch
+	"${FILESDIR}"/${PN}-5.4.2-detect-builtin-amdgpu.patch
+	"${FILESDIR}"/${PN}-5.4.2-fix-readonly-object.patch
 )
 
 src_prepare() {
-	sed -e "/DESTINATION/s,\${OAM_NAME}/lib,$(get_libdir)," \
-		-e "/DESTINATION/s,oam/include/oam,include/oam," -i oam/CMakeLists.txt || die
-	sed -e "/link DESTINATION/,+1d" \
-		-e "/DESTINATION/s,\${ROCM_SMI}/lib,$(get_libdir)," \
-		-e "/bindings_link/,+3d" \
-		-e "/rsmiBindings.py/,+1d" \
-		-e "/DESTINATION/s,rocm_smi/include/rocm_smi,include/rocm_smi," -i rocm_smi/CMakeLists.txt || die
-	sed -e "/LICENSE.txt/d" -e "s,\${ROCM_SMI}/lib/cmake,$(get_libdir)/cmake,g" -i CMakeLists.txt || die
-	sed -e "/^path_librocm = /c\path_librocm = '${EPREFIX}/usr/lib64/librocm_smi64.so'" -i python_smi_tools/rsmiBindings.py || die
 	cmake_src_prepare
+
+	sed "s/\${PKG_VERSION_STR}/${PV}/" -i CMakeLists.txt || die
+	sed -e "s/@VERSION_MAJOR@/$(ver_cut 1)/ ; s/@VERSION_MINOR@/$(ver_cut 2)/" \
+		-i oam/CMakeLists.txt -i rocm_smi/CMakeLists.txt || die
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
-		-DCMAKE_DISABLE_FIND_PACKAGE_LATEX=ON
+		-DFILE_REORG_BACKWARD_COMPATIBILITY=OFF
 	)
 	cmake_src_configure
 }
@@ -59,4 +56,6 @@ src_install() {
 	cmake_src_install
 	python_foreach_impl python_newscript python_smi_tools/rocm_smi.py rocm-smi
 	python_foreach_impl python_domodule python_smi_tools/rsmiBindings.py
+
+	mv "${ED}"/usr/share/doc/rocm_smi "${ED}"/usr/share/doc/${PF} || die
 }
