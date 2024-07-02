@@ -55,7 +55,6 @@ src_configure() {
 		$(meson_feature audit)
 		$(meson_feature caps capabilities)
 		"-Dbranding=\"Gentoo Linux\""
-		$(meson_feature caps capabilities)
 		$(meson_use newnet)
 		-Dos=Linux
 		$(meson_use pam)
