@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 
 inherit distutils-r1 virtualx
 
@@ -30,7 +30,11 @@ RDEPEND="
 	dev-python/mpmath[${PYTHON_USEDEP}]
 	dev-python/pexpect[${PYTHON_USEDEP}]
 	imaging? ( dev-python/pillow[${PYTHON_USEDEP}] )
-	ipython? ( dev-python/ipython[${PYTHON_USEDEP}] )
+	ipython? (
+		$(python_gen_cond_dep '
+			dev-python/ipython[${PYTHON_USEDEP}]
+		' 3.{10..12})
+	)
 	latex? (
 		virtual/latex-base
 		dev-texlive/texlive-fontsextra
