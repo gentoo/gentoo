@@ -1,18 +1,25 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..12} )
+PYTHON_COMPAT=( python3_{11..13} )
+
 inherit distutils-r1
 
 MY_PV="${PV/_p/.post}"
 MY_P="${PN}-${MY_PV}"
-
 DESCRIPTION="A zero-boilerplate games programming framework based on Pygame"
-HOMEPAGE="https://pygame-zero.readthedocs.io/"
-SRC_URI="https://github.com/lordmauve/${PN}/archive/${MY_PV}.tar.gz -> ${MY_P}.gh.tar.gz"
+HOMEPAGE="
+	https://pygame-zero.readthedocs.io/
+	https://github.com/lordmauve/pgzero/
+	https://pypi.org/project/pgzero/
+"
+SRC_URI="
+	https://github.com/lordmauve/pgzero/archive/${MY_PV}.tar.gz
+		-> ${MY_P}.gh.tar.gz
+"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-3"
