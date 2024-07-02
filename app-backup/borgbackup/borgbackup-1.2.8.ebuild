@@ -21,21 +21,27 @@ KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 # Needs work.
 RESTRICT="test"
 
-DEPEND="app-arch/lz4
+DEPEND="
+	app-arch/lz4
 	app-arch/zstd
 	dev-libs/openssl:0=
 	>=dev-libs/xxhash-0.8.1
-	virtual/acl"
+	virtual/acl
+"
 # borgbackup is *very* picky about which msgpack it work with,
 # check setup.py on bumps.
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
 	~dev-python/msgpack-1.0.8[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
-	dev-python/pyfuse3[${PYTHON_USEDEP}]"
+	dev-python/pyfuse3[${PYTHON_USEDEP}]
+"
 
-BDEPEND="dev-python/cython[${PYTHON_USEDEP}]
+BDEPEND="
+	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/pkgconfig[${PYTHON_USEDEP}]
-	dev-python/setuptools-scm[${PYTHON_USEDEP}]"
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests pytest
 
