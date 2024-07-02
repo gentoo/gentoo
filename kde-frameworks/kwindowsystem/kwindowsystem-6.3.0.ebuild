@@ -9,7 +9,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Framework providing access to properties and features of the window manager"
 
 LICENSE="|| ( LGPL-2.1 LGPL-3 ) MIT"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE="wayland X"
 
 RESTRICT="test"
