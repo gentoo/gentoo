@@ -10,6 +10,7 @@ HOMEPAGE="https://retroshare.cc"
 SRC_URI="https://download.opensuse.org/repositories/network:/retroshare/Debian_Testing/retroshare-common_${PV}.orig.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/RetroShare"
 # NOTE: GitHub releases/archive is impractical to build so we use the OBS repo
+# REVIEW: OBS repo squashes point releases (0.6.7 = 0.6.7.2)
 
 LICENSE="AGPL-3 Apache-2.0 CC-BY-SA-4.0 GPL-2 GPL-3 LGPL-3"
 SLOT="0"
@@ -40,7 +41,7 @@ RDEPEND="
 		x11-libs/libXScrnSaver
 	)
 	libupnp? ( net-libs/libupnp:= )
-	miniupnp? ( net-libs/miniupnpc:= )
+	miniupnp? ( net-libs/miniupnpc:0/17 )
 	sqlcipher? ( dev-db/sqlcipher )
 	!sqlcipher? ( dev-db/sqlite:3 )
 	plugins? (
@@ -119,20 +120,5 @@ pkg_preinst() {
 		ewarn "database format, so you will need to manually delete GXS"
 		ewarn "database (loosing all your GXS data and identities) when you"
 		ewarn "toggle sqlcipher USE flag."
-	fi
-
-	if [[ ${REPLACING_VERSIONS} ]]; then
-		if ver_test ${REPLACING_VERSIONS} -lt 0.6; then
-			ewarn "You are upgrading from Retroshare 0.5.* to ${PV}"
-			ewarn "Version 0.6.* is backward-incompatible with 0.5 branch"
-			ewarn "and clients with 0.6.* can not connect to clients that have 0.5.*"
-			ewarn "It's recommended to drop all your configuration and either"
-			ewarn "generate a new certificate or import existing from a backup"
-			break
-		fi
-		if ver_test ${REPLACING_VERSIONS} -ge 0.6.0 && ver_test ${REPLACING_VERSIONS} -lt 0.6.4; then
-			elog "Main executable has been renamed upstream from RetroShare06 to retroshare"
-			break
-		fi
 	fi
 }
