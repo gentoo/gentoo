@@ -1,0 +1,49 @@
+--- alevt-v1.8.2/Makefile	2023-04-22 15:44:42.000000000 +0200
++++ alevt-v1.8.2-new/Makefile	2024-07-02 18:48:40.217880449 +0200
+@@ -1,5 +1,4 @@
+ VER=1.8.2
+-OPT=-O2 -g -w
+ #OPT=-O -g
+ DEFS=-DWITH_PNG
+ #DEFS+=-DUSE_LIBZVBI
+@@ -8,13 +7,12 @@
+ #USR_X11R6=/usr
+ MAN_DIR=man
+ #MAN_DIR=share/man
+-HOSTCC=$(CC)
+ # a smaller and thinner font
+ #FONT=neep9
+ DESTDIR=
+ PREFIX=/usr/local
+ 
+-CFLAGS=$(OPT) -DVERSION=\"$(VER)\" $(DEFS) -I$(USR_X11R6)/include
++CPPFLAGS += -DVERSION=\"$(VER)\" $(DEFS) -I$(USR_X11R6)/include
+ 
+ PKGS="x11"
+ 
+@@ -36,13 +34,13 @@
+ all: alevt alevt-date alevt-cap alevt.1x alevt-date.1 alevt-cap.1
+ 
+ alevt: $(OBJS)
+-	$(CC) $(OPT) $(OBJS) -o alevt $(EXPLIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o alevt $(EXPLIBS)
+ 
+ alevt-date: $(TOBJS)
+-	$(CC) $(OPT) $(TOBJS) -o alevt-date $(EXPLIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OPT) $(TOBJS) -o alevt-date $(EXPLIBS)
+ 
+ alevt-cap: $(COBJS)
+-	$(CC) $(OPT) $(COBJS) -o alevt-cap $(EXPLIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OPT) $(COBJS) -o alevt-cap $(EXPLIBS)
+ 
+ font.o: font1.xbm font2.xbm font3.xbm font4.xbm
+ fontsize.h: font1.xbm font2.xbm font3.xbm font4.xbm
+@@ -61,7 +59,7 @@
+ 	./bdf2xbm font4 <vtxt-iso8859-7.bdf >font4.xbm
+ 
+ bdf2xbm: bdf2xbm.c
+-	$(HOSTCC) bdf2xbm.c -o bdf2xbm
++	$(BUILD_CC) bdf2xbm.c -o bdf2xbm
+ 
+ alevt.1x: alevt.1x.in
+ 	sed s/VERSION/$(VER)/g <alevt.1x.in >alevt.1x
