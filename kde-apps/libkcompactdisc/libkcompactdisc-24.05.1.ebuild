@@ -12,7 +12,7 @@ DESCRIPTION="Library for playing & ripping CDs"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="alsa"
 
 DEPEND="
