@@ -13,7 +13,7 @@ HOMEPAGE="https://apps.kde.org/partitionmanager/"
 
 LICENSE="GPL-3"
 SLOT="6/10"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 # bug 689468, tests need polkit etc.
