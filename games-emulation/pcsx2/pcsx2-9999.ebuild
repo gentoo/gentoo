@@ -81,6 +81,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.5232-cubeb-automagic.patch
 	"${FILESDIR}"/${PN}-1.7.5835-vanilla-shaderc.patch
 	"${FILESDIR}"/${PN}-1.7.5855-no-libbacktrace.patch
+	"${FILESDIR}"/${PN}-1.7.5835-musl-header.patch
 	"${FILESDIR}"/${PN}-1.7.5913-musl-cache.patch
 )
 
