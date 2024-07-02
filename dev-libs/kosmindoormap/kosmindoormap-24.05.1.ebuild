@@ -14,7 +14,7 @@ HOMEPAGE="https://invent.kde.org/libraries/kosmindoormap"
 
 LICENSE="LGPL-2+"
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="+gui"
 
 # kservice is optional and only used to find and open josm
