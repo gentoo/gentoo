@@ -1,0 +1,134 @@
+From 4d4291335f984b5b77855167be9a3ff74590692b Mon Sep 17 00:00:00 2001
+From: PeakKS <bbatson101@gmail.com>
+Date: Wed, 8 May 2024 23:53:13 -0400
+Subject: [PATCH 5/5] build 46.1 Fix absolute paths to use build config
+
+---
+ panels/printers/meson.build         | 5 +++++
+ panels/printers/pp-host.c           | 2 +-
+ panels/printers/pp-options-dialog.c | 2 +-
+ panels/system/datetime/tz.h         | 4 ++--
+ panels/system/users/meson.build     | 1 +
+ panels/system/users/run-passwd.c    | 2 +-
+ tests/datetime/meson.build          | 3 ++-
+ tests/datetime/test-endianess.c     | 4 ++--
+ 8 files changed, 15 insertions(+), 8 deletions(-)
+
+diff --git a/panels/printers/meson.build b/panels/printers/meson.build
+index 3e521c2e4..488f85bd5 100644
+--- a/panels/printers/meson.build
++++ b/panels/printers/meson.build
+@@ -46,6 +46,11 @@ deps = common_deps + [
+   dependency('smbclient')
+ ]
+ 
++cflags += [
++  '-DDATADIR="@0@"'.format(control_center_datadir),
++  '-DLIBEXECDIR="@0@"'.format(control_center_libexecdir)
++]
++
+ printers_panel_lib = static_library(
+   cappletname,
+   sources: sources,
+diff --git a/panels/printers/pp-host.c b/panels/printers/pp-host.c
+index a31a606e3..049fb9249 100644
+--- a/panels/printers/pp-host.c
++++ b/panels/printers/pp-host.c
+@@ -256,7 +256,7 @@ _pp_host_get_snmp_devices_thread (GTask        *task,
+   devices = g_ptr_array_new_with_free_func (g_object_unref);
+ 
+   argv = g_new0 (gchar *, 3);
+-  argv[0] = g_strdup ("/usr/lib/cups/backend/snmp");
++  argv[0] = g_strdup (LIBEXECDIR "/cups/backend/snmp");
+   argv[1] = g_strdup (priv->hostname);
+ 
+   /* Use SNMP to get printer's informations */
+diff --git a/panels/printers/pp-options-dialog.c b/panels/printers/pp-options-dialog.c
+index e9ef65545..66beb2b2e 100644
+--- a/panels/printers/pp-options-dialog.c
++++ b/panels/printers/pp-options-dialog.c
+@@ -811,7 +811,7 @@ test_page_cb (PpOptionsDialog *self)
+ 
+   if (self->printer_name)
+     {
+-      const gchar      *const dirs[] = { "/usr/share/cups",
++      const gchar      *const dirs[] = { DATADIR "/cups",
+                                          "/usr/local/share/cups",
+                                          NULL };
+       const gchar      *datadir = NULL;
+diff --git a/panels/system/datetime/tz.h b/panels/system/datetime/tz.h
+index feef16580..f9ed6eab0 100644
+--- a/panels/system/datetime/tz.h
++++ b/panels/system/datetime/tz.h
+@@ -28,9 +28,9 @@
+ G_BEGIN_DECLS
+ 
+ #ifndef __sun
+-#  define TZ_DATA_FILE "/usr/share/zoneinfo/zone.tab"
++#  define TZ_DATA_FILE DATADIR "/zoneinfo/zone.tab"
+ #else
+-#  define TZ_DATA_FILE "/usr/share/lib/zoneinfo/tab/zone_sun.tab"
++#  define TZ_DATA_FILE DATADIR "/lib/zoneinfo/tab/zone_sun.tab"
+ #endif
+ 
+ typedef struct _TzDB TzDB;
+diff --git a/panels/system/users/meson.build b/panels/system/users/meson.build
+index bb7cc1232..63b5186a0 100644
+--- a/panels/system/users/meson.build
++++ b/panels/system/users/meson.build
+@@ -111,6 +111,7 @@ sources += gnome.gdbus_codegen(
+ 
+ cflags += [
+   '-DGNOMELOCALEDIR="@0@"'.format(control_center_localedir),
++  '-DBINDIR="@0@"'.format(control_center_bindir),
+   '-DHAVE_LIBPWQUALITY',
+   '-DUM_PIXMAP_DIR="@0@"'.format(join_paths(control_center_pkgdatadir, 'pixmaps'))
+ ]
+diff --git a/panels/system/users/run-passwd.c b/panels/system/users/run-passwd.c
+index 742e68e53..f79dd7280 100644
+--- a/panels/system/users/run-passwd.c
++++ b/panels/system/users/run-passwd.c
+@@ -152,7 +152,7 @@ spawn_passwd (PasswdHandler *passwd_handler, GError **error)
+         gchar  **envp;
+         gint    my_stdin, my_stdout;
+ 
+-        argv[0] = "/usr/bin/passwd";    /* Is it safe to rely on a hard-coded path? */
++        argv[0] = BINDIR "/passwd";    /* Is it safe to rely on a hard-coded path? */
+         argv[1] = NULL;
+ 
+         envp = g_get_environ ();
+diff --git a/tests/datetime/meson.build b/tests/datetime/meson.build
+index 021036881..fd0799b16 100644
+--- a/tests/datetime/meson.build
++++ b/tests/datetime/meson.build
+@@ -14,7 +14,8 @@ env = [
+ ]
+ cflags = [
+   '-DTEST_SRCDIR="@0@"'.format(meson.current_source_dir()),
+-  '-DSRCDIR="@0@"'.format(meson.project_source_root() + '/panels/datetime')
++  '-DDATADIR="@0@"'.format(control_center_datadir),
++  '-DSRCDIR="@0@"'.format(meson.source_root() + '/panels/datetime')
+ ]
+ 
+ foreach unit: test_units
+diff --git a/tests/datetime/test-endianess.c b/tests/datetime/test-endianess.c
+index 9cb92007a..864681e75 100644
+--- a/tests/datetime/test-endianess.c
++++ b/tests/datetime/test-endianess.c
+@@ -26,11 +26,11 @@ test_endianess (void)
+ 	g_autoptr(GDir) dir = NULL;
+ 	const char *name;
+ 
+-	dir = g_dir_open ("/usr/share/i18n/locales/", 0, NULL);
++	dir = g_dir_open (DATADIR "/i18n/locales/", 0, NULL);
+ 	if (dir == NULL) {
+ 		/* Try with /usr/share/locale/
+ 		 * https://bugzilla.gnome.org/show_bug.cgi?id=646780 */
+-		dir = g_dir_open ("/usr/share/locale/", 0, NULL);
++		dir = g_dir_open (DATADIR "/locale/", 0, NULL);
+ 		if (dir == NULL) {
+ 			g_assert_not_reached ();
+ 		}
+-- 
+2.44.0
+
