@@ -12,7 +12,7 @@ HOMEPAGE="https://apps.kde.org/kcolorchooser/"
 
 LICENSE="MIT"
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 DEPEND="
