@@ -13,7 +13,7 @@ HOMEPAGE="https://apps.kde.org/kruler/"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="X"
 
 # slot op: Uses Qt6::GuiPrivate for qtx11extras_p.h
