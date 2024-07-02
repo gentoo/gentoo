@@ -14,7 +14,7 @@ DESCRIPTION="Extended text editor for PIM applications"
 
 LICENSE="LGPL-2.1+"
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="speech"
 
 RESTRICT="test"
