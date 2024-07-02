@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/ktorrent/"
 
 LICENSE="GPL-2"
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="+bwscheduler +downloadorder +infowidget +ipfilter +logviewer +magnetgenerator
 +mediaplayer rss +scanfolder +shutdown +stats +upnp +webengine +zeroconf"
 
