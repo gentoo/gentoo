@@ -1,6 +1,12 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-07-02)
+# Needs dev-qt/qtquick3d:6 which itself needs media-libs/assimp that
+# is no longer keyworded here and currently fails tests (bug #935313).
+dev-python/PyQt6 quick3d
+dev-qt/qtmultimedia:6 qml
+
 # Sam James <sam@gentoo.org> (2024-05-19)
 # media-libs/jasper not yet keyworded here: https://bugs.gentoo.org/921559
 media-gfx/graphicsmagick jpeg2k
