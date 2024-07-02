@@ -105,9 +105,14 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/openssh-9.3_p1-deny-shmget-shmat-shmdt-in-preauth-privsep-child.patch"
 	"${FILESDIR}/openssh-9.4_p1-Allow-MAP_NORESERVE-in-sandbox-seccomp-filter-maps.patch"
+	"${FILESDIR}/openssh-9.6_p1-fix-xmss-c99.patch"
 	"${FILESDIR}/openssh-9.7_p1-config-tweaks.patch"
+)
+
+NON_X509_PATCHES=(
+	"${FILESDIR}/openssh-9.6_p1-chaff-logic.patch"
+	"${FILESDIR}/openssh-9.6_p1-CVE-2024-6387.patch"
 )
 
 pkg_pretend() {
@@ -156,6 +161,7 @@ src_prepare() {
 	if use X509 ; then
 		pushd "${WORKDIR}" &>/dev/null || die
 		eapply "${WORKDIR}/${X509_GLUE_PATCH}"
+		eapply "${FILESDIR}/openssh-9.7_p1-X509-CVE-2024-6387.patch"
 		popd &>/dev/null || die
 
 		eapply "${WORKDIR}"/${X509_PATCH%.*}
@@ -174,6 +180,8 @@ src_prepare() {
 			-e "/^#define SSH_PORTABLE.*/a #define SSH_X509               \"-PKIXSSH-${X509_VER}\"" \
 			"${S}"/version.h || die "Failed to sed-in X.509 patch version"
 		PATCHSET_VERSION_MACROS+=( 'SSH_X509' )
+	else
+		eapply "${NON_X509_PATCHES[@]}"
 	fi
 
 	if use hpn ; then
@@ -314,6 +322,7 @@ src_configure() {
 		$(use_with pam)
 		$(use_with pie)
 		$(use_with selinux)
+		$(use_with security-key security-key-builtin)
 		$(usex X509 '' "$(use_with security-key security-key-builtin)")
 		$(use_with ssl openssl)
 		$(use_with ssl ssl-engine)
