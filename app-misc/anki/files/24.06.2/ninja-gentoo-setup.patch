@@ -1,0 +1,44 @@
+Respect app-alternatives/ninja (n2 is not yet in the tree) and
+user variables from the ninja-utils eclass.
+This is a workaround. A proper implementation similar to
+the LTO implementation (c6f429) should allow the build system to be set at
+configure time.
+
+From: Lucio Sauer <watermanpaint@posteo.net>
+--- a/build/ninja_gen/src/build.rs
++++ b/build/ninja_gen/src/build.rs
+@@ -49,7 +49,7 @@ impl Build {
+             output_text: Default::default(),
+             action_names: Default::default(),
+             groups: Default::default(),
+-            have_n2: which::which("n2").is_ok(),
++            have_n2: false,
+         };
+ 
+         build.add_action("build:configure", ConfigureBuild {})?;
+--- a/build/runner/src/build.rs
++++ b/build/runner/src/build.rs
+@@ -56,6 +56,10 @@ pub fn run_build(args: BuildArgs) {
+ 
+     let start_time = Instant::now();
+     let mut command = Command::new(get_ninja_command());
++
++    if env::var("NINJA_VERBOSE").unwrap_or(String::from("ON")).eq("ON") {
++        command.arg("-v");
++    }
+     command
+         .arg("-f")
+         .arg(&build_file)
+@@ -108,11 +112,7 @@ pub fn run_build(args: BuildArgs) {
+ }
+ 
+ fn get_ninja_command() -> &'static str {
+-    if which::which("n2").is_ok() {
+-        "n2"
+-    } else {
+-        "ninja"
+-    }
++    "ninja"
+ }
+ 
+ fn setup_build_root() -> Utf8PathBuf {

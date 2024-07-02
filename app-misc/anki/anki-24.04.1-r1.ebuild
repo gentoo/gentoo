@@ -667,8 +667,8 @@ declare -A GIT_CRATES=(
 	[linkcheck]='https://github.com/ankitects/linkcheck;184b2ca50ed39ca43da13f0b830a463861adb9ca;linkcheck-%commit%'
 	[percent-encoding-iri]='https://github.com/ankitects/rust-url;bb930b8d089f4d30d7d19c12e54e66191de47b88;rust-url-%commit%/percent_encoding'
 )
-inherit cargo desktop flag-o-matic multiprocessing ninja-utils optfeature \
-	python-single-r1 readme.gentoo-r1 toolchain-funcs xdg
+inherit cargo desktop edo multiprocessing ninja-utils optfeature \
+	python-single-r1 readme.gentoo-r1 rust-toolchain toolchain-funcs xdg
 
 DESCRIPTION="A spaced-repetition memory training program (flash cards)"
 HOMEPAGE="https://apps.ankiweb.net/"
@@ -716,7 +716,7 @@ LICENSE+=" Unicode-3.0 openssl"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="+gui qt6 test"
+IUSE="doc +gui qt6 test"
 REQUIRED_USE="gui? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!gui? ( test ) !test? ( test )"
 
@@ -773,6 +773,12 @@ BDEPEND="
 	dev-libs/protobuf
 	virtual/pkgconfig
 	>=virtual/rust-1.75.0
+	doc? (
+		$(python_gen_cond_dep '
+			>=dev-python/sphinx-7.2.6[${PYTHON_USEDEP}]
+			dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
+			dev-python/sphinx-autoapi[${PYTHON_USEDEP}]')
+	)
 	gui? (
 		${PYTHON_DEPS}
 		app-alternatives/ninja
@@ -796,18 +802,6 @@ BDEPEND="
 
 QA_FLAGS_IGNORED="usr/bin/anki-sync-server
 	usr/lib/python.*/site-packages/anki/_rsbridge.so"
-
-DOC_CONTENTS="Users with add-ons that still rely on Anki's Qt5 GUI can either
-switch to ${CATEGORY}/${PN}[-qt6], or temporarily set the environment variable
-ENABLE_QT5_COMPAT to 1 to have Anki install the previous compatibility code.
-The latter option has additional runtime dependencies. Please take a look
-at this package's optional runtime features for a complete listing.
-\n\nIn an early 2024 update, ENABLE_QT5_COMPAT will be removed, so this is not
-a long-term solution.
-\n\nAnki's user manual is located online at https://docs.ankiweb.net/
-\nAnki's add-on developer manual is located online at
-https://addon-docs.ankiweb.net/
-"
 
 pkg_setup() {
 	export PROTOC_BINARY="${BROOT}"/usr/bin/protoc
@@ -842,38 +836,59 @@ src_prepare() {
 		# Some parts of the runner build system expect to be in a git repository
 		mkdir .git || die
 
-		# Creating the pseudo venv early skips pip dependency checks in src_compile.
+		# Creating the pseudo venv early skips pip dependency checks in src_configure.
 		mkdir -p out/pyenv/bin || die
 		ln -s "${PYTHON}" out/pyenv/bin/python || die
 		# TODO: ln -s "${BROOT}/usr/bin/protoc-gen-mypy" out/pyenv/bin || die
+		if use doc; then
+			ln -s "${BROOT}"/usr/bin/sphinx-apidoc out/pyenv/bin || die
+			ln -s "${BROOT}"/usr/bin/sphinx-build out/pyenv/bin || die
+		fi
 
 		# Anki's Qt detection mechanism falls back to Qt5 Python bindings, if Qt6
 		# Python bindings don't get imported successfully.
 		if ! use qt6; then
 			sed -i "s/import PyQt6/raise ImportError/" qt/aqt/qt/__init__.py || die
 		fi
+
+		# Fix hardcoded runner location
+		export CARGO_TARGET_DIR="${S}"/out/rust
+		cbuild_dir="$(CHOST=${CBUILD:-${CHOST}} cargo_target_dir)"
+		sed "s,rust/release,${cbuild_dir##*out/}," \
+			-i build/ninja_gen/src/render.rs || die
+
+		# Separate src_configure from runner build
+		sed '/ConfigureBuild/d' -i build/ninja_gen/src/build.rs || die
+	fi
+}
+
+_cargo_env() {
+	# Output to ${cbuild_dir} by overriding CARGO_BUILD_TARGET set in
+	# cargo_src_compile
+	local target
+	if tc-is-cross-compiler; then
+		target="--target $(rust_abi ${CBUILD})"
+	fi
+	tc-env_build "${@}" ${target}
+}
+
+src_configure() {
+	export CFLAGS
+	cargo_src_configure
+	if use gui; then
+		_cargo_env cargo_src_compile -p configure
+		edo "${cbuild_dir}"/configure
 	fi
 }
 
 src_compile() {
-	filter-lto
-	tc-export AR CC PKG_CONFIG
-	export CARGO_TARGET_DIR="${S}"/out/rust
-
-	# Overview of the build process
-	#
-	# 1. The "runner" build system is built explicitly with the "--release" flag
-	#     to avoid issues with hardcoded paths.  Once completed the binaries are
-	#     placed into "${S}"/out/rust/release.
-	# 2. As soon as step 1 is finished, the "runner" build system is executed,
-	#    which then processes the following steps:
-	#    * build remaining components of "runner" (= ninja_gen, configure, etc.)
-	#    * generate the ninja file and run ninja afterwards
-	#    * create the Python wheel files in "${S}"/out/wheels
-
-	cargo build --release --package runner || die
 	if use gui; then
-		out/rust/release/runner build -- $(get_NINJAOPTS) wheels  || die
+		export MY_RUNNER="${cbuild_dir}/runner build -- $(get_NINJAOPTS)"
+		unset cbuild_dir
+
+		_cargo_env cargo_src_compile -p runner
+		edo ${MY_RUNNER} wheels
+		use doc && edo ${MY_RUNNER} python:sphinx
 	else
 		cargo_src_compile --package anki-sync-server
 	fi
@@ -900,13 +915,24 @@ src_test() {
 	sed -i -e "s/\(cargo nextest run\).*\\$/\1 ${nextest_opts[*]} \\$/" \
 		"${S}"/build/ninja_gen/src/cargo.rs || die
 
+	local runner
 	for runner in pytest rust_test jest; do
-		out/rust/release/runner build -- $(get_NINJAOPTS) check:$runner  || \
-		die "check:$runner failed!"
+		edo ${MY_RUNNER} check:${runner}
 	done
 }
 
 src_install() {
+	local DOC_CONTENTS="Users with add-ons that still rely on Anki's Qt5 GUI can either
+	switch to ${CATEGORY}/${PN}[-qt6], or temporarily set the environment variable
+	ENABLE_QT5_COMPAT to 1 to have Anki install the previous compatibility code.
+	The latter option has additional runtime dependencies. Please take a look
+	at this package's optional runtime features for a complete listing.
+	\n\nIn an early 2024 update, ENABLE_QT5_COMPAT will be removed, so this is not
+	a long-term solution.
+	\n\nAnki's user manual is located online at https://docs.ankiweb.net/
+	\nAnki's add-on developer manual is located online at
+	https://addon-docs.ankiweb.net/"
+
 	readme.gentoo_create_doc
 	if use gui; then
 		pushd qt/bundle/lin > /dev/null || die
@@ -916,6 +942,9 @@ src_install() {
 		insinto /usr/share/mime/packages
 		doins anki.xml
 		popd || die
+		use doc && dodoc -r out/python/sphinx/html
+
+		local w
 		for w in out/wheels/*.whl; do
 			unzip "${w}" -d out/wheels || die
 		done
