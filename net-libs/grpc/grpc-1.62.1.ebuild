@@ -100,7 +100,7 @@ src_prepare() {
 					"absl::any"
 					"absl::optional"
 					"absl::variant")
-	: "$(echo "${extra_libs[@]}" | "${EPYTHON}" -c 'import sys;print("\\n\\1".join(sys.stdin.read().split()))')"
+	true "$(echo "${extra_libs[@]}" | "${EPYTHON}" -c 'import sys;print("\\n\\1".join(sys.stdin.read().split()))')"
 	local rstring="${_}"
 	sed -i -E "s/( +)gtest/\1${rstring}/g" "CMakeLists.txt" || die
 
