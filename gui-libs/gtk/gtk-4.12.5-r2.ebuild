@@ -10,7 +10,7 @@ HOMEPAGE="https://www.gtk.org/ https://gitlab.gnome.org/GNOME/gtk/"
 
 LICENSE="LGPL-2+"
 SLOT="4"
-IUSE="aqua broadway cloudproviders colord cups examples gstreamer +introspection sysprof test vulkan wayland +X cpu_flags_x86_f16c"
+IUSE="aqua broadway cloudproviders colord cups examples ffmpeg gstreamer +introspection sysprof test vulkan wayland +X cpu_flags_x86_f16c"
 REQUIRED_USE="
 	|| ( aqua wayland X )
 	test? ( introspection )
@@ -18,7 +18,6 @@ REQUIRED_USE="
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
-# TODO: Optional gst build dep on >=gst-plugins-base-1.23.1, so depend on it once we can
 COMMON_DEPEND="
 	>=dev-libs/glib-2.76.0:2
 	>=x11-libs/cairo-1.17.6[aqua?,glib,svg(+),X?]
@@ -37,17 +36,13 @@ COMMON_DEPEND="
 	cloudproviders? ( net-libs/libcloudproviders )
 	colord? ( >=x11-misc/colord-0.1.9:0= )
 	cups? ( >=net-print/cups-2.0 )
-	examples? ( gnome-base/librsvg:2 )
+	ffmpeg? ( media-video/ffmpeg:= )
 	gstreamer? (
-		>=media-libs/gstreamer-1.12.3:1.0
 		>=media-libs/gst-plugins-bad-1.12.3:1.0
-		|| (
-			>=media-libs/gst-plugins-base-1.12.3:1.0[gles2]
-			>=media-libs/gst-plugins-base-1.12.3:1.0[opengl]
-		)
+		>=media-libs/gst-plugins-base-1.12.3:1.0[opengl]
 	)
 	introspection? ( >=dev-libs/gobject-introspection-1.76:= )
-	vulkan? ( >=media-libs/vulkan-loader-1.3:= )
+	vulkan? ( media-libs/vulkan-loader:= )
 	wayland? (
 		>=dev-libs/wayland-1.21.0
 		>=dev-libs/wayland-protocols-1.31
@@ -55,6 +50,7 @@ COMMON_DEPEND="
 		>=x11-libs/libxkbcommon-0.2
 	)
 	X? (
+		>=app-accessibility/at-spi2-core-2.46.0
 		media-libs/fontconfig
 		media-libs/mesa[X(+)]
 		x11-libs/libX11
@@ -68,19 +64,15 @@ COMMON_DEPEND="
 	)
 "
 DEPEND="${COMMON_DEPEND}
-	kernel_linux? (
-		x11-libs/libdrm
-		sys-kernel/linux-headers
-	)
 	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4 )
 	X? ( x11-base/xorg-proto )
 "
 RDEPEND="${COMMON_DEPEND}
 	>=dev-util/gtk-update-icon-cache-3
 "
-# librsvg for svg icons (PDEPEND to avoid circular dep on wd40 profiles with librsvg[tools]), bug #547710
+# librsvg for svg icons (PDEPEND to avoid circular dep), bug #547710
 PDEPEND="
-	gnome-base/librsvg:2
+	gnome-base/librsvg
 	>=x11-themes/adwaita-icon-theme-3.14
 "
 BDEPEND="
@@ -107,6 +99,13 @@ BDEPEND="
 		wayland? ( dev-libs/weston[headless] )
 	)
 "
+
+PATCHES=(
+	# Gentoo-specific patch to add a "poison" macro support, allowing other ebuilds
+	# with USE="-wayland -X" to trick gtk into claiming that it wasn't built with
+	# such support.
+	"${FILESDIR}"/0001-gdk-add-a-poison-macro-to-hide-GDK_WINDOWING_.patch
+)
 
 python_check_deps() {
 	python_has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]" || return
@@ -147,6 +146,7 @@ src_configure() {
 		$(meson_use aqua macos-backend)
 
 		# Media backends
+		$(meson_feature ffmpeg media-ffmpeg)
 		$(meson_feature gstreamer media-gstreamer)
 
 		# Print backends
@@ -172,7 +172,7 @@ src_configure() {
 		-Dman-pages=true
 
 		# Demos, examples, and tests
-		-Dprofile=default
+		-Ddemo-profile=default
 		$(meson_use examples build-demos)
 		$(meson_use test build-testsuite)
 		$(meson_use examples build-examples)
@@ -186,13 +186,7 @@ src_test() {
 
 	if use X; then
 		einfo "Running tests under X"
-		GSETTINGS_SCHEMA_DIR="${S}/gtk" virtx meson_src_test --timeout-multiplier=130 \
-			--setup=x11 \
-			--no-suite=failing \
-			--no-suite=x11_failing \
-			--no-suite=flaky \
-			--no-suite=headless \
-			--no-suite=gsk-compare-broadway
+		GSETTINGS_SCHEMA_DIR="${S}/gtk" virtx meson_src_test --setup=x11 --timeout-multiplier=130
 	fi
 
 	if use wayland; then
@@ -204,13 +198,7 @@ src_test() {
 		compositor=$!
 		export WAYLAND_DISPLAY=wayland-5
 
-		GSETTINGS_SCHEMA_DIR="${S}/gtk" meson_src_test --timeout-multiplier=130 \
-			--setup=wayland \
-			--no-suite=failing \
-			--no-suite=wayland_failing \
-			--no-suite=flaky \
-			--no-suite=headless \
-			--no-suite=gsk-compare-broadway
+		GSETTINGS_SCHEMA_DIR="${S}/gtk" meson_src_test --setup=wayland --timeout-multiplier=130
 
 		exit_code=$?
 		kill ${compositor}
