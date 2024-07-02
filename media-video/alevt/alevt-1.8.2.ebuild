@@ -1,17 +1,20 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop flag-o-matic toolchain-funcs
 
+MY_P="${PN}-v${PV}"
 DESCRIPTION="Teletext viewer for X11"
 HOMEPAGE="https://gitlab.com/alevt/alevt"
-SRC_URI="http://www.goron.de/~froese/alevt/${P}.tar.gz"
+SRC_URI="https://gitlab.com/${PN}/${PN}/-/archive/v${PV}/${MY_P}.tar.bz2
+	-> ${P}.tar.bz2"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 RESTRICT="strip"
 
 RDEPEND="
@@ -19,10 +22,11 @@ RDEPEND="
 	media-libs/libpng:="
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-respectflags.patch
-	"${FILESDIR}"/${P}-libpng15.patch
+	"${FILESDIR}"/${PN}-1.6.2-libpng15.patch
 )
 
 src_configure() {
