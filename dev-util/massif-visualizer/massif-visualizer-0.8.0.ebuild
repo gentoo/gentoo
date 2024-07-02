@@ -13,7 +13,7 @@ HOMEPAGE="https://apps.kde.org/massif-visualizer/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 LICENSE="|| ( GPL-2 GPL-3 )"
