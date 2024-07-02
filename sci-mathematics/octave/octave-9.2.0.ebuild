@@ -102,7 +102,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.1.0-pkgbuilddir.patch
-	"${FILESDIR}"/${PN}-9.2.0-omit-qtchooser-qtver.patch
 )
 
 src_prepare() {
@@ -180,15 +179,15 @@ src_configure() {
 			LRELEASE="$(qt6_get_bindir)/lrelease" \
 			QHELPGENERATOR="$(qt6_get_bindir)/../libexec/qhelpgenerator"
 		myeconfargs+=(
-			"--with-opengl"
+			$(use_with gui opengl)
+			$(use_with gui x)
 			"--with-qt=6"
-			"--with-x"
 		)
 	else
 		myeconfargs+=(
-			"--without-opengl"
+			$(use_with gui opengl)
+			$(use_with gui x)
 			"--without-qt"
-			"--without-x"
 		)
 	fi
 
