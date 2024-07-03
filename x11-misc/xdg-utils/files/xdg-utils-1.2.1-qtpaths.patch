@@ -1,0 +1,21 @@
+Workaround for https://bugs.gentoo.org/934941.
+
+Pending questions:
+* Should qt6paths instead be in /usr/bin in Gentoo?
+* Why do we have a qtpaths6 as well as a qt6paths?
+--- a/scripts/xdg-mime.in
++++ b/scripts/xdg-mime.in
+@@ -166,8 +166,11 @@ make_default_kde()
+     # text/plain=gnome-gedit.desktop;gnu-emacs.desktop;
+     vendor="$1"
+     mimetype="$2"
+-    if [ "${KDE_SESSION_VERSION:-0}" -gt 4 ] ; then
+-        default_dir="$(qtpaths --writable-path ConfigLocation)"
++    if [ "${KDE_SESSION_VERSION:-0}" -gt 5 ] ; then
++        default_dir="$($(pkg-config --variable=bindir Qt6Core)/qt6paths) --writable-path ConfigLocation)"
++        default_file="$default_dir/mimeapps.list"
++    elif [ x"$KDE_SESSION_VERSION" = x"5" ; then
++        default_dir="$(qtpaths5 --writable-path ConfigLocation)"
+         default_file="$default_dir/mimeapps.list"
+     elif [ x"$KDE_SESSION_VERSION" = x"4" ]; then
+         default_dir="$(kde4-config --path xdgdata-apps 2> /dev/null | cut -d ':' -f 1)"
