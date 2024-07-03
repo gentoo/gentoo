@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE="systemd"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RESTRICT="test" # bug 935362
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,widgets]
