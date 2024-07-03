@@ -16,6 +16,8 @@ _GO_ENV_ECLASS=1
 
 inherit flag-o-matic toolchain-funcs
 
+IUSE+=" abi_mips_o32 abi_mips_n64"
+
 # @FUNCTION: go-env_set_compile_environment
 # @DESCRIPTION:
 # Set up basic compile environment: CC, CXX, and GOARCH.
