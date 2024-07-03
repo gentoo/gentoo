@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="nbd"
 
 RDEPEND="
+	app-arch/zstd:=
 	dev-libs/expat
 	dev-libs/openssl:0=
 	net-misc/curl
