@@ -40,6 +40,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	dev-libs/openssl:=
 	dev-libs/xxhash
+	media-fonts/symbols-nerd-font
 	media-libs/fontconfig
 	media-libs/harfbuzz:=[truetype]
 	media-libs/lcms:2
@@ -180,6 +181,11 @@ src_test() {
 
 src_install() {
 	edo mv linux-package "${ED}"/usr
+
+	# kitty currently detects and copies the system's nerd font at build
+	# time, then uses that rather than the system's at runtime
+	dosym -r /usr/share/fonts/symbols-nerd-font/SymbolsNerdFontMono-Regular.ttf \
+		/usr/"$(get_libdir)"/kitty/fonts/SymbolsNerdFontMono-Regular.ttf
 }
 
 pkg_postinst() {
