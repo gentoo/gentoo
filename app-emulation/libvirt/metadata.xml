@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>tamiko@gentoo.org</email>
-		<name>Matthias Maier</name>
+	<maintainer type="project">
+		<email>virtualization@gentoo.org</email>
+		<name>Gentoo Virtualization Project</name>
 	</maintainer>
 	<maintainer type="person" proxied="yes">
 		<email>michal.privoznik@gmail.com</email>
 		<name>Michal Prívozník</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>virtualization@gentoo.org</email>
-		<name>Gentoo Virtualization Project</name>
 	</maintainer>
 	<use>
 		<!-- Pool backend flags -->
