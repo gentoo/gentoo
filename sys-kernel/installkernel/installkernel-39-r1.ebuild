@@ -19,10 +19,28 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x86-linux"
 IUSE="dracut efistub grub refind systemd systemd-boot uki ukify"
 REQUIRED_USE="
+	?? ( efistub grub systemd-boot )
+	refind? ( !systemd-boot !grub )
 	systemd-boot? ( systemd )
 	ukify? ( uki )
-	?? ( efistub grub refind systemd-boot )
 "
+# Only select one flag that sets "layout=", except for uki since grub,
+# systemd-boot, and efistub booting are all compatible with UKIs and
+# the uki layout.
+#
+# Refind does not set a layout=, it is compatible with the compat, uki
+# and efistub layout. So block against only grub and systemd-boot.
+#
+# systemd-boot could be made to work without the systemd flag, but this
+# makes no sense since in systemd(-utils) the boot flag already
+# requires the kernel-install flag.
+#
+# Ukify hooks do nothing if the layout is not uki, so force this here.
+#
+# Only one initramfs generator flag can be selected. Note that while
+# both dracut and ukify are UKI generators we don't block those because
+# enabling both results in building an initramfs only with dracut and
+# building an UKI with ukify, which is a valid configuration.
 
 RDEPEND="
 	!<=sys-kernel/installkernel-systemd-3
