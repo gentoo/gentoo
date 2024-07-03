@@ -27,6 +27,10 @@ BDEPEND="$(vala_depend)
 	test? ( dev-util/dbus-test-runner )
 "
 
+PATCHES=(
+	"${FILESDIR}"/libayatana-appindicator-0.5.93-correct-symbols-in-version-script.patch
+)
+
 src_prepare() {
 	vala_setup
 	cmake_src_prepare
