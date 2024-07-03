@@ -1,0 +1,86 @@
+Allow disabling wayland integration for Qt6 builds
+
+Upstream has removed the required toggle for wayland integration, and instead
+is forcing it when the program is being built with Qt6 version 6.5.0 or higher.
+
+Currently this is simple to work around, but its future feasibility remains to
+be seen, depending on what upstream thinks about this.
+
+https://bugs.gentoo.org/928451
+https://github.com/desktop-app/cmake_helpers/commit/a428df5440e76a726abc30924766ac7da0cb381c
+
+--- a/Telegram/lib_base/base/platform/linux/base_linux_xdg_activation_token.cpp
++++ b/Telegram/lib_base/base/platform/linux/base_linux_xdg_activation_token.cpp
+@@ -15,7 +15,7 @@
+ namespace base::Platform {
+ 
+ void RunWithXdgActivationToken(Fn<void(QString)> callback) {
+-#if defined QT_FEATURE_wayland && QT_CONFIG(wayland)
++#if !defined DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION && defined QT_FEATURE_wayland && QT_CONFIG(wayland)
+ 	const auto window = QGuiApplication::focusWindow();
+ 	if (!window) {
+ 		callback({});
+--- a/Telegram/lib_ui/ui/platform/linux/ui_utility_linux.cpp
++++ b/Telegram/lib_ui/ui/platform/linux/ui_utility_linux.cpp
+@@ -414,7 +414,7 @@
+ }
+ #endif // !DESKTOP_APP_DISABLE_X11_INTEGRATION
+ 
+-#if defined QT_FEATURE_wayland && QT_CONFIG(wayland)
++#if !defined DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION && defined QT_FEATURE_wayland && QT_CONFIG(wayland)
+ void ShowWaylandWindowMenu(not_null<QWidget*> widget, const QPoint &point) {
+ 	static const auto wl_proxy_marshal_array = [] {
+ 		void (*result)(
+@@ -544,7 +544,7 @@
+ }
+ 
+ bool WindowMarginsSupported() {
+-#if defined QT_FEATURE_wayland && QT_CONFIG(wayland)
++#if !defined DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION && defined QT_FEATURE_wayland && QT_CONFIG(wayland)
+ 	static const auto WaylandResult = [] {
+ 		using namespace QNativeInterface::Private;
+ 		QWindow window;
+@@ -571,7 +571,7 @@
+ }
+ 
+ void SetWindowMargins(not_null<QWidget*> widget, const QMargins &margins) {
+-#if defined QT_FEATURE_wayland && QT_CONFIG(wayland)
++#if !defined DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION && defined QT_FEATURE_wayland && QT_CONFIG(wayland)
+ 	using namespace QNativeInterface::Private;
+ 	const auto window = not_null(widget->windowHandle());
+ 	const auto platformWindow = not_null(window->handle());
+@@ -593,7 +593,7 @@
+ }
+ 
+ void ShowWindowMenu(not_null<QWidget*> widget, const QPoint &point) {
+-#if defined QT_FEATURE_wayland && QT_CONFIG(wayland)
++#if !defined DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION && defined QT_FEATURE_wayland && QT_CONFIG(wayland)
+ 	if (::Platform::IsWayland()) {
+ 		ShowWaylandWindowMenu(widget, point);
+ 		return;
+--- a/cmake/options.cmake
++++ b/cmake/options.cmake
+@@ -23,6 +23,13 @@
+     )
+ endif()
+ 
++if (DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION)
++    target_compile_definitions(common_options
++    INTERFACE
++    	DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION
++    )
++endif()
++
+ if (WIN32)
+     include(cmake/options_win.cmake)
+ elseif (APPLE)
+--- a/cmake/variables.cmake
++++ b/cmake/variables.cmake
+@@ -21,6 +21,7 @@
+ 
+ option(DESKTOP_APP_LOTTIE_USE_CACHE "Use caching in lottie animations." ON)
+ cmake_dependent_option(DESKTOP_APP_DISABLE_X11_INTEGRATION "Disable all code for X11 integration." OFF LINUX ON)
++cmake_dependent_option(DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION "Disable all code for Wayland integration." OFF LINUX ON)
+ cmake_dependent_option(DESKTOP_APP_USE_ALLOCATION_TRACER "Use simple allocation tracer." OFF LINUX OFF)
+ cmake_dependent_option(DESKTOP_APP_USE_PACKAGED_LAZY "Bundle recommended Qt plugins for self-contained packages." OFF LINUX OFF)
+ option(DESKTOP_APP_USE_PACKAGED_FONTS "Use preinstalled fonts instead of bundled patched ones." OFF)

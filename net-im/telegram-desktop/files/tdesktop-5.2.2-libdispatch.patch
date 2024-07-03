@@ -1,0 +1,24 @@
+# https://bugs.gentoo.org/881697
+# https://github.com/telegramdesktop/tdesktop/issues/17437
+
+--- tdesktop-5.2.0-orig/cmake/external/CMakeLists.txt
++++ tdesktop-5.2.0-full/cmake/external/CMakeLists.txt
+@@ -18,7 +18,7 @@
+     add_checked_subdirectory(cld3)
+ endif()
+ add_checked_subdirectory(crash_reports)
+-if (LINUX)
++if (LINUX AND DESKTOP_APP_USE_LIBDISPATCH)
+     add_checked_subdirectory(dispatch)
+ endif()
+ add_checked_subdirectory(expected)
+--- tdesktop-5.2.0-orig/cmake/variables.cmake
++++ tdesktop-5.2.0-full/cmake/variables.cmake
+@@ -21,6 +21,7 @@
+ endif()
+ 
+ option(DESKTOP_APP_LOTTIE_USE_CACHE "Use caching in lottie animations." ON)
++cmake_dependent_option(DESKTOP_APP_USE_LIBDISPATCH "Use libdispatch instead of QThreadPool." OFF LINUX ON)
+ cmake_dependent_option(DESKTOP_APP_DISABLE_X11_INTEGRATION "Disable all code for X11 integration." OFF LINUX ON)
+ cmake_dependent_option(DESKTOP_APP_USE_ALLOCATION_TRACER "Use simple allocation tracer." OFF LINUX OFF)
+ cmake_dependent_option(DESKTOP_APP_USE_PACKAGED_LAZY "Bundle recommended Qt plugins for self-contained packages." OFF LINUX OFF)
