@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>adam.tajti@gmail.com</email>
+    <name>Adam Tajti</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+    doggo is a modern command-line DNS client (like dig) written in Golang.
+    It outputs information in a neat concise manner and supports protocols
+    like DoH, DoT, DoQ, and DNSCrypt as well.
+
+    It's totally inspired by dog which is written in Rust. I wanted to add
+    some features to it but since I don't know Rust, I found it as a nice
+    opportunity to experiment with writing a DNS Client from scratch in Go myself.
+    Hence the name dog + go => doggo.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">mr-karan/doggo</remote-id>
+  </upstream>
+</pkgmetadata>
