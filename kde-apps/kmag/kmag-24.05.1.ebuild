@@ -31,7 +31,7 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake_use_find_package keyboardfocus QAccessibilityClient)
+		$(cmake_use_find_package keyboardfocus QAccessibilityClient6)
 	)
 
 	ecm_src_configure
