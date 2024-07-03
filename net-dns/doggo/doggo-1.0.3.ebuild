@@ -9,7 +9,8 @@ DESCRIPTION="doggo is a modern command-line DNS client (like dig) written in Gol
 HOMEPAGE="https://github.com/mr-karan/doggo"
 SRC_URI="https://github.com/mr-karan/doggo/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://github.com/adamtajti/gentoo-adamtajti/raw/main/deps/doggo-${PV}-deps.tar.xz"
-LICENSE="GPL-3 BSD-3 Apache-2.0 MIT"
+# BSD-3: BSD
+LICENSE="GPL-3 BSD Apache-2.0 MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 BDEPEND=">=dev-lang/go-1.22"
