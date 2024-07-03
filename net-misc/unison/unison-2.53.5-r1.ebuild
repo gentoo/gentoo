@@ -107,17 +107,16 @@ src_install() {
 
 	cd "${S}" || die
 
-	doman "man/${PN}.1"
-
 	if use gui ; then
 		newicon -s scalable icons/U.svg "${PN}-${SLOT}.svg"
-		make_desktop_entry "${PN}-${SLOT}" "${PN^} GUI (${SLOT})" "${PN}-${SLOT}"
+		make_desktop_entry "${PN}-gui-${SLOT}" "${PN^} GUI (${SLOT})" "${PN}-${SLOT}"
 	fi
 
 	if use doc ; then
 		DOCS+=( doc/unison-manual.pdf )
 	fi
 
+	doman "man/${PN}.1"
 	einstalldocs
 }
 
