@@ -108,19 +108,4 @@ pkg_preinst() {
 		ewarn "database (loosing all your GXS data and identities) when you"
 		ewarn "toggle sqlcipher USE flag."
 	fi
-
-	if [[ ${REPLACING_VERSIONS} ]]; then
-		if ver_test ${REPLACING_VERSIONS} -lt 0.6; then
-			ewarn "You are upgrading from Retroshare 0.5.* to ${PV}"
-			ewarn "Version 0.6.* is backward-incompatible with 0.5 branch"
-			ewarn "and clients with 0.6.* can not connect to clients that have 0.5.*"
-			ewarn "It's recommended to drop all your configuration and either"
-			ewarn "generate a new certificate or import existing from a backup"
-			break
-		fi
-		if ver_test ${REPLACING_VERSIONS} -ge 0.6.0 && ver_test ${REPLACING_VERSIONS} -lt 0.6.4; then
-			elog "Main executable has been renamed upstream from RetroShare06 to retroshare"
-			break
-		fi
-	fi
 }
