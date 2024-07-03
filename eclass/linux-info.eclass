@@ -239,8 +239,7 @@ getfilevar() {
 		# Pass dot-config=0 to avoid the config check in kernels prior to 5.4.
 		echo -e "e:\\n\\t@echo \$(${1})\\ninclude ${basefname}" | \
 			nonfatal emake -C "${basedname}" --no-print-directory M="${T}" \
-			dot-config=0 need-config= need-compiler= \
-			${BUILD_FIXES} -s -f - 2>/dev/null
+			dot-config=0 need-config= need-compiler= -s -f - 2>/dev/null
 
 		ARCH=${myARCH}
 	fi
