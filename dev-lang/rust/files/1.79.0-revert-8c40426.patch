@@ -1,0 +1,18 @@
+This reverts commit 8c40426051a667673cdac9975f84cb6acd4e245f.
+
+https://bugs.gentoo.org/933382
+
+diff --git a/src/bootstrap/src/core/build_steps/llvm.rs b/src/bootstrap/src/core/build_steps/llvm.rs
+index d4473e24039..58f351d17fa 100644
+--- a/src/bootstrap/src/core/build_steps/llvm.rs
++++ b/src/bootstrap/src/core/build_steps/llvm.rs
+@@ -724,8 +724,7 @@ fn configure_cmake(
+             }
+         }
+         cfg.define("CMAKE_C_COMPILER", sanitize_cc(&cc))
+-            .define("CMAKE_CXX_COMPILER", sanitize_cc(&cxx))
+-            .define("CMAKE_ASM_COMPILER", sanitize_cc(&cc));
++            .define("CMAKE_CXX_COMPILER", sanitize_cc(&cxx));
+     }
+ 
+     cfg.build_arg("-j").build_arg(builder.jobs().to_string());
