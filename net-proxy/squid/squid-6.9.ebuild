@@ -16,10 +16,12 @@ r=
 if [[ -z ${r} ]]; then
 	SRC_URI="
 		http://static.squid-cache.org/Versions/v${MY_PV_MAJOR}/${P}.tar.xz
+		https://dev.gentoo.org/~juippis/distfiles/squid-6.9-memleak_fix.patch
 		verify-sig? ( http://static.squid-cache.org/Versions/v${MY_PV_MAJOR}/${P}.tar.xz.asc )
 	"
 else
-	SRC_URI="http://static.squid-cache.org/Versions/v${MY_PV_MAJOR}/${P}${r}.tar.bz2"
+	SRC_URI="http://static.squid-cache.org/Versions/v${MY_PV_MAJOR}/${P}${r}.tar.bz2
+		https://dev.gentoo.org/~juippis/distfiles/squid-6.9-memleak_fix.patch"
 	S="${S}${r}"
 fi
 
@@ -82,7 +84,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.2-gentoo.patch
 	"${FILESDIR}"/${PN}-4.17-use-system-libltdl.patch
-	"${FILESDIR}"/${PN}-6.9-memleak_fix.patch
+	"${DISTDIR}"/${PN}-6.9-memleak_fix.patch
 )
 
 pkg_pretend() {
