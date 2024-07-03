@@ -24,7 +24,7 @@ DEPEND="
 	sys-apps/dbus:=
 	introspection? ( dev-libs/gobject-introspection:= )
 	kernel_linux? (
-		>=dev-libs/libgudev-236:=
+		>=dev-libs/libgudev-238:=
 		virtual/udev
 		ios? (
 			>=app-pda/libimobiledevice-1:=
