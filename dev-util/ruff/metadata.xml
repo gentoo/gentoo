@@ -5,8 +5,8 @@
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>eschwartz93@gmail.com</email>
+	<maintainer type="person">
+		<email>eschwartz@gentoo.org</email>
 		<name>Eli Schwartz</name>
 	</maintainer>
 	<upstream>
