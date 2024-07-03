@@ -10,6 +10,7 @@ HOMEPAGE="https://retroshare.cc"
 SRC_URI="https://download.opensuse.org/repositories/network:/retroshare/Debian_Testing/retroshare-common_${PV}.orig.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/RetroShare"
 # NOTE: GitHub releases/archive is impractical to build so we use the OBS repo
+# but they squash point releases which is bad for us
 
 LICENSE="AGPL-3 Apache-2.0 CC-BY-SA-4.0 GPL-2 GPL-3 LGPL-3"
 SLOT="0"
@@ -40,14 +41,14 @@ RDEPEND="
 		x11-libs/libXScrnSaver
 	)
 	libupnp? ( net-libs/libupnp:= )
-	miniupnp? ( net-libs/miniupnpc:= )
+	miniupnp? ( <net-libs/miniupnpc-2.2.8:= )
 	sqlcipher? ( dev-db/sqlcipher )
 	!sqlcipher? ( dev-db/sqlite:3 )
 	plugins? (
 		media-libs/speex
 		media-libs/speexdsp
 		<media-video/ffmpeg-5
-	)"
+	)" # REVIEW: miniupnp pinned because retroshare does not support API 18 yet
 
 # NOTE(setan): rapidjson might not be needed if not using jsonapi. This is to be tested
 DEPEND="${RDEPEND}
