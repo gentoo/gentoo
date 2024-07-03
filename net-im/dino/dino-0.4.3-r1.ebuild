@@ -63,6 +63,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-c99.patch
+	"${FILESDIR}"/${P}-vala-gpgme.patch
 )
 
 src_configure() {
