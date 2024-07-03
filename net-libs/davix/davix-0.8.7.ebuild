@@ -20,6 +20,7 @@ RESTRICT="!test? ( test )"
 CDEPEND="
 		dev-libs/libxml2:2=
 		dev-libs/openssl:0=
+		dev-libs/rapidjson:0=
 		net-libs/gsoap[ssl,-gnutls]
 		net-misc/curl:0=
 		kernel_linux? ( sys-apps/util-linux )
