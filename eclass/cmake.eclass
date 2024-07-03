@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cmake.eclass
@@ -541,7 +541,6 @@ cmake_src_configure() {
 		set(CMAKE_INSTALL_DOCDIR "${EPREFIX}/usr/share/doc/${PF}" CACHE PATH "")
 		set(BUILD_SHARED_LIBS ON CACHE BOOL "")
 		set(Python3_FIND_UNVERSIONED_NAMES FIRST CACHE STRING "")
-		set(FETCHCONTENT_FULLY_DISCONNECTED ON CACHE BOOL "")
 		set(CMAKE_DISABLE_PRECOMPILE_HEADERS ON CACHE BOOL "")
 	_EOF_
 
