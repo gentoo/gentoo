@@ -31,7 +31,10 @@ RDEPEND="
 	>=gui-libs/libadwaita-1.5.1:1[introspection]
 	gui-libs/gtk:4[introspection]
 	$(python_gen_cond_dep '
+		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
 	')
 "
 BDEPEND="
