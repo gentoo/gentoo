@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2024-07-03)
+# Requires dev-util/shelltestrunner
+app-arch/mt-st test
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-07-04)
 # kde-frameworks/kservice not keyworded here
 x11-misc/xdg-utils plasma
