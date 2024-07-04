@@ -79,6 +79,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-9.4_p1-Allow-MAP_NORESERVE-in-sandbox-seccomp-filter-maps.patch"
 	"${FILESDIR}/${PN}-9.6_p1-fix-xmss-c99.patch"
 	"${FILESDIR}/${PN}-9.7_p1-config-tweaks.patch"
+	"${FILESDIR}/${PN}-9.8_p1-musl-connect.patch"
 )
 
 pkg_pretend() {
