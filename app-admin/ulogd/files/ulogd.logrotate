@@ -2,7 +2,7 @@
     sharedscripts
     missingok
     notifempty
-    create 0640 ulogd
+    create 0640 ulogd ulogd
     postrotate
         [ -f /run/ulogd.pid ] && /bin/kill -HUP $(cat /run/ulogd.pid)
     endscript
