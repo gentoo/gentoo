@@ -1,0 +1,40 @@
+diff --git a/cmake/install.cmake b/cmake/install.cmake
+index edd8012..93f9301 100644
+--- a/cmake/install.cmake
++++ b/cmake/install.cmake
+@@ -14,13 +14,13 @@ COMPATIBILITY SameMajorVersion
+ 
+ install(EXPORT ${PROJECT_NAME}-targets
+ NAMESPACE ${PROJECT_NAME}::
+-DESTINATION cmake
++DESTINATION ${library_reldir}/cmake/SC
+ )
+ 
+ install(FILES
+ ${CMAKE_CURRENT_BINARY_DIR}/cmake/${PROJECT_NAME}Config.cmake
+ ${CMAKE_CURRENT_BINARY_DIR}/cmake/${PROJECT_NAME}ConfigVersion.cmake
+-DESTINATION cmake
++DESTINATION ${library_reldir}/cmake/SC
+ )
+ 
+ export(EXPORT ${PROJECT_NAME}-targets
+diff --git a/cmake/pkgconf.cmake b/cmake/pkgconf.cmake
+index 1a1b865..f5bab08 100644
+--- a/cmake/pkgconf.cmake
++++ b/cmake/pkgconf.cmake
+@@ -17,14 +17,4 @@ set(pc_filename libsc-${git_version}.pc)
+ configure_file(${CMAKE_CURRENT_LIST_DIR}/pkgconf.pc.in ${pc_filename} @ONLY)
+ 
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${pc_filename}
+-        DESTINATION lib/pkgconfig)
+-
+-set(pc_target ${pc_filename})
+-set(pc_link ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig/libsc.pc)
+-
+-install(CODE "execute_process( \
+-    COMMAND ${CMAKE_COMMAND} -E create_symlink \
+-    ${pc_target} \
+-    ${pc_link}   \
+-    )"
+-  )
++        DESTINATION ${library_reldir}/pkgconfig)
