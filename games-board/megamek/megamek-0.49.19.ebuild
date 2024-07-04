@@ -24,7 +24,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="
+CP_DEPEND="
 	dev-java/commons-logging:0[log4j]
 	dev-java/commons-text:0
 	dev-java/log4j-12-api:2
@@ -32,18 +32,14 @@ DEPEND="
 	dev-java/jackson-dataformat-yaml:0
 	dev-java/jakarta-mail:0
 	dev-java/jaxb-api:4
+"
+DEPEND="
+	${CP_DEPEND}
 	>=virtual/jdk-11:*
 "
-RDEPEND=">=virtual/jre-11:*"
-
-JAVA_CLASSPATH_EXTRA="
-	commons-logging
-	commons-text
-	jackson-databind
-	jackson-dataformat-yaml
-	jakarta-mail
-	jaxb-api-4
-	log4j-12-api-2
+RDEPEND="
+	${CP_DEPEND}
+	>=virtual/jre-11:*
 "
 
 DOCS=( HACKING )
@@ -53,26 +49,30 @@ JAVA_MAIN_CLASS="megamek.MegaMek"
 JAVA_RESOURCE_DIRS=( i18n resources )
 JAVA_SRC_DIR="src"
 
+EXTRA_JARS=(
+	xstream-${XSTR}
+	freemarker-${FMV}
+	serialkiller-${NSV}
+	commons-configuration-${CCV}
+	commons-lang-2.6
+)
+
 src_prepare() {
 	java-pkg-2_src_prepare
-	JAVA_GENTOO_CLASSPATH_EXTRA="${DISTDIR}/xstream-${XSTR}.jar"
-	JAVA_GENTOO_CLASSPATH_EXTRA+=":${DISTDIR}/freemarker-${FMV}.jar"
-	JAVA_GENTOO_CLASSPATH_EXTRA+=":${DISTDIR}/serialkiller-${NSV}.jar"
-	JAVA_GENTOO_CLASSPATH_EXTRA+=":${DISTDIR}/commons-configuration-${CCV}.jar"
-	JAVA_GENTOO_CLASSPATH_EXTRA+=":${DISTDIR}/commons-lang-2.6.jar"
-
-	sed -e "s|XmX|Xmx|" \
-		-e "s|/usr/share/java|${EPREFIX}/usr/share/${PN}|" \
-		-e "s|/usr/share/MegaMek|${EPREFIX}/usr/share/${PN}|" \
-		startup.sh > ${PN} || die
-	edos2unix ${PN}
+	JAVA_GENTOO_CLASSPATH_EXTRA=$(printf "${DISTDIR}/%s.jar:" "${EXTRA_JARS[@]}")
 }
 
 src_install() {
-	dobin ${PN}
-
 	insinto /usr/share/${PN}
-	doins -r MegaMek.jar data docs mmconf
+	doins -r data docs mmconf
+
+	local jar
+	for jar in "${EXTRA_JARS[@]}"; do
+		java-pkg_newjar "${DISTDIR}/${jar}.jar" "${jar%%-[0-9]*}.jar"
+	done
+
+	java-pkg_dojar MegaMek.jar
+	java-pkg_dolauncher ${PN} --main ${JAVA_MAIN_CLASS} --java_args -Xmx1024m
 
 	doicon "${DISTDIR}"/${PN}.png
 	make_desktop_entry ${PN} MegaMek
