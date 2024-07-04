@@ -164,6 +164,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-9.3.0-java.patch"
 	"${FILESDIR}/${PN}-9.3.0-opencascade.patch"
 	"${FILESDIR}/${PN}-9.3.0-fix-Java-error-with-integer-enum-overloads.patch"
+	"${FILESDIR}/${PN}-9.3.0-ThrustPatches.patch"
 )
 
 DOCS=( CONTRIBUTING.md README.md )

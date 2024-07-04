@@ -9,13 +9,6 @@ distinguish them as individual types that are distinct from 'int'
 or 'unsigned int'.  So when a method is overloaded with both 'int'
 and an enum type, only one of the overloads can be wrapped.  The
 'int' (or 'unsigned int') is the one that is chosen.
----
- Wrapping/Tools/vtkParseJava.c | 3 ++-
- Wrapping/Tools/vtkWrapJava.c  | 3 ++-
- 2 files changed, 4 insertions(+), 2 deletions(-)
-
-diff --git a/Wrapping/Tools/vtkParseJava.c b/Wrapping/Tools/vtkParseJava.c
-index 36b58dda425..9f1544561f3 100644
 --- a/Wrapping/Tools/vtkParseJava.c
 +++ b/Wrapping/Tools/vtkParseJava.c
 @@ -248,9 +248,10 @@ void return_result_native(FILE* fp)
@@ -30,8 +23,6 @@ index 36b58dda425..9f1544561f3 100644
    static unsigned int longTypes[] = { VTK_PARSE_UNSIGNED_LONG, VTK_PARSE_UNSIGNED_LONG_LONG,
      VTK_PARSE_LONG, VTK_PARSE_LONG_LONG, 0 };
  
-diff --git a/Wrapping/Tools/vtkWrapJava.c b/Wrapping/Tools/vtkWrapJava.c
-index d629cc5c8a8..009853d2a89 100644
 --- a/Wrapping/Tools/vtkWrapJava.c
 +++ b/Wrapping/Tools/vtkWrapJava.c
 @@ -639,9 +639,10 @@ void OutputFunctionResult(FILE* fp)
