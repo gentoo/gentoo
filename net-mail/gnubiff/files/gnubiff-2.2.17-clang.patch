@@ -1,0 +1,15 @@
+--- gnubiff-2.2.17/src/Makefile.am.orig	2016-06-12 04:18:12.000000000 -0400
++++ gnubiff-2.2.17/src/Makefile.am	2024-07-03 11:45:10.537385037 -0400
+@@ -6,11 +6,11 @@
+ 	-DGNUBIFF_DATADIR=\""$(pkgdatadir)"\"			\
+ 	-DGNUBIFF_ICONDIR=\""$(datadir)/pixmaps"\"		\
+ 	-DGNUBIFF_UIDIR=\""$(datadir)/gnome-2.0/ui"\"	\
+ 	-DREAL_DATADIR=\""$(datadir)"\"					\
+ 	-D_GNU_SOURCE									\
+-	-Wall -ansi -pedantic -export-dynamic
++	-Wall -ansi -pedantic
+ 
+ bin_PROGRAMS = gnubiff
+ 
+ gnome_sources =  \
+ 	ui-applet-gnome.cc 		ui-applet-gnome.h
