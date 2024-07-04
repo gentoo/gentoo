@@ -106,6 +106,7 @@ multilib_src_configure() {
 			$(use_enable static-libs static) \
 			$(multilib_native_use_with readline) \
 			$(multilib_native_use_with readline history) \
+			--with-legacy \
 			"$@"
 	}
 
