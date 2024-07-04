@@ -33,7 +33,7 @@ RDEPEND="
 	$(python_gen_cond_dep 'dev-python/tomli[${PYTHON_USEDEP}]' 3.10)
 "
 BDEPEND="
-	dev-python/setuptools-scm[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-8[${PYTHON_USEDEP}]
 "
 
 distutils_enable_sphinx docs \
