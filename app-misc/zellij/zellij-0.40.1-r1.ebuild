@@ -515,7 +515,7 @@ CRATES="
 	zeroize@1.5.5
 "
 
-inherit desktop cargo
+inherit cargo desktop shell-completion xdg
 
 DESCRIPTION="A terminal workspace with batteries included"
 HOMEPAGE="
@@ -536,10 +536,13 @@ LICENSE+="
 
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="doc"
 
+RDEPEND="
+	net-misc/curl
+"
+DEPEND="${RDEPEND}"
 BDEPEND="
-	doc? ( app-text/lowdown )
+	dev-go/go-md2man
 "
 
 # rust does not use *FLAGS from make.conf, silence portage warning
@@ -562,9 +565,11 @@ src_compile() {
 	cargo_src_compile
 	popd 2>/dev/null || die
 
-	if use doc; then
-		lowdown -t man -o ${PN}.1 docs/MANPAGE.md || die
-	fi
+	go-md2man -in docs/MANPAGE.md -out ${PN}.1 || die
+
+	"$(cargo_target_dir)"/zellij setup --generate-completion bash > zellij.bash || die
+	"$(cargo_target_dir)"/zellij setup --generate-completion fish > zellij.fish || die
+	"$(cargo_target_dir)"/zellij setup --generate-completion zsh > zellij.zsh || die
 }
 
 src_install() {
@@ -577,12 +582,12 @@ src_install() {
 	doins -r ${PN}-utils/assets/{layouts,plugins,config,shell} \
 		${PN}-utils/assets/*.wasm ${PN}-utils/assets/README.md
 
-	use doc && doman ${PN}.1
+	doman ${PN}.1
+
 	domenu assets/zellij.desktop
+	newicon assets/logo.png zellij.png
 
-	insinto /usr/share/zsh/site-functions
-	newins ${PN}-utils/assets/completions/comp.zsh _${PN}
-
-	insinto /usr/share/fish/vendor_completions.d
-	newins ${PN}-utils/assets/completions/comp.fish ${PN}.fish
+	newbashcomp zellij.bash zellij
+	newfishcomp zellij.fish zellij.fish
+	newzshcomp zellij.zsh _zellij
 }
