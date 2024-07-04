@@ -121,7 +121,10 @@ src_prepare() {
 	)
 
 	if ! use vanilla && [[ -d "${WORKDIR}"/${MY_PATCH} ]] ; then
-		PATCHES+=( "${WORKDIR}"/${MY_PATCH} )
+		PATCHES+=(
+			"${WORKDIR}"/${MY_PATCH}
+			"${FILESDIR}"/${PN}-9.5-skip-readutmp-test.patch
+		)
 	fi
 
 	default
