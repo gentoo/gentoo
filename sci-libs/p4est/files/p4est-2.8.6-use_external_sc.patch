@@ -1,0 +1,15 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index da1b21a..77fee88 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,9 +20,7 @@ message(STATUS "p4est ${PROJECT_VERSION} "
+ 
+ # --- external libs
+ 
+-include(cmake/GitSubmodule.cmake)
+-git_submodule("${PROJECT_SOURCE_DIR}/sc")
+-add_subdirectory(sc)
++find_package(SC REQUIRED)
+ 
+ # --- configure p4est
+ 
