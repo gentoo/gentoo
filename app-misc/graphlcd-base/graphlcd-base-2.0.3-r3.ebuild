@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,12 +6,12 @@ EAPI=8
 inherit optfeature toolchain-funcs udev
 
 DESCRIPTION="Contains the lowlevel lcd drivers for GraphLCD"
-HOMEPAGE="https://projects.vdr-developer.org/projects/graphlcd-base"
-SRC_URI="https://projects.vdr-developer.org/git/${PN}.git/snapshot/${P}.tar.bz2"
+HOMEPAGE="https://github.com/M-Reimer/graphlcd-base/"
+SRC_URI="https://github.com/M-Reimer/graphlcd-base/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="amd64 x86"
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="amd64 x86"
 IUSE="fontconfig freetype graphicsmagick imagemagick lcd_devices_ax206dpf lcd_devices_picolcd_256x64 lcd_devices_vnc"
 
 RDEPEND="
