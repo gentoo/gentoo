@@ -3,12 +3,6 @@ From: Eli Schwartz <eschwartz93@gmail.com>
 Date: Wed, 13 Mar 2024 00:00:45 -0400
 Subject: [PATCH] Respect environment CFLAGS
 
----
- CMakeLists.txt | 4 ----
- 1 file changed, 4 deletions(-)
-
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 4d9b78f..3b09d4c 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -20,10 +20,6 @@ endif()

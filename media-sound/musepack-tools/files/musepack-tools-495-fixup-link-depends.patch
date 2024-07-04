@@ -9,16 +9,6 @@ In revision r491 a "Gentoo patch" was merged, entitled
 
 It inherently clashed with revision r467, which *also* renamed the
 target in question.
----
- mpc2sv8/CMakeLists.txt | 2 +-
- mpcchap/CMakeLists.txt | 2 +-
- mpccut/CMakeLists.txt  | 2 +-
- mpcdec/CMakeLists.txt  | 2 +-
- mpcgain/CMakeLists.txt | 4 ++--
- 5 files changed, 6 insertions(+), 6 deletions(-)
-
-diff --git a/mpc2sv8/CMakeLists.txt b/mpc2sv8/CMakeLists.txt
-index eea0df0..a4fe93e 100644
 --- a/mpc2sv8/CMakeLists.txt
 +++ b/mpc2sv8/CMakeLists.txt
 @@ -13,7 +13,7 @@ endif(MSVC)
@@ -30,8 +20,6 @@ index eea0df0..a4fe93e 100644
  else(SHARED)
    target_link_libraries(mpc2sv8 mpcdec_static)
  endif(SHARED)
-diff --git a/mpcchap/CMakeLists.txt b/mpcchap/CMakeLists.txt
-index 743d5b6..50c4ded 100644
 --- a/mpcchap/CMakeLists.txt
 +++ b/mpcchap/CMakeLists.txt
 @@ -15,7 +15,7 @@ link_directories(${libmpc_BINARY_DIR}/libmpcenc)
@@ -43,8 +31,6 @@ index 743d5b6..50c4ded 100644
  else(SHARED)
    target_link_libraries(mpcchap mpcdec_static)
  endif(SHARED)
-diff --git a/mpccut/CMakeLists.txt b/mpccut/CMakeLists.txt
-index 7d15ce2..2fbfb7a 100644
 --- a/mpccut/CMakeLists.txt
 +++ b/mpccut/CMakeLists.txt
 @@ -13,7 +13,7 @@ endif(MSVC)
@@ -56,8 +42,6 @@ index 7d15ce2..2fbfb7a 100644
  else(SHARED)
    target_link_libraries(mpccut mpcdec_static)
  endif(SHARED)
-diff --git a/mpcdec/CMakeLists.txt b/mpcdec/CMakeLists.txt
-index c95f521..a4ca38f 100644
 --- a/mpcdec/CMakeLists.txt
 +++ b/mpcdec/CMakeLists.txt
 @@ -15,7 +15,7 @@ add_executable(mpcdec_cmd mpcdec.c)
@@ -69,8 +53,6 @@ index c95f521..a4ca38f 100644
  else(SHARED)
    target_link_libraries(mpcdec_cmd mpcdec_static)
  endif(SHARED)
-diff --git a/mpcgain/CMakeLists.txt b/mpcgain/CMakeLists.txt
-index 5445faf..474f3b3 100644
 --- a/mpcgain/CMakeLists.txt
 +++ b/mpcgain/CMakeLists.txt
 @@ -13,14 +13,14 @@ FIND_LIBRARY(REPLAY_GAIN_LIBRARY NAMES replaygain replaygain_static PATHS
