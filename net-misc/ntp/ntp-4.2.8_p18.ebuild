@@ -62,6 +62,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# Ancient codebase, lto-type-mismatch in testsuite in packetProcesisng.c
+	# where patching it then needs Ruby.
+	filter-lto
+
 	# bug #264109
 	append-cppflags -D_GNU_SOURCE
 
