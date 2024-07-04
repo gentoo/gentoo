@@ -64,6 +64,10 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/openmpi/mpiext/mpiext_cuda_c.h
 )
 
+PATCHES=(
+	"${FILESDIR}/${PN}-4.1.6-incompatible-pointers.patch"
+)
+
 pkg_setup() {
 	fortran-2_pkg_setup
 
