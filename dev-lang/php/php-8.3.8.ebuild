@@ -260,6 +260,21 @@ src_prepare() {
 	#   https://github.com/php/php-src/issues/14368
 	#
 	rm ext/session/tests/gh13856.phpt || die
+
+	# Bug 935382, fixed eventually by
+	#
+	# - https://github.com/php/php-src/pull/14788
+	# - https://github.com/php/php-src/pull/14814
+	#
+	rm ext/standard/tests/strings/chunk_split_variation1_32bit.phpt || die
+	rm ext/standard/tests/strings/wordwrap_memory_limit.phpt || die
+
+	# Bug 935379, not yet fixed upstream but looks harmless (ordering
+	# of keys isn't guaranteed AFAICS):
+	#
+	# - https://github.com/php/php-src/issues/14786
+	#
+	rm ext/dba/tests/dba_gdbm.phpt || die
 }
 
 src_configure() {
