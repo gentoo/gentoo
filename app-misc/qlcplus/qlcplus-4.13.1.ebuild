@@ -21,19 +21,18 @@ BDEPEND="
 	dev-qt/linguist-tools:5
 "
 RDEPEND="
-	dev-embedded/libftdi:=
-	dev-libs/glib:2
+	dev-embedded/libftdi:1
 	dev-qt/qtcore:5
-	dev-qt/qtgui:5
+	dev-qt/qtgui:5[jpeg]
 	dev-qt/qtmultimedia:5[widgets]
 	dev-qt/qtnetwork:5
 	dev-qt/qtscript:5
+	dev-qt/qtserialport:5
 	dev-qt/qtwidgets:5
 	media-libs/alsa-lib
 	media-libs/libmad
 	media-libs/libsndfile
-	sci-libs/fftw:3.0
-	virtual/libusb:0
+	sci-libs/fftw:3.0=
 	virtual/libusb:1
 	virtual/udev
 "
