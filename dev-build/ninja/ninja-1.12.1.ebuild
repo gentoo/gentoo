@@ -7,6 +7,9 @@ PYTHON_COMPAT=( python3_{10..13} )
 
 inherit bash-completion-r1 edo python-any-r1 toolchain-funcs
 
+DESCRIPTION="A small build system similar to make"
+HOMEPAGE="https://ninja-build.org/"
+
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/ninja-build/ninja.git"
 	inherit git-r3
@@ -17,9 +20,6 @@ fi
 
 GTEST_VER=1.14.0
 SRC_URI+=" test? ( https://github.com/google/googletest/archive/refs/tags/v${GTEST_VER}.tar.gz -> gtest-${GTEST_VER}.tar.gz )"
-
-DESCRIPTION="A small build system similar to make"
-HOMEPAGE="https://ninja-build.org/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
