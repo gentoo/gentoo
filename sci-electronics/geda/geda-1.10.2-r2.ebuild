@@ -48,7 +48,10 @@ BDEPEND="
 
 PATCHES=(
 	# Xorn requires python2
+	# https://bugs.launchpad.net/geda/+bug/1842509
 	"${FILESDIR}/${P}-drop-xorn.patch"
+
+	"${FILESDIR}/${P}-python3.patch"
 
 	"${FILESDIR}/${PN}-1.10.2-fix-gtk-sheet.patch"
 )
