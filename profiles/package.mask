@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2024-07-04)
+# libxml2-2.13.1 removed "deprecated" symbols that other (older)
+# packages depend upon. It can be mitigated with a --with-legacy
+# configure option, but it's still not a perfect fix. Bug #935452
+# to track and work on tree-wide support. Masking the exact version
+# so we can revbump the package with a fix.
+=dev-libs/libxml2-2.13.1
+=dev-libs/libxslt-1.1.41
+
 # James Le Cuirot <chewi@gentoo.org> (2024-07-01)
 # Ancient, dead upstream, generally awful.
 # Removal on 2024-08-01.  Bugs #935307, #935308, #935309.
