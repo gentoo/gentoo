@@ -10,6 +10,7 @@ DESCRIPTION="audio library tagger, manager, and player for GTK+"
 HOMEPAGE="https://quodlibet.readthedocs.io/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
 
+S="${WORKDIR}/${PN}-release-${PV}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
@@ -34,8 +35,6 @@ RDEPEND="dev-libs/keybinder:3[introspection]
 		)
 	udev? ( virtual/udev )"
 DEPEND="dev-util/intltool"
-
-S="${WORKDIR}/${PN}-release-${PV}"
 
 PATCHES=(
 	 "${FILESDIR}/${PN}-4.6.0-python312.patch"
