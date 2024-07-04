@@ -23,4 +23,7 @@
 		<flag name="graphicsmagick">Add support for <pkg>media-gfx/graphicsmagick</pkg>.</flag>
 		<flag name="imagemagick">Add support for <pkg>media-gfx/imagemagick</pkg>.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">M-Reimer/graphlcd-base</remote-id>
+	</upstream>
 </pkgmetadata>
