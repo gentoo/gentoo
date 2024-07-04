@@ -17,12 +17,13 @@ S="${WORKDIR}/${PN}-gentoo-${PV}"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x86-linux"
-IUSE="dracut efistub grub refind systemd systemd-boot uki ukify"
+IUSE="dracut efistub grub refind systemd systemd-boot ugrd uki ukify"
 REQUIRED_USE="
 	?? ( efistub grub systemd-boot )
 	refind? ( !systemd-boot !grub )
 	systemd-boot? ( systemd )
 	ukify? ( uki )
+	?? ( dracut ugrd )
 "
 # Only select one flag that sets "layout=", except for uki since grub,
 # systemd-boot, and efistub booting are all compatible with UKIs and
@@ -77,6 +78,7 @@ RDEPEND="
 			sys-apps/systemd-utils[boot(-),ukify(-)]
 		)
 	)
+	ugrd? ( sys-kernel/ugrd )
 	!=sys-apps/systemd-255.2-r1
 	!=sys-apps/systemd-255.2-r0
 	!~sys-apps/systemd-255.1
@@ -141,6 +143,8 @@ src_install() {
 				echo "uki_generator=none" >> "${T}/install.conf" || die
 			fi
 		fi
+	elif use ugrd; then
+		echo "initrd_generator=ugrd" >> "${T}/install.conf" || die
 	else
 		echo "initrd_generator=none" >> "${T}/install.conf" || die
 	fi
