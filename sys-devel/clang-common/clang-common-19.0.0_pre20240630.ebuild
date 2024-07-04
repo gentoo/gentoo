@@ -248,12 +248,12 @@ src_install() {
 	if use hardened ; then
 		cat >> "${ED}/etc/clang/gentoo-hardened.cfg" <<-EOF || die
 			# Options below are conditional on USE=hardened.
-			-D_GLIBCXX_ASSERTIONS
+			-Xarch_host -D_GLIBCXX_ASSERTIONS
 
 			# Analogue to GLIBCXX_ASSERTIONS
 			# https://libcxx.llvm.org/UsingLibcxx.html#assertions-mode
 			# https://libcxx.llvm.org/Hardening.html#using-hardened-mode
-			-D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE
+			-Xarch_host -D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE
 		EOF
 
 		cat >> "${ED}/etc/clang/gentoo-hardened-ld.cfg" <<-EOF || die

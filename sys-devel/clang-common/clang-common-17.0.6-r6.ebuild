@@ -10,6 +10,7 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~arm64-macos ~ppc-macos ~x64-macos"
 IUSE="
 	default-compiler-rt default-libcxx default-lld
 	bootstrap-prefix cet hardened llvm-libunwind
@@ -243,8 +244,6 @@ src_install() {
 	#endif
 	EOF
 
-	# TODO: Maybe -D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_FAST for
-	# non-hardened?
 	if use hardened ; then
 		cat >> "${ED}/etc/clang/gentoo-hardened.cfg" <<-EOF || die
 			# Options below are conditional on USE=hardened.
@@ -253,7 +252,7 @@ src_install() {
 			# Analogue to GLIBCXX_ASSERTIONS
 			# https://libcxx.llvm.org/UsingLibcxx.html#assertions-mode
 			# https://libcxx.llvm.org/Hardening.html#using-hardened-mode
-			-Xarch_host -D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE
+			-Xarch_host -D_LIBCPP_ENABLE_ASSERTIONS=1
 		EOF
 
 		cat >> "${ED}/etc/clang/gentoo-hardened-ld.cfg" <<-EOF || die
