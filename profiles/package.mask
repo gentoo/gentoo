@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
+# New major ffmpeg version. Tracker bug #928905.
+>=media-video/ffmpeg-7.0
+
 # Michał Górny <mgorny@gentoo.org> (2024-07-06)
 # Leftover backport for Python 3.9.  No revdeps.
 # Removal on 2024-08-05.  Bug #935676.
