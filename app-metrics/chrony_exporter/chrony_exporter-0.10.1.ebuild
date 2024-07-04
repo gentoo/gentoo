@@ -20,6 +20,12 @@ DEPEND="acct-group/chrony_exporter
 
 BDEPEND="dev-util/promu"
 
+src_prepare() {
+	default
+	# No need to enable the race detector for tests (#935442)
+	sed -i -e '/test-flags := -race/d' Makefile.common || die
+}
+
 src_compile() {
 	promu build -v --cgo --prefix bin || die
 }
