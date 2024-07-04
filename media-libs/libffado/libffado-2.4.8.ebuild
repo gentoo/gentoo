@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 
 inherit desktop python-single-r1 scons-utils toolchain-funcs udev multilib-minimal
 
@@ -48,6 +48,7 @@ RDEPEND="${CDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/libffado-2.4.7-fix-config-load-crash.patch"
+	"${FILESDIR}/libffado-2.4.8-python3.12.patch"
 )
 
 myescons() {
