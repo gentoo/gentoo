@@ -66,14 +66,17 @@ bootstrap() {
 		local -x LDFLAGS=${BUILD_LDFLAGS}
 	fi
 
-	local bootstrap_args=(
+	local args=(
 		--with-python=python
 		--bootstrap
 		--verbose
-		$(usev test --gtest-source-dir="${WORKDIR}"/googletest-${GTEST_VER})
 	)
 
-	edo ${EPYTHON} configure.py "${bootstrap_args[@]}"
+	if use test; then
+		args+=( --gtest-source-dir="${WORKDIR}"/googletest-${GTEST_VER} )
+	fi
+
+	edo ${EPYTHON} configure.py "${args[@]}"
 }
 
 src_compile() {
