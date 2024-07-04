@@ -94,6 +94,15 @@ pkg_pretend() {
 	fi
 }
 
+src_unpack() {
+	if use verify-sig ; then
+		# Needed for downloaded patch (which is unsigned, which is fine)
+		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.asc}
+	fi
+
+	default
+}
+
 src_prepare() {
 	default
 
