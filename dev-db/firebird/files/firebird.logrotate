@@ -6,5 +6,5 @@
      size +1024k
      delaycompress
      notifempty
-     create 644 firebird
+     create 644 firebird firebird
  }
