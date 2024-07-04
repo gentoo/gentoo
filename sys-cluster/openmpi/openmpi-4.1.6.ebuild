@@ -24,7 +24,7 @@ IUSE_OPENMPI_OFED_FEATURES="
 
 DESCRIPTION="A high-performance message passing library (MPI)"
 HOMEPAGE="https://www.open-mpi.org"
-SRC_URI="https://www.open-mpi.org/software/ompi/v$(ver_cut 1-2)/downloads/${MY_P}.tar.bz2"
+SRC_URI="https://download.open-mpi.org/release/open-mpi/v$(ver_cut 1-2)/${P}.tar.bz2"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
