@@ -17,7 +17,7 @@ SRC_URI="https://github.com/socketry/fiber-local/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 ruby_add_rdepend "dev-ruby/fiber-storage"
 
