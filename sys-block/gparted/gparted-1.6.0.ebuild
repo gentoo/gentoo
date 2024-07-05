@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+ FDL-1.2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 ~riscv x86"
 IUSE="kde policykit wayland"
 
 DEPEND="
