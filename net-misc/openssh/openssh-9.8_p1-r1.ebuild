@@ -79,7 +79,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-9.4_p1-Allow-MAP_NORESERVE-in-sandbox-seccomp-filter-maps.patch"
 	"${FILESDIR}/${PN}-9.6_p1-fix-xmss-c99.patch"
 	"${FILESDIR}/${PN}-9.7_p1-config-tweaks.patch"
-	"${FILESDIR}/${PN}-9.8_p1-musl-connect.patch"
 )
 
 pkg_pretend() {
@@ -138,6 +137,12 @@ src_prepare() {
 		# Disable fortify flags ... our gcc does this for us
 		-e 's:-D_FORTIFY_SOURCE=2::'
 	)
+
+	if use elibc_musl; then
+		sed_args+=(
+			-e '/SYSTEMD_NOTIFY/d'
+		)
+	fi
 
 	# _XOPEN_SOURCE causes header conflicts on Solaris
 	[[ ${CHOST} == *-solaris* ]] && sed_args+=(
