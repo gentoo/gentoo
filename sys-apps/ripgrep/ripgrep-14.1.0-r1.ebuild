@@ -99,21 +99,21 @@ src_install() {
 	cargo_src_install
 
 	newbashcomp - rg <<-EOF
-	"$(cargo_target_dir)"/rg --generate complete-bash)
+	$("$(cargo_target_dir)"/rg --generate complete-bash)
 	EOF
 
 	insinto /usr/share/fish/vendor_completions.d
 	newins - rg.fish <<-EOF
-	"$(cargo_target_dir)"/rg --generate complete-fish)
+	$("$(cargo_target_dir)"/rg --generate complete-fish)
 	EOF
 
 	insinto /usr/share/zsh/site-functions
 	newins - _rg <<-EOF
-	"$(cargo_target_dir)"/rg --generate complete-zsh)
+	$("$(cargo_target_dir)"/rg --generate complete-zsh)
 	EOF
 
 	dodoc CHANGELOG.md FAQ.md GUIDE.md README.md
 	newman - rg.1 <<-EOF
-	"$(cargo_target_dir)"/rg --generate man)
+	$("$(cargo_target_dir)"/rg --generate man)
 	EOF
 }
