@@ -521,7 +521,6 @@ sci-libs/h5part
 # Abandoned upstream. No Gentoo maintainer since 2021.
 # Plugin system seems quite broken (bug 887119).
 # Removal on 2024-07-01.
-sys-fs/reiser4progs
 sys-libs/libaal
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-31)
