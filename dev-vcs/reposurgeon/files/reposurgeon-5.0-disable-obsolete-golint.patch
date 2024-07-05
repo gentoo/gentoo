@@ -1,0 +1,15 @@
+diff --git a/Makefile b/Makefile
+index 498efd6b..bb058a8b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -251,8 +251,8 @@ test:
+ 	go test $(TESTOPTS) ./cutter
+ 
+ lint:
+-	golint -set_exit_status ./...
+-	shellcheck -f gcc repobench test/fi-to-fi test/liftcheck test/singlelift test/svn-to-git test/svn-to-svn test/delver test/*.sh test/*test test/mvtest
++#	golint -set_exit_status ./...
++#	shellcheck -f gcc repobench test/fi-to-fi test/liftcheck test/singlelift test/svn-to-git test/svn-to-svn test/delver test/*.sh test/*test test/mvtest
+ 
+ fmt:
+ 	gofmt -s -w .
