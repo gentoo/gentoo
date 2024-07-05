@@ -1,0 +1,111 @@
+From 6df5a080f58ddb6a49a9d33e4a3619a34fffa78c Mon Sep 17 00:00:00 2001
+From: Matt Jolly <Matt.Jolly@footclan.ninja>
+Date: Fri, 5 Jul 2024 20:49:01 +1000
+Subject: [PATCH] Make bindgen wrapper work with unbundled toolchain
+
+The `run_bindgen.py` wrapper takes a --libclang-path option
+and uses it to set the appropriate environment variable.
+
+This is currently hardcoded to use libclang shipped alongside
+bindgen (in our rust toolchain), but distributions may want to
+override this and use a system path.
+
+Additionally enable distros to feed in appropriate library paths.
+---
+ build/config/rust.gni       | 11 +++++++++++
+ build/rust/rust_bindgen.gni | 28 ++++++++++++++++++----------
+ 2 files changed, 29 insertions(+), 10 deletions(-)
+
+diff --git a/build/config/rust.gni b/build/config/rust.gni
+index 97e788a227..78b9daa7e8 100644
+--- a/build/config/rust.gni
++++ b/build/config/rust.gni
+@@ -60,6 +60,17 @@ declare_args() {
+   # the bindgen exectuable).
+   rust_bindgen_root = "//third_party/rust-toolchain"
+ 
++  # Directory under which to find one of `libclang.{dll,so}` (a `lib[64]` or
++  # `bin` directory containing the libclang shared library).
++  # We don't need to worry about multlib, but specify the full path here
++  # in case a distribution does.
++  if (host_os == "win") {
++    bindgen_libclang_path = "//third_party/rust-toolchain/bin"
++  } else {
++    bindgen_libclang_path = "//third_party/rust-toolchain/lib"
++  }
++
++
+   # If you're using a Rust toolchain as specified by rust_sysroot_absolute,
+   # set this to the output of `rustc -V`. Changing this string will cause all
+   # Rust targets to be rebuilt, which allows you to update your toolchain and
+diff --git a/build/rust/rust_bindgen.gni b/build/rust/rust_bindgen.gni
+index bf110ca93c..d7eb04eb00 100644
+--- a/build/rust/rust_bindgen.gni
++++ b/build/rust/rust_bindgen.gni
+@@ -16,13 +16,13 @@ if (host_os == "win") {
+   _bindgen_path = "${_bindgen_path}.exe"
+ }
+ 
+-# On Windows, the libclang.dll is beside the bindgen.exe, otherwise it is in
+-# ../lib.
+-_libclang_path = rust_bindgen_root
+-if (host_os == "win") {
+-  _libclang_path += "/bin"
++if (clang_base_path != default_clang_base_path && custom_toolchain == "//build/toolchain/linux/unbundle:default") {
++  # Assume that the user has set this up properly, including handling multilib
++  _clang_libpath = clang_base_path + "/include"
++  _clang_ld_libpath  = bindgen_libclang_path
+ } else {
+-  _libclang_path += "/lib"
++  _clang_libpath = clang_base_path + "/lib/clang/" + clang_version
++  _clang_ld_libpath = clang_base_path + "/lib"
+ }
+ 
+ # Template to build Rust/C bindings with bindgen.
+@@ -100,7 +100,7 @@ template("rust_bindgen") {
+       "--output",
+       rebase_path(out_gen_rs, root_build_dir),
+       "--libclang-path",
+-      rebase_path(_libclang_path, root_build_dir),
++      rebase_path(bindgen_libclang_path, root_build_dir),
+     ]
+ 
+     if (wrap_static_fns) {
+@@ -117,7 +117,7 @@ template("rust_bindgen") {
+       # point to.
+       args += [
+         "--ld-library-path",
+-        rebase_path(clang_base_path + "/lib", root_build_dir),
++        rebase_path(_clang_ld_libpath, root_build_dir),
+       ]
+     }
+ 
+@@ -145,8 +145,7 @@ template("rust_bindgen") {
+     # make it behave consistently with our other command line flags and allows
+     # system headers to be found.
+     clang_resource_dir =
+-        rebase_path(clang_base_path + "/lib/clang/" + clang_version,
+-                    root_build_dir)
++        rebase_path(_clang_libpath, root_build_dir)
+     args += [
+       "-resource-dir",
+       clang_resource_dir,
+@@ -167,6 +166,15 @@ template("rust_bindgen") {
+       }
+     }
+ 
++    if (custom_toolchain == "//build/toolchain/linux/unbundle:default") {
++      # We need to pass the path to the libstdc++ headers to bindgen so that it
++      # can find them when parsing C++ headers.
++      args += [
++        "-I",
++        rebase_path(clang_base_path + "/include/", root_build_dir),
++      ]
++    }
++
+     if (is_win) {
+       # On Windows we fall back to using system headers from a sysroot from
+       # depot_tools. This is negotiated by python scripts and the result is
+-- 
+2.45.2
+
