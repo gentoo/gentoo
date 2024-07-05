@@ -14,6 +14,7 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="Jakarta Dependency Injection"
 HOMEPAGE="https://jakarta.ee/specifications/dependency-injection/"
 SRC_URI="https://github.com/jakartaee/inject/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/inject-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -23,7 +24,5 @@ DEPEND=">=virtual/jdk-11:*"
 RDEPEND=">=virtual/jre-1.8:*"
 
 DOCS=( {CONTRIBUTING,NOTICE}.md )
-
-S="${WORKDIR}/${P}"
 
 JAVA_SRC_DIR="src/main/java"
