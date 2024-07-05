@@ -21,7 +21,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -63,8 +63,13 @@ BDEPEND="
 "
 # setuptools-scm is here because installing plugins apparently breaks stuff at
 # runtime, so let's pull it early. See bug #663324.
+#
+# trove-classifiers are optionally used in validation, if they are
+# installed.  Since we really oughtn't block them, let's always enforce
+# the newest version for the time being to avoid errors.
 PDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
+	>=dev-python/trove-classifiers-2024.7.2[${PYTHON_USEDEP}]
 "
 
 src_prepare() {
@@ -79,13 +84,12 @@ src_prepare() {
 	sed -i -e '/--import-mode/d' pytest.ini || die
 
 	# remove bundled dependencies
-	rm -r */_vendor setuptools/_distutils/_vendor || die
+	rm -r */_vendor || die
 
 	# remove the ugly */extern hack that breaks on unvendored deps
 	rm -r */extern || die
 	find -name '*.py' -exec sed \
 		-e 's:from \w*[.]\+extern ::' -e 's:\w*[.]\+extern[.]::' \
-		-e 's:from [.]_vendor[.]:from :' \
 		-i {} + || die
 }
 
