@@ -368,8 +368,15 @@ multilib_src_configure() {
 		$(meson_native_true timesyncd)
 		$(meson_native_true tmpfiles)
 		$(meson_native_true vconsole)
-		$(meson_native_enabled vmspawn)
 	)
+
+	case $(tc-arch) in
+		amd64|arm|arm64|loong|ppc|ppc64|riscv|s390|x86)
+			# src/vmspawn/vmspawn-util.h: QEMU_MACHINE_TYPE
+			myconf+=( $(meson_native_enabled vmspawn) ) ;;
+		*)
+			myconf+=( -Dvmspawn=disabled ) ;;
+	esac
 
 	meson_src_configure "${myconf[@]}"
 }
