@@ -1,0 +1,65 @@
+commit 88b30e08cc434ec82cae7881d360bd83fac733a2
+Author: Michael Orlitzky <michael@orlitzky.com>
+Date:   Fri Mar 3 12:28:37 2023 -0500
+
+    ext/iconv/config.m4: add missing stdio.h include.
+    
+    The next generation of C compilers is going to enforce the C standard
+    more strictly:
+    
+      https://wiki.gentoo.org/wiki/Modern_C_porting
+    
+    One warning that will eventually become an error is
+    -Wimplicit-function-declaration. This is relatively easy to catch in
+    most code (it will fail to compile), but inside of autoconf tests it
+    can go unnoticed because many feature-test compilations fail by
+    design. For example,
+    
+      AC_LINK_IFELSE([AC_LANG_PROGRAM([[#include <iconv.h>]],
+                     [[iconv_ccs_init(NULL, NULL);]])]...
+    
+    is designed to fail if iconv_ccs_init() is not in iconv.h. On the
+    other hand,
+    
+      AC_RUN_IFELSE([AC_LANG_SOURCE([[
+      #include <iconv.h>
+      int main() {
+        printf("%d", _libiconv_version);
+        return 0;
+      }
+    
+    should pass if _libiconv_version is defined. If the user has
+    -Werror=implicit-function-declaration in his CFLAGS, however,
+    it will not:
+    
+      $ export CFLAGS="$CFLAGS -Werror=implicit-function-declaration"
+      $ ./configure
+      ...
+      checking if using GNU libiconv... no
+    
+    This is because the stdio.h header that defines printf() is missing:
+    
+      conftest.c:240:3: error: implicit declaration of function 'printf'
+      [-Werror=implicit-function-declaration]
+        240 |   printf("%d", _libiconv_version);
+            |   ^~~~~~
+      conftest.c:239:1: note: include '<stdio.h>' or provide a declaration
+      of 'printf'
+    
+    This commit adds the include, correcting the test with any compiler
+    that balks at implicit function definitions.
+    
+    Closes GH-10751
+
+diff --git a/ext/iconv/config.m4 b/ext/iconv/config.m4
+index 5d408de833..3cf400fe96 100644
+--- a/ext/iconv/config.m4
++++ b/ext/iconv/config.m4
+@@ -30,6 +30,7 @@ if test "$PHP_ICONV" != "no"; then
+       AC_MSG_CHECKING([if using GNU libiconv])
+       AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #include <iconv.h>
++#include <stdio.h>
+ int main(void) {
+   printf("%d", _libiconv_version);
+   return 0;

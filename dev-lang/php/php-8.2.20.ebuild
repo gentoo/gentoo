@@ -150,6 +150,7 @@ PATCHES=(
 	"${FILESDIR}/php-iodbc-header-location.patch"
 	"${FILESDIR}/php-capstone-optional.patch"
 	"${FILESDIR}/php-8.2.8-openssl-tests.patch"
+	"${FILESDIR}/php-8.2.20-implicit-printf.patch"
 )
 
 # ARM/Windows functions (bug 923335)
