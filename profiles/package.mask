@@ -517,12 +517,6 @@ net-p2p/gnut
 # #741444, #831092, #862717.
 sci-libs/h5part
 
-# Maciej Barć <xgqt@gentoo.org> (2024-06-05)
-# Old and experimental Scheme compiler.
-# Bugs: 870472 and 906863
-# Removal on 2024-07-05.
-dev-scheme/scheme48
-
 # Mike Gilbert <floppym@gentoo.org> (2024-06-01)
 # Abandoned upstream. No Gentoo maintainer since 2021.
 # Plugin system seems quite broken (bug 887119).
