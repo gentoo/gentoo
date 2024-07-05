@@ -5,10 +5,6 @@
     <email>sci-electronics@gentoo.org</email>
     <name>Gentoo Electronics Project</name>
   </maintainer>
-  <use>
-    <flag name="schematics">Use <pkg>sci-electronics/geda</pkg> for schematics editing</flag>
-    <flag name="waveform">Use <pkg>sci-electronics/gwave</pkg> for waveform display</flag>
-  </use>
   <upstream>
     <remote-id type="sourceforge">gspiceui</remote-id>
   </upstream>

@@ -31,6 +31,7 @@ RDEPEND="
 		sci-electronics/gnucap
 	)
 "
+BDEPEND="app-arch/unzip"
 
 PATCHES=(
 	# Use Gentoo LDFLAGS and CXXFLAGS
