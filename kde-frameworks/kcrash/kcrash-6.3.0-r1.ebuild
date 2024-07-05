@@ -18,7 +18,7 @@ IUSE="X"
 RESTRICT="test"
 
 RDEPEND="
-	>=dev-qt/qtbase-${QTMIN}:6[gui]
+	>=dev-qt/qtbase-${QTMIN}:6[gui,opengl]
 	=kde-frameworks/kcoreaddons-${PVCUT}*:6
 	X? ( x11-libs/libX11 )
 "
