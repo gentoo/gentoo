@@ -21,18 +21,16 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!<dev-python/setuptools-rust-1.8.0
-	dev-python/jaraco-collections[${PYTHON_USEDEP}]
-	>=dev-python/jaraco-functools-4[${PYTHON_USEDEP}]
 	>=dev-python/jaraco-text-3.7.0-r1[${PYTHON_USEDEP}]
 	>=dev-python/more-itertools-8.12.0-r1[${PYTHON_USEDEP}]
-	>=dev-python/packaging-24.2[${PYTHON_USEDEP}]
-	>=dev-python/platformdirs-4.2.2[${PYTHON_USEDEP}]
+	>=dev-python/packaging-24[${PYTHON_USEDEP}]
+	>=dev-python/platformdirs-2.6.2-r1[${PYTHON_USEDEP}]
 	>=dev-python/wheel-0.44.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		>=dev-python/tomli-2.0.1[${PYTHON_USEDEP}]
@@ -50,7 +48,7 @@ BDEPEND="
 			>=dev-python/filelock-3.4.0[${PYTHON_USEDEP}]
 			>=dev-python/jaraco-envs-2.2[${PYTHON_USEDEP}]
 			>=dev-python/jaraco-path-3.2.0[${PYTHON_USEDEP}]
-			>=dev-python/jaraco-test-5.5[${PYTHON_USEDEP}]
+			dev-python/jaraco-test[${PYTHON_USEDEP}]
 			dev-python/pip[${PYTHON_USEDEP}]
 			dev-python/pip-run[${PYTHON_USEDEP}]
 			dev-python/pyproject-hooks[${PYTHON_USEDEP}]
@@ -66,20 +64,15 @@ BDEPEND="
 "
 # setuptools-scm is here because installing plugins apparently breaks stuff at
 # runtime, so let's pull it early. See bug #663324.
-#
-# trove-classifiers are optionally used in validation, if they are
-# installed.  Since we really oughtn't block them, let's always enforce
-# the newest version for the time being to avoid errors.
-# https://github.com/pypa/setuptools/issues/4459
 PDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
-	>=dev-python/trove-classifiers-2024.10.16[${PYTHON_USEDEP}]
 "
 
 src_prepare() {
 	local PATCHES=(
 		# TODO: remove this when we're 100% PEP517 mode
 		"${FILESDIR}/setuptools-62.4.0-py-compile.patch"
+		"${FILESDIR}"/0001-Allow-knowledgeable-users-to-disable-validating-trov.patch
 	)
 
 	distutils-r1_src_prepare

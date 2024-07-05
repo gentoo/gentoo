@@ -1,0 +1,65 @@
+From f694e474ab3c45af6241a3f2bf575f8188e9cbea Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@gentoo.org>
+Date: Mon, 11 Nov 2024 19:51:54 -0500
+Subject: [PATCH] Allow knowledgeable users to disable validating
+ trove-classifiers
+
+Classifiers are based on a "blessed list" of search terms that are
+allowed on https://pypi.org and need to be regularly kept up to date in
+order to validate them.
+
+Many people don't care about this. Arguably, *no one* cares about this,
+since wheels that have search terms that PyPI doesn't consider popular
+enough will simply fail uploading to PyPI. But also, not everyone wants
+to download new lists of "allowed words" from the internet every time
+they check to see if e.g. pyproject.toml contains a valid format that
+won't traceback when someone tries to read the "name" field and gets an
+integer instead of a string. Or their entrypoints are malformed because
+they aren't a valid python object reference.
+
+This is also an issue because one might have an old version of the
+classifiers cached, and then a new classifier is added to
+https://pypi.org and you want to use it immediately, and the local
+validator in the form of validate_pyproject fails but actually uploading
+a wheel to https://pypi.org would work fine.
+
+Signed-off-by: Eli Schwartz <eschwartz@gentoo.org>
+Signed-off-by: Eli Schwartz <eschwartz93@gmail.com>
+---
+ .../config/_validate_pyproject/formats.py      | 18 +++++++++++-------
+ 1 file changed, 11 insertions(+), 7 deletions(-)
+
+diff --git a/setuptools/config/_validate_pyproject/formats.py b/setuptools/config/_validate_pyproject/formats.py
+index 153b1f0b2..50b8520e9 100644
+--- a/setuptools/config/_validate_pyproject/formats.py
++++ b/setuptools/config/_validate_pyproject/formats.py
+@@ -205,15 +205,19 @@ class _TroveClassifier:
+         return value in self.downloaded or value.lower().startswith("private ::")
+ 
+ 
+-try:
+-    from trove_classifiers import classifiers as _trove_classifiers
+-
++if os.getenv("GENTOO_VALIDATE_PYPROJECT_NO_TROVE_CLASSIFIERS"):
+     def trove_classifier(value: str) -> bool:
+-        """See https://pypi.org/classifiers/"""
+-        return value in _trove_classifiers or value.lower().startswith("private ::")
++        return True
++else:
++    try:
++        from trove_classifiers import classifiers as _trove_classifiers
+ 
+-except ImportError:  # pragma: no cover
+-    trove_classifier = _TroveClassifier()
++        def trove_classifier(value: str) -> bool:
++            """See https://pypi.org/classifiers/"""
++            return value in _trove_classifiers or value.lower().startswith("private ::")
++
++    except ImportError:  # pragma: no cover
++        trove_classifier = _TroveClassifier()
+ 
+ 
+ # -------------------------------------------------------------------------------------
+-- 
+2.45.2
+

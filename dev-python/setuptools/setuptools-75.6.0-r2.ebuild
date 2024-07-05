@@ -66,22 +66,15 @@ BDEPEND="
 "
 # setuptools-scm is here because installing plugins apparently breaks stuff at
 # runtime, so let's pull it early. See bug #663324.
-#
-# trove-classifiers are optionally used in validation, if they are
-# installed.  Since we really oughtn't block them, let's always enforce
-# the newest version for the time being to avoid errors.
-# https://github.com/pypa/setuptools/issues/4459
 PDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
-	>=dev-python/trove-classifiers-2024.10.16[${PYTHON_USEDEP}]
 "
 
 src_prepare() {
 	local PATCHES=(
 		# TODO: remove this when we're 100% PEP517 mode
 		"${FILESDIR}/setuptools-62.4.0-py-compile.patch"
-		# https://github.com/abravalheri/validate-pyproject/pull/221
-		"${FILESDIR}/setuptools-75.6.0-disable-trove-classifiers.patch"
+		"${FILESDIR}"/0001-Allow-knowledgeable-users-to-disable-validating-trov.patch
 	)
 
 	distutils-r1_src_prepare
