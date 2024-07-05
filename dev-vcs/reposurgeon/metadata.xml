@@ -5,6 +5,6 @@
 		<email>robbat2@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://gitlab.com/esr/reposurgeon/issues</bugs-to>
+		<bugs-to>https://gitlab.com/esr/reposurgeon/-/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
