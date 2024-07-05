@@ -13,7 +13,7 @@ S="${WORKDIR}/${P/_/}"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug session tcl"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="virtual/libcrypt:="
 DEPEND="${RDEPEND}"
