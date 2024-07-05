@@ -9,7 +9,7 @@ kde-apps/libkgapi kf6compat
 kde-apps/libksane kf6compat
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-23)
-# Pulls in kde-apps/kgpg is keyworded here
+# Pulls in kde-apps/kgpg which is keyworded here
 >=kde-apps/kdeutils-meta-24.05.1 -gpg
 
 # Ionen Wolkens <ionen@gentoo.org> (2024-05-19)
