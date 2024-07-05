@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sv. Lockal <lockalsash@gmail.com> (2024-11-30)
+# Masked in base profile, supported on this arch
+dev-debug/gdb -rocm
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-11-16)
 # Only available on amd64 for now
 media-gfx/openscad -manifold
