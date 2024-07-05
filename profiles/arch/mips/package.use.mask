@@ -22,6 +22,7 @@ dev-python/pytest-cov doc
 dev-python/pytest-trio doc
 dev-python/stevedore doc
 dev-python/sphinx-autodoc-typehints test
+dev-util/maturin doc
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-29)
 # media-libs/libplacebo is not keyworded
