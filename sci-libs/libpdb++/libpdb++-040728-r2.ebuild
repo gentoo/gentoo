@@ -1,29 +1,26 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit multilib toolchain-funcs
+inherit edo toolchain-funcs
 
 DESCRIPTION="PDB Record I/O Libraries -- c++ version"
 HOMEPAGE="http://www.cgl.ucsf.edu/Overview/software.html"
-SRC_URI="mirror://gentoo/${P}.shar"
+SRC_URI="mirror://gentoo/f8/${P}.shar"
+S=${WORKDIR}/${PN}
 
-SLOT="0"
 LICENSE="BSD"
+SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs"
 
-RDEPEND=""
-DEPEND="${RDEPEND}
-	app-arch/sharutils"
-
-S="${WORKDIR}"/${PN}
+BDEPEND="app-arch/sharutils"
 
 PATCHES=( "${FILESDIR}"/${P}-dynlib+flags.patch )
 
 src_unpack() {
-	"${EPREFIX}/usr/bin/unshar" "${DISTDIR}"/${A} || die
+	edo unshar "${DISTDIR}"/${A}
 }
 
 src_prepare() {
