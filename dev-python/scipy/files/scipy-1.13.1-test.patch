@@ -1,0 +1,46 @@
+From 2f930ed7d579837423cf58f30d25d4922e4cef7c Mon Sep 17 00:00:00 2001
+From: Evgeni Burovski <evgeny.burovskiy@gmail.com>
+Date: Thu, 6 Jun 2024 10:01:58 +0300
+Subject: [PATCH] TST: linalg: bump tolerance in TestEig::test_singular
+
+Some assertions have atol/rtol configurable, and one assertion had them
+hardcoded, and that was causing tolerance problems in a Debian build with
+reference LAPACK.
+
+closes https://github.com/scipy/scipy/issues/20911
+---
+ scipy/linalg/tests/test_decomp.py | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/scipy/linalg/tests/test_decomp.py b/scipy/linalg/tests/test_decomp.py
+index 5e171965a4bd..2c4033360d16 100644
+--- a/scipy/linalg/tests/test_decomp.py
++++ b/scipy/linalg/tests/test_decomp.py
+@@ -181,7 +181,8 @@ def test_gh_3054(self):
+         assert_equal(w, np.inf)
+         assert_allclose(vr, 1)
+ 
+-    def _check_gen_eig(self, A, B, atol_homog=1e-13, rtol_homog=1e-13):
++    def _check_gen_eig(self, A, B, atol_homog=1e-13, rtol_homog=1e-13,
++                                   atol=1e-13, rtol=1e-13):
+         if B is not None:
+             A, B = asarray(A), asarray(B)
+             B0 = B
+@@ -230,7 +231,7 @@ def _check_gen_eig(self, A, B, atol_homog=1e-13, rtol_homog=1e-13):
+         for i in range(res.shape[1]):
+             if np.all(isfinite(res[:, i])):
+                 assert_allclose(res[:, i], 0,
+-                                rtol=1e-13, atol=1e-13, err_msg=msg)
++                                rtol=rtol, atol=atol, err_msg=msg)
+ 
+         # try to consistently order eigenvalues, including complex conjugate pairs
+         w_fin = w[isfinite(w)]
+@@ -269,7 +270,7 @@ def test_singular(self):
+                    [24, 35, 18, 21, 22]])
+ 
+         with np.errstate(all='ignore'):
+-            self._check_gen_eig(A, B, atol_homog=5e-13)
++            self._check_gen_eig(A, B, atol_homog=5e-13, atol=5e-13)
+ 
+     def test_falker(self):
+         # Test matrices giving some Nan generalized eigenvalues.

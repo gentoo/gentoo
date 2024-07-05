@@ -78,6 +78,11 @@ BDEPEND="
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://github.com/scipy/scipy/pull/20914
+	"${FILESDIR}/${P}-test.patch"
+)
+
 src_unpack() {
 	default
 
