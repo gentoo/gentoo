@@ -14,7 +14,7 @@ SRC_URI="https://github.com/rseichter/automx2/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="acct-user/automx2
 	dev-python/flask[${PYTHON_USEDEP}]
