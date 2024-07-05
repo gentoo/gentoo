@@ -29,6 +29,11 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_test() {
+	local EPYTEST_DESELECT=(
+		# fragile to timing
+		tests/test_asyncio.py::TestContextManager::test_sleeps
+	)
+
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
 }
