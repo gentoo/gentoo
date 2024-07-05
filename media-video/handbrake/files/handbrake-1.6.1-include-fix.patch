@@ -1,0 +1,11 @@
+--- a/libhb/handbrake/handbrake.h	2024-07-05 17:35:34.313219285 -0500
++++ b/libhb/handbrake/handbrake.h	2024-07-05 17:35:26.736288642 -0500
+@@ -9,7 +9,7 @@
+ 
+ #ifndef HANDBRAKE_HANDBRAKE_H
+ #define HANDBRAKE_HANDBRAKE_H
+-
++#include <time.h>
+ #ifdef __cplusplus
+ extern "C" {
+ #endif
