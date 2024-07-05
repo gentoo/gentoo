@@ -87,7 +87,7 @@ RDEPEND="${PYTHON_DEPS}
 	gnome? ( gui-libs/libdecor )
 	hip? (
 		llvm_slot_17? (
-			dev-util/hip:0/5.7=
+			dev-util/hip:0/5.7
 		)
 		llvm_slot_18? (
 			>=dev-util/hip-6.1:=[llvm_slot_18(-)]
