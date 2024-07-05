@@ -1,7 +1,5 @@
 # https://bugs.gentoo.org/738110
 
-diff --git a/make/configure.py b/make/configure.py
-index 87118fcbe..df869856d 100644
 --- a/make/configure.py
 +++ b/make/configure.py
 @@ -1626,14 +1626,14 @@ try:

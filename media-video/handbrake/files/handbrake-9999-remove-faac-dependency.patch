@@ -1,5 +1,3 @@
-diff --git a/libhb/common.c b/libhb/common.c
-index f43efdbb5..c917151b7 100644
 --- a/libhb/common.c
 +++ b/libhb/common.c
 @@ -375,7 +375,6 @@ hb_encoder_internal_t hb_audio_encoders[]  =
@@ -10,8 +8,6 @@ index f43efdbb5..c917151b7 100644
      { { "AAC (ffmpeg)",       "ffaac",      NULL,                          HB_ACODEC_FFAAC,       HB_MUX_MASK_MP4|HB_MUX_MASK_MKV, }, NULL, 1, 0, HB_GID_ACODEC_AAC,        },
      { { "AC3 (ffmpeg)",       "ffac3",      NULL,                          HB_ACODEC_AC3,         HB_MUX_MASK_MP4|HB_MUX_MASK_MKV, }, NULL, 1, 0, HB_GID_ACODEC_AC3,        },
      { { "MP3 (lame)",         "lame",       NULL,                          HB_ACODEC_LAME,        HB_MUX_MASK_MP4|HB_MUX_MASK_MKV, }, NULL, 1, 0, HB_GID_ACODEC_MP3,        },
-diff --git a/scripts/manicure.rb b/scripts/manicure.rb
-index fb4afa9ec..424288298 100755
 --- a/scripts/manicure.rb
 +++ b/scripts/manicure.rb
 @@ -349,7 +349,7 @@ class Display

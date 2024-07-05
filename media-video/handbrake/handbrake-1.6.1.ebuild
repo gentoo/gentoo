@@ -98,6 +98,8 @@ PATCHES=(
 
 	# Fix x265 linkage... again again #730034
 	"${FILESDIR}/${PN}-1.3.3-x265-link.patch"
+
+	"${FILESDIR}/${PN}-1.6.1-missing-include.patch"
 )
 
 src_prepare() {
