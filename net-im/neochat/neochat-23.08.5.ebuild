@@ -52,3 +52,8 @@ RDEPEND="${DEPEND}
 	>=kde-frameworks/purpose-${KFMIN}:5
 "
 BDEPEND="virtual/pkgconfig"
+
+CMAKE_SKIP_TESTS=(
+	# bug 909816
+	texthandlertest
+)
