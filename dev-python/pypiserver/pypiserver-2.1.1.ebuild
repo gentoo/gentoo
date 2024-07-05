@@ -67,7 +67,7 @@ python_test() {
 		tests/test_main.py::test_auto_servers
 	)
 
-	if ! has_version dev-python/twine; then
+	if ! has_version "dev-python/twine[${PYTHON_USEDEP}]"; then
 		EPYTEST_DESELECT+=(
 			tests/test_server.py::test_twine_upload
 			tests/test_server.py::test_twine_register
