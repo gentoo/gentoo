@@ -5,7 +5,6 @@ EAPI=8
 
 ECM_HANDBOOK="optional"
 ECM_TEST="forceoptional"
-KDE_GCC_MINIMAL=13
 PVCUT=$(ver_cut 1-3)
 KFMIN=6.3.0
 QTMIN=6.6.2
@@ -61,6 +60,8 @@ BDEPEND="
 	>=dev-qt/qtwayland-${QTMIN}:6
 	dev-util/wayland-scanner
 "
+
+PATCHES=( "${FILESDIR}"/${P}-gcc12.patch )
 
 src_configure() {
 	local mycmakeargs=(
