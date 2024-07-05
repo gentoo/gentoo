@@ -1,13 +1,6 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-07-03)
-# Need as-yet-unkeyworded KF6-based counterparts (bug #934361)
-kde-apps/libkcddb kf6compat
-kde-apps/libkcompactdisc kf6compat
-kde-apps/libkgapi kf6compat
-kde-apps/libksane kf6compat
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-23)
 # Pulls in kde-apps/kgpg which is keyworded here
 >=kde-apps/kdeutils-meta-24.05.1 -gpg
