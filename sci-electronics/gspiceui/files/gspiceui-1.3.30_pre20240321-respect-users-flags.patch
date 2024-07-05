@@ -1,0 +1,50 @@
+--- a/src/Makefile.old	2024-06-21 11:25:45.990728109 +0200
++++ b/src/Makefile	2024-06-21 11:33:20.289571247 +0200
+@@ -46,8 +46,8 @@
+ #***************************************************************************************************
+ 
+ # Which compiler and linker (eg. g++ or clang++)
+-CXX = g++
+-LD  = g++
++CXX ?= g++
++LD  ?= g++
+ ifneq ($(GSPICEUI_MSWIN),0)
+   LD += -static-libstdc++ -static-libgcc
+   WINDRES = windres
+@@ -108,17 +108,7 @@
+ #  -fabi-version=N  Use version N of the C++ ABI (this choice must match the wxWidgets library)
+ 
+ CXXFLAGS := -std=c++17 -fabi-version=14
+-ifeq ($(GSPICEUI_DEBUG),0)
+-  # Options for release (not using -Wall since it's GCC specific)
+-  CXXFLAGS += -O3
+-else
+-  # Options for development
+-  CXXFLAGS += -g3 -O0 -Wall -Wextra -Wpedantic
+-
+-  # The following warning has been disabled because I don't know how to fix it
+-  CXXFLAGS += -Wno-overloaded-virtual
+-endif
+-CXXFLAGS += -pipe $(shell $(WXCFG) --cxxflags)
++CXXFLAGS += $(shell $(WXCFG) --cxxflags)
+ 
+ # I like to compile using the option "-Wall" etc. however tests that break wxWidgets are turned off
+ ifneq ($(GSPICEUI_DEBUG),0)
+@@ -231,7 +221,7 @@
+ #   -o     specify the output file name
+ 
+ $(BINDIR)/$(PROG) : $(OBJS)
+-	$(LD) -pipe -o $(BINDIR)/$(PROG) obj/*.o $(LIBS)
++	$(CXX) -o $(BINDIR)/$(PROG) obj/*.o $(LDFLAGS) $(LIBS)
+ ifeq ($(ROOT)/GSpiceUI.app,$(wildcard $(ROOT)/GSpiceUI.app))
+ 	cp $(BINDIR)/$(PROG) $(ROOT)/GSpiceUI.app/Contents/MacOS/gspiceui
+ endif
+@@ -296,7 +286,7 @@
+ 
+ # Compiler options
+ 
+-test_% : CXXFLAGS  = -Wall -g -pipe $(shell $(WXCFG) --cxxflags)
++test_% : CXXFLAGS  += $(shell $(WXCFG) --cxxflags)
+ test_% : CXXFLAGS += -D $(shell echo $@ | tr "[:lower:]" "[:upper:]")
+ # Libraries
+ test_% : LIBS = $(shell $(WXCFG) --libs core,base)
