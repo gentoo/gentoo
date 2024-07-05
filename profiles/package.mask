@@ -517,12 +517,6 @@ net-p2p/gnut
 # #741444, #831092, #862717.
 sci-libs/h5part
 
-# Mike Gilbert <floppym@gentoo.org> (2024-06-01)
-# Abandoned upstream. No Gentoo maintainer since 2021.
-# Plugin system seems quite broken (bug 887119).
-# Removal on 2024-07-01.
-sys-libs/libaal
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-31)
 # EAPI=6, maintainer-needed, incorrect LICENSE, fails to compile with
 # clang.
