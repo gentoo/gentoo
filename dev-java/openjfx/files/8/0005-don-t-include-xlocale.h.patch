@@ -3,12 +3,6 @@ From: Georgy Yakovlev <gyakovlev@gentoo.org>
 Date: Thu, 30 May 2019 12:07:30 -0700
 Subject: [PATCH] don't include xlocale.h
 
----
- .../gstreamer/3rd_party/glib/glib-2.56.1/glib/gstrfuncs.c       | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/modules/media/src/main/native/gstreamer/3rd_party/glib/glib-2.56.1/glib/gstrfuncs.c b/modules/media/src/main/native/gstreamer/3rd_party/glib/glib-2.56.1/glib/gstrfuncs.c
-index 72dc1301..32669789 100644
 --- a/modules/media/src/main/native/gstreamer/3rd_party/glib/glib-2.56.1/glib/gstrfuncs.c
 +++ b/modules/media/src/main/native/gstreamer/3rd_party/glib/glib-2.56.1/glib/gstrfuncs.c
 @@ -39,7 +39,7 @@

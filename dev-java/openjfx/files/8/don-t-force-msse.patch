@@ -3,15 +3,6 @@ From: Georgy Yakovlev <gyakovlev@gentoo.org>
 Date: Sun, 26 Apr 2020 20:57:39 -0700
 Subject: [PATCH] don't force msse
 
----
- .../main/native/gstreamer/projects/linux/avplugin/Makefile | 1 -
- .../native/gstreamer/projects/linux/fxplugins/Makefile     | 1 -
- .../media/src/main/native/jfxmedia/projects/linux/Makefile | 1 -
- modules/web/src/main/native/Tools/Scripts/webkitdirs.pm    | 7 -------
- 4 files changed, 10 deletions(-)
-
-diff --git a/modules/media/src/main/native/gstreamer/projects/linux/avplugin/Makefile b/modules/media/src/main/native/gstreamer/projects/linux/avplugin/Makefile
-index df9f7f21..f82f0537 100644
 --- a/modules/media/src/main/native/gstreamer/projects/linux/avplugin/Makefile
 +++ b/modules/media/src/main/native/gstreamer/projects/linux/avplugin/Makefile
 @@ -28,7 +28,6 @@ CFLAGS = -fPIC                   \
@@ -22,8 +13,6 @@ index df9f7f21..f82f0537 100644
           -fbuiltin               \
           -DHAVE_STDINT_H         \
           -DLINUX                 \
-diff --git a/modules/media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile b/modules/media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile
-index fd3847d0..3887ac6d 100644
 --- a/modules/media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile
 +++ b/modules/media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile
 @@ -25,7 +25,6 @@ CFLAGS = -fPIC                   \
@@ -34,8 +23,6 @@ index fd3847d0..3887ac6d 100644
           -fbuiltin               \
           -DHAVE_STDINT_H         \
           -DLINUX                 \
-diff --git a/modules/media/src/main/native/jfxmedia/projects/linux/Makefile b/modules/media/src/main/native/jfxmedia/projects/linux/Makefile
-index 3d089501..10fad68f 100644
 --- a/modules/media/src/main/native/jfxmedia/projects/linux/Makefile
 +++ b/modules/media/src/main/native/jfxmedia/projects/linux/Makefile
 @@ -44,7 +44,6 @@ ifdef HOST_COMPILE

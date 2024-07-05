@@ -1,5 +1,5 @@
---- rt-8u202-b02/modules/fxpackager/src/main/native/library/common/PosixPlatform.cpp	2018-10-29 16:26:04.000000000 +0100
-+++ rt-8u202-b02-patched/modules/fxpackager/src/main/native/library/common/PosixPlatform.cpp	2018-11-27 15:34:52.170181958 +0100
+--- rt-8u202-b02/modules/fxpackager/src/main/native/library/common/PosixPlatform.cpp
++++ rt-8u202-b02-patched/modules/fxpackager/src/main/native/library/common/PosixPlatform.cpp
 @@ -232,10 +232,7 @@
      pid_t wpid = 0;
  
