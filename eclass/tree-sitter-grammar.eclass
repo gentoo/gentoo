@@ -47,7 +47,7 @@ for _BINDING in "${TS_BINDINGS[@]}"; do
 			DISTUTILS_EXT=1
 			DISTUTILS_OPTIONAL=1
 			DISTUTILS_USE_PEP517=setuptools
-			PYTHON_COMPAT=( python3_{10..12} )
+			PYTHON_COMPAT=( python3_{10..13} )
 			inherit distutils-r1
 
 			IUSE+=" python"
