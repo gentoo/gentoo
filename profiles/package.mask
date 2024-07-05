@@ -534,7 +534,6 @@ sys-libs/libaal
 # Old ruby31-only slots. Please use a newer slot of these
 # packages. Masked for removal on 2024-07-01.
 dev-ruby/elasticsearch:6.8.3
-dev-ruby/elasticsearch-api:6.8.3
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-31)
 # EAPI=6, maintainer-needed, incorrect LICENSE, fails to compile with
