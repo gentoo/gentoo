@@ -13,7 +13,7 @@ LICENSE="MIT x264? ( GPL-2 )"
 SLOT="0"
 KEYWORDS="~amd64"
 
-IUSE="experimental openh264 test +x264"
+IUSE="openh264 test +x264"
 REQUIRED_USE="^^ ( openh264 x264 )"
 # RESTRICT="!test? ( test )"
 # Tests fail
@@ -22,7 +22,7 @@ RESTRICT="test"
 BDEPEND="virtual/pkgconfig"
 DEPEND="
 	media-libs/dav1d
-	media-libs/libvpl[experimental(-)?]
+	media-libs/libvpl
 	media-libs/svt-av1
 	media-libs/svt-hevc
 	media-video/ffmpeg
@@ -40,7 +40,6 @@ src_configure() {
 	# Use system libraries
 	export VPL_BUILD_DEPENDENCIES="${ESYSROOT}/usr"
 	local mycmakeargs=(
-		-DUSE_EXPERIMENTAL_API="$(usex experimental)"
 		-DBUILD_OPENH264="$(usex openh264)"
 		-DBUILD_TESTS="$(usex test)"
 		-DBUILD_GPL_X264="$(usex x264)"
