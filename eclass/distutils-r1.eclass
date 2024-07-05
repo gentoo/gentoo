@@ -1259,6 +1259,7 @@ distutils_pep517_install() {
 
 	# set it globally in case we were using "standalone" wrapper
 	local -x HATCH_METADATA_CLASSIFIERS_NO_VERIFY=1
+	local -x GENTOO_VALIDATE_PYPROJECT_NO_TROVE_CLASSIFIERS=1
 	if in_iuse debug && use debug; then
 		local -x SETUPTOOLS_RUST_CARGO_PROFILE=dev
 	fi
