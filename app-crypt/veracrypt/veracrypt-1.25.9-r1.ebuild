@@ -9,7 +9,7 @@ EAPI=8
 # Please do not treeclean before February 2024 unless it's necessary.
 
 WX_GTK_VER="3.2-gtk3"
-inherit desktop flag-o-matic linux-info pax-utils toolchain-funcs wxwidgets
+inherit desktop flag-o-matic linux-info pax-utils toolchain-funcs wxwidgets xdg
 
 DESCRIPTION="Disk encryption with strong security based on TrueCrypt"
 HOMEPAGE="https://www.veracrypt.fr/en/Home.html"
@@ -100,6 +100,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
 	ewarn "VeraCrypt has a very restrictive license. Please be explicitly aware"
 	ewarn "of the limitations on redistribution of binaries or modified source."
 }
