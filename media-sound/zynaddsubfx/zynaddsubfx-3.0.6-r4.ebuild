@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="+alsa doc dssi jack lash portaudio"
 REQUIRED_USE="|| ( alsa jack portaudio )"
 
