@@ -11,6 +11,7 @@ SRC_URI="
 	mirror://debian/pool/main/x/${PN}/${PN}_${PV/_p/-}.debian.tar.xz
 "
 
+S=${WORKDIR}/${P/_p*}
 LICENSE="HPND"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
@@ -37,7 +38,6 @@ PATCHES=(
 	"${FILESDIR}"/${P/_p*}-Imakefile.patch
 	"${FILESDIR}"/${P}-clang16.patch
 )
-S=${WORKDIR}/${P/_p*}
 
 src_prepare() {
 	eapply $(

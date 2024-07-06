@@ -4,15 +4,15 @@ https://bugs.gentoo.org/871129
 @@ -1754,3 +1754,3 @@
      }
 -  XawListChange (box->keysym_list, keysym_name_buffer, 0, 0, True);
-+  XawListChange (box->keysym_list, (const char **) keysym_name_buffer, 0, 0, True);
++  XawListChange (box->keysym_list, (char **) keysym_name_buffer, 0, 0, True);
  }
 @@ -2528,3 +2528,3 @@
    box->set = &keyboard_sets [i];
 -  XawListChange (box->keymap_list, (char **) box->set->maps, 0, 0, True);
-+  XawListChange (box->keymap_list, (const char **) box->set->maps, 0, 0, True);
++  XawListChange (box->keymap_list, (char **) box->set->maps, 0, 0, True);
    for (i = 0; i < box->set->map_count; i++)
 @@ -2599,3 +2599,3 @@
  
 -  XawListChange (box->keyboard_list, list, 0, 0, True);
-+  XawListChange (box->keyboard_list, (const char **) list, 0, 0, True);
++  XawListChange (box->keyboard_list, (char **) list, 0, 0, True);
    XawListHighlight (box->keyboard_list, kbd);
