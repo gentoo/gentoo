@@ -9,6 +9,10 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy maintainers</name>
   </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
   <longdescription>
     Latexcodec provides a convenient way of going between text written in LaTeX and unicode. Since it is not a LaTeX compiler, it is more appropriate for short chunks of text, such as a paragraph or the values of a BibTeX entry, and it is not appropriate for a full LaTeX document. In particular, its behavior on the LaTeX commands that do not simply select characters is intended to allow the unicode representation to be understandable by a human reader, but is not canonical and may require hand tuning to produce the desired effect.
   </longdescription>
