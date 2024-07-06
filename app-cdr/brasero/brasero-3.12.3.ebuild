@@ -11,8 +11,8 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Brasero"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0/3.1" # subslot is 3.suffix of libbrasero-burn3
-IUSE="+css +introspection +libburn mp3 nautilus playlist tracker"
 KEYWORDS="amd64 ~arm arm64 ~loong ppc ppc64 ~riscv x86"
+IUSE="+css +introspection +libburn mp3 nautilus playlist tracker"
 
 DEPEND="
 	>=dev-libs/glib-2.29.14:2
@@ -57,6 +57,10 @@ BDEPEND="
 #	gnome-base/gnome-common
 
 PDEPEND="gnome-base/gvfs"
+
+PATCHES=(
+	"${FILESDIR}/${P}-incompatible-pointers.patch"
+)
 
 src_configure() {
 	gnome2_src_configure \
