@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-07-06)
+# Leftover backport for Python 3.9.  No revdeps.
+# Removal on 2024-08-05.  Bug #935676.
+dev-python/pathlib2
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-07-05)
 # rime-data is EAPI=6, and with it last-rite it's reverse-dependencies.
 # Removal on 2024-08-04.  Bugs #935555, #935155, #695056, #924139.
