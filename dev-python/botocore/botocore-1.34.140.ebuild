@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1
 
@@ -61,6 +61,16 @@ python_test() {
 		tests/functional/test_six_imports.py::test_no_bare_six_imports
 		tests/functional/test_six_threading.py::test_six_thread_safety
 	)
+
+	case ${EPYTHON} in
+		python3.13)
+			EPYTEST_DESELECT+=(
+				# memory use tests, probably fragile
+				tests/functional/leak/test_resource_leaks.py::TestDoesNotLeakMemory::test_create_single_paginator_memory_constant
+				tests/functional/leak/test_resource_leaks.py::TestDoesNotLeakMemory::test_create_single_waiter_memory_constant
+			)
+			;;
+	esac
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest tests/{functional,unit}
