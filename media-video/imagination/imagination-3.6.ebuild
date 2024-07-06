@@ -22,6 +22,7 @@ DEPEND="
 	x11-libs/pango"
 RDEPEND="${DEPEND}
 	media-video/ffmpeg"
+BDEPEND="dev-util/intltool"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-cflags.patch
