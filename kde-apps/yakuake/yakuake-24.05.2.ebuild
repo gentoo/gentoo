@@ -13,7 +13,7 @@ HOMEPAGE="https://apps.kde.org/yakuake/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE="absolute-position"
 
 # slot op: Uses Qt6::GuiPrivate for qtx11extras_p.h
