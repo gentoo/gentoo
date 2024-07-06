@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/Python-PyQt/PyQt-builder/"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv x86"
 
 RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
