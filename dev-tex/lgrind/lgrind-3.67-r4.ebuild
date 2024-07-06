@@ -13,11 +13,11 @@ SRC_URI="
 	https://salsa.debian.org/debian/lgrind/-/raw/dbf049621a61720c8350c37659cf6537ac3893a9/debian/patches/texlive-2020.patch
 		-> lgrind-3.67-fix-begin-document.patch
 "
+S="${WORKDIR}/${PN}"
 
 LICENSE="BSD LGrind-Jacobson"
 SLOT="0"
 KEYWORDS="amd64 ppc ~sparc x86"
-S="${WORKDIR}/${PN}"
 
 IUSE="examples"
 
