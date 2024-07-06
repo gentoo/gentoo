@@ -5,8 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-# py3.13: https://github.com/CheetahTemplate3/cheetah3/issues/60
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1
 
@@ -35,6 +34,11 @@ BDEPEND="
 "
 
 DOCS=( ANNOUNCE.rst README.rst TODO )
+
+PATCHES=(
+	# https://github.com/CheetahTemplate3/cheetah3/commit/ee2739b73bafbcb9a8cc5511d5e03e6b0d9bced1
+	"${FILESDIR}/${P}-py313.patch"
+)
 
 python_test() {
 	# the package can't handle TMPDIR with hyphens
