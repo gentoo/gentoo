@@ -318,7 +318,7 @@ src_install() {
 	rmdir "${ED}"/var/empty || die
 
 	systemd_dounit "${FILESDIR}"/sshd.socket
-	systemd_newunit "${FILESDIR}"/sshd.service.1 sshd.service
+	systemd_newunit "${FILESDIR}"/sshd.service.2 sshd.service
 	systemd_newunit "${FILESDIR}"/sshd_at.service.1 'sshd@.service'
 
 	# Install dropins with explicit mode, bug 906638, 915840
