@@ -1,12 +1,9 @@
 # Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-07-03)
-# Need as-yet-unkeyworded KF6-based counterparts (bug #934361)
-kde-apps/libkcddb kf6compat
-kde-apps/libkcompactdisc kf6compat
-kde-apps/libkgapi kf6compat
-kde-apps/libksane kf6compat
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-07-06)
+# KDE PIM is not keyworded here
+kde-apps/libkgapi:5 kf6compat
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-07-01)
 # USE="kf6compat,kaccounts" depends on kde-frameworks/purpose:6[webengine]
