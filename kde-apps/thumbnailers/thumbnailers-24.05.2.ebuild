@@ -13,7 +13,7 @@ DESCRIPTION="Thumbnail generators for Mobipocket, PDF/PS and RAW files"
 
 LICENSE="GPL-2+"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE="mobi raw"
 
 DEPEND="
