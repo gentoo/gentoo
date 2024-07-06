@@ -13,7 +13,7 @@ HOMEPAGE="https://invent.kde.org/graphics/colord-kde"
 
 LICENSE="GPL-2+"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE="X"
 
 COMMON_DEPEND="
