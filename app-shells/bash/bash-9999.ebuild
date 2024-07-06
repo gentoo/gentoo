@@ -320,7 +320,7 @@ src_install() {
 
 	insinto /etc/bash/bashrc.d
 	my_prefixify DIR_COLORS "${FILESDIR}"/bashrc.d/10-gentoo-color.bash | newins - 10-gentoo-color.bash
-	doins "${FILESDIR}"/bashrc.d/10-gentoo-title.bash
+	newins "${FILESDIR}"/bashrc.d/10-gentoo-title-r1.bash 10-gentoo-title.bash
 	if [[ ! ${EPREFIX} ]]; then
 		doins "${FILESDIR}"/bashrc.d/15-gentoo-bashrc-check.bash
 	fi
@@ -381,26 +381,26 @@ pkg_postinst() {
 	read -r old_ver <<<"${REPLACING_VERSIONS}"
 	if [[ ! $old_ver ]]; then
 		:
-	elif ver_test "$old_ver" -ge "5.2" && ver_test "$old_ver" -ge "5.2_p26-r6"; then
-		return
-	elif ver_test "$old_ver" -lt "5.2" && ver_test "$old_ver" -ge "5.1_p16-r13"; then
+	elif ver_test "$old_ver" -ge "5.2" && ver_test "$old_ver" -ge "5.2_p26-r7"; then
 		return
 	fi
 
 	while read -r; do ewarn "${REPLY}"; done <<'EOF'
-Files situated under /etc/bash/bashrc.d must now have a suffix of .sh or .bash.
+Files under /etc/bash/bashrc.d must now have a suffix of .sh or .bash.
 
 Gentoo now defaults to defining PROMPT_COMMAND as an array. Depending on the
-characteristics of the operating environment, this array may contain a command
-to set the terminal's window title. Those already choosing to customise the
+characteristics of the operating environment, it may contain a command to set
+the terminal's window title. Those who were already choosing to customise the
 PROMPT_COMMAND variable are now advised to append their commands like so:
 
 PROMPT_COMMAND+=('custom command goes here')
 
-Gentoo no longer defaults to having bash manipulate the window title in the case
-that the terminal is controlled by sshd(8), unless screen or tmux are in use.
-Those wanting to set the title unconditionally may adjust ~/.bashrc - or create
-a custom /etc/bash/bashrc.d drop-in - to set PROMPT_COMMMAND like so:
+Gentoo no longer defaults to having bash set the window title in the case
+that the terminal is controlled by sshd(8), unless screen or tmux are in use
+or the terminal reliably supports saving and restoring the title (as
+alacritty and foot do). Those wanting to set the title unconditionally may
+adjust ~/.bashrc - or create a custom /etc/bash/bashrc.d drop-in - to set
+PROMPT_COMMMAND like so:
 
 PROMPT_COMMAND=(genfun_set_win_title)
 
