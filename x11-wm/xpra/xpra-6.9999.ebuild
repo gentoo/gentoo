@@ -338,13 +338,17 @@ python_test() {
 		--skip-slow unit.server.server_sockets_test \
 		--skip-slow unit.server.source.source_mixins_test \
 	|| die -n
+}
 
+python_install() {
 	# remove test file
-	rm "${INSTALL_ROOT}/usr/share/xpra/www" -r || die
+	rm -vrf "${BUILD_DIR}/install/usr/share/xpra/www"
+
+	distutils-r1_python_install
 }
 
 python_install_all() {
-	distutils-r1_python_prepare_all
+	distutils-r1_python_install_all
 
 	mv -v "${ED}"/usr/etc "${ED}"/ || die
 
