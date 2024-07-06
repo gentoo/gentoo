@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/kajongg/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
