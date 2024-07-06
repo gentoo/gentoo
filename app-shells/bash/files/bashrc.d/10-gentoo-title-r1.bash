@@ -42,9 +42,7 @@ unset -v SHELL_SETS_TITLE
 # evidence that the sequence is supported and that the UTF-8 character encoding
 # is handled correctly. Quite rightly, this precludes many vintage terminals.
 case ${TERM} in
-	screen*|tmux*)
-		;;
-	alacritty|foot*)
+	alacritty|foot*|tmux*)
 		# The terminal emulator also supports XTWINOPS. If the PTY was
 		# created by sshd(8) then push the current window title to the
 		# stack and arrange for it to be popped upon exiting. Xterm also
@@ -63,6 +61,15 @@ case ${TERM} in
 		# ~/.bashrc or create a bashrc.d drop-in to set PROMPT_COMMAND.
 		# For example, PROMPT_COMMAND=(genfun_set_win_title).
 		if [[ ${SSH_TTY} && ${SSH_TTY} == "$(tty)" ]]; then
+			return
+		fi
+		;;
+	screen*)
+		# If the PTY was created by sshd(8) and screen(1) was launched
+		# prior to the SSH session beginning, as opposed to afterwards,
+		# proceed no further. It is another case in which there would be
+		# no guarantee of the title being restored upon ssh(1) exiting.
+		if [[ ! ${WINDOW} && ${SSH_TTY} && ${SSH_TTY} == "$(tty)" ]]; then
 			return
 		fi
 		;;
