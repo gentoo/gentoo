@@ -79,7 +79,7 @@ RDEPEND="
 # clang needed by bindgen
 BDEPEND="
 	sys-devel/clang
-	>=virtual/rust-1.75.0
+	>=virtual/rust-1.79.0
 "
 
 # Rust
