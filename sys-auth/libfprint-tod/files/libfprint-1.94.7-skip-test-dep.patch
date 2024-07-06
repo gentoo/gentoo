@@ -1,0 +1,106 @@
+https://gitlab.freedesktop.org/libfprint/libfprint/-/commit/4b72f27de6706a6001e82b477b647ced30cc37b5
+https://gitlab.freedesktop.org/libfprint/libfprint/-/commit/7dbb21e77ace03bf28dc9a6b37b43d551282389f
+
+From 4b72f27de6706a6001e82b477b647ced30cc37b5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marco=20Trevisan=20=28Trevi=C3=B1o=29?= <mail@3v1n0.net>
+Date: Tue, 20 Feb 2024 08:22:42 +0100
+Subject: [PATCH] build: Look for sh just once
+
+---
+ meson.build       |  1 +
+ tests/meson.build | 10 +++++-----
+ 2 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 435827ce..28ee27a2 100644
+--- a/meson.build
++++ b/meson.build
+@@ -91,6 +91,7 @@ gusb_dep = dependency('gusb', version: '>= 0.2.0')
+ mathlib_dep = cc.find_library('m', required: false)
+ 
+ # The following dependencies are only used for tests
++sh = find_program('sh', required: true)
+ cairo_dep = dependency('cairo', required: false)
+ 
+ # introspection scanning and Gio-2.0.gir
+diff --git a/tests/meson.build b/tests/meson.build
+index f68ed406..8c8f5d07 100644
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -151,7 +151,7 @@ if get_option('introspection')
+             endif
+         else
+             test(vdtest,
+-                find_program('sh'),
++                sh,
+                 args: ['-c', 'exit 77']
+             )
+         endif
+@@ -205,7 +205,7 @@ if get_option('introspection')
+             endif
+         else
+             test(driver_test,
+-                find_program('sh'),
++                sh,
+                 args: ['-c', 'exit 77']
+             )
+         endif
+@@ -224,13 +224,13 @@ if get_option('introspection')
+ else
+     warning('Skipping all driver tests as introspection bindings are missing')
+     test('virtual-image',
+-        find_program('sh'),
++        sh,
+         args: ['-c', 'exit 77']
+     )
+ 
+     foreach driver_test: drivers_tests
+         test(driver_test,
+-            find_program('sh'),
++            sh,
+             args: ['-c', 'exit 77']
+         )
+     endforeach
+@@ -273,7 +273,7 @@ foreach test_name: unit_tests
+             # Create a dummy test that always skips instead
+             warning('Test @0@ cannot be compiled due to missing dependencies'.format(test_name))
+             test(test_name,
+-                find_program('sh'),
++                sh,
+                 suite: ['unit-tests'],
+                 args: ['-c', 'exit 77'],
+             )
+-- 
+GitLab
+
+From 7dbb21e77ace03bf28dc9a6b37b43d551282389f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marco=20Trevisan=20=28Trevi=C3=B1o=29?= <mail@3v1n0.net>
+Date: Tue, 20 Feb 2024 08:24:12 +0100
+Subject: [PATCH] build/tests: Skip a test if the test requires it during
+ inspection
+
+In case we don't have dependencies, we should skip the test, otherwise
+we can just fail at test time
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -100,11 +100,17 @@ if get_option('introspection')
+             base_args = files(vdtest + '.py')
+             suite = ['virtual-driver']
+ 
+-            r = run_command(unittest_inspector, files(vdtest + '.py'), check: true)
++            r = run_command(unittest_inspector, files(vdtest + '.py'), check: false)
+             unit_tests = r.stdout().strip().split('\n')
+ 
+             if r.returncode() == 0 and unit_tests.length() > 0
+                 suite += vdtest
++            elif r.returncode() == 77
++                test(vdtest,
++                    sh,
++                    args: ['-c', 'exit 77']
++                )
++                continue
+             else
+                 unit_tests = [vdtest]
+             endif
+-- 
+GitLab
