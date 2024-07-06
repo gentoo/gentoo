@@ -16,19 +16,20 @@ SRC_URI="https://gitlab.freedesktop.org/libfprint/${PN}/-/archive/v${PV}/${MY_P}
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
-IUSE="doc pam selinux systemd test"
+IUSE="doc pam selinux systemd test tod"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/dbus-glib
 	dev-libs/glib:2
-	>=sys-auth/libfprint-1.94.0:2
 	sys-auth/polkit
 	pam? (
 		sys-libs/pam
 		systemd? ( sys-apps/systemd:= )
 		!systemd? ( sys-auth/elogind:= )
 	)
+	tod? ( >=sys-auth/libfprint-tod-1.94.0:2 )
+	!tod? ( >=sys-auth/libfprint-1.94.0:2 )
 "
 
 DEPEND="
