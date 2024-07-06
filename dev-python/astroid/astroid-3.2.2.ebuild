@@ -33,7 +33,6 @@ BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/attrs[${PYTHON_USEDEP}]
-		<dev-python/numpy-2[${PYTHON_USEDEP}]
 		>=dev-python/numpy-1.17.0[${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
@@ -59,6 +58,14 @@ python_test() {
 		tests/test_nodes.py::AsStringTest::test_recursion_error_trapped
 		# TODO
 		tests/test_builder.py::BuilderTest::test_data_build_error_filename
+		# numpy-2
+		tests/brain/numpy/test_core_einsumfunc.py::test_numpy_function_calls_inferred_as_ndarray
+		tests/brain/numpy/test_core_fromnumeric.py::BrainNumpyCoreFromNumericTest::test_numpy_function_calls_inferred_as_ndarray
+		tests/brain/numpy/test_core_multiarray.py::BrainNumpyCoreMultiarrayTest::test_numpy_function_calls_inferred_as_ndarray
+		tests/brain/numpy/test_core_numerictypes.py::NumpyBrainCoreNumericTypesTest::test_datetime_astype_return
+		tests/brain/numpy/test_core_numerictypes.py::NumpyBrainCoreNumericTypesTest::test_generic_types_are_subscriptables
+		tests/brain/numpy/test_core_umath.py::NumpyBrainCoreUmathTest::test_numpy_core_umath_functions_return_type
+		tests/brain/numpy/test_core_umath.py::NumpyBrainCoreUmathTest::test_numpy_core_umath_functions_return_type_tuple
 	)
 
 	case ${EPYTHON} in
