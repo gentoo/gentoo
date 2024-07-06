@@ -1,0 +1,30 @@
+From d9fb07f81dd3a6f3e97d251095dc3d0254c265e6 Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Sat, 6 Jul 2024 12:20:56 +0200
+Subject: [PATCH] Fix 'return' with no value in lgutil.c:parsevartab()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In file included from lgrind.c:1767:
+lgutil.c: In function ‘parsevartab’:
+lgutil.c:280:22: error: ‘return’ with no value, in function returning non-void [-Wreturn-mismatch]
+  280 |         if (f==NULL) return;
+      |                      ^~~~~~
+lgutil.c:274:11: note: declared here
+  274 | varsubst *parsevartab(char* fname)
+      |           ^~~~~~~~~~~
+--- a/source/lgutil.c
++++ b/source/lgutil.c
+@@ -277,7 +277,7 @@ varsubst *parsevartab(char* fname)
+ 	char linebuf[201], *cp;
+ 	varsubst *varsubsts=NULL, *substitem, *substlistpos;
+ 
+-	if (f==NULL) return;
++	if (f==NULL) return varsubsts;
+ 	while (!feof(f))
+ 	{
+ 		fscanf(f, "%200[^\n]", linebuf);
+-- 
+2.44.2
+
