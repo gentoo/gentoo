@@ -1,0 +1,36 @@
+https://git.netfilter.org/ipset/commit/?id=851cb04ffee5040f1e0063f77c3fe9bc6245e0fb
+
+From 851cb04ffee5040f1e0063f77c3fe9bc6245e0fb Mon Sep 17 00:00:00 2001
+From: Phil Sutter <phil@nwl.cc>
+Date: Thu, 27 Jun 2024 10:18:17 +0200
+Subject: lib: ipset: Avoid 'argv' array overstepping
+
+The maximum accepted value for 'argc' is MAX_ARGS which matches 'argv'
+array size. The maximum allowed array index is therefore argc-1.
+
+This fix will leave items in argv non-NULL-terminated, so explicitly
+NULL the formerly last entry after shifting.
+
+Looks like a day-1 bug. Interestingly, this neither triggered ASAN nor
+valgrind. Yet adding debug output printing argv entries being copied
+did.
+
+Fixes: 1e6e8bd9a62aa ("Third stage to ipset-5")
+Signed-off-by: Phil Sutter <phil@nwl.cc>
+Signed-off-by: Jozsef Kadlecsik <kadlec@netfilter.org>
+--- a/lib/ipset.c
++++ b/lib/ipset.c
+@@ -343,9 +343,9 @@ ipset_shift_argv(int *argc, char *argv[], int from)
+ 
+ 	assert(*argc >= from + 1);
+ 
+-	for (i = from + 1; i <= *argc; i++)
++	for (i = from + 1; i < *argc; i++)
+ 		argv[i-1] = argv[i];
+-	(*argc)--;
++	argv[--(*argc)] = NULL;
+ 	return;
+ }
+ 
+-- 
+cgit v1.2.3

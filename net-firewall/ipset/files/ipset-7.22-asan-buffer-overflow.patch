@@ -1,0 +1,52 @@
+https://git.netfilter.org/ipset/commit/?id=f1bcacf5eeb8620ea684524e1ce9c3951a77f1f9
+
+From f1bcacf5eeb8620ea684524e1ce9c3951a77f1f9 Mon Sep 17 00:00:00 2001
+From: Phil Sutter <phil@nwl.cc>
+Date: Thu, 27 Jun 2024 10:18:16 +0200
+Subject: lib: data: Fix for global-buffer-overflow warning by ASAN
+
+After compiling with CFLAGS="-fsanitize=address -g", running the
+testsuite triggers the following warning:
+
+| ipmap: Range: Check syntax error: missing range/from-to: FAILED
+| Failed test: ../src/ipset 2>.foo.err -N test ipmap
+| =================================================================
+| ==4204==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55a21e77172a at pc 0x7f1ef246f2a6 bp 0x7fffed8f4f40 sp 0x7fffed8f46e8
+| READ of size 32 at 0x55a21e77172a thread T0
+|     #0 0x7f1ef246f2a5 in __interceptor_memcpy /var/tmp/portage/sys-devel/gcc-13.2.1_p20231014/work/gcc-13-20231014/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:899
+|     #1 0x55a21e758bf6 in ipset_strlcpy /home/n0-1/git/ipset/lib/data.c:119
+|     #2 0x55a21e758bf6 in ipset_data_set /home/n0-1/git/ipset/lib/data.c:349
+|     #3 0x55a21e75ee2f in ipset_parse_typename /home/n0-1/git/ipset/lib/parse.c:1819
+|     #4 0x55a21e754119 in ipset_parser /home/n0-1/git/ipset/lib/ipset.c:1205
+|     #5 0x55a21e752cef in ipset_parse_argv /home/n0-1/git/ipset/lib/ipset.c:1344
+|     #6 0x55a21e74ea45 in main /home/n0-1/git/ipset/src/ipset.c:38
+|     #7 0x7f1ef224cf09  (/lib64/libc.so.6+0x23f09)
+|     #8 0x7f1ef224cfc4 in __libc_start_main (/lib64/libc.so.6+0x23fc4)
+|     #9 0x55a21e74f040 in _start (/home/n0-1/git/ipset/src/ipset+0x1d040)
+|
+| 0x55a21e77172a is located 54 bytes before global variable '*.LC1' defined in 'ipset_bitmap_ip.c' (0x55a21e771760) of size 19
+|   '*.LC1' is ascii string 'IP|IP/CIDR|FROM-TO'
+| 0x55a21e77172a is located 0 bytes after global variable '*.LC0' defined in 'ipset_bitmap_ip.c' (0x55a21e771720) of size 10
+|   '*.LC0' is ascii string 'bitmap:ip'
+
+Fix this by avoiding 'src' array overstep in ipset_strlcpy(): In
+contrast to strncpy(), memcpy() does not respect NUL-chars in input but
+stubbornly reads as many bytes as specified.
+
+Fixes: a7432ba786ca4 ("Workaround misleading -Wstringop-truncation warning")
+Signed-off-by: Phil Sutter <phil@nwl.cc>
+Signed-off-by: Jozsef Kadlecsik <kadlec@netfilter.org>
+--- a/lib/data.c
++++ b/lib/data.c
+@@ -111,6 +111,9 @@ ipset_strlcpy(char *dst, const char *src, size_t len)
+ 	assert(dst);
+ 	assert(src);
+ 
++	if (strlen(src) < len)
++		len = strlen(src) + 1;
++
+ 	memcpy(dst, src, len);
+ 	dst[len - 1] = '\0';
+ }
+-- 
+cgit v1.2.3
