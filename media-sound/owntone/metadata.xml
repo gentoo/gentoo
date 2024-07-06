@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>grobian@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="chromecast">build and install Chromecast support</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">owntone/owntone-server</remote-id>
+  </upstream>
+</pkgmetadata>
