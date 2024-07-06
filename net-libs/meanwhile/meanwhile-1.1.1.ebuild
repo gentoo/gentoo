@@ -31,6 +31,8 @@ PATCHES=(
 
 src_prepare() {
 	default
+	# bug #935514
+	sed -i -e "s|-g -O0 -Weverything||g" configure.ac || die
 	eautoreconf
 }
 
