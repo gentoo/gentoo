@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/konsole/ https://konsole.kde.org"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE=""
 
 DEPEND="
