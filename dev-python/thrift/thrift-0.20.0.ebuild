@@ -26,3 +26,10 @@ distutils_enable_tests unittest
 python_test() {
 	eunittest test
 }
+
+src_install() {
+	distutils-r1_src_install
+	# avoid file collision with dev-libs/thrift (bug #933272)
+	mv "${D}"/usr/share/doc/${P}/README.md \
+		"${D}"/usr/share/doc/${P}/ReadMe.md || die
+}
