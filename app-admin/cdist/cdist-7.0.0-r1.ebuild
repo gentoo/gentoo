@@ -3,9 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
-
-DISTUTILS_USE_SETUPTOOLS=no
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1
 
@@ -18,7 +17,9 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 
-distutils_enable_sphinx docs/src dev-python/sphinx-rtd-theme
+distutils_enable_sphinx docs/src \
+	dev-python/sphinx-rtd-theme \
+	dev-python/six
 distutils_enable_tests unittest
 
 python_prepare_all() {
