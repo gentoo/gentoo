@@ -62,9 +62,12 @@ src_test() {
 	[[ ${EUID} == 0 ]] && memcached_opts+=( -u portage )
 	memcached "${memcached_opts[@]}" || die "Can't start memcached test server"
 
-	local exit_status
-	php-ext-source-r3_src_test
-	exit_status=$?
+	# make test fails to pull in igbinary.so, so we run it ourselves with the correct setting strings
+	local slot
+	for slot in $(php_get_slots); do
+		php_init_slot_env "${slot}"
+		NO_INTERACTION="yes" "${PHPCLI}" run-tests.php -n -d "extension=${EXT_DIR}/igbinary.so" -d "extension=modules/memcached.so" || die
+	done
 
 	kill "$(<"${T}/memcached.pid")"
 	return ${exit_status}
