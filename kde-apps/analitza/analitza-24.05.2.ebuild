@@ -12,7 +12,7 @@ DESCRIPTION="KDE library for mathematical features"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE="eigen"
 
 DEPEND="
