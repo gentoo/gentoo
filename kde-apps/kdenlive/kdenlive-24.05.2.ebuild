@@ -16,7 +16,7 @@ HOMEPAGE="https://kdenlive.org/en/"
 
 LICENSE="GPL-3"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE="gles2-only semantic-desktop v4l"
 
 RESTRICT="test" # segfaults, bug 684132
