@@ -194,6 +194,10 @@ REQUIRED_USE="
 	xv? ( X )"
 RESTRICT="faac? ( bindist )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-incompatible-pointers.patch"
+)
+
 pkg_setup() {
 	if [[ ${PV} == *9999* ]]; then
 		elog
