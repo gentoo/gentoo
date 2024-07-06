@@ -1,0 +1,82 @@
+From b8d07e40d66f12ac28aab710cfeb181bf25bc59a Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Mon, 1 Jul 2024 10:36:09 +0200
+Subject: [PATCH 1/5] impl-node: fix required state for async driver nodes
+
+When the node activation.required was incremented because it was a
+driver, only decrement it in that case, regardless of the current driver
+state of the node.
+
+This fixes the case of KODI where the required field gets out of sync
+and things become unschedulable.
+
+Fixes #4087
+---
+ src/pipewire/impl-node.c | 22 ++++++++++++++--------
+ src/pipewire/private.h   |  1 +
+ 2 files changed, 15 insertions(+), 8 deletions(-)
+
+diff --git a/src/pipewire/impl-node.c b/src/pipewire/impl-node.c
+index 12629ee64..4def52897 100644
+--- a/src/pipewire/impl-node.c
++++ b/src/pipewire/impl-node.c
+@@ -112,13 +112,17 @@ static inline void activate_target(struct pw_impl_node *node, struct pw_node_tar
+ {
+ 	struct pw_node_activation_state *state = &t->activation->state[0];
+ 	if (!t->active) {
+-		if ((!node->async || node->driving) && !node->exported) {
+-			SPA_ATOMIC_INC(state->required);
+-			SPA_ATOMIC_INC(state->pending);
++		if (!node->async || node->driving) {
++			if (!node->exported) {
++				SPA_ATOMIC_INC(state->required);
++				SPA_ATOMIC_INC(state->pending);
++			}
+ 		}
++		t->active_driving = node->driving;
+ 		t->active = true;
+-		pw_log_debug("%p: target state:%p id:%d pending:%d/%d",
+-				node, state, t->id, state->pending, state->required);
++		pw_log_debug("%p: target state:%p id:%d pending:%d/%d %d:%d:%d",
++				node, state, t->id, state->pending, state->required,
++				node->async, node->driving, node->exported);
+ 	}
+ }
+ 
+@@ -126,7 +130,7 @@ static inline void deactivate_target(struct pw_impl_node *node, struct pw_node_t
+ {
+ 	if (t->active) {
+ 		struct pw_node_activation_state *state = &t->activation->state[0];
+-		if (!node->async || node->driving) {
++		if (!node->async || t->active_driving) {
+ 			/* the driver copies the required to the pending state
+ 			 * so first try to resume the node and then decrement the
+ 			 * required state. This way we either resume with the old value
+@@ -137,8 +141,10 @@ static inline void deactivate_target(struct pw_impl_node *node, struct pw_node_t
+ 				SPA_ATOMIC_DEC(state->required);
+ 		}
+ 		t->active = false;
+-		pw_log_debug("%p: target state:%p id:%d pending:%d/%d trigger:%"PRIu64,
+-				node, state, t->id, state->pending, state->required, trigger);
++		t->active_driving = false;
++		pw_log_debug("%p: target state:%p id:%d pending:%d/%d %d:%d:%d trigger:%"PRIu64,
++				node, state, t->id, state->pending, state->required,
++				node->async, node->driving, node->exported, trigger);
+ 	}
+ }
+ 
+diff --git a/src/pipewire/private.h b/src/pipewire/private.h
+index 8c01fe8d5..25af677ac 100644
+--- a/src/pipewire/private.h
++++ b/src/pipewire/private.h
+@@ -541,6 +541,7 @@ struct pw_node_target {
+ 	int fd;
+ 	void (*trigger)(struct pw_node_target *t, uint64_t nsec);
+ 	unsigned int active:1;
++	unsigned int active_driving:1;
+ 	unsigned int added:1;
+ };
+ 
+-- 
+2.45.2
+
