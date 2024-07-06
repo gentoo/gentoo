@@ -39,6 +39,9 @@ python_test() {
 	local EPYTEST_DESELECT=(
 		# requires baize
 		tests/test_asgi.py::test_baize_stream_response
+		# requires starlette
+		tests/test_asgi.py::test_starlette_stream_response
+		tests/test_asgi.py::test_starlette_base_http_middleware
 	)
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
