@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 
 inherit distutils-r1
 
@@ -22,6 +22,8 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
+# https://bugs.gentoo.org/931325
+RESTRICT="test"
 
 RDEPEND="
 	>=dev-python/csscompressor-0.9.5[${PYTHON_USEDEP}]
