@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/dolphin/ https://userbase.kde.org/Dolphin"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE="activities semantic-desktop telemetry"
 
 # slot op: Uses Qt::GuiPrivate for qtx11extras_p.h
