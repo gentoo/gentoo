@@ -19,7 +19,6 @@ HOMEPAGE="
 LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE=""
 
 DEPEND="
 	sci-mathematics/pari:=
@@ -30,6 +29,11 @@ RDEPEND="
 BDEPEND="
 	>=dev-python/cython-3.0.0[${PYTHON_USEDEP}]
 "
+
+PATCHES=(
+	# https://github.com/sagemath/cysignals/pull/204
+	"${FILESDIR}/${P}-helper.patch"
+)
 
 python_test(){
 	local -x PATH="${BUILD_DIR}/scripts:${PATH}"

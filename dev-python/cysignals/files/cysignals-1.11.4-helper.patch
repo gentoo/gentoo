@@ -1,0 +1,85 @@
+From 2abd7ef94775b3320b6f1954b55168e06da0e6b3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 6 Jul 2024 13:06:49 +0200
+Subject: [PATCH] Install cysignals-CSI-helper as package data for better
+ portability
+
+Rather than installing `cysignals-CSI-helper.py` into a `share`
+directory and then trying to figure out the correct path to it, install
+it as Python package data and use the standard `importlib.resources`
+API to access it.  For Python versions older than 3.9,
+the `importlib_resources` backport is used instead.
+
+Fixes #200
+---
+ setup.py                                      |  4 +++-
+ .../cysignals-CSI-helper.py                   |  0
+ src/scripts/cysignals-CSI                     | 20 ++++++++++---------
+ 3 files changed, 14 insertions(+), 10 deletions(-)
+ rename src/{scripts => cysignals}/cysignals-CSI-helper.py (100%)
+
+diff --git a/setup.py b/setup.py
+index 7953170..7154a4a 100755
+--- a/setup.py
++++ b/setup.py
+@@ -215,7 +215,6 @@ setup(
+     packages=["cysignals"],
+     package_dir={"": "src"},
+     package_data={"cysignals": ["*.pxd", "*.h"]},
+-    data_files=[(opj("share", "cysignals"), [opj("src", "scripts", "cysignals-CSI-helper.py")])],
+     scripts=glob(opj("src", "scripts", "cysignals-CSI")),
+     cmdclass=dict(
+         configure=configure,
+@@ -223,4 +222,7 @@ setup(
+         build_ext=build_ext,
+         bdist_egg=no_egg
+     ),
++    install_requires=[
++        "importlib_resources; python_version < '3.9'",
++    ],
+ )
+diff --git a/src/scripts/cysignals-CSI-helper.py b/src/cysignals/cysignals-CSI-helper.py
+similarity index 100%
+rename from src/scripts/cysignals-CSI-helper.py
+rename to src/cysignals/cysignals-CSI-helper.py
+diff --git a/src/scripts/cysignals-CSI b/src/scripts/cysignals-CSI
+index dd8b4e6..3896dca 100755
+--- a/src/scripts/cysignals-CSI
++++ b/src/scripts/cysignals-CSI
+@@ -41,6 +41,11 @@ from argparse import ArgumentParser
+ from datetime import datetime
+ from distutils.spawn import find_executable
+ 
++if sys.version_info >= (3, 9):
++    import importlib.resources as importlib_resources
++else:
++    import importlib_resources
++
+ 
+ def pid_exists(pid):
+     """
+@@ -65,15 +70,12 @@ def gdb_commands(pid, color):
+     cmds += b'import sys; sys.stdout.flush()\n'
+     cmds += b'end\n'
+     cmds += b'bt full\n'
+-    cysignals_share = os.path.join(os.path.dirname(sys.argv[0]), '..',
+-                                   'share', 'cysignals')
+-    script = os.path.join(cysignals_share, 'cysignals-CSI-helper.py')
+-    with open(script, 'rb') as f:
+-        cmds += b'python\n'
+-        cmds += b'color = %r; ' % color
+-        cmds += b'sys_path = %r; ' % sys.path
+-        cmds += f.read()
+-        cmds += b'end\n'
++    script = importlib_resources.files('cysignals') / 'cysignals-CSI-helper.py'
++    cmds += b'python\n'
++    cmds += b'color = %r; ' % color
++    cmds += b'sys_path = %r; ' % sys.path
++    cmds += script.read_bytes()
++    cmds += b'end\n'
+     cmds += b'detach inferior 1\n'
+     cmds += b'quit\n'
+     return cmds
+-- 
+2.45.2
+
