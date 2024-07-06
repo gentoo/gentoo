@@ -31,8 +31,9 @@ src_prepare() {
 	sed -i -e "s/docsdir/#docsdir/g" \
 		-e "s/docs_/#docs_/g" Makefile.am || die
 
-	# fix build for MUSL (bug #832235)
+	# fix build for MUSL (bugs #832235, 935544)
 	if use elibc_musl ; then
+		sed -i -e "s/zstr.h>/zstr.h>\\n#include <libunwind.h>/" src/zbfd.c || die
 		sed -i -e "s/ backtrace(/ unw_backtrace(/" src/zbfd.c || die
 	fi
 	eautoreconf
