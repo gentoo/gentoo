@@ -98,22 +98,15 @@ src_configure() {
 src_install() {
 	cargo_src_install
 
-	newbashcomp - rg <<-EOF
-	$("$(cargo_target_dir)"/rg --generate complete-bash)
-	EOF
+	local gen=( "$(cargo_target_dir)"/rg --generate )
+	newbashcomp - rg < <( "${gen[@]}" complete-bash || die )
 
 	insinto /usr/share/fish/vendor_completions.d
-	newins - rg.fish <<-EOF
-	$("$(cargo_target_dir)"/rg --generate complete-fish)
-	EOF
+	newins - rg.fish < <( "${gen[@]}" complete-fish || die )
 
 	insinto /usr/share/zsh/site-functions
-	newins - _rg <<-EOF
-	$("$(cargo_target_dir)"/rg --generate complete-zsh)
-	EOF
+	newins - _rg < <( "${gen[@]}" complete-zsh || die )
 
 	dodoc CHANGELOG.md FAQ.md GUIDE.md README.md
-	newman - rg.1 <<-EOF
-	$("$(cargo_target_dir)"/rg --generate man)
-	EOF
+	newman - rg.1 < <( "${gen[@]}" man || die )
 }
