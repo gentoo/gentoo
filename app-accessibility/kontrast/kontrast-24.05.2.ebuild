@@ -13,7 +13,7 @@ HOMEPAGE="https://apps.kde.org/kontrast/"
 
 LICENSE="GPL-3+"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE=""
 
 DEPEND="
