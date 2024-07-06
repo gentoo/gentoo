@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit dune toolchain-funcs
 
@@ -12,20 +12,20 @@ SRC_URI="https://gitlab.com/irill/${PN}/-/archive/v${PV}/${MYP}.tar.bz2"
 
 S="${WORKDIR}"/${MYP}
 
-LICENSE="LGPL-3"
+LICENSE="LGPL-3+"
 SLOT="0/${PV}"
-KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+ocamlopt llvm-libunwind test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-lang/ocaml-3.12:=[ocamlopt?]
 	dev-ml/extlib:=
 	dev-ml/findlib:=
 	dev-libs/glib:2
 	llvm-libunwind? ( sys-libs/llvm-libunwind:= )
 	!llvm-libunwind? ( sys-libs/libunwind:= )
 	sys-libs/ncurses:=
+	app-arch/zstd
 "
 DEPEND="${RDEPEND}
 	test? ( dev-ml/ounit2 )
@@ -42,13 +42,33 @@ src_prepare() {
 	sed -i \
 		-e 's|make|$(MAKE)|g' \
 		Makefile || die
-	sed -i \
-		-e 's|-lncurses|$(shell ${PKG_CONFIG} --libs ncurses glib-2.0) -lunwind|g' \
-		-e "s|ar r|$(tc-getAR) r|g" \
-		c-lib/Makefile || die
-	sed -i \
-		-e 's|-lcurses|$(shell ${PKG_CONFIG} --libs ncurses glib-2.0) -lunwind|g' \
-		c-lib/Makefile.variants || die
+
+	if has_version ">=dev-lang/ocaml-5" ; then
+		sed -i \
+			-e 's|-lncurses|$(shell ${PKG_CONFIG} --libs ncurses glib-2.0) -lunwind -lzstd|g' \
+			-e "s|ar r|$(tc-getAR) r|g" \
+			c-lib/Makefile || die
+		sed -i \
+			-e 's|-lcurses|$(shell ${PKG_CONFIG} --libs ncurses glib-2.0) -lunwind -lzstd|g' \
+			c-lib/Makefile.variants || die
+		if use ocamlopt ; then
+			sed -i \
+				-e 's|-lunix|-lunixnat|g' \
+				c-lib/Makefile || die
+		else
+			sed -i \
+				-e 's|-lunix|-lunixbyt|g' \
+				c-lib/Makefile || die
+		fi
+	else
+		sed -i \
+			-e 's|-lncurses|$(shell ${PKG_CONFIG} --libs ncurses glib-2.0) -lunwind|g' \
+			-e "s|ar r|$(tc-getAR) r|g" \
+			c-lib/Makefile || die
+		sed -i \
+			-e 's|-lcurses|$(shell ${PKG_CONFIG} --libs ncurses glib-2.0) -lunwind|g' \
+			c-lib/Makefile.variants || die
+	fi
 
 	tc-export CC PKG_CONFIG
 
