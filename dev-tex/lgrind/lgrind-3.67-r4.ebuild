@@ -21,6 +21,9 @@ KEYWORDS="amd64 ppc ~sparc x86"
 
 IUSE="examples"
 
+# Depend on latexextra for hypdoc.sty, see https://bugs.gentoo.org/928305
+DEPEND="dev-texlive/texlive-latexextra"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.67-fgets.patch
 	"${FILESDIR}"/${PN}-3.67-fix-return-with-no-value.patch
