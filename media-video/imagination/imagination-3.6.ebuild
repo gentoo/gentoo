@@ -24,6 +24,10 @@ RDEPEND="${DEPEND}
 	media-video/ffmpeg"
 BDEPEND="dev-util/intltool"
 
+# restricting tests as they're no practical tests
+# to run ayway, see bug #935691
+RESTRICT="test"
+
 PATCHES=(
 	"${FILESDIR}"/${P}-cflags.patch
 	"${FILESDIR}"/${PN}-3.0-fix-htmldir.patch
