@@ -544,14 +544,6 @@ sci-libs/h5part
 # Removal on 2024-07-09.  Bugs #933241, #889912, #880267, #562822, #930500.
 net-mail/gnubiff
 
-# Sam James <sam@gentoo.org> (2024-05-28)
-# Breaks reverse dependencies like protobuf-c (bug #932857) and protobuf-26.1
-# itself isn't compatible with this abseil-cpp version (bug #932848).
-# In addition, we still need to establish a new approach like a virtual
-# for protobuf because of its abseil dependency - see the discussion in bug #912819.
-~dev-libs/protobuf-26.1
-~dev-cpp/abseil-cpp-20240116.2
-
 # Sam James <sam@gentoo.org> (2024-04-28)
 # Masked for testing. Tracker bug: bug #930805.
 >=sys-libs/ncurses-6.5
