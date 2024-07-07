@@ -3,76 +3,28 @@
 
 EAPI=8
 
+# Default implementation currently is upb, which doesn't match dev-libs/protobuf
+# https://github.com/protocolbuffers/protobuf/blob/main/python/README.md#implementation-backends
+
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..13} )
+PYPI_PN="protobuf"
 
-inherit distutils-r1
-
-PARENT_PN="${PN/-python/}"
-PARENT_PV="$(ver_cut 2-)"
-
-[[ "${PV}" == *9999 ]] && PARENT_PV="28.0"
-
-PARENT_P="${PARENT_PN}-${PARENT_PV}"
+inherit distutils-r1 pypi
 
 DESCRIPTION="Google's Protocol Buffers - Python bindings"
 HOMEPAGE="
-	https://developers.google.com/protocol-buffers/
+	https://protobuf.dev/
 	https://pypi.org/project/protobuf/
 "
 
-if [[ "${PV}" == *9999 ]]; then
-	inherit git-r3
-
-	EGIT_REPO_URI="https://github.com/protocolbuffers/protobuf.git"
-	EGIT_SUBMODULES=()
-	EGIT_CHECKOUT_DIR="${WORKDIR}/${PARENT_P}"
-else
-	SRC_URI="
-		https://github.com/protocolbuffers/protobuf/archive/v${PARENT_PV}.tar.gz
-			-> ${PARENT_P}.gh.tar.gz
-	"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
-fi
-
-S="${WORKDIR}/${PARENT_P}/python"
+# Rename sdist to avoid conflicts with dev-libs/protobuf
+SRC_URI="
+	$(pypi_sdist_url)
+		-> ${P}.tar.gz
+"
 
 LICENSE="BSD"
-SLOT="0/${PARENT_PV}.0"
-
-DEPEND="${PYTHON_DEPS}
-"
-RDEPEND="
-	dev-libs/protobuf:0/${PARENT_PV}.0
-"
-
-distutils_enable_tests setup.py
-
-# Same than PATCHES but from repository's root directory,
-# please see function `python_prepare_all` below.
-# Simplier for users IMHO.
-PARENT_PATCHES=(
-)
-
-# Here for patches within "python/" subdirectory.
-PATCHES=(
-)
-
-python_prepare_all() {
-	pushd "${WORKDIR}/${PARENT_P}" > /dev/null || die
-	[[ -n "${PARENT_PATCHES[*]}" ]] && eapply "${PARENT_PATCHES[@]}"
-	eapply_user
-	popd > /dev/null || die
-
-	distutils-r1_python_prepare_all
-}
-
-src_configure() {
-	DISTUTILS_ARGS=( --cpp_implementation )
-}
-
-python_compile() {
-	distutils-r1_python_compile
-	find "${BUILD_DIR}/install" -name "*.pth" -type f -delete || die
-}
+SLOT="0/$(ver_cut 1-3)"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
