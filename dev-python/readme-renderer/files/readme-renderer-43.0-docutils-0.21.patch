@@ -1,0 +1,70 @@
+From fedd830cdd2fdc7311b6b69b307412ba3d3f011c Mon Sep 17 00:00:00 2001
+From: Kurt McKee <contactme@kurtmckee.org>
+Date: Sat, 29 Jun 2024 17:56:36 -0500
+Subject: [PATCH 4/5] Update HTML test files that render differently in newer
+ docutils
+
+---
+ tests/fixtures/test_rst_bibtex.html   | 2 +-
+ tests/fixtures/test_rst_contents.html | 2 +-
+ tests/fixtures/test_rst_linkify.html  | 8 ++++++--
+ 3 files changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/tests/fixtures/test_rst_bibtex.html b/tests/fixtures/test_rst_bibtex.html
+index d9048e7..0f312a7 100644
+--- a/tests/fixtures/test_rst_bibtex.html
++++ b/tests/fixtures/test_rst_bibtex.html
+@@ -1,2 +1,2 @@
+ <pre><code><span class="nc">@article</span><span class="p">{</span><span class="nl">the_impact_of_pygments_docutils_config_and_html5</span><span class="p">,</span><span class="w">
+-  </span><span class="na">year</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><s>{2022}</s><span class="p">,</span></code></pre>
++  </span><span class="na">year</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{2022}</span><span class="p">,</span></code></pre>
+diff --git a/tests/fixtures/test_rst_contents.html b/tests/fixtures/test_rst_contents.html
+index 48a5556..445f610 100644
+--- a/tests/fixtures/test_rst_contents.html
++++ b/tests/fixtures/test_rst_contents.html
+@@ -1,5 +1,5 @@
+ <nav class="contents" id="contents">
+-<p class="topic-title">Contents</p>
++<p class="topic-title"><a href="#top" rel="nofollow">Contents</a></p>
+ <ul class="simple">
+ <li><p><a href="#features" id="toc-entry-1" rel="nofollow">Features</a></p></li>
+ <li><p><a href="#installation" id="toc-entry-2" rel="nofollow">Installation</a></p></li>
+diff --git a/tests/fixtures/test_rst_linkify.html b/tests/fixtures/test_rst_linkify.html
+index 5956925..f796a70 100644
+--- a/tests/fixtures/test_rst_linkify.html
++++ b/tests/fixtures/test_rst_linkify.html
+@@ -1,5 +1,9 @@
+-<a href="https://travis-ci.org/tulsawebdevs/django-multi-gtfs" rel="nofollow"><img alt="https://travis-ci.org/tulsawebdevs/django-multi-gtfs.svg?branch=master" src="https://travis-ci.org/tulsawebdevs/django-multi-gtfs.svg?branch=master"></a>
+-<a href="https://coveralls.io/github/tulsawebdevs/django-multi-gtfs" rel="nofollow"><img alt="https://coveralls.io/repos/github/tulsawebdevs/django-multi-gtfs/badge.svg?branch=django19" src="https://coveralls.io/repos/github/tulsawebdevs/django-multi-gtfs/badge.svg?branch=django19"></a>
++<a href="https://travis-ci.org/tulsawebdevs/django-multi-gtfs" rel="nofollow">
++<img alt="https://travis-ci.org/tulsawebdevs/django-multi-gtfs.svg?branch=master" src="https://travis-ci.org/tulsawebdevs/django-multi-gtfs.svg?branch=master">
++</a>
++<a href="https://coveralls.io/github/tulsawebdevs/django-multi-gtfs" rel="nofollow">
++<img alt="https://coveralls.io/repos/github/tulsawebdevs/django-multi-gtfs/badge.svg?branch=django19" src="https://coveralls.io/repos/github/tulsawebdevs/django-multi-gtfs/badge.svg?branch=django19">
++</a>
+ <p><strong>multigtfs</strong> is an <a href="http://choosealicense.com/licenses/apache/" rel="nofollow">Apache 2.0</a>-licensed Django app that supports importing
+ and exporting of GTFS feeds.  All features of the <a href="https://developers.google.com/transit/gtfs/reference" rel="nofollow">June 20, 2012 reference</a>
+ are supported, including <a href="https://developers.google.com/transit/gtfs/changes#RevisionHistory" rel="nofollow">all changes</a> up to February 17, 2014.
+
+From 406d81e84f84393be35c35289ebab64a179f4532 Mon Sep 17 00:00:00 2001
+From: Kurt McKee <contactme@kurtmckee.org>
+Date: Mon, 1 Jul 2024 08:42:52 -0500
+Subject: [PATCH 5/5] Feedback: Remove `<s>` from the list of allowed HTML tags
+
+---
+ readme_renderer/clean.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/readme_renderer/clean.py b/readme_renderer/clean.py
+index 6cd5972..a123044 100644
+--- a/readme_renderer/clean.py
++++ b/readme_renderer/clean.py
+@@ -26,7 +26,7 @@
+     "br", "caption", "cite", "col", "colgroup", "dd", "del", "details", "div",
+     "dl", "dt", "h1", "h2", "h3", "h4", "h5", "h6", "hr", "img", "p", "pre",
+     "span", "sub", "summary", "sup", "table", "tbody", "td", "th", "thead",
+-    "tr", "tt", "kbd", "var", "input", "section", "aside", "nav", "s", "figure",
++    "tr", "tt", "kbd", "var", "input", "section", "aside", "nav", "figure",
+     "figcaption", "picture",
+ }
+ 
