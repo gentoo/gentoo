@@ -134,6 +134,8 @@ BDEPEND="
 PATCHES=(
 	# Change favorites defaults, bug #479918
 	"${FILESDIR}"/40.0-defaults.patch
+	# backport fix for strict-aliasing violation with USE=pipewire
+	"${FILESDIR}"/37e49e8a22c223b030297f9607bdb748c219e060.patch
 )
 
 src_prepare() {
