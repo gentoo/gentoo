@@ -381,7 +381,7 @@ pkg_postinst() {
 	read -r old_ver <<<"${REPLACING_VERSIONS}"
 	if [[ ! $old_ver ]]; then
 		:
-	elif ver_test "$old_ver" -ge "5.2" && ver_test "$old_ver" -ge "5.2_p26-r7"; then
+	elif ver_test "$old_ver" -ge "5.2" && ver_test "$old_ver" -ge "5.2_p26-r8"; then
 		return
 	fi
 
@@ -396,11 +396,11 @@ PROMPT_COMMAND variable are now advised to append their commands like so:
 PROMPT_COMMAND+=('custom command goes here')
 
 Gentoo no longer defaults to having bash set the window title in the case
-that the terminal is controlled by sshd(8), unless screen or tmux are in use
-or the terminal reliably supports saving and restoring the title (as
-alacritty and foot do). Those wanting to set the title unconditionally may
-adjust ~/.bashrc - or create a custom /etc/bash/bashrc.d drop-in - to set
-PROMPT_COMMMAND like so:
+that the terminal is controlled by sshd(8), unless screen is launched on the
+remote side or the terminal reliably supports saving and restoring the title
+(as alacritty, foot and tmux do). Those wanting for the title to be set
+regardless may adjust ~/.bashrc - or create a custom /etc/bash/bashrc.d
+drop-in - to set PROMPT_COMMMAND like so:
 
 PROMPT_COMMAND=(genfun_set_win_title)
 
