@@ -13,6 +13,9 @@ HOMEPAGE="
 	https://pypi.org/project/mcbootflash/
 	https://github.com/bessman/mcbootflash/
 "
+SRC_URI+="
+	https://github.com/bessman/mcbootflash/raw/eb940f0324eb0c6822a0feca48449f5191cf5a00/tests/test_mcbootflash.jsonl
+"
 
 LICENSE="MIT"
 SLOT="0"
@@ -29,6 +32,13 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+src_unpack() {
+	default
+	# sigh, pytest-reserial arbitrarily changed output format
+	# without caring for backwards compatibility
+	cp "${DISTDIR}"/test_mcbootflash.jsonl "${S}"/tests/ || die
+}
 
 python_test() {
 	epytest --replay
