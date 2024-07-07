@@ -1,0 +1,19 @@
+https://github.com/abseil/abseil-cpp/issues/1528
+
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Sat, 7 Jul 2024 01:53:19 +0200
+Subject: [PATCH] remove abseil::random_internal_mock_overload_set
+See-Also: https://bugs.gentoo.org/935417
+
+diff --git a/absl/random/CMakeLists.txt b/absl/random/CMakeLists.txt
+index bd363d8..7692a35 100644
+--- a/absl/random/CMakeLists.txt
++++ b/absl/random/CMakeLists.txt
+@@ -112,7 +112,6 @@ absl_cc_library(
+     absl::raw_logging_internal
+     absl::random_distributions
+     absl::random_internal_distribution_caller
+-    absl::random_internal_mock_overload_set
+     absl::random_random
+     absl::strings
+     absl::span
