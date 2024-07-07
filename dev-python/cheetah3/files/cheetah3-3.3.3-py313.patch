@@ -1,0 +1,63 @@
+From ee2739b73bafbcb9a8cc5511d5e03e6b0d9bced1 Mon Sep 17 00:00:00 2001
+From: Oleg Broytman <phd@phdru.name>
+Date: Sat, 22 Jun 2024 05:47:51 +0300
+Subject: [PATCH] Fix(NameMapper): Fix mapping test
+
+Python 3.13 brought a new mapping type `FrameLocalsProxy`.
+
+Fixes: #60.
+
+[skip ci]
+---
+ Cheetah/NameMapper.py | 8 +++++++-
+ docs/news.rst         | 3 +++
+ 2 files changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/Cheetah/NameMapper.py b/Cheetah/NameMapper.py
+index 7c09e37d..32c1f366 100755
+--- a/Cheetah/NameMapper.py
++++ b/Cheetah/NameMapper.py
+@@ -140,8 +140,8 @@
+ been compiled or falls back to the Python version if not.
+ """
+ 
+-import inspect
+ from pprint import pformat
++import inspect
+ import sys
+ 
+ from .compat import PY2
+@@ -149,6 +149,8 @@
+     from collections import Mapping
+ else:
+     from collections.abc import Mapping
++    if sys.version_info[:2] >= (3, 13):
++        from collections.abc import MutableMapping
+ 
+ _INCLUDE_NAMESPACE_REPR_IN_NOTFOUND_EXCEPTIONS = False
+ _ALLOW_WRAPPING_OF_NOTFOUND_EXCEPTIONS = True
+@@ -319,6 +321,10 @@ def __valueForName():
+         try:
+             if not frame:
+                 frame = inspect.stack()[1][0]
++            if sys.version_info[:2] >= (3, 13):
++                FrameLocalsProxy = frame.f_locals
++                if not isinstance(FrameLocalsProxy, Mapping):
++                    MutableMapping.register(type(FrameLocalsProxy))
+             key = name.split('.')[0]
+             for namespace in _namespaces(frame, searchList):
+                 if hasKey(namespace, key):
+diff --git a/docs/news.rst b/docs/news.rst
+index 8adf5806..78f6e5ff 100644
+--- a/docs/news.rst
++++ b/docs/news.rst
+@@ -15,6 +15,9 @@ Bug fixes:
+   - Fixed ``_namemapper.c``: Silent an error
+     from ``PyMapping_HasKeyString`` under Python 3.13+.
+ 
++  - Fixed mapping test in ``NameMapper.py``:
++    Python 3.13 brough a new mapping type ``FrameLocalsProxy``.
++
+ Tests:
+ 
+   - tox: Run tests under Python 3.13.
