@@ -207,19 +207,6 @@ tree-sitter-grammar_src_install() {
 
 		dolib.so "${WORKDIR}/${soname}"
 		dosym "${soname}" /usr/$(get_libdir)/lib${PN}$(get_libname)
-		# Install symlinks to grammars so that they can be found by NeoVim.
-		# /usr/$(get_libdir)/tree-sitter gets added to the NeoVim runtimepath.
-		# See neovim/runtime/doc/treesitter.txt for info.
-		keepdir /usr/$(get_libdir)/tree-sitter
-		dosym ../"${soname}" \
-			/usr/$(get_libdir)/tree-sitter/parser/${PN##tree-sitter-}$(get_libname)
-
-		# Install queries (e.g. highlight.scm) so that they can be found by NeoVim.
-		if [[ -d "${S}/../queries" ]]; then
-			keepdir /usr/share/tree-sitter
-			insinto /usr/share/tree-sitter
-			doins -r "${S}/../queries"
-		fi
 	fi
 
 	local binding
