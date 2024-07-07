@@ -1,0 +1,169 @@
+From a6cf1aa386067e26d582cc1d1e327787595c9f13 Mon Sep 17 00:00:00 2001
+From: Robert Edmonds <edmonds@users.noreply.github.com>
+Date: Wed, 20 Mar 2024 21:48:10 -0400
+Subject: [PATCH 01/11] FileGenerator::GenerateHeader(): Set
+ `min_header_version` unconditionally
+
+Previously, we were conditionally trying to set `min_header_version` to
+the lowest possible value, and relying on a "legacy" Google interface to
+determine the file descriptor's syntax version as part of that
+determination.
+
+Instead, simply bump the minimum version to 1003000 (1.3.0). This
+release was almost 7 years ago. In practice protobuf-c users should not
+be shipping pre-compiled .pb-c.c/.pb-c.h files, anyway.
+---
+ protoc-c/c_file.cc | 9 +--------
+ 1 file changed, 1 insertion(+), 8 deletions(-)
+
+diff --git a/protoc-c/c_file.cc b/protoc-c/c_file.cc
+index ca0ad34e..c6d8a240 100644
+--- a/protoc-c/c_file.cc
++++ b/protoc-c/c_file.cc
+@@ -117,14 +117,7 @@ FileGenerator::~FileGenerator() {}
+ void FileGenerator::GenerateHeader(io::Printer* printer) {
+   std::string filename_identifier = FilenameIdentifier(file_->name());
+ 
+-  int min_header_version = 1000000;
+-#if GOOGLE_PROTOBUF_VERSION >= 4023000
+-  if (FileDescriptorLegacy(file_).syntax() == FileDescriptorLegacy::SYNTAX_PROTO3) {
+-#else
+-  if (file_->syntax() == FileDescriptor::SYNTAX_PROTO3) {
+-#endif
+-    min_header_version = 1003000;
+-  }
++  const int min_header_version = 1003000;
+ 
+   // Generate top of header.
+   printer->Print(
+
+From ee3d9e5423c93ee6b828fdda8e7fef13a77634eb Mon Sep 17 00:00:00 2001
+From: Robert Edmonds <edmonds@users.noreply.github.com>
+Date: Wed, 20 Mar 2024 22:25:54 -0400
+Subject: [PATCH 02/11] Reimplement FieldSyntax() to maximize compatibility
+ across protobuf versions
+
+Recent versions of Google protobuf have broken the interfaces for
+determining the syntax version of a .proto file. The current protobuf-c
+1.5.0 release does not compile with Google protobuf 26.0 due to the most
+recentage breakage. There is a possible workaround involving the Google
+protobuf `FileDescriptorLegacy` class, which is documented as:
+
+// TODO Remove this deprecated API entirely.
+
+So we probably shouldn't rely on it.
+
+Instead, this commit obtains the `FileDescriptorProto` corresponding
+to the passed in `FieldDescriptor` and interrogates the `syntax` field
+directly. This is a single implementation with no version-specific
+workarounds. Hopefully this won't break in the next Google protobuf
+release.
+
+I tested the `FieldSyntax()` implementation in this commit across a
+number of different Google protobuf releases and found that it worked
+(`make && make check`) on all of them:
+
+- Google protobuf 3.6.1.3 (Ubuntu 20.04)
+- Google protobuf 3.12.4 (Ubuntu 22.04)
+- Google protobuf 3.21.12 (Debian 12 + Debian unstable)
+- Google protobuf 3.25.2 (Debian experimental)
+- Google protobuf 26.1-dev
+---
+ protoc-c/c_helpers.h | 24 ++++++++++++++----------
+ 1 file changed, 14 insertions(+), 10 deletions(-)
+
+diff --git a/protoc-c/c_helpers.h b/protoc-c/c_helpers.h
+index 062d330b..be28b601 100644
+--- a/protoc-c/c_helpers.h
++++ b/protoc-c/c_helpers.h
+@@ -70,10 +70,6 @@
+ #include <protobuf-c/protobuf-c.pb.h>
+ #include <google/protobuf/io/printer.h>
+ 
+-#if GOOGLE_PROTOBUF_VERSION >= 4023000
+-# include <google/protobuf/descriptor_legacy.h>
+-#endif
+-
+ namespace google {
+ namespace protobuf {
+ namespace compiler {
+@@ -173,13 +169,21 @@ struct NameIndex
+ int compare_name_indices_by_name(const void*, const void*);
+ 
+ // Return the syntax version of the file containing the field.
+-// This wrapper is needed to be able to compile against protobuf2.
+ inline int FieldSyntax(const FieldDescriptor* field) {
+-#if GOOGLE_PROTOBUF_VERSION >= 4023000
+-  return FileDescriptorLegacy(field->file()).syntax() == FileDescriptorLegacy::SYNTAX_PROTO3 ? 3 : 2;
+-#else
+-  return field->file()->syntax() == FileDescriptor::SYNTAX_PROTO3 ? 3 : 2;
+-#endif
++  auto proto = FileDescriptorProto();
++  field->file()->CopyTo(&proto);
++
++  if (proto.has_syntax()) {
++    auto syntax = proto.syntax();
++    assert(syntax == "proto2" || syntax == "proto3");
++    if (syntax == "proto2") {
++      return 2;
++    } else if (syntax == "proto3") {
++      return 3;
++    }
++  }
++
++  return 2;
+ }
+ 
+ // Work around changes in protobuf >= 22.x without breaking compilation against
+
+From 2480f4d9d2fa97e5511ed0914ee529a344e969a7 Mon Sep 17 00:00:00 2001
+From: Robert Edmonds <edmonds@users.noreply.github.com>
+Date: Wed, 20 Mar 2024 22:43:30 -0400
+Subject: [PATCH 03/11] CGenerator: Protect against being invoked against
+ "edition" syntax .proto files
+
+The Google protobuf project is currently experimenting with a new syntax
+for .proto files called "editions". Since protobuf-c is a proto2/proto3
+compiler, after the previous commit reimplementing `FieldSyntax()`, the
+protobuf compiler will abort like this if presented with an "editions"
+syntax .proto file due to the safety check in `FieldSyntax()`:
+
+    $ protoc --experimental_editions --c_out=. test.proto
+    protoc-gen-c: ./protoc-c/c_helpers.h:178: int google::protobuf::compiler::c::FieldSyntax(const google::protobuf::FieldDescriptor*): Assertion `syntax == "proto2" || syntax == "proto3"' failed.
+    --c_out: protoc-gen-c: Plugin killed by signal 6.
+
+On protobuf 26, our `CodeGenerator` can implement certain methods to
+declare that we "support" editions, and then reject any other edition
+except proto2 and proto3, which have apparently been retroactively
+declared to be "editions". Of course this needs to be wrapped in a
+version guard.
+
+With this protection in place, the protobuf compiler cleanly exits with
+a nice error message like this:
+
+    $ protoc --experimental_editions --c_out=. test.proto
+    WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+    E0000 00:00:1710988958.296200   20022 descriptor.cc:4620] Invalid proto descriptor for file "test.proto":
+    E0000 00:00:1710988958.296239   20022 descriptor.cc:4623]   test.proto: Edition 2023 is later than the maximum supported edition PROTO3
+    --c_out: protoc-gen-c: Plugin failed with status code 1.
+---
+ protoc-c/c_generator.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/protoc-c/c_generator.h b/protoc-c/c_generator.h
+index b8b44aaa..4aeb5790 100644
+--- a/protoc-c/c_generator.h
++++ b/protoc-c/c_generator.h
+@@ -93,6 +93,12 @@ class PROTOC_C_EXPORT CGenerator : public CodeGenerator {
+                 const std::string& parameter,
+                 OutputDirectory* output_directory,
+                 std::string* error) const;
++
++#if GOOGLE_PROTOBUF_VERSION >= 5026000
++  uint64_t GetSupportedFeatures() const { return CodeGenerator::FEATURE_SUPPORTS_EDITIONS; }
++  Edition GetMinimumEdition() const { return Edition::EDITION_PROTO2; }
++  Edition GetMaximumEdition() const { return Edition::EDITION_PROTO3; }
++#endif
+ };
+ 
+ }  // namespace c
