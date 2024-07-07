@@ -84,6 +84,14 @@ src_prepare() {
 	eautoreconf
 }
 
+src_configure() {
+	# Sensitive to optimisation; parts of the codebase are built with
+	# -O0 already. Don't risk it with UB.
+	strip-flags
+
+	multilib-minimal_src_configure
+}
+
 multilib_src_configure() {
 	if [[ ${CHOST} == *86*-solaris* ]] ; then
 		# ASM code uses GNU ELF syntax, divide in particular, we need to
