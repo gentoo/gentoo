@@ -12,7 +12,7 @@ USE="hardened pic xtpax -jit -orc"
 # This variable can be leveraged in ebuilds for pkg_postinst messages that
 # indicate said package is, say, configured in a way that defeats the purpose
 # of running hardened.
-PROFILE_IS_HARDENED=1
+PROFILE_IS_HARDENED="1"
 
 # We set the default markings to none
 PAX_MARKINGS="none"
