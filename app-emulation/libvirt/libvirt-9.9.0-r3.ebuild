@@ -150,6 +150,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9.10.0-virxml-include-libxml-xmlsave.h-for-xmlIndentTreeOut.patch
 	"${FILESDIR}"/${PN}-10.1.0-Fix-off-by-one-error-in-udevListInterfacesByStatus.patch
 	"${FILESDIR}"/${PN}-10.2.0-remote-check-for-negative-array-lengths-before-alloc.patch
+	"${FILESDIR}"/${PN}-10.5.0-virt-aa-helper-Allow-RO-access-to-usr-share-edk2-ovm.patch
 )
 
 pkg_setup() {
