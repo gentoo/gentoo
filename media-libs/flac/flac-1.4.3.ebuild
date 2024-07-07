@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic multilib-minimal
+inherit flag-o-matic libtool multilib-minimal
 
 DESCRIPTION="Free lossless audio encoder and decoder"
 HOMEPAGE="https://xiph.org/flac/"
@@ -26,6 +26,11 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 multilib_src_configure() {
 	# -fipa-pta exposes a test failure in replaygain_analysis (https://gcc.gnu.org/PR115533)
