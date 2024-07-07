@@ -13,10 +13,10 @@
 # utimensat is missing or not reliable until linux-2.6.32.
 # needed by python-3.
 # lutimes requires utimensat
-ac_cv_func_utimensat=no
-ac_cv_func_lutimes=no
+ac_cv_func_utimensat="no"
+ac_cv_func_lutimes="no"
 # pipe2 and dup3 requires >=linux-2.6.27.  Needed by python-3.
-ac_cv_func_pipe2=no
-ac_cv_func_dup3=no
+ac_cv_func_pipe2="no"
+ac_cv_func_dup3="no"
 # epoll_create1 requires >=linux-2.6.27.
-ac_cv_func_epoll_create1=no
+ac_cv_func_epoll_create1="no"

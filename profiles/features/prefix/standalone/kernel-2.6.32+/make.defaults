@@ -1,4 +1,4 @@
 # This profile is supporting >=linux-2.6.32[a] and <linux-3.2[b].
 
 # only available in glibc-2.26.
-ac_cv_func_reallocarray=no
+ac_cv_func_reallocarray="no"
