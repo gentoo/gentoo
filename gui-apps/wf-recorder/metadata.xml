@@ -14,5 +14,6 @@
 	</upstream>
 	<use>
 		<flag name="pulseaudio">Enable support for audio capture via PulseAudio</flag>
+		<flag name="pipewire">Enable support for audio capture via <pkg>media-video/pipewire</pkg>.</flag>
 	</use>
 </pkgmetadata>
