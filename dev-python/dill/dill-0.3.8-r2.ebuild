@@ -4,8 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-# py3.13: https://github.com/uqfoundation/dill/issues/654
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 
 inherit distutils-r1 pypi
 
@@ -27,5 +26,8 @@ src_prepare() {
 }
 
 python_test() {
+	# disables a test broken under Python 3.13
+	# https://github.com/uqfoundation/dill/issues/668
+	local -x COVERAGE=1
 	"${EPYTHON}" -m dill.tests || die
 }
