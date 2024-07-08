@@ -164,6 +164,13 @@ pkg_setup() {
 	dotnet-pkg_pkg_setup
 }
 
+src_prepare() {
+	dotnet-pkg_src_prepare
+
+	# Those files do not exist on musl. See bug https://bugs.gentoo.org/935450
+	rm Jint.Tests.PublicInterface/TimeSystemTests.cs || die
+}
+
 src_install() {
 	dotnet-pkg-base_install
 	dotnet-pkg-base_dolauncher "/usr/share/${P}/Jint.Repl" "${PN}"
