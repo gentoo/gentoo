@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_PV=${PV/_/}
 MY_P=${PN}-${MY_PV}
@@ -13,6 +13,7 @@ HOMEPAGE="https://www.tinc-vpn.org/"
 
 SRC_URI="https://www.tinc-vpn.org/packages/${MY_P}.tar.gz"
 
+S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
@@ -25,15 +26,15 @@ DEPEND="
 	lzo? ( dev-libs/lzo:2 )
 	ncurses? ( sys-libs/ncurses:= )
 	readline? ( sys-libs/readline:= )
-	upnp? ( net-libs/miniupnpc )
+	upnp? ( net-libs/miniupnpc:= )
 	zlib? ( sys-libs/zlib )"
 RDEPEND="${DEPEND}
 	vde? ( net-misc/vde )"
-S="${WORKDIR}/${MY_P}"
 
 PATCHES+=(
 	"${FILESDIR}"/tinc-1.1_pre16-r1-fix-paths.patch #560528
 	"${FILESDIR}"/${PN}-1.1-tinfo.patch #621868
+	"${FILESDIR}"/${P}-fix-upnp.patch #935718
 )
 
 src_prepare() {
@@ -45,7 +46,7 @@ src_prepare() {
 	sed -i "6d" configure.ac || die
 	sed -i "6iAC_INIT([tinc], ${PVR})" configure.ac || die
 
-        eautoreconf
+	eautoreconf
 }
 
 src_configure() {
