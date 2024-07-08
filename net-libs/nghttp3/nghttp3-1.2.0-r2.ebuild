@@ -21,7 +21,6 @@ SLOT="0/0"
 IUSE="static-libs"
 
 BDEPEND="virtual/pkgconfig"
-RDEPEND=""
 
 multilib_src_configure() {
 	local mycmakeargs=(
