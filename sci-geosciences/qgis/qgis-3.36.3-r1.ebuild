@@ -25,13 +25,13 @@ HOMEPAGE="https://www.qgis.org/"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-IUSE="3d doc examples +georeferencer grass hdf5 mapserver netcdf opencl oracle pdal +polar postgres python qml qt6 test webengine"
+IUSE="3d doc examples +georeferencer grass hdf5 mapserver netcdf opencl oracle pdal +polar postgres python qml qt6 test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	mapserver? ( python )
 	qt6? ( polar )
+	test? ( postgres )
 "
-# 	test? ( postgres )
 
 # Disabling test suite because upstream disallow running from install path
 RESTRICT="!test? ( test )"
@@ -77,7 +77,7 @@ COMMON_DEPEND="
 			>=dev-python/qscintilla-python-2.10.1[${PYTHON_USEDEP}]
 			dev-python/requests[${PYTHON_USEDEP}]
 			dev-python/sip:=[${PYTHON_USEDEP}]
-			postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
+			postgres? ( dev-python/psycopg:0[${PYTHON_USEDEP}] )
 			!qt6? (
 				dev-python/PyQt5[designer,gui,multimedia,network,positioning,printsupport,serialport,sql,svg,widgets,${PYTHON_USEDEP}]
 				>=dev-python/qscintilla-python-2.10.1[qt5]
@@ -123,7 +123,6 @@ COMMON_DEPEND="
 			)
 		)
 		qml? ( dev-qt/qtdeclarative:5 )
-		webengine? ( dev-qt/qtwebengine:5 )
 	)
 	qt6? (
 		app-crypt/qca:2[qt6,ssl]
@@ -139,7 +138,6 @@ COMMON_DEPEND="
 		3d? ( dev-qt/qt3d:6 )
 		polar? ( x11-libs/qwt:=[polar(+)] )
 		qml? ( dev-qt/qtdeclarative:6 )
-		webengine? ( dev-qt/qtwebengine:6 )
 	)
 "
 DEPEND="${COMMON_DEPEND}
@@ -179,7 +177,7 @@ BDEPEND="${PYTHON_DEPS}
 "
 
 PATCHES=(
-	# "${FILESDIR}/${PN}-3.36.3-qt6-Fix-broken-test.patch"
+	"${FILESDIR}/${PN}-3.36.3-qt6-Fix-broken-test.patch"
 	"${FILESDIR}/${PN}-3.36.3-qt6.patch"
 	"${FILESDIR}/${PN}-3.36.3-testReportDir.patch"
 )
@@ -236,7 +234,6 @@ src_configure() {
 		-DUSE_OPENCL=$(usex opencl)
 		-DWITH_ORACLE=$(usex oracle)
 		-DWITH_QWTPOLAR=$(usex polar)
-		-DWITH_QTWEBENGINE=$(usex webengine)
 		-DWITH_PDAL=$(usex pdal)
 		-DWITH_POSTGRESQL=$(usex postgres)
 		-DWITH_BINDINGS=$(usex python)
@@ -301,10 +298,6 @@ src_configure() {
 }
 
 src_test() {
-	addwrite "/proc/self/mem"
-	addwrite "/proc/self/task/"
-	addwrite "/dev/fuse"
-
 	local -x CMAKE_SKIP_TESTS=(
 		PyQgsAFSProvider$
 		PyQgsAnnotation$
