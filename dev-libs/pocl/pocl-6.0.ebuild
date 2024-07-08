@@ -4,7 +4,7 @@
 EAPI=8
 
 LLVM_COMPAT=( {15..18} )
-inherit cmake llvm-r1
+inherit cmake cuda llvm-r1
 
 DESCRIPTION="Portable Computing Language (an implementation of OpenCL)"
 HOMEPAGE="http://portablecl.org https://github.com/pocl/pocl"
@@ -35,6 +35,7 @@ RDEPEND="
 	dev-libs/libltdl
 	virtual/opencl
 	debug? ( dev-util/lttng-ust:= )
+	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	hwloc? ( sys-apps/hwloc:=[cuda?] )
 "
 DEPEND="${RDEPEND}"
@@ -42,6 +43,11 @@ BDEPEND="
 	${CLANG_DEPS}
 	virtual/pkgconfig
 "
+
+src_prepare() {
+	use cuda && cuda_src_prepare
+	cmake_src_prepare
+}
 
 src_configure() {
 	local host_cpu_variants="generic"
