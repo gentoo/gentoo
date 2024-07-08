@@ -11,21 +11,12 @@ SRC_URI="https://github.com/Azure/${PN}/archive/refs/tags/v${PV}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE="doc +lun-fallback"
-
-BDEPEND="
-	doc? ( virtual/pandoc )
-"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-werror.patch
-)
+IUSE="+lun-fallback"
 
 src_configure() {
 	local mycmakeargs=(
 		-DAZURE_LUN_CALCULATION_BY_NSID_ENABLED=$(usex lun-fallback)
 		-DUDEV_RULES_INSTALL_DIR="$(get_udevdir)/rules.d"
-		-DPANDOC_EXECUTABLE="$(usex doc "${BROOT}"/usr/bin/pandoc no)"
 	)
 	cmake_src_configure
 }
