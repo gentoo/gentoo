@@ -11,6 +11,7 @@ inherit distutils-r1
 DESCRIPTION="commandline tool to sync directory services to local cache"
 HOMEPAGE="https://github.com/google/nsscache"
 SRC_URI="https://github.com/google/nsscache/archive/version/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-version-${PV}"
 
 # upstream *sources* say "or later", but upstream metadata does not include the
 # 'or later' clause.
@@ -34,12 +35,7 @@ RDEPEND="
 	>=dev-python/pycurl-7.45.2[${PYTHON_USEDEP}]
 	s3? ( dev-python/boto3[${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}
-	dev-python/packaging[${PYTHON_USEDEP}]
-	test? (
-		dev-python/pytest[${PYTHON_USEDEP}]
-	)"
-
-S="${WORKDIR}/${PN}-version-${PV}"
+	dev-python/packaging[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
 
@@ -48,17 +44,15 @@ python_prepare_all() {
 	# Default config tries $PREFIX/config/nsscache.conf
 	sed -i \
 		-e '/data_files/{s,.nsscache.conf.,,}' \
-		setup.py
+		setup.py \
+		|| die
 	# Upstream forgot to bump the version
 	sed -i \
 		-e '/^__version__/s,0.48,0.49,g' \
-		nss_cache/__init__.py
+		nss_cache/__init__.py \
+		|| die
 
 	distutils-r1_python_prepare_all
-}
-
-python_compile() {
-	distutils-r1_python_compile
 }
 
 python_install() {
