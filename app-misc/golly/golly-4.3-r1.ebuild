@@ -3,8 +3,8 @@
 
 EAPI=8
 
-WX_GTK_VER=3.2-gtk3
-PYTHON_COMPAT=( python3_{10..12} )
+WX_GTK_VER="3.2-gtk3"
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit desktop python-single-r1 toolchain-funcs wxwidgets xdg
 
@@ -31,8 +31,7 @@ DEPEND="
 
 PATCHES=( "${FILESDIR}/${PN}-4.0-CFLAGS.patch" )
 
-pkg_setup() {
-	python-single-r1_pkg_setup
+src_configure() {
 	setup-wxwidgets
 }
 
@@ -40,8 +39,8 @@ src_compile() {
 	local -a mymakeopts=(
 		ENABLE_SOUND=yes
 		GOLLYDIR="${EPREFIX}/usr/share/${PN}"
-		PYTHON=${EPYTHON}
-		WX_CONFIG=${WX_CONFIG}
+		PYTHON="${EPYTHON}"
+		WX_CONFIG="${WX_CONFIG}"
 		AR="$(tc-getAR)"
 		CC="$(tc-getCC)"
 		CXX="$(tc-getCXX)"
