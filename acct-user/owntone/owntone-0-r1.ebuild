@@ -6,7 +6,7 @@ EAPI=8
 inherit acct-user
 
 DESCRIPTION="User for media-sound/owntone"
-ACCT_USER_ID=541
+ACCT_USER_ID=542
 ACCT_USER_GROUPS=( audio )
 ACCT_USER_HOME="/var/lib/${PN}"
 
