@@ -22,6 +22,14 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 
+RDEPEND=">=dev-cpp/robin-map-1.3.0"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	$(python_gen_cond_dep '
+		dev-python/typing-extensions[${PYTHON_USEDEP}]
+	' 3.10)
+"
+
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
