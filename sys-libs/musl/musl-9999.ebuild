@@ -55,7 +55,7 @@ just_headers() {
 }
 
 pkg_setup() {
-	if [ ${CTARGET} == ${CHOST} ] ; then
+	if [[ ${CTARGET} == ${CHOST} ]] ; then
 		case ${CHOST} in
 			*-musl*) ;;
 			*) die "Use sys-devel/crossdev to build a musl toolchain" ;;
