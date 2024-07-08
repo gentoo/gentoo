@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# Please bump with dev-python/btrfsutil
+
 PYTHON_COMPAT=( python3_{10..13} )
 inherit bash-completion-r1 python-any-r1 udev
 
