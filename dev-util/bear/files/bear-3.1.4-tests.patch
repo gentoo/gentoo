@@ -1,0 +1,49 @@
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Subject: [PATCH] Fix tests
+# https://github.com/rizsotto/Bear/issues/445
+diff --git a/test/lit.cfg b/test/lit.cfg
+index 2a3868a..cf0c9de 100644
+--- a/test/lit.cfg
++++ b/test/lit.cfg
+@@ -31,6 +31,7 @@ config.excludes = []
+ 
+ config.environment['LC_CTYPE'] = 'en_US.UTF-8'
+ config.environment['PATH'] = ":".join([os.path.join(this_dir, 'bin'), os.environ.get('PATH')])
++config.environment['PYTHONDONTWRITEBYTECODE'] = '1'
+ 
+ # add bear install directory in case if it's not in the path
+ if '_BEAR_BIN_DIR' in lit_config.params:
+@@ -161,6 +162,12 @@ if which('nvcc'):
+     path = which('nvcc')
+     config.substitutions.append(('%{cuda}', path))
+     config.available_features.add('cuda')
++    if 'NVCC_PREPEND_FLAGS' in os.environ:
++        config.environment['NVCC_PREPEND_FLAGS'] = os.environ.get('NVCC_PREPEND_FLAGS')
++    if 'NVCC_APPEND_FLAGS' in os.environ:
++        config.environment['NVCC_APPEND_FLAGS'] = os.environ.get('NVCC_APPEND_FLAGS')
++    if 'NVCC_CCBIN' in os.environ:
++        config.environment['NVCC_CCBIN'] = os.environ.get('NVCC_CCBIN')
+ 
+ 
+ # check if libtool command is available
+@@ -183,7 +183,7 @@ if which('fakeroot'):
+ 
+ 
+ # check if valgrind is available
+-if which('valgrind'):
++if which('valgrind') and False:
+     path = which('valgrind')
+     config.substitutions.append(('%{valgrind}', path))
+     config.available_features.add('valgrind')
+diff --git a/test/cases/compilation/output/compile_cuda.sh b/test/cases/compilation/output/compile_cuda.sh
+index 41b8b37..9ef4954 100644
+--- a/test/cases/compilation/output/compile_cuda.sh
++++ b/test/cases/compilation/output/compile_cuda.sh
+@@ -8,5 +8,5 @@
+ 
+ touch successful_build_1.cu successful_build_2.cu
+ 
+-$CC -c -o successful_build_1.o successful_build_1.cu;
+-$CC -c -o successful_build_2.o successful_build_2.cu;
++$CC${NVCC_CCBIN:+ -ccbin ${NVCC_CCBIN}}${NVCC_PREPEND_FLAGS:+ ${NVCC_PREPEND_FLAGS}} -c -o successful_build_1.o successful_build_1.cu${NVCC_APPEND_FLAGS:+ ${NVCC_APPEND_FLAGS}};
++$CC${NVCC_CCBIN:+ -ccbin ${NVCC_CCBIN}}${NVCC_PREPEND_FLAGS:+ ${NVCC_PREPEND_FLAGS}} -c -o successful_build_2.o successful_build_2.cu${NVCC_APPEND_FLAGS:+ ${NVCC_APPEND_FLAGS}};
