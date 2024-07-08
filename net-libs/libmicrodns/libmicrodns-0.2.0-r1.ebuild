@@ -18,7 +18,7 @@ else
 fi
 
 LICENSE="LGPL-2.1+"
-SLOT="0"
+SLOT="0/1"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 
