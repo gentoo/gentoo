@@ -12,6 +12,10 @@ dev-tex/abntex lyx
 # additional dev-qt/qtwebengine revdeps.
 kde-frameworks/purpose:5 kaccounts
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-06-17)
+# missing keywords on dev-python/PyQt6
+sci-geosciences/qgis qt6
+
 # Sam James <sam@gentoo.org> (2024-06-13)
 # Needs as-yet-unkeyworded KF6 (bug #934215)
 app-crypt/pinentry qt6
