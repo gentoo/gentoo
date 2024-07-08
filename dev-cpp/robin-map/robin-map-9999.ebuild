@@ -27,7 +27,10 @@ BDEPEND="
 
 src_test() {
 	cd tests || die
-	sed -i -e '/Boost_USE_STATIC_LIBS/d' CMakeLists.txt || die
+	sed -i \
+		-e '/Boost_USE_STATIC_LIBS/d' \
+		-e 's/-Werror//' \
+		CMakeLists.txt || die
 	cmake -S "${S}/tests" -B . -GNinja || die
 	eninja
 	./tsl_robin_map_tests || die
