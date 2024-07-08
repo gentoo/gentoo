@@ -4,7 +4,7 @@
 EAPI=8
 
 CMAKE_IN_SOURCE_BUILD=1
-PYTHON_COMPAT=( python3_{10,12} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit cmake flag-o-matic python-any-r1
 
 MY_PV="${PV//_pre/-pre}"
@@ -57,14 +57,12 @@ BDEPEND="
 PATCHES=( "${FILESDIR}/${PN}-1.62.1-system-gtest.patch" )
 
 python_check_deps() {
-	python_has_version -b "dev-python/twisted[${PYTHON_USEDEP}]" &&
-	python_has_version -b "dev-python/pyyaml[${PYTHON_USEDEP}]" &&
-	python_has_version -b "dev-python/cffi[${PYTHON_USEDEP}]" &&
-	python_has_version -b "dev-python/six[${PYTHON_USEDEP}]"
-}
-
-pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	if use test; then
+		python_has_version -b "dev-python/twisted[${PYTHON_USEDEP}]" &&
+		python_has_version -b "dev-python/pyyaml[${PYTHON_USEDEP}]" &&
+		python_has_version -b "dev-python/cffi[${PYTHON_USEDEP}]" &&
+		python_has_version -b "dev-python/six[${PYTHON_USEDEP}]"
+	fi
 }
 
 soversion_check() {
