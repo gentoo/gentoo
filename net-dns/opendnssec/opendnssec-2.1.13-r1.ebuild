@@ -59,6 +59,10 @@ PATCHES=(
 	"${FILESDIR}/${PN}-fix-run-dir-2.1.x.patch"
 	"${FILESDIR}/${PN}-use-system-trang.patch"
 	"${FILESDIR}/${PN}-fix-mysql.patch"
+	# fix some modern C errors due to missing includes. Not forwarded upstream,
+	# since upstream's website appears to be in a state of disarray and the
+	# "Bug Reporting" link doesn't work.
+	"${FILESDIR}"/0001-include-lots-of-headers-to-pass-the-basic-c99-sniff-.patch
 )
 
 DOCS=( MIGRATION NEWS )
