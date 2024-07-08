@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1 pypi
 
@@ -50,6 +50,10 @@ PATCHES=(
 	# https://bugs.launchpad.net/python-glanceclient/+bug/2069684
 	# https://bugs.launchpad.net/python-glanceclient/+bug/2069682
 	"${FILESDIR}/${P}-test.patch"
+
+	# py3.13 added close() to mock_open calls
+	# https://review.opendev.org/c/openstack/python-glanceclient/+/923628
+	"${FILESDIR}/${P}-test-py3.13.patch"
 )
 
 python_test() {

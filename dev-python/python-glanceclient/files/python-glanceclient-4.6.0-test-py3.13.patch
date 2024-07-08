@@ -1,0 +1,66 @@
+From 6aa007080e1db0f95b04824f42a6b52cbd5ff886 Mon Sep 17 00:00:00 2001
+From: Petr Vaněk <arkamar@atlas.cz>
+Date: Mon, 08 Jul 2024 12:01:15 +0200
+Subject: [PATCH] Python 3.13 test fixes
+
+Python 3.13 newly calls close in mock_open [1], which makes two
+_cache_schemas related tests fail because they expect different amount
+of mock_calls. This fix makes the expected check results conditional
+based on python version.
+
+[1] https://github.com/python/cpython/commit/3f7c0810f6158a7ff37be432f8d7f9511427489f
+
+Change-Id: I8b019f73fe3a9f28f114c95321a1da0feadf750f
+
+Upstream-PR: https://review.opendev.org/c/openstack/python-glanceclient/+/923628
+
+diff --git a/glanceclient/tests/unit/test_shell.py b/glanceclient/tests/unit/test_shell.py
+index 4a123ab..ea835c4 100644
+--- a/glanceclient/tests/unit/test_shell.py
++++ b/glanceclient/tests/unit/test_shell.py
+@@ -786,14 +786,19 @@ class ShellCacheSchemaTest(testutils.TestCase):
+         client = self.shell._get_versioned_client('2', args)
+         self.shell._cache_schemas(args, client, home_dir=self.cache_dir)
+ 
+-        self.assertEqual(12, open.mock_calls.__len__())
++        # see https://github.com/python/cpython/commit/3f7c0810f6158a7ff37be432f8d7f9511427489f
++        expected_count = 12 if sys.version_info < (3, 13) else 15
++        open_idx = 4 if sys.version_info < (3, 13) else 5
++        write_idx = 6 if sys.version_info < (3, 13) else 7
++
++        self.assertEqual(expected_count, open.mock_calls.__len__())
+         self.assertEqual(mock.call(self.cache_files[0], 'w'),
+                          open.mock_calls[0])
+         self.assertEqual(mock.call(self.cache_files[1], 'w'),
+-                         open.mock_calls[4])
++                         open.mock_calls[open_idx])
+         actual = json.loads(open.mock_calls[2][1][0])
+         self.assertEqual(schema_odict, actual)
+-        actual = json.loads(open.mock_calls[6][1][0])
++        actual = json.loads(open.mock_calls[write_idx][1][0])
+         self.assertEqual(schema_odict, actual)
+ 
+     @mock.patch('builtins.open', new=mock.mock_open(), create=True)
+@@ -809,14 +814,19 @@ class ShellCacheSchemaTest(testutils.TestCase):
+         client = self.shell._get_versioned_client('2', args)
+         self.shell._cache_schemas(args, client, home_dir=self.cache_dir)
+ 
+-        self.assertEqual(12, open.mock_calls.__len__())
++        # see https://github.com/python/cpython/commit/3f7c0810f6158a7ff37be432f8d7f9511427489f
++        expected_count = 12 if sys.version_info < (3, 13) else 15
++        open_idx = 4 if sys.version_info < (3, 13) else 5
++        write_idx = 6 if sys.version_info < (3, 13) else 7
++
++        self.assertEqual(expected_count, open.mock_calls.__len__())
+         self.assertEqual(mock.call(self.cache_files[0], 'w'),
+                          open.mock_calls[0])
+         self.assertEqual(mock.call(self.cache_files[1], 'w'),
+-                         open.mock_calls[4])
++                         open.mock_calls[open_idx])
+         actual = json.loads(open.mock_calls[2][1][0])
+         self.assertEqual(schema_odict, actual)
+-        actual = json.loads(open.mock_calls[6][1][0])
++        actual = json.loads(open.mock_calls[write_idx][1][0])
+         self.assertEqual(schema_odict, actual)
+ 
+     @mock.patch('builtins.open', new=mock.mock_open(), create=True)
