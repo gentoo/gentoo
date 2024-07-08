@@ -27,7 +27,7 @@ IUSE="custom-optimization doc"
 DEPEND="
 	|| ( dev-libs/libtracecmd <dev-util/trace-cmd-3.2 )
 	dev-libs/json-c:=
-	dev-qt/qtbase:6=[network,widgets]
+	dev-qt/qtbase:6=[network,opengl,widgets]
 	dev-qt/qtscxml:6=
 	>=media-libs/freeglut-3.0.0:=
 	x11-libs/libXmu:=
