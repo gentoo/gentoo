@@ -494,7 +494,7 @@ CRATES+="
 	clap@4.5.4
 "
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit bash-completion-r1 cargo desktop optfeature python-any-r1
 
