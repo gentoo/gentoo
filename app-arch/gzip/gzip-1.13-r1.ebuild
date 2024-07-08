@@ -51,6 +51,10 @@ src_configure() {
 	# Avoid text relocation in gzip
 	use pic && export DEFS="NO_ASM"
 
+	# embeds the path to grep detected at build time into installed scripts;
+	# use the canonical USE="split-usr" agnostic path. bug #935721
+	export GREP="${EPREFIX}/bin/grep"
+
 	# bug #663928
 	econf --disable-gcc-warnings
 }
