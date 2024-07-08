@@ -97,10 +97,10 @@ src_install() {
 	done
 
 	# Create sepolgen.conf with different devel location definition
+	mkdir -p "${D}"/etc/selinux || die "Failed to create selinux directory";
 	if [[ -f /etc/selinux/config ]];
 	then
 		local selinuxtype=$(awk -F'=' '/^SELINUXTYPE/ {print $2}' /etc/selinux/config);
-		mkdir -p "${D}"/etc/selinux || die "Failed to create selinux directory";
 		echo "SELINUX_DEVEL_PATH=/usr/share/selinux/${selinuxtype}/include:/usr/share/selinux/${selinuxtype}" \
 			> "${D}"/etc/selinux/sepolgen.conf || die "Failed to generate sepolgen"
 	else
