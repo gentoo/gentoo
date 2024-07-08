@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake xdg
+inherit cmake flag-o-matic xdg
 
 DESCRIPTION="Full featured webcam capture application"
 HOMEPAGE="https://webcamoid.github.io"
@@ -45,6 +45,11 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/927104
+	# https://github.com/webcamoid/webcamoid/issues/702
+	filter-lto
+
 	#Disable git in package source. If not disabled the cmake configure process will show
 	#a lot of "fatal not a git repository" errors
 	sed -i 's|find_program(GIT_BIN git)|#find_program(GIT_BIN git)|' libAvKys/cmake/ProjectCommons.cmake || die
