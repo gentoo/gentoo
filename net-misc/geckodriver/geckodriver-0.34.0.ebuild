@@ -204,7 +204,7 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 IUSE="unchained"
 
-RDEPEND="!www-client/firefox[geckodriver]"
+RDEPEND="!www-client/firefox[geckodriver(-)]"
 
 pkg_setup() {
 	QA_FLAGS_IGNORED="/usr/$(get_libdir)/firefox/geckodriver"
