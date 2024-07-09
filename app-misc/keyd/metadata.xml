@@ -8,7 +8,7 @@
   <maintainer type="project" proxied="proxy">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
-	</maintainer>
+  </maintainer>
   <upstream>
     <bugs-to>https://github.com/rvaiya/keyd/issues</bugs-to>
     <remote-id type="github">rvaiya/keyd</remote-id>
