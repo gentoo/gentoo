@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Orlitzky <mjo@gentoo.org> (2024-07-09)
+# The opcache extension fails to build on hardened x86, but only
+# if the JIT is enabled. Bug 930145.
+dev-lang/php opcache-jit
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-07-04)
 # app-office/lyx is unavailable on x86
 dev-tex/abntex lyx
