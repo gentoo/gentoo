@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1
@@ -51,6 +51,12 @@ src_prepare() {
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	local -x PYTEST_PLUGINS=pytest_twisted
+
+	local EPYTEST_DESELECT=(
+		# regression with pytest-8.2
+		# https://github.com/pytest-dev/pytest-twisted/issues/176
+		testing/test_basic.py::test_async_fixture_module_scope
+	)
 
 	epytest -p pytester
 }
