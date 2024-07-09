@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Amadeusz Żołnowski <aidecoe@gentoo.org>
 # @SUPPORTED_EAPIS: 7 8
+# @PROVIDES: rebar-utils
 # @BLURB: Build Erlang/OTP projects using dev-util/rebar.
 # @DESCRIPTION:
 # An eclass providing functions to build Erlang/OTP projects using
@@ -27,25 +28,14 @@ esac
 if [[ -z ${_REBAR_ECLASS} ]]; then
 _REBAR_ECLASS=1
 
+inherit rebar-utils
+
 RDEPEND="dev-lang/erlang:="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/rebar:0
 	>=sys-apps/gawk-4.1
 "
-
-# @ECLASS_VARIABLE: REBAR_APP_SRC
-# @DESCRIPTION:
-# Relative path to .app.src description file.
-REBAR_APP_SRC="${REBAR_APP_SRC-src/${PN}.app.src}"
-
-# @FUNCTION: get_erl_libs
-# @RETURN: the path to Erlang lib directory
-# @DESCRIPTION:
-# Get the full path without EPREFIX to Erlang lib directory.
-get_erl_libs() {
-	echo "/usr/$(get_libdir)/erlang/lib"
-}
 
 # @FUNCTION: _rebar_find_dep
 # @INTERNAL
@@ -74,22 +64,6 @@ _rebar_find_dep() {
 	echo "${result}"
 }
 
-# @FUNCTION: rebar_disable_coverage
-# @USAGE: [<rebar_config>]
-# @DESCRIPTION:
-# Disable coverage in rebar.config. This is a workaround for failing coverage.
-# Coverage is not relevant in this context, so there's no harm to disable it,
-# although the issue should be fixed.
-rebar_disable_coverage() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	local rebar_config="${1:-rebar.config}"
-
-	sed -e 's/{cover_enabled, true}/{cover_enabled, false}/' \
-		-i "${rebar_config}" \
-		|| die "failed to disable coverage in ${rebar_config}"
-}
-
 # @FUNCTION: erebar
 # @USAGE: <targets>
 # @DESCRIPTION:
@@ -103,86 +77,6 @@ erebar() {
 	[[ ${1} == eunit ]] && local -x ERL_LIBS="."
 
 	rebar -v skip_deps=true "$@" || die -n "rebar $@ failed"
-}
-
-# @FUNCTION: rebar_fix_include_path
-# @USAGE: <project_name> [<rebar_config>]
-# @DESCRIPTION:
-# Fix path in rebar.config to 'include' directory of dependent project/package,
-# so it points to installation in system Erlang lib rather than relative 'deps'
-# directory.
-#
-# <rebar_config> is optional. Default is 'rebar.config'.
-#
-# The function dies on failure.
-rebar_fix_include_path() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	local pn="${1}"
-	local rebar_config="${2:-rebar.config}"
-	local erl_libs="${EPREFIX}$(get_erl_libs)"
-	local p
-
-	p="$(_rebar_find_dep "${pn}")" \
-		|| die "failed to unambiguously resolve dependency of '${pn}'"
-
-	gawk -i inplace \
-		-v erl_libs="${erl_libs}" -v pn="${pn}" -v p="${p}" '
-/^{[[:space:]]*erl_opts[[:space:]]*,/, /}[[:space:]]*\.$/ {
-	pattern = "\"(./)?deps/" pn "/include\"";
-	if (match($0, "{i,[[:space:]]*" pattern "[[:space:]]*}")) {
-		sub(pattern, "\"" erl_libs "/" p "/include\"");
-	}
-	print $0;
-	next;
-}
-1
-' "${rebar_config}" || die "failed to fix include paths in ${rebar_config} for '${pn}'"
-}
-
-# @FUNCTION: rebar_remove_deps
-# @USAGE: [<rebar_config>]
-# @DESCRIPTION:
-# Remove dependencies list from rebar.config and deceive build rules that any
-# dependencies are already fetched and built. Otherwise rebar tries to fetch
-# dependencies and compile them.
-#
-# <rebar_config> is optional. Default is 'rebar.config'.
-#
-# The function dies on failure.
-rebar_remove_deps() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	local rebar_config="${1:-rebar.config}"
-
-	mkdir -p "${S}/deps" && :>"${S}/deps/.got" && :>"${S}/deps/.built" || die
-	gawk -i inplace '
-/^{[[:space:]]*deps[[:space:]]*,/, /}[[:space:]]*\.$/ {
-	if ($0 ~ /}[[:space:]]*\.$/) {
-		print "{deps, []}.";
-	}
-	next;
-}
-1
-' "${rebar_config}" || die "failed to remove deps from ${rebar_config}"
-}
-
-# @FUNCTION: rebar_set_vsn
-# @USAGE: [<version>]
-# @DESCRIPTION:
-# Set version in project description file if it's not set.
-#
-# <version> is optional. Default is PV stripped from version suffix.
-#
-# The function dies on failure.
-rebar_set_vsn() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	local version="${1:-${PV%_*}}"
-
-	sed -e "s/vsn, git/vsn, \"${version}\"/" \
-		-i "${S}/${REBAR_APP_SRC}" \
-		|| die "failed to set version in src/${PN}.app.src"
 }
 
 # @FUNCTION: rebar_src_prepare
