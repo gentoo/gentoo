@@ -1,0 +1,25 @@
+Fixed in qtwayland-6.7.3
+
+https://mail.kde.org/pipermail/distributions/2024-July/001512.html
+https://invent.kde.org/qt/qt/qtwayland/-/commit/92bcb8f6b7a852c7a5d662fc34de561692a7a454
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Thu, 20 Jun 2024 11:25:06 +0300
+Subject: [PATCH] Client: Ensure that guessed popup parent has a shell surface
+
+The last input window may not have a shell surface if it is a subsurface
+or that window has been just made invisible.
+--- a/src/client/qwaylandwindow.cpp
++++ b/src/client/qwaylandwindow.cpp
+@@ -1157,8 +1157,10 @@ QWaylandWindow *QWaylandWindow::guessTransientParent() const
+             return mTopPopup;
+     }
+ 
+-    if (window()->type() == Qt::ToolTip || window()->type() == Qt::Popup)
+-        return display()->lastInputWindow();
++    if (window()->type() == Qt::ToolTip || window()->type() == Qt::Popup) {
++        if (auto lastInputWindow = display()->lastInputWindow())
++            return closestShellSurfaceWindow(lastInputWindow->window());
++    }
+ 
+     return nullptr;
+ }

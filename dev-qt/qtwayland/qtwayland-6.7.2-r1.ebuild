@@ -28,6 +28,10 @@ DEPEND="
 "
 BDEPEND="dev-util/wayland-scanner"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-plasma-popup.patch
+)
+
 CMAKE_SKIP_TESTS=(
 	# segfaults for not-looked-into reasons, but not considered
 	# an issue given >=seatv5 exists since wayland-1.10 (2016)
