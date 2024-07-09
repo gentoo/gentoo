@@ -1,5 +1,16 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# matoro <matoro_gentoo@matoro.tk> (2024-07-09)
+# Known to crash on boot for at least ppc64le w/ 64k kernel,
+# possibly other powerpc arches.  Masking out of caution.
+# https://lore.kernel.org/stable/20240705203413.wbv2nw3747vjeibk@altlinux.org/
+=sys-kernel/gentoo-kernel-6.6.37
+=sys-kernel/gentoo-kernel-bin-6.6.37
+=sys-kernel/gentoo-sources-6.6.37
+=sys-kernel/vanilla-kernel-6.6.37
+=sys-kernel/vanilla-sources-6.6.37
+=virtual/dist-kernel-6.6.37
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-22)
 # criu does not work on ppc64be and ppc32
