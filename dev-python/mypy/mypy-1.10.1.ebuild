@@ -52,6 +52,8 @@ EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 PATCHES=(
+	# https://github.com/python/mypy/pull/17259
+	# https://github.com/python/mypy/pull/17261
 	# https://github.com/python/mypy/pull/17290
 	"${FILESDIR}/${P}-py313.patch"
 )
@@ -101,7 +103,10 @@ python_test() {
 			EPYTEST_DESELECT+=(
 				# https://github.com/mypyc/mypyc/issues/1056
 				mypyc/test
+				# requires typeshed update
+				mypy/test/teststubtest.py::StubtestUnit::test_type_alias
 			)
+			;;
 	esac
 
 	# Some mypy/test/testcmdline.py::PythonCmdlineSuite tests
@@ -119,7 +124,7 @@ python_test() {
 
 	local failed=
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	nonfatal epytest -n "$(makeopts_jobs)" --dist=worksteal || failed=1
+	nonfatal epytest || failed=1
 
 	rm conftest.py pyproject.toml || die
 
