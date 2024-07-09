@@ -1,0 +1,27 @@
+From: Jeremy Bicha <jeremy.bicha@canonical.com>
+Date: Wed, 22 Feb 2023 16:17:00 -0500
+Subject: disable web view test: doesn't work in our build environment
+
+---
+ tests/meson.build | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/tests/meson.build b/tests/meson.build
+index 1402ae3..5528a6e 100644
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -186,10 +186,10 @@ if get_option('unit_tests').enabled()
+     adguard_resources,
+     dependencies: ephymain_dep
+   )
+-  test('Web view test',
+-       web_view_test,
+-       env: envs
+-  )
++#  test('Web view test',
++#       web_view_test,
++#       env: envs
++#  )
+ 
+   web_extension_test = executable('test-ephy-web-extension',
+     'ephy-web-extension-test.c',

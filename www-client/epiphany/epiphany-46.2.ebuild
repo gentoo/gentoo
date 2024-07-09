@@ -49,6 +49,14 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	# Test not ready to be run in sandboxed systems, also need
+	# mesa[zink]. Skip, as done by Debian.
+	# https://gitlab.gnome.org/GNOME/epiphany/-/issues/2209
+	# https://gitlab.gnome.org/GNOME/epiphany/-/issues/2271
+	"${FILESDIR}/${PN}-46.2-disable-web-viez-test.patch"
+)
+
 src_prepare() {
 	default
 	xdg_environment_reset
