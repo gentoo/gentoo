@@ -371,7 +371,7 @@ src_install() {
 	mv "${ED}/usr/bin/notify_push" "${ED}/usr/bin/${PN}" || die
 
 	newconfd "${FILESDIR}/${PN}-r1.confd" "${PN}"
-	newinitd "${FILESDIR}/${PN}-r1.init" "${PN}"
+	newinitd "${FILESDIR}/${PN}-r2.init" "${PN}"
 	systemd_newunit "${FILESDIR}/${PN}.service-r1" "${PN}.service"
 	systemd_install_serviced "${FILESDIR}/${PN}.service.conf" "${PN}"
 
