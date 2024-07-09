@@ -220,7 +220,6 @@ net-misc/curl sslv3
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-05-04)
 # No suitable version of dev-libs/protobuf available.
->=dev-java/protobuf-java-3.24.2 system-protoc
 =dev-java/protobuf-java-3.23.0 system-protoc
 
 # Joonas Niilola <juippis@gentoo.org> (2023-06-06)
