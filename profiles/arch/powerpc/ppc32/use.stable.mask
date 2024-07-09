@@ -1,10 +1,6 @@
 # Copyright 2014-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Ionen Wolkens <ionen@gentoo.org> (2024-06-09)
-# Qt6 is not stable here yet
-qt6
-
 # Sam James <sam@gentoo.org> (2024-03-07)
 # dev-lang/php:8.2 is not marked stable here yet (bug #920701)
 php_targets_php8-2
