@@ -104,7 +104,7 @@ src_test() {
 	fi
 
 	mylitopts+=(-j "$(makeopts_jobs)" )
-	[[ -n "${LIT_SKIP_TESTS[*]}" ]] && mylitopts+=( --filter-out "($( IFS='|'; echo "${CMAKE_SKIP_TESTS[*]}"))" )
+	[[ -n "${LIT_SKIP_TESTS[*]}" ]] && mylitopts+=( --filter-out "($( IFS='|'; echo "${LIT_SKIP_TESTS[*]}"))" )
 
 	export LIT_OPTS="${mylitopts[*]}"
 
