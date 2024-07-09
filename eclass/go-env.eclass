@@ -6,10 +6,16 @@
 # Flatcar Linux Maintainers <infra@flatcar-linux.org>
 # @AUTHOR:
 # Flatcar Linux Maintainers <infra@flatcar-linux.org>
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Helper eclass for setting the Go compile environment. Required for cross-compiling.
 # @DESCRIPTION:
 # This eclass includes helper functions for setting the compile environment for Go ebuilds.
 # Intended to be called by other Go eclasses in an early build stage, e.g. src_unpack.
+
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 if [[ -z ${_GO_ENV_ECLASS} ]]; then
 _GO_ENV_ECLASS=1
@@ -34,14 +40,7 @@ go-env_set_compile_environment() {
 	use x86 && export GO386=$(go-env_go386)
 
 	# XXX: Hack for checking ICE (bug #912152, gcc PR113204)
-	case ${EAPI} in
-		6)
-			has_version "sys-devel/gcc[debug]" && filter-lto
-			;;
-		*)
-			has_version -b "sys-devel/gcc[debug]" && filter-lto
-			;;
-	esac
+	has_version -b "sys-devel/gcc[debug]" && filter-lto
 
 	export CGO_CFLAGS="${CGO_CFLAGS:-$CFLAGS}"
 	export CGO_CPPFLAGS="${CGO_CPPFLAGS:-$CPPFLAGS}"
