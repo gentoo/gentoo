@@ -196,7 +196,9 @@ dev-vcs/mercurial rust
 
 # Joonas Niilola <juippis@gentoo.org> (2020-10-02)
 # Sam James <sam@gentoo.org> (2021-03-11)
+# Michael Orlitzky <mjo@gentoo.org> (2024-07-09)
 # Dependency only keyworded on specific ${arch} profiles.
+>=dev-lang/php-8.3.9 avif
 dev-libs/efl avif
 kde-frameworks/kimageformats avif
 media-libs/gd avif
