@@ -5,7 +5,7 @@ EAPI=8
 
 WANT_AUTOMAKE="none"
 
-inherit flag-o-matic multilib systemd
+inherit autotools flag-o-matic multilib systemd
 
 DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="https://www.php.net/"
@@ -16,7 +16,6 @@ LICENSE="PHP-3.01
 	Zend-2.0
 	bcmath? ( LGPL-2.1+ )
 	fpm? ( BSD-2 )
-	gd? ( gd )
 	unicode? ( BSD-2 LGPL-2.1 )"
 
 SLOT="$(ver_cut 1-2)"
@@ -31,13 +30,13 @@ IUSE="${IUSE}
 	threads"
 
 IUSE="${IUSE} acl apparmor argon2 avif bcmath berkdb bzip2 calendar
-	capstone cdb cjk +ctype curl debug
+	capstone cdb +ctype curl debug
 	enchant exif ffi +fileinfo +filter firebird
 	+flatfile ftp gd gdbm gmp +iconv imap inifile
-	intl iodbc ipv6 +jit kerberos ldap ldap-sasl libedit lmdb
+	intl iodbc ipv6 +jit jpeg kerberos ldap ldap-sasl libedit lmdb
 	mhash mssql mysql mysqli nls
-	odbc +opcache pcntl pdo +phar +posix postgres qdbm
-	readline selinux +session session-mm sharedmem
+	odbc +opcache +opcache-jit pcntl pdo +phar +posix postgres png
+	qdbm readline selinux +session session-mm sharedmem
 	+simplexml snmp soap sockets sodium spell sqlite ssl
 	sysvipc systemd test tidy +tokenizer tokyocabinet truetype unicode
 	valgrind webp +xml xmlreader xmlwriter xpm xslt zip zlib"
@@ -45,14 +44,8 @@ IUSE="${IUSE} acl apparmor argon2 avif bcmath berkdb bzip2 calendar
 # Without USE=readline or libedit, the interactive "php -a" CLI will hang.
 REQUIRED_USE="
 	|| ( cli cgi fpm apache2 embed phpdbg )
-	avif? ( gd zlib )
 	cli? ( ^^ ( readline libedit ) )
 	!cli? ( ?? ( readline libedit ) )
-	truetype? ( gd zlib )
-	webp? ( gd zlib )
-	cjk? ( gd zlib )
-	exif? ( gd zlib )
-	xpm? ( gd zlib )
 	gd? ( zlib )
 	simplexml? ( xml )
 	soap? ( xml )
@@ -80,7 +73,6 @@ COMMON_DEPEND="
 	fpm? ( acl? ( sys-apps/acl ) apparmor? ( sys-libs/libapparmor ) selinux? ( sys-libs/libselinux ) )
 	apache2? ( www-servers/apache[apache2_modules_unixd(+),threads=] )
 	argon2? ( app-crypt/argon2:= )
-	avif? ( media-libs/libavif:= )
 	berkdb? ( || (	sys-libs/db:5.3 sys-libs/db:4.8 ) )
 	bzip2? ( app-arch/bzip2:0= )
 	capstone? ( dev-libs/capstone )
@@ -89,7 +81,9 @@ COMMON_DEPEND="
 	enchant? ( app-text/enchant:2 )
 	ffi? ( dev-libs/libffi:= )
 	firebird? ( dev-db/firebird )
-	gd? ( media-libs/libjpeg-turbo:0= media-libs/libpng:0= )
+	gd? (
+		>=media-libs/gd-2.3.3-r4[avif?,jpeg?,png?,truetype?,webp?,xpm?]
+	)
 	gdbm? ( sys-libs/gdbm:0= )
 	gmp? ( dev-libs/gmp:0= )
 	iconv? ( virtual/libiconv )
@@ -117,9 +111,7 @@ COMMON_DEPEND="
 	truetype? ( media-libs/freetype )
 	unicode? ( dev-libs/oniguruma:= )
 	valgrind? ( dev-debug/valgrind )
-	webp? ( media-libs/libwebp:0= )
 	xml? ( >=dev-libs/libxml2-2.12.5 )
-	xpm? ( x11-libs/libXpm )
 	xslt? ( dev-libs/libxslt )
 	zip? ( dev-libs/libzip:= )
 	zlib? ( sys-libs/zlib:0= )
@@ -141,6 +133,11 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/bison"
 
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}/php-8.3.9-optional-png-testfixen.patch"
+	"${FILESDIR}/php-8.3.9-gd-cachevars.patch"
+)
 
 PHP_MV="$(ver_cut 1)"
 
@@ -254,13 +251,6 @@ src_prepare() {
 	# be running pre-install, in my opinion. Bug 927461.
 	rm ext/fileinfo/tests/bug78987.phpt || die
 
-	# The expected warnings aren't triggered in this test because we
-	# define session.save_path on the CLI:
-	#
-	#   https://github.com/php/php-src/issues/14368
-	#
-	rm ext/session/tests/gh13856.phpt || die
-
 	# Bug 935382, fixed eventually by
 	#
 	# - https://github.com/php/php-src/pull/14788
@@ -275,6 +265,26 @@ src_prepare() {
 	# - https://github.com/php/php-src/issues/14786
 	#
 	rm ext/dba/tests/dba_gdbm.phpt || die
+
+	# Most tests failing with an external libgd have been fixed,
+	# but there are a few stragglers:
+	#
+	#  * https://github.com/php/php-src/issues/11252
+	#
+	rm ext/gd/tests/bug43073.phpt \
+	   ext/gd/tests/bug48732.phpt \
+	   ext/gd/tests/bug48732-mb.phpt \
+	   ext/gd/tests/bug48801.phpt \
+	   ext/gd/tests/bug48801-mb.phpt \
+	   ext/gd/tests/bug53504.phpt \
+	   ext/gd/tests/bug65148.phpt \
+	   ext/gd/tests/bug73272.phpt \
+	   || die
+
+	# One-off, somebody forgot to update a version constant
+	rm ext/reflection/tests/ReflectionZendExtension.phpt || die
+
+	eautoconf --force
 }
 
 src_configure() {
@@ -313,7 +323,6 @@ src_configure() {
 	our_conf+=(
 		$(use_with apparmor fpm-apparmor)
 		$(use_with argon2 password-argon2 "${EPREFIX}/usr")
-		$(use_with avif)
 		$(use_enable bcmath)
 		$(use_with bzip2 bz2 "${EPREFIX}/usr")
 		$(use_enable calendar)
@@ -342,6 +351,7 @@ src_configure() {
 		$(use_enable phar)
 		$(use_enable pdo)
 		$(use_enable opcache)
+		$(use_enable opcache-jit)
 		$(use_with postgres pgsql "${EPREFIX}/usr")
 		$(use_enable posix)
 		$(use_with selinux fpm-selinux)
@@ -368,6 +378,17 @@ src_configure() {
 		$(use_with valgrind)
 	)
 
+	# Override autoconf cache variables for libcrypt algorithms.These
+	# otherwise cannot be detected when cross-compiling. Bug 931884.
+	our_conf+=(
+		ac_cv_crypt_blowfish=yes
+		ac_cv_crypt_des=yes
+		ac_cv_crypt_ext_des=yes
+		ac_cv_crypt_md5=yes
+		ac_cv_crypt_sha512=yes
+		ac_cv_crypt_sha256=yes
+	)
+
 	# DBA support
 	if use cdb || use berkdb || use flatfile || use gdbm || use inifile \
 		|| use qdbm || use lmdb || use tokyocabinet ; then
@@ -386,16 +407,20 @@ src_configure() {
 		$(use_with lmdb lmdb "${EPREFIX}/usr")
 	)
 
-	# Support for the GD graphics library
+	# Use the system copy of GD. The autoconf cache variable overrides
+	# allow cross-compilation to proceed since the corresponding
+	# features cannot be detected by running a program.
 	our_conf+=(
-		$(use_with truetype freetype)
-		$(use_enable cjk gd-jis-conv)
-		$(use_with gd jpeg)
-		$(use_with xpm)
-		$(use_with webp)
+		$(use_enable gd gd)
+		$(use_with gd external-gd)
+		php_cv_lib_gd_gdImageCreateFromAvif=$(usex avif)
+		php_cv_lib_gd_gdImageCreateFromBmp=yes
+		php_cv_lib_gd_gdImageCreateFromJpeg=$(usex jpeg)
+		php_cv_lib_gd_gdImageCreateFromPng=$(usex png)
+		php_cv_lib_gd_gdImageCreateFromTga=yes
+		php_cv_lib_gd_gdImageCreateFromWebp=$(usex webp)
+		php_cv_lib_gd_gdImageCreateFromXpm=$(usex xpm)
 	)
-	# enable gd last, so configure can pick up the previous settings
-	our_conf+=( $(use_enable gd) )
 
 	# IMAP support
 	if use imap ; then
