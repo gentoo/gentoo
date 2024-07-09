@@ -5,17 +5,18 @@ EAPI=8
 
 inherit autotools flag-o-matic multiprocessing
 
+DESCRIPTION="An object-oriented scripting language"
+HOMEPAGE="https://www.ruby-lang.org/"
+
 MY_P="${PN}-$(ver_cut 1-3)"
 S=${WORKDIR}/${MY_P}
 
+SLOT=$(ver_cut 1-2)
 MY_SUFFIX=$(ver_rs 1 '' ${SLOT})
 RUBYVERSION=${SLOT}.0
 
-DESCRIPTION="An object-oriented scripting language"
-HOMEPAGE="https://www.ruby-lang.org/"
 SRC_URI="https://cache.ruby-lang.org/pub/ruby/${SLOT}/${MY_P}.tar.xz"
 
-SLOT=$(ver_cut 1-2)
 LICENSE="|| ( Ruby-BSD BSD-2 )"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="berkdb debug doc examples gdbm jemalloc jit socks5 +ssl static-libs systemtap tk valgrind xemacs"
