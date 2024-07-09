@@ -34,6 +34,7 @@ DEPEND="
 	>=kde-frameworks/kcoreaddons-${KFMIN}:6
 	>=kde-frameworks/ki18n-${KFMIN}:6
 	>=kde-frameworks/kio-${KFMIN}:6
+	>=kde-frameworks/kwidgetsaddons-${KFMIN}:6
 	>=kde-frameworks/sonnet-${KFMIN}:6
 	>=kde-frameworks/syntax-highlighting-${KFMIN}:6
 	speech? ( >=dev-qt/qtspeech-${QTMIN}:6 )
