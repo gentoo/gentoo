@@ -93,7 +93,7 @@ LICENSE+="
 	Apache-2.0-with-LLVM-exceptions CC0-1.0 ISC MIT Unicode-DFS-2016
 "
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	>=dev-python/anyio-4.0.0[${PYTHON_USEDEP}]
