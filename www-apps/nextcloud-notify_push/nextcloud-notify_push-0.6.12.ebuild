@@ -363,6 +363,8 @@ LICENSE+=" Apache-2.0 BSD GPL-3 ISC MIT MPL-2.0 Unicode-DFS-2016"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+QA_FLAGS_IGNORED="usr/bin/${PN}"
+
 src_install() {
 	cargo_src_install
 	einstalldocs
