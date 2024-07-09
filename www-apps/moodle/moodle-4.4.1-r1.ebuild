@@ -42,6 +42,7 @@ RDEPEND="
 	|| (
 		dev-lang/php:8.1[${DB_FLAGS},${AUTHENTICATION_FLAGS},${PHP_FLAGS}]
 		dev-lang/php:8.2[${DB_FLAGS},${AUTHENTICATION_FLAGS},${PHP_FLAGS}]
+		dev-lang/php:8.3[${DB_FLAGS},${AUTHENTICATION_FLAGS},${PHP_FLAGS}]
 	)
 	virtual/httpd-php
 	virtual/cron"
