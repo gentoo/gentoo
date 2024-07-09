@@ -10,7 +10,7 @@ export CTARGET=${CTARGET:-${CHOST}}
 GO_BOOTSTRAP_MIN=1.20.14
 MY_PV=${PV/_/}
 
-inherit toolchain-funcs
+inherit go-env toolchain-funcs
 
 case ${PV}  in
 *9999*)
@@ -33,7 +33,7 @@ HOMEPAGE="https://go.dev"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-IUSE="abi_mips_o32 abi_mips_n64 cpu_flags_x86_sse2"
+IUSE="cpu_flags_x86_sse2"
 
 RDEPEND="
 arm? ( sys-devel/binutils[gold] )
@@ -66,55 +66,8 @@ DOCS=(
 	SECURITY.md
 )
 
-go_arch() {
-	# By chance most portage arch names match Go
-	local tc_arch=$(tc-arch $@)
-	case "${tc_arch}" in
-		x86)	echo 386;;
-		x64-*)	echo amd64;;
-		loong)	echo loong64;;
-		mips) if use abi_mips_o32; then
-				[[ $(tc-endian $@) = big ]] && echo mips || echo mipsle
-			elif use abi_mips_n64; then
-				[[ $(tc-endian $@) = big ]] && echo mips64 || echo mips64le
-			fi ;;
-		ppc64) [[ $(tc-endian $@) = big ]] && echo ppc64 || echo ppc64le ;;
-		riscv) echo riscv64 ;;
-		s390) echo s390x ;;
-		*)		echo "${tc_arch}";;
-	esac
-}
-
-go_arm() {
-	case "${1:-${CHOST}}" in
-		armv5*)	echo 5;;
-		armv6*)	echo 6;;
-		armv7*)	echo 7;;
-		*)
-			die "unknown GOARM for ${1:-${CHOST}}"
-			;;
-	esac
-}
-
-go_os() {
-	case "${1:-${CHOST}}" in
-		*-linux*)	echo linux;;
-		*-darwin*)	echo darwin;;
-		*-freebsd*)	echo freebsd;;
-		*-netbsd*)	echo netbsd;;
-		*-openbsd*)	echo openbsd;;
-		*-solaris*)	echo solaris;;
-		*-cygwin*|*-interix*|*-winnt*)
-			echo windows
-			;;
-		*)
-			die "unknown GOOS for ${1:-${CHOST}}"
-			;;
-	esac
-}
-
 go_tuple() {
-	echo "$(go_os $@)_$(go_arch $@)"
+	echo "$(go-env_goos $@)_$(go-env_goarch $@)"
 }
 
 go_cross_compile() {
@@ -140,16 +93,16 @@ src_compile() {
 	export GOBIN="${GOROOT}/bin"
 
 	# Go's build script does not use BUILD/HOST/TARGET consistently. :(
-	export GOHOSTARCH=$(go_arch ${CBUILD})
-	export GOHOSTOS=$(go_os ${CBUILD})
+	export GOHOSTARCH=$(go-env_goarch ${CBUILD})
+	export GOHOSTOS=$(go-env_goos ${CBUILD})
 	export CC=$(tc-getBUILD_CC)
 
-	export GOARCH=$(go_arch)
-	export GOOS=$(go_os)
+	export GOARCH=$(go-env_goarch)
+	export GOOS=$(go-env_goos)
 	export CC_FOR_TARGET=$(tc-getCC)
 	export CXX_FOR_TARGET=$(tc-getCXX)
-	use arm && export GOARM=$(go_arm)
-	use x86 && export GO386=$(usex cpu_flags_x86_sse2 '' 'softfloat')
+	use arm && export GOARM=$(go-env_goarm)
+	use x86 && export GO386=$(go-env_go386)
 
 	cd src
 	bash -x ./make.bash || die "build failed"
