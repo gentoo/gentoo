@@ -48,6 +48,24 @@ go-env_set_compile_environment() {
 	export CGO_LDFLAGS="${CGO_LDFLAGS:-$LDFLAGS}"
 }
 
+# @FUNCTION: go-env_goos
+# @USAGE: [toolchain prefix]
+# @DESCRIPTION:
+# Returns the appropriate GOOS setting for the target operating system.
+go-env_goos() {
+	local target=${1:-${CHOST}}
+	case "${target}" in
+		*-linux*) echo linux ;;
+		*-darwin*) echo darwin ;;
+		*-freebsd*) echo freebsd ;;
+		*-netbsd*) echo netbsd ;;
+		*-openbsd*) echo openbsd ;;
+		*-solaris*) echo solaris ;;
+		*-cygwin*|*-interix*|*-winnt*) echo windows ;;
+		*) die "unknown GOOS for ${target}" ;;
+	esac
+}
+
 # @FUNCTION: go-env_goarch
 # @USAGE: [toolchain prefix]
 # @DESCRIPTION:
