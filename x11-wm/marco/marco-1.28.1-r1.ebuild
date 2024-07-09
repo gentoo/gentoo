@@ -23,6 +23,7 @@ COMMON_DEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
 	>=dev-libs/glib-2.58:2
 	>=gnome-base/libgtop-2:2=
+	>=mate-base/mate-desktop-1.27.1
 	media-libs/libcanberra[gtk3]
 	x11-libs/cairo
 	>=x11-libs/pango-1.2[X]
@@ -47,7 +48,6 @@ COMMON_DEPEND="
 
 RDEPEND="${COMMON_DEPEND}
 	gnome-extra/zenity
-	>=mate-base/mate-desktop-1.20.0
 	virtual/libintl
 "
 
