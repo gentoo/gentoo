@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,11 +22,12 @@ elif [[ ${PV} == *.*.* ]] ; then
 	SRC_URI="https://www.kernel.org/pub/linux/kernel/v${LINUX_V}/${LINUX_PATCH}"
 else
 	LINUX_VER=${PV}
-	SRC_URI=""
 fi
 
 LINUX_SOURCES="linux-${LINUX_VER}.tar.xz"
 SRC_URI+=" https://www.kernel.org/pub/linux/kernel/v${LINUX_V}/${LINUX_SOURCES}"
+S_K="${WORKDIR}/linux-${LINUX_VER}"
+S="${S_K}/tools/bootconfig"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -37,18 +38,13 @@ BDEPEND="
 	${LINUX_PATCH+dev-util/patchutils}
 "
 
-RDEPEND=""
-
 DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-5.10
 "
 
-S_K="${WORKDIR}/linux-${LINUX_VER}"
-S="${S_K}/tools/bootconfig"
-
 CONFIG_CHECK="~BOOT_CONFIG"
 
-PATCHES=( "${FILESDIR}"/${P}-cflags.patch )
+PATCHES=( "${FILESDIR}"/${PN}-5.18-cflags.patch )
 
 src_unpack() {
 	local paths=(
