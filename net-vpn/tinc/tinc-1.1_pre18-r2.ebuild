@@ -6,7 +6,7 @@ EAPI=8
 MY_PV=${PV/_/}
 MY_P=${PN}-${MY_PV}
 
-inherit autotools flag-o-matic systemd
+inherit autotools bash-completion-r1 flag-o-matic systemd
 
 DESCRIPTION="tinc is an easy to configure VPN implementation"
 HOMEPAGE="https://www.tinc-vpn.org/"
@@ -80,6 +80,8 @@ src_install() {
 	doconfd "${FILESDIR}"/tinc.networks
 	newconfd "${FILESDIR}"/tincd.conf tincd
 	newinitd "${FILESDIR}"/tincd-r2 tincd
+
+	bashcomp_alias tinc tincd
 }
 
 pkg_postinst() {
