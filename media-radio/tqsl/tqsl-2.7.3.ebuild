@@ -4,7 +4,7 @@
 EAPI=8
 
 WX_GTK_VER="3.2-gtk3"
-inherit cmake wxwidgets
+inherit cmake wxwidgets xdg
 
 DESCRIPTION="ARRL Logbook of the World"
 HOMEPAGE="https://www.arrl.org/tqsl-download"
