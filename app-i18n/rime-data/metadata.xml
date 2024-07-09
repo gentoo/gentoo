@@ -2,6 +2,18 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
+		<email>tanekliang@gmail.com</email>
+		<name>Yongxiang Liang</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>i@bitbili.net</email>
+		<name>Ryan Qian</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
 		<email>arfrever.fta@gmail.com</email>
 		<name>Arfrever Frehtes Taifersar Arahesis</name>
 	</maintainer>
@@ -16,11 +28,13 @@
 	<use>
 		<flag name="extra">Install extra packages</flag>
 	</use>
+	<stabilize-allarches/>
 	<upstream>
 		<maintainer>
 			<email>chen.sst@gmail.com</email>
 			<name>弓辰 (Gōng Chén)</name>
 		</maintainer>
 		<remote-id type="github">rime/brise</remote-id>
+		<remote-id type="github">rime/rime-essay</remote-id>
 	</upstream>
 </pkgmetadata>
