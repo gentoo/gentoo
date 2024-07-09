@@ -1,0 +1,25 @@
+From 29b4303e905f43556043efde95e19f32e04df9a5 Mon Sep 17 00:00:00 2001
+From: Jelle Zijlstra <jelle.zijlstra@gmail.com>
+Date: Fri, 24 May 2024 21:00:17 -0700
+Subject: [PATCH] Fix stubgen for Python 3.13
+
+__firstlineno__ and __static_attributes__ are new in 3.13.
+__annotate__ will be new in 3.14, so we might as well add it now.
+---
+ mypy/stubgenc.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/mypy/stubgenc.py b/mypy/stubgenc.py
+index 29b2636d39cc..7e3ef49c6e9a 100755
+--- a/mypy/stubgenc.py
++++ b/mypy/stubgenc.py
+@@ -466,6 +466,9 @@ def is_skipped_attribute(self, attr: str) -> bool:
+                 "__module__",
+                 "__weakref__",
+                 "__annotations__",
++                "__firstlineno__",
++                "__static_attributes__",
++                "__annotate__",
+             )
+             or attr in self.IGNORED_DUNDERS
+             or is_pybind_skipped_attribute(attr)  # For pickling

@@ -5,9 +5,9 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
-inherit distutils-r1 multiprocessing
+inherit distutils-r1
 
 DESCRIPTION="Optional static typing for Python"
 HOMEPAGE="
@@ -51,6 +51,11 @@ BDEPEND="
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://github.com/python/mypy/pull/17290
+	"${FILESDIR}/${P}-py313.patch"
+)
+
 # frustratingly, mypyc produces non-deterministic output. If ccache is enabled it will be a waste of time,
 # but simultaneously it might trash your system and fill up the cache with a giant wave of non-reproducible
 # test files (https://github.com/mypyc/mypyc/issues/1014)
@@ -58,6 +63,11 @@ export CCACHE_DISABLE=1
 
 src_compile() {
 	local -x MYPY_USE_MYPYC=$(usex native-extensions 1 0)
+	case ${EPYTHON} in
+		python3.13)
+			# https://github.com/mypyc/mypyc/issues/1056
+			MYPY_USE_MYPYC=0
+	esac
 	distutils-r1_src_compile
 }
 
@@ -87,6 +97,11 @@ python_test() {
 				mypyc/test/test_run.py::TestRun::run-i64.test::testI64ErrorValuesAndUndefined
 			)
 			;;
+		python3.13)
+			EPYTEST_DESELECT+=(
+				# https://github.com/mypyc/mypyc/issues/1056
+				mypyc/test
+			)
 	esac
 
 	# Some mypy/test/testcmdline.py::PythonCmdlineSuite tests
