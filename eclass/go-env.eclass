@@ -53,21 +53,23 @@ go-env_set_compile_environment() {
 # @DESCRIPTION:
 # Returns the appropriate GOARCH setting for the target architecture.
 go-env_goarch() {
-	# By chance most portage arch names match Go
-	local tc_arch=$(tc-arch $@)
-	case "${tc_arch}" in
-		x86)	echo 386;;
-		x64-*)	echo amd64;;
-		loong)	echo loong64;;
-		mips) if use abi_mips_o32; then
-				[[ $(tc-endian $@) = big ]] && echo mips || echo mipsle
-			elif use abi_mips_n64; then
-				[[ $(tc-endian $@) = big ]] && echo mips64 || echo mips64le
-			fi ;;
-		ppc64) [[ $(tc-endian $@) = big ]] && echo ppc64 || echo ppc64le ;;
-		riscv) echo riscv64 ;;
-		s390) echo s390x ;;
-		*)		echo "${tc_arch}";;
+	local target=${1:-${CHOST}}
+	# Some Portage arch names match Go.
+	local arch=$(tc-arch "${target}") cpu=${target%%-*}
+	case "${arch}" in
+		x86)	echo 386 ;;
+		loong)	echo loong64 ;;
+		*)		case "${cpu}" in
+					aarch64*be) echo arm64be ;;
+					arm64) echo arm64 ;;
+					arm*b*) echo armbe ;;
+					mips64*l*) echo mips64le ;;
+					mips*l*) echo mipsle ;;
+					powerpc64le*) echo ppc64le ;;
+					arm64|s390x) echo "${cpu}" ;;
+					mips64*|riscv64*|sparc64*) echo "${arch}64" ;;
+					*) echo "${arch}" ;;
+				esac ;;
 	esac
 }
 
