@@ -83,7 +83,8 @@ src_compile() {
 }
 
 src_test() {
-	python_foreach_impl meson_src_test --no-rebuild --verbose
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	python_foreach_impl epytest
 }
 
 src_install() {
