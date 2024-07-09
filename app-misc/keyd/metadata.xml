@@ -5,7 +5,12 @@
     <email>jack@pngu.org</email>
     <name>Jack Sangdahl</name>
   </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+	</maintainer>
   <upstream>
+    <bugs-to>https://github.com/rvaiya/keyd/issues</bugs-to>
     <remote-id type="github">rvaiya/keyd</remote-id>
   </upstream>
 </pkgmetadata>

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DESCRIPTION=" A key remapping daemon for linux"
+DESCRIPTION="A key remapping daemon for linux"
 HOMEPAGE="https://github.com/rvaiya/keyd"
 SRC_URI="https://github.com/rvaiya/keyd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
