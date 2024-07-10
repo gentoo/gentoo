@@ -15,7 +15,7 @@ SRC_URI="http://www.makemkv.com/download/${MY_P}.tar.gz
 S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2 LGPL-2.1 MPL-1.1 MakeMKV-EULA openssl"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 x86"
+KEYWORDS="amd64 arm arm64 x86"
 IUSE="+gui +java"
 RESTRICT="bindist mirror"
 
