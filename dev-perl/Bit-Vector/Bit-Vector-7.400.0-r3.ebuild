@@ -13,7 +13,7 @@ DESCRIPTION="Efficient bit vector, set of integers and big int math library"
 # https://rt.cpan.org/Public/Bug/Display.html?id=132512
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 RDEPEND="
 	>=dev-perl/Carp-Clan-5.300.0
