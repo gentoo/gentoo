@@ -1,0 +1,73 @@
+From 4a1b480e7e3758cf2cf06354ec5720020db16ce7 Mon Sep 17 00:00:00 2001
+From: Antonio Valentino <antonio.valentino@tiscali.it>
+Date: Sun, 19 May 2024 17:39:47 +0200
+Subject: [PATCH] Fix compatibility with Python v3.13 (Closes: #1166)
+
+The unittest.makeSuite function is not available in Python 3.13.
+---
+diff --git a/tables/tests/test_aux.py b/tables/tests/test_aux.py
+index 95f34ee16..cf4f022de 100644
+--- a/tables/tests/test_aux.py
++++ b/tables/tests/test_aux.py
+@@ -2,6 +2,7 @@
+ import numpy as np
+ 
+ import tables as tb
++from tables.tests.common import make_suite
+ 
+ 
+ class TestAuxiliaryFunctions(unittest.TestCase):
+diff --git a/tables/nodes/tests/test_filenode.py b/tables/nodes/tests/test_filenode.py
+index c2754218a..3572cc38f 100644
+--- a/tables/nodes/tests/test_filenode.py
++++ b/tables/nodes/tests/test_filenode.py
+@@ -9,7 +9,7 @@
+ from ... import open_file, file, NoSuchNodeError
+ from ...nodes import filenode
+ from ...tests.common import (
+-    unittest, TempFileMixin, parse_argv, print_versions,
++    unittest, TempFileMixin, parse_argv, print_versions, make_suite,
+     PyTablesTestCase as TestCase)
+ 
+ 
+diff --git a/tables/tests/common.py b/tables/tests/common.py
+index 31378a880..918b17247 100644
+--- a/tables/tests/common.py
++++ b/tables/tests/common.py
+@@ -366,3 +366,10 @@ def test00(self):
+         print(f"VmSize: {vmsize:>7} kB\tVmRSS: {vmrss:>7} kB")
+         print(f"VmData: {vmdata:>7} kB\tVmStk: {vmstk:>7} kB")
+         print(f"VmExe:  {vmexe:>7} kB\tVmLib: {vmlib:>7} kB")
++
++
++try:
++    from unittest import makeSuite as make_suite
++except ImportError:
++    def make_suite(test_case_class):
++        return unittest.TestLoader().loadTestsFromTestCase(test_case_class)
+From 424784895b0fb15ad06707ce60f9829cef4f11e2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Miro=20Hron=C4=8Dok?= <miro@hroncok.cz>
+Date: Mon, 3 Jun 2024 17:21:38 +0200
+Subject: [PATCH] Make tables.tests.common.make_suite() accept the prefix
+ argument
+
+...as test_queries.py uses it.
+---
+ tables/tests/common.py | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/tables/tests/common.py b/tables/tests/common.py
+index 918b17247..1d2e5feab 100644
+--- a/tables/tests/common.py
++++ b/tables/tests/common.py
+@@ -371,5 +371,8 @@ def test00(self):
+ try:
+     from unittest import makeSuite as make_suite
+ except ImportError:
+-    def make_suite(test_case_class):
+-        return unittest.TestLoader().loadTestsFromTestCase(test_case_class)
++    def make_suite(test_case_class, *, prefix=None):
++        loader = unittest.TestLoader()
++        if prefix:
++            loader.testMethodPrefix = prefix
++        return loader.loadTestsFromTestCase(test_case_class)

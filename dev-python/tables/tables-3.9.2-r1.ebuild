@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 prefix pypi
@@ -52,9 +52,18 @@ python_prepare_all() {
 	local PATCHES=(
 		# https://github.com/PyTables/PyTables/pull/1176
 		"${FILESDIR}/${P}-numpy-2.patch"
+		# https://github.com/PyTables/PyTables/commit/4a1b480e7e3758cf2cf06354ec5720020db16ce7
+		# https://github.com/PyTables/PyTables/commit/424784895b0fb15ad06707ce60f9829cef4f11e2
+		"${FILESDIR}/${P}-py313.patch"
 	)
 
 	rm -r c-blosc/{blosc,internal-complibs} || die
+
+	# part of https://github.com/PyTables/PyTables/commit/4a1b480e7e3758cf2cf06354ec5720020db16ce7
+	# (warning: do it *before* patching, so it doesn't modify
+	# the added function)
+	find -name '*.py' -exec \
+		sed -i -e 's:unittest[.]makeSuite:make_suite:' {} + || die
 
 	distutils-r1_python_prepare_all
 
