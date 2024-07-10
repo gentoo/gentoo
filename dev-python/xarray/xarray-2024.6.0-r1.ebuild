@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="big-endian"
 
 RDEPEND="
@@ -33,7 +33,7 @@ BDEPEND="
 		dev-python/cftime[${PYTHON_USEDEP}]
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
-		dev-python/netcdf4[bzip2,szip,${PYTHON_USEDEP}]
+		!riscv? ( dev-python/netcdf4[bzip2,szip,${PYTHON_USEDEP}] )
 		dev-python/toolz[${PYTHON_USEDEP}]
 		!hppa? ( >=dev-python/scipy-1.4[${PYTHON_USEDEP}] )
 	)
