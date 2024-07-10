@@ -22,7 +22,7 @@ if [[ ${PV} == 99999999 ]]; then
 	EGIT_REPO_URI="https://github.com/vinceliuice/${MY_PN}.git"
 else
 	SRC_URI="https://github.com/vinceliuice/${MY_PN}/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ppc64"
+	KEYWORDS="~amd64 arm64 ppc64"
 	S="${WORKDIR}/${MY_PN}-${MY_PV}"
 fi
 
