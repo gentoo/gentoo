@@ -13,7 +13,7 @@ SRC_URI="https://ppa.launchpadcontent.net/ethereum/ethereum/ubuntu/pool/main/e/e
 # https://geth.ethereum.org/docs/getting-started/installing-geth#ubuntu-via-ppas
 S="${WORKDIR}/ethereum-${LONG_VERSION}"
 
-LICENSE="GPL-3+ LGPL-3+"
+LICENSE="GPL-3+ LGPL-3+ MIT || ( BSD GPL-2 ) BSD-2 LGPL-2.1+ Apache-2.0 ISC MIT MPL-2.0 Unlicense"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="devtools"
