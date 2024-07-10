@@ -58,7 +58,7 @@ RDEPEND="
 	>=dev-python/qtconsole-5.5.1[${PYTHON_USEDEP}]
 	<dev-python/qtconsole-5.6.0[${PYTHON_USEDEP}]
 	>=dev-python/QtPy-2.4.0[${PYTHON_USEDEP},svg,webengine]
-	>=sci-libs/rtree-0.9.7[${PYTHON_USEDEP}]
+	>=dev-python/rtree-0.9.7[${PYTHON_USEDEP}]
 	>=dev-python/sphinx-0.6.6[${PYTHON_USEDEP}]
 	>=dev-python/spyder-kernels-3.0.0_beta7[${PYTHON_USEDEP}]
 	<dev-python/spyder-kernels-3.0.0_beta8[${PYTHON_USEDEP}]

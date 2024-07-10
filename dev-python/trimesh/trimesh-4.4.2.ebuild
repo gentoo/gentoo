@@ -41,7 +41,7 @@ RDEPEND="
 	dev-python/svg-path[${PYTHON_USEDEP}]
 	dev-python/sympy[${PYTHON_USEDEP}]
 	dev-python/xxhash[${PYTHON_USEDEP}]
-	sci-libs/rtree[${PYTHON_USEDEP}]
+	dev-python/rtree[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
