@@ -20,13 +20,13 @@ HOMEPAGE="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="test"
+IUSE="blosc bzip2 mpi test szip zstd"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	sci-libs/hdf5:=
-	sci-libs/netcdf:=[hdf5]
+	sci-libs/netcdf:=[blosc(-)=,bzip2(-)=,hdf5,mpi=,szip=,zstd(-)=]
 "
 RDEPEND="
 	${DEPEND}
@@ -50,6 +50,5 @@ python_test() {
 
 pkg_postinst() {
 	optfeature "HDF4 support" sci-libs/hdf "sci-libs/netcdf[hdf]"
-	optfeature "MPI parallel IO support" "sci-libs/hdf5[mpi]" "sci-libs/netcdf[mpi]"
 	optfeature "OPeNDAP support" net-misc/curl "sci-libs/netcdf[dap]"
 }
