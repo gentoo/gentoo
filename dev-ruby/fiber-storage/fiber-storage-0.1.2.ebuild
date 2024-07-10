@@ -17,7 +17,7 @@ SRC_URI="https://github.com/ioquatix/fiber-storage/archive/refs/tags/v${PV}.tar.
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~sparc"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~sparc"
 
 all_ruby_prepare() {
 	sed -i -E 's/require_relative "(.+)"/require File.expand_path("\1")/g' "${RUBY_FAKEGEM_GEMSPEC}" || die
