@@ -1,0 +1,51 @@
+diff --git a/patsy/highlevel.py b/patsy/highlevel.py
+index 78d2942..298739d 100644
+--- a/patsy/highlevel.py
++++ b/patsy/highlevel.py
+@@ -178,7 +178,7 @@ def _do_highlevel_design(formula_like, data, eval_env,
+         else:
+             # subok=True is necessary here to allow DesignMatrixes to pass
+             # through
+-            (lhs, rhs) = (None, asarray_or_pandas(formula_like, subok=True))
++            (lhs, rhs) = (None, asarray_or_pandas(formula_like, subok=True, copy=None))
+         # some sort of explicit matrix or matrices were given. Currently we
+         # have them in one of these forms:
+         #   -- an ndarray or subclass
+diff --git a/patsy/state.py b/patsy/state.py
+index 933c588..c489a4b 100644
+--- a/patsy/state.py
++++ b/patsy/state.py
+@@ -103,7 +103,7 @@ class Center(object):
+         pass
+ 
+     def transform(self, x):
+-        x = asarray_or_pandas(x)
++        x = asarray_or_pandas(x, copy=None)
+         # This doesn't copy data unless our input is a DataFrame that has
+         # heterogeneous types. And in that case we're going to be munging the
+         # types anyway, so copying isn't a big deal.
+diff --git a/patsy/util.py b/patsy/util.py
+index 3116e11..7ac6f79 100644
+--- a/patsy/util.py
++++ b/patsy/util.py
+@@ -69,7 +69,7 @@ def asarray_or_pandas(a, copy=False, dtype=None, subok=False):
+ 
+ def test_asarray_or_pandas():
+     import warnings
+-    assert type(asarray_or_pandas([1, 2, 3])) is np.ndarray
++    assert type(asarray_or_pandas([1, 2, 3], copy=True)) is np.ndarray
+     with warnings.catch_warnings() as w:
+         warnings.filterwarnings('ignore', 'the matrix subclass',
+                                 PendingDeprecationWarning)
+@@ -83,9 +83,9 @@ def test_asarray_or_pandas():
+     assert np.array_equal(a, a_copy)
+     a_copy[0] = 100
+     assert not np.array_equal(a, a_copy)
+-    assert np.allclose(asarray_or_pandas([1, 2, 3], dtype=float),
++    assert np.allclose(asarray_or_pandas([1, 2, 3], dtype=float, copy=None),
+                        [1.0, 2.0, 3.0])
+-    assert asarray_or_pandas([1, 2, 3], dtype=float).dtype == np.dtype(float)
++    assert asarray_or_pandas([1, 2, 3], dtype=float, copy=None).dtype == np.dtype(float)
+     a_view = asarray_or_pandas(a, dtype=a.dtype)
+     a_view[0] = 99
+     assert a[0] == 99
