@@ -33,6 +33,12 @@ BDEPEND="${RUBY_DEPS}
 
 AT_M4DIR="m4macros"
 
+PATCHES=(
+	# backport upstream fix for gcc 14 implicit function declarations and by
+	# extension, LTO type mismatches. Also fixes format-security.
+	"${FILESDIR}"/${P}-gcc14.patch
+)
+
 src_prepare() {
 	sed -i \
 		-e "/PKG_CHECK_MODULES/s/\(check\)/$(usex test '\1' _)/" \
