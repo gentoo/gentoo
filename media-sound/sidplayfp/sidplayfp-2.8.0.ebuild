@@ -18,6 +18,7 @@ RDEPEND="
 	alsa? ( media-libs/alsa-lib )
 	pulseaudio? ( media-libs/libpulse )"
 DEPEND="${RDEPEND}
+	media-plugins/mpg123-output-plugins
 	oss? ( virtual/os-headers )"
 
 DOCS=( AUTHORS README TODO )
