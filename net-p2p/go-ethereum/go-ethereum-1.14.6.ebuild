@@ -5,10 +5,13 @@ EAPI=8
 
 inherit go-module
 
+LONG_VERSION="${PV}+build30044+noble"
 DESCRIPTION="Official golang implementation of the Ethereum protocol"
 HOMEPAGE="https://github.com/ethereum/go-ethereum"
-SRC_URI="https://github.com/ethereum/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-deps.tar.xz"
+SRC_URI="https://ppa.launchpadcontent.net/ethereum/ethereum/ubuntu/pool/main/e/ethereum/ethereum_${LONG_VERSION}.tar.xz -> ${P}.tar.xz"
+# Above PPA is listed as an official source here:
+# https://geth.ethereum.org/docs/getting-started/installing-geth#ubuntu-via-ppas
+S="${WORKDIR}/ethereum-${LONG_VERSION}"
 
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0"
@@ -17,6 +20,11 @@ IUSE="devtools"
 
 # Does all kinds of wonky stuff like connecting to Docker daemon, network activity, ...
 RESTRICT+=" test"
+
+src_unpack() {
+	default
+	mv "${S}/.mod" "${WORKDIR}/go-mod" || die
+}
 
 src_compile() {
 	emake $(usex devtools all geth)
