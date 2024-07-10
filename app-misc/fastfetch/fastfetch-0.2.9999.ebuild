@@ -26,7 +26,7 @@ RESTRICT="!test? ( test )"
 # note - qa-vdb will always report errors because fastfetch loads the libs dynamically
 # make sure to crank yyjson minimum version to match bundled version
 RDEPEND="
-	>=dev-libs/yyjson-0.9.0
+	>=dev-libs/yyjson-0.10.0
 	sys-libs/zlib
 	X? ( x11-libs/libX11 )
 	chafa? ( media-gfx/chafa )
