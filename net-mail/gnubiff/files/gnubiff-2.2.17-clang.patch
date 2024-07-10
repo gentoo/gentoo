@@ -1,0 +1,15 @@
+--- gnubiff-2.2.17-r3/src/Makefile.am
++++ gnubiff-2.2.17-r3/src/Makefile.am
+@@ -6,11 +6,11 @@
+ 	-DGNUBIFF_DATADIR=\""$(pkgdatadir)"\"			\
+ 	-DGNUBIFF_ICONDIR=\""$(datadir)/pixmaps"\"		\
+ 	-DGNUBIFF_UIDIR=\""$(datadir)/gnome-2.0/ui"\"	\
+ 	-DREAL_DATADIR=\""$(datadir)"\"					\
+ 	-D_GNU_SOURCE									\
+-	-Wall -ansi -pedantic -export-dynamic
++	-Wall -ansi -pedantic
+ 
+ bin_PROGRAMS = gnubiff
+ 
+ gnome_sources =  \
+ 	ui-applet-gnome.cc 		ui-applet-gnome.h

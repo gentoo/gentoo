@@ -1,6 +1,8 @@
---- src/nls.h	2009-01-01 16:45:39.000000000 -0800
-+++ src/nls.h	2010-10-01 17:13:03.595458860 -0700
-@@ -49,11 +49,6 @@
+--- gnubiff-2.2.17/src/nls.h
++++ gnubiff-2.2.17/src/nls.h
+@@ -43,13 +43,8 @@
+ #    define N_(String) (String)
+ #  endif
  #else
  #  define _(String) (String)
  #  define N_(String) (String)
