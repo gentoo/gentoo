@@ -28,3 +28,8 @@ BDEPEND="
 "
 
 distutils_enable_tests unittest
+
+PATCHES=(
+	# https://github.com/python/importlib_resources/pull/313
+	"${FILESDIR}/${P}-be.patch"
+)
