@@ -1,0 +1,670 @@
+https://bugs.gentoo.org/927178#c3
+
+No upstream bug link -- their trac was temporarily down so I had to send the
+report in via email.
+
+Revision exported from:
+
+```
+svn diff -c 11167 https://svn.filezilla-project.org/svn/FileZilla3
+```
+
+https://svn.filezilla-project.org/filezilla?view=revision&revision=11167
+
+
+Index: trunk/src/engine/storj/delete.cpp
+===================================================================
+--- trunk/src/engine/storj/delete.cpp	(revision 11166)
++++ trunk/src/engine/storj/delete.cpp	(revision 11167)
+@@ -3,6 +3,7 @@
+ #include "../directorycache.h"
+ #include "delete.h"
+ 
++namespace {
+ enum DeleteStates
+ {
+ 	delete_init,
+@@ -9,6 +10,7 @@
+ 	delete_resolve,
+ 	delete_delete
+ };
++}
+ 
+ int CStorjDeleteOpData::Send()
+ {
+Index: trunk/src/engine/storj/list.cpp
+===================================================================
+--- trunk/src/engine/storj/list.cpp	(revision 11166)
++++ trunk/src/engine/storj/list.cpp	(revision 11167)
+@@ -3,6 +3,7 @@
+ #include "../directorycache.h"
+ #include "list.h"
+ 
++namespace {
+ enum listStates
+ {
+ 	list_init = 0,
+@@ -9,6 +10,7 @@
+ 	list_waitlock,
+ 	list_list
+ };
++}
+ 
+ int CStorjListOpData::Send()
+ {
+Index: trunk/src/engine/storj/rmd.cpp
+===================================================================
+--- trunk/src/engine/storj/rmd.cpp	(revision 11166)
++++ trunk/src/engine/storj/rmd.cpp	(revision 11167)
+@@ -5,6 +5,7 @@
+ 
+ #include <assert.h>
+ 
++namespace {
+ enum mkdStates
+ {
+ 	rmd_init = 0,
+@@ -11,8 +12,8 @@
+ 	rmd_rmbucket,
+ 	rmd_rmdir
+ };
++}
+ 
+-
+ int CStorjRemoveDirOpData::Send()
+ {
+ 	switch (opState) {
+Index: trunk/src/engine/ftp/chmod.cpp
+===================================================================
+--- trunk/src/engine/ftp/chmod.cpp	(revision 11166)
++++ trunk/src/engine/ftp/chmod.cpp	(revision 11167)
+@@ -3,6 +3,7 @@
+ #include "chmod.h"
+ #include "../directorycache.h"
+ 
++namespace {
+ enum chmodStates
+ {
+ 	chmod_init,
+@@ -9,6 +10,7 @@
+ 	chmod_waitcwd,
+ 	chmod_chmod
+ };
++}
+ 
+ int CFtpChmodOpData::Send()
+ {
+Index: trunk/src/engine/ftp/cwd.cpp
+===================================================================
+--- trunk/src/engine/ftp/cwd.cpp	(revision 11166)
++++ trunk/src/engine/ftp/cwd.cpp	(revision 11167)
+@@ -3,6 +3,7 @@
+ #include "cwd.h"
+ #include "../pathcache.h"
+ 
++namespace {
+ enum cwdStates
+ {
+ 	cwd_init = 0,
+@@ -12,6 +13,7 @@
+ 	cwd_cwd_subdir,
+ 	cwd_pwd_subdir
+ };
++}
+ 
+ int CFtpChangeDirOpData::Send()
+ {
+Index: trunk/src/engine/ftp/delete.cpp
+===================================================================
+--- trunk/src/engine/ftp/delete.cpp	(revision 11166)
++++ trunk/src/engine/ftp/delete.cpp	(revision 11167)
+@@ -3,6 +3,7 @@
+ #include "delete.h"
+ #include "../directorycache.h"
+ 
++namespace {
+ enum rmdStates
+ {
+ 	del_init,
+@@ -9,6 +10,7 @@
+ 	del_waitcwd,
+ 	del_del
+ };
++}
+ 
+ int CFtpDeleteOpData::Send()
+ {
+Index: trunk/src/engine/ftp/filetransfer.cpp
+===================================================================
+--- trunk/src/engine/ftp/filetransfer.cpp	(revision 11166)
++++ trunk/src/engine/ftp/filetransfer.cpp	(revision 11167)
+@@ -12,6 +12,22 @@
+ 
+ #include <assert.h>
+ 
++namespace {
++enum filetransferStates
++{
++        filetransfer_init = 0,
++        filetransfer_waitcwd,
++        filetransfer_waitlist,
++        filetransfer_size,
++        filetransfer_mdtm,
++        filetransfer_resumetest,
++        filetransfer_transfer,
++        filetransfer_waittransfer,
++        filetransfer_waitresumetest,
++        filetransfer_mfmt
++};
++}
++
+ CFtpFileTransferOpData::CFtpFileTransferOpData(CFtpControlSocket& controlSocket, CFileTransferCommand const& cmd)
+ 	: CFileTransferOpData(L"CFtpFileTransferOpData", cmd)
+ 	, CFtpOpData(controlSocket)
+Index: trunk/src/engine/ftp/filetransfer.h
+===================================================================
+--- trunk/src/engine/ftp/filetransfer.h	(revision 11166)
++++ trunk/src/engine/ftp/filetransfer.h	(revision 11167)
+@@ -3,20 +3,6 @@
+ 
+ #include "ftpcontrolsocket.h"
+ 
+-enum filetransferStates
+-{
+-	filetransfer_init = 0,
+-	filetransfer_waitcwd,
+-	filetransfer_waitlist,
+-	filetransfer_size,
+-	filetransfer_mdtm,
+-	filetransfer_resumetest,
+-	filetransfer_transfer,
+-	filetransfer_waittransfer,
+-	filetransfer_waitresumetest,
+-	filetransfer_mfmt
+-};
+-
+ class CFtpFileTransferOpData final : public CFileTransferOpData, public CFtpTransferOpData, public CFtpOpData
+ {
+ public:
+Index: trunk/src/engine/ftp/ftpcontrolsocket.cpp
+===================================================================
+--- trunk/src/engine/ftp/ftpcontrolsocket.cpp	(revision 11166)
++++ trunk/src/engine/ftp/ftpcontrolsocket.cpp	(revision 11167)
+@@ -34,6 +34,9 @@
+ 
+ #include <assert.h>
+ 
++using namespace ftpLogonStates;
++using namespace FtpRawTransferStates;
++
+ CFtpControlSocket::CFtpControlSocket(CFileZillaEnginePrivate & engine)
+ 	: CRealControlSocket(engine)
+ {
+Index: trunk/src/engine/ftp/list.cpp
+===================================================================
+--- trunk/src/engine/ftp/list.cpp	(revision 11166)
++++ trunk/src/engine/ftp/list.cpp	(revision 11167)
+@@ -9,6 +9,15 @@
+ #include <assert.h>
+ 
+ namespace {
++enum listStates
++{
++        list_init,
++        list_waitcwd,
++        list_waitlock,
++        list_waittransfer,
++        list_mdtm
++};
++
+ // Some servers are broken. Instead of an empty listing, some MVS servers
+ // for example they return "550 no members found"
+ // Other servers return "550 No files found."
+Index: trunk/src/engine/ftp/list.h
+===================================================================
+--- trunk/src/engine/ftp/list.h	(revision 11166)
++++ trunk/src/engine/ftp/list.h	(revision 11167)
+@@ -6,15 +6,6 @@
+ 
+ class CDirectoryListingParser;
+ 
+-enum listStates
+-{
+-	list_init,
+-	list_waitcwd,
+-	list_waitlock,
+-	list_waittransfer,
+-	list_mdtm
+-};
+-
+ class CFtpListOpData final : public COpData, public CFtpOpData, public CFtpTransferOpData
+ {
+ public:
+Index: trunk/src/engine/ftp/logon.cpp
+===================================================================
+--- trunk/src/engine/ftp/logon.cpp	(revision 11166)
++++ trunk/src/engine/ftp/logon.cpp	(revision 11167)
+@@ -10,6 +10,7 @@
+ #include "../../include/engine_options.h"
+ 
+ using namespace std::literals;
++using namespace ftpLogonStates;
+ 
+ CFtpLogonOpData::CFtpLogonOpData(CFtpControlSocket& controlSocket)
+ 	: COpData(Command::connect, L"CFtpLogonOpData")
+Index: trunk/src/engine/ftp/logon.h
+===================================================================
+--- trunk/src/engine/ftp/logon.h	(revision 11166)
++++ trunk/src/engine/ftp/logon.h	(revision 11167)
+@@ -3,27 +3,27 @@
+ 
+ #include "ftpcontrolsocket.h"
+ 
+-enum loginStates
+-{
+-	LOGON_CONNECT,
+-	LOGON_WELCOME,
+-	LOGON_AUTH_TLS,
+-	LOGON_AUTH_SSL,
+-	LOGON_AUTH_WAIT,
+-	LOGON_SECURITY,
+-	LOGON_LOGON,
+-	LOGON_SYST,
+-	LOGON_FEAT,
+-	LOGON_CLNT,
+-	LOGON_OPTSUTF8,
+-	LOGON_PBSZ,
+-	LOGON_PROT,
+-	LOGON_OPTSMLST,
+-	LOGON_CUSTOMCOMMANDS,
+-	LOGON_DONE
++namespace ftpLogonStates {
++enum type {
++        LOGON_CONNECT,
++        LOGON_WELCOME,
++        LOGON_AUTH_TLS,
++        LOGON_AUTH_SSL,
++        LOGON_AUTH_WAIT,
++        LOGON_SECURITY,
++        LOGON_LOGON,
++        LOGON_SYST,
++        LOGON_FEAT,
++        LOGON_CLNT,
++        LOGON_OPTSUTF8,
++        LOGON_PBSZ,
++        LOGON_PROT,
++        LOGON_OPTSMLST,
++        LOGON_CUSTOMCOMMANDS,
++        LOGON_DONE
+ };
++}
+ 
+-
+ enum class loginCommandType
+ {
+ 	user,
+@@ -73,7 +73,7 @@
+ 
+ 	unsigned int customCommandIndex{};
+ 
+-	int neededCommands[LOGON_DONE]{};
++	int neededCommands[ftpLogonStates::LOGON_DONE]{};
+ 
+ 	std::deque<t_loginCommand> loginSequence;
+ 
+Index: trunk/src/engine/ftp/mkd.cpp
+===================================================================
+--- trunk/src/engine/ftp/mkd.cpp	(revision 11166)
++++ trunk/src/engine/ftp/mkd.cpp	(revision 11167)
+@@ -5,6 +5,7 @@
+ 
+ using namespace std::literals;
+ 
++namespace {
+ enum mkdStates
+ {
+ 	mkd_init = 0,
+@@ -13,6 +14,7 @@
+ 	mkd_cwdsub,
+ 	mkd_tryfull
+ };
++}
+ 
+ /* Directory creation works like this: First find a parent directory into
+  * which we can CWD, then create the subdirs one by one. If either part
+Index: trunk/src/engine/ftp/rawtransfer.cpp
+===================================================================
+--- trunk/src/engine/ftp/rawtransfer.cpp	(revision 11166)
++++ trunk/src/engine/ftp/rawtransfer.cpp	(revision 11167)
+@@ -7,7 +7,7 @@
+ 
+ #include <libfilezilla/iputils.hpp>
+ 
+-#include <assert.h>
++using namespace FtpRawTransferStates;
+ 
+ int CFtpRawTransferOpData::Send()
+ {
+@@ -423,7 +423,6 @@
+ {
+ 	std::wstring ret = L"PASV";
+ 
+-	assert(bPasv);
+ 	bTriedPasv = true;
+ 
+ 	if (controlSocket_.proxy_layer_) {
+Index: trunk/src/engine/ftp/rawtransfer.h
+===================================================================
+--- trunk/src/engine/ftp/rawtransfer.h	(revision 11166)
++++ trunk/src/engine/ftp/rawtransfer.h	(revision 11167)
+@@ -3,18 +3,20 @@
+ 
+ #include "ftpcontrolsocket.h"
+ 
+-enum rawtransferStates
++namespace FtpRawTransferStates {
++enum type
+ {
+-	rawtransfer_init = 0,
+-	rawtransfer_type,
+-	rawtransfer_port_pasv,
+-	rawtransfer_rest,
+-	rawtransfer_transfer,
+-	rawtransfer_waitfinish,
+-	rawtransfer_waittransferpre,
+-	rawtransfer_waittransfer,
+-	rawtransfer_waitsocket
++        rawtransfer_init = 0,
++        rawtransfer_type,
++        rawtransfer_port_pasv,
++        rawtransfer_rest,
++        rawtransfer_transfer,
++        rawtransfer_waitfinish,
++        rawtransfer_waittransferpre,
++        rawtransfer_waittransfer,
++        rawtransfer_waitsocket
+ };
++}
+ 
+ class CFtpRawTransferOpData final : public COpData, public CFtpOpData
+ {
+Index: trunk/src/engine/ftp/rename.cpp
+===================================================================
+--- trunk/src/engine/ftp/rename.cpp	(revision 11166)
++++ trunk/src/engine/ftp/rename.cpp	(revision 11167)
+@@ -4,6 +4,7 @@
+ #include "../directorycache.h"
+ #include "../pathcache.h"
+ 
++namespace {
+ enum renameStates
+ {
+ 	rename_init,
+@@ -11,6 +12,7 @@
+ 	rename_rnfrom,
+ 	rename_rnto
+ };
++}
+ 
+ int CFtpRenameOpData::Send()
+ {
+Index: trunk/src/engine/ftp/rmd.cpp
+===================================================================
+--- trunk/src/engine/ftp/rmd.cpp	(revision 11166)
++++ trunk/src/engine/ftp/rmd.cpp	(revision 11167)
+@@ -4,6 +4,7 @@
+ #include "../directorycache.h"
+ #include "../pathcache.h"
+ 
++namespace {
+ enum rmdStates
+ {
+ 	rmd_init,
+@@ -10,6 +11,7 @@
+ 	rmd_waitcwd,
+ 	rmd_rmd
+ };
++}
+ 
+ int CFtpRemoveDirOpData::Send()
+ {
+Index: trunk/src/engine/http/filetransfer.cpp
+===================================================================
+--- trunk/src/engine/http/filetransfer.cpp	(revision 11166)
++++ trunk/src/engine/http/filetransfer.cpp	(revision 11167)
+@@ -7,6 +7,7 @@
+ #include <assert.h>
+ #include <string.h>
+ 
++namespace {
+ enum filetransferStates
+ {
+ 	filetransfer_init = 0,
+@@ -13,6 +14,7 @@
+ 	filetransfer_transfer,
+ 	filetransfer_waittransfer
+ };
++}
+ 
+ CHttpFileTransferOpData::CHttpFileTransferOpData(CHttpControlSocket & controlSocket, CFileTransferCommand const& cmd)
+ 	: CFileTransferOpData(L"CHttpFileTransferOpData", cmd)
+Index: trunk/src/engine/sftp/chmod.cpp
+===================================================================
+--- trunk/src/engine/sftp/chmod.cpp	(revision 11166)
++++ trunk/src/engine/sftp/chmod.cpp	(revision 11167)
+@@ -3,6 +3,7 @@
+ #include "chmod.h"
+ #include "../directorycache.h"
+ 
++namespace {
+ enum chmodStates
+ {
+ 	chmod_init,
+@@ -9,6 +10,7 @@
+ 	chmod_waitcwd,
+ 	chmod_chmod
+ };
++}
+ 
+ int CSftpChmodOpData::Send()
+ {
+Index: trunk/src/engine/sftp/connect.cpp
+===================================================================
+--- trunk/src/engine/sftp/connect.cpp	(revision 11166)
++++ trunk/src/engine/sftp/connect.cpp	(revision 11167)
+@@ -21,6 +21,7 @@
+ #include <sys/mman.h>
+ #endif
+ 
++namespace {
+ enum connectStates
+ {
+ 	connect_init,
+@@ -28,6 +29,7 @@
+ 	connect_keys,
+ 	connect_open
+ };
++}
+ 
+ int CSftpConnectOpData::Send()
+ {
+Index: trunk/src/engine/sftp/cwd.cpp
+===================================================================
+--- trunk/src/engine/sftp/cwd.cpp	(revision 11166)
++++ trunk/src/engine/sftp/cwd.cpp	(revision 11167)
+@@ -3,6 +3,7 @@
+ #include "cwd.h"
+ #include "../pathcache.h"
+ 
++namespace {
+ enum cwdStates
+ {
+ 	cwd_init = 0,
+@@ -10,6 +11,7 @@
+ 	cwd_cwd,
+ 	cwd_cwd_subdir
+ };
++}
+ 
+ int CSftpChangeDirOpData::Send()
+ {
+Index: trunk/src/engine/sftp/filetransfer.cpp
+===================================================================
+--- trunk/src/engine/sftp/filetransfer.cpp	(revision 11166)
++++ trunk/src/engine/sftp/filetransfer.cpp	(revision 11167)
+@@ -10,6 +10,7 @@
+ 
+ #include <assert.h>
+ 
++namespace {
+ enum filetransferStates
+ {
+ 	filetransfer_init = 0,
+@@ -19,6 +20,7 @@
+ 	filetransfer_transfer,
+ 	filetransfer_chmtime
+ };
++}
+ 
+ CSftpFileTransferOpData::~CSftpFileTransferOpData()
+ {
+Index: trunk/src/engine/sftp/list.cpp
+===================================================================
+--- trunk/src/engine/sftp/list.cpp	(revision 11166)
++++ trunk/src/engine/sftp/list.cpp	(revision 11167)
+@@ -5,6 +5,7 @@
+ 
+ #include <assert.h>
+ 
++namespace {
+ enum listStates
+ {
+ 	list_init = 0,
+@@ -12,6 +13,7 @@
+ 	list_waitlock,
+ 	list_list
+ };
++}
+ 
+ int CSftpListOpData::Send()
+ {
+Index: trunk/src/engine/sftp/mkd.cpp
+===================================================================
+--- trunk/src/engine/sftp/mkd.cpp	(revision 11166)
++++ trunk/src/engine/sftp/mkd.cpp	(revision 11167)
+@@ -3,6 +3,7 @@
+ #include "../directorycache.h"
+ #include "mkd.h"
+ 
++namespace {
+ enum mkdStates
+ {
+ 	mkd_init = 0,
+@@ -11,6 +12,7 @@
+ 	mkd_cwdsub,
+ 	mkd_tryfull
+ };
++}
+ 
+ /* Directory creation works like this: First find a parent directory into
+  * which we can CWD, then create the subdirs one by one. If either part
+Index: trunk/src/engine/sftp/rename.cpp
+===================================================================
+--- trunk/src/engine/sftp/rename.cpp	(revision 11166)
++++ trunk/src/engine/sftp/rename.cpp	(revision 11167)
+@@ -4,6 +4,7 @@
+ #include "../pathcache.h"
+ #include "rename.h"
+ 
++namespace {
+ enum renameStates
+ {
+ 	rename_init,
+@@ -10,6 +11,7 @@
+ 	rename_waitcwd,
+ 	rename_rename
+ };
++}
+ 
+ int CSftpRenameOpData::Send()
+ {
+Index: trunk/src/engine/storj/connect.cpp
+===================================================================
+--- trunk/src/engine/storj/connect.cpp	(revision 11166)
++++ trunk/src/engine/storj/connect.cpp	(revision 11167)
+@@ -22,6 +22,16 @@
+ #include <sys/mman.h>
+ #endif
+ 
++namespace {
++enum connectStates
++{
++        connect_init,
++        connect_host,
++        connect_user,
++        connect_pass
++};
++}
++
+ int CStorjConnectOpData::Send()
+ {
+ 	switch (opState)
+Index: trunk/src/engine/storj/connect.h
+===================================================================
+--- trunk/src/engine/storj/connect.h	(revision 11166)
++++ trunk/src/engine/storj/connect.h	(revision 11167)
+@@ -3,14 +3,6 @@
+ 
+ #include "storjcontrolsocket.h"
+ 
+-enum connectStates
+-{
+-	connect_init,
+-	connect_host,
+-	connect_user,
+-	connect_pass
+-};
+-
+ class CStorjConnectOpData final : public COpData, public CStorjOpData
+ {
+ public:
+Index: trunk/src/engine/storj/file_transfer.cpp
+===================================================================
+--- trunk/src/engine/storj/file_transfer.cpp	(revision 11166)
++++ trunk/src/engine/storj/file_transfer.cpp	(revision 11167)
+@@ -7,6 +7,7 @@
+ #include <libfilezilla/local_filesys.hpp>
+ #include <libfilezilla/process.hpp>
+ 
++namespace {
+ enum FileTransferStates
+ {
+ 	filetransfer_init,
+@@ -15,6 +16,7 @@
+ 	filetransfer_delete,
+ 	filetransfer_transfer
+ };
++}
+ 
+ CStorjFileTransferOpData::~CStorjFileTransferOpData()
+ {
+Index: trunk/src/engine/storj/mkd.cpp
+===================================================================
+--- trunk/src/engine/storj/mkd.cpp	(revision 11166)
++++ trunk/src/engine/storj/mkd.cpp	(revision 11167)
+@@ -3,6 +3,7 @@
+ #include "../directorycache.h"
+ #include "mkd.h"
+ 
++namespace {
+ enum mkdStates
+ {
+ 	mkd_init = 0,
+@@ -9,6 +10,7 @@
+ 	mkd_mkbucket,
+ 	mkd_put
+ };
++}
+ 
+ int CStorjMkdirOpData::Send()
+ {
