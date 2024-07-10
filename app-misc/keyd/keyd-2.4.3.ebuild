@@ -23,4 +23,6 @@ src_install() {
 	mv "${D}/usr/share/doc/keyd" "${D}/usr/share/doc/${P}" || die
 	docompress -x /usr/share/man/man1/keyd.1.gz
 	docompress -x /usr/share/man/man1/keyd-application-mapper.1.gz
+	insinto /etc/keyd
+	doins "${FILESDIR}"/default.conf
 }
