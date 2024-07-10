@@ -45,7 +45,7 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		dev-python/mapbox_earcut[${PYTHON_USEDEP}]
+		dev-python/mapbox-earcut[${PYTHON_USEDEP}]
 		dev-python/pillow[webp,${PYTHON_USEDEP}]
 	)
 "
@@ -67,7 +67,7 @@ python_test() {
 pkg_postinst() {
 	optfeature_header "${PN} functionality can be extended by installing the following packages:"
 	optfeature "making GUI applications with 3D stuff" dev-python/glooey
-	optfeature "2D triangulations of polygons" dev-python/mapbox_earcut
+	optfeature "2D triangulations of polygons" dev-python/mapbox-earcut
 	optfeature "loading a number of additional mesh formats" dev-python/meshio
 	optfeature "figuring out how much memory we have" dev-python/psutil
 	optfeature "marching cubes and other nice stuff" dev-python/scikit-image

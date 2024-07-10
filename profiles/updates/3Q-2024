@@ -1,1 +1,2 @@
 move sci-libs/rtree dev-python/rtree
+move dev-python/mapbox_earcut dev-python/mapbox-earcut
