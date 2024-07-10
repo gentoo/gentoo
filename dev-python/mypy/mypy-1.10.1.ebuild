@@ -63,14 +63,15 @@ PATCHES=(
 # test files (https://github.com/mypyc/mypyc/issues/1014)
 export CCACHE_DISABLE=1
 
-src_compile() {
+python_compile() {
 	local -x MYPY_USE_MYPYC=$(usex native-extensions 1 0)
 	case ${EPYTHON} in
 		python3.13)
 			# https://github.com/mypyc/mypyc/issues/1056
 			MYPY_USE_MYPYC=0
+			;;
 	esac
-	distutils-r1_src_compile
+	distutils-r1_python_compile
 }
 
 python_test() {
