@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="|| ( Apache-2.0 LGPL-2.1+ )"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 
 BDEPEND="
 	virtual/pkgconfig
