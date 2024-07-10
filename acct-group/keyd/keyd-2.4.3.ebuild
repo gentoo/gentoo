@@ -7,4 +7,4 @@ inherit acct-group
 
 DESCRIPTION="Group for app-misc/keyd"
 
-ACCT_GROUP_ID="823"
+ACCT_GROUP_ID="444"
