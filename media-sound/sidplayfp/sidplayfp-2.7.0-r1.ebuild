@@ -9,17 +9,22 @@ SRC_URI="https://downloads.sourceforge.net/sidplay-residfp/${PN}/$(ver_cut 1-2)/
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+alsa oss pulseaudio"
 
 BDEPEND="virtual/pkgconfig"
-RDEPEND="
+CDEPEND="
 	media-libs/libsidplayfp
 	alsa? ( media-libs/alsa-lib )
-	pulseaudio? ( media-libs/libpulse )"
-DEPEND="${RDEPEND}
+	pulseaudio? ( media-libs/libpulse )
+"
+RDEPEND="
+	${CDEPEND}
 	media-plugins/mpg123-output-plugins
-	oss? ( virtual/os-headers )"
+"
+DEPEND="${CDEPEND}
+	oss? ( virtual/os-headers )
+"
 
 DOCS=( AUTHORS README TODO )
 
