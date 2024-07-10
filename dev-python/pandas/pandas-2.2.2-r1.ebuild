@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=meson-python
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="threads(+)"
 
 VIRTUALX_REQUIRED="manual"
@@ -100,6 +100,11 @@ RDEPEND="
 
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/pandas-dev/pandas/pull/59065
+	"${FILESDIR}/${P}-py313.patch"
+)
 
 src_test() {
 	virtx distutils-r1_src_test

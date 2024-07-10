@@ -1,0 +1,117 @@
+From ad0ef9233f4e6366faf9512d512ec5248ade6d5e Mon Sep 17 00:00:00 2001
+From: Lysandros Nikolaou <lisandrosnik@gmail.com>
+Date: Tue, 25 Jun 2024 03:40:22 +0200
+Subject: [PATCH] ENH: Fix Python 3.13 test failures & enable CI (#59065)
+
+* ENH: Fix Python 3.13 test failures & enable CI
+
+x-ref #58734
+
+Co-authored-by: Thomas Li <47963215+lithomas1@users.noreply.github.com>
+
+* Cast npy_intp to int to fix Windows CI
+
+---------
+
+Co-authored-by: Thomas Li <47963215+lithomas1@users.noreply.github.com>
+---
+ .github/workflows/unit-tests.yml                   |  4 ++--
+ pandas/_libs/src/vendored/ujson/python/objToJSON.c | 12 ++++++------
+ pandas/_libs/tslibs/offsets.pyx                    |  7 ++++++-
+ pandas/tests/groupby/test_groupby.py               |  4 +++-
+ pandas/tests/io/parser/test_dialect.py             |  2 +-
+ pandas/tests/io/test_common.py                     |  5 ++++-
+ pandas/tests/io/xml/test_xml.py                    |  2 +-
+ pandas/tests/scalar/timedelta/test_arithmetic.py   |  1 +
+ 8 files changed, 24 insertions(+), 13 deletions(-)
+
+diff --git a/pandas/_libs/tslibs/offsets.pyx b/pandas/_libs/tslibs/offsets.pyx
+index c37a4b285d..5dacd7dd55 100644
+--- a/pandas/_libs/tslibs/offsets.pyx
++++ b/pandas/_libs/tslibs/offsets.pyx
+@@ -4960,7 +4960,12 @@ cpdef to_offset(freq, bint is_period=False):
+     if result is None:
+         raise ValueError(INVALID_FREQ_ERR_MSG.format(freq))
+ 
+-    if is_period and not hasattr(result, "_period_dtype_code"):
++    try:
++        has_period_dtype_code = hasattr(result, "_period_dtype_code")
++    except ValueError:
++        has_period_dtype_code = False
++
++    if is_period and not has_period_dtype_code:
+         if isinstance(freq, str):
+             raise ValueError(f"{result.name} is not supported as period frequency")
+         else:
+diff --git a/pandas/tests/groupby/test_groupby.py b/pandas/tests/groupby/test_groupby.py
+index ed9acdd0c9..44d6340e55 100644
+--- a/pandas/tests/groupby/test_groupby.py
++++ b/pandas/tests/groupby/test_groupby.py
+@@ -2816,7 +2816,9 @@ def test_rolling_wrong_param_min_period():
+     test_df = DataFrame([name_l, val_l]).T
+     test_df.columns = ["name", "val"]
+ 
+-    result_error_msg = r"__init__\(\) got an unexpected keyword argument 'min_period'"
++    result_error_msg = (
++        r"^[a-zA-Z._]*\(\) got an unexpected keyword argument 'min_period'"
++    )
+     with pytest.raises(TypeError, match=result_error_msg):
+         test_df.groupby("name")["val"].rolling(window=2, min_period=1).sum()
+ 
+diff --git a/pandas/tests/io/parser/test_dialect.py b/pandas/tests/io/parser/test_dialect.py
+index 7a72e66996..803114723b 100644
+--- a/pandas/tests/io/parser/test_dialect.py
++++ b/pandas/tests/io/parser/test_dialect.py
+@@ -26,7 +26,7 @@ def custom_dialect():
+         "escapechar": "~",
+         "delimiter": ":",
+         "skipinitialspace": False,
+-        "quotechar": "~",
++        "quotechar": "`",
+         "quoting": 3,
+     }
+     return dialect_name, dialect_kwargs
+diff --git a/pandas/tests/io/test_common.py b/pandas/tests/io/test_common.py
+index 0740338686..e51f865630 100644
+--- a/pandas/tests/io/test_common.py
++++ b/pandas/tests/io/test_common.py
+@@ -485,7 +485,10 @@ class TestMMapWrapper:
+                 df.to_csv(path, compression=compression_, encoding=encoding)
+ 
+             # reading should fail (otherwise we wouldn't need the warning)
+-            msg = r"UTF-\d+ stream does not start with BOM"
++            msg = (
++                r"UTF-\d+ stream does not start with BOM|"
++                r"'utf-\d+' codec can't decode byte"
++            )
+             with pytest.raises(UnicodeError, match=msg):
+                 pd.read_csv(path, compression=compression_, encoding=encoding)
+ 
+diff --git a/pandas/tests/io/xml/test_xml.py b/pandas/tests/io/xml/test_xml.py
+index 6f429c1ecb..900734e9f0 100644
+--- a/pandas/tests/io/xml/test_xml.py
++++ b/pandas/tests/io/xml/test_xml.py
+@@ -1044,7 +1044,7 @@ def test_utf16_encoding(xml_baby_names, parser):
+         UnicodeError,
+         match=(
+             "UTF-16 stream does not start with BOM|"
+-            "'utf-16-le' codec can't decode byte"
++            "'utf-16(-le)?' codec can't decode byte"
+         ),
+     ):
+         read_xml(xml_baby_names, encoding="UTF-16", parser=parser)
+diff --git a/pandas/tests/scalar/timedelta/test_arithmetic.py b/pandas/tests/scalar/timedelta/test_arithmetic.py
+index d2fa0f722c..33ac121076 100644
+--- a/pandas/tests/scalar/timedelta/test_arithmetic.py
++++ b/pandas/tests/scalar/timedelta/test_arithmetic.py
+@@ -622,6 +622,7 @@ class TestTimedeltaMultiplicationDivision:
+             [
+                 r"Invalid dtype datetime64\[D\] for __floordiv__",
+                 "'dtype' is an invalid keyword argument for this function",
++                "this function got an unexpected keyword argument 'dtype'",
+                 r"ufunc '?floor_divide'? cannot use operands with types",
+             ]
+         )
+-- 
+2.45.2
+
