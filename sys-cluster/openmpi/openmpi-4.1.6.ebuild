@@ -4,7 +4,7 @@
 EAPI=8
 
 FORTRAN_NEEDED=fortran
-inherit cuda flag-o-matic fortran-2 multilib-minimal
+inherit cuda flag-o-matic fortran-2 libtool multilib-minimal
 
 MY_P=${P/-mpi}
 
@@ -80,6 +80,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
+	elibtoolize
 
 	# Avoid test which ends up looking at system mounts
 	echo "int main() { return 0; }" > test/util/opal_path_nfs.c || die
