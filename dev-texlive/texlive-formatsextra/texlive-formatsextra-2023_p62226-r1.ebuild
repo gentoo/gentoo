@@ -58,7 +58,7 @@ DESCRIPTION="TeXLive Additional formats"
 
 LICENSE="GPL-1+ GPL-2 GPL-2+ GPL-3 LPPL-1.3 LPPL-1.3c MIT OFL-1.1 TeX TeX-other-free public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 COMMON_DEPEND="
 	>=dev-texlive/texlive-basic-2023
 	>=dev-texlive/texlive-latex-2023
