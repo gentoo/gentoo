@@ -25,7 +25,6 @@ BDEPEND="
 	test? (
 		dev-python/docutils
 		dev-ruby/asciidoctor
-		virtual/pandoc
 	)
 "
 RDEPEND="
@@ -79,6 +78,10 @@ src_compile() {
 }
 
 src_test() {
+	if ! has_version -b virtual/pandoc ; then
+		elog "You're missing virtual/pandoc - some tests will be skipped."
+	fi
+
 	ego test "./..." ${MY_BUILD_FLAGS}
 }
 
