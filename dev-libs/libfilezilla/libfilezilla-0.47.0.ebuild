@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic
+inherit autotools flag-o-matic
 
 DESCRIPTION="C++ library offering some basic functionality for platform-independent programs"
 HOMEPAGE="https://lib.filezilla-project.org/"
@@ -39,6 +39,12 @@ pkg_pretend() {
 			die "Currently active compiler does not support -std=c++14"
 		fi
 	fi
+}
+
+src_prepare() {
+	default
+	# we patch configure.ac
+	eautoreconf
 }
 
 src_configure() {
