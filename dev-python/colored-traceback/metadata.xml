@@ -16,6 +16,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">staticshock/colored-traceback.py</remote-id>
-		<remote-id type="pypi">colored_traceback</remote-id>
+		<remote-id type="pypi">colored-traceback</remote-id>
 	</upstream>
 </pkgmetadata>
