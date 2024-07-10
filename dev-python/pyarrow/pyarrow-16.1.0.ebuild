@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1 multiprocessing
 
@@ -42,6 +42,8 @@ src_prepare() {
 	local PATCHES=(
 		# https://github.com/apache/arrow/pull/42099
 		"${FILESDIR}/${P}-numpy-2.patch"
+		# https://github.com/apache/arrow/pull/42034
+		"${FILESDIR}/${P}-py313.patch"
 	)
 
 	# cython's -Werror
@@ -86,6 +88,7 @@ python_test() {
 		tests/test_convert_builtin.py::test_array_to_pylist_roundtrip
 		tests/test_feather.py::test_roundtrip
 		tests/test_pandas.py::test_array_to_pandas_roundtrip
+		tests/test_types.py::test_hashing
 	)
 
 	cd "${T}" || die
