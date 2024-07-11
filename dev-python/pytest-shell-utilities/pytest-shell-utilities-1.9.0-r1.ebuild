@@ -25,7 +25,7 @@ KEYWORDS="amd64 ~arm arm64 ~riscv x86"
 RDEPEND="
 	>=dev-python/attrs-22.1.0[${PYTHON_USEDEP}]
 	>=dev-python/pytest-7.4.0[${PYTHON_USEDEP}]
-	dev-python/psutil[${PYTHON_USEDEP}]
+	<dev-python/psutil-6[${PYTHON_USEDEP}]
 	dev-python/pytest-helpers-namespace[${PYTHON_USEDEP}]
 	dev-python/pytest-skip-markers[${PYTHON_USEDEP}]
 "
