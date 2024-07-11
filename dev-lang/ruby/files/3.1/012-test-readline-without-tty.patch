@@ -1,0 +1,33 @@
+From 47988e63d65098ce1e6484f03ae5e2ca42bd7963 Mon Sep 17 00:00:00 2001
+From: Sorah Fukumori <her@sorah.jp>
+Date: Sat, 8 Jan 2022 14:03:02 +0900
+Subject: [PATCH] test_readline#test_without_tty: Use EnvUtil.rubybin
+
+`ruby` is not always available in certain build environments and
+configure options. Choose appropriate command line using EnvUtil.
+---
+ test/readline/test_readline.rb | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/test/readline/test_readline.rb b/test/readline/test_readline.rb
+index be338c6c0d484e..be6e65f32ef22d 100644
+--- a/test/readline/test_readline.rb
++++ b/test/readline/test_readline.rb
+@@ -6,6 +6,8 @@
+ require "open3"
+ 
+ module BasetestReadline
++  RUBY = EnvUtil.rubybin
++
+   INPUTRC = "INPUTRC"
+   TERM = "TERM"
+   SAVED_ENV = %w[COLUMNS LINES]
+@@ -839,7 +841,7 @@ def test_without_tty
+       loader = "use_lib_reline"
+     end
+     if loader
+-      res, exit_status = Open3.capture2e("ruby -I#{__dir__} -Ilib -rhelper -e '#{loader}; Readline.readline(%{y or n?})'", stdin_data: "y\n")
++      res, exit_status = Open3.capture2e("#{RUBY} -I#{__dir__} -Ilib -rhelper -e '#{loader}; Readline.readline(%{y or n?})'", stdin_data: "y\n")
+       assert exit_status.success?, "It should work fine without tty, but it failed.\nError output:\n#{res}"
+     end
+   end
