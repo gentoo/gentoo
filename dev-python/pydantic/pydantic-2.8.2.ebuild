@@ -26,9 +26,7 @@ RDEPEND="
 BDEPEND="
 	>=dev-python/hatch-fancy-pypi-readme-22.5.0[${PYTHON_USEDEP}]
 	test? (
-		$(python_gen_cond_dep '
-			dev-python/cloudpickle[${PYTHON_USEDEP}]
-		' 3.{10..12})
+		dev-python/cloudpickle[${PYTHON_USEDEP}]
 		dev-python/dirty-equals[${PYTHON_USEDEP}]
 		>=dev-python/email-validator-2.0.0[${PYTHON_USEDEP}]
 		>=dev-python/Faker-18.13.0[${PYTHON_USEDEP}]
