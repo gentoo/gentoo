@@ -378,14 +378,6 @@ www-apps/dotproject
 # Removal on 2024-07-10.  Bug #934002.
 dev-python/rapidfuzz-capi
 
-# Viorel Munteanu <ceamac@gentoo.org> (2024-06-10)
-# Masked for removal in 30 days.  EAPI 6, unmaintained, last upstream
-# release in 2011, no upstream activity since 2013.
-# There are other static generators in gentoo, like www-apps/hugo or
-# app-text/txt2tags.
-# Removal: 2024-07-10.  Bugs #295842, #526340.
-www-apps/nanoblogger
-
 # James Le Cuirot <chewi@gentoo.org> (2024-06-09)
 # Long dead upstream. Probably broken. Use games-emulation/dolphin instead.
 # Removal on 2024-07-09.  Bug #739140.
