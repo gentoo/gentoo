@@ -1,9 +1,5 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-#
-# This package depends upon deprecated gnome-base/libglade.  An
-# upstream but has been filed on this issue.
-# (https://sourceforge.net/p/gnubiff/bugs/67/)
 
 EAPI=8
 
@@ -17,6 +13,11 @@ LICENSE="GPL-3+-with-openssl-exception"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug fam nls password"
+
+
+# This package depends upon deprecated gnome-base/libglade.  An
+# upstream but has been filed on this issue.
+# (https://sourceforge.net/p/gnubiff/bugs/67/)
 
 RDEPEND="
 	dev-libs/popt
