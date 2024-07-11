@@ -42,7 +42,7 @@ src_configure() {
 		$(use_enable examples test) \
 		$(use_enable upower) \
 		--disable-maintainer-mode \
-		--disable-rilmodem
+		--disable-rilmodem \
 		--localstatedir=/var \
 		--with-systemdunitdir="$(systemd_get_systemunitdir)"
 }
