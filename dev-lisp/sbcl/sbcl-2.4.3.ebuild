@@ -21,7 +21,7 @@ BV_X64_SOLARIS=1.2.7
 BV_SPARC_SOLARIS=1.0.23
 
 DESCRIPTION="Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp"
-HOMEPAGE="https://www.sbcl.org/ http://sbcl.sourceforge.net/"
+HOMEPAGE="https://www.sbcl.org/ https://sbcl.sourceforge.net/"
 BSD_SOCKETS_TEST_PATCH=bsd-sockets-test-2.3.6.patch
 SRC_URI="https://downloads.sourceforge.net/sbcl/${P}-source.tar.bz2
 	https://dev.gentoo.org/~grozin/${BSD_SOCKETS_TEST_PATCH}.gz
