@@ -308,7 +308,7 @@ src_compile() {
 		JAVA_GENTOO_CLASSPATH_EXTRA+=":${task}.jar"
 		rm -fr target || die
 	done
-	use doc && ejavadoc
+	use doc && java-pkg-simple_call_ejavadoc
 }
 
 src_test() {
