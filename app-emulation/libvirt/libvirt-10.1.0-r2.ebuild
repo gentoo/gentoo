@@ -157,8 +157,9 @@ PATCHES=(
 )
 
 python_check_deps() {
-	use test && python_has_version -d "dev-python/pytest[${PYTHON_USEDEP}]"
-	return 0
+	if use test; then
+		python_has_version -d "dev-python/pytest[${PYTHON_USEDEP}]"
+	fi
 }
 
 pkg_setup() {
