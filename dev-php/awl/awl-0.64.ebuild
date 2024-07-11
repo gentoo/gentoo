@@ -6,14 +6,15 @@ EAPI=8
 DESCRIPTION="Andrew McMillan's Web Libraries"
 HOMEPAGE="https://gitlab.com/davical-project/awl"
 SRC_URI="https://www.davical.org/downloads/${PN}_${PV}.orig.tar.xz -> ${P}.tar.xz"
-
+S="${WORKDIR}"
 LICENSE="GPL-2 GPL-2+ GPL-3+ LGPL-2+ LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-lang/php:*[pdo,xml]"
+# Requires PHPunit and we no longer have it.
+RESTRICT=test
 
-S="${WORKDIR}"
+RDEPEND="dev-lang/php:*[pdo,xml]"
 
 PATCHES=( "${FILESDIR}/${P}-php8.x-compat.patch" )
 
