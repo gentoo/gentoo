@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Jaco Kroon <jaco@uls.co.za> (2024-07-11)
+# Superseded by xl2tpd, this no longer has any operational advantage over
+# xl2tpd.  If you need help you're welcome to contact me (jkroon on
+# libera.chat).
+# Removal on 2024-08-11. bugs: #414901, #768075, #919269
+net-dialup/openl2tp
+
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
 # New major ffmpeg version. Tracker bug #928905.
 >=media-video/ffmpeg-7.0
