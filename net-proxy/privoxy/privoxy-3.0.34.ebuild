@@ -15,7 +15,7 @@ SRC_URI="https://downloads.sourceforge.net/ijbswa/${P%_*}-${PRIVOXY_STATUS}-src.
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ppc ppc64 ~riscv sparc x86"
 IUSE="+acl brotli client-tags compression editor extended-host-patterns
 extended-statistics external-filters +fast-redirects +force fuzz
 graceful-termination +image-blocking ipv6 +jit lfs +mbedtls openssl
