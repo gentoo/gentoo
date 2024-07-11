@@ -4,8 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-# py3.13: https://github.com/cloudpipe/cloudpickle/issues/533
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 
 inherit distutils-r1
 
@@ -30,6 +29,11 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/cloudpipe/cloudpickle/pull/534
+	"${FILESDIR}/${P}-py313.patch"
+)
 
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
