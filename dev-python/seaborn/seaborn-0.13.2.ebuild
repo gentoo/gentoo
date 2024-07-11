@@ -30,6 +30,13 @@ RDEPEND="
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# https://github.com/mwaskom/seaborn/pull/3685
+	sed -i -e '/VisibleDeprecationWarning/d' tests/test_distributions.py || die
+}
+
 src_test() {
 	cat > matplotlibrc <<- EOF || die
 		backend : Agg
