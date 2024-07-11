@@ -20,9 +20,9 @@ S="${WORKDIR}/${P/_/-}"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac alsa ao cddb cdio debug discid elogind examples ffmpeg +flac jack libsamplerate
+IUSE="aac alsa ao cddb cdio +cue debug discid elogind examples ffmpeg +flac jack libsamplerate
 	+mad mikmod modplug mp4 musepack opus oss pidgin pulseaudio sndio systemd tremor +unicode
-	+vorbis wavpack"
+	+vorbis +wav wavpack"
 
 # Both CONFIG_TREMOR=y and CONFIG_VORBIS=y are required to link to tremor libs instead of vorbis libs
 REQUIRED_USE="
@@ -82,7 +82,6 @@ src_configure() {
 	local debuglevel=1
 	use debug && debuglevel=2
 	local myconf=(
-		CONFIG_CUE=y
 		CONFIG_ARTS=n
 		CONFIG_SUN=n
 		CONFIG_SNDIO=n
@@ -91,6 +90,8 @@ src_configure() {
 		CONFIG_ROAR=n
 	)
 
+	my_config cue CONFIG_CUE
+	my_config wav CONFIG_WAV
 	my_config cddb CONFIG_CDDB
 	my_config cdio CONFIG_CDIO
 	my_config discid CONFIG_DISCID
