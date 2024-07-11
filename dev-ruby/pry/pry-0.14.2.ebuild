@@ -19,7 +19,7 @@ IUSE=""
 SLOT="ruby19"
 
 LICENSE="MIT"
-KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~s390 sparc x86"
 
 ruby_add_rdepend "
 	>=dev-ruby/coderay-1.1:0
