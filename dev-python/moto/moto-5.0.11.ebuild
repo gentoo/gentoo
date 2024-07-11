@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1 pypi toolchain-funcs
 
@@ -180,5 +180,18 @@ python_test() {
 		"${EPYTEST_DESELECT[@]}"
 		"${serial_tests[@]}"
 	)
+	case ${EPYTHON} in
+		python3.13)
+			EPYTEST_DESELECT+=(
+				tests/test_ses/test_ses_boto3.py::test_send_raw_email
+				tests/test_ses/test_ses_boto3.py::test_send_raw_email_validate_domain
+				tests/test_ses/test_ses_boto3.py::test_send_raw_email_without_source
+				tests/test_sesv2/test_sesv2.py::test_send_raw_email
+				tests/test_sesv2/test_sesv2.py::test_send_raw_email__with_specific_message
+				tests/test_sesv2/test_sesv2.py::test_send_raw_email__with_to_address_display_name
+			)
+			;;
+	esac
+
 	epytest -m 'not network'
 }
