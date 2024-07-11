@@ -3,7 +3,7 @@
 
 EAPI=8
 
-FIREFOX_PATCHSET="firefox-128-patches-02.tar.xz"
+FIREFOX_PATCHSET="firefox-128-patches-03.tar.xz"
 
 LLVM_COMPAT=( 17 18 )
 
