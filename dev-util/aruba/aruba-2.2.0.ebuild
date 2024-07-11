@@ -60,6 +60,10 @@ all_ruby_prepare() {
 
 	# Avoid feature that requires aruba to be installed already
 	rm -r features/03_testing_frameworks/cucumber/disable_bundler.feature || die
+
+	# Avoid feature that makes assumptions about physical block size
+	# that we cannot guarantee, bug #935294
+	rm -f features/04_aruba_api/filesystem/report_disk_usage.feature || die
 }
 
 each_ruby_test() {
