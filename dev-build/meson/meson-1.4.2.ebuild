@@ -82,6 +82,12 @@ python_prepare_all() {
 		# ASAN is unsupported on some targets
 		# https://bugs.gentoo.org/692822
 		-e 's/test_pch_with_address_sanitizer/_&/'
+
+		# clippy-driver fails, but only when run via portage.
+		#
+		#   error[E0463]: can't find crate for `std`
+		#   error: requires `sized` lang_item
+		-e 's/test_rust_clippy/_&/'
 	)
 
 	sed -i "${disable_unittests[@]}" unittests/*.py || die
