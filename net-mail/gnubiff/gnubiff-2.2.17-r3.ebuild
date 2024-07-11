@@ -35,9 +35,9 @@ BDEPEND="
 "
 
 PATCHES=(
-	${FILESDIR}/${PN}-2.2.17-fix-nls.patch
-	${FILESDIR}/${PN}-2.2.17-configure.patch
-    ${FILESDIR}/${PN}-2.2.17-clang.patch
+	"${FILESDIR}"/${PN}-2.2.17-fix-nls.patch
+	"${FILESDIR}"/${PN}-2.2.17-configure.patch
+    "${FILESDIR}"/${PN}-2.2.17-clang.patch
 )    
     
 
