@@ -19,7 +19,7 @@ SRC_URI="https://github.com/cucumber/aruba/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 
 SLOT="$(ver_cut 1)"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="test"
 
 DEPEND="${DEPEND} test? ( app-alternatives/bc )"
