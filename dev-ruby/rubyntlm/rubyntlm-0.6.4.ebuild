@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/winrb/rubyntlm"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~ppc64 ~x86"
 
 ruby_add_depend "dev-ruby/base64"
 
