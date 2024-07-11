@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Parallel bzip2 utility"
 HOMEPAGE="https://github.com/kjn/lbzip2/"
@@ -28,6 +28,10 @@ src_prepare() {
 
 src_configure() {
 	use static && append-ldflags -static
+
+	# fix clang miscompilation: #910438
+	# see also: https://github.com/llvm/llvm-project/issues/87189
+	tc-is-clang && test-flag-CC -mno-avx512f && append-cflags -mno-avx512f
 
 	local myeconfargs=(
 		$(use_enable debug tracing)
