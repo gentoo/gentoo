@@ -70,7 +70,7 @@ DEPEND="${RDEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake_use_find_package importwizard KPimImportWizard)
+		$(cmake_use_find_package importwizard KPim5ImportWizard)
 		$(cmake_use_find_package markdown Discount)
 	)
 
