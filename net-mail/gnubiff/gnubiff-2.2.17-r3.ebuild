@@ -6,6 +6,7 @@
 # (https://sourceforge.net/p/gnubiff/bugs/67/)
 
 EAPI=8
+
 inherit autotools
 
 DESCRIPTION="A mail notification program"
@@ -45,9 +46,8 @@ src_prepare() {
 }
 
 src_configure() {
-	# note: --disable-gnome is to avoid deprecated gnome-panel-2.x
 	local myeconfargs=(
-		--disable-gnome
+		--disable-gnome # avoid deprecated gnome-panel-2.x
 		$(use_enable debug)
 		$(use_enable nls)
 		$(use_enable fam)
