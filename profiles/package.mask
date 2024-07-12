@@ -302,11 +302,6 @@ sci-libs/o2scl
 # Removal: 2024-08-11.  Bug #933998.
 dev-php/PEAR-Mail_mimeDecode
 
-# Michał Górny <mgorny@gentoo.org> (2024-06-10)
-# Merged into dev-python/rapidfuzz.  No revdeps left.
-# Removal on 2024-07-10.  Bug #934002.
-dev-python/rapidfuzz-capi
-
 # Alfredo Tupone <tupone@gentoo.org> (2024-06-09)
 # Not ready for testing
 >=dev-lang/ocaml-5
