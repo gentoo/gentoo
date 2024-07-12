@@ -23,6 +23,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-boost-1.85.patch
 )
 
 src_prepare() {
