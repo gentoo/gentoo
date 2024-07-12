@@ -411,7 +411,6 @@ www-apps/wiliki
 # some maintainer-needed.
 # Removal on 2024-07-08.  Bugs #933847, #742452.
 www-apache/mod_vdbh
-www-apache/modsec-flameeyes
 
 # Michał Górny <mgorny@gentoo.org> (2024-06-08)
 # Prereleases of Xfce 4.20.  Masking upon popular request, due to
