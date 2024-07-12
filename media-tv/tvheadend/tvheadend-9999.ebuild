@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit git-r3 linux-info python-single-r1 systemd toolchain-funcs
+inherit flag-o-matic git-r3 linux-info python-single-r1 systemd toolchain-funcs
 
 DESCRIPTION="Tvheadend is a TV streaming server and digital video recorder"
 HOMEPAGE="https://tvheadend.org/"
@@ -88,6 +88,10 @@ pkg_setup() {
 # most of them only take effect when --enable-ffmpeg_static is given.
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://github.com/tvheadend/tvheadend/issues/1732
+	filter-lto
+
 	CC="$(tc-getCC)" \
 	PKG_CONFIG="$(tc-getPKG_CONFIG)" \
 	econf \
