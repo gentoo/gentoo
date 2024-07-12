@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 
 inherit distutils-r1 pypi
 
@@ -40,6 +40,11 @@ BDEPEND="
 
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/jupyter/nbclient/pull/317
+	"${FILESDIR}/${P}-py313.patch"
+)
 
 python_test() {
 	local EPYTEST_DESELECT=(
