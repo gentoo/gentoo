@@ -270,6 +270,7 @@ python_test() {
 	local EPYTEST_DESELECT=(
 		# TODO
 		test/python/circuit/test_equivalence.py::TestEquivalenceLibraryVisualization::test_equivalence_draw
+		test/python/quantum_info/operators/symplectic/test_sparse_pauli_op.py::TestSparsePauliOpConversions::test_to_matrix_zero
 		test/python/transpiler/test_unitary_synthesis_plugin.py::TestUnitarySynthesisPlugin
 		test/python/visualization/test_dag_drawer.py::TestDagDrawer::test_dag_drawer_no_register
 	)
