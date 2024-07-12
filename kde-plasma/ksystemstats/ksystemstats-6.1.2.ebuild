@@ -15,7 +15,7 @@ DESCRIPTION="Plugin-based system monitoring daemon"
 
 LICENSE="GPL-2+"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="networkmanager"
 
 DEPEND="
