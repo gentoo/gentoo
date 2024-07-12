@@ -406,12 +406,6 @@ dev-ml/patience_diff:0/0.17
 # Removal on 2024-07-08.  Bug #933850.
 www-apps/wiliki
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-08)
-# Various apache modules with no reverse dependencies, EAPI=6,
-# some maintainer-needed.
-# Removal on 2024-07-08.  Bugs #933847, #742452.
-www-apache/mod_vdbh
-
 # Michał Górny <mgorny@gentoo.org> (2024-06-08)
 # Prereleases of Xfce 4.20.  Masking upon popular request, due to
 # a large number of regressions in every new release.
