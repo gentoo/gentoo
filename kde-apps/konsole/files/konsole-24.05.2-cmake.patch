@@ -1,4 +1,4 @@
-From c5f2315c9df05ca069de25ab741d9fc38a6de21a Mon Sep 17 00:00:00 2001
+From 3800a40653355dd165fe68f80611228fa94656ee Mon Sep 17 00:00:00 2001
 From: Andreas Sturmlechner <asturm@gentoo.org>
 Date: Sun, 7 Jul 2024 23:27:32 +0200
 Subject: [PATCH] Drop faux X11 dependency and switch WITHOUT_X11 option to
@@ -7,6 +7,7 @@ Subject: [PATCH] Drop faux X11 dependency and switch WITHOUT_X11 option to
 X11 is nowhere needed in the codebase. Follow-up to 2f116f9fb2438a6e66b6702b3cc2ace9d0205f96
 
 Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+(cherry picked from commit c5f2315c9df05ca069de25ab741d9fc38a6de21a)
 ---
  CMakeLists.txt             | 7 +------
  src/MainWindow.cpp         | 8 ++++----
@@ -16,15 +17,15 @@ Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
  5 files changed, 10 insertions(+), 15 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 80292afd1b..4746aae72a 100644
+index bd30a9888..0f00be8f3 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -105,12 +105,7 @@ set_package_properties(KF6DocTools PROPERTIES DESCRIPTION
+@@ -95,12 +95,7 @@ set_package_properties(KF6DocTools PROPERTIES DESCRIPTION
  find_package(ICU 61.0 COMPONENTS uc i18n REQUIRED)
  
- if(UNIX AND NOT APPLE AND NOT ANDROID AND NOT HAIKU)
+ if(NOT APPLE)
 -    option(WITHOUT_X11 "Build without X11 integration (skips finding X11)" OFF)
--    if(NOT WITHOUT_X11)
+-    if (NOT WITHOUT_X11)
 -        find_package(X11)
 -        set_package_properties(X11 PROPERTIES TYPE OPTIONAL)
 -        set(HAVE_X11 ${X11_FOUND})
@@ -34,7 +35,7 @@ index 80292afd1b..4746aae72a 100644
  
  # Check for function GETPWUID
 diff --git a/src/MainWindow.cpp b/src/MainWindow.cpp
-index c034288df4..1631053572 100644
+index c034288df..163105357 100644
 --- a/src/MainWindow.cpp
 +++ b/src/MainWindow.cpp
 @@ -35,7 +35,7 @@
@@ -74,7 +75,7 @@ index c034288df4..1631053572 100644
              // This happens for every Konsole window. It depends on
              // the fact that every window is processed in single thread
 diff --git a/src/WindowSystemInfo.cpp b/src/WindowSystemInfo.cpp
-index d6cad5f68b..28cc3bd6cd 100644
+index d6cad5f68..28cc3bd6c 100644
 --- a/src/WindowSystemInfo.cpp
 +++ b/src/WindowSystemInfo.cpp
 @@ -11,7 +11,7 @@
@@ -96,7 +97,7 @@ index d6cad5f68b..28cc3bd6cd 100644
  #else
      return true;
 diff --git a/src/config-konsole.h.cmake b/src/config-konsole.h.cmake
-index fd8f35822c..a1702d8ed9 100644
+index b860764d3..b9fac1e56 100644
 --- a/src/config-konsole.h.cmake
 +++ b/src/config-konsole.h.cmake
 @@ -3,7 +3,7 @@
@@ -106,13 +107,13 @@ index fd8f35822c..a1702d8ed9 100644
 -#cmakedefine01 HAVE_X11
 +#cmakedefine01 WITH_X11
  
- #cmakedefine01 HAVE_DBUS
- 
+ /* If defined, remove public access to dbus sendInput/runCommand */
+ #cmakedefine01 REMOVE_SENDTEXT_RUNCOMMAND_DBUS_METHODS
 diff --git a/src/main.cpp b/src/main.cpp
-index c9b8b12978..2207db1d7c 100644
+index 9f3b88286..b05877f3d 100644
 --- a/src/main.cpp
 +++ b/src/main.cpp
-@@ -286,7 +286,7 @@ bool shouldUseNewProcess(int argc, char *argv[])
+@@ -284,7 +284,7 @@ bool shouldUseNewProcess(int argc, char *argv[])
      QStringList qtProblematicOptions;
      qtProblematicOptions << QStringLiteral("--session") << QStringLiteral("--name") << QStringLiteral("--reverse") << QStringLiteral("--stylesheet")
                           << QStringLiteral("--graphicssystem");
@@ -121,7 +122,7 @@ index c9b8b12978..2207db1d7c 100644
      qtProblematicOptions << QStringLiteral("--display") << QStringLiteral("--visual");
  #endif
      for (const QString &option : std::as_const(qtProblematicOptions)) {
-@@ -298,7 +298,7 @@ bool shouldUseNewProcess(int argc, char *argv[])
+@@ -296,7 +296,7 @@ bool shouldUseNewProcess(int argc, char *argv[])
      // take KDE options into consideration
      QStringList kdeProblematicOptions;
      kdeProblematicOptions << QStringLiteral("--config") << QStringLiteral("--style");
@@ -131,5 +132,5 @@ index c9b8b12978..2207db1d7c 100644
  #endif
  
 -- 
-GitLab
+2.45.2
 
