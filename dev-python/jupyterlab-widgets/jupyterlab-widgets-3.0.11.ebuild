@@ -20,6 +20,5 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86"
 
 BDEPEND="
-	>=dev-python/jupyterlab-4.1.8[${PYTHON_USEDEP}]
 	dev-python/jupyter-packaging[${PYTHON_USEDEP}]
 "
