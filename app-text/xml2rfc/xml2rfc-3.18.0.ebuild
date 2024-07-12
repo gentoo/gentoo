@@ -4,13 +4,20 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1
 
 DESCRIPTION="Generates RFCs and IETF drafts from document source in XML"
-HOMEPAGE="https://ietf-tools.github.io/xml2rfc/ https://github.com/ietf-tools/xml2rfc"
-SRC_URI="https://github.com/ietf-tools/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+HOMEPAGE="
+	https://ietf-tools.github.io/xml2rfc/
+	https://github.com/ietf-tools/xml2rfc/
+	https://pypi.org/project/xml2rfc/
+"
+SRC_URI="
+	https://github.com/ietf-tools/xml2rfc/archive/refs/tags/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 RESTRICT="!test? ( test )"
 LICENSE="BSD"
