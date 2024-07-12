@@ -239,12 +239,6 @@ sci-astronomy/predict
 ~dev-vcs/mercurial-6.7.2
 ~dev-vcs/mercurial-6.7.3
 
-# Maciej Barć <xgqt@gentoo.org> (2024-06-14)
-# EAPI=6, now shipped in official gambit and so it fails to merge from file
-# collision. Bug: #832334
-# Removal on 2024-07-14.
-dev-scheme/termite
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-14)
 # EAPI=6, no reverse dependencies, maintainer-needed, installation
 # blocked by iproute2.
