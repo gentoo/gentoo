@@ -31,9 +31,7 @@ RDEPEND="
 	dev-python/pexpect[${PYTHON_USEDEP}]
 	imaging? ( dev-python/pillow[${PYTHON_USEDEP}] )
 	ipython? (
-		$(python_gen_cond_dep '
-			dev-python/ipython[${PYTHON_USEDEP}]
-		' 3.{10..12})
+		dev-python/ipython[${PYTHON_USEDEP}]
 	)
 	latex? (
 		virtual/latex-base
