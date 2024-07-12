@@ -675,7 +675,7 @@ LICENSE+="
 	Unicode-DFS-2016 ZLIB
 " # crates
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
