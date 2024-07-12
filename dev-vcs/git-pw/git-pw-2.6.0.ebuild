@@ -3,8 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
 DISTUTILS_USE_PEP517=pbr
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1
 if [[ "${PV}" == 9999 ]] ; then
@@ -33,13 +33,17 @@ BDEPEND="
 	dev-python/pbr[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/mock-3.0.0[${PYTHON_USEDEP}]
-		>=dev-python/pytest-3.0[${PYTHON_USEDEP}]
-		>=dev-python/pytest-cov-2.5[${PYTHON_USEDEP}]
 	)
 "
+
+distutils_enable_tests pytest
 
 src_compile() {
 	export PBR_VERSION=${PV}
 	distutils-r1_src_compile
 }
-distutils_enable_tests pytest
+
+python_test() {
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest
+}
