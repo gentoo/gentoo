@@ -13,7 +13,7 @@ DESCRIPTION="QtQuick plugin providing high-performance charts"
 HOMEPAGE="https://invent.kde.org/frameworks/kquickcharts"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE=""
 
 # PVCUT=$(ver_cut 1-2)
