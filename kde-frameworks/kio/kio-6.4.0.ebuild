@@ -14,7 +14,7 @@ inherit ecm frameworks.kde.org xdg-utils
 DESCRIPTION="Framework providing transparent file and data management"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="acl +kwallet wayland X"
 
 # tests hang
