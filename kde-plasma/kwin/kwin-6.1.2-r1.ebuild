@@ -16,7 +16,7 @@ SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${PATCHSET}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="accessibility +caps gles2-only lock screencast +shortcuts systemd"
 
 RESTRICT="test"
