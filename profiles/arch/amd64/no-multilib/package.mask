@@ -78,7 +78,6 @@ games-rpg/eschalon-book-1-demo
 games-rpg/wasteland2
 games-server/etqw-ded
 games-strategy/darwinia
-games-strategy/darwinia-demo
 games-strategy/dominions2
 games-strategy/knights-demo
 games-strategy/majesty-demo

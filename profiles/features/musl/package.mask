@@ -269,7 +269,6 @@ games-server/steamcmd
 games-server/ut2004-ded
 games-simulation/slime-rancher
 games-strategy/darwinia
-games-strategy/darwinia-demo
 games-strategy/knights-demo
 games-strategy/majesty-demo
 games-util/heroic-bin
