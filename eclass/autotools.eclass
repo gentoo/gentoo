@@ -94,7 +94,7 @@ _LATEST_AUTOCONF=( 2.72-r1:2.72 2.71-r6:2.71 )
 # Do NOT change this variable in your ebuilds!
 # If you want to force a newer minor version, you can specify the correct
 # WANT value by using a colon:  <PV>:<WANT_AUTOMAKE>
-_LATEST_AUTOMAKE=( 1.16.5:1.16 )
+_LATEST_AUTOMAKE=( 1.17:1.17 1.16.5:1.16 )
 
 _automake_atom="dev-build/automake"
 _autoconf_atom="dev-build/autoconf"
