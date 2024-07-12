@@ -1,18 +1,17 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-
-inherit user-info
+EAPI=8
 
 DESCRIPTION="A mail statistics RRDtool frontend for Postfix"
-HOMEPAGE="http://mailgraph.schweikert.ch/"
-SRC_URI="http://mailgraph.schweikert.ch//pub/${P}.tar.gz"
+HOMEPAGE="https://mailgraph.schweikert.ch/"
+SRC_URI="https://mailgraph.schweikert.ch/pub/${P}.tar.gz"
 
 LICENSE="GPL-2"
 # Change SLOT to 0 when appropriate
 SLOT="1.14"
 KEYWORDS="amd64 x86"
+IUSE="apache2 nginx"
 
 # for the RRDs
 DEPEND="
@@ -20,6 +19,8 @@ DEPEND="
 	acct-user/mgraph"
 RDEPEND="
 	${DEPEND}
+	apache2? ( acct-user/apache[mgraph] )
+	nginx? ( acct-user/nginx[mgraph] )
 	dev-lang/perl
 	dev-perl/File-Tail
 	>=net-analyzer/rrdtool-1.2.2[graph,perl]"
@@ -73,25 +74,11 @@ pkg_postinst() {
 	ewarn "/etc/conf.d/mailgraph accordingly! Otherwise mailgraph won't get to know"
 	ewarn "the corresponding events (virus/spam mail found etc.)."
 
+	elog "If you are using neither apache nor nginx and the included CGI script"
+	elog "is unable to read the mailgraph RRD files, please add the user for"
+	elog "that webserver to the group mgraph manually:"
 	elog
-	elog "Checking for user apache:"
-	if egetent passwd apache >&/dev/null; then
-		elog "Adding user apache to group mgraph so the included"
-		elog "CGI script is able to read the mailgraph RRD files"
-		if ! gpasswd -a apache mgraph >&/dev/null; then
-			eerror "Failed to add user apache to group mgraph!"
-			eerror "Please check manually."
-		fi
-	else
-		elog
-		elog "User apache not found, maybe we will be running a"
-		elog "webserver with a different UID?"
-		elog "If that's the case, please add that user to the"
-		elog "group mgraph manually to enable the included"
-		elog "CGI script to read the mailgraph RRD files:"
-		elog
-		elog "\tgpasswd -a <user> mgraph"
-	fi
+	elog "\tgpasswd -a <user> mgraph"
 
 	ewarn
 	ewarn "mailgraph.cgi is installed in /usr/share/${PN}/"
