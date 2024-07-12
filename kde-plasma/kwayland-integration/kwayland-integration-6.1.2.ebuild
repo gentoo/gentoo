@@ -12,7 +12,7 @@ HOMEPAGE="https://invent.kde.org/plasma/kwayland-integration"
 
 LICENSE="LGPL-2.1"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE=""
 
 # dev-qt/qtgui: QtXkbCommonSupport is provided by either IUSE libinput or X
