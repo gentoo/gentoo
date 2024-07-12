@@ -9,7 +9,7 @@ inherit ecm frameworks.kde.org optfeature
 DESCRIPTION="Provider for platform independent hardware discovery, abstraction and management"
 
 LICENSE="LGPL-2.1+"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="ios"
 
 RDEPEND="
