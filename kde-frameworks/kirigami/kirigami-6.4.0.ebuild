@@ -13,7 +13,7 @@ DESCRIPTION="Lightweight user interface framework for mobile and convergent appl
 HOMEPAGE="https://techbase.kde.org/Kirigami"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="openmp"
 
 # requires package to already be installed
