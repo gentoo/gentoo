@@ -13,7 +13,7 @@ HOMEPAGE="https://invent.kde.org/libraries/kdsoap-ws-discovery-client"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~riscv"
+	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 fi
 
 LICENSE="CC0-1.0 GPL-3+"
