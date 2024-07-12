@@ -1,0 +1,63 @@
+#!/sbin/openrc-run
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+DAEMON=/usr/sbin/incusd
+PIDFILE=/run/incus.pid
+
+depend() {
+	need net
+	need lxcfs
+}
+
+start() {
+	ebegin "Starting incus daemon service"
+
+	modprobe -f loop > /dev/null 2>&1
+
+	# Call prlimit from the init.d file instead of ulimit through rc_ulimit,
+	# bgo#929138
+	prlimit -n 1048576 -l unlimited --pid=$$
+
+	# Fix permissions on /var/lib/incus and make sure it exists.
+	# Create a log directory for incus with correct permissions.
+	install -d /var/lib/incus --group incus-admin --owner root --mode 0775
+	install -d /var/log/incus --group incus-admin --owner root
+
+	start-stop-daemon --start \
+		--pidfile ${PIDFILE} \
+		--exec ${DAEMON} \
+		--background \
+		--make-pidfile \
+		-- \
+		${INCUS_OPTIONS}
+	eend ${?}
+
+	# Create necessary systemd paths in order for systemd containers to work on openrc host.
+	# /etc/rc.conf should have following values:
+	#   rc_cgroup_mode="hybrid"
+	if [ -d /sys/fs/cgroup/unified ] &&
+	[ ! -d /sys/fs/cgroup/systemd ]; then
+		install -d /sys/fs/cgroup/systemd --group incus-admin --owner root
+		mount -t cgroup -o none,name=systemd systemd /sys/fs/cgroup/systemd
+	fi
+}
+
+stop() {
+	if [ "${RC_CMD}" = restart ]; then
+		ebegin "Stopping incus daemon service (but not containers)"
+		# start-stop-daemon sends SIGTERM with a timeout of 5s by default.
+		# SIGTERM indicates to INCUS that it will be stopped temporarily.
+		# Instances will keep running.
+		start-stop-daemon --stop --quiet -p "${PIDFILE}"
+		eend ${?}
+	else
+		ebegin "Stopping incus daemon service and containers, waiting 40s"
+		# SIGPWR indicates to INCUS that the host is going down.
+		# LXD will do a clean shutdown of all instances.
+		# After 30s all remaining instances will be killed.
+		# We wait up to 40s for INCUS.
+		start-stop-daemon --stop --quiet -R SIGPWR/40 -p "${PIDFILE}"
+		eend ${?}
+	fi
+}
