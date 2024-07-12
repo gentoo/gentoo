@@ -39,3 +39,9 @@ BDEPEND="
 # TODO: package jupyterlite-sphinx
 # distutils_enable_sphinx docs
 distutils_enable_tests pytest
+
+PATCHES=(
+	# fix compatibility with patched python-json-logger
+	# https://github.com/jupyter/jupyter_events/pull/100
+	"${FILESDIR}/${P}-test.patch"
+)
