@@ -24,7 +24,8 @@ fi
 
 DESCRIPTION="Let’s Encrypt client to automate deployment of X.509 certificates"
 HOMEPAGE="
-	https://github.com/certbot/certbot
+	https://github.com/certbot/certbot/
+	https://pypi.org/project/certbot/
 	https://letsencrypt.org/
 "
 
