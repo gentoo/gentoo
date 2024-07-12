@@ -31,7 +31,6 @@ BDEPEND="
 	test? (
 		dev-python/ipykernel[${PYTHON_USEDEP}]
 		dev-python/jsonschema[${PYTHON_USEDEP}]
-		<dev-python/pytest-8.1[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 	)
 "
@@ -40,6 +39,11 @@ PDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/jupyter-widgets/ipywidgets/pull/3903
+	"${FILESDIR}/${P}-pytest-8.patch"
+)
 
 python_test() {
 	local EPYTEST_DESELECT=()
