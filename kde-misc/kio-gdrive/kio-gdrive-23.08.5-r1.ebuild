@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/kio_gdrive/"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="kf6compat +share"
 
 COMMON_DEPEND="
