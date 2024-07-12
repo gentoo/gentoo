@@ -1,0 +1,67 @@
+Backport from upcoming 6.7.3[1][2] for [3][4].
+
+[1] https://github.com/qt/qtwayland/commit/85ec3ae70b905ddf9e16d86c468446d74867743f
+[2] https://codereview.qt-project.org/c/qt/qtwayland/+/565408
+[3] https://bugs.kde.org/show_bug.cgi?id=482770
+[4] https://bugs.kde.org/show_bug.cgi?id=490059
+
+From: =?UTF-8?q?Niccol=C3=B2=20Venerandi?= <niccolo@venerandi.com>
+Date: Mon, 3 Jun 2024 12:19:59 +0200
+Subject: [PATCH] Emit a LeaveEvent on drag and drop start
+
+All focused windows will now receive a LeaveEvent when a drag and drop starts.
+This makes sure that the dragged element does not preserve any hover decoration
+during the drag and drop, and that other elements that happen to take place
+of the dragged elements don't become hovered too.
+--- a/src/client/qwaylanddnd.cpp
++++ b/src/client/qwaylanddnd.cpp
+@@ -29,4 +29,9 @@
+ void QWaylandDrag::startDrag()
+ {
++    // Some compositors do not send a pointer leave before starting a drag, some do.
++    // This is discussed upstream at: https://gitlab.freedesktop.org/wayland/wayland/-/issues/444
++    // For consistency between compositors we emit the leave event here, upon drag start.
++    m_display->currentInputDevice()->handleStartDrag();
++
+     QBasicDrag::startDrag();
+     QWaylandWindow *icon = static_cast<QWaylandWindow *>(shapedPixmapWindow()->handle());
+--- a/src/client/qwaylandinputdevice.cpp
++++ b/src/client/qwaylandinputdevice.cpp
+@@ -524,4 +524,10 @@
+ }
+ 
++void QWaylandInputDevice::handleStartDrag()
++{
++    if (mPointer)
++        mPointer->leavePointers();
++}
++
+ #if QT_CONFIG(wayland_datadevice)
+ void QWaylandInputDevice::setDataDevice(QWaylandDataDevice *device)
+@@ -880,4 +886,12 @@
+         window->handleMouse(mParent, e);
+     }
++}
++
++void QWaylandInputDevice::Pointer::leavePointers()
++{
++    if (auto *window = focusWindow()) {
++        LeaveEvent e(focusWindow(), mSurfacePos, mGlobalPos);
++        window->handleMouse(mParent, e);
++    }
+ }
+ 
+--- a/src/client/qwaylandinputdevice_p.h
++++ b/src/client/qwaylandinputdevice_p.h
+@@ -93,4 +93,5 @@
+     void setCursor(const QCursor *cursor, const QSharedPointer<QWaylandBuffer> &cachedBuffer = {}, int fallbackOutputScale = 1);
+ #endif
++    void handleStartDrag();
+     void handleEndDrag();
+ 
+@@ -321,4 +322,5 @@
+ public:
+     void releaseButtons();
++    void leavePointers();
+ 
+     QWaylandInputDevice *mParent = nullptr;
