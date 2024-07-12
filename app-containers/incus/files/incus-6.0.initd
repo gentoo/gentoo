@@ -17,7 +17,7 @@ start() {
 
 	# Call prlimit from the init.d file instead of ulimit through rc_ulimit,
 	# bgo#929138
-	prlimit -n 1048576 -l unlimited --pid=$$
+	prlimit --nofile=1048576 --memlock=unlimited --pid=$$
 
 	# Fix permissions on /var/lib/incus and make sure it exists.
 	# Create a log directory for incus with correct permissions.
