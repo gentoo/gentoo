@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2024-07-12)
+# Test dependency that is no longer maintained, last release in
+# 2019. Broken in various ways. No reverse dependencies left.
+# Removal on 2024-08-12.
+dev-ruby/rspectacular
+
 # Michał Górny <mgorny@gentoo.org> (2024-07-12)
 # Obsoleted by dev-python/pytest-freezer (usually a drop-in replacement).
 # No reverse dependencies left.
