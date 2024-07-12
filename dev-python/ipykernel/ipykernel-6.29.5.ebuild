@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 pypi virtualx
@@ -34,11 +34,15 @@ RDEPEND="
 "
 # RDEPEND seems specifically needed in BDEPEND, at least jupyter
 # bug #816486
+# pytest-8 runs a small subset of tests, we allow newer for 3.13
+# since a few tests are better than skipping entirely
 BDEPEND="
 	${RDEPEND}
 	test? (
 		dev-python/flaky[${PYTHON_USEDEP}]
-		<dev-python/pytest-8[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			<dev-python/pytest-8[${PYTHON_USEDEP}]
+		' 3.{10..12})
 		>=dev-python/pytest-asyncio-0.23.5[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		dev-python/ipyparallel[${PYTHON_USEDEP}]
