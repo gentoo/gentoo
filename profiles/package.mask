@@ -387,12 +387,6 @@ dev-ml/patience_diff:0/0.17
 >=xfce-base/xfconf-4.19
 >=xfce-base/xfdesktop-4.19
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-05-31)
-# EAPI=6, maintainer-needed, incorrect LICENSE, fails to compile with
-# clang.
-# Removal on 2024-07-09.  Bugs #933241, #889912, #880267, #562822, #930500.
-net-mail/gnubiff
-
 # Sam James <sam@gentoo.org> (2024-04-28)
 # Masked for testing. Tracker bug: bug #930805.
 >=sys-libs/ncurses-6.5
