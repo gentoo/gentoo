@@ -24,7 +24,7 @@ RDEPEND="
 	media-plugins/gst-plugins-ximagesrc
 	>=gui-libs/gtk-4
 	>=net-misc/networkmanager-1.16.0[wifi]
-	>=dev-libs/libportal-0.7
+	>=dev-libs/libportal-0.7[gtk]
 	>=gui-libs/libadwaita-1
 	net-dns/dnsmasq
 	net-wireless/wpa_supplicant[p2p]
