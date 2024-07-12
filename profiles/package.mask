@@ -413,11 +413,6 @@ www-apps/wiliki
 www-apache/mod_vdbh
 www-apache/modsec-flameeyes
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-08)
-# EAPI=6, no reverse dependencies, maintainer-needed, various QA issues.
-# Removal on 2024-07-08.  Bugs #933843, #695068, #677432.
-net-analyzer/check_mk_agent
-
 # Michał Górny <mgorny@gentoo.org> (2024-06-08)
 # Prereleases of Xfce 4.20.  Masking upon popular request, due to
 # a large number of regressions in every new release.
