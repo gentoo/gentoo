@@ -3,8 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
 DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1
 
@@ -34,10 +34,6 @@ HOMEPAGE="
 S="${WORKDIR}/${PARENT_P}/${PN}"
 LICENSE="Apache-2.0"
 SLOT="0"
-
-BDEPEND="
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
-"
 
 # The requirement is really 17.5.0 but easier to require latest stable >= 23.1.1
 # to avoid broken 23.1.0.
