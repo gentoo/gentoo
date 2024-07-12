@@ -60,6 +60,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	if multilib_is_native_abi && use java ; then
+		export JAVAFLAGS="$(java-pkg_javac-args)"
 		export JAVACFLAGS="$(java-pkg_javac-args)"
 		export JNI_CFLAGS="$(java-pkg_get-jni-cflags)"
 	fi
