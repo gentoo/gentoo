@@ -23,6 +23,7 @@ IUSE="debug osggraph webstats"
 COMMON_DEPEND="
 	dev-games/freesolid
 	dev-libs/expat
+	media-libs/libjpeg-turbo:0=
 	media-libs/libpng:=
 	media-libs/libsdl2[X,haptic,opengl,joystick,video]
 	media-libs/sdl2-mixer
@@ -32,7 +33,6 @@ COMMON_DEPEND="
 	sys-libs/zlib:=
 	net-misc/curl
 	virtual/glu
-	virtual/jpeg
 	virtual/opengl
 	osggraph? ( dev-games/openscenegraph:=[png] )
 "
