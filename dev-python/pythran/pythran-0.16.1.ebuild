@@ -41,9 +41,7 @@ DEPEND="
 "
 BDEPEND="
 	test? (
-		$(python_gen_cond_dep '
-			dev-python/ipython[${PYTHON_USEDEP}]
-		' 3.{10..12})
+		dev-python/ipython[${PYTHON_USEDEP}]
 		dev-python/pip[${PYTHON_USEDEP}]
 		dev-python/packaging[${PYTHON_USEDEP}]
 		dev-python/scipy[${PYTHON_USEDEP}]
