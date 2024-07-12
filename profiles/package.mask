@@ -401,11 +401,6 @@ dev-ml/async:0/0.17
 dev-ml/patience_diff:0/0.17
 >=dev-ml/ppx_deriving-6.0.2
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-08)
-# EAPI=6, waiting for a version bump, not maintained for many years.
-# Removal on 2024-07-08.  Bug #933850.
-www-apps/wiliki
-
 # Michał Górny <mgorny@gentoo.org> (2024-06-08)
 # Prereleases of Xfce 4.20.  Masking upon popular request, due to
 # a large number of regressions in every new release.
