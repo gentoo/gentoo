@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-07-12)
+# KDE PIM 6 is not being keyworded here
+kde-apps/libkgapi:5 kf6compat
+
 # Michael Orlitzky <mjo@gentoo.org> (2024-07-09)
 # The opcache extension fails to build on hardened x86, but only
 # if the JIT is enabled. Bug 930145.
