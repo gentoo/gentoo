@@ -14,7 +14,7 @@ DESCRIPTION="Library for accessing usage data collected by the activities system
 
 LICENSE="LGPL-2+"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE=""
 
 RDEPEND="
