@@ -27,7 +27,8 @@ fi
 
 DESCRIPTION="An implementation of the ACME protocol"
 HOMEPAGE="
-	https://github.com/certbot/certbot
+	https://github.com/certbot/certbot/
+	https://pypi.org/project/acme/
 	https://letsencrypt.org/
 "
 
