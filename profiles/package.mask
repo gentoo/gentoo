@@ -453,12 +453,6 @@ sci-libs/coinhsl
 # Removal on 2024-07-08.  Bugs #933824, #927783.
 net-p2p/gnut
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-07)
-# EAPI=6, no reverse dependencies, failing tests, various QA issues.
-# Removal on 2024-07-07.  Bugs #933768, #849923, #882403, #837020,
-# #741444, #831092, #862717.
-sci-libs/h5part
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-05-31)
 # EAPI=6, maintainer-needed, incorrect LICENSE, fails to compile with
 # clang.
