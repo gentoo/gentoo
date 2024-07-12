@@ -245,7 +245,6 @@ BDEPEND="
 		>=dev-python/ddt-1.4.4[${PYTHON_USEDEP}]
 		>=dev-python/hypothesis-4.24.3[${PYTHON_USEDEP}]
 		>=dev-python/networkx-2.2[${PYTHON_USEDEP}]
-		<dev-python/pytest-8.2[${PYTHON_USEDEP}]
 		>=dev-python/qiskit-aer-0.14[${PYTHON_USEDEP}]
 		>=dev-python/scikit-learn-0.20.0[${PYTHON_USEDEP}]
 	)
