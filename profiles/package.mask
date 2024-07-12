@@ -307,11 +307,6 @@ dev-php/PEAR-Mail_mimeDecode
 # Removal on 2024-07-10.  Bug #934002.
 dev-python/rapidfuzz-capi
 
-# James Le Cuirot <chewi@gentoo.org> (2024-06-09)
-# Long dead upstream. Probably broken. Use games-emulation/dolphin instead.
-# Removal on 2024-07-09.  Bug #739140.
-games-emulation/gcube
-
 # Alfredo Tupone <tupone@gentoo.org> (2024-06-09)
 # Not ready for testing
 >=dev-lang/ocaml-5
