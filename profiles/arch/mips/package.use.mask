@@ -210,10 +210,6 @@ media-libs/sdl-mixer midi
 # Moved from use.mask since they are flags local to one package.
 sys-kernel/mips-sources -ip27 -ip28 -ip30
 
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Requires USE=opencl that is masked in this profile.
-net-misc/bfgminer adl lm-sensors
-
 # Mart Raudsepp <leio@gentoo.org> (2017-05-27)
 # app-pda/libimobiledevice, app-pda/libplist and co not tested
 sys-power/upower ios

@@ -282,12 +282,6 @@ sci-chemistry/procheck
 # Removal on 2024-07-14.  Bugs #934227, #898840.
 www-misc/log-toolkit
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-12)
-# EAPI=6, maintainer needed, no reverse dependencies. Not maintained in
-# gentoo for a long time.
-# Removal on 2024-07-12.  Bugs #934156, #636422.
-net-misc/bfgminer
-
 # Viorel Munteanu <ceamac@gentoo.org> (2024-06-11)
 # dev-php/pear, dev-php/PEAR-* and their reverse dependencies: mask for removal
 # in 30 days.

@@ -272,10 +272,6 @@ app-i18n/fcitx-libpinyin dictionary-manager
 # Requires java
 app-forensics/sleuthkit java
 
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Requires USE=opencl that is masked in this profile.
-net-misc/bfgminer adl lm-sensors
-
 # Michał Górny <mgorny@gentoo.org> (2017-03-24)
 # libcxx fails to compile on ppc*, #595744.
 sys-devel/clang-common default-libcxx
