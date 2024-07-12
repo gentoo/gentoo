@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit gnome2 python-r1
 
@@ -24,11 +24,13 @@ DEPEND="
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	>=dev-python/pygobject-2.90.1:3[${PYTHON_USEDEP}]
 "
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
 	>=sys-apps/dbus-1
 	>=app-accessibility/at-spi2-core-2.34[introspection]
 "
-BDEPEND="virtual/pkgconfig
+BDEPEND="
+	virtual/pkgconfig
 	test? ( x11-libs/gtk+:3 )
 "
 
