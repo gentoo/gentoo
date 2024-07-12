@@ -10,7 +10,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Framework for syntax highlighting"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE=""
 
 # examples: dev-qt/qtbase[printsupport,widgets]
