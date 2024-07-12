@@ -27,7 +27,8 @@ fi
 
 DESCRIPTION="Nginx plugin for Certbot (Let’s Encrypt client)"
 HOMEPAGE="
-	https://github.com/certbot/certbot
+	https://github.com/certbot/certbot/
+	https://pypi.org/project/certbot-nginx/
 	https://letsencrypt.org/
 "
 
