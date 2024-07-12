@@ -18,9 +18,9 @@ SRC_URI="https://github.com/unicode-org/icu/releases/download/release-${MY_PV/_/
 SRC_URI+=" verify-sig? ( https://github.com/unicode-org/icu/releases/download/release-${MY_PV/_/-}/icu4c-${MY_PV/-rc/rc}-src.tgz.asc )"
 S="${WORKDIR}"/${PN}/source
 
-#if [[ ${PV} != *_rc* ]] ; then
-#	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
-#fi
+if [[ ${PV} != *_rc* ]] ; then
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+fi
 LICENSE="BSD"
 SLOT="0/${PV%.*}"
 IUSE="debug doc examples static-libs test"
