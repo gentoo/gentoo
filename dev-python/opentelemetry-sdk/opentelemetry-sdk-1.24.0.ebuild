@@ -6,7 +6,7 @@ EAPI=8
 MY_P="opentelemetry-python-${PV}"
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{11..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1
 
@@ -72,9 +72,10 @@ python_test() {
 		popd >/dev/null || die
 	done
 
-	local -x EPYTEST_IGNORE=(
+	local EPYTEST_IGNORE=(
 		tests/performance/benchmarks/
 	)
 
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
 }
