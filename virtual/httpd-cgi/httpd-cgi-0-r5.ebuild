@@ -16,7 +16,6 @@ RDEPEND="
 		www-servers/h2o
 		www-servers/monkeyd
 		www-servers/nginx
-		www-servers/thttpd
 		www-servers/tomcat
 		www-servers/caddy
 	)
