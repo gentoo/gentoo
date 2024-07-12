@@ -6,13 +6,7 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<upstream>
-		<maintainer status="active">
-			<email>phil@riverbankcomputing.com</email>
-			<name>Phil Thompson</name>
-		</maintainer>
-		<changelog>https://www.riverbankcomputing.com/hg/sip/raw-file/tip/NEWS</changelog>
-		<doc>https://www.riverbankcomputing.com/static/Docs/sip/</doc>
-		<bugs-to>mailto:pyqt@riverbankcomputing.com</bugs-to>
+		<bugs-to>https://github.com/Python-SIP/sip/issues</bugs-to>
 		<remote-id type="pypi">PyQt5-sip</remote-id>
 	</upstream>
 </pkgmetadata>
