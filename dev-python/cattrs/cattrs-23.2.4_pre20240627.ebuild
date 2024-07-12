@@ -61,7 +61,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-py313.patch"
 )
 
-export SETUPTOOLS_SCM_PRETEND_VERSION=${PV/_p/+}
+export SETUPTOOLS_SCM_PRETEND_VERSION=${PV/_pre/.dev}
 
 python_test() {
 	local EPYTEST_IGNORE=(
