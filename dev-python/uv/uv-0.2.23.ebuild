@@ -85,7 +85,7 @@ src_prepare() {
 	# https://github.com/vorot93/tokio-tar/pull/23
 	# (fortunately uv already depends on portable-atomic, so we don't
 	# have to fight Cargo.lock)
-	cd "${WORKDIR}/cargo_home/gentoo/tokio-tar-0.3.1" || die
+	cd "${ECARGO_VENDOR}/tokio-tar-0.3.1" || die
 	eapply "${FILESDIR}/tokio-tar-0.3.1-ppc.patch"
 }
 
