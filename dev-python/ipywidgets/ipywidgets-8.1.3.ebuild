@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 pypi
@@ -43,6 +43,8 @@ distutils_enable_tests pytest
 PATCHES=(
 	# https://github.com/jupyter-widgets/ipywidgets/pull/3903
 	"${FILESDIR}/${P}-pytest-8.patch"
+	# https://github.com/jupyter-widgets/ipywidgets/pull/3924
+	"${FILESDIR}/${P}-py313.patch"
 )
 
 python_test() {

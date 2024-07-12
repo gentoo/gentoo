@@ -1,0 +1,30 @@
+From acfa9a3539648a04b11331ad07cab4393069f87f Mon Sep 17 00:00:00 2001
+From: Lumir Balhar <lbalhar@redhat.com>
+Date: Tue, 18 Jun 2024 11:58:07 +0200
+Subject: [PATCH] Make tests compatible with Python 3.13
+
+Python compiler newly removes indent from docstrings
+https://github.com/python/cpython/issues/81283
+---
+ python/ipywidgets/ipywidgets/widgets/tests/test_docutils.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/ipywidgets/widgets/tests/test_docutils.py b/ipywidgets/widgets/tests/test_docutils.py
+index 1f8b09aa34..462293326c 100644
+--- a/ipywidgets/widgets/tests/test_docutils.py
++++ b/ipywidgets/widgets/tests/test_docutils.py
+@@ -15,7 +15,7 @@ def test_substitution(self):
+         def f():
+             """ Docstring with value {key} """
+ 
+-        assert f.__doc__ == " Docstring with value 62 "
++        assert "Docstring with value 62" in f.__doc__
+ 
+     def test_unused_keys(self):
+         snippets = {'key': '62', 'other-key': 'unused'}
+@@ -24,4 +24,4 @@ def test_unused_keys(self):
+         def f():
+             """ Docstring with value {key} """
+ 
+-        assert f.__doc__ == " Docstring with value 62 "
++        assert "Docstring with value 62" in f.__doc__
