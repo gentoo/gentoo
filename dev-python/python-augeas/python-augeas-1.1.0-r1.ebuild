@@ -11,7 +11,7 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="Python bindings for Augeas"
 HOMEPAGE="
-	http://augeas.net/
+	https://augeas.net/
 	https://github.com/hercules-team/python-augeas/
 	https://pypi.org/project/python-augeas/
 "
