@@ -14,7 +14,7 @@ https://invent.kde.org/system/xwaylandvideobridge"
 
 if [[ ${KDE_BUILD_TYPE} == release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~riscv"
+	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 fi
 
 LICENSE="GPL-2+"
