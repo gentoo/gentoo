@@ -12,6 +12,7 @@ MY_P=certbot-${PV}
 DESCRIPTION="DNSimple Authenticator plugin for Certbot (Let's Encrypt Client)"
 HOMEPAGE="
 	https://github.com/certbot/certbot/
+	https://pypi.org/project/certbot-dns-dnsimple/
 	https://certbot-dns-dnsimple.readthedocs.io/en/stable/
 "
 # Use common certbot tarball
