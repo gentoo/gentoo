@@ -11,7 +11,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Framework for searching and managing metadata"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE=""
 
 RESTRICT="test" # bug 624250
