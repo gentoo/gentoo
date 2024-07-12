@@ -13,7 +13,7 @@ HOMEPAGE="https://invent.kde.org/frameworks/kwayland"
 
 LICENSE="LGPL-2.1"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE=""
 
 # All failing, I guess we need a virtual wayland server
