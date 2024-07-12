@@ -1,0 +1,63 @@
+https://www.boost.org/doc/libs/1_85_0/libs/filesystem/doc/deprecated.html
+--- a/src/cmdline.cpp
++++ b/src/cmdline.cpp
+@@ -41,7 +41,6 @@
+ #include <iostream>
+ 
+ #include <boost/filesystem/operations.hpp>
+-#include <boost/filesystem/convenience.hpp>
+ 
+ #include <tiff.h>
+ 
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -41,7 +41,6 @@
+ 
+ #include <boost/filesystem/path.hpp>
+ #include <boost/filesystem/operations.hpp>
+-#include <boost/filesystem/convenience.hpp>
+ 
+ extern "C"
+ {
+@@ -172,10 +171,10 @@ int main( int argc, char *argv[] )
+             if (pathOutFileName.string().length()) {
+               // A fixed name was given, so use it as a base name
+               outPath = pathOutFileName;
+-              std::string orgExt = fs::extension(outPath);
++              std::string orgExt = outPath.extension().string();
+               if (nFileCountOut > 1) {
+                 sprintf(acNumber, "_%03d", nPage+1);
+-                outPath = fs::change_extension(outPath, acNumber);
++                outPath.replace_extension(acNumber);
+                 if (orgExt.length()) {
+                   std::string strTemp = outPath.string();
+                   strTemp += orgExt;
+@@ -184,15 +183,15 @@ int main( int argc, char *argv[] )
+               }
+             } else {
+               // Otherwise construct output filename from input filename
+-              outPath = pathOutDirectory / pathInFileName.leaf();
++              outPath = pathOutDirectory / pathInFileName.filename();
+               if (nFileCountOut > 1) {
+                 sprintf(acNumber, "_%03d", nPage+1);
+-                outPath = fs::change_extension(outPath, acNumber);
++                outPath.replace_extension(acNumber);
+                 std::string strTemp = outPath.string();
+                 strTemp += pOut->GetExtension();
+                 outPath = fs::path(strTemp);
+               } else {
+-                outPath = fs::change_extension(outPath, pOut->GetExtension());
++                outPath.replace_extension(pOut->GetExtension());
+               }
+             }
+             if (!proc.doOverwrite() && !((nPage > 0) && (nFileCountOut == 1)) && fs::exists(outPath)) {
+--- a/src/output.cpp
++++ b/src/output.cpp
+@@ -42,7 +42,6 @@
+ #include <iostream>
+ 
+ #include <boost/filesystem/path.hpp>
+-#include <boost/filesystem/convenience.hpp>
+ 
+ #ifdef WIN32
+ #include <io.h>
