@@ -144,5 +144,5 @@ src_install() {
 	INFOPATH="${infopath}"
 	EOF
 
-	docompress "${MY_INFODIR}"
+	docompress "${infopath}"
 }
