@@ -19,20 +19,9 @@ SRC_URI="
 		-> ${P}.gh.tar.gz
 "
 
-RESTRICT="!test? ( test )"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64"
-
-BDEPEND="
-	test? (
-		>=dev-python/pypdf-3.2.1[${PYTHON_USEDEP}]
-		dev-python/decorator[${PYTHON_USEDEP}]
-		dev-python/dict2xml[${PYTHON_USEDEP}]
-		dev-python/weasyprint[${PYTHON_USEDEP}]
-		media-fonts/noto[cjk]
-	)
-"
 
 RDEPEND="
 	>=dev-python/platformdirs-3.6.0[${PYTHON_USEDEP}]
@@ -47,6 +36,15 @@ RDEPEND="
 	>=dev-python/pyyaml-5.3.1[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
+"
+BDEPEND="
+	test? (
+		>=dev-python/pypdf-3.2.1[${PYTHON_USEDEP}]
+		dev-python/decorator[${PYTHON_USEDEP}]
+		dev-python/dict2xml[${PYTHON_USEDEP}]
+		dev-python/weasyprint[${PYTHON_USEDEP}]
+		media-fonts/noto[cjk]
+	)
 "
 
 distutils_enable_tests unittest
