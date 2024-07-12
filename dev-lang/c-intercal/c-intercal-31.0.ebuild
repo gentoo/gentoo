@@ -48,6 +48,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/855590
+	# https://gitlab.com/esr/intercal/-/issues/7
+	filter-lto
+
 	append-cflags $(test-flags-CC -fno-toplevel-reorder)	#722862
 	econf
 }
