@@ -4,8 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-# py3.13: https://github.com/neithere/argh/issues/228
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 
 inherit distutils-r1 pypi
 
@@ -27,3 +26,8 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/neithere/argh/commit/cdb70d5ac7d8a5a5dff3c55100e5f67b68b26826
+	"${FILESDIR}/${P}-py313.patch"
+)
