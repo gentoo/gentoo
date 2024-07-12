@@ -9,7 +9,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Framework providing data models to help with tasks such as sorting and filtering"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 
 RDEPEND="
 	>=dev-qt/qtdeclarative-${QTMIN}:6
