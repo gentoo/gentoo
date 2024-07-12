@@ -4,7 +4,7 @@
 EAPI=8
 
 PVCUT=$(ver_cut 1-2)
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit cmake flag-o-matic frameworks.kde.org python-any-r1 xdg
 
 DESCRIPTION="Breeze SVG icon theme"
