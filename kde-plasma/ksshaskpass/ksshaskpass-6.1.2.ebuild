@@ -12,7 +12,7 @@ HOMEPAGE+=" https://invent.kde.org/plasma/ksshaskpass"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE=""
 
 DEPEND="
