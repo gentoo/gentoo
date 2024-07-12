@@ -21,14 +21,14 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 DEPEND="
 	dev-java/error-prone-annotations:0
-	>=virtual/jdk-17:*
+	>=virtual/jdk-1.8:*
 	test? (
 		dev-java/guava:0
 		dev-java/guava-testlib:0
-	)"
-# src/test/java/com/google/gson/functional/Java17RecordTest.java:78:
-# error: records are not supported in -source 11
-RDEPEND=">=virtual/jre-17:*"
+	)
+"
+
+RDEPEND=">=virtual/jre-1.8:*"
 
 DOCS=(
 	../CHANGELOG.md
@@ -72,5 +72,8 @@ src_prepare() {
 
 src_test() {
 	JAVA_GENTOO_CLASSPATH_EXTRA="${DISTDIR}/truth-1.1.3.jar:testdata.jar"
-	java-pkg-simple_src_test
+
+	# src/test/java/com/google/gson/functional/Java17RecordTest.java:78:
+	# error: records are not supported in -source 11
+	JAVAC_ARGS="--source 17 --target 17" java-pkg-simple_src_test
 }
