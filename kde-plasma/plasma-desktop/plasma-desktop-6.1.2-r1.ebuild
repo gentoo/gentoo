@@ -18,7 +18,7 @@ SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${PATCHSET}.tar.xz"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="ibus scim screencast sdl +semantic-desktop webengine"
 
 RESTRICT="test" # missing selenium-webdriver-at-spi
