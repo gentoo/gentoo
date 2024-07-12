@@ -12,7 +12,7 @@ DESCRIPTION="Task management and system monitoring library"
 
 LICENSE="LGPL-2+"
 SLOT="6/9"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE=""
 
 RDEPEND="
