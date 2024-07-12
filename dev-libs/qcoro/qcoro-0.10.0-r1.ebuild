@@ -10,7 +10,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/danvratil/${PN}"
 else
 	SRC_URI="https://github.com/danvratil/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~riscv"
+	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 fi
 
 DESCRIPTION="C++ Coroutine Library for Qt"
