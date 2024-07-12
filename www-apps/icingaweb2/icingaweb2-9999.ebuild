@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit depend.apache
 
@@ -20,7 +20,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="apache2 apache2-server fpm ldap mysql nginx pdf postgres"
-REQUIRED_USE="( ^^ ( apache2-server nginx ) ) apache2? ( apache2-server )"
+REQUIRED_USE="( ?? ( apache2-server nginx ) ) apache2? ( apache2-server )"
 
 DEPEND=">=net-analyzer/icinga2-2.1.1
 		dev-php/pecl-imagick
@@ -28,23 +28,19 @@ DEPEND=">=net-analyzer/icinga2-2.1.1
 		apache2-server? ( >=www-servers/apache-2.4.0 )
 		nginx? ( >=www-servers/nginx-1.7.0:* )
 		|| (
-			dev-lang/php:8.0[apache2?,cli,fpm?,gd,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
-			dev-lang/php:8.1[apache2?,cli,fpm?,gd,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
+			dev-lang/php:8.1[apache2?,cli,curl,fileinfo,fpm?,gd,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
+			dev-lang/php:8.2[apache2?,cli,curl,fileinfo,fpm?,gd,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
 		)
 		>=dev-libs/icinga-php-library-0.8.1
 		>=dev-libs/icinga-php-thirdparty-0.11.0
 		acct-group/icingacmd
 		acct-group/icingaweb2"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	apache2? ( acct-user/apache[icingaweb2] )
+	nginx? ( acct-user/nginx[icingaweb2] )
+"
 
 want_apache2
-
-pkg_setup() {
-	depend.apache_pkg_setup
-
-	use nginx && usermod -a -G icingacmd,icingaweb2 nginx
-	use apache2 && usermod -a -G icingacmd,icingaweb2 apache
-}
 
 pkg_config() {
 	if [[ -d /etc/icingaweb2 ]] ; then
