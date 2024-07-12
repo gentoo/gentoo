@@ -9,7 +9,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Framework to handle global shortcuts"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE=""
 
 RDEPEND=">=dev-qt/qtbase-${QTMIN}:6[dbus,gui,widgets]"
