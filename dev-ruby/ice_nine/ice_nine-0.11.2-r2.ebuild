@@ -15,7 +15,7 @@ HOMEPAGE="https://rubygems.org/gems/ice_nine https://github.com/dkubb/ice_nine"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="test"
 
 # Some tests are broken on Ruby 3 and require a new release upstream.
