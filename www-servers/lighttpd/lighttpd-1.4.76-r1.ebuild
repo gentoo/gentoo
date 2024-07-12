@@ -75,6 +75,10 @@ BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-lighttpd )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-sparc.patch
+)
+
 # update certain parts of lighttpd.conf based on conditionals
 update_config() {
 	local config="${ED}/etc/lighttpd/lighttpd.conf"
