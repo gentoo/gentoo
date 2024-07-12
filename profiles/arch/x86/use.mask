@@ -4,10 +4,6 @@
 # Unmask the flag which corresponds to ARCH.
 -x86
 
-# Sam James <sam@gentoo.org> (2024-06-13)
-# Needs as-yet-unkeyworded KF6 (bug #934215)
-kf6compat
-
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-04-14)
 # media-libs/quirc is keyworded on amd64
 -quirc
