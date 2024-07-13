@@ -34,6 +34,13 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+src_prepare() {
+	distutils-r1_src_prepare
+
+	find -name '*.py' -exec \
+		sed -i -e 's:pip[.]_vendor[.]::' {} + || die
+}
+
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest -p pytest_mock -p console-scripts

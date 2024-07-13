@@ -19,6 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv"
 
 RDEPEND="
+	>=dev-python/packaging-23.1[${PYTHON_USEDEP}]
 	>=dev-python/pip-23.1.2[${PYTHON_USEDEP}]
 "
 BDEPEND="
@@ -32,11 +33,18 @@ BDEPEND="
 
 PATCHES=(
 	# https://github.com/tox-dev/pipdeptree/pull/302
-	"${FILESDIR}/pipdeptree-2.13.1-expect-hpy-in-pypy-7.3.3.patch"
+	"${FILESDIR}/pipdeptree-2.17.0-expect-hpy-in-pypy-7.3.3.patch"
 	"${FILESDIR}/pipdeptree-2.13.2-fix-pypy-7.3.14.patch"
 )
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	find -name '*.py' -exec \
+		sed -i -e 's:pip[.]_vendor[.]::' {} + || die
+}
 
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
