@@ -12,8 +12,8 @@ HOMEPAGE="https://abseil.io/"
 SRC_URI="https://github.com/abseil/abseil-cpp/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="0/${PV%%.*}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~sparc ~x86"
+SLOT="0/${PV%%.*}.0"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="test"
 
 RDEPEND=">=dev-cpp/gtest-1.13.0[${MULTILIB_USEDEP}]"
@@ -28,8 +28,9 @@ BDEPEND="
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-20230802.0-sdata-tests.patch"
-	"${FILESDIR}/${PN}-random-tests.patch" #935417
+	"${FILESDIR}"/${PN}-20230125.2-musl-1.2.4.patch #906218
+	"${FILESDIR}"/${PN}-random-tests.patch #935417
+	"${FILESDIR}/${PN}-20230802.0-conditional-use-of-lzcnt.patch" #934337
 )
 
 src_prepare() {

@@ -30,6 +30,7 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}/${PN}-20230802.0-sdata-tests.patch"
 	"${FILESDIR}/${PN}-random-tests.patch" #935417
+	"${FILESDIR}/${PN}-20230802.0-conditional-use-of-lzcnt.patch" #934337
 )
 
 src_prepare() {
