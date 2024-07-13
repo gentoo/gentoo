@@ -8,8 +8,8 @@ inherit dune
 MY_PV=$(ver_rs 2 '+')
 
 DESCRIPTION="Multi Criteria CUDF Solver"
-HOMEPAGE="http://www.i3s.unice.fr/~cpjm/misc/ https://github.com/AltGr/ocaml-mccs/issues"
-SRC_URI="https://github.com/AltGr/ocaml-mccs/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/ocaml-opam/ocaml-mccs"
+SRC_URI="https://github.com/ocaml-opam/ocaml-mccs/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/ocaml-${PN}-$(ver_rs 2 '-')
 
 LICENSE="|| ( LGPL-2.1 BSD GPL-3 )"
