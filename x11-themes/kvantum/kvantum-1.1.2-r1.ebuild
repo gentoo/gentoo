@@ -18,11 +18,13 @@ S=${WORKDIR}/${PN^}-${PV}/${PN^}
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
-IUSE="kde +qt5 qt6"
-REQUIRED_USE="|| ( qt5 qt6 ) kde? ( qt5 )"
+IUSE="kde +qt5"
+REQUIRED_USE="kde? ( qt5 )"
 RESTRICT="test" # no tests
 
 RDEPEND="
+	>=dev-qt/qtbase-${QT6MIN}:6[gui,widgets]
+	>=dev-qt/qtsvg-${QT6MIN}:6
 	x11-libs/libX11
 	qt5? (
 		>=dev-qt/qtcore-${QT5MIN}:5
@@ -32,21 +34,17 @@ RDEPEND="
 		>=dev-qt/qtx11extras-${QT5MIN}:5
 		kde? ( >=kde-frameworks/kwindowsystem-${KF5MIN}:5 )
 	)
-	qt6? (
-		>=dev-qt/qtbase-${QT6MIN}:6[gui,widgets]
-		>=dev-qt/qtsvg-${QT6MIN}:6
-	)
 "
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 "
 BDEPEND="
+	dev-qt/qttools:6[linguist]
 	qt5? ( dev-qt/linguist-tools:5 )
-	qt6? ( dev-qt/qttools:6[linguist] )
 "
 
 pkg_setup() {
-	MULTIBUILD_VARIANTS=( $(usev qt5) $(usev qt6) )
+	MULTIBUILD_VARIANTS=( $(usev qt5) qt6 )
 }
 
 src_configure() {
