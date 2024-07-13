@@ -1,0 +1,49 @@
+This fixes the following errors:
+Error: The module Time_unix.Span is an alias for module Time_float_unix.Span, which is missing
+Error: Unbound module Time_float_unix
+---
+diff --git a/src/alcotest-async/alcotest_async.ml b/src/alcotest-async/alcotest_async.ml
+index 97ed610..b6a826f 100644
+--- a/src/alcotest-async/alcotest_async.ml
++++ b/src/alcotest-async/alcotest_async.ml
+@@ -7,7 +7,7 @@ let run_test timeout name fn args =
+   | `Timeout ->
+       Alcotest.fail
+         (Printf.sprintf "%s timed out after %s" name
+-           (Time_unix.Span.to_string_hum timeout))
++           (Time_float_unix.Span.to_string_hum timeout))
+ 
+ module Promise = struct
+   include Deferred
+@@ -24,7 +24,7 @@ module V1 = struct
+ 
+   let test_case_sync n s f = test_case n s (fun x -> Deferred.return (f x))
+ 
+-  let test_case ?(timeout = Time_unix.Span.of_sec 2.) name s f =
++  let test_case ?(timeout = Time_float_unix.Span.of_sec 2.) name s f =
+     test_case name s (run_test timeout name f)
+ end
+ 
+diff --git a/src/alcotest-async/alcotest_async_intf.ml b/src/alcotest-async/alcotest_async_intf.ml
+index 27df58c..baa55cd 100644
+--- a/src/alcotest-async/alcotest_async_intf.ml
++++ b/src/alcotest-async/alcotest_async_intf.ml
+@@ -2,7 +2,7 @@ module type V1 = sig
+   include Alcotest_engine.V1.Cli.S with type return = unit Async.Deferred.t
+ 
+   val test_case :
+-    ?timeout:Time_unix.Span.t ->
++    ?timeout:Time_float_unix.Span.t ->
+     string ->
+     Alcotest.speed_level ->
+     ('a -> unit Async.Deferred.t) ->
+diff --git a/src/alcotest-async/dune b/src/alcotest-async/dune
+index 9497c26..52ab50c 100644
+--- a/src/alcotest-async/dune
++++ b/src/alcotest-async/dune
+@@ -9,4 +9,4 @@
+   async_unix
+   base
+   core
+-  core_unix.time_unix))
++  core_unix.time_float_unix))
