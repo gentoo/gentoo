@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 # gfx941 and gfx942 assembly uses directives of LLVM >= 18.1.0
 LLVM_COMPAT=( 18 )
 
-inherit cmake python-any-r1 llvm-r1 prefix rocm
+inherit cmake flag-o-matic python-any-r1 llvm-r1 prefix rocm
 DESCRIPTION="General matrix-matrix operations library for AMD Instinct accelerators"
 HOMEPAGE="https://github.com/ROCm/hipBLASLt"
 SRC_URI="https://github.com/ROCm/hipBLASLt/archive/rocm-${PV}.tar.gz -> ${P}.tar.gz"
@@ -95,6 +95,8 @@ src_configure() {
 
 	use test && mycmakeargs+=( -DBUILD_FORTRAN_CLIENTS=ON )
 
+	# enforce libstdc++, as libc++ fails: https://github.com/llvm/llvm-project/issues/98734
+	append-cxxflags --stdlib=libstdc++
 	CXX=hipcc cmake_src_configure
 }
 
