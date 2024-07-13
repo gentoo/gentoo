@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm arm64 x86"
 
 RDEPEND="
-	<dev-python/protobuf-python-5[${PYTHON_USEDEP}]
+	<dev-python/protobuf-python-6[${PYTHON_USEDEP}]
 	>=dev-python/protobuf-python-3.15.0[${PYTHON_USEDEP}]
 	!dev-python/namespace-google
 "
