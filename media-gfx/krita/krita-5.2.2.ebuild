@@ -26,8 +26,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # bug 630508
 RESTRICT="test"
 
-RDEPEND="${PYTHON_DEPS}
+RDEPEND="
+	${PYTHON_DEPS}
 	dev-libs/boost:=
+	dev-libs/libunibreak:=
 	dev-libs/quazip:0=[qt5(+)]
 	$(python_gen_cond_dep '
 		dev-python/PyQt5[declarative,gui,widgets,${PYTHON_USEDEP}]
@@ -81,15 +83,16 @@ RDEPEND="${PYTHON_DEPS}
 	webp? ( >=media-libs/libwebp-1.2.0:= )
 
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	dev-libs/immer
+	dev-libs/lager
+	dev-libs/zug
+"
 BDEPEND="
 	dev-cpp/eigen:3
 	dev-lang/perl
 	sys-devel/gettext
-	dev-libs/immer
-	dev-libs/lager
-	dev-libs/zug
-	dev-libs/libunibreak
 "
 
 PATCHES=(
