@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake
 
-DESCRIPTION="A library of persistent and immutable data structures written in C++"
+DESCRIPTION="Library of persistent and immutable data structures written in C++"
 HOMEPAGE="https://sinusoid.es/immer/"
 SRC_URI="https://github.com/arximboldi/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -18,9 +18,11 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-libs/boost:=
 	dev-libs/boehm-gc
-	test? ( <dev-cpp/catch-3:0 )
 "
 DEPEND="${RDEPEND}"
+BDEPEND="
+	test? ( <dev-cpp/catch-3:0 )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-dvector-test.patch
