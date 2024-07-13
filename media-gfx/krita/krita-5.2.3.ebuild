@@ -76,9 +76,9 @@ RDEPEND="${PYTHON_DEPS}
 	mypaint-brush-engine? ( media-libs/libmypaint:= )
 	openexr? ( media-libs/openexr:= )
 	pdf? ( app-text/poppler[qt5] )
-	raw? ( kde-apps/libkdcraw:= )
+	raw? ( kde-apps/libkdcraw:5 )
 	webp? ( >=media-libs/libwebp-1.2.0:= )
-	xsimd? ( dev-cpp/xsimd )
+	xsimd? ( >=dev-cpp/xsimd-13.0.0 )
 
 "
 DEPEND="${RDEPEND}
