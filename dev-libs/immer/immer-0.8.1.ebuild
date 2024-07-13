@@ -30,6 +30,7 @@ PATCHES=(
 
 src_configure() {
 	local mycmakeargs=(
+		-DCCACHE=no
 		-Dimmer_BUILD_DOCS=OFF # Recheck if documentation is in a better state when bumping
 		-Dimmer_BUILD_EXAMPLES=OFF
 		-Dimmer_BUILD_EXTRAS=OFF
