@@ -4,7 +4,7 @@
 EAPI=8
 
 DESCRIPTION="\"minimum viable product\" Wayland compositor based on wlroots"
-HOMEPAGE="https://gitlab.freedesktop.org/wlroots/wlroots"
+HOMEPAGE="https://gitlab.freedesktop.org/wlroots/wlroots/-/tree/master/tinywl"
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/wlroots/wlroots.git"
