@@ -1,0 +1,71 @@
+From 01292430b8eb0972670a3221c4809fc6a9bd98f2 Mon Sep 17 00:00:00 2001
+From: Zurab Kvachadze <zurabid2016@gmail.com>
+Date: Mon, 23 Dec 2024 00:32:18 +0100
+Subject: [PATCH] Make HMAC support easily toggleable
+
+set-misc-nginx-module tries to automagically detect the presence of the
+crypto library by checking USE_OPENSSL and MAIL_SSL shell variables.
+These variables are set by NGINX build system (see 'auto/modules') if
+OpenSSL and mail_ssl modules are being used respectively. Since set-misc
+does not actually depend on any of the NGINX's SSL modules, but rather
+on OpenSSL itself, we change the guard variable to GENTOO_USE_HMAC and
+set from within ebuild based on a USE flag.
+
+This also makes a similar change to ngx_http_set_misc_module.c file.
+
+Signed-off-by: Zurab Kvachadze <zurabid2016@gmail.com>
+---
+ config                         | 3 ++-
+ src/ngx_http_set_misc_module.c | 6 +++---
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/config b/config
+index 7bb00af..58bffd4 100755
+--- a/config
++++ b/config
+@@ -54,9 +54,10 @@ SET_MISC_DEPS="                                                             \
+             $ngx_addon_dir/src/ngx_http_set_misc_module.h                   \
+             "
+ 
+-if [ $USE_OPENSSL = YES -o $MAIL_SSL = YES ]; then
++if [ $GENTOO_USE_HMAC = YES ]; then
+     SET_MISC_DEPS="$SET_MISC_DEPS $ngx_addon_dir/src/ngx_http_set_hmac.h"
+     SET_MISC_SRCS="$SET_MISC_SRCS $ngx_addon_dir/src/ngx_http_set_hmac.c"
++    CFLAGS="$CFLAGS -DGENTOO_USE_HMAC=1"
+ fi
+ 
+ CFLAGS="$CFLAGS -DNDK_SET_VAR -DNDK_UPSTREAM_LIST"
+diff --git a/src/ngx_http_set_misc_module.c b/src/ngx_http_set_misc_module.c
+index 3b12b0e..6d4df68 100644
+--- a/src/ngx_http_set_misc_module.c
++++ b/src/ngx_http_set_misc_module.c
+@@ -18,7 +18,7 @@
+ #include "ngx_http_set_hex.h"
+ #include "ngx_http_set_base64.h"
+ #include "ngx_http_set_base64url.h"
+-#if NGX_OPENSSL
++#if GENTOO_USE_HMAC
+ #include "ngx_http_set_hmac.h"
+ #endif
+ #include "ngx_http_set_random.h"
+@@ -90,7 +90,7 @@ static ndk_set_var_t  ngx_http_set_misc_set_encode_hex_filter = {
+ };
+ 
+ 
+-#if NGX_OPENSSL
++#if GENTOO_USE_HMAC
+ static ndk_set_var_t  ngx_http_set_misc_set_hmac_sha1_filter = {
+     NDK_SET_VAR_MULTI_VALUE,
+     (void *) ngx_http_set_misc_set_hmac_sha1,
+@@ -281,7 +281,7 @@ static ngx_command_t  ngx_http_set_misc_commands[] = {
+         0,
+         &ngx_http_set_misc_set_encode_hex_filter
+     },
+-#if NGX_OPENSSL
++#if GENTOO_USE_HMAC
+     {   ngx_string ("set_hmac_sha1"),
+         NGX_HTTP_MAIN_CONF|NGX_HTTP_SRV_CONF|NGX_HTTP_SIF_CONF
+             |NGX_HTTP_LOC_CONF|NGX_HTTP_LIF_CONF|NGX_CONF_TAKE3,
+-- 
+2.45.3
+
