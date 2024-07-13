@@ -15,7 +15,6 @@
 	<use>
 		<flag name="addressbook">Enable akonadi contact integration</flag>
 		<flag name="imagemagick">Enable support for additional image formats such as XCF, FITS, HEIC etc.</flag>
-		<flag name="mediaplayer">Enable integrated video player</flag>
 		<flag name="lensfun">Enable support for <pkg>media-libs/lensfun</pkg></flag>
 		<flag name="panorama">Build the panorama plugin which requires <pkg>media-gfx/hugin</pkg></flag>
 		<flag name="semantic-desktop">Enable <pkg>kde-frameworks/kfilemetadata</pkg> support</flag>
