@@ -30,6 +30,7 @@ BDEPEND="
 
 src_configure() {
 	local mycmakeargs=(
+		-DCCACHE=no
 		-Dlager_BUILD_DEBUGGER_EXAMPLES=OFF
 		-Dlager_BUILD_DOCS=OFF # Check if docs are more complete on version bumps
 		-Dlager_BUILD_EXAMPLES=OFF
