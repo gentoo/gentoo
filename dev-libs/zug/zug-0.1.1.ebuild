@@ -21,6 +21,7 @@ BDEPEND="
 
 src_configure() {
 	local mycmakeargs=(
+		-DCCACHE=no
 		-Dzug_BUILD_DOCS=OFF # Recheck if documentation is in a better state when bumping
 		-Dzug_BUILD_EXAMPLES=OFF
 		-Dzug_BUILD_TESTS=$(usex test)
