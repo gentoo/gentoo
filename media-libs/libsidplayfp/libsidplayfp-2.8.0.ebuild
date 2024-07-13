@@ -9,7 +9,7 @@ SRC_URI="https://downloads.sourceforge.net/sidplay-residfp/${PN}/$(ver_cut 1-2)/
 
 LICENSE="GPL-2"
 SLOT="0/6"
-KEYWORDS="~amd64 ~hppa ~riscv ~x86"
+KEYWORDS="~amd64 ~hppa ~riscv x86"
 IUSE="static-libs"
 
 src_prepare() {
