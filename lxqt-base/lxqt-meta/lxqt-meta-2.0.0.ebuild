@@ -9,7 +9,7 @@ DESCRIPTION="Meta ebuild for LXQt, the Lightweight Desktop Environment"
 HOMEPAGE="https://lxqt-project.org/"
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="~amd64 ~arm64 ~riscv"
 fi
 
 LICENSE="metapackage"
