@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
+BDEPEND="
 	test? ( <dev-cpp/catch-3:0 )
 "
 
