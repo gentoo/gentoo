@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>zurabid2016@gmail.com</email>
+		<name>Zurab Kvachadze</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		The encrypted-session module provides encryption and decryption support for nginx variables
+		based on AES-256 with Mac. It is usually used with the ngx_set_misc module and the
+		standard rewrite module's directives. This module can be used to implement simple user login
+		and ACL.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/openresty/encrypted-session-nginx-module/issues</bugs-to>
+		<remote-id type="github">openresty/encrypted-session-nginx-module</remote-id>
+	</upstream>
+</pkgmetadata>
