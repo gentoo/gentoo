@@ -610,11 +610,11 @@ kernel-install_pkg_preinst() {
 		local expected_ver=$(dist-kernel_PV_to_KV "${PV}")
 
 		if [[ ${KV_FULL} != ${expected_ver}* ]]; then
-			eerror "Kernel release mismatch!"
-			eerror "  expected (PV): ${expected_ver}*"
-			eerror "          found: ${KV_FULL}"
-			eerror "Please verify that you are applying the correct patches."
-			die "Kernel release mismatch (${KV_FULL} instead of ${expected_ver}*)"
+			eerror "Kernel version does not match PV!"
+			eerror "Source version: ${KV_FULL}"
+			eerror "Expected (PV*): ${expected_ver}*"
+			eerror "Please ensure you are applying the correct patchset."
+			die "Kernel version mismatch: got ${KV_FULL}, expected ${expected_ver}*"
 		fi
 	fi
 
