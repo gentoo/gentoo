@@ -1,0 +1,49 @@
+Bug: https://bugs.gentoo.org/934337
+From: https://github.com/abseil/abseil-cpp/commit/c1e1b47d989978cde8c5a2a219df425b785a0c47.patch
+From c1e1b47d989978cde8c5a2a219df425b785a0c47 Mon Sep 17 00:00:00 2001
+From: Derek Mauro <dmauro@google.com>
+Date: Fri, 3 May 2024 09:14:22 -0700
+Subject: [PATCH] Use __builtin_ctzg and __builtin_clzg in the implementations
+ of CountTrailingZeroesNonzero16 and CountLeadingZeroes16 when they are
+ available.
+
+GCC 14 and Clang 19 adds these new builtins. The g-suffix is for
+"generic". The s-suffix on __builtin_ctzs and __builtin_clzs is for
+"short". GCC never implemented the short versions and #1664 reports
+GCC 14 (pre-release) gives an error here, although this may be a
+pre-release bug.
+
+Fixes #1664
+
+PiperOrigin-RevId: 630408249
+Change-Id: I4aedcc82b85430f50d025f8eb1cab089c6fcd1bc
+---
+ absl/numeric/internal/bits.h | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/absl/numeric/internal/bits.h b/absl/numeric/internal/bits.h
+index bfef06bce1f..0917464d6ad 100644
+--- a/absl/numeric/internal/bits.h
++++ b/absl/numeric/internal/bits.h
+@@ -167,7 +167,9 @@ CountLeadingZeroes32(uint32_t x) {
+ 
+ ABSL_ATTRIBUTE_ALWAYS_INLINE ABSL_INTERNAL_CONSTEXPR_CLZ inline int
+ CountLeadingZeroes16(uint16_t x) {
+-#if ABSL_HAVE_BUILTIN(__builtin_clzs)
++#if ABSL_HAVE_BUILTIN(__builtin_clzg)
++  return x == 0 ? 16 : __builtin_clzg(x);
++#elif ABSL_HAVE_BUILTIN(__builtin_clzs)
+   static_assert(sizeof(unsigned short) == sizeof(x),  // NOLINT(runtime/int)
+                 "__builtin_clzs does not take 16-bit arg");
+   return x == 0 ? 16 : __builtin_clzs(x);
+@@ -303,7 +305,9 @@ CountTrailingZeroesNonzero64(uint64_t x) {
+ 
+ ABSL_ATTRIBUTE_ALWAYS_INLINE ABSL_INTERNAL_CONSTEXPR_CTZ inline int
+ CountTrailingZeroesNonzero16(uint16_t x) {
+-#if ABSL_HAVE_BUILTIN(__builtin_ctzs)
++#if ABSL_HAVE_BUILTIN(__builtin_ctzg)
++  return __builtin_ctzg(x);
++#elif ABSL_HAVE_BUILTIN(__builtin_ctzs)
+   static_assert(sizeof(unsigned short) == sizeof(x),  // NOLINT(runtime/int)
+                 "__builtin_ctzs does not take 16-bit arg");
+   return __builtin_ctzs(x);
