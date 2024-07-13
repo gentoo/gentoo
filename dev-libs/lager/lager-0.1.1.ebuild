@@ -19,12 +19,14 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-libs/zug
 	dev-libs/immer
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	test? (
 		<dev-cpp/catch-3:0
 		dev-libs/cereal
 	)
 "
-DEPEND="${RDEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
