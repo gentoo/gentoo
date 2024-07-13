@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -17,7 +17,7 @@ DESCRIPTION="JIDE Common Layer (Professional Swing Components)"
 HOMEPAGE="https://github.com/jidesoft/jide-oss"
 SRC_URI="https://github.com/jidesoft/jide-oss/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2-with-exceptions"
+LICENSE="GPL-2-with-classpath-exception"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
