@@ -18,13 +18,16 @@
 	</upstream>
 	<use>
 		<flag name="cantor">Enable support for different open-source computer algebra systems via <pkg>kde-apps/cantor</pkg></flag>
+		<flag name="eigen">Enable support for fast baseline removal via <pkg>dev-cpp/eigen</pkg></flag>
 		<flag name="excel">Enable support for importing/exporting Microsoft Excel files (.xlsx) via <pkg>dev-libs/qxlsx</pkg></flag>
 		<flag name="fits">Enable support for NASA's <pkg>sci-libs/cfitsio</pkg> library</flag>
 		<flag name="libcerf">Enable special functions from <pkg>sci-libs/libcerf</pkg></flag>
 		<flag name="markdown">Enable Markdown support via <pkg>app-text/discount</pkg></flag>
 		<flag name="matio">Enable support for matio (<pkg>sci-libs/matio</pkg>)</flag>
+		<flag name="ods">Enable support for importing/exporting OpenDocument spreadsheets (.ods) via <pkg>dev-libs/liborcus</pkg></flag>
 		<flag name="origin">Enable support for reading OriginLab OPJ project files through <pkg>sci-libs/liborigin</pkg></flag>
 		<flag name="root">Enable support for CERN's ROOT file type</flag>
 		<flag name="serial">Enable support for RS232 serial ports using <pkg>dev-qt/qtserialport</pkg></flag>
+		<flag name="share">Enable support for a share menu using <pkg>kde-frameworks/purpose</pkg></flag>
 	</use>
 </pkgmetadata>
