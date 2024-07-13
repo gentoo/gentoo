@@ -70,6 +70,7 @@ media-libs/libsdl2 gles2
 
 # Required by kde-plasma/kwin
 media-libs/mesa wayland
+x11-base/xwayland libei
 
 # Required by kde-apps/kdenlive
 media-libs/mlt ffmpeg frei0r rubberband
