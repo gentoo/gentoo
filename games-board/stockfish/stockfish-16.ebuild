@@ -22,6 +22,12 @@ DEPEND="|| ( app-arch/unzip app-arch/zip )"
 
 S="${WORKDIR}/Stockfish-sf_${PV}/src"
 
+pkg_setup() {
+	if ! tc-is-clang && ! tc-is-gcc; then
+		die "Unsupported compiler: $(tc-getCC)"
+	fi
+}
+
 src_prepare() {
 	default
 
@@ -61,11 +67,16 @@ src_compile() {
 	use ppc && my_arch=ppc
 	use ppc64 && my_arch=ppc64
 
+	# Bug 919781: COMP is a fixed string like clang/gcc to set tools for PGO
+	local comp
+	tc-is-gcc && comp="gcc"
+	tc-is-clang && comp="clang"
+
 	# There's a nice hack in the Makefile that overrides the value of CXX with
 	# COMPILER to support Travis CI and we abuse it to make sure that we
 	# build with our compiler of choice.
 	emake profile-build ARCH="${my_arch}" \
-		COMP="$(tc-getCXX)" \
+		COMP="${comp}" \
 		COMPILER="$(tc-getCXX)" \
 		debug=$(usex debug "yes" "no") \
 		optimize=$(usex optimize "yes" "no")
