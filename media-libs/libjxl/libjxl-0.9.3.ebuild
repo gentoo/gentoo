@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~alpha ~amd64 arm ~arm64 ~hppa ~ia64 ~loong ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~ia64 ~loong ppc64 ~riscv ~sparc ~x86"
 IUSE="+gdk-pixbuf gif jpeg openexr +png test"
 REQUIRED_USE="test? ( png )"
 RESTRICT="!test? ( test )"
