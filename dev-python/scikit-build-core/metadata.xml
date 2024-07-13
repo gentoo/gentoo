@@ -4,7 +4,7 @@
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 	</maintainer>
-	<stabilize-allarches/>
+	<!-- no ALLARCHES: a build system for C extensions -->
 	<upstream>
 		<remote-id type="github">scikit-build/scikit-build-core</remote-id>
 		<remote-id type="pypi">scikit-build-core</remote-id>
