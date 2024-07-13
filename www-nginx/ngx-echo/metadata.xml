@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>zurabid2016@gmail.com</email>
+		<name>Zurab Kvachadze</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		The ngx-echo module wraps lots of NGINX internal APIs for streaming input and output,
+		parallel/sequential subrequests, timers and sleeping, as well as various metadata
+		accessing.
+
+		Basically it provides various utilities that help testing and debugging of other modules by
+		trivially emulating different kinds of faked subrequest locations.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/openresty/echo-nginx-module/issues</bugs-to>
+		<remote-id type="github">openresty/echo-nginx-module</remote-id>
+	</upstream>
+</pkgmetadata>
