@@ -13,7 +13,7 @@ SRC_URI="https://downloads.sourceforge.net/saxon/Saxon-HE/$(ver_cut 1-2)/saxonhe
 
 LICENSE="MPL-1.0"
 SLOT="9"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 IUSE="ant-task"
 
 BDEPEND="app-arch/unzip"
