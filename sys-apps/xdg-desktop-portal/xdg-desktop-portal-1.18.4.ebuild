@@ -104,7 +104,7 @@ src_install() {
 pkg_postinst() {
 	if ! has_version gui-libs/xdg-desktop-portal-lxqt && ! has_version gui-libs/xdg-desktop-portal-wlr && \
 		! has_version kde-plasma/xdg-desktop-portal-kde && ! has_version sys-apps/xdg-desktop-portal-gnome && \
-		! has_version sys-apps/xdg-desktop-portal-gtk; then
+		! has_version sys-apps/xdg-desktop-portal-gtk && ! has_version sys-apps/xdg-desktop-portal-xapp; then
 		elog "${PN} is not usable without any of the following XDP"
 		elog "implementations installed:"
 		elog "  gui-libs/xdg-desktop-portal-lxqt"
@@ -112,5 +112,6 @@ pkg_postinst() {
 		elog "  kde-plasma/xdg-desktop-portal-kde"
 		elog "  sys-apps/xdg-desktop-portal-gnome"
 		elog "  sys-apps/xdg-desktop-portal-gtk"
+		elog "  sys-apps/xdg-desktop-portal-xapp"
 	fi
 }
