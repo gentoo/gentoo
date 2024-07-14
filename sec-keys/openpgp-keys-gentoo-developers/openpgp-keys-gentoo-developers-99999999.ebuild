@@ -143,6 +143,9 @@ src_test() {
 	echo "Hello world!" > "${T}"/tests/signme || die
 	edo gpg "${mygpgargs[@]}" -u "Larry The Cow <larry@example.com>" --sign "${T}"/tests/signme || die
 
+	# keyring-mangler will fail with no valid keys so import the sanitised list from src_compile.
+	edo gpg "${mygpgargs[@]}" --import "${WORKDIR}"/gentoo-developers-sanitised.asc
+
 	edo gpg "${mygpgargs[@]}" --export --armor > "${T}"/tests/tainted-keyring.asc
 
 	# keyring-mangler.py should now produce a keyring *without* it
