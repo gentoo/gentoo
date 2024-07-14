@@ -9,7 +9,7 @@ DESCRIPTION="GEMBIRD SiS-PM control utility"
 HOMEPAGE="http://sispmctl.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/sispmctl/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="static-libs"
