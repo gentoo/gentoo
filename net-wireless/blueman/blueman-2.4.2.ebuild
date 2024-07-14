@@ -97,12 +97,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-	if [[ ${PV} == 9999 ]]; then
+		# Run else fails on newer automake: https://bugs.gentoo.org/936065
 		eautoreconf
-	else
 		# remove this when upstream switches to automake with .pyc fix
 		eautomake
-	fi
 	distutils-r1_src_prepare
 }
 
