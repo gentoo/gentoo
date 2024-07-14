@@ -18,6 +18,9 @@ SRC_URI="https://github.com/socketry/traces/archive/refs/tags/v${PV}.tar.gz -> $
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64"
+IUSE="test"
+
+ruby_add_bdepend "test? ( dev-ruby/console )"
 
 all_ruby_prepare() {
 	sed -i -E 's/require_relative "(.+)"/require File.expand_path("\1")/g' "${RUBY_FAKEGEM_GEMSPEC}" || die
