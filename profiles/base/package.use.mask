@@ -6,6 +6,13 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Maciej Mrozowski <reavertm@gentoo.org> (2024-07-14)
+# Fails with newer ffmpeg, bug #831486
+# Not needed by reverse deps as of 2024-07-14. Re-enable when
+# https://github.com/openscenegraph/OpenSceneGraph/pull/1281 or
+# similar effort is upstreamed
+dev-games/openscenegraph ffmpeg
+
 # Michał Górny <mgorny@gentoo.org> (2024-06-29)
 # JIT is experimental and prone to break packages.  Should you choose
 # to use it, please do not file Gentoo bugs and report any issues you
