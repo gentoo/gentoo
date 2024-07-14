@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2024-07-14)
+# Ancient package, last release ca. 2009. Upstream is gone. All
+# improvements are now available in dev-ruby/irb itself.
+# Removal on 2024-08-14.
+dev-ruby/wirble
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-07-13)
 # Maintainer-needed, depends on very old gui-libs/wlroots version,
 # no activity upstream since Jan 2022.
