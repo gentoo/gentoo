@@ -9,7 +9,7 @@ SRC_URI="https://github.com/adah1972/${PN}/releases/download/${PN}_$(ver_rs 1- '
 
 LICENSE="ZLIB"
 SLOT="0/6"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv ~x86"
 IUSE="doc +man static-libs test"
 RESTRICT="!test? ( test )"
 
