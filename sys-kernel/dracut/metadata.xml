@@ -9,6 +9,10 @@
 		<email>floppym@gentoo.org</email>
 		<name>Mike Gilbert</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>andrewammerlaan@gentoo.org</email>
+		<name>Andrew Ammerlaan</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">dracut-ng/dracut-ng</remote-id>
 	</upstream>
