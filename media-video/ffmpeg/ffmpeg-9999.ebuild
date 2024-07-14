@@ -14,7 +14,7 @@ EAPI=8
 # doing so since such a case is unlikely.
 FFMPEG_SUBSLOT=58.60.60
 
-SOC_PATCH="ffmpeg-rpi-6.1-r3.patch"
+SOC_PATCH="ffmpeg-rpi-7.0.patch"
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -46,7 +46,7 @@ else # Release
 	BDEPEND="
 		verify-sig? (
 			sec-keys/openpgp-keys-ffmpeg
-			soc? ( sec-keys/openpgp-keys-gentoo-developers )
+			soc? ( >=sec-keys/openpgp-keys-gentoo-developers-20240708 )
 		)
 	"
 
