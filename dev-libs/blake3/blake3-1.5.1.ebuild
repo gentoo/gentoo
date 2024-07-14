@@ -12,4 +12,4 @@ S="${WORKDIR}/BLAKE3-${PV}/c"
 
 LICENSE="|| ( CC0-1.0 Apache-2.0 )"
 SLOT="0/0"
-KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
