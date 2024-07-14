@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND+="
 	$(python_gen_any_dep 'dev-python/python-gnupg[${PYTHON_USEDEP}]')
-	sec-keys/openpgp-keys-gentoo-auth
+	>=sec-keys/openpgp-keys-gentoo-auth-20240703
 	test? (
 		app-crypt/gnupg
 		sys-apps/grep[pcre]
