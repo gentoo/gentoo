@@ -13,7 +13,7 @@ S="${WORKDIR}/${P/_/-}"
 
 LICENSE="GPL-2+"
 SLOT="0/9" # soname
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="cpu_flags_x86_popcnt debug memcheck minimal readline test valgrind"
 REQUIRED_USE="?? ( memcheck valgrind )"
 
