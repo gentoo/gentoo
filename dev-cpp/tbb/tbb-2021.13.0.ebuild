@@ -24,6 +24,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2021.8.0-gcc-13.patch
+	"${FILESDIR}"/${PN}-2021.13.0-test-atomics.patch
 )
 
 src_prepare() {
