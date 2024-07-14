@@ -91,5 +91,8 @@ for key in gpg.list_keys(sigs=True):
 
     good_keys.append(key["fingerprint"])
 
+if len(good_keys) <= len(AUTHORITY_KEYS):
+    raise RuntimeError("No valid developer keys were found!")
+
 with open(armored_output, "w", encoding="utf8") as keyring:
     keyring.write(gpg.export_keys(good_keys))
