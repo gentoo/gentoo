@@ -16,7 +16,7 @@ else
 		https://github.com/x42/avldrums.lv2/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 		https://github.com/x42/robtk/archive/refs/tags/v${ROBTK_PV}.tar.gz -> robtk-${ROBTK_PV}.tar.gz
 	"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 	S="${WORKDIR}/avldrums.lv2-${PV}"
 	ROBTK_DIR="${WORKDIR}/robtk-${ROBTK_PV}/"
 fi
