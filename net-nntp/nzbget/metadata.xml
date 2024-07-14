@@ -13,8 +13,7 @@
 		<flag name="parcheck">Enable support for checking PAR archives</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">nzbget/nzbget</remote-id>
-		<bugs-to>https://github.com/nzbget/nzbget/issues</bugs-to>
-		<remote-id type="sourceforge">nzbget</remote-id>
+		<remote-id type="github">nzbgetcom/nzbget</remote-id>
+		<bugs-to>https://github.com/nzbgetcom/nzbget/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

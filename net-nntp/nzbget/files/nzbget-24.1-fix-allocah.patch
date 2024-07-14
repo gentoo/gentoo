@@ -1,0 +1,39 @@
+https://github.com/nzbgetcom/nzbget/commit/412d9e5b732c1cf39aac266dcf97bf097f85bc58
+
+From 412d9e5b732c1cf39aac266dcf97bf097f85bc58 Mon Sep 17 00:00:00 2001
+From: Louis Sautier <sautier.louis@gmail.com>
+Date: Tue, 16 Jul 2024 05:41:47 +0200
+Subject: [PATCH] Fix: add missing HAVE_ALLOCA_H definition for regex (#308)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Without this, the build fails with:
+```
+/var/tmp/portage/net-nntp/nzbget-24.1/work/nzbget-24.1/lib/regex/regex.c: In function ‘set_regs’:
+/var/tmp/portage/net-nntp/nzbget-24.1/work/nzbget-24.1/lib/regex/regex.c:7701:39: error: implicit declaration of function ‘alloca’; did you mean ‘calloc’? [-Wimplicit-function-declaration]                        7701 |         prev_idx_match = (regmatch_t*)alloca(nmatch * sizeof(regmatch_t));
+      |                                       ^~~~~~
+      |                                       calloc
+```
+--- a/cmake/config.h.in
++++ b/cmake/config.h.in
+@@ -134,6 +134,9 @@
+ /* Define to 1 if you have the <unistd.h> header file. */
+ #cmakedefine HAVE_UNISTD_H @HAVE_UNISTD_H@
+ 
++/* Define to 1 if you have the <alloca.h> header file. */
++#cmakedefine HAVE_ALLOCA_H @HAVE_ALLOCA_H@
++
+ /* Define to 1 if variadic macros are supported */
+ #cmakedefine HAVE_VARIADIC_MACROS @HAVE_VARIADIC_MACROS@
+ 
+--- a/cmake/posix.cmake
++++ b/cmake/posix.cmake
+@@ -120,6 +120,7 @@ check_include_file(strings.h HAVE_STRINGS_H)
+ check_include_file(string.h HAVE_STRING_H)
+ check_include_file(sys/stat.h HAVE_SYS_STAT_H)
+ check_include_file(unistd.h HAVE_UNISTD_H)
++check_include_file(alloca.h HAVE_ALLOCA_H)
+ 
+ check_library_exists(pthread pthread_create "" HAVE_PTHREAD_CREATE) 
+ check_library_exists(socket socket "" HAVE_SOCKET) 
