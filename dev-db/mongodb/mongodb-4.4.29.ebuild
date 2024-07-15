@@ -64,6 +64,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.4.10-no-force-lld.patch"
 	"${FILESDIR}/${PN}-4.4.10-boost-1.81.patch"
 	"${FILESDIR}/${P}-no-enterprise.patch"
+	"${FILESDIR}/${PN}-4.4.29-boost-1.85.patch"
 )
 
 python_check_deps() {

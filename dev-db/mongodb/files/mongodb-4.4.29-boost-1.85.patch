@@ -1,0 +1,146 @@
+https://bugs.gentoo.org/932251#c7
+--- a/src/mongo/db/initialize_server_global_state.cpp     2024-02-13 00:46:45.000000000 -0800
++++ b/src/mongo/db/initialize_server_global_state.cpp     2024-06-05 01:07:27.035053336 -0700
+@@ -34,7 +34,7 @@
+ #include "mongo/db/initialize_server_global_state.h"
+ #include "mongo/db/initialize_server_global_state_gen.h"
+ 
+-#include <boost/filesystem/operations.hpp>
++#include <boost/filesystem.hpp>
+ #include <fmt/format.h>
+ #include <iostream>
+ #include <memory>
+@@ -346,7 +346,7 @@
+                                             << "\" should name a file, not a directory.");
+             }
+ 
+-            if (!serverGlobalParams.logAppend && boost::filesystem::is_regular(absoluteLogpath)) {
++            if (!serverGlobalParams.logAppend && boost::filesystem::is_regular_file(absoluteLogpath)) {
+                 std::string renameTarget = absoluteLogpath + "." + terseCurrentTime(false);
+                 boost::system::error_code ec;
+                 boost::filesystem::rename(absoluteLogpath, renameTarget, ec);
+
+
+--- a/src/mongo/db/startup_warnings_mongod.cpp     2024-02-13 00:46:45.000000000 -0800
++++ b/src/mongo/db/startup_warnings_mongod.cpp     2024-06-05 01:09:36.740158960 -0700
+@@ -34,6 +34,7 @@
+ #include "mongo/db/startup_warnings_mongod.h"
+ 
+ #include <boost/filesystem/operations.hpp>
++#include <boost/filesystem/exception.hpp>
+ #include <fstream>
+ #ifndef _WIN32
+ #include <sys/resource.h>
+
+
+--- a/src/mongo/db/storage/storage_engine_lock_file_posix.cpp     2024-06-05 00:46:38.374648451 -0700
++++ b/src/mongo/db/storage/storage_engine_lock_file_posix.cpp     2024-06-05 00:47:33.178731500 -0700
+@@ -55,7 +55,7 @@
+     // if called without a fully qualified path it asserts; that makes mongoperf fail.
+     // so make a warning. need a better solution longer term.
+     // massert(40389, str::stream() << "Couldn't find parent dir for file: " << file.string(),);
+-    if (!file.has_branch_path()) {
++    if (!file.has_parent_path()) {
+         LOGV2(22274,
+               "warning flushMyDirectory couldn't find parent dir for file: {file}",
+               "flushMyDirectory couldn't find parent dir for file",
+@@ -64,7 +64,7 @@
+     }
+ 
+ 
+-    boost::filesystem::path dir = file.branch_path();  // parent_path in new boosts
++    boost::filesystem::path dir = file.parent_path();  // parent_path in new boosts
+ 
+     LOGV2_DEBUG(22275, 1, "flushing directory {dir_string}", "dir_string"_attr = dir.string());
+
+
+--- a/src/mongo/db/storage/storage_engine_metadata.cpp     2024-02-13 00:46:45.000000000 -0800
++++ b/src/mongo/db/storage/storage_engine_metadata.cpp     2024-06-05 01:26:46.904273382 -0700
+@@ -220,7 +220,7 @@
+     // if called without a fully qualified path it asserts; that makes mongoperf fail.
+     // so make a warning. need a better solution longer term.
+     // massert(13652, str::stream() << "Couldn't find parent dir for file: " << file.string(),);
+-    if (!file.has_branch_path()) {
++    if (!file.has_parent_path()) {
+         LOGV2(22283,
+               "warning flushMyDirectory couldn't find parent dir for file: {file}",
+               "flushMyDirectory couldn't find parent dir for file",
+@@ -229,7 +229,7 @@
+     }
+ 
+ 
+-    boost::filesystem::path dir = file.branch_path();  // parent_path in new boosts
++    boost::filesystem::path dir = file.parent_path();  // parent_path in new boosts
+ 
+     LOGV2_DEBUG(22284, 1, "flushing directory {dir_string}", "dir_string"_attr = dir.string());
+
+
+--- a/src/mongo/shell/shell_utils_launcher.cpp     2024-02-13 00:46:45.000000000 -0800
++++ b/src/mongo/shell/shell_utils_launcher.cpp     2024-06-05 01:29:45.140048809 -0700
+@@ -39,6 +39,7 @@
+ #include <boost/iostreams/stream.hpp>
+ #include <boost/iostreams/stream_buffer.hpp>
+ #include <boost/iostreams/tee.hpp>
++#include <boost/filesystem.hpp>
+ #include <cctype>
+ #include <fcntl.h>
+ #include <fmt/format.h>
+@@ -907,26 +908,26 @@
+     boost::filesystem::directory_iterator i(from);
+     while (i != end) {
+         boost::filesystem::path p = *i;
+-        if (p.leaf() == "metrics.interim" || p.leaf() == "metrics.interim.temp") {
++        if (p.filename() == "metrics.interim" || p.filename() == "metrics.interim.temp") {
+             // Ignore any errors for metrics.interim* files as these may disappear during copy
+             boost::system::error_code ec;
+-            boost::filesystem::copy_file(p, to / p.leaf(), ec);
++            boost::filesystem::copy_file(p, to / p.filename(), ec);
+             if (ec) {
+                 LOGV2_INFO(22814,
+                            "Skipping copying of file from '{from}' to "
+                            "'{to}' due to: {error}",
+                            "Skipping copying of file due to error"
+                            "from"_attr = p.generic_string(),
+-                           "to"_attr = (to / p.leaf()).generic_string(),
++                           "to"_attr = (to / p.filename()).generic_string(),
+                            "error"_attr = ec.message());
+             }
+-        } else if (p.leaf() != "mongod.lock" && p.leaf() != "WiredTiger.lock") {
++        } else if (p.filename() != "mongod.lock" && p.filename() != "WiredTiger.lock") {
+             if (boost::filesystem::is_directory(p)) {
+-                boost::filesystem::path newDir = to / p.leaf();
++                boost::filesystem::path newDir = to / p.filename();
+                 boost::filesystem::create_directory(newDir);
+                 copyDir(p, newDir);
+             } else {
+-                boost::filesystem::copy_file(p, to / p.leaf());
++                boost::filesystem::copy_file(p, to / p.filename());
+             }
+         }
+         ++i;
+
+
+--- a/src/mongo/scripting/engine.cpp     2024-02-13 00:46:45.000000000 -0800
++++ b/src/mongo/scripting/engine.cpp     2024-06-05 00:59:57.488909335 -0700
+@@ -34,6 +34,7 @@
+ #include "mongo/scripting/engine.h"
+ 
+ #include <boost/filesystem/operations.hpp>
++#include <boost/filesystem/directory.hpp>
+ #include <cctype>
+ 
+ #include "mongo/client/dbclient_base.h"
+
+
+--- a/src/mongo/shell/shell_utils_launcher.h     2024-02-13 00:46:45.000000000 -0800
++++ b/src/mongo/shell/shell_utils_launcher.h     2024-06-05 01:04:44.286162623 -0700
+@@ -29,7 +29,7 @@
+ 
+ #pragma once
+ 
+-#include <boost/filesystem/convenience.hpp>
++#include <boost/filesystem/path.hpp>
+ #include <map>
+ #include <sstream>
+ #include <string>
+
