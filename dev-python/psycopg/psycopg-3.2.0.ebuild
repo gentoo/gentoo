@@ -7,7 +7,7 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{10..13} )
 
-inherit distutils-r1
+inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="PostgreSQL database adapter for Python"
 HOMEPAGE="
@@ -54,6 +54,14 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_compile() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/935401
+	# https://github.com/psycopg/psycopg/issues/867
+	#
+	# Do not trust with LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	# Python code + ctypes backend
 	cd psycopg || die
 	distutils-r1_python_compile
