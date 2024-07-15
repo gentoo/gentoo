@@ -91,7 +91,7 @@ COMMON_DEPEND="
 	pipewire? ( media-video/pipewire:= )
 	pulseaudio? ( media-libs/libpulse )
 	rubberband? ( media-libs/rubberband )
-	sdl? ( media-libs/libsdl2[sound,threads,video] )
+	sdl? ( media-libs/libsdl2[sound,threads(+),video] )
 	sixel? ( media-libs/libsixel )
 	sndio? ( media-sound/sndio:= )
 	vaapi? ( media-libs/libva:=[X?,drm(+)?,wayland?] )
