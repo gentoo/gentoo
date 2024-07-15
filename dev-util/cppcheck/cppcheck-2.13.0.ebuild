@@ -75,6 +75,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.13.0-32-bit-tests.patch
+)
+
 src_prepare() {
 	cmake_src_prepare
 
