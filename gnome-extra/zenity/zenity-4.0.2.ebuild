@@ -5,7 +5,7 @@ EAPI=8
 inherit gnome.org gnome2-utils meson xdg
 
 DESCRIPTION="Tool to display dialogs from the commandline and shell scripts"
-HOMEPAGE="https://wiki.gnome.org/Projects/Zenity"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/zenity"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
