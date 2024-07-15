@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit gnome.org gnome2-utils meson python-any-r1 xdg
 
 DESCRIPTION="Bluetooth graphical utilities integrated with GNOME"
-HOMEPAGE="https://wiki.gnome.org/Projects/GnomeBluetooth"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-bluetooth"
 
 LICENSE="GPL-2+ LGPL-2.1+ FDL-1.1+"
 SLOT="3/13" # subslot = libgnome-bluetooth-3 soname version
