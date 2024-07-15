@@ -113,6 +113,14 @@ BDEPEND=">=virtual/rust-1.66.0"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 
+src_prepare() {
+	# Remove the linker configs (in `.cargo/config.toml`) specific to GitHub CI.
+	# https://bugs.gentoo.org/924946
+	rm -rv "${S}/.cargo/config.toml" || die
+
+	default_src_prepare
+}
+
 src_install() {
 	cargo_src_install
 
