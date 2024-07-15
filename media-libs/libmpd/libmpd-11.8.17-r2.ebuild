@@ -9,7 +9,7 @@ SRC_URI="http://download.sarine.nl/Programs/gmpc/$(ver_cut 1-2)/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ia64 ~loong ~ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~ia64 ~loong ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 IUSE="doc static-libs"
 
 BDEPEND="
