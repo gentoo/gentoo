@@ -35,7 +35,9 @@ ruby_add_bdepend "
 		dev-ruby/builder
 		dev-ruby/erubi
 		>=dev-ruby/rack-test-0.5.6
+		dev-ruby/rackup
 		dev-ruby/activesupport
+		www-servers/puma
 	)
 "
 ruby_add_bdepend "doc? ( dev-ruby/yard )"
