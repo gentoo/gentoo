@@ -4,7 +4,7 @@
 EAPI=8
 USE_RUBY="ruby31 ruby32 ruby33"
 
-# There are functional tests that require vagrant boxes to be set up.
+# There are functional tests that require docker containers to be set up.
 RUBY_FAKEGEM_TASK_TEST="test:units"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md FAQ.md README.md"
@@ -29,7 +29,8 @@ ruby_add_bdepend "test? ( dev-ruby/minitest dev-ruby/mocha )"
 
 all_ruby_prepare() {
 	sed -i -e '/bundler/I s:^:#:' Rakefile test/helper.rb || die
-	sed -e '/\(turn\|unindent\|reporters\)/I s:^:#:' \
+	sed -e '/\(unindent\|reporters\)/I s:^:#:' \
+		-e '/docker/I s:^:#:' \
 		-e '1irequire "pathname"' \
 		-i test/helper.rb || die
 
