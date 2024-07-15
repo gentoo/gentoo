@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome.org gnome2-utils meson xdg
 
 DESCRIPTION="Disk Utility for GNOME using udisks"
-HOMEPAGE="https://wiki.gnome.org/Apps/Disks"
+HOMEPAGE="https://apps.gnome.org/en/DiskUtility/"
 
 LICENSE="GPL-2+"
 SLOT="0"
