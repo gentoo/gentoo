@@ -17,13 +17,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2024-07-14)
+# spirv-llvm-translator < 17 is not stable on x86.
+<dev-libs/libclc-17 spirv
+
 # Sam James <sam@gentoo.org> (2024-04-30)
 # sys-block/nbdkit is not yet marked stable here
 app-emulation/libvirt nbd
-
-# Matt Turner <mattst88@gentoo.org> (2024-04-25)
-# spirv-llvm-translator is not stable on x86.
-dev-libs/libclc spirv
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-21)
 # Experimental, virt-firmware is keyworded only unstable
