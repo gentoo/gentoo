@@ -33,14 +33,6 @@ FILECAPS=(
 
 RESTRICT="test"
 
-# The problems that can be fixed by the following patches has been fixed
-# upstream, so these ALL patches should be removed in the next release.
-PATCHES=(
-	"${FILESDIR}/${P}-go-chi-memcache-package.diff"
-	"${FILESDIR}/${P}-fix-missing-memcache-import.diff"
-	"${FILESDIR}/${P}-ignore-findrecentlypushednewbranches-err.diff"
-)
-
 src_prepare() {
 	default
 
