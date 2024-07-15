@@ -5,6 +5,7 @@
     <email>gnome@gentoo.org</email>
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
+  <stabilize-allarches/>
   <longdescription lang="en">
   Accerciser is an interactive Python accessibility explorer for the GNOME desktop. It uses AT-SPI to inspect and control widgets, allowing you to check if an application is providing correct information to assistive technologies and automated test frameworks. Accerciser has a simple plugin framework which you can use to create custom views of accessibility information.
 
