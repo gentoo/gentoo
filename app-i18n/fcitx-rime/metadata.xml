@@ -26,7 +26,7 @@
 		<name>Cjk</name>
 	</maintainer>
 	<use>
-		<flag name="configuration_tool">Install configuration tool</flag>
+		<flag name="configuration-tool">Install configuration tool</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">fcitx/fcitx5-rime</remote-id>
