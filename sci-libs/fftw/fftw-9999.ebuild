@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 FORTRAN_NEEDED=fortran
 
-inherit fortran-2 multibuild multilib-minimal toolchain-funcs
+inherit fortran-2 libtool multibuild multilib-minimal toolchain-funcs
 
 DESCRIPTION="Fast C library for the Discrete Fourier Transform"
 HOMEPAGE="https://www.fftw.org/"
@@ -50,8 +50,12 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	# fix info file for category directory
-	[[ ${PV} == *9999 ]] && eautoreconf
+	if [[ ${PV} == *9999 ]]; then
+		# fix info file for category directory
+		eautoreconf
+	else
+		elibtoolize
+	fi
 }
 
 multilib_src_configure() {
