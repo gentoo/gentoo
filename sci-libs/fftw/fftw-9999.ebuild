@@ -33,6 +33,12 @@ BDEPEND="test? ( dev-lang/perl )"
 
 HTML_DOCS=( doc/html/. )
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# check fails with any version of gcc. On <14:
+	# <artificial>:(.text.startup+0x19): undefined reference to `_rtc'
+	_rtc
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
