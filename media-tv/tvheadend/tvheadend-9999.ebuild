@@ -89,6 +89,7 @@ pkg_setup() {
 
 src_configure() {
 	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/932794
 	# https://github.com/tvheadend/tvheadend/issues/1732
 	filter-lto
 
