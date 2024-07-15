@@ -17,7 +17,6 @@ if [[ ${PV} = *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://projects.blender.org/blender/blender.git"
 	EGIT_SUBMODULES=( '*' '-lib/*' )
-	ADDONS_EGIT_REPO_URI="https://projects.blender.org/blender/blender-addons.git"
 	RESTRICT="!test? ( test )"
 else
 	SRC_URI="
@@ -36,7 +35,7 @@ SLOT="${PV%.*}"
 IUSE="
 	alembic +bullet collada +color-management cuda +cycles +cycles-bin-kernels
 	debug doc +embree experimental +ffmpeg +fftw +fluid +gmp gnome hip jack
-	jemalloc jpeg2k man +nanovdb ndof nls +oidn oneapi openal +openexr +openmp openpgl
+	jemalloc jpeg2k man +nanovdb ndof nls +oidn oneapi openal +openexr +openmp +openpgl
 	+opensubdiv +openvdb optix osl +otf +pdf +potrace +pugixml pulseaudio
 	renderdoc sdl +sndfile +tbb test +tiff valgrind vulkan wayland +webp X
 "
@@ -233,9 +232,6 @@ src_unpack() {
 			EGIT_SUBMODULES+=( '-tests/*' )
 		fi
 		git-r3_src_unpack
-
-		git-r3_fetch "${ADDONS_EGIT_REPO_URI}"
-		git-r3_checkout "${ADDONS_EGIT_REPO_URI}" "${S}/scripts/addons"
 	else
 		default
 
@@ -318,6 +314,7 @@ src_configure() {
 		-DWITH_BULLET=$(usex bullet)
 		-DWITH_CODEC_FFMPEG=$(usex ffmpeg)
 		-DWITH_CODEC_SNDFILE=$(usex sndfile)
+		-DWITH_CPU_CHECK=no
 
 		-DWITH_CYCLES=$(usex cycles)
 
@@ -487,6 +484,8 @@ src_test() {
 	if use X; then
 		xdg_environment_reset
 	fi
+
+	addwrite /dev/dri
 
 	cmake_src_test
 
