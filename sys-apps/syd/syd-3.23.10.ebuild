@@ -29,15 +29,15 @@ CRATES="
 	bumpalo@3.16.0
 	caps@0.5.5
 	cast@0.3.0
-	cc@1.0.105
+	cc@1.1.4
 	cfg-if@1.0.0
 	cfg_aliases@0.2.1
 	chrono@0.4.38
 	ciborium-io@0.2.2
 	ciborium-ll@0.2.2
 	ciborium@0.2.2
-	clap@4.5.8
-	clap_builder@4.5.8
+	clap@4.5.9
+	clap_builder@4.5.9
 	clap_derive@4.5.8
 	clap_lex@0.7.1
 	colorchoice@1.0.1
@@ -55,9 +55,9 @@ CRATES="
 	crossbeam@0.8.4
 	crunchy@0.2.2
 	cty@0.2.2
-	darling@0.20.9
-	darling_core@0.20.9
-	darling_macro@0.20.9
+	darling@0.20.10
+	darling_core@0.20.10
+	darling_macro@0.20.10
 	derive_builder@0.20.0
 	derive_builder_core@0.20.0
 	derive_builder_macro@0.20.0
@@ -86,9 +86,7 @@ CRATES="
 	getrandom@0.2.15
 	getset@0.1.2
 	gimli@0.29.0
-	glob@0.3.1
 	globset@0.4.14
-	goblin@0.8.2
 	half@2.4.1
 	hashbrown@0.12.3
 	hashbrown@0.14.5
@@ -149,7 +147,6 @@ CRATES="
 	pin-project-lite@0.2.14
 	pin-utils@0.1.0
 	pkg-config@0.3.30
-	plain@0.2.3
 	ppv-lite86@0.2.17
 	prctl@1.0.0
 	proc-macro-error-attr@1.0.4
@@ -189,8 +186,6 @@ CRATES="
 	safe-path@0.1.0
 	same-file@1.0.6
 	scopeguard@1.2.0
-	scroll@0.12.0
-	scroll_derive@0.12.0
 	secure-string@0.3.0
 	sendfd@0.4.3
 	serde@1.0.204
@@ -205,11 +200,11 @@ CRATES="
 	strum@0.26.3
 	strum_macros@0.26.4
 	syn@1.0.109
-	syn@2.0.69
+	syn@2.0.71
 	tabwriter@1.4.0
 	tempfile@3.10.1
-	thiserror-impl@1.0.61
-	thiserror@1.0.61
+	thiserror-impl@1.0.62
+	thiserror@1.0.62
 	thread-id@4.2.1
 	thread_local@1.1.8
 	tick_counter@0.4.5
