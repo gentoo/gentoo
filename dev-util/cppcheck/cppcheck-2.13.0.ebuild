@@ -82,7 +82,7 @@ PATCHES=(
 src_prepare() {
 	cmake_src_prepare
 
-	# Modify to an existing dockbook location
+	# Modify to an existing docbook location
 	sed -i \
 		-e "s|set(DB2MAN .*|set(DB2MAN \"${EPREFIX}/usr/share/sgml/docbook/xsl-stylesheets/manpages/docbook.xsl\")|" \
 		man/CMakeLists.txt || die
