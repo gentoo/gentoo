@@ -42,6 +42,13 @@ _TEXLIVE_COMMON_ECLASS=1
 # @CODE
 : "${CTAN_MIRROR_URL:="https://mirrors.ctan.org"}"
 
+# @ECLASS_VARIABLE: TEXLIVE_SCRIPTS_W_FILE_EXT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If set, contains a space separated list of script names that should be
+# linked including their file extensions, i.e., without stripping
+# potentially existing filename extensions from the link's name.
+
 # @FUNCTION: texlive-common_handle_config_files
 # @DESCRIPTION:
 # Has to be called in src_install after having installed the files in ${D}
@@ -160,8 +167,17 @@ etexlinks() {
 # Called by app-text/epspdf and texlive-module.eclass.
 dobin_texmf_scripts() {
 	while [[ ${#} -gt 0 ]] ; do
-		local trg
-		trg=$(basename "${1}" | sed 's,\.[^/]*$,,' | tr '[:upper:]' '[:lower:]')
+		# -l: TexLive target links are always lowercase.
+		local -l trg
+
+		# Get the basename of the script.
+		trg="${1##*/}"
+
+		# Only strip the filename extensions if trg is not listed in TEXLIVE_SCRIPTS_W_FILE_EXT.
+		if ! has "${trg}" ${TEXLIVE_SCRIPTS_W_FILE_EXT}; then
+			trg="${trg%.*}"
+		fi
+
 		einfo "Installing ${1} as ${trg} bin wrapper"
 		[[ -x ${ED}/usr/share/${1} ]] || die "Trying to install a non existing or non executable symlink to /usr/bin: ${1}"
 		dosym "../share/${1}" "/usr/bin/${trg}"
