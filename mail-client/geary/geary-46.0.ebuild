@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome.org gnome2-utils meson vala virtualx xdg
 
 DESCRIPTION="A lightweight, easy-to-use, feature-rich email client"
-HOMEPAGE="https://wiki.gnome.org/Apps/Geary"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/geary"
 
 LICENSE="LGPL-2.1+ CC-BY-3.0 CC-BY-SA-3.0" # code is LGPL-2.1+, CC licenses for some icons
 SLOT="0"
