@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome.org gnome2-utils meson systemd xdg
 
 DESCRIPTION="Simple document viewer for GNOME"
-HOMEPAGE="https://wiki.gnome.org/Apps/Evince"
+HOMEPAGE="https://apps.gnome.org/en/Evince/"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 # subslot = evd3.(suffix of libevdocument3)-evv3.(suffix of libevview3)
