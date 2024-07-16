@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome.org gnome2-utils meson vala xdg
 
 DESCRIPTION="Clocks application for GNOME"
-HOMEPAGE="https://wiki.gnome.org/Apps/Clocks https://gitlab.gnome.org/GNOME/gnome-clocks"
+HOMEPAGE="https://apps.gnome.org/Clocks/ https://gitlab.gnome.org/GNOME/gnome-clocks"
 
 LICENSE="GPL-2+"
 SLOT="0"
