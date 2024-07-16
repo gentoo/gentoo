@@ -5,7 +5,7 @@ EAPI=8
 inherit gnome.org gnome2-utils meson vala xdg
 
 DESCRIPTION="Clear the screen by removing groups of colored and shaped tiles"
-HOMEPAGE="https://wiki.gnome.org/Apps/Swell%20Foop"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/swell-foop"
 
 LICENSE="GPL-2+ FDL-1.1+"
 SLOT="0"
