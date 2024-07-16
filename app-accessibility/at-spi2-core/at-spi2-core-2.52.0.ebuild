@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome.org meson-multilib systemd virtualx xdg
 
 DESCRIPTION="D-Bus accessibility specifications and registration daemon"
-HOMEPAGE="https://wiki.gnome.org/Accessibility https://gitlab.gnome.org/GNOME/at-spi2-core"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/at-spi2-core"
 
 LICENSE="LGPL-2.1+"
 SLOT="2"
