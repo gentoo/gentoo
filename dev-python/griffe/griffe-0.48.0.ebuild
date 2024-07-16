@@ -33,6 +33,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		>=dev-python/jsonschema-4.17[${PYTHON_USEDEP}]
+		dev-python/mkdocstrings[${PYTHON_USEDEP}]
 		>=dev-python/pytest-xdist-2.4[${PYTHON_USEDEP}]
 	)
 "
