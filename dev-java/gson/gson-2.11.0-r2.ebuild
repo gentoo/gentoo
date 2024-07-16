@@ -21,7 +21,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 DEPEND="
 	dev-java/error-prone-annotations:0
-	>=virtual/jdk-1.8:*
+	>=virtual/jdk-11:*
 	test? (
 		dev-java/guava:0
 		dev-java/guava-testlib:0
