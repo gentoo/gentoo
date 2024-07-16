@@ -30,6 +30,7 @@ pkg_postinst() {
 	elog "Run uefi-mkconfig while having all efi partitions mounted"
 	elog "Please use with care, this package was tested on a limited number of machines"
 	elog "Some problems may arise due to different implementations of UEFI"
+	elog "Don't forget to add kernel commands to the configuration file before using this package!"
 	elog
 	optfeature "Add UEFI entries on kernel installation " \ "sys-kernel/installkernel[-systemd,efistub]"
 }
