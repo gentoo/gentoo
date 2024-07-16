@@ -65,6 +65,8 @@ pkg_setup() {
 src_prepare() {
 	default
 	xdg_environment_reset
+	# https://bugs.gentoo.org/935575
+	unset XDG_CONFIG_DIRS XDG_DATA_DIRS
 }
 
 src_configure() {
