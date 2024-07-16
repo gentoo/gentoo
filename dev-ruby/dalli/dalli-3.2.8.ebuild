@@ -20,7 +20,7 @@ HOMEPAGE="https://github.com/petergoldstein/dalli"
 SRC_URI="https://github.com/petergoldstein/dalli/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="test"
 
 DEPEND+="${DEPEND} test? ( >=net-misc/memcached-1.5.4[ssl(-)] )"
