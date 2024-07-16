@@ -572,6 +572,9 @@ distutils_enable_sphinx() {
 # with the specified test runner.  Also copies the current value
 # of RDEPEND to test?-BDEPEND.  The test-runner argument must be one of:
 #
+# - import-check: `pytest --import-check` fallback (for use when there are
+#   no tests to run)
+#
 # - pytest: dev-python/pytest
 #
 # - setup.py: setup.py test (no deps included)
@@ -597,9 +600,13 @@ distutils_enable_tests() {
 	[[ ${#} -eq 1 ]] || die "${FUNCNAME} takes exactly one argument: test-runner"
 
 	local test_deps=${RDEPEND}
+	local test_pkgs=
 	case ${1} in
+		import-check)
+			test_pkgs+=' dev-python/pytest-import-check[${PYTHON_USEDEP}]'
+			;&
 		pytest)
-			local test_pkgs='>=dev-python/pytest-7.4.4[${PYTHON_USEDEP}]'
+			test_pkgs+=' >=dev-python/pytest-7.4.4[${PYTHON_USEDEP}]'
 			if [[ -n ${EPYTEST_TIMEOUT} ]]; then
 				test_pkgs+=' dev-python/pytest-timeout[${PYTHON_USEDEP}]'
 			fi
@@ -1560,6 +1567,9 @@ distutils-r1_python_test() {
 	_python_check_EPYTHON
 
 	case ${_DISTUTILS_TEST_RUNNER} in
+		import-check)
+			epytest --import-check "${BUILD_DIR}/install$(python_get_sitedir)"
+			;;
 		pytest)
 			epytest
 			;;
