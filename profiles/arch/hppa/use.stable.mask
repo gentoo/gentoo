@@ -4,9 +4,9 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
-# Hans de Graaff <graaff@gentoo.org> (2024-05-20)
-# Allow ruby32 stabling: https://bugs.gentoo.org/932285
-ruby_targets_ruby32
+# matoro <matoro_gentoo@matoro.tk> (2024-07-16)
+# dev-lang/ruby now unstabled on hppa
+ruby
 
 # Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
 # Qt6 is not stable here yet
