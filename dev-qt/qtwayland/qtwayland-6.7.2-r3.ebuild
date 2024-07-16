@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-plasma-popup.patch
 	"${FILESDIR}"/${P}-drag-drop.patch
 	"${FILESDIR}"/${P}-thread-safety.patch
+	"${FILESDIR}"/${P}-null-screen.patch
 )
 
 CMAKE_SKIP_TESTS=(
