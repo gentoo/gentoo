@@ -5,4 +5,5 @@
 <email>williamh@gentoo.org</email>
 <name>William Hubbs</name>
 </maintainer>
+<stabilize-allarches/>
 </pkgmetadata>
