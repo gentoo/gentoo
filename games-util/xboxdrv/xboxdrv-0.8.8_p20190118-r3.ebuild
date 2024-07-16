@@ -37,9 +37,10 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/"xboxdrv-0.8.8-some-boost-fix.patch
-	"${FILESDIR}/"xboxdrv-0.8.8-Update-SConstruct-to-python3.patch
-	"${FILESDIR}/"xboxdrv-0.8.8-Updating-python-code-to-python3.patch
+	"${FILESDIR}/xboxdrv-0.8.8-some-boost-fix.patch"
+	"${FILESDIR}/xboxdrv-0.8.8-Update-SConstruct-to-python3.patch"
+	"${FILESDIR}/xboxdrv-0.8.8-Updating-python-code-to-python3.patch"
+	"${FILESDIR}/xboxdrv-0.8.8-boost-1.85.patch"
 )
 
 CONFIG_CHECK="~INPUT_EVDEV ~INPUT_JOYDEV ~INPUT_UINPUT ~!JOYSTICK_XPAD"
