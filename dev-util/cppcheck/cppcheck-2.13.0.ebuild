@@ -12,7 +12,7 @@ SRC_URI="https://github.com/danmar/cppcheck/archive/refs/tags/${PV}.tar.gz -> ${
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
 IUSE="charts gui qt6 htmlreport pcre test threads"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
