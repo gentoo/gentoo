@@ -41,6 +41,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/${P}-fix-clang-nested-functions.patch
 	eapply "${FILESDIR}"/${P}-fix-openssl-sysroot-clang.patch
 	eapply "${FILESDIR}"/${P}-pppol2tp-ipv6.patch
+	eapply "${FILESDIR}"/${P}-fix-function-signatures.patch
 
 	#IPX Support is removed in kernel >= 5.15
 	sed -i 's/-DIPX_CHANGE //' pppd/Makefile.linux || die
