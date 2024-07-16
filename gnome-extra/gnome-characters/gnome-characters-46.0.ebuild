@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome.org gnome2-utils meson xdg
 
 DESCRIPTION="Unicode character map viewer and library"
-HOMEPAGE="https://wiki.gnome.org/Design/Apps/CharacterMap"
+HOMEPAGE="https://apps.gnome.org/Characters/"
 
 LICENSE="GPL-2+ BSD"
 SLOT="0"
