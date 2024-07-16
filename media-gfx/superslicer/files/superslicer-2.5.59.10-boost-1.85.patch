@@ -1,0 +1,54 @@
+https://bugs.gentoo.org/936144
+https://github.com/supermerill/SuperSlicer/commit/75d4bee84740a8dcc9e4e2113795fd67107d03d1
+
+From 75d4bee84740a8dcc9e4e2113795fd67107d03d1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Luk=C3=A1=C5=A1=20Hejl?= <hejl.lukas@gmail.com>
+Date: Wed, 3 Jan 2024 23:55:02 +0100
+Subject: [PATCH] Replace some deprecated boost functions.
+
+Actually, all those deprecated functions were internally called those new functions. So there isn't any risk to use them directly.
+---
+ src/libslic3r/PrintBase.cpp              | 2 +-
+ src/libslic3r/utils.cpp                  | 2 +-
+ src/slic3r/GUI/RemovableDriveManager.cpp | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/libslic3r/PrintBase.cpp b/src/libslic3r/PrintBase.cpp
+index 29bdc1301d0..60e40644cb8 100644
+--- a/src/libslic3r/PrintBase.cpp
++++ b/src/libslic3r/PrintBase.cpp
+@@ -123,7 +123,7 @@ std::string PrintBase::output_filename(const std::string &format, const std::str
+             filepath = filename + extension;
+         }
+         if (filepath.extension().empty())
+-            filepath = boost::filesystem::change_extension(filepath, default_ext);
++            filepath.replace_extension(default_ext);
+         return filepath.string();
+     } catch (std::runtime_error &err) {
+         throw Slic3r::PlaceholderParserError(L("Failed processing of the output_filename_format template.") + "\n" + err.what());
+diff --git a/src/libslic3r/utils.cpp b/src/libslic3r/utils.cpp
+index 71089ceea64..6eac962b20e 100644
+--- a/src/libslic3r/utils.cpp
++++ b/src/libslic3r/utils.cpp
+@@ -836,7 +836,7 @@ CopyFileResult copy_file_inner(const boost::filesystem::path& source, const boos
+ 	// That may happen when copying on some exotic file system, for example Linux on Chrome.
+ 	copy_file_linux(source, target, ec);
+ #else // __linux__
+-	boost::filesystem::copy_file(source, target, boost::filesystem::copy_option::overwrite_if_exists, ec);
++	boost::filesystem::copy_file(source, target, boost::filesystem::copy_options::overwrite_existing, ec);
+ #endif // __linux__
+ 	if (ec) {
+ 		error_message = ec.message();
+diff --git a/src/slic3r/GUI/RemovableDriveManager.cpp b/src/slic3r/GUI/RemovableDriveManager.cpp
+index 5fb8b013210..2f8ac96a1a2 100644
+--- a/src/slic3r/GUI/RemovableDriveManager.cpp
++++ b/src/slic3r/GUI/RemovableDriveManager.cpp
+@@ -202,7 +202,7 @@ namespace search_for_drives_internal
+ 				stat(path.c_str(), &buf);
+ 				uid_t uid = buf.st_uid;
+ 				if (getuid() == uid)
+-					out.emplace_back(DriveData{ boost::filesystem::basename(boost::filesystem::path(path)), path });
++                    out.emplace_back(DriveData{ boost::filesystem::path(path).stem().string(), path });
+ 			}
+ 		}
+ 	}

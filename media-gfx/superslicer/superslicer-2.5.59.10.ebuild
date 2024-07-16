@@ -68,6 +68,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.5.59.8-fix-compilation-error-gnu17.patch"
 	"${FILESDIR}/${PN}-2.5.59.8-libnest2d-link-xcb.patch"
 	"${FILESDIR}/${PN}-2.5.59.8-boost-replace-load-string-file.patch"
+	"${FILESDIR}/${PN}-2.5.59.10-boost-1.85.patch"
 )
 
 S="${WORKDIR}/${MY_PN}-${PV}"
