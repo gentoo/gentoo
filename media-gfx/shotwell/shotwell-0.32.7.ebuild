@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome.org gnome2-utils meson optfeature vala xdg
 
 DESCRIPTION="Open source photo manager for GNOME"
-HOMEPAGE="https://wiki.gnome.org/Apps/Shotwell"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/shotwell"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
