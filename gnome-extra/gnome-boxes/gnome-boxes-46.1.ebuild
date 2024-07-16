@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome.org gnome2-utils linux-info meson readme.gentoo-r1 vala xdg
 
 DESCRIPTION="Simple GNOME application to access remote or virtual systems"
-HOMEPAGE="https://gnomeboxes.org"
+HOMEPAGE="https://apps.gnome.org/Boxes/"
 
 LICENSE="LGPL-2+ CC-BY-2.0"
 SLOT="0"
