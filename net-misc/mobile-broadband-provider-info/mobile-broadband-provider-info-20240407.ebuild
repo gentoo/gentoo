@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome.org meson
 
 DESCRIPTION="Database of mobile broadband service providers"
-HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager/MobileBroadband"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/mobile-broadband-provider-info"
 
 LICENSE="CC-PD"
 SLOT="0"
