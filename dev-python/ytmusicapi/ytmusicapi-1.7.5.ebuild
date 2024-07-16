@@ -15,10 +15,10 @@ HOMEPAGE="https://ytmusicapi.readthedocs.io/
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="test"
 
 RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 "
 
 distutils_enable_sphinx docs/source dev-python/sphinx-rtd-theme
+distutils_enable_tests import-check
