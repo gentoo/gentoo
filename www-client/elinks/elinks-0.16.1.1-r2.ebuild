@@ -69,6 +69,7 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-0.16.1.1-ecmascript-implicit-declaration.patch
 	"${FILESDIR}"/${PN}-0.16.1.1-perl-5.38.patch
 )
 
