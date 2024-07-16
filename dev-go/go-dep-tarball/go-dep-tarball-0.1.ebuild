@@ -4,13 +4,13 @@
 EAPI=8
 
 DESCRIPTION="script to package go dependencies"
-HOMEPAGE=""
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+
+S="${WORKDIR}"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
-
-S="${WORKDIR}"
 
 src_install() {
 	newbin "${FILESDIR}/go-dep-tarball-${PV}" go-dep-tarball
