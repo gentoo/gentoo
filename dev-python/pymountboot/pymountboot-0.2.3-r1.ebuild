@@ -29,3 +29,5 @@ RDEPEND="
 BDEPEND="
 	virtual/pkgconfig
 "
+
+distutils_enable_tests import-check
