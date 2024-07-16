@@ -40,6 +40,7 @@ RDEPEND="
 		dev-python/dulwich[${PYTHON_USEDEP}]
 		dev-python/urllib3[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
+		dev-python/tzlocal[${PYTHON_USEDEP}]
 	')
 	!dev-vcs/bzr
 "
