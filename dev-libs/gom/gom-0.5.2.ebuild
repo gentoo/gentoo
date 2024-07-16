@@ -17,7 +17,7 @@ IUSE="gtk-doc +introspection python test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( introspection ${PYTHON_REQUIRED_USE} )"
 
-BDEPEND="dev-build/gtk-doc-am"
+BDEPEND=""
 RDEPEND="
 	>=dev-db/sqlite-3.7:3
 	>=dev-libs/glib-2.38:2
