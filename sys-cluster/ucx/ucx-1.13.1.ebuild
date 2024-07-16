@@ -46,6 +46,7 @@ src_prepare() {
 
 src_configure() {
 	BASE_CFLAGS="" econf \
+		--disable-doxygen-doc \
 		--disable-compiler-opt \
 		--without-fuse3 \
 		--without-go \
