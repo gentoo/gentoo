@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome.org gnome2-utils meson xdg
 
 DESCRIPTION="A weather application for GNOME"
-HOMEPAGE="https://wiki.gnome.org/Design/Apps/Weather"
+HOMEPAGE="https://apps.gnome.org/Weather/"
 
 LICENSE="GPL-2+ LGPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0"
 SLOT="0"
