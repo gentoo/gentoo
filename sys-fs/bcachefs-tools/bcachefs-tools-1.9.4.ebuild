@@ -102,7 +102,7 @@ CRATES="
 LLVM_COMPAT=( {16..18} )
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit cargo flag-o-matic llvm-r1 python-any-r1 shell-completion toolchain-funcs unpacker
+inherit cargo flag-o-matic llvm-r1 multiprocessing python-any-r1 shell-completion toolchain-funcs unpacker
 
 DESCRIPTION="Tools for bcachefs"
 HOMEPAGE="https://bcachefs.org/"
@@ -118,8 +118,8 @@ fi
 
 LICENSE="Apache-2.0 BSD GPL-2 MIT"
 SLOT="0"
-IUSE="fuse"
-RESTRICT="test"
+IUSE="fuse test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	app-arch/lz4:=
@@ -141,6 +141,10 @@ BDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_any_dep '
 		dev-python/docutils[${PYTHON_USEDEP}]
+		test? (
+			dev-python/pytest[${PYTHON_USEDEP}]
+			dev-python/pytest-xdist[${PYTHON_USEDEP}]
+		)
 	')
 	$(unpacker_src_uri_depends)
 	$(llvm_gen_dep '
@@ -153,6 +157,11 @@ BDEPEND="
 QA_FLAGS_IGNORED="/sbin/bcachefs"
 
 python_check_deps() {
+	if use test; then
+		python_has_version \
+			"dev-python/pytest[${PYTHON_USEDEP}]" \
+			"dev-python/pytest-xdist[${PYTHON_USEDEP}]"
+	fi
 	python_has_version "dev-python/docutils[${PYTHON_USEDEP}]"
 }
 
@@ -190,10 +199,34 @@ src_compile() {
 
 	default
 
+	use test && emake tests
+
 	local shell
 	for shell in bash fish zsh; do
 		./bcachefs completions ${shell} > ${shell}.completion || die
 	done
+}
+
+src_test() {
+	if ! use fuse; then
+		EPYTEST_IGNORE=( tests/test_fuse.py )
+	fi
+	EPYTEST_DESELECT=(
+		# Valgrind
+		'tests/test_fixture.py::test_read_after_free'
+		'tests/test_fixture.py::test_undefined'
+		'tests/test_fixture.py::test_write_after_free'
+		'tests/test_fixture.py::test_undefined_branch'
+		'tests/test_fixture.py::test_leak'
+		'tests/test_fixture.py::test_check'
+		# Fails in portage because of usersandbox; ensure that these pass before bumping!
+		'tests/test_basic.py::test_format'
+		'tests/test_basic.py::test_fsck'
+		'tests/test_basic.py::test_list'
+		'tests/test_basic.py::test_list_inodes'
+		'tests/test_basic.py::test_list_dirent'
+	)
+	epytest -v -n "$(makeopts_jobs)"
 }
 
 src_install() {
