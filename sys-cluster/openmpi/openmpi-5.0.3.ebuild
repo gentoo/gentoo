@@ -36,6 +36,7 @@ RDEPEND="
 	!sys-cluster/mpich
 	!sys-cluster/mpich2
 	!sys-cluster/nullmpi
+	!sys-cluster/prrte
 	>=dev-libs/libevent-2.0.22:=[threads(+)]
 	>=sys-apps/hwloc-2.0.2:=
 	sys-cluster/pmix:=
@@ -89,7 +90,7 @@ src_configure() {
 		# https://github.com/open-mpi/ompi/blob/9eec56222a5c98d13790c9ee74877f1562ac27e8/config/opal_config_subdir.m4#L118
 		# so no --cache-dir for now.
 		--enable-mpi-fortran=$(usex fortran all no)
-		--enable-orterun-prefix-by-default
+		--enable-prte-prefix-by-default
 		--enable-pretty-print-stacktrace
 
 		--sysconfdir="${EPREFIX}/etc/${PN}"
