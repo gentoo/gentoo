@@ -24,7 +24,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 -arm -ppc -x86 ~amd64-linux"
-IUSE="cma cuda cxx fortran ipv6 peruse romio valgrind
+IUSE="cma cuda fortran ipv6 peruse romio valgrind
 	${IUSE_OPENMPI_FABRICS} ${IUSE_OPENMPI_RM}"
 
 REQUIRED_USE="
@@ -108,7 +108,6 @@ src_configure() {
 		#   of Open MPI.
 		--disable-heterogeneous
 
-		$(use_enable cxx mpi-cxx)
 		$(use_enable ipv6)
 		$(use_enable peruse)
 		$(use_enable romio io-romio)
