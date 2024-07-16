@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome.org gnome2-utils meson vala xdg
 
 DESCRIPTION="A nice way to view information about use of system resources"
-HOMEPAGE="https://wiki.gnome.org/Apps/Usage"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-usage"
 
 LICENSE="GPL-3+"
 SLOT="0"
