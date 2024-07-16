@@ -1,0 +1,26 @@
+From 2577da89420ce2a1d58fadd7f2e6809d2ba70dd8 Mon Sep 17 00:00:00 2001
+From: Witold Filipczyk <witekfl@poczta.onet.pl>
+Date: Mon, 10 Jun 2024 13:07:23 +0200
+Subject: [PATCH] [python] module imp is deprecated. Refs #313
+
+---
+ src/scripting/python/core.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/scripting/python/core.c b/src/scripting/python/core.c
+index 185561108..4a69e4293 100644
+--- a/src/scripting/python/core.c
++++ b/src/scripting/python/core.c
+@@ -138,10 +138,10 @@ hooks_module_exists(void)
+ 	 * indicates that no such module was found; any other exception will
+ 	 * be reported as an error.
+ 	 */
+-	imp_module = PyImport_ImportModule("imp");
++	imp_module = PyImport_ImportModule("importlib.util");
+ 	if (!imp_module) goto python_error;
+ 
+-	result = PyObject_CallMethod(imp_module, "find_module", "s", "hooks");
++	result = PyObject_CallMethod(imp_module, "find_spec", "s", "hooks");
+ 	if (result) {
+ 		found_hooks = 1;
+ 		goto end;
