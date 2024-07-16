@@ -104,6 +104,7 @@ RDEPEND="${COMMON_DEPEND}
 	!net-misc/freerdp:0
 	client? ( !net-misc/freerdp:2[client] )
 	server? ( !net-misc/freerdp:2[server] )
+	smartcard? ( dev-libs/opensc )
 "
 
 src_prepare() {
