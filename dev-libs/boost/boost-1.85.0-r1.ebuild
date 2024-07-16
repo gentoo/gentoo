@@ -55,6 +55,11 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.85.0-bcp-filesystem.patch
 	"${FILESDIR}"/${PN}-1.85.0-python-numpy-2.patch
 	"${FILESDIR}"/${PN}-1.85.0-container-aliasing.patch
+	"${FILESDIR}"/${PN}-1.85.0-01-fix_unsupported_long_double_macros.patch
+	"${FILESDIR}"/${PN}-1.85.0-02-fix_unsupported_long_double_formats.patch
+	"${FILESDIR}"/${PN}-1.85.0-03-disable_tests_with_unsupported_long_double_layouts.patch
+	"${FILESDIR}"/${PN}-1.85.0-04-remove_cruft_codeblock.patch
+	"${FILESDIR}"/${PN}-1.85.0-05-fix_macro_name.patch
 )
 
 create_user-config.jam() {
