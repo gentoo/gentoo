@@ -151,6 +151,7 @@ dev-util/tree-sitter-cli
 dev-vcs/breezy
 >=dev-vcs/stgit-2
 >=games-board/gnome-mahjongg-3.40.0
+>=games-puzzle/swell-foop-46
 gnome-base/gdm
 >=gnome-base/gnome-core-apps-3.36.5
 >=gnome-base/gnome-core-libs-3.36.5
