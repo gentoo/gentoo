@@ -1,0 +1,38 @@
+From f8fb221d6f355c4f0873592fbf7dce358f4f0b40 Mon Sep 17 00:00:00 2001
+From: Akseli Lahtinen <akselmo@akselmo.dev>
+Date: Fri, 12 Jul 2024 12:58:53 +0000
+Subject: [PATCH] EntryDetails.qml: Qualify newStuffModel, use downloadItemId
+
+There is no such thing as entryId, change it to downloadItemId
+Otherwise the item wont download anything.
+
+This fixes a bug where in detailed item view, if the list with multiple downloads
+appears and user clicks download, nothing would happen and knewstuff would report this
+warning in terminal: `qrc:/qt/qml/org/kde/newstuff/EntryDetails.qml:88: ReferenceError: entryId is not defined`
+
+After this fix it will download items.
+
+BUG:483659
+---
+ src/qtquick/qml/EntryDetails.qml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/qtquick/qml/EntryDetails.qml b/src/qtquick/qml/EntryDetails.qml
+index d21e18fc2..94fc88d76 100644
+--- a/src/qtquick/qml/EntryDetails.qml
++++ b/src/qtquick/qml/EntryDetails.qml
+@@ -85,9 +85,9 @@ KCMUtils.SimpleKCM {
+         parent: component.QQC2.Overlay.overlay
+ 
+         onItemPicked: (entry, downloadItemId, downloadName) => {
+-            const entryName = newStuffModel.data(newStuffModel.index(entryId, 0), NewStuff.ItemsModel.NameRole);
++            const entryName = component.newStuffModel.data(component.newStuffModel.index(downloadItemId, 0), NewStuff.ItemsModel.NameRole);
+             applicationWindow().showPassiveNotification(i18ndc("knewstuff6", "A passive notification shown when installation of an item is initiated", "Installing %1 from %2", downloadName, entryName), 1500);
+-            newStuffModel.engine.install(component.entry, downloadItemId);
++            component.newStuffModel.engine.install(component.entry, downloadItemId);
+         }
+     }
+ 
+-- 
+GitLab
+
