@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 inherit gnome.org gnome2-utils meson python-any-r1 xdg vala
 
 DESCRIPTION="Turn off all the lights"
-HOMEPAGE="https://wiki.gnome.org/Apps/Lightsoff"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/lightsoff"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0"
