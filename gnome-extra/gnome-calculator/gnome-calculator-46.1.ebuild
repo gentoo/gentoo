@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome.org gnome2-utils meson vala virtualx xdg
 
 DESCRIPTION="A calculator application for GNOME"
-HOMEPAGE="https://wiki.gnome.org/Apps/Calculator"
+HOMEPAGE="https://apps.gnome.org/Calculator/"
 
 LICENSE="GPL-3+"
 SLOT="0"
