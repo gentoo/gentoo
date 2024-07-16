@@ -65,6 +65,8 @@ PATCHES=(
 	"${FILESDIR}"/gentoo-ldconfig-paths-r1.patch
 	# Gentoo specific acct-user and acct-group conf adjustments
 	"${FILESDIR}"/${PN}-103-acct-user-group-gentoo.patch
+	# https://github.com/dracut-ng/dracut-ng/pull/507
+	"${FILESDIR}"/${PN}-103-systemd-udev-256-kmod.patch
 )
 
 src_configure() {
