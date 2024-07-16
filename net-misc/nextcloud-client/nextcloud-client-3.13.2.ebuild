@@ -67,6 +67,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.6.6-no-redefine-fortify-source.patch
+	"${FILESDIR}"/${PN}-3.13.2-fix_build_kf6.patch
 )
 
 src_prepare() {

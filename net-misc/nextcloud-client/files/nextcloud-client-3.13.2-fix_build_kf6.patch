@@ -1,0 +1,38 @@
+From b2974a504f67e4af9c376927d1d0fd3c99de3255 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Mon, 1 Apr 2024 20:00:25 +0200
+Subject: [PATCH] Fix build with KF6
+
+Set QT_NO_CREATE_VERSIONLESS_FUNCTIONS, otherwise Qt5 and Qt6 conflict
+
+Signed-off-by: Nicolas Fella <nicolas.fella@gmx.de>
+---
+ CMakeLists.txt         | 1 +
+ src/gui/CMakeLists.txt | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 687733588813..07d3266cb9dc 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -9,6 +9,7 @@ endif()
+ 
+ set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_CXX_STANDARD_REQUIRED 17)
++set(QT_NO_CREATE_VERSIONLESS_FUNCTIONS ON)
+ 
+ include(FeatureSummary)
+ 
+diff --git a/src/gui/CMakeLists.txt b/src/gui/CMakeLists.txt
+index 6e4acf203d19..37f459db4384 100644
+--- a/src/gui/CMakeLists.txt
++++ b/src/gui/CMakeLists.txt
+@@ -58,7 +58,7 @@ set(client_UI_SRCS
+ if(QUICK_COMPILER)
+     qtquick_compiler_add_resources(client_UI_SRCS ../../resources.qrc ${CMAKE_SOURCE_DIR}/theme.qrc)
+ else()
+-    qt_add_resources(client_UI_SRCS ../../resources.qrc ${CMAKE_SOURCE_DIR}/theme.qrc)
++    qt5_add_resources(client_UI_SRCS ../../resources.qrc ${CMAKE_SOURCE_DIR}/theme.qrc)
+ endif()
+ 
+ set(client_SRCS
