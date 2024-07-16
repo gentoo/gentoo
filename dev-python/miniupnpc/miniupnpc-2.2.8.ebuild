@@ -49,3 +49,4 @@ DOCS=()
 
 # Example test command:
 # python -c 'import miniupnpc; u = miniupnpc.UPnP(); u.discover(); u.selectigd(); print(u.externalipaddress())'
+distutils_enable_tests import-check
