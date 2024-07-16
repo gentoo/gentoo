@@ -85,10 +85,7 @@ COMMON_DEPEND="
 			xinerama? ( x11-libs/libXinerama )
 		)
 	)
-	smartcard? (
-		dev-libs/pkcs11-helper
-		sys-apps/pcsc-lite
-	)
+	smartcard? ( sys-apps/pcsc-lite )
 	systemd? ( sys-apps/systemd:0= )
 	client? (
 		wayland? (
@@ -108,6 +105,7 @@ RDEPEND="${COMMON_DEPEND}
 	!net-misc/freerdp:0
 	client? ( !net-misc/freerdp:2[client] )
 	server? ( !net-misc/freerdp:2[server] )
+	smartcard? ( app-crypt/p11-kit )
 "
 
 option() {
