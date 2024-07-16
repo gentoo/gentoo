@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome2 meson readme.gentoo-r1
 
 DESCRIPTION="Desktop note-taking application"
-HOMEPAGE="https://wiki.gnome.org/Apps/Gnote"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnote"
 
 LICENSE="GPL-3+ FDL-1.1"
 SLOT="0"
