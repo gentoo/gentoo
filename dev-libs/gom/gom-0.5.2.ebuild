@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 inherit gnome.org meson python-r1
 
 DESCRIPTION="GObject to SQLite object mapper library"
-HOMEPAGE="https://wiki.gnome.org/Projects/Gom"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gom"
 
 LICENSE="LGPL-2+ FDL-1.1+"
 SLOT="0"
