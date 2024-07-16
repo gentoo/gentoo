@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~sparc ~x86"
+KEYWORDS="~amd64 ~mips ~sparc ~x86"
 
 RDEPEND="
 	>=dev-python/pytest-8.1[${PYTHON_USEDEP}]
