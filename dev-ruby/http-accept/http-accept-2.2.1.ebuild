@@ -16,7 +16,7 @@ SRC_URI="https://github.com/socketry/http-accept/archive/v${PV}.tar.gz -> ${P}.t
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm64 ~ppc ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~riscv ~x86"
 
 all_ruby_prepare() {
 	rm -f config/sus.rb || die
