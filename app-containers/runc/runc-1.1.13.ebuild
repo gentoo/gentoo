@@ -10,9 +10,10 @@ RUNC_COMMIT=58aa9203c123022138b22cf96540c284876a7910
 CONFIG_CHECK="~USER_NS"
 
 DESCRIPTION="runc container cli tools"
-HOMEPAGE="http://github.com/opencontainers/runc/"
+HOMEPAGE="https://github.com/opencontainers/runc/"
 MY_PV="${PV/_/-}"
 SRC_URI="https://github.com/opencontainers/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="Apache-2.0 BSD-2 BSD MIT"
 SLOT="0"
@@ -37,8 +38,6 @@ BDEPEND="
 # sandboxing disabled: mount-sandbox pid-sandbox ipc-sandbox
 # majority of tests pass
 RESTRICT+=" test"
-
-S="${WORKDIR}/${PN}-${MY_PV}"
 
 src_compile() {
 	# Taken from app-containers/docker-1.7.0-r1
