@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome.org gnome2-utils meson readme.gentoo-r1 vala xdg
 
 DESCRIPTION="Play the classic two-player boardgame of chess"
-HOMEPAGE="https://wiki.gnome.org/Apps/Chess https://gitlab.gnome.org/GNOME/gnome-chess"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-chess"
 
 LICENSE="GPL-3+"
 SLOT="0"
