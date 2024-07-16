@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome.org gnome2-utils meson xdg
 
 DESCRIPTION="GNOME hexadecimal editor"
-HOMEPAGE="https://wiki.gnome.org/Apps/Ghex"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/ghex"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
