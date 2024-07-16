@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/ghex.git"
 	SRC_URI=""
 else
-	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="GPL-2+ FDL-1.1+"
@@ -23,8 +23,8 @@ SLOT="4"
 
 RDEPEND="
 	>=dev-libs/glib-2.68.0:2
-	>=gui-libs/gtk-4.4.0:4[introspection]
-	gui-libs/libadwaita:1
+	>=gui-libs/gtk-4.4.0:4
+	>=gui-libs/libadwaita-1.2:1
 	dev-libs/gobject-introspection
 	!app-editors/ghex:2
 "
