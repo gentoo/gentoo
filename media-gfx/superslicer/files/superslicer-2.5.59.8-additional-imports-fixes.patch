@@ -1,0 +1,111 @@
+diff --git a/src/libslic3r/Extruder.hpp b/src/libslic3r/Extruder.hpp
+index e4e16d263..629fd6e0b 100644
+--- a/src/libslic3r/Extruder.hpp
++++ b/src/libslic3r/Extruder.hpp
+@@ -3,6 +3,7 @@
+ 
+ #include "libslic3r.h"
+ #include "Point.hpp"
++#include <optional>
+ 
+ namespace Slic3r {
+ 
+diff --git a/src/slic3r/GUI/Field.cpp b/src/slic3r/GUI/Field.cpp
+index 10cae794d..c82969e20 100644
+--- a/src/slic3r/GUI/Field.cpp
++++ b/src/slic3r/GUI/Field.cpp
+@@ -20,6 +20,7 @@
+ #include <wx/tglbtn.h>
+ #endif
+ #include <wx/tokenzr.h>
++#include <boost/algorithm/string.hpp>
+ #include <boost/algorithm/string/predicate.hpp>
+ #include <boost/log/trivial.hpp>
+ #include "OG_CustomCtrl.hpp"
+diff --git a/src/slic3r/GUI/Preferences.cpp b/src/slic3r/GUI/Preferences.cpp
+index ab6039ff0..be01e890a 100644
+--- a/src/slic3r/GUI/Preferences.cpp
++++ b/src/slic3r/GUI/Preferences.cpp
+@@ -8,6 +8,7 @@
+ 
+ #include <wx/notebook.h>
+ #include <wx/scrolwin.h>
++#include <wx/display.h>
+ #include "Notebook.hpp"
+ #include "ButtonsDescription.hpp"
+ #include "OG_CustomCtrl.hpp"
+diff --git a/src/slic3r/GUI/Tab.cpp b/src/slic3r/GUI/Tab.cpp
+index a6c7b580e..1e1566f37 100644
+--- a/src/slic3r/GUI/Tab.cpp
++++ b/src/slic3r/GUI/Tab.cpp
+@@ -29,6 +29,7 @@
+ #include <wx/settings.h>
+ #include <wx/filedlg.h>
+ 
++#include <boost/algorithm/string.hpp>
+ #include <boost/algorithm/string/split.hpp>
+ #include <boost/algorithm/string/predicate.hpp>
+ #include <boost/algorithm/string/replace.hpp>
+diff --git a/src/libslic3r/ObjectID.hpp b/src/libslic3r/ObjectID.hpp
+index 782c58741..08dfba661 100644
+--- a/src/libslic3r/ObjectID.hpp
++++ b/src/libslic3r/ObjectID.hpp
+@@ -2,6 +2,7 @@
+ #define slic3r_ObjectID_hpp_
+ 
+ #include <cereal/access.hpp>
++#include <cereal/types/base_class.hpp>
+ 
+ namespace Slic3r {
+
+diff --git a/src/libslic3r/Format/BBConfig.hpp b/src/libslic3r/Format/BBConfig.hpp
+index a4b27675c..8d821bed5 100644
+--- a/src/libslic3r/Format/BBConfig.hpp
++++ b/src/libslic3r/Format/BBConfig.hpp
+@@ -2,6 +2,13 @@
+ #define slic3r_Format_BBconfig_hpp_
+ 
+ #include "miniz_extension.hpp"
++#include <fstream>
++#include <map>
++#include "libslic3r/Config.hpp"
++#include <boost/algorithm/string/replace.hpp>
++#include <boost/log/trivial.hpp>
++#include <boost/property_tree/ptree.hpp>
++#include <boost/property_tree/ini_parser.hpp>
+ 
+ #ifdef __APPLE__
+     #include <boost/filesystem.hpp>
+diff --git a/src/libslic3r/GCode/FanMover.cpp b/src/libslic3r/GCode/FanMover.cpp
+index 8a39d92c5..68e8c9254 100644
+--- a/src/libslic3r/GCode/FanMover.cpp
++++ b/src/libslic3r/GCode/FanMover.cpp
+@@ -13,9 +13,8 @@
+ #include "../PrintConfig.hpp"
+ #include "../Utils.hpp"
+ #include "Print.hpp"
+-
+-#include <boost/log/trivial.hpp>
+ */
++#include <boost/log/trivial.hpp>
+ 
+ 
+ namespace Slic3r {
+diff --git a/src/libslic3r/Format/bbs_3mf.cpp b/src/libslic3r/Format/bbs_3mf.cpp
+index f1570b7a4..777f1d722 100644
+--- a/src/libslic3r/Format/bbs_3mf.cpp
++++ b/src/libslic3r/Format/bbs_3mf.cpp
+@@ -43,11 +43,13 @@
+ #include <boost/property_tree/ptree.hpp>
+ #include <boost/property_tree/xml_parser.hpp>
+ #include <boost/foreach.hpp>
++#include <boost/thread/mutex.hpp>
+ //#include <openssl/md5.h>
+ 
+ namespace pt = boost::property_tree;
+ 
+ #include <tbb/parallel_reduce.h>
++#include <tbb/parallel_for.h>
+ 
+ #include <expat.h>
+ #include <Eigen/Dense>
