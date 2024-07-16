@@ -18,7 +18,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_BRANCH="develop"
 else
 	SRC_URI="https://github.com/Diaoul/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 SRC_URI+=" test? ( https://downloads.sourceforge.net/matroska/test_files/matroska_test_w1_1.zip )"
