@@ -25,9 +25,9 @@ BDEPEND="
 	test? (
 		<dev-cpp/catch-3:0
 		dev-libs/cereal
-		dev-qt/qtcore
-		dev-qt/qtconcurrent
-		dev-qt/qtdeclarative
+		dev-qt/qtcore:5
+		dev-qt/qtconcurrent:5
+		dev-qt/qtdeclarative:5
 	)
 "
 
