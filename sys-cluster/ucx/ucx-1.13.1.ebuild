@@ -7,7 +7,7 @@ inherit autotools toolchain-funcs
 
 MY_PV=${PV/_/-}
 DESCRIPTION="Unified Communication X"
-HOMEPAGE="https://www.openucx.org"
+HOMEPAGE="https://openucx.org"
 SRC_URI="https://github.com/openucx/ucx/releases/download/v${PV}/${P}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
