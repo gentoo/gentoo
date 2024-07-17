@@ -8,7 +8,7 @@ inherit gnome.org gnome2-utils meson xdg
 DESCRIPTION="A map application for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Maps"
 
-LICENSE="GPL-2+ LGPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0"
+LICENSE="CC0-1.0 GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
