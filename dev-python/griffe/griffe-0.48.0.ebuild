@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 RDEPEND="
 	>=dev-python/colorama-0.4[${PYTHON_USEDEP}]
