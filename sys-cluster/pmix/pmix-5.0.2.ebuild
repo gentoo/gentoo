@@ -51,6 +51,8 @@ src_configure() {
 src_install() {
 	default
 
+	find "${ED}" -name '*.la' -delete || die
+
 	# bug #884765
 	mv "${ED}"/usr/bin/pquery "${ED}"/usr/bin/pmix-pquery || die
 }
