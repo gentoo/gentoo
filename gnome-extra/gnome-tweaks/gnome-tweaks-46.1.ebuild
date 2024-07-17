@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit gnome.org gnome2-utils meson python-single-r1 xdg
 
 DESCRIPTION="Customize advanced GNOME options"
-HOMEPAGE="https://wiki.gnome.org/Apps/Tweaks"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-tweaks"
 
 LICENSE="GPL-3+ CC0-1.0"
 SLOT="0"
