@@ -20,6 +20,7 @@ DEPEND="
 	x11-libs/libXcursor
 	x11-libs/libXft
 	x11-libs/libXrandr
+	x11-libs/libXt
 	x11-libs/xcb-util
 	x11-libs/xcb-util-keysyms
 	x11-libs/xcb-util-wm
