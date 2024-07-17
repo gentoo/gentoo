@@ -11,7 +11,7 @@ inherit gnome.org meson virtualx xdg distutils-r1
 
 DESCRIPTION="Python bindings for GObject Introspection"
 HOMEPAGE="
-	https://pygobject.readthedocs.io/
+	https://pygobject.gnome.org/
 	https://gitlab.gnome.org/GNOME/pygobject/
 "
 
