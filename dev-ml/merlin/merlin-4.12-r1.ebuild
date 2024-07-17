@@ -4,7 +4,7 @@
 EAPI=8
 
 # TODO: vim-plugin, although it's not clear how to make it work here
-inherit elisp-common dune edo
+inherit elisp-common dune
 
 DESCRIPTION="Context sensitive completion for OCaml in Vim and Emacs"
 HOMEPAGE="https://github.com/ocaml/merlin/"
@@ -14,33 +14,31 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE="emacs +ocamlopt test"
-
-# Tests fail unexpectedly on Tinderbox. See https://bugs.gentoo.org/933857
-# RESTRICT="!test? ( test )"
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
-	<dev-lang/ocaml-5
-	>=dev-lang/ocaml-4.14.1
 	dev-lang/ocaml:=[ocamlopt?]
-	>=dev-ml/dune-2.9:=
-	>=dev-ml/yojson-2.0.0:=
 	dev-ml/csexp:=
+	>=dev-ml/yojson-2.0.0:=
 	dev-ml/menhir:=
+	>=dev-ml/dune-2.9:=
+	|| (
+		dev-lang/ocaml:0/4.14
+		dev-lang/ocaml:0/4.14.1
+	)
 	emacs? (
 		>=app-editors/emacs-23.1:*
 		app-emacs/auto-complete
 		app-emacs/company-mode
 	)
 "
-DEPEND="
-	${RDEPEND}
-"
+DEPEND="${RDEPEND}"
 # NOTICE: Block dev-ml/seq (which is a back-port of code to ocaml <4.07)
 # because it breaks merlin builds.
 # https://github.com/ocaml/merlin/issues/1500
 BDEPEND="
 	!!<dev-ml/seq-0.3
+	dev-ml/findlib
 	test? (
 		app-misc/jq
 	)
@@ -51,10 +49,10 @@ SITEFILE="50${PN}-gentoo.el"
 src_unpack() {
 	default
 
-	if has_version "=dev-lang/ocaml-4.14*" ; then
-		edo mv "${P}-414" "${S}"
-	elif has_version "dev-lang/ocaml" ; then
-		die "Currently installed version of OCaml is not yet supported"
+	if has_version "dev-lang/ocaml:0/4.14" ; then
+		mv ${P}-414 "${S}" || die
+	elif has_version "dev-lang/ocaml:0/4.14.1" ; then
+		mv ${P}-414 "${S}" || die
 	fi
 }
 
@@ -76,7 +74,7 @@ src_prepare() {
 }
 
 src_compile() {
-	edune build --display=short @install
+	edune build @install
 
 	if use emacs ; then
 		# iedit isn't packaged yet
