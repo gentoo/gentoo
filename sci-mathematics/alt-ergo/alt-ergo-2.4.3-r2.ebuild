@@ -27,13 +27,13 @@ RDEPEND="
 	>=dev-lang/ocaml-4.09.0:=[ocamlopt=]
 	>=sci-mathematics/psmt2-frontend-0.4.0:=
 
-	<dev-ml/zarith-1.14:=
+	<dev-ml/ocplib-simplex-0.5:=
 	>=dev-ml/cmdliner-1.1.0:=
 	>=dev-ml/menhir-20181006:=
-	>=dev-ml/ocplib-simplex-0.4:=
 	dev-ml/camlzip:=
 	dev-ml/num:=
 	dev-ml/stdlib-shims:=
+	dev-ml/zarith:=
 	gui? (
 		dev-ml/lablgtk:3
 		dev-ml/lablgtk-sourceview:3
