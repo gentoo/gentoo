@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome.org meson vala virtualx
 
 DESCRIPTION="Shumate is a GTK toolkit providing widgets for embedded maps"
-HOMEPAGE="https://wiki.gnome.org/Projects/libshumate https://gitlab.gnome.org/GNOME/libshumate"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/libshumate"
 
 LICENSE="LGPL-2.1+"
 SLOT="1.0/1"
