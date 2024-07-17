@@ -14,7 +14,7 @@ SSHUTTLE_DOCS_VERSION=${PV}
 SSHUTTLE_DOCS_USEFLAG="+doc"
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit distutils-r1 linux-info
 
 DESCRIPTION="Transparent proxy server that works as a poor man's VPN using ssh"
