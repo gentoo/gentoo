@@ -7,7 +7,7 @@ inherit cmake desktop
 
 JUMBOV=20070520
 DESCRIPTION="Interactive image manipulation program supporting a wide variety of formats"
-HOMEPAGE="http://www.trilon.com/xv/index.html http://www.sonic.net/~roelofs/greg_xv.html"
+HOMEPAGE="https://github.com/jasper-software/xv/"
 SRC_URI="https://github.com/jasper-software/xv/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	mirror://gentoo/xv-3.10a.png.bz2"
 
