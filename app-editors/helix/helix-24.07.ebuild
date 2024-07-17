@@ -306,31 +306,24 @@ RDEPEND="dev-vcs/git"
 
 QA_FLAGS_IGNORED="
 	usr/bin/hx
-	usr/share/helix/runtime/grammars/.*\.so
+	usr/share/${PN}/runtime/grammars/.*\.so
 "
 
-DOCS=(
-	README.md
-	CHANGELOG.md
-	book/
-	docs/
-)
-
 pkg_setup() {
-	export HELIX_DEFAULT_RUNTIME="${EPREFIX}/usr/share/helix/runtime"
+	export HELIX_DEFAULT_RUNTIME="${EPREFIX}/usr/share/${PN}/runtime"
 	use grammar || export HELIX_DISABLE_AUTO_GRAMMAR_BUILD=1
 }
 
 src_install() {
 	cargo_src_install --path helix-term
 
-	rm runtime/grammars/.gitkeep || die
-	rm -r runtime/grammars/sources || die
-	use grammar || rm -r runtime/grammars || die
+	insinto "/usr/$(get_libdir)/${PN}"
+	use grammar && doins runtime/grammars/*.so
+	rm -r runtime/grammars || die
+	use grammar && dosym "../../../$(get_libdir)/${PN}" "${EPREFIX}/usr/share/${PN}/runtime/grammars"
 
 	insinto /usr/share/helix
 	doins -r runtime
-	dodoc -r "${DOCS[@]}"
 
 	doicon -s 256x256 contrib/${PN}.png
 	domenu contrib/Helix.desktop
@@ -341,6 +334,16 @@ src_install() {
 	newbashcomp contrib/completion/hx.bash hx
 	newzshcomp contrib/completion/hx.zsh _hx
 	dofishcomp contrib/completion/hx.fish
+
+	DOCS=(
+		README.md
+		CHANGELOG.md
+		docs/
+	)
+	HTML_DOCS=(
+		book/
+	)
+	einstalldocs
 }
 
 pkg_postinst() {
