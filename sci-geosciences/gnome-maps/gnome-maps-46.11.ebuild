@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome.org gnome2-utils meson xdg
 
 DESCRIPTION="A map application for GNOME"
-HOMEPAGE="https://wiki.gnome.org/Apps/Maps"
+HOMEPAGE="https://apps.gnome.org/Maps/"
 
 LICENSE="CC0-1.0 GPL-2+"
 SLOT="0"
