@@ -122,6 +122,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/networkmanager-1.48.4-fix-libsystemdless-build.patch
+)
+
 python_check_deps() {
 	if use introspection; then
 		python_has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]" || return
