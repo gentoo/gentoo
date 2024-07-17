@@ -122,7 +122,7 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 	elog "When compared to the regular VSCode, VSCodium has a few quirks"
-	elog "More information at: https://github.com/VSCodium/vscodium/blob/master/DOCS.md"
+	elog "More information at: https://github.com/VSCodium/vscodium/blob/master/docs/index.md"
 	optfeature "desktop notifications" x11-libs/libnotify
 	optfeature "keyring support inside vscode" "virtual/secret-service"
 }
