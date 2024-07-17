@@ -16,22 +16,23 @@ DESCRIPTION="A generalized Rack framework for multiple-provider authentication"
 HOMEPAGE="https://github.com/omniauth/omniauth"
 SRC_URI="https://github.com/omniauth/omniauth/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
-KEYWORDS="~amd64"
+
 SLOT="$(ver_cut 1)"
-IUSE=""
+KEYWORDS="~amd64"
+IUSE="doc test"
 
 ruby_add_rdepend "
 	>=dev-ruby/rack-2.2.3
 	dev-ruby/rack-protection
 	>=dev-ruby/hashie-3.4.6:*"
 ruby_add_bdepend "doc? ( dev-ruby/yard )
-	test? ( dev-ruby/rack-test dev-ruby/rack:2.2 )"
+	test? ( dev-ruby/rack-test dev-ruby/rack:2.2 dev-ruby/rack-protection:3 )"
 
 all_ruby_prepare() {
 	sed -i -e '/[Bb]undler/d' \
 		Rakefile ${PN}.gemspec || die "sed failed"
 	sed -e '/RUBY_VERSION/,/^end/ s:^:#: ; /freeze/ s:^:#:' \
-		-e '2igem "rack", "<3"' \
+		-e '2igem "rack", "<3"; gem "rack-protection", "~> 3.0"' \
 		-e '/simplecov/,/^end/ s:^:#:' \
 		-i spec/helper.rb || die "sed failed"
 	# maruku fails, resorting to default markdown implementation
