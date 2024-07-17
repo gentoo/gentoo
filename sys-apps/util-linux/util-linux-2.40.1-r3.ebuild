@@ -110,10 +110,10 @@ pkg_pretend() {
 }
 
 src_unpack() {
-        if [[ ${PV} == 9999 ]] ; then
-                git-r3_src_unpack
-                return
-        fi
+	if [[ ${PV} == 9999 ]] ; then
+		git-r3_src_unpack
+		return
+	fi
 
 	# Upstream sign the decompressed .tar
 	if use verify-sig; then
