@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2024-07-17)
+# Obsolete slot. Please use a newer slot instead. No reverse
+# dependencies left. Removal on 2024-08-17.
+dev-ruby/rmagick:4
+
 # Eli Schwartz <eschwartz@gentoo.org> (2024-07-15)
 # FreeWnn has no activity upstream on its (very slow!) development site
 # since 2015. Website is gone. Various build failures, fails to build
