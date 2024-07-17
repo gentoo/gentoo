@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
+  <maintainer type="person">
+    <email>bkohler@gentoo.org</email>
+    <name>Ben Kohler</name>
+  </maintainer>
   <upstream>
     <remote-id type="sourceforge">png-mng</remote-id>
+    <remote-id type="github">jasper-software/xv</remote-id>
   </upstream>
 </pkgmetadata>
