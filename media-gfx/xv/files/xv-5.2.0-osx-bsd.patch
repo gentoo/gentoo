@@ -1,0 +1,51 @@
+diff '--color=auto' -ur a/src/vdcomp.c b/src/vdcomp.c
+--- a/src/vdcomp.c	2024-07-17 09:37:04.957769272 -0500
++++ b/src/vdcomp.c	2024-07-17 09:44:30.582594953 -0500
+@@ -130,6 +130,8 @@
+ 
+ #    if defined(hp300) || defined(hp800) || defined(NeXT)
+ #      include <sys/malloc.h>    /* it's in "sys" on HPs and NeXT */
++#    elif defined(__APPLE__)
++#      include <malloc/malloc.h>
+ #    else
+ #      include <malloc.h>        /* FIXME: should explicitly list systems that NEED this, not everyone that doesn't */
+ #    endif
+diff '--color=auto' -ur a/src/xv.h b/src/xv.h
+--- a/src/xv.h	2024-07-17 09:37:04.957769272 -0500
++++ b/src/xv.h	2024-07-17 09:41:42.912041683 -0500
+@@ -183,7 +183,7 @@
+ 
+ #ifndef VMS
+ #  include <errno.h>
+-#  ifndef __NetBSD__
++#  if !defined(__NetBSD__) && !defined(__FreeBSD__) && !defined(__APPLE__)
+ #    if !(defined(__GLIBC__) && __GLIBC__ >= 2) && !defined(__OpenBSD__)
+        extern int   errno;         /* SHOULD be in errno.h, but often isn't */
+ #      ifndef XV_HAVE_SYSERRLISTDECL
+@@ -199,7 +199,7 @@
+ #  ifdef VMS
+ #    define ERRSTR(x) strerror(x, vaxc$errno)
+ #  else
+-#    if defined(__BEOS__) || defined(__linux__) /* or all modern/glibc systems? */
++#    if defined(__BEOS__) || defined(__linux__) || defined(__APPLE__) /* or all modern/glibc systems? */
+ #      define ERRSTR(x) strerror(x)
+ #    else
+ #      define ERRSTR(x) sys_errlist[x]
+@@ -236,6 +236,8 @@
+ #ifdef NEED_MALLOC_H
+ #  if defined(hp300) || defined(hp800) || defined(NeXT)
+ #    include <sys/malloc.h>    /* it's in "sys" on HPs and NeXT */
++#  elif defined(__APPLE__)
++#   include <malloc/malloc.h>
+ #  else
+ #    include <malloc.h>
+ #  endif
+@@ -399,7 +401,7 @@
+  *                them later. */
+ #ifndef VMS       /* VMS hates multi-line definitions */
+ #  if defined(__linux__) || defined(__OpenBSD__) || defined(__NetBSD__) || \
+-      defined(__bsdi__)
++      defined(__FreeBSD__) || defined(__bsdi__) || defined(__APPLE__)
+ #    ifndef USE_MKSTEMP
+ #      define USE_MKSTEMP       /* use 'mkstemp()' instead of 'mktemp()' */
+ #    endif                      /* >> SECURITY ISSUE << */
