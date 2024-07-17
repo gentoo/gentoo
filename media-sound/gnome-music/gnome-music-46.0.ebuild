@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{11..12} )
 inherit gnome.org gnome2-utils meson python-single-r1 xdg
 
 DESCRIPTION="Music management for Gnome"
-HOMEPAGE="https://wiki.gnome.org/Apps/Music https://gitlab.gnome.org/GNOME/gnome-music/"
+HOMEPAGE="https://apps.gnome.org/Music/ https://gitlab.gnome.org/GNOME/gnome-music/"
 
 LICENSE="GPL-2+"
 SLOT="0"
