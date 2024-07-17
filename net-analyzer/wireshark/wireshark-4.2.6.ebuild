@@ -5,7 +5,7 @@ EAPI=8
 
 LUA_COMPAT=( lua5-{1..2} )
 # TODO: check cmake/modules/UseAsn2Wrs.cmake for 3.12
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit fcaps flag-o-matic lua-single python-any-r1 qmake-utils xdg cmake
 
