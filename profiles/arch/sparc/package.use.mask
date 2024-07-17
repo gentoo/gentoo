@@ -375,7 +375,6 @@ app-misc/tracker-miners test
 dev-ruby/rack-cache test
 dev-ruby/activemodel test
 dev-ruby/activerecord test
-dev-ruby/activesupport test
 dev-ruby/globalid test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-18)
