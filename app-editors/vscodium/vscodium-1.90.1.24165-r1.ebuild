@@ -99,9 +99,6 @@ src_install() {
 	dosym -r "/opt/${PN}/bin/codium" "usr/bin/codium"
 
 	local EXEC_EXTRA_FLAGS=()
-	if use wayland; then
-		EXEC_EXTRA_FLAGS+=( "--ozone-platform-hint=auto" )
-	fi
 	if use egl; then
 		EXEC_EXTRA_FLAGS+=( "--use-gl=egl" )
 	fi
