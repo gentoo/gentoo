@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit edo python-any-r1
 
 DESCRIPTION="Gentoo Authority Keys (GLEP 79)"
