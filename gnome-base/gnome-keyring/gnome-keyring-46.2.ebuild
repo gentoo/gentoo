@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 inherit gnome2 pam python-any-r1 virtualx
 
 DESCRIPTION="Password and keyring managing daemon"
-HOMEPAGE="https://wiki.gnome.org/Projects/GnomeKeyring"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-keyring"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
