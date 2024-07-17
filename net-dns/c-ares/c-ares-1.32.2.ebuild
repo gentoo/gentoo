@@ -48,6 +48,20 @@ A__QA_CONFIG_IMPL_DECL_SKIP=(
 	ConvertInterfaceLuidToNameA
 )
 
+src_prepare() {
+	default
+
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		# warnings are default, but enable -std=c90 which doesn't define
+		# 'bool' which is a type used/assumed in macOS system headers
+		sed -i -e 's/-std=c90/& -Dbool=int/' configure{.ac,} || die
+		# sysconfig integration requires deep framework compatibility
+		# and is not really desired in Prefix
+		sed -i -e 's/__APPLE__/__DISABLED__/' \
+			src/lib/ares_sysconfig_mac.c || die
+	fi
+}
+
 multilib_src_configure() {
 	local myeconfargs=(
 		--enable-symbol-hiding
