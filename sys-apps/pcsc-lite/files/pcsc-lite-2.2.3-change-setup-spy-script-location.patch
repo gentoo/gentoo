@@ -1,0 +1,13 @@
+diff --git a/meson.build b/meson.build
+index acb51ddf..0c7b3a8f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -202,7 +202,7 @@ install_data('src/spy/pcsc-spy',
+   install_dir : get_option('bindir'))
+ 
+ install_data('src/spy/setup_spy.sh',
+-  install_dir : 'share/doc/pcsc-lite')
++  install_dir : get_option('datadir') / 'doc' / meson.project_name()+'-'+meson.project_version())
+ 
+ run_command('pod2man',
+   ['--date=2024-01-01', 'src/spy/pcsc-spy.pod', 'pcsc-spy.1'],
