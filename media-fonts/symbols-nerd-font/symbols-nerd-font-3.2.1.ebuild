@@ -4,8 +4,8 @@
 EAPI=8
 
 # Note: no interest in supporting building or packaging the full suite of
-# fonts, only quickly added because x11-terms/kitty requires it -- if want
-# more, feel free to take over maintenance and re-arrange.
+# fonts, only quickly added because x11-terms/kitty requires it -- if a
+# Gentoo dev wants more, feel free to take over maintenance and re-arrange.
 
 FONT_SUFFIX=ttf
 inherit font
