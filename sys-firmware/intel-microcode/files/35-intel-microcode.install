@@ -41,9 +41,13 @@ main() {
 		--list
 	)
 
-	einfo "Generating Intel CPU Microcode early initramfs image..."
-	iucode_tool /lib/firmware/intel-ucode "${opts[@]}" ||
-		die "iucode_tool failed"
+	if [[ -d /lib/firmware/intel-ucode ]]; then
+		einfo "Generating Intel CPU Microcode early initramfs image..."
+		iucode_tool /lib/firmware/intel-ucode "${opts[@]}" ||
+			die "iucode_tool failed"
+	else
+		einfo "No Intel CPU Microcode installed, nothing to do here."
+	fi
 }
 
 main

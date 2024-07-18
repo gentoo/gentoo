@@ -45,16 +45,24 @@ LICENSE="intel-ucode"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="dist-kernel hostonly +initramfs +split-ucode vanilla"
-REQUIRED_USE="!dist-kernel? ( || ( initramfs split-ucode ) )"
+REQUIRED_USE="
+	|| ( initramfs split-ucode )
+	dist-kernel? ( split-ucode )
+"
 RESTRICT="binchecks strip"
 
 BDEPEND=">=sys-apps/iucode_tool-2.3"
 # !<sys-apps/microcode-ctl-1.17-r2 due to bug #268586
 RDEPEND="
-	dist-kernel? ( virtual/dist-kernel )
-	hostonly? ( sys-apps/iucode_tool )
+	dist-kernel? (
+		virtual/dist-kernel
+		initramfs? (
+			sys-apps/iucode_tool
+		)
+	)
 "
 IDEPEND="
+	hostonly? ( sys-apps/iucode_tool )
 	dist-kernel? (
 		initramfs? ( sys-kernel/installkernel )
 	)
@@ -84,10 +92,10 @@ MICROCODE_SIGNATURES_DEFAULT=""
 
 pkg_pretend() {
 	if use initramfs; then
-		if [[ -z ${ROOT} ]] && use dist-kernel; then
+		if use dist-kernel; then
 			# Check, but don't die because we can fix the problem and then
 			# emerge --config ... to re-run installation.
-			nonfatal mount-boot_check_status
+			[[ -z ${ROOT} ]] && nonfatal mount-boot_check_status
 		else
 			mount-boot_pkg_pretend
 		fi
@@ -302,8 +310,8 @@ pkg_postrm() {
 
 pkg_postinst() {
 	if use initramfs; then
-		if [[ -z ${ROOT} ]] && use dist-kernel; then
-			dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}"
+		if use dist-kernel; then
+			[[ -z ${ROOT} ]] && dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}"
 		else
 			# Don't forget to umount /boot if it was previously mounted by us.
 			mount-boot_pkg_postinst
