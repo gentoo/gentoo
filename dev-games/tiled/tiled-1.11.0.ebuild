@@ -12,7 +12,7 @@ SRC_URI="https://github.com/mapeditor/tiled/archive/v${PV}/${P}.tar.gz"
 LICENSE="BSD BSD-2 GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="clang"
+IUSE="clang examples"
 
 RDEPEND="
 	app-arch/zstd
@@ -45,6 +45,11 @@ src_configure() {
 
 src_install() {
 	qbs install --install-root "${D}" || die
+
+	if use examples; then
+		docompress -x /usr/share/doc/${PF}/examples
+		dodoc -r examples
+	fi
 }
 
 pkg_postinst() {
