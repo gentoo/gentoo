@@ -50,6 +50,10 @@ src_install() {
 	dodoc CHANGELOG.md
 }
 
+src_test() {
+	emake tests
+}
+
 pkg_postinst() {
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		elog "If you want to allow your users to activate html email"
