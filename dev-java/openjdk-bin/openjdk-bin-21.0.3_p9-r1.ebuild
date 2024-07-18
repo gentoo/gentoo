@@ -106,7 +106,8 @@ src_install() {
 		fi
 
 		if use headless-awt ; then
-			rm -v lib/lib*{[jx]awt,splashscreen}* || die
+			# do not die if not available, -f for bug #934974
+			rm -fv lib/lib*{[jx]awt,splashscreen}* || die
 		fi
 	fi
 
