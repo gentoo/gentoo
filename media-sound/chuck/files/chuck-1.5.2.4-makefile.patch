@@ -1,0 +1,56 @@
+diff --git a/src/core/makefile.x/makefile.alsa b/src/core/makefile.x/makefile.alsa
+index bcbe27c1..d58305fd 100644
+--- a/src/core/makefile.x/makefile.alsa
++++ b/src/core/makefile.x/makefile.alsa
+@@ -1,5 +1,5 @@
+ # compiler flags
+-CFLAGS+=-D__LINUX_ALSA__ -fno-strict-aliasing -D__CK_SNDFILE_NATIVE__
++CFLAGS+=-D__LINUX_ALSA__ -fno-strict-aliasing -D__CK_SNDFILE_NATIVE__ -fPIC
+ 
+ # linker / library flags
+ LDFLAGS+=-lasound -lstdc++ -ldl -lm -lsndfile -lpthread
+diff --git a/src/core/makefile.x/makefile.jack b/src/core/makefile.x/makefile.jack
+index a92caf79..336d477e 100644
+--- a/src/core/makefile.x/makefile.jack
++++ b/src/core/makefile.x/makefile.jack
+@@ -1,5 +1,5 @@
+ # compiler flags
+-CFLAGS+= -D__UNIX_JACK__ -fno-strict-aliasing -D__CK_SNDFILE_NATIVE__
++CFLAGS+= -D__UNIX_JACK__ -fno-strict-aliasing -D__CK_SNDFILE_NATIVE__ -fPIC
+ CFLAGS+= $(shell pkg-config --cflags jack)
+ 
+ # linker / library flags
+diff --git a/src/makefile b/src/makefile
+index a09dfaac..e7f0faff 100644
+--- a/src/makefile
++++ b/src/makefile
+@@ -90,15 +90,15 @@ win32:
+ 
+ ########################### COMPILATION TOOLS #################################
+ # lexer
+-LEX=flex
++LEX?=flex
+ # parser
+-YACC=bison
++YACC?=bison
+ # c compiler
+-CC=gcc
++CC?=gcc
+ # c++ compiler
+-CXX=g++
++CXX?=g++
+ # linker
+-LD=$(CXX)
++LD?=$(CXX)
+ 
+ 
+ ############################# COMPILER FLAGS ##################################
+@@ -113,8 +113,6 @@ endif
+ # enable chuck debug macros?
+ ifneq ($(CHUCK_DEBUG),)
+ CFLAGS+= -g -D__CHUCK_DEBUG__
+-else
+-CFLAGS+= -O3
+ endif
+ 
+ # use 64-bit audio samples?
