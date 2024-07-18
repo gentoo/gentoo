@@ -28,11 +28,12 @@ RDEPEND="fuse? (
 	seccomp? ( sys-libs/libseccomp )
 	acct-group/tss
 	acct-user/tss
+	dev-libs/gmp:=
 	dev-libs/openssl:0=
 	dev-libs/json-glib
 	dev-libs/libtpms
 	dev-libs/libtasn1:=
-	net-libs/gnutls[pkcs11,tools]
+	net-libs/gnutls:=[pkcs11,tools]
 "
 
 DEPEND="${RDEPEND}
