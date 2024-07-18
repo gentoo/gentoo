@@ -114,6 +114,8 @@ src_test() {
 		'tests/test_functional_misc.py::TestQueueRepair::test_queue_repair'
 		'tests/test_functional_misc.py::TestDaemonizing::test_daemonizing'
 		'tests/test_functional_sorting.py::TestDownloadSorting'
+		# Bug https://bugs.gentoo.org/934331 fixed in 4.3.3.
+		'tests/test_sorting.py::TestSortingSorter'
 	)
 
 	# The test suite is prone to being broken by random plugins that happen
