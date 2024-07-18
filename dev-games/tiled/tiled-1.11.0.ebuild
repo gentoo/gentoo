@@ -40,14 +40,11 @@ src_configure() {
 		qbs config profiles.qt6.baseProfile gcc || die
 	fi
 
-	qbs qbs.installPrefix:"/usr" projects.Tiled.installHeaders:true || die
+	qbs qbs.installPrefix:"/usr" projects.Tiled.installHeaders:true project.libDir:$(get_libdir) || die
 }
 
 src_install() {
 	qbs install --install-root "${D}" || die
-	mkdir --parents ${D}/usr/$(get_libdir)
-	mv ${D}/usr/lib/libtiled.so ${D}/usr/$(get_libdir)/libtiled.so || die
-	mv ${D}/usr/lib/libtilededitor.so ${D}/usr/$(get_libdir)/libtilededitor.so || die
 }
 
 pkg_postinst() {
