@@ -6,7 +6,7 @@ EAPI=8
 inherit java-vm-2 toolchain-funcs
 
 abi_uri() {
-	local baseuri="https://github.com/adoptium/temurin${SLOT}-binaries/releases/download/jdk-${MY_PV}/"
+	local baseuri="https://github.com/adoptium/temurin$(ver_cut 1)-binaries/releases/download/jdk-${MY_PV}/"
 	local musl=
 	local os=linux
 
@@ -22,24 +22,26 @@ abi_uri() {
 
 	echo "${2-$1}? (
 		${musl:+ elibc_musl? ( }
-			${baseuri}/OpenJDK${SLOT}U-jdk_${1}_${os}_hotspot_${MY_PV//+/_}.tar.gz
+			${baseuri}/OpenJDK$(ver_cut 1)U-jdk_${1}_${os}_hotspot_${MY_PV//+/_}.tar.gz
 		${musl:+ ) } )"
 }
 
 MY_PV=${PV/_p/+}
-SLOT=$(ver_cut 1)
 
+DESCRIPTION="Prebuilt Java JDK binaries provided by Eclipse Temurin"
+HOMEPAGE="https://adoptium.net"
 SRC_URI="
 	$(abi_uri aarch64 arm64)
+	$(abi_uri aarch64 arm64 musl)
 	$(abi_uri ppc64le ppc64)
 	$(abi_uri x64 amd64)
 	$(abi_uri x64 amd64 musl)
 	$(abi_uri riscv64 riscv)
 "
+S="${WORKDIR}/jdk-${MY_PV}"
 
-DESCRIPTION="Prebuilt Java JDK binaries provided by Eclipse Temurin"
-HOMEPAGE="https://adoptium.net"
 LICENSE="GPL-2-with-classpath-exception"
+SLOT=$(ver_cut 1)
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
 IUSE="alsa cups headless-awt selinux source"
 
@@ -66,8 +68,6 @@ RDEPEND="
 
 RESTRICT="preserve-libs splitdebug"
 QA_PREBUILT="*"
-
-S="${WORKDIR}/jdk-${MY_PV}"
 
 pkg_pretend() {
 	if [[ "$(tc-is-softfloat)" != "no" ]]; then
