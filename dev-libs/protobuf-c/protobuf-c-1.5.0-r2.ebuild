@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="BSD-2"
 # Subslot == SONAME version
 SLOT="0/1.0.0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~sparc ~x86"
 IUSE="static-libs"
 
 BDEPEND="
@@ -25,7 +25,12 @@ BDEPEND="
 "
 DEPEND="
 	>=dev-libs/protobuf-3:0=[${MULTILIB_USEDEP}]"
-RDEPEND="${DEPEND}"
+# NOTE
+# protobuf links to abseil-cpp libraries via it's .pc files.
+# To cause rebuild when the abseil-cpp version changes we add it to RDEPEND only.
+RDEPEND="${DEPEND}
+	dev-cpp/abseil-cpp:=[${MULTILIB_USEDEP}]
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.5.0-Clean-CMake.patch"
