@@ -21,7 +21,7 @@ SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~ppc64"
 IUSE="test"
 
-DEPEND+="test? ( >=dev-vcs/git-1.6.0.0 app-arch/tar )"
+DEPEND+="test? ( >=dev-vcs/git-1.6.0.0 net-misc/openssh app-arch/tar )"
 RDEPEND+=">=dev-vcs/git-1.6.0.0"
 
 ruby_add_rdepend "
