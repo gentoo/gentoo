@@ -7,7 +7,7 @@ ETYPE="sources"
 CKV="$(ver_cut 1-3)"
 K_SECURITY_UNSUPPORTED="1"
 K_WANT_GENPATCHES="base extras"
-K_GENPATCHES_VER="10"
+K_GENPATCHES_VER="9"
 K_NODRYRUN="1"
 
 inherit kernel-2
@@ -41,7 +41,7 @@ SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI}
 KV_FULL="${PVR/_p/-asahi-}"
 S="${WORKDIR}/linux-${KV_FULL}"
 
-KEYWORDS="~arm64"
+KEYWORDS="arm64"
 IUSE="rust"
 
 DEPEND="
@@ -58,7 +58,6 @@ DEPEND="
 UNIPATCH_STRICTORDER="yes"
 UNIPATCH_LIST="
 	${FILESDIR}/asahi-6.8-config-gentoo-Drop-RANDSTRUCT-from-GENTOO_KERNEL_SEL.patch
-	${FILESDIR}/asahi-6.8.2_revert_spi_stable_asahi.patch
 	${DISTDIR}/linux-${ASAHI_TAG}.patch
 "
 
