@@ -10,6 +10,8 @@ DESCRIPTION="Genealogy software program with a Web interface"
 HOMEPAGE="https://github.com/geneweb/geneweb"
 SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${TagId}.tar.gz"
 
+S="${WORKDIR}"/${PN}-${TagId}
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
@@ -28,6 +30,7 @@ DEPEND="
 	dev-ml/markup:=
 	dev-ml/jingoo:=
 	>=dev-ml/camlp5-8:=[ocamlopt?]
+	<dev-ml/camlp5-8.03
 	dev-ml/ppx_import:=
 	dev-ml/ppx_blob:=
 	acct-user/geneweb
@@ -40,8 +43,6 @@ BDEPEND="
 	test? ( dev-ml/ounit2 )"
 
 QA_FLAGS_IGNORED='.*'
-
-S="${WORKDIR}"/${PN}-${TagId}
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 

@@ -26,6 +26,7 @@ DEPEND="
 	acct-user/geneweb
 	dev-ml/calendars:=
 	>=dev-ml/camlp5-8:=[ocamlopt?]
+	<dev-ml/camlp5-8.03
 	dev-ml/camlp-streams:=
 	dev-ml/jingoo:=
 	dev-ml/markup:=
