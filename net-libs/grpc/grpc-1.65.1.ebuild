@@ -54,7 +54,9 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}/${PN}-1.65.0-system-gtest.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-1.65.0-system-gtest.patch"
+)
 
 python_check_deps() {
 	if use test; then
@@ -83,21 +85,23 @@ src_prepare() {
 	# implicitly picked up and linked to the test binaries.  However removing
 	# the vendored gtest to use the system one also removes these dependencies,
 	# so we have to redeclare them as dependencies of the test binaries individually.
-	local extra_libs=("gtest"
-					"gmock"
-					"\${_gRPC_RE2_LIBRARIES}"
-					"absl::flat_hash_set"
-					"absl::failure_signal_handler"
-					"absl::stacktrace"
-					"absl::symbolize"
-					"absl::flags"
-					"absl::flags_parse"
-					"absl::flags_reflection"
-					"absl::flags_usage"
-					"absl::strings"
-					"absl::any"
-					"absl::optional"
-					"absl::variant")
+	local extra_libs=(
+		"GTest::gtest"
+		"GTest::gmock"
+		"\${_gRPC_RE2_LIBRARIES}"
+		"absl::flat_hash_set"
+		"absl::failure_signal_handler"
+		"absl::stacktrace"
+		"absl::symbolize"
+		"absl::flags"
+		"absl::flags_parse"
+		"absl::flags_reflection"
+		"absl::flags_usage"
+		"absl::strings"
+		"absl::any"
+		"absl::optional"
+		"absl::variant"
+	)
 	: "$(echo "${extra_libs[@]}" | "${EPYTHON}" -c 'import sys;print("\\n\\1".join(sys.stdin.read().split()))')"
 	local rstring="${_}"
 	sed -i -E "s/( +)gtest/\1${rstring}/g" "CMakeLists.txt" || die
@@ -108,7 +112,6 @@ src_prepare() {
 		import json, pathlib
 
 		print("if(gRPC_BUILD_TESTS)")
-		print("  ENABLE_TESTING()")
 		for line in [
 		  json.dumps([t["name"], "./" + t["name"], *t["args"]]).translate(
 		  str.maketrans(dict.fromkeys("[],", None))
@@ -147,6 +150,7 @@ src_configure() {
 	filter-lto
 
 	local mycmakeargs=(
+		-DgRPC_DOWNLOAD_ARCHIVES=OFF
 		-DgRPC_INSTALL=ON
 		-DgRPC_ABSL_PROVIDER=package
 		-DgRPC_CARES_PROVIDER=package
@@ -157,8 +161,8 @@ src_configure() {
 		-DgRPC_SSL_PROVIDER=package
 		-DgRPC_ZLIB_PROVIDER=package
 		-DgRPC_BUILD_TESTS=$(usex test)
+		-DgRPC_USE_SYSTEMD=$(usex systemd ON OFF)
 		-DCMAKE_CXX_STANDARD=17
-		-DCMAKE_DISABLE_FIND_PACKAGE_systemd=$(usex !systemd)
 		$(usex test '-DgRPC_BENCHMARK_PROVIDER=package' '')
 	)
 	cmake_src_configure
@@ -176,13 +180,123 @@ src_test() {
 		--fail --silent --output /dev/null "http://localhost:32766/get" || die
 
 	CMAKE_SKIP_TESTS=(
-		no_logging_test # hangs everywhere, no output
-		grpc_tool_test # fails everywhere
-		examine_stack_test # fails on amd64 only
-		stack_tracer_test # fails on amd64 only
-		endpoint_pair_test # fails on alpha
-		event_poller_posix_test # fails on alpha
-		tcp_posix_test # fails on alpha
+		# CallCommandWithTimeoutDeadlineSet has a timeout set to 5000.25 seconds
+		^grpc_tool_test$
+
+		# Need network access
+		^posix_event_engine_native_dns_test$
+		^posix_event_engine_test$
+		^resolve_address_using_ares_resolver_test$
+		^resolve_address_using_native_resolver_test$
+	)
+
+	use amd64 && CMAKE_SKIP_TESTS+=(
+		^examine_stack_test$ # fails on amd64 only
+		^stack_tracer_test$ # fails on amd64 only
+	)
+
+	use alpha && CMAKE_SKIP_TESTS+=(
+		^endpoint_pair_test$ # fails on alpha
+		^event_poller_posix_test$ # fails on alpha
+		^tcp_posix_test$ # fails on alpha
+	)
+
+	# NOTE breaks with shared linking because the metric is twice initialised in a static function in a anonymous namespace
+	# metrics.cc:49] Metric name grpc.lb.pick_first.disconnections has already been registered.
+	# https://bugs.gentoo.org/935787 Leave the bug open until we fixed the underlying issue
+	CMAKE_SKIP_TESTS+=(
+		^bad_ping_test$
+		^binary_metadata_test$
+		^call_creds_test$
+		^call_host_override_test$
+		^cancel_after_accept_test$
+		^cancel_after_client_done_test$
+		^cancel_after_invoke_test$
+		^cancel_after_round_trip_test$
+		^cancel_before_invoke_test$
+		^cancel_in_a_vacuum_test$
+		^cancel_with_status_test$
+		^client_streaming_test$
+		^compressed_payload_test$
+		^connectivity_test$
+		^default_host_test$
+		^disappearing_server_test$
+		^empty_batch_test$
+		^filter_causes_close_test$
+		^filter_init_fails_test$
+		^filter_test_test$
+		^filtered_metadata_test$
+		^graceful_server_shutdown_test$
+		^grpc_authz_test$
+		^high_initial_seqno_test$
+		^hpack_size_test$
+		^http2_stats_test$
+		^invoke_large_request_test$
+		^keepalive_timeout_test$
+		^large_metadata_test$
+		^max_concurrent_streams_test$
+		^max_connection_age_test$
+		^max_connection_idle_test$
+		^max_message_length_test$
+		^negative_deadline_test$
+		^no_logging_test$
+		^no_op_test$
+		^payload_test$
+		^ping_pong_streaming_test$
+		^ping_test$
+		^proxy_auth_test$
+		^registered_call_test$
+		^request_with_flags_test$
+		^request_with_payload_test$
+		^resource_quota_server_test$
+		^retry_cancel_after_first_attempt_starts_test$
+		^retry_cancel_during_delay_test$
+		^retry_cancel_with_multiple_send_batches_test$
+		^retry_cancellation_test$
+		^retry_disabled_test$
+		^retry_exceeds_buffer_size_in_delay_test$
+		^retry_exceeds_buffer_size_in_initial_batch_test$
+		^retry_exceeds_buffer_size_in_subsequent_batch_test$
+		^retry_lb_drop_test$
+		^retry_lb_fail_test$
+		^retry_non_retriable_status_before_trailers_test$
+		^retry_non_retriable_status_test$
+		^retry_per_attempt_recv_timeout_on_last_attempt_test$
+		^retry_per_attempt_recv_timeout_test$
+		^retry_recv_initial_metadata_test$
+		^retry_recv_message_replay_test$
+		^retry_recv_message_test$
+		^retry_recv_trailing_metadata_error_test$
+		^retry_send_initial_metadata_refs_test$
+		^retry_send_op_fails_test$
+		^retry_send_recv_batch_test$
+		^retry_server_pushback_delay_test$
+		^retry_server_pushback_disabled_test$
+		^retry_streaming_after_commit_test$
+		^retry_streaming_succeeds_before_replay_finished_test$
+		^retry_streaming_test$
+		^retry_test$
+		^retry_throttled_test$
+		^retry_too_many_attempts_test$
+		^retry_transparent_goaway_test$
+		^retry_transparent_max_concurrent_streams_test$
+		^retry_transparent_not_sent_on_wire_test$
+		^retry_unref_before_finish_test$
+		^retry_unref_before_recv_test$
+		^server_finishes_request_test$
+		^server_streaming_test$
+		^shutdown_finishes_calls_test$
+		^shutdown_finishes_tags_test$
+		^simple_delayed_request_test$
+		^simple_metadata_test$
+		^simple_request_test$
+		^streaming_error_response_test$
+		^test_core_end2end_channelz_test$
+		^thread_pool_test$
+		^timeout_before_request_call_test$
+		^trailing_metadata_test$
+		^write_buffering_at_end_test$
+		^write_buffering_test$
 	)
 
 	# BUG this should be nonfatal and we kill the server even when tests fail
