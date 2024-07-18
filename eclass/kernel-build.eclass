@@ -461,7 +461,7 @@ kernel-build_src_install() {
 				--confdir "${T}/empty-directory"
 				--kernel-image "${image}"
 				--kmoddir "${ED}/lib/modules/${KV_FULL}"
-				--kver "${dir_ver}"
+				--kver "${KV_FULL}"
 				--verbose
 				--compress="xz -9e --check=crc32"
 				--no-hostonly
