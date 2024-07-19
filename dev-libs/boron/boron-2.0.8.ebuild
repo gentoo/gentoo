@@ -1,7 +1,9 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit edo toolchain-funcs
 
 DESCRIPTION="A scripting language similar to REBOL"
 HOMEPAGE="https://urlan.sourceforge.net/boron/"
@@ -23,10 +25,10 @@ PATCHES=(
 )
 
 src_configure() {
+	tc-export CC
 	# Non-standard configure
-	./configure \
-		$(usex bzip2 "--bzip2" "") \
-		|| die
+	edo ./configure \
+		$(usex bzip2 "--bzip2" "")
 }
 
 src_install() {
