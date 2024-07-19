@@ -50,6 +50,9 @@ src_prepare() {
 	# bug #80421
 	filter-flags -ftracer
 
+	# -Werror=lto-type-mismatch
+	filter-lto
+
 	# feel free to fix properly if you care
 	append-flags -fno-strict-aliasing
 
@@ -70,13 +73,6 @@ src_prepare() {
 
 	# remember the name of the C compiler for the native ABI
 	MY_NATIVE_CC=$(tc-getCC)
-
-	# -Werror=lto-type-mismatch
-	#
-	# Helpfully, the motif bugtracker is entirely down. They are also
-	# on sourceforge but only for merge requests? The project is a
-	# fascinating kind of ghostly haunting. Punting on reporting... for now.
-	filter-lto
 }
 
 multilib_src_configure() {
