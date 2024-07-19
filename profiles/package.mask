@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-07-18)
+# Explicit sync currently causes firefox to crash and may potentially
+# have other issues that need looking into. Feel free to unmask if
+# not affected, but please try 1.1.13 before reporting freezes or
+# crashes to Gentoo.
+# https://github.com/NVIDIA/egl-wayland/issues/117
+=gui-libs/egl-wayland-1.1.14
+
 # Hans de Graaff <graaff@gentoo.org> (2024-07-17)
 # Obsolete slot. Please use a newer slot instead. No reverse
 # dependencies left. Removal on 2024-08-17.
