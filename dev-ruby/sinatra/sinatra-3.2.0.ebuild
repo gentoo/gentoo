@@ -41,7 +41,7 @@ ruby_add_bdepend "doc? ( dev-ruby/yard )"
 
 all_ruby_prepare() {
 	sed -i \
-		-e "/require 'rack'/igem 'rack', '~> 2.2', '>= 2.2.4'" \
+		-e "/require 'rack'/igem 'rack', '~> 2.2', '>= 2.2.4'; gem 'rack-protection', '~> 3.0'" \
 		test/test_helper.rb || die
 
 	# Avoid spec broken by newer rack versions, already removed upstream.
