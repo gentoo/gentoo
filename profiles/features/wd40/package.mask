@@ -180,3 +180,4 @@ sys-fs/bcachefs-tools
 virtual/rust
 www-apps/radicale
 >=x11-themes/adwaita-icon-theme-3.36
+x11-themes/adwaita-icon-theme-legacy
