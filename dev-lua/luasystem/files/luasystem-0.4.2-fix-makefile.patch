@@ -1,0 +1,49 @@
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -50,7 +50,7 @@
+ # /usr/local/include/lua$(LUA_VERSION)
+ # where lua headers are found for linux builds
+ LUAINC_linux_base?=/usr/include
+-LUAINC_linux?=$(LUAINC_linux_base)/lua/$(LUA_VERSION)
++LUAINC_linux?=$(LUAINC_linux_base)/lua$(LUA_VERSION)
+ LUAPREFIX_linux?=/usr/local
+ CDIR_linux?=lib/lua/$(LUA_VERSION)
+ LDIR_linux?=share/lua/$(LUA_VERSION)
+@@ -144,8 +144,8 @@
+ CC_linux=gcc
+ DEF_linux=
+ CFLAGS_linux= -I$(LUAINC) $(DEF) -Wall -Wshadow -Wextra \
+-	-Wimplicit -O2 -ggdb3 -fpic -fvisibility=hidden
+-LDFLAGS_linux=-lrt -O -shared -fpic -o
++	-Wimplicit -fpic -fvisibility=hidden
++LDFLAGS_linux=-lrt -shared -fpic -o
+ LD_linux=gcc
+ 
+ #------
+@@ -208,7 +208,7 @@
+ #
+ CC=$(CC_$(PLAT))
+ DEF=$(DEF_$(PLAT))
+-CFLAGS=$(MYCFLAGS) $(CFLAGS_$(PLAT))
++CFLAGS=$(CFLAGS_$(PLAT)) $(MYCFLAGS)
+ LDFLAGS=$(MYLDFLAGS) $(LDFLAGS_$(PLAT))
+ LD=$(LD_$(PLAT))
+ LUAINC= $(LUAINC_$(PLAT))
+@@ -217,7 +217,7 @@
+ #------
+ # Objects
+ #
+-OBJS=core.$(O) compat.$(O) time.$(O) environment.$(O) random.$(O) term.$(O)
++OBJS=core.$(O) compat.$(O) time.$(O) environment.$(O) random.$(O) term.$(O) bitflags.$(O) wcwidth.$(O)
+ 
+ #------
+ # Targets
+@@ -248,7 +248,7 @@
+ all: $(SOLIB)
+ 
+ $(SOLIB): $(OBJS)
+-	$(LD) $(OBJS) $(LDFLAGS)$@
++	$(LD) $(OBJS) $(LDFLAGS) $@
+ 
+ install: all
+ 	$(INSTALL_DIR) $(INSTALL_TOP_LDIR)

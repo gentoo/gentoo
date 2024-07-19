@@ -31,7 +31,7 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-0.2.1_p0-fix-makefile.patch )
+PATCHES=( "${FILESDIR}"/${PN}-0.4.2-fix-makefile.patch )
 
 src_prepare() {
 	default
