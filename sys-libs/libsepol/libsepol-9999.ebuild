@@ -32,19 +32,22 @@ src_prepare() {
 	multilib_copy_sources
 }
 
+my_make() {
+	emake \
+		PREFIX="${EPREFIX}/usr" \
+		LIBDIR="\$(PREFIX)/$(get_libdir)" \
+		SHLIBDIR="${EPREFIX}/$(get_libdir)" \
+		"${@}"
+}
+
 multilib_src_compile() {
 	tc-export CC AR RANLIB
 
 	local -x CFLAGS="${CFLAGS} -fno-semantic-interposition"
 
-	emake \
-		LIBDIR="\$(PREFIX)/$(get_libdir)" \
-		SHLIBDIR="/$(get_libdir)"
+	my_make
 }
 
 multilib_src_install() {
-	emake DESTDIR="${D}" \
-		LIBDIR="\$(PREFIX)/$(get_libdir)" \
-		SHLIBDIR="/$(get_libdir)" \
-		install
+	my_make DESTDIR="${D}" install
 }
