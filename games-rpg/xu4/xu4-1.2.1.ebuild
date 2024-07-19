@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,11 +16,14 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-libs/boron
-	media-libs/allegro:5
+	media-libs/allegro:5[opengl]
 	media-libs/faun
+	media-libs/libglvnd
+	media-libs/libpng:=
+	sys-libs/zlib:=[minizip]
 "
-DEPEND="${RDEPEND}
-	app-arch/unzip"
+DEPEND="${RDEPEND}"
+BDEPEND="app-arch/unzip"
 
 PATCHES=(
 	"${FILESDIR}/1.2.1-system-minizip.patch"
