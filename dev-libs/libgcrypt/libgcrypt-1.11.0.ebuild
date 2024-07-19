@@ -146,9 +146,6 @@ multilib_src_configure() {
 		# after libgcrypt drops them (bug #468616)
 		--without-capabilities
 
-		# http://trac.videolan.org/vlc/ticket/620
-		$([[ ${CHOST} == *-darwin* ]] && echo "--disable-asm")
-
 		$(use asm || echo "--disable-asm")
 
 		GPG_ERROR_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-gpg-error-config"
