@@ -18,7 +18,7 @@ if [[ ${PV} == 9999 ]] ; then
 	S="${WORKDIR}/${P}"
 else
 	SRC_URI="https://github.com/SELinuxProject/setools/releases/download/${PV}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="~amd64 ~arm64 ~riscv"
 	S="${WORKDIR}/${PN}"
 fi
 
