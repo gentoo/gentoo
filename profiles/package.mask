@@ -292,12 +292,6 @@ net-misc/arpd
 sci-electronics/vbs
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-14)
-# EAPI=6, dead upstream website, Gentoo is last distribution to
-# package it.
-# Removal on 2024-07-14.  Bug #934232.
-sci-chemistry/xyza2pipe
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-14)
 # EAPI=6, not maintained in Gentoo for a long time. procheck is
 # fetch restricted, and the file you download from upstream
 # doesn't match size and manifests. aqua depends on procheck.
