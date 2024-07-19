@@ -33,6 +33,26 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-19)
+# EAPI=6 games. Feel free to drop any package after bumping it's EAPI.
+# Removal on 2024-08-18.  Bug #936299.
+games-arcade/sdl-sopwith
+games-arcade/syobon
+games-arcade/wop
+games-mud/crystal
+games-mud/gmudix
+games-mud/kildclient
+games-puzzle/color-lines
+games-puzzle/einstein
+games-puzzle/hangman
+games-puzzle/magiccube4d
+games-puzzle/scramble
+games-puzzle/zaz
+games-rpg/xu4
+games-server/monopd
+games-simulation/cannonsmash
+games-strategy/crimson
+
 # Ionen Wolkens <ionen@gentoo.org> (2024-07-18)
 # Explicit sync currently causes firefox to crash (firefox bug, should
 # be fixed in >=firefox-130 or so), and is still kind of experimental.
