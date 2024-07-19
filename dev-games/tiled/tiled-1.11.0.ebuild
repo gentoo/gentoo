@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs xdg-utils
+inherit toolchain-funcs xdg
 
 DESCRIPTION="A general purpose tile map editor"
 HOMEPAGE="https://www.mapeditor.org/"
