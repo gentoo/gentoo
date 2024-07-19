@@ -284,7 +284,6 @@ sci-astronomy/predict
 # fetch restricted, and the file you download from upstream
 # doesn't match size and manifests. aqua depends on procheck.
 # Removal on 2024-07-14.  Bugs #928067, #928068.
-sci-chemistry/aqua
 sci-chemistry/procheck
 
 # Viorel Munteanu <ceamac@gentoo.org> (2024-06-11)
