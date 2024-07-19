@@ -39,8 +39,14 @@ src_configure() {
 		qbs setup-toolchains gcc gcc || die
 		qbs config profiles.qt6.baseProfile gcc || die
 	fi
+}
 
-	qbs qbs.installPrefix:"/usr" projects.Tiled.installHeaders:true project.libDir:$(get_libdir) || die
+src_compile() {
+	qbs \
+		qbs.installPrefix:"/usr" \
+		projects.Tiled.installHeaders:true \
+		project.libDir:$(get_libdir) \
+		|| die
 }
 
 src_install() {
