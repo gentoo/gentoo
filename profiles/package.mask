@@ -48,7 +48,6 @@ games-puzzle/hangman
 games-puzzle/magiccube4d
 games-puzzle/scramble
 games-puzzle/zaz
-games-rpg/xu4
 games-server/monopd
 games-simulation/cannonsmash
 games-strategy/crimson
