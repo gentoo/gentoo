@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs xdg
+inherit toolchain-funcs multiprocessing xdg
 
 DESCRIPTION="A general purpose tile map editor"
 HOMEPAGE="https://www.mapeditor.org/"
@@ -59,12 +59,13 @@ src_compile() {
 	local QBS_CFLAGS=$(qbs_format_flags ${CFLAGS})
 	local QBS_CXXFLAGS=$(qbs_format_flags ${CXXFLAGS})
 
-	qbs \
+	qbs build \
 		qbs.installPrefix:"/usr" \
 		projects.Tiled.installHeaders:true \
 		project.libDir:$(get_libdir) \
 		modules.cpp.cFlags:${QBS_CFLAGS} \
 		modules.cpp.cxxFlags:${QBS_CXXFLAGS} \
+		-j $(get_makeopts_jobs) \
 		|| die
 }
 
