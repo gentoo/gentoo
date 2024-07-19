@@ -24,7 +24,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND=">=sys-libs/libsepol-${PV}:=
+DEPEND=">=sys-libs/libsepol-${PV}:=[static-libs(+)]
 	>=sys-libs/libselinux-${PV}:=
 	dev-libs/libpcre2:=
 	>=sys-libs/libcap-1.10-r10:="
