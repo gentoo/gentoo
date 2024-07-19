@@ -56,8 +56,10 @@ qbs_format_flags() {
 }
 
 src_compile() {
+	set -o noglob
 	local QBS_CFLAGS=$(qbs_format_flags ${CFLAGS})
 	local QBS_CXXFLAGS=$(qbs_format_flags ${CXXFLAGS})
+	set +o noglob
 
 	qbs build \
 		qbs.installPrefix:"/usr" \
