@@ -6,7 +6,7 @@ EAPI=8
 inherit meson-multilib optfeature
 
 DESCRIPTION="Video Acceleration (VA) API for Linux"
-HOMEPAGE="https://github.com/intel/libva"
+HOMEPAGE="https://01.org/linuxmedia/vaapi"
 
 if [[ ${PV} = *9999 ]] ; then
 	inherit git-r3
@@ -14,7 +14,7 @@ if [[ ${PV} = *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/intel/libva"
 else
 	SRC_URI="https://github.com/intel/libva/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~loong ~mips ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="MIT"
@@ -33,7 +33,10 @@ RDEPEND="
 		x11-libs/libxcb:=[${MULTILIB_USEDEP}]
 	)
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	X? ( x11-base/xorg-proto )
+"
 BDEPEND="
 	wayland? ( dev-util/wayland-scanner )
 	virtual/pkgconfig
