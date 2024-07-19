@@ -20,8 +20,6 @@ RESTRICT="test"
 BDEPEND=">=dev-ml/dune-3.12"
 DEPEND="
 	dev-ml/csexp:=[ocamlopt?]
-	~dev-ml/dyn-${PV}:=[ocamlopt?]
-	~dev-ml/stdune-${PV}:=[ocamlopt?]
 "
 RDEPEND="${DEPEND}"
 
@@ -30,5 +28,5 @@ src_configure() {
 }
 
 src_compile() {
-	dune-compile ${PN}
+	dune-compile ordering dyn stdune ${PN}
 }
