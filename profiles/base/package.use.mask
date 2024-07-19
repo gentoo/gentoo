@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# orbea <orbea@riseup.net> (2024-07-19)
+# The dynarec is only supported upstream for amd64, arm, arm64 and x86.
+games-emulation/rmg dynarec
+
 # Maciej Mrozowski <reavertm@gentoo.org> (2024-07-14)
 # Fails with newer ffmpeg, bug #831486
 # Not needed by reverse deps as of 2024-07-14. Re-enable when
