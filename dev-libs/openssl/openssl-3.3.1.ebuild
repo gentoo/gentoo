@@ -57,6 +57,8 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 PATCHES=(
+	# bug 936311, drop on next version bump
+	"${FILESDIR}"/${P}-riscv.patch
 )
 
 pkg_setup() {

@@ -1,0 +1,96 @@
+# https://bugs.gentoo.org/936311
+# Taken from https://github.com/openssl/openssl/pull/24486
+
+From b1dd4a8005cf172053d986c0dd85fd104f005307 Mon Sep 17 00:00:00 2001
+From: Hongren Zheng <i@zenithal.me>
+Date: Fri, 24 May 2024 14:12:47 +0800
+Subject: [PATCH] riscv: Fix cpuid_obj asm checks for sm4/sm3
+
+Similar to #22881 / #23752
+---
+ crypto/sm3/sm3_local.h                                | 2 +-
+ include/crypto/sm4_platform.h                         | 2 +-
+ providers/implementations/ciphers/cipher_sm4_ccm_hw.c | 2 +-
+ providers/implementations/ciphers/cipher_sm4_gcm_hw.c | 2 +-
+ providers/implementations/ciphers/cipher_sm4_hw.c     | 2 +-
+ providers/implementations/ciphers/cipher_sm4_xts_hw.c | 2 +-
+ 6 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/crypto/sm3/sm3_local.h b/crypto/sm3/sm3_local.h
+index d2845f9678967..a467cc98eb13e 100644
+--- a/crypto/sm3/sm3_local.h
++++ b/crypto/sm3/sm3_local.h
+@@ -39,7 +39,7 @@
+ #  define HWSM3_CAPABLE (OPENSSL_armcap_P & ARMV8_SM3)
+ void ossl_hwsm3_block_data_order(SM3_CTX *c, const void *p, size_t num);
+ # endif
+-# if defined(__riscv) && __riscv_xlen == 64
++# if defined(OPENSSL_CPUID_OBJ) && defined(__riscv) && __riscv_xlen == 64
+ #  include "crypto/riscv_arch.h"
+ #  define HWSM3_CAPABLE 1
+ void ossl_hwsm3_block_data_order(SM3_CTX *c, const void *p, size_t num);
+diff --git a/include/crypto/sm4_platform.h b/include/crypto/sm4_platform.h
+index 928dc17ff0838..4d70d291450a1 100644
+--- a/include/crypto/sm4_platform.h
++++ b/include/crypto/sm4_platform.h
+@@ -38,7 +38,7 @@ static inline int vpsm4_ex_capable(void)
+ #   define HWSM4_cbc_encrypt sm4_v8_cbc_encrypt
+ #   define HWSM4_ecb_encrypt sm4_v8_ecb_encrypt
+ #   define HWSM4_ctr32_encrypt_blocks sm4_v8_ctr32_encrypt_blocks
+-#  elif defined(__riscv) && __riscv_xlen == 64
++#  elif defined(OPENSSL_CPUID_OBJ) && defined(__riscv) && __riscv_xlen == 64
+ /* RV64 support */
+ #   include "riscv_arch.h"
+ /* Zvksed extension (vector crypto SM4). */
+diff --git a/providers/implementations/ciphers/cipher_sm4_ccm_hw.c b/providers/implementations/ciphers/cipher_sm4_ccm_hw.c
+index 34f0e751e007d..293bb69d64272 100644
+--- a/providers/implementations/ciphers/cipher_sm4_ccm_hw.c
++++ b/providers/implementations/ciphers/cipher_sm4_ccm_hw.c
+@@ -59,7 +59,7 @@ static const PROV_CCM_HW ccm_sm4 = {
+     ossl_ccm_generic_gettag
+ };
+ 
+-#if defined(__riscv) && __riscv_xlen == 64
++#if defined(OPENSSL_CPUID_OBJ) && defined(__riscv) && __riscv_xlen == 64
+ # include "cipher_sm4_ccm_hw_rv64i.inc"
+ #else
+ const PROV_CCM_HW *ossl_prov_sm4_hw_ccm(size_t keybits)
+diff --git a/providers/implementations/ciphers/cipher_sm4_gcm_hw.c b/providers/implementations/ciphers/cipher_sm4_gcm_hw.c
+index 06ca450782ff2..e3b4e9f588807 100644
+--- a/providers/implementations/ciphers/cipher_sm4_gcm_hw.c
++++ b/providers/implementations/ciphers/cipher_sm4_gcm_hw.c
+@@ -89,7 +89,7 @@ static const PROV_GCM_HW sm4_gcm = {
+     ossl_gcm_one_shot
+ };
+ 
+-#if defined(__riscv) && __riscv_xlen == 64
++#if defined(OPENSSL_CPUID_OBJ) && defined(__riscv) && __riscv_xlen == 64
+ # include "cipher_sm4_gcm_hw_rv64i.inc"
+ #else
+ const PROV_GCM_HW *ossl_prov_sm4_hw_gcm(size_t keybits)
+diff --git a/providers/implementations/ciphers/cipher_sm4_hw.c b/providers/implementations/ciphers/cipher_sm4_hw.c
+index c4f2f97cccd8d..70dc66ffae233 100644
+--- a/providers/implementations/ciphers/cipher_sm4_hw.c
++++ b/providers/implementations/ciphers/cipher_sm4_hw.c
+@@ -134,7 +134,7 @@ const PROV_CIPHER_HW *ossl_prov_cipher_hw_sm4_##mode(size_t keybits)           \
+     return &sm4_##mode;                                                        \
+ }
+ 
+-#if defined(__riscv) && __riscv_xlen == 64
++#if defined(OPENSSL_CPUID_OBJ) && defined(__riscv) && __riscv_xlen == 64
+ # include "cipher_sm4_hw_rv64i.inc"
+ #else
+ /* The generic case */
+diff --git a/providers/implementations/ciphers/cipher_sm4_xts_hw.c b/providers/implementations/ciphers/cipher_sm4_xts_hw.c
+index 6cf58e851f5d4..423598317d217 100644
+--- a/providers/implementations/ciphers/cipher_sm4_xts_hw.c
++++ b/providers/implementations/ciphers/cipher_sm4_xts_hw.c
+@@ -89,7 +89,7 @@ static const PROV_CIPHER_HW sm4_generic_xts = {
+     cipher_hw_sm4_xts_copyctx
+ };
+ 
+-#if defined(__riscv) && __riscv_xlen == 64
++#if defined(OPENSSL_CPUID_OBJ) && defined(__riscv) && __riscv_xlen == 64
+ # include "cipher_sm4_xts_hw_rv64i.inc"
+ #else
+ const PROV_CIPHER_HW *ossl_prov_cipher_hw_sm4_xts(size_t keybits)
