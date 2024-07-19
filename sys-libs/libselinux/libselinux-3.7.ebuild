@@ -141,7 +141,7 @@ multilib_src_install() {
 		done
 	fi
 
-	use static-libs || rm "${D}"/usr/lib*/*.a || die
+	use static-libs || rm "${ED}"/usr/$(get_libdir)/*.a || die
 }
 
 pkg_postinst() {
