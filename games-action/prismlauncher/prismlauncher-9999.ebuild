@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake java-pkg-2 optfeature xdg
+inherit cmake java-pkg-2 optfeature toolchain-funcs xdg
 
 DESCRIPTION="A custom, open source Minecraft launcher"
 HOMEPAGE="https://prismlauncher.org/ https://github.com/PrismLauncher/PrismLauncher"
@@ -15,8 +15,10 @@ if [[ ${PV} == 9999 ]]; then
 		https://github.com/PrismLauncher/PrismLauncher
 	"
 
-	# TODO: Add tomlplusplus as a system library, like quazip
-	EGIT_SUBMODULES=( '*' '-libraries/quazip' '-libraries/filesystem' '-libraries/zlib' '-libraries/extra-cmake-modules' '-libraries/cmark' )
+	EGIT_SUBMODULES=(
+		'*' '-libraries/cmark' '-libraries/extra-cmake-modules' '-libraries/filesystem' '-libraries/quazip'
+		'-libraries/tomlplusplus' '-libraries/zlib'
+	)
 else
 	MY_PN="PrismLauncher"
 
@@ -34,16 +36,12 @@ fi
 # GPL-3 for PolyMC (PrismLauncher is forked from it) and Prism itself
 # Apache-2.0 for MultiMC (PolyMC is forked from it)
 # LGPL-3+ for libnbtplusplus
-# MIT for tomlplusplus
 # See the rest of PrismLauncher's libraries at https://github.com/PrismLauncher/PrismLauncher/tree/develop/libraries
-LICENSE="Apache-2.0 BSD BSD-2 GPL-2+ GPL-3 ISC LGPL-2.1+ LGPL-3+ MIT"
+LICENSE="Apache-2.0 BSD BSD-2 GPL-2+ GPL-3 ISC LGPL-2.1+ LGPL-3+"
 
 SLOT="0"
 
-IUSE="debug lto qt6 test"
-REQUIRED_USE="
-	lto? ( !debug )
-"
+IUSE="qt6 test"
 
 RESTRICT="!test? ( test )"
 
@@ -74,26 +72,28 @@ COMMON_DEPENDS="
 	!qt6? ( >=dev-libs/quazip-1.3:=[qt5(+)] )
 	 qt6? ( >=dev-libs/quazip-1.3:=[qt6(-)] )
 
-	app-text/cmark
+	app-text/cmark:=
 	dev-cpp/tomlplusplus
 	sys-libs/zlib
+"
+
+BDEPEND="
+	app-text/scdoc
+	kde-frameworks/extra-cmake-modules:0
+	virtual/pkgconfig
 "
 
 # The gulrak-filesystem dependency is only needed at build time, because we don't actually use it on Linux,
 # only on legacy macOS. Still, we need it present at build time to appease CMake, and having it like this
 # makes it easier to maintain than patching the CMakeLists file directly.
-BDEPEND="
-	app-text/scdoc
-	dev-cpp/gulrak-filesystem
-	kde-frameworks/extra-cmake-modules:0
-"
-
 DEPEND="
 	${COMMON_DEPENDS}
+	dev-cpp/gulrak-filesystem
 	media-libs/libglvnd
 	>=virtual/jdk-1.8.0:*
 "
 
+# QtSvg imageplugin needed at runtime for svg icons. Its used via QIcon.
 # At run-time we don't depend on JDK, only JRE
 # And we need more than just the GL headers
 RDEPEND="
@@ -122,15 +122,9 @@ src_prepare() {
 		elog "and select it with \"eselect java\", then recompile ${PN}."
 		eapply "${FILESDIR}/${PN}-8.2-openjdk21.patch"
 	fi
-
-	sed -i -e 's/-Werror//' CMakeLists.txt || die 'Failed to remove -Werror via sed'
-
-	# Prevent conflicting with the user's flags
-	# See https://bugs.gentoo.org/848765 and https://bugs.gentoo.org/911858 for more info
-	sed -i -e "/CMAKE_CXX_FLAGS_RELEASE/d" CMakeLists.txt || die 'Failed to remove "CMAKE_CXX_FLAGS_RELEASE" from CMakeLists via sed'
 }
 
-src_configure(){
+src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX="/usr"
 		# Resulting binary is named prismlauncher
@@ -138,20 +132,14 @@ src_configure(){
 		-DLauncher_BUILD_PLATFORM="Gentoo"
 		-DLauncher_QT_VERSION_MAJOR=$(usex qt6 6 5)
 
-		-DENABLE_LTO=$(usex lto)
+		-DENABLE_LTO=$(tc-is-lto)
 		-DBUILD_TESTING=$(usex test)
 	)
-
-	if use debug; then
-		CMAKE_BUILD_TYPE=Debug
-	else
-		CMAKE_BUILD_TYPE=Release
-	fi
 
 	cmake_src_configure
 }
 
-src_compile(){
+src_compile() {
 	cmake_src_compile
 }
 
