@@ -286,12 +286,6 @@ sci-astronomy/predict
 net-misc/arpd
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-14)
-# EAPI=6, many compilation issues, upstream is gone, not maintained for
-# many years.
-# Removal on 2024-07-14.  Bugs #934240.
-sci-electronics/vbs
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-14)
 # EAPI=6, not maintained in Gentoo for a long time. procheck is
 # fetch restricted, and the file you download from upstream
 # doesn't match size and manifests. aqua depends on procheck.
