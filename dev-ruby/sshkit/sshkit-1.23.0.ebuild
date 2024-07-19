@@ -33,6 +33,7 @@ all_ruby_prepare() {
 		-e '/docker/I s:^:#:' \
 		-e '1irequire "pathname"' \
 		-i test/helper.rb || die
+	rm -f test/support/docker_wrapper.rb || die
 
 	# Fix assumption about parent directory name
 	sed -i -e '/assert_match/ s/sshkit/sshkit.*/' test/unit/test_deprecation_logger.rb || die
