@@ -311,11 +311,6 @@ sci-chemistry/namd
 sci-chemistry/aqua
 sci-chemistry/procheck
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-14)
-# EAPI=6, maintainer-needed, no reverse dependencies.
-# Removal on 2024-07-14.  Bugs #934227, #898840.
-www-misc/log-toolkit
-
 # Viorel Munteanu <ceamac@gentoo.org> (2024-06-11)
 # dev-php/pear, dev-php/PEAR-* and their reverse dependencies: mask for removal
 # in 30 days.
