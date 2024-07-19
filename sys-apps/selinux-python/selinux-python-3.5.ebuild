@@ -31,7 +31,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND=">=sys-libs/libselinux-${PV}:=[python]
 	>=sys-libs/libsemanage-${PV}:=[python(+)]
-	>=sys-libs/libsepol-${PV}:=
+	>=sys-libs/libsepol-${PV}:=[static-libs(+)]
 	>=app-admin/setools-4.2.0[${PYTHON_USEDEP}]
 	>=sys-process/audit-1.5.1[python,${PYTHON_USEDEP}]
 	${PYTHON_DEPS}"
