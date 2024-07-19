@@ -41,11 +41,30 @@ src_configure() {
 	fi
 }
 
+qbs_format_flags() {
+	local result="["
+
+	for flag in $@; do
+		if [[ ${result} != "[" ]]; then
+			result="${result},"
+		fi
+		result="${result}\"${flag}\""
+	done
+
+	result="${result}]"
+	echo ${result}
+}
+
 src_compile() {
+	local QBS_CFLAGS=$(qbs_format_flags ${CFLAGS})
+	local QBS_CXXFLAGS=$(qbs_format_flags ${CXXFLAGS})
+
 	qbs \
 		qbs.installPrefix:"/usr" \
 		projects.Tiled.installHeaders:true \
 		project.libDir:$(get_libdir) \
+		modules.cpp.cFlags:${QBS_CFLAGS} \
+		modules.cpp.cxxFlags:${QBS_CXXFLAGS} \
 		|| die
 }
 
