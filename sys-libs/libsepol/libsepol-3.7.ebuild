@@ -23,6 +23,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0/2"
+IUSE="static-libs"
 
 # tests are not meant to be run outside of the full SELinux userland repo
 RESTRICT="test"
@@ -50,4 +51,5 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	my_make DESTDIR="${D}" install
+	use static-libs || rm "${ED}"/usr/$(get_libdir)/*.a || die
 }
