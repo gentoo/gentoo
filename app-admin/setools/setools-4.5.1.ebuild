@@ -39,6 +39,8 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 BDEPEND=">=dev-python/cython-0.29.14[${PYTHON_USEDEP}]
 	test? (
+		dev-python/PyQt6[gui,testlib,widgets,${PYTHON_USEDEP}]
+		dev-python/pytest-qt[${PYTHON_USEDEP}]
 		sys-apps/checkpolicy
 	)"
 
