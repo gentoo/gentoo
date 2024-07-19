@@ -5,7 +5,7 @@ EAPI=8
 
 inherit go-module
 
-LONG_VERSION="${PV}+build30044+noble"
+LONG_VERSION="${PV}+build30063+noble"
 DESCRIPTION="Official golang implementation of the Ethereum protocol"
 HOMEPAGE="https://github.com/ethereum/go-ethereum"
 SRC_URI="https://ppa.launchpadcontent.net/ethereum/ethereum/ubuntu/pool/main/e/ethereum/ethereum_${LONG_VERSION}.tar.xz -> ${P}.tar.xz"
