@@ -80,7 +80,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.4667-flags.patch
 	"${FILESDIR}"/${PN}-1.7.5232-cubeb-automagic.patch
 	"${FILESDIR}"/${PN}-1.7.5835-vanilla-shaderc.patch
-	"${FILESDIR}"/${PN}-1.7.5855-no-libbacktrace.patch
 	"${FILESDIR}"/${PN}-1.7.5835-musl-header.patch
 	"${FILESDIR}"/${PN}-1.7.5913-musl-cache.patch
 )
@@ -117,8 +116,9 @@ src_configure() {
 		-DBUILD_SHARED_LIBS=no
 		-DDISABLE_ADVANCE_SIMD=yes
 		-DENABLE_TESTS=$(usex test)
+		-DUSE_BACKTRACE=no # not packaged (bug #885471)
 		-DUSE_LINKED_FFMPEG=yes
-		-DUSE_VTUNE=no
+		-DUSE_VTUNE=no # not packaged
 		-DUSE_VULKAN=$(usex vulkan)
 
 		# note that upstream hardly support native wayland, may or may not work
