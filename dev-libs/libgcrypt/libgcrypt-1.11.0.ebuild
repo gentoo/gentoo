@@ -147,7 +147,7 @@ multilib_src_configure() {
 		--without-capabilities
 
 		# http://trac.videolan.org/vlc/ticket/620
-		$([[ ${CHOST} == *86*-darwin* ]] && echo "--disable-asm")
+		$([[ ${CHOST} == *-darwin* ]] && echo "--disable-asm")
 
 		$(use asm || echo "--disable-asm")
 
