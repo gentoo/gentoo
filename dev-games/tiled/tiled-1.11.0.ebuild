@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit xdg-utils
+inherit toolchain-funcs xdg-utils
 
 DESCRIPTION="A general purpose tile map editor"
 HOMEPAGE="https://www.mapeditor.org/"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/mapeditor/tiled/archive/v${PV}/${P}.tar.gz"
 LICENSE="BSD BSD-2 GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="clang examples"
+IUSE="examples"
 
 RDEPEND="
 	app-arch/zstd
@@ -32,7 +32,7 @@ src_configure() {
 	qbs setup-qt /usr/bin/qmake6 qt6 || die
 	qbs config defaultProfile qt6 || die
 
-	if use clang; then
+	if $(tc-is-clang); then
 		qbs setup-toolchains clang clang || die
 		qbs config profiles.qt6.baseProfile clang || die
 	else

@@ -12,8 +12,5 @@
 	<upstream>
 		<remote-id type="github">bjorn/tiled</remote-id>
 	</upstream>
-	<use>
-		<flag name="clang">Compile with clang</flag>
-	</use>
 </pkgmetadata>
 
