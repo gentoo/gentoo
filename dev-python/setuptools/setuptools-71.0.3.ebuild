@@ -98,18 +98,14 @@ python_test() {
 
 	local EPYTEST_DESELECT=(
 		# network
-		# TODO: see if PRE_BUILT_SETUPTOOLS_* helps
 		setuptools/tests/test_build_meta.py::test_legacy_editable_install
 		setuptools/tests/test_distutils_adoption.py
 		setuptools/tests/test_editable_install.py
-		setuptools/tests/test_setuptools.py::test_its_own_wheel_does_not_contain_tests
-		setuptools/tests/test_virtualenv.py::test_clean_env_install
 		setuptools/tests/test_virtualenv.py::test_no_missing_dependencies
 		setuptools/tests/test_virtualenv.py::test_test_command_install_requirements
 		# TODO
 		setuptools/tests/config/test_setupcfg.py::TestConfigurationReader::test_basic
 		setuptools/tests/config/test_setupcfg.py::TestConfigurationReader::test_ignore_errors
-		setuptools/tests/test_extern.py::test_distribution_picklable
 		# expects bundled deps in virtualenv
 		setuptools/tests/config/test_apply_pyprojecttoml.py::TestMeta::test_example_file_in_sdist
 		setuptools/tests/config/test_apply_pyprojecttoml.py::TestMeta::test_example_file_not_in_wheel
@@ -117,11 +113,6 @@ python_test() {
 		setuptools/tests/test_easy_install.py::TestSetupRequires::test_setup_requires_with_allow_hosts
 		# TODO, probably some random package
 		setuptools/tests/config/test_setupcfg.py::TestOptions::test_cmdclass
-		# Internet, sigh
-		setuptools/tests/test_integration.py
-		# flaky
-		setuptools/tests/test_easy_install.py::TestSetupRequires::test_setup_requires_with_transitive_extra_dependency
-		setuptools/tests/test_easy_install.py::TestSetupRequires::test_setup_requires_with_distutils_command_dep
 		# broken by unbundling
 		setuptools/tests/test_setuptools.py::test_wheel_includes_vendored_metadata
 	)
