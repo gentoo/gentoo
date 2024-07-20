@@ -30,7 +30,8 @@ fi
 LICENSE="LGPL-2.1 utils? ( GPL-2 )"
 SLOT="3"
 IUSE="+debug python test utils"
-# Tests require privileges
+# Tests fail w/ sandboxes
+# https://github.com/thom311/libnl/issues/361
 RESTRICT="!test? ( test ) test"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )"
