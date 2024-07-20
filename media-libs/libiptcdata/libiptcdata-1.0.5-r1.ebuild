@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..13} )
+PYTHON_COMPAT=( python3_{10..13} )
 DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
@@ -25,6 +25,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	dev-build/gtk-doc-am
+	virtual/pkgconfig
 	doc? ( >=dev-util/gtk-doc-1 )
 	nls? ( >=sys-devel/gettext-0.13.1 )
 	python? (
