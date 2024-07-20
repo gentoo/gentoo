@@ -235,12 +235,6 @@ media-video/vdr2jpeg
 games-util/xgame
 games-util/xgame-gtk2
 
-# James Le Cuirot <chewi@gentoo.org> (2024-06-20)
-# Apparently a good game, but you cannot buy the full Linux version any more.
-# Get the HD version from Steam or the Windows original from GOG instead.
-# Removal on 2024-07-20.  Bug #934637.
-games-strategy/majesty-demo
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-16)
 # No release since 2021-06-10 and effectively declared unmaintained by
 # upstream since then; now conflicting with Plasma 6 by pulling in old

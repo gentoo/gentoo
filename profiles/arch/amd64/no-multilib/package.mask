@@ -80,7 +80,6 @@ games-server/etqw-ded
 games-strategy/darwinia
 games-strategy/dominions2
 games-strategy/knights-demo
-games-strategy/majesty-demo
 games-strategy/spaz
 media-sound/aucdtect
 media-video/binkplayer
