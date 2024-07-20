@@ -4,7 +4,7 @@
 EAPI=8
 
 LLVM_COMPAT=( 18 )
-inherit cmake llvm-r1
+inherit cmake flag-o-matic llvm-r1
 
 MY_P=llvm-project-rocm-${PV}
 components=( "amd/device-libs" )
@@ -67,12 +67,17 @@ src_prepare() {
 }
 
 src_configure() {
+	# Do not trust CMake with autoselecting Clang, as it autoselects the latest one
+	# producing too modern LLVM bitcode and causing linker errors in other packages.
+	# Clean up unsupported flags for the switched compiler, see #936099
+	local -x CC="$(get_llvm_prefix)/bin/clang"
+	local -x CXX="$(get_llvm_prefix)/bin/clang++"
+	strip-unsupported-flags
+
 	local mycmakeargs=(
 		-DLLVM_DIR="$(get_llvm_prefix)"
 	)
-	# do not trust CMake with autoselecting Clang, as it autoselects the latest one
-	# producing too modern LLVM bitcode and causing linker errors in other packages
-	CC="$(get_llvm_prefix)/bin/clang" CXX="$(get_llvm_prefix)/bin/clang++" cmake_src_configure
+	cmake_src_configure
 }
 
 src_install() {
