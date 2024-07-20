@@ -8,7 +8,7 @@
   <use>
     <flag name="cmyk">Include support for CMYK rasterization</flag>
     <flag name="i18n">Enable support non-UTF8 national charsets</flag>
-    <flag name="icons">Generate desktop PNG icons using <pkg>media-gfx/inkscape</pkg></flag>
+    <flag name="icons">Generate desktop PNG icons using rsvg-convert from <pkg>gnome-base/librsvg</pkg></flag>
     <flag name="libpaper">Use <pkg>app-text/libpaper</pkg> to get paper preferences</flag>
     <flag name="metric">Use A4 instead of US Letter paper size by default for PostScript output. This option has effect only if libpaper USE flag is disabled</flag>
     <flag name="opi">Include support for OPI (Open Prepress Interface) comments</flag>
