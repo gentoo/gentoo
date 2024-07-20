@@ -33,6 +33,8 @@ BDEPEND="dev-build/rocm-cmake
 	>=dev-build/cmake-3.22"
 
 src_configure() {
+	rocm_use_hipcc
+
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=ON
 		-DAMDGPU_TARGETS="$(get_amdgpu_flags)"
@@ -42,7 +44,7 @@ src_configure() {
 		-DBUILD_BENCHMARK=$(usex benchmark ON OFF)
 	)
 
-	CXX=hipcc cmake_src_configure
+	cmake_src_configure
 }
 
 src_test() {
