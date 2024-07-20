@@ -1,13 +1,13 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit autotools eapi7-ver flag-o-matic virtualx
+inherit autotools flag-o-matic virtualx
 
 POVRAY_MAJOR_VER=$(ver_cut 1-3)
 POVRAY_MINOR_VER=$(ver_cut 4)
-if [ -n "$POVRAY_MINOR_VER" ]; then
+if [[ -n ${POVRAY_MINOR_VER} ]]; then
 	POVRAY_MINOR_VER=${POVRAY_MINOR_VER/rc/RC}
 	MY_PV="${POVRAY_MAJOR_VER}.${POVRAY_MINOR_VER}"
 else
@@ -18,8 +18,9 @@ DESCRIPTION="The Persistence of Vision Raytracer"
 HOMEPAGE="https://www.povray.org/"
 SRC_URI="https://github.com/POV-Ray/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~soap/distfiles/${P}_p20160914-fix-c++14.patch.bz2"
+S=${WORKDIR}/${PN}-${MY_PV}
 
-LICENSE="AGPL-3"
+LICENSE="AGPL-3+ CC-BY-SA-3.0 CC-BY-NC-SA-2.5"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="debug +io-restrictions tiff X"
@@ -30,12 +31,10 @@ DEPEND="
 	media-libs/libpng:=
 	sys-libs/zlib
 	tiff? ( media-libs/tiff:= )
-	X? ( media-libs/libsdl )"
+	X? ( media-libs/libsdl )
+"
 RDEPEND="${DEPEND}"
-DEPEND="${DEPEND}
-	dev-build/autoconf-archive"
-
-S=${WORKDIR}/${PN}-${MY_PV}
+BDEPEND="dev-build/autoconf-archive"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-user-conf.patch
@@ -107,25 +106,26 @@ src_configure() {
 	# but the code compiles using incorrect [default] paths
 	# (based on /usr/local...), so povray will not find the system
 	# config files without the following fix:
-	append-cppflags -DPOVLIBDIR=\\\""${EROOT}"usr/share/${PN}\\\" -DPOVCONFDIR=\\\""${EROOT}"etc/${PN}\\\"
+	append-cppflags -DPOVLIBDIR=\\\""${EROOT}"/usr/share/${PN}\\\" -DPOVCONFDIR=\\\""${EROOT}"/etc/${PN}\\\"
 
 	# TODO: Restore OpenEXR if upstream start to support OpenEXR 3/imath
-	econf \
-		COMPILED_BY="Portage (Gentoo $(uname)) on $(hostname -f)" \
-		$(use_enable debug) \
-		$(use_enable io-restrictions) \
-		--without-openexr \
-		$(use_with tiff libtiff "${EPREFIX}/usr/$(get_libdir)") \
-		$(use_with X libsdl "${EPREFIX}/usr/$(get_libdir)") \
-		$(use_with X x "${EPREFIX}/usr/$(get_libdir)") \
-		$(usex tiff "" "NON_REDISTRIBUTABLE_BUILD=yes") \
-		--with-boost-libdir="${EPREFIX}/usr/$(get_libdir)" \
-		--without-libmkl \
-		--disable-pipe \
-		--disable-static \
-		--disable-strip \
-		--disable-optimiz \
+	local myeconfargs=(
+		COMPILED_BY="Portage (Gentoo $(uname)) on $(hostname -f)"
+		$(use_enable debug)
+		$(use_enable io-restrictions)
+		--without-openexr
+		$(use_with tiff libtiff "${EPREFIX}/usr/$(get_libdir)")
+		$(use_with X libsdl "${EPREFIX}/usr/$(get_libdir)")
+		$(use_with X x "${EPREFIX}/usr/$(get_libdir)")
+		$(usex tiff "" "NON_REDISTRIBUTABLE_BUILD=yes")
+		--with-boost-libdir="${EPREFIX}/usr/$(get_libdir)"
+		--without-libmkl
+		--disable-pipe
+		--disable-strip
+		--disable-optimiz
 		--disable-optimiz-arch
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_test() {
@@ -138,11 +138,11 @@ pkg_preinst() {
 	# This way, they can be treated by CONFIG_PROTECT as normal.
 	local conf_file version_dir
 	for conf_file in "${ED}"/etc/"${PN}"/*; do
-		if [ ! -e "${EROOT}etc/${PN}/${conf_file}" ]; then
-			for version_dir in $(echo "${EROOT}"etc/"${PN}"/* | grep "^[0-9]" | sort -rn); do
-				if [ -e "${EROOT}etc/${PN}/${version_dir}/${conf_file}" ]; then
-					mv "${EROOT}etc/${PN}/${version_dir}/${conf_file}" "${EROOT}etc/${PN}" || die
-					elog "Note: ${conf_file} moved from ${EROOT}etc/povray/${version_dir}/ to ${EROOT}etc/povray/"
+		if [[ ! -e "${EROOT}/etc/${PN}/${conf_file}" ]]; then
+			for version_dir in $(echo "${EROOT}"/etc/"${PN}"/* | grep "^[0-9]" | sort -rn); do
+				if [ -e "${EROOT}/etc/${PN}/${version_dir}/${conf_file}" ]; then
+					mv "${EROOT}/etc/${PN}/${version_dir}/${conf_file}" "${EROOT}/etc/${PN}" || die
+					elog "Note: ${conf_file} moved from ${EROOT}/etc/povray/${version_dir}/ to ${EROOT}/etc/povray/"
 					break
 				fi
 			done
