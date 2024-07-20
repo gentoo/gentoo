@@ -43,6 +43,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.1.1-enable-examples.patch
 	"${FILESDIR}"/${PN}-6.1.1-fix-clang-17-no-offload-uniform-block.patch
 	"${FILESDIR}"/${PN}-6.1.1-no-git-no-hash.patch
+	"${FILESDIR}"/${PN}-6.1.1-fix-libcxx.patch
 )
 
 src_prepare() {
@@ -51,6 +52,8 @@ src_prepare() {
 }
 
 src_configure() {
+	rocm_use_hipcc
+
 	if ! use debug; then
 		append-cflags "-DNDEBUG"
 		append-cxxflags "-DNDEBUG"
@@ -73,7 +76,7 @@ src_configure() {
 		)
 	fi
 
-	CXX=hipcc cmake_src_configure
+	cmake_src_configure
 }
 
 src_test() {
