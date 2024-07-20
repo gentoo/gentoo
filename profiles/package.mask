@@ -241,11 +241,6 @@ games-util/xgame-gtk2
 # Removal on 2024-07-20.  Bug #934637.
 games-strategy/majesty-demo
 
-# Hans de Graaff <graaff@gentoo.org> (2024-06-17)
-# Obsolete slot with failing tests. Use the newer slot instead. No
-# reverse dependencies. Masked for removal on 2024-07-17.
-dev-ruby/net-imap:0
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-16)
 # No release since 2021-06-10 and effectively declared unmaintained by
 # upstream since then; now conflicting with Plasma 6 by pulling in old
