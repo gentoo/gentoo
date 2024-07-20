@@ -49,6 +49,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.1.1-no-arch.patch
 	"${FILESDIR}"/${PN}-6.1.1-no-git.patch
 	"${FILESDIR}"/${PN}-6.1.1-clang-19.patch
+	"${FILESDIR}"/${PN}-6.1.1-fix-libcxx.patch
 )
 
 python_check_deps() {
@@ -83,6 +84,8 @@ src_prepare() {
 }
 
 src_configure() {
+	rocm_use_hipcc
+
 	local targets="$(get_amdgpu_flags)"
 	local build_with_tensile=$([ "${AMDGPU_TARGETS[@]}" = "" ] && echo OFF || echo ON )
 
@@ -95,7 +98,7 @@ src_configure() {
 
 	use test && mycmakeargs+=( -DBUILD_FORTRAN_CLIENTS=ON )
 
-	CXX=hipcc cmake_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
