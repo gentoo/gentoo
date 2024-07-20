@@ -91,6 +91,7 @@ dev-libs/botan -cpu_flags_arm_neon
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
 # sys-apps/s6-linux-init has not been tested on this arch
 sys-apps/openrc s6
+sys-apps/openrc-navi s6
 
 # Jon Janzen <jon@jonjanzen.com> (2023-09-11)
 # librttopo has not been tested on this arch
