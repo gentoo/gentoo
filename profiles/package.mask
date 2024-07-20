@@ -38,12 +38,6 @@
 # Removal on 2024-08-19.  Bugs #936398, #908957, #908959.
 media-video/raspberrypi-omxplayer
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-20)
-# EAPI=6 package, no reverse dependencies, not maintained in Gentoo for
-# a long time. Has multiple issues with musl.
-# Removal on 2024-08-19.  Bugs #936397, #715284, #832000.
-mail-filter/couriersrs
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-07-19)
 # EAPI=6 games. Feel free to drop any package after bumping it's EAPI.
 # Removal on 2024-08-18.  Bug #936299.
