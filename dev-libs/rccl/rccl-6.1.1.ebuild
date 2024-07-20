@@ -48,6 +48,8 @@ src_prepare() {
 }
 
 src_configure() {
+	rocm_use_hipcc
+
 	# https://github.com/llvm/llvm-project/issues/71711 - fix issue of clang
 	append-ldflags -Wl,-z,noexecstack
 
@@ -59,7 +61,7 @@ src_configure() {
 		-Wno-dev
 	)
 
-	CXX=hipcc cmake_src_configure
+	cmake_src_configure
 }
 
 src_test() {
