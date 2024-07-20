@@ -51,6 +51,8 @@ src_prepare() {
 }
 
 src_configure() {
+	rocm_use_hipcc
+
 	if ! use debug; then
 		append-cflags "-DNDEBUG"
 		append-cxxflags "-DNDEBUG"
@@ -73,7 +75,7 @@ src_configure() {
 		)
 	fi
 
-	CXX=hipcc cmake_src_configure
+	cmake_src_configure
 }
 
 src_test() {
