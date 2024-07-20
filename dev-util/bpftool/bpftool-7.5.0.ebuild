@@ -11,14 +11,14 @@ DESCRIPTION="Tool for inspection and simple manipulation of eBPF programs and ma
 HOMEPAGE="https://kernel.org/"
 
 # Use PV to indicate the full kernel version
-PV=6.10
-LINUX_V="${PV:0:1}.x"
-LINUX_VER=$(ver_cut 1-2)
+MY_PV=6.10
+LINUX_V="${MY_PV:0:1}.x"
+LINUX_VER=$(ver_cut 1-2 ${MY_PV})
 
 LINUX_SOURCES="linux-${LINUX_VER}.tar.xz"
 SRC_URI+="https://www.kernel.org/pub/linux/kernel/v${LINUX_V}/${LINUX_SOURCES}"
 
-LINUX_PATCH=patch-${PV}.xz
+LINUX_PATCH=patch-${MY_PV}.xz
 SRC_URI+=" https://www.kernel.org/pub/linux/kernel/v${LINUX_V}/${LINUX_PATCH}"
 
 S_K="${WORKDIR}/linux-${LINUX_VER}"
