@@ -241,12 +241,6 @@ games-util/xgame-gtk2
 # Removal on 2024-07-20.  Bug #934637.
 games-strategy/majesty-demo
 
-# Jakov Smolić <jsmolic@gentoo.org> (2024-06-18)
-# Outdated by several versions, very difficult to package due to the
-# complicated Cargo dependency management.
-# Removal on 2024-07-18. Bug #922378.
-app-emulation/cloud-hypervisor
-
 # Hans de Graaff <graaff@gentoo.org> (2024-06-17)
 # Obsolete slot with failing tests. Use the newer slot instead. No
 # reverse dependencies. Masked for removal on 2024-07-17.
