@@ -1,0 +1,26 @@
+diff -Naur a/src/drivers/driver.h b/src/drivers/driver.h
+--- a/src/drivers/driver.h	2022-01-16 15:51:29.000000000 -0500
++++ b/src/drivers/driver.h	2023-08-30 10:21:22.500282579 -0400
+@@ -2027,6 +2027,8 @@
+ #define WPA_DRIVER_FLAGS2_OCV			0x0000000000000080ULL
+ /** Driver expects user space implementation of SME in AP mode */
+ #define WPA_DRIVER_FLAGS2_AP_SME		0x0000000000000100ULL
++/** Driver supports SAE authentication offload */
++#define WPA_DRIVER_FLAGS2_SAE_OFFLOAD		0x0000000000008000ULL
+ 	u64 flags2;
+ 
+ #define FULL_AP_CLIENT_STATE_SUPP(drv_flags) \
+diff -Naur a/src/drivers/driver_nl80211_capa.c b/src/drivers/driver_nl80211_capa.c
+--- a/src/drivers/driver_nl80211_capa.c	2022-01-16 15:51:29.000000000 -0500
++++ b/src/drivers/driver_nl80211_capa.c	2023-08-30 10:20:18.666889544 -0400
+@@ -595,6 +595,10 @@
+ 		capa->flags |= WPA_DRIVER_FLAGS_4WAY_HANDSHAKE_8021X;
+ 
+ 	if (ext_feature_isset(ext_features, len,
++			      NL80211_EXT_FEATURE_SAE_OFFLOAD))
++		capa->flags2 |= WPA_DRIVER_FLAGS2_SAE_OFFLOAD;
++
++	if (ext_feature_isset(ext_features, len,
+ 			      NL80211_EXT_FEATURE_MFP_OPTIONAL))
+ 		capa->flags |= WPA_DRIVER_FLAGS_MFP_OPTIONAL;
+ 
