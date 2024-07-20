@@ -25,11 +25,13 @@ RDEPEND="dev-util/hip
 DEPEND="${RDEPEND}"
 
 src_configure() {
+	rocm_use_hipcc
+
 	local mycmakeargs=(
 		-DAMDGPU_TARGETS="$(get_amdgpu_flags)"
 		-DBUILD_FILE_REORG_BACKWARD_COMPATIBILITY=OFF
 		-DROCM_SYMLINK_LIBS=OFF
 	)
 
-	CXX=hipcc cmake_src_configure
+	cmake_src_configure
 }
