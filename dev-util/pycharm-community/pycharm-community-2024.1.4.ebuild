@@ -7,7 +7,11 @@ inherit desktop readme.gentoo-r1 wrapper xdg-utils
 
 DESCRIPTION="Intelligent Python IDE with unique code assistance and analysis"
 HOMEPAGE="http://www.jetbrains.com/pycharm/"
-SRC_URI="http://download.jetbrains.com/python/${P}.tar.gz"
+SRC_URI="
+	x86? ( https://download.jetbrains.com/python/${P}.tar.gz )
+	amd64? ( https://download.jetbrains.com/python/${P}.tar.gz )
+	arm64? ( https://download.jetbrains.com/python/${P}-aarch64.tar.gz )
+"
 
 LICENSE="Apache-2.0 BSD CDDL MIT-with-advertising"
 SLOT="0"
