@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="LGPL-3+"
 SLOT="2"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 DEPEND="
 	>=dev-libs/mpc-1.0.2:=
