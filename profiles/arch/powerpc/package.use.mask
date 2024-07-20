@@ -67,6 +67,7 @@ media-libs/libaom cpu_flags_ppc_vsx
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
 # sys-apps/s6-linux-init has not been tested on this arch
 sys-apps/openrc s6
+sys-apps/openrc-navi s6
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2023-09-21)
 # dtrace/systemtap not availabie on ppc platform for jdk

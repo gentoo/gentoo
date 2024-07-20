@@ -74,6 +74,7 @@ dev-db/postgresql llvm
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
 # sys-apps/s6-linux-init has not been tested on this arch
 sys-apps/openrc s6
+sys-apps/openrc-navi s6
 
 # WANG Xuerui <xen0n@gentoo.org> (2023-09-29)
 # no luajit for now
