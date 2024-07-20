@@ -25,6 +25,10 @@ RDEPEND="dev-util/hip
 DEPEND="${RDEPEND}"
 
 src_configure() {
+	# Note: hipcc is enforced; clang fails when libc++ is enabled
+	# with an error similar to https://github.com/boostorg/config/issues/392
+	rocm_use_hipcc
+
 	local mycmakeargs=(
 		-DROCM_SYMLINK_LIBS=OFF
 		-DBUILD_CLIENTS_TESTS=OFF
