@@ -97,7 +97,6 @@ src_configure() {
 		# https://forum.xpdfreader.com/viewtopic.php?p=45052#p45052
 		# Likely fixed in 4.05
 		-DCMAKE_DISABLE_FIND_PACKAGE_Qt6Widgets=ON
-		-DCMAKE_DISABLE_FIND_PACKAGE_Qt4=ON
 	)
 	cmake_src_configure
 }
