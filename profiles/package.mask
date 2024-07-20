@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-07-20)
+# EAPI=6, fails to apply patch during src_prepare.
+# Removal on 2024-08-19.  Bugs #936398, #908957, #908959.
+media-video/raspberrypi-omxplayer
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-20)
 # EAPI=6 package, no reverse dependencies, not maintained in Gentoo for
 # a long time. Has multiple issues with musl.
 # Removal on 2024-08-19.  Bugs #936397, #715284, #832000.
