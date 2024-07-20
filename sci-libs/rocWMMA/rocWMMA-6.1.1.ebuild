@@ -44,6 +44,8 @@ PATCHES=(
 )
 
 src_configure() {
+	rocm_use_hipcc
+
 	# ld.lld bug https://github.com/llvm/llvm-project/issues/61101
 	filter-lto
 
@@ -55,7 +57,7 @@ src_configure() {
 		-DROCWMMA_BUILD_TESTS="$(usex test)"
 	)
 	use test && mycmakeargs+=(-DROCWMMA_USE_SYSTEM_GOOGLETEST=ON)
-	CC=hipcc CXX=hipcc cmake_src_configure
+	cmake_src_configure
 }
 
 src_test() {
