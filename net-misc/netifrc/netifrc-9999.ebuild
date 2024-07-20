@@ -25,7 +25,10 @@ IUSE="+dhcp"
 
 RDEPEND="
 	sys-apps/gentoo-functions
-	>=sys-apps/openrc-0.15
+	|| (
+		>=sys-apps/openrc-0.15
+		sys-apps/openrc-navi
+	)
 	dhcp? (
 		|| (
 			net-misc/dhcpcd
