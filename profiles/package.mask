@@ -58,15 +58,21 @@ games-simulation/cannonsmash
 games-strategy/crimson
 
 # Ionen Wolkens <ionen@gentoo.org> (2024-07-18)
-# Explicit sync currently causes firefox to crash (firefox bug, should
-# be fixed in >=firefox-130 or so), and is still kind of experimental.
-# Keeping masked for the time being while issues are ironed out. Feel free
-# to unmask if not affected as it should improve the experience esp. with
-# Plasma 6 + wayland, but please try 1.1.13 before reporting freezes or
-# crashes to Gentoo.
-# https://github.com/NVIDIA/egl-wayland/issues/110
-# https://bugzilla.mozilla.org/show_bug.cgi?id=1898476
-=gui-libs/egl-wayland-1.1.14
+# Explicit sync currently causes firefox to crash[1][2][3] (should be
+# improved in >=firefox-130 or so) among others like obs-studio[3],
+# and is still to be considered experimental. So keeping masked for
+# the time being while issues are ironed out.
+#
+# Feel free to unmask if not affected as it should improve the
+# experience esp. with Plasma 6 + wayland + nvidia, but please try
+# 1.1.13 before reporting crashes, freezes, or visual issues (and
+# bugs should go upstream).
+#
+# [1] https://github.com/NVIDIA/egl-wayland/issues/110
+# [2] https://github.com/NVIDIA/egl-wayland/issues/117
+# [3] https://bugzilla.mozilla.org/show_bug.cgi?id=1898476
+# [4] https://github.com/NVIDIA/egl-wayland/issues/118
+~gui-libs/egl-wayland-1.1.14
 
 # Hans de Graaff <graaff@gentoo.org> (2024-07-17)
 # Obsolete slot. Please use a newer slot instead. No reverse
