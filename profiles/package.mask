@@ -228,12 +228,6 @@ dev-ruby/public_suffix:4
 # Removal on 2024-07-21.  Bug #791904
 media-video/vdr2jpeg
 
-# James Le Cuirot <chewi@gentoo.org> (2024-06-20)
-# Ancient, dead upstream, X11-based, probably doesn't work any more, and there
-# are better ways of running games in different sessions now.
-# Removal on 2024-07-20.  Bug #934640.
-games-util/xgame
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-16)
 # No release since 2021-06-10 and effectively declared unmaintained by
 # upstream since then; now conflicting with Plasma 6 by pulling in old
