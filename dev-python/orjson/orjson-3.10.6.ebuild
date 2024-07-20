@@ -65,7 +65,7 @@ LICENSE+="
 	Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 MIT Unicode-DFS-2016
 "
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
 
 BDEPEND="
 	>=virtual/rust-1.72
