@@ -16,7 +16,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 
 	PATCHES=(
-		"${FILESDIR}/${PN}-1.03-tests.patch"
+		"${FILESDIR}/${P}-tests.patch"
 	)
 fi
 
