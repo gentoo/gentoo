@@ -233,7 +233,6 @@ media-video/vdr2jpeg
 # are better ways of running games in different sessions now.
 # Removal on 2024-07-20.  Bug #934640.
 games-util/xgame
-games-util/xgame-gtk2
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-16)
 # No release since 2021-06-10 and effectively declared unmaintained by
