@@ -62,6 +62,8 @@ src_configure() {
 	addpredict /dev/kfd
 	addpredict /dev/dri/
 
+	rocm_use_hipcc
+
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=ON
 		-DBUILD_FILE_REORG_BACKWARD_COMPATIBILITY=OFF
@@ -86,7 +88,7 @@ src_configure() {
 		)
 	fi
 
-	CXX=hipcc cmake_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
