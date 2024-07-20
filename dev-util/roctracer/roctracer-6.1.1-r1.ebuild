@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 LLVM_COMPAT=( 18 )
 ROCM_VERSION=${PV}
 
-inherit cmake prefix python-any-r1 rocm llvm-r1
+inherit cmake flag-o-matic llvm-r1 prefix python-any-r1 rocm toolchain-funcs
 
 DESCRIPTION="Callback/Activity Library for Performance tracing AMD GPU's"
 HOMEPAGE="https://github.com/ROCm/roctracer"
@@ -64,9 +64,21 @@ src_prepare() {
 
 	# bug #892732
 	sed -i -e 's/-Werror//' CMakeLists.txt || die
+
+	# libc++ may have no experimental/filesystem
+	sed -e 's|experimental/||' -e 's|experimental::||' \
+		-i plugin/file/file.cpp src/hip_stats/hip_stats.cpp \
+		src/roctracer/loader.h src/tracer_tool/tracer_tool.cpp || die
 }
 
 src_configure() {
+	rocm_use_hipcc
+
+	if [[ $(tc-get-cxx-stdlib) == "libc++" ]] ; then
+		# https://releases.llvm.org/9.0.0/projects/libcxx/docs/UsingLibcxx.html#using-filesystem
+		append-libs "-lc++fs"
+	fi
+
 	local mycmakeargs=(
 		-DCMAKE_MODULE_PATH="${EPREFIX}/usr/$(get_libdir)/cmake/hip"
 		-DFILE_REORG_BACKWARD_COMPATIBILITY=OFF
@@ -75,7 +87,6 @@ src_configure() {
 	)
 	use test && mycmakeargs+=(
 		-DHIP_ROOT_DIR="${EPREFIX}/usr"
-		-DHIP_CLANG_INSTALL_DIR="$(get_llvm_prefix)/bin"
 		-DGPU_TARGETS="$(get_amdgpu_flags)"
 	)
 
