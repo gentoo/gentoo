@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit wrapper
 
 DESCRIPTION="Very fast and lightweight still powerful window manager for X"
-HOMEPAGE="http://joewing.net/projects/jwm/"
+HOMEPAGE="https://joewing.net/projects/jwm/"
 SRC_URI="https://github.com/joewing/${PN}/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="MIT"
