@@ -241,12 +241,6 @@ games-util/xgame-gtk2
 # Removal on 2024-07-20.  Bug #934637.
 games-strategy/majesty-demo
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-20)
-# EAPI=6, keyworded for x86 only (making it hard to debug), has
-# open bugs for modern C and not using correct toolchain commands.
-# Removal on 2024-07-20.  Bugs #934621, #925090, #724078, #727438.
-dev-debug/ald
-
 # Jakov Smolić <jsmolic@gentoo.org> (2024-06-18)
 # Outdated by several versions, very difficult to package due to the
 # complicated Cargo dependency management.
