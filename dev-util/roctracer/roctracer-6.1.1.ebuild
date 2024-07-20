@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 LLVM_COMPAT=( 18 )
 ROCM_VERSION=${PV}
 
-inherit cmake prefix python-any-r1 rocm llvm-r1
+inherit cmake flag-o-matic prefix python-any-r1 rocm llvm-r1
 
 DESCRIPTION="Callback/Activity Library for Performance tracing AMD GPU's"
 HOMEPAGE="https://github.com/ROCm/roctracer"
@@ -67,6 +67,11 @@ src_prepare() {
 }
 
 src_configure() {
+	rocm_use_hipcc
+
+	# Enforce libstdc++; libc++ has no <experimental/filesystem>
+	append-cxxflags -stdlib=libstdc++
+
 	local mycmakeargs=(
 		-DCMAKE_MODULE_PATH="${EPREFIX}/usr/$(get_libdir)/cmake/hip"
 		-DFILE_REORG_BACKWARD_COMPATIBILITY=OFF
@@ -75,7 +80,6 @@ src_configure() {
 	)
 	use test && mycmakeargs+=(
 		-DHIP_ROOT_DIR="${EPREFIX}/usr"
-		-DHIP_CLANG_INSTALL_DIR="$(get_llvm_prefix)/bin"
 		-DGPU_TARGETS="$(get_amdgpu_flags)"
 	)
 
