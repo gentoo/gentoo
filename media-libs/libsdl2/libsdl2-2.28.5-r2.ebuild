@@ -105,6 +105,7 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.16-static-libs.patch
+	"${FILESDIR}"/${PN}-2.28.5-fix-libdecor-0.2.patch
 )
 
 src_prepare() {
