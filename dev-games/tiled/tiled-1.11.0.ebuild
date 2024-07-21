@@ -12,7 +12,7 @@ SRC_URI="https://github.com/mapeditor/tiled/archive/v${PV}/${P}.tar.gz"
 LICENSE="BSD BSD-2 GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="examples headers"
+IUSE="examples"
 
 RDEPEND="
 	app-arch/zstd
@@ -63,7 +63,7 @@ src_compile() {
 	qbs build \
 		qbs.installPrefix:"/usr" \
 		projects.Tiled.useRPaths:false \
-		projects.Tiled.installHeaders:$(usex "headers" "true" "false") \
+		projects.Tiled.installHeaders:true \
 		project.libDir:$(get_libdir) \
 		modules.cpp.cFlags:${QBS_CFLAGS} \
 		modules.cpp.cxxFlags:${QBS_CXXFLAGS} \

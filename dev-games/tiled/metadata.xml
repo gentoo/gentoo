@@ -12,8 +12,5 @@
 	<upstream>
 		<remote-id type="github">bjorn/tiled</remote-id>
 	</upstream>
-	<use>
-		<flag name="headers">Install development headers</flag>
-	</use>
 </pkgmetadata>
 
