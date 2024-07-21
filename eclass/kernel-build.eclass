@@ -131,7 +131,7 @@ fi
 # Call python-any-r1 and secureboot pkg_setup
 kernel-build_pkg_setup() {
 	python-any-r1_pkg_setup
-	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
+	if [[ ${KERNEL_IUSE_MODULES_SIGN} && ${MERGE_TYPE} != binary ]]; then
 		secureboot_pkg_setup
 
 		# Sanity check: fail early if key/cert in DER format or does not exist
