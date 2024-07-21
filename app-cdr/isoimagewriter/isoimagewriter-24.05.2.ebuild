@@ -12,7 +12,7 @@ HOMEPAGE="https://community.kde.org/ISOImageWriter"
 
 LICENSE="GPL-3"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND="
