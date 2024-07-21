@@ -12,7 +12,7 @@ SRC_URI="mirror://gentoo/${P}.tar.xz
 
 LICENSE="CC-BY-SA-3.0 GPL-2+ public-domain unicode"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm ~hppa ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="cdb"
 
 DEPEND="app-alternatives/awk
