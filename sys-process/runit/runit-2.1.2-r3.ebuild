@@ -14,7 +14,7 @@ SRC_URI="
 	http://archive.ubuntu.com/ubuntu/pool/universe/r/runit/${UBUNTU_A}
 	"
 
-RDEPEND="sys-apps/openrc"
+	RDEPEND="|| ( sys-apps/openrc sys-apps/openrc-navi )"
 
 S=${WORKDIR}/admin/${P}/src
 
