@@ -59,6 +59,8 @@ src_prepare() {
 		# and is not really desired in Prefix
 		sed -i -e 's/__APPLE__/__DISABLED__/' \
 			src/lib/ares_sysconfig_mac.c || die
+		sed -i -e '/elif defined(__APPLE__)/s/__APPLE__/__DISABLED__/' \
+			src/lib/ares_sysconfig.c || die
 	fi
 }
 
