@@ -5,8 +5,8 @@ EAPI=8
 
 inherit meson pam
 
-DESCRIPTION="OpenRC manages the services, startup and shutdown of a host"
-HOMEPAGE="https://github.com/openrc/openrc/"
+DESCRIPTION="OpenRC fork with user services support"
+HOMEPAGE="https://github.com/navi-desu/openrc/"
 
 if [[ ${PV} =~ ^9{4,}$ ]]; then
 	EGIT_REPO_URI="https://github.com/navi-desu/openrc.git"
