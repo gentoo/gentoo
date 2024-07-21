@@ -14,7 +14,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc x86"
 RDEPEND="
 	app-admin/lib_users
 	app-portage/portage-utils
-	|| ( sys-apps/openrc sys-apps/systemd )
+	|| ( sys-apps/openrc sys-apps/openrc-navi sys-apps/systemd )
 "
 
 src_install() {
