@@ -22,7 +22,6 @@ IUSE="+aom gdk-pixbuf go rav1e svt-av1 test +threads x265"
 REQUIRED_USE="test? ( go )"
 RESTRICT="!test? ( test )"
 
-# Bug 865351: tests requires <dev-cpp/catch-3
 BDEPEND="
 	test? (
 		dev-cpp/catch
@@ -67,15 +66,11 @@ multilib_src_configure() {
 	local mycmakeargs=(
 		-DENABLE_PLUGIN_LOADING=true
 		-DWITH_LIBDE265=true
-		#--disable-static
-		#$(multilib_is_native_abi && use go || echo --disable-go)
 		-DWITH_AOM_DECODER=$(usex aom)
 		-DWITH_AOM_ENCODER=$(usex aom)
 		-DWITH_GDK_PIXBUF=$(usex gdk-pixbuf)
 		-DWITH_RAV1E="$(multilib_native_usex rav1e)"
 		-DWITH_SvtEnc="$(usex svt-av1)"
-		#$(use_enable threads multithreading)
-		#$(use_enable test tests)
 		-DWITH_X265=$(usex x265)
 		-DWITH_KVAZAAR=true
 		-DWITH_JPEG_DECODER=true
