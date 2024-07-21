@@ -25,7 +25,7 @@ BDEPEND="sys-devel/gettext"
 RDEPEND="
 	>=app-shells/push-2.0
 	virtual/libintl
-	|| ( sys-apps/openrc sys-apps/systemd )
+	|| ( sys-apps/openrc sys-apps/openrc-navi sys-apps/systemd )
 "
 
 DISABLE_AUTOFORMATTING=true
