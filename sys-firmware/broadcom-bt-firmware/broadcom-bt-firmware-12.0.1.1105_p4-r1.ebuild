@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ SRC_URI="https://github.com/winterheart/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="broadcom_bcm20702 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc64 x86"
 # Re-use compress-* USE flags from sys-kernel/linux-firmware.
 IUSE="compress-xz compress-zstd"
 REQUIRED_USE="?? ( compress-xz compress-zstd )"
