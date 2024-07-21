@@ -12,14 +12,13 @@ SRC_URI="https://github.com/mapeditor/tiled/archive/v${PV}/${P}.tar.gz"
 LICENSE="BSD BSD-2 GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="examples wayland headers"
+IUSE="examples headers"
 
 RDEPEND="
 	app-arch/zstd
 	dev-qt/qtbase:6[X]
 	dev-qt/qtimageformats:6
 	dev-qt/qtdeclarative:6
-	wayland? ( dev-qt/qtwayland:6 )
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}"
