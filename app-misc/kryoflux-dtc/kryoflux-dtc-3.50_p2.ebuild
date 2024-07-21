@@ -17,7 +17,7 @@ S="${WORKDIR}/Linux_Release${MY_PV}"
 
 LICENSE="SPS"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~arm64"
+KEYWORDS="-* amd64 ~arm64"
 IUSE="demos doc gui"
 
 RDEPEND="
