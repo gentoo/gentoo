@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,10 @@ DEPEND="
 	sys-apps/dbus
 	sys-auth/polkit
 	dev-libs/libdaemon:0=
-	sys-apps/openrc
+	|| (
+		sys-apps/openrc
+		sys-apps/openrc-navi
+	)
 "
 RDEPEND="
 	${DEPEND}
