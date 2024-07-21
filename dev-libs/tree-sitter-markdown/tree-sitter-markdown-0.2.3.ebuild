@@ -3,8 +3,6 @@
 
 EAPI=8
 
-TS_BINDINGS=( python )
-
 inherit tree-sitter-grammar
 
 DESCRIPTION="Markdown grammar for Tree-sitter"
