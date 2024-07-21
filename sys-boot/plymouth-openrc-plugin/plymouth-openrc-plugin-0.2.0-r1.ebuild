@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug"
 
-DEPEND="sys-apps/openrc"
+DEPEND="|| ( sys-apps/openrc sys-apps/openrc-navi )"
 RDEPEND="${DEPEND}
 	sys-boot/plymouth
 	!sys-apps/systemd"
