@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,15 +13,17 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="examples qml test +uchardet"
+REQUIRED_USE="examples? ( qml )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-qt/qtcore:5
-	dev-qt/qtdeclarative:5
+	dev-qt/qtnetwork:5
 	examples? ( || (
 		dev-qt/qtgui:5[X(-)]
 		dev-qt/qtgui:5[xcb(-)]
 	) )
+	qml? ( dev-qt/qtdeclarative:5 )
 	uchardet? ( app-i18n/uchardet )
 	!uchardet? ( dev-libs/icu:= )
 "
