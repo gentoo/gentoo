@@ -16,6 +16,13 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="media-video/vdr"
 RDEPEND="${DEPEND}"
 
+src_prepare() {
+	vdr-plugin-2_src_prepare
+
+	# do not call g++ directly, Bug #936467
+	sed -e 's| g++| $(CXX)|' -i Makefile || die
+}
+
 src_install() {
 	vdr-plugin-2_src_install
 
