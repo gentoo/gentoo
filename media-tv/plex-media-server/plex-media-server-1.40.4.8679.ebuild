@@ -40,11 +40,6 @@ QA_MULTILIB_PATHS=(
 	"usr/lib/plexmediaserver/Resources/Python/lib/python2.7/lib-dynload/_hashlib.so"
 )
 
-BINS_TO_PAX_MARK=(
-	"${ED}/usr/lib/plexmediaserver/Plex Script Host"
-	"${ED}/usr/lib/plexmediaserver/Plex Media Scanner"
-)
-
 src_install() {
 	# Remove Debian specific files
 	rm -r "usr/share/doc" || die
@@ -67,6 +62,11 @@ src_install() {
 	systemd_newunit "${ED}"/usr/lib/plexmediaserver/lib/plexmediaserver.service "${PN}.service"
 
 	# Add pax markings to some binaries so that they work on hardened setup
+	BINS_TO_PAX_MARK=(
+		"${ED}/usr/lib/plexmediaserver/Plex Script Host"
+		"${ED}/usr/lib/plexmediaserver/Plex Media Scanner"
+	)
+
 	local f
 	for f in "${BINS_TO_PAX_MARK[@]}"; do
 		pax-mark m "${f}"
