@@ -63,6 +63,7 @@ src_compile() {
 
 	qbs build \
 		qbs.installPrefix:"/usr" \
+		projects.Tiled.useRPaths:false \
 		projects.Tiled.installHeaders:$(usex "headers" "true" "false") \
 		project.libDir:$(get_libdir) \
 		modules.cpp.cFlags:${QBS_CFLAGS} \
