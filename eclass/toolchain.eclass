@@ -1214,7 +1214,14 @@ toolchain_src_configure() {
 			# - https://git.musl-libc.org/cgit/musl/tree/INSTALL
 			# - bug #704784
 			# - https://gcc.gnu.org/PR93157
-			[[ ${CTARGET} == powerpc64-*-musl ]] && confgcc+=( --with-abi=elfv2 )
+			# musl additionally does not support libquadmath.  See:
+			# - https://gcc.gnu.org/PR116007
+			[[ ${CTARGET} == powerpc64-*-musl ]] && confgcc+=(
+				--with-abi=elfv2
+				--disable-libquadmath
+				--disable-libquadmath-support
+				--with-long-double-128=no
+			)
 
 			if in_iuse ieee-long-double; then
 				# musl requires 64-bit long double, not IBM double-double or IEEE quad.
