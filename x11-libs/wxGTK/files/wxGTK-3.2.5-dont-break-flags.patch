@@ -1,0 +1,18 @@
+--- wxWidgets-3.2.5/configure.orig	2024-07-20 05:18:49.509254253 +0000
++++ wxWidgets-3.2.5/configure	2024-07-20 05:20:47.575983942 +0000
+@@ -45700,13 +45700,8 @@
+ 
+ dedup_flags()
+ {
+-    printf "%s " "$@" |
+-        awk 'BEGIN { RS=" "; ORS=" " }
+-        {
+-            if ($0=="") next
+-            if ($0=="-arch" || $0=="-framework") { x=$0; next }
+-            if (x!="") x=x " " $0; else x=$0; if (!seen[x]++) print x; x=""
+-        }'
++	# Gentoo: Don't hack out flags, parsing them is complex.
++	printf '%s ' "$@"
+ }
+ 
+ WX_CPPFLAGS=`dedup_flags "$CPPFLAGS"`
