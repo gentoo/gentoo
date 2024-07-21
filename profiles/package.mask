@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-07-21)
+# Masked for testing
+=sys-libs/glibc-2.40*
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-07-21)
 # No more revdeps after net-libs/telepathy-accounts-signon last-rites.
 # Removal on 2024-08-20.
