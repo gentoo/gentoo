@@ -136,6 +136,7 @@ RDEPEND="${COMMON_DEPEND}
 	)
 	sysv-utils? (
 		!sys-apps/openrc[sysv-utils(-)]
+		!sys-apps/openrc-navi[sysv-utils(-)]
 		!sys-apps/sysvinit
 	)
 	!sysv-utils? ( sys-apps/sysvinit )
