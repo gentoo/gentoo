@@ -54,6 +54,6 @@ src_install() {
 	insinto /usr/share/${PN}
 	doins -r ../amph/*
 	doicon "${DISTDIR}/${PN}.png"
-	make_desktop_entry ${PN} Amphetamine ${PN}
+	make_desktop_entry "${PN} -fs" Amphetamine ${PN}
 	einstalldocs
 }
