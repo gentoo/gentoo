@@ -27,7 +27,7 @@ RDEPEND="${DEPEND}
 			net-analyzer/nagios
 		)
 	)
-	sys-apps/openrc"
+	|| ( sys-apps/openrc sys-apps/openrc-navi )"
 
 src_configure() {
 	use tcpd || export ac_cv_lib_wrap_main=no
