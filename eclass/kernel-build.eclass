@@ -134,30 +134,32 @@ kernel-build_pkg_setup() {
 	if [[ ${KERNEL_IUSE_MODULES_SIGN} && ${MERGE_TYPE} != binary ]]; then
 		secureboot_pkg_setup
 
-		# Sanity check: fail early if key/cert in DER format or does not exist
-		local openssl_args=(
-			-noout -nocert
-		)
-		if [[ -n ${MODULES_SIGN_CERT} ]]; then
-			openssl_args+=( -inform PEM -in "${MODULES_SIGN_CERT}" )
-		else
-			# If no cert specified, we assume the pem key also contains the cert
-			openssl_args+=( -inform PEM -in "${MODULES_SIGN_KEY}" )
-		fi
-		if [[ ${MODULES_SIGN_KEY} == pkcs11:* ]]; then
-			openssl_args+=( -engine pkcs11 -keyform ENGINE -key "${MODULES_SIGN_KEY}" )
-		else
-			openssl_args+=( -keyform PEM -key "${MODULES_SIGN_KEY}" )
-		fi
-
-		openssl x509 "${openssl_args[@]}" ||
-			die "Kernel module signing certificate or key not found or not PEM format."
-
-		if [[ ${MODULES_SIGN_KEY} != pkcs11:* ]]; then
-			if [[ ${MODULES_SIGN_CERT} != ${MODULES_SIGN_KEY} ]]; then
-				MODULES_SIGN_KEY_CONTENTS="$(cat "${MODULES_SIGN_CERT}" "${MODULES_SIGN_KEY}" || die)"
+		if use modules-sign; then
+			# Sanity check: fail early if key/cert in DER format or does not exist
+			local openssl_args=(
+				-noout -nocert
+			)
+			if [[ -n ${MODULES_SIGN_CERT} ]]; then
+				openssl_args+=( -inform PEM -in "${MODULES_SIGN_CERT}" )
 			else
-				MODULES_SIGN_KEY_CONTENTS="$(< "${MODULES_SIGN_KEY}")"
+				# If no cert specified, we assume the pem key also contains the cert
+				openssl_args+=( -inform PEM -in "${MODULES_SIGN_KEY}" )
+			fi
+			if [[ ${MODULES_SIGN_KEY} == pkcs11:* ]]; then
+				openssl_args+=( -engine pkcs11 -keyform ENGINE -key "${MODULES_SIGN_KEY}" )
+			else
+				openssl_args+=( -keyform PEM -key "${MODULES_SIGN_KEY}" )
+			fi
+
+			openssl x509 "${openssl_args[@]}" ||
+				die "Kernel module signing certificate or key not found or not PEM format."
+
+			if [[ ${MODULES_SIGN_KEY} != pkcs11:* ]]; then
+				if [[ ${MODULES_SIGN_CERT} != ${MODULES_SIGN_KEY} ]]; then
+					MODULES_SIGN_KEY_CONTENTS="$(cat "${MODULES_SIGN_CERT}" "${MODULES_SIGN_KEY}" || die)"
+				else
+					MODULES_SIGN_KEY_CONTENTS="$(< "${MODULES_SIGN_KEY}")"
+				fi
 			fi
 		fi
 	fi
