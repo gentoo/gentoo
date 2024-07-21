@@ -21,7 +21,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	|| ( >=sys-apps/openrc-0.11.5 sys-apps/systemd )
+	|| ( >=sys-apps/openrc-0.11.5 sys-apps/openrc-navi sys-apps/systemd )
 	$(python_gen_cond_dep '
 		dev-python/dbus-python[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
