@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/936234
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Sun, 21 Jul 2024 07:26:51 +0000
+Subject: [PATCH 1/2] Fix implicit declaration of htobe64
+
+htobe64 is declared inside endian.h in musl, thus not including the
+header file resutls in build error such as:
+../include/libnetlink.h:280:16: error: implicit declaration
+  280 |         return htobe64(rta_getattr_u64(rta));
+      |                ^~~~~~~
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/include/libnetlink.h
++++ b/include/libnetlink.h
+@@ -4,6 +4,7 @@
+ 
+ #include <stdio.h>
+ #include <string.h>
++#include <endian.h>
+ #include <asm/types.h>
+ #include <linux/netlink.h>
+ #include <linux/rtnetlink.h>
+-- 
+2.45.2
+

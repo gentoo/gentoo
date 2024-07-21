@@ -1,0 +1,24 @@
+Bug: https://bugs.gentoo.org/926341
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Sun, 21 Jul 2024 07:31:49 +0000
+Subject: [PATCH 2/2] Fix implecit declaration of basename on musl
+
+On musl there is only one implementation of musl which comes from
+libgen.h, unlike glibc which has two implementations. I'm not really
+sure if using the basename from libgen.h is correct over here i.e. using
+the posix implementation of basename.
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/rdma/rdma.c
++++ b/rdma/rdma.c
+@@ -4,6 +4,7 @@
+  * Authors:     Leon Romanovsky <leonro@mellanox.com>
+  */
+ 
++#include <libgen.h>
+ #include "rdma.h"
+ #include "version.h"
+ #include "color.h"
+-- 
+2.45.2
+
