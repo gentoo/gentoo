@@ -72,6 +72,7 @@ games-strategy/crimson
 # [2] https://github.com/NVIDIA/egl-wayland/issues/117
 # [3] https://bugzilla.mozilla.org/show_bug.cgi?id=1898476
 # [4] https://github.com/NVIDIA/egl-wayland/issues/118
+# and: https://bugzilla.mozilla.org/show_bug.cgi?id=1908825
 ~gui-libs/egl-wayland-1.1.14
 
 # Hans de Graaff <graaff@gentoo.org> (2024-07-17)
