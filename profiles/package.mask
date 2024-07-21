@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-07-21)
+# No more revdeps after net-libs/telepathy-accounts-signon last-rites.
+# Removal on 2024-08-20.
+net-libs/libsignon-glib
+
 # Hans de Graaff <graaff@gentoo.org> (2024-07-21)
 # Obsolete slots that are no longer used by any cucumber
 # version. Removal on 2024-08-21.
