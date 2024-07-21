@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2024-07-21)
+# Obsolete slots that are no longer used by any cucumber
+# version. Removal on 2024-08-21.
+dev-util/cucumber-core:10
+dev-util/cucumber-cucumber-expressions:16
+dev-util/cucumber-gherking:22
+dev-util/cucumber-html-formatter:20
+dev-util/cucumber-messages:17
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-07-20)
 # EAPI=6, fails to apply patch during src_prepare.
 # Removal on 2024-08-19.  Bugs #936398, #908957, #908959.
