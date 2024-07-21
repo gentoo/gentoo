@@ -1,0 +1,12 @@
+diff --git a/intl/Makefile.in b/intl/Makefile.in
+--- a/intl/Makefile.in
++++ b/intl/Makefile.in
+@@ -44,7 +44,7 @@ mkinstalldirs = $(SHELL) $(MKINSTALLDIRS)
+ 
+ l = @INTL_LIBTOOL_SUFFIX_PREFIX@
+ 
+-AR = ar
++AR = @AR@
+ CC = @CC@
+ LIBTOOL = @LIBTOOL@
+ RANLIB = @RANLIB@
