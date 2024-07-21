@@ -1,9 +1,9 @@
 # Copyright 2012-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="8"
+EAPI=8
 
-inherit cmake multiprocessing
+inherit cmake multiprocessing flag-o-matic
 
 DESCRIPTION="RIME (Rime Input Method Engine) core library"
 HOMEPAGE="https://rime.im/ https://github.com/rime/librime"
@@ -16,36 +16,33 @@ IUSE="debug test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	app-i18n/opencc:=
 	dev-cpp/glog:=
+	dev-cpp/yaml-cpp:=
 	>=dev-libs/boost-1.74:=
-	app-i18n/opencc:0=
-	dev-cpp/yaml-cpp:0=
-	dev-libs/leveldb:0=
-	dev-libs/marisa:0=
+	dev-libs/leveldb:=
+	dev-libs/marisa
 "
 DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )
 "
 
-DOCS=(CHANGELOG.md README.md)
+DOCS=( CHANGELOG.md README.md )
 
 src_configure() {
-	local -x CXXFLAGS="${CXXFLAGS}"
-
 	# for glog
 	if use debug; then
-		CXXFLAGS+=" -DDCHECK_ALWAYS_ON"
-		CMAKE_BUILD_TYPE=Debug
+		append-cxxflags -DDCHECK_ALWAYS_ON
+		local CMAKE_BUILD_TYPE=Debug
 	else
-		CXXFLAGS+=" -DNDEBUG"
+		append-cxxflags -DNDEBUG
 	fi
 
 	local mycmakeargs=(
-		-DBUILD_TEST=$(usex test ON OFF)
+		-DBUILD_TEST=$(usex test)
 		-DCMAKE_BUILD_PARALLEL_LEVEL=$(makeopts_jobs)
 		-DENABLE_EXTERNAL_PLUGINS=ON
 		-DINSTALL_PRIVATE_HEADERS=ON
 	)
-
 	cmake_src_configure
 }
