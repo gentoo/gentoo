@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/keysmith/"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 COMMON_DEPEND="
