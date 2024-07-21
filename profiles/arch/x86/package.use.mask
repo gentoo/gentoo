@@ -8,13 +8,6 @@
 >=dev-util/intel_clc-24.1 llvm_slot_15 llvm_slot_16
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-07-12)
-# Need as-yet-unkeyworded KF6-based counterparts (bug #934361)
-kde-apps/libkcddb kf6compat
-kde-apps/libkcompactdisc kf6compat
-kde-apps/libksane kf6compat
-net-misc/kio-zeroconf kf6compat
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-07-12)
 # KDE PIM 6 is not being keyworded here
 kde-apps/libkgapi:5 kf6compat
 
