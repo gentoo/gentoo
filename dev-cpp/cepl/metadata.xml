@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person">
+		<email>joeypabalinas@gmail.com</email>
+		<name>Joey Pabalinas</name>
+		<description>jp</description>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">alyptik/cepl</remote-id>
+	</upstream>
+</pkgmetadata>
