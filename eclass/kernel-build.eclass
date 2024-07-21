@@ -134,7 +134,7 @@ kernel-build_pkg_setup() {
 	if [[ ${KERNEL_IUSE_MODULES_SIGN} && ${MERGE_TYPE} != binary ]]; then
 		secureboot_pkg_setup
 
-		if use modules-sign; then
+		if use modules-sign && [[ -n ${MODULES_SIGN_KEY} ]]; then
 			# Sanity check: fail early if key/cert in DER format or does not exist
 			local openssl_args=(
 				-noout -nocert
@@ -155,7 +155,7 @@ kernel-build_pkg_setup() {
 				die "Kernel module signing certificate or key not found or not PEM format."
 
 			if [[ ${MODULES_SIGN_KEY} != pkcs11:* ]]; then
-				if [[ ${MODULES_SIGN_CERT} != ${MODULES_SIGN_KEY} ]]; then
+				if [[ -n ${MODULES_SIGN_CERT} && ${MODULES_SIGN_CERT} != ${MODULES_SIGN_KEY} ]]; then
 					MODULES_SIGN_KEY_CONTENTS="$(cat "${MODULES_SIGN_CERT}" "${MODULES_SIGN_KEY}" || die)"
 				else
 					MODULES_SIGN_KEY_CONTENTS="$(< "${MODULES_SIGN_KEY}")"
