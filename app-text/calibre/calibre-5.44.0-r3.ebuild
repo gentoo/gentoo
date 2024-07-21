@@ -130,6 +130,10 @@ PATCHES=(
 
 	# Security backport for CVE-2023-46303
 	"${FILESDIR}"/0001-HTML-Input-Dont-add-resources-that-exist-outside-the.patch
+	# bug #936270
+	"${FILESDIR}"/${P}-icu75.patch
+	# backport test-only fix for lxml 5
+	"${FILESDIR}"/e9cc00560a28f56a303cca97630ab58e519dd9c8.patch
 )
 
 src_prepare() {
