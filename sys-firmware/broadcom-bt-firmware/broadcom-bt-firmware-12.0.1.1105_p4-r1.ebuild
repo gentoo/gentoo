@@ -10,7 +10,7 @@ SRC_URI="https://github.com/winterheart/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="broadcom_bcm20702 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 x86"
+KEYWORDS="amd64 ~ppc64 x86"
 # Re-use compress-* USE flags from sys-kernel/linux-firmware.
 IUSE="compress-xz compress-zstd"
 REQUIRED_USE="?? ( compress-xz compress-zstd )"
