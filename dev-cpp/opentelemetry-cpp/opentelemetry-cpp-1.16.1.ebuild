@@ -15,7 +15,7 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/open-telemetry/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/open-telemetry/opentelemetry-proto/archive/${OTELCPP_PROTO_SHA}.tar.gz -> opentelemetry-proto.tar.gz
+	https://github.com/open-telemetry/opentelemetry-proto/archive/${OTELCPP_PROTO_SHA}.tar.gz -> opentelemetry-proto-${OTELCPP_PROTO_SHA}.tar.gz
 "
 
 LICENSE="Apache-2.0"
