@@ -16,5 +16,5 @@ RUBY_S="tag-expressions-${PV}/ruby"
 HOMEPAGE="https://cucumber.io/"
 LICENSE="MIT"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~s390 ~sparc ~x86"
 SLOT="$(ver_cut 1)"
