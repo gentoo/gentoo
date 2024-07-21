@@ -17,6 +17,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-07-21)
+# Need as-yet-unkeyworded KF6-based counterparts (bug #934361)
+kde-apps/libkcddb kf6compat
+kde-apps/libkcompactdisc kf6compat
+kde-apps/libksane kf6compat
+net-misc/kio-zeroconf kf6compat
+
 # Joonas Niilola <juippis@gentoo.org> (2024-07-21)
 # Mask temporarily on stable x86 until keywords catch up.
 # Bug#936291
