@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,16 +9,16 @@ MY_P="Par-${PV}"
 DESCRIPTION="a paragraph reformatter, vaguely similar to fmt, but better"
 HOMEPAGE="http://www.nicemice.net/par/"
 SRC_URI="http://www.nicemice.net/par/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="|| ( MIT par )"
 SLOT="0"
 KEYWORDS="~amd64 ~mips ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
-IUSE=""
 
-DEPEND="!dev-util/par
-	!app-arch/par"
-
-S="${WORKDIR}/${MY_P}"
+DEPEND="
+	!dev-util/par
+	!app-arch/par
+"
 
 src_compile() {
 	emake -f protoMakefile CC="$(tc-getCC) ${CFLAGS} -c" \
