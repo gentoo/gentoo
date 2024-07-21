@@ -32,6 +32,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.6.2-gcc14.patch
 	"${FILESDIR}"/${PN}-6.6.2-x32abi.patch
+	"${FILESDIR}"/${PN}-6.7.2-gcc15.patch
 )
 
 CMAKE_SKIP_TESTS=(
