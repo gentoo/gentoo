@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-db/sqlite-3.4:3
 	dev-libs/qtkeychain[keyring?,qt6(+)]
-	dev-qt/kdsingleapplication[qt6]
+	dev-qt/kdsingleapplication[qt6(+)]
 	dev-qt/qtbase:6[concurrent,gui,network,ssl,widgets]
 	net-libs/libre-graph-api-cpp-qt-client
 	sys-fs/inotify-tools"
