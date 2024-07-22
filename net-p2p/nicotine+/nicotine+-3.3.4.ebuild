@@ -15,7 +15,7 @@ S="${WORKDIR}/nicotine-plus-${PV}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 # NOTE: good link - https://github.com/nicotine-plus/nicotine-plus/blob/master/doc/DEPENDENCIES.md
 BDEPEND="sys-devel/gettext" # TODO(setan): maybe add pycodestyle and pylint here if use test
