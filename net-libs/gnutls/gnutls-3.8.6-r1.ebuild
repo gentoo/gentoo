@@ -22,10 +22,11 @@ IUSE="brotli +cxx dane doc examples +idn nls +openssl pkcs11 seccomp sslv2 sslv3
 REQUIRED_USE="test-full? ( cxx dane doc examples idn nls openssl pkcs11 seccomp tls-heartbeat tools )"
 RESTRICT="!test? ( test )"
 
+# >=nettle-3.10 as a workaround for bug #936011
 RDEPEND="
 	>=dev-libs/libtasn1-4.9:=[${MULTILIB_USEDEP}]
 	dev-libs/libunistring:=[${MULTILIB_USEDEP}]
-	>=dev-libs/nettle-3.6:=[gmp,${MULTILIB_USEDEP}]
+	>=dev-libs/nettle-3.10:=[gmp,${MULTILIB_USEDEP}]
 	>=dev-libs/gmp-5.1.3-r1:=[${MULTILIB_USEDEP}]
 	brotli? ( >=app-arch/brotli-1.0.0:=[${MULTILIB_USEDEP}] )
 	dane? ( >=net-dns/unbound-1.4.20:=[${MULTILIB_USEDEP}] )
