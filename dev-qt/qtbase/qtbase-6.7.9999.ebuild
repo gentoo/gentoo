@@ -274,6 +274,7 @@ src_test() {
 		# randomly fails without -j1, and not worth it over this (bug #916181)
 		tst_qfiledialog{,2}
 		# may randomly hang+timeout, perhaps related to -j as well
+		tst_qprocess #936484
 		tst_qtimer
 		# these can be flaky depending on the environment/toolchain
 		tst_qlogging # backtrace log test can easily vary
@@ -308,7 +309,6 @@ src_test() {
 			tst_qicoimageformat
 			tst_qimagereader
 			tst_qimage
-			tst_qprocess
 		')
 		# fails due to hppa's NaN handling, needs looking into (bug #914371)
 		$(usev hppa '
@@ -318,7 +318,6 @@ src_test() {
 		# bug #914033
 		$(usev sparc '
 			tst_qbuffer
-			tst_qprocess
 			tst_qtconcurrentiteratekernel
 		')
 		# note: for linux, upstream only really runs+maintains tests for amd64
