@@ -23,3 +23,8 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+
+EPYTEST_IGNORE=(
+	# optional tests, broken with >=dev-python/asgiref-3.8
+	tests/test_asgi.py
+)
