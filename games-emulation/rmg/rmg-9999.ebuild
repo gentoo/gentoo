@@ -78,6 +78,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.5.6-parallel-rdp-standalone-musl.patch
 )
 
+pkg_setup() {
+	QA_FLAGS_IGNORED="/usr/$(get_libdir)/RMG/Plugin/Input/libmupen64plus_input_gca.so"
+}
+
 src_unpack() {
 	if [[ "${PV}" == *9999 ]] ; then
 		git-r3_src_unpack
