@@ -138,6 +138,7 @@ www-client/qutebrowser widevine
 net-analyzer/wireshark sdjournal
 sys-apps/ipmitool openbmc
 sys-auth/pambase homed
+dev-qt/qtbase journald
 
 # Petr Vaněk <arkamar@atlas.cz> (2022-03-15)
 # musl package does not currently provide gencat binary, which is needed for
