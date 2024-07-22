@@ -167,13 +167,4 @@ pkg_postinst() {
 	optfeature "UI sound effects support" \
 		media-sound/alsa-utils \
 		media-libs/gst-plugins-base:1.0
-
-	if [[ ${REPLACING_VERSIONS##* } ]] &&
-		ver_test ${REPLACING_VERSIONS##* } -lt 1.7; then
-		elog ">=${PN}-1.7 has received several changes since <=${PN}-1.6.0, and is"
-		elog "notably now a 64bit build using Qt6. Just-in-case it is recommended"
-		elog "to backup configs, save states, and memory cards before using."
-		elog
-		elog "The executable was also renamed from 'PCSX2' to 'pcsx2'."
-	fi
 }
