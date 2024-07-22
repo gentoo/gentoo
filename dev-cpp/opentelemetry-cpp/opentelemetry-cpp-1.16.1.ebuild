@@ -69,6 +69,8 @@ DEPEND="
 RESTRICT="!test? ( test )"
 
 PATCHES=(
+	# remove tests that need network
+	"${FILESDIR}/opentelemetry-cpp-1.16.1-tests.patch"
 )
 
 src_configure() {
