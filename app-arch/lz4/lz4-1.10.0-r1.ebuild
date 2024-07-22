@@ -17,6 +17,10 @@ RESTRICT="!test? ( test )"
 
 EMESON_SOURCE=${S}/build/meson
 
+PATCHES=(
+	"${FILESDIR}/${PV}-fix-freestanding-test.patch"
+)
+
 multilib_src_configure() {
 	local emesonargs=(
 		-Dtests=$(usex test true false)
