@@ -40,10 +40,6 @@ DEPEND="${RDEPEND}
 	dev-cpp/sparsehash"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=(
-	"${FILESDIR}"/0001-Fix-compilation-with-boost-1.83-and-boost-1.76.patch # backport
-)
-
 # bug 453544
 CHECKREQS_DISK_BUILD="6G"
 
