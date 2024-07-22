@@ -1,0 +1,19 @@
+From: Huang Rui <vowstar@gmail.com>
+Date: 2024-07-22
+Subject: [PATCH] fix FindLibheif with heif_version.h multilib warpper
+
+--- a/src/cmake/modules/FindLibheif.cmake	2024-07-15 21:30:17.000000000 +0800
++++ b/src/cmake/modules/FindLibheif.cmake	2024-07-22 17:33:21.827445823 +0800
+@@ -30,7 +30,11 @@
+               DOC "The directory where libheif libraries reside")
+ 
+ if (LIBHEIF_INCLUDE_DIR)
+-    file(STRINGS "${LIBHEIF_INCLUDE_DIR}/libheif/heif_version.h" TMP REGEX "^#define LIBHEIF_VERSION[ \t].*$")
++    execute_process(
++        COMMAND sh -c "${CMAKE_C_COMPILER} -E -dD -P ${LIBHEIF_INCLUDE_DIR}/libheif/heif_version.h | grep LIBHEIF_VERSION"
++        OUTPUT_VARIABLE TMP
++        OUTPUT_STRIP_TRAILING_WHITESPACE
++    )
+     string(REGEX MATCHALL "[0-9.]+" LIBHEIF_VERSION ${TMP})
+ endif ()
+
