@@ -79,4 +79,3 @@ src_install() {
 		dodoc -r examples
 	fi
 }
-
