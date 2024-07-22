@@ -37,6 +37,7 @@ BDEPEND="
 	test? (
 		dev-db/postgresql
 		dev-python/psycopg:0[${PYTHON_USEDEP}]
+		sys-libs/timezone-data
 	)
 "
 
