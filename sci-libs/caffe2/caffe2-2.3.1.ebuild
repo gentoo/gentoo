@@ -70,6 +70,7 @@ RDEPEND="
 		=sci-libs/rocThrust-5.7*[${ROCM_USEDEP}]
 		=sci-libs/rocPRIM-5.7*[${ROCM_USEDEP}]
 		=sci-libs/hipBLAS-5.7*[${ROCM_USEDEP}]
+		sci-libs/hipBLASLt
 		=sci-libs/hipFFT-5.7*[${ROCM_USEDEP}]
 		=sci-libs/hipSPARSE-5.7*[${ROCM_USEDEP}]
 		=sci-libs/hipRAND-5.7*[${ROCM_USEDEP}]
