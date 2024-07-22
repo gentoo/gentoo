@@ -55,10 +55,10 @@ SLOT="0"
 IUSE="angrylion-plugin discord dynarec rust-plugin"
 
 DEPEND="
-	dev-libs/hidapi:=
+	dev-libs/hidapi
 	dev-qt/qtbase:6[gui,opengl,vulkan,widgets]
 	dev-qt/qtsvg:6
-	media-libs/freetype:=
+	media-libs/freetype
 	media-libs/libpng:=
 	media-libs/libsamplerate
 	media-libs/libsdl2[haptic,joystick,opengl,sound,vulkan]
