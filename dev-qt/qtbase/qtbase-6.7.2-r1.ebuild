@@ -13,7 +13,7 @@ fi
 
 declare -A QT6_IUSE=(
 	[global]="+ssl +udev zstd"
-	[core]="icu"
+	[core]="icu journald syslog"
 	[modules]="+concurrent +dbus +gui +network +sql +xml"
 
 	[gui]="
@@ -34,6 +34,7 @@ REQUIRED_USE="
 		printf '%s? ( sql ) ' ${QT6_IUSE[sql]//+/}
 		printf '%s? ( gui widgets ) ' ${QT6_IUSE[widgets]//+/}
 	)
+	?? ( journald syslog )
 	accessibility? ( dbus )
 	eglfs? ( opengl )
 	gles2-only? ( opengl )
@@ -62,6 +63,7 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/libpcre2:=[pcre16,unicode(+)]
 	icu? ( dev-libs/icu:= )
+	journald? ( sys-apps/systemd )
 
 	dbus? ( sys-apps/dbus )
 	gui? (
@@ -187,6 +189,8 @@ src_configure() {
 
 		# qtcore
 		$(qt_feature icu)
+		$(qt_feature journald)
+		$(qt_feature syslog)
 
 		# tools
 		-DQT_FEATURE_androiddeployqt=OFF

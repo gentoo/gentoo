@@ -21,6 +21,8 @@
 		<flag name="sql">Build Qt6Sql module</flag>
 		<flag name="tslib">Enable support for touchscreen devices via <pkg>x11-libs/tslib</pkg></flag>
 		<flag name="widgets">Build Qt6Widgets module</flag>
+		<flag name="journald">Enable logging to journald</flag>
+		<flag name="syslog">Enable logging to syslog</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
