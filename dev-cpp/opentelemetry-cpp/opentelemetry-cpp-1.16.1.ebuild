@@ -41,8 +41,8 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	dev-cpp/abseil-cpp
 	http? (
-		dev-cpp/abseil-cpp
 		dev-cpp/nlohmann_json
 		dev-libs/protobuf
 	)
@@ -50,7 +50,6 @@ DEPEND="
 		sys-libs/zlib
 	)
 	grpc? (
-		dev-cpp/abseil-cpp
 		dev-libs/protobuf
 		net-libs/grpc
 	)
