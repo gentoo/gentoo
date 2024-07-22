@@ -45,7 +45,7 @@ COMMON_DEPEND="
 	)
 	qt6? (
 		dev-qt/qtbase[concurrent,dbus,gui,network,ssl,sql,sqlite,widgets]
-		dev-qt/kdsingleapplication[qt6]
+		dev-qt/kdsingleapplication[qt6(+)]
 	)
 	cdda? ( dev-libs/libcdio:= )
 	gstreamer? (
