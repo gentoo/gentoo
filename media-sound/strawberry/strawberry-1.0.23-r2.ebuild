@@ -22,9 +22,9 @@ SLOT="0"
 IUSE="cdda debug +gstreamer icu ipod moodbar mtp pulseaudio qt6 soup +udisks vlc"
 
 BDEPEND="
-	!qt6? ( dev-qt/linguist-tools:5 )
 	sys-devel/gettext
 	virtual/pkgconfig
+	!qt6? ( dev-qt/linguist-tools:5 )
 "
 COMMON_DEPEND="
 	dev-db/sqlite:=
@@ -44,8 +44,8 @@ COMMON_DEPEND="
 		x11-libs/libX11
 	)
 	qt6? (
+		dev-libs/kdsingleapplication[qt6(+)]
 		dev-qt/qtbase[concurrent,dbus,gui,network,ssl,sql,sqlite,widgets]
-		dev-qt/kdsingleapplication[qt6(+)]
 	)
 	cdda? ( dev-libs/libcdio:= )
 	gstreamer? (
