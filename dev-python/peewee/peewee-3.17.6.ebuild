@@ -62,6 +62,7 @@ src_test() {
 	initdb -D "${T}"/pgsql || die
 	pg_ctl -w -D "${T}"/pgsql start -o "-h '' -k '${T}'" || die
 	createdb -h "${T}" peewee_test || die
+	psql -h "${T}" peewee_test -c 'create extension hstore;' || die
 
 	local -x PEEWEE_PSQL_HOST="${T}"
 	distutils-r1_src_test
