@@ -72,6 +72,8 @@ src_prepare() {
 multilib_src_configure() {
 	local myeconfargs=(
 		--sbindir="${EPREFIX}"/sbin
+		--localstatedir="${EPREFIX}"/var
+		--runstatedir="${EPREFIX}"/run
 		$(use_enable gssapi gssapi-krb5)
 		$(use_enable ldap zos-remote)
 		$(use_enable static-libs static)
