@@ -17,8 +17,9 @@ IUSE="avif brotli bzip2 fbcon freetype gpm jpeg libevent livecd lzip lzma selinu
 
 GRAPHICS_DEPEND="media-libs/libpng:="
 
+# libbsd: #931216
 RDEPEND="
-	dev-libs/libbsd
+	!elibc_Darwin? ( dev-libs/libbsd )
 	avif? (
 		media-libs/libavif:=
 	)
