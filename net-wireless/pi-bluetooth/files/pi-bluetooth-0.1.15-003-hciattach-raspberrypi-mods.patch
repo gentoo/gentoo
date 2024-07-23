@@ -1,0 +1,57 @@
+Description: Patches for compatibility with on-board Bluetooth on RPi 3
+Author: Simon Long <simon@raspberrypi.org>
+Last-Update: 2017-04-05
+
+--- a/tools/hciattach.c
++++ b/tools/hciattach.c
+@@ -1090,6 +1090,9 @@
+ 	{ "bcm43xx",    0x0000, 0x0000, HCI_UART_H4,   115200, 3000000,
+ 				FLOW_CTL, DISABLE_PM, NULL, bcm43xx, NULL  },
+ 
++	{ "bcm43xx-3wire",    0x0000, 0x0000, HCI_UART_3WIRE,   115200, 3000000,
++				0, DISABLE_PM, NULL, bcm43xx, NULL  },
++
+ 	{ "ath3k",    0x0000, 0x0000, HCI_UART_ATH3K, 115200, 115200,
+ 			FLOW_CTL, DISABLE_PM, NULL, ath3k_ps, ath3k_pm  },
+ 
+@@ -1236,7 +1239,7 @@
+ {
+ 	struct uart_t *u = NULL;
+ 	int detach, printpid, raw, opt, i, n, ld, err;
+-	int to = 10;
++	int to = 30;
+ 	int init_speed = 0;
+ 	int send_break = 0;
+ 	pid_t pid;
+--- a/tools/hciattach_bcm43xx.c
++++ b/tools/hciattach_bcm43xx.c
+@@ -43,7 +43,7 @@
+ #include "hciattach.h"
+ 
+ #ifndef FIRMWARE_DIR
+-#define FIRMWARE_DIR "/etc/firmware"
++#define FIRMWARE_DIR "/lib/firmware"
+ #endif
+ 
+ #define FW_EXT ".hcd"
+@@ -366,11 +366,8 @@
+ 		return -1;
+ 
+ 	if (bcm43xx_locate_patch(FIRMWARE_DIR, chip_name, fw_path)) {
+-		fprintf(stderr, "Patch not found, continue anyway\n");
++		fprintf(stderr, "Patch not found for %s, continue anyway\n", chip_name);
+ 	} else {
+-		if (bcm43xx_set_speed(fd, ti, speed))
+-			return -1;
+-
+ 		if (bcm43xx_load_firmware(fd, fw_path))
+ 			return -1;
+ 
+@@ -380,6 +377,7 @@
+ 			return -1;
+ 		}
+ 
++		sleep(1);
+ 		if (bcm43xx_reset(fd))
+ 			return -1;
+ 	}
