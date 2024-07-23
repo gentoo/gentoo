@@ -50,8 +50,17 @@ BDEPEND="
 	elibc_glibc? ( test? ( amd64? ( app-arch/rar ) x86? ( app-arch/rar ) ) )
 "
 
-PATCHES=(
-	"${FILESDIR}"/${P}-qt6.7-qtemporarydir.patch
+PATCHES=( "${FILESDIR}"/${P}-qt6.7-qtemporarydir.patch )
+
+CMAKE_SKIP_TESTS=(
+	# bug 822177: may segfault or hang indefinitely
+	kerfuffle-addtoarchivetest
+	# bug 827840: continuously broken with translations installed
+	plugins-clirartest
+	# bug 932499: failing upstream and disabled in 24.05.2
+	kerfuffle-extracttest
+	# bug 927184: requires DBus
+	app-batchextracttest
 )
 
 src_configure() {
@@ -60,17 +69,6 @@ src_configure() {
 	)
 
 	ecm_src_configure
-}
-
-src_test() {
-	local myctestargs=(
-		# bug 822177: kerfuffle-addtoarchivetest: may segfault or hang indefinitely
-		# bug 827840: plugins-clirartest: continuously broken with translations installed
-		# bug 932499: kerfuffle-extracttest: failing upstream and disabled in 24.05.2
-		-E "(kerfuffle-addtoarchivetest|plugins-clirartest|kerfuffle-extracttest)"
-	)
-
-	ecm_src_test
 }
 
 pkg_postinst() {
