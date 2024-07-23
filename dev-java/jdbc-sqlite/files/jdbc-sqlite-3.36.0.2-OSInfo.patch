@@ -1,0 +1,27 @@
+# Use java-config to get JAVA and JAVA_HOME.
+# OSINFO_CLASS seems fixed in newer versions.
+--- a/Makefile.common
++++ b/Makefile.common
+@@ -1,15 +1,15 @@
+ include VERSION
+ 
+-ifndef JAVA_HOME
+-$(warning Set JAVA_HOME environment variable)
+-endif
++#ifndef JAVA_HOME
++#$(warning Set JAVA_HOME environment variable)
++#endif
+ 
+-JAVA  := "$$JAVA_HOME/bin/java"
+-JAVAC := "$$JAVA_HOME/bin/javac" 
+-JAVAH := "$$JAVA_HOME/bin/javah"
++JAVA  := $(shell java-config --java)
++#JAVAC := "$$JAVA_HOME/bin/javac"
++JAVA_HOME := $(shell java-config --jdk-home)
+ 
+ TARGET := target
+-OSINFO_CLASS := org.sqlite.OSInfo
++OSINFO_CLASS := org.sqlite.util.OSInfo
+ OSINFO_PROG := lib/org/sqlite/util/OSInfo.class
+ 
+ ## building OSInfo.java 
