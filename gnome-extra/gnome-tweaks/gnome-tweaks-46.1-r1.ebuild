@@ -28,12 +28,12 @@ RDEPEND="${DEPEND}
 	>=dev-libs/glib-2.78:2
 	>=dev-libs/gobject-introspection-1.78.0
 	>=gui-libs/gtk-4.10.0:4[introspection]
-	>=gui-libs/libadwaita-1.4.0
-	>=dev-libs/libgudev-238
-	>=gnome-base/gnome-desktop-3.30:3[introspection]
+	>=gui-libs/libadwaita-1.4.0:1[introspection]
+	>=dev-libs/libgudev-238[introspection]
+	gnome-base/gnome-desktop:4
 	x11-libs/libnotify[introspection]
 	x11-libs/pango[introspection]
-	>=gnome-base/gsettings-desktop-schemas-46.0
+	>=gnome-base/gsettings-desktop-schemas-46.0[introspection]
 	>=gnome-base/gnome-shell-3.24
 	x11-wm/mutter
 "
