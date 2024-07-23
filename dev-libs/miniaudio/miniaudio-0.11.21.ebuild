@@ -13,5 +13,8 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
 src_install() {
 	insinto /usr/include/${PN}/
-	doins -r *
+	doins -r extras miniaudio.h
+
+	insinto /usr/share/${PN}/
+	doins -r examples
 }
