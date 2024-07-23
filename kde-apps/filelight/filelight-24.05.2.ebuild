@@ -35,3 +35,8 @@ RDEPEND="${DEPEND}
 	>=kde-frameworks/kirigami-${KFMIN}:6
 	>=kde-frameworks/qqc2-desktop-style-${KFMIN}:6
 "
+
+CMAKE_SKIP_TESTS=(
+	# bug 911856
+	scanManagerTest
+)
