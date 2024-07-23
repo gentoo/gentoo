@@ -1,0 +1,68 @@
+From 2f4f8f6024f9d7dbc9fe7a943b3d72d2aaefc84e Mon Sep 17 00:00:00 2001
+From: Nicholas Vinson <nvinson234@gmail.com>
+Date: Tue, 26 Dec 2023 22:05:17 -0500
+Subject: [PATCH] chain: Removed non-defined functions
+
+The functions nftnl_chain_parse(), nftnl_chain_parse_file(),
+nftnl_set_elems_foreach(), and nftnl_obj_unset() are no longer defined
+and removed from the code.
+
+The functions nftnl_chain_parse(), nftnl_chain_parse_file() were removed
+with commit 80077787f8f2 ("src: remove json support").
+
+The function nftnl_set_elems_foreach() does not appear to have ever been
+defined.
+
+However, libnftnl.map still lists these functions which causes libnftnl
+to fail to link with ld.lld as the option --undefined-version is
+disabled by default.
+
+Fixes Gentoo bug 914710 (https://bugs.gentoo.org/914710)
+
+Signed-off-by: Nicholas Vinson <nvinson234@gmail.com>
+Signed-off-by: Pablo Neira Ayuso <pablo@netfilter.org>
+---
+ include/libnftnl/chain.h | 4 ----
+ src/libnftnl.map         | 4 ----
+ 2 files changed, 8 deletions(-)
+
+diff --git a/include/libnftnl/chain.h b/include/libnftnl/chain.h
+index f56e581..bac1f5f 100644
+--- a/include/libnftnl/chain.h
++++ b/include/libnftnl/chain.h
+@@ -71,10 +71,6 @@ struct nlmsghdr;
+ 
+ void nftnl_chain_nlmsg_build_payload(struct nlmsghdr *nlh, const struct nftnl_chain *t);
+ 
+-int nftnl_chain_parse(struct nftnl_chain *c, enum nftnl_parse_type type,
+-		    const char *data, struct nftnl_parse_err *err);
+-int nftnl_chain_parse_file(struct nftnl_chain *c, enum nftnl_parse_type type,
+-			 FILE *fp, struct nftnl_parse_err *err);
+ int nftnl_chain_snprintf(char *buf, size_t size, const struct nftnl_chain *t, uint32_t type, uint32_t flags);
+ int nftnl_chain_fprintf(FILE *fp, const struct nftnl_chain *c, uint32_t type, uint32_t flags);
+ 
+diff --git a/src/libnftnl.map b/src/libnftnl.map
+index ad8f2af..8fffff1 100644
+--- a/src/libnftnl.map
++++ b/src/libnftnl.map
+@@ -47,8 +47,6 @@ global:
+   nftnl_chain_get_s32;
+   nftnl_chain_get_u64;
+   nftnl_chain_get_str;
+-  nftnl_chain_parse;
+-  nftnl_chain_parse_file;
+   nftnl_chain_snprintf;
+   nftnl_chain_fprintf;
+   nftnl_chain_nlmsg_build_payload;
+@@ -174,8 +172,6 @@ global:
+   nftnl_set_elems_nlmsg_build_payload;
+   nftnl_set_elems_nlmsg_parse;
+ 
+-  nftnl_set_elems_foreach;
+-
+   nftnl_set_elems_iter_create;
+   nftnl_set_elems_iter_cur;
+   nftnl_set_elems_iter_next;
+-- 
+2.43.2
+
