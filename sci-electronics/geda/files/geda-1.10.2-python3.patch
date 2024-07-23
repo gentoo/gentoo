@@ -1,0 +1,548 @@
+--- ./utils/scripts/garchive.py.old	2024-07-04 10:21:32.021379968 +0200
++++ ./utils/scripts/garchive.py	2024-07-04 10:34:01.732309413 +0200
+@@ -89,7 +89,7 @@
+             suffix due to popular demand.
+ """
+ ############################################################################
+-import sys, copy, string, getopt, re, os, commands
++import sys, copy, string, getopt, re, os, subprocess
+ 
+ ############################################################################
+ #  Helper fcns and data structures.                                        #
+@@ -250,7 +250,7 @@
+         try:
+             OptList, Args = getopt.getopt(sys.argv[1:], 'aef:ho:v', ["help"])
+         except getopt.error:
+-            print Usage                # print out usage string if
++            print( Usage )             # print out usage string if
+                                        # user uses invalid flag.
+             sys.exit(1)
+ 
+@@ -267,7 +267,7 @@
+                 self.VerboseMode = "verbose"
+                             
+             if Option in ('-h', '--help'):
+-                print Usage
++                print( Usage )
+                 sys.exit(0)
+                 
+         # Second pass.  Do sanity checking and get configured filenames.
+@@ -300,7 +300,7 @@
+                 else:
+                     print("Warning -- output file suffix is not \".tar.gz\" -- the")
+                     print("extractor won't know how to deal with your archive.")
+-                    Input = raw_input("Continue? [y/N] ")
++                    Input = input("Continue? [y/N] ")
+                     if ( (len(Input) == 0) or (Input[0] != "y") ):
+                         sys.exit(1)
+                     else:
+@@ -364,7 +364,7 @@
+     try:
+         LocalFile = open(LocalRCFileName, "r")
+     except:
+-        Input = raw_input(LocalRCFileName+" doesn't exist.  Create empty version in local dir? [Y/n] ")
++        Input = input(LocalRCFileName+" doesn't exist.  Create empty version in local dir? [Y/n] ")
+         if ( (len(Input) == 0) or (Input[0] != "n") ):
+             os.system("touch "+LocalRCFileName)
+         else:
+@@ -409,7 +409,7 @@
+             FileName = NormalizePath(Args.UserDir, FileName)    # Just make sure filename is kosher. . . .
+             ArchFileList.append(FileName)
+         else:
+-            Input = raw_input(FileName+" doesn't exist.  Create empty version in local dir? [Y/n] ")
++            Input = input(FileName+" doesn't exist.  Create empty version in local dir? [Y/n] ")
+             if ( (len(Input) == 0) or (Input[0] != "n") ):
+                 print("Creating "+FileName+" in archive.")
+                 os.system("touch "+FileName)
+@@ -594,14 +594,14 @@
+                     SavedLine.append("file="+SPICEFile+"\n")
+                 else:
+                     SavedLine.append(Line)
+-    GschemFile.close()
++        GschemFile.close()
+ 
+-    #  Now write out list in place of file.
+-    GschemFile = open(Args.ScratchDir+"/"+os.path.basename(SchemFileName), "w")
+-    for Line in SavedLine:
+-        GschemFile.write(Line)
++        #  Now write out list in place of file.
++        GschemFile = open(Args.ScratchDir+"/"+os.path.basename(SchemFileName), "w")
++        for Line in SavedLine:
++            GschemFile.write(Line)
+ 
+-    GschemFile.close()
++        GschemFile.close()
+ 
+     return 
+ 
+@@ -710,39 +710,39 @@
+     ArchiveFileList = CreateArchiveFileList(Args)
+ 
+     # print
+-    # print "ArchiveFileList = ",
+-    # print ArchiveFileList
++    # print( "ArchiveFileList = ", end="" )
++    # print( ArchiveFileList )
+ 
+     #  Create list of paths to various library files.  Returned paths are absolute path names
+     LibraryPathList = GetLibraryPath(Args)
+ 
+     # print
+-    # print "LibraryPathList = ",
+-    # print LibraryPathList
++    # print( "LibraryPathList = ", end="" )
++    # print( LibraryPathList )
+ 
+     #  Create list of schematic files to open and search.  Returned paths 
+     #  give only the base name (i.e. no path)
+     SchemFileList = CreateSchemFileList(Args, ArchiveFileList)
+ 
+     # print
+-    # print "SchemFileList = ",
+-    # print SchemFileList
++    # print( "SchemFileList = ", end="" )
++    # print( SchemFileList )
+ 
+     #  Now run through SchemFileList and create list of symbols.  Symbols are returned
+     #  with only base file name (i.e. no path).
+     SymbolFileList = CreateSymbolFileList(SchemFileList, LibraryPathList)
+ 
+     # print
+-    # print "SymbolFileList = ",
+-    # print SymbolFileList
++    # print( "SymbolFileList = ", end="" )
++    # print( SymbolFileList )
+ 
+     #  Now run through SchemFileList and create list of pointers to spice files
+     # ("file" attributes).  SPICEFiles are returned using absolute paths.
+     SPICEFileList = CreateSPICEFileList(Args, SchemFileList)
+ 
+     # print
+-    # print "SPICEFileList = ",
+-    # print SPICEFileList
++    # print( "SPICEFileList = ", end="" )
++    # print( SPICEFileList )
+ 
+     #  Now cd into /tmp dir and copy all files over to /tmp directory for processing.
+     os.chdir(Args.ScratchDir)
+@@ -795,7 +795,7 @@
+     except OSError:                   #  archive is not in user directory yet, no need to force it.
+         os.system("mv "+Args.OutputFileName+" "+Args.UserDir)
+     else:                          # Directory already exists
+-        Input = raw_input(Args.UserDir+"/"+Args.OutputFileName+" already exists.  Overwrite? [y/N] ")
++        Input = input(Args.UserDir+"/"+Args.OutputFileName+" already exists.  Overwrite? [y/N] ")
+         if ( (len(Input) == 0) or (Input[0] != "y") ):
+             print("Preserving existing archive in local directory.")
+             print("Your new archive lives in "+Args.ScratchDir+"/"+Args.OutputFileName)
+@@ -859,7 +859,7 @@
+         NewFileName = re.sub('\.gz', '', FileName)
+ 
+         # Get list of files in archive.  Then open up archive
+-        ReturnString = commands.getoutput("tar -t -f "+NewFileName)
++        ReturnString = subprocess.getoutput("tar -t -f "+NewFileName)
+         FileList = re.split('\s+', ReturnString)
+ 
+         for File in FileList:
+@@ -875,7 +875,7 @@
+                 except OSError:
+                     os.system("mv "+File+" "+Args.UserDir)
+                 else:
+-                    Input = raw_input(Args.UserDir+"/"+File+" already exists.  Overwrite? [yN] ")
++                    Input = input(Args.UserDir+"/"+File+" already exists.  Overwrite? [yN] ")
+                     if ( (len(Input) == 0) or (Input[0] != "y") ):
+                         print("Preserving existing "+File+" in local directory.")
+                     else:
+--- ./utils/scripts/tragesym.old	2024-07-04 09:40:53.437609462 +0200
++++ ./utils/scripts/tragesym	2024-07-04 10:03:12.245483467 +0200
+@@ -57,7 +57,7 @@
+ class Pin:
+     '''Encapsulation for all data related to a pin.'''
+     def __init__(self, element):
+-		
++        
+         element.extend(('', '', '', '', '', '', ''))
+         self.nr = element[P_NR].strip()
+         self.seq = element[P_SEQ].strip()
+@@ -69,10 +69,10 @@
+         self.label = element[P_LABEL].strip()
+ 
+     def __str__(self):
+-        str = "Pin object (nr:" + self.nr + " seq:" + self.seq + " type:" + self.type
+-        str += " style:" + self.style + " pos:" + self.pos + " net:" + self.net
+-        str += " label:" + self.label + ")"
+-        return str
++        s = "Pin object (nr:" + self.nr + " seq:" + self.seq + " type:" + self.type
++        s += " style:" + self.style + " pos:" + self.pos + " net:" + self.net
++        s += " label:" + self.label + ")"
++        return s
+ 
+     def __cmp__(self, other):
+         """
+@@ -94,31 +94,31 @@
+ 
+ 
+     def check(self):
+-    	if self.style=="spacer":
+-	    if self.pos == "":
+-		print "Error: there must be a position with a spacer.\n"
+-		sys.exit()
+-	    if self.pos not in poslist:
+-		print "Error: position is not allowed: \n", self
+-		sys.exit()
++        if self.style=="spacer":
++            if self.pos == "":
++                print( "Error: there must be a position with a spacer.\n" )
++                sys.exit()
++            if self.pos not in poslist:
++                print( "Error: position is not allowed: \n", self )
++                sys.exit()
+             return
+         if self.style != "none":
+             if self.seq.isdigit():
+-                string.atoi(self.seq)
++                int(self.seq)
+             else:
+-                print "pinseq needs to be a number: \n", self
++                print( "pinseq needs to be a number: \n", self )
+                 sys.exit()
+         if self.type not in typelist:
+-            print "Pintype not allowed: \n", self
++            print( "Pintype not allowed: \n", self )
+             sys.exit()
+         if self.style not in stylelist:
+-            print "Style is not allowed: \n", self
++            print( "Style is not allowed: \n", self )
+             sys.exit()
+         if self.pos not in poslist:
+-            print "Position is not allowed: \n", self
++            print( "Position is not allowed: \n", self )
+             sys.exit()
+         if self.pos == "" and self.net == "":
+-            print "There must be either position or a netlabel: \n", self
++            print( "There must be either position or a netlabel: \n", self )
+             sys.exit()
+         
+         
+@@ -126,16 +126,16 @@
+ 
+ def usage():
+     '''Print a usage message.'''
+-    print "tragesym version " + VERSION
+-    print "(C) 2001,2002,2003,2004,2006,2007 by Werner Hoch <werner.ho@gmx.de>"
+-    print "Usage is: ", sys.argv[0] ,"<infile> <outfile>"
++    print( "tragesym version " + VERSION )
++    print( "(C) 2001,2002,2003,2004,2006,2007 by Werner Hoch <werner.ho@gmx.de>" )
++    print( "Usage is: ", sys.argv[0] ,"<infile> <outfile>" )
+ 
+ 
+-def parselabel(str):
++def parselabel(s):
+     '''returns a stripped label without overbar markers "\_"'''
+     slash, neg= 0, 0
+     textout=""
+-    for letter in str:
++    for letter in s:
+         if letter == '\\' and slash == 0:
+             slash=1
+         elif slash == 1 and letter == '_':
+@@ -149,9 +149,9 @@
+             slash = 0
+             
+     if slash == 1 or neg == 1:
+-        print '''unbalanced overbars or escapesequence: ''', str
+-        print '''the overbar starts and ends with "\_" example: \"\_enable\_'''
+-        print '''to write a "\" use "\\"'''
++        print( '''unbalanced overbars or escapesequence: ''', s )
++        print( '''the overbar starts and ends with "\_" example: \"\_enable\_''' )
++        print( '''to write a "\" use "\\"''' )
+         sys.exit()
+     return textout
+ 
+@@ -160,17 +160,17 @@
+     return x-(x+r/2)%r+r/2
+ 
+ ## returns the words in reverse order    
+-def swapwords(str): 
+-    list=string.split(str," ")
++def swapwords(s): 
++    list=s.split(" ")
+     back=list[0]
+     for i in list[1:]:
+         back=i+" "+back
+     return back
+ 
+ ## split a string at the first tab or equal char
+-def split_tab_equal(str,n=1):
+-    list_tab=string.split(str,'\t',n)
+-    list_equal=string.split(str,'=',n)
++def split_tab_equal(s,n=1):
++    list_tab=s.split('\t',n)
++    list_equal=s.split('=',n)
+     if len(list_tab[0]) < len(list_equal[0]):
+         return list_tab
+     else:
+@@ -186,42 +186,42 @@
+     section=""
+     linenr=0
+     for lineraw in content:
+-    	line = lineraw.rstrip()
++        line = lineraw.rstrip()
+         linenr=linenr+1
+-    	if len(line) == 0:
+-    		continue
++        if len(line) == 0:
++            continue
+         match = re_section_header.match(line)
+-        if match:        			# find a section 
++        if match:                    # find a section 
+             section=match.group('name')
+             continue
+         elif section=="" or line[0]=="#" \
+-             or len(string.strip(line)) == 0:	# comment, empty line or no section
++             or len(line.strip()) == 0:    # comment, empty line or no section
+             continue
+         if section=="options":
+             element=split_tab_equal(line,1)
+             if len(element) > 1:
+-                options[string.strip(element[0])]=string.strip(element[1])
++                options[element[0].strip()]=element[1].strip()
+         elif section=="geda_attr":
+             element=split_tab_equal(line,1)
+             if len(element) < 2 or len(element[1].strip()) == 0:
+-                print 'Warning: Empty attribute "%s" in the geda_attr section' % element[0]
+-                print '         The incomplete attribute will be dropped'
++                print( 'Warning: Empty attribute "%s" in the geda_attr section' % element[0] )
++                print( '         The incomplete attribute will be dropped' )
+             else:
+                 nr=1
+-                while geda_attr.has_key((element[0],nr)):
++                while (element[0],nr) in geda_attr:
+                     nr=nr+1
+-                geda_attr[(string.strip(element[0]),nr)]=string.strip(element[1])
++                geda_attr[(element[0].strip(),nr)]=element[1].strip()
+         elif section=="pins":
+-            element=string.split(line,"\t")
++            element=line.split("\t")
+             if len(element) > 2:
+                 pins.append(Pin(element))
+         else:
+-            print linenr, ": illegal section name: ", section
++            print( linenr, ": illegal section name: ", section )
+             sys.exit()
+     return options, geda_attr, pins
+ 
+ 
+-def splitspecial(str):
++def splitspecial(s):
+     """
+     makes a list out of a string:
+     "3abc345x?" --> ["",3,"abc",345,"x?"]
+@@ -229,7 +229,7 @@
+     isletter=1
+     list=[]
+     current = ""
+-    for letter in str:
++    for letter in s:
+         if letter not in string.digits:
+             if isletter == 1:
+                 current += letter
+@@ -251,16 +251,16 @@
+     return list
+ 
+ def writesym(filename,options,attr,pins):
+-    o_symwidth=string.atoi(options["sym_width"])
+-    o_hdist=string.atoi(options["pinwidthhorizontal"])
++    o_symwidth=int(options["sym_width"])
++    o_hdist=int(options["pinwidthhorizontal"])
+     
+     # If pinwidthvertikal was defined, use it, else use pinwidthvertical
+     # This keeps compatibility with older versions, while fixing the spell
+     # bug
+     if options["pinwidthvertikal"] != preset_options["pinwidthvertikal"]:
+-    	o_vdist=string.atoi(options["pinwidthvertikal"])
++        o_vdist=int(options["pinwidthvertikal"])
+     else:
+-	o_vdist=string.atoi(options["pinwidthvertical"])
++        o_vdist=int(options["pinwidthvertical"])
+ 
+     o_wordswap=options["wordswap"]
+     o_rotate=options["rotate_labels"]
+@@ -275,14 +275,14 @@
+     numpbottom=0
+     numptop = 0
+     for pin in pins:
+-    	if pin.pos == "l": # left pin
+-    		numpleft=numpleft+1
+-    	elif pin.pos == "r": #right pin
+-    		numpright=numpright+1
+-    	elif pin.pos == "b": #right pin
+-    		numpbottom=numpbottom+1
+-    	elif pin.pos == "t": #right pin
+-    		numptop=numptop+1
++        if pin.pos == "l": # left pin
++            numpleft=numpleft+1
++        elif pin.pos == "r": #right pin
++            numpright=numpright+1
++        elif pin.pos == "b": #right pin
++            numpbottom=numpbottom+1
++        elif pin.pos == "t": #right pin
++            numptop=numptop+1
+ 
+     # Calculate the position of the pins in the left and right side.    
+     plefty, prighty = 0, 0
+@@ -296,7 +296,7 @@
+     # Calculate the bottom left of the box
+     bottomleftx, bottomlefty = pinlength + 100, 100
+     if numpbottom > 0:
+-	bottomlefty += pinlength
++        bottomlefty += pinlength
+ 
+     # Calculate the minimum symwidth and increase it if necessary
+     calculated_top_symwidth=(numptop-1)*o_hdist+2*o_hdist
+@@ -306,10 +306,10 @@
+                               calculated_top_symwidth)
+ 
+     if (numptop + numpbottom > 0):
+-	print "Note: use sym_width to adjust symbol width if texts overlap."
++        print( "Note: use sym_width to adjust symbol width if texts overlap." )
+ 
+     if o_symwidth == 0:
+-	o_symwidth = calculated_symwidth
++        o_symwidth = calculated_symwidth
+ 
+     # Calculate the symbol's high
+     if numpleft < numpright:
+@@ -334,17 +334,17 @@
+     f = open(filename, "w")
+ 
+ ### Draw the symbol version
+-    if attr.has_key(("version",1)):
++    if ("version",1) in attr:
+         value=attr[("version",1)]
+         if re.match("[0-9]{8}$", value):
+             f.write("v " + value + " 1\n")
+         elif re.match("[0-9]{8} 1$", value):
+             f.write("v " + value + "\n")
+         else:
+-            print "error: version string format invalid: [%s]" % value
++            print( "error: version string format invalid: [%s]" % value )
+             sys.exit()
+     else:
+-        print "error: version attribut missing"
++        print( "error: version attribut missing" )
+         sys.exit()
+    
+     if o_sort == "yes":
+@@ -355,7 +355,7 @@
+             continue
+         if pin.style=="spacer":
+             if o_sort == "yes":
+-                print "Warning: spacers are not supported when sorting labels"
++                print( "Warning: spacers are not supported when sorting labels" )
+                 continue
+             elif pin.pos == "l": #left pin
+                 plefty=plefty - o_vdist  #where to draw the _next_ pin
+@@ -487,40 +487,40 @@
+ 
+     # Center name if we have top pins
+     if numptop > 0:
+-	namex, namey = (bottomleftx + o_symwidth) / 2, (bottomlefty + high) / 2 + 100
++        namex, namey = (bottomleftx + o_symwidth) / 2, (bottomlefty + high) / 2 + 100
+     else:
+-	namex, namey = bottomleftx, bottomlefty+high+100
++        namex, namey = bottomleftx, bottomlefty+high+100
+ 
+     textx = namex
+     texty = namey + 200
+     if numptop > 0:
+- 	texty += 100
++        texty += 100
+     
+     ## special attribute format
+-    if attr.has_key(("refdes",1)):
++    if ("refdes",1) in attr:
+         f.write("T %i"% urefx +" %i"% urefy +" 8 10 1 1 0 6 1\n")
+         f.write("refdes=" + attr[("refdes",1)] + "\n")
+     else:
+-        print "Warning: refdes attribut missing"
++        print( "Warning: refdes attribut missing" )
+ 
+-    if attr.has_key(("name",1)):
++    if ("name",1) in attr:
+         f.write("T %i" %namex + " %i"% namey + " 9 10 1 0 0 0 1\n")
+         f.write(attr[("name",1)] + "\n")
+     else:
+-        print "Warning: name attribut missing"
++        print( "Warning: name attribut missing" )
+ 
+     ## attributes with same format and warnings
+     for a in single_attr_warning:
+-        if attr.has_key((a,1)):
++        if (a,1) in attr:
+             f.write("T %i" %textx + " %i"% texty + " 5 10 0 0 0 0 1\n")
+             f.write(a + "=" + attr[(a,1)] + "\n")
+             texty=texty+200
+         else:
+-            print "Warning: " + a + " attribut missing"
++            print( "Warning: " + a + " attribut missing" )
+ 
+     ## attributes without warning
+     for a in single_attr:
+-        if attr.has_key((a,1)):
++        if (a,1) in attr:
+             f.write("T %i" %textx + " %i"% texty + " 5 10 0 0 0 0 1\n")
+             f.write(a + "=" + attr[(a,1)] + "\n")
+             texty=texty+200
+@@ -528,7 +528,7 @@
+     ## attributes with more than one equal name
+     for a in multiple_attr:
+         i = 1
+-        while attr.has_key((a,i)):
++        while (a,i) in attr:
+             f.write("T %i" %textx + " %i"% texty + " 5 10 0 0 0 0 1\n")
+             f.write(a + "=" + attr[(a,i)] + "\n")
+             texty=texty+200
+@@ -540,12 +540,12 @@
+             f.write("T %i" %textx + " %i"% texty + " 5 10 0 0 0 0 1\n")
+             f.write(name + "=" + value + "\n")
+             texty=texty+200
+-            print 'Warning: The attribute "%s=%s" is not official' %(name, value)
++            print( 'Warning: The attribute "%s=%s" is not official' %(name, value) )
+ 
+     nets={}
+     for pin in pins:
+         if pin.style == "none":
+-            if not nets.has_key(pin.net):
++            if not pin.net in nets:
+                 nets[pin.net] = pin.nr
+             else:
+                 nets[pin.net] = nets[pin.net] + ","+ pin.nr
+@@ -559,16 +559,16 @@
+ def mergeoptions(source_opt,pre_opt):
+     ret=pre_opt
+     for item in source_opt.keys():
+-        if ret.has_key(item):
++        if item in ret:
+             ret[item]=source_opt[item]
+         else:
+-            print "This option is not allowed:", item
++            print( "This option is not allowed:", item )
+             sys.exit()
+     return ret
+ 
+ def generate_pinseq(pins):
+     seq=1
+-    for nr in xrange(len(pins)):
++    for nr in range(len(pins)):
+         if pins[nr].style not in ["none","spacer"]:
+             pins[nr].seq = "%i"%seq
+             seq = seq + 1
+@@ -597,7 +597,7 @@
+ file_in=args[0]
+ file_out=args[1]
+ if not os.path.exists(file_in):
+-    print "Input file " + file_in + " not found."
++    print( "Input file " + file_in + " not found." )
+     sys.exit()
+ 
+ ## read sourcefile
