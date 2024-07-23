@@ -18,7 +18,6 @@ HOMEPAGE="
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/hepcedar/rivet"
-	EGIT_BRANCH="release-4-0-x"
 else
 	SRC_URI="https://www.hepforge.org/archive/rivet/${MY_PF}.tar.gz -> ${P}.tar.gz"
 	S=${WORKDIR}/${MY_PF}
@@ -66,6 +65,9 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.6-binreloc.patch
+	"${FILESDIR}"/${PN}-3.1.10-ref_cin.patch # https://gitlab.com/hepcedar/rivet/-/merge_requests/844
+	"${FILESDIR}"/${PN}-4.0.0-pythontests.patch
+	"${FILESDIR}"/${PN}-4.0.0-analyses.patch
 )
 
 pkg_setup() {
