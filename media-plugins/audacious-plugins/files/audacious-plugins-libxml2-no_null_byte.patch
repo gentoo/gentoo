@@ -1,0 +1,29 @@
+commit 5103ba0f504f1a98cac7babca3a0e45ca969f7f8
+Author: Thomas Lange <thomas-lange2@gmx.de>
+Date:   Sat Jan 13 19:08:28 2024 +0100
+
+    scrobbler2: Fix XML parsing of Last.fm API responses
+    
+    Due to an off-by-one-error newer libxml2 versions failed to parse valid XML.
+    Parser error: "Extra content at the end of the document"
+    
+    See also: https://github.com/orgs/audacious-media-player/discussions/100
+
+diff --git a/src/scrobbler2/scrobbler_xml_parsing.cc b/src/scrobbler2/scrobbler_xml_parsing.cc
+index 3320a32b0..46542f135 100644
+--- a/src/scrobbler2/scrobbler_xml_parsing.cc
++++ b/src/scrobbler2/scrobbler_xml_parsing.cc
+@@ -10,7 +10,7 @@ static gboolean prepare_data () {
+     received_data[received_data_size] = '\0';
+     AUDDBG("Data received from last.fm:\n%s\n%%%%End of data%%%%\n", received_data);
+ 
+-    doc = xmlReadMemory(received_data, received_data_size+1, nullptr, nullptr, 0);
++    doc = xmlReadMemory(received_data, received_data_size, nullptr, nullptr, 0);
+     received_data_size = 0;
+     if (doc == nullptr) {
+         AUDDBG("Document not parsed successfully.\n");
+@@ -297,4 +297,3 @@ gboolean read_session_key(String &error_code, String &error_detail) {
+     clean_data();
+     return result;
+ }
+-
