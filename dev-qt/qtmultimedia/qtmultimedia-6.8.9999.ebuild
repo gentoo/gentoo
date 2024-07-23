@@ -85,6 +85,7 @@ src_configure() {
 		$(qt_feature pulseaudio)
 		$(qt_feature v4l linux_v4l)
 		$(qt_feature vaapi)
+		-DQT_UNITY_BUILD=OFF # currently fails to build with
 	)
 
 	# ALSA backend is experimental off-by-default and can take priority
