@@ -23,6 +23,8 @@ src_install() {
 	local tools=(
 		addr2line ar dlltool nm objcopy objdump ranlib readelf size
 		strings strip windres
+		# https://bugs.gentoo.org/936068
+		cxxfilt:c++filt
 	)
 	local chosts=( "${CHOST}" )
 	if use multilib-symlinks; then
@@ -40,7 +42,7 @@ src_install() {
 	done
 	for chost in "${chosts[@]}"; do
 		for t in "${tools[@]}"; do
-			dosym "llvm-${t}" "${dest}/${chost}-${t}"
+			dosym "llvm-${t%:*}" "${dest}/${chost}-${t#*:}"
 		done
 	done
 }
