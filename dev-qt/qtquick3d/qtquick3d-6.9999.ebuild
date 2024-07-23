@@ -42,8 +42,8 @@ CMAKE_SKIP_TESTS=(
 
 src_configure() {
 	local mycmakeargs=(
-		# using bundled OpenXR failed when last tried, and either way
-		# it would be better to package it if someone needs this
+		# TODO: if someone wants it, openxr should likely have its own
+		# USE and be packaged rather than use the bundled copy
 		-DQT_FEATURE_quick3dxr_openxr=OFF
 		-DQT_FEATURE_system_assimp=ON
 		-DQT_FEATURE_system_openxr=ON
