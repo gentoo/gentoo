@@ -5,6 +5,9 @@
     <email>patrick@gentoo.org</email>
     <name>Patrick Lauer</name>
   </maintainer>
+  <use>
+    <flag name="ncurses">Enable support for running make menuconfig</flag>
+  </use>
   <upstream>
     <remote-id type="github">landley/toybox</remote-id>
     <remote-id type="cpe">cpe:/a:toybox_project:toybox</remote-id>
