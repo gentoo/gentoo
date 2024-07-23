@@ -7,7 +7,7 @@ LUA_COMPAT=( lua5-{3,4} )
 inherit lua-single meson optfeature xdg
 
 DESCRIPTION="A lightweight GTK image viewer forked from GQview"
-HOMEPAGE="http://www.geeqie.org"
+HOMEPAGE="https://www.geeqie.org"
 SRC_URI="https://github.com/BestImageViewer/${PN}/releases/download/v${PV}/${P}.tar.xz
 	https://dev.gentoo.org/~voyageur/distfiles/${P}-docs.tar.xz"
 # Doc build:

@@ -7,7 +7,7 @@ LUA_COMPAT=( lua5-{3,4} )
 inherit git-r3 lua-single meson optfeature xdg
 
 DESCRIPTION="A lightweight GTK image viewer forked from GQview"
-HOMEPAGE="http://www.geeqie.org"
+HOMEPAGE="https://www.geeqie.org"
 # Using github mirror, as geeqie.org does not have a valid SSL certificate
 EGIT_REPO_URI="https://github.com/BestImageViewer/geeqie.git"
 
