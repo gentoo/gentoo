@@ -28,7 +28,7 @@ RESTRICT="bindist mirror"
 
 LICENSE="AMD-GPU-PRO-EULA"
 SLOT="0/31"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 
 RDEPEND="
 	media-libs/amdgpu-pro-vulkan
