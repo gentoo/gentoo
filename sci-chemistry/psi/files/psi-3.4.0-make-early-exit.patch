@@ -1,0 +1,130 @@
+Another fix for parallel make. This time, it terminates make early
+and explicitly depends binaries and utilities on libraries
+fixes No rule to make target '-lPSI_ipv1' from https://bugs.gentoo.org/886127
+and my peace of mind
+--- a/src/Makefile.in	2024-05-14 11:22:10.110326779 -0000
++++ b/src/Makefile.in	2024-05-14 11:35:14.986457629 -0000
+@@ -1,15 +1,17 @@
+ SHELL = /bin/sh
+ 
+-.PHONY:	default all install depend clean dclean targetclean
++TOPTARGETS :=	default all install depend clean dclean targetclean
+ 
+-subdirs = lib bin util
++SUBDIRS :=	lib bin util
+ 
+ default: all
+ 
+-all clean install depend dclean targetclean:
+-	for dir in $(subdirs); do \
+-		$(MAKE) -C $$dir $@; \
+-	done
++$(TOPTARGETS) : $(SUBDIRS)
++bin util: lib
++$(SUBDIRS):
++	$(MAKE) -C $@ $(MAKECMDGOALS)
++
++.PHONY: $(TOPTARGETS) $(SUBDIRS)
+ 
+ top_srcdir = @top_srcdir@
+ srcdir = @srcdir@
+--- a/src/lib/Makefile.in	2024-05-14 11:44:07.558077433 -0000
++++ b/src/lib/Makefile.in	2024-05-14 11:45:00.527847673 -0000
+@@ -1,13 +1,14 @@
+  
+-.PHONY:	default all install depend clean dclean targetclean
++TOPTARGETS :=	default all install depend clean dclean targetclean
+ 
+-subdirs = libipv1 libciomr libchkpt libqt libpsio libiwl libdpd libutil \
++SUBDIRS := libipv1 libciomr libchkpt libqt libpsio libiwl libdpd libutil \
+           liboptions libmoinfo libbasis libmints
+ 
+-all clean install install_inc install_man depend dclean targetclean:
+-	for dir in $(subdirs); do \
+-		$(MAKE) -C $$dir $@; \
+-	done
++$(TOPTARGETS): $(SUBDIRS)
++$(SUBDIRS):
++	$(MAKE) -C $@ $(MAKECMDGOALS)
++
++.PHONY: $(TOPTARGETS) $(SUBDIRS)
+ 
+ #
+ # keep the configuration information and makefile up-to-date
+diff -ru a/src/bin/Makefile.in b/src/bin/Makefile.in
+--- a/src/bin/Makefile.in	2024-05-14 12:03:37.987500638 -0000
++++ b/src/bin/Makefile.in	2024-05-14 12:04:41.321169351 -0000
+@@ -1,7 +1,7 @@
+  
+-.PHONY:	default all install depend clean dclean targetclean
++TOPTARGETS :=	default all install depend clean dclean targetclean
+ 
+-subdirs = \
++SUBDIRS := \
+ psi3 input cints cscf transqt transqt2 optking \
+ ccsort ccenergy cctriples cchbar cclambda ccdensity cceom ccresponse \
+ clag cphf detcas detcasman detci geom mp2 mp2r12 oeprop psiclean \
+@@ -13,10 +13,11 @@
+ subdirs += psirb
+ endif
+ 
+-all install depend clean dclean targetclean:
+-	for dir in $(subdirs); do \
+-		$(MAKE) -C $$dir $@; \
+-	done
++$(TOPTARGETS): $(SUBDIRS)
++$(SUBDIRS):
++	$(MAKE) -C $@ $(MAKECMDGOALS)
++
++.PHONY: $(TOPTARGETS) $(SUBDIRS)
+ 
+ top_srcdir = @top_srcdir@
+ srcdir = @srcdir@
+diff -ru a/src/samples/Makefile.in b/src/samples/Makefile.in
+--- a/src/samples/Makefile.in	2024-05-14 12:03:37.975500701 -0000
++++ b/src/samples/Makefile.in	2024-05-14 12:05:29.264918565 -0000
+@@ -1,14 +1,15 @@
+  
+-.PHONY:	default all install depend clean dclean targetclean
++TOPTARGETS :=	default all install depend clean dclean targetclean
+ 
+ include MakeVars
+ 
+-subdirs = mints
++SUBDIRS := mints
+ 
+-all install depend clean dclean targetclean:
+-	for dir in $(subdirs); do \
+-		$(MAKE) -C $$dir $@; \
+-	done
++$(TOPTARGETS): $(SUBDIRS)
++$(SUBDIRS):
++	$(MAKE) -C $@ $(MAKECMDGOALS)
++
++.PHONY: $(TOPTARGETS) $(SUBDIRS)
+ 
+ top_srcdir = @top_srcdir@
+ srcdir = @srcdir@
+diff -ru a/src/util/Makefile.in b/src/util/Makefile.in
+--- a/src/util/Makefile.in	2024-05-14 12:03:38.031500408 -0000
++++ b/src/util/Makefile.in	2024-05-14 12:06:02.896742643 -0000
+@@ -1,12 +1,13 @@
+ 
+-.PHONY:	default all install depend clean dclean targetclean
++TOPTARGETS :=	default all install depend clean dclean targetclean
+ 
+-subdirs = tocprint psi2molden
++SUBDIRS := tocprint psi2molden
+ 
+-all install depend clean dclean targetclean:
+-	for dir in $(subdirs); do \
+-		$(MAKE) -C $$dir $@; \
+-	done
++$(TOPTARGETS): $(SUBDIRS)
++$(SUBDIRS):
++	$(MAKE) -C $@ $(MAKECMDGOALS)
++
++.PHONY: $(TOPTARGETS) $(SUBDIRS)
+ 
+ top_srcdir = @top_srcdir@
+ srcdir = @srcdir@
