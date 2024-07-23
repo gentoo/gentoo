@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>audvare@gmail.com</email>
+		<name>Andrew Udvare</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">wolfSSL/wolfssl</remote-id>
+	</upstream>
+	<use>
+		<flag name="debug">Debug support</flag>
+		<flag name="sniffer">Enable sniffer via libpcap</flag>
+		<flag name="writedup">Enable write duplication of WOLFSSL objects</flag>
+	</use>
+</pkgmetadata>
