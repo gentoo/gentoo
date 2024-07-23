@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 89c1f85..6283b1f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -128,7 +128,7 @@ check-po:
+ #-----------------------------------------------------------------------
+ # Release
+ 
+-install: install-mo install-bin
++install: install-bin
+ 
+ install-mo: mo
+ 	test -d $(LOCALEDIR) || mkdir -p $(LOCALEDIR); \
