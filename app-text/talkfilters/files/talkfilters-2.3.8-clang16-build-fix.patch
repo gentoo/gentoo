@@ -1,0 +1,11 @@
+Bug: https://bugs.gentoo.org/894712
+--- a/getopt.c
++++ b/getopt.c
+@@ -26,6 +26,7 @@
+ #define _NO_PROTO
+ #endif
+ 
++#include <string.h>
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+ #endif
