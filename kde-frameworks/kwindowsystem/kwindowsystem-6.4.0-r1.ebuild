@@ -17,7 +17,7 @@ RESTRICT="test"
 # slot op: Uses Qt6::GuiPrivate for qtx11extras_p.h
 # slot op: Uses private/qwayland*_p.h headers
 RDEPEND="
-	>=dev-qt/qtbase-${QTMIN}:6[gui]
+	>=dev-qt/qtbase-${QTMIN}:6[gui,wayland?]
 	>=dev-qt/qtdeclarative-${QTMIN}:6
 	wayland? ( >=dev-qt/qtwayland-${QTMIN}:6= )
 	X? (
