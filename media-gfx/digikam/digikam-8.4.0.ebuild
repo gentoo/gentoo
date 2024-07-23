@@ -105,6 +105,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${P}-cmake.patch"
 	"${FILESDIR}/${PN}-8.3.0-cmake-addressbook.patch"
+	"${FILESDIR}/${P}-fix-find_libheif-regex.patch" # bug 936507
 )
 
 pkg_pretend() {
