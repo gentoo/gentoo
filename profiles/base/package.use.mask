@@ -28,6 +28,10 @@ dev-lang/python jit
 # bug #887223, bug #891367, bug #903891, bug #917139
 dev-lang/ruby static-libs
 
+# Alfredo Tupone <tupone@gentoo.org> (2024-05-28)
+# Not working, bug #931046
+>=sci-libs/caffe2-2.3.0 rocm
+
 # Sam James <sam@gentoo.org> (2024-05-09)
 # Experimental option upstream which seems undertested and underdocumented.
 # Fails to build with stricter C compilers too (bug #919685).
