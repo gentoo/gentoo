@@ -61,7 +61,7 @@ _LLVM_OLDEST_SLOT=15
 # @DESCRIPTION:
 # The newest stable LLVM version.  Versions newer than that won't
 # be automatically enabled via USE defaults.
-_LLVM_NEWEST_STABLE=17
+_LLVM_NEWEST_STABLE=18
 
 # == control variables ==
 
