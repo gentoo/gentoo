@@ -1,0 +1,236 @@
+As per https://www.spinics.net/lists/netdev/msg848087.html, preparation phase
+was removed in kernel 6.1.  Further, "This was tested on the MSCC PHY but not on
+the Altantic nor mlx5e NICs".
+
+Also, as per https://lore.kernel.org/netdev/20220927132753.750069-1-kuba@kernel.org/,
+the fourth argument, the weight argument, was dropped from 6.1.  And the passed
+weight of that argument, AQ_CFG_NAPI_WEIGHT, is 64 which is already the default.
+
+diff -Naur a/aq_macsec.c b/aq_macsec.c
+--- a/aq_macsec.c	2022-10-04 06:21:50.000000000 -0400
++++ b/aq_macsec.c	2023-02-11 02:45:00.114543856 -0500
+@@ -293,8 +293,10 @@
+ 	struct aq_nic_s *nic = netdev_priv(ctx->netdev);
+ 	int ret = 0;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0)
+ 	if (ctx->prepare)
+ 		return 0;
++#endif
+ 
+ 	if (netif_carrier_ok(nic->ndev))
+ 		ret = aq_apply_secy_cfg(nic, ctx->secy);
+@@ -307,8 +309,10 @@
+ 	struct aq_nic_s *nic = netdev_priv(ctx->netdev);
+ 	int i;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0)
+ 	if (ctx->prepare)
+ 		return 0;
++#endif
+ 
+ 	for (i = 0; i < AQ_MACSEC_MAX_SC; i++) {
+ 		if (nic->macsec_cfg->txsc_idx_busy & BIT(i))
+@@ -469,8 +473,10 @@
+ 	if (txsc_idx == AQ_MACSEC_MAX_SC)
+ 		return -ENOSPC;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0)
+ 	if (ctx->prepare)
+ 		return 0;
++#endif
+ 
+ 	cfg->sc_sa = sc_sa;
+ 	cfg->aq_txsc[txsc_idx].hw_sc_idx = aq_to_hw_sc_idx(txsc_idx, sc_sa);
+@@ -495,8 +501,10 @@
+ 	if (txsc_idx < 0)
+ 		return -ENOENT;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0)
+ 	if (ctx->prepare)
+ 		return 0;
++#endif
+ 
+ 	if (netif_carrier_ok(nic->ndev) && netif_running(secy->netdev))
+ 		ret = aq_set_txsc(nic, txsc_idx);
+@@ -546,8 +554,10 @@
+ 	struct aq_nic_s *nic = netdev_priv(ctx->netdev);
+ 	int ret = 0;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0)
+ 	if (ctx->prepare)
+ 		return 0;
++#endif
+ 
+ 	if (!nic->macsec_cfg)
+ 		return 0;
+@@ -608,8 +618,10 @@
+ 	if (txsc_idx < 0)
+ 		return -EINVAL;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0)
+ 	if (ctx->prepare)
+ 		return 0;
++#endif
+ 
+ 	aq_txsc = &cfg->aq_txsc[txsc_idx];
+ 	set_bit(ctx->sa.assoc_num, &aq_txsc->tx_sa_idx_busy);
+@@ -638,8 +650,10 @@
+ 	if (txsc_idx < 0)
+ 		return -EINVAL;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0)
+ 	if (ctx->prepare)
+ 		return 0;
++#endif
+ 
+ 	aq_txsc = &cfg->aq_txsc[txsc_idx];
+ 	if (netif_carrier_ok(nic->ndev) && netif_running(secy->netdev))
+@@ -688,8 +702,10 @@
+ 	if (txsc_idx < 0)
+ 		return -EINVAL;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0)
+ 	if (ctx->prepare)
+ 		return 0;
++#endif
+ 
+ 	ret = aq_clear_txsa(nic, &cfg->aq_txsc[txsc_idx], ctx->sa.assoc_num,
+ 			    AQ_CLEAR_ALL);
+@@ -787,8 +803,10 @@
+ 	if (rxsc_idx >= rxsc_idx_max)
+ 		return -ENOSPC;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0)
+ 	if (ctx->prepare)
+ 		return 0;
++#endif
+ 
+ 	cfg->aq_rxsc[rxsc_idx].hw_sc_idx = aq_to_hw_sc_idx(rxsc_idx,
+ 							   cfg->sc_sa);
+@@ -816,8 +834,10 @@
+ 	if (rxsc_idx < 0)
+ 		return -ENOENT;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0)
+ 	if (ctx->prepare)
+ 		return 0;
++#endif
+ 
+ 	if (netif_carrier_ok(nic->ndev) && netif_running(ctx->secy->netdev))
+ 		ret = aq_set_rxsc(nic, rxsc_idx);
+@@ -883,8 +903,10 @@
+ 	if (rxsc_idx < 0)
+ 		return -ENOENT;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0)
+ 	if (ctx->prepare)
+ 		return 0;
++#endif
+ 
+ 	if (netif_carrier_ok(nic->ndev))
+ 		clear_type = AQ_CLEAR_ALL;
+@@ -959,8 +981,10 @@
+ 	if (rxsc_idx < 0)
+ 		return -EINVAL;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0)
+ 	if (ctx->prepare)
+ 		return 0;
++#endif
+ 
+ 	aq_rxsc = &nic->macsec_cfg->aq_rxsc[rxsc_idx];
+ 	set_bit(ctx->sa.assoc_num, &aq_rxsc->rx_sa_idx_busy);
+@@ -989,8 +1013,10 @@
+ 	if (rxsc_idx < 0)
+ 		return -EINVAL;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0)
+ 	if (ctx->prepare)
+ 		return 0;
++#endif
+ 
+ 	if (netif_carrier_ok(nic->ndev) && netif_running(secy->netdev))
+ 		ret = aq_update_rxsa(nic, cfg->aq_rxsc[rxsc_idx].hw_sc_idx,
+@@ -1040,8 +1066,10 @@
+ 	if (rxsc_idx < 0)
+ 		return -EINVAL;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0)
+ 	if (ctx->prepare)
+ 		return 0;
++#endif
+ 
+ 	ret = aq_clear_rxsa(nic, &cfg->aq_rxsc[rxsc_idx], ctx->sa.assoc_num,
+ 			    AQ_CLEAR_ALL);
+@@ -1055,8 +1083,10 @@
+ 	struct aq_macsec_common_stats *stats = &nic->macsec_cfg->stats;
+ 	struct aq_hw_s *hw = nic->aq_hw;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0)
+ 	if (ctx->prepare)
+ 		return 0;
++#endif
+ 
+ 	aq_get_macsec_common_stats(hw, stats);
+ 
+@@ -1084,8 +1114,10 @@
+ 	if (txsc_idx < 0)
+ 		return -ENOENT;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0)
+ 	if (ctx->prepare)
+ 		return 0;
++#endif
+ 
+ 	aq_txsc = &nic->macsec_cfg->aq_txsc[txsc_idx];
+ 	stats = &aq_txsc->stats;
+@@ -1117,8 +1149,10 @@
+ 	if (txsc_idx < 0)
+ 		return -EINVAL;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0)
+ 	if (ctx->prepare)
+ 		return 0;
++#endif
+ 
+ 	aq_txsc = &cfg->aq_txsc[txsc_idx];
+ 	sa_idx = aq_txsc->hw_sc_idx | ctx->sa.assoc_num;
+@@ -1158,8 +1192,10 @@
+ 	if (rxsc_idx < 0)
+ 		return -ENOENT;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0)
+ 	if (ctx->prepare)
+ 		return 0;
++#endif
+ 
+ 	aq_rxsc = &cfg->aq_rxsc[rxsc_idx];
+ 	for (i = 0; i < MACSEC_NUM_AN; i++) {
+@@ -1207,8 +1243,10 @@
+ 	if (rxsc_idx < 0)
+ 		return -EINVAL;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0)
+ 	if (ctx->prepare)
+ 		return 0;
++#endif
+ 
+ 	aq_rxsc = &cfg->aq_rxsc[rxsc_idx];
+ 	stats = &aq_rxsc->rx_sa_stats[ctx->sa.assoc_num];
+diff -Naur a/aq_vec.c b/aq_vec.c
+--- a/aq_vec.c	2022-10-04 06:21:50.000000000 -0400
++++ b/aq_vec.c	2023-02-11 02:45:04.033502219 -0500
+@@ -124,7 +124,11 @@
+ 			&self->aq_ring_param.affinity_mask);
+ 
+ 	netif_napi_add(aq_nic_get_ndev(aq_nic), &self->napi,
+-		       aq_vec_poll, AQ_CFG_NAPI_WEIGHT);
++		       aq_vec_poll
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0)
++				,AQ_CFG_NAPI_WEIGHT
++#endif
++				   );
+ 
+ err_exit:
+ 	return self;
