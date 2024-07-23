@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		SPEX is a software package comprising several state-of-the-art 
+		SParse EXact linear algebra routines. It currently is comprised
+		of the following:
+		*Utility and auxiliary functions for all SPEX routines:
+		interface to the GMP/MPFR library, memory management 
+		functions, the SPEX_matrix data structure, and various
+		functions that are auxiliary to the factorization and solve
+		functions
+		*Sparse exact left-looking LU factorization to solve the
+		linear system Ax=B. The solution time is proportional to the 
+		arithmetic work in the bit-complexity model; this is an 
+		asymptotically efficient complexity bound.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">DrTimothyAldenDavis/SuiteSparse</remote-id>
+	</upstream>
+</pkgmetadata>
