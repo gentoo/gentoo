@@ -623,6 +623,13 @@ kernel-install_pkg_preinst() {
 		rm "${ED}/lib/modules/${KV_FULL}"/{build,source} || die
 		dosym "../../../src/linux-${KV_FULL}" "/usr/lib/modules/${KV_FULL}/build"
 		dosym "../../../src/linux-${KV_FULL}" "/usr/lib/modules/${KV_FULL}/source"
+		local file
+		for file in .config System.map; do
+			if [[ -L "${ED}/lib/modules/${KV_FULL}/${file#.}" ]]; then
+				rm "${ED}/lib/modules/${KV_FULL}/${file#.}" || die
+				dosym "../../../src/linux-${KV_FULL}/${file}" "/usr/lib/modules/${KV_FULL}/${file#.}"
+			fi
+		done
 		for file in vmlinux vmlinuz; do
 			if [[ -L "${ED}/lib/modules/${KV_FULL}/${file}" ]]; then
 				rm "${ED}/lib/modules/${KV_FULL}/${file}" || die

@@ -448,6 +448,8 @@ kernel-build_src_install() {
 	# fix source tree and build dir symlinks
 	dosym "../../../${kernel_dir}" "/lib/modules/${KV_FULL}/build"
 	dosym "../../../${kernel_dir}" "/lib/modules/${KV_FULL}/source"
+	dosym "../../../${kernel_dir}/.config" "/lib/modules/${KV_FULL}/config"
+	dosym "../../../${kernel_dir}/System.map" "/lib/modules/${KV_FULL}/System.map"
 	if [[ "${image_path}" == *vmlinux* ]]; then
 		dosym "../../../${kernel_dir}/${image_path}" "/lib/modules/${KV_FULL}/vmlinux"
 	else
