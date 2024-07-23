@@ -12,9 +12,8 @@ SRC_URI="https://github.com/ignitionrobotics/ign-msgs/archive/${PN}5_${PV}.tar.g
 LICENSE="Apache-2.0"
 SLOT="5"
 KEYWORDS="~amd64"
-IUSE=""
 
-RDEPEND="dev-libs/protobuf:=
+RDEPEND=">=dev-libs/protobuf-23.3-r4:=
 	sci-libs/ignition-math:6=
 	dev-libs/tinyxml2:=
 "
