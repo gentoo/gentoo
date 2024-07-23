@@ -1,0 +1,19 @@
+Temporary workaround while waiting for upstream's fix.
+
+https://bugreports.qt.io/browse/QTBUG-127484
+--- a/cmake/FindGStreamer.cmake
++++ b/cmake/FindGStreamer.cmake
+@@ -163,5 +163,5 @@
+         HEADER gst/gl/x11/gstgldisplay_x11.h
+         LIBRARY gstgl-1.0
+-        DEPENDENCIES GStreamer::Video GStreamer::Base GStreamer::Core GStreamer::Gl XCB::XCB )
++        DEPENDENCIES GStreamer::Video GStreamer::Base GStreamer::Core GStreamer::Gl )
+ endif()
+ 
+@@ -171,5 +171,5 @@
+         HEADER gst/gl/wayland/gstgldisplay_wayland.h
+         LIBRARY gstgl-1.0
+-        DEPENDENCIES GStreamer::Video GStreamer::Base GStreamer::Core GStreamer::Gl Wayland::Client )
++        DEPENDENCIES GStreamer::Video GStreamer::Base GStreamer::Core GStreamer::Gl )
+ endif()
+ 

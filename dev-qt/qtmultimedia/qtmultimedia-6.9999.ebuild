@@ -11,15 +11,22 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
-IUSE="+X alsa eglfs +ffmpeg gstreamer opengl pulseaudio qml v4l vaapi vulkan"
+IUSE="
+	+X alsa eglfs +ffmpeg gstreamer opengl pulseaudio
+	qml screencast v4l vaapi vulkan wayland
+"
 # tst_qmediaplayerbackend hard requires qml, review in case becomes optional
 REQUIRED_USE="
 	|| ( ffmpeg gstreamer )
 	eglfs? ( ffmpeg opengl )
-	vaapi? ( ffmpeg opengl )
+	screencast? ( ffmpeg )
 	test? ( qml )
+	vaapi? ( ffmpeg opengl )
 "
 
+# gstreamer[X=] is to avoid broken gst detect if -X w/ gst[X] w/o xorg-proto
+# (*could* be removed if gst-plugins-base[X] RDEPENDs on xorg-proto)
+# := skipped on pipewire due to only being used through dbus
 RDEPEND="
 	~dev-qt/qtbase-${PV}:6[gui,network,opengl=,vulkan=,widgets]
 	alsa? (
@@ -37,14 +44,22 @@ RDEPEND="
 	gstreamer? (
 		dev-libs/glib:2
 		media-libs/gst-plugins-bad:1.0
-		media-libs/gst-plugins-base:1.0[X=,opengl?]
+		media-libs/gst-plugins-base:1.0[X=]
 		media-libs/gstreamer:1.0
+		opengl? (
+			~dev-qt/qtbase-${PV}:6[X?,wayland?]
+			media-libs/gst-plugins-base:1.0[X?,egl,opengl,wayland?]
+		)
 	)
 	opengl? ( media-libs/libglvnd )
 	pulseaudio? ( media-libs/libpulse )
 	qml? (
 		~dev-qt/qtdeclarative-${PV}:6
 		~dev-qt/qtquick3d-${PV}:6
+	)
+	screencast? (
+		~dev-qt/qtbase-${PV}:6[dbus]
+		media-video/pipewire
 	)
 "
 DEPEND="
@@ -73,6 +88,10 @@ CMAKE_SKIP_TESTS=(
 	tst_qwindowcapturebackend
 )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.8.0-gst-x11-wayland-detect.patch
+)
+
 src_configure() {
 	# normally passed by the build system, but needed for 32-on-64 chroots
 	use x86 && append-cppflags -DPFFFT_SIMD_DISABLE
@@ -81,8 +100,15 @@ src_configure() {
 		$(cmake_use_find_package qml Qt6Qml)
 		$(qt_feature ffmpeg)
 		$(qt_feature gstreamer)
-		$(usev gstreamer $(qt_feature opengl gstreamer_gl))
+		$(usev gstreamer "
+			$(qt_feature opengl gstreamer_gl)
+			$(usev opengl "
+				$(qt_feature X gstreamer_gl_x11)
+				$(qt_feature wayland gstreamer_gl_wayland)
+			")
+		")
 		$(qt_feature pulseaudio)
+		$(qt_feature screencast pipewire)
 		$(qt_feature v4l linux_v4l)
 		$(qt_feature vaapi)
 		-DQT_UNITY_BUILD=OFF # currently fails to build with
