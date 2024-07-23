@@ -1,0 +1,16 @@
+diff --git a/man/Makefile b/man/Makefile
+index 33eddcc..4fed1ff 100644
+--- a/man/Makefile
++++ b/man/Makefile
+@@ -11,11 +11,9 @@ all:
+ install:
+ 	install -d $(INSTALLPREFIX)$(DESTDIR)$(CMANDIR)
+ 	cp modem-manager-gui.1 $(INSTALLPREFIX)$(DESTDIR)$(CMANDIR)
+-	gzip -f --best $(INSTALLPREFIX)$(DESTDIR)$(CMANDIR)/modem-manager-gui.1
+ 	while read lang; do \
+ 		install -d $(INSTALLPREFIX)$(DESTDIR)$(LMANDIR)/$$lang/man1; \
+ 		cp $$lang/modem-manager-gui.1 $(INSTALLPREFIX)$(DESTDIR)$(LMANDIR)/$$lang/man1; \
+-		gzip -f --best $(INSTALLPREFIX)$(DESTDIR)$(LMANDIR)/$$lang/man1/modem-manager-gui.1; \
+ 	done < LINGUAS
+ 
+ uninstall:
