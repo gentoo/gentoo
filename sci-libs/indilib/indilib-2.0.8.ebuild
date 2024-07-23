@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic udev
+inherit cmake udev
 
 DESCRIPTION="INDI Astronomical Control Protocol library"
 HOMEPAGE="https://www.indilib.org/"
@@ -43,11 +43,6 @@ DEPEND="${RDEPEND}
 "
 
 src_configure() {
-	# -Werror=odr
-	# https://bugs.gentoo.org/878525
-	# https://github.com/indilib/indi/issues/2023
-	filter-lto
-
 	local mycmakeargs=(
 		-DINDI_SYSTEM_HTTPLIB=ON
 		-DINDI_SYSTEM_JSONLIB=ON
