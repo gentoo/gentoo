@@ -1,7 +1,7 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit flag-o-matic toolchain-funcs vdr-plugin-2
 
@@ -9,12 +9,13 @@ GENTOO_VDR_CONDITIONAL=yes
 
 DESCRIPTION="VDR Plugin: Xinelib PlugIn"
 HOMEPAGE="https://sourceforge.net/projects/xineliboutput/"
-SRC_URI="https://downloads.sourceforge.net/${PN#vdr-}/${P}.tgz"
+SRC_URI="https://downloads.sourceforge.net/project/${PN#vdr-}/${PN#vdr-}/${P}/${P}.tgz
+	https://gist.githubusercontent.com/madmartin/3f241614c54f91cdc87de9839f452547/raw/d4ce2c3d65bb90e0570531f4999e3f5094d90fc6/${P}_clang.patch"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="bluray caps cec dbus fbcon jpeg nls opengl +vdr vaapi vdpau +X +xine xinerama"
+IUSE="bluray caps cec dbus fbcon jpeg nls opengl +vdr vaapi vdpau wayland +X +xine xinerama"
 
 COMMON_DEPEND="
 	vdr? (
@@ -25,23 +26,31 @@ COMMON_DEPEND="
 	xine? (
 		( >=media-libs/xine-lib-1.2
 			media-video/ffmpeg )
-		fbcon? ( jpeg? ( virtual/jpeg:* ) )
+		fbcon? ( jpeg? ( media-libs/libjpeg-turbo:= ) )
 		X? (
 			x11-libs/libX11
 			x11-libs/libXext
 			x11-libs/libXrender
 			bluray? ( media-libs/libbluray )
 			dbus? ( dev-libs/dbus-glib dev-libs/glib:2 )
-			jpeg? ( virtual/jpeg:* )
+			jpeg? ( media-libs/libjpeg-turbo:= )
 			opengl? ( virtual/opengl )
 			vaapi? ( media-libs/libva >=media-libs/xine-lib-1.2[vaapi] )
 			vdpau? ( x11-libs/libvdpau >=media-libs/xine-lib-1.2[vdpau] )
 			xinerama? ( x11-libs/libXinerama )
 		)
+		wayland? (
+			>=media-libs/xine-lib-1.2.10[wayland]
+			bluray? ( media-libs/libbluray )
+			dbus? ( dev-libs/dbus-glib dev-libs/glib:2 )
+			jpeg? ( media-libs/libjpeg-turbo:= )
+			opengl? ( virtual/opengl )
+			vaapi? ( media-libs/libva >=media-libs/xine-lib-1.2.10[vaapi] )
+			vdpau? ( x11-libs/libvdpau >=media-libs/xine-lib-1.2.10[vdpau] )
+		)
 	)"
 
 DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig
 	sys-kernel/linux-headers
 	nls? ( sys-devel/gettext )
 	xine? (
@@ -51,10 +60,12 @@ DEPEND="${COMMON_DEPEND}
 		)
 	)"
 RDEPEND="${COMMON_DEPEND}"
+BDEPEND="acct-user/vdr
+	virtual/pkgconfig"
 
 REQUIRED_USE=" || ( vdr xine )"
 
-VDR_CONFD_FILE="${FILESDIR}/confd-2.0.0"
+VDR_CONFD_FILE="${FILESDIR}/confd-${PV}"
 
 pkg_setup() {
 	vdr-plugin-2_pkg_setup
@@ -70,7 +81,10 @@ src_prepare() {
 
 	# bug 711978
 	sed -e "s:X11  opengl:X11  OpenGl:" -i configure || die
+
+	eapply "${DISTDIR}/${P}_clang.patch"
 }
+
 src_configure() {
 	local myconf
 
@@ -102,6 +116,7 @@ src_configure() {
 		$(use_enable nls i18n) \
 		$(use_enable bluray libbluray) \
 		$(use_enable opengl) \
+		$(use_enable wayland) \
 		${myconf} \
 		|| die
 
@@ -123,7 +138,7 @@ src_install() {
 		fi
 
 		if use xine; then
-			doinitd "${FILESDIR}"/vdr-frontend
+			newinitd "${FILESDIR}"/vdr-frontend-r1 vdr-frontend
 
 			insinto $XINE_PLUGIN_DIR
 			doins xineplug_inp_xvdr.so
@@ -144,10 +159,15 @@ src_install() {
 				insinto $VDR_PLUGIN_DIR
 				doins libxineliboutput-sxfe.so.*
 			fi
+			if use wayland; then
+				dobin vdr-wlfe
+
+				insinto $VDR_PLUGIN_DIR
+				doins libxineliboutput-wlfe.so.*
+			fi
 		fi
 	else
 		emake DESTDIR="${D}" install
-
-		dodoc HISTORY README
 	fi
+	dodoc HISTORY README
 }
