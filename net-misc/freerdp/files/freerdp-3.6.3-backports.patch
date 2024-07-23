@@ -1,0 +1,224 @@
+https://bugs.gentoo.org/936406
+https://github.com/FreeRDP/FreeRDP/pull/10410
+
+From 776083234b61224f8e3412c31be406b11509b7db Mon Sep 17 00:00:00 2001
+From: akallabeth <akallabeth@posteo.net>
+Date: Tue, 23 Jul 2024 09:14:04 +0200
+Subject: [PATCH 1/2] [warnings] fix unused-but-set-variable
+
+---
+ channels/parallel/client/parallel_main.c | 4 ++++
+ channels/printer/client/printer_main.c   | 2 ++
+ channels/serial/client/serial_main.c     | 4 ++++
+ channels/tsmf/client/tsmf_media.c        | 2 +-
+ channels/urbdrc/client/data_transfer.c   | 3 +--
+ libfreerdp/core/gateway/tsg.c            | 3 +--
+ libfreerdp/core/heartbeat.c              | 3 +--
+ libfreerdp/gdi/gfx.c                     | 7 ++-----
+ winpr/libwinpr/ncrypt/ncrypt_pkcs11.c    | 3 ---
+ 9 files changed, 16 insertions(+), 15 deletions(-)
+
+diff --git a/channels/parallel/client/parallel_main.c b/channels/parallel/client/parallel_main.c
+index ce574b87b084..4be078693870 100644
+--- a/channels/parallel/client/parallel_main.c
++++ b/channels/parallel/client/parallel_main.c
+@@ -160,6 +160,8 @@ static UINT parallel_process_irp_read(PARALLEL_DEVICE* parallel, IRP* irp)
+ 		return ERROR_INVALID_DATA;
+ 	Stream_Read_UINT32(irp->input, Length);
+ 	Stream_Read_UINT64(irp->input, Offset);
++	(void)Offset; /* [MS-RDPESP] 3.2.5.1.4 Processing a Server Read Request Message
++	               * ignored */
+ 	buffer = (BYTE*)calloc(Length, sizeof(BYTE));
+ 
+ 	if (!buffer)
+@@ -220,6 +222,8 @@ static UINT parallel_process_irp_write(PARALLEL_DEVICE* parallel, IRP* irp)
+ 
+ 	Stream_Read_UINT32(irp->input, Length);
+ 	Stream_Read_UINT64(irp->input, Offset);
++	(void)Offset; /* [MS-RDPESP] 3.2.5.1.5 Processing a Server Write Request Message
++	               * ignore offset */
+ 	if (!Stream_SafeSeek(irp->input, 20)) /* Padding */
+ 		return ERROR_INVALID_DATA;
+ 	const void* ptr = Stream_ConstPointer(irp->input);
+diff --git a/channels/printer/client/printer_main.c b/channels/printer/client/printer_main.c
+index 8d11f9b5ccd3..c458c0fdcfca 100644
+--- a/channels/printer/client/printer_main.c
++++ b/channels/printer/client/printer_main.c
+@@ -515,6 +515,8 @@ static UINT printer_process_irp_write(PRINTER_DEVICE* printer_dev, IRP* irp)
+ 		return ERROR_INVALID_DATA;
+ 	Stream_Read_UINT32(irp->input, Length);
+ 	Stream_Read_UINT64(irp->input, Offset);
++	(void)Offset; /* [MS-RDPEPC] 2.2.2.9 Server Printer Write Request (DR_PRN_WRITE_REQ)
++	               * reserved for future use, ignore */
+ 	Stream_Seek(irp->input, 20); /* Padding */
+ 	const void* ptr = Stream_ConstPointer(irp->input);
+ 	if (!Stream_SafeSeek(irp->input, Length))
+diff --git a/channels/serial/client/serial_main.c b/channels/serial/client/serial_main.c
+index 22f799a16ba6..c98a27ea9040 100644
+--- a/channels/serial/client/serial_main.c
++++ b/channels/serial/client/serial_main.c
+@@ -241,6 +241,8 @@ static UINT serial_process_irp_read(SERIAL_DEVICE* serial, IRP* irp)
+ 
+ 	Stream_Read_UINT32(irp->input, Length); /* Length (4 bytes) */
+ 	Stream_Read_UINT64(irp->input, Offset); /* Offset (8 bytes) */
++	(void)Offset; /* [MS-RDPESP] 3.2.5.1.4 Processing a Server Read Request Message
++	               * ignored */
+ 	Stream_Seek(irp->input, 20);            /* Padding (20 bytes) */
+ 	buffer = (BYTE*)calloc(Length, sizeof(BYTE));
+ 
+@@ -301,6 +303,8 @@ static UINT serial_process_irp_write(SERIAL_DEVICE* serial, IRP* irp)
+ 
+ 	Stream_Read_UINT32(irp->input, Length); /* Length (4 bytes) */
+ 	Stream_Read_UINT64(irp->input, Offset); /* Offset (8 bytes) */
++	(void)Offset; /* [MS-RDPESP] 3.2.5.1.4 Processing a Server Read Request Message
++	               * ignored */
+ 	if (!Stream_SafeSeek(irp->input, 20))   /* Padding (20 bytes) */
+ 		return ERROR_INVALID_DATA;
+ 
+diff --git a/channels/tsmf/client/tsmf_media.c b/channels/tsmf/client/tsmf_media.c
+index 5f47090ae37b..b20db415944d 100644
+--- a/channels/tsmf/client/tsmf_media.c
++++ b/channels/tsmf/client/tsmf_media.c
+@@ -1161,7 +1161,7 @@ BOOL tsmf_stream_flush(TSMF_STREAM* stream)
+ 		stream->presentation->audio_end_time = 0;
+ 	}
+ 
+-	return TRUE;
++	return ret;
+ }
+ 
+ void _tsmf_presentation_free(void* obj)
+diff --git a/channels/urbdrc/client/data_transfer.c b/channels/urbdrc/client/data_transfer.c
+index 56f3267ccc35..5f9a6e0e479e 100644
+--- a/channels/urbdrc/client/data_transfer.c
++++ b/channels/urbdrc/client/data_transfer.c
+@@ -1038,7 +1038,6 @@ static UINT urb_control_vendor_or_class_request(IUDEVICE* pdev, GENERIC_CHANNEL_
+ 	BYTE bmRequestType = 0;
+ 	UINT16 Value = 0;
+ 	UINT16 Index = 0;
+-	UINT16 Padding = 0;
+ 	wStream* out = NULL;
+ 	URBDRC_PLUGIN* urbdrc = NULL;
+ 	const BOOL noAck = (RequestField & 0x80000000U) != 0;
+@@ -1061,7 +1060,7 @@ static UINT urb_control_vendor_or_class_request(IUDEVICE* pdev, GENERIC_CHANNEL_
+ 	Stream_Read_UINT8(s, Request);             /** Request */
+ 	Stream_Read_UINT16(s, Value);              /** value */
+ 	Stream_Read_UINT16(s, Index);              /** index */
+-	Stream_Read_UINT16(s, Padding);            /** Padding */
++	Stream_Seek_UINT16(s);                     /** Padding */
+ 	Stream_Read_UINT32(s, OutputBufferSize);
+ 	if (OutputBufferSize > UINT32_MAX - 36)
+ 		return ERROR_INVALID_DATA;
+diff --git a/libfreerdp/core/gateway/tsg.c b/libfreerdp/core/gateway/tsg.c
+index fdd01089810a..60ccdc5a63c6 100644
+--- a/libfreerdp/core/gateway/tsg.c
++++ b/libfreerdp/core/gateway/tsg.c
+@@ -693,14 +693,13 @@ static BOOL tsg_ndr_read_packet_response(wLog* log, wStream* s, UINT32* index,
+ 	UINT32 MaxSizeValue = 0;
+ 	UINT32 MaxOffsetValue = 0;
+ 	UINT32 idleTimeout = 0;
+-	UINT32 reserved = 0;
+ 
+ 	WINPR_ASSERT(response);
+ 
+ 	if (!Stream_CheckAndLogRequiredLengthOfSizeWLog(log, s, 2, sizeof(UINT32)))
+ 		return FALSE;
+ 	Stream_Read_UINT32(s, response->flags); /* Flags (4 bytes) */
+-	Stream_Read_UINT32(s, reserved);        /* Reserved (4 bytes) */
++	Stream_Seek_UINT32(s);                  /* Reserved (4 bytes) */
+ 
+ 	if (response->flags != TSG_PACKET_TYPE_QUARREQUEST)
+ 	{
+diff --git a/libfreerdp/core/heartbeat.c b/libfreerdp/core/heartbeat.c
+index 1fb608962f0a..6a77bd562ceb 100644
+--- a/libfreerdp/core/heartbeat.c
++++ b/libfreerdp/core/heartbeat.c
+@@ -25,7 +25,6 @@
+ 
+ state_run_t rdp_recv_heartbeat_packet(rdpRdp* rdp, wStream* s)
+ {
+-	BYTE reserved = 0;
+ 	BYTE period = 0;
+ 	BYTE count1 = 0;
+ 	BYTE count2 = 0;
+@@ -38,7 +37,7 @@ state_run_t rdp_recv_heartbeat_packet(rdpRdp* rdp, wStream* s)
+ 	if (!Stream_CheckAndLogRequiredLength(AUTODETECT_TAG, s, 4))
+ 		return STATE_RUN_FAILED;
+ 
+-	Stream_Read_UINT8(s, reserved); /* reserved (1 byte) */
++	Stream_Seek_UINT8(s);           /* reserved (1 byte) */
+ 	Stream_Read_UINT8(s, period);   /* period (1 byte) */
+ 	Stream_Read_UINT8(s, count1);   /* count1 (1 byte) */
+ 	Stream_Read_UINT8(s, count2);   /* count2 (1 byte) */
+diff --git a/libfreerdp/gdi/gfx.c b/libfreerdp/gdi/gfx.c
+index c9016a995e6b..59c7a377f8db 100644
+--- a/libfreerdp/gdi/gfx.c
++++ b/libfreerdp/gdi/gfx.c
+@@ -1855,14 +1855,11 @@ BOOL gdi_graphics_pipeline_init_ex(rdpGdi* gdi, RdpgfxClientContext* gfx,
+                                    pcRdpgfxUnmapWindowForSurface unmap,
+                                    pcRdpgfxUpdateSurfaceArea update)
+ {
+-	rdpContext* context = NULL;
+-	const rdpSettings* settings = NULL;
+-
+ 	if (!gdi || !gfx || !gdi->context || !gdi->context->settings)
+ 		return FALSE;
+ 
+-	context = gdi->context;
+-	settings = gdi->context->settings;
++	rdpContext* context = gdi->context;
++	rdpSettings* settings = context->settings;
+ 
+ 	gdi->gfx = gfx;
+ 	gfx->custom = (void*)gdi;
+diff --git a/winpr/libwinpr/ncrypt/ncrypt_pkcs11.c b/winpr/libwinpr/ncrypt/ncrypt_pkcs11.c
+index 5f0a80262a30..74ee99ec3a2c 100644
+--- a/winpr/libwinpr/ncrypt/ncrypt_pkcs11.c
++++ b/winpr/libwinpr/ncrypt/ncrypt_pkcs11.c
+@@ -356,7 +356,6 @@ static void log_(const char* tag, const char* msg, CK_RV rv, CK_ULONG index, CK_
+ static SECURITY_STATUS collect_keys(NCryptP11ProviderHandle* provider, P11EnumKeysState* state)
+ {
+ 	CK_OBJECT_HANDLE slotObjects[MAX_KEYS_PER_SLOT] = { 0 };
+-	const char* step = NULL;
+ 
+ 	WINPR_ASSERT(provider);
+ 
+@@ -418,7 +417,6 @@ static SECURITY_STATUS collect_keys(NCryptP11ProviderHandle* provider, P11EnumKe
+ 		{
+ 			// TODO: shall it be fatal ?
+ 			loge(TAG, "unable to initiate search", rv, i, state->slots[i]);
+-			step = "C_FindObjectsInit";
+ 			goto cleanup_FindObjectsInit;
+ 		}
+ 
+@@ -428,7 +426,6 @@ static SECURITY_STATUS collect_keys(NCryptP11ProviderHandle* provider, P11EnumKe
+ 		if (rv != CKR_OK)
+ 		{
+ 			loge(TAG, "unable to findObjects", rv, i, state->slots[i]);
+-			step = "C_FindObjects";
+ 			goto cleanup_FindObjects;
+ 		}
+ 
+
+From f22974a95a6b2d647174f4195f2ba4789105afaa Mon Sep 17 00:00:00 2001
+From: akallabeth <akallabeth@posteo.net>
+Date: Tue, 23 Jul 2024 09:15:00 +0200
+Subject: [PATCH 2/2] [winpr,utils] include current source dir
+
+---
+ winpr/libwinpr/utils/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/winpr/libwinpr/utils/CMakeLists.txt b/winpr/libwinpr/utils/CMakeLists.txt
+index 2c5efb3295a5..6bf40e77b1a6 100644
+--- a/winpr/libwinpr/utils/CMakeLists.txt
++++ b/winpr/libwinpr/utils/CMakeLists.txt
+@@ -18,7 +18,7 @@
+ include(CheckFunctionExists)
+ include(CMakeDependentOption)
+ 
+-set(CMAKE_INCLUDE_CURRENT_DIR ON)
++winpr_include_directory_add(${CMAKE_CURRENT_SOURCE_DIR})
+ 
+ option(WITH_LODEPNG "build WinPR with PNG support" OFF)
+ if (WITH_LODEPNG)
