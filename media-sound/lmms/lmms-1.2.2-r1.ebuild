@@ -1,9 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
-inherit cmake xdg
+# The order is important here! Both, cmake and xdg define src_prepare.
+# We need the one from cmake
+inherit xdg cmake
 
 DESCRIPTION="Cross-platform music production software"
 HOMEPAGE="https://lmms.io"
@@ -11,9 +13,9 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/LMMS/lmms.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/LMMS/lmms/releases/download/v${PV/_/-}/${PN}_${PV/_/-}.tar.xz"
-	S="${WORKDIR}/${PN}"
+	SRC_URI="https://github.com/LMMS/lmms/releases/download/v${PV/_/-}/${PN}_${PV/_/-}.tar.xz -> ${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}/${P/_/-}"
 fi
 
 LICENSE="GPL-2 LGPL-2"
@@ -41,7 +43,7 @@ COMMON_DEPEND="
 		media-libs/libvorbis
 	)
 	portaudio? ( >=media-libs/portaudio-19_pre )
-	pulseaudio? ( media-libs/libpulse )
+	pulseaudio? ( media-sound/pulseaudio )
 	sdl? (
 		media-libs/libsdl
 		>=media-libs/sdl-sound-1.0.1
@@ -49,8 +51,8 @@ COMMON_DEPEND="
 	soundio? ( media-libs/libsoundio )
 	stk? ( media-libs/stk )
 	vst? (
-		virtual/wine
 		dev-qt/qtx11extras:5
+		virtual/wine
 	)
 "
 DEPEND="${COMMON_DEPEND}"
@@ -67,19 +69,21 @@ RDEPEND="${COMMON_DEPEND}
 
 DOCS=( README.md doc/AUTHORS )
 
+S="${WORKDIR}/${PN}"
+
 PATCHES=(
-	"${FILESDIR}/${PN}-9999-no_compress_man.patch" #733284
-	"${FILESDIR}/${PN}-9999-plugin-path.patch" #907285
+	"${FILESDIR}/${PN}-1.2.2-no_compress_man.patch" #733284
 )
 
 src_configure() {
-	local mycmakeargs=(
+	local mycmakeargs+=(
 		-DUSE_WERROR=FALSE
 		-DWANT_CAPS=FALSE
 		-DWANT_TAP=FALSE
 		-DWANT_SWH=FALSE
 		-DWANT_CMT=FALSE
 		-DWANT_CALF=FALSE
+		-DWANT_QT5=TRUE
 		-DWANT_ALSA=$(usex alsa)
 		-DWANT_JACK=$(usex jack)
 		-DWANT_GIG=$(usex libgig)
@@ -93,6 +97,17 @@ src_configure() {
 		-DWANT_VST=$(usex vst)
 		-DWANT_SF2=$(usex fluidsynth)
 	)
-
 	cmake_src_configure
+}
+
+pkg_preinst() {
+	xdg_pkg_preinst
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+}
+
+pkg_postrm() {
+	xdg_pkg_postrm
 }
