@@ -41,6 +41,7 @@ BDEPEND="
 		dev-python/cython[${PYTHON_USEDEP}]
 		test? (
 			dev-python/python-dbusmock[${PYTHON_USEDEP}]
+			media-libs/libpulse
 			>=net-misc/networkmanager-0.8[introspection]
 		)
 	')
