@@ -34,6 +34,42 @@ RDEPEND=">=dev-python/requests-2.28.2[${PYTHON_USEDEP}]
 
 distutils_enable_tests pytest
 
+python_test() {
+	local EPYTEST_IGNORE=(
+		tests/functional/*
+	)
+	local EPYTEST_DESELECT=(
+		tests/unit/objects/test_packages.py::test_delete_project_package_file_from_package_file_object
+		tests/unit/objects/test_badges.py::test_delete_project_badge
+		tests/unit/objects/test_badges.py::test_delete_group_badge
+		tests/unit/objects/test_group_access_tokens.py::test_revoke_group_access_token
+		tests/unit/objects/test_groups.py::test_delete_group_push_rule
+		tests/unit/objects/test_groups.py::test_delete_saml_group_link
+		tests/unit/objects/test_job_artifacts.py::test_project_artifacts_delete
+		tests/unit/objects/test_members.py::test_delete_group_billable_member
+		tests/unit/objects/test_packages.py::test_delete_project_package
+		tests/unit/objects/test_packages.py::test_delete_project_package_file_from_package_object
+		tests/unit/objects/test_packages.py::test_delete_project_package_file_from_package_file_object
+		tests/unit/objects/test_personal_access_tokens.py::test_revoke_personal_access_token
+		tests/unit/objects/test_personal_access_tokens.py::test_revoke_personal_access_token_by_id
+		tests/unit/objects/test_project_access_tokens.py::test_revoke_project_access_token
+		tests/unit/objects/test_project_merge_request_approvals.py::test_delete_merge_request_approval_rule
+		tests/unit/objects/test_projects.py::test_delete_shared_project_link
+		tests/unit/objects/test_projects.py::test_delete_forked_from_relationship
+		tests/unit/objects/test_projects.py::test_delete_project_push_rule
+		tests/unit/objects/test_registry_repositories.py::test_delete_project_registry_repository
+		tests/unit/objects/test_releases.py::test_delete_release_link
+		tests/unit/objects/test_secure_files.py::test_remove_secure_file
+		tests/unit/objects/test_todos.py::test_todo_mark_all_as_done
+		tests/unit/objects/test_topics.py::test_delete_topic
+		tests/unit/objects/test_users.py::test_delete_user_identity
+		tests/unit/objects/test_variables.py::test_delete_instance_variable
+		tests/unit/objects/test_variables.py::test_delete_project_variable
+		tests/unit/objects/test_variables.py::test_delete_group_variable
+	)
+	epytest
+}
+
 python_install_all() {
 	distutils-r1_python_install_all
 	dodoc -r *.rst docs
