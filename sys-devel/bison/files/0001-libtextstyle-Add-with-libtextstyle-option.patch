@@ -1,0 +1,74 @@
+From 3eb95e0bf0488fd7319818cca6b76e500b7b2343 Mon Sep 17 00:00:00 2001
+From: Raul E Rangel <rrangel@chromium.org>
+Date: Wed, 21 Feb 2024 10:43:18 -0700
+Subject: [PATCH] libtextstyle: Add --with-libtextstyle option
+
+libtextstyle is currently treated as an automagic dependency. It gets
+linked if it is present, and doesn't if it's not. This change adds a
+--with-libtextstyle option so that the dependency can be explicitly
+enabled or disabled.
+
+See: https://bugs.gentoo.org/925100
+Signed-off-by: Raul E Rangel <rrangel@chromium.org>
+---
+ m4/libtextstyle-optional.m4 |  2 +-
+ m4/libtextstyle.m4          | 26 +++++++++++++++++++++++---
+ 2 files changed, 24 insertions(+), 4 deletions(-)
+
+diff --git a/m4/libtextstyle-optional.m4 b/m4/libtextstyle-optional.m4
+index 2422de1..e0cb0c3 100644
+--- a/m4/libtextstyle-optional.m4
++++ b/m4/libtextstyle-optional.m4
+@@ -22,7 +22,7 @@ dnl LTLIBTEXTSTYLE to empty.
+ AC_DEFUN([gl_LIBTEXTSTYLE_OPTIONAL],
+ [
+   gl_LIBTEXTSTYLE([$1])
+-  if test $HAVE_LIBTEXTSTYLE = yes; then
++  if test "x$HAVE_LIBTEXTSTYLE" = xyes; then
+     TEXTSTYLE_H=
+   else
+     TEXTSTYLE_H=textstyle.h
+diff --git a/m4/libtextstyle.m4 b/m4/libtextstyle.m4
+index 435207ffd4..3044b08719 100644
+--- a/m4/libtextstyle.m4
++++ b/m4/libtextstyle.m4
+@@ -38,6 +38,14 @@ AC_DEFUN([gl_LIBTEXTSTYLE_NEWEST_VERSION], [0.20.5])
+ AC_DEFUN([gl_LIBTEXTSTYLE_INITIALIZE],
+ [
+   m4_divert_text([DEFAULTS], [gl_libtextstyle_minversion=' 0.20 '])
++
++  AC_MSG_CHECKING([whether to link against libtextstyle])
++  AC_ARG_WITH([libtextstyle],
++    [AS_HELP_STRING([--with-libtextstyle],
++      [support fancy colors @<:@default=auto@:>@])],
++    [],
++    [with_libtextstyle=auto])
++  AC_MSG_RESULT([$with_libtextstyle])
+ ])
+ 
+ AC_DEFUN([gl_LIBTEXTSTYLE_SEARCH],
+@@ -53,7 +61,18 @@ AC_DEFUN([gl_LIBTEXTSTYLE_SEARCH],
+       snippet='term_styled_ostream_create(1,"",TTYCTL_AUTO,"");'
+       ;;
+   esac
+-  AC_LIB_HAVE_LINKFLAGS([textstyle], [],
+-    [#include <textstyle.h>], [$snippet],
+-    [no])
++
++  AS_IF(
++    [test "x$with_libtextstyle" != xno],
++    [AC_LIB_HAVE_LINKFLAGS([textstyle], [],
++      [#include <textstyle.h>], [$snippet],
++      [no])]
++  )
++
++  AS_IF(
++    [test "x$with_libtextstyle" = xyes -a "x$HAVE_LIBTEXTSTYLE" != xyes],
++    [AC_MSG_FAILURE(
++      [--with-libtextstyle was given, but test for libtextstyle failed]
++    )]
++  )
+ ])
+-- 
+2.44.0.rc0.258.g7320e95886-goog
+

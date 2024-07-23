@@ -17,15 +17,16 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv 
 IUSE="examples nls static test"
 RESTRICT="!test? ( test )"
 
-# gettext _IS_ required in RDEPEND because >=bison-3.7 links against
-# libtextstyle.so!!! (see bug #740754)
 DEPEND="
-	>=sys-devel/m4-1.4.16
-	>=sys-devel/gettext-0.21
+	nls? ( >=sys-devel/gettext-0.21 )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	>=sys-devel/m4-1.4.16
+"
 BDEPEND="
 	app-alternatives/lex
+	>=sys-devel/m4-1.4.16
 	test? ( dev-lang/perl )
 	verify-sig? ( sec-keys/openpgp-keys-bison )
 "
@@ -33,26 +34,35 @@ PDEPEND="app-alternatives/yacc"
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO ) # ChangeLog-2012 ChangeLog-1998 PACKAGING README-alpha README-release
 
+PATCHES=(
+	# To avoid pulling in autoconf as a dependency we apply the "regen"
+	# patch instead of the real patch.
+	#
+	# See https://lists.gnu.org/archive/html/bug-gnulib/2024-02/msg00190.html
+	# for the original source.
+	#
+	# https://bugs.gentoo.org/925100
+	# "${FILESDIR}/0001-libtextstyle-Add-with-libtextstyle-option.patch"
+	"${FILESDIR}/0001-libtextstyle-Add-with-libtextstyle-option-regen-v${PV}.patch"
+)
+
 src_prepare() {
 	# Old logic when we needed to patch configure.ac
 	# Keeping in case it's useful for future
 
 	# Record date to avoid 'config.status --recheck' & regen of 'tests/package.m4'
 	#touch -r configure.ac old.configure.ac || die
-	#touch -r configure old.configure || die
+	touch -r configure old.configure || die
 
-	#eapply "${WORKDIR}"/patches
-	#default
+	default
 
 	# Restore date after patching
 	#touch -r old.configure.ac configure.ac || die
-	#touch -r old.configure configure || die
+	touch -r old.configure configure || die
 
 	# The makefiles make the man page depend on the configure script
 	# which we patched above.  Touch it to prevent regeneration.
 	#touch doc/bison.1 || die #548778 #538300#9
-
-	default
 
 	# Avoid regenerating the info page when the timezone is diff. #574492
 	sed -i '2iexport TZ=UTC' build-aux/mdate-sh || die
@@ -62,7 +72,8 @@ src_configure() {
 	use static && append-ldflags -static
 
 	local myeconfargs=(
-		$(use_enable nls)
+		"$(use_enable nls)"
+		"$(usex nls "--with-libtextstyle" "--without-libtextstyle")"
 	)
 
 	econf "${myeconfargs[@]}"
