@@ -131,6 +131,7 @@ src_configure() {
 		MONGO_GIT_HASH="0b4f1ea980b5380a66425a90b414106a191365f4"
 
 		--disable-warnings-as-errors
+		--force-jobs # Reapply #906897, fix #935274
 		--jobs="$(makeopts_jobs)"
 		--use-system-boost
 		--use-system-pcre
