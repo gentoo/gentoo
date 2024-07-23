@@ -36,7 +36,7 @@ BDEPEND="
 	$(vala_depend)
 	net-libs/libsoup:3.0[vala]
 	gui-libs/gtksourceview:5[vala]
-	gui-libs/libhandy:1[vala]
+	gui-libs/libadwaita:1[vala]
 "
 
 src_prepare() {
