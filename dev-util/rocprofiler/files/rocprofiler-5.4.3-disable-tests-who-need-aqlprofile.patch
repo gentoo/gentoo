@@ -1,0 +1,66 @@
+Index: rocprofiler-rocm-5.4.3/test/run.sh
+===================================================================
+--- rocprofiler-rocm-5.4.3.orig/test/run.sh
++++ rocprofiler-rocm-5.4.3/test/run.sh
+@@ -81,7 +81,6 @@ eval_test "C test" ./test/c_test
+ ## Standalone sampling usage model test
+ unset HSA_TOOLS_LIB
+ unset ROCP_TOOL_LIB
+-eval_test "Standalone sampling usage model test" ./test/standalone_test
+ # Standalone intercepting test
+ # ROC profiler library loaded by HSA runtime
+ export HSA_TOOLS_LIB=librocprofiler64.so.1
+@@ -101,7 +100,6 @@ export ROCP_KITER=20
+ export ROCP_DITER=20
+ export ROCP_AGENTS=1
+ export ROCP_THRS=3
+-eval_test "Intercepting usage model test" ./test/rocprof-ctrl
+ 
+ ## Libtool test
+ # tool library loaded by ROC profiler
+@@ -120,14 +118,12 @@ export ROCP_DITER=20
+ export ROCP_AGENTS=1
+ export ROCP_THRS=1
+ export ROCP_INPUT=pmc_input.xml
+-eval_test "'rocprof' rocprof-tool PMC test" ./test/rocprof-ctrl
+ 
+ export ROCP_KITER=20
+ export ROCP_DITER=20
+ export ROCP_AGENTS=1
+ export ROCP_THRS=10
+ export ROCP_INPUT=pmc_input.xml
+-eval_test "'rocprof' rocprof-tool PMC n-thread test" ./test/rocprof-ctrl
+ 
+ export ROCP_OPT_MODE=1
+ export ROCP_KITER=20
+@@ -135,7 +131,6 @@ export ROCP_DITER=20
+ export ROCP_AGENTS=1
+ export ROCP_THRS=10
+ export ROCP_INPUT=pmc_input.xml
+-eval_test "'rocprof' rocprof-tool PMC n-thread opt test" ./test/rocprof-ctrl
+ unset ROCP_OPT_MODE
+ 
+ export ROCP_KITER=20
+@@ -143,14 +138,12 @@ export ROCP_DITER=20
+ export ROCP_AGENTS=1
+ export ROCP_THRS=1
+ export ROCP_INPUT=pmc_input1.xml
+-eval_test "'rocprof' rocprof-tool PMC test1" ./test/rocprof-ctrl
+ 
+ export ROCP_KITER=20
+ export ROCP_DITER=20
+ export ROCP_AGENTS=1
+ export ROCP_THRS=10
+ export ROCP_INPUT=pmc_input1.xml
+-eval_test "'rocprof' rocprof-tool PMC n-thread test1" ./test/rocprof-ctrl
+ 
+ unset ROCP_MCOPY_TRACKING
+ # enable HSA intercepting
+@@ -158,7 +151,6 @@ export ROCP_HSA_INTERC=1
+ 
+ export ROCP_KITER=10
+ export ROCP_DITER=10
+-eval_test "rocprof-tool test, counter sets" ./test/rocprof-ctrl
+ 
+ ## OpenCL test
+ #eval_test "libtool test, OpenCL sample" ./test/ocl/SimpleConvolution
