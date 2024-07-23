@@ -46,6 +46,6 @@ src_install() {
 
 	exeinto "/usr/libexec/netdata/plugins.d"
 	newexe godplugin go.d.plugin
-	insinto "/usr/$(get_libdir)/netdata/conf.d"
+	insinto "/usr/lib/netdata/conf.d"
 	doins -r config/*
 }
