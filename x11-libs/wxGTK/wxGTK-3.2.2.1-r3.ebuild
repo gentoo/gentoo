@@ -38,7 +38,7 @@ RDEPEND="
 		media-libs/libpng:0=[${MULTILIB_USEDEP}]
 		sys-libs/zlib[${MULTILIB_USEDEP}]
 		x11-libs/cairo[${MULTILIB_USEDEP}]
-		x11-libs/gtk+:3[wayland?,${MULTILIB_USEDEP}]
+		x11-libs/gtk+:3[wayland?,X?,${MULTILIB_USEDEP}]
 		x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
 		x11-libs/libSM[${MULTILIB_USEDEP}]
 		x11-libs/libX11[${MULTILIB_USEDEP}]
