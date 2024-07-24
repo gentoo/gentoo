@@ -63,8 +63,10 @@ RDEPEND="
 	)
 	powerd? ( sys-apps/dbus[abi_x86_32(-)?] )
 	wayland? (
-		gui-libs/egl-gbm[abi_x86_32(-)?]
-		>=gui-libs/egl-wayland-1.1.10[abi_x86_32(-)?]
+		gui-libs/egl-wayland[abi_x86_32(-)?]
+		media-libs/mesa[gbm(+),abi_x86_32(-)?]
+		x11-libs/libdrm[abi_x86_32(-)?]
+		!gui-libs/egl-gbm
 	)
 "
 DEPEND="
@@ -242,9 +244,9 @@ src_install() {
 
 	local skip_files=(
 		$(usev !X "libGLX_nvidia libglxserver_nvidia")
+		$(usev !wayland "libnvidia-egl-gbm 15_nvidia_gbm")
 		libGLX_indirect # non-glvnd unused fallback
 		libnvidia-{gtk,wayland-client} nvidia-{settings,xconfig} # from source
-		libnvidia-egl-gbm 15_nvidia_gbm # gui-libs/egl-gbm
 		libnvidia-egl-wayland 10_nvidia_wayland # gui-libs/egl-wayland
 		libnvidia-pkcs11.so # using the openssl3 version instead
 	)
@@ -377,8 +379,9 @@ documentation that is installed alongside this README."
 			dosym ${m[4]} ${into}/${m[0]}
 			continue
 		fi
-		[[ ${m[0]} =~ ^libnvidia-ngx.so|^libnvidia-egl-gbm.so ]] &&
-			dosym ${m[0]} ${into}/${m[0]%.so*}.so.1 # soname not in .manifest
+		# avoid portage warning due to missing soname links in manifest
+		[[ ${m[0]} =~ .*((libnvidia-ngx.so|libnvidia-egl-gbm.so).*) ]] &&
+			dosym ${BASH_REMATCH[1]} ${into}/${BASH_REMATCH[2]}.1
 
 		printf -v m[1] %o $((m[1] | 0200)) # 444->644
 		insopts -m${m[1]}
