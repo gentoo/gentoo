@@ -369,7 +369,8 @@ multilib_src_configure() {
 		gallium_enable -- kmsro
 	fi
 
-	gallium_enable -- swrast
+	gallium_enable !llvm softpipe
+	gallium_enable llvm llvmpipe
 	gallium_enable video_cards_d3d12 d3d12
 	gallium_enable video_cards_freedreno freedreno
 	gallium_enable video_cards_intel crocus i915 iris
