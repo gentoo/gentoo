@@ -267,7 +267,7 @@ cargo_gen_config() {
 	# with USE=nightly. There is no simple way around this.
 	tc-export_build_env
 	local LD_A=( $(tc-getBUILD_CC) ${BUILD_LDFLAGS} )
-	local MY_BUILD_RUSTFLAGS="-C linker=${LD_A[0]}"
+	local MY_BUILD_RUSTFLAGS="-C strip=none -C linker=${LD_A[0]}"
 	[[ ${#LD_A[@]} -gt 1 ]] && MY_BUILD_RUSTFLAGS+="$(printf -- ' -C link-arg=%s' "${LD_A[@]:1}")"
 	MY_BUILD_RUSTFLAGS+=" ${RUSTFLAGS} ${BUILD_RUSTFLAGS}"
 	tc-is-cross-compiler || MY_BUILD_RUSTFLAGS+=" ${TARGET_RUSTFLAGS}"
@@ -564,7 +564,7 @@ cargo_env() {
 		local -x CARGO_BUILD_TARGET=$(rust_abi)
 		local TRIPLE=${CARGO_BUILD_TARGET//-/_}
 		local TRIPLE=${TRIPLE^^} LD_A=( $(tc-getCC) ${LDFLAGS} )
-		local -x CARGO_TARGET_"${TRIPLE}"_RUSTFLAGS="-C linker=${LD_A[0]}"
+		local -x CARGO_TARGET_"${TRIPLE}"_RUSTFLAGS="-C strip=none -C linker=${LD_A[0]}"
 		[[ ${#LD_A[@]} -gt 1 ]] && local CARGO_TARGET_"${TRIPLE}"_RUSTFLAGS+="$(printf -- ' -C link-arg=%s' "${LD_A[@]:1}")"
 		local CARGO_TARGET_"${TRIPLE}"_RUSTFLAGS+=" ${RUSTFLAGS} ${TARGET_RUSTFLAGS}"
 	fi
