@@ -47,8 +47,10 @@ REQUIRED_USE="
 "
 
 # may use qt private symbols wrt qtbase's :=
+# non-trivially broken with Qt6.8 wrt upper bound, waiting for PyQt6-6.8.0
 DEPEND="
 	>=dev-qt/qtbase-${QT_PV}=[dbus?,gles2-only=,gui?,network?,opengl?,sql?,ssl=,widgets?,xml?]
+	<dev-qt/qtbase-6.8
 	bluetooth? ( >=dev-qt/qtconnectivity-${QT_PV}[bluetooth] )
 	dbus? (
 		dev-python/dbus-python[${PYTHON_USEDEP}]
