@@ -4,7 +4,7 @@
 EAPI=8
 
 DESCRIPTION="A complete TeX distribution"
-HOMEPAGE="http://tug.org/texlive/"
+HOMEPAGE="https://tug.org/texlive/"
 
 LICENSE="metapackage"
 SLOT="0"
@@ -21,8 +21,8 @@ done
 
 TEXLIVE_CAT="dev-texlive"
 
-DEPEND=">=app-text/texlive-core-${PV}"
-RDEPEND="${DEPEND}
+RDEPEND="
+	>=app-text/texlive-core-${PV}
 	app-text/psutils
 	>=${TEXLIVE_CAT}/texlive-fontutils-${PV}
 	media-gfx/sam2p
