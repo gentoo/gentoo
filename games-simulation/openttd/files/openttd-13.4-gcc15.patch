@@ -1,0 +1,22 @@
+https://github.com/OpenTTD/OpenTTD/pull/12876
+https://github.com/OpenTTD/OpenTTD/commit/db36e61807955c896267d6585de0577efd30465d
+
+From 866cd4381189658641a69bdeca86ceec15aa027d Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Mon, 22 Jul 2024 09:27:01 +0200
+Subject: [PATCH] Codechange: fix for GCC 15 two-phase lookup
+
+* GCC 15 is more aggressive about checking dependent names
+
+Bug: https://bugs.gentoo.org/936417
+--- a/src/pathfinder/yapf/yapf_road.cpp
++++ b/src/pathfinder/yapf/yapf_road.cpp
+@@ -470,7 +470,7 @@ class CYapfFollowRoadT
+ 		/* set origin (tile, trackdir) */
+ 		TileIndex src_tile = v->tile;
+ 		Trackdir src_td = v->GetVehicleTrackdir();
+-		if (!HasTrackdir(GetTrackdirBitsForRoad(src_tile, this->IsTram() ? RTT_TRAM : RTT_ROAD), src_td)) {
++		if (!HasTrackdir(GetTrackdirBitsForRoad(src_tile, Yapf().IsTram() ? RTT_TRAM : RTT_ROAD), src_td)) {
+ 			/* sometimes the roadveh is not on the road (it resides on non-existing track)
+ 			 * how should we handle that situation? */
+ 			return false;
