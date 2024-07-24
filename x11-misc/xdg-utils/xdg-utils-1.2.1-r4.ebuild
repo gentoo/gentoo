@@ -35,6 +35,14 @@ RDEPEND="
 	)
 	plasma? (
 		virtual/pkgconfig
+	)
+	X? (
+		x11-apps/xprop
+		x11-apps/xset
+	)
+"
+PDEPEND="
+	plasma? (
 		|| (
 			(
 				kde-frameworks/kservice:6
@@ -45,10 +53,6 @@ RDEPEND="
 				dev-qt/qtpaths:5
 			)
 		)
-	)
-	X? (
-		x11-apps/xprop
-		x11-apps/xset
 	)
 "
 BDEPEND="
