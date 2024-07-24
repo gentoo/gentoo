@@ -25,7 +25,7 @@ RESTRICT="!test? ( test )"
 # bug #496612, bug #832711, bug #843863
 REQUIRED_USE="
 	^^ ( ${CRYPTO_BACKENDS//+/} )
-	static? ( !gcrypt !ssh !udev !fips )
+	static? ( !ssh !udev !fips )
 	fips? ( !kernel !nettle )
 "
 
