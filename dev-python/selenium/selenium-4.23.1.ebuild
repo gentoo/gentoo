@@ -78,5 +78,6 @@ python_test() {
 	rm -rf selenium || die
 	# https://github.com/SeleniumHQ/selenium/blob/selenium-4.8.2-python/py/test/runner/run_pytest.py#L20-L24
 	# seriously?
-	epytest -o "python_files=*_tests.py test_*.py"
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest -o "python_files=*_tests.py test_*.py" -p pytest_mock
 }
