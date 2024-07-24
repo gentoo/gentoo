@@ -204,7 +204,7 @@ esac
 # This is an optimization that can avoid the overhead of calling into
 # the build system in pure Python packages and packages using the stable
 # Python ABI.
-DISTUTILS_ALLOW_WHEEL_REUSE=1
+: ${DISTUTILS_ALLOW_WHEEL_REUSE=1}
 
 # @ECLASS_VARIABLE: BUILD_DIR
 # @OUTPUT_VARIABLE
