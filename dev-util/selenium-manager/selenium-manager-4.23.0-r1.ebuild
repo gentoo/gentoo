@@ -82,4 +82,8 @@ src_install() {
 	cargo_src_install
 	einstalldocs
 	dodoc README.md
+
+	newenvd - 70selenium-manager <<-EOF || die
+		SE_MANAGER_PATH="${EPREFIX}/usr/bin/selenium-manager"
+	EOF
 }
