@@ -1,0 +1,132 @@
+Adopt patches from dev-java/fec which had sources in a dev-space hosted tarball
+
+--- a/fec/src/csrc/Makefile
++++ b/fec/src/csrc/Makefile
+@@ -21,32 +21,28 @@ fec: libfec8.so libfec16.so test.c
+ 	$(CC) $(CFLAGS) -DGF_BITS=8 -o fec fec8.o test.c
+ 
+ libfec8.so: fec8.o fec8-jinterf.o
+-	$(CC) $(LDFLAGS) -shared fec8-jinterf.o fec8.o -o libfec8.so
++	$(CC) $(LDFLAGS) -shared fec8-jinterf.o fec8.o -o libfec8.so \
++		-Wl,-soname=libfec8.so
+ 
+ fec8-jinterf.o: fec-jinterf.c
+ 	$(CC) $(CFLAGS) -DGF_BITS=8 -c \
+ 		-I$(JAVA_HOME)/include/linux fec-jinterf.c \
+ 		-o fec8-jinterf.o
+ 
+-fec8.o: fec.h fec8.S
+-	$(CC) $(CFLAGS) -DGF_BITS=8 -c -o fec8.o fec8.S
+-
+-fec8.S: fec.c Makefile
+-	$(CC) $(CFLAGS) -DGF_BITS=8 -S -o fec8.S fec.c
++fec8.o: fec.h fec.c
++	$(CC) $(CFLAGS) -DGF_BITS=8 -c -o fec8.o fec.c
+ 
+ libfec16.so: fec16.o fec16-jinterf.o
+-	$(CC) $(LDFLAGS) -shared fec16-jinterf.o fec16.o -o libfec16.so
++	$(CC) $(LDFLAGS) -shared fec16-jinterf.o fec16.o -o libfec16.so \
++		-Wl,-soname=libfec16.so
+ 
+ fec16-jinterf.o: fec-jinterf.c
+ 	$(CC) $(CFLAGS) -DGF_BITS=16 -c \
+ 		-I$(JAVA_HOME)/include/linux fec-jinterf.c \
+ 		-o fec16-jinterf.o
+ 
+-fec16.o: fec.h fec16.S
+-	$(CC) $(CFLAGS) -DGF_BITS=16 -c -o fec16.o fec16.S
+-
+-fec16.S: fec.c Makefile
+-	$(CC) $(CFLAGS) -DGF_BITS=16 -S -o fec16.S fec.c
++fec16.o: fec.h fec.c
++	$(CC) $(CFLAGS) -DGF_BITS=16 -c -o fec16.o fec.c
+ 
+ clean:
+ 	- rm -f *.o *.S fec *.so
+--- a/fec/src/csrc/Makefile.nmake
++++ b/fec/src/csrc/Makefile.nmake
+@@ -1,42 +1,42 @@
+-MAKE=nmake -f Makefile.nmake
+-
+-CPP=cl.exe
+-
+-CPP_OPTS=/nologo /I $(JAVA_HOME)/include /I $(JAVA_HOME)/include/win32 \
+-	/D WIN32 /D _WINDOWS /D _MBCS /D _USRDLL /D FEC_EXPORTS /D GF_BITS=$(BITS) \
+-	/D inline=__inline
+-
+-CPP_OPTS=/MT /W3 /Ot /D NDEBUG $(CPP_OPTS)
+-
+-LIBS=kernel32.lib user32.lib
+-
+-LDFLAGS=$(LIBS) /nologo /dll /incremental:no \
+-	/out:fec$(BITS).dll /implib:fec$(BITS).lib \
+-	/OPT:REF /MAP /DEF:fec$(BITS).def
+-
+-LD=link.exe
+-
+-LDOBJS= fec$(BITS).obj fec$(BITS)-jinterf.obj
+-
+-all: release-all
+-
+-feclib: fec$(BITS).dll
+-
+-release-all:
+-	$(MAKE) BITS=8 MODE=Release feclib
+-	$(MAKE) BITS=16 MODE=Release feclib
+-
+-clean:
+-	del *.dll *.obj *.lib *.pdb *.exp *.map
+-
+-fec$(BITS).dll : $(DEF_FILE) $(LDOBJS)
+-	$(LD) $(LDFLAGS) $(LDOBJS)
+-
+-fec$(BITS).obj : fec.c
+-	$(CPP) $(CPP_OPTS) /Fo"fec$(BITS).obj" /c fec.c
+-
+-fec$(BITS)-jinterf.obj : fec-jinterf.c
+-	$(CPP) $(CPP_OPTS) /Fo"fec$(BITS)-jinterf.obj" /c fec-jinterf.c
+-
+-.c.obj::
+-	$(CPP) $(CPP_OPTS) /c $<
++MAKE=nmake -f Makefile.nmake
++
++CPP=cl.exe
++
++CPP_OPTS=/nologo /I $(JAVA_HOME)/include /I $(JAVA_HOME)/include/win32 \
++	/D WIN32 /D _WINDOWS /D _MBCS /D _USRDLL /D FEC_EXPORTS /D GF_BITS=$(BITS) \
++	/D inline=__inline
++
++CPP_OPTS=/MT /W3 /Ot /D NDEBUG $(CPP_OPTS)
++
++LIBS=kernel32.lib user32.lib
++
++LDFLAGS=$(LIBS) /nologo /dll /incremental:no \
++	/out:fec$(BITS).dll /implib:fec$(BITS).lib \
++	/OPT:REF /MAP /DEF:fec$(BITS).def
++
++LD=link.exe
++
++LDOBJS= fec$(BITS).obj fec$(BITS)-jinterf.obj
++
++all: release-all
++
++feclib: fec$(BITS).dll
++
++release-all:
++	$(MAKE) BITS=8 MODE=Release feclib
++	$(MAKE) BITS=16 MODE=Release feclib
++
++clean:
++	del *.dll *.obj *.lib *.pdb *.exp *.map
++
++fec$(BITS).dll : $(DEF_FILE) $(LDOBJS)
++	$(LD) $(LDFLAGS) $(LDOBJS)
++
++fec$(BITS).obj : fec.c
++	$(CPP) $(CPP_OPTS) /Fo"fec$(BITS).obj" /c fec.c
++
++fec$(BITS)-jinterf.obj : fec-jinterf.c
++	$(CPP) $(CPP_OPTS) /Fo"fec$(BITS)-jinterf.obj" /c fec-jinterf.c
++
++.c.obj::
++	$(CPP) $(CPP_OPTS) /c $<
