@@ -1,0 +1,53 @@
+fec/common/test/src/com/onionnetworks/util/BlockDigestInputStreamTest.java:47: error: ')' expected
+            assert("Equal Hashes",Util.arraysEqual(buf.b,buf.off,
+                                 ^
+fec/common/test/src/com/onionnetworks/util/BlockDigestInputStreamTest.java:48: error: ';' expected
+                                                   md.digest(),0,buf.len));
+                                                                         ^
+fec/common/test/src/com/onionnetworks/util/BzeroTest.java:24: error: ')' expected
+            assert("Empty: off="+off+",len="+len,checkArray(b2,b,off,len));
+                                                ^
+fec/common/test/src/com/onionnetworks/util/BzeroTest.java:24: error: ';' expected
+            assert("Empty: off="+off+",len="+len,checkArray(b2,b,off,len));
+                                                                         ^
+fec/common/test/src/com/onionnetworks/util/BzeroTest.java:37: error: ')' expected
+            assert("Filled : off="+off+",len="+len,checkArray(b2,b,off,len));
+                                                  ^
+fec/common/test/src/com/onionnetworks/util/BzeroTest.java:37: error: ';' expected
+            assert("Filled : off="+off+",len="+len,checkArray(b2,b,off,len));
+                                                                           ^
+6 errors
+
+--- a/fec/common/test/src/com/onionnetworks/util/BlockDigestInputStreamTest.java
++++ b/fec/common/test/src/com/onionnetworks/util/BlockDigestInputStreamTest.java
+@@ -44,8 +44,8 @@ public class BlockDigestInputStreamTest extends TestCase {
+             new DataInputStream(dis).readFully(b);
+             dis.close();
+             Buffer buf = bdis.getBlockDigests()[0];
+-            assert("Equal Hashes",Util.arraysEqual(buf.b,buf.off,
+-                                                   md.digest(),0,buf.len));
++            assert("Equal Hashes");Util.arraysEqual(buf.b,buf.off,
++                                                   md.digest(),0,buf.len);;
+         }
+     }
+ 
+--- a/fec/common/test/src/com/onionnetworks/util/BzeroTest.java
++++ b/fec/common/test/src/com/onionnetworks/util/BzeroTest.java
+@@ -21,7 +21,7 @@ public class BzeroTest extends TestCase {
+             int off = rand.nextInt(b.length);
+             int len = rand.nextInt(b.length-off);
+             Util.bzero(b,off,len);
+-            assert("Empty: off="+off+",len="+len,checkArray(b2,b,off,len));
++            assert("Empty: off="+off+",len="+len);checkArray(b2,b,off,len);;
+         }
+     }
+     
+@@ -34,7 +34,7 @@ public class BzeroTest extends TestCase {
+             int off = rand.nextInt(b.length);
+             int len = rand.nextInt(b.length-off);
+             Util.bzero(b,off,len);
+-            assert("Filled : off="+off+",len="+len,checkArray(b2,b,off,len));
++            assert("Filled : off="+off+",len="+len);checkArray(b2,b,off,len);;
+         }
+     }
+     
