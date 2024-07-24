@@ -454,7 +454,7 @@ CRATES="
 	zeroize_derive@1.4.2
 "
 
-inherit cargo shell-completion systemd readme.gentoo-r1
+inherit cargo greadme shell-completion systemd
 
 DESCRIPTION="Shell history manager supporting encrypted synchronisation"
 HOMEPAGE="https://atuin.sh https://github.com/atuinsh/atuin"
@@ -486,6 +486,8 @@ BDEPEND="
 "
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
+
+GREADME_DISABLE_AUTOFORMAT=1
 
 DOCS=(
 	CONTRIBUTING.md
@@ -576,14 +578,11 @@ src_install() {
 	insinto "/usr/share/${PN}"
 	doins -r shell-init
 
-	local DOC_CONTENTS="Gentoo installs atuin's shell-init code under
-		  /usr/share/atuin/shell-init/.
-		  Therefore, instead of using, e.g., 'eval \"\$(atuin init zsh)\"' in
-		  your .zshrc you can simply put \"source /usr/share/atuin/shell-init/zsh\"
-		  there, which avoids the cost of forking a process."
-	readme.gentoo_create_doc
-}
-
-pkg_postinst() {
-	readme.gentoo_print_elog
+	greadme_stdin <<-EOF
+	Gentoo installs atuin's shell-init code under
+	    /usr/share/atuin/shell-init/
+	Therefore, instead of using, e.g., 'eval \"\$(atuin init zsh)\"' in
+	your .zshrc you can simply put \"source /usr/share/atuin/shell-init/zsh\"
+	there, which avoids the cost of forking a process.
+EOF
 }
