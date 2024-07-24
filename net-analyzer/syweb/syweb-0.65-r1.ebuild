@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,8 +7,8 @@ WEBAPP_MANUAL_SLOT="yes"
 inherit webapp
 
 DESCRIPTION="Web frontend to symon"
-HOMEPAGE="http://www.xs4all.nl/~wpd/symon/"
-SRC_URI="http://www.xs4all.nl/~wpd/symon/philes/${P}.tar.gz"
+HOMEPAGE="https://www.xs4all.nl/~wpd/symon/"
+SRC_URI="https://www.xs4all.nl/~wpd/symon/philes/${P}.tar.gz"
 S="${WORKDIR}/${PN}"
 
 LICENSE="BSD-2"
