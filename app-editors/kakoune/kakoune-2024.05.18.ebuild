@@ -17,6 +17,7 @@ BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	sed -i '/CXXFLAGS-debug-no = -O3 -g3/d' Makefile || die
+	sed -i '/CXX = c++/d' Makefile || die
 	default
 }
 
