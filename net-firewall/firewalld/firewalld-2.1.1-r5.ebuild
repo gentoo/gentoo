@@ -19,7 +19,6 @@ IUSE="gui +nftables +iptables selinux test"
 RESTRICT="!test? ( test ) test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-# <nftables-1.1.0: https://github.com/firewalld/firewalld/issues/1366
 RDEPEND="
 	${PYTHON_DEPS}
 	|| ( >=sys-apps/openrc-0.11.5 sys-apps/openrc-navi sys-apps/systemd )
@@ -36,7 +35,7 @@ RDEPEND="
 		net-firewall/iptables[ipv6(+)]
 		net-firewall/ebtables
 		net-firewall/ipset
-		nftables? ( <net-firewall/nftables-1.1.0[xtables(+)] )
+		nftables? ( net-firewall/nftables[xtables(+)] )
 	)
 	selinux? ( sec-policy/selinux-firewalld )
 "
