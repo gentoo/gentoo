@@ -523,6 +523,33 @@ cargo_src_configure() {
 	[[ ${ECARGO_ARGS[@]} ]] && einfo "Configured with: ${ECARGO_ARGS[@]}"
 }
 
+# @FUNCTION: cargo_env
+# @USAGE: Command with its arguments
+# @DESCRIPTION:
+# Run the given command under an environment needed for performing tasks with
+# Cargo such as building.
+cargo_env() {
+	filter-lto
+	tc-export AR CC CXX PKG_CONFIG
+
+	if tc-is-cross-compiler; then
+		local -x CARGO_BUILD_TARGET=$(rust_abi)
+		local TRIPLE=${CARGO_BUILD_TARGET//-/_}
+		local -x CARGO_TARGET_"${TRIPLE^^}"_LINKER=$(tc-getCC)
+
+		# Set vars for cc-rs crate.
+		tc-export_build_env
+		local -x \
+			HOST_AR=$(tc-getBUILD_AR)
+			HOST_CC=$(tc-getBUILD_CC)
+			HOST_CXX=$(tc-getBUILD_CXX)
+			HOST_CFLAGS=${BUILD_CFLAGS}
+			HOST_CXXFLAGS=${BUILD_CXXFLAGS}
+	fi
+
+	"${@}"
+}
+
 # @FUNCTION: cargo_src_compile
 # @DESCRIPTION:
 # Build the package using cargo build.
@@ -532,27 +559,9 @@ cargo_src_compile() {
 	[[ ${_CARGO_GEN_CONFIG_HAS_RUN} ]] || \
 		die "FATAL: please call cargo_gen_config before using ${FUNCNAME}"
 
-	filter-lto
-	tc-export AR CC CXX PKG_CONFIG
-
-	if tc-is-cross-compiler; then
-		export CARGO_BUILD_TARGET=$(rust_abi)
-		local TRIPLE=${CARGO_BUILD_TARGET//-/_}
-		export CARGO_TARGET_"${TRIPLE^^}"_LINKER=$(tc-getCC)
-
-		# Set vars for cc-rs crate.
-		tc-export_build_env
-		export \
-			HOST_AR=$(tc-getBUILD_AR)
-			HOST_CC=$(tc-getBUILD_CC)
-			HOST_CXX=$(tc-getBUILD_CXX)
-			HOST_CFLAGS=${BUILD_CFLAGS}
-			HOST_CXXFLAGS=${BUILD_CXXFLAGS}
-	fi
-
 	set -- cargo build $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
-	"${@}" || die "cargo build failed"
+	cargo_env "${@}" || die "cargo build failed"
 }
 
 # @FUNCTION: cargo_src_install
@@ -573,7 +582,7 @@ cargo_src_install() {
 		$(usex debug --debug "") \
 		${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
-	"${@}" || die "cargo install failed"
+	cargo_env "${@}" || die "cargo install failed"
 
 	rm -f "${ED}/usr/.crates.toml" || die
 	rm -f "${ED}/usr/.crates2.json" || die
@@ -590,7 +599,7 @@ cargo_src_test() {
 
 	set -- cargo test $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
-	"${@}" || die "cargo test failed"
+	cargo_env "${@}" || die "cargo test failed"
 }
 
 fi
