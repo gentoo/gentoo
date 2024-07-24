@@ -12,4 +12,9 @@
   <upstream>
     <remote-id type="github">SeleniumHQ/selenium</remote-id>
   </upstream>
+  <use>
+    <flag name="telemetry">
+      Disable sending telemetry by default (avoid-stats config option).
+    </flag>
+  </use>
 </pkgmetadata>
