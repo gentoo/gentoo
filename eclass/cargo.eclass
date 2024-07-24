@@ -109,7 +109,7 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 #
 # If you enable CARGO_OPTIONAL, you have to set BDEPEND on virtual/rust
 # for your package and call at least cargo_gen_config manually before using
-# other src_functions of this eclass.
+# other src_functions or cargo_env of this eclass.
 # Note that cargo_gen_config is automatically called by cargo_src_unpack.
 
 # @ECLASS_VARIABLE: myfeatures
@@ -259,6 +259,19 @@ cargo_crate_uris() {
 cargo_gen_config() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	# The default linker is "cc" so override by setting linker to CC in the
+	# RUSTFLAGS. The given linker cannot include any arguments, so split these
+	# into link-args along with LDFLAGS. Also include external RUSTFLAGS.
+	# Note that as of Rust 1.80, the build host RUSTFLAGS are ignored when
+	# cross-compiling unless you use the unstable host-config feature available
+	# with USE=nightly. There is no simple way around this.
+	tc-export_build_env
+	local LD_A=( $(tc-getBUILD_CC) ${BUILD_LDFLAGS} )
+	local MY_BUILD_RUSTFLAGS="-C linker=${LD_A[0]}"
+	[[ ${#LD_A[@]} -gt 1 ]] && MY_BUILD_RUSTFLAGS+="$(printf -- ' -C link-arg=%s' "${LD_A[@]:1}")"
+	MY_BUILD_RUSTFLAGS+=" ${RUSTFLAGS} ${BUILD_RUSTFLAGS}"
+	tc-is-cross-compiler || MY_BUILD_RUSTFLAGS+=" ${TARGET_RUSTFLAGS}"
+
 	mkdir -p "${ECARGO_HOME}" || die
 
 	cat > "${ECARGO_HOME}/config.toml" <<- _EOF_ || die "Failed to create cargo config"
@@ -273,6 +286,7 @@ cargo_gen_config() {
 	offline = true
 
 	[build]
+	rustflags = "${MY_BUILD_RUSTFLAGS}"
 	jobs = $(makeopts_jobs)
 	incremental = false
 
@@ -527,27 +541,41 @@ cargo_src_configure() {
 # @USAGE: Command with its arguments
 # @DESCRIPTION:
 # Run the given command under an environment needed for performing tasks with
-# Cargo such as building.
+# Cargo such as building. RUSTFLAGS is used for both the build and target host.
+# BUILD_RUSTFLAGS and TARGET_RUSTFLAGS are used for just the build host and
+# target host respectively. Ensure these are set consistently between Cargo
+# invocations, otherwise rebuilds will occur.
 cargo_env() {
+	[[ ${_CARGO_GEN_CONFIG_HAS_RUN} ]] || \
+		die "FATAL: please call cargo_gen_config before using ${FUNCNAME}"
+
 	filter-lto
 	tc-export AR CC CXX PKG_CONFIG
+
+	# Set vars for cc-rs crate.
+	local -x \
+		HOST_AR=$(tc-getBUILD_AR)
+		HOST_CC=$(tc-getBUILD_CC)
+		HOST_CXX=$(tc-getBUILD_CXX)
+		HOST_CFLAGS=${BUILD_CFLAGS}
+		HOST_CXXFLAGS=${BUILD_CXXFLAGS}
 
 	if tc-is-cross-compiler; then
 		local -x CARGO_BUILD_TARGET=$(rust_abi)
 		local TRIPLE=${CARGO_BUILD_TARGET//-/_}
-		local -x CARGO_TARGET_"${TRIPLE^^}"_LINKER=$(tc-getCC)
-
-		# Set vars for cc-rs crate.
-		tc-export_build_env
-		local -x \
-			HOST_AR=$(tc-getBUILD_AR)
-			HOST_CC=$(tc-getBUILD_CC)
-			HOST_CXX=$(tc-getBUILD_CXX)
-			HOST_CFLAGS=${BUILD_CFLAGS}
-			HOST_CXXFLAGS=${BUILD_CXXFLAGS}
+		local TRIPLE=${TRIPLE^^} LD_A=( $(tc-getCC) ${LDFLAGS} )
+		local -x CARGO_TARGET_"${TRIPLE}"_RUSTFLAGS="-C linker=${LD_A[0]}"
+		[[ ${#LD_A[@]} -gt 1 ]] && local CARGO_TARGET_"${TRIPLE}"_RUSTFLAGS+="$(printf -- ' -C link-arg=%s' "${LD_A[@]:1}")"
+		local CARGO_TARGET_"${TRIPLE}"_RUSTFLAGS+=" ${RUSTFLAGS} ${TARGET_RUSTFLAGS}"
 	fi
 
-	"${@}"
+	(
+		# These variables will override the above, even if empty, so unset them
+		# locally. Do this in a subshell so that they remain set afterwards.
+		unset CARGO_BUILD_RUSTFLAGS CARGO_ENCODED_RUSTFLAGS RUSTFLAGS
+
+		"${@}"
+	)
 }
 
 # @FUNCTION: cargo_src_compile
@@ -555,9 +583,6 @@ cargo_env() {
 # Build the package using cargo build.
 cargo_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
-
-	[[ ${_CARGO_GEN_CONFIG_HAS_RUN} ]] || \
-		die "FATAL: please call cargo_gen_config before using ${FUNCNAME}"
 
 	set -- cargo build $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
@@ -572,9 +597,6 @@ cargo_src_compile() {
 # '--path ./somedir' can be passed directly to cargo_src_install.
 cargo_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
-
-	[[ ${_CARGO_GEN_CONFIG_HAS_RUN} ]] || \
-		die "FATAL: please call cargo_gen_config before using ${FUNCNAME}"
 
 	set -- cargo install $(has --path ${@} || echo --path ./) \
 		--root "${ED}/usr" \
@@ -593,9 +615,6 @@ cargo_src_install() {
 # Test the package using cargo test.
 cargo_src_test() {
 	debug-print-function ${FUNCNAME} "$@"
-
-	[[ ${_CARGO_GEN_CONFIG_HAS_RUN} ]] || \
-		die "FATAL: please call cargo_gen_config before using ${FUNCNAME}"
 
 	set -- cargo test $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
