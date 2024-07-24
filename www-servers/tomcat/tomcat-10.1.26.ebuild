@@ -101,6 +101,7 @@ INIT_REV="-r1"
 
 src_compile() {
 	LC_ALL=C eant
+	use doc && LC_ALL=C eant javadoc
 }
 
 src_test() {
