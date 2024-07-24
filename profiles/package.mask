@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2024-07-24)
+# Fails to build with GCC 15, several open bugs
+# including test failures. Unpackaged by others.
+# Removal on 2024-08-23.  Bug #936581.
+app-accessibility/epos
+
 # David Seifert <soap@gentoo.org> (2024-07-22)
 # Unmaintained, replaced by app-portage/pram which has more features
 # and works better for merging PRs. Removal on 2024-08-21.
