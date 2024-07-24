@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfred Wingate <parona@protonmail.com> (2024-07-24)
+# Includes change that breaks firewalld notably.
+#
+# https://git.netfilter.org/nftables/commit/?id=93560d0117639c8685fc287128ab06dec9950fbd
+# https://github.com/firewalld/firewalld/issues/1366
+# https://lore.kernel.org/netfilter-devel/Zp7FqL_YK3p_dQ8B@egarver-mac/
+=net-firewall/nftables-1.1.0
+
 # Sam James <sam@gentoo.org> (2024-07-24)
 # Fails to build with GCC 15, several open bugs
 # including test failures. Unpackaged by others.
