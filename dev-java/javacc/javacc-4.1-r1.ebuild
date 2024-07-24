@@ -35,7 +35,7 @@ src_prepare() {
 	default #780585
 	java-pkg-2_src_prepare
 	java-pkg_clean ! -path "./bootstrap/*"
-	java-pkg_jar-from --into lib/junit3.8.1 junit
+	java-pkg_jar-from --build-only --into lib/junit3.8.1 junit
 }
 
 src_compile() {
