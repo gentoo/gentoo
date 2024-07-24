@@ -116,6 +116,10 @@ src_configure() {
 
 	# LTO compiler flags are handled by configure.py itself
 	filter-lto
+	# GCC with -ftree-vectorize miscompiles node's exception handling code
+	# causing it to fail to catch exceptions sometimes
+	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=116057
+	tc-is-gcc && append-cxxflags -fno-tree-vectorize
 	# nodejs unconditionally links to libatomic #869992
 	# specifically it requires __atomic_is_lock_free which
 	# is not yet implemented by sys-libs/compiler-rt (see
@@ -274,6 +278,6 @@ src_test() {
 pkg_postinst() {
 	if use npm; then
 		ewarn "remember to run: source /etc/profile if you plan to use nodejs"
-		ewarn "	in your current shell"
+		ewarn " in your current shell"
 	fi
 }
