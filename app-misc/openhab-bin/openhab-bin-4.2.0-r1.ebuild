@@ -96,6 +96,8 @@ export JAVA_HOME
 exec /usr/share/openhab/runtime/bin/karaf "\$@"
 EOF
 	newbin "${DISTDIR}"/openhab-cli-2024-01-14 openhab-cli
+
+	newinitd "${FILESDIR}"/openhab.initd openhab
 }
 
 pkg_postinst() {
@@ -120,5 +122,14 @@ pkg_postinst() {
 		if [[ -v openhab_service_active ]]; then
 			edob systemctl start openhab
 		fi
+	elif [[ -d /run/openrc ]]; then
+		einfo "Follow these steps to complete the update of OpenHAB:"
+		einfo
+		einfo "1. Stop the OpenHAB's service"
+		einfo "$ rc-service openhab stop"
+		einfo "2. Clean OpenHAB's cache"
+		einfo "$ openahb-cli clean-cache"
+		einfo "3. Restart OpenHAB's service"
+		einfo "$ rc-service openhab start"
 	fi
 }
