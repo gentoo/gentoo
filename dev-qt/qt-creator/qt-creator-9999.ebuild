@@ -45,7 +45,7 @@ IUSE="
 REQUIRED_USE="clang? ( ${LLVM_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
-QT_PV=6.2.0:6 # IDE_QT_VERSION_MIN
+QT_PV=6.5.4:6
 
 # := is used where Qt's private APIs are used for safety
 COMMON_DEPEND="
@@ -53,7 +53,12 @@ COMMON_DEPEND="
 	>=dev-qt/qt5compat-${QT_PV}
 	>=dev-qt/qtbase-${QT_PV}=[concurrent,dbus,gui,network,widgets,xml]
 	>=dev-qt/qtdeclarative-${QT_PV}=
-	clang? ( $(llvm_gen_dep 'sys-devel/clang:${LLVM_SLOT}=') )
+	clang? (
+		$(llvm_gen_dep '
+			sys-devel/clang:${LLVM_SLOT}=
+			sys-devel/llvm:${LLVM_SLOT}=
+		')
+	)
 	designer? ( >=dev-qt/qttools-${QT_PV}[designer] )
 	help? (
 		>=dev-qt/qttools-${QT_PV}[assistant]
@@ -141,12 +146,13 @@ src_configure() {
 	use elibc_musl && append-lfs-flags
 
 	local mycmakeargs=(
+		-DBUILD_DEVELOPER_DOCS=$(usex doc)
+		-DBUILD_DOCS_BY_DEFAULT=$(usex doc)
 		-DBUILD_WITH_PCH=no
 		-DWITH_DOCS=$(usex doc)
-		-DBUILD_DEVELOPER_DOCS=$(usex doc)
 		-DWITH_TESTS=$(usex test)
 
-		# TODO: try unbundling now that slot 6 exists+unmasked (bug #934462)
+		# sticking to bundled for now until it switches to KF6's
 		-DBUILD_LIBRARY_KSYNTAXHIGHLIGHTING=yes
 
 		# Much can be optional, but do not want to flood users (or maintainers)
@@ -204,12 +210,6 @@ src_test() {
 	)
 
 	cmake_src_test --label-exclude exclude_from_precheck
-}
-
-src_compile() {
-	cmake_src_compile
-
-	use doc && cmake_build {qch,html}_docs
 }
 
 src_install() {
