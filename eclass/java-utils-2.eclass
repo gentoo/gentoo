@@ -1838,7 +1838,7 @@ ejunit_() {
 	local junit=${1}
 	shift 1
 
-	local cp=$(java-pkg_getjars --with-dependencies ${junit}${pkgs})
+	local cp=$(java-pkg_getjars --build-only --with-dependencies ${junit}${pkgs})
 	if [[ ${1} = -cp || ${1} = -classpath ]]; then
 		cp="${2}:${cp}"
 		shift 2
