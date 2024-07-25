@@ -17,6 +17,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-07-25)
+# Moved to stable.mask, issue is fixed in unstable v40
+# Sam James <sam@gentoo.org> (2024-06-19)
+# The systemd implementation of installkernel doesn't currently support
+# updating the 'initramfs.img' and 'vmlinuz' symlinks that palo needs,
+# and palo is the only bootloader for HPPA.
+sys-kernel/installkernel systemd
+
 # Eli Schwartz <eschwartz93@gmail.com> (2024-02-05)
 # Mask pdf support so net-print/cups-filters stabilisation
 # can go ahead (bug 627392)
