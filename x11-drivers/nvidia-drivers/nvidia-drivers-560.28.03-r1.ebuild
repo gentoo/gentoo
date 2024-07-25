@@ -25,6 +25,9 @@ S=${WORKDIR}
 LICENSE="NVIDIA-r2 Apache-2.0 BSD BSD-2 GPL-2 MIT ZLIB curl openssl"
 SLOT="0/${PV%%.*}"
 # no keywords due to being a beta, feel free to opt-in for testing
+# note: before keywording a 560 release, should likely unmask
+# egl-wayland-1.1.14 (maybe do a snapshot) and >=depend on it,
+# it seems to fix a fair amount of issues with 560
 #KEYWORDS="-* ~amd64 ~arm64"
 # note: kernel-open is an upstream default in >=560 if all GPUs on the system
 # support it but, since no automagic here, keeping it off for the wider support
