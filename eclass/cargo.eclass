@@ -549,7 +549,16 @@ cargo_env() {
 	[[ ${_CARGO_GEN_CONFIG_HAS_RUN} ]] || \
 		die "FATAL: please call cargo_gen_config before using ${FUNCNAME}"
 
+	# Shadow flag variables so that filtering below remains local.
+	local flag
+	for flag in $(all-flag-vars); do
+		local -x "${flag}=${!flag}"
+	done
+
+	# Rust extensions are incompatible with C/C++ LTO compiler see e.g.
+	# https://bugs.gentoo.org/910220
 	filter-lto
+
 	tc-export AR CC CXX PKG_CONFIG
 
 	# Set vars for cc-rs crate.
