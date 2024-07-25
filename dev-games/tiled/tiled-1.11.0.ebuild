@@ -20,7 +20,7 @@ RDEPEND="
 	app-arch/zstd
 	dev-qt/qtbase:6[X]
 	dev-qt/qtdeclarative:6
-	dev-qt/qtsvg
+	dev-qt/qtsvg:6
 	sys-libs/zlib
 	python? ( ${PYTHON_DEPS} )
 "
