@@ -8,7 +8,7 @@
 
 EAPI=8
 
-inherit cmake git-r3 optfeature xdg
+inherit cmake flag-o-matic git-r3 optfeature xdg
 
 DESCRIPTION="The Programmers Solid 3D CAD Modeller"
 HOMEPAGE="https://www.openscad.org/"
@@ -82,6 +82,10 @@ DOCS=(
 )
 
 src_configure() {
+	# -Werror=odr
+	# https://github.com/openscad/openscad/issues/5239
+	filter-lto
+
 	local mycmakeargs=(
 		-DCLANG_TIDY=OFF
 		-DENABLE_CAIRO=$(usex cairo)
