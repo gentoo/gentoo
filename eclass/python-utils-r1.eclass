@@ -332,6 +332,17 @@ _python_export() {
 				export PYTHON=${BROOT-${EPREFIX}}/usr/bin/${impl}
 				debug-print "${FUNCNAME}: PYTHON = ${PYTHON}"
 				;;
+			PYTHON_STDLIB)
+				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
+				PYTHON_STDLIB=$(
+					"${PYTHON}" - "${EPREFIX}/usr" <<-EOF || die
+						import sys, sysconfig
+						print(sysconfig.get_path("stdlib", vars={"installed_base": sys.argv[1]}))
+					EOF
+				)
+				export PYTHON_STDLIB
+				debug-print "${FUNCNAME}: PYTHON_STDLIB = ${PYTHON_STDLIB}"
+				;;
 			PYTHON_SITEDIR)
 				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
 				PYTHON_SITEDIR=$(
@@ -464,6 +475,18 @@ _python_export() {
 				die "_python_export: unknown variable ${var}"
 		esac
 	done
+}
+
+# @FUNCTION: python_get_stdlib
+# @USAGE: [<impl>]
+# @DESCRIPTION:
+# Obtain and print the 'stdlib' path for the given implementation. If no
+# implementation is provided, ${EPYTHON} will be used.
+python_get_stdlib() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	_python_export "${@}" PYTHON_STDLIB
+	echo "${PYTHON_STDLIB}"
 }
 
 # @FUNCTION: python_get_sitedir
