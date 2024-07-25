@@ -8,7 +8,7 @@ inherit elisp-common flag-o-matic qmake-utils xdg
 SITEFILE="50${PN}-gentoo.el"
 
 DESCRIPTION="The Programmers Solid 3D CAD Modeller"
-HOMEPAGE="https://www.openscad.org/"
+HOMEPAGE="https://openscad.org/"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.src.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"

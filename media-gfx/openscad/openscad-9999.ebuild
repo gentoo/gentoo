@@ -11,7 +11,7 @@ EAPI=8
 inherit cmake flag-o-matic git-r3 optfeature xdg
 
 DESCRIPTION="The Programmers Solid 3D CAD Modeller"
-HOMEPAGE="https://www.openscad.org/"
+HOMEPAGE="https://openscad.org/"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/openscad/openscad.git"
 
