@@ -19,8 +19,8 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RDEPEND="
 	app-arch/zstd
 	dev-qt/qtbase:6[X]
-	dev-qt/qtimageformats:6
 	dev-qt/qtdeclarative:6
+	dev-qt/qtsvg
 	sys-libs/zlib
 	python? ( ${PYTHON_DEPS} )
 "
