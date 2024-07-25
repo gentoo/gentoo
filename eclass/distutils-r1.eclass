@@ -1252,7 +1252,9 @@ distutils_pep517_install() {
 		die "mydistutilsargs are banned in PEP517 mode (use DISTUTILS_ARGS)"
 	fi
 
-	local config_settings=
+	local cmd=() config_settings=
+	has cargo ${INHERITED} && cmd+=( cargo_env )
+
 	case ${DISTUTILS_USE_PEP517} in
 		maturin)
 			# `maturin pep517 build-wheel --help` for options
@@ -1391,7 +1393,7 @@ distutils_pep517_install() {
 
 	local build_backend=$(_distutils-r1_get_backend)
 	einfo "  Building the wheel for ${PWD#${WORKDIR}/} via ${build_backend}"
-	local cmd=(
+	cmd+=(
 		"${EPYTHON}" -m gpep517 build-wheel
 			--prefix="${EPREFIX}/usr"
 			--backend "${build_backend}"
@@ -1793,16 +1795,6 @@ distutils-r1_run_phase() {
 		# bug fixes from Cython (this works only when setup.py is using
 		# cythonize() but it's better than nothing)
 		local -x CYTHON_FORCE_REGEN=1
-
-		# Rust extensions are incompatible with C/C++ LTO compiler
-		# see e.g. https://bugs.gentoo.org/910220
-		if has cargo ${INHERITED}; then
-			local x
-			for x in $(all-flag-vars); do
-				local -x "${x}=${!x}"
-			done
-			filter-lto
-		fi
 	fi
 
 	# silence warnings when pydevd is loaded on Python 3.11+
