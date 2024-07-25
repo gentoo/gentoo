@@ -5,6 +5,10 @@
 		<email>tomjbe@gentoo.org</email>
 		<name>Thomas Beierlein</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>radio@gentoo.org</email>
+		<name>Radio</name>
+	</maintainer>
 	<use>
 		<flag name="hamlib">Enables support by the Hamlib amateur radio 
 			rig control library to get/set frequency and mode of the 
