@@ -23,6 +23,13 @@ RDEPEND="
 	dev-python/pefile[${PYTHON_USEDEP}]
 "
 
+# Need systemd-detect-virt
+BDEPEND="
+	test? (
+		sys-apps/systemd
+	)
+"
+
 distutils_enable_tests unittest
 
 python_test() {
