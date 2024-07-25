@@ -34,6 +34,7 @@ RDEPEND="
 	x11-libs/pixman
 	virtual/libudev
 	sys-apps/hwdata
+	>=sys-auth/seatd-0.8.0
 "
 DEPEND="
 	${RDEPEND}
