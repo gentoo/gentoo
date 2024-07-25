@@ -248,7 +248,7 @@ cargo_crate_uris() {
 
 # @FUNCTION: cargo_gen_config
 # @DESCRIPTION:
-# Generate the $CARGO_HOME/config necessary to use our local registry and settings.
+# Generate the $CARGO_HOME/config.toml necessary to use our local registry and settings.
 # Cargo can also be configured through environment variables in addition to the TOML syntax below.
 # For each configuration key below of the form foo.bar the environment variable CARGO_FOO_BAR
 # can also be used to define the value.
@@ -261,7 +261,7 @@ cargo_gen_config() {
 
 	mkdir -p "${ECARGO_HOME}" || die
 
-	cat > "${ECARGO_HOME}/config" <<- _EOF_ || die "Failed to create cargo config"
+	cat > "${ECARGO_HOME}/config.toml" <<- _EOF_ || die "Failed to create cargo config"
 	[source.gentoo]
 	directory = "${ECARGO_VENDOR}"
 
