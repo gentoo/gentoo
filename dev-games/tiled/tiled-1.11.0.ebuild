@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit toolchain-funcs multiprocessing xdg
+PYTHON_COMPAT=( python3_{8..13} )
+inherit toolchain-funcs multiprocessing python-single-r1 xdg
 
 DESCRIPTION="A general purpose tile map editor"
 HOMEPAGE="https://www.mapeditor.org/"
@@ -12,7 +13,8 @@ SRC_URI="https://github.com/mapeditor/tiled/archive/v${PV}/${P}.tar.gz"
 LICENSE="BSD BSD-2 GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="examples"
+IUSE="python examples"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	app-arch/zstd
@@ -20,14 +22,26 @@ RDEPEND="
 	dev-qt/qtimageformats:6
 	dev-qt/qtdeclarative:6
 	sys-libs/zlib
+	python? ( ${PYTHON_DEPS} )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
+	dev-python/pkgconfig
 	dev-util/qbs
 "
 
+pkg_setup() {
+	if use python; then
+		python-single-r1_pkg_setup
+	fi
+}
+
 src_configure() {
+	if use python; then
+		eapply "${FILESDIR}"/${P}-python.patch
+	fi
+
 	qbs setup-qt /usr/bin/qmake6 qt6 || die
 	qbs config defaultProfile qt6 || die
 

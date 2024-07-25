@@ -1,0 +1,55 @@
+diff --git a/qbs/imports/PythonProbe.qbs b/qbs/imports/PythonProbe.qbs
+index 52eae7fc..93b4270c 100644
+--- a/qbs/imports/PythonProbe.qbs
++++ b/qbs/imports/PythonProbe.qbs
+@@ -7,7 +7,6 @@ import qbs.Utilities
+ Probe {
+     id: pythonDllProbe
+ 
+-    property string pythonDir: pythonInstallDir // Input
+     property string buildVariant: qbs.buildVariant // Input
+     property string minVersion: "3.5" // Input
+     property string fileNamePrefix // Output
+@@ -17,18 +16,9 @@ Probe {
+             console.warn(msg + " The Python plugin will not be available.");
+         }
+ 
+-        if (!pythonDir) {
+-            printWarning("PYTHONHOME not set.");
+-            return;
+-        }
+-        if (!File.exists(pythonDir)) {
+-            printWarning("The provided Python installation directory '" + pythonDir
+-                         + "' does not exist.");
+-            return;
+-        }
+         var p = new Process();
+         try {
+-            var pythonFilePath = FileInfo.joinPaths(pythonDir, "python.exe");
++            var pythonFilePath = "python";
+             p.exec(pythonFilePath, ["--version"], true);
+             var output = p.readStdOut().trim();
+             var magicPrefix = "Python ";
+@@ -45,9 +35,7 @@ Probe {
+                 return;
+             }
+             if (Utilities.versionCompare(versionNumberString, minVersion) < 0) {
+-                printWarning("The Python installation at '" + pythonDir
+-                             + "' has version " + versionNumberString + ", but " + minVersion + " or higher "
+-                             + "is required.");
++                printWarning("The Python installation has version " + versionNumberString + ", but " + minVersion + " or higher " + "is required.");
+                 return;
+             }
+             found = true;
+diff --git a/src/plugins/python/python.qbs b/src/plugins/python/python.qbs
+index f1c959d3..8c43af9c 100644
+--- a/src/plugins/python/python.qbs
++++ b/src/plugins/python/python.qbs
+@@ -28,7 +28,6 @@ TiledPlugin {
+ 
+     PythonProbe {
+         id: pythonDllProbe
+-        pythonDir: Environment.getEnv("PYTHONHOME")
+         minVersion: "3.8"
+     }
+ 
