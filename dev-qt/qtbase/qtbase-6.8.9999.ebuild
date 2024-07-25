@@ -52,7 +52,7 @@ REQUIRED_USE="
 # - qtprintsupport (src/printsupport/configure.cmake) [gui+widgets]
 # - qtsql (src/plugins/sqldrivers/configure.cmake)
 # dlopen: renderdoc
-RDEPEND="
+COMMON_DEPEND="
 	sys-libs/zlib:=
 	ssl? ( dev-libs/openssl:= )
 	udev? ( virtual/libudev:= )
@@ -117,8 +117,12 @@ RDEPEND="
 		sqlite? ( dev-db/sqlite:3 )
 	)
 "
+RDEPEND="
+	${COMMON_DEPEND}
+	syslog? ( virtual/logger )
+"
 DEPEND="
-	${RDEPEND}
+	${COMMON_DEPEND}
 	X? ( x11-base/xorg-proto )
 	gui? (
 		vulkan? ( dev-util/vulkan-headers )
