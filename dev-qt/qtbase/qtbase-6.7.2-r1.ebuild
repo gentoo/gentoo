@@ -28,13 +28,13 @@ declare -A QT6_IUSE=(
 )
 IUSE="${QT6_IUSE[*]}"
 REQUIRED_USE="
+	?? ( journald syslog )
 	$(
 		printf '%s? ( gui ) ' ${QT6_IUSE[gui]//+/}
 		printf '%s? ( network ) ' ${QT6_IUSE[network]//+/}
 		printf '%s? ( sql ) ' ${QT6_IUSE[sql]//+/}
 		printf '%s? ( gui widgets ) ' ${QT6_IUSE[widgets]//+/}
 	)
-	?? ( journald syslog )
 	accessibility? ( dbus )
 	eglfs? ( opengl )
 	gles2-only? ( opengl )
@@ -51,7 +51,7 @@ REQUIRED_USE="
 # - qtnetwork (src/network/configure.cmake)
 # - qtprintsupport (src/printsupport/configure.cmake) [gui+widgets]
 # - qtsql (src/plugins/sqldrivers/configure.cmake)
-# dlopen: renderdoc
+# nolink: renderdoc, systemd
 COMMON_DEPEND="
 	sys-libs/zlib:=
 	ssl? ( dev-libs/openssl:= )
