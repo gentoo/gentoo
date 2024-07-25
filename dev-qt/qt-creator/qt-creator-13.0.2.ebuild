@@ -155,7 +155,9 @@ src_configure() {
 
 		-DWITH_QMLDESIGNER=$(usex qmldesigner)
 
-		-Djournald=no # not really useful unless match qtbase (needs systemd)
+		# meant to be in sync with qtbase[journald], but think(?) not worth
+		# handling given qt-creator can use QT_FORCE_STDERR_LOGGING=1 nowadays
+		-Djournald=no
 
 		# not packaged, but allow using if found
 		#-DCMAKE_DISABLE_FIND_PACKAGE_LibDDemangle=yes
