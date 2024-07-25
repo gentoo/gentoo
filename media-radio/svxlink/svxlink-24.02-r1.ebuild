@@ -18,6 +18,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="dev-lang/tcl:0
+	dev-libs/jsoncpp
+	=dev-libs/libgpiod-1*
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
