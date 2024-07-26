@@ -649,10 +649,6 @@ dev-python/autobahn xbr
 # Dependency pam_wrapper missing for tests, and RESTRICT=test is already set
 net-fs/samba test
 
-# Mike Gilbert <floppym@gentoo.org> (2020-04-23)
-# Tests are very sensitive to the host environment.
-dev-build/meson test
-
 # Alfredo Tupone <tupone@gentoo.org> (2020-04-04)
 # Ada support is not yet ready for sys-devel/gcc
 sys-devel/gcc ada
