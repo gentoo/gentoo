@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit go-module shell-completion
+inherit check-reqs go-module shell-completion
 
 DESCRIPTION="Fast static HTML and CSS website generator"
 HOMEPAGE="https://gohugo.io https://github.com/gohugoio/hugo"
@@ -41,6 +41,27 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.121.0-unbundle-libwebp-and-libsass.patch
 	"${FILESDIR}"/${PN}-0.128.0-skip-some-tests.patch
 )
+
+_check_reqs() {
+	if [[ ${MERGE_TYPE} == binary ]] ; then
+		return 0
+	fi
+
+	if has test ${FEATURES}; then
+		CHECKREQS_DISK_BUILD="4G"
+	else
+		CHECKREQS_DISK_BUILD="1500M"
+	fi
+	check-reqs_${EBUILD_PHASE_FUNC}
+}
+
+pkg_pretend() {
+	_check_reqs
+}
+
+pkg_setup() {
+	_check_reqs
+}
 
 src_configure() {
 	export CGO_ENABLED=1
