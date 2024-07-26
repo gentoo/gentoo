@@ -194,6 +194,7 @@ get_distribution_components() {
 			clang-format
 			clang-installapi
 			clang-linker-wrapper
+			clang-nvlink-wrapper
 			clang-offload-bundler
 			clang-offload-packager
 			clang-refactor
