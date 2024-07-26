@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit go-module systemd tmpfiles
+inherit go-module linux-info systemd tmpfiles
 
 # These settings are obtained by running ./build_dist.sh shellvars` in
 # the upstream repo.
@@ -19,6 +19,8 @@ SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+
+CONFIG_CHECK="~TUN"
 
 RDEPEND="net-firewall/iptables"
 BDEPEND=">=dev-lang/go-1.22"
