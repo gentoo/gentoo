@@ -266,12 +266,6 @@ dev-php/composer
 # Masked for removal on 2024-07-21.
 dev-ruby/public_suffix:4
 
-# Martin Dummer <martin.dummer@gmx.net> (2024-06-21)
-# Upstream dead, was an optional package for a reverse dependency
-# which is gone.
-# Removal on 2024-07-21.  Bug #791904
-media-video/vdr2jpeg
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-16)
 # No release since 2021-06-10 and effectively declared unmaintained by
 # upstream since then; now conflicting with Plasma 6 by pulling in old
