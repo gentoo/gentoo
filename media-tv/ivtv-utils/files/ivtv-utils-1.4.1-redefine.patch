@@ -1,0 +1,12 @@
+This is already defined in linux/fb.h, and the int type is wrong anyway.
+
+diff -Naur a/utils/linux/ivtvfb.h b/utils/linux/ivtvfb.h
+--- a/utils/linux/ivtvfb.h	2024-07-26 21:36:14.167005194 +0100
++++ b/utils/linux/ivtvfb.h	2024-07-26 21:36:23.785286007 +0100
+@@ -32,6 +32,5 @@
+ };
+ 
+ #define IVTVFB_IOC_DMA_FRAME 	_IOW('V', BASE_VIDIOC_PRIVATE+0, struct ivtvfb_dma_frame)
+-#define FBIO_WAITFORVSYNC	_IOW('F', 0x20, u_int32_t)
+ 
+ #endif
