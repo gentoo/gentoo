@@ -6,7 +6,8 @@
 		<name>Gentoo TeX Project</name>
 	</maintainer>
 	<use>
-		<flag name="video">Use phonon for video embedding</flag>
+		<flag name="adwaita">Enable internal adwaita-qt style</flag>
+		<flag name="video">Use qtmultimedia for video embedding</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">texstudio-org/texstudio</remote-id>
