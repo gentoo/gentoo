@@ -37,7 +37,7 @@ DESCRIPTION="Family of powerful x86 virtualization products for enterprise and h
 HOMEPAGE="https://www.virtualbox.org/"
 ESVN_REPO_URI="https://www.virtualbox.org/svn/vbox/trunk"
 SRC_URI="
-	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-7.1.0_pre20240419.tar.bz2
+	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-7.1.0_beta1.tar.bz2
 	gui? ( !doc? ( https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${PN}-help-${BASE_PV}.tar.xz ) )
 "
 S="${WORKDIR}/trunk"
@@ -197,7 +197,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	# Downloaded patchset
-	"${WORKDIR}"/virtualbox-patches-7.1.0_pre20240419/patches
+	"${WORKDIR}"/virtualbox-patches-7.1.0_beta1/patches
 )
 
 DOCS=()	# Don't install the default README file during einstalldocs
