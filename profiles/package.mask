@@ -211,13 +211,6 @@ games-puzzle/seatris
 # The symbol versioning "fix" breaks anything built with 3.0.0.
 =dev-libs/libassuan-3.0.1
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-21)
-# Last dev-php/* EAPI=6 packages, and reverse dependencies of them.
-# composer has active security vulnerabilities. Others are waiting
-# for version bumps, and unbundling of dependencies.
-# Removal on 2024-07-21.  Bugs #934666.
-dev-php/phpdocumentor-reflection-common
-
 # Hans de Graaff <graaff@gentoo.org> (2024-06-21)
 # Obsolete slot. Please use a newer slot instead.
 # Masked for removal on 2024-07-21.
