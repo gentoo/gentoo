@@ -71,7 +71,7 @@ RDEPEND="${PYTHON_DEPS}
 	embree? ( >=media-libs/embree-3.10.0:=[raymask] )
 	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k?,vpx,vorbis,opus,xvid] )
 	fftw? ( sci-libs/fftw:3.0= )
-	gmp? ( dev-libs/gmp )
+	gmp? ( dev-libs/gmp[cxx] )
 	jack? ( virtual/jack )
 	jemalloc? ( dev-libs/jemalloc:= )
 	jpeg2k? ( media-libs/openjpeg:2= )

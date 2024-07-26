@@ -83,7 +83,7 @@ RDEPEND="${PYTHON_DEPS}
 	embree? ( media-libs/embree:=[raymask] )
 	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k?,vpx,vorbis,opus,xvid] )
 	fftw? ( sci-libs/fftw:3.0= )
-	gmp? ( dev-libs/gmp )
+	gmp? ( dev-libs/gmp[cxx] )
 	gnome? ( gui-libs/libdecor )
 	hip? ( >=dev-util/hip-5.7:= )
 	jack? ( virtual/jack )
