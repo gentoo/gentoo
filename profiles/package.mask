@@ -278,13 +278,6 @@ media-video/vdr2jpeg
 # kde-plasma/libksysguard:5. Removal on 2024-08-24.
 kde-plasma/ksysguard
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-06-16)
-# After most protocol support is gone, there is barely anything usable
-# left in kde-apps/kopete. It is also unmaintained and still depends on
-# kf5-portingaids, as well as conflicting kde-apps in slot 5. bug #760555
-# Removal on 2024-07-24.
-kde-apps/kopete
-
 # Cédric Krier <cedk@gentoo.org> (2023-06-15)
 # critical regression with potential data loss:
 # https://lists.mercurial-scm.org/pipermail/mercurial-devel/2024-June/297954.html
