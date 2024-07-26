@@ -237,12 +237,6 @@ sci-libs/coinor-os
 dev-python/pytzdata
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-21)
-# EAPI=6, not maintained in gentoo for a long time, fails to
-# configure.
-# Removal on 2024-07-21.  Bugs #934680, #677444, #898100.
-sci-astronomy/aatm
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-21)
 # Last dev-php/* EAPI=6 packages, and reverse dependencies of them.
 # composer has active security vulnerabilities. Others are waiting
 # for version bumps, and unbundling of dependencies.
