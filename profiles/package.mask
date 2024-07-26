@@ -220,12 +220,6 @@ games-puzzle/seatris
 media-libs/libmpeg3
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-22)
-# EAPI=6, no reverse-dependencies, various issues with modern C,
-# installs libtools files.
-# Removal on 2024-07-22.  Bugs #934689, #741440, #849920, #832789, #862714, #828579.
-sci-libs/h5hut
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-06-22)
 # EAPI=6, failing tests, fails to compile in various envs, various
 # QA issues.
 # Removal on 2024-07-22.  Bugs #934687, #928028, #862687, #836104, #741430, #811561, #526442.
