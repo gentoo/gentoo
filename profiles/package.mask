@@ -219,7 +219,6 @@ games-puzzle/seatris
 dev-php/phpdocumentor-reflection-common
 dev-php/phpdocumentor-reflection-docblock
 dev-php/phpdocumentor-type-resolver
-dev-php/stringparser_bbcode
 
 # Hans de Graaff <graaff@gentoo.org> (2024-06-21)
 # Obsolete slot. Please use a newer slot instead.
