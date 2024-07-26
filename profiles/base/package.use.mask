@@ -582,7 +582,6 @@ dev-php/recaptcha test
 dev-php/symfony-filesystem test
 dev-php/symfony-finder test
 dev-php/symfony-process test
-dev-php/symfony-yaml test
 dev-php/theseer-Autoload test
 dev-php/twig test
 
