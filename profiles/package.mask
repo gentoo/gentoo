@@ -217,11 +217,6 @@ games-puzzle/seatris
 # Removal on 2024-07-22.  Bugs #934687, #928028, #862687, #836104, #741430, #811561, #526442.
 sci-libs/coinor-os
 
-# Michał Górny <mgorny@gentoo.org> (2024-06-21)
-# An obsolete timezone distribution for Python.  No revdeps left.
-# Removal on 2024-07-21.  Bug #934681.
-dev-python/pytzdata
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-21)
 # Last dev-php/* EAPI=6 packages, and reverse dependencies of them.
 # composer has active security vulnerabilities. Others are waiting
