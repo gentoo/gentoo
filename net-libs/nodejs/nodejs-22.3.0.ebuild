@@ -259,6 +259,7 @@ src_test() {
 		test/sequential/test-util-debug.js
 	)
 	[[ "$(nice)" -gt 10 ]] && drop_tests+=( "test/parallel/test-os.js" )
+	use inspector || drop_tests+=( test/sequential/test-watch-mode.mjs )
 	rm -f "${drop_tests[@]}" || die "disabling tests failed"
 
 	out/${BUILDTYPE}/cctest || die
