@@ -81,7 +81,6 @@ cblas-external
 
 # Samuli Suominen <ssuominen@gentoo.org>
 # Media cannot be tested for MIPS at the moment.
-# media-libs/libmpeg3
 # media-libs/portaudio
 # dev-libs/libcdio
 # media-libs/musicbrainz

@@ -211,14 +211,6 @@ games-puzzle/seatris
 # The symbol versioning "fix" breaks anything built with 3.0.0.
 =dev-libs/libassuan-3.0.1
 
-# NHOrus <jy6x2b32pie9@yahoo.com> (2024-06-24)
-# Masked for removal in 30 days.
-# It's a dependency of cinelerra, written for cinelerra.
-# We don't ship cinelerra. It should be removed when we removed cinelerra
-#
-# Bugs #871387, #907261, #712480, #931765.
-media-libs/libmpeg3
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-06-22)
 # EAPI=6, failing tests, fails to compile in various envs, various
 # QA issues.
