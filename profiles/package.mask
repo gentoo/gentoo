@@ -225,7 +225,6 @@ dev-php/symfony-console
 dev-php/symfony-dependency-injection
 dev-php/symfony-event-dispatcher
 dev-php/symfony-yaml
-dev-php/composer
 
 # Hans de Graaff <graaff@gentoo.org> (2024-06-21)
 # Obsolete slot. Please use a newer slot instead.
