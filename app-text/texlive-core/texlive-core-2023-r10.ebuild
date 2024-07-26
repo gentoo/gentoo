@@ -10,15 +10,13 @@ MY_P=${PN%-core}-${TL_SOURCE_VERSION}-source
 
 DESCRIPTION="A complete TeX distribution"
 HOMEPAGE="https://tug.org/texlive/"
-SLOT="0"
-LICENSE="BSD GPL-1+ GPL-2 GPL-2+ GPL-3+ MIT TeX-other-free"
 GENTOO_TEX_PATCHES_NUM=5
 SRC_URI="
 	https://mirrors.ctan.org/systems/texlive/Source/${MY_P}.tar.xz
 	https://gitweb.gentoo.org/proj/tex-patches.git/snapshot/tex-patches-${GENTOO_TEX_PATCHES_NUM}.tar.bz2
 		-> gentoo-tex-patches-${GENTOO_TEX_PATCHES_NUM}.tar.bz2
 	https://raw.githubusercontent.com/debian-tex/texlive-bin/58a00e704a15ec3dd8abbf3826f28207eb095251/debian/patches/1054218.patch
-		-> texlive-core-2023-pdflatex-big-endian-fix.patch
+		-> ${PN}-2023-pdflatex-big-endian-fix.patch
 "
 
 # Macros that are not a part of texlive-sources or or pulled in from collection-binextra
@@ -126,6 +124,9 @@ SRC_URI+=" source? ( "
 texlive-common_append_to_src_uri TL_CORE_EXTRA_SRC_CONTENTS
 SRC_URI+=" )"
 
+S="${WORKDIR}/${MY_P}"
+LICENSE="BSD GPL-1+ GPL-2 GPL-2+ GPL-3+ MIT TeX-other-free"
+SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="cjk X doc source tk +luajittex xetex xindy"
 
@@ -189,7 +190,6 @@ RDEPEND="
 	!<dev-texlive/texlive-music-2023
 "
 
-S="${WORKDIR}/${MY_P}"
 BUILDDIR="${WORKDIR}/${P}_build"
 
 RELOC_TARGET=texmf-dist
@@ -395,7 +395,9 @@ src_test() {
 		-e 's;dvispc.test;;' \
 		texk/dviout-util/Makefile || die
 
-	emake check
+	# TODO: Drop -j1 when bumping to texlive-2024
+	# https://bugs.gentoo.org/935825
+	emake check -j1
 }
 
 src_install() {
@@ -431,8 +433,10 @@ src_install() {
 
 	use doc || rm -rf "${ED}/usr/share/texmf-dist/doc"
 
-	dodir /etc/env.d
-	echo 'CONFIG_PROTECT_MASK="/etc/texmf/web2c /etc/texmf/language.dat.d /etc/texmf/language.def.d /etc/texmf/updmap.d"' > "${ED}/etc/env.d/98texlive"
+	newenvd - 98texlive <<-EOF
+	CONFIG_PROTECT_MASK="/etc/texmf/web2c /etc/texmf/language.dat.d /etc/texmf/language.def.d /etc/texmf/updmap.d"
+	EOF
+
 	# populate /etc/texmf
 	keepdir /etc/texmf/web2c
 
@@ -458,7 +462,9 @@ src_install() {
 
 	dodir "/usr/bin"
 	for i in ${TEXLIVE_MODULE_BINLINKS} ; do
-		[[ -f ${ED}/usr/bin/${i%:*} ]] || die "Trying to install an invalid BINLINK ${i%:*}. This should not happen. Please file a bug."
+		if [[ ! -f ${ED}/usr/bin/${i%:*} ]]; then
+			die "Trying to install an invalid BINLINK ${i%:*}. This should not happen. Please file a bug."
+		fi
 
 		dosym "${i%:*}" "/usr/bin/${i#*:}"
 	done
