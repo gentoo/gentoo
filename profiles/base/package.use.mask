@@ -581,7 +581,6 @@ dev-php/jsonlint test
 dev-php/recaptcha test
 dev-php/symfony-config test
 dev-php/symfony-dependency-injection test
-dev-php/symfony-event-dispatcher test
 dev-php/symfony-filesystem test
 dev-php/symfony-finder test
 dev-php/symfony-process test

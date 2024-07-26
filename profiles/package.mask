@@ -222,7 +222,6 @@ dev-php/phpdocumentor-type-resolver
 dev-php/stringparser_bbcode
 dev-php/symfony-config
 dev-php/symfony-dependency-injection
-dev-php/symfony-event-dispatcher
 dev-php/symfony-yaml
 
 # Hans de Graaff <graaff@gentoo.org> (2024-06-21)
