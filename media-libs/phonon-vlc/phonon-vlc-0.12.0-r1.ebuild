@@ -11,7 +11,7 @@ HOMEPAGE="https://community.kde.org/Phonon"
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/phonon/phonon-backend-vlc/${PV}/phonon-backend-vlc-${PV}.tar.xz"
 	S="${WORKDIR}"/phonon-backend-vlc-${PV}
-	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
+	KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
 fi
 
 LICENSE="LGPL-2.1+ || ( LGPL-2.1 LGPL-3 )"
