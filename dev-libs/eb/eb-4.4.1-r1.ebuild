@@ -22,6 +22,10 @@ BDEPEND="nls? ( sys-devel/gettext )"
 
 DOCS=( AUTHORS ChangeLog{,.0,.1,.2} NEWS README )
 
+PATCHES=(
+	"${FILESDIR}"/eb-4.4-gcc14-iconv.patch #920641
+)
+
 src_prepare() {
 	default
 	eautoreconf
