@@ -249,6 +249,7 @@ get_distribution_components() {
 			llvm-c-test
 			llvm-cat
 			llvm-cfi-verify
+			llvm-cgdata
 			llvm-config
 			llvm-cov
 			llvm-cvtres
