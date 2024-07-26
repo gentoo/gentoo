@@ -30,6 +30,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fbsd.patch
 	"${FILESDIR}"/${PN}-1.2-format-security.patch
 	"${FILESDIR}"/${P}-musl.patch
+	"${FILESDIR}"/${P}-openpty-util.patch
 )
 
 src_prepare() {
