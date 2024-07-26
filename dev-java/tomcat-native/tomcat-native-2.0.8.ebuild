@@ -16,9 +16,9 @@ SRC_URI="mirror://apache/tomcat/tomcat-connectors/native/${PV}/source/${P}-src.t
 	)"
 S=${WORKDIR}/${P}-src/native
 
-KEYWORDS="~amd64 ~x86"
 LICENSE="Apache-2.0"
 SLOT="2"
+KEYWORDS="~amd64 ~x86"
 IUSE="static-libs"
 
 DEPEND="
