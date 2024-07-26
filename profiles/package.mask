@@ -266,12 +266,6 @@ dev-php/composer
 # Masked for removal on 2024-07-21.
 dev-ruby/public_suffix:4
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-06-16)
-# No release since 2021-06-10 and effectively declared unmaintained by
-# upstream since then; now conflicting with Plasma 6 by pulling in old
-# kde-plasma/libksysguard:5. Removal on 2024-08-24.
-kde-plasma/ksysguard
-
 # Cédric Krier <cedk@gentoo.org> (2023-06-15)
 # critical regression with potential data loss:
 # https://lists.mercurial-scm.org/pipermail/mercurial-devel/2024-June/297954.html
