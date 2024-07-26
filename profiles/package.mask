@@ -221,7 +221,6 @@ dev-php/phpdocumentor-reflection-docblock
 dev-php/phpdocumentor-type-resolver
 dev-php/stringparser_bbcode
 dev-php/symfony-config
-dev-php/symfony-console
 dev-php/symfony-dependency-injection
 dev-php/symfony-event-dispatcher
 dev-php/symfony-yaml
