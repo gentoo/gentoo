@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Viorel Munteanu <ceamac@gentoo.org> (2024-07-26)
+# Branch 7.1 needs a new BDEPEND for doc
+>=app-emulation/virtualbox-7.1 doc
+
 # orbea <orbea@riseup.net> (2024-07-19)
 # The dynarec is only supported upstream for amd64, arm, arm64 and x86.
 games-emulation/rmg dynarec
