@@ -26,8 +26,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	virtual/pkgconfig
-	dev-python/pkgconfig
 	dev-util/qbs
 "
 
