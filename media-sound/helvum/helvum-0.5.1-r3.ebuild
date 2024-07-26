@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -109,9 +109,9 @@ CRATES="
 	winnow@0.5.15
 "
 
-LLVM_MAX_SLOT=17
+LLVM_COMPAT=( {16..18} )
 
-inherit cargo desktop xdg llvm
+inherit cargo desktop llvm-r1 xdg
 
 DESCRIPTION="A GTK patchbay for pipewire"
 HOMEPAGE="https://gitlab.freedesktop.org/pipewire/helvum"
@@ -131,14 +131,18 @@ KEYWORDS="~amd64"
 
 # Clang needed for bindgen
 BDEPEND="
-	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1))
+	>=dev-build/meson-0.59.0
+	$(llvm_gen_dep '
+		sys-devel/clang:${LLVM_SLOT}=
+		sys-devel/llvm:${LLVM_SLOT}=
+		virtual/rust:0/llvm-${LLVM_SLOT}
+	')
 	virtual/pkgconfig
-	>=virtual/rust-1.70
 "
 DEPEND="
 	>=dev-libs/glib-2.66:2
 	>=gui-libs/gtk-4.4.0:4
-	>=gui-libs/libadwaita-1.3
+	>=gui-libs/libadwaita-1.3:1
 	media-libs/graphene
 	>=media-video/pipewire-0.3:=
 	x11-libs/cairo
@@ -148,10 +152,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
-
-llvm_check_deps() {
-	has_version -b "sys-devel/clang:${LLVM_SLOT}"
-}
 
 src_install() {
 	cargo_src_install
