@@ -216,7 +216,6 @@ games-puzzle/seatris
 # composer has active security vulnerabilities. Others are waiting
 # for version bumps, and unbundling of dependencies.
 # Removal on 2024-07-21.  Bugs #934666.
-dev-php/phpDocumentor
 dev-php/phpcov
 dev-php/phpdepend
 dev-php/phpdocumentor-reflection-common
