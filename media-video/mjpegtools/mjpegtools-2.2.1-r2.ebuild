@@ -42,6 +42,9 @@ src_prepare() {
 
 	eapply "${FILESDIR}/${P}-c++17-register-fix.patch"
 	eapply "${FILESDIR}/${P}-c++17-no-auto_ptr-fix.patch"
+	eapply "${FILESDIR}/${P}-gcc15-template.patch"
+	eapply "${FILESDIR}/${P}-lto.patch"
+	eapply "${FILESDIR}/${P}-puts-c99-configure.patch"
 
 	eautoreconf
 	sed -i -e '/ARCHFLAGS=/s:=.*:=:' configure
