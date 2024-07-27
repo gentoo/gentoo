@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: udev.eclass
 # @MAINTAINER:
 # systemd@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Default eclass for determining udev directories.
 # @DESCRIPTION:
 # Default eclass for determining udev directories.
@@ -37,7 +37,7 @@
 # @CODE
 
 case ${EAPI} in
-	5|6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -46,11 +46,7 @@ _UDEV_ECLASS=1
 
 inherit toolchain-funcs
 
-if [[ ${EAPI} == [56] ]]; then
-	DEPEND="virtual/pkgconfig"
-else
-	BDEPEND="virtual/pkgconfig"
-fi
+BDEPEND="virtual/pkgconfig"
 
 # @FUNCTION: _udev_get_udevdir
 # @INTERNAL
@@ -122,7 +118,7 @@ udev_newrules() {
 # Should be called from pkg_postinst and pkg_postrm in packages which install
 # udev rules or hwdb data.
 udev_reload() {
-	if [[ -n ${ROOT%/} ]]; then
+	if [[ -n ${ROOT} ]]; then
 		return 0
 	fi
 
