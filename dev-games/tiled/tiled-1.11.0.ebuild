@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit toolchain-funcs multiprocessing python-single-r1 xdg
 
 DESCRIPTION="A general purpose tile map editor"
