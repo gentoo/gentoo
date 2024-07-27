@@ -1,4 +1,4 @@
-# Copyright 2004-2023 Gentoo Authors
+# Copyright 2004-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: xdg-utils.eclass
@@ -7,7 +7,7 @@
 # freedesktop-bugs@gentoo.org
 # @AUTHOR:
 # Original author: Gilles Dartiguelongue <eva@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Auxiliary functions commonly used by XDG compliant packages.
 # @DESCRIPTION:
 # This eclass provides a set of auxiliary functions needed by most XDG
@@ -18,7 +18,7 @@
 #  * XDG mime information database management
 
 case ${EAPI} in
-	5|6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -68,7 +68,7 @@ xdg_desktop_database_update() {
 	fi
 
 	ebegin "Updating .desktop files database"
-	update-desktop-database -q "${EROOT%/}${DESKTOP_DATABASE_DIR}"
+	update-desktop-database -q "${EROOT}${DESKTOP_DATABASE_DIR}"
 	eend $?
 }
 
@@ -89,7 +89,7 @@ xdg_icon_cache_update() {
 	ebegin "Updating icons cache"
 	local dir retval=0
 	local fails=()
-	for dir in "${EROOT%/}"/usr/share/icons/*; do
+	for dir in "${EROOT}"/usr/share/icons/*; do
 		if [[ -f ${dir}/index.theme ]]; then
 			if ! gtk-update-icon-cache -qf "${dir}"; then
 				debug-print "Updating cache failed on ${dir}"
@@ -130,6 +130,6 @@ xdg_mimeinfo_database_update() {
 	local -x PKGSYSTEM_ENABLE_FSYNC=0
 
 	ebegin "Updating shared mime info database"
-	update-mime-database "${EROOT%/}${MIMEINFO_DATABASE_DIR}"
+	update-mime-database "${EROOT}${MIMEINFO_DATABASE_DIR}"
 	eend $?
 }
