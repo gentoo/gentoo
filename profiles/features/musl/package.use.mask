@@ -58,6 +58,11 @@ sys-devel/gcc cet
 sys-libs/binutils-libs cet
 sys-libs/glibc cet
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-03-05)
+# gprofng is still somewhat messed up with musl-1.2.4, does not build
+# bug 912284
+sys-devel/binutils gprofng
+
 # Violet Purcell <vimproved@inventati.org> (2024-01-25)
 # f16c support in gtk4 requires the ifunc attribute, which
 # is not available on musl. There is a configure check for
