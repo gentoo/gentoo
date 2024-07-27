@@ -4,7 +4,7 @@
 # @ECLASS: autotools.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Regenerates auto* build scripts
 # @DESCRIPTION:
 # This eclass is for safely handling autotooled software packages that need to
@@ -14,7 +14,7 @@
 # from the GNU version of m4 without worrying about other variants (i.e. BSD).
 
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -30,8 +30,6 @@ fi
 
 if [[ -z ${_AUTOTOOLS_ECLASS} ]] ; then
 _AUTOTOOLS_ECLASS=1
-
-[[ ${EAPI} == 6 ]] && inherit eqawarn
 
 GNUCONFIG_AUTO_DEPEND=no
 inherit gnuconfig libtool
@@ -180,12 +178,7 @@ RDEPEND=""
 # ebuilds form conditional depends by using ${AUTOTOOLS_DEPEND} in
 # their own DEPEND string.
 : "${AUTOTOOLS_AUTO_DEPEND:=yes}"
-if [[ ${AUTOTOOLS_AUTO_DEPEND} != "no" ]] ; then
-	case ${EAPI} in
-		6) DEPEND=${AUTOTOOLS_DEPEND} ;;
-		*) BDEPEND=${AUTOTOOLS_DEPEND} ;;
-	esac
-fi
+[[ ${AUTOTOOLS_AUTO_DEPEND} != "no" ]] && BDEPEND=${AUTOTOOLS_DEPEND}
 _AUTOTOOLS_AUTO_DEPEND=${AUTOTOOLS_AUTO_DEPEND} # See top of eclass
 
 unset _automake_atom _autoconf_atom
@@ -388,22 +381,16 @@ eaclocal() {
 	# - ${BROOT}/usr/share/aclocal
 	# - ${ESYSROOT}/usr/share/aclocal
 	# See bug #677002
-	if [[ ${EAPI} != 6 ]] ; then
-		if [[ ! -f "${T}"/aclocal/dirlist ]] ; then
-			mkdir "${T}"/aclocal || die
-			cat <<- EOF > "${T}"/aclocal/dirlist || die
-				${BROOT}/usr/share/aclocal
-				${ESYSROOT}/usr/share/aclocal
-			EOF
-		fi
-
-		local system_acdir=" --system-acdir=${T}/aclocal"
-	else
-		local system_acdir=""
+	if [[ ! -f "${T}"/aclocal/dirlist ]] ; then
+		mkdir "${T}"/aclocal || die
+		cat <<- EOF > "${T}"/aclocal/dirlist || die
+			${BROOT}/usr/share/aclocal
+			${ESYSROOT}/usr/share/aclocal
+		EOF
 	fi
 
 	[[ ! -f aclocal.m4 || -n $(grep -e 'generated.*by aclocal' aclocal.m4) ]] && \
-		autotools_run_tool --at-m4flags aclocal "$@" $(eaclocal_amflags) ${system_acdir}
+		autotools_run_tool --at-m4flags aclocal "$@" $(eaclocal_amflags) --system-acdir="${T}"/aclocal
 }
 
 # @FUNCTION: _elibtoolize
@@ -445,7 +432,7 @@ eautoconf() {
 
 	if [[ ${WANT_AUTOCONF} != "2.1" && -e configure.in ]] ; then
 		case ${EAPI} in
-			6|7)
+			7)
 				eqawarn "This package has a configure.in file which has long been deprecated.  Please"
 				eqawarn "update it to use configure.ac instead as newer versions of autotools will die"
 				eqawarn "when it finds this file.  See https://bugs.gentoo.org/426262 for details."
@@ -533,21 +520,13 @@ eautopoint() {
 # use gettext directly.  So we have to copy it in manually since
 # we can't let `autopoint` do it for us.
 config_rpath_update() {
-	local dst src
-
-	case ${EAPI} in
-		6)
-			src="${EPREFIX}/usr/share/gettext/config.rpath"
-			;;
-		*)
-			src="${BROOT}/usr/share/gettext/config.rpath"
-			;;
-	esac
+	local src="${BROOT}/usr/share/gettext/config.rpath"
 
 	[[ $# -eq 0 ]] && set -- $(find -name config.rpath)
 	[[ $# -eq 0 ]] && return 0
 
 	einfo "Updating all config.rpath files"
+	local dst
 	for dst in "$@" ; do
 		einfo "   ${dst}"
 		cp "${src}" "${dst}" || die
@@ -565,16 +544,7 @@ autotools_env_setup() {
 		local pv
 		for pv in ${_LATEST_AUTOMAKE[@]/#*:} ; do
 			# Break on first hit to respect _LATEST_AUTOMAKE order.
-			local hv_args=""
-			case ${EAPI} in
-				6)
-					hv_args="--host-root"
-					;;
-				*)
-					hv_args="-b"
-					;;
-			esac
-			has_version ${hv_args} "=dev-build/automake-${pv}*" && export WANT_AUTOMAKE="${pv}" && break
+			has_version -b "=dev-build/automake-${pv}*" && export WANT_AUTOMAKE="${pv}" && break
 		done
 
 		# During bootstrap in prefix there might be no automake merged yet
@@ -594,16 +564,7 @@ autotools_env_setup() {
 		local pv
 		for pv in ${_LATEST_AUTOCONF[@]/#*:} ; do
 			# Break on first hit to respect _LATEST_AUTOCONF order.
-			local hv_args=""
-			case ${EAPI} in
-				6)
-					hv_args="--host-root"
-					;;
-				*)
-					hv_args="-b"
-					;;
-				esac
-			has_version ${hv_args} "=dev-build/autoconf-${pv}*" && export WANT_AUTOCONF="${pv}" && break
+			has_version -b "=dev-build/autoconf-${pv}*" && export WANT_AUTOCONF="${pv}" && break
 		done
 
 		# During bootstrap in prefix there might be no autoconf merged yet
