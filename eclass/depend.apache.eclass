@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: depend.apache.eclass
 # @MAINTAINER:
 # apache-bugs@gentoo.org
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Functions to allow ebuilds to depend on apache
 # @DESCRIPTION:
 # This eclass handles depending on apache in a sane way and provides information
@@ -40,12 +40,9 @@
 # }
 # @CODE
 
-case ${EAPI:-0} in
-	6|7|8)
-		;;
-	*)
-		die "EAPI=${EAPI} is not supported by depend.apache.eclass"
-		;;
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 # ==============================================================================
@@ -215,8 +212,8 @@ want_apache2() {
 want_apache2_2() {
 	debug-print-function $FUNCNAME $*
 
-	case ${EAPI:-0} in
-		6|7)
+	case ${EAPI} in
+		7)
 			local myiuse=${1:-apache2}
 			IUSE="${IUSE} ${myiuse}"
 			DEPEND="${DEPEND} ${myiuse}? ( ${APACHE2_2_DEPEND} )"
@@ -270,8 +267,8 @@ need_apache2() {
 need_apache2_2() {
 	debug-print-function $FUNCNAME $*
 
-	case ${EAPI:-0} in
-		6|7)
+	case ${EAPI} in
+		7)
 			DEPEND="${DEPEND} ${APACHE2_2_DEPEND}"
 			RDEPEND="${RDEPEND} ${APACHE2_2_DEPEND}"
 			_init_apache2
