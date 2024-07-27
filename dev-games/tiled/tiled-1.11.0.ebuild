@@ -27,6 +27,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/qbs
+	dev-qt/qtbase:6
 "
 
 pkg_setup() {
