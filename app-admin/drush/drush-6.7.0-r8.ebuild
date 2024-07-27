@@ -23,6 +23,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-gzip-mime.patch"
 	"${FILESDIR}/${P}-dont-pass-null-to-strtoupper.patch"
 	"${FILESDIR}/${P}-batch-signature-fix-r1.patch"
+	"${FILESDIR}/${P}-sql-dollar-sign.patch"
 )
 
 src_prepare() {
