@@ -28,6 +28,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/qbs
 	dev-qt/qtbase:6
+	dev-qt/qttools:6[linguist]
 "
 
 pkg_setup() {
