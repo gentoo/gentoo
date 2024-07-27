@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit libtool linux-info optfeature systemd
+inherit libtool linux-info systemd
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3 autotools
@@ -92,24 +92,16 @@ src_install() {
 	dodoc "${FILESDIR}"/README.Gentoo
 
 	newinitd "${FILESDIR}"/kexec-r2.init kexec
-	newconfd "${FILESDIR}"/kexec.conf-2.0.4 kexec
 
 	insinto /etc
 	doins "${FILESDIR}"/kexec.conf
+	dosym ../kexec.conf /etc/conf.d/kexec
 
-	insinto /etc/kernel/postinst.d
-	doins "${FILESDIR}"/90_kexec
-
+	dosbin "${FILESDIR}"/kexec-auto-load
 	systemd_dounit "${FILESDIR}"/kexec.service
 }
 
 pkg_postinst() {
-	if systemd_is_booted || has_version sys-apps/systemd; then
-		elog "For systemd support the new config file is"
-		elog "   /etc/kexec.conf"
-		elog "Please adopt it to your needs as there is no autoconfig anymore"
-	fi
-
 	local n_root_args=$(grep -o -- '\<root=' /proc/cmdline 2>/dev/null | wc -l)
 	local has_rootpart_set=no
 	if [[ -f "${EROOT}/etc/conf.d/kexec" ]]; then
@@ -125,7 +117,4 @@ pkg_postinst() {
 		ewarn "in case running system and initramfs do not agree on detected"
 		ewarn "root device name!"
 	fi
-
-	optfeature "automatically updating /etc/kexec.conf on each kernel installation" \
-		"sys-kernel/installkernel[-systemd]"
 }
