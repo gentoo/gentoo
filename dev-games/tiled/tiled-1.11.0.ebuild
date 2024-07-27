@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
-inherit toolchain-funcs multiprocessing python-single-r1 xdg
+inherit toolchain-funcs multiprocessing flag-o-matic python-single-r1 xdg
 
 DESCRIPTION="A general purpose tile map editor"
 HOMEPAGE="https://www.mapeditor.org/"
@@ -71,6 +71,7 @@ src_compile() {
 	set -o noglob
 	local QBS_CFLAGS=$(qbs_format_flags ${CFLAGS})
 	local QBS_CXXFLAGS=$(qbs_format_flags ${CXXFLAGS})
+	local QBS_LFLAGS=$(qbs_format_flags $(raw-ldflags ${LDFLAGS}))
 	set +o noglob
 
 	qbs build \
@@ -80,6 +81,7 @@ src_compile() {
 		project.libDir:$(get_libdir) \
 		modules.cpp.cFlags:${QBS_CFLAGS} \
 		modules.cpp.cxxFlags:${QBS_CXXFLAGS} \
+		modules.cpp.linkerFlags:${QBS_LFLAGS} \
 		-j $(get_makeopts_jobs) \
 		|| die
 }
