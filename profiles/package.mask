@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-07-27)
+# EAPI=6 package, awaits version bump.
+# Removal on 2024-08-26.  Bug #936756.
+www-apps/rt
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-27)
 # EAPI=6, awaits version bump. This is *-macos prefix only package, so
 # hard to verify EAPI bump without the maintainer.
 # Removal on 2024-08-26.  Bug #936755.
