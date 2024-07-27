@@ -191,6 +191,11 @@ src_prepare() {
 	check_uptodate
 
 	llvm.org_src_prepare
+
+	if has_version ">=sys-libs/glibc-2.40"; then
+		# https://github.com/llvm/llvm-project/issues/100791
+		rm -r test/tools/llvm-exegesis/X86/latency || die
+	fi
 }
 
 get_distribution_components() {
