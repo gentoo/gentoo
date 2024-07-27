@@ -9,6 +9,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">arno-iptables-firewall/aif</remote-id>
+	</upstream>
 	<use>
 		<flag name="plugins">Install optional plugins</flag>
 		<flag name="rsyslog">Install configuration snippet for <pkg>app-admin/rsyslog</pkg></flag>
