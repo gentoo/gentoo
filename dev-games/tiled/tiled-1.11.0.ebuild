@@ -17,8 +17,8 @@ IUSE="python examples"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
-	app-arch/zstd
-	dev-qt/qtbase:6[X]
+	app-arch/zstd:=
+	dev-qt/qtbase:6[X,opengl,widgets]
 	dev-qt/qtdeclarative:6
 	dev-qt/qtsvg:6
 	sys-libs/zlib
