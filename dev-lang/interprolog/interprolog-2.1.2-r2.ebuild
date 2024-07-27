@@ -13,7 +13,7 @@ SRC_URI="https://declarativa.com/InterProlog/${MY_P}.zip"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64"
 IUSE="doc"
 
 RDEPEND=">=virtual/jdk-1.8:*
