@@ -40,7 +40,6 @@
 dev-lang/scala
 dev-lang/mozart
 dev-lang/mozart-stdlib
-app-emacs/scala-mode
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-07-27)
 # EAPI=6 package, awaits version bump.
