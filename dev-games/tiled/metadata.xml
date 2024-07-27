@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">bjorn/tiled</remote-id>
+		<remote-id type="github">mapeditor/tiled</remote-id>
 	</upstream>
 </pkgmetadata>
 
