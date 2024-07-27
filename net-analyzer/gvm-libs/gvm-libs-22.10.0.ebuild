@@ -50,11 +50,15 @@ BDEPEND="
 	test? ( dev-libs/cgreen )
 "
 
-PATCHES=(
-	# Fix bug 925932
-	# See https://github.com/greenbone/gvm-libs/pull/811
-	"${FILESDIR}"/gvm-libs-22.8.0-linking-math-library.patch
-)
+pkg_setup() {
+	if tc-is-clang; then
+		local clang_major_version=$(clang-major-version);
+		if ! has_version "sys-libs/compiler-rt-sanitizers:${clang_major_version}[profile]"; then
+			eerror "Compiling this package with clang requires sys-libs/compiler-rt-sanitizers to be built with 'profile' USE flag enabled"
+			die "Clang detected, but sys-libs/compiler-rt-sanitizers not build with 'profile' USE flag enabled"
+		fi
+	fi
+}
 
 src_prepare() {
 	cmake_src_prepare
