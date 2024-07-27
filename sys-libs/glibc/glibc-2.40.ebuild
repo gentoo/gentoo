@@ -515,11 +515,14 @@ setup_flags() {
 	# dealing with CET in ld.so. So if CET is supposed to be
 	# disabled for glibc, be explicit about it.
 	if ! use cet; then
-		if use amd64 || use x86; then
-			append-flags '-fcf-protection=none'
-		elif use arm64; then
-			append-flags '-mbranch-protection=none'
-		fi
+		case ${ABI}-${CTARGET} in
+			amd64-x86_64-*|x32-x86_64-*-*-gnux32)
+				append-flags '-fcf-protection=none'
+				;;
+			arm64-aarch64*)
+				append-flags '-mbranch-protection=none'
+				;;
+		esac
 	fi
 }
 
@@ -827,7 +830,7 @@ sanity_prechecks() {
 	# we test for...
 	if ! is_crosscompile ; then
 		if use amd64 && use multilib && [[ ${MERGE_TYPE} != "binary" ]] ; then
-			ebegin "Checking that IA32 emulation is enabled in the running kernel"
+			ebegin "Checking if the system can execute 32-bit binaries"
 			echo 'int main(){return 0;}' > "${T}/check-ia32-emulation.c"
 			local STAT
 			if ${CC-${CHOST}-gcc} ${CFLAGS_x86} "${T}/check-ia32-emulation.c" -o "${T}/check-ia32-emulation.elf32"; then
@@ -841,7 +844,11 @@ sanity_prechecks() {
 			fi
 			rm -f "${T}/check-ia32-emulation.elf32"
 			eend $STAT
-			[[ $STAT -eq 0 ]] || die "CONFIG_IA32_EMULATION must be enabled in the kernel to compile a multilib glibc."
+			if [[ $STAT -ne 0 ]]; then
+				eerror "Ensure that CONFIG_IA32_EMULATION is enabled in the kernel."
+				eerror "Seek support otherwise."
+				die "Unable to execute 32-bit binaries"
+			fi
 		fi
 
 	fi
@@ -994,7 +1001,7 @@ glibc_do_configure() {
 	# worth protecting from stack smashes.
 	myconf+=( --enable-stack-protector=$(usex ssp strong no) )
 
-	# Keep a whitelist of targets supporing IFUNC. glibc's ./configure
+	# Keep a whitelist of targets supporting IFUNC. glibc's ./configure
 	# is not robust enough to detect proper support:
 	#    https://bugs.gentoo.org/641216
 	#    https://sourceware.org/PR22634#c0
