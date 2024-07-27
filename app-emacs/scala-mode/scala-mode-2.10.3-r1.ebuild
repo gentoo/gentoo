@@ -20,5 +20,6 @@ DOCS="AUTHORS FUTURE README"
 
 pkg_postinst() {
 	elisp_pkg_postinst
-	optfeature "running Scala interpreter with scala-run-scala" dev-lang/scala
+	optfeature "running Scala interpreter with scala-run-scala" \
+		dev-lang/scala dev-lang/scala-bin
 }
