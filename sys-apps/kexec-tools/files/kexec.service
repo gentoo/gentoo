@@ -9,8 +9,8 @@ ConditionPathExists=!/nokexec
 Type=oneshot
 RemainAfterExit=yes
 EnvironmentFile=/etc/kexec.conf
-ExecStart=/usr/sbin/kexec -l /boot/${KNAME} ${KEXEC_OPT_ARGS}
-ExecStop=/usr/sbin/kexec -l /boot/${KNAME} ${KEXEC_OPT_ARGS}
+ExecStart=/usr/sbin/kexec-auto-load
+ExecStop=/usr/sbin/kexec-auto-load
 
 [Install]
 WantedBy=multi-user.target
