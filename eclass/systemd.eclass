@@ -1,10 +1,10 @@
-# Copyright 2011-2023 Gentoo Authors
+# Copyright 2011-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: systemd.eclass
 # @MAINTAINER:
 # systemd@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: helper functions to install systemd units
 # @DESCRIPTION:
 # This eclass provides a set of functions to install unit files for
@@ -25,17 +25,13 @@
 # @CODE
 
 case ${EAPI} in
-	5|6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 inherit toolchain-funcs
 
-if [[ ${EAPI} == [56] ]]; then
-	DEPEND="virtual/pkgconfig"
-else
-	BDEPEND="virtual/pkgconfig"
-fi
+BDEPEND="virtual/pkgconfig"
 
 # @FUNCTION: _systemd_get_dir
 # @USAGE: <variable-name> <fallback-directory>
@@ -79,15 +75,6 @@ systemd_get_systemunitdir() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	_systemd_get_dir systemdsystemunitdir /lib/systemd/system
-}
-
-# @FUNCTION: systemd_get_unitdir
-# @DESCRIPTION:
-# Deprecated alias for systemd_get_systemunitdir.
-systemd_get_unitdir() {
-	[[ ${EAPI} == 5 ]] || die "${FUNCNAME} is banned in EAPI 6, use systemd_get_systemunitdir instead"
-
-	systemd_get_systemunitdir
 }
 
 # @FUNCTION: systemd_get_userunitdir
@@ -333,46 +320,6 @@ systemd_enable_ntpunit() {
 	rm "${T}"/${ntpunit_name}.list || die
 
 	return ${ret}
-}
-
-# @FUNCTION: systemd_with_unitdir
-# @USAGE: [<configure-option-name>]
-# @DESCRIPTION:
-# Note: deprecated and banned in EAPI 6. Please use full --with-...=
-# parameter for improved ebuild readability.
-#
-# Output '--with-systemdsystemunitdir' as expected by systemd-aware configure
-# scripts. This function always succeeds. Its output may be quoted in order
-# to preserve whitespace in paths. systemd_to_myeconfargs() is preferred over
-# this function.
-#
-# If upstream does use invalid configure option to handle installing systemd
-# units (e.g. `--with-systemdunitdir'), you can pass the 'suffix' as an optional
-# argument to this function (`$(systemd_with_unitdir systemdunitdir)'). Please
-# remember to report a bug upstream as well.
-systemd_with_unitdir() {
-	[[ ${EAPI} == 5 ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}, use --with-${1:-systemdsystemunitdir}=\"\$(systemd_get_systemunitdir)\" instead"
-
-	debug-print-function ${FUNCNAME} "${@}"
-	local optname=${1:-systemdsystemunitdir}
-
-	echo --with-${optname}="$(systemd_get_systemunitdir)"
-}
-
-# @FUNCTION: systemd_with_utildir
-# @DESCRIPTION:
-# Note: deprecated and banned in EAPI 6. Please use full --with-...=
-# parameter for improved ebuild readability.
-#
-# Output '--with-systemdsystemutildir' as used by some packages to install
-# systemd helpers. This function always succeeds. Its output may be quoted
-# in order to preserve whitespace in paths.
-systemd_with_utildir() {
-	[[ ${EAPI} == 5 ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}, use --with-systemdutildir=\"\$(systemd_get_utildir)\" instead"
-
-	debug-print-function ${FUNCNAME} "${@}"
-
-	echo --with-systemdutildir="$(systemd_get_utildir)"
 }
 
 # @FUNCTION: systemd_update_catalog
