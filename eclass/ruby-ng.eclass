@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-ng.eclass
@@ -8,7 +8,7 @@
 # Author: Diego E. Pettenò <flameeyes@gentoo.org>
 # Author: Alex Legler <a3li@gentoo.org>
 # Author: Hans de Graaff <graaff@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: An eclass for installing Ruby packages with proper support for multiple Ruby slots.
 # @DESCRIPTION:
 # The Ruby eclass is designed to allow an easier installation of Ruby packages
@@ -67,14 +67,13 @@
 # passed to "grep -E" to remove reporting of these shared objects.
 
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ -z ${_RUBY_NG_ECLASS} ]]; then
 _RUBY_NG_ECLASS=1
 
-[[ ${EAPI} == 6 ]] && inherit eqawarn toolchain-funcs
 inherit multilib ruby-utils
 
 # S is no longer automatically assigned when it doesn't exist.
@@ -218,16 +217,7 @@ ruby_add_rdepend() {
 	case $# in
 		1) ;;
 		2)
-			case ${EAPI} in
-				6)
-					[[ "${GENTOO_DEV}" == "yes" ]] && eqawarn "You can now use the usual syntax in ruby_add_rdepend for $CATEGORY/$PF"
-					ruby_add_rdepend "$(_ruby_wrap_conditions "$1" "$2")"
-					return
-					;;
-				*)
-					die "Use the usual depend syntax with a single argument in ruby_add_rdepend"
-					;;
-			esac
+			die "Use the usual depend syntax with a single argument in ruby_add_rdepend"
 			;;
 		*)
 			die "bad number of arguments to $0"
@@ -241,10 +231,7 @@ ruby_add_rdepend() {
 
 	# Add the dependency as a test-dependency since we're going to
 	# execute the code during test phase.
-	case ${EAPI} in
-		6) DEPEND+=" test? ( ${_RUBY_ATOMS_SAMELIB_RESULT} )" ;;
-		*) BDEPEND+=" test? ( ${_RUBY_ATOMS_SAMELIB_RESULT} )" ;;
-	esac
+	BDEPEND+=" test? ( ${_RUBY_ATOMS_SAMELIB_RESULT} )"
 	if ! has test "$IUSE"; then
 		IUSE+=" test"
 		RESTRICT+=" !test? ( test )"
@@ -254,8 +241,8 @@ ruby_add_rdepend() {
 # @FUNCTION: ruby_add_bdepend
 # @USAGE: dependencies
 # @DESCRIPTION:
-# Adds the specified dependencies, with use condition(s) to DEPEND (or
-# BDEPEND in EAPI7), taking the current set of ruby targets into
+# Adds the specified dependencies, with use condition(s) to BDEPEND,
+# taking the current set of ruby targets into
 # account. This makes sure that all ruby dependencies of the package are
 # installed for the same ruby targets. Use this function for all ruby
 # dependencies instead of setting DEPEND or BDEPEND yourself. The list
@@ -266,16 +253,7 @@ ruby_add_bdepend() {
 	case $# in
 		1) ;;
 		2)
-			case ${EAPI} in
-				6)
-					[[ "${GENTOO_DEV}" == "yes" ]] && eqawarn "You can now use the usual syntax in ruby_add_bdepend for $CATEGORY/$PF"
-					ruby_add_bdepend "$(_ruby_wrap_conditions "$1" "$2")"
-					return
-					;;
-				*)
-					die "Use the usual depend syntax with a single argument in ruby_add_bdepend"
-					;;
-			esac
+			die "Use the usual depend syntax with a single argument in ruby_add_bdepend"
 			;;
 		*)
 			die "bad number of arguments to $0"
@@ -285,24 +263,15 @@ ruby_add_bdepend() {
 	_ruby_set_globals_invalidate_if_stale
 	_ruby_atoms_samelib "$1"
 
-	case ${EAPI} in
-		6) DEPEND+=" ${_RUBY_ATOMS_SAMELIB_RESULT}" ;;
-		*) BDEPEND+=" ${_RUBY_ATOMS_SAMELIB_RESULT}" ;;
-	esac
+	BDEPEND+=" ${_RUBY_ATOMS_SAMELIB_RESULT}"
 }
 
 # @FUNCTION: ruby_add_depend
 # @USAGE: dependencies
 # @DESCRIPTION:
-# Adds the specified dependencies to DEPEND in EAPI7, similar to
-# ruby_add_bdepend.
+# Adds the specified dependencies to DEPEND, similar to ruby_add_bdepend.
 ruby_add_depend() {
 	debug-print-function ${FUNCNAME} "${@}"
-
-	case ${EAPI} in
-		6) die "only available in EAPI 7 and newer" ;;
-		*) ;;
-	esac
 
 	case $# in
 		1) ;;
@@ -365,7 +334,7 @@ _ruby_get_use_targets() {
 # confuse this function with ruby_implementation_depend().
 #
 # @EXAMPLE:
-# EAPI=7
+# EAPI=8
 # RUBY_OPTIONAL=yes
 #
 # inherit ruby-ng
@@ -417,10 +386,7 @@ if [[ ${RUBY_OPTIONAL} != yes ]]; then
 	DEPEND+=" ${_RUBY_IMPLEMENTATIONS_DEPEND}"
 	RDEPEND+=" ${_RUBY_IMPLEMENTATIONS_DEPEND}"
 	REQUIRED_USE+=" || ( ${_RUBY_GET_USE_TARGETS} )"
-	case ${EAPI} in
-		6) ;;
-		*) BDEPEND+=" ${_RUBY_IMPLEMENTATIONS_DEPEND}" ;;
-	esac
+	BDEPEND+=" ${_RUBY_IMPLEMENTATIONS_DEPEND}"
 fi
 
 _ruby_invoke_environment() {
@@ -534,18 +500,9 @@ ruby-ng_src_unpack() {
 }
 
 _ruby_apply_patches() {
-	case ${EAPI} in
-		6)
-			if [[ -n ${RUBY_PATCHES[@]} ]]; then
-			   eqawarn "RUBY_PATCHES is no longer supported, use PATCHES instead"
-			fi
-			;;
-		*)
-			if [[ -n ${RUBY_PATCHES[@]} ]]; then
-				die "RUBY_PATCHES is no longer supported, use PATCHES instead"
-			fi
-			;;
-	esac
+	if [[ -n ${RUBY_PATCHES[@]} ]]; then
+		die "RUBY_PATCHES is no longer supported, use PATCHES instead"
+	fi
 
 	# This is a special case: instead of executing just in the special
 	# "all" environment, this will actually copy the effects on _all_
@@ -695,7 +652,7 @@ doruby() {
 		insinto "${sitelibdir#${EPREFIX}}"
 		insopts -m 0644
 		doins "$@"
-	) || die "failed to install $@"
+	)
 }
 
 # @FUNCTION: ruby_get_libruby
