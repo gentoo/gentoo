@@ -22,11 +22,6 @@ IUSE="doc"
 RDEPEND="
 	media-gfx/graphviz
 "
-BDEPEND="
-	test? (
-		media-gfx/xdot
-	)
-"
 
 distutils_enable_tests pytest
 
