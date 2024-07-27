@@ -119,7 +119,7 @@ vdr_create_plugindb_file() {
 		echo "EBUILD=${CATEGORY}/${PN}"
 		echo "EBUILD_V=${PVR}"
 		echo "PLUGINS=\"$@\""
-	} > "${D%/}/${DB_FILE}"
+	} > "${D}/${DB_FILE}"
 }
 
 # @FUNCTION: vdr_create_header_checksum_file
@@ -423,7 +423,7 @@ vdr-plugin-2_pkg_setup() {
 	if [[ -n "${VDR_LOCAL_PATCHES_DIR}" ]]; then
 		eerror "Using VDR_LOCAL_PATCHES_DIR is deprecated!"
 		eerror "Please move all your patches into"
-		eerror "${EROOT%/}/etc/portage/patches/${CATEGORY}/${P}"
+		eerror "${EROOT}/etc/portage/patches/${CATEGORY}/${P}"
 		eerror "and remove or unset the VDR_LOCAL_PATCHES_DIR variable."
 		die
 	fi
@@ -564,7 +564,7 @@ vdr-plugin-2_src_install() {
 		emake install \
 		${BUILD_PARAMS} \
 		TMPDIR="${T}" \
-		DESTDIR="${D%/}" \
+		DESTDIR="${D}" \
 		|| die "emake install (makefile target) failed"
 	else
 		einfo "Notice: Plugin use still the old Makefile handling"
@@ -579,12 +579,12 @@ vdr-plugin-2_src_install() {
 		local linguas
 		for linguas in ${LINGUAS[*]}; do
 		insinto "${LOCDIR}"
-		cp -r --parents ${linguas}* "${D%/}"/${LOCDIR} \
+		cp -r --parents ${linguas}* "${D}"/${LOCDIR} \
 			|| die "could not copy linguas files"
 		done
 	fi
 
-	cd "${D%/}/usr/$(get_libdir)/vdr/plugins" \
+	cd "${D}/usr/$(get_libdir)/vdr/plugins" \
 		|| die "could not change to \$D/usr/libdir/vdr/plugins"
 
 	# create list of all created plugin libs
