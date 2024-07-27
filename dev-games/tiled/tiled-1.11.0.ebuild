@@ -44,44 +44,28 @@ src_configure() {
 	qbs setup-qt /usr/bin/qmake6 qt6 || die
 	qbs config defaultProfile qt6 || die
 
-	if $(tc-is-clang); then
-		qbs setup-toolchains clang clang || die
-		qbs config profiles.qt6.baseProfile clang || die
-	else
-		qbs setup-toolchains gcc gcc || die
-		qbs config profiles.qt6.baseProfile gcc || die
-	fi
+	local toolchain=$(tc-get-compiler-type)
+	qbs setup-toolchains ${toolchain} ${toolchain} || die
+	qbs config profiles.qt6.baseProfile ${toolchain} || die
 }
 
 qbs_format_flags() {
-	local result="["
-
-	for flag in $@; do
-		if [[ ${result} != "[" ]]; then
-			result="${result},"
-		fi
-		result="${result}\"${flag}\""
+	local -a array
+	for flag in ${@}; do
+		array+=( "\"${flag}\"" )
 	done
-
-	result="${result}]"
-	echo ${result}
+	echo "[$(IFS=","; echo "${array[*]}")]"
 }
 
 src_compile() {
-	set -o noglob
-	local QBS_CFLAGS=$(qbs_format_flags ${CFLAGS})
-	local QBS_CXXFLAGS=$(qbs_format_flags ${CXXFLAGS})
-	local QBS_LFLAGS=$(qbs_format_flags $(raw-ldflags ${LDFLAGS}))
-	set +o noglob
-
 	qbs build \
 		qbs.installPrefix:"/usr" \
 		projects.Tiled.useRPaths:false \
 		projects.Tiled.installHeaders:true \
 		project.libDir:$(get_libdir) \
-		modules.cpp.cFlags:${QBS_CFLAGS} \
-		modules.cpp.cxxFlags:${QBS_CXXFLAGS} \
-		modules.cpp.linkerFlags:${QBS_LFLAGS} \
+		modules.cpp.cFlags:$(qbs_format_flags ${CFLAGS}) \
+		modules.cpp.cxxFlags:$(qbs_format_flags ${CXXFLAGS}) \
+		modules.cpp.linkerFlags:$(qbs_format_flags $(raw-ldflags ${LDFLAGS})) \
 		-j $(get_makeopts_jobs) \
 		|| die
 }
