@@ -1118,6 +1118,11 @@ chromium_configure() {
 		myconf_gn+=" arm_control_flow_integrity=\"none\""
 	fi
 
+	# 936673: Updater (which we don't use) depends on libsystemd
+	# This _should_ always be disabled if we're not building a
+	# "Chrome" branded browser, but obviously this is not always sufficient.
+	myconf_gn+=" enable_updater=false"
+
 	# Enable official builds
 	myconf_gn+=" is_official_build=$(usex official true false)"
 	myconf_gn+=" use_thin_lto=$(usex lto true false)"
