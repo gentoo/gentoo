@@ -477,6 +477,9 @@ setup_flags() {
 	# #898098
 	filter-flags -fno-builtin
 
+	# #798774
+	filter-flags -fno-semantic-interposition
+
 	# #829583
 	filter-lfs-flags
 
