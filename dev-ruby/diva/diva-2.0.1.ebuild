@@ -20,7 +20,6 @@ SRC_URI="https://github.com/toshia/diva/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
-IUSE=""
 
 ruby_add_rdepend "<dev-ruby/addressable-2.9"
 
