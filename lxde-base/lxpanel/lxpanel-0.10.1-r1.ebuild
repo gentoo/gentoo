@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit readme.gentoo-r1 xdg
 
@@ -48,6 +48,8 @@ PATCHES=(
 )
 
 src_configure() {
+	xdg_environment_reset
+
 	local plugins="netstatus,volume,cpu,deskno,batt,kbled,xkb,thermal,cpufreq,monitors"
 
 	use wifi && plugins+=",netstat"
