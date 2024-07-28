@@ -21,7 +21,6 @@ RUBY_S="${PN}-${COMMIT}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/descendants_tracker-0.0.1
 	<dev-ruby/descendants_tracker-0.1"
