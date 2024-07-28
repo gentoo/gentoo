@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,6 +35,11 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+# bug #900040
+QA_CONFIG_IMPL_DECL_SKIP=(
+	pathfind
+)
+
 DOCS=( docs/{CHANGELOG,CREDIT,HACKING,TODO} )
 
 PATCHES=(
@@ -59,16 +64,19 @@ src_prepare() {
 src_configure() {
 	use elibc_musl && append-flags "-lfts"
 	# By default it uses static linking. Avoid that, bug #252940
-	econf \
-		$(use_enable debug) \
-		$(use_with pcapnav pcapnav-config "${BROOT}"/usr/bin/pcapnav-config) \
-		$(use_with tcpdump tcpdump "${ESYSROOT}"/usr/sbin/tcpdump) \
-		--enable-dynamic-link \
-		--enable-local-libopts \
-		--enable-shared \
-		--with-libdnet \
-		--with-testnic2=lo \
+	local myeconfargs=(
+		$(use_enable debug)
+		$(use_with pcapnav pcapnav-config "${BROOT}"/usr/bin/pcapnav-config)
+		$(use_with tcpdump tcpdump "${ESYSROOT}"/usr/sbin/tcpdump)
+		--enable-dynamic-link
+		--enable-local-libopts
+		--enable-shared
+		--with-libdnet
+		--with-testnic2=lo
 		--with-testnic=lo
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 src_test() {
