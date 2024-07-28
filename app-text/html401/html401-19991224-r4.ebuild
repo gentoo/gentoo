@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,13 +7,12 @@ inherit sgml-catalog-r1
 DESCRIPTION="DTDs for the HyperText Markup Language 4.01"
 HOMEPAGE="https://www.w3.org/TR/html401/"
 SRC_URI="https://www.w3.org/TR/1999/REC-html401-${PV}/html40.tgz"
+S=${WORKDIR}
 
 LICENSE="W3C"
 SLOT="0"
 KEYWORDS="amd64 ppc ~s390 x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE=""
 
-S=${WORKDIR}
 PATCHES=( "${FILESDIR}"/${PN}-decl.diff )
 
 src_install() {
