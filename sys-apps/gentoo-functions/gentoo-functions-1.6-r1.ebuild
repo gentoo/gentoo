@@ -24,6 +24,11 @@ RESTRICT="!test? ( test )"
 # Specifically needs GNU find, as well.
 RDEPEND=">=sys-apps/findutils-4.9"
 
+PATCHES=(
+	"${FILESDIR}/${P}-relax-parameter-validation.patch"
+	"${FILESDIR}/${P}-add-warn-function.patch"
+)
+
 src_configure() {
 	local emesonargs=(
 		# Deliberately avoid /usr as consumers assume we're at /lib/gentoo.
