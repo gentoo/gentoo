@@ -16,7 +16,6 @@ HOMEPAGE="https://github.com/haml/html2haml"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/nokogiri-1.6.0
 	>=dev-ruby/erubis-2.7.0
