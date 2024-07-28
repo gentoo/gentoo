@@ -28,7 +28,6 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	default
-
 	eautoreconf
 }
 
