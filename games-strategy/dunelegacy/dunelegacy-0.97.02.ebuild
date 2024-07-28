@@ -30,6 +30,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-flickering.patch
 	"${FILESDIR}"/${P}-text-manager.patch
+	"${FILESDIR}"/${P}-flags.patch
 )
 
 src_prepare() {
