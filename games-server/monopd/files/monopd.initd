@@ -4,6 +4,7 @@
 
 command="monopd"
 command_background="true"
+command_user="nobody:nogroup"
 pidfile="/run/${RC_SVCNAME}.pid"
 
 depend() {
