@@ -20,7 +20,6 @@ SRC_URI="https://github.com/ms-ati/docile/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~riscv x86"
-IUSE=""
 
 all_ruby_prepare() {
 	sed -i -e '/require \"github\/markup\"/d' Rakefile || die
