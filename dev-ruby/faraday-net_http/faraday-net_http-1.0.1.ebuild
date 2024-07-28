@@ -7,9 +7,7 @@ USE_RUBY="ruby31 ruby32"
 
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
-
 RUBY_FAKEGEM_EXTRADOC="README.md"
-
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
 inherit ruby-fakegem
@@ -21,7 +19,6 @@ SRC_URI="https://github.com/lostisland/faraday-net_http/archive/v${PV}.tar.gz ->
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
 KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86"
-IUSE=""
 
 ruby_add_bdepend "test? ( >=dev-ruby/faraday-1.3.1:1 )"
 
