@@ -5,7 +5,6 @@ EAPI=8
 USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
-
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 inherit ruby-fakegem
@@ -16,7 +15,6 @@ HOMEPAGE="https://github.com/gjtorikian/ecma-re-validator"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv"
-IUSE=""
 
 ruby_add_rdepend "dev-ruby/regexp_parser:2"
 
