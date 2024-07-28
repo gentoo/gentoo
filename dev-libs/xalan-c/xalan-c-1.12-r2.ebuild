@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix-lto.patch
 	"${FILESDIR}"/${P}-fix-threads.patch
 	"${FILESDIR}"/${P}-icu-75.patch
+	"${FILESDIR}"/${P}-gcc-15.patch
 )
 
 src_configure() {
