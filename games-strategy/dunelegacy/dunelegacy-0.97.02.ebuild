@@ -34,9 +34,8 @@ PATCHES=(
 
 src_prepare() {
 	default
+	sed -i "s/0\.96\.4/${PV}/g" configure.ac || die
 	eautoreconf
-
-	sed -i s/0.96.4/0.97.02/ configure.ac || die
 }
 
 src_install() {
