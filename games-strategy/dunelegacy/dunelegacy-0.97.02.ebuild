@@ -9,7 +9,7 @@ DESCRIPTION="Updated clone of Westood Studios' Dune II"
 HOMEPAGE="https://dunelegacy.sourceforge.net"
 
 COMMIT="6ea9ac96854daa8c75ba429e78dc6716b147e106"
-SRC_URI="https://sourceforge.net/code-snapshots/git/d/du/${PN}/code.git/${PN}-code-${COMMIT}.zip -> ${P}.zip"
+SRC_URI="https://dev.gentoo.org/~chewi/distfiles/${P}.zip"
 S="${WORKDIR}/${PN}-code-${COMMIT}"
 
 LICENSE="GPL-2+"
