@@ -6,9 +6,7 @@ EAPI=8
 USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
-
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.adoc LICENSE.txt README.adoc"
-
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
 inherit ruby-fakegem
@@ -55,7 +53,6 @@ remove_ditaa() {
 	sed -i "/ditaa/d" "asciidoctor-diagram.gemspec"
 }
 
-IUSE=""
 DEPEND+="test? ("
 
 i=0
