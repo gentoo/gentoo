@@ -16,7 +16,6 @@ HOMEPAGE="https://github.com/commander-rb/commander"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
 ruby_add_rdepend "dev-ruby/highline:2"
 
