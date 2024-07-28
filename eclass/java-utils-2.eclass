@@ -1926,7 +1926,7 @@ etestng() {
 
 	local runner=org.testng.TestNG
 	if [[ ${PN} != testng ]]; then
-		local cp=$(java-pkg_getjars --with-dependencies testng)
+		local cp=$(java-pkg_getjars --build-only --with-dependencies testng)
 	else
 		local cp=testng.jar
 	fi
