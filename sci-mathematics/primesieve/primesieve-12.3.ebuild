@@ -14,7 +14,13 @@ KEYWORDS="~amd64"
 IUSE="doc +executable test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="doc? ( app-text/doxygen app-text/texlive media-gfx/graphviz )"
+# dev-texlive/texlive-latexextra needed for varwidth.sty, bug 936808
+BDEPEND="doc? (
+	app-text/doxygen
+	app-text/texlive
+	dev-texlive/texlive-latexextra
+	media-gfx/graphviz
+)"
 
 DOCS=(
 	ChangeLog
