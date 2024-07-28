@@ -5,9 +5,7 @@ EAPI=8
 USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
-
 RUBY_FAKEGEM_EXTRADOC="README.md"
-
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
 inherit ruby-fakegem
@@ -20,7 +18,6 @@ RUBY_S="${PN}-gem-${PV}"
 LICENSE="Apache-2.0"
 SLOT="$(ver_cut 1)"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 x86"
-IUSE=""
 
 RDEPEND+=" dev-vcs/git"
 DEPEND+=" test? ( dev-vcs/git )"
