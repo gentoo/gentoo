@@ -18,7 +18,6 @@ SRC_URI="https://github.com/denro/faraday_middleware-multi_json/archive/v${PV}.t
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
 ruby_add_rdepend "
 	dev-ruby/faraday_middleware:*
