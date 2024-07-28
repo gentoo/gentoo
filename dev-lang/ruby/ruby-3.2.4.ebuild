@@ -98,7 +98,8 @@ src_prepare() {
 
 	# Remove tests that are known to fail or require a network connection
 	rm -f test/ruby/test_process.rb test/rubygems/test_gem{,_path_support}.rb || die
-	rm -f test/rinda/test_rinda.rb test/socket/test_tcp.rb test/fiber/test_address_resolve.rb spec/ruby/library/socket/tcpsocket/{initialize,open}_spec.rb|| die
+	rm -f test/rinda/test_rinda.rb test/socket/test_tcp.rb test/fiber/test_address_resolve.rb \
+	   spec/ruby/library/socket/tcpsocket/{initialize,open}_spec.rb|| die
 
 	# Remove webrick tests because setting LD_LIBRARY_PATH does not work for them.
 	rm -rf tool/test/webrick || die
@@ -114,7 +115,8 @@ src_prepare() {
 	sed -i -e '/^check:/ s/\$(TEST_RUNNABLE)-\$(PREPARE_SYNTAX_SUGGEST) test-syntax-suggest//' common.mk || die
 
 	# Avoid test that fails intermittently
-	sed -i -e '/test_gem_exec_gem_uninstall/aomit "Fails intermittently"' test/rubygems/test_gem_commands_exec_command.rb || die
+	sed -i -e '/test_gem_exec_gem_uninstall/aomit "Fails intermittently"' \
+		test/rubygems/test_gem_commands_exec_command.rb || die
 
 	if use prefix ; then
 		# Fix hardcoded SHELL var in mkmf library
