@@ -22,7 +22,6 @@ RUBY_S="faraday-follow-redirects-${PV}"
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="amd64 ~arm ~x86"
-IUSE=""
 
 ruby_add_rdepend "|| ( dev-ruby/faraday:2 dev-ruby/faraday:1 )"
 
