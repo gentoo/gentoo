@@ -20,6 +20,7 @@ DEPEND="
 	>=net-analyzer/gvm-libs-22.4.1
 	net-libs/libpcap
 "
+RDEPEND="${DEPEND}"
 
 BDEPEND="
 	doc? (
