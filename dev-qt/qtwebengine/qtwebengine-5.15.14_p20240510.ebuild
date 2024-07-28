@@ -99,7 +99,10 @@ BDEPEND="${PYTHON_DEPS}
 	sys-devel/flex
 "
 
-PATCHES=( "${WORKDIR}/${PATCHSET}" )
+PATCHES=(
+	"${WORKDIR}/${PATCHSET}"
+	"${FILESDIR}/${PN}-5.15.13_p20240510-gcc15.patch"
+)
 
 python_check_deps() {
 	python_has_version "dev-python/html5lib[${PYTHON_USEDEP}]"
