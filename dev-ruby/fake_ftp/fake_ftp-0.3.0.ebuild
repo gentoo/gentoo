@@ -15,7 +15,6 @@ HOMEPAGE="https://github.com/livinginthepast/fake_ftp"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE=""
 
 all_ruby_prepare() {
 	sed -i -e '/simplecov/ s:^:#:' spec/spec_helper.rb || die
