@@ -5,9 +5,7 @@ EAPI=8
 USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
-
 RUBY_FAKEGEM_TASK_DOC=""
-
 RUBY_FAKEGEM_GEMSPEC="cliver.gemspec"
 
 inherit ruby-fakegem
@@ -22,7 +20,6 @@ RUBY_S="cliver-${COMMIT}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~sparc"
-IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/rspec-its )"
 
