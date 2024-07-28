@@ -5,9 +5,7 @@ EAPI=8
 USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG README.md TODO.md"
-
 RUBY_FAKEGEM_EXTRAINSTALL="schemas"
-
 RUBY_FAKEGEM_GEMSPEC="json_schema.gemspec"
 
 inherit ruby-fakegem
@@ -19,7 +17,6 @@ SRC_URI="https://github.com/brandur/json_schema/archive/v${PV}.tar.gz -> ${P}.ta
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv"
-IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/ecma-re-validator )"
 
