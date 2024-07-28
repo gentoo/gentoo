@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 LUA_COMPAT=( lua5-1 lua5-2 )
 
@@ -60,6 +60,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-c-std.patch"
 	"${FILESDIR}/${P}-fix-ldap-sasl-pc.patch"
 	"${FILESDIR}/${P}-incompatible-pointer-types.patch"
+	"${FILESDIR}/${P}-vsnprintf-include.patch"
 )
 
 pkg_setup() {
