@@ -38,6 +38,10 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-tests.patch"
+)
+
 src_configure() {
 	# Bug #925672
 	append-atomic-flags
