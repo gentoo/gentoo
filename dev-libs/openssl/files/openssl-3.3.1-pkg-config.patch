@@ -1,0 +1,31 @@
+https://github.com/openssl/openssl/pull/25018
+https://bugs.gentoo.org/936793
+
+From b7bd618fb12728b4a85b9159af95ca40a817674d Mon Sep 17 00:00:00 2001
+From: Richard Levitte <levitte@openssl.org>
+Date: Sun, 28 Jul 2024 10:47:08 +0200
+Subject: [PATCH] fix: util/mkinstallvars.pl mistreated LDLIBS on Unix (and
+ Windows)
+
+Don't do comma separation on those platforms.
+
+Fixes #24986
+---
+ util/mkinstallvars.pl | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/util/mkinstallvars.pl b/util/mkinstallvars.pl
+index 5fadb708e1b77..e2b7d9d08321f 100644
+--- a/util/mkinstallvars.pl
++++ b/util/mkinstallvars.pl
+@@ -124,7 +124,9 @@ package OpenSSL::safe::installdata;
+ our \$VERSION                    = '$ENV{VERSION}';
+ our \@LDLIBS                     =
+     # Unix and Windows use space separation, VMS uses comma separation
+-    split(/ +| *, */, '$ENV{LDLIBS}');
++    \$^O eq 'VMS'
++    ? split(/ *, */, '$ENV{LDLIBS}')
++    : split(/ +/, '$ENV{LDLIBS}');
+ 
+ 1;
+ _____

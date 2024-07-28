@@ -59,6 +59,8 @@ MULTILIB_WRAPPED_HEADERS=(
 PATCHES=(
 	# bug 936311, drop on next version bump
 	"${FILESDIR}"/${P}-riscv.patch
+	# https://bugs.gentoo.org/936793
+	"${FILESDIR}"/openssl-3.3.1-pkg-config.patch
 )
 
 pkg_setup() {
