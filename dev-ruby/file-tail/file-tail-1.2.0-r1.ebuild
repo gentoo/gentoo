@@ -22,7 +22,6 @@ HOMEPAGE="https://flori.github.io/file-tail/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 ruby_add_rdepend "=dev-ruby/tins-1*"
 ruby_add_bdepend "test? ( >=dev-ruby/test-unit-2.5.1-r1 )"
