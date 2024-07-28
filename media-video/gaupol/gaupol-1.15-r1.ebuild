@@ -28,7 +28,7 @@ BDEPEND="
 		app-dicts/myspell-en
 		|| (
 			app-text/enchant[hunspell]
-			app-text/enchant[nuspell]
+			>app-text/enchant-2.0.0[nuspell]
 		)
 		app-text/gspell[introspection]
 	)
