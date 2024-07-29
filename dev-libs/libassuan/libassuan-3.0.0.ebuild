@@ -10,7 +10,7 @@ EAPI=8
 # any subsequent ones linked within so you're covered for a while.)
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gnupg.asc
-inherit verify-sig
+inherit verify-sig libtool
 
 DESCRIPTION="IPC library used by GnuPG and GPGME"
 HOMEPAGE="https://www.gnupg.org/related_software/libassuan/index.en.html"
@@ -25,6 +25,12 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~
 RDEPEND=">=dev-libs/libgpg-error-1.33"
 DEPEND="${RDEPEND}"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-gnupg )"
+
+src_prepare() {
+	default
+	# for Solaris shared libraries
+	elibtoolize
+}
 
 src_configure() {
 	local myeconfargs=(
