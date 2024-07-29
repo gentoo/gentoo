@@ -81,6 +81,13 @@ src_prepare() {
 	# fails to compile in certain configurations
 	sed -i -e 's/__APPLE__/__NO_APPLE__/' lib/system/certs.c || die
 
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# should be gone on next release, for gnulib memset_s breakage
+		append-cppflags -D__STDC_WANT_LIB_EXT1__=1
+		# alloca usage, similar
+		sed -i -e '$a#include <alloca.h>' config.h.in || die
+	fi
+
 	# Use sane .so versioning on FreeBSD.
 	elibtoolize
 }
@@ -101,8 +108,6 @@ multilib_src_configure() {
 	#   GNU-stack (as doesn't support that) and when that's removed ld
 	#   complains about duplicate symbols
 	[[ ${CHOST} == *-darwin* ]] && libconf+=( --disable-hardware-acceleration )
-	# should be gone on next release, for gnulib memset_s breakage
-	[[ ${CHOST} == *-solaris* ]] && append-cppflags -D__STDC_WANT_LIB_EXT1__=1
 
 	# -fanalyzer substantially slows down the build and isn't useful for
 	# us. It's useful for upstream as it's static analysis, but it's not
