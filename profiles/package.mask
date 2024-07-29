@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (2024-07-29)
+# Superseded by media-libs/libv4l[utils].
+# Removal on 2024-08-29. Bug #936674.
+media-tv/v4l-utils
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-07-29)
 # Lacks maintainer capacity for update version plus java dependencies.
 # A pull request for the version bump could be provided on request.
