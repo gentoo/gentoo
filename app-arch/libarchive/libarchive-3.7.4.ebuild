@@ -74,6 +74,8 @@ PATCHES=(
 	# https://github.com/libarchive/libarchive/issues/2069
 	# (we can simply update the command since we don't support old lrzip)
 	"${FILESDIR}/${PN}-3.7.2-lrzip.patch"
+	# https://github.com/libarchive/libarchive/commit/6ff1cd1e487ddf545337b88da3f1f5ca69a2f958
+	"${FILESDIR}/${PN}-3.7.4-INT_MAX.patch"
 )
 
 src_prepare() {
