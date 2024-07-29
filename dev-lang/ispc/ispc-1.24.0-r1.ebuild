@@ -21,7 +21,7 @@ SRC_URI="
 LICENSE="BSD BSD-2 UoI-NCSA"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="examples gpu openmp test"
+IUSE="examples gpu openmp test utils"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -89,7 +89,7 @@ src_configure() {
 		-DCMAKE_SKIP_RPATH=ON
 		-DISPC_INCLUDE_EXAMPLES="$(usex examples)"
 		-DISPC_INCLUDE_TESTS=$(usex test)
-		-DISPC_INCLUDE_UTILS=OFF
+		-DISPC_INCLUDE_UTILS="$(usex utils)"
 		-DISPCRT_BUILD_GPU=$(usex gpu)
 		-DISPCRT_BUILD_TASK_MODEL=$(usex openmp OpenMP TBB)
 	)

@@ -15,5 +15,8 @@
 		<flag name="openmp">
 			Build with OpenMP task model (otherwise, TBB task model is used).
 		</flag>
+		<flag name="utils">
+			Build utils.
+		</flag>
 	</use>
 </pkgmetadata>
