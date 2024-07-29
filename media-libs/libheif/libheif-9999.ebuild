@@ -40,16 +40,18 @@ DEPEND="
 	go? ( dev-lang/go )
 	rav1e? ( media-video/rav1e:= )
 	svt-av1? ( media-libs/svt-av1[${MULTILIB_USEDEP}] )
-	x265? ( media-libs/x265:=[${MULTILIB_USEDEP}] )"
+	x265? ( media-libs/x265:=[${MULTILIB_USEDEP}] )
+"
 RDEPEND="${DEPEND}"
+
+# https://github.com/strukturag/libheif/issues/1249
+PATCHES=( "${FILESDIR}"/${P}-prepend_DESTDIR_when_generating_heif-convert_symlink.patch )
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libheif/heif_version.h
 )
 
 src_prepare() {
-	default
-
 	if use test ; then
 		# bug 865351
 		rm tests/catch.hpp || die
