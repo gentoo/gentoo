@@ -66,7 +66,7 @@ RDEPEND="
 	)
 	powerd? ( sys-apps/dbus[abi_x86_32(-)?] )
 	wayland? (
-		gui-libs/egl-wayland[abi_x86_32(-)?]
+		>=gui-libs/egl-wayland-1.1.13.1[abi_x86_32(-)?]
 		media-libs/mesa[gbm(+),abi_x86_32(-)?]
 		x11-libs/libdrm[abi_x86_32(-)?]
 		!gui-libs/egl-gbm
