@@ -41,7 +41,6 @@ RDEPEND="
 	dev-libs/libevent:=
 	dev-libs/libxml2[icu]
 	dev-libs/libxslt
-	dev-libs/re2:=
 	=dev-qt/qtcore-${QT5_PV}*
 	=dev-qt/qtdeclarative-${QT5_PV}*
 	=dev-qt/qtgui-${QT5_PV}*
@@ -102,6 +101,7 @@ BDEPEND="${PYTHON_DEPS}
 PATCHES=(
 	"${WORKDIR}/${PATCHSET}"
 	"${FILESDIR}/${PN}-5.15.13_p20240510-gcc15.patch"
+	"${FILESDIR}/${P}-re2.patch"
 )
 
 python_check_deps() {
@@ -231,6 +231,7 @@ src_configure() {
 		$(usex screencast -webengine-webrtc-pipewire '')
 		-qt-ffmpeg # bug 831487
 		$(qt_use system-icu webengine-icu)
+		-no-webengine-re2 # bug 913923
 	)
 	qt5-build_src_configure
 }
