@@ -452,7 +452,7 @@ media-libs/coin javascript
 # Matt Turner <mattst88@gentoo.org> (2022-11-16)
 # gnome-music and gnome-photos have not been ported to libsoup:3.0, while
 # other non-slotted dependencies have been.
-gnome-base/gnome-extra-apps tracker
+gnome-base/gnome-extra-apps localsearch
 
 # Matt Turner <mattst88@gentoo.org> (2022-11-16)
 # tracker-miners depends on libsoup:3.0 but USE=rss depends on net-libs/libgrss
