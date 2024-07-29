@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-07-29)
+# Lacks maintainer capacity for update version plus java dependencies.
+# A pull request for the version bump could be provided on request.
+# Removal on 2024-08-28. Bug #736076.
+media-video/bdsup2sub
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-07-27)
 # Stable version stuck on EAPI=6.
 # Lacks maintainer capacity for dev-lang/scala.
