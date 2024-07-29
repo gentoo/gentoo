@@ -42,7 +42,9 @@ RDEPEND="
 	>=dev-python/rich-13.7.1[${PYTHON_USEDEP}]
 	>=dev-python/resolvelib-1.0.1[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-69.5.1[${PYTHON_USEDEP}]
-	>=dev-python/tomli-2.0.1[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-python/tomli-2.0.1[${PYTHON_USEDEP}]
+	' 3.10)
 	>=dev-python/truststore-0.9.1[${PYTHON_USEDEP}]
 
 	>=dev-python/setuptools-39.2.0[${PYTHON_USEDEP}]
