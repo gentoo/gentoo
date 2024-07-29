@@ -24,7 +24,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="examples gpu openmp test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
+RDEPEND="
 	$(llvm_gen_dep '
 		sys-devel/clang:${LLVM_SLOT}
 	')
@@ -32,8 +32,9 @@ DEPEND="
 	gpu? ( dev-libs/level-zero:= )
 	!openmp? ( dev-cpp/tbb:= )
 "
-RDEPEND="
-	${DEPEND}
+DEPEND="
+	${RDEPEND}
+	test? ( dev-cpp/gtest )
 "
 BDEPEND="
 	app-alternatives/yacc
@@ -65,6 +66,13 @@ src_prepare() {
 	cat > ispcrt/tests/vendor/google/googletest/CMakeLists.txt <<-EOF || die
 		find_package(GTest)
 	EOF
+
+	# do not require bundled benchmark
+	mkdir -p benchmarks/vendor/google/benchmark || die
+	cat > benchmarks/vendor/google/benchmark/CMakeLists.txt <<-EOF || die
+		find_package(benchmark)
+	EOF
+
 	# remove hacks that break unbundling
 	sed -i -e '/gmock/d' -e '/install/,$d' ispcrt/tests/CMakeLists.txt || die
 
