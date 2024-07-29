@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Eli Schwartz <eschwartz@gentoo.org> (2024-07-29)
+# Bad version can result in failing builds. Please upgrade to 72.1.0.
+=dev-python/ensurepip-setuptools-72.0.0
+=dev-python/setuptools-72.0.0
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-07-27)
 # Stable version stuck on EAPI=6.
 # Lacks maintainer capacity for dev-lang/scala.
