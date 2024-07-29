@@ -1,0 +1,112 @@
+From 525360d70ab1698afaaaf20f7e58002b8756353f Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Wed, 3 Jul 2024 13:31:24 +0200
+Subject: [PATCH 4/5] impl-node: disable async for driver nodes
+
+Make it so that a driver node can never be scheduled async. It could
+possibly make sense when the driver node is not currently driving the
+graph but when it drives the graph it always needs to be sync. This
+also simplifies the target activation because we can simply check the
+async state and ignore if the node is driving or not.
+
+Also make sure that we never make an async link with a driver output port.
+This does not make sense because the driver node will always be
+triggered sync first and before the async node so we can simply make
+a sync link.
+
+This fixes the modified (only generate 1 buffer) video-src -> video-play
+case where the buffer never arrives in video-play because of the
+useless async link.
+
+Fixes #4092
+---
+ src/pipewire/impl-link.c | 8 +++++---
+ src/pipewire/impl-node.c | 7 +++----
+ src/pipewire/private.h   | 1 -
+ 3 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/src/pipewire/impl-link.c b/src/pipewire/impl-link.c
+index 39e9bd17d..6dc2e1a59 100644
+--- a/src/pipewire/impl-link.c
++++ b/src/pipewire/impl-link.c
+@@ -1321,7 +1321,8 @@ struct pw_impl_link *pw_context_create_link(struct pw_context *context,
+ 	if (this->passive && str == NULL)
+ 		 pw_properties_set(properties, PW_KEY_LINK_PASSIVE, "true");
+ 
+-	impl->async = (output_node->async || input_node->async) &&
++	impl->async = !output_node->driver &&
++		(output_node->async || input_node->async) &&
+ 		SPA_FLAG_IS_SET(output->flags, PW_IMPL_PORT_FLAG_ASYNC) &&
+ 		SPA_FLAG_IS_SET(input->flags, PW_IMPL_PORT_FLAG_ASYNC);
+ 
+@@ -1375,8 +1376,9 @@ struct pw_impl_link *pw_context_create_link(struct pw_context *context,
+ 	this->name = spa_aprintf("%d.%d.%d -> %d.%d.%d",
+ 			output_node->info.id, output->port_id, this->rt.out_mix.port.port_id,
+ 			input_node->info.id, input->port_id, this->rt.in_mix.port.port_id);
+-	pw_log_info("(%s) (%s) -> (%s) async:%04x:%04x:%d", this->name, output_node->name,
+-			input_node->name, output->flags, input->flags, impl->async);
++	pw_log_info("(%s) (%s) -> (%s) async:%d:%04x:%04x:%d", this->name, output_node->name,
++			input_node->name, output_node->driving,
++			output->flags, input->flags, impl->async);
+ 
+ 	pw_impl_port_emit_link_added(output, this);
+ 	pw_impl_port_emit_link_added(input, this);
+diff --git a/src/pipewire/impl-node.c b/src/pipewire/impl-node.c
+index 4def52897..c75e5793e 100644
+--- a/src/pipewire/impl-node.c
++++ b/src/pipewire/impl-node.c
+@@ -112,13 +112,12 @@ static inline void activate_target(struct pw_impl_node *node, struct pw_node_tar
+ {
+ 	struct pw_node_activation_state *state = &t->activation->state[0];
+ 	if (!t->active) {
+-		if (!node->async || node->driving) {
++		if (!node->async) {
+ 			if (!node->exported) {
+ 				SPA_ATOMIC_INC(state->required);
+ 				SPA_ATOMIC_INC(state->pending);
+ 			}
+ 		}
+-		t->active_driving = node->driving;
+ 		t->active = true;
+ 		pw_log_debug("%p: target state:%p id:%d pending:%d/%d %d:%d:%d",
+ 				node, state, t->id, state->pending, state->required,
+@@ -130,7 +129,7 @@ static inline void deactivate_target(struct pw_impl_node *node, struct pw_node_t
+ {
+ 	if (t->active) {
+ 		struct pw_node_activation_state *state = &t->activation->state[0];
+-		if (!node->async || t->active_driving) {
++		if (!node->async) {
+ 			/* the driver copies the required to the pending state
+ 			 * so first try to resume the node and then decrement the
+ 			 * required state. This way we either resume with the old value
+@@ -141,7 +140,6 @@ static inline void deactivate_target(struct pw_impl_node *node, struct pw_node_t
+ 				SPA_ATOMIC_DEC(state->required);
+ 		}
+ 		t->active = false;
+-		t->active_driving = false;
+ 		pw_log_debug("%p: target state:%p id:%d pending:%d/%d %d:%d:%d trigger:%"PRIu64,
+ 				node, state, t->id, state->pending, state->required,
+ 				node->async, node->driving, node->exported, trigger);
+@@ -1202,6 +1200,7 @@ static void check_properties(struct pw_impl_node *node)
+ 		recalc_reason = "transport changed";
+ 	}
+ 	async = pw_properties_get_bool(node->properties, PW_KEY_NODE_ASYNC, false);
++	async &= !node->driver;
+ 	if (async != node->async) {
+ 		pw_log_info("%p: async %d -> %d", node, node->async, async);
+ 		node->async = async;
+diff --git a/src/pipewire/private.h b/src/pipewire/private.h
+index 25af677ac..8c01fe8d5 100644
+--- a/src/pipewire/private.h
++++ b/src/pipewire/private.h
+@@ -541,7 +541,6 @@ struct pw_node_target {
+ 	int fd;
+ 	void (*trigger)(struct pw_node_target *t, uint64_t nsec);
+ 	unsigned int active:1;
+-	unsigned int active_driving:1;
+ 	unsigned int added:1;
+ };
+ 
+-- 
+2.45.2
+

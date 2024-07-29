@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>stasibear@gentoo.org</email>
+    <name>Erik Mackdanz</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Path-Dispatcher</remote-id>
+    <remote-id type="cpan-module">Path-Dispatcher</remote-id>
+    <remote-id type="cpan-module">Path-Dispatcher::Dispatch</remote-id>
+    <remote-id type="cpan-module">Path-Dispatcher::Match</remote-id>
+    <remote-id type="cpan-module">Path-Dispatcher::Path</remote-id>
+    <remote-id type="cpan-module">Path-Dispatcher::Role::Rules</remote-id>
+    <remote-id type="cpan-module">Path-Dispatcher::Rule</remote-id>
+    <remote-id type="cpan-module">Path-Dispatcher::Rule::Alternation</remote-id>
+    <remote-id type="cpan-module">Path-Dispatcher::Rule::Always</remote-id>
+    <remote-id type="cpan-module">Path-Dispatcher::Rule::Chain</remote-id>
+    <remote-id type="cpan-module">Path-Dispatcher::Rule::CodeRef</remote-id>
+    <remote-id type="cpan-module">Path-Dispatcher::Rule::Dispatch</remote-id>
+    <remote-id type="cpan-module">Path-Dispatcher::Rule::Empty</remote-id>
+    <remote-id type="cpan-module">Path-Dispatcher::Rule::Enum</remote-id>
+    <remote-id type="cpan-module">Path-Dispatcher::Rule::Eq</remote-id>
+    <remote-id type="cpan-module">Path-Dispatcher::Rule::Intersection</remote-id>
+    <remote-id type="cpan-module">Path-Dispatcher::Rule::Metadata</remote-id>
+    <remote-id type="cpan-module">Path-Dispatcher::Rule::Regex</remote-id>
+    <remote-id type="cpan-module">Path-Dispatcher::Rule::Sequence</remote-id>
+    <remote-id type="cpan-module">Path-Dispatcher::Rule::Tokens</remote-id>
+    <remote-id type="cpan-module">Path-Dispatcher::Rule::Under</remote-id>
+  </upstream>
+</pkgmetadata>

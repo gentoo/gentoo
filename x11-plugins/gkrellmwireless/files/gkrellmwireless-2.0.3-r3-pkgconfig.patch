@@ -1,0 +1,27 @@
+Respect user's pkg-config
+--- a/Makefile
++++ b/Makefile
+@@ -1,20 +1,10 @@
+ # Depends on gmake..
+ #
+ OS = $(shell uname)
++PKG_CONFIG ?= pkg-config
+ 
+-ifeq ($(OS),FreeBSD)
+-	GTK_CONFIG = pkg-config gtk+-2.0
+-	INCLUDE = -I/usr/src/sys
+-elseif eq ($(OS),NetBSD)
+-	GTK_CONFIG = pkg-config gtk+-2.0
+-else
+-# default to the linux 
+-	GTK_CONFIG = pkg-config gtk+-2.0
+-endif
+-
+-
+-GTK_CFLAGS = `$(GTK_CONFIG) --cflags` 
+-GTK_LIB = `$(GTK_CONFIG) --libs`
++GTK_CFLAGS = $(shell ${PKG_CONFIG} gtk+-2.0 --cflags)
++GTK_LIB = $(shell ${PKG_CONFIG} gtk+-2.0 --libs)
+ 
+ CFLAGS += -Wall -fPIC
+ CPPFLAGS += $(GTK_CFLAGS) $(GKRELLM_INCLUDE)

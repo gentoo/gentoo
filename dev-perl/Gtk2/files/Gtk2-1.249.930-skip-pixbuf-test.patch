@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/774396
+https://git.launchpad.net/ubuntu/+source/libgtk2-perl/tree/debian/patches/new_gdk_pixbuf.patch
+
+# Description: skip a test that is made invalid by the new gdk-pixbuf
+# Upstream: https://gitlab.gnome.org/GNOME/perl-gtk2/issues/3
+#
+--- a/t/GdkPixbuf.t
++++ b/t/GdkPixbuf.t
+@@ -123,9 +123,12 @@ my $log = Glib::Log->set_handler ('GdkPi
+ $pixbuf = Gtk2::Gdk::Pixbuf->new_from_xpm_data (@test_xpm[0..2]);
+ ok (! defined ($pixbuf), "Don't crash on broken pixmap data");
+ $pixbuf = Gtk2::Gdk::Pixbuf->new_from_xpm_data (@test_xpm[0..5]);
+-ok (defined $pixbuf, "Don't crash on partial pixmap data");
+-Glib::Log->remove_handler ('GdkPixbuf', $log);
+-
++SKIP: {
++	skip 'new gdk-pixbuf error out on invalid xpm', 1;
++	
++	ok (defined $pixbuf, "Don't crash on partial pixmap data");
++	Glib::Log->remove_handler ('GdkPixbuf', $log);
++}
+ 
+ # raw pixel values to make the xpm above
+ my $rawdata = pack 'C*',

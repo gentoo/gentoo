@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>arsen@gentoo.org</email>
+		<name>Arsen Arsenović</name>
+	</maintainer>
+	<use>
+		<flag name="grapheme-clustering">Enable grapheme clustering support</flag>
+	</use>
+	<upstream>
+		<remote-id type="codeberg">dnkl/foot</remote-id>
+	</upstream>
+</pkgmetadata>

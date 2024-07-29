@@ -1,0 +1,29 @@
+From a275d6eacc71a1c0ac6a95e2c77a29b13e6c189e Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sun, 15 Oct 2023 19:10:17 +0200
+Subject: [PATCH 08/10] Use correct signon in example
+
+---
+ example/example.pro | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/example/example.pro b/example/example.pro
+index 9b8ec65..1b2c6a8 100644
+--- a/example/example.pro
++++ b/example/example.pro
+@@ -11,11 +11,7 @@ CONFIG += \
+     link_pkgconfig
+ QT -= gui
+ 
+-lessThan(QT_MAJOR_VERSION, 5) {
+-    PKGCONFIG += libsignon-qt
+-} else {
+-    PKGCONFIG += libsignon-qt5
+-}
++PKGCONFIG += libsignon-qt$$QT_MAJOR_VERSION
+ 
+ HEADERS += \
+     oauthclient.h
+-- 
+2.43.0
+

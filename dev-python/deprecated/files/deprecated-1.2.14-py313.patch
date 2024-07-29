@@ -1,0 +1,34 @@
+diff --git a/tests/test_deprecated.py b/tests/test_deprecated.py
+index 0e467ae..69b10c1 100644
+--- a/tests/test_deprecated.py
++++ b/tests/test_deprecated.py
+@@ -152,6 +152,7 @@ def test_classic_deprecated_class__warns(classic_deprecated_class):
+         classic_deprecated_class()
+     assert len(warns) == 1
+     warn = warns[0]
++    print(warns)
+     assert issubclass(warn.category, DeprecationWarning)
+     assert "deprecated class" in str(warn.message)
+     assert warn.filename == __file__ or warn.category is WrongStackLevelWarning, 'Incorrect warning stackLevel'
+@@ -191,7 +192,7 @@ def test_classic_deprecated_class_method__warns(classic_deprecated_class_method)
+     assert len(warns) == 1
+     warn = warns[0]
+     assert issubclass(warn.category, DeprecationWarning)
+-    if sys.version_info >= (3, 9):
++    if (3, 9) <= sys.version_info < (3, 13):
+         assert "deprecated class method" in str(warn.message)
+     else:
+         assert "deprecated function (or staticmethod)" in str(warn.message)
+diff --git a/tests/test_sphinx.py b/tests/test_sphinx.py
+index a1d7753..8cf8e95 100644
+--- a/tests/test_sphinx.py
++++ b/tests/test_sphinx.py
+@@ -301,7 +301,7 @@ def test_sphinx_deprecated_class_method__warns(sphinx_deprecated_class_method):
+     assert len(warns) == 1
+     warn = warns[0]
+     assert issubclass(warn.category, DeprecationWarning)
+-    if sys.version_info >= (3, 9):
++    if (3, 9) <= sys.version_info < (3, 13):
+         assert "deprecated class method" in str(warn.message)
+     else:
+         assert "deprecated function (or staticmethod)" in str(warn.message)

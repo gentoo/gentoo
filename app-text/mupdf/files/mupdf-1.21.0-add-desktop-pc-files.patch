@@ -1,0 +1,33 @@
+--- /dev/null
++++ ./platform/debian/mupdf.desktop
+@@ -0,0 +1,15 @@
++[Desktop Entry]
++Name=MuPDF
++GenericName=PDF file viewer
++Exec=mupdf %f
++TryExec=mupdf
++Icon=new-mupdf-icon
++Terminal=false
++Type=Application
++MimeType=application/pdf;application/x-pdf;application/x-cbz;application/oxps;application/vnd.ms-xpsdocument;image/jpeg;image/pjpeg;image/png;image/tiff;image/x-tiff;
++Categories=Viewer;Graphics;
++Actions=View;
++
++[Desktop Action View]
++Name=View with mupdf
++Exec=mupdf %f
+--- /dev/null
++++ ./platform/debian/mupdf.pc
+@@ -0,0 +1,12 @@
++prefix=/usr
++exec_prefix=${prefix}
++libdir=${exec_prefix}/lib
++includedir=${prefix}/include
++
++Name: mupdf
++Description: Library for rendering PDF documents
++Requires: freetype2 libopenjp2 libcrypto
++Version: 0.5.0
++Libs: -L${libdir} -lmupdf
++Libs.private: -lmupdf-js-none
++Cflags: -I${includedir}

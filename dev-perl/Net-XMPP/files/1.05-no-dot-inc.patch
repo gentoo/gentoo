@@ -1,0 +1,133 @@
+From bad1310f14223c12c1d8933ef5de17fd323374f5 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 29 Nov 2017 19:07:38 +1300
+Subject: Fix tests failing under Perl 5.26 w/ PERL_USE_UNSAFE_INC=0
+
+    require t/foo.pl
+
+Used to work as a result of the assumed '.' at the end of `@INC`.
+This is no longer true under Perl 5.26 without PERL_USE_UNSAFE_INC=1
+in your environment (which gets defaulted on under CPAN installers and
+under Test::Harness if not explicitly disabled, and will be hard-off
+in Perl 5.30)
+
+Bug: https://bugs.gentoo.org/623002
+Bug: https://github.com/dap/Net-XMPP/pull/16
+---
+ t/iq.t              | 2 +-
+ t/jid.t             | 2 +-
+ t/message.t         | 2 +-
+ t/packet_iqauth.t   | 2 +-
+ t/packet_iqroster.t | 2 +-
+ t/presence.t        | 2 +-
+ t/rawxml.t          | 2 +-
+ t/roster.t          | 2 +-
+ 8 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/t/iq.t b/t/iq.t
+index 9174e6d..1742d6c 100644
+--- a/t/iq.t
++++ b/t/iq.t
+@@ -3,7 +3,7 @@ use Test::More tests=>115;
+ 
+ BEGIN{ use_ok( "Net::XMPP" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $debug = Net::XMPP::Debug->new(setdefault=>1,
+                                  level=>-1,
+diff --git a/t/jid.t b/t/jid.t
+index dc07440..fa426a4 100644
+--- a/t/jid.t
++++ b/t/jid.t
+@@ -3,7 +3,7 @@ use Test::More tests=>15;
+ 
+ BEGIN{ use_ok( "Net::XMPP" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $jid = Net::XMPP::JID->new('host.com/xxx@yyy.com/zzz');
+ ok( defined($jid), "new()" );
+diff --git a/t/message.t b/t/message.t
+index 70bcef8..7c2f554 100644
+--- a/t/message.t
++++ b/t/message.t
+@@ -3,7 +3,7 @@ use Test::More tests=>136;
+ 
+ BEGIN{ use_ok( "Net::XMPP" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $debug = Net::XMPP::Debug->new(setdefault=>1,
+                                  level=>-1,
+diff --git a/t/packet_iqauth.t b/t/packet_iqauth.t
+index 748917b..f80b5ae 100644
+--- a/t/packet_iqauth.t
++++ b/t/packet_iqauth.t
+@@ -3,7 +3,7 @@ use Test::More tests=>55;
+ 
+ BEGIN{ use_ok( "Net::XMPP" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $debug = Net::XMPP::Debug->new(setdefault=>1,
+                                  level=>-1,
+diff --git a/t/packet_iqroster.t b/t/packet_iqroster.t
+index 706e5f0..4bd48e8 100644
+--- a/t/packet_iqroster.t
++++ b/t/packet_iqroster.t
+@@ -3,7 +3,7 @@ use Test::More tests=>57;
+ 
+ BEGIN{ use_ok( "Net::XMPP" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $debug = Net::XMPP::Debug->new(setdefault=>1,
+                                  level=>-1,
+diff --git a/t/presence.t b/t/presence.t
+index ce6980d..14f9516 100644
+--- a/t/presence.t
++++ b/t/presence.t
+@@ -3,7 +3,7 @@ use Test::More tests=>132;
+ 
+ BEGIN{ use_ok( "Net::XMPP" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $debug = Net::XMPP::Debug->new(setdefault=>1,
+                                  level=>-1,
+diff --git a/t/rawxml.t b/t/rawxml.t
+index b4f091b..43b6380 100644
+--- a/t/rawxml.t
++++ b/t/rawxml.t
+@@ -3,7 +3,7 @@ use Test::More tests=>54;
+ 
+ BEGIN{ use_ok( "Net::XMPP" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $message = Net::XMPP::Message->new();
+ ok( defined($message), "new()");
+diff --git a/t/roster.t b/t/roster.t
+index 19ed87b..a365d2e 100644
+--- a/t/roster.t
++++ b/t/roster.t
+@@ -11,7 +11,7 @@ BEGIN {
+ }
+ BEGIN{ use_ok( "Net::XMPP" ); }
+ 
+-require "t/mytestlib.pl";
++require "./t/mytestlib.pl";
+ 
+ my $debug = Net::XMPP::Debug->new(setdefault=>1,
+                                  level=>-1,
+-- 
+2.14.3
+

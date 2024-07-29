@@ -1,0 +1,20 @@
+# /etc/conf.d/g15stats: Configuration for the G15 stats
+
+#Gather statistics from named interface (ie eth0)
+#Network Screen displays Total bytes In/Out, history graph, Peak speed.
+IFACE="eth0"
+
+# Please see g15stats --help for meanings
+#TEMP_INPUT=1
+#GLOBAL_TEMP_INPUT=1
+#FAN_INPUT=1
+
+# please see g15stats --help for all options
+# As of 1.9.7, the options where:
+# --unicore
+# --net-scale-absolute
+# --info-rotate
+# --variable-cpu
+# --refresh
+# --disable-freq
+EXTRA_OPTS="${IFACE:+--interface} ${IFACE} ${TEMP_INPUT:+--temperature} ${TEMP_INPUT} ${GLOBAL_TEMP_INPUT:+--global-temp} ${GLOBAL_TEMP_INPUT} ${FAN_INPUT:+--fan} ${FAN_INPUT}"

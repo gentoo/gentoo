@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>leio@gentoo.org</email>
+		<name>Mart Raudsepp</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://gitlab.freedesktop.org/pipewire/pipewire/-/issues</bugs-to>
+		<changelog>https://gitlab.freedesktop.org/pipewire/pipewire/-/releases</changelog>
+		<doc>https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/home</doc>
+		<remote-id type="freedesktop-gitlab">pipewire/pipewire</remote-id>
+	</upstream>
+	<use>
+		<flag name="echo-cancel">Enable WebRTC-based echo canceller via <pkg>media-libs/webrtc-audio-processing</pkg></flag>
+		<flag name="extra">Build pw-cat/pw-play/pw-record</flag>
+		<flag name="flatpak">Enable Flatpak support</flag>
+		<flag name="gsettings">Use gsettings (<pkg>dev-libs/glib</pkg>) to read/save used modules (useful for e.g. <pkg>media-sound/paprefs</pkg></flag>
+		<flag name="jack-client">Install a plugin for running PipeWire as a JACK client</flag>
+		<flag name="jack-sdk">Use PipeWire as JACK replacement</flag>
+		<flag name="liblc3">Allow loading LC3 plugins via <pkg>media-sound/liblc3</pkg></flag>
+		<flag name="lv2">Allow loading LV2 plugins via <pkg>media-libs/lv2</pkg></flag>
+		<flag name="modemmanager">Combined with USE=bluetooth, allows PipeWire to perform telephony on mobile devices.</flag>
+		<flag name="pipewire-alsa">Replace PulseAudio's ALSA plugin with PipeWire's plugin</flag>
+		<flag name="roc">Enable roc support for real-time audio streaming over the network, using <pkg>media-libs/roc-toolkit</pkg>. See https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/Network#roc</flag>
+		<flag name="ssl">Enable raop-sink support (needs <pkg>dev-libs/openssl</pkg>)</flag>
+		<flag name="system-service">Install systemd unit files for running as a system service. Not recommended.</flag>
+		<flag name="X">Enable audible bell for X11</flag>
+		<flag name="sound-server">Provide sound server using ALSA and bluetooth devices</flag>
+	</use>
+</pkgmetadata>

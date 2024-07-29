@@ -1,0 +1,85 @@
+From 3fb715b55426875902dfef3056b2cf7335953178 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Fri, 19 May 2017 13:25:59 -0400
+Subject: [PATCH] include sys/sysmacros.h as needed
+
+The minor/major/makedev macros are not entirely standard.  glibc has had
+the definitions in sys/sysmacros.h since the start, and wants to move away
+from always defining them implicitly via sys/types.h (as this pollutes the
+namespace in violation of POSIX).  Other C libraries have already dropped
+them.  Since the configure script already checks for this header, use that
+to pull in the header in files that use these macros.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+Signed-off-by: Theodore Ts'o <tytso@mit.edu>
+---
+ lib/blkid/devname.c    | 3 +++
+ lib/blkid/devno.c      | 3 +++
+ lib/ext2fs/finddev.c   | 3 +++
+ lib/ext2fs/ismounted.c | 3 +++
+ misc/mk_hugefiles.c    | 3 +++
+ 7 files changed, 22 insertions(+)
+
+--- a/lib/blkid/devname.c
++++ b/lib/blkid/devname.c
+@@ -36,6 +36,9 @@
+ #if HAVE_SYS_MKDEV_H
+ #include <sys/mkdev.h>
+ #endif
++#ifdef HAVE_SYS_SYSMACROS_H
++#include <sys/sysmacros.h>
++#endif
+ #include <time.h>
+ 
+ #include "blkidP.h"
+--- a/lib/blkid/devno.c
++++ b/lib/blkid/devno.c
+@@ -31,6 +31,9 @@
+ #if HAVE_SYS_MKDEV_H
+ #include <sys/mkdev.h>
+ #endif
++#ifdef HAVE_SYS_SYSMACROS_H
++#include <sys/sysmacros.h>
++#endif
+ 
+ #include "blkidP.h"
+ 
+--- a/lib/ext2fs/finddev.c
++++ b/lib/ext2fs/finddev.c
+@@ -31,6 +31,9 @@
+ #if HAVE_SYS_MKDEV_H
+ #include <sys/mkdev.h>
+ #endif
++#ifdef HAVE_SYS_SYSMACROS_H
++#include <sys/sysmacros.h>
++#endif
+ 
+ #include "ext2_fs.h"
+ #include "ext2fs.h"
+--- a/lib/ext2fs/ismounted.c
++++ b/lib/ext2fs/ismounted.c
+@@ -49,6 +49,9 @@
+ #endif /* HAVE_GETMNTINFO */
+ #include <string.h>
+ #include <sys/stat.h>
++#ifdef HAVE_SYS_SYSMACROS_H
++#include <sys/sysmacros.h>
++#endif
+ 
+ #include "ext2_fs.h"
+ #include "ext2fs.h"
+--- a/misc/mk_hugefiles.c
++++ b/misc/mk_hugefiles.c
+@@ -35,6 +35,9 @@ extern int optind;
+ #include <sys/ioctl.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#ifdef HAVE_SYS_SYSMACROS_H
++#include <sys/sysmacros.h>
++#endif
+ #include <libgen.h>
+ #include <limits.h>
+ #include <blkid/blkid.h>
+-- 
+2.20.1
+

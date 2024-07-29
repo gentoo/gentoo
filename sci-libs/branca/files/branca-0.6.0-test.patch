@@ -1,0 +1,12 @@
+--- a/setup.cfg	2023-02-09 09:15:07.186333281 +0100
++++ b/setup.cfg	2023-02-09 09:15:17.596181143 +0100
+@@ -1,9 +1,4 @@
+ [tool:pytest]
+-flake8-max-line-length = 105
+-flake8-ignore =
+-    docs/* ALL
+-    versioneer.py ALL
+-    branca/_version.py ALL
+ markers =
+     headless: mark headless tests (deselect with '-m "not headless"')
+ 

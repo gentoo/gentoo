@@ -1,0 +1,39 @@
+commit 5259bcbe3434c6974f7a65cc435dd0b4cfc3f864
+Author: Louis Sautier <sautier.louis@gmail.com>
+Date:   Tue Nov 1 15:48:21 2022 +0100
+
+    tests: use assertEqual instead of assertEquals
+    
+    The latter is deprecated and causes warnings when running tests.
+
+--- a/test/test_caching.py
++++ b/test/test_caching.py
+@@ -136,18 +136,18 @@ class RelPathKeyTest(RelTestCase):
+         self.mkfile('aAaA/Aaa2', '2')
+         self.mkfile('aAaA/AAa2', '3')
+ 
+-        self.assertEquals(a1, cache.nocase_findfile(self.mkpath('aaAA/aaa1')))
++        self.assertEqual(a1, cache.nocase_findfile(self.mkpath('aaAA/aaa1')))
+         with self.assertRaises(IOError) as cm:
+             cache.nocase_findfile(self.mkpath('aaAb/aaa1'))
+-        self.assertEquals(errno.ENOENT, cm.exception.errno)
++        self.assertEqual(errno.ENOENT, cm.exception.errno)
+ 
+         with self.assertRaises(IOError) as cm:
+             cache.nocase_findfile(self.mkpath('aaAA/aab1'))
+-        self.assertEquals(errno.ENOENT, cm.exception.errno)
++        self.assertEqual(errno.ENOENT, cm.exception.errno)
+ 
+         with self.assertRaises(IOError) as cm:
+             cache.nocase_findfile(self.mkpath('aaAA/aaa2'))
+-        self.assertEquals(errno.EEXIST, cm.exception.errno)
++        self.assertEqual(errno.EEXIST, cm.exception.errno)
+ 
+     def test_nocase_findfile_parent(self):
+         cache = FileInfoCache()
+@@ -159,4 +159,4 @@ class RelPathKeyTest(RelTestCase):
+         # one.
+         with self.assertRaises(IOError) as cm:
+             cache.nocase_findfile(self.mkpath('aaAA/aaa2'))
+-        self.assertEquals(errno.EEXIST, cm.exception.errno)
++        self.assertEqual(errno.EEXIST, cm.exception.errno)

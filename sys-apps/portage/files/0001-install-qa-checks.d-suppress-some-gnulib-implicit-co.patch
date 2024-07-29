@@ -1,0 +1,89 @@
+From 236a2c7081e2208c817f9a99f012bab0be3d70b2 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Fri, 17 May 2024 01:52:53 -0400
+Subject: [PATCH 1/2] install-qa-checks.d: suppress some gnulib implicit
+ configure declarations
+
+These happen in tons of GNU packages because of using gnulib, which
+pulls in macros that check for some functionality and spit out an
+implicit function declaration error if they aren't supported, which is
+*expected*.
+
+Bug: https://bugs.gentoo.org/906027
+Signed-off-by: Eli Schwartz <eschwartz93@gmail.com>
+Closes: https://github.com/gentoo/portage/pull/1323
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ bin/install-qa-check.d/90config-impl-decl | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/bin/install-qa-check.d/90config-impl-decl b/bin/install-qa-check.d/90config-impl-decl
+index 7969dff17..adea7d405 100644
+--- a/bin/install-qa-check.d/90config-impl-decl
++++ b/bin/install-qa-check.d/90config-impl-decl
+@@ -49,6 +49,15 @@ add_default_skips() {
+ 		res_ndestroy
+ 		statacl
+ 	)
++
++	QA_CONFIG_IMPL_DECL_SKIP+=(
++		# Available in c23, these gnulib checks are expected to fail
++		alignof
++		static_assert
++		unreachable
++		# also gnulib, but checks both linux/non-linux headers
++		MIN
++	)
+ }
+ 
+ find_log_targets() {
+-- 
+2.44.1
+
+
+From e01d7fde23c4a0cc9f22e7b1ea28d3deff0331ae Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Tue, 21 May 2024 19:22:31 -0400
+Subject: [PATCH 2/2] install-qa-checks.d: suppress some gnulib implicit decls
+ on musl
+
+These happen in tons of GNU packages because of using gnulib's regex.m4
+specifically, which pulls in a macro that checks for some functionality
+and spit out many implicit function declaration errors if regex.h isn't
+GNU's specifically.
+
+The compile tests do fail either way, it's just very dirty in the logs.
+
+Bug: https://bugs.gentoo.org/906027
+Closes: https://github.com/gentoo/portage/pull/1327
+Signed-off-by: Eli Schwartz <eschwartz93@gmail.com>
+---
+ bin/install-qa-check.d/90config-impl-decl | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/bin/install-qa-check.d/90config-impl-decl b/bin/install-qa-check.d/90config-impl-decl
+index adea7d405..8768c99c6 100644
+--- a/bin/install-qa-check.d/90config-impl-decl
++++ b/bin/install-qa-check.d/90config-impl-decl
+@@ -58,6 +58,18 @@ add_default_skips() {
+ 		# also gnulib, but checks both linux/non-linux headers
+ 		MIN
+ 	)
++	if [[ ${CHOST} = *musl* ]]; then
++		QA_CONFIG_IMPL_DECL_SKIP+=(
++			# gnulib checks for functions that aren't available on musl.
++
++			# regex.m4 always emits these warnings, but they are noisy to fix
++			# and the check will correctly fail due to missing macros anyway.
++			re_set_syntax
++			re_compile_pattern
++			re_search
++			re_match
++		)
++	fi
+ }
+ 
+ find_log_targets() {
+-- 
+2.44.1
+

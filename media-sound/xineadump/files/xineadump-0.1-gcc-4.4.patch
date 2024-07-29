@@ -1,0 +1,11 @@
+diff -ur xineadump.orig/src/waveencoder.cpp xineadump/src/waveencoder.cpp
+--- xineadump.orig/src/waveencoder.cpp	2007-08-05 02:39:36.000000000 +0300
++++ xineadump/src/waveencoder.cpp	2009-07-05 18:57:47.000000000 +0300
+@@ -19,6 +19,7 @@
+  ***************************************************************************/
+ 
+ #include "waveencoder.h"
++#include <cstdio>
+ 
+ #define WAVE_HEADER_SIZE 44
+ #define PCM_BUFFER_SIZE  0x10000 // 64KB

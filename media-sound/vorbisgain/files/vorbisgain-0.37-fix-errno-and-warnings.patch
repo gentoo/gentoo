@@ -1,0 +1,80 @@
+diff -ur vorbisgain-0.37.orig/misc.c vorbisgain-0.37/misc.c
+--- vorbisgain-0.37.orig/misc.c	2004-01-03 23:17:28.000000000 +0200
++++ vorbisgain-0.37/misc.c	2008-03-22 09:32:49.000000000 +0200
+@@ -23,6 +23,7 @@
+ #else /* WIN32 */
+ #include <errno.h>
+ #include <ctype.h>
++#include <unistd.h>
+ 
+ #ifndef DISABLE_WINSIZE
+ 
+diff -ur vorbisgain-0.37.orig/recurse.c vorbisgain-0.37/recurse.c
+--- vorbisgain-0.37.orig/recurse.c	2004-01-02 14:49:38.000000000 +0200
++++ vorbisgain-0.37/recurse.c	2008-03-22 09:31:52.000000000 +0200
+@@ -377,6 +377,7 @@
+ 
+         if (result->dir != NULL)
+         {
++            errno = 0;
+             result->entry = readdir(result->dir);
+ 
+             if (result->entry != NULL)
+@@ -408,6 +409,7 @@
+  */
+ static int read_dir(DIRECTORY *directory)
+ {
++    errno = 0;
+     directory->entry = readdir(directory->dir);
+ 
+     if (directory->entry != NULL)
+diff -ur vorbisgain-0.37.orig/vorbis.c vorbisgain-0.37/vorbis.c
+--- vorbisgain-0.37.orig/vorbis.c	2005-07-15 01:49:05.000000000 +0300
++++ vorbisgain-0.37/vorbis.c	2008-03-22 09:32:25.000000000 +0200
+@@ -572,6 +572,9 @@
+     int result = -1;
+     int delete_temp = 0;
+     int i;
++#if _BSD_SOURCE || _SVID_SOURCE || _XOPEN_SOURCE >= 500
++    int fd;
++#endif
+ 
+     infile = fopen(filename, "rb");
+ 
+@@ -699,6 +702,16 @@
+     strcpy(temp_name, filename);
+     strcpy((char *) last_path(temp_name), TEMP_NAME);
+ 
++#if _BSD_SOURCE || _SVID_SOURCE || _XOPEN_SOURCE >= 500
++    fd = mkstemp(temp_name);
++    if (fd == -1)
++    {
++        fprintf(stderr, _("Couldn't create temporary file for processing.\n"));
++        goto exit;
++    }
++
++    outfile = fdopen(fd, "wb");
++#else /* #if _BSD_SOURCE || _SVID_SOURCE || _XOPEN_SOURCE >= 500 */
+ #ifdef WIN32
+     temp_name = _mktemp(temp_name);
+ #else
+@@ -712,6 +725,7 @@
+     }
+     
+     outfile = fopen(temp_name, "wb");
++#endif /* #if _BSD_SOURCE || _SVID_SOURCE || _XOPEN_SOURCE >= 500 */
+ 
+     if (outfile == NULL)
+     {
+@@ -824,7 +838,10 @@
+         }
+     }
+ 
+-    free(temp_name);
++    if (temp_name != NULL)
++    {
++        free(temp_name);
++    }
+ 
+     return result;
+ }

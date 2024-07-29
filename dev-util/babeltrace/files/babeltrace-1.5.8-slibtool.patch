@@ -1,0 +1,119 @@
+From 2780bd0b908b4021bcd2a12a56094deb7861c3fc Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sat, 7 May 2022 20:31:24 -0700
+Subject: [PATCH] Fix the build with slibtool
+
+gentoo bug: https://bugs.gentoo.org/777444
+---
+ formats/ctf-text/Makefile.am       | 4 +---
+ formats/ctf-text/types/Makefile.am | 3 +--
+ formats/ctf/Makefile.am            | 1 -
+ formats/ctf/ir/Makefile.am         | 3 +--
+ formats/ctf/metadata/Makefile.am   | 2 +-
+ formats/ctf/types/Makefile.am      | 3 +--
+ formats/ctf/writer/Makefile.am     | 3 +--
+ lib/Makefile.am                    | 4 +---
+ 8 files changed, 7 insertions(+), 16 deletions(-)
+
+diff --git a/formats/ctf-text/Makefile.am b/formats/ctf-text/Makefile.am
+index d773c8157..f2f6b22e3 100644
+--- a/formats/ctf-text/Makefile.am
++++ b/formats/ctf-text/Makefile.am
+@@ -12,9 +12,7 @@ libbabeltrace_ctf_text_la_LDFLAGS = \
+ 	$(LD_NO_AS_NEEDED) -version-info $(BABELTRACE_LIBRARY_VERSION) \
+ 	types/libctf-text-types.la
+ 
+-libbabeltrace_ctf_text_la_LIBADD = \
+-	$(top_builddir)/lib/libbabeltrace.la \
+-	$(top_builddir)/formats/ctf/libbabeltrace-ctf.la
++libbabeltrace_ctf_text_la_LIBADD =
+ 
+ if ENABLE_DEBUG_INFO
+ libbabeltrace_ctf_text_la_LIBADD += $(top_builddir)/lib/libdebug-info.la
+diff --git a/formats/ctf-text/types/Makefile.am b/formats/ctf-text/types/Makefile.am
+index 576d29d7d..596a6a859 100644
+--- a/formats/ctf-text/types/Makefile.am
++++ b/formats/ctf-text/types/Makefile.am
+@@ -14,5 +14,4 @@ libctf_text_types_la_SOURCES = \
+ 
+ libctf_text_types_la_LDFLAGS = $(LT_NO_UNDEFINED)
+ 
+-libctf_text_types_la_LIBADD = \
+-	$(top_builddir)/lib/libbabeltrace.la
++libctf_text_types_la_LIBADD =
+diff --git a/formats/ctf/Makefile.am b/formats/ctf/Makefile.am
+index 23ae0b93c..65de7cf87 100644
+--- a/formats/ctf/Makefile.am
++++ b/formats/ctf/Makefile.am
+@@ -17,7 +17,6 @@ libbabeltrace_ctf_la_LDFLAGS = \
+ 	$(LD_NO_AS_NEEDED) -version-info $(BABELTRACE_LIBRARY_VERSION)
+ 
+ libbabeltrace_ctf_la_LIBADD = \
+-	$(top_builddir)/lib/libbabeltrace.la \
+ 	types/libctf-types.la \
+ 	metadata/libctf-parser.la \
+ 	metadata/libctf-ast.la \
+diff --git a/formats/ctf/ir/Makefile.am b/formats/ctf/ir/Makefile.am
+index 6f5b06e4d..3af40cfc1 100644
+--- a/formats/ctf/ir/Makefile.am
++++ b/formats/ctf/ir/Makefile.am
+@@ -22,8 +22,7 @@ libctf_ir_la_SOURCES = \
+ 
+ libctf_ir_la_LDFLAGS = $(LT_NO_UNDEFINED)
+ 
+-libctf_ir_la_LIBADD = \
+-	$(top_builddir)/lib/libbabeltrace.la
++libctf_ir_la_LIBADD =
+ 
+ if BABELTRACE_BUILD_WITH_LIBUUID
+ libctf_ir_la_LIBADD += -luuid
+diff --git a/formats/ctf/metadata/Makefile.am b/formats/ctf/metadata/Makefile.am
+index 573f94d31..a181e784c 100644
+--- a/formats/ctf/metadata/Makefile.am
++++ b/formats/ctf/metadata/Makefile.am
+@@ -24,7 +24,7 @@ libctf_ast_la_SOURCES = ctf-visitor-xml.c \
+ 		ctf-visitor-semantic-validator.c \
+ 		ctf-visitor-generate-io-struct.c
+ libctf_ast_la_LIBADD = \
+-	$(top_builddir)/lib/libbabeltrace.la
++	$(top_builddir)/types/libbabeltrace_types.la
+ libctf_ast_la_LDFLAGS = $(LT_NO_UNDEFINED)
+ 
+ if BABELTRACE_BUILD_WITH_LIBUUID
+diff --git a/formats/ctf/types/Makefile.am b/formats/ctf/types/Makefile.am
+index a1bcfb2fe..9ae105868 100644
+--- a/formats/ctf/types/Makefile.am
++++ b/formats/ctf/types/Makefile.am
+@@ -14,5 +14,4 @@ libctf_types_la_SOURCES = \
+ 
+ libctf_types_la_LDFLAGS = $(LT_NO_UNDEFINED)
+ 
+-libctf_types_la_LIBADD = \
+-	$(top_builddir)/lib/libbabeltrace.la
++libctf_types_la_LIBADD =
+diff --git a/formats/ctf/writer/Makefile.am b/formats/ctf/writer/Makefile.am
+index e328084be..ab27b0742 100644
+--- a/formats/ctf/writer/Makefile.am
++++ b/formats/ctf/writer/Makefile.am
+@@ -6,8 +6,7 @@ libctf_writer_la_SOURCES = \
+ 	writer.c \
+ 	functor.c
+ 
+-libctf_writer_la_LIBADD = \
+-	$(top_builddir)/lib/libbabeltrace.la
++libctf_writer_la_LIBADD =
+ 
+ libctf_writer_la_LDFLAGS = $(LT_NO_UNDEFINED)
+ 
+diff --git a/lib/Makefile.am b/lib/Makefile.am
+index 48620e8fd..e4748cadc 100644
+--- a/lib/Makefile.am
++++ b/lib/Makefile.am
+@@ -28,6 +28,4 @@ libdebug_info_la_LIBADD = libbabeltrace.la
+ endif
+ 
+ libbabeltrace_la_LIBADD = \
+-	prio_heap/libprio_heap.la \
+-	$(top_builddir)/types/libbabeltrace_types.la \
+-	$(top_builddir)/compat/libcompat.la
++	prio_heap/libprio_heap.la

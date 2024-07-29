@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sarnex@gentoo.org</email>
+		<name>Nick Sarnie</name>
+	</maintainer>
+	<use>
+		<flag name="uchardet">Enable charset discovery via <pkg>app-i18n/uchardet</pkg></flag>
+	</use>
+	<upstream>
+		<bugs-to>https://github.com/wangqr/Aegisub/issues</bugs-to>
+		<remote-id type="github">wangqr/Aegisub</remote-id>
+	</upstream>
+</pkgmetadata>

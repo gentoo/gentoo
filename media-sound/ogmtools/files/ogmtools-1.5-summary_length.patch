@@ -1,0 +1,11 @@
+--- a/ogminfo.c
++++ b/ogminfo.c
+@@ -513,7 +513,7 @@
+               stream->serial, stream->size,
+               (stream->size * 8.0 / 1000.0) / now,
+               (stream->size / 1024.0) / now,
+-              stream->num_packets, now * 1000.0);
++              stream->num_packets, now);
+       stream = stream->next;
+     }
+   }

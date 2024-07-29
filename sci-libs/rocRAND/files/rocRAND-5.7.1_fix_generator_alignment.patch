@@ -1,0 +1,16 @@
+Fix crashes due to unaligned allocations in heap with new of structs when AVX2 or AVX512 is used.
+This patch takes the simplest approach just shifts responsibility to the standard.
+Similar approach in Eigen is named defined as: EIGEN_HAS_CXX17_OVERALIGN.
+
+Upstream bug: https://github.com/ROCmSoftwarePlatform/rocRAND/issues/403
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -119,7 +119,7 @@ endif()
+ option(DISABLE_WERROR "Disable building with Werror" ON)
+ 
+ # Build CXX flags
+-set(CMAKE_CXX_STANDARD 11)
++set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ set(CMAKE_CXX_EXTENSIONS OFF)
+ if(DISABLE_WERROR)

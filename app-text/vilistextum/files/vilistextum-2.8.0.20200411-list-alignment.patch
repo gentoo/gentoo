@@ -1,0 +1,43 @@
+--- a/src/lists.c
++++ b/src/lists.c
+@@ -74,6 +74,7 @@
+ 	}
+ 
+ 	spaces += tab;
++	orderedlist++;
+ #ifdef proc_debug
+ 	printf("start_uls() ende\n");
+ #endif
+@@ -82,6 +83,7 @@
+ void end_uls()
+ {
+ 	spaces -= tab;
++	orderedlist--;
+ 	line_break();
+ 
+ 	if (bullet_style=='%') { bullet_style='$'; }
+--- a/src/text.c
++++ b/src/text.c
+@@ -387,7 +387,11 @@
+ 			}
+ 			i=0;
+ 			while (i<spaces) { zeile_plus_wort(ONESPACE,1,1); i++; }
+-			if (orderedlist>0) { zeile_plus_wort(ONESPACE,1,1); }
++			if (orderedlist>0)
++			{
++				i=(spaces%tab) + 1;
++				while (i>0) { zeile_plus_wort(ONESPACE,1,1); i--; }
++			}
+ 			zeile_plus_wort(wort, wort_len, wort_pos);
+ 		}
+ 		else if (zeilen_len != 0)
+--- a/src/text.h
++++ b/src/text.h
+@@ -27,6 +27,7 @@
+ extern int tab;
+ extern int spaces;
+ extern int quote;
++extern int orderedlist;
+ 
+ void print_zeile();
+ int is_zeile_empty();

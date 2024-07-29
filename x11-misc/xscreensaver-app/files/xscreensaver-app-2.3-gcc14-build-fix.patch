@@ -1,0 +1,12 @@
+Bug: https://bugs.gentoo.org/924177
+--- a/xscreensaver.app.c
++++ b/xscreensaver.app.c
+@@ -116,7 +116,7 @@ void popConfig()
+ 
+ int main(int argc, char **argv)
+ {
+-  unsigned height, width;
++  unsigned short height, width;
+   char *st_command;
+   int status;
+ 

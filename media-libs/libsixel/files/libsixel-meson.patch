@@ -1,0 +1,65 @@
+--- a/meson.build
++++ b/meson.build
+@@ -27,7 +27,7 @@
+     #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+     __attribute__((deprecated)) void test(void) {}
+ ''')
+-  conf_data.set('HAVE_DIAGNOSTIC_DEPRECATED_DECLARATIONS', true)
++  conf_data.set('HAVE_DIAGNOSTIC_DEPRECATED_DECLARATIONS', 1)
+ endif
+ 
+ c_args = [
+@@ -101,24 +101,24 @@
+ python2_installation = pymod.find_installation('python2', required: get_option('python2'))
+ 
+ if get_option('libcurl').enabled() and curl_found.found()
+-  conf_data.set('HAVE_LIBCURL', true)
++  conf_data.set('HAVE_LIBCURL', 1)
+   libsixel_deps += [curl_found]
+ endif
+ 
+-if get_option('jpeg').enabled() and jpeg_found
+-  conf_data.set('HAVE_JPEG', true)
++if get_option('jpeg').enabled() and jpeg_found.found()
++  conf_data.set('HAVE_JPEG', 1)
+   libsixel_deps += [jpeg_found]
+ endif
+ 
+-if get_option('png').enabled() and png_found
+-  conf_data.set('HAVE_PNG', true)
++if get_option('png').enabled() and png_found.found()
++  conf_data.set('HAVE_PNG', 1)
+   libsixel_deps += [png_found]
+ endif
+ 
+ loaders = ['stb-image']
+ 
+ if get_option('gd').enabled() and gd_found.found()
+-  conf_data.set('HAVE_GD', true)
++  conf_data.set('HAVE_GD', 1)
+   libsixel_deps += [gd_found]
+   loaders += ['gd']
+ 
+@@ -132,19 +132,19 @@
+ 
+   foreach f : gd_funcs
+     if cc.has_function(f, dependencies: gd_found)
+-      conf_data.set('HAVE_DECL_@0@'.format(f.to_upper()), true)
++      conf_data.set('HAVE_DECL_@0@'.format(f.to_upper()), 1)
+     endif
+   endforeach
+ endif
+ 
+ if get_option('gdk-pixbuf2').enabled() and gdkpixbuf2_found.found()
+-  conf_data.set('HAVE_GDK_PIXBUF2', true)
++  conf_data.set('HAVE_GDK_PIXBUF2', 1)
+   libsixel_deps += [gdkpixbuf2_found]
+   loaders += ['gdk-pixbuf2']
+ endif
+ 
+ if have_getopt_long
+-  conf_data.set('HAVE_GETOPT_LONG', true)
++  conf_data.set('HAVE_GETOPT_LONG', 1)
+ endif
+ 
+ configure_file(output: 'config.h', configuration: conf_data)

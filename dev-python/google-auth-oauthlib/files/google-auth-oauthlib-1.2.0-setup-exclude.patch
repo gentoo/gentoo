@@ -1,0 +1,25 @@
+From dffa74bf7cb25d4e7759b4d0cded68eabfaaf33b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 8 Jan 2024 15:58:00 +0100
+Subject: [PATCH] fix: do not include docs/conf.py & scripts in wheel
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index ea9796a..430db0c 100644
+--- a/setup.py
++++ b/setup.py
+@@ -37,7 +37,7 @@ setup(
+     description="Google Authentication Library",
+     long_description=long_description,
+     url="https://github.com/GoogleCloudPlatform/google-auth-library-python-oauthlib",
+-    packages=find_namespace_packages(exclude=("tests*",)),
++    packages=find_namespace_packages(exclude=("docs*", "scripts*", "tests*",)),
+     install_requires=DEPENDENCIES,
+     extras_require={"tool": TOOL_DEPENDENCIES},
+     entry_points={
+-- 
+2.43.0
+

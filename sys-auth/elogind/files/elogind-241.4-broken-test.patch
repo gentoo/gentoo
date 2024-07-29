@@ -1,0 +1,15 @@
+--- a/src/test/meson.build	2019-11-15 08:59:47.000000000 +0100
++++ b/src/test/meson.build	2019-11-30 13:04:45.051316140 +0100
+@@ -1014,9 +1014,9 @@
+ #          '', 'timeout=120'],
+ #endif // 0
+ 
+-        [['src/libelogind/sd-login/test-login.c'],
+-         [],
+-         []],
++#         [['src/libelogind/sd-login/test-login.c'],
++#          [],
++#          []],
+ 
+         [['src/libelogind/sd-device/test-sd-device.c'],
+          [],

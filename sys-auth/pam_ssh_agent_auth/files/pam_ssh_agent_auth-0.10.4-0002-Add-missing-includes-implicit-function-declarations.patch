@@ -1,0 +1,222 @@
+https://github.com/jbeverly/pam_ssh_agent_auth/pull/41
+
+From 634711a191c1b8be6ea6eb9251ab60a8cb73c6ad Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 30 Sep 2022 20:54:45 +0100
+Subject: [PATCH 2/2] Add missing includes (implicit function declarations)
+
+This fixes building with Clang 16.
+
+Bug: https://bugs.gentoo.org/870721
+Closes: https://github.com/jbeverly/pam_ssh_agent_auth/pull/36
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -388,6 +388,7 @@ case "$host" in
+ 	    [AC_LANG_SOURCE([[
+ #define testmacro foo
+ #define testmacro bar
++#include <stdlib.h>
+ int main(void) { exit(0); }
+ 	    ]])],
+ 	    [ AC_MSG_RESULT(yes) ],
+@@ -500,6 +501,7 @@ int main(void) { exit(0); }
+ 	AC_DEFINE(HAVE_BUNDLE, 1, [Define if your system uses bundles instead of ELF shared objects])
+ 	AC_MSG_CHECKING(if we have working getaddrinfo)
+ 	AC_TRY_RUN([#include <mach-o/dyld.h>
++#include <stdlib.h>
+ int main() { if (NSVersionOfRunTimeLibrary("System") >= (60 << 16))
+ 		exit(0);
+ 	else
+@@ -918,6 +920,7 @@ AC_MSG_CHECKING(compiler and flags for sanity)
+ AC_RUN_IFELSE(
+ 	[AC_LANG_SOURCE([
+ #include <stdio.h>
++#include <stdlib.h>
+ int main(){exit(0);}
+ 	])],
+ 	[	AC_MSG_RESULT(yes) ],
+@@ -944,6 +947,7 @@ AC_CHECK_FUNCS(dirname, [AC_CHECK_HEADERS(libgen.h)] ,[
+ 				[AC_LANG_SOURCE([[
+ #include <libgen.h>
+ #include <string.h>
++#include <stdlib.h>
+ 
+ int main(int argc, char **argv) {
+     char *s, buf[32];
+@@ -1102,6 +1106,7 @@ AC_RUN_IFELSE(
+ 	[AC_LANG_SOURCE([[
+ #include <sys/types.h>
+ #include <dirent.h>
++#include <stdlib.h>
+ int main(void){struct dirent d;exit(sizeof(d.d_name)<=sizeof(char));}
+ 	]])],
+ 	[AC_MSG_RESULT(yes)],
+@@ -1384,6 +1389,7 @@ if test "x$ac_cv_func_snprintf" = "xyes" ; then
+ 	AC_RUN_IFELSE(
+ 		[AC_LANG_SOURCE([[
+ #include <stdio.h>
++#include <stdlib.h>
+ int main(void){char b[5];snprintf(b,5,"123456789");exit(b[4]!='\0');}
+ 		]])],
+ 		[AC_MSG_RESULT(yes)],
+@@ -1406,8 +1412,10 @@ if test "x$ac_cv_func_asprintf" != "xyes" && \
+ 	AC_RUN_IFELSE(
+ 		[AC_LANG_SOURCE([[
+ #include <sys/types.h>
++#include <stddef.h>
+ #include <stdio.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ int x_snprintf(char *str,size_t count,const char *fmt,...)
+ {
+@@ -1435,7 +1443,8 @@ fi
+ # check that the fmt argument is const char * or just char *.
+ # This is only useful for when BROKEN_SNPRINTF
+ AC_MSG_CHECKING([whether snprintf can declare const char *fmt])
+-AC_COMPILE_IFELSE([AC_LANG_SOURCE([[#include <stdio.h>
++AC_COMPILE_IFELSE([AC_LANG_SOURCE([[#include <stddef.h>
++	   #include <stdio.h>
+ 	   int snprintf(char *a, size_t b, const char *c, ...) { return 0; }
+ 	   int main(void) { snprintf(0, 0, 0); } 
+     ]])],
+@@ -1496,6 +1505,7 @@ if test ! -z "$check_for_openpty_ctty_bug"; then
+ #include <sys/fcntl.h>
+ #include <sys/types.h>
+ #include <sys/wait.h>
++#include <stdlib.h>
+ 
+ int
+ main()
+@@ -1543,6 +1553,7 @@ if test "x$ac_cv_func_getaddrinfo" = "xyes" && \
+ 	AC_RUN_IFELSE(
+ 		[AC_LANG_SOURCE([[
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <sys/socket.h>
+ #include <netdb.h>
+ #include <errno.h>
+@@ -1615,6 +1626,7 @@ if test "x$ac_cv_func_getaddrinfo" = "xyes" && \
+ 	AC_RUN_IFELSE(
+ 		[AC_LANG_SOURCE([[
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <sys/socket.h>
+ #include <netdb.h>
+ #include <errno.h>
+@@ -1677,6 +1689,7 @@ if test "x$check_for_conflicting_getspnam" = "x1"; then
+ 	AC_COMPILE_IFELSE([AC_LANG_SOURCE(
+ 		[
+ #include <shadow.h>
++#include <stdlib.h>
+ int main(void) {exit(0);}
+ 		])],
+ 		[
+@@ -1750,6 +1763,7 @@ AC_RUN_IFELSE(
+ 	[AC_LANG_SOURCE([[
+ #include <stdio.h>
+ #include <string.h>
++#include <stdlib.h>
+ #include <openssl/opensslv.h>
+ #define DATA "conftest.sslincver"
+ int main(void) {
+@@ -1785,6 +1799,7 @@ AC_RUN_IFELSE(
+ 	[AC_LANG_SOURCE([[
+ #include <stdio.h>
+ #include <string.h>
++#include <stdlib.h>
+ #include <openssl/opensslv.h>
+ #include <openssl/crypto.h>
+ #define DATA "conftest.ssllibver"
+@@ -1828,7 +1843,9 @@ AC_MSG_CHECKING([whether OpenSSL's headers match the library])
+ AC_RUN_IFELSE(
+ 	[AC_LANG_SOURCE([[
+ #include <string.h>
++#include <openssl/crypto.h>
+ #include <openssl/opensslv.h>
++#include <stdlib.h>
+ int main(void) { exit(SSLeay() == OPENSSL_VERSION_NUMBER ? 0 : 1); }
+ 	]])],
+ 	[
+@@ -1907,6 +1924,7 @@ AC_MSG_CHECKING([whether OpenSSL has crippled AES support])
+ AC_LINK_IFELSE(
+ 	[AC_LANG_SOURCE([[
+ #include <string.h>
++#include <stdlib.h>
+ #include <openssl/evp.h>
+ int main(void) { exit(EVP_aes_192_cbc() == NULL || EVP_aes_256_cbc() == NULL);}
+ 	]])],
+@@ -1952,6 +1970,7 @@ AC_MSG_CHECKING([whether OpenSSL's PRNG is internally seeded])
+ AC_RUN_IFELSE(
+ 	[AC_LANG_SOURCE([[
+ #include <string.h>
++#include <stdlib.h>
+ #include <openssl/rand.h>
+ int main(void) { exit(RAND_status() == 1 ? 0 : 1); }
+ 	]])],
+@@ -2123,6 +2142,7 @@ if test -z "$have_llong_max"; then
+ 	AC_RUN_IFELSE(
+ 		[AC_LANG_SOURCE([[
+ #include <stdio.h>
++#include <stdlib.h>
+ /* Why is this so damn hard? */
+ #ifdef __GNUC__
+ # undef __GNUC__
+@@ -2597,6 +2617,7 @@ dnl test snprintf (broken on SCO w/gcc)
+ 		[AC_LANG_SOURCE([[
+ #include <stdio.h>
+ #include <string.h>
++#include <stdlib.h>
+ #ifdef HAVE_SNPRINTF
+ int main(void)
+ {
+@@ -2740,6 +2761,7 @@ AC_CACHE_CHECK([for msg_accrights field in struct msghdr],
+ 		ac_cv_have_accrights_in_msghdr, [
+ 	AC_COMPILE_IFELSE([AC_LANG_SOURCE(
+ 		[
++#include <stdlib.h>
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <sys/uio.h>
+@@ -2767,6 +2789,7 @@ AC_CACHE_CHECK([for msg_control field in struct msghdr],
+ 		ac_cv_have_control_in_msghdr, [
+ 	AC_COMPILE_IFELSE([AC_LANG_SOURCE(
+ 		[
++#include <stdlib.h>
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <sys/uio.h>
+@@ -2791,7 +2814,9 @@ if test "x$ac_cv_have_control_in_msghdr" = "xyes" ; then
+ fi
+ 
+ AC_CACHE_CHECK([if libc defines __progname], ac_cv_libc_defines___progname, [
+-	AC_TRY_LINK([],
++	AC_TRY_LINK([
++#include <stdio.h>
++],
+ 		[ extern char *__progname; printf("%s", __progname); ],
+ 		[ ac_cv_libc_defines___progname="yes" ],
+ 		[ ac_cv_libc_defines___progname="no" ]
+@@ -2871,7 +2896,9 @@ if test "x$ac_cv_have_getopt_optreset" = "xyes" ; then
+ fi
+ 
+ AC_CACHE_CHECK([if libc defines sys_errlist], ac_cv_libc_defines_sys_errlist, [
+-	AC_TRY_LINK([],
++	AC_TRY_LINK([
++#include <stdio.h>
++],
+ 		[ extern const char *const sys_errlist[]; printf("%s", sys_errlist[0]);],
+ 		[ ac_cv_libc_defines_sys_errlist="yes" ],
+ 		[ ac_cv_libc_defines_sys_errlist="no" ]
+@@ -2884,7 +2911,9 @@ fi
+ 
+ 
+ AC_CACHE_CHECK([if libc defines sys_nerr], ac_cv_libc_defines_sys_nerr, [
+-	AC_TRY_LINK([],
++	AC_TRY_LINK([
++#include <stdio.h>
++],
+ 		[ extern int sys_nerr; printf("%i", sys_nerr);],
+ 		[ ac_cv_libc_defines_sys_nerr="yes" ],
+ 		[ ac_cv_libc_defines_sys_nerr="no" ]

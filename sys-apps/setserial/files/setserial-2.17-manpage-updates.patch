@@ -1,0 +1,36 @@
+--- a/setserial.8.in
++++ b/setserial.8.in
+@@ -34,7 +34,7 @@
+ program should be used.  Typically it is called from an
+-.I rc.serial
++.I serial
+ script, which is usually run out of 
+-.IR /etc/rc.local .
++.IR /etc/init.d/ .
+ 
+ The
+ .I device
+@@ -78,7 +78,7 @@
+ .B \-b
+ When reporting the configuration of a serial device, print a summary
+ of the device's configuration, which might be suitable for printing
+-during the bootup process, during the /etc/rc script.
++during the bootup process, in the /etc/init.d/serial script.
+ .TP
+ .B \-G
+ Print out the configuration information of the serial port in a form which
+@@ -504,12 +504,9 @@
+ CAUTION: Configuring a serial port to use an incorrect I/O port 
+ can lock up your machine.
+ .SH FILES
+-.BR /etc/rc.local
+-.BR /etc/rc.serial
++.BR /etc/serial.conf
+ .SH "SEE ALSO"
+-.BR tty (4),
+-.BR ttys (4),
+-kernel/chr_drv/serial.c
++.BR tty (4)
+ .SH AUTHOR
+ The original version of setserial was written by Rick Sladkey
+ (jrs@world.std.com), and was modified by Michael K. Johnson

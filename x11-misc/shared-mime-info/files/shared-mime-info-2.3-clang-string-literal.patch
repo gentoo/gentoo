@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/915859
+https://gitlab.freedesktop.org/xdg/shared-mime-info/-/commit/12a3a6b1141c704fc594379af1808bb9008d588c
+
+From 12a3a6b1141c704fc594379af1808bb9008d588c Mon Sep 17 00:00:00 2001
+From: Tobias Mayer <tobim@fastmail.fm>
+Date: Sun, 8 Oct 2023 00:11:49 +0200
+Subject: [PATCH] Fix string literal concatenation
+
+Clang is not able to disambiguate between multiple string literatals
+and C++11 user defined literals. Spaces help.
+---
+ src/update-mime-database.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/update-mime-database.cpp b/src/update-mime-database.cpp
+index 733ba063..29d82a9d 100644
+--- a/src/update-mime-database.cpp
++++ b/src/update-mime-database.cpp
+@@ -2158,7 +2158,7 @@ static void check_in_path_xdg_data(const char *mime_path)
+ 
+ 	env = getenv("XDG_DATA_DIRS");
+ 	if (!env)
+-		env = "/usr/local/share/"PATH_SEPARATOR"/usr/share/";
++		env = "/usr/local/share/" PATH_SEPARATOR "/usr/share/";
+ 	dirs = g_strsplit(env, PATH_SEPARATOR, 0);
+ 	g_return_if_fail(dirs != NULL);
+ 	for (n = 0; dirs[n]; n++)
+@@ -2170,7 +2170,7 @@ static void check_in_path_xdg_data(const char *mime_path)
+ 		dirs[n] = g_build_filename(g_get_home_dir(), ".local",
+ 						"share", NULL);
+ 	n++;
+-	
++
+ 	for (i = 0; i < n; i++)
+ 	{
+ 		if (stat(dirs[i], &dir_info) == 0 &&
+-- 
+GitLab

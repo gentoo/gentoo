@@ -1,0 +1,12 @@
+# Copyright 2019-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2021-12-31)
+# PyPy3 target is not ready for stable.
+python_targets_pypy3
+python_single_target_pypy3
+
+# Sam James <sam@gentoo.org> (2021-11-14)
+# media-libs/openexr is not marked stable on ppc64
+# (it's broken on BE and it's more convenient to keep it at ~arch here for now)
+openexr

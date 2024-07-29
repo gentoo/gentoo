@@ -1,0 +1,15 @@
+[Unit]
+Description=Zabbix server
+Documentation=https://zabbix.com/manuals
+After=syslog.target syslog.service network.target network-online.target postgresql.service
+After=postgresql-9.6.service postgresql-10.service 
+After=postgresql-11.service postgresql-12.service
+
+
+[Service]
+User=zabbix
+Group=zabbix
+ExecStart=/usr/sbin/zabbix_server --foreground --config /etc/zabbix/zabbix_server.conf
+
+[Install]
+WantedBy=multi-user.target

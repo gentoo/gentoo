@@ -1,0 +1,13 @@
+diff --git a/other/CMakeLists.txt b/other/CMakeLists.txt
+index 22b10574..66f2e483 100644
+--- a/other/CMakeLists.txt
++++ b/other/CMakeLists.txt
+@@ -1,7 +1,3 @@
+ add_subdirectory(appdata)
+ 
+-add_custom_target(manpage)
+-add_custom_command(TARGET manpage PRE_BUILD
+-        COMMAND gzip -c -9 -n "${PROJECT_SOURCE_DIR}/other/antimicrox.1" > "antimicrox.1.gz" VERBATIM
+-        )
+-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/antimicrox.1.gz" DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/man/man1")
++install(FILES "${PROJECT_SOURCE_DIR}/other/antimicrox.1" DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/man/man1")

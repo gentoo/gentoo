@@ -1,0 +1,27 @@
+--- a/Makefile
++++ b/Makefile
+@@ -5,21 +5,19 @@
+ # See the file LICENSE for license terms.
+ #
+ 
+-DEFS=-DBUILTIN_INCLUDE1=\"/usr/local/share/picasm/include\"
++CPPFLAGS += -DBUILTIN_INCLUDE1=\"/usr/share/picasm/include\"
+ #DEFS=-DBUILTIN_INCLUDE1=\"/home/trossi/bin/picasm-include\"
+ 
+-CC = gcc
+-CFLAGS = -Wall -Wshadow -W -Werror -O2 $(DEFS)
++CFLAGS += -Wall -Wshadow -W
+ RM = /bin/rm -f
+ 
+ VERSION=114
+ 
+-OBJS = picasm.o config.o token.o symtab.o expr.o \
++OBJS = config.o token.o symtab.o expr.o \
+        pic12bit.o pic14bit.o pic16bit.o \
+        util.o
+ 
+ picasm: $(OBJS)
+-	$(CC) $(CFLAGS) $(OBJS) -o $@
+ 
+ clean:
+ 	$(RM) picasm *.o examples/*.hex examples/*.lst

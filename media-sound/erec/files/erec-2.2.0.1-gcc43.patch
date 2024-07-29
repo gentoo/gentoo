@@ -1,0 +1,11 @@
+diff -Nurpa erec-2.2.0.1.orig/argh/argh.cc erec-2.2.0.1/argh/argh.cc
+--- erec-2.2.0.1.orig/argh/argh.cc	2008-12-17 03:48:35.000000000 +0300
++++ erec-2.2.0.1/argh/argh.cc	2008-12-17 03:49:19.000000000 +0300
+@@ -1,6 +1,7 @@
+ #include <map>
+ #include <cstdio>
+ #include <cstring>
++#include <cstdlib>
+ 
+ using std::strchr;
+ using std::sprintf;

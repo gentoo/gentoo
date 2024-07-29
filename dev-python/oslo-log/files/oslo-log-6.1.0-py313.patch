@@ -1,0 +1,25 @@
+From 1bd9d229824c16f521fb1d3ba306fe8cb2a5aada Mon Sep 17 00:00:00 2001
+From: Michał Górny <mgorny@gentoo.org>
+Date: Wed, 12 Jun 2024 11:22:48 +0200
+Subject: [PATCH] Fix test time mocking for Python 3.13
+
+Fix test_rfc5424_isotime_format_no_microseconds() to mock time.time_ns(),
+logging uses that function rather than tiem.time() in logging.
+
+Change-Id: I0cc429e2ea8ee7fef3b0a5662d584dac65d657ad
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+
+diff --git a/oslo_log/tests/unit/test_log.py b/oslo_log/tests/unit/test_log.py
+index d17d20a..0580908 100644
+--- a/oslo_log/tests/unit/test_log.py
++++ b/oslo_log/tests/unit/test_log.py
+@@ -991,6 +991,8 @@
+                 get_fake_datetime(
+                     datetime.datetime(2015, 12, 16, 13, 54, 26)))
+     @mock.patch("time.time", new=mock.Mock(return_value=1450274066.000000))
++    @mock.patch("time.time_ns",
++                new=mock.Mock(return_value=1450274066000000000))
+     @mock.patch("dateutil.tz.tzlocal", new=mock.Mock(return_value=tz.tzutc()))
+     def test_rfc5424_isotime_format_no_microseconds(self):
+         self.config(logging_default_format_string="%(isotime)s %(message)s")

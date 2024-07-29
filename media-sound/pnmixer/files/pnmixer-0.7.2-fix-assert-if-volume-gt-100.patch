@@ -1,0 +1,37 @@
+From 7eed10b2bd4650dadbc2c98f435d2bb10de7f75e Mon Sep 17 00:00:00 2001
+From: Arnaud Rebillout <elboulangero@gmail.com>
+Date: Mon, 19 Jun 2017 20:02:01 +0700
+Subject: [PATCH] Clip volume between 0 and 100 (thx to yunake) #162
+
+---
+ src/audio.c | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/src/audio.c b/src/audio.c
+index 750f20f..06b245c 100644
+--- a/src/audio.c
++++ b/src/audio.c
+@@ -437,11 +437,22 @@ gdouble
+ audio_get_volume(Audio *audio)
+ {
+ 	AlsaCard *soundcard = audio->soundcard;
++	gdouble volume;
+ 
+ 	if (!soundcard)
+ 		return 0;
+ 
+-	return alsa_card_get_volume(soundcard);
++	volume = alsa_card_get_volume(soundcard);
++
++	/* With PulseAudio, it is perfectly possible for the volume to go above 100%.
++	 * Since we don't really expect or handle that, let's clip it right now.
++	 */
++	if (volume < 0)
++		volume = 0;
++	if (volume > 100)
++		volume = 100;
++
++	return volume;
+ }
+ 
+ /**

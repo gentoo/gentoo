@@ -1,0 +1,17 @@
+Don't add the libdir to the search path or bake the libdir as a runpath when
+doing a native build because we always install to a standard location.
+
+Bug: https://bugs.gentoo.org/385775
+
+diff -Naur a/apr-config.in b/apr-config.in
+--- a/apr-config.in	2023-03-13 10:29:04.000000000 +0000
++++ b/apr-config.in	2024-05-14 10:23:28.429984195 +0100
+@@ -233,7 +233,7 @@
+         ### avoid using -L if libdir is a "standard" location like /usr/lib
+         # Since the user is specifying they are linking with libtool, we
+         # *know* that -R will be recognized by libtool.
+-        flags="$flags -L$libdir -R$libdir -l${APR_LIBNAME}"
++        flags="$flags -l${APR_LIBNAME}"
+     elif test "$location" = "crosscompile"; then
+         flags="$flags  -L${APR_TARGET_DIR}/$libdir  -l${APR_LIBNAME}"
+     else

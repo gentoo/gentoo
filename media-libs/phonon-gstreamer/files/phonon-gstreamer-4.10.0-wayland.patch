@@ -1,0 +1,46 @@
+From bbbb160f30a394655cff9398d17961142388b0f2 Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Wed, 17 Nov 2021 15:20:08 +0000
+Subject: [PATCH] Only create window handles for actual windows
+
+winId() creates a platform window for the given widget. This makes sense
+for the topmost widget in a tree, we can't assume the parent widget is
+the topmost widget.
+
+Doing this on XCB is confusing and wrong, but apparently harmless. Doing
+this on wayland causes issues as we promote the parent window to a
+subsurface but never show that window leaving things in a bizarre
+corrupt state that leads to content not updating.
+
+BUG: 445196
+---
+ gstreamer/videowidget.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/gstreamer/videowidget.cpp b/gstreamer/videowidget.cpp
+index bd27b21f..83fa9b9e 100644
+--- a/gstreamer/videowidget.cpp
++++ b/gstreamer/videowidget.cpp
+@@ -158,7 +158,7 @@ void VideoWidget::setupVideoBin()
+                 gst_object_unref(videopad);
+                 QWidget *parentWidget = qobject_cast<QWidget*>(parent());
+                 if (parentWidget) {
+-                    parentWidget->winId();  // Due to some existing issues with alien in 4.4,
++                    parentWidget->window()->winId();  // Due to some existing issues with alien in 4.4,
+                                             // we must currently force the creation of a parent widget.
+                 }
+                 m_isValid = true; //initialization ok, accept input
+@@ -171,8 +171,8 @@ void VideoWidget::setupVideoBin()
+         gst_object_unref(videopad);
+         QWidget *parentWidget = qobject_cast<QWidget*>(parent());
+         if (parentWidget) {
+-            parentWidget->winId();  // Due to some existing issues with alien in 4.4,
+-                                    // we must currently force the creation of a parent widget.
++            parentWidget->window()->winId();  // Due to some existing issues with alien in 4.4,
++                                    // we must currently force the creation of a parent widget's window
+         }
+         m_isValid = true; //initialization ok, accept input
+     }
+-- 
+GitLab
+

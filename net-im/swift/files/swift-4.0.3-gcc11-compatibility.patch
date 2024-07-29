@@ -1,0 +1,13 @@
+diff --git a/Swift/Controllers/ShowProfileController.h b/Swift/Controllers/ShowProfileController.h
+index 0d01ba1a0..5dc7197ff 100644
+--- a/Swift/Controllers/ShowProfileController.h
++++ b/Swift/Controllers/ShowProfileController.h
+@@ -18,6 +18,8 @@
+ 
+ #include <Swift/Controllers/UIEvents/UIEvent.h>
+ 
++#include <map>
++
+ namespace Swift {
+     class VCardManager;
+     class ProfileWindow;

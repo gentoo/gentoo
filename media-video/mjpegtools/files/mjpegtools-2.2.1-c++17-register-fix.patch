@@ -1,0 +1,17 @@
+--- a/utils/fastintfns.h
++++ b/utils/fastintfns.h
+@@ -2,12 +2,12 @@
+  *
+  * WARNING: Assumes 2's complement arithmetic.
+  */
+-static inline int intmax( register int x, register int y )
++static inline int intmax( int x, int y )
+ {
+ 	return x < y ? y : x;
+ }
+ 
+-static inline int intmin( register int x, register int y )
++static inline int intmin( int x, int y )
+ {
+ 	return x < y ? x : y;
+ }

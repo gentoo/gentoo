@@ -1,0 +1,29 @@
+--- trunk/Source/DKNotificationCenter.m	2016/03/26 05:10:00	39611
++++ trunk/Source/DKNotificationCenter.m	2016/03/28 06:16:41	39612
+@@ -519,7 +519,7 @@
+   {
+     return nil;
+   }
+-  observer = GS_GC_HIDE(anObserver);
++  observer = anObserver;
+   selector = aSelector;
+ 
+   // Make sure the necessary components are there and that the selector takes a
+@@ -535,7 +535,7 @@
+ 
+ - (id)observer
+ {
+-  return GS_GC_UNHIDE(observer);
++  return observer;
+ }
+ 
+ - (SEL)selector
+@@ -561,7 +561,7 @@
+   // callback and need to avoid the reentrancy. We do this by scheduling
+   // delivery of the notification on the run loop.
+   [[NSRunLoop currentRunLoop] performSelector: selector
+-                                      target: GS_GC_UNHIDE(observer)
++                                      target: observer
+ 				    argument: notification
+ 				       order: UINT_MAX
+ 				       modes: [NSArray arrayWithObject: NSDefaultRunLoopMode]];

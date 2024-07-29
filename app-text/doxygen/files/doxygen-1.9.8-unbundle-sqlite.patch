@@ -1,0 +1,119 @@
+https://github.com/doxygen/doxygen/issues/10263
+https://github.com/doxygen/doxygen/commit/28609fecd41d885e54fa170e499a0e5b55def2c2
+
+From 28609fecd41d885e54fa170e499a0e5b55def2c2 Mon Sep 17 00:00:00 2001
+From: Dimitri van Heesch <doxygen@gmail.com>
+Date: Mon, 28 Aug 2023 20:19:16 +0200
+Subject: [PATCH] issue #10263 please add a use_sys_sqlite3 config option
+
+---
+ CMakeLists.txt          |  6 +++++-
+ cmake/FindSQLite3.cmake | 38 ++++++++++++++++++++++++++++++++++++++
+ deps/CMakeLists.txt     |  4 +++-
+ src/CMakeLists.txt      |  4 +++-
+ 4 files changed, 49 insertions(+), 3 deletions(-)
+ create mode 100644 cmake/FindSQLite3.cmake
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4957c34c24d..31e53cc8440 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -25,7 +25,8 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+     option(use_libc++  "Use libc++ as C++ standard library." ON)
+ endif()
+ option(use_libclang    "Add support for libclang parsing." OFF)
+-option(use_sys_spdlog  "Use system spdlog instead of bundled." OFF)
++option(use_sys_spdlog  "Use system spdlog library instead of the one bundled." OFF)
++option(use_sys_sqlite3 "Use system sqlite3 library instead of the one bundled." OFF)
+ option(static_libclang "Link to a statically compiled version of LLVM/libclang." OFF)
+ option(win_static      "Link with /MT in stead of /MD on windows" OFF)
+ option(enable_console  "Enable that executables on Windows get the CONSOLE bit set for the doxywizard executable [development]"  OFF)
+@@ -67,6 +68,9 @@ endif()
+ if (use_sys_spdlog)
+         find_package(spdlog CONFIG REQUIRED)
+ endif()
++if (use_sys_sqlite3)
++        find_package(SQLite3 REQUIRED)
++endif()
+ if (build_wizard)
+     if (force_qt STREQUAL "Qt6")
+         if (CMAKE_SYSTEM MATCHES "Darwin")
+diff --git a/cmake/FindSQLite3.cmake b/cmake/FindSQLite3.cmake
+new file mode 100644
+index 00000000000..7c21de223a7
+--- /dev/null
++++ b/cmake/FindSQLite3.cmake
+@@ -0,0 +1,38 @@
++# Copyright (C) 2007-2009 LuaDist.
++# Created by Peter Kapec <kapecp@gmail.com>
++# Redistribution and use of this file is allowed according to the terms of the MIT license.
++# For details see the COPYRIGHT file distributed with LuaDist.
++#	Note:
++#		Searching headers and libraries is very simple and is NOT as powerful as scripts
++#		distributed with CMake, because LuaDist defines directories to search for.
++#		Everyone is encouraged to contact the author with improvements. Maybe this file
++#		becomes part of CMake distribution sometimes.
++
++# - Find sqlite3
++# Find the native SQLite3 headers and libraries.
++#
++# SQLite3_INCLUDE_DIRS	- where to find sqlite3.h, etc.
++# SQLite3_LIBRARIES	- List of libraries when using sqlite.
++# SQLite3_FOUND	- True if sqlite found.
++
++# Look for the header file.
++FIND_PATH(SQLite3_INCLUDE_DIR NAMES sqlite3.h)
++
++# Look for the library.
++FIND_LIBRARY(SQLite3_LIBRARY NAMES sqlite3)
++
++# Handle the QUIETLY and REQUIRED arguments and set SQLITE3_FOUND to TRUE if all listed variables are TRUE.
++INCLUDE(FindPackageHandleStandardArgs)
++FIND_PACKAGE_HANDLE_STANDARD_ARGS(SQLite3 DEFAULT_MSG SQLite3_LIBRARY SQLite3_INCLUDE_DIR)
++
++# Copy the results to the output variables.
++IF(SQLite3_FOUND)
++	SET(SQLite3_LIBRARIES ${SQLite3_LIBRARY})
++	SET(SQLite3_INCLUDE_DIRS ${SQLite3_INCLUDE_DIR})
++ELSE(SQLite3_FOUND)
++	SET(SQLite3_LIBRARIES)
++	SET(SQLite3_INCLUDE_DIRS)
++ENDIF(SQLite3_FOUND)
++
++MARK_AS_ADVANCED(SQLite3_INCLUDE_DIRS SQLite3_LIBRARIES)
++
+diff --git a/deps/CMakeLists.txt b/deps/CMakeLists.txt
+index a689b4a7018..eb716417f22 100644
+--- a/deps/CMakeLists.txt
++++ b/deps/CMakeLists.txt
+@@ -4,4 +4,6 @@ add_subdirectory(libmscgen)
+ if (NOT use_sys_spdlog)
+ 	add_subdirectory(spdlog)
+ endif()
+-add_subdirectory(sqlite3)
++if (NOT use_sys_sqlite3)
++        add_subdirectory(sqlite3)
++endif()
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 78a55c3f2bf..02c52240e5b 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -6,7 +6,6 @@ include_directories(
+     ${PROJECT_SOURCE_DIR}/deps/libmd5
+     ${PROJECT_SOURCE_DIR}/deps/liblodepng
+     ${PROJECT_SOURCE_DIR}/deps/libmscgen
+-    ${PROJECT_SOURCE_DIR}/deps/sqlite3
+     ${PROJECT_SOURCE_DIR}/libversion
+     ${PROJECT_SOURCE_DIR}/libxml
+     ${PROJECT_SOURCE_DIR}/vhdlparser
+@@ -18,6 +17,9 @@ include_directories(
+ if (NOT use_sys_spdlog)
+     include_directories(${PROJECT_SOURCE_DIR}/deps/spdlog/include)
+ endif()
++if (NOT use_sys_sqlite)
++    include_directories(${PROJECT_SOURCE_DIR}/deps/sqlite3)
++endif()
+ 
+ 
+ file(MAKE_DIRECTORY ${GENERATED_SRC})
+

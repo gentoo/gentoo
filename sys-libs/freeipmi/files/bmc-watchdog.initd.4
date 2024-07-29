@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="condrestart"
+description_condrestart="Restart the service only if started already"
+
+command="/usr/sbin/${SVCNAME}"
+command_args="${OPTIONS}"
+pidfile=/var/run/$SVCNAME.pid
+
+depend() {
+	need localmount
+	use logger
+}
+
+condrestart() {
+	service_started && restart
+}

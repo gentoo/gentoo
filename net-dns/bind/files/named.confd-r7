@@ -1,0 +1,48 @@
+# Set various named options here.
+#
+#OPTIONS=""
+
+# Set this to the number of processors you want bind to use.
+# Leave this unchanged if you want bind to automatically detect the number
+#CPU="1"
+
+# If you wish to run bind in a chroot:
+# 1) un-comment the CHROOT= assignment, below. You may use
+#    a different chroot directory but MAKE SURE it's empty.
+# 2) run: emerge --config =<bind-version>
+#
+#CHROOT="/chroot/dns"
+
+# Uncomment to enable binmount of /usr/share/GeoIP
+#CHROOT_GEOIP="1"
+
+# Uncomment the line below to avoid that the init script mounts the needed paths
+# into the chroot directory.
+# You have to copy all needed config files by hand if you say CHROOT_NOMOUNT="1".
+#CHROOT_NOMOUNT="1"
+
+# Uncomment this option if you have setup your own chroot environment and you
+# don't want/need the chroot consistency check
+#CHROOT_NOCHECK=1
+
+# Default pid file location
+PIDFILE="${CHROOT}/run/named/named.pid"
+
+# Scheduling priority: 19 is the lowest and -20 is the highest.
+# Default: 0
+#NAMED_NICELEVEL="0"
+
+# Uncomment rc_named_use/rc_named_after for the database you need.
+# Its necessary to ensure the database backend will be started before named.
+
+# MySQL
+#rc_named_use="mysql"
+#rc_named_after="mysql"
+
+# PostgreSQL
+#rc_named_use="pg_autovacuum postgresql"
+#rc_named_after="pg_autovacuum postgresql"
+
+# LDAP
+#rc_named_use="ldap"
+#rc_named_after="ldap"

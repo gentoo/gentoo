@@ -1,0 +1,12 @@
+diff -Naru Rivet-3.1.6.orig/src/Tools/binreloc.c Rivet-3.1.6/src/Tools/binreloc.c
+--- a/src/Tools/binreloc.c	2022-06-26 23:23:44.359890803 +0200
++++ b/src/Tools/binreloc.c	2022-06-26 23:24:36.962045655 +0200
+@@ -215,7 +215,7 @@
+ 			break;
+ 
+ 		/* Sanity check. */
+-		if (strchr (line, '/') == NULL)
++		if (strstr (line, " r-xp ") == NULL || strchr (line, '/') == NULL)
+ 		/* With binutils > 2.30 (const void *) "" is placed in "r--p" area of memory
+          In general, for the mechanism of detection it doesn't really matter where your symbol is,
+          therefore, check for strstr (line, " r-xp ") == NULL is removed */

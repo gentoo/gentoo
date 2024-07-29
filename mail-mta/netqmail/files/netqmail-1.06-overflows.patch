@@ -1,0 +1,223 @@
+From e8a1e037afc8729bd65d4bda36dedf444f301c0f Mon Sep 17 00:00:00 2001
+From: Rolf Eike Beer <eike@sf-mail.de>
+Date: Mon, 11 May 2020 18:30:13 +0200
+Subject: [PATCH 4/4] fix additional length overflows
+
+---
+ Makefile        |  6 +++---
+ alloc.c         | 21 ++++++++++++++-------
+ qmail-local.c   |  3 ++-
+ qmail-pop3d.c   |  3 ++-
+ quote.c         | 10 +++++++++-
+ stralloc_catb.c |  8 +++++++-
+ stralloc_opyb.c |  8 +++++++-
+ substdo.c       |  4 ++--
+ 8 files changed, 46 insertions(+), 17 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 0f0e31a..4b592c6 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1673,7 +1673,7 @@ qsutil.h
+ 	./compile qsutil.c
+ 
+ quote.o: \
+-compile quote.c stralloc.h gen_alloc.h str.h quote.h
++compile quote.c stralloc.h gen_alloc.h str.h quote.h error.h
+ 	./compile quote.c
+ 
+ rcpthosts.o: \
+@@ -1965,7 +1965,7 @@ compile stralloc_cat.c byte.h stralloc.h gen_alloc.h
+ 	./compile stralloc_cat.c
+ 
+ stralloc_catb.o: \
+-compile stralloc_catb.c stralloc.h gen_alloc.h byte.h
++compile stralloc_catb.c stralloc.h gen_alloc.h byte.h error.h
+ 	./compile stralloc_catb.c
+ 
+ stralloc_cats.o: \
+@@ -1982,7 +1982,7 @@ gen_allocdefs.h
+ 	./compile stralloc_eady.c
+ 
+ stralloc_opyb.o: \
+-compile stralloc_opyb.c stralloc.h gen_alloc.h byte.h
++compile stralloc_opyb.c stralloc.h gen_alloc.h byte.h error.h
+ 	./compile stralloc_opyb.c
+ 
+ stralloc_opys.o: \
+diff --git a/alloc.c b/alloc.c
+index c661453..3ab5f6f 100644
+--- a/alloc.c
++++ b/alloc.c
+@@ -1,7 +1,6 @@
++#include <stdlib.h>
+ #include "alloc.h"
+ #include "error.h"
+-extern char *malloc();
+-extern void free();
+ 
+ #define ALIGNMENT 16 /* XXX: assuming that this alignment is enough */
+ #define SPACE 4096 /* must be multiple of ALIGNMENT */
+@@ -11,15 +10,23 @@ static aligned realspace[SPACE / ALIGNMENT];
+ #define space ((char *) realspace)
+ static unsigned int avail = SPACE; /* multiple of ALIGNMENT; 0<=avail<=SPACE */
+ 
++static char *m_alloc(unsigned int n)
++{
++  char *x = malloc(n);
++  if (!x) errno = error_nomem;
++  return x;
++}
++
+ /*@null@*//*@out@*/char *alloc(n)
+ unsigned int n;
+ {
+-  char *x;
+-  n = ALIGNMENT + n - (n & (ALIGNMENT - 1)); /* XXX: could overflow */
++  if (n >= SPACE)
++    return m_alloc(n);
++  /* Round it up to the next multiple of alignment. Could overflow if n is
++   * close to 2**32, but by the check above this is already ruled out. */
++  n = ALIGNMENT + n - (n & (ALIGNMENT - 1));
+   if (n <= avail) { avail -= n; return space + avail; }
+-  x = malloc(n);
+-  if (!x) errno = error_nomem;
+-  return x;
++  return m_alloc(n);
+ }
+ 
+ void alloc_free(x)
+diff --git a/qmail-local.c b/qmail-local.c
+index 6fec288..f5e33fd 100644
+--- a/qmail-local.c
++++ b/qmail-local.c
+@@ -1,5 +1,6 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <stdlib.h>
+ #include "readwrite.h"
+ #include "sig.h"
+ #include "env.h"
+@@ -633,7 +634,7 @@ char **argv;
+      i = j + 1;
+     }
+ 
+- recips = (char **) alloc((numforward + 1) * sizeof(char *));
++ recips = (char **) calloc(numforward + 1, sizeof(char *));
+  if (!recips) temp_nomem();
+  numforward = 0;
+ 
+diff --git a/qmail-pop3d.c b/qmail-pop3d.c
+index 0ca4f9c..1916433 100644
+--- a/qmail-pop3d.c
++++ b/qmail-pop3d.c
+@@ -1,5 +1,6 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <stdlib.h>
+ #include "commands.h"
+ #include "sig.h"
+ #include "getln.h"
+@@ -131,7 +132,7 @@ void getlist()
+   if (maildir_scan(&pq,&filenames,1,1) == -1) die_scan();
+  
+   numm = pq.p ? pq.len : 0;
+-  m = (struct message *) alloc(numm * sizeof(struct message));
++  m = (struct message *) calloc(numm, sizeof(struct message));
+   if (!m) die_nomem();
+  
+   for (i = 0;i < numm;++i) {
+diff --git a/quote.c b/quote.c
+index 659cfcd..73b7214 100644
+--- a/quote.c
++++ b/quote.c
+@@ -1,3 +1,4 @@
++#include "error.h"
+ #include "stralloc.h"
+ #include "str.h"
+ #include "quote.h"
+@@ -23,8 +24,15 @@ stralloc *sain;
+  char ch;
+  int i;
+  int j;
++ unsigned int nlen;
+ 
+- if (!stralloc_ready(saout,sain->len * 2 + 2)) return 0;
++ /* make sure the size calculation below does not overflow */
++ if (__builtin_mul_overflow(sain->len, 2, &nlen) ||
++     __builtin_add_overflow(nlen, 2, &nlen)) {
++   errno = error_nomem;
++   return 0;
++ }
++ if (!stralloc_ready(saout,nlen)) return 0;
+  j = 0;
+  saout->s[j++] = '"';
+  for (i = 0;i < sain->len;++i)
+diff --git a/stralloc_catb.c b/stralloc_catb.c
+index 67dbcc0..a315810 100644
+--- a/stralloc_catb.c
++++ b/stralloc_catb.c
+@@ -1,13 +1,19 @@
+ #include "stralloc.h"
+ #include "byte.h"
++#include "error.h"
+ 
+ int stralloc_catb(sa,s,n)
+ stralloc *sa;
+ char *s;
+ unsigned int n;
+ {
++  unsigned int i;
+   if (!sa->s) return stralloc_copyb(sa,s,n);
+-  if (!stralloc_readyplus(sa,n + 1)) return 0;
++  if (__builtin_add_overflow(n, 1, &i)) {
++    errno = error_nomem;
++    return 0;
++  }
++  if (!stralloc_readyplus(sa,i)) return 0;
+   byte_copy(sa->s + sa->len,n,s);
+   sa->len += n;
+   sa->s[sa->len] = 'Z'; /* ``offensive programming'' */
+diff --git a/stralloc_opyb.c b/stralloc_opyb.c
+index ac258b3..8a6f305 100644
+--- a/stralloc_opyb.c
++++ b/stralloc_opyb.c
+@@ -1,12 +1,18 @@
+ #include "stralloc.h"
+ #include "byte.h"
++#include "error.h"
+ 
+ int stralloc_copyb(sa,s,n)
+ stralloc *sa;
+ char *s;
+ unsigned int n;
+ {
+-  if (!stralloc_ready(sa,n + 1)) return 0;
++  unsigned int i;
++  if (__builtin_add_overflow(n, 1, &i)) {
++    errno = error_nomem;
++    return 0;
++  }
++  if (!stralloc_ready(sa,i)) return 0;
+   byte_copy(sa->s,n,s);
+   sa->len = n;
+   sa->s[n] = 'Z'; /* ``offensive programming'' */
+diff --git a/substdo.c b/substdo.c
+index bccf0d6..ad7232a 100644
+--- a/substdo.c
++++ b/substdo.c
+@@ -38,9 +38,9 @@ register substdio *s;
+ int substdio_bput(s,buf,len)
+ register substdio *s;
+ register char *buf;
+-register int len;
++register unsigned int len;
+ {
+-  register int n;
++  register unsigned int n;
+  
+   while (len > (n = s->n - s->p)) {
+     byte_copy(s->x + s->p,n,buf); s->p += n; buf += n; len -= n;
+-- 
+2.26.1
+

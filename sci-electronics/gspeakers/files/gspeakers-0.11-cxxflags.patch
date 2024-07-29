@@ -1,0 +1,24 @@
+From 849257811990d18789e6ce995423fcb5327f986e Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 14 Aug 2021 22:03:56 +0200
+Subject: [PATCH] Fix CXXFLAGS
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index cece557..7cb0f11 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -40,5 +40,5 @@ cellrendererpopup.h cellrendererpopup.cc \
+ crossoverimageview.h crossoverimageview.cc \
+ gspeakersfilechooser.h gspeakersfilechooser.cc
+ 
+-CXXFLAGS = @CXXFLAGS@ $(DEPS_CFLAGS) -Wall -O0
++CXXFLAGS = @CXXFLAGS@ $(DEPS_CFLAGS) -Wall
+ LDADD = $(DEPS_LIBS)
+-- 
+2.32.0
+

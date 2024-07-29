@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ionen@gentoo.org</email>
+		<name>Ionen Wolkens</name>
+	</maintainer>
+	<use>
+		<flag name="freeimage">Use <pkg>media-libs/freeimage</pkg> for additional image support</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourcehut">~exec64/imv</remote-id>
+	</upstream>
+</pkgmetadata>

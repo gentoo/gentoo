@@ -1,0 +1,26 @@
+From 4ba53b95a6a45f08f5d3436a4a3ba4f9a97146e2 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Mon, 17 Apr 2023 00:24:32 +0200
+Subject: [PATCH] Give ntpd a chance at re-opening the logfile as ntp:ntp after
+ rotation
+
+https://bugs.gentoo.org/873514
+---
+ etc/logrotate-config.ntpd | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/etc/logrotate-config.ntpd b/etc/logrotate-config.ntpd
+index b64998e..9144e57 100644
+--- a/etc/logrotate-config.ntpd
++++ b/etc/logrotate-config.ntpd
+@@ -5,6 +5,7 @@
+ 
+ /var/log/ntpd.log {
+     monthly
++    create 640 ntp root
+     missingok
+     postrotate
+       /usr/bin/killall -HUP ntpd
+-- 
+2.40.0
+

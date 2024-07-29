@@ -1,0 +1,14 @@
+[Unit]
+Description=Userspace Xbox 360 Controller driver
+BindsTo=sys-subsystem-usb-xbox-controller0.device
+After=sys-subsystem-usb-xbox-controller0.device
+
+[Service]
+BusName=org.seul.Xboxdrv
+ExecStart=/usr/bin/xboxdrv --silent --daemon
+KillSignal=SIGINT
+# xboxdrv can not stop gracefully if controller gets unplugged
+TimeoutStopSec=2
+
+[Install]
+WantedBy=multi-user.target

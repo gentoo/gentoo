@@ -1,0 +1,9 @@
+[Unit]
+Description=Hostapd IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/hostapd /etc/hostapd/hostapd.conf
+
+[Install]
+WantedBy=multi-user.target

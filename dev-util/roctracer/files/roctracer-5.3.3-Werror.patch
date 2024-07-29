@@ -1,0 +1,15 @@
+Should not use the aggressive -Werror flag.
+
+Index: roctracer-rocm-5.3.3/CMakeLists.txt
+===================================================================
+--- roctracer-rocm-5.3.3.orig/CMakeLists.txt
++++ roctracer-rocm-5.3.3/CMakeLists.txt
+@@ -37,7 +37,7 @@ endif()
+ 
+ set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+-add_compile_options(-Wall -Werror)
++add_compile_options(-Wall)
+ 
+ set(THREADS_PREFER_PTHREAD_FLAG ON)
+ 

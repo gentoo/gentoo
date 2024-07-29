@@ -1,0 +1,37 @@
+https://mail.kde.org/pipermail/distributions/2024-July/001513.html
+https://invent.kde.org/utilities/ark/-/commit/85c5e26f581cf011638a53e62b92e1da8fd55fcd
+
+[sam: Rebase for fuzz in the logline.]
+
+From 85c5e26f581cf011638a53e62b92e1da8fd55fcd Mon Sep 17 00:00:00 2001
+From: Elvis Angelaccio <elvis.angelaccio@kde.org>
+Date: Sat, 22 Jun 2024 17:54:07 +0200
+Subject: [PATCH] cliinterface: adapt to behavior change in QTemporaryDir
+
+Qt 6.7 changed the behavior of QTemporaryDir (see commit 935562a77b in
+qtbase.git) and now QTemporaryDir::path() returns a relative path rather
+than an absolute one.
+
+We were relying on the old behavior which ensured that the extract temp
+dir would always auto-delete itself, regardless of the ark CWD.
+
+This is no longer working, because now when the temp dir gets deleted,
+its destructor tries to delete a relative path, but meanwhile ark has
+already changed the CWD and so that path does not exist.
+
+The fix is to create the QTemporaryDir with an absolute path (but still
+as hidden folder in the CWD), so we get back the old behavior (the
+returned QTemporaryDir::path() will again be absolute).
+
+BUG: 487229
+--- a/kerfuffle/cliinterface.cpp
++++ b/kerfuffle/cliinterface.cpp
+@@ -96,7 +96,7 @@ bool CliInterface::extractFiles(const QList<Archive::Entry *> &files, const QStr
+ 
+     if (useTmpExtractDir) {
+         // Create an hidden temp folder in the current directory.
+-        m_extractTempDir.reset(new QTemporaryDir(QStringLiteral(".%1-").arg(QCoreApplication::applicationName())));
++        m_extractTempDir.reset(new QTemporaryDir(QStringLiteral("%1/.%2-").arg(QDir::currentPath(), QCoreApplication::applicationName())));
+ 
+         qCDebug(ARK) << "Using temporary extraction dir:" << m_extractTempDir->path();
+         if (!m_extractTempDir->isValid()) {

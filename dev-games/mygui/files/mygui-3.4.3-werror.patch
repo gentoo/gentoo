@@ -1,0 +1,12 @@
+Remove -Werror
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -174,7 +174,6 @@ include(Dependencies)
+ 
+ # Set compiler specific build flags
+ if (CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "Intel")
+-	add_compile_options(-Werror)
+ 	if (NOT MYGUI_HIGH_LEVEL_WARNINGS)
+ 		add_compile_options(-w)
+ 	else ()

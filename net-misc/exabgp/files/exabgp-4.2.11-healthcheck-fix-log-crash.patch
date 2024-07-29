@@ -1,0 +1,13 @@
+diff --git a/lib/exabgp/logger.py b/lib/exabgp/logger.py
+index 41a1cf28..f87785a2 100644
+--- a/lib/exabgp/logger.py
++++ b/lib/exabgp/logger.py
+@@ -339,7 +339,7 @@ class Logger(object):
+         else:
+             src = source
+ 
+-        log = self._option.get(src, True) and getattr(syslog, 'LOG_%s' % level) <= self.level
++        log = self._option.get(src, True) and getattr(syslog, 'LOG_%s' % level, logging.handlers.SysLogHandler.LOG_DAEMON) <= self.level
+ 
+         if not log:
+             return

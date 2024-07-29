@@ -1,0 +1,10 @@
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -25,6 +25,7 @@
+ #include <stdlib.h>
+ 
+ #ifdef HAVE_GTK
++#undef signals // Collides with GTK symbols
+ #include <gtk/gtk.h>
+ #endif
+ 

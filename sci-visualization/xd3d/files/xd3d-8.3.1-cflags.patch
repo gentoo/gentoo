@@ -1,0 +1,41 @@
+ src/various/Makefile |   16 ++++++++--------
+ 1 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/src/various/Makefile b/src/various/Makefile
+index 7188b2a..80f47ec 100644
+--- a/src/various/Makefile
++++ b/src/various/Makefile
+@@ -3,25 +3,25 @@ include ../../RULES
+ all :; make clair clairc3d create_c3d obscur obscurc3d tradavoir translation txt2avoir
+ 
+ clair : clair.f $(LIBRAIRIE) ;\
+-$(LINK) $(BINDIR)/clair $(INCF) clair.f $(LIBRAIRIE) $(LINKOPTX)
++$(LINK) $(BINDIR)/clair $(FCFLAGS) $(INCF) clair.f $(LIBRAIRIE) $(LINKOPTX)
+ 
+ clairc3d : clairc3d.f $(LIBRAIRIE) ;\
+-$(LINK) $(BINDIR)/clairc3d $(INCF) clairc3d.f $(LIBRAIRIE) $(LINKOPTX)
++$(LINK) $(BINDIR)/clairc3d $(FCFLAGS) $(INCF) clairc3d.f $(LIBRAIRIE) $(LINKOPTX)
+ 
+ create_c3d : create_c3d.f $(LIBRAIRIE) ;\
+-$(LINK) $(BINDIR)/create_c3d $(INCF) create_c3d.f $(LIBRAIRIE) $(LINKOPTX)
++$(LINK) $(BINDIR)/create_c3d $(FCFLAGS) $(INCF) create_c3d.f $(LIBRAIRIE) $(LINKOPTX)
+ 
+ obscur : obscur.f $(LIBRAIRIE) ;\
+-$(LINK) $(BINDIR)/obscur $(INCF) obscur.f $(LIBRAIRIE) $(LINKOPTX)
++$(LINK) $(BINDIR)/obscur $(FCFLAGS) $(INCF) obscur.f $(LIBRAIRIE) $(LINKOPTX)
+ 
+ obscurc3d : obscurc3d.f $(LIBRAIRIE) ;\
+-$(LINK) $(BINDIR)/obscurc3d $(INCF) obscurc3d.f $(LIBRAIRIE) $(LINKOPTX)
++$(LINK) $(BINDIR)/obscurc3d $(FCFLAGS) $(INCF) obscurc3d.f $(LIBRAIRIE) $(LINKOPTX)
+ 
+ tradavoir : tradavoir.f $(LIBRAIRIE) ;\
+-$(LINK) $(BINDIR)/tradavoir $(INCF) tradavoir.f $(LIBRAIRIE) $(LINKOPTX)
++$(LINK) $(BINDIR)/tradavoir $(FCFLAGS) $(INCF) tradavoir.f $(LIBRAIRIE) $(LINKOPTX)
+ 
+ translation : translation.f $(LIBRAIRIE) ;\
+-$(LINK) $(BINDIR)/translation $(INCF) translation.f $(LIBRAIRIE) $(LINKOPTX)
++$(LINK) $(BINDIR)/translation $(FCFLAGS) $(INCF) translation.f $(LIBRAIRIE) $(LINKOPTX)
+ 
+ txt2avoir : txt2avoir.f $(LIBRAIRIE) ;\
+-$(LINK) $(BINDIR)/txt2avoir $(INCF) txt2avoir.f $(LIBRAIRIE) $(LINKOPTX)
++$(LINK) $(BINDIR)/txt2avoir $(FCFLAGS) $(INCF) txt2avoir.f $(LIBRAIRIE) $(LINKOPTX)

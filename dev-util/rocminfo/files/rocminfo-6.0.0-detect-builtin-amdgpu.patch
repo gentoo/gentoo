@@ -1,0 +1,33 @@
+https://github.com/ROCm/rocminfo/pull/65
+From: YiyangWu <xgreenlandforwyy@gmail.com>
+Date: Wed, 18 Aug 2021 21:05:20 +0800
+Subject: [PATCH] Check /sys/module/amdgpu for ROCk instead of lsmod
+
+Closes: #42
+
+Signed-off-by: YiyangWu <xgreenlandforwyy@gmail.com>
+---
+ rocminfo.cc | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/rocminfo.cc b/rocminfo.cc
+index 8ed9111..78b3afd 100755
+--- a/rocminfo.cc
++++ b/rocminfo.cc
+@@ -1063,9 +1063,14 @@ int CheckInitialState(void) {
+       return -1;
+     }
+   } else {
+-    printf("%sROCk module is NOT loaded, possibly no GPU devices%s\n",
++    int module_dir;
++    module_dir = open("/sys/module/amdgpu", O_DIRECTORY);
++    if (module_dir < 0) {
++      printf("%sROCk module is NOT loaded, possibly no GPU devices%s\n",
+                                                           COL_RED, COL_RESET);
+-    return -1;
++      return -1;
++	}
++	close(module_dir);
+   }
+ 
+   // Check if user belongs to the group for /dev/kfd (e.g. "video" or

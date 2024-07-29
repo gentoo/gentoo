@@ -1,0 +1,25 @@
+Don't clobber toolchain defaults.
+
+(TODO: Fix upstream's GCC_FORTIFY_SOURCE macro or just replace it with the
+autoconf-archive one (AX_ADD_FORTIFY_SOURCE)).
+
+https://bugs.gentoo.org/895522
+--- a/configure.ac
++++ b/configure.ac
+@@ -37,7 +37,6 @@ if test -n "$GCC"; then
+    CFLAGS="$CFLAGS -Wall -Wshadow -Wwrite-strings"
+    GCC_WEXTRA
+    GCC_STACK_PROTECT_CC
+-   GCC_FORTIFY_SOURCE
+    GCC_FORMAT_SECURITY
+ dnl Uncomment the line below to compile with additional warnings enabled.
+ dnl CFLAGS="$CFLAGS -pedantic -Wpointer-arith -Wcast-qual -Wcast-align -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs"
+@@ -49,6 +48,8 @@ else
+ fi
+ AC_PROG_INSTALL
+ 
++AX_ADD_FORTIFY_SOURCE
++
+ dnl Checks for libraries.
+ dnl Solaris 10 needs -lnsl for gethostbyname() and -lsocket for socket().
+ dnl Linux, {Free,Open,Net,Dragonfly}BSD and MacOS X do not.

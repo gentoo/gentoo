@@ -1,0 +1,12 @@
+Index: comgr/src/comgr-env.h
+===================================================================
+--- comgr.orig/src/comgr-env.h
++++ comgr/src/comgr-env.h
+@@ -37,6 +37,7 @@
+ #define COMGR_ENV_H
+ 
+ #include "llvm/ADT/StringRef.h"
++#include "llvm/ADT/Optional.h"
+ 
+ namespace COMGR {
+ namespace env {

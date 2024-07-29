@@ -1,0 +1,10 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d5b7c98..3a9a280 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -68,4 +68,4 @@ target_link_libraries(jack-keyboard -lm)
+ install(TARGETS jack-keyboard RUNTIME DESTINATION bin)
+ install(FILES pixmaps/jack-keyboard.png DESTINATION share/pixmaps)
+ install(FILES src/jack-keyboard.desktop DESTINATION share/applications)
+-install(FILES man/jack-keyboard.1 DESTINATION man/man1)
++install(FILES man/jack-keyboard.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)

@@ -1,0 +1,8 @@
+# Copyright 2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2023-10-06)
+# Require ABIs matching MULTILIB_ABIS in gcc dependencies -- otherwise
+# sys-devel/gcc[multilib] (which is forced) will fail late in build.
+dev-libs/libatomic_ops abi_mips_n32 abi_mips_n64 abi_mips_o32
+dev-libs/boehm-gc abi_mips_n32 abi_mips_n64 abi_mips_o32

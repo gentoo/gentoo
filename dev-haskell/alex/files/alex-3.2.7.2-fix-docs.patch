@@ -1,0 +1,46 @@
+From e461c3b0935a05a169aa22a1b113c08f8989eea6 Mon Sep 17 00:00:00 2001
+From: hololeap <hololeap@users.noreply.github.com>
+Date: Sat, 8 Apr 2023 12:18:36 -0600
+Subject: [PATCH 1/1] Fix documentation
+
+contributing.rst refers to a non-existant 'bug-fixes' doc
+
+conf.py refers to non-existant '_static' directory
+
+Signed-off-by: hololeap <hololeap@users.noreply.github.com>
+---
+ doc/conf.py          | 2 +-
+ doc/contributing.rst | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/doc/conf.py b/doc/conf.py
+index ea3862d..718b0e6 100644
+--- a/doc/conf.py
++++ b/doc/conf.py
+@@ -49,7 +49,7 @@ html_theme = 'sphinx_rtd_theme'
+ # Add any paths that contain custom static files (such as style sheets) here,
+ # relative to this directory. They are copied after the builtin static files,
+ # so a file named "default.css" will overwrite the builtin "default.css".
+-html_static_path = ['_static']
++#html_static_path = ['_static']
+ 
+ # The name of the Pygments (syntax highlighting) style to use.
+ pygments_style = 'sphinx'
+diff --git a/doc/contributing.rst b/doc/contributing.rst
+index 6df2865..e889b90 100644
+--- a/doc/contributing.rst
++++ b/doc/contributing.rst
+@@ -8,8 +8,8 @@ Contributing to Alex
+ Source Code Repository
+ ----------------------
+ 
+-Alex is hosted on `GitHub <https://github.com/haskell/alex>`__.
+-As previously discussed in `bug-reports`_, we use the built-in `GitHub issue tracker <https://github.com/haskell/alex/issues>`__ for Alex.
++Alex is hosted on `GitHub <https://github.com/haskell/alex>`__,
++and we use the built-in `GitHub issue tracker <https://github.com/haskell/alex/issues>`__ for Alex.
+ We also use `GitHub pull requests <https://github.com/haskell/alex/pulls>`__ for managing changes;
+ feel free to submit them!
+ 
+-- 
+2.39.2
+

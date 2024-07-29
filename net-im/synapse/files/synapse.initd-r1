@@ -1,0 +1,10 @@
+#!/sbin/openrc-run
+# Copyright 2022-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="Matrix synapse daemon"
+description=""
+command=/usr/bin/synapse_homeserver
+command_args="--daemonize --config-path /etc/synapse/homeserver.yaml"
+command_user="synapse:synapse"
+pidfile=/var/lib/synapse/homeserver.pid

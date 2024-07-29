@@ -1,0 +1,73 @@
+From d2c88317b6042a05c236faf3c09f600337c6379e Mon Sep 17 00:00:00 2001
+From: Jeremy Evans <code@jeremyevans.net>
+Date: Tue, 5 Sep 2023 17:48:00 +0100
+Subject: [PATCH] Fix the Monkey's Audio decoder to work with current Monkey's
+ Audio (Fixes #33)
+
+Using g_utf8_to_utf16 doesn't work because current Monkey's Audio
+expects a different endianness of the multibyte character string.
+Using GetUTF16FromANSI works for compiling only if namedspaced
+correctly, and if namespaced correctly, it cannot link. Use a
+similar approach for building the correct multibyte string.
+
+Remove the DLLEXPORT define, to avoid a warning when including
+the MAC headers.
+
+Tested using the Monkey's Audio 10.20 SDK.
+---
+ src/decoder/dec_mac.cpp | 25 ++++++++++---------------
+ 1 file changed, 10 insertions(+), 15 deletions(-)
+
+diff --git a/src/decoder/dec_mac.cpp b/src/decoder/dec_mac.cpp
+index b007f74..6d4b658 100644
+--- a/src/decoder/dec_mac.cpp
++++ b/src/decoder/dec_mac.cpp
+@@ -27,14 +27,9 @@
+ #include <glib.h>
+ 
+ 
+-/* expand this to nothing so there's no error when including MACLib.h */
+-/* -- talkin' about cross-platform libraries? */
+-#define DLLEXPORT
+-
+ #include "../undef_ac_pkg.h"
+ #include <MAC/All.h>
+ #include <MAC/MACLib.h>
+-#include <MAC/CharacterHelper.h>
+ #include "../undef_ac_pkg.h"
+ #include <config.h>	/* re-establish undefined autoconf macros */
+ 
+@@ -48,7 +43,6 @@
+ 
+ extern size_t sample_size;
+ 
+-
+ #define BLOCKS_PER_READ 2048
+ 
+ 
+@@ -176,15 +170,16 @@ mac_decoder_open(decoder_t * dec, char * filename) {
+ 
+ 
+ 	int ret = 0;
+-#ifdef __OpenBSD__
+-        wchar_t * pUTF16 = GetUTF16FromANSI(filename);
+-        pdecompress = CreateIAPEDecompress(pUTF16, &ret);
+-        free(pUTF16);
+-#else
+-        gunichar2 * pUTF16 = g_utf8_to_utf16(filename, -1, NULL, NULL, NULL);
+-        pdecompress = CreateIAPEDecompress((wchar_t *)pUTF16, &ret, FALSE, FALSE, FALSE);
+-        g_free(pUTF16);
+-#endif
++        int filename_len = strlen(filename);
++        int i;
++        APE::str_utfn * filename_utf16 = new APE::str_utfn [static_cast<size_t>(filename_len) + 1];
++
++        for (i = 0; i < filename_len; i++)
++            filename_utf16[i] = (APE::str_utfn)(APE::str_utf8)filename[i];
++        filename_utf16[i] = 0;
++
++        pdecompress = CreateIAPEDecompress(filename_utf16, &ret, FALSE, FALSE, FALSE);
++        delete [] filename_utf16;
+ 
+         if (!pdecompress || ret != ERROR_SUCCESS) {
+                 return DECODER_OPEN_BADLIB;

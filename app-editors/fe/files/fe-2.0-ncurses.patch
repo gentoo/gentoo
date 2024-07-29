@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/818415
+
+--- fe-2.0/configure.in
++++ fe-2.0/configure.in
+@@ -55,19 +55,6 @@
+ AC_CHECK_FUNCS(strdup)
+ AC_CHECK_FUNCS(strndup)
+ 
+-AC_CHECK_LIB(ncursesw, get_wch, [have_utf8_ncurses=yes; LIBS="-lncursesw $LIBS"])
+-if test "$have_utf8_ncurses" = yes
+-then
+-  AC_DEFINE(HAVE_UTF8_NCURSES)
+-  AC_CHECK_HEADERS(ncurses/ncurses.h,have_ncurses_ncurses_h=yes)
+-  if test "$have_ncurses_ncurses_h" != yes
+-  then
+-    AC_CHECK_HEADERS(ncurses.h,have_ncurses_h=yes)
+-  fi
+-fi
+-
+-if test "$have_utf8_ncurses" != yes
+-then
+ AC_CHECK_LIB(ncurses, get_wch, [have_utf8_ncurses=yes; LIBS="-lncurses $LIBS"])
+ if test "$have_utf8_ncurses" = yes
+ then
+@@ -78,7 +65,6 @@
+     AC_CHECK_HEADERS(ncurses.h,have_ncurses_h=yes)
+   fi
+ fi
+-fi
+ 
+ if test "$have_utf8_ncurses" != yes
+ then

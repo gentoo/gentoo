@@ -1,0 +1,24 @@
+Bug: https://bugs.gentoo.org/900687
+Upstream patch: https://sourceforge.net/p/avarice/patches/41/
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -97,7 +97,7 @@
+ 
+ # Checks for header files.
+ AC_HEADER_STDC
+-AC_CHECK_HEADERS([arpa/inet.h fcntl.h netdb.h netinet/in.h stdlib.h string.h sys/socket.h sys/time.h termios.h unistd.h])
++AC_CHECK_HEADERS([arpa/inet.h fcntl.h netdb.h netinet/in.h stdlib.h string.h sys/socket.h sys/stat.h sys/time.h termios.h unistd.h])
+ 
+ AC_CHECK_HEADERS([bfd.h], , [ac_found_bfd_h=no])
+ 
+@@ -142,6 +142,9 @@
+ AC_MSG_CHECKING([whether libbfd requires libdl])
+ AC_LINK_IFELSE(
+   [AC_LANG_SOURCE([#include <bfd.h>
++   #ifndef bfd_get_section_name
++   extern bfd_get_section_name(bfd *abfd, const char *name);
++   #endif
+   bfd *file;
+   int main(void) {
+     bfd_init();

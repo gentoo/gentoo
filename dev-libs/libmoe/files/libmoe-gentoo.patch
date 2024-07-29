@@ -1,0 +1,39 @@
+--- a/Makefile
++++ b/Makefile
+@@ -52,8 +52,8 @@
+ INSTBIN=mbconv${EXT}
+ 
+ DEBUG=
+-CF=${DEBUG} -O2 -Wall -fpic -I.
+-LF=-shared -Wl,-soname,${DEST}.so.${VER}.${RELEASE}
++CF=${DEBUG} -O2 -Wall -fpic -I. ${CFLAGS}
++LF=-shared -Wl,-soname,${DEST}.so.${VER}.${RELEASE} ${LDFLAGS}
+ CC=gcc
+ CPP=gcc -E
+ LD=gcc
+@@ -72,7 +72,7 @@
+ all: ${INSTLIBA} mbconv mbconv.man
+ 
+ mbconv: mbconv.c ${ALL}
+-	${CC} ${CF} -o $@ $< -L. -lmoe
++	${CC} ${CF} ${LDFLAGS} -o $@ $< -L. -lmoe
+ 
+ 
+ ${DEST}.so: ${DEST}.so.${VER}.${RELEASE}
+@@ -116,7 +116,7 @@
+ 	./mk_btri <$< >$@-new && mv $@-new $@
+ 
+ mk_btri: btri.c btri.h altmalloc.o
+-	${CC} ${CF} -DMAIN -o $@ $< altmalloc.o
++	${CC} ${CF} ${LDFLAGS} -DMAIN -o $@ $< altmalloc.o
+ 
+ mbconv.man: mbconv.pod
+ 	pod2man --section=${MANSECT} --center=' ' $< >$@
+--- a/altmalloc.c
++++ b/altmalloc.c
+@@ -1,3 +1,5 @@
++#include <string.h>
++
+ #include "altmalloc.h"
+ 
+ alt_allocater_t alt_malloc = malloc;

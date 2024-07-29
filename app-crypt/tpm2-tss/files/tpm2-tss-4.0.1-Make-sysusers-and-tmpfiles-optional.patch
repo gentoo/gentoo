@@ -1,0 +1,50 @@
+From 75f53cf7eab591870ce735203995d01d2f577187 Mon Sep 17 00:00:00 2001
+From: Christopher Byrne <salah.coronya@gmail.com>
+Date: Tue, 13 Jun 2023 21:40:56 -0500
+Subject: [PATCH] configure.ac: Make sysusers and tmpfiles optional
+
+Signed-off-by: Christopher Byrne <salah.coronya@gmail.com>
+---
+ Makefile.am  | 6 +++++-
+ configure.ac | 4 ++--
+ 2 files changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 2c81cfa9..98965fa7 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -563,10 +563,14 @@ fapi-config.json: dist/fapi-config.json.in
+ 		-e 's|[@]sysmeasurements@|$(sysmeasurements)|g' \
+ 		< "$<" > "$@"
+ 
++if SYSD_SYSUSERS
+ sysusers_DATA = dist/sysusers.d/tpm2-tss.conf
+-tmpfiles_DATA = tpm2-tss-fapi.conf
++endif
+ 
++if SYSD_TMPFILES
++tmpfiles_DATA = tpm2-tss-fapi.conf
+ CLEANFILES += tpm2-tss-fapi.conf
++endif
+ 
+ # We have to do this ourselves, in order to get absolute paths
+ tpm2-tss-fapi.conf: dist/tmpfiles.d/tpm2-tss-fapi.conf.in
+diff --git a/configure.ac b/configure.ac
+index b6550278..2d478147 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -550,9 +550,9 @@ AS_IF([test "x$enable_integration" = "xyes" && test "x$enable_self_generated_cer
+ 
+ # Check for systemd helper tools used by make install
+ AC_CHECK_PROG(systemd_sysusers, systemd-sysusers, yes)
+-AM_CONDITIONAL(SYSD_SYSUSERS, test "x$systemd_sysusers" = "xyes")
++AM_CONDITIONAL([SYSD_SYSUSERS], [test "x$systemd_sysusers" = "xyes" && test "x$sysusersdir" != "xno"])
+ AC_CHECK_PROG(systemd_tmpfiles, systemd-tmpfiles, yes)
+-AM_CONDITIONAL(SYSD_TMPFILES, test "x$systemd_tmpfiles" = "xyes")
++AM_CONDITIONAL([SYSD_TMPFILES], [test "x$systemd_tmpfiles" = "xyes" && test "x$tmpfilesdir" != "xno"])
+ 
+ # Check all tools used by make install
+ AS_IF([test "$HOSTOS" = "Linux" && test "x$systemd_sysusers" != "xyes"],
+-- 
+2.39.3
+

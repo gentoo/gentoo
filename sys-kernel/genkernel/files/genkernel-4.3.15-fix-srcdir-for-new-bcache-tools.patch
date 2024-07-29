@@ -1,0 +1,26 @@
+From f973903cea8d161893b29b4fb4114561a6aa5674 Mon Sep 17 00:00:00 2001
+From: Ben Kohler <bkohler@gentoo.org>
+Date: Wed, 22 May 2024 10:14:32 -0500
+Subject: [PATCH] defaults/software.sh: fix srcdir for new bcache-tools
+
+Signed-off-by: Ben Kohler <bkohler@gentoo.org>
+---
+ defaults/software.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/defaults/software.sh b/defaults/software.sh
+index 01c504b..42004f3 100644
+--- a/defaults/software.sh
++++ b/defaults/software.sh
+@@ -13,7 +13,7 @@ GKPKG_BCACHE_TOOLS_PN="bcache-tools"
+ GKPKG_BCACHE_TOOLS_PV="${GKPKG_BCACHE_TOOLS_PV:-${VERSION_BCACHE_TOOLS}}"
+ GKPKG_BCACHE_TOOLS_DEPS="util-linux eudev"
+ GKPKG_BCACHE_TOOLS_SRCTAR="${GKPKG_BCACHE_TOOLS_SRCTAR:-${DISTDIR}/bcache-tools-${GKPKG_BCACHE_TOOLS_PV}.tar.gz}"
+-GKPKG_BCACHE_TOOLS_SRCDIR="${GKPKG_BCACHE_TOOLS_SRCDIR:-bcache-tools-399021549984ad27bf4a13ae85e458833fe003d7}"
++GKPKG_BCACHE_TOOLS_SRCDIR="${GKPKG_BCACHE_TOOLS_SRCDIR:-a5e3753516bd39c431def86c8dfec8a9cea1ddd4}"
+ GKPKG_BCACHE_TOOLS_BINPKG="${GKPKG_BCACHE_TOOLS_BINPKG:-%%CACHE%%/bcache-tools-${GKPKG_BCACHE_TOOLS_PV}-%%ARCH%%.tar.xz}"
+ 
+ GKPKG_BOOST_PN="boost"
+-- 
+2.45.1
+

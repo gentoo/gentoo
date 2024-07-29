@@ -1,0 +1,33 @@
+From c49db3ddb772ae7eb5bf6fc291e5e42391c930f8 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sat, 28 Nov 2020 17:28:00 +0100
+Subject: [PATCH] Remove unused includes
+
+---
+ src/iodaemon/stashnotifier.cpp | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/src/iodaemon/stashnotifier.cpp b/src/iodaemon/stashnotifier.cpp
+index 4cfbafc..b427836 100644
+--- a/src/iodaemon/stashnotifier.cpp
++++ b/src/iodaemon/stashnotifier.cpp
+@@ -20,16 +20,8 @@
+ #include "stashnotifier.h"
+ #include "stash_adaptor.h"
+ 
+-#include <QDir>
+-#include <QFile>
+-#include <QFileInfo>
+-#include <QMetaType>
+-#include <QDBusMetaType>
+-
+ #include <KDirWatch>
+ #include <KPluginFactory>
+-#include <KPluginLoader>
+-#include <kdirnotify.h>
+ 
+ K_PLUGIN_FACTORY_WITH_JSON(StashNotifierFactory, "stashnotifier.json", registerPlugin<StashNotifier>();)
+ 
+-- 
+GitLab
+

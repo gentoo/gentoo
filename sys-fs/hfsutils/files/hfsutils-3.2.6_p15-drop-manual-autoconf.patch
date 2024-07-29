@@ -1,0 +1,78 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -197,23 +197,6 @@ dist ::
+ 
+ ###############################################################################
+ 
+-Makefile: config.status
+-	./config.status && touch .stamp/config.h
+-
+-.stamp/config.h: config.status
+-	./config.status && touch .stamp/config.h
+-
+-config.status: .stamp/configure .stamp/config.h.in Makefile.in
+-	./config.status --recheck
+-
+-.stamp/configure: configure.in
+-	autoconf && touch .stamp/configure
+-
+-.stamp/config.h.in: configure.in acconfig.h
+-	autoheader && touch .stamp/config.h.in
+-
+-###############################################################################
+-
+ $(LIBHFS) ::
+ 	cd libhfs && $(MAKE)
+ 
+--- a/libhfs/Makefile.in
++++ b/libhfs/Makefile.in
+@@ -96,23 +96,6 @@ maintainer-clean :: distclean
+ 
+ ###############################################################################
+ 
+-Makefile: config.status
+-	./config.status && touch .stamp/config.h
+-
+-.stamp/config.h: config.status
+-	./config.status && touch .stamp/config.h
+-
+-config.status: .stamp/configure .stamp/config.h.in Makefile.in
+-	./config.status --recheck
+-
+-.stamp/configure: configure.in
+-	autoconf && touch .stamp/configure
+-
+-.stamp/config.h.in: configure.in acconfig.h
+-	autoheader && touch .stamp/config.h.in
+-
+-###############################################################################
+-
+ $(HFSTARGET): $(HFSOBJS)
+ 	$(AR) $@ $(HFSOBJS)
+ 	$(RANLIB) $@
+--- a/librsrc/Makefile.in
++++ b/librsrc/Makefile.in
+@@ -92,23 +92,6 @@ maintainer-clean :: distclean
+ 
+ ###############################################################################
+ 
+-Makefile: config.status
+-	./config.status && touch .stamp/config.h
+-
+-.stamp/config.h: config.status
+-	./config.status && touch .stamp/config.h
+-
+-config.status: .stamp/configure .stamp/config.h.in Makefile.in
+-	./config.status --recheck
+-
+-.stamp/configure: configure.in
+-	autoconf && touch .stamp/configure
+-
+-.stamp/config.h.in: configure.in acconfig.h
+-	autoheader && touch .stamp/config.h.in
+-
+-###############################################################################
+-
+ $(RSRCTARGET): $(RSRCOBJS)
+ 	$(AR) $@ $(RSRCOBJS)
+ 	$(RANLIB) $@

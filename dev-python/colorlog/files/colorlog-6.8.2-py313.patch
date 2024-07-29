@@ -1,0 +1,51 @@
+From 607485def2d60b60c40c0d682574324b47fc30ba Mon Sep 17 00:00:00 2001
+From: Sam Clements <sam@borntyping.co.uk>
+Date: Fri, 26 Jan 2024 14:06:47 +0000
+Subject: [PATCH] Support Python 3.13
+
+---
+ colorlog/wrappers.py     | 17 +++++++++++++----
+ 4 files changed, 17 insertions(+), 6 deletions(-)
+
+diff --git a/colorlog/wrappers.py b/colorlog/wrappers.py
+index 20e3042..63b201a 100644
+--- a/colorlog/wrappers.py
++++ b/colorlog/wrappers.py
+@@ -2,6 +2,7 @@
+ 
+ import functools
+ import logging
++import sys
+ import typing
+ from logging import (
+     CRITICAL,
+@@ -53,8 +54,8 @@ def basicConfig(
+ ) -> None:
+     """Call ``logging.basicConfig`` and override the formatter it creates."""
+     logging.basicConfig(**kwargs)
+-    logging._acquireLock()  # type: ignore
+-    try:
++
++    def _basicConfig():
+         handler = logging.root.handlers[0]
+         handler.setFormatter(
+             colorlog.formatter.ColoredFormatter(
+@@ -67,8 +68,16 @@ def basicConfig(
+                 stream=kwargs.get("stream", None),
+             )
+         )
+-    finally:
+-        logging._releaseLock()  # type: ignore
++
++    if sys.version_info >= (3, 13):
++        with logging._lock:
++            _basicConfig()
++    else:
++        logging._acquireLock()  # type: ignore
++        try:
++            _basicConfig()
++        finally:
++            logging._releaseLock()  # type: ignore
+ 
+ 
+ def ensure_configured(func):

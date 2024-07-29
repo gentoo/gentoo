@@ -1,0 +1,19 @@
+diff --git a/configure.ac b/configure.ac
+index 6b64110b0..1330d3f27 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1878,10 +1878,13 @@ dnl Set empty BINARY_DIR variable for fltk-config.in (CMake compatibility)
+ BINARY_DIR=
+ AC_SUBST([BINARY_DIR])
+ 
++INCLUDE_DIRS="${includedir}"
++AC_SUBST(INCLUDE_DIRS)
++
+ dnl Write all of the files...
+ AC_CONFIG_HEADERS([config.h:configh.in])
+ AC_CONFIG_HEADERS([FL/fl_config.h:fl_config.in])
+-AC_CONFIG_FILES([makeinclude fltk.list fltk-config fltk.spec FL/Makefile])
++AC_CONFIG_FILES([makeinclude fltk.list fltk-config fltk.spec FL/Makefile CMake/FLTKConfig.cmake])
+ AC_OUTPUT
+ 
+ dnl Make sure the fltk-config script is executable...

@@ -1,0 +1,22 @@
+https://github.com/airdcpp/airdcpp-windows/commit/2b1cd3d05774ce8134186bb9977a45cf00aaaef5
+
+From 2b1cd3d05774ce8134186bb9977a45cf00aaaef5 Mon Sep 17 00:00:00 2001
+From: maksis <maksis@adrenaline-network.com>
+Date: Thu, 13 Jun 2024 20:05:17 +0300
+Subject: [PATCH] Add support for miniupnpc 2.2.8
+
+--- a/airdcpp-core/airdcpp/Mapper_MiniUPnPc.cpp
++++ b/airdcpp-core/airdcpp/Mapper_MiniUPnPc.cpp
+@@ -108,7 +108,12 @@ bool Mapper_MiniUPnPc::init() {
+ 	UPNPUrls urls;
+ 	IGDdatas data;
+ 
++#if (MINIUPNPC_API_VERSION >= 18)
++	auto ret = UPNP_GetValidIGD(devices, &urls, &data, 0, 0, nullptr, 0);
++#else
+ 	auto ret = UPNP_GetValidIGD(devices, &urls, &data, 0, 0);
++#endif
++
+ 
+ 	bool ok = ret == 1;
+ 	if(ok) {

@@ -1,0 +1,28 @@
+diff --git a/configure b/configure
+index 0f3c4c9..92c84f3 100755
+--- a/configure
++++ b/configure
+@@ -1368,6 +1368,7 @@ enable_dependency_tracking
+ enable_precomp_headers
+ with_cppunit_prefix
+ with_cppunit_exec_prefix
++enable_tests
+ '
+       ac_precious_vars='build_alias
+ host_alias
+@@ -40955,8 +40956,13 @@ fi
+ 
+   fi
+ 
+-
+-
++# explicit override to enable or disable tests
++if test "${enable_tests+set}" = set; then
++    SUBDIRS="$SUBDIRS tests"
++fi
++if test "${disable_tests+set}" = set; then
++	SUBDIRS="${SUBDIRS% tests}"
++fi
+ 
+ 
+ for subdir in $SUBDIRS; do

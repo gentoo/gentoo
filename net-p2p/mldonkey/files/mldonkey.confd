@@ -1,0 +1,22 @@
+# /etc/conf.d/mldonkey
+# Config file for mldonkey control script
+
+# Change the following vars only if you know
+# what you're doing, there's no checking for
+# invalid data yet!
+
+# owner of mlnet process (don't change, must be existing)
+USER="p2p"
+
+# mldonkey's working dir (must be existing)
+MLDONKEY_DIR="/var/lib/mldonkey"
+
+# logfile (/dev/null for nowhere)
+LOG="/var/log/mldonkey.log"
+
+# set to true, if you have enabled logging to syslog in MLDonkey with
+#     set log_to_syslog true
+USE_LOGGER=false
+
+# nice level, 0<x<19, more nice -> less cpuspeed consumed
+NICE="19"

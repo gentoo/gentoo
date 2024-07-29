@@ -1,0 +1,23 @@
+https://git.marlam.de/gitweb/?p=bino.git;a=commit;h=99a9fe61134ba9ca379d2bddb52e8322cad769e5
+
+From: Sam James <sam@gentoo.org>
+Date: Fri, 2 Sep 2022 02:04:26 +0100
+Subject: [PATCH 2/2] Fix build with GCC 12 and musl (missing <ctime> include)
+
+Fixes build errors like:
+```
+../../src/base/str.h:146:30: error: 'time_t' was not declared in this scope
+  146 |     std::string rfc2822_time(time_t t);
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/src/base/str.h
++++ b/src/base/str.h
+@@ -31,6 +31,7 @@
+ #include <vector>
+ #include <cstdarg>
+ #include <cerrno>
++#include <ctime>
+ 
+ #ifdef __GNUC__
+ # define STR_AFP(a, b) __attribute__ ((format (printf, a, b)))

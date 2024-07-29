@@ -1,0 +1,13 @@
+Fortification is an important security feature.
+--- a/build/cmake/aom_configure.cmake
++++ b/build/cmake/aom_configure.cmake
+@@ -389,9 +389,6 @@ else()
+     add_compiler_flag_if_supported("-Werror")
+   endif()
+ 
+-  if(build_type_lowercase MATCHES "rel")
+-    add_compiler_flag_if_supported("-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0")
+-  endif()
+   add_compiler_flag_if_supported("-D_LARGEFILE_SOURCE")
+   add_compiler_flag_if_supported("-D_FILE_OFFSET_BITS=64")
+ endif()

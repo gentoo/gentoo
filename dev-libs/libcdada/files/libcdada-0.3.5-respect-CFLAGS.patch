@@ -1,0 +1,23 @@
+--- a/test/Makefile.am
++++ b/test/Makefile.am
+@@ -61,7 +61,6 @@ str_test_CPPFLAGS= -I$(top_builddir)/include/ -I$(top_srcdir)/include/
+ str_test_LDADD= -lpthread ../src/libcdada.la
+ 
+ benchmark_SOURCES= benchmark.cc
+-benchmark_CXXFLAGS= -O3
+ benchmark_CPPFLAGS= -I$(top_builddir)/include/ -I$(top_srcdir)/include/
+ benchmark_LDADD= -lpthread ../src/.libs/libcdada.a
+ 
+--- a/config_m4/debug.m4
++++ b/config_m4/debug.m4
+@@ -10,8 +10,8 @@
+ 	AC_DEFINE([DEBUG], [], [Description])
+ 	AC_MSG_RESULT(yes)
+ else
+-	CFLAGS="$CFLAGS -O3" #--compiler-options -fno-strict-aliasing --compiler-options -fno-inline
+-	CXXFLAGS="$CXXFLAGS -O3" #-fomit-frame-pointer"
++	CFLAGS="$CFLAGS" #--compiler-options -fno-strict-aliasing --compiler-options -fno-inline
++	CXXFLAGS="$CXXFLAGS" #-fomit-frame-pointer"
+ 	AC_DEFINE([NDEBUG], [], [Description])
+ 	AC_MSG_RESULT(no)
+ fi

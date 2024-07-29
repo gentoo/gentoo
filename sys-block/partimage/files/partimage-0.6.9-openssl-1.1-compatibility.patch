@@ -1,0 +1,41 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -240,7 +240,7 @@ if test "$SSL" = "yes"; then
+   AC_CHECKING([ for SSL Library and Header files ... ])
+   AC_SEARCH_HEADERS(rsa.h crypto.h x509.h pem.h ssl.h err.h,
+     $SSL_HDR_DIR /usr/include/ssl /usr/include/openssl /usr/include,
+-    [  AC_CHECK_LIB(crypto, CRYPTO_lock, [LIBS="$LIBS -lcrypto"],
++    [  AC_CHECK_LIB(crypto, X509_new, [LIBS="$LIBS -lcrypto"],
+         AC_MSG_ERROR([ Required for SSL Crypto Library not found. ])
+       )
+        AC_CHECK_LIB(ssl, SSL_CTX_new,
+--- a/src/client/netclient.cpp
++++ b/src/client/netclient.cpp
+@@ -43,7 +43,11 @@ CNetClient::CNetClient(bool bMustLogin, bool bUseSSL):CNet()
+     {
+       showDebug(3, "initializing client ssl\n");
+       SSLeay_add_ssl_algorithms();
+-      meth = SSLv2_client_method();
++#if OPENSSL_VERSION_NUMBER < 0x10100000
++      meth = TLSv1_client_method();
++#else
++      meth = TLS_client_method();
++#endif
+       SSL_load_error_strings();
+       ctx = SSL_CTX_new(meth);
+       if (!ctx)
+--- a/src/server/netserver.cpp
++++ b/src/server/netserver.cpp
+@@ -39,7 +39,11 @@ CNetServer::CNetServer(unsigned short int port):CNet()
+     {
+       SSL_load_error_strings();
+       SSLeay_add_ssl_algorithms();
+-      meth = SSLv23_server_method();
++#if OPENSSL_VERSION_NUMBER < 0x10100000
++      meth = TLSv1_server_method();
++#else
++      meth = TLS_server_method();
++#endif
+       ctx = SSL_CTX_new(meth);
+       if (!ctx)
+         {

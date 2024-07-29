@@ -1,0 +1,7 @@
+https://github.com/daleevans/HTML-FormatText-WithLinks-AndTables/pull/2
+
+diff --git a/INSTALL.SKIP b/INSTALL.SKIP
+--- /dev/null
++++ b/INSTALL.SKIP
+@@ -0,0 +1 @@
++\bREADME\.pod$

@@ -1,0 +1,12 @@
+diff -Naur squirrelsh-1.2.6.orig//configure squirrelsh-1.2.6/configure
+--- squirrelsh-1.2.6.orig//configure	2012-03-12 21:45:25.000000000 -0400
++++ squirrelsh-1.2.6/configure	2012-03-12 21:50:36.000000000 -0400
+@@ -1138,7 +1138,7 @@
+ in_INSTALL_EXE="$installer -c -m 0755 \"\$(target)\" \"$bindir/\$(target_name)\""
+ 
+ if [ "$with_pcre" = "local" ] || [ "$with_squirrel" = "local" ]; then
+-	in_LDFLAGS="-L\"$source_dir/lib\""
++	in_LDFLAGS="$in_LDFLAGS -L\"$source_dir/lib\""
+ fi
+ 
+ if [ -n "$pkgconfig" ]; then

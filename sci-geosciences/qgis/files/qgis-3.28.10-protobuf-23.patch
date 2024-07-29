@@ -1,0 +1,27 @@
+From 3754e386b38e84e50fffde5bab00af0512eb62ba Mon Sep 17 00:00:00 2001
+From: Blottiere Paul <blottiere.paul@gmail.com>
+Date: Thu, 27 Jul 2023 06:20:26 +0200
+Subject: [PATCH] Fix build on Arch with recent version of protobuf
+
+---
+ CMakeLists.txt | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e43125b6a39b..7008b2bde246 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -370,7 +370,12 @@ if(WITH_CORE)
+     message (SEND_ERROR "sqlite3 dependency was not found!")
+   endif()
+ 
+-  find_package(Protobuf REQUIRED)   # for decoding of vector tiles in MVT format
++  find_package(Protobuf CONFIG)
++  find_package(Protobuf REQUIRED)
++  if((${Protobuf_VERSION} GREATER 4.23) OR (${Protobuf_VERSION} EQUAL 4.23))
++    set(Protobuf_LITE_LIBRARY protobuf::libprotobuf-lite)
++  endif()
++
+   message(STATUS "Found Protobuf: ${Protobuf_LIBRARIES}")
+   if (NOT Protobuf_PROTOC_EXECUTABLE)
+     message (SEND_ERROR "Protobuf library's 'protoc' tool was not found!")

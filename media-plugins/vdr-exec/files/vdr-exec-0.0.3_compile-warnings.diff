@@ -1,0 +1,266 @@
+fix compile warnings depend on asprintf
+
+Signed-of-by: Joerg Bornkessel <hd_brummy@gentoo.or> (28 Jan 2011)
+
+diff -Naur exec-0.0.3.orig/compat.c exec-0.0.3/compat.c
+--- exec-0.0.3.orig/compat.c	2011-01-28 21:51:24.000000000 +0100
++++ exec-0.0.3/compat.c	2011-01-28 21:56:00.000000000 +0100
+@@ -76,7 +76,7 @@
+ char res[1024]; /* have to fix this later! Risk */
+ 
+   memset(res,0,sizeof(res));
+-  asprintf(&buf, "%s; echo $?", Command);
++  (0 < asprintf(&buf, "%s; echo $?", Command));
+   if(pipe.Open(buf,"r")) {  
+     while (fscanf (pipe,"%s",res) != EOF) {
+       /* searching for last arg only. */
+diff -Naur exec-0.0.3.orig/exec.c exec-0.0.3/exec.c
+--- exec-0.0.3.orig/exec.c	2011-01-28 21:51:24.000000000 +0100
++++ exec-0.0.3/exec.c	2011-01-28 21:58:18.000000000 +0100
+@@ -100,7 +100,7 @@
+ bool cPluginExec::Start(void)
+ {
+   // Start any background activities the plugin shall perform.
+-  asprintf(&confdir, ConfigDirectory()); 
++  (0 < asprintf(&confdir, ConfigDirectory())); 
+   ExecTimers.Load(AddDirectory(confdir, "exectimers.conf"));
+   ExecTimers.Modified(myState); /* sync myState to ExecTimers.state */
+   ExecLog.Load("/var/log/exec.log");
+@@ -236,7 +236,7 @@
+         ReplyCode=501; /* syntax err */
+         return "invalid timer";
+         }      
+-      asprintf(&buf, "%s\n",*et->ToSVDRDescr());
++      (0 < asprintf(&buf, "%s\n",*et->ToSVDRDescr()));
+       ReplyCode=250; /* success */
+       return cString(buf, true);
+       }
+@@ -248,9 +248,9 @@
+       cExecTimer *et = ExecTimers.Get(index);
+       if (et) {
+         if (! buf)
+-          asprintf(&buf,"%s\n", *et->ToSVDRDescr());
++          (0 < asprintf(&buf,"%s\n", *et->ToSVDRDescr()));
+         else
+-          asprintf(&buf,"%s%s\n", buf, *et->ToSVDRDescr());
++          (0 < asprintf(&buf,"%s%s\n", buf, *et->ToSVDRDescr()));
+         }
+       else { /* should never happen. */
+         log(0, "cPluginExec::SVDRPCommand(%s, %s)", Command, Option);
+@@ -317,9 +317,9 @@
+     cExecTimer *et = ExecTimers.GetNextActiveTimer();
+     ReplyCode=250;
+     if (et)
+-      asprintf(&buf,"next active timer %s", *et->ToSVDRDescr());
++      (0 < asprintf(&buf,"next active timer %s", *et->ToSVDRDescr()));
+     else
+-      asprintf(&buf,"no active timers.");
++      (0 < asprintf(&buf,"no active timers."));
+     return buf;
+     }
+ 
+@@ -328,9 +328,9 @@
+     cExecTimer *et = ExecTimers.GetNextWakeupTimer();
+     ReplyCode=250;
+     if (et)
+-      asprintf(&buf,"next wakeup timer %s", *et->ToSVDRDescr());
++      (0 < asprintf(&buf,"next wakeup timer %s", *et->ToSVDRDescr()));
+     else
+-      asprintf(&buf,"no wakeup timers.");
++      (0 < asprintf(&buf,"no wakeup timers."));
+     return buf;
+     }
+ 
+diff -Naur exec-0.0.3.orig/exectimer.c exec-0.0.3/exectimer.c
+--- exec-0.0.3.orig/exectimer.c	2011-01-28 21:51:24.000000000 +0100
++++ exec-0.0.3/exectimer.c	2011-01-28 22:02:28.000000000 +0100
+@@ -66,8 +66,8 @@
+ 
+ cExecTimer::cExecTimer(time_t StartTime, const char * Command, int TimeOut) {
+   startTime=StartTime;
+-  asprintf(&command,Command);
+-  asprintf(&wd_str,"AAAAAAA");
++  (0 < asprintf(&command,Command));
++  (0 < asprintf(&wd_str,"AAAAAAA"));
+   timeout = TimeOut;
+   active  = true;
+   running = false;
+@@ -146,47 +146,47 @@
+     case ET_WARNING      : Action=4; break;
+     default: Action=1;
+     } 
+-  asprintf(&buffer,"%s:%s:%d:%d:%d:%d:%d:%s ",
++  (0 < asprintf(&buffer,"%s:%s:%d:%d:%d:%d:%d:%s ",
+     *PrintWeekdays(), *PrintTime(false), timeout, active?1:0,
+     Action, (flags & ET_WAKEUP)?1:0, (flags & ET_BACKGROUND)?1:0,
+-    command);
++    command));
+   return cString(buffer, true);
+ }
+ 
+ cString cExecTimer::PrintWeekdays() const {
+   char *buffer;
+   if (weekdays == WD_IGNORED)
+-    asprintf(&buffer, "%s", *PrintDay());
++    (0 < asprintf(&buffer, "%s", *PrintDay()));
+   else
+-    asprintf(&buffer, "%s%s%s%s%s%s%s",
++    (0 < asprintf(&buffer, "%s%s%s%s%s%s%s",
+        (weekdays & WD_MONDAY)?    "M":"-",
+        (weekdays & WD_TUESDAY)?   "T":"-",
+        (weekdays & WD_WEDNESDAY)? "W":"-",
+        (weekdays & WD_THURSDAY)?  "T":"-",
+        (weekdays & WD_FRIDAY)?    "F":"-",
+        (weekdays & WD_SATURDAY)?  "S":"-",
+-       (weekdays & WD_SUNDAY)?    "S":"-");
++       (weekdays & WD_SUNDAY)?    "S":"-"));
+   return cString(buffer, true);
+ }
+ 
+ cString cExecTimer::PrintDay() const {
+   char *buffer;
+   if (weekdays == WD_IGNORED)
+-    asprintf(&buffer, "%04d-%02d-%02d",
++    (0 < asprintf(&buffer, "%04d-%02d-%02d",
+        Day / 10000,
+       (Day % 10000) / 100,
+-      (Day % 10000) % 100);
++      (Day % 10000) % 100));
+   else
+-    asprintf(&buffer, "----:--:--");
++    (0 < asprintf(&buffer, "----:--:--"));
+   return cString(buffer, true);
+ }
+ 
+ cString cExecTimer::PrintTime(bool colon) const {
+   char *buffer;
+-  asprintf(&buffer, "%02d%s%02d",
++  (0 < asprintf(&buffer, "%02d%s%02d",
+        Time / 100,
+        colon?":":"",
+-       Time % 100);
++       Time % 100));
+   return cString(buffer, true);
+ }
+ 
+@@ -202,7 +202,7 @@
+ 
+ cString cExecTimer::Command() const {
+   char *buffer;
+-  asprintf(&buffer, "%s", command);
++  (0 < asprintf(&buffer, "%s", command));
+   return cString(buffer, true);
+ }
+ 
+@@ -276,7 +276,7 @@
+       return false;
+       }
+     if (command) free(command);
+-    asprintf(&command,"%s", CmdStr);
++    (0 < asprintf(&command,"%s", CmdStr));
+     weekdays = WD_IGNORED;
+     switch (strlen(DayStr)) {
+       case 10:  /* YYYY-MM-DD */
+@@ -466,7 +466,7 @@
+  *****************************************************************************/
+ 
+ cExecLogLine::cExecLogLine(const char * Str) {
+-  asprintf(&str,Str);
++  (0 < asprintf(&str,Str));
+ }
+ 
+ cExecLogLine::~cExecLogLine() {
+@@ -475,13 +475,13 @@
+ 
+ cString cExecLogLine::Text(void) const {
+   char *buffer;
+-  asprintf(&buffer, "%s", str);
++  (0 < asprintf(&buffer, "%s", str));
+   return cString(buffer, true);
+ }
+ 
+ bool cExecLogLine::Parse(const char * s) {
+   if (str) free(str);
+-  asprintf(&str,"%s", s);
++  (0 < asprintf(&str,"%s", s));
+   return true;                           
+ }                                           
+ 
+diff -Naur exec-0.0.3.orig/exectimer.h exec-0.0.3/exectimer.h
+--- exec-0.0.3.orig/exectimer.h	2011-01-28 21:51:24.000000000 +0100
++++ exec-0.0.3/exectimer.h	2011-01-28 22:03:35.000000000 +0100
+@@ -127,7 +127,7 @@
+   cString PrintTime  (bool colon = false) const;
+   cString Command    () const;
+   void    SetCommand (const char *cmd)
+-                       { asprintf(&command,"%s",cmd); };
++                       { (0 < asprintf(&command,"%s",cmd)); };
+   bool    Execute    ();
+ };
+ 
+diff -Naur exec-0.0.3.orig/menu.c exec-0.0.3/menu.c
+--- exec-0.0.3.orig/menu.c	2011-01-28 21:51:24.000000000 +0100
++++ exec-0.0.3/menu.c	2011-01-28 22:05:23.000000000 +0100
+@@ -46,7 +46,7 @@
+       }
+     if (toLog) {
+       char *msg;
+-      asprintf(&msg, "%s %s", timeStr, t);
++      (0 < asprintf(&msg, "%s %s", timeStr, t));
+       ExecLog.AddToLog(msg);
+       free(msg);
+       }
+@@ -102,7 +102,7 @@
+ 
+ void cMenuExecAbout::AddText(const char * s, const char * t) {
+   char * buf=NULL;
+-  asprintf(&buf, "%s %s", s, t);
++  (0 < asprintf(&buf, "%s %s", s, t));
+   cOsdItem * osditem = new cOsdItem(buf);
+   Add(osditem);
+   free(buf);
+@@ -111,7 +111,7 @@
+ cMenuExecAbout::cMenuExecAbout() {
+   char * buf=NULL;
+ 
+-  asprintf(&buf, "%s-%s", "exec", ExecVersion());
++  (0 < asprintf(&buf, "%s-%s", "exec", ExecVersion()));
+   AddText(tr("Plugin:")     , buf);
+   free(buf);
+   AddText(tr("Author:")     , "Winfried Koehler");
+@@ -140,7 +140,7 @@
+ 
+ void cMenuExecLog::AddText(const char * s) {
+   char * buf=NULL;
+-  asprintf(&buf, "%s", s);
++  (0 < asprintf(&buf, "%s", s));
+   cOsdItem * osditem = new cOsdItem(buf);
+   Add(osditem);
+   free(buf);
+@@ -149,7 +149,7 @@
+ cMenuExecLog::cMenuExecLog() {
+   char * buf=NULL;
+   for (cExecLogLine *line = ExecLog.First(); line; line = ExecLog.Next(line)) {
+-    asprintf(&buf, line->Text());
++    (0 < asprintf(&buf, line->Text()));
+     AddText(buf);
+     free(buf);
+     }
+@@ -239,7 +239,7 @@
+ 
+ void cMenuExecTimerItem::Set(void) {
+   char *buffer = NULL;
+-  asprintf(&buffer, "%c\t%s\t%s\t%s\t%s",
++  (0 < asprintf(&buffer, "%c\t%s\t%s\t%s\t%s",
+     ! et->isActive()?' ':et->isRunning()?'#':'>',
+     *et->PrintWeekdays(),
+     *et->PrintTime(),
+@@ -247,7 +247,7 @@
+     (et->Flags() & ET_SHUTDOWN)?"shutdown":
+     (et->Flags() & ET_MESSAGE)?"message":
+     (et->Flags() & ET_WARNING)?"warning":"unknown",
+-    *et->Command());
++    *et->Command()));
+   SetText(buffer, false);
+   }
+ 

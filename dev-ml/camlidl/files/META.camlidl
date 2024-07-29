@@ -1,0 +1,5 @@
+description = "Stub generator"
+version = "@VERSION"
+directory = "^"
+archive(byte) = "com.cma"
+archive(native) = "com.cmxa"

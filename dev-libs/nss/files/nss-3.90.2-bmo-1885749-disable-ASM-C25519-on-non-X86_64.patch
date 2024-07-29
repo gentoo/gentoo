@@ -1,0 +1,35 @@
+
+# HG changeset patch
+# User Natalia Kulatova <nkulatova@mozilla.com>
+# Date 1685981398 0
+# Node ID 52a5d8fe37410d940e7d3ca244146ebc46a7d52a
+# Parent  52969cff7db635e0ee10fad66eed2c0cfdcf999b
+Bug 1836781 - Disabling ASM C25519 for A but X86_64 r=bbeurdouche,nss-reviewers
+
+Differential Revision: https://phabricator.services.mozilla.com/D179969
+
+diff --git a/lib/freebl/Makefile b/lib/freebl/Makefile
+--- a/lib/freebl/Makefile
++++ b/lib/freebl/Makefile
+@@ -563,17 +563,19 @@ endif # target == SunO
+ ifdef USE_64
+ # no __int128 at least up to lcc 1.23 (pretending to be gcc5)
+ # NB: CC_NAME is not defined here
+ ifneq ($(shell $(CC) -? 2>&1 >/dev/null </dev/null | sed -e 's/:.*//;1q'),lcc)
+     ifdef CC_IS_CLANG
+             HAVE_INT128_SUPPORT = 1
+             DEFINES += -DHAVE_INT128_SUPPORT
+     else ifeq (1,$(CC_IS_GCC))
+-        SUPPORTS_VALE_CURVE25519 = 1
++        ifeq ($(CPU_ARCH),x86_64)
++            SUPPORTS_VALE_CURVE25519 = 1
++        endif
+         ifneq (,$(filter 4.6 4.7 4.8 4.9,$(word 1,$(GCC_VERSION)).$(word 2,$(GCC_VERSION))))
+             HAVE_INT128_SUPPORT = 1
+             DEFINES += -DHAVE_INT128_SUPPORT
+         endif
+         ifneq (,$(filter 0 1 2 3 4,$(word 1,$(GCC_VERSION))))
+             NSS_DISABLE_AVX2 = 1
+         endif
+         ifeq (,$(filter 0 1 2 3 4,$(word 1,$(GCC_VERSION))))
+

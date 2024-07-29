@@ -1,0 +1,12 @@
+diff --git a/configure.ac b/configure.ac
+index ce9ce28..f1c4826 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -50,6 +50,7 @@ AC_CHECK_HEADERS([iconv.h],check_iconv=true)
+ if test "x$check_iconv" == x ; then
+ 	AC_MSG_ERROR([*** iconv.h not found.])
+ fi
++AC_CHECK_LIB([iconv], libiconv_open)
+ 
+ # check Doxygen
+ DOXYGEN=""

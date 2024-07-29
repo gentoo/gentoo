@@ -1,0 +1,11 @@
+--- a/rc_name.mk_btri.h
++++ b/rc_name.mk_btri.h
+@@ -2,7 +2,7 @@
+ 
+ #define STRING_LITERAL(x) # x
+ #undef def_rcsect_begin
+-#define def_rcsect_begin(n) STRING_LITERAL(* ## n), &sections[secti_ ## n]
++#define def_rcsect_begin(n) STRING_LITERAL(*n), &sections[secti_ ## n]
+ 
+ #undef def_rcsect_end
+ #define def_rcsect_end(n)

@@ -1,0 +1,101 @@
+Amend command-line names for Gentoo SLOTed hmmer:2
+
+--- a/src/ehmmalign.c
++++ b/src/ehmmalign.c
+@@ -99,7 +99,7 @@
+        iii.HMMER 'options' (that don't appear in ACD file)
+        iv. HMMER & new parameters.
+        */
+-    ajFmtPrintS(&cmd, "%S ", ajAcdGetpathC("hmmalign"));
++    ajFmtPrintS(&cmd, "%S ", ajAcdGetpathC("hmmalign2"));
+     if(mapali)
+ 	ajFmtPrintAppS(&cmd, " --mapali %s ", ajFileGetNameC(mapali));
+     if(withali)
+--- a/src/ehmmbuild.c
++++ b/src/ehmmbuild.c
+@@ -146,7 +146,7 @@
+        iii.HMMER 'options' (that don't appear in ACD file)
+        iv. HMMER & new parameters.
+        */
+-    ajStrAssignS(&cmd, ajAcdGetpathC("hmmbuild"));
++    ajStrAssignS(&cmd, ajAcdGetpathC("hmmbuild2"));
+     if(prior)
+ 	ajFmtPrintAppS(&cmd, " --prior %s ", ajFileGetNameC(prior));
+     if(null)
+--- a/src/ehmmcalibrate.c
++++ b/src/ehmmcalibrate.c
+@@ -98,7 +98,7 @@
+        iii.HMMER 'options' (that don't appear in ACD file)
+        iv. HMMER & new parameters.
+        */
+-    ajStrAssignS(&cmd, ajAcdGetpathC("hmmcalibrate"));
++    ajStrAssignS(&cmd, ajAcdGetpathC("hmmcalibrate2"));
+     if(cpu)
+ 	ajFmtPrintAppS(&cmd, " --cpu %d ", cpu);
+     if(fixed)
+--- a/src/ehmmconvert.c
++++ b/src/ehmmconvert.c
+@@ -72,7 +72,7 @@
+        iii.HMMER 'options' (that don't appear in ACD file)
+        iv. HMMER & new parameters.
+        */
+-    ajStrAssignS(&cmd, ajAcdGetpathC("hmmconvert"));
++    ajStrAssignS(&cmd, ajAcdGetpathC("hmmconvert2"));
+ 
+     /* ACD option only allows one selection */
+     option = ajStrGetCharFirst(format);
+--- a/src/ehmmemit.c
++++ b/src/ehmmemit.c
+@@ -79,7 +79,7 @@
+        iii.HMMER 'options' (that don't appear in ACD file)
+        iv. HMMER & new parameters.
+        */
+-    ajStrAssignS(&cmd, ajAcdGetpathC("hmmemit"));
++    ajStrAssignS(&cmd, ajAcdGetpathC("hmmemit2"));
+     ajFmtPrintAppS(&cmd, " --seed %d ", seed);
+     if(a)
+ 	ajStrAppendC(&cmd, " -a ");
+--- a/src/ehmmfetch.c
++++ b/src/ehmmfetch.c
+@@ -74,7 +74,7 @@
+        iii.HMMER 'options' (that don't appear in ACD file)
+        iv. HMMER & new parameters.
+        */
+-    ajStrAssignS(&cmd, ajAcdGetpathC("hmmfetch"));
++    ajStrAssignS(&cmd, ajAcdGetpathC("hmmfetch2"));
+     if(nhmm)
+ 	ajStrAppendC(&cmd, " -n ");
+     /* Note the output redirected to outfname  */
+--- a/src/ehmmindex.c
++++ b/src/ehmmindex.c
+@@ -68,7 +68,7 @@
+        iii.HMMER 'options' (that don't appear in ACD file)
+        iv. HMMER & new parameters.
+        */
+-    ajFmtPrintS(&cmd, "%S ", ajAcdGetpathC("hmmindex"));
++    ajFmtPrintS(&cmd, "%S ", ajAcdGetpathC("hmmindex2"));
+     ajStrAppendC(&cmd, ajFileGetNameC(database));
+ 
+     
+--- a/src/ehmmpfam.c
++++ b/src/ehmmpfam.c
+@@ -122,7 +122,7 @@
+        iii.HMMER 'options' (that don't appear in ACD file)
+        iv. HMMER & new parameters.
+        */
+-    ajStrAssignS(&cmd, ajAcdGetpathC("hmmpfam"));
++    ajStrAssignS(&cmd, ajAcdGetpathC("hmmpfam2"));
+     if(nuc)
+ 	ajStrAppendC(&cmd, " -n ");
+     ajFmtPrintAppS(&cmd, " -A %d -E %f -T %f -Z %d", A, E, T, Z);
+--- a/src/ehmmsearch.c
++++ b/src/ehmmsearch.c
+@@ -102,7 +102,7 @@
+        iii.HMMER 'options' (that don't appear in ACD file)
+        iv. HMMER & new parameters.
+        */
+-    ajStrAssignS(&cmd, ajAcdGetpathC("hmmsearch"));
++    ajStrAssignS(&cmd, ajAcdGetpathC("hmmsearch2"));
+     ajFmtPrintAppS(&cmd, " -A %d -E %f -T %f -Z %d", A, E, T, Z);
+     if(compat)
+ 	ajStrAppendC(&cmd, " --compat ");

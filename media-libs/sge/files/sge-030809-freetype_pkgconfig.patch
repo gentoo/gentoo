@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/655798
+
+--- a/Makefile.conf
++++ b/Makefile.conf
+@@ -35,16 +35,16 @@
+ SGE_LIBS =$(shell sdl-config --libs) -lstdc++
+ 
+ 
+-# Is freetype-config available?
+-HAVE_FT =$(shell if (freetype-config --version) < /dev/null > /dev/null 2>&1; then echo "y"; else echo "n"; fi;)
++# Is freetype available?
++HAVE_FT =$(shell if ${PKG_CONFIG} --exists freetype2 ; then echo "y"; else echo "n"; fi;)
+ ifeq ($(HAVE_FT),n)
+   USE_FT = n
+ endif
+ 
+ ifneq ($(USE_FT),n)
+   USE_FT = y
+-  SGE_LIBS +=$(shell freetype-config --libs)
+-  FT_CFLAGS =$(shell freetype-config --cflags)
++  SGE_LIBS +=$(shell ${PKG_CONFIG} --libs freetype2)
++  FT_CFLAGS =$(shell ${PKG_CONFIG} --cflags freetype2)
+ endif
+ 
+ 

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription>
+    Boolector is a Satisfiability Modulo Theories (SMT) solver for the theories
+    of fixed-size bit-vectors, arrays and uninterpreted functions. It supports
+    the SMT-LIB logics BV, QF_ABV, QF_AUFBV, QF_BV and QF_UFBV. Boolector
+    provides a rich C and Python API and supports incremental solving, both
+    with the SMT-LIB commands push and pop, and as solving under assumptions.
+  </longdescription>
+  <use>
+    <flag name="cryptominisat">
+      Enable support for <pkg>sci-mathematics/cryptominisat</pkg>
+    </flag>
+    <flag name="minisat">
+      Enable support for <pkg>sci-mathematics/minisat</pkg>
+    </flag>
+    <flag name="picosat">
+      Enable support for <pkg>sci-mathematics/picosat</pkg>
+    </flag>
+  </use>
+  <upstream>
+    <bugs-to>https://github.com/Boolector/boolector/issues/</bugs-to>
+    <doc>https://boolector.github.io/docs/index.html</doc>
+    <remote-id type="github">Boolector/boolector</remote-id>
+  </upstream>
+</pkgmetadata>

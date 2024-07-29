@@ -1,0 +1,53 @@
+From 5a33c767be196328948baef569de084d97d62384 Mon Sep 17 00:00:00 2001
+From: Erik Larsson <who+github@cnackers.org>
+Date: Tue, 26 Mar 2024 13:25:10 +0100
+Subject: [PATCH] cryptography: fixes for newer version of cryptography
+
+Signed-off-by: Erik Larsson <who+github@cnackers.org>
+---
+ src/tpm2_pytss/internal/crypto.py | 1 +
+ test/test_encoding.py             | 2 +-
+ test/test_policy.py               | 2 +-
+ 3 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/tpm2_pytss/internal/crypto.py b/src/tpm2_pytss/internal/crypto.py
+index 42030c5..f9d8c34 100644
+--- a/src/tpm2_pytss/internal/crypto.py
++++ b/src/tpm2_pytss/internal/crypto.py
+@@ -25,6 +25,7 @@ from cryptography.hazmat.backends import default_backend
+ from cryptography.exceptions import UnsupportedAlgorithm, InvalidSignature
+ from typing import Tuple, Type, Any
+ import secrets
++import inspect
+ import sys
+ 
+ _curvetable = (
+diff --git a/test/test_encoding.py b/test/test_encoding.py
+index 1f58562..8cf4b51 100644
+--- a/test/test_encoding.py
++++ b/test/test_encoding.py
+@@ -1406,7 +1406,7 @@ class ToolsTest(TSS2_BaseTest):
+     def test_tools_decode_tpm2b_name(self):
+         if not self.has_tools:
+             self.skipTest("tools not in path")
+-        key = ec.generate_private_key(ec.SECP256R1).public_key()
++        key = ec.generate_private_key(ec.SECP256R1()).public_key()
+         kb = key.public_bytes(
+             serialization.Encoding.PEM, serialization.PublicFormat.SubjectPublicKeyInfo
+         )
+diff --git a/test/test_policy.py b/test/test_policy.py
+index f18aa8a..5f56e21 100644
+--- a/test/test_policy.py
++++ b/test/test_policy.py
+@@ -47,7 +47,7 @@ class TestPolicy(TSS2_EsapiTest):
+         super().setUp()
+         self._has_secp192r1 = True
+         try:
+-            ec.generate_private_key(ec.SECP192R1)
++            ec.generate_private_key(ec.SECP192R1())
+         except Exception:
+             self._has_secp192r1 = False
+ 
+-- 
+2.43.2
+

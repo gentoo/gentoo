@@ -1,0 +1,82 @@
+--- libffado-2.4.8/SConstruct
++++ libffado-2.4.8-patched/SConstruct
+@@ -977,7 +977,7 @@ else:
+ # Create a tags-file for easier emacs/vim-source-browsing
+ #  I don't know if the dependency is right...
+ #
+-findcommand = "find . \( -path \"*.h\" -o -path \"*.cpp\" -o -path \"*.c\" \) \! -path \"*.svn*\" \! -path \"./doc*\" \! -path \"./cache*\""
++findcommand = "find . \\( -path \"*.h\" -o -path \"*.cpp\" -o -path \"*.c\" \\) \\! -path \"*.svn*\" \\! -path \"./doc*\" \\! -path \"./cache*\""
+ env.Command( "tags", "", findcommand + " |xargs ctags" )
+ env.Command( "TAGS", "", findcommand + " |xargs etags" )
+ env.AlwaysBuild( "tags", "TAGS" )
+--- libffado-2.4.8/admin/pyuic.py
++++ libffado-2.4.8-patched/admin/pyuic.py
+@@ -21,7 +22,7 @@
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #
+ 
+-import imp
++import importlib
+ 
+ def pyuic_action( target, source, env ):
+ 	env.Execute( "pyuic " + str( source[0] ) + " > " + str( target[0] ) )
+@@ -32,11 +33,7 @@ def pyuic_string( target, source, env ):
+ 
+ def PyQtCheck( context ):
+ 	context.Message( "Checking for pyuic (by checking for the python module pyqtconfig) " )
+-	ret = True
+-	try:
+-		imp.find_module( "pyqtconfig" )
+-	except ImportError:
+-		ret = False
++	ret = importlib.util.find_spec( "pyqtconfig" ) is not None
+ 	context.Result( ret )
+ 	return ret
+ 
+--- libffado-2.4.8/admin/pyuic4.py
++++ libffado-2.4.8-patched/admin/pyuic4.py
+@@ -21,7 +22,7 @@
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #
+ 
+-import imp
++import importlib
+ 
+ def pyuic4_action( target, source, env ):
+ 	env.Execute( "pyuic4 " + str( source[0] ) + " > " + str( target[0] ) )
+@@ -32,11 +33,7 @@ def pyuic4_string( target, source, env ):
+ 
+ def PyQt4Check( context ):
+ 	context.Message( "Checking for pyuic4 (by checking for the python module pyqtconfig) " )
+-	ret = True
+-	try:
+-		imp.find_module( "pyqtconfig" )
+-	except ImportError:
+-		ret = False
++	ret = importlib.util.find_spec( "pyqtconfig" ) is not None
+ 	context.Result( ret )
+ 	return ret
+ 
+--- libffado-2.4.8/admin/pyuic5.py
++++ libffado-2.4.8-patched/admin/pyuic5.py
+@@ -22,7 +23,7 @@
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #
+ 
+-import imp
++import importlib
+ 
+ def pyuic5_action( target, source, env ):
+ 	env.Execute( "pyuic5 " + str( source[0] ) + " > " + str( target[0] ) )
+@@ -33,11 +34,7 @@ def pyuic5_string( target, source, env ):
+ 
+ def PyQt5Check( context ):
+ 	context.Message( "Checking for pyuic5 (by checking for the python module pyqtconfig) " )
+-	ret = True
+-	try:
+-		imp.find_module( "pyqtconfig" )
+-	except ImportError:
+-		ret = False
++	ret = importlib.util.find_spec( "pyqtconfig" ) is not None
+ 	context.Result( ret )
+ 	return ret

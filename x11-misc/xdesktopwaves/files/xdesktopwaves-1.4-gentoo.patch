@@ -1,0 +1,40 @@
+--- a/Makefile
++++ b/Makefile
+@@ -11,14 +11,14 @@
+ 
+ #=========================== C compiler configuration ==========================
+ 
+-CC     = gcc
+-CFLAGS = -I/usr/X11R6/include -O2
++CC ?= gcc
++CFLAGS += $(shell $(PKG_CONFIG) --cflags x11 xext)
+ 
+ #============================= Linker configuration ============================
+ 
+-LINK   = gcc
+-LFLAGS = -L/usr/X11R6/lib64 -L/usr/X11R6/lib
+-LIBS   = -lm -lX11 -lXext
++LINK   = $(CC)
++LFLAGS = $(LDFLAGS)
++LIBS   = -lm $(shell $(PKG_CONFIG) --libs x11 xext)
+ 
+ #============================ Installer configuration ==========================
+ 
+--- a/xdwapi/Makefile
++++ b/xdwapi/Makefile
+@@ -1,10 +1,10 @@
+ # Makefile for the xdesktopwaves API and its demo program
+ 
+-CC     = gcc
+-CFLAGS = -I/usr/X11R6/include -O2
+-LINK   = gcc
+-LFLAGS = -L/usr/X11R6/lib64 -L/usr/X11R6/lib
+-LIBS   = -lm -lX11
++CC     ?= gcc
++CFLAGS += $(shell $(PKG_CONFIG) --cflags x11 xext)
++LINK   ?= $(CC)
++LFLAGS = $(LDFLAGS)
++LIBS   = -lm $(shell $(PKG_CONFIG) --libs x11 xext)
+ 
+ all: xdwapidemo
+ 

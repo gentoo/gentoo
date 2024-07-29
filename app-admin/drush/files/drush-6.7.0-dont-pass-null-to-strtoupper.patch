@@ -1,0 +1,26 @@
+From 621cb8db059f3dff434dc369ab46faf3a2efa539 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Thu, 3 Aug 2023 08:52:35 -0400
+Subject: [PATCH 1/1] includes/environment.inc: don't pass null to
+ strtoupper().
+
+---
+ includes/environment.inc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/includes/environment.inc b/includes/environment.inc
+index 7837104..dd2c71d 100644
+--- a/includes/environment.inc
++++ b/includes/environment.inc
+@@ -736,7 +736,7 @@ function _drush_get_os($os = NULL) {
+   // that the path be converted to /cygdrive/c/path, even on DOS or Powershell.
+   // The special os "RSYNC" can be used to indicate that we want to assume
+   // "CWRSYNC" when cwrsync is installed, or default to the local OS otherwise.
+-  if (strtoupper($os) == "RSYNC") {
++  if (isset($os) && strtoupper($os) == "RSYNC") {
+     $os = _drush_get_os("LOCAL");
+     // For now we assume that cwrsync is always installed on Windows, and never installed son any other platform.
+     return drush_is_windows($os) ? "CWRSYNC" : $os;
+-- 
+2.39.3
+

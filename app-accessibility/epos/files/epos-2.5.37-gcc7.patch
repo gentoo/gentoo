@@ -1,0 +1,22 @@
+Bug: https://bugs.gentoo.org/638596
+
+--- a/src/nnet/matrix.cc
++++ b/src/nnet/matrix.cc
+@@ -63,7 +63,7 @@
+ template<class T> void CMatrix<T>::multiplyByTransponed (const CMatrix &y, CMatrix &retval)
+ {
+ 	int i,j,k;
+-	assert (cols == y.cols);
++	this->assert (cols == y.cols);
+ 	if (cols != y.cols) { retval.Realloc (0,0); return; }
+ 
+ 	T sum;
+@@ -80,7 +80,7 @@
+ template<class T> void CMatrix<T>::transponedMultiply (const CMatrix &y, CMatrix &retval)
+ {
+ 	int i,j,k;
+-	assert (rows == y.rows);
++	this->assert (rows == y.rows);
+ 	if (rows != y.rows) { retval.Realloc (0,0); return; }
+ 
+ 	T sum;

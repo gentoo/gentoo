@@ -1,0 +1,25 @@
+Description: Stop using alsa/iatomic.h
+             Technically this is an API breakage in libasound 1.1.2,
+             but it makes sense to me that this header was removed
+             by ALSA upstream.
+             .
+             bristol was the only user in Debian, and even here the
+             code that once used it was already commented out.
+Author: Adrian Bunk <bunk@stusta.de>
+Reviewed-by: James Cowgill <jcowgill@debian.org>
+	     Herbert Parentes Fortes Neto <hpfn@debian.org>
+Bug-Debian: https://bugs.debian.org/834180
+Forwarded: no
+Index: bristol-0.60.11/libbristolaudio/audioEngineJack.c
+--- a/libbristolaudio/audioEngineJack.c
++++ b/libbristolaudio/audioEngineJack.c
+@@ -38,9 +38,6 @@
+ #include <string.h>
+ 
+ #ifdef _BRISTOL_JACK
+-#if (BRISTOL_HAS_ALSA == 1)
+-#include <alsa/iatomic.h>
+-#endif
+ 
+ /*
+  * Drop this atomic stuff, it comes from the ALSA library and it not present on

@@ -1,0 +1,35 @@
+--- a/libdbx.c
++++ b/libdbx.c
+@@ -485,11 +485,11 @@
+ 	    switch (blockp.type) {
+ 	    case 0x01: //pointer to flag
+ 	    	email->flag = 0;
+-	    	((int*)bufx) = &(email->flag);
++	    	bufx = (char **)&(email->flag);
+ 	    	readtype = CHAR_TYPE;
+ 	    	break;
+ 	    case 0x04: //pointer to dataptr
+-	      ((int*)bufx) = &(email->data_offset);
++	      bufx = (char **)&(email->data_offset);
+ 	      readtype = INT_TYPE;
+ 	      break;
+ 	    case 0x05: //asciiz string of subject (without RE: or FWD: etc...)
+@@ -521,7 +521,7 @@
+ 	      readtype = STRING_TYPE;
+ 	      break;
+ 	    case 0x12: //date - of what i'm not sure. It is in a win32 FILETIME structure. needs converting to something
+-				((struct FILETIME*)bufx) = &(email->date);
++				bufx = (char **)&(email->date);
+ 				readtype = W32FT_TYPE;
+ 				break;
+ 	    case 0x13: //recipient's name
+--- a/readdbx.c
++++ b/readdbx.c
+@@ -19,6 +19,7 @@
+ #include <getopt.h>
+ #include <time.h>
+ #include <string.h>
++#include <stdlib.h>
+ 
+ #include "libdbx.h"
+ #include "common.h"

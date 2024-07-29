@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/889362
+https://gitlab.gnome.org/GNOME/seahorse/-/commit/9260c74779be3d7a378db0671af862ffa3573d42
+
+From: Xi Ruoyao <xry111@xry111.site>
+Date: Wed, 21 Dec 2022 20:58:26 +0800
+Subject: [PATCH] Allow building with GnuPG-2.4.x
+
+--- a/meson.build
++++ b/meson.build
+@@ -26,7 +26,7 @@ endif
+ # Dependencies
+ min_glib_version = '2.66'
+ min_gcr_version = '3.38'
+-accepted_gpg_versions = [ '2.2.0', '2.3.0' ]
++accepted_gpg_versions = [ '2.2.0', '2.3.0', '2.4.0' ]
+ gpg_check_version = find_program('build-aux' / 'gpg_check_version.py')
+ 
+ glib_deps = [
+-- 
+GitLab

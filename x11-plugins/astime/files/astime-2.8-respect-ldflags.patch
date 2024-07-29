@@ -1,0 +1,11 @@
+--- a/autoconf/Makefile.common.in	1999-05-02 17:12:39.000000000 +0200
++++ b/autoconf/Makefile.common.in	2013-03-24 16:16:27.494987496 +0100
+@@ -34,7 +33,7 @@
+ 		done
+ 
+ $(PROG):        $(OBJS)
+-		$(CC) $(OBJS) $(LIBRARIES) $(EXTRA_LIBRARIES) -o $(@)
++		$(CC) $(OBJS) $(LIBRARIES) $(EXTRA_LIBRARIES) -o $(@) $(LDFLAGS)
+ 
+ .c.o:
+ 		$(CC) $(CCFLAGS) $(EXTRA_DEFINES) $(INCLUDES) $(EXTRA_INCLUDES) -c $*.c

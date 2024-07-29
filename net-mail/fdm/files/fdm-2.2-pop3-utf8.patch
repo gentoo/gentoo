@@ -1,0 +1,50 @@
+https://github.com/nicm/fdm/commit/0918b78a82a789d63cebe44b7662f0a8dc603000
+
+From 0918b78a82a789d63cebe44b7662f0a8dc603000 Mon Sep 17 00:00:00 2001
+From: Nicholas Marriott <nicholas.marriott@gmail.com>
+Date: Mon, 4 Sep 2023 09:03:47 +0100
+Subject: [PATCH] Send UTF8 command to POP3 server (ignore the response),
+ because some servers don't like UTF-8 without it.
+
+---
+ pop3-common.c | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+
+diff --git a/pop3-common.c b/pop3-common.c
+index 0724887..e038172 100644
+--- a/pop3-common.c
++++ b/pop3-common.c
+@@ -54,6 +54,7 @@ int	pop3_invalid(struct account *, const char *);
+ int	pop3_state_connect(struct account *, struct fetch_ctx *);
+ int	pop3_state_starttls(struct account *, struct fetch_ctx *);
+ int	pop3_state_connected(struct account *, struct fetch_ctx *);
++int	pop3_state_utf8(struct account *, struct fetch_ctx *);
+ int	pop3_state_user(struct account *, struct fetch_ctx *);
+ int	pop3_state_cache1(struct account *, struct fetch_ctx *);
+ int	pop3_state_cache2(struct account *, struct fetch_ctx *);
+@@ -436,6 +437,24 @@ pop3_state_connected(struct account *a, struct fetch_ctx *fctx)
+ 		}
+ 	}
+ 
++	if (pop3_putln(a, "UTF8") != 0)
++		return (FETCH_ERROR);
++	fctx->state = pop3_state_utf8;
++	return (FETCH_BLOCK);
++}
++
++/* UTF8 state. */
++int
++pop3_state_utf8(struct account *a, struct fetch_ctx *fctx)
++{
++	struct fetch_pop3_data	*data = a->data;
++	char			*line;
++
++	if (pop3_getln(a, fctx, &line) != 0)
++		return (FETCH_ERROR);
++	if (line == NULL)
++		return (FETCH_BLOCK);
++
+ 	if (pop3_putln(a, "USER %s", data->user) != 0)
+ 		return (FETCH_ERROR);
+ 	fctx->state = pop3_state_user;
+

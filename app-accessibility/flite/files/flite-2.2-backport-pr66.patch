@@ -1,0 +1,55 @@
+https://github.com/festvox/flite/pull/66/commits/cad672713f3fc9702babf4e3a2cc685586aeb87e
+
+From cad672713f3fc9702babf4e3a2cc685586aeb87e Mon Sep 17 00:00:00 2001
+From: Dominik 'Rathann' Mierzejewski <dominik@greysector.net>
+Date: Wed, 6 Oct 2021 12:42:31 +0200
+Subject: [PATCH] make shared arrays size declarations consistent
+
+Fixes:
+../../lang/cmulex/cmu_lex.c:49:27: warning: type of 'cmu_lex_phone_table' does not match original declaration [-Wlto-type-mismatch]
+   49 | extern const char * const cmu_lex_phone_table[54];
+      |                           ^
+../../lang/cmulex/cmu_lex_entries.c:14:20: note: array types have different bounds
+   14 | const char * const cmu_lex_phone_table[57] =
+      |                    ^
+../../lang/cmulex/cmu_lex_entries.c:14:20: note: 'cmu_lex_phone_table' was previously declared here
+
+and
+../../lang/cmu_grapheme_lex/cmu_grapheme_lex.h:47:27: warning: type of 'unicode_sampa_mapping' does not match original declaration [-Wlto-type-mismatch]
+   47 | extern const char * const unicode_sampa_mapping[16663][5];
+      |                           ^
+../../lang/cmu_grapheme_lex/grapheme_unitran_tables.c:9:20: note: array types have different bounds
+    9 | const char * const unicode_sampa_mapping[16798][5] =
+      |                    ^
+../../lang/cmu_grapheme_lex/grapheme_unitran_tables.c:9:20: note: 'unicode_sampa_mapping' was previously declared here
+---
+ lang/cmu_grapheme_lex/cmu_grapheme_lex.h | 2 +-
+ lang/cmulex/cmu_lex.c                    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lang/cmu_grapheme_lex/cmu_grapheme_lex.h b/lang/cmu_grapheme_lex/cmu_grapheme_lex.h
+index 320d263..25386e7 100644
+--- a/lang/cmu_grapheme_lex/cmu_grapheme_lex.h
++++ b/lang/cmu_grapheme_lex/cmu_grapheme_lex.h
+@@ -44,7 +44,7 @@ extern "C" {
+ cst_lexicon *cmu_grapheme_lex_init(void);
+ 
+ extern const int num_unicode_sampa_mapping;
+-extern const char * const unicode_sampa_mapping[16663][5];
++extern const char * const unicode_sampa_mapping[16798][5];
+ 
+ #ifdef __cplusplus
+ } /* extern "C" */
+diff --git a/lang/cmulex/cmu_lex.c b/lang/cmulex/cmu_lex.c
+index 7dfdfc1..e3f44cd 100644
+--- a/lang/cmulex/cmu_lex.c
++++ b/lang/cmulex/cmu_lex.c
+@@ -46,7 +46,7 @@ extern const int cmu_lex_entry[];
+ extern const unsigned char cmu_lex_data[];
+ extern const int cmu_lex_num_entries;
+ extern const int cmu_lex_num_bytes;
+-extern const char * const cmu_lex_phone_table[54];
++extern const char * const cmu_lex_phone_table[57];
+ extern const char * const cmu_lex_phones_huff_table[];
+ extern const char * const cmu_lex_entries_huff_table[];
+ 

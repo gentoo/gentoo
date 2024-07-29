@@ -1,0 +1,64 @@
+From 777430f083c4190fbc1beecfd4b619e63cf08dfb Mon Sep 17 00:00:00 2001
+From: Alexis Ballier <aballier@gentoo.org>
+Date: Tue, 2 May 2017 11:47:13 +0200
+Subject: [PATCH] Revert "Do not install to lib64, even on x86_64 machines"
+
+This reverts commit 9f6e9bae3c51480d7f4c1b329493bbe30bc21839.
+---
+ cmake/internal/FindOS.cmake | 36 ++++++++++++++++++------------------
+ 1 file changed, 18 insertions(+), 18 deletions(-)
+
+diff --git a/cmake/internal/FindOS.cmake b/cmake/internal/FindOS.cmake
+index 5666bbce..cec44912 100644
+--- a/cmake/internal/FindOS.cmake
++++ b/cmake/internal/FindOS.cmake
+@@ -45,28 +45,28 @@ ELSE (PROJECT_OS_LINUX)
+ ENDIF (PROJECT_OS_LINUX)
+ 
+ # 32 or 64 bit Linux
+-# IF (PROJECT_OS_LINUX)
+-#     # Set the library directory suffix accordingly
+-#     IF (${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
+-#         SET (PROJECT_PROC_64BIT TRUE BOOL INTERNAL)
+-#         MESSAGE (STATUS "Linux x86_64 Detected")
+-#     ELSEIF (${CMAKE_SYSTEM_PROCESSOR} STREQUAL "ppc64")
+-#         MESSAGE (STATUS "Linux ppc64 Detected")
+-#         SET (PROJECT_PROC_64BIT TRUE BOOL INTERNAL)
+-#     ELSEIF ($CMAKE_SYSTEM_PROCESSOR} STREQUAL "s390x")
+-# 	MESSAGE (STATEUS "Linux s390x Detected")
+-# 	SET (PROJECT_PROC_64BIT TRUE BOOL INTERNAL)
+-#     ENDIF (${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
+-# ENDIF (PROJECT_OS_LINUX)
++IF (PROJECT_OS_LINUX)
++    # Set the library directory suffix accordingly
++    IF (${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
++        SET (PROJECT_PROC_64BIT TRUE BOOL INTERNAL)
++        MESSAGE (STATUS "Linux x86_64 Detected")
++    ELSEIF (${CMAKE_SYSTEM_PROCESSOR} STREQUAL "ppc64")
++        MESSAGE (STATUS "Linux ppc64 Detected")
++        SET (PROJECT_PROC_64BIT TRUE BOOL INTERNAL)
++    ELSEIF ($CMAKE_SYSTEM_PROCESSOR} STREQUAL "s390x")
++	MESSAGE (STATEUS "Linux s390x Detected")
++	SET (PROJECT_PROC_64BIT TRUE BOOL INTERNAL)
++    ENDIF (${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
++ENDIF (PROJECT_OS_LINUX)
+ 
+-# IF(PROJECT_PROC_64BIT)
++IF(PROJECT_PROC_64BIT)
+     # Set the install path to lib64
+-    # SET(PROJECT_LIB_DIR "lib64")
+-    # SET(PROJECT_PLUGIN_DIR "lib64/${PROJECT_NAME}-${APIVERSION}")
+-# ELSE (PROJECT_PROC_64BIT)
++    SET(PROJECT_LIB_DIR "lib64")
++    SET(PROJECT_PLUGIN_DIR "lib64/${PROJECT_NAME}-${APIVERSION}")
++ELSE (PROJECT_PROC_64BIT)
+     SET(PROJECT_LIB_DIR "lib")
+     SET(PROJECT_PLUGIN_DIR "lib/${PROJECT_NAME}-${APIVERSION}")
+-# ENDIF (PROJECT_PROC_64BIT)
++ENDIF (PROJECT_PROC_64BIT)
+ 
+ MESSAGE(STATUS "Installing Libraries to ${CMAKE_INSTALL_PREFIX}/${PROJECT_LIB_DIR}")
+ MESSAGE(STATUS "Installing Plugins to ${CMAKE_INSTALL_PREFIX}/${PROJECT_PLUGIN_DIR}")
+-- 
+2.12.2
+

@@ -1,0 +1,43 @@
+https://bird.network.cz/pipermail/bird-users/2023-March/016743.html
+https://gitlab.nic.cz/labs/bird/-/commit/0f679438f36d8c2a31dfe490007e983b085caef6
+
+From 0f679438f36d8c2a31dfe490007e983b085caef6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <arkamar@atlas.cz>
+Date: Mon, 6 Mar 2023 11:19:30 +0100
+Subject: [PATCH] Printf test suite fails on systems with musl libc because
+ tests for "%m" and "%M" formats expect "Input/output error" message but musl
+ returns "I/O error". Proposed change compares the printf output with string
+ returned from strerror function for EIO constant.
+
+See-also: https://bugs.gentoo.org/836713
+
+Minor change from committer.
+---
+ lib/printf_test.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/lib/printf_test.c b/lib/printf_test.c
+index 47ea905d..88ecf05e 100644
+--- a/lib/printf_test.c
++++ b/lib/printf_test.c
+@@ -32,11 +32,14 @@ t_simple(void)
+   BSPRINTF(1, "@", buf, "@", 64);
+   BSPRINTF(1, "\xff", buf, "%c", 0xff);
+ 
+-  errno = 5;
+-  BSPRINTF(18, "Input/output error", buf, "%m");
++  const char *io_error_str = lp_strdup(tmp_linpool, strerror(EIO));
++  const int io_error_len = strlen(io_error_str);
++
++  errno = EIO;
++  BSPRINTF(io_error_len, io_error_str, buf, "%m");
+   errno = 0;
+ 
+-  BSPRINTF(18, "Input/output error", buf, "%M", 5);
++  BSPRINTF(io_error_len, io_error_str, buf, "%M", EIO);
+ 
+   BSPRINTF(11, "TeSt%StRiNg", buf, "%s", "TeSt%StRiNg");
+ 
+-- 
+GitLab
+

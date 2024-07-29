@@ -1,0 +1,150 @@
+From c724815a541b763455ff38922af96f652627bce6 Mon Sep 17 00:00:00 2001
+From: Robert Kausch <robert.kausch@freac.org>
+Date: Tue, 16 May 2023 00:19:02 +0200
+Subject: [PATCH] Fix memory leaks in case MP4File::ReadBytes() throws an
+ exception.
+
+--- a/src/atom_rtp.cpp
++++ b/src/atom_rtp.cpp
+@@ -125,12 +125,19 @@ void MP4RtpAtom::ReadHntiType()
+ 
+     // read sdp string, length is implicit in size of atom
+     uint64_t size = GetEnd() - m_File.GetPosition();
+-    char* data = (char*)MP4Malloc(size + 1);
++    char* data = (char*) MP4Malloc(size + 1);
+     ASSERT(data != NULL);
+-    m_File.ReadBytes((uint8_t*)data, size);
+-    data[size] = '\0';
+-    ((MP4StringProperty*)m_pProperties[1])->SetValue(data);
+-    MP4Free(data);
++    try {
++        m_File.ReadBytes((uint8_t*) data, size);
++        data[size] = '\0';
++        ((MP4StringProperty*) m_pProperties[1])->SetValue(data);
++        MP4Free(data);
++    }
++    catch (Exception*) {
++        // free memory and rethrow
++        MP4Free(data);
++        throw;
++    }
+ }
+ 
+ void MP4RtpAtom::Write()
+--- a/src/atom_sdp.cpp
++++ b/src/atom_sdp.cpp
+@@ -36,12 +36,19 @@ void MP4SdpAtom::Read()
+ {
+     // read sdp string, length is implicit in size of atom
+     uint64_t size = GetEnd() - m_File.GetPosition();
+-    char* data = (char*)MP4Malloc(size + 1);
++    char* data = (char*) MP4Malloc(size + 1);
+     ASSERT(data != NULL);
+-    m_File.ReadBytes((uint8_t*)data, size);
+-    data[size] = '\0';
+-    ((MP4StringProperty*)m_pProperties[0])->SetValue(data);
+-    MP4Free(data);
++    try {
++        m_File.ReadBytes((uint8_t*) data, size);
++        data[size] = '\0';
++        ((MP4StringProperty*) m_pProperties[0])->SetValue(data);
++        MP4Free(data);
++    }
++    catch (Exception*) {
++        // free memory and rethrow
++        MP4Free(data);
++        throw;
++    }
+ }
+ 
+ void MP4SdpAtom::Write()
+--- a/src/mp4file_io.cpp
++++ b/src/mp4file_io.cpp
+@@ -325,19 +325,26 @@ char* MP4File::ReadString()
+ {
+     uint32_t length = 0;
+     uint32_t alloced = 64;
+-    char* data = (char*)MP4Malloc(alloced);
+-
+-    do {
+-        if (length == alloced) {
+-            data = (char*)MP4Realloc(data, alloced * 2);
+-            if (data == NULL) return NULL;
+-            alloced *= 2;
+-        }
+-        ReadBytes((uint8_t*)&data[length], 1);
+-        length++;
+-    } while (data[length - 1] != 0);
+-
+-    data = (char*)MP4Realloc(data, length);
++    char* data = (char*) MP4Malloc(alloced);
++    try {
++        do {
++            if (length == alloced) {
++                data = (char*) MP4Realloc(data, alloced * 2);
++                if (data == NULL)
++                    return NULL;
++                alloced *= 2;
++            }
++            ReadBytes((uint8_t*) &data[length], 1);
++            length++;
++        } while (data[length - 1] != 0);
++
++        data = (char*) MP4Realloc(data, length);
++    }
++    catch (Exception*) {
++        // free memory and rethrow
++        MP4Free(data);
++        throw;
++    }
+     return data;
+ }
+ 
+@@ -384,21 +391,34 @@ char* MP4File::ReadCountedString(uint8_t charSize, bool allowExpandedCount, uint
+     }
+ 
+     uint32_t byteLength = charLength * charSize;
+-    char* data = (char*)MP4Malloc(byteLength + 1);
+-    if (byteLength > 0) {
+-        ReadBytes((uint8_t*)data, byteLength);
+-    }
+-    data[byteLength] = '\0';
+-
+-    // read padding
+-    if (fixedLength) {
+-        const uint8_t padsize = fixedLength - byteLength -1U;
+-        if( padsize ) {
+-            uint8_t* padbuf = (uint8_t*)malloc( padsize );
+-            ReadBytes( padbuf, padsize );
+-            free( padbuf );
++    char* data = (char*) MP4Malloc(byteLength + 1);
++    try {
++        if (byteLength > 0)
++            ReadBytes((uint8_t*) data, byteLength);
++        data[byteLength] = '\0';
++
++        // read padding
++        if (fixedLength) {
++            const uint8_t padsize = fixedLength - byteLength -1U;
++            if (padsize) {
++                uint8_t* padbuf = (uint8_t*) MP4Malloc(padsize);
++                try {
++                    ReadBytes(padbuf, padsize);
++                    MP4Free(padbuf);
++                }
++                catch (Exception*) {
++                    // free memory and rethrow
++                    MP4Free(padbuf);
++                    throw;
++                }
++            }
+         }
+     }
++    catch (Exception*) {
++        // free memory and rethrow
++        MP4Free(data);
++        throw;
++    }
+ 
+     return data;
+ }

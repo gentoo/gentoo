@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>scheme@gentoo.org</email>
+    <name>Gentoo Scheme Project</name>
+  </maintainer>
+  <longdescription>
+    The Gambit Scheme system is a complete, portable, efficient and reliable
+    implementation of the Scheme programming language.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/gambit/gambit/issues/</bugs-to>
+    <remote-id type="github">gambit/gambit</remote-id>
+  </upstream>
+</pkgmetadata>

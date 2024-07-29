@@ -1,0 +1,89 @@
+https://bugs.gentoo.org/778899
+
+Author: orbea <orbea@riseup.net>
+Date:   Fri Jun 17 17:29:51 2022 -0700
+
+    configure: Add minimal configure.ac for libtool
+
+diff --git a/Makefile b/Makefile.in
+similarity index 92%
+rename from Makefile
+rename to Makefile.in
+index 76cfd35..2c05a99 100644
+--- a/Makefile
++++ b/Makefile.in
+@@ -4,11 +4,9 @@
+ config ?= debug
+ SYSTEM ?= $(shell uname -s)
+ 
+-ifeq ($(SYSTEM),Darwin)
+-  LIBTOOL ?= glibtool
+-else
+-  LIBTOOL ?= libtool
+-endif
++top_builddir = @top_builddir@
++
++LIBTOOL := @LIBTOOL@
+ 
+ ifneq ($(VERBOSE),1)
+   LIBTOOL += --quiet
+@@ -33,11 +31,11 @@ else
+   XCFLAGS += -std=c99
+ endif
+ 
+-NAME    := mpack
+-MAJOR   := 1
+-MINOR   := 0
+-PATCH   := 3
+-VERSION := $(MAJOR).$(MINOR).$(PATCH)
++NAME    := @PACKAGE_NAME@
++MAJOR   := @MAJOR@
++MINOR   := @MINOR@
++PATCH   := @PATCH@
++VERSION := @PACKAGE_VERSION@
+ 
+ LT_REVISION=0
+ LT_CURRENT=0
+@@ -130,6 +128,11 @@ clean:
+ $(TOBJ): XCFLAGS := $(filter-out $(TEST_FILTER_OUT),$(XCFLAGS)) \
+ 	-std=gnu99 -Wno-conversion -Wno-unused-parameter
+ 
++$(OUTDIR)/.tag:
++	@mkdir -p $(OUTDIR)/$(SRCDIR)
++	@mkdir -p $(OUTDIR)/$(TESTDIR)/deps/tap
++	@touch $@
++
+ $(COVOUT): $(SRC) $(TSRC)
+ 	find $(OUTDIR) -type f -name '*.gcda' -print0 | xargs -0 rm -f
+ 	$(MAKE) CFLAGS='-DNDEBUG -g --coverage' LDFLAGS=--coverage config=$(config) test
+@@ -142,7 +145,7 @@ $(PROFOUT): $(SRC) $(TSRC)
+ 	gprof $(OUTDIR)/run-tests gmon.out > $@
+ 	rm gmon.out
+ 
+-$(OUTDIR)/%.lo: %.c $(AMALG)
++$(OUTDIR)/%.lo: %.c $(AMALG) $(OUTDIR)/.tag
+ 	@echo compile $< =\> $@
+ 	@$(LIBTOOL) --mode=compile --tag=CC $(CC) $(XCFLAGS) $(CFLAGS) -o $@ -c $<
+ 
+diff --git a/configure.ac b/configure.ac
+new file mode 100644
+index 0000000..d2f02e7
+--- /dev/null
++++ b/configure.ac
+@@ -0,0 +1,16 @@
++m4_define([MAJOR], [1])
++m4_define([MINOR], [0])
++m4_define([PATCH], [5])
++
++AC_INIT([mpack], [MAJOR.MINOR.PATCH])
++AC_CONFIG_FILES([Makefile])
++
++LT_INIT
++
++AC_SUBST([top_builddir], [$abs_builddir])
++
++AC_SUBST([MAJOR], [MAJOR])
++AC_SUBST([MINOR], [MINOR])
++AC_SUBST([PATCH], [PATCH])
++
++AC_OUTPUT

@@ -1,0 +1,19 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,6 @@
+ CC = gcc
+ CCFLAGS = -Wall -pthread -ggdb
+-CFLAGS = -Wall -O2 -pthread -ggdb -I. 
++CFLAGS += -pthread -Wall -I.
+ LIBS = -lpcap
+ OBJS = parse.o sniff.o main.o log.o
+ SRCS = ${OBJS:.o=.c}
+@@ -9,7 +9,7 @@
+ all: $(TARGET)
+ 
+ $(TARGET): $(OBJS)
+-	$(CC) $(CCFLAGS) -o $(TARGET) $(OBJS) $(LIBS)
++	$(CC) $(CCFLAGS) $(LDFLAGS) -o $(TARGET) $(OBJS) $(LIBS)
+ 
+ clean:
+ 	rm -f $(OBJS) *~ *.core core siphon

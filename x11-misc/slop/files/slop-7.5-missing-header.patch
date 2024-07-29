@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/810349
+
+https://github.com/naelstrof/slop/commit/5cbcb9e
+From: Drunkard Zhang <gongfan193@gmail.com>
+Date: Tue, 28 Sep 2021 12:20:25 +0800
+Subject: [PATCH] bugfix: add missed header
+
+XDestroyImage is included in <X11/Xutil.h> which belongs to libX11.
+Build fails without include this header on Gentoo.
+--- a/src/framebuffer.cpp
++++ b/src/framebuffer.cpp
+@@ -1,3 +1,4 @@
++#include <X11/Xutil.h>
+ #include "framebuffer.hpp"
+ 
+ slop::Framebuffer::Framebuffer( int w, int h ) {

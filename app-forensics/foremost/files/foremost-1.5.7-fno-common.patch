@@ -1,0 +1,99 @@
+diff -up foremost-1.5.7/api.c.me foremost-1.5.7/api.c
+--- foremost-1.5.7/api.c.me	2020-02-06 14:15:48.218200745 +0100
++++ foremost-1.5.7/api.c	2020-02-06 14:16:42.624853860 +0100
+@@ -20,6 +20,7 @@ int				currFATblk;
+ int				highblk = 0;
+ int				block_list[OUR_BLK_SIZE / sizeof(int)];
+ extern int		errno;
++struct DIRECTORY *dirlist, *dl;
+ 
+ /*Inititialize those globals used by extract_ole*/
+ void init_ole()
+diff -up foremost-1.5.7/extract.c.me foremost-1.5.7/extract.c
+--- foremost-1.5.7/extract.c.me	2020-02-06 14:10:30.446386101 +0100
++++ foremost-1.5.7/extract.c	2020-02-06 14:15:14.736798823 +0100
+@@ -25,6 +25,7 @@ extern char *extract_name;
+ extern int	extract;
+ extern int	FATblk;
+ extern int	highblk;
++extern struct DIRECTORY *dirlist, *dl;
+ 
+ /********************************************************************************
+  *Function: extract_zip
+diff -up foremost-1.5.7/main.h.me foremost-1.5.7/main.h
+--- foremost-1.5.7/main.h.me	2020-02-06 13:48:46.923922983 +0100
++++ foremost-1.5.7/main.h	2020-02-06 13:50:08.001849830 +0100
+@@ -292,7 +292,7 @@ char *__progname;
+ /* -----------------------------------------------------------------
+    State Variable and Global Variables
+    ----------------------------------------------------------------- */
+-char wildcard;
++extern char wildcard;
+ typedef struct f_state 
+ {
+   off_t mode;
+@@ -344,7 +344,7 @@ typedef struct s_spec
+     int written; /*used for -a mode*/
+ }s_spec;
+ 
+-s_spec search_spec[50];  /*ARRAY OF BUILTIN SEARCH TYPES*/
++extern s_spec search_spec[50];  /*ARRAY OF BUILTIN SEARCH TYPES*/
+ 
+ typedef struct f_info {
+   char *file_name;
+@@ -367,7 +367,7 @@ typedef struct f_info {
+ } f_info;
+ 
+ /* Set if the user hits ctrl-c */
+-int signal_caught;
++extern int signal_caught;
+ 
+ /* -----------------------------------------------------------------
+    Function definitions
+@@ -433,7 +433,7 @@ off_t find_file_size(FILE *f);
+ char *human_readable(off_t size, char *buffer);
+ char *units(unsigned int c);
+ unsigned int chop(char *buf);
+-void print_search_specs(f_state *s);
++extern void print_search_specs(f_state *s);
+ int memwildcardcmp(const void *s1, const void *s2,size_t n,int caseSensitive);
+ int charactersMatch(char a, char b, int caseSensitive);
+ void printx(unsigned char* buf,int start, int end);
+diff -up foremost-1.5.7/ole.h.me foremost-1.5.7/ole.h
+--- foremost-1.5.7/ole.h.me	2020-02-06 14:08:16.524783353 +0100
++++ foremost-1.5.7/ole.h	2020-02-06 14:10:02.954056080 +0100
+@@ -84,8 +84,8 @@ struct DIRECTORY
+ 	int		s2;
+ 	int		d1;
+ 	int		d2;
+-}
+-*dirlist, *dl;
++};
++
+ 
+ int				get_dir_block(unsigned char *fd, int blknum, int buffersize);
+ int				get_dir_info(unsigned char *src);
+diff -up foremost-1.5.7/state.c.me foremost-1.5.7/state.c
+--- foremost-1.5.7/state.c.me	2020-02-06 14:06:44.514684887 +0100
++++ foremost-1.5.7/state.c	2020-02-06 14:08:03.329625827 +0100
+@@ -2,6 +2,9 @@
+ 
+ #include "main.h"
+ 
++s_spec search_spec[50];
++char wildcard;
++
+ int initialize_state (f_state * s, int argc, char **argv)
+ 	{
+ 	char	**argv_copy = argv;
+diff -up foremost-1.5.7/main.c.me foremost-1.5.7/main.c
+--- foremost-1.5.7/main.c.me	2020-02-06 14:20:09.918342282 +0100
++++ foremost-1.5.7/main.c	2020-02-06 14:20:42.531733786 +0100
+@@ -15,6 +15,7 @@
+  *
+  */
+ #include "main.h"
++int signal_caught;
+ 
+ #ifdef __WIN32
+ 

@@ -1,0 +1,23 @@
+--- a/src/libcuecue/cuecue.c
++++ b/src/libcuecue/cuecue.c
+@@ -163,12 +163,8 @@
+ 	char str[CUECUE_FILENAME_MAX];
+ 	char *ext;
+ 	int i;
+-	int found=0;
+-
+-	ext = strrchr(filename,'.');
+ 
+ 	for(i=0; i<DECODER_MAX; i++) {
+-		char *ext;
+ 
+ 		strcpy(str,filename);
+ 		ext = strrchr(str,'.');
+@@ -176,7 +172,6 @@
+ 			strcpy(ext,Extensions[i]);
+ 			if (FileExists(str)) {
+ 				strcpy(cuefile,str);
+-				found=1;
+ 				return 1;
+ 			}
+ 		}

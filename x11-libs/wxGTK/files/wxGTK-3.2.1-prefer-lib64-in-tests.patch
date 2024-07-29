@@ -1,0 +1,33 @@
+From eafc2ad88b9164a8ef6bd2f6d79e8d7da90246e8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@aarsen.me>
+Date: Mon, 19 Dec 2022 12:30:09 +0100
+Subject: [PATCH] tests: Prefer /lib64 to /lib in DynamicLibrary test
+
+---
+Upstream has been notified about this test failure, however, I'd prefer a
+different fix in place of this one, so I haven't sent a patch in yet.
+
+https://github.com/wxWidgets/wxWidgets/commit/512b8033feef6ba99c4dfdf6ada42a56d7425d6d
+
+ tests/misc/dynamiclib.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tests/misc/dynamiclib.cpp b/tests/misc/dynamiclib.cpp
+index 020eb5b..ee41f1d 100644
+--- a/tests/misc/dynamiclib.cpp
++++ b/tests/misc/dynamiclib.cpp
+@@ -37,9 +37,10 @@ TEST_CASE("DynamicLibrary::Load", "[dynlib]")
+ #else // other Unix
+     static const char* const candidateDirs[] =
+     {
++        "/lib64",
++        "/usr/lib64",
+         "/lib/x86_64-linux-gnu",
+         "/lib",
+-        "/lib64",
+         "/usr/lib",
+     };
+ 
+-- 
+2.39.0
+

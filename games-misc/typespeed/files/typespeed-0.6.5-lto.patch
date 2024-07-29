@@ -1,0 +1,54 @@
+https://bugs.gentoo.org/858785
+--- a/src/file.c
++++ b/src/file.c
+@@ -97,7 +97,7 @@ extern unsigned long	 cstrl(char *);
+ extern void		 defrule(void);
+ extern void		 drawscreen(void);
+ extern int		 fileselmenu(int, struct finfo *, const char *);
+-extern unsigned short	 level(int);
++extern int		 level(int);
+ extern void		 liima_mvgetnstr(int, int, char *, int);
+ extern int		 netrecv(int, int, int, int, char *, size_t);
+ extern int		 netsend(char *);
+--- a/src/menu.c
++++ b/src/menu.c
+@@ -54,7 +54,7 @@ extern void		closenetwork(void);
+ extern unsigned long	cstrl(char *);
+ extern void		xerrx(int, const char *, ...);
+ extern int		initnetwork(char *, int);
+-extern unsigned short	level(int);
++extern int		level(int);
+ extern void		liima_mvgetnstr(int, int, char *, int);
+ extern void		multipmenu(void);
+ extern void		xcolor_set(short);
+--- a/src/misc.c
++++ b/src/misc.c
+@@ -61,7 +61,7 @@
+ unsigned long	 cstrl(char *);
+ void		 endcursestuff(void);
+ void		 initcursestuff(void);
+-unsigned short	 level(int);
++int		 level(int);
+ void		 liima_mvgetnstr(int, int, char *, int);
+ int		 r(int);
+ clock_t		 timenow(void);
+@@ -151,7 +151,7 @@ initcursestuff(void)
+ }
+ 
+ /* Returns (0 - 10) and sets color according to "pointsit". */
+-unsigned short
++int
+ level(int pointsit)
+ {
+ 	int leveli;
+--- a/src/typespeed.c
++++ b/src/typespeed.c
+@@ -96,7 +96,7 @@ extern void		freewords(void);
+ extern void		initcursestuff(void);
+ extern int		initnetwork(char *, int);
+ extern void		initstatus(char *);
+-extern unsigned short	level(int);
++extern int		level(int);
+ extern int		loadscores(char *);
+ extern void		makescorefiles(char *);
+ extern void		multipmenu(void);

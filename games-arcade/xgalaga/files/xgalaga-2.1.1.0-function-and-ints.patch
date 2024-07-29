@@ -1,0 +1,24 @@
+Bug: https://bugs.gentoo.org/877287
+--- a/title.c
++++ b/title.c
+@@ -5,6 +5,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ #ifdef HAVE_FCNTL_H
+ # include <fcntl.h>
+ #endif
+@@ -17,9 +18,9 @@
+ #include "proto.h"
+ 
+ /* for scrolling credits */
+-const LINESIZE= 70;
+-const VISIBLELINES=7;
+-const SPEEDFACTOR=5;
++const int LINESIZE=70;
++const int VISIBLELINES=7;
++const int SPEEDFACTOR=5;
+ char *gchLBuf;
+ int giCreditLines=0, giActCreditLine=0;
+ 

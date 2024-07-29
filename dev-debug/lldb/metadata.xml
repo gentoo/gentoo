@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>llvm@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">llvm/llvm-project</remote-id>
+	</upstream>
+	<use>
+		<flag name="debuginfod">
+			Expose the transitive dependencies on <pkg>net-misc/curl</pkg>
+			and <pkg>dev-cpp/cpp-httplib</pkg>) to match
+			<pkg>sys-devel/llvm</pkg>.
+		</flag>
+	</use>
+</pkgmetadata>

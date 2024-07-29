@@ -1,0 +1,15 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 96a2c90..a3836f8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -187,9 +187,7 @@ find_package(Doxygen)
+ 
+     # Python
+     ##########
+-
+-find_package(PythonLibs 3)
+-find_package(pybind11)
++include(GrPybind)
+ 
+ GR_REGISTER_COMPONENT("Python support" ENABLE_PYTHON
+     PYTHONLIBS_FOUND

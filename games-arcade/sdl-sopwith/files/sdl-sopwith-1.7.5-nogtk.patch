@@ -1,0 +1,42 @@
+--- a/configure.in.old
++++ b/configure.in
+@@ -61,11 +61,6 @@
+ 	SOPWITH_SUBDIRS="$SOPWITH_SUBDIRS sdl"
+ ],)
+ 
+-PKG_CHECK_MODULES(GTK, glib-2.0 >= 2.0 gtk+-2.0 >= 2.0, [
+-	SOPWITH_BINS="$SOPWITH_BINS" # gtksopwith"
+-	SOPWITH_SUBDIRS="$SOPWITH_SUBDIRS" # gtk"
+-],)
+-
+ AC_SUBST(SOPWITH_BINS)
+ AC_SUBST(SOPWITH_SUBDIRS)
+ 
+@@ -71,7 +71,7 @@
+ 
+ dnl check for TCPIP support
+ 
+-AC_CHECK_HEADER(netinet/ip.h, AC_DEFINE(TCPIP),,)
++AC_CHECK_HEADER(netinet/ip.h, AC_DEFINE([TCPIP], [1], [TCP/IP support]),,)
+ 
+ dnl generate Makefiles
+ 
+--- a/src/Makefile.am.old
++++ b/src/Makefile.am
+@@ -6,7 +6,7 @@
+ bin_PROGRAMS = @SOPWITH_BINS@
+ EXTRA_PROGRAMS = sopwith gtksopwith psopwith
+ 
+-CFLAGS = @CFLAGS@ -I..
++AM_CFLAGS = @SDL_CFLAGS@ -I..
+ 
+ COMMON_SRC =       \
+ video.h	    swcollsn.c  swgames.h   swmain.h    swutil.h 	\
+--- a/src/sdl/Makefile.am.old
++++ b/src/sdl/Makefile.am
+@@ -1,4 +1,4 @@
+-CFLAGS=@CFLAGS@ @SDL_CFLAGS@ -I..
++AM_CFLAGS = @SDL_CFLAGS@ -I..
+ 
+ noinst_LIBRARIES = libsdlsopwith.a
+ 

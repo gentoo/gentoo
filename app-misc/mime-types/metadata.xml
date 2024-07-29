@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>eras@gentoo.org</email>
+  <name>Eray Aslan</name>
+</maintainer>
+<use>
+  <flag name="nginx">Enable mime-types support for
+    <pkg>www-servers/nginx</pkg> package</flag>
+</use>
+<stabilize-allarches/>
+</pkgmetadata>

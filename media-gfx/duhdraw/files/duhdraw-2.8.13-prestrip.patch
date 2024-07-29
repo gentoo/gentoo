@@ -1,0 +1,18 @@
+--- duhdraw-2.8.13/Makefile
++++ duhdraw-2.8.13/Makefile
+@@ -12,15 +12,12 @@
+ 
+ ansi:	cleanansi
+ 	$(CC) -o ansi ansi.c ansi-esc.c $(LIBS)
+-	$(STRIP) ansi
+ 
+ duhdraw:	cleandd	
+ 	$(CC) -o duhdraw duhdraw.c ansi-esc.c $(LIBS) 
+-	$(STRIP) duhdraw
+ 
+ ansitoc:	cleanansitoc	
+ 	$(CC) -o ansitoc ansitoc.c
+-	$(STRIP) ansitoc
+ 
+ cleanansi:	
+ 	rm -f ansi

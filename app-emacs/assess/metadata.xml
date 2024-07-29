@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    Assess provides additional support for testing Emacs packages. It provides:
+    a set of predicates for comparing strings, buffers and file contents,
+    explainer functions for all predicates giving useful output, macros for
+    creating many temporary buffers at once, and for restoring the buffer list,
+    methods for testing indentation, by comparison or "roundtripping", methods
+    for testing fontification.
+    Assess aims to be a stateless as possible, leaving Emacs unchanged whether
+    the tests succeed or fail, with respect to buffers, open files and so on;
+    this helps to keep tests independent from each other.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/phillord/assess/issues/</bugs-to>
+    <remote-id type="github">phillord/assess</remote-id>
+  </upstream>
+</pkgmetadata>

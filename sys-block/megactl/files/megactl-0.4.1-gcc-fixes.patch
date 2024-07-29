@@ -1,0 +1,46 @@
+diff -Nuar --exclude '*.swp' --exclude '*.o' megactl-0.4.1.orig/src/callinfo.c megactl-0.4.1/src/callinfo.c
+--- megactl-0.4.1.orig/src/callinfo.c	2007-08-21 00:19:53.000000000 -0700
++++ megactl-0.4.1/src/callinfo.c	2014-07-13 22:05:06.585598812 -0700
+@@ -255,7 +255,12 @@
+     { SYS_setfsgid32,		0,	"setfsgid32" },
+     { SYS_pivot_root,		0,	"pivot_root" },
+     { SYS_mincore,		0,	"mincore" },
++#ifdef SYS_madvise
++    { SYS_madvise,		0,	"madvise" },
++#endif
++#ifdef SYS_madvise1
+     { SYS_madvise1,		0,	"madvise1" },
++#endif
+     { SYS_getdents64,		0,	"getdents64" },
+     { SYS_fcntl64,		0,	"fcntl64" },
+     { 222,			0,	NULL },
+diff -Nuar --exclude '*.swp' --exclude '*.o' megactl-0.4.1.orig/src/logpage.c megactl-0.4.1/src/logpage.c
+--- megactl-0.4.1.orig/src/logpage.c	2007-08-21 00:19:53.000000000 -0700
++++ megactl-0.4.1/src/logpage.c	2014-07-13 21:58:34.010848677 -0700
+@@ -20,6 +20,8 @@
+  * Foundation, 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+  */
+ 
++#define __STDC_FORMAT_MACROS
++#include <inttypes.h>
+ 
+ #include	"megaioctl.h"
+ #include	"logpage.h"
+@@ -107,7 +109,7 @@
+ 
+     for (k = 0; (b >= 1024) && (k < sizeof (suffix) / sizeof (suffix[0]) - 1); ++k, b /= 1024)
+ 	;
+-    snprintf (bytes, sizeof bytes, "%3llu%s%s", b, suffix[k], unit);
++    snprintf (bytes, sizeof bytes, "%3" PRIu64 "%s%s", b, suffix[k], unit);
+     return bytes;
+ }
+ 
+@@ -378,7 +380,7 @@
+ 		 default:				result = "unknown result"; notice = 0; break;
+ 		}
+ 		if (verbosity > notice)
+-		    fprintf (f, "    %2d: timestamp %4ud%02uh: %10s %-30s seg:%u lba:%-8lld sk:%u asc:%u ascq:%u vs:%u\n", k, t->timestamp / 24, t->timestamp % 24, test, result, t->number, t->lba, t->sense_key, t->additional_sense_code, t->additional_sense_code_qualifier, t->vendor_specific);
++		    fprintf (f, "    %2d: timestamp %4ud%02uh: %10s %-30s seg:%u lba:%-8"PRIu64" sk:%u asc:%u ascq:%u vs:%u\n", k, t->timestamp / 24, t->timestamp % 24, test, result, t->number, t->lba, t->sense_key, t->additional_sense_code, t->additional_sense_code_qualifier, t->vendor_specific);
+ 	    }
+ 	}
+ 	break;

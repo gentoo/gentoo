@@ -1,0 +1,33 @@
+--- a/makefile
++++ b/makefile
+@@ -66,8 +66,10 @@ debug : CFLAGS = -std=c99 -O0 -g
+ debug : LDLIBS = -lm
+ debug : clips
+ 
+-release : CC = gcc
+-release : CFLAGS = -std=c99 -O3 -fno-strict-aliasing
++release : AR ?=
++release : CC ?=
++release : CFLAGS ?=
++release : LDFLAGS ?=
+ release : LDLIBS = -lm
+ release : clips
+ 
+@@ -88,14 +90,14 @@ release_cpp : LDLIBS = -lstdc++
+ release_cpp : clips
+ 
+ .c.o :
+-	$(CC) -c -D$(CLIPS_OS) $(CFLAGS) $(WARNINGS) $<
++	$(CC) -c -D$(CLIPS_OS) $(CFLAGS) $(LDFLAGS) $<
+ 
+ clips : main.o libclips.a
+-	$(CC) -o clips main.o -L. -lclips $(LDLIBS)
++	$(CC) -o clips main.o -L. -lclips $(CFLAGS) $(LDFLAGS) $(LDLIBS)
+ 	
+ libclips.a : $(OBJS)
+ 	rm -f $@   
+-	ar cq $@ $(OBJS)   
++	$(AR) cq $@ $(OBJS)
+ 
+ clean : 
+ 	-rm -f main.o $(OBJS)

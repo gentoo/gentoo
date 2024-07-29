@@ -1,0 +1,56 @@
+diff -Nuar vmpsd.orig/Makefile.am vmpsd/Makefile.am
+--- vmpsd.orig/Makefile.am	2004-10-31 00:59:51.000000000 +0000
++++ vmpsd/Makefile.am	2012-02-21 09:11:30.120856909 +0000
+@@ -1,5 +1,6 @@
+ bin_PROGRAMS = vmpsd
+-vmpsd_SOURCES = vmpsd.c daemon.c data.c log.c parser.c vqp.c data.h log.h vqp.h external.c external.h
++vmpsd_SOURCES = vmpsd.c daemon.c data.c log.c parser.c vqp.c snmp.c data.h log.h vqp.h external.c external.h
+ vmpsd_CFLAGS = -DSYSCONFDIR="\"${sysconfdir}\""
++vmpsd_LDADD = $(SNMP_LIB)
+ man_MANS = vmpsd.1
+ sysconf_DATA = vlan.db
+diff -Nuar vmpsd.orig/Makefile.in vmpsd/Makefile.in
+--- vmpsd.orig/Makefile.in	2006-05-15 13:33:57.000000000 +0000
++++ vmpsd/Makefile.in	2012-02-21 09:08:54.807227002 +0000
+@@ -59,7 +59,7 @@
+ am_vmpsd_OBJECTS = vmpsd-vmpsd.$(OBJEXT) vmpsd-daemon.$(OBJEXT) \
+ 	vmpsd-data.$(OBJEXT) vmpsd-log.$(OBJEXT) \
+ 	vmpsd-parser.$(OBJEXT) vmpsd-vqp.$(OBJEXT) \
+-	vmpsd-external.$(OBJEXT)
++	vmpsd-external.$(OBJEXT) $(SNMP_OBJECTS)
+ vmpsd_OBJECTS = $(am_vmpsd_OBJECTS)
+ vmpsd_LDADD = $(LDADD)
+ DEFAULT_INCLUDES = -I. -I$(srcdir) -I.
+diff -Nuar vmpsd.orig/snmp.c vmpsd/snmp.c
+--- vmpsd.orig/snmp.c	2004-07-08 09:34:29.000000000 +0000
++++ vmpsd/snmp.c	2012-02-21 09:11:51.817566865 +0000
+@@ -8,6 +8,8 @@
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
+ 
++#define UCD_COMPATIBLE 1
++#include <net-snmp/net-snmp-config.h>
+ #include <ucd-snmp/ucd-snmp-includes.h>
+  
+ #include "log.h"
+diff -Nuar vmpsd.orig/vmpsd.c vmpsd/vmpsd.c
+--- vmpsd.orig/vmpsd.c	2006-05-15 13:33:57.000000000 +0000
++++ vmpsd/vmpsd.c	2012-02-21 09:12:28.987640940 +0000
+@@ -18,7 +18,7 @@
+ 
+ int parse_options(int argc, char **argv)
+ {
+-	char	opt;
++	signed char	opt;
+ 	char	*options = "a:cde:f:l:p:";
+ 
+ 	opterr = 0;
+@@ -80,7 +80,7 @@
+ 	printf("\t-d         do not detach, log to stderr also\n");
+ 	printf("\t-e path    use external program for mac to vlan assignment\n");
+ 	printf("\t           when/if used with -f, -f is disregarded\n");
+-	printf("\t-f file    read VMPS database from file (/etc/vmps.db)\n");
++	printf("\t-f file    read VMPS database from file ("SYSCONFDIR"/vmps.db)\n");
+ 	printf("\t-l level   set logging level:\n");
+ 	printf("\t                 0x0100 - fatal,\n");
+ 	printf("\t                 0x0200 - info,\n");

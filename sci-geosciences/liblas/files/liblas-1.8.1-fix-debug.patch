@@ -1,0 +1,18 @@
+Description: Fix compilation with -DDEBUG and GDAL >= 2
+Author: Even Rouault <even.rouault@spatialys.com>
+Origin: https://github.com/libLAS/libLAS/commit/72f7709bf1dfd3473b64cdba0259363d3beea3c3
+
+--- a/src/gt_wkt_srs.cpp
++++ b/src/gt_wkt_srs.cpp
+@@ -90,7 +90,11 @@ static const char *papszDatumEquiv[] =
+ /*                       LibgeotiffOneTimeInit()                        */
+ /************************************************************************/
+ 
++#if GDAL_VERSION_MAJOR >= 2
++static CPLMutex* hMutex = NULL;
++#else
+ static void* hMutex = NULL;
++#endif
+ 
+ void LibgeotiffOneTimeInit() 
+ {

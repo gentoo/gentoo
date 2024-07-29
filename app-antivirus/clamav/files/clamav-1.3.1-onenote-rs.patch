@@ -1,0 +1,30 @@
+From bc17e5a2e1f324461024f5e3e5776085a6b6df37 Mon Sep 17 00:00:00 2001
+From: Matt Jolly <Matt.Jolly@footclan.ninja>
+Date: Mon, 24 Jun 2024 17:34:05 +1000
+Subject: [PATCH] PropertType: Specify type for custom discriminant values
+
+We use custom discriminant values for enum variants for "PropertType" without specifying the type.
+This causes it to default to "isize" which on 64bit platforms is big enough to hold the 32bit constants,
+but causes overflow when isize is 32bit.
+
+This issue was uncovered due to build failures on arm for Gentoo Linux as a dependency of ClamAV.
+
+Bug: https://bugs.gentoo.org/927214
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+Co-authored-by: Steven Newbury <steve@snewbury.org.uk>
+---
+ src/one/property/mod.rs | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/one/property/mod.rs b/src/one/property/mod.rs
+index 42841c6..fcc0481 100644
+--- a/src/one/property/mod.rs
++++ b/src/one/property/mod.rs
+@@ -23,6 +23,7 @@ mod references;
+ pub(crate) mod simple;
+ pub(crate) mod time;
+ 
++#[repr(u32)]
+ #[derive(Debug, Copy, Clone, PartialEq)]
+ #[allow(dead_code)]
+ #[allow(clippy::enum_clike_unportable_variant)]

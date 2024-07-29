@@ -1,0 +1,20 @@
+https://github.com/rui314/mold/commit/091395df335d577adc2a09e854a129f02081c576
+
+From 091395df335d577adc2a09e854a129f02081c576 Mon Sep 17 00:00:00 2001
+From: Rui Ueyama <ruiu@cs.stanford.edu>
+Date: Fri, 28 Jun 2024 11:00:36 +0900
+Subject: [PATCH] Link with `-ldl` for dlopen()
+
+Fixes https://github.com/rui314/mold/issues/1293
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -61,6 +61,8 @@ target_compile_features(mold PRIVATE cxx_std_20)
+ 
+ if(MINGW)
+   target_link_libraries(mold PRIVATE dl)
++else()
++  target_link_libraries(mold PRIVATE ${CMAKE_DL_LIBS})
+ endif()
+ 
+ if(NOT "${CMAKE_CXX_COMPILER_FRONTEND_VARIANT}" STREQUAL "MSVC")
+

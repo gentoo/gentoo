@@ -1,0 +1,10 @@
+--- a/lsb_release
++++ b/lsb_release
+@@ -250,6 +250,7 @@
+             CHECKFIRST=$(find $INFO_ROOT/ -maxdepth 1                         \
+                    -name \*$INFO_DISTRIB_SUFFIX                               \
+                    -and ! -name $INFO_LSB_FILE                                \
++                   -and ! -name os-release                                    \
+                    -and -type f                                               \
+                    2>/dev/null                                                \
+                    | head -1 ) # keep one of the files found (if many)

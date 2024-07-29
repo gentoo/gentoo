@@ -1,0 +1,27 @@
+From 9ea3b4c2552770b66b83d44b6e6ccdd338296316 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Fri, 30 Oct 2020 10:52:10 +0100
+Subject: [PATCH] Fix build with icu-68.0
+
+icu-68.1 removed public macro definitions for TRUE and FALSE
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ src/lib/EBOOKCharsetConverter.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/lib/EBOOKCharsetConverter.cpp b/src/lib/EBOOKCharsetConverter.cpp
+index 0d85fa3..c9f8be0 100644
+--- a/src/lib/EBOOKCharsetConverter.cpp
++++ b/src/lib/EBOOKCharsetConverter.cpp
+@@ -124,7 +124,7 @@ bool EBOOKCharsetConverter::convertBytes(const char *const in, const unsigned le
+       m_converterToUTF8.get(), m_converterToUnicode.get(),
+       &outText, outText + out.size(), &inText, inText + length,
+       nullptr, nullptr, nullptr, nullptr,
+-      TRUE, TRUE, &status)
++      true, true, &status)
+     ;
+     if (status==U_BUFFER_OVERFLOW_ERROR)
+     {
+-- 
+2.29.2

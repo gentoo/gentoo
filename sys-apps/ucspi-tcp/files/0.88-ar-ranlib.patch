@@ -1,0 +1,27 @@
+--- a/Makefile
++++ b/Makefile
+@@ -394,12 +394,14 @@
+ 	) > load
+ 	chmod 755 load
+ 
++AR ?= ar
++RANLIB ?= ranlib
+ makelib: \
+ warn-auto.sh systype
+ 	( cat warn-auto.sh; \
+ 	echo 'main="$$1"; shift'; \
+ 	echo 'rm -f "$$main"'; \
+-	echo 'ar cr "$$main" $${1+"$$@"}'; \
++	echo '$(AR) cr "$$main" $${1+"$$@"}'; \
+ 	case "`cat systype`" in \
+ 	sunos-5.*) ;; \
+ 	unix_sv*) ;; \
+@@ -408,7 +410,7 @@
+ 	dgux-*) ;; \
+ 	hp-ux-*) ;; \
+ 	sco*) ;; \
+-	*) echo 'ranlib "$$main"' ;; \
++	*) echo '$(RANLIB) "$$main"' ;; \
+ 	esac \
+ 	) > makelib
+ 	chmod 755 makelib

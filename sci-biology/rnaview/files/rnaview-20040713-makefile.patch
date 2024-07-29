@@ -1,0 +1,87 @@
+ Makefile          |   20 +++++++++++++++++---
+ rnaml2ps/Makefile |   19 ++++++++++++-------
+ 2 files changed, 29 insertions(+), 10 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 452e6c4..00d35f0 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,4 +1,4 @@
+-CC        = cc
++CC        ?= cc
+ 
+ 
+ 
+@@ -56,12 +56,17 @@ OBJ_FILE = $(OBJ)/rnaview.o \
+            $(OBJ)/multiple.o \
+            $(OBJ)/statistics.o
+ 
++.PHONY: clean all install
++
++SUBDIRS = rnaml2ps
++
+ all: $(RNAVIEW)
++	for dir in ${SUBDIRS} ; do ( cd $$dir ; ${MAKE} all ) ; done
+ 
+-CFLAGS  =  $(LINCLUDES) 
++CFLAGS  +=  $(LINCLUDES)
+ 
+ $(RNAVIEW) : $(HFILES) $(OBJ_FILE) 
+-	$(CC) $(CFLAGS) -o $@ $(OBJ_FILE) $(LDFLAGS) -lm $(MALLOCLIB)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJ_FILE) -lm $(MALLOCLIB)
+ 
+ 
+ 
+@@ -111,6 +116,15 @@ $(OBJ)/statistics.o :  $(SRC)/statistics.c
+ clean:
+ 	@rm -f $(OBJ)/*.o
+ 	@rm -f $(ALLTARGETS)
++	for dir in ${SUBDIRS} ; do ( cd $$dir ; ${MAKE} clean ) ; done
++
++install:
++	install -D -m 0755 bin/rnaview $(DESTDIR)/usr/bin/rnaview
++	mkdir -p $(DESTDIR)/usr/share/rnaview/BASEPARS
++	install -m 0644 BASEPARS/* $(DESTDIR)/usr/share/rnaview/BASEPARS
++	mkdir -p $(DESTDIR)/usr/share/rnaview/test
++	install -m 0644 test/* $(DESTDIR)/usr/share/rnaview/test
++	for dir in ${SUBDIRS} ; do ( cd $$dir ; ${MAKE} install ) ; done
+ 
+ export:
+ 	mkdir -p $(EXPORT_DIR)
+diff --git a/rnaml2ps/Makefile b/rnaml2ps/Makefile
+index d207655..2278ccc 100644
+--- a/rnaml2ps/Makefile
++++ b/rnaml2ps/Makefile
+@@ -1,20 +1,25 @@
+-CFLAGS        = -O
+-CC            = cc
++CFLAGS        ?= -O
++CC            ?= cc
+ 
+ # ++++++++++++++++++++++++++++ Program RNADRAW
+ RNADRAW = rnaml2ps
+ OBJS_RNADRAW = rnaml2ps.o nrutil.o 
+ 
++all: $(RNADRAW)
++
+ $(RNADRAW):   $(OBJS_RNADRAW)
+-	$(CC) -o $(RNADRAW) $(OBJS_RNADRAW) -lm
++	$(CC) $(LDFLAGS) -o $(RNADRAW) $(OBJS_RNADRAW) -lm
+ 
+ nrutil.o : nrutil.c 
+-	cc -c  nrutil.c
++	$(CC) $(CFLAGS) -c  nrutil.c
+ 
+ rnaml2ps.o :  rnaml2ps.c
+-	cc -c  rnaml2ps.c
++	$(CC) $(CFLAGS) -c  rnaml2ps.c
+ 
+ 
+-.PHONY : clean
++.PHONY : clean all install
+ clean:
+-	rm *.o
++	rm -f *.o
++
++install:
++	install -D -m 0755 $(RNADRAW) $(DESTDIR)/usr/bin/$(RNADRAW)

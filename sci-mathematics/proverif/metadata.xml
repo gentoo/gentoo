@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>ml@gentoo.org</email>
+    <name>ML</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription>
+    ProVerif is an automatic cryptographic protocol verifier, in the formal
+    model (so called Dolev-Yao model). This protocol verifier is based on a
+    representation of the protocol by Horn clauses. Its main features are: 1)
+    It can handle many different cryptographic primitives, including shared-
+    and public-key cryptography (encryption and signatures), hash functions,
+    and Diffie-Hellman key agreements, specified both as rewrite rules or as
+    equations. 2) It can handle an unbounded number of sessions of the protocol
+    (even in parallel) and an unbounded message space. This result has been
+    obtained thanks to some well-chosen approximations. This means that the
+    verifier can give false attacks, but if it claims that the protocol
+    satisfies some property, then the property is actually satisfied. The
+    considered resolution algorithm terminates on a large class of protocols
+    (the so-called "tagged" protocols). When the tool cannot prove a property,
+    it tries to reconstruct an attack, that is, an execution trace of the
+    protocol that falsifies the desired property.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://gitlab.inria.fr/bblanche/proverif/-/issues/</bugs-to>
+  </upstream>
+</pkgmetadata>

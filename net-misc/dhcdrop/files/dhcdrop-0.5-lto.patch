@@ -1,0 +1,33 @@
+--- a/src/dhcdrop.h	2022-08-23 09:57:15.594679182 +0300
++++ b/src/dhcdrop.h	2022-08-23 09:57:31.034678048 +0300
+@@ -207,9 +207,9 @@
+ inline void replace_semicolons(char * str_ether);
+ 
+ /* Print ethernet address as hex-digits string */
+-inline void print_ether(const uint8_t * ether_addr);
++static void print_ether(const uint8_t * ether_addr);
+ 
+ /* Create random ethernet address and store to string 'str_mac_addr' */
+-inline void rand_ether_addr(char * str_mac_addr);
++static void rand_ether_addr(char * str_mac_addr);
+ 
+ #endif	/* ifdef DHCDROP_H*/
+--- a/src/dhcdrop.c	2022-08-23 09:57:09.522679628 +0300
++++ b/src/dhcdrop.c	2022-08-23 09:57:47.810676815 +0300
+@@ -1879,14 +1879,14 @@
+ 	}
+ }
+ 
+-inline void print_ether(const uint8_t * ether_addr)
++static void print_ether(const uint8_t * ether_addr)
+ {
+ 	int i;
+ 	for(i = 0; i < ETH_ALEN; ++i)
+ 		printf((i == (ETH_ALEN - 1) ) ? "%02X" :"%02X:", ether_addr[i]);
+ }
+ 
+-inline void rand_ether_addr(char * str_mac_addr) /* Minimal size of str_mac_addr must be STR_MAC_LEN (18) */
++static void rand_ether_addr(char * str_mac_addr) /* Minimal size of str_mac_addr must be STR_MAC_LEN (18) */
+ {
+     /* Fill first byte */
+     strncat(str_mac_addr, "00:", 3);

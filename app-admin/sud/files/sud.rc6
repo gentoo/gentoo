@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting sud"
+	start-stop-daemon --start --quiet --pidfile /var/run/sud.pid \
+		--exec /usr/sbin/sud
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping sud"
+	start-stop-daemon --stop --quiet --pidfile /var/run/sud.pid
+	eend $?
+}

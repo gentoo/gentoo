@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+	DNSViz is a tool suite for analysis and visualization of Domain Name 
+	System (DNS) behavior, including its security extensions (DNSSEC).
+	This tool suite powers the Web-based analysis.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">dnsviz/dnsviz</remote-id>
+		<remote-id type="pypi">dnsviz</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,49 @@
+--- a/nettop.c
++++ b/nettop.c
+@@ -70,6 +70,7 @@
+ #include <time.h>
+ #include <stdlib.h>
+ #include <netdb.h>
++#include <string.h>
+ 
+ #include "node.h"
+ #include "ent.h"
+@@ -216,22 +217,26 @@
+ 		}
+ 	}
+ 
+-	ether.count = ether.size = (int) ether.l = (int) ether.r = 0;
++	ether.count = ether.size = 0;
++	ether.l = ether.r = 0;
+ 	ether.type = -1;
+ 	for (i = 0; i < HISTORY_SIZE; i++)
+ 		ether.size_h[i] = 0;
+ 
+-	ip.count = ip.size = (int) ip.l = (int) ip.r = 0;
++	ip.count = ip.size = 0;
++	ip.l = ip.r = 0;
+ 	ip.type = -1;
+ 	for (i = 0; i < HISTORY_SIZE; i++)
+ 		ip.size_h[i] = 0;
+ 
+-	tcp.count = tcp.size = (int) tcp.l = (int) tcp.r = 0;
++	tcp.count = tcp.size = 0;
++	tcp.l = tcp.r = 0;
+ 	tcp.type = -1;
+ 	for (i = 0; i < HISTORY_SIZE; i++)
+ 		tcp.size_h[i] = 0;
+ 
+-	udp.count = udp.size = (int) udp.l = (int) udp.r = 0;
++	udp.count = udp.size = 0;
++	udp.l = udp.r = 0;
+ 	udp.type = -1;
+ 	for (i = 0; i < HISTORY_SIZE; i++)
+ 		udp.size_h[i] = 0;
+@@ -361,6 +366,7 @@
+ 				}
+ 				break;
+ 			default:
++				break;
+ 			}
+ 		}
+ 	}

@@ -1,0 +1,16 @@
+diff -Naur ownCloud-3.2.0.10193.orig/src/CMakeLists.txt ownCloud-3.2.0.10193/src/CMakeLists.txt
+--- ownCloud-3.2.0.10193.orig/src/CMakeLists.txt	2023-02-15 18:27:55.000000000 +0100
++++ ownCloud-3.2.0.10193/src/CMakeLists.txt	2023-02-22 22:55:29.352847663 +0100
+@@ -16,12 +16,6 @@
+       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fstack-protector-strong")
+     endif()
+   endif()
+-
+-  string(TOLOWER "${CMAKE_BUILD_TYPE}" CMAKE_BUILD_TYPE_LOWER)
+-  if(CMAKE_BUILD_TYPE_LOWER MATCHES "(release|relwithdebinfo|minsizerel)")
+-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_FORTIFY_SOURCE=2")
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_FORTIFY_SOURCE=2")
+-  endif()
+ endif()
+ 
+ if(WIN32)

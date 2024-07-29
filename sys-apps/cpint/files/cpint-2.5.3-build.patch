@@ -1,0 +1,73 @@
+--- cpint-2.5.3/Makefile
++++ cpint-2.5.3/Makefile
+@@ -5,59 +5,29 @@
+ prefix = 
+ bindir = /usr/sbin
+ etcdir = /etc
++krndir = /lib/modules/`uname -r`/misc
+ 
+-COMMAND = hcp mongen monstat actgen diag0
+-
+-tools: $(COMMAND)
++CFLAGS += -Wall
++CPPFLAGS += -I$(KERNEL_DIR)/include
+ 
+-hcp : hcp.o
+-	$(CC) -o $@ $^
++COMMAND = hcp mongen monstat actgen diag0
+ 
+-hcptest : hcptest.o
+-	$(CC) -o $@ $^
++all: $(COMMAND) cpint_mod.ko
+ 
+-mongen : mongen.o
+-	$(CC) -o $@ $^
++cpint_mod.ko:
++	$(MAKE) -C $(KERNEL_DIR) modules SUBDIRS=$(PWD)
+ 
+-actgen : actgen.o
+-	$(CC) -o $@ $^
++tools: $(COMMAND)
+ 
+ monstat : monstat.o sysinfo.o
+-	$(CC) -o $@ $^
+-
+-diag0   : diag0.o
+-	$(CC) -o $@ $^
+-
+-hcp.o : hcp.c
+-	$(CC) -o $@ $(INCLUDEDIR) -I. -O2 -c hcp.c
+-
+-hcptest.o : hcptest.c
+-	$(CC) -o $@ $(INCLUDEDIR) -I. -O2 -c hcptest.c
+-
+-mongen.o : mongen.c
+-	$(CC) -o $@ $(INCLUDEDIR) -I. -O2 -c mongen.c
+-
+-monstat.o : monstat.c
+-	$(CC) -o $@ $(INCLUDEDIR) -I. -O2 -c monstat.c
+-
+-sysinfo.o : sysinfo.c
+-	$(CC) -o $@ $(INCLUDEDIR) -I. -O2 -c sysinfo.c
+-
+-actgen.o : actgen.c
+-	$(CC) -o $@ $(INCLUDEDIR) -I. -O2 -c actgen.c
+-
+-diag0.o  : diag0.c
+-	$(CC) -o $@ $(INCLUDEDIR) -I. -O2 -c diag0.c
+ 
+ install: $(TARGET)
++	install -d -m 755 ${prefix}${bindir}
+ 	install -c -m 750 mongen ${prefix}${bindir}
+ 	install -c -m 750 monstat ${prefix}${bindir}
+ 	install -c -m 750 hcp ${prefix}${bindir}
+-	cp cpint_mod.ko /lib/modules/`uname -r`/kernel/drivers/s390/char/
+-	rm -rf /dev/cpcmd /dev/cpmod /dev/cpappl /dev/cpid \
+-		/dev/cpint0 /dev/cpint8 /dev/cpint76 /dev/cpint222
+-	modprobe -qr cpint_mod
+-	depmod -a
++	install -d -m 755 ${prefix}${krndir}
++	install -c -m 644 cpint_mod.ko ${prefix}${krndir}
+ 
+ clean:
+ 	rm -rf *.o *~ core mongen monstat actgen hcp diag0 *.ko *.cmd \

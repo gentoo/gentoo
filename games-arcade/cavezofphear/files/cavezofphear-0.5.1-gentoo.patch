@@ -1,0 +1,34 @@
+--- a/Makefile
++++ b/Makefile
+@@ -2,7 +2,7 @@
+ DESTDIR_DATA = /usr/local/share
+ 
+ make:
+-	cd src && make
++	$(MAKE) -C src phear
+ clean:
+ 	rm -f phear editor
+ install:
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -2,10 +2,8 @@
+ 
+ DESTDIR = ..
+ 
+-CC = gcc
+ INSTALL = install
+-CFLAGS ?= -s -Wall -O2
+-LDFLAGS += -lncurses
++LDLIBS = `${PKG_CONFIG} ncurses --libs`
+ 
+ all: phear install clean
+ 
+@@ -13,7 +11,7 @@
+ 	$(CC) $(CFLAGS) -c $^ -o $@
+ 
+ phear: $(OBJS)
+-	$(CC) $(CFLAGS) -o $@ $^ ${LDFLAGS}
++	$(CC) $(CFLAGS) -o $@ $^ ${LDFLAGS} $(LDLIBS)
+ 
+ install: install-game
+ 

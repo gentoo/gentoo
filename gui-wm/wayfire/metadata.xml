@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ceamac@gentoo.org</email>
+		<name>Viorel Munteanu</name>
+	</maintainer>
+	<longdescription>
+		compiz like eye-candy 3D wayland, with low memory footprint.
+		Aims to bring desktop features such as 3D cube, fire burn,
+		fisheye, wrot and all other desktop effects to wayland.
+	</longdescription>
+	<use>
+		<flag name="gles3">Enable OpenGL ES 3.x Features.</flag>
+		<flag name="X">Enable support for X11 applications (XWayland).</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">WayfireWM/wayfire</remote-id>
+	</upstream>
+</pkgmetadata>

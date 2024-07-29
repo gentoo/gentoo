@@ -1,0 +1,29 @@
+Fix multistatement macro partially guarded by if
+
+The code still works correctly by chance, but it performs redundant
+calls to BZ2_bzBuffToBuffDecompress() and it's a horrible mess.
+
+--- a/src/matrixview.c
++++ b/src/matrixview.c
+@@ -248,8 +248,9 @@ void loadNextImage ()
+ 		GetExceptionInfo (&exception);
+ #endif
+ 
+-		if (!pics)
++		if (!pics) {
+ 			LOAD_TEXTURE (pics, cpics, cpics_compressedsize, cpics_size)
++		}
+ 
+ 		if ((text_x != 90) || (text_y != 70)) {
+ 			if (!pic)
+@@ -279,8 +280,9 @@ void loadNextImage ()
+ 			DestroyImage (image);
+ 			DestroyImage (scaled_image);
+ 		} else {
+-			if (!pics)
++			if (!pics) {
+ 				LOAD_TEXTURE (pics, cpics, cpics_compressedsize, cpics_size)
++			}
+ 
+ 			pic = (unsigned char *)(pics + ((random () & 15) * (text_x * text_y)));
+ 		}

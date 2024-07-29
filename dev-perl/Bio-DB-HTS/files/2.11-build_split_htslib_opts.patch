@@ -1,0 +1,65 @@
+diff --git a/Build.PL b/Build.PL
+index 0d684b7..87a223b 100644
+--- a/Build.PL
++++ b/Build.PL
+@@ -68,7 +68,15 @@ sub find_hts {
+     # If either of these are set, we expect to find the htslib files there:
+     # (They're explicitly set by the user, so we shouldn't fall back to
+     # finding another copy somewhere else.)
+-    if (my $dir = $self->args('htslib')) {
++    my $incdir = $self->args('htslib-includedir');
++    my $libdir = $self->args('htslib-libdir');
++    if ($incdir && $libdir) {
++        return 1 if $self->find_hts_in_split_install_dirs($incdir, $libdir);
++        $self->die_hts_not_found(
++            "--htslib-includedir '$incdir' or --htslib-libdir '$libdir' command line parameters do not contain expected files\n"
++        );
++    }
++    elsif (my $dir = $self->args('htslib')) {
+         return 1 if $self->find_hts_in_build_dir($dir);
+         return 1 if $self->find_hts_in_install_dir($dir);
+         $self->die_hts_not_found(
+@@ -158,6 +166,23 @@ sub find_hts_in_install_dir {
+     }
+ }
+ 
++sub find_hts_in_split_install_dirs {
++    my ($self, $hts_include, $hts_lib) = @_;
++
++    chomp($hts_lib);
++    chomp($hts_include);
++    $hts_include =~ s{include/htslib$}{include};
++
++    if (hts_dev_files_exist($hts_lib, $hts_include)) {
++        $self->config_data('hts_lib'     => $hts_lib);
++        $self->config_data('hts_include' => $hts_include);
++        return 1;
++    }
++    else {
++        return 0;
++    }
++}
++
+ sub die_hts_not_found {
+     my ($self, $msg) = @_;
+ 
+@@ -170,12 +195,13 @@ Install it if you have not done so already.
+ This script will attempt to locate HTSlib by looking for htslib/hts.h
+ and libhts.a / libhts.so in:
+ 
+-  1. --htslib command line argument
+-  2. HTSLIB_DIR environment variable
+-  3. --prefix command line argument (which also sets installation location)
+-  4. Alien::HTSlib dependency resolver
+-  5. pkg-config (extra directories can be set in PKG_CONFIG_PATH environment variable)
+-  6. common library locations: /usr /usr/local, /usr/share, /opt/local
++  1. --htslib-includedir and --htslib-libdir command line arguments
++  2. --htslib command line argument
++  3. HTSLIB_DIR environment variable
++  4. --prefix command line argument (which also sets installation location)
++  5. Alien::HTSlib dependency resolver
++  6. pkg-config (extra directories can be set in PKG_CONFIG_PATH environment variable)
++  7. common library locations: /usr /usr/local, /usr/share, /opt/local
+ 
+ END
+ 

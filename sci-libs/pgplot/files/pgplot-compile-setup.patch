@@ -1,0 +1,96 @@
+--- a/sys_linux/g77_gcc.conf.orig	1999-07-05 19:10:33.000000000 +0100
++++ b/sys_linux/g77_gcc.conf	2008-10-29 18:30:33.000000000 +0000
+@@ -1,4 +1,4 @@
+-# The GNU g77 FORTRAN compiler and Gnu gcc C compiler on an elf-system.
++# The GNU gfortran FORTRAN compiler and Gnu gcc C compiler on an elf-system.
+ #-----------------------------------------------------------------------
+ 
+ # Optional: Needed by XWDRIV (/xwindow and /xserve) and
+@@ -23,7 +23,7 @@
+ # The arguments needed by the C compiler to locate Tcl, Tk and
+ # X-window include files.
+  
+-   TK_INCL="-I/usr/include $XINCL"
++   TK_INCL="$XINCL"
+ 
+ # Optional: Needed by RVDRIV (/xrv).
+ # The arguments needed by the C compiler to locate Rivet, Tcl, Tk and
+@@ -34,13 +34,13 @@
+ # Mandatory.
+ # The FORTRAN compiler to use.
+  
+-   FCOMPL="g77"
++   FCOMPL="gfortran"
+ 
+ # Mandatory.
+ # The FORTRAN compiler flags to use when compiling the pgplot library.
+ # (NB. makemake prepends -c to $FFLAGC where needed)
+  
+-   FFLAGC="-u -Wall -fPIC -O"
++   FFLAGC="-u -Wall"
+ 
+ # Mandatory.
+ # The FORTRAN compiler flags to use when compiling fortran demo programs.
+@@ -57,12 +57,12 @@
+ # Mandatory.
+ # The C compiler flags to use when compiling the pgplot library.
+  
+-   CFLAGC="-Wall -fPIC -DPG_PPU -O"
++   CFLAGC="-Wall -DPG_PPU"
+ 
+ # Mandatory.
+ # The C compiler flags to use when compiling C demo programs.
+  
+-   CFLAGD="-Wall -O"
++   CFLAGD="-Wall"
+ 
+ # Optional: Only needed if the cpgplot library is to be compiled.
+ # The flags to use when running pgbind to create the C pgplot wrapper
+@@ -74,7 +74,7 @@
+ # The library-specification flags to use when linking normal pgplot
+ # demo programs.
+  
+-   LIBS="-L/usr/X11R6/lib -lX11"
++   LIBS="-lX11"
+ 
+ # Optional: Needed by XMDRIV (/xmotif).
+ # The library-specification flags to use when linking motif
+@@ -92,7 +92,7 @@
+ # The library-specification flags to use when linking Tk demo programs.
+ # Note that you may need to append version numbers to -ltk and -ltcl.
+  
+-   TK_LIBS="-L/usr/lib -ltk -ltcl $LIBS -ldl"
++   TK_LIBS="-ltk -ltcl $LIBS -ldl"
+ 
+ # Mandatory.
+ # On systems that have a ranlib utility, put "ranlib" here. On other
+@@ -103,12 +103,18 @@
+ # Optional: Needed on systems that support shared libraries.
+ # The name to give the shared pgplot library.
+  
+-   SHARED_LIB="libpgplot.so"
++   MV=5
++   SHARED_LIB="libpgplot.so.$MV"
++   SHARED_CLIB="libcpgplot.so.$MV"
+ 
+ # Optional: Needed if SHARED_LIB is set.
+ # How to create a shared library from a trailing list of object files.
+  
+-   SHARED_LD="gcc -shared  -o $SHARED_LIB"
++   SHARED_LD_PGPLOT_OPTS="$LDFLAGS -Wl,-soname,$SHARED_LIB"
++
++   SHARED_LD_CPGPLOT_OPTS="$LDFLAGS -Wl,-soname,$SHARED_CLIB"
++  
++   SHARED_LD="$FCOMPL -shared"
+ 
+ # Optional:
+ # On systems such as Solaris 2.x, that allow specification of the
+@@ -117,7 +123,7 @@
+ # library-specification flags used to specify these libraries to
+ # $SHARED_LD
+  
+-   SHARED_LIB_LIBS=""
++   SHARED_LIB_LIBS="-lX11 -lXt -lpng"
+ 
+ # Optional:
+ # Compiler name used on Next systems to compile objective-C files.

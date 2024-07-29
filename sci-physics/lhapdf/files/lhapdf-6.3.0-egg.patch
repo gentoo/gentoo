@@ -1,0 +1,16 @@
+--- a/wrappers/python/Makefile.am	2023-09-01 11:38:37.567370819 +0200
++++ b/wrappers/python/Makefile.am	2023-09-01 11:37:50.641123445 +0200
+@@ -29,10 +29,10 @@
+ 
+ ## Always force setup.py, it's not good at guessing what needs to rebuild
+ all-local: fix-out-of-source
+-	$(PYEXT_ENV) $(PYTHON) setup.py install --install-lib=build/ --force
++	$(PYEXT_ENV) $(PYTHON) setup.py install --single-version-externally-managed --root=/ --install-lib=$(S)/build/ --force
+ 
+ install-exec-local:
+-	$(PYEXT_ENV) $(PYTHON) setup.py install --prefix=$(DESTDIR)$(prefix) --force
++	$(PYEXT_ENV) $(PYTHON) setup.py install --single-version-externally-managed --root=/ --prefix=$(DESTDIR)$(prefix) --force
+ 
+ uninstall-local:
+ 	rm -f $(DESTDIR)$(PYTHON_PATH)/lhapdf.so
+

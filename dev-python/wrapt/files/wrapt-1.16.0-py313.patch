@@ -1,0 +1,113 @@
+From 185f1f2692a64f7b908b98a25d890b951a12c3c7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Miro=20Hron=C4=8Dok?= <miro@hroncok.cz>
+Date: Fri, 8 Mar 2024 00:40:11 +0100
+Subject: [PATCH] Fix classmethod tests with Python 3.13+
+
+Fixes https://github.com/GrahamDumpleton/wrapt/issues/259
+
+---
+ tests/test_outer_classmethod.py | 18 ++++++++++--------
+ tests/test_synchronized_lock.py | 26 ++++++++++++++------------
+ 2 files changed, 24 insertions(+), 20 deletions(-)
+
+diff --git a/tests/test_outer_classmethod.py b/tests/test_outer_classmethod.py
+index ab807646..c08d34a5 100644
+--- a/tests/test_outer_classmethod.py
++++ b/tests/test_outer_classmethod.py
+@@ -128,18 +128,20 @@ def test_class_call_function(self):
+         # first argument with the actual arguments following that. This
+         # was only finally fixed in Python 3.9. For more details see:
+         # https://bugs.python.org/issue19072
++        # Starting with Python 3.13 the old behavior is back.
++        # For more details see https://github.com/python/cpython/issues/89519
+ 
+         _args = (1, 2)
+         _kwargs = {'one': 1, 'two': 2}
+ 
+         @wrapt.decorator
+         def _decorator(wrapped, instance, args, kwargs):
+-            if PYXY < (3, 9):
+-                self.assertEqual(instance, None)
+-                self.assertEqual(args, (Class,)+_args)
+-            else:
++            if (3, 9) <= PYXY < (3, 13):
+                 self.assertEqual(instance, Class)
+                 self.assertEqual(args, _args)
++            else:
++                self.assertEqual(instance, None)
++                self.assertEqual(args, (Class,)+_args)
+ 
+             self.assertEqual(kwargs, _kwargs)
+             self.assertEqual(wrapped.__module__, _function.__module__)
+@@ -176,12 +178,12 @@ def test_instance_call_function(self):
+ 
+         @wrapt.decorator
+         def _decorator(wrapped, instance, args, kwargs):
+-            if PYXY < (3, 9):
+-                self.assertEqual(instance, None)
+-                self.assertEqual(args, (Class,)+_args)
+-            else:
++            if (3, 9) <= PYXY < (3, 13):
+                 self.assertEqual(instance, Class)
+                 self.assertEqual(args, _args)
++            else:
++                self.assertEqual(instance, None)
++                self.assertEqual(args, (Class,)+_args)
+ 
+             self.assertEqual(kwargs, _kwargs)
+             self.assertEqual(wrapped.__module__, _function.__module__)
+diff --git a/tests/test_synchronized_lock.py b/tests/test_synchronized_lock.py
+index 0e43f7af..7c41aa5a 100644
+--- a/tests/test_synchronized_lock.py
++++ b/tests/test_synchronized_lock.py
+@@ -165,36 +165,38 @@ def test_synchronized_outer_classmethod(self):
+         # function to the class before calling and just calls it direct,
+         # explicitly passing the class as first argument. For more
+         # details see: https://bugs.python.org/issue19072
++        # Starting with Python 3.13 the old behavior is back.
++        # For more details see https://github.com/python/cpython/issues/89519
+ 
+-        if PYXY < (3, 9):
+-            _lock0 = getattr(C4.function2, '_synchronized_lock', None)
+-        else:
++        if (3, 9) <= PYXY < (3, 13):
+             _lock0 = getattr(C4, '_synchronized_lock', None)
++        else:
++            _lock0 = getattr(C4.function2, '_synchronized_lock', None)
+         self.assertEqual(_lock0, None)
+ 
+         c4.function2()
+ 
+-        if PYXY < (3, 9):
+-            _lock1 = getattr(C4.function2, '_synchronized_lock', None)
+-        else:
++        if (3, 9) <= PYXY < (3, 13):
+             _lock1 = getattr(C4, '_synchronized_lock', None)
++        else:
++            _lock1 = getattr(C4.function2, '_synchronized_lock', None)
+         self.assertNotEqual(_lock1, None)
+ 
+         C4.function2()
+ 
+-        if PYXY < (3, 9):
+-            _lock2 = getattr(C4.function2, '_synchronized_lock', None)
+-        else:
++        if (3, 9) <= PYXY < (3, 13):
+             _lock2 = getattr(C4, '_synchronized_lock', None)
++        else:
++            _lock2 = getattr(C4.function2, '_synchronized_lock', None)
+         self.assertNotEqual(_lock2, None)
+         self.assertEqual(_lock2, _lock1)
+ 
+         C4.function2()
+ 
+-        if PYXY < (3, 9):
+-            _lock3 = getattr(C4.function2, '_synchronized_lock', None)
+-        else:
++        if (3, 9) <= PYXY < (3, 13):
+             _lock3 = getattr(C4, '_synchronized_lock', None)
++        else:
++            _lock3 = getattr(C4.function2, '_synchronized_lock', None)
+         self.assertNotEqual(_lock3, None)
+         self.assertEqual(_lock3, _lock2)
+ 

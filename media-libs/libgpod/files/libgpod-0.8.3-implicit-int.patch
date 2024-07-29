@@ -1,0 +1,19 @@
+Clang16 will not allow implicit integers by default.
+
+Bug: https://bugs.gentoo.org/885349
+Patch has been sent upstream here: https://sourceforge.net/p/gtkpod/patches/47/
+
+Pascal Jäger <pascal.jaeger@leimstift.de> (2022-12-11)
+
+--- a/tools/generic-callout.c
++++ b/tools/generic-callout.c
+@@ -663,8 +663,7 @@ static gboolean write_sysinfo_extended (const char *mountpoint,
+         return success;
+ }
+ 
+-
+-static char *get_info_from_usb (usb_bus_number, usb_device_number)
++static char *get_info_from_usb (guint usb_bus_number,guint usb_device_number)
+ {
+ #ifdef HAVE_LIBUSB
+         return read_sysinfo_extended_from_usb (usb_bus_number,

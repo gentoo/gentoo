@@ -1,0 +1,37 @@
+Don't override our toolchain defaults, which may be F_S=3 on some profiles, and
+F_S=2 otherwise.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -325,10 +325,6 @@ else()
+     check_both_flags_add(-mno-avx)
+ endif()
+ 
+-if(CMAKE_C_FLAGS MATCHES "-O" AND NOT CMAKE_C_FLAGS MATCHES "-O0" AND NOT MINGW)
+-    add_definitions(-D_FORTIFY_SOURCE=2)
+-endif()
+-
+ if(CMAKE_ASM_NASM_OBJECT_FORMAT MATCHES "win")
+     set(CMAKE_ASM_NASM_FLAGS_DEBUG "${CMAKE_ASM_NASM_FLAGS_DEBUG} -gcv8")
+ elseif(CMAKE_ASM_NASM_COMPILER MATCHES "nasm")
+--- a/gstreamer-plugin/CMakeLists.txt
++++ b/gstreamer-plugin/CMakeLists.txt
+@@ -30,8 +30,7 @@ set(flags_to_test
+     -fstack-protector-strong
+     -fPIE
+     -fPIC
+-    -flto
+-    -D_FORTIFY_SOURCE=2)
++    -flto)
+ if(NOT MSVC)
+     list(INSERT flags_to_test 0 -Wall)
+ else()
+--- a/gstreamer-plugin/meson.build
++++ b/gstreamer-plugin/meson.build
+@@ -20,7 +20,6 @@ svtav1enc_dep = dependency('SvtAv1Enc')
+ cc = meson.get_compiler('c')
+ cc_flags = [
+     '-O2',
+-    '-D_FORTIFY_SOURCE=2',
+     '-Wformat',
+     '-Wformat-security',
+     '-fPIE',

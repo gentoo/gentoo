@@ -1,0 +1,27 @@
+From 90154df3f1d504f0ebb3d70b889c1f0e30990588 Mon Sep 17 00:00:00 2001
+From: Carlos Alberto Lopez Perez <clopez@igalia.com>
+Date: Thu, 28 Jul 2016 14:43:38 +0200
+Subject: [PATCH] Fix build with GnuTLS >= 3.4.0
+
+  * gnutls_kx_set_priority() has been removed in 3.4.0 and
+    gnutls_priority_set_direct() should be used instead.
+---
+ src/encrypt.cpp | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/src/encrypt.cpp b/src/encrypt.cpp
+index 30f83a6..9223c35 100644
+--- a/src/encrypt.cpp
++++ b/src/encrypt.cpp
+@@ -175,10 +175,8 @@ net6::tcp_encrypted_socket_base::
+                                   gnutls_session_t sess):
+ 	tcp_client_socket(cobj), session(sess), state(DEFAULT)
+ {
+-	const int kx_prio[] = { GNUTLS_KX_ANON_DH, 0 };
+-
+ 	gnutls_set_default_priority(session);
+-	gnutls_kx_set_priority(session, kx_prio);
++	gnutls_priority_set_direct(session, "NORMAL:+ANON-DH", NULL);
+ 
+ 	gnutls_transport_set_ptr(
+ 		session,

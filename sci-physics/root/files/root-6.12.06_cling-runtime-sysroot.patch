@@ -1,0 +1,22 @@
+On Prefix, we have specified SYSROOT for llvm at build time.  But we
+  do not need sysroot at runtime as we are not crosscompiling.
+
+This patch disable the sysroot feature for cling, so that ACLiC can
+work on Prefix.
+
+Index: root-6.12.06/interpreter/cling/lib/Utils/Paths.cpp
+===================================================================
+--- root-6.12.06.orig/interpreter/cling/lib/Utils/Paths.cpp
++++ root-6.12.06/interpreter/cling/lib/Utils/Paths.cpp
+@@ -57,11 +57,6 @@ using namespace clang;
+ void CopyIncludePaths(const clang::HeaderSearchOptions& Opts,
+                       llvm::SmallVectorImpl<std::string>& incpaths,
+                       bool withSystem, bool withFlags) {
+-  if (withFlags && Opts.Sysroot != "/") {
+-    incpaths.push_back("-isysroot");
+-    incpaths.push_back(Opts.Sysroot);
+-  }
+-
+   /// User specified include entries.
+   for (unsigned i = 0, e = Opts.UserEntries.size(); i != e; ++i) {
+     const HeaderSearchOptions::Entry &E = Opts.UserEntries[i];

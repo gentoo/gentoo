@@ -1,0 +1,25 @@
+From 9a1c670b66818fc0044eaa9a95a13da553bebcd3 Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Mon, 21 Nov 2022 23:09:59 -0800
+Subject: [PATCH] m4/dpkg-funcs.m4: include stdio.h in __progname conftest
+
+Bug: https://bugs.gentoo.org/869884
+---
+ m4/dpkg-funcs.m4 | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/m4/dpkg-funcs.m4 b/m4/dpkg-funcs.m4
+index 74acf22..0720ac3 100644
+--- a/m4/dpkg-funcs.m4
++++ b/m4/dpkg-funcs.m4
+@@ -142,6 +142,7 @@ AC_DEFUN([DPKG_CHECK_PROGNAME], [
+   AC_MSG_CHECKING([for __progname])
+   AC_LINK_IFELSE([
+     AC_LANG_PROGRAM(
++      [[#include <stdio.h>]],
+       [[extern char *__progname;]],
+       [[printf("%s", __progname);]])
+   ], [
+-- 
+2.38.1
+

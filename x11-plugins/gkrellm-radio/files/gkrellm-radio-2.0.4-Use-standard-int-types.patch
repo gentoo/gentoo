@@ -1,0 +1,152 @@
+From 6cbfd2d76c5c48913c29bf1b27e0fdadba508a7a Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 3 Feb 2023 09:53:57 +0000
+Subject: [PATCH] Use standard int types
+
+Bug: https://bugs.gentoo.org/833164
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/videodev.h
++++ b/videodev.h
+@@ -1,6 +1,7 @@
+ #ifndef __LINUX_VIDEODEV_H
+ #define __LINUX_VIDEODEV_H
+ 
++#include <stdint.h>
+ #include <linux/types.h>
+ 
+ #ifdef __KERNEL__
+@@ -73,44 +74,44 @@ struct video_channel
+ 	int channel;
+ 	char name[32];
+ 	int tuners;
+-	__u32  flags;
++	uint32_t  flags;
+ #define VIDEO_VC_TUNER		1	/* Channel has a tuner */
+ #define VIDEO_VC_AUDIO		2	/* Channel has audio */
+-	__u16  type;
++	uint16_t  type;
+ #define VIDEO_TYPE_TV		1
+ #define VIDEO_TYPE_CAMERA	2	
+-	__u16 norm;			/* Norm set by channel */
++	uint16_t norm;			/* Norm set by channel */
+ };
+ 
+ struct video_tuner
+ {
+ 	int tuner;
+ 	char name[32];
+-	ulong rangelow, rangehigh;	/* Tuner range */
+-	__u32 flags;
++	unsigned long rangelow, rangehigh;	/* Tuner range */
++	uint32_t flags;
+ #define VIDEO_TUNER_PAL		1
+ #define VIDEO_TUNER_NTSC	2
+ #define VIDEO_TUNER_SECAM	4
+ #define VIDEO_TUNER_LOW		8	/* Uses KHz not MHz */
+ #define VIDEO_TUNER_NORM	16	/* Tuner can set norm */
+ #define VIDEO_TUNER_STEREO_ON	128	/* Tuner is seeing stereo */
+-	__u16 mode;			/* PAL/NTSC/SECAM/OTHER */
++	uint16_t mode;			/* PAL/NTSC/SECAM/OTHER */
+ #define VIDEO_MODE_PAL		0
+ #define VIDEO_MODE_NTSC		1
+ #define VIDEO_MODE_SECAM	2
+ #define VIDEO_MODE_AUTO		3
+-	__u16 signal;			/* Signal strength 16bit scale */
++	uint16_t signal;			/* Signal strength 16bit scale */
+ };
+ 
+ struct video_picture
+ {
+-	__u16	brightness;
+-	__u16	hue;
+-	__u16	colour;
+-	__u16	contrast;
+-	__u16	whiteness;	/* Black and white only */
+-	__u16	depth;		/* Capture depth */
+-	__u16   palette;	/* Palette in use */
++	uint16_t	brightness;
++	uint16_t	hue;
++	uint16_t	colour;
++	uint16_t	contrast;
++	uint16_t	whiteness;	/* Black and white only */
++	uint16_t	depth;		/* Capture depth */
++	uint16_t   palette;	/* Palette in use */
+ #define VIDEO_PALETTE_GREY	1	/* Linear greyscale */
+ #define VIDEO_PALETTE_HI240	2	/* High 240 cube (BT848) */
+ #define VIDEO_PALETTE_RGB565	3	/* 565 16 bit RGB */
+@@ -134,9 +135,9 @@ struct video_picture
+ struct video_audio
+ {
+ 	int	audio;		/* Audio channel */
+-	__u16	volume;		/* If settable */
+-	__u16	bass, treble;
+-	__u32	flags;
++	uint16_t	volume;		/* If settable */
++	uint16_t	bass, treble;
++	uint32_t	flags;
+ #define VIDEO_AUDIO_MUTE	1
+ #define VIDEO_AUDIO_MUTABLE	2
+ #define VIDEO_AUDIO_VOLUME	4
+@@ -147,24 +148,24 @@ struct video_audio
+ #define VIDEO_SOUND_STEREO	2
+ #define VIDEO_SOUND_LANG1	4
+ #define VIDEO_SOUND_LANG2	8
+-        __u16   mode;		/* detected audio carriers or one to set */
+-        __u16	balance;	/* Stereo balance */
+-        __u16	step;		/* Step actual volume uses */
++        uint16_t   mode;		/* detected audio carriers or one to set */
++        uint16_t	balance;	/* Stereo balance */
++        uint16_t	step;		/* Step actual volume uses */
+ };
+ 
+ struct video_clip
+ {
+-	__s32	x,y;
+-	__s32	width, height;
++	int32_t	x,y;
++	int32_t	width, height;
+ 	struct	video_clip *next;	/* For user use/driver use only */
+ };
+ 
+ struct video_window
+ {
+-	__u32	x,y;			/* Position of window */
+-	__u32	width,height;		/* Its size */
+-	__u32	chromakey;
+-	__u32	flags;
++	uint32_t	x,y;			/* Position of window */
++	uint32_t	width,height;		/* Its size */
++	uint32_t	chromakey;
++	uint32_t	flags;
+ 	struct	video_clip *clips;	/* Set only */
+ 	int	clipcount;
+ #define VIDEO_WINDOW_INTERLACE	1
+@@ -175,10 +176,10 @@ struct video_window
+ 
+ struct video_capture
+ {
+-	__u32 	x,y;			/* Offsets into image */
+-	__u32	width, height;		/* Area to capture */
+-	__u16	decimation;		/* Decimation divder */
+-	__u16	flags;			/* Flags for capture */
++	uint32_t 	x,y;			/* Offsets into image */
++	uint32_t	width, height;		/* Area to capture */
++	uint16_t	decimation;		/* Decimation divder */
++	uint16_t	flags;			/* Flags for capture */
+ #define VIDEO_CAPTURE_ODD		0	/* Temporal */
+ #define VIDEO_CAPTURE_EVEN		1
+ };
+@@ -200,8 +201,8 @@ struct video_mmap
+ 
+ struct video_key
+ {
+-	__u8	key[8];
+-	__u32	flags;
++	uint8_t	key[8];
++	uint32_t flags;
+ };
+ 
+ 
+-- 
+2.39.1
+

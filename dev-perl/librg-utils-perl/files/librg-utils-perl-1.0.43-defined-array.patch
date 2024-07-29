@@ -1,0 +1,160 @@
+From 73e9e3126de1ac485462284fd1d97cb2ea3b09e8 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Mon, 30 Oct 2017 03:36:42 +1300
+Subject: Fix deprecated use of defined(@array)
+
+---
+ lib/RG/Utils/Conv_hssp2saf.pm |  4 ++--
+ lib/RG/Utils/Copf.pm          | 14 +++++++-------
+ lib/RG/Utils/Hssp_filter.pm   | 14 +++++++-------
+ 3 files changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/lib/RG/Utils/Conv_hssp2saf.pm b/lib/RG/Utils/Conv_hssp2saf.pm
+index 20bd803..f4a309e 100644
+--- a/lib/RG/Utils/Conv_hssp2saf.pm
++++ b/lib/RG/Utils/Conv_hssp2saf.pm
+@@ -604,7 +604,7 @@ sub hsspRdAli {
+ 				#                  of all numbers wanted (i.e. = $want[M])
+     undef @ptr_numFin2numWant;	# $ptr[M]=   N   : see previous, the other way around!
+ 
+-    $#want=0                    if (! defined @want);
++    $#want=0                    if (!@want);
+     $LreadAll=0; 
+ 				# ------------------------------
+ 				# digest input
+@@ -657,7 +657,7 @@ sub hsspRdAli {
+ 				# sort the array
+     @wantNum= sort bynumber (@wantNum);
+ 				# too many wanted
+-    if (defined @wantNum && ($wantNum[$#wantNum] > $locNum[$#locNum])){
++    if (@wantNum && ($wantNum[$#wantNum] > $locNum[$#locNum])){
+ 	$#tmp=0; 
+ 	foreach $want (@wantNum){
+ 	    if ($want <= $locNum[$#locNum]){
+diff --git a/lib/RG/Utils/Copf.pm b/lib/RG/Utils/Copf.pm
+index eb43700..c132f90 100644
+--- a/lib/RG/Utils/Copf.pm
++++ b/lib/RG/Utils/Copf.pm
+@@ -2112,7 +2112,7 @@ sub brIniSet {
+ 	    $par{$kwd}=$par{"dirOut"}.$par{$kwd} if (-d $par{"dirOut"});}}
+ 				# ------------------------------
+ 				# push array of output files
+-    $#fileOut=0 if (! defined @fileOut);
++    $#fileOut=0 if (!@fileOut);
+     foreach $kwd (@kwdFileOut){
+ 	push(@fileOut,$par{$kwd});}
+ 				# ------------------------------
+@@ -2240,7 +2240,7 @@ sub brIniWrt {
+ 	    printf $fhTraceLocSbr "--- %-20s '%-s'\n",$kwd,$par{$kwd};}}
+ 				# ------------------------------
+ 				# input files
+-    if    (defined @fileIn && $#fileIn>1){
++    if    (@fileIn && $#fileIn>1){
+ 				# get dirs
+ 	$#tmpdir=0; undef %tmpdir;
+ 	foreach $file (@fileIn){
+@@ -2262,10 +2262,10 @@ sub brIniWrt {
+ 		$tmp=$fileIn[$it2]; $tmp=~s/^.*\///g;
+ 		printf $fhTraceLocSbr "%-18s ",$tmp;++$it2;}
+ 	    print $fhTraceLocSbr "\n";}}
+-    elsif ((defined @fileIn && $#fileIn==1) || (defined $fileIn && -e $fileIn)){
++    elsif ((@fileIn && $#fileIn==1) || (defined $fileIn && -e $fileIn)){
+ 	$tmp=0;
+ 	$tmp=$fileIn    if (defined $fileIn && $fileIn);
+-	$tmp=$fileIn[1] if (! $tmp && defined @fileIn && $#fileIn==1);
++	$tmp=$fileIn[1] if (! $tmp && @fileIn && $#fileIn==1);
+ 	print  $fhTraceLocSbr "--- \n";
+ 	printf $fhTraceLocSbr "--- %-20s '%-s'\n","Input file:",$tmp;}
+     print  $fhTraceLocSbr "--- \n";
+@@ -4737,7 +4737,7 @@ sub getSysARCH {
+ 				# ------------------------------
+ 				# (1) find in arguments passed
+ 				# ------------------------------
+-#    if (defined @argLoc && $#argLoc > 0) {
++#    if (@argLoc && $#argLoc > 0) {
+ #	foreach $arg (@argLoc) {
+ #	    if ($arg=~/^ARCH=(\S+)/i) {
+ #		$archFound=$1;
+@@ -5022,7 +5022,7 @@ sub hsspRdAli {
+ 				#                  of all numbers wanted (i.e. = $want[M])
+     undef @ptr_numFin2numWant;	# $ptr[M]=   N   : see previous, the other way around!
+ 
+-    $#want=0                    if (! defined @want);
++    $#want=0                    if (!@want);
+     $LreadAll=0; 
+ 				# ------------------------------
+ 				# digest input
+@@ -5075,7 +5075,7 @@ sub hsspRdAli {
+ 				# sort the array
+     @wantNum= sort bynumber (@wantNum);
+ 				# too many wanted
+-    if (defined @wantNum && ($wantNum[$#wantNum] > $locNum[$#locNum])){
++    if (@wantNum && ($wantNum[$#wantNum] > $locNum[$#locNum])){
+ 	$#tmp=0; 
+ 	foreach $want (@wantNum){
+ 	    if ($want <= $locNum[$#locNum]){
+diff --git a/lib/RG/Utils/Hssp_filter.pm b/lib/RG/Utils/Hssp_filter.pm
+index 0172713..1e31573 100644
+--- a/lib/RG/Utils/Hssp_filter.pm
++++ b/lib/RG/Utils/Hssp_filter.pm
+@@ -1436,7 +1436,7 @@ sub brIniSet {
+ 	    $par{"$kwd"}=$par{"dirOut"}.$par{"$kwd"} if (-d $par{"dirOut"});}}
+ 				# ------------------------------
+ 				# push array of output files
+-    $#fileOut=0 if (! defined @fileOut);
++    $#fileOut=0 if (!@fileOut);
+     foreach $kwd (@kwdFileOut){
+ 	push(@fileOut,$par{"$kwd"});}
+ 				# ------------------------------
+@@ -1564,7 +1564,7 @@ sub brIniWrt {
+ 	    printf $fhTraceLocSbr "--- %-20s '%-s'\n",$kwd,$par{"$kwd"};}}
+ 				# ------------------------------
+ 				# input files
+-    if    (defined @fileIn && $#fileIn>1){
++    if    (@fileIn && $#fileIn>1){
+ 				# get dirs
+ 	$#tmpdir=0; undef %tmpdir;
+ 	foreach $file (@fileIn){
+@@ -1586,10 +1586,10 @@ sub brIniWrt {
+ 		$tmp=$fileIn[$it2]; $tmp=~s/^.*\///g;
+ 		printf $fhTraceLocSbr "%-18s ",$tmp;++$it2;}
+ 	    print $fhTraceLocSbr "\n";}}
+-    elsif ((defined @fileIn && $#fileIn==1) || (defined $fileIn && -e $fileIn)){
++    elsif ((@fileIn && $#fileIn==1) || (defined $fileIn && -e $fileIn)){
+ 	$tmp=0;
+ 	$tmp=$fileIn    if (defined $fileIn && $fileIn);
+-	$tmp=$fileIn[1] if (! $tmp && defined @fileIn && $#fileIn==1);
++	$tmp=$fileIn[1] if (! $tmp && @fileIn && $#fileIn==1);
+ 	print  $fhTraceLocSbr "--- \n";
+ 	printf $fhTraceLocSbr "--- %-20s '%-s'\n","Input file:",$tmp;}
+     print  $fhTraceLocSbr "--- \n";
+@@ -1816,7 +1816,7 @@ sub getSysARCH {
+ 				# ------------------------------
+ 				# (1) find in arguments passed
+ 				# ------------------------------
+-    if (defined @argLoc && $#argLoc > 0) {
++    if (@argLoc && $#argLoc > 0) {
+ 	foreach $arg (@argLoc) {
+ 	    if ($arg=~/^ARCH=(\S+)/i) {
+ 		$archFound=$1;
+@@ -2318,7 +2318,7 @@ sub hsspFilterMarkFile {
+ 				# check arguments
+     return(0,"*** $sbrName: not def fileInLoc!")          if (! defined $fileInLoc);
+     return(0,"*** $sbrName: not def fileOutLoc!")         if (! defined $fileOutLoc);
+-    return(0,"*** $sbrName: not def \@takeLoc!")          if (! defined @takeLoc || $#takeLoc<1);
++    return(0,"*** $sbrName: not def \@takeLoc!")          if (! @takeLoc || $#takeLoc<1);
+     return(0,"*** $sbrName: miss in file '$fileInLoc'!")  if (! -e $fileInLoc);
+ 				# open files
+     &open_file("$fhinLoc","$fileInLoc") ||
+@@ -2371,7 +2371,7 @@ sub hsspGetFile {
+     $#dir2=$Lok=0;
+     return(0,"no input file")   if (! defined $fileInLoc);
+     $chainLoc="";$idLoc=$fileInLoc;$idLoc=~s/^.*\///g;
+-    $#dir=0                     if (! defined @dir);
++    $#dir=0                     if (!@dir);
+     $Lscreen=0                  if (! defined $Lscreen);
+ 				# passed dir instead of Lscreen
+     if (-d $Lscreen) { @dir=($Lscreen,@dir);
+-- 
+2.14.3
+

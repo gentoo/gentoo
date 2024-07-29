@@ -1,0 +1,21 @@
+Setting SKIP_SELINUX skips searching for selinux.  The current ebuild calls
+make 3 times.  The first 2 times we don't need to search for selinux packages
+because we might end up not needing them and we get useless warnings.
+
+--- a/Makefile.flags
++++ b/Makefile.flags
+@@ -176,12 +176,14 @@
+ LDLIBS += pam pam_misc
+ endif
+ 
++ifneq ($(SKIP_SELINUX),y)
+ ifeq ($(CONFIG_SELINUX),y)
+ SELINUX_PC_MODULES = libselinux libsepol
+ $(eval $(call pkg_check_modules,SELINUX,$(SELINUX_PC_MODULES)))
+ CPPFLAGS += $(SELINUX_CFLAGS)
+ LDLIBS += $(if $(SELINUX_LIBS),$(SELINUX_LIBS:-l%=%),$(SELINUX_PC_MODULES:lib%=%))
+ endif
++endif
+ 
+ ifeq ($(CONFIG_FEATURE_NSLOOKUP_BIG),y)
+ ifneq (,$(findstring linux,$(shell $(CC) $(CFLAGS) -dumpmachine)))

@@ -1,0 +1,20 @@
+--- a/build.sh
++++ b/build.sh
+@@ -52,7 +52,7 @@ fi
+ 
+ mkdir -p bin
+ CC="${CC:-cc}"
+-CFLAGS="${CFLAGS:--std=c89 -Wall -Wno-unknown-pragmas}"
++CFLAGS="${CFLAGS} --std=c89 "
+ case "$(uname -s 2>/dev/null)" in
+ MSYS_NT*|MINGW*) # MSYS2 on Windows
+ 	FILE_LDFLAGS="-liberty"
+@@ -77,7 +77,7 @@ then
+ 	echo "[debug]"
+ 	CFLAGS="${CFLAGS} -DDEBUG -Wpedantic -Wshadow -Wextra -Werror=implicit-int -Werror=incompatible-pointer-types -Werror=int-conversion -Wvla -g -Og -fsanitize=address -fsanitize=undefined"
+ else
+-	CFLAGS="${CFLAGS} -DNDEBUG -O2 -g0 -s"
++	CFLAGS="${CFLAGS} -DNDEBUG "
+ fi
+ 
+ ${CC} ${CFLAGS} src/uxnasm.c -o bin/uxnasm

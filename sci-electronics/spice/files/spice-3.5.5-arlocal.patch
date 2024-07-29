@@ -1,0 +1,11 @@
+--- spice3f5sfix/conf/deaults.orig	2023-07-23 16:26:09.073788130 +0300
++++ spice3f5sfix/conf/defaults	2023-07-23 16:26:36.772571639 +0300
+@@ -173,7 +173,7 @@
+ #	spice3 source directory than in /tmp.  Set to 'l' (lowercase 'L')
+ #	to use the source directory, otherwise leave blank.
+ 
+-ARLOCAL		= l
++ARLOCAL		=
+ 
+ #	DEPEND_PROG is the command to generate dependencies from '.c' files
+ #	(for "make depend").  Output should be of the form "x11.o: fte.h".

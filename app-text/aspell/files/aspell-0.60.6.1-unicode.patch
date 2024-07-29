@@ -1,0 +1,276 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -2,7 +2,7 @@
+ AC_CONFIG_SRCDIR(prog/aspell.cpp)
+ AC_CANONICAL_SYSTEM
+ AM_INIT_AUTOMAKE
+-AM_CONFIG_HEADER(gen/settings.h)
++AC_CONFIG_HEADERS([gen/settings.h])
+ 
+ AM_MAINTAINER_MODE
+ 
+@@ -52,14 +52,11 @@
+ AC_ARG_ENABLE(win32-relocatable,
+   [  --enable-win32-relocatable])
+ 
+-AC_ARG_ENABLE(curses,           
+-  AS_HELP_STRING([--enable-curses=LIBFILE],[cursor control library]))
++AC_ARG_ENABLE([curses],
++  AS_HELP_STRING([--enable-curses],[cursor control library]))
+ 
+-AC_ARG_ENABLE(curses-include,           
+-  [  --enable-curses-include=DIR])
+-
+-AC_ARG_ENABLE(wide-curses,
+-  AS_HELP_STRING([--disable-wide-curses],[disable wide char utf8 cursor control]))
++AC_ARG_ENABLE([unicode],
++  AS_HELP_STRING([--enable-unicode],[enable Unicode support]))
+ 
+ AC_ARG_ENABLE(regex,
+   [  --disable-regex])
+@@ -312,197 +309,18 @@
+   [AC_MSG_RESULT(no)]
+ )
+ 
+-AC_SUBST(CURSES_LIB)
+-AC_SUBST(CURSES_INCLUDE)
+-
+-if test "$enable_curses" != "no"
+-then
+-  use_curses=t
+-  case "$enable_curses" in
+-    yes | ""                     )                             ;;
+-    /* | *lib* | *.a | -l* | -L* ) CURSES_LIB="$enable_curses" ;;
+-    *                            ) CURSES_LIB=-l$enable_curses ;;
+-  esac
+-  case "$enable_curses_include" in
+-    yes | no | "")                                         ;;
+-    -I*          ) CURSES_INCLUDE="$enable_curses_include" ;;
+-    *            ) CURSES_INCLUDE=-I$enable_curses_include ;;
+-  esac
+-fi
+-
+-if test "$use_curses"
+-then
+-
+-  ORIG_LIBS="$LIBS"
+-  ORIG_CPPFLAGS="$CPPFLAGS"
+-  CPPFLAGS="$CURSES_INCLUDE $ORIG_CPPFLAGS"
+-
+-  if test -z "$CURSES_LIB"
+-  then
+-
+-    AC_MSG_CHECKING(for working curses library)
+-
+-    if test "$enable_wide_curses" != "no" -a -n "$have_mblen"
+-    then
+-      LIBS="-lncursesw $ORIG_LIBS"
+-      AC_TRY_LINK(
+-        [#include <ncursesw/curses.h>], [initscr()],
+-        [CURSES_LIB=-lncursesw
+-         AC_DEFINE(CURSES_HEADER, <ncursesw/curses.h>, [Defined to curses header file])
+-         AC_DEFINE(TERM_HEADER, <ncursesw/term.h>, [Defined to term header file])])
+-    fi
+-
+-    if test -z "$CURSES_LIB"
+-    then
+-      LIBS="-lncurses $ORIG_LIBS"
+-      AC_TRY_LINK(
+-        [#include <ncurses/curses.h>], [initscr()],
+-        [CURSES_LIB=-lncurses
+-         AC_DEFINE(CURSES_HEADER, <ncurses/curses.h>, [Defined to curses header file])
+-         AC_DEFINE(TERM_HEADER, <ncurses/term.h>, [Defined to term header file])],
+-        [
+-      LIBS="-lncurses $ORIG_LIBS"
+-      AC_TRY_LINK(
+-        [#include <ncurses.h>], [initscr()],
+-        [CURSES_LIB=-lncurses
+-         AC_DEFINE(CURSES_HEADER, <ncurses.h>, [Defined to curses header file])
+-         AC_DEFINE(TERM_HEADER, <term.h>, [Defined to term header file])],
+-        [
+-      LIBS="-lcurses $ORIG_LIBS"
+-      AC_TRY_LINK(
+-        [#include <curses.h>], [initscr()],
+-        [CURSES_LIB=-lcurses
+-         AC_DEFINE(CURSES_HEADER, <curses.h>, [Defined to curses header file])
+-         AC_DEFINE(TERM_HEADER, <term.h>, [Defined to term header file])],
+-        [
+-      LIBS="-lncurses $ORIG_LIBS"
+-      AC_TRY_LINK(
+-        [#include <curses.h>], [initscr()],
+-        [CURSES_LIB=-lncurses
+-         AC_DEFINE(CURSES_HEADER, <curses.h>, [Defined to curses header file])
+-         AC_DEFINE(TERM_HEADER, <term.h>, [Defined to term header file])],
+-      ) ]) ]) ])
+-    fi
+-
+-    if test -n "$CURSES_LIB"
+-    then
+-      AC_MSG_RESULT([found in $CURSES_LIB])
+-    else
+-      AC_MSG_RESULT([not found])
+-    fi
+-
+-  else
+-
+-    AC_DEFINE(CURSES_HEADER, <curses.h>, [Defined to curses header file])
+-    AC_DEFINE(TERM_HEADER, <term.h>, [Defined to term header file])
+-
+-  fi
+-
+-  if test -n "$CURSES_LIB"
+-  then
+-     LIBS="$CURSES_LIB $ORIG_LIBS"
+-
+-     if test "$enable_wide_curses" != "no"
+-     then
+-
+-       AC_MSG_CHECKING(for wide character support in curses libraray)
+-       if test -n "$have_mblen"
+-       then
+-         AC_TRY_LINK(
+-           [#include <wchar.h>
+-            #include CURSES_HEADER
+-           ],
+-           [wchar_t wch = 0;
+-            addnwstr(&wch, 1);],
+-           [AC_MSG_RESULT(yes)
+-            AC_DEFINE(HAVE_WIDE_CURSES, 1, [Defined if curses libraray includes wide character support])],
+-           [
+-
+-         AC_TRY_LINK(
+-           [#define _XOPEN_SOURCE_EXTENDED 1
+-            #include <wchar.h>
+-            #include CURSES_HEADER
+-           ],
+-           [wchar_t wch = 0;
+-            addnwstr(&wch, 1);],
+-           [AC_MSG_RESULT(yes)
+-            AC_DEFINE(HAVE_WIDE_CURSES, 1)
+-            AC_DEFINE(DEFINE_XOPEN_SOURCE_EXTENDED, 1, 
+-                      [Defined if _XOPEN_SOURCE_EXTENDED needs to be defined. 
+-                       (Can't define globally as that will cause problems with some systems)])
+-           ],
+-           [AC_MSG_RESULT(no)
+-            AC_MSG_WARN([Aspell will not be able to Display UTF-8 characters correctly.])])])
+-       else
+-         AC_MSG_RESULT([no, because "mblen" is not supported])
+-         AC_MSG_WARN([Aspell will not be able to Display UTF-8 characters correctly.])
+-       fi
+-
+-     fi
+- 
+-     AC_MSG_CHECKING(if standard curses include sequence will work)
+-     AC_TRY_LINK(
+-       [#ifdef DEFINE_XOPEN_SOURCE_EXTENDED
+-        #  define _XOPEN_SOURCE_EXTENDED 1
+-        #endif
+-        #include <termios.h>
+-	#include <unistd.h>
+-        #include CURSES_HEADER
+-	#include TERM_HEADER
+-       ],
+-       [tigetstr(const_cast<char *>("cup"));],
+-       [AC_MSG_RESULT(yes)
+-	AC_DEFINE(HAVE_LIBCURSES, 1, 
+-                  [Defined if the curses library is available])
+-	posix_termios=t
+-	AC_DEFINE(CURSES_INCLUDE_STANDARD, 1, 
+-                  [Defined if no special Workarounds are needed for Curses headers])],
+-       [AC_MSG_RESULT(no)
+-
+-     dnl else if
+-     AC_MSG_CHECKING(if curses workaround I will work)
+-     AC_TRY_LINK(
+-       [#ifdef DEFINE_XOPEN_SOURCE_EXTENDED
+-        #  define _XOPEN_SOURCE_EXTENDED 1
+-        #endif
+-        #include <termios.h>
+-	#include <unistd.h>
+-        #include CURSES_HEADER
+-	extern "C" {char * tigetstr(char * capname);}],
+-       [tigetstr(const_cast<char *>("cup"));],
+-       [AC_MSG_RESULT(yes)
+-	AC_DEFINE(HAVE_LIBCURSES, 1, [])
+-        posix_termios=t
+-	AC_DEFINE(CURSES_INCLUDE_WORKAROUND_1, 1, 
+-                  [Defined if special Wordaround I is need for Curses headers])],
+-       [AC_MSG_RESULT(no)
+-
+-     dnl else if
+-     AC_MSG_CHECKING(if curses without Unix stuff will work)
+-     AC_TRY_LINK(
+-       [#include CURSES_HEADER
+-       ],
+-       [initscr();],
+-       [AC_MSG_RESULT(yes)
+-	AC_DEFINE(HAVE_LIBCURSES, 1, [])
+-	AC_DEFINE(CURSES_ONLY, 1, 
+-                  [Defined if curses like POSIX Functions should be used])
+-        curses_only=t],
+-       [AC_MSG_RESULT(no)
+-
+-     dnl else
+-     use_curses=false
+-     CURSES_LIBS=""
+-     CURSES_INCLUDE=""
+-
+-     ]) ]) ])
+-
+-  fi
+-
+-  CPPFLAGS="$ORIG_CPPFLAGS"
+-  LIBS="$ORIG_LIBS"
+-
+-fi
++AS_IF([test "x$enable_curses" != "xno"],[
++  AS_IF([test "x$enable_unicode" != "xno"],
++    [AC_DEFINE([HAVE_WIDE_CURSES], [1], [Defined if curses library includes wide character support])
++     ncurses_library="ncursesw"],
++    [ncurses_library="ncurses"])
++
++  PKG_CHECK_MODULES([NCURSES], ["$ncurses_library"])
++
++  AC_DEFINE([HAVE_LIBCURSES], [1], [Defined if the curses library is available])
++  AC_DEFINE([CURSES_INCLUDE_STANDARD], [1], [Defined if no special Workarounds are needed for Curses headers])
++  posix_termios=t
++])
+ 
+ if test -z "$posix_termios" -a -z "$curses_only"
+ then
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -121,7 +121,7 @@
+ # Aspell Program
+ #
+ 
+-AM_CPPFLAGS += -DLOCALEDIR="$(localedir)"
++AM_CPPFLAGS += -DLOCALEDIR="$(localedir)" $(NCURSES_CFLAGS)
+ 
+ bin_PROGRAMS = word-list-compress aspell prezip-bin
+ 
+@@ -129,7 +129,7 @@
+ 
+ aspell_SOURCES = prog/aspell.cpp prog/check_funs.cpp prog/checker_string.cpp
+ 
+-aspell_LDADD = libaspell.la $(CURSES_LIB) $(LTLIBINTL)
++aspell_LDADD = libaspell.la $(NCURSES_LIBS) $(LTLIBINTL)
+ 
+ prezip_bin_SOURCES = prog/prezip.c
+ 
+--- a/prog/check_funs.cpp
++++ b/prog/check_funs.cpp
+@@ -62,11 +62,11 @@
+ 
+ #if HAVE_LIBCURSES
+ 
+-#include CURSES_HEADER
++#include <curses.h>
+ 
+ #if CURSES_INCLUDE_STANDARD
+ 
+-#include TERM_HEADER
++#include <term.h>
+ 
+ #elif CURSES_INCLUDE_WORKAROUND_1
+ 

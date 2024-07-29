@@ -1,0 +1,13 @@
+Fedora: https://src.fedoraproject.org/rpms/userspace-rcu/raw/rawhide/f/regtest-without-bench.patch
+
+"Remove the benchmarks from the regtest target, they timeout on the buildds."
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -8,7 +8,6 @@
+ 	cd benchmark && $(MAKE) $(AM_MAKEFLAGS) long_bench
+ regtest:
+ 	cd regression && $(MAKE) $(AM_MAKEFLAGS) regtest
+-	cd benchmark && $(MAKE) $(AM_MAKEFLAGS) regtest
+ 
+ check-loop:
+ 	while [ 0 ]; do \

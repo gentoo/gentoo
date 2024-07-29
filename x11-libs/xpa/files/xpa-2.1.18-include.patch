@@ -1,0 +1,14 @@
+diff --git a/tcl.c b/tcl.c
+index 1dbdad4..acc8d45 100644
+--- a/tcl.c
++++ b/tcl.c
+@@ -2,6 +2,9 @@
+  *	Copyright (c) 1999-2003 Smithsonian Astrophysical Observatory
+  */
+ 
++//declares uintptr_t
++#include<stdint.h>
++
+ #include <xpap.h>
+ 
+ #if HAVE_TCL

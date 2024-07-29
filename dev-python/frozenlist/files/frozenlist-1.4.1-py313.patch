@@ -1,0 +1,13 @@
+diff --git a/tests/test_frozenlist.py b/tests/test_frozenlist.py
+index c0d91b5..b65a998 100644
+--- a/tests/test_frozenlist.py
++++ b/tests/test_frozenlist.py
+@@ -11,7 +11,7 @@ from frozenlist import FrozenList, PyFrozenList
+ class FrozenListMixin:
+     FrozenList = NotImplemented
+ 
+-    SKIP_METHODS = {"__abstractmethods__", "__slots__"}
++    SKIP_METHODS = {"__abstractmethods__", "__slots__", "__static_attributes__", "__firstlineno__"}
+ 
+     def test___class_getitem__(self) -> None:
+         assert self.FrozenList[str] is not None

@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting popa3d"
+	start-stop-daemon --start --quiet --exec /usr/sbin/popa3d -- -D
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping popa3d"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/popa3d
+	eend $?
+}

@@ -1,0 +1,31 @@
+https://gitlab.com/wireshark/wireshark/-/merge_requests/15824
+
+From cc8264d68f638c72ada1e94a9913902462c1a25a Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 1 Jun 2024 02:25:05 +0100
+Subject: [PATCH] test: skip test_sharkd_req_follow_http2 test if no http2
+ support
+
+Originally reported downstream in Gentoo at https://bugs.gentoo.org/933290.
+
+This is the same kind of thing as https://gitlab.com/wireshark/wireshark/-/merge_requests/9029.
+--- a/test/suite_sharkd.py
++++ b/test/suite_sharkd.py
+@@ -1174,7 +1174,13 @@ class TestSharkd:
+             },
+         ))
+ 
+-    def test_sharkd_req_follow_http2(self, check_sharkd_session, capture_file):
++    def test_sharkd_req_follow_http2(self, check_sharkd_session, capture_file, features):
++        # If we don't have nghttp2, we output the compressed headers.
++        # We could test against the expected output in that case, but
++        # just skip for now.
++        if not features.have_nghttp2:
++            pytest.skip('Requires nghttp2.')
++
+         check_sharkd_session((
+             {"jsonrpc":"2.0", "id":1, "method":"load",
+              "params":{"file": capture_file('quic-with-secrets.pcapng')}
+-- 
+2.45.1
+

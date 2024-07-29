@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/780450
+--- a/configure.in
++++ b/configure.in
+@@ -28,6 +28,7 @@ if test "x${CXXFLAGS-notset}" = "xnotset" ; then
+ fi
+ AC_PROG_CXX
+ 
++AM_PROG_AR
+ dnl Check for ranlib
+ AC_PROG_RANLIB
+ 

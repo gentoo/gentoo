@@ -1,0 +1,9 @@
+https://bugs.gentoo.org/840329
+--- a/main.cpp
++++ b/main.cpp
+@@ -1,4 +1,5 @@
+ #include "Keyboard.h"
++#include <cstring>
+ #include <regex>
+ #include <iostream>
+ 

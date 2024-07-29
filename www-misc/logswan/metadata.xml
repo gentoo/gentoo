@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Logswan is a fast Web log analyzer using probabilistic data structures. It
+    is targeted at very large log files, typically APIs logs. It has constant
+    memory usage regardless of the log file size, and takes approximatively 4MB
+    of RAM. Unique visitors counting is performed using two HyperLogLog
+    counters (one for IPv4, and another one for IPv6), providing a relative
+    accuracy of 0.10%. String representations of IP addresses are used and
+    preferred as they offer better precision. Project design goals include:
+    speed, memory-usage efficiency, and keeping the code as simple as possible.
+  </longdescription>
+  <upstream>
+    <changelog>https://raw.githubusercontent.com/fcambus/logswan/master/ChangeLog</changelog>
+    <bugs-to>https://github.com/fcambus/logswan/issues/</bugs-to>
+    <remote-id type="github">fcambus/logswan</remote-id>
+  </upstream>
+</pkgmetadata>

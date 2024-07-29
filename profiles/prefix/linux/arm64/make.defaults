@@ -1,0 +1,7 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+ARCH="arm64"
+
+# The base profile sets ACCEPT_KEYWORDS=arm64, add unstable on top of that
+ACCEPT_KEYWORDS="~arm64"

@@ -1,0 +1,10 @@
+--- a/data/images/Makefile
++++ b/data/images/Makefile
+@@ -31,6 +31,6 @@
+ 
+ install :
+ 	$Qinstall -d $(DESTDIR)$(DATADIR)/images
+-	$Qinstall $(IMAGES) $(DESTDIR)$(DATADIR)/images
++	$Qinstall -m 0644 $(IMAGES) $(DESTDIR)$(DATADIR)/images
+ 
+ include $(TOPDIR)/.config/rules.mk

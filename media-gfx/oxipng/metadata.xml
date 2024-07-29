@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>unlord@xiph.org</email>
+    <name>Nathan E. Egge</name>
+  </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>lo48576@hard-wi.red</email>
+    <name>YOSHIOKA Takuma</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">shssoichiro/oxipng</remote-id>
+  </upstream>
+</pkgmetadata>

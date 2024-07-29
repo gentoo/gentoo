@@ -1,0 +1,29 @@
+--- genius-1.0.24/configure.ac
++++ genius-1.0.24/configure.ac
+@@ -247,16 +247,16 @@
+ fi
+ 
+ #dnl scrollkeeper checks 
+-#AC_ARG_ENABLE([scrollkeeper],
+-#	[AC_HELP_STRING([--disable-scrollkeeper],
+-#		[do not make updates to the scrollkeeper database])],,
+-#		enable_scrollkeeper=yes)
+-#AM_CONDITIONAL([ENABLE_SK],[test "$enable_scrollkeeper" = "yes"])
+-#
+-#AC_PATH_PROG(SCROLLKEEPER_CONFIG, scrollkeeper-config,no)
+-#if test x$SCROLLKEEPER_CONFIG = xno; then
+-#  AC_MSG_ERROR(Couldn't find scrollkeeper-config. Please install the scrollkeeper package)
+-#fi
++dnl AC_ARG_ENABLE([scrollkeeper],
++dnl 	[AC_HELP_STRING([--disable-scrollkeeper],
++dnl 		[do not make updates to the scrollkeeper database])],,
++dnl 		enable_scrollkeeper=yes)
++dnl AM_CONDITIONAL([ENABLE_SK],[test "$enable_scrollkeeper" = "yes"])
++dnl 
++dnl AC_PATH_PROG(SCROLLKEEPER_CONFIG, scrollkeeper-config,no)
++dnl if test x$SCROLLKEEPER_CONFIG = xno; then
++dnl   AC_MSG_ERROR(Couldn't find scrollkeeper-config. Please install the scrollkeeper package)
++dnl fi
+ 
+ dnl mime checks
+ AC_ARG_ENABLE(update-mimedb,

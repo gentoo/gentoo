@@ -1,0 +1,14 @@
+[Unit]
+Description=Frp Client Service
+After=network.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+Restart=on-failure
+RestartSec=5s
+ExecStart=/usr/bin/frpc -c /etc/frp/frpc.toml
+LimitNOFILE=1048576
+
+[Install]
+WantedBy=multi-user.target

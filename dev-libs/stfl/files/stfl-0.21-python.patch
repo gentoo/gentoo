@@ -1,0 +1,39 @@
+diff -ur stfl-0.21.orig/Makefile stfl-0.21/Makefile
+--- stfl-0.21.orig/Makefile	2009-06-19 10:30:52.000000000 -0700
++++ stfl-0.21/Makefile	2009-12-23 15:12:34.986593069 -0800
+@@ -46,7 +46,7 @@
+ 	rm -f widgets/*.o spl/mod_stfl.so spl/example.db
+ 	cd perl5 && perl Makefile.PL && make clean && rm -f Makefile.old
+ 	rm -f perl5/stfl_wrap.c perl5/stfl.pm perl5/build_ok
+-	rm -f python/stfl.py python/stfl.pyc python/_stfl.so 
++	rm -f python/stfl.py python/_stfl.so 
+ 	rm -f python/stfl_wrap.c python/stfl_wrap.o
+ 	rm -f ruby/Makefile ruby/stfl_wrap.c ruby/stfl_wrap.o
+ 	rm -f ruby/stfl.so ruby/build_ok Makefile.deps_new
+diff -ur stfl-0.21.orig/python/Makefile.snippet stfl-0.21/python/Makefile.snippet
+--- stfl-0.21.orig/python/Makefile.snippet	2009-06-18 01:27:16.000000000 -0700
++++ stfl-0.21/python/Makefile.snippet	2009-12-23 15:14:54.237606055 -0800
+@@ -21,20 +21,17 @@
+ PYTHON_VERSION = $(shell python -V 2>&1 | cut -f2 -d' ' | cut -f1-2 -d'.')
+ PYTHON_SITEARCH = $(shell python -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")
+ 
+-all: python/_stfl.so python/stfl.py python/stfl.pyc
++all: python/_stfl.so python/stfl.py
+ 
+ install: install_python
+ 
+-python/_stfl.so python/stfl.py python/stfl.pyc: libstfl.a stfl.h python/stfl.i swig/*.i
++python/_stfl.so python/stfl.py: libstfl.a stfl.h python/stfl.i swig/*.i
+ 	cd python && swig -python -threads stfl.i
+ 	gcc -shared -pthread -fPIC python/stfl_wrap.c -I/usr/include/python$(PYTHON_VERSION) \
+ 		-I. libstfl.a -lncursesw -o python/_stfl.so
+-	cd python && python -c 'import stfl'
+ 
+-install_python: python/_stfl.so python/stfl.py python/stfl.pyc
+-	mkdir -p $(DESTDIR)$(PYTHON_SITEARCH)/
++install_python: python/_stfl.so python/stfl.py
+ 	mkdir -p $(DESTDIR)$(PYTHON_SITEARCH)/lib-dynload/
+ 	cp python/_stfl.so $(DESTDIR)$(PYTHON_SITEARCH)/lib-dynload/
+-	cp python/stfl.pyc $(DESTDIR)$(PYTHON_SITEARCH)/
+ 	cp python/stfl.py $(DESTDIR)$(PYTHON_SITEARCH)/
+ 

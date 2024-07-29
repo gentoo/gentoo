@@ -1,0 +1,14 @@
+https://git.alpinelinux.org/aports/plain/main/elfutils/musl-macros.patch
+--- a/lib/system.h
++++ b/lib/system.h
+@@ -56,6 +56,10 @@ void error(int status, int errnum, const char *format, ...);
+ #error "err.h or error.h must be available"
+ #endif
+ 
++#if !defined(FNM_EXTMATCH)
++# define FNM_EXTMATCH 0
++#endif
++
+ /* error (EXIT_FAILURE, ...) should be noreturn but on some systems it
+    isn't.  This may cause warnings about code that should not be reachable.
+    So have an explicit error_exit wrapper that is noreturn (because it

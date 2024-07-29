@@ -1,0 +1,12 @@
+Bug: https://bugs.gentoo.org/894562
+Taken from: https://git.savannah.gnu.org/cgit/screen.git/commit/?id=7f320d3a643ec95682a7213b7e991e27038d8a57
+--- a/display.c
++++ b/display.c
+@@ -27,6 +27,7 @@
+  */
+ 
+ #include <sys/types.h>
++#include <sys/stat.h>
+ #include <signal.h>
+ #include <fcntl.h>
+ #ifndef sun

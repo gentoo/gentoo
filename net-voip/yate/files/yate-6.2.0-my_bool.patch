@@ -1,0 +1,21 @@
+--- yate.o/modules/server/mysqldb.cpp	2020-03-03 18:03:34.000000000 +0200
++++ yate/modules/server/mysqldb.cpp	2020-12-29 15:38:56.717897678 +0200
+@@ -22,6 +22,7 @@
+ #include <yatephone.h>
+ 
+ #include <stdio.h>
++#include <stdbool.h>
+ #include <mysql.h>
+ 
+ #ifndef CLIENT_MULTI_STATEMENTS
+@@ -508,8 +509,8 @@
+ 
+ #ifdef MYSQL_OPT_RECONNECT
+ 	    // this option must be set after connect - bug in mysql client library
+-	    my_bool reconn = 1;
+-	    mysql_options(mySqlConn->m_conn,MYSQL_OPT_RECONNECT,(const char*)&reconn);
++	    bool reconn = 1;
++	    mysql_options(mySqlConn->m_conn,MYSQL_OPT_RECONNECT,&reconn);
+ #endif
+ 
+ #ifdef HAVE_MYSQL_SET_CHARSET

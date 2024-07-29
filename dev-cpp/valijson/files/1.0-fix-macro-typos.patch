@@ -1,0 +1,77 @@
+
+Patch from:
+https://github.com/tristanpenman/valijson/commit/f1ff3518281fe347c97b78384d6bb645dbdd4788
+
+From f1ff3518281fe347c97b78384d6bb645dbdd4788 Mon Sep 17 00:00:00 2001
+From: Austin Haigh <austin.haigh@hach.com>
+Date: Tue, 1 Nov 2022 13:29:16 -0600
+Subject: [PATCH] fix typos in preprocessor macros
+
+---
+ examples/valijson_nlohmann_bundled.hpp         | 2 +-
+ include/valijson/utils/boost_json_utils.hpp    | 4 ++--
+ include/valijson/utils/nlohmann_json_utils.hpp | 2 +-
+ include/valijson/utils/property_tree_utils.hpp | 2 +-
+ 4 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/examples/valijson_nlohmann_bundled.hpp b/examples/valijson_nlohmann_bundled.hpp
+index 806f329..915bebb 100644
+--- a/examples/valijson_nlohmann_bundled.hpp
++++ b/examples/valijson_nlohmann_bundled.hpp
+@@ -10561,7 +10561,7 @@ inline bool loadDocument(const std::string &path, nlohmann::json &document)
+     }
+ 
+     // Parse schema
+-#if VALIJSON_USE_EXCEPTION
++#if VALIJSON_USE_EXCEPTIONS
+     try {
+         document = nlohmann::json::parse(file);
+     } catch (std::invalid_argument const& exception) {
+diff --git a/include/valijson/utils/boost_json_utils.hpp b/include/valijson/utils/boost_json_utils.hpp
+index 1168903..0fbd6c3 100644
+--- a/include/valijson/utils/boost_json_utils.hpp
++++ b/include/valijson/utils/boost_json_utils.hpp
+@@ -20,7 +20,7 @@ inline bool loadDocument(const std::string &path, boost::json::value &document)
+     }
+ 
+     // Parse schema
+-#if VALIJSON_USE_EXCEPTION
++#if VALIJSON_USE_EXCEPTIONS
+     try {
+ #endif
+       boost::json::error_code errorCode;
+@@ -30,7 +30,7 @@ inline bool loadDocument(const std::string &path, boost::json::value &document)
+             std::cerr << "Boost.JSON parsing error: " << errorCode.message();
+             return false;
+         }
+-#if VALIJSON_USE_EXCEPTION
++#if VALIJSON_USE_EXCEPTIONS
+     } catch (std::exception const & exception) {
+         std::cerr << "Boost.JSON parsing exception: " << exception.what();
+         return false;
+diff --git a/include/valijson/utils/nlohmann_json_utils.hpp b/include/valijson/utils/nlohmann_json_utils.hpp
+index b3cbe20..77e5771 100644
+--- a/include/valijson/utils/nlohmann_json_utils.hpp
++++ b/include/valijson/utils/nlohmann_json_utils.hpp
+@@ -20,7 +20,7 @@ inline bool loadDocument(const std::string &path, nlohmann::json &document)
+     }
+ 
+     // Parse schema
+-#if VALIJSON_USE_EXCEPTION
++#if VALIJSON_USE_EXCEPTIONS
+     try {
+         document = nlohmann::json::parse(file);
+     } catch (std::invalid_argument const& exception) {
+diff --git a/include/valijson/utils/property_tree_utils.hpp b/include/valijson/utils/property_tree_utils.hpp
+index 2317f12..7438980 100644
+--- a/include/valijson/utils/property_tree_utils.hpp
++++ b/include/valijson/utils/property_tree_utils.hpp
+@@ -24,7 +24,7 @@
+ #include <valijson/utils/file_utils.hpp>
+ #include <valijson/exceptions.hpp>
+ 
+-#if !VALIJSON_USE_EXCEPTION
++#if !VALIJSON_USE_EXCEPTIONS
+ 
+ namespace boost {
+ 

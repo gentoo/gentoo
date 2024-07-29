@@ -1,0 +1,36 @@
+From 1b14c65c60da03c3a51fd62aa6dcbf9847453834 Mon Sep 17 00:00:00 2001
+From: Tobias Diedrich <ranma+openocd@tdiedrich.de>
+Date: Sat, 27 Jun 2020 21:49:03 +0200
+Subject: [PATCH] Fix broken compilation with shared libgbs
+
+From 8bf4d3b484bc39986a7db7dd759ebda8602048e9 Mon Sep 17 00:00:00 2001
+From: Tobias Diedrich <ranma+openocd@tdiedrich.de>
+Date: Sat, 27 Jun 2020 21:51:49 +0200
+Subject: [PATCH] Fix broken compilation with shared libgbs try 2
+
+---
+ Makefile | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index f629d37..5535c8e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -77,6 +77,8 @@ DISTDIR := gbsplay-$(VERSION)
+ 
+ GBSCFLAGS  := $(EXTRA_CFLAGS)
+ GBSLDFLAGS := $(EXTRA_LDFLAGS)
++comma := ,
++GBSLIBLDFLAGS := -lm $(subst -pie,,$(subst -Wl$(comma)-pie,,$(EXTRA_LDFLAGS)))
+ # Additional ldflags for the gbsplay executable
+ GBSPLAYLDFLAGS :=
+ 
+@@ -207,7 +209,7 @@ uninstall-libgbs.so.1:
+ 
+ 
+ libgbs.so.1: $(objs_libgbspic) libgbs.so.1.ver
+-	$(BUILDCC) -fpic -shared -Wl,-soname=$@ -Wl,--version-script,$@.ver -o $@ $(objs_libgbspic) -lm
++	$(BUILDCC) -fpic -shared -Wl,-soname=$@ -Wl,--version-script,$@.ver -o $@ $(objs_libgbspic) $(GBSLIBLDFLAGS)
+ 	ln -fs $@ libgbs.so
+ 
+ libgbs: libgbs.so.1

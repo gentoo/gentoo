@@ -1,0 +1,12 @@
+diff --git a/tests/test_values.py b/tests/test_values.py
+index 55478e6..0b37907 100644
+--- a/tests/test_values.py
++++ b/tests/test_values.py
+@@ -377,6 +377,7 @@ class ValueTests(TestCase):
+                 'default': {
+                     'CONN_HEALTH_CHECKS': False,
+                     'CONN_MAX_AGE': 0,
++                    'DISABLE_SERVER_SIDE_CURSORS': False,
+                     'ENGINE': 'django.db.backends.sqlite3',
+                     'HOST': '',
+                     'NAME': ':memory:',

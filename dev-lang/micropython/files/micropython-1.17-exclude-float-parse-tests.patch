@@ -1,0 +1,11 @@
+--- a/tests/run-tests.py	2021-10-25 12:25:48.422212212 -0000
++++ b/tests/run-tests.py	2021-10-25 12:26:01.382135667 -0000
+@@ -521,6 +521,8 @@
+             "micropython/opt_level_lineno.py"
+         )  # native doesn't have proper traceback info
+         skip_tests.add("micropython/schedule.py")  # native code doesn't check pending events
++    skip_tests.add("float/float_parse_doubleprec.py")
++    skip_tests.add("float/float_parse.py")
+ 
+     def run_one_test(test_file):
+         test_file = test_file.replace("\\", "/")

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>scheme@gentoo.org</email>
+    <name>Gentoo Scheme Project</name>
+  </maintainer>
+  <longdescription>
+    Fibers is a Guile library that implements a a lightweight concurrency
+    facility, inspired by systems like Concurrent ML, Go, and Erlang. A fiber
+    is like a "goroutine" from the Go language: a lightweight thread-like
+    abstraction. Systems built with Fibers can scale up to millions of
+    concurrent fibers, tens of thousands of concurrent socket connections, and
+    many parallel cores. The Fibers library also provides Concurrent ML-like
+    channels for communication between fibers.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://gitlab.com/wingo/fibers/-/issues/</bugs-to>
+    <remote-id type="github">wingo/fibers</remote-id>
+  </upstream>
+</pkgmetadata>

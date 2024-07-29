@@ -1,0 +1,56 @@
+Rebased on 2024-01-20, version 3.5.0036
+
+From 15470045421448a7a6813e2a4a96e18bba3b0aa4 Mon Sep 17 00:00:00 2001
+From: Victor Kustov <ktrace@yandex.ru>
+Date: Wed, 27 Jul 2022 21:28:31 +0300
+Subject: [PATCH] 2nd
+
+diff --git a/build/Makefile.linux b/build/Makefile.linux
+index 9d8117e..22a7518 100644
+--- a/build/Makefile.linux
++++ b/build/Makefile.linux
+@@ -29,29 +29,27 @@ Q="DEFINES=-DSELECT_PROBLEM"
+ # Debug
+ 
+ FLAGS = -O2 -Wall -DSELECT_PROBLEM
+-M="CC=$(CC) $(FLAGS)"
+-D="CC=$(CC) $(FLAGS) -DDEBUG -DTHREADS"
++M="CC=$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS)"
++D="CC=$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -DDEBUG -DTHREADS"
+ #FLAGS = -g
+ 
+ all: 
+-	cd libs ; make $(M) ; cd ../dns ; make $(M) ; \
+-	cd ../rng ; make $(M) ; cd ../parse ; make $(M) ; \
+-	cd ../qual ; make $(M) ; cd ../server ; \
+-	make $(M) $(V) COMPILED=\"$(COMPILED)\" ; \
+-	cd ../tools ; make $(M) ; \
+-	cd ../deadwood-*/src/ ; make FLAGS=-O2 ; \
+-	cd ../tools/blockhash ; make CFLAGS=-O2 ; \
+-	cd ../../../coLunacyDNS/ ; make ; \
+-	cd ../tcp ; make $(M) $(V) ; cat ../00README.FIRST
++	cd libs ; $(MAKE) $(M) ; cd ../dns ; $(MAKE) $(M) ; \
++	cd ../rng ; $(MAKE) $(M) ; cd ../parse ; $(MAKE) $(M) ; \
++	cd ../qual ; $(MAKE) $(M) ; cd ../server ; \
++	$(MAKE) $(M) $(V) COMPILED=\"$(COMPILED)\" ; \
++	cd ../tools ; $(MAKE) $(M) ; \
++	cd ../deadwood-*/src/ ; $(MAKE) $(M) ; \
++	cd ../../tcp ; $(MAKE) $(M) $(V) ; cat ../00README.FIRST
+ 
+ debug: 
+-	cd libs ; make $(D) DEBUG="-DDEBUG -DTHREADS" ; \
+-	cd ../dns ; make $(D) ; cd ../rng ; make $(D) ; \
+-	cd ../parse ; make $(D) ; cd ../qual ; make $(D) ; \
++	cd libs ; $(MAKE) $(D) ; \
++	cd ../dns ; $(MAKE) $(D) ; cd ../rng ; $(MAKE) $(D) ; \
++	cd ../parse ; $(MAKE) $(D) ; cd ../qual ; $(MAKE) $(D) ; \
+ 	cd ../server ; \
+-	make $(D) $(Q) $(V) COMPILED=\"$(COMPILED_DEBUG)\" ; \
+-	cd ../tools ; make $(D) ; \
+-	cd ../tcp ; make $(D) $(V) ; cat ../00README.FIRST
++	$(MAKE) $(D) $(Q) $(V) COMPILED=\"$(COMPILED_DEBUG)\" ; \
++	cd ../tools ; $(MAKE) $(D) ; \
++	cd ../tcp ; $(MAKE) $(D) $(V) ; cat ../00README.FIRST
+ 
+ clean:
+ 	rm -f $(OBJECTS) core $(EXECS) ; \

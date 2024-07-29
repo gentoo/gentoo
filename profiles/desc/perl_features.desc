@@ -1,0 +1,9 @@
+# Copyright 2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# This file contains descriptions of PERL_FEATURES USE_EXPAND flags.
+
+# Keep it sorted.
+debug - PERL_FEATURES setting enabling internal debug support in Perl
+ithreads - PERL_FEATURES setting enabling interpreter level threads, has some compatibility problems
+quadmath - PERL_FEATURES setting enabling 128bit floating point arithmetic via libquadmath

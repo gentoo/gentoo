@@ -1,0 +1,52 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,38 +1,35 @@
+-CFLAGS=-g
+ PROGRAMS=combat 
+ ROBOTS=cylon tracker target
+ 
+-CC=g++ -g
+-
+ all: $(PROGRAMS) $(ROBOTS)
+ 
+ clean:
+ 	rm -f $(PROGRAMS) $(ROBOTS) *.o core
+ 
+-combat:	combat.o 
+-	$(CC) $(CFLAGS) -o $@ combat.o -lm
++combat: combat.o
++	$(CXX) $(LDFLAGS) -o $@ combat.o -lm
+ 
+-combat.o:	combat.c 
+-	$(CC) $(CFLAGS) -c combat.c
++combat.o: combat.c
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c combat.c
+ 
+ robots.o: robots.C robots.h
+-	g++ -c robots.C
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c robots.C
+ 
+ cylon: cylon.o robots.o
+-	g++ -static -o $@ cylon.o robots.o 
++	$(CXX) $(LDFLAGS) -o $@ cylon.o robots.o
+ 
+ cylon.o: cylon.c robots.h
+-	g++ -c cylon.c
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c cylon.c
+ 
+ tracker: tracker.o robots.o
+-	g++ -static -o $@ tracker.o robots.o 
++	$(CXX) $(LDFLAGS) -o $@ tracker.o robots.o
+ 
+ tracker.o: tracker.c robots.h
+-	g++ -c tracker.c
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c tracker.c
+ 
+ target: target.o robots.o
+-	g++ -static -o $@ target.o robots.o 
++	$(CXX) $(LDFLAGS) -o $@ target.o robots.o
+ 
+ target.o: target.c robots.h
+-	g++ -c target.c
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c target.c
+ 

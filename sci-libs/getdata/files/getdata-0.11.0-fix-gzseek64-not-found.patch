@@ -1,0 +1,12 @@
+Refer: https://stackoverflow.com/a/42695228
+Bug: https://bugs.gentoo.org/898278
+--- a/src/gzip.c
++++ b/src/gzip.c
+@@ -21,6 +21,7 @@
+ #include "internal.h"
+ 
+ #ifdef HAVE_ZLIB_H
++#define Z_LARGE64
+ #include <zlib.h>
+ #endif
+ 

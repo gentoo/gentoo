@@ -1,0 +1,15 @@
+This is not needed. Gentoo automatically collect license files into
+the documentation directory.
+
+Index: rocm-cmake-rocm-5.0.2/share/rocm/cmake/ROCMCreatePackage.cmake
+===================================================================
+--- rocm-cmake-rocm-5.0.2.orig/share/rocm/cmake/ROCMCreatePackage.cmake
++++ rocm-cmake-rocm-5.0.2/share/rocm/cmake/ROCMCreatePackage.cmake
+@@ -230,7 +230,6 @@ macro(rocm_create_package)
+             ")
+         endforeach()
+     endif()
+-    rocm_setup_license(${PARSE_HEADER_ONLY})
+     if(PARSE_COMPONENTS)
+         rocm_set_comp_cpackvar(PARSE_HEADER_ONLY "${PARSE_COMPONENTS}")
+     endif()

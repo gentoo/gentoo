@@ -1,0 +1,17 @@
+# This script is intended to rotate the logs for freshclam in its default
+# configuration on Gentoo, where freshclam writes to its own log file but
+# does not rotate that file itself. The freshclam daemon is capable of
+# rotating its own logs; if you have "LogRotate yes" in freshclam.conf
+# then you do not need this script (and should disable it). Likewise,
+# if you are logging to syslog (LogSyslog yes), this is redundant.
+/var/log/clamav/freshclam.log {
+  su clamav clamav
+  missingok
+  postrotate
+    if test -f /run/freshclam.pid; then
+      /bin/kill -HUP $(cat /run/freshclam.pid)
+    else
+      true
+    fi
+  endscript
+}

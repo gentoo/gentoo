@@ -1,0 +1,14 @@
+# Gentoo bug https://bugs.gentoo.org/925705
+
+diff -Naur davfs2-1.7.0-orig/configure.ac davfs2-1.7.0/configure.ac
+--- davfs2-1.7.0-orig/configure.ac	2022-09-08 13:17:15.000000000 -0700
++++ davfs2-1.7.0/configure.ac	2024-04-05 03:39:20.044039872 -0700
+@@ -36,7 +36,7 @@
+ # Checks for libraries.
+ AM_GNU_GETTEXT_VERSION(0.19.8)
+ AM_GNU_GETTEXT([external])
+-NE_REQUIRE_VERSIONS([0], [27 28 29 30 31 32])
++NE_REQUIRE_VERSIONS([0], [27 28 29 30 31 32 33])
+ DAV_CHECK_NEON
+ 
+ # Checks for header files.

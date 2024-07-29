@@ -1,0 +1,26 @@
+Bug: https://bugs.gentoo.org/885839
+--- a/backends/pfq_socket.c
++++ b/backends/pfq_socket.c
+@@ -34,6 +34,11 @@ int    sock;
+ 
+ struct pfb_conf_t pfb_conf;
+ 
++int pfb_retr_to( const char* );
++int pfb_retr_from( const char* );
++int pfb_retr_path( const char* );
++int pfb_retr_subj( const char* );
++
+ void strip_nl(char* b, int l) {
+ 	int i;
+ 	for ( i=0; i<l; i++ ) {
+@@ -114,8 +119,8 @@ int pfb_setup( struct msg_t *qptr1, struct be_msg_t *qptr2 ) {
+ 	svra.sin_family = AF_INET;
+ 
+ 	memcpy ( (struct sockaddr*)&svra.sin_addr.s_addr, 
+-		(struct hostent*)svr->h_addr, 
+-		(struct hostent*)svr->h_length );
++		svr->h_addr, 
++		svr->h_length );
+ 	svra.sin_port = htons( pfb_conf.port );
+ 
+ 	if ( connect(sock, (struct sockaddr*)&svra, sizeof(svra)) <0 )

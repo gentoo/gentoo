@@ -1,0 +1,31 @@
+--- a/Makefile
++++ b/Makefile
+@@ -97,10 +97,7 @@ ifeq ($(RUNTIME), mono)
+ else
+ 	@$(DOTNET) build -c ${CONFIGURATION} -nologo -p:TargetPlatform=$(TARGETPLATFORM)
+ endif
+-ifeq ($(TARGETPLATFORM), unix-generic)
+ 	@./configure-system-libraries.sh
+-endif
+-	@./fetch-geoip.sh
+ 
+ # dotnet clean and msbuild -t:Clean leave files that cause problems when switching between mono/dotnet
+ # Deleting the intermediate / output directories ensures the build directory is actually clean
+@@ -117,9 +114,7 @@ else
+ 	@$(DOTNET) clean -c Debug --nologo --verbosity minimal
+ 	@$(DOTNET) build -c Debug -nologo -warnaserror -p:TargetPlatform=$(TARGETPLATFORM)
+ endif
+-ifeq ($(TARGETPLATFORM), unix-generic)
+ 	@./configure-system-libraries.sh
+-endif
+ 	@echo
+ 	@echo "Checking for explicit interface violations..."
+ 	@./utility.sh all --check-explicit-interfaces
+@@ -161,7 +156,6 @@ endif
+ 	@sh -c '. ./packaging/functions.sh; set_mod_version "$(VERSION)" mods/ra/mod.yaml mods/cnc/mod.yaml mods/d2k/mod.yaml mods/ts/mod.yaml mods/modcontent/mod.yaml mods/all/mod.yaml'
+ 
+ install:
+-	@sh -c '. ./packaging/functions.sh; install_assemblies $(CWD) $(DESTDIR)$(gameinstalldir) $(TARGETPLATFORM) $(RUNTIME) True True True'
+ 	@sh -c '. ./packaging/functions.sh; install_data $(CWD) $(DESTDIR)$(gameinstalldir) cnc d2k ra'
+ 
+ install-linux-shortcuts:

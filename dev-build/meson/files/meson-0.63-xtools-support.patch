@@ -1,0 +1,26 @@
+linkers_detect: detect xtools (Apple ld64 derivative)
+
+xtools is in use on x86_64 and ppc based darwin Prefix installs.  Pick
+it up as a valid linker.
+
+Meson is the only thing known at this point to try and figure out what
+linker is in use exactly, so instead of changing the linker (xtools),
+just teach Meson about xtools.
+
+Author: Fabian Groffen <grobian@gentoo.org>
+Bug: https://bugs.gentoo.org/868516
+
+--- a/mesonbuild/linkers/detect.py
++++ b/mesonbuild/linkers/detect.py
+@@ -188,6 +188,11 @@
+             v = search_version(o)
+ 
+         linker = LLVMDynamicLinker(compiler, for_machine, comp_class.LINKER_PREFIX, override, version=v)
++    # detect xtools first, bug #868516
++    elif 'xtools-' in o.split('\n')[0]:
++        xtools = o.split(' ')[0]
++        v = xtools.split('-')[1]
++        linker = AppleDynamicLinker(compiler, for_machine, comp_class.LINKER_PREFIX, override, version=v)
+     # first might be apple clang, second is for real gcc, the third is icc
+     elif e.endswith('(use -v to see invocation)\n') or 'macosx_version' in e or 'ld: unknown option:' in e:
+         if isinstance(comp_class.LINKER_PREFIX, str):

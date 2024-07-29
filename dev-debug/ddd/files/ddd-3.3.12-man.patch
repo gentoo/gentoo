@@ -1,0 +1,16 @@
+diff -ruN ddd-3.3.12/ddd/Makefile.am ddd-my/ddd/Makefile.am
+--- ddd-3.3.12/ddd/Makefile.am	2009-02-11 18:25:07.000000000 +0100
++++ ddd-my/ddd/Makefile.am	2012-11-06 01:48:46.363493473 +0100
+@@ -1371,10 +1371,8 @@
+ man_MANS = ddd.1
+ 
+ # `ddd.man' has 8-bit format, `ddd.1' has 7-bit format
+-ddd.1:   ddd.man $(srcdir)/unumlaut.sed
+-	-$(SED) -f $(srcdir)/unumlaut.sed ddd.man | $(DELETE_CR) > $@~ \
+-	    && $(MV) $@~ $@
+-
++ddd.1:   ddd.man
++	iconv -f ISO8859-15 -t UTF-8 ddd.man > ddd.1
+ 
+ 
+ # -----------------------------------------------------------------------------

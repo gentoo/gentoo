@@ -1,0 +1,13 @@
+diff --git a/lib/sqlalchemy/util/langhelpers.py b/lib/sqlalchemy/util/langhelpers.py
+index c97fa7d..9a02e7d 100644
+--- a/lib/sqlalchemy/util/langhelpers.py
++++ b/lib/sqlalchemy/util/langhelpers.py
+@@ -1657,6 +1657,8 @@
+         items: List[symbol]
+         cls._items = items = []
+         for k, v in dict_.items():
++            if re.match(r"^__.*__$", k):
++                continue
+             if isinstance(v, int):
+                 sym = symbol(k, canonical=v)
+             elif not k.startswith("_"):

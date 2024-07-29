@@ -1,0 +1,110 @@
+https://bugs.gentoo.org/925284
+https://git.gnupg.org/cgi-bin/gitweb.cgi?p=libgcrypt.git;a=commit;h=75e9bcccb69a9dea67d90840bd295bbd1749cea3
+
+From 75e9bcccb69a9dea67d90840bd295bbd1749cea3 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Mon, 4 Mar 2024 09:00:59 +0900
+Subject: [PATCH] mpi: Fix ECC computation on hppa.
+
+* mpi/ec-inline.h [__hppa] (ADD4_LIMB32, SUB4_LIMB32): New.
+* mpi/longlong.h [__hppa] (add_ssaaaa, sub_ddmmss): Add __CLOBBER_CC.
+
+--
+
+Cherry-pick master commit of:
+	b757f4130af987bdfc769b754b6e9e27882c349c
+
+GnuPG-bug-id: 7022
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+---
+ mpi/ec-inline.h | 40 ++++++++++++++++++++++++++++++++++++++++
+ mpi/longlong.h  | 12 ++++++------
+ 2 files changed, 46 insertions(+), 6 deletions(-)
+
+diff --git a/mpi/ec-inline.h b/mpi/ec-inline.h
+index 0ffdf8eb..c24d5352 100644
+--- a/mpi/ec-inline.h
++++ b/mpi/ec-inline.h
+@@ -921,6 +921,46 @@ LIMB64_HILO(mpi_limb_t hi, mpi_limb_t lo)
+ 
+ #endif /* HAVE_COMPATIBLE_GCC_ARM_PLATFORM_AS */
+ 
++#if defined (__hppa) && __GNUC__ >= 4
++#define ADD4_LIMB32(A3, A2, A1, A0, B3, B2, B1, B0, C3, C2, C1, C0) \
++  __asm__ ("add %7,%11,%3\n\t" \
++	   "addc %6,%10,%2\n\t" \
++	   "addc %5,%9,%1\n\t" \
++	   "addc %4,%8,%0" \
++	   : "=r" (A3), \
++	     "=&r" (A2), \
++	     "=&r" (A1), \
++	     "=&r" (A0) \
++	   : "rM" ((mpi_limb_t)(B3)), \
++	     "rM" ((mpi_limb_t)(B2)), \
++	     "rM" ((mpi_limb_t)(B1)), \
++	     "rM" ((mpi_limb_t)(B0)), \
++	     "rM" ((mpi_limb_t)(C3)), \
++	     "rM" ((mpi_limb_t)(C2)), \
++	     "rM" ((mpi_limb_t)(C1)), \
++	     "rM" ((mpi_limb_t)(C0)) \
++	   : "cc")
++
++#define SUB4_LIMB32(A3, A2, A1, A0, B3, B2, B1, B0, C3, C2, C1, C0) \
++  __asm__ ("sub %7,%11,%3\n\t" \
++	   "subb %6,%10,%2\n\t" \
++	   "subb %5,%9,%1\n\t" \
++	   "subb %4,%8,%0\n\t" \
++	   : "=r" (A3), \
++	     "=&r" (A2), \
++	     "=&r" (A1), \
++	     "=&r" (A0) \
++	   : "rM" ((mpi_limb_t)(B3)), \
++	     "rM" ((mpi_limb_t)(B2)), \
++	     "rM" ((mpi_limb_t)(B1)), \
++	     "rM" ((mpi_limb_t)(B0)), \
++	     "rM" ((mpi_limb_t)(C3)), \
++	     "rM" ((mpi_limb_t)(C2)), \
++	     "rM" ((mpi_limb_t)(C1)), \
++	     "rM" ((mpi_limb_t)(C0)) \
++	   : "cc")
++
++#endif /* __hppa */
+ 
+ /* Common 32-bit arch addition/subtraction macros.  */
+ 
+diff --git a/mpi/longlong.h b/mpi/longlong.h
+index c299534c..1ab70e7e 100644
+--- a/mpi/longlong.h
++++ b/mpi/longlong.h
+@@ -394,23 +394,23 @@ extern UDItype __udiv_qrnnd ();
+  ***************************************/
+ #if defined (__hppa) && W_TYPE_SIZE == 32
+ # define add_ssaaaa(sh, sl, ah, al, bh, bl) \
+-  __asm__ ("	add %4,%5,%1\n"                                             \
+- 	   "	addc %2,%3,%0"                                              \
++  __asm__ ("add %4,%5,%1\n\t"                                           \
++	   "addc %2,%3,%0"                                              \
+ 	   : "=r" ((USItype)(sh)),                                      \
+ 	     "=&r" ((USItype)(sl))                                      \
+ 	   : "%rM" ((USItype)(ah)),                                     \
+ 	     "rM" ((USItype)(bh)),                                      \
+ 	     "%rM" ((USItype)(al)),                                     \
+-	     "rM" ((USItype)(bl)))
++	     "rM" ((USItype)(bl)) __CLOBBER_CC)
+ # define sub_ddmmss(sh, sl, ah, al, bh, bl) \
+-  __asm__ ("	sub %4,%5,%1\n"                                             \
+-	   "	subb %2,%3,%0"                                              \
++  __asm__ ("sub %4,%5,%1\n\t"                                           \
++	   "subb %2,%3,%0"                                              \
+ 	   : "=r" ((USItype)(sh)),                                      \
+ 	     "=&r" ((USItype)(sl))                                      \
+ 	   : "rM" ((USItype)(ah)),                                      \
+ 	     "rM" ((USItype)(bh)),                                      \
+ 	     "rM" ((USItype)(al)),                                      \
+-	     "rM" ((USItype)(bl)))
++	     "rM" ((USItype)(bl)) __CLOBBER_CC)
+ # if defined (_PA_RISC1_1)
+ #  define umul_ppmm(wh, wl, u, v) \
+   do {									\
+-- 
+2.30.2

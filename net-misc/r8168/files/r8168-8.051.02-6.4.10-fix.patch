@@ -1,0 +1,17 @@
+Fixed build with kernels 6.4.10+
+Gentoo Bug: https://bugs.gentoo.org/912242
+See also:   https://github.com/mtorromeo/r8168/issues/54
+
+---
+--- a/src/r8168_n.c     2023-08-13 03:33:06.977422132 +0400
++++ b/src/r8168_n.c     2023-08-13 03:38:39.767005101 +0400
+@@ -81,6 +81,10 @@
+ #include <linux/mdio.h>
+ #endif
+
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,4,10)
++#include <net/gso.h>
++#endif
++
+ #include <asm/io.h>
+ #include <asm/irq.h>

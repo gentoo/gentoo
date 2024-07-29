@@ -1,0 +1,177 @@
+diff -ur libezV24-0.1.1.orig/Makefile libezV24-0.1.1/Makefile
+--- libezV24-0.1.1.orig/Makefile	2003-02-17 15:46:18.000000000 +0200
++++ libezV24-0.1.1/Makefile	2008-01-15 10:47:13.000000000 +0200
+@@ -19,68 +19,63 @@
+ # the base name of the library
+ SOBASE = ezV24
+ 
+-# define the destination OS (currently only linux)
+-PLATFORM=__LINUX__
+-
+-# the base path where the file should be installed to.
+-PREFIX = /usr/local
++# the base paths where the files should be installed to.
++PREFIX = /usr
++LIBDIR = $(PREFIX)/lib
++
++# an additional prefix for building RPM packages. NOTE: don't forget to add a
++# trailing slash!
++DESTDIR =
+ 
+ # generate the name of the output file in dependence of the development state.
+ #
+-ifeq "${RELEASE}" "DEBUG"
++ifeq ($(RELEASE),DEBUG)
+ NAME = lib$(SOBASE).so.$(SORELEASE).dbg
+ else
+ NAME = lib$(SOBASE).so.$(VERSION)
+ endif
+ SONAME = lib$(SOBASE).so.$(SORELEASE)
+-LIBNAME = lib$(SOBASE)-$(SORELEASE)_s.a
++LIBNAME = lib$(SOBASE).a
+ PLAINNAME = lib$(SOBASE).so
+ 
+ # basename of the project
+ PROJECTNAME = libezV24-$(VERSION).$(PATCHLEVEL)
+ 
+-OBJS = ezV24.o snprintf.o
++STATIC_OBJS = ezV24.o snprintf.o
++SHARED_OBJS = $(patsubst %.o,%.lo,$(STATIC_OBJS))
+ LIBS = 
+ 
+-
+-ifeq "${RELEASE}" "DEBUG"
+-C_FLAG = -c -Wall -fPIC -D$(PLATFORM) $(INCDIR)
+-C_DEFS = -DDEBUG -DBETA
+-LFLAGS = $(LIBDIR)
++ifeq ($(RELEASE),DEBUG)
++CPPFLAGS += -DDEBUG -DBETA
+ else 
+-ifeq "${RELEASE}" "BETA"
+-C_FLAG = -c -Wall -fPIC -O2 -D$(PLATFORM) $(INCDIR)
+-C_DEFS = -DBETA
+-LFLAGS = $(LIBDIR)
++ifeq ($(RELEASE),BETA)
++CPPFLAGS += -DBETA
+ else
+-C_FLAG = -c -Wall  -fPIC -O2 -D$(PLATFORM) $(INCDIR)
+-C_DEFS = -DFINAL
+-LFLAGS = -s $(LIBDIR)
++CPPFLAGS += -DFINAL
+ endif
+ endif
+ 
++CC ?= gcc
++CPPFLAGS += -I.
++CFLAGS ?= -O2
++CFLAGS += -Wall
++
+ # tools to build the static library
+ ARFLAGS = cru
+-AR = ar
+-RANLIB = ranlib
+-
+-# concatinate the compile flags
+-CFLAGS = $(C_FLAG) $(C_DEFS)
++AR ?= ar
++RANLIB ?= ranlib
+ 
+-
+-
+-# ------------------------------------------------------------------------
+-# AUTOMATISCHE COMPILE-ANWEISUNGEN
+-# ------------------------------------------------------------------------
+-
+-.c.o:
+-		gcc $(CFLAGS) $<
++# some distros have a messed up path when in su -
++LDCONFIG ?= /sbin/ldconfig
+ 
+ 
+ # --------------------------------------------------------------------------
+ # ANHÄNGIGKEITEN
+ # --------------------------------------------------------------------------
+ 
++%.lo: %.c
++	$(CC) -fPIC $(CFLAGS) $(CPPFLAGS) -c $< -o $@
++
+ all:		shared static test-v24
+ 
+ shared:		$(NAME)
+@@ -88,13 +83,13 @@
+ static:		$(LIBNAME)
+ 
+ 
++$(NAME):	$(SHARED_OBJS)
++	$(CC) $(CFLAGS) -shared -Wl,-soname,$(SONAME) -o $@ $^ $(LDFLAGS)
+ 
+-$(NAME):	$(OBJS)
+-		gcc -shared -W1,soname,$(SONAME) -o $(NAME) $(OBJS)
++$(LIBNAME):	$(STATIC_OBJS)
++	$(AR) $(ARFLAGS) $@ $^
++	$(RANLIB) $@
+ 
+-$(LIBNAME):	$(OBJS)
+-		$(AR) $(ARFLAGS) $(LIBNAME) $(OBJS)
+-		$(RANLIB) $(LIBNAME)
+ 
+ 
+ # Abhängigkeiten des Source, jedoch dann ohne Generierungsanweisung, wenn
+@@ -111,22 +106,27 @@
+ #
+ 
+ install:
+-		install -d -m 755 $(PREFIX)/include/$(SOBASE)/;
+-		install -m 644 ezV24.h $(PREFIX)/include/$(SOBASE)/
+-		install -m 644 -s $(LIBNAME) $(PREFIX)/lib/$(LIBNAME)
+-		install -m 755 -s $(NAME) $(PREFIX)/lib/$(NAME)
+-		rm -f $(PREFIX)/lib/$(SONAME) $(PREFIX)/lib/$(PLAINNAME)
+-		ln -s $(PREFIX)/lib/$(NAME) $(PREFIX)/lib/$(SONAME);\
+-		ln -s $(PREFIX)/lib/$(SONAME) $(PREFIX)/lib/$(PLAINNAME);\
+-		ldconfig
++		install -d -m 755 $(DESTDIR)$(PREFIX)/include/$(SOBASE)
++		install -d -m 755 $(DESTDIR)$(LIBDIR)
++		install -m 644 ezV24.h $(DESTDIR)$(PREFIX)/include/$(SOBASE)/
++		install -m 644 $(LIBNAME) $(DESTDIR)$(LIBDIR)/$(LIBNAME)
++		install -m 755 $(NAME) $(DESTDIR)$(LIBDIR)/$(NAME)
++		rm -f $(DESTDIR)$(PREFIX)/lib/$(SONAME) $(DESTDIR)$(LIBDIR)/$(PLAINNAME)
++		ln -s $(NAME) $(DESTDIR)$(LIBDIR)/$(SONAME)
++		ln -s $(SONAME) $(DESTDIR)$(LIBDIR)/$(PLAINNAME)
++		if [ -z $$NO_LDCONFIG ]; then \
++		  $(LDCONFIG); \
++		fi  
+ 
+ uninstall:
+ 		rm -f $(PREFIX)/include/ezV24/*
+ 		rmdir $(PREFIX)/include/ezV24
+-		rm -f $(PREFIX)/lib/$(LIBNAME)
+-		rm -f $(PREFIX)/lib/$(NAME)
+-		rm -f $(PREFIX)/lib/$(SONAME) $(PREFIX)/lib/$(PLAINNAME)
+-		ldconfig
++		rm -f $(LIBDIR)/$(LIBNAME)
++		rm -f $(LIBDIR)/$(NAME)
++		rm -f $(LIBDIR)/$(SONAME) $(LIBDIR/$(PLAINNAME)
++		if [ -z $$NO_LDCONFIG ]; then \
++		  $(LDCONFIG); \
++		fi  
+ 
+ 
+ # This entry is for packing a distribution tarball
+@@ -157,7 +157,7 @@
+ #	gcc -o test-v24 -Wall test-v24.c -l$(SOBASE)
+ #
+ test-v24:	test-v24.c ezV24.h $(LIBNAME)
+-		gcc -o test-v24 -Wall test-v24.c -L./ $(LIBNAME)
++		$(CC) -o test-v24 -Wall -DUNINSTALLED test-v24.c -L./ $(LIBNAME)
+ 
+ 
+ # --------------------------------------------------------------------------
+@@ -165,7 +165,7 @@
+ # --------------------------------------------------------------------------
+ 
+ clean:
+-		rm -f *.o core
++		rm -f *.o *.lo core
+ 
+ clean-all:
+ 		rm -f *.o core test-v24 $(NAME) $(LIBNAME)

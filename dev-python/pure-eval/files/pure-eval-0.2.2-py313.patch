@@ -1,0 +1,63 @@
+From 42e8a1f4a41b60c51619868f543e7b3ee82ac42f Mon Sep 17 00:00:00 2001
+From: Lumir Balhar <lbalhar@redhat.com>
+Date: Wed, 15 May 2024 10:14:31 +0200
+Subject: [PATCH] Fix compatibility of check_copy_ast_without_context with Py
+ 3.13b1
+
+Resolves: https://github.com/alexmojaki/pure_eval/issues/16
+---
+ tests/test_utils.py | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_utils.py b/tests/test_utils.py
+index 172f50e..3a9cc9b 100644
+--- a/tests/test_utils.py
++++ b/tests/test_utils.py
+@@ -58,7 +58,16 @@ def check_copy_ast_without_context(tree):
+     dump1 = ast.dump(tree)
+     dump2 = ast.dump(tree2)
+     normalised_dump1 = re.sub(
+-        r", ctx=(Load|Store|Del)\(\)",
++        # Two possible matches:
++        # - first one like ", ctx=…" where ", " should be removed
++        # - second one like "(ctx=…" where "(" should be kept
++        (
++            r"("
++                r", ctx=(Load|Store|Del)\(\)"
++            r"|"
++                r"(?<=\()ctx=(Load|Store|Del)\(\)"
++            r")"
++        ),
+         "",
+         dump1
+     )
+From 89645cfd19d1480d586af50842f0ac264a036fa8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Miro=20Hron=C4=8Dok?= <miro@hroncok.cz>
+Date: Sun, 9 Jun 2024 21:45:31 +0200
+Subject: [PATCH] Explicitly remove the ctx attribute in
+ copy_ast_without_context
+
+Python 3.13.0b2+ defaults to Load when we don't pass ctx
+See https://github.com/python/cpython/pull/118871
+---
+ pure_eval/utils.py | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/pure_eval/utils.py b/pure_eval/utils.py
+index a8a3730..19ead65 100644
+--- a/pure_eval/utils.py
++++ b/pure_eval/utils.py
+@@ -184,7 +184,12 @@ def copy_ast_without_context(x):
+             if field != 'ctx'
+             if hasattr(x, field)
+         }
+-        return type(x)(**kwargs)
++        a = type(x)(**kwargs)
++        if hasattr(a, 'ctx'):
++            # Python 3.13.0b2+ defaults to Load when we don't pass ctx
++            # https://github.com/python/cpython/pull/118871
++            del a.ctx
++        return a
+     elif isinstance(x, list):
+         return list(map(copy_ast_without_context, x))
+     else:

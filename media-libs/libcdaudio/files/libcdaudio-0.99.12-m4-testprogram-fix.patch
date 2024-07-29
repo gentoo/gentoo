@@ -1,0 +1,10 @@
+--- a/libcdaudio.m4
++++ b/libcdaudio.m4
+@@ -68,6 +68,7 @@
+ #include <cdaudio.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ 
+ char* my_strdup (char *str)
+ {

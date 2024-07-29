@@ -1,0 +1,28 @@
+From 668d391c6b26da4684534bafe1fec3bff29a58ff Mon Sep 17 00:00:00 2001
+From: Alexander Puck Neuwirth <alexander@neuwirth-informatik.de>
+Date: Fri, 12 Apr 2024 14:25:06 +0200
+Subject: [PATCH] Wrap std::cin in std::ref
+
+---
+ src/Core/Run.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/Core/Run.cc b/src/Core/Run.cc
+index 83c5d719b6..4d643fac92 100644
+--- a/src/Core/Run.cc
++++ b/src/Core/Run.cc
+@@ -82,9 +82,9 @@ namespace Rivet {
+       // Turn off the buffering to make IO faster and make ungetc work on cin
+       std::basic_ios<char>::sync_with_stdio(false);
+       #ifdef HAVE_LIBZ
+-      _istr = make_shared<zstr::istream>(std::cin);
++      _istr = make_shared<zstr::istream>(std::ref(std::cin));
+       #else
+-      _istr = make_shared<std::istream>(std::cin);
++      _istr = make_shared<std::istream>(std::ref(std::cin));
+       #endif
+       // Use standard HepMC3 deduction on stream. For HepMC3 < 3.2.0 the function is implemented in Rivet
+       _hepmcReader = RivetHepMC::deduce_reader(*_istr);
+-- 
+GitLab
+

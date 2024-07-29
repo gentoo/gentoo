@@ -1,0 +1,29 @@
+From 9e1169b96164eb5ba6bf8ca7744aa3a512cf9439 Mon Sep 17 00:00:00 2001
+From: Hartley McGuire <skipkayhil@gmail.com>
+Date: Mon, 13 Mar 2023 19:05:18 -0400
+Subject: [PATCH] Fix NoMethodError in SafeBuffer#bytesplice
+
+`html_escape_interpolated_argument` was [renamed][1] to
+`implicit_html_escape_interpolated_argument` during Rails 7.0
+development, so the security fix [backport][2] ended up with the wrong
+method name.
+
+[1]: 147f207a57a03fc7a52040aa1f6878cf70ee0db7
+[2]: 3cf23c3f891e2e81c977ea4ab83b62bc2a444b70
+---
+ .../lib/active_support/core_ext/string/output_safety.rb         | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/activesupport/lib/active_support/core_ext/string/output_safety.rb b/activesupport/lib/active_support/core_ext/string/output_safety.rb
+index a627540a353db..c5c5d4858ffec 100644
+--- a/lib/active_support/core_ext/string/output_safety.rb
++++ b/lib/active_support/core_ext/string/output_safety.rb
+@@ -217,7 +217,7 @@ def concat(value)
+     alias << concat
+ 
+     def bytesplice(*args, value)
+-      super(*args, implicit_html_escape_interpolated_argument(value))
++      super(*args, html_escape_interpolated_argument(value))
+     end
+ 
+     def insert(index, value)

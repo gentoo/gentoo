@@ -1,0 +1,60 @@
+commit 352cdb28eecbb57de3509b18dfc37dcce0455c01
+Author: ABC <abc@openwall.com>
+Date:   Tue Jun 22 19:07:02 2021 +0300
+
+    Fix compile for stable kernels by not using 'ref_module'
+    
+    `ref_module' unexport in 7ef5264de7732 ("modules: mark ref_module
+    static") is back-ported into stable kernels making old `#if
+    LINUX_VERSION_CODE' checks irrelevant or too complicated to update.
+    
+    Do not use `ref_module' API at all since `try_module_get' is ancient
+    enough to use always.
+    
+    Reported-by: https://github.com/xtaran
+    Fixes: https://github.com/aabc/ipt-netflow/issues/177
+
+diff --git a/compat.h b/compat.h
+index 99edf91..30f1d8f 100644
+--- a/compat.h
++++ b/compat.h
+@@ -170,10 +170,6 @@ static int __ethtool_get_settings(struct net_device *dev, struct ethtool_cmd *cm
+ # define CHECK_OK	0
+ #endif
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,35)
+-# define use_module	ref_module
+-#endif
+-
+ #ifndef NF_IP_LOCAL_IN /* 2.6.25 */
+ # define NF_IP_PRE_ROUTING	NF_INET_PRE_ROUTING
+ # define NF_IP_LOCAL_IN		NF_INET_LOCAL_IN
+diff --git a/ipt_NETFLOW.c b/ipt_NETFLOW.c
+index d3d3901..c4c049d 100644
+--- a/ipt_NETFLOW.c
++++ b/ipt_NETFLOW.c
+@@ -5494,12 +5494,8 @@ static void register_ct_events(void)
+ 	}
+ 	/* Reference netlink module to prevent it's unsafe unload before us. */
+ 	if (!netlink_m && (netlink_m = find_module(NETLINK_M))) {
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(5,9,0)
+-		use_module(THIS_MODULE, netlink_m);
+-#else
+ 		if (!try_module_get(netlink_m))
+ 			netlink_m = NULL;
+-#endif
+ 	}
+ 
+ 	/* Register ct events callback. */
+@@ -5527,10 +5523,9 @@ static void unregister_ct_events(void)
+ #else /* < v3.2 */
+ 	unset_notifier_cb();
+ #endif /* v3.2 */
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,9,0)
+ 	module_put(netlink_m);
+ 	netlink_m = NULL;
+-#endif
++
+ 	rcu_assign_pointer(saved_event_cb, NULL);
+ #else /* < v2.6.31 */
+ 	nf_conntrack_unregister_notifier(&ctnl_notifier);

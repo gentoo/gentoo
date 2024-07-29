@@ -1,0 +1,19 @@
+From 29a7c52bbf58b9465bbda3f2aa76849e30282a85 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 19 Oct 2022 03:43:04 +0100
+Subject: [PATCH] Fix -Wimplicit-int
+
+Bug: https://bugs.gentoo.org/874951
+--- a/cpmask.c
++++ b/cpmask.c
+@@ -126,8 +126,8 @@ static u8 cp_key[] =
+ 0x03, 0x01, 0x04, 0x19, 0x0c, 0x0f, 0x0e, 0x12, 0x07, 0x0b, 0x18, 0x11, 0x1a
+ };
+ 
+-static cp_table_lu1[MAX_CP_WIDTH];
+-static cp_table_lu2[MAX_CP_WIDTH];
++static UI cp_table_lu1[MAX_CP_WIDTH];
++static UI cp_table_lu2[MAX_CP_WIDTH];
+ 
+ /* this is a bottleneck */
+ static void

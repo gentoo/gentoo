@@ -1,0 +1,26 @@
+--- a/grace_np/gracef_np.c	2008-03-03 11:45:12.000000000 +0000
++++ b/grace_np/gracef_np.c	2008-03-03 12:05:37.000000000 +0000
+@@ -1,5 +1,11 @@
+ #include <config.h>
+ 
++#ifdef NEED_F77_UNDERSCORE
++#  define F77_FNAME(fname) fname ## _
++#else
++#  define F77_FNAME(fname) fname
++#endif
++
+ #if defined(WITH_F77_WRAPPER)
+ 
+ #include <stdio.h>
+@@ -8,11 +14,6 @@
+ 
+ #include "grace_np.h"
+ 
+-#ifdef NEED_F77_UNDERSCORE
+-#  define F77_FNAME(fname) fname ## _
+-#else
+-#  define F77_FNAME(fname) fname
+-#endif
+ 
+ typedef void (*GraceFortranFunctionType) (const char *str, int len);
+ static GraceFortranFunctionType fortran_error = (GraceFortranFunctionType) 0;

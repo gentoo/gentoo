@@ -1,0 +1,40 @@
+Ensure that the file auto_paridecl.pxd is both (re)generated with and
+installed for each python implementation.
+
+From 248d26e3e6b1c02fdd3391f033e29d7012189d9e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fran=C3=A7ois=20Bissey?= <frp.bissey@gmail.com>
+Date: Tue, 28 Apr 2020 09:42:39 +1200
+Subject: [PATCH] move rebuild out of build_ext so it is run before everything
+
+---
+ setup.py | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 099ed3b..473fe12 100755
+--- a/setup.py
++++ b/setup.py
+@@ -13,6 +13,10 @@ from autogen.paths import include_dirs, library_dirs
+ 
+ ext_kwds = dict(include_dirs=include_dirs(), library_dirs=library_dirs())
+ 
++# Generate auto-generated sources from pari.desc
++# This needs to be done before build/build_ext so the generated pxd is moved
++# to the build directory and installed with newer setuptools.
++rebuild()
+ 
+ if "READTHEDOCS" in os.environ:
+     # When building with readthedocs, disable optimizations to decrease
+@@ -29,9 +33,6 @@ if "READTHEDOCS" in os.environ:
+ # Adapted from Cython's new_build_ext
+ class build_ext(_build_ext):
+     def finalize_options(self):
+-        # Generate auto-generated sources from pari.desc
+-        rebuild()
+-
+         self.directives = {
+             "autotestdict.cdef": True,
+             "binding": True,
+-- 
+2.26.2
+

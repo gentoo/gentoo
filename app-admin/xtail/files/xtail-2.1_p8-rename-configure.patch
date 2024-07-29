@@ -1,0 +1,23 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -25,7 +25,7 @@ CFLAGS = @CFLAGS@ $(DEFS)
+ TARBALL = xtail.tar
+ XTAIL_OBJECTS = xtail.o entryfuncs.o miscfuncs.o
+ DISTFILES = Makefile.in README acconfig.h config.h.in configure \
+-	configure.in entryfuncs.c install-sh miscfuncs.c xtail.1 xtail.c \
++	configure.ac entryfuncs.c install-sh miscfuncs.c xtail.1 xtail.c \
+ 	xtail.h
+ 
+ ###
+@@ -70,9 +70,9 @@ Makefile : $(srcdir)/Makefile.in  config.status
+ #config.h : $(srcdir)/config.h.in  config.status
+ #	CONFIG_FILES= CONFIG_HEADERS=$@ $(SHELL) ./config.status
+ 
+-$(srcdir)/configure : $(srcdir)/configure.in
++$(srcdir)/configure : $(srcdir)/configure.ac
+ 	cd $(srcdir) && autoconf
+ 
+-$(srcdir)/config.h.in : $(srcdir)/configure.in $(srcdir)/acconfig.h
++$(srcdir)/config.h.in : $(srcdir)/configure.ac $(srcdir)/acconfig.h
+ 	cd $(srcdir) && autoheader
+ 

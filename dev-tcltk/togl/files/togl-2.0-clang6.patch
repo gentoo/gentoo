@@ -1,0 +1,11 @@
+--- a/togl.c	2023-01-18 07:31:37.816199176 +0100
++++ b/togl.c	2023-01-18 07:33:08.946629940 +0100
+@@ -132,7 +132,7 @@
+ /* pointer to Tk_SetClassProcs function in the stub table */
+ 
+ static void (*SetClassProcsPtr)
+-        _ANSI_ARGS_((Tk_Window, Tk_ClassProcs *, ClientData));
++        _ANSI_ARGS_((Tk_Window, const Tk_ClassProcs *, ClientData));
+ #endif
+ 
+ /* 

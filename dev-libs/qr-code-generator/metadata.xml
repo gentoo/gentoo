@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>chiitoo@gentoo.org</email>
+    <description>Primary maintainer</description>
+  </maintainer>
+  <longdescription>
+    Package combining the nayuki/QR-Code-generator upstream with the
+    CMake files from EasyCoding/qrcodegen-cmake upstream.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">EasyCoding/qrcodegen-cmake</remote-id>
+    <remote-id type="github">nayuki/QR-Code-generator</remote-id>
+  </upstream>
+</pkgmetadata>

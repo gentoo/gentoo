@@ -1,0 +1,12 @@
+include sysmacros.h explicitly for major()/minor()/etc...
+
+--- a/growisofs.c
++++ b/growisofs.c
+@@ -408,6 +408,7 @@
+ # ifndef _GNU_SOURCE
+ #  define _GNU_SOURCE
+ # endif
++# include <sys/sysmacros.h>
+ #elif defined(__OpenBSD__) || defined(__NetBSD__) || defined(__FreeBSD__) || \
+       (defined(__APPLE__) && defined(__MACH__))
+ # define off64_t	off_t

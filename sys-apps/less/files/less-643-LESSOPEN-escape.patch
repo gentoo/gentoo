@@ -1,0 +1,61 @@
+https://openwall.com/lists/oss-security/2024/04/12/5
+https://bugs.gentoo.org/929210
+https://github.com/gwsw/less/commit/007521ac3c95bc76e3d59c6dbfe75d06c8075c33
+
+Upstream provided this version via email as a backport to 643.
+--- a/filename.c
++++ b/filename.c
+@@ -134,6 +134,15 @@
+ }
+ 
+ /*
++ * Must use quotes rather than escape char for this metachar?
++ */
++static int must_quote(char c)
++{
++	/* {{ Maybe the set of must_quote chars should be configurable? }} */
++	return (c == '\n'); 
++}
++
++/*
+  * Insert a backslash before each metacharacter in a string.
+  */
+ public char * shell_quote(char *s)
+@@ -164,6 +173,9 @@
+ 				 * doesn't support escape chars.  Use quotes.
+ 				 */
+ 				use_quotes = 1;
++			} else if (must_quote(*p))
++			{
++				len += 3; /* open quote + char + close quote */
+ 			} else
+ 			{
+ 				/*
+@@ -193,15 +205,22 @@
+ 	{
+ 		while (*s != '\0')
+ 		{
+-			if (metachar(*s))
++			if (!metachar(*s))
+ 			{
+-				/*
+-				 * Add the escape char.
+-				 */
++				*p++ = *s++;
++			} else if (must_quote(*s))
++			{
++				/* Surround the char with quotes. */
++				*p++ = openquote;
++				*p++ = *s++;
++				*p++ = closequote;
++			} else
++			{
++				/* Insert an escape char before the char. */
+ 				strcpy(p, esc);
+ 				p += esclen;
++				*p++ = *s++;
+ 			}
+-			*p++ = *s++;
+ 		}
+ 		*p = '\0';
+ 	}

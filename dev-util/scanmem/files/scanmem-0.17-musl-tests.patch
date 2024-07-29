@@ -1,0 +1,42 @@
+https://github.com/scanmem/scanmem/commit/81300d05d7d55bbf8e0f6200bb4c4309a320504f
+https://github.com/scanmem/scanmem/pull/396
+https://bugs.gentoo.org/713208
+
+From: Andrea Stacchiotti <andreastacchiotti@gmail.com>
+Date: Sun, 31 Jan 2021 16:57:44 +0100
+Subject: [PATCH] Use `size_t` instead of `int` for size variables.
+
+And use strtoul() instead of atoi() because atoi() returns int, even
+worse if the value can not be represented, behavior is undefined.
+
+Patch by @shenada , some tweaks by @12345ieee .
+
+Closes #396
+--- a/test/memfake.c
++++ b/test/memfake.c
+@@ -22,19 +22,21 @@
+ #include <stdlib.h>
+ #include <time.h>
+ #include <unistd.h>
++#include <assert.h>
+ 
+ int main(int argc, char **argv)
+ {
+-    uint MB_to_allocate = 1;
++    size_t MB_to_allocate = 1;
+     bool add_randomness = false;
+ 
+-    if (argc >= 2) MB_to_allocate = atoi(argv[1]);
+-    if (argc >= 3) add_randomness = atoi(argv[2]);
++    if (argc >= 2) MB_to_allocate = strtoul(argv[1], NULL, 10);
++    if (argc >= 3) add_randomness = strtoul(argv[2], NULL, 10);
+     if (argc >= 4) return 1;
+ 
+     size_t array_size = MB_to_allocate * 1024 * 1024 / sizeof(int);
+ 
+     int* array = calloc(array_size, sizeof(int));
++    assert(array != NULL);
+ 
+     // Fill half with random values and leave an half of zeroes, if asked to
+     if (add_randomness) {
+

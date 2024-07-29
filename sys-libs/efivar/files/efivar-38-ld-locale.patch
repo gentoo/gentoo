@@ -1,0 +1,30 @@
+From 01de7438520868650bfaa1ef3e2bfaf00cacbcc6 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Fri, 24 Jun 2022 17:00:33 -0400
+Subject: [PATCH] Set LC_ALL=C to force English output from ld
+
+If the user has a different locale set, ld --version may not contain the
+string "GNU ld".
+
+For example, in Italian, ld --version outputs "ld di GNU".
+
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+---
+ src/include/workarounds.mk | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/include/workarounds.mk b/src/include/workarounds.mk
+index 143e7902..b72fbaf6 100644
+--- a/src/include/workarounds.mk
++++ b/src/include/workarounds.mk
+@@ -2,8 +2,8 @@
+ #
+ # workarounds.mk - workarounds for weird stuff behavior
+ 
+-LD_FLAVOR := $(shell $(LD) --version | grep -E '^(LLD|GNU ld)'|sed 's/ .*//g')
+-LD_VERSION := $(shell $(LD) --version | grep -E '^(LLD|GNU ld)'|sed 's/.* //')
++LD_FLAVOR := $(shell LC_ALL=C $(LD) --version | grep -E '^(LLD|GNU ld)'|sed 's/ .*//g')
++LD_VERSION := $(shell LC_ALL=C $(LD) --version | grep -E '^(LLD|GNU ld)'|sed 's/.* //')
+ # 2.35 is definitely broken and 2.36 seems to work
+ LD_DASH_T := $(shell \
+ 	if [ "x${LD_FLAVOR}" = xLLD ] ; then \

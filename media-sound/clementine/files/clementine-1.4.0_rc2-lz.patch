@@ -1,0 +1,33 @@
+https://github.com/clementine-player/Clementine/pull/7238
+https://bugs.gentoo.org/887105
+
+--- a/3rdparty/qtiocompressor/CMakeLists.txt
++++ b/3rdparty/qtiocompressor/CMakeLists.txt
+@@ -15,4 +15,4 @@ ADD_LIBRARY(qtiocompressor STATIC
+     ${IOCOMPRESSOR-SOURCES-MOC}
+ )
+ 
+-target_link_libraries(qtiocompressor Qt5::Core)
++target_link_libraries(qtiocompressor Qt5::Core ${ZLIB_LIBRARIES})
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -78,9 +78,7 @@ pkg_check_modules(LIBXML libxml-2.0)
+ pkg_check_modules(LIBSPOTIFY libspotify>=12.1.45)
+ pkg_check_modules(TAGLIB taglib)
+ 
+-if (WIN32)
+   find_package(ZLIB REQUIRED)
+-endif (WIN32)
+ 
+ find_library(LASTFM5_LIBRARIES lastfm5)
+ find_path(LASTFM5_INCLUDE_DIRS lastfm5/ws.h)
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1303,7 +1303,6 @@ target_link_libraries(clementine_lib
+   ${SQLITE_LIBRARIES}
+ 
+   Qocoa
+-  z
+ )
+ 
+ link_directories(

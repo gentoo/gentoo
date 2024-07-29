@@ -1,0 +1,41 @@
+--- a/src/output-plugins/spo_database_cache.c
++++ b/src/output-plugins/spo_database_cache.c
+@@ -1202,10 +1202,10 @@
+ 
+     
+     
+-#if  (defined(ENABLE_MYSQL) || defined(ENABLE_POSTGRESQL))    
++#if  (defined(ENABLE_MYSQL) || defined(ENABLE_POSTGRESQL) || defined(ENABLE_ODBC))    
+     u_int32_t curr_row = 0;
+     u_int32_t queryColCount =0;
+-#endif /* (defined(ENABLE_MYSQL) || defined(ENABLE_POSTGRESQL)) */
++#endif /* (defined(ENABLE_MYSQL) || defined(ENABLE_POSTGRESQL) || defined(ENABLE_ODBC)) */
+ 
+ 
+ #ifdef ENABLE_ODBC
+--- a/src/output-plugins/spo_database.c
++++ b/src/output-plugins/spo_database.c
+@@ -3443,9 +3443,9 @@
+ #endif
+ 
+ 
+-#if defined(ENABLE_MYSQL) || defined(ENABLE_POSTGRESQL)
++#if defined(ENABLE_MYSQL) || defined(ENABLE_POSTGRESQL) || defined(ENABLE_ODBC)
+     int result = 0;
+-#endif /* defined(ENABLE_MYSQL) || defined(ENABLE_POSTGRESQL) */
++#endif /* defined(ENABLE_MYSQL) || defined(ENABLE_POSTGRESQL) || defined(ENABLE_ODBC) */
+ 
+     
+     if( (query == NULL) ||
+@@ -3668,9 +3668,9 @@
+ int Select(char * query, DatabaseData * data,u_int32_t *rval)
+ {
+ 
+-#if defined(ENABLE_MYSQL) || defined(ENABLE_POSTGRESQL)
++#if defined(ENABLE_MYSQL) || defined(ENABLE_POSTGRESQL) || defined(ENABLE_ODBC)
+     int result = 0;
+-#endif /* defined(ENABLE_MYSQL) || defined(ENABLE_POSTGRESQL) */
++#endif /* defined(ENABLE_MYSQL) || defined(ENABLE_POSTGRESQL) || defined(ENABLE_ODBC) */
+     
+     if( (query == NULL) || 
+ 	(data == NULL) ||

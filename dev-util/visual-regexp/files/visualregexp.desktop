@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec=visualregexp
+Icon=visualregexp-icon
+Name=Visual Regexp
+Comment=An interactive regular expression editor
+Categories=Development;

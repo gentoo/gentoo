@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+  <maintainer type="person">
+    <email>frp.bissey@gmail.com</email>
+    <name>François Bissey</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    The GBNP package provides algorithms for computing Grobner bases of
+    noncommutative polynomials with coefficients from a field
+    implemented in GAP and with respect to the "total degree first then
+    lexicographical" ordering. Further provided are some variations,
+    such as a weighted and truncated version and a tracing facility. The
+    word "algorithm" is to be interpreted loosely here: in general one
+    cannot expect such an algorithm to terminate, as it would imply
+    solvability of the word problem for finitely presented (semi)groups.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">gap-packages/gbnp</remote-id>
+  </upstream>
+</pkgmetadata>

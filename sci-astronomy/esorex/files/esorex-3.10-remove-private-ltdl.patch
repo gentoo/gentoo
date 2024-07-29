@@ -1,0 +1,39 @@
+Author: Ole Streicher <debian@liska.ath.cx>
+Subject: Remove private library libltdl and use the installed one.
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -37,10 +37,7 @@
+ if MAINTAINER_MODE
+ 
+ MAINTAINERCLEANFILES = $(top_srcdir)/Makefile.in $(top_srcdir)/aclocal.m4 \
+-	$(top_srcdir)/config.h.in $(top_srcdir)/configure config.status config.log \
+-	$(top_srcdir)/libltdl/Makefile.in $(top_srcdir)/libltdl/aclocal.m4 \
+-	$(top_srcdir)/libltdl/config-h.in $(top_srcdir)/libltdl/configure \
+-	libltdl/config.status libltdl/config.log
++	$(top_srcdir)/config.h.in $(top_srcdir)/configure config.status config.log
+ 
+ clean-local: clean-doxygen
+ 
+--- a/configure.ac
++++ b/configure.ac
+@@ -30,7 +30,9 @@
+ 
+ ESO_CHECK_DOCTOOLS
+ 
+-AC_LIBLTDL_CONVENIENCE
++LT_INIT
++LT_CONFIG_LTDL_DIR([libltdl])
++AC_LIB_LTDL
+ AC_SUBST(INCLTDL)
+ AC_SUBST(LIBLTDL)
+ 
+@@ -76,9 +78,6 @@
+ # Determine the shared library suffix on this platform
+ AC_LTDL_SHLIBEXT
+ 
+-
+-AC_CONFIG_SUBDIRS(libltdl)
+-
+ AC_CONFIG_FILES(Makefile
+                 Makefile.purify
+                 doxygen/Doxyfile

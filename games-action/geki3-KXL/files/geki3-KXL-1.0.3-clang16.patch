@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/874570
+--- a/src/geki3.h
++++ b/src/geki3.h
+@@ -11,2 +11,4 @@
+ #include <stdlib.h>
++#include <string.h>
++#include <time.h>
+ #include <sys/types.h>
+--- a/src/load.h
++++ b/src/load.h
+@@ -11,2 +11,3 @@
+ void LoadStageData(void);
++void UnLoadStageData(void);
+ 
+--- a/src/your.h
++++ b/src/your.h
+@@ -14,2 +14,4 @@
+ 		     speed, Uint8 sel);
++void CreateEnemyBomb(Sint16 x, Sint16 y, Uint16 direction, Uint16 speed);
++void CreateMissile(CharacterData *my, Sint16 x, Sint16 y);
+ 

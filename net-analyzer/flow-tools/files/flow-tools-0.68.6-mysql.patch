@@ -1,0 +1,15 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -62,11 +62,9 @@
+ if test "x$WHERE_MYSQL" != "x"; then
+   old_LIBS="$LIBS"
+   old_LDFLAGS="$LDFLAGS"
+-  LDFLAGS="$LDFLAGS -L$WHERE_MYSQL/lib/mysql"
+-  AC_CHECK_LIB(mysqlclient, my_init,
++  AC_CHECK_LIB(mysqlclient, mysql_init,
+     [
+       MYSQLCFLAGS="-I$WHERE_MYSQL/include/mysql"
+-      MYSQLLDFLAGS="-L$WHERE_MYSQL/lib/mysql"
+       MYSQLLIB="-lmysqlclient"
+       AC_DEFINE(HAVE_MYSQL, 1, [Do we have to build MySQL support])
+     ]

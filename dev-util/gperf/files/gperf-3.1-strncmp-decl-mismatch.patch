@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/869134
+
+From 09844ce4ca3d5975469640cea9c5414d5c0baa44 Mon Sep 17 00:00:00 2001
+From: Bruno Haible <bruno@clisp.org>
+Date: Thu, 8 Sep 2022 04:45:03 +0200
+Subject: [PATCH] Fix a warning regarding strncmp.
+
+Reported by Sam James in <https://savannah.gnu.org/bugs/?63031>.
+
+* lib/getopt.c (strncmp): Declare with a prototype.
+--- a/lib/getopt.c
++++ b/lib/getopt.c
+@@ -194,7 +194,6 @@ static char *posixly_correct;
+    whose names are inconsistent.  */
+ 
+ extern char *getenv ();
+-extern int strncmp ();
+ 
+ static char *
+ my_index (const char *str, int chr)
+@@ -209,6 +208,7 @@ my_index (const char *str, int chr)
+ }
+ 
+ extern int strcmp (const char *, const char *);
++extern int strncmp (const char *, const char *, size_t);
+ extern size_t strlen (const char *);
+ 
+ #endif /* not __GNU_LIBRARY__ */

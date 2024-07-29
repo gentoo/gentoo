@@ -1,0 +1,53 @@
+From da88012088dad9f7a5d53c26aa40aa393cb5b703 Mon Sep 17 00:00:00 2001
+From: Mike Swanson <mikeonthecomputer@gmail.com>
+Date: Sat, 27 Jan 2018 04:49:08 -0800
+Subject: [PATCH] bash-completion: Build from actual shell script templates.
+
+At some point, the Makefile was inerrantly modified so that it
+generated manpage sources instead of shell script, making completions
+very screwed up.
+---
+ man/bash-completion/Makefile.am | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
+
+diff --git a/man/bash-completion/Makefile.am b/man/bash-completion/Makefile.am
+index 60e7ae9c..bb706fc7 100644
+--- a/man/bash-completion/Makefile.am
++++ b/man/bash-completion/Makefile.am
+@@ -17,28 +17,27 @@ BASH_COMPLETION_SCRIPTLETS = \
+ bashcompletion_DATA = $(BASH_COMPLETION_SCRIPTLETS)
+ CLEANFILES = $(BASH_COMPLETION_SCRIPTLETS)
+ 
+-MANDIR = $(top_srcdir)/man
+-DOCGEN = $(MANDIR)/docgen
++DOCGEN = $(top_srcdir)/man/docgen
+ DOCGEN_COMMON_ARGS = -n "@PROGRAM_SPREFIX@" -s "@PACKAGE_NAME@" -z "@PACKAGE_SHORTNAME@"
+ 
+ @PROGRAM_PREFIX@doom: $(top_srcdir)/src $(DOCGEN) $(BASH_COMPLETION_TEMPLATES)
+ 	$(DOCGEN) $(DOCGEN_COMMON_ARGS) \
+-                  -g doom -b $(MANDIR)/doom.template \
++                  -g doom -b doom.template \
+                   $(top_srcdir)/src $(top_srcdir)/src/doom > $@
+ 
+ @PROGRAM_PREFIX@heretic: $(top_srcdir)/src $(DOCGEN) $(BASH_COMPLETION_TEMPLATES)
+ 	$(DOCGEN) $(DOCGEN_COMMON_ARGS) \
+-                  -g heretic -b $(MANDIR)/heretic.template \
++                  -g heretic -b heretic.template \
+                   $(top_srcdir)/src $(top_srcdir)/src/heretic > $@
+ 
+ @PROGRAM_PREFIX@hexen: $(top_srcdir)/src $(DOCGEN) $(BASH_COMPLETION_TEMPLATES)
+ 	$(DOCGEN) $(DOCGEN_COMMON_ARGS) \
+-                  -g hexen -b $(MANDIR)/hexen.template \
++                  -g hexen -b hexen.template \
+                   $(top_srcdir)/src $(top_srcdir)/src/hexen > $@
+ 
+ @PROGRAM_PREFIX@strife: $(top_srcdir)/src $(DOCGEN) $(BASH_COMPLETION_TEMPLATES)
+ 	$(DOCGEN) $(DOCGEN_COMMON_ARGS) \
+-                  -g strife -b $(MANDIR)/strife.template \
++                  -g strife -b strife.template \
+                   $(top_srcdir)/src $(top_srcdir)/src/strife > $@
+ 
+ EXTRA_DIST = \
+-- 
+2.26.2
+

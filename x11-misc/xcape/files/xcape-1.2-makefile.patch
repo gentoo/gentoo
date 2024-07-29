@@ -1,0 +1,27 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,19 +1,16 @@
+ INSTALL=install
+-PREFIX=/usr
+-MANDIR?=/local/man/man1
++PREFIX=$(EPREFIX)/usr
++MANDIR?=/share/man/man1
+ 
+ TARGET := xcape
+ 
+ CFLAGS += -Wall
+-CFLAGS += `pkg-config --cflags xtst x11`
+-LDFLAGS += `pkg-config --libs xtst x11`
+-LDFLAGS += -pthread
++CFLAGS += `$(PKG_CONFIG) --cflags xtst x11`
++LDLIBS += `$(PKG_CONFIG) --libs xtst x11`
++LDLIBS += -pthread
+ 
+ all: $(TARGET)
+ 
+-$(TARGET): xcape.c
+-	$(CC) $(CFLAGS) -o $@ $< $(LDFLAGS)
+-
+ install:
+ 	$(INSTALL) -d -m 0755 $(DESTDIR)$(PREFIX)/bin
+ 	$(INSTALL) -d -m 0755 $(DESTDIR)$(PREFIX)$(MANDIR)

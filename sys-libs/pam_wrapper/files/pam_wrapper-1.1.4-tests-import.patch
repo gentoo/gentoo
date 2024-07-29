@@ -1,0 +1,22 @@
+--- a/tests/pypamtest_test.py
++++ b/tests/pypamtest_test.py
+@@ -15,19 +15,6 @@ class PyPamTestCase(unittest.TestCase):
+         self.assertSequenceEqual(test_result.errors, info_list)
+ 
+ class PyPamTestImport(unittest.TestCase):
+-    def setUp(self):
+-        " Make sure we load the in-tree module "
+-        if sys.hexversion >= 0x3000000:
+-            self.modpath = os.path.join(os.getcwd(), "../src/python/python3")
+-        else:
+-            self.modpath = os.path.join(os.getcwd(), "../src/python/python2")
+-        self.system_path = sys.path[:]
+-        sys.path = [ self.modpath ]
+-
+-    def tearDown(self):
+-        " Restore the system path "
+-        sys.path = self.system_path
+-
+     def testImport(self):
+         " Import the module "
+         try:

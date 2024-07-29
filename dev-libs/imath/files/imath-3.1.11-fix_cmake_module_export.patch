@@ -1,0 +1,22 @@
+From 0f7f9f9f32ea178d474325ec1b2576a790e336a1 Mon Sep 17 00:00:00 2001
+From: Lucas Miller <lmiller@imageworks.com>
+Date: Wed, 1 May 2024 13:51:30 -0700
+Subject: [PATCH] Address Issue #395 where packages that need to link against
+ PyImath can no longer find it.
+
+---
+ src/python/config/ModuleDefine.cmake | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/python/config/ModuleDefine.cmake b/src/python/config/ModuleDefine.cmake
+index adee61c8..b4063623 100644
+--- a/src/python/config/ModuleDefine.cmake
++++ b/src/python/config/ModuleDefine.cmake
+@@ -55,6 +55,7 @@ function(PYIMATH_ADD_LIBRARY_PRIV libname)
+   add_library(${PROJECT_NAME}::${libname} ALIAS ${libname})
+ 
+   install(TARGETS ${libname}
++    EXPORT ${PROJECT_NAME}
+     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}

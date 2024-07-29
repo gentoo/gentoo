@@ -1,0 +1,27 @@
+From ce3e2ddb36630f615076caac223c6c6985a3dc53 Mon Sep 17 00:00:00 2001
+From: Gerion Entrup <entrup@sra.uni-hannover.de>
+Date: Tue, 24 Oct 2023 00:27:58 +0200
+Subject: [PATCH] docs/conf.py: fix doc building with Sphinx >6
+
+See https://github.com/sphinx-doc/sphinx/pull/10471/commits/97e3fd8b85692768ff3ceb3885ad59836ceeb7b5#diff-437b1b031f7488e4c051cd111e665fe4b514cba5c64b9f2f23b9cd04aacd89bb
+and https://www.sphinx-doc.org/en/master/usage/extensions/extlinks.html.
+---
+ docs/conf.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/docs/conf.py b/docs/conf.py
+index d5ec2b0..4b68e9f 100644
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -90,7 +90,7 @@ pygments_style = 'sphinx'
+ #modindex_common_prefix = []
+ 
+ extlinks = {
+-    'musicbrainz': ('https://musicbrainz.org/doc/%s', ''),
++    'musicbrainz': ('https://musicbrainz.org/doc/%s', '%s'),
+ }
+ 
+ intersphinx_mapping = {
+-- 
+2.41.0
+

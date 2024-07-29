@@ -1,0 +1,15 @@
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+
+Fixes compilation when using GLVND.
+
+diff --git a/modules/rgbd/CMakeLists.txt b/modules/rgbd/CMakeLists.txt
+index 79e1562..eaebc3a 100644
+--- a/modules/rgbd/CMakeLists.txt
++++ b/modules/rgbd/CMakeLists.txt
+@@ -7,5 +7,5 @@ if(NOT HAVE_EIGEN)
+ endif()
+ 
+ if(HAVE_OPENGL)
+-  ocv_target_link_libraries(${the_module} PRIVATE "${OPENGL_LIBRARIES}")
++  ocv_target_link_libraries(${the_module} PRIVATE "${OPENGL_LIBRARIES}" GL)
+ endif()

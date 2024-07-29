@@ -1,0 +1,31 @@
+From eab4aba3f5e06ea8f124d3e5ff6b3fa88c4807cd Mon Sep 17 00:00:00 2001
+From: Mamoru TASAKA <mtasaka@fedoraproject.org>
+Date: Thu, 1 Dec 2022 12:23:05 +0900
+Subject: [PATCH] extconf.rb: use Rbconfig::CONFIG instead of mkmf CONFIG
+
+In mkmf.rb CONFIG is defined as CONFIG is defined as RbConfig::MAKEFILE_CONFIG
+and RbConfig::MAKEFILE_CONFIG is almost same as RbConfig::CONFIG
+except that RbConfig::MAKEFILE_CONFIG uses reference for other variables.
+
+Using CONFIG in extconf.rb causes error with ruby3.2 because now
+CONFIG['host_os'] uses reference for target_os variable, and extconf.rb
+expects that this variable is all expanded. So instead, use RbConfig::CONFIG .
+
+Closes #30
+---
+ extconf.rb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/extconf.rb b/extconf.rb
+index d17f926..55dcff5 100644
+--- a/extconf.rb
++++ b/extconf.rb
+@@ -14,7 +14,7 @@
+           else; ''
+           end
+ 
+-implementation = case CONFIG['host_os']
++implementation = case RbConfig::CONFIG['host_os']
+                  when /linux/i; 'shadow'
+                  when /sunos|solaris/i; 'shadow'
+                  when /freebsd|mirbsd|netbsd|openbsd/i; 'pwd'

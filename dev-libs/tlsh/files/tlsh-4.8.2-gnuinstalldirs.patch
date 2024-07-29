@@ -1,0 +1,37 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -51,7 +51,7 @@
+ # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+ # OF THE POSSIBILITY OF SUCH DAMAGE.
+ 
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 2.8.5)
+ 
+ project(TLSH)
+ 
+@@ -133,6 +133,8 @@ else(CMAKE_BUILD_TYPE STREQUAL Debug)
+     endif()
+ endif(CMAKE_BUILD_TYPE STREQUAL Debug)
+ 
++include(GNUInstallDirs)
++
+ if(MSVC)
+     add_definitions(-DWINDOWS -DTLSH_LIB)
+     include_directories(Windows)
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -78,10 +78,10 @@ if(TLSH_SHARED_LIBRARY EQUAL 1)
+ endif()
+ 
+ if(TLSH_SHARED_LIBRARY)
+-    install(TARGETS tlsh_static tlsh_shared DESTINATION lib)
++    install(TARGETS tlsh_static tlsh_shared DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ else()
+-    install(TARGETS tlsh_static             DESTINATION lib)
++    install(TARGETS tlsh_static             DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ endif()
+ 
+-install(FILES ../include/tlsh.h DESTINATION include/tlsh)
+-install(FILES ../include/tlsh_version.h DESTINATION include/tlsh)
++install(FILES ../include/tlsh.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/tlsh)
++install(FILES ../include/tlsh_version.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/tlsh)

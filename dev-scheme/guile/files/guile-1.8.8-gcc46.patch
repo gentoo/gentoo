@@ -1,0 +1,39 @@
+Backported upstream patch to fix SIGSEGV with gcc-4.6
+
+http://git.savannah.gnu.org/cgit/guile.git/commit/?h=branch_release-1-8&id=62bc1072c19e81bb0f9e42a5034e7ab8c27d3b94
+https://bugs.gentoo.org/show_bug.cgi?id=424475
+--- a/configure.in
++++ b/configure.in
+@@ -1199,23 +1199,20 @@
+ AC_RUN_IFELSE([AC_LANG_SOURCE(
+ [AC_INCLUDES_DEFAULT
+ int
+-find_stack_direction ()
++find_stack_direction (int *addr, int depth)
+ {
+-  static char *addr = 0;
+-  auto char dummy;
+-  if (addr == 0)
+-    {
+-      addr = &dummy;
+-      return find_stack_direction ();
+-    }
+-  else
+-    return (&dummy > addr) ? 1 : -1;
++  int dir, dummy = 0;
++  if (! addr)
++    addr = &dummy;
++  *addr = addr < &dummy ? 1 : addr == &dummy ? 0 : -1;
++  dir = depth ? find_stack_direction (addr, depth - 1) : 0;
++  return dir + dummy;
+ }
+ 
+ int
+-main ()
++main (int argc, char **argv)
+ {
+-  return find_stack_direction () < 0;
++  return find_stack_direction (0, argc + !argv + 20) < 0;
+ }])],
+ 	       [SCM_I_GSC_STACK_GROWS_UP=1],
+ 	       [],

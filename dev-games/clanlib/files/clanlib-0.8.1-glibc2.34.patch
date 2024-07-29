@@ -1,0 +1,17 @@
+pthread_mutexattr_setkind_np() is long deprecated and should be using
+pthread_mutexattr_settype() instead even on Linux. Fixes consumers
+when built against glibc-2.34.
+
+https://bugs.gentoo.org/808707
+--- a/Sources/Core/System/Unix/mutex_pthread.cpp
++++ b/Sources/Core/System/Unix/mutex_pthread.cpp
+@@ -42,3 +42,3 @@
+ {
+-#ifdef __FreeBSD__
++#if 1
+ 	int pthread_mutexattr_settype(pthread_mutexattr_t *attr, int kind);
+@@ -65,3 +65,3 @@
+ #else
+-#ifdef __FreeBSD__
++#if 1
+         pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_RECURSIVE);

@@ -1,0 +1,35 @@
+Upstream PR: https://github.com/aperezdc/signify/pull/43
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Sat, 29 Jul 2023 20:07:48 +0000
+Subject: [PATCH] Fix build with clang 16
+
+Bug: https://bugs.gentoo.org/894354
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/base64.c
++++ b/base64.c
+@@ -52,6 +52,7 @@
+ 
+ #include <stdlib.h>
+ #include <string.h>
++#include "base64.h"
+ 
+ static const char Base64[] =
+ 	"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+--- /dev/null
++++ b/base64.h
+@@ -0,0 +1,2 @@
++int b64_pton(char const *, unsigned char *, size_t);
++int b64_ntop(unsigned char const *, size_t , char *, size_t);
+--- a/signify.c
++++ b/signify.c
+@@ -34,6 +34,7 @@
+ #include "sha2.h"
+ 
+ #include "crypto_api.h"
++#include "base64.h"
+ #include "signify.h"
+ 
+ #define SIGBYTES crypto_sign_ed25519_BYTES
+-- 
+2.41.0
+

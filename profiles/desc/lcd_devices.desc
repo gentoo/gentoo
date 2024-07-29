@@ -1,0 +1,129 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# This file contains descriptions of the LCD_DEVICES USE_EXPAND flags.
+# Please keep it sorted.
+acoolsdcm - Add support for Alphacool USB display modules
+astusb - Add support for ASTUSB LCD modules
+ax206dpf - Add support for AX206 DPF LCD modules
+bayrad - Add support for BayRAD LCD modules by EMAC
+beckmannegle - Add support for Beckmann+Egle "Mini Terminals" and "Compact Terminals"
+bwct - Add support for BWCT USB LCD displays
+cfontz - Add support for CrystalFontz displays
+cfontzpacket - Add support for CrystalFontz chipsets CFA-631, CFA-633 and CFA-635
+crystalfontz - Add support for modern Crystalfontz display modules
+curses - Add support for a ncurses based virtual display
+cwlinux - Add support for serial / USB displays CW12232 and CW1602 by CwLinux
+cwlnx - Add support for serial / USB displays CW12232 and CW1602 by CwLinux
+d4d - Add support for 4D Systems display graphics modules with SGC PmmC
+ddusbt - Add support for DD usb touch screen
+directgfx - Add support for output via SDL
+displaylink - Add support for displaylink based LCDs
+dpf - Add support for DPF display modulees
+dpfax - Add support for AX206 photo frames
+ea232graphic - Add support for the Electronic Assembly RS232 graphic driver
+ea65 - Add support for the VFD in the AOpen XC Cube-AV EA65 media barebone
+efn - Add support for the English Font display Network based displays
+eyeboxone - Add support for the displays on Rightvision's EyeboxOne server
+framebuffer - Add support for output on a framebuffer
+futaba - Add support for Futaba M402SD06GL display module
+futabavfd - Add support for Futaba M402SD06GL display module
+fw8888 - Add support for the Allnet FW8888 firewall appliance LCD
+g15 - Add support for Logitech G15 Keyboard LCDs
+glcd - Add support for various graphical LCDs, like GLCD2USB
+glcd2usb - Add support for GLCD2USB LCD module
+glcdlib - Add support for LCDs, which are supported by graphlcd-base
+glk - Add support for MatrixOrbital GLK chipset
+goldelox - Add support for Goldelox MD1 display modules
+hd44780 - Add support for Hitachi HD44780 and compatible displays
+hd44780-i2c - Enable hd44780 via i2c instead of parallel port driver
+i2500vfd - Add support for the Intra2net Intranator 2500 VFD display
+i2c - Add generic support for i2c based modules
+icp_a106 - Add support for ICP A106 alarm/LCD boards for 19" racks
+imon - Add support for Soundgraph/Ahanix/Silverstone/Uneed/Accent iMON IR/VFD modules (Antec Fusion)
+imonlcd - Add support for Soundgraph iMON LCD modules (Antec Fusion)
+iowarrior - Add support for IO-Warrior displays
+irlcd - Add support for the USBtiny DIY USB to IR receiver
+irman - Add support for the IrMan IR remote
+irtrans - Add support for the 16x2 IRTrans VFD device
+joy - Add support for the joystick input driver, used on various LCD keypads
+jw002 - Add support for PJRC JW002 24x8 LCD display
+ks0108 - Add support for KS0108 based graphical LCDs
+l4m - Add support for Linux4Media displays
+lb216 - Add support for RTN's LB216 display
+lc7981 - Add support for the DG-16080 display family
+lcd2usb - Add support for the open lcd2usb connector to hd44780 displays
+lcdm001 - Add support for the Kernelconcepts LCDM001 display
+lcdterm - Add support for LCDTerm serial-to-HD44780 adapter boards
+lcterm - Add support for Neumark's LCTerm serial LCD
+ledmatrix - Add support for SLM1606/8 LED Matrix displays
+lh155 - Add support for Sharp LH155 based displays
+linux_input - Add support for the linux event device for inputting data from the input.
+lirc - Add support for various IR remotes supported by LIRC
+lis - Add support for the VLSystem L.I.S MCE 2005 VFD
+lph7508 - Add support for the Pollin LPH7508
+luise - Add support for the Wallbraun Electronics LCD-USB-Interface to Hitachi SP14Q002
+lw_abp - Add support for the LW_ABP display module
+m50530 - Add support for M50530 and compatible displays
+matrixorbital - Add support for Matrix Orbital LCDs
+matrixorbitalgx - Add support for Matrix Orbital graphical LCDs
+md8800 - Add support for the VFD of the Medion MD8800 PC
+mdm166a - Add support for the Futaba / Targa USB Graphic Vacuum Fluorescent Display
+milfordinstruments - Add support for Milford Intruments LCDs
+ms6931 - Add support for MSI-6931 displays in MSI rack servers
+mtc_s16209x - Add support for MTC_S16209x displays
+mtxorb - Add support for Matrix Orbital LCD* LKD* VFD* and VKD* displays
+mx5000 - Add support for the Logitech MX5000 keyboard with an integrated LCD
+newhaven - Add support for various Newhaven displays
+nokcol - Add support for Nokias 3510i and 3530 display modules
+noritake - Add support for the Noritake GU128x32-311 graphical display
+noritakevfd - Add support for the Noritake VFD Device CU20045SCPB-T28A
+null - Add support for a NULL driver (for testing)
+olimex_mod_lcd1x9 - Add support for the Olimex MOD-LCD1x9 LCD display
+pcd8544 - Add support for PCD8544 and compilant display modules
+pertelian - Add support for the Pertelian X2040 displays
+phanderson - Add support for the PHAnderson serial-to-HD44780 controller
+picgraphic - Add support for PIC graphic displays
+picolcd - Add support for Mini-Box's picoLCD
+picolcdgraphic - Add support for Mini-Box's graphical picoLCD
+picolcd_256x64 - Add support for Mini-Box's picoLCD with a higher resolution
+png - Add support for PNG output
+ppm - Add support for PNG output
+pyramid - Add support for the Pyramid LCD device
+rawserial - Add suppor for the rawserial interface on hd44780 LCD displays
+remote - Add suport for remote display modules
+routerboard - Add support for the Router Board LCD port
+rs232 - Add support for generic RS232 based displays
+sample - Add support for the sample driver
+samsungspf - Add support for Samsung SPF displays
+sdeclcd - Add support for Watchguard FireBox firewall appliances displays
+sed1330 - Add support for Seiko Epson SED1330/1335 graphical displays (S1D13300/S1D13305)
+sed133x - Add support for SED133x based display modules
+sed1520 - Add support for the Seiko Epson SED1520 Controller
+sed153x - Add support for OPTREX 323 based display modules
+sed156x - Add support for Nokias 7110 display module
+serdisplib - Meta-driver to support drivers via dev-libs/serdisplib
+serialpos - Add support for character displays in serial point of sale ("POS") devices
+serialvfd - Add support for most NEC, Futaba and Noritake VFDs
+shuttlevfd - Add support for several Shuttle VFDs such as M1000, M2000, G5 3300m and SG33G5M
+simplelcd - Add support for a simple serial terminal display
+sli - Add support for a Wirz SLI display
+ssdoled - Add support for Bolymin BL160128A OLED display
+stv5730 - Add support for STV5730A on-screen display chips
+stv8105 - Add support for STV8105 on-screen display chips
+sureelec - Add support drivers from the 'SURE electronics' shop
+t6963 - Add support for Toshiba T6963 based LCD displays
+teaklcm - Add support for TeakLCM displays
+text - Add support for TextMode displaying
+trefon - Add support for Trefon USB LCD displays
+tyan - Add support for LCDs of the Barebone GS series
+ula200 - Add support for ULA200 USB devices that allow USB connection of HD44780s
+usbhub - Add support for USBHUB displays
+usblcd - Add support for USBLCD displays
+vlsys_m428 - Add support for MonCaso 320 LCD displays
+vnc - Add support for output on a vnc connection
+vssdcp - Add support for network-based vssdcp protocol LCD displays
+wincornixdorf - Add support for the WincorNixdorf serial cashier displays BA63 and BA66
+x11 - Add support for X11 displaying
+xosd - Add support for xosdlib
+yard2lcd - Add support for the Y.A.R.D. 2 LCD display and remote

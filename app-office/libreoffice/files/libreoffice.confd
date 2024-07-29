@@ -1,0 +1,5 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Default options for the soffice daemon
+libreoffice_opts="--accept=\"socket,host=localhost,port=8100,tcpNoDelay=1;urp;\""

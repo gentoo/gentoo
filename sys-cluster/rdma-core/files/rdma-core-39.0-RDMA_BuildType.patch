@@ -1,0 +1,12 @@
+* RDMA_BuildType() tries to muck with CMAKE_BUILD_TYPE
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -199,7 +199,6 @@
+ 
+ #-------------------------
+ # Setup the basic C compiler
+-RDMA_BuildType()
+ include_directories(${BUILD_INCLUDE})
+ 
+ # Look for Python. We prefer some variant of python 3 if the system has it.

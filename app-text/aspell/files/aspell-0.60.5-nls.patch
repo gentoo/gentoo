@@ -1,0 +1,13 @@
+Index: aspell-0.60.5/Makefile.am
+===================================================================
+--- aspell-0.60.5/Makefile.am
++++ aspell-0.60.5/Makefile.am
+@@ -129,7 +129,7 @@ word_list_compress_SOURCES = prog/compre
+ 
+ aspell_SOURCES = prog/aspell.cpp prog/check_funs.cpp prog/checker_string.cpp
+ 
+-aspell_LDADD = libaspell.la $(CURSES_LIB)
++aspell_LDADD = libaspell.la $(CURSES_LIB) $(LTLIBINTL)
+ 
+ prezip_bin_SOURCES = prog/prezip.c
+ 

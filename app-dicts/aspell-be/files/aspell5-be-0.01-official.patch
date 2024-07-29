@@ -1,0 +1,12 @@
+--- a/be_BY.alias
++++ b/be_BY.alias
+@@ -1,2 +1,2 @@
+ # Generated with Aspell Dicts "proc" script version 0.60.2
+-add be.multi
++add be_SU.multi
+--- a/belarusian.alias
++++ b/belarusian.alias
+@@ -1,2 +1,2 @@
+ # Generated with Aspell Dicts "proc" script version 0.60.2
+-add be.multi
++add be_SU.multi

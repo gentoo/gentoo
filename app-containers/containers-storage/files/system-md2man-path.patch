@@ -1,0 +1,7 @@
+--- a/docs/Makefile
++++ b/docs/Makefile
+@@ -1,2 +1,3 @@
+-GOMD2MAN = ../tests/tools/build/go-md2man
++GOMD2MAN = $(shell command -v go-md2man)
++
+ PREFIX ?= ${DESTDIR}/usr

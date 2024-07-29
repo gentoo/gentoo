@@ -1,0 +1,39 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -172,13 +172,35 @@ LDFLAGS="$save_LDFLAGS"
+ 
+ AM_CONDITIONAL(HAVE_LD_NODELETE, test "$linker_supports_nodelete" = "yes")
+ 
++AC_MSG_CHECKING([whether to enable GUI])
++AC_ARG_ENABLE(gui,
++  AS_HELP_STRING([--enable-gui],[enable graphical user interface]),
++  [set_enable_gui=$enableval],
++  [set_enable_gui=yes])
++AC_MSG_RESULT($set_enable_gui)
++
++AC_MSG_CHECKING([whether to enable JACK])
++AC_ARG_ENABLE(jack,
++  AS_HELP_STRING([--enable-jack],[enable support for JACK]),
++  [set_enable_jack=$enableval],
++  [set_enable_jack=yes])
++AC_MSG_RESULT($set_enable_jack)
++
+ ############################################################################################
+ # Compute status shell variables
+ 
+-if test "$GUI_ENABLED" = "yes" -a "$JACK_FOUND" = "yes"; then
++if test "x$set_enable_gui" = "xno"; then
++  GUI_ENABLED="no (disabled by user choice)"
++fi
++
++if test "$JACK_FOUND" = "yes"; then
+   JACK_ENABLED="yes"
+ fi
+ 
++if test "x$set_enable_jack" = "xno"; then
++  JACK_ENABLED="no (disabled by user choice)"
++fi
++
+ if test "$GUI_ENABLED" = "yes" -a "$LV2_ENABLED" = "yes"; then
+   LV2_GUI_ENABLED="yes"
+ fi

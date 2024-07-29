@@ -1,0 +1,21 @@
+https://git.marlam.de/gitweb/?p=bino.git;a=commitdiff;h=94fbab21a6d98fe6f6fffa0283b60da30f1d7c20
+
+From: Sam James <sam@gentoo.org>
+Date: Fri, 2 Sep 2022 02:04:00 +0100
+Subject: [PATCH 1/2] build: respect AR
+
+Search for AR using the normal mechanisms like e.g. CC
+to allow it to be easily overridden in the environment.
+
+Bug: https://bugs.gentoo.org/804486
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -38,6 +38,7 @@ AC_PROG_CXX
+ AC_PROG_INSTALL
+ AC_PROG_RANLIB
+ AC_PROG_LN_S
++AM_PROG_AR
+ AC_LANG([C++])
+ AC_C_BIGENDIAN
+ 

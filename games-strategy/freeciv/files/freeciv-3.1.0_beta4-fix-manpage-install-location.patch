@@ -1,0 +1,34 @@
+From 4518545bd37c6665db51ccd2da7c15bcceb1c0f8 Mon Sep 17 00:00:00 2001
+From: Matt Jolly <Matt.Jolly@footclan.ninja>
+Date: Sat, 10 Feb 2024 17:57:38 +1000
+Subject: [PATCH] When using meson we should still install 'man 6' pages to
+ ${mandir}/man6
+
+---
+ meson.build | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 099e526..5ec0e79 100644
+--- a/meson.build
++++ b/meson.build
+@@ -2892,14 +2892,14 @@ endforeach
+ foreach manp : man_pages
+   install_data(
+     join_paths(b_root, manp + '.6'),
+-    install_dir : get_option('mandir')
++    install_dir : join_paths(get_option('mandir'), 'man6')
+     )
+ endforeach
+ 
+ foreach manp : man_links
+   install_data(
+     join_paths('doc/man/', manp + '.6'),
+-    install_dir : get_option('mandir')
++    install_dir : join_paths(get_option('mandir'), 'man6')
+     )
+ endforeach
+ 
+-- 
+2.43.0
+

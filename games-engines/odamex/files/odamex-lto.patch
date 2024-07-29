@@ -1,0 +1,41 @@
+https://github.com/odamex/odamex/pull/942
+
+diff --git a/client/src/cl_parse.cpp b/client/src/cl_parse.cpp
+index cdadbbdf2..e15c45edc 100644
+--- a/client/src/cl_parse.cpp
++++ b/client/src/cl_parse.cpp
+@@ -2354,7 +2354,7 @@ static void CL_SectorProperties(const odaproto::svc::SectorProperties* msg)
+ 			break;
+ 		}
+ 		case SPC_Gravity:
+-			*(int*)&sector->gravity = msg->sector().gravity();
++			*&sector->gravity = msg->sector().gravity();
+ 			break;
+ 		case SPC_Panning:
+ 			sector->ceiling_xoffs = msg->sector().ceiling_offs().x();
+diff --git a/common/p_spec.cpp b/common/p_spec.cpp
+index df1a42a6a..d0a5af419 100644
+--- a/common/p_spec.cpp
++++ b/common/p_spec.cpp
+@@ -465,7 +465,7 @@ void DPusher::Serialize (FArchive &arc)
+ 	else
+ 	{
+ 		arc >> m_Type;
+-		arc.ReadObject((DObject*&)m_Source, DPusher::StaticType());
++		arc.ReadObject((DObject*&)*m_Source, DPusher::StaticType());
+ 		arc >> m_Xmag >> m_Ymag >> m_Magnitude >> m_Radius >> m_X >> m_Y >> m_Affectee;
+ 	}
+ }
+diff --git a/odalpapi/net_io.cpp b/odalpapi/net_io.cpp
+index d6dd666fe..16f136374 100644
+--- a/odalpapi/net_io.cpp
++++ b/odalpapi/net_io.cpp
+@@ -194,7 +194,7 @@ void BufferedSocket::SetRemoteAddress(const string& Address, const uint16_t& Por
+
+ 	m_RemoteAddress.sin_family = PF_INET;
+ 	m_RemoteAddress.sin_port = htons(Port);
+-	m_RemoteAddress.sin_addr.s_addr = *((unsigned long*)&(((sockaddr_in*)result->ai_addr)->sin_addr));
++	m_RemoteAddress.sin_addr = ((sockaddr_in*)result->ai_addr)->sin_addr;
+ 	memset(m_RemoteAddress.sin_zero, '\0', sizeof m_RemoteAddress.sin_zero);
+
+ 	freeaddrinfo(result);

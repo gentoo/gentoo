@@ -1,0 +1,12 @@
+diff -up megaglest-3.13.0/source/g3d_viewer/CMakeLists.txt.orig megaglest-3.13.0/source/g3d_viewer/CMakeLists.txt
+--- megaglest-3.13.0/source/g3d_viewer/CMakeLists.txt.orig	2019-09-24 15:36:04.938321806 -0300
++++ megaglest-3.13.0/source/g3d_viewer/CMakeLists.txt	2019-09-24 15:36:34.633526679 -0300
+@@ -207,7 +207,7 @@ IF(BUILD_MEGAGLEST_MODEL_VIEWER)
+ 			MESSAGE(STATUS "***-- Found xvfb-run: ${XVFB_EXEC} about to build manpage with it.")
+ 
+ 		  	add_custom_target(${TARGET_NAME_MANPAGE} ALL
+-		    		COMMAND ${XVFB_EXEC} --auto-servernum --server-num=770 ${HELP2MAN} --no-discard-stderr --name='${MG_MANPAGE_DESCRIPTION}' --section=6 -N -o ${HELP2MAN_OUT_PATH}${TARGET_NAME_MANPAGE} ${HELP2MAN_OUT_PATH}${TARGET_NAME}
++				COMMAND ${XVFB_EXEC} --auto-servernum ${HELP2MAN} --name='${MG_MANPAGE_DESCRIPTION}' --section=6 -N -o ${HELP2MAN_OUT_PATH}${TARGET_NAME_MANPAGE} ${HELP2MAN_OUT_PATH}${TARGET_NAME}
+ 		    	DEPENDS ${TARGET_NAME})
+ 		ELSE()
+ 		  	add_custom_target(${TARGET_NAME_MANPAGE} ALL

@@ -1,0 +1,11 @@
+--- a/src/dune	2023-01-30 20:28:23.578884847 +0100
++++ b/src/dune	2023-01-30 20:28:33.523713488 +0100
+@@ -2,7 +2,7 @@
+ (library
+   (name tiny_httpd)
+   (public_name tiny_httpd)
+-  (libraries threads seq)
++  (libraries threads)
+   (flags :standard -safe-string -warn-error -a+8)
+   (wrapped false))
+ 

@@ -1,0 +1,71 @@
+Fix building with GCC 10
+
+Origin: https://sources.debian.org/patches/jfsutils/1.1.15-5/gcc10_fix-1.patch/
+
+--- jfsutils-1.1.15.old/fscklog/display.c
++++ jfsutils-1.1.15.new/fscklog/display.c
+@@ -54,7 +54,7 @@
+  * output: fsck extracted service log I/O buffer
+  *
+  */
+-char xchklog_buffer[XCHKLOG_BUFSIZE];
++static char xchklog_buffer[XCHKLOG_BUFSIZE];
+ 
+ /* + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+  *
+--- jfsutils-1.1.15.old/libfs/logredo.c
++++ jfsutils-1.1.15.new/libfs/logredo.c
+@@ -87,9 +87,9 @@
+  *    S T U F F    F O R    T H E    L O G
+  *
+  */
+-struct logsuper logsup;		/* log super block */
+-int32_t numdoblk;		/* number of do blocks used     */
+-int32_t numnodofile;		/* number of nodo file blocks used  */
++static struct logsuper logsup;		/* log super block */
++static int32_t numdoblk;		/* number of do blocks used     */
++static int32_t numnodofile;		/* number of nodo file blocks used  */
+ int32_t numExtDtPg = 0;		/* number of extended dtpage blocks used  */
+ 
+ /*
+@@ -129,7 +129,7 @@
+  */
+ 
+ /* buffer header table */
+-struct bufhdr {
++static struct bufhdr {
+ 	int16_t next;		/* 2: next on free/lru list */
+ 	int16_t prev;		/* 2: previous on free/lru list */
+ 	int16_t hnext;		/* 2: next on hash chain */
+@@ -142,7 +142,7 @@
+ } bufhdr[NBUFPOOL];		/* (24) */
+ 
+ /* buffer table */
+-struct bufpool {
++static struct bufpool {
+ 	char bytes[PSIZE];
+ } buffer[NBUFPOOL - 1];
+ 
+@@ -151,15 +151,16 @@
+  *
+  * log has its own 4 page buffer pool.
+  */
+-uint8_t afterdata[LOGPSIZE * 2];	/* buffer to read in redopage data */
++static uint8_t afterdata[LOGPSIZE * 2];	/* buffer to read in redopage data */
+ 
+ /*
+  * Miscellaneous
+  */
+-caddr_t prog;			/* Program name */
+-int32_t mntcnt, bufsize;
+-char *mntinfo;
+-int32_t retcode;		/* return code from logredo    */
++static caddr_t prog;			/* Program name */
++extern int32_t mntcnt;
++static int32_t bufsize;
++static char *mntinfo;
++static int32_t retcode;		/* return code from logredo    */
+ int end_of_transaction = 0;
+ 
+ /*
+ 

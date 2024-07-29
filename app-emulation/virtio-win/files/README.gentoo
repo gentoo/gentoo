@@ -1,0 +1,15 @@
+VirtIO drivers have been installed as a CD-ROM image to
+
+  /usr/share/drivers/windows/virtio-win.iso
+
+To install the drivers on a Windows guest machine, either during or after the
+installation of Windows, pass the iso file to the guest machine and mount it as
+a CD-ROM image. Then, in the Windows guest, open the Device Manager and start
+the driver update wizard. Locate the appropriate device and click to update its
+driver. In the pop-up window, click to browse in the guest machine to locate
+the iso image, and select the driver(s) from it to install.
+
+For an example, see: https://wiki.gentoo.org/wiki/QEMU/Windows_guest
+
+For information on using the Device Manager, refer to the Windows
+documentation.

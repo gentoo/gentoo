@@ -1,0 +1,67 @@
+Disable rocFFT fetching SQLite3 and link to system libsqlite.so
+Index: rocFFT-rocm-5.1.3/library/src/CMakeLists.txt
+===================================================================
+--- rocFFT-rocm-5.1.3.orig/library/src/CMakeLists.txt
++++ rocFFT-rocm-5.1.3/library/src/CMakeLists.txt
+@@ -134,49 +134,22 @@ set( rocfft_source
+   rtcsubprocess.cpp
+   )
+ 
+-# SQLite 3.36.0 enabled the backup API by default, which we need
+-# for cache serialization.  We also want to use a static SQLite,
+-# and distro static libraries aren't typically built
+-# position-independent.
+-include( FetchContent )
+-
+-set(SQLITE_SRC_URL https://sqlite.org/2021/sqlite-amalgamation-3360000.zip CACHE STRING "Location of SQLite source code")
+-set(SQLITE_SRC_SHA256 999826fe4c871f18919fdb8ed7ec9dd8217180854dd1fe21eea96aed36186729 CACHE STRING "SHA256 hash of SQLite source code")
+-
+-# embed SQLite
+-FetchContent_Declare(sqlite_local
+-  URL ${SQLITE_SRC_URL}
+-  URL_HASH SHA256=${SQLITE_SRC_SHA256}
+-)
+-FetchContent_MakeAvailable(sqlite_local)
+-add_library( sqlite3 OBJECT ${sqlite_local_SOURCE_DIR}/sqlite3.c )
+-set_target_properties( sqlite3 PROPERTIES
+-  C_VISIBILITY_PRESET "hidden"
+-  VISIBILITY_INLINES_HIDDEN ON
+-  POSITION_INDEPENDENT_CODE ON
+-  )
+-
+-# we don't need extensions, and omitting them from SQLite removes the
+-# need for dlopen/dlclose from within rocFFT
+-target_compile_options(
+-  sqlite3
+-  PRIVATE -DSQLITE_OMIT_LOAD_EXTENSION
+-)
+-
+ set_property(
+   SOURCE rtc.cpp
+   PROPERTY OBJECT_DEPENDS ${kgen_embed_h}
+ )
+ 
++find_package( SQLite3 REQUIRED )
++
+ prepend_path( ".." rocfft_headers_public relative_rocfft_headers_public )
+ 
+ add_library( rocfft
+   ${rocfft_source}
+   ${relative_rocfft_headers_public}
+-  $<TARGET_OBJECTS:sqlite3>
+   )
+ add_library( roc::rocfft ALIAS rocfft )
+ 
++target_link_libraries( rocfft PRIVATE ${SQLite3_LIBRARIES} )
+ if( NOT WIN32 )
+   target_link_libraries( rocfft PRIVATE -lstdc++fs )
+ endif()
+@@ -209,7 +182,7 @@ endif()
+ target_include_directories( rocfft
+   PRIVATE $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/library/src/include>
+   $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/library/src/device>
+-  ${sqlite_local_SOURCE_DIR}
++  ${SQLite3_LIBRARIES}
+   PUBLIC  $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/library/include>
+   $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/include>
+   $<INSTALL_INTERFACE:include>

@@ -1,0 +1,34 @@
+https://bugs.gentoo.org/708056
+
+From 8c7eea58f2034113ae91ff7adc2bda72465b7d1a Mon Sep 17 00:00:00 2001
+From: Peter Bieringer <pb@bieringer.de>
+Date: Fri, 24 Jan 2020 07:15:55 +0100
+Subject: [PATCH] ipv6logconv/ipv6logconv.{h,c}: fix multiple definition of
+ 'cache_lru_limit'
+
+--- a/ipv6logconv/ipv6logconv.c
++++ b/ipv6logconv/ipv6logconv.c
+@@ -58,7 +58,7 @@ static void lineparser(const long int outputtype);
+ /* LRU cache */
+ 
+ #define CACHE_LRU_SIZE 200
+-
++int cache_lru_limit;
+ static int      cache_lru_max = 0;
+ static int      cache_lru_last = 0;
+ static char     cache_lru_key_token[CACHE_LRU_SIZE][NI_MAXHOST];
+--- a/ipv6logconv/ipv6logconv.h
++++ b/ipv6logconv/ipv6logconv.h
+@@ -20,8 +20,7 @@
+ #define DEBUG_ipv6logconv_general      0x00000001l
+ #define DEBUG_ipv6logconv_processing   0x00000002l
+ 
+-/* prototyping */
+-int cache_lru_limit;
++extern int cache_lru_limit;
+ 
+ extern int feature_reg;
+ extern int feature_ieee;
+-- 
+2.27.0
+

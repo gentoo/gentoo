@@ -1,0 +1,22 @@
+--- a/example/CMakeLists.txt
++++ b/example/CMakeLists.txt
+@@ -2,7 +2,7 @@ include(CheckCXXCompilerFlag)
+ 
+ set(CMAKE_CXX_STANDARD 17)
+ if((CMAKE_CXX_COMPILER_ID MATCHES "GNU") OR (CMAKE_CXX_COMPILER_ID MATCHES "Clang"))
+-    set(OPTIONS -Wall -Wextra -pedantic-errors -Werror)
++    set(OPTIONS -Wall -Wextra)
+ elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+     set(OPTIONS /W4 /WX)
+     if(HAS_PERMISSIVE_FLAG)
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -12,7 +12,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+     check_cxx_compiler_flag(/std:c++latest HAS_CPPLATEST_FLAG)
+ elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+     set(CMAKE_VERBOSE_MAKEFILE ON)
+-    set(OPTIONS -Wall -Wextra -pedantic-errors -Werror)
++    set(OPTIONS -Wall -Wextra)
+ 
+     check_cxx_compiler_flag(-std=c++20 HAS_CPP20_FLAG)
+     check_cxx_compiler_flag(-std=c++23 HAS_CPP23_FLAG)

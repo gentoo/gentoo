@@ -1,0 +1,11 @@
+--- a/JSDL.cpp
++++ b/JSDL.cpp
+@@ -20,7 +20,7 @@
+ #include <cstdlib>
+ #include <fstream>
+ #include <stdexcept>
+-
++#include <cstring>
+ using std::runtime_error;
+ using std::memcpy;
+ 

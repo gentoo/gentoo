@@ -1,0 +1,18 @@
+Only dump -L/-rpath if libdir is non-standard
+
+--- a/smpeg-config.in
++++ b/smpeg-config.in
+@@ -45,11 +45,13 @@
+       echo $includes -I@includedir@/smpeg `@SDL_CONFIG@ --cflags`
+       ;;
+     --libs)
++      if [ "@libdir@" != "/usr/lib" ]; then
+       if [ "`uname`" = "SunOS" ]; then
+         libdirs="-L@libdir@ -R@libdir@"
+       else
+         libdirs="-L@libdir@ @SMPEG_RLD_FLAGS@"
+       fi
++      fi
+       echo $libdirs -lsmpeg `@SDL_CONFIG@ --libs`
+       ;;
+     *)

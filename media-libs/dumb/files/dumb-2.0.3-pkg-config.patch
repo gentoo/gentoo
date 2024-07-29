@@ -1,0 +1,21 @@
+From 3a4f71afbc23d716d0d1f71664b94af143ae8e11 Mon Sep 17 00:00:00 2001
+From: Robert Colton <robertbcolton@gmail.com>
+Date: Tue, 18 Dec 2018 22:03:51 -0500
+Subject: [PATCH] fix pkg-config linking issue -llibdumb
+
+---
+ pkg-config.pc.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pkg-config.pc.in b/pkg-config.pc.in
+index c11861c..92a9735 100644
+--- a/pkg-config.pc.in
++++ b/pkg-config.pc.in
+@@ -7,6 +7,6 @@ Name: DUMB
+ Description: DUMB is a module audio renderer library. 
+ Version: @DUMB_VERSION@
+ URL: https://github.com/kode54/dumb/
+-Libs: -L${libdir} -l@PROJECT_NAME@
++Libs: -L${libdir} -ldumb
+ Libs.private: -lm
+ Cflags: -I${includedir} 

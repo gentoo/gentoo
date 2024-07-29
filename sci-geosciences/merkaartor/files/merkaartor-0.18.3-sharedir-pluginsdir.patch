@@ -1,0 +1,28 @@
+--- a/src/src.pro	2018-08-05 13:25:02.761849538 +0100
++++ b/src/src.pro	2018-08-05 13:25:55.935846789 +0100
+@@ -155,8 +155,10 @@
+     isEmpty( LIBDIR ) {
+         LIBDIR = $${PREFIX}/lib${LIB_SUFFIX}
+     }
+-
+-    DEFINES += PLUGINS_DIR=$${LIBDIR}/merkaartor/plugins
++    isEmpty( PLUGINS_DIR ){
++	PLUGINS_DIR=$${LIBDIR}/merkaartor/plugins
++    }
++    DEFINES += PLUGINS_DIR=$${PLUGINS_DIR}
+ 
+     target.path = $${PREFIX}/bin
+     SHARE_DIR = $${PREFIX}/share/merkaartor
+
+--- a/src/src.pro	2018-08-05 16:20:33.759305219 +0100
++++ b/src/src.pro	2018-08-05 16:20:53.094304220 +0100
+@@ -181,7 +181,7 @@
+ 
+ 
+ 
+-DEFINES += SHARE_DIR=$${SHARE_DIR}
++DEFINES += SHARE_DIR=$${SHARE_DIR_PATH}
+ INSTALLS += target
+ 
+ win32-msvc* {
+

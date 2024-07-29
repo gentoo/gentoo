@@ -1,0 +1,12 @@
+diff -Nur levmar-2.6.orig/CMakeLists.txt levmar-2.6/CMakeLists.txt
+--- levmar-2.6.orig/CMakeLists.txt	2012-04-13 04:53:53.000000000 +0100
++++ levmar-2.6/CMakeLists.txt	2012-04-13 04:54:20.000000000 +0100
+@@ -60,7 +60,7 @@
+ ENDIF(HAVE_PLASMA)
+ 
+ # levmar library source files
+-ADD_LIBRARY(levmar STATIC
++ADD_LIBRARY(levmar SHARED
+   lm.c Axb.c misc.c lmlec.c lmbc.c lmblec.c lmbleic.c
+   levmar.h misc.h compiler.h
+ )

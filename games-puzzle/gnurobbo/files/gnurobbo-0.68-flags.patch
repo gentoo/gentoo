@@ -1,0 +1,22 @@
+diff --color -Naur a/Makefile b/Makefile
+--- a/Makefile	2015-08-26 21:35:29.000000000 +0100
++++ b/Makefile	2020-09-06 21:54:50.074658932 +0100
+@@ -61,16 +61,15 @@
+ 
+ 
+ 
+-CFLAGS+=-d -Wall  `$(SDL_CONFIG) --cflags` -DPLATFORM_PC -DVERSION=\"$(VERSION)\" $(SMOOTH_SCRL) $(LIGHTNING)\
++CFLAGS+=-Wall  `$(PKG_CONFIG) --cflags sdl SDL_image SDL_mixer SDL_ttf` -DPLATFORM_PC -DVERSION=\"$(VERSION)\" $(SMOOTH_SCRL) $(LIGHTNING)\
+ 	-DPACKAGE_DATA_DIR=\"$(PACKAGE_DATA_DIR)\" $(FONT_USE_PIXMAP) $(MUSIC) $(DESIGNER)
+-LDFLAGS=
+ # Use these instead for debugging and/or profiling (mainly intended for GNU Robbo developers)
+ #CFLAGS?=-O0 -pipe -g -pg
+ #CFLAGS+=-Wall `$(SDL_CONFIG) --cflags` -DPLATFORM_PC -DVERSION=\"$(VERSION)\" \
+ #	-DPACKAGE_DATA_DIR=\"$(PACKAGE_DATA_DIR)\" $(FONT_USE_PIXMAP) $(MUSIC) $(DESIGNER)
+ #LDFLAGS=-pg
+ LINK=$(CC)
+-LIBS=`$(SDL_CONFIG) --libs` -lm -lSDL_image -lSDL_mixer $(FONT_USE_SDL_TTF)
++LIBS=`$(PKG_CONFIG) --libs sdl SDL_image SDL_mixer SDL_ttf` -lm
+ 
+ #for caanoo compilation
+ #LIBS=-L$(GPH_SDK)/DGE/lib/target -L$(GPH_SDK)/lib/target -lSDL_image -lSDL_mixer $(FONT_USE_SDL_TTF)

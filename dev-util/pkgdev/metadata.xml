@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>pkgcore@gentoo.org</email>
+		<name>Pkgcore</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="gentoo">proj/pkgcore/pkgdev</remote-id>
+		<remote-id type="github">pkgcore/pkgdev</remote-id>
+		<remote-id type="pypi">pkgdev</remote-id>
+	</upstream>
+</pkgmetadata>

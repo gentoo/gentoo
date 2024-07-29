@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
+	<longdescription lang="en">
+		The UniKey engine for IBus. It provides a Vietnamese input method using
+		UniKey. Support via forum at: http://forum.ubuntu-vn.com/viewforum.php?f=85
+	</longdescription>
+	<upstream>
+		<remote-id type="github">vn-input/ibus-unikey</remote-id>
+	</upstream>
+</pkgmetadata>

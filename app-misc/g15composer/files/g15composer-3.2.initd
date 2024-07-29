@@ -1,0 +1,48 @@
+#!/sbin/openrc-run
+# Copyright 1999-2007 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+PIDFILE=/var/run/${SVCNAME}.pid
+
+depend() {
+	need g15daemon
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+
+	if [ -z "${FIFO_USER}" -o -z "${FIFO_GROUP}" ] ; then
+		eerror "Please set the FIFO_USER and FIFO_GROUP variables in /etc/conf.d/${SVCNAME}"
+		eend 1
+		return 1
+	fi
+	if [ -e "${CONTROL_FIFO}" -a ! -p "${CONTROL_FIFO}" ] ; then
+		eerror "${CONTROL_FIFO} exists and is not a FIFO. Please remove."
+		eend 1
+		return 1
+	fi
+	if [ ! -p "${CONTROL_FIFO}" ] ; then
+		einfo "Creating FIFO at ${CONTROL_FIFO}"
+		mkfifo -m660 "${CONTROL_FIFO}"
+	else
+		einfo "Reusing FIFO at ${CONTROL_FIFO}"
+	fi
+
+	chown ${FIFO_USER} "${CONTROL_FIFO}"
+	chgrp ${FIFO_GROUP} "${CONTROL_FIFO}"
+	start-stop-daemon --start --background --pidfile ${PIDFILE} --make-pidfile --exec \
+		/usr/bin/g15composer -- -b -u "${FIFO_USER}" -g "${FIFO_GROUP}" "${CONTROL_FIFO}"
+	eend $?
+}
+
+stop() {
+	ebegin "Stoping ${SVCNAME}"
+	start-stop-daemon --stop --pidfile ${PIDFILE} --name g15composer
+	if [ -p "${CONTROL_FIFO}" ] ; then
+		einfo "Removing FIFO at ${CONTROL_FIFO}"
+		rm -f "${CONTROL_FIFO}"
+	else
+		ewarn "FIFO at ${CONTROL_FIFO} was lost"
+	fi
+	eend $?
+}

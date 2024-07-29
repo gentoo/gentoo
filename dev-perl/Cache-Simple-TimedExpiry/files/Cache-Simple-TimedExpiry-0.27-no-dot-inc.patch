@@ -1,0 +1,21 @@
+From 5b80a167c8241dd309f7532072deda6c4d8ae6ef Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Thu, 14 May 2020 01:31:25 +1200
+Subject: Include '.' in @INC on Perl 5.26+
+
+---
+ Makefile.PL | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 2290ec1..53c96c2 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -1,3 +1,4 @@
++use lib '.';
+            use inc::Module::Install;
+ 
+            name            ('Cache-Simple-TimedExpiry');
+-- 
+2.26.2
+

@@ -1,0 +1,9 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# This file contains descriptions of OPENMPI_FABRICS USE_EXPAND flags.
+
+# Keep it sorted.
+
+ofed - OFED RDMA stack (InfiniBand and iWARP)
+knem - High-Performance Intra-Node MPI Communication

@@ -1,0 +1,12 @@
+diff -Nur sloccount-2.22/compute_sloc_lang sloccount-2.22-new/compute_sloc_lang
+--- sloccount-2.22/compute_sloc_lang	2002-02-28 13:34:09.000000000 +0100
++++ sloccount-2.22-new/compute_sloc_lang	2004-10-23 12:36:56.295312577 +0200
+@@ -30,7 +30,7 @@
+      *) ${language}_count -f ${language}_list.dat > ${language}_outfile.dat
+         ;;
+    esac
+-   tail -1 < ${language}_outfile.dat
++   tail -n 1 < ${language}_outfile.dat
+ 
+   else
+    rm -f ${language}_outfile.dat

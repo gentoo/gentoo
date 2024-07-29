@@ -1,0 +1,16 @@
+make it build for mingw targets
+
+https://bugs.gentoo.org/393573
+
+--- a/bzlib.h
++++ b/bzlib.h
+@@ -81,6 +81,9 @@ typedef
+       /* windows.h define small to char */
+ #      undef small
+ #   endif
++#   ifndef WINAPI
++#   define WINAPI
++#   endif
+ #   ifdef BZ_EXPORT
+ #   define BZ_API(func) WINAPI func
+ #   define BZ_EXTERN extern

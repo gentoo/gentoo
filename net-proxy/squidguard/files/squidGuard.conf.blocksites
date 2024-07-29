@@ -1,0 +1,13 @@
+logdir /var/log/squidGuard
+dbhome /etc/squidGuard/db
+
+dest blockedsites {
+	domainlist blockedsites
+}
+
+acl {
+	default {
+		pass !blockedsites all
+		redirect http://www.sample.com/empty.png
+	}
+}

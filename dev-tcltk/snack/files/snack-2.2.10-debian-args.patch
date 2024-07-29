@@ -1,0 +1,154 @@
+Patch by Sergei Golovan fixes several cases of access beyond array boundaries.
+
+--- a/generic/jkFilterIIR.c
++++ b/generic/jkFilterIIR.c
+@@ -125,6 +125,12 @@
+       return TCL_ERROR;
+     }
+     
++    if (arg + 1 == objc) {
++      Tcl_AppendResult(interp, "No argument given for ",
++		       optionStrings[index], " option", (char *) NULL);
++      return TCL_ERROR;
++    }
++    
+     switch ((enum options) index) {
+       /* size of triangular dithering on output */
+     case DITHER:
+--- a/generic/jkPitchCmd.c
++++ b/generic/jkPitchCmd.c
+@@ -850,7 +850,7 @@
+ 
+   for (arg = 2; arg < objc; arg += 2) {
+     char *opt = Tcl_GetStringFromObj(objv[arg], NULL);
+-    char *val = Tcl_GetStringFromObj(objv[arg+1], NULL);
++    char *val = (arg + 1 == objc) ? "" : Tcl_GetStringFromObj(objv[arg+1], NULL);
+ 
+     if ((strcmp("-method", opt) == 0) && (strcasecmp("esps", val) == 0)) {
+       Get_f0(s, interp, objc, objv);
+--- a/generic/jkSoundEdit.c
++++ b/generic/jkSoundEdit.c
+@@ -291,6 +291,12 @@
+       string = Tcl_GetStringFromObj(objv[arg], &len);
+       
+       if (strncmp(string, "-units", len) == 0) {
++	if (arg + 1 == objc) {
++	  Tcl_AppendResult(interp, "No argument given for ",
++			   string, " option", (char *) NULL);
++	  return TCL_ERROR;
++	}
++    
+ 	string = Tcl_GetStringFromObj(objv[arg+1], &len);
+ 	if (strncasecmp(string, "seconds", len) == 0) type = 1;
+ 	if (strncasecmp(string, "samples", len) == 0) type = 0;
+@@ -1152,6 +1158,12 @@
+       return TCL_ERROR;
+     }
+ 
++    if (arg + 1 == objc) {
++      Tcl_AppendResult(interp, "No argument given for ",
++		       subOptionStrings[index], " option", (char *) NULL);
++      return TCL_ERROR;
++    }
++    
+     switch ((enum subOptions) index) {
+     case RATE:
+     case FREQUENCY:
+--- a/generic/shape.c
++++ b/generic/shape.c
+@@ -103,6 +103,12 @@
+                               "option", 0, &index) != TCL_OK) {
+         return TCL_ERROR;
+       }
++      if (arg + 1 == objc) {
++	Tcl_AppendResult(interp, "No argument given for ",
++		         subOptionStrings[index], " option", (char *) NULL);
++        return TCL_ERROR;
++      }
++    
+       switch ((enum subOptions) index) {
+       case START:
+         {
+@@ -155,6 +161,12 @@
+                               "option", 0, &index) != TCL_OK) {
+         return TCL_ERROR;
+       }
++      if (arg + 1 == objc) {
++	Tcl_AppendResult(interp, "No argument given for ",
++		         subOptionStrings[index], " option", (char *) NULL);
++        return TCL_ERROR;
++      }
++    
+       switch ((enum subOptions) index) {
+       case START:
+         {
+@@ -384,6 +396,12 @@
+                             "option", 0, &index) != TCL_OK) {
+       return TCL_ERROR;
+     }
++    if (arg + 1 == objc) {
++      Tcl_AppendResult(interp, "No argument given for ",
++		       subOptionStrings[index], " option", (char *) NULL);
++      return TCL_ERROR;
++    }
++    
+     switch ((enum subOptions) index) {
+     case START:
+       {
+--- /dev/null
++++ b/tests/zargs.test
+@@ -0,0 +1,54 @@
++# Tests cover lack of command arguments
++
++package require -exact snack 2.2
++
++if {[lsearch [namespace children] ::tcltest] == -1} {
++    package require tcltest
++    namespace import ::tcltest::*
++}
++
++test zargs-1.1 {pitch command, with missing argument for -start option} {
++  set s [snack::sound snd -load ex1.wav]
++  catch {$s pitch -start} msg
++  $s destroy
++  set msg
++} {No argument given for -start option}
++
++test zargs-1.2 {length command, with missing argument for -units option} {
++  set s [snack::sound snd -load ex1.wav]
++  catch {$s length 10 10 -units} msg
++  $s destroy
++  set msg
++} {No argument given for -units option}
++
++test zargs-1.3 {convert command, with missing argument for -rate option} {
++  set s [snack::sound snd -load ex1.wav]
++  catch {$s convert -rate 1 -rate} msg
++  $s destroy
++  set msg
++} {No argument given for -rate option}
++
++test zargs-1.4 {iir filter, with missing argument for -denominator option} {
++  set s [snack::sound snd -load ex1.wav]
++  catch {snack::filter iir -denominator} msg
++  $s destroy
++  set msg
++} {No argument given for -denominator option}
++
++test zargs-1.5 {shape command, with missing argument for -start option} {
++  set s [snack::sound snd -load ex1.wav]
++  catch {$s shape -start 0 -start} msg
++  $s destroy
++  set msg
++} {No argument given for -start option}
++
++test zargs-1.6 {datasamples command, with missing argument for -start option} {
++  set s [snack::sound snd -load ex1.wav]
++  catch {$s datasamples -start 0 -start} msg
++  $s destroy
++  set msg
++} {No argument given for -start option}
++
++# cleanup
++::tcltest::cleanupTests
++return

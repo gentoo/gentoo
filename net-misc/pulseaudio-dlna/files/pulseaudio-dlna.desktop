@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Pulseaudio DLNA
+Type=Application
+Comment=A lightweight streaming server which brings DLNA / UPNP and Chromecast support to PulseAudio and Linux
+Exec=sh -c "pkill pulseaudio-dlna; pulseaudio-dlna --request-timeout=30"
+Terminal=false
+Categories=
+NoDisplay=true
+StartupNotify=false

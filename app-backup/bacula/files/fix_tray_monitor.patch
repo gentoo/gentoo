@@ -1,0 +1,15 @@
+# original code calls 'qmake' and 'make clean' for tray-monitor configuration twice
+# resuting in a Makefile without install rule for binary
+# 
+# see bug #915605
+--- configure.orig	2023-11-14 12:01:38.738557240 +0000
++++ configure	2023-11-14 12:02:13.845743964 +0000
+@@ -35067,8 +35067,6 @@
+    rm -rf moc32 obj32 moc64 obj64 ui32 ui64
+    $QMAKE
+    ${MAKE:-make} clean
+-   $QMAKE
+-   ${MAKE:-make} clean
+    cd ${BUILD_DIR}
+ fi
+ 

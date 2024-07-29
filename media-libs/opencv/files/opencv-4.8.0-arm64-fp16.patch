@@ -1,0 +1,272 @@
+https://github.com/opencv/opencv/pull/24203
+
+From 689fa6f372975d58e9f50fd17a0abd105b1815f1 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 28 Aug 2023 04:20:58 +0100
+Subject: [PATCH] Fix compilation on arm64 with FP16 when disabled
+
+If building with -mcpu=native or any other setting which implies the current
+CPU has FP16 but with intrinsics disabled, we mistakenly try to use it even
+though convolution.hpp conditionally defines it correctly based on whether
+we should *use it*. convolution.cpp on the other hand was mismatched and
+trying to use it if the CPU supported it, even if not enabled in the build
+system.
+
+Make the guards match.
+
+Bug: https://bugs.gentoo.org/913031
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/modules/dnn/src/layers/cpu_kernels/convolution.cpp
++++ b/modules/dnn/src/layers/cpu_kernels/convolution.cpp
+@@ -118,7 +118,7 @@ Ptr<FastConv> initFastConv(
+     const size_t wstep = weightsMat.step1();
+ 
+     conv->useFP16 = false;
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+     // TODO: add FP16 support for Winograd.
+     if (_useFP16 && (conv->conv_type == CONV_TYPE_GENERIC || conv->conv_type == CONV_TYPE_DEPTHWISE_REMAIN))
+         conv->useFP16 = true;
+@@ -137,7 +137,7 @@ Ptr<FastConv> initFastConv(
+         int padded_ksize = ((ksize + VEC_ALIGN-1) / VEC_ALIGN) * VEC_ALIGN;
+         int nweights = C * padded_ksize;
+ 
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+         if (conv->useFP16)
+         {
+             conv->weightsBuf_FP16.resize(nweights + VEC_ALIGN);
+@@ -190,7 +190,7 @@ Ptr<FastConv> initFastConv(
+ #endif
+         const int CONV_WINO_NATOMS_F32 = CONV_WINO_AREA / CONV_WINO_ATOM_F32; // for AVX2, it is 8, otherwise, it's 16.
+ 
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+         // FP 16
+         const int CONV_WINO_ATOM_F16 = CONV_WINO_ATOM_F32 * 2;
+         const int CONV_WINO_NATOMS_F16 = CONV_WINO_AREA / CONV_WINO_ATOM_F16;
+@@ -208,7 +208,7 @@ Ptr<FastConv> initFastConv(
+         size_t nweights = ngroups*Kg_nblocks*Cg*CONV_WINO_KBLOCK*CONV_WINO_AREA;
+ 
+         float* wptrWino = nullptr;
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+         float16_t* wptrWino_FP16 = nullptr;
+         if (conv->useFP16)
+         {
+@@ -264,7 +264,7 @@ Ptr<FastConv> initFastConv(
+                 }
+ 
+                 // repack the data.
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+                 if (conv->useFP16)
+                 {
+                     float16_t* wptr = wptrWino_FP16 + (g*Kg_nblocks + ki) * Cg *CONV_WINO_KBLOCK*CONV_WINO_AREA +
+@@ -308,7 +308,7 @@ Ptr<FastConv> initFastConv(
+ 
+         float* weightsBufPtr = nullptr;
+ 
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+         int numStripsMR_FP16 = (Kg + CONV_MR_FP16 - 1) / CONV_MR_FP16;
+         int Kg_aligned_FP16 = numStripsMR_FP16 * CONV_MR_FP16;
+         size_t nweights_FP16 = ngroups * Kg_aligned_FP16 * DkHkWkCg;
+@@ -331,7 +331,7 @@ Ptr<FastConv> initFastConv(
+         }
+ 
+         // Pack the weight.
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+         if (conv->useFP16)
+         {
+             parallel_for_(Range(0, ngroups * numStripsMR_FP16), [&](const Range& r0){
+@@ -415,7 +415,7 @@ static inline void packData8(char*& inpbuf, float*& inptrIn, int& in_w, int& x0,
+     char * inpbufC = inpbuf + s0 * esz;
+     float* inptrInC = (float* )inptrIn;
+ 
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+     float16_t* inpbufC_FP16 = (float16_t *)inpbufC;
+     if (esz == sizeof(float16_t))
+     {
+@@ -521,7 +521,7 @@ static inline void packData2(char *& inpbuf, float*& inptrIn, int& in_w, int& x0
+     char* inpbufC = inpbuf + s0 * esz;
+     float* inptrInC = inptrIn;
+ 
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+     float16_t* inpbufC_FP16 = (float16_t *)inpbufC;
+     if (esz == sizeof(float16_t))
+     {
+@@ -553,7 +553,7 @@ static inline void packData2(char *& inpbuf, float*& inptrIn, int& in_w, int& x0
+     in_w += stride_w;
+ }
+ 
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+ // Fast convert float 32 to float16
+ static inline void _cvt32f16f( const float* src, float16_t* dst, int len)
+ {
+@@ -623,7 +623,7 @@ static inline void packInputData(char* inpbuf_task, float* inp, const int* ofsta
+             {
+                 // Make special branch where memcpy() is called with a constant buffer size.
+                 // Compilers will likely unroll this loop properly.
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+                 if (useFP16)
+                 {
+                     for (int c = 0; c < Cg; c++, inptr += inp_planesize, inpbuf += CONV_NR_esz)
+@@ -636,7 +636,7 @@ static inline void packInputData(char* inpbuf_task, float* inp, const int* ofsta
+             }
+             else
+             {
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+                 if (useFP16)
+                 {
+                     for (int c = 0; c < Cg; c++, inptr += inp_planesize, inpbuf += CONV_NR_esz)
+@@ -700,7 +700,7 @@ static inline void packInputData(char* inpbuf_task, float* inp, const int* ofsta
+                             int w0 = std::max(0, (-in_w + dilation_w-1)/dilation_w);
+                             int w1 = std::min(Wk, (Wi - in_w + dilation_w-1)/dilation_w);
+                             const float* inptrInC = inptrIn;
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+                             if (useFP16)
+                             {
+                                 float16_t* inpbufC = (float16_t *)inpbuf + s0;
+@@ -761,7 +761,7 @@ static inline void packInputData(char* inpbuf_task, float* inp, const int* ofsta
+                             int w1 = std::min(Wk, (Wi - in_w + dilation_w-1)/dilation_w);
+ 
+                             const float* inptrInC = inptrIn;
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+                             if (useFP16)
+                             {
+                                 float16_t* inpbufC = (float16_t *)inpbuf + s0;
+@@ -834,7 +834,7 @@ static inline void packInputData(char* inpbuf_task, float* inp, const int* ofsta
+                             int w0 = std::max(0, (-in_w + dilation_w-1)/dilation_w);
+                             int w1 = std::min(Wk, (Wi - in_w + dilation_w-1)/dilation_w);
+                             const float* inptrInC = inptrIn;
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+                             if (useFP16)
+                             {
+                                 float16_t* inpbufC = (float16_t* )inpbuf + s0;
+@@ -887,7 +887,7 @@ static inline void packInputData(char* inpbuf_task, float* inp, const int* ofsta
+                 for (; i < CONV_NR;)
+                 {
+                     float* inpbuf_ki = (float* )inpbuf + k * CONV_NR * Cg + i;
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+                     float16_t * inpbuf_ki_FP16 = (float16_t *)inpbuf + k * CONV_NR * Cg + i;
+ #endif
+ 
+@@ -903,7 +903,7 @@ static inline void packInputData(char* inpbuf_task, float* inp, const int* ofsta
+                         {
+                             if (stride_w == 1)
+                             {
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+                                 if (useFP16)
+                                 {
+                                     for (int c = 0; c < Cg; c++, inpbuf_ki_FP16 += CONV_NR, inptr_ki += inp_planesize)
+@@ -934,7 +934,7 @@ static inline void packInputData(char* inpbuf_task, float* inp, const int* ofsta
+                             }
+                             else if (stride_w == 2)
+                             {
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+                                 if (useFP16)
+                                 {
+                                     for (int c = 0; c < Cg; c++, inpbuf_ki_FP16 += CONV_NR, inptr_ki += inp_planesize)
+@@ -967,7 +967,7 @@ static inline void packInputData(char* inpbuf_task, float* inp, const int* ofsta
+                             }
+                             else
+                             {
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+                                 if (useFP16)
+                                 {
+                                     for (int c = 0; c < Cg; c++, inpbuf_ki_FP16 += CONV_NR, inptr_ki += inp_planesize)
+@@ -1006,7 +1006,7 @@ static inline void packInputData(char* inpbuf_task, float* inp, const int* ofsta
+                         {
+                             if (stride_w == 1)
+                             {
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+                                 if (useFP16)
+                                 {
+                                     for (int c = 0; c < Cg; c++, inpbuf_ki_FP16 += CONV_NR, inptr_ki += inp_planesize)
+@@ -1029,7 +1029,7 @@ static inline void packInputData(char* inpbuf_task, float* inp, const int* ofsta
+                             }
+                             else
+                             {
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+                                 if (useFP16)
+                                 {
+                                     for (int c = 0; c < Cg; c++, inpbuf_ki_FP16 += CONV_NR, inptr_ki += inp_planesize)
+@@ -1057,7 +1057,7 @@ static inline void packInputData(char* inpbuf_task, float* inp, const int* ofsta
+                         }
+                         else
+                         {
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+                             if (useFP16)
+                             {
+                                 for (int c = 0; c < Cg; c++, inpbuf_ki_FP16 += CONV_NR, inptr_ki += inp_planesize)
+@@ -1073,7 +1073,7 @@ static inline void packInputData(char* inpbuf_task, float* inp, const int* ofsta
+                     }
+                     else
+                     {
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+                         if (useFP16)
+                         {
+                             for (int c = 0; c < Cg; c++, inpbuf_ki_FP16 += CONV_NR)
+@@ -1260,7 +1260,7 @@ void runFastConv(InputArray _input, OutputArray _output, const Ptr<FastConv>& co
+     int CONV_MR = CONV_MR_FP32;
+     int esz = sizeof(float );
+ 
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+     if (useFP16)
+     {
+         // works at FP 16.
+@@ -1433,7 +1433,7 @@ void runFastConv(InputArray _input, OutputArray _output, const Ptr<FastConv>& co
+                 }
+ 
+                 char *weights = nullptr;
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+                 if (useFP16)
+                 {
+                     CV_Assert(!conv->weightsBuf_FP16.empty());
+@@ -1474,7 +1474,7 @@ void runFastConv(InputArray _input, OutputArray _output, const Ptr<FastConv>& co
+ #if CV_NEON && CV_NEON_AARCH64
+                         if (conv->useNEON)
+                         {
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+                             if (useFP16)
+                             {
+                                 opt_NEON::convBlockMR1_FP16(DkHkWkCg, weights, inptr, cptr, biasVal, fusedAdd, minval, maxval, ifMinMaxAct, outLen, CONV_NR);
+@@ -1537,7 +1537,7 @@ void runFastConv(InputArray _input, OutputArray _output, const Ptr<FastConv>& co
+ #if CV_NEON
+                                 if (conv->useNEON)
+                                 {
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+                                     if (useFP16)
+                                     {
+                                         opt_NEON::convBlock_FP16(c1 - c0, wptr, inptr, (char *)cptr_f16, ldc, c0 == 0, outLen, CONV_MR, CONV_NR);
+@@ -1567,7 +1567,7 @@ void runFastConv(InputArray _input, OutputArray _output, const Ptr<FastConv>& co
+                         float biasval = biasptr[k];
+                         int j = 0;
+ 
+-#ifdef CONV_ARM_FP16
++#if defined(CONV_ARM_FP16) && CV_FP16
+                         if (useFP16)
+                         {
+                             float32x4_t vbias = vdupq_n_f32(biasval);

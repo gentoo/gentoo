@@ -1,0 +1,53 @@
+diff --git a/projects/unix/Makefile b/projects/unix/Makefile
+index d48d8830..e4792b4e 100755
+--- a/projects/unix/Makefile
++++ b/projects/unix/Makefile
+@@ -714,15 +714,19 @@ ifeq ($(DEBUGGER), 1)
+     $(SRCDIR)/debugger/dbg_breakpoints.c
+   LDLIBS += -lopcodes -lbfd
+ 
+-  # UGLY libopcodes version check (we check for > 2.28)
++  # UGLY libopcodes/libbfd version check (we check for >= 2.28 and >= 2.39)
+   LIBOPCODES_VERSION := $(shell $(STRINGS) --version | head -n1 | rev | cut -d ' ' -f1 | rev)
+   LIBOPCODES_MAJOR := $(shell echo $(LIBOPCODES_VERSION) | cut -f1 -d.)
+   LIBOPCODES_MINOR := $(shell echo $(LIBOPCODES_VERSION) | cut -f2 -d.)
+   LIBOPCODES_POINT := $(shell echo $(LIBOPCODES_VERSION) | cut -f3 -d.)
+   LIBOPCODES_GE_2_29 := $(shell [ $(LIBOPCODES_MAJOR) -gt 2 -o \( $(LIBOPCODES_MAJOR) -eq 2 -a $(LIBOPCODES_MINOR) -ge 29 \) -o \( $(LIBOPCODES_MAJOR) -eq 2 -a $(LIBOPCODES_MINOR) -eq 28 -a $(LIBOPCODES_POINT) -ge 1 \) ] && echo true)
++  LIBBFD_GE_2_39 := $(shell [ $(LIBOPCODES_MAJOR) -gt 2 -o \( $(LIBOPCODES_MAJOR) -eq 2 -a $(LIBOPCODES_MINOR) -ge 29 \) -o \( $(LIBOPCODES_MAJOR) -eq 2 -a $(LIBOPCODES_MINOR) -eq 39 -a $(LIBOPCODES_POINT) -ge 1 \) ] && echo true)
+   ifeq ($(LIBOPCODES_GE_2_29),true)
+     CFLAGS += -DUSE_LIBOPCODES_GE_2_29
+   endif
++  ifeq ($(LIBBFD_GE_2_39),true)
++    CFLAGS += -DUSE_LIBBFD_GE_2_39
++  endif
+ endif
+ 
+ ifeq ($(OPENCV), 1)
+diff --git a/src/debugger/dbg_memory.c b/src/debugger/dbg_memory.c
+index e98bf081..32c2af27 100644
+--- a/src/debugger/dbg_memory.c
++++ b/src/debugger/dbg_memory.c
+@@ -97,9 +97,23 @@ static int read_memory_func(bfd_vma memaddr, bfd_byte *myaddr, unsigned int leng
+     return (0);
+ }
+ 
++#ifdef USE_LIBBFD_GE_2_39
++static int fprintf_styled_nop(void *out __attribute__((unused)),
++                              enum disassembler_style s __attribute__((unused)),
++                              const char *fmt __attribute__((unused)),
++                              ...)
++{
++  return 0;
++}
++#endif
++
+ void init_host_disassembler(void)
+ {
++#ifdef USE_LIBBFD_GE_2_39
++    INIT_DISASSEMBLE_INFO(dis_info, stderr, process_opcode_out, fprintf_styled_nop);
++#else
+     INIT_DISASSEMBLE_INFO(dis_info, stderr, process_opcode_out);
++#endif
+     dis_info.fprintf_func = (fprintf_ftype) process_opcode_out;
+     dis_info.stream = stderr;
+     dis_info.bytes_per_line=1;

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    This package implements a “modern” style for your Org buffers using font
+    locking and text properties. The package styles headlines, keywords, tables
+    and source blocks. The styling is configurable, you can enable, disable or
+    modify the style of each syntax element individually via the org-modern
+    customization group.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/minad/org-modern/issues/</bugs-to>
+    <remote-id type="github">minad/org-modern</remote-id>
+  </upstream>
+</pkgmetadata>

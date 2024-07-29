@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>jakub@gdos.sk</email>
+		<name>Jakub Gajdoš</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>andrewammerlaan@gentoo.org</email>
+		<name>Andrew Ammerlaan</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">Biosias/uefi-mkconfig</remote-id>
+		<bugs-to>https://github.com/Biosias/uefi-mkconfig/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

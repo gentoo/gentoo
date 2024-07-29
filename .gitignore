@@ -1,0 +1,8 @@
+/.ebuild.x
+/distfiles/
+/eclass/*.5
+/eclass/tests/*.sh.ok
+/eclass/tests/.eclasssum
+/local/
+/packages/
+/profiles/use.local.desc

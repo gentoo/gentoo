@@ -1,0 +1,17 @@
+--- a/portsentry.conf
++++ b/portsentry.conf
+@@ -80,11 +80,11 @@
+ ######################
+ #
+ # Hosts to ignore
+-IGNORE_FILE="/usr/local/psionic/portsentry/portsentry.ignore"
++IGNORE_FILE="/etc/portsentry/portsentry.ignore"
+ # Hosts that have been denied (running history)
+-HISTORY_FILE="/usr/local/psionic/portsentry/portsentry.history"
++HISTORY_FILE="/etc/portsentry/portsentry.history"
+ # Hosts that have been denied this session only (temporary until next restart)
+-BLOCKED_FILE="/usr/local/psionic/portsentry/portsentry.blocked"
++BLOCKED_FILE="/etc/portsentry/portsentry.blocked"
+ 
+ ##############################
+ # Misc. Configuration Options#

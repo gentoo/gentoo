@@ -1,0 +1,27 @@
+From 50fea8d6413e06fcfaf0d0ca03cc6c266a1cda14 Mon Sep 17 00:00:00 2001
+From: "Friedrich W. H. Kossebau" <kossebau@kde.org>
+Date: Tue, 5 Feb 2019 04:49:16 +0100
+Subject: Set StartupWMClass in desktop file
+
+Used by non-Plasma unixoid X-based shells to map windows to desktop files
+e.g. in launcher UIs, which do not know about _KDE_NET_WM_DESKTOP_FILE and
+instead expect (one of) the WM_CLASS entries to match the basename of the
+desktop file by default. StartupWMClass overwrites that default.
+---
+ src/org.kde.kgraphviewer.desktop | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/org.kde.kgraphviewer.desktop b/src/org.kde.kgraphviewer.desktop
+index bfff1bf..6b3affb 100644
+--- a/src/org.kde.kgraphviewer.desktop
++++ b/src/org.kde.kgraphviewer.desktop
+@@ -41,6 +41,7 @@ MimeType=text/vnd.graphviz
+ Exec=kgraphviewer -qwindowtitle %c %u
+ Icon=kgraphviewer
+ Type=Application
++StartupWMClass=kgraphviewer
+ Categories=Qt;KDE;Graphics;Viewer;2DGraphics;DataVisualization;
+ X-DocPath=kgraphviewer/index.html
+ InitialPreference=10
+-- 
+cgit v1.1

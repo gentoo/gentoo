@@ -1,0 +1,14 @@
+* At least the Darwin linker doesn't like double symbols during the
+  final linking stage...
+
+--- a/jpeg/jpegconf.h
++++ b/jpeg/jpegconf.h
+@@ -27,6 +27,6 @@
+ #   pragma warning(disable : 4244)
+ #   pragma warning(disable : 4142)
+ #else
+-#   define JPEGEXPORT
+-#   define FPXEXPORT
++#   define JPEGEXPORT extern
++#   define FPXEXPORT extern
+ #endif

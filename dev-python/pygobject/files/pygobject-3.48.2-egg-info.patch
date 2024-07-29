@@ -1,0 +1,39 @@
+From 2aa50b8841c26eb892f4666508ba72ebb8179f26 Mon Sep 17 00:00:00 2001
+From: Chris Mayo <aklhfex@gmail.com>
+Date: Mon, 25 Mar 2024 19:21:21 +0000
+Subject: [PATCH] Replace non-standard .egg-info file
+
+Installing a .dist-info directory containing just METADATA is compliant:
+
+https://packaging.python.org/en/latest/specifications/recording-installed-packages/#the-dist-info-directory
+---
+ PKG-INFO.in => METADATA.in | 0
+ meson.build                | 6 +++---
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+ rename PKG-INFO.in => METADATA.in (100%)
+
+diff --git a/PKG-INFO.in b/METADATA.in
+similarity index 100%
+rename from PKG-INFO.in
+rename to METADATA.in
+diff --git a/meson.build b/meson.build
+index b8d69c3a..32204ad5 100644
+--- a/meson.build
++++ b/meson.build
+@@ -194,10 +194,10 @@ if not for_wheel
+ 
+   pkginfo_conf = configuration_data()
+   pkginfo_conf.set('VERSION', py_version)
+-  configure_file(input : 'PKG-INFO.in',
+-  output : 'PyGObject-@0@.egg-info'.format(py_version),
++  configure_file(input : 'METADATA.in',
++  output : 'METADATA',
+   configuration : pkginfo_conf,
+-  install_dir : python.get_install_dir(pure : false))
++  install_dir : python.get_install_dir(pure : false) / 'PyGObject-@0@.dist-info'.format(py_version))
+ endif
+ 
+ pygobject_dep = declare_dependency(
+-- 
+GitLab
+

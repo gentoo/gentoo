@@ -1,0 +1,26 @@
+From f0cf80b3034c4cad66608ddcec0709b3761adbfc Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 2 Oct 2022 20:31:30 +0100
+Subject: [PATCH] Fix implicit function declarations
+
+Bug: https://bugs.gentoo.org/871084
+--- a/src/malloc.h
++++ b/src/malloc.h
+@@ -34,6 +34,7 @@ extern int low_memory_warning;
+ # define realloc(ptr, size)		mrealloc(NULL, ptr, size)
+ # define free(ptr)			mfree(NULL, ptr)
+ #else
++# include <stdlib.h>
+ # define mmalloc(md, size)		malloc(size)
+ # define mcalloc(md, size)		calloc(size)
+ # define mrealloc(md, ptr, size)	realloc(ptr, size)
+--- a/src/tfio.c
++++ b/src/tfio.c
+@@ -46,6 +46,7 @@ static const char RCSid[] = "$Id: tfio.c,v 35004.114 2007/01/13 23:12:39 kkeys E
+ #include "keyboard.h"	/* keyboard_pos */
+ #include "expand.h"	/* current_command */
+ #include "cmdlist.h"
++#include "socket.h"
+ 
+ TFILE *loadfile = NULL; /* currently /load'ing file */
+ int loadline = 0;       /* line number in /load'ing file */

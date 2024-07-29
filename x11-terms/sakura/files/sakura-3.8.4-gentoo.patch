@@ -1,0 +1,18 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -39,9 +39,4 @@
+ ADD_DEFINITIONS (-DBUILDTYPE="${CMAKE_BUILD_TYPE}")
+ 
+-IF (${CMAKE_BUILD_TYPE} MATCHES "Debug")
+-	SET (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
+-ELSE (${CMAKE_BUILD_TYPE} NOT MATCHES "Debug")
+-	SET (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O2 -Wno-deprecated-declarations")
+-ENDIF (${CMAKE_BUILD_TYPE} MATCHES "Debug")
+ 
+ INCLUDE_DIRECTORIES (. ${GTK_INCLUDE_DIRS} ${VTE_INCLUDE_DIRS})
+@@ -58,5 +53,4 @@
+ 	INSTALL (FILES ${sakura_BINARY_DIR}/sakura.1 DESTINATION share/man/man1)
+ ENDIF (POD2MAN)
+-INSTALL (FILES README.md DESTINATION share/doc/sakura)
+ 
+ FILE (GLOB MO_FILES po/*.mo)

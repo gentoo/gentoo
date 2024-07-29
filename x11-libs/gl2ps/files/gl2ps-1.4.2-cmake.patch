@@ -1,0 +1,58 @@
+--- a/CMakeLists.txt	2020-07-08 17:53:51.133105546 +0200
++++ b/CMakeLists.txt	2020-07-08 17:58:02.652237439 +0200
+@@ -50,4 +50,6 @@
+ option(ENABLE_ZLIB "Enable compression using ZLIB" ON)
+ option(ENABLE_PNG "Enable PNG support" ON)
++option(ENABLE_DOC "Enable documentation" OFF)
++option(ENABLE_EXAMPLES "Build and install examples" OFF)
+ 
+ set(GL2PS_MAJOR_VERSION 1)
+@@ -140,6 +142,4 @@
+ 
+ if(OPENGL_FOUND)
+-  add_library(lib STATIC gl2ps.c gl2ps.h)
+-  set_target_properties(lib PROPERTIES OUTPUT_NAME gl2ps)
+ 
+   add_library(shared SHARED gl2ps.c gl2ps.h)
+@@ -152,5 +152,5 @@
+         COMPILE_FLAGS "-DGL2PSDLL -DGL2PSDLL_EXPORTS")
+   endif()
+-  install(TARGETS lib shared RUNTIME DESTINATION bin
++  install(TARGETS shared RUNTIME DESTINATION bin
+                              LIBRARY DESTINATION lib${LIB_SUFFIX}
+                              ARCHIVE DESTINATION lib${LIB_SUFFIX})
+@@ -160,15 +160,16 @@
+   set(GL2PS_DOC .)
+ else()
+-  set(GL2PS_DOC share/doc/gl2ps)
++  set(GL2PS_DOC ${CMAKE_INSTALL_DOCDIR})
+ endif()
+ 
+ install(FILES gl2ps.h DESTINATION include)
+ install(FILES ${CMAKE_SOURCE_DIR}/README.txt DESTINATION ${GL2PS_DOC})
+-install(FILES ${CMAKE_SOURCE_DIR}/COPYING.LGPL DESTINATION ${GL2PS_DOC})
+-install(FILES ${CMAKE_SOURCE_DIR}/COPYING.GL2PS DESTINATION ${GL2PS_DOC})
++install(FILES ${CMAKE_SOURCE_DIR}/TODO.txt DESTINATION ${GL2PS_DOC})
++
++if(ENABLE_EXAMPLES)
+ install(FILES ${CMAKE_SOURCE_DIR}/gl2psTest.c DESTINATION ${GL2PS_DOC})
+ install(FILES ${CMAKE_SOURCE_DIR}/gl2psTestSimple.c DESTINATION ${GL2PS_DOC})
+ 
+-if(GLUT_FOUND)
++if(GLUT_FOUND AND BUILD_TESTING)
+   add_executable(gl2psTest WIN32 gl2psTest.c)
+   target_link_libraries(gl2psTest lib ${EXTERNAL_LIBRARIES})
+@@ -176,5 +177,7 @@
+   target_link_libraries(gl2psTestSimple lib ${EXTERNAL_LIBRARIES})
+ endif()
++endif()
+ 
++if(ENABLE_DOC)
+ find_package(LATEX)
+ if(PDFLATEX_COMPILER)
+@@ -195,4 +198,5 @@
+   endif()
+ endif()
++endif()
+ 
+ set(CPACK_PACKAGE_VENDOR "Christophe Geuzaine")

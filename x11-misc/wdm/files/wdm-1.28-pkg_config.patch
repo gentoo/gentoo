@@ -1,0 +1,30 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -7,6 +7,7 @@
+ AC_PROG_INSTALL
+ AC_PROG_CC
+ AC_PROG_RANLIB
++PKG_PROG_PKG_CONFIG
+ 
+ AC_ARG_VAR(XRDB_PATH, [Path to xrdb program from X])
+ AC_PATH_PROG(XRDB_PATH, xrdb)
+@@ -153,15 +154,11 @@
+ 	],,[$XLDFLAGS $XLIBS])
+ fi
+ 
+-dnl		WINGs support
+-AC_CHECK_PROG(GETWINGSFLAGS,get-wings-flags,get-wings-flags,,[$PATH])
+-if test -z "$GETWINGSFLAGS"; then
+-	AC_MSG_ERROR(['get-wings-flags' command was not found in \$PATH, please upgrade your WindowMaker.])
+-fi
++PKG_CHECK_MODULES(WINGS, WINGs,,[AC_MSG_ERROR([WINGs not found])])
+ 
+-WCFLAGS=`get-wings-flags --cflags`
+-WLDFLAGS=`get-wings-flags --ldflags`
+-WLIBS=`get-wings-flags --libs`
++WCFLAGS="$WINGS_CFLAGS"
++WLDFLAGS="$WINGS_LDFLAGS"
++WLIBS="$WINGS_LIBS"
+ 
+ AC_SUBST(XLIBS)
+ AC_SUBST(XCFLAGS)

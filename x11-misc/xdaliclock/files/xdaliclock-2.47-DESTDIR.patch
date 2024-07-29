@@ -1,0 +1,59 @@
+https://cgit.freebsd.org/ports/tree/x11-clocks/xdaliclock/files/patch-Makefile.in?id=b4521d44c7f02e022fa92fdd445ee4274aa96948
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -92,35 +92,35 @@ $(install_prefix)$(SCHEMA_DIR):
+ $(install_prefix)$(GTK_APPDIR)	\
+ $(install_prefix)$(GTK_ICONDIR)	\
+ $(install_prefix)$(SCHEMA_DIR):
+-	mkdir -p $@
++#	mkdir -p $@
+ 
+ install-program: xdaliclock $(install_prefix)$(bindir)
+-	$(INSTALL_PROGRAM) $< $(install_prefix)$(bindir)/xdaliclock
++	$(INSTALL_PROGRAM) $< $(DESTDIR)$(install_prefix)$(bindir)/xdaliclock
+ 
+ # If /usr/share/glib-2.0/schemas/org.jwz.xdaliclock.gschema.xml" does
+ # not exist, the app won't launch. This is an amazing design. Spectacular.
+ # No notes.
+ #
+ install-schema: $(SCHEMA) $(install_prefix)$(SCHEMA_DIR)
+-	$(INSTALL_DATA) $< $(install_prefix)$(SCHEMA_DIR)/
+-	$(GLIB_COMPILE_SCHEMAS) $(install_prefix)$(SCHEMA_DIR)
++	$(INSTALL_DATA) $< $(DESTDIR)$(install_prefix)$(SCHEMA_DIR)/
++	$(GLIB_COMPILE_SCHEMAS) $(DESTDIR)$(install_prefix)$(SCHEMA_DIR)
+ 
+ # /usr/share/pixmaps/xdaliclock.png
+ install-gnome:: $(LOGO) $(install_prefix)$(GTK_ICONDIR)
+-	$(INSTALL_DATA) $< $(install_prefix)$(GTK_ICONDIR)/
++	$(INSTALL_DATA) $< $(DESTDIR)$(install_prefix)$(GTK_ICONDIR)/
+ 
+ # /usr/share/applications/xdaliclock.desktop
+ install-gnome:: $(DESK) $(install_prefix)$(GTK_APPDIR)
+-	$(INSTALL_DATA) $< $(install_prefix)$(GTK_APPDIR)/
++	$(INSTALL_DATA) $< $(DESTDIR)$(install_prefix)$(GTK_APPDIR)/
+ 
+ # /usr/share/pixmaps/index.theme
+ install-gnome:: update-icon-caches
+ update-icon-caches::
+ 	@\
+-  for f in $(install_prefix)$(datadir)/icons/index.theme		\
+-	   $(install_prefix)$(datadir)/icons/*/index.theme		\
+-	   $(install_prefix)$(datadir)/pixmaps/index.theme		\
+-	   $(install_prefix)$(datadir)/pixmaps/*/index.theme ; do	\
++  for f in $(DESTDIR)$(install_prefix)$(datadir)/icons/index.theme		\
++	   $(DESTDIR)$(install_prefix)$(datadir)/icons/*/index.theme		\
++	   $(DESTDIR)$(install_prefix)$(datadir)/pixmaps/index.theme		\
++	   $(DESTDIR)$(install_prefix)$(datadir)/pixmaps/*/index.theme ; do	\
+     if [ -f $$f ]; then							\
+       f=`dirname $$f` ;							\
+       echo $(UPDATE_ICON_CACHE) --force --quiet $$f ;			\
+@@ -129,7 +129,7 @@ install-man: xdaliclock.man $(install_prefix)$(man1dir
+   done
+ 
+ install-man: xdaliclock.man $(install_prefix)$(man1dir)
+-	$(INSTALL_DATA) $< $(install_prefix)$(man1dir)/xdaliclock.$(mansuffix)
++	$(INSTALL_DATA) $< $(DESTDIR)$(install_prefix)$(man1dir)/xdaliclock.$(mansuffix)
+ 
+ 
+ uninstall-program:
+

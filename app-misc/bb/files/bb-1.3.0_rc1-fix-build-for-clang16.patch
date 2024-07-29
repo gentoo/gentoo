@@ -1,0 +1,23 @@
+The two functions that are assigned to the formulas structs secnod field
+`int (*calculate)(number_t number_t number_t number_t)`
+(without the REGISTERS(3) which is just a macro to GCC regparm)
+
+However, clang16 has -Wincompatible-function-pointer-types by default, and it
+does not like that and complains, that assigning these functions into the
+structs fields is a problem due to incompatible types. 
+
+Bug: https://bugs.gentoo.org/880385
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/formulas.h
++++ b/formulas.h
+@@ -50,7 +50,7 @@ struct symetryinfo {
+ #define FORMULAMAGIC 1121
+ struct formula {
+     int magic;
+-    int (*calculate) (number_t, number_t, number_t, number_t) REGISTERS(3);
++    int (*calculate) (number_t, number_t, number_t, number_t);
+     char *name[2];
+     vinfo v;
+     int mandelbrot;

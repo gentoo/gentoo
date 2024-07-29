@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		The aim of this project is to provide enhanced, customizable gameplay
+		to Caesar 3 using project Julius UI enhancements. Augustus is able to
+		load Caesar 3 and Julius saves, however saves made with Augustus will
+		not work outside Augustus.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Keriew/augustus</remote-id>
+	</upstream>
+</pkgmetadata>

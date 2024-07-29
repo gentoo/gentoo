@@ -1,0 +1,14 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,10 +1,5 @@
+-CC=gcc
+-#CFLAGS=-Wall -g
+-#CFLAGS=-Wall -O2
+-
+ cmix: mix.c
+-	$(CC) $(CFLAGS) mix.c -o $@
+-	strip $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) mix.c -o $@ $(LIBS)
+ 
+ install: 
+ 

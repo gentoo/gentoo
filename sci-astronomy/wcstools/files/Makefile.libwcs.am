@@ -1,0 +1,17 @@
+lib_LTLIBRARIES = libwcstools.la
+libwcstools_la_SOURCES = \
+	imsetwcs.c imgetwcs.c matchstar.c findstar.c daoread.c wcscon.c \
+	fitswcs.c wcsinit.c wcs.c ty2read.c webread.c tmcread.c \
+	gscread.c gsc2read.c ujcread.c uacread.c ubcread.c ucacread.c \
+	sdssread.c tabread.c binread.c ctgread.c actread.c catutil.c \
+	skybotread.c imrotate.c fitsfile.c imhfile.c \
+	hget.c hput.c imio.c dateutil.c imutil.c \
+	worldpos.c tnxpos.c zpxpos.c dsspos.c platepos.c \
+	sortstar.c platefit.c iget.c fileutil.c \
+	wcslib.c lin.c cel.c proj.c sph.c wcstrig.c distort.c poly.c
+
+wcsdir = $(includedir)/wcs
+wcs_HEADERS = \
+	wcscat.h wcslib.h wcs.h lwcs.h fitshead.h fitsfile.h imio.h
+
+noinst_HEADERS = fitsfile1.h wcscat1.h

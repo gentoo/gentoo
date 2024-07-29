@@ -1,0 +1,9 @@
+[Unit]
+Description=Daily update of all feeds of the Greenbone Vulerability Management (GMV) suite
+
+[Timer]
+OnCalendar=daily
+RandomizedDelaySec=2hour
+
+[Install]
+WantedBy=timers.target

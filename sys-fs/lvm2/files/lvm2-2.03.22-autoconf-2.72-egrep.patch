@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/920798
+https://gitlab.com/lvmteam/lvm2/-/merge_requests/4
+
+From 39cb34e56b8c04b4d652eb9dbd643e10a05ff21c Mon Sep 17 00:00:00 2001
+From: Kai Kang <kai.kang@windriver.com>
+Date: Mon, 6 Nov 2023 16:44:41 +0800
+Subject: [PATCH] configure.ac: check egrep
+
+The macro AC_HEADER_STDC which requires AC_PROG_EGREP has been removed
+from configure.ac, then it fails to substitute '@EGREP@':
+
+|     [GEN] command-lines-input.h
+| /bin/bash: line 2: @EGREP@: command not found
+|     [GEN] command-count.h
+
+Call AC_PROG_EGREP to fix the error.
+
+Signed-off-by: Kai Kang <kai.kang@windriver.com>
+--- a/configure.ac
++++ b/configure.ac
+@@ -78,6 +78,7 @@ AC_PROG_LN_S
+ AC_PROG_MAKE_SET
+ AC_PROG_MKDIR_P
+ AC_PROG_RANLIB
++AC_PROG_EGREP
+ AC_CHECK_TOOL([READELF], [readelf])
+ AC_CHECK_TOOL(AR, ar)
+ AC_PATH_TOOL(CFLOW_CMD, cflow)
+-- 
+GitLab

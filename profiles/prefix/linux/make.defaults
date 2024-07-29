@@ -1,0 +1,34 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# 'Sane' defaults
+ELIBC="glibc"
+KERNEL="linux"
+
+# Fabian Groffen <grobian@gentoo.org> (2017-09-13)
+# Traditional Prefix is no-multilib, and always installs in /lib so
+# don't check against this for "incompatible" objects
+FEATURES="-multilib-strict"
+
+# Luca Barbato <lu_zero@gentoo.org> (2006-10-28)
+# on glibc system you cannot turn it off
+USE="iconv"
+
+# build gcc with parallelization support
+USE="${USE} openmp"
+
+# Turn off acl to help with bootstrapping - it isn't as helpful for prefix as it
+# can be for a non-prefix install
+USE="${USE} -acl"
+
+# Doug Goldstein <cardoe@gentoo.org> (2008-07-09)
+# Adding LDFLAGS="-Wl,-O1 for all Linux profiles by default
+# after discussion on the gentoo-dev ML. As we bang out a clear
+# direction with how LDFLAGS will be set by default, this entry
+# may move.
+# Fabian Groffen <grobian@gentoo.org> (2010-08-12)
+# Unlike default/linux, we do NOT have --as-needed here, as it seems to
+# break a random amount of packages, that don't break (or just not
+# enough) for non-Prefix installs.
+LDFLAGS="-Wl,-O1"
+

@@ -1,0 +1,18 @@
+--- mlton-20180207-orig/Makefile	2018-02-07 21:22:55.000000000 +1100
++++ mlton-20180207/Makefile	2018-02-28 11:27:30.448517470 +1100
+@@ -51,6 +51,7 @@
+ SED := sed
+ TAR := tar
+ XARGS := xargs
++PAXMARK := true
+ 
+ ######################################################################
+ ######################################################################
+@@ -97,6 +98,7 @@
+ all:
+ 	$(MAKE) dirs runtime
+ 	$(MAKE) compiler CHECK_FIXPOINT=false  # tools0 + mlton0 -> mlton1
++	$(PAXMARK) -m lib/mlton/mlton-compile bin/mllex bin/mlyacc
+ 	$(MAKE) script basis-no-check constants basis-check libraries
+ 	$(MAKE) tools    CHECK_FIXPOINT=false  # tools0 + mlton1 -> tools1
+ ifeq (true, $(findstring true,$(BOOTSTRAP) $(CHECK_FIXPOINT)))

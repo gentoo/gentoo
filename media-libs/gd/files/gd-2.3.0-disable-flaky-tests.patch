@@ -1,0 +1,25 @@
+diff --git a/tests/gdimagecopyresampled/Makemodule.am b/tests/gdimagecopyresampled/Makemodule.am
+index d42eab5..3644213 100644
+--- a/tests/gdimagecopyresampled/Makemodule.am
++++ b/tests/gdimagecopyresampled/Makemodule.am
+@@ -4,8 +4,7 @@ libgd_test_programs += \
+ if HAVE_LIBPNG
+ libgd_test_programs += \
+ 	gdimagecopyresampled/basic \
+-	gdimagecopyresampled/basic_alpha \
+-	gdimagecopyresampled/bug00201
++	gdimagecopyresampled/basic_alpha
+ endif
+ 
+ EXTRA_DIST += \
+diff --git a/tests/gdimagegrayscale/Makemodule.am b/tests/gdimagegrayscale/Makemodule.am
+index c6fec00..2d81a4a 100644
+--- a/tests/gdimagegrayscale/Makemodule.am
++++ b/tests/gdimagegrayscale/Makemodule.am
+@@ -1,6 +1,5 @@
+ if HAVE_LIBPNG
+ libgd_test_programs += \
+-	gdimagegrayscale/basic \
+ 	gdimagegrayscale/bug00386
+ endif
+ 

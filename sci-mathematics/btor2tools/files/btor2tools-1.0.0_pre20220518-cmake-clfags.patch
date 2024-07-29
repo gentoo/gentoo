@@ -1,0 +1,19 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -91,16 +91,6 @@ add_check_c_cxx_flag("-Wredundant-decls")
+ add_check_c_flag("-std=gnu99")
+ add_required_cxx_flag("-std=gnu++11")
+ 
+-if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+-  add_check_c_cxx_flag("-g3")
+-  add_check_c_cxx_flag("-ggdb")
+-else()
+-  add_check_c_cxx_flag("-O3")
+-  if(NOT CHECK)
+-    add_check_c_cxx_flag("-DNDEBUG")
+-  endif()
+-endif()
+-
+ if(ASAN)
+   # -fsanitize=address requires CMAKE_REQUIRED_FLAGS to be explicitely set,
+   # otherwise the -fsanitize=address check will fail while linking.

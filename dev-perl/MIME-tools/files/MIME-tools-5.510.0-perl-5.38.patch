@@ -1,0 +1,36 @@
+https://bugs.gentoo.org/913854
+https://bugs.debian.org/1040377
+https://rt.cpan.org/Public/Bug/Display.html?id=149225
+
+From 5964839271fd856076da6c7ed7822bcd39324c82 Mon Sep 17 00:00:00 2001
+From: Niko Tyni <ntyni@debian.org>
+Date: Sat, 29 Jul 2023 18:54:01 +0100
+Subject: [PATCH] Fix MIME::QuotedPrint version parsing
+
+Perl 5.38 bundles MIME::QuotedPrint at version 3.16_01 which is not
+numeric, causing spurious warnings on usage.
+
+Bug-Debian: https://bugs.debian.org/1040377
+Forwarded: https://rt.cpan.org/Ticket/Display.html?id=149225
+Bug: https://rt.cpan.org/Ticket/Display.html?id=149225
+--- a/lib/MIME/Decoder/QuotedPrint.pm
++++ b/lib/MIME/Decoder/QuotedPrint.pm
+@@ -1,6 +1,7 @@
+ package MIME::Decoder::QuotedPrint;
+ use strict;
+ use warnings;
++use version;
+ 
+ 
+ =head1 NAME
+@@ -73,7 +74,7 @@ $VERSION = "5.510";
+ # The following code is horrible.  I know.  Beat me up. --dfs
+ BEGIN {
+     if (!defined(&encode_qp_threearg)) {
+-        if ($::MIME::QuotedPrint::VERSION >= 3.03) {
++        if (version->parse($::MIME::QuotedPrint::VERSION) >= version->parse(3.03)) {
+             eval 'sub encode_qp_threearg ( $$$ ) { encode_qp(shift, shift, shift); }';
+         } else {
+             eval 'sub encode_qp_threearg ( $$$ ) { encode_qp(shift); }';
+-- 
+2.39.1

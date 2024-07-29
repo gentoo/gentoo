@@ -1,0 +1,42 @@
+From a49829bd984c0282be18fcec070df0c31bf77dd5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@gentoo.org>
+Date: Tue, 21 Feb 2023 12:59:21 +0100
+Subject: [PATCH] tests/unit-iterators2: use std::ranges::equals for range
+ comparisons
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This fixes a build error on GCC 13:
+
+  /home/arsen/nlohmann_json/tests/src/unit-iterators2.cpp: In function ‘void _DOCTEST_ANON_FUNC_2()’:
+  /home/arsen/nlohmann_json/tests/src/unit-iterators2.cpp:946:32: error: no match for ‘operator==’ (operand types are ‘doctest::detail::Expression_lhs<std::ranges::reverse_view<std::ranges::ref_view<nlohmann::json_abi_v3_11_2::basic_json<> > >&>’ and ‘nlohmann::json_abi_v3_11_2::json’ {aka ‘nlohmann::json_abi_v3_11_2::basic_json<>’})
+    946 |                 CHECK(reversed == j_expected);
+        |                                ^~ ~~~~~~~~~~
+        |                                   |
+        |                                   nlohmann::json_abi_v3_11_2::json {aka nlohmann::json_abi_v3_11_2::basic_json<>}
+
+Bug: https://bugs.gentoo.org/895692
+Closes: #3927
+---
+Forwarded: https://github.com/nlohmann/json/pull/3950
+
+ tests/src/unit-iterators2.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/src/unit-iterators2.cpp b/tests/src/unit-iterators2.cpp
+index 27926084..72a5d9dc 100644
+--- a/tests/src/unit-iterators2.cpp
++++ b/tests/src/unit-iterators2.cpp
+@@ -943,7 +943,7 @@ TEST_CASE("iterators 2")
+                 json j_expected{5, 4, 3, 2, 1};
+ 
+                 auto reversed = j | std::views::reverse;
+-                CHECK(reversed == j_expected);
++                CHECK(std::ranges::equal(reversed, j_expected));
+             }
+ 
+             SECTION("transform")
+-- 
+2.39.2
+

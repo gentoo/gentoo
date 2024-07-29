@@ -1,0 +1,28 @@
+diff --git a/test_cookies.py b/test_cookies.py
+index 2197916..502ce86 100644
+--- a/test_cookies.py
++++ b/test_cookies.py
+@@ -2225,7 +2225,10 @@ def test_encoding_assumptions(check_unicode=False):
+         else:
+             assert cookie_value_re.match(quoted)
+ 
+-    assert set(dont_quote) == set("!#$%&'()*+/:<=>?@[]^`{|}~")
++    if sys.hexversion < 0x3070000:
++        assert set(dont_quote) == set("!#$%&'()*+/:<=>?@[]^`{|}~")
++    else:
++        assert set(dont_quote) == set("!#$%&'()*+/:<=>?@[]^`{|}")
+ 
+     # From 128 on urllib.quote will not work on a unichr() return value.
+     # We'll want to encode utf-8 values into ASCII, then do the quoting.
+@@ -2257,7 +2260,10 @@ def test_encoding_assumptions(check_unicode=False):
+         else:
+             assert extension_av_re.match(quoted)
+ 
+-    assert set(dont_quote) == set(' !"#$%&\'()*+,/:<=>?@[\\]^`{|}~')
++    if sys.hexversion < 0x3070000:
++        assert set(dont_quote) == set(' !"#$%&\'()*+,/:<=>?@[\\]^`{|}~')
++    else:
++        assert set(dont_quote) == set(' !"#$%&\'()*+,/:<=>?@[\\]^`{|}')
+ 
+ 
+ test_encode_cookie_value = _simple_test(encode_cookie_value,

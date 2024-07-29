@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>arsen@gentoo.org</email>
+    <name>Arsen Arsenović</name>
+  </maintainer>
+  <use>
+    <flag name="archive">
+      Enable extracting wraps using <pkg>app-arch/libarchive</pkg>.
+    </flag>
+    <flag name="libpkgconf">
+      Enable looking up packages via <pkg>dev-util/pkgconf</pkg>.
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="sourcehut">~lattis/muon</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,8 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Fabian Groffen <grobian@gentoo.org> (2020-12-31)
+# Force the host target to avoid dependency hell
+dev-ml/llvm-ocaml llvm_targets_AArch64
+sys-devel/clang llvm_targets_AArch64
+sys-devel/llvm llvm_targets_AArch64

@@ -1,0 +1,14 @@
+--- a/configure.in
++++ b/configure.in
+@@ -93,9 +93,9 @@
+   *cygwin*)	V_PCAP_LDLIBS="-lwpcap";
+ esac
+ 
+-dnl define _BSD_SOURCE for libc-2
++dnl define _DEFAULT_SOURCE for libc-2
+ if [[ -f /lib/libc-2* ]]; then
+- V_DEFINES="$V_DEFINES -D_BSD_SOURCE"
++ V_DEFINES="$V_DEFINES -D_DEFAULT_SOURCE"
+ fi
+ 
+ AC_SUBST(V_CCOPT)

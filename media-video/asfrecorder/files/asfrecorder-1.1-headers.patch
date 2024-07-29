@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/874558
+--- a/source/asfrecorder.c
++++ b/source/asfrecorder.c
+@@ -127,2 +127,7 @@
+ #include <time.h>
++#include <ctype.h>
++#include <unistd.h>
++#include <sys/socket.h>
++#include <netinet/in.h>
++#include <arpa/inet.h>
+ 

@@ -1,0 +1,25 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,16 +1,18 @@
+ VERSION=0.5
+ 
+ DEBUG=-g # -fprofile-arcs -ftest-coverage # -pg -g
+-CXXFLAGS+=-Wall -O2 -DVERSION=\"${VERSION}\" $(DEBUG) `gpgme-config --cflags`
+-CFLAGS+=${CXXFLAGS}
+-LDFLAGS=-lstdc++ `gpgme-config --libs` $(DEBUG)
++CPPFLAGS+=-DVERSION=\"${VERSION}\" -D_FILE_OFFSET_BITS=64
++FLAGS+=-Wall $(DEBUG) `gpgme-config --cflags`
++CFLAGS+=${FLAGS}
++CXXFLAGS+=${FLAGS}
++LIBS=`gpgme-config --libs`
+ 
+ OBJS=error.o utils.o array.o iarray.o s.o
+ 
+ all: gpgstats
+ 
+ gpgstats: $(OBJS)
+-	$(CC) -Wall -W $(OBJS) $(LDFLAGS) -o gpgstats
++	$(CXX) $(LDFLAGS) -Wall -W $(OBJS) -o gpgstats $(LIBS)
+ 
+ install: gpgstats
+ 	cp gpgstats /usr/bin

@@ -1,0 +1,10 @@
+--- a/source/base/all/uninorm/unincore.c
++++ b/source/base/all/uninorm/unincore.c
+@@ -19,6 +19,7 @@
+ #include <string.h>
+ #include "base/all/includes.h" /* BASE_LFN_MAXLEN */
+ #include "unidata.h"
++#include "unincore.h"
+ 
+ /* Hangul constants */
+ #define SBase  0xAC00

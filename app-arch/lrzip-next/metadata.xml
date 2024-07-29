@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+			<email>kumba@gentoo.org</email>
+			<name>Joshua Kinard</name>
+	</maintainer>
+	<longdescription>
+	A fork of Con Kolivas' 'lrzip' program that is actively maintained.  Lrzip
+	is a compression program optimised for large files. The larger the file and
+	the more memory you have, the better the compression advantage this will
+	provide, especially once the files are larger than 100MB.  The advantage can
+	be chosen to be either size (much smaller than bzip2) or speed (much faster
+	than bzip2).
+	</longdescription>
+	<upstream>
+		<remote-id type="github">pete4abw/lrzip-next</remote-id>
+	</upstream>
+	<use>
+		<flag name="year2038">Enables support for timestamps after the year 2038</flag>
+	</use>
+</pkgmetadata>

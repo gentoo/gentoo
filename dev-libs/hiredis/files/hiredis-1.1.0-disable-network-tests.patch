@@ -1,0 +1,19 @@
+Gentoo specific patch which disables test requiring non-localhost IP
+address.
+
+diff --git a/test.c b/test.c
+index c1065ff..ca21c30 100644
+--- a/test.c
++++ b/test.c
+@@ -2151,7 +2151,7 @@ static void test_async_polling(struct config config) {
+     assert(astest.ac == NULL);
+     test_cond(astest.disconnect_status == REDIS_OK);
+ 
+-    if (config.type == CONN_TCP || config.type == CONN_SSL) {
++    if (0) { /* disabled because of blackhole ip */
+         /* timeout can only be simulated with network */
+         test("Async connect timeout: ");
+         config.tcp.host = "192.168.254.254";  /* blackhole ip */
+-- 
+2.43.2
+

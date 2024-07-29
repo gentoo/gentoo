@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:smb4k_project:smb4k</remote-id>
+		<remote-id type="kde-invent">network/smb4k</remote-id>
+		<remote-id type="sourceforge">smb4k</remote-id>
+	</upstream>
+	<use>
+		<flag name="discovery">Build with <pkg>net-libs/kdsoap-ws-discovery-client</pkg> support to discover domains and workgroups</flag>
+	</use>
+</pkgmetadata>

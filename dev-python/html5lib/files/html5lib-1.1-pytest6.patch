@@ -1,0 +1,149 @@
+# https://github.com/html5lib/html5lib-python/pull/506
+# https://bugs.gentoo.org/754144
+
+and part of 4a87368b71090f1432df6302f178c4babfcec93f
+
+diff --git a/html5lib/tests/conftest.py b/html5lib/tests/conftest.py
+index dad167c5..fffeb50c 100644
+--- a/html5lib/tests/conftest.py
++++ b/html5lib/tests/conftest.py
+@@ -99,10 +99,19 @@ def pytest_collect_file(path, parent):
+ 
+     if _tree_construction in dir_and_parents:
+         if path.ext == ".dat":
+-            return TreeConstructionFile(path, parent)
++            return TreeConstructionFile.from_parent(parent, fspath=path)
+     elif _tokenizer in dir_and_parents:
+         if path.ext == ".test":
+-            return TokenizerFile(path, parent)
++            return TokenizerFile.from_parent(parent, fspath=path)
+     elif _sanitizer_testdata in dir_and_parents:
+         if path.ext == ".dat":
+-            return SanitizerFile(path, parent)
++            return SanitizerFile.from_parent(parent, fspath=path)
++
++
++# Tiny wrapper to allow .from_parent constructors on older pytest for PY27
++if not hasattr(pytest.Item.__base__, "from_parent"):
++    @classmethod
++    def from_parent(cls, parent, **kwargs):
++        return cls(parent=parent, **kwargs)
++
++    pytest.Item.__base__.from_parent = from_parent
+diff --git a/html5lib/tests/sanitizer.py b/html5lib/tests/sanitizer.py
+index bb483421..16e53868 100644
+--- a/html5lib/tests/sanitizer.py
++++ b/html5lib/tests/sanitizer.py
+@@ -13,7 +13,7 @@ def collect(self):
+         with codecs.open(str(self.fspath), "r", encoding="utf-8") as fp:
+             tests = json.load(fp)
+         for i, test in enumerate(tests):
+-            yield SanitizerTest(str(i), self, test=test)
++            yield SanitizerTest.from_parent(self, name=str(i), test=test)
+ 
+ 
+ class SanitizerTest(pytest.Item):
+diff --git a/html5lib/tests/tokenizer.py b/html5lib/tests/tokenizer.py
+index 47264cc3..cc9897a4 100644
+--- a/html5lib/tests/tokenizer.py
++++ b/html5lib/tests/tokenizer.py
+@@ -192,7 +192,7 @@ def collect(self):
+             tests = json.load(fp)
+         if 'tests' in tests:
+             for i, test in enumerate(tests['tests']):
+-                yield TokenizerTestCollector(str(i), self, testdata=test)
++                yield TokenizerTestCollector.from_parent(self, name=str(i), testdata=test)
+ 
+ 
+ class TokenizerTestCollector(pytest.Collector):
+@@ -207,10 +207,10 @@ def __init__(self, name, parent=None, config=None, session=None, testdata=None):
+     def collect(self):
+         for initialState in self.testdata["initialStates"]:
+             initialState = capitalize(initialState)
+-            item = TokenizerTest(initialState,
+-                                 self,
+-                                 self.testdata,
+-                                 initialState)
++            item = TokenizerTest.from_parent(self,
++                                             name=initialState,
++                                             test=self.testdata,
++                                             initialState=initialState)
+             if self.testdata["input"] is None:
+                 item.add_marker(pytest.mark.skipif(True, reason="Relies on lone surrogates"))
+             yield item
+diff --git a/html5lib/tests/tree_construction.py b/html5lib/tests/tree_construction.py
+index 1ef6e725..fb0657bf 100644
+--- a/html5lib/tests/tree_construction.py
++++ b/html5lib/tests/tree_construction.py
+@@ -26,7 +26,7 @@ class TreeConstructionFile(pytest.File):
+     def collect(self):
+         tests = TestData(str(self.fspath), "data")
+         for i, test in enumerate(tests):
+-            yield TreeConstructionTest(str(i), self, testdata=test)
++            yield TreeConstructionTest.from_parent(self, name=str(i), testdata=test)
+ 
+ 
+ class TreeConstructionTest(pytest.Collector):
+@@ -48,11 +48,11 @@ def _getParserTests(self, treeName, treeAPIs):
+                 nodeid = "%s::parser::namespaced" % treeName
+             else:
+                 nodeid = "%s::parser::void-namespace" % treeName
+-            item = ParserTest(nodeid,
+-                              self,
+-                              self.testdata,
+-                              treeAPIs["builder"] if treeAPIs is not None else None,
+-                              namespaceHTMLElements)
++            item = ParserTest.from_parent(self,
++                                          name=nodeid,
++                                          test=self.testdata,
++                                          treeClass=treeAPIs["builder"] if treeAPIs is not None else None,
++                                          namespaceHTMLElements=namespaceHTMLElements)
+             item.add_marker(getattr(pytest.mark, treeName))
+             item.add_marker(pytest.mark.parser)
+             if namespaceHTMLElements:
+@@ -61,10 +61,10 @@ def _getParserTests(self, treeName, treeAPIs):
+ 
+     def _getTreeWalkerTests(self, treeName, treeAPIs):
+         nodeid = "%s::treewalker" % treeName
+-        item = TreeWalkerTest(nodeid,
+-                              self,
+-                              self.testdata,
+-                              treeAPIs)
++        item = TreeWalkerTest.from_parent(self,
++                                          name=nodeid,
++                                          test=self.testdata,
++                                          treeAPIs=treeAPIs)
+         item.add_marker(getattr(pytest.mark, treeName))
+         item.add_marker(pytest.mark.treewalker)
+         yield item
+
+diff --git a/html5lib/tests/tokenizer.py b/html5lib/tests/tokenizer.py
+index cc9897a..b49d2e6 100644
+--- a/html5lib/tests/tokenizer.py
++++ b/html5lib/tests/tokenizer.py
+@@ -246,7 +246,9 @@ class TokenizerTest(pytest.Item):
+     def repr_failure(self, excinfo):
+         traceback = excinfo.traceback
+         ntraceback = traceback.cut(path=__file__)
+-        excinfo.traceback = ntraceback.filter()
++        pytest_ver = getattr(pytest, "version_tuple", ())
++        filter_args = (excinfo,) if pytest_ver >= (7, 4, 0) else ()
++        excinfo.traceback = ntraceback.filter(*filter_args)
+ 
+         return excinfo.getrepr(funcargs=True,
+                                showlocals=False,
+diff --git a/html5lib/tests/tree_construction.py b/html5lib/tests/tree_construction.py
+index fb0657b..363b48c 100644
+--- a/html5lib/tests/tree_construction.py
++++ b/html5lib/tests/tree_construction.py
+@@ -135,7 +135,9 @@ class ParserTest(pytest.Item):
+     def repr_failure(self, excinfo):
+         traceback = excinfo.traceback
+         ntraceback = traceback.cut(path=__file__)
+-        excinfo.traceback = ntraceback.filter()
++        pytest_ver = getattr(pytest, "version_tuple", ())
++        filter_args = (excinfo,) if pytest_ver >= (7, 4, 0) else ()
++        excinfo.traceback = ntraceback.filter(*filter_args)
+ 
+         return excinfo.getrepr(funcargs=True,
+                                showlocals=False,

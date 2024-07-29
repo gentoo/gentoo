@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>vim@gentoo.org</email>
+		<name>Gentoo Vim Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Jedi-vim is a VIM binding to the autocompletion library Jedi.
+		Apart from that, jedi-vim provides a number of keybindings.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">davidhalter/jedi-vim</remote-id>
+	</upstream>
+	<stabilize-allarches/>
+</pkgmetadata>

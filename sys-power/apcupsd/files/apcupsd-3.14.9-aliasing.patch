@@ -1,0 +1,39 @@
+Index: apcupsd-3.14.9/src/apctest.c
+===================================================================
+--- apcupsd-3.14.9.orig/src/apctest.c
++++ apcupsd-3.14.9/src/apctest.c
+@@ -2206,18 +2206,18 @@ static struct {
+    const char *config_directive;
+    const char *descript;
+    char type;
+-   int *data;
++   void *data;
+ } cmd_table[] = {
+    {'u', "HITRANSFER",   "Upper transfer voltage",  'i', &eeprom_ups.hitrans},
+    {'l', "LOTRANSFER",   "Lower transfer voltage",  'i', &eeprom_ups.lotrans},
+    {'e', "RETURNCHARGE", "Return threshold",        'i', &eeprom_ups.rtnpct},
+    {'o', "OUTPUTVOLTS",  "Output voltage on batts", 'i', &eeprom_ups.NomOutputVoltage},
+-   {'s', "SENSITIVITY",  "Sensitivity",             'c', (int *)eeprom_ups.sensitivity},
++   {'s', "SENSITIVITY",  "Sensitivity",             'c', eeprom_ups.sensitivity},
+    {'q', "LOWBATT",      "Low battery warning",     'i', &eeprom_ups.dlowbatt},
+    {'p', "SLEEP",        "Shutdown grace delay",    'i', &eeprom_ups.dshutd},
+-   {'k', "BEEPSTATE",    "Alarm delay",             'c', (int *)eeprom_ups.beepstate},
++   {'k', "BEEPSTATE",    "Alarm delay",             'c', eeprom_ups.beepstate},
+    {'r', "WAKEUP",       "Wakeup delay",            'i', &eeprom_ups.dwake},
+-   {'E', "SELFTEST",     "Self test interval",      'c', (int *)eeprom_ups.selftest},
++   {'E', "SELFTEST",     "Self test interval",      'c', eeprom_ups.selftest},
+    {0,   NULL,           NULL}     /* Last entry */
+ };
+ 
+@@ -2240,9 +2240,9 @@ static void print_valid_eeprom_values(UP
+       for (j = 0; cmd_table[j].cmd; j++) {
+          if (cmd[i].cmd == cmd_table[j].cmd) {
+             if (cmd_table[j].type == 'c')
+-               asnprintf(val, sizeof(val), "%s", (char *)cmd_table[j].data);
++               asnprintf(val, sizeof(val), "%s", cmd_table[j].data);
+             else
+-               asnprintf(val, sizeof(val), "%d", *cmd_table[j].data);
++               asnprintf(val, sizeof(val), "%d", *((int*)cmd_table[j].data));
+ 
+             pmsg("%-24s %-12s  %-6s   ", cmd_table[j].descript,
+                cmd_table[j].config_directive, val);

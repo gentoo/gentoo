@@ -1,0 +1,114 @@
+diff -Naur otter-3.3/mace2/Makefile otter-3.3.new/mace2/Makefile
+--- otter-3.3/mace2/Makefile	2003-08-06 10:18:09.000000000 -0400
++++ otter-3.3.new/mace2/Makefile	2010-01-12 19:41:44.000000000 -0500
+@@ -1,8 +1,8 @@
+ DFLAGS = -DTP_NAMES -DTP_SIGNAL -DTP_RUSAGE
+ 
+-CC = gcc
++#CC = gcc
+ 
+-CFLAGS = -O $(DFLAGS)
++CFLAGS += $(DFLAGS)
+ 
+ # CFLAGS = -g $(DFLAGS)
+ 
+@@ -12,20 +12,17 @@
+ OBJECTS = clock.o avail.o opts.o stats.o miscellany.o flatten.o\
+ 	dp.o generate.o print.o part.o
+ 
+-all: mace2 anldp install clean
++all: mace2 anldp 
+ 
+ mace2: mace2.o $(OBJECTS)
+-	$(CC) $(CFLAGS) mace2.o $(OBJECTS) ../source/libotter.a -o mace2 
++	$(CC) $(CFLAGS) $(LDFLAGS) mace2.o $(OBJECTS) ../source/libotter.a -o ../bin/mace2 
+ 
+ anldp: anldp.o $(OBJECTS)
+-	$(CC) $(CFLAGS) anldp.o $(OBJECTS) ../source/libotter.a -o anldp 
++	$(CC) $(CFLAGS) $(LDFLAGS) anldp.o $(OBJECTS) ../source/libotter.a -o ../bin/anldp 
+ 
+ mace2.o anldp.o $(OBJECTS): Mace2.h Clock.h Avail.h Opts.h Stats.h\
+ 	Miscellany.h Dp.h Generate.h Flatten.h Part.h
+ 
+-install:
+-	/bin/mv mace2 anldp ../bin
+-
+ clean:
+ 	/bin/rm -f *.o
+ 
+diff -Naur otter-3.3/source/Makefile otter-3.3.new/source/Makefile
+--- otter-3.3/source/Makefile	2003-08-06 21:48:29.000000000 -0400
++++ otter-3.3.new/source/Makefile	2010-01-12 19:58:16.000000000 -0500
+@@ -66,7 +66,7 @@
+ # Specify the C compiler.  I recommend gcc (GNU C Compiler) if you have it.
+ # In many Linux environments, cc is just a symlink to gcc.
+ 
+-CC = gcc
++#CC = gcc
+ 
+ #############################################################################
+ #
+@@ -74,7 +74,7 @@
+ #
+ # optimized
+ 
+-CFLAGS = -O $(DFLAGS)
++CFLAGS += $(DFLAGS)
+ 
+ #
+ # check for strict ANSI conformance with Solaris cc:
+@@ -108,19 +108,20 @@
+ 
+ #############################################################################
+ 
+-all: otter install clean
++all: formed
++
++formed: otter
++	+make -C formed clean
++	+make -C formed
+ 
+ otter: main.o libotter.a
+-	$(CC) $(CFLAGS) main.o libotter.a -o otter
++	$(CC) $(CFLAGS) $(LDFLAGS) main.o libotter.a -o ../bin/otter
+ 
+ libotter.a: $(OBJECTS)
+ 	$(AR) rs libotter.a $(OBJECTS)
+ 
+ main.o $(OBJECTS): header.h types.h macros.h cos.h proto.h foreign.h lisp.h
+ 
+-install:
+-	/bin/mv otter ../bin
+-
+ clean:
+ 	/bin/rm -f *.o
+ 
+diff -Naur otter-3.3/source/formed/Makefile otter-3.3.new/source/formed/Makefile
+--- otter-3.3/source/formed/Makefile	2003-07-21 15:34:44.000000000 -0400
++++ otter-3.3.new/source/formed/Makefile	2010-01-12 19:37:46.000000000 -0500
+@@ -1,14 +1,14 @@
+ 
+ DFLAGS = -DTP_NAMES -DTP_SIGNAL -DTP_FORK -DTP_RUSAGE
+ 
+-CC = gcc
++#CC = gcc
+ 
+ #############################################################################
+ # Specify the compiler flags; include DFLAGS (above)
+ #
+ # optimized
+ 
+-CFLAGS = -O $(DFLAGS)
++CFLAGS += $(DFLAGS)
+ 
+ #
+ # save symbols for debuggers
+@@ -40,7 +40,7 @@
+ XLIBS = -L/usr/X11R6/lib -lXaw 
+ 
+ formed: formed.o display.o callback.o
+-	$(CC) $(CFLAGS) formed.o display.o callback.o \
++	$(CC) $(CFLAGS) $(LDFLAGS) formed.o display.o callback.o \
+ 	../libotter.a $(XLIBS) -o formed
+ 
+ display.o callback.o formed.o: formed.h

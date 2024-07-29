@@ -1,0 +1,22 @@
+[Unit]
+Description=smartctl exporter
+Documentation=https://github.com/prometheus-community/smartctl_exporter
+After=network-online.target
+
+[Service]
+# Security improvements required in future, but needs care; ideally
+# smartctl_exporter runs minimal privilege, but can invoke smartctl via sudo to
+# touch disks.
+# https://github.com/prometheus-community/smartctl_exporter/issues/146
+User=root
+Group=root
+Restart=on-failure
+Type=exec
+# TODO: find a good way to add args here
+ExecStart=/usr/sbin/smartctl_exporter
+ExecReload=/usr/bin/kill -HUP $MAINPID
+TimeoutStopSec=20s
+SendSIGKILL=no
+
+[Install]
+WantedBy=multi-user.target

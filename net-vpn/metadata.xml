@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The net-vpn category contains packages related to virtual private
+		networks and tunneling utilities.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie net-vpn enthält Pakete für virtuelle private
+		Netze und Tunneling-Dienstprogramme.
+	</longdescription>
+</catmetadata>

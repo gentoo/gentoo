@@ -1,0 +1,123 @@
+Author: Ole Streicher <debian@liska.ath.cx>
+Subject: Generate a manpage for esorex.
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -62,3 +62,7 @@
+  include $(top_builddir)/Makefile.purify
+ endif
+ 
++esorex.man: esorex
++	sh esorex_create_man.sh
++
++man1_MANS = esorex.man
+--- /dev/null
++++ b/src/esorex_create_man.sh
+@@ -0,0 +1,108 @@
++#!/bin/sh
++
++help2man -N -i $0  ./esorex | sed s/^:\ // | fgrep -v "***" > esorex.man
++<< instrument.
++
++[NAME]
++esorex \- ESO Recipe Execution Tool
++
++[DESCRIPTION]
++EsoRex is the ESO Recipe Execution Tool. It can list, configure and execute
++CPL-based recipes from the command line. 
++
++One of the features provided by the CPL is the ability to create
++data-reduction algorithms that run as plugins (dynamic libraries). These are
++called recipes and are one of the main aspects of the CPL data-reduction
++development environment.
++
++As these recipes are dynamic libraries, it is not possible to run them
++directly from the command line. However, ESO provides several tools to do
++this, thus saving recipe developers the need to write such an application
++themselves. One of these is GASGANO (a GUI-based tool) and the other is 
++ EsoRex (which runs from the command line) and is described here.  
++
++[ENVIRONMENT]
++All options can be set as environment parameters as well. See the previous
++paragraph for details.
++
++[HINTS]
++.TP
++.SH File permissions
++When a recipe is used with the \fB\-\-suppress\-prefix\fR option, and the 
++\fB\-\-output\-dir\fR is set to the current working directory, then the first
++execution of a recipe will work correctly, but subsequent executions may 
++fail. This is due to output products being given \`read-only\' permission 
++(to avoid the potential inadvertant loss of products). The recipe itself 
++is unable to modify the permissions, and thus it fails when attempting to 
++create the file. The solution (other than using a different output directory
++or prefixes) is to change the permission of these output files or delete 
++them prior to any subsequent execution of that recipe. 
++
++This problem is less likely to occur in EsoRex v2+, due to the replacement of
++the \fB\-\-output\-overwrite\fR option with the \fB\-\-output\-readonly\fR 
++(which is disabled by default). However, a determined user can still reach 
++this situation, in which case the non-readable products must have their 
++permissions changed, as described above.
++
++.TP
++.SH Configuration files
++When creating configuration files, if the the recipe is provided on the
++command line, then EsoRex will generate the configuration file for this
++recipe. If no recipe name is given, then EsoRex will generate a configuration
++file for EsoRex itself. All configuration files are written in the
++$HOME/.esorex/ directory.
++
++.TP
++.SH Memory checking
++It is possible to get EsoRex to check for memory leaks in the recipe
++that it is running, by enabling the \fB\-\-mem\-check\fR option. Then, at the
++conclusion of the recipe execution, and after memory deallocation, a list of
++all remaining allocated memory will be printed to screen. If there are no
++memory leaks, then no addition output is displayed.
++
++[FILES]
++.TP
++.SH /etc/esorex.rc $HOME/.esorex/esorex.rc
++Default configuration files
++
++The configuration file contains the EsoRex options, less the \`\-\-\'
++switch, but prefixed with \`esorex.caller.\'. Blank lines are ignored and
++lines beginning with \`#\' are treated as comments.
++
++Here is an example configuration file.
++
++ # Example EsoRex configuration file
++ #
++ esorex.caller.recipe-dir=/home/username/EsoRex/Plugins
++ esorex.caller.log-dir=.
++ esorex.caller.log-file=esorex.log
++ esorex.caller.log-file=esorex.log
++ esorex.caller.output-dir=.
++ esorex.caller.output-prefix=out_
++
++.TP
++.SH filename.sof
++A sof file contains a list of the input data. This data is specified in an sof
++file (which is just a text file), where each input file is specified with its
++associated classification and category. The format of each line in the sof
++file is as follows:
++
++ full-path-to-file  classification
++
++Optionally, a third column may be provided. Permitted values are either RAW or
++CALIB. This is for when a recipe does not identify the type of input file, but
++as all ESO recipes are required to do so, this column is typically not needed.
++
++An example sof file, for the mythological "ZIMOS" instrument, might look like this:
++
++ /data/mos/ZIMOS.03-12-26T01:05:06.fits  MOS_SCIENCE
++ /data/mos/ZIMOS.03-12-26T01:26:00.fits  MOS_SCIENCE
++ /data/mos/ZIMOS.03-12-26T01:47:04.fits  MOS_SCIENCE
++ /data/cal/master_bias4.fits             MASTER_BIAS
++ /data/cal/grs_LR_red.3.tfits            GRISM_TABLE
++ /data/gasgano/extract_table2.fits       EXTRACT_TABLE
++ /data/cal/badpixel.3.tfits              CCD_TABLE
++
++For an concrete example for a specific instrument, check the documentation for that
++instrument.
++

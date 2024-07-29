@@ -1,0 +1,17 @@
+From 2c402f3b552ce18483119de1d3a91fd457c9c170 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Wed, 14 Dec 2022 08:50:07 +0100
+Subject: [PATCH] disable python tests
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -1,5 +1,4 @@
+ add_subdirectory(catch)
+-add_subdirectory(pytest)
+ 
+ # this code goes here, because tests is the last add_subdirectory (otherwise it gets executed too early)
+ if(APPLE AND BUILD_FOR_CONDA)
+-- 
+2.38.1
+

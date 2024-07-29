@@ -1,0 +1,38 @@
+https://gitlab.com/accounts-sso/signond/-/merge_requests/36
+
+From b48507f58d66356fbcdd349d14e6e145a4a60bbd Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Tue, 5 Jul 2022 17:38:08 +0200
+Subject: [PATCH 04/11] Port away from deprecated QString::SplitBehavior
+
+---
+ src/signond/signonidentityinfo.cpp | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/signond/signonidentityinfo.cpp b/src/signond/signonidentityinfo.cpp
+index a5ae15d..bf7985f 100644
+--- a/src/signond/signonidentityinfo.cpp
++++ b/src/signond/signonidentityinfo.cpp
+@@ -27,6 +27,7 @@
+ #include <QDBusArgument>
+ #include <QDataStream>
+ #include <QDebug>
++#include <QtGlobal>
+ 
+ namespace SignonDaemonNS {
+ 
+@@ -104,7 +105,11 @@ bool SignonIdentityInfo::checkMethodAndMechanism(const QString &method,
+      * mechanisms is allowed.
+      */
+     QStringList mechanisms =
++#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
++        mechanism.split(QLatin1Char(' '), Qt::SkipEmptyParts);
++#else
+         mechanism.split(QLatin1Char(' '), QString::SkipEmptyParts);
++#endif
+ 
+     /* if the list is empty of it has only one element, then we already know
+      * that it didn't pass the previous checks */
+-- 
+2.43.0
+

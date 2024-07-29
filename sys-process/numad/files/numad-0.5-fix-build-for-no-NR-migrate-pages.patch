@@ -1,0 +1,38 @@
+From c24212bd2dfcfc7074500f07f87790062d9b8acb Mon Sep 17 00:00:00 2001
+From: Kamal Mostafa <kamal@canonical.com>
+Date: Tue, 1 Sep 2015 08:43:22 -0700
+Subject: fix build for platforms with no __NR_migrate_pages syscall
+Reviewed-by: Jeremías Casteglione <debian@jrms.com.ar>
+Reviewed-by: Colin King <colin.king@canonical.com>
+
+---
+ numad.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/numad.c b/numad.c
+index 4c85486..09c5c29 100644
+--- a/numad.c
++++ b/numad.c
+@@ -1022,6 +1022,8 @@ int bind_process_and_migrate_memory(process_data_p p) {
+         free(namelist[namelist_ix]);
+     }
+     free(namelist);
++
++#if defined(__NR_migrate_pages)
+     // Now move the memory to the target nodes....
+     static unsigned long *dest_mask;
+     static unsigned long *from_mask;
+@@ -1083,6 +1085,10 @@ int bind_process_and_migrate_memory(process_data_p p) {
+         p->process_MBs[max_from_node_id] = 0;
+         prev_from_node_id = max_from_node_id;
+     }
++#else // __NR_migrate_pages is not defined
++    numad_log(LOG_DEBUG, "Cannot move memory for PID %d: migrate_pages() system call not supported.\n", p->pid);
++#endif
++
+     // Check pid still active
+     snprintf(fname, FNAME_SIZE, "/proc/%d", p->pid);
+     if (access(fname, F_OK) < 0) {
+-- 
+1.9.1
+

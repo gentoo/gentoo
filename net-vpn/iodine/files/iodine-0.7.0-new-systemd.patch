@@ -1,0 +1,16 @@
+diff --git a/src/osflags b/src/osflags
+index 9eda8f0..0f8a26c 100755
+--- a/src/osflags
++++ b/src/osflags
+@@ -19,7 +19,7 @@ link)
+ 		Linux)
+ 			FLAGS="";
+ 			[ -e /usr/include/selinux/selinux.h ] && FLAGS="$FLAGS -lselinux";
+-			[ -e /usr/include/systemd/sd-daemon.h ] && FLAGS="$FLAGS -lsystemd-daemon";
++			[ -e /usr/include/systemd/sd-daemon.h ] && FLAGS="$FLAGS $(pkg-config --libs libsystemd)";
+ 			echo $FLAGS;
+ 		;;
+ 	esac
+-- 
+1.9.3
+

@@ -1,0 +1,20 @@
+--- a/src/e16menu.h
++++ b/src/e16menu.h
+@@ -45,6 +45,6 @@
+ gboolean table_check_func (GtkTreeModel *model, GtkTreePath *path,
+                           GtkTreeIter *iter, gpointer user_data);			  
+ 
+-gchar *menu_file[MAX_RECURSION];
++extern gchar *menu_file[MAX_RECURSION];
+ 
+ #endif /* _E16MENU_H */
+--- a/src/e16menu.c
++++ b/src/e16menu.c
+@@ -34,6 +34,7 @@
+ #include "treeview.h"
+ 
+ extern struct global_variables gv;
++gchar *menu_file[MAX_RECURSION];
+ 
+ GtkTreeModel *load_menus_from_disk (void)
+ {

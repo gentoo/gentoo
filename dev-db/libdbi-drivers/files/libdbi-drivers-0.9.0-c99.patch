@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/920460
+--- a/drivers/firebird/dbd_firebird.c
++++ b/drivers/firebird/dbd_firebird.c
+@@ -43,6 +43,7 @@
+ #include <string.h>
+ #include <time.h>
+ #include <ibase.h>
++#include <ctype.h>
+ 
+ #include "dbd_firebird.h"
+ #include "firebird_charsets.h"

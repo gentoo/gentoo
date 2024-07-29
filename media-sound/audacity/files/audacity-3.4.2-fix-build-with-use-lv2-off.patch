@@ -1,0 +1,36 @@
+From e10034c19ed1911b730637fbc722030eb3dfd04b Mon Sep 17 00:00:00 2001
+From: Chris Mayo <aklhfex@gmail.com>
+Date: Wed, 22 Nov 2023 19:29:05 +0000
+Subject: [PATCH] Fix build with -Daudacity_use_lv2=off
+
+libraries/lib-lv2/LV2Utils.h:18:10: fatal error: lilv/lilv.h: No such file or directory
+   18 | #include "lilv/lilv.h" // for lilv_free
+      |          ^~~~~~~~~~~~~
+compilation terminated.
+---
+ libraries/CMakeLists.txt | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/libraries/CMakeLists.txt b/libraries/CMakeLists.txt
+index b1ebefa1b023..879cd948791d 100644
+--- a/libraries/CMakeLists.txt
++++ b/libraries/CMakeLists.txt
+@@ -50,7 +50,6 @@ set( LIBRARIES
+    lib-vst3
+    lib-snapping
+    lib-vst
+-   lib-lv2
+    lib-ladspa
+    lib-audio-unit
+    lib-playable-track
+@@ -63,6 +62,10 @@ set( LIBRARIES
+    lib-viewport
+ )
+ 
++if ( ${_OPT}use_lv2 )
++   list( APPEND LIBRARIES lib-lv2)
++endif()
++
+ if ( ${_OPT}has_networking )
+    list( APPEND LIBRARIES lib-network-manager)
+ endif()

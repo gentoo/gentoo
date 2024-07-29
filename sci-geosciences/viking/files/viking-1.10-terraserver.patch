@@ -1,0 +1,31 @@
+From 71e5d6bb1b2f9481788ce7d54d5124f468515852 Mon Sep 17 00:00:00 2001
+From: Rob Norris <rw_norris@hotmail.com>
+Date: Thu, 24 Mar 2022 19:26:37 +0000
+Subject: [PATCH] Maintain terraserver code building
+
+---
+ src/terraservermapsource.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/terraservermapsource.c b/src/terraservermapsource.c
+index 8d9edfac..0e8cf09a 100644
+--- a/src/terraservermapsource.c
++++ b/src/terraservermapsource.c
+@@ -32,7 +32,7 @@ static gboolean _is_mbtiles ( VikMapSource *self );
+ 
+ static gchar *_get_uri( VikMapSourceDefault *self, MapCoord *src );
+ static gchar *_get_hostname( VikMapSourceDefault *self );
+-static DownloadFileOptions *_get_download_options( VikMapSourceDefault *self );
++static DownloadFileOptions *_get_download_options( VikMapSourceDefault *self, MapCoord *src );
+ 
+ /* FIXME Huge gruik */
+ static DownloadFileOptions terraserver_options = { FALSE, FALSE, NULL, 0, NULL, NULL, 0, a_check_map_file, NULL, FALSE, FALSE, NULL };
+@@ -247,7 +247,7 @@ _get_hostname( VikMapSourceDefault *self )
+ }
+ 
+ static DownloadFileOptions *
+-_get_download_options( VikMapSourceDefault *self )
++_get_download_options( VikMapSourceDefault *self, MapCoord *src )
+ {
+ 	g_return_val_if_fail (TERRASERVER_IS_MAP_SOURCE(self), NULL);
+ 

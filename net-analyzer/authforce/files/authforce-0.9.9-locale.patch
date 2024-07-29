@@ -1,0 +1,15 @@
+ src/main.c |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/src/main.c b/src/main.c
+index 0fd275a..296e181 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -14,6 +14,7 @@
+ #include "extern.h"
+ #ifdef ENABLE_NLS
+ #define _(x) dgettext(PACKAGE_NAME, x)
++#include <locale.h>
+ #else
+ #define _(x) (x)
+ #endif

@@ -1,0 +1,27 @@
+--- a/asm/i386/cpu.s
++++ b/asm/i386/cpu.s
+@@ -2428,3 +2428,6 @@
+ 
+ 
+ 
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif
+--- a/asm/i386/lcd.s
++++ b/asm/i386/lcd.s
+@@ -288,3 +288,6 @@
+ 
+ 
+ 
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif
+--- a/asm/i386/refresh.s
++++ b/asm/i386/refresh.s
+@@ -283,3 +283,6 @@
+ 
+ 
+ 
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif

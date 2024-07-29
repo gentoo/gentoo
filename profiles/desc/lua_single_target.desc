@@ -1,0 +1,9 @@
+# Copyright 1999-2021 Gentoo Authors.
+# Distributed under the terms of the GNU General Public License v2
+
+# This file contains descriptions of LUA_SINGLE_TARGET USE_EXPAND flags.
+
+lua5-1 - Build for Lua 5.1 only
+lua5-3 - Build for Lua 5.3 only
+lua5-4 - Build for Lua 5.4 only
+luajit - Build for LuaJIT only

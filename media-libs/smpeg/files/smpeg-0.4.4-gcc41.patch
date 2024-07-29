@@ -1,0 +1,36 @@
+--- smpeg/MPEGaudio.h
++++ smpeg/MPEGaudio.h
+@@ -151,12 +151,6 @@ private:
+ /* The actual MPEG audio class */
+ class MPEGaudio : public MPEGerror, public MPEGaudioaction {
+ 
+-    friend void Play_MPEGaudioSDL(void *udata, Uint8 *stream, int len);
+-    friend int Play_MPEGaudio(MPEGaudio *audio, Uint8 *stream, int len);
+-#ifdef THREADED_AUDIO
+-    friend int Decode_MPEGaudio(void *udata);
+-#endif
+-
+ public:
+     MPEGaudio(MPEGstream *stream, bool initSDL = true);
+     virtual ~MPEGaudio();
+@@ -367,6 +361,20 @@ public:
+ #define N_TIMESTAMPS 5
+ 
+   double timestamp[N_TIMESTAMPS];
++
++  /* Functions which access MPEGaudio internals */
++  friend void Play_MPEGaudioSDL(void *udata, Uint8 *stream, int len);
++  friend int Play_MPEGaudio(MPEGaudio *audio, Uint8 *stream, int len);
++#ifdef THREADED_AUDIO
++  friend int Decode_MPEGaudio(void *udata);
++#endif
+ };
+ 
++/* Need to duplicate the prototypes, this is not a typo :) */
++void Play_MPEGaudioSDL(void *udata, Uint8 *stream, int len);
++int Play_MPEGaudio(MPEGaudio *audio, Uint8 *stream, int len);
++#ifdef THREADED_AUDIO
++int Decode_MPEGaudio(void *udata);
++#endif
++
+ #endif /* _MPEGAUDIO_H_ */

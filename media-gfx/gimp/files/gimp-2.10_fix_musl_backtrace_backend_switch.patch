@@ -1,0 +1,15 @@
+Gentoo issue: https://bugs.gentoo.org/900148
+Upstream issue: https://gitlab.gnome.org/GNOME/gimp/-/issues/9452
+
+diff -Naur a/app/core/gimpbacktrace-backend.h b/app/core/gimpbacktrace-backend.h
+--- a/app/core/gimpbacktrace-backend.h
++++ b/app/core/gimpbacktrace-backend.h
+@@ -22,7 +22,7 @@
+ #define __GIMP_BACKTRACE_BACKEND_H__
+ 
+ 
+-#ifdef __gnu_linux__
++#if defined (__gnu_linux__) && defined (__GLIBC__)
+ # define GIMP_BACKTRACE_BACKEND_LINUX
+ #elif defined (G_OS_WIN32) && defined (ARCH_X86)
+ # define GIMP_BACKTRACE_BACKEND_WINDOWS

@@ -1,0 +1,23 @@
+
+If we're not building with glibc, then add its basename definition manually
+
+diff --git a/tools/attr.c b/tools/attr.c
+index f12e4af..d321b37 100644
+--- a/tools/attr.c
++++ b/tools/attr.c
+@@ -33,6 +33,15 @@
+ 
+ #include "misc.h"
+ 
++#if !defined(__GLIBC__)
++char *
++basename (const char *filename)
++{
++  char *p = strrchr (filename, '/');
++  return p ? p + 1 : (char *) filename;
++}
++#endif
++
+ #define	SETOP		1		/* do a SET operation */
+ #define	GETOP		2		/* do a GET operation */
+ #define	REMOVEOP	3		/* do a REMOVE operation */

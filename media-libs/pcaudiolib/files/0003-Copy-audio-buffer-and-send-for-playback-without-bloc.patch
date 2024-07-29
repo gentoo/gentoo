@@ -1,0 +1,118 @@
+From e0ff53614074feabc637598000f5799b480179c3 Mon Sep 17 00:00:00 2001
+From: zment <jani.karkkainen@gmail.com>
+Date: Tue, 16 Aug 2022 20:18:31 +0300
+Subject: [PATCH] Copy audio buffer and send for playback without blocking,
+ fixes Windows audio choppyness
+
+---
+ src/xaudio2.cpp | 60 +++++++++++++++++++++++++++++++++++++++++--------
+ 1 file changed, 51 insertions(+), 9 deletions(-)
+
+diff --git a/src/xaudio2.cpp b/src/xaudio2.cpp
+index 72190b4..bb9d5be 100644
+--- a/src/xaudio2.cpp
++++ b/src/xaudio2.cpp
+@@ -35,6 +35,25 @@ struct xaudio2_object
+ 	LPWSTR devicename;
+ };
+ 
++class VoiceCallbacks : public IXAudio2VoiceCallback
++{
++public:
++	void OnBufferEnd(void* pBufferContext) {
++		if (pBufferContext != NULL)
++		{
++			free((void*)pBufferContext);
++		}
++	}
++
++	// Stubs for all interface callbacks
++	void OnStreamEnd() { }
++	void OnVoiceProcessingPassEnd() { }
++	void OnVoiceProcessingPassStart(UINT32 SamplesRequired) { }
++	void OnBufferStart(void* pBufferContext) { }
++	void OnLoopEnd(void* pBufferContext) { }
++	void OnVoiceError(void* pBufferContext, HRESULT Error) { }
++} voiceCallbacks;
++
+ void
+ xaudio2_object_close(struct audio_object *object);
+ 
+@@ -59,7 +78,7 @@ xaudio2_object_open(struct audio_object *object,
+ 	if (FAILED(hr))
+ 		goto error;
+ 
+- 	hr = self->audio->CreateSourceVoice(&self->source, self->format);
++ 	hr = self->audio->CreateSourceVoice(&self->source, self->format, 0, 2.0f, &voiceCallbacks);
+ 	if (FAILED(hr))
+ 		goto error;
+ 
+@@ -110,6 +129,16 @@ xaudio2_object_drain(struct audio_object *object)
+ {
+ 	struct xaudio2_object *self = to_xaudio2_object(object);
+ 
++	while (true)
++	{
++		Sleep(10);
++
++		XAUDIO2_VOICE_STATE state = { 0 };
++		self->source->GetState(&state);
++		if (state.pCurrentBufferContext == NULL && state.BuffersQueued == 0)
++			break;
++	}
++
+ 	return S_OK;
+ }
+ 
+@@ -128,27 +157,40 @@ xaudio2_object_write(struct audio_object *object,
+ {
+ 	struct xaudio2_object *self = to_xaudio2_object(object);
+ 
+-	XAUDIO2_BUFFER buffer = {0};
++	BYTE* buf_data = (BYTE *)malloc(bytes);
++	memcpy(buf_data, data, bytes);
++
++	XAUDIO2_BUFFER buffer = { 0 };
+ 	buffer.AudioBytes = bytes;
+-	buffer.pAudioData = (const BYTE *)data;
++	buffer.pAudioData = buf_data;
++	buffer.pContext = buf_data;
+ 
+ 	HRESULT hr = S_OK;
+ 	if (SUCCEEDED(hr))
+ 		hr = self->source->SubmitSourceBuffer(&buffer);
+ 
+-	if (SUCCEEDED(hr))
+-		hr = self->source->Start(0);
++	XAUDIO2_VOICE_STATE state = { 0 };
++	self->source->GetState(&state);
++	UINT32 buffersQueued = state.BuffersQueued;
+ 
+-	if (SUCCEEDED(hr)) while (true)
++	while (FAILED(hr))
+ 	{
+ 		Sleep(10);
+ 
+-		XAUDIO2_VOICE_STATE state = { 0 };
+ 		self->source->GetState(&state);
+-		if (state.pCurrentBufferContext == NULL && state.BuffersQueued == 0)
+-			return hr;
++		if (state.BuffersQueued < buffersQueued)
++		{
++			hr = self->source->SubmitSourceBuffer(&buffer);
++
++			self->source->GetState(&state);
++			buffersQueued = state.BuffersQueued;
++		}
+ 	}
+ 
++
++	if (SUCCEEDED(hr))
++		hr = self->source->Start(0);
++
+ 	return hr;
+ }
+ 
+-- 
+2.35.1
+

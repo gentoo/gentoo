@@ -1,0 +1,30 @@
+From 4f81ef7ed5128453c049958e496f9638d28bdf76 Mon Sep 17 00:00:00 2001
+From: David Runge <dave@sleepmap.de>
+Date: Wed, 13 Mar 2024 16:24:02 +0100
+Subject: [PATCH] Use importlib.reload instead of imp.reload
+
+The imp module has been deprecated since Python 3.4 and is removed in
+Python 3.12.
+Replace its use with its replacement in the importlib module.
+
+Signed-off-by: David Runge <dave@sleepmap.de>
+---
+ vigranumpy/lib/axistags.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/vigranumpy/lib/axistags.py b/vigranumpy/lib/axistags.py
+index 5c564ea9..cb5dd193 100644
+--- a/vigranumpy/lib/axistags.py
++++ b/vigranumpy/lib/axistags.py
+@@ -241,7 +241,7 @@ def benchmark(expression):
+        when getitem returns a value, the slowdown is about 3 (due to Python calls)
+     '''
+     import timeit, axistags
+-    from imp import reload
++    from importlib import reload
+     reload(axistags)
+     repetitions = 100000
+     t1 = timeit.Timer(expression,
+-- 
+2.44.0
+

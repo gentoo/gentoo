@@ -1,0 +1,22 @@
+--- a/src/isapnp_main.c
++++ b/src/isapnp_main.c
+@@ -1153,7 +1153,7 @@
+ 	return 0;
+ }
+ 
+-unsigned char serial_identifier[NUM_CARDS+1][IDENT_LEN];
++extern unsigned char serial_identifier[NUM_CARDS+1][IDENT_LEN];
+ static char *boardid[NUM_CARDS+1];
+ static unsigned long serno[NUM_CARDS+1];
+ 
+--- a/src/isapnp_main.l
++++ b/src/isapnp_main.l
+@@ -363,7 +363,7 @@
+ 	return 0;
+ }
+ 
+-unsigned char serial_identifier[NUM_CARDS+1][IDENT_LEN];
++extern unsigned char serial_identifier[NUM_CARDS+1][IDENT_LEN];
+ static char *boardid[NUM_CARDS+1];
+ static unsigned long serno[NUM_CARDS+1];
+ 

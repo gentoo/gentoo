@@ -1,0 +1,15 @@
+# This is the configuration file that /etc/init.d/spampd sources when
+# started.
+
+# SPAMPD_OPTS defines the command-line arguments to be passed to the
+# spampd daemon upon start-up.  A complete list of options can be
+# found in the documentation, or by issuing the command
+# "/usr/sbin/spampd --help"
+
+SPAMPD_OPTS="--host=localhost:10025 --relayhost=localhost:10026 --tagall"
+
+# Note: (from the Installation section in the spampd documentation)
+# "Note that spampd replaces spamd from the SpamAssassin distribution
+# in function. You do not need to run spamd in order for spampd to
+# work. This has apparently been the source of some confusion, so now
+# you know."

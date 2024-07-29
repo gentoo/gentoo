@@ -1,0 +1,138 @@
+--- a/db/compilers.xml	2019-06-01 21:29:57.611722804 +0200
++++ b/db/compilers.xml	2019-06-01 21:42:56.000608601 +0200
+@@ -20,7 +20,7 @@
+   <!--    GCC 3.x & 4.x (not for GNAT Pro)-->
+   <compiler_description>
+     <name>GCC</name>
+-    <executable prefix="1">(.*-wrs-.*|.*-sysgo.*|.*-elf-.*|.*-eabi-.*|.*-eabispe-.*|avr-.*|.*-elinos-linux.*|.*-linux-gnu-|.*mingw32.*|.*-xcoff-.*|arm-linux-androideabi-|arm-linux-gnueabi-|arm-linux-gnueabihf-|e500v2-gnu-linux-|powerpc-.*-linux.*-|.*-darwin.*-)?gcc(-\d+)?</executable>
++    <executable prefix="1">(.*-wrs-.*|.*-sysgo.*|.*-elf-.*|.*-eabi-.*|.*-eabispe-.*|avr-.*|.*-elinos-linux.*|.*-linux-gnu-|.*mingw32.*|.*-xcoff-.*|arm-linux-androideabi-|arm-linux-gnueabi-|arm-linux-gnueabihf-|e500v2-gnu-linux-|powerpc-.*-linux.*-|.*-darwin.*-)?gcc-@VER@</executable>
+     <version>
+       <external>$EXEC -v</external>
+       <nogrep regexp="for GNAT Pro"></nogrep>
+@@ -173,18 +173,18 @@
+    -->
+   <compiler_description>
+     <name>GNAT</name>
+-    <executable prefix="1">(.*-wrs-.*|.*-sysgo.*|.*-elf-.*|.*-eabi-.*|.*-eabispe-.*|avr-.*|.*-elinos-linux.*|.*-linux-gnu-|.*mingw32.*|.*-xcoff-.*|arm-linux-androideabi-|arm-linux-gnueabi-|arm-linux-gnueabihf-|e500v2-gnu-linux-|powerpc-.*-linux.*-|.*-darwin.*-|.*-qnx.*|.*-rtems.*)?gnatls</executable>
++    <executable prefix="1">(.*-wrs-.*|.*-sysgo.*|.*-elf-.*|.*-eabi-.*|.*-eabispe-.*|avr-.*|.*-elinos-linux.*|.*-linux-gnu-|.*mingw32.*|.*-xcoff-.*|arm-linux-androideabi-|arm-linux-gnueabi-|arm-linux-gnueabihf-|e500v2-gnu-linux-|powerpc-.*-linux.*-|.*-darwin.*-|.*-qnx.*|.*-rtems.*)?gnatls-@VER@</executable>
+     <version>
+-      <external>${PREFIX}gnatls -v --version</external>
++      <external>${EXEC} -v --version</external>
+       <grep regexp="^GNATLS.+?(\d+(\.\d+)?)" group="1"></grep>
+     </version>
+     <languages>Ada</languages>
+     <variable name="gcc_version">
+-      <external>${PREFIX}gcc -v</external>
++      <external>${PREFIX}gcc-@VER@ -v</external>
+       <grep regexp="^[-\w]*gcc \S+ (\S+)" group="1"></grep>
+     </variable>
+     <variable name="gcc_version_major">
+-      <external>${PREFIX}gcc -v</external>
++      <external>${PREFIX}gcc-@VER@ -v</external>
+       <grep regexp="^[-\w]*gcc \S+ (\d+)\.\d+\.\d+" group="1"></grep>
+     </variable>
+     <runtimes default="default,kernel,native">
+@@ -194,7 +194,7 @@
+        <directory group="2" >\.\./$TARGET/lib(32|64)?/gnat/(.*)/adalib/</directory>
+     </runtimes>
+     <target>
+-      <external>${PREFIX}gcc -dumpmachine</external>
++      <external>${PREFIX}gcc-@VER@ -dumpmachine</external>
+       <grep regexp="[^\r\n]+"></grep>
+     </target>
+   </compiler_description>
+@@ -245,7 +245,7 @@
+   <!--  Generic C compiler for LLVM  -->
+   <compiler_description>
+     <name>C_LLVM</name>
+-    <executable>clang</executable>
++    <executable>fake-clang</executable>
+     <version>
+       <external>clang --version</external>
+ 
+@@ -475,7 +475,7 @@
+   <!-- LLVM Compiler -->
+   <compiler_description>
+     <name>LLVM</name>
+-    <executable>clang</executable>
++    <executable>fake-clang</executable>
+     <version>
+       <external>clang -v</external>
+       <grep regexp=".*(LLVM|clang) version ([0-9.]*)" group="2"></grep>
+--- a/db/gnat.xml	2019-06-01 21:53:53.383281607 +0200
++++ b/db/gnat.xml	2019-06-01 21:57:08.414196529 +0200
+@@ -10,7 +10,7 @@
+    &filter_gnat;
+    <config>
+    package Compiler is
+-      for Driver                   ("Ada") use "${PATH(ada)}${PREFIX(ada)}gcc";
++      for Driver                   ("Ada") use "${PATH(ada)}${PREFIX(ada)}gcc-@VER@";
+       for Language_Kind            ("Ada") use "unit_based";
+       for Dependency_Kind          ("Ada") use "ALI_File";
+       for Leading_Required_Switches        ("Ada") use
+@@ -27,6 +27,9 @@
+       for Objects_Path_File     ("Ada") use "ADA_PRJ_OBJECTS_FILE";
+       for Driver         ("Ada") use
+           "${GPRCONFIG_PREFIX}libexec/gprbuild/gprbind";
++      for Switches ("Ada") use ("--gnatbind_path=${PREFIX(ada)}gnatbind-@VER@");
++      for Required_Switches ("Ada") use
++        Binder'Required_Switches ("Ada") &amp; ("--RTS=${RUNTIME_DIR(ada)}");
+    end Binder;
+ 
+    for Toolchain_Version ("Ada") use "GNAT ${VERSION(ada)}";
+--- a/db/c.xml	2019-06-01 21:57:36.244755708 +0200
++++ b/db/c.xml	2019-06-01 21:59:14.919191663 +0200
+@@ -25,7 +25,7 @@
+      </compilers>
+      <config>
+    package Compiler is
+-      for Driver              ("C") use "${PATH(c)}${PREFIX(c)}gcc";
++      for Driver              ("C") use "${PATH(c)}${PREFIX(c)}gcc-@VER@";
+    end Compiler;
+      </config>
+    </configuration>
+--- a/db/linker.xml	2021-12-21 22:36:01.054738486 +0100
++++ b/db/linker.xml	2021-12-21 22:36:59.973738600 +0100
+@@ -128,9 +128,13 @@
+       <host name="^i686.*-linux.*$" />
+     </hosts>
+     <config>
+-   for Object_Lister use ("nm", "-g");
++   NM := External("NM", "nm");
++   for Object_Lister use (NM, "-g");
+    for Object_Lister_Matcher use " [TDRB] (.*)";
+ 
++   LDFLAGS := External_As_List ("LDFLAGS", " ");
++   for Leading_Library_Options use LDFLAGS;
++
+    package Linker is
+       for Export_File_Format use "GNU";
+       for Export_File_Switch use "-Wl,--version-script=";
+@@ -917,7 +921,8 @@
+       <host name="^x86_64-.*linux.*" />
+     </hosts>
+     <config>
+-   for Archive_Builder  use ("ar", "cr");
++   AR := External("AR", "ar");
++   for Archive_Builder  use (AR, "cr");
+    for Archive_Builder_Append_Option use ("q");
+    for Archive_Indexer  use ("ranlib");
+    for Archive_Suffix   use ".a";
+@@ -1274,7 +1279,7 @@
+     </targets>
+     <config>
+    for Library_Partial_Linker use
+-     ("${PATH(ada)}${PREFIX(ada)}gcc", "-nostdlib")
++     ("${PATH(ada)}${PREFIX(ada)}gcc-@VER@", "-nostdlib")
+       &amp; GCC_No_Pie
+       &amp; ("-Wl,-r", "-o");
+     </config>
+@@ -1295,7 +1300,7 @@
+     </targets>
+     <config>
+    for Library_Partial_Linker use
+-     ("${PATH(c)}${PREFIX(c)}gcc", "-nostdlib")
++     ("${PATH(c)}${PREFIX(c)}gcc-@VER@", "-nostdlib")
+       &amp; GCC_No_Pie
+       &amp; ("-Wl,-r", "-o");
+     </config>

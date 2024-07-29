@@ -1,0 +1,71 @@
+We both want to respect the user's CFLAGS, but also, not all of our arches support
+-march or -mtune.
+--- a/benchmark/CMakeLists.txt
++++ b/benchmark/CMakeLists.txt
+@@ -30,10 +30,6 @@ include(CheckCXXCompilerFlag)
+ string(TOUPPER "${CMAKE_BUILD_TYPE}" U_CMAKE_BUILD_TYPE)
+ 
+ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Intel")
+-    if(NOT CMAKE_CXX_FLAGS MATCHES "-march" AND NOT CMAKE_CXX_FLAGS MATCHES "-arch" AND NOT CMAKE_OSX_ARCHITECTURES)
+-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")
+-    endif()
+-
+     if(NOT MSVC)
+         CHECK_CXX_COMPILER_FLAG("-std=c++11" HAS_CPP11_FLAG)
+         if (ENABLE_XTL_COMPLEX)
+--- a/examples/CMakeLists.txt
++++ b/examples/CMakeLists.txt
+@@ -26,15 +26,6 @@ else()
+     message(STATUS "Tests build type is ${CMAKE_BUILD_TYPE}")
+ endif()
+ 
+-if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Intel")
+-    if (NOT CMAKE_CXX_FLAGS MATCHES "-march" AND NOT CMAKE_CXX_FLAGS MATCHES "-arch" AND NOT CMAKE_OSX_ARCHITECTURES)
+-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native -mtune=native")
+-    endif()
+-    if(NOT CMAKE_CXX_COMPILER_ID MATCHES Clang) # We are using clang-cl
+-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fopenmp")
+-    endif()
+-endif()
+-
+ add_executable(mandelbrot mandelbrot.cpp ${XSIMD_HEADERS})
+ set_property(TARGET mandelbrot PROPERTY CXX_STANDARD 14)
+ if(ENABLE_XTL_COMPLEX)
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -41,10 +41,6 @@ OPTION(XSIMD_ENABLE_WERROR "Turn on -Werror" OFF)
+ 
+ OPTION(CROSS_COMPILE_ARM "cross compile for ARM targets" OFF)
+ 
+-# Note: to compile on ARM (or cross compile), you may need to add the following:
+-# -DTARGET_ARCH="armv8-a -mfpu=neon -mfloat-abi=softfp -target arm-linux-gnueabi"
+-set(TARGET_ARCH "native" CACHE STRING "Target architecture arguments")
+-
+ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Intel")
+     if (NOT WIN32 AND NOT ANDROID)
+         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wunused-parameter -Wextra -Wreorder")
+@@ -79,10 +75,6 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU"
+         include_directories(/usr/${ARM_ARCH_DIRECTORY}/include/c++/${ARM_GCC_VER}/${ARM_ARCH_DIRECTORY}/)
+         include_directories(/usr/${ARM_ARCH_DIRECTORY}/include/c++/${ARM_GCC_VER}/)
+         include_directories(/usr/${ARM_ARCH_DIRECTORY}/include/)
+-        if(NOT CMAKE_CXX_FLAGS MATCHES "-march")
+-            message(STATUS "SETTING ARCH TO ${TARGET_ARCH}")
+-            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=${TARGET_ARCH}")
+-        endif()
+         if(ARM_ARCH_DIRECTORY MATCHES "arm-linux-gnueabi")
+             set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mfpu=neon -mfloat-abi=softfp -target arm-linux-gnueabi")
+         else ()
+@@ -91,13 +83,9 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU"
+         message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
+         message(STATUS "CMAKE_CXX_LINK_EXECUTABLE: ${CMAKE_CXX_LINK_EXECUTABLE}")
+     elseif(${CMAKE_SYSTEM_PROCESSOR} MATCHES "^ppc64"  OR ${CMAKE_SYSTEM_PROCESSOR} MATCHES "aarch64")
+-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mcpu=${TARGET_ARCH} -mtune=${TARGET_ARCH}")
+     elseif(${CMAKE_SYSTEM_PROCESSOR} MATCHES "riscv64")
+         # Nothing specific
+     elseif(NOT WIN32 AND NOT EMSCRIPTEN)
+-        if(NOT CMAKE_CXX_FLAGS MATCHES "-march" AND NOT CMAKE_CXX_FLAGS MATCHES "-arch" AND NOT CMAKE_OSX_ARCHITECTURES)
+-            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=${TARGET_ARCH}")
+-        endif()
+     endif()
+ endif()
+ 

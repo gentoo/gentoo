@@ -1,0 +1,53 @@
+From 10ad8990c92f2b4c4f4d550e0b42fb083aa90f84 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 6 Dec 2017 03:43:22 +1300
+Subject: Use ENV settings for LDAP tests
+
+This absolves the need for users to patch sources just to configure
+a test server.
+---
+ test.pl | 26 ++++++++++++++------------
+ 1 file changed, 14 insertions(+), 12 deletions(-)
+
+diff --git a/test.pl b/test.pl
+index 7deb1a6..1a0871b 100644
+--- a/test.pl
++++ b/test.pl
+@@ -18,20 +18,22 @@ print "modinit  - ok\n";
+ ## Change these values for test to work...
+ ##
+ 
+-print "\nEnter LDAP Server: ";
+-chomp($ldap_host = <>);
+-print "Enter port: ";
+-chomp($ldap_port = <>);
+-print "Enter Search Filter (ex. uid=abc123): ";
+-chomp($filter = <>);
+-print "Enter LDAP Search Base (ex. o=Org, c=US): ";
+-chomp($BASEDN = <>);
+-print "\n";
+-
+-if (!$ldap_host)
++if (!$ENV{LDAP_TEST_HOST})
+ {
+-   die "Please edit \$BASEDN, \$filter and \$ldap_host in test.pl.\n";
++   die "LDAP_TEST_HOST not set";
+ }
++$ldap_host = $ENV{LDAP_TEST_HOST};
++$ldap_port = $ENV{LDAP_TEST_PORT};
++$filter    = $ENV{LDAP_TEST_FILTER};
++$BASEDN    = $ENV{LDAP_TEST_BASEDN};
++
++printf "\nLDAP Server: %s", $ldap_host;
++printf "\nLDAP port: %s", $ldap_port;
++printf "\nSearch Filter (ex. uid=abc123): %s", $filter;
++printf "\nLDAP Search Base (ex. o=Org, c=US): %s", $BASEDN;
++print "\n";
++
++
+ 
+ ##
+ ##  Initialize LDAP Connection
+-- 
+2.14.3
+

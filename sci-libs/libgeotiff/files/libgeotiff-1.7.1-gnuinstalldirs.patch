@@ -1,0 +1,120 @@
+https://github.com/OSGeo/libgeotiff/pull/74
+
+From d18deccb461990c826ceee8fbcc57a44502ace2e Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 20 Mar 2022 02:55:50 +0000
+Subject: [PATCH] CMake: adopt GNUInstallDirs
+
+This makes it a lot easier for packagers (it happens by default
+if we've setup our environment correctly) to have files installed in the right
+places, including libdir, but also documentation, which can vary.
+
+This works cross-platform still but it means libgeotiff uses the
+standard options which CMake projects tend to use for such locations
+and therefore no special treatment is needed when packaging it.
+
+Fixes: https://github.com/OSGeo/issues/33
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ CMakeLists.txt     | 41 ++++++++++-------------------------
+ bin/CMakeLists.txt |  6 ++---
+ 2 files changed, 14 insertions(+), 33 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 001df67..1840258 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -7,6 +7,8 @@
+ ###############################################################################
+ PROJECT(GeoTIFF)
+ 
++include(GNUInstallDirs)
++
+ SET(GEOTIFF_LIB_NAME geotiff)
+ SET(GEOTIFF_LIBRARY_TARGET geotiff_library)
+ 
+@@ -239,38 +241,17 @@ SET(GEOTIFF_MAN_PAGES
+ 
+ #    ${PROJECT_BINARY_DIR}/geotiff_version.h
+ 
+-SET(DEFAULT_BIN_SUBDIR bin)
+-SET(DEFAULT_LIB_SUBDIR lib)
+-SET(DEFAULT_INCLUDE_SUBDIR include)
+-
+-# Locations are changeable by user to customize layout of GeoTIFF installation
+-# (default values are platform-specIFic)
+-SET(GEOTIFF_BIN_SUBDIR ${DEFAULT_BIN_SUBDIR} CACHE STRING
+-    "Subdirectory where executables will be installed")
+-SET(GEOTIFF_LIB_SUBDIR ${DEFAULT_LIB_SUBDIR} CACHE STRING
+-    "Subdirectory where libraries will be installed")
+-SET(GEOTIFF_INCLUDE_SUBDIR ${DEFAULT_INCLUDE_SUBDIR} CACHE STRING
+-    "Subdirectory where header files will be installed")
+-
+-# Mark *_SUBDIR variables as advanced and dedicated to use by power-users only.
+-MARK_AS_ADVANCED(GEOTIFF_BIN_SUBDIR GEOTIFF_LIB_SUBDIR GEOTIFF_INCLUDE_SUBDIR)
+-
+-# Full paths for the installation
+-SET(GEOTIFF_BIN_DIR ${GEOTIFF_BIN_SUBDIR})
+-SET(GEOTIFF_LIB_DIR ${GEOTIFF_LIB_SUBDIR})
+-SET(GEOTIFF_INCLUDE_DIR ${GEOTIFF_INCLUDE_SUBDIR})
+-
+ # Install doc files
+ INSTALL(FILES
+     AUTHORS ChangeLog COPYING INSTALL LICENSE README README_BIN README.WIN
+-    DESTINATION doc)
++    DESTINATION ${CMAKE_INSTALL_DOCDIR})
+ 
+ # Install man pages
+-INSTALL(FILES ${GEOTIFF_MAN_PAGES} DESTINATION share/man/man1)
++INSTALL(FILES ${GEOTIFF_MAN_PAGES} DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+ 
+ 
+ # Install header files for development distribution
+-INSTALL(FILES ${GEOTIFF_LIB_HEADERS} DESTINATION ${GEOTIFF_INCLUDE_DIR})
++INSTALL(FILES ${GEOTIFF_LIB_HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+ 
+ ###############################################################################
+ # Build libxtiff library
+@@ -323,7 +304,7 @@ if(UNIX)
+       set_target_properties(
+         ${GEOTIFF_LIBRARY_TARGET}
+         PROPERTIES
+-        INSTALL_NAME_DIR "${CMAKE_INSTALL_PREFIX}/${GEOTIFF_LIB_DIR}")
++        INSTALL_NAME_DIR "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}")
+    endif()
+ endif()
+ 
+@@ -348,14 +329,14 @@ target_link_libraries(${GEOTIFF_LIBRARY_TARGET} PRIVATE
+ target_include_directories(
+   ${GEOTIFF_LIBRARY_TARGET}
+   PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>
+-         $<INSTALL_INTERFACE:${GEOTIFF_INCLUDE_DIR}>)
++         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
+ 
+ INSTALL( TARGETS ${GEOTIFF_LIBRARY_TARGET}
+      EXPORT depends
+-     RUNTIME DESTINATION ${GEOTIFF_BIN_DIR}
+-     LIBRARY DESTINATION ${GEOTIFF_LIB_DIR}
+-     PUBLIC_HEADER DESTINATION ${GEOTIFF_INCLUDE_DIR}
+-     ARCHIVE DESTINATION ${GEOTIFF_LIB_DIR} )
++     RUNTIME DESTINATION ${CMAKE_INSTALLL_BINDIR}
++     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
++     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} )
+ 
+ # Define grouping of source files in PROJECT file (e.g. Visual Studio)
+ SOURCE_GROUP("CMake Files" FILES CMakeLists.txt)
+diff --git a/bin/CMakeLists.txt b/bin/CMakeLists.txt
+index dad465f..c61585c 100644
+--- a/bin/CMakeLists.txt
++++ b/bin/CMakeLists.txt
+@@ -41,6 +41,6 @@ MESSAGE(STATUS "Adding GeoTIFF utilities to build - done: ${GEOTIFF_UTILITIES}")
+ # Targets installation
+ 
+ INSTALL(TARGETS ${GEOTIFF_UTILITIES}
+-    RUNTIME DESTINATION ${GEOTIFF_BIN_DIR}
+-    LIBRARY DESTINATION ${GEOTIFF_LIB_DIR}
+-    ARCHIVE DESTINATION ${GEOTIFF_LIB_DIR})
++    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})

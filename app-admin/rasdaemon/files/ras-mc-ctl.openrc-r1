@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Loads Motherboard DIMM labels into EDAC driver"
+
+depend() {
+	keyword -stop
+	need sysfs
+}
+
+command="/usr/sbin/ras-mc-ctl"
+command_args="--register-labels"
+
+start() {
+	ebegin "Loading Motherboard DIMM labels into EDAC driver"
+	"${command}" "${command_args}"
+	eend $?
+}
+
+stop() {
+	:
+}

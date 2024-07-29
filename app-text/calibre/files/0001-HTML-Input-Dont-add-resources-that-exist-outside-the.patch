@@ -1,0 +1,55 @@
+From 57190699030dc6746320e49695a67ce83c62d549 Mon Sep 17 00:00:00 2001
+From: Kovid Goyal <kovid@kovidgoyal.net>
+Date: Sun, 28 May 2023 14:03:15 +0530
+Subject: [PATCH] HTML Input: Dont add resources that exist outside the folder
+ hierarchy rooted at the parent folder of the input HTML file by default
+
+(cherry picked from commit bbbddd2bf4ef4ddb467b0aeb0abe8765ed7f8a6b)
+---
+ .../ebooks/conversion/plugins/html_input.py      | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/src/calibre/ebooks/conversion/plugins/html_input.py b/src/calibre/ebooks/conversion/plugins/html_input.py
+index 6f9c2084ea..742f3e0279 100644
+--- a/src/calibre/ebooks/conversion/plugins/html_input.py
++++ b/src/calibre/ebooks/conversion/plugins/html_input.py
+@@ -64,6 +64,16 @@ class HTMLInput(InputFormatPlugin):
+                 )
+         ),
+ 
++        OptionRecommendation(name='allow_local_files_outside_root',
++            recommended_value=False, level=OptionRecommendation.LOW,
++            help=_('Normally, resources linked to by the HTML file or its children will only be allowed'
++                   ' if they are in a sub-folder of the original HTML file. This option allows including'
++                   ' local files from any location on your computer. This can be a security risk if you'
++                   ' are converting untrusted HTML and expecting to distribute the result of the conversion.'
++                )
++        ),
++
++
+     }
+ 
+     def convert(self, stream, opts, file_ext, log,
+@@ -76,6 +86,7 @@ def convert(self, stream, opts, file_ext, log,
+         if hasattr(stream, 'name'):
+             basedir = os.path.dirname(stream.name)
+             fname = os.path.basename(stream.name)
++        self.root_dir_of_input = os.path.abspath(basedir) + os.sep
+ 
+         if file_ext != 'opf':
+             if opts.dont_package:
+@@ -250,6 +261,11 @@ def link_to_local_path(self, link_, base=None):
+         frag = l.fragment
+         if not link:
+             return None, None
++        link = os.path.abspath(os.path.realpath(link))
++        if not link.startswith(self.root_dir_of_input):
++            if not self.opts.allow_local_files_outside_root:
++                self.log.warn('Not adding {} as it is outside the document root: {}'.format(link, self.root_dir_of_input))
++                return None, None
+         return link, frag
+ 
+     def resource_adder(self, link_, base=None):
+-- 
+2.41.0
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>randy@electronsweatshop.com</email>
+		<name>Randy Barlow</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Starship is a customizable shell prompt. It's fast, supports many shells
+		on a variety of operating systems, displays useful information based on
+		current working directory, and is easy to configure.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">starship/starship</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,24 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+PIDFILE=/run/${SVCNAME}.pid
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --quiet --background --make-pidfile \
+		--exec /usr/sbin/sercd --chuid ${SERCD_USER} --pidfile "${PIDFILE}" \
+		-- ${SERCD_OPTS} -p ${SERCD_PORT} -l ${SERCD_ADDR} \
+		${SERCD_LOGLEVEL} "${SERCD_DEVFILE}" "${SERCD_LOCKFILE}" ${SERCD_POLLINTERV}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --quiet --name sercd --pidfile "${PIDFILE}"
+	eend $?
+}

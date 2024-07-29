@@ -1,0 +1,12 @@
+--- a/GrabWeather
++++ b/GrabWeather
+@@ -12,7 +12,8 @@
+ 
+ $ReportDir  = '.wmWeatherReports';
+ #$WeatherSrc = 'ftp://weather.noaa.gov/data/observations/metar/decoded';
+-$WeatherSrc = 'http://weather.noaa.gov/pub/data/observations/metar/decoded';
++#$WeatherSrc = 'http://weather.noaa.gov/pub/data/observations/metar/decoded';
++$WeatherSrc = 'http://tgftp.nws.noaa.gov/data/observations/metar/decoded/';
+ 
+ use strict; 
+ use vars qw( $ReportDir $WeatherSrc );

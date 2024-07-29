@@ -1,0 +1,22 @@
+commit fb29d87cc5dcfd6e3222f3bee63fc9e6a764fa3c
+Author: Ben Kohler <bkohler@gentoo.org>
+Date:   Wed May 22 09:47:29 2024 -0500
+
+    gkbuilds/mdadm-4.2: add missing musl fix
+    
+    Signed-off-by: Ben Kohler <bkohler@gentoo.org>
+
+diff --git a/gkbuilds/mdadm-4.2.gkbuild b/gkbuilds/mdadm-4.2.gkbuild
+index d996346..99bfb84 100644
+--- a/gkbuilds/mdadm-4.2.gkbuild
++++ b/gkbuilds/mdadm-4.2.gkbuild
+@@ -16,6 +16,9 @@ src_prepare() {
+ }
+ 
+ src_compile() {
++	# bug 907082
++	append-cppflags -D_LARGEFILE64_SOURCE
++
+ 	CXFLAGS="-DNO_LIBUDEV" gkmake V=1 mdadm mdmon
+ }
+ 

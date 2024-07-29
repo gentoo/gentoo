@@ -1,0 +1,12 @@
+--- a/Makefile
++++ b/Makefile
+@@ -84,8 +84,7 @@
+ endif
+ 
+ ifeq ($(DEBUG),yes)
+-CFLAGS+=-D_DEBUG -ggdb
+-LDFLAGS+=-g
++CFLAGS+=-D_DEBUG
+ endif
+ 
+ ifeq ($(ARM),yes)

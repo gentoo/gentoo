@@ -1,0 +1,50 @@
+--- a/meson.build	2023-03-15 14:18:16.657101983 -0700
++++ b/meson.build	2023-03-15 14:21:20.055049626 -0700
+@@ -97,47 +97,6 @@
+   endif
+ endif
+ 
+-# a few compiler warning flags we always want enabled
+-add_project_arguments(
+-  cc.get_supported_arguments([
+-    '-Werror=shadow',
+-    '-Werror=empty-body',
+-    '-Werror=strict-prototypes',
+-    '-Werror=missing-prototypes',
+-    '-Werror=implicit-function-declaration',
+-    '-Werror=pointer-arith',
+-    '-Werror=missing-declarations',
+-    '-Werror=return-type',
+-    '-Werror=int-conversion',
+-    '-Werror=incompatible-pointer-types',
+-    '-Werror=misleading-indentation',
+-    '-Werror=missing-include-dirs',
+-    '-Werror=declaration-after-statement',
+-    '-Werror=format-security',
+-
+-    '-Wno-missing-field-initializers',
+-    '-Wno-error=missing-field-initializers',
+-    '-Wno-unused-parameter',
+-    '-Wno-error=unused-parameter',
+-  ]),
+-  language: 'c'
+-)
+-add_project_arguments(
+-  '-Wno-unused-parameter',
+-  '-Werror=shadow',
+-  '-Werror=empty-body',
+-  '-Werror=pointer-arith',
+-  '-Werror=init-self',
+-  '-Werror=missing-declarations',
+-  '-Werror=return-type',
+-  '-Werror=misleading-indentation',
+-  '-Werror=format-security',
+-
+-  # NOTE: Can be removed with AppStream 1.0
+-  '-Wno-error=c++20-compat',
+-  language: 'cpp'
+-)
+-
+ # Vendor extensions in system headers
+ add_project_arguments('-D_POSIX_C_SOURCE=200809L', language: 'c')
+

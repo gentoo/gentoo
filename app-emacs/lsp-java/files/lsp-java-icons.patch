@@ -1,0 +1,25 @@
+index b7f8083..571a19e 100644
+--- a/lsp-java.el
++++ b/lsp-java.el
+@@ -78,7 +78,7 @@ Use http://download.eclipse.org/che/che-ls-jdt/snapshots/che-jdt-language-server
+   :risky t
+   :type 'directory)
+ 
+-(defcustom lsp-java-themes-directory (f-join (f-dirname (or load-file-name buffer-file-name)) "icons")
++(defcustom lsp-java-themes-directory "@SITEETC@/icons"
+   "Directory containing themes."
+   :type 'directory
+   :group 'lsp-java)
+diff --git a/lsp-jt.el b/lsp-jt.el
+index 4aecfd9..ea05a51 100644
+--- a/lsp-jt.el
++++ b/lsp-jt.el
+@@ -185,7 +185,7 @@
+   (-uniq (gethash 'jdtls (lsp-session-server-id->folders (lsp-session)))))
+ 
+ (treemacs-modify-theme "Default"
+-  :icon-directory (f-join (f-dirname (or load-file-name buffer-file-name)) "icons/vscode")
++  :icon-directory "@SITEETC@/icons/vscode/"
+   :config
+   (progn
+     (treemacs-create-icon :file "class.png" :extensions (java-test-class) :fallback "-")

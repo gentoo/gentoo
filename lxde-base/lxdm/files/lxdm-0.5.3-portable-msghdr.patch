@@ -1,0 +1,18 @@
+--- a/src/lxcom.c
++++ b/src/lxcom.c
+@@ -117,7 +117,15 @@
+ 	char ctrl[/*CMSG_SPACE(sizeof(LXDM_CRED))*/1024];
+ 	struct sockaddr_un peer;
+ 	struct iovec v={buf,sizeof(buf)};
+-	struct msghdr h={&peer,sizeof(peer),&v,1,ctrl,sizeof(ctrl),0};
++	struct msghdr h={
++		.msg_name = &peer,
++		.msg_namelen = sizeof(peer),
++		.msg_iov = &v,
++		.msg_iovlen = 1,
++		.msg_control = ctrl,
++		.msg_controllen = sizeof(ctrl),
++		.msg_flags = 0
++	};
+ 	struct cmsghdr *cmptr;
+ 	int ret;

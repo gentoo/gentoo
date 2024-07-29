@@ -1,0 +1,53 @@
+diff -up scorched/src/common/coms/ComsLoadLevelMessage.cpp~ scorched/src/common/coms/ComsLoadLevelMessage.cpp
+--- scorched/src/common/coms/ComsLoadLevelMessage.cpp~	2014-08-01 18:47:31.000000000 +0200
++++ scorched/src/common/coms/ComsLoadLevelMessage.cpp	2020-08-13 21:33:59.895250469 +0200
+@@ -108,6 +108,49 @@ bool ComsLoadLevelMessage::loadState(Sco
+ 
+ bool ComsLoadLevelMessage::loadTanks(ScorchedContext &context)
+ {
++	/*
++	 * There is a timing bug which shows on really fast machines
++	 * where the client starts talking to the server before the
++	 * server initial setup is done.
++	 * In sofar as I have managed to debug this, the following
++	 * happens on slower machines, aka the GOOD case:
++	 *
++	 * Server TankAddSimAction::invokeAction() new Tank "(Bot) Fred"
++	 * Server TankAddSimAction::invokeAction() new Tank "(Bot) Ted"
++	 * Server TankAddSimAction::invokeAction() new Tank "Player 1"
++	 * Server TankAddSimAction::invokeAction() new Tank "Spectator"
++	 * Client TankAddSimAction::invokeAction() new Tank "(Bot) Fred"
++	 * Client TankAddSimAction::invokeAction() new Tank "(Bot) Ted"
++	 * Client TankAddSimAction::invokeAction() new Tank "Player 1"
++	 * Client TankAddSimAction::invokeAction() new Tank "Spectator"
++	 * 
++	 * Note the server internally creates all tanks before the
++	 * client does and thus before the client starts sending
++	 * messages related to these tanks to the server.
++	 *
++	 * On a fast enough system (i7-10610U) the following order
++	 * has been observed instead:
++	 *
++	 * Server TankAddSimAction::invokeAction() new Tank "(Bot) Fred"
++	 * Server TankAddSimAction::invokeAction() new Tank "(Bot) Ted"
++	 * Client TankAddSimAction::invokeAction() new Tank "(Bot) Fred"
++	 * Client TankAddSimAction::invokeAction() new Tank "(Bot) Ted"
++	 * Client TankAddSimAction::invokeAction() new Tank "Player 1"
++	 * Client TankAddSimAction::invokeAction() new Tank "Spectator"
++	 * Server TankAddSimAction::invokeAction() new Tank "Player 1"
++	 * Server TankAddSimAction::invokeAction() new Tank "Spectator"
++	 *
++	 * Note the server creates the "Player 1" and "Spectator"
++	 * tanks after the client, this causes the server to ignore
++	 * some initial messages from the client related to these
++	 * tanks, after which things get stuck, breaking non-networked
++	 * games on fast machines.
++	 *
++	 * The sleep below is an ugly but effective workaround for this
++	 * issue.
++	 */
++	SDL_Delay(100);
++
+ 	NetBufferReader reader(tanksBuffer_);
+ 
+ 	// Add any new tanks

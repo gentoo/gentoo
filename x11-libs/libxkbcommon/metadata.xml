@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>x11@gentoo.org</email>
+    <name>X11</name>
+  </maintainer>
+  <use>
+    <flag name="tools">Build the xkbcli tools</flag>
+  </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:xkbcommon:libxkbcommon</remote-id>
+    <remote-id type="github">xkbcommon/libxkbcommon</remote-id>
+  </upstream>
+</pkgmetadata>

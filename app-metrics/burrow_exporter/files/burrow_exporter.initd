@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 2016-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="Prometheus burrow exporter"
+pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
+user=${user:-${RC_SVCNAME}}
+group=${group:-${RC_SVCNAME}}
+
+command="/usr/bin/burrow_exporter"
+command_args="${command_args:---burrow-addr http://127.0.0.1:8000 --metrics-addr 0.0.0.0:8080 --interval 30 --api-version 2}"
+command_background="true"
+start_stop_daemon_args="--user ${user} --group ${group} \
+	--stdout /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log \
+	--stderr /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
+
+depend() {
+	after net
+}

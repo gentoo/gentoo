@@ -1,0 +1,8 @@
+https://bugs.gentoo.org/871048
+--- a/main.c
++++ b/main.c
+@@ -70,3 +70,3 @@
+ 
+-int playsound(soundnum)
++int playsound(int soundnum)
+ {

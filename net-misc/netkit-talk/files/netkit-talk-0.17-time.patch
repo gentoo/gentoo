@@ -1,0 +1,20 @@
+--- a/talkd/table.c
++++ b/talkd/table.c
+@@ -57,6 +57,7 @@
+ 
+ #include "prot_talkd.h"
+ #include "proto.h"
++#include <time.h>
+ 
+ #define MAX_ID 16000	/* << 2^15 so I don't have sign troubles */
+ 
+--- a/talkd/announce.c
++++ b/talkd/announce.c
+@@ -49,6 +49,7 @@
+ #include <fcntl.h>
+ #include <string.h>
+ #include <paths.h>
++#include <time.h>
+ #include "prot_talkd.h"
+ #include "proto.h"
+ 

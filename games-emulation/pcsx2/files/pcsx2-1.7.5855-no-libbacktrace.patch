@@ -1,0 +1,30 @@
+libbacktrace used to be packaged in Gentoo but was last-rited due
+to [1], and as of [2] pcsx2 no longer let it be optional albeit the
+code to allow this still exists behind __APPLE__ which lacks it.
+
+May be revisited to see if re-packaging may be sane (not looked
+into the issue much, could potentially mask libbacktrace and pcsx2
+on musl, or even bundle libbacktrace), but for now drop the
+dependency again as it is fairly trivial.
+
+[1] https://bugs.gentoo.org/885471
+[2] https://github.com/PCSX2/pcsx2/commit/d48f527d6d88dfbf87
+--- a/cmake/SearchForStuff.cmake
++++ b/cmake/SearchForStuff.cmake
+@@ -71,3 +71,2 @@
+ 
+-		find_package(Libbacktrace REQUIRED)
+ 		find_package(PkgConfig REQUIRED)
+--- a/common/CMakeLists.txt
++++ b/common/CMakeLists.txt
+@@ -161,3 +161,2 @@
+ 		${DBUS_LINK_LIBRARIES}
+-		libbacktrace::libbacktrace
+ 		X11::X11
+--- a/common/CrashHandler.cpp
++++ b/common/CrashHandler.cpp
+@@ -178,3 +178,3 @@
+ 
+-#elif !defined(__APPLE__)
++#elif 0
+ 

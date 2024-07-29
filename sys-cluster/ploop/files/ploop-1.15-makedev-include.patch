@@ -1,0 +1,12 @@
+diff --git a/lib/delta_sysfs.c b/lib/delta_sysfs.c
+index 98e7254..e44fb3b 100644
+--- a/lib/delta_sysfs.c
++++ b/lib/delta_sysfs.c
+@@ -29,6 +29,7 @@
+ #include <linux/fs.h>
+ #include <sys/ioctl.h>
+ #include <sys/utsname.h>
++#include <sys/sysmacros.h>
+ 
+ #include "ploop.h"
+ 

@@ -1,0 +1,12 @@
+[Unit]
+Description=Zabbix agent
+Documentation=https://zabbix.com/manuals
+After=network.target network-online.target
+
+[Service]
+User=zabbix
+Group=zabbix
+ExecStart=/usr/sbin/zabbix_agentd --foreground --config /etc/zabbix/zabbix_agentd.conf
+
+[Install]
+WantedBy=multi-user.target

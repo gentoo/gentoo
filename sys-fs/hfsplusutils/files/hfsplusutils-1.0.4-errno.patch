@@ -1,0 +1,13 @@
+--- a/src/hpmkdir.c
++++ b/src/hpmkdir.c
+@@ -46,8 +46,9 @@
+ # include <string.h>
+ # include <time.h>
+ # include <ctype.h>
+-# include <errno.h>
+ */
++# include <errno.h>
++
+ # include <stdio.h>
+ # include <stdlib.h>
+ 

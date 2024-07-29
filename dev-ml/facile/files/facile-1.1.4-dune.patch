@@ -1,0 +1,41 @@
+diff --git a/dune-project b/dune-project
+new file mode 100644
+index 0000000..7d8f2ba
+--- /dev/null
++++ b/dune-project
+@@ -0,0 +1,2 @@
++(lang dune 2.9)
++(name facile)
+diff --git a/examples/dune b/examples/dune
+new file mode 100644
+index 0000000..b804a36
+--- /dev/null
++++ b/examples/dune
+@@ -0,0 +1,4 @@
++(executables
++  (libraries facile)
++  (names coins golf golomb jobshop magic marriage prolog seven_eleven tiles)
++)
+diff --git a/lib/dune b/lib/dune
+new file mode 100644
+index 0000000..d28179f
+--- /dev/null
++++ b/lib/dune
+@@ -0,0 +1,4 @@
++(library
++  (public_name facile)
++  (ocamlopt_flags (-unsafe -noassert -inline 10))
++)
+diff --git a/lib_test/dune b/lib_test/dune
+new file mode 100644
+index 0000000..e8993ee
+--- /dev/null
++++ b/lib_test/dune
+@@ -0,0 +1,7 @@
++(executable
++  (libraries facile)
++  (name queens))
++
++(rule
++  (alias runtest)
++  (action  (run ./queens.exe 8)))

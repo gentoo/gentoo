@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+	</upstream>
+	<use>
+		<flag name="discover">Pull in resources management GUI; a centralised GHNS alternative and optional <pkg>sys-apps/fwupd</pkg> frontend</flag>
+		<flag name="kaccounts">Build the OpenDesktop integration plugin</flag>
+	</use>
+</pkgmetadata>

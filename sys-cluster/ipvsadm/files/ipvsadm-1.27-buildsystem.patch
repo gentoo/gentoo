@@ -1,0 +1,117 @@
+diff -Nuar -Nuar --exclude '*.orig' --exclude '*.rej' ipvsadm-1.27.orig/libipvs/Makefile ipvsadm-1.27/libipvs/Makefile
+--- ipvsadm-1.27.orig/libipvs/Makefile	2013-09-06 01:37:27.000000000 -0700
++++ ipvsadm-1.27/libipvs/Makefile	2013-11-01 23:45:21.633636401 -0700
+@@ -1,9 +1,9 @@
+ # Makefile for libipvs
+ 
+ CC		= gcc
+-CFLAGS		= -Wall -Wunused -Wstrict-prototypes -g -fPIC
++#OPTFLAGS		= -Wall -Wunused -Wstrict-prototypes
+ ifneq (0,$(HAVE_NL))
+-CFLAGS		+= -DLIBIPVS_USE_NL
++DEFINES		+= -DLIBIPVS_USE_NL
+ CFLAGS		+= $(shell \
+ 		if which pkg-config > /dev/null 2>&1; then \
+ 		  if   pkg-config --cflags libnl-3.0  2> /dev/null; then :; \
+@@ -15,7 +15,7 @@
+ 
+ INCLUDE		+= $(shell if [ -f ../../ip_vs.h ]; then	\
+ 		     echo "-I../../."; fi;)
+-DEFINES		= $(shell if [ ! -f ../../ip_vs.h ]; then	\
++DEFINES		+= $(shell if [ ! -f ../../ip_vs.h ]; then	\
+ 		    echo "-DHAVE_NET_IP_VS_H"; fi;)
+ DEFINES		+= $(shell if which pkg-config > /dev/null 2>&1; then \
+ 			 if   pkg-config --exists libnl-3.0; then :; \
+@@ -24,21 +24,31 @@
+ 			 then echo "-DFALLBACK_LIBNL1"; fi; fi)
+ 
+ .PHONY		= all clean install dist distclean rpm rpms
++
+ STATIC_LIB	= libipvs.a
+ SHARED_LIB	= libipvs.so
+ 
+-all:		$(STATIC_LIB) $(SHARED_LIB)
++TARGETS = $(SHARED_LIB)
++ifeq (1,$(STATIC))
++TARGETS += $(STATIC_LIB)
++endif
++all: $(TARGETS)
++
++SOURCES = libipvs.c ip_vs_nl_policy.c
+ 
+-$(STATIC_LIB):	libipvs.o ip_vs_nl_policy.o
++$(STATIC_LIB):	$(SOURCES:%.c=%.o)
+ 		ar rv $@ $^
+ 
+-$(SHARED_LIB):	libipvs.o ip_vs_nl_policy.o
+-		$(CC) -shared -Wl,-soname,$@ -o $@ $^
++$(SHARED_LIB):	$(SOURCES:%.c=%.lo)
++		$(CC) $(LDFLAGS) -shared -Wl,-soname,$@ -o $@ $^
++
++%.lo:		%.c
++		$(CC) -fPIC $(OPTFLAGS) $(CFLAGS) $(INCLUDE) $(DEFINES) -c -o $@ $<
+ 
+ %.o:		%.c
+-		$(CC) $(CFLAGS) $(INCLUDE) $(DEFINES) -c -o $@ $<
++		$(CC) $(OPTFLAGS) $(CFLAGS) $(INCLUDE) $(DEFINES) -c -o $@ $<
+ 
+ clean:
+-		rm -f *.[ao] *~ *.orig *.rej core *.so
++		rm -f *.[ao] *~ *.orig *.rej core *.so *.lo
+ 
+ distclean:	clean
+diff -Nuar -Nuar --exclude '*.orig' --exclude '*.rej' ipvsadm-1.27.orig/Makefile ipvsadm-1.27/Makefile
+--- ipvsadm-1.27.orig/Makefile	2013-11-01 23:49:36.523225124 -0700
++++ ipvsadm-1.27/Makefile	2013-11-01 23:49:09.478738760 -0700
+@@ -43,14 +43,13 @@
+ INIT		= $(BUILD_ROOT)/etc/rc.d/init.d
+ MKDIR		= mkdir
+ INSTALL		= install
+-STATIC_LIBS	= libipvs/libipvs.a
+ 
+ ifeq "${ARCH}" "sparc64"
+-    CFLAGS = -Wall -Wunused -Wstrict-prototypes -g -m64 -pipe -mcpu=ultrasparc -mcmodel=medlow
++    CFLAGS := -g -m64 -pipe -mcpu=ultrasparc -mcmodel=medlow
+ else
+-    CFLAGS = -Wall -Wunused -Wstrict-prototypes -g
++    CFLAGS := -g
+ endif
+-
++OPTFLAGS += -Wall -Wunused -Wstrict-prototypes
+ 
+ #####################################
+ # No servicable parts below this line
+@@ -84,12 +83,14 @@
+ all:            libs ipvsadm
+ 
+ libs:
+-		make -C libipvs
++		$(MAKE) -C libipvs CFLAGS="$(CFLAGS)" STATIC="$(STATIC)" OPTFLAGS="$(OPTFLAGS)"
++
++$(OBJS):	libs
+ 
+-ipvsadm:	$(OBJS) $(STATIC_LIBS)
+-		$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
++ipvsadm:	$(OBJS)
++		$(CC) $(LDFLAGS) $(OPTFLAGS) $(CFLAGS) -o $@ $^ -Llibipvs -lipvs $(LIBS)
+ 
+-install:        all
++install:	all
+ 		if [ ! -d $(SBIN) ]; then $(MKDIR) -p $(SBIN); fi
+ 		$(INSTALL) -m 0755 ipvsadm $(SBIN)
+ 		$(INSTALL) -m 0755 ipvsadm-save $(SBIN)
+@@ -106,7 +107,7 @@
+ 		rm -rf debian/tmp
+ 		find . -name '*.[ao]' -o -name "*~" -o -name "*.orig" \
+ 		  -o -name "*.rej" -o -name core | xargs rm -f
+-		make -C libipvs clean
++		$(MAKE) -C libipvs clean
+ 
+ distclean:	clean
+ 
+@@ -139,4 +140,4 @@
+ 		dpkg-buildpackage
+ 
+ %.o:	%.c
+-		$(CC) $(CFLAGS) $(INCLUDE) $(DEFINES) -c -o $@ $<
++		$(CC) $(OPTFLAGS) $(CFLAGS) $(INCLUDE) $(DEFINES) -c -o $@ $<

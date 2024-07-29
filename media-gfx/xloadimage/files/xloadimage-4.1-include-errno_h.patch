@@ -1,0 +1,13 @@
+--- xloadimage.4.1/img.c.orig	2003-01-01 15:14:47.000000000 +0200
++++ xloadimage.4.1/img.c	2003-01-01 15:15:05.000000000 +0200
+@@ -14,9 +14,9 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
++#include <errno.h>
+ #include "image.h"
+ 
+-extern int errno;
+ 
+ #define TRUE  1
+ #define FALSE 0

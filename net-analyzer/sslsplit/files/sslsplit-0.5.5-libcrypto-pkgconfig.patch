@@ -1,0 +1,23 @@
+Use pkgconfig for localization of libcrypto. This is needed for tests in
+multilib systems.
+
+diff --git a/extra/engine/GNUmakefile b/extra/engine/GNUmakefile
+index b50717b..3712ad6 100644
+--- a/extra/engine/GNUmakefile
++++ b/extra/engine/GNUmakefile
+@@ -16,9 +16,9 @@ else
+ SUFFIX:=	so
+ endif
+ 
+-CFLAGS+=	-fPIC -I$(OPENSSL_BASE)/include
+-LDFLAGS+=	-L$(OPENSSL_BASE)/lib
+-LIBS+=		-lcrypto
++CFLAGS+=	-fPIC $(shell pkg-config --cflags libcrypto)
++LDFLAGS+=	$(shell pkg-config --libs-only-L libcrypto)
++LIBS+=		$(shell pkg-config --libs-only-l libcrypto)
+ 
+ TARGET=		dummy-engine
+ 
+-- 
+2.35.1
+

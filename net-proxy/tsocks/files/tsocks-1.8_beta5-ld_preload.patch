@@ -1,0 +1,35 @@
+--- tsocks-1.8.orig/tsocks	2002-03-16 11:27:18.000000000 +0100
++++ tsocks-1.8/tsocks	2009-06-20 13:56:38.000000000 +0200
+@@ -46,14 +46,14 @@
+ 	on)
+ 		if [ -z "$LD_PRELOAD" ]
+ 			then
+-				export LD_PRELOAD="/usr/lib/libtsocks.so"
++				export LD_PRELOAD="libtsocks.so"
+ 			else
+-				echo $LD_PRELOAD | grep -q "/usr/lib/libtsocks\.so" || \
+-				export LD_PRELOAD="/usr/lib/libtsocks.so $LD_PRELOAD"
++				echo $LD_PRELOAD | grep -q "libtsocks\.so" || \
++				export LD_PRELOAD="libtsocks.so $LD_PRELOAD"
+ 		fi
+ 	;;
+ 	off)
+-		export LD_PRELOAD=`echo -n $LD_PRELOAD | sed 's/\/usr\/lib\/libtsocks.so \?//'`
++		export LD_PRELOAD=`echo -n $LD_PRELOAD | sed 's/libtsocks.so \?//'`
+ 		if [ -z "$LD_PRELOAD" ]
+ 			then
+ 				unset LD_PRELOAD
+@@ -68,10 +68,10 @@
+ 	*)
+ 		if [ -z "$LD_PRELOAD" ]
+ 		then
+-			export LD_PRELOAD="/usr/lib/libtsocks.so"
++			export LD_PRELOAD="libtsocks.so"
+ 		else
+-			echo $LD_PRELOAD | grep -q "/usr/lib/libtsocks\.so" || \
+-			export LD_PRELOAD="/usr/lib/libtsocks.so $LD_PRELOAD"
++			echo $LD_PRELOAD | grep -q "libtsocks\.so" || \
++			export LD_PRELOAD="libtsocks.so $LD_PRELOAD"
+ 		fi
+ 
+ 		if [ $# = 0 ]

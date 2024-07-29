@@ -1,0 +1,22 @@
+build against the system ltdl rather than the local copy
+
+--- ski-1.3.2/src/Makefile.am
++++ ski-1.3.2/src/Makefile.am
+@@ -181,8 +181,7 @@
+ 	eparse.h \
+ 	libdas.h \
+ 	netdev.h \
+-	osload.h \
+-	ltdl.h
++	osload.h 
+ 
+ EXTRA_linux_FILES = \
+ 	linux/dwarf-linux.c \
+@@ -279,7 +278,6 @@
+ 	eparse.y \
+ 	escan.l \
+ 	load.c \
+-	ltdl.c \
+ 	platform.c \
+ 	libdas.c \
+ 	libsrs.c

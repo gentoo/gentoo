@@ -1,0 +1,51 @@
+https://github.com/onetrueawk/awk/pull/196
+
+From 75c017ca09a70e14a862f7285cf91bb87ec1f443 Mon Sep 17 00:00:00 2001
+From: "Todd C. Miller" <Todd.Miller@sudo.ws>
+Date: Mon, 18 Sep 2023 17:34:34 -0600
+Subject: [PATCH 1/2] Fix a bad cast to char * that causes incorrect results on
+ big endian.
+
+Now that awk stores chars as int we need to cast the Node * to int *.
+--- a/b.c
++++ b/b.c
+@@ -527,7 +527,7 @@ int first(Node *p)	/* collects initially active leaves of p into setvec */
+ 			setvec[lp] = 1;
+ 			setcnt++;
+ 		}
+-		if (type(p) == CCL && (*(char *) right(p)) == '\0')
++		if (type(p) == CCL && (*(int *) right(p)) == 0)
+ 			return(0);		/* empty CCL */
+ 		return(1);
+ 	case PLUS:
+
+From 0048c96e94c732c6fb2ebe50eeb3450c1672fe0f Mon Sep 17 00:00:00 2001
+From: "Todd C. Miller" <Todd.Miller@sudo.ws>
+Date: Thu, 21 Sep 2023 11:20:16 -0600
+Subject: [PATCH 2/2] Use cclenter("") to construct an empty CCL, not
+ tostring("").
+
+We need to store a UTF-32 string, not a UTF-8 string, for consistency
+with the other CCL code.  Fixes an out-of-bounds read of an empty
+CCL.
+--- a/b.c
++++ b/b.c
+@@ -945,7 +945,7 @@ Node *primary(void)
+ 		rtok = relex();
+ 		if (rtok == ')') {	/* special pleading for () */
+ 			rtok = relex();
+-			return unary(op2(CCL, NIL, (Node *) tostring("")));
++			return unary(op2(CCL, NIL, (Node *) cclenter("")));
+ 		}
+ 		np = regexp();
+ 		if (rtok == ')') {
+@@ -968,7 +968,7 @@ Node *concat(Node *np)
+ 		return (concat(op2(CAT, np, primary())));
+ 	case EMPTYRE:
+ 		rtok = relex();
+-		return (concat(op2(CAT, op2(CCL, NIL, (Node *) tostring("")),
++		return (concat(op2(CAT, op2(CCL, NIL, (Node *) cclenter("")),
+ 				primary())));
+ 	}
+ 	return (np);
+

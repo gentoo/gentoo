@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="nss">Enable <pkg>dev-libs/nss</pkg> crypto backend</flag>
+		<flag name="gnutls">Enable <pkg>net-libs/gnutls</pkg> crypto backend</flag>
+		<flag name="nettle">Use <pkg>dev-libs/nettle</pkg> network functions with GnuTLS.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">s3fs-fuse/s3fs-fuse</remote-id>
+	</upstream>
+</pkgmetadata>

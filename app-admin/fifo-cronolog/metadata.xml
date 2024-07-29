@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		fifo-cronolog is based on <pkg>app-admin/cronolog</pkg>, but uses a FIFO for input
+		instead of stdin. This package is used for the Gentoo infrastructure.
+	</longdescription>
+	<maintainer type="person">
+		<email>robbat2@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="gentoo">proj/fifo-cronolog</remote-id>
+	</upstream>
+</pkgmetadata>

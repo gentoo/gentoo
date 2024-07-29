@@ -1,0 +1,32 @@
+Respect {CXX,LD}FLAGS
+
+http://bugs.gentoo.org/332009
+
+--- a/align/Makefile
++++ b/align/Makefile
+@@ -6,7 +6,6 @@
+ # 1) Choose C++ compiler.
+ ################################################################################
+ 
+-CXX = g++
+ 
+ ################################################################################
+ # 2) Set C++ flags.
+@@ -26,7 +25,7 @@
+ 
+ # release mode
+ #CXXFLAGS = -O3 -W -Wall -pedantic -DNDEBUG $(OTHERFLAGS) -mmmx -msse -msse2 -mfpmath=sse -march=pentium4 -mcpu=pentium4 -funroll-loops -fomit-frame-pointer 
+-CXXFLAGS = -O3 -W -Wall -pedantic -DNDEBUG $(OTHERFLAGS) -funroll-loops
++CXXFLAGS += -W -Wall -pedantic -DNDEBUG $(OTHERFLAGS)
+ 
+ ################################################################################
+ # 3) Dependencies
+@@ -38,7 +37,7 @@
+ all : $(TARGETS)
+ 
+ amap : MultiSequenceDag.h MultiSequence.h ProbabilisticModel.h ScoreType.h Sequence.h FileBuffer.h SparseMatrix.h EvolutionaryTree.h Defaults.h SafeVector.h Amap.cc
+-	$(CXX) $(CXXFLAGS) -lm -o amap Amap.cc 
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) -o amap Amap.cc -lm
+ 
+ .PHONY : clean
+ clean:

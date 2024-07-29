@@ -1,0 +1,15 @@
+--- a/xmalloc.c
++++ b/xmalloc.c
+@@ -68,12 +68,6 @@
+    The caller may set it to some other value.  */
+ int xmalloc_exit_failure = EXIT_FAILURE;
+ 
+-#if __STDC__ && (HAVE_VPRINTF || HAVE_DOPRNT)
+-void error (int, int, const char *, ...);
+-#else
+-void error ();
+-#endif
+-
+ static VOID *
+ fixup_null_alloc (n)
+      size_t n;

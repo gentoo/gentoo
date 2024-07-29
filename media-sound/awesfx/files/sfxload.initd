@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need alsasound
+}
+
+start() {
+	ebegin "Loading sound font bank"
+	${sfxload} -q "${sfxbank}"
+	eend $? "Error at loading sound font bank ${sfxbank}"
+}
+
+stop() {
+	ebegin "Unloading sound font bank"
+	${sfxload} -i -q
+	eend $? "Error at unloading sound font bank"
+}

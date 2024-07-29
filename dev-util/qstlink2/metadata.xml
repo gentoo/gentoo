@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>no111u3@gmail.com</email>
+		<name>Boris Vingradov</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		ST-Link V2 (Debugger/Programmer) client developed for Linux, OSX and Windows, using Qt and LibUsb/WinUsb.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">mobyfab/qstlink2</remote-id>
+	</upstream>
+</pkgmetadata>

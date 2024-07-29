@@ -1,0 +1,40 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+TJ_USER=trojan
+TJ_GROUP=trojan
+
+TJ_NAME=${SVCNAME##*.}
+if [ -n "${TJ_NAME}" -a "${SVCNAME}" != "trojan" ]; then
+	TJ_PIDFILE="/run/trojan.${TJ_NAME}.pid"
+	TJ_CONFIG="/etc/trojan/${TJ_NAME}.json"
+	TJ_LOG="/var/log/trojan.${TJ_NAME}.log"
+else
+	TJ_PIDFILE="/run/trojan.pid"
+	TJ_CONFIG="/etc/trojan/config.json"
+	TJ_LOG="/var/log/trojan.log"
+fi
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting Trojan, Log File: ${TJ_LOG}"
+	checkpath -f -m 0600 -o ${TJ_USER}:${TJ_GROUP} "${TJ_LOG}"
+	start-stop-daemon --start --background \
+		--user ${TJ_USER} --group ${TJ_GROUP} \
+		--stdout "${TJ_LOG}" --stderr "${TJ_LOG}" \
+		--make-pidfile --pidfile "${TJ_PIDFILE}" \
+		--exec /usr/bin/trojan  -- "${TJ_CONFIG}"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Trojan"
+	start-stop-daemon --stop \
+		--user ${TJ_USER} --group ${TJ_GROUP} \
+		--pidfile "${TJ_PIDFILE}"
+	eend $?
+}

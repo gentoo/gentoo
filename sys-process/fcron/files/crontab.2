@@ -1,0 +1,26 @@
+# /etc/crontab:
+# This is fcron's special systab and *not* root's crontab!
+
+# Global variables
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=root
+HOME=/
+
+# "run-crons" from sys-process/cronbase package doesn't allow selective
+# runs like "run-parts" from sys-apps/debianutils. So every time
+# "run-crons" gets executed it loops through
+# /etc/cron.{hourly,daily,weekly,monthly} and executes one after another if
+# lastrun lock file isn't in place.
+# Without fcron's "serial(true)" option it would be possible that a lastrun
+# lock file which should have been removed still exists when "run-crons"
+# starts so that a promptly execution of all cronjobs isn't always
+# guaranteed.
+
+!serial(true)
+00   *    *    *    *     /bin/rm -f /var/spool/cron/lastrun/cron.hourly
+00   00   *    *    *     /bin/rm -f /var/spool/cron/lastrun/cron.daily
+00   00   *    *    6     /bin/rm -f /var/spool/cron/lastrun/cron.weekly
+00   00   1    *    *     /bin/rm -f /var/spool/cron/lastrun/cron.monthly
+*/10 *    *    *    *     /usr/bin/test -x /usr/sbin/run-crons && /usr/sbin/run-crons
+!serial(false)

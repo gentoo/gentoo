@@ -1,0 +1,40 @@
+https://github.com/mcabber/loudmouth/pull/46
+
+From f32119e1408c742da9a1862805d76d222937756d Mon Sep 17 00:00:00 2001
+From: psykose <alice@ayaya.dev>
+Date: Thu, 21 Apr 2022 18:23:32 +0000
+Subject: [PATCH] fix macro define for freeaddrinfo with asyncns
+
+previously, this define was only made in lm-asyncns-resolver.c, which
+does not propagate it to lm-resolver.c, where freeaddrinfo() is used.
+this means that when asyncns support is used, the standard libc
+freeaddrinfo() is called on an addrinfo acquired from
+asyncns_getaddrinfo, which is undefined behaviour, and leads to a
+segfault on musl libc.
+--- a/loudmouth/lm-asyncns-resolver.c
++++ b/loudmouth/lm-asyncns-resolver.c
+@@ -21,7 +21,6 @@
+ #include <string.h>
+ #ifdef HAVE_ASYNCNS
+ #include <asyncns.h>
+-#define freeaddrinfo(x) asyncns_freeaddrinfo(x)
+ 
+ /* Needed on Mac OS X */
+ #if HAVE_ARPA_NAMESER_COMPAT_H
+--- a/loudmouth/lm-asyncns-resolver.h
++++ b/loudmouth/lm-asyncns-resolver.h
+@@ -19,8 +19,14 @@
+ #ifndef __LM_ASYNCNS_RESOLVER_H__
+ #define __LM_ASYNCNS_RESOLVER_H__
+ 
++#include <config.h>
++
+ #include <glib-object.h>
+ 
++#ifdef HAVE_ASYNCNS
++#define freeaddrinfo(x) asyncns_freeaddrinfo(x)
++#endif
++
+ #include "lm-resolver.h"
+ 
+ G_BEGIN_DECLS

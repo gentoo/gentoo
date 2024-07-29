@@ -1,0 +1,80 @@
+From 93c5a7666ea83f5b0ba56ca0a8fdee492f65ca87 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Mon, 19 Mar 2018 04:58:48 +1300
+Subject: Fix test failures without '.' in @INC
+
+Also explode more readily when runtime dependency resolution fails.
+
+Bug: https://bugs.gentoo.org/623144
+---
+ t/01-connect.t | 2 +-
+ t/02-basic.t   | 2 +-
+ t/03-err.t     | 2 +-
+ t/30-get.t     | 2 +-
+ t/util.pl      | 1 +
+ 5 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/t/01-connect.t b/t/01-connect.t
+index 39ffb00..d489d4d 100644
+--- a/t/01-connect.t
++++ b/t/01-connect.t
+@@ -4,7 +4,7 @@ use Test::Exception;
+ 
+ use UltraDNS;
+ 
+-do 't/util.pl';
++require './t/util.pl';
+ 
+ my ($hp,$s,$u,$p) = test_connect_args();
+ 
+diff --git a/t/02-basic.t b/t/02-basic.t
+index d4b6df5..9a98639 100644
+--- a/t/02-basic.t
++++ b/t/02-basic.t
+@@ -4,7 +4,7 @@ use Test::Exception;
+ 
+ use UltraDNS;
+ 
+-do 't/util.pl';
++require './t/util.pl';
+ 
+ my $udns = test_connect();
+ my $rr;
+diff --git a/t/03-err.t b/t/03-err.t
+index 797c452..0f4c6e1 100644
+--- a/t/03-err.t
++++ b/t/03-err.t
+@@ -4,7 +4,7 @@ use Test::Exception;
+ 
+ use UltraDNS;
+ 
+-do 't/util.pl';
++require './t/util.pl';
+ 
+ my ($hp,$s,$u,$p) = test_connect_args();
+ 
+diff --git a/t/30-get.t b/t/30-get.t
+index e3c2997..ce193e9 100644
+--- a/t/30-get.t
++++ b/t/30-get.t
+@@ -4,7 +4,7 @@ use Test::Exception;
+ 
+ use UltraDNS;
+ 
+-do 't/util.pl';
++require './t/util.pl';
+ 
+ my $udns = test_connect();
+ my $rr;
+diff --git a/t/util.pl b/t/util.pl
+index 269452b..e36b752 100644
+--- a/t/util.pl
++++ b/t/util.pl
+@@ -72,3 +72,4 @@ END {
+     eval { $_->(); 1 } or warn $@ for @at_end;
+ }
+ 
++1;
+-- 
+2.16.2
+

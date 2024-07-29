@@ -1,0 +1,55 @@
+Backported upstream changes to address CVE-2021-46168.
+
+From 62cf91c944ea457c218528e9021443a0cbe05758 Mon Sep 17 00:00:00 2001
+From: nimble-code <gerard.holzmann@gmail.com>
+Date: Sun, 2 Jan 2022 11:26:40 -0800
+Subject: [PATCH] fix
+
+--- a/sched.c
++++ b/sched.c
+@@ -18,7 +18,7 @@ extern int	lineno, nr_errs, dumptab, xspin, jumpsteps, columns;
+ extern int	u_sync, Elcnt, interactive, TstOnly, cutoff;
+ extern short	has_enabled, has_priority, has_code, replay;
+ extern int	limited_vis, product, nclaims, old_priority_rules;
+-extern int	old_scope_rules, scope_seq[128], scope_level, has_stdin;
++extern int	old_scope_rules, scope_seq[256], scope_level, has_stdin;
+ 
+ extern int	pc_highest(Lextok *n);
+ extern void	putpostlude(void);
+--- a/spinlex.c
++++ b/spinlex.c
+@@ -51,7 +51,7 @@ extern int	implied_semis, ltl_mode, in_seq, par_cnt;
+ 
+ short	has_stack = 0;
+ int	lineno  = 1;
+-int	scope_seq[128], scope_level = 0;
++int	scope_seq[256], scope_level = 0;
+ char	CurScope[MAXSCOPESZ];
+ char	yytext[2048];
+ FILE	*yyin, *yyout;
+From 9ecb1af6d174532f3a77acae3a1d424fe7345a3e Mon Sep 17 00:00:00 2001
+From: nimble-code <gerard.holzmann@gmail.com>
+Date: Sat, 15 Jan 2022 10:39:38 -0800
+Subject: [PATCH] nesting limit
+
+--- a/spinlex.c
++++ b/spinlex.c
+@@ -1704,8 +1704,16 @@ lex(void)
+ 	case '|': c = follow('|', OR, '|'); break;
+ 	case ';': c = SEMI; break;
+ 	case '.': c = follow('.', DOTDOT, '.'); break;
+-	case '{': scope_seq[scope_level++]++; set_cur_scope(); break;
+-	case '}': scope_level--; set_cur_scope(); break;
++	case '{':
++		assert(scope_level < sizeof(scope_seq)-1);
++		scope_seq[scope_level++]++;
++		set_cur_scope();
++		break;
++	case '}':
++		assert(scope_level > 0);
++		scope_level--;
++		set_cur_scope();
++		break;
+ 	default : break;
+ 	}
+ 	ValToken(0, c)

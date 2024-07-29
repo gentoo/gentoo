@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>0xd34df00d@gmail.com</email>
+		<name>Georg Rudoy</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/qxmpp-project/qxmpp/issues</bugs-to>
+		<changelog>https://raw.githubusercontent.com/qxmpp-project/qxmpp/master/CHANGELOG.md</changelog>
+		<remote-id type="github">qxmpp-project/qxmpp</remote-id>
+	</upstream>
+	<use>
+		<flag name="omemo">Enable OMEMO encryption</flag>
+	</use>
+</pkgmetadata>

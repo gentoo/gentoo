@@ -1,0 +1,83 @@
+From fa125b4223bc8995ed60befbed757ec23eed72e7 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 22 Oct 2020 23:32:33 +0200
+Subject: [PATCH] Use >=dev-libs/libzip-1.7.2 cmake config
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt             |  2 +-
+ cmake/FindLibZip.cmake     | 36 ------------------------------------
+ src/libepub/CMakeLists.txt |  2 +-
+ 3 files changed, 2 insertions(+), 38 deletions(-)
+ delete mode 100644 cmake/FindLibZip.cmake
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fc141c2..691cf2b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -11,7 +11,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+ set(LIB_SUFFIX "" CACHE STRING "Define suffix of library directory name (32/64)")
+ 
+ find_package(LibXml2 REQUIRED)
+-find_package(LibZip REQUIRED)
++find_package(LibZip 1.7.2 CONFIG REQUIRED)
+ 
+ if(CMAKE_C_COMPILER_ID MATCHES GNU)
+   set(CMAKE_C_FLAGS "-Wall -W -Wno-long-long -Wundef -Wcast-align -Werror-implicit-function-declaration -Wchar-subscripts -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -Wshadow -fno-common ${CMAKE_C_FLAGS}")
+diff --git a/cmake/FindLibZip.cmake b/cmake/FindLibZip.cmake
+deleted file mode 100644
+index c873092..0000000
+--- a/cmake/FindLibZip.cmake
++++ /dev/null
+@@ -1,36 +0,0 @@
+-# - Try to find libzip
+-# Once done this will define
+-#
+-#  LIBZIP_FOUND - system has the zip library
+-#  LIBZIP_INCLUDE_DIR - the zip include directory
+-#  LIBZIP_LIBRARY - Link this to use the zip library
+-#
+-# Copyright (c) 2006, Pino Toscano, <toscano.pino@tiscali.it>
+-#
+-# Redistribution and use is allowed according to the terms of the BSD license.
+-# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+-
+-if (LIBZIP_LIBRARY AND LIBZIP_INCLUDE_DIR)
+-  # in cache already
+-  set(LIBZIP_FOUND TRUE)
+-else (LIBZIP_LIBRARY AND LIBZIP_INCLUDE_DIR)
+-
+-  find_path(LIBZIP_INCLUDE_DIR zip.h
+-    ${GNUWIN32_DIR}/include
+-  )
+-
+-  find_library(LIBZIP_LIBRARY NAMES zip
+-    PATHS
+-    ${GNUWIN32_DIR}/lib
+-  )
+-
+-  include(FindPackageHandleStandardArgs)
+-  FIND_PACKAGE_HANDLE_STANDARD_ARGS(LibZip DEFAULT_MSG LIBZIP_LIBRARY LIBZIP_INCLUDE_DIR)
+-
+-    # ensure that they are cached
+-    set(LIBZIP_INCLUDE_DIR ${LIBZIP_INCLUDE_DIR} CACHE INTERNAL "The libzip include path")
+-    set(LIBZIP_LIBRARY ${LIBZIP_LIBRARY} CACHE INTERNAL "The libraries needed to use libzip")
+-
+-endif (LIBZIP_LIBRARY AND LIBZIP_INCLUDE_DIR)
+-
+-mark_as_advanced(LIBZIP_INCLUDE_DIR LIBZIP_LIBRARY)
+diff --git a/src/libepub/CMakeLists.txt b/src/libepub/CMakeLists.txt
+index a3208b7..460270c 100644
+--- a/src/libepub/CMakeLists.txt
++++ b/src/libepub/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ include_directories (${EBOOK-TOOLS_SOURCE_DIR}/src/libepub ${LIBXML2_INCLUDE_DIR} ${LIBZIP_INCLUDE_DIR})
+ add_library (epub SHARED epub.c ocf.c opf.c linklist.c list.c)
+-target_link_libraries (epub ${LIBZIP_LIBRARY} ${LIBXML2_LIBRARIES})
++target_link_libraries (epub libzip::zip ${LIBXML2_LIBRARIES})
+ 
+ set_target_properties (epub PROPERTIES VERSION 0.2.1 SOVERSION 0)
+ 
+-- 
+2.29.0
+

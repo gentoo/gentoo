@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command=/usr/bin/groonga
+command_args="-d --pid-path ${GROONGA_PID:-/run/groonga/groonga.pid} --config-path=${CONFIG_FILE:-/etc/groonga/groonga.conf} ${DATABASE}"
+pidfile="${GROONGA_PID:-/run/groonga/groonga.pid}"
+start_stop_daemon_args="--quiet --user ${GROONGA_USER:-groonga}:${GROONGA_GROUP:-groonga}"
+
+depend() {
+	use net
+}
+
+start_pre() {
+	checkpath -d /run/groonga -o ${GROONGA_USER:-groonga}:${GROONGA_GROUP:-groonga}
+	if  [ ! -e "${DATABASE}" ] ; then
+		einfo "Creating database ${DATABASE}"
+		su -s /bin/sh -c "/usr/bin/groonga -n ${DATABASE} quit" ${GROONGA_USER:-groonga}
+	fi
+}

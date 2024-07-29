@@ -1,0 +1,39 @@
+From e4d33a4e488fb7abfa41b5ff947d048d22d000f4 Mon Sep 17 00:00:00 2001
+From: Jaco Kroon <jaco@uls.co.za>
+Date: Mon, 7 Nov 2022 17:30:00 +0200
+Subject: [PATCH] Build system: Avoid executable stack.
+
+Found in res_geolocation, but I believe others may have similar issues,
+thus not linking to a specific issue.
+
+Essentially gcc doesn't mark the stack for being non-executable unless
+it's compiling the source, this informs ld via gcc to mark the object as
+not requiring an executable stack (which a binary blob obviously
+doesn't).
+
+Change-Id: I71bcc2fd1fe0c82a28b3257405d6f2b566fd9bfc
+Signed-off-by: Jaco Kroon <jaco@uls.co.za>
+---
+ Makefile.rules | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.rules b/Makefile.rules
+index e6b6589cc7..7b508e6ab2 100644
+--- a/Makefile.rules
++++ b/Makefile.rules
+@@ -213,10 +213,10 @@ endif
+ # extern const size_t _binary_abc_def_xml_size;
+ %.o: %.xml
+ 	$(ECHO_PREFIX) echo "   [LD] $^ -> $@"
+-	$(CMD_PREFIX) $(CC) -g -nostartfiles  -nodefaultlibs -nostdlib -r -Wl,-b,binary -o $@ $^
++	$(CMD_PREFIX) $(CC) -g -Wl,-znoexecstack -nostartfiles  -nodefaultlibs -nostdlib -r -Wl,-b,binary -o $@ $^
+ 
+ %.o: %.xslt
+ 	$(ECHO_PREFIX) echo "   [LD] $^ -> $@"
+-	$(CMD_PREFIX) $(CC) -g -nostartfiles  -nodefaultlibs -nostdlib -r -Wl,-b,binary -o $@ $^
++	$(CMD_PREFIX) $(CC) -g -Wl,-znoexecstack -nostartfiles  -nodefaultlibs -nostdlib -r -Wl,-b,binary -o $@ $^
+ 
+ dist-clean:: clean
+-- 
+2.37.4
+

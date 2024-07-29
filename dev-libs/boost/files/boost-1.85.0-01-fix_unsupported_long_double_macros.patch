@@ -1,0 +1,111 @@
+https://bugs.gentoo.org/932579
+https://github.com/boostorg/charconv/pull/183
+--- a/boost/charconv/detail/bit_layouts.hpp
++++ b/boost/charconv/detail/bit_layouts.hpp
+@@ -107,6 +107,7 @@ struct IEEEl2bits
+ 
+ #else // Unsupported long double representation
+ #  define BOOST_MATH_UNSUPPORTED_LONG_DOUBLE
++#  define BOOST_CHARCONV_LDBL_BITS -1
+ #endif
+ 
+ struct IEEEbinary128
+--- a/boost/charconv/from_chars.hpp
++++ b/boost/charconv/from_chars.hpp
+@@ -139,7 +139,10 @@ BOOST_CHARCONV_GCC5_CONSTEXPR from_chars_result from_chars(boost::core::string_v
+ 
+ BOOST_CHARCONV_DECL from_chars_result from_chars_erange(const char* first, const char* last, float& value, chars_format fmt = chars_format::general) noexcept;
+ BOOST_CHARCONV_DECL from_chars_result from_chars_erange(const char* first, const char* last, double& value, chars_format fmt = chars_format::general) noexcept;
++
++#ifndef BOOST_MATH_UNSUPPORTED_LONG_DOUBLE
+ BOOST_CHARCONV_DECL from_chars_result from_chars_erange(const char* first, const char* last, long double& value, chars_format fmt = chars_format::general) noexcept;
++#endif
+ 
+ #ifdef BOOST_CHARCONV_HAS_FLOAT128
+ BOOST_CHARCONV_DECL from_chars_result from_chars_erange(const char* first, const char* last, __float128& value, chars_format fmt = chars_format::general) noexcept;
+@@ -164,7 +167,10 @@ BOOST_CHARCONV_DECL from_chars_result from_chars_erange(const char* first, const
+ 
+ BOOST_CHARCONV_DECL from_chars_result from_chars_erange(boost::core::string_view sv, float& value, chars_format fmt = chars_format::general) noexcept;
+ BOOST_CHARCONV_DECL from_chars_result from_chars_erange(boost::core::string_view sv, double& value, chars_format fmt = chars_format::general) noexcept;
++
++#ifndef BOOST_MATH_UNSUPPORTED_LONG_DOUBLE
+ BOOST_CHARCONV_DECL from_chars_result from_chars_erange(boost::core::string_view sv, long double& value, chars_format fmt = chars_format::general) noexcept;
++#endif
+ 
+ #ifdef BOOST_CHARCONV_HAS_FLOAT128
+ BOOST_CHARCONV_DECL from_chars_result from_chars_erange(boost::core::string_view sv, __float128& value, chars_format fmt = chars_format::general) noexcept;
+@@ -193,7 +199,10 @@ BOOST_CHARCONV_DECL from_chars_result from_chars_erange(boost::core::string_view
+ 
+ BOOST_CHARCONV_DECL from_chars_result from_chars(const char* first, const char* last, float& value, chars_format fmt = chars_format::general) noexcept;
+ BOOST_CHARCONV_DECL from_chars_result from_chars(const char* first, const char* last, double& value, chars_format fmt = chars_format::general) noexcept;
++
++#ifndef BOOST_MATH_UNSUPPORTED_LONG_DOUBLE
+ BOOST_CHARCONV_DECL from_chars_result from_chars(const char* first, const char* last, long double& value, chars_format fmt = chars_format::general) noexcept;
++#endif
+ 
+ #ifdef BOOST_CHARCONV_HAS_FLOAT128
+ BOOST_CHARCONV_DECL from_chars_result from_chars(const char* first, const char* last, __float128& value, chars_format fmt = chars_format::general) noexcept;
+@@ -216,7 +225,10 @@ BOOST_CHARCONV_DECL from_chars_result from_chars(const char* first, const char*
+ 
+ BOOST_CHARCONV_DECL from_chars_result from_chars(boost::core::string_view sv, float& value, chars_format fmt = chars_format::general) noexcept;
+ BOOST_CHARCONV_DECL from_chars_result from_chars(boost::core::string_view sv, double& value, chars_format fmt = chars_format::general) noexcept;
++
++#ifndef BOOST_MATH_UNSUPPORTED_LONG_DOUBLE
+ BOOST_CHARCONV_DECL from_chars_result from_chars(boost::core::string_view sv, long double& value, chars_format fmt = chars_format::general) noexcept;
++#endif
+ 
+ #ifdef BOOST_CHARCONV_HAS_FLOAT128
+ BOOST_CHARCONV_DECL from_chars_result from_chars(boost::core::string_view sv, __float128& value, chars_format fmt = chars_format::general) noexcept;
+--- a/libs/charconv/src/from_chars.cpp
++++ b/libs/charconv/src/from_chars.cpp
+@@ -205,7 +205,7 @@ boost::charconv::from_chars_result boost::charconv::from_chars_erange(const char
+     return r;
+ }
+ 
+-#else
++#elif !defined(BOOST_MATH_UNSUPPORTED_LONG_DOUBLE)
+ 
+ boost::charconv::from_chars_result boost::charconv::from_chars_erange(const char* first, const char* last, long double& value, boost::charconv::chars_format fmt) noexcept
+ {
+@@ -299,10 +299,12 @@ boost::charconv::from_chars_result boost::charconv::from_chars_erange(boost::cor
+     return boost::charconv::from_chars_erange(sv.data(), sv.data() + sv.size(), value, fmt);
+ }
+ 
++#ifndef BOOST_MATH_UNSUPPORTED_LONG_DOUBLE
+ boost::charconv::from_chars_result boost::charconv::from_chars_erange(boost::core::string_view sv, long double& value, boost::charconv::chars_format fmt) noexcept
+ {
+     return boost::charconv::from_chars_erange(sv.data(), sv.data() + sv.size(), value, fmt);
+ }
++#endif
+ 
+ #ifdef BOOST_CHARCONV_HAS_FLOAT128
+ boost::charconv::from_chars_result boost::charconv::from_chars_erange(boost::core::string_view sv, __float128& value, boost::charconv::chars_format fmt) noexcept
+@@ -372,10 +374,12 @@ boost::charconv::from_chars_result boost::charconv::from_chars(const char* first
+     return from_chars_strict_impl(first, last, value, fmt);
+ }
+ 
++#ifndef BOOST_MATH_UNSUPPORTED_LONG_DOUBLE
+ boost::charconv::from_chars_result boost::charconv::from_chars(const char* first, const char* last, long double& value, boost::charconv::chars_format fmt) noexcept
+ {
+     return from_chars_strict_impl(first, last, value, fmt);
+ }
++#endif
+ 
+ #ifdef BOOST_CHARCONV_HAS_FLOAT128
+ boost::charconv::from_chars_result boost::charconv::from_chars(const char* first, const char* last, __float128& value, boost::charconv::chars_format fmt) noexcept
+@@ -429,10 +433,12 @@ boost::charconv::from_chars_result boost::charconv::from_chars(boost::core::stri
+     return from_chars_strict_impl(sv.data(), sv.data() + sv.size(), value, fmt);
+ }
+ 
++#ifndef BOOST_MATH_UNSUPPORTED_LONG_DOUBLE
+ boost::charconv::from_chars_result boost::charconv::from_chars(boost::core::string_view sv, long double& value, boost::charconv::chars_format fmt) noexcept
+ {
+     return from_chars_strict_impl(sv.data(), sv.data() + sv.size(), value, fmt);
+ }
++#endif
+ 
+ #ifdef BOOST_CHARCONV_HAS_FLOAT128
+ boost::charconv::from_chars_result boost::charconv::from_chars(boost::core::string_view sv, __float128& value, boost::charconv::chars_format fmt) noexcept
+-- 
+2.45.2
+

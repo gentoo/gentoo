@@ -1,0 +1,18 @@
+Description: When including dvdnvav.h define/undefine the "this" keyword,
+ used in dvdnav.h
+Author: Tobias Grimm <etobi@debian.org>
+Bug-Debian: http://bugs.debian.org/642673
+
+--- vdr-plugin-dvd-0.3.6~b03+cvs20090426.0013.orig/player-dvd.h
++++ vdr-plugin-dvd-0.3.6~b03+cvs20090426.0013/player-dvd.h
+@@ -11,8 +11,10 @@
+ #ifndef __PLAYER_DVD_H
+ #define __PLAYER_DVD_H
+ 
++#define this _this
+ #include <dvdnav/dvdnav.h>
+ #include <dvdnav/dvdnav_events.h>
++#undef this
+ 
+ #include <vdr/device.h>
+ #include <vdr/player.h>

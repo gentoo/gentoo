@@ -1,0 +1,13 @@
+Index: omake-0.10.2/OMakefile
+===================================================================
+--- omake-0.10.2.orig/OMakefile
++++ omake-0.10.2/OMakefile
+@@ -49,7 +49,7 @@ else
+     #
+     # Extra options for the C compiler
+     #
+-    CFLAGS += -g -O2 -Wall -Wno-unused
++    CFLAGS += -Wall -Wno-unused
+ 
+     #
+     # We never need threads on Unix

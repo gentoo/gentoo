@@ -1,0 +1,79 @@
+https://github.com/ccache/ccache/pull/1464
+
+From d159306db8398da233df6481ac3fd83460ef0f0b Mon Sep 17 00:00:00 2001
+From: Carlo Cabrera <30379873+carlocab@users.noreply.github.com>
+Date: Thu, 30 May 2024 19:26:41 +0800
+Subject: [PATCH 1/4] Fix detection of system blake3
+
+The existing code mistakenly always rejects the system version as too old because it doesn't parse the version from the header correctly.
+
+This change fixes that.
+--- a/cmake/FindBlake3.cmake
++++ b/cmake/FindBlake3.cmake
+@@ -8,7 +8,7 @@ else()
+   find_library(BLAKE3_LIBRARY blake3)
+   if(BLAKE3_INCLUDE_DIR)
+     file(READ "${BLAKE3_INCLUDE_DIR}/blake3.h" _blake3_h)
+-    string(REGEX MATCH "#define _blake3_version_string \"([0-9]+).([0-9]+).*([0-9]+)\"" _ "${_blake3_h}")
++    string(REGEX MATCH "#define BLAKE3_VERSION_STRING \"([0-9]+).([0-9]+).*([0-9]+)\"" _ "${_blake3_h}")
+     set(_blake3_version_string "${CMAKE_MATCH_1}.${CMAKE_MATCH_2}.${CMAKE_MATCH_3}")
+     if(NOT "${CMAKE_MATCH_0}" STREQUAL "" AND "${_blake3_version_string}" VERSION_GREATER_EQUAL "${Blake3_FIND_VERSION}")
+       if(BLAKE3_LIBRARY)
+
+From fa4046966e71011587364b0241255130b62858fb Mon Sep 17 00:00:00 2001
+From: Carlo Cabrera <30379873+carlocab@users.noreply.github.com>
+Date: Thu, 30 May 2024 19:43:11 +0800
+Subject: [PATCH 2/4] Fix blake3 include in Hash.hpp
+
+System installations of blake3 install the `blake3.h` header directly into the `include` directory and not into a `blake3` subdirectory.
+--- a/src/ccache/Hash.hpp
++++ b/src/ccache/Hash.hpp
+@@ -21,7 +21,7 @@
+ #include <ccache/util/PathString.hpp>
+ #include <ccache/util/conversion.hpp>
+ 
+-#include <blake3/blake3.h>
++#include <blake3.h>
+ #include <nonstd/span.hpp>
+ #include <tl/expected.hpp>
+ 
+
+From 36f8eeea1cb986440f51c1eee9db563493103462 Mon Sep 17 00:00:00 2001
+From: Carlo Cabrera <30379873+carlocab@users.noreply.github.com>
+Date: Thu, 30 May 2024 19:44:53 +0800
+Subject: [PATCH 3/4] Fix include path for bundled blake3
+
+We modified the include directive for `blake3.h` in `Hash.hpp`, so we need this in order for builds that use the bundled blake3 to keep working.
+--- a/src/third_party/blake3/CMakeLists.txt
++++ b/src/third_party/blake3/CMakeLists.txt
+@@ -7,7 +7,7 @@ add_library(
+   "${CMAKE_CURRENT_SOURCE_DIR}/blake3/blake3_portable.c"
+ )
+ 
+-target_include_directories(dep_blake3 INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}")
++target_include_directories(dep_blake3 INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/blake3")
+ target_link_libraries(dep_blake3 PRIVATE standard_settings)
+ 
+ if(MSVC)
+
+From 8cc68bc6f3ec8dadcb6a1244c76d865536f91be7 Mon Sep 17 00:00:00 2001
+From: Carlo Cabrera <30379873+carlocab@users.noreply.github.com>
+Date: Thu, 30 May 2024 19:52:59 +0800
+Subject: [PATCH 4/4] Fix `clang-format` failure
+
+--- a/src/ccache/Hash.hpp
++++ b/src/ccache/Hash.hpp
+@@ -21,10 +21,11 @@
+ #include <ccache/util/PathString.hpp>
+ #include <ccache/util/conversion.hpp>
+ 
+-#include <blake3.h>
+ #include <nonstd/span.hpp>
+ #include <tl/expected.hpp>
+ 
++#include <blake3.h>
++
+ #include <array>
+ #include <cstdint>
+ #include <cstdio>
+

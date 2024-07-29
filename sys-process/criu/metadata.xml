@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>virtualization@gentoo.org</email>
+		<name>Gentoo Virtualization Project</name>
+	</maintainer>
+	<use>
+		<flag name="filecaps">Install the criu binary with file capabilities to allow for rootless CRIU</flag>
+		<flag name="setproctitle">Use <pkg>dev-libs/libbsd</pkg> to make process titles of service workers to be more verbose</flag>
+		<flag name="bpf">Add support for BPF programs via <pkg>dev-libs/libbpf</pkg></flag>
+		<flag name="nftables">Add support for <pkg>net-firewall/nftables</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">checkpoint-restore/criu</remote-id>
+	</upstream>
+</pkgmetadata>

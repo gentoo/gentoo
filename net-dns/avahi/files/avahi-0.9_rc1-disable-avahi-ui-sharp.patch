@@ -1,0 +1,43 @@
+diff --git a/Makefile.am b/Makefile.am
+index 33c51f5..0e12120 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -46,7 +46,6 @@ EXTRA_DIST = \
+ 	avahi-qt4.pc.in \
+ 	avahi-qt5.pc.in \
+ 	avahi-sharp.pc.in \
+-	avahi-ui-sharp.pc.in \
+ 	avahi-compat-libdns_sd.pc.in \
+ 	avahi-compat-howl.pc.in \
+ 	avahi-ui.pc.in \
+@@ -77,7 +76,6 @@ SUBDIRS = \
+ 	avahi-compat-howl \
+ 	avahi-autoipd \
+ 	avahi-ui \
+-	avahi-ui-sharp \
+ 	avahi-libevent \
+ 	po
+ 
+@@ -188,8 +186,8 @@ CLEANFILES += avahi-compat-libdns_sd.pc
+ endif
+ 
+ if HAVE_MONO
+-pkgconfig_DATA += avahi-sharp.pc avahi-ui-sharp.pc
+-CLEANFILES += avahi-sharp.pc avahi-ui-sharp.pc
++pkgconfig_DATA += avahi-sharp.pc
++CLEANFILES += avahi-sharp.pc
+ endif
+ 
+ endif
+diff --git a/configure.ac b/configure.ac
+index 2f63730..fed400d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1183,7 +1183,6 @@ man/Makefile
+ tests/Makefile
+ service-type-database/Makefile
+ avahi-sharp/Makefile
+-avahi-ui-sharp/Makefile
+ avahi-compat-libdns_sd/Makefile
+ avahi-compat-howl/Makefile
+ avahi-compat-howl/samples/Makefile

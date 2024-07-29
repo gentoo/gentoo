@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sandbox@gentoo.org</email>
+		<name>Sandbox Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="nnp">Enable NO_NEW_PRIVS which blocks set*id programs from gaining privileges (e.g. sudo)</flag>
+	</use>
+	<upstream>
+		<remote-id type="gentoo">proj/sandbox</remote-id>
+		<remote-id type="github">gentoo/sandbox</remote-id>
+	</upstream>
+</pkgmetadata>

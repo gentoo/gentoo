@@ -1,0 +1,181 @@
+This is https://github.com/loongarch64/userspace-rcu/pull/2, yet to be
+upstreamed but already reviewed and accepted by the LoongArch porting
+community.
+
+(and https://github.com/urcu/userspace-rcu/pull/11)
+
+From 213197eea1a711da2f7cc0c04cdf33acb1b3c50e Mon Sep 17 00:00:00 2001
+From: Wang Jing <wangjing@loongson.cn>
+Date: Tue, 8 Jun 2021 19:44:49 +0800
+Subject: [PATCH] Add LoongArch support
+
+--- a/LICENSE
++++ b/LICENSE
+@@ -44,6 +44,7 @@ MIT/X11 (BSD like) license apply to:
+ compiler.h
+ arch/s390.h
+ uatomic/alpha.h
++uatomic/loongarch.h
+ uatomic/mips.h
+ uatomic/nios2.h
+ uatomic/s390.h
+--- a/README.md
++++ b/README.md
+@@ -51,6 +51,7 @@ Currently, the following architectures are supported:
+   - hppa/PA-RISC
+   - m68k
+   - RISC-V
++  - LoongArch
+ 
+ Tested on:
+ 
+--- a/include/Makefile.am
++++ b/include/Makefile.am
+@@ -7,6 +7,7 @@ nobase_include_HEADERS = \
+ 	urcu/arch.h \
+ 	urcu/arch/hppa.h \
+ 	urcu/arch/ia64.h \
++	urcu/arch/loongarch.h \
+ 	urcu/arch/m68k.h \
+ 	urcu/arch/mips.h \
+ 	urcu/arch/nios2.h \
+@@ -67,6 +68,7 @@ nobase_include_HEADERS = \
+ 	urcu/uatomic.h \
+ 	urcu/uatomic/hppa.h \
+ 	urcu/uatomic/ia64.h \
++	urcu/uatomic/loongarch.h \
+ 	urcu/uatomic/m68k.h \
+ 	urcu/uatomic/mips.h \
+ 	urcu/uatomic/nios2.h \
+--- a/include/urcu/arch.h
++++ b/include/urcu/arch.h
+@@ -49,6 +49,7 @@
+  * URCU_ARCH_HPPA : All HP PA-RISC variants
+  * URCU_ARCH_M68K : All Motorola 68000 variants
+  * URCU_ARCH_RISCV : All RISC-V variants
++ * URCU_ARCH_LOONGARCH : All LoongArch variants
+  */
+ 
+ #if (defined(__INTEL_OFFLOAD) || defined(__TARGET_ARCH_MIC) || defined(__MIC__))
+@@ -157,6 +158,11 @@
+ #define URCU_ARCH_RISCV 1
+ #include <urcu/arch/riscv.h>
+ 
++#elif defined(__loongarch__)
++
++#define URCU_ARCH_LOONGARCH 1
++#include <urcu/arch/loongarch.h>
++
+ #else
+ #error "Cannot build: unrecognized architecture, see <urcu/arch.h>."
+ #endif
+--- /dev/null
++++ b/include/urcu/arch/loongarch.h
+@@ -0,0 +1,49 @@
++#ifndef _URCU_ARCH_LOONGARCH_H
++#define _URCU_ARCH_LOONGARCH_H
++
++/*
++ * arch/loongarch.h: trivial definitions for the LoongArch architecture.
++ *
++ * Copyright (c) 2021 Wang Jing <wangjing@loongson.cn>
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
++ */
++
++#include <urcu/compiler.h>
++#include <urcu/config.h>
++#include <urcu/syscall-compat.h>
++
++#ifdef __cplusplus
++extern "C" {
++#endif
++
++#include <stdlib.h>
++#include <sys/time.h>
++
++/*
++ * On Linux, define the membarrier system call number if not yet available in
++ * the system headers.
++ */
++#if (defined(__linux__) && !defined(__NR_membarrier))
++#define __NR_membarrier		283
++#endif
++
++#ifdef __cplusplus
++}
++#endif
++
++#include <urcu/arch/generic.h>
++
++#endif /* _URCU_ARCH_LOONGARCH_H */
+--- a/include/urcu/uatomic.h
++++ b/include/urcu/uatomic.h
+@@ -51,6 +51,8 @@
+ #include <urcu/uatomic/m68k.h>
+ #elif defined(URCU_ARCH_RISCV)
+ #include <urcu/uatomic/riscv.h>
++#elif defined(URCU_ARCH_LOONGARCH)
++#include <urcu/uatomic/loongarch.h>
+ #else
+ #error "Cannot build: unrecognized architecture, see <urcu/arch.h>."
+ #endif
+--- /dev/null
++++ b/include/urcu/uatomic/loongarch.h
+@@ -0,0 +1,44 @@
++#ifndef _URCU_UATOMIC_ARCH_LOONGARCH_H
++#define _URCU_UATOMIC_ARCH_LOONGARCH_H
++
++/*
++ * Atomic exchange operations for the LoongArch architecture. Let GCC do it.
++ *
++ * Copyright (c) 2021 Wang Jing <wangjing@loongson.cn>
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to
++ * deal in the Software without restriction, including without limitation the
++ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
++ * sell copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
++ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
++ * IN THE SOFTWARE.
++ */
++
++#include <urcu/compiler.h>
++#include <urcu/system.h>
++
++#ifdef __cplusplus
++extern "C" {
++#endif
++
++#define UATOMIC_HAS_ATOMIC_BYTE
++#define UATOMIC_HAS_ATOMIC_SHORT
++
++#ifdef __cplusplus
++}
++#endif
++
++#include <urcu/uatomic/generic.h>
++
++#endif /* _URCU_UATOMIC_ARCH_LOONGARCH_H */

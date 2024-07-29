@@ -1,0 +1,15 @@
+--- a/configure
++++ b/configure
+@@ -790,10 +790,10 @@
+ 
+ # additional options
+ # Check whether --enable-xosd or --disable-xosd was given.
+-if test "${enable_xosd+set}" = set; then
+-  enableval="$enable_xosd"
++if test "x${enable_xosd}" = xno; then
+   enable_xosd=no
+ else
++  enableval="$enable_xosd"
+   enable_xosd=yes
+ fi
+ 

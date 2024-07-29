@@ -1,0 +1,106 @@
+Fix compilation and symbol search with musl.
+
+Bug: https://github.com/ROCm/ROCR-Runtime/issues/181
+--- src.orig/core/inc/checked.h
++++ src/core/inc/checked.h
+@@ -58,7 +58,7 @@ template <uint64_t code, bool multiProce
+   Check(const Check&) { object_ = uintptr_t(this) ^ uintptr_t(code); }
+   Check(Check&&) { object_ = uintptr_t(this) ^ uintptr_t(code); }
+ 
+-  ~Check() { object_ = NULL; }
++  ~Check() { object_ = uintptr_t(NULL); }
+ 
+   const Check& operator=(Check&& rhs) { return *this; }
+   const Check& operator=(const Check& rhs) { return *this; }
+--- src.orig/core/runtime/default_signal.cpp
++++ src/core/runtime/default_signal.cpp
+@@ -57,7 +57,7 @@ int BusyWaitSignal::rtti_id_ = 0;
+ BusyWaitSignal::BusyWaitSignal(SharedSignal* abi_block, bool enableIPC)
+     : Signal(abi_block, enableIPC) {
+   signal_.kind = AMD_SIGNAL_KIND_USER;
+-  signal_.event_mailbox_ptr = NULL;
++  signal_.event_mailbox_ptr = uint64_t(NULL);
+ }
+ 
+ hsa_signal_value_t BusyWaitSignal::LoadRelaxed() {
+--- src.orig/core/util/lnx/os_linux.cpp
++++ src/core/util/lnx/os_linux.cpp
+@@ -130,9 +130,12 @@ class os_thread {
+       }
+     }
+ 
++    int cores = 0;
++    cpu_set_t* cpuset = nullptr;
++
+     if (core::Runtime::runtime_singleton_->flag().override_cpu_affinity()) {
+-      int cores = get_nprocs_conf();
+-      cpu_set_t* cpuset = CPU_ALLOC(cores);
++      cores = get_nprocs_conf();
++      cpuset = CPU_ALLOC(cores);
+       if (cpuset == nullptr) {
+         fprintf(stderr, "CPU_ALLOC failed: %s\n", strerror(errno));
+         return;
+@@ -642,11 +645,13 @@ SharedMutex CreateSharedMutex() {
+     fprintf(stderr, "rw lock attribute init failed: %s\n", strerror(err));
+     return nullptr;
+   }
++#if defined(__GLIBC__)
+   err = pthread_rwlockattr_setkind_np(&attrib, PTHREAD_RWLOCK_PREFER_WRITER_NONRECURSIVE_NP);
+   if (err != 0) {
+     fprintf(stderr, "Set rw lock attribute failure: %s\n", strerror(err));
+     return nullptr;
+   }
++#endif
+ 
+   pthread_rwlock_t* lock = new pthread_rwlock_t;
+   err = pthread_rwlock_init(lock, &attrib);
+--- src.orig/core/util/utils.h
++++ src/core/util/utils.h
+@@ -74,7 +74,7 @@ static __forceinline void* _aligned_mall
+   return aligned_alloc(alignment, size);
+ #else
+   void *mem = NULL;
+-  if (NULL != posix_memalign(&mem, alignment, size))
++  if (0 != posix_memalign(&mem, alignment, size))
+     return NULL;
+   return mem;
+ #endif
+--- src.orig/image/util.h
++++ src/image/util.h
+@@ -99,7 +99,7 @@ static __forceinline void* _aligned_mall
+   return aligned_alloc(alignment, size);
+ #else
+   void* mem = NULL;
+-  if (NULL != posix_memalign(&mem, alignment, size)) return NULL;
++  if (0 != posix_memalign(&mem, alignment, size)) return NULL;
+   return mem;
+ #endif
+ }
+--- src.orig/core/util/lnx/os_linux.cpp
++++ src/core/util/lnx/os_linux.cpp
+@@ -65,6 +65,16 @@
+ #include <cpuid.h>
+ #endif
+ 
++/*
++ * d_un.d_ptr is relative on non glibc systems
++ * elf(5) documents it this way, glibc diverts from this documentation
++ */
++#ifdef __GLIBC__
++#define ABS_ADDR(base, ptr) (ptr)
++#else
++#define ABS_ADDR(base, ptr) ((base) + (ptr))
++#endif
++
+ namespace rocr {
+ namespace os {
+ 
+@@ -299,7 +309,7 @@ static int callback(struct dl_phdr_info* info, size_t size, void* data) {
+         for (int j = 0;; j++) {
+           if (dyn_section[j].d_tag == DT_NULL) break;
+ 
+-          if (dyn_section[j].d_tag == DT_STRTAB) strings = (char*)(dyn_section[j].d_un.d_ptr);
++          if (dyn_section[j].d_tag == DT_STRTAB) strings = (char*)ABS_ADDR(info->dlpi_addr, dyn_section[j].d_un.d_ptr);
+ 
+           if (dyn_section[j].d_tag == DT_STRSZ) limit = dyn_section[j].d_un.d_val;
+         }

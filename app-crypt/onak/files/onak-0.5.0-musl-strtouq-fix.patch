@@ -1,0 +1,15 @@
+Bug: https://bugs.gentoo.org/894352
+--- a/onak.c
++++ b/onak.c
+@@ -337,7 +337,11 @@ int main(int argc, char *argv[])
+ 			}
+ 			isfp = true;
+ 		} else if (search != NULL) {
++#if defined(__GLIBC__)
+ 			keyid = strtouq(search, &end, 16);
++#else
++			keyid = strtoull(search, &end, 16);
++#endif
+ 			if (*search != 0 &&
+ 					end != NULL &&
+ 					*end == 0) {

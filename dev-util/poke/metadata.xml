@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>arsen@gentoo.org</email>
+    <name>Arsen Arsenović</name>
+  </maintainer>
+  <use>
+    <flag name="pvm-profiling">Enable profiling in the PVM</flag>
+    <flag name="nbd">Enable poking at networked block devices via <pkg>sys-libs/libnbd</pkg>.</flag>
+  </use>
+  <upstream>
+    <remote-id type="savannah">poke</remote-id>
+  </upstream>
+</pkgmetadata>

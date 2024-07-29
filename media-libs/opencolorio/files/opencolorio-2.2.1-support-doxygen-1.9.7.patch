@@ -1,0 +1,184 @@
+https://github.com/AcademySoftwareFoundation/OpenColorIO/commit/94da59daeb4647faa9b134665ad156f37cfa021d
+
+From 94da59daeb4647faa9b134665ad156f37cfa021d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?R=C3=A9mi=20Achard?= <remiachard@gmail.com>
+Date: Tue, 30 May 2023 19:33:25 +0100
+Subject: [PATCH] Fix documentation build on Doxygen 1.9.7
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Rémi Achard <remiachard@gmail.com>
+---
+ include/OpenColorIO/OpenColorIO.h    | 29 ++++++----------------------
+ include/OpenColorIO/OpenColorTypes.h | 25 +++++-------------------
+ 2 files changed, 11 insertions(+), 43 deletions(-)
+
+diff --git a/include/OpenColorIO/OpenColorIO.h b/include/OpenColorIO/OpenColorIO.h
+index 313b9c631..1352771ff 100644
+--- a/include/OpenColorIO/OpenColorIO.h
++++ b/include/OpenColorIO/OpenColorIO.h
+@@ -733,11 +733,8 @@ class OCIOEXPORT Config
+     const char * getRoleColorSpace(const char * roleName) const noexcept;
+ 
+     /**
+-     * \defgroup Methods related to displays and views.
+-     * @{
+-     */
+-
+-    /**
++     * Methods related to displays and views.
++     *
+      * The following methods only manipulate active displays and views. Active
+      * displays and views are defined from an env. variable or from the config file.
+      *
+@@ -854,11 +851,8 @@ class OCIOEXPORT Config
+     /// Clear all the displays.
+     void clearDisplays();
+ 
+-    /** @} */
+-
+     /**
+-     * \defgroup Methods related to the Virtual Display.
+-     * @{
++     * Methods related to the Virtual Display.
+      *
+      *  ...  (See descriptions for the non-virtual methods above.)
+      *
+@@ -938,8 +932,6 @@ class OCIOEXPORT Config
+      */
+     int instantiateDisplayFromICCProfile(const char * ICCProfileFilepath);
+ 
+-    /** @} */
+-
+     /**
+      * \brief
+      * 
+@@ -1087,8 +1079,7 @@ class OCIOEXPORT Config
+     void clearViewTransforms();
+ 
+     /**
+-     * \defgroup Methods related to named transforms.
+-     * @{
++     * Methods related to named transforms.
+      */
+ 
+     /**
+@@ -1131,8 +1122,6 @@ class OCIOEXPORT Config
+     /// Clear all named transforms.
+     void clearNamedTransforms();
+ 
+-    /** @} */
+-
+     // 
+     // File Rules
+     //
+@@ -2051,8 +2040,7 @@ class OCIOEXPORT ColorSpaceSet
+     const Impl * getImpl() const { return m_impl; }
+ };
+ 
+-/** \defgroup ColorSpaceSetOperators
+- *  @{
++/** ColorSpaceSetOperators
+  */
+ 
+ /**
+@@ -2092,8 +2080,6 @@ extern OCIOEXPORT ConstColorSpaceSetRcPtr operator&&(const ConstColorSpaceSetRcP
+ extern OCIOEXPORT ConstColorSpaceSetRcPtr operator-(const ConstColorSpaceSetRcPtr & lcss,
+                                                     const ConstColorSpaceSetRcPtr & rcss);
+ 
+-/** @}*/
+-
+ 
+ //
+ // Look
+@@ -3669,8 +3655,7 @@ class OCIOEXPORT SystemMonitors
+     virtual bool isSupported() const noexcept = 0;
+ 
+     /**
+-     * \defgroup Methods to access some information of the attached and active monitors.
+-     * @{
++     * Methods to access some information of the attached and active monitors.
+      */
+ 
+     /// Get the number of active monitors reported by the operating system.
+@@ -3687,8 +3672,6 @@ class OCIOEXPORT SystemMonitors
+     /// Get the ICC profile path associated to the monitor.
+     virtual const char * getProfileFilepath(size_t idx) const = 0;
+ 
+-    /** @} */
+-
+ protected:
+     SystemMonitors() = default;
+     virtual ~SystemMonitors() = default;
+diff --git a/include/OpenColorIO/OpenColorTypes.h b/include/OpenColorIO/OpenColorTypes.h
+index c400568ea..0df8310e9 100644
+--- a/include/OpenColorIO/OpenColorTypes.h
++++ b/include/OpenColorIO/OpenColorTypes.h
+@@ -726,8 +726,7 @@ extern OCIOEXPORT ExposureContrastStyle ExposureContrastStyleFromString(const ch
+ extern OCIOEXPORT const char * NegativeStyleToString(NegativeStyle style);
+ extern OCIOEXPORT NegativeStyle NegativeStyleFromString(const char * style);
+ 
+-/** \defgroup Env. variables.
+- *  @{
++/** Env. variables.
+  *
+  * These environmental variables are used by the OpenColorIO library.
+  * For variables that allow specifying more than one token, they should be separated by commas.
+@@ -776,10 +775,7 @@ extern OCIOEXPORT const char * OCIO_OPTIMIZATION_FLAGS_ENVVAR;
+  */
+ extern OCIOEXPORT const char * OCIO_USER_CATEGORIES_ENVVAR;
+ 
+-/** @}*/
+-
+-/** \defgroup VarsRoles
+- *  @{
++/** VarsRoles
+  */
+ 
+ // TODO: Move to .rst
+@@ -852,10 +848,7 @@ extern OCIOEXPORT const char * ROLE_INTERCHANGE_SCENE;
+  */
+ extern OCIOEXPORT const char * ROLE_INTERCHANGE_DISPLAY;
+ 
+-/** @}*/
+-
+-/** \defgroup VarsSharedView
+- *  @{
++/** VarsSharedView
+  */
+ 
+ /*!rst::
+@@ -870,10 +863,7 @@ Shared View
+  */
+ extern OCIOEXPORT const char * OCIO_VIEW_USE_DISPLAY_NAME;
+ 
+-/** @}*/
+-
+-/** \defgroup VarsFormatMetadata
+- *  @{
++/** VarsFormatMetadata
+  */
+ 
+ // TODO: Move to .rst
+@@ -929,10 +919,7 @@ extern OCIOEXPORT const char * METADATA_NAME;
+  */
+ extern OCIOEXPORT const char * METADATA_ID;
+ 
+-/** @}*/
+-
+-/** \defgroup VarsCaches
+- *  @{
++/** VarsCaches
+  */
+ 
+ /*!rst::
+@@ -963,8 +950,6 @@ extern OCIOEXPORT const char * OCIO_DISABLE_PROCESSOR_CACHES;
+ // variable to disable the fallback.
+ extern OCIOEXPORT const char * OCIO_DISABLE_CACHE_FALLBACK;
+ 
+-/** @}*/
+-
+ 
+ // Archive config feature
+ // Default filename (with extension) of an config.

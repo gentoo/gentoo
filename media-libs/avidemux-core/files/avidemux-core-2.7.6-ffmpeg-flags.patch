@@ -1,0 +1,8 @@
+--- a/cmake/ffmpeg_configure.sh.cmake
++++ b/cmake/ffmpeg_configure.sh.cmake
+@@ -1,2 +1,2 @@
+ export PATH=${FF_ENV_PATH}:$PATH
+-${FFMPEG_SOURCE_DIR}/configure ${FFMPEG_FLAGS}
+\ No newline at end of file
++${FFMPEG_SOURCE_DIR}/configure ${FFMPEG_FLAGS} @@GENTOO_FFMPEG_FLAGS@@
+\ No newline at end of file

@@ -1,0 +1,27 @@
+--- a/contrib/devtodo.bash-completion
++++ b/contrib/devtodo.bash-completion
+@@ -15,20 +15,20 @@ _devtodo() {
+         --purge"
+ 
+     if [[ ${cur} == -* || ${COMP_CWORD} -eq 1 ]] ; then
+-        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
++        COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+         return 0
+     fi
+ 
+     case "${prev}" in
+         -p|--priority)
+             COMPREPLY=( $(compgen -W "default veryhigh high medium low verylow" \
+-                -- ${cur}) )
++                -- "${cur}") )
+             ;;
+         --database-loaders)
+-            COMPREPLY=( $(compgen -W "xml binary" -- ${cur}) )
++            COMPREPLY=( $(compgen -W "xml binary" -- "${cur}") )
+             ;;
+         -l|--link|--*database)
+-            COMPREPLY=( $(compgen -f -- ${cur}) )
++            _filedir
+             ;;
+         *)
+             COMPREPLY=()

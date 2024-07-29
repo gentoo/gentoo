@@ -1,0 +1,11 @@
+--- sane-backends-1.0.23/frontend/saned.c
++++ sane-backends-1.0.23/frontend/saned.c
+@@ -221,7 +221,7 @@
+ int numchildren;
+ 
+ #define SANED_CONFIG_FILE "saned.conf"
+-#define SANED_PID_FILE    "/var/run/saned.pid"
++#define SANED_PID_FILE    "/var/run/saned/saned.pid"
+ 
+ #define SANED_SERVICE_NAME   "sane-port"
+ #define SANED_SERVICE_PORT   6566

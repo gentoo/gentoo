@@ -1,0 +1,23 @@
+--- a/src/nnet/neural.cc
++++ b/src/nnet/neural.cc
+@@ -38,7 +38,7 @@
+ #include <string.h>
+ #include <ctype.h>
+ #include <stdlib.h>
+-#include <iostream.h>
++#include <iostream>
+ #include <time.h>
+ 
+ /*
+--- a/arch/win/service/install.cpp
++++ b/arch/win/service/install.cpp
+@@ -23,7 +23,7 @@
+ #include <winsvc.h>
+ #include "service.h"
+ #include <stdio.h>		//sprintf & fopen
+-#include <iostream.h>
++#include <iostream>
+ #include "Shlwapi.h"
+ 
+ SC_HANDLE	scm;
+

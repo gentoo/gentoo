@@ -1,0 +1,100 @@
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -9,19 +9,16 @@
+ DEBUG=@DEBUG@
+ PREFIX=@PREFIX@
+ 
+-CC=gcc
+ OBJ=main.o defs.o parse.o parse_include.o parse_info.o parse_img.o parse_t.o parse_page.o parse_default.o parse_bookmark.o parse_add.o parse_list.o parse_sep.o output_t.o output_doc.o output_img.o output_info.o output_page.o output_sep.o output_list.o parm.o
+ IPATH=-I/usr/pkg/include/libxml2 -I/usr/include/libxml2 -I. -I/usr/pkg/include -I/usr/local/include
+ LPATH=-L/usr/pkg/lib -L/usr/local/lib
+ CFLAGS+=-Wall -c $(IPATH) $(I_PDF)\
+ 	-DVERSION=\"$(VERSION)\" $(DEBUG)\
+-	-fno-asm -funroll-all-loops -fstrength-reduce -frerun-loop-opt \
+ 	-x c -fshort-enums
+ LFLAGS=-lxml2 $(L_PDF) $(LPATH)
+ BIN=xml2doc
+ 
+-all:
+-	@printf "\e[32mUse make in the parent directory :)\e[0m\n"
++all: build
+ 
+ install: build
+ 	@printf "\e[32mInstalling binaries...\e[0m\n"
+@@ -34,75 +31,49 @@
+ 
+ build: $(OBJ)
+ 	@printf "\n\e[32mLinking objects...\e[0m\n"
+-	$(CC) $(LFLAGS) $(OBJ) -o $(BIN)
+-	@if ( test -z "$(DEBUG)" ); then \
+-	     echo "Stripping symbols..."; \
+-	     strip -s $(BIN); \
+-	 fi
+-	@printf "\n\n\e[32mCompilation process done.\e[0m\n"
++	$(CC) $(LDFLAGS) $(L_PDF) $^ -lxml2 -o $(BIN)
+ 
+ main.o: main.c main.h
+-	$(CC) $(CFLAGS) main.c
+ 
+ parm.o: parm.c parm.h
+-	$(CC) $(CFLAGS) parm.c
+ 
+ output_doc.o: output_doc.c output.h
+-	$(CC) $(CFLAGS) output_doc.c
+ 
+ output_img.o: output_img.c output.h
+-	$(CC) $(CFLAGS) output_img.c
+ 
+ output_info.o: output_info.c output.h
+-	$(CC) $(CFLAGS) output_info.c
+ 
+ output_page.o: output_page.c output.h
+-	$(CC) $(CFLAGS) output_page.c
+ 
+ output_sep.o: output_sep.c output.h
+-	$(CC) $(CFLAGS) output_sep.c
+ 
+ output_list.o: output_list.c output.h
+-	$(CC) $(CFLAGS) output_list.c
+ 
+ output_t.o: output_t.c output.h
+-	$(CC) $(CFLAGS) output_t.c
+ 
+ parse_add.o: parse_add.c defs.h
+-	$(CC) $(CFLAGS) parse_add.c
+ 
+ parse_sep.o: parse_sep.c defs.h
+-	$(CC) $(CFLAGS) parse_sep.c
+ 
+ defs.o: defs.c defs.h
+-	$(CC) $(CFLAGS) defs.c
+ 
+ parse.o: parse.c defs.h
+-	$(CC) $(CFLAGS) parse.c
+ 
+ parse_include.o: parse_include.c defs.h
+-	$(CC) $(CFLAGS) parse_include.c
+ 
+ parse_info.o: parse_info.c defs.h
+-	$(CC) $(CFLAGS) parse_info.c
+ 
+ parse_img.o: parse_img.c defs.h
+-	$(CC) $(CFLAGS) parse_img.c
+ 
+ parse_t.o: parse_t.c defs.h
+-	$(CC) $(CFLAGS) parse_t.c
+ 
+ parse_page.o: parse_page.c defs.h
+-	$(CC) $(CFLAGS) parse_page.c
+ 
+ parse_default.o: parse_default.c defs.h
+-	$(CC) $(CFLAGS) parse_default.c
+ 
+ parse_bookmark.o: parse_bookmark.c defs.h
+-	$(CC) $(CFLAGS) parse_bookmark.c
+ 
+ parse_list.o: parse_list.c defs.h
+-	$(CC) $(CFLAGS) parse_list.c
+ 
+ clean:
+ 	rm -rf $(OBJ) $(BIN) *.o a.out *~ DEADJOE .*.swp *.txt *.pdf *.html *.xml

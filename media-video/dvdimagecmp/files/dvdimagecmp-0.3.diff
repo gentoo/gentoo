@@ -1,0 +1,23 @@
+diff -Naur dvdimagecmp-0.3.orig/dvdimagecmp.c dvdimagecmp-0.3/dvdimagecmp.c
+--- dvdimagecmp-0.3.orig/dvdimagecmp.c	2005-01-04 14:54:52.000000000 +0100
++++ dvdimagecmp-0.3/dvdimagecmp.c	2007-10-06 15:36:34.000000000 +0200
+@@ -33,6 +33,7 @@
+ #include <errno.h>
+ #include <ctype.h>
+ #include <time.h>
++#include <string.h>
+ 
+ #define MAX_RETRIES 1
+ #define BUFFER_SIZE	2048*16
+diff -Naur dvdimagecmp-0.3.orig/Makefile dvdimagecmp-0.3/Makefile
+--- dvdimagecmp-0.3.orig/Makefile	2005-01-04 14:54:52.000000000 +0100
++++ dvdimagecmp-0.3/Makefile	2007-10-06 15:36:59.000000000 +0200
+@@ -13,7 +13,7 @@
+ # -ltermcap
+ 
+ a.out : $(OBJECT)
+-	$(CC) -o dvdimagecmp  $(OBJECT)
++	$(CC) $(LDFLAGS) -o dvdimagecmp  $(OBJECT)
+ 		
+ # DEPENDENCIES
+ 

@@ -1,0 +1,67 @@
+Add missing include files and implicit ints to support building
+with a compiler in strict(er) C99 mode.
+
+diff --git a/config/config.poll-dev.c b/config/config.poll-dev.c
+index 413a6a7ad307b8ed..ec323874064c8643 100644
+--- a/config/config.poll-dev.c
++++ b/config/config.poll-dev.c
+@@ -6,6 +6,7 @@
+ #include <stdio.h>
+ #include <fcntl.h>
+ #include <poll.h>
++#include <unistd.h>
+ 
+ int
+ main()
+diff --git a/config/config.proccmd.c b/config/config.proccmd.c
+index b27d25a56d07b287..3e5a5a38792ee414 100644
+--- a/config/config.proccmd.c
++++ b/config/config.proccmd.c
+@@ -10,6 +10,8 @@
+   notice and this notice are preserved.
+ */
+ #include <stdio.h>
++#include <unistd.h>
++
+ int main()
+ {
+   char	buf[32];
+diff --git a/config/config.reuseaddr.c b/config/config.reuseaddr.c
+index 45276c8cdf793ba4..6061b7814ef5a457 100644
+--- a/config/config.reuseaddr.c
++++ b/config/config.reuseaddr.c
+@@ -31,7 +31,7 @@
+ // Maximum data in single I/O operation
+ #define	NETBUF_SIZE	4096
+ 
+-main()
++int main()
+ {
+   struct sockaddr_in	sin;
+   int	size = sizeof(sin);
+diff --git a/config/config.vasprintf.c b/config/config.vasprintf.c
+index a3c755ec95c34155..f532502e1d3fba95 100644
+--- a/config/config.vasprintf.c
++++ b/config/config.vasprintf.c
+@@ -25,6 +25,6 @@ static int func(const char *fmt, ...)
+ int main()
+ {
+   if (func("1234", 0) == 4)
+-    exit (0);
+-  exit (-1);
++    return 0;
++  return -1;
+ }
+diff --git a/config/config.vsprintf.c b/config/config.vsprintf.c
+index 01a383d6170ed9ff..a4a971e8029425bc 100644
+--- a/config/config.vsprintf.c
++++ b/config/config.vsprintf.c
+@@ -25,6 +25,6 @@ static int func(const char *fmt, ...)
+ int main()
+ {
+   if (func("1234", 0) == 4)
+-    exit (0);
+-  exit (-1);
++    return 0;
++  return -1;
+ }

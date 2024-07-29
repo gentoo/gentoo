@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+	athcool on >/dev/null 2>&1
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	athcool off >/dev/null 2>&1
+	eend $?
+}
+

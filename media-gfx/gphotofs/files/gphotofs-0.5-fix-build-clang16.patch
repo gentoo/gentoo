@@ -1,0 +1,11 @@
+Bug: https://bugs.gentoo.org/896214
+--- a/gphotofs.c
++++ b/gphotofs.c
+@@ -26,6 +26,7 @@
+ #include <errno.h>
+ #include <fcntl.h>
+ #include <sys/time.h>
++#include <locale.h>
+ 
+ /*
+  * Static variables set by command line arguments.

@@ -1,0 +1,8 @@
+Test your syweb installation by pointing your browser to the URL
+http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/configtest.php
+
+If you don't want any user interaction, move index_noui.php to index.php.
+
+syweb expects a <host>/*.rrd style directory structure under
+/var/lib/symon/rrds. Customize ${MY_INSTALLDIR}/setup.inc
+if this is incorrect for your setup.

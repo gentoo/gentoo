@@ -1,0 +1,43 @@
+From bef68f45e80c13501f836ec9d14aa3df682748e8 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sun, 15 Oct 2023 19:05:13 +0200
+Subject: [PATCH 06/10] Port away from deprecated QRegExp
+
+---
+ tests/oauth2plugintest.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tests/oauth2plugintest.cpp b/tests/oauth2plugintest.cpp
+index f5221cc..5cbbab2 100644
+--- a/tests/oauth2plugintest.cpp
++++ b/tests/oauth2plugintest.cpp
+@@ -26,7 +26,7 @@
+ #include <QNetworkAccessManager>
+ #include <QNetworkReply>
+ #include <QPointer>
+-#include <QRegExp>
++#include <QRegularExpression>
+ #include <QScopedPointer>
+ #include <QSignalSpy>
+ #include <QTimer>
+@@ -749,7 +749,7 @@ void OAuth2PluginTest::testPluginHmacSha1Process()
+             QString authorizationHeader =
+                 QString::fromUtf8(nam->m_lastRequest.rawHeader("Authorization"));
+             QStringList authorizationHeaderParts =
+-                authorizationHeader.split(QRegExp(",?\\s+"));
++                authorizationHeader.split(QRegularExpression(",?\\s+"));
+             QCOMPARE(authorizationHeaderParts[0], QString("OAuth"));
+ 
+             /* The rest of the header should be a mapping, let's parse it */
+@@ -1535,7 +1535,7 @@ void OAuth2PluginTest::testOauth1UserActionFinished()
+         QString authorizationHeader =
+             QString::fromUtf8(nam->m_lastRequest.rawHeader("Authorization"));
+         QStringList authorizationHeaderParts =
+-            authorizationHeader.split(QRegExp(",?\\s+"));
++            authorizationHeader.split(QRegularExpression(",?\\s+"));
+         QCOMPARE(authorizationHeaderParts[0], QString("OAuth"));
+ 
+         /* The rest of the header should be a mapping, let's parse it */
+-- 
+2.43.0
+

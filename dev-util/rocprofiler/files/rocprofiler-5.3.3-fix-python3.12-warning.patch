@@ -1,0 +1,88 @@
+From c503cea17d6619d95c026fcf661333b3a587936b Mon Sep 17 00:00:00 2001
+From: Yiyang Wu <xgreenlandforwyy@gmail.com>
+Date: Sat, 18 May 2024 16:14:43 +0800
+Subject: [PATCH] Fix python3.12 SyntaxWarning: invalid escape sequence
+
+---
+ bin/mem_manager.py |  4 ++--
+ bin/tblextr.py     | 18 +++++++++---------
+ 2 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/bin/mem_manager.py b/bin/mem_manager.py
+index b5bed79..10ca971 100755
+--- a/bin/mem_manager.py
++++ b/bin/mem_manager.py
+@@ -91,7 +91,7 @@ class MemManager:
+     event = rec_vals[2]     # 'Name'
+     procid = rec_vals[3]    # 'pid'
+     recordid = rec_vals[5]  # 'Index'
+-    size_ptrn = re.compile(DELIM + 'Size=(\d+)' + DELIM)
++    size_ptrn = re.compile(DELIM + r'Size=(\d+)' + DELIM)
+     filled_ptrn = re.compile('BW=')
+     # query syncronous memcopy API record
+     key = (recordid, procid, 0)
+@@ -129,7 +129,7 @@ class MemManager:
+     event = rec_vals[4]     # 'Name'
+     procid = rec_vals[5]    # 'pid'
+     recordid = rec_vals[7]  # 'Index'
+-    size_ptrn = re.compile(DELIM + 'Size=(\d+)' + DELIM)
++    size_ptrn = re.compile(DELIM + r'Size=(\d+)' + DELIM)
+ 
+     # query syncronous memcopy API record
+     key = (recordid, procid, 0)
+diff --git a/bin/tblextr.py b/bin/tblextr.py
+index 9f4abb4..81d0851 100755
+--- a/bin/tblextr.py
++++ b/bin/tblextr.py
+@@ -112,14 +112,14 @@ def parse_res(infile):
+   if not os.path.isfile(infile): return
+   inp = open(infile, 'r')
+ 
+-  beg_pattern = re.compile("^dispatch\[(\d*)\], (.*) kernel-name\(\"([^\"]*)\"\)")
+-  prop_pattern = re.compile("([\w-]+)\((\w+)\)");
+-  ts_pattern = re.compile(", time\((\d*),(\d*),(\d*),(\d*)\)")
++  beg_pattern = re.compile(r"^dispatch\[(\d*)\], (.*) kernel-name\(\"([^\"]*)\"\)")
++  prop_pattern = re.compile(r"([\w-]+)\((\w+)\)");
++  ts_pattern = re.compile(r", time\((\d*),(\d*),(\d*),(\d*)\)")
+   # var pattern below matches a variable name and a variable value from a one
+   # line text in the format of for example "WRITE_SIZE (0.2500000000)" or
+   # "GRBM_GUI_ACTIVE (27867)" or "TA_TA_BUSY[0]"
+-  var_pattern = re.compile("^\s*([a-zA-Z0-9_]+(?:\[\d+\])?)\s+\((\d+(?:\.\d+)?)\)")
+-  pid_pattern = re.compile("pid\((\d*)\)")
++  var_pattern = re.compile(r"^\s*([a-zA-Z0-9_]+(?:\[\d+\])?)\s+\((\d+(?:\.\d+)?)\)")
++  pid_pattern = re.compile(r"pid\((\d*)\)")
+ 
+   dispatch_number = 0
+   var_table_pid = 0
+@@ -340,7 +340,7 @@ def fill_ext_db(table_name, db, indir, trace_name, api_pid):
+ #############################################################
+ # arguments manipulation routines
+ def get_field(args, field):
+-  ptrn1_field = re.compile(r'^.* ' + field + '\(');
++  ptrn1_field = re.compile(r'^.* ' + field + r'\(');
+   ptrn2_field = re.compile(r'\) .*$');
+   ptrn3_field = re.compile(r'\)\)$');
+   (field_name, n) = ptrn1_field.subn('', args, count=1);
+@@ -351,7 +351,7 @@ def get_field(args, field):
+   return (field_name, n)
+ 
+ def set_field(args, field, val):
+-  return re.subn(field + '\(\w+\)([ \)])', field + '(' + str(val) + ')\\1', args, count=1)
++  return re.subn(field + r'\(\w+\)([ \)])', field + '(' + str(val) + ')\\1', args, count=1)
+ 
+ hsa_patch_data = {}
+ ops_patch_data = {}
+@@ -384,8 +384,8 @@ def fill_api_db(table_name, db, indir, api_name, api_pid, dep_pid, dep_list, dep
+   hip_sync_dev_event_ptrn = re.compile(r'hipDeviceSynchronize')
+   wait_event_ptrn = re.compile(r'WaitEvent|hipStreamSynchronize|hipDeviceSynchronize')
+   hip_stream_wait_write_ptrn = re.compile(r'hipStreamWaitValue64|hipStreamWriteValue64|hipStreamWaitValue32|hipStreamWriteValue32')
+-  prop_pattern = re.compile("([\w-]+)\((\w+)\)");
+-  beg_pattern = re.compile("^dispatch\[(\d*)\], (.*) kernel-name\(\"([^\"]*)\"\)")
++  prop_pattern = re.compile(r"([\w-]+)\((\w+)\)");
++  beg_pattern = re.compile(r"^dispatch\[(\d*)\], (.*) kernel-name\(\"([^\"]*)\"\)")
+   hip_strm_cr_event_ptrn = re.compile(r'hipStreamCreate')
+   hsa_mcopy_ptrn = re.compile(r'hsa_amd_memory_async_copy')
+   ptrn_fixformat = re.compile(r'(\d+:\d+ \d+:\d+ \w+)\(\s*(.*)\)$')
+-- 
+2.44.0
+

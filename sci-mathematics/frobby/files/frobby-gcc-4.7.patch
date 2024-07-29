@@ -1,0 +1,32 @@
+ src/main.cpp                 |    3 +++
+ src/randomDataGenerators.cpp |    3 +++
+ 2 files changed, 6 insertions(+), 0 deletions(-)
+
+diff --git a/src/main.cpp b/src/main.cpp
+index a16754e..315ea53 100755
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -25,6 +25,9 @@
+ #include <ctime>
+ #include <cstdlib>
+ 
++#include <sys/types.h>
++#include <unistd.h>
++
+ /** This function runs the Frobby console interface. the ::main
+     function calls this function after having set up DEBUG-specific
+     things, catching exceptions, setting the random seed and so on.
+diff --git a/src/randomDataGenerators.cpp b/src/randomDataGenerators.cpp
+index 432a90a..1de3559 100755
+--- a/src/randomDataGenerators.cpp
++++ b/src/randomDataGenerators.cpp
+@@ -26,6 +26,9 @@
+ #include <limits>
+ #include <ctime>
+ 
++#include <sys/types.h>
++#include <unistd.h>
++
+ void generateLinkedListIdeal(BigIdeal& ideal, size_t variableCount) {
+   VarNames names(variableCount);
+   ideal.clearAndSetNames(variableCount);

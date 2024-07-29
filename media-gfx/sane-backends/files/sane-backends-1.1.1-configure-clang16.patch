@@ -1,0 +1,43 @@
+https://gitlab.com/sane-project/backends/-/merge_requests/763
+
+From 300b460970f538ab515835f14650785e88808a8f Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 4 Nov 2022 04:04:46 +0000
+Subject: [PATCH] acinclude.m4: fix -Wimplicit-function-declaration
+
+-Wimplicit-function-declaration will become an error by default
+in Clang 16.
+
+Fixes errors like:
+```
+error: call to undeclared library function 'exit' with type 'void (int) __attribute__((noreturn))'; ISO C99 and later do not support implicit function declarations [-Werror,-Wimplicit-function-declaration]
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -471,6 +471,7 @@ AC_DEFUN([SANE_CHECK_IPV6],
+   if test "$ipv6" != "no" ; then
+     AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+ 	#define INET6
++	#include <stdlib.h>
+ 	#include <sys/types.h>
+ 	#include <sys/socket.h> ]], [[
+ 	 /* AF_INET6 available check */
+@@ -492,6 +493,7 @@ AC_DEFUN([SANE_CHECK_IPV6],
+     AC_MSG_CHECKING([whether struct sockaddr_storage has an ss_family member])
+     AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+ 	#define INET6
++	#include <stdlib.h>
+ 	#include <sys/types.h>
+ 	#include <sys/socket.h> ]], [[
+ 	/* test if the ss_family member exists in struct sockaddr_storage */
+@@ -504,6 +506,7 @@ AC_DEFUN([SANE_CHECK_IPV6],
+     ], [
+ 		AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+ 		#define INET6
++		#include <stdlib.h>
+ 		#include <sys/types.h>
+ 		#include <sys/socket.h> ]], [[
+ 		/* test if the __ss_family member exists in struct sockaddr_storage */
+GitLab

@@ -1,0 +1,12 @@
+--- a/configure.in
++++ b/configure.in
+@@ -1,5 +1,5 @@
+ dnl Process this file with autoconf to produce a configure script.
+-AC_INIT(configure.in)
++AC_INIT(configure.ac)
+ AM_INIT_AUTOMAKE(dial, 1.2)
+ AM_CONFIG_HEADER(config.h)
+ 
+-- 
+2.37.3
+

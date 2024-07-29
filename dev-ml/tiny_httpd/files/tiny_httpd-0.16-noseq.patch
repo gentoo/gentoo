@@ -1,0 +1,11 @@
+--- a/src/dune	2024-07-01 18:38:15.116581859 +0200
++++ b/src/dune	2024-07-01 18:38:21.807507542 +0200
+@@ -1,7 +1,7 @@
+ (library
+   (name tiny_httpd)
+   (public_name tiny_httpd)
+-  (libraries threads seq unix
++  (libraries threads unix
+              (select Tiny_httpd_log.ml from
+               (logs -> Tiny_httpd_log.logs.ml)
+               (-> Tiny_httpd_log.default.ml)))

@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/563922
+http://bugs.ntp.org/show_bug.cgi?id=2906
+
+--- a/sntp/tests/Makefile.in
++++ b/sntp/tests/Makefile.in
+@@ -783,6 +783,7 @@ base_LDADD = \
+ 	$(LIBOPTS_LDADD)			\
+ 	$(LDADD_LIBEVENT)			\
+ 	$(top_builddir)/../libntp/libntp.a	\
++	$(PTHREAD_LIBS) \
+ 	$(LDADD_LIBNTP)				\
+ 	$(LDADD_NTP)				\
+ 	$(NULL)

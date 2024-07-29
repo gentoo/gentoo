@@ -1,0 +1,71 @@
+diff -up rocksndiamonds-4.3.2.0/src/files.c.url rocksndiamonds-4.3.2.0/src/files.c
+--- rocksndiamonds-4.3.2.0/src/files.c.url	2022-04-16 19:22:44.000000000 -0400
++++ rocksndiamonds-4.3.2.0/src/files.c	2022-04-26 10:32:33.995238563 -0400
+@@ -12674,11 +12674,13 @@ static struct MusicFileInfo *get_music_f
+     { "artist_header",	&tmp_music_file_info.artist_header	},
+     { "album_header",	&tmp_music_file_info.album_header	},
+     { "year_header",	&tmp_music_file_info.year_header	},
++    { "url_header",	&tmp_music_file_info.url_header		},
+ 
+     { "title",		&tmp_music_file_info.title		},
+     { "artist",		&tmp_music_file_info.artist		},
+     { "album",		&tmp_music_file_info.album		},
+     { "year",		&tmp_music_file_info.year		},
++    { "url",		&tmp_music_file_info.url		},
+ 
+     { NULL,		NULL					},
+   };
+@@ -12794,11 +12796,13 @@ void LoadMusicInfo(void)
+     checked_free(music_file_info->artist_header);
+     checked_free(music_file_info->album_header);
+     checked_free(music_file_info->year_header);
++    checked_free(music_file_info->url_header);
+ 
+     checked_free(music_file_info->title);
+     checked_free(music_file_info->artist);
+     checked_free(music_file_info->album);
+     checked_free(music_file_info->year);
++    checked_free(music_file_info->url);
+ 
+     free(music_file_info);
+ 
+diff -up rocksndiamonds-4.3.2.0/src/main.h.url rocksndiamonds-4.3.2.0/src/main.h
+--- rocksndiamonds-4.3.2.0/src/main.h.url	2022-04-16 19:22:44.000000000 -0400
++++ rocksndiamonds-4.3.2.0/src/main.h	2022-04-26 10:32:33.995238563 -0400
+@@ -3710,11 +3710,13 @@ struct MusicFileInfo
+   char *artist_header;
+   char *album_header;
+   char *year_header;
++  char *url_header;
+ 
+   char *title;
+   char *artist;
+   char *album;
+   char *year;
++  char *url;
+ 
+   int music;
+ 
+diff -up rocksndiamonds-4.3.2.0/src/screens.c.url rocksndiamonds-4.3.2.0/src/screens.c
+--- rocksndiamonds-4.3.2.0/src/screens.c.url	2022-04-26 10:32:33.996238568 -0400
++++ rocksndiamonds-4.3.2.0/src/screens.c	2022-04-26 10:34:29.617828672 -0400
+@@ -3392,6 +3392,19 @@ void HandleInfoScreen_Music(int dx, int
+       ystart += ystep_head;
+     }
+ 
++    if (!strEqual(list->url, UNKNOWN_NAME))
++    {
++      if (!strEqual(list->url_header, UNKNOWN_NAME))
++        DrawTextSCentered(ystart, font_head, list->url_header);
++      else
++        DrawTextSCentered(ystart, font_head, "from the website");
++
++      ystart += ystep_head;
++
++      DrawTextFCentered(ystart, font_text, "%s", list->url);
++      ystart += ystep_head;
++    }
++
+     DrawTextSCentered(ybottom, font_foot, TEXT_NEXT_PAGE);
+ 
+     if (button != MB_MENU_INITIALIZE)

@@ -1,0 +1,11 @@
+[Unit]
+Description=eBUS daemon
+After=network-online.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/ebusd ${EBUSD_OPTS}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

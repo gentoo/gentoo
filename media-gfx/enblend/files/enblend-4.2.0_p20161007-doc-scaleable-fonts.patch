@@ -1,0 +1,16 @@
+Use scaleable fonts.
+
+Bug: https://bugs.gentoo.org/888025
+
+diff -Naur enblend-4.2.0_p20161007.org/doc/static-preamble.tex enblend-4.2.0_p20161007/doc/static-preamble.tex
+--- enblend-4.2.0_p20161007.org/doc/static-preamble.tex 2016-09-24 11:29:40.000000000 +0200
++++ enblend-4.2.0_p20161007/doc/static-preamble.tex     2022-12-27 07:30:42.966176272 +0100
+@@ -5,6 +5,8 @@
+ \RequirePackage[l2tabu, orthodox]{nag}
+ 
+ 
++\usepackage[T1]{fontenc}
++\usepackage{lmodern}       % scaleable fonts
+ \usepackage{amsmath}       % align, align*
+ \usepackage{bold-extra}    % Bold typewriter for programming language keywords
+ \usepackage{color}         % \colorbox

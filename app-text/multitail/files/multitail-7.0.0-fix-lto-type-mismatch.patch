@@ -1,0 +1,29 @@
+Fix mismatching declarations so build does not fail with -Werror=lto-type-mismatch
+
+Bug: https://bugs.gentoo.org/855017
+
+This patch is already merged upstream, see: https://github.com/folkertvanheusden/multitail/pull/10
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/globals.c
++++ b/globals.c
+@@ -81,7 +81,7 @@ double heartbeat_t = 0.0;
+ off64_t msf_prev_size = 0;
+
+ dtime_t msf_last_check = 0;
+-dtime_t mt_started;
++time_t mt_started;
+
+ pid_t children_list[MAX_N_SPAWNED_PROCESSES];
+ pid_t tail_proc = 0;   /* process used by checker-proc */
+--- a/selbox.h
++++ b/selbox.h
+@@ -1,4 +1,6 @@
+-int selection_box(void **list, char *needs_mark, int nlines, char type, int what_help, char *heading);
++#include "mt.h"
++
++int selection_box(void **list, char *needs_mark, int nlines, selbox_type_t type, int what_help, char *heading);
+ int select_window(int what_help, char *heading);
+ proginfo * select_subwindow(int f_index, int what_help, char *heading);
+ char * select_file(char *input, int what_help);

@@ -1,0 +1,9 @@
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Polling frequency in seconds
+# (fetchmail will daemonize and check for new mail at this interval)
+polling_period="60"
+
+# Directory where the pid file is kept
+pid_dir="/var/run/fetchmail"

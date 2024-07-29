@@ -1,0 +1,22 @@
+--- a/collector/exporter_test.go
++++ b/collector/exporter_test.go
+@@ -71,6 +71,8 @@ func TestExporter(t *testing.T) {
+ }
+ 
+ func TestGetMySQLVersion(t *testing.T) {
++	t.Skip("Test requires running mysqld")
++
+ 	if testing.Short() {
+ 		t.Skip("-short is passed, skipping test")
+ 	}
+--- a/mysqld_exporter_test.go
++++ b/mysqld_exporter_test.go
+@@ -142,6 +142,8 @@ type bin struct {
+ 
+ // TestBin builds, runs and tests binary.
+ func TestBin(t *testing.T) {
++	t.Skip("Test requires network access")
++
+ 	var err error
+ 	binName := "mysqld_exporter"
+ 

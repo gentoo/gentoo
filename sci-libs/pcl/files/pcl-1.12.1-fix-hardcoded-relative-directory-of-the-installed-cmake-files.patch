@@ -1,0 +1,22 @@
+From efb56391957ee0f64a407fe419c25122404a53e2 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Thu, 27 Oct 2022 13:59:15 +0200
+Subject: [PATCH] fix hardcoded relative directory of the installed cmake files
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/PCLConfig.cmake.in
++++ b/PCLConfig.cmake.in
+@@ -389,8 +389,8 @@ if(WIN32 AND NOT MINGW)
+     set(PCL_ALL_IN_ONE_INSTALLER ON)
+   endif()
+ else()
+-# PCLConfig.cmake is installed to PCL_ROOT/share/pcl-x.y
+-  get_filename_component(PCL_ROOT "${CMAKE_CURRENT_LIST_DIR}/../.." ABSOLUTE)
++# PCLConfig.cmake is installed to PCL_ROOT/share/cmake/pcl-x.y
++  get_filename_component(PCL_ROOT "${CMAKE_CURRENT_LIST_DIR}/../../.." ABSOLUTE)
+ endif()
+ 
+ # check whether PCLConfig.cmake is found into a PCL installation or in a build tree
+-- 
+2.38.1
+

@@ -1,0 +1,501 @@
+From e301ff5d0d20a22270c26cd394fd1856ea600586 Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <conikost@gentoo.org>
+Date: Tue, 8 Nov 2022 22:29:58 +0100
+Subject: [PATCH] Rename c files to cpp
+
+This fixes a warning with clang:
+warning: treating 'c' input as 'c++' when in C++ mode,
+this behavior is deprecated [-Wdeprecated]
+
+Signed-off-by: Conrad Kostecki <conikost@gentoo.org>
+---
+ glcddrivers/Makefile                                          | 2 +-
+ glcddrivers/{avrctl.c => avrctl.cpp}                          | 0
+ glcddrivers/{ax206dpf.c => ax206dpf.cpp}                      | 0
+ glcddrivers/{common.c => common.cpp}                          | 0
+ glcddrivers/{config.c => config.cpp}                          | 0
+ glcddrivers/{dm140gink.c => dm140gink.cpp}                    | 0
+ glcddrivers/{driver.c => driver.cpp}                          | 0
+ glcddrivers/{drivers.c => drivers.cpp}                        | 0
+ glcddrivers/{framebuffer.c => framebuffer.cpp}                | 0
+ glcddrivers/{futabaMDM166A.c => futabaMDM166A.cpp}            | 0
+ glcddrivers/{g15daemon.c => g15daemon.cpp}                    | 0
+ glcddrivers/{gu126x64D-K610A4.c => gu126x64D-K610A4.cpp}      | 0
+ glcddrivers/{gu140x32f.c => gu140x32f.cpp}                    | 0
+ glcddrivers/{gu256x64-372.c => gu256x64-372.cpp}              | 0
+ glcddrivers/{gu256x64-3900.c => gu256x64-3900.cpp}            | 0
+ glcddrivers/{hd61830.c => hd61830.cpp}                        | 0
+ glcddrivers/{ili9341.c => ili9341.cpp}                        | 0
+ glcddrivers/{image.c => image.cpp}                            | 0
+ glcddrivers/{ks0108.c => ks0108.cpp}                          | 0
+ glcddrivers/{network.c => network.cpp}                        | 0
+ glcddrivers/{noritake800.c => noritake800.cpp}                | 0
+ glcddrivers/{picoLCD_256x64.c => picoLCD_256x64.cpp}          | 0
+ glcddrivers/{port.c => port.cpp}                              | 0
+ glcddrivers/{sed1330.c => sed1330.cpp}                        | 0
+ glcddrivers/{sed1520.c => sed1520.cpp}                        | 0
+ glcddrivers/{serdisp.c => serdisp.cpp}                        | 0
+ glcddrivers/{simlcd.c => simlcd.cpp}                          | 0
+ glcddrivers/{ssd1306.c => ssd1306.cpp}                        | 0
+ glcddrivers/{st7565r-reel.c => st7565r-reel.cpp}              | 0
+ glcddrivers/{t6963c.c => t6963c.cpp}                          | 0
+ glcddrivers/{usbserlcd.c => usbserlcd.cpp}                    | 0
+ glcddrivers/{vncserver.c => vncserver.cpp}                    | 0
+ glcdgraphics/Makefile                                         | 2 +-
+ glcdgraphics/{bitmap.c => bitmap.cpp}                         | 0
+ glcdgraphics/{common.c => common.cpp}                         | 0
+ glcdgraphics/{extformats.c => extformats.cpp}                 | 0
+ glcdgraphics/{font.c => font.cpp}                             | 0
+ glcdgraphics/{glcd.c => glcd.cpp}                             | 0
+ glcdgraphics/{image.c => image.cpp}                           | 0
+ glcdgraphics/{imagefile.c => imagefile.cpp}                   | 0
+ glcdgraphics/{pbm.c => pbm.cpp}                               | 0
+ glcdskin/Makefile                                             | 2 +-
+ glcdskin/{cache.c => cache.cpp}                               | 0
+ glcdskin/{config.c => config.cpp}                             | 0
+ glcdskin/{display.c => display.cpp}                           | 0
+ glcdskin/{font.c => font.cpp}                                 | 0
+ glcdskin/{function.c => function.cpp}                         | 0
+ glcdskin/{object.c => object.cpp}                             | 0
+ glcdskin/{parser.c => parser.cpp}                             | 0
+ glcdskin/{skin.c => skin.cpp}                                 | 0
+ glcdskin/{string.c => string.cpp}                             | 0
+ glcdskin/{type.c => type.cpp}                                 | 0
+ glcdskin/{variable.c => variable.cpp}                         | 0
+ glcdskin/{xml.c => xml.cpp}                                   | 0
+ tools/convpic/Makefile                                        | 2 +-
+ tools/convpic/{convpic.c => convpic.cpp}                      | 0
+ tools/crtfont/Makefile                                        | 2 +-
+ tools/crtfont/{crtfont.c => crtfont.cpp}                      | 0
+ tools/genfont/Makefile                                        | 2 +-
+ tools/genfont/{genfont.c => genfont.cpp}                      | 0
+ tools/lcdtestpattern/Makefile                                 | 2 +-
+ tools/lcdtestpattern/{lcdtestpattern.c => lcdtestpattern.cpp} | 0
+ tools/showpic/Makefile                                        | 2 +-
+ tools/showpic/{showpic.c => showpic.cpp}                      | 0
+ tools/showtext/Makefile                                       | 2 +-
+ tools/showtext/{showtext.c => showtext.cpp}                   | 0
+ tools/skintest/Makefile                                       | 2 +-
+ tools/skintest/{skintest.c => skintest.cpp}                   | 0
+ 68 files changed, 10 insertions(+), 10 deletions(-)
+ rename glcddrivers/{avrctl.c => avrctl.cpp} (100%)
+ rename glcddrivers/{ax206dpf.c => ax206dpf.cpp} (100%)
+ rename glcddrivers/{common.c => common.cpp} (100%)
+ rename glcddrivers/{config.c => config.cpp} (100%)
+ rename glcddrivers/{dm140gink.c => dm140gink.cpp} (100%)
+ rename glcddrivers/{driver.c => driver.cpp} (100%)
+ rename glcddrivers/{drivers.c => drivers.cpp} (100%)
+ rename glcddrivers/{framebuffer.c => framebuffer.cpp} (100%)
+ rename glcddrivers/{futabaMDM166A.c => futabaMDM166A.cpp} (100%)
+ rename glcddrivers/{g15daemon.c => g15daemon.cpp} (100%)
+ rename glcddrivers/{gu126x64D-K610A4.c => gu126x64D-K610A4.cpp} (100%)
+ rename glcddrivers/{gu140x32f.c => gu140x32f.cpp} (100%)
+ rename glcddrivers/{gu256x64-372.c => gu256x64-372.cpp} (100%)
+ rename glcddrivers/{gu256x64-3900.c => gu256x64-3900.cpp} (100%)
+ rename glcddrivers/{hd61830.c => hd61830.cpp} (100%)
+ rename glcddrivers/{ili9341.c => ili9341.cpp} (100%)
+ rename glcddrivers/{image.c => image.cpp} (100%)
+ rename glcddrivers/{ks0108.c => ks0108.cpp} (100%)
+ rename glcddrivers/{network.c => network.cpp} (100%)
+ rename glcddrivers/{noritake800.c => noritake800.cpp} (100%)
+ rename glcddrivers/{picoLCD_256x64.c => picoLCD_256x64.cpp} (100%)
+ rename glcddrivers/{port.c => port.cpp} (100%)
+ rename glcddrivers/{sed1330.c => sed1330.cpp} (100%)
+ rename glcddrivers/{sed1520.c => sed1520.cpp} (100%)
+ rename glcddrivers/{serdisp.c => serdisp.cpp} (100%)
+ rename glcddrivers/{simlcd.c => simlcd.cpp} (100%)
+ rename glcddrivers/{ssd1306.c => ssd1306.cpp} (100%)
+ rename glcddrivers/{st7565r-reel.c => st7565r-reel.cpp} (100%)
+ rename glcddrivers/{t6963c.c => t6963c.cpp} (100%)
+ rename glcddrivers/{usbserlcd.c => usbserlcd.cpp} (100%)
+ rename glcddrivers/{vncserver.c => vncserver.cpp} (100%)
+ rename glcdgraphics/{bitmap.c => bitmap.cpp} (100%)
+ rename glcdgraphics/{common.c => common.cpp} (100%)
+ rename glcdgraphics/{extformats.c => extformats.cpp} (100%)
+ rename glcdgraphics/{font.c => font.cpp} (100%)
+ rename glcdgraphics/{glcd.c => glcd.cpp} (100%)
+ rename glcdgraphics/{image.c => image.cpp} (100%)
+ rename glcdgraphics/{imagefile.c => imagefile.cpp} (100%)
+ rename glcdgraphics/{pbm.c => pbm.cpp} (100%)
+ rename glcdskin/{cache.c => cache.cpp} (100%)
+ rename glcdskin/{config.c => config.cpp} (100%)
+ rename glcdskin/{display.c => display.cpp} (100%)
+ rename glcdskin/{font.c => font.cpp} (100%)
+ rename glcdskin/{function.c => function.cpp} (100%)
+ rename glcdskin/{object.c => object.cpp} (100%)
+ rename glcdskin/{parser.c => parser.cpp} (100%)
+ rename glcdskin/{skin.c => skin.cpp} (100%)
+ rename glcdskin/{string.c => string.cpp} (100%)
+ rename glcdskin/{type.c => type.cpp} (100%)
+ rename glcdskin/{variable.c => variable.cpp} (100%)
+ rename glcdskin/{xml.c => xml.cpp} (100%)
+ rename tools/convpic/{convpic.c => convpic.cpp} (100%)
+ rename tools/crtfont/{crtfont.c => crtfont.cpp} (100%)
+ rename tools/genfont/{genfont.c => genfont.cpp} (100%)
+ rename tools/lcdtestpattern/{lcdtestpattern.c => lcdtestpattern.cpp} (100%)
+ rename tools/showpic/{showpic.c => showpic.cpp} (100%)
+ rename tools/showtext/{showtext.c => showtext.cpp} (100%)
+ rename tools/skintest/{skintest.c => skintest.cpp} (100%)
+
+diff --git a/glcddrivers/Makefile b/glcddrivers/Makefile
+index 49d0ee7..4672984 100644
+--- a/glcddrivers/Makefile
++++ b/glcddrivers/Makefile
+@@ -65,7 +65,7 @@ endif
+ 
+ ### Implicit rules:
+ 
+-%.o: %.c
++%.o: %.cpp
+ 	$(CXX) $(CXXEXTRA) $(CXXFLAGS) -c $(DEFINES) $(INCLUDES) $<
+ 
+ # Dependencies:
+diff --git a/glcddrivers/avrctl.c b/glcddrivers/avrctl.cpp
+similarity index 100%
+rename from glcddrivers/avrctl.c
+rename to glcddrivers/avrctl.cpp
+diff --git a/glcddrivers/ax206dpf.c b/glcddrivers/ax206dpf.cpp
+similarity index 100%
+rename from glcddrivers/ax206dpf.c
+rename to glcddrivers/ax206dpf.cpp
+diff --git a/glcddrivers/common.c b/glcddrivers/common.cpp
+similarity index 100%
+rename from glcddrivers/common.c
+rename to glcddrivers/common.cpp
+diff --git a/glcddrivers/config.c b/glcddrivers/config.cpp
+similarity index 100%
+rename from glcddrivers/config.c
+rename to glcddrivers/config.cpp
+diff --git a/glcddrivers/dm140gink.c b/glcddrivers/dm140gink.cpp
+similarity index 100%
+rename from glcddrivers/dm140gink.c
+rename to glcddrivers/dm140gink.cpp
+diff --git a/glcddrivers/driver.c b/glcddrivers/driver.cpp
+similarity index 100%
+rename from glcddrivers/driver.c
+rename to glcddrivers/driver.cpp
+diff --git a/glcddrivers/drivers.c b/glcddrivers/drivers.cpp
+similarity index 100%
+rename from glcddrivers/drivers.c
+rename to glcddrivers/drivers.cpp
+diff --git a/glcddrivers/framebuffer.c b/glcddrivers/framebuffer.cpp
+similarity index 100%
+rename from glcddrivers/framebuffer.c
+rename to glcddrivers/framebuffer.cpp
+diff --git a/glcddrivers/futabaMDM166A.c b/glcddrivers/futabaMDM166A.cpp
+similarity index 100%
+rename from glcddrivers/futabaMDM166A.c
+rename to glcddrivers/futabaMDM166A.cpp
+diff --git a/glcddrivers/g15daemon.c b/glcddrivers/g15daemon.cpp
+similarity index 100%
+rename from glcddrivers/g15daemon.c
+rename to glcddrivers/g15daemon.cpp
+diff --git a/glcddrivers/gu126x64D-K610A4.c b/glcddrivers/gu126x64D-K610A4.cpp
+similarity index 100%
+rename from glcddrivers/gu126x64D-K610A4.c
+rename to glcddrivers/gu126x64D-K610A4.cpp
+diff --git a/glcddrivers/gu140x32f.c b/glcddrivers/gu140x32f.cpp
+similarity index 100%
+rename from glcddrivers/gu140x32f.c
+rename to glcddrivers/gu140x32f.cpp
+diff --git a/glcddrivers/gu256x64-372.c b/glcddrivers/gu256x64-372.cpp
+similarity index 100%
+rename from glcddrivers/gu256x64-372.c
+rename to glcddrivers/gu256x64-372.cpp
+diff --git a/glcddrivers/gu256x64-3900.c b/glcddrivers/gu256x64-3900.cpp
+similarity index 100%
+rename from glcddrivers/gu256x64-3900.c
+rename to glcddrivers/gu256x64-3900.cpp
+diff --git a/glcddrivers/hd61830.c b/glcddrivers/hd61830.cpp
+similarity index 100%
+rename from glcddrivers/hd61830.c
+rename to glcddrivers/hd61830.cpp
+diff --git a/glcddrivers/ili9341.c b/glcddrivers/ili9341.cpp
+similarity index 100%
+rename from glcddrivers/ili9341.c
+rename to glcddrivers/ili9341.cpp
+diff --git a/glcddrivers/image.c b/glcddrivers/image.cpp
+similarity index 100%
+rename from glcddrivers/image.c
+rename to glcddrivers/image.cpp
+diff --git a/glcddrivers/ks0108.c b/glcddrivers/ks0108.cpp
+similarity index 100%
+rename from glcddrivers/ks0108.c
+rename to glcddrivers/ks0108.cpp
+diff --git a/glcddrivers/network.c b/glcddrivers/network.cpp
+similarity index 100%
+rename from glcddrivers/network.c
+rename to glcddrivers/network.cpp
+diff --git a/glcddrivers/noritake800.c b/glcddrivers/noritake800.cpp
+similarity index 100%
+rename from glcddrivers/noritake800.c
+rename to glcddrivers/noritake800.cpp
+diff --git a/glcddrivers/picoLCD_256x64.c b/glcddrivers/picoLCD_256x64.cpp
+similarity index 100%
+rename from glcddrivers/picoLCD_256x64.c
+rename to glcddrivers/picoLCD_256x64.cpp
+diff --git a/glcddrivers/port.c b/glcddrivers/port.cpp
+similarity index 100%
+rename from glcddrivers/port.c
+rename to glcddrivers/port.cpp
+diff --git a/glcddrivers/sed1330.c b/glcddrivers/sed1330.cpp
+similarity index 100%
+rename from glcddrivers/sed1330.c
+rename to glcddrivers/sed1330.cpp
+diff --git a/glcddrivers/sed1520.c b/glcddrivers/sed1520.cpp
+similarity index 100%
+rename from glcddrivers/sed1520.c
+rename to glcddrivers/sed1520.cpp
+diff --git a/glcddrivers/serdisp.c b/glcddrivers/serdisp.cpp
+similarity index 100%
+rename from glcddrivers/serdisp.c
+rename to glcddrivers/serdisp.cpp
+diff --git a/glcddrivers/simlcd.c b/glcddrivers/simlcd.cpp
+similarity index 100%
+rename from glcddrivers/simlcd.c
+rename to glcddrivers/simlcd.cpp
+diff --git a/glcddrivers/ssd1306.c b/glcddrivers/ssd1306.cpp
+similarity index 100%
+rename from glcddrivers/ssd1306.c
+rename to glcddrivers/ssd1306.cpp
+diff --git a/glcddrivers/st7565r-reel.c b/glcddrivers/st7565r-reel.cpp
+similarity index 100%
+rename from glcddrivers/st7565r-reel.c
+rename to glcddrivers/st7565r-reel.cpp
+diff --git a/glcddrivers/t6963c.c b/glcddrivers/t6963c.cpp
+similarity index 100%
+rename from glcddrivers/t6963c.c
+rename to glcddrivers/t6963c.cpp
+diff --git a/glcddrivers/usbserlcd.c b/glcddrivers/usbserlcd.cpp
+similarity index 100%
+rename from glcddrivers/usbserlcd.c
+rename to glcddrivers/usbserlcd.cpp
+diff --git a/glcddrivers/vncserver.c b/glcddrivers/vncserver.cpp
+similarity index 100%
+rename from glcddrivers/vncserver.c
+rename to glcddrivers/vncserver.cpp
+diff --git a/glcdgraphics/Makefile b/glcdgraphics/Makefile
+index 92e2847..7638732 100644
+--- a/glcdgraphics/Makefile
++++ b/glcdgraphics/Makefile
+@@ -32,7 +32,7 @@ HEADERS = bitmap.h font.h glcd.h image.h imagefile.h pbm.h extformats.h
+ 
+ ### Implicit rules:
+ 
+-%.o: %.c
++%.o: %.cpp
+ 	$(CXX) $(CXXEXTRA) $(CXXFLAGS) -c $(DEFINES) $(INCLUDES) $<
+ 
+ # Dependencies:
+diff --git a/glcdgraphics/bitmap.c b/glcdgraphics/bitmap.cpp
+similarity index 100%
+rename from glcdgraphics/bitmap.c
+rename to glcdgraphics/bitmap.cpp
+diff --git a/glcdgraphics/common.c b/glcdgraphics/common.cpp
+similarity index 100%
+rename from glcdgraphics/common.c
+rename to glcdgraphics/common.cpp
+diff --git a/glcdgraphics/extformats.c b/glcdgraphics/extformats.cpp
+similarity index 100%
+rename from glcdgraphics/extformats.c
+rename to glcdgraphics/extformats.cpp
+diff --git a/glcdgraphics/font.c b/glcdgraphics/font.cpp
+similarity index 100%
+rename from glcdgraphics/font.c
+rename to glcdgraphics/font.cpp
+diff --git a/glcdgraphics/glcd.c b/glcdgraphics/glcd.cpp
+similarity index 100%
+rename from glcdgraphics/glcd.c
+rename to glcdgraphics/glcd.cpp
+diff --git a/glcdgraphics/image.c b/glcdgraphics/image.cpp
+similarity index 100%
+rename from glcdgraphics/image.c
+rename to glcdgraphics/image.cpp
+diff --git a/glcdgraphics/imagefile.c b/glcdgraphics/imagefile.cpp
+similarity index 100%
+rename from glcdgraphics/imagefile.c
+rename to glcdgraphics/imagefile.cpp
+diff --git a/glcdgraphics/pbm.c b/glcdgraphics/pbm.cpp
+similarity index 100%
+rename from glcdgraphics/pbm.c
+rename to glcdgraphics/pbm.cpp
+diff --git a/glcdskin/Makefile b/glcdskin/Makefile
+index ec63d30..b0adc5c 100644
+--- a/glcdskin/Makefile
++++ b/glcdskin/Makefile
+@@ -29,7 +29,7 @@ endif
+ 
+ ### Implicit rules:
+ 
+-%.o: %.c
++%.o: %.cpp
+ 	$(CXX) $(CXXEXTRA) $(CXXFLAGS) -I.. -c $(DEFINES) $(INCLUDES) $<
+ 
+ # Dependencies:
+diff --git a/glcdskin/cache.c b/glcdskin/cache.cpp
+similarity index 100%
+rename from glcdskin/cache.c
+rename to glcdskin/cache.cpp
+diff --git a/glcdskin/config.c b/glcdskin/config.cpp
+similarity index 100%
+rename from glcdskin/config.c
+rename to glcdskin/config.cpp
+diff --git a/glcdskin/display.c b/glcdskin/display.cpp
+similarity index 100%
+rename from glcdskin/display.c
+rename to glcdskin/display.cpp
+diff --git a/glcdskin/font.c b/glcdskin/font.cpp
+similarity index 100%
+rename from glcdskin/font.c
+rename to glcdskin/font.cpp
+diff --git a/glcdskin/function.c b/glcdskin/function.cpp
+similarity index 100%
+rename from glcdskin/function.c
+rename to glcdskin/function.cpp
+diff --git a/glcdskin/object.c b/glcdskin/object.cpp
+similarity index 100%
+rename from glcdskin/object.c
+rename to glcdskin/object.cpp
+diff --git a/glcdskin/parser.c b/glcdskin/parser.cpp
+similarity index 100%
+rename from glcdskin/parser.c
+rename to glcdskin/parser.cpp
+diff --git a/glcdskin/skin.c b/glcdskin/skin.cpp
+similarity index 100%
+rename from glcdskin/skin.c
+rename to glcdskin/skin.cpp
+diff --git a/glcdskin/string.c b/glcdskin/string.cpp
+similarity index 100%
+rename from glcdskin/string.c
+rename to glcdskin/string.cpp
+diff --git a/glcdskin/type.c b/glcdskin/type.cpp
+similarity index 100%
+rename from glcdskin/type.c
+rename to glcdskin/type.cpp
+diff --git a/glcdskin/variable.c b/glcdskin/variable.cpp
+similarity index 100%
+rename from glcdskin/variable.c
+rename to glcdskin/variable.cpp
+diff --git a/glcdskin/xml.c b/glcdskin/xml.cpp
+similarity index 100%
+rename from glcdskin/xml.c
+rename to glcdskin/xml.cpp
+diff --git a/tools/convpic/Makefile b/tools/convpic/Makefile
+index eb91742..1abbcb2 100644
+--- a/tools/convpic/Makefile
++++ b/tools/convpic/Makefile
+@@ -17,7 +17,7 @@ all: $(PRGNAME)
+ 
+ # Implicit rules:
+ 
+-%.o: %.c
++%.o: %.cpp
+ 	$(CXX) $(CXXEXTRA) $(CXXFLAGS) -c $(DEFINES) $(INCLUDES) $<
+ 
+ # Dependencies:
+diff --git a/tools/convpic/convpic.c b/tools/convpic/convpic.cpp
+similarity index 100%
+rename from tools/convpic/convpic.c
+rename to tools/convpic/convpic.cpp
+diff --git a/tools/crtfont/Makefile b/tools/crtfont/Makefile
+index 614c135..0e4f51a 100644
+--- a/tools/crtfont/Makefile
++++ b/tools/crtfont/Makefile
+@@ -16,7 +16,7 @@ all: $(PRGNAME)
+ 
+ # Implicit rules:
+ 
+-%.o: %.c
++%.o: %.cpp
+ 	$(CXX) $(CXXEXTRA) $(CXXFLAGS) -c $(DEFINES) $(INCLUDES) $<
+ 
+ # Dependencies:
+diff --git a/tools/crtfont/crtfont.c b/tools/crtfont/crtfont.cpp
+similarity index 100%
+rename from tools/crtfont/crtfont.c
+rename to tools/crtfont/crtfont.cpp
+diff --git a/tools/genfont/Makefile b/tools/genfont/Makefile
+index 1a68ad0..b79eb72 100644
+--- a/tools/genfont/Makefile
++++ b/tools/genfont/Makefile
+@@ -19,7 +19,7 @@ all: $(PRGNAME)
+ 
+ # Implicit rules:
+ 
+-%.o: %.c
++%.o: %.cpp
+ 	$(CXX) $(CXXEXTRA) $(CXXFLAGS) -c $(DEFINES) $(INCLUDES) $<
+ 
+ # Dependencies:
+diff --git a/tools/genfont/genfont.c b/tools/genfont/genfont.cpp
+similarity index 100%
+rename from tools/genfont/genfont.c
+rename to tools/genfont/genfont.cpp
+diff --git a/tools/lcdtestpattern/Makefile b/tools/lcdtestpattern/Makefile
+index 29fe792..d219ff9 100644
+--- a/tools/lcdtestpattern/Makefile
++++ b/tools/lcdtestpattern/Makefile
+@@ -17,7 +17,7 @@ all: $(PRGNAME)
+ 
+ # Implicit rules:
+ 
+-%.o: %.c
++%.o: %.cpp
+ 	$(CXX) $(CXXEXTRA) $(CXXFLAGS) -c $(DEFINES) $(INCLUDES) $<
+ 
+ # Dependencies:
+diff --git a/tools/lcdtestpattern/lcdtestpattern.c b/tools/lcdtestpattern/lcdtestpattern.cpp
+similarity index 100%
+rename from tools/lcdtestpattern/lcdtestpattern.c
+rename to tools/lcdtestpattern/lcdtestpattern.cpp
+diff --git a/tools/showpic/Makefile b/tools/showpic/Makefile
+index 967ecf9..660c5d1 100644
+--- a/tools/showpic/Makefile
++++ b/tools/showpic/Makefile
+@@ -17,7 +17,7 @@ all: $(PRGNAME)
+ 
+ # Implicit rules:
+ 
+-%.o: %.c
++%.o: %.cpp
+ 	$(CXX) $(CXXEXTRA) $(CXXFLAGS) -c $(DEFINES) $(INCLUDES) $<
+ 
+ # Dependencies:
+diff --git a/tools/showpic/showpic.c b/tools/showpic/showpic.cpp
+similarity index 100%
+rename from tools/showpic/showpic.c
+rename to tools/showpic/showpic.cpp
+diff --git a/tools/showtext/Makefile b/tools/showtext/Makefile
+index 20b3381..d4692b8 100644
+--- a/tools/showtext/Makefile
++++ b/tools/showtext/Makefile
+@@ -17,7 +17,7 @@ all: $(PRGNAME)
+ 
+ # Implicit rules:
+ 
+-%.o: %.c
++%.o: %.cpp
+ 	$(CXX) $(CXXEXTRA) $(CXXFLAGS) -c $(DEFINES) $(INCLUDES) $<
+ 
+ # Dependencies:
+diff --git a/tools/showtext/showtext.c b/tools/showtext/showtext.cpp
+similarity index 100%
+rename from tools/showtext/showtext.c
+rename to tools/showtext/showtext.cpp
+diff --git a/tools/skintest/Makefile b/tools/skintest/Makefile
+index 0c0f43e..634fc61 100644
+--- a/tools/skintest/Makefile
++++ b/tools/skintest/Makefile
+@@ -17,7 +17,7 @@ all: $(PRGNAME)
+ 
+ # Implicit rules:
+ 
+-%.o: %.c
++%.o: %.cpp
+ 	$(CXX) $(CXXEXTRA) $(CXXFLAGS) -c $(DEFINES) $(INCLUDES) $<
+ 
+ # Dependencies:
+diff --git a/tools/skintest/skintest.c b/tools/skintest/skintest.cpp
+similarity index 100%
+rename from tools/skintest/skintest.c
+rename to tools/skintest/skintest.cpp

@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/926261
+https://code.videolan.org/videolan/vlc/-/commit/770789f265761fc7ab2de69ca105fec4ad93d9e2
+
+From 770789f265761fc7ab2de69ca105fec4ad93d9e2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?R=C3=A9mi=20Denis-Courmont?= <remi@remlab.net>
+Date: Mon, 26 Feb 2018 20:36:29 +0200
+Subject: [PATCH] chromaprint: missing cast
+
+(cherry picked from commit 7bd5bab3e43ae187f7219db61ed85d06d2ba0547)
+Signed-off-by: Steve Lhomme <robux4@ycbcr.xyz>
+--- a/modules/stream_out/chromaprint.c
++++ b/modules/stream_out/chromaprint.c
+@@ -231,7 +231,7 @@ static int Send( sout_stream_t *p_stream, sout_stream_id_sys_t *id,
+         if ( !p_sys->b_finished && id->i_samples > 0 && p_buf->i_buffer )
+         {
+             if(! chromaprint_feed( p_sys->p_chromaprint_ctx,
+-                                   p_buf->p_buffer,
++                                   (int16_t *)p_buf->p_buffer,
+                                    p_buf->i_buffer / BYTESPERSAMPLE ) )
+                 msg_Warn( p_stream, "feed error" );
+             id->i_samples -= i_samples;
+-- 
+GitLab

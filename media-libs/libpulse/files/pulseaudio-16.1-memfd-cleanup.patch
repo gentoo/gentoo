@@ -1,0 +1,28 @@
+commit e650c2b33e4fefc0589751b3958bd3b5d3b423ac
+Author: Alistair Leslie-Hughes <leslie_alistair@hotmail.com>
+Date:   Thu Nov 3 09:22:48 2022 +1100
+
+    Ensure fds are closed when exec functions are used.
+    
+    When usng shm_open, FD_CLOEXEC is set explicitly.
+    
+    However when using memfd_create, we must pass the MFD_CLOEXEC flag
+    to ensure the same fcntl value (FD_CLOEXEC) is set.
+    
+    Fixes #1394
+    
+    Part-of: <https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/751>
+
+diff --git a/src/pulsecore/shm.c b/src/pulsecore/shm.c
+index e464f6bce..ff54dcb59 100644
+--- a/src/pulsecore/shm.c
++++ b/src/pulsecore/shm.c
+@@ -164,7 +164,7 @@ static int sharedmem_create(pa_shm *m, pa_mem_type_t type, size_t size, mode_t m
+ #endif
+ #ifdef HAVE_MEMFD
+     case PA_MEM_TYPE_SHARED_MEMFD:
+-        fd = memfd_create("pulseaudio", MFD_ALLOW_SEALING);
++        fd = memfd_create("pulseaudio", MFD_ALLOW_SEALING|MFD_CLOEXEC);
+         break;
+ #endif
+     default:

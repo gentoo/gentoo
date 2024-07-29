@@ -1,0 +1,10 @@
+--- a/extras/Makefile.am	2022-11-26 16:51:38.799201541 +0100
++++ b/extras/Makefile.am	2022-11-26 16:52:00.112873141 +0100
+@@ -30,6 +30,6 @@
+ 
+ SUFFIXES = .cob .$(COB_MODULE_EXT)
+ .cob.$(COB_MODULE_EXT):
+-	("$(top_builddir)/pre-inst-env" $(COBC) -m -Wall -O2 -o "$@" "$<" || \
++	("$(top_builddir)/pre-inst-env" $(COBC) -m -Wall -O2 -g -o "$@" "$<" || \
+ 	 "$(top_builddir)/pre-inst-env" $(COBC) -m -Wall     -o "$@" "$<" || \
+ 	 "$(top_builddir)/pre-inst-env" $(COBC) -m -Wall -vv -o "$@" "$<")

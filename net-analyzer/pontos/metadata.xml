@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>foti.giuseppe@gmail.com</email>
+		<name>Giuseppe Foti</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	The pontos Python package is a collection of utilities, tools, classes
+	and functions maintained by Greenbone Networks.
+	It is needed to run tests on some Greenbone Vulnerability Management packages.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">greenbone/pontos</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -14,7 +14,7 @@ CC = gcc
+
+ # The next two lines are for building an optimized and stripped program.
+ CFLAGS += -Wall -DNDEBUG -I/usr/include
+-LFLAGS = $(LDFLAGS) -L/usr/lib
++LFLAGS = $(LDFLAGS)
+
+ # These three lines are for building Athlon optimized programs on my system.
+ #CC=gcc-3.1

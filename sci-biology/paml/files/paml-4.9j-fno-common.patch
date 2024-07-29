@@ -1,0 +1,14 @@
+--- a/src/paml.h
++++ b/src/paml.h
+@@ -372,9 +372,9 @@
+ void printSptree(void);
+ 
+ 
+-enum {BASEseq=0, CODONseq, AAseq, CODON2AAseq, BINARYseq, BASE5seq} SeqTypes;
++typedef enum {BASEseq=0, CODONseq, AAseq, CODON2AAseq, BINARYseq, BASE5seq} SeqTypes;
+ 
+-enum {PrBranch=1, PrNodeNum=2, PrLabel=4, PrNodeStr=8, PrAge=16, PrOmega=32} OutTreeOptions;
++typedef enum {PrBranch=1, PrNodeNum=2, PrLabel=4, PrNodeStr=8, PrAge=16, PrOmega=32} OutTreeOptions;
+ 
+ 
+ /* use mean (0; default) for discrete gamma instead of median (1) */

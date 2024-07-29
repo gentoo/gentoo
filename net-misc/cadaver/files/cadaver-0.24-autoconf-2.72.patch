@@ -1,0 +1,59 @@
+https://github.com/notroj/cadaver/pull/42
+
+From 2eab7a8225b6fc0c6fd4773794abe83561f2d733 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 17 Apr 2024 00:48:11 +0100
+Subject: [PATCH] m4: fix quoting in readline.m4
+
+Without this, with autoconf-2.72 at least, we get:
+```
+$ ./configure
+[...]
+checking for pkg-config... /usr/sbin/pkg-config
+checking pkg-config is at least version 0.9.0... yes
+checking for tputs in -lcurses... ./configure: 5319: ac_fn_c_try_link: not found
+no
+checking for tputs in -lncurses... no
+[...]
+```
+--- a/m4/readline.m4
++++ b/m4/readline.m4
+@@ -9,24 +9,21 @@ AC_ARG_ENABLE(readline,
+ 	[use_readline=$enableval],
+ 	[use_readline=yes])  dnl Defaults to ON (if found)
+ 
+-if test "$use_readline" = "yes"; then
+-	AC_CHECK_LIB(curses, tputs, LIBS="$LIBS -lcurses",
+-		AC_CHECK_LIB(ncurses, tputs))
+-	AC_CHECK_LIB(readline, readline)
++AS_IF([test "$use_readline" = "yes"], [
++	AC_CHECK_LIB([curses], [tputs], [LIBS="$LIBS -lcurses"],
++		[AC_CHECK_LIB([ncurses], [tputs])])
++	AC_CHECK_LIB([readline], [readline])
+ 
+-	AC_SEARCH_LIBS(add_history, history,
+-		AC_DEFINE(HAVE_ADD_HISTORY, 1, [Define if you have the add_history function])
++	AC_SEARCH_LIBS([add_history], [history],
++		AC_DEFINE([HAVE_ADD_HISTORY], [1], [Define if you have the add_history function])
+ 	)
+ 
+-	AC_CHECK_HEADERS(history.h readline/history.h readline.h readline/readline.h)
++	AC_CHECK_HEADERS([history.h readline/history.h readline.h readline/readline.h])
+ 
+ 	# Check for rl_completion_matches as in readline 4.2
+-	AC_CHECK_FUNCS(rl_completion_matches)
+-	
++	AC_CHECK_FUNCS([rl_completion_matches])
++
+ 	msg_readline="enabled"
+-else
++], [
+ 	msg_readline="disabled"
+-fi
+-
+-])
+-
++])])
+-- 
+2.44.0
+

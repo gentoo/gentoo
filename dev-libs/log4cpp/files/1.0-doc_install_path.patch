@@ -1,0 +1,37 @@
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -1,7 +1,6 @@
+ SUBDIRS = html
+ 
+ man3dir = $(mandir)/man3
+-docdir  = $(prefix)/doc/@PACKAGE_TARNAME@-@PACKAGE_VERSION@
+ 
+ EXTRA_DIST = \
+ 	mainPage.txt
+@@ -22,18 +22,18 @@
+ 
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(man3dir)
++	$(mkinstalldirs) $(DESTDIR)/$(man3dir)
+ 	@for i in ./man/man3/log4cpp.3 ./man/man3/log4cpp_*.3; do \
+ 		inst=`basename $$i | sed 's/_/::/g'`; \
+ 		echo "$(INSTALL_DATA) $$i$(man3dir)/$$inst"; \
+-		$(INSTALL_DATA) $$i $(man3dir)/$$inst; \
++		$(INSTALL_DATA) $$i $(DESTDIR)/$(man3dir)/$$inst; \
+ 	done
+-	$(mkinstalldirs) $(docdir)
+-	cp -r html/. $(docdir)
+-	$(RM) -r -f $(docdir)/CVS \
+-		$(docdir)/Makefile.am \
+-		$(docdir)/Makefile.in \
+-		$(docdir)/Makefile
++	$(mkinstalldirs) $(DESTDIR)/$(docdir)
++	cp -r html/. $(DESTDIR)/$(docdir)
++	$(RM) -r -f $(DESTDIR)/$(docdir)/CVS \
++		$(DESTDIR)/$(docdir)/Makefile.am \
++		$(DESTDIR)/$(docdir)/Makefile.in \
++		$(DESTDIR)/$(docdir)/Makefile
+ 
+ uninstall-local:
+ 	$(RM) $(man3dir)/log4cpp.3

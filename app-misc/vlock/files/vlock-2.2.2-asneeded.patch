@@ -1,0 +1,11 @@
+--- a/tests/Makefile	2008-10-16 13:48:37.000000000 +0200
++++ b/tests/Makefile	2008-10-16 13:48:53.000000000 +0200
+@@ -16,7 +16,7 @@
+ TEST_SOURCES = $(TESTED_SOURCES:%=test_%)
+ TEST_OBJECTS = $(TEST_SOURCES:.c=.o)
+ 
+-vlock-test : override LDFLAGS+=-lcunit
++vlock-test : override LDLIBS+=-lcunit
+ vlock-test: vlock-test.o $(TEST_OBJECTS) $(TESTED_OBJECTS)
+ 
+ vlock-test.o: $(TEST_SOURCES:.c=.h)

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>proaudio@gentoo.org</email>
+		<name>Gentoo ProAudio Project</name>
+	</maintainer>
+	<use>
+		<flag name="hid">Enable HID controller support</flag>
+		<flag name="keyfinder">Enable musical key detection support via <pkg>media-libs/libkeyfinder</pkg></flag>
+		<flag name="modplug">Add libmodplug support</flag>
+		<flag name="lv2">Add support for Ladspa V2 via <pkg>media-libs/lilv</pkg></flag>
+		<flag name="qtkeychain">Enable Secure credential storage support via <pkg>dev-libs/qtkeychain</pkg></flag>
+		<flag name="shout">Enable broadcasting support via <pkg>media-libs/libshout</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">mixxx</remote-id>
+		<remote-id type="github">mixxxdj/mixxx</remote-id>
+	</upstream>
+</pkgmetadata>

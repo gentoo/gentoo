@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description='Signal the UPS to kill power in a power failure condition'
+
+depend() {
+	need mount-ro
+}
+
+start() {
+	if [ "$(runlevel | cut -d' ' -f2)" = "0" -a -f /etc/apcupsd/powerfail ] ; then
+		ebegin 'Signaling UPS to kill power'
+		/sbin/apcupsd --killpower
+		eend $?
+	fi
+}

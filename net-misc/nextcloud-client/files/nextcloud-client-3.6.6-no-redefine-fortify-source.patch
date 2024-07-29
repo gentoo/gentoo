@@ -1,0 +1,31 @@
+Gentoo's toolchain always sets F_S (level 2 at minimum) by default.
+
+https://bugs.gentoo.org/890072
+--- a/cmake/modules/DefineCompilerFlags.cmake
++++ b/cmake/modules/DefineCompilerFlags.cmake
+@@ -47,12 +47,6 @@ if (${CMAKE_C_COMPILER_ID} MATCHES "(GNU|Clang)")
+ 
+     if (CMAKE_BUILD_TYPE)
+         string(TOLOWER "${CMAKE_BUILD_TYPE}" CMAKE_BUILD_TYPE_LOWER)
+-        if (CMAKE_BUILD_TYPE_LOWER MATCHES "(release|relwithdebinfo|minsizerel)" AND (NOT ${CMAKE_C_FLAGS} MATCHES "FORTIFY_SOURCE=[3-9]"))
+-            check_c_compiler_flag("-Wp,-D_FORTIFY_SOURCE=2" WITH_FORTIFY_SOURCE)
+-            if (WITH_FORTIFY_SOURCE)
+-                set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wp,-D_FORTIFY_SOURCE=2")
+-            endif (WITH_FORTIFY_SOURCE)
+-        endif()
+     endif()
+ endif (${CMAKE_C_COMPILER_ID} MATCHES "(GNU|Clang)")
+ 
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -31,10 +31,6 @@ if(NOT MSVC)
+   endif()
+ 
+   string(TOLOWER "${CMAKE_BUILD_TYPE}" CMAKE_BUILD_TYPE_LOWER)
+-  if(CMAKE_BUILD_TYPE_LOWER MATCHES "(release|relwithdebinfo|minsizerel)" AND ((NOT ${CMAKE_C_FLAGS} MATCHES "FORTIFY_SOURCE=[3-9]") AND (NOT ${CMAKE_CXX_FLAGS} MATCHES "FORTIFY_SOURCE=[3-9]")))
+-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_FORTIFY_SOURCE=2")
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_FORTIFY_SOURCE=2")
+-  endif()
+ 
+   if (CMAKE_CXX_COMPILER MATCHES "Clang")
+     # Calling Qt's qCWarning(category, ...) with no params for "..." is a GNU

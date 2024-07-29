@@ -1,0 +1,22 @@
+# fix lib path for X11 and dont ignore LDFLAGS
+# respect CC and LD
+--- Makefile.old	2021-07-03 16:34:49.937098627 +0200
++++ Makefile	2021-07-03 16:33:56.615284555 +0200
+@@ -1,12 +1,14 @@
+ X11LIBDIR = /usr/X11R6/lib
+ PASCALCOMPILER = fpc
+-CC = gcc
+-CFLAGS = -O2 -g
++#CC = gcc
++#CFLAGS = -O2 -g
+ 
+ POBJS =	puff.o pfart.o pffft.o pfmsc.o pfrw.o pfst.o pfun1.o pfun2.o pfun3.o xgraph.o
+ 
+ puff:	$(POBJS) puff_c.o ppas.sh
+-	sed 's/link.res/link.res puff_c.o -lX11/' <ppas.sh  >ppasx.sh
++	sed -i -e 's!^[^[:space:]]\+ -b!$(LD) -b!g' ppas.sh
++	sed -i -e 's/\-b [^[:space:]]\+//g' ppas.sh
++	sed 's:.res:.res $(LDFLAGS) puff_c.o -lX11:' <ppas.sh  >ppasx.sh
+ 	sh ppasx.sh
+ 
+ %.o:	%.pas

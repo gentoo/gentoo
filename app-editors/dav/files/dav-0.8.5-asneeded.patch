@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -12,7 +12,7 @@
+ LDFLAGS=-lncurses -O3 -Wall
+ 
+ dav: $(OBJECTS) 
+-	$(CC) $(LDFLAGS) $(OBJECTS) -o dav
++	$(CC) $(OBJECTS) $(LDFLAGS) -o dav
+ 
+ install:
+ 	mkdir -p $(DESTDIR)/usr/bin

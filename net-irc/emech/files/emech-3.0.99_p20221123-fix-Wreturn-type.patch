@@ -1,0 +1,34 @@
+QA warns about non-void functions returning no value. Both function are not used
+anywhere in the code anyway.
+
+Pascal Jäger <pascal.jaeger@leimstift.de> (2022-11-23)
+
+--- a/src/spy.c
++++ b/src/spy.c
+@@ -460,7 +460,7 @@ void end_redirect(void)
+ char *urlhost(const char *url)
+ {
+ 	char	copy[strlen(url)];
+-	const char *end,*beg,*dst;
++	char *end,*beg,*dst;
+ 	int	n = 0;
+ 
+ 	beg = end = url;
+@@ -481,6 +481,7 @@ char *urlhost(const char *url)
+ 		end++;
+ 	}
+ 	stringcpy_n(copy,beg,(end-beg));
++	return beg;
+ #ifdef DEBUG
+ 	debug("(urlhost) host = %s\n",copy);
+ #endif
+--- a/src/toybox.c
++++ b/src/toybox.c
+@@ -196,6 +196,7 @@ int read_bigcharset(char *fname)
+ int read_ascii(char *rest)
+ {
+ 	to_user_q(global_from,FMT_PLAIN,rest);
++	return (0);
+ }
+ 
+ #ifdef TRIVIA

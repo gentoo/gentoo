@@ -1,0 +1,26 @@
+jxplorer_home=@GENTOO_PORTAGE_EPREFIX@/usr/share/jxplorer/
+
+home="${HOME}/.jxplorer"
+
+if [ ! -d "${home}" ]; then
+	mkdir -v "${home}"
+fi
+
+try_create() {
+	[[ ! -f "${1}" ]] && touch "${1}"
+}
+
+if [ -d ${HOME}/.jxplorer ]; then
+	for file in search_filters.txt bookmarks.txt quicksearch.txt ; do 
+		try_create "${home}/${file}"
+	done
+	for file in security.default csvconfig.txt.default ; do 
+		[[ ! -e "${home}/${file}" ]] && \
+			ln -vs "${jxplorer_home}/${file}" "${home}/${subdir}"
+	done
+	for subdir in htmldocs icons images templates plugins language ; do
+		[[ ! -e "${home}/${subdir}" ]] && \
+			ln -vs "${jxplorer_home}/${subdir}" "${home}/${subdir}"
+	done
+fi
+

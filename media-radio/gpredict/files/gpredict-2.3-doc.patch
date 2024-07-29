@@ -1,0 +1,15 @@
+diff --git a/Makefile.am b/Makefile.am
+index d807d7f..ca80839 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -9,10 +9,6 @@ dist-hook:
+ 
+ install-data-local:
+ 	@$(NORMAL_INSTALL)
+-	$(INSTALL_DATA) $(top_srcdir)/AUTHORS $(DESTDIR)$(pkgdatadir)
+-	$(INSTALL_DATA) $(top_srcdir)/NEWS $(DESTDIR)$(pkgdatadir)
+-	$(INSTALL_DATA) $(top_srcdir)/README $(DESTDIR)$(pkgdatadir)
+-	$(INSTALL_DATA) $(top_srcdir)/COPYING $(DESTDIR)$(pkgdatadir)
+ 
+ EXTRA_DIST = \
+ 	autogen.sh            \

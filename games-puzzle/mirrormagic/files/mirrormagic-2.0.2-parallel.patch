@@ -1,0 +1,11 @@
+--- a/src/Makefile.old
++++ b/src/Makefile
+@@ -146,7 +146,7 @@
+ endif
+ 
+ 
+-all: libgame_dir $(PROGNAME)
++all: $(PROGNAME)
+ 
+ $(PROGNAME): $(LIBGAME) $(OBJS) $(ICON)
+ 	$(CC) $(PROFILING) $(OBJS) $(ICON) $(LIBGAME) $(LDFLAGS) -o $(PROGNAME)

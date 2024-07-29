@@ -1,0 +1,25 @@
+From 230f42f5bc5ebc44062820bde1e9e40ae0746c00 Mon Sep 17 00:00:00 2001
+From: Corentin Rondier <contact@rondier.io>
+Date: Sun, 24 Sep 2023 23:22:58 +0200
+Subject: [PATCH] cpu_usage2: fix build failures on clang/llvm
+
+Remove a non-standard suffix on a floating-point literal, causing build failures on clang/LLVM
+
+fixes #504
+---
+ cpu_usage2/cpu_usage2.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cpu_usage2/cpu_usage2.c b/cpu_usage2/cpu_usage2.c
+index 72709037..483c4c81 100644
+--- a/cpu_usage2/cpu_usage2.c
++++ b/cpu_usage2/cpu_usage2.c
+@@ -124,7 +124,7 @@ int main(int argc, char *argv[])
+     sleep(t);
+     total = get_usage(&used);
+ 
+-    display(label, 100.0D * (used - old_used) / (total - old_total),
++    display(label, 100.0 * (used - old_used) / (total - old_total),
+             warning, critical, decimals);
+     fflush(stdout);
+     old_total = total;

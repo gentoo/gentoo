@@ -1,0 +1,28 @@
+From 868f873a78034016fc05d79061245695e3c372fc Mon Sep 17 00:00:00 2001
+From: matoro <matoro@users.noreply.github.com>
+Date: Thu, 23 May 2024 16:10:32 -0400
+Subject: [PATCH] Skip test_interrupt_in_other_thread on arm32-linux
+
+This is a combination of main Ruby commit
+https://github.com/ruby/ruby/commit/aefc98891c42024039f19ef45bdfe93fbc590b7c
+and my PR correcting the regex https://github.com/ruby/ruby/pull/10819.
+Upstream Ruby requests that changes to this test go to readline-ext repo
+before being backported to 3.2 branch.
+---
+ test/readline/test_readline.rb | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/test/readline/test_readline.rb b/test/readline/test_readline.rb
+index 746a3a5ba1..86d3862739 100644
+--- a/test/readline/test_readline.rb
++++ b/test/readline/test_readline.rb
+@@ -481,6 +481,9 @@ def test_interrupt_in_other_thread
+     # likewise with 32-bit userspace on 64-bit kernel
+     omit if /\Ax86_64-linux-(?:x32|i[3-6]686)\z/ =~ RUBY_PLATFORM
+ 
++    # Skip arm32-linux (Travis CI).  See aefc988 in main ruby repo.
++    omit "Skip arm32-linux" if /armv[0-9+][a-z]-linux/ =~ RUBY_PLATFORM
++
+     if defined?(TestReadline) && self.class == TestReadline
+       use = "use_ext_readline"
+     elsif defined?(TestRelineAsReadline) && self.class == TestRelineAsReadline

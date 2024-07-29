@@ -1,0 +1,37 @@
+https://bugs.gentoo.org/899028
+--- a/src/net/ea/chatrecv.h
++++ b/src/net/ea/chatrecv.h
+@@ -23,14 +23,7 @@
+ #ifndef NET_EA_CHATRECV_H
+ #define NET_EA_CHATRECV_H
+ 
+-#if defined(__GXX_EXPERIMENTAL_CXX0X__)
+-#if defined(__APPLE__)
+-#include <tr1/cstdint>
+-#endif  // defined(__APPLE__)
+-#else  // defined(__GXX_EXPERIMENTAL_CXX0X__)
+-#include <stdint.h>
+-#endif  // defined(__GXX_EXPERIMENTAL_CXX0X__)
+-
++#include <cstdint>
+ #include <string>
+ #include <queue>
+ #ifndef __time_t_defined
+--- a/src/net/ea/traderecv.h
++++ b/src/net/ea/traderecv.h
+@@ -23,14 +23,7 @@
+ #ifndef NET_EA_TRADERECV_H
+ #define NET_EA_TRADERECV_H
+ 
+-#if defined(__GXX_EXPERIMENTAL_CXX0X__)
+-#if defined(__APPLE__)
+-#include <tr1/cstdint>
+-#endif  // defined(__APPLE__)
+-#else  // defined(__GXX_EXPERIMENTAL_CXX0X__)
+-#include <stdint.h>
+-#endif  // defined(__GXX_EXPERIMENTAL_CXX0X__)
+-
++#include <cstdint>
+ #include <string>
+ 
+ namespace Net

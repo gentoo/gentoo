@@ -1,0 +1,51 @@
+diff --git a/docs/conf.py b/docs/conf.py
+index 96746bf..2445d35 100644
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -13,7 +13,7 @@
+ 
+ import sys, os
+ import datetime
+-import pylons_sphinx_themes
++#import pylons_sphinx_themes
+ 
+ # If extensions (or modules to document with autodoc) are in another directory,
+ # add these directories to sys.path here. If the directory is relative to the
+@@ -102,11 +102,11 @@ pygments_style = 'sphinx'
+ 
+ # The theme to use for HTML and HTML Help pages.  See the documentation for
+ # a list of builtin themes.
+-html_theme = 'pylons'
+-html_theme_path = pylons_sphinx_themes.get_html_themes_path()
+-html_theme_options = dict(
+-    github_url='https://github.com/Pylons/webtest',
+-    )
++#html_theme = 'pylons'
++#html_theme_path = pylons_sphinx_themes.get_html_themes_path()
++#html_theme_options = dict(
++#    github_url='https://github.com/Pylons/webtest',
++#    )
+ # Theme options are theme-specific and customize the look and feel of a theme
+ # further.  For a list of options available for each theme, see the
+ # documentation.
+@@ -180,13 +180,13 @@ smartquotes = False
+ htmlhelp_basename = 'WebTestdoc'
+ 
+ # Control display of sidebars
+-html_sidebars = { '**': [
+-    'localtoc.html',
+-    'ethicalads.html',
+-    'relations.html',
+-    'sourcelink.html',
+-    'searchbox.html',
+-] }
++#html_sidebars = { '**': [
++#    'localtoc.html',
++#    'ethicalads.html',
++#    'relations.html',
++#    'sourcelink.html',
++#    'searchbox.html',
++#] }
+ 
+ # -- Options for LaTeX output --------------------------------------------------
+ 

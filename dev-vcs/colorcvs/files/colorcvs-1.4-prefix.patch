@@ -1,0 +1,29 @@
+--- a/colorcvs
++++ b/colorcvs
+@@ -54,7 +54,7 @@
+ 
+ sub initDefaults
+ {
+-	$cvsPath = "/usr/bin/cvs";
++	$cvsPath = "@GENTOO_PORTAGE_EPREFIX@/usr/bin/cvs";
+ 
+ 	$nocolor{"dumb"} = "true";
+ 
+@@ -118,7 +118,7 @@
+ initDefaults();
+ 
+ # Read the configuration files.
+-for my $configFile ('/etc/colorcvsrc', "$ENV{HOME}/.colorcvsrc") {
++for my $configFile ('@GENTOO_PORTAGE_EPREFIX@/etc/colorcvsrc', "$ENV{HOME}/.colorcvsrc") {
+ 	if (-f $configFile)
+ 	{
+ 		loadPreferences($configFile);
+@@ -176,7 +176,7 @@
+ }
+ 
+ # Get the return code of the compiler and exit with that.
+-waitpid($compiler_pid, 0);
++waitpid($cvs_pid, 0);
+ exit ($? >> 8);
+ 
+ # arch-tag: colorcvs

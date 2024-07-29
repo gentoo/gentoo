@@ -1,0 +1,11 @@
+--- a/NFBTRANS.C
++++ b/NFBTRANS.C
+@@ -6,7 +6,7 @@
+ #define LINT_ARGS
+ #define DOS
+ #else
+-#define UNIX_PATH "/usr/local/lib/"
++#define UNIX_PATH "/etc/nfbtrans/"
+ #endif             /* unix */
+ #include	<stdio.h>
+ #include <sys/types.h>

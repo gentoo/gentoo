@@ -1,0 +1,48 @@
+From e2ef4e1504a40d62b45167d7cacfea0322a78134 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Mon, 25 Dec 2023 14:51:46 +0200
+Subject: [PATCH] build: Fix building without wayland headers
+
+Fixes: https://gitlab.gnome.org/GNOME/mutter/-/issues/3046
+---
+ src/backends/x11/nested/meta-backend-x11-nested.c | 2 ++
+ src/core/meta-context-main.c                      | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/backends/x11/nested/meta-backend-x11-nested.c b/src/backends/x11/nested/meta-backend-x11-nested.c
+index 17e6f7e47..0d99078ea 100644
+--- a/src/backends/x11/nested/meta-backend-x11-nested.c
++++ b/src/backends/x11/nested/meta-backend-x11-nested.c
+@@ -25,7 +25,9 @@
+ #include "backends/x11/nested/meta-cursor-renderer-x11-nested.h"
+ #include "backends/x11/nested/meta-renderer-x11-nested.h"
+ 
++#ifdef HAVE_WAYLAND
+ #include "wayland/meta-wayland.h"
++#endif
+ 
+ typedef struct _MetaBackendX11NestedPrivate
+ {
+diff --git a/src/core/meta-context-main.c b/src/core/meta-context-main.c
+index 9c94183b5..a0ac7c823 100644
+--- a/src/core/meta-context-main.c
++++ b/src/core/meta-context-main.c
+@@ -33,7 +33,6 @@
+ #include "backends/meta-virtual-monitor.h"
+ #include "backends/x11/cm/meta-backend-x11-cm.h"
+ #include "meta/meta-backend.h"
+-#include "wayland/meta-wayland.h"
+ #include "x11/session.h"
+ 
+ #ifdef HAVE_NATIVE_BACKEND
+@@ -42,6 +41,7 @@
+ 
+ #ifdef HAVE_WAYLAND
+ #include "backends/x11/nested/meta-backend-x11-nested.h"
++#include "wayland/meta-wayland.h"
+ #endif
+ 
+ typedef struct _MetaContextMainOptions
+-- 
+2.43.0
+

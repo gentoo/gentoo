@@ -1,0 +1,118 @@
+https://github.com/mgieseki/dvisvgm/pull/196
+
+From fe5fe3996056cd385e59692b8f60916aedb7d7b9 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 2 Oct 2022 19:43:23 +0100
+Subject: [PATCH] Add missing <cstdint> includes for GCC 13
+
+--- a/src/BasicDVIReader.cpp
++++ b/src/BasicDVIReader.cpp
+@@ -19,6 +19,7 @@
+ *************************************************************************/
+ 
+ #include <algorithm>
++#include <cstdint>
+ #include "BasicDVIReader.hpp"
+ 
+ using namespace std;
+--- a/src/BasicDVIReader.hpp
++++ b/src/BasicDVIReader.hpp
+@@ -21,6 +21,8 @@
+ #ifndef BASICDVIREADER_HPP
+ #define BASICDVIREADER_HPP
+ 
++#include <cstdint>
++
+ #include "Matrix.hpp"
+ #include "MessageException.hpp"
+ #include "StreamReader.hpp"
+--- a/src/Bitmap.hpp
++++ b/src/Bitmap.hpp
+@@ -21,6 +21,7 @@
+ #ifndef BITMAP_HPP
+ #define BITMAP_HPP
+ 
++#include <cstdint>
+ #include <ostream>
+ #include <vector>
+ 
+--- a/src/CMap.hpp
++++ b/src/CMap.hpp
+@@ -22,6 +22,7 @@
+ #define CMAP_HPP
+ 
+ #include <algorithm>
++#include <cstdint>
+ #include <ostream>
+ #include <vector>
+ #include "FontEncoding.hpp"
+--- a/src/Color.hpp
++++ b/src/Color.hpp
+@@ -21,6 +21,7 @@
+ #ifndef COLOR_HPP
+ #define COLOR_HPP
+ 
++#include <cstdint>
+ #include <string>
+ #include <valarray>
+ #include <vector>
+--- a/src/DVIReader.hpp
++++ b/src/DVIReader.hpp
+@@ -21,6 +21,7 @@
+ #ifndef DVIREADER_HPP
+ #define DVIREADER_HPP
+ 
++#include <cstdint>
+ #include <limits>
+ #include <map>
+ #include <stack>
+--- a/src/FileSystem.hpp
++++ b/src/FileSystem.hpp
+@@ -21,6 +21,7 @@
+ #ifndef FILESYSTEM_HPP
+ #define FILESYSTEM_HPP
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 
+--- a/src/InputBuffer.hpp
++++ b/src/InputBuffer.hpp
+@@ -22,6 +22,7 @@
+ #define INPUTBUFFER_HPP
+ 
+ #include <algorithm>
++#include <cstdint>
+ #include <cstring>
+ #include <istream>
+ #include <string>
+--- a/src/RangeMap.hpp
++++ b/src/RangeMap.hpp
+@@ -22,6 +22,7 @@
+ #define RANGEMAP_HPP
+ 
+ #include <algorithm>
++#include <cstdint>
+ #include <ostream>
+ #include <vector>
+ 
+--- a/src/Unicode.cpp
++++ b/src/Unicode.cpp
+@@ -21,6 +21,7 @@
+ #include <algorithm>
+ #include <cctype>
+ #include <cstddef>
++#include <cstdint>
+ #include <iomanip>
+ #include <sstream>
+ #include <xxhash.h>
+--- a/src/Unicode.hpp
++++ b/src/Unicode.hpp
+@@ -21,6 +21,7 @@
+ #ifndef UNICODE_HPP
+ #define UNICODE_HPP
+ 
++#include <cstdint>
+ #include <string>
+ 
+ struct Unicode {

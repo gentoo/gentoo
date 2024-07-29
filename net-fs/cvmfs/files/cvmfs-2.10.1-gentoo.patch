@@ -1,0 +1,85 @@
+
+Patch to unbundle dependencies to build in Gentoo.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 96d509739..1b214f5a6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -337,6 +337,10 @@ endif ()
+ find_package (OpenSSL REQUIRED)
+ set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${OPENSSL_INCLUDE_DIR})
+
++set(Libcrypto_LIBRARIES OpenSSL::Crypto)
++set(Libcrypto_INCLUDE_DIRS ${OPENSSL_INCLUDE_DIR})
++add_definitions(-DLIBRESSL_VERSION_NUMBER=1)
++
+ find_package (Libcrypto REQUIRED)
+ # We do not add the Libcrypto include directories to INCLUDE_DIRECTORIES
+ # to avoid a clash with the system openssl. We only use it for libcvmfs_crypto
+--
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -343,7 +343,7 @@ set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${GTEST_INCLUDE_DIRS})
+ find_package (GMock REQUIRED)
+ set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${GMOCK_INCLUDE_DIRS})
+ 
+-find_package (VJSON REQUIRED)
++add_subdirectory(externals/vjson)
+ set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${VJSON_INCLUDE_DIRS})
+ 
+ find_package (LibArchive REQUIRED)
+diff --git a/externals/vjson/CMakeLists.txt b/externals/vjson/CMakeLists.txt
+new file mode 100644
+index 000000000..c1f82ce03
+--- /dev/null
++++ b/externals/vjson/CMakeLists.txt
+@@ -0,0 +1,8 @@
++project(VJSON)
++
++add_library(cvmfs_vjson STATIC src/block_allocator.cpp src/json.cpp)
++set_property(TARGET cvmfs_vjson PROPERTY POSITION_INDEPENDENT_CODE TRUE)
++target_include_directories(cvmfs_vjson PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
++set(VJSON_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/src PARENT_SCOPE)
++set(VJSON_LIBRARY $<TARGET_FILE:cvmfs_vjson> PARENT_SCOPE)
++set(VJSON_LIBRARIES cvmfs_vjson PARENT_SCOPE)
+-- 
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -356,7 +356,7 @@ if (BUILD_CVMFS OR BUILD_LIBCVMFS OR BUILD_SERVER OR BUILD_SERVER_DEBUG OR
+   find_package (ZLIB REQUIRED)
+   set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${ZLIB_INCLUDE_DIRS})
+ 
+-  find_package (SHA3 REQUIRED)
++  add_subdirectory(externals/sha3)
+   set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${SHA3_INCLUDE_DIRS})
+ endif ()
+ 
+diff --git a/externals/sha3/CMakeLists.txt b/externals/sha3/CMakeLists.txt
+new file mode 100644
+index 000000000..7efa79b65
+--- /dev/null
++++ b/externals/sha3/CMakeLists.txt
+@@ -0,0 +1,19 @@
++project(SHA3)
++
++add_library(cvmfs_sha3 STATIC
++  src/64opt/KeccakF-1600-opt64.c
++  src/KeccakHash.c
++  src/KeccakSponge.c
++  src/SnP-FBWL-default.c
++)
++
++set_property(TARGET cvmfs_sha3 PROPERTY POSITION_INDEPENDENT_CODE TRUE)
++
++target_include_directories(cvmfs_sha3 PUBLIC
++  ${CMAKE_CURRENT_SOURCE_DIR}/src
++  ${CMAKE_CURRENT_SOURCE_DIR}/src/64opt
++)
++
++set(SHA3_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/src ${CMAKE_CURRENT_SOURCE_DIR}/src/64opt PARENT_SCOPE)
++set(SHA3_LIBRARY $<TARGET_FILE:cvmfs_sha3> PARENT_SCOPE)
++set(SHA3_LIBRARIES cvmfs_sha3 PARENT_SCOPE)
+-- 
+

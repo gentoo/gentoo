@@ -1,0 +1,16 @@
+--- gensio-2.8.5.orig/lib/Makefile.am	2024-06-18 21:45:20.427838306 -0700
++++ gensio-2.8.5/lib/Makefile.am	2024-06-18 21:46:09.360860952 -0700
+@@ -385,6 +385,7 @@
+ endif
+ 
+ install-exec-hook:
++	@(install -d $(DESTDIR)$(gensiolibexecdir))
+ 	@(cd $(DESTDIR)$(gensiolibexecdir) && $(RM) -f $(gensiolibexec_LTLIBRARIES))
+ 	@(cd $(DESTDIR)$(gensiolibexecdir) && $(RM) -f $(xgensio_libs))
+ 
+@@ -392,4 +393,5 @@
+ # libtool will not remove the .so or .dll files since the .la file is
+ # no longer there.  We have to do that by hand.
+ uninstall-hook:
++	@(install -d $(DESTDIR)$(gensiolibexecdir))
+ 	@(cd $(DESTDIR)$(gensiolibexecdir) && $(RM) -f $(xgensio_solibs))

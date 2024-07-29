@@ -1,0 +1,11 @@
+--- a/configure.ac	2022-07-25 01:23:55.820951949 +0900
++++ b/configure.ac	2022-07-25 01:24:07.870920125 +0900
+@@ -28,7 +28,7 @@ if test "x$with_pcre" != "xno"; then
+ fi
+ 
+ # Checks for libraries.
+-AC_SEARCH_LIBS([tgetent], [termcap curses ncurses], , AC_MSG_ERROR([terminal handling library missing]))
++AC_SEARCH_LIBS([tgetent], [termcap tinfo curses ncurses], , AC_MSG_ERROR([terminal handling library missing]))
+ AC_SEARCH_LIBS([basename], [gen])
+ if test "x$with_pcre" != "xno"; then
+    AC_SEARCH_LIBS([pcre_compile], [pcre], ,

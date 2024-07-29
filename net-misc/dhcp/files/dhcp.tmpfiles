@@ -1,0 +1,2 @@
+d /var/lib/dhcp 0750 dhcp dhcp
+f /var/lib/dhcp/dhcpd.leases 0640 dhcp dhcp

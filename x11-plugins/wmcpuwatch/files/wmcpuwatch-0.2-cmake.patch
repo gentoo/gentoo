@@ -1,0 +1,33 @@
+diff -Naur wmcpuwatch-0.2.orig/CMakeLists.txt wmcpuwatch-0.2/CMakeLists.txt
+--- wmcpuwatch-0.2.orig/CMakeLists.txt	2017-09-03 13:58:43.000000000 +0200
++++ wmcpuwatch-0.2/CMakeLists.txt	2018-01-01 22:28:19.108393247 +0100
+@@ -26,6 +26,7 @@
+ #
+ # Define include directories
+ include_directories(
++	"${PROJECT_BINARY_DIR}"
+     ${DOCKAPP_INCLUDE_DIR}
+     ${X11_X11_INCLUDE_PATH})
+ 
+@@ -56,8 +57,6 @@
+ install(TARGETS wmcpuwatch RUNTIME DESTINATION bin)
+ install(FILES wmcpuwatch.1 DESTINATION share/man/man1)
+ install(FILES wmcpuwatch.desktop DESTINATION share/applications)
+-install(FILES README.md DESTINATION share/doc/${CMAKE_PROJECT_NAME})
+-install(FILES ChangeLog DESTINATION share/doc/${CMAKE_PROJECT_NAME} RENAME changelog)
+ 
+ #
+ # Create a source tarball using CPack
+diff -Naur wmcpuwatch-0.2.orig/doc/CMakeLists.txt wmcpuwatch-0.2/doc/CMakeLists.txt
+--- wmcpuwatch-0.2.orig/doc/CMakeLists.txt	2017-09-03 12:00:37.000000000 +0200
++++ wmcpuwatch-0.2/doc/CMakeLists.txt	2018-01-01 22:33:00.690614708 +0100
+@@ -20,9 +20,6 @@
+         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+         COMMENT "Generating code documentation"
+         VERBATIM)
+-
+-    # Install the documentation
+-    install(DIRECTORY html DESTINATION share/doc/${CMAKE_PROJECT_NAME})
+ else (DOXYGEN_FOUND)
+     message("doxygen not installed: Not creating code documentation")
+ endif (DOXYGEN_FOUND)

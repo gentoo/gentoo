@@ -1,0 +1,29 @@
+--- bluefish-2.2.9/configure.ac
++++ bluefish-2.2.9/configure.ac
+@@ -504,7 +504,15 @@
+ 	AC_MSG_RESULT([no])
+ fi
+ 
++AC_ARG_WITH(
++	[charmap],
++	AC_HELP_STRING(
++		[--with-charmap],
++		[Build the charmap plugin if gucharmap is available @<:@default=yes@:>@]
++	)
++)
+ 
++if test "x$with_charmap" != "xno"; then
+ # optionally build the charmap plugin if gucharmap is available
+ AC_MSG_NOTICE([checking for optional libgucharmap development files])
+ if test "x$with_gtk3" != "xno"; then
+@@ -544,6 +552,10 @@
+ 		)]
+ 	)
+ fi
++else
++	build_charmap_plugin=no
++	AC_MSG_WARN([Disabling the building of the charmap plugin.])
++fi
+ AM_CONDITIONAL([ENABLE_CHARMAP_PLUGIN], [test "x$build_charmap_plugin" = "xyes"])
+ 
+ AC_SEARCH_LIBS([log10], [m])

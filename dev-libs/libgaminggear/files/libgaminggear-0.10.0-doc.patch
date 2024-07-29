@@ -1,0 +1,15 @@
+Set install of the docs to DOCDIR
+--- libgaminggear-0.10.0.orig/include/gaminggear/CMakeLists.txt 2015-06-28 12:46:22.615985840 +0100
++++ libgaminggear-0.10.0/include/gaminggear/CMakeLists.txt      2015-06-28 13:01:35.511970664 +0100
+@@ -14,10 +14,10 @@ IF(WITH_DOC)
+     DEPENDS
+       ${CMAKE_CURRENT_BINARY_DIR}/html/index.html
+   )
+-  
++
+   INSTALL(
+     DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/html
+-    DESTINATION share/doc/libgaminggear
++    DESTINATION ${DOCDIR}
+   )
+ ENDIF()

@@ -1,0 +1,11 @@
+--- a/compat.c
++++ b/compat.c
+@@ -8,6 +8,8 @@
+ #include <sys/param.h>
+ #endif
+ 
++#include <sys/types.h>
++
+ #include "compat.h"
+ 
+ #ifndef HAVE_CLOCK_GETTIME

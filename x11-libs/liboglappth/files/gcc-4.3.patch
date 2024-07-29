@@ -1,0 +1,10 @@
+--- a/src/base_wcl.cpp
++++ b/src/base_wcl.cpp
+@@ -22,6 +22,7 @@
+ 
+ #include "base_app.h"
+ #include <stdlib.h>	// the definition for NULL...
++#include <cstring>
+ 
+ #include <GL/gl.h>
+ #include <GL/glu.h>

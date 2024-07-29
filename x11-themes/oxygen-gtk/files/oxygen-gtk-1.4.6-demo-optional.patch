@@ -1,0 +1,35 @@
+From d5e9122133ad01da8cdbb27fe8e9f83e9a5097d4 Mon Sep 17 00:00:00 2001
+From: Pino Toscano <pino@kde.org>
+Date: Sat, 25 Oct 2014 16:27:10 +0200
+Subject: cmake: add an option to disable the build of the demo
+
+Useful when building only the style; the default behaviour is unchanged
+(i.e. the demo is built).
+---
+ CMakeLists.txt | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1f576d2..5ab1ee1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -36,6 +36,8 @@ include( CPack )
+ # Package specific flags
+ ########################
+ 
++option(ENABLE_DEMO "Build the demo." ON)
++
+ # Set to 1 to enable debugging information
+ if( NOT DEFINED OXYGEN_DEBUG )
+     set( OXYGEN_DEBUG 0 )
+@@ -200,5 +202,7 @@ configure_file( config.h.cmake ${CMAKE_BINARY_DIR}/config.h )
+ add_subdirectory( src )
+ add_subdirectory( rc )
+ add_subdirectory( special-icons )
+-add_subdirectory( demo )
++if( ENABLE_DEMO )
++    add_subdirectory( demo )
++endif( ENABLE_DEMO )
+ 
+-- 
+cgit v0.11.2

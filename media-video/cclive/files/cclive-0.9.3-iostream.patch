@@ -1,0 +1,80 @@
+https://github.com/legatvs/cclive/pull/2
+
+From dcaed542d002cbf857e0bca1fa12f8ab501c419a Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Fri, 26 Dec 2014 13:49:36 -0500
+Subject: [PATCH] Add explicit <iostream> includes, fixes build with Boost 1.56
+
+See https://bugs.gentoo.org/show_bug.cgi?id=527658 and
+https://bugs.gentoo.org/show_bug.cgi?id=533506
+---
+ src/cc/error.h   | 1 +
+ src/cc/input.h   | 1 +
+ src/cc/log.h     | 1 +
+ src/cc/options.h | 1 +
+ src/cc/sig.h     | 1 +
+ 5 files changed, 5 insertions(+)
+
+diff --git a/src/cc/error.h b/src/cc/error.h
+index c1d80ab..f6a3e6d 100644
+--- a/src/cc/error.h
++++ b/src/cc/error.h
+@@ -28,6 +28,7 @@
+ #include <boost/exception/get_error_info.hpp>
+ #include <boost/exception/errinfo_errno.hpp>
+ #include <boost/tuple/tuple.hpp>
++#include <iostream>
+ #include <cerrno>
+ 
+ namespace cc
+diff --git a/src/cc/input.h b/src/cc/input.h
+index 98c334b..523e9fe 100644
+--- a/src/cc/input.h
++++ b/src/cc/input.h
+@@ -23,6 +23,7 @@
+ 
+ #include <ccinternal>
+ 
++#include <iostream>
+ #include <istream>
+ #include <sstream>
+ 
+diff --git a/src/cc/log.h b/src/cc/log.h
+index 2b2c986..aaf3b32 100644
+--- a/src/cc/log.h
++++ b/src/cc/log.h
+@@ -25,6 +25,7 @@
+ 
+ #include <boost/iostreams/filtering_stream.hpp>
+ #include <boost/filesystem.hpp>
++#include <iostream>
+ #include <fstream>
+ 
+ #include <ccerror>
+diff --git a/src/cc/options.h b/src/cc/options.h
+index 6c45ce8..6a7e40c 100644
+--- a/src/cc/options.h
++++ b/src/cc/options.h
+@@ -37,6 +37,7 @@
+ #include <boost/filesystem.hpp>
+ #include <boost/foreach.hpp>
+ #include <boost/format.hpp>
++#include <iostream>
+ #include <fstream>
+ 
+ #include <ccerror>
+diff --git a/src/cc/sig.h b/src/cc/sig.h
+index 56de768..cca23ad 100644
+--- a/src/cc/sig.h
++++ b/src/cc/sig.h
+@@ -26,6 +26,7 @@
+ #include <sys/ioctl.h>
+ #include <sys/types.h>
+ #include <unistd.h>
++#include <iostream>
+ #include <csignal>
+ #include <cstdio>
+ 
+-- 
+2.2.1
+

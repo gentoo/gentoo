@@ -1,0 +1,26 @@
+From f5cf83a74dee47625c28f25980a857917faf1282 Mon Sep 17 00:00:00 2001
+From: John Ogness <john.ogness@linutronix.de>
+Date: Wed, 30 Nov 2022 15:23:49 +0106
+Subject: [PATCH] docs: mention setting kernel.core_pipe_limit
+
+It is recommended to set kernel.core_pipe_limit to the maximum
+value. Show that in the documentation.
+
+Signed-off-by: John Ogness <john.ogness@linutronix.de>
+---
+ README                                | 1 +
+ website/src/installation.content.html | 3 ++-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/README b/README
+index aea079d..5a768a0 100644
+--- a/README
++++ b/README
+@@ -39,6 +39,7 @@ Installation
+ 
+       $ echo '|/usr/sbin/minicoredumper %P %u %g %s %t %h %e' | \
+              sudo tee /proc/sys/kernel/core_pattern
++      $ echo 0x7fffffff | sudo tee /proc/sys/kernel/core_pipe_limit
+ 
+ Documentation
+ -------------

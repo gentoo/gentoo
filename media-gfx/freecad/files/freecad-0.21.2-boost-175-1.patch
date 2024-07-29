@@ -1,0 +1,22 @@
+From f555a25f9e67e628e8075fc8599d7c11807eaddd Mon Sep 17 00:00:00 2001
+From: wmayer <wmayer@users.sourceforge.net>
+Date: Sun, 21 Apr 2024 08:36:16 +0200
+Subject: [PATCH] Fixes #13549: smesh doesn't compile with boost 1.85
+
+---
+ src/3rdParty/salomesmesh/src/SMESH/DriverGMF.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/3rdParty/salomesmesh/src/SMESH/DriverGMF.cpp b/src/3rdParty/salomesmesh/src/SMESH/DriverGMF.cpp
+index d72ff2363f39..f108cbbcb2cf 100644
+--- a/src/3rdParty/salomesmesh/src/SMESH/DriverGMF.cpp
++++ b/src/3rdParty/salomesmesh/src/SMESH/DriverGMF.cpp
+@@ -55,7 +55,7 @@ namespace DriverGMF
+ 
+   bool isExtensionCorrect( const std::string& fileName )
+   {
+-    std::string ext  = boost::filesystem::extension(fileName);
++    std::string ext = boost::filesystem::path(fileName).extension().string();
+     switch ( ext.size() ) {
+     case 5: return ( ext == ".mesh" || ext == ".solb" );
+     case 6: return ( ext == ".meshb" );

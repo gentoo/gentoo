@@ -1,0 +1,42 @@
+commit 7f46c2d22a87b99c70a220c1b13aaa34c6d217ff (HEAD, origin/upgrade-ppxlib-0.18.0)
+Author: Nathan Rebours <nathan.p.rebours@gmail.com>
+Date:   Mon Oct 5 17:46:34 2020 +0200
+
+    Make ppx_expect compatible with ppxlib.0.18.0
+    
+    ppxlib.0.18.0 upgrades to the 4.11 AST which results in a change
+    in string constants representation. This PR makes ppx_expect
+    compatible with the latest ppxlib.
+    
+    You might want for the actual release of ppxlib.0.18.0 before merging
+    this!
+    
+    Signed-off-by: Nathan Rebours <nathan.p.rebours@gmail.com>
+
+diff --git a/expect_payload/ppx_expect_payload.ml b/expect_payload/ppx_expect_payload.ml
+index 23a12e1..fd2a5bb 100644
+--- a/expect_payload/ppx_expect_payload.ml
++++ b/expect_payload/ppx_expect_payload.ml
+@@ -86,7 +86,7 @@ let make ~kind payload ~(extension_id_loc : Location.t) =
+ let pattern () =
+   Ast_pattern.(
+     map
+-      (single_expr_payload (pexp_loc __ (pexp_constant (pconst_string __ __))))
+-      ~f:(fun f loc s tag -> f (Some (loc, s, tag)))
++      (single_expr_payload (pexp_loc __ (pexp_constant (pconst_string __ __ __))))
++      ~f:(fun f loc s _loc tag -> f (Some (loc, s, tag)))
+     ||| map (pstr nil) ~f:(fun f -> f None))
+ ;;
+diff --git a/ppx_expect.opam b/ppx_expect.opam
+index dcce541..59adadb 100644
+--- a/ppx_expect.opam
++++ b/ppx_expect.opam
+@@ -17,7 +17,7 @@ depends: [
+   "ppx_inline_test" {>= "v0.14" & < "v0.15"}
+   "stdio"           {>= "v0.14" & < "v0.15"}
+   "dune"            {>= "2.0.0"}
+-  "ppxlib"          {>= "0.11.0"}
++  "ppxlib"          {>= "0.18.0"}
+   "re"              {>= "1.8.0"}
+ ]
+ synopsis: "Cram like framework for OCaml"

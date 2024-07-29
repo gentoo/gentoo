@@ -1,0 +1,22 @@
+https://github.com/mgieseki/dvisvgm/pull/200
+
+From e3cfc0976ec1f5bbcd389c318eabc2a783990de0 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 4 Nov 2022 05:07:09 +0000
+Subject: [PATCH] configure.ac: fix -Wimplicit-function-declaration
+
+Clang 16 makes -Wimplicit-function-declaration an error by default. We
+need to include <stdlib.h> for exit().
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -55,6 +55,7 @@ AC_CHECK_LIB([kpathsea], [kpse_find_file],,
+ 
+ AC_MSG_CHECKING([kpathsea version])
+ AC_RUN_IFELSE([AC_LANG_SOURCE([#include <stdio.h>
++	#include <stdlib.h>
+ 	#include <kpathsea/kpathsea.h>
+ 	int main() {
+ 		FILE *f;
+

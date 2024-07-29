@@ -1,0 +1,10 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -151,6 +151,7 @@
+   PT_FIND_FILE(
+     utmp
+     PT_UTMP_FILE
++    "/run/utmp"
+     "/var/run/utmp"
+     "/var/adm/utmp"
+     "/etc/utmp"

@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/836772
+
+--- remember-2.0/remember.el
++++ remember-2.0/remember.el
+@@ -462,7 +462,7 @@
+ 
+ ;; Org needs this
+ (if (fboundp 'define-obsolete-function-alias)
+-    (define-obsolete-function-alias 'remember-buffer 'remember-finalize)
++    (define-obsolete-function-alias 'remember-buffer 'remember-finalize "")
+   (defalias 'remember-buffer 'remember-finalize))
+ 
+ (defun remember-destroy ()

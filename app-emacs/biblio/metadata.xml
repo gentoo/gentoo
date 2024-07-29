@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    biblio.el makes it easy to browse and gather bibliographic references and
+    publications from various sources, by keywords or by DOI. References are
+    automatically fetched from well-curated sources, and formatted as BibTeX.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/cpitclaudel/biblio.el/issues/</bugs-to>
+    <remote-id type="github">cpitclaudel/biblio.el</remote-id>
+  </upstream>
+</pkgmetadata>

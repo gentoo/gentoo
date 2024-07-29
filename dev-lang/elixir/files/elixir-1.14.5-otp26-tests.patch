@@ -1,0 +1,107 @@
+Grabbed as-is from https://github.com/elixir-lang/elixir/commit/54516c5684daa3af7f15477c77fae39e8d0c6482 which was done for 1.15.x
+
+From 54516c5684daa3af7f15477c77fae39e8d0c6482 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jos=C3=A9=20Valim?= <jose.valim@dashbit.co>
+Date: Sun, 1 Oct 2023 15:46:17 +0200
+Subject: [PATCH] Address tests on Erlang/OTP 26.1, closes #12975
+
+---
+ lib/ex_unit/lib/ex_unit/callbacks.ex         |  9 +-----
+ lib/ex_unit/test/ex_unit/formatter_test.exs  | 31 +++++++++-----------
+ lib/ex_unit/test/ex_unit/supervised_test.exs | 11 ++-----
+ 3 files changed, 18 insertions(+), 33 deletions(-)
+
+diff --git a/lib/ex_unit/lib/ex_unit/callbacks.ex b/lib/ex_unit/lib/ex_unit/callbacks.ex
+index 060d207516a..2dbe9bd0e4a 100644
+--- a/lib/ex_unit/lib/ex_unit/callbacks.ex
++++ b/lib/ex_unit/lib/ex_unit/callbacks.ex
+@@ -549,14 +549,7 @@ defmodule ExUnit.Callbacks do
+       end
+ 
+     child_spec = Supervisor.child_spec(child_spec_or_module, opts)
+-
+-    case Supervisor.start_child(sup, child_spec) do
+-      {:error, {:already_started, _pid}} ->
+-        {:error, {:duplicate_child_name, child_spec.id}}
+-
+-      other ->
+-        other
+-    end
++    Supervisor.start_child(sup, child_spec)
+   end
+ 
+   @doc """
+diff --git a/lib/ex_unit/test/ex_unit/formatter_test.exs b/lib/ex_unit/test/ex_unit/formatter_test.exs
+index afb66a52436..bb9642fbcc4 100644
+--- a/lib/ex_unit/test/ex_unit/formatter_test.exs
++++ b/lib/ex_unit/test/ex_unit/formatter_test.exs
+@@ -491,28 +491,25 @@ defmodule ExUnit.FormatterTest do
+   test "inspect failure" do
+     failure = [{:error, catch_assertion(assert :will_fail == %BadInspect{}), []}]
+ 
+-    message = ~S'''
+-      got FunctionClauseError with message:
+-
+-          """
+-          no function clause matching in Inspect.ExUnit.FormatterTest.BadInspect.inspect/2
+-          """
+-
+-      while inspecting:
+-
+-          %{__struct__: ExUnit.FormatterTest.BadInspect, key: 0}
+-
+-      Stacktrace:
+-    '''
+-
+-    assert format_test_failure(test(), failure, 1, 80, &formatter/2) =~ """
++    assert format_test_failure(test(), failure, 1, 80, &formatter/2) =~ ~s'''
+              1) world (Hello)
+                 test/ex_unit/formatter_test.exs:1
+                 Assertion with == failed
+                 code:  assert :will_fail == %BadInspect{}
+                 left:  :will_fail
+-                right: #Inspect.Error<\n#{message}\
+-           """
++                right: #Inspect.Error<
++             got FunctionClauseError with message:
++
++                 """
++                 no function clause matching in Inspect.ExUnit.FormatterTest.BadInspect.inspect/2
++                 """
++
++             while inspecting:
++
++                 #{inspect(%BadInspect{}, structs: false)}
++
++             Stacktrace:
++           '''
+   end
+ 
+   defmodule BadMessage do
+diff --git a/lib/ex_unit/test/ex_unit/supervised_test.exs b/lib/ex_unit/test/ex_unit/supervised_test.exs
+index 577ae6b9676..a02dfe3c0c5 100644
+--- a/lib/ex_unit/test/ex_unit/supervised_test.exs
++++ b/lib/ex_unit/test/ex_unit/supervised_test.exs
+@@ -73,19 +73,14 @@ defmodule ExUnit.SupervisedTest do
+ 
+   test "starts a supervised process with ID checks" do
+     {:ok, pid} = start_supervised({MyAgent, 0})
++    assert is_pid(pid)
+ 
+-    assert {:error, {:duplicate_child_name, ExUnit.SupervisedTest.MyAgent}} =
+-             start_supervised({MyAgent, 0})
+-
+-    assert {:error, {{:already_started, ^pid}, _}} = start_supervised({MyAgent, 0}, id: :another)
++    assert {:error, _} = start_supervised({MyAgent, 0})
++    assert {:error, _} = start_supervised({MyAgent, 0}, id: :another)
+ 
+     assert_raise RuntimeError, ~r"Reason: bad child specification", fn ->
+       start_supervised!(%{id: 1, start: :oops})
+     end
+-
+-    assert_raise RuntimeError, ~r"Reason: already started", fn ->
+-      start_supervised!({MyAgent, 0}, id: :another)
+-    end
+   end
+ 
+   test "stops a supervised process" do

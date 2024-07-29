@@ -1,0 +1,18 @@
+BINARY = ./test-unique
+TESTS = --new --activate --open-uri=http://localhost --foo
+
+all:
+	for test in $(TESTS); do \
+	  rm -f test_result; \
+	  $(BINARY) > test_result & \
+	  main_pid=$$!; \
+	  sleep 5; \
+	  $(BINARY) $$test & \
+	  test_pid=$$!; \
+	  sleep 5; \
+	  while ! test -s test_result; do sleep 0.5; done; \
+	  sleep 5; \
+	  kill $${test_pid} || exit 1; \
+	  kill $${main_pid} || exit 1; \
+	  grep -q 'Message received from.*' test_result || { echo "Test failed at $$test"; exit 1; }; \
+	done

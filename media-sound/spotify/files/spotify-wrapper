@@ -1,0 +1,27 @@
+#!/bin/sh
+
+export LD_LIBRARY_PATH="/usr/$LIBDIR/apulse"
+
+if command -v spotify-dbus.py > /dev/null; then
+        echo "Launching spotify with Gnome systray integration."
+        spotify-dbus.py "$@"
+else
+    if pgrep -f "Spotify/[0-9].[0-9].[0-9]" > /dev/null; then
+        busline="org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.OpenUri ${1}"
+        echo "Spotify is already running"
+        echo "Sending ${busline} to dbus"
+        if command -v qdbus &> /dev/null; then
+            qdbus $busline
+            exit
+        fi
+        if command -v dbus-send &> /dev/null; then
+            dbus-send $busline
+            exit
+        fi
+        echo "No bus dispatcher found."
+    else
+        echo "Neither gnome-integration-spotify nor spotify-tray are installed."
+        echo "Launching spotify without systray integration."
+        exec "$SPOTIFY_HOME/spotify" "$@"
+    fi
+fi

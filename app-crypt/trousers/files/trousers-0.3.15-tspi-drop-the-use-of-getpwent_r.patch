@@ -1,0 +1,69 @@
+https://bugs.gentoo.org/713444
+
+From 2299eadf77ae7a7ec52148b6a8f4ea37e217eafa Mon Sep 17 00:00:00 2001
+From: Stijn Tintel <stijn@linux-ipv6.be>
+Date: Thu, 2 Feb 2023 01:06:15 +0200
+Subject: [PATCH] tspi: drop the use of getpwent_r
+
+On systems with musl libc, libtspi.so is unusable due to the lack of
+getpwent_r. As there are multiple historical functions named getpwent_r
+that all behave differently, let's just play it safe and stop using it
+altogether.
+
+Signed-off-by: Stijn Tintel <stijn@linux-ipv6.be>
+---
+ src/tspi/ps/tspps.c | 16 ----------------
+ 1 file changed, 16 deletions(-)
+
+diff --git a/src/tspi/ps/tspps.c b/src/tspi/ps/tspps.c
+index b5e83d0..ae7b3df 100644
+--- a/src/tspi/ps/tspps.c
++++ b/src/tspi/ps/tspps.c
+@@ -51,9 +51,7 @@
+ 
+ static int user_ps_fd = -1;
+ static MUTEX_DECLARE_INIT(user_ps_lock);
+-#if (defined (__FreeBSD__) || defined (__OpenBSD__))
+ static MUTEX_DECLARE_INIT(user_ps_path);
+-#endif
+ static struct flock fl;
+ 
+ 
+@@ -66,9 +64,6 @@ get_user_ps_path(char **file)
+ 	TSS_RESULT result;
+ 	char *file_name = NULL, *home_dir = NULL;
+ 	struct passwd *pwp;
+-#if (defined (__linux) || defined (linux) || defined(__GLIBC__))
+-	struct passwd pw;
+-#endif
+ 	struct stat stat_buf;
+ 	char buf[PASSWD_BUFSIZE];
+ 	uid_t euid;
+@@ -96,16 +91,6 @@ get_user_ps_path(char **file)
+ #else
+ 	setpwent();
+ 	while (1) {
+-#if (defined (__linux) || defined (linux) || defined(__GLIBC__))
+-		rc = getpwent_r(&pw, buf, PASSWD_BUFSIZE, &pwp);
+-		if (rc) {
+-			LogDebugFn("USER PS: Error getting path to home directory: getpwent_r: %s",
+-				   strerror(rc));
+-			endpwent();
+-			return TSPERR(TSS_E_INTERNAL_ERROR);
+-		}
+-
+-#elif (defined (__FreeBSD__) || defined (__OpenBSD__))
+ 		if ((pwp = getpwent()) == NULL) {
+ 			LogDebugFn("USER PS: Error getting path to home directory: getpwent: %s",
+                                    strerror(rc));
+@@ -113,7 +98,6 @@ get_user_ps_path(char **file)
+ 			MUTEX_UNLOCK(user_ps_path);
+ 			return TSPERR(TSS_E_INTERNAL_ERROR);
+ 		}
+-#endif
+ 		if (euid == pwp->pw_uid) {
+                         home_dir = strdup(pwp->pw_dir);
+                         break;
+-- 
+2.39.1
+

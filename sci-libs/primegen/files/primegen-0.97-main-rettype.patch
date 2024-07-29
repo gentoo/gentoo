@@ -1,0 +1,13 @@
+Adding return type to main function
+Bug: https://bugs.gentoo.org/898288
+--- a/eratspeed.c
++++ b/eratspeed.c
+@@ -402,7 +402,7 @@ void countit()
+ timing t;
+ timing told;
+ 
+-main()
++int main()
+ {
+   int L = 1;
+ 

@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/919223
+--- a/src/readSet.c
++++ b/src/readSet.c
+@@ -638,7 +638,8 @@ static void readFastXFile(int fileType, SequencesWriter *seqWriteInfo, char *fil
+ 	FileGZOrAuto file;
+ 	IDnum counter = 0;
+ 
+-        file.gzFile = file.autoFile = NULL;
++        file.autoFile = NULL;
++        file.gzFile = NULL;
+         if (fileType == AUTO) {
+         	file.autoFile = openFileAuto(filename);
+                 if (!file.autoFile)
+@@ -677,8 +678,10 @@ static void readFastXPair(int fileType, SequencesWriter *seqWriteInfo, char *fil
+ 	if (cat==REFERENCE)
+ 		exitErrorf(EXIT_FAILURE, false, "Cannot read reference sequence in 'separate' read mode");
+ 
+-        file1.gzFile = file1.autoFile = NULL;
+-        file2.gzFile = file2.autoFile = NULL;
++        file1.autoFile = NULL;
++        file2.autoFile = NULL;
++        file1.autoFile = NULL;
++        file2.autoFile = NULL;
+         if (fileType == AUTO) {
+         	file1.autoFile = openFileAuto(filename1);
+                 if (!file1.autoFile)

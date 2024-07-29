@@ -1,0 +1,30 @@
+From b3481e66f2014dece48d8dfe8affa416d8d4e104 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Thu, 27 Aug 2020 07:51:14 +0100
+Subject: [PATCH 1/2] lib/tests/stdboosterror.h: use unambiguous form of
+ variable declaration
+
+Original expression has an ambiguity and should not compile:
+https://gcc.gnu.org/PR86564
+
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ lib/tests/stdboosterror.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/tests/stdboosterror.h b/lib/tests/stdboosterror.h
+index 568545b..d59bfa6 100644
+--- a/lib/tests/stdboosterror.h
++++ b/lib/tests/stdboosterror.h
+@@ -4,7 +4,7 @@
+ #include <boost/regex/pattern_except.hpp>
+ 
+ static boost::regex_error
+-        std_boost_exception(boost::regex_error(boost::regex_constants::error_bad_pattern));
++        std_boost_exception = boost::regex_error(boost::regex_constants::error_bad_pattern);
+ 
+ /**
+  * returns the string representing a standard exception (which
+-- 
+2.28.0
+

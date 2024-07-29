@@ -1,0 +1,20 @@
+# Redict user.
+REDICT_USER="redict"
+
+# Redict group.
+REDICT_GROUP="redict"
+
+# Redict configuration file.
+REDICT_CONF="/etc/redict/redict.conf"
+
+# Redict dump directory.
+REDICT_DIR="/var/lib/redict"
+
+# Redict options.
+# (Redict expects the first argument to be the configuration file.)
+REDICT_OPTS="${REDICT_CONF}"
+
+# Specify the network service that corresponds to the "bind" setting
+# in your redict.conf. For example, if you bind to 127.0.0.1, this should
+# be set to "net.lo" which provides the loopback interface.
+rc_need="net.lo"

@@ -1,0 +1,33 @@
+https://github.com/assimp/assimp/pull/4730
+
+From b526d7a4b82be6d8c1481459975350b94384e805 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Sat, 17 Sep 2022 15:15:58 +0200
+Subject: [PATCH] fix version
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -56,7 +56,7 @@ IF(ASSIMP_HUNTER_ENABLED)
+   add_definitions(-DASSIMP_USE_HUNTER)
+ ENDIF()
+ 
+-PROJECT(Assimp VERSION 5.2.4)
++PROJECT(Assimp VERSION 5.2.5)
+ 
+ # All supported options ###############################################
+ 
+--- a/test/unit/utVersion.cpp
++++ b/test/unit/utVersion.cpp
+@@ -61,7 +61,7 @@ TEST_F( utVersion, aiGetVersionMajorTest ) {
+ }
+ 
+ TEST_F( utVersion, aiGetVersionPatchTest ) {
+-    EXPECT_EQ(aiGetVersionPatch(), 4U );
++    EXPECT_EQ(aiGetVersionPatch(), 5U );
+ }
+ 
+ TEST_F( utVersion, aiGetCompileFlagsTest ) {
+-- 
+2.37.3
+

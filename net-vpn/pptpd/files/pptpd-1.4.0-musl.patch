@@ -1,0 +1,16 @@
+Modified patch from Alpine Linux
+https://git.alpinelinux.org/aports/plain/main/pptpd/fix_MSG_TRYHARD.patch
+
+--- a/bcrelay.c
++++ b/bcrelay.c
+@@ -103,6 +103,10 @@
+ #include "our_syslog.h"
+ #include "our_getopt.h"
+ 
++#ifndef MSG_TRYHARD
++	#define MSG_TRYHARD    MSG_DONTROUTE
++#endif
++
+ //#define VERSION "1.0"
+ 
+ /* uncomment if you compile this without poptop's configure script */

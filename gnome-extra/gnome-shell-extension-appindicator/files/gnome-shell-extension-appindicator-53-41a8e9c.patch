@@ -1,0 +1,23 @@
+From 41a8e9c7ff20c0d45ff91a6329455e6f31f2e4aa Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marco=20Trevisan=20=28Trevi=C3=B1o=29?= <mail@3v1n0.net>
+Date: Mon, 13 Mar 2023 19:07:16 +0100
+Subject: [PATCH] statusNotifierWatcher: Remove idle promise on bus seeking
+
+We're already depending on promises that implies going waiting anyways, so
+we can avoid this.
+---
+ statusNotifierWatcher.js | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/statusNotifierWatcher.js b/statusNotifierWatcher.js
+index fc49639..38fb75a 100644
+--- a/statusNotifierWatcher.js
++++ b/statusNotifierWatcher.js
+@@ -150,7 +150,6 @@ var StatusNotifierWatcher = class AppIndicatorsStatusNotifierWatcher {
+         // StatusNotifierItem interface... However let's do it after a low
+         // priority idle, so that it won't affect startup.
+         const cancellable = this._cancellable;
+-        await new PromiseUtils.IdlePromise(GLib.PRIORITY_LOW, cancellable);
+         const bus = Gio.DBus.session;
+         const uniqueNames = await Util.getBusNames(bus, cancellable);
+         const introspectName = async name => {

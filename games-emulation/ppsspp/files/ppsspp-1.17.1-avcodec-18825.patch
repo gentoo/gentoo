@@ -1,0 +1,176 @@
+From a8ae43dfd4f06a48a275a684aafee021e591d75e Mon Sep 17 00:00:00 2001
+From: Andrew Udvare <audvare@gmail.com>
+Date: Sun, 4 Feb 2024 18:26:06 -0500
+Subject: [PATCH] ffmpeg: Improved fix for checking if const AVCodec* is
+ necessary
+
+---
+ CMakeLists.txt             | 21 +++++++++++++++++++++
+ Core/AVIDump.cpp           |  4 +---
+ Core/FFMPEGCompat.h        |  8 ++++++++
+ Core/HLE/sceAtrac.cpp      |  5 +----
+ Core/HLE/sceMpeg.cpp       |  4 +---
+ Core/HW/MediaEngine.cpp    |  4 +---
+ Core/HW/SimpleAudioDec.cpp |  1 +
+ Core/HW/SimpleAudioDec.h   |  7 +++----
+ 8 files changed, 37 insertions(+), 17 deletions(-)
+ create mode 100644 Core/FFMPEGCompat.h
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 33570d09c024..f7e5ce1d337c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -953,6 +953,23 @@ if(USE_FFMPEG)
+ 	endif()
+ 
+ 	find_package(FFmpeg REQUIRED avcodec avformat avutil swresample swscale)
++	# Check if we need to use avcodec_(alloc|free)_frame instead of av_frame_(alloc|free)
++	# Check if we need to use const AVCodec
++	set(CMAKE_REQUIRED_LIBRARIES avcodec;avformat)
++	set(CMAKE_REQUIRED_FLAGS "-pedantic -Wall -Werror -Wno-unused-variable")
++	check_cxx_source_compiles("extern \"C\" {
++		#include <libavcodec/avcodec.h>
++		#include <libavformat/avformat.h>
++		}
++		static AVCodecContext *s_codec_context = NULL;
++		int main() {
++			const AVCodec *codec = avcodec_find_encoder(s_codec_context->codec_id);
++			return 0;
++		}
++		" HAVE_LIBAVCODEC_CONST_AVCODEC FAIL_REGEX "invalid conversion")
++
++	# Check if we need to use avcodec_alloc_context3 instead of stream->codec
++	# Check if we need to use av_frame_get_buffer instead of avcodec_default_get_buffer
+ endif(USE_FFMPEG)
+ 
+ find_package(ZLIB)
+@@ -2024,6 +2041,7 @@ add_library(${CoreLibName} ${CoreLinkType}
+ 	Core/ELF/PrxDecrypter.h
+ 	Core/ELF/ParamSFO.cpp
+ 	Core/ELF/ParamSFO.h
++	Core/FFMPEGCompat.h
+ 	Core/FileSystems/tlzrc.cpp
+ 	Core/FileSystems/BlobFileSystem.cpp
+ 	Core/FileSystems/BlobFileSystem.h
+@@ -2358,6 +2376,9 @@ target_compile_features(${CoreLibName} PUBLIC cxx_std_17)
+ 
+ if(FFmpeg_FOUND)
+ 	target_compile_definitions(${CoreLibName} PRIVATE USE_FFMPEG=1)
++	if (HAVE_LIBAVCODEC_CONST_AVCODEC)
++		target_compile_definitions(${CoreLibName} PRIVATE HAVE_LIBAVCODEC_CONST_AVCODEC=1)
++	endif()
+ 	set_target_properties(${CoreLibName} PROPERTIES NO_SYSTEM_FROM_IMPORTED true)
+ 	target_include_directories(${CoreLibName} BEFORE PUBLIC ${FFmpeg_INCLUDE_avcodec})
+ 	target_link_libraries(${CoreLibName}
+diff --git a/Core/AVIDump.cpp b/Core/AVIDump.cpp
+index 7c9576d2922b..aa811650314d 100644
+--- a/Core/AVIDump.cpp
++++ b/Core/AVIDump.cpp
+@@ -45,9 +45,7 @@ extern "C" {
+ #define av_frame_free avcodec_free_frame
+ #endif
+ 
+-#if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(59, 16, 100)
+-#define AVCodec const AVCodec
+-#endif
++#include "FFMPEGCompat.h"
+ 
+ static AVFormatContext *s_format_context = nullptr;
+ static AVCodecContext *s_codec_context = nullptr;
+diff --git a/Core/FFMPEGCompat.h b/Core/FFMPEGCompat.h
+new file mode 100644
+index 000000000000..fed3b1c85392
+--- /dev/null
++++ b/Core/FFMPEGCompat.h
+@@ -0,0 +1,8 @@
++#ifndef FFMPEG_COMPAT_H
++#define FFMPEG_COMPAT_H
++
++#ifdef HAVE_LIBAVCODEC_CONST_AVCODEC
++#define AVCodec const AVCodec
++#endif
++
++#endif // FFMPEG_COMPAT_H
+diff --git a/Core/HLE/sceAtrac.cpp b/Core/HLE/sceAtrac.cpp
+index fe0e8a54de6b..f83d9ffdf166 100644
+--- a/Core/HLE/sceAtrac.cpp
++++ b/Core/HLE/sceAtrac.cpp
+@@ -129,10 +129,7 @@ extern "C" {
+ #include "libavcodec/avcodec.h"
+ #include "libavutil/version.h"
+ }
+-
+-#if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(59, 16, 100)
+-#define AVCodec const AVCodec
+-#endif
++#include "Core/FFMPEGCompat.h"
+ 
+ #endif // USE_FFMPEG
+ 
+diff --git a/Core/HLE/sceMpeg.cpp b/Core/HLE/sceMpeg.cpp
+index d050d62f3d73..8be78c73e0f8 100644
+--- a/Core/HLE/sceMpeg.cpp
++++ b/Core/HLE/sceMpeg.cpp
+@@ -113,9 +113,7 @@ extern "C" {
+ #include "libswscale/swscale.h"
+ #include "libavcodec/avcodec.h"
+ }
+-#if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(59, 16, 100)
+-#define AVCodec const AVCodec
+-#endif
++#include "Core/FFMPEGCompat.h"
+ static AVPixelFormat pmp_want_pix_fmt;
+ 
+ #endif
+diff --git a/Core/HW/MediaEngine.cpp b/Core/HW/MediaEngine.cpp
+index 0ed957edfd26..7e8b37d4dc9b 100644
+--- a/Core/HW/MediaEngine.cpp
++++ b/Core/HW/MediaEngine.cpp
+@@ -56,9 +56,7 @@ extern "C" {
+ 
+ #ifdef USE_FFMPEG
+ 
+-#if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(59, 16, 100)
+-#define AVCodec const AVCodec
+-#endif
++#include "Core/FFMPEGCompat.h"
+ 
+ static AVPixelFormat getSwsFormat(int pspFormat)
+ {
+diff --git a/Core/HW/SimpleAudioDec.cpp b/Core/HW/SimpleAudioDec.cpp
+index 7994a7f4027a..80397bf6da0a 100644
+--- a/Core/HW/SimpleAudioDec.cpp
++++ b/Core/HW/SimpleAudioDec.cpp
+@@ -33,6 +33,7 @@ extern "C" {
+ #include "libavutil/samplefmt.h"
+ #include "libavcodec/avcodec.h"
+ }
++#include "Core/FFMPEGCompat.h"
+ 
+ #endif  // USE_FFMPEG
+ 
+diff --git a/Core/HW/SimpleAudioDec.h b/Core/HW/SimpleAudioDec.h
+index 52a78bf3b411..9bf2427a4a15 100644
+--- a/Core/HW/SimpleAudioDec.h
++++ b/Core/HW/SimpleAudioDec.h
+@@ -33,10 +33,6 @@ extern "C" {
+ #include "libavutil/version.h"
+ };
+ 
+-#if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(59, 16, 100)
+-#define AVCodec const AVCodec
+-#endif
+-
+ #endif
+ 
+ // Wraps FFMPEG for audio decoding in a nice interface.
+@@ -90,6 +86,9 @@ class SimpleAudio {
+ 	int wanted_resample_freq; // wanted resampling rate/frequency
+ 
+ 	AVFrame *frame_;
++#if HAVE_LIBAVCODEC_CONST_AVCODEC // USE_FFMPEG is implied
++	const
++#endif
+ 	AVCodec *codec_;
+ 	AVCodecContext  *codecCtx_;
+ 	SwrContext      *swrCtx_;

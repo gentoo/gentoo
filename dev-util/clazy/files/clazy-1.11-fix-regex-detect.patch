@@ -1,0 +1,25 @@
+From 336b54f28250938cc2a8d7bb78e638e79b6467d5 Mon Sep 17 00:00:00 2001
+From: Hannah von Reth <vonreth@kde.org>
+Date: Fri, 8 Jul 2022 11:19:22 +0000
+Subject: [PATCH] Fix regex detection
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 434a57c9..3c780b0d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -81,7 +81,7 @@ endif()
+ 
+ # Look for std::regex support
+ message("Looking for std::regex support...")
+-try_run(REGEX_RUN_RESULT COMPILE_RESULT ${CMAKE_BINARY_DIR} ${CMAKE_CURRENT_LIST_DIR}/.cmake_has_regex_test.cpp)
++try_run(REGEX_RUN_RESULT COMPILE_RESULT ${CMAKE_BINARY_DIR} ${CMAKE_CURRENT_LIST_DIR}/.cmake_has_regex_test.cpp CXX_STANDARD 17 CXX_STANDARD_REQUIRED true)
+ 
+ if(NOT REGEX_RUN_RESULT EQUAL 0)
+   message("Using boost::regex instead of std::regex")
+-- 
+GitLab
+

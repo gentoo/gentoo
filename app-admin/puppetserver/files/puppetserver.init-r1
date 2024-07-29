@@ -1,0 +1,72 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="checkconfig reload"
+
+LOGDIR="/var/log/puppetlabs/puppetserver"
+RUNDIR="/run/puppetlabs/puppetserver"
+
+checkconfig() {
+    if [ ! -x $JAVA_BIN ]; then
+        eerror "Missing JAVA_BIN."
+        eend 1
+    fi
+    if [ ! -d $INSTALL_DIR ]; then
+        eerror "Missing INSTALL_DIR."
+        eend 1
+    fi
+    if [ ! -e $BOOTSTRAP_CONFIG ]; then
+        eerror "Missing BOOTSTRAP_CONFIG."
+        eend 1
+    fi
+    if [ ! -e $CONFIG ]; then
+        eerror "Missing CONFIG."
+        eend 1
+    fi
+    if [ ! -n $USER ]; then
+        eerror "Missing USER."
+        eend 1
+    fi
+    if [ ! -n $GROUP ]; then
+        eerror "Missing GROUP."
+        eend 1
+    fi
+
+    checkpath -d -m 0755 "${LOGDIR%/*}"
+    checkpath -d -m 0755 "${RUNDIR%/*}"
+    checkpath -d -m 0700 -o "${USER}:${GROUP}" "${LOGDIR}"
+    checkpath -d -m 0755 -o "${USER}:${GROUP}" "${RUNDIR}"
+
+    PUPPETSERVER_ARGS="-Djava.security.egd=/dev/urandom -XX:OnOutOfMemoryError=\"kill -9 %p\" -cp ${INSTALL_DIR}/puppet-server-release.jar:${INSTALL_DIR}/jruby-1_7.jar:/opt/puppetlabs/puppet/lib/ruby/vendor_ruby/facter.jar clojure.main -m puppetlabs.trapperkeeper.main"
+    PUPPETSERVER_OPTS="--config /etc/puppetlabs/puppetserver/conf.d --bootstrap-config ${BOOTSTRAP_CONFIG} --restart-file /opt/puppetlabs/server/data/puppetserver/restartcounter"
+    EXEC="${JAVA_BIN} ${JAVA_ARGS} ${PUPPETSERVER_ARGS} ${PUPPETSERVER_OPTS}"
+}
+
+start() {
+    checkconfig || return 1
+
+    ebegin "Starting Puppet Server"
+    start-stop-daemon --start -u "${USER}" -g "${GROUP}" \
+        -m --pidfile "${RUNDIR}/puppetserver.pid" \
+        -b --exec "/bin/bash" \
+        -- -c "exec ${EXEC} >> ${LOGDIR}/daemon.log 2>&1"
+    local retval=$?
+    if [ $retval -ne 0 ]; then
+        ewarn "Error starting puppetserver."
+    fi
+    eend $retval
+}
+
+stop() {
+    ebegin "Stopping Puppet Server"
+    start-stop-daemon --stop --pidfile "${RUNDIR}/puppetserver.pid"
+    eend $?
+}
+
+reload() {
+    ebegin "Reloading Puppet Server"
+    start-stop-daemon --signal HUP --pidfile "${RUNDIR}/puppetserver.pid"
+    eend $?
+}
+

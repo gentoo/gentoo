@@ -1,0 +1,14 @@
+--- src/lfd/lockdaemon.c.orig	2004-10-12 10:59:28.000000000 +0200
++++ src/lfd/lockdaemon.c	2006-10-29 22:46:58.000000000 +0100
+@@ -248,9 +248,8 @@
+ 
+ 	if ( check_group_uucp() )
+ 	{
+-		syslog( LOG_INFO, "check_lock_status: No permission to create lock file.
+-
+-		please see: How can I use Lock Files with rxtx? in INSTALL\n" );
++		syslog( LOG_INFO, "check_lock_status: No permission to create lock file.\n\n"
++			"please see: How can I use Lock Files with rxtx? in INSTALL\n" );
+ 		return 1;
+ 	}
+ 

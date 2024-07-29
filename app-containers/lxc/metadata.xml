@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>juippis@gentoo.org</email>
+    <name>Joonas Niilola</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>virtualization@gentoo.org</email>
+    <name>Gentoo Virtualization Project</name>
+  </maintainer>
+  <use>
+    <flag name="io-uring">Enable io_uring support, and use io_uring instead of epoll</flag>
+    <flag name="tools">Build and install additional command line tools</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">lxc/lxc</remote-id>
+    <remote-id type="cpe">cpe:/a:linuxcontainers:lxc</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,15 @@
+Author: Andreas Beckmann <anbe@debian.org>
+Description: fix FTBFS with 64-bit time_t on 32-bit architectures
+
+--- a/src/CReplayData.cpp
++++ b/src/CReplayData.cpp
+@@ -38,7 +38,8 @@ ReplayData::~ReplayData()
+ 
+ void ReplayData::printReplayInformation()
+ {
+-	tm *timeinfo = localtime(&header.randomSeed);
++	time_t t = header.randomSeed;
++	tm *timeinfo = localtime(&t);
+ 	printf("Recorded on : %s", asctime(timeinfo));
+ 	printf("Map         : %s\n", header.map);
+ 	printf("Score       : %d\n", header.score);

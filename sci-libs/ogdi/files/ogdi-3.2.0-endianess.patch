@@ -1,0 +1,34 @@
+From 0cc56791fa5f43a399adcea438d7254611573f2d Mon Sep 17 00:00:00 2001
+From: Dennis Schridde <devurandom@gmx.net>
+Date: Tue, 28 Nov 2017 21:53:51 +0100
+Subject: [PATCH 1/6] Use endian.h to determine endianness
+
+glibc and others have an endian.h header that contains a __BYTE_ORDER macro,
+ which can be used to determine endianness.  The header might also be called
+ sys/endian.h on some systems.
+---
+ vpflib/include/machine.h | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/vpflib/include/machine.h b/vpflib/include/machine.h
+index 808522d..cee8774 100644
+--- a/vpflib/include/machine.h
++++ b/vpflib/include/machine.h
+@@ -15,10 +15,11 @@ typedef struct
+     long            output;
+ } xBYTE_ORDER;
+ 
+-#if SYS_BIG_ENDIAN == 1
+-#define MACHINE_BYTE_ORDER MOST_SIGNIFICANT
+-#else
++#include <endian.h>
++#if __BYTE_ORDER == __LITTLE_ENDIAN
+ #define MACHINE_BYTE_ORDER LEAST_SIGNIFICANT
++#elif __BYTE_ORDER == __BIG_ENDIAN
++#define MACHINE_BYTE_ORDER MOST_SIGNIFICANT
+ #endif
+ 
+ #ifdef _WINDOWS
+-- 
+2.15.0
+

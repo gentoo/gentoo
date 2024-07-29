@@ -1,0 +1,12 @@
+--- a/ui_common.c
++++ b/ui_common.c
+@@ -263,9 +263,6 @@
+ 	} u_screen_line = { &screen_line };
+         addr_pair ap;
+         int i;
+-        int tsent, trecv;
+-        tsent = trecv = 0;
+-
+ 
+         ap = *(addr_pair*)n->key;
+ 

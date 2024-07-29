@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>foti.giuseppe@gmail.com</email>
+		<name>Giuseppe Foti</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="cron">Adds file to enable daily cron job to update Greenbone Community Feed's data"</flag>
+	</use>
+	<longdescription lang="en">
+			This is the new script for syncing the Greenbone Community Feed.
+			The greenbone-nvt-sync script was previously installed by net-analyzer/openvas-scanner.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">greenbone/greenbone-feed-sync</remote-id>
+	</upstream>
+</pkgmetadata>

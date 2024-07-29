@@ -1,0 +1,15 @@
+Fix bounding box recognition
+https://src.fedoraproject.org/rpms/gv/blob/rawhide/f/gv-bounding-box.patch
+
+diff a/src/ps.c b/src/ps.c
+--- a/src/ps.c
++++ b/src/ps.c
+@@ -357,7 +357,7 @@ static int parse_boundingbox(const char *l, int *boundingbox) {
+ 	while (*p == ' ' || *p == '\t')
+ 		p++;
+ 	fury = strtod(p, &pe);
+-	if (*pe != '\n' && *pe != '\0' && *pe != ' ' && *pe != '\t') {
++	if (*pe != '\n'  && *pe != '\r'&& *pe != '\0' && *pe != ' ' && *pe != '\t') {
+ 		return 0;
+ 	}
+ 

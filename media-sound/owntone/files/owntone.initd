@@ -1,0 +1,40 @@
+#!/sbin/openrc-run
+# Copyright 1999-2024 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="DAAP/DACP (iTunes), RSP and MPD server."
+
+command="/usr/sbin/owntone"
+pidfile="/run/owntone/${SVCNAME}.pid"
+conffile="/etc/${SVCNAME}.conf"
+user=${USER:-owntone}
+group=${GROUP:-audio}
+
+depend() {
+	need net avahi-daemon
+	use dns
+}
+
+start_pre() {
+	mkdir -p "${pidfile%/*}"
+	chown ${user}:${group} "${pidfile%/*}"
+}
+
+stop_post() {
+	rm -f "${pidfile}"
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --pidfile "${pidfile}" \
+		--user ${user} --group ${group} \
+		--exec ${command} -- -P "${pidfile}" -c "${conffile}" \
+		${EXTRA_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --exec ${command} --pidfile "${pidfile}"
+	eend $?
+}

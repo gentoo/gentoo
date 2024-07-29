@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e95019cedb2..814c7f4d0b7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -178,7 +178,7 @@ endif()
+ 
+ option(WITH_FUSE "Fuse is here" ON)
+ if(WITH_FUSE)
+-  find_package(FUSE)
++  find_package(FUSE 3.0)
+   set(HAVE_LIBFUSE ${FUSE_FOUND})
+ endif()
+ 

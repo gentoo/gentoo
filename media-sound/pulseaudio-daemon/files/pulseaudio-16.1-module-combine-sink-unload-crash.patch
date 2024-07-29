@@ -1,0 +1,22 @@
+commit 0cbbc408aee2b5f2c42280d24dc615405387b5b1
+Author: Igor V. Kovalenko <igor.v.kovalenko@gmail.com>
+Date:   Sun Nov 27 19:39:23 2022 +0300
+
+    module-combine-sink: Suspend while unloading to fix crash moving sinks
+    
+    Part-of: <https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/756>
+
+diff --git a/src/modules/module-combine-sink.c b/src/modules/module-combine-sink.c
+index 4b7690183..2ccd9eb13 100644
+--- a/src/modules/module-combine-sink.c
++++ b/src/modules/module-combine-sink.c
+@@ -1733,6 +1733,9 @@ void pa__done(pa_module*m) {
+     if (!(u = m->userdata))
+         return;
+ 
++    if (u->sink && PA_SINK_IS_LINKED(u->sink->state))
++        pa_sink_suspend(u->sink, true, PA_SUSPEND_UNAVAILABLE);
++
+     pa_strlist_free(u->unlinked_slaves);
+ 
+     if (u->sink_put_slot)

@@ -1,0 +1,12 @@
+index db42945..2a6537c 100644
+--- a/geiser-guile.el
++++ b/geiser-guile.el
+@@ -141,7 +141,7 @@ effect on new REPLs.  For existing ones, use the command
+     geiser-guile-binary))
+ 
+ (defvar geiser-guile-scheme-dir
+-  (expand-file-name "src" (file-name-directory load-file-name))
++  (expand-file-name "src" "@SITEETC@")
+   "Directory where the Guile scheme geiser modules are installed.")
+ 
+ (defvar-local geiser-guile-scheme-local-dir

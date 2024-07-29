@@ -1,0 +1,16 @@
+--- a/build.xml
++++ b/build.xml
+@@ -150,5 +150,13 @@
+   	<arg line="${version}" />
+   </exec>
+   </target>
++   <target name="javadoc" depends="compile">
++      <javadoc destdir="doc/api" source="8">
++      	<packageset dir="src"/>
++       <classpath>
++         <pathelement path="lib/junit3.8.1/junit.jar" />
++       </classpath>
++      </javadoc>
++   </target>
+ 
+ </project>

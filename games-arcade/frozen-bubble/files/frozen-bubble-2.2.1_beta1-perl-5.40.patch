@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/934245
+
+Fix build error:
+Attempt to call undefined import method with arguments ("0.36") via package "Module::Build" (Perhaps you forgot to load the package?) at inc/My/Builder.pm line 11.
+
+--- a/inc/My/Builder.pm
++++ b/inc/My/Builder.pm
+@@ -8,7 +8,7 @@
+ use File::Slurp qw(read_file write_file);
+ use File::Spec::Functions qw(catdir catfile rootdir);
+ use IO::File qw();
+-use Module::Build '0.36' => qw();
++use Module::Build qw();
+ use autodie qw(:all move read_file write_file);
+ use parent 'Module::Build';
+ use Locale::Maketext::Extract;

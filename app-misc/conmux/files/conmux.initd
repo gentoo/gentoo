@@ -1,0 +1,39 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	use net
+	need conmux-registry
+}
+
+checkconfig() {
+	if [ ! -f ${CONMUX_CONFIG} ]; then
+		eerror ""
+		eerror "No conmux configuration file was found!"
+		eerror "Please read the conmux README file."
+		eerror ""
+		return 1
+	fi
+	# Sane default
+	if [ -z ${CONMUX_LOG} ]; then
+		CONMUX_LOG="/var/log/conmux.log"
+	fi
+	return 0
+}
+
+start() {
+	checkconfig || exit 1
+	# Make sure conmux finds everything
+	export PATH="${PATH}:/usr/share/conmux/drivers:/usr/share/conmux/helpers"
+	ebegin "Starting conmux daemon"
+	start-stop-daemon -m -b --start -1 ${CONMUX_LOG} \
+		-2 ${CONMUX_LOG} -p /run/${SVCNAME}.pid \
+		--exec /usr/sbin/conmux -- ${CONMUX_CONFIG}
+}
+
+stop() {
+	ebegin "Stopping conmux daemon"
+	start-stop-daemon --stop --pidfile /run/${SVCNAME}.pid
+	eend $?
+}

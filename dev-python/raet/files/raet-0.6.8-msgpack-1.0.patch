@@ -1,0 +1,128 @@
+From 34e87f76daff2b0c898ff544cddad04a46784dfe Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mat=C4=9Bj=20Cepl?= <mcepl@cepl.eu>
+Date: Thu, 23 Apr 2020 19:06:54 +0200
+Subject: [PATCH] Make the package compatible with msgpack 1.0.0.
+
+Also, a wee bit of cleanup.
+---
+ raet/keeping.py                  |  4 ++--
+ raet/lane/paging.py              |  8 +++-----
+ raet/road/packeting.py           | 11 ++++-------
+ raet/road/test/test_packeting.py |  6 +++---
+ 4 files changed, 12 insertions(+), 17 deletions(-)
+
+diff --git a/raet/keeping.py b/raet/keeping.py
+index fad41b2..d7270d9 100644
+--- a/raet/keeping.py
++++ b/raet/keeping.py
+@@ -127,7 +127,7 @@ def dump(data, filepath):
+                 raise raeting.KeepError("Invalid filepath ext '{0}' "
+                             "needs msgpack installed".format(filepath))
+             with ocfn(filepath, "w+b", binary=True) as f:
+-                msgpack.dump(data, f, encoding='utf-8')
++                msgpack.dump(data, f)
+                 f.flush()
+                 os.fsync(f.fileno())
+         else:
+@@ -154,7 +154,7 @@ def load(filepath):
+                     raise raeting.KeepError("Invalid filepath ext '{0}' "
+                                 "needs msgpack installed".format(filepath))
+                 with ocfn(filepath, "rb", binary=True) as f:
+-                    it = msgpack.load(f, object_pairs_hook=odict, encoding='utf-8')
++                    it = msgpack.load(f, object_pairs_hook=odict)
+             else:
+                 it = None
+         except EOFError:
+diff --git a/raet/lane/paging.py b/raet/lane/paging.py
+index eeff2b3..9a98af7 100644
+--- a/raet/lane/paging.py
++++ b/raet/lane/paging.py
+@@ -162,8 +162,7 @@ def pack(self):
+                 if not msgpack:
+                     emsg = "Msgpack not installed."
+                     raise raeting.PacketError(emsg)
+-                self.packed = msgpack.dumps(self.data,
+-                                            encoding='utf-8')
++                self.packed = msgpack.dumps(self.data)
+         else:
+             emsg = "Unrecognized message pack kind '{0}'\n".format(pk)
+             console.terse(emsg)
+@@ -192,7 +191,7 @@ def parse(self):
+ 
+         if pk == PackKind.json:
+             if self.packed:
+-                self.data = json.loads(self.packed.decode(encoding='utf-8'),
++                self.data = json.loads(self.packed.decode(),
+                                        object_pairs_hook=odict)
+         elif pk == PackKind.pack:
+             if self.packed:
+@@ -200,8 +199,7 @@ def parse(self):
+                     emsg = "Msgpack not installed."
+                     raise raeting.PacketError(emsg)
+                 self.data = msgpack.loads(self.packed,
+-                                          object_pairs_hook=odict,
+-                                          encoding='utf-8')
++                                          object_pairs_hook=odict)
+ 
+         if not isinstance(self.data, Mapping):
+             emsg = "Message body not a mapping\n"
+diff --git a/raet/road/packeting.py b/raet/road/packeting.py
+index 918d479..33a7ac8 100644
+--- a/raet/road/packeting.py
++++ b/raet/road/packeting.py
+@@ -283,8 +283,7 @@ def pack(self):
+                 if not msgpack:
+                     emsg = "Msgpack not installed."
+                     raise raeting.PacketError(emsg)
+-                self.packed = msgpack.dumps(self.data,
+-                                            encoding='utf-8')
++                self.packed = msgpack.dumps(self.data)
+         elif bk == BodyKind.raw:
+             self.packed = self.data # data is already formatted string
+ 
+@@ -308,9 +307,8 @@ def parse(self):
+ 
+         if bk == BodyKind.json:
+             if self.packed:
+-                kit = json.loads(self.packed.decode(encoding='utf-8'),
+-                                 object_pairs_hook=odict,
+-                                 encoding='utf-8')
++                kit = json.loads(self.packed.decode(),
++                                 object_pairs_hook=odict)
+                 if not isinstance(kit, Mapping):
+                     emsg = "Packet body not a mapping."
+                     raise raeting.PacketError(emsg)
+@@ -321,8 +319,7 @@ def parse(self):
+                     emsg = "Msgpack not installed."
+                     raise raeting.PacketError(emsg)
+                 kit = msgpack.loads(self.packed,
+-                                    object_pairs_hook=odict,
+-                                    encoding='utf-8')
++                                    object_pairs_hook=odict)
+                 if not isinstance(kit, Mapping):
+                     emsg = "Packet body not a mapping."
+                     raise raeting.PacketError(emsg)
+diff --git a/raet/road/test/test_packeting.py b/raet/road/test/test_packeting.py
+index da88c01..6089ffe 100644
+--- a/raet/road/test/test_packeting.py
++++ b/raet/road/test/test_packeting.py
+@@ -375,8 +375,8 @@ def testSegmentation(self):
+ 
+         tray0 = packeting.TxTray(stack=stack, data=data, body=stuff)
+         tray0.pack()
+-        self.assertEquals(tray0.packed, b'   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 241 242 243 244 245 246 247 248 249 250 251 252 253 254 255 256 257 258 259 260 261 262 263 264 265 266 267 268 269 270 271 272 273 274 275 276 277 278 279 280 281 282 283 284 285 286 287 288 289 290 291 292 293 294 295 296 297 298 299')
+-        self.assertEquals(len(tray0.packets), 2)
++        self.assertEqual(tray0.packed, b'   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 241 242 243 244 245 246 247 248 249 250 251 252 253 254 255 256 257 258 259 260 261 262 263 264 265 266 267 268 269 270 271 272 273 274 275 276 277 278 279 280 281 282 283 284 285 286 287 288 289 290 291 292 293 294 295 296 297 298 299')
++        self.assertEqual(len(tray0.packets), 2)
+ 
+         tray1 = packeting.RxTray(stack=stack)
+         for packet in tray0.packets:
+@@ -416,7 +416,7 @@ def testSegmentation(self):
+                                            'fk': 0,
+                                            'fl': 0,
+                                            'fg': '08'})
+-        self.assertEquals( tray1.body, stuff)
++        self.assertEqual( tray1.body, stuff)
+ 
+ class StackTestCase(unittest.TestCase):
+     '''

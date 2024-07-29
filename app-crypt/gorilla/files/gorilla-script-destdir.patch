@@ -1,0 +1,17 @@
+--- a/gorilla.in
++++ b/gorilla.in
+@@ -1,10 +1,13 @@
+ #! /bin/sh
+ # the next line restarts using wish \
+ exec @wish@ "$0" ${1+"$@"}
++
+ set myName [info script]
++set myGorilla /opt/gorilla-1.4/gorilla.tcl
++
+ if {![catch {
+     set linkName [file readlink $myName]
+ }]} {
+     set myName $linkName
+ }
+-source [file join [file dirname $myName] gorilla.tcl]
++source [file join [file dirname $myName] $myGorilla]

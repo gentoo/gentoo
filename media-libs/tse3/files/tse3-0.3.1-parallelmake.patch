@@ -1,0 +1,11 @@
+--- a/src/tse3/Makefile.am
++++ b/src/tse3/Makefile.am
+@@ -53,7 +53,7 @@
+ 
+ noinst_PROGRAMS = test
+ test_SOURCES = test.cpp
+-test_LDADD = $(top_builddir)/src/tse3/libtse3.la
++test_LDADD = ./libtse3.la
+ 
+ # McCabe .i file generation
+ 

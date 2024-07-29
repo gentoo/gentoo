@@ -1,0 +1,37 @@
+--- a/CommonHeader
++++ b/CommonHeader
+@@ -22,18 +22,18 @@
+ NET = true
+ 
+ LD = ld
+-CXX = g++
+ 
+-CXXFLAGS= `sdl-config --cflags` -g -Wall -DAUDIO
++CXXFLAGS+= `sdl-config --cflags` -Wall
++CPPFLAGS+= -DAUDIO
+ 
+ ifndef NET
+ CXXFLAGS+= -DNONET
+ endif
+ 
+ ifdef NET
+-LDFLAGS= `sdl-config --libs` -lSDL_image -lSDL_net -lm
++LDLIBS= `sdl-config --libs` -lSDL_image -lSDL_net -lm
+ else
+-LDFLAGS= `sdl-config --libs` -lSDL_image -lm
++LDLIBS= `sdl-config --libs` -lSDL_image -lm
+ endif
+ 
+ SRCS	= 	$(wildcard *.cpp)
+--- a/Makefile.Linux
++++ b/Makefile.Linux
+@@ -38,8 +38,7 @@
+ 	$(MAKE) -C $(@D:%_module.o=%)
+ 
+ gav:	$(ALL_OBJ) $(OFILES)
+-	$(CXX) -o gav $(OFILES) $(ALL_OBJ) $(LDFLAGS)
+-	strip gav
++	$(CXX) $(LDFLAGS) -o gav $(OFILES) $(ALL_OBJ) $(LDLIBS)
+ 
+ clean:
+ 	for i in $(SUBDIRS) ; do \

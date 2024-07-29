@@ -1,0 +1,14 @@
+# Gentoo Bug: https://bugs.gentoo.org/919501
+
+diff --git a/dltest/dltest.c b/dltest/dltest.c
+index d3b9360..3fb354b 100644
+--- a/dltest/dltest.c
++++ b/dltest/dltest.c
+@@ -28,6 +28,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ 
+ #ifdef WIN32
+     #include <windows.h>

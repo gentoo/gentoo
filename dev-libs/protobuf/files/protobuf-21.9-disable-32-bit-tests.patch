@@ -1,0 +1,118 @@
+https://bugs.gentoo.org/875584
+https://github.com/protocolbuffers/protobuf/pull/10589
+
+From 5f4a52d9bff7595ec47fb6727662a1cada3cd404 Mon Sep 17 00:00:00 2001
+From: Mike Kruskal <mkruskal@google.com>
+Date: Thu, 15 Sep 2022 10:23:23 -0700
+Subject: [PATCH 3/7] Patching static assert test failure
+
+--- a/src/google/protobuf/extension_set_unittest.cc
++++ b/src/google/protobuf/extension_set_unittest.cc
+@@ -855,8 +855,10 @@ TEST(ExtensionSetTest, SpaceUsedExcludingSelf) {
+     const size_t old_capacity =                                                \
+         message->GetRepeatedExtension(unittest::repeated_##type##_extension)   \
+             .Capacity();                                                       \
+-    EXPECT_GE(old_capacity,                                                    \
+-              (RepeatedFieldLowerClampLimit<cpptype, sizeof(void*)>()));       \
++    EXPECT_GE(                                                                 \
++        old_capacity,                                                          \
++        (RepeatedFieldLowerClampLimit<cpptype, std::max(sizeof(cpptype),       \
++                                                        sizeof(void*))>()));   \
+     for (int i = 0; i < 16; ++i) {                                             \
+       message->AddExtension(unittest::repeated_##type##_extension, value);     \
+     }                                                                          \
+
+From c94b66706bec17d918495f4715183a5eaf0f8044 Mon Sep 17 00:00:00 2001
+From: Mike Kruskal <mkruskal@google.com>
+Date: Thu, 15 Sep 2022 11:31:31 -0700
+Subject: [PATCH 4/7] Test fixes for 32-bit architectures
+
+--- a/src/google/protobuf/compiler/cpp/message_size_unittest.cc
++++ b/src/google/protobuf/compiler/cpp/message_size_unittest.cc
+@@ -139,9 +139,9 @@ TEST(GeneratedMessageTest, OneStringSize) {
+ 
+ TEST(GeneratedMessageTest, MoreStringSize) {
+   struct MockGenerated : public MockMessageBase {  // 16 bytes
+-    int has_bits[1];                               // 4 bytes
+     int cached_size;                               // 4 bytes
+     MockRepeatedPtrField data;                     // 24 bytes
++    // + 4 bytes padding
+   };
+   GOOGLE_CHECK_MESSAGE_SIZE(MockGenerated, 48);
+   EXPECT_EQ(sizeof(protobuf_unittest::MoreString), sizeof(MockGenerated));
+--- a/src/google/protobuf/io/zero_copy_stream_unittest.cc
++++ b/src/google/protobuf/io/zero_copy_stream_unittest.cc
+@@ -720,6 +720,9 @@ TEST_F(IoTest, StringIo) {
+ 
+ // Verifies that outputs up to kint32max can be created.
+ TEST_F(IoTest, LargeOutput) {
++  // Filter out this test on 32-bit architectures.
++  if(sizeof(void*) < 8) return;
++
+   std::string str;
+   StringOutputStream output(&str);
+   void* unused_data;
+--- a/src/google/protobuf/repeated_field_unittest.cc
++++ b/src/google/protobuf/repeated_field_unittest.cc
+@@ -429,14 +429,14 @@ TEST(RepeatedField, ReserveNothing) {
+ 
+ TEST(RepeatedField, ReserveLowerClamp) {
+   int clamped_value = internal::CalculateReserveSize<bool, sizeof(void*)>(0, 1);
+-  EXPECT_GE(clamped_value, 8 / sizeof(bool));
++  EXPECT_GE(clamped_value, sizeof(void*) / sizeof(bool));
+   EXPECT_EQ((internal::RepeatedFieldLowerClampLimit<bool, sizeof(void*)>()),
+             clamped_value);
+   // EXPECT_EQ(clamped_value, (internal::CalculateReserveSize<bool,
+   // sizeof(void*)>( clamped_value, 2)));
+ 
+   clamped_value = internal::CalculateReserveSize<int, sizeof(void*)>(0, 1);
+-  EXPECT_GE(clamped_value, 8 / sizeof(int));
++  EXPECT_GE(clamped_value, sizeof(void*) / sizeof(int));
+   EXPECT_EQ((internal::RepeatedFieldLowerClampLimit<int, sizeof(void*)>()),
+             clamped_value);
+   // EXPECT_EQ(clamped_value, (internal::CalculateReserveSize<int,
+--- a/src/google/protobuf/util/time_util_test.cc
++++ b/src/google/protobuf/util/time_util_test.cc
+@@ -48,15 +48,18 @@ using google::protobuf::Timestamp;
+ namespace {
+ 
+ TEST(TimeUtilTest, TimestampStringFormat) {
+-  Timestamp begin, end;
+-  EXPECT_TRUE(TimeUtil::FromString("0001-01-01T00:00:00Z", &begin));
+-  EXPECT_EQ(TimeUtil::kTimestampMinSeconds, begin.seconds());
+-  EXPECT_EQ(0, begin.nanos());
+-  EXPECT_TRUE(TimeUtil::FromString("9999-12-31T23:59:59.999999999Z", &end));
+-  EXPECT_EQ(TimeUtil::kTimestampMaxSeconds, end.seconds());
+-  EXPECT_EQ(999999999, end.nanos());
+-  EXPECT_EQ("0001-01-01T00:00:00Z", TimeUtil::ToString(begin));
+-  EXPECT_EQ("9999-12-31T23:59:59.999999999Z", TimeUtil::ToString(end));
++  // These these are out of bounds for 32-bit architectures.
++  if(sizeof(time_t) >= sizeof(uint64_t)) {
++    Timestamp begin, end;
++    EXPECT_TRUE(TimeUtil::FromString("0001-01-01T00:00:00Z", &begin));
++    EXPECT_EQ(TimeUtil::kTimestampMinSeconds, begin.seconds());
++    EXPECT_EQ(0, begin.nanos());
++    EXPECT_TRUE(TimeUtil::FromString("9999-12-31T23:59:59.999999999Z", &end));
++    EXPECT_EQ(TimeUtil::kTimestampMaxSeconds, end.seconds());
++    EXPECT_EQ(999999999, end.nanos());
++    EXPECT_EQ("0001-01-01T00:00:00Z", TimeUtil::ToString(begin));
++    EXPECT_EQ("9999-12-31T23:59:59.999999999Z", TimeUtil::ToString(end));
++  }
+ 
+   // Test negative timestamps.
+   Timestamp time = TimeUtil::NanosecondsToTimestamp(-1);
+@@ -94,9 +97,12 @@ TEST(TimeUtilTest, DurationStringFormat) {
+   EXPECT_TRUE(TimeUtil::FromString("0001-01-01T00:00:00Z", &begin));
+   EXPECT_TRUE(TimeUtil::FromString("9999-12-31T23:59:59.999999999Z", &end));
+ 
+-  EXPECT_EQ("315537897599.999999999s", TimeUtil::ToString(end - begin));
++  // These these are out of bounds for 32-bit architectures.
++  if(sizeof(time_t) >= sizeof(uint64_t)) {
++    EXPECT_EQ("315537897599.999999999s", TimeUtil::ToString(end - begin));
++    EXPECT_EQ("-315537897599.999999999s", TimeUtil::ToString(begin - end));
++  }
+   EXPECT_EQ(999999999, (end - begin).nanos());
+-  EXPECT_EQ("-315537897599.999999999s", TimeUtil::ToString(begin - end));
+   EXPECT_EQ(-999999999, (begin - end).nanos());
+ 
+   // Generated output should contain 3, 6, or 9 fractional digits.

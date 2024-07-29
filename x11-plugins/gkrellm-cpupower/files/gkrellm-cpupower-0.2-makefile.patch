@@ -1,0 +1,45 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,22 +1,29 @@
+ # Makefile for gkrellm cpupower plugin
+ 
+-GTK_INCLUDE = `pkg-config gtk+-2.0 --cflags`
+-GTK_LIB = `pkg-config gtk+-2.0 --libs`
++PKG_CONFIG ?= pkg-config
+ 
+-FLAGS = -O2 -Wall -fPIC $(GTK_INCLUDE)
++GTK_INCLUDE = $(shell ${PKG_CONFIG} gtk+-2.0 --cflags)
++GTK_LIB = $(shell ${PKG_CONFIG} gtk+-2.0 --libs)
++
++FLAGS = -fPIC $(GTK_INCLUDE)
+ LIBS = $(GTK_LIB)
+ 
+ LFLAGS = -shared -lcpupower
+ 
+-CC = gcc $(CFLAGS) $(FLAGS)
++CC = $(CC)
+ 
+ OBJS = cpupower.o
+ 
++all: cpupower.so
++
++%.o: %.c
++	$(CC) $(CFLAGS) $(FLAGS) -c -o $@ $<
++
+ cpupower.so: $(OBJS)
+-	$(CC) $(OBJS) -o cpupower.so $(LFLAGS) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(FLAGS) $(OBJS) -o cpupower.so $(LFLAGS) $(LIBS)
+ 
+ install: cpupower.so
+-	install -D -m 755 -s cpupower.so $(DESTDIR)/usr/lib/gkrellm2/plugins/cpupower.so
++	install -D -m 755 cpupower.so $(DESTDIR)/usr/lib/gkrellm2/plugins/cpupower.so
+ 
+ install-sudo:
+ 	mkdir -p $(DESTDIR)/etc/sudoers.d
+@@ -25,6 +32,3 @@ install-sudo:
+ 
+ clean:
+ 	rm -f *.o core *.so* *.bak *~
+-
+-cpupower.o: cpupower.c
+-

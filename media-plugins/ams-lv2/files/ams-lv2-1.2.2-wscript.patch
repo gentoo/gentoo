@@ -1,0 +1,22 @@
+--- a/waflib/ConfigSet.py
++++ b/waflib/ConfigSet.py
+@@ -312,7 +312,7 @@ class ConfigSet(object):
+ 		:type filename: string
+ 		"""
+ 		tbl = self.table
+-		code = Utils.readf(filename, m='rU')
++		code = Utils.readf(filename, m='r')
+ 		for m in re_imp.finditer(code):
+ 			g = m.group
+ 			tbl[g(2)] = eval(g(3))
+--- a/waflib/Context.py
++++ b/waflib/Context.py
+@@ -662,7 +662,7 @@ def load_module(path, encoding=None):
+ 
+ 	module = imp.new_module(WSCRIPT_FILE)
+ 	try:
+-		code = Utils.readf(path, m='rU', encoding=encoding)
++		code = Utils.readf(path, m='r', encoding=encoding)
+ 	except EnvironmentError:
+ 		raise Errors.WafError('Could not read the file %r' % path)
+ 

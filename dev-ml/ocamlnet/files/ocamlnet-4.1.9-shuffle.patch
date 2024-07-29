@@ -1,0 +1,11 @@
+--- a/Makefile.rules	2023-01-20 22:52:47.530898157 +0100
++++ b/Makefile.rules	2023-01-20 22:53:09.370565670 +0100
+@@ -210,7 +210,7 @@
+ # Set NODEP to "@true" in order to disable "depend".
+ 
+ depend: $(DEP_FILES)
+-	$(NODEP) $(OCAMLDEP) *.ml *.mli >$@ || { rm -f $@; exit 1; }
++	$(NODEP) $(OCAMLDEP) -ml-synonym .mll *.ml *.mli >$@ || { rm -f $@; exit 1; }
+ 
+ .PHONY: clean
+ clean:: genclean

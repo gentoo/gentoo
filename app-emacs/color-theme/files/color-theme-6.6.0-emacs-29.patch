@@ -1,0 +1,114 @@
+--- color-theme-6.6.0/color-theme.el
++++ color-theme-6.6.0/color-theme.el
+@@ -50,7 +50,7 @@
+   (require 'reporter)
+   (require 'sendmail))
+ 
+-(require 'cl); set-difference is a function...
++(require 'cl-seq); cl-set-difference is a function...
+ 
+ ;; for custom-face-attributes-get or face-custom-attributes-get
+ (require 'cus-face)
+@@ -143,7 +143,7 @@
+   "Regexp that matches variable names.
+ Only variables that match this regexp can be changed as part of a color
+ theme.  In addition to matching this name, the variables have to be user
+-variables (see function `user-variable-p')."
++variables (see function `custom-variable-p')."
+   :type 'regexp
+   :group 'color-theme)
+ 
+@@ -174,7 +174,7 @@
+ frames with different color themes.
+ 
+ setup:
+-    \(require 'color-theme)
++    \(require \\='color-theme)
+     ;; set default color theme
+     \(color-theme-blue-sea)
+     ;; create some frames with different color themes
+@@ -430,7 +430,7 @@
+ If you defined your own color theme and want to add it to this list,
+ use something like this:
+ 
+-  (add-to-list 'color-themes '(color-theme-gnome2 \"Gnome2\" \"Alex\"))")
++  (add-to-list \\='color-themes \\='(color-theme-gnome2 \"Gnome2\" \"Alex\"))")
+ 
+ ;;; Functions
+ 
+@@ -513,7 +513,7 @@
+ If you want to install the color theme permanently, put the call to the
+ color theme function into your ~/.emacs:
+ 
+-    \(require 'color-theme)
++    \(require \\='color-theme)
+     \(color-theme-gnome2)
+ 
+ If you worry about the size of color-theme.el: You are right.  Use
+@@ -607,7 +607,7 @@
+ 
+ If the optional argument EXCLUDE is non-nil, then the sense is
+ reversed: only non-matching elements will be retained."
+-  (let (elem new-list)
++  (let (elem new-list name)
+     (dolist (elem old-list)
+       (setq name (symbol-name (if (listp elem) (car elem) elem)))
+       (when (or (and (not exclude)
+@@ -861,12 +861,12 @@
+   "Return a list of variable settings usable in a color theme.
+ Such an alist may be installed by `color-theme-install-variables'.
+ The variable names must match `color-theme-legal-variables', and the
+-variable must be a user variable according to `user-variable-p'."
++variable must be a user variable according to `custom-variable-p'."
+   (let ((vars)
+ 	(val))
+     (mapatoms (lambda (v)
+ 		(and (boundp v)
+-		     (user-variable-p v)
++		     (custom-variable-p v)
+ 		     (string-match color-theme-legal-variables
+ 				   (symbol-name v))
+ 		     (setq val (eval v))
+@@ -952,12 +952,12 @@
+ 
+ Example:
+ 
+-    \(require 'color-theme)
++    \(require \\='color-theme)
+     \(defun my-color-theme ()
+       \"Color theme by Alex Schroeder, created 2000-05-17.\"
+       \(interactive)
+       \(color-theme-install
+-       '(...
++       \\='(...
+ 	 ...
+ 	 ...)))
+     \(my-color-theme)
+@@ -967,7 +967,7 @@
+ 
+ Example:
+ 
+-    \(require 'color-theme)
++    \(require \\='color-theme)
+     \(color-theme-gnome2)"
+   (interactive)
+   (message "Pretty printing current color theme function...")
+@@ -1495,15 +1495,15 @@
+ 			(color-theme-get-vars)
+ 			(color-theme-get-face-definitions)))
+     (delete-frame))
+-  (let ((params (set-difference
++  (let ((params (cl-set-difference
+ 		 (color-theme-frame-params theme-b)
+ 		 (color-theme-frame-params theme-a)
+ 		 :test 'equal))
+-	(vars (set-difference
++	(vars (cl-set-difference
+ 	       (color-theme-variables theme-b)
+ 	       (color-theme-variables theme-a)
+ 	       :test 'equal))
+-	(faces (set-difference
++	(faces (cl-set-difference
+ 		(color-theme-faces theme-b)
+ 		(color-theme-faces theme-a)
+ 		:test 'equal)))

@@ -1,0 +1,23 @@
+From: https://github.com/wget/realtek-r8152-linux/issues/30
+From: Mark Taylor <mark.taylor.hq@gmail.com>
+Date: Thu, 8 Jun 2023 14:36:30 -0400
+Subject: [PATCH] Add support for ASUS C2500
+
+--- a/r8152.c
++++ b/r8152.c
+@@ -807,6 +807,7 @@
+ #define VENDOR_ID_LINKSYS		0x13b1
+ #define VENDOR_ID_NVIDIA		0x0955
+ #define VENDOR_ID_TPLINK		0x2357
++#define VENDOR_ID_ASUS			0x0b05
+ 
+ #define MCU_TYPE_PLA			0x0100
+ #define MCU_TYPE_USB			0x0000
+@@ -20846,6 +20847,8 @@
+ 	/* Getac */
+ 	REALTEK_USB_DEVICE(0x2baf, 0x0012),
+ 
++	/* ASUS */
++	REALTEK_USB_DEVICE(VENDOR_ID_ASUS, 0x1976),
+ 	{}
+ };

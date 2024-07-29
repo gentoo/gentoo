@@ -1,0 +1,14 @@
+--- a/bookview/bookview.in
++++ b/bookview/bookview.in
+@@ -120,6 +120,11 @@
+ # Bitmap size.
+ set bitmap_size 16
+ 
++# Read Xresource
++if { [ file readable "@sysconfdir@/X11/app-defaults/Bookview" ] } {
++    option readfile "@sysconfdir@/X11/app-defaults/Bookview"
++}
++
+ #
+ # Startup
+ #

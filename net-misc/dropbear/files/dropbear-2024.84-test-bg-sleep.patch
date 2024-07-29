@@ -1,0 +1,14 @@
+One test passes when run with ebuild ... test, but fails when run by portage.
+Mark it as xfail.
+
+--- a/test/test_channels.py
++++ b/test/test_channels.py
+@@ -45,7 +45,7 @@
+ 	r.check_returncode()
+ 	assert r.stdout.decode() == dat
+ 
+-@pytest.mark.parametrize("fd", [1, 2])
++@pytest.mark.parametrize("fd", [1, pytest.param(2, marks=pytest.mark.xfail(reason="Fails sometimes"))])
+ def test_bg_sleep(request, fd, dropbear):
+ 	# https://lists.ucc.asn.au/pipermail/dropbear/2006q1/000362.html
+ 	# Rob Landley "Is this a bug?" 24 Mar 2006

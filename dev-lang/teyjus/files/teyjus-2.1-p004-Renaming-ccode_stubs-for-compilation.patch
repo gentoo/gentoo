@@ -1,0 +1,65 @@
+commit e63f40aa9f1d0ea5e7bac41aae5e479c3616545c (HEAD -> master, origin/master, origin/HEAD)
+Author: Giselle Reis <giselle.mnr@gmail.com>
+Date:	Fri Jul 26 15:57:18 2019 +0300
+
+    Renaming ccode_stubs for compilation
+    
+    Based on the fix at
+    https://github.com/teyjus/teyjus/issues/112#issuecomment-272336299
+    
+    Fixes #118.
+
+diff --git a/source/OMakefile b/source/OMakefile
+index e6bd37e..87b9bc5 100644
+--- a/source/OMakefile
++++ b/source/OMakefile
+@@ -88,7 +88,7 @@ FNT_ML[] =
+     $(FNT)/parseargs
+  
+ FNT_C[] =
+-    $(FNT)/ccode_stubs
++    $(FNT)/ccode_stubs_c
+     $(FNT)/front_c
+     $(FNT)/query_c
+     $(FNT)/readterm_c
+@@ -100,6 +100,7 @@ FNT_ML_TO_C[] =
+     $(FNT)/front
+     $(FNT)/readterm
+     $(FNT)/simerrors
++    $(FNT)/ccode_stubs
+ 
+ SIM_C[] =
+     $(SIM)/abstmachine
+diff --git a/source/front/README b/source/front/README
+index 10608a3..d4d3f10 100644
+--- a/source/front/README
++++ b/source/front/README
+@@ -60,10 +60,10 @@ query_c.h{c}
+   Defines C functions invoked from query.ml for solving queries or display
+   answer substitutions.
+ 
+-ccode_stubs.mli
+-===============
++ccode_stubs.ml
++==============
+   Interface declaration for the invocation of C functions from OCaml code.
+ 
+-ccode_stubs.c
+-==============
++ccode_stubs_c.c
++===============
+   Interface functions for the invocation of C functions from OCaml code.
+diff --git a/source/front/makefile b/source/front/makefile
+index c607ba1..92dfd2c 100644
+--- a/source/front/makefile
++++ b/source/front/makefile
+@@ -1,6 +1,6 @@
+ tjsim:
+-	ocamake parseargs.ml parseargs.mli simulatorfront.ml module.ml module.mli query.ml query.mli front.ml front.mli readterm.ml readterm.mli ccode_stubs.mli simerrors.mli simerrors.ml ../compiler/*.ml ../compiler/*.mli ../loader/*.ml ../loader/*.mli -lp ccode_stubs.o front_c.o query_c.o ../tables/*.o ../system/*.o ../simulator/*.o ../simulator/builtins/*.o -opt -o tjsim
++	ocamake parseargs.ml parseargs.mli simulatorfront.ml module.ml module.mli query.ml query.mli front.ml front.mli readterm.ml readterm.mli ccode_stubs.ml simerrors.mli simerrors.ml ../compiler/*.ml ../compiler/*.mli ../loader/*.ml ../loader/*.mli -lp ccode_stubs_c.o front_c.o query_c.o ../tables/*.o ../system/*.o ../simulator/*.o ../simulator/builtins/*.o -opt -o tjsim
+ 
+ 
+ clean:
+-	rm *.cmx ../compiler/*.cmx ../disassembler/*.cmx ../myloader/*.cmx
+\ No newline at end of file
++	rm *.cmx ../compiler/*.cmx ../disassembler/*.cmx ../myloader/*.cmx

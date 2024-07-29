@@ -1,0 +1,97 @@
+Partly based on:
+- https://github.com/freebsd/freebsd-ports/blob/main/databases/firebird30-server/files/patch-builds-posix_Makefile.in.plugins_examples
+- https://github.com/freebsd/freebsd-ports/blob/main/databases/firebird30-server/files/patch-extern_btyacc_Makefile
+- https://github.com/freebsd/freebsd-ports/blob/main/databases/firebird30-server/files/patch-extern_cloop_Makefile
+- https://github.com/freebsd/freebsd-ports/blob/main/databases/firebird30-server/files/patch-builds_posix_make.defaults
+--- a/builds/posix/Makefile.in
++++ b/builds/posix/Makefile.in
+@@ -688,8 +688,8 @@ install install-embedded silent_install package packages dist:
+ # various cleaning
+ #
+ .PHONY: clean clean_objects clean_dependancies clean_extern_objects clean_build \
+-		clean_gpre_gen clean_icu clean_dbs clean_examples clean_makefiles \
+-		clean_editline clean_all
++		clean_gpre_gen clean_dbs clean_examples clean_makefiles \
++		clean_all
+ 
+ 
+ clean: clean_objects clean_dependancies clean_extern_objects clean_build \
+@@ -708,8 +708,6 @@ clean_config clean_all: clean clean_makefiles
+ 	$(RM) $(ROOT)/config.status
+ 	$(RM) $(ROOT)/libtool
+ 	$(RM_R) $(ROOT)/autom4te.cache
+-	-$(MAKE) -C $(ROOT)/extern/editline distclean
+-#	-$(MAKE) -C $(ROOT)/extern/icu/source distclean
+ 	-$(MAKE) -C $(ROOT)/extern/btyacc distclean
+ 
+ clean_dbs:
+@@ -724,12 +722,6 @@ clean_dbs:
+ clean_examples:
+ 	$(RM) `find $(GEN_ROOT)/examples/ -type f ! -name 'Make*'`
+ 
+-clean_editline:
+-	-$(MAKE) -C $(ROOT)/extern/editline clean
+-
+-#clean_icu:
+-#	-$(MAKE) -C $(ROOT)/extern/icu/source clean
+-
+ clean_tommath:
+ 	-$(MAKE) -C $(ROOT)/extern/libtommath clean
+ 
+--- a/builds/posix/Makefile.in.plugins_examples
++++ b/builds/posix/Makefile.in.plugins_examples
+@@ -99,7 +99,7 @@ AllObjects += $(CA_Objects)
+ crypt_app: $(CRYPT_APP)
+ 
+ $(CRYPT_APP):	$(CA_Objects)
+-	$(EXE_LINK) $^ -o $@ $(FIREBIRD_LIBRARY_LINK)
++	$(EXE_LINK) $(LDFLAGS) $^ -o $@ $(FIREBIRD_LIBRARY_LINK)
+ 
+ 
+ include $(ROOT)/gen/make.shared.targets
+--- a/builds/posix/make.defaults
++++ b/builds/posix/make.defaults
+@@ -240,7 +240,7 @@ LIBFBINTL_SO = $(FB_BUILD)/intl/$(LIB_PREFIX)fbintl.$(SHRLIB_EXT)
+ 
+ ifeq ($(EDITLINE_FLG),Y)
+   ifeq ($(STD_EDITLINE), true)
+-	LIBEDITLINE := -l$(READLINE)
++	LIBEDITLINE := $(shell ${PKG_CONFIG} libedit --libs)
+   else
+ 	LIBEDITLINE := $(LIB)/libedit.a
+   endif
+--- a/extern/btyacc/Makefile
++++ b/extern/btyacc/Makefile
+@@ -42,7 +42,7 @@ OTHERS	      = README README.BYACC \
+ all:		$(PROGRAM)
+ 
+ $(PROGRAM):     $(OBJS) $(LIBS)
+-		$(CC) $(LDFLAGS) -o $(PROGRAM) $(OBJS) $(LIBS)
++		$(CC) $(CFLAGS) $(LDFLAGS) -o $(PROGRAM) $(OBJS) $(LIBS)
+ 
+ clean:;		rm -f $(OBJS)
+ 
+--- a/extern/cloop/Makefile
++++ b/extern/cloop/Makefile
+@@ -6,7 +6,7 @@ TARGET	:= release
+ 
+ CC	:= $(CC)
+ CXX	:= $(CXX)
+-LD	:= $(CXX)
++LD	:= $(CXX) $(LDFLAGS)
+ 
+ SRC_DIR		:= src
+ BUILD_DIR	:= build
+@@ -27,8 +27,10 @@ SRCS_CPP := $(foreach sdir,$(SRC_DIRS),$(wildcard $(sdir)/*.cpp))
+ OBJS_C := $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS_C))
+ OBJS_CPP := $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRCS_CPP))
+ 
+-C_FLAGS := -ggdb -fPIC -MMD -MP -W -Wall -Wno-unused-parameter
+-CXX_FLAGS := $(C_FLAGS)
++
++COMMON_C_FLAGS := -ggdb -fPIC -MMD -MP -W -Wall -Wno-unused-parameter
++C_FLAGS := $(COMMON_C_FLAGS) $(CFLAGS) $(CPPFLAGS)
++CXX_FLAGS := $(COMMON_C_FLAGS) $(CXXFLAGS) $(CPPFLAGS)
+ FPC_FLAGS := -Mdelphi
+ 
+ ifeq ($(TARGET),release)

@@ -1,0 +1,30 @@
+https://github.com/pygobject/pycairo/pull/366
+
+From 387e27fa36d29bc8f656656ca8b47e7b4996f4f4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Miro=20Hron=C4=8Dok?= <miro@hroncok.cz>
+Date: Wed, 29 May 2024 21:25:41 +0200
+Subject: [PATCH] Avoid invalid PyBUF_READ flag in PyObject_GetBuffer()
+
+Since Python 3.13, the flag is no longer allowed.
+
+See https://github.com/python/cpython/pull/114707
+
+Fixes https://github.com/pygobject/pycairo/issues/365
+---
+ cairo/surface.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cairo/surface.c b/cairo/surface.c
+index 048522c6..f00db8b5 100644
+--- a/cairo/surface.c
++++ b/cairo/surface.c
+@@ -484,7 +484,7 @@ surface_set_mime_data (PycairoSurface *o, PyObject *args) {
+     return NULL;
+   }
+ 
+-  res = PyObject_GetBuffer (obj, view, PyBUF_READ);
++  res = PyObject_GetBuffer (obj, view, PyBUF_SIMPLE);
+   if (res == -1) {
+       PyMem_Free (view);
+       return NULL;
+

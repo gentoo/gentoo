@@ -1,0 +1,13 @@
+--- a/lib/c-wrapper/c-parser.scm
++++ b/lib/c-wrapper/c-parser.scm
+@@ -1115,7 +1115,9 @@
+                 (raise e))))
+      (call-with-gcc-io include-dirs headers options
+                        (lambda (in out)
+-                         (let ((macro-list (queue->list (macro-queue))))
++                         (let ((macro-list (filter (lambda (m)
++                                                     (not (string-prefix?  "__glibc_macro_warning" (car m))))
++                                                   (queue->list (macro-queue)))))
+                            (for-each (lambda (macro-def)
+                                        (display (car macro-def) out)
+                                        (newline out))

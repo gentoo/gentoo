@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/874639
+--- a/src/geki2.h
++++ b/src/geki2.h
+@@ -11,2 +11,4 @@
+ #include <stdlib.h>
++#include <string.h>
++#include <time.h>
+ #include <sys/types.h>
+--- a/src/load.h
++++ b/src/load.h
+@@ -11,2 +11,3 @@
+ void LoadStageData(void);
++void UnLoadStageData(void);
+ 

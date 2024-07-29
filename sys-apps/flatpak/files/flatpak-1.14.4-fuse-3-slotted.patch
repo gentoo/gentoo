@@ -1,0 +1,57 @@
+https://bugs.gentoo.org/906653
+--- a/common/flatpak-dir.c
++++ b/common/flatpak-dir.c
+@@ -2109,7 +2109,7 @@ flatpak_dir_revokefs_fuse_unmount (OstreeRepo **repo,
+ 
+   fusermount = g_subprocess_new (G_SUBPROCESS_FLAGS_NONE,
+                                  error,
+-                                 "fusermount", "-u", "-z", mnt_dir,
++                                 "fusermount3", "-u", "-z", mnt_dir,
+                                  NULL);
+   if (g_subprocess_wait_check (fusermount, NULL, error))
+     {
+--- a/tests/can-use-fuse.c
++++ b/tests/can-use-fuse.c
+@@ -53,11 +53,11 @@ check_fuse (void)
+       return FALSE;
+     }
+ 
+-  fusermount = g_find_program_in_path ("fusermount");
++  fusermount = g_find_program_in_path ("fusermount3");
+ 
+   if (fusermount == NULL)
+     {
+-      cannot_use_fuse = g_strdup ("fusermount not found in PATH");
++      cannot_use_fuse = g_strdup ("fusermount3 not found in PATH");
+       return FALSE;
+     }
+ 
+@@ -69,7 +69,7 @@ check_fuse (void)
+ 
+   if (!g_file_test ("/etc/mtab", G_FILE_TEST_EXISTS))
+     {
+-      cannot_use_fuse = g_strdup ("fusermount won't work without /etc/mtab");
++      cannot_use_fuse = g_strdup ("fusermount3 won't work without /etc/mtab");
+       return FALSE;
+     }
+ 
+--- a/tests/libtest.sh
++++ b/tests/libtest.sh
+@@ -542,7 +542,7 @@ skip_one_without_bwrap () {
+ }
+ 
+ skip_without_fuse () {
+-    fusermount --version >/dev/null 2>&1 || skip "no fusermount"
++    fusermount3 --version >/dev/null 2>&1 || skip "no fusermount3"
+ 
+     capsh --print | grep -q 'Bounding set.*[^a-z]cap_sys_admin' || \
+         skip "No cap_sys_admin in bounding set, can't use FUSE"
+@@ -608,7 +608,7 @@ commit_to_path () {
+ cleanup () {
+     /bin/kill -9 $DBUS_SESSION_BUS_PID
+     gpg-connect-agent --homedir "${FL_GPG_HOMEDIR}" killagent /bye >&2 || true
+-    fusermount -u $XDG_RUNTIME_DIR/doc >&2 || :
++    fusermount3 -u $XDG_RUNTIME_DIR/doc >&2 || :
+     kill $(jobs -p) &> /dev/null || true
+     if test -n "${TEST_SKIP_CLEANUP:-}"; then
+         echo "# Skipping cleanup of ${TEST_DATA_DIR}"

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<bugs-to>https://github.com/fwupd/fwupd-efi/issues</bugs-to>
+		<remote-id type="github">fwupd/fwupd-efi</remote-id>
+	</upstream>
+</pkgmetadata>

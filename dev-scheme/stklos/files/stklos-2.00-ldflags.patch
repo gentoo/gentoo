@@ -1,0 +1,15 @@
+--- a/lib/Makefile.am
++++ b/lib/Makefile.am
+@@ -195,12 +195,6 @@
+ lib/streams: lib
+ lib/srfi: lib/scheme lib/stklos lib/streams
+ 
+-readline-complete.@SH_SUFFIX@: readline-complete.c
+-	@CC@ @CFLAGS@ @STKCFLAGS@ @SH_COMP_FLAGS@ -I../src @GCINC@ \
+-	-c -o $*.o $*.c
+-	@SH_LOADER@ @SH_LOAD_FLAGS@ -o $*.@SH_SUFFIX@ $*.o @DLLIBS@ @RDLINE@
+-	/bin/rm -f $*.o
+-
+ #
+ # SRFIs support
+ #

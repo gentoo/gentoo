@@ -1,0 +1,14 @@
+Accept relative paths to AR as well.
+
+https://bugs.gentoo.org/720966
+--- a/configure.in
++++ b/configure.in
+@@ -105,7 +105,7 @@ AC_LIBTOOL_WIN32_DLL
+ AC_PROG_LIBTOOL
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
+-AC_PATH_PROG(AR, ar, no)
++AC_CHECK_PROG(AR, ar, no)
+ if [[ $AR = "no" ]] ; then
+     AC_MSG_ERROR("Could not find ar - needed to create a library")
+ fi

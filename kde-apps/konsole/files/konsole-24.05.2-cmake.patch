@@ -1,0 +1,136 @@
+From 3800a40653355dd165fe68f80611228fa94656ee Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 7 Jul 2024 23:27:32 +0200
+Subject: [PATCH] Drop faux X11 dependency and switch WITHOUT_X11 option to
+ WITH_X11
+
+X11 is nowhere needed in the codebase. Follow-up to 2f116f9fb2438a6e66b6702b3cc2ace9d0205f96
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+(cherry picked from commit c5f2315c9df05ca069de25ab741d9fc38a6de21a)
+---
+ CMakeLists.txt             | 7 +------
+ src/MainWindow.cpp         | 8 ++++----
+ src/WindowSystemInfo.cpp   | 4 ++--
+ src/config-konsole.h.cmake | 2 +-
+ src/main.cpp               | 4 ++--
+ 5 files changed, 10 insertions(+), 15 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bd30a9888..0f00be8f3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -95,12 +95,7 @@ set_package_properties(KF6DocTools PROPERTIES DESCRIPTION
+ find_package(ICU 61.0 COMPONENTS uc i18n REQUIRED)
+ 
+ if(NOT APPLE)
+-    option(WITHOUT_X11 "Build without X11 integration (skips finding X11)" OFF)
+-    if (NOT WITHOUT_X11)
+-        find_package(X11)
+-        set_package_properties(X11 PROPERTIES TYPE OPTIONAL)
+-        set(HAVE_X11 ${X11_FOUND})
+-    endif()
++    option(WITH_X11 "Build with X11 integration" ON)
+ endif()
+ 
+ # Check for function GETPWUID
+diff --git a/src/MainWindow.cpp b/src/MainWindow.cpp
+index c034288df..163105357 100644
+--- a/src/MainWindow.cpp
++++ b/src/MainWindow.cpp
+@@ -35,7 +35,7 @@
+ #include <KWindowSystem>
+ #include <KXMLGUIFactory>
+ 
+-#if HAVE_X11
++#if WITH_X11
+ #include <KX11Extras>
+ #endif
+ 
+@@ -156,7 +156,7 @@ void MainWindow::activationRequest(const QString &xdgActivationToken)
+     KWindowSystem::setCurrentXdgActivationToken(xdgActivationToken);
+ 
+     if (KWindowSystem::isPlatformX11()) {
+-#if HAVE_X11
++#if WITH_X11
+         KX11Extras::forceActiveWindow(winId());
+ #endif
+     } else {
+@@ -713,7 +713,7 @@ bool MainWindow::queryClose()
+     // NOTE: Some, if not all, of the below KWindowSystem calls are only
+     //       implemented under x11 (KDE4.8 kdelibs/kdeui/windowmanagement).
+ 
+-#if HAVE_X11
++#if WITH_X11
+     // make sure the window is shown on current desktop and is not minimized
+     KX11Extras::setOnDesktop(winId(), KX11Extras::currentDesktop());
+ #endif
+@@ -1022,7 +1022,7 @@ void MainWindow::setRemoveWindowTitleBarAndFrame(bool frameless)
+         }
+ 
+         if (KWindowSystem::isPlatformX11()) {
+-#if HAVE_X11
++#if WITH_X11
+             const auto oldGeometry = saveGeometry();
+             // This happens for every Konsole window. It depends on
+             // the fact that every window is processed in single thread
+diff --git a/src/WindowSystemInfo.cpp b/src/WindowSystemInfo.cpp
+index d6cad5f68..28cc3bd6c 100644
+--- a/src/WindowSystemInfo.cpp
++++ b/src/WindowSystemInfo.cpp
+@@ -11,7 +11,7 @@
+ 
+ #include <QtGlobal>
+ 
+-#if HAVE_X11
++#if WITH_X11
+ #include <KWindowSystem>
+ #include <KX11Extras>
+ #endif
+@@ -22,7 +22,7 @@ bool WindowSystemInfo::HAVE_TRANSPARENCY = false;
+ 
+ bool WindowSystemInfo::compositingActive()
+ {
+-#if HAVE_X11
++#if WITH_X11
+     return !KWindowSystem::isPlatformX11() || KX11Extras::compositingActive();
+ #else
+     return true;
+diff --git a/src/config-konsole.h.cmake b/src/config-konsole.h.cmake
+index b860764d3..b9fac1e56 100644
+--- a/src/config-konsole.h.cmake
++++ b/src/config-konsole.h.cmake
+@@ -3,7 +3,7 @@
+ /* Defined if on DragonFly BSD */
+ #cmakedefine01 HAVE_OS_DRAGONFLYBSD
+ 
+-#cmakedefine01 HAVE_X11
++#cmakedefine01 WITH_X11
+ 
+ /* If defined, remove public access to dbus sendInput/runCommand */
+ #cmakedefine01 REMOVE_SENDTEXT_RUNCOMMAND_DBUS_METHODS
+diff --git a/src/main.cpp b/src/main.cpp
+index 9f3b88286..b05877f3d 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -284,7 +284,7 @@ bool shouldUseNewProcess(int argc, char *argv[])
+     QStringList qtProblematicOptions;
+     qtProblematicOptions << QStringLiteral("--session") << QStringLiteral("--name") << QStringLiteral("--reverse") << QStringLiteral("--stylesheet")
+                          << QStringLiteral("--graphicssystem");
+-#if HAVE_X11
++#if WITH_X11
+     qtProblematicOptions << QStringLiteral("--display") << QStringLiteral("--visual");
+ #endif
+     for (const QString &option : std::as_const(qtProblematicOptions)) {
+@@ -296,7 +296,7 @@ bool shouldUseNewProcess(int argc, char *argv[])
+     // take KDE options into consideration
+     QStringList kdeProblematicOptions;
+     kdeProblematicOptions << QStringLiteral("--config") << QStringLiteral("--style");
+-#if HAVE_X11
++#if WITH_X11
+     kdeProblematicOptions << QStringLiteral("--waitforwm");
+ #endif
+ 
+-- 
+2.45.2
+

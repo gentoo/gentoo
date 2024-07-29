@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Spleen is a monospaced bitmap font for consoles and terminals. It is
+    available in 6 sizes: 5x8, 6x12, 8x16, 12x24, 16x32, and 32x64.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/fcambus/spleen/issues/</bugs-to>
+    <remote-id type="github">fcambus/spleen</remote-id>
+  </upstream>
+</pkgmetadata>

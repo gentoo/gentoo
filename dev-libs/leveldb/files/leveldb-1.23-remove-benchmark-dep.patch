@@ -1,0 +1,44 @@
+Only one test executable is using benchmark, and that is only for a badly
+placed benchmark.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -323,7 +323,7 @@ if(LEVELDB_BUILD_TESTS)
+
+         "${test_file}"
+     )
+-    target_link_libraries("${test_target_name}" leveldb gmock gtest benchmark)
++    target_link_libraries("${test_target_name}" leveldb gmock gtest)
+     target_compile_definitions("${test_target_name}"
+       PRIVATE
+         ${LEVELDB_PLATFORM_NAME}=1
+--- a/db/db_test.cc
++++ b/db/db_test.cc
+@@ -9,7 +9,6 @@
+ #include <string>
+
+ #include "gtest/gtest.h"
+-#include "benchmark/benchmark.h"
+ #include "db/db_impl.h"
+ #include "db/filename.h"
+ #include "db/version_set.h"
+@@ -2301,6 +2300,7 @@ std::string MakeKey(unsigned int num) {
+   return std::string(buf);
+ }
+
++#if 0
+ static void BM_LogAndApply(benchmark::State& state) {
+   const int num_base_files = state.range(0);
+ 
+@@ -2357,10 +2357,10 @@ static void BM_LogAndApply(benchmark::State& state) {
+ }
+
+ BENCHMARK(BM_LogAndApply)->Arg(1)->Arg(100)->Arg(10000)->Arg(100000);
++#endif
+ }  // namespace leveldb
+
+ int main(int argc, char** argv) {
+   testing::InitGoogleTest(&argc, argv);
+-  benchmark::RunSpecifiedBenchmarks();
+   return RUN_ALL_TESTS();
+ }

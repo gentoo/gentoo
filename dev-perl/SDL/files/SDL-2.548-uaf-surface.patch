@@ -1,0 +1,127 @@
+https://github.com/PerlGameDev/SDL/pull/306
+https://github.com/PerlGameDev/SDL/issues/305
+https://github.com/libsdl-org/sdl12-compat/issues/305
+
+From e9b907c08d9fcce4fccb3084ff38e65cb5c6828b Mon Sep 17 00:00:00 2001
+From: Simon McVittie <smcv@debian.org>
+Date: Tue, 18 Jul 2023 18:00:12 +0100
+Subject: [PATCH] Distinguish between owned and borrowed references to a
+ SDL_Surface
+
+In many SDL APIs that return a SDL_Surface *, the surface is considered
+to be owned by the caller, and must be freed by the caller.
+
+However, SDL_SetVideoMode and presumably SDL_GetVideoSurface return
+a pointer to SDL's internal video surface, which will be freed by SDL
+if necessary, and must not be freed by library users.
+Incorrectly freeing this surface can lead to a use-after-free crash,
+manifesting as a test failure in t/core_video.t.
+
+See also https://github.com/libsdl-org/sdl12-compat/issues/305
+
+Resolves: https://github.com/PerlGameDev/SDL/issues/305
+Signed-off-by: Simon McVittie <smcv@debian.org>
+---
+ src/Core/Video.xs |  6 ++++--
+ src/helper.h      |  7 ++++---
+ typemap           | 23 +++++++++++++++++++++++
+ 3 files changed, 31 insertions(+), 5 deletions(-)
+
+diff --git a/src/Core/Video.xs b/src/Core/Video.xs
+index 8efa4b4a..e0d1a679 100644
+--- a/src/Core/Video.xs
++++ b/src/Core/Video.xs
+@@ -10,6 +10,8 @@
+ 
+ #include <SDL.h>
+ 
++typedef SDL_Surface SDL_Surface_borrowed;
++
+ void _uinta_free(Uint16* av, int len_from_av_len)
+ {
+ 	if( av != NULL)
+@@ -56,7 +58,7 @@ See: L<http:/*www.libsdl.org/cgi/docwiki.cgi/SDL_API#head-813f033ec44914f267f321
+ 
+ =cut
+ 
+-SDL_Surface *
++SDL_Surface_borrowed *
+ video_get_video_surface()
+ 	PREINIT:
+ 		char* CLASS = "SDL::Surface";
+@@ -125,7 +127,7 @@ video_video_mode_ok ( width, height, bpp, flags )
+ 		RETVAL
+ 
+ 
+-SDL_Surface *
++SDL_Surface_borrowed *
+ video_set_video_mode ( width, height, bpp, flags )
+ 	int width
+ 	int height
+diff --git a/src/helper.h b/src/helper.h
+index 1d2ee9a5..6b8e4ab5 100644
+--- a/src/helper.h
++++ b/src/helper.h
+@@ -58,12 +58,13 @@ void objDESTROY(SV *bag, void (* callback)(void *object))
+         Uint32 *threadid = (Uint32*)(pointers[2]);
+         
+         if(PERL_GET_CONTEXT == pointers[1]
+-        && *threadid == SDL_ThreadID())
++        && (threadid == NULL || *threadid == SDL_ThreadID()))
+         {
+             pointers[0] = NULL;
+-            if(object)
++            if(object && threadid != NULL)
+                 callback(object);
+-            safefree(threadid);
++            if (threadid != NULL)
++                safefree(threadid);
+             safefree(pointers);
+         }
+     }
+diff --git a/typemap b/typemap
+index c3ba997a..85a19265 100644
+--- a/typemap
++++ b/typemap
+@@ -34,6 +34,7 @@ SDL_UserEvent * 	O_OBJECT
+ SDL_QuitEvent * 	O_OBJECT
+ SDL_keysym *		O_OBJECT
+ SDL_Surface *		O_OBJECT
++SDL_Surface_borrowed *	O_BORROWED
+ SDL_SysWMmsg *		T_PTR
+ SDL_CD *		O_OBJECT
+ SDL_CDtrack *		O_OBJECT
+@@ -122,6 +123,17 @@ O_OBJECT
+         XSRETURN_UNDEF;
+     }
+ 
++O_BORROWED
++    if ($var) {
++        void** pointers  = malloc(3 * sizeof(void*));
++        pointers[0]      = (void*)$var;
++        pointers[1]      = (void*)PERL_GET_CONTEXT;
++        pointers[2]      = NULL;
++        sv_setref_pv( $arg, CLASS, (void*)pointers );
++    } else {
++        XSRETURN_UNDEF;
++    }
++
+ INPUT
+ 
+ O_OBJECT_NPGC
+@@ -136,3 +148,14 @@ O_OBJECT
+     } else {
+         XSRETURN_UNDEF;
+     }
++
++O_BORROWED
++    /* Same as O_OBJECT */
++    if( sv_isobject($arg) && (SvTYPE(SvRV($arg)) == SVt_PVMG) ) {
++        void** pointers = (void**)INT2PTR(void *, SvIV((SV *)SvRV( $arg )));
++        $var = ($type)(pointers[0]);
++    } else if ($arg == 0) {
++        XSRETURN(0);
++    } else {
++        XSRETURN_UNDEF;
++    }
+

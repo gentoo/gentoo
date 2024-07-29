@@ -1,0 +1,20 @@
+diff --git a/doc/doxygen/Makefile.am b/doc/doxygen/Makefile.am
+index ca42fe0..264ba82 100644
+--- a/doc/doxygen/Makefile.am
++++ b/doc/doxygen/Makefile.am
+@@ -29,13 +29,11 @@
+ ## Author:  Michael Holst
+ ## ###########################################################################
+ 
+-docdir = @prefix@/doc/punc
+-
+ doc_DATA = punc_doc
+ 
+ punc_doc: 
+ 	$(doxygen_path) $(top_srcdir)/doc/doxygen/punc.dox
+ 
+ install-docDATA:
+-	mkdir -p $(docdir)
+-	cp -r ../api $(docdir)/
++	mkdir -p $(DESTDIR)/@docdir@
++	cp -r ../api $(DESTDIR)/@docdir@/

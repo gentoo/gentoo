@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<bugs-to>https://github.com/mortenivar/aspell-da/issues</bugs-to>
+		<remote-id type="github">mortenivar/aspell-da</remote-id>
+	</upstream>
+</pkgmetadata>

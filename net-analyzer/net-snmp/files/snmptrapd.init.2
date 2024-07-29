@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+SNMPTRAPD_PIDFILE="${SNMPTRAPD_PIDFILE:-/var/run/snmptrapd.pid}"
+
+command="/usr/sbin/snmptrapd"
+command_args="-p ${SNMPTRAPD_PIDFILE} ${SNMPTRAPD_FLAGS}"
+pidfile="${SNMPTRAPD_PIDFILE}"
+
+depend() {
+	use logger
+}

@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/901997
+https://sources.debian.org/patches/lensfun/0.3.4-1/python-setuptools.diff/
+--- a/apps/CMakeLists.txt
++++ b/apps/CMakeLists.txt
+@@ -48,5 +48,5 @@ IF(INSTALL_PYTHON_MODULE)
+     IF(NOT DEFINED SETUP_PY_INSTALL_PREFIX)
+       SET(SETUP_PY_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
+     ENDIF()
+-    INSTALL(CODE "execute_process(COMMAND ${Python3_EXECUTABLE} ${SETUP_PY} install --prefix=\$ENV{DESTDIR}${SETUP_PY_INSTALL_PREFIX})")
++    INSTALL(CODE "execute_process(COMMAND ${Python3_EXECUTABLE} ${SETUP_PY} install --prefix=${SETUP_PY_INSTALL_PREFIX} --single-version-externally-managed --root=\$ENV{DESTDIR})")
+ ENDIF()

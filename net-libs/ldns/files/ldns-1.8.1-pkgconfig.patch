@@ -1,0 +1,10 @@
+--- a/packaging/libldns.pc.in
++++ b/packaging/libldns.pc.in
+@@ -8,6 +8,6 @@
+ URL: http://www.nlnetlabs.nl/projects/ldns
+ Version: @PACKAGE_VERSION@
+ Requires: 
++Requires.private: libcrypto libssl
+ Libs: -L${libdir} -lldns
+-Libs.private: @LDFLAGS@
+ Cflags: -I${includedir} 

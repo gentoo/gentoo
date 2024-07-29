@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>ran.dall@icloud.com</email>
+		<name>Randall T. Vasquez</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>nicolasbock@gentoo.org</email>
+		<name>Nicolas Bock</name>
+	</maintainer>
+	<longdescription lang="en">
+		The official Keybase secure messaging, file-sharing, and key directory
+		client for Linux.
+
+		Keybase is a safe, secure, and private app for everything you do online.
+
+		Chat with friends and family. Share photos, videos, and top secret
+		documents. Collaborate to get work done, or don’t.
+
+		Whatever you do, your data is your data. Private stuff stays private.
+		Accounts are secure against spoofing, phishing, and scamming. You can
+		chat, share, and collaborate safely.
+	</longdescription>
+	<use>
+		<flag name="fuse">Enable app-crypt/kbfs support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">keybase/client</remote-id>
+	</upstream>
+</pkgmetadata>

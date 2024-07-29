@@ -1,0 +1,11 @@
+diff -Naur wmlife-1.0.0-orig/configure.in wmlife-1.0.0/configure.in
+--- wmlife-1.0.0-orig/configure.in	2005-09-23 00:18:09.000000000 +0300
++++ wmlife-1.0.0/configure.in	2014-04-28 23:52:09.701103219 +0300
+@@ -38,6 +38,6 @@
+ AC_CACHE_CHECK([for gdk2 libs], GDKLIBS, [GDKLIBS=`$config --libs gtk+-2.0 | sed -e "s/-lgtk-x11-2.0//g" -e "s/-latk-1.0//g"`])
+ 
+ CFLAGS="$CFLAGS $GDKINCS"
+-LDFLAGS="$LDFLAGS $GDKLIBS"
++LDFLAGS="$LDFLAGS $GDKLIBS -lm"
+ 
+ AC_OUTPUT(Makefile src/Makefile)

@@ -1,0 +1,45 @@
+Avoid corrupting umask permanently in the testdir because of fail2ban/server/server.py::start.
+
+In particular:
+* https://bugs.gentoo.org/659010#c11
+* https://bugs.gentoo.org/790251#c10
+* https://bugs.gentoo.org/907350
+
+But see also the many dupes.
+--- a/fail2ban/tests/fail2banclienttestcase.py
++++ b/fail2ban/tests/fail2banclienttestcase.py
+@@ -23,6 +23,7 @@ __author__ = "Serg Brester"
+ __copyright__ = "Copyright (c) 2014- Serg G. Brester (sebres), 2008- Fail2Ban Contributors"
+ __license__ = "GPL"
+ 
++import atexit
+ import fileinput
+ import os
+ import re
+@@ -40,6 +41,14 @@ from ..client.fail2bancmdline import Fail2banCmdLine
+ from ..client.fail2banclient import exec_command_line as _exec_client, CSocket, VisualWait
+ from ..client.fail2banserver import Fail2banServer, exec_command_line as _exec_server
+ from .. import protocol
++
++def current_umask():
++	tmp = os.umask(0o022)
++	os.umask(tmp)
++	return tmp
++
++old_umask = current_umask()
++
+ from ..server import server
+ from ..server.mytime import MyTime
+ from ..server.utils import Utils
+@@ -48,6 +57,11 @@ from .utils import LogCaptureTestCase, logSys as DefLogSys, with_tmpdir, shutil,
+ 
+ from ..helpers import getLogger
+ 
++def restore_umask():
++	os.umask(old_umask)
++
++atexit.register(restore_umask)
++
+ # Gets the instance of the logger.
+ logSys = getLogger(__name__)
+ 

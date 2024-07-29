@@ -1,0 +1,82 @@
+https://github.com/mpruett/audiofile/pull/64
+
+From 519f6c19d3bcfa048fc468f0094ab4235e7c77b2 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Mon, 10 Oct 2022 11:13:10 -0700
+Subject: [PATCH] Fix -Werror=strict-prototypes
+
+This will be required for upcoming gcc and clang versions.
+
+Reference: https://archives.gentoo.org/gentoo-dev/message/dd9f2d3082b8b6f8dfbccb0639e6e240
+
+diff --git a/libaudiofile/g711.c b/libaudiofile/g711.c
+index 8fb2323..392766c 100644
+--- a/libaudiofile/g711.c
++++ b/libaudiofile/g711.c
+@@ -74,8 +74,7 @@ static int search(int val, const short *table, int size)
+  * John Wiley & Sons, pps 98-111 and 472-476.
+  */
+ unsigned char
+-_af_linear2alaw(pcm_val)
+-	int		pcm_val;	/* 2's complement (16-bit range) */
++_af_linear2alaw(int pcm_val)		/* 2's complement (16-bit range) */
+ {
+ 	int		mask;
+ 	int		seg;
+@@ -110,8 +109,7 @@ _af_linear2alaw(pcm_val)
+  *
+  */
+ int
+-_af_alaw2linear(a_val)
+-	unsigned char	a_val;
++_af_alaw2linear(unsigned char a_val)
+ {
+ 	int		t;
+ 	int		seg;
+diff --git a/sfcommands/sfinfo.c b/sfcommands/sfinfo.c
+index c8fb913..91221a5 100644
+--- a/sfcommands/sfinfo.c
++++ b/sfcommands/sfinfo.c
+@@ -48,7 +48,7 @@ void errorHandler(long error, const char *message)
+ 		fprintf(stderr, "sfinfo: %s [error %ld]\n", message, error);
+ }
+ 
+-void printusage()
++void printusage(void)
+ {
+ 	printf("usage: sfinfo [options...] soundfiles...\n");
+ 	printf("options:\n");
+@@ -58,7 +58,7 @@ void printusage()
+ 	printf("  -v, --version      Print version\n");
+ }
+ 
+-void printversion()
++void printversion(void)
+ {
+ 	printf("sfinfo: Audio File Library version %s\n", VERSION);
+ }
+https://github.com/mpruett/audiofile/commit/7227a65c9725a89f839d01826ea8427becee30be
+
+From 7227a65c9725a89f839d01826ea8427becee30be Mon Sep 17 00:00:00 2001
+From: Michael Pruett <michael@68k.org>
+Date: Thu, 7 Mar 2013 22:44:56 -0800
+Subject: [PATCH] Fix compiler warning regarding discarding const
+ qualification.
+
+diff --git a/libaudiofile/g711.c b/libaudiofile/g711.c
+index 394543e..8fb2323 100644
+--- a/libaudiofile/g711.c
++++ b/libaudiofile/g711.c
+@@ -43,11 +43,7 @@
+ static const short seg_end[8] = {0xFF, 0x1FF, 0x3FF, 0x7FF,
+ 			    0xFFF, 0x1FFF, 0x3FFF, 0x7FFF};
+ 
+-static int
+-search(val, table, size)
+-	int		val;
+-	short		*table;
+-	int		size;
++static int search(int val, const short *table, int size)
+ {
+ 	int		i;
+ 

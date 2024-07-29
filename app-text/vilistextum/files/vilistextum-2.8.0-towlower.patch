@@ -1,0 +1,12 @@
+towlower is defined by wctype.h
+
+--- a/src/multibyte.h
++++ b/src/multibyte.h
+@@ -2,6 +2,7 @@
+ 
+ #ifdef MULTIBYTE
+ #include <wchar.h>
++#include <wctype.h>
+  #define CHAR wchar_t
+  #define STRLEN(s) wcslen(s)
+  #define CPYSS(dest, src) wcscpy(dest, src) /* copy str to str */

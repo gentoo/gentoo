@@ -1,0 +1,380 @@
+From 4ee0ab2b0665da5cb0ad16d6d163ad20549b7ba6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Alberts=20Muktup=C4=81vels?= <alberts.muktupavels@gmail.com>
+Date: Fri, 30 Sep 2022 17:32:09 +0300
+Subject: [PATCH 1/4] handle: init XRes extension
+
+XResQueryClientIds needs XRes 1.2 or newer.
+---
+ libwnck/wnck-handle-private.h |  2 ++
+ libwnck/wnck-handle.c         | 48 +++++++++++++++++++++++++++++++++++
+ meson.build                   |  2 +-
+ 3 files changed, 51 insertions(+), 1 deletion(-)
+
+diff --git a/libwnck/wnck-handle-private.h b/libwnck/wnck-handle-private.h
+index c4217cef..06331040 100644
+--- a/libwnck/wnck-handle-private.h
++++ b/libwnck/wnck-handle-private.h
+@@ -26,6 +26,8 @@ G_BEGIN_DECLS
+ 
+ WnckClientType   _wnck_handle_get_client_type            (WnckHandle     *self);
+ 
++gboolean         _wnck_handle_has_xres                   (WnckHandle     *self);
++
+ gsize            _wnck_handle_get_default_icon_size      (WnckHandle     *self);
+ 
+ gsize            _wnck_handle_get_default_mini_icon_size (WnckHandle     *self);
+diff --git a/libwnck/wnck-handle.c b/libwnck/wnck-handle.c
+index e12ff882..710b7548 100644
+--- a/libwnck/wnck-handle.c
++++ b/libwnck/wnck-handle.c
+@@ -29,6 +29,11 @@
+ #include "config.h"
+ #include "wnck-handle-private.h"
+ 
++#include <X11/Xlib.h>
++#ifdef HAVE_XRES
++#include <X11/extensions/XRes.h>
++#endif
++
+ #include "private.h"
+ #include "screen.h"
+ #include "window.h"
+@@ -43,6 +48,8 @@ struct _WnckHandle
+ 
+   WnckClientType   client_type;
+ 
++  gboolean         have_xres;
++
+   gsize            default_icon_size;
+   gsize            default_mini_icon_size;
+ 
+@@ -164,6 +171,40 @@ filter_func (GdkXEvent *gdkxevent,
+   return GDK_FILTER_CONTINUE;
+ }
+ 
++static void
++init_xres (WnckHandle *self)
++{
++#ifdef HAVE_XRES
++  Display *xdisplay;
++  int event_base;
++  int error_base;
++  int major;
++  int minor;
++
++  xdisplay = _wnck_get_default_display ();
++  event_base = error_base = major = minor = 0;
++
++  if (XResQueryExtension (xdisplay, &event_base, &error_base) &&
++      XResQueryVersion (xdisplay, &major, &minor) == 1)
++    {
++      if (major > 1 || (major == 1 && minor >= 2))
++        self->have_xres = TRUE;
++    }
++#endif
++}
++
++static void
++wnck_handle_constructed (GObject *object)
++{
++  WnckHandle *self;
++
++  self = WNCK_HANDLE (object);
++
++  G_OBJECT_CLASS (wnck_handle_parent_class)->constructed (object);
++
++  init_xres (self);
++}
++
+ static void
+ wnck_handle_finalize (GObject *object)
+ {
+@@ -290,6 +331,7 @@ wnck_handle_class_init (WnckHandleClass *self_class)
+ 
+   object_class = G_OBJECT_CLASS (self_class);
+ 
++  object_class->constructed = wnck_handle_constructed;
+   object_class->finalize = wnck_handle_finalize;
+   object_class->get_property = wnck_handle_get_property;
+   object_class->set_property = wnck_handle_set_property;
+@@ -343,6 +385,12 @@ _wnck_handle_get_client_type (WnckHandle *self)
+   return self->client_type;
+ }
+ 
++gboolean
++_wnck_handle_has_xres (WnckHandle *self)
++{
++  return self->have_xres;
++}
++
+ /**
+  * wnck_handle_get_default_screen:
+  * @self: a #WnckHandle
+diff --git a/meson.build b/meson.build
+index 6b0eea97..907fdf26 100644
+--- a/meson.build
++++ b/meson.build
+@@ -45,7 +45,7 @@ pkg_deps = [
+   {'name': 'gtk+-3.0', 'version': '>= 3.22.0' },
+   {'name': STARTUP_NOTIFICATION_PACKAGE, 'version': '>= 0.4', 'required': get_option('startup_notification')},
+   {'name': X11_PACKAGE },
+-  {'name': XRES_PACKAGE, 'required': false},
++  {'name': XRES_PACKAGE, 'version': '>= 1.2', 'required': false},
+ ]
+ 
+ foreach p: pkg_deps
+-- 
+GitLab
+
+
+From f6b973b1f15ac1d8b8203972195d9a1765c75ba2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Alberts=20Muktup=C4=81vels?= <alberts.muktupavels@gmail.com>
+Date: Fri, 30 Sep 2022 18:07:55 +0300
+Subject: [PATCH 2/4] xutils: move XRes code to separate function
+
+---
+ libwnck/xutils.c | 28 ++++++++++++++++++++--------
+ 1 file changed, 20 insertions(+), 8 deletions(-)
+
+diff --git a/libwnck/xutils.c b/libwnck/xutils.c
+index 60ae7b25..d120ff16 100644
+--- a/libwnck/xutils.c
++++ b/libwnck/xutils.c
+@@ -1145,13 +1145,12 @@ _wnck_get_session_id (Screen *screen,
+                                            _wnck_atom_get ("SM_CLIENT_ID"));
+ }
+ 
+-int
+-_wnck_get_pid (Screen *screen,
+-               Window  xwindow)
++#ifdef HAVE_XRES
++static int
++xres_get_pid (Screen *screen,
++              Window  xwindow)
+ {
+   int pid = -1;
+-
+-#ifdef HAVE_XRES
+   XResClientIdSpec client_spec;
+   long client_id_count = 0;
+   XResClientIdValue *client_ids = NULL;
+@@ -1172,10 +1171,23 @@ _wnck_get_pid (Screen *screen,
+         }
+ 
+       XResClientIdsDestroy (client_id_count, client_ids);
+-
+-      if (pid != -1)
+-        return pid;
+     }
++
++  return pid;
++}
++#endif
++
++int
++_wnck_get_pid (Screen *screen,
++               Window  xwindow)
++{
++  int pid = -1;
++
++#ifdef HAVE_XRES
++  pid = xres_get_pid (screen, xwindow);
++
++  if (pid != -1)
++    return pid;
+ #endif
+ 
+   if (!_wnck_get_cardinal (screen, xwindow,
+-- 
+GitLab
+
+
+From 6e61e5ef2ad6726cf607ea70c011f49e269472e7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Alberts=20Muktup=C4=81vels?= <alberts.muktupavels@gmail.com>
+Date: Fri, 30 Sep 2022 18:39:00 +0300
+Subject: [PATCH 3/4] xutils: use WnckScreen in _wnck_get_pid
+
+---
+ libwnck/application.c         |  2 +-
+ libwnck/window.c              |  2 +-
+ libwnck/wnck-resource-usage.c | 26 +++++++++++++-------------
+ libwnck/xutils.c              | 16 ++++++++++------
+ libwnck/xutils.h              |  4 ++--
+ 5 files changed, 27 insertions(+), 23 deletions(-)
+
+diff --git a/libwnck/application.c b/libwnck/application.c
+index 9ab7f489..31005ba4 100644
+--- a/libwnck/application.c
++++ b/libwnck/application.c
+@@ -524,7 +524,7 @@ _wnck_application_create (Window      xwindow,
+   if (application->priv->name)
+     application->priv->name_from_leader = TRUE;
+ 
+-  application->priv->pid = _wnck_get_pid (xscreen,
++  application->priv->pid = _wnck_get_pid (screen,
+                                           application->priv->xwindow);
+ 
+   application->priv->startup_id = _wnck_get_utf8_property (xscreen,
+diff --git a/libwnck/window.c b/libwnck/window.c
+index 35bb37c1..229b4cb1 100644
+--- a/libwnck/window.c
++++ b/libwnck/window.c
+@@ -510,7 +510,7 @@ _wnck_window_create (Window      xwindow,
+     _wnck_get_session_id (xscreen, window->priv->xwindow);
+ 
+   window->priv->pid =
+-    _wnck_get_pid (xscreen, window->priv->xwindow);
++    _wnck_get_pid (screen, window->priv->xwindow);
+ 
+   window->priv->x = 0;
+   window->priv->y = 0;
+diff --git a/libwnck/wnck-resource-usage.c b/libwnck/wnck-resource-usage.c
+index a845d82b..1d81c283 100644
+--- a/libwnck/wnck-resource-usage.c
++++ b/libwnck/wnck-resource-usage.c
+@@ -126,10 +126,10 @@ wnck_gulong_equal (gconstpointer a,
+ }
+ 
+ static gulong
+-wnck_check_window_for_pid (Screen *screen,
+-                           Window  win,
+-                           XID     match_xid,
+-                           XID     mask)
++wnck_check_window_for_pid (WnckScreen *screen,
++                           Window      win,
++                           XID         match_xid,
++                           XID         mask)
+ {
+   if ((win & ~mask) == match_xid)
+     return _wnck_get_pid (screen, win);
+@@ -138,13 +138,13 @@ wnck_check_window_for_pid (Screen *screen,
+ }
+ 
+ static void
+-wnck_find_pid_for_resource_r (Display *xdisplay,
+-                              Screen  *screen,
+-                              Window   win_top,
+-                              XID      match_xid,
+-                              XID      mask,
+-                              gulong  *xid,
+-                              gulong  *pid)
++wnck_find_pid_for_resource_r (Display    *xdisplay,
++                              WnckScreen *screen,
++                              Window      win_top,
++                              XID         match_xid,
++                              XID         mask,
++                              gulong     *xid,
++                              gulong     *pid)
+ {
+   Status   qtres;
+   int      err;
+@@ -250,10 +250,10 @@ wnck_pid_read_resource_usage_fill_cache (struct xresclient_state *state)
+ 
+   for (i = 0; i < ScreenCount (state->xdisplay); i++)
+     {
+-      Screen *screen;
++      WnckScreen *screen;
+       Window  root;
+ 
+-      screen = ScreenOfDisplay (state->xdisplay, i);
++      screen = wnck_handle_get_screen (_wnck_get_handle (), i);
+       root = RootWindow (state->xdisplay, i);
+ 
+       if (root == None)
+diff --git a/libwnck/xutils.c b/libwnck/xutils.c
+index d120ff16..08be8aa9 100644
+--- a/libwnck/xutils.c
++++ b/libwnck/xutils.c
+@@ -1147,18 +1147,21 @@ _wnck_get_session_id (Screen *screen,
+ 
+ #ifdef HAVE_XRES
+ static int
+-xres_get_pid (Screen *screen,
+-              Window  xwindow)
++xres_get_pid (WnckScreen *screen,
++              Window      xwindow)
+ {
+   int pid = -1;
++  Screen *xscreen;
+   XResClientIdSpec client_spec;
+   long client_id_count = 0;
+   XResClientIdValue *client_ids = NULL;
+ 
++  xscreen = _wnck_screen_get_xscreen (screen);
++
+   client_spec.client = xwindow;
+   client_spec.mask = XRES_CLIENT_ID_PID_MASK;
+ 
+-  if (XResQueryClientIds (DisplayOfScreen (screen), 1, &client_spec,
++  if (XResQueryClientIds (DisplayOfScreen (xscreen), 1, &client_spec,
+                           &client_id_count, &client_ids) == Success)
+     {
+       long i;
+@@ -1178,8 +1181,8 @@ xres_get_pid (Screen *screen,
+ #endif
+ 
+ int
+-_wnck_get_pid (Screen *screen,
+-               Window  xwindow)
++_wnck_get_pid (WnckScreen *screen,
++               Window      xwindow)
+ {
+   int pid = -1;
+ 
+@@ -1190,7 +1193,8 @@ _wnck_get_pid (Screen *screen,
+     return pid;
+ #endif
+ 
+-  if (!_wnck_get_cardinal (screen, xwindow,
++  if (!_wnck_get_cardinal (_wnck_screen_get_xscreen (screen),
++                           xwindow,
+                            _wnck_atom_get ("_NET_WM_PID"),
+                            &pid))
+     return 0;
+diff --git a/libwnck/xutils.h b/libwnck/xutils.h
+index 4e5c6204..700832a4 100644
+--- a/libwnck/xutils.h
++++ b/libwnck/xutils.h
+@@ -123,8 +123,8 @@ void _wnck_change_viewport (Screen *screen,
+ 
+ char*  _wnck_get_session_id     (Screen *screen,
+                                  Window xwindow);
+-int    _wnck_get_pid            (Screen *screen,
+-                                 Window  xwindow);
++int    _wnck_get_pid            (WnckScreen *screen,
++                                 Window      xwindow);
+ char*  _wnck_get_name           (Screen *screen,
+                                  Window  xwindow);
+ char*  _wnck_get_icon_name      (Screen *screen,
+-- 
+GitLab
+
+
+From dde756bc7788488f07b674cbe218943a62eb82e6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Alberts=20Muktup=C4=81vels?= <alberts.muktupavels@gmail.com>
+Date: Fri, 30 Sep 2022 18:43:07 +0300
+Subject: [PATCH 4/4] xutils: check if XRes is available before using
+ XResQueryClientIds
+
+https://gitlab.gnome.org/GNOME/libwnck/-/issues/154
+---
+ libwnck/xutils.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/libwnck/xutils.c b/libwnck/xutils.c
+index 08be8aa9..91c2d50e 100644
+--- a/libwnck/xutils.c
++++ b/libwnck/xutils.c
+@@ -1156,6 +1156,9 @@ xres_get_pid (WnckScreen *screen,
+   long client_id_count = 0;
+   XResClientIdValue *client_ids = NULL;
+ 
++  if (!_wnck_handle_has_xres (wnck_screen_get_handle (screen)))
++    return -1;
++
+   xscreen = _wnck_screen_get_xscreen (screen);
+ 
+   client_spec.client = xwindow;
+-- 
+GitLab
+

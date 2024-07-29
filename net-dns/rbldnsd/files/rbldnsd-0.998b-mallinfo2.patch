@@ -1,0 +1,59 @@
+From 43e23bf396751cf92252cfef031d4cab2a2fe792 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Fri, 16 Feb 2024 07:38:20 -0500
+Subject: [PATCH 2/2] configure,rbldnsd.c: replace mallinfo() with mallinfo2()
+
+The mallinfo() function from malloc.h is deprecated, and has been
+replaced by mallinfo2(). Additionally, the "mallinfo" struct that it
+returns has been replaced by a "mallinfo2" struct. The only difference
+between the two is that the newer struct contains members of type
+size_t rather than int, which proved to be too small (leading to
+overflows).
+
+The call to ssprintf() that prints this information has been updated
+to use the "z" length modifier, which is C99, but which is probably
+safe by now. Other C99 features are already being used by rbldnsd.
+---
+ configure | 4 ++--
+ rbldnsd.c | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/configure b/configure
+index 5686b0a..42fcf9a 100755
+--- a/configure
++++ b/configure
+@@ -213,12 +213,12 @@ else
+ fi
+ fi # enable_ipv6?
+ 
+-if ac_link_v "for mallinfo()" <<EOF
++if ac_link_v "for mallinfo2()" <<EOF
+ #include <sys/types.h>
+ #include <stdlib.h>
+ #include <malloc.h>
+ int main(int argc, char **argv) {
+-  struct mallinfo mi = mallinfo();
++  struct mallinfo2 mi = mallinfo2();
+   return 0;
+ }
+ EOF
+diff --git a/rbldnsd.c b/rbldnsd.c
+index 8ea25a2..d0cb43e 100644
+--- a/rbldnsd.c
++++ b/rbldnsd.c
+@@ -951,10 +951,10 @@ static int do_reload(int do_fork) {
+ #endif /* NO_TIMES */
+ #ifndef NO_MEMINFO
+   {
+-    struct mallinfo mi = mallinfo();
++    struct mallinfo2 mi = mallinfo2();
+ # define kb(x) ((mi.x + 512)>>10)
+     ip += ssprintf(ibuf + ip, sizeof(ibuf) - ip,
+-          ", mem arena=%d free=%d mmap=%d Kb",
++          ", mem arena=%zd free=%zd mmap=%zd Kb",
+           kb(arena), kb(fordblks), kb(hblkhd));
+ # undef kb
+   }
+-- 
+2.43.0
+

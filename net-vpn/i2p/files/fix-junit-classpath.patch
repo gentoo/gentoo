@@ -1,0 +1,112 @@
+--- a/apps/i2ptunnel/java/build.xml
++++ b/apps/i2ptunnel/java/build.xml
+@@ -465,7 +465,7 @@
+     <target name="test" depends="clean, compileTest">
+         <junit printsummary="on" fork="yes">
+             <classpath>
+-                <pathelement path="${classpath}" />
++                <pathelement path="${gentoo.classpath}" />
+                 <pathelement location="./build/obj" />
+                 <pathelement location="../../../core/java/build/i2p.jar" />
+             </classpath>
+--- a/apps/ministreaming/java/build.xml
++++ b/apps/ministreaming/java/build.xml
+@@ -310,22 +310,12 @@
+         <junit printsummary="withOutAndErr" fork="yes" showoutput="yes" >
+             <sysproperty key="net.sourceforge.cobertura.datafile" file="./cobertura.ser" />
+             <classpath>
+-                <pathelement path="${javac.classpath}" />
+-                <pathelement location="${hamcrest.home}/hamcrest-core.jar" />
+-                <pathelement location="${hamcrest.home}/hamcrest-library.jar" />
+-                <pathelement location="${hamcrest.home}/hamcrest-integration.jar" />
+-                <pathelement location="${hamcrest.home}/hamcrest-all.jar" />
+-                <pathelement location="${mockito.home}/byte-buddy.jar" />
+-                <pathelement location="${mockito.home}/objenesis.jar" />
+-                <pathelement location="${mockito.home}/mockito-core.jar" />
+-                <pathelement location="${junit.home}/junit4.jar" />
++                <pathelement path="${gentoo.classpath}" />
+                 <pathelement location="./build/obj_cobertura" />
+                 <pathelement location="./build/obj" />
+                 <pathelement location="../../../core/java/build/i2ptest.jar" />
+                 <pathelement location="../../../core/java/build/i2p.jar" />
+                 <pathelement location="../../build/jbigi.jar" />
+-                <pathelement location="${with.clover}" />
+-                <pathelement location="${with.cobertura}" />
+             </classpath>
+             <batchtest todir="../../../reports/ministreaming/junit/">
+                 <fileset dir="./test/junit">
+--- a/apps/streaming/java/build.xml
++++ b/apps/streaming/java/build.xml
+@@ -126,23 +126,13 @@
+         <junit printsummary="withOutAndErr" fork="yes" showoutput="yes" >
+             <sysproperty key="net.sourceforge.cobertura.datafile" file="./cobertura.ser" />
+             <classpath>
+-                <pathelement path="${javac.classpath}" />
+-                <pathelement location="${hamcrest.home}/hamcrest-core.jar" />
+-                <pathelement location="${hamcrest.home}/hamcrest-library.jar" />
+-                <pathelement location="${hamcrest.home}/hamcrest-integration.jar" />
+-                <pathelement location="${hamcrest.home}/hamcrest-all.jar" />
+-                <pathelement location="${mockito.home}/byte-buddy.jar" />
+-                <pathelement location="${mockito.home}/objenesis.jar" />
+-                <pathelement location="${mockito.home}/mockito-core.jar" />
+-                <pathelement location="${junit.home}/junit4.jar" />
++                <pathelement path="${gentoo.classpath}" />
+                 <pathelement location="./build/obj_cobertura" />
+                 <pathelement location="./build/obj" />
+                 <pathelement location="../../../core/java/build/i2ptest.jar" />
+                 <pathelement location="../../../core/java/build/i2p.jar" />
+                 <pathelement location="../../ministreaming/java/build/mstreaming.jar" />
+                 <pathelement location="../../build/jbigi.jar" />
+-                <pathelement location="${with.clover}" />
+-                <pathelement location="${with.cobertura}" />
+             </classpath>
+             <batchtest todir="../../../reports/streaming/junit/">
+                 <fileset dir="./test/junit">
+--- a/core/java/build.xml
++++ b/core/java/build.xml
+@@ -469,22 +469,12 @@
+         <junit printsummary="withOutAndErr" fork="yes" maxmemory="384m" showoutput="yes" >
+             <sysproperty key="net.sourceforge.cobertura.datafile" file="./cobertura.ser" />
+             <classpath>
++                <pathelement path="${gentoo.classpath}" />
+                 <pathelement location="../../installer/resources/" />
+-                <pathelement path="${javac.classpath.mod}" />
+-                <pathelement location="${hamcrest.home}/hamcrest-core.jar" />
+-                <pathelement location="${hamcrest.home}/hamcrest-library.jar" />
+-                <pathelement location="${hamcrest.home}/hamcrest-integration.jar" />
+-                <pathelement location="${hamcrest.home}/hamcrest-all.jar" />
+-                <pathelement location="${mockito.home}/byte-buddy.jar" />
+-                <pathelement location="${mockito.home}/objenesis.jar" />
+-                <pathelement location="${mockito.home}/mockito-core.jar" />
+-                <pathelement location="${junit.home}/junit4.jar" />
+                 <pathelement location="./build/obj_cobertura" />
+                 <pathelement location="./build/obj" />
+                 <pathelement location="./test/resources" />
+                 <pathelement location="../../build/jbigi.jar" />
+-                <pathelement location="${with.clover}" />
+-                <pathelement location="${with.cobertura}" />
+             </classpath>
+             <batchtest todir="../../reports/core/junit/">
+                 <fileset dir="./test/junit/">
+--- a/router/java/build.xml
++++ b/router/java/build.xml
+@@ -419,18 +419,11 @@
+         <junit printsummary="withOutAndErr" fork="yes" showoutput="yes" >
+             <sysproperty key="net.sourceforge.cobertura.datafile" file="./cobertura.ser" />
+             <classpath>
+-                <pathelement path="${javac.classpath}" />
+-                <pathelement location="${hamcrest.home}/hamcrest-core.jar" />
+-                <pathelement location="${hamcrest.home}/hamcrest-library.jar" />
+-                <pathelement location="${hamcrest.home}/hamcrest-integration.jar" />
+-                <pathelement location="${hamcrest.home}/hamcrest-all.jar" />
+-                <pathelement location="${junit.home}/junit4.jar" />
++                <pathelement path="${gentoo.classpath}" />
+                 <pathelement location="./build/obj_cobertura" />
+                 <pathelement location="./build/obj" />
+                 <pathelement location="../../core/java/build/i2ptest.jar" />
+                 <pathelement location="../../build/jbigi.jar" />
+-                <pathelement location="${with.clover}" />
+-                <pathelement location="${with.cobertura}" />
+             </classpath>
+             <batchtest todir="../../reports/router/junit/">
+                 <fileset dir="./test/junit">

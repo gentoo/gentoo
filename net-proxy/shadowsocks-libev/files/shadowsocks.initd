@@ -1,0 +1,64 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+SS_CONFIG="/etc/shadowsocks-libev/shadowsocks.json"
+
+SS_PIDFILE="/run/shadowsocks.pid"
+
+depend() {
+    need net
+}
+
+checkconfig() {
+    if [ ! -f ${SS_CONFIG} ]; then
+        ewarn "${SS_CONFIG} does not exist."
+    fi
+
+    SS_SVCNAME="${RC_SVCNAME#*.}"
+    case ${SS_SVCNAME} in
+    client)
+        SS_COMMAND="/usr/bin/ss-local"
+	return 0
+	;;
+    server)
+        SS_COMMAND="/usr/bin/ss-server"
+	return 0
+	;;
+    redir)
+        SS_COMMAND="/usr/bin/ss-redir"
+	return 0
+	;;
+    tunnel)
+        SS_COMMAND="/usr/bin/ss-tunnel"
+	return 0
+	;;
+    *)
+    	eerror "please choose to run as server or client mode"
+    	eerror "  server: rc-update add shadowsocks.server default"
+    	eerror "  client: rc-update add shadowsocks.client default"
+	eerror "  client: rc-update add shadowsocks.redir default"
+	eerror "  client: rc-update add shadowsocks.tunnel default"
+        return 1
+    	;;
+    esac
+}
+
+start() {
+    checkconfig || return 1
+
+    ebegin "Starting Shadowsocks: ${SS_SVCNAME} mode"
+    start-stop-daemon --start --exec ${SS_COMMAND} \
+	--user nobody --group nobody \
+	-- -c ${SS_CONFIG} -f ${SS_PIDFILE} >/dev/null 2>&1 &
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping Shadowsocks"
+    start-stop-daemon --stop \
+	--user nobody --group nobody \
+	--pidfile ${SS_PIDFILE}
+    eend $?
+}
+

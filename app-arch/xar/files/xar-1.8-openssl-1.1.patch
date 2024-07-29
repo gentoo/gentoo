@@ -1,0 +1,45 @@
+lib/hash.c: fix compilation with OpenSSL-1.1+
+
+EVP_MD_CTX has become an anonymous struct now, so can't allocate size
+for it anymore.
+
+--- a/lib/hash.c	2015-06-09 03:22:07.000000000 +0000
++++ b/lib/hash.c	2019-01-01 14:37:01.487775958 +0000
+@@ -102,7 +102,7 @@
+ #ifdef __APPLE__
+ 	CCDigestRef digest;
+ #else
+-	EVP_MD_CTX digest;
++	EVP_MD_CTX *digest;
+ 	const EVP_MD *type;
+ #endif
+ 	unsigned int length;
+@@ -123,7 +123,8 @@
+ #else
+ 	OpenSSL_add_all_digests();
+ 	HASH_CTX(hash)->type = EVP_get_digestbyname(digest_name);
+-	EVP_DigestInit(&HASH_CTX(hash)->digest, HASH_CTX(hash)->type);
++	HASH_CTX(hash)->digest = EVP_MD_CTX_create();
++	EVP_DigestInit(HASH_CTX(hash)->digest, HASH_CTX(hash)->type);
+ #endif
+ 	
+ 	HASH_CTX(hash)->digest_name = strdup(digest_name);
+@@ -143,7 +143,7 @@
+ #ifdef __APPLE__
+ 	CCDigestUpdate(HASH_CTX(hash)->digest, buffer, nbyte);
+ #else
+-	EVP_DigestUpdate(&HASH_CTX(hash)->digest, buffer, nbyte);
++	EVP_DigestUpdate(HASH_CTX(hash)->digest, buffer, nbyte);
+ #endif
+ }
+ 
+@@ -160,7 +160,8 @@
+ 	CCDigestFinal(HASH_CTX(hash)->digest, buffer);
+ 	CCDigestDestroy(HASH_CTX(hash)->digest);
+ #else
+-	EVP_DigestFinal(&HASH_CTX(hash)->digest, buffer, &HASH_CTX(hash)->length);
++	EVP_DigestFinal(HASH_CTX(hash)->digest, buffer, &HASH_CTX(hash)->length);
++	EVP_MD_CTX_destroy(HASH_CTX(hash)->digest);
+ #endif
+ 	
+ 	*nbyte = HASH_CTX(hash)->length;

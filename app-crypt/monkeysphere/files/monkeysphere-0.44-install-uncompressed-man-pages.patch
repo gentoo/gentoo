@@ -1,0 +1,28 @@
+--- a/Makefile
++++ b/Makefile
+@@ -27,7 +27,7 @@ src/transitions/*)
+ 
+ REPLACED_COMPRESSED_MANPAGES = $(addsuffix .gz,$(addprefix replaced/,$(wildcard man/*/*)))
+ 
+-all: src/agent-transfer/agent-transfer $(addprefix replaced/,$(REPLACEMENTS)) $(REPLACED_COMPRESSED_MANPAGES)
++all: src/agent-transfer/agent-transfer $(addprefix replaced/,$(REPLACEMENTS)) $(addprefix replaced/,$(wildcard man/*/*))
+ 
+ src/agent-transfer/agent-transfer: src/agent-transfer/main.c src/agent-transfer/ssh-agent-proto.h
+ 	$(CC) -o $@ $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $< $(LIBS)
+@@ -91,13 +91,13 @@ install: all installman
+ 	install -m 0644 etc/monkeysphere-host.conf $(DESTDIR)$(ETCPREFIX)/etc/monkeysphere/monkeysphere-host.conf$(ETCSUFFIX)
+ 	install -m 0644 etc/monkeysphere-authentication.conf $(DESTDIR)$(ETCPREFIX)/etc/monkeysphere/monkeysphere-authentication.conf$(ETCSUFFIX)
+ 
+-installman: $(REPLACED_COMPRESSED_MANPAGES)
++installman:
+ 	mkdir -p $(DESTDIR)$(MANPREFIX)/man1 $(DESTDIR)$(MANPREFIX)/man7 $(DESTDIR)$(MANPREFIX)/man8
+ 	install replaced/man/man1/* $(DESTDIR)$(MANPREFIX)/man1
+ 	install replaced/man/man7/* $(DESTDIR)$(MANPREFIX)/man7
+ 	install replaced/man/man8/* $(DESTDIR)$(MANPREFIX)/man8
+-	ln -sf openpgp2ssh.1.gz $(DESTDIR)$(MANPREFIX)/man1/openpgp2pem.1.gz
+-	ln -sf openpgp2ssh.1.gz $(DESTDIR)$(MANPREFIX)/man1/openpgp2spki.1.gz
++	ln -sf openpgp2ssh.1 $(DESTDIR)$(MANPREFIX)/man1/openpgp2pem.1
++	ln -sf openpgp2ssh.1 $(DESTDIR)$(MANPREFIX)/man1/openpgp2spki.1
+ 
+ # this target depends on you having the monkeysphere-docs
+ # repo checked out as a peer of your monkeysphere repo.

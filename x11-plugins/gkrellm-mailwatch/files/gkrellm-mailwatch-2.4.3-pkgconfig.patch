@@ -1,0 +1,16 @@
+Have Makefile respect user-configured pkg-config
+--- a/Makefile
++++ b/Makefile
+@@ -1,10 +1,10 @@
+ # Makefile for the GKrellM mailwatch plugin
+ 
+-GTK_CONFIG ?=pkg-config gtk+-2.0
++PKG_CONFIG ?= pkg-config
+ PLUGIN_DIR ?=/usr/local/lib/gkrellm2/plugins
+ 
+-GTK_INCLUDE = `$(GTK_CONFIG) --cflags`
+-GTK_LIB = `$(GTK_CONFIG) --libs`
++GTK_INCLUDE = $(shell ${PKG_CONFIG} gtk+-2.0 --cflags)
++GTK_LIB = $(shell ${PKG_CONFIG} gtk+-2.0 --libs)
+ 
+ GKRELLM_INCLUDE= -I/usr/local/include

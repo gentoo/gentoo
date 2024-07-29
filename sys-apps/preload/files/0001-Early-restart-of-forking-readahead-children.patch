@@ -1,0 +1,64 @@
+From 63cbd8862714a97c8ef752041dc8c351ba4fae1d Mon Sep 17 00:00:00 2001
+From: Kai Krakow <kai@kaishome.de>
+Date: Mon, 28 Jul 2008 19:50:22 +0200
+Subject: [PATCH] Early restart of forking readahead children
+
+This patch adds ability to wait_for_children() to restart
+forking new readahead children as soon as a slot becomes
+available which should make the effect of parallelism even
+more effective. Previous situation was:
+
+Wait for all children to exit as soon as the high water mark
+was reached. This resulted in 30 processes in peak, wait for
+them to reach 0 processes. Start another 30 processes in
+peak, wait again etc.
+
+New situation is: Start a new process as soon as a previous
+process exited which keeps the peak at 30 processes until
+the readahead list is finished.
+
+This introduces a new parameter to wait_for_children() which
+tells it to leave now more than XY processes running when
+returning.
+---
+ src/readahead.c |    8 ++++----
+ 1 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/readahead.c b/src/readahead.c
+index c169e81..7617449 100644
+--- a/src/readahead.c
++++ b/src/readahead.c
+@@ -103,10 +103,10 @@ map_block_compare (const preload_map_t **pa, const preload_map_t **pb)
+ static int procs = 0;
+ 
+ static void
+-wait_for_children (void)
++wait_for_children (int maxprocs)
+ {
+   /* wait for child processes to terminate */
+-  while (procs > 0)
++  while (procs >= maxprocs)
+     {
+       int status;
+       if (wait (&status) > 0)
+@@ -121,7 +121,7 @@ process_file(const char *path, size_t offset, size_t length)
+   int maxprocs = conf->system.maxprocs;
+ 
+   if (procs >= maxprocs)
+-    wait_for_children ();
++    wait_for_children (maxprocs);
+ 
+   if (maxprocs > 0)
+     {
+@@ -257,7 +257,7 @@ preload_readahead (preload_map_t **files, int file_count)
+       path = NULL;
+     }
+ 
+-  wait_for_children ();
++  wait_for_children (0);
+ 
+   return processed;
+ }
+-- 
+1.5.4.5
+

@@ -1,0 +1,17 @@
+Use the lua version selected by lua eclass
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -188,7 +188,11 @@ if (SOL2_IS_TOP_LEVEL AND (SOL2_DO_TESTS OR SOL2_DO_EXAMPLES))
+ 
+ 	string(TOLOWER ${SOL2_LUA_VERSION} NORMALIZED_LUA_VERSION)
+ 	# Find way to get Lua: build if requested, or attempt to build if no matching version is found
+-	if (SOL2_BUILD_LUA)
++	if (TRUE)
++		find_package(PkgConfig REQUIRED)
++		pkg_check_modules(LUA REQUIRED lua IMPORTED_TARGET)
++		set(LUA_LIBRARIES PkgConfig::LUA)
++	elseif (SOL2_BUILD_LUA)
+ 		find_package(LuaBuild REQUIRED COMPONENTS ${SOL2_LUA_VERSION})
+ 	elseif (NOT SOL2_LUA_VERSION)
+ 		find_package(LuaBuild REQUIRED)

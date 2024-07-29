@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/927740
+https://github.com/ccache/ccache/issues/1406
+https://github.com/ccache/ccache/commit/33d390bb249ddf1a6b3bdecede71b12c70000da3
+
+From 33d390bb249ddf1a6b3bdecede71b12c70000da3 Mon Sep 17 00:00:00 2001
+From: Joel Rosdahl <joel@rosdahl.net>
+Date: Wed, 21 Feb 2024 20:25:03 +0100
+Subject: [PATCH] fix: Allow nonexistent include files in preprocessor mode
+
+After 43c3a44aadcb nonexistent include files found in the preprocessed
+output would increment "Could not read or parse input file" and fall
+back to just running the compiler. This made ccache not attempt
+preprocessor mode for generated code with #line header referencing files
+that can't be found, e.g. in an out-of-source build scenario.
+
+Fix this by just disabling direct mode, restoring the pre-43c3a44aadcb
+behavior in such cases.
+
+Fixes #1406.
+
+(cherry picked from commit 08da6cd4da41fa213d387f52e3cf1d1f2a42366b)
+--- a/src/ccache.cpp
++++ b/src/ccache.cpp
+@@ -352,7 +352,12 @@ remember_include_file(Context& ctx,
+ 
+   DirEntry dir_entry(path, DirEntry::LogOnError::yes);
+   if (!dir_entry.exists()) {
+-    return tl::unexpected(Statistic::bad_input_file);
++    if (ctx.config.direct_mode()) {
++      LOG("Include file {} does not exist, disabling direct mode",
++          dir_entry.path());
++      ctx.config.set_direct_mode(false);
++    }
++    return {};
+   }
+   if (dir_entry.is_directory()) {
+     // Ignore directory, typically $PWD.
+

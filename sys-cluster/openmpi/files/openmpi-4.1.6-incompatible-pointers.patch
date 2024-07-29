@@ -1,0 +1,181 @@
+--- a/ompi/mca/io/romio321/romio/adio/common/ad_coll_exch_new.c
++++ b/ompi/mca/io/romio321/romio/adio/common/ad_coll_exch_new.c
+@@ -154,7 +154,7 @@ void ADIOI_Exch_file_views(int myrank, int nprocs, int file_ptr_type,
+     }
+ 
+     MPI_Type_get_extent(fd->filetype, &lb, &filetype_extent);
+-    MPI_Type_size_x(fd->filetype, &filetype_sz);
++    MPI_Type_size_x(fd->filetype, (MPI_Count *)&filetype_sz);
+     if (filetype_extent == filetype_sz) {
+ 	flat_file_p = ADIOI_Add_contig_flattened(fd->filetype);
+ 	flat_file_p->blocklens[0] = memtype_sz*count;
+--- a/ompi/mca/io/romio321/romio/adio/common/ad_read_coll.c
++++ b/ompi/mca/io/romio321/romio/adio/common/ad_read_coll.c
+@@ -851,7 +851,7 @@ static void ADIOI_R_Exchange_data(ADIO_File fd, void *buf, ADIOI_Flatlist_node
+ 		others_req[i].lens[k] = partial_send[i];
+ 	    }
+ 	    ADIOI_Type_create_hindexed_x(count[i],
+-		  &(others_req[i].lens[start_pos[i]]),
++		  (const MPI_Count *)&(others_req[i].lens[start_pos[i]]),
+ 	            &(others_req[i].mem_ptrs[start_pos[i]]), 
+ 			 MPI_BYTE, &send_type);
+ 	    /* absolute displacement; use MPI_BOTTOM in send */
+--- a/ompi/mca/io/romio321/romio/adio/common/ad_write_coll.c
++++ b/ompi/mca/io/romio321/romio/adio/common/ad_write_coll.c
+@@ -610,7 +610,7 @@ static void ADIOI_W_Exchange_data(ADIO_File fd, void *buf, char *write_buf,
+ 		others_req[i].lens[k] = partial_recv[i];
+ 	    }
+ 	    ADIOI_Type_create_hindexed_x(count[i],
+-		     &(others_req[i].lens[start_pos[i]]),
++		     (const MPI_Count *)&(others_req[i].lens[start_pos[i]]),
+ 	             &(others_req[i].mem_ptrs[start_pos[i]]), 
+ 			 MPI_BYTE, recv_types+j);
+ 	    /* absolute displacements; use MPI_BOTTOM in recv */
+--- a/ompi/mca/io/romio321/romio/mpi-io/get_bytoff.c
++++ b/ompi/mca/io/romio321/romio/mpi-io/get_bytoff.c
+@@ -63,7 +63,7 @@ int MPI_File_get_byte_offset(MPI_File fh, MPI_Offset offset, MPI_Offset *disp)
+     MPIO_CHECK_NOT_SEQUENTIAL_MODE(adio_fh, myname, error_code);
+     /* --END ERROR HANDLING-- */
+ 
+-    ADIOI_Get_byte_offset(adio_fh, offset, disp);
++    ADIOI_Get_byte_offset(adio_fh, (ADIO_Offset)offset, (ADIO_Offset *)disp);
+ 
+ fn_exit:
+ 
+--- a/ompi/mca/io/romio321/romio/mpi-io/get_posn.c
++++ b/ompi/mca/io/romio321/romio/mpi-io/get_posn.c
+@@ -52,7 +52,7 @@ int MPI_File_get_position(MPI_File fh, MPI_Offset *offset)
+     MPIO_CHECK_NOT_SEQUENTIAL_MODE(adio_fh, myname, error_code);
+     /* --END ERROR HANDLING-- */
+ 
+-    ADIOI_Get_position(adio_fh, offset);
++    ADIOI_Get_position(adio_fh, (ADIO_Offset *)offset);
+ 
+ fn_exit:
+     return MPI_SUCCESS;
+--- a/ompi/mca/io/romio321/romio/mpi-io/get_posn_sh.c
++++ b/ompi/mca/io/romio321/romio/mpi-io/get_posn_sh.c
+@@ -53,7 +53,8 @@ int MPI_File_get_position_shared(MPI_File fh, MPI_Offset *offset)
+ 
+     ADIOI_TEST_DEFERRED(adio_fh, myname, &error_code);
+ 
+-    ADIO_Get_shared_fp(adio_fh, 0, offset, &error_code);
++
++    ADIO_Get_shared_fp(adio_fh, 0, (ADIO_Offset *)offset, &error_code);
+     /* --BEGIN ERROR HANDLING-- */
+     if (error_code != MPI_SUCCESS)
+ 	error_code = MPIO_Err_return_file(adio_fh, error_code);
+--- a/ompi/mca/io/romio321/romio/mpi-io/seek.c
++++ b/ompi/mca/io/romio321/romio/mpi-io/seek.c
+@@ -73,7 +73,7 @@ int MPI_File_seek(MPI_File fh, MPI_Offset offset, int whence)
+ 	break;
+     case MPI_SEEK_CUR:
+ 	/* find offset corr. to current location of file pointer */
+-	ADIOI_Get_position(adio_fh, &curr_offset);
++	ADIOI_Get_position(adio_fh, (ADIO_Offset *)&curr_offset);
+ 	offset += curr_offset;
+ 
+ 	/* --BEGIN ERROR HANDLING-- */
+@@ -94,7 +94,7 @@ int MPI_File_seek(MPI_File fh, MPI_Offset offset, int whence)
+ 	ADIOI_TEST_DEFERRED(adio_fh, "MPI_File_seek", &error_code);
+ 
+ 	/* find offset corr. to end of file */
+-	ADIOI_Get_eof_offset(adio_fh, &eof_offset);
++	ADIOI_Get_eof_offset(adio_fh, (ADIO_Offset *)&eof_offset);
+ 	offset += eof_offset;
+ 
+ 	/* --BEGIN ERROR HANDLING-- */
+--- a/ompi/mca/io/romio321/romio/mpi-io/seek_sh.c
++++ b/ompi/mca/io/romio321/romio/mpi-io/seek_sh.c
+@@ -101,7 +101,7 @@ int MPI_File_seek_shared(MPI_File fh, MPI_Offset offset, int whence)
+ 	    break;
+ 	case MPI_SEEK_CUR:
+ 	    /* get current location of shared file pointer */
+-	    ADIO_Get_shared_fp(adio_fh, 0, &curr_offset, &error_code);
++	    ADIO_Get_shared_fp(adio_fh, 0, (ADIO_Offset *)&curr_offset, &error_code);
+ 	    /* --BEGIN ERROR HANDLING-- */
+ 	    if (error_code != MPI_SUCCESS)
+ 	    {
+@@ -130,7 +130,7 @@ int MPI_File_seek_shared(MPI_File fh, MPI_Offset offset, int whence)
+ 	    break;
+ 	case MPI_SEEK_END:
+ 	    /* find offset corr. to end of file */
+-	    ADIOI_Get_eof_offset(adio_fh, &eof_offset);
++	    ADIOI_Get_eof_offset(adio_fh, (ADIO_Offset *)&eof_offset);
+ 	    offset += eof_offset;
+ 	    /* --BEGIN ERROR HANDLING-- */
+ 	    if (offset < 0)
+--- a/opal/mca/pmix/pmix3x/pmix/src/hwloc/hwloc.c
++++ b/opal/mca/pmix/pmix3x/pmix/src/hwloc/hwloc.c
+@@ -638,7 +638,7 @@ static int find_hole(pmix_hwloc_vm_hole_kind_t hkind,
+             switch (hkind) {
+                 case VM_HOLE_BEGIN:
+                     fclose(file);
+-                    return use_hole(0, begin, addrp, size);
++                    return use_hole(0, begin, (unsigned long *)addrp, size);
+ 
+                 case VM_HOLE_AFTER_HEAP:
+                     if (prevmkind == VM_MAP_HEAP && mkind != VM_MAP_HEAP) {
+@@ -646,14 +646,14 @@ static int find_hole(pmix_hwloc_vm_hole_kind_t hkind,
+                          * (there can be several of them consecutively).
+                          */
+                         fclose(file);
+-                        return use_hole(prevend, begin-prevend, addrp, size);
++                        return use_hole(prevend, begin-prevend, (unsigned long *)addrp, size);
+                     }
+                     break;
+ 
+                 case VM_HOLE_BEFORE_STACK:
+                     if (mkind == VM_MAP_STACK) {
+                         fclose(file);
+-                        return use_hole(prevend, begin-prevend, addrp, size);
++                        return use_hole(prevend, begin-prevend, (unsigned long *)addrp, size);
+                     }
+                     break;
+ 
+@@ -705,7 +705,7 @@ static int find_hole(pmix_hwloc_vm_hole_kind_t hkind,
+   done:
+     fclose(file);
+     if (hkind == VM_HOLE_IN_LIBS || hkind == VM_HOLE_BIGGEST) {
+-        return use_hole(biggestbegin, biggestsize, addrp, size);
++        return use_hole(biggestbegin, biggestsize, (unsigned long *)addrp, size);
+     }
+ 
+     return PMIX_ERROR;
+--- a/orte/mca/rtc/hwloc/rtc_hwloc.c
++++ b/orte/mca/rtc/hwloc/rtc_hwloc.c
+@@ -608,7 +608,7 @@ static int find_hole(orte_rtc_hwloc_vm_hole_kind_t hkind,
+             switch (hkind) {
+                 case VM_HOLE_BEGIN:
+                     fclose(file);
+-                    return use_hole(0, begin, addrp, size);
++                    return use_hole(0, begin, (unsigned long *)addrp, size);
+ 
+                 case VM_HOLE_AFTER_HEAP:
+                     if (prevmkind == VM_MAP_HEAP && mkind != VM_MAP_HEAP) {
+@@ -616,14 +616,14 @@ static int find_hole(orte_rtc_hwloc_vm_hole_kind_t hkind,
+                          * (there can be several of them consecutively).
+                          */
+                         fclose(file);
+-                        return use_hole(prevend, begin-prevend, addrp, size);
++                        return use_hole(prevend, begin-prevend, (unsigned long *)addrp, size);
+                     }
+                     break;
+ 
+                 case VM_HOLE_BEFORE_STACK:
+                     if (mkind == VM_MAP_STACK) {
+                         fclose(file);
+-                        return use_hole(prevend, begin-prevend, addrp, size);
++                        return use_hole(prevend, begin-prevend, (unsigned long *)addrp, size);
+                     }
+                     break;
+ 
+@@ -678,7 +678,7 @@ static int find_hole(orte_rtc_hwloc_vm_hole_kind_t hkind,
+   done:
+     fclose(file);
+     if (hkind == VM_HOLE_IN_LIBS || hkind == VM_HOLE_BIGGEST) {
+-        return use_hole(biggestbegin, biggestsize, addrp, size);
++        return use_hole(biggestbegin, biggestsize, (unsigned long *)addrp, size);
+     }
+ 
+     return ORTE_ERROR;

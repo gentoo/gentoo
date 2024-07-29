@@ -1,0 +1,15 @@
+In Gentoo rocm_agent_enumerator is installed by rocminfo and is in PATH.
+
+--- catch/CMakeLists.txt~	2023-11-18 13:56:08.000000000 +0800
++++ catch/CMakeLists.txt	2023-11-18 13:59:28.136170638 +0800
+@@ -182,9 +182,8 @@
+ # rocm_agent_enumerator
+ if(NOT DEFINED OFFLOAD_ARCH_STR
+    AND NOT DEFINED ENV{HCC_AMDGPU_TARGET}
+-   AND EXISTS "${ROCM_PATH}/bin/rocm_agent_enumerator"
+    AND HIP_PLATFORM STREQUAL "amd" AND UNIX)
+-    execute_process(COMMAND ${ROCM_PATH}/bin/rocm_agent_enumerator
++    execute_process(COMMAND rocm_agent_enumerator
+          OUTPUT_VARIABLE HIP_GPU_ARCH
+          RESULT_VARIABLE ROCM_AGENT_ENUM_RESULT)
+     # Trim out gfx000

@@ -1,0 +1,21 @@
+This test fails in Portage with aggressive PORTAGE_NICENESS, PORTAGE_IONICE_COMMAND,
+and PORTAGE_SCHEDULING_POLICY.
+
+Bug: https://bugs.gentoo.org/924653
+--- a/test/test-thread-priority.c
++++ b/test/test-thread-priority.c
+@@ -92,7 +92,6 @@ TEST_IMPL(thread_priority) {
+   ASSERT_EQ(priority, 0);
+   ASSERT_OK(uv_thread_setpriority(pthread_self(), UV_THREAD_PRIORITY_LOWEST));
+   ASSERT_OK(uv_thread_getpriority(pthread_self(), &priority));
+-  ASSERT_EQ(priority, (0 - UV_THREAD_PRIORITY_LOWEST * 2));
+ #endif
+ 
+   uv_sem_post(&sem);
+@@ -102,4 +101,4 @@ TEST_IMPL(thread_priority) {
+   uv_sem_destroy(&sem);
+ 
+   return 0;
+-}
+\ No newline at end of file
++}

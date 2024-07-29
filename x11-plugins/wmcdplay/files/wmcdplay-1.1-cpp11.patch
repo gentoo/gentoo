@@ -1,0 +1,30 @@
+From bd69f80f597ca589683d6f606e979b8f77e9e0a4 Mon Sep 17 00:00:00 2001
+From: Doug Torrance <dtorrance@piedmont.edu>
+Date: Wed, 29 Apr 2020 11:01:30 -0400
+Subject: [PATCH] wmcdplay: Add spaces between macro and string literals for
+ C++11
+
+We may get compile errors (e.g., [1]) otherwise.
+
+[1] https://clang.debian.net/logs/2020-02-24-9.0.1/
+    wmcdplay_1.1-2_unstable_clang9.0.1.log
+---
+ wmcdplay.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/wmcdplay.cc b/wmcdplay.cc
+index 46ae03a..675b5dc 100644
+--- a/wmcdplay.cc
++++ b/wmcdplay.cc
+@@ -353,7 +353,7 @@ unsigned long mixColor(char *colorname1, int prop1, char *colorname2, int prop2)
+ void scanArgs(int argc, char **argv){
+    for(int i=1;i<argc;i++){
+       if(strcmp(argv[i], "-h")==0 || strcmp(argv[i], "-help")==0 || strcmp(argv[i], "--help")==0){
+-         fprintf(stderr, "wmcdplay - A cd player designed for WindowMaker\nRelease "VERSION"\n");
++         fprintf(stderr, "wmcdplay - A cd player designed for WindowMaker\nRelease " VERSION "\n");
+          fprintf(stderr, "Copyright (C) 1998  Sam Hawker <shawkie@geocities.com>\n");
+          fprintf(stderr, "This software comes with ABSOLUTELY NO WARRANTY\n");
+          fprintf(stderr, "This software is free software, and you are welcome to redistribute it\n");
+-- 
+2.11.4.GIT
+

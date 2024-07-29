@@ -1,0 +1,55 @@
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+
+make Version constexpr so it can be used to decern the API at runtime (see Blender)
+
+--- a/nanovdb/nanovdb/NanoVDB.h	2023-11-23 15:03:52.227292525 +0100
++++ b/nanovdb/nanovdb/NanoVDB.h	2023-11-23 15:05:10.508818683 +0100
+@@ -948,34 +948,34 @@
+ {
+     uint32_t mData; // 11 + 11 + 10 bit packing of major + minor + patch
+ public:
+-    __hostdev__ Version()
++    __hostdev__ constexpr Version()
+         : mData(uint32_t(NANOVDB_MAJOR_VERSION_NUMBER) << 21 |
+                 uint32_t(NANOVDB_MINOR_VERSION_NUMBER) << 10 |
+                 uint32_t(NANOVDB_PATCH_VERSION_NUMBER))
+     {
+     }
+-    __hostdev__ Version(uint32_t data) : mData(data) {}
+-    __hostdev__ Version(uint32_t major, uint32_t minor, uint32_t patch)
++    __hostdev__ constexpr Version(uint32_t data) : mData(data) {}
++    __hostdev__ constexpr Version(uint32_t major, uint32_t minor, uint32_t patch)
+         : mData(major << 21 | minor << 10 | patch)
+     {
+         NANOVDB_ASSERT(major < (1u << 11)); // max value of major is 2047
+         NANOVDB_ASSERT(minor < (1u << 11)); // max value of minor is 2047
+         NANOVDB_ASSERT(patch < (1u << 10)); // max value of patch is 1023
+     }
+-    __hostdev__ bool     operator==(const Version& rhs) const { return mData == rhs.mData; }
+-    __hostdev__ bool     operator<( const Version& rhs) const { return mData < rhs.mData; }
+-    __hostdev__ bool     operator<=(const Version& rhs) const { return mData <= rhs.mData; }
+-    __hostdev__ bool     operator>( const Version& rhs) const { return mData > rhs.mData; }
+-    __hostdev__ bool     operator>=(const Version& rhs) const { return mData >= rhs.mData; }
+-    __hostdev__ uint32_t id() const { return mData; }
+-    __hostdev__ uint32_t getMajor() const { return (mData >> 21) & ((1u << 11) - 1); }
+-    __hostdev__ uint32_t getMinor() const { return (mData >> 10) & ((1u << 11) - 1); }
+-    __hostdev__ uint32_t getPatch() const { return mData & ((1u << 10) - 1); }
+-    __hostdev__ bool isCompatible() const { return this->getMajor() == uint32_t(NANOVDB_MAJOR_VERSION_NUMBER);}
++    __hostdev__ constexpr bool     operator==(const Version& rhs) const { return mData == rhs.mData; }
++    __hostdev__ constexpr bool     operator<( const Version& rhs) const { return mData < rhs.mData; }
++    __hostdev__ constexpr bool     operator<=(const Version& rhs) const { return mData <= rhs.mData; }
++    __hostdev__ constexpr bool     operator>( const Version& rhs) const { return mData > rhs.mData; }
++    __hostdev__ constexpr bool     operator>=(const Version& rhs) const { return mData >= rhs.mData; }
++    __hostdev__ constexpr uint32_t id() const { return mData; }
++    __hostdev__ constexpr uint32_t getMajor() const { return (mData >> 21) & ((1u << 11) - 1); }
++    __hostdev__ constexpr uint32_t getMinor() const { return (mData >> 10) & ((1u << 11) - 1); }
++    __hostdev__ constexpr uint32_t getPatch() const { return mData & ((1u << 10) - 1); }
++    __hostdev__ constexpr bool isCompatible() const { return this->getMajor() == uint32_t(NANOVDB_MAJOR_VERSION_NUMBER);}
+     /// @brief Check the major version of this instance relative to NANOVDB_MAJOR_VERSION_NUMBER
+     /// @return return 0 if the major version equals NANOVDB_MAJOR_VERSION_NUMBER, else a negative age if it is
+     ///         older, i.e. smaller, and a positive age if it's newer, i.e.e larger.
+-    __hostdev__ int age() const {return int(this->getMajor()) - int(NANOVDB_MAJOR_VERSION_NUMBER);}
++    __hostdev__ constexpr int age() const {return int(this->getMajor()) - int(NANOVDB_MAJOR_VERSION_NUMBER);}
+ 
+ #ifndef __CUDACC_RTC__
+     const char* c_str() const

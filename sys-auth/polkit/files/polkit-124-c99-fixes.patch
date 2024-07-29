@@ -1,0 +1,111 @@
+https://bugs.gentoo.org/925440
+https://github.com/polkit-org/polkit/commit/0d78d1e4bf5ab3ce11678005b220aac0cfc5bee5
+
+From: Vincent Mihalkovic <vmihalko@redhat.com>
+Date: Fri, 8 Mar 2024 14:04:33 +0100
+Subject: [PATCH 3/3] mocklibc: move the print_indent function to the file
+ where it is used
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This fixes build error with GCC >= 14 and clang >= 17,
+failing on:
+```
+../subprojects/mocklibc-1.0/src/netgroup-debug.c:25:3: error: implicit declaration of function ‘print_indent’ [-Wimplicit-function-declaration]
+   25 |   print_indent(stream, indent);
+      |   ^~~~~~~~~~~~
+```
+
+Closes: #6
+---
+ subprojects/mocklibc.wrap                     |  2 +
+ .../packagefiles/mocklibc-print-indent.diff   | 68 +++++++++++++++++++
+ 2 files changed, 70 insertions(+)
+ create mode 100644 subprojects/packagefiles/mocklibc-print-indent.diff
+
+diff --git a/subprojects/mocklibc.wrap b/subprojects/mocklibc.wrap
+index af82298..539ee83 100644
+--- a/subprojects/mocklibc.wrap
++++ b/subprojects/mocklibc.wrap
+@@ -8,3 +8,5 @@ source_hash = b2236a6af1028414783e9734a46ea051916ec226479d6a55a3bb823bff68f120
+ patch_url = https://wrapdb.mesonbuild.com/v1/projects/mocklibc/1.0/2/get_zip
+ patch_filename = mocklibc-1.0-2-wrap.zip
+ patch_hash = 0280f96a2eeb3c023e5acf4e00cef03d362868218d4a85347ea45137c0ef6c56
++
++diff_files = mocklibc-print-indent.diff
+diff --git a/subprojects/packagefiles/mocklibc-print-indent.diff b/subprojects/packagefiles/mocklibc-print-indent.diff
+new file mode 100644
+index 0000000..d8b2029
+--- /dev/null
++++ b/subprojects/packagefiles/mocklibc-print-indent.diff
+@@ -0,0 +1,68 @@
++From: Vincent Mihalkovic <vmihalko@redhat.com>
++Date: Fri, 8 Mar 2024 14:04:33 +0100
++Subject: [PATCH 3/3] mocklibc: move the print_indent function to the file
++ where it is used
++MIME-Version: 1.0
++Content-Type: text/plain; charset=UTF-8
++Content-Transfer-Encoding: 8bit
++
++This fixes build error with GCC >= 14 and clang >= 17,
++failing on:
++```
++../subprojects/mocklibc-1.0/src/netgroup-debug.c:25:3: error: implicit declaration of function ‘print_indent’ [-Wimplicit-function-declaration]
++   25 |   print_indent(stream, indent);
++      |   ^~~~~~~~~~~~
++```
++
++Closes: #6
++---
++ src/netgroup-debug.c | 11 +++++++++++
++ src/netgroup.c       | 11 -----------
++ 2 files changed, 11 insertions(+), 11 deletions(-)
++
++diff --git a/src/netgroup-debug.c b/src/netgroup-debug.c
++index 81d6e72..46e5b25 100644
++--- a/src/netgroup-debug.c
+++++ b/src/netgroup-debug.c
++@@ -21,6 +21,17 @@
++ #include <stdio.h>
++ #include <stdlib.h>
++
+++/**
+++ * Print a varaible indentation to the stream.
+++ * @param stream Stream to print to
+++ * @param indent Number of indents to use
+++ */
+++static void print_indent(FILE *stream, unsigned int indent) {
+++  int i;
+++  for (i = 0; i < indent; i++)
+++    fprintf(stream, "  ");
+++}
+++
++ void netgroup_debug_print_entry(struct entry *entry, FILE *stream, unsigned int indent) {
++   print_indent(stream, indent);
++
++diff --git a/src/netgroup.c b/src/netgroup.c
++index 06a8a89..e16e451 100644
++--- a/src/netgroup.c
+++++ b/src/netgroup.c
++@@ -71,17 +71,6 @@ static char *parser_copy_word(char **cur) {
++   return result;
++ }
++
++-/**
++- * Print a varaible indentation to the stream.
++- * @param stream Stream to print to
++- * @param indent Number of indents to use
++- */
++-void print_indent(FILE *stream, unsigned int indent) {
++-  int i;
++-  for (i = 0; i < indent; i++)
++-    fprintf(stream, "  ");
++-}
++-
++ /**
++  * Connect entries with 'child' type to their child entries.
++  * @param headentry Head of list of entries that need to be connected
++--
++2.43.0
+--

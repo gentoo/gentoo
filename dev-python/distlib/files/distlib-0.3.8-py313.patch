@@ -1,0 +1,22 @@
+From 1c08845b05d022692252ed45cb07e9cb9647caac Mon Sep 17 00:00:00 2001
+From: Vinay Sajip <vinay_sajip@yahoo.co.uk>
+Date: Wed, 14 Feb 2024 14:46:14 +0000
+Subject: [PATCH] Fix #214: Update representation of interpreter in test.
+
+---
+ tests/test_scripts.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_scripts.py b/tests/test_scripts.py
+index 5c38687..74ee647 100644
+--- a/tests/test_scripts.py
++++ b/tests/test_scripts.py
+@@ -340,7 +340,7 @@ def test_script_run(self):
+             self.assertIn(b'<H3>Current Working Directory:</H3>', stdout)
+             self.assertIn(os.getcwd().encode('utf-8'), stdout)
+         else:
+-            self.assertIn(b'[Interpreter(id=0, isolated=None)]', stderr)
++            self.assertIn(b'[Interpreter(0)]', stderr)
+             self.assertEqual(p.returncode, 1)
+ 
+     @unittest.skipUnless(os.name == 'posix', 'Test only valid for POSIX')

@@ -1,0 +1,42 @@
+From 6f324aabdd4f118a81bb5c898689a0151e09d2e0 Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Wed, 6 Mar 2024 15:31:41 +0000
+Subject: [PATCH] Revert "Round x11GlobalScaleFactor instead of flooring it"
+
+This reverts commit 6b3865a72baff3932fbe89ef0c44ff1b9bb4cd10
+---
+ kded/gtkconfig.cpp | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
+
+diff --git a/kded/gtkconfig.cpp b/kded/gtkconfig.cpp
+index 8e825fd..85272ce 100644
+--- a/kded/gtkconfig.cpp
++++ b/kded/gtkconfig.cpp
+@@ -197,14 +197,9 @@ void GtkConfig::setEnableAnimations() const
+     }
+ }
+ 
+-static double roundPreferFloor(double d)
+-{
+-    return (d - floor(d)) > 0.5 ? ceil(d) : floor(d);
+-}
+-
+ void GtkConfig::setGlobalScale() const
+ {
+-    const unsigned scaleFactor = roundPreferFloor(configValueProvider->x11GlobalScaleFactor());
++    const unsigned scaleFactor = configValueProvider->x11GlobalScaleFactor();
+     XSettingsEditor::setValue(QStringLiteral("Gdk/WindowScalingFactor"), scaleFactor);
+     GSettingsEditor::setValue("scaling-factor", scaleFactor); // For IntelliJ IDEA
+ }
+@@ -212,7 +207,7 @@ void GtkConfig::setGlobalScale() const
+ void GtkConfig::setTextScale() const
+ {
+     const double x11Scale = configValueProvider->x11GlobalScaleFactor();
+-    const int x11ScaleIntegerPart = int(roundPreferFloor(x11Scale));
++    const int x11ScaleIntegerPart = int(x11Scale);
+ 
+     const int forceFontDpi = configValueProvider->fontDpi();
+ 
+-- 
+GitLab
+

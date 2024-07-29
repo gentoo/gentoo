@@ -1,0 +1,31 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+checkconfig() {
+	# Set sane defaults
+	if [ -z ${CONMUX_REGISTRY_PORT} ]; then
+		CONMUX_REGISTRY_PORT="63000"
+	fi
+	if [ -z ${CONMUX_REGISTRY_LOG} ]; then
+		CONMUX_REGISTRY_LOG="/var/log/conmux-registry.log"
+	fi
+}
+
+start() {
+	checkconfig
+	# Make sure conmux finds everything
+	export PATH="${PATH}:/usr/share/conmux/drivers:/usr/share/conmux/helpers"
+	ebegin "Starting conmux registry daemon"
+	[ -e ${CONMUX_REGISTRY_LOG} ] && rm ${CONMUX_REGISTRY_LOG}
+	touch ${CONMUX_REGISTRY_LOG}
+	start-stop-daemon -b -m --start -p /run/conmux-registry.pid \
+		--exec /usr/sbin/conmux-registry -- ${CONMUX_REGISTRY_PORT} \
+			${CONMUX_REGISTRY_LOG}
+}
+
+stop() {
+	ebegin "Stopping conmux registry daemon"
+	start-stop-daemon --stop --pidfile /run/conmux-registry.pid
+	eend $?
+}

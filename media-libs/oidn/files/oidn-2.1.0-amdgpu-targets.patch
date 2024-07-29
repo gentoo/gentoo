@@ -1,0 +1,46 @@
+Allow specifying AMDGPU_TARGETS with CMake flags.
+Fix build when main compiler is set to GCC.
+--- a/devices/CMakeLists.txt
++++ b/devices/CMakeLists.txt
+@@ -123,6 +123,10 @@ if(OIDN_DEVICE_HIP)
+   )
+   mark_as_advanced(OIDN_DEVICE_HIP_COMPILER)
+ 
++  set(AMDGPU_TARGETS "gfx1030;gfx1031;gfx1032;gfx1033;gfx1034;gfx1035;gfx1036;gfx1100;gfx1101;gfx1102;gfx1103" CACHE STRING "AMD GPU targets to compile for")
++  mark_as_advanced(AMDGPU_TARGETS)
++  message(STATUS "AMD targets: ${AMDGPU_TARGETS}")
++
+   # Add ROCm to CMAKE_PREFIX_PATH
+   set(_hip_prefix_path CMAKE_PREFIX_PATH)
+   list(APPEND _hip_prefix_path ${ROCM_PATH}/hip ${ROCM_PATH})
+@@ -137,7 +141,6 @@ if(OIDN_DEVICE_HIP)
+     CMAKE_CACHE_ARGS
+       -DCMAKE_PREFIX_PATH:STRING=${_hip_prefix_path_str}
+       -DCMAKE_CXX_COMPILER:FILEPATH=${OIDN_DEVICE_HIP_COMPILER}
+-      -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${CMAKE_TOOLCHAIN_FILE}
+       -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
+       -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_CURRENT_BINARY_DIR}/hip/preinstall
+       -DCMAKE_INSTALL_BINDIR:PATH=${CMAKE_INSTALL_BINDIR}
+@@ -149,6 +152,9 @@ if(OIDN_DEVICE_HIP)
+       -DOIDN_API_NAMESPACE:STRING=${OIDN_API_NAMESPACE}
+       -DOIDN_WARN_AS_ERRORS:BOOL=${OIDN_WARN_AS_ERRORS}
+       -DOIDN_SANITIZER:STRING=${OIDN_SANITIZER}
++      -DGPU_TARGETS:STRING=${AMDGPU_TARGETS}
++      -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON
++      -G "${CMAKE_GENERATOR}"
+     BUILD_ALWAYS TRUE
+     DEPENDS
+       OpenImageDenoise_core
+--- a/devices/hip/CMakeLists.txt
++++ b/devices/hip/CMakeLists.txt
+@@ -25,8 +25,8 @@ include(oidn_common_external)
+ # FIXME: The HIP runtime has a bug that causes a crash if the kernels are not compiled for all
+ # targets detected in the system. As a workaround, we compile for more targets then we actually
+ # support to avoid the crash on systems with dedicated + integrated GPUs.
+-set(GPU_TARGETS "gfx1030,gfx1031,gfx1032,gfx1033,gfx1034,gfx1035,gfx1036,gfx1100,gfx1101,gfx1102,gfx1103" CACHE INTERNAL "")
+-set(AMDGPU_TARGETS ${GPU_TARGETS} CACHE INTERNAL "")
++set(GPU_TARGETS "gfx1030;gfx1031;gfx1032;gfx1033;gfx1034;gfx1035;gfx1036;gfx1100;gfx1101;gfx1102;gfx1103" CACHE STRING "")
++set(AMDGPU_TARGETS ${GPU_TARGETS} CACHE STRING "")
+ 
+ # Find HIP
+ find_package(hip REQUIRED)

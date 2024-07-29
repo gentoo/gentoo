@@ -1,0 +1,22 @@
+--- a/src/command_line_parsing.c
++++ b/src/command_line_parsing.c
+@@ -33,7 +33,7 @@
+ /*  #define _GNU_SOURCE must appear before <string.h> and <getopt.h> for strndup  and getopt_long*/
+ 
+ 
+-globalData globals;
++extern globalData globals;
+ unsigned int startsector;
+ extern char* OUTDIR, *LOGFILE, *WORKDIR, *TEMPDIR;
+ static fileinfo_t ** files;
+--- a/src/menu.c
++++ b/src/menu.c
+@@ -30,7 +30,7 @@ extern globalData globals;
+ 
+ uint16_t norm_x=PAL_X, norm_y=PAL_Y;  // TODO: adjust for ntsc #define NTSC_Y 480
+ extern uint16_t totntracks;
+-uint8_t maxbuttons, resbuttons;
++extern uint8_t maxbuttons, resbuttons;
+ 
+ 
+ 

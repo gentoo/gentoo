@@ -1,0 +1,19 @@
+Resolves underlinking issue causing build failure on uclibc.
+
+Author: René Rhéaume <rene.rheaume@gmail.com>
+Gentoo-bug: 587076
+
+--- a/sqliteman/CMakeLists.txt
++++ b/sqliteman/CMakeLists.txt
+@@ -183,7 +183,10 @@ IF (WIN32)
+     # don't use console subsystem
+     IF (MINGW)
+         TARGET_LINK_LIBRARIES(${EXE_NAME} "-mwindows")
+-	ENDIF (MINGW)
++    ENDIF (MINGW)
++ELSE (WIN32)
++	FIND_PACKAGE(Threads)
++	TARGET_LINK_LIBRARIES(${EXE_NAME} ${CMAKE_THREAD_LIBS_INIT})
+ ENDIF (WIN32)
+ 
+ 

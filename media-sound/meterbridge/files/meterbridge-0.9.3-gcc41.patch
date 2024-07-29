@@ -1,0 +1,13 @@
+Index: meterbridge-0.9.3/src/main.h
+===================================================================
+--- meterbridge-0.9.3.orig/src/main.h
++++ meterbridge-0.9.3/src/main.h
+@@ -10,7 +10,7 @@
+ 
+ extern SDL_Surface *screen, *background_image;
+ extern SDL_Surface *image, *meter, *meter_buf;
+-extern SDL_Rect win, buf_rect[MAX_METERS], dest[MAX_METERS];
++extern SDL_Rect win, dest[MAX_METERS];
+ 
+ extern jack_port_t *input_ports[MAX_METERS];
+ extern jack_port_t *output_ports[MAX_METERS];

@@ -1,0 +1,51 @@
+Remove HIP/ROCM includes ("-isystem /usr/include"), as they break inclusion of <math.h>.
+Add inclusion of Clang resource dir (e.g. /usr/lib/clang/17), as it is used in hip runtime like that.
+Remove hardcoded target to fix HIP on musl.
+
+Issues:
+* https://github.com/ROCm/clr/issues/82
+* https://github.com/ROCm/llvm-project/issues/92
+--- a/src/comgr-compiler.cpp
++++ b/src/comgr-compiler.cpp
+@@ -1028,9 +1028,8 @@ AMDGPUCompiler::addTargetIdentifierFlags(llvm::StringRef IdentStr,
+ }
+ 
+ amd_comgr_status_t AMDGPUCompiler::addCompilationFlags() {
+-  HIPIncludePath = (Twine(env::getHIPPath()) + "/include").str();
+-  // HIP headers depend on hsa.h which is in ROCM_DIR/include.
+-  ROCMIncludePath = (Twine(env::getROCMPath()) + "/include").str();
++  // Allow to include <include/cuda_wrappers/algorithm> (used in some hip files)
++  ClangIncludePath = @CLANG_RESOURCE_DIR@;
+ 
+   Args.push_back("-x");
+ 
+@@ -1051,13 +1050,9 @@ amd_comgr_status_t AMDGPUCompiler::addCompilationFlags() {
+   case AMD_COMGR_LANGUAGE_HIP:
+     Args.push_back("hip");
+     Args.push_back("-std=c++11");
+-    Args.push_back("-target");
+-    Args.push_back("x86_64-unknown-linux-gnu");
+     Args.push_back("--cuda-device-only");
+     Args.push_back("-isystem");
+-    Args.push_back(ROCMIncludePath.c_str());
+-    Args.push_back("-isystem");
+-    Args.push_back(HIPIncludePath.c_str());
++    Args.push_back(ClangIncludePath.c_str());
+     break;
+   default:
+     return AMD_COMGR_STATUS_ERROR_INVALID_ARGUMENT;
+--- a/src/comgr-compiler.h
++++ b/src/comgr-compiler.h
+@@ -95,12 +95,7 @@ class AMDGPUCompiler {
+   /// User supplied target GPU Arch.
+   std::string GPUArch;
+   std::string OffloadArch;
+-  /// ROCM include Path
+-  std::string ROCMIncludePath;
+-  /// HIP and Clang Include Paths
+-  std::string HIPIncludePath;
+   std::string ClangIncludePath;
+-  std::string ClangIncludePath2;
+   /// Perform out-of-process compilation.
+   bool CompileOOP = false;
+   /// Precompiled header file paths.

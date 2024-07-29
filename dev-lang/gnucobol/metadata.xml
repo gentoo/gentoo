@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Alfredo Tupone</name>
+	</maintainer>
+	<use>
+		<flag name="json">Enable support for JSON template formatting via <pkg>dev-libs/json-c</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">gnucobol</remote-id>
+	</upstream>
+</pkgmetadata>

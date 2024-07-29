@@ -1,0 +1,13 @@
+Index: spamprobe-1.4d/src/database/FrequencyDBImpl_bdb.cc
+===================================================================
+--- spamprobe-1.4d.orig/src/database/FrequencyDBImpl_bdb.cc
++++ spamprobe-1.4d/src/database/FrequencyDBImpl_bdb.cc
+@@ -155,7 +155,7 @@ bool FrequencyDBImpl_bdb::openDatabase(c
+   // hideous ifdefs into my code.
+   string filename(m_env ? db_file.getName() : db_file.getPath());
+   int flags = read_only ? DB_RDONLY : DB_CREATE;
+-#if DB_VERSION_MAJOR >= 4 && DB_VERSION_MINOR >= 1
++#if (DB_VERSION_MAJOR == 4 && DB_VERSION_MINOR >= 1) || DB_VERSION_MAJOR >= 5
+   ret = m_file->open(m_file, NULL, filename.c_str(), NULL, DB_BTREE, flags, create_mode);
+ #else
+   ret = m_file->open(m_file, filename.c_str(), NULL, DB_BTREE, flags, create_mode);

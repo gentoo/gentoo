@@ -1,0 +1,15 @@
+--- a/gnatcoll.gpr	2023-09-21 17:57:14.000000000 +0200
++++ b/gnatcoll.gpr	2024-03-01 20:34:24.178681586 +0100
+@@ -306,9 +306,9 @@
+    end Linker;
+ 
+    package Install is
+-      for Artifacts ("share/examples/gnatcoll") use ("examples/*");
+-      for Artifacts ("share/doc/gnatcoll/html") use ("docs/_build/html");
+-      for Artifacts ("share/doc/gnatcoll")
++      for Artifacts ("share/doc/@PF@/examples") use ("examples/*");
++      for Artifacts ("share/doc/@PF@/html") use ("docs/_build/html");
++      for Artifacts ("share/doc/@PF@")
+         use ("docs/_build/latex/GNATColl.pdf");
+    end Install;
+ 

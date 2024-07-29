@@ -1,0 +1,23 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -2292,7 +2292,11 @@
+     fi
+ 
+ # Check for lz4
+-enable_liblz4="yes"
++AC_ARG_ENABLE(lz4,
++       AS_HELP_STRING([--enable-lz4], [Enable compressed pcap logging using liblz4]),
++       [enable_liblz4=$enableval],
++       [enable_liblz4=yes])
++if test "x$enable_liblz4" != "xno"; then
+ AC_CHECK_LIB(lz4, LZ4F_createCompressionContext, , enable_liblz4="no")
+ 
+ if test "$enable_liblz4" = "no"; then
+@@ -2306,6 +2310,7 @@
+     echo "               yum install lz4-devel"
+     echo
+ fi
++fi
+ 
+ # get cache line size
+     AC_PATH_PROG(HAVE_GETCONF_CMD, getconf, "no")

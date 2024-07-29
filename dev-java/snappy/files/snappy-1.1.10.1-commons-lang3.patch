@@ -1,0 +1,11 @@
+--- a/src/test/java/org/xerial/snappy/SnappyHadoopCompatibleOutputStreamTest.java
++++ b/src/test/java/org/xerial/snappy/SnappyHadoopCompatibleOutputStreamTest.java
+@@ -2,7 +2,7 @@ package org.xerial.snappy;
+ 
+ import org.apache.commons.io.FileUtils;
+ import org.apache.commons.io.IOUtils;
+-import org.apache.commons.lang.SystemUtils;
++import org.apache.commons.lang3.SystemUtils;
+ import org.apache.hadoop.conf.Configuration;
+ import org.apache.hadoop.io.compress.SnappyCodec;
+ import org.junit.AfterClass;

@@ -1,0 +1,7 @@
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License, v2
+
+# Sam James <sam@gentoo.org> (2022-12-04)
+# libpcre[jit] is broken on arm64 BE and libpcre1 is EOL now
+# bug #884285
+dev-libs/libpcre jit

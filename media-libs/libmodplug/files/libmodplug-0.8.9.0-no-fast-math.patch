@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -31,7 +31,7 @@
+ AC_CHECK_HEADERS([inttypes.h stdint.h malloc.h])
+ AC_CHECK_FUNCS(setenv sinf)
+ 
+-CXXFLAGS="$CXXFLAGS -fno-exceptions -Wall -ffast-math -fno-common -D_REENTRANT"
++CXXFLAGS="$CXXFLAGS -fno-exceptions -Wall -fno-common -D_REENTRANT"
+ 
+ AC_CANONICAL_HOST
+ case "$host" in

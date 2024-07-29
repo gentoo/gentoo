@@ -1,0 +1,12 @@
+--- a/HTML4.cat	2004-11-06 20:25:39.000000000 +0900
++++ b/HTML4.cat	2004-11-06 21:16:08.543377286 +0900
+@@ -1,5 +1,9 @@
+ OVERRIDE YES
+ 
++DTDDECL "-//W3C//DTD HTML 4.01//EN" HTML4.decl
++DTDDECL "-//W3C//DTD HTML 4.01 Transitional//EN" HTML4.decl
++DTDDECL "-//W3C//DTD HTML 4.01 Frameset//EN" HTML4.decl
++
+ PUBLIC "-//W3C//DTD HTML 4.01//EN" strict.dtd
+ PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" loose.dtd
+ PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" frameset.dtd

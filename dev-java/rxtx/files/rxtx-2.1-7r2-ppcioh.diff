@@ -1,0 +1,16 @@
+diff --git a/src/RawImp.c b/src/RawImp.c
+index 077f30e..813fcf9 100644
+--- a/src/RawImp.c
++++ b/src/RawImp.c
+@@ -99,10 +99,8 @@
+ #	include <linux/serial.h>
+ #	include <linux/version.h>
+ #endif
+-#ifndef __APPLE__  /* dima */
+-#ifndef PPC
++#if !defined(__APPLE__) && !defined(PPC) && !defined(__powerpc__) && !defined(__powerpc64__)  /* dima */
+ #include <sys/io.h>
+-#endif /* PPC */
+ #endif /* dima */
+ 
+ extern int errno;

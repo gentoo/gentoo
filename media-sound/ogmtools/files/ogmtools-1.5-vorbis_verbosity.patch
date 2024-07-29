@@ -1,0 +1,11 @@
+--- a/ogminfo.c
++++ b/ogminfo.c
+@@ -188,7 +188,7 @@
+     }
+     vorbis_comment_clear(&vc);
+   } else if ((stream->stype == 'a') && stream->vorbis) {
+-    if (verbose < 1)
++    if (verbose < 2)
+       return;
+     fprintf(stdout, "(%s) a%d: % 7ld bytes granulepos: % 10lld pno: % 10lld ",
+              __FILE__, stream->sno, pack->bytes, ogg_page_granulepos(page),

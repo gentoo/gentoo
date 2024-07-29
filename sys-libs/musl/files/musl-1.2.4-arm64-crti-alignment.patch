@@ -1,0 +1,32 @@
+https://git.musl-libc.org/cgit/musl/commit/?id=cbf59dd662cea8786c2f3a5ea21f8da64f002b30
+https://github.com/rui314/mold/issues/1255
+https://bugs.gentoo.org/931782
+
+From cbf59dd662cea8786c2f3a5ea21f8da64f002b30 Mon Sep 17 00:00:00 2001
+From: mojyack <mojyack@gmail.com>
+Date: Sun, 12 May 2024 12:13:06 -0400
+Subject: aarch64 crti.o: fix alignment of _init/_fini
+
+without explicit alignment directives, whether they end up at the
+necessary alignment depends on linker/linking conditions. initially
+reported as mold issue 1255.
+--- a/crt/aarch64/crti.s
++++ b/crt/aarch64/crti.s
+@@ -1,6 +1,7 @@
+ .section .init
+ .global _init
+ .type _init,%function
++.align 2
+ _init:
+ 	stp x29,x30,[sp,-16]!
+ 	mov x29,sp
+@@ -8,6 +9,7 @@ _init:
+ .section .fini
+ .global _fini
+ .type _fini,%function
++.align 2
+ _fini:
+ 	stp x29,x30,[sp,-16]!
+ 	mov x29,sp
+-- 
+cgit v1.2.1

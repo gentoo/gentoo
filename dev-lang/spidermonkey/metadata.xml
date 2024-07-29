@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>mozilla@gentoo.org</email>
+		<name>Gentoo Mozilla Team</name>
+	</maintainer>
+	<use>
+		<flag name="clang">Use Clang compiler instead of GCC</flag>
+		<flag name="debug">Enable assertions to allow for easier debugging of programs that link to spidermonkey -- note this will often crash software on regular end-user systems</flag>
+	</use>
+</pkgmetadata>

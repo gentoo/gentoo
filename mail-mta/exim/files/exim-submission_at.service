@@ -1,0 +1,11 @@
+# It doesn't make sense for this to be separate from exim@.service
+# However, I couldn't think of a way to have two .socket files point
+# to it ([Socket] Service= is rejected if Accept=yes is set).
+
+[Unit]
+Description=Exim Mail Daemon per-connection server (message submission)
+
+[Service]
+ExecStart=-/usr/bin/exim -bs
+StandardInput=socket
+StandardError=syslog

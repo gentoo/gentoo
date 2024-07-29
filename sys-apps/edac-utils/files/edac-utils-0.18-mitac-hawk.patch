@@ -1,0 +1,25 @@
+From 1c57818ecee186aa47af0342149577df5302c022 Mon Sep 17 00:00:00 2001
+From: Fabian Groffen <grobian@gentoo.org>
+Date: Sun, 30 Jan 2022 14:49:58 +0100
+Subject: [PATCH] etc/labels.db: add MiTAC HAWK layout
+
+This is for an Ampere eMag Hawk 32-core ARMv8 board, which features 8
+banks of DDR4 RDIMMs (1DPC).
+
+Signed-off-by: Fabian Groffen <grobian@gentoo.org>
+---
+ src/etc/labels.db | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/src/etc/labels.db b/src/etc/labels.db
+index f915666..63baf43 100644
+--- a/src/etc/labels.db
++++ b/src/etc/labels.db
+@@ -187,0 +187,7 @@ Vendor: Intel Corporation
++
++Vendor: MiTAC
++  Model: HAWK
++    DIMM 1: 0.0.0; DIMM 8: 0.7.0;
++    DIMM 2: 0.1.0; DIMM 7: 0.6.0;
++    DIMM 3: 0.2.0; DIMM 6: 0.5.0;
++    DIMM 4: 0.3.0; DIMM 5: 0.4.0;

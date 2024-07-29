@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>andrewammerlaan@gentoo.org</email>
+    <name>Andrew Ammerlaan</name>
+  </maintainer>
+  <stabilize-allarches/>
+  <longdescription lang="en">
+    This is a small collection of tools for edk2 firmware images.  They
+    support decoding and printing the content of firmware volumes.
+    Variable stores (OVMF_VARS.fd) can be modified, for example to enroll
+    secure boot certificates.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">virt-firmware</remote-id>
+    <remote-id type="gitlab">kraxel/virt-firmware</remote-id>
+  </upstream>
+</pkgmetadata>

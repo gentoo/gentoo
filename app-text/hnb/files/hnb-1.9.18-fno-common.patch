@@ -1,0 +1,27 @@
+--- a/src/ui.h
++++ b/src/ui.h
+@@ -38,6 +38,9 @@ extern int hnb_edit_posup;
+ extern int hnb_edit_posdown;
+ 
+ extern int ui_inited;
++extern int nodes_above;
++extern int active_line;
++extern int nodes_below;
+ 
+ void ui_getstr (char *prompt, char *datastorage);
+ 
+--- a/src/ui_draw.c
++++ b/src/ui_draw.c
+@@ -39,9 +39,9 @@
+ 
+ #define KEEPLINES 5
+ 
+-int nodes_above;
+-int active_line;
+-int nodes_below;
++extern int nodes_above;
++extern int active_line;
++extern int nodes_below;
+ 
+ static Node *up (Node *sel, Node *node)
+ {

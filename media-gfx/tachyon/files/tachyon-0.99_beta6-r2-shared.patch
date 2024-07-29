@@ -1,0 +1,179 @@
+diff -up tachyon/unix/Makefile.shared tachyon/unix/Makefile
+--- a/Makefile.shared	2011-02-07 16:14:38.000000000 +0100
++++ b/Makefile	2011-07-23 20:23:51.000000000 +0200
+@@ -22,7 +22,7 @@ OBJDIR=${ARCHDIR}/libtachyon
+ #
+ # Name of raytracing library file to create
+ #
+-RAYLIB=${ARCHDIR}/libtachyon.a
++RAYLIB=${ARCHDIR}/libtachyon.so
+ RAYLIBDIR=${ARCHDIR}
+ 
+ #
+@@ -251,124 +251,125 @@ RAYOBJS= ${OBJDIR}/api.o \
+ 	${OBJDIR}/tgafile.o \
+ 	${OBJDIR}/winbmp.o
+ 
++VERSION=$(shell grep TACHYON_VERSION_STRING ../src/tachyon.h | cut -d\" -f 2)
++${RAYLIB} : DIRNAME=tachyon-${VERSION}
+ ${RAYLIB} : ${RAYOBJS}
+-	rm -f ${RAYLIB}
+-	${AR} ${ARFLAGS} ${RAYLIB} ${RAYOBJS}
+-	${RANLIB} ${RAYLIB}
++	${CC} ${LDFLAGS} -shared -Wl,-soname,libtachyon.so.${VERSION} -o ${RAYLIBDIR}/libtachyon.so.${VERSION} ${CFLAGS} -fPIC ${RAYOBJS} ${PNGLIB} -lm -lpthread ${JPEGLIB}
++	ln -s libtachyon.so.${VERSION} ${RAYLIBDIR}/libtachyon.so
+ 
+ ${OBJDIR}/vol.o : ${SRCDIR}/vol.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/vol.c -o ${OBJDIR}/vol.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/vol.c -o ${OBJDIR}/vol.o
+ 
+ ${OBJDIR}/extvol.o : ${SRCDIR}/extvol.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/extvol.c -o ${OBJDIR}/extvol.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/extvol.c -o ${OBJDIR}/extvol.o
+ 
+ ${OBJDIR}/winbmp.o : ${SRCDIR}/winbmp.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/winbmp.c -o ${OBJDIR}/winbmp.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/winbmp.c -o ${OBJDIR}/winbmp.o
+ 
+ ${OBJDIR}/vector.o : ${SRCDIR}/vector.c ${OBJDEPS} 
+-	${CC} ${CFLAGS} -c ${SRCDIR}/vector.c -o ${OBJDIR}/vector.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/vector.c -o ${OBJDIR}/vector.o
+ 
+ ${OBJDIR}/triangle.o : ${SRCDIR}/triangle.c ${OBJDEPS} ${SRCDIR}/triangle.h
+-	${CC} ${CFLAGS} -c ${SRCDIR}/triangle.c -o ${OBJDIR}/triangle.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/triangle.c -o ${OBJDIR}/triangle.o
+ 
+ ${OBJDIR}/trace.o : ${SRCDIR}/trace.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/trace.c -o ${OBJDIR}/trace.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/trace.c -o ${OBJDIR}/trace.o
+ 
+ ${OBJDIR}/threads.o : ${SRCDIR}/threads.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/threads.c -o ${OBJDIR}/threads.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/threads.c -o ${OBJDIR}/threads.o
+ 
+ ${OBJDIR}/tgafile.o : ${SRCDIR}/tgafile.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/tgafile.c -o ${OBJDIR}/tgafile.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/tgafile.c -o ${OBJDIR}/tgafile.o
+ 
+ ${OBJDIR}/util.o : ${SRCDIR}/util.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/util.c -o ${OBJDIR}/util.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/util.c -o ${OBJDIR}/util.o
+ 
+ ${OBJDIR}/ui.o : ${SRCDIR}/ui.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/ui.c -o ${OBJDIR}/ui.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/ui.c -o ${OBJDIR}/ui.o
+ 
+ ${OBJDIR}/texture.o : ${SRCDIR}/texture.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/texture.c -o ${OBJDIR}/texture.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/texture.c -o ${OBJDIR}/texture.o
+ 
+ ${OBJDIR}/sphere.o : ${SRCDIR}/sphere.c ${OBJDEPS} ${SRCDIR}/sphere.h
+-	${CC} ${CFLAGS} -c ${SRCDIR}/sphere.c -o ${OBJDIR}/sphere.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/sphere.c -o ${OBJDIR}/sphere.o
+ 
+ ${OBJDIR}/sgirgb.o : ${SRCDIR}/sgirgb.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/sgirgb.c -o ${OBJDIR}/sgirgb.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/sgirgb.c -o ${OBJDIR}/sgirgb.o
+ 
+ ${OBJDIR}/shade.o : ${SRCDIR}/shade.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/shade.c -o ${OBJDIR}/shade.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/shade.c -o ${OBJDIR}/shade.o
+ 
+ ${OBJDIR}/ring.o : ${SRCDIR}/ring.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/ring.c -o ${OBJDIR}/ring.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/ring.c -o ${OBJDIR}/ring.o
+ 
+ ${OBJDIR}/render.o : ${SRCDIR}/render.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/render.c -o ${OBJDIR}/render.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/render.c -o ${OBJDIR}/render.o
+ 
+ ${OBJDIR}/quadric.o : ${SRCDIR}/quadric.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/quadric.c -o ${OBJDIR}/quadric.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/quadric.c -o ${OBJDIR}/quadric.o
+ 
+ ${OBJDIR}/jpeg.o : ${SRCDIR}/jpeg.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/jpeg.c -o ${OBJDIR}/jpeg.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/jpeg.c -o ${OBJDIR}/jpeg.o
+ 
+ ${OBJDIR}/pngfile.o : ${SRCDIR}/pngfile.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/pngfile.c -o ${OBJDIR}/pngfile.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/pngfile.c -o ${OBJDIR}/pngfile.o
+ 
+ ${OBJDIR}/ppm.o : ${SRCDIR}/ppm.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/ppm.c -o ${OBJDIR}/ppm.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/ppm.c -o ${OBJDIR}/ppm.o
+ 
+ ${OBJDIR}/psd.o : ${SRCDIR}/psd.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/psd.c -o ${OBJDIR}/psd.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/psd.c -o ${OBJDIR}/psd.o
+ 
+ ${OBJDIR}/plane.o : ${SRCDIR}/plane.c ${OBJDEPS} ${SRCDIR}/plane.h
+-	${CC} ${CFLAGS} -c ${SRCDIR}/plane.c -o ${OBJDIR}/plane.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/plane.c -o ${OBJDIR}/plane.o
+ 
+ ${OBJDIR}/parallel.o : ${SRCDIR}/parallel.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/parallel.c -o ${OBJDIR}/parallel.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/parallel.c -o ${OBJDIR}/parallel.o
+ 
+ ${OBJDIR}/objbound.o : ${SRCDIR}/objbound.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/objbound.c -o ${OBJDIR}/objbound.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/objbound.c -o ${OBJDIR}/objbound.o
+ 
+ ${OBJDIR}/light.o : ${SRCDIR}/light.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/light.c -o ${OBJDIR}/light.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/light.c -o ${OBJDIR}/light.o
+ 
+ ${OBJDIR}/intersect.o : ${SRCDIR}/intersect.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/intersect.c -o ${OBJDIR}/intersect.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/intersect.c -o ${OBJDIR}/intersect.o
+ 
+ ${OBJDIR}/imageio.o : ${SRCDIR}/imageio.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/imageio.c -o ${OBJDIR}/imageio.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/imageio.c -o ${OBJDIR}/imageio.o
+ 
+ ${OBJDIR}/imap.o : ${SRCDIR}/imap.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/imap.c -o ${OBJDIR}/imap.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/imap.c -o ${OBJDIR}/imap.o
+ 
+ ${OBJDIR}/grid.o : ${SRCDIR}/grid.c ${SRCDIR}/grid.h ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/grid.c -o ${OBJDIR}/grid.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/grid.c -o ${OBJDIR}/grid.o
+ 
+ ${OBJDIR}/global.o : ${SRCDIR}/global.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/global.c -o ${OBJDIR}/global.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/global.c -o ${OBJDIR}/global.o
+ 
+ ${OBJDIR}/hash.o : ${SRCDIR}/hash.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/hash.c -o ${OBJDIR}/hash.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/hash.c -o ${OBJDIR}/hash.o
+ 
+ ${OBJDIR}/cylinder.o : ${SRCDIR}/cylinder.c ${OBJDEPS} ${SRCDIR}/cylinder.h
+-	${CC} ${CFLAGS} -c ${SRCDIR}/cylinder.c -o ${OBJDIR}/cylinder.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/cylinder.c -o ${OBJDIR}/cylinder.o
+ 
+ ${OBJDIR}/coordsys.o : ${SRCDIR}/coordsys.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/coordsys.c -o ${OBJDIR}/coordsys.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/coordsys.c -o ${OBJDIR}/coordsys.o
+ 
+ ${OBJDIR}/camera.o : ${SRCDIR}/camera.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/camera.c -o ${OBJDIR}/camera.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/camera.c -o ${OBJDIR}/camera.o
+ 
+ ${OBJDIR}/box.o : ${SRCDIR}/box.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/box.c -o ${OBJDIR}/box.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/box.c -o ${OBJDIR}/box.o
+ 
+ ${OBJDIR}/bndbox.o : ${SRCDIR}/bndbox.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/bndbox.c -o ${OBJDIR}/bndbox.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/bndbox.c -o ${OBJDIR}/bndbox.o
+ 
+ ${OBJDIR}/apigeom.o : ${SRCDIR}/apigeom.c ${OBJDEPS}
+-	${CC} ${CFLAGS} -c ${SRCDIR}/apigeom.c -o ${OBJDIR}/apigeom.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/apigeom.c -o ${OBJDIR}/apigeom.o
+ 
+ ${OBJDIR}/api.o : ${SRCDIR}/api.c ${OBJDEPS} ${SRCDIR}/sphere.h ${SRCDIR}/plane.h ${SRCDIR}/triangle.h ${SRCDIR}/cylinder.h
+-	${CC} ${CFLAGS} -c ${SRCDIR}/api.c -o ${OBJDIR}/api.o
++	${CC} ${CFLAGS} -fPIC -c ${SRCDIR}/api.c -o ${OBJDIR}/api.o
+ 
+ clean :
+ 	@echo "Cleaning object files, binaries etc."

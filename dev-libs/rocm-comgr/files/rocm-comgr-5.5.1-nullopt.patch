@@ -1,0 +1,23 @@
+From e1da67c6acb2b0e4a8f9c05c89e3778252ea5aa7 Mon Sep 17 00:00:00 2001
+From: Ron Lieberman <ron.lieberman@amd.com>
+Date: Sat, 17 Dec 2022 19:58:26 -0600
+Subject: [PATCH] None -> std::nullopt
+
+Change-Id: I1cc241aa47de538f9f5b1c12cb5655aca8a4502f
+---
+ lib/comgr/src/comgr-env.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/comgr/src/comgr-env.cpp b/lib/comgr/src/comgr-env.cpp
+index 742f4d4..6ab6f0f 100644
+--- comgr/src/comgr-env.cpp
++++ comgr/src/comgr-env.cpp
+@@ -53,7 +53,7 @@ bool shouldSaveTemps() {
+ Optional<StringRef> getRedirectLogs() {
+   static char *RedirectLogs = getenv("AMD_COMGR_REDIRECT_LOGS");
+   if (!RedirectLogs || StringRef(RedirectLogs) == "0") {
+-    return None;
++    return std::nullopt;
+   }
+   return StringRef(RedirectLogs);
+ }

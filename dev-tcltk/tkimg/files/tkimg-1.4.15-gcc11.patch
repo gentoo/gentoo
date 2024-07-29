@@ -1,0 +1,10 @@
+--- a/tiff/tiffZip.c	2023-03-14 19:04:42.869354563 +0100
++++ b/tiff/tiffZip.c	2023-03-14 19:05:14.768849607 +0100
+@@ -22,6 +22,7 @@
+  * OF THIS SOFTWARE.
+  */
+ 
++#include <stdint.h>
+ #include "tiffInt.h"
+ 
+ /*

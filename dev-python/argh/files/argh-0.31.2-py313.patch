@@ -1,0 +1,164 @@
+From cdb70d5ac7d8a5a5dff3c55100e5f67b68b26826 Mon Sep 17 00:00:00 2001
+From: Andy Mikhaylenko <neithere@gmail.com>
+Date: Sun, 16 Jun 2024 22:38:21 +0200
+Subject: [PATCH] fix: tests under Python 3.13 (fixes #228)
+
+diff --git a/tests/test_integration.py b/tests/test_integration.py
+index f863386..258a148 100644
+--- a/tests/test_integration.py
++++ b/tests/test_integration.py
+@@ -724,18 +724,34 @@ def remind(
+     help_normalised = re.sub(r"\s+", " ", parser.format_help())
+ 
+     assert "name 'Basil'" in help_normalised
+-    assert "-t TASK, --task TASK 'hang the Moose'" in help_normalised
+-    assert (
+-        "-r REASON, --reason REASON 'there are creatures living in it'"
+-        in help_normalised
+-    )
+ 
+-    # explicit help message is not obscured by the implicit one
+-    # but is still present
+-    assert (
+-        "-n NOTE, --note NOTE why is it a remarkable animal? "
+-        "(default: 'it can speak English')"
+-    ) in help_normalised
++    # argh#228 — argparse in Python before 3.13 duplicated the placeholder in help
++    if sys.version_info < (3, 13):
++        assert "-t TASK, --task TASK 'hang the Moose'" in help_normalised
++        assert (
++            "-r REASON, --reason REASON 'there are creatures living in it'"
++            in help_normalised
++        )
++
++        # explicit help message is not obscured by the implicit one
++        # but is still present
++        assert (
++            "-n NOTE, --note NOTE why is it a remarkable animal? "
++            "(default: 'it can speak English')"
++        ) in help_normalised
++    else:
++        assert "-t, --task TASK 'hang the Moose'" in help_normalised
++        assert (
++            "-r, --reason REASON 'there are creatures living in it'"
++            in help_normalised
++        )
++
++        # explicit help message is not obscured by the implicit one
++        # but is still present
++        assert (
++            "-n, --note NOTE why is it a remarkable animal? "
++            "(default: 'it can speak English')"
++        ) in help_normalised
+ 
+ 
+ def test_default_arg_values_in_help__regression():
+@@ -750,9 +766,16 @@ def foo(*, bar=""):
+     # doesn't break
+     parser.format_help()
+ 
++    # argh#228 — argparse in Python before 3.13 duplicated the placeholder in help
++    if sys.version_info < (3, 13):
++        expected_line = "-b BAR, --bar BAR  ''"
++        # note the empty str repr         ^^^
++    else:
++        expected_line = "-b, --bar BAR  ''"
++        # note the empty str repr     ^^^
++
+     # now check details
+-    assert "-b BAR, --bar BAR  ''" in parser.format_help()
+-    # note the empty str repr ^^^
++    assert expected_line in parser.format_help()
+ 
+ 
+ def test_help_formatting_is_preserved():
+@@ -868,6 +891,19 @@ def second_func():
+ 
+     run(parser, "first-func --help", exit=True)
+     captured = capsys.readouterr()
++
++    # argh#228 — argparse in Python before 3.13 duplicated the placeholder in help
++    if sys.version_info < (3, 13):
++        arg_help_lines = (
++            "  -h, --help         show this help message and exit\n"
++            "  -f FOO, --foo FOO  123"
++        )
++    else:
++        arg_help_lines = (
++            "  -h, --help     show this help message and exit\n"
++            "  -f, --foo FOO  123"
++        )
++
+     assert (
+         captured.out
+         == unindent(
+@@ -877,8 +913,7 @@ def second_func():
+         Owl stretching time
+ 
+         {HELP_OPTIONS_LABEL}:
+-          -h, --help         show this help message and exit
+-          -f FOO, --foo FOO  123
++        {arg_help_lines}
+         """
+         )[1:]
+     )
+@@ -997,6 +1032,19 @@ def second_func():
+ 
+     run(parser, "my-group first-func --help", exit=True)
+     captured = capsys.readouterr()
++
++    # argh#228 — argparse in Python before 3.13 duplicated the placeholder in help
++    if sys.version_info < (3, 13):
++        arg_help_lines = (
++            "  -h, --help         show this help message and exit\n"
++            "  -f FOO, --foo FOO  123"
++        )
++    else:
++        arg_help_lines = (
++            "  -h, --help     show this help message and exit\n"
++            "  -f, --foo FOO  123"
++        )
++
+     assert (
+         captured.out
+         == unindent(
+@@ -1006,8 +1054,7 @@ def second_func():
+         Owl stretching time
+ 
+         {HELP_OPTIONS_LABEL}:
+-          -h, --help         show this help message and exit
+-          -f FOO, --foo FOO  123
++        {arg_help_lines}
+         """
+         )[1:]
+     )
+@@ -1079,6 +1126,19 @@ def second_func():
+ 
+     run(parser, "first-func --help", exit=True)
+     captured = capsys.readouterr()
++
++    # argh#228 — argparse in Python before 3.13 duplicated the placeholder in help
++    if sys.version_info < (3, 13):
++        arg_help_lines = (
++            "  -h, --help         show this help message and exit\n"
++            "  -f FOO, --foo FOO  123"
++        )
++    else:
++        arg_help_lines = (
++            "  -h, --help     show this help message and exit\n"
++            "  -f, --foo FOO  123"
++        )
++
+     assert (
+         captured.out
+         == unindent(
+@@ -1088,8 +1148,7 @@ def second_func():
+         func description override
+ 
+         {HELP_OPTIONS_LABEL}:
+-          -h, --help         show this help message and exit
+-          -f FOO, --foo FOO  123
++        {arg_help_lines}
+         """
+         )[1:]
+     )

@@ -1,0 +1,11 @@
+service tell
+{
+	disable		= yes
+	socket_type	= stream
+	user		= root
+	wait		= no
+	server		= /usr/sbin/kpropd
+	only_from	= 0.0.0.0
+	log_on_success	= PID HOST EXIT DURATION
+	log_on_failure	= HOST
+}

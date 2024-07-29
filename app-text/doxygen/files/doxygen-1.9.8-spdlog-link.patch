@@ -1,0 +1,51 @@
+https://github.com/doxygen/doxygen/issues/10265
+https://github.com/doxygen/doxygen/pull/10284
+
+From 70bb112352ae7f3130647dcc009d8de5d4134e6d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=D9=85=D9=87=D8=AF=D9=8A=20=D8=B4=D9=8A=D9=86=D9=88=D9=86?=
+ =?UTF-8?q?=20=28Mehdi=20Chinoune=29?= <mehdi.chinoune@hotmail.com>
+Date: Mon, 4 Sep 2023 18:49:27 +0100
+Subject: [PATCH 1/2] doxyapp: Fix linking to spdlog
+
+---
+ addon/doxyapp/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/addon/doxyapp/CMakeLists.txt b/addon/doxyapp/CMakeLists.txt
+index 4f3c31feacd..6097a3cca69 100644
+--- a/addon/doxyapp/CMakeLists.txt
++++ b/addon/doxyapp/CMakeLists.txt
+@@ -46,7 +46,7 @@ mscgen
+ doxygen_version
+ doxycfg
+ vhdlparser
+-spdlog
++spdlog::spdlog
+ ${ICONV_LIBRARIES}
+ ${CMAKE_THREAD_LIBS_INIT}
+ ${SQLITE3_LIBRARIES}
+
+From 71f2ed171a6d14a67f1905802714add974c31789 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=D9=85=D9=87=D8=AF=D9=8A=20=D8=B4=D9=8A=D9=86=D9=88=D9=86?=
+ =?UTF-8?q?=20=28Mehdi=20Chinoune=29?= <mehdi.chinoune@hotmail.com>
+Date: Mon, 4 Sep 2023 18:50:25 +0100
+Subject: [PATCH 2/2] doxyparse: Fix linking to spdlog
+
+---
+ addon/doxyparse/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/addon/doxyparse/CMakeLists.txt b/addon/doxyparse/CMakeLists.txt
+index 24881e3ef12..0157afb45e2 100644
+--- a/addon/doxyparse/CMakeLists.txt
++++ b/addon/doxyparse/CMakeLists.txt
+@@ -35,7 +35,7 @@ mscgen
+ doxygen_version
+ doxycfg
+ vhdlparser
+-spdlog
++spdlog::spdlog
+ ${ICONV_LIBRARIES}
+ ${CMAKE_THREAD_LIBS_INIT}
+ ${SQLITE3_LIBRARIES}
+

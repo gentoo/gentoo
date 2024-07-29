@@ -1,0 +1,44 @@
+commit 7371d8e75ce11c825a79614c44d70316759b16c3
+Author: Mark Wright <gienah@gentoo.org>
+Date:   Sun Jul 17 20:08:37 2022 +1000
+
+    include ocaml system header files instead of old bundled ocaml header files
+
+diff --git a/source/front/ccode_stubs_c.c b/source/front/ccode_stubs_c.c
+index f1a62a7..f5f9042 100644
+--- a/source/front/ccode_stubs_c.c
++++ b/source/front/ccode_stubs_c.c
+@@ -21,10 +21,10 @@
+ #include "../simulator/builtins/readterm.h"
+ #include "front_c.h"
+ #include "query_c.h"
+-#include "caml/mlvalues.h"
+-#include "caml/memory.h"
+-#include "caml/alloc.h"
+-#include "caml/custom.h"
++#include <caml/mlvalues.h>
++#include <caml/memory.h>
++#include <caml/alloc.h>
++#include <caml/custom.h>
+ 
+ /***************************************************************************/
+ /*                          front                                          */
+diff --git a/source/front/linker_c.c b/source/front/linker_c.c
+index d9cb1bc..0c173cd 100644
+--- a/source/front/linker_c.c
++++ b/source/front/linker_c.c
+@@ -20,10 +20,10 @@
+ 
+ #include "../linker/module.h"
+ #include "../linker/linker_message.h"
+-#include "caml/mlvalues.h"
+-#include "caml/memory.h"
+-#include "caml/alloc.h"
+-#include "caml/custom.h"
++#include <caml/mlvalues.h>
++#include <caml/memory.h>
++#include <caml/alloc.h>
++#include <caml/custom.h>
+ 
+ value FRONT_link(value mod_str, value verb)
+ {

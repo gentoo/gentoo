@@ -1,0 +1,21 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8490728..c7f0952 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -315,15 +315,7 @@ if(CRC32C_BUILD_TESTS)
+   set(install_gmock OFF)
+
+   # This project is tested using GoogleTest.
+-  add_subdirectory("third_party/googletest")
+-
+-  # GoogleTest triggers a missing field initializers warning.
+-  if(CRC32C_HAVE_NO_MISSING_FIELD_INITIALIZERS)
+-    set_property(TARGET gtest
+-        APPEND PROPERTY COMPILE_OPTIONS -Wno-missing-field-initializers)
+-    set_property(TARGET gmock
+-        APPEND PROPERTY COMPILE_OPTIONS -Wno-missing-field-initializers)
+-  endif(CRC32C_HAVE_NO_MISSING_FIELD_INITIALIZERS)
++  find_package(GTest REQUIRED)
+
+   add_executable(crc32c_tests "")
+   target_sources(crc32c_tests

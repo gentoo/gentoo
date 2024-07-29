@@ -1,0 +1,38 @@
+From 63563ee0e65c1d2ae9aa0ae5530035605fed0f1c Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Sun, 1 Sep 2019 20:34:44 +0300
+Subject: [PATCH] Revert "schemas: change default monospaced and document
+ fonts"
+
+This reverts commit 965062de47f5171727c1e4f7f0aac2ad40e3484a.
+
+It is not GNOME business to override distribution choices for default
+monospace and document font.
+---
+ schemas/org.gnome.desktop.interface.gschema.xml.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/schemas/org.gnome.desktop.interface.gschema.xml.in b/schemas/org.gnome.desktop.interface.gschema.xml.in
+index 22ef50d..1713f25 100644
+--- a/schemas/org.gnome.desktop.interface.gschema.xml.in
++++ b/schemas/org.gnome.desktop.interface.gschema.xml.in
+@@ -149,14 +149,14 @@
+       </description>
+     </key>
+     <key name="document-font-name" type="s">
+-      <default>'Cantarell 11'</default>
++      <default>'Sans 11'</default>
+       <summary>Document font</summary>
+       <description>
+         Name of the default font used for reading documents.
+       </description>
+     </key>
+     <key name="monospace-font-name" type="s">
+-      <default>'Source Code Pro 10'</default>
++      <default>'Monospace 11'</default>
+       <summary>Monospace font</summary>
+       <description>
+         Name of a monospaced (fixed-width) font for use in locations like
+-- 
+2.20.1
+

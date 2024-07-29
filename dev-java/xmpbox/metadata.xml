@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">apache/pdfbox</remote-id>
+	</upstream>
+	<longdescription>
+		The Apache XmpBox library is an open source Java tool that implements Adobe's XMP(TM) specification. It can be used to parse, validate and create xmp contents. It is mainly used by subproject preflight of Apache PDFBox. XmpBox is a subproject of Apache PDFBox.
+	</longdescription>
+</pkgmetadata>

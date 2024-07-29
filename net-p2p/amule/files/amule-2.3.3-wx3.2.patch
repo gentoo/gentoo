@@ -1,0 +1,461 @@
+Description: Fixes for wxWidgets 3.2 compatibility
+ Largely based on patch from Mr Hyde <mrhyde@MM2018.local> in
+ https://github.com/amule-project/amule/pull/168
+Author: Olly Betts <olly@survex.com>
+Bug: https://github.com/amule-project/amule/issues/340
+Bug-Debian: https://bugs.debian.org/1019841
+Forwarded: no
+Last-Update: 2023-01-09
+
+--- a/src/ColorFrameCtrl.cpp
++++ b/src/ColorFrameCtrl.cpp
+@@ -61,7 +61,7 @@
+ /////////////////////////////////////////////////////////////////////////////
+ void CColorFrameCtrl::SetFrameBrushColour(const wxColour& colour)
+ {
+-	m_brushFrame = *(wxTheBrushList->FindOrCreateBrush(colour, wxSOLID));
++	m_brushFrame = *(wxTheBrushList->FindOrCreateBrush(colour, wxBRUSHSTYLE_SOLID));
+ 
+ 	Refresh(FALSE);
+ }  // SetFrameColor
+@@ -70,7 +70,7 @@
+ /////////////////////////////////////////////////////////////////////////////
+ void CColorFrameCtrl::SetBackgroundBrushColour(const wxColour& colour)
+ {
+-	m_brushBack = *(wxTheBrushList->FindOrCreateBrush(colour, wxSOLID));
++	m_brushBack = *(wxTheBrushList->FindOrCreateBrush(colour, wxBRUSHSTYLE_SOLID));
+ 
+ 	// clear out the existing garbage, re-start with a clean plot
+ 	Refresh(FALSE);
+--- a/src/DownloadListCtrl.cpp
++++ b/src/DownloadListCtrl.cpp
+@@ -850,7 +850,7 @@
+ 		dc->SetTextForeground(wxSystemSettings::GetColour(wxSYS_COLOUR_HIGHLIGHTTEXT));
+ 		dc->SetPen( colour.Blend(65).GetPen() );
+ 	} else {
+-		dc->SetBackground(*(wxTheBrushList->FindOrCreateBrush(wxSystemSettings::GetColour(wxSYS_COLOUR_LISTBOX), wxSOLID)));
++		dc->SetBackground(*(wxTheBrushList->FindOrCreateBrush(wxSystemSettings::GetColour(wxSYS_COLOUR_LISTBOX), wxBRUSHSTYLE_SOLID)));
+ 		dc->SetTextForeground(wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWTEXT));
+ 		dc->SetPen(*wxTRANSPARENT_PEN);
+ 	}
+@@ -1413,7 +1413,7 @@
+ 		dc->DrawLine( rect.x, rect.y + 2, rect.x + width, rect.y + 2 );
+ 
+ 		// Draw the green line
+-		dc->SetPen( *(wxThePenList->FindOrCreatePen( crProgress , 1, wxSOLID ) ));
++		dc->SetPen( *(wxThePenList->FindOrCreatePen( crProgress , 1, wxPENSTYLE_SOLID ) ));
+ 		dc->DrawLine( rect.x, rect.y + 1, rect.x + width, rect.y + 1 );
+ 	}
+ }
+--- a/src/GenericClientListCtrl.cpp
++++ b/src/GenericClientListCtrl.cpp
+@@ -660,7 +660,7 @@
+ 		dc->SetTextForeground(wxSystemSettings::GetColour(wxSYS_COLOUR_HIGHLIGHTTEXT));
+ 		dc->SetPen( colour.Blend(65).GetPen() );
+ 	} else {
+-		dc->SetBackground(*(wxTheBrushList->FindOrCreateBrush(wxSystemSettings::GetColour(wxSYS_COLOUR_LISTBOX), wxSOLID)));
++		dc->SetBackground(*(wxTheBrushList->FindOrCreateBrush(wxSystemSettings::GetColour(wxSYS_COLOUR_LISTBOX), wxBRUSHSTYLE_SOLID)));
+ 		dc->SetTextForeground(wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWTEXT));
+ 		dc->SetPen(*wxTRANSPARENT_PEN);
+ 	}
+--- a/src/MuleColour.cpp
++++ b/src/MuleColour.cpp
+@@ -35,7 +35,7 @@
+ std::map<uint32_t, wxPen*> wxPenCache;
+ std::map<uint32_t, wxBrush*> wxBrushCache;
+ 
+-const wxPen& CMuleColour::GetPen(int width, int style) const
++const wxPen& CMuleColour::GetPen(int width, wxPenStyle style) const
+ {
+ #if USE_MULE_PEN_CACHE
+ 	wxPen* result = NULL;
+@@ -61,7 +61,7 @@
+ #endif
+ }
+ 
+-const wxBrush& CMuleColour::GetBrush(int style) const
++const wxBrush& CMuleColour::GetBrush(wxBrushStyle style) const
+ {
+ #if USE_MULE_BRUSH_CACHE
+ 	wxBrush* result = NULL;
+--- a/src/MuleColour.h
++++ b/src/MuleColour.h
+@@ -27,6 +27,9 @@
+ 
+ #include <wx/colour.h>
+ #include <wx/settings.h>
++#include <wx/pen.h>   // needed for wxPenStyle enum values
++#include <wx/brush.h> // needed for wxBrushStyle enum values
++#include <wx/font.h>  // needed for wxFontStyle enum values
+ #include "Types.h"
+ 
+ class wxPen;
+@@ -95,8 +98,8 @@
+ 		return wxColor(m_red, m_green, m_blue);
+ 	}
+ 
+-	const wxPen& GetPen(int width = 1, int style = wxSOLID) const;
+-	const wxBrush& GetBrush(int style = wxSOLID) const;
++	const wxPen& GetPen(int width = 1, wxPenStyle style = wxPENSTYLE_SOLID) const;
++	const wxBrush& GetBrush(wxBrushStyle style = wxBRUSHSTYLE_SOLID) const;
+ 
+ private:
+ 	uint8_t m_red;
+--- a/src/MuleGifCtrl.cpp
++++ b/src/MuleGifCtrl.cpp
+@@ -167,7 +167,7 @@
+ 	int x = (clientsize.GetWidth()-gifsize.GetWidth())/2;
+ 	int y = (clientsize.GetHeight()-gifsize.GetHeight())/2;
+ 
+-	dc.SetBackground(*(wxTheBrushList->FindOrCreateBrush(GetBackgroundColour(), wxSOLID)));
++	dc.SetBackground(*(wxTheBrushList->FindOrCreateBrush(GetBackgroundColour(), wxBRUSHSTYLE_SOLID)));
+ 	dc.Clear();
+ 	dc.DrawBitmap(m_frame, x, y, true);
+ }
+--- a/src/OScopeCtrl.cpp
++++ b/src/OScopeCtrl.cpp
+@@ -74,7 +74,7 @@
+ 	PlotData_t* ppds = pdsTrends;
+ 	for(unsigned i=0; i<nTrends; ++i, ++ppds){
+ 		ppds->crPlot = (i<15 ? crPreset[i] : *wxWHITE);
+-		ppds->penPlot=*(wxThePenList->FindOrCreatePen(ppds->crPlot, 1, wxSOLID));
++		ppds->penPlot=*(wxThePenList->FindOrCreatePen(ppds->crPlot, 1, wxPENSTYLE_SOLID));
+ 		ppds->fPrev = ppds->fLowerLimit = ppds->fUpperLimit = 0.0;
+ 	}
+ 
+@@ -166,7 +166,7 @@
+ 	if (ppds->crPlot == cr)
+ 		return;
+ 	ppds->crPlot = cr;
+-	ppds->penPlot=*(wxThePenList->FindOrCreatePen(ppds->crPlot, 1, wxSOLID));
++	ppds->penPlot=*(wxThePenList->FindOrCreatePen(ppds->crPlot, 1, wxPENSTYLE_SOLID));
+ 	InvalidateGraph();
+ }
+ 
+@@ -179,7 +179,7 @@
+ 	}
+ 
+ 	m_bgColour = cr;
+-	brushBack= *(wxTheBrushList->FindOrCreateBrush(cr, wxSOLID));
++	brushBack= *(wxTheBrushList->FindOrCreateBrush(cr, wxBRUSHSTYLE_SOLID));
+ 	InvalidateCtrl() ;
+ }
+ 
+@@ -196,7 +196,7 @@
+ 
+ 	wxMemoryDC dcGrid(m_bmapGrid);
+ 
+-	wxPen solidPen = *(wxThePenList->FindOrCreatePen(m_gridColour, 1, wxSOLID));
++	wxPen solidPen = *(wxThePenList->FindOrCreatePen(m_gridColour, 1, wxPENSTYLE_SOLID));
+ 	wxString strTemp;
+ 
+ 	// fill the grid background
+@@ -213,7 +213,7 @@
+ 	dcGrid.SetPen(wxNullPen);
+ 
+ 	// create some fonts (horizontal and vertical)
+-	wxFont axisFont(10, wxSWISS, wxNORMAL, wxNORMAL, false);
++	wxFont axisFont(10, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false);
+ 	dcGrid.SetFont(axisFont);
+ 
+ 	// y max
+@@ -320,7 +320,7 @@
+ 	// operation, preventing us from simply blitting the plot on top of
+ 	// the grid bitmap.
+ 
+-	dc.SetPen(*(wxThePenList->FindOrCreatePen(m_gridColour, 1, wxLONG_DASH)));
++	dc.SetPen(*(wxThePenList->FindOrCreatePen(m_gridColour, 1, wxPENSTYLE_LONG_DASH)));
+ 	for (unsigned j = 1; j < (nYGrids + 1); ++j) {
+ 		unsigned GridPos = (m_rectPlot.GetHeight())*j/( nYGrids + 1 ) + m_rectPlot.GetTop();
+ 
+--- a/src/SearchListCtrl.cpp
++++ b/src/SearchListCtrl.cpp
+@@ -826,7 +826,7 @@
+ 
+ 	// Define the border of the drawn area
+ 	if (highlighted) {
+-		dc->SetPen(*(wxThePenList->FindOrCreatePen(CMuleColour(dc->GetBackground().GetColour()).Blend(65), 1, wxSOLID)));
++		dc->SetPen(*(wxThePenList->FindOrCreatePen(CMuleColour(dc->GetBackground().GetColour()).Blend(65), 1, wxPENSTYLE_SOLID)));
+ 	} else {
+ 		dc->SetPen(*wxTRANSPARENT_PEN);
+ 		dc->SetTextForeground(GetItemTextColour(item));
+@@ -912,7 +912,7 @@
+ 		const int middle = cur_rec.y + ( cur_rec.height + 1 ) / 2;
+ 
+ 		// Set up a new pen for drawing the tree
+-		dc->SetPen( *(wxThePenList->FindOrCreatePen(dc->GetTextForeground(), 1, wxSOLID)) );
++		dc->SetPen( *(wxThePenList->FindOrCreatePen(dc->GetTextForeground(), 1, wxPENSTYLE_SOLID)) );
+ 
+ 		if (file->GetParent()) {
+ 			// Draw the line to the filename
+--- a/src/ServerListCtrl.cpp
++++ b/src/ServerListCtrl.cpp
+@@ -327,7 +327,7 @@
+ 			wxFont font = GetFont();
+ 
+ 			if ( highlight ) {
+-				font.SetWeight( wxBOLD );
++				font.SetWeight( wxFONTWEIGHT_BOLD );
+ 
+ 				m_connected = server;
+ 			}
+--- a/src/extern/wxWidgets/listctrl.cpp
++++ b/src/extern/wxWidgets/listctrl.cpp
+@@ -1453,7 +1453,7 @@
+         if ( highlighted )
+             dc->SetBrush( m_owner->GetHighlightBrush() );
+         else
+-            dc->SetBrush(*(wxTheBrushList->FindOrCreateBrush(attr->GetBackgroundColour(), wxSOLID)));
++            dc->SetBrush(*(wxTheBrushList->FindOrCreateBrush(attr->GetBackgroundColour(), wxBRUSHSTYLE_SOLID)));
+ 
+         dc->SetPen( *wxTRANSPARENT_PEN );
+ 
+@@ -2325,7 +2325,7 @@
+                             (
+                                 wxSYS_COLOUR_HIGHLIGHT
+                             ),
+-                            wxSOLID
++                            wxBRUSHSTYLE_SOLID
+                          ));
+ 
+     m_highlightUnfocusedBrush = *(wxTheBrushList->FindOrCreateBrush(
+@@ -2333,7 +2333,7 @@
+                                  (
+                                      wxSYS_COLOUR_BTNSHADOW
+                                  ),
+-                                 wxSOLID
++                                 wxBRUSHSTYLE_SOLID
+                               ));
+ 
+     SetScrollbars( 0, 0, 0, 0, 0, 0 );
+@@ -2734,7 +2734,7 @@
+ 
+     // Ensure an uniform background color, as to avoid differences between
+     // the automatically cleared parts and the rest of the canvas.
+-    dc.SetBackground(*(wxTheBrushList->FindOrCreateBrush(wxSystemSettings::GetColour(wxSYS_COLOUR_LISTBOX), wxSOLID)));
++    dc.SetBackground(*(wxTheBrushList->FindOrCreateBrush(wxSystemSettings::GetColour(wxSYS_COLOUR_LISTBOX), wxBRUSHSTYLE_SOLID)));
+ 
+     // We need to clear the DC manually, since we intercept BG-erase events.
+     // Clearing must be done first thing because caching of the double-buffering causes artifacts otherwise.
+@@ -2805,7 +2805,7 @@
+ 
+         if ( HasFlag(wxLC_HRULES) )
+         {
+-            wxPen pen = *(wxThePenList->FindOrCreatePen(GetRuleColour(), 1, wxSOLID));
++            wxPen pen = *(wxThePenList->FindOrCreatePen(GetRuleColour(), 1, wxPENSTYLE_SOLID));
+             wxSize clientSize = GetClientSize();
+ 
+             size_t i = visibleFrom;
+@@ -2831,7 +2831,7 @@
+         // Draw vertical rules if required
+         if ( HasFlag(wxLC_VRULES) && !IsEmpty() )
+         {
+-            wxPen pen = *(wxThePenList->FindOrCreatePen(GetRuleColour(), 1, wxSOLID));
++            wxPen pen = *(wxThePenList->FindOrCreatePen(GetRuleColour(), 1, wxPENSTYLE_SOLID));
+             wxRect firstItemRect, lastItemRect;
+ 
+             GetItemRect(visibleFrom, firstItemRect);
+@@ -4859,12 +4859,15 @@
+ 
+ void wxListMainWindow::OnScroll(wxScrollWinEvent& event)
+ {
++      // wxScrolledWindows::OnScroll is deprecated in wx 3.0.0 and it does not exist anymore in 3.1.0.
++    // Please also notice that call to
++    // - wxScrolledWindow::OnScroll
++    // - HandleOnScroll
++    // have been removed in code present in
++    // src/generic/listctrl.cpp, wxListMainWindow::OnScroll
++    // of wxWidgets 3.0
+     // FIXME
+-#if ( defined(__WXGTK__) || defined(__WXMAC__) ) && !defined(__WXUNIVERSAL__)
+-    wxScrolledWindow::OnScroll(event);
+-#else
+     HandleOnScroll( event );
+-#endif
+ 
+     // update our idea of which lines are shown when we redraw the window the
+     // next time
+--- a/src/extern/wxWidgets/listctrl.h
++++ b/src/extern/wxWidgets/listctrl.h
+@@ -16,7 +16,6 @@
+ #include <wx/textctrl.h>
+ 
+ #define wxLC_OWNERDRAW 0x10000
+-#define WXWIN_COMPATIBILITY_2_8 1
+ 
+ #include <wx/imaglist.h>
+ 
+--- a/src/muuli_wdr.cpp
++++ b/src/muuli_wdr.cpp
+@@ -77,7 +77,7 @@
+ 
+     CMuleTextCtrl *item4 = new CMuleTextCtrl( parent, -1, wxT(""), wxDefaultPosition, wxSize(-1,20), wxTE_MULTILINE );
+     item4->SetName( wxT("FastEd2kLinks") );
+-    item2->Add( item4, 1, wxGROW|wxALIGN_CENTER_HORIZONTAL|wxALL, 0 );
++    item2->Add( item4, 1, wxALL|wxEXPAND, 5 );
+ 
+     wxButton *item5 = new wxButton( parent, ID_BUTTON_FAST, _("Commit"), wxDefaultPosition, wxDefaultSize, 0 );
+     item5->SetToolTip( _("Click here to add the eD2k link in the text control to your download queue.") );
+@@ -474,7 +474,7 @@
+     item0->Add( item1, 0, wxGROW|wxALIGN_CENTER_VERTICAL, 5 );
+ 
+     CSourceListCtrl *item6 = new CSourceListCtrl( parent, ID_CLIENTLIST, wxDefaultPosition, wxDefaultSize, wxLC_REPORT|wxSUNKEN_BORDER );
+-    item0->Add( item6, 1, wxGROW|wxALIGN_CENTER_VERTICAL, 5 );
++    item0->Add( item6, 1, wxGROW, 5 );
+ 
+     if (set_sizer)
+     {
+@@ -1048,7 +1048,7 @@
+     wxWindow *item3 = new COScopeCtrl(3,1,GRAPH_DOWN,parent);
+ item3->SetName(wxT("dloadScope"));
+     wxASSERT( item3 );
+-    item1->Add( item3, 1, wxGROW|wxALIGN_CENTER_VERTICAL, 5 );
++    item1->Add( item3, 1, wxGROW|wxALL, 5 );
+ 
+     wxFlexGridSizer *item4 = new wxFlexGridSizer( 2, 0, 0 );
+     item4->AddGrowableCol( 0 );
+@@ -1089,7 +1089,7 @@
+ 
+     item1->Add( item4, 0, wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP, 5 );
+ 
+-    item0->Add( item1, 1, wxGROW|wxALIGN_CENTER_VERTICAL|wxBOTTOM, 5 );
++    item0->Add( item1, 1, wxGROW|wxBOTTOM, 5 );
+ 
+     wxStaticBox *item15 = new wxStaticBox( parent, -1, _("Upload-Speed") );
+     wxStaticBoxSizer *item14 = new wxStaticBoxSizer( item15, wxVERTICAL );
+@@ -1097,7 +1097,7 @@
+     wxWindow *item16 = new COScopeCtrl(3,1,GRAPH_UP,parent);
+ item16->SetName(wxT("uloadScope"));
+     wxASSERT( item16 );
+-    item14->Add( item16, 1, wxGROW|wxALIGN_CENTER_VERTICAL, 5 );
++    item14->Add( item16, 1, wxGROW|wxALL, 5 );
+ 
+     wxFlexGridSizer *item17 = new wxFlexGridSizer( 2, 0, 0 );
+     item17->AddGrowableCol( 0 );
+@@ -1138,7 +1138,7 @@
+ 
+     item14->Add( item17, 0, wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP, 5 );
+ 
+-    item0->Add( item14, 1, wxGROW|wxALIGN_CENTER_VERTICAL|wxBOTTOM, 5 );
++    item0->Add( item14, 1, wxGROW|wxBOTTOM, 5 );
+ 
+     wxStaticBox *item28 = new wxStaticBox( parent, -1, _("Connections") );
+     wxStaticBoxSizer *item27 = new wxStaticBoxSizer( item28, wxVERTICAL );
+@@ -1146,7 +1146,7 @@
+     wxWindow *item29 = new COScopeCtrl(3,0,GRAPH_CONN,parent);
+ item29->SetName(wxT("otherScope"));
+     wxASSERT( item29 );
+-    item27->Add( item29, 1, wxGROW|wxALIGN_CENTER_VERTICAL, 5 );
++    item27->Add( item29, 1, wxGROW|wxALL, 5 );
+ 
+     wxFlexGridSizer *item30 = new wxFlexGridSizer( 2, 0, 0 );
+     item30->AddGrowableCol( 0 );
+@@ -1187,16 +1187,15 @@
+ 
+     item27->Add( item30, 0, wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT|wxTOP, 5 );
+ 
+-    item0->Add( item27, 1, wxGROW|wxALIGN_CENTER_VERTICAL, 5 );
++    item0->Add( item27, 1, wxGROW|wxALL, 5 );
+ 
+     wxStaticBox *item41 = new wxStaticBox( parent, -1, _("Statistics Tree") );
+     wxStaticBoxSizer *item40 = new wxStaticBoxSizer( item41, wxVERTICAL );
+ 
+     wxTreeCtrl *item42 = new wxTreeCtrl( parent, -1, wxDefaultPosition, wxDefaultSize, wxTR_HAS_BUTTONS|wxSUNKEN_BORDER );
+     item42->SetName( wxT("statTree") );
+-    item40->Add( item42, 1, wxGROW|wxALIGN_CENTER_VERTICAL, 5 );
+-
+-    item0->Add( item40, 1, wxGROW|wxALIGN_CENTER_VERTICAL, 5 );
++    item40->Add( item42, 1, wxGROW|wxALL, 5 );
++    item0->Add( item40, 1, wxGROW|wxALL, 5 );
+ 
+     if (set_sizer)
+     {
+@@ -2030,7 +2029,7 @@
+ 
+     wxStaticText *item2 = new wxStaticText( parent, -1, _("!!! WARNING !!!"), wxDefaultPosition, wxDefaultSize, 0 );
+     item2->SetForegroundColour( *wxRED );
+-    item2->SetFont( wxFont( 24, wxROMAN, wxNORMAL, wxNORMAL ) );
++    item2->SetFont( wxFont( 24, wxFONTFAMILY_ROMAN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL ) );
+     item1->Add( item2, 0, wxALIGN_CENTER, 5 );
+ 
+     wxStaticText *item3 = new wxStaticText( parent, IDC_AMULE_TWEAKS_WARNING, wxT(""), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTRE );
+--- a/src/utils/wxCas/src/wxcasframe.cpp
++++ b/src/utils/wxCas/src/wxcasframe.cpp
+@@ -280,11 +280,11 @@
+ #ifdef __WINDOWS__
+ 
+ 	memdc.
+-	SetFont ( wxFont ( 6, wxSWISS, wxNORMAL, wxBOLD ) );
++	SetFont ( wxFont ( 6, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD ) );
+ #else
+ 
+ 	memdc.
+-	SetFont ( wxFont ( 8, wxSWISS, wxNORMAL, wxBOLD ) );
++	SetFont ( wxFont ( 8, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD ) );
+ #endif
+ 
+ 	memdc.
+--- a/src/amuleDlg.cpp
++++ b/src/amuleDlg.cpp
+@@ -763,7 +763,7 @@
+ 	if ( (true == skinChanged) || (currentState != s_oldState) ) {
+ 		wxWindowUpdateLocker freezer(m_wndToolbar);
+ 
+-		wxToolBarToolBase* toolbarTool = m_wndToolbar->RemoveTool(ID_BUTTONCONNECT);
++		wxToolBarToolBase* toolbarTool = m_wndToolbar->FindById(ID_BUTTONCONNECT);
+ 
+ 		switch (currentState) {
+ 			case ECS_Connecting:
+@@ -784,8 +784,6 @@
+ 				toolbarTool->SetNormalBitmap(m_tblist.GetBitmap(0));
+ 		}
+ 
+-		m_wndToolbar->InsertTool(0, toolbarTool);
+-		m_wndToolbar->Realize();
+ 		m_wndToolbar->EnableTool(ID_BUTTONCONNECT, (thePrefs::GetNetworkED2K() || thePrefs::GetNetworkKademlia()) && theApp->ipfilter->IsReady());
+ 
+ 		s_oldState = currentState;
+@@ -1416,7 +1414,7 @@
+ 	wxWindowUpdateLocker freezer(this);
+ #endif
+ 
+-	wxToolBarToolBase* toolbarTool = m_wndToolbar->RemoveTool(ID_BUTTONNETWORKS);
++	wxToolBarToolBase* toolbarTool = m_wndToolbar->FindById(ID_BUTTONNETWORKS);
+ 
+ 	// set the log windows
+ 	wxNotebook* logs_notebook = CastChild( ID_SRVLOG_NOTEBOOK, wxNotebook);
+@@ -1507,12 +1505,9 @@
+ 
+ 	// Tool bar
+ 
+-	m_wndToolbar->InsertTool(2, toolbarTool);
+ 	m_wndToolbar->EnableTool(ID_BUTTONNETWORKS, (thePrefs::GetNetworkED2K() || thePrefs::GetNetworkKademlia()));
+ 	m_wndToolbar->EnableTool(ID_BUTTONCONNECT, (thePrefs::GetNetworkED2K() || thePrefs::GetNetworkKademlia()) && theApp->ipfilter->IsReady());
+ 
+-	m_wndToolbar->Realize();
+-
+ 	ShowConnectionState();	// status in the bottom right
+ 	m_searchwnd->FixSearchTypes();
+ }
+--- a/src/amule-gui.cpp
++++ b/src/amule-gui.cpp
+@@ -28,6 +28,7 @@
+ #include <common/ClientVersion.h>
+ 
+ #include <wx/clipbrd.h>			// Needed for wxClipBoard
++#include <wx/sizer.h>
+ #include <wx/tokenzr.h>			// Needed for wxStringTokenizer
+ 
+ #include "SharedFilesWnd.h"		// Needed for CSharedFilesWnd
+@@ -98,6 +99,11 @@
+ 
+ CamuleGuiBase::CamuleGuiBase()
+ {
++	// Disable these checks for now.  The code really needs updating to
++	// eliminate these inconsistent flag uses, but these checks are new
++	// since wx3.0, and this should just return us to what 3.0 did.
++	wxSizerFlags::DisableConsistencyChecks();
++
+ 	amuledlg = NULL;
+ }
+ 

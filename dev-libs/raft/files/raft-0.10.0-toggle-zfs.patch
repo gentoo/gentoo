@@ -1,0 +1,21 @@
+diff -Naur a/configure.ac b/configure.ac
+--- a/configure.ac	2021-03-16 14:45:58.000000000 +0200
++++ b/configure.ac	2021-03-23 07:45:06.875557286 +0200
+@@ -47,13 +47,10 @@
+ # Checks for header files.
+ AC_CHECK_HEADERS([stdlib.h string.h stdio.h assert.h unistd.h linux/io_uring.h linux/aio_abi.h])
+ 
+-# Check if zfs >= 0.8.0 is available (for direct I/O support).
+-AC_CHECK_PROG(have_zfs, zfs, yes)
+-AS_IF([test x"$have_zfs" = x"yes"],
+-   [AX_COMPARE_VERSION($(cat /sys/module/zfs/version | cut -f 1 -d -), [ge], [0.8.0],
+-       [AC_DEFINE(RAFT_HAVE_ZFS_WITH_DIRECT_IO)], [])
+-   ],
+-   [])
++# zfs support. We have 0.8.6 as stable in Gentoo, which is plenty above the required minimum.
++AC_ARG_WITH([zfs], AS_HELP_STRING([--with-zfs], [Build with zfs support (default: disabled)]))
++AS_IF([test "x$with_zfs" = "xyes"],
++   [AC_DEFINE(RAFT_HAVE_ZFS_WITH_DIRECT_IO)], [])
+ 
+ # Checks for typedefs, structures, and compiler characteristics.
+ AC_TYPE_SIZE_T

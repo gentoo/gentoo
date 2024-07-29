@@ -1,0 +1,24 @@
+https://github.com/apache/httpd/pull/393
+
+From bd2c4e466e0949f6f770bbb2569ce5ae9b3965c0 Mon Sep 17 00:00:00 2001
+From: ttachi <tachihara@hotmail.com>
+Date: Fri, 17 Nov 2023 22:24:45 +0900
+Subject: [PATCH] mod_xml2enc: remove dependency on xmlstring header
+
+---
+ modules/filters/mod_xml2enc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modules/filters/mod_xml2enc.c b/modules/filters/mod_xml2enc.c
+index 34f8e8ee090..0d3d13c1239 100644
+--- a/modules/filters/mod_xml2enc.c
++++ b/modules/filters/mod_xml2enc.c
+@@ -209,7 +209,7 @@ static void sniff_encoding(request_rec* r, xml2ctx* ctx)
+   
+     /* to sniff, first we look for BOM */
+     if (ctx->xml2enc == XML_CHAR_ENCODING_NONE) {
+-        ctx->xml2enc = xmlDetectCharEncoding((const xmlChar*)ctx->buf,
++        ctx->xml2enc = xmlDetectCharEncoding((const unsigned char*)ctx->buf,
+                                              ctx->bytes); 
+         if (HAVE_ENCODING(ctx->xml2enc)) {
+             ap_log_rerror(APLOG_MARK, APLOG_INFO, 0, r, APLOGNO(01432)

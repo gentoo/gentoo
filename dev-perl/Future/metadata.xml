@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Future</remote-id>
+    <remote-id type="cpan-module">Future</remote-id>
+    <remote-id type="cpan-module">Future::Exception</remote-id>
+    <remote-id type="cpan-module">Future::Mutex</remote-id>
+    <remote-id type="cpan-module">Future::Utils</remote-id>
+    <remote-id type="cpan-module">Test::Future</remote-id>
+    <remote-id type="cpan-module">Test::Future::Deferred</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,19 @@
+This uses strlcpy() from bsd/string.h. On non BSD system those headers are to find under
+/usr/include/bsd/. See also man libbsd.
+
+Bug: https://bugs.gentoo.org/875026
+Bug: https://bugs.gentoo.org/861377
+
+Pascal Jäger <pascal.jaeger@leimstift.de> (2022-11-29)
+
+--- a/lib/dcc.c
++++ b/lib/dcc.c
+@@ -37,7 +37,7 @@
+ #endif /* HAVE_ERR_H */
+ #include <errno.h>
+ #include <stdlib.h>
+-#include <string.h>
++#include <bsd/string.h>
+ 
+ #include "dcc.h"
+ #include "io.h"

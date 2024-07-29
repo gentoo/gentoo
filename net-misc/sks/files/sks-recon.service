@@ -1,0 +1,14 @@
+[Unit]
+Description=SKS key reconnaissance thread
+After=network.target sks-db.service
+
+[Service]
+Environment=SKS_DIR=/var/lib/sks
+EnvironmentFile=-/etc/sysconfig/sks
+ExecStart=/usr/bin/sks recon ${SKS_OPTIONS} ${SKS_RECON_OPTIONS}
+User=sks
+# WorkingDirectory cannot use a variable
+WorkingDirectory=/var/lib/sks
+
+[Install]
+WantedBy=multi-user.target

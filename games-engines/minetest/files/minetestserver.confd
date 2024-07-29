@@ -1,0 +1,16 @@
+# /etc/conf.d/minetest-server: config file for /etc/init.d/minetest-server
+
+# user
+USER="minetest"
+
+# group
+GROUP="minetest"
+
+# pidfile
+PIDFILE="/run/minetest.pid"
+
+# executable
+MINETESTBIN="/usr/bin/minetestserver"
+
+# additional arguments for the server
+ARGS="--logfile /var/log/minetest/minetest-server.log"

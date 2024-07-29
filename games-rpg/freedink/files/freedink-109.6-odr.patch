@@ -1,0 +1,14 @@
+Only ever used as struct FF_Handle *, not seeing why this void is here.
+error: 'FastFileOpen' violates the C++ One Definition Rule [-Werror=odr]
+--- a/src/fastfile.cpp
++++ b/src/fastfile.cpp
+@@ -217,3 +217,3 @@
+ 
+-void *
++struct FF_Handle *
+ FastFileOpen(char *name)
+@@ -254,3 +254,3 @@
+ 		    i->len = next_off - i->off;
+-		  return (void*)i;
++		  return i;
+ 		}

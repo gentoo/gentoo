@@ -1,0 +1,120 @@
+From 57d7e07e6badb252c12015388b58fcb5285d3158 Mon Sep 17 00:00:00 2001
+From: Johannes Schauer Marin Rodrigues <josch@mister-muffin.de>
+Date: Thu, 15 Sep 2022 04:36:16 +0200
+Subject: [PATCH] Support imagemagick 7.1.0-48
+
+ - the output of -metric PSNR changed
+ - CMYK output can now be exactly compared
+
+closes: #148
+--- a/src/img2pdf_test.py
++++ b/src/img2pdf_test.py
+@@ -75,6 +75,7 @@ for prog in ["convert", "compare", "identify"]:
+         globals()[prog.upper()] = ["magick", prog]
+ 
+ HAVE_IMAGEMAGICK_MODERN = True
++HAVE_EXACT_CMYK8 = True
+ try:
+     ver = subprocess.check_output(CONVERT + ["-version"], stderr=subprocess.STDOUT)
+     m = re.fullmatch(
+@@ -82,13 +83,18 @@ try:
+     )
+     if m is None:
+         HAVE_IMAGEMAGICK_MODERN = False
++        HAVE_EXACT_CMYK8 = False
+     else:
+         if parse_version(m.group(1)) < parse_version("6.9.10-12"):
+             HAVE_IMAGEMAGICK_MODERN = False
++        if parse_version(m.group(1)) < parse_version("7.1.0-48"):
++            HAVE_EXACT_CMYK8 = False
+ except FileNotFoundError:
+     HAVE_IMAGEMAGICK_MODERN = False
++    HAVE_EXACT_CMYK8 = False
+ except subprocess.CalledProcessError:
+     HAVE_IMAGEMAGICK_MODERN = False
++    HAVE_EXACT_CMYK8 = False
+ 
+ if not HAVE_IMAGEMAGICK_MODERN:
+     warnings.warn("imagemagick >= 6.9.10-12 not available, skipping certain checks...")
+@@ -113,6 +119,12 @@ except subprocess.CalledProcessError:
+ if not HAVE_JP2:
+     warnings.warn("imagemagick has no jpeg 2000 support, skipping certain checks...")
+ 
++# the result of compare -metric PSNR is either just a floating point value or a
++# floating point value following by the same value multiplied by 0.01,
++# surrounded in parenthesis since ImagemMagick 7.1.0-48:
++# https://github.com/ImageMagick/ImageMagick/commit/751829cd4c911d7a42953a47c1f73068d9e7da2f
++psnr_re = re.compile(rb"((?:inf|(?:0|[1-9][0-9]*)(?:\.[0-9]+)?))(?: \([0-9.]+\))?")
++
+ ###############################################################################
+ #                               HELPER FUNCTIONS                              #
+ ###############################################################################
+@@ -310,8 +322,8 @@ def write_png(data, path, bitdepth, colortype, palette=None, iccp=None):
+ 
+ def compare(im1, im2, exact, icc, cmyk):
+     if exact:
+-        if cmyk:
+-            raise Exception("cmyk cannot be exact")
++        if cmyk and not HAVE_EXACT_CMYK8:
++            raise Exception("cmyk cannot be exact before ImageMagick 7.1.0-48")
+         elif icc:
+             raise Exception("icc cannot be exact")
+         else:
+@@ -345,7 +357,10 @@ def compare(im1, im2, exact, icc, cmyk):
+             stderr=subprocess.PIPE,
+         ).stderr
+         assert psnr != b"0"
+-        psnr = float(psnr.strip(b"0"))
++        assert psnr != b"0 (0)"
++        assert psnr_re.fullmatch(psnr) is not None, psnr
++        psnr = psnr_re.fullmatch(psnr).group(1)
++        psnr = float(psnr)
+         assert psnr != 0  # or otherwise we would use the exact variant
+         assert psnr > 50
+ 
+@@ -501,7 +516,9 @@ def compare_pdfimages_png(tmpdir, img, pdf, exact=True, icc=False):
+                 stderr=subprocess.PIPE,
+             ).stderr
+         assert psnr != b"0"
+-        psnr = float(psnr.strip(b"0"))
++        assert psnr != b"0 (0)"
++        psnr = psnr_re.fullmatch(psnr).group(1)
++        psnr = float(psnr)
+         assert psnr != 0  # or otherwise we would use the exact variant
+         assert psnr > 50
+     (tmpdir / "images-000.png").unlink()
+@@ -5545,10 +5562,10 @@ def test_jpg_rot(tmp_path_factory, jpg_rot_img, jpg_rot_pdf):
+ def test_jpg_cmyk(tmp_path_factory, jpg_cmyk_img, jpg_cmyk_pdf):
+     tmpdir = tmp_path_factory.mktemp("jpg_cmyk")
+     compare_ghostscript(
+-        tmpdir, jpg_cmyk_img, jpg_cmyk_pdf, gsdevice="tiff32nc", exact=False
++        tmpdir, jpg_cmyk_img, jpg_cmyk_pdf, gsdevice="tiff32nc", exact=HAVE_EXACT_CMYK8
+     )
+     # not testing with poppler as it cannot write CMYK images
+-    compare_mupdf(tmpdir, jpg_cmyk_img, jpg_cmyk_pdf, exact=False, cmyk=True)
++    compare_mupdf(tmpdir, jpg_cmyk_img, jpg_cmyk_pdf, exact=HAVE_EXACT_CMYK8, cmyk=True)
+     compare_pdfimages_cmyk(tmpdir, jpg_cmyk_img, jpg_cmyk_pdf)
+ 
+ 
+@@ -5902,10 +5919,16 @@ def test_tiff_float(tmp_path_factory, tiff_float_img, engine):
+ def test_tiff_cmyk8(tmp_path_factory, tiff_cmyk8_img, tiff_cmyk8_pdf):
+     tmpdir = tmp_path_factory.mktemp("tiff_cmyk8")
+     compare_ghostscript(
+-        tmpdir, tiff_cmyk8_img, tiff_cmyk8_pdf, gsdevice="tiff32nc", exact=False
++        tmpdir,
++        tiff_cmyk8_img,
++        tiff_cmyk8_pdf,
++        gsdevice="tiff32nc",
++        exact=HAVE_EXACT_CMYK8,
+     )
+     # not testing with poppler as it cannot write CMYK images
+-    compare_mupdf(tmpdir, tiff_cmyk8_img, tiff_cmyk8_pdf, exact=False, cmyk=True)
++    compare_mupdf(
++        tmpdir, tiff_cmyk8_img, tiff_cmyk8_pdf, exact=HAVE_EXACT_CMYK8, cmyk=True
++    )
+     compare_pdfimages_tiff(tmpdir, tiff_cmyk8_img, tiff_cmyk8_pdf)
+ 
+ 
+-- 
+2.39.2
+

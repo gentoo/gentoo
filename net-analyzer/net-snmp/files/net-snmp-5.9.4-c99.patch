@@ -1,0 +1,30 @@
+https://github.com/net-snmp/net-snmp/issues/815
+https://github.com/net-snmp/net-snmp/commit/d30d63523bfd9ccc85175e484fea821815273237
+
+From d30d63523bfd9ccc85175e484fea821815273237 Mon Sep 17 00:00:00 2001
+From: Bart Van Assche <bvanassche@acm.org>
+Date: Wed, 15 May 2024 10:08:04 -0600
+Subject: [PATCH] snmptrapd: Fix compilation against recent versions of the
+ MySQL library
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fix the following build error:
+
+snmptrapd_sql.c:541:50: error: assignment to ‘_Bool *’ from incompatible pointer type ‘char *’ [-Wincompatible-pointer-types]
+541 | _tbind[TBIND_v3_SECURITY_ENGINE].is_null = &_no_v3;
+
+Fixes: https://github.com/net-snmp/net-snmp/issues/815
+--- a/apps/snmptrapd_sql.c
++++ b/apps/snmptrapd_sql.c
+@@ -201,7 +201,7 @@ typedef struct sql_buf_t {
+  * static bind structures, plus 2 static buffers to bind to.
+  */
+ static MYSQL_BIND _tbind[TBIND_MAX], _vbind[VBIND_MAX];
+-static char       _no_v3;
++static typeof(*((MYSQL_BIND*)NULL)->is_null) _no_v3;
+ 
+ static void _sql_process_queue(u_int dontcare, void *meeither);
+ 
+

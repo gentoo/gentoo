@@ -1,0 +1,209 @@
+diff --git a/librecad/src/actions/rs_actiondrawcircletan1_2p.cpp b/librecad/src/actions/rs_actiondrawcircletan1_2p.cpp
+index c14da00e4..f305408aa 100644
+--- a/librecad/src/actions/rs_actiondrawcircletan1_2p.cpp
++++ b/librecad/src/actions/rs_actiondrawcircletan1_2p.cpp
+@@ -36,11 +36,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ #include "rs_preview.h"
+ #include "rs_debug.h"
+ 
+-namespace{
+-//list of entity types supported by current action
+-auto enTypeList={RS2::EntityLine, RS2::EntityArc, RS2::EntityCircle};
+-}
+-
+ struct RS_ActionDrawCircleTan1_2P::Points {
+ 	std::vector<RS_Vector> points;
+ 	RS_CircleData cData;
+diff --git a/librecad/src/actions/rs_actiondrawcircletan1_2p.h b/librecad/src/actions/rs_actiondrawcircletan1_2p.h
+index a6f40a6ea..b5976c9f6 100644
+--- a/librecad/src/actions/rs_actiondrawcircletan1_2p.h
++++ b/librecad/src/actions/rs_actiondrawcircletan1_2p.h
+@@ -79,6 +79,9 @@ class RS_ActionDrawCircleTan1_2P : public RS_PreviewActionInterface {
+ private:
+ 	struct Points;
+ 	std::unique_ptr<Points> pPoints;
++
++    //list of entity types supported by current action
++    const std::initializer_list<RS2::EntityType> enTypeList {RS2::EntityLine, RS2::EntityArc, RS2::EntityCircle};
+ };
+ 
+ #endif
+diff --git a/librecad/src/actions/rs_actiondrawcircletan2.cpp b/librecad/src/actions/rs_actiondrawcircletan2.cpp
+index d0558f05b..820e42266 100644
+--- a/librecad/src/actions/rs_actiondrawcircletan2.cpp
++++ b/librecad/src/actions/rs_actiondrawcircletan2.cpp
+@@ -33,10 +33,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ #include "rs_preview.h"
+ #include "rs_debug.h"
+ 
+-namespace {
+-auto enTypeList={RS2::EntityLine, RS2::EntityArc, RS2::EntityCircle};
+-}
+-
+ struct RS_ActionDrawCircleTan2::Points {
+ 	RS_CircleData cData;
+ 	RS_Vector coord;
+diff --git a/librecad/src/actions/rs_actiondrawcircletan2.h b/librecad/src/actions/rs_actiondrawcircletan2.h
+index bed568970..5b2040e90 100644
+--- a/librecad/src/actions/rs_actiondrawcircletan2.h
++++ b/librecad/src/actions/rs_actiondrawcircletan2.h
+@@ -77,6 +77,9 @@ class RS_ActionDrawCircleTan2 : public RS_PreviewActionInterface {
+ private:
+ 	struct Points;
+ 	std::unique_ptr<Points> pPoints;
++
++    //list of entity types supported by current action
++    const std::initializer_list<RS2::EntityType> enTypeList {RS2::EntityLine, RS2::EntityArc, RS2::EntityCircle};
+ };
+ 
+ #endif
+diff --git a/librecad/src/actions/rs_actiondrawcircletan2_1p.cpp b/librecad/src/actions/rs_actiondrawcircletan2_1p.cpp
+index 324c16686..51cd29a19 100644
+--- a/librecad/src/actions/rs_actiondrawcircletan2_1p.cpp
++++ b/librecad/src/actions/rs_actiondrawcircletan2_1p.cpp
+@@ -35,10 +35,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ #include "rs_preview.h"
+ #include "rs_debug.h"
+ 
+-namespace {
+-auto enTypeList={RS2::EntityLine, RS2::EntityArc, RS2::EntityCircle};
+-}
+-
+ struct RS_ActionDrawCircleTan2_1P::Points {
+ 	RS_Vector point;
+ 	RS_CircleData cData;
+diff --git a/librecad/src/actions/rs_actiondrawcircletan2_1p.h b/librecad/src/actions/rs_actiondrawcircletan2_1p.h
+index 40c239037..e44a56c36 100644
+--- a/librecad/src/actions/rs_actiondrawcircletan2_1p.h
++++ b/librecad/src/actions/rs_actiondrawcircletan2_1p.h
+@@ -73,6 +73,9 @@ class RS_ActionDrawCircleTan2_1P : public RS_PreviewActionInterface {
+ private:
+ 	struct Points;
+ 	std::unique_ptr<Points> pPoints;
++
++    //list of entity types supported by current action
++    const std::initializer_list<RS2::EntityType> enTypeList {RS2::EntityLine, RS2::EntityArc, RS2::EntityCircle};
+ };
+ 
+ #endif
+diff --git a/librecad/src/actions/rs_actiondrawcircletan3.cpp b/librecad/src/actions/rs_actiondrawcircletan3.cpp
+index 026ed30e5..eaca13d63 100644
+--- a/librecad/src/actions/rs_actiondrawcircletan3.cpp
++++ b/librecad/src/actions/rs_actiondrawcircletan3.cpp
+@@ -35,10 +35,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ #include "rs_preview.h"
+ #include "rs_debug.h"
+ 
+-namespace {
+-auto enTypeList={RS2::EntityArc, RS2::EntityCircle, RS2::EntityLine, RS2::EntityPoint};
+-}
+-
+ struct RS_ActionDrawCircleTan3::Points {
+ 		std::vector<RS_AtomicEntity*> circles;
+ 		std::shared_ptr<RS_CircleData> cData{std::make_shared<RS_CircleData>()};
+diff --git a/librecad/src/actions/rs_actiondrawcircletan3.h b/librecad/src/actions/rs_actiondrawcircletan3.h
+index d0cabfa2d..3201c5f88 100644
+--- a/librecad/src/actions/rs_actiondrawcircletan3.h
++++ b/librecad/src/actions/rs_actiondrawcircletan3.h
+@@ -78,6 +78,8 @@ class RS_ActionDrawCircleTan3 : public RS_PreviewActionInterface {
+ 	struct Points;
+ 	std::unique_ptr<Points> pPoints;
+ 
++    //list of entity types supported by current action
++    const std::initializer_list<RS2::EntityType> enTypeList {RS2::EntityArc, RS2::EntityCircle, RS2::EntityLine, RS2::EntityPoint};
+ };
+ 
+ #endif
+diff --git a/librecad/src/actions/rs_actiondrawlinerelangle.cpp b/librecad/src/actions/rs_actiondrawlinerelangle.cpp
+index 8415dd604..b9ce996fe 100644
+--- a/librecad/src/actions/rs_actiondrawlinerelangle.cpp
++++ b/librecad/src/actions/rs_actiondrawlinerelangle.cpp
+@@ -38,11 +38,6 @@
+ #include "rs_preview.h"
+ #include "rs_debug.h"
+ 
+-namespace {
+-auto enTypeList={RS2::EntityLine, RS2::EntityArc, RS2::EntityCircle,
+-				 RS2::EntityEllipse};
+-}
+-
+ RS_ActionDrawLineRelAngle::RS_ActionDrawLineRelAngle(
+ 		RS_EntityContainer& container,
+ 		RS_GraphicView& graphicView,
+diff --git a/librecad/src/actions/rs_actiondrawlinerelangle.h b/librecad/src/actions/rs_actiondrawlinerelangle.h
+index 1e102792d..71e5185b7 100644
+--- a/librecad/src/actions/rs_actiondrawlinerelangle.h
++++ b/librecad/src/actions/rs_actiondrawlinerelangle.h
+@@ -110,6 +110,9 @@ class RS_ActionDrawLineRelAngle : public RS_PreviewActionInterface {
+      * Is the angle fixed?
+      */
+     bool fixedAngle;
++
++    //list of entity types supported by current action
++    const std::initializer_list<RS2::EntityType> enTypeList {RS2::EntityLine, RS2::EntityArc, RS2::EntityCircle,RS2::EntityEllipse};
+ };
+ 
+ #endif
+diff --git a/librecad/src/actions/rs_actiondrawlinetangent1.cpp b/librecad/src/actions/rs_actiondrawlinetangent1.cpp
+index 197b0cb6c..47a93c766 100644
+--- a/librecad/src/actions/rs_actiondrawlinetangent1.cpp
++++ b/librecad/src/actions/rs_actiondrawlinetangent1.cpp
+@@ -36,12 +36,6 @@
+ #include "rs_preview.h"
+ #include "rs_debug.h"
+ 
+-namespace{
+-auto circleType={RS2::EntityArc, RS2::EntityCircle,
+-				 RS2::EntityEllipse, RS2::EntitySplinePoints
+-				};
+-}
+-
+ RS_ActionDrawLineTangent1::RS_ActionDrawLineTangent1(
+ 		RS_EntityContainer& container,
+ 		RS_GraphicView& graphicView)
+diff --git a/librecad/src/actions/rs_actiondrawlinetangent1.h b/librecad/src/actions/rs_actiondrawlinetangent1.h
+index 0f76b3684..d20d302dd 100644
+--- a/librecad/src/actions/rs_actiondrawlinetangent1.h
++++ b/librecad/src/actions/rs_actiondrawlinetangent1.h
+@@ -66,6 +66,12 @@ class RS_ActionDrawLineTangent1 : public RS_PreviewActionInterface {
+ 	std::unique_ptr<RS_Vector> point;
+     /** Chosen entity */
+     RS_Entity* circle;
++
++    //list of entity types supported by current action
++    const std::initializer_list<RS2::EntityType> circleType { RS2::EntityArc,
++                RS2::EntityCircle,
++                RS2::EntityEllipse,
++                RS2::EntitySplinePoints };
+ };
+ 
+ #endif
+diff --git a/librecad/src/actions/rs_actiondrawlinetangent2.cpp b/librecad/src/actions/rs_actiondrawlinetangent2.cpp
+index fed3545e0..0f1600e53 100644
+--- a/librecad/src/actions/rs_actiondrawlinetangent2.cpp
++++ b/librecad/src/actions/rs_actiondrawlinetangent2.cpp
+@@ -35,10 +35,6 @@
+ #include "rs_preview.h"
+ #include "rs_debug.h"
+ 
+-namespace{
+-auto circleType={RS2::EntityArc, RS2::EntityCircle, RS2::EntityEllipse};
+-}
+-
+ RS_ActionDrawLineTangent2::RS_ActionDrawLineTangent2(
+     RS_EntityContainer& container,
+     RS_GraphicView& graphicView)
+diff --git a/librecad/src/actions/rs_actiondrawlinetangent2.h b/librecad/src/actions/rs_actiondrawlinetangent2.h
+index b0d884cd7..95d82465d 100644
+--- a/librecad/src/actions/rs_actiondrawlinetangent2.h
++++ b/librecad/src/actions/rs_actiondrawlinetangent2.h
+@@ -68,6 +68,9 @@ class RS_ActionDrawLineTangent2 : public RS_PreviewActionInterface {
+     /** 2nd chosen entity */
+     RS_Entity* circle2;
+     bool valid;
++
++    //list of entity types supported by current action
++    const std::initializer_list<RS2::EntityType> circleType {RS2::EntityArc, RS2::EntityCircle, RS2::EntityEllipse};
+ };
+ 
+ #endif

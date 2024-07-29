@@ -1,0 +1,138 @@
+diff -Naur a/Config-Ini-1.06/test.pl b/Config-Ini-1.06/test.pl
+--- a/Config-Ini-1.06/test.pl	2020-04-05 21:08:14.033277147 +0100
++++ b/Config-Ini-1.06/test.pl	2020-04-05 21:08:04.576074986 +0100
+@@ -11,9 +11,9 @@
+ 
+ ######################### End of black magic.
+ 
+-use POSIX qw(tmpnam);
+-do { $tmpfile = tmpnam() } until open TMPFILE, ">$tmpfile";
+-print TMPFILE <<EOT;
++use File::Temp qw(tempfile);
++( $tmpfh, $tmpfile ) = tempfile(UNLINK => 0);
++print $tmpfh <<EOT;
+ [Setup]
+ MasterProduct=UnrealTournament
+ Group=UnrealTournament
+@@ -56,7 +56,7 @@
+ ServerActors	=	IpServer.UdpServerUplinkMaster\\
+ 	ServerAddress=master.mplayer.com MasterServerPort = 27900
+ EOT
+-close TMPFILE;
++close $tmpfh;
+ 
+ # constructor
+ $ini = new Config::Ini($tmpfile);
+@@ -165,11 +165,11 @@
+ 
+ # save function
+ $ini->save;
+-open TMPFILE, "<$tmpfile";
++open $tmpfh, "<$tmpfile";
+ undef $/;
+-$wholefile = <TMPFILE>;
++$wholefile = <$tmpfh>;
+ $/ = "\n";
+-close TMPFILE;
++close $tmpfh;
+ $shouldbe = <<EOT;
+ [Setup]
+ MasterProduct=UnrealTournament
+@@ -232,7 +232,7 @@
+ 	print "ok 17\n";
+ } else { print "not ok 17\n"; }
+ 
+-do { $tmpfile = tmpnam() } until open TMPFILE, ">$tmpfile";
++( $tmpfh, $tmpfile ) = tempfile(UNLINK => 0);
+ $ini->save($tmpfile);
+ 
+ # test decoder
+@@ -254,8 +254,8 @@
+ unlink $tmpfile;
+ 
+ # test comment delimiter
+-do { $tmpfile = tmpnam() } until open TMPFILE, ">$tmpfile";
+-print TMPFILE <<EOT;
++( $tmpfh, $tmpfile ) = tempfile(UNLINK => 0);
++print $tmpfh <<EOT;
+ [Options]
+ Configured=1
+ GSversion=550
+@@ -272,7 +272,7 @@
+ [DEQData]
+ Winlist=t123;218 praivi;215 ptsk;209
+ EOT
+-close TMPFILE;
++close $tmpfh;
+ undef $ini;
+ $ini = new Config::Ini($tmpfile, -commentdelim => '#');
+ 
+diff -Naur a/Makefile.PL b/Makefile.PL
+--- a/Makefile.PL	2001-01-18 16:20:37.000000000 +0000
++++ b/Makefile.PL	2020-04-05 21:08:32.335668386 +0100
+@@ -11,7 +11,6 @@
+     'PREREQ_PM'	=> {
+ 	'Config::Ini'	=> 1.06,
+ 	'Archive::Zip'	=> 0.07,
+-	'Tk'		=> 800.020,
+     },
+-    'EXE_FILES' => [qw(umod xumod)],
++    'EXE_FILES' => [qw(umod)],
+ );
+diff -Naur a/umod b/umod
+--- a/umod	2020-04-05 21:08:14.033277147 +0100
++++ b/umod	2020-04-05 21:08:04.576074986 +0100
+@@ -17,7 +17,8 @@
+ use FileHandle;
+ use File::Find;
+ use Getopt::Long;
+-use POSIX qw(tmpnam SEEK_END);
++use POSIX qw(SEEK_END);
++use File::Temp qw(tempfile);
+ use strict;
+ 
+ =pod
+@@ -520,7 +521,7 @@
+     if( $filename =~ /\.zip$/i ) {
+ 
+ 	my( $tmpFile, $fh );
+-	do { $tmpFile = tmpnam(); } until $fh = new FileHandle( $tmpFile, 'w' );
++	( $fh, $tmpFile ) = tempfile(UNLINK => 0);
+ 
+ 	my( $zipFile ) = new Archive::Zip;
+ 	if( $zipFile->read( $filename ) != AZ_OK ) {
+diff -Naur a/Umod.pm b/Umod.pm
+--- a/Umod.pm	2020-04-05 21:08:14.033277147 +0100
++++ b/Umod.pm	2020-04-05 21:08:04.576074986 +0100
+@@ -400,22 +400,22 @@
+     if( $ini->exists( ['Setup', 'Requires'] ) ) {
+ 	foreach my $requirement ( $ini->get( ['Setup', 'Requires'],
+ 	    -mapping => 'multiple' ) ) {
+-	    my( %hash );
+-	    %hash->{product}      = $ini->get( [$requirement, 'Product'],
++	    my( $hash );
++	    $hash->{product}      = $ini->get( [$requirement, 'Product'],
+ 		-mapping => 'single' );
+-	    %hash->{version}      = $ini->get( [$requirement, 'Version'],
++	    $hash->{version}      = $ini->get( [$requirement, 'Version'],
+ 		-mapping => 'single' );
+-	    %hash->{localproduct} = $ini->get( [$requirement, 'LocalProduct'],
++	    $hash->{localproduct} = $ini->get( [$requirement, 'LocalProduct'],
+ 		-mapping => 'single' );
+-	    %hash->{producturl}   = $ini->get( [$requirement, 'ProductURL'],
++	    $hash->{producturl}   = $ini->get( [$requirement, 'ProductURL'],
+ 		-mapping => 'single' );
+-	    %hash->{versionurl}   = $ini->get( [$requirement, 'VersionURL'],
++	    $hash->{versionurl}   = $ini->get( [$requirement, 'VersionURL'],
+ 		-mapping => 'single' );
+-	    %hash->{developer}    = $ini->get( [$requirement, 'Developer'],
++	    $hash->{developer}    = $ini->get( [$requirement, 'Developer'],
+ 		-mapping => 'single' );
+-	    %hash->{developerurl} = $ini->get( [$requirement, 'DeveloperURL'],
++	    $hash->{developerurl} = $ini->get( [$requirement, 'DeveloperURL'],
+ 		-mapping => 'single' );
+-	    push( @requirements, \%hash );
++	    push( @requirements, \$hash );
+ 	}
+     }
+ 

@@ -1,0 +1,26 @@
+--- a/configure.in
++++ b/configure.in
+@@ -9,8 +9,11 @@
+ AC_PROG_CPP
+ AC_PROG_CXX
+ AC_PROG_CXXCPP
++AM_PROG_AR
+ AC_PROG_RANLIB
+-if test -n "$GCC" ; then CC="$CC -Wall"; CXX="$CXX -Wall"; fi
++
++CFLAGS="${CFLAGS} -Wall"
++CXXFLAGS="${CXXFLAGS} -Wall"
+ 
+ AC_PATH_XTRA
+ 
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -32,7 +32,7 @@
+ 
+ INCLUDES = $(X_CFLAGS) -I$(top_srcdir)/include
+ 
+-xmahjongg_LDADD = $(LDADD) ../liblcdf/liblcdf.a @X_LIBS@ @X_PRE_LIBS@ -lX11 @X_EXTRA_LIBS@
++xmahjongg_LDADD = $(LDADD) ../liblcdf/liblcdf.a @X_LIBS@ -lX11 @X_EXTRA_LIBS@
+ 
+ 
+ #

@@ -1,0 +1,58 @@
+From a78d36408bd88834fb2929423ee9f626c1dee428 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sun, 7 Jul 2019 22:52:04 +0200
+Subject: doc/man/Makefile: Miscellaneous fixes
+
+- Fix dependencies
+- Add .PHONY markers
+- No longer call man(1) on "make html"
+- Make "make clean" robust to errors
+---
+ doc/man/Makefile | 28 ++++++++++++++++++----------
+ 1 file changed, 18 insertions(+), 10 deletions(-)
+
+diff --git a/doc/man/Makefile b/doc/man/Makefile
+index 8b3edc5..d545ef7 100644
+--- a/doc/man/Makefile
++++ b/doc/man/Makefile
+@@ -1,19 +1,27 @@
++.PHONY: all
+ all: man html
+ 
+ man1:
+ 	mkdir man1
+ 
+-man:  wiki2beamer.xml man1
+-	@asciidoctor -b manpage -d manpage wiki2beamer.adoc
+-	@bzip2 --keep --stdout wiki2beamer.1 > man1/wiki2beamer.1.bz2
+-	@man -D -M '.' wiki2beamer
++wiki2beamer.1: wiki2beamer.adoc
++	asciidoctor -b manpage -d manpage wiki2beamer.adoc
+ 
+-html: wiki2beamer.xml wiki2beamer.1
++man1/wiki2beamer.1.bz2: wiki2beamer.1 | man1
++	bzip2 --keep --stdout wiki2beamer.1 > man1/wiki2beamer.1.bz2
++
++wiki2beamer.html: wiki2beamer.adoc
+ 	asciidoctor -b html5 -d manpage wiki2beamer.adoc
+ 
+-clean:
+-	rm wiki2beamer.1
+-	rm wiki2beamer.html
+-	rm man1/wiki2beamer.1.bz2
+-	rmdir man1/
++.PHONY: man
++man: man1/wiki2beamer.1.bz2
+ 
++.PHONY: html
++html: wiki2beamer.html
++
++.PHONY: clean
++clean:
++	rm -f wiki2beamer.1
++	rm -f wiki2beamer.html
++	rm -f man1/wiki2beamer.1.bz2
++	[ ! -d man1 ] || rmdir man1
+-- 
+2.21.0
+

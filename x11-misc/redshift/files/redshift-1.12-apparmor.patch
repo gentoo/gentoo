@@ -1,0 +1,35 @@
+From c740a3a733a59782c26f2f90a073befec2e2324d Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Tue, 27 Dec 2022 01:27:35 +0100
+Subject: [PATCH] Fix AppArmor profile
+
+Inspired by:
+- https://github.com/jonls/redshift/pull/864
+- https://gitlab.com/chinstrap/gammastep/-/blob/9db19f5ccfad20ab7b501daedcfd5ef137860dd2/data/apparmor/usr.bin.redshift.in
+---
+ data/apparmor/usr.bin.redshift.in | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/data/apparmor/usr.bin.redshift.in b/data/apparmor/usr.bin.redshift.in
+index d6696db..9b71f0d 100644
+--- a/data/apparmor/usr.bin.redshift.in
++++ b/data/apparmor/usr.bin.redshift.in
+@@ -35,8 +35,13 @@
+   # Allow but log any other dbus activity
+   audit dbus bus=system,
+ 
+-  owner @{HOME}/.config/redshift.conf r,
++  owner @{HOME}/.config/{,redshift/}redshift.conf r,
++  owner @{HOME}/.config/redshift/hooks/ r,
++  owner @{HOME}/.config/redshift/hooks/* Ux,
++
++  # Required by getpwuid() call in config-ini.c.
++  /etc/passwd* r,
+ 
+   # Site-specific additions and overrides. See local/README for details.
+-  #include <local/usr.bin.redshift>
++  #include if exists <local/usr.bin.redshift>
+ }
+-- 
+2.39.0
+

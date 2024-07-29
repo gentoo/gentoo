@@ -1,0 +1,66 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -118,7 +118,6 @@
+ 
+ # Check for other programs.
+ AC_CHECK_PROGS(MAKEINFO, makeinfo)
+-AC_CHECK_PROGS(GZIP_PROGRAM, gzip)
+ 
+ # Check for libraries
+ 
+--- a/doc/Makefile.in
++++ b/doc/Makefile.in
+@@ -12,7 +12,6 @@
+ GAUCHE_CONFIG = "@GAUCHE_CONFIG@"
+ INSTALL       = "@GAUCHE_INSTALL@"
+ MAKEINFO      = "@MAKEINFO@"
+-GZIP_PROGRAM  = "@GZIP_PROGRAM@"
+ 
+ # Manual page destination.
+ mandir  = "$(DESTDIR)`$(GAUCHE_CONFIG) --mandir`"
+@@ -21,7 +20,7 @@
+ all: info
+ 
+ install: all
+-	if test -f gauche-gl-refe.info.gz -o -f gauche-gl-refj.info.gz; then \
++	if test -f gauche-gl-refe.info -o -f gauche-gl-refj.info; then \
+ 	  for info in *.info*; do \
+ 	    $(INSTALL) -m 444 -T $(infodir) $$info; \
+ 	  done; \
+@@ -46,7 +45,7 @@
+ 
+ pdf : gauche-gl-refe.pdf
+ 
+-info : gauche-gl-refe.info.gz gauche-gl-refj.info.gz
++info : gauche-gl-refe.info gauche-gl-refj.info
+ 
+ gauche-gl-refe.html : gauche-gl-refe.texi
+ 	texi2html -number gauche-gl-refe.texi
+@@ -63,11 +62,9 @@
+ gauche-gl-refe.texi : gauche-gl-ref.texi extract
+ 	gosh ./extract -en -o gauche-gl-refe.texi gauche-gl-ref.texi
+ 
+-gauche-gl-refe.info.gz : gauche-gl-refe.texi
+-	if test "X$(MAKEINFO)" != X -a "X$(GZIP_PROGRAM)" != X; then \
++gauche-gl-refe.info : gauche-gl-refe.texi
++	if test "X$(MAKEINFO)" != X; then \
+ 	  $(MAKEINFO) --no-warn gauche-gl-refe.texi; \
+-	  rm -rf gauche-gl-refe.info*.gz; \
+-	  $(GZIP_PROGRAM) gauche-gl-refe.info; \
+ 	fi
+ 
+ gauche-gl-refj.html : gauche-gl-refj.texi
+@@ -85,11 +82,9 @@
+ gauche-gl-refj.texi : gauche-gl-ref.texi extract
+ 	gosh ./extract -jp -o gauche-gl-refj.texi gauche-gl-ref.texi
+ 
+-gauche-gl-refj.info.gz : gauche-gl-refj.texi
+-	if test "X$(MAKEINFO)" != X -a "X$(GZIP_PROGRAM)" != X; then \
++gauche-gl-refj.info : gauche-gl-refj.texi
++	if test "X$(MAKEINFO)" != X; then \
+ 	  $(MAKEINFO) --no-warn gauche-gl-refj.texi; \
+-	  rm -rf gauche-gl-refj.info*.gz; \
+-	  $(GZIP_PROGRAM) gauche-gl-refj.info ; \
+ 	fi
+ 
+ clean:

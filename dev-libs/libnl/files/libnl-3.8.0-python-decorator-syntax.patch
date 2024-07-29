@@ -1,0 +1,21 @@
+https://github.com/thom311/libnl/commit/9aab12dff8e89b7da826c5c0826ef13c71963e28
+
+From 9aab12dff8e89b7da826c5c0826ef13c71963e28 Mon Sep 17 00:00:00 2001
+From: David Ward <david.ward@ll.mit.edu>
+Date: Tue, 29 Aug 2023 20:54:19 -0400
+Subject: [PATCH] python: Use correct decorator syntax in HTBQdisc
+
+Fixes: 87d370912ca8 ("netlink.nlattr re-implemented in more pythonic way")
+
+https://github.com/thom311/libnl/pull/359
+--- a/python/netlink/route/qdisc/htb.py
++++ b/python/netlink/route/qdisc/htb.py
+@@ -28,7 +28,7 @@ def default_class(self, value):
+         capi.rtnl_htb_set_defcls(self._qdisc._rtnl_qdisc, int(value))
+ 
+     @property
+-    @netlink.nlattr("r2q", type=int)
++    @netlink.nlattr(type=int)
+     def r2q(self):
+         return capi.rtnl_htb_get_rate2quantum(self._qdisc._rtnl_qdisc)
+ 

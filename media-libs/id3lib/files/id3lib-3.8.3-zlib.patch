@@ -1,0 +1,23 @@
+diff -Naur id3lib-3.8.3.orig/Makefile.am id3lib-3.8.3/Makefile.am
+--- a/Makefile.am	2003-03-01 16:23:00.000000000 -0800
++++ b/Makefile.am	2004-09-12 19:05:39.564456828 -0700
+@@ -28,7 +28,7 @@
+ endif
+ 
+ SUBDIRS =  . m4 $(zlib_subdir) doc include id3com src examples
+-DIST_SUBDIRS = . m4 zlib doc include id3com src examples prj libprj
++DIST_SUBDIRS = . m4 $(zlib_subdir) doc include id3com src examples prj libprj
+ 
+ INCLUDES = @ID3LIB_DEBUG_FLAGS@
+ 
+diff -Naur id3lib-3.8.3.orig/src/Makefile.am id3lib-3.8.3/src/Makefile.am
+--- a/src/Makefile.am	2003-03-01 16:23:00.000000000 -0800
++++ b/src/Makefile.am	2004-09-12 19:08:30.814149521 -0700
+@@ -77,6 +77,7 @@
+ endif
+ 
+ libid3_la_LDFLAGS = \
++  -lz \
+   -version-info $(LT_VERSION) \
+   -release $(LT_RELEASE) \
+   -export-dynamic

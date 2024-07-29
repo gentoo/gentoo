@@ -1,0 +1,21 @@
+https://github.com/capnproto/capnproto/commit/1ae1e9990c7603f0dc99e64470f96693f869b00a
+
+From 1ae1e9990c7603f0dc99e64470f96693f869b00a Mon Sep 17 00:00:00 2001
+From: Heiko Becker <mail@heiko-becker.de>
+Date: Wed, 25 Jan 2023 23:40:27 +0100
+Subject: [PATCH] Fix build with gcc 13 by including <stdint.h> (#1613)
+
+Like other versions before, gcc 13 moved some includes around and as
+a result <stdint.h> is no longer transitively included. Explicitly
+include it for uint8_t.
+--- a/src/kj/string-test.c++
++++ b/src/kj/string-test.c++
+@@ -24,6 +24,7 @@
+ #include <string>
+ #include "vector.h"
+ #include <locale.h>
++#include <stdint.h>
+ 
+ namespace kj {
+ namespace _ {  // private
+

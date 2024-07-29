@@ -1,0 +1,37 @@
+From ca4b7338836edb7325c82f86dccdeb4808cb4a89 Mon Sep 17 00:00:00 2001
+From: Mark Pizzolato <mark@infocomm.com>
+Date: Wed, 29 Jan 2020 11:39:36 -0800
+Subject: [PATCH] makefile: Force gcc/clang -fcommon to address future gcc
+ -fno-common default
+
+as reported and discussed in #794
+---
+ makefile | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+--- a/makefile
++++ b/makefile
+@@ -506,9 +506,13 @@ else
+   ifneq (3,$(GCC_MAJOR_VERSION))
+     ifeq (,$(GCC_OPTIMIZERS_CMD))
+       GCC_OPTIMIZERS_CMD = $(GCC) --help=optimizers
++      GCC_COMMON_CMD = $(GCC) --help=common
+     endif
+     GCC_OPTIMIZERS = $(shell $(GCC_OPTIMIZERS_CMD))
+   endif
++  ifneq (,$(GCC_COMMON_CMD))
++    GCC_OPTIMIZERS += $(shell $(GCC_COMMON_CMD))
++  endif
+   ifneq (,$(findstring $(GCC_VERSION),$(LTO_EXCLUDE_VERSIONS)))
+     NO_LTO = 1
+   endif
+@@ -530,6 +534,9 @@ else
+   ifneq (,$(findstring -fstrict-overflow,$(GCC_OPTIMIZERS)))
+     CFLAGS_O += -fno-strict-overflow
+   endif
++  ifneq (,$(findstring -fcommon,$(GCC_OPTIMIZERS))$(findstring -fno-common,$(GCC_OPTIMIZERS)))
++    CFLAGS_O += -fcommon
++  endif
+   ifeq (,$(NO_LTO))
+     ifneq (,$(findstring -flto,$(GCC_OPTIMIZERS)))
+       CFLAGS_O += -flto -fwhole-program

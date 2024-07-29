@@ -1,0 +1,20 @@
+From ca1b98aaa79975376b729d7f4cc2e8bb2e5939b8 Mon Sep 17 00:00:00 2001
+From: Louis Sautier <sautier.louis@gmail.com>
+Date: Sat, 14 Oct 2023 15:13:22 +0200
+Subject: [PATCH] anacron: only source /etc/default/anacron if it is readable,
+ fixes #159
+
+Signed-off-by: Louis Sautier <sautier.louis@gmail.com>
+--- a/contrib/0anacron
++++ b/contrib/0anacron
+@@ -8,7 +8,9 @@ if [ `date +%Y%m%d` = "$day" ]; then
+ fi
+ 
+ # Check whether run on battery should be allowed
+-. /etc/default/anacron
++if test -r /etc/default/anacron; then
++    . /etc/default/anacron
++fi
+ 
+ if [ "$ANACRON_RUN_ON_BATTERY_POWER" != "yes" ]; then
+ 

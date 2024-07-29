@@ -1,0 +1,23 @@
+--- a/java/core/generate-test-sources-build.xml
++++ b/java/core/generate-test-sources-build.xml
+@@ -8,10 +8,12 @@
+         <arg value="${protobuf.source.dir}/google/protobuf/unittest.proto"/>
+         <arg value="${protobuf.source.dir}/google/protobuf/unittest_custom_options.proto"/>
+         <arg value="${protobuf.source.dir}/google/protobuf/unittest_enormous_descriptor.proto"/>
++        <arg value="${protobuf.source.dir}/google/protobuf/unittest_features.proto"/>
+         <arg value="${protobuf.source.dir}/google/protobuf/unittest_import.proto"/>
+         <arg value="${protobuf.source.dir}/google/protobuf/unittest_import_lite.proto"/>
+         <arg value="${protobuf.source.dir}/google/protobuf/unittest_import_public.proto"/>
+         <arg value="${protobuf.source.dir}/google/protobuf/unittest_import_public_lite.proto"/>
++        <arg value="${protobuf.source.dir}/google/protobuf/unittest_legacy_features.proto"/>
+         <arg value="${protobuf.source.dir}/google/protobuf/unittest_lite.proto"/>
+         <arg value="${protobuf.source.dir}/google/protobuf/unittest_mset.proto"/>
+         <arg value="${protobuf.source.dir}/google/protobuf/unittest_mset_wire_format.proto"/>
+@@ -19,6 +21,7 @@
+         <arg value="${protobuf.source.dir}/google/protobuf/unittest_optimize_for.proto"/>
+         <arg value="${protobuf.source.dir}/google/protobuf/unittest_proto3.proto"/>
+         <arg value="${protobuf.source.dir}/google/protobuf/unittest_proto3_optional.proto"/>
++        <arg value="${protobuf.source.dir}/google/protobuf/unittest_retention.proto"/>
+         <arg value="${protobuf.source.dir}/google/protobuf/unittest_well_known_types.proto"/>
+         <arg value="${test.proto.dir}/com/google/protobuf/any_test.proto"/>
+         <arg value="${test.proto.dir}/com/google/protobuf/cached_field_size_test.proto"/>

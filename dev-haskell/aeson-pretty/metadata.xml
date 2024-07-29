@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="executable">build/install the command-line tool as well as the library</flag>
+		<flag name="lib-only">don't build 'aeson-pretty' executable.</flag>
+	</use>
+	<upstream>
+		<remote-id type="hackage">aeson-pretty</remote-id>
+		<remote-id type="github">informatikr/aeson-pretty</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,16 @@
+Maintainer note: I copied this from the homepage for reference
+
+Command-line parameter "-l" to list input devices
+-e<NUM> to ONLY bind to device Number NUM (see -l List)
+-x will "mute" the device(s) for X11 so you can start hidclient while having a X11 session.
+-fFIFONAME will read data from a FIFO instead of event devices.
+
+You don't need to copy anything into /etc/bluetooth. Might be a good idea to edit /etc/bluetooth/main.conf and set "DisabledPlugins=input" there, and "Class=0x000540" - that helps 
+identifying the device as a "keyboard". Now run
+sudo hidclient -l
+to list the available input devices. If you have for example two usb mice and want to export only one (while working locally on the other), select the ID number from the first column. Start 
+hidclient with
+sudo hidclient -e4 -x
+where 4 is the number of your mouse. Hidclient will wait for bluetooth connections. The mouse should stop working on the local PC, so it will not interfere with your normal computer usage 
+while it is connected to another device.
+With the -x parameter, you can ignore the "openvt" mentioned above.

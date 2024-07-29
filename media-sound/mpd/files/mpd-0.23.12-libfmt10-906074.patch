@@ -1,0 +1,102 @@
+libfmt 10 changed the API, requiring a few adjustments to the codebase.
+This backports the upstream fixes for building against libfmt 10.
+
+Bug: https://bugs.gentoo.org/906074
+
+--- a/src/SongPrint.cxx
++++ b/src/SongPrint.cxx
+@@ -24,6 +24,7 @@
+ #include "TagPrint.hxx"
+ #include "client/Response.hxx"
+ #include "fs/Traits.hxx"
++#include "lib/fmt/AudioFormatFormatter.hxx"
+ #include "time/ChronoUtil.hxx"
+ #include "util/StringBuffer.hxx"
+ #include "util/UriUtil.hxx"
+@@ -93,7 +94,7 @@ song_print_info(Response &r, const LightSong &song, bool base) noexcept
+ 		time_print(r, "Last-Modified", song.mtime);
+ 
+ 	if (song.audio_format.IsDefined())
+-		r.Fmt(FMT_STRING("Format: {}\n"), ToString(song.audio_format));
++		r.Fmt(FMT_STRING("Format: {}\n"), song.audio_format);
+ 
+ 	tag_print_values(r, song.tag);
+ 
+@@ -116,7 +117,7 @@ song_print_info(Response &r, const DetachedSong &song, bool base) noexcept
+ 		time_print(r, "Last-Modified", song.GetLastModified());
+ 
+ 	if (const auto &f = song.GetAudioFormat(); f.IsDefined())
+-		r.Fmt(FMT_STRING("Format: {}\n"), ToString(f));
++		r.Fmt(FMT_STRING("Format: {}\n"), f);
+ 
+ 	tag_print_values(r, song.GetTag());
+ 
+--- a/src/TagPrint.cxx
++++ b/src/TagPrint.cxx
+@@ -21,7 +21,6 @@
+ #include "tag/Tag.hxx"
+ #include "tag/Settings.hxx"
+ #include "client/Response.hxx"
+-#include "util/StringView.hxx"
+ 
+ #include <fmt/format.h>
+ 
+@@ -35,7 +34,7 @@ tag_print_types(Response &r) noexcept
+ }
+ 
+ void
+-tag_print(Response &r, TagType type, StringView value) noexcept
++tag_print(Response &r, TagType type, std::string_view value) noexcept
+ {
+ 	r.Fmt(FMT_STRING("{}: {}\n"), tag_item_names[type], value);
+ }
+--- a/src/TagPrint.hxx
++++ b/src/TagPrint.hxx
+@@ -21,6 +21,7 @@
+ #define MPD_TAG_PRINT_HXX
+ 
+ #include <cstdint>
++#include <string_view>
+ 
+ enum TagType : uint8_t;
+ 
+@@ -32,7 +33,7 @@ void
+ tag_print_types(Response &response) noexcept;
+ 
+ void
+-tag_print(Response &response, TagType type, StringView value) noexcept;
++tag_print(Response &response, TagType type, std::string_view value) noexcept;
+ 
+ void
+ tag_print(Response &response, TagType type, const char *value) noexcept;
+--- a/src/TimePrint.cxx
++++ b/src/TimePrint.cxx
+@@ -36,5 +36,5 @@ time_print(Response &r, const char *name,
+ 		return;
+ 	}
+ 
+-	r.Fmt(FMT_STRING("{}: {}\n"), name, s);
++	r.Fmt(FMT_STRING("{}: {}\n"), name, s.c_str());
+ }
+--- a/src/command/PlayerCommands.cxx
++++ b/src/command/PlayerCommands.cxx
+@@ -28,6 +28,7 @@
+ #include "Partition.hxx"
+ #include "Instance.hxx"
+ #include "IdleFlags.hxx"
++#include "lib/fmt/AudioFormatFormatter.hxx"
+ #include "util/StringBuffer.hxx"
+ #include "util/ScopeExit.hxx"
+ #include "util/Exception.hxx"
+@@ -185,7 +186,7 @@ handle_status(Client &client, [[maybe_unused]] Request args, Response &r)
+ 
+ 		if (player_status.audio_format.IsDefined())
+ 			r.Fmt(FMT_STRING(COMMAND_STATUS_AUDIO ": {}\n"),
+-			      ToString(player_status.audio_format));
++			      player_status.audio_format);
+ 	}
+ 
+ #ifdef ENABLE_DATABASE
+-- 
+2.39.2
+

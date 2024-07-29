@@ -1,0 +1,14 @@
+--- a/rbtools/commands/setup_completion.py	2024-06-06 10:51:45.000000000 +0200
++++ b/rbtools/commands/setup_completion.py	2024-06-08 11:12:34.788309950 +0200
+@@ -6,7 +6,10 @@
+ import sys
+ from typing import Optional
+ 
+-import importlib_resources
++try:
++    import importlib.resources as importlib_resources
++except ImportError:
++    import importlib_resources
+ 
+ from rbtools.commands.base import BaseCommand, CommandError
+ 

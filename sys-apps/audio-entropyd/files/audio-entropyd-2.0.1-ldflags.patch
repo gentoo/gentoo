@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 95a84a6..340f95f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -12,7 +12,7 @@ TARGETS=audio-entropyd
+ all: $(TARGETS) 
+ 
+ audio-entropyd: audio-entropyd.o error.o proc.o val.o RNGTEST.o error.o
+-	$(CC) -o $@ $^ $(LFLAGS) 
++	$(CC) $(LDFLAGS) -o $@ $^ $(LFLAGS) 
+ 
+ install: audio-entropyd
+ 	cp audio-entropyd /usr/local/sbin/

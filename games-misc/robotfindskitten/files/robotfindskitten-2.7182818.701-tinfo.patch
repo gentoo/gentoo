@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/690114
+
+--- robotfindskitten-2.7182818.701/configure.in
++++ robotfindskitten-2.7182818.701/configure.in
+@@ -11,9 +11,14 @@
+ AC_PROG_CC
+ AM_PROG_LIBTOOL
+ AC_PROG_INSTALL
++PKG_PROG_PKG_CONFIG
+ 
+ dnl Checks for libraries.
+-AC_CHECK_LIB(ncurses, initscr, ,curses)
++PKG_CHECK_MODULES(NCURSES, ncurses, [
++		  LIBS="$LIBS $NCURSES_LIBS"
++		 ],[
++		  AC_MSG_ERROR([Cannot find ncurses lib])
++		 ])
+ 
+ dnl Checks for header files.
+ AC_CHECK_HEADERS(signal.h)

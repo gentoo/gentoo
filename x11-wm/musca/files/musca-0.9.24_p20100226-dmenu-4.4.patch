@@ -1,0 +1,44 @@
+https://bugs.archlinux.org/task/25232
+https://bugs.launchpad.net/musca/+bug/816890
+
+--- a/musca.c
++++ b/musca.c
+@@ -2162,8 +2162,16 @@ void launch(char *cmd)
+ }
+ void menu(char *cmd, char *after)
+ {
++	// we keep original behaviour by sorting
+ 	char *tmp = allocate(strlen(cmd)+strlen(after)+BLOCK);
+-	sprintf(tmp, "%s | %s | %s", cmd, settings[ms_dmenu].s, after);
++	sprintf(tmp, "%s | sort | dmenu %s | %s", cmd, settings[ms_dmenu].s, after);
++	printf("%s\n", tmp);
++	launch(tmp); free(tmp);
++}
++void menufix(char *cmd, char*after)
++{
++	char *tmp = allocate(strlen(cmd)+strlen(after)+BLOCK);
++	sprintf(tmp, "%s %s | %s",cmd, settings[ms_dmenu].s, after);
+ 	printf("%s\n", tmp);
+ 	launch(tmp); free(tmp);
+ }
+@@ -2631,7 +2639,7 @@ char* com_command(char *cmd, regmatch_t *subs)
+ }
+ char* com_shell(char *cmd, regmatch_t *subs)
+ {
+-	menu("dmenu_path", settings[ms_run_shell_command].s);
++	menufix("dmenu_run", settings[ms_run_shell_command].s);
+ 	return NULL;
+ }
+ char* com_alias(char *cmd, regmatch_t *subs)
+diff --git a/musca_proto.h b/musca_proto.h
+index dc14d75..e25c1ea 100644
+--- a/musca_proto.h
++++ b/musca_proto.h
+@@ -145,6 +145,7 @@ void head_focus(head *h);
+ void head_next();
+ void launch(char *cmd);
+ void menu(char *cmd, char *after);
++void menufix(char *cmd, char *after);
+ void menu_wrapper(char *cmd, char *after);
+ void shutdown();
+ dcell parse_size(char *cmd, regmatch_t *subs, ucell index, ucell limit);

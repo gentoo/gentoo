@@ -1,0 +1,167 @@
+https://gitlab.freedesktop.org/spice/spice-gtk/-/merge_requests/121
+https://bugs.gentoo.org/915210
+
+From 7e87382b585a799ced543b0c3fd127b2a813285f Mon Sep 17 00:00:00 2001
+From: Frediano Ziglio <freddy77@gmail.com>
+Date: Fri, 23 Jun 2023 21:17:26 +0100
+Subject: [PATCH] Split symbol file in 2 files
+
+One file for spice-glib and another for spice-gtk.
+This avoid having duplicate exports in the future.
+spice_g_signal_connect_object, spice_util_get_debug,
+spice_util_get_version_string, spice_util_set_debug and
+spice_uuid_to_string are exported by both libraries to keep ABI
+compatibility.
+
+Signed-off-by: Frediano Ziglio <freddy77@gmail.com>
+---
+ src/{map-file => map-file-glib} | 22 ---------------------
+ src/map-file-gtk                | 35 +++++++++++++++++++++++++++++++++
+ src/meson.build                 | 17 ++++++++++------
+ 3 files changed, 46 insertions(+), 28 deletions(-)
+ rename src/{map-file => map-file-glib} (89%)
+ create mode 100644 src/map-file-gtk
+
+diff --git a/src/map-file b/src/map-file-glib
+similarity index 89%
+rename from src/map-file
+rename to src/map-file-glib
+index c0d8ca6e..ef0a31f3 100644
+--- a/src/map-file
++++ b/src/map-file-glib
+@@ -31,18 +31,8 @@ spice_display_channel_get_primary;
+ spice_display_channel_get_type;
+ spice_display_channel_gl_draw_done;
+ spice_display_get_gl_scanout;
+-spice_display_get_grab_keys;
+-spice_display_get_pixbuf;
+ spice_display_get_primary;
+-spice_display_get_type;
+ spice_display_gl_draw_done;
+-spice_display_key_event_get_type;
+-spice_display_keyboard_ungrab;
+-spice_display_mouse_ungrab;
+-spice_display_new;
+-spice_display_new_with_monitor;
+-spice_display_send_keys;
+-spice_display_set_grab_keys;
+ spice_file_transfer_task_cancel;
+ spice_file_transfer_task_get_filename;
+ spice_file_transfer_task_get_progress;
+@@ -52,17 +42,7 @@ spice_file_transfer_task_get_type;
+ spice_get_option_group;
+ spice_gl_scanout_free;
+ spice_gl_scanout_get_type;
+-spice_grab_sequence_as_string;
+-spice_grab_sequence_copy;
+-spice_grab_sequence_free;
+-spice_grab_sequence_get_type;
+-spice_grab_sequence_new;
+-spice_grab_sequence_new_from_string;
+ spice_g_signal_connect_object;
+-spice_gtk_session_copy_to_guest;
+-spice_gtk_session_get;
+-spice_gtk_session_get_type;
+-spice_gtk_session_paste_from_guest;
+ spice_inputs_button_press;
+ spice_inputs_button_release;
+ spice_inputs_channel_button_press;
+@@ -185,8 +165,6 @@ spice_usb_device_manager_is_redirecting;
+ spice_usb_device_manager_allocate_device_for_file_descriptor;
+ spice_usb_device_manager_create_shared_cd_device;
+ spice_usb_device_manager_is_device_shared_cd;
+-spice_usb_device_widget_get_type;
+-spice_usb_device_widget_new;
+ spice_usbredir_channel_get_type;
+ spice_util_get_debug;
+ spice_util_get_version_string;
+diff --git a/src/map-file-gtk b/src/map-file-gtk
+new file mode 100644
+index 00000000..ca5dd446
+--- /dev/null
++++ b/src/map-file-gtk
+@@ -0,0 +1,35 @@
++SPICEGTK_1 {
++global:
++spice_display_get_grab_keys;
++spice_display_get_pixbuf;
++spice_display_get_type;
++spice_display_key_event_get_type;
++spice_display_keyboard_ungrab;
++spice_display_mouse_ungrab;
++spice_display_new;
++spice_display_new_with_monitor;
++spice_display_send_keys;
++spice_display_set_grab_keys;
++spice_grab_sequence_as_string;
++spice_grab_sequence_copy;
++spice_grab_sequence_free;
++spice_grab_sequence_get_type;
++spice_grab_sequence_new;
++spice_grab_sequence_new_from_string;
++spice_gtk_session_copy_to_guest;
++spice_gtk_session_get;
++spice_gtk_session_get_type;
++spice_gtk_session_paste_from_guest;
++spice_usb_device_widget_get_type;
++spice_usb_device_widget_new;
++
++/* FIXME: remove the following 5 duplicated symbols in next ABI break */
++spice_g_signal_connect_object;
++spice_util_get_debug;
++spice_util_get_version_string;
++spice_util_set_debug;
++spice_uuid_to_string;
++
++local:
++*;
++};
+diff --git a/src/meson.build b/src/meson.build
+index 852217ac..68fe7ab2 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -185,14 +185,20 @@ test_syms_path = meson.current_source_dir() / 'test-map-file'
+ test_version_script = '-Wl,--version-script=@0@'.format(test_syms_path)
+ spice_has_version_script = compiler.has_link_argument(test_version_script)
+ 
+-spice_client_glib_syms = files('map-file')
+-spice_client_glib_syms_path = meson.current_source_dir() / 'map-file'
+-spice_gtk_version_script = '-Wl,--version-script=@0@'.format(spice_client_glib_syms_path)
+-if not spice_has_version_script
++if spice_has_version_script
++  spice_client_glib_syms = files('map-file-glib')
++  spice_client_gtk_syms = files('map-file-gtk')
++  spice_client_glib_syms_path = meson.current_source_dir() / 'map-file-glib'
++  spice_client_gtk_syms_path = meson.current_source_dir() / 'map-file-gtk'
++  spice_glib_version_script = '-Wl,--version-script=@0@'.format(spice_client_glib_syms_path)
++  spice_gtk_version_script = '-Wl,--version-script=@0@'.format(spice_client_gtk_syms_path)
++else
+   if host_machine.system() == 'linux'
+     error('Version scripts should be supported on Linux')
+   endif
+   spice_client_glib_syms = []
++  spice_client_gtk_syms = []
++  spice_glib_version_script = []
+   spice_gtk_version_script = []
+ endif
+ 
+@@ -210,7 +216,7 @@ spice_client_glib_lib = library('spice-client-glib-2.0', spice_client_glib_sourc
+                                 version : spice_client_glib_so_version,
+                                 install : true,
+                                 include_directories : spice_gtk_include,
+-                                link_args : [spice_gtk_version_script],
++                                link_args : [spice_glib_version_script],
+                                 link_depends : spice_client_glib_syms,
+                                 dependencies : spice_glib_deps)
+ 
+@@ -377,7 +383,6 @@ if spice_gtk_has_gtk
+   #
+   # libspice-client-gtk.so
+   #
+-  spice_client_gtk_syms = spice_client_glib_syms
+ 
+   # soversion
+   # http://www.gnu.org/software/libtool/manual/html_node/Updating-version-info.html
+-- 
+GitLab
+

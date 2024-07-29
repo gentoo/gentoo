@@ -1,0 +1,26 @@
+https://github.com/notroj/cadaver/pull/42
+
+From e798c0144d3042cf6139d1ab85d84a8416cf5f00 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 17 Apr 2024 00:51:57 +0100
+Subject: [PATCH] Makefile.in: include CFLAGS at link-time
+
+GCC's documentation recommends this [0] for e.g. LTO. As a trivial silly
+example, my -fdiagnostics-color=always was stripped out, so a warning
+I got wasn't in colour.
+
+[0] https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html#index-flto
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -56,7 +56,7 @@ all: $(TARGET)
+ .PHONY: subdirs install clean distclean
+ 
+ $(TARGET): $(ALLOBJS) subdirs
+-	$(CC) $(LDFLAGS) -o $(TARGET) $(ALLOBJS) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TARGET) $(ALLOBJS) $(LIBS)
+ 
+ .c.o:
+ 	$(CC) $(ALL_CFLAGS) -o $@ -c $<
+-- 
+2.44.0
+

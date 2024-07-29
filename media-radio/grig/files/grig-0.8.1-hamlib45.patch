@@ -1,0 +1,17 @@
+Hamlib 4.5 dropped rig_get_split macro
+see Bug 883773
+
+diff --git a/src/rig-daemon.c b/src/rig-daemon.c
+index ddd922f..1a86a5e 100644
+--- a/src/rig-daemon.c
++++ b/src/rig-daemon.c
+@@ -2283,7 +2283,8 @@ rig_daemon_exec_cmd         (rig_cmd_t cmd,
+ 	case RIG_CMD_GET_SPLIT:
+ 		if (has_get->split) {
+ 
+-			retcode = rig_get_split (myrig, RIG_VFO_RX, &get->split);
++			vfo_t tx_vfo;
++			retcode = rig_get_split_vfo (myrig, RIG_VFO_RX, &get->split, &tx_vfo);
+ 
+ 			/* raise anomaly if execution did not succeed */
+ 			if (retcode != RIG_OK) {

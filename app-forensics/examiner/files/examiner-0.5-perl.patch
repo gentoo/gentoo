@@ -1,0 +1,38 @@
+--- a/os/linux/examiner_hashes.pl.orig	2005-05-22 10:39:56.000000000 +1000
++++ b/os/linux/examiner_hashes.pl	2005-05-22 10:40:11.000000000 +1000
+@@ -1,6 +1,6 @@
+ $loaded_library=1;
+ 
+-syscalls = (
++$syscalls = (
+ 	1 => "exit",
+ 	2 => "fork",
+ 	3 => "read",
+@@ -240,7 +240,7 @@
+ 	237 => "fremovexattr",
+ );
+ 
+-socketcall = (
++$socketcall = (
+ 	1 => "SOCKET",
+ 	2 => "BIND",
+ 	3 => "CONNECT",
+--- a/os/bsd/examiner_hashes.pl.orig	2005-05-22 10:45:39.000000000 +1000
++++ b/os/bsd/examiner_hashes.pl	2005-05-22 10:45:58.000000000 +1000
+@@ -1,6 +1,6 @@
+ $loaded_library=1;
+ 
+-syscalls = (
++$syscalls = (
+ 	1 => "exit",
+ 	2 => "fork",
+ 	3 => "read",
+@@ -186,7 +186,7 @@
+ 	281 => "MAXSYSCALL",
+ );
+ 
+-socketcall = (
++$socketcall = (
+         1 => "SOCKET",
+         2 => "BIND",
+         3 => "CONNECT",

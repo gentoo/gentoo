@@ -1,0 +1,110 @@
+diff --git a/src/libslic3r/AppConfig.cpp b/src/libslic3r/AppConfig.cpp
+index a626986..5f2d963 100644
+--- a/src/libslic3r/AppConfig.cpp
++++ b/src/libslic3r/AppConfig.cpp
+@@ -1,6 +1,7 @@
+ #include <boost/filesystem.hpp>
+ #include "libslic3r/libslic3r.h"
+ #include "libslic3r/Utils.hpp"
++#include "libslic3r/I18N.hpp"
+ #include "AppConfig.hpp"
+ #include "Exception.hpp"
+ #include "LocalesUtils.hpp"
+diff --git a/src/libslic3r/CustomGCode.hpp b/src/libslic3r/CustomGCode.hpp
+index 633edc8..fcd26ff 100644
+--- a/src/libslic3r/CustomGCode.hpp
++++ b/src/libslic3r/CustomGCode.hpp
+@@ -3,6 +3,7 @@
+ 
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ namespace Slic3r {
+ 
+diff --git a/src/libslic3r/ExtrusionEntity.hpp b/src/libslic3r/ExtrusionEntity.hpp
+index 1c54588..c74df3a 100644
+--- a/src/libslic3r/ExtrusionEntity.hpp
++++ b/src/libslic3r/ExtrusionEntity.hpp
+@@ -9,6 +9,8 @@
+ #include <string_view>
+ #include <numeric>
+ 
++#include "Config.hpp"
++
+ namespace Slic3r {
+ 
+ class ExPolygonCollection;
+diff --git a/src/libslic3r/Geometry/ArcFitter.cpp b/src/libslic3r/Geometry/ArcFitter.cpp
+index 34ef2ae..20fe8b7 100644
+--- a/src/libslic3r/Geometry/ArcFitter.cpp
++++ b/src/libslic3r/Geometry/ArcFitter.cpp
+@@ -2,6 +2,7 @@
+ 
+ #include <cmath>
+ #include <cassert>
++#include "Polyline.hpp"
+ 
+ namespace Slic3r { namespace Geometry {
+ 
+diff --git a/src/libslic3r/PNGReadWrite.hpp b/src/libslic3r/PNGReadWrite.hpp
+index 01e1f47..1dce27a 100644
+--- a/src/libslic3r/PNGReadWrite.hpp
++++ b/src/libslic3r/PNGReadWrite.hpp
+@@ -2,6 +2,7 @@
+ #define PNGREAD_HPP
+ 
+ #include <vector>
++#include <cstdint>
+ #include <string>
+ #include <istream>
+ 
+diff --git a/src/libslic3r/PerimeterGenerator.hpp b/src/libslic3r/PerimeterGenerator.hpp
+index 34ec4e6..ed83b3e 100644
+--- a/src/libslic3r/PerimeterGenerator.hpp
++++ b/src/libslic3r/PerimeterGenerator.hpp
+@@ -1,6 +1,7 @@
+ #ifndef slic3r_PerimeterGenerator_hpp_
+ #define slic3r_PerimeterGenerator_hpp_
+ 
++#include "ClipperUtils.hpp"
+ #include "libslic3r.h"
+ #include <vector>
+ #include "ExPolygonCollection.hpp"
+diff --git a/src/libslic3r/Print.cpp b/src/libslic3r/Print.cpp
+index f69d68f..1dd55f2 100644
+--- a/src/libslic3r/Print.cpp
++++ b/src/libslic3r/Print.cpp
+@@ -18,6 +18,8 @@
+ #include "Utils.hpp"
+ #include "BuildVolume.hpp"
+ 
++#include <tbb/tbb.h>
++
+ #include <float.h>
+ 
+ #include <algorithm>
+diff --git a/src/slic3r/GUI/BitmapCache.hpp b/src/slic3r/GUI/BitmapCache.hpp
+index 34821c4..a74a850 100644
+--- a/src/slic3r/GUI/BitmapCache.hpp
++++ b/src/slic3r/GUI/BitmapCache.hpp
+@@ -3,6 +3,7 @@
+ 
+ #include <map>
+ #include <vector>
++#include <cstdint>
+ 
+ #include <wx/wxprec.h>
+ #ifndef WX_PRECOMP
+diff --git a/src/slic3r/GUI/CreateMMUTiledCanvas.cpp b/src/slic3r/GUI/CreateMMUTiledCanvas.cpp
+index 553a183..686630c 100644
+--- a/src/slic3r/GUI/CreateMMUTiledCanvas.cpp
++++ b/src/slic3r/GUI/CreateMMUTiledCanvas.cpp
+@@ -40,6 +40,7 @@
+ #include <wx/odcombo.h>
+ #include <wx/textctrl.h>
+ #include <wx/wrapsizer.h>
++#include <wx/rawbmp.h>
+ #include "wxExtensions.hpp"
+ 
+ #include <boost/filesystem/path.hpp>

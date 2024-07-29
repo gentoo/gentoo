@@ -1,0 +1,30 @@
+From 23f1df0b13c46cef746674434640588864f8c453 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Sun, 18 Feb 2024 23:16:28 +0300
+Subject: [PATCH] Fix compilation with audiocom
+
+Fix error `OAuthService.h: error: field mAccessToken has incomplete type
+std::string {aka std::_cxx11::basic_string<char>}`
+
+See: https://bugs.gentoo.org/920363
+
+Signed-off-by: Azamat H. Hackimov <azamat.hackimov@gmail.com>
+---
+ libraries/lib-cloud-audiocom/OAuthService.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libraries/lib-cloud-audiocom/OAuthService.h b/libraries/lib-cloud-audiocom/OAuthService.h
+index bd01f1656..18761df6d 100644
+--- a/libraries/lib-cloud-audiocom/OAuthService.h
++++ b/libraries/lib-cloud-audiocom/OAuthService.h
+@@ -12,6 +12,7 @@
+ 
+ #include <chrono>
+ #include <functional>
++#include <string>
+ #include <string_view>
+ #include <mutex>
+ 
+-- 
+2.43.0
+

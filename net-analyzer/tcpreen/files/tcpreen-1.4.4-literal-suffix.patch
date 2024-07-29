@@ -1,0 +1,13 @@
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -108,8 +108,8 @@
+ # define VERSION "unknown version"
+ #endif
+ 	puts (
+-"TCP re-engineering tool "VERSION" ("PACKAGE_HOST")\n"
+-" built "__DATE__" on "PACKAGE_BUILD_HOSTNAME" ("PACKAGE_BUILD")\n"
++"TCP re-engineering tool " VERSION " (" PACKAGE_HOST ")\n"
++" built " __DATE__ " on " PACKAGE_BUILD_HOSTNAME " (" PACKAGE_BUILD ")\n"
+ "Copyright (C) 2002-2004 Remi Denis-Courmont");
+ 	puts (_(
+ "This is free software; see the source for copying conditions.\n"

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>Kangie@gentoo.org</email>
+    <description>Primary maintainer</description>
+  </maintainer>
+  <use>
+    <flag name="openssl">Build against the <pkg>dev-libs/openssl</pkg> library for TLS support.</flag>
+    <flag name="mbedtls">Build against the <pkg>net-libs/mbedtls</pkg> library for TLS support.</flag>
+    <flag name="xembed">Enable XEmbed protocol support</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">dillo-browser/dillo</remote-id>
+  </upstream>
+</pkgmetadata>

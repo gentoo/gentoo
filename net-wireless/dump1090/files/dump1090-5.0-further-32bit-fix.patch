@@ -1,0 +1,52 @@
+https://github.com/flightaware/dump1090/commit/462dee56f3a339bc4d83fea264fe89a1ced5bd22.patch
+https://github.com/flightaware/dump1090/commit/455896e86db84d10a197f5a3f88d13c0539ad470.patch
+https://bugs.gentoo.org/818130
+
+From 462dee56f3a339bc4d83fea264fe89a1ced5bd22 Mon Sep 17 00:00:00 2001
+From: Oliver Jowett <oliver.jowett@flightaware.com>
+Date: Sat, 13 Mar 2021 12:49:40 +0800
+Subject: [PATCH] Fix builds on 32-bit x86
+
+---
+ Makefile.cpufeatures | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile.cpufeatures b/Makefile.cpufeatures
+index 099714e08..12377ad81 100644
+--- a/Makefile.cpufeatures
++++ b/Makefile.cpufeatures
+@@ -17,7 +17,11 @@ ifeq ($(CPUFEATURES_UNAME),Darwin)
+   CPUFEATURES_CFLAGS += -DHAVE_SYSCTLBYNAME
+ endif
+ 
+-ifeq ($(CPUFEATURES_ARCH), x86_64)
++ifeq ($(CPUFEATURES_ARCH),x86_64)
++  CPUFEATURES_OBJS += cpu_features/src/cpuinfo_x86.o
++endif
++
++ifneq ($(filter-out $(CPUFEATURES_ARCH),i%86),)
+   CPUFEATURES_OBJS += cpu_features/src/cpuinfo_x86.o
+ endif
+ 
+From 455896e86db84d10a197f5a3f88d13c0539ad470 Mon Sep 17 00:00:00 2001
+From: Oliver Jowett <oliver.jowett@flightaware.com>
+Date: Wed, 17 Mar 2021 02:21:18 +0800
+Subject: [PATCH] Fix broken 32-bit x86 test that broke builds on non-x86
+
+---
+ Makefile.cpufeatures | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.cpufeatures b/Makefile.cpufeatures
+index 12377ad81..8c3b8418d 100644
+--- a/Makefile.cpufeatures
++++ b/Makefile.cpufeatures
+@@ -21,7 +21,7 @@ ifeq ($(CPUFEATURES_ARCH),x86_64)
+   CPUFEATURES_OBJS += cpu_features/src/cpuinfo_x86.o
+ endif
+ 
+-ifneq ($(filter-out $(CPUFEATURES_ARCH),i%86),)
++ifneq (,$(filter i%86,$(CPUFEATURES_ARCH)))
+   CPUFEATURES_OBJS += cpu_features/src/cpuinfo_x86.o
+ endif
+ 

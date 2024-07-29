@@ -1,0 +1,92 @@
+--- a/configure.in
++++ b/configure.in
+@@ -59,10 +59,6 @@
+ m4_define([pango_pkg], [pango])
+ m4_define([pango_required_version], [1.0.0])
+ 
+-# Pangox
+-m4_define([pangox_pkg], [pangox])
+-m4_define([pangox_required_version], [1.0.0])
+-
+ # PangoFT2
+ m4_define([pangoft2_pkg], [pangoft2])
+ m4_define([pangoft2_required_version], [1.0.0])
+@@ -350,7 +346,6 @@
+ gtk_pkg >= gtk_required_version \
+ gdk_pkg >= gdk_required_version \
+ pango_pkg >= pango_required_version \
+-pangox_pkg >= pangox_required_version \
+ gmodule_pkg >= gmodule_required_version \
+ ])
+ 
+@@ -570,7 +565,7 @@
+ # CFLAGS and LIBS
+ ##################################################
+ 
+-GDKGLEXT_PACKAGES="gdk_pkg pango_pkg pangox_pkg gmodule_pkg"
++GDKGLEXT_PACKAGES="gdk_pkg pango_pkg gmodule_pkg"
+ GDKGLEXT_EXTRA_CFLAGS="$GL_CFLAGS $GDKGLEXT_WIN_CFLAGS"
+ GDKGLEXT_EXTRA_LIBS="$GL_LIBS $GLU_LIBS $GDKGLEXT_WIN_LIBS"
+ GDKGLEXT_DEP_CFLAGS="$GDKGLEXT_EXTRA_CFLAGS `$PKG_CONFIG --cflags $GDKGLEXT_PACKAGES`"
+--- a/gdk/x11/gdkglfont-x11.c
++++ b/gdk/x11/gdkglfont-x11.c
+@@ -18,7 +18,8 @@
+ 
+ #include <string.h>
+ 
+-#include <pango/pangox.h>
++//#include <pango/pangox.h>
++#include <pango/pangocairo.h>
+ 
+ #include "gdkglx.h"
+ #include "gdkglprivate-x11.h"
+@@ -77,9 +78,9 @@
+ {
+   PangoFont *font = NULL;
+   gchar *charset = NULL;
+-  PangoXSubfont subfont_id;
++  //PangoXSubfont subfont_id;
+   gchar *xlfd = NULL;
+-  PangoXFontCache *font_cache;
++  //PangoXFontCache *font_cache;
+   XFontStruct *fs;
+ 
+   GDK_GL_NOTE_FUNC_PRIVATE ();
+@@ -91,6 +92,7 @@
+       goto FAIL;
+     }
+ 
++  /*
+   charset = gdk_gl_font_charset_for_locale ();
+   if (!pango_x_find_first_subfont (font, &charset, 1, &subfont_id))
+     {
+@@ -114,6 +116,7 @@
+   glXUseXFont (fs->fid, first, count, list_base);
+ 
+   pango_x_font_cache_unload (font_cache, fs);
++  */
+ 
+  FAIL:
+ 
+@@ -149,11 +152,7 @@
+ 
+   GDK_GL_NOTE_FUNC ();
+ 
+-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
+-  font_map = pango_x_font_map_for_display (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
+-#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
+-  font_map = pango_x_font_map_for_display (gdk_x11_get_default_xdisplay ());
+-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
++  font_map = pango_cairo_font_map_get_default ();
+ 
+   return gdk_gl_font_use_pango_font_common (font_map, font_desc,
+                                             first, count, list_base);
+@@ -187,7 +186,7 @@
+ 
+   GDK_GL_NOTE_FUNC ();
+ 
+-  font_map = pango_x_font_map_for_display (GDK_DISPLAY_XDISPLAY (display));
++  font_map = pango_cairo_font_map_get_default ();
+ 
+   return gdk_gl_font_use_pango_font_common (font_map, font_desc,
+                                             first, count, list_base);

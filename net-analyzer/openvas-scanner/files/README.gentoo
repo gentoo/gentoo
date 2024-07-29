@@ -1,0 +1,3 @@
+The redis configuration file is located in:
+/etc/gvm/redis-openvas.conf
+Please apply your changes to the new configuration files.

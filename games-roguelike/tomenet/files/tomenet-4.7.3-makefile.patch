@@ -1,0 +1,43 @@
+diff --git a/makefile b/makefile
+index ee56a33..7f3c81f 100644
+--- a/makefile
++++ b/makefile
+@@ -224,7 +224,7 @@ CPP = cpp
+ #thing is, that the correctly transcribed URL will actually make tolua choke.
+ #So, -nostdinc will prevent the whole own comment blob of cpp to get generated
+ #in the first place, as we never asked for it:
+-CPPFLAGS = -C -P -nostdinc
++CPPFLAGS = -C -P -nostdinc $(GENTOO_CPPFLAGS)
+ 
+ # gcc variant:
+ #CPP = gcc
+--- a/makefile
++++ b/makefile
+@@ -234,5 +234,19 @@ CC = gcc
+ X11BASE = /usr/X11R6
+ 
++# defines
++ifdef USE_SDL
++CFLAGS += -DSOUND_SDL $(shell sdl-config --cflags)
++SDL_LIBS = $(shell sdl-config --libs) -lSDL_mixer
++endif
++
++ifdef USE_X
++CFLAGS += -DUSE_X11
++LIBS += -lX11
++endif
++
++CFLAGS += -Wall
++CFLAGS += -DUSE_GCU -D_XOPEN_SOURCE -D_BSD_SOURCE -DMEXP=19937 -std=c99
++LIBS += $(shell ${PKG_CONFIG} --libs ncurses) -lcrypt -lm ${SDL_LIBS}
+ 
+ ##
+ ## Standard version -- supports X11 (main-x11.c)
+@@ -259,7 +274,5 @@ X11BASE = /usr/X11R6
+ #CFLAGS = -O2 -g -pipe -Wall -DUSE_X11 -DUSE_GCU -I${X11BASE}/include -D_XOPEN_SOURCE -D_BSD_SOURCE -DMEXP=19937 -std=c99 -DSOUND_SDL `sdl-config --cflags` -D_DEFAULT_SOURCE -DACC32 -fPIE
+-CFLAGS = -O2 -g -pipe -Wall -DUSE_X11 -DUSE_GCU -I${X11BASE}/include -D_XOPEN_SOURCE -D_BSD_SOURCE -DMEXP=19937 -std=c99 -DSOUND_SDL `sdl-config --cflags` -D_DEFAULT_SOURCE -DACC32 -fPIE -Wno-format-truncation
+ #LIBS = -L${X11BASE}/lib -L/usr/pkg/lib -lX11 -lncurses -lcrypt -lm `sdl-config --libs` -lSDL_mixer
+-LIBS = -L${X11BASE}/lib -L/usr/pkg/lib -lX11 -lncurses -lcrypt -lm `sdl-config --libs` -lSDL_mixer
+ ACCEDIT_LIBS = -lcurses -lcrypt
+ ##
+ ## Without SDL

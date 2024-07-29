@@ -1,0 +1,205 @@
+--- a/src/alig_graph_closure.c
++++ b/src/alig_graph_closure.c
+@@ -27,7 +27,7 @@
+ void init_seq(CLOSURE *clos, int nbreseq, int *longseq);
+ void desinit_seq(CLOSURE *clos);
+ 
+-int print_aligSets(CLOSURE *clos, int nseq, int i);
++void print_aligSets(CLOSURE *clos, int nseq, int i);
+ 
+ char DEBUG=0;
+ 
+@@ -309,7 +309,7 @@
+ }
+ 
+ 
+-int print_aligSets(CLOSURE *clos, int nseq, int i)
++void print_aligSets(CLOSURE *clos, int nseq, int i)
+ {
+ char nouveau_, terminer;
+ int n, ng, nd, nn, k;
+@@ -395,7 +395,7 @@
+ liberer(clos);
+ }
+ 
+-int addAlignedPositions(CLOSURE *clos, int seq1, int i, int seq2, int j)
++void addAlignedPositions(CLOSURE *clos, int seq1, int i, int seq2, int j)
+ {
+ char nouveau_, terminer;
+ int n, n1, n2, ng1, ng2, nd1, nd2, nn, k;
+@@ -623,7 +623,7 @@
+ 	return(!path(clos, y, j, x, i));
+ }
+ 
+-int addAlignedSegments(CLOSURE *clos, int x, int i, int y, int j, int l)
++void addAlignedSegments(CLOSURE *clos, int x, int i, int y, int j, int l)
+ {
+ int k;
+ 
+--- a/src/alig_graph_closure.h
++++ b/src/alig_graph_closure.h
+@@ -43,13 +43,13 @@
+ 
+ void freeAligGraphClosure(CLOSURE *clos);
+ 
+-int addAlignedPositions(CLOSURE *clos, int x, int i, int y, int j);
++void addAlignedPositions(CLOSURE *clos, int x, int i, int y, int j);
+ 
+ int alignablePositions(CLOSURE *clos, int x, int i, int y, int j);
+ 
+ int alignedPositions(CLOSURE *clos, int x, int i, int y, int j);
+ 
+-int addAlignedSegments(CLOSURE *clos, int x, int i, int y, int j, int l);
++void addAlignedSegments(CLOSURE *clos, int x, int i, int y, int j, int l);
+ 
+ int alignableSegments(CLOSURE *clos, int x, int i, int y, int j, int l);
+ 
+--- a/src/anchor.c
++++ b/src/anchor.c
+@@ -17,6 +17,7 @@
+ #include "define.h"
+ #include "dialign.h"
+ #include "alig_graph_closure.h"
++#include "pratique.h"
+ 
+ 
+ extern int  anc_num, *seqlen ;
+@@ -24,6 +25,8 @@
+ extern char *seq[MAX_SEQNUM];
+ extern struct multi_frag *anchor_frg ;
+ 
++extern int word_count( char *seq );
++
+ void anchor_check( int s1, int s2, int b1, int b2, int l ,  float scr ) {  
+ 
+       if(  
+@@ -101,7 +104,7 @@
+ }
+ 
+ 
+-int multi_anc_read( char *file_name ) {
++void multi_anc_read( char *file_name ) {
+ 
+   char anc_file_name[ NAME_LEN ] ;
+   FILE *fp;
+--- a/src/dialign.c
++++ b/src/dialign.c
+@@ -218,7 +218,7 @@
+  extern void subst_mat(char *file_name, int fragno , struct  multi_frag *smp );
+  extern int seq_read( char *in_file , char *sq[MAX_SEQNUM] , char **sqn , char **fsqn) ;
+  extern int anc_read( char *file_name ) ;
+- extern int multi_anc_read( char *file_name ) ;
++ extern void multi_anc_read( char *file_name ) ;
+  extern void randomize( int r_numb , FILE *fp1 );
+  extern int mini2(int a, int b);
+  extern int maxi2(int a, int b);
+@@ -250,6 +250,9 @@
+  extern void av_tree_print();
+  extern void matrix_read( FILE *fp_mat ) ;
+  extern void mem_alloc( ) ;
++ extern void regex_parse( char *mot_regex ) ;
++ extern void seq_parse( char *mot_regex ) ;
++ extern void exclude_frg_read( char *file_name , int ***exclude_list) ;
+  
+ 
+                     /******************************/
+@@ -258,7 +261,7 @@
+ 
+ 
+ 
+-main(int argc, char **argv)
++int main(int argc, char **argv)
+ {
+  int k,  anc1, dia_counter, tmpi1, tmpi2 ;
+ 
+--- a/src/functions.c
++++ b/src/functions.c
+@@ -853,7 +853,7 @@
+       }
+   }
+ 
+-wgt_type_count( int num , int e_len, int *plus_cnt, int *minus_cnt,
++void wgt_type_count( int num , int e_len, int *plus_cnt, int *minus_cnt,
+            int *nuc_cnt , int *frg_inv, struct multi_frag *dia )      {
+ 
+ int i, dc, pc, s1, pos;
+@@ -882,7 +882,7 @@
+ 
+ 
+ 
+-plot_calc( int num , int e_len, float *w_count, float *pl, 
++void plot_calc( int num , int e_len, float *w_count, float *pl, 
+            struct multi_frag *dia , FILE *fp_csc )
+   {
+     int i, dc, pc, s1, pos;
+--- a/src/input.c
++++ b/src/input.c
+@@ -17,6 +17,7 @@
+ #include "define.h"
+ #include "dialign.h"
+ #include "alig_graph_closure.h"
++#include "pratique.h"
+ 
+ extern int max_dia , self_comparison ; 
+ extern int sim_score[21][21]; 
+@@ -370,8 +371,11 @@
+  }
+ 
+ 
+-  if ( fgets( line , MLINE , fp ) == NULL ) 
+-    erreur("\n\n problem with file %s  \n\n", file_name );
++  if ( fgets( line , MLINE , fp ) == NULL )  {
++    char buffer [500];
++    snprintf ( buffer, 500, "\n\n problem with file %s  \n\n", file_name );
++    erreur( buffer );
++  }
+   else
+     if( w_type % 2 )  
+       av_sim_score_nuc = atof( line );
+--- a/src/output.c
++++ b/src/output.c
+@@ -61,9 +61,9 @@
+  extern void mini(int *a, int b);
+  extern void maxi(int *a, int b);
+  extern int int_test(float f);
+- extern plot_calc( int num , int e_len, float *w_count, float *pl,
++ extern void plot_calc( int num , int e_len, float *w_count, float *pl,
+            struct multi_frag *dia , FILE *fp_csc ) ;
+- extern wgt_type_count( int num , int e_len, int *plus_cnt, int *minus_cnt,
++ extern void wgt_type_count( int num , int e_len, int *plus_cnt, int *minus_cnt,
+            int *nuc_cnt , int *frg_inv, struct multi_frag *dia ) ;  
+ 
+ 
+--- a/src/pratique.c
++++ b/src/pratique.c
+@@ -4,7 +4,7 @@
+ 
+ /* ------------------------------------------------------------*/
+ 
+-void erreur(char *message)
++_Noreturn void erreur(char *message)
+ {
+ printf("%s\n", message);
+ exit(1);
+--- a/src/pratique.h
++++ b/src/pratique.h
+@@ -12,7 +12,7 @@
+ 
+ #define	TAILLE_MAX_LIGNE_FICHIER	10000
+ 
+-void erreur(char *message);
++_Noreturn void erreur(char *message);
+ 
+ void *allouer(size_t taille);
+ void *reallouer(void *pointeur, size_t taille);
+--- a/src/regex.c
++++ b/src/regex.c
+@@ -151,7 +151,7 @@
+ 
+ }
+  
+-seq_parse( char *mot_regex ) { 
++void seq_parse( char *mot_regex ) { 
+   int sn, ok , i ; 
+   int sp, ap, rp, hv, match;
+   max_mot_offset = sqrt ( - log ( 0.1 ) *  10 / mot_factor ) * mot_offset_factor; 

@@ -1,0 +1,101 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="save panic"
+extra_started_commands="reload"
+
+ebtables_bin="/sbin/ebtables"
+ebtables_save=${EBTABLES_SAVE}
+
+depend() {
+	before net
+}
+
+ebtables_tables() {
+	local table
+	for table in filter nat broute; do
+		if ${ebtables_bin} -t ${table} -L > /dev/null 2>&1; then
+			printf '%s' "${table} "
+		fi
+	done
+}
+
+set_table_policy() {
+	local chains table=$1 policy=$2
+	case ${table} in
+		nat)    chains="PREROUTING POSTROUTING OUTPUT";;
+		broute) chains="BROUTING";;
+		filter) chains="INPUT FORWARD OUTPUT";;
+		*)      chains="";;
+	esac
+	local chain
+	for chain in ${chains} ; do
+		${ebtables_bin} -t ${table} -P ${chain} ${policy}
+	done
+}
+
+checkconfig() {
+	if [ ! -f ${ebtables_save} ] ; then
+		eerror "Not starting ebtables.  First create some rules then run:"
+		eerror "/etc/init.d/ebtables save"
+		return 1
+	fi
+	return 0
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Loading ebtables state and starting bridge firewall"
+	${ebtables_bin}-restore ${SAVE_RESTORE_OPTIONS} < "${ebtables_save}"
+	eend $?
+}
+
+stop() {
+	if [ "${SAVE_ON_STOP}" = "yes" ] ; then
+		save || return 1
+	fi
+	ebegin "Stopping bridge firewall"
+	local a
+	for a in $(ebtables_tables); do
+		set_table_policy $a ACCEPT
+
+		${ebtables_bin} -t $a -F
+		${ebtables_bin} -t $a -X
+	done
+	eend $?
+}
+
+reload() {
+	ebegin "Flushing bridge firewall"
+	local a
+	for a in $(ebtables_tables); do
+		${ebtables_bin} -t $a -F
+		${ebtables_bin} -t $a -X
+	done
+	eend $?
+
+	start
+}
+
+save() {
+	ebegin "Saving ebtables state"
+	checkpath -d -m 0755 "${ebtables_save%/*}"
+	checkpath -f -m 0600 "${ebtables_save}"
+	${ebtables_bin}-save $(ebtables_tables) ${SAVE_RESTORE_OPTIONS} > "${ebtables_save}"
+	eend $?
+}
+
+panic() {
+	service_started ebtables && svc_stop
+
+	local a
+	ebegin "Dropping all packets forwarded on bridges"
+	for a in $(ebtables_tables); do
+		${ebtables_bin} -t $a -F
+		${ebtables_bin} -t $a -X
+
+		set_table_policy $a DROP
+	done
+	eend $?
+}

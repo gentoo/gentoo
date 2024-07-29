@@ -1,0 +1,27 @@
+--- a/mix/net.h.in
++++ b/mix/net.h.in
+@@ -78,11 +78,11 @@
+ #endif
+ #ifdef __cplusplus
+ extern "C" {
+-#include <libnet.h>
++#include <libnet-1.0.h>
+ #include <pcap.h>
+ }
+ #else
+-#include <libnet.h>
++#include <libnet-1.0.h>
+ #include <pcap.h>
+ #endif
+ 
+--- a/net/net2.c
++++ b/net/net2.c
+@@ -260,7 +260,7 @@
+ 		lm_libpcap_init();
+ 
+ 	rawpacket = (unsigned char *)pcap_next(pcap_fd, &hdr);
+-	(char *)rawpacket += pcap_l2offset;
++	*rawpacket += pcap_l2offset; 
+ 	
+ 	ih = (struct lmip *)rawpacket;
+ 	switch(ih->pro)

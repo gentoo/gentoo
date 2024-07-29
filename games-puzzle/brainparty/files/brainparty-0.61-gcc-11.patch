@@ -1,0 +1,14 @@
+gcc-11 needs const operator()
+
+https://bugs.gentoo.org/768204
+--- a/BPGame.h
++++ b/BPGame.h
+@@ -53,7 +53,7 @@ class BPMiniGame;
+ class SpriteFont;
+ 
+ struct cmp_str {
+-	bool operator()(char const *a, char const *b) {
++	bool operator()(char const *a, char const *b) const {
+ 		return std::strcmp(a, b) < 0;
+ 	}
+ };

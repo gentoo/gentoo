@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="clock">Depend on the clock package for more accurate time measurement</flag>
+	</use>
+	<upstream>
+		<remote-id type="hackage">tasty</remote-id>
+		<remote-id type="github">UnkindPartition/tasty</remote-id>
+	</upstream>
+</pkgmetadata>

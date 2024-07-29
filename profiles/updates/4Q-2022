@@ -1,0 +1,10 @@
+move x11-libs/libva media-libs/libva
+move x11-libs/libva-compat media-libs/libva-compat
+move x11-libs/libva-intel-driver media-libs/libva-intel-driver
+move x11-libs/libva-intel-media-driver media-libs/libva-intel-media-driver
+move x11-libs/intel-hybrid-codec-driver media-libs/intel-hybrid-codec-driver
+move dev-python/retworkx dev-python/rustworkx
+move dev-lang/open-cobol dev-lang/gnucobol
+move virtual/awk app-alternatives/awk
+move virtual/yacc app-alternatives/yacc
+move dev-python/nuitka dev-python/Nuitka

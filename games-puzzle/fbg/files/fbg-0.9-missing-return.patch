@@ -1,0 +1,8 @@
+Lack of return leads to segmentation fault on startup.
+https://bugs.gentoo.org/815259
+--- a/src/glTGAImage.cc
++++ b/src/glTGAImage.cc
+@@ -180,2 +180,3 @@
+ 	glTexImage2D(GL_TEXTURE_2D, 0, type, getWidth(), getHeight(), 0, type, GL_UNSIGNED_BYTE, getImageData());
++	return true;
+ }

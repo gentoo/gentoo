@@ -1,0 +1,72 @@
+--- amphetamine-0.8.10.orig/src/Shape.cpp
++++ amphetamine-0.8.10/src/Shape.cpp
+@@ -56,12 +56,12 @@
+  */
+ #ifdef __OPT_MEM_ACCESS__
+ 
+-#define GET_LONG(adr)		*(unsigned long *)adr
+-#define SET_LONG(adr, l)	*(unsigned long *)adr = l
++#define GET_LONG(adr)		*(uint32_t *)adr
++#define SET_LONG(adr, l)	*(uint32_t *)adr = l
+ 
+ #else
+ 
+-#define GET_LONG(adr)	((long)((unsigned char *)(adr))[0] << 24) + ((long)((unsigned char *)(adr))[1] << 16) + ((long)((unsigned char *)(adr))[2] << 8) + ((long)((unsigned char *)(adr))[3])
++#define GET_LONG(adr)	((uint32_t)((unsigned char *)(adr))[0] << 24) + ((uint32_t)((unsigned char *)(adr))[1] << 16) + ((uint32_t)((unsigned char *)(adr))[2] << 8) + ((uint32_t)((unsigned char *)(adr))[3])
+ #define SET_LONG(adr, l)	((unsigned char *)adr)[0] = (unsigned char)((l) >> 24); \
+ 	                        ((unsigned char *)adr)[1] = (unsigned char)((l) >> 16); \
+ 	                        ((unsigned char *)adr)[2] = (unsigned char)((l) >> 8); \
+@@ -116,7 +116,7 @@
+ 		{
+ 			// store the location of this line start
+ 			lineStartPtr = destPtr;
+-			destPtr += sizeof( unsigned long );
++			destPtr += sizeof( uint32_t );
+ 			
+ 			// at the beginning of each row we are not in any run
+ 			drawRunFlag = kFalse;
+@@ -160,7 +160,7 @@
+ 									// create the skip token
+ 									//*( ( unsigned long * )destPtr ) = ( kSkipPixelsToken << 24 ) + runCounter;
+ 									SET_LONG(destPtr, ( kSkipPixelsToken << 24 ) + runCounter);
+-									destPtr += sizeof( unsigned long );
++									destPtr += sizeof( uint32_t );
+ 								}
+ 							
+ 							// are we in a draw run
+@@ -179,7 +179,7 @@
+ 									
+ 									// save the location of the token (so we can fill it in later)
+ 									runTokenPtr = destPtr;
+-									destPtr += sizeof( unsigned long );
++									destPtr += sizeof( uint32_t );
+ 									
+ 									// copy the pixel
+ 									*destPtr = *srcPtr;
+@@ -215,7 +215,7 @@
+ 	
+ 	// create the end of shape token
+ 	SET_LONG(destPtr, kEndShapeToken << 24);
+-	destPtr += sizeof( unsigned long );
++	destPtr += sizeof( uint32_t );
+ 	
+ 	// Resize the handle to match the real size of the shape
+ 	//SetHandleSize( shapeHandle, destPtr - ( unsigned char * )( *shapeHandle ) );
+@@ -280,7 +280,7 @@
+ 			// get a token
+ 			tokenOp = GET_LONG(srcPtr ) >> 24;
+ 			tokenData = GET_LONG(srcPtr ) & 0x00ffffff;
+-			srcPtr += sizeof( unsigned long );
++			srcPtr += sizeof( uint32_t );
+ 			
+ 			// depending on the token
+ 			switch( tokenOp )
+@@ -435,7 +435,7 @@
+ 			// get a token
+ 			tokenOp = GET_LONG(srcPtr) >> 24;
+ 			tokenData = GET_LONG(srcPtr) & 0x00ffffff;
+-			srcPtr += sizeof( unsigned long );
++			srcPtr += sizeof( uint32_t );
+ 			
+ 			// depending on the token
+ 			switch( tokenOp )

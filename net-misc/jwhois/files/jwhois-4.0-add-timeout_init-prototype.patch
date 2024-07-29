@@ -1,0 +1,37 @@
+From 96fdd331c21421a313b6b97cb62e0c775ddc061c Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Tue, 10 Jan 2023 12:36:30 +0100
+Subject: [PATCH 2/2] <utils.h>: Add timeout_init prototype
+
+So that it can be called from the main function.  This avoids a
+compilation error with future compilers.
+---
+ include/utils.h | 1 +
+ src/utils.c     | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/include/utils.h b/include/utils.h
+index 754ddff..cd98b29 100644
+--- a/include/utils.h
++++ b/include/utils.h
+@@ -28,6 +28,7 @@ char *create_string(const char *fmt, ...);
+ int split_host_from_query(struct s_whois_query *wq);
+ int make_connect(const char *, int);
+ int add_text_to_buffer(char **, const char *);
++void timeout_init(void);
+ 
+ 
+ #endif
+diff --git a/src/utils.c b/src/utils.c
+index ab01c2c..f82bd1c 100644
+--- a/src/utils.c
++++ b/src/utils.c
+@@ -348,7 +348,7 @@ split_host_from_query(struct s_whois_query *wq)
+  *  file.
+  */
+ void
+-timeout_init()
++timeout_init(void)
+ {
+   int iret;
+   char *ret = "75", *ret2;

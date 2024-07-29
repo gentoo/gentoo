@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -57,7 +57,7 @@
+ AC_PROG_YACC
+ AM_PROG_LIBTOOL
+ 
+-AC_CHECK_PROG(WINDRES, windres, windres)
++AC_CHECK_PROG(WINDRES, windres-does-not-exist, windres)
+ AM_CONDITIONAL(HAVE_WINDRES, test x"$WINDRES" != x)
+ 
+ # Checks for header files.

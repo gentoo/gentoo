@@ -1,0 +1,48 @@
+https://gitlab.gnome.org/GNOME/vte/-/issues/350
+
+From d459d32126119c8d78f8239b8b857a255e6005d7 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Sat, 1 May 2021 08:31:45 -0400
+Subject: [PATCH] meson: Find python explicitly to honor downstream python
+ choice
+
+---
+ meson.build     | 1 +
+ src/meson.build | 2 ++
+ 2 files changed, 3 insertions(+)
+
+diff --git a/meson.build b/meson.build
+index 4f5a7c57..6404802f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -461,6 +461,7 @@ pango_dep    = dependency('pango',      version: '>=' + pango_req_version)
+ pcre2_dep    = dependency('libpcre2-8', version: '>=' + pcre2_req_version)
+ pthreads_dep = dependency('threads')
+ zlib_dep     = dependency('zlib')
++python       = import('python').find_installation('python3')
+ 
+ if get_option('fribidi')
+   fribidi_dep = dependency('fribidi', version: '>=' + fribidi_req_version)
+diff --git a/src/meson.build b/src/meson.build
+index a1440da5..4ac6a7f2 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -60,6 +60,7 @@ modes_sources = files(
+ modes_sources += custom_target(
+   'modes',
+   command: [
++    python,
+     files('modes.py'),
+     '--destdir', '@OUTDIR@',
+   ],
+@@ -92,6 +93,7 @@ parser_sources = files(
+ parser_sources += custom_target(
+   'parser-seq',
+   command: [
++    python,
+     files('parser-seq.py'),
+     '--destdir', '@OUTDIR@',
+   ],
+-- 
+2.26.3
+

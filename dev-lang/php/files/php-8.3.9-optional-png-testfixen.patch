@@ -1,0 +1,1277 @@
+From e25636b087c507bf12922c8faf9f526aa87153a6 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 23 Aug 2023 18:42:17 -0400
+Subject: [PATCH 1/3] ext/gd/tests: fix three misleading die() messages
+
+Three of our gd tests could be skipped with a message about requiring
+bundled GD, but those tests don't actually require bundled GD. We
+update the messages to mention the specific functions that are
+required.
+---
+ ext/gd/tests/bug24155.phpt    | 2 +-
+ ext/gd/tests/bug39366.phpt    | 2 +-
+ ext/gd/tests/imagefilter.phpt | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/ext/gd/tests/bug24155.phpt b/ext/gd/tests/bug24155.phpt
+index 42c5e3d7926f5..7c12c38a1a6d7 100644
+--- a/ext/gd/tests/bug24155.phpt
++++ b/ext/gd/tests/bug24155.phpt
+@@ -4,7 +4,7 @@ Bug #24155 (gdImageRotate270 rotation problem).
+ gd
+ --SKIPIF--
+ <?php
+-    if (!function_exists("imagerotate")) die("skip requires bundled GD library\n");
++    if (!function_exists("imagerotate")) die("skip requires imagerotate function");
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/bug39366.phpt b/ext/gd/tests/bug39366.phpt
+index 2fedbcef43dfe..81e81059c27e8 100644
+--- a/ext/gd/tests/bug39366.phpt
++++ b/ext/gd/tests/bug39366.phpt
+@@ -4,7 +4,7 @@ Bug #39366 (imagerotate does not respect alpha with angles>45)
+ gd
+ --SKIPIF--
+ <?php
+-    if (!function_exists("imagerotate")) die("skip requires bundled GD library\n");
++    if (!function_exists("imagerotate")) die("skip requires imagerotate function");
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/imagefilter.phpt b/ext/gd/tests/imagefilter.phpt
+index 156f465da6016..79a73472511c7 100644
+--- a/ext/gd/tests/imagefilter.phpt
++++ b/ext/gd/tests/imagefilter.phpt
+@@ -4,7 +4,7 @@ imagefilter() function test
+ gd
+ --SKIPIF--
+ <?php
+-    if (!function_exists("imagefilter")) die("skip requires bundled GD library\n");
++    if (!function_exists("imagefilter")) die("skip requires imagefilter function");
+ ?>
+ --FILE--
+ <?php
+
+From 68a5f3f0a8e6299dddaafa2118ff322c532f1ae1 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 23 Aug 2023 19:56:10 -0400
+Subject: [PATCH 2/3] ext/gd/tests: add SKIPIF stanzas for missing PNG support
+
+The bundled libgd always has PNG support, but an external one may not.
+---
+ ext/gd/tests/bug22544-mb.phpt                    | 6 ++++++
+ ext/gd/tests/bug22544.phpt                       | 6 ++++++
+ ext/gd/tests/bug24155.phpt                       | 3 +++
+ ext/gd/tests/bug27582_1.phpt                     | 6 ++++++
+ ext/gd/tests/bug39780_extern.phpt                | 3 +++
+ ext/gd/tests/bug43073.phpt                       | 3 +++
+ ext/gd/tests/bug43475.phpt                       | 3 +++
+ ext/gd/tests/bug43828.phpt                       | 3 +++
+ ext/gd/tests/bug45799.phpt                       | 6 ++++++
+ ext/gd/tests/bug47946.phpt                       | 3 +++
+ ext/gd/tests/bug48732-mb.phpt                    | 3 +++
+ ext/gd/tests/bug48732.phpt                       | 4 ++++
+ ext/gd/tests/bug50194.phpt                       | 4 +++-
+ ext/gd/tests/bug51498.phpt                       | 3 +++
+ ext/gd/tests/bug52070.phpt                       | 6 ++++++
+ ext/gd/tests/bug53504.phpt                       | 3 +++
+ ext/gd/tests/bug64641.phpt                       | 3 +++
+ ext/gd/tests/bug66005.phpt                       | 6 ++++++
+ ext/gd/tests/bug72482_2.phpt                     | 6 ++++++
+ ext/gd/tests/bug72604.phpt                       | 6 ++++++
+ ext/gd/tests/bug72913.phpt                       | 6 ++++++
+ ext/gd/tests/bug73213.phpt                       | 6 ++++++
+ ext/gd/tests/bug73272.phpt                       | 6 ++++++
+ ext/gd/tests/bug73549.phpt                       | 6 ++++++
+ ext/gd/tests/bug73614.phpt                       | 3 +++
+ ext/gd/tests/bug74031.phpt                       | 6 ++++++
+ ext/gd/tests/bug75124.phpt                       | 3 +++
+ ext/gd/tests/bug77943.phpt                       | 6 ++++++
+ ext/gd/tests/bug79945.phpt                       | 3 +++
+ ext/gd/tests/imagearc_basic.phpt                 | 6 ++++++
+ ext/gd/tests/imagearc_variation1.phpt            | 6 ++++++
+ ext/gd/tests/imagearc_variation2.phpt            | 6 ++++++
+ ext/gd/tests/imagechar_basic.phpt                | 6 ++++++
+ ext/gd/tests/imagecharup_basic.phpt              | 6 ++++++
+ ext/gd/tests/imagecolorallocatealpha_basic.phpt  | 3 +++
+ ext/gd/tests/imagecolorset_basic.phpt            | 6 ++++++
+ ext/gd/tests/imageconvolution_basic.phpt         | 6 ++++++
+ ext/gd/tests/imagecopyresampled_basic.phpt       | 6 ++++++
+ ext/gd/tests/imagecreatefrombmp_basic.phpt       | 3 +++
+ ext/gd/tests/imagecreatefromstring_bmp.phpt      | 3 +++
+ ext/gd/tests/imagecreatefromtga_basic.phpt       | 3 +++
+ ext/gd/tests/imagecreatefromtga_variation.phpt   | 3 +++
+ ext/gd/tests/imagecreatetruecolor_basic.phpt     | 3 +++
+ ext/gd/tests/imagecrop_auto.phpt                 | 3 +++
+ ext/gd/tests/imagedashedline_basic.phpt          | 3 +++
+ ext/gd/tests/imageellipse_basic.phpt             | 6 ++++++
+ ext/gd/tests/imagefilledarc_basic.phpt           | 3 +++
+ ext/gd/tests/imagefilledarc_variation1.phpt      | 3 +++
+ ext/gd/tests/imagefilledarc_variation2.phpt      | 3 +++
+ ext/gd/tests/imagefilledellipse_basic.phpt       | 6 ++++++
+ ext/gd/tests/imagefilledpolygon_basic.phpt       | 3 +++
+ ext/gd/tests/imagefilltoborder_basic.phpt        | 6 ++++++
+ ext/gd/tests/imagefilter.phpt                    | 3 +++
+ ext/gd/tests/imagegammacorrect_basic.phpt        | 3 +++
+ ext/gd/tests/imagegammacorrect_variation1.phpt   | 3 +++
+ ext/gd/tests/imagegammacorrect_variation2.phpt   | 6 ++++++
+ ext/gd/tests/imageopenpolygon_basic.phpt         | 6 ++++++
+ ext/gd/tests/imagepolygon_aa.phpt                | 6 ++++++
+ ext/gd/tests/imagepolygon_basic.phpt             | 3 +++
+ ext/gd/tests/imagerectangle_basic.phpt           | 6 ++++++
+ ext/gd/tests/imageresolution_png.phpt            | 6 ++++++
+ ext/gd/tests/imagesetbrush_basic.phpt            | 6 ++++++
+ ext/gd/tests/imagesetthickness_basic.phpt        | 3 +++
+ ext/gd/tests/imagestring_basic.phpt              | 6 ++++++
+ ext/gd/tests/imagestringup_basic.phpt            | 6 ++++++
+ ext/gd/tests/imagetruecolortopalette_basic.phpt  | 3 +++
+ ext/gd/tests/libgd00086_extern.phpt              | 3 +++
+ ext/gd/tests/test_image_equals_file_palette.phpt | 6 ++++++
+ 68 files changed, 307 insertions(+), 1 deletion(-)
+
+diff --git a/ext/gd/tests/bug22544-mb.phpt b/ext/gd/tests/bug22544-mb.phpt
+index b67478e558c47..f99307df1212b 100644
+--- a/ext/gd/tests/bug22544-mb.phpt
++++ b/ext/gd/tests/bug22544-mb.phpt
+@@ -2,6 +2,12 @@
+ Bug #22544 (TrueColor transparency in PNG images).
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+     $image = imageCreateTruecolor(640, 100);
+diff --git a/ext/gd/tests/bug22544.phpt b/ext/gd/tests/bug22544.phpt
+index 1fba04d93739c..28fc6bdfbb0c1 100644
+--- a/ext/gd/tests/bug22544.phpt
++++ b/ext/gd/tests/bug22544.phpt
+@@ -2,6 +2,12 @@
+ Bug #22544 (TrueColor transparency in PNG images).
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+     $image = imageCreateTruecolor(640, 100);
+diff --git a/ext/gd/tests/bug24155.phpt b/ext/gd/tests/bug24155.phpt
+index 7c12c38a1a6d7..d78ee9b77816f 100644
+--- a/ext/gd/tests/bug24155.phpt
++++ b/ext/gd/tests/bug24155.phpt
+@@ -5,6 +5,9 @@ gd
+ --SKIPIF--
+ <?php
+     if (!function_exists("imagerotate")) die("skip requires imagerotate function");
++    if (!(imagetypes() & IMG_PNG)) {
++        die("skip No PNG support");
++    }
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/bug27582_1.phpt b/ext/gd/tests/bug27582_1.phpt
+index 2604c5fcaa9fd..1f15474f50d4b 100644
+--- a/ext/gd/tests/bug27582_1.phpt
++++ b/ext/gd/tests/bug27582_1.phpt
+@@ -2,6 +2,12 @@
+ Bug #27582 (ImageFillToBorder() on alphablending image looses alpha on fill color)
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ $dest = dirname(realpath(__FILE__)) . '/bug27582.png';
+diff --git a/ext/gd/tests/bug39780_extern.phpt b/ext/gd/tests/bug39780_extern.phpt
+index 2330bd65e57ab..438816fe22c6a 100644
+--- a/ext/gd/tests/bug39780_extern.phpt
++++ b/ext/gd/tests/bug39780_extern.phpt
+@@ -5,6 +5,9 @@ gd
+ --SKIPIF--
+ <?php
+     if (GD_BUNDLED) die("skip requires extern GD\n");
++    if (!(imagetypes() & IMG_PNG)) {
++        die("skip No PNG support");
++    }
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/bug43073.phpt b/ext/gd/tests/bug43073.phpt
+index 5c54d8770f86b..80c6480fea576 100644
+--- a/ext/gd/tests/bug43073.phpt
++++ b/ext/gd/tests/bug43073.phpt
+@@ -5,6 +5,9 @@ gd
+ --SKIPIF--
+ <?php
+     if(!function_exists('imagettftext')) die('skip imagettftext() not available');
++    if (!(imagetypes() & IMG_PNG)) {
++        die("skip No PNG support");
++    }
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/bug43475.phpt b/ext/gd/tests/bug43475.phpt
+index 8944b57e3cde7..454d2daad0f1a 100644
+--- a/ext/gd/tests/bug43475.phpt
++++ b/ext/gd/tests/bug43475.phpt
+@@ -7,6 +7,9 @@ gd
+     if (!GD_BUNDLED && version_compare(GD_VERSION, '2.2.2', '<')) {
+         die("skip test requires GD 2.2.2 or higher");
+     }
++    if (!(imagetypes() & IMG_PNG)) {
++        die("skip No PNG support");
++    }
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/bug43828.phpt b/ext/gd/tests/bug43828.phpt
+index 8a0caf5decc35..8bc3f9bbcaf83 100644
+--- a/ext/gd/tests/bug43828.phpt
++++ b/ext/gd/tests/bug43828.phpt
+@@ -7,6 +7,9 @@ gd
+ if (!GD_BUNDLED && version_compare(GD_VERSION, '2.2.2', '<')) {
+     die("skip test requires GD 2.2.2 or higher");
+ }
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/bug45799.phpt b/ext/gd/tests/bug45799.phpt
+index 8576b4d007822..f7124ce5b9713 100644
+--- a/ext/gd/tests/bug45799.phpt
++++ b/ext/gd/tests/bug45799.phpt
+@@ -2,6 +2,12 @@
+ Bug #45799 (imagepng() crashes on empty image).
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ $img = imagecreate(500,500);
+diff --git a/ext/gd/tests/bug47946.phpt b/ext/gd/tests/bug47946.phpt
+index 39e5aef9edffc..a87300568326f 100644
+--- a/ext/gd/tests/bug47946.phpt
++++ b/ext/gd/tests/bug47946.phpt
+@@ -5,6 +5,9 @@ gd
+ --SKIPIF--
+ <?php
+ if (!GD_BUNDLED && version_compare(GD_VERSION, '2.2.5', '<=')) die('skip upstream fix not yet released');
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/bug48732-mb.phpt b/ext/gd/tests/bug48732-mb.phpt
+index 13a881254c203..361c1ac4d88f8 100644
+--- a/ext/gd/tests/bug48732-mb.phpt
++++ b/ext/gd/tests/bug48732-mb.phpt
+@@ -6,6 +6,9 @@ gd
+ <?php
+     if(!function_exists('imagefttext')) die('skip imagefttext() not available');
+     if (substr(PHP_OS, 0, 3) == 'WIN') die('skip UTF-8 font file names not yet supported on Windows');
++    if (!(imagetypes() & IMG_PNG)) {
++        die("skip No PNG support");
++    }
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/bug48732.phpt b/ext/gd/tests/bug48732.phpt
+index 44e4204503ef7..ed73954de3337 100644
+--- a/ext/gd/tests/bug48732.phpt
++++ b/ext/gd/tests/bug48732.phpt
+@@ -2,9 +2,13 @@
+ Bug #48732 (TTF Bounding box wrong for letters below baseline)
+ --EXTENSIONS--
+ gd
++
+ --SKIPIF--
+ <?php
+     if(!function_exists('imagefttext')) die('skip imagefttext() not available');
++    if (!(imagetypes() & IMG_PNG)) {
++        die("skip No PNG support");
++    }
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/bug50194.phpt b/ext/gd/tests/bug50194.phpt
+index 2addfe0e8325d..33d2400c46e80 100644
+--- a/ext/gd/tests/bug50194.phpt
++++ b/ext/gd/tests/bug50194.phpt
+@@ -5,7 +5,9 @@ gd
+ --SKIPIF--
+ <?php
+ if (!function_exists('imagettftext')) die('skip imagettftext() not available');
+-//die('skip freetype issues');
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/bug51498.phpt b/ext/gd/tests/bug51498.phpt
+index 808444376525e..756ba1f71dc33 100644
+--- a/ext/gd/tests/bug51498.phpt
++++ b/ext/gd/tests/bug51498.phpt
+@@ -7,6 +7,9 @@ gd
+ if (!GD_BUNDLED && version_compare(GD_VERSION, "2.3.0") < 0) {
+     die("skip test requires GD 2.3.0 or higher");
+ }
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/bug52070.phpt b/ext/gd/tests/bug52070.phpt
+index 1ba28affdbfcd..6bbe2363a650b 100644
+--- a/ext/gd/tests/bug52070.phpt
++++ b/ext/gd/tests/bug52070.phpt
+@@ -2,6 +2,12 @@
+ Bug #52070 (imagedashedline() - dashed line sometimes is not visible)
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ $im = imagecreate(1200, 800);
+diff --git a/ext/gd/tests/bug53504.phpt b/ext/gd/tests/bug53504.phpt
+index bb74497af05ab..5bd81f35aa0cb 100644
+--- a/ext/gd/tests/bug53504.phpt
++++ b/ext/gd/tests/bug53504.phpt
+@@ -5,6 +5,9 @@ gd
+ --SKIPIF--
+ <?php
+     if(!function_exists('imageftbbox')) die('skip imageftbbox() not available');
++    if (!(imagetypes() & IMG_PNG)) {
++        die("skip No PNG support");
++    }
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/bug64641.phpt b/ext/gd/tests/bug64641.phpt
+index d300bd8fc6a0a..edfebee99c92a 100644
+--- a/ext/gd/tests/bug64641.phpt
++++ b/ext/gd/tests/bug64641.phpt
+@@ -7,6 +7,9 @@ gd
+ if (!GD_BUNDLED && version_compare(GD_VERSION, '2.2.2', '<')) {
+     die("skip test requires GD 2.2.2 or higher");
+ }
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/bug66005.phpt b/ext/gd/tests/bug66005.phpt
+index 78e0f481dab17..3f3b421b8856a 100644
+--- a/ext/gd/tests/bug66005.phpt
++++ b/ext/gd/tests/bug66005.phpt
+@@ -2,6 +2,12 @@
+ Bug #66005 (imagecopy does not support 1bit transparency on truecolor images)
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ $dest = imagecreatetruecolor(150, 50);
+diff --git a/ext/gd/tests/bug72482_2.phpt b/ext/gd/tests/bug72482_2.phpt
+index 89f5bb28a77bd..0583fa4dedde3 100644
+--- a/ext/gd/tests/bug72482_2.phpt
++++ b/ext/gd/tests/bug72482_2.phpt
+@@ -2,6 +2,12 @@
+ Bug 72482 (Ilegal write/read access caused by gdImageAALine overflow)
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ require_once __DIR__ . DIRECTORY_SEPARATOR . 'func.inc';
+diff --git a/ext/gd/tests/bug72604.phpt b/ext/gd/tests/bug72604.phpt
+index 706d7891c3220..a7d24e78dfefe 100644
+--- a/ext/gd/tests/bug72604.phpt
++++ b/ext/gd/tests/bug72604.phpt
+@@ -2,6 +2,12 @@
+ Bug #72604 (imagearc() ignores thickness for full arcs)
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ $im = imagecreatetruecolor(100, 100);
+diff --git a/ext/gd/tests/bug72913.phpt b/ext/gd/tests/bug72913.phpt
+index c3a7e9f9f56cf..9eb9c24653530 100644
+--- a/ext/gd/tests/bug72913.phpt
++++ b/ext/gd/tests/bug72913.phpt
+@@ -2,6 +2,12 @@
+ Bug #72913 (imagecopy() loses single-color transparency on palette images)
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ $base64 = 'iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAABnRSTlMAAAAAAABu'
+diff --git a/ext/gd/tests/bug73213.phpt b/ext/gd/tests/bug73213.phpt
+index c4c4bd6feeaf1..47fe8043135f8 100644
+--- a/ext/gd/tests/bug73213.phpt
++++ b/ext/gd/tests/bug73213.phpt
+@@ -2,6 +2,12 @@
+ Bug #73213 (Integer overflow in imageline() with antialiasing)
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ require_once __DIR__ . DIRECTORY_SEPARATOR . 'func.inc';
+diff --git a/ext/gd/tests/bug73272.phpt b/ext/gd/tests/bug73272.phpt
+index cf10eb227ae11..0f0920b2687db 100644
+--- a/ext/gd/tests/bug73272.phpt
++++ b/ext/gd/tests/bug73272.phpt
+@@ -2,6 +2,12 @@
+ Bug #73272 (imagescale() is not affected by, but affects imagesetinterpolation())
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ require_once __DIR__ . DIRECTORY_SEPARATOR . 'func.inc';
+diff --git a/ext/gd/tests/bug73549.phpt b/ext/gd/tests/bug73549.phpt
+index d25941dd565d3..26a7474b7d5b4 100644
+--- a/ext/gd/tests/bug73549.phpt
++++ b/ext/gd/tests/bug73549.phpt
+@@ -2,6 +2,12 @@
+ Bug #73549 (Use after free when stream is passed to imagepng)
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ $stream = fopen(__DIR__ . DIRECTORY_SEPARATOR . 'bug73549.png', 'w');
+diff --git a/ext/gd/tests/bug73614.phpt b/ext/gd/tests/bug73614.phpt
+index def4d37421160..e1261643f7116 100644
+--- a/ext/gd/tests/bug73614.phpt
++++ b/ext/gd/tests/bug73614.phpt
+@@ -5,6 +5,9 @@ gd
+ --SKIPIF--
+ <?php
+ if (!GD_BUNDLED && version_compare(GD_VERSION, '2.2.5', '<=')) die('skip upstream bugfix not yet released');
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/bug74031.phpt b/ext/gd/tests/bug74031.phpt
+index b4efa6b749e8e..6dfb351fcff97 100644
+--- a/ext/gd/tests/bug74031.phpt
++++ b/ext/gd/tests/bug74031.phpt
+@@ -2,6 +2,12 @@
+ (Bug #74031) ReflectionFunction for imagepng returns wrong number of parameters
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ 
+diff --git a/ext/gd/tests/bug75124.phpt b/ext/gd/tests/bug75124.phpt
+index 47b36157fec90..26e44f1d6a011 100644
+--- a/ext/gd/tests/bug75124.phpt
++++ b/ext/gd/tests/bug75124.phpt
+@@ -7,6 +7,9 @@ gd
+ if (!GD_BUNDLED && version_compare(GD_VERSION, '2.2.5', '<')) {
+     die('skip only for bundled libgd or external libgd >= 2.2.5');
+ }
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/bug77943.phpt b/ext/gd/tests/bug77943.phpt
+index 8ed4114128f25..d7d71ceca84ae 100644
+--- a/ext/gd/tests/bug77943.phpt
++++ b/ext/gd/tests/bug77943.phpt
+@@ -2,6 +2,12 @@
+ Bug #77943 (imageantialias($image, false); does not work)
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ require_once __DIR__ . '/func.inc';
+diff --git a/ext/gd/tests/bug79945.phpt b/ext/gd/tests/bug79945.phpt
+index b985ddd48be31..5db958e36d358 100644
+--- a/ext/gd/tests/bug79945.phpt
++++ b/ext/gd/tests/bug79945.phpt
+@@ -4,6 +4,9 @@ Bug #79945 (using php wrappers in imagecreatefrompng causes segmentation fault)
+ gd
+ --SKIPIF--
+ <?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
+ set_error_handler(function($errno, $errstr) {
+     if (str_contains($errstr, 'Cannot cast a filtered stream on this system')) {
+         die('skip: fopencookie not support on this system');
+diff --git a/ext/gd/tests/imagearc_basic.phpt b/ext/gd/tests/imagearc_basic.phpt
+index be80f6c5f2317..339ea0b79d18d 100644
+--- a/ext/gd/tests/imagearc_basic.phpt
++++ b/ext/gd/tests/imagearc_basic.phpt
+@@ -5,6 +5,12 @@ Edgar Ferreira da Silva <contato [at] edgarfs [dot] com [dot] br>
+ #testfest PHPSP on 2009-06-20
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ 
+diff --git a/ext/gd/tests/imagearc_variation1.phpt b/ext/gd/tests/imagearc_variation1.phpt
+index 89719aa60b494..bf20c74f0ce40 100644
+--- a/ext/gd/tests/imagearc_variation1.phpt
++++ b/ext/gd/tests/imagearc_variation1.phpt
+@@ -5,6 +5,12 @@ Edgar Ferreira da Silva <contato [at] edgarfs [dot] com [dot] br>
+ #testfest PHPSP on 2009-06-20
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ 
+diff --git a/ext/gd/tests/imagearc_variation2.phpt b/ext/gd/tests/imagearc_variation2.phpt
+index 4597cf3a8ff89..c23bca840bf4e 100644
+--- a/ext/gd/tests/imagearc_variation2.phpt
++++ b/ext/gd/tests/imagearc_variation2.phpt
+@@ -5,6 +5,12 @@ Edgar Ferreira da Silva <contato [at] edgarfs [dot] com [dot] br>
+ #testfest PHPSP on 2009-06-20
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ 
+diff --git a/ext/gd/tests/imagechar_basic.phpt b/ext/gd/tests/imagechar_basic.phpt
+index 3195eb82d4d4f..649dcccc2de87 100644
+--- a/ext/gd/tests/imagechar_basic.phpt
++++ b/ext/gd/tests/imagechar_basic.phpt
+@@ -5,6 +5,12 @@ Rafael Dohms <rdohms [at] gmail [dot] com>
+ #testfest PHPSP on 2009-06-20
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ $image = imagecreatetruecolor(180, 30);
+diff --git a/ext/gd/tests/imagecharup_basic.phpt b/ext/gd/tests/imagecharup_basic.phpt
+index 82bc18d6ad609..7ebbb8fce9a07 100644
+--- a/ext/gd/tests/imagecharup_basic.phpt
++++ b/ext/gd/tests/imagecharup_basic.phpt
+@@ -5,6 +5,12 @@ Rafael Dohms <rdohms [at] gmail [dot] com>
+ #testfest PHPSP on 2009-06-20
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ $image = imagecreatetruecolor(180, 30);
+diff --git a/ext/gd/tests/imagecolorallocatealpha_basic.phpt b/ext/gd/tests/imagecolorallocatealpha_basic.phpt
+index cc02aaed0d8b3..24ac882d550d5 100644
+--- a/ext/gd/tests/imagecolorallocatealpha_basic.phpt
++++ b/ext/gd/tests/imagecolorallocatealpha_basic.phpt
+@@ -9,6 +9,9 @@ gd
+     if (!GD_BUNDLED && version_compare(GD_VERSION, '2.2.2', '<')) {
+         die("skip test requires GD 2.2.2 or higher");
+     }
++    if (!(imagetypes() & IMG_PNG)) {
++        die("skip No PNG support");
++    }
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/imagecolorset_basic.phpt b/ext/gd/tests/imagecolorset_basic.phpt
+index cb9b3683aa8ee..5ed9a1ab8600e 100644
+--- a/ext/gd/tests/imagecolorset_basic.phpt
++++ b/ext/gd/tests/imagecolorset_basic.phpt
+@@ -5,6 +5,12 @@ Erick Belluci Tedeschi <erickbt86 [at] gmail [dot] com>
+ #testfest PHPSP on 2009-06-20
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ // Create a 300x100 image
+diff --git a/ext/gd/tests/imageconvolution_basic.phpt b/ext/gd/tests/imageconvolution_basic.phpt
+index aa8347884999a..d8204e2d7eb28 100644
+--- a/ext/gd/tests/imageconvolution_basic.phpt
++++ b/ext/gd/tests/imageconvolution_basic.phpt
+@@ -5,6 +5,12 @@ Guilherme Blanco <guilhermeblanco [at] hotmail [dot] com>
+ #testfest PHPSP on 2009-06-20
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ $image = imagecreatetruecolor(180, 30);
+diff --git a/ext/gd/tests/imagecopyresampled_basic.phpt b/ext/gd/tests/imagecopyresampled_basic.phpt
+index a3200b3537809..9fb1178e540ae 100644
+--- a/ext/gd/tests/imagecopyresampled_basic.phpt
++++ b/ext/gd/tests/imagecopyresampled_basic.phpt
+@@ -2,6 +2,12 @@
+ imagecopyresampled()
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ 
+diff --git a/ext/gd/tests/imagecreatefrombmp_basic.phpt b/ext/gd/tests/imagecreatefrombmp_basic.phpt
+index 51eb22c71adf0..4989e617b4719 100644
+--- a/ext/gd/tests/imagecreatefrombmp_basic.phpt
++++ b/ext/gd/tests/imagecreatefrombmp_basic.phpt
+@@ -5,6 +5,9 @@ gd
+ --SKIPIF--
+ <?php
+ if (!(imagetypes() & IMG_BMP)) die('skip BMP support required');
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/imagecreatefromstring_bmp.phpt b/ext/gd/tests/imagecreatefromstring_bmp.phpt
+index 8f9e1dd675b91..34db04297e3aa 100644
+--- a/ext/gd/tests/imagecreatefromstring_bmp.phpt
++++ b/ext/gd/tests/imagecreatefromstring_bmp.phpt
+@@ -5,6 +5,9 @@ gd
+ --SKIPIF--
+ <?php
+ if (!(imagetypes() & IMG_BMP)) die('skip BMP support required');
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/imagecreatefromtga_basic.phpt b/ext/gd/tests/imagecreatefromtga_basic.phpt
+index 25f034878b0c6..c66f66efbd638 100644
+--- a/ext/gd/tests/imagecreatefromtga_basic.phpt
++++ b/ext/gd/tests/imagecreatefromtga_basic.phpt
+@@ -5,6 +5,9 @@ gd
+ --SKIPIF--
+ <?php
+ if (!(imagetypes() & IMG_TGA)) die('skip TGA support required');
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/imagecreatefromtga_variation.phpt b/ext/gd/tests/imagecreatefromtga_variation.phpt
+index 0948f978f2f6a..be9c7977bd6a7 100644
+--- a/ext/gd/tests/imagecreatefromtga_variation.phpt
++++ b/ext/gd/tests/imagecreatefromtga_variation.phpt
+@@ -5,6 +5,9 @@ gd
+ --SKIPIF--
+ <?php
+ if (!(imagetypes() & IMG_TGA)) die('skip TGA support required');
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/imagecreatetruecolor_basic.phpt b/ext/gd/tests/imagecreatetruecolor_basic.phpt
+index 5af8a0a1a32bc..2e8a1ef983bd3 100644
+--- a/ext/gd/tests/imagecreatetruecolor_basic.phpt
++++ b/ext/gd/tests/imagecreatetruecolor_basic.phpt
+@@ -7,6 +7,9 @@ gd
+ --SKIPIF--
+ <?php
+     if (!function_exists("imagecreatetruecolor")) die("skip GD Version not compatible");
++    if (!(imagetypes() & IMG_PNG)) {
++        die("skip No PNG support");
++    }
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/imagecrop_auto.phpt b/ext/gd/tests/imagecrop_auto.phpt
+index 5d3d50b3ef317..5ed8e446a7f26 100644
+--- a/ext/gd/tests/imagecrop_auto.phpt
++++ b/ext/gd/tests/imagecrop_auto.phpt
+@@ -5,6 +5,9 @@ gd
+ --SKIPIF--
+ <?php
+ if (!function_exists('imagecrop')) die( 'skip GD imagecropauto not present; skipping test' );
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/imagedashedline_basic.phpt b/ext/gd/tests/imagedashedline_basic.phpt
+index b36ffbfc6f593..d9ca69ad5f0b8 100644
+--- a/ext/gd/tests/imagedashedline_basic.phpt
++++ b/ext/gd/tests/imagedashedline_basic.phpt
+@@ -5,6 +5,9 @@ gd
+ --SKIPIF--
+ <?php
+     if (!function_exists('imagedashedline')) die('skip imagedashedline() not available');
++    if (!(imagetypes() & IMG_PNG)) {
++        die("skip No PNG support");
++    }
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/imageellipse_basic.phpt b/ext/gd/tests/imageellipse_basic.phpt
+index 0c86e7cfcb859..da1e0e9926086 100644
+--- a/ext/gd/tests/imageellipse_basic.phpt
++++ b/ext/gd/tests/imageellipse_basic.phpt
+@@ -5,6 +5,12 @@ Ivan Rosolen <contato [at] ivanrosolen [dot] com>
+ #testfest PHPSP on 2009-06-20
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ 
+diff --git a/ext/gd/tests/imagefilledarc_basic.phpt b/ext/gd/tests/imagefilledarc_basic.phpt
+index f3b8c7ac8e89e..006ed4aaa23b4 100644
+--- a/ext/gd/tests/imagefilledarc_basic.phpt
++++ b/ext/gd/tests/imagefilledarc_basic.phpt
+@@ -10,6 +10,9 @@ gd
+ if (!GD_BUNDLED && version_compare(GD_VERSION, '2.2.2', '<')) {
+     die("skip test requires GD 2.2.2 or higher");
+ }
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/imagefilledarc_variation1.phpt b/ext/gd/tests/imagefilledarc_variation1.phpt
+index d25d2afc87987..d00c9b6c0be1e 100644
+--- a/ext/gd/tests/imagefilledarc_variation1.phpt
++++ b/ext/gd/tests/imagefilledarc_variation1.phpt
+@@ -10,6 +10,9 @@ gd
+ if (!GD_BUNDLED && version_compare(GD_VERSION, '2.2.2', '<')) {
+     die("skip test requires GD 2.2.2 or higher");
+ }
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/imagefilledarc_variation2.phpt b/ext/gd/tests/imagefilledarc_variation2.phpt
+index fb4675ec5dd69..61157a0173158 100644
+--- a/ext/gd/tests/imagefilledarc_variation2.phpt
++++ b/ext/gd/tests/imagefilledarc_variation2.phpt
+@@ -10,6 +10,9 @@ gd
+ if (!GD_BUNDLED && version_compare(GD_VERSION, '2.2.2', '<')) {
+     die("skip test requires GD 2.2.2 or higher");
+ }
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/imagefilledellipse_basic.phpt b/ext/gd/tests/imagefilledellipse_basic.phpt
+index 19a94b1200e24..a494b15c28e2e 100644
+--- a/ext/gd/tests/imagefilledellipse_basic.phpt
++++ b/ext/gd/tests/imagefilledellipse_basic.phpt
+@@ -2,6 +2,12 @@
+ Testing imagefilledellipse() of GD library
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ 
+diff --git a/ext/gd/tests/imagefilledpolygon_basic.phpt b/ext/gd/tests/imagefilledpolygon_basic.phpt
+index 6cba5238d3246..bbb8f9c2eb044 100644
+--- a/ext/gd/tests/imagefilledpolygon_basic.phpt
++++ b/ext/gd/tests/imagefilledpolygon_basic.phpt
+@@ -5,6 +5,9 @@ gd
+ --SKIPIF--
+ <?php
+     if (!function_exists('imagefilledpolygon')) die('skip imagefilledpolygon() not available');
++    if (!(imagetypes() & IMG_PNG)) {
++        die("skip No PNG support");
++    }
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/imagefilltoborder_basic.phpt b/ext/gd/tests/imagefilltoborder_basic.phpt
+index 7e79ea47b46b6..f8ebe86bb2c6d 100644
+--- a/ext/gd/tests/imagefilltoborder_basic.phpt
++++ b/ext/gd/tests/imagefilltoborder_basic.phpt
+@@ -5,6 +5,12 @@ Ivan Rosolen <contato [at] ivanrosolen [dot] com>
+ #testfest PHPSP on 2009-06-30
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ // Create a image
+diff --git a/ext/gd/tests/imagefilter.phpt b/ext/gd/tests/imagefilter.phpt
+index 79a73472511c7..c8cf182d9d4eb 100644
+--- a/ext/gd/tests/imagefilter.phpt
++++ b/ext/gd/tests/imagefilter.phpt
+@@ -5,6 +5,9 @@ gd
+ --SKIPIF--
+ <?php
+     if (!function_exists("imagefilter")) die("skip requires imagefilter function");
++    if (!(imagetypes() & IMG_PNG)) {
++        die("skip No PNG support");
++    }
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/imagegammacorrect_basic.phpt b/ext/gd/tests/imagegammacorrect_basic.phpt
+index 67b2a36a1657a..4f52309c825bf 100644
+--- a/ext/gd/tests/imagegammacorrect_basic.phpt
++++ b/ext/gd/tests/imagegammacorrect_basic.phpt
+@@ -10,6 +10,9 @@ gd
+     if (!GD_BUNDLED && version_compare(GD_VERSION, '2.2.2', '<')) {
+         die("skip test requires GD 2.2.2 or higher");
+     }
++    if (!(imagetypes() & IMG_PNG)) {
++        die("skip No PNG support");
++    }
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/imagegammacorrect_variation1.phpt b/ext/gd/tests/imagegammacorrect_variation1.phpt
+index 1c41a257b9ec4..55370aa49cf87 100644
+--- a/ext/gd/tests/imagegammacorrect_variation1.phpt
++++ b/ext/gd/tests/imagegammacorrect_variation1.phpt
+@@ -10,6 +10,9 @@ gd
+     if (!GD_BUNDLED && version_compare(GD_VERSION, '2.2.2', '<')) {
+         die("skip test requires GD 2.2.2 or higher");
+     }
++    if (!(imagetypes() & IMG_PNG)) {
++        die("skip No PNG support");
++    }
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/imagegammacorrect_variation2.phpt b/ext/gd/tests/imagegammacorrect_variation2.phpt
+index c75c728296bec..33c89d205a1a7 100644
+--- a/ext/gd/tests/imagegammacorrect_variation2.phpt
++++ b/ext/gd/tests/imagegammacorrect_variation2.phpt
+@@ -2,6 +2,12 @@
+ Apply imagegammacorrect() to a step wedge
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ require __DIR__ . DIRECTORY_SEPARATOR . 'func.inc';
+diff --git a/ext/gd/tests/imageopenpolygon_basic.phpt b/ext/gd/tests/imageopenpolygon_basic.phpt
+index 6ed6d63a5ac47..ed8d3b698d11c 100644
+--- a/ext/gd/tests/imageopenpolygon_basic.phpt
++++ b/ext/gd/tests/imageopenpolygon_basic.phpt
+@@ -2,6 +2,12 @@
+ imageopenpolygon(): basic test
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ require_once __DIR__ . DIRECTORY_SEPARATOR . 'func.inc';
+diff --git a/ext/gd/tests/imagepolygon_aa.phpt b/ext/gd/tests/imagepolygon_aa.phpt
+index 77fef3beed9a5..a0fded6e5e06c 100644
+--- a/ext/gd/tests/imagepolygon_aa.phpt
++++ b/ext/gd/tests/imagepolygon_aa.phpt
+@@ -2,6 +2,12 @@
+ antialiased imagepolygon()
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ require_once __DIR__ . DIRECTORY_SEPARATOR . 'func.inc';
+diff --git a/ext/gd/tests/imagepolygon_basic.phpt b/ext/gd/tests/imagepolygon_basic.phpt
+index 4d17b30eacfa9..c41b0710ef435 100644
+--- a/ext/gd/tests/imagepolygon_basic.phpt
++++ b/ext/gd/tests/imagepolygon_basic.phpt
+@@ -5,6 +5,9 @@ gd
+ --SKIPIF--
+ <?php
+     if (!function_exists('imagepolygon')) die('skip imagepolygon() not available');
++    if (!(imagetypes() & IMG_PNG)) {
++        die("skip No PNG support");
++    }
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/imagerectangle_basic.phpt b/ext/gd/tests/imagerectangle_basic.phpt
+index d71c44156f98c..a40b130cba7d2 100644
+--- a/ext/gd/tests/imagerectangle_basic.phpt
++++ b/ext/gd/tests/imagerectangle_basic.phpt
+@@ -5,6 +5,12 @@ Ivan Rosolen <contato [at] ivanrosolen [dot] com>
+ #testfest PHPSP on 2009-06-30
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ // Create a image
+diff --git a/ext/gd/tests/imageresolution_png.phpt b/ext/gd/tests/imageresolution_png.phpt
+index a72f351a156bf..13f51cd8f3a4a 100644
+--- a/ext/gd/tests/imageresolution_png.phpt
++++ b/ext/gd/tests/imageresolution_png.phpt
+@@ -2,6 +2,12 @@
+ Set and get image resolution of PNG images
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ $filename = __DIR__ . DIRECTORY_SEPARATOR . 'imageresolution_png.png';
+diff --git a/ext/gd/tests/imagesetbrush_basic.phpt b/ext/gd/tests/imagesetbrush_basic.phpt
+index be8a3d33e4ad7..5142e3690b85f 100644
+--- a/ext/gd/tests/imagesetbrush_basic.phpt
++++ b/ext/gd/tests/imagesetbrush_basic.phpt
+@@ -5,6 +5,12 @@ Erick Belluci Tedeschi <erickbt86 [at] gmail [dot] com>
+ #testfest PHPSP on 2009-06-20
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ // Create the brush image
+diff --git a/ext/gd/tests/imagesetthickness_basic.phpt b/ext/gd/tests/imagesetthickness_basic.phpt
+index 88f7803dcf610..745dfcf905b92 100644
+--- a/ext/gd/tests/imagesetthickness_basic.phpt
++++ b/ext/gd/tests/imagesetthickness_basic.phpt
+@@ -7,6 +7,9 @@ gd
+ --SKIPIF--
+ <?php
+     if (!function_exists("imagecreatetruecolor")) die("skip GD Version not compatible");
++    if (!(imagetypes() & IMG_PNG)) {
++        die("skip No PNG support");
++    }
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/imagestring_basic.phpt b/ext/gd/tests/imagestring_basic.phpt
+index 1a71ba173c820..8a8e247eb0731 100644
+--- a/ext/gd/tests/imagestring_basic.phpt
++++ b/ext/gd/tests/imagestring_basic.phpt
+@@ -5,6 +5,12 @@ Rafael Dohms <rdohms [at] gmail [dot] com>
+ #testfest PHPSP on 2009-06-20
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ $image = imagecreatetruecolor(180, 30);
+diff --git a/ext/gd/tests/imagestringup_basic.phpt b/ext/gd/tests/imagestringup_basic.phpt
+index 85b85e1e31c51..f1e30a782fb88 100644
+--- a/ext/gd/tests/imagestringup_basic.phpt
++++ b/ext/gd/tests/imagestringup_basic.phpt
+@@ -5,6 +5,12 @@ Rafael Dohms <rdohms [at] gmail [dot] com>
+ #testfest PHPSP on 2009-06-20
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ $image = imagecreatetruecolor(180, 30);
+diff --git a/ext/gd/tests/imagetruecolortopalette_basic.phpt b/ext/gd/tests/imagetruecolortopalette_basic.phpt
+index ae4555bb2ad72..2f1c2961a603c 100644
+--- a/ext/gd/tests/imagetruecolortopalette_basic.phpt
++++ b/ext/gd/tests/imagetruecolortopalette_basic.phpt
+@@ -10,6 +10,9 @@ gd
+         die("skip test requires GD 2.2.2 or higher");
+     }
+     if (!function_exists("imagecreatetruecolor")) die("skip GD Version not compatible");
++    if (!(imagetypes() & IMG_PNG)) {
++        die("skip No PNG support");
++    }
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/libgd00086_extern.phpt b/ext/gd/tests/libgd00086_extern.phpt
+index 8d2b0b7d8dbe8..a3585180b83e8 100644
+--- a/ext/gd/tests/libgd00086_extern.phpt
++++ b/ext/gd/tests/libgd00086_extern.phpt
+@@ -5,6 +5,9 @@ gd
+ --SKIPIF--
+ <?php
+     if (GD_BUNDLED) die("skip requires external GD library\n");
++    if (!(imagetypes() & IMG_PNG)) {
++        die("skip No PNG support");
++    }
+ ?>
+ --FILE--
+ <?php
+diff --git a/ext/gd/tests/test_image_equals_file_palette.phpt b/ext/gd/tests/test_image_equals_file_palette.phpt
+index a1022138230f6..2e294c04c4066 100644
+--- a/ext/gd/tests/test_image_equals_file_palette.phpt
++++ b/ext/gd/tests/test_image_equals_file_palette.phpt
+@@ -2,6 +2,12 @@
+ test_image_equals_file(): comparing palette images
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
++?>
+ --FILE--
+ <?php
+ require_once __DIR__ . DIRECTORY_SEPARATOR . 'func.inc';
+
+From 14d9f2349274597bfc81c46222ea7e808d372bdb Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sat, 30 Dec 2023 16:13:40 -0500
+Subject: [PATCH 3/3] ext/gd/tests: imagerotate() is always available
+
+Following 59ec80c5, the imagerotate() function is always available. We
+may therefore remove its function_exists() checks without harm.
+---
+ ext/gd/tests/bug24155.phpt             | 1 -
+ ext/gd/tests/bug39366.phpt             | 4 ----
+ ext/gd/tests/imagerotate_overflow.phpt | 6 ------
+ 3 files changed, 11 deletions(-)
+
+diff --git a/ext/gd/tests/bug24155.phpt b/ext/gd/tests/bug24155.phpt
+index d78ee9b77816f..c93c3bbbcb586 100644
+--- a/ext/gd/tests/bug24155.phpt
++++ b/ext/gd/tests/bug24155.phpt
+@@ -4,7 +4,6 @@ Bug #24155 (gdImageRotate270 rotation problem).
+ gd
+ --SKIPIF--
+ <?php
+-    if (!function_exists("imagerotate")) die("skip requires imagerotate function");
+     if (!(imagetypes() & IMG_PNG)) {
+         die("skip No PNG support");
+     }
+diff --git a/ext/gd/tests/bug39366.phpt b/ext/gd/tests/bug39366.phpt
+index 81e81059c27e8..3c8b0130a410a 100644
+--- a/ext/gd/tests/bug39366.phpt
++++ b/ext/gd/tests/bug39366.phpt
+@@ -2,10 +2,6 @@
+ Bug #39366 (imagerotate does not respect alpha with angles>45)
+ --EXTENSIONS--
+ gd
+---SKIPIF--
+-<?php
+-    if (!function_exists("imagerotate")) die("skip requires imagerotate function");
+-?>
+ --FILE--
+ <?php
+ 
+diff --git a/ext/gd/tests/imagerotate_overflow.phpt b/ext/gd/tests/imagerotate_overflow.phpt
+index 29cc89c1c56eb..a7be335ca92a6 100644
+--- a/ext/gd/tests/imagerotate_overflow.phpt
++++ b/ext/gd/tests/imagerotate_overflow.phpt
+@@ -2,12 +2,6 @@
+ imagerotate() overflow with negative numbers
+ --EXTENSIONS--
+ gd
+---SKIPIF--
+-<?php
+-    if (!function_exists('imagerotate')) {
+-        die("skip imagerotate() not available.");
+-    }
+-?>
+ --FILE--
+ <?php
+ 
+From fa043f4716dcbd21630e16584e2d8d6baf17c77d Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 10 Jul 2024 08:20:31 -0400
+Subject: [PATCH 1/1] ext/gd/tests/gh10614.phpt: skip if no PNG support
+
+This test uses imagecreatefrompng(), which won't be there if libgd was
+built without PNG support.
+---
+ ext/gd/tests/gh10614.phpt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/ext/gd/tests/gh10614.phpt b/ext/gd/tests/gh10614.phpt
+index c068914183..1b91115d74 100644
+--- a/ext/gd/tests/gh10614.phpt
++++ b/ext/gd/tests/gh10614.phpt
+@@ -5,6 +5,9 @@
+ --SKIPIF--
+ <?php
+ if (!GD_BUNDLED && version_compare(GD_VERSION, '2.3.4', '>=')) die("skip test requires GD 2.3.4 or older");
++if (!(imagetypes() & IMG_PNG)) {
++    die("skip No PNG support");
++}
+ ?>
+ --FILE--
+ <?php
+-- 
+2.44.2
+

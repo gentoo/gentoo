@@ -1,0 +1,24 @@
+https://github.com/Motion-Project/motionplus/issues/74
+https://github.com/Motion-Project/motionplus/commit/af632f831127499ee541d9c719a930321718f294
+https://bugs.gentoo.org/910601
+
+From af632f831127499ee541d9c719a930321718f294 Mon Sep 17 00:00:00 2001
+From: Mr-Dave <MotionMrDave@gmail.com>
+Date: Sat, 8 Jul 2023 21:36:06 -0600
+Subject: [PATCH] Fix webp libs.  Closes #74
+
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/configure.ac    	2022-12-17 17:36:49.000000000 -0700
++++ b/configure.ac	2023-09-25 06:39:39.399220672 -0600
+@@ -192,7 +192,7 @@
+         AC_MSG_RESULT(yes)
+         AC_DEFINE([HAVE_WEBP], [1], [Define to 1 if WEBP is around])
+         TEMP_CFLAGS="$TEMP_CFLAGS "`pkg-config --cflags libwebpmux`
+-        TEMP_LIBS="$TEMP_LIBS "`pkg-config --libs libwebpmux`
++        TEMP_LIBS="$TEMP_LIBS "`pkg-config --libs libwebpmux libwebp`
+       ],[
+         AC_MSG_RESULT(no)
+       ]

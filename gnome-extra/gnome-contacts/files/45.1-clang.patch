@@ -1,0 +1,228 @@
+From a6ad56a6151f29ceaf6fda3c547c143645e1060f Mon Sep 17 00:00:00 2001
+From: Niels De Graef <nielsdegraef@gmail.com>
+Date: Sun, 18 Feb 2024 11:49:32 +0100
+Subject: [PATCH] Avoid using return*_if_fail/reached() macros in Vala
+
+`g_return_if_fail()`, `g_return_val_if_fail()` (and similarly
+`g_return_if_reached()` are often used in GLib C to denote a
+precondition or soft assertion for a specific place in the code, often
+pointing to a programmer error if the condition fails.
+
+Vala also binds to these methods, but unfortunately, they're a bit less
+useful: the error message it prints only shows the "compiled" temporary
+variable (e.g. `_tmp4_ != NULL`) rather than the actual value, and more
+importantly, it skips some type strictness checks when compiling to C
+(for example, allowing to return nothing in a function that expects a
+boolean return value).
+
+This commit avoids those macros in several ways:
+- Throwing an error for unsupported code paths
+- Using the `requires()` construct in Vala, which is a similar construct
+  to that of GLib, but specific to Vala (but can only be used at the
+  function signature level)
+- For other points in the code, we fall back to `warn_if_fail()`, which
+  still suffers from the problem of printing temporary variables, but at
+  least doesn't fail any type checks.
+
+Fixes: https://gitlab.gnome.org/GNOME/gnome-contacts/-/issues/340
+---
+ src/contacts-contact-editor.vala        |  4 ++--
+ src/contacts-contact-sheet.vala         |  6 +++---
+ src/contacts-import-operation.vala      |  2 +-
+ src/contacts-main-window.vala           | 19 +++++++++----------
+ src/contacts-persona-filter.vala        |  6 +++---
+ src/contacts-query-filter.vala          |  6 +++---
+ src/core/contacts-bin-chunk.vala        |  2 +-
+ src/core/contacts-chunk.vala            |  3 +--
+ src/io/contacts-io-parse-operation.vala |  2 +-
+ 9 files changed, 24 insertions(+), 26 deletions(-)
+
+diff --git a/src/contacts-contact-editor.vala b/src/contacts-contact-editor.vala
+index 195eaa0e..5ac9b3d7 100644
+--- a/src/contacts-contact-editor.vala
++++ b/src/contacts-contact-editor.vala
+@@ -126,7 +126,7 @@ public class Contacts.PersonaEditor : Gtk.Widget {
+       return ((Chunk) item).persona == this.persona;
+     });
+     var persona_model = new Gtk.FilterListModel (this.contact, (owned) persona_filter);
+-    return_if_fail (persona_model.get_n_items () > 0);
++    warn_if_fail (persona_model.get_n_items () > 0);
+ 
+     // Show all properties that we either ...
+     var filter = new Gtk.AnyFilter ();
+@@ -208,7 +208,7 @@ public class Contacts.PersonaEditor : Gtk.Widget {
+     while (current_position < position) {
+       child = child.get_next_sibling ();
+       // If this fails, we somehow have less widgets than items in our model
+-      return_if_fail (child != null);
++      warn_if_fail (child != null);
+       current_position++;
+     }
+ 
+diff --git a/src/contacts-contact-sheet.vala b/src/contacts-contact-sheet.vala
+index 2c49bb66..092466ab 100644
+--- a/src/contacts-contact-sheet.vala
++++ b/src/contacts-contact-sheet.vala
+@@ -49,13 +49,13 @@ public class Contacts.ContactSheet : Gtk.Widget {
+     // Get the widget where we'll have to append the item at "position". Note
+     // that we need to take care of the header and the persona store titles
+     unowned var child = get_first_child ();
+-    return_if_fail (child != null); // Header is always available
++    warn_if_fail (child != null); // Header is always available
+ 
+     uint current_position = 0;
+     while (current_position < position) {
+       child = child.get_next_sibling ();
+       // If this fails, we somehow have less widgets than items in our model
+-      return_if_fail (child != null);
++      warn_if_fail (child != null);
+ 
+       // Ignore persona store labels
+       if (child is Gtk.Label)
+@@ -67,7 +67,7 @@ public class Contacts.ContactSheet : Gtk.Widget {
+     // First, remove the ones that were removed from the model too
+     while (removed != 0) {
+       unowned var to_remove = child.get_next_sibling ();
+-      return_if_fail (to_remove != null); // if this happens we're out of sync
++      warn_if_fail (to_remove != null); // if this happens we're out of sync
+       to_remove.unparent ();
+       removed--;
+     }
+diff --git a/src/contacts-import-operation.vala b/src/contacts-import-operation.vala
+index bf8032da..54a29a3d 100644
+--- a/src/contacts-import-operation.vala
++++ b/src/contacts-import-operation.vala
+@@ -56,6 +56,6 @@ public class Contacts.ImportOperation : Operation {
+   }
+ 
+   public override async void _undo () throws GLib.Error {
+-    return_if_reached ();
++    throw new IOError.NOT_SUPPORTED ("Undoing an import operation is not supported");
+   }
+ }
+diff --git a/src/contacts-main-window.vala b/src/contacts-main-window.vala
+index 42c51e65..d8ddda2b 100644
+--- a/src/contacts-main-window.vala
++++ b/src/contacts-main-window.vala
+@@ -233,12 +233,11 @@ public class Contacts.MainWindow : Adw.ApplicationWindow {
+     this.actions_bar.reveal_child = (this.state == UiState.SELECTING);
+   }
+ 
+-  private void edit_contact (GLib.SimpleAction action, GLib.Variant? parameter) {
+-    unowned var selected = get_selected_individual ();
+-    return_if_fail (selected != null);
++  private void edit_contact (GLib.SimpleAction action, GLib.Variant? parameter)
++      requires (get_selected_individual () != null) {
+ 
++    unowned var selected = get_selected_individual ();
+     this.state = UiState.UPDATING;
+-
+     var title = _("Editing %s").printf (selected.display_name);
+     this.contact_pane_page.title = title;
+     this.contact_pane.edit_contact ();
+@@ -258,10 +257,10 @@ public class Contacts.MainWindow : Adw.ApplicationWindow {
+     unmark_action.set_enabled (favorite);
+   }
+ 
+-  private void set_selection_is_favorite (bool favorite) {
+-    unowned var selected = get_selected_individual ();
+-    return_if_fail (selected != null);
++  private void set_selection_is_favorite (bool favorite)
++      requires (get_selected_individual () != null) {
+ 
++    unowned var selected = get_selected_individual ();
+     selected.is_favourite = favorite;
+ 
+     update_favorite_actions (favorite);
+@@ -282,10 +281,10 @@ public class Contacts.MainWindow : Adw.ApplicationWindow {
+     this.list_pane_page.title = left_title;
+   }
+ 
+-  private void unlink_contact (GLib.SimpleAction action, GLib.Variant? parameter) {
+-    unowned Individual? selected = get_selected_individual ();
+-    return_if_fail (selected != null);
++  private void unlink_contact (GLib.SimpleAction action, GLib.Variant? parameter)
++      requires (get_selected_individual () != null) {
+ 
++    unowned var selected = get_selected_individual ();
+     this.selection_model.selected.unselect_all ();
+     this.state = UiState.NORMAL;
+ 
+diff --git a/src/contacts-persona-filter.vala b/src/contacts-persona-filter.vala
+index 274f4179..9bf5f913 100644
+--- a/src/contacts-persona-filter.vala
++++ b/src/contacts-persona-filter.vala
+@@ -24,10 +24,10 @@ public class Contacts.PersonaFilter : Gtk.Filter {
+   }
+   private string[] _ignored_store_types = { "key-file", };
+ 
+-  public override bool match (GLib.Object? item) {
+-    unowned var persona = item as Persona;
+-    return_val_if_fail (persona != null, false);
++  public override bool match (GLib.Object? item)
++      requires (item is Persona) {
+ 
++    unowned var persona = item as Persona;
+     return match_persona_store_type (persona);
+   }
+ 
+diff --git a/src/contacts-query-filter.vala b/src/contacts-query-filter.vala
+index ed46f7c5..c1846e05 100644
+--- a/src/contacts-query-filter.vala
++++ b/src/contacts-query-filter.vala
+@@ -69,10 +69,10 @@ public class Contacts.QueryFilter : Gtk.Filter {
+     this.changed (Gtk.FilterChange.DIFFERENT);
+   }
+ 
+-  public override bool match (GLib.Object? item) {
+-    unowned var individual = item as Individual;
+-    return_val_if_fail (individual != null, false);
++  public override bool match (GLib.Object? item)
++      requires (item is Individual) {
+ 
++    unowned var individual = item as Individual;
+     return this.query.is_match (individual) > this.min_strength;
+   }
+ 
+diff --git a/src/core/contacts-bin-chunk.vala b/src/core/contacts-bin-chunk.vala
+index 4a63072e..96bf5de3 100644
+--- a/src/core/contacts-bin-chunk.vala
++++ b/src/core/contacts-bin-chunk.vala
+@@ -38,7 +38,7 @@ public abstract class Contacts.BinChunk : Chunk, GLib.ListModel {
+   public override bool dirty {
+     get {
+       // If we're hitting this, a subclass forgot to set the field
+-      return_val_if_fail (this.original_elements_set, false);
++      warn_if_fail (this.original_elements_set);
+ 
+       var non_empty_count = nr_nonempty_children ();
+       if (this.original_elements.length != non_empty_count)
+diff --git a/src/core/contacts-chunk.vala b/src/core/contacts-chunk.vala
+index ba346db5..fdfa8da1 100644
+--- a/src/core/contacts-chunk.vala
++++ b/src/core/contacts-chunk.vala
+@@ -58,8 +58,7 @@ public abstract class Contacts.Chunk : GLib.Object {
+   /**
+    * Calls the appropriate API to save to the persona.
+    */
+-  public abstract async void save_to_persona () throws GLib.Error
+-      requires (this.persona != null);
++  public abstract async void save_to_persona () throws GLib.Error;
+ 
+   /**
+    * Serializes this chunk into a {@link GLib.Variant} accordding to an
+diff --git a/src/io/contacts-io-parse-operation.vala b/src/io/contacts-io-parse-operation.vala
+index 0e74c144..cfb98a74 100644
+--- a/src/io/contacts-io-parse-operation.vala
++++ b/src/io/contacts-io-parse-operation.vala
+@@ -82,6 +82,6 @@ public class Contacts.Io.ParseOperation : Operation {
+   }
+ 
+   public override async void _undo () throws GLib.Error {
+-    return_if_reached ();
++    throw new IOError.NOT_SUPPORTED ("Undoing a parsing operation is not supported");
+   }
+ }
+-- 
+GitLab
+

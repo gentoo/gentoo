@@ -1,0 +1,11 @@
+This header doesn't exist on musl and it's unnecessary anyway.
+--- a/CPU.xs
++++ b/CPU.xs
+@@ -24,7 +24,6 @@
+  #include <winreg.h>
+ #else                /* other (try unix) */
+  #include <unistd.h>
+- #include <sys/unistd.h>
+ #endif
+ #if defined(__sun) || defined(__sun__)
+  #include <sys/processor.h>

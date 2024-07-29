@@ -1,0 +1,13 @@
+AC_INIT([prctl], [1.6])
+AC_CONFIG_SRCDIR([prctl.c])
+AM_INIT_AUTOMAKE([foreign])
+
+AC_PROG_CC
+
+AC_HEADER_STDC
+AC_CHECK_HEADERS(unistd.h)
+
+AC_CHECK_FUNCS(strerror)
+
+AC_CONFIG_FILES([Makefile])
+AC_OUTPUT

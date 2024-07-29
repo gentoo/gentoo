@@ -1,0 +1,19 @@
+Bug: https://bugs.gentoo.org/894348
+Upstream PR: https://github.com/lxc/lxcfs/pull/610
+--- a/src/proc_loadavg.c
++++ b/src/proc_loadavg.c
+@@ -603,12 +603,12 @@ pthread_t load_daemon(int load_use)
+ 
+ 	ret = init_load();
+ 	if (ret == -1)
+-		return log_error(0, "Initialize hash_table fails in load_daemon!");
++		return (pthread_t) log_error(0, "Initialize hash_table fails in load_daemon!");
+ 
+ 	ret = pthread_create(&pid, NULL, load_begin, NULL);
+ 	if (ret != 0) {
+ 		load_free();
+-		return log_error(0, "Create pthread fails in load_daemon!");
++		return (pthread_t) log_error(0, "Create pthread fails in load_daemon!");
+ 	}
+ 
+ 	/* use loadavg, here loadavg = 1*/

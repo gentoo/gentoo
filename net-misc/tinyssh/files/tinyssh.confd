@@ -1,0 +1,7 @@
+# TinySSH config file for /etc/init.d/tinyssh
+
+#TINYSSH_PORT="22"
+#TINYSSH_IP="0.0.0.0"
+#TINYSSH_CONFDIR="/etc/tinyssh"
+#TINYSSH_KEYDIR="${TINYSSH_CONFDIR}/keys"
+#TINYSSH_OPTS="-l -v"

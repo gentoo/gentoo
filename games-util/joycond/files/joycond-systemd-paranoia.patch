@@ -1,0 +1,46 @@
+From d39ce9de9420560494d92519f4e29a40d685a5b4 Mon Sep 17 00:00:00 2001
+From: Andrew Udvare <audvare@gmail.com>
+Date: Sun, 12 Dec 2021 22:02:00 -0500
+Subject: [PATCH] systemd service: paranoia mode
+
+---
+ systemd/joycond.service | 24 +++++++++++++++++++-----
+ 1 file changed, 19 insertions(+), 5 deletions(-)
+
+diff --git a/systemd/joycond.service b/systemd/joycond.service
+index cc8e408..5a8b045 100644
+--- a/systemd/joycond.service
++++ b/systemd/joycond.service
+@@ -4,12 +4,27 @@ After=network.target
+
+ [Service]
+ ExecStart=/usr/bin/joycond
+-WorkingDirectory=/root
+-StandardOutput=inherit
+-StandardError=inherit
+ Restart=always
+-User=root
++
++DeviceAllow=/dev/uinput
++DeviceAllow=char-input
++DevicePolicy=closed
++LockPersonality=yes
++MemoryDenyWriteExecute=yes
++NoNewPrivileges=yes
++ProtectClock=yes
++PrivateTmp=yes
++ProtectHome=yes
++ProtectHostname=yes
++ProtectControlGroups=yes
++ProtectKernelModules=yes
++ProtectProc=noaccess
++ProtectSystem=strict
++RestrictAddressFamilies=AF_NETLINK
++RestrictNetworkInterfaces=
++RestrictRealtime=yes
++RestrictSUIDSGID=yes
++SocketBindDeny=any
+ 
+ [Install]
+ WantedBy=multi-user.target
+-

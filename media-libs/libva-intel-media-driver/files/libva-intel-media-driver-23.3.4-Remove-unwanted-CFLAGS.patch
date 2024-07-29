@@ -1,0 +1,43 @@
+From f961b7d5141f8c795afe69b0b2868de6129ecdc8 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Mon, 9 Oct 2023 11:55:56 -0400
+Subject: [PATCH] Remove unwanted CFLAGS
+
+---
+ media_driver/cmake/linux/media_compile_flags_linux.cmake | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/media_driver/cmake/linux/media_compile_flags_linux.cmake b/media_driver/cmake/linux/media_compile_flags_linux.cmake
+index 0a211fdc7..17b0cb5a5 100755
+--- a/media_driver/cmake/linux/media_compile_flags_linux.cmake
++++ b/media_driver/cmake/linux/media_compile_flags_linux.cmake
+@@ -53,8 +53,6 @@ set(MEDIA_COMPILER_FLAGS_COMMON
+ 
+     # Enable c++14 features
+     -std=c++14
+-    # -m32 or -m64
+-    -m${ARCH}
+ 
+     # Global defines
+     -DLINUX=1
+@@ -62,7 +60,6 @@ set(MEDIA_COMPILER_FLAGS_COMMON
+     -DNO_RTTI
+     -DNO_EXCEPTION_HANDLING
+     -DINTEL_NOT_PUBLIC
+-    -g
+ )
+ 
+ if(MEDIA_BUILD_HARDENING)
+@@ -204,9 +201,6 @@ include(${MEDIA_EXT_CMAKE}/ext/linux/media_compile_flags_linux_ext.cmake OPTIONA
+ if(${PLATFORM} STREQUAL "linux")
+     #set predefined compiler flags set
+     add_compile_options("${MEDIA_COMPILER_FLAGS_COMMON}")
+-    add_compile_options("$<$<CONFIG:Debug>:${MEDIA_COMPILER_FLAGS_DEBUG}>")
+-    add_compile_options("$<$<CONFIG:Release>:${MEDIA_COMPILER_FLAGS_RELEASE}>")
+-    add_compile_options("$<$<CONFIG:ReleaseInternal>:${MEDIA_COMPILER_FLAGS_RELEASEINTERNAL}>")
+ 
+     foreach (flag ${MEDIA_COMPILER_CXX_FLAGS_COMMON})
+         SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${flag}")
+-- 
+2.41.0
+

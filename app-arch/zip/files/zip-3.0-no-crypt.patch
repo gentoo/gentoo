@@ -1,0 +1,57 @@
+fix building when NO_CRYPT is used
+
+forward ported from zip-2.32
+
+http://bugs.gentoo.org/238398
+
+--- a/zip.c
++++ b/zip.c
+@@ -3452,6 +3452,9 @@ char **argv;            /* command line tokens */
+ 
+   /* Key not yet specified.  If needed, get/verify it now. */
+   if (key_needed) {
++#if !CRYPT
++    ZIPERR(ZE_PARMS, "encryption not supported");
++#else /* CRYPT */
+     if ((key = malloc(IZ_PWLEN+1)) == NULL) {
+       ZIPERR(ZE_MEM, "was getting encryption password");
+     }
+@@ -3478,6 +3481,7 @@ char **argv;            /* command line tokens */
+     if (r) {
+       ZIPERR(ZE_PARMS, "password verification failed");
+     }
++#endif
+   }
+   if (key) {
+     /* if -P "" could get here */
+--- a/zipcloak.c
++++ b/zipcloak.c
+@@ -744,6 +744,28 @@ struct option_struct far options[] = {
+ 
+ int main OF((void));
+ 
++void zipmessage_nl(a, nl)
++ZCONST char *a;
++int nl;
++{
++}
++
++void zipmessage(a, b)
++ZCONST char *a, *b;
++{
++}
++
++int set_filetype(out_path)
++  char *out_path;
++{
++}
++
++int rename_split(temp_name, out_path)
++  char *temp_name;
++  char *out_path;
++{
++}
++
+ void zipwarn(msg1, msg2)
+ ZCONST char  *msg1, *msg2;
+ {

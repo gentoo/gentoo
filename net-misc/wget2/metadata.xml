@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
+	<use>
+		<flag name="gpgme">Build <pkg>app-crypt/gpgme</pkg> backend</flag>
+		<flag name="openssl">Enable crypto support via <pkg>dev-libs/openssl</pkg></flag>
+		<flag name="psl">Use public suffix list via <pkg>net-libs/libpsl</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="gitlab">gnuwget/wget2</remote-id>
+	</upstream>
+</pkgmetadata>

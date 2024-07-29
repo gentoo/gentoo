@@ -1,0 +1,12 @@
+--- a/crash.cc    2023-08-14 02:39:46.638062516 +0000
++++ b/crash.cc    2023-08-14 02:41:28.020698537 +0000
+@@ -27,7 +27,8 @@
+ #endif
+
+ #ifdef BACKTRACE_SUPPORTED
+-#if defined(TARGET_CPU_MIPS) || \
++#if !defined(__GLIBC__) || \
++    defined(TARGET_CPU_MIPS) || \
+     defined(TARGET_OS_FREEBSD) || \
+     defined(TARGET_OS_NETBSD) || \
+     defined(TARGET_OS_OPENBSD) || \

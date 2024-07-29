@@ -1,0 +1,15 @@
+[Unit]
+Description=Uncomplicated Firewall
+DefaultDependencies=no
+Before=network.target sysinit.target
+After=systemd-sysctl.service
+ConditionPathExists=|/etc/ufw/ufw.conf
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/share/ufw/ufw-init start
+ExecStop=/usr/share/ufw/ufw-init stop
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/690092
+
+--- gom-0.29.103/configure.in
++++ gom-0.29.103/configure.in
+@@ -25,6 +25,7 @@
+ AC_PROG_CC
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
++PKG_PROG_PKG_CONFIG
+ 
+ 
+ dnl Custom options to configure
+@@ -39,11 +40,11 @@
+ 
+ dnl Checks for libraries.
+ 
+-AC_CHECK_LIB(ncurses, beep)
+-if [[ "$ac_cv_lib_ncurses_beep" != "yes" ]]
+-    then AC_MSG_ERROR("Need ncurses library for terminal gomii!")
+-fi
+-
++PKG_CHECK_MODULES(NCURSES, ncurses, [
++		  LIBS="$LIBS $NCURSES_LIBS"
++		 ],[
++		  AC_MSG_ERROR([Need ncurses library for terminal gomii!])
++		 ])
+ 
+ if [[ "$enable_x_gomii" = "yes" ]]; then
+       AC_CHECK_LIB(X11, main)

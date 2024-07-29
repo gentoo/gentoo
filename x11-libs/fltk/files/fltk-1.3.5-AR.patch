@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -430,7 +430,7 @@ AC_PATH_PROG(DOXYDOC,doxygen)
+ 
+ dnl How do we make libraries?
+ AC_PROG_RANLIB
+-AC_PATH_TOOL(AR, ar)
++AC_CHECK_TOOL(AR, ar)
+ 
+ if test "x$AR" = "x:"; then
+     AC_MSG_ERROR([Configure could not find the library archiver, aborting.])

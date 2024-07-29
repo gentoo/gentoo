@@ -1,0 +1,23 @@
+From e1d32cd424462b2ac414d3a4ea3e1285d5ca2aef Mon Sep 17 00:00:00 2001
+From: Markus Diem <diemmarkus@gmail.com>
+Date: Mon, 27 Jul 2020 13:11:31 +0200
+Subject: [PATCH] patches wrong plugin installation path
+
+- thanks to @tieugene
+---
+ ImageLounge/plugins/cmake/Utils.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/Utils.cmake b/cmake/Utils.cmake
+index f2d1b62..5578aa7 100644
+--- a/ImageLounge/plugins/cmake/Utils.cmake
++++ b/ImageLounge/plugins/cmake/Utils.cmake
+@@ -139,7 +139,7 @@ macro(NMC_CREATE_TARGETS)
+ 	
+ 	elseif(UNIX)
+ 		set_target_properties(${PROJECT_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${NOMACS_BUILD_DIRECTORY}/plugins)
+-		install(TARGETS ${PROJECT_NAME} RUNTIME LIBRARY DESTINATION lib/nomacs-plugins)
++        install(TARGETS ${PROJECT_NAME} RUNTIME LIBRARY DESTINATION lib${LIB_SUFFIX}/nomacs-plugins)
+ 		set_property(TARGET ${PROJECT_NAME} PROPERTY VERSION ${NOMACS_VERSION_MAJOR}.${NOMACS_VERSION_MINOR}.${NOMACS_VERSION_PATCH})
+ 		set_property(TARGET ${PROJECT_NAME} PROPERTY SOVERSION ${NOMACS_VERSION_MAJOR})
+ 	endif(MSVC)

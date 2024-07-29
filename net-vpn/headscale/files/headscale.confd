@@ -1,0 +1,8 @@
+HEADSCALE_USER=headscale
+HEADSCALE_GROUP=headscale
+
+# max number of open files (for floodfill)
+rc_ulimit="-n 4096"
+
+# Options to headscale
+HEADSCALE_OPTIONS="serve"

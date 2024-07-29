@@ -1,0 +1,29 @@
+--- a/mic-paren.el
++++ b/mic-paren.el
+@@ -619,7 +619,7 @@
+ Do NOT set this variable directly but use
+ `paren-toggle-matching-quoted-paren' to activate/deactivate/toggle this
+ feature!  The best method is to do this in a mode hook, e.g.:
+-\(add-hook \'LaTeX-mode-hook
++\(add-hook \\='LaTeX-mode-hook
+           \(function \(lambda \(\)
+                       \(paren-toggle-matching-quoted-paren 1\)\)\)\)")
+ 
+@@ -633,7 +633,7 @@
+ Do NOT set this variable directly but use
+ `paren-toggle-matching-paired-delimiter' to activate/deactivate/toggle
+ this feature!  The best method is to do this in a mode hook, e.g.:
+-\(add-hook \'LaTeX-mode-hook
++\(add-hook \\='LaTeX-mode-hook
+           \(function \(lambda \(\)
+                       \(paren-toggle-matching-paired-delimiter 1\)\)\)\)")
+ 
+@@ -666,7 +666,7 @@
+ Do NOT set this variable directly but use `paren-toggle-open-paren-context'
+ to change the value of this option!  The best method is to do this in a
+ mode hook, e.g.:
+-\(add-hook \'c-common-mode-hook
++\(add-hook \\='c-common-mode-hook
+            \(function \(lambda \(\)
+                          \(paren-toggle-open-paren-context 1\)\)\)\)")
+ 

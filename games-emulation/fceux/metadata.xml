@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="archive">Use <pkg>app-arch/libarchive</pkg> for 7zip support</flag>
+		<flag name="ffmpeg">Use <pkg>media-video/ffmpeg</pkg> for video recording</flag>
+		<flag name="x265">Use <pkg>media-libs/x265</pkg> for video recording (HEVC)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">TASEmulators/fceux</remote-id>
+		<remote-id type="sourceforge">fceultra</remote-id>
+	</upstream>
+</pkgmetadata>

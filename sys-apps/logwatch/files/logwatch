@@ -1,0 +1,6 @@
+#!/bin/sh
+
+if [ -x /usr/sbin/logwatch.pl ] ; then
+	mkdir -p /var/cache/logwatch
+	exec /usr/sbin/logwatch.pl --output mail
+fi

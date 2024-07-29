@@ -1,0 +1,9 @@
+[Unit]
+Description=linux-logo-creator
+After=systemd-user-sessions.service
+
+[Service]
+ExecStart=/usr/bin/linux_logo_creator
+
+[Install]
+WantedBy=logo.target

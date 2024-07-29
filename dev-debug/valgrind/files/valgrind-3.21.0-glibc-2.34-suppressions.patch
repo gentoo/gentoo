@@ -1,0 +1,197 @@
+commit e04914e10126d3a8de13302e958bbfd5e83a6637
+Author: Romain Geissler <romain.geissler@amadeus.com>
+Date:   Mon Jan 30 16:09:47 2023 +0000
+
+    Fragile temporary fix for https://bugs.kde.org/show_bug.cgi?id=464671: avoid using @GLIBC_VERSION@ with our recent toolchains.
+    
+    This is fragile as it might a bit too many things (especially ld*.so, which maybe shall be written "ld-linux-*.so" to be a bit more robust)
+    and also it doesn't work for glibc < 2.34.
+    
+    Ideally something similar to GLIBC_LIBC_PATH shall be introduced for ld.so and libdl.so, so that
+    it covers both glibc < 2.34 and glibc >= 2.34.
+
+--- a/glibc-2.X.supp.in
++++ b/glibc-2.X.supp.in
+@@ -39,74 +39,74 @@
+ {
+    dl-hack3-cond-1
+    Memcheck:Cond
+-   obj:*/lib*/ld-@GLIBC_VERSION@*.so*
+-   obj:*/lib*/ld-@GLIBC_VERSION@*.so*
+-   obj:*/lib*/ld-@GLIBC_VERSION@*.so*
++   obj:*/lib*/ld*.so*
++   obj:*/lib*/ld*.so*
++   obj:*/lib*/ld*.so*
+ }
+ {
+    dl-hack3-cond-2
+    Memcheck:Cond
+-   obj:*/lib*/ld-@GLIBC_VERSION@*.so*
+-   obj:*/lib*/ld-@GLIBC_VERSION@*.so*
+-   obj:*/lib*/libc-@GLIBC_VERSION@*.so*
++   obj:*/lib*/ld*.so*
++   obj:*/lib*/ld*.so*
++   obj:@GLIBC_LIBC_PATH@
+ }
+ {
+    dl-hack3-cond-3
+    Memcheck:Cond
+-   obj:*/lib*/ld-@GLIBC_VERSION@*.so*
+-   obj:*/lib*/libc-@GLIBC_VERSION@*.so*
+-   obj:*/lib*/libc-@GLIBC_VERSION@*.so*
++   obj:*/lib*/ld*.so*
++   obj:@GLIBC_LIBC_PATH@
++   obj:@GLIBC_LIBC_PATH@
+ }
+ {
+    dl-hack3-cond-4
+    Memcheck:Cond
+-   obj:*/lib*/ld-@GLIBC_VERSION@*.so*
+-   obj:*/lib*/ld-@GLIBC_VERSION@*.so*
+-   obj:*/lib*/libdl-@GLIBC_VERSION@*.so*
++   obj:*/lib*/ld*.so*
++   obj:*/lib*/ld*.so*
++   obj:@GLIBC_LIBC_PATH@
+ }
+ 
+ {
+    dl-hack4-64bit-addr-1
+    Memcheck:Addr8
+-   obj:*/lib*/ld-@GLIBC_VERSION@*.so*
+-   obj:*/lib*/ld-@GLIBC_VERSION@*.so*
+-   obj:*/lib*/ld-@GLIBC_VERSION@*.so*
++   obj:*/lib*/ld*.so*
++   obj:*/lib*/ld*.so*
++   obj:*/lib*/ld*.so*
+ }
+ {
+    dl-hack4-64bit-addr-2
+    Memcheck:Addr8
+-   obj:*/lib*/ld-@GLIBC_VERSION@*.so*
+-   obj:*/lib*/ld-@GLIBC_VERSION@*.so*
+-   obj:*/lib*/libc-@GLIBC_VERSION@*.so*
++   obj:*/lib*/ld*.so*
++   obj:*/lib*/ld*.so*
++   obj:@GLIBC_LIBC_PATH@
+ }
+ {
+    dl-hack4-64bit-addr-3
+    Memcheck:Addr8
+-   obj:*/lib*/ld-@GLIBC_VERSION@*.so*
+-   obj:*/lib*/ld-@GLIBC_VERSION@*.so*
+-   obj:*/lib*/libdl-@GLIBC_VERSION@*.so*
++   obj:*/lib*/ld*.so*
++   obj:*/lib*/ld*.so*
++   obj:@GLIBC_LIBC_PATH@
+ }
+ 
+ {
+    dl-hack5-32bit-addr-1
+    Memcheck:Addr4
+-   obj:*/lib*/ld-@GLIBC_VERSION@*.so
+-   obj:*/lib*/ld-@GLIBC_VERSION@*.so
+-   obj:*/lib*/ld-@GLIBC_VERSION@*.so
++   obj:*/lib*/ld*.so
++   obj:*/lib*/ld*.so
++   obj:*/lib*/ld*.so
+ }
+ {
+    dl-hack5-32bit-addr-3
+    Memcheck:Addr4
+-   obj:*/lib*/ld-@GLIBC_VERSION@*.so
+-   obj:*/lib*/ld-@GLIBC_VERSION@*.so
+-   obj:*/lib*/libdl-@GLIBC_VERSION@*.so*
++   obj:*/lib*/ld*.so
++   obj:*/lib*/ld*.so
++   obj:@GLIBC_LIBC_PATH@
+ }
+ {
+    dl-hack5-32bit-addr-4
+    Memcheck:Addr4
+-   obj:*/lib*/ld-@GLIBC_VERSION@*.so
+-   obj:*/lib*/libdl-@GLIBC_VERSION@*.so*
+-   obj:*/lib*/ld-@GLIBC_VERSION@*.so
++   obj:*/lib*/ld*.so
++   obj:@GLIBC_LIBC_PATH@
++   obj:*/lib*/ld*.so
+ }
+ 
+ 
+@@ -124,7 +124,7 @@
+    glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+    Memcheck:Cond
+    fun:index
+-   obj:*ld-@GLIBC_VERSION@.*.so
++   obj:*/lib*/ld*.so*
+ }
+ {
+    glibc-2.5.x-on-SuSE-10.2-(PPC)-2b
+@@ -136,7 +136,7 @@
+    glibc-2.5.5-on-SuSE-10.2-(PPC)-2c
+    Memcheck:Addr4
+    fun:index
+-   obj:*ld-@GLIBC_VERSION@.*.so
++   obj:*/lib*/ld*.so*
+ }
+ {
+    glibc-2.3.5-on-SuSE-10.1-(PPC)-3
+@@ -149,9 +149,9 @@
+ {
+    glibc-@GLIBC_VERSION@-on-SUSE-10.3-(x86)
+    Memcheck:Addr4
+-   obj:*/lib/ld-@GLIBC_VERSION@*.so
+-   obj:*/lib/ld-@GLIBC_VERSION@*.so
+-   obj:*/lib/ld-@GLIBC_VERSION@*.so
++   obj:*/lib/ld*.so
++   obj:*/lib/ld*.so
++   obj:*/lib/ld*.so
+ }
+ 
+ {
+@@ -168,9 +168,9 @@
+    Memcheck:Param
+    socketcall.sendto(msg)
+    fun:__sendto_nocancel
+-   obj:/*libc-@GLIBC_VERSION@*.so
+-   obj:/*libc-@GLIBC_VERSION@*.so
+-   obj:/*libc-@GLIBC_VERSION@*.so
++   obj:@GLIBC_LIBC_PATH@
++   obj:@GLIBC_LIBC_PATH@
++   obj:@GLIBC_LIBC_PATH@
+ }
+ {
+    glibc24-64bit-padding-1c
+@@ -180,7 +180,7 @@
+    fun:__nscd_get_map_ref
+    fun:nscd_get*_r
+    fun:*nscd*
+-   obj:/*libc-@GLIBC_VERSION@*.so
++   obj:@GLIBC_LIBC_PATH@
+ }
+ 
+ 
+@@ -199,18 +199,18 @@
+    Memcheck:Param
+    socketcall.sendto(msg)
+    fun:send
+-   obj:/*libc-@GLIBC_VERSION@*.so
+-   obj:/*libc-@GLIBC_VERSION@*.so
+-   obj:/*libc-@GLIBC_VERSION@*.so
++   obj:@GLIBC_LIBC_PATH@
++   obj:@GLIBC_LIBC_PATH@
++   obj:@GLIBC_LIBC_PATH@
+ }
+ {
+    X11-64bit-padding-4b
+    Memcheck:Param
+    socketcall.send(msg)
+    fun:send
+-   obj:/*libc-@GLIBC_VERSION@*.so
+-   obj:/*libc-@GLIBC_VERSION@*.so
+-   obj:/*libc-@GLIBC_VERSION@*.so
++   obj:@GLIBC_LIBC_PATH@
++   obj:@GLIBC_LIBC_PATH@
++   obj:@GLIBC_LIBC_PATH@
+ }
+ 
+ ##----------------------------------------------------------------------##

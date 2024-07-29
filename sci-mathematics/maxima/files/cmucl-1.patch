@@ -1,0 +1,19 @@
+diff -r -U1 maxima-5.37.1.orig/src/maxima.in maxima-5.37.1/src/maxima.in
+--- maxima-5.37.1.orig/src/maxima.in	2015-05-22 04:40:03.000000000 +0600
++++ maxima-5.37.1/src/maxima.in	2015-09-03 16:29:30.751877085 +0600
+@@ -152,5 +152,5 @@
+ 	if [ -x "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" ]; then
+-	    exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" $MAXIMA_LISP_OPTIONS -quiet -- "$@"
++	    exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" $MAXIMA_LISP_OPTIONS -quiet -nositeinit -noinit -- "$@"
+ 	else
+-	    exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/@CMUCL_RUNTIME@" $MAXIMA_LISP_OPTIONS -quiet -core "$maxima_image_base.core" -eval '(cl-user::run)' -- "$@"
++	    exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/@CMUCL_RUNTIME@" $MAXIMA_LISP_OPTIONS -quiet -nositeinit -noinit -core "$maxima_image_base.core" -eval '(cl-user::run)' -- "$@"
+ 	fi
+@@ -158,5 +158,5 @@
+ 	if [ -x "$maxima_image_base" ]; then
+-	    exec "$maxima_image_base" $MAXIMA_LISP_OPTIONS -quiet -- "$@"
++	    exec "$maxima_image_base" $MAXIMA_LISP_OPTIONS -quiet -nositeinit -noinit -- "$@"
+ 	else
+-	    exec "@CMUCL_NAME@" $MAXIMA_LISP_OPTIONS -quiet -core "$maxima_image_base.core" -eval '(cl-user::run)' -- "$@"
++	    exec "@CMUCL_NAME@" $MAXIMA_LISP_OPTIONS -quiet -nositeinit -noinit -core "$maxima_image_base.core" -eval '(cl-user::run)' -- "$@"
+ 	fi

@@ -1,0 +1,165 @@
+--- a/src/cEffects.cpp
++++ b/src/cEffects.cpp
+@@ -180,7 +180,6 @@
+ 	{
+ 		if(!i->update())
+ 			i=lEffects.erase(i);
+-		if(i==NULL)break;
+ 	}
+ 
+     for(p=lParticles.begin();p!=lParticles.end();++p)
+@@ -190,8 +189,6 @@
+ 		if(!p->active())
+ 		{
+ 			p=lParticles.erase(p);
+-			if(p==NULL)
+-				break;
+ 		}
+ 	}
+ 
+--- a/src/cFont.cpp
++++ b/src/cFont.cpp
+@@ -62,7 +62,7 @@
+ }
+ 
+ ///lädt einen TTF-Font ein
+-bool cFont::load(char *path,int size)
++bool cFont::load(const char *path,int size)
+ {
+ 	font = TTF_OpenFont(path,size);
+ 	if(font==NULL)
+--- a/src/cFont.h
++++ b/src/cFont.h
+@@ -34,7 +34,7 @@
+ 	static void		delInstance();
+ 	static bool		initttf();
+ 
+-	bool			load(char *path,int size);
++	bool			load(const char *path,int size);
+ 	void			setcolor(int r,int g,int b);
+ 	void			setshader(int r,int g,int b);
+ 	void			print(SDL_Surface *screen,int posx,int posy,const char *fmt, ...);
+--- a/src/cParticleSys.cpp
++++ b/src/cParticleSys.cpp
+@@ -81,9 +81,6 @@
+ 		if(time-p->getstarttime()>p->getlifetime())
+ 		{
+ 			p=lParticles.erase(p);
+-			if(p==NULL)
+-				break;
+-			
+ 		}
+ 	}
+ 
+--- a/src/cSound.cpp
++++ b/src/cSound.cpp
+@@ -92,7 +92,7 @@
+ }
+ 
+ ///spielt eine ogg-datei ab
+-bool cSound::playogg(char *path)
++bool cSound::playogg(const char *path)
+ {
+ 	if(!sound_on)
+ 		return true;
+--- a/src/cSound.h
++++ b/src/cSound.h
+@@ -35,7 +35,7 @@
+ 
+ 	bool			init();
+ 	void				close();
+-	bool			playogg(char *path);
++	bool			playogg(const char *path);
+ 	void				stopogg();
+ 	bool			loadwav(int index,char *path);
+ 	void				playwav(int index);
+--- a/src/cSprite.cpp
++++ b/src/cSprite.cpp
+@@ -29,7 +29,7 @@
+ 
+ ///lädt ein BMP in das image-Surface
+ ///gibt false zurück falls es schief geht
+-bool cSprite::loadBMP(char *path)
++bool cSprite::loadBMP(const char *path)
+ {
+ 	image=SDL_LoadBMP(path);
+ 	if(!image)
+@@ -73,4 +73,4 @@
+ int cSprite::getheight()
+ {
+ 	return image->h;
+-}
+\ No newline at end of file
++}
+--- a/src/cSprite.h
++++ b/src/cSprite.h
+@@ -26,7 +26,7 @@
+ 	cSprite();
+ 	~cSprite();
+ 
+-	bool 	loadBMP(char *path);
++	bool 	loadBMP(const char *path);
+ 	void 	render(SDL_Surface *screen,int x,int y);
+ 	void 	setColorKey(int r,int g,int b);
+ 
+--- a/src/cSpriteAnim.cpp
++++ b/src/cSpriteAnim.cpp
+@@ -145,7 +145,7 @@
+ }
+ 
+ ///einladen einer Animation aus einer Datei
+-bool cSpriteAnim::load(char *path)
++bool cSpriteAnim::load(const char *path)
+ {
+ 	FILE 	*file;
+ 	char	buffer[512];
+@@ -248,4 +248,4 @@
+ {
+ 	if(anim==NULL)return -1;
+ 	return gfx_sprite[anim->getAct()].getwidth();
+-}
+\ No newline at end of file
++}
+--- a/src/cSpriteAnim.h
++++ b/src/cSpriteAnim.h
+@@ -53,7 +53,7 @@
+ 	cSpriteAnim();
+ 	~cSpriteAnim();
+ 
+-	bool	load(char *path);
++	bool	load(const char *path);
+ 	void	setColorKey(int r,int g,int b);
+ 	void	render(SDL_Surface *screen,cAnim *anim,int x,int y);
+ 	int		getMaxNum();
+--- a/src/cUtil.cpp
++++ b/src/cUtil.cpp
+@@ -85,7 +85,7 @@
+ }
+ 
+ ///liest einen wert aus einer config-datei
+-char* cUtil::getconfigvalue(char *path,char *value)
++char* cUtil::getconfigvalue(const char *path,const char *value)
+ {
+ 	FILE	*file;
+ 	char	buffer[512];
+--- a/src/cUtil.h
++++ b/src/cUtil.h
+@@ -31,7 +31,7 @@
+ 
+ 	void	updatetime();
+ 	float 	sync(float Faktor);
+-	char*	getconfigvalue(char *path,char *value);
++	char*	getconfigvalue(const char *path,const char *value);
+ 	void	drawpixel(SDL_Surface *screen, int x, int y,Uint8 R, Uint8 G,Uint8 B);
+ 	bool	collision(SDL_Rect objekt1,SDL_Rect objekt2);	
+ 
+--- a/src/mmgr.cpp
++++ b/src/mmgr.cpp
+@@ -59,6 +59,7 @@
+ #include <time.h>
+ #include <stdarg.h>
+ #include <new>
++using namespace std;
+ 
+ #ifndef	WIN32
+ #include <unistd.h>

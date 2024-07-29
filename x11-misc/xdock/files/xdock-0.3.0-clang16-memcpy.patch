@@ -1,0 +1,11 @@
+#Bug https://bugs.gentoo.org/898894
+--- a/src/lib/network.c
++++ b/src/lib/network.c
+@@ -16,6 +16,7 @@
+ #include <stdarg.h>
+ #include <stdlib.h>
+ #include <errno.h>
++#include <string.h>
+ 
+ int net_connect(char* host, int port)
+ {

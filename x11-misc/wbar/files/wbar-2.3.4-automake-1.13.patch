@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -3,7 +3,7 @@
+ AC_INIT([wbar], [2.3.4])
+ AM_INIT_AUTOMAKE([ filename-length-max=256 tar-ustar ])
+ 
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ AC_CONFIG_MACRO_DIR([m4])
+ 
+ AC_PROG_CXX

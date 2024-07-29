@@ -1,0 +1,94 @@
+Fix broken handling of ncurses by relying on pkg-config
+instead of broken detection.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=559210
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -9,7 +9,7 @@
+ 	CXXFLAGS="-O2 -Wall -W -fno-strength-reduce"
+ fi
+ 
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ 
+ dnl Checks for programs.
+ AC_PROG_CC
+@@ -17,6 +17,7 @@
+ AC_PROG_LN_S
+ AC_PROG_INSTALL
+ AC_PROG_RANLIB
++AM_PROG_AR
+ 
+ dnl Checks for typedefs, structures, and compiler characteristics.
+ AC_C_CONST
+@@ -26,7 +27,7 @@
+ AC_PROG_GCC_TRADITIONAL
+ AC_CHECK_FUNCS(strdup strstr)
+ 
+-AC_LANG_CPLUSPLUS
++AC_PROG_CXX
+ 
+ #For FreeBSD, look in /usr/local/(lib,include) first, since ncurses4
+ #must be installed as an add-on on these systems in /usr/local
+@@ -233,55 +234,12 @@
+ REQ_CURSES=1
+ 
+ if test "$WANT_CURSES" = "1" ; then
+-	AC_CHECK_LIB(curses,main,HAVE_LIBCURSES=1)
+-	AC_CHECK_LIB(ncurses,main,HAVE_LIBNCURSES=1)
+-	AC_CHECK_HEADER(curses.h,HAVE_CURSES_H=1,HAVE_CURSES_H=0)
+-	AC_CHECK_HEADER(ncurses/ncurses.h,HAVE_NCURSES_NCURSES_H=1)
+-	AC_CHECK_HEADER(ncurses/curses.h,HAVE_NCURSES_CURSES_H=1)
+-	AC_CHECK_HEADER(ncurses.h,HAVE_NCURSES_H=1)
+-
+-	if test "$FORCECURSES" = "1" ; then
+-		if test "$HAVE_LIBCURSES" = 0 -o "$HAVE_CURSES_H" = 0; then
+-			AC_MSG_ERROR([you forced using curses instead of ncurses, but lib/include cannot be found])
+-		fi
+-		AC_DEFINE_UNQUOTED(NCURSES_HEADER, [<curses.h>],
+-			[Which headerfile to include for ncurses support])
+-		NCURSES_LIBS="-lcurses"
+-		AC_SUBST(NCURSES_LIBS)
+-	else
+-		HAVE_CURSES="yes"
+-		if test "$HAVE_LIBNCURSES" = 1 ; then
+-			NCURSES_LIBS="-lncurses"
+-		elif test "$HAVE_LIBCURSES" = 1 ; then
+-			NCURSES_LIBS="-lcurses"
+-		else
+-			HAVE_CURSES="no"
+-		fi
+-
+-		#header(s) found?
+-		HAVE_CURSES_HEADER=1
+-		if test "$HAVE_NCURSES_NCURSES_H" = "1" ; then
+-			NCURSES_HEADER="<ncurses/ncurses.h>"
+-		elif test "$HAVE_NCURSES_CURSES_H" = "1" ; then
+-			NCURSES_HEADER="<ncurses/curses.h>"
+-		elif test "$HAVE_NCURSES_H" = "1" ; then
+-			NCURSES_HEADER="<ncurses.h>"
+-		elif test "$HAVE_CURSES_H" = "1" ; then
+-			NCURSES_HEADER="<curses.h>"
+-		else
+-			HAVE_CURSES_HEADER=0
+-		fi
+-
+-		if test "$HAVE_CURSES_HEADER" = "0" ; then HAVE_CURSES="no" ; fi
+-
+-		if test "$HAVE_CURSES" = "yes" ; then
+-			AC_SUBST(NCURSES_LIBS)
+-			AC_DEFINE_UNQUOTED(NCURSES_HEADER, $NCURSES_HEADER,
+-				[Which headerfile to include for ncurses support])
+-		elif test "$REQ_CURSES" = "1" ; then
+-			AC_MSG_ERROR([could not find (n)curses libs or includes, which are required])
+-		fi
+-	fi #FORCECURSES
++	PKG_CHECK_MODULES([NCURSES], [ncurses])
++	HAVE_CURSES="yes"
++	HAVE_CURSES_HEADER=1
++	NCURSES_HEADER="<ncurses.h>"
++	AC_DEFINE_UNQUOTED(NCURSES_HEADER, $NCURSES_HEADER,
++		[Which headerfile to include for ncurses support])
+ fi
+ 
+ #Sound output devices.

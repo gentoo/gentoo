@@ -1,0 +1,11 @@
+--- a/t/conf/modperl_extra.pl
++++ b/t/conf/modperl_extra.pl
+@@ -136,6 +136,8 @@
+ sub test_modperl_env {
+     # see t/response/TestModperl/env.pm
+     $ENV{MODPERL_EXTRA_PL} = __FILE__;
++    $ENV{TMPDIR} = __FILE__;
++    $ENV{TMPDIR} =~ s,/work/.*,/temp,;
+ }
+ 
+ 1;

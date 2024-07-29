@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+  <maintainer type="person">
+    <email>frp.bissey@gmail.com</email>
+    <name>François Bissey</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    SONATA stands for "systems of nearrings and their applications." It
+    provides methods for the construction and the analysis of finite
+    nearrings:
+
+     * Methods for constructing all endomorphisms and all
+       fixed-point-free automorphisms of a given group.
+
+     * Methods for constructing the following nearrings of functions on
+       a group G: the nearring of polynomial functions of G (in the sense
+       of Lausch-Nöbauer); the nearring of compatible functions of G;
+       distributively generated nearrings such as I(G), A(G), E(G);
+       centralizer nearrings.
+
+       * A library of all small nearrings (up to order 15) and all small
+         nearrings with identity (up to order 31).
+
+       * Functions to obtain solvable fixed-point-free automorphism
+         groups on abelian groups, nearfields, planar nearrings, as well
+         as designs from those.
+
+       * Various functions to study the structure (size, ideals,
+         N-groups, ...) of nearrings, to determine properties of nearring
+         elements, and to decide whether two nearrings are isomorphic.
+
+       * If the package XGAP is installed, the lattices of one- and
+         two-sided ideals of a nearring can be studied interactively using
+         a graphical representation
+
+  </longdescription>
+  <upstream>
+    <remote-id type="github">gap-packages/sonata</remote-id>
+  </upstream>
+</pkgmetadata>

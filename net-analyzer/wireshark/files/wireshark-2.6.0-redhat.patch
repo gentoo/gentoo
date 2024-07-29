@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3019,7 +3019,7 @@
+ 
+ endif()
+ 
+-if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
++if(CMAKE_SYSTEM_NAME STREQUAL "Red Hat")
+ 	find_program(RPMBUILD_EXECUTABLE rpmbuild)
+ 	find_program(GIT_EXECUTABLE git)
+ endif()

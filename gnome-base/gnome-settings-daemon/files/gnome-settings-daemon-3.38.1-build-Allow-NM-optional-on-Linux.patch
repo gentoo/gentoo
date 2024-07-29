@@ -1,0 +1,24 @@
+From b5b933cf83fc79cc9dd382ddb0ec2567330e24e8 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Sun, 8 Sep 2019 18:07:12 +0300
+Subject: [PATCH 2/3] build: Allow NM optional on Linux
+
+---
+ meson.build | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index dce9bfa1..21d9341d 100644
+--- a/meson.build
++++ b/meson.build
+@@ -223,7 +223,6 @@ endif
+ 
+ # Sharing plugin
+ enable_network_manager = get_option('network_manager')
+-assert(enable_network_manager or not host_is_linux, 'NetworkManager support is not optional on Linux platforms')
+ if enable_network_manager
+   # network manager
+   libnm_dep = dependency('libnm', version: '>= 1.0')
+-- 
+2.26.2
+

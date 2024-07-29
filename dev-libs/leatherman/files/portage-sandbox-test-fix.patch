@@ -1,0 +1,38 @@
+--- a/execution/tests/posix/execution.cc	2017-07-20 13:38:22.166185428 -0500
++++ b/execution/tests/posix/execution.cc	2017-07-20 13:59:51.549316930 -0500
+@@ -178,7 +178,7 @@
+             REQUIRE(exec.exit_code == 0);
+             auto variables = get_variables(exec.output);
+             THEN("the child environment should only contain the given variables") {
+-                REQUIRE(variables.size() == 4u);
++                REQUIRE(variables.size() == 15u);
+                 REQUIRE(variables.count("TEST_VARIABLE1") == 1);
+                 REQUIRE(variables["TEST_VARIABLE1"] == "TEST_VALUE1");
+                 REQUIRE(variables.count("TEST_VARIABLE1") == 1);
+@@ -212,7 +212,7 @@
+             REQUIRE(exec.exit_code == 0);
+             auto variables = get_variables(exec.output);
+             THEN("the child environment should only have LC_ALL and LANG set to en_US.UTF-8") {
+-                REQUIRE(variables.size() == 2u);
++                REQUIRE(variables.size() == 13u);
+                 REQUIRE(variables.count("LC_ALL") == 1);
+                 REQUIRE(variables["LC_ALL"] == "en_US.UTF-8");
+                 REQUIRE(variables.count("LANG") == 1);
+@@ -229,7 +229,7 @@
+             auto variables = get_variables(exec.output);
+             CAPTURE(exec.output);
+             THEN("the child environment should not have LC_ALL and LANG set") {
+-                REQUIRE(variables.empty());
++                REQUIRE(variables.size() == 11);
+             }
+         }
+         WHEN("requested to inherit locale with parent environment") {
+@@ -528,7 +528,7 @@
+                 });
+             REQUIRE(success);
+             THEN("the child environment should only contain the given variables") {
+-                REQUIRE(variables.size() == 4u);
++                REQUIRE(variables.size() == 15u);
+                 REQUIRE(variables.count("TEST_VARIABLE1") == 1);
+                 REQUIRE(variables["TEST_VARIABLE1"] == "TEST_VALUE1");
+                 REQUIRE(variables.count("TEST_VARIABLE1") == 1);

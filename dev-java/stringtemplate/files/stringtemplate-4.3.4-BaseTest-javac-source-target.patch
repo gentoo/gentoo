@@ -1,0 +1,26 @@
+From 4e12a210f2b933c92ded6ee141f6399144a866f5 Mon Sep 17 00:00:00 2001
+From: Yuan Liao <liaoyuan@gmail.com>
+Date: Mon, 24 Jan 2022 06:17:03 -0800
+Subject: [PATCH] BaseTest.java: Change javac source/target to 1.8 for JDK 17
+
+JDK 17 no longer supports 1.6 as the source or target version.
+
+Signed-off-by: Yuan Liao <liaoyuan@gmail.com>
+---
+ test/org/stringtemplate/v4/test/BaseTest.java | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/stringtemplate4-ST4-4.3.4/test/org/stringtemplate/v4/test/BaseTest.java
++++ b/stringtemplate4-ST4-4.3.4/test/org/stringtemplate/v4/test/BaseTest.java
+@@ -258,7 +258,7 @@ public abstract class BaseTest {
+             fileManager.getJavaFileObjectsFromFiles(files);
+ 
+         Iterable<String> compileOptions =
+-            Arrays.asList("-g", "-source", "1.6", "-target", "1.6", "-implicit:class", "-Xlint:-options", "-d", workingDirName, "-cp", workingDirName+pathSep+CLASSPATH);
++            Arrays.asList("-g", "-source", "1.8", "-target", "1.8", "-implicit:class", "-Xlint:-options", "-d", workingDirName, "-cp", workingDirName+pathSep+CLASSPATH);
+ 
+         JavaCompiler.CompilationTask task =
+             compiler.getTask(null, fileManager, null, compileOptions, null,
+-- 
+2.34.1
+

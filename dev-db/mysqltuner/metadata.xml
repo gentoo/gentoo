@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		MySQLTuner is a script written in Perl that will assist
+		you with your MySQL configuration and make recommendations
+		for increased performance and stability.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/major/MySQLTuner-perl/issues</bugs-to>
+		<remote-id type="github">major/MySQLTuner-perl</remote-id>
+	</upstream>
+</pkgmetadata>

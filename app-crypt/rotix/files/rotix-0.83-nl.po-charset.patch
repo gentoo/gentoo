@@ -1,0 +1,22 @@
+https://github.com/shemminga/rotix/pull/2
+From: =?UTF-8?q?Ra=C3=BAl=20Benencia?= <rul@kalgan.cc>
+Date: Mon, 18 Oct 2021 20:28:50 -0700
+Subject: [PATCH] Fix NL translation
+
+Avoids the following error:
+  po/NL.po: warning: Charset "CHARSET" is not a portable encoding name.
+                     Message conversion to user's charset might not work.
+
+--- a/po/NL.po
++++ b/po/NL.po
+@@ -15,8 +15,8 @@ msgstr ""
+ "Last-Translator: Sjoerd Hemminga <sjoerd@huiswerkservice.nl>\n"
+ "Language-Team: NL <NL@li.org>\n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=CHARSET\n"
+-"Content-Transfer-Encoding: ENCODING\n"
++"Content-Type: text/plain; charset=ASCII\n"
++"Content-Transfer-Encoding: 8bit\n"
+ 
+ #: rotix.c:134 rotix.c:145 rotix.c:185
+ msgid "rotix: you cannot specify both an inputfile and a text\n"

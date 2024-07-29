@@ -1,0 +1,11 @@
+To avoid collision with dev-libs/libedit
+we rename man/editline.3 to man/libeditline.3
+
+This patch also needs a rename from outside the patch:
+    $ mv man/editline.3 man/libeditline.3
+
+--- a/man/Makefile.am
++++ b/man/Makefile.am
+@@ -3,1 +3,1 @@
+-dist_man_MANS = editline.3
++dist_man_MANS = libeditline.3

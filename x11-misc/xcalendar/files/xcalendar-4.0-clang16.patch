@@ -1,0 +1,40 @@
+https://bugs.gentoo.org/870484
+--- a/lists.c
++++ b/lists.c
+@@ -26,4 +26,5 @@
+ #include "xcalendar.h"
+ 
++int is_last(LList *list);
+ 
+ List 
+@@ -150,5 +151,5 @@
+ }
+ 
+-is_last(list)
++int is_last(list)
+     LList          *list;
+ {
+--- a/xcalendar.c
++++ b/xcalendar.c
+@@ -1168,5 +1168,5 @@
+     int             m, y;
+ {
+-    register        d, i;
++    int             d, i;
+ 
+     calInit = y;
+@@ -1217,5 +1217,5 @@
+     int             yr;
+ {
+-    register        y, d;
++    int             y, d;
+ 
+     /*
+--- a/xcalendar.h
++++ b/xcalendar.h
+@@ -38,4 +38,5 @@
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include  <X11/Xos.h>
+ #include <X11/Xlib.h>

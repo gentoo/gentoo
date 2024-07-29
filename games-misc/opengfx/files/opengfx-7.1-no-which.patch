@@ -1,0 +1,30 @@
+https://github.com/OpenTTD/OpenGFX/pull/80
+--- a/Makefile
++++ b/Makefile
+@@ -97,7 +97,7 @@ GREP           ?= grep
+ PYTHON         ?= python
+ 
+ # Graphics processing
+-GIMP           ?= $(shell which gimp)
++GIMP           ?= $(shell command -v gimp)
+ GIMP_FLAGS     ?= -n -i
+ 
+ # NML
+@@ -116,7 +116,7 @@ ifdef PNML_FILES
+ endif
+ 
+ # GRF tools
+-GRFID          ?= $(shell which grfid)
++GRFID          ?= $(shell command -v grfid)
+ GRFID_FLAGS    ?= -m
+ MUSA           ?= musa.py
+ # The license is set via bananas.ini, do not supply a "custom" license.
+@@ -606,7 +606,7 @@ endif
+ ifeq ($(shell echo "$(OSTYPE)" | cut -d_ -f1),MINGW32)
+ # If CC has been set to the default implicit value (cc), check if it can be used. Otherwise use a saner default.
+ ifeq "$(origin CC)" "default"
+-	CC=$(shell which cc 2>/dev/null && echo "cc" || echo "gcc")
++	CC=$(shell command -v cc 2>/dev/null && echo "cc" || echo "gcc")
+ endif
+ WIN_VER = $(shell echo "$(OSTYPE)" | cut -d- -f2 | cut -d. -f1)
+ ifeq ($(WIN_VER),5)

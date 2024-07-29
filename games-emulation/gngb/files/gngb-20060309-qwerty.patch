@@ -1,0 +1,24 @@
+From: Markus Koschany <apo@debian.org>
+Date: Thu, 17 Aug 2017 00:15:26 +0200
+Subject: sample_gngbrc
+
+Bug-Debian: https://bugs.debian.org/597910
+Forwarded: no
+---
+ sample_gngbrc | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/sample_gngbrc b/sample_gngbrc
+index a76b465..d0fdd3f 100644
+--- a/sample_gngbrc
++++ b/sample_gngbrc
+@@ -65,6 +65,9 @@ map_joy     1,1,0,0,3,2,0,1
+ 
+ map_key      273,274,276,275,120,119,13,303
+ 
++# Key configuration qwerty example
++# map_key 273,274,276,275,122,120,13,303
++
+ 
+ # Normal GB palette (bright to dark)
+ pal_1 0xB8A68D,0x917D5E,0x635030,0x211A10

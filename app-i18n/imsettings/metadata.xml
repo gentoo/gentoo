@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
+	<use>
+		<flag name="xfconf">Enable support for <pkg>xfce-base/xfconf</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="bitbucket">tagoh/imsettings</remote-id>
+	</upstream>
+</pkgmetadata>

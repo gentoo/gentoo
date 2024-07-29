@@ -1,0 +1,11 @@
+--- a/lib/tre-parse.c
++++ b/lib/tre-parse.c
+@@ -1480,6 +1480,8 @@ tre_parse(tre_parse_ctx_t *ctx)
+ 		      ctx->re++;
+ 		      while (ctx->re_end - ctx->re >= 0)
+ 			{
++			  if (i == sizeof(tmp))
++			    return REG_EBRACE;
+ 			  if (ctx->re[0] == CHAR_RBRACE)
+ 			    break;
+ 			  if (tre_isxdigit(ctx->re[0]))

@@ -1,0 +1,36 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/garbd"
+pidfile="${PIDFILE:-/var/run/garbd}"
+command_background="yes"
+command_args=""
+command_user="nobody"
+
+depend() {
+	use net
+	after mysql
+}
+
+start_pre() {
+	if [ -z "${GALERA_NODES}" ]; then
+		eerror "List of GALERA_NODES is not configured"
+		return 1
+	fi
+
+	if [ -z "${GALERA_GROUP}" ]; then
+		eerror "GALERA_GROUP name is not configured"
+		return 1
+	fi
+
+	GALERA_PORT=${GALERA_PORT:-4567}
+
+	local nodes=$(echo "${GALERA_NODES}" | awk '{ gsub(" ", ",") ; print $0 }')
+	local OPTIONS="-a gcomm://${nodes} -g ${GALERA_GROUP}"
+	[ -n "${GALERA_OPTIONS}" ] && OPTIONS="${OPTIONS} -o ${GALERA_OPTIONS}"
+	[ -n "${LOG_FILE}" ]       && OPTIONS="${OPTIONS} -l ${LOG_FILE}"
+	[ -n "${NODE_NAME}" ]      && OPTIONS="${OPTIONS} -n ${NODE_NAME}"
+
+	command_args="${OPTIONS}"
+}

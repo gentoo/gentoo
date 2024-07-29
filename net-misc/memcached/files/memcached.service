@@ -1,0 +1,12 @@
+[Unit]
+After=network.target
+Description=High-performance, distributed memory object caching system
+Documentation=man:memcached(1)
+Documentation=http://code.google.com/p/memcached/
+
+[Service]
+ExecStart=/usr/bin/memcached
+User=memcached
+
+[Install]
+WantedBy=multi-user.target

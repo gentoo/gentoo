@@ -1,0 +1,37 @@
+# https://bugs.gentoo.org/925102
+# https://github.com/aubio/aubio/commit/95ff046c
+
+From: Paul Brossier <piem@piem.org>
+Date: Thu, 2 Jul 2020 11:16:13 +0200
+Subject: [PATCH] [py] add const qualifiers to ufuncs prototypes for latest numpy
+
+---
+ python/ext/ufuncs.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/python/ext/ufuncs.c b/python/ext/ufuncs.c
+index d373d7258..e5641342e 100644
+--- a/python/ext/ufuncs.c
++++ b/python/ext/ufuncs.c
+@@ -3,8 +3,8 @@
+ 
+ typedef smpl_t (*aubio_unary_func_t)(smpl_t input);
+ 
+-static void aubio_PyUFunc_d_d(char **args, npy_intp *dimensions,
+-                            npy_intp* steps, void* data)
++static void aubio_PyUFunc_d_d(char **args, const npy_intp *dimensions,
++                            const npy_intp* steps, void* data)
+ {
+     npy_intp i;
+     npy_intp n = dimensions[0];
+@@ -22,8 +22,8 @@ static void aubio_PyUFunc_d_d(char **args, npy_intp *dimensions,
+     }
+ }
+ 
+-static void aubio_PyUFunc_f_f_As_d_d(char **args, npy_intp *dimensions,
+-                            npy_intp* steps, void* data)
++static void aubio_PyUFunc_f_f_As_d_d(char **args, const npy_intp *dimensions,
++                            const npy_intp* steps, void* data)
+ {
+     npy_intp i;
+     npy_intp n = dimensions[0];

@@ -1,0 +1,24 @@
+https://github.com/zerotier/ZeroTierOne/pull/2161
+
+From e171384c19bb0c0dfe0368e4f249dd6a30d33748 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Sun, 29 Oct 2023 13:48:07 +0200
+Subject: [PATCH] Append noexecstack to linker flags instead of assembler flags
+
+* Better compatibility with LLVM toolchain where clang -c doesn't
+  support the flag, but the linker does. LLD already defaults to
+  noexecstack, but adding it in the linker phase will avoid errors about
+  unsupported options.
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/make-linux.mk
++++ b/make-linux.mk
+@@ -358,7 +358,7 @@ override CFLAGS+=-fPIC -fPIE
+ override CXXFLAGS+=-fPIC -fPIE
+ 
+ # Non-executable stack
+-override ASFLAGS+=--noexecstack
++override LDFLAGS+=-Wl,-z,noexecstack
+ 
+ .PHONY: all
+ all:	one

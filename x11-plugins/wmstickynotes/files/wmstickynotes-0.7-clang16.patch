@@ -1,0 +1,8 @@
+https://bugs.gentoo.org/874927
+--- a/wmstickynotes.h
++++ b/wmstickynotes.h
+@@ -34,3 +34,3 @@
+ 
+-const num_color_schemes = 8;
++const int num_color_schemes = 8;
+ ColorScheme color_schemes[] = {

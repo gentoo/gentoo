@@ -1,0 +1,25 @@
+From e2ec5ea3b7d9e5fd3225a05891f3611e29adbd1d Mon Sep 17 00:00:00 2001
+From: Tom Vercauteren <tom.vercauteren@kcl.ac.uk>
+Date: Thu, 7 Mar 2024 14:28:21 +0000
+Subject: [PATCH] Add a null filter to re-enable frame count
+
+This aims at addressing https://github.com/imageio/imageio-ffmpeg/issues/99
+---
+ imageio_ffmpeg/_io.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/imageio_ffmpeg/_io.py b/imageio_ffmpeg/_io.py
+index b85c453..faf1ee8 100644
+--- a/imageio_ffmpeg/_io.py
++++ b/imageio_ffmpeg/_io.py
+@@ -153,8 +153,8 @@ def count_frames_and_secs(path):
+         path,
+         "-map",
+         "0:v:0",
+-        "-c",
+-        "copy",
++        "-vf",
++        "null",
+         "-f",
+         "null",
+         "-",

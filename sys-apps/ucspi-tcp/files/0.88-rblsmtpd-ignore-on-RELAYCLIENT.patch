@@ -1,0 +1,25 @@
+--- a/rblsmtpd.c
++++ b/rblsmtpd.c
+@@ -195,6 +195,7 @@
+ {
+   int flagwantdefaultrbl = 1;
+   char *x;
++  char *y;
+   int opt;
+ 
+   ip_init();
+@@ -213,6 +214,13 @@
+     }
+   }
+ 
++  y = env_get("RELAYCLIENT");
++  if (y) {
++    if (!*y) {
++      decision = 1;
++    }
++  }
++
+   while ((opt = getopt(argc,argv,"bBcCt:r:a:")) != opteof)
+     switch(opt) {
+       case 'b': flagrblbounce = 1; break;
+

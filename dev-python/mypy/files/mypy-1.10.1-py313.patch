@@ -1,0 +1,153 @@
+From 29b4303e905f43556043efde95e19f32e04df9a5 Mon Sep 17 00:00:00 2001
+From: Jelle Zijlstra <jelle.zijlstra@gmail.com>
+Date: Fri, 24 May 2024 21:00:17 -0700
+Subject: [PATCH] Fix stubgen for Python 3.13
+
+__firstlineno__ and __static_attributes__ are new in 3.13.
+__annotate__ will be new in 3.14, so we might as well add it now.
+---
+ mypy/stubgenc.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/mypy/stubgenc.py b/mypy/stubgenc.py
+index 29b2636d39cc..7e3ef49c6e9a 100755
+--- a/mypy/stubgenc.py
++++ b/mypy/stubgenc.py
+@@ -466,6 +466,9 @@ def is_skipped_attribute(self, attr: str) -> bool:
+                 "__module__",
+                 "__weakref__",
+                 "__annotations__",
++                "__firstlineno__",
++                "__static_attributes__",
++                "__annotate__",
+             )
+             or attr in self.IGNORED_DUNDERS
+             or is_pybind_skipped_attribute(attr)  # For pickling
+From 071e3f5f4685470f55dab7fc474e9f89a8e49fb9 Mon Sep 17 00:00:00 2001
+From: hauntsaninja <hauntsaninja@gmail.com>
+Date: Fri, 17 May 2024 18:49:27 -0400
+Subject: [PATCH] stubtest: changes for py313
+
+Technically it feels like we should be able to put the new dunders on
+`type` or something, but that wasn't enough to make false positives go
+away. But also we might not want to do that because it only applies to
+pure Python types
+---
+ mypy/stubtest.py | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/mypy/stubtest.py b/mypy/stubtest.py
+index dd43c472d67f..d78b71715159 100644
+--- a/mypy/stubtest.py
++++ b/mypy/stubtest.py
+@@ -634,6 +634,10 @@ def strip_prefix(s: str, prefix: str) -> str:
+     if strip_prefix(stub_arg.variable.name, "__") == runtime_arg.name:
+         return
+ 
++    nonspecific_names = {"object", "args"}
++    if runtime_arg.name in nonspecific_names:
++        return
++
+     def names_approx_match(a: str, b: str) -> bool:
+         a = a.strip("_")
+         b = b.strip("_")
+@@ -1455,6 +1459,8 @@ def verify_typealias(
+         "__getattr__",  # resulting behaviour might be typed explicitly
+         "__setattr__",  # defining this on a class can cause worse type checking
+         "__vectorcalloffset__",  # undocumented implementation detail of the vectorcall protocol
++        "__firstlineno__",
++        "__static_attributes__",
+         # isinstance/issubclass hooks that type-checkers don't usually care about
+         "__instancecheck__",
+         "__subclasshook__",
+diff --git a/mypy/plugins/dataclasses.py b/mypy/plugins/dataclasses.py
+index dd2eceab217f..edfc6840fc37 100644
+--- a/mypy/plugins/dataclasses.py
++++ b/mypy/plugins/dataclasses.py
+@@ -385,6 +385,9 @@ def transform(self) -> bool:
+ 
+         self._add_dataclass_fields_magic_attribute()
+         self._add_internal_replace_method(attributes)
++        if self._api.options.python_version >= (3, 13):
++            self._add_dunder_replace(attributes)
++
+         if "__post_init__" in info.names:
+             self._add_internal_post_init_method(attributes)
+ 
+@@ -395,6 +398,18 @@ def transform(self) -> bool:
+ 
+         return True
+ 
++    def _add_dunder_replace(self, attributes: list[DataclassAttribute]) -> None:
++        """Add a `__replace__` method to the class, which is used to replace attributes in the `copy` module."""
++        args = [attr.to_argument(self._cls.info, of="replace") for attr in attributes]
++        type_vars = [tv for tv in self._cls.type_vars]
++        add_method_to_class(
++            self._api,
++            self._cls,
++            "__replace__",
++            args=args,
++            return_type=Instance(self._cls.info, type_vars),
++        )
++
+     def _add_internal_replace_method(self, attributes: list[DataclassAttribute]) -> None:
+         """
+         Stashes the signature of 'dataclasses.replace(...)' for this specific dataclass
+From 160a9c767324460e916978d49f8d770738572119 Mon Sep 17 00:00:00 2001
+From: hauntsaninja <hauntsaninja@gmail.com>
+Date: Fri, 17 May 2024 18:23:01 -0400
+Subject: [PATCH 1/2] Support namedtuple.__replace__ in Python 3.13
+
+---
+ mypy/semanal_namedtuple.py | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/mypy/semanal_namedtuple.py b/mypy/semanal_namedtuple.py
+index 9a0be9d9c14c..bdd633a60635 100644
+--- a/mypy/semanal_namedtuple.py
++++ b/mypy/semanal_namedtuple.py
+@@ -599,6 +599,12 @@ def add_method(
+             ret=selftype,
+             args=[Argument(var, var.type, EllipsisExpr(), ARG_NAMED_OPT) for var in vars],
+         )
++        if self.options.python_version >= (3, 13):
++            add_method(
++                "__replace__",
++                ret=selftype,
++                args=[Argument(var, var.type, EllipsisExpr(), ARG_NAMED_OPT) for var in vars],
++            )
+ 
+         def make_init_arg(var: Var) -> Argument:
+             default = default_items.get(var.name, None)
+
+From 9fcaedb9f757595486ed231dbdb9433151ec669d Mon Sep 17 00:00:00 2001
+From: hauntsaninja <hauntsaninja@gmail.com>
+Date: Sat, 18 May 2024 18:40:09 -0400
+Subject: [PATCH 2/2] .
+
+---
+ test-data/unit/check-namedtuple.test | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/test-data/unit/check-namedtuple.test b/test-data/unit/check-namedtuple.test
+index 23e109e1af78..b2ba69abb045 100644
+--- a/test-data/unit/check-namedtuple.test
++++ b/test-data/unit/check-namedtuple.test
+@@ -1376,3 +1376,17 @@ class Test3(NamedTuple, metaclass=type):  # E: Unexpected keyword argument "meta
+     ...
+ [builtins fixtures/tuple.pyi]
+ [typing fixtures/typing-namedtuple.pyi]
++
++
++[case testNamedTupleDunderReplace]
++# flags: --python-version 3.13
++from typing import NamedTuple
++
++class A(NamedTuple):
++    x: int
++
++A(x=0).__replace__(x=1)
++A(x=0).__replace__(x="asdf")  # E: Argument "x" to "__replace__" of "A" has incompatible type "str"; expected "int"
++A(x=0).__replace__(y=1)  # E: Unexpected keyword argument "y" for "__replace__" of "A"
++[builtins fixtures/tuple.pyi]
++[typing fixtures/typing-namedtuple.pyi]

@@ -1,0 +1,17 @@
+Update to a newer gettext to fix clang issues
+
+See also: https://bugs.gentoo.org/908414
+See also: https://github.com/gentoo/gentoo/pull/32491
+--- a/configure.ac
++++ b/configure.ac
+@@ -17,8 +17,8 @@ AC_SYS_LARGEFILE
+ dnl AC_PROG_LIBTOOL
+ AC_CONFIG_MACRO_DIR([m4])
+ AC_C_BIGENDIAN
+-AM_GNU_GETTEXT
+-AM_GNU_GETTEXT_VERSION([0.18])
++AM_GNU_GETTEXT([external])
++AM_GNU_GETTEXT_REQUIRE_VERSION([0.21])
+ PKG_PROG_PKG_CONFIG
+ AM_PROG_CC_C_O
+ AM_ICONV

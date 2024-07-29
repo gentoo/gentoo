@@ -1,0 +1,11 @@
+--- a/data/gimmix.desktop
++++ b/data/gimmix.desktop
+@@ -5,6 +5,6 @@
+ Terminal=false
+ Type=Application
+ StartupNotify=true
+-Icon=gimmix.png
+-Categories=Application;GTK;AudioVideo;
++Icon=gimmix
++Categories=GTK;AudioVideo;
+ MimeType=

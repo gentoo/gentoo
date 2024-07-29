@@ -1,0 +1,12 @@
+diff -Naur a/ninewinecfg/main.c b/ninewinecfg/main.c
+--- a/ninewinecfg/main.c	2023-03-10 08:32:25.000000000 +0000
++++ b/ninewinecfg/main.c	2023-10-29 22:49:15.919529033 +0000
+@@ -28,7 +28,7 @@
+ #include "../common/registry.h"
+ #include "resource.h"
+ 
+-static const char * const fn_nine_dll = "d3d9-nine.dll";
++static const char * const fn_nine_dll = G9DLL;
+ static const char * const fn_backup_dll = "d3d9-nine.bak";
+ static const char * const fn_d3d9_dll = "d3d9.dll";
+ static const char * const fn_nine_exe = "ninewinecfg.exe";

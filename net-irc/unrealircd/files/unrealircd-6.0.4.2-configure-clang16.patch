@@ -1,0 +1,64 @@
+https://github.com/unrealircd/unrealircd/pull/242
+
+From 3246e472842237ac9e655e254380c4dd8fea7abc Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 18 Dec 2022 06:18:51 +0000
+Subject: [PATCH] configure.ac: fix -Wimplicit-function-declaration
+
+Clang 16 makes -Wimplicit-function-declaration error by default.
+
+Unfortunately, this can lead to misconfiguration or miscompilation of software as configure
+tests may then return the wrong result.
+
+We also fix -Wstrict-prototypes while here as it's easy to do and it prepares
+us for C23.
+
+Fixes the following:
+```
+configure:6250: checking if your system has IPv6 support
+configure:6275: x86_64-pc-linux-gnu-gcc -o conftest -O2 -pipe -march=native -fdiagnostics-color=always -frecord-gcc-switches -Wreturn-type      -ggdb3 -Werror=implicit-function-declaration -Werror=implicit-int -fno-strict-aliasing -fno-common -funsigned-char -Wall -Wextra -Waggregate-return -Wformat-nonliteral -Wduplicated-cond -Wduplicated-branches -Wparentheses -Wno-pointer-sign -Wno-format-zero-length -Wno-format-truncation -Wno-format-overflow -Wno-unused -Wno-unused-parameter -Wno-unused-but-set-parameter -Wno-char-subscripts -Wno-sign-compare -Wno-empty-body -Wno-pragmas  -Wl,-O1 -Wl,--as-needed -Wl,--defsym=__gentoo_check_ldflags__=0 -Wl,-z,pack-relative-relocs conftest.c  >&5
+conftest.c: In function 'main':
+conftest.c:30:1: error: implicit declaration of function 'exit' [-Werror=implicit-function-declaration]
+   30 | exit(0); /* We only check if the code compiles, that's enough. We can deal with missing runtime IPv6 */
+      | ^~~~
+conftest.c:28:1: note: include '<stdlib.h>' or provide a declaration of 'exit'
+   27 | #include <sys/socket.h>
+  +++ |+#include <stdlib.h>
+   28 | int main() {
+conftest.c:30:1: warning: incompatible implicit declaration of built-in function 'exit' [-Wbuiltin-declaration-mismatch]
+   30 | exit(0); /* We only check if the code compiles, that's enough. We can deal with missing runtime IPv6 */
+      | ^~~~
+conftest.c:30:1: note: include '<stdlib.h>' or provide a declaration of 'exit'
+cc1: some warnings being treated as errors
+configure:6275: $? = 1
+```
+
+For more information, see LWN.net [0] or LLVM's Discourse [1], the Gentoo wiki [2],
+or the (new) c-std-porting mailing list [3].
+
+[0] https://lwn.net/Articles/913505/
+[1] https://discourse.llvm.org/t/configure-script-breakage-with-the-new-werror-implicit-function-declaration/65213
+[2] https://wiki.gentoo.org/wiki/Modern_C_porting
+[3] hosted at lists.linux.dev.
+--- a/configure.ac
++++ b/configure.ac
+@@ -326,7 +326,7 @@ fi
+ ])
+ AC_CACHE_CHECK(if your system prepends an underscore on symbols,ac_cv_underscore,[
+ cat >uscore.c << __EOF__
+-int main() {
++int main(void) {
+ 	return 0;
+ }
+ __EOF__
+@@ -354,7 +354,8 @@ AC_CACHE_CHECK([if your system has IPv6 support], [ac_cv_ip6], [
+ AC_TRY_RUN([
+ #include <sys/types.h>
+ #include <sys/socket.h>
+-int main() {
++#include <stdlib.h>
++int main(void) {
+ int s = socket(AF_INET6, SOCK_STREAM, 0);
+ exit(0); /* We only check if the code compiles, that's enough. We can deal with missing runtime IPv6 */
+ }
+

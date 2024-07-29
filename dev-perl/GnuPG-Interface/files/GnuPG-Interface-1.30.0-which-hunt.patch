@@ -1,0 +1,16 @@
+We don't want to rely on sys-apps/which and it doesn't serve much purpose
+to do this check at all. We already die if we can't find the gpg version
+on the next line anyway.
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -3,10 +3,6 @@ use strict;
+ use warnings;
+ use inc::Module::Install;
+ 
+-print "which gpg ... ";
+-system("which", "gpg");
+-die "gpg (GnuPG) not found" if ( $? != 0 );
+-
+ my $output = `gpg --version`;
+ die "Can't determine gpg version"
+     unless $output =~ /^gpg \(GnuPG.*?\) (\d+\.\d+)/;

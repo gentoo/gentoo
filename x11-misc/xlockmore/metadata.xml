@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="xlockrc">Enables xlockrc for people without PAM</flag>
+		<flag name="vtlock">Enables support for virtual terminal locking</flag>
+	</use>
+</pkgmetadata>

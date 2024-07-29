@@ -1,0 +1,30 @@
+From: James Ralston <ralston@pobox.com>
+Date: Sun, 1 May 2022 16:15:23 -0700
+Subject: Allow legacy renegotiation to fix PEAP issues with some servers
+
+Upstream: http://lists.infradead.org/pipermail/hostap/2022-May/040511.html
+---
+ src/crypto/tls_openssl.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/src/crypto/tls_openssl.c b/src/crypto/tls_openssl.c
+index 273e5cb..ad3aa1a 100644
+--- a/src/crypto/tls_openssl.c
++++ b/src/crypto/tls_openssl.c
+@@ -1056,6 +1056,16 @@ void * tls_init(const struct tls_config *conf)
+ 	SSL_CTX_set_options(ssl, SSL_OP_NO_SSLv2);
+ 	SSL_CTX_set_options(ssl, SSL_OP_NO_SSLv3);
+ 
++	/* Many enterprise PEAP server implementations (e.g. used in large
++	 corporations and universities) do not support RFC5746 secure
++	 renegotiation, and starting with OpenSSL 3.0,
++	 SSL_OP_LEGACY_SERVER_CONNECT is no longer set as part of SSL_OP_ALL.
++	 So until we implement a way to request SSL_OP_LEGACY_SERVER_CONNECT
++	 only in EAP peer mode, just set SSL_OP_LEGACY_SERVER_CONNECT
++	 globally. */
++
++	SSL_CTX_set_options(ssl, SSL_OP_LEGACY_SERVER_CONNECT);
++
+ 	SSL_CTX_set_mode(ssl, SSL_MODE_AUTO_RETRY);
+ 
+ #ifdef SSL_MODE_NO_AUTO_CHAIN

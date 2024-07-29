@@ -1,0 +1,27 @@
+The package app-crypt/mhash-0.9.9 as well as app-crypt/mhash-0.9.9-r1 are
+affected by a bug which causes a NULL ptr dereference in whirlpool/snefru
+digest-completion functionality.
+
+In this patch, whirlpool and snefru's code is updated to bail if 'digest' is
+NULL.  The code portion aborted is only responsible for writing data to the
+digest, so this appears to be correct behavior.
+
+Patch already submitted upstream, but depending on speed, this may be faster to
+patch in a new patchset.
+
+Gentoo-Bug: 255131
+Gentoo-Bug-URL: https://bugs.gentoo.org/show_bug.cgi?id=255131
+Patch-URL: http://bugs.gentoo.org/attachment.cgi?id=178667&action=view
+Signed-off-by: Thomas Harning <harningt@gmail.com>
+
+--- a/lib/whirlpool.c
++++ b/lib/whirlpool.c
+@@ -970,6 +970,8 @@
+                     mutils_word8 * digest)
+ {
+    mutils_word32 i;
++
++   if(!digest) return;
+     /*
+      * return the completed message digest:
+      */

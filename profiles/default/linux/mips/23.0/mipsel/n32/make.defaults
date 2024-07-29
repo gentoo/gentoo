@@ -1,0 +1,8 @@
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+CHOST_o32="mipsel-unknown-linux-gnu"
+CHOST_n32="mips64el-unknown-linux-gnuabin32"
+CHOST_n64="mips64el-unknown-linux-gnuabi64"
+
+CHOST=${CHOST_n32}

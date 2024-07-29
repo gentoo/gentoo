@@ -1,0 +1,21 @@
+From 8dd70878d095fa0b35b81ee6e21c2b1fc010b41b Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 1 Jul 2020 01:23:46 +1200
+Subject: Include '.' in @INC for perl 5.26+
+
+---
+ Makefile.PL | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 6ede3a6..d793c3b 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -1,3 +1,4 @@
++use lib '.';
+ use inc::Module::Install;
+ 
+ name('Crypt-Cracklib');
+-- 
+2.27.0
+

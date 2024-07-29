@@ -1,0 +1,15 @@
+# /etc/rsyncd.conf
+
+# Minimal configuration file for rsync daemon
+# See rsync(1) and rsyncd.conf(5) man pages for help
+
+# This line is required by the /etc/init.d/rsyncd script
+pid file = @GENTOO_PORTAGE_EPREFIX@/run/rsyncd.pid
+use chroot = yes
+read only = yes
+
+# Simple example for enabling your own local rsync server
+#[gentoo-portage]
+#	path = @GENTOO_PORTAGE_EPREFIX@/var/db/repos/gentoo
+#	comment = Gentoo ebuild repository
+#	exclude = /distfiles /packages

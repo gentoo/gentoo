@@ -1,0 +1,12 @@
+https://github.com/mattthias/slurm/pull/38
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -25,7 +25,7 @@
+ 
+ add_executable(slurm ${SLURM_SOURCES})
+ 
+-target_link_libraries(slurm ncurses)
++target_link_libraries(slurm ${CURSES_LIBRARY} ${CURSES_EXTRA_LIBRARY})
+ 
+ # install
+ install(TARGETS slurm DESTINATION bin)

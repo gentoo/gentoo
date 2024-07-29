@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="tagged">You can disable the use of the `tagged` package using `-f-tagged`.
+
+Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.</flag>
+	</use>
+	<upstream>
+		<remote-id type="hackage">foldable1-classes-compat</remote-id>
+		<remote-id type="github">haskell-compat/foldable1-classes-compat</remote-id>
+	</upstream>
+</pkgmetadata>

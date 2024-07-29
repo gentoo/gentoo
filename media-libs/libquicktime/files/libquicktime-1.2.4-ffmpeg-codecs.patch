@@ -1,0 +1,651 @@
+diff -ruN a/plugins/ffmpeg/audio.c b/plugins/ffmpeg/audio.c
+--- a/plugins/ffmpeg/audio.c	2012-03-29 21:44:28.000000000 +0200
++++ b/plugins/ffmpeg/audio.c	2020-02-09 19:08:03.716063846 +0100
+@@ -626,7 +626,7 @@
+     {
+     /* If the codec is mp3, make sure to decode the very last frame */
+ 
+-    if((codec->avctx->codec_id == CODEC_ID_MP3) &&
++    if((codec->avctx->codec_id == AV_CODEC_ID_MP3) &&
+        (codec->bytes_in_chunk_buffer >= 4))
+       {
+       if(!mpa_decode_header(&mph, codec->chunk_buffer, (const mpa_header*)0))
+@@ -695,7 +695,7 @@
+     
+     /* Some really broken mp3 files have the header bytes split across 2 chunks */
+ 
+-    if(codec->avctx->codec_id == CODEC_ID_MP3)
++    if(codec->avctx->codec_id == AV_CODEC_ID_MP3)
+       {
+       if(codec->bytes_in_chunk_buffer < 4)
+         {
+@@ -806,7 +806,7 @@
+     
+     if(bytes_decoded < 0)
+       {
+-      if(codec->avctx->codec_id == CODEC_ID_MP3)
++      if(codec->avctx->codec_id == AV_CODEC_ID_MP3)
+         {
+         /* For mp3, bytes_decoded < 0 means, that the frame should be muted */
+         memset(&codec->sample_buffer[track_map->channels * (codec->sample_buffer_end -
+@@ -866,8 +866,8 @@
+   quicktime_audio_map_t *track_map = &file->atracks[track];
+   quicktime_ffmpeg_audio_codec_t *codec = track_map->codec->priv;
+ 
+-  if((codec->decoder->id == CODEC_ID_MP2) ||
+-     (codec->decoder->id == CODEC_ID_MP3))
++  if((codec->decoder->id == AV_CODEC_ID_MP2) ||
++     (codec->decoder->id == AV_CODEC_ID_MP3))
+     {
+     mpa_header h;
+     uint32_t header;
+@@ -909,7 +909,7 @@
+     else
+       track_map->ci.bitrate = h.bitrate;
+     }
+-  else if(codec->decoder->id == CODEC_ID_AC3)
++  else if(codec->decoder->id == AV_CODEC_ID_AC3)
+     {
+     a52_header h;
+     uint8_t * ptr;
+@@ -986,7 +986,7 @@
+ #endif
+     /* Some codecs need extra stuff */
+ 
+-    if(codec->decoder->id == CODEC_ID_ALAC)
++    if(codec->decoder->id == AV_CODEC_ID_ALAC)
+       {
+       header = quicktime_wave_get_user_atom(track_map->track, "alac", &header_len);
+       if(header)
+@@ -995,7 +995,7 @@
+         codec->avctx->extradata_size = header_len;
+         }
+       }
+-    if(codec->decoder->id == CODEC_ID_QDM2)
++    if(codec->decoder->id == AV_CODEC_ID_QDM2)
+       {
+       header = quicktime_wave_get_user_atom(track_map->track, "QDCA", &header_len);
+       if(header)
+@@ -1495,9 +1495,9 @@
+     codec_base->decode_audio = lqt_ffmpeg_decode_audio;
+   codec_base->set_parameter = set_parameter;
+ 
+-  if((decoder->id == CODEC_ID_MP3) || (decoder->id == CODEC_ID_MP2))
++  if((decoder->id == AV_CODEC_ID_MP3) || (decoder->id == AV_CODEC_ID_MP2))
+     codec_base->read_packet = read_packet_mpa;
+-  else if(decoder->id == CODEC_ID_AC3)
++  else if(decoder->id == AV_CODEC_ID_AC3)
+     {
+     codec_base->write_packet = write_packet_ac3;
+     codec_base->read_packet = read_packet_ac3;
+diff -ruN a/plugins/ffmpeg/lqt_ffmpeg.c b/plugins/ffmpeg/lqt_ffmpeg.c
+--- a/plugins/ffmpeg/lqt_ffmpeg.c	2012-02-15 20:48:30.000000000 +0100
++++ b/plugins/ffmpeg/lqt_ffmpeg.c	2020-02-09 19:07:17.929831925 +0100
+@@ -386,7 +386,7 @@
+ struct CODECIDMAP codecidmap_v[] =
+   {
+     {
+-      .id = CODEC_ID_MPEG1VIDEO,
++      .id = AV_CODEC_ID_MPEG1VIDEO,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -397,7 +397,7 @@
+       .wav_ids = { LQT_WAV_ID_NONE }
+     },
+     {
+-      .id = CODEC_ID_MPEG4,
++      .id = AV_CODEC_ID_MPEG4,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -415,7 +415,7 @@
+       .compression_id = LQT_COMPRESSION_MPEG4_ASP,
+     },
+     {
+-      .id = CODEC_ID_MSMPEG4V1,
++      .id = AV_CODEC_ID_MSMPEG4V1,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -426,7 +426,7 @@
+       .wav_ids = { LQT_WAV_ID_NONE },
+     },
+     {
+-      .id = CODEC_ID_MSMPEG4V2,
++      .id = AV_CODEC_ID_MSMPEG4V2,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -437,7 +437,7 @@
+       .wav_ids = { LQT_WAV_ID_NONE },
+     },
+     {
+-      .id = CODEC_ID_MSMPEG4V3,
++      .id = AV_CODEC_ID_MSMPEG4V3,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -453,7 +453,7 @@
+       .do_encode = 1,
+     },
+     {
+-      .id = CODEC_ID_MSMPEG4V3,
++      .id = AV_CODEC_ID_MSMPEG4V3,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -468,7 +468,7 @@
+     },
+ #if 0
+     {
+-      .id = CODEC_ID_WMV1,
++      .id = AV_CODEC_ID_WMV1,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -481,7 +481,7 @@
+     },
+ #endif
+     {
+-      .id = CODEC_ID_H263,
++      .id = AV_CODEC_ID_H263,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -493,7 +493,7 @@
+       .compatibility_flags = LQT_FILE_QT_OLD | LQT_FILE_QT | LQT_FILE_MP4 | LQT_FILE_3GP,
+     },
+     {
+-      .id = CODEC_ID_H263,
++      .id = AV_CODEC_ID_H263,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -508,7 +508,7 @@
+       .do_encode = 1,
+     },
+     {
+-      .id = CODEC_ID_H264,
++      .id = AV_CODEC_ID_H264,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -519,7 +519,7 @@
+       .wav_ids = { LQT_WAV_ID_NONE },
+     },
+     {
+-      .id = CODEC_ID_H263P,
++      .id = AV_CODEC_ID_H263P,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -533,7 +533,7 @@
+       .do_encode = 1,
+     },
+     {
+-      .id = CODEC_ID_H263I,
++      .id = AV_CODEC_ID_H263I,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -544,7 +544,7 @@
+       .wav_ids = { LQT_WAV_ID_NONE },
+     },
+     {
+-      .id = CODEC_ID_SVQ1,
++      .id = AV_CODEC_ID_SVQ1,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -555,7 +555,7 @@
+       .wav_ids = { LQT_WAV_ID_NONE },
+     },
+     {
+-      .id = CODEC_ID_SVQ3,
++      .id = AV_CODEC_ID_SVQ3,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -566,7 +566,7 @@
+       .wav_ids = { LQT_WAV_ID_NONE },
+     },
+     {
+-      .id = CODEC_ID_MJPEG,
++      .id = AV_CODEC_ID_MJPEG,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -580,7 +580,7 @@
+       .do_encode = 1,
+     },
+     {
+-      .id = CODEC_ID_MJPEGB,
++      .id = AV_CODEC_ID_MJPEGB,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -594,7 +594,7 @@
+     },
+ #if LIBAVCODEC_BUILD >= 3346688
+     {
+-      .id = CODEC_ID_TARGA,
++      .id = AV_CODEC_ID_TARGA,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -606,7 +606,7 @@
+ #endif
+ #if LIBAVCODEC_BUILD >= 3347456
+     {
+-      .id = CODEC_ID_TIFF,
++      .id = AV_CODEC_ID_TIFF,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -617,7 +617,7 @@
+     },
+ #endif
+     {
+-      .id = CODEC_ID_8BPS,
++      .id = AV_CODEC_ID_8BPS,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -627,7 +627,7 @@
+       .wav_ids = { LQT_WAV_ID_NONE },
+     },
+     {
+-      .id = CODEC_ID_INDEO3,
++      .id = AV_CODEC_ID_INDEO3,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -638,7 +638,7 @@
+       .wav_ids = { LQT_WAV_ID_NONE },
+     },
+     {
+-      .id = CODEC_ID_RPZA,
++      .id = AV_CODEC_ID_RPZA,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -648,7 +648,7 @@
+       .wav_ids = { LQT_WAV_ID_NONE },
+     },
+     {
+-      .id = CODEC_ID_SMC,
++      .id = AV_CODEC_ID_SMC,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -658,7 +658,7 @@
+       .wav_ids = { LQT_WAV_ID_NONE },
+     },
+     {
+-      .id = CODEC_ID_CINEPAK,
++      .id = AV_CODEC_ID_CINEPAK,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -669,7 +669,7 @@
+       .wav_ids = { LQT_WAV_ID_NONE },
+     },
+     {
+-      .id = CODEC_ID_CYUV,
++      .id = AV_CODEC_ID_CYUV,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -680,7 +680,7 @@
+       .wav_ids = { LQT_WAV_ID_NONE },
+     },
+     {
+-      .id = CODEC_ID_QTRLE,
++      .id = AV_CODEC_ID_QTRLE,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -693,7 +693,7 @@
+       .encoding_colormodels = (int[]){ BC_RGB888, BC_RGBA8888, LQT_COLORMODEL_NONE },
+     },
+     {
+-      .id = CODEC_ID_MSRLE,
++      .id = AV_CODEC_ID_MSRLE,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -703,7 +703,7 @@
+       .wav_ids = { LQT_WAV_ID_NONE },
+     },
+     {
+-      .id = CODEC_ID_DVVIDEO,
++      .id = AV_CODEC_ID_DVVIDEO,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -719,7 +719,7 @@
+       .image_sizes = image_sizes_dv,
+     },
+     {
+-      .id = CODEC_ID_DVVIDEO,
++      .id = AV_CODEC_ID_DVVIDEO,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -735,7 +735,7 @@
+       .image_sizes = image_sizes_dv,
+     },
+     {
+-      .id = CODEC_ID_DVVIDEO,
++      .id = AV_CODEC_ID_DVVIDEO,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -751,7 +751,7 @@
+     },
+     /* DVCPRO HD (decoding only for now) */
+     {
+-      .id = CODEC_ID_DVVIDEO,
++      .id = AV_CODEC_ID_DVVIDEO,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -772,7 +772,7 @@
+       // .do_encode = 1
+     },
+     {
+-      .id = CODEC_ID_FFVHUFF,
++      .id = AV_CODEC_ID_FFVHUFF,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -785,7 +785,7 @@
+       .do_encode = 1
+     },
+     {
+-      .id = CODEC_ID_FFV1,
++      .id = AV_CODEC_ID_FFV1,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -801,7 +801,7 @@
+     },
+ #if LIBAVCODEC_BUILD >= 3352576
+     {
+-      .id = CODEC_ID_DNXHD,
++      .id = AV_CODEC_ID_DNXHD,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -817,7 +817,7 @@
+     },
+ #endif
+     {
+-      .id = CODEC_ID_MPEG2VIDEO,
++      .id = AV_CODEC_ID_MPEG2VIDEO,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -839,7 +839,7 @@
+ struct CODECIDMAP codecidmap_a[] =
+   {
+     {
+-      .id = CODEC_ID_MP3,
++      .id = AV_CODEC_ID_MP3,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -851,7 +851,7 @@
+       .wav_ids = { 0x50, 0x55, LQT_WAV_ID_NONE },
+     },
+     {
+-      .id = CODEC_ID_MP2,
++      .id = AV_CODEC_ID_MP2,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -866,7 +866,7 @@
+       .compression_id = LQT_COMPRESSION_MP2,
+     },
+     {
+-      .id = CODEC_ID_AC3,
++      .id = AV_CODEC_ID_AC3,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -881,7 +881,7 @@
+       .compression_id = LQT_COMPRESSION_AC3,
+     },
+     {
+-      .id = CODEC_ID_QDM2,
++      .id = AV_CODEC_ID_QDM2,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -896,7 +896,7 @@
+ #if 1
+     /* Doesn't work as long as audio chunks are not split into VBR "Samples" */
+     {
+-      .id = CODEC_ID_ALAC,
++      .id = AV_CODEC_ID_ALAC,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -909,7 +909,7 @@
+ #if 1
+     /* Sounds ugly */
+     {
+-      .id = CODEC_ID_ADPCM_MS,
++      .id = AV_CODEC_ID_ADPCM_MS,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+@@ -922,7 +922,7 @@
+ #if 1
+     /* Sounds ugly */
+     {
+-      .id = CODEC_ID_ADPCM_IMA_WAV,
++      .id = AV_CODEC_ID_ADPCM_IMA_WAV,
+       .index = -1,
+       .encoder = NULL,
+       .decoder = NULL,
+diff -ruN a/plugins/ffmpeg/video.c b/plugins/ffmpeg/video.c
+--- a/plugins/ffmpeg/video.c	2012-02-25 20:46:56.000000000 +0100
++++ b/plugins/ffmpeg/video.c	2020-02-09 19:07:44.399580606 +0100
+@@ -400,7 +400,7 @@
+   codec->reinterpret_pix_fmt = codec->avctx->pix_fmt;
+ 
+   /* First we try codec-specific colormodel matching. */
+-  if(codec->decoder->id == CODEC_ID_DNXHD)
++  if(codec->decoder->id == AV_CODEC_ID_DNXHD)
+     {
+     /* FFMpeg supports PIX_FMT_YUV422P and PIX_FMT_YUV422P10 for DNxHD, which
+        we sometimes interpret as PIX_FMT_YUVJ422P and PIX_FMT_YUVJ422P10. */
+@@ -438,7 +438,7 @@
+   quicktime_ffmpeg_video_codec_t *codec = vtrack->codec->priv;
+   codec->avctx->pix_fmt = lqt_ffmpeg_get_ffmpeg_colormodel(vtrack->stream_cmodel);
+ 
+-  if (codec->encoder->id == CODEC_ID_DNXHD)
++  if (codec->encoder->id == AV_CODEC_ID_DNXHD)
+     {
+     /* FFMpeg's DNxHD encoder only supports PIX_FMT_YUV422P and PIX_FMT_YUV422P10
+        and doesn't know anything about PIX_FMT_YUVJ422P and PIX_FMT_YUVJ422P10
+@@ -728,13 +728,13 @@
+ 
+     /* Set extradata: It's done differently for each codec */
+ 
+-    if(codec->decoder->id == CODEC_ID_SVQ3)
++    if(codec->decoder->id == AV_CODEC_ID_SVQ3)
+       {
+       extradata       = trak->mdia.minf.stbl.stsd.table[0].table_raw + 4;
+       extradata_size  = trak->mdia.minf.stbl.stsd.table[0].table_raw_size - 4;
+       
+       }
+-    else if(codec->decoder->id == CODEC_ID_H264)
++    else if(codec->decoder->id == AV_CODEC_ID_H264)
+       {
+       user_atom = quicktime_stsd_get_user_atom(trak, "avcC", &user_atom_len);
+ 
+@@ -753,7 +753,7 @@
+         }
+       
+       }
+-    else if(codec->decoder->id == CODEC_ID_MPEG4)
++    else if(codec->decoder->id == AV_CODEC_ID_MPEG4)
+       {
+       if(trak->mdia.minf.stbl.stsd.table[0].has_esds)
+         {
+@@ -947,15 +947,15 @@
+           }
+ #endif
+       }
+-    if(codec->decoder->id == CODEC_ID_DVVIDEO)
++    if(codec->decoder->id == AV_CODEC_ID_DVVIDEO)
+       {
+       if(vtrack->stream_cmodel == BC_YUV420P)
+         vtrack->chroma_placement = LQT_CHROMA_PLACEMENT_DVPAL;
+       vtrack->interlace_mode = LQT_INTERLACE_BOTTOM_FIRST;
+       vtrack->ci.id = LQT_COMPRESSION_DV;
+       }
+-    else if((codec->decoder->id == CODEC_ID_MPEG4) ||
+-            (codec->decoder->id == CODEC_ID_H264))
++    else if((codec->decoder->id == AV_CODEC_ID_MPEG4) ||
++            (codec->decoder->id == AV_CODEC_ID_H264))
+       {
+       if(vtrack->stream_cmodel == BC_YUV420P)
+         vtrack->chroma_placement = LQT_CHROMA_PLACEMENT_MPEG2;
+@@ -1299,13 +1299,13 @@
+     {
+     if(vtrack->stream_cmodel == BC_YUV420P)
+       {
+-      if(codec->encoder->id == CODEC_ID_MPEG4)
++      if(codec->encoder->id == AV_CODEC_ID_MPEG4)
+         {
+         vtrack->chroma_placement = LQT_CHROMA_PLACEMENT_MPEG2;
+         /* enable interlaced encoding */
+         vtrack->interlace_mode = LQT_INTERLACE_NONE;
+         }
+-      else if(codec->encoder->id == CODEC_ID_DVVIDEO)
++      else if(codec->encoder->id == AV_CODEC_ID_DVVIDEO)
+         {
+         vtrack->chroma_placement = LQT_CHROMA_PLACEMENT_DVPAL;
+         }
+@@ -1340,7 +1340,7 @@
+     codec->avctx->sample_aspect_ratio.num = pixel_width;
+     codec->avctx->sample_aspect_ratio.den = pixel_height;
+     /* Use global headers for mp4v */
+-    if(codec->encoder->id == CODEC_ID_MPEG4)
++    if(codec->encoder->id == AV_CODEC_ID_MPEG4)
+       {
+       if(!(file->file_type & (LQT_FILE_AVI|LQT_FILE_AVI_ODML)))
+         {
+@@ -1364,12 +1364,12 @@
+         }
+ #endif
+       }
+-    else if((codec->encoder->id == CODEC_ID_MSMPEG4V3) && (trak->strl) &&
++    else if((codec->encoder->id == AV_CODEC_ID_MSMPEG4V3) && (trak->strl) &&
+             !strncmp(trak->strl->strf.bh.biCompression, "DIV3", 4))
+       {
+       strncpy(trak->strl->strh.fccHandler, "div3", 4);
+       }
+-    else if((codec->encoder->id == CODEC_ID_H263) &&
++    else if((codec->encoder->id == AV_CODEC_ID_H263) &&
+             (file->file_type & (LQT_FILE_MP4|LQT_FILE_3GP)))
+       {
+       uint8_t d263_data[] =
+@@ -1383,7 +1383,7 @@
+       strncpy(trak->mdia.minf.stbl.stsd.table[0].format,
+               "s263", 4);
+       }
+-    else if(codec->encoder->id == CODEC_ID_FFVHUFF)
++    else if(codec->encoder->id == AV_CODEC_ID_FFVHUFF)
+       {
+       if(!(file->file_type & (LQT_FILE_AVI|LQT_FILE_AVI_ODML)))
+         {
+@@ -1391,7 +1391,7 @@
+         codec->write_global_header = 1;
+         }
+       }
+-    else if(codec->encoder->id == CODEC_ID_QTRLE)
++    else if(codec->encoder->id == AV_CODEC_ID_QTRLE)
+       {
+       if(vtrack->stream_cmodel == BC_RGBA8888)
+         {
+@@ -1402,11 +1402,11 @@
+         vtrack->track->mdia.minf.stbl.stsd.table[0].depth = 32;
+         }
+       }
+-    else if(codec->encoder->id == CODEC_ID_DVVIDEO)
++    else if(codec->encoder->id == AV_CODEC_ID_DVVIDEO)
+       {
+       set_dv_fourcc(width, height, vtrack->stream_cmodel, trak);
+       }
+-    else if(codec->encoder->id == CODEC_ID_DNXHD)
++    else if(codec->encoder->id == AV_CODEC_ID_DNXHD)
+       {
+       if(vtrack->interlace_mode != LQT_INTERLACE_NONE)
+         {
+@@ -1558,12 +1558,12 @@
+   
+ #endif
+   
+-  if(!was_initialized && codec->encoder->id == CODEC_ID_DNXHD)
++  if(!was_initialized && codec->encoder->id == AV_CODEC_ID_DNXHD)
+     setup_avid_atoms(file, vtrack, codec->buffer, bytes_encoded);
+   
+   if(bytes_encoded)
+     {
+-    if (pts == AV_NOPTS_VALUE || (codec->encoder->id == CODEC_ID_DNXHD && pts == 0))
++    if (pts == AV_NOPTS_VALUE || (codec->encoder->id == AV_CODEC_ID_DNXHD && pts == 0))
+       {
+       /* Some codecs don't bother generating presentation timestamps.
+          FFMpeg's DNxHD encoder doesn't even bother to set it to AV_NOPTS_VALUE. */
+@@ -1590,13 +1590,13 @@
+ 
+   if(codec->write_global_header && !codec->global_header_written)
+     {
+-    if(codec->encoder->id == CODEC_ID_FFVHUFF)
++    if(codec->encoder->id == AV_CODEC_ID_FFVHUFF)
+       {
+       quicktime_user_atoms_add_atom(&trak->mdia.minf.stbl.stsd.table[0].user_atoms,
+                                     "glbl",
+                                     codec->avctx->extradata, codec->avctx->extradata_size );
+       }
+-    else if(codec->encoder->id == CODEC_ID_MPEG4)
++    else if(codec->encoder->id == AV_CODEC_ID_MPEG4)
+       {
+       int advanced = 0;
+       if(codec->avctx->max_b_frames ||
+@@ -1903,18 +1903,18 @@
+     codec_base->encode_video = lqt_ffmpeg_encode_video;
+     codec_base->set_pass = set_pass_ffmpeg;
+ 
+-    if(encoder->id == CODEC_ID_MPEG4)
++    if(encoder->id == AV_CODEC_ID_MPEG4)
+       {
+       codec_base->writes_compressed = writes_compressed_mpeg4;
+       codec_base->init_compressed   = init_compressed_mpeg4;
+       codec_base->write_packet = write_packet_mpeg4;
+       }
+-    else if(encoder->id == CODEC_ID_MPEG2VIDEO)
++    else if(encoder->id == AV_CODEC_ID_MPEG2VIDEO)
+       {
+       codec_base->writes_compressed = writes_compressed_imx;
+       codec_base->init_compressed   = init_compressed_imx;
+       }
+-    else if(encoder->id == CODEC_ID_DVVIDEO)
++    else if(encoder->id == AV_CODEC_ID_DVVIDEO)
+       {
+       codec_base->init_compressed = init_compressed_dv;
+       }
+@@ -1922,7 +1922,7 @@
+     }
+   if(decoder)
+     {
+-    if(decoder->id == CODEC_ID_H264)
++    if(decoder->id == AV_CODEC_ID_H264)
+       codec_base->read_packet = read_packet_h264;
+     codec_base->decode_video = lqt_ffmpeg_decode_video;
+     }

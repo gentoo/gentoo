@@ -1,0 +1,127 @@
+diff --git a/hamcrest/src/main/java/org/hamcrest/collection/ArrayMatching.java b/hamcrest/src/main/java/org/hamcrest/collection/ArrayMatching.java
+index fc968e0..3bbc36e 100644
+--- a/hamcrest/src/main/java/org/hamcrest/collection/ArrayMatching.java
++++ b/hamcrest/src/main/java/org/hamcrest/collection/ArrayMatching.java
+@@ -67,7 +67,7 @@ public class ArrayMatching {
+    */
+   @SafeVarargs
+   public static <E> Matcher<E[]> arrayContainingInAnyOrder(Matcher<? super E>... itemMatchers) {
+-      return arrayContainingInAnyOrder(asList(itemMatchers));
++      return arrayContainingInAnyOrder((List<Matcher<? super E>>) asList(itemMatchers));
+   }
+ 
+   /**
+diff --git a/hamcrest/src/main/java/org/hamcrest/collection/IsArrayContainingInAnyOrder.java b/hamcrest/src/main/java/org/hamcrest/collection/IsArrayContainingInAnyOrder.java
+index 7e72a62..35ff806 100644
+--- a/hamcrest/src/main/java/org/hamcrest/collection/IsArrayContainingInAnyOrder.java
++++ b/hamcrest/src/main/java/org/hamcrest/collection/IsArrayContainingInAnyOrder.java
+@@ -59,7 +59,7 @@ public class IsArrayContainingInAnyOrder<E> extends TypeSafeMatcher<E[]> {
+      *     a list of matchers, each of which must be satisfied by an entry in an examined array
+      */
+     public static <E> Matcher<E[]> arrayContainingInAnyOrder(Matcher<? super E>... itemMatchers) {
+-        return arrayContainingInAnyOrder(Arrays.asList(itemMatchers));
++	return arrayContainingInAnyOrder((List<Matcher<? super E>>) Arrays.asList(itemMatchers));
+     }
+ 
+     /**
+diff --git a/hamcrest/src/main/java/org/hamcrest/collection/IsArrayContainingInOrder.java b/hamcrest/src/main/java/org/hamcrest/collection/IsArrayContainingInOrder.java
+index c046914..312543f 100644
+--- a/hamcrest/src/main/java/org/hamcrest/collection/IsArrayContainingInOrder.java
++++ b/hamcrest/src/main/java/org/hamcrest/collection/IsArrayContainingInOrder.java
+@@ -73,7 +73,7 @@ public class IsArrayContainingInOrder<E> extends TypeSafeMatcher<E[]> {
+      *     the matchers that must be satisfied by the items in the examined array
+      */
+     public static <E> Matcher<E[]> arrayContaining(Matcher<? super E>... itemMatchers) {
+-        return arrayContaining(asList(itemMatchers));
++	return arrayContaining((List<Matcher<? super E>>) asList(itemMatchers));
+     }
+ 
+     /**
+diff --git a/hamcrest/src/main/java/org/hamcrest/collection/IsIterableContainingInAnyOrder.java b/hamcrest/src/main/java/org/hamcrest/collection/IsIterableContainingInAnyOrder.java
+index d6a9a33..6b4e39e 100644
+--- a/hamcrest/src/main/java/org/hamcrest/collection/IsIterableContainingInAnyOrder.java
++++ b/hamcrest/src/main/java/org/hamcrest/collection/IsIterableContainingInAnyOrder.java
+@@ -98,7 +98,7 @@ public class IsIterableContainingInAnyOrder<T> extends TypeSafeDiagnosingMatcher
+      */
+     @SafeVarargs
+     public static <T> Matcher<Iterable<? extends T>> containsInAnyOrder(Matcher<? super T>... itemMatchers) {
+-        return containsInAnyOrder(Arrays.asList(itemMatchers));
++	return containsInAnyOrder((List<Matcher<? super T>>) Arrays.asList(itemMatchers));
+     }
+ 
+     /**
+diff --git a/hamcrest/src/main/java/org/hamcrest/collection/IsIterableContainingInRelativeOrder.java b/hamcrest/src/main/java/org/hamcrest/collection/IsIterableContainingInRelativeOrder.java
+index 0657768..383c552 100644
+--- a/hamcrest/src/main/java/org/hamcrest/collection/IsIterableContainingInRelativeOrder.java
++++ b/hamcrest/src/main/java/org/hamcrest/collection/IsIterableContainingInRelativeOrder.java
+@@ -99,7 +99,7 @@ public class IsIterableContainingInRelativeOrder<E> extends TypeSafeDiagnosingMa
+      */
+     @SafeVarargs
+     public static <E> Matcher<Iterable<? extends E>> containsInRelativeOrder(Matcher<? super E>... itemMatchers) {
+-        return containsInRelativeOrder(asList(itemMatchers));
++        return containsInRelativeOrder((List<Matcher<? super E>>) asList(itemMatchers));
+     }
+ 
+     /**
+diff --git a/hamcrest/src/main/java/org/hamcrest/core/AllOf.java b/hamcrest/src/main/java/org/hamcrest/core/AllOf.java
+index b8c3faa..e7e2550 100644
+--- a/hamcrest/src/main/java/org/hamcrest/core/AllOf.java
++++ b/hamcrest/src/main/java/org/hamcrest/core/AllOf.java
+@@ -4,6 +4,7 @@ import org.hamcrest.Description;
+ import org.hamcrest.DiagnosingMatcher;
+ import org.hamcrest.Matcher;
+ 
++import java.util.List;
+ import java.util.Arrays;
+ 
+ /**
+@@ -56,6 +57,6 @@ public class AllOf<T> extends DiagnosingMatcher<T> {
+      */
+     @SafeVarargs
+     public static <T> Matcher<T> allOf(Matcher<? super T>... matchers) {
+-        return allOf(Arrays.asList(matchers));
++        return allOf((List<Matcher<? super T>>) Arrays.asList(matchers));
+     }
+ }
+diff --git a/hamcrest/src/main/java/org/hamcrest/core/AnyOf.java b/hamcrest/src/main/java/org/hamcrest/core/AnyOf.java
+index 7a22c22..ba52275 100644
+--- a/hamcrest/src/main/java/org/hamcrest/core/AnyOf.java
++++ b/hamcrest/src/main/java/org/hamcrest/core/AnyOf.java
+@@ -3,6 +3,7 @@ package org.hamcrest.core;
+ import org.hamcrest.Description;
+ import org.hamcrest.Matcher;
+ 
++import java.util.List;
+ import java.util.Arrays;
+ 
+ /**
+@@ -46,6 +47,6 @@ public class AnyOf<T> extends ShortcutCombination<T> {
+      */
+     @SafeVarargs
+     public static <T> AnyOf<T> anyOf(Matcher<? super T>... matchers) {
+-        return anyOf(Arrays.asList(matchers));
++        return anyOf((List<Matcher<? super T>>) Arrays.asList(matchers));
+     }
+ }
+diff --git a/hamcrest/src/main/java/org/hamcrest/core/CombinableMatcher.java b/hamcrest/src/main/java/org/hamcrest/core/CombinableMatcher.java
+index e37efce..3ca6f96 100644
+--- a/hamcrest/src/main/java/org/hamcrest/core/CombinableMatcher.java
++++ b/hamcrest/src/main/java/org/hamcrest/core/CombinableMatcher.java
+@@ -57,7 +57,7 @@ public class CombinableMatcher<T> extends TypeSafeDiagnosingMatcher<T> {
+         this.first = matcher;
+     }
+     public CombinableMatcher<X> and(Matcher<? super X> other) {
+-      return new CombinableMatcher<>(first).and(other);
++      return new CombinableMatcher<X>(first).and(other);
+     }
+   }
+ 
+@@ -76,7 +76,7 @@ public class CombinableMatcher<T> extends TypeSafeDiagnosingMatcher<T> {
+         this.first = matcher;
+     }
+     public CombinableMatcher<X> or(Matcher<? super X> other) {
+-      return new CombinableMatcher<>(first).or(other);
++      return new CombinableMatcher<X>(first).or(other);
+     }
+   }
+ }

@@ -1,0 +1,46 @@
+From 9fc5140791ec00d6df2d65973f3ca61df17b1d47 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Sun, 3 Jun 2018 19:43:34 +0200
+Subject: Fix build with Qt 5.11
+
+Summary:
+- qt5_use_modules was removed in Qt 5.11. use target_link_libraries instead.
+- Add a missing #include
+
+Subscribers: kde-edu
+
+Tags: #kde_edu
+
+Differential Revision: https://phabricator.kde.org/D13339
+---
+ cmake/modules/KstMacros.cmake | 2 +-
+ src/libkstapp/view.h          | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/cmake/modules/KstMacros.cmake b/cmake/modules/KstMacros.cmake
+index 4ff9c15..bc3d8a6 100644
+--- a/cmake/modules/KstMacros.cmake
++++ b/cmake/modules/KstMacros.cmake
+@@ -240,7 +240,7 @@ endmacro()
+ macro(kst_link)
+ 	target_link_libraries(${kst_name} ${ARGV})
+ 	if(kst_qt5)
+-		qt5_use_modules(${kst_name} Widgets Xml Network PrintSupport)
++		target_link_libraries(${kst_name} Qt5::Widgets Qt5::Xml Qt5::Network Qt5::PrintSupport)
+ 	else()
+ 		target_link_libraries(${kst_name}
+ 		${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTXML_LIBRARY} ${QT_QTSVG_LIBRARY} ${QT_QTNETWORK_LIBRARY})
+diff --git a/src/libkstapp/view.h b/src/libkstapp/view.h
+index 95c8c6a..2af5393 100644
+--- a/src/libkstapp/view.h
++++ b/src/libkstapp/view.h
+@@ -14,6 +14,7 @@
+ #define VIEW_H
+ 
+ #include <QGraphicsView>
++#include <QMenu>
+ 
+ #include "kst_export.h"
+ 
+-- 
+cgit v0.11.2

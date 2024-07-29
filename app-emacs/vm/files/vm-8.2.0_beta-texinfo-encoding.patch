@@ -1,0 +1,8 @@
+--- vm-8.2.0b-orig/info/vm.texinfo
++++ vm-8.2.0b/info/vm.texinfo
+@@ -1,4 +1,5 @@
+ \input texinfo
++@documentencoding ISO-8859-1
+ @setfilename vm.info
+ @settitle VM User's Manual
+ @dircategory Emacs

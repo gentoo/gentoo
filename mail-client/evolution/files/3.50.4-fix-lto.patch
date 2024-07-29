@@ -1,0 +1,125 @@
+From ab3ddc14896077881df7ffdeddc90d749de8e4ff Mon Sep 17 00:00:00 2001
+From: Milan Crha <mcrha@redhat.com>
+Date: Wed, 7 Feb 2024 16:05:07 +0100
+Subject: [PATCH] I#2646 - rss: Build common code as a shared private library
+
+Closes https://gitlab.gnome.org/GNOME/evolution/-/issues/2646
+---
+ src/modules/rss/CMakeLists.txt           | 39 ++++++++++++++++++++++++
+ src/modules/rss/camel/CMakeLists.txt     | 13 +++++---
+ src/modules/rss/evolution/CMakeLists.txt |  5 +--
+ 3 files changed, 49 insertions(+), 8 deletions(-)
+
+diff --git a/src/modules/rss/CMakeLists.txt b/src/modules/rss/CMakeLists.txt
+index b7442fd613..6c65d36195 100644
+--- a/src/modules/rss/CMakeLists.txt
++++ b/src/modules/rss/CMakeLists.txt
+@@ -1,2 +1,41 @@
++pkg_check_modules(LIBEDATASERVER libedataserver-1.2 REQUIRED)
++pkg_check_modules(CAMEL camel-1.2 REQUIRED)
++
++set(SOURCES
++	camel-rss-store-summary.c
++	camel-rss-store-summary.h
++	e-rss-parser.h
++	e-rss-parser.c
++)
++
++add_library(evolution-rss-common SHARED
++	${SOURCES}
++)
++
++target_compile_definitions(evolution-rss-common PRIVATE
++	-DG_LOG_DOMAIN=\"evolution-rss-common\"
++)
++
++target_compile_options(evolution-rss-common PUBLIC
++	${CAMEL_CFLAGS}
++	${LIBEDATASERVER_CFLAGS}
++)
++
++target_include_directories(evolution-rss-common PUBLIC
++	${CMAKE_BINARY_DIR}
++	${CMAKE_CURRENT_SOURCE_DIR}
++	${CAMEL_INCLUDE_DIRS}
++	${LIBEDATASERVER_INCLUDE_DIRS}
++)
++
++target_link_libraries(evolution-rss-common
++	${CAMEL_LDFLAGS}
++	${LIBEDATASERVER_LDFLAGS}
++)
++
++install(TARGETS evolution-rss-common
++	DESTINATION ${privsolibdir}
++)
++
+ add_subdirectory(camel)
+ add_subdirectory(evolution)
+diff --git a/src/modules/rss/camel/CMakeLists.txt b/src/modules/rss/camel/CMakeLists.txt
+index ae828a7c43..b1e858b093 100644
+--- a/src/modules/rss/camel/CMakeLists.txt
++++ b/src/modules/rss/camel/CMakeLists.txt
+@@ -2,6 +2,10 @@ pkg_check_modules(LIBEDATASERVER libedataserver-1.2 REQUIRED)
+ pkg_check_modules(CAMEL camel-1.2 REQUIRED)
+ pkg_check_variable(camel_providerdir camel-1.2 camel_providerdir)
+ 
++set(DEPENDENCIES
++	evolution-rss-common
++)
++
+ set(sources
+ 	camel-rss-folder.c
+ 	camel-rss-folder.h
+@@ -12,14 +16,14 @@ set(sources
+ 	camel-rss-settings.h
+ 	camel-rss-store.c
+ 	camel-rss-store.h
+-	../camel-rss-store-summary.c
+-	../camel-rss-store-summary.h
+-	../e-rss-parser.h
+-	../e-rss-parser.c
+ )
+ 
+ add_library(camelrss MODULE ${sources})
+ 
++add_dependencies(camelrss
++	${DEPENDENCIES}
++)
++
+ target_compile_definitions(camelrss PRIVATE
+ 	-DG_LOG_DOMAIN=\"camel-rss-provider\"
+ )
+@@ -37,6 +41,7 @@ target_include_directories(camelrss PUBLIC
+ )
+ 
+ target_link_libraries(camelrss
++	${DEPENDENCIES}
+ 	${CAMEL_LDFLAGS}
+ 	${LIBEDATASERVER_LDFLAGS}
+ )
+diff --git a/src/modules/rss/evolution/CMakeLists.txt b/src/modules/rss/evolution/CMakeLists.txt
+index b9cea767e2..93737f8dc9 100644
+--- a/src/modules/rss/evolution/CMakeLists.txt
++++ b/src/modules/rss/evolution/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ set(extra_deps
+ 	evolution-mail
++	evolution-rss-common
+ 	evolution-shell
+ )
+ set(sources
+@@ -10,10 +11,6 @@ set(sources
+ 	e-rss-shell-view-extension.c
+ 	module-rss.c
+ 	module-rss.h
+-	../camel-rss-store-summary.c
+-	../camel-rss-store-summary.h
+-	../e-rss-parser.c
+-	../e-rss-parser.h
+ )
+ set(extra_defines)
+ set(extra_cflags)
+-- 
+GitLab
+

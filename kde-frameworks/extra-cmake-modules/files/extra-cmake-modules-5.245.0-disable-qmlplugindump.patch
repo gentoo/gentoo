@@ -1,0 +1,43 @@
+From 528cdf38261239d8475e2a3e82dd1b5cb73c770b Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 8 Dec 2019 15:01:33 +0100
+Subject: [PATCH] ECMFindQMLModule.cmake.in: Add ECM_DISABLE_QMLPLUGINDUMP to
+ avoid sandbox violations
+
+See also: https://phabricator.kde.org/D25812
+
+Backstory: https://bugzilla.gnome.org/show_bug.cgi?id=744135
+BUG: 387753
+---
+ modules/ECMFindQmlModule.cmake.in | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/modules/ECMFindQmlModule.cmake.in b/modules/ECMFindQmlModule.cmake.in
+index 3da55ced..46e8b0ce 100644
+--- a/modules/ECMFindQmlModule.cmake.in
++++ b/modules/ECMFindQmlModule.cmake.in
+@@ -9,6 +9,13 @@ include(FindPackageHandleStandardArgs)
+ include("${ECM_MODULE_DIR}/QtVersionOption.cmake")
+ include("${ECM_MODULE_DIR}/ECMQueryQt.cmake")
+ 
++option (ECM_DISABLE_QMLPLUGINDUMP "Do not use qmlplugindump which may segfault in some sandboxed environments" OFF)
++
++if(ECM_DISABLE_QMLPLUGINDUMP)
++    message(NOTICE "@GENMODULE@: qmlplugindump disabled - assuming dependency is available as >= @VERSION@.")
++    set(@GENMODULE@_FOUND TRUE)
++    set(@GENMODULE@_VERSION @VERSION@)
++else()
+ if (QT_MAJOR_VERSION EQUAL "6")
+     include(${ECM_MODULE_DIR}/ECMQmlModule.cmake)
+     # Get the qmldir file
+@@ -68,6 +75,7 @@ if (NOT CMAKE_CROSSCOMPILING AND NOT MODULE_NOTFOUND AND NOT @GENMODULE@_FOUND)
+         set(@GENMODULE@_FOUND FALSE)
+     endif()
+ endif()
++endif()
+ 
+ set(@GENMODULE@_FOUND ${@GENMODULE@_FOUND} PARENT_SCOPE)
+ set(@GENMODULE@_VERSION ${@GENMODULE@_VERSION} PARENT_SCOPE)
+-- 
+2.42.1
+

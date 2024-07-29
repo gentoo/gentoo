@@ -1,0 +1,13 @@
+Fix DeprecationWarning
+--- a/pastebinit
++++ b/pastebinit
+@@ -32,8 +32,7 @@
+ # Now try to override it with a distributor pastebin
+ try:
+     import distro
+-    release = distro.linux_distribution(
+-              full_distribution_name=False)[0].lower()
++    release = distro.id()
+     if release == 'debian':
+         defaultPB = "paste.debian.net"
+     elif release == 'fedora':

@@ -1,0 +1,29 @@
+diff -Naruw gnucash-docs-5.4.orig/cmake/AddXdgHelpTarget.cmake gnucash-docs-5.4/cmake/AddXdgHelpTarget.cmake
+--- gnucash-docs-5.4.orig/cmake/AddXdgHelpTarget.cmake	2023-10-01 08:51:09.262878879 -0400
++++ gnucash-docs-5.4/cmake/AddXdgHelpTarget.cmake	2023-10-01 08:53:23.973040657 -0400
+@@ -45,8 +45,8 @@
+       COMMAND ${CMAKE_COMMAND} -E make_directory "${BUILD_DIR}/figures"
+ 
+       # Add links to make our documentation visible for KDE's help system
+-      COMMAND ${CMAKE_COMMAND} -E make_directory "${BUILD_DIR_KDE_BASE}/${kde_lang}"
+-      COMMAND ${CMAKE_COMMAND} -E create_symlink "${BUILD_DIR}" "${BUILD_DIR_KDE_BASE}/${kde_lang}/${docname}"
++      # COMMAND ${CMAKE_COMMAND} -E make_directory "${BUILD_DIR_KDE_BASE}/${kde_lang}"
++      # COMMAND ${CMAKE_COMMAND} -E create_symlink "${BUILD_DIR}" "${BUILD_DIR_KDE_BASE}/${kde_lang}/${docname}"
+       COMMAND touch "${CMAKE_CURRENT_BINARY_DIR}/xdghelptrigger")
+ 
+ 
+@@ -90,9 +90,9 @@
+         COMPONENT "xdghelp")
+ 
+     # Add links to make our documentation visible for KDE's help system
+-    set(doc_install_dir_kde_base "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_DATADIR}/doc/HTML")
+-    install(CODE "execute_process (COMMAND ${CMAKE_COMMAND} -E make_directory \"${doc_install_dir_kde_base}\")"
+-        COMPONENT "xdghelp")
+-    install(CODE "execute_process (COMMAND ${CMAKE_COMMAND} -E create_symlink \"../../../${doc_install_dir_base}\" \"${doc_install_dir_kde_base}/${kde_lang}\")"
+-        COMPONENT "xdghelp")
++    # set(doc_install_dir_kde_base "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_DATADIR}/doc/HTML")
++    # install(CODE "execute_process (COMMAND ${CMAKE_COMMAND} -E make_directory \"${doc_install_dir_kde_base}\")"
++    #     COMPONENT "xdghelp")
++    # install(CODE "execute_process (COMMAND ${CMAKE_COMMAND} -E create_symlink \"../../../${doc_install_dir_base}\" \"${doc_install_dir_kde_base}/${kde_lang}\")"
++    #     COMPONENT "xdghelp")
+ endfunction()

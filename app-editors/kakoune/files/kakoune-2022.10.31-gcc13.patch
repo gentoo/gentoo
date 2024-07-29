@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/895264
+https://github.com/mawww/kakoune/issues/4854
+
+diff --git a/src/keys.hh b/src/keys.hh
+index 0af1a5a8..ccafe336 100644
+--- a/src/keys.hh
++++ b/src/keys.hh
+@@ -9,6 +9,8 @@
+ #include "unicode.hh"
+ #include "vector.hh"
+
++#include <cstdint>
++
+ namespace Kakoune
+ {
+     
+diff --git a/src/ranked_match.hh b/src/ranked_match.hh
+index ec7fe626..62d6b8f0 100644
+--- a/src/ranked_match.hh
++++ b/src/ranked_match.hh
+@@ -4,6 +4,8 @@
+ #include "string.hh"
+ #include "meta.hh"
+
++#include <cstdint>
++
+ namespace Kakoune
+ {
+ 

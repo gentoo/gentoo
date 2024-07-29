@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>dotnet@gentoo.org</email>
+    <name>Gentoo Dotnet Project</name>
+  </maintainer>
+  <longdescription>
+    Pinta is a free, open source program for drawing and image editing. Its
+    goal is to provide users with a simple yet powerful way to draw and
+    manipulate images on Linux, Mac, Windows, and *BSD.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/PintaProject/Pinta/issues/</bugs-to>
+    <remote-id type="github">PintaProject/Pinta</remote-id>
+  </upstream>
+</pkgmetadata>

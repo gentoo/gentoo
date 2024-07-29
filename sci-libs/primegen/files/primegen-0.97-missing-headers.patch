@@ -1,0 +1,46 @@
+--- a/eratspeed.c
++++ b/eratspeed.c
+@@ -1,6 +1,8 @@
+ #define B32 1001
+ #define B (B32 * 32)
+ 
++#include <stdio.h>
++#include <stdlib.h>
+ #include "timing.h"
+ #include "uint32.h"
+ 
+--- a/primegaps.c
++++ b/primegaps.c
+@@ -1,4 +1,5 @@
+ #include <math.h>
++#include <stdio.h>
+ #include "primegen.h"
+ 
+ primegen pg;
+--- a/primes.c
++++ b/primes.c
+@@ -1,4 +1,5 @@
+ #include <stdio.h>
++#include <stdlib.h>
+ #include "primegen.h"
+ #include "fs64.h"
+ 
+--- a/primespeed.c
++++ b/primespeed.c
+@@ -1,3 +1,5 @@
++#include <stdio.h>
++#include <stdlib.h>
+ #include "timing.h"
+ #include "primegen.h"
+ #include "primegen_impl.h"
+--- a/error.h
++++ b/error.h
+@@ -1,7 +1,7 @@
+ #ifndef ERROR_H
+ #define ERROR_H
+ 
+-extern int errno;
++#include <errno.h>
+ 
+ extern int error_intr;
+ extern int error_nomem;

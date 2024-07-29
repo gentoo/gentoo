@@ -1,0 +1,15 @@
+--- a/test/asmdisasm.pl
++++ b/test/asmdisasm.pl
+@@ -22,10 +22,10 @@
+ # uninitialized stuff
+ my ($line, $output);
+ 
+-system "as --32 -o $obj_file $asm_file";
++system "$ENV{AS} --32 -o $obj_file $asm_file";
+ exit(1) if ($? != 0);
+ 
+-$output = (grep(/\.text/,`objdump -h $obj_file`))[0];
++$output = (grep(/\.text/,`$ENV{OBJDUMP} -h $obj_file`))[0];
+ $output =~ s/^\s+//g;
+ my ($idx,$name,$size,$vma,$lma,$offset,$align)=split(/\s+/,$output);
+ $size = hex($size);

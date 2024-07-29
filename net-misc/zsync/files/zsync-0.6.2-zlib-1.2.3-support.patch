@@ -1,0 +1,201 @@
+This is a forward-port to zlib-1.2.3 of the zlib-1.2.11 changes found in
+zsync-0.6.2.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+diff -Nuar --exclude Makefile.in zlib-1.2.3.orig/deflate.c zlib-1.2.3/deflate.c
+--- zlib-1.2.3.orig/deflate.c	2005-07-18 02:27:31.000000000 +0000
++++ zlib-1.2.3/deflate.c	2011-02-09 21:36:02.000000000 +0000
+@@ -807,7 +807,7 @@
+         }
+         if (bstate == block_done) {
+             if (flush == Z_PARTIAL_FLUSH) {
+-                _tr_align(s);
++	      //                _tr_align(s);
+             } else { /* FULL_FLUSH or SYNC_FLUSH */
+                 _tr_stored_block(s, (char*)0, 0L, 0);
+                 /* For a full flush, this empty block will be recognized
+diff -Nuar --exclude Makefile.in zlib-1.2.3.orig/inflate.c zlib-1.2.3/inflate.c
+--- zlib-1.2.3.orig/inflate.c	2005-06-14 21:50:12.000000000 +0000
++++ zlib-1.2.3/inflate.c	2011-02-09 21:36:02.000000000 +0000
+@@ -6,6 +6,12 @@
+ /*
+  * Change history:
+  *
++ * cph          26 Oct 2004
++ * - A few minor hacks to allow me to locate safe start points in streams
++ *   and to position a new inflate on the right bit. I hereby place any 
++ *   changes to this file (and the zlib.h and inflate.h in this dir) into 
++ *   the public domain.
++ *
+  * 1.2.beta0    24 Nov 2002
+  * - First version -- complete rewrite of inflate to simplify code, avoid
+  *   creation of window when not needed, minimize use of window when it is
+@@ -83,7 +89,6 @@
+ #include "zutil.h"
+ #include "inftrees.h"
+ #include "inflate.h"
+-#include "inffast.h"
+ 
+ #ifdef MAKEFIXED
+ #  ifndef BUILDFIXED
+@@ -93,7 +98,6 @@
+ 
+ /* function prototypes */
+ local void fixedtables OF((struct inflate_state FAR *state));
+-local int updatewindow OF((z_streamp strm, unsigned out));
+ #ifdef BUILDFIXED
+    void makefixed OF((void));
+ #endif
+@@ -320,7 +324,7 @@
+    output will fall in the output data, making match copies simpler and faster.
+    The advantage may be dependent on the size of the processor's data caches.
+  */
+-local int updatewindow(strm, out)
++int updatewindow(strm, out)
+ z_streamp strm;
+ unsigned out;
+ {
+@@ -925,6 +929,9 @@
+             /* handle error breaks in while */
+             if (state->mode == BAD) break;
+ 
++            if (state->mode == BAD)
++                break;
++
+             /* build code tables */
+             state->next = state->codes;
+             state->lencode = (code const FAR *)(state->next);
+@@ -948,12 +955,10 @@
+             Tracev((stderr, "inflate:       codes ok\n"));
+             state->mode = LEN;
+         case LEN:
+-            if (have >= 6 && left >= 258) {
+-                RESTORE();
+-                inflate_fast(strm, out);
+-                LOAD();
+-                break;
+-            }
++	    state->mode = LENDO;
++	    goto inf_leave;
++	case LENDO:
++	    /* cph - remove inflate_fast */
+             for (;;) {
+                 this = state->lencode[BITS(state->lenbits)];
+                 if ((unsigned)(this.bits) <= bits) break;
+@@ -1366,3 +1371,48 @@
+     dest->state = (struct internal_state FAR *)copy;
+     return Z_OK;
+ }
++
++/* cph 2004/10/17 
++ * Extra stuff I need to move around in gzip files
++ */
++
++void inflate_advance(strm,zoffset,b,s)
++     z_streamp strm;
++     int zoffset;
++     int b;
++     int s;
++{
++  struct inflate_state FAR* state = (struct inflate_state FAR *)strm->state;
++
++  if (s)
++    state->mode = TYPEDO;
++  else if (state->mode == COPY) {
++    /* Reduce length remaining to copy by correct number */
++    state->length -= zoffset - strm->total_in;
++  } else
++    state->mode = LENDO;
++
++  strm->total_in = zoffset; /* We are here, plus a few more bits. */
++
++  if (b) {
++    state->hold = *(strm->next_in)++;
++    state->hold >>= b;
++    state->bits = 8-b;
++    strm->avail_in--;
++    strm->total_in++;
++  } else {
++    state->bits = 0;
++    state->hold = 0;
++  }
++}
++
++int ZEXPORT inflateSafePoint(strm)
++z_streamp strm;
++{
++    struct inflate_state FAR *state;
++
++    if (strm == Z_NULL || strm->state == Z_NULL) return Z_STREAM_ERROR;
++    state = (struct inflate_state FAR *)strm->state;
++    return (state->mode == LENDO || state->mode == COPY);
++}
++
+diff -Nuar --exclude Makefile.in zlib-1.2.3.orig/inflate.h zlib-1.2.3/inflate.h
+--- zlib-1.2.3.orig/inflate.h	2004-11-13 05:38:28.000000000 +0000
++++ zlib-1.2.3/inflate.h	2011-02-09 21:36:02.000000000 +0000
+@@ -37,6 +37,7 @@
+         LENLENS,    /* i: waiting for code length code lengths */
+         CODELENS,   /* i: waiting for length/lit and distance code lengths */
+             LEN,        /* i: waiting for length/lit code */
++            LENDO,      /* i: same, but skip exit check */
+             LENEXT,     /* i: waiting for length extra bits */
+             DIST,       /* i: waiting for distance code */
+             DISTEXT,    /* i: waiting for distance extra bits */
+diff -Nuar --exclude Makefile.in zlib-1.2.3.orig/Makefile.am zlib-1.2.3/Makefile.am
+--- zlib-1.2.3.orig/Makefile.am	1970-01-01 00:00:00.000000000 +0000
++++ zlib-1.2.3/Makefile.am	2011-02-09 21:36:06.000000000 +0000
+@@ -0,0 +1,6 @@
++
++noinst_LIBRARIES = libinflate.a libdeflate.a
++
++libinflate_a_SOURCES = zlib.h inflate.c inflate.h inffixed.h adler32.c inftrees.c inftrees.h zutil.c zutil.h crc32.c crc32.h zconf.h
++
++libdeflate_a_SOURCES = deflate.c deflate.h compress.c trees.c trees.h
+diff -Nuar --exclude Makefile.in zlib-1.2.3.orig/zconf.h zlib-1.2.3/zconf.h
+--- zlib-1.2.3.orig/zconf.h	2005-05-28 06:40:35.000000000 +0000
++++ zlib-1.2.3/zconf.h	2011-02-09 21:36:06.000000000 +0000
+@@ -284,9 +284,8 @@
+    typedef Byte       *voidp;
+ #endif
+ 
+-#if 0           /* HAVE_UNISTD_H -- this line is updated by ./configure */
++#if 1           /* HAVE_UNISTD_H -- this line is updated by ./configure */
+ #  include <sys/types.h> /* for off_t */
+-#  include <unistd.h>    /* for SEEK_* and off_t */
+ #  ifdef VMS
+ #    include <unixio.h>   /* for off_t */
+ #  endif
+diff -Nuar --exclude Makefile.in zlib-1.2.3.orig/zlib.h zlib-1.2.3/zlib.h
+--- zlib-1.2.3.orig/zlib.h	2005-07-18 02:26:49.000000000 +0000
++++ zlib-1.2.3/zlib.h	2011-02-09 21:36:06.000000000 +0000
+@@ -1110,9 +1110,10 @@
+    of bytes into the buffer.
+      gzread returns the number of uncompressed bytes actually read (0 for
+    end of file, -1 for error). */
+-
++#if 0
+ ZEXTERN int ZEXPORT    gzwrite OF((gzFile file,
+                                    voidpc buf, unsigned len));
++#endif
+ /*
+      Writes the given number of uncompressed bytes into the compressed file.
+    gzwrite returns the number of uncompressed bytes actually written
+@@ -1308,6 +1309,8 @@
+    len2.
+ */
+ 
++ZEXTERN int ZEXPORT updatewindow OF((z_streamp strm, unsigned out));
++ZEXTERN void ZEXPORT inflate_advance OF((z_streamp strm, int zoffset, int b, int s));
+ 
+                         /* various hacks, don't look :) */
+ 
+@@ -1348,6 +1351,7 @@
+ 
+ ZEXTERN const char   * ZEXPORT zError           OF((int));
+ ZEXTERN int            ZEXPORT inflateSyncPoint OF((z_streamp z));
++ZEXTERN int            ZEXPORT inflateSafePoint OF((z_streamp z));
+ ZEXTERN const uLongf * ZEXPORT get_crc_table    OF((void));
+ 
+ #ifdef __cplusplus

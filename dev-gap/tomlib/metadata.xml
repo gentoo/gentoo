@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+  <maintainer type="person">
+    <email>frp.bissey@gmail.com</email>
+    <name>François Bissey</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    The concept of a table of marks was introduced by W. Burnside in his
+    1955 book Theory of Groups of Finite Order. Therefore a table of
+    marks is sometimes called a Burnside matrix.
+
+    The table of marks of a finite group G is a matrix whose rows and
+    columns are labelled by the conjugacy classes of subgroups of G and
+    where for two subgroups H and K the (H, K)-entry is the number of
+    fixed points of K in the transitive action of G on the cosets of H
+    in G. So the table of marks characterizes the set of all permutation
+    representations of G. Moreover, the table of marks gives a compact
+    description of the subgroup lattice of G, since from the numbers of
+    fixed points the numbers of conjugates of a subgroup K contained in
+    a subgroup H can be derived.
+
+    For small groups the table of marks of G can be constructed directly
+    in GAP by first computing the entire subgroup lattice of G. However,
+    for larger groups this method is unfeasible. The GAP Table of Marks
+    library provides access to several hundred tables of marks and their
+    maximal subgroups.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">gap-packages/tomlib</remote-id>
+  </upstream>
+</pkgmetadata>

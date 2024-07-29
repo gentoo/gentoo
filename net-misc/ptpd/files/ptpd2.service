@@ -1,0 +1,11 @@
+[Unit]
+Description=Precise Time Protocol daemon
+Documentation=man:ptpd2(8)
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/ptpd2 -C -c /etc/ptpd2.conf
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

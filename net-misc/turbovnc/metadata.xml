@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ceamac@gentoo.org</email>
+		<name>Viorel Munteanu</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<longdescription>
+		TurboVNC is a derivative of VNC (Virtual Network Computing) that is tuned to provide peak performance for 3D and video workloads.
+		By The VirtualGL Project.
+	</longdescription>
+	<use>
+		<flag name="server">Build the server (vncserver, Xvnc)</flag>
+		<flag name="viewer">Build the viewer (vncviewer)</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">turbovnc</remote-id>
+		<remote-id type="github">TurboVNC/turbovnc</remote-id>
+	</upstream>
+</pkgmetadata>

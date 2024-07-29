@@ -1,0 +1,9 @@
+diff --git a/raid-check.cron b/raid-check.cron
+index 92aa48b..d7f23fd 100644
+--- a/raid-check.cron
++++ b/raid-check.cron
+@@ -1,3 +1,2 @@
+ # Run system wide raid-check once a week on Sunday at 1am by default
+-0 1 * * Sun root /usr/local/sbin/raid-check
+-
++0 1 * * Sun root /usr/sbin/raid-check

@@ -1,0 +1,21 @@
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN"
+"http://www.freedesktop.org/standards/menu-spec/menu-1.0.dtd">
+<Menu>
+  <Name>Applications</Name>
+  <Menu>
+    <Name>Games</Name>
+    <Exclude>
+      <Category>X-sgt-puzzles</Category>
+    </Exclude>
+    <Menu>
+      <Name>Puzzles</Name>
+      <Directory>sgt-puzzles.directory</Directory>
+      <Include>
+      	<And>
+	  <All></All>
+          <Category>X-sgt-puzzles</Category>
+	</And>
+      </Include>
+    </Menu> <!-- End Puzzles -->
+  </Menu> <!-- End Games -->
+</Menu> <!-- End Applications -->

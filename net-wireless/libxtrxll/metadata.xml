@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>radio@gentoo.org</email>
+		<name>Radio</name>
+	</maintainer>
+	<use>
+		<flag name="usb3380">support xtrx usb model</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">xtrx-sdr/libxtrxll</remote-id>
+	</upstream>
+</pkgmetadata>

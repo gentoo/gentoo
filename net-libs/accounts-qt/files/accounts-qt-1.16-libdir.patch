@@ -1,0 +1,116 @@
+From e3882382b2e98bce5be07baf23771856828123fc Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 7 Dec 2023 23:20:32 +0100
+Subject: [PATCH] Make LIBDIR configurable
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ Accounts/AccountsQt5Config.cmake.in | 2 +-
+ Accounts/AccountsQt6Config.cmake.in | 4 ++--
+ Accounts/accounts-qt5.pc.in         | 2 +-
+ Accounts/accounts-qt6.pc.in         | 2 +-
+ common-installs-config.pri          | 2 +-
+ common-pkgconfig.pri                | 2 +-
+ common-project-config.pri           | 6 +++---
+ 7 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/Accounts/AccountsQt5Config.cmake.in b/Accounts/AccountsQt5Config.cmake.in
+index 746f689..9280a7d 100644
+--- a/Accounts/AccountsQt5Config.cmake.in
++++ b/Accounts/AccountsQt5Config.cmake.in
+@@ -1,5 +1,5 @@
+ #  ACCOUNTSQT_INCLUDE_DIRS - The libaccounts-qt include directories
+ #  ACCOUNTSQT_LIBRARIES - The libraries needed to use libaccounts-qt
+ 
+-set(ACCOUNTSQT_LIBRARIES $${INSTALL_LIBDIR}/lib$${TARGET}.so)
++set(ACCOUNTSQT_LIBRARIES $${INSTALL_PREFIX}/$${LIBDIR}/lib$${TARGET}.so)
+ set(ACCOUNTSQT_INCLUDE_DIRS $${INSTALL_PREFIX}/include/$${TARGET}/)
+diff --git a/Accounts/AccountsQt6Config.cmake.in b/Accounts/AccountsQt6Config.cmake.in
+index 55a8964..9280a7d 100644
+--- a/Accounts/AccountsQt6Config.cmake.in
++++ b/Accounts/AccountsQt6Config.cmake.in
+@@ -1,5 +1,5 @@
+ #  ACCOUNTSQT_INCLUDE_DIRS - The libaccounts-qt include directories
+ #  ACCOUNTSQT_LIBRARIES - The libraries needed to use libaccounts-qt
+ 
+-set(ACCOUNTSQT_LIBRARIES $${INSTALL_LIBDIR}/lib$${TARGET}.so)
+-set(ACCOUNTSQT_INCLUDE_DIRS $${INSTALL_PREFIX}/include/$${TARGET}/)
+\ No newline at end of file
++set(ACCOUNTSQT_LIBRARIES $${INSTALL_PREFIX}/$${LIBDIR}/lib$${TARGET}.so)
++set(ACCOUNTSQT_INCLUDE_DIRS $${INSTALL_PREFIX}/include/$${TARGET}/)
+diff --git a/Accounts/accounts-qt5.pc.in b/Accounts/accounts-qt5.pc.in
+index fbfcea8..faea96b 100644
+--- a/Accounts/accounts-qt5.pc.in
++++ b/Accounts/accounts-qt5.pc.in
+@@ -1,6 +1,6 @@
+ prefix=$$INSTALL_PREFIX
+ exec_prefix=${prefix}
+-libdir=$$INSTALL_LIBDIR
++libdir=${prefix}/$$LIBDIR
+ includedir=${prefix}/include/accounts-qt5
+ servicefilesdir=${prefix}/share/accounts/services
+ servicetypefilesdir=${prefix}/share/accounts/service-types
+diff --git a/Accounts/accounts-qt6.pc.in b/Accounts/accounts-qt6.pc.in
+index c625b2e..cdc0233 100644
+--- a/Accounts/accounts-qt6.pc.in
++++ b/Accounts/accounts-qt6.pc.in
+@@ -1,6 +1,6 @@
+ prefix=$$INSTALL_PREFIX
+ exec_prefix=${prefix}
+-libdir=$$INSTALL_LIBDIR
++libdir=${prefix}/$$LIBDIR
+ includedir=${prefix}/include/accounts-qt6
+ servicefilesdir=${prefix}/share/accounts/services
+ servicetypefilesdir=${prefix}/share/accounts/service-types
+diff --git a/common-installs-config.pri b/common-installs-config.pri
+index 82baf75..420accb 100644
+--- a/common-installs-config.pri
++++ b/common-installs-config.pri
+@@ -17,7 +17,7 @@ contains( TEMPLATE, app ) {
+ #-----------------------------------------------------------------------------
+ contains( TEMPLATE, lib ) {
+ 
+-    target.path  = $${INSTALL_LIBDIR}
++    target.path  = $${INSTALL_PREFIX}/$${LIBDIR}
+     INSTALLS    += target
+     message("====")
+     message("==== INSTALLS += target")
+diff --git a/common-pkgconfig.pri b/common-pkgconfig.pri
+index 975068a..9f010d3 100644
+--- a/common-pkgconfig.pri
++++ b/common-pkgconfig.pri
+@@ -3,7 +3,7 @@
+ !isEmpty(pkgconfig.files) {
+     QMAKE_SUBSTITUTES += $${pkgconfig.files}.in
+     pkgconfig.CONFIG = no_check_exist
+-    pkgconfig.path  = $${INSTALL_LIBDIR}/pkgconfig
++    pkgconfig.path  = $${INSTALL_PREFIX}/$${LIBDIR}/pkgconfig
+     QMAKE_EXTRA_TARGETS += pkgconfig
+ 
+     QMAKE_CLEAN += $${pkgconfig.files}
+diff --git a/common-project-config.pri b/common-project-config.pri
+index b856961..0484e36 100644
+--- a/common-project-config.pri
++++ b/common-project-config.pri
+@@ -44,15 +44,15 @@ INSTALL_LIBDIR = $${INSTALL_PREFIX}/lib
+ isEmpty( LIBDIR ) {
+     message("====")
+     message("==== NOTE: To override the library installation path run: `qmake LIBDIR=/custom/path'")
+-    message("==== (current installation path is `$${INSTALL_LIBDIR}')")
++    message("==== (current installation path is `$${INSTALL_PREFIX}/$${LIBDIR}')")
+ } else {
+     INSTALL_LIBDIR = $${LIBDIR}
+     message("====")
+-    message("==== library install path set to `$${INSTALL_LIBDIR}'")
++    message("==== library install path set to `$${INSTALL_PREFIX}/$${LIBDIR}'")
+ }
+ 
+ isEmpty ( CMAKE_CONFIG_PATH ) {
+-    CMAKE_CONFIG_PATH = $${INSTALL_LIBDIR}/cmake
++    CMAKE_CONFIG_PATH = $${INSTALL_PREFIX}/$${LIBDIR}/cmake
+     message("====")
+     message("==== NOTE: To override the cmake module installation path run: `qmake CMAKE_CONFIG_PATH=/custom/path'")
+     message("==== (current installation path is `$${CMAKE_CONFIG_PATH}')")
+-- 
+2.43.0
+

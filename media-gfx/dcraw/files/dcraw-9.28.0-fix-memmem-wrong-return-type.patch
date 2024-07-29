@@ -1,0 +1,17 @@
+Memmem returns void*
+
+#  Pascal Jäger <pascal.jaeger@leimstift.de> (2023-09-22)
+
+Bug: https://bugs.gentoo.org/911753
+
+--- a/parse.c
++++ b/parse.c
+@@ -965,7 +965,7 @@ void parse_phase_one (int base)
+   }
+ }
+ 
+-char *memmem (char *haystack, size_t haystacklen,
++void *memmem (char *haystack, size_t haystacklen,
+               char *needle, size_t needlelen)
+ {
+   char *c;

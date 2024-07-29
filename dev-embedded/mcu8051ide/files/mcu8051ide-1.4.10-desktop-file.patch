@@ -1,0 +1,23 @@
+Subject: Add Keywords and Field code to Exec field
+ Fabricio added some keywords and Carlos added the Field code.
+
+Author: Fabricio Alcalde <f@lcald.com.ar>
+Author: Carlos Henrique Lima Melara <charlesmelara@outlook.com>
+Last-Update: 2020-06-27
+
+--- a/mcu8051ide.desktop
++++ b/mcu8051ide.desktop
+@@ -2,7 +2,7 @@
+ Categories=Development;
+ Comment=Graphical IDE for MCS-51 based microcontrollers
+ Comment[en_US]=Graphical IDE for MCS-51 based microcontrollers
+-Exec=mcu8051ide
++Exec=mcu8051ide %f
+ GenericName=MCU 8051 IDE
+ GenericName[en_US]=MCU 8051 IDE
+ Icon=mcu8051ide
+@@ -17,3 +17,4 @@ Version=1.0
+ X-DCOP-ServiceType=
+ X-KDE-SubstituteUID=false
+ X-KDE-Username=
++Keywords=mcu8051ide;8051;ide

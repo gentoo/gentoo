@@ -1,0 +1,40 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+get_config() {
+    res=$(awk '$1 == "'$1'" { s=$2 } END { print s }' "$CONFFILE")
+
+    if [ "x$res" = "x" ]; then
+	echo "$2"
+    else
+	eval echo "$res"
+    fi
+}
+
+: ${CONFFILE:="/etc/${SVCNAME}/${SVCNAME}.conf"}
+
+command=/usr/bin/tinyproxy
+command_args="-c ${CONFFILE}"
+pidfile=$(get_config PidFile /run/tinyproxy/${SVCNAME}.pid)
+
+depend() {
+	config "$CONFFILE"
+
+	use dns
+
+	[ "$(get_config Syslog Off)" = "On" ] && \
+	    use logger
+}
+
+start_pre() {
+    piddir=$(dirname ${pidfile})
+
+    if [ "${piddir}" = "/run" ]; then
+	eerror "Please change your PidFile settings to be within the"
+	eerror "/run/tinyproxy directory"
+	eend 1
+    else
+	checkpath -d -o $(get_config User tinyproxy):$(get_config Group tinyproxy) ${piddir}
+    fi
+}

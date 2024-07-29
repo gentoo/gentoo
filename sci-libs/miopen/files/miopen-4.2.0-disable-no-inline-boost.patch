@@ -1,0 +1,14 @@
+This let MIOpen compatible with >boost-1.72, for example 1.76
+
+Suggested by: Michael Boone <mike@protagonistsystems.io>
+
+--- a/CMakeLists.txt	2021-07-23 01:26:15.377754243 -0700
++++ b/CMakeLists.txt	2021-07-23 01:29:23.925685190 -0700
+@@ -216,6 +216,7 @@
+ message(STATUS "Hip compiler flags: ${HIP_COMPILER_FLAGS}")
+ 
+ add_definitions("-DHIP_COMPILER_FLAGS=${HIP_COMPILER_FLAGS}")
++add_definitions("-DBOOST_CONTAINER_DISABLE_NOINLINE")
+ 
+ 
+ # HIP

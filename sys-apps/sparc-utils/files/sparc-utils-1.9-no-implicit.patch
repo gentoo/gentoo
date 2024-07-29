@@ -1,0 +1,21 @@
+diff --git a/prtconf-1.3/eeprom.c b/prtconf-1.3/eeprom.c
+index b801f95..b15e74c 100644
+--- a/prtconf-1.3/eeprom.c
++++ b/prtconf-1.3/eeprom.c
+@@ -33,4 +33,6 @@
+ #include <dirent.h>
+ #include <pwd.h>
++#include <ctype.h> /* isdigit() */
++#include <sys/ioctl.h> /* ioctl() */
+ 
+ #include <asm/openpromio.h>
+diff --git a/prtconf-1.3/prtconf.c b/prtconf-1.3/prtconf.c
+index b9d8c89..c9b54be 100644
+--- a/prtconf-1.3/prtconf.c
++++ b/prtconf-1.3/prtconf.c
+@@ -30,4 +30,5 @@
+ #include <sys/stat.h>
+ #include <sys/utsname.h>
++#include <sys/ioctl.h> /* ioctl() */
+ 
+ #include <asm/openpromio.h>

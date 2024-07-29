@@ -1,0 +1,60 @@
+Fixed incorrect function redeclaration in the testsuite.
+This fixes 'make check' with LTO.
+
+Author: Karlson2k (Evgeny Grin)
+Gentoo bug: https://bugs.gentoo.org/877447
+
+
+diff --git a/src/testcurl/https/test_https_get_parallel.c b/src/testcurl/https/test_https_get_parallel.c
+index 47f644d2..786918f2 100644
+--- a/src/testcurl/https/test_https_get_parallel.c
++++ b/src/testcurl/https/test_https_get_parallel.c
+@@ -46,7 +46,7 @@
+ extern const char srv_key_pem[];
+ extern const char srv_self_signed_cert_pem[];
+ 
+-int curl_check_version (const char *req_version, ...);
++int curl_check_version (const char *req_version);
+ 
+ 
+ /**
+diff --git a/src/testcurl/https/test_https_get_parallel_threads.c b/src/testcurl/https/test_https_get_parallel_threads.c
+index 4853e7eb..5f4d0486 100644
+--- a/src/testcurl/https/test_https_get_parallel_threads.c
++++ b/src/testcurl/https/test_https_get_parallel_threads.c
+@@ -48,7 +48,7 @@
+ extern const char srv_key_pem[];
+ extern const char srv_self_signed_cert_pem[];
+ 
+-int curl_check_version (const char *req_version, ...);
++int curl_check_version (const char *req_version);
+ 
+ /**
+  * used when spawning multiple threads executing curl server requests
+diff --git a/src/testcurl/https/test_tls_options.c b/src/testcurl/https/test_tls_options.c
+index d5aa8310..8fbc540a 100644
+--- a/src/testcurl/https/test_tls_options.c
++++ b/src/testcurl/https/test_tls_options.c
+@@ -36,7 +36,7 @@
+ extern const char srv_key_pem[];
+ extern const char srv_self_signed_cert_pem[];
+ 
+-int curl_check_version (const char *req_version, ...);
++int curl_check_version (const char *req_version);
+ 
+ /**
+  * test server refuses to negotiate connections with unsupported protocol versions
+diff --git a/src/testcurl/https/tls_test_common.h b/src/testcurl/https/tls_test_common.h
+index a9af504d..e3f552a8 100644
+--- a/src/testcurl/https/tls_test_common.h
++++ b/src/testcurl/https/tls_test_common.h
+@@ -72,7 +72,7 @@ struct CipherDef
+ 
+ 
+ int
+-curl_check_version (const char *req_version, ...);
++curl_check_version (const char *req_version);
+ 
+ int
+ curl_tls_is_gnutls (void);
+

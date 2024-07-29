@@ -1,0 +1,38 @@
+From aa4af9af0a0a5111a8ad21bc1b43bbdb586ee8af Mon Sep 17 00:00:00 2001
+From: Vincent Bernat <vincent@bernat.ch>
+Date: Sun, 3 Nov 2019 07:48:08 +0100
+Subject: [PATCH] Use shift() instead of replace() to modify dates
+
+Previously, the `replace()` method from arrow was shifting the date
+when the arguments were using the plural form. Since Arrow 0.9.0, this
+has been deprecated in favor of a `shift()` method. Arrow 0.14.5
+completely removed the ability for `replace()` to shift dates. This
+leads to errors like `AttributeError: unknown attribute: "hours"` when
+using plural form.
+
+This commit replace the use of `replace()` by `shift()` since the
+intent is always to shift the current date.
+---
+ jinja2_time/jinja2_time.py | 6 +++---
+ setup.py                   | 4 ++--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/jinja2_time/jinja2_time.py b/jinja2_time/jinja2_time.py
+index ce713cb..717c8a0 100755
+--- a/jinja2_time/jinja2_time.py
++++ b/jinja2_time/jinja2_time.py
+@@ -19,11 +19,11 @@ def _datetime(self, timezone, operator, offset, datetime_format):
+         d = arrow.now(timezone)
+ 
+         # Parse replace kwargs from offset and include operator
+-        replace_params = {}
++        shift_params = {}
+         for param in offset.split(','):
+             interval, value = param.split('=')
+-            replace_params[interval.strip()] = float(operator + value.strip())
+-        d = d.replace(**replace_params)
++            shift_params[interval.strip()] = float(operator + value.strip())
++        d = d.shift(**shift_params)
+ 
+         if datetime_format is None:
+             datetime_format = self.environment.datetime_format

@@ -1,0 +1,164 @@
+From acee12430753e8350435d4304196e8eaa654ccd6 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Mon, 3 Jun 2024 20:47:20 +1000
+Subject: [PATCH] Support setuptools 69.3.0 changes in four tests
+
+setuptools 69.3.0 now canonicalizes package names in filenames, which
+means all dashes are now converted to underscores, leading to test
+failures due to FileNotFoundErrors. Handle both cases to support older
+and newer setuptools.
+---
+ tests/test_hello_cython.py  | 23 ++++++++++++++---------
+ tests/test_hello_fortran.py | 29 +++++++++++++++++------------
+ tests/test_hello_pure.py    | 15 ++++++++++-----
+ tests/test_manifest_in.py   | 17 +++++++++++------
+ 4 files changed, 52 insertions(+), 32 deletions(-)
+
+diff --git a/tests/test_hello_cython.py b/tests/test_hello_cython.py
+index dc95f697..1d9e944d 100644
+--- a/tests/test_hello_cython.py
++++ b/tests/test_hello_cython.py
+@@ -29,20 +29,25 @@ def test_hello_cython_sdist():
+     sdists_zip = glob.glob("dist/*.zip")
+     assert sdists_tar or sdists_zip
+ 
++    dirname = "hello-cython-1.2.3"
++    # setuptools 69.3.0 and above now canonicalize the filename as well.
++    if any("hello_cython" in x for x in sdists_zip + sdists_tar):
++        dirname = "hello_cython-1.2.3"
++
+     expected_content = [
+-        "hello-cython-1.2.3/CMakeLists.txt",
+-        "hello-cython-1.2.3/hello/_hello.pyx",
+-        "hello-cython-1.2.3/hello/CMakeLists.txt",
+-        "hello-cython-1.2.3/hello/__init__.py",
+-        "hello-cython-1.2.3/hello/__main__.py",
+-        "hello-cython-1.2.3/setup.py",
++        f"{dirname}/CMakeLists.txt",
++        f"{dirname}/hello/_hello.pyx",
++        f"{dirname}/hello/CMakeLists.txt",
++        f"{dirname}/hello/__init__.py",
++        f"{dirname}/hello/__main__.py",
++        f"{dirname}/setup.py",
+     ]
+ 
+-    sdist_archive = "dist/hello-cython-1.2.3.zip"
++    sdist_archive = f"dist/{dirname}.zip"
+     if sdists_tar:
+-        sdist_archive = "dist/hello-cython-1.2.3.tar.gz"
++        sdist_archive = f"dist/{dirname}.tar.gz"
+ 
+-    check_sdist_content(sdist_archive, "hello-cython-1.2.3", expected_content, package_dir="hello")
++    check_sdist_content(sdist_archive, dirname, expected_content, package_dir="hello")
+ 
+ 
+ @project_setup_py_test("hello-cython", ["bdist_wheel"])
+diff --git a/tests/test_hello_fortran.py b/tests/test_hello_fortran.py
+index 41f5f444..be9cede9 100644
+--- a/tests/test_hello_fortran.py
++++ b/tests/test_hello_fortran.py
+@@ -33,23 +33,28 @@ def test_hello_fortran_sdist():
+     sdists_zip = glob.glob("dist/*.zip")
+     assert sdists_tar or sdists_zip
+ 
++    dirname = "hello-fortran-1.2.3"
++    # setuptools 69.3.0 and above now canonicalize the filename as well.
++    if any("hello_fortran" in x for x in sdists_zip + sdists_tar):
++        dirname = "hello_fortran-1.2.3"
++
+     expected_content = [
+-        "hello-fortran-1.2.3/bonjour/_bonjour.f90",
+-        "hello-fortran-1.2.3/bonjour/_bonjour.pyf",
+-        "hello-fortran-1.2.3/bonjour/CMakeLists.txt",
+-        "hello-fortran-1.2.3/CMakeLists.txt",
+-        "hello-fortran-1.2.3/hello/_hello.f90",
+-        "hello-fortran-1.2.3/hello/CMakeLists.txt",
+-        "hello-fortran-1.2.3/hello/__init__.py",
+-        "hello-fortran-1.2.3/hello/__main__.py",
+-        "hello-fortran-1.2.3/setup.py",
++        f"{dirname}/bonjour/_bonjour.f90",
++        f"{dirname}/bonjour/_bonjour.pyf",
++        f"{dirname}/bonjour/CMakeLists.txt",
++        f"{dirname}/CMakeLists.txt",
++        f"{dirname}/hello/_hello.f90",
++        f"{dirname}/hello/CMakeLists.txt",
++        f"{dirname}/hello/__init__.py",
++        f"{dirname}/hello/__main__.py",
++        f"{dirname}/setup.py",
+     ]
+ 
+-    sdist_archive = "dist/hello-fortran-1.2.3.zip"
++    sdist_archive = f"dist/{dirname}.zip"
+     if sdists_tar:
+-        sdist_archive = "dist/hello-fortran-1.2.3.tar.gz"
++        sdist_archive = f"dist/{dirname}.tar.gz"
+ 
+-    check_sdist_content(sdist_archive, "hello-fortran-1.2.3", expected_content)
++    check_sdist_content(sdist_archive, dirname, expected_content)
+ 
+ 
+ @pytest.mark.fortran()
+diff --git a/tests/test_hello_pure.py b/tests/test_hello_pure.py
+index 21b0840b..cc176854 100644
+--- a/tests/test_hello_pure.py
++++ b/tests/test_hello_pure.py
+@@ -27,16 +27,21 @@ def test_hello_pure_sdist():
+     sdists_zip = glob.glob("dist/*.zip")
+     assert sdists_tar or sdists_zip
+ 
++    dirname = "hello-pure-1.2.3"
++    # setuptools 69.3.0 and above now canonicalize the filename as well.
++    if any("hello_pure" in x for x in sdists_zip + sdists_tar):
++        dirname = "hello_pure-1.2.3"
++
+     expected_content = [
+-        "hello-pure-1.2.3/hello/__init__.py",
+-        "hello-pure-1.2.3/setup.py",
++        f"{dirname}/hello/__init__.py",
++        f"{dirname}/setup.py",
+     ]
+ 
+-    sdist_archive = "dist/hello-pure-1.2.3.zip"
++    sdist_archive = f"dist/{dirname}.zip"
+     if sdists_tar:
+-        sdist_archive = "dist/hello-pure-1.2.3.tar.gz"
++        sdist_archive = f"dist/{dirname}.tar.gz"
+ 
+-    check_sdist_content(sdist_archive, "hello-pure-1.2.3", expected_content)
++    check_sdist_content(sdist_archive, dirname, expected_content)
+ 
+ 
+ @project_setup_py_test("hello-pure", ["bdist_wheel"], disable_languages_test=True)
+diff --git a/tests/test_manifest_in.py b/tests/test_manifest_in.py
+index 86652308..65c23d1a 100644
+--- a/tests/test_manifest_in.py
++++ b/tests/test_manifest_in.py
+@@ -21,17 +21,22 @@ def test_manifest_in_sdist():
+     sdists_zip = glob.glob("dist/*.zip")
+     assert sdists_tar or sdists_zip
+ 
++    dirname = "manifest-in-1.2.3"
++    # setuptools 69.3.0 and above now canonicalize the filename as well.
++    if any("manifest_in" in x for x in sdists_zip + sdists_tar):
++        dirname = "manifest_in-1.2.3"
++
+     expected_content = [
+-        "manifest-in-1.2.3/hello/__init__.py",
+-        "manifest-in-1.2.3/setup.py",
+-        "manifest-in-1.2.3/MANIFEST.in",
++        f"{dirname}/hello/__init__.py",
++        f"{dirname}/setup.py",
++        f"{dirname}/MANIFEST.in",
+     ]
+ 
+-    sdist_archive = "dist/manifest-in-1.2.3.zip"
++    sdist_archive = f"dist/{dirname}.zip"
+     if sdists_tar:
+-        sdist_archive = "dist/manifest-in-1.2.3.tar.gz"
++        sdist_archive = f"dist/{dirname}.tar.gz"
+ 
+-    check_sdist_content(sdist_archive, "manifest-in-1.2.3", expected_content)
++    check_sdist_content(sdist_archive, dirname, expected_content)
+ 
+ 
+ @project_setup_py_test("manifest-in", ["bdist_wheel"], disable_languages_test=True)

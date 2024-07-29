@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/show_bug.cgi?id=580610
+
+Index: poster-20060221/poster.c
+===================================================================
+--- poster-20060221.orig/poster.c
++++ poster-20060221/poster.c
+@@ -113,7 +113,7 @@ char *whitemarginspec = NULL;
+ char *scalespec = NULL;
+ char *filespec = NULL;
+ char *pagespec = NULL;
+-char *clipfacil = "0xFF";
++char *clipfacil = "255";
+ char *overlap = "6";
+ 
+ /* media sizes in ps units (1/72 inch) */

@@ -1,0 +1,53 @@
+---
+ autogen.sh                 |    1 -
+ configure.ac               |    4 +---
+ src/gwaei/help/Makefile.am |    5 +++--
+ 3 files changed, 4 insertions(+), 6 deletions(-)
+
+--- gwaei.git.orig/configure.ac
++++ gwaei.git/configure.ac
+@@ -73,8 +73,6 @@ AM_CONDITIONAL([WITH_MECAB], [test x$mec
+ 
+ AC_CHECK_LIB(m, sqrt)
+ 
+-GNOME_DOC_INIT(,,[:]) 
+-
+ PKG_CHECK_MODULES(LIBWAEI, glib-2.0           >= $GLIB_REQUIRED_VERSION
+                            gobject-2.0        >= $GLIB_REQUIRED_VERSION
+                            gio-2.0            >= $GIO_REQUIRED_VERSION
+@@ -103,7 +101,7 @@ if test x$gnome = xtrue; then
+                            libcurl            >= $LIBCURL_REQUIRED_VERSION )
+   AC_SUBST(GWAEI_CFLAGS)
+   AC_SUBST(GWAEI_LIBS)
+-  GNOME_DOC_INIT
++  YELP_HELP_INIT
+ fi
+ 
+ if test x$hunspell = xtrue; then
+--- gwaei.git.orig/src/gwaei/help/Makefile.am
++++ gwaei.git/src/gwaei/help/Makefile.am
+@@ -2,10 +2,12 @@ PACKAGE = @PACKAGE@
+ VERSION = @VERSION@
+ datadir = @datadir@
+ 
+-include $(top_srcdir)/gnome-doc-utils.make
++@YELP_HELP_RULES@
+ dist-hook: doc-dist-hook
+-DOC_MODULE = gwaei
++HELP_MODULE = gwaei
++HELP_ID = gwaei
+ 
++HELP_FILES=glossary.xml gwaei.xml
+ cglossarydir = $(datadir)/gnome/help/$(PACKAGE)/C
+ cglossary_DATA = C/glossary.xml
+ EXTRA_DIST = C/glossary.xml
+--- gwaei.git.orig/autogen.sh
++++ gwaei.git/autogen.sh
+@@ -6,7 +6,6 @@ touch ChangeLog
+ libtoolize --force
+ glib-gettextize --copy --force
+ intltoolize --copy --force --automake
+-gnome-doc-prepare --copy --force
+ aclocal -I m4 --force
+ autoheader -f
+ automake --copy --force --add-missing

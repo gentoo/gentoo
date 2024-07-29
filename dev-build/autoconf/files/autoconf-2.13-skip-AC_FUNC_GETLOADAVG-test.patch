@@ -1,0 +1,20 @@
+The macro itself is broken in autoconf-2.13 but this is caused by newer kernels
+etc rather than anything else. Very, very few packages use autoconf-2.13, let
+alone AC_FUNC_GETLOADAVG, so not going to worry about it much.
+
+Do as Fedora and Debian do and skip the test for it.
+
+https://bugs.gentoo.org/406723
+https://bugs.gentoo.org/677926
+--- a/testsuite/autoconf.s/syntax.exp
++++ b/testsuite/autoconf.s/syntax.exp
+@@ -2,7 +2,8 @@
+ 
+ send_user "Checking for syntax errors in the specific tests...\n"
+ set script {s/^AC_DEFUN(\([^,]*\).*/\1/p}
+-set macros [exec sed -n $script $srcdir/../acspecific.m4]
++# XXX: AC_FUNC_GETLOADAVG skipped for bug #406723, bug #677926
++set macros [exec sed -n $script $srcdir/../acspecific.m4 | grep -v AC_FUNC_GETLOADAVG]
+ 
+ foreach mac $macros {
+     if { [string match "*F77*" "$mac"] && [catch {exec which g77} ignore_output] } then {

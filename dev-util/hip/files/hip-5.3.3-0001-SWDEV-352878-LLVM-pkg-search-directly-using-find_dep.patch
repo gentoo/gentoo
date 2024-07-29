@@ -1,0 +1,163 @@
+From 6c12b045bc3c434dd13e74bf124ed54afec668c6 Mon Sep 17 00:00:00 2001
+From: AravindanC <aravindan.cheruvally@amd.com>
+Date: Fri, 26 Aug 2022 15:02:09 -0700
+Subject: [PATCH] SWDEV-352878 - LLVM pkg search directly using find_dep() for
+ CLANG Include path
+
+Change-Id: I355e39890757be07de8b9332deca159f35039dfd
+Signed-off-by: Yiyang Wu <xgreenlandforwyy@gmail.com>
+---
+ hip-config.cmake.in | 108 ++++++++++++++++++++++++++------------------
+ 1 file changed, 64 insertions(+), 44 deletions(-)
+
+diff --git a/hip-config.cmake.in b/hip-config.cmake.in
+index 89d1224e..67d898d8 100755
+--- a/hip-config.cmake.in
++++ b/hip-config.cmake.in
+@@ -147,41 +147,62 @@ if(HIP_COMPILER STREQUAL "clang")
+   if(NOT HIP_CXX_COMPILER)
+     set(HIP_CXX_COMPILER ${CMAKE_CXX_COMPILER})
+   endif()
+-  if(HIP_CXX_COMPILER MATCHES ".*hipcc" OR HIP_CXX_COMPILER MATCHES ".*clang\\+\\+")
+-    execute_process(COMMAND ${HIP_CXX_COMPILER} --version
++
++  # Use HIP_CXX_COMPILER option -print-resource-dir
++  # To fetch the clang include path
++  execute_process(
++    COMMAND ${HIP_CXX_COMPILER} -print-resource-dir
++    OUTPUT_VARIABLE HIP_CLANG_INCLUDE_PATH
++    OUTPUT_STRIP_TRAILING_WHITESPACE
++    RESULT_VARIABLE CLANG_INCLUDE_PATH_FETCH_EXIT_CODE)
++
++  if( NOT "${CLANG_INCLUDE_PATH_FETCH_EXIT_CODE}" STREQUAL "0" )
++    if(HIP_CXX_COMPILER MATCHES ".*hipcc" OR HIP_CXX_COMPILER MATCHES ".*clang\\+\\+")
++      # IF not successful in fetching HIP_CLANG_INCLUDE_PATH using
++      # HIP_CXX_COMPILER binary command options -print-resource-dir
++      # fallback to old method of getting include by finding HIP_CLANG_ROOT
++      # and from predefined relative path of HIP_CLANG_ROOT
++      execute_process(COMMAND ${HIP_CXX_COMPILER} --version
+                     OUTPUT_STRIP_TRAILING_WHITESPACE
+                     OUTPUT_VARIABLE HIP_CXX_COMPILER_VERSION_OUTPUT)
+-    # Capture the repo, branch and patch level details of the HIP CXX Compiler.
+-    # Ex. clang version 13.0.0 (https://github.com/ROCm-Developer-Tools/HIP main 12345 COMMIT_HASH)
+-    # HIP_CLANG_REPO: https://github.com/ROCm-Developer-Tools/HIP
+-    # HIP_CLANG_BRANCH: main
+-    # HIP_CLANG_PATCH_LEVEL: 12345
+-    if(${HIP_CXX_COMPILER_VERSION_OUTPUT} MATCHES "clang version [0-9]+\\.[0-9]+\\.[0-9]+ \\(([^ \n]*) ([^ \n]*) ([^ \n]*)")
+-      set(HIP_CLANG_REPO ${CMAKE_MATCH_1})
+-      set(HIP_CLANG_BRANCH ${CMAKE_MATCH_2})
+-      set(HIP_CLANG_PATCH_LEVEL ${CMAKE_MATCH_3})
+-    endif()
+-  endif()
+-  if(HIP_CXX_COMPILER MATCHES ".*hipcc")
+-    if(HIP_CXX_COMPILER_VERSION_OUTPUT MATCHES "InstalledDir:[ \t]*([^\n]*)")
+-      get_filename_component(HIP_CLANG_ROOT "${CMAKE_MATCH_1}" DIRECTORY)
+-    endif()
+-  elseif (HIP_CXX_COMPILER MATCHES ".*clang\\+\\+")
+-    get_filename_component(_HIP_CLANG_REAL_PATH "${HIP_CXX_COMPILER}" REALPATH)
+-    get_filename_component(_HIP_CLANG_BIN_PATH "${_HIP_CLANG_REAL_PATH}" DIRECTORY)
+-    get_filename_component(HIP_CLANG_ROOT "${_HIP_CLANG_BIN_PATH}" DIRECTORY)
+-  endif()
+-  file(GLOB HIP_CLANG_INCLUDE_SEARCH_PATHS ${HIP_CLANG_ROOT}/lib/clang/*/include)
+-  find_path(HIP_CLANG_INCLUDE_PATH stddef.h
+-      HINTS
++      # Capture the repo, branch and patch level details of the HIP CXX Compiler.
++      # Ex. clang version 13.0.0 (https://github.com/ROCm-Developer-Tools/HIP main 12345 COMMIT_HASH)
++      # HIP_CLANG_REPO: https://github.com/ROCm-Developer-Tools/HIP
++      # HIP_CLANG_BRANCH: main
++      # HIP_CLANG_PATCH_LEVEL: 12345
++      if(${HIP_CXX_COMPILER_VERSION_OUTPUT} MATCHES "clang version [0-9]+\\.[0-9]+\\.[0-9]+ \\(([^ \n]*) ([^ \n]*) ([^ \n]*)")
++        set(HIP_CLANG_REPO ${CMAKE_MATCH_1})
++        set(HIP_CLANG_BRANCH ${CMAKE_MATCH_2})
++        set(HIP_CLANG_PATCH_LEVEL ${CMAKE_MATCH_3})
++      endif()
++      if(HIP_CXX_COMPILER MATCHES ".*hipcc")
++        if(HIP_CXX_COMPILER_VERSION_OUTPUT MATCHES "InstalledDir:[ \t]*([^\n]*)")
++          get_filename_component(HIP_CLANG_ROOT "${CMAKE_MATCH_1}" DIRECTORY)
++        endif()
++      elseif (HIP_CXX_COMPILER MATCHES ".*clang\\+\\+")
++        get_filename_component(_HIP_CLANG_REAL_PATH "${HIP_CXX_COMPILER}" REALPATH)
++        get_filename_component(_HIP_CLANG_BIN_PATH "${_HIP_CLANG_REAL_PATH}" DIRECTORY)
++        get_filename_component(HIP_CLANG_ROOT "${_HIP_CLANG_BIN_PATH}" DIRECTORY)
++      endif()
++
++
++      file(GLOB HIP_CLANG_INCLUDE_SEARCH_PATHS ${HIP_CLANG_ROOT}/lib/clang/*/include)
++      find_path(HIP_CLANG_INCLUDE_PATH stddef.h
++        HINTS
+           ${HIP_CLANG_INCLUDE_SEARCH_PATHS}
+-      NO_DEFAULT_PATH)
++        NO_DEFAULT_PATH)
++      # Since INTERFACE_INCLUDE_DIRECTORIES need to set the parent directory
++      # of HIP_CLANG_INCLUDE_PATH incase using find_path() of stddefs.h
++      set(HIP_CLANG_INCLUDE_PATH "${HIP_CLANG_INCLUDE_PATH}/..")
++    endif() # HIP_CXX_COMPILER Check
++  endif() # CLANG_INCLUDE_PATH_FETCH_EXIT_CODE Check
++
+   if(NOT WIN32)
+     find_dependency(AMDDeviceLibs)
+   endif()
+   set(AMDGPU_TARGETS "gfx900;gfx906;gfx908;gfx90a;gfx1030" CACHE STRING "AMD GPU targets to compile for")
+   set(GPU_TARGETS "${AMDGPU_TARGETS}" CACHE STRING "GPU targets to compile for")
+-endif()
++endif() # HIP_COMPILER check
+ 
+ if(NOT WIN32)
+   find_dependency(amd_comgr)
+@@ -263,11 +284,11 @@ if(HIP_COMPILER STREQUAL "clang")
+   hip_add_interface_link_flags(hip::device --hip-link)
+ 
+   set_property(TARGET hip::device APPEND PROPERTY
+-    INTERFACE_INCLUDE_DIRECTORIES "${HIP_CLANG_INCLUDE_PATH}/.."
++    INTERFACE_INCLUDE_DIRECTORIES "${HIP_CLANG_INCLUDE_PATH}"
+   )
+ 
+   set_property(TARGET hip::device APPEND PROPERTY
+-    INTERFACE_SYSTEM_INCLUDE_DIRECTORIES "${HIP_CLANG_INCLUDE_PATH}/.."
++    INTERFACE_SYSTEM_INCLUDE_DIRECTORIES "${HIP_CLANG_INCLUDE_PATH}"
+   )
+ 
+   foreach(GPU_TARGET ${GPU_TARGETS})
+@@ -291,25 +312,24 @@ if(HIP_COMPILER STREQUAL "clang")
+     endif()
+   endif()
+ 
+-  file(GLOB HIP_CLANGRT_LIB_SEARCH_PATHS "${HIP_CLANG_ROOT}/lib/clang/*/lib/*")
+-  find_library(CLANGRT_BUILTINS
+-    NAMES
+-      clang_rt.builtins
+-      clang_rt.builtins-x86_64
+-    PATHS
+-      ${HIP_CLANGRT_LIB_SEARCH_PATHS}
+-      ${HIP_CLANG_INCLUDE_PATH}/../lib/linux
+-      ${HIP_CLANG_INCLUDE_PATH}/../lib/windows
+-      NO_DEFAULT_PATH)
++
++  # Use HIP_CXX option -print-libgcc-file-name --rtlib=compiler-rt
++  # To fetch the compiler rt library file name.
++  execute_process(
++    COMMAND ${HIP_CXX_COMPILER} -print-libgcc-file-name --rtlib=compiler-rt
++    OUTPUT_VARIABLE CLANGRT_BUILTINS
++    OUTPUT_STRIP_TRAILING_WHITESPACE
++    RESULT_VARIABLE CLANGRT_BUILTINS_FETCH_EXIT_CODE)
+ 
+   # Add support for __fp16 and _Float16, explicitly link with compiler-rt
+-  if(NOT CLANGRT_BUILTINS)
+-    message(FATAL_ERROR "clangrt builtins lib not found")
+-  else()
++  if( "${CLANGRT_BUILTINS_FETCH_EXIT_CODE}" STREQUAL "0" )
++    # CLANG_RT Builtins found Successfully Set interface link libraries property
+     set_property(TARGET hip::host APPEND PROPERTY INTERFACE_LINK_LIBRARIES "${CLANGRT_BUILTINS}")
+     set_property(TARGET hip::device APPEND PROPERTY INTERFACE_LINK_LIBRARIES "${CLANGRT_BUILTINS}")
+-  endif()
+-endif()
++  else()
++    message(STATUS "clangrt builtins lib not found: ${CLANGRT_BUILTINS_FETCH_EXIT_CODE}")
++  endif() # CLANGRT_BUILTINS_FETCH_EXIT_CODE Check
++endif() # HIP_COMPILER Check
+ 
+ set( hip_LIBRARIES hip::host hip::device)
+ set( hip_LIBRARY ${hip_LIBRARIES})
+-- 
+2.38.1
+

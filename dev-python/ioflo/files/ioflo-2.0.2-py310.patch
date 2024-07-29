@@ -1,0 +1,51 @@
+commit 2961d846dd250334b8fc52c2ef4c00ebc36ed510
+Author: Felix Yan <felixonmars@archlinux.org>
+Date:   Fri Nov 20 04:42:02 2020 +0800
+
+    Fix compatibility with Python 3.9
+    
+    json.loads() removed encoding parameter
+    (https://bugs.python.org/issue39377)
+    It was a no-op since 3.1.
+
+diff --git a/ioflo/aio/http/clienting.py b/ioflo/aio/http/clienting.py
+index 11132e3..967570e 100644
+--- a/ioflo/aio/http/clienting.py
++++ b/ioflo/aio/http/clienting.py
+@@ -268,13 +268,13 @@ class Requester(object):
+                                          '\r\n{2}'.format(boundary, key, val))
+                     formParts.append('\r\n--{0}--'.format(boundary))
+                     form = "".join(formParts)
+-                    body = form.encode(encoding='utf-8')
++                    body = form.encode('utf-8')
+                     self.headers[u'content-type'] = u'multipart/form-data; boundary={0}'.format(boundary)
+                 else:
+                     formParts = [u"{0}={1}".format(key, val) for key, val in self.fargs.items()]
+                     form = u'&'.join(formParts)
+                     form = quote_plus(form, '&=')
+-                    body = form.encode(encoding='utf-8')
++                    body = form.encode('utf-8')
+                     self.headers[u'content-type'] = u'application/x-www-form-urlencoded; charset=utf-8'
+             else:  # body last in precendence
+                 body = self.body
+diff --git a/ioflo/aio/http/httping.py b/ioflo/aio/http/httping.py
+index ba604e7..a22cc84 100644
+--- a/ioflo/aio/http/httping.py
++++ b/ioflo/aio/http/httping.py
+@@ -746,7 +746,7 @@ class EventSource(object):
+                 if edata:  # data so dispatch event by appending to .events
+                     if self.dictable:
+                         try:
+-                            ejson = json.loads(edata, encoding='utf-8', object_pairs_hook=odict)
++                            ejson = json.loads(edata, object_pairs_hook=odict)
+                         except ValueError as ex:
+                             ejson = None
+                         else:  # valid json set edata to ejson
+@@ -1058,7 +1058,6 @@ class Parsent(object):
+         if self.jsoned or self.dictable:  # attempt to deserialize json
+             try:
+                 self.data = json.loads(self.body.decode('utf-8'),
+-                                       encoding='utf-8',
+                                        object_pairs_hook=odict)
+             except ValueError as ex:
+                 self.data = None

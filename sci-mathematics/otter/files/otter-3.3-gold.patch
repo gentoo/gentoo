@@ -1,0 +1,16 @@
+ source/formed/Makefile |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/source/formed/Makefile b/source/formed/Makefile
+index 39eaae5..7526c03 100644
+--- a/source/formed/Makefile
++++ b/source/formed/Makefile
+@@ -37,7 +37,7 @@ CFLAGS += $(DFLAGS)
+ #
+ # The following works on a RedHat 7.3 computer
+ 
+-XLIBS = -L/usr/X11R6/lib -lXaw 
++XLIBS = -L/usr/X11R6/lib -lXaw -lXt -lX11
+ 
+ formed: formed.o display.o callback.o
+ 	$(CC) $(CFLAGS) $(LDFLAGS) formed.o display.o callback.o \

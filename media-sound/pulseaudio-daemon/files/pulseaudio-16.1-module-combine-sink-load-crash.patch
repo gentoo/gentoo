@@ -1,0 +1,26 @@
+commit 37c72c20720d6f7fefeeb151f5e10c2cd0dda30e
+Author: Igor V. Kovalenko <igor.v.kovalenko@gmail.com>
+Date:   Sun Nov 27 22:30:45 2022 +0300
+
+    module-combine-sink: Do not set up rate adjustment timer at load time
+    
+    Rate adjustment timer is set up when combine sink is resumed and relased when
+    combine sink is suspended. Do not create this timer again while module is loaded
+    to prevent duplicate effort causing assertion in time_callback.
+    
+    Part-of: <https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/756>
+
+diff --git a/src/modules/module-combine-sink.c b/src/modules/module-combine-sink.c
+index f98f4820b..4b7690183 100644
+--- a/src/modules/module-combine-sink.c
++++ b/src/modules/module-combine-sink.c
+@@ -1711,9 +1711,6 @@ int pa__init(pa_module*m) {
+     PA_IDXSET_FOREACH(o, u->outputs, idx)
+         output_verify(o);
+ 
+-    if (u->adjust_time > 0)
+-        u->time_event = pa_core_rttime_new(m->core, pa_rtclock_now() + u->adjust_time, time_callback, u);
+-
+     pa_modargs_free(ma);
+ 
+     return 0;

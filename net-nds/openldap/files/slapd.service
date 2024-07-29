@@ -1,0 +1,12 @@
+[Unit]
+Description=OpenLDAP Server Daemon
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/run/openldap/slapd.pid
+ExecStartPre=/usr/sbin/slaptest -Q -u $SLAPD_OPTIONS
+ExecStart=/usr/lib/openldap/slapd -u ldap -h ${SLAPD_URLS} $SLAPD_OPTIONS
+
+[Install]
+WantedBy=multi-user.target

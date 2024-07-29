@@ -1,0 +1,23 @@
+From 16fb09fcbd5712b7b75004229dbb74f85f213b53 Mon Sep 17 00:00:00 2001
+From: Daniel Faust <hessijames@gmail.com>
+Date: Mon, 6 Aug 2018 18:35:15 +0200
+Subject: [PATCH] Fix adding directories to the Replay Gain tool
+
+Fixes #70
+---
+ replaygainscanner/replaygainfilelist.cpp | 2 +-
+ 1 files changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/replaygainscanner/replaygainfilelist.cpp b/replaygainscanner/replaygainfilelist.cpp
+index edd64d0..3df5d58 100644
+--- a/replaygainscanner/replaygainfilelist.cpp
++++ b/replaygainscanner/replaygainfilelist.cpp
+@@ -355,7 +355,7 @@ int ReplayGainFileList::listDir( const QString& directory, const QStringList& fi
+             if( filter.contains(codecName) )
+             {
+                 QList<QUrl> urls;
+-                urls.append(directory + "/" + fileName);
++                urls.append("file://" + directory + "/" + fileName);
+                 addFiles( urls, codecName );
+             }
+ 

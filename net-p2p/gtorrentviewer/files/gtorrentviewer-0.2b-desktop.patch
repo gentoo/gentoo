@@ -1,0 +1,16 @@
+--- a/data/gtorrentviewer.desktop.in
++++ b/data/gtorrentviewer.desktop.in
+@@ -3,11 +3,9 @@
+ _GenericName=Torrent Viewer
+ _Comment=Viewer and Editor for .torrent files
+ Exec=gtorrentviewer %U
+-Icon=gtorrentviewer.png
++Icon=gtorrentviewer
+ StartupNotify=false
+ Terminal=false
+ Type=Application
+-Encoding=UTF-8
+-Categories=Application;Network;
++Categories=Network;
+ MimeType=application/x-bittorrent;
+-Version=0.2

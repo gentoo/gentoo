@@ -1,0 +1,89 @@
+diff -dupr pypiserver-1.5.0.orig/pypiserver/_app.py pypiserver-1.5.0/pypiserver/_app.py
+--- pypiserver-1.5.0.orig/pypiserver/_app.py	2022-05-24 07:32:24.710366623 +0200
++++ pypiserver-1.5.0/pypiserver/_app.py	2022-05-24 07:37:16.147456086 +0200
+@@ -13,7 +13,7 @@ from json import dumps
+ from pypiserver.config import RunConfig
+ from . import __version__
+ from . import core
+-from .bottle import (
++from bottle import (
+     static_file,
+     redirect,
+     request,
+diff -dupr pypiserver-1.5.0.orig/pypiserver/__init__.py pypiserver-1.5.0/pypiserver/__init__.py
+--- pypiserver-1.5.0.orig/pypiserver/__init__.py	2022-05-24 07:32:24.710366623 +0200
++++ pypiserver-1.5.0/pypiserver/__init__.py	2022-05-24 07:36:54.633769799 +0200
+@@ -4,7 +4,7 @@ import re as _re
+ import sys
+ import typing as t
+ 
+-from pypiserver.bottle import Bottle
++from bottle import Bottle
+ from pypiserver.config import Config, RunConfig, strtobool
+ 
+ version = __version__ = "1.5.0"
+diff -dupr pypiserver-1.5.0.orig/pypiserver/__main__.py pypiserver-1.5.0/pypiserver/__main__.py
+--- pypiserver-1.5.0.orig/pypiserver/__main__.py	2022-05-24 07:32:24.710366623 +0200
++++ pypiserver-1.5.0/pypiserver/__main__.py	2022-05-24 07:34:05.608054452 +0200
+@@ -159,7 +159,7 @@ def main(argv: t.Sequence[str] = None) -
+ 
+         gevent.monkey.patch_all()
+ 
+-    from pypiserver import bottle
++    import bottle
+ 
+     bottle.debug(config.verbosity > 1)
+     bottle._stderr = ft.partial(  # pylint: disable=protected-access
+diff -dupr pypiserver-1.5.0.orig/tests/test_app.py pypiserver-1.5.0/tests/test_app.py
+--- pypiserver-1.5.0.orig/tests/test_app.py	2022-05-24 07:32:24.710366623 +0200
++++ pypiserver-1.5.0/tests/test_app.py	2022-05-24 07:33:23.470919728 +0200
+@@ -8,12 +8,13 @@ import xmlrpc.client as xmlrpclib
+ from html import unescape
+ 
+ # Third party imports
++import bottle
+ import pytest
+ import webtest
+ 
+ # Local Imports
+ from tests.test_pkg_helpers import files, invalid_files
+-from pypiserver import __main__, bottle, core, Bottle
++from pypiserver import __main__, core, Bottle
+ from pypiserver.backend import CachingFileBackend, SimpleFileBackend
+ 
+ # Enable logging to detect any problems with it
+diff -dupr pypiserver-1.5.0.orig/tests/test_main.py pypiserver-1.5.0/tests/test_main.py
+--- pypiserver-1.5.0.orig/tests/test_main.py	2022-05-24 07:32:24.710366623 +0200
++++ pypiserver-1.5.0/tests/test_main.py	2022-05-24 07:33:33.441025326 +0200
+@@ -5,11 +5,11 @@ import sys
+ import typing as t
+ from unittest import mock
+ 
++import bottle
+ import pytest
+ 
+-import pypiserver.bottle
++from bottle import Bottle
+ from pypiserver import __main__
+-from pypiserver.bottle import Bottle
+ 
+ 
+ THIS_DIR = pathlib.Path(__file__).parent
+@@ -52,7 +52,7 @@ def main(monkeypatch):
+         main.update_args = args
+         main.update_kwargs = kwargs
+ 
+-    monkeypatch.setattr("pypiserver.bottle.run", run)
++    monkeypatch.setattr("bottle.run", run)
+     monkeypatch.setattr("pypiserver.manage.update_all_packages", update)
+ 
+     return main
+@@ -263,7 +263,7 @@ def test_auto_servers() -> None:
+     """Test auto servers."""
+     # A list of bottle ServerAdapters
+     bottle_adapters = tuple(
+-        a.__name__.lower() for a in pypiserver.bottle.AutoServer.adapters
++        a.__name__.lower() for a in bottle.AutoServer.adapters
+     )
+     # We are going to expect that our AutoServer enum names must match those
+     # at least closely enough to be recognizable.

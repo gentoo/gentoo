@@ -1,0 +1,270 @@
+From 91953cf63f9e0a20ea37d7fc4780ee3c5d9fd917 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 23 Oct 2022 13:47:33 +0100
+Subject: [PATCH] Fix prototypes and implicit function declarations
+
+Bug: https://bugs.gentoo.org/874723
+---
+ dialbox.h        | 2 +-
+ engine.c         | 2 +-
+ fileutil.c       | 1 +
+ ldsvgui.c        | 2 +-
+ module_buttons.c | 2 +-
+ mouse.c          | 6 ++++--
+ mouse.h          | 2 +-
+ mps.c            | 2 +-
+ mps.h            | 2 +-
+ pbar.c           | 4 ++--
+ pixmap.c         | 2 +-
+ power.c          | 4 ++--
+ power.h          | 2 +-
+ screen.c         | 8 ++++----
+ 14 files changed, 22 insertions(+), 19 deletions(-)
+
+diff --git a/dialbox.h b/dialbox.h
+index 1e4f21b..0d3fa76 100644
+--- a/dialbox.h
++++ b/dialbox.h
+@@ -22,7 +22,7 @@ typedef struct dialog_box_struct Dialog_Box;
+ 
+ /* Public functions */
+ int dialog_box(int colour, int argc, ...); 
+-void dialog_refresh();
++void dialog_refresh(void);
+ void dialog_close(int return_value);
+ 
+ #define MAX_DBOX_ENTRIES 64 /* Huge, but necessary for current use */
+diff --git a/engine.c b/engine.c
+index 7c088f3..03b3998 100644
+--- a/engine.c
++++ b/engine.c
+@@ -470,7 +470,7 @@ sell_steel (int xt, int yt)
+ }
+ 
+ void
+-do_pollution ()
++do_pollution (void)
+ {
+   int x, p;
+   int* pol = &map.pollution[0][0];
+diff --git a/fileutil.c b/fileutil.c
+index 2fd6f3d..b4bf244 100644
+--- a/fileutil.c
++++ b/fileutil.c
+@@ -9,6 +9,7 @@
+ #include <stdarg.h> /* XXX: GCS FIX: What does configure need to know? */
+ #include "lcintl.h"
+ #include "lcstring.h"
++#include "lcsvga.h"
+ #include "ldsvgui.h"
+ 
+ /* XXX: Where are SVGA specific includes? */
+diff --git a/ldsvgui.c b/ldsvgui.c
+index a9c8126..f783e60 100644
+--- a/ldsvgui.c
++++ b/ldsvgui.c
+@@ -277,7 +277,7 @@ do_network_screen (void)
+ #endif
+ 
+ void
+-do_save_city ()
++do_save_city (void)
+ {
+     Rect* mw = &scr.main_win;
+     char s[200], c;
+diff --git a/module_buttons.c b/module_buttons.c
+index 1bf77cd..51c746d 100644
+--- a/module_buttons.c
++++ b/module_buttons.c
+@@ -465,7 +465,7 @@ unhighlight_module_button (int module)
+ /* draw_selected_module_cost: write info about the module to the status area */
+ 
+ void
+-draw_selected_module_cost ()
++draw_selected_module_cost (void)
+ {
+     Rect* b = &scr.select_message;
+     char s[100];
+diff --git a/mouse.c b/mouse.c
+index aaba144..85ca571 100644
+--- a/mouse.c
++++ b/mouse.c
+@@ -46,6 +46,8 @@ static Mouse_Handle * mhandle_first;
+ static Mouse_Handle * mhandle_last;
+ static Mouse_Handle * mhandle_current;
+ 
++int mode(int x, int y);
++
+ /* ---------------------------------------------------------------------- *
+  * cs_mouse_handler
+  * --
+@@ -1152,7 +1154,7 @@ mt_perm(int x, int y)
+ }
+ 
+ int
+-do_mt_draw (int x1, int x2, int y1, int y2, int (*mode)())
++do_mt_draw (int x1, int x2, int y1, int y2, int (*mode)(int x, int y))
+ {
+     int dir = 1;
+     int horiz = 1;
+@@ -1321,7 +1323,7 @@ cmp(int n1, int n2)
+ }
+ 
+ void
+-init_mouse_registry()
++init_mouse_registry(void)
+ {
+     mhandle_first = NULL;
+     mhandle_last = NULL;
+diff --git a/mouse.h b/mouse.h
+index b31721b..0d87072 100644
+--- a/mouse.h
++++ b/mouse.h
+@@ -48,7 +48,7 @@ struct mouse_button_struct {
+ /* Public functions */
+ 
+ void mouse_setup (void);
+-void init_mouse_registry();
++void init_mouse_registry(void);
+ int mouse_handle_click(int x, int y, int button); 
+ 
+ Mouse_Handle * mouse_register(Rect * r, void (*handler)(int, int, int));
+diff --git a/mps.c b/mps.c
+index 3b82f1e..79f787b 100644
+--- a/mps.c
++++ b/mps.c
+@@ -61,7 +61,7 @@ mps_handler(int x, int y, int button)
+ /* mps_init(): Initialize mps vars and mouse handles */
+ 
+ void
+-mps_init() 
++mps_init(void)
+ {
+     mps_style = MPS_GLOBAL;
+     mps_global_style = MPS_GLOBAL_FINANCE;
+diff --git a/mps.h b/mps.h
+index 49991be..98c37c1 100644
+--- a/mps.h
++++ b/mps.h
+@@ -27,7 +27,7 @@ void mappoint_stats (int, int, int);
+ 
+ #define MPS_INFO_CHARS (MAPPOINT_STATS_W / 8) + 1
+ 
+-void mps_init();
++void mps_init(void);
+ 
+ int mps_set(int style, int x, int y); /* Attaches an area or global display */
+ void mps_redraw(void);  /* Re-draw the mps area, bezel and all */
+diff --git a/pbar.c b/pbar.c
+index 0d518d1..41ec319 100644
+--- a/pbar.c
++++ b/pbar.c
+@@ -241,7 +241,7 @@ update_pbar (int pbar_num, int value, int month_flag)
+ }
+ 
+ void
+-update_pbars_daily()
++update_pbars_daily(void)
+ {
+     update_pbar (PPOP, housed_population + people_pool, 0);
+     update_pbar (PTECH, tech_level, 0);
+@@ -255,7 +255,7 @@ update_pbars_daily()
+ }
+ 
+ void
+-update_pbars_monthly()
++update_pbars_monthly(void)
+ {
+     update_pbar (PPOP, housed_population + people_pool, 1);
+     update_pbar (PTECH, tech_level, 1);
+diff --git a/pixmap.c b/pixmap.c
+index a1f1b68..b6806d3 100644
+--- a/pixmap.c
++++ b/pixmap.c
+@@ -43,7 +43,7 @@ int pixmap_width = 0;
+  * ---------------------------------------------------------------------- */
+ #ifdef USE_PIXMAPS
+ void
+-init_pixmaps ()
++init_pixmaps (void)
+ {
+     int i;
+     for (i = 1; i < NUM_OF_TYPES; i++) {
+diff --git a/power.c b/power.c
+index b428489..8392676 100644
+--- a/power.c
++++ b/power.c
+@@ -34,7 +34,7 @@ Grid * grid[MAX_GRIDS];
+    first-served basis.
+ */
+ void
+-power_time_step () 
++power_time_step (void)
+ {
+     int gi;
+     int net; /* net power */
+@@ -65,7 +65,7 @@ power_time_step ()
+ 
+ 
+ void 
+-map_power_grid ()
++map_power_grid (void)
+ {
+     int mapx, mapy;
+     grid_num = 0;  /* how many grids found so far */
+diff --git a/power.h b/power.h
+index 8aeecdc..020bff7 100644
+--- a/power.h
++++ b/power.h
+@@ -25,7 +25,7 @@ void do_power_substation(int x, int y);
+ void do_power_source(int x, int y);
+ void do_power_source_coal(int x, int y);
+ void do_power_line(int x, int y);
+-void power_time_step ();
++void power_time_step (void);
+ 
+ /* intended private */
+ void recurse_power_grid (int startx, int starty, int steps);
+diff --git a/screen.c b/screen.c
+index 73e60a7..03eeae6 100644
+--- a/screen.c
++++ b/screen.c
+@@ -72,7 +72,7 @@ static void do_history_linegraph (int draw);
+ static void do_sust_barchart (int draw);
+ static void draw_sustline (int yoffset, int count, int max, int col);
+ void monthgraph_full_refresh (void);
+-void draw_mini_pol_in_main_win ();
++void draw_mini_pol_in_main_win (void);
+ void mini_full_refresh (void);
+ void update_main_screen_normal (int full_refresh);
+ void update_main_screen_pollution (void);
+@@ -124,7 +124,7 @@ refresh_main_screen (void)
+ }
+ 
+ void 
+-clip_main_window ()
++clip_main_window (void)
+ {
+     Rect* b = &scr.main_win;
+     Fgl_enableclipping ();
+@@ -132,7 +132,7 @@ clip_main_window ()
+ }
+ 
+ void 
+-unclip_main_window ()
++unclip_main_window (void)
+ {
+     Fgl_disableclipping ();
+ }
+@@ -789,7 +789,7 @@ draw_small_yellow_bezel (int x, int y, int h, int w)
+ }
+ 
+ void
+-load_fonts()
++load_fonts(void)
+ {
+     char s[LC_PATH_MAX];
+     int i;
+-- 
+2.38.1
+

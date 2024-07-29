@@ -1,0 +1,21 @@
+commit 39a684108ae5938105498e7744e70962308cde7b
+Author: kpcyrd <git@rxv.cc>
+Date:   Wed Aug 25 23:30:17 2021 +0200
+
+    Reproducible Builds: Sort directory contents at build
+
+diff --git a/Swiften/SConscript b/Swiften/SConscript
+index f52637bdb..334f4489e 100644
+--- a/Swiften/SConscript
++++ b/Swiften/SConscript
+@@ -567,7 +567,9 @@ if env["SCONS_STAGE"] == "build" :
+     swiften_includes = []
+     swiften_public_includes = []
+     top_path = env.Dir("..").abspath
+-    for root, dirs, files in os.walk(env.Dir(".").abspath) :
++    for root, dirs, files in sorted(os.walk(env.Dir(".").abspath)) :
++        dirs.sort()
++        files.sort()
+         if root.endswith("UnitTest") :
+             continue
+         for file in files :

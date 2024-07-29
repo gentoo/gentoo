@@ -1,0 +1,63 @@
+--- a/example/Makefile
++++ b/example/Makefile
+@@ -6,7 +6,7 @@
+ # This builds the example code.
+ #
+ example: example.o 
+-	$(CC) $(CFLAGS) example.o $(LIBS) -o example
++	$(CC) $(CFLAGS) $(LDFLAGS) example.o $(LIBS) -o example
+ #
+ # To clean up the directory.
+ #
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -2,7 +2,7 @@
+ #  Build the library.
+ #
+ libsdp.a: readprob.o sdp.o op_o.o psd_feas.o op_a.o op_at.o  Fnorm.o calc_pobj.o calc_dobj.o trace_prod.o zero_mat.o mat_mult.o sym_mat.o copy_mat.o addscaledmat.o  user_exit.o make_i.o allocmat.o initsoln.o initparams.o add_mat.o writesol.o readsol.o easysdp.o writeprob.o solvesys.o makefill.o mat_multsp.o norms.o linesearch.o matvec.o chol.o  qreig.o tweakgap.o freeprob.o packed.o  sortentries.o
+-	ar cr libsdp.a  readprob.o sdp.o op_o.o psd_feas.o op_a.o op_at.o  Fnorm.o calc_pobj.o calc_dobj.o trace_prod.o zero_mat.o mat_mult.o sym_mat.o copy_mat.o addscaledmat.o  user_exit.o make_i.o allocmat.o initsoln.o initparams.o add_mat.o writesol.o readsol.o easysdp.o writeprob.o solvesys.o makefill.o mat_multsp.o norms.o linesearch.o matvec.o chol.o qreig.o tweakgap.o freeprob.o packed.o sortentries.o
++	$(AR) cr libsdp.a  readprob.o sdp.o op_o.o psd_feas.o op_a.o op_at.o  Fnorm.o calc_pobj.o calc_dobj.o trace_prod.o zero_mat.o mat_mult.o sym_mat.o copy_mat.o addscaledmat.o  user_exit.o make_i.o allocmat.o initsoln.o initparams.o add_mat.o writesol.o readsol.o easysdp.o writeprob.o solvesys.o makefill.o mat_multsp.o norms.o linesearch.o matvec.o chol.o qreig.o tweakgap.o freeprob.o packed.o sortentries.o
+ #
+ # On some systems, you might need to add after "ar cr libsdp.a ..."
+ #        ranlib libsdp.a
+--- a/solver/Makefile
++++ b/solver/Makefile
+@@ -2,7 +2,7 @@
+ #  This builds the stand alone solver.
+ #
+ csdp: csdp.o 
+-	$(CC) $(CFLAGS) csdp.o $(LIBS) -o csdp
++	$(CC) $(CFLAGS) $(LDFLAGS) csdp.o $(LIBS) -o csdp
+ #
+ # To clean out the directory:
+ #
+--- a/theta/Makefile
++++ b/theta/Makefile
+@@ -6,23 +6,23 @@
+ # This builds the theta number code. 
+ #
+ theta: theta.o 
+-	$(CC) $(CFLAGS) theta.o $(LIBS) -o theta
++	$(CC) $(CFLAGS) $(LDFLAGS) theta.o $(LIBS) -o theta
+ #
+ # Complement computes the complement of a graph.
+ #
+ complement: complement.o 
+-	$(CC) $(CFLAGS) complement.o $(LIBS) -o complement
++	$(CC) $(CFLAGS) $(LDFLAGS) complement.o $(LIBS) -o complement
+ #
+ # rand_graph generates a random graph.  
+ #
+ rand_graph: rand_graph.o
+-	$(CC) $(CFLAGS) rand_graph.o $(LIBS) -o rand_graph
++	$(CC) $(CFLAGS) $(LDFLAGS) rand_graph.o $(LIBS) -o rand_graph
+ #
+ # graphtoprob converts a file in the graph format to an SDP problem in our
+ # SDP format.
+ #
+ graphtoprob: graphtoprob.o 
+-	$(CC) $(CFLAGS) graphtoprob.o $(LIBS) -o graphtoprob
++	$(CC) $(CFLAGS) $(LDFLAGS) graphtoprob.o $(LIBS) -o graphtoprob
+ #
+ # To clean up the directory.
+ #

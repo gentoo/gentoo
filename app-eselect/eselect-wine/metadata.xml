@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>wine@gentoo.org</email>
+		<name>Wine</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<use>
+		<flag name="xdg">
+			Set XDG_DATA_DIRS to use the selected wine.desktop,
+			allows e.g. 'xdg-open my.exe' for file managers
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="gentoo">proj/eselect-wine</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,23 @@
+From 6f62a2d0784a6937d35ac8f6df2e22c23bbfc8f4 Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Fri, 11 Nov 2022 15:03:32 +0100
+Subject: [PATCH] Fix function pointer initialization
+
+Fix
+
+src/filebrowser.c:380:27: warning: incompatible function pointer types initializing '_mode_get_icon' (aka 'struct _cairo_surface *(*)(const struct rofi_mode *, unsigned int, unsigned int)') with an expression of type 'cairo_surface_t *(const Mode *, unsigned int, int)' (aka 'struct _cairo_surface *(const struct rofi_mode *, unsigned int, int)') [-Wincompatible-function-pointer-types]
+    ._get_icon          = file_browser_get_icon,
+                          ^~~~~~~~~~~~~~~~~~~~~
+
+See also https://bugs.gentoo.org/880985
+--- a/src/filebrowser.c
++++ b/src/filebrowser.c
+@@ -263,7 +263,7 @@ static char *file_browser_get_display_value ( const Mode *sw, unsigned int selec
+     }
+ }
+ 
+-static cairo_surface_t *file_browser_get_icon ( const Mode *sw, unsigned int selected_line, int height )
++static cairo_surface_t *file_browser_get_icon ( const Mode *sw, unsigned int selected_line, unsigned int height )
+ {
+     FileBrowserModePrivateData *pd = ( FileBrowserModePrivateData * ) mode_get_private_data ( sw );
+     FileBrowserFileData *fd = &pd->file_data;

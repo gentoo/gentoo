@@ -1,0 +1,69 @@
+Rebase CFLAGS and COPYING removal patch onto 1.13.0
+Use CTest module for standard BUILD_TESTING switch and make Qt5Test optional
+
+--- a/CMakeLists.txt	2017-08-28 21:43:54.000000000 +0200
++++ b/CMakeLists.txt	2021-02-27 19:21:04.090117623 +0100
+@@ -57,6 +57,9 @@
+ add_definitions(-DGLEW_STATIC)
+ add_definitions(-DGLEW_NO_GLU)
+ 
++# Enable CMake's unit test framework
++include(CTest)
++
+ if(UNIX)
+     include("InstallLinux.cmake")
+ elseif(WIN32)
+@@ -64,8 +67,7 @@
+ endif()
+ 
+ if(CMAKE_COMPILER_IS_GNUCXX OR MINGW OR ${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
+-    add_compile_options(-std=c++11 -W -Wall -O3 -pedantic)
+-    add_compile_options(-fomit-frame-pointer -finline-functions -ffast-math)
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -W -Wall -fomit-frame-pointer -finline-functions")
+ elseif(MSVC)
+     add_definitions(-DNOMINMAX)
+ endif()
+@@ -83,7 +85,10 @@
+ find_package(Qt5Xml ${QT_MIN_VER} REQUIRED)
+ find_package(Qt5Widgets ${QT_MIN_VER} REQUIRED)
+ find_package(Qt5LinguistTools ${QT_MIN_VER} REQUIRED)
+-find_package(Qt5Test ${QT_MIN_VER} REQUIRED)
++
++if(BUILD_TESTING)
++    find_package(Qt5Test ${QT_MIN_VER} REQUIRED)
++endif()
+ 
+ # Find OpenGL
+ find_package(OpenGL REQUIRED)
+@@ -109,9 +114,6 @@
+     pkg_check_modules(VORBISFILE REQUIRED vorbisfile)
+ endif()
+ 
+-# Enable CMake's unit test framework
+-enable_testing()
+-
+ # Install paths depend on the build type and target platform
+ resolve_install_paths()
+ 
+--- a/InstallLinux.cmake	2017-08-28 21:43:54.000000000 +0200
++++ b/InstallLinux.cmake	2021-02-27 19:21:23.760211724 +0100
+@@ -58,7 +58,7 @@
+     install(FILES data/fonts.conf DESTINATION ${DATA_PATH})
+     install(FILES data/meshes.conf DESTINATION ${DATA_PATH})
+     install(FILES data/surfaces.conf DESTINATION ${DATA_PATH})
+-    install(FILES AUTHORS CHANGELOG COPYING README.md DESTINATION ${DOC_PATH})
++    install(FILES AUTHORS CHANGELOG README.md DESTINATION ${DOC_PATH})
+     install(DIRECTORY data/images DESTINATION ${DATA_PATH} FILES_MATCHING PATTERN "*.jpg")
+     install(DIRECTORY data/images DESTINATION ${DATA_PATH} FILES_MATCHING PATTERN "*.png")
+     install(DIRECTORY data/levels DESTINATION ${DATA_PATH} FILES_MATCHING PATTERN "*.trk")
+--- a/src/game/MiniCore/CMakeLists.txt	2017-08-28 21:43:54.000000000 +0200
++++ b/src/game/MiniCore/CMakeLists.txt	2021-02-27 19:17:29.616848751 +0100
+@@ -86,5 +86,7 @@
+ 
+ target_link_libraries(MiniCore Qt5::OpenGL Qt5::Xml)
+ 
+-add_subdirectory(UnitTests)
++if(BUILD_TESTING)
++    add_subdirectory(UnitTests)
++endif()
+ 

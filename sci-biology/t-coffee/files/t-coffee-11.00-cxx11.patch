@@ -1,0 +1,21 @@
+--- a/t_coffee_source/programmes_define.h
++++ b/t_coffee_source/programmes_define.h
+@@ -390,12 +390,12 @@
+ #define XMLSIMPLE_language2 "Perl"
+ #define XMLSIMPLE_source "empty"
+ #define XMLSIMPLE_mode "psicoffee,expresso,accurate"
+-#define x3dna-ssr_4_TCOFFEE "x3dna"
+-#define x3dna-ssr_type "RNA_secondarystructure_predictor"
+-#define x3dna-ssr_ADDRESS "http://x3dna.bio.columbia.edu/"
+-#define x3dna-ssr_source "http://www.tcoffee.org/Packages/mirrors/source/x3dna-v2.3-linux-64bit.tar.gz"
+-#define x3dna-ssr_mode "saracoffee"
+-#define x3dna-ssr_update_action "never"
++#define x3dna_ssr_4_TCOFFEE "x3dna"
++#define x3dna_ssr_type "RNA_secondarystructure_predictor"
++#define x3dna_ssr_ADDRESS "http://x3dna.bio.columbia.edu/"
++#define x3dna_ssr_source "http://www.tcoffee.org/Packages/mirrors/source/x3dna-v2.3-linux-64bit.tar.gz"
++#define x3dna_ssr_mode "saracoffee"
++#define x3dna_ssr_update_action "never"
+ //TclinkdbEnd
+ /*New Methods*/
+ /********************************************/

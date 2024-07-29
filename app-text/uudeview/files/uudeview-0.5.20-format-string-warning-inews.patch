@@ -1,0 +1,11 @@
+--- a/inews/inews.c	2022-11-26 18:44:03.788039229 +0100
++++ b/inews/inews.c	2022-11-26 18:44:47.376080190 +0100
+@@ -303,7 +303,7 @@
+ 			putc(*cp, ser_wr_fp);
+ 		else {		/* Stupid & hack.  God damn it. */
+ 			putc(toupper(passwd->pw_name[0]), ser_wr_fp);
+-			fprintf(ser_wr_fp, passwd->pw_name+1);
++			fprintf(ser_wr_fp, "%s", passwd->pw_name+1);
+ 		}
+ 
+ 	fprintf(ser_wr_fp, ")\r\n");

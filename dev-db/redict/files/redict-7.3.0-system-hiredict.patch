@@ -1,0 +1,240 @@
+# Patch from https://codeberg.org/redict/redict/pulls/44
+# and https://salsa.debian.org/redict-team/redict/-/blob/1d2b9f08f3dcc7ba4f03ddd9066545d0fd6b716e/debian/patches/0005-Fix-hiredict-imports.patch
+# The first patch got upstreamed, the second will be soon
+
+From ffb9f03106de48a2a09d60f691a8852a0cf917ad Mon Sep 17 00:00:00 2001
+From: Maytham Alsudany <maytha8thedev@gmail.com>
+Date: Sun, 14 Apr 2024 11:52:21 +0300
+Subject: [PATCH 1/2] Add ability to use system hiredict
+
+Co-authored-by: Chris Lamb <lamby@debian.org>
+Signed-off-by: Maytham Alsudany <maytha8thedev@gmail.com>
+---
+ deps/Makefile |  2 ++
+ src/Makefile  | 27 ++++++++++++++++++++++-----
+ 2 files changed, 24 insertions(+), 5 deletions(-)
+
+diff --git a/deps/Makefile b/deps/Makefile
+index 345e1f703..e071cfa03 100644
+--- a/deps/Makefile
++++ b/deps/Makefile
+@@ -36,7 +36,9 @@ ifneq ($(shell sh -c '[ -f .make-ldflags ] && cat .make-ldflags || echo none'),
+ endif
+ 
+ distclean:
++ifneq ($(USE_SYSTEM_HIREDICT),yes)
+ 	-(cd hiredict && $(MAKE) clean) > /dev/null || true
++endif
+ 	-(cd linenoise && $(MAKE) clean) > /dev/null || true
+ 	-(cd lua && $(MAKE) clean) > /dev/null || true
+ ifneq ($(USE_SYSTEM_JEMALLOC),yes)
+diff --git a/src/Makefile b/src/Makefile
+index fbcc20f02..8ca30a6df 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -24,7 +24,7 @@ endif
+ ifneq ($(OPTIMIZATION),-O0)
+ 	OPTIMIZATION+=-fno-omit-frame-pointer
+ endif
+-DEPENDENCY_TARGETS=hiredict linenoise lua hdr_histogram fpconv
++DEPENDENCY_TARGETS=linenoise lua hdr_histogram fpconv
+ NODEPS:=clean distclean
+ 
+ # Default settings
+@@ -226,7 +226,7 @@ ifdef OPENSSL_PREFIX
+ endif
+ 
+ # Include paths to dependencies
+-FINAL_CFLAGS+= -I../deps/hiredict -I../deps/linenoise -I../deps/lua/src -I../deps/hdr_histogram -I../deps/fpconv
++FINAL_CFLAGS+= -I../deps/linenoise -I../deps/lua/src -I../deps/hdr_histogram -I../deps/fpconv
+ 
+ # Determine systemd support and/or build preference (defaulting to auto-detection)
+ BUILD_WITH_SYSTEMD=no
+@@ -277,6 +277,15 @@ else
+ endif
+ endif
+ 
++ifeq ($(USE_SYSTEM_HIREDICT),yes)
++    FINAL_LIBS+= $(shell $(PKG_CONFIG) --libs hiredict)
++    FINAL_CFLAGS+= $(shell $(PKG_CONFIG) --cflags hiredict)
++else
++    DEPENDENCY_TARGETS += hiredict
++    FINAL_LIBS+= ../deps/hiredict/libhiredict.a
++    FINAL_CFLAGS+= -I../deps/hiredict
++endif
++
+ # LIBSSL & LIBCRYPTO
+ LIBSSL_LIBS=
+ LIBSSL_PKGCONFIG := $(shell $(PKG_CONFIG) --exists libssl && echo $$?)
+@@ -299,15 +308,23 @@ BUILD_MODULE:=2
+ ifeq ($(BUILD_TLS),yes)
+ 	FINAL_CFLAGS+=-DUSE_OPENSSL=$(BUILD_YES) $(OPENSSL_CFLAGS) -DBUILD_TLS_MODULE=$(BUILD_NO)
+ 	FINAL_LDFLAGS+=$(OPENSSL_LDFLAGS)
++ifeq ($(USE_SYSTEM_HIREDICT),yes)
++	FINAL_LIBS += $(shell $(PKG_CONFIG) --libs hiredict_ssl) $(LIBSSL_LIBS) $(LIBCRYPTO_LIBS)
++else
+ 	FINAL_LIBS += ../deps/hiredict/libhiredict_ssl.a $(LIBSSL_LIBS) $(LIBCRYPTO_LIBS)
+ endif
++endif
+ 
+ TLS_MODULE=
+ TLS_MODULE_NAME:=redict-tls$(PROG_SUFFIX).so
+ TLS_MODULE_CFLAGS:=$(FINAL_CFLAGS)
+ ifeq ($(BUILD_TLS),module)
+ 	FINAL_CFLAGS+=-DUSE_OPENSSL=$(BUILD_MODULE) $(OPENSSL_CFLAGS)
++ifeq ($(USE_SYSTEM_HIREDICT),yes)
++	TLS_CLIENT_LIBS = $(shell $(PKG_CONFIG) --libs hiredict_ssl) $(LIBSSL_LIBS) $(LIBCRYPTO_LIBS)
++else
+ 	TLS_CLIENT_LIBS = ../deps/hiredict/libhiredict_ssl.a $(LIBSSL_LIBS) $(LIBCRYPTO_LIBS)
++endif
+ 	TLS_MODULE=$(TLS_MODULE_NAME)
+ 	TLS_MODULE_CFLAGS+=-DUSE_OPENSSL=$(BUILD_MODULE) $(OPENSSL_CFLAGS) -DBUILD_TLS_MODULE=$(BUILD_MODULE)
+ endif
+@@ -406,7 +423,7 @@ endif
+ 
+ # redict-server
+ $(REDICT_SERVER_NAME): $(REDICT_SERVER_OBJ)
+-	$(REDICT_LD) -o $@ $^ ../deps/hiredict/libhiredict.a ../deps/lua/src/liblua.a ../deps/hdr_histogram/libhdrhistogram.a ../deps/fpconv/libfpconv.a $(FINAL_LIBS)
++	$(REDICT_LD) -o $@ $^ ../deps/lua/src/liblua.a ../deps/hdr_histogram/libhdrhistogram.a ../deps/fpconv/libfpconv.a $(FINAL_LIBS)
+ 
+ # redict-sentinel
+ $(REDICT_SENTINEL_NAME): $(REDICT_SERVER_NAME)
+@@ -426,11 +443,11 @@ $(TLS_MODULE_NAME): $(REDICT_SERVER_NAME)
+ 
+ # redict-cli
+ $(REDICT_CLI_NAME): $(REDICT_CLI_OBJ)
+-	$(REDICT_LD) -o $@ $^ ../deps/hiredict/libhiredict.a ../deps/linenoise/linenoise.o $(FINAL_LIBS) $(TLS_CLIENT_LIBS)
++	$(REDICT_LD) -o $@ $^ ../deps/linenoise/linenoise.o $(FINAL_LIBS) $(TLS_CLIENT_LIBS)
+ 
+ # redict-benchmark
+ $(REDICT_BENCHMARK_NAME): $(REDICT_BENCHMARK_OBJ)
+-	$(REDICT_LD) -o $@ $^ ../deps/hiredict/libhiredict.a ../deps/hdr_histogram/libhdrhistogram.a $(FINAL_LIBS) $(TLS_CLIENT_LIBS)
++	$(REDICT_LD) -o $@ $^ ../deps/hdr_histogram/libhdrhistogram.a $(FINAL_LIBS) $(TLS_CLIENT_LIBS)
+ 
+ DEP = $(REDICT_SERVER_OBJ:%.o=%.d) $(REDICT_CLI_OBJ:%.o=%.d) $(REDICT_BENCHMARK_OBJ:%.o=%.d)
+ -include $(DEP)
+-- 
+2.39.2
+
+
+From bd55c900ac123db05b7243f6e958e311a622fb7d Mon Sep 17 00:00:00 2001
+From: Maytham Alsudany <maytha8thedev@gmail.com>
+Date: Sun, 14 Apr 2024 11:53:13 +0300
+Subject: [PATCH 2/2] Mention USE_SYSTEM_HIREDICT setting in README
+
+Signed-off-by: Maytham Alsudany <maytha8thedev@gmail.com>
+---
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/README.md b/README.md
+index ae77a235a..cf4944e6f 100644
+--- a/README.md
++++ b/README.md
+@@ -25,6 +25,8 @@ You can pass the following variables to Redict to customize the build:
+ * `USE_JEMALLOC=no MALLOC=libc`: use the libc allocator rather than jemalloc
+ * `USE_SYSTEM_JEMALLOC=yes`: use the system's installed jemalloc libraries
+    rather than the vendored copy.
++* `USE_SYSTEM_HIREDICT=yes`: use the system's installed hiredict libraries
++  rather than the vendored copy.
+ * `BUILD_TLS=yes`: build with TLS support. Requires OpenSSL.
+ * `USE_SYSTEMD=yes`: build with systemd support. Requires libsystemd.
+ * `PROG_SUFFIX="-suffix"`: Append "-suffix" to executable names
+-- 
+2.39.2
+
+From: Maytham Alsudany <maytha8thedev@gmail.com>
+Subject: Fix hiredict imports
+Forwarded: no
+
+--- a/src/cli_common.c
++++ b/src/cli_common.c
+@@ -13,15 +13,15 @@
+ #include <stdlib.h>
+ #include <fcntl.h>
+ #include <errno.h>
+-#include <hiredict.h>
+-#include <sds.h>
++#include <hiredict/hiredict.h>
++#include <hiredict/sds.h>
+ #include <unistd.h>
+ #include <string.h>
+ #include <ctype.h>
+ #ifdef USE_OPENSSL
+ #include <openssl/ssl.h>
+ #include <openssl/err.h>
+-#include <hiredict_ssl.h>
++#include <hiredict/hiredict_ssl.h>
+ #endif
+ 
+ #define UNUSED(V) ((void) V)
+--- a/src/cli_common.h
++++ b/src/cli_common.h
+@@ -7,8 +7,8 @@
+ #ifndef __CLICOMMON_H
+ #define __CLICOMMON_H
+ 
+-#include <hiredict.h>
+-#include <sds.h>
++#include <hiredict/hiredict.h>
++#include <hiredict/sds.h>
+ 
+ typedef struct cliSSLconfig {
+     /* Requested SNI, or NULL */
+--- a/src/redict-benchmark.c
++++ b/src/redict-benchmark.c
+@@ -19,13 +19,13 @@
+ #include <math.h>
+ #include <pthread.h>
+ 
+-#include <sds.h>
++#include <hiredict/sds.h>
+ #include "ae.h"
+-#include <hiredict.h>
++#include <hiredict/hiredict.h>
+ #ifdef USE_OPENSSL
+ #include <openssl/ssl.h>
+ #include <openssl/err.h>
+-#include <hiredict_ssl.h>
++#include <hiredict/hiredict_ssl.h>
+ #endif
+ #include "adlist.h"
+ #include "dict.h"
+--- a/src/redict-cli.c
++++ b/src/redict-cli.c
+@@ -23,13 +23,13 @@
+ #include <math.h>
+ #include <termios.h>
+ 
+-#include <hiredict.h>
++#include <hiredict/hiredict.h>
+ #ifdef USE_OPENSSL
+ #include <openssl/ssl.h>
+ #include <openssl/err.h>
+-#include <hiredict_ssl.h>
++#include <hiredict/hiredict_ssl.h>
+ #endif
+-#include <sds.h>
++#include <hiredict/sds.h>
+ #include "dict.h"
+ #include "adlist.h"
+ #include "zmalloc.h"
+--- a/src/sentinel.c
++++ b/src/sentinel.c
+@@ -6,12 +6,12 @@
+ // SPDX-License-Identifier: LGPL-3.0-only
+ 
+ #include "server.h"
+-#include "hiredict.h"
++#include "hiredict/hiredict.h"
+ #if USE_OPENSSL == 1 /* BUILD_YES */
+ #include "openssl/ssl.h"
+-#include "hiredict_ssl.h"
++#include "hiredict/hiredict_ssl.h"
+ #endif
+-#include "async.h"
++#include "hiredict/async.h"
+ 
+ #include <ctype.h>
+ #include <arpa/inet.h>
+

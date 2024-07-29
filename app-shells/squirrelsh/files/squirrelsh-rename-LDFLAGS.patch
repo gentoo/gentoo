@@ -1,0 +1,140 @@
+diff -Naur squirrelsh-1.2.6.orig//configure squirrelsh-1.2.6/configure
+--- squirrelsh-1.2.6.orig//configure	2010-11-09 13:16:43.000000000 -0500
++++ squirrelsh-1.2.6/configure	2012-03-12 20:19:01.000000000 -0400
+@@ -55,8 +55,8 @@
+ with_ranlib="yes" # yes, no
+ linker="$cpp_compiler"
+ 
+-if [ -n "$LFLAGS" ]; then
+-	linker_flags="$LFLAGS"
++if [ -n "$LDFLAGS" ]; then
++	linker_flags="$LDFLAGS"
+ else
+ 	linker_flags="-Wl,-O1 -Wl,--as-needed"
+ fi
+@@ -136,7 +136,7 @@
+     CFLAGS      C compiler options
+     CXX         C++ compiler
+     CXXFLAGS    C++ compiler options
+-    LFLAGS      Linker options
++    LDFLAGS      Linker options
+ __SHEOF__
+ 	closescript
+ }
+@@ -275,7 +275,7 @@
+ 	return 1
+ }
+ 
+-# getoutput CPPFLAGS LFLAGS
++# getoutput CPPFLAGS LDFLAGS
+ # Compile C++ code and run the compiled program
+ getoutput ()
+ {
+@@ -824,7 +824,7 @@
+ checkforlinkeroption || msg_fail
+ 
+ # Check for optional linker options
+-if [ -z "$LFLAGS" ]; then
++if [ -z "$LDFLAGS" ]; then
+ 	checkforlinkeroption "-pipe" || msg_result "no"
+ 	checkforlinkeroption "-flto" y || msg_result "no"
+ fi
+@@ -1131,27 +1131,27 @@
+ #------ CREATE MAKEFILES --------------------------------------------------------------------------
+ 
+ # Define variables for substitution
+-# ... CFLAGS, CXXFLAGS, DEFINES, LFLAGS, INSTALL_EXE (machine-independent)
++# ... CFLAGS, CXXFLAGS, DEFINES, LDFLAGS, INSTALL_EXE (machine-independent)
+ in_CFLAGS="-c $c_compiler_flags"
+ in_CXXFLAGS="-c $cpp_compiler_flags"
+-in_LFLAGS="$linker_flags"
++in_LDFLAGS="$linker_flags"
+ in_INSTALL_EXE="$installer -c -m 0755 \"\$(target)\" \"$bindir/\$(target_name)\""
+ 
+ if [ "$with_pcre" = "local" ] || [ "$with_squirrel" = "local" ]; then
+-	in_LFLAGS="-L\"$source_dir/lib\""
++	in_LDFLAGS="-L\"$source_dir/lib\""
+ fi
+ 
+ if [ -n "$pkgconfig" ]; then
+ 	if [ "$with_pcre" = "system" ]; then
+ 		in_CFLAGS="$in_CFLAGS `$pkgconfig --cflags-only-other libpcre`"
+ 		in_CXXFLAGS="$in_CXXFLAGS `$pkgconfig --cflags-only-other libpcre`"
+-		in_LFLAGS="$in_LFLAGS `$pkgconfig --libs-only-other --libs-only-L libpcre`"
++		in_LDFLAGS="$in_LDFLAGS `$pkgconfig --libs-only-other --libs-only-L libpcre`"
+ 	fi
+ 
+ 	if [ "$with_squirrel" = "system" ]; then
+ 		in_CFLAGS="$in_CFLAGS `$pkgconfig --cflags-only-other libsquirrel`"
+ 		in_CXXFLAGS="$in_CXXFLAGS `$pkgconfig --cflags-only-other libsquirrel`"
+-		in_LFLAGS="$in_LFLAGS `$pkgconfig --libs-only-other --libs-only-L libsquirrel`"
++		in_LDFLAGS="$in_LDFLAGS `$pkgconfig --libs-only-other --libs-only-L libsquirrel`"
+ 	fi
+ fi
+ 
+@@ -1163,25 +1163,25 @@
+ 	[ -z "$CFLAGS" ] && in_CFLAGS="$in_CFLAGS -fomit-frame-pointer"
+ 	[ -z "$CXXFLAGS" ] && in_CXXFLAGS="$in_CXXFLAGS -fomit-frame-pointer"
+ 	in_DEFINES="-DNDEBUG"
+-	[ -z "$LFLAGS" ] && in_LFLAGS="$in_LFLAGS -s"
++	[ -z "$LDFLAGS" ] && in_LDFLAGS="$in_LDFLAGS -s"
+ fi
+ 
+ if [ "$with_pcre" = "local" ] && [ "$with_libraries" = "static" ]; then
+ 	in_DEFINES="$in_DEFINES -DPCRE_STATIC"
+ fi
+ 
+-# ... CFLAGS, CXXFLAGS, DEFINES, LFLAGS (machine-dependent)
++# ... CFLAGS, CXXFLAGS, DEFINES, LDFLAGS (machine-dependent)
+ case "$target" in
+ x86)
+ 	in_CFLAGS="-m32 $in_CFLAGS"
+ 	in_CXXFLAGS="-m32 $in_CXXFLAGS"
+-	in_LFLAGS="-m32 $in_LFLAGS";;
++	in_LDFLAGS="-m32 $in_LDFLAGS";;
+ 
+ x86_64)
+ 	in_CFLAGS="-m64 $in_CFLAGS"
+ 	in_CXXFLAGS="-m64 $in_CXXFLAGS"
+ 	in_DEFINES="$in_DEFINES -D_SQ64"
+-	in_LFLAGS="-m64 $in_LFLAGS";;
++	in_LDFLAGS="-m64 $in_LDFLAGS";;
+ 
+ ia64)
+ 	in_DEFINES="$in_DEFINES -D_SQ64";;
+@@ -1223,7 +1223,7 @@
+ 
+ 	# Work around Apple's linker behavior ("-L../lib" linker option seems to be ignored)
+ 	if [ "$platform" = "macosx" ]; then
+-		#in_LFLAGS="$in_LFLAGS -search_paths_first"
++		#in_LDFLAGS="$in_LDFLAGS -search_paths_first"
+ 		[ "$with_pcre"     = "local" ] && in_LIBS=`echo "$in_LIBS" | $sed -e "s@-lpcre@../lib/libpcre$lib_suffix@"`
+ 		[ "$with_squirrel" = "local" ] && in_LIBS=`echo "$in_LIBS" | $sed -e "s@-lsquirrel@../lib/libsquirrel$lib_suffix@"`
+ 	fi
+@@ -1231,7 +1231,7 @@
+ 	in_LIB_EXT="$dll_suffix"
+ 	in_CFLAGS_LIB="$in_CFLAGS -fPIC"
+ 	in_CXXFLAGS_LIB="$in_CXXFLAGS -fPIC"
+-	in_MAKE_LIB="$linker -shared $in_LFLAGS -o \"\$(target)\" \$(objects)"
++	in_MAKE_LIB="$linker -shared $in_LDFLAGS -o \"\$(target)\" \$(objects)"
+ 	in_INSTALL_LIB="$installer -c -m 0755 \"\$(target)\" \"$libdir\""
+ 	[ "$with_strip" ] && in_INSTALL_LIB="$in_INSTALL_LIB \\&\\& strip --strip-unneeded \"$libdir/\$(target_name)\""
+ 	in_UNINSTALL_LIB="rm -f \"$libdir/\$(target_name)\""
+@@ -1274,7 +1274,7 @@
+ s#@LINK@#$linker#
+ s#@EXE_EXT@#$exe_suffix#
+ s#@LIB_EXT@#$in_LIB_EXT#
+-s#@MAKE_EXE@#$linker $in_LFLAGS -o "\$(target)" \$(objects) $in_LIBS#
++s#@MAKE_EXE@#$linker $in_LDFLAGS -o "\$(target)" \$(objects) $in_LIBS#
+ s#@MAKE_LIB@#$in_MAKE_LIB#
+ s#@MAKE_PCRE@#$in_MAKE_PCRE#
+ s#@MAKE_SHELL@#@cd shell \&\& \$(MAKE) \$@#
+@@ -1285,7 +1285,7 @@
+ s#@CXXFLAGS_EXE@#$in_CXXFLAGS_EXE#
+ s#@CFLAGS_LIB@#$in_CFLAGS_LIB#
+ s#@CXXFLAGS_LIB@#$in_CXXFLAGS_LIB#
+-s#@LFLAGS@#$in_LFLAGS#
++s#@LDFLAGS@#$in_LDFLAGS#
+ s#@DEFINES@#$in_DEFINES#
+ s#@INCLUDES@#$in_INCLUDES#
+ s#@LIBS@#$in_LIBS#

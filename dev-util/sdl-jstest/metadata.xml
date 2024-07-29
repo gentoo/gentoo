@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>orbea@riseup.net</email>
+		<name>orbea</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="sdl1">Enable <pkg>media-libs/libsdl</pkg> based input test</flag>
+		<flag name="sdl">Enable <pkg>media-libs/libsdl2</pkg> based input test</flag>
+	</use>
+	<longdescription>
+		sdl-jstest and sdl2-jstest are simple programs that lets you find
+		out how many joysticks SDL or SDL2 detected on your system, how many
+		axes, buttons, hats and balls they have each. They also lets you test
+		the joysticks by displaying the events they send or by displaying
+		their current button, axis, hat or ball state. sdl-jstest is
+		especially useful if you want to test your SDL_LINUX_JOYSTICK
+		configuration.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Grumbel/sdl-jstest</remote-id>
+	</upstream>
+</pkgmetadata>

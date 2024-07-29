@@ -1,0 +1,10 @@
+--- a/MPEG.cpp
++++ b/MPEG.cpp
+@@ -133,6 +133,7 @@
+     video = NULL;
+     system = NULL;
+     error = NULL;
++    source = NULL;
+ 
+     audiostream = videostream = NULL;
+     audioaction = NULL;

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription lang="en">
+		Package manager for Lua.
+
+		It allows you to create and install Lua modules as self-contained packages called rocks.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">luarocks/luarocks</remote-id>
+	</upstream>
+</pkgmetadata>

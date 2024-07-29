@@ -1,0 +1,12 @@
+Allow for easier override from make's commandline.
+--- a/Make.defaults
++++ b/Make.defaults
+@@ -64,7 +64,7 @@ TOPDIR  =
+ ALLSUBDIRS = ia32 ia64 x86_64 fs choosers devschemes tools
+ 
+ HOSTARCH   = $(shell dpkg-architecture -qDEB_BUILD_ARCH | sed s,i[3456789]86,ia32, | sed s,amd64,x86_64, )
+-ARCH	   := $(shell dpkg-architecture -qDEB_BUILD_ARCH | sed s,i[3456789]86,ia32, | sed s,amd64,x86_64, )
++ARCH	   = $(shell dpkg-architecture -qDEB_BUILD_ARCH | sed s,i[3456789]86,ia32, | sed s,amd64,x86_64, )
+ INCDIR	   = -I. -I$(TOPDIR) -I$(EFIINC) -I$(EFIINC)/$(ARCH) -I$(EFIINC)/protocol -I$(TOPDIR)/efi110
+ CPPFLAGS   = -DCONFIG_$(ARCH) 
+ 

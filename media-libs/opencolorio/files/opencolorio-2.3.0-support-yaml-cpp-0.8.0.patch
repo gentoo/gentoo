@@ -1,0 +1,21 @@
+From: Bernd Feige <Bernd.Feige@gmx.net>
+https://bugs.gentoo.org/914716#c12
+
+Index: OpenColorIO-2.3.0/share/cmake/modules/Findyaml-cpp.cmake
+===================================================================
+--- OpenColorIO-2.3.0.orig/share/cmake/modules/Findyaml-cpp.cmake
++++ OpenColorIO-2.3.0/share/cmake/modules/Findyaml-cpp.cmake
+@@ -50,7 +50,12 @@ if(NOT OCIO_INSTALL_EXT_PACKAGES STREQUA
+     endif()
+ 
+     if(yaml-cpp_FOUND)
+-        get_target_property(yaml-cpp_LIBRARY yaml-cpp LOCATION)
++        if(TARGET yaml-cpp::yaml-cpp)
++	 # yaml-cpp >= 0.8
++	 get_target_property(yaml-cpp::yaml-cpp_LIBRARY yaml-cpp::yaml-cpp LOCATION)
++	else()
++	 get_target_property(yaml-cpp_LIBRARY yaml-cpp LOCATION)
++	endif()
+     else()
+ 
+         # As yaml-cpp-config.cmake search fails, search an installed library

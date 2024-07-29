@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	GoAccess is an open source real-time web log
+	analyzer and interactive viewer that runs in a terminal in *nix systems.
+	It provides fast and valuable HTTP statistics for system administrators
+	that require a visual server report on the fly.
+	</longdescription>
+	<use>
+		<flag name="geoipv2">Enable support for GeoIP2 through <pkg>dev-libs/libmaxminddb</pkg></flag>
+		<flag name="getline">Use GNU getline() to parse full line requests</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">allinurl/goaccess</remote-id>
+	</upstream>
+</pkgmetadata>

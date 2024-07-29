@@ -1,0 +1,36 @@
+Merged as: https://github.com/vstakhov/libucl/commit/708f5e21e3d85f56cdcbcbc418d8725f53bf390b
+From: Vsevolod Stakhov <vsevolod@rspamd.com>
+Date: Tue, 6 Feb 2024 15:59:48 +0000
+Subject: [PATCH] Fix lua compile issues
+
+Issue: #282
+--- a/lua/lua_ucl.c
++++ b/lua/lua_ucl.c
+@@ -406,7 +406,6 @@ ucl_object_lua_fromtable (lua_State *L, int idx, ucl_string_flags_t flags)
+
+ 	/* Table iterate */
+ 	if (is_array) {
+-		int i;
+
+ 		if (!is_implicit) {
+ 			top = ucl_object_typed_new (UCL_ARRAY);
+@@ -416,7 +415,7 @@ ucl_object_lua_fromtable (lua_State *L, int idx, ucl_string_flags_t flags)
+ 			top = NULL;
+ 		}
+
+-		for (i = 1; i <= max; i ++) {
++		for (size_t i = 1; i <= max; i ++) {
+ 			lua_pushinteger (L, i);
+ 			lua_gettable (L, idx);
+
+@@ -886,8 +885,8 @@ lua_ucl_parser_parse_text (lua_State *L)
+ 		t = lua_touserdata (L, 2);
+ 	}
+ 	else if (lua_type (L, 2) == LUA_TSTRING) {
+-		const gchar *s;
+-		gsize len;
++		const char *s;
++		size_t len;
+ 		static struct _rspamd_lua_text st_t;
+
+ 		s = lua_tolstring (L, 2, &len);

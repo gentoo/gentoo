@@ -1,0 +1,11 @@
+Don't clobber toolchain defaults.
+
+https://bugs.gentoo.org/890278
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,4 +1,4 @@
+-AM_CFLAGS = -Wall -Wextra -D_FORTIFY_SOURCE=2 $(PIE_CFLAGS) $(RELRO_CFLAGS)
++AM_CFLAGS = -Wall -Wextra $(PIE_CFLAGS) $(RELRO_CFLAGS)
+ ACLOCAL_AMFLAGS = -I aclocal
+ 
+ root_sbindir = $(ROOTSBINDIR)

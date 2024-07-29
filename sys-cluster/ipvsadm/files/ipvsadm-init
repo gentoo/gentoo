@@ -1,0 +1,36 @@
+#!/sbin/openrc-run
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="save"
+
+depend() {
+        need net
+}
+
+checkconfig() {
+	if [ ! -f /var/lib/ipvsadm/rules-save ] ; then
+		eerror "Not starting ipvsadm. First create some rules then run"
+		eerror "/etc/init.d/ipvsadm save"
+		return 1
+	fi
+}
+
+start() {
+	ebegin "Starting ipvsadm"
+	einfo "Clearing previous rules"
+	ipvsadm -C
+	ipvsadm-restore < /var/lib/ipvsadm/rules-save
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ipvsadm"
+	eend $?
+}
+
+save() {
+	ebegin "Saving ipvsadm state"
+	ipvsadm-save > /var/lib/ipvsadm/rules-save
+	eend $?
+}

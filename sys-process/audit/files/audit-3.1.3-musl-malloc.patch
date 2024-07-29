@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/934006
+https://github.com/linux-audit/audit-userspace/commit/1dd6123e810ce255692a693a5d52a0c34cf432d0
+
+From 1dd6123e810ce255692a693a5d52a0c34cf432d0 Mon Sep 17 00:00:00 2001
+From: Steve Grubb <ausearch.1@gmail.com>
+Date: Mon, 1 Apr 2024 12:10:33 -0400
+Subject: [PATCH] Add empty macro to fix muscl c builds
+
+--- a/common/common.h
++++ b/common/common.h
+@@ -1,5 +1,5 @@
+-/* audit-fgets.h -- a replacement for glibc's fgets
+- * Copyright 2018,2022 Red Hat Inc.
++/* common.h -- common utility functions used throughout
++ * Copyright 2018-24 Red Hat Inc.
+  * All Rights Reserved.
+  *
+  * This library is free software; you can redistribute it and/or
+@@ -29,6 +29,9 @@
+ #ifndef __attr_access
+ #  define __attr_access(x)
+ #endif
++#ifndef __attribute_malloc__
++#  define __attribute_malloc__
++#endif
+ #ifndef __attr_dealloc
+ #  define __attr_dealloc(dealloc, argno)
+ #endif

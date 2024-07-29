@@ -1,0 +1,11 @@
+--- a/tools/python.jam
++++ b/tools/python.jam
+@@ -1000,7 +1000,7 @@
+             # linux).
+           : $(usage-requirements)
+             <testing.launcher>$(set-PYTHONPATH)
+-              <library-path>$(libraries) <dll-path>$(dll-path) <library>python.lib
++              <library-path>$(libraries) <library>python.lib
+           ;
+     }
+ 

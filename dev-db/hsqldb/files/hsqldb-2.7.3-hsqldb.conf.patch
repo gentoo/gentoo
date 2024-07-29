@@ -1,0 +1,30 @@
+Patch created with sed expression borrowed from 1.8.1.3-r4.ebuild
+
+	# sample-hsqldb.cfg seems to have moved/renamed to sample/hsqldb.conf
+	sed -e "s/^HSQLDB_JAR_PATH=.*$/HSQLDB_JAR_PATH=${EPREFIX//\//\\/}${HSQLDB_JAR//\//\\/}/g" \
+		-e "s/^SERVER_HOME=.*$/SERVER_HOME=${EPREFIX//\//\\/}\/var\/lib\/hsqldb/g" \
+		-e "s/^HSQLDB_OWNER=.*$/HSQLDB_OWNER=hsqldb/g" \
+		-e 's/^#AUTH_FILE=.*$/AUTH_FILE=${SERVER_HOME}\/sqltool.rc/g' \
+		-i sample/hsqldb.conf || die
+
+--- a/sample/hsqldb.conf
++++ b/sample/hsqldb.conf
+@@ -34,7 +34,7 @@ SQLTOOL_JAR_PATH=/opt/hsqldb-2.0.0/hsqldb/lib/sqltool.jar
+ # /opt/hsqldb-2.0.0/hsqldb/lib/hsqldb*.jar.
+ 
+ # Where the file "server.properties" or "webserver.properties" resides.
+-SERVER_HOME=/opt/hsqldb-2.0.0/hsqldb/data
++SERVER_HOME=/var/lib/hsqldb
+ 
+ # What UNIX user the server will run as.
+ # (The shutdown client is always run as root or the invoker of the init script).
+@@ -91,7 +91,7 @@ URLIDS='localhostdb1'
+ # root who runs the init script.
+ # (See the SqlTool chapter of the HyperSQL Utilities Guide if you don't
+ # understand this).
+-#AUTH_FILE=/home/blaine/sqltool.rc
++AUTH_FILE=${SERVER_HOME}/sqltool.rc
+ 
+ # Typical users will leave this unset and it will default to
+ # org.hsqldb.server.Server.  If you need to run the HSQLDB WebServer class
+

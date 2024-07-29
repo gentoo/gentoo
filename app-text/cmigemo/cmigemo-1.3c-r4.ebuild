@@ -1,0 +1,81 @@
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI="8"
+
+inherit flag-o-matic toolchain-funcs
+
+MY_P="${P}-MIT"
+
+DESCRIPTION="Migemo library implementation in C"
+HOMEPAGE="https://www.kaoriya.net/software/cmigemo/"
+SRC_URI="mirror://gentoo/${MY_P}.tar.bz2"
+
+LICENSE="MIT"
+SLOT="0"
+KEYWORDS="~alpha amd64 ppc x86"
+IUSE="unicode vim"
+
+RDEPEND=">=app-dicts/migemo-dict-200812[unicode=]"
+DEPEND="${RDEPEND}"
+BDEPEND="app-i18n/nkf
+	dev-lang/perl
+	|| (
+		net-misc/curl
+		net-misc/wget
+		www-client/fetch
+	)"
+S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-ldflags.patch
+	# bug #246953
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-parallel-build.patch
+	"${FILESDIR}"/${P}-parallel-install.patch
+)
+DOCS=( doc/{README_j,TODO_j,vimigemo}.txt )
+
+src_prepare() {
+	default
+
+	touch dict/SKK-JISYO.L || die
+	if use unicode; then
+		sed -i "/gcc:/s/euc-jp/utf-8/" dict/dict.mak || die
+	fi
+
+	# bug #255813
+	sed -i "/^docdir/s:/doc/migemo:/share/doc/${PF}:" compile/config.mk.in || die
+}
+
+src_compile() {
+	append-flags -fPIC
+	emake \
+		CC="$(tc-getCC)" \
+		CFLAGS="${CFLAGS}" \
+		LDFLAGS="${LDFLAGS}" \
+		gcc-all
+}
+
+src_install() {
+	emake \
+		prefix="${ED}/usr" \
+		libdir="${ED}/usr/$(get_libdir)" \
+		gcc-install
+	einstalldocs
+
+	local encoding
+	if use unicode; then
+		encoding="utf-8"
+	else
+		encoding="euc-jp"
+	fi
+
+	mv "${ED}"/usr/share/migemo/${encoding}/*.dat "${ED}"/usr/share/migemo || die
+	rm -rf "${ED}"/usr/share/migemo/{cp932,euc-jp,utf-8}
+
+	if use vim; then
+		insinto /usr/share/vim/vimfiles/plugin
+		doins tools/migemo.vim
+	fi
+}

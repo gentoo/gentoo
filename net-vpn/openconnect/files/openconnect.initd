@@ -1,0 +1,28 @@
+#!/sbin/openrc-run
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+vpn=${RC_SVCNAME#*.}
+command="/usr/sbin/openconnect"
+pidfile="/run/openconnect/${vpn}.pid"
+command_args="--syslog ${command_args}"
+command_args_background="--background --pid-file \"${pidfile}\""
+stopsig="SIGINT"
+
+start_pre() {
+	checkpath -d /run/openconnect
+}
+
+start() {
+	if [ -n "${password}" ]; then
+		command_args="${command_args} --passwd-on-stdin"
+		default_start <<EOF
+${password}
+EOF
+	elif [ -n "${password_file}" ]; then
+		command_args="${command_args} --passwd-on-stdin"
+		default_start <"${password_file}"
+	else
+		default_start
+	fi
+}

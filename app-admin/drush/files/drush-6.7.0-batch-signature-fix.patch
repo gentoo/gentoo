@@ -1,0 +1,46 @@
+From 31d7a945230eaf1f8ab94d5f782619434f7f2b8c Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 16 Aug 2023 21:21:39 -0400
+Subject: [PATCH 1/1] includes/batch.inc: synchronize sub and superclass
+ parameter names
+
+The DrushBatchContext class overrides the offsetSet() method of its
+superclass, ArrayObject, but changes the first parameter's name from
+$key to $name. This makes php-8.1 unhappy:
+
+  Error: Return type of DrushBatchContext::offsetSet($name, $value)
+  should either be compatible with ArrayObject::offsetSet(mixed $key,
+  mixed $value): void, or the #[\ReturnTypeWillChange] attribute should
+  be used to temporarily suppress the notice in .../batch.inc, line 37
+
+Renaming the parameter to $key throughout the function fixes the issue.
+---
+ includes/batch.inc | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/includes/batch.inc b/includes/batch.inc
+index dd4adc9..785f411 100644
+--- a/includes/batch.inc
++++ b/includes/batch.inc
+@@ -34,14 +34,14 @@
+  * @see _drush_batch_worker().
+  */
+ class DrushBatchContext extends ArrayObject {
+-  function offsetSet($name, $value) {
+-    if ($name == 'message') {
++  function offsetSet($key, $value) {
++    if ($key == 'message') {
+       drush_log(strip_tags($value), 'ok');
+     }
+-    elseif ($name == 'error_message') {
++    elseif ($key == 'error_message') {
+       drush_set_error('DRUSH_BATCH_ERROR', strip_tags($value));
+     }
+-    parent::offsetSet($name, $value);
++    parent::offsetSet($key, $value);
+   }
+ }
+ 
+-- 
+2.41.0
+

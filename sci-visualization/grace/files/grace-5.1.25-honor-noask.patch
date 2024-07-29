@@ -1,0 +1,13 @@
+--- a/src/files.c~	2008-04-26 20:25:57.000000000 +0200
++++ b/src/files.c	2023-09-26 11:39:24.232306135 +0200
+@@ -1098,10 +1098,6 @@
+     int noask_save = noask;
+     
+     old_fn = get_docname();
+-    if (compare_strings(old_fn, fn)) {
+-        /* If saving under the same name, don't warn about overwriting */
+-        noask = TRUE;
+-    }
+     
+     if ((cp = grace_openw(fn)) == NULL) {
+         noask = noask_save;

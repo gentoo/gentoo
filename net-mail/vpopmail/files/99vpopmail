@@ -1,0 +1,2 @@
+ROOTPATH="/var/vpopmail/bin"
+CONFIG_PROTECT="/var/vpopmail/etc"

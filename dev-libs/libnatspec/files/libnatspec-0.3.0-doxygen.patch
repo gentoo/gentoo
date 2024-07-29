@@ -1,0 +1,29 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -54,13 +54,10 @@
+ 
+ # check Doxygen
+ DOXYGEN=""
+-AC_ARG_WITH(doxygen, [  --with-doxygen    Generate doxygen documentation ],
+-[AC_CHECK_PROG(DOX, doxygen, yes)
+-if test "x$DOX" != x ; then
+-	DOXYGEN="doxygen"
+-else
+-	AC_MSG_ERROR([*** Doxygen not found])
+-fi
++AC_ARG_WITH(doxygen, [  --with-doxygen    Generate doxygen documentation ])
++AS_IF([test "x$with_doxygen" = "xyes"], [
++  AC_CHECK_PROG(DOX, doxygen, yes)
++  DOXYGEN="doxygen"
+ ])
+ AC_SUBST(DOXYGEN)
+ AM_CONDITIONAL(HAVE_DOXYGEN, test x$DOXYGEN != x)
+--- a/docs/Makefile.am
++++ b/docs/Makefile.am
+@@ -19,5 +19,4 @@
+ 
+ 
+ # install
+-docdir = $(datadir)/doc/@PACKAGE@-@VERSION@/html
+-doc_DATA = $(shell find $(top_srcdir)/docs/html -name \*.*) 
++html_DATA = $(shell find $(top_srcdir)/docs/html -name \*.*)

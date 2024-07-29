@@ -1,0 +1,48 @@
+https://bugs.gentoo.org/919076
+https://github.com/lxde/libfm/issues/100
+https://github.com/lxde/libfm/pull/101
+
+From ec6a21263d150aea918826941a80f335b45470a8 Mon Sep 17 00:00:00 2001
+From: Mamoru TASAKA <mtasaka@fedoraproject.org>
+Date: Fri, 1 Mar 2024 14:19:46 +0900
+Subject: [PATCH] FIX: support gcc14 -Werror=incompatible-pointer-types
+
+gcc14 now defaults to -Werror=incompatible-pointer-types .
+To support this, cast GTK related objects for assignment
+properly.
+
+Fixes #100 .
+--- a/src/gtk/exo/exo-icon-view.c
++++ b/src/gtk/exo/exo-icon-view.c
+@@ -2819,7 +2819,7 @@ exo_icon_view_key_press_event (GtkWidget   *widget,
+   /* allocate a new event to forward */
+   new_event = gdk_event_copy ((GdkEvent *) event);
+   g_object_unref (G_OBJECT (new_event->key.window));
+-  new_event->key.window = g_object_ref (G_OBJECT (gtk_widget_get_window (icon_view->priv->search_entry)));
++  new_event->key.window = GDK_WINDOW(g_object_ref (G_OBJECT (gtk_widget_get_window (icon_view->priv->search_entry))));
+ 
+   /* send the event to the search entry. If the "preedit-changed" signal is
+    * emitted during this event, priv->search_imcontext_changed will be set.
+--- a/src/gtk/fm-dnd-dest.c
++++ b/src/gtk/fm-dnd-dest.c
+@@ -458,7 +458,7 @@ static GdkDragAction _ask_action_on_drop(GtkWidget *widget,
+             gtk_action_set_sensitive(act, FALSE);
+         }
+     }
+-    ri.menu = g_object_ref(gtk_ui_manager_get_widget(ui, "/popup"));
++    ri.menu = GTK_MENU(g_object_ref(gtk_ui_manager_get_widget(ui, "/popup")));
+     g_signal_connect(ri.menu, "selection-done", G_CALLBACK(gtk_widget_destroy), NULL);
+     unmap_handler = g_signal_connect(ri.menu, "unmap",
+                                      G_CALLBACK(run_unmap_handler), &ri);
+--- a/src/gtk/fm-standard-view.c
++++ b/src/gtk/fm-standard-view.c
+@@ -637,7 +637,7 @@ static inline void create_icon_view(FmStandardView* fv, GList* sels)
+                                 "text", FM_FOLDER_MODEL_COL_NAME );
+     if(fv->renderer_text)
+         g_object_unref(fv->renderer_text);
+-    fv->renderer_text = g_object_ref_sink(render);
++    fv->renderer_text = FM_CELL_RENDERER_TEXT(g_object_ref_sink(render));
+     exo_icon_view_set_search_column((ExoIconView*)fv->view, FM_FOLDER_MODEL_COL_NAME);
+     g_signal_connect(fv->view, "item-activated", G_CALLBACK(on_icon_view_item_activated), fv);
+     g_signal_connect(fv->view, "selection-changed", G_CALLBACK(on_sel_changed), fv);
+

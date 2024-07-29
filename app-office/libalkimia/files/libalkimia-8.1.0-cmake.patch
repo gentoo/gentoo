@@ -1,0 +1,54 @@
+From d413b91839ca0e66beb56a71625e3194df1a6599 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 12 Jun 2019 19:44:12 +0200
+Subject: [PATCH 1/2] Use non-deprecated KDE_INSTALL_TARGETS_DEFAULT_ARGS for
+ alkimia target
+
+---
+ src/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 7c0f0f7..0774032 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -147,7 +147,7 @@ set(INCLUDE_INSTALL_DIR include/alkimia/${ALKIMIA_INCLUDE_SUFFIX})
+ 
+ install(TARGETS alkimia
+     EXPORT  alkimiaTargets
+-    ${INSTALL_TARGETS_DEFAULT_ARGS}
++    ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
+ )
+ 
+ if(BUILD_QT4)
+-- 
+2.23.0
+
+
+From 1fd611bcc060e779ac62f5f69d956c6dee2b3383 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 12 Jun 2019 16:43:54 +0200
+Subject: [PATCH 2/2] Fix pkgconfig libdir path
+
+---
+ src/libalkimia.pc.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/libalkimia.pc.in b/src/libalkimia.pc.in
+index c2087c9..6ada277 100644
+--- a/src/libalkimia.pc.in
++++ b/src/libalkimia.pc.in
+@@ -4,8 +4,8 @@
+ # General installation directories
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=@CMAKE_INSTALL_PREFIX@
+-libdir=@KDE4_LIB_DIR@
+-includedir=@INCLUDE_INSTALL_DIR@
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=${prefix}/@INCLUDE_INSTALL_DIR@
+ 
+ # Human-readable name
+ Name: Alkimia
+-- 
+2.23.0
+

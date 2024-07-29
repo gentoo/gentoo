@@ -1,0 +1,18 @@
+# /etc/conf.d/vdr.dvd:
+
+# Global config file for vdr rc-scripts
+
+# The plugin uses libdvdcss to access CSS protected DVDs. 
+# (Note: doing so might be illegal in some countries).
+#
+#	allowed values: yes|no
+#	default: no
+#DVD_DVDCSS="no"
+
+# By default VDR expects the DVD drive to be located at 
+# /dev/dvd (which typically is a symbolic link to the 
+# actual device, for instance /dev/hdc).
+#
+#   allowed values: device names
+#   default: /dev/dvd
+#DVD_DRIVE="/dev/dvd"

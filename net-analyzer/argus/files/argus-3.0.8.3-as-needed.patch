@@ -1,0 +1,11 @@
+--- a/argus/Makefile.in
++++ b/argus/Makefile.in
+@@ -85,7 +85,7 @@
+ 
+ OBJ =	$(SRC:.c=.o)
+ 
+-LIB = @LIBS@ @V_THREADS@ $(WRAPLIBS) $(SASLLIBS) $(XDRLIBS) $(COMPATLIB) ../lib/argus_common.a -lm
++LIB = ../lib/argus_common.a @LIBS@ @V_THREADS@ $(WRAPLIBS) $(SASLLIBS) $(XDRLIBS) $(COMPATLIB) -lm
+ 
+ HDR =	pcap.h pcap-int.h pcap-namedb.h pcap-nit.h pcap-pf.h \
+ 	ethertype.h gencode.h gnuc.h

@@ -1,0 +1,15 @@
+--- libquvi-0.9.1/src/quvi-0.9/quvi/Makefile.am
++++ libquvi-0.9.1/src/quvi-0.9/quvi/Makefile.am
+@@ -16,12 +16,4 @@
+   qsupp.h\
+   qversion.h
+ 
+-install-data-local:
+-	@if test -f $(libquvisubincludedir)/qfunc.h ; then \
+-		echo "** Old headers found in $(libquvisubincludedir).  You should" ; \
+-		echo "** remove the contents of this directory and type 'make " ; \
+-		echo "** install' again." ; \
+-		false ; \
+-	fi
+-
+ # vim: set ts=2 sw=2 tw=72 expandtab:

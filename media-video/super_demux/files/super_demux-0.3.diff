@@ -1,0 +1,12 @@
+diff -Naur super_demux-0.3.orig/Makefile super_demux-0.3/Makefile
+--- super_demux-0.3.orig/Makefile	2004-12-15 22:01:31.000000000 +0100
++++ super_demux-0.3/Makefile	2007-10-06 16:58:19.000000000 +0200
+@@ -13,7 +13,7 @@
+ all:
+ 	$(CC) $(CFLAGS) -c $(SRC1)
+ 
+-	$(CC) -o super_demux   $(OBJECT1) $(LIBRARY)
++	$(CC) $(LDFLAGS) -o super_demux   $(OBJECT1) $(LIBRARY)
+ 
+ # DEPENDENCIES
+ super_demux.o : super_demux.c

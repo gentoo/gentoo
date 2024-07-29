@@ -1,0 +1,24 @@
+diff --git a/src/swtpm_localca/Makefile.am b/src/swtpm_localca/Makefile.am
+index 74532a8..41b61ec 100644
+--- a/src/swtpm_localca/Makefile.am
++++ b/src/swtpm_localca/Makefile.am
+@@ -30,7 +30,6 @@ swtpm_localca_LDADD = \
+ 	$(top_builddir)/src/utils/libswtpm_utils.la
+ 
+ swtpm_localca_LDFLAGS = \
+-	-L$(top_builddir)/src/utils -lswtpm_utils \
+ 	$(MY_LDFLAGS) \
+ 	$(GLIB_LIBS) \
+ 	$(GMP_LIBS) \
+diff --git a/src/swtpm_setup/Makefile.am b/src/swtpm_setup/Makefile.am
+index c0f916b..61188c9 100644
+--- a/src/swtpm_setup/Makefile.am
++++ b/src/swtpm_setup/Makefile.am
+@@ -32,7 +32,6 @@ swtpm_setup_LDADD = \
+ 	$(top_builddir)/src/utils/libswtpm_utils.la
+ 
+ swtpm_setup_LDFLAGS = \
+-	-L$(top_builddir)/src/utils -lswtpm_utils \
+ 	$(MY_LDFLAGS) \
+ 	$(HARDENING_LDFLAGS) \
+ 	$(GLIB_LIBS) \

@@ -1,0 +1,13 @@
+Fix a double free() bug.  Sent upstream 15 Mar 2011:
+https://sourceforge.net/p/abe/patches/1/
+--- a/src/Main.c
++++ b/src/Main.c
+@@ -35,8 +35,6 @@
+     for(i = 0; modes[i]; ++i)
+       printf("\t%d x %d\n", modes[i]->w, modes[i]->h);
+   }
+-
+-  free(modes);
+ }
+ 
+ void

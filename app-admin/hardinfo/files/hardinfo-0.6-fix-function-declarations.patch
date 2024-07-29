@@ -1,0 +1,226 @@
+Clang16 will not allow implicit function declaration etc. by default.
+This overhauls the whole source code to make this build with clang16
+defaults. 
+
+Bug: https://bugs.gentoo.org/875500
+PR to merge this upstream: https://github.com/lpereira/hardinfo/pull/681
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/includes/computer.h
++++ b/includes/computer.h
+@@ -178,4 +178,8 @@ extern GHashTable *memlabels;
+ void init_memory_labels(void);
+ void scan_memory_do(void);
+ 
++void scan_boots_real(void);
++void scan_languages(OperatingSystem * os);
++void scan_groups_do(void);
++
+ #endif				/* __COMPUTER_H__ */
+--- a/includes/devices.h
++++ b/includes/devices.h
+@@ -66,6 +66,14 @@ void scan_printers_do(void);
+ void scan_sensors_do(void);
+ void sensor_init(void);
+ void sensor_shutdown(void);
++void __scan_dtree(void);
++void scan_gpu_do(void);
++gboolean __scan_udisks2_devices(void);
++void __scan_ide_devices(void);
++void __scan_scsi_devices(void);
++void __scan_input_devices(void);
++void __scan_usb(void);
++void __scan_dmi(void);
+
+ extern gchar *battery_list;
+ extern gchar *input_icons;--- a/includes/hardinfo.h
++++ b/includes/hardinfo.h
+@@ -230,4 +230,6 @@ gg_strescape (const gchar *source,
+ gboolean note_cond_bullet(gboolean cond, gchar *note_buff, const gchar *desc_str);
+ gboolean note_require_tool(const gchar *tool, gchar *note_buff, const gchar *desc_str);
+ 
++int cpu_procs_cores_threads(int *p, int *c, int *t);
++
+ #endif				/* __HARDINFO_H__ */
+--- a/includes/udisks2_util.h
++++ b/includes/udisks2_util.h
+@@ -56,3 +56,5 @@ void udisks2_init();
+ void udisks2_shutdown();
+ GSList *get_udisks2_temps();
+ GSList *get_udisks2_all_drives_info();
++void udiskt_free(udiskt *u);
++void udiskd_free(udiskd *u);
+--- a/modules/benchmark/bench_results.c
++++ b/modules/benchmark/bench_results.c
+@@ -20,6 +20,7 @@
+ 
+ #include <inttypes.h>
+ #include <json-glib/json-glib.h>
++#include "nice_name.h"
+ 
+ /* in dmi_memory.c */
+ uint64_t memory_devices_get_system_memory_MiB();
+--- a/modules/computer/boots.c
++++ b/modules/computer/boots.c
+@@ -21,6 +21,8 @@
+ #include "hardinfo.h"
+ #include "computer.h"
+ 
++extern void scan_os(gboolean reload);
++
+ void
+ scan_boots_real(void)
+ {
+--- a/modules/devices/dmi.c
++++ b/modules/devices/dmi.c
+@@ -146,7 +146,7 @@ gboolean dmi_get_info(void)
+     return dmi_succeeded;
+ }
+ 
+-void __scan_dmi()
++void __scan_dmi(void)
+ {
+   gboolean dmi_ok;
+ 
+--- a/modules/devices/gpu.c
++++ b/modules/devices/gpu.c
+@@ -24,8 +24,6 @@
+ #include "devices.h"
+ #include "gpu_util.h"
+ 
+-void scan_gpu_do(void);
+-
+ gchar *gpu_list = NULL;
+ gchar *gpu_summary = NULL;
+ 
+--- a/modules/devices/inputdevices.c
++++ b/modules/devices/inputdevices.c
+@@ -20,6 +20,7 @@
+ 
+ #include "hardinfo.h"
+ #include "devices.h"
++#include "usb_util.h"
+ 
+ gchar *input_icons = NULL;
+ 
+--- a/modules/devices/pci.c
++++ b/modules/devices/pci.c
+@@ -177,7 +177,7 @@ void scan_pci_do(void) {
+     gchar *pci_icons = g_strdup("");
+ 
+     pcid_list list = pci_get_device_list(0,0);
+-    list = g_slist_sort(list, pcid_cmp_by_addy);
++    list = g_slist_sort(list, (GCompareFunc)pcid_cmp_by_addy);
+     GSList *l = list;
+ 
+     int c = 0;
+--- a/includes/network.h
++++ b/includes/network.h
+@@ -9,5 +9,7 @@ extern gchar *network_interfaces;
+ extern gchar *network_icons;
+ 
+ void scan_net_interfaces(void);
++void scan_samba(void);
++void scan_nfs_shared_directories(void);
+ 
+-#endif /* __NETWORK_H__ */
+\ No newline at end of file
++#endif /* __NETWORK_H__ */
+--- a/shell/callbacks.c
++++ b/shell/callbacks.c
+@@ -27,9 +27,11 @@
+ #include "report.h"
+ #include "syncmanager.h"
+ #include "xmlrpc-server.h"
++#include "uri_handler.h"
+ 
+ #include "config.h"
+ 
++
+ void cb_sync_manager()
+ {
+     Shell *shell = shell_get_main_shell();
+--- a/shell/report.c
++++ b/shell/report.c
+@@ -23,6 +23,7 @@
+ #include <iconcache.h>
+ #include <hardinfo.h>
+ #include <config.h>
++#include "uri_handler.h"
+ 
+ static ReportDialog *report_dialog_new(GtkTreeModel * model,
+ 				       GtkWidget * parent);
+--- a/shell/shell.c
++++ b/shell/shell.c
+@@ -32,6 +32,7 @@
+ #include "iconcache.h"
+ #include "menu.h"
+ #include "stock.h"
++#include "uri_handler.h"
+ 
+ #include "callbacks.h"
+ 
+--- a/hardinfo/hardinfo.c
++++ b/hardinfo/hardinfo.c
+@@ -27,6 +27,8 @@
+ 
+ #include <binreloc.h>
+ 
++#include "dmi_util.h"
++
+ ProgramParameters params = { 0 };
+ 
+ int main(int argc, char **argv)
+--- a/includes/storage_util.h
++++ b/includes/storage_util.h
+@@ -18,4 +18,5 @@ GSList *get_udisks2_drives_ext();
+ u2driveext* u2drive_ext(udiskd * udisks_drive_data);
+ void u2driveext_free(u2driveext *u);
+ 
+-void udisks2_shutdown();
++void udisks2_shutdown(void);
++void storage_shutdown(void);
+--- a/modules/devices.c
++++ b/modules/devices.c
+@@ -39,6 +39,7 @@
+ #include "devices.h"
+ #include "dt_util.h"
+ #include "udisks2_util.h"
++#include "storage_util.h"
+ #include "pci_util.h"
+ 
+ gchar *callback_processors();
+--- a/modules/benchmark.c
++++ b/modules/benchmark.c
+@@ -31,6 +31,7 @@
+ 
+ #include "appf.h"
+ #include "benchmark.h"
++#include "cpu_util.h"
+ 
+ #include "benchmark/bench_results.c"
+ 
+--- a/modules/benchmark/sysbench.c
++++ b/modules/benchmark/sysbench.c
+@@ -19,6 +19,7 @@
+ 
+ #include "hardinfo.h"
+ #include "benchmark.h"
++#include "cpu_util.h"
+ 
+ #define STATMSG "Performing Alexey Kopytov's sysbench memory benchmark"
+ 
+--- a/modules/devices/printers.c
++++ b/modules/devices/printers.c
+@@ -16,6 +16,10 @@
+  *    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
+  */
+ 
++#ifndef _XOPEN_SOURCE
++#define _XOPEN_SOURCE
++#endif /* _XOPEN_SOURCE */
++
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <time.h>

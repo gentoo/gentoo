@@ -1,0 +1,11 @@
+#!/bin/sh
+DIR=${HOME}/.dwm
+if [ -f "${DIR}"/dwmrc ]; then
+	/bin/sh "${DIR}"/dwmrc &
+else
+	while true; do
+		xsetroot -name "`date`"
+		sleep 1
+	done &
+fi
+exec /usr/bin/dwm

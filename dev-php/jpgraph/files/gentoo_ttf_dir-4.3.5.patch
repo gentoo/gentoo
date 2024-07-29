@@ -1,0 +1,31 @@
+From fd1fc5e3c72ac4511f86852b1704821c440bdb3d Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Tue, 3 Jan 2017 12:56:18 -0500
+Subject: [PATCH 1/1] Set TTF_DIR to the Gentoo corefonts location.
+
+The default value of TTF_DIR in jpg-config.inc.php points to
+/usr/share/fonts/truetype, a location that does not exist on
+Gentoo. Since JpGraph largely only supports the Microsoft
+corefonts, we point it to /usr/share/fonts/corefonts instead.
+If the user does not have the corefonts installed, this is no
+great loss: neither location exists.
+---
+ src/jpg-config.inc.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/jpg-config.inc.php b/src/jpg-config.inc.php
+index ea16c1e..98cbdc7 100755
+--- a/src/jpg-config.inc.php
++++ b/src/jpg-config.inc.php
+@@ -36,7 +36,7 @@
+ //
+ //------------------------------------------------------------------------
+ // define('CACHE_DIR','/tmp/jpgraph_cache/');
+- define('TTF_DIR','/usr/share/fonts/truetype/msttcorefonts/');
++define('TTF_DIR','/usr/share/fonts/corefonts/');
+ // define('MBTTF_DIR','/usr/share/fonts/TrueType/');
+ 
+ //-------------------------------------------------------------------------
+-- 
+2.10.2
+

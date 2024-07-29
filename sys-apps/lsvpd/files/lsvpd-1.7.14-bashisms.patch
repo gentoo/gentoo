@@ -1,0 +1,35 @@
+From df4639ecd8b689eab1072e73fc918bb090e28c26 Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Tue, 29 Nov 2022 16:18:14 -0800
+Subject: [PATCH] configure.ac: don't use bash syntax ==
+
+otherwise build fails to detect sg3_utils like this
+
+./configure: 18016: test: xsgutils2: unexpected operator
+./configure: 18024: test: xsgutils2: unexpected operator
+
+and fails due to missing -lsgutils2
+/usr/lib/gcc/powerpc64le-unknown-linux-gnu/11.3.0/../../../../powerpc64le-unknown-linux-gnu/bin/ld:
+sysfs_SCSI_Fill.cpp:(.text+0x3080): undefined reference to
+`sg_ll_inquiry'
+
+Signed-off-by: Georgy Yakovlev <gyakovlev@gentoo.org>
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 034f9aa..bc00095 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -54,8 +54,8 @@ AC_CHECK_LIB(sgutils2,sg_lib_version, [SGUTILS_LIB="sgutils2"],[])
+ #AM_COND_IF([SGUTIL0], [], [
+ #			echo "sgutils library is required for lsvpd"
+ #			exit 1 ])
+-AM_CONDITIONAL([SGUTIL1], [ test x$SGUTILS_LIB == xsgutils ])
+-AM_CONDITIONAL([SGUTIL2], [ test x$SGUTILS_LIB == xsgutils2 ])
++AM_CONDITIONAL([SGUTIL1], [ test x$SGUTILS_LIB = xsgutils ])
++AM_CONDITIONAL([SGUTIL2], [ test x$SGUTILS_LIB = xsgutils2 ])
+ PKG_CHECK_MODULES([LIBVPD2], [libvpd_cxx-2 >= 2.2.9],[],[
+ 			echo "VPD library(libvpd) version 2.2.9 is required for lsvpd"
+ 			exit 1])

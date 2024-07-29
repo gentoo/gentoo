@@ -1,0 +1,196 @@
+From fca370c9f7a6dcb0a3625cc15f6d0a80182dd4b3 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 25 Apr 2020 10:56:27 +0100
+Subject: [PATCH] Support make install DESTDIR=/foo just like Automake does
+
+Distributions really need this.
+---
+ advance/advance.mak | 94 ++++++++++++++++++++++-----------------------
+ 1 file changed, 47 insertions(+), 47 deletions(-)
+
+diff --git a/advance/advance.mak b/advance/advance.mak
+index 6c4d89c..100dd23 100644
+--- a/advance/advance.mak
++++ b/advance/advance.mak
+@@ -376,131 +376,131 @@ pkgdir = $(datadir)/advance
+ pkgdocdir = $(docdir)/advance
+ 
+ install-dirs:
+-	-$(INSTALL_PROGRAM_DIR) $(bindir)
+-	-$(INSTALL_DATA_DIR) $(pkgdir)
+-	-$(INSTALL_DATA_DIR) $(pkgdocdir)
+-	-$(INSTALL_MAN_DIR) $(mandir)/man1
+-	-$(INSTALL_DATA_DIR) $(pkgdir)/rom
+-	-$(INSTALL_DATA_DIR) $(pkgdir)/sample
+-	-$(INSTALL_DATA_DIR) $(pkgdir)/artwork
+-	-$(INSTALL_DATA_DIR) $(pkgdir)/image
+-	-$(INSTALL_DATA_DIR) $(pkgdir)/image/ti99_4a
+-	-$(INSTALL_DATA_DIR) $(pkgdir)/crc
+-	-$(INSTALL_DATA_DIR) $(pkgdir)/snap
+-	-$(INSTALL_DATA_DIR) $(pkgdir)/snap/ti99_4a
++	-$(INSTALL_PROGRAM_DIR) $(DESTDIR)$(bindir)
++	-$(INSTALL_DATA_DIR) $(DESTDIR)$(pkgdir)
++	-$(INSTALL_DATA_DIR) $(DESTDIR)$(pkgdocdir)
++	-$(INSTALL_MAN_DIR) $(DESTDIR)$(mandir)/man1
++	-$(INSTALL_DATA_DIR) $(DESTDIR)$(pkgdir)/rom
++	-$(INSTALL_DATA_DIR) $(DESTDIR)$(pkgdir)/sample
++	-$(INSTALL_DATA_DIR) $(DESTDIR)$(pkgdir)/artwork
++	-$(INSTALL_DATA_DIR) $(DESTDIR)$(pkgdir)/image
++	-$(INSTALL_DATA_DIR) $(DESTDIR)$(pkgdir)/image/ti99_4a
++	-$(INSTALL_DATA_DIR) $(DESTDIR)$(pkgdir)/crc
++	-$(INSTALL_DATA_DIR) $(DESTDIR)$(pkgdir)/snap
++	-$(INSTALL_DATA_DIR) $(DESTDIR)$(pkgdir)/snap/ti99_4a
+ 
+ install-data: $(INSTALL_DATAFILES) $(INSTALL_ROMFILES) $(INSTALL_IMAGEFILES_TI99_4A) $(INSTALL_SAMPLEFILES) $(INSTALL_SNAPFILES) $(INSTALL_SNAPFILES_TI99_4A)
+ ifdef INSTALL_DATAFILES
+ 	@for i in $(INSTALL_DATAFILES); do \
+-		echo "$(INSTALL_DATA) $$i $(pkgdir)"; \
+-		$(INSTALL_DATA) $$i $(pkgdir); \
++		echo "$(INSTALL_DATA) $$i $(DESTDIR)$(pkgdir)"; \
++		$(INSTALL_DATA) $$i $(DESTDIR)$(pkgdir); \
+ 	done
+ endif
+ ifdef INSTALL_ROMFILES
+ 	@for i in $(INSTALL_ROMFILES); do \
+-		echo "$(INSTALL_DATA) $$i $(pkgdir)/rom"; \
+-		$(INSTALL_DATA) $$i $(pkgdir)/rom; \
++		echo "$(INSTALL_DATA) $$i $(DESTDIR)$(pkgdir)/rom"; \
++		$(INSTALL_DATA) $$i $(DESTDIR)$(pkgdir)/rom; \
+ 	done
+ endif
+ ifdef INSTALL_IMAGEFILES_TI99_4A
+ 	@for i in $(INSTALL_IMAGEFILES_TI99_4A); do \
+-		echo "$(INSTALL_DATA) $$i $(pkgdir)/image/ti99_4a"; \
+-		$(INSTALL_DATA) $$i $(pkgdir)/image/ti99_4a; \
++		echo "$(INSTALL_DATA) $$i $(DESTDIR)$(pkgdir)/image/ti99_4a"; \
++		$(INSTALL_DATA) $$i $(DESTDIR)$(pkgdir)/image/ti99_4a; \
+ 	done
+ endif
+ ifdef INSTALL_SAMPLEFILES
+ 	@for i in $(INSTALL_SAMPLEFILES); do \
+-		echo "$(INSTALL_DATA) $$i $(pkgdir)/sample"; \
+-		$(INSTALL_DATA) $$i $(pkgdir)/sample; \
++		echo "$(INSTALL_DATA) $$i $(DESTDIR)$(pkgdir)/sample"; \
++		$(INSTALL_DATA) $$i $(DESTDIR)$(pkgdir)/sample; \
+ 	done
+ endif
+ ifdef INSTALL_SNAPFILES
+ 	@for i in $(INSTALL_SNAPFILES); do \
+-		echo "$(INSTALL_DATA) $$i $(pkgdir)/snap"; \
+-		$(INSTALL_DATA) $$i $(pkgdir)/snap; \
++		echo "$(INSTALL_DATA) $$i $(DESTDIR)$(pkgdir)/snap"; \
++		$(INSTALL_DATA) $$i $(DESTDIR)$(pkgdir)/snap; \
+ 	done
+ endif
+ ifdef INSTALL_SNAPFILES_TI99_4A
+ 	@for i in $(INSTALL_SNAPFILES_TI99_4A); do \
+-		echo "$(INSTALL_DATA) $$i $(pkgdir)/snap/ti99_4a"; \
+-		$(INSTALL_DATA) $$i $(pkgdir)/snap/ti99_4a; \
++		echo "$(INSTALL_DATA) $$i $(DESTDIR)$(pkgdir)/snap/ti99_4a"; \
++		$(INSTALL_DATA) $$i $(DESTDIR)$(pkgdir)/snap/ti99_4a; \
+ 	done
+ endif
+ 
+ uninstall-data:
+ ifdef INSTALL_DATAFILES
+ 	@for i in $(notdir $(INSTALL_DATAFILES)); do \
+-		rm -f $(pkgdir)/$$i; \
++		rm -f $(DESTDIR)$(pkgdir)/$$i; \
+ 	done
+ endif
+ ifdef INSTALL_ROMFILES
+ 	@for i in $(notdir $(INSTALL_ROMFILES)); do \
+-		rm -f $(pkgdir)/rom/$$i; \
++		rm -f $(DESTDIR)$(pkgdir)/rom/$$i; \
+ 	done
+ endif
+ ifdef INSTALL_SAMPLEFILES
+ 	@for i in $(notdir $(INSTALL_SAMPLEFILES)); do \
+-		rm -f $(pkgdir)/sample/$$i; \
++		rm -f $(DESTDIR)$(pkgdir)/sample/$$i; \
+ 	done
+ endif
+ ifdef INSTALL_SNAPFILES
+ 	@for i in $(notdir $(INSTALL_SNAPFILES)); do \
+-		rm -f $(pkgdir)/snap/$$i; \
++		rm -f $(DESTDIR)$(pkgdir)/snap/$$i; \
+ 	done
+ endif
+ 
+ install-bin: $(INSTALL_BINFILES)
+ 	@for i in $(INSTALL_BINFILES); do \
+-		echo "$(INSTALL_PROGRAM) $$i $(bindir)"; \
+-		$(INSTALL_PROGRAM) $$i $(bindir); \
++		echo "$(INSTALL_PROGRAM) $$i $(DESTDIR)$(bindir)"; \
++		$(INSTALL_PROGRAM) $$i $(DESTDIR)$(bindir); \
+ 	done
+ 
+ uninstall-bin:
+ 	@for i in $(notdir $(INSTALL_BINFILES)); do \
+-		rm -f $(bindir)/$$i; \
++		rm -f $(DESTDIR)$(bindir)/$$i; \
+ 	done
+ 
+ install-doc: $(INSTALL_DOCFILES)
+ ifdef INSTALL_DOCFILES
+ 	@for i in $(INSTALL_DOCFILES); do \
+-		echo "$(INSTALL_DATA) $$i $(pkgdocdir)"; \
+-		$(INSTALL_DATA) $$i $(pkgdocdir); \
++		echo "$(INSTALL_DATA) $$i $(DESTDIR)$(pkgdocdir)"; \
++		$(INSTALL_DATA) $$i $(DESTDIR)$(pkgdocdir); \
+ 	done
+ endif
+ 
+ uninstall-doc:
+ ifdef INSTALL_DOCFILES
+ 	@for i in $(notdir $(INSTALL_DOCFILES)); do \
+-		rm -f $(pkgdocdir)/$$i; \
++		rm -f $(DESTDIR)$(pkgdocdir)/$$i; \
+ 	done
+ endif
+ 
+ install-man: $(INSTALL_MANFILES)
+ ifdef INSTALL_MANFILES
+ 	@for i in $(INSTALL_MANFILES); do \
+-		echo "$(INSTALL_DATA) $$i $(mandir)/man1"; \
+-		$(INSTALL_DATA) $$i $(mandir)/man1; \
++		echo "$(INSTALL_DATA) $$i $(DESTDIR)$(mandir)/man1"; \
++		$(INSTALL_DATA) $$i $(DESTDIR)$(mandir)/man1; \
+ 	done
+ endif
+ 
+ uninstall-man:
+ ifdef INSTALL_MANFILES
+ 	@for i in $(notdir $(INSTALL_MANFILES)); do \
+-		rm -f $(mandir)/man1/$$i; \
++		rm -f $(DESTDIR)$(mandir)/man1/$$i; \
+ 	done
+ endif
+ 
+ uninstall-dirs:
+-	-rmdir $(pkgdir)/rom
+-	-rmdir $(pkgdir)/sample
+-	-rmdir $(pkgdir)/artwork
+-	-rmdir $(pkgdir)/image/ti99_4a
+-	-rmdir $(pkgdir)/image
+-	-rmdir $(pkgdir)/crc
+-	-rmdir $(pkgdir)/snap/ti99_4a
+-	-rmdir $(pkgdir)/snap
+-	-rmdir $(pkgdir)
+-	-rmdir $(pkgdocdir)
++	-rmdir $(DESTDIR)$(pkgdir)/rom
++	-rmdir $(DESTDIR)$(pkgdir)/sample
++	-rmdir $(DESTDIR)$(pkgdir)/artwork
++	-rmdir $(DESTDIR)$(pkgdir)/image/ti99_4a
++	-rmdir $(DESTDIR)$(pkgdir)/image
++	-rmdir $(DESTDIR)$(pkgdir)/crc
++	-rmdir $(DESTDIR)$(pkgdir)/snap/ti99_4a
++	-rmdir $(DESTDIR)$(pkgdir)/snap
++	-rmdir $(DESTDIR)$(pkgdir)
++	-rmdir $(DESTDIR)$(pkgdocdir)
+ 
+ install: install-dirs install-bin install-data install-doc install-man
+ 
+-- 
+2.26.0
+

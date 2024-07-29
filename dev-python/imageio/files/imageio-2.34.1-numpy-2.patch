@@ -1,0 +1,36 @@
+From 511ad9b3705fc09d4654d69e42bbafef97bcb0a8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Wallk=C3=B6tter?= <sebastian@wallkoetter.net>
+Date: Sat, 22 Jun 2024 14:56:11 +0200
+Subject: [PATCH] support numpy 2.0
+
+---
+ imageio/core/util.py      | 2 ++
+ imageio/plugins/_dicom.py | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/imageio/core/util.py b/imageio/core/util.py
+index 6b2830421..bfb7e9fe9 100644
+--- a/imageio/core/util.py
++++ b/imageio/core/util.py
+@@ -163,6 +163,8 @@ def __array_wrap__(self, out, context=None):
+             return out.dtype.type(out)  # Scalar
+         elif out.shape != self.shape:
+             return out.view(type=np.ndarray)
++        elif not isinstance(out, Array):
++            return Array(out, self.meta)
+         else:
+             return out  # Type Array
+ 
+diff --git a/imageio/plugins/_dicom.py b/imageio/plugins/_dicom.py
+index 96fb6fcde..2f2f7ac51 100644
+--- a/imageio/plugins/_dicom.py
++++ b/imageio/plugins/_dicom.py
+@@ -531,7 +531,7 @@ def _apply_slope_and_offset(self, data):
+                 data = data.astype(np.float32)
+             else:
+                 # Determine required range
+-                minReq, maxReq = data.min(), data.max()
++                minReq, maxReq = data.min().item(), data.max().item()
+                 minReq = min([minReq, minReq * slope + offset, maxReq * slope + offset])
+                 maxReq = max([maxReq, minReq * slope + offset, maxReq * slope + offset])
+ 

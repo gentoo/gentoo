@@ -1,0 +1,340 @@
+diff -Naur a/configure.ac b/configure.ac
+--- a/configure.ac
++++ b/configure.ac
+@@ -506,6 +506,29 @@
+ 	src/plugins/contrib/EditorTweaks/Makefile
+ 	src/plugins/contrib/envvars/Makefile
+ 	src/plugins/contrib/FileManager/Makefile
++	src/plugins/contrib/FortranProject/Makefile
++	src/plugins/contrib/FortranProject/images/Makefile
++	src/plugins/contrib/FortranProject/images/16x16/Makefile
++	src/plugins/contrib/FortranProject/images/20x20/Makefile
++	src/plugins/contrib/FortranProject/images/24x24/Makefile
++	src/plugins/contrib/FortranProject/images/28x28/Makefile
++	src/plugins/contrib/FortranProject/images/32x32/Makefile
++	src/plugins/contrib/FortranProject/images/40x40/Makefile
++	src/plugins/contrib/FortranProject/images/48x48/Makefile
++	src/plugins/contrib/FortranProject/images/56x56/Makefile
++	src/plugins/contrib/FortranProject/images/64x64/Makefile
++	src/plugins/contrib/FortranProject/images/svg/Makefile
++	src/plugins/contrib/FortranProject/images/fortranproject/Makefile
++	src/plugins/contrib/FortranProject/images/fortranproject/16x16/Makefile
++	src/plugins/contrib/FortranProject/images/fortranproject/20x20/Makefile
++	src/plugins/contrib/FortranProject/images/fortranproject/24x24/Makefile
++	src/plugins/contrib/FortranProject/images/fortranproject/28x28/Makefile
++	src/plugins/contrib/FortranProject/images/fortranproject/32x32/Makefile
++	src/plugins/contrib/FortranProject/images/fortranproject/40x40/Makefile
++	src/plugins/contrib/FortranProject/images/fortranproject/48x48/Makefile
++	src/plugins/contrib/FortranProject/images/fortranproject/56x56/Makefile
++	src/plugins/contrib/FortranProject/images/fortranproject/64x64/Makefile
++	src/plugins/contrib/FortranProject/images/fortranproject/svg/Makefile
+ 	src/plugins/contrib/headerfixup/Makefile
+ 	src/plugins/contrib/help_plugin/Makefile
+ 	src/plugins/contrib/help_plugin/bzip2/Makefile
+diff -Naur a/m4/acinclude.m4 b/m4/acinclude.m4
+--- a/m4/acinclude.m4
++++ b/m4/acinclude.m4
+@@ -364,6 +364,7 @@
+ 	AM_CONDITIONAL([BUILD_EDITORTWEAKS], [false])
+ 	AM_CONDITIONAL([BUILD_ENVVARS], [false])
+ 	AM_CONDITIONAL([BUILD_FILEMANAGER], [false])
++	AM_CONDITIONAL([BUILD_FORTRANPROJECT], [false])
+ 	AM_CONDITIONAL([BUILD_HEADERFIXUP], [false])
+ 	AM_CONDITIONAL([BUILD_HELP], [false])
+ 	AM_CONDITIONAL([BUILD_KEYBINDER], [false])
+@@ -408,6 +409,7 @@
+ 	AM_CONDITIONAL([BUILD_EDITORTWEAKS], [true])
+ 	AM_CONDITIONAL([BUILD_ENVVARS], [true])
+ 	AM_CONDITIONAL([BUILD_FILEMANAGER], [true])
++	AM_CONDITIONAL([BUILD_FORTRANPROJECT], [true])
+ 	AM_CONDITIONAL([BUILD_HEADERFIXUP], [true])
+ 	AM_CONDITIONAL([BUILD_HELP], [true])
+ 	AM_CONDITIONAL([BUILD_KEYBINDER], [true])
+@@ -450,7 +452,7 @@
+   [                        compiles none of the contrib-plugins ]
+   [                        Plugin names are: AutoVersioning, BrowseTracker, byogames, Cccc, CppCheck, cbkoders, codesnippets, ]
+   [                        		     codestat, copystrings, Cscope, DoxyBlocks, dragscroll, EditorConfig, EditorTweaks, envvars, exporter, ]
+-  [                        		     FileManager, headerfixup, help, hexeditor, incsearch, keybinder, libfinder, MouseSap, ]
++  [                        		     FileManager, FortranProject, headerfixup, help, hexeditor, incsearch, keybinder, libfinder, MouseSap, ]
+   [                        		     NassiShneiderman, ProjectOptionsManipulator, profiler, regex, ReopenEditor, rndgen, clangd_client, smartindent, spellchecker, ]
+   [                        		     symtab, ThreadSearch, ToolsPlus, Valgrind, wxcontrib, wxsmith, wxsmithcontrib, wxsmithaui ],
+   plugins="$withval", plugins="none")
+@@ -504,6 +506,9 @@
+ 	FileManager)
+ 		AM_CONDITIONAL([BUILD_FILEMANAGER], [true])
+ 		;;
++	FortranProject)
++		AM_CONDITIONAL([BUILD_FORTRANPROJECT], [true])
++		;;
+ 	headerfixup)
+ 		AM_CONDITIONAL([BUILD_HEADERFIXUP], [true])
+ 		;;
+@@ -627,6 +632,9 @@
+ 	-FileManager)
+ 		AM_CONDITIONAL([BUILD_FILEMANAGER], [false])
+ 		;;
++	-FortranProject)
++		AM_CONDITIONAL([BUILD_FORTRANPROJECT], [false])
++		;;
+ 	-headerfixup)
+ 		AM_CONDITIONAL([BUILD_HEADERFIXUP], [false])
+ 		;;
+@@ -735,6 +743,7 @@
+ AC_SUBST(BUILD_EDITORTWEAKS)
+ AC_SUBST(BUILD_ENVVARS)
+ AC_SUBST(BUILD_FILEMANAGER)
++AC_SUBST(BUILD_FORTRANPROJECT)
+ AC_SUBST(BUILD_HEADERFIXUP)
+ AC_SUBST(BUILD_HELP)
+ AC_SUBST(BUILD_HEXEDITOR)
+diff -Naur a/src/plugins/contrib/FortranProject/Makefile.am b/src/plugins/contrib/FortranProject/Makefile.am
+--- a/src/plugins/contrib/FortranProject/Makefile.am
++++ b/src/plugins/contrib/FortranProject/Makefile.am
+@@ -1,16 +1,18 @@
+ SUBDIRS = images
+ 
+-ACLOCAL_AMFLAGS = --install -I m4
+-
+ AM_CPPFLAGS = $(WX_CXXFLAGS) \
+ 		-I$(top_srcdir)/src/include \
+ 		-I$(top_srcdir)/src/sdk/wxscintilla/include
+ 
+-cb_plugin_lib_LTLIBRARIES = libFortranProject.la
++pluginlibdir = $(pkglibdir)/plugins
++
++pluginlib_LTLIBRARIES = libFortranProject.la
+ 
+-libFortranProject_la_LDFLAGS = -shared -no-undefined -avoid-version
++libFortranProject_la_LDFLAGS = @MODULE_SHARED_LDFLAGS@ -version-info 0:1:0 -no-undefined -avoid-version
+ 
+-libFortranProject_la_LIBADD = $(WX_LIBS) 
++libFortranProject_la_LIBADD = ../../../sdk/libcodeblocks.la \
++			$(WX_LIBS) \
++			$(CB_TINYXML_LIBS)
+ 
+ libFortranProject_la_SOURCES = adddirparserthread.cpp \
+ 					autoinsert.cpp \
+@@ -139,12 +141,9 @@
+ 		images/fortranproject/64x64/*.png \
+ 		images/fortranproject/svg/*.svg
+ 
+-cb_plugin_data_DATA = FortranProject.zip
+-
+-CLEANFILES = $(cb_plugin_data_DATA)
++pkgdata_DATA = FortranProject.zip
+ 
+-uninstall-hook:
+-	-rmdir ${cb_plugin_datadir}images/fortranproject
++CLEANFILES = $(pkgdata_DATA)
+ 
+ FortranProject.zip: manifest.xml
+ 	PWD=`pwd` cd $(srcdir) && zip -j9 $(PWD)/FortranProject.zip manifest.xml resources/*.xrc > /dev/null
+diff -Naur a/src/plugins/contrib/FortranProject/images/16x16/Makefile.am b/src/plugins/contrib/FortranProject/images/16x16/Makefile.am
+--- a/src/plugins/contrib/FortranProject/images/16x16/Makefile.am
++++ b/src/plugins/contrib/FortranProject/images/16x16/Makefile.am
+@@ -1,3 +1,3 @@
+-pkgdatadir = $(cb_plugin_datadir)/images/16x16
++pkgdatadir = $(datadir)/@PACKAGE@/images/16x16
+ 
+ dist_pkgdata_DATA = $(srcdir)/*.png
+diff -Naur a/src/plugins/contrib/FortranProject/images/20x20/Makefile.am b/src/plugins/contrib/FortranProject/images/20x20/Makefile.am
+--- a/src/plugins/contrib/FortranProject/images/20x20/Makefile.am
++++ b/src/plugins/contrib/FortranProject/images/20x20/Makefile.am
+@@ -1,3 +1,3 @@
+-pkgdatadir = $(cb_plugin_datadir)/images/20x20
++pkgdatadir = $(datadir)/@PACKAGE@/images/20x20
+ 
+ dist_pkgdata_DATA = $(srcdir)/*.png
+diff -Naur a/src/plugins/contrib/FortranProject/images/24x24/Makefile.am b/src/plugins/contrib/FortranProject/images/24x24/Makefile.am
+--- a/src/plugins/contrib/FortranProject/images/24x24/Makefile.am
++++ b/src/plugins/contrib/FortranProject/images/24x24/Makefile.am
+@@ -1,3 +1,3 @@
+-pkgdatadir = $(cb_plugin_datadir)/images/24x24
++pkgdatadir = $(datadir)/@PACKAGE@/images/24x24
+ 
+ dist_pkgdata_DATA = $(srcdir)/*.png
+diff -Naur a/src/plugins/contrib/FortranProject/images/28x28/Makefile.am b/src/plugins/contrib/FortranProject/images/28x28/Makefile.am
+--- a/src/plugins/contrib/FortranProject/images/28x28/Makefile.am
++++ b/src/plugins/contrib/FortranProject/images/28x28/Makefile.am
+@@ -1,3 +1,3 @@
+-pkgdatadir = $(cb_plugin_datadir)/images/28x28
++pkgdatadir = $(datadir)/@PACKAGE@/images/28x28
+ 
+ dist_pkgdata_DATA = $(srcdir)/*.png
+diff -Naur a/src/plugins/contrib/FortranProject/images/32x32/Makefile.am b/src/plugins/contrib/FortranProject/images/32x32/Makefile.am
+--- a/src/plugins/contrib/FortranProject/images/32x32/Makefile.am
++++ b/src/plugins/contrib/FortranProject/images/32x32/Makefile.am
+@@ -1,3 +1,3 @@
+-pkgdatadir = $(cb_plugin_datadir)/images/32x32
++pkgdatadir = $(datadir)/@PACKAGE@/images/32x32
+ 
+ dist_pkgdata_DATA = $(srcdir)/*.png
+diff -Naur a/src/plugins/contrib/FortranProject/images/40x40/Makefile.am b/src/plugins/contrib/FortranProject/images/40x40/Makefile.am
+--- a/src/plugins/contrib/FortranProject/images/40x40/Makefile.am
++++ b/src/plugins/contrib/FortranProject/images/40x40/Makefile.am
+@@ -1,3 +1,3 @@
+-pkgdatadir = $(cb_plugin_datadir)/images/40x40
++pkgdatadir = $(datadir)/@PACKAGE@/images/40x40
+ 
+ dist_pkgdata_DATA = $(srcdir)/*.png
+diff -Naur a/src/plugins/contrib/FortranProject/images/48x48/Makefile.am b/src/plugins/contrib/FortranProject/images/48x48/Makefile.am
+--- a/src/plugins/contrib/FortranProject/images/48x48/Makefile.am
++++ b/src/plugins/contrib/FortranProject/images/48x48/Makefile.am
+@@ -1,3 +1,3 @@
+-pkgdatadir = $(cb_plugin_datadir)/images/48x48
++pkgdatadir = $(datadir)/@PACKAGE@/images/48x48
+ 
+ dist_pkgdata_DATA = $(srcdir)/*.png
+diff -Naur a/src/plugins/contrib/FortranProject/images/56x56/Makefile.am b/src/plugins/contrib/FortranProject/images/56x56/Makefile.am
+--- a/src/plugins/contrib/FortranProject/images/56x56/Makefile.am
++++ b/src/plugins/contrib/FortranProject/images/56x56/Makefile.am
+@@ -1,3 +1,3 @@
+-pkgdatadir = $(cb_plugin_datadir)/images/56x56
++pkgdatadir = $(datadir)/@PACKAGE@/images/56x56
+ 
+ dist_pkgdata_DATA = $(srcdir)/*.png
+diff -Naur a/src/plugins/contrib/FortranProject/images/64x64/Makefile.am b/src/plugins/contrib/FortranProject/images/64x64/Makefile.am
+--- a/src/plugins/contrib/FortranProject/images/64x64/Makefile.am
++++ b/src/plugins/contrib/FortranProject/images/64x64/Makefile.am
+@@ -1,3 +1,3 @@
+-pkgdatadir = $(cb_plugin_datadir)/images/64x64
++pkgdatadir = $(datadir)/@PACKAGE@/images/64x64
+ 
+ dist_pkgdata_DATA = $(srcdir)/*.png
+diff -Naur a/src/plugins/contrib/FortranProject/images/Makefile.am b/src/plugins/contrib/FortranProject/images/Makefile.am
+--- a/src/plugins/contrib/FortranProject/images/Makefile.am
++++ b/src/plugins/contrib/FortranProject/images/Makefile.am
+@@ -1,4 +1,3 @@
+ SUBDIRS = 16x16 20x20 24x24 28x28 32x32 40x40 48x48 56x56 64x64 fortranproject svg
+ 
+-pkgdatadir = $(cb_plugin_datadir)/images
+-
++pkgdatadir = $(datadir)/@PACKAGE@/images
+diff -Naur a/src/plugins/contrib/FortranProject/images/fortranproject/16x16/Makefile.am b/src/plugins/contrib/FortranProject/images/fortranproject/16x16/Makefile.am
+--- a/src/plugins/contrib/FortranProject/images/fortranproject/16x16/Makefile.am
++++ b/src/plugins/contrib/FortranProject/images/fortranproject/16x16/Makefile.am
+@@ -1,3 +1,3 @@
+-pkgdatadir = $(cb_plugin_datadir)/images/fortranproject/16x16
++pkgdatadir = $(datadir)/@PACKAGE@/images/fortranproject/16x16
+ 
+ dist_pkgdata_DATA = $(srcdir)/*.png
+diff -Naur a/src/plugins/contrib/FortranProject/images/fortranproject/20x20/Makefile.am b/src/plugins/contrib/FortranProject/images/fortranproject/20x20/Makefile.am
+--- a/src/plugins/contrib/FortranProject/images/fortranproject/20x20/Makefile.am
++++ b/src/plugins/contrib/FortranProject/images/fortranproject/20x20/Makefile.am
+@@ -1,3 +1,3 @@
+-pkgdatadir = $(cb_plugin_datadir)/images/fortranproject/20x20
++pkgdatadir = $(datadir)/@PACKAGE@/images/fortranproject/20x20
+ 
+ dist_pkgdata_DATA = $(srcdir)/*.png
+diff -Naur a/src/plugins/contrib/FortranProject/images/fortranproject/24x24/Makefile.am b/src/plugins/contrib/FortranProject/images/fortranproject/24x24/Makefile.am
+--- a/src/plugins/contrib/FortranProject/images/fortranproject/24x24/Makefile.am
++++ b/src/plugins/contrib/FortranProject/images/fortranproject/24x24/Makefile.am
+@@ -1,3 +1,3 @@
+-pkgdatadir = $(cb_plugin_datadir)/images/fortranproject/24x24
++pkgdatadir = $(datadir)/@PACKAGE@/images/fortranproject/24x24
+ 
+ dist_pkgdata_DATA = $(srcdir)/*.png
+diff -Naur a/src/plugins/contrib/FortranProject/images/fortranproject/28x28/Makefile.am b/src/plugins/contrib/FortranProject/images/fortranproject/28x28/Makefile.am
+--- a/src/plugins/contrib/FortranProject/images/fortranproject/28x28/Makefile.am
++++ b/src/plugins/contrib/FortranProject/images/fortranproject/28x28/Makefile.am
+@@ -1,3 +1,3 @@
+-pkgdatadir = $(cb_plugin_datadir)/images/fortranproject/28x28
++pkgdatadir = $(datadir)/@PACKAGE@/images/fortranproject/28x28
+ 
+ dist_pkgdata_DATA = $(srcdir)/*.png
+diff -Naur a/src/plugins/contrib/FortranProject/images/fortranproject/32x32/Makefile.am b/src/plugins/contrib/FortranProject/images/fortranproject/32x32/Makefile.am
+--- a/src/plugins/contrib/FortranProject/images/fortranproject/32x32/Makefile.am
++++ b/src/plugins/contrib/FortranProject/images/fortranproject/32x32/Makefile.am
+@@ -1,3 +1,3 @@
+-pkgdatadir = $(cb_plugin_datadir)/images/fortranproject/32x32
++pkgdatadir = $(datadir)/@PACKAGE@/images/fortranproject/32x32
+ 
+ dist_pkgdata_DATA = $(srcdir)/*.png
+diff -Naur a/src/plugins/contrib/FortranProject/images/fortranproject/40x40/Makefile.am b/src/plugins/contrib/FortranProject/images/fortranproject/40x40/Makefile.am
+--- a/src/plugins/contrib/FortranProject/images/fortranproject/40x40/Makefile.am
++++ b/src/plugins/contrib/FortranProject/images/fortranproject/40x40/Makefile.am
+@@ -1,3 +1,3 @@
+-pkgdatadir = $(cb_plugin_datadir)/images/fortranproject/40x40
++pkgdatadir = $(datadir)/@PACKAGE@/images/fortranproject/40x40
+ 
+ dist_pkgdata_DATA = $(srcdir)/*.png
+diff -Naur a/src/plugins/contrib/FortranProject/images/fortranproject/48x48/Makefile.am b/src/plugins/contrib/FortranProject/images/fortranproject/48x48/Makefile.am
+--- a/src/plugins/contrib/FortranProject/images/fortranproject/48x48/Makefile.am
++++ b/src/plugins/contrib/FortranProject/images/fortranproject/48x48/Makefile.am
+@@ -1,3 +1,3 @@
+-pkgdatadir = $(cb_plugin_datadir)/images/fortranproject/48x48
++pkgdatadir = $(datadir)/@PACKAGE@/images/fortranproject/48x48
+ 
+ dist_pkgdata_DATA = $(srcdir)/*.png
+diff -Naur a/src/plugins/contrib/FortranProject/images/fortranproject/56x56/Makefile.am b/src/plugins/contrib/FortranProject/images/fortranproject/56x56/Makefile.am
+--- a/src/plugins/contrib/FortranProject/images/fortranproject/56x56/Makefile.am
++++ b/src/plugins/contrib/FortranProject/images/fortranproject/56x56/Makefile.am
+@@ -1,3 +1,3 @@
+-pkgdatadir = $(cb_plugin_datadir)/images/fortranproject/56x56
++pkgdatadir = $(datadir)/@PACKAGE@/images/fortranproject/56x56
+ 
+ dist_pkgdata_DATA = $(srcdir)/*.png
+diff -Naur a/src/plugins/contrib/FortranProject/images/fortranproject/64x64/Makefile.am b/src/plugins/contrib/FortranProject/images/fortranproject/64x64/Makefile.am
+--- a/src/plugins/contrib/FortranProject/images/fortranproject/64x64/Makefile.am
++++ b/src/plugins/contrib/FortranProject/images/fortranproject/64x64/Makefile.am
+@@ -1,3 +1,3 @@
+-pkgdatadir = $(cb_plugin_datadir)/images/fortranproject/64x64
++pkgdatadir = $(datadir)/@PACKAGE@/images/fortranproject/64x64
+ 
+ dist_pkgdata_DATA = $(srcdir)/*.png
+diff -Naur a/src/plugins/contrib/FortranProject/images/fortranproject/Makefile.am b/src/plugins/contrib/FortranProject/images/fortranproject/Makefile.am
+--- a/src/plugins/contrib/FortranProject/images/fortranproject/Makefile.am
++++ b/src/plugins/contrib/FortranProject/images/fortranproject/Makefile.am
+@@ -1,5 +1,5 @@
+ SUBDIRS = 16x16 20x20 24x24 28x28 32x32 40x40 48x48 56x56 64x64 svg
+ 
+-pkgdatadir = $(cb_plugin_datadir)/images/fortranproject
++pkgdatadir = $(datadir)/@PACKAGE@/images/fortranproject
+ 
+ dist_pkgdata_DATA = $(srcdir)/*.f90 $(srcdir)/*.py $(srcdir)/*.dem
+diff -Naur a/src/plugins/contrib/FortranProject/images/fortranproject/svg/Makefile.am b/src/plugins/contrib/FortranProject/images/fortranproject/svg/Makefile.am
+--- a/src/plugins/contrib/FortranProject/images/fortranproject/svg/Makefile.am
++++ b/src/plugins/contrib/FortranProject/images/fortranproject/svg/Makefile.am
+@@ -1,3 +1,3 @@
+-pkgdatadir = $(cb_plugin_datadir)/images/fortranproject/svg
++pkgdatadir = $(datadir)/@PACKAGE@/images/fortranproject/svg
+ 
+ dist_pkgdata_DATA = $(srcdir)/*.svg
+diff -Naur a/src/plugins/contrib/FortranProject/images/svg/Makefile.am b/src/plugins/contrib/FortranProject/images/svg/Makefile.am
+--- a/src/plugins/contrib/FortranProject/images/svg/Makefile.am
++++ b/src/plugins/contrib/FortranProject/images/svg/Makefile.am
+@@ -1,3 +1,3 @@
+-pkgdatadir = $(cb_plugin_datadir)/images/svg
++pkgdatadir = $(datadir)/@PACKAGE@/images/svg
+ 
+ dist_pkgdata_DATA = $(srcdir)/*.svg
+diff -Naur a/src/plugins/contrib/Makefile.am b/src/plugins/contrib/Makefile.am
+--- a/src/plugins/contrib/Makefile.am
++++ b/src/plugins/contrib/Makefile.am
+@@ -54,6 +54,10 @@
+ MAYBE_FILEMANAGER=FileManager appdata
+ endif
+ 
++if BUILD_FORTRANPROJECT
++MAYBE_FORTRANPROJECT=FortranProject appdata
++endif
++
+ if BUILD_HELP
+ MAYBE_HELP=help_plugin appdata
+ endif
+@@ -178,6 +182,7 @@
+ 		$(MAYBE_EDITORTWEAKS) \
+ 		$(MAYBE_ENVVARS) \
+ 		$(MAYBE_FILEMANAGER) \
++		$(MAYBE_FORTRANPROJECT) \
+ 		$(MAYBE_HEADERFIXUP) \
+ 		$(MAYBE_HELP) \
+ 		$(MAYBE_HEXEDITOR) \
+@@ -222,6 +227,7 @@
+ 		EditorTweaks \
+ 		envvars \
+ 		FileManager \
++		FortranProject \
+ 		headerfixup \
+ 		help_plugin \
+ 		HexEditor \

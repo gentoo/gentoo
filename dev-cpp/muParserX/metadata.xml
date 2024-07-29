@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- comaintainers-welcomed -->
+	<maintainer type="person" proxied="yes">
+		<email>gaboroszkar@protonmail.com</email>
+		<name>Gábor Oszkár Dénes</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+	The evaluation of a mathematical expression is a standard task required in many applications. It can be solved by either using a standard math expression parser such as muparser or by embedding a scripting language such as Lua. There are however some limitations: Although muparser is pretty fast it will only work with scalar values and although Lua is very flexible it does neither support binary operators for arrays nor complex numbers. So if you need a math expression parser with support for arrays, matrices and strings muparserx may be able to help you.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">beltoforion/muparserx</remote-id>
+	</upstream>
+</pkgmetadata>

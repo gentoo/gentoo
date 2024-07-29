@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>dotnet@gentoo.org</email>
+    <name>Gentoo Dotnet Project</name>
+  </maintainer>
+  <longdescription>
+    Cake (C# Make) is a free and open source cross-platform build automation
+    system with a C# DSL for tasks such as compiling code, copying files and
+    folders, running unit tests, compressing files and building NuGet packages.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/cake-build/cake/issues/</bugs-to>
+    <remote-id type="github">cake-build/cake</remote-id>
+  </upstream>
+</pkgmetadata>

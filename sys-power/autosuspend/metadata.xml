@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Florian Schmaus</name>
+		<email>flow@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="mpd">Enable support for the Music Player Daemon</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">languitar/autosuspend</remote-id>
+	</upstream>
+</pkgmetadata>

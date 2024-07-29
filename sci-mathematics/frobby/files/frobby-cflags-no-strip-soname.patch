@@ -1,0 +1,47 @@
+diff -U 3 -dHrN frobby_v0.9.0.orig/Makefile frobby_v0.9.0/Makefile
+--- frobby_v0.9.0.orig/Makefile	2013-01-15 22:40:13.127937655 +0100
++++ frobby_v0.9.0/Makefile	2013-02-16 10:54:42.265322522 +0100
+@@ -70,7 +70,7 @@
+   BIN_INSTALL_DIR = "/usr/local/bin/"
+ endif
+ 
+-cflags = $(CFLAGS) $(CPPFLAGS) -Wall -ansi -pedantic -I $(GMP_INC_DIR)	\
++cflags =  $(CPPFLAGS) -Wall -ansi -pedantic -I $(GMP_INC_DIR)	\
+          -Wno-uninitialized -Wno-unused-parameter
+ program = frobby
+ library = libfrobby.a
+@@ -87,7 +87,6 @@
+ MATCH=false
+ ifeq ($(MODE), release)
+   outdir = bin/release/
+-  cflags += -O2
+   MATCH=true
+ endif
+ ifeq ($(MODE), debug)
+@@ -99,7 +98,7 @@
+ endif
+ ifeq ($(MODE), shared)
+   outdir = bin/shared/
+-  cflags += -O2 -fPIC
++  cflags += -fPIC
+   library = libfrobby.so
+   MATCH=true
+ endif
+@@ -204,16 +203,13 @@
+       mv -f $@.exe $@; \
+ 	fi
+ endif
+-ifeq ($(MODE), release)
+-	strip $@
+-endif
+ 
+ # Link object files into library
+ library: bin/$(library)
+ bin/$(library): $(objs) | bin/
+ 	rm -f bin/$(library)
+ ifeq ($(MODE), shared)
+-	$(CXX) -shared -o bin/$(library) $(ldflags) \
++	$(CXX) -shared -Wl,-soname,libfrobby.so.0 -o bin/$(library) $(ldflags) \
+ 	  $(patsubst $(outdir)main.o,,$(objs))
+ else
+ 	ar crs bin/$(library) $(patsubst $(outdir)main.o,,$(objs))

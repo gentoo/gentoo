@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>dotnet@gentoo.org</email>
+    <name>Gentoo Dotnet Project</name>
+  </maintainer>
+  <upstream>
+    <changelog>https://raw.githubusercontent.com/razzmatazz/csharp-language-server/master/CHANGELOG.md</changelog>
+    <bugs-to>https://github.com/razzmatazz/csharp-language-server/issues/</bugs-to>
+    <remote-id type="github">razzmatazz/csharp-language-server</remote-id>
+  </upstream>
+</pkgmetadata>

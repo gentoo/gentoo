@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>mozilla@gentoo.org</email>
+  <name>Gentoo Mozilla Team</name>
+</maintainer>
+<use>
+  <flag name="cacert">
+    Include root/class3 certs from CAcert (https://www.cacert.org/)
+  </flag>
+  <flag name="utils">Compile and install all extra binaries, such as certutil, modutil and few more</flag>
+</use>
+<upstream>
+  <remote-id type="cpe">cpe:/a:mozilla:nss</remote-id>
+  <remote-id type="github">nss-dev/nss</remote-id>
+</upstream>
+</pkgmetadata>

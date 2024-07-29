@@ -1,0 +1,38 @@
+diff -Naur a/Makefile b/Makefile
+--- a/Makefile	2017-01-30 21:48:47.000000000 +0000
++++ b/Makefile	2018-07-21 23:12:11.829945396 +0100
+@@ -48,9 +48,8 @@
+ ###############################################################################
+ 
+ 
+-CFLAGS = -Wall -ansi -pedantic -Wno-long-long
++CFLAGS += -Wall -ansi -pedantic -Wno-long-long
+ 
+-LDFLAGS =
+ 
+ # iin_hdloader.c iin_net.c
+ SOURCES = hdl_dump.c \
+@@ -106,11 +105,11 @@
+   DEBUG = no
+ endif
+ ifeq ($(DEBUG), yes)
+-  CFLAGS += -O0 -g -D_DEBUG
+-  CXXFLAGS += -O0 -g -D_DEBUG
++  CFLAGS += -D_DEBUG
++  CXXFLAGS += -D_DEBUG
+ else
+-  CFLAGS += -O2 -s -DNDEBUG
+-  CXXFLAGS += -O2 -s -DNDEBUG
++  CFLAGS += -DNDEBUG
++  CXXFLAGS += -DNDEBUG
+ endif
+ 
+ ifeq ($(USE_THREADED_IIN), yes)
+@@ -183,7 +182,6 @@
+ 	@echo -e "\tLNK $@"
+ 	@$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+ ifeq ($(RELEASE), yes)
+-	-@upx -q -9 $@ > /dev/null
+ endif
+ 
+ 

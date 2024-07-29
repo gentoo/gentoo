@@ -1,0 +1,18 @@
+--- a/setup.py
++++ b/setup.py
+@@ -27,13 +27,13 @@ import sys
+ import os
+ from setuptools import Extension, setup
+ import sysconfig
+-import toml
++import tomli
+ import pathlib
+ from sys import platform
+ 
+ def _parse_toml(pyproject_path):
+     pyproject_text = pyproject_path.read_text()
+-    pyproject_data = toml.loads(pyproject_text)
++    pyproject_data = tomli.loads(pyproject_text)
+     return pyproject_data['project']['version']
+ 
+ picosatlib = ('picosatlib', {

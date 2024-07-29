@@ -1,0 +1,35 @@
+https://bugs.gentoo.org/330161
+--- a/main.c
++++ b/main.c
+@@ -54,2 +54,3 @@
+ int bpointx,bpointy,pointx,pointy,jug,death,goose,jump,jumpf,blibs,spr[1000][8],leveldone,level,lives,totallevels,blobx[8],bloby[8],blobp[8],score,bak,bok,buk,bik,start,blibo,blibs,die,jumpoo=12,speed=4,arse,highscore;
++int realspeed;
+ /* Keys */
+@@ -142,2 +143,3 @@
+   bpointx=200;bpointy=400;pointx=200;pointy=400;jug=1;death=0;jump=0;jumpf=0;jug=0;blibs=0;blibo=0;die=0;speed=4;
++  realspeed=speed;
+   strcpy(path, DATA_PREFIX);
+@@ -214,3 +216,3 @@
+   }
+-  score+=speed;
++  score+=realspeed;
+   /*crap*/
+@@ -220,5 +222,6 @@
+ {
++  if (bpointy==400) realspeed=speed;
+   int nob,nx,nobx=48,ek,ej,el;
+-  bpointx-=speed*2;
+-  bpointy+=speed;
++  bpointx-=realspeed*2;
++  bpointy+=realspeed;
+   pointx=bpointx;
+@@ -544,3 +547,3 @@
+   leveldone=3;
+-  speed=4;
++  speed=4; realspeed=speed;
+    blankscreen();
+@@ -565,3 +568,3 @@
+   while ( jump_down==0 );
+-  speed=4;
++  speed=4; realspeed=speed;
+   lives+=1;

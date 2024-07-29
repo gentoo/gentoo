@@ -1,0 +1,12 @@
+Bug: https://bugs.gentoo.org/923325
+--- a/src/motogl/MotOGLDump.c
++++ b/src/motogl/MotOGLDump.c
+@@ -245,7 +245,7 @@ jpegErrHand(j_common_ptr jpegInfoP)
+ 
+ #ifdef PNG_SUPPORT
+ static void
+-pngErrHand(png_structp pngStrucP, char *errMsg)
++pngErrHand(png_structp pngStrucP, const char *errMsg)
+ {
+   IORaiseError(errMsg);
+   longjmp(png_jmpbuf(pngStrucP), 1);

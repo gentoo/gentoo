@@ -1,0 +1,33 @@
+https://github.com/lurcher/unixODBC/commit/685df9e2b4fbbd191ab081a2020956aa78295fe0
+
+From 685df9e2b4fbbd191ab081a2020956aa78295fe0 Mon Sep 17 00:00:00 2001
+From: Hugh McMaster <hugh.mcmaster@outlook.com>
+Date: Fri, 13 May 2022 22:03:37 +1000
+Subject: [PATCH] Makefile.am: Do not install config.h
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,4 +1,4 @@
+-ACLOCAL_AMFLAGS=-I m4 
++ACLOCAL_AMFLAGS=-I m4
+ 
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = \
+@@ -21,7 +21,7 @@ SUBDIRS = \
+ 	include \
+ 	doc \
+ 	man \
+-	samples 
++	samples
+ 
+ EXTRA_DIST = \
+ 	README.OSX \
+@@ -47,7 +47,7 @@ EXTRA_DIST = \
+ 
+ include_HEADERS = unixodbc.h
+ 
+-pkginclude_HEADERS = unixodbc_conf.h config.h
++pkginclude_HEADERS = unixodbc_conf.h
+ 
+ install-data-hook:
+ 	-$(MKDIR_P) $(DESTDIR)$(sysconfdir)/ODBCDataSources

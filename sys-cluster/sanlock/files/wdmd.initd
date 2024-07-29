@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+pidfile="/var/run/wdmd.pid"
+command="/usr/sbin/wdmd"
+command_args="${WDMDOPTS:-"-G sanlock"}"
+
+start_pre() {
+	$command -p || exit 1
+}

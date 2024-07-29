@@ -1,0 +1,138 @@
+From 29286320673f9e853559cf20aeb3456e541afbd4 Mon Sep 17 00:00:00 2001
+From: Ameya Vikram Singh <ameya.v.singh@gmail.com>
+Date: Mon, 6 Feb 2023 13:31:23 +0530
+Subject: [PATCH] Remove Deprecated API's
+
+* Replaced packaging.version instead of distutils.version
+* Replaced imp module to importlib
+
+**Note:** Probably Deprecates Python 2.7 supports, and maybe some initial versions of Python 3.x.
+
+Signed-off-by: Ameya Vikram Singh <ameya.v.singh@gmail.com>
+---
+ test/test_PluginInfo.py         |  3 ++-
+ yapsy/PluginInfo.py             |  6 +++---
+ yapsy/PluginManager.py          | 17 ++++++++++-------
+ yapsy/VersionedPluginManager.py |  8 ++++----
+ 4 files changed, 19 insertions(+), 15 deletions(-)
+
+diff --git a/test/test_PluginInfo.py b/test/test_PluginInfo.py
+index 0863671..29c736a 100644
+--- a/test/test_PluginInfo.py
++++ b/test/test_PluginInfo.py
+@@ -6,6 +6,7 @@ import unittest
+ 
+ 
+ from yapsy.PluginInfo import PluginInfo
++from packaging.version import Version
+ 
+ 
+ class PluginInfoTest(unittest.TestCase):
+@@ -20,7 +21,7 @@ class PluginInfoTest(unittest.TestCase):
+ 		self.assertEqual(None,pi.plugin_object)
+ 		self.assertEqual([],pi.categories)
+ 		self.assertEqual(None,pi.error)
+-		self.assertEqual("0.0",pi.version)
++		self.assertEqual(Version("0.0"),pi.version)
+ 		self.assertEqual("Unknown",pi.author)
+ 		self.assertEqual("Unknown",pi.copyright)
+ 		self.assertEqual("None",pi.website)
+diff --git a/yapsy/PluginInfo.py b/yapsy/PluginInfo.py
+index 69d220e..700374e 100644
+--- a/yapsy/PluginInfo.py
++++ b/yapsy/PluginInfo.py
+@@ -12,7 +12,7 @@ API
+ """
+ 
+ from yapsy.compat import ConfigParser
+-from distutils.version import StrictVersion
++from packaging.version import Version
+ 
+ 
+ class PluginInfo(object):
+@@ -105,7 +105,7 @@ class PluginInfo(object):
+ 
+ 	
+ 	def __getVersion(self):
+-		return StrictVersion(self.details.get("Documentation","Version"))
++		return Version(self.details.get("Documentation","Version"))
+ 	
+ 	def setVersion(self, vstring):
+ 		"""
+@@ -114,7 +114,7 @@ class PluginInfo(object):
+ 		Used by subclasses to provide different handling of the
+ 		version number.
+ 		"""
+-		if isinstance(vstring,StrictVersion):
++		if isinstance(vstring,Version):
+ 			vstring = str(vstring)
+ 		if not self.details.has_section("Documentation"):
+ 			self.details.add_section("Documentation")
+diff --git a/yapsy/PluginManager.py b/yapsy/PluginManager.py
+index 81a7c2b..b72de93 100644
+--- a/yapsy/PluginManager.py
++++ b/yapsy/PluginManager.py
+@@ -128,10 +128,7 @@ API
+ 
+ import sys
+ import os
+-try:
+-	import importlib.abc.Loader as imp
+-except ImportError:
+-	import imp
++import importlib
+ 
+ from yapsy import log
+ from yapsy import NormalizePluginNameForModuleName
+@@ -577,11 +574,17 @@ class PluginManager(object):
+ 		.. note:: Isolated and provided to be reused, but not to be reimplemented !
+ 		"""
+ 		# use imp to correctly load the plugin as a module
++		candidate_module = None
+ 		if os.path.isdir(candidate_filepath):
+-			candidate_module = imp.load_module(plugin_module_name,None,candidate_filepath,("py","r",imp.PKG_DIRECTORY))
++			if (spec := importlib.util.spec_from_file_location(candidate_filepath.split('/')[-1], candidate_filepath + "/__init__.py")) is not None:
++				candidate_module = importlib.util.module_from_spec(spec)
++				sys.modules[plugin_module_name] = candidate_module
++				spec.loader.exec_module(candidate_module)
+ 		else:
+-			with open(candidate_filepath+".py","r") as plugin_file:
+-				candidate_module = imp.load_module(plugin_module_name,plugin_file,candidate_filepath+".py",("py","r",imp.PY_SOURCE))
++			if (spec := importlib.util.spec_from_file_location(candidate_filepath.split('/')[-1], candidate_filepath + ".py")) is not None:
++				candidate_module = importlib.util.module_from_spec(spec)
++				sys.modules[plugin_module_name] = candidate_module
++				spec.loader.exec_module(candidate_module)
+ 		return candidate_module
+ 	
+ 	def instanciateElementWithImportInfo(self, element, element_name,
+diff --git a/yapsy/VersionedPluginManager.py b/yapsy/VersionedPluginManager.py
+index 83ad4fd..686a52a 100644
+--- a/yapsy/VersionedPluginManager.py
++++ b/yapsy/VersionedPluginManager.py
+@@ -12,7 +12,7 @@ API
+ """
+ 
+ 
+-from distutils.version import StrictVersion
++from packaging.version import Version
+ 
+ from yapsy.PluginInfo import PluginInfo
+ from yapsy.IPlugin import IPlugin
+@@ -27,11 +27,11 @@ class VersionedPluginInfo(PluginInfo):
+ 	
+ 	def __init__(self, plugin_name, plugin_path):
+ 		PluginInfo.__init__(self, plugin_name, plugin_path)
+-		# version number is now required to be a StrictVersion object
+-		self.version	= StrictVersion("0.0")
++		# version number is now required to be a Version object
++		self.version	= Version("0.0")
+ 
+ 	def setVersion(self, vstring):
+-		self.version = StrictVersion(vstring)
++		self.version = Version(vstring)
+ 
+ 
+ class VersionedPluginManager(PluginManagerDecorator):
+-- 
+2.42.0
+

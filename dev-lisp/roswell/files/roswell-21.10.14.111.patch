@@ -1,0 +1,27 @@
+--- roswell-21.10.14.111/configure.ac.ORIG	2022-04-11 14:29:44.336778578 +0000
++++ roswell-21.10.14.111/configure.ac	2022-04-11 14:31:42.549505141 +0000
+@@ -59,9 +59,11 @@
+ 
+ AC_CHECK_HEADERS(gnu/libc-version.h)
+ 
+-AC_CHECK_HEADERS(windows.h,[with_windows=true])
++#AC_CHECK_HEADERS(windows.h,[with_windows=true])
++with_windows=
+ AM_CONDITIONAL([WITH_WINDOWS], [test "$with_windows" != ""])
+-AC_CHECK_TOOL([WINDRES], [windres], [])
++#AC_CHECK_TOOL([WINDRES], [windres], [])
++WINDRES=
+ AM_CONDITIONAL([WITH_WIN_ICON], [test "$WINDRES" != ""])
+ 
+ AC_CHECK_MEMBERS([struct dirent.d_type],,,[#include <dirent.h>])
+--- roswell-21.10.14.111/Makefile.am.ORIG	2022-04-11 14:28:16.220579397 +0000
++++ roswell-21.10.14.111/Makefile.am	2022-04-11 14:28:56.773113318 +0000
+@@ -167,7 +167,7 @@
+ 
+ pack: $(PACK).tar.bz2
+ 
+-WINPACK = roswell_$(VERSION)_$(shell if [ $$MSYSTEM = 'MINGW64' ];then echo amd64 ;else echo i686; fi)
++#WINPACK = roswell_$(VERSION)_$(shell if [ $$MSYSTEM = 'MINGW64' ];then echo amd64 ;else echo i686; fi)
+ 
+ pack.zip: $(PACK).tar.bz2
+ 	7z a $(WINPACK).zip roswell

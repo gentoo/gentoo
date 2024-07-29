@@ -1,0 +1,20 @@
+--- a/at.deny
++++ b/at.deny
+@@ -10,6 +10,8 @@
+ lp
+ mail
+ man
++mysql
++news
+ nobody
+ operator
+ proxy
+@@ -19,6 +21,8 @@
+ qmailq
+ qmailr
+ qmails
++squid
+ sync
+ sys
++uucp
+ www-data

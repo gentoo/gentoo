@@ -1,0 +1,51 @@
+Avoid assignment to read only stderr variable 
+Bug #832236
+diff --git a/src/gui_tracedialog.c b/src/gui_tracedialog.c
+index a00020e..52b6c76 100644
+--- a/src/gui_tracedialog.c
++++ b/src/gui_tracedialog.c
+@@ -32,6 +32,7 @@
+ #include <unistd.h>
+ #include <glib/gstdio.h>
+ #include <hamlib/rig.h>
++#include <fcntl.h>
+ 
+ #include "gui_tracedialog.h"
+ #include "gui_warningdialog.h"
+@@ -43,7 +44,7 @@ typedef struct
+ {
+ 	time_t modified;		/* Last Modified Time */				
+ 	gchar *filename;		/* File Name */
+-	FILE *fd;				/* File Descriptor */
++	gint filedesc;			/* File Descriptor */
+ 	unsigned long filesize; /* File Size */
+ } fileinfo;
+ 
+@@ -62,14 +63,9 @@ stop_tracing (void)
+ 
+ 	stop_hamlib ();
+ 	g_source_remove (tracetimer);
+-	fclose (finfo.fd);
++	close(finfo.filedesc);
+ 	dup2 (saved_fd, STDERR_FILENO);
+ 	close (saved_fd);
+-#ifndef __NetBSD__
+-#ifndef G_OS_WIN32
+-	stderr = fdopen (STDERR_FILENO, "w");
+-#endif
+-#endif
+ 	hamlibresult = start_hamlib (preferences.rigid, preferences.device,
+ 		RIG_DEBUG_NONE, preferences.polltime);
+ }
+@@ -180,7 +176,10 @@ on_trace_hamlib_activate(GtkMenuItem * menuitem, gpointer user_data)
+ 			(GTK_BOX (vbox), tracelabel, FALSE, FALSE, 0);
+ 		g_free (tracestr);
+ 		stop_hamlib();
+-		finfo.fd = freopen (finfo.filename, "w", stderr);
++	 	finfo.filedesc = open(finfo.filename, O_WRONLY|O_CREAT, 0644);
++		if (finfo.filedesc >= 0) {
++			dup2 (finfo.filedesc, STDERR_FILENO); 
++		}
+ 		hamlibresult = start_hamlib (preferences.rigid, preferences.device, 
+ 			RIG_DEBUG_TRACE, preferences.polltime);
+ 		tracetimer = g_timeout_add

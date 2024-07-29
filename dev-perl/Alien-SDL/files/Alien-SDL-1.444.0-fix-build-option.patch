@@ -1,0 +1,31 @@
+Description: fix build option handling
+ GetOptions handles all command arguments without
+ letting Module::Build handles the options. One
+ should not use GetOptions with Module::Build options setup.
+ .
+ So I noved travis option spec into Module::Build
+Author: dod
+--- a/Build.PL
++++ b/Build.PL
+@@ -7,9 +7,7 @@
+ use My::Utility qw(check_config_script check_prebuilt_binaries check_prereqs_libs check_prereqs_tools $source_packs
+                    check_perl_buildlibs);
+ 
+-use Getopt::Long;
+ my ( $ans, $travis ) = 0;
+-GetOptions( "travis" => \$travis );
+ 
+ print "Welcome to Alien::SDL module installation\n";
+ print "-----------------------------------------\n";
+@@ -98,7 +96,10 @@
+       repository => 'http://github.com/PerlGameDev/Alien-SDL'
+     }
+   },
+-  get_options => { 'with-sdl-config' => { qw(type :s  store) => \$sdl_config } },
++  get_options => { 
++      'with-sdl-config' => { qw(type :s  store) => \$sdl_config },
++      'travis'          => { store => \$travis },
++  },
+   dynamic_config => 1,
+   create_readme => 1,
+   share_dir => 'sharedir',

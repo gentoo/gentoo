@@ -1,0 +1,43 @@
+--- a/Makefile.in	2024-03-28 13:35:04.247099098 +0000
++++ b/Makefile.in	2024-03-28 13:33:44.610623716 +0000
+@@ -104,7 +104,7 @@
+ NROFF = nroff
+ DIST_COMMON =  README ./stamp-h.in AUTHORS COPYING ChangeLog INSTALL \
+ Makefile.am Makefile.in NEWS TODO acconfig.h aclocal.m4 config.h.in \
+-configure configure.in install-sh memcmp.c missing mkinstalldirs \
++configure configure.ac install-sh memcmp.c missing mkinstalldirs \
+ npadmin.spec.in snprintf.c
+ 
+ 
+@@ -118,19 +118,19 @@
+ all: all-redirect
+ .SUFFIXES:
+ .SUFFIXES: .C .S .c .o .s
+-$(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
++$(srcdir)/Makefile.in: Makefile.am $(top_srcdir)/configure.ac $(ACLOCAL_M4) 
+ 	cd $(top_srcdir) && $(AUTOMAKE) --gnu --include-deps Makefile
+ 
+ Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status
+ 	cd $(top_builddir) \
+ 	  && CONFIG_FILES=$@ CONFIG_HEADERS= $(SHELL) ./config.status
+ 
+-$(ACLOCAL_M4):  configure.in 
++$(ACLOCAL_M4):  configure.ac
+ 	cd $(srcdir) && $(ACLOCAL)
+ 
+ config.status: $(srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
+ 	$(SHELL) ./config.status --recheck
+-$(srcdir)/configure: $(srcdir)/configure.in $(ACLOCAL_M4) $(CONFIGURE_DEPENDENCIES)
++$(srcdir)/configure: $(srcdir)/configure.ac $(ACLOCAL_M4) $(CONFIGURE_DEPENDENCIES)
+ 	cd $(srcdir) && $(AUTOCONF)
+ 
+ config.h: stamp-h
+@@ -148,7 +148,7 @@
+ 		rm -f $(srcdir)/stamp-h.in; \
+ 		$(MAKE) $(srcdir)/stamp-h.in; \
+ 	else :; fi
+-$(srcdir)/stamp-h.in: $(top_srcdir)/configure.in $(ACLOCAL_M4) acconfig.h
++$(srcdir)/stamp-h.in: $(top_srcdir)/configure.ac $(ACLOCAL_M4) acconfig.h
+ 	cd $(top_srcdir) && $(AUTOHEADER)
+ 	@echo timestamp > $(srcdir)/stamp-h.in 2> /dev/null
+ 

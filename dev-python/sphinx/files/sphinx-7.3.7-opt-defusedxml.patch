@@ -1,0 +1,34 @@
+From ce86026f3b667949ef39f7fdab9a40941d99c5ca Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 11 May 2024 18:31:02 +0200
+Subject: [PATCH] DEPS: Lazy import `defusedxml` only when necessary (#12362)
+
+The `defusedxml` dependency was added to `sphinx.testing` in sphinx 7.3,
+but it is not part of the core sphinx dependencies, and not strictly necessary for the running of the pytest plugin.
+This commit moves the import into the only function which uses it,
+so that the pytest plugins can be used again without this dependency.
+---
+ sphinx/testing/util.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/sphinx/testing/util.py b/sphinx/testing/util.py
+index d1de8ea2b7..b2df709eea 100644
+--- a/sphinx/testing/util.py
++++ b/sphinx/testing/util.py
+@@ -11,7 +11,6 @@
+ from types import MappingProxyType
+ from typing import TYPE_CHECKING
+ 
+-from defusedxml.ElementTree import parse as xml_parse
+ from docutils import nodes
+ from docutils.parsers.rst import directives, roles
+ 
+@@ -73,6 +72,8 @@ def assert_node(node: Node, cls: Any = None, xpath: str = "", **kwargs: Any) ->
+ # keep this to restrict the API usage and to have a correct return type
+ def etree_parse(path: str | os.PathLike[str]) -> ElementTree:
+     """Parse a file into a (safe) XML element tree."""
++    from defusedxml.ElementTree import parse as xml_parse
++
+     return xml_parse(path)
+ 
+ 

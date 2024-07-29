@@ -1,0 +1,14 @@
+Clang has supported -fstack-clash-protection for a while now.
+--- a/Makefile-libostree.am
++++ b/Makefile-libostree.am
+@@ -266,10 +266,6 @@ libostree_1_la_CFLAGS += $(OT_DEP_LIBSODIUM_CFLAGS)
+ libostree_1_la_LIBADD += $(OT_DEP_LIBSODIUM_LIBS)
+ endif # USE_LIBSODIUM
+ 
+-# XXX: work around clang being passed -fstack-clash-protection which it doesn't understand
+-# See: https://bugzilla.redhat.com/show_bug.cgi?id=1672012
+-INTROSPECTION_SCANNER_ENV = CC=gcc
+-
+ if BUILDOPT_INTROSPECTION
+ OSTree-1.0.gir: libostree-1.la Makefile
+ OSTree_1_0_gir_EXPORT_PACKAGES = ostree-1

@@ -1,0 +1,19 @@
+https://bugs.gentoo.org/914173
+https://sourceforge.net/p/mhash/patches/12/
+https://sourceforge.net/p/mhash/bugs/43/
+
+Fixes a segfault due to use-after-free on x86 & ARM in the test suite.
+
+Index: mhash-0.9.9.9/src/hmac_test.c
+===================================================================
+--- mhash-0.9.9.9/src/hmac_test.c
++++ mhash-0.9.9.9/src/hmac_test.c	2020-04-01 00:04:44.039815882 +0200
+@@ -76,8 +76,6 @@
+ 
+ 	/* Test No 2 */	
+ 	
+-	mutils_memset(tmp, 0, sizeof(tmp));
+-	
+ 	passlen=sizeof(KEY2) - 1;
+ 	password = (mutils_word8 *) mutils_malloc(passlen+1);
+ 	mutils_memcpy(password, KEY2, passlen);

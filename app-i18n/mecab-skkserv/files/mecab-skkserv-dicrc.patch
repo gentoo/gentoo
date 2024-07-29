@@ -1,0 +1,7 @@
+--- a/dicrc
++++ b/dicrc
+@@ -2,3 +2,4 @@ bos-feature = BOS/EOS
+ node-format-ime = %H
+ unk-format-ime = %M
+ eos-format-ime  = \n
++cost-factor = 700

@@ -1,0 +1,14 @@
+https://github.com/openzfs/zfs/commit/ebbfc6cb853d2d2f3f0671362d5ff5588be39e9d
+https://github.com/openzfs/zfs/issues/13595
+--- b/contrib/dracut/90zfs/module-setup.sh.in
++++ a/contrib/dracut/90zfs/module-setup.sh.in
+@@ -19,7 +19,7 @@
+ }
+ 
+ installkernel() {
++	instmods zfs
+-	instmods -c zfs
+ }
+ 
+ install() {
+

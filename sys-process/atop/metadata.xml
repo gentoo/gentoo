@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<use>
+		<flag name="modules">Build netatop kernel module and install netatopd daemon.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">Atoptool/atop</remote-id>
+	</upstream>
+</pkgmetadata>

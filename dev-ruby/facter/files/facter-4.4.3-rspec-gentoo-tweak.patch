@@ -1,0 +1,53 @@
+These two tests fail on a Gentoo system. Mark as pending so we have coverage of the other tests.
+
+```
+ 1) Facter::Core::Execution::Base#execute with expand on posix does not expant builtin command
+     # False positive on Gentoo due to environment, returns GEM_SKIP instead of PATH
+     Failure/Error: old_require(path) unless LIBS_TO_SKIP.include?(path)
+
+       {"SHELL"=>"/bin/bash", ...,  "_"=>"/usr/bin/rspec", "RACK_ENV"=>"test",
+	   "resolution_test_foo"=>"foo"} received :[] with unexpected arguments
+         expected: ("PATH")
+              got: ("GEM_SKIP")
+        Please stub a default value first if message might be received with other args as well.
+     # ./spec/mocks/kernel.rb:7:in `require'
+     # ./lib/facter/custom_facts/core/execution/base.rb:74:in `execute_command'
+     # ./lib/facter/custom_facts/core/execution/base.rb:63:in `execute'
+     # ./spec/custom_facts/core/execution/fact_manager_spec.rb:106:in `block (4 levels) in <top (required)>'
+
+
+  2) Facter::Core::Execution::Posix when calling execute_command executes a command
+     # False positive on Gentoo due to environment, returns "" instead of ["", ""]
+     Failure/Error: expect(posix_executor.execute_command('/usr/bin/true', nil, logger)).to eq(['', ''])
+
+       expected: ["", ""]
+            got: ""
+
+       (compared using ==)
+     # ./spec/custom_facts/core/execution/posix_spec.rb:112:in `block (3 levels) in <top (required)>'
+```
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+diff -NuarwbB --exclude '*swp' facter-4.4.3.orig/spec/custom_facts/core/execution/fact_manager_spec.rb facter-4.4.3/spec/custom_facts/core/execution/fact_manager_spec.rb
+--- facter-4.4.3.orig/spec/custom_facts/core/execution/fact_manager_spec.rb	2023-08-24 10:49:03.000000000 -0700
++++ facter-4.4.3/spec/custom_facts/core/execution/fact_manager_spec.rb	2023-09-09 21:25:03.428326009 -0700
+@@ -99,6 +99,7 @@
+       end
+
+       it 'does not expant builtin command' do
++        pending('False positive on Gentoo due to environment, returns GEM_SKIP instead of PATH')
+         allow(Facter::Core::Execution::Popen3).to receive(:popen3e).with({ 'LC_ALL' => 'C', 'LANG' => 'C' }, '/bin/foo')
+                                                                    .and_return('')
+         allow(Open3).to receive(:capture2).with('type /bin/foo').and_return('builtin')
+diff -NuarwbB --exclude '*swp' facter-4.4.3.orig/spec/custom_facts/core/execution/posix_spec.rb facter-4.4.3/spec/custom_facts/core/execution/posix_spec.rb
+--- facter-4.4.3.orig/spec/custom_facts/core/execution/posix_spec.rb	2023-08-24 10:49:03.000000000 -0700
++++ facter-4.4.3/spec/custom_facts/core/execution/posix_spec.rb	2023-09-09 21:24:39.484374593 -0700
+@@ -108,6 +108,7 @@
+     let(:logger) { instance_spy(Logger) }
+
+     it 'executes a command' do
++      pending('False positive on Gentoo due to environment, returns "" instead of ["", ""]')
+       expect(posix_executor.execute_command('/usr/bin/true', nil, logger)).to eq(['', ''])
+     end
+

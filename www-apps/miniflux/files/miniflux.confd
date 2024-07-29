@@ -1,0 +1,6 @@
+# User and group miniflux server should run as
+MINIFLUX_USER=miniflux
+MINIFLUX_GROUP=nobody
+
+# Config file the miniflux server should use
+MINIFLUX_CONF=/etc/miniflux.conf

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+exec bwrap \
+    --bind / / \
+    --dev-bind /dev /dev \
+    --ro-bind /etc/microsoft-identity-broker/lsb-release /etc/lsb-release \
+    --ro-bind /etc/microsoft-identity-broker/os-release /etc/os-release \
+    -- \
+    /usr/share/microsoft-identity-broker/bin/"${0##*/}" "${@}"

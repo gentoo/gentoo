@@ -1,0 +1,25 @@
+From 0b69d0bf23b6c2edb1e2002f47ff2df0080e96d9 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Thu, 6 Jun 2024 12:25:15 +1000
+Subject: [PATCH] Mark MockHttp as not for collection by pytest
+
+pytest 8.2.0 contains a regression that will collect non-test classes,
+so as to be explicit about it, mark MockHttp (and therefore all of its
+children classes) as not to be collected.
+---
+ libcloud/test/__init__.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/libcloud/test/__init__.py b/libcloud/test/__init__.py
+index d45c82c84d..d0da40c74a 100644
+--- a/libcloud/test/__init__.py
++++ b/libcloud/test/__init__.py
+@@ -97,6 +97,8 @@ class MockHttp(LibcloudConnection):
+ 
+         (int status, str body, dict headers, str reason)
+     """
++    # pytest may collect this class, and we don't need or want that
++    __test__ = False
+ 
+     type = None
+     use_param = None  # will use this param to namespace the request function

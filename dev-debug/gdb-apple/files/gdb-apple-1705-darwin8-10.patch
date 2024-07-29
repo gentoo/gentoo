@@ -1,0 +1,11 @@
+--- src/gdb/macosx/macosx-nat-dyld.c
++++ src/gdb/macosx/macosx-nat-dyld.c
+@@ -788,7 +788,7 @@
+        }
+      else
+        {
+-#if defined (NM_NEXTSTEP)
++#if defined (NM_NEXTSTEP) && defined(TASK_DYLD_INFO_COUNT)
+           if (macosx_status->task == TASK_NULL)
+             return 0;
+ 

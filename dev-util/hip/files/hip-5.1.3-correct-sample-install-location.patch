@@ -1,0 +1,13 @@
+Index: hipamd-rocm-5.1.3/packaging/CMakeLists.txt
+===================================================================
+--- hipamd-rocm-5.1.3.orig/packaging/CMakeLists.txt
++++ hipamd-rocm-5.1.3/packaging/CMakeLists.txt
+@@ -106,7 +106,7 @@ endif()
+ #End doc files install
+ 
+ #Begin samples files install
+-install(DIRECTORY ${HIP_COMMON_DIR}/samples DESTINATION . COMPONENT samples)
++install(DIRECTORY ${HIP_COMMON_DIR}/samples DESTINATION ${CMAKE_INSTALL_DOCDIR}/ COMPONENT samples)
+ #End samples files install
+ 
+ #Begin test files install

@@ -1,0 +1,27 @@
+https://src.fedoraproject.org/rpms/lrzsz/blob/c23247c9c7604aec31d49ed1b238622835f575e2/f/lrzsz-socklen.patch
+
+Use socklen_t as the length of the socket address (which is a bit of
+an anachronism, considering the rest of the sources).  The previous
+code des not work on 64-bit big-endian architectures.
+
+--- a/src/tcp.c
++++ b/src/tcp.c
+@@ -56,7 +56,7 @@ tcp_server (char *buf)
+ 	struct sockaddr_in s;
+ 	struct sockaddr_in t;
+ 	int on=1;
+-	size_t len;
++	socklen_t len;
+ 
+ 	if ((sock = socket (AF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0) {
+ 		error(1,errno,"socket");
+@@ -91,7 +91,7 @@ tcp_accept (int d)
+ {
+ 	int so;
+ 	struct  sockaddr_in s;
+-	size_t namelen;
++	socklen_t namelen;
+ 	int num=0;
+ 
+ 	namelen = sizeof(s);
+

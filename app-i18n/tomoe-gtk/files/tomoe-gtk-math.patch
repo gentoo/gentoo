@@ -1,0 +1,11 @@
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -4,7 +4,7 @@
+ 	-DTOMOEGTKDATADIR=\""$(datadir)"/$(PACKAGE)\"
+ 
+ INCLUDES = $(GTK2_CFLAGS) $(TOMOE_CFLAGS) $(GUCHARMAP_CFLAGS)
+-LIBS     = $(GTK2_LIBS)   $(TOMOE_LIBS)   $(GUCHARMAP_LIBS)
++LIBS     = $(GTK2_LIBS)   $(TOMOE_LIBS)   $(GUCHARMAP_LIBS)   -lm
+ 
+ lib_LTLIBRARIES = libtomoe-gtk.la
+ libtomoe_gtk_la_SOURCES =						\

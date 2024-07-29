@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+		<name>Gentoo Qt Project</name>
+	</maintainer>
+	<use>
+		<flag name="bluetooth">Build bindings for the QtBluetooth module</flag>
+		<flag name="dbus">Build bindings for the QtDBus module</flag>
+		<flag name="declarative">Build bindings for the QtQml and QtQuick modules and enable the qmlscene plugin</flag>
+		<flag name="designer">Build bindings for the QtDesigner module and enable the designer plugin</flag>
+		<flag name="gui">Build bindings for the QtGui module</flag>
+		<flag name="help">Build bindings for the QtHelp module</flag>
+		<flag name="location">Build bindings for the QtLocation module</flag>
+		<flag name="multimedia">Build bindings for the QtMultimedia module</flag>
+		<flag name="network">Build bindings for the QtNetwork module</flag>
+		<flag name="opengl">Build bindings for the QtOpenGL module</flag>
+		<flag name="positioning">Build bindings for the QtPositioning module</flag>
+		<flag name="printsupport">Build bindings for the QtPrintSupport module</flag>
+		<flag name="sensors">Build bindings for the QtSensors module</flag>
+		<flag name="serialport">Build bindings for the QtSerialPort module</flag>
+		<flag name="speech">Build bindings for the QtTextToSpeech module</flag>
+		<flag name="sql">Build bindings for the QtSql module</flag>
+		<flag name="svg">Build bindings for the QtSvg module</flag>
+		<flag name="testlib">Build bindings for the QtTest module</flag>
+		<flag name="webchannel">Build bindings for the QtWebChannel module</flag>
+		<flag name="websockets">Build bindings for the QtWebSockets module</flag>
+		<flag name="widgets">Build bindings for the QtWidgets module</flag>
+		<flag name="x11extras">Build bindings for the QtX11Extras module</flag>
+		<flag name="xmlpatterns">Build bindings for the QtXmlPatterns module</flag>
+	</use>
+	<upstream>
+		<maintainer status="active">
+			<email>phil@riverbankcomputing.com</email>
+			<name>Phil Thompson</name>
+		</maintainer>
+		<doc>https://www.riverbankcomputing.com/static/Docs/PyQt5/</doc>
+		<bugs-to>mailto:pyqt@riverbankcomputing.com</bugs-to>
+		<remote-id type="pypi">PyQt5</remote-id>
+	</upstream>
+</pkgmetadata>

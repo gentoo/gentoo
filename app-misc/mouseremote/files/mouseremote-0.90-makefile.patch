@@ -1,0 +1,20 @@
+--- a/MultiMouse/Makefile
++++ b/MultiMouse/Makefile
+@@ -20,14 +20,13 @@
+ 	-DMOUSE_FIFO=\"$(FIFO)\"\
+ 	-DLOCKDIR=\"$(LOCKDIR)\"\
+ 	-DMAX_MICE=$(MICE)
+-CFLAGS=	$(OPTS)\
+-	-O2 # -DDEBUG
+-LDLAGS=	-O2
++
++OUTPUT_OPTION= $(OPTS) -o $@
+ 
+ all:	$(TARGET)
+ 
+ multimoused:	$(OBJS)
+-	$(CC) -o $@ $(OBJS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJS)
+ 
+ multimouse.1 multimoused.8 multimouse:	Makefile
+ 	sed -e 's|%LOCKDIR%|$(LOCKDIR)|' -e 's|%BINDIR%|$(BINDIR)|'\

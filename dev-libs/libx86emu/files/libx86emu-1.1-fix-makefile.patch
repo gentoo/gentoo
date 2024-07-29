@@ -1,0 +1,82 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,15 +1,4 @@
+-ARCH	:= $(shell uname -m)
+-ifneq ($(filter i386 i486 i586 i686, $(ARCH)),)
+-ARCH	:= i386
+-endif
+-
+-CC	= gcc
+-CFLAGS	= -g -O2 -fPIC -fomit-frame-pointer -Wall
+-ifneq ($(filter x86_64, $(ARCH)),)
+-LIBDIR	= /usr/lib64
+-else
+-LIBDIR	= /usr/lib
+-endif
++CFLAGS	+= -fPIC -Wall
+ LIBX86	= libx86emu
+ 
+ VERSION		:= $(shell cat VERSION)
+@@ -24,9 +13,6 @@
+ 
+ .PHONY: all shared install test clean
+ 
+-%.o: %.c
+-	$(CC) -c $(CFLAGS) $<
+-
+ all: shared
+ 
+ shared: $(LIB_NAME)
+@@ -38,13 +24,15 @@
+ 	install -m 644 -D include/x86emu.h $(DESTDIR)/usr/include/x86emu.h
+ 
+ $(LIB_NAME): .depend $(OBJS)
+-	$(CC) -shared -Wl,-soname,$(LIB_SONAME) $(OBJS) -o $(LIB_NAME)
++	$(CC) $(LDFLAGS) -shared -Wl,-soname,$(LIB_SONAME) $(OBJS) -o $(LIB_NAME)
++	ln -snf $(LIB_NAME) $(LIB_SONAME)
++	ln -snf $(LIB_SONAME) $(LIBX86).so
+ 
+-test:
+-	make -C test
++check:
++	$(MAKE) -C test
+ 
+ clean:
+-	make -C test clean
++	$(MAKE) -C test clean
+ 	rm -f *.o *~ include/*~ *.so.* .depend
+ 
+ ifneq "$(MAKECMDGOALS)" "clean"
+--- a/test/Makefile
++++ b/test/Makefile
+@@ -1,9 +1,10 @@
+-CC         = gcc
+-CFLAGS     = -g -Wall -fomit-frame-pointer -O2
++CFLAGS	 += -fPIC -Wall
++CPPFLAGS += -I../include
+ TST_FILES  = $(wildcard *.tst)
+ INIT_FILES = $(addsuffix .init,$(basename $(wildcard *.tst)))
+ RES_FILES  = $(addsuffix .result,$(basename $(wildcard *.tst)))
+ TEST_OPTS  = --verbose --show code,regs,data,acc,io,ints,attr,time
++LDLIBS = -L.. -lx86emu
+ 
+ .PHONY: all test clean
+ .SECONDARY: $(INIT_FILES)
+@@ -12,13 +13,12 @@
+ 
+ all: x86test
+ 	@./prepare_test *.tst
+-	@./x86test $(TEST_OPTS) *.init
++	@LD_LIBRARY_PATH=.. ./x86test $(TEST_OPTS) *.init
+ 
+-x86test: x86test.c
+-	$(CC) $(CFLAGS) $< -lx86emu -o $@
++x86test: x86test.o
+ 
+-%.result: %.init
+-	@./x86test $(TEST_OPTS) $<
++%.result: %.init x86test
++	@LD_LIBRARY_PATH=.. ./x86test $(TEST_OPTS) $<
+ 
+ %.init: %.tst
+ 	@./prepare_test $<

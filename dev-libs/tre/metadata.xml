@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>shell-tools@gentoo.org</email>
+    <name>Gentoo Shell Tools Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">laurikari/tre</remote-id>
+  </upstream>
+  <use>
+    <flag name="agrep">Build agrep tool</flag>
+    <flag name="alloca">Enable if you want TRE to use alloca() instead of malloc() when allocating memory needed for regexec operations</flag>
+    <flag name="approx">Enable the approximate matching functionality</flag>
+  </use>
+</pkgmetadata>

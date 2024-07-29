@@ -1,0 +1,30 @@
+From 4b4d0def00b0a549ea0bf86cfb7452bffc1f9111 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Thu, 14 Mar 2024 22:24:51 -0400
+Subject: [PATCH] fix missing prototype for internal jpeg ABI
+
+---
+ mpeg_encode/jpeg.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/mpeg_encode/jpeg.c b/mpeg_encode/jpeg.c
+index 2dc9438..b07c9ea 100644
+--- a/mpeg_encode/jpeg.c
++++ b/mpeg_encode/jpeg.c
+@@ -83,6 +83,13 @@
+ 
+ #define HEADER_SIZE 607   /*JFIF header size used on output images*/
+ 
++/* This prototype comes from jpegint.h; it is not public, but the code uses it
++ * and libjpeg exports it for internal use. Just keep it building. */
++EXTERN(void) jcopy_sample_rows JPP((JSAMPARRAY input_array, int source_row,
++                                    JSAMPARRAY output_array, int dest_row,
++                                    int num_rows, JDIMENSION num_cols));
++
++
+ /*=======================================================================*
+  *                                                                       *
+  * JMovie2JPEG                                                           *
+-- 
+2.43.2
+

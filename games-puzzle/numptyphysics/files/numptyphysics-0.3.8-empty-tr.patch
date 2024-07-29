@@ -1,0 +1,10 @@
+On unrecognized LC_MESSAGES (e.g. C.utf8) the .empty() check
+fails and loads empty translations leading to constant:
+[ 1536ms] [I18n.cpp:34 WARNING] Untranslated: 'Gameplay paused'
+--- a/src/Os.cpp
++++ b/src/Os.cpp
+@@ -279,3 +279,3 @@
+         auto fn = thp::format("i18n/%s", lang);
+-        if (!Config::readFile(fn).empty()) {
++        if (!access(Config::findFile(fn).c_str(),F_OK)) {
+             Tr::load(fn);

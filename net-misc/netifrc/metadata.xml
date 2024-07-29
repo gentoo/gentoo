@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>netifrc@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		This package contains the Gentoo network interface management
+		scripts, which were separated from OpenRC.
+	</longdescription>
+	<use>
+		<flag name="dhcp">Allow interfaces to configure via DHCP</flag>
+	</use>
+	<upstream>
+		<remote-id type="gentoo">proj/netifrc</remote-id>
+		<remote-id type="github">gentoo/netifrc</remote-id>
+	</upstream>
+</pkgmetadata>

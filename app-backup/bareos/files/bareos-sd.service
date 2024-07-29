@@ -1,0 +1,31 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+#
+# Bareos Storage Daemon
+#
+[Unit]
+Description=Bareos Storage Daemon
+Documentation=man:bareos-sd(8)
+Requires=nss-lookup.target network.target remote-fs.target time-sync.target
+After=nss-lookup.target network.target remote-fs.target time-sync.target
+
+[Service]
+# see bug #631598
+#Type=forking
+Type=simple
+User=root
+Group=bareos
+WorkingDirectory=/var/lib/bareos
+#PIDFile=/run/bareos/bareos-sd.9103.pid
+StandardError=journal
+ExecStartPre=/usr/sbin/bareos-sd -t -f
+#ExecStart=/usr/sbin/bareos-sd
+ExecStart=/usr/sbin/bareos-sd -f
+# enable this for scsicrypto-sd
+# CapabilityBoundingSet=cap_sys_rawio+ep
+SuccessExitStatus=0 15
+#Restart=on-failure
+
+[Install]
+Alias=bareos-storage.service
+WantedBy=multi-user.target

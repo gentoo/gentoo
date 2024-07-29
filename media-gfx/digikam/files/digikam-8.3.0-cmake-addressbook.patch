@@ -1,0 +1,26 @@
+From 82ce7f02d65c43605c28b9ca69f8cbd7e12a5bee Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 26 Mar 2024 13:23:51 +0100
+Subject: [PATCH] addressbook: Fix upstream's AkonadiCore prefix confusion
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ core/utilities/extrasupport/addressbook/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/core/utilities/extrasupport/addressbook/CMakeLists.txt b/core/utilities/extrasupport/addressbook/CMakeLists.txt
+index 5923f1fc34..23f31d01d8 100644
+--- a/core/utilities/extrasupport/addressbook/CMakeLists.txt
++++ b/core/utilities/extrasupport/addressbook/CMakeLists.txt
+@@ -16,7 +16,7 @@ include_directories($<TARGET_PROPERTY:Qt${QT_VERSION_MAJOR}::Widgets,INTERFACE_I
+ 
+ if(KPim${QT_VERSION_MAJOR}AkonadiContact_FOUND)
+     include_directories(
+-        $<TARGET_PROPERTY:KF${QT_VERSION_MAJOR}::AkonadiCore,INTERFACE_INCLUDE_DIRECTORIES>
++        $<TARGET_PROPERTY:KPim${QT_VERSION_MAJOR}::AkonadiCore,INTERFACE_INCLUDE_DIRECTORIES>
+         $<TARGET_PROPERTY:KF${QT_VERSION_MAJOR}::Contacts,INTERFACE_INCLUDE_DIRECTORIES>
+ 
+         $<TARGET_PROPERTY:KF${QT_VERSION_MAJOR}::CoreAddons,INTERFACE_INCLUDE_DIRECTORIES>
+-- 
+2.44.0
+

@@ -1,0 +1,36 @@
+diff -ru a/bdb/Makefile b/bdb/Makefile
+--- a/bdb/Makefile	2024-06-05 17:06:40.098823516 -0000
++++ b/bdb/Makefile	2024-06-05 17:06:45.520796235 -0000
+@@ -23,9 +23,14 @@
+ #*---------------------------------------------------------------------*/
+ #*    Booting bdb on a bare system                                     */
+ #*---------------------------------------------------------------------*/
+-boot:
+-	@ (cd blib; $(MAKE) all)
+-	@ (cd bdb; $(MAKE) MODE=final mode)
++boot: blip-boot bdb-boot
++
++blip-boot:
++	@ $(MAKE) -C bdb MODE=final mode
++
++bdb-boot: blip-boot
++	@ $(MAKE) -C blib all
++
+ 
+ #*---------------------------------------------------------------------*/
+ #*    Populating bdb                                                   */
+diff -ru a/bdb/blib/Makefile b/bdb/blib/Makefile
+--- a/bdb/blib/Makefile	2024-06-05 17:06:40.100823506 -0000
++++ b/bdb/blib/Makefile	2024-06-05 17:07:40.738518401 -0000
+@@ -80,9 +80,11 @@
+ #*    The implicit rules                                               */
+ #*---------------------------------------------------------------------*/
+ objs/%.o: %.scm
++	mkdir -p $(CLASS_DIR)
+ 	$(BIGLOO) -no-hello $(BDBFLAGS) -copt $(CPICFLAGS) $< -o $@ -c
+ 
+ objs/%.o: %.c
++	mkdir -p $(CLASS_DIR)
+ 	$(CC) $(CFLAGS) $(CPICFLAGS) -I. -I $(LIB) $< -o $@ -c
+ 
+ $(CLASS_DIR)/%.class: %.scm

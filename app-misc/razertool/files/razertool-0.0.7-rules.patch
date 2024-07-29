@@ -1,0 +1,8 @@
+diff -Naur razertool-0.0.7.orig/razertool.rules.example razertool-0.0.7/razertool.rules.example
+--- razertool-0.0.7.orig/razertool.rules.example	2007-02-15 06:09:41.000000000 +0100
++++ razertool-0.0.7/razertool.rules.example	2022-07-14 13:23:13.519271582 +0200
+@@ -1,2 +1,2 @@
+-ACTION=="add", BUS=="usb", SYSFS{idVendor}=="1532", SYSFS{idProduct}=="0101", MODE="0660", GROUP="plugdev"
+-ACTION=="add", BUS=="usb", SYSFS{idVendor}=="1532", SYSFS{idProduct}=="0009", MODE="0660", GROUP="plugdev"
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="1532", ATTRS{idProduct}=="0101", MODE="0660", GROUP="usb"
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="1532", ATTRS{idProduct}=="0009", MODE="0660", GROUP="usb"

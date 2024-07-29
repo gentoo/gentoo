@@ -1,0 +1,51 @@
+From df09b472419466987f2f30176dd00937e640aa9a Mon Sep 17 00:00:00 2001
+From: Natanael Copa <ncopa@alpinelinux.org>
+Date: Fri, 28 Jan 2022 12:29:00 +0100
+Subject: [PATCH] efisecdb: do not free optarg
+
+The *outfile passed to parse_input_files can only be either set to
+optarg or be NULL. optarg should not be free'd and NULL does not need
+to.
+
+Since we no longer use on_exit to unlink outfile we also don't need to
+set *outfile to NULL.
+
+Fixes commit d91787035bc1 (efisecdb: add efisecdb)
+
+Signed-off-by: Natanael Copa <ncopa@alpinelinux.org>
+---
+ src/efisecdb.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/src/efisecdb.c b/src/efisecdb.c
+index 6bd5ad90..70fa1847 100644
+--- a/src/efisecdb.c
++++ b/src/efisecdb.c
+@@ -255,8 +255,7 @@ list_guids(void)
+  * failure.
+  */
+ static int
+-parse_input_files(list_t *infiles, char **outfile, efi_secdb_t **secdb,
+-		  bool dump)
++parse_input_files(list_t *infiles, efi_secdb_t **secdb, bool dump)
+ {
+ 	int status = 0;
+ 	list_t *pos, *tmp;
+@@ -297,8 +296,6 @@ parse_input_files(list_t *infiles, char **outfile, efi_secdb_t **secdb,
+ 				if (!dump)
+ 					exit(1);
+ 				status = 1;
+-				xfree(*outfile);
+-				*outfile = NULL;
+ 				break;
+ 			}
+ 		}
+@@ -528,7 +525,7 @@ main(int argc, char *argv[])
+ 	efi_secdb_set_bool(secdb, EFI_SECDB_SORT_DATA, do_sort_data);
+ 	efi_secdb_set_bool(secdb, EFI_SECDB_SORT_DESCENDING, sort_descending);
+ 
+-	status = parse_input_files(&infiles, &outfile, &secdb, dump);
++	status = parse_input_files(&infiles, &secdb, dump);
+ 	if (status == 0) {
+ 		for_each_action_safe(pos, tmp, &actions) {
+ 			action_t *action = list_entry(pos, action_t, list);

@@ -1,0 +1,14 @@
+[Unit]
+Description=Store and restore nftables firewall rules
+ConditionPathExists=/var/lib/nftables/rules-save
+Before=network-pre.target
+Wants=network-pre.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/libexec/nftables/nftables.sh load /var/lib/nftables/rules-save
+ExecStop=/usr/libexec/nftables/nftables.sh store /var/lib/nftables/rules-save
+
+[Install]
+WantedBy=basic.target

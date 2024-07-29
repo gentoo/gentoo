@@ -1,0 +1,52 @@
+To complete installation you need to perform the following steps:
+
+    1) Configure dokuwiki base options
+    2) Check the config
+    3) Notes
+
+1 - Configure dokuwiki base options
+
+    The first thing we need to do is set base options of dokuwiki:
+
+    $ cd ${MY_INSTALLDIR}/conf
+
+     Edit dokuwiki/conf/dokuwiki.php (see config [1]) if you want to change
+     anything within it. Better yet, create ${MY_INSTALLDIR}/conf/local.php containing
+     those lines from dokuwiki.php which you want to change. This way, your
+     changes are preserved when overwriting the dokuwiki.php with a new
+     release.
+    
+    $ cp local.php.dist local.php
+
+2 - Check the config
+
+    Finally, test if everything is set up correctly. Use the check option in a
+    URL and pull it up into a browser:
+
+    http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/doku.php?do=check
+
+3) - Notes
+    
+    Please see the website [2] for more information on setting up dokuwiki.
+
+    Dokuwiki's default config leaves editing wide open, so please read the
+    acl [3] and user [4] documentation before proceding farther. If you use
+    the plaintext authentication, you may need to do the following:
+
+    $ cd conf/
+    $ cp users.auth.php.dist users.auth.php
+    $ cp acl.auth.php.dist acl.auth.php
+    $ chown apache:apache users.auth.php acl.auth.php
+
+    This enables apache to write to the files for editing the acl/user
+    creation capability.
+
+    If you're updating from an older version of Dokuwiki or want to learn about
+    other authentication methods, check the documentation about authentication
+    backends and plugins[5].
+
+[1] https://www.dokuwiki.org/config
+[2] https://www.dokuwiki.org/dokuwiki
+[3] https://www.dokuwiki.org/acl
+[4] https://www.dokuwiki.org/plugin:authplain
+[5] https://www.dokuwiki.org/auth

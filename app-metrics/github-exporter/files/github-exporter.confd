@@ -1,0 +1,14 @@
+# settings for github-exporter
+
+# I will list the required variables here, but there are several more.
+# Please see the README for all of them.
+
+# LISTEN_PORT specifies the port the exporter will use. Below is the default.
+# LISTEN_PORT=9171
+
+# ORGS should contain a list of github organizations you wish to monitor.
+# ORGS="org1,org2"
+
+# REPOS should contain a list of github repos you want tomonitor.
+# If neither ORGS nor REPOS is set, the exporter will refuse to run.
+#  REPOS="user1/repo1,user2/repo2"

@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/855575
+--- a/havp/logfile.cpp
++++ b/havp/logfile.cpp
+@@ -30,6 +30,7 @@
+ #include <map>
+ #include <cstdlib>
+ #include <cstring>
++#include <ctime>
+ 
+ #define LOGSTRINGLENGTH 1000
+ 

@@ -1,0 +1,59 @@
+https://git.gnupg.org/cgi-bin/gitweb.cgi?p=libgcrypt.git;a=commit;h=2486d9b5ae015c1786cb84466a751da4bc0d7122
+
+From 2486d9b5ae015c1786cb84466a751da4bc0d7122 Mon Sep 17 00:00:00 2001
+From: Jussi Kivilinna <jussi.kivilinna@iki.fi>
+Date: Thu, 20 Jun 2024 20:10:09 +0300
+Subject: [PATCH] Disable SHA3 s390x acceleration for CSHAKE
+
+* cipher/keccak.c (keccak_final_s390x): Add assert check for
+expected SHAKE suffix.
+(_gcry_cshake_customize, cshake_hash_buffers): Disable s390x
+acceleration when selecting CSHAKE suffix.
+--
+
+Signed-off-by: Jussi Kivilinna <jussi.kivilinna@iki.fi>
+--- a/cipher/keccak.c
++++ b/cipher/keccak.c
+@@ -745,6 +745,8 @@ keccak_final_s390x (void *context)
+     }
+   else
+     {
++      gcry_assert(ctx->suffix == SHAKE_DELIMITED_SUFFIX);
++
+       klmd_shake_execute (ctx->kimd_func, &ctx->state, NULL, 0, ctx->buf,
+ 			  ctx->count);
+       ctx->count = 0;
+@@ -1497,9 +1499,14 @@ _gcry_cshake_customize (void *context, struct gcry_cshake_customization *p)
+     /* No customization */
+     return 0;
+ 
++  ctx->suffix = CSHAKE_DELIMITED_SUFFIX;
++#ifdef USE_S390X_CRYPTO
++  /* CSHAKE suffix is not supported by s390x/kimd. */
++  ctx->kimd_func = 0;
++#endif
++
+   len_written = cshake_input_n (ctx, p->n, p->n_len);
+   cshake_input_s (ctx, p->s, p->s_len, len_written);
+-  ctx->suffix = CSHAKE_DELIMITED_SUFFIX;
+   return 0;
+ }
+ 
+@@ -1536,9 +1543,14 @@ cshake_hash_buffers (const gcry_md_spec_t *spec, void *outbuf, size_t nbytes,
+           size_t s_len = iov[1].len;
+           size_t len;
+ 
++          ctx.suffix = CSHAKE_DELIMITED_SUFFIX;
++#ifdef USE_S390X_CRYPTO
++          /* CSHAKE suffix is not supported by s390x/kimd. */
++          ctx.kimd_func = 0;
++#endif
++
+           len = cshake_input_n (&ctx, n, n_len);
+           cshake_input_s (&ctx, s, s_len, len);
+-          ctx.suffix = CSHAKE_DELIMITED_SUFFIX;
+         }
+       iovcnt -= 2;
+       iov += 2;
+-- 
+2.30.2

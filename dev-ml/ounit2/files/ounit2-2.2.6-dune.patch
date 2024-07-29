@@ -1,0 +1,19 @@
+--- a/src/lib/ounit2/dune
++++ b/src/lib/ounit2/dune
+@@ -2,7 +2,7 @@
+   (name oUnit)
+   (public_name ounit2)
+   (wrapped false)
+-  (libraries unix seq ounit2.advanced))
++  (libraries unix ounit2.advanced))
+ 
+ (documentation
+   (package ounit2)
+--- a/src/lib/ounit2/advanced/dune
++++ b/src/lib/ounit2/advanced/dune
+@@ -7,4 +7,4 @@
+   (name oUnitAdvanced)
+   (public_name ounit2.advanced)
+   (wrapped false)
+-  (libraries unix bytes seq stdlib-shims))
++  (libraries unix bytes stdlib-shims))

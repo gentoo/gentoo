@@ -1,0 +1,46 @@
+From 7f448b41589fccd3ac883c6fb3865f8dbedcb14d Mon Sep 17 00:00:00 2001
+From: hololeap <hololeap@users.noreply.github.com>
+Date: Sun, 30 Oct 2022 12:45:29 -0600
+Bug: https://github.com/UnkindPartition/temporary/pull/15
+Subject: [PATCH] Add smp flag
+
+This flag will toggle the use of some `ghc-options` in the  test suite.
+It is set to `default: True`.
+
+This is needed for tests to run on some GHC builds which do not support
+a threaded runtime.
+
+Reported-by: matoro <https://github.com/matoro>
+Signed-off-by: hololeap <hololeap@users.noreply.github.com>
+---
+ temporary.cabal | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/temporary.cabal b/temporary.cabal
+index 67163d1..ca54604 100644
+--- a/temporary.cabal
++++ b/temporary.cabal
+@@ -15,6 +15,11 @@ source-repository head
+   type:     git
+   location: git://github.com/feuerbach/temporary.git
+ 
++flag smp
++  description: Use flags that depend on GHC supporting a multicore runtime (tests only)
++  manual: True
++  default: True
++
+ Library
+     default-language:
+       Haskell2010
+@@ -37,7 +42,10 @@ test-suite test
+     tests
+   main-is:
+     test.hs
+-  ghc-options: -threaded -with-rtsopts=-N2
++  if flag(smp)
++    ghc-options: -threaded -with-rtsopts=-N2
++  else
++    ghc-options: -threaded
+   build-depends:
+       base >= 4.3 && < 5
+     , directory

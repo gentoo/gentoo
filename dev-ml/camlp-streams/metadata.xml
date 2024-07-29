@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>ml@gentoo.org</email>
+		<name>ML</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">ocaml/camlp-streams</remote-id>
+	</upstream>
+</pkgmetadata>

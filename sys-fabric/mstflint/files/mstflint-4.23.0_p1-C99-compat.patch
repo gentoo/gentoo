@@ -1,0 +1,55 @@
+From 3d033115fd0937b675b75f5d1fc12dc015efcf07 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Sun, 23 Apr 2023 18:30:33 +0200
+Subject: [PATCH] Add additional #include directives for C99 compatibility
+
+https://github.com/Mellanox/mstflint/pull/774
+Avoid implicit declarations of cibfw_register_mfai_pack,
+cibfw_register_mfai_unpack, cibfw_register_mfai_size by including
+<tools_layouts/cibfw_layouts.h>, and of getenv by including
+<stdlib.h>.
+---
+ mflash/mflash_gw.c      | 2 ++
+ mflash/mflash_new_gw.c  | 3 +++
+ reg_access/reg_access.c | 1 +
+ 3 files changed, 6 insertions(+)
+
+diff --git a/mflash/mflash_gw.c b/mflash/mflash_gw.c
+index f296700d..55e5cb9d 100644
+--- a/mflash/mflash_gw.c
++++ b/mflash/mflash_gw.c
+@@ -43,6 +43,8 @@
+ #include "mflash_access_layer.h"
+ #include "flash_int_defs.h"
+ 
++#include <stdlib.h>
++
+ #ifdef __WIN__
+ //
+ // Windows (Under DDK)
+diff --git a/mflash/mflash_new_gw.c b/mflash/mflash_new_gw.c
+index 3bd044ea..4d0bb21d 100644
+--- a/mflash/mflash_new_gw.c
++++ b/mflash/mflash_new_gw.c
+@@ -42,6 +42,9 @@
+ #include "mflash_dev_capability.h"
+ #include "mflash_access_layer.h"
+ #include "flash_int_defs.h"
++
++#include <stdlib.h>
++
+ #define DPRINTF(args)                            \
+     do                                           \
+     {                                            \
+diff --git a/reg_access/reg_access.c b/reg_access/reg_access.c
+index 622b1a15..736e67b3 100644
+--- a/reg_access/reg_access.c
++++ b/reg_access/reg_access.c
+@@ -37,6 +37,7 @@
+ #include <tools_layouts/reg_access_hca_layouts.h>
+ #include <tools_layouts/reg_access_switch_layouts.h>
+ #include <tools_layouts/tools_open_layouts.h>
++#include <tools_layouts/cibfw_layouts.h>
+ 
+ #define REG_ID_PCNR              0x5050
+ #define REG_ID_PAOS              0x5006

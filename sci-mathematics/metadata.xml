@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The sci-mathematics category contains mathematical software.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sci-mathematics enthält mathematische Software.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría sci-mathemathics contiene programas relacionados con las
+		matemáticas.
+	</longdescription>
+	<longdescription lang="ja">
+		sci-mathematicsカテゴリーには数学のソフトウェアが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De sci-mathematics categorie bevat wiskundige software.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm sci-mathematics chứa các phần mềm toán học.
+	</longdescription>
+	<longdescription lang="sk">
+		Kategória sci-mathematics obsahuje matematické programy.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria sci-mathemathics contiene programmi matematici.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria sci-mathematics contém programas matemáticos.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria sci-mathematics zawiera programy naukowe związane z
+		matematyką.
+	</longdescription>
+</catmetadata>

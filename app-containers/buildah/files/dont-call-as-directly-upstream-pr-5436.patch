@@ -1,0 +1,32 @@
+From c1b43b57bb20f8796002e1d6f93bbdbc02e28f20 Mon Sep 17 00:00:00 2001
+From: Rahil Bhimjiani <me@rahil.rocks>
+Date: Wed, 27 Mar 2024 14:27:09 +0530
+Subject: [PATCH] Makefile - instead of calling `as` directly, use it from env
+ var
+
+Signed-off-by: Rahil Bhimjiani <me@rahil.rocks>
+---
+ Makefile | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index f1ab6b8bf4..7d27a41530 100644
+--- a/Makefile
++++ b/Makefile
+@@ -16,6 +16,7 @@ BUILDFLAGS := -tags "$(BUILDTAGS)"
+ BUILDAH := buildah
+ SELINUXOPT ?= $(shell test -x /usr/sbin/selinuxenabled && selinuxenabled && echo -Z)
+ SELINUXTYPE=container_runtime_exec_t
++AS ?= as
+ 
+ GO := go
+ GO_LDFLAGS := $(shell if $(GO) version|grep -q gccgo; then echo "-gccgoflags"; else echo "-ldflags"; fi)
+@@ -79,7 +80,7 @@ bin/buildah: $(SOURCES) cmd/buildah/*.go internal/mkcw/embed/entrypoint_amd64.gz
+ 	$(GO_BUILD) $(BUILDAH_LDFLAGS) $(GO_GCFLAGS) "$(GOGCFLAGS)" -o $@ $(BUILDFLAGS) ./cmd/buildah
+ 	test -z "${SELINUXOPT}" || chcon --verbose -t $(SELINUXTYPE) $@
+ 
+-ifneq ($(shell as --version | grep x86_64),)
++ifneq ($(shell $(AS) --version | grep x86_64),)
+ internal/mkcw/embed/entrypoint_amd64.gz: internal/mkcw/embed/entrypoint_amd64
+ 	gzip -k9nf $^
+ 

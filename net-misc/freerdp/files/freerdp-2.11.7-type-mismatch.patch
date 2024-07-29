@@ -1,0 +1,23 @@
+From d2b6771c748e54e659d5f1243a92e499c3beaa36 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Wed, 22 May 2024 17:04:43 -0400
+Subject: [PATCH] X11: fix pointer/integer type mismatch
+
+Fixed on master in 2da280b8a1748052b70b3f5a1ef0d8e932c33adc.
+---
+ client/X11/xf_graphics.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/client/X11/xf_graphics.c b/client/X11/xf_graphics.c
+index 5aa1fd48b5a3..fe81e0ed91cb 100644
+--- a/client/X11/xf_graphics.c
++++ b/client/X11/xf_graphics.c
+@@ -438,7 +438,7 @@ static BOOL xf_Pointer_New(rdpContext* context, rdpPointer* pointer)
+ 
+ #endif
+ fail:
+-	WLog_DBG(TAG, "%s: %ld", __func__, rc ? pointer : -1);
++	WLog_DBG(TAG, "%s: %p", __func__, rc ? pointer : NULL);
+ 	return rc;
+ }
+ 

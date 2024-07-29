@@ -1,0 +1,11 @@
+[Unit]
+Description=Munin FastCGI HTML
+Requires=munin-html.socket
+
+[Service]
+User=munin
+Group=munin
+ExecStart=/usr/libexec/munin/munin-html
+StandardInput=socket
+StandardOutput=inherit
+StandardError=journal

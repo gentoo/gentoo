@@ -1,0 +1,26 @@
+From d15abeb19d1692698e0ec8a9f4a764a210e57a2b Mon Sep 17 00:00:00 2001
+From: Jakub Hrozek <jhrozek@redhat.com>
+Date: Tue, 3 Dec 2013 10:50:29 +0100
+Subject: [PATCH] Fix an error message
+
+This patch fixes https://bugzilla.redhat.com/show_bug.cgi?id=1037073
+---
+ src/handle_event.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/handle_event.c b/src/handle_event.c
+index 22f35f10ea3a6083c2ef933f794b529b8879a1ed..cac004b76917c192ad9bf8801062d701e4dc18c6 100644
+--- a/src/handle_event.c
++++ b/src/handle_event.c
+@@ -313,7 +313,7 @@ void handle_event(struct inotify_event* event, int writefd)
+         if (sysret == 127)
+         {
+             temp = malloc(27 + strlen(handler->value) + 20 + 1);
+-            sprintf("Could not execute handler \"%s\", trying next one.\n", handler->value);
++            sprintf(temp, "Could not execute handler \"%s\", trying next one.\n", handler->value);
+             write_out(writefd, temp);
+ 
+             free(temp);
+-- 
+1.8.4.2
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>proaudio@gentoo.org</email>
+		<name>Gentoo ProAudio Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Lilv is a library to make the use of LV2 plugins as simple as possible for applications.
+		Lilv is the successor to SLV2, rewritten to be significantly faster and have minimal dependencies.
+	</longdescription>
+	<use>
+		<flag name="tools">Build command line utilities</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">lv2/lilv</remote-id>
+		<remote-id type="gitlab">lv2/lilv</remote-id>
+	</upstream>
+</pkgmetadata>

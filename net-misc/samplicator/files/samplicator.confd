@@ -1,0 +1,8 @@
+# Config file for /etc/init.d/samplicator
+
+# Various options.
+# run `samplicator -h` for valid cmdline options
+OPTS="-f -S -p 2000"
+
+# Receiver config file
+#CONFIG="-c /etc/samplicator/receiver.conf"

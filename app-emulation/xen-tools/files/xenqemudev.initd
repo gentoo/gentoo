@@ -1,0 +1,84 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need xencommons xenstored xenconsoled
+}
+
+is_privileged_domain() {
+	grep -qsE '^control_d$' /proc/xen/capabilities
+	return $?
+}
+
+xen_setvars() {
+	. /etc/xen/scripts/hotplugpath.sh
+
+	XENQEMUDEV_PIDFILE=/run/xenqemudev.pid
+
+	# xen-4.5 change the path
+	XEN_QEMU="${LIBEXEC}/qemu-system-i386"
+	[ -e ${XEN_QEMU} ] && return
+	XEN_QEMU="${LIBEXEC_BIN}/qemu-system-i386"
+}
+
+xen_qemu_start() {
+	if [ -z "${XENQEMUDEV_FILE_BACKEND_ENABLE}" ]; then
+		ewarn " QEMU disk backend not enabled"
+		ewarn " enable XENQEMUDEV_FILE_BACKEND_ENABLE in /etc/conf.d/xenqemudev"
+		return 1
+	fi
+
+	xen_setvars
+
+	if [ ! -c /dev/xen/gntdev ]; then
+		einfo " Xen gntdev driver not loaded"
+		return 1
+	fi
+
+	if [ -e "${XEN_QEMU}" ]; then
+		einfo " Starting QEMU as disk backend for dom0"
+
+		XENQEMUDEV_DEFAULT_OPTS="-xen-domid 0 -xen-attach -name dom0 \
+			-nographic -M xenpv -daemonize \
+			-monitor /dev/null -serial /dev/null -parallel /dev/null"
+
+		XENQEMUDEV_OPTS=${XENQEMUDEV_OPTS:-${XENQEMUDEV_DEFAULT_OPTS}}
+
+		start-stop-daemon --start --exec ${XEN_QEMU} \
+			--pidfile ${XENQEMUDEV_PIDFILE} \
+			-- -pidfile ${XENQEMUDEV_PIDFILE} \
+			${XENQEMUDEV_OPTS}
+		return $?
+	fi
+}
+
+start() {
+	ebegin "Starting xenqemudev daemon"
+
+	# not running in Xen dom0 or domU
+	if [ ! -d /proc/xen ]; then
+		eend 1 "Not running in Xen mode"
+		return 1
+	fi
+
+	if ! is_privileged_domain; then
+		eend 1 "Not running on a privileged domain. xenqemudev not started"
+		return 1
+	fi
+
+	xen_qemu_start
+
+	eend $? "Failed to start xenqemudev"
+}
+
+stop () {
+	ebegin "Stopping xenqemudev"
+
+	xen_setvars
+
+	start-stop-daemon --stop --exec ${XEN_QEMU} \
+		--pidfile ${XENQEMUDEV_PIDFILE}
+
+	eend $? "Stopping xenqemudev, as it cannot be restarted."
+}

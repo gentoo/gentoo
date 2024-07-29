@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2006 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting argus"
+	start-stop-daemon --start --quiet --exec /usr/sbin/argus -- -d
+	eend $? 
+}
+
+stop() {
+	ebegin "Stopping argus"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/argus
+	eend $?
+}

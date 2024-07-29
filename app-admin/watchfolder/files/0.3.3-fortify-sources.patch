@@ -1,0 +1,11 @@
+--- a/watchd.c
++++ b/watchd.c
+@@ -671,7 +671,7 @@
+    {
+     if (folder->flags&FL_LOG_FILE)
+     {
+-     log=open(curfolder->logfile, O_CREAT | O_WRONLY | O_APPEND );
++     log=open(curfolder->logfile, O_CREAT | O_WRONLY | O_APPEND, S_IRUSR | S_IWUSR );
+      if (log>0)
+       {
+        lseek(fd, SEEK_SET, 0); // Rewind temp log file..

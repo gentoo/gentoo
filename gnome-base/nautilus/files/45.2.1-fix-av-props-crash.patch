@@ -1,0 +1,38 @@
+From 6836526d6c95107f0bcdcf628ab2dfed394541a5 Mon Sep 17 00:00:00 2001
+From: Peter Eisenmann <p3732@getgoogleoff.me>
+Date: Sat, 9 Dec 2023 14:40:52 +0100
+Subject: [PATCH] properties-window: fix extension callback signature
+
+This was added in [1] with an incorrect signature.
+
+Relates to #3160
+
+[1] bc4dfddd80544092483fb058c946716ea4fc47f1
+
+
+(cherry picked from commit 8d51206503304ff62ca5eeba30ef3b29cdc50820)
+---
+ src/nautilus-properties-window.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/nautilus-properties-window.c b/src/nautilus-properties-window.c
+index 14c8f74213..08bf91fcb7 100644
+--- a/src/nautilus-properties-window.c
++++ b/src/nautilus-properties-window.c
+@@ -925,10 +925,10 @@ create_extension_group_row (NautilusPropertiesItem   *item,
+ }
+ 
+ static void
+-navigate_extension_model_page (AdwPreferencesRow        *row,
+-                               GParamSpec               *params,
+-                               NautilusPropertiesWindow *self)
++navigate_extension_model_page (AdwPreferencesRow *row,
++                               gpointer           user_data)
+ {
++    NautilusPropertiesWindow *self = NAUTILUS_PROPERTIES_WINDOW (user_data);
+     GListModel *list_model = g_object_get_data (G_OBJECT (row), "nautilus-extension-properties-model");
+     AdwNavigationPage *page;
+ 
+-- 
+GitLab
+

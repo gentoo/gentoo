@@ -1,0 +1,14 @@
+[Unit]
+Description=FHEM Home Automation
+After=network-online.target
+
+[Service]
+Type=forking
+User=fhem
+Group=fhem
+WorkingDirectory=/opt/fhem
+ExecStart=/opt/fhem/fhem.pl /opt/fhem/fhem.cfg
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

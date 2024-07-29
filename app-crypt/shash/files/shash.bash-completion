@@ -1,0 +1,38 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+#
+# shash(1) completion.
+
+_shash() {
+	local cur prev
+
+	COMPREPLY=()
+	cur=${COMP_WORDS[COMP_CWORD]}
+	prev=${COMP_WORDS[COMP_CWORD-1]}
+
+	case "${prev}" in
+	-c|--config)
+		_filedir
+		return 0 ;;
+	-o|--keymode)
+		COMPREPLY=( $( compgen -W "$( shash --listkeygen | tail -n +2 )" \
+			-- ${cur} ) )
+		return ;;
+	-a|--algorithm)
+		COMPREPLY=( $( compgen -W "$( shash --list )" \
+			-- ${cur} ) )
+		return ;;
+	*)
+		;;
+	esac
+	
+	COMPREPLY=( $( compgen -W '-V -q -m -d -c -b -t -o -i -a -l -k -h -v \
+		-L \
+		--verbose --quiet --nosalt --time --hmac --doublecheck \
+		--check --binary --text --keymode --config --algorithm \
+		--list --key --listkeygen --help --version --license' \
+		-- ${cur} ) )
+	_filedir
+	return 0
+}
+complete -F _shash ${filenames} shash

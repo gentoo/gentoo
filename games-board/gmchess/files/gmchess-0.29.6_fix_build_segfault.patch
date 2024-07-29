@@ -1,0 +1,102 @@
+diff --git a/src/Board.cc b/src/Board.cc
+index 4395a5c..11c4f31 100644
+--- gmchess-0.29.6-r3/src/Board.cc
++++ gmchess-0.29.6-r3/src/Board.cc
+@@ -297,12 +297,13 @@ void Board::on_map()
+ 
+ bool Board::on_configure_event(GdkEventConfigure* ev)
+ {
+-	//if(ui_pixmap)
+-	//	return true;
+ 	ui_pixmap = Gdk::Pixmap::create(this->get_window(),get_width(),get_height());
+ 
+-	redraw();
+-
++	if(ui_pixmap) {
++		redraw();
++		return true;
++	}
++	return false;
+ }
+ bool Board::on_expose_event(GdkEventExpose* ev)
+ {
+@@ -1146,7 +1147,7 @@ bool Board::robot_log(const Glib::IOCondition& condition)
+ 
+ 	if (buf_len > 0) {
+ 		*p = 0;
+-		printf(buf);
++		printf("%s",buf);
+ 		std::string str_buf(buf);
+ 		parent.show_textview_engine_log(str_buf);
+ 
+diff --git a/src/ConfWindow.cc b/src/ConfWindow.cc
+index 1ff03c8..4aa61f2 100644
+--- gmchess-0.29.6-r3/src/ConfWindow.cc
++++ gmchess-0.29.6-r3/src/ConfWindow.cc
+@@ -117,7 +117,7 @@ void ConfWindow::on_button_color_set()
+ bool ConfWindow::on_delete_event(GdkEventAny*)
+ {
+ 	on_button_cancel();
+-
++	return(true);
+ }
+ void ConfWindow::write_to_GMConf()
+ {
+diff --git a/src/Engine.cc b/src/Engine.cc
+index d316c0e..050b01c 100644
+--- gmchess-0.29.6-r3/src/Engine.cc
++++ gmchess-0.29.6-r3/src/Engine.cc
+@@ -509,7 +509,7 @@ bool Engine::mate()
+ 				case RED_KNIGHT:
+ 				case BLACK_KNIGHT:
+ 					for(int k=0;k<8;k++){
+-						dst=src+ KingMoveTab[k];
++						dst=src+ KnightMoveTab[k];
+ 						if(in_board(dst)){
+ 							int mv = get_move(src,dst);
+ 							if(make_move(mv)){
+@@ -2098,7 +2098,7 @@ uint32_t Engine::hanzi_to_iccs(uint32_t f_hanzi)
+ 							n++;
+ 						}
+ 					}
+-					DLOG(" n=%d\n");
++					DLOG(" n=%d\n", n);
+ 					/** 为纵线上的棋子排序*/
+ 					for(int k=start;k<n-1;k++)
+ 						for(int j=n-2;j>=k;j--){
+diff --git a/src/MainWindow.cc b/src/MainWindow.cc
+index 528680e..cbd5ff1 100644
+--- gmchess-0.29.6-r3/src/MainWindow.cc
++++ gmchess-0.29.6-r3/src/MainWindow.cc
+@@ -1176,6 +1176,7 @@ bool MainWindow::on_end_game(OVERSTATUS _over)
+ 			auto_save_chess_file();
+ 		board->free_game(false);
+ 		set_status();
++	return(true);
+ }
+ 
+ void MainWindow::set_red_war_time(const Glib::ustring& f_time,const Glib::ustring& c_time)
+diff --git a/src/Sound.cc b/src/Sound.cc
+index 517d126..5efd736 100644
+--- gmchess-0.29.6-r3/src/Sound.cc
++++ gmchess-0.29.6-r3/src/Sound.cc
+@@ -78,7 +78,7 @@ void CSound::play_file(const char* filename)
+ {
+ 	gchar* argv[3];
+ #ifdef __linux__
+-	argv[0] = "aplay";
++	argv[0] = (gchar *)"aplay";
+ #elif __APPLE__
+ 	argv[0] = "afplay";
+ #endif
+--- gmchess-0.29.6/src/engine/cchess.cpp
++++ gmchess-0.29.6/src/engine/cchess.cpp
+@@ -690,7 +690,7 @@
+     }
+     lpSrc ++;
+   };
+-  while(lpSrc != '\0' && lpDst < lpDstLimit) {
++  while(lpSrc != NULL && lpDst < lpDstLimit) {
+     *lpDst = *lpSrc;
+     lpSrc ++;
+     lpDst ++;

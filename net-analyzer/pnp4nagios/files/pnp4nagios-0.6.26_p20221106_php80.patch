@@ -1,0 +1,42 @@
+diff --git a/lib/kohana/system/core/utf8.php b/lib/kohana/system/core/utf8.php
+index 9f20f42..b349c68 100644
+--- a/lib/kohana/system/core/utf8.php
++++ b/lib/kohana/system/core/utf8.php
+@@ -49,17 +49,6 @@ if ( ! extension_loaded('iconv'))
+ 	);
+ }
+ 
+-if (extension_loaded('mbstring') AND (ini_get('mbstring.func_overload') & MB_OVERLOAD_STRING))
+-{
+-	trigger_error
+-	(
+-		'The <a href="http://php.net/mbstring">mbstring</a> extension is overloading PHP\'s native string functions. '.
+-		'Disable this by setting mbstring.func_overload to 0, 1, 4 or 5 in php.ini or a .htaccess file.'.
+-		'This application cannot be run without UTF-8 support.',
+-		E_USER_ERROR
+-	);
+-}
+-
+ // Check PCRE support for Unicode properties such as \p and \X.
+ $ER = error_reporting(0);
+ define('PCRE_UNICODE_PROPERTIES', (bool) preg_match('/^\pL$/u', 'ñ'));
+@@ -740,4 +729,4 @@ final class utf8 {
+ 		return _from_unicode($arr);
+ 	}
+ 
+-} // End utf8
+\ No newline at end of file
++} // End utf8
+diff --git a/share/pnp/application/models/data.php b/share/pnp/application/models/data.php
+index 576c8ec..20cdade 100644
+--- a/share/pnp/application/models/data.php
++++ b/share/pnp/application/models/data.php
+@@ -266,7 +266,7 @@ class Data_Model extends System_Model
+         $xml         = array();
+         if (file_exists($xmlfile)) {
+             libxml_use_internal_errors(TRUE);
+-            libxml_clear_errors(TRUE);
++            libxml_clear_errors();
+             if(! $xml = simplexml_load_file($xmlfile) ){;
+                 if( $throw_exception == TRUE ){
+                     $errors = '<br>';

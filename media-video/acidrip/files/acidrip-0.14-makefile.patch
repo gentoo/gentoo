@@ -1,0 +1,50 @@
+--- acidrip-0.14/Makefile.PL.orig	2014-08-22 09:38:46.179128473 -0600
++++ acidrip-0.14/Makefile.PL	2014-08-22 09:40:33.045103299 -0600
+@@ -36,47 +36,7 @@
+     $_;
+ }
+ 
+-print "\nRunning additional test to be sure acidrip will work\n";
+-
+-print "test for lsdvd: "; 
+-my $lsdvd = `lsdvd -V 2>&1`;
+-if ( $lsdvd !~ /0.(\d+)\s/ ) {
+-die "Not Found!\n\n***************\n" . 
+-  "AcidRip needs my little app \"lsdvd\" in order to see what is on your dvd\'s\n" .
+-  "Download it and install it (and libdvdread) before trying to use AcidRip.\n" .
+-  "If it\'s simply not on your path then set the full path inside AcidRip.\n" .
+-  "***************\n\n"
+-}
+-if ( $1 < 9 ) {
+-die "Too old!\n\n***************\n" . 
+-  "AcidRip needs at least version 0.9 of lsdvd, but version 0.$1 was found\n" .
+-  "Download it and install it (and libdvdread) before trying to use AcidRip.\n" .
+-  "***************\n\n"
+-}
+-print "found\n";
+-
+-print "test for MPlayer: "; die "Not Found!\n\n***************\n" .
+-  "AcidRip is based around the MPlayer video player. it has not been found on\n" .
+-  "your current path. Install it from http://mplayerhq/hu see INSTALL.html or\n" .
+-  "INSTALL for installation instructions.\n" .
+-  "***************\n\n" if ( system "mplayer 2&>1 > /dev/null" ); print "found\n";
+-
+-print "test for MEncoder: "; die "Not Found!\n\n***************\n" .
+-  "AcidRip uses MEncoder, which is part of MPlayer video player package. This\n" .
+-  "was not found. Install it from http://mplayerhq/hu see INSTALL.html or\n" .
+-  "INSTALL for installation instructions.\n" .
+-  "***************\n\n" if ( system "mencoder -ovc help 2> /dev/null | grep MEncoder > /dev/null" ); print "found\n";
+-
+-print "test for MP3 support in mencoder: "; die "Not Found!\n\n***************\n" .
+-  "MEncoder was found, however it does not have MP3 support built into it.\n" .
+-  "If you DO want MP3 support you'll need to recompile mplayer with mp3 support\n" .
+-  "See INSTALL or INSTALL.html for more information\n" .
+-  "***************\n\n" if ( system "mencoder -oac help 2> /dev/null | grep mp3lame > /dev/null" ); print "found\n";
+-
+-print "Everything looks good here...\n"; 
+-
+ print "\nPlease send any feedback to me, I actually do want to know what you think of it.";
+ print "\nMaybe then I can make it suck less. acid_kewpie\@users.sourceforge.net\n\n"; 
+ 
+ exit(0);
+-

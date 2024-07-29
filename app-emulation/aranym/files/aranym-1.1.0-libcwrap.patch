@@ -1,0 +1,24 @@
+From baa00c51d3cd63602912ee1b252fa774a43b042f Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 16 Apr 2022 10:41:44 +0100
+Subject: [PATCH] Use libcwrap.h specifically with glibc, not just Linux, to
+ fix musl
+
+---
+ src/include/linux/libcwrap.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/include/linux/libcwrap.h b/src/include/linux/libcwrap.h
+index f68bafb1..9c5c6b8e 100644
+--- a/src/include/linux/libcwrap.h
++++ b/src/include/linux/libcwrap.h
+@@ -1,5 +1,5 @@
+ /* glibc bindings for target ABI version glibc 2.11 */
+-#if defined(__linux__) && !defined (__LIBC_CUSTOM_BINDINGS_H__) && !defined(__ANDROID__)
++#if defined(__GLIBC__) && defined(__linux__) && !defined (__LIBC_CUSTOM_BINDINGS_H__) && !defined(__ANDROID__)
+ 
+ #if defined (__cplusplus)
+ extern "C" {
+-- 
+2.34.1
+

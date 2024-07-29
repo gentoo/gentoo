@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<longdescription lang="en">
+		Sudo (superuser do) allows a system administrator to give certain
+		users (or groups of users) the ability to run some (or all)
+		commands as root or another user while logging the commands and
+		arguments.
+	</longdescription>
+	<use>
+		<flag name="gcrypt">Use message digest functions from <pkg>dev-libs/libgcrypt</pkg> instead of sudo's</flag>
+		<flag name="offensive">Let sudo print insults when the user types the wrong password</flag>
+		<flag name="sendmail">Allow sudo to send emails with sendmail</flag>
+		<flag name="sssd">Add System Security Services Daemon support</flag>
+		<flag name="secure-path">Replace PATH variable with compile time secure paths</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:todd_miller:sudo</remote-id>
+		<remote-id type="github">sudo-project/sudo</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,5 @@
+# /etc/conf.d/heimdal-kpasswdd
+
+# Options to pass to the kpasswdd daemon.  Please see man 8 kpasswdd for details.
+#
+# OPTIONS="-k /etc/krb5.keytab"

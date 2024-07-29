@@ -1,0 +1,18 @@
+Description: Fix detection of gcc version.
+ Use numeric instead of string comparison, then gcc version 10 is greater then 3.
+Origin: vendor
+Bug-Debian: https://bugs.debian.org/957073
+Author: gregor herrmann <gregoa@debian.org>
+Last-Update: 2020-04-17
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -50,7 +50,7 @@
+ echo $_echo_n "checking version of ${CC} ... $_echo_c"
+ exec 15> ./.gcc.test
+ cat >&15 <<EOF
+-${CC} -v 2>&1 | perl -e '\$/=undef;\$_=<STDIN>;s/.*ver.+?([[0-9\.]]+).*//s;\$_=\$1;print; s/\.//sg;s/^.*?(\d{0,4}).*\$/\$1/; exit 0 if (\$_ gt 300); exit -1'
++${CC} -v 2>&1 | perl -e '\$/=undef;\$_=<STDIN>;s/.*ver.+?([[0-9\.]]+).*//s;\$_=\$1;print; s/\.//sg;s/^.*?(\d{0,4}).*\$/\$1/; exit 0 if (\$_ >= 300); exit -1'
+ EOF
+ sh ./.gcc.test 2>/dev/null
+ if test $? -ne 0 ; then

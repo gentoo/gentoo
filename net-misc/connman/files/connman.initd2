@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+   need dbus
+   provide net
+}
+
+start() {
+   ebegin "Starting Connection Manager"
+   start-stop-daemon --start --quiet --exec /usr/sbin/connmand -- ${CONNMAN_OPTS}
+   eend $?
+}
+
+stop() {
+   ebegin "Stopping Connection Manager"
+   start-stop-daemon --stop --quiet --exec /usr/sbin/connmand
+   eend $?
+}
+
+# vim: set ft=gentoo-init-d ts=3 sw=3 et:

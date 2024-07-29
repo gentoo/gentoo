@@ -1,0 +1,11 @@
+--- a/scripts/expire-caller.pl
++++ b/scripts/expire-caller.pl
+@@ -1,7 +1,7 @@
+ #!/usr/bin/perl
+ #
+ 
+-print STDERR "WARNING: this script is considered deprecated. It may still work but could print incorrect results!\n"
++print STDERR "WARNING: this script is considered deprecated. It may still work but could print incorrect results!\n";
+ 
+ use strict;
+ use Socket;

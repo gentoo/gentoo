@@ -1,0 +1,10 @@
+--- a/iprconfig.c
++++ b/iprconfig.c
+@@ -29,6 +29,7 @@
+ #include <sys/wait.h>
+ 
+ #include <math.h>
++#include <libgen.h> /* basename() */
+ 
+ char *tool_name = "iprconfig";
+ 

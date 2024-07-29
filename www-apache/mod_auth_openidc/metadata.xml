@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>robbat2@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>infra@gentoo.org</email>
+		<name>Gentoo Infrastructure Team</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">OpenIDC/mod_auth_openidc</remote-id>
+	</upstream>
+	<use>
+		<flag name="redis">Add support for the Redis caching via <pkg>dev-libs/hiredis</pkg></flag>
+		<flag name="brotli">Add support for brotli compressed data using <pkg>app-arch/brotli</pkg></flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+# h2o logrotate script for Gentoo
+
+/var/log/h2o/*.log {
+	missingok
+	notifempty
+	sharedscripts
+	delaycompress
+	postrotate
+		/bin/kill -HUP $(grep pid-file "/etc/h2o/h2o.conf" | cut -d' ' -f2 | cat) 2>/dev/null || true
+	endscript
+}

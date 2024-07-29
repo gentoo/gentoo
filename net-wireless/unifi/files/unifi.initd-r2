@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+unifi_exec="/usr/bin/unifi"
+unifi_path="/usr/lib/unifi"
+
+unifi_user="unifi"
+unifi_group="unifi"
+
+name="UniFi Controller"
+
+start_stop_daemon_args="--chdir ${unifi_path}"
+
+command="${unifi_exec}"
+command_args="start"
+command_background=true
+command_progress=true
+command_user="${unifi_user}:${unifi_group}"
+
+pidfile="/run/${RC_SVCNAME}.pid"
+retry=TERM/60

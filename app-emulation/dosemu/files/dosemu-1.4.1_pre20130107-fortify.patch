@@ -1,0 +1,48 @@
+From ff9bea065f4cc6068dcb8d6ea9423105305ca590 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Mon, 5 Aug 2013 13:03:21 +0300
+Subject: [PATCH] src/tools/tools86.c: fix stack buffer overflow in
+ 'change_aout'
+
+Detected by gcc:
+
+gcc -std=gnu99 -c -MP -MMD -I../../src/include -I../../src/plugin/include  -Wall -Wstrict-prototypes -Wmissing-declarations -Wnested-externs  -fno-strict-aliasing -pipe -O2 -fomit-frame-pointer -o tools86.o tools86.c
+In file included from /usr/include/stdio.h:937:0,
+ from tools86.c:98:
+ In function 'fread',
+     inlined from 'change_aout.constprop.1' at tools86.c:174:12,
+         inlined from 'main' at tools86.c:391:18:
+         /usr/include/bits/stdio2.h:293:2: warning: call to '__fread_chk_warn' declared with attribute warning: fread called with bigger size * nmemb than length of destination buffer [enabled by default]
+           return __fread_chk_warn (__ptr, __bos0 (__ptr), __size, __n, __stream);
+             ^
+Gentoo-bug: http://bugs.gentoo.org/343577
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ src/tools/tools86.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/tools/tools86.c b/src/tools/tools86.c
+index 141610d..35a0b96 100644
+--- a/src/tools/tools86.c
++++ b/src/tools/tools86.c
+@@ -137,7 +137,7 @@ struct bsd_header {            /* a.out header */
+ #endif
+ 
+ #ifdef __linux__
+-static int header_ld86out_to_gnuasout(struct bsd_header *bsd, struct gnu_header *gnu)
++static int header_ld86out_to_gnuasout(const struct bsd_header *bsd, struct gnu_header *gnu)
+ {
+   if (bsd->a_magic[0] != 0x01 || bsd->a_magic[1] != 0x03 ||
+       bsd->a_flags != 0x00 || bsd->a_cpu != 0x10) return -1;
+@@ -171,7 +171,7 @@ static int change_aout(char *objfile, int update_symtable)
+     return errno;
+   }
+ #ifdef __linux__
+-  if (fread(&bsd,sizeof(gnu),1,f) != 1 ) {
++  if (fread(&bsd,sizeof(bsd),1,f) != 1 ) {
+     fclose(f);
+     return -1;
+   }
+-- 
+1.8.3.2
+

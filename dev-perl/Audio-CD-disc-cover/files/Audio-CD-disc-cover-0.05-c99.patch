@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/874972
+https://rt.cpan.org/Public/Bug/Display.html?id=152236
+
+Description: add more #includes
+ for building with -Werror=implicit-function-declaration
+Origin: vendor
+Bug-Debian: https://bugs.debian.org/1065762
+Author: gregor herrmann <gregoa@debian.org>
+Last-Update: 2024-03-10
+
+--- a/cddb_lookup.c
++++ b/cddb_lookup.c
+@@ -21,6 +21,10 @@
+ #include "cdaudio.h"
+ #include "cddb_lookup.h"
+ #include "stdio.h"
++#include <stdlib.h>
++#include <string.h>
++#include <sys/socket.h>
++#include <signal.h>
+ 
+ #define PACKAGE "Audio::CD"
+ 

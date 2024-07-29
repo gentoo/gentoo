@@ -1,0 +1,66 @@
+From c398f9cc0504c33de034e68a8d402a5ad301c19f Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 10 Mar 2024 17:54:11 -0400
+Subject: [PATCH] import libf2c-20130927-fix-buildsystem.patch and fix up
+
+---
+ makefile.u | 18 +++++++-----------
+ 1 file changed, 7 insertions(+), 11 deletions(-)
+
+diff --git a/makefile.u b/makefile.u
+index a271e5c..e8c8485 100644
+--- a/makefile.u
++++ b/makefile.u
+@@ -12,16 +12,12 @@
+ #	-fPIC
+ # to the CFLAGS = line below.
+ 
+-.SUFFIXES: .c .o
+-CC = cc
+ SHELL = /bin/sh
+-CFLAGS = -O
+ 
+ # compile, then strip unnecessary symbols
+ .c.o:
+-	$(CC) -c -DSkip_f2c_Undefs $(CFLAGS) $*.c
+-	ld -r -x -o $*.xxx $*.o
+-	mv $*.xxx $*.o
++	$(CC) -c $(CPPFLAGS) $(CFLAGS) -DSkip_f2c_Undefs $< -o $@
++
+ ## Under Solaris (and other systems that do not understand ld -x),
+ ## omit -x in the ld line above.
+ ## If your system does not have the ld command, comment out
+@@ -72,8 +68,8 @@ OFILES = $(MISC) $(POW) $(CX) $(DCX) $(REAL) $(DBL) $(INT) \
+ all: f2c.h signal1.h sysdep1.h libf2c.a
+ 
+ libf2c.a: $(OFILES)
+-	ar r libf2c.a $?
+-	-ranlib libf2c.a
++	$(AR) r libf2c.a $?
++	$(RANLIB) libf2c.a
+ 
+ ## Shared-library variant: the following rule works on Linux
+ ## systems.  Details are system-dependent.  Under Linux, -fPIC
+@@ -126,7 +122,7 @@ fio.h: fio.h0 sysdep1.h
+ 
+ install: libf2c.a
+ 	cp libf2c.a $(LIBDIR)
+-	-ranlib $(LIBDIR)/libf2c.a
++	$(RANLIB) $(LIBDIR)/libf2c.a
+ 
+ clean:
+ 	rm -f libf2c.a *.o arith.h signal1.h sysdep1.h
+@@ -186,8 +182,8 @@ xwsne.o:	lio.h
+ xwsne.o:	fmt.h
+ 
+ arith.h: arithchk.c
+-	$(CC) $(CFLAGS) -DNO_FPINIT arithchk.c -lm ||\
+-	 $(CC) -DNO_LONG_LONG $(CFLAGS) -DNO_FPINIT arithchk.c -lm
++	$(CC) $(CPPFLAGS) $(CFLAGS) -DNO_FPINIT arithchk.c -lm ||\
++	 $(CC) -DNO_LONG_LONG $(CPPFLAGS) $(CFLAGS) -DNO_FPINIT arithchk.c -lm
+ 	./a.out >arith.h
+ 	rm -f a.out arithchk.o
+ 
+-- 
+2.43.2
+

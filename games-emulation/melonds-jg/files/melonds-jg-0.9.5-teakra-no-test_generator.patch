@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/914196
+https://gitlab.com/jgemu/melonds/-/merge_requests/9
+https://gitlab.com/jgemu/melonds/-/commit/0953b8874187bfdd35a0bf787c3bdbb6cc65dc9d
+
+From 0953b8874187bfdd35a0bf787c3bdbb6cc65dc9d Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Thu, 14 Sep 2023 09:58:18 -0700
+Subject: [PATCH] jollygood: don't build teakra's test_generator.cpp
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This is unused in the jollygood core and causes build failures for i686.
+
+As reproduced on Gentoo:
+
+In file included from /usr/i686-pc-linux-musl/tmp/portage/games-emulation/melonds-jg-0.9.5/work/melonds-0.9.5/jollygood/../src/teakra/src/test_generator.cpp:10:
+/usr/i686-pc-linux-musl/tmp/portage/games-emulation/melonds-jg-0.9.5/work/melonds-0.9.5/jollygood/../src/teakra/src/test.h:37:32: error: static assertion failed
+   37 | static_assert(sizeof(TestCase) == 4312);
+      |               ~~~~~~~~~~~~~~~~~^~~~~~~
+/usr/i686-pc-linux-musl/tmp/portage/games-emulation/melonds-jg-0.9.5/work/melonds-0.9.5/jollygood/../src/teakra/src/test.h:37:32: note: the comparison reduces to ‘(4308 == 4312)’
+make: *** [Makefile:169: objs/src/teakra/src/test_generator.o] Error 1
+---
+ jollygood/Makefile | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/jollygood/Makefile b/jollygood/Makefile
+index 03f34a1..c206f05 100644
+--- a/jollygood/Makefile
++++ b/jollygood/Makefile
+@@ -68,7 +68,6 @@ CXXSRCS := src/teakra/src/ahbm.cpp \
+ 	src/teakra/src/parser.cpp \
+ 	src/teakra/src/processor.cpp \
+ 	src/teakra/src/teakra.cpp \
+-	src/teakra/src/test_generator.cpp \
+ 	src/teakra/src/timer.cpp \
+ 	src/ARCodeFile.cpp \
+ 	src/AREngine.cpp \

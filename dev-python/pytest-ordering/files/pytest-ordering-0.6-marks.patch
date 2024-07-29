@@ -1,0 +1,56 @@
+From 6de05faa7d399a3f0f99b33b75747d39adb1f535 Mon Sep 17 00:00:00 2001
+From: Brian Maissy <brian.maissy@gmail.com>
+Date: Fri, 31 May 2019 03:03:38 +0300
+Subject: [PATCH] register marks, document python and pytest dependencies, and
+ test the full matrix with tox and travis
+
+minimized from:
+https://github.com/ftobia/pytest-ordering/commit/6de05faa7d399a3f0f99b33b75747d39adb1f535
+
+diff --git a/pytest_ordering/__init__.py b/pytest_ordering/__init__.py
+index 0cca91d..c8eb64a 100644
+--- a/pytest_ordering/__init__.py
++++ b/pytest_ordering/__init__.py
+@@ -28,13 +28,23 @@
+ def pytest_configure(config):
+     """Register the "run" marker."""
+ 
++    provided_by_pytest_ordering = (
++        'Provided by pytest-ordering. '
++        'See also: http://pytest-ordering.readthedocs.org/'
++    )
++
+     config_line = (
+         'run: specify ordering information for when tests should run '
+-        'in relation to one another. Provided by pytest-ordering. '
+-        'See also: http://pytest-ordering.readthedocs.org/'
++        'in relation to one another. ' + provided_by_pytest_ordering
+     )
+     config.addinivalue_line('markers', config_line)
+ 
++    for mark_name in orders_map.keys():
++        config_line = '{}: run test {}. {}'.format(mark_name,
++                                                   mark_name.replace('_', ' '),
++                                                   provided_by_pytest_ordering)
++        config.addinivalue_line('markers', config_line)
++
+ 
+ def pytest_collection_modifyitems(session, config, items):
+     grouped_items = {}
+diff --git a/tests/test_ordering.py b/tests/test_ordering.py
+index 12f4689..dd703ab 100644
+--- a/tests/test_ordering.py
++++ b/tests/test_ordering.py
+@@ -268,7 +268,10 @@ def test_5(self): pass
+     assert item_names_for(tests_content) == ['test_3', 'test_4', 'test_5', 'test_1', 'test_2']
+ 
+ 
+-def test_run_marker_registered(capsys):
+-    pytest.main('--markers')
++def test_markers_registered(capsys):
++    pytest.main(['--markers'])
+     out, err = capsys.readouterr()
+     assert '@pytest.mark.run' in out
++    assert '@pytest.mark.first' in out
++    assert '@pytest.mark.last' in out
++    assert out.count('Provided by pytest-ordering') == 17

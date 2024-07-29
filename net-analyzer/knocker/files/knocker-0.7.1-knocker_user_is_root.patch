@@ -1,0 +1,11 @@
+--- a/src/knocker_user.c
++++ b/src/knocker_user.c
+@@ -82,7 +82,7 @@
+       _dir_create (user->dir);
+     }
+ 
+-  if (knocker_user_is_root)
++  if (knocker_user_is_root())
+     user->super = 1;
+   else
+     user->super = 0;

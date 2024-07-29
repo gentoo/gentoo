@@ -1,0 +1,19 @@
+commit 87867b2a117eef19500600a1f88b9caf260cfe3b
+Author: Alexander Zubkov <green@qrator.net>
+Date:   Wed Oct 17 22:38:13 2018 +0200
+
+    do not pass program parameters to ldd call
+
+diff --git a/lib/arch/generic/functions b/lib/arch/generic/functions
+index 66653c3..b0c6572 100755
+--- a/lib/arch/generic/functions
++++ b/lib/arch/generic/functions
+@@ -704,7 +704,7 @@ sub generate_dep {
+       return();
+     }
+     
+-    $query = "($ldd_cmd $p_name $p_args </dev/null 2>&1)";
++    $query = "($ldd_cmd $p_name </dev/null 2>&1)";
+     local @res_a = `$query`;
+     
+     local @items = ();

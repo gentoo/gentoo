@@ -1,0 +1,28 @@
+https://github.com/ROCm/hip-tests/pull/443
+
+From cb0140843a162f69c454e91cd994524423b39b8c Mon Sep 17 00:00:00 2001
+From: Yiyang Wu <xgreenlandforwyy@gmail.com>
+Date: Sun, 10 Dec 2023 21:57:14 +0800
+Subject: [PATCH] -fallow-half-arguments-and-returns is not recognized by clang
+
+Reference: https://reviews.llvm.org/D145345
+Issue: https://github.com/ROCm/HIP/issues/3178
+Signed-off-by: Yiyang Wu <xgreenlandforwyy@gmail.com>
+---
+ catch/unit/deviceLib/CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/catch/unit/deviceLib/CMakeLists.txt b/catch/unit/deviceLib/CMakeLists.txt
+index 0645def..3662cbd 100644
+--- catch/unit/deviceLib/CMakeLists.txt
++++ catch/unit/deviceLib/CMakeLists.txt
+@@ -171,7 +171,6 @@ if(${ARCH_CHECK} GREATER_EQUAL 0)
+     set_source_files_properties(unsafeAtomicAdd_NonCoherent_withunsafeflag.cc PROPERTIES COMPILE_OPTIONS "-munsafe-fp-atomics")
+     set_source_files_properties(unsafeAtomicAdd_Coherent_withnounsafeflag.cc PROPERTIES COMPILE_OPTIONS "-mno-unsafe-fp-atomics")
+     set_source_files_properties(unsafeAtomicAdd_NonCoherent_withnounsafeflag.cc PROPERTIES COMPILE_OPTIONS "-mno-unsafe-fp-atomics")
+-    set_source_files_properties(hipMathFunctions.cc PROPERTIES COMPILE_FLAGS "-Xclang -fallow-half-arguments-and-returns")
+     file(GLOB AtomicAdd_files *AtomicAdd_*_*.cc)
+     set_property(SOURCE ${AtomicAdd_files} PROPERTY COMPILE_FLAGS --save-temps)
+     file(GLOB unsafeAtomicAdd_files *unsafeAtomicAdd_*_*.cc)
+--
+2.42.0

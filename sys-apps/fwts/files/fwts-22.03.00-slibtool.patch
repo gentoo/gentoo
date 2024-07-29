@@ -1,0 +1,155 @@
+Upstream-ML: https://lists.ubuntu.com/archives/fwts-devel/2022-May/013515.html
+
+From 47bc82375865e2548edcb1607ca52ec60d632123 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Tue, 10 May 2022 20:35:01 -0700
+Subject: [PATCH 1/2] build: Improve linking
+
+This improves the linking enough to get the build to complete
+with slibtool and GNU libtool.
+---
+ configure.ac                  |  2 ++
+ src/Makefile.am               | 20 ++++++++++----------
+ src/lib/src/Makefile.am       | 18 ++++++++++--------
+ src/libfwtsacpica/Makefile.am |  7 ++-----
+ src/libfwtsiasl/Makefile.am   |  4 ++--
+ 5 files changed, 26 insertions(+), 25 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index f40c367..7ee5604 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -64,6 +64,8 @@
+ 	  AC_CHECK_HEADERS([asm/opal-prd.h])
+ 	  AC_CHECK_HEADERS([mtd/mtd-abi.h])
+ 	  AC_CHECK_HEADERS([pci/pci.h])
++	  PKG_CHECK_MODULES([GIO], [gio-2.0])
++	  PKG_CHECK_MODULES([GLIB], [glib-2.0])
+ 	  AM_CONDITIONAL([HAVE_ASM_OPAL_PRD_H],
+ 	    [test "x$ac_cv_header_asm_opal_prd_h" = "xyes"])
+ 	  AM_CONDITIONAL([HAVE_MTD_ABI_H],
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 9a26af8..e2180e7 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -12,7 +12,7 @@ AM_CPPFLAGS = \
+ 	-I$(top_srcdir)/src/acpica/source/compiler	\
+ 	-I$(top_srcdir)/efi_runtime			\
+ 	-I$(top_srcdir)/smccc_test			\
+-	-pthread `pkg-config --cflags glib-2.0 gio-2.0` \
++	-pthread					\
+ 	-Wall -Werror -Wextra				\
+ 	-Wno-address-of-packed-member			\
+ 	-Wfloat-equal -Wmissing-declarations		\
+@@ -23,7 +23,11 @@ AM_CPPFLAGS = \
+ 
+ bin_PROGRAMS = fwts
+ 
+-fwts_CPPFLAGS = $(AM_CPPFLAGS) -DACPI_DEBUG_OUTPUT
++fwts_CPPFLAGS = 					\
++	$(AM_CPPFLAGS)					\
++	@GIO_CFLAGS@					\
++	@GLIB_CFLAGS@					\
++	-DACPI_DEBUG_OUTPUT
+ 
+ if HAVE_LIBFDT
+ dt_tests = \
+@@ -207,16 +211,12 @@ fwts_SOURCES = main.c 				\
+ 	$(power_mgmt_tests)			\
+ 	$(dt_tests)
+ 
+-fwts_LDFLAGS = -lm -lbsd `pkg-config --libs glib-2.0 gio-2.0`
++fwts_LDFLAGS = -no-undefined
+ 
+ fwts_LDADD = \
+-	-lfwts					\
+-	-L$(top_builddir)/src			\
+-	-L$(top_builddir)/src/acpica		\
+-	-L$(top_builddir)/src/libfwtsiasl	\
+-	-L$(top_builddir)/src/libfwtsacpica	\
+-	-L$(top_builddir)/src/lib/src		\
+-	-lfwtsacpica
++	$(top_builddir)/src/lib/src/libfwts.la \
++	$(top_builddir)/src/libfwtsiasl/libfwtsiasl.la \
++	$(top_builddir)/src/libfwtsacpica/libfwtsacpica.la
+ 
+ man_MANS = ../doc/fwts.1 ../doc/fwts-collect.1 ../doc/fwts-frontend-text.1
+ 
+diff --git a/src/lib/src/Makefile.am b/src/lib/src/Makefile.am
+index 0a39882..94bfcdf 100644
+--- a/src/lib/src/Makefile.am
++++ b/src/lib/src/Makefile.am
+@@ -21,22 +21,24 @@ AM_CPPFLAGS = \
+ 	-I$(top_srcdir)/src/libfwtsiasl			\
+ 	-I$(top_srcdir)/src/acpica/source/include	\
+ 	-I$(top_srcdir)/src/acpica/source/compiler	\
+-	`pkg-config --silence-errors --cflags json`	\
+-	`pkg-config --silence-errors --cflags json-c`	\
+-	`pkg-config --cflags glib-2.0 gio-2.0` 		\
+ 	-DDATAROOTDIR=\"$(datarootdir)\"		\
+ 	-Wall -Werror -Wextra				\
+ 	-Wno-address-of-packed-member
+ 
+ pkglib_LTLIBRARIES = libfwts.la
+ 
+-libfwts_la_LDFLAGS = 					\
++libfwts_la_LDFLAGS = -version-info 1:0:0
++
++libfwts_la_LIBADD = 					\
+ 	-lm -lpthread -lbsd				\
+-	-version-info 1:0:0 				\
+-	-L$(top_builddir)/src/libfwtsiasl		\
+-	-lfwtsiasl `pkg-config --libs glib-2.0 gio-2.0`
++	@GIO_LIBS@					\
++	@GLIB_LIBS@
+ 
+-libfwts_la_CPPFLAGS = $(AM_CPPFLAGS) -DACPI_DEBUG_OUTPUT
++libfwts_la_CPPFLAGS =					\
++	$(AM_CPPFLAGS)					\
++	@GIO_CFLAGS@					\
++	@GLIB_CFLAGS@					\
++	-DACPI_DEBUG_OUTPUT
+ 
+ if HAVE_LIBFDT
+ dt_sources = \
+diff --git a/src/libfwtsacpica/Makefile.am b/src/libfwtsacpica/Makefile.am
+index f37f585..62f0d8c 100644
+--- a/src/libfwtsacpica/Makefile.am
++++ b/src/libfwtsacpica/Makefile.am
+@@ -74,7 +74,8 @@ CLEANFILES = osunixxf_munged.c					\
+ 
+ pkglib_LTLIBRARIES = libfwtsacpica.la
+ 
+-libfwtsacpica_la_LDFLAGS = -lpthread -version-info 1:0:0
++libfwtsacpica_la_LDFLAGS = -version-info 1:0:0
++libfwtsacpica_la_LIBADD = -lpthread
+ libfwtsacpica_la_CPPFLAGS = $(AM_CPPFLAGS)
+ 
+ #
+@@ -280,8 +281,4 @@ libfwtsacpica_la_SOURCES =						\
+ 	../../src/acpica/source/tools/acpiexec/aeinstall.c		\
+ 	../../src/acpica/source/os_specific/service_layers/osgendbg.c
+ 
+-libfwtsacpica_la_LIBADD = \
+-	-L../../src/lib/src -lfwts -lrt
+-
+-
+ -include ../../git.mk
+diff --git a/src/libfwtsiasl/Makefile.am b/src/libfwtsiasl/Makefile.am
+index 328134c..2728780 100644
+--- a/src/libfwtsiasl/Makefile.am
++++ b/src/libfwtsiasl/Makefile.am
+@@ -104,8 +104,8 @@ BUILT_SOURCES = aslcompiler.y		\
+ #
+ # Just export fwts specific API so we don't clash with core ACPICA library
+ #
+-libfwtsiasl_la_LDFLAGS = -export-symbols-regex "fwts_.*" -lpthread -version-info 1:0:0
+-
++libfwtsiasl_la_LDFLAGS = -export-symbols-regex "fwts_.*" -version-info 1:0:0
++libfwtsiasl_la_LIBADD = -lpthread
+ CLEANFILES = $(BUILT_SOURCES)
+ 
+ libfwtsiasl_la_CPPFLAGS = $(AM_CPPFLAGS)
+-- 
+2.35.1
+

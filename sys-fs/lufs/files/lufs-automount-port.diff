@@ -1,0 +1,28 @@
+Files lufs-0.9.5.org/util/a.out and lufs-0.9.5/util/a.out differ
+diff -Nur lufs-0.9.5.org/util/auto.sshfs.c lufs-0.9.5/util/auto.sshfs.c
+--- lufs-0.9.5.org/util/auto.sshfs.c	2003-10-24 16:51:49.000000000 +0200
++++ lufs-0.9.5/util/auto.sshfs.c	2003-10-24 16:54:15.000000000 +0200
+@@ -26,6 +26,8 @@
+ int
+ main(int argc, char **argv){
+     char *c;
++    char *d;
++    int port = 22;
+ 
+     if(argc < 2)
+ 	return 1;
+@@ -34,8 +36,12 @@
+ 	return 1;
+ 
+     *c = 0;
+-
+-    printf("-fstype=lufs,fs=sshfs,quiet,host=%s,username=%s none\n", c + 1, argv[1]);
++    d = strchr(c + 1, ':');
++    if (d) {
++    	port = atoi(d + 1);
++	*d = 0;
++    } 
++    printf("-fstype=lufs,fs=sshfs,quiet,host=%s,port=%d,username=%s none\n", c + 1,port, argv[1]);
+ 
+     return 0;
+ }

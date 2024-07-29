@@ -1,0 +1,33 @@
+--- a/modes/Makefile.in
++++ b/modes/Makefile.in
+@@ -344,7 +344,7 @@
+ CXXFLAGS = @CXXFLAGS@
+ #CFLAGS = -O
+ #CFLAGS = -g
+-XLOCKLDFLAGS = @XLOCKLDFLAGS@ $(CHECKLDFLAG)
++XLOCKLDFLAGS = $(LDFLAGS) @XLOCKLDFLAGS@ $(CHECKLDFLAG)
+ XLIBS = @XLIBS@
+ XLOCKLIBS = $(MODULELIB) @XLOCKLIBS@
+ 
+--- a/xmlock/Makefile.in
++++ b/xmlock/Makefile.in
+@@ -94,7 +94,7 @@
+ CFLAGS = @CFLAGS@
+ #CFLAGS = -O
+ #CFLAGS = -g
+-XMLOCKLDFLAGS = @XMLOCKLDFLAGS@
++XMLOCKLDFLAGS = $(LDFLAGS) @XMLOCKLDFLAGS@
+ XLIBS = @XLIBS@
+ XMLOCKLIBS = @XMLOCKLIBS@
+ #If you have purify, and want to use it, uncomment this definition or
+--- a/xglock/Makefile.in
++++ b/xglock/Makefile.in
+@@ -92,7 +92,7 @@
+ CFLAGS = @GTK_CFLAGS@ @CFLAGS@
+ #CFLAGS = -O
+ #CFLAGS = -g
+-XGLOCKLDFLAGS = @XGLOCKLDFLAGS@
++XGLOCKLDFLAGS = $(LDFLAGS) @XGLOCKLDFLAGS@
+ XLIBS = @XLIBS@
+ XGLOCKLIBS = @XGLOCKLIBS@
+ #If you have purify, and want to use it, uncomment this definition or

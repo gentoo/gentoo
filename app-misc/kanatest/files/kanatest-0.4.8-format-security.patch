@@ -1,0 +1,22 @@
+--- a/src/stats.c
++++ b/src/stats.c
+@@ -84,7 +84,7 @@ gchar buffer[BUFFER_SIZE];
+ 
+     info_dialog = gtk_message_dialog_new (GTK_WINDOW(appGUI->sts->stat_window),
+                                           GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_MODAL,
+-                                          GTK_MESSAGE_QUESTION, GTK_BUTTONS_YES_NO, buffer);
++                                          GTK_MESSAGE_QUESTION, GTK_BUTTONS_YES_NO, "%s", buffer);
+ 
+     gtk_window_set_title(GTK_WINDOW(info_dialog), _("Question"));
+     gtk_widget_show (info_dialog);
+--- a/src/test.c
++++ b/src/test.c
+@@ -538,7 +538,7 @@ test_info(GUI *appGUI) {
+ 
+     info_dialog = gtk_message_dialog_new_with_markup (GTK_WINDOW(appGUI->main_window),
+                                                       GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_MODAL,
+-                                                      GTK_MESSAGE_INFO, GTK_BUTTONS_CLOSE, message);
++                                                      GTK_MESSAGE_INFO, GTK_BUTTONS_CLOSE, "%s", message);
+ 
+     gtk_window_set_title (GTK_WINDOW(info_dialog), _("Information"));
+     gtk_widget_show (info_dialog);

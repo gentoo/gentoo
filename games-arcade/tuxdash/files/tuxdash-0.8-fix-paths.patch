@@ -1,0 +1,45 @@
+Change paths for Gentoo's filesystem layout.
+
+--- a/config
++++ b/config
+@@ -1,11 +1,11 @@
+ # Fullscreen enable/disable
+-Fullscreen = 0
++Fullscreen = 1
+ # Width of screen in blocks
+ screenX = 21
+ # Height of screen in blocks
+ screenY = 16
+ # Theme Folder - path to a valid theme
+-theme = themes/original/
++theme = /usr/share/tuxdash/themes/original/
+ # Distance in X direction, before scrolling starts
+ scrolldistX = 3
+ # Distance in Y direction, before scrolling starts
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -340,9 +340,7 @@
+ 
+ 	// set tuxdash's config / working directory
+ 	char* HomeDirectory;
+-	char* CurrentDirectory;
+ 	HomeDirectory = getenv("HOME");	// get users home directory
+-	CurrentDirectory = getenv("PWD");	// get TuxDash's working directory
+ 	TuxHomeDirectory = new char[strlen(HomeDirectory)+strlen("/.tuxdash")+1];	// align space for the string containing the path to tuxdash's config directory
+ 	strcpy(TuxHomeDirectory, HomeDirectory);
+ 	strcat(TuxHomeDirectory, "/.tuxdash");
+@@ -355,12 +353,12 @@
+ 		}
+ 		else {
+ 			mkdir((ostring)TuxHomeDirectory + "/themes", 0711);	// create the themes folder. The default themes are not copied there, but the folder is created for possible additional themes added by the player
+-			chdir(CurrentDirectory);
++			chdir("/usr/share/tuxdash");
+ 			system((ostring)"cp -r maps savegames config " + TuxHomeDirectory);
+ 		}
+ 	}
+ 	cout << endl << " Using " << TuxHomeDirectory << " for configuration, map and savegame files" << endl;
+-	chdir(CurrentDirectory);
++	chdir("/usr/share/tuxdash");
+ 	// finished with check of working directory
+ 
+ 	int running=1, start, stop, framestart = time(0), frames=0, frame_count = 0;

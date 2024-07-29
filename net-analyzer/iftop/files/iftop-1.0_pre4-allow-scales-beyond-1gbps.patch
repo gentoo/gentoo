@@ -1,0 +1,43 @@
+https://code.blinkace.com/pdw/iftop/-/commit/77901c8c53e01359d83b8090aacfe62214658183
+https://bugs.gentoo.org/857837
+
+From: Paul Warren <pdw@ex-parrot.com>
+Date: Wed, 3 Oct 2018 18:02:36 +0100
+Subject: [PATCH] Support scales beyond 1Gbps
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Guido JÃ¤kel <Guido.Jaekel@GMX.DE>
+--- a/ui.c
++++ b/ui.c
+@@ -71,7 +71,7 @@ int dontshowdisplay = 0;
+ 
+ /* Barchart scales. */
+ static struct {
+-    int max, interval;
++    long max; int interval;
+ } scale[] = {
+         {      64000,     10 },     /* 64 kbit/s */
+         {     128000,     10 },
+@@ -79,7 +79,9 @@ static struct {
+         {    1000000,     10 },     /* 1 Mbit/s */
+         {   10000000,     10 },     
+         {  100000000,    100 },
+-        { 1000000000,    100 }      /* 1 Gbit/s */
++        { 1000000000,    100 },     /* 1 Gbit/s */
++        {10000000000,    100 },
++       {100000000000,    100 }
+     };
+ static int rateidx = 0, wantbiggerrate;
+ 
+@@ -105,7 +107,7 @@ static float get_max_bandwidth() {
+ }
+ 
+ /* rate in bits */
+-static int get_bar_length(const int rate) {
++static int get_bar_length(const long rate) {
+     float l;
+     if (rate <= 0)
+         return 0;
+GitLab

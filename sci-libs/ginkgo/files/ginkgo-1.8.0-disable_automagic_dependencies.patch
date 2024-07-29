@@ -1,0 +1,24 @@
+diff --git a/examples/CMakeLists.txt b/examples/CMakeLists.txt
+index 653d52a..c56af59 100644
+--- a/examples/CMakeLists.txt
++++ b/examples/CMakeLists.txt
+@@ -41,8 +41,7 @@ if(GINKGO_BUILD_EXTLIB_EXAMPLE)
+     list(APPEND EXAMPLES_LIST external-lib-interfacing)
+ endif()
+ 
+-find_package(OpenCV QUIET)
+-if(OpenCV_FOUND)
++if(FALSE)
+     list(APPEND EXAMPLES_LIST heat-equation schroedinger-splitting)
+ else()
+     message(STATUS "No OpenCV found, disabling examples with video output")
+@@ -56,8 +55,7 @@ if(GINKGO_BUILD_MPI)
+     list(APPEND EXAMPLES_LIST distributed-solver)
+ endif()
+ 
+-find_package(Kokkos 4.1.00 QUIET)
+-if(Kokkos_FOUND)
++if(FALSE)
+     list(APPEND EXAMPLES_LIST kokkos-assembly)
+ else()
+     message(STATUS "No Kokkos found, disabling examples with Kokkos assembly.")

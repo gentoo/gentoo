@@ -1,0 +1,113 @@
+From 9417620c9802331c4abf0cf4c57f40ec4b38a5e7 Mon Sep 17 00:00:00 2001
+From: Ron Lieberman <ron.lieberman@amd.com>
+Date: Thu, 1 Jun 2023 13:19:28 -0500
+Subject: [PATCH] [llvm] change from Optional to std::optional in support of
+ pending llvm patch
+
+Change-Id: If8a03245dc88e7b7e4a628d7ce7e28c71c3268c6
+---
+ lib/comgr/src/comgr-env.cpp           | 2 +-
+ lib/comgr/src/comgr-env.h             | 3 +--
+ lib/comgr/src/comgr-objdump.cpp       | 5 ++---
+ lib/comgr/src/comgr.cpp               | 2 +-
+ lib/comgr/src/time-stat/time-stat.cpp | 3 +--
+ 5 files changed, 6 insertions(+), 9 deletions(-)
+
+diff --git a/src/comgr-env.cpp b/src/comgr-env.cpp
+index 6ab6f0f..7575394 100644
+--- a/src/comgr-env.cpp
++++ b/src/comgr-env.cpp
+@@ -50,7 +50,7 @@ bool shouldSaveTemps() {
+   return SaveTemps && StringRef(SaveTemps) != "0";
+ }
+ 
+-Optional<StringRef> getRedirectLogs() {
++std::optional<StringRef> getRedirectLogs() {
+   static char *RedirectLogs = getenv("AMD_COMGR_REDIRECT_LOGS");
+   if (!RedirectLogs || StringRef(RedirectLogs) == "0") {
+     return std::nullopt;
+diff --git a/src/comgr-env.h b/src/comgr-env.h
+index aef57b3..7ca644e 100644
+--- a/src/comgr-env.h
++++ b/src/comgr-env.h
+@@ -36,7 +36,6 @@
+ #ifndef COMGR_ENV_H
+ #define COMGR_ENV_H
+ 
+-#include "llvm/ADT/Optional.h"
+ #include "llvm/ADT/StringRef.h"
+ 
+ namespace COMGR {
+@@ -47,7 +46,7 @@ bool shouldSaveTemps();
+ 
+ /// If the environment requests logs be redirected, return the string identifier
+ /// of where to redirect. Otherwise return @p None.
+-llvm::Optional<llvm::StringRef> getRedirectLogs();
++std::optional<llvm::StringRef> getRedirectLogs();
+ 
+ /// Return whether the environment requests verbose logging.
+ bool shouldEmitVerboseLogs();
+diff --git a/src/comgr-objdump.cpp b/src/comgr-objdump.cpp
+index ff3f996..cae7aa3 100644
+--- a/src/comgr-objdump.cpp
++++ b/src/comgr-objdump.cpp
+@@ -39,7 +39,6 @@
+ #include "comgr-objdump.h"
+ #include "comgr.h"
+ #include "lld/Common/TargetOptionsCommandFlags.h"
+-#include "llvm/ADT/Optional.h"
+ #include "llvm/ADT/STLExtras.h"
+ #include "llvm/ADT/StringExtras.h"
+ #include "llvm/CodeGen/CommandFlags.h"
+@@ -2145,7 +2144,7 @@ void llvm::DisassemHelper::printRawClangAST(const ObjectFile *Obj) {
+     ClangASTSectionName = "clangast";
+   }
+ 
+-  Optional<object::SectionRef> ClangASTSection;
++  std::optional<object::SectionRef> ClangASTSection;
+   for (auto Sec : toolSectionFilter(*Obj)) {
+     StringRef Name;
+     auto NameOrErr = Sec.getName();
+@@ -2188,7 +2187,7 @@ void llvm::DisassemHelper::printFaultMaps(const ObjectFile *Obj) {
+     return;
+   }
+ 
+-  Optional<object::SectionRef> FaultMapSection;
++  std::optional<object::SectionRef> FaultMapSection;
+ 
+   for (auto Sec : toolSectionFilter(*Obj)) {
+     StringRef Name;
+diff --git a/src/comgr.cpp b/src/comgr.cpp
+index e421414..9e89dc2 100644
+--- a/src/comgr.cpp
++++ b/src/comgr.cpp
+@@ -1293,7 +1293,7 @@ amd_comgr_status_t AMD_COMGR_API
+     // Pointer to the currently selected log stream.
+     raw_ostream *LogP = &LogS;
+ 
+-    if (Optional<StringRef> RedirectLogs = env::getRedirectLogs()) {
++    if (std::optional<StringRef> RedirectLogs = env::getRedirectLogs()) {
+       StringRef RedirectLog = *RedirectLogs;
+       if (RedirectLog == "stdout") {
+         LogP = &outs();
+diff --git a/src/time-stat/time-stat.cpp b/src/time-stat/time-stat.cpp
+index 1df3f0e..9b24983 100644
+--- a/src/time-stat/time-stat.cpp
++++ b/src/time-stat/time-stat.cpp
+@@ -5,7 +5,6 @@
+ #include <system_error>
+ 
+ #include "comgr-env.h"
+-#include "llvm/ADT/Optional.h"
+ #include "llvm/ADT/StringRef.h"
+ #include "llvm/Support/Debug.h"
+ #include "llvm/Support/FileSystem.h"
+@@ -29,7 +28,7 @@ static std::unique_ptr<PerfStats> PS = nullptr;
+ static void dump() { PS->dumpPerfStats(); }
+ 
+ void GetLogFile(std::string &PerfLog) {
+-  if (Optional<StringRef> RedirectLogs = env::getRedirectLogs()) {
++  if (std::optional<StringRef> RedirectLogs = env::getRedirectLogs()) {
+     PerfLog = (*RedirectLogs).str();
+     return;
+   }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<changelog>https://sourceforge.net/p/flawfinder/code/ci/master/tree/ChangeLog</changelog>
+		<bugs-to>https://sourceforge.net/p/flawfinder/bugs/</bugs-to>
+		<remote-id type="sourceforge">flawfinder</remote-id>
+	</upstream>
+</pkgmetadata>

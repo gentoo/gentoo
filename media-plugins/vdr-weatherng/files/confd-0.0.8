@@ -1,0 +1,40 @@
+# /etc/conf.d/vdr.weatherng
+
+# =================================================================================
+# Before you use the examples of URLs in weatherng.sh ,
+# you agree with the "Terms of Use" from "The Weather Channel" , 
+# short TWC , which you can found at http://www.weather.com
+# and that you have the permission to use the downloaded files.
+# The same for copyrighted radarmaps.
+# Take a look in /var/vdr/weatherng/weatherng.sh or read the README.(DE) 
+# =================================================================================
+#
+# To get your Station Id move with your internetbrowser to :
+#
+# http://uk.weather.com/search/drilldown/
+#
+# Type in the name of your town (e.g. "London" and hit enter.
+# Now have a look at the link for your town which you hopefully got after you hit return.
+# If you dont got one , try with a bigger town next to you.
+# For "Herne, Germany" you get something like ....GMXX0056.... .
+# so GMXX0056 is the StationId for you if you live in "Herne,Germany" ;)
+
+WEATHERNG_STATIONID1="GMXX0007"  # example for Berlin, Germany
+WEATHERNG_STATIONID2="GRXX0068"  # example for Corfu, Greece
+WEATHERNG_STATIONID3="USNY0996"  # example for New York, USA
+
+## Next are default settings; should not be changed ! 
+#
+# Directory to the /image DIR where the images are placed
+#   allowed values: pathes
+#   default: /usr/share/vdr/weatherng
+#WEATHERNG_IMAGE_DIR="/usr/share/vdr/weatherng"
+
+#
+# Directory to store downloaded weather data
+#
+#   allowed values: pathes
+#   default: /var/vdr/weatherng
+#WEATHERNG_DATA_DIR="/var/vdr/weatherng"
+
+

@@ -1,0 +1,38 @@
+https://sourceforge.net/p/libircclient/code/141/
+https://sourceforge.net/p/libircclient/code/142/
+
+--- libircclient-1.10/src/ssl.c
++++ libircclient-1.10/src/ssl.c
+@@ -114,26 +114,23 @@
+ #if OPENSSL_VERSION_NUMBER < 0x10100000L
+ 	SSL_library_init();
+ #else
+-	OPENSSL_init_ssl(0, NULL);
++	if ( OPENSSL_init_ssl(0, NULL) == 0 )
++	 return LIBIRC_ERR_SSL_INIT_FAILED;
+ #endif 
+ 
+ 	if ( RAND_status() == 0 )
+ 		return LIBIRC_ERR_SSL_INIT_FAILED;
+ 
+ 	// Create an SSL context; currently a single context is used for all connections
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+ 	ssl_context = SSL_CTX_new( SSLv23_method() );
++#else
++	ssl_context = SSL_CTX_new( TLS_client_method() );
++#endif
+ 
+ 	if ( !ssl_context )
+ 		return LIBIRC_ERR_SSL_INIT_FAILED;
+ 
+-	// Disable SSLv2 as it is unsecure
+-	if ( (SSL_CTX_set_options( ssl_context, SSL_OP_NO_SSLv2) & SSL_OP_NO_SSLv2) == 0 )
+-		return LIBIRC_ERR_SSL_INIT_FAILED;
+-
+-	// Enable only strong ciphers
+-	if ( SSL_CTX_set_cipher_list( ssl_context, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH" ) != 1 )
+-		return LIBIRC_ERR_SSL_INIT_FAILED;
+-
+ 	// Set the verification
+ 	if ( session->options & LIBIRC_OPTION_SSL_NO_VERIFY )
+ 		SSL_CTX_set_verify( ssl_context, SSL_VERIFY_NONE, 0 );

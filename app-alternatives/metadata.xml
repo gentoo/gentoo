@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-alternatives category contains packages providing
+		symlinks linking different available implementations for various
+		executables.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-alternatives enthält Pakete, die symbolische
+		Verknüpfungen zu verschiedenen verfügbaren Implementierungen
+		eines Programms bereitstellen.
+	</longdescription>
+</catmetadata>

@@ -1,0 +1,11 @@
+[Unit]
+Description=Munin FastCGI Graph
+Requires=munin-graph.socket
+
+[Service]
+User=munin
+Group=munin
+ExecStart=/usr/libexec/munin/munin-graph
+StandardInput=socket
+StandardOutput=inherit
+StandardError=journal

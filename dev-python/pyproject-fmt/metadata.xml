@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">tox-dev/pyproject-fmt</remote-id>
+		<remote-id type="pypi">pyproject-fmt</remote-id>
+	</upstream>
+</pkgmetadata>

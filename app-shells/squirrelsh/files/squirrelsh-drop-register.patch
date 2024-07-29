@@ -1,0 +1,12 @@
+Bug: https://bugs.gentoo.org/894640
+--- a/shell/hash_md5.cpp
++++ b/shell/hash_md5.cpp
+@@ -52,7 +52,7 @@ void MD5Init (MD5Context *ctx)
+ // The core of the MD5 algorithm
+ void MD5Transform (unsigned buf[4], const unsigned in[16])
+ {
+-    register unsigned a, b, c, d;
++    unsigned a, b, c, d;
+ 
+     a = buf[0];
+     b = buf[1];

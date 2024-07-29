@@ -1,0 +1,30 @@
+From b638bf5352194ba08b1139375e27523ce43834b0 Mon Sep 17 00:00:00 2001
+From: Louis Sautier <sautier.louis@gmail.com>
+Date: Wed, 22 Feb 2023 13:49:26 +0100
+Subject: [PATCH] Rely on sys.prefix instead of setuptools-computed prefix
+
+When using PEP517 mode, we ended up with
+DATA_DIR = '/gaupol-1.12.data/data/share/gaupol'
+LOCALE_DIR = '/gaupol-1.11.data/data/share/locale'
+
+By relying on sys.prefix instead, we work around the issue.
+Bug: https://bugs.gentoo.org/839267
+--- a/setup.py
++++ b/setup.py
+@@ -335,11 +335,11 @@ class InstallLib(install_lib):
+         path = os.path.join(self.build_dir, "aeidon", "paths.py")
+         text = open(path, "r", encoding="utf_8").read()
+         patt = r"^DATA_DIR = .*$"
+-        repl = "DATA_DIR = {!r}".format(data_dir)
++        repl = 'DATA_DIR = os.path.join(sys.prefix, "share", "gaupol")'
+         text = re.sub(patt, repl, text, flags=re.MULTILINE)
+         assert text.count(repl) == 1
+         patt = r"^LOCALE_DIR = .*$"
+-        repl = "LOCALE_DIR = {!r}".format(locale_dir)
++        repl = 'LOCALE_DIR = os.path.join(sys.prefix, "share", "locale")'
+         text = re.sub(patt, repl, text, flags=re.MULTILINE)
+         assert text.count(repl) == 1
+         open(path, "w", encoding="utf_8").write(text)
+-- 
+2.39.2
+

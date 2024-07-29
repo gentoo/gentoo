@@ -1,0 +1,81 @@
+From 07f78866608c8f1094696615932e2d8382e5fd8c Mon Sep 17 00:00:00 2001
+From: Kostadin Shishmanov <kocelfc@tutanota.com>
+Date: Thu, 16 Nov 2023 21:17:34 +0200
+Subject: [PATCH] Add #include <algorithm> to fix building with gcc 14
+
+Gentoo bug: https://bugs.gentoo.org/917136
+
+Upstream PR: https://github.com/gerbera/gerbera/pull/2899
+
+Signed-off-by: Kostadin Shishmanov <kocelfc@tutanota.com>
+---
+ src/cds/cds_objects.h                     | 1 +
+ src/iohandler/io_handler_buffer_helper.cc | 2 ++
+ src/iohandler/mem_io_handler.cc           | 2 ++
+ src/util/tools.h                          | 1 +
+ src/util/upnp_clients.cc                  | 2 ++
+ 5 files changed, 8 insertions(+)
+
+diff --git a/src/cds/cds_objects.h b/src/cds/cds_objects.h
+index 4283a3af5..a4b9c1d01 100644
+--- a/src/cds/cds_objects.h
++++ b/src/cds/cds_objects.h
+@@ -34,6 +34,7 @@
+ #ifndef __CDS_OBJECTS_H__
+ #define __CDS_OBJECTS_H__
+ 
++#include <algorithm>
+ #include <map>
+ #include <memory>
+ #include <vector>
+diff --git a/src/iohandler/io_handler_buffer_helper.cc b/src/iohandler/io_handler_buffer_helper.cc
+index ee1de602e..49afd3c8c 100644
+--- a/src/iohandler/io_handler_buffer_helper.cc
++++ b/src/iohandler/io_handler_buffer_helper.cc
+@@ -36,6 +36,8 @@
+ 
+ #include "config/config_manager.h"
+ 
++#include <algorithm>
++
+ IOHandlerBufferHelper::IOHandlerBufferHelper(std::shared_ptr<Config> config, std::size_t bufSize, std::size_t initialFillSize)
+     : config(std::move(config))
+     , bufSize(bufSize)
+diff --git a/src/iohandler/mem_io_handler.cc b/src/iohandler/mem_io_handler.cc
+index 534c452da..230f4aa85 100644
+--- a/src/iohandler/mem_io_handler.cc
++++ b/src/iohandler/mem_io_handler.cc
+@@ -34,6 +34,8 @@
+ 
+ #include "mem_io_handler.h" // API
+ 
++#include <algorithm>
++
+ MemIOHandler::MemIOHandler(const void* buffer, int length)
+     : buffer(new char[length])
+     , length(length)
+diff --git a/src/util/tools.h b/src/util/tools.h
+index 177f09900..de2481c87 100644
+--- a/src/util/tools.h
++++ b/src/util/tools.h
+@@ -33,6 +33,7 @@
+ #ifndef __TOOLS_H__
+ #define __TOOLS_H__
+ 
++#include <algorithm>
+ #include <map>
+ #include <optional>
+ #include <vector>
+diff --git a/src/util/upnp_clients.cc b/src/util/upnp_clients.cc
+index e07fb4508..d95f426fb 100644
+--- a/src/util/upnp_clients.cc
++++ b/src/util/upnp_clients.cc
+@@ -33,6 +33,8 @@
+ 
+ #include <upnp.h>
+ 
++#include <algorithm>
++
+ std::shared_ptr<ClientStatusDetail> ClientStatusDetail::clone() const
+ {
+     return std::make_shared<ClientStatusDetail>(group, itemId, playCount, lastPlayed.count(), lastPlayedPosition.count(), bookMarkPos.count());

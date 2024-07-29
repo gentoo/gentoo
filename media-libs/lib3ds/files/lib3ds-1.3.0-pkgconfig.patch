@@ -1,0 +1,94 @@
+diff -uNr lib3ds-1.2.0.orig/lib3ds-config.in lib3ds-1.2.0/lib3ds-config.in
+--- lib3ds-1.2.0.orig/lib3ds-config.in	2000-05-23 14:13:08.000000000 +0200
++++ lib3ds-1.2.0/lib3ds-config.in	2007-10-21 06:37:48.000000000 +0200
+@@ -1,9 +1,5 @@
+ #!/bin/sh
+ 
+-prefix=@prefix@
+-exec_prefix=@exec_prefix@
+-exec_prefix_set=no
+-
+ usage()
+ {
+     cat <<EOF
+@@ -22,6 +18,8 @@
+ 	usage 1 1>&2
+ fi
+ 
++PKG_CONFIG_ARGS=
++
+ while test $# -gt 0; do
+   case "$1" in
+   -*=*) optarg=`echo "$1" | sed 's/[-_a-zA-Z0-9]*=//'` ;;
+@@ -30,23 +28,23 @@
+ 
+   case $1 in
+     --prefix=*)
+-      prefix=$optarg
++      PKG_CONFIG_ARGS="$PKG_CONFIG_ARGS --define-variable=prefix=$optarg"
+       if test $exec_prefix_set = no ; then
+-        exec_prefix=$optarg
++        PKG_CONFIG_ARGS="$PKG_CONFIG_ARGS --define-variable=exec_prefix=$optarg"
+       fi
+       ;;
+     --prefix)
+       echo_prefix=yes
+       ;;
+     --exec-prefix=*)
+-      exec_prefix=$optarg
++      PKG_CONFIG_ARGS="$PKG_CONFIG_ARGS --define-variable=exec_prefix=$optarg"
+       exec_prefix_set=yes
+       ;;
+     --exec-prefix)
+       echo_exec_prefix=yes
+       ;;
+     --version)
+-      echo @LIB3DS_VERSION@
++      pkg-config --modversion lib3ds
+       ;;
+     --cflags)
+       echo_cflags=yes
+@@ -62,23 +60,18 @@
+ done
+ 
+ if test "$echo_prefix" = "yes"; then
+-	echo $prefix
++  pkg-config $PKG_CONFIG_ARGS --variable=prefix lib3ds
+ fi
+ 
+ if test "$echo_exec_prefix" = "yes"; then
+-	echo $exec_prefix
++  pkg-config $PKG_CONFIG_ARGS --variable=exec_prefix lib3ds
+ fi
+ 
+ if test "$echo_cflags" = "yes"; then
+-      if test @includedir@ != /usr/include ; then
+-            echo -I@includedir@
+-      fi
++  pkg-config $PKG_CONFIG_ARGS --cflags lib3ds
+ fi
+ 
+ if test "$echo_libs" = "yes"; then
+-      if test @libdir@ != /usr/lib ; then
+-            my_linker_flags="-L@libdir@"
+-      fi
+-      echo ${my_linker_flags} -l3ds
+-fi      
++  pkg-config $PKG_CONFIG_ARGS --libs lib3ds
++fi
+ 
+diff -uNr lib3ds-1.2.0.orig/lib3ds.pc.in lib3ds-1.2.0/lib3ds.pc.in
+--- lib3ds-1.2.0.orig/lib3ds.pc.in	1970-01-01 01:00:00.000000000 +0100
++++ lib3ds-1.2.0/lib3ds.pc.in	2007-10-21 06:23:53.000000000 +0200
+@@ -0,0 +1,11 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@
++
++Name: lib3ds
++Description: lib3ds
++Version: @VERSION@
++Requires:
++Libs: -L${libdir} -l3ds -lm
++Cflags: -I${includedir}

@@ -1,0 +1,51 @@
+https://github.com/xelerance/xl2tpd/pull/261
+From 65a0473569c51a07309bbc0836ff4262b72297c7 Mon Sep 17 00:00:00 2001
+From: Jaco Kroon <jaco@uls.co.za>
+Date: Fri, 1 Sep 2023 11:05:29 +0200
+Subject: [PATCH] xl2tpd: Close calls when underlying pppd terminate.
+
+Unsure the cause, but we found that upon ppp terminating xl2tpd would
+only reap the PID, but not actually close the inner call, then at a
+later stage would issue a kill() for that PID.
+
+In our environment with high call turnover this would eventually result
+in xl2tpd kill()'ing other critical services like mariadb and/or
+syslog-ng which would upon reloads and rotations have a tendency to
+re-use PIDs that were previously used by pppd processes.
+
+We also believe that this should sort out the problem where IPs wouldn't
+get cycled and re-used.
+
+Closes: #252
+Closes: #255
+Signed-off-by: Jaco Kroon <jaco@uls.co.za>
+---
+ xl2tpd.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/xl2tpd.c b/xl2tpd.c
+index 791d5a4..4047bca 100644
+--- a/xl2tpd.c
++++ b/xl2tpd.c
+@@ -257,6 +257,9 @@ static void child_handler (int sig)
+             {
+                 if (c->pppd == pid)
+                 {
++                    /* pid is no longer valid, avoid killing it later by accident in destroy_call() */
++                    c->pppd = 0;
++
+                     if ( WIFEXITED( status ) )
+                     {
+                         l2tp_log (LOG_DEBUG, "%s : pppd exited for call %d with code %d\n", __FUNCTION__,
+@@ -283,6 +286,8 @@ static void child_handler (int sig)
+ #endif
+                     close (c->fd);
+ #ifdef USE_KERNEL
++                 } else {
++                     call_close (c);
+                  }
+ #endif
+                     c->fd = -1;
+-- 
+2.41.0
+

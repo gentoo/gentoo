@@ -1,0 +1,25 @@
+From 594fecb16833c693ac0cff8f857aec0edd097077 Mon Sep 17 00:00:00 2001
+Message-Id: <594fecb16833c693ac0cff8f857aec0edd097077.1666701554.git.mprivozn@redhat.com>
+From: Michal Privoznik <mprivozn@redhat.com>
+Date: Tue, 25 Oct 2022 14:39:07 +0200
+Subject: [PATCH] Link python module against shared library
+
+---
+ src/python/setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/python/setup.py b/src/python/setup.py
+index 46f9a73..85deb03 100755
+--- a/src/python/setup.py
++++ b/src/python/setup.py
+@@ -40,6 +40,6 @@ setup(
+ 	ext_modules = cythonize([
+ 		Extension("seccomp", ["seccomp.pyx"],
+ 			# unable to handle libtool libraries directly
+-			extra_objects=["../.libs/libseccomp.a"]),
++			extra_objects=["../.libs/libseccomp.so"]),
+ 	])
+ )
+-- 
+2.37.4
+

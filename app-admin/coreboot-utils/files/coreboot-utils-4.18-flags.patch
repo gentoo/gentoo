@@ -1,0 +1,35 @@
+- ifdtool: respect LDFLAGS
+- nvramtool: respect CFLAGS
+- pmh7tool: respect CC, CFLAGS
+
+--- a/util/ifdtool/Makefile.inc	2022-10-16 20:14:31.000000000 +0000
++++ b/util/ifdtool/Makefile.inc	2022-12-25 11:38:47.572534621 +0000
+@@ -16,4 +16,4 @@
+ 
+ $(objutil)/ifdtool/ifdtool: $(addprefix $(objutil)/ifdtool/,$(ifdtoolobj))
+ 	printf "   IFDTOOL\n"
+-	$(HOSTCC) $(addprefix $(objutil)/ifdtool/,$(ifdtoolobj)) -o $@
++	$(HOSTCC) $(LDFLAGS) $(addprefix $(objutil)/ifdtool/,$(ifdtoolobj)) -o $@
+--- a/util/nvramtool/Makefile	2022-10-16 20:14:31.000000000 +0000
++++ b/util/nvramtool/Makefile	2022-12-25 11:39:15.924345609 +0000
+@@ -11,7 +11,7 @@
+ CC     ?= gcc
+ INSTALL = /usr/bin/env install
+ PREFIX  = /usr/local
+-CFLAGS  = -O2 -g -Wall -Wextra -Wmissing-prototypes -I. -DCMOS_HAL=1
++CFLAGS  += -O2 -g -Wall -Wextra -Wmissing-prototypes -I. -DCMOS_HAL=1
+ #CFLAGS  = -Os -Wall
+ 
+ CLI_OBJS = cli/nvramtool.o cli/opts.o
+--- a/util/pmh7tool/Makefile	2022-10-16 20:14:31.000000000 +0000
++++ b/util/pmh7tool/Makefile	2022-12-25 11:39:38.491195945 +0000
+@@ -1,7 +1,7 @@
+ ## SPDX-License-Identifier: GPL-2.0-only
+ 
+-CC = gcc
+-CFLAGS = -O2 -Wall -Wextra -Werror
++CC ?= gcc
++CFLAGS ?= -O2 -Wall -Wextra -Werror
+ PROGRAM = pmh7tool
+ INSTALL = /usr/bin/env install
+ PREFIX	= /usr/local

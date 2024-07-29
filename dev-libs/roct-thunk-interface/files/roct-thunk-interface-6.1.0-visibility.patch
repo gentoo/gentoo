@@ -1,0 +1,26 @@
+https://github.com/ROCm/ROCT-Thunk-Interface/pull/102
+From 8385d8795b994f31e00e651dc4f41e18d82ff968 Mon Sep 17 00:00:00 2001
+From: Yiyang Wu <xgreenlandforwyy@gmail.com>
+Date: Tue, 30 Apr 2024 15:07:12 +0800
+Subject: [PATCH] hsaKmtCheckRuntimeDebugSupport should be visible for kfdtest
+
+---
+ src/debug.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/debug.c b/src/debug.c
+index 932e829..67c32c8 100644
+--- a/src/debug.c
++++ b/src/debug.c
+@@ -268,7 +268,7 @@ HSAKMT_STATUS HSAKMTAPI hsaKmtDbgAddressWatch(HSAuint32 NodeId,
+ #define HSA_RUNTIME_ENABLE_MAX_MAJOR   1
+ #define HSA_RUNTIME_ENABLE_MIN_MINOR   13
+ 
+-HSAKMT_STATUS hsaKmtCheckRuntimeDebugSupport(void) {
++HSAKMT_STATUS HSAKMTAPI hsaKmtCheckRuntimeDebugSupport(void) {
+ 	HsaNodeProperties node = {0};
+ 	HsaSystemProperties props = {0};
+ 	HsaVersionInfo versionInfo = {0};
+-- 
+2.44.0
+

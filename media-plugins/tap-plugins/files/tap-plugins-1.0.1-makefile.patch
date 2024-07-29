@@ -1,0 +1,47 @@
+diff --git a/Makefile b/Makefile
+index 54049cd..86f7175 100644
+--- a/Makefile
++++ b/Makefile
+@@ -23,8 +23,8 @@
+ # Change this if you want to install somewhere else. In particular
+ # you may wish to remove the middle "local/" part of the path.
+ 
+-INSTALL_PLUGINS_DIR	=	/usr/local/lib/ladspa/
+-INSTALL_LRDF_DIR	=	/usr/local/share/ladspa/rdf/
++#INSTALL_PLUGINS_DIR	=	/usr/local/lib/ladspa/
++#INSTALL_LRDF_DIR	=	/usr/local/share/ladspa/rdf/
+ 
+ # NO EDITING below this line is required
+ # if all you want to do is install and use the plugins.
+@@ -37,13 +37,15 @@ INSTALL_LRDF_DIR	=	/usr/local/share/ladspa/rdf/
+ OS := $(shell uname -s)
+ 
+ CC      = gcc
+-CFLAGS  = -I. -O3 -Wall -fomit-frame-pointer -funroll-loops -ffast-math -c -fPIC -DPIC
++CFLAGS  = -I. -Wall -fomit-frame-pointer -funroll-loops -ffast-math -c -fPIC -DPIC
+ ifeq ($(OS),Darwin)
+-LDFLAGS = -nostartfiles -shared -Wl,-install_name,symbolic -lc -lm
++LDFLAGS = -nostartfiles -shared -Wl,-install_name,symbolic -lc -lm $(EXTRA_LDFLAGS)
+ else
+-LDFLAGS = -nostartfiles -shared -Wl,-Bsymbolic -lc -lm -lrt
++LDFLAGS = -nostartfiles -shared -Wl,-Bsymbolic -lc -lm -lrt $(EXTRA_LDFLAGS)
+ endif
++EXTRA_LDFLAGS =
+ MODULES = $(wildcard *.c)
++LIBADD = -lc -lm -lrt
+ 
+ all: $(MODULES:%.c=%.so)
+ 
+@@ -54,10 +56,10 @@ tap_dynamics_m.o: tap_dynamics_presets.h
+ tap_dynamics_st.o: tap_dynamics_presets.h
+ 
+ %.o: %.c tap_utils.h ladspa.h
+-	$(CC) $(CFLAGS) $< -o $@
++	$(CC) $(CFLAGS) $(OPT_CFLAGS) $< -o $@
+ 
+ %.so: %.o
+-	$(CC) -o $@ $< $(LDFLAGS)
++	$(CC) $(LDFLAGS) -o $@ $< $(LIBADD)
+ 
+ # OTHER TARGETS
+ 

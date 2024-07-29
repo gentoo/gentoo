@@ -1,0 +1,27 @@
+--- a/rawphoto.c.ORIG	2018-05-10 14:06:37.553419235 +0200
++++ b/rawphoto.c	2018-05-10 14:06:37.553419235 +0200
+@@ -105,8 +105,15 @@
+ 			  load_args,
+ 			  load_return_vals);
+ 
++#if HAVE_GIMP_2_9
++  gimp_register_magic_load_handler ("file_rawphoto_load",
++    "3fr,arw,bay,bmq,cine,cr2,crw,cs1,dc2,dcr,dng,erf,fff,hdr,ia,jpg,k25,kc2,kdc,mdc,mef,mos,mrw,nef,nrw,orf,pef,pxn,qtk,raf,raw,rdc,rw2,sr2,srf,sti,tif,x3f",
++    "","0,string,II*\\0,0,string,MM\\0*,0,string,<?xml");
++      gimp_register_file_handler_raw ("file_rawphoto_load");
++#else
+   gimp_register_load_handler ("file_rawphoto_load",
+     "3fr,arw,bay,bmq,cine,cr2,crw,cs1,dc2,dcr,dng,erf,fff,hdr,ia,jpg,k25,kc2,kdc,mdc,mef,mos,mrw,nef,nrw,orf,pef,pxn,qtk,raf,raw,rdc,rw2,sr2,srf,sti,tif,x3f", "");
++#endif
+ }
+ 
+ static void run (RAWPHOTO_CONST gchar *name,
+@@ -225,7 +232,7 @@
+   layer = gimp_layer_new (image, "Background", width, height,
+ 			depth == 3 ? GIMP_RGB_IMAGE : GIMP_GRAY_IMAGE,
+ 			100, GIMP_NORMAL_MODE);
+-  gimp_image_add_layer (image, layer, 0);
++  gimp_image_insert_layer(image, layer, 0, 0);
+ 
+   /* Get the drawable and set the pixel region for our load... */
+   drawable = gimp_drawable_get (layer);

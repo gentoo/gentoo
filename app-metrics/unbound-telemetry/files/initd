@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 2021 Sony Interactive Entertainment LLC
+# Distributed under the terms of the GNU General Public License v2
+
+name="unbound-telemetry daemon"
+description="Prometheus exporter for Unbound DNS resolver"
+command=/usr/bin/unbound-telemetry
+command_args="${unbound_telemetry_args}"
+command_user="unbound-telemetry:unbound-telemetry"
+
+supervisor=supervise-daemon
+output_logger="logger -p daemon.info -t ${RC_SVCNAME}.stdout --"
+error_logger="logger -p daemon.err -t ${RC_SVCNAME}.error --"
+
+depend() {
+	use unbound
+}

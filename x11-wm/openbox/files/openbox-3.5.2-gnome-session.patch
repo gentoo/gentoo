@@ -1,0 +1,14 @@
+Index: openbox-3.5.2/data/xsession/openbox-gnome-session.in
+===================================================================
+--- openbox-3.5.2.orig/data/xsession/openbox-gnome-session.in
++++ openbox-3.5.2/data/xsession/openbox-gnome-session.in
+@@ -18,6 +18,9 @@ VER=$(gnome-session --version 2>/dev/nul
+ MAJOR=$(echo $VER | cut -d . -f 1)
+ MINOR=$(echo $VER | cut -d . -f 2)
+ 
++# use gnome menus (gentoo bug #291965)
++export XDG_MENU_PREFIX=gnome-
++
+ # run GNOME with Openbox as its window manager
+ 
+ if test $MAJOR -lt 2 || (test $MAJOR = 2 && test $MINOR -le 22); then

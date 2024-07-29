@@ -1,0 +1,76 @@
+https://github.com/IgnorantGuru/spacefm/pull/816
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Mon, 22 Apr 2024 02:09:09 +0530
+Subject: [PATCH 1/1] Fix build issues with GCC 14
+
+GCC 14 enables -Wincompatible-pointer-types by default thus resulting in
+build error such as:
+exo-icon-view.c:2686:27: error: assignment to GdkWindow {aka struct _GdkWindow } from incompatible pointer type GObject {aka struct _GObject } [-Wincompatible-pointer-types]
+
+Much of the code changes are borrowed from older code segments.
+
+First reported on Gentoo linux, for more reference please bug:
+https://bugs.gentoo.org/928492
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/src/exo/exo-gdk-pixbuf-extensions.c
++++ b/src/exo/exo-gdk-pixbuf-extensions.c
+@@ -492,7 +492,10 @@ exo_gdk_pixbuf_scale_down (GdkPixbuf *source,
+ 
+     /* check if we need to scale */
+     if (G_UNLIKELY (source_width <= dest_width && source_height <= dest_height))
+-        return g_object_ref (G_OBJECT (source));
++    {
++        g_object_ref (G_OBJECT (source));
++        return source;
++    }
+ 
+     /* check if aspect ratio should be preserved */
+     if (G_LIKELY (preserve_aspect_ratio))
+--- a/src/exo/exo-icon-chooser-model.c
++++ b/src/exo/exo-icon-chooser-model.c
+@@ -671,7 +671,8 @@ _exo_icon_chooser_model_get_for_icon_theme (GtkIconTheme *icon_theme)
+         g_object_set_data (G_OBJECT (icon_theme), "exo-icon-chooser-default-model", model);
+ 
+         /* associated the model with the icon theme */
+-        model->icon_theme = g_object_ref (G_OBJECT (icon_theme));
++        model->icon_theme = icon_theme;
++        g_object_ref (G_OBJECT (icon_theme));
+         exo_icon_chooser_model_icon_theme_changed (icon_theme, model);
+         g_signal_connect (G_OBJECT (icon_theme), "changed", G_CALLBACK (exo_icon_chooser_model_icon_theme_changed), model);
+     }
+--- a/src/exo/exo-icon-view.c
++++ b/src/exo/exo-icon-view.c
+@@ -2683,7 +2683,8 @@ exo_icon_view_key_press_event (GtkWidget   *widget,
+     /* allocate a new event to forward */
+     new_event = gdk_event_copy ((GdkEvent *) event);
+     g_object_unref (G_OBJECT (new_event->key.window));
+-    new_event->key.window = g_object_ref (G_OBJECT (gtk_widget_get_window (GTK_WIDGET(icon_view->priv->search_entry))));
++    new_event->key.window = gtk_widget_get_window (GTK_WIDGET(icon_view->priv->search_entry));
++    g_object_ref (G_OBJECT (gtk_widget_get_window (GTK_WIDGET(new_event->key.window))));
+ 
+     /* send the event to the search entry. If the "preedit-changed" signal is
+    * emitted during this event, priv->search_imcontext_changed will be set.
+@@ -3082,7 +3083,8 @@ exo_icon_view_set_hadjustment (ExoIconView   *icon_view,
+     if (!hadj)
+         hadj = gtk_adjustment_new (0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+ 
+-    icon_view->priv->hadjustment = g_object_ref_sink (G_OBJECT (hadj));
++    icon_view->priv->hadjustment = hadj; 
++    g_object_ref_sink (G_OBJECT (icon_view->priv->hadjustment));
+ 
+     g_signal_connect (icon_view->priv->hadjustment, "value-changed",
+                       G_CALLBACK (exo_icon_view_adjustment_changed),
+@@ -3109,7 +3111,8 @@ exo_icon_view_set_vadjustment (ExoIconView   *icon_view,
+     if (!vadj)
+         vadj = gtk_adjustment_new (0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+ 
+-    icon_view->priv->vadjustment = g_object_ref_sink (G_OBJECT (vadj));
++    icon_view->priv->vadjustment = vadj;
++    g_object_ref_sink(G_OBJECT (icon_view->priv->vadjustment));
+ 
+     g_signal_connect (icon_view->priv->vadjustment, "value-changed",
+                       G_CALLBACK (exo_icon_view_adjustment_changed),
+-- 
+2.44.0
+

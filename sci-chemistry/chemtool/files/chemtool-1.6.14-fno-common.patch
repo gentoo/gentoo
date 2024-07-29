@@ -1,0 +1,37 @@
+--- a/ct1.h
++++ b/ct1.h
+@@ -273,12 +273,12 @@
+ extern float importfactor;
+ extern int importoffset;
+ 
+-char **intype;
+-char **inmode;
+-int babelin;
+-char **outtype;
+-char **outmode;
+-int babelout;
++extern char **intype;
++extern char **inmode;
++extern int babelin;
++extern char **outtype;
++extern char **outmode;
++extern int babelout;
+ extern char *babel;
+ extern GdkGC *mygc[8],*background_gc,*hlgc;
+ extern int curpen;
+--- a/inout.c
++++ b/inout.c
+@@ -30,6 +30,13 @@
+ extern GdkFont *font[7],*smallfont[7],*symbfont[7],*boldfont[7],*slfont[7];
+ #endif
+ 
++char **intype;
++char **inmode;
++int babelin;
++char **outtype;
++char **outmode;
++int babelout;
++
+ static char babeloutp[4];
+ 
+ int

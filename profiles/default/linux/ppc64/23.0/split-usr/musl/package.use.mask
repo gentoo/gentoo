@@ -1,0 +1,14 @@
+# Copyright 2020-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2023-01-29)
+# Fails to build on combination of ppc* + musl because of mcontext.
+# libsanitizer needs adapting, bug #892079.
+sys-devel/gcc sanitize
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-02-18)
+# perlasm assumes elfv1 abi on big endian
+# mask until merged and released
+# https://github.com/openssl/openssl/commit/34ab13b7d8e3e723adb60be8142e38b7c9cd382a
+# https://github.com/openssl/openssl/commit/098404128383ded87ba390dd74ecd9e2ffa6f530
+dev-libs/openssl asm

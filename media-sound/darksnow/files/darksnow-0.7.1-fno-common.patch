@@ -1,0 +1,350 @@
+--- a/darksnow.c
++++ b/darksnow.c
+@@ -33,6 +33,118 @@
+ 
+ #ifndef __GLOBAL_H__
+ #include "global.h"
++
++void *shared_area;
++
++int pid;
++
++int darkice_fd;
++
++char home[64];
++char darksnow_cfg[64];
++char darkice_cfg[64];
++char darksnow_temp[64];
++char show_detail;
++
++GtkWidget *window;
++GtkWidget *button_start;
++GtkWidget *button_stop;
++GtkWidget *button_detail;
++GtkWidget *label_status;
++GtkWidget *table;
++
++GtkWidget *dialog_about;
++
++GtkWidget *dialog_darkdep;
++GtkWidget *label_darkdep;
++GtkWidget *button_darkdep;
++
++GtkWidget *dialog_darkkill;
++GtkWidget *label_darkkill;
++GtkWidget *button_yes_darkkill;
++GtkWidget *button_no_darkkill;
++GtkWidget *button_cancel_darkkill;
++
++GtkWidget *menu_bar;
++GtkWidget *menu_file;
++GtkWidget *menu_item_file;
++GtkWidget *menu_item_open;
++GtkWidget *menu_item_save; 
++GtkWidget *menu_item_quit_nd;
++GtkWidget *menu_item_quit;
++GtkWidget *menu_help;
++GtkWidget *menu_item_help;
++GtkWidget *menu_item_about;
++GtkWidget *vbox;
++
++GtkWidget *file_open;
++GtkWidget *file_save;
++GtkWidget *file_localdump;
++
++GtkWidget *notebook;
++GtkWidget *label_notebook_server;
++GtkWidget *table_server;
++GtkWidget *label_notebook_audio;
++GtkWidget *table_audio;
++GtkWidget *label_notebook_description;
++GtkWidget *table_description;
++
++GtkWidget *button_localdump;
++GtkWidget *entry_localdump;
++GtkWidget *checkbutton_adddate;
++GtkWidget *label_remotedump;
++GtkWidget *entry_remotedump;
++
++GtkWidget *label_server;
++GtkWidget *entry_server;
++GtkWidget *label_port;
++GtkWidget *entry_port;
++GtkWidget *label_mountpoint;
++GtkWidget *entry_mountpoint;
++GtkWidget *label_pass;
++GtkWidget *entry_pass;
++GtkWidget *label_radioname;
++GtkWidget *entry_radioname;
++GtkWidget *label_description;
++GtkWidget *entry_description;
++GtkWidget *label_url;
++GtkWidget *entry_url;
++GtkWidget *label_genre;
++GtkWidget *entry_genre;
++
++GtkWidget *label_icecast;
++GtkWidget *combo_icecast;
++GtkWidget *label_format;
++GtkWidget *combo_format;
++GtkWidget *label_bitrate;
++GtkWidget *combo_bitrate;
++GtkWidget *label_bitratemode;
++GtkWidget *combo_bitratemode;
++GtkWidget *label_samplerate;
++GtkWidget *combo_samplerate;
++GtkWidget *label_quality;
++GtkWidget *combo_quality;
++GtkWidget *label_bitspersample;
++GtkWidget *combo_bitspersample;
++GtkWidget *label_channel;
++GtkWidget *combo_channel;
++GtkWidget *label_buffersize;
++GtkWidget *combo_buffersize;
++GtkWidget *label_device;
++GtkWidget *combo_device;
++GtkWidget *label_public;
++GtkWidget *combo_public;
++GtkWidget *label_verbosity;
++GtkWidget *combo_verbosity;
++
++GtkWidget *text;
++GtkTextBuffer *buffer;
++GtkTextTagTable *tag_table;
++GtkTextTag *tag;
++
++GtkWidget *scroll_text;
++
++GtkTooltip *tooltip;
+ #endif
+ 
+ /* some defines */
+--- a/global.h
++++ b/global.h
+@@ -24,131 +24,131 @@
+ #endif
+ 
+ /* shared area */
+-void *shared_area;
++extern void *shared_area;
+ 
+ /* darkice execution child process pid */
+-int pid;
++extern int pid;
+ 
+ /* file descriptor used by darkice output pipe */
+-int darkice_fd;
++extern int darkice_fd;
+ 
+ /* the user home */
+-char home[64];
+-char darksnow_cfg[64];
+-char darkice_cfg[64];
+-char darksnow_temp[64];
+-char show_detail;
++extern char home[64];
++extern char darksnow_cfg[64];
++extern char darkice_cfg[64];
++extern char darksnow_temp[64];
++extern char show_detail;
+ 
+ /* main window Widgets */
+-GtkWidget *window;
+-GtkWidget *button_start;
+-GtkWidget *button_stop;
+-GtkWidget *button_detail;
+-GtkWidget *label_status;
+-GtkWidget *table;
++extern GtkWidget *window;
++extern GtkWidget *button_start;
++extern GtkWidget *button_stop;
++extern GtkWidget *button_detail;
++extern GtkWidget *label_status;
++extern GtkWidget *table;
+ 
+ /* About Dialog box */
+-GtkWidget *dialog_about;
++extern GtkWidget *dialog_about;
+ 
+ /* darkice not found dialog box */
+-GtkWidget *dialog_darkdep;
+-GtkWidget *label_darkdep;
+-GtkWidget *button_darkdep;
++extern GtkWidget *dialog_darkdep;
++extern GtkWidget *label_darkdep;
++extern GtkWidget *button_darkdep;
+ 
+ /* "kill darkice?" dialog box */
+-GtkWidget *dialog_darkkill;
+-GtkWidget *label_darkkill;
+-GtkWidget *button_yes_darkkill;
+-GtkWidget *button_no_darkkill;
+-GtkWidget *button_cancel_darkkill;
++extern GtkWidget *dialog_darkkill;
++extern GtkWidget *label_darkkill;
++extern GtkWidget *button_yes_darkkill;
++extern GtkWidget *button_no_darkkill;
++extern GtkWidget *button_cancel_darkkill;
+ 
+ /* menu stuff */
+-GtkWidget *menu_bar;
+-GtkWidget *menu_file;
+-GtkWidget *menu_item_file;
+-GtkWidget *menu_item_open;
+-GtkWidget *menu_item_save; 
+-GtkWidget *menu_item_quit_nd;
+-GtkWidget *menu_item_quit;
+-GtkWidget *menu_help;
+-GtkWidget *menu_item_help;
+-GtkWidget *menu_item_about;
+-GtkWidget *vbox;
++extern GtkWidget *menu_bar;
++extern GtkWidget *menu_file;
++extern GtkWidget *menu_item_file;
++extern GtkWidget *menu_item_open;
++extern GtkWidget *menu_item_save; 
++extern GtkWidget *menu_item_quit_nd;
++extern GtkWidget *menu_item_quit;
++extern GtkWidget *menu_help;
++extern GtkWidget *menu_item_help;
++extern GtkWidget *menu_item_about;
++extern GtkWidget *vbox;
+ 
+ /* open and save file selectors */
+-GtkWidget *file_open;
+-GtkWidget *file_save;
+-GtkWidget *file_localdump;
++extern GtkWidget *file_open;
++extern GtkWidget *file_save;
++extern GtkWidget *file_localdump;
+ 
+ /* notebook stuff */
+-GtkWidget *notebook;
+-GtkWidget *label_notebook_server;
+-GtkWidget *table_server;
+-GtkWidget *label_notebook_audio;
+-GtkWidget *table_audio;
+-GtkWidget *label_notebook_description;
+-GtkWidget *table_description;
++extern GtkWidget *notebook;
++extern GtkWidget *label_notebook_server;
++extern GtkWidget *table_server;
++extern GtkWidget *label_notebook_audio;
++extern GtkWidget *table_audio;
++extern GtkWidget *label_notebook_description;
++extern GtkWidget *table_description;
+ 
+ /* darksnow configuration stuff - button + entry */
+ 
+-GtkWidget *button_localdump;
+-GtkWidget *entry_localdump;
+-GtkWidget *checkbutton_adddate;
+-GtkWidget *label_remotedump;
+-GtkWidget *entry_remotedump;
++extern GtkWidget *button_localdump;
++extern GtkWidget *entry_localdump;
++extern GtkWidget *checkbutton_adddate;
++extern GtkWidget *label_remotedump;
++extern GtkWidget *entry_remotedump;
+ 
+ /* darksnow configuration stuff - label + entry */
+-GtkWidget *label_server;
+-GtkWidget *entry_server;
+-GtkWidget *label_port;
+-GtkWidget *entry_port;
+-GtkWidget *label_mountpoint;
+-GtkWidget *entry_mountpoint;
+-GtkWidget *label_pass;
+-GtkWidget *entry_pass;
+-GtkWidget *label_radioname;
+-GtkWidget *entry_radioname;
+-GtkWidget *label_description;
+-GtkWidget *entry_description;
+-GtkWidget *label_url;
+-GtkWidget *entry_url;
+-GtkWidget *label_genre;
+-GtkWidget *entry_genre;
++extern GtkWidget *label_server;
++extern GtkWidget *entry_server;
++extern GtkWidget *label_port;
++extern GtkWidget *entry_port;
++extern GtkWidget *label_mountpoint;
++extern GtkWidget *entry_mountpoint;
++extern GtkWidget *label_pass;
++extern GtkWidget *entry_pass;
++extern GtkWidget *label_radioname;
++extern GtkWidget *entry_radioname;
++extern GtkWidget *label_description;
++extern GtkWidget *entry_description;
++extern GtkWidget *label_url;
++extern GtkWidget *entry_url;
++extern GtkWidget *label_genre;
++extern GtkWidget *entry_genre;
+ 
+ /* darksnow configuration stuff - label + combo box */
+-GtkWidget *label_icecast;
+-GtkWidget *combo_icecast;
+-GtkWidget *label_format;
+-GtkWidget *combo_format;
+-GtkWidget *label_bitrate;
+-GtkWidget *combo_bitrate;
+-GtkWidget *label_bitratemode;
+-GtkWidget *combo_bitratemode;
+-GtkWidget *label_samplerate;
+-GtkWidget *combo_samplerate;
+-GtkWidget *label_quality;
+-GtkWidget *combo_quality;
+-GtkWidget *label_bitspersample;
+-GtkWidget *combo_bitspersample;
+-GtkWidget *label_channel;
+-GtkWidget *combo_channel;
+-GtkWidget *label_buffersize;
+-GtkWidget *combo_buffersize;
+-GtkWidget *label_device;
+-GtkWidget *combo_device;
+-GtkWidget *label_public;
+-GtkWidget *combo_public;
+-GtkWidget *label_verbosity;
+-GtkWidget *combo_verbosity;
++extern GtkWidget *label_icecast;
++extern GtkWidget *combo_icecast;
++extern GtkWidget *label_format;
++extern GtkWidget *combo_format;
++extern GtkWidget *label_bitrate;
++extern GtkWidget *combo_bitrate;
++extern GtkWidget *label_bitratemode;
++extern GtkWidget *combo_bitratemode;
++extern GtkWidget *label_samplerate;
++extern GtkWidget *combo_samplerate;
++extern GtkWidget *label_quality;
++extern GtkWidget *combo_quality;
++extern GtkWidget *label_bitspersample;
++extern GtkWidget *combo_bitspersample;
++extern GtkWidget *label_channel;
++extern GtkWidget *combo_channel;
++extern GtkWidget *label_buffersize;
++extern GtkWidget *combo_buffersize;
++extern GtkWidget *label_device;
++extern GtkWidget *combo_device;
++extern GtkWidget *label_public;
++extern GtkWidget *combo_public;
++extern GtkWidget *label_verbosity;
++extern GtkWidget *combo_verbosity;
+ 
+ /* text view stuff */
+-GtkWidget *text;
+-GtkTextBuffer *buffer;
+-GtkTextTagTable *tag_table;
+-GtkTextTag *tag;
++extern GtkWidget *text;
++extern GtkTextBuffer *buffer;
++extern GtkTextTagTable *tag_table;
++extern GtkTextTag *tag;
+ 
+ /* text view has to scroll */
+-GtkWidget *scroll_text;
++extern GtkWidget *scroll_text;
+ 
+ /* The GTK ToolTips */
+-GtkTooltip *tooltip;
++extern GtkTooltip *tooltip;

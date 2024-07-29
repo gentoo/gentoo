@@ -1,0 +1,29 @@
+--- a/IO/OCCT/CMakeLists.txt
++++ b/IO/OCCT/CMakeLists.txt
+@@ -5,11 +5,11 @@ vtk_module_find_package(
+ )
+ 
+ set(opencascade_req_targets
+-  TKSTEP
+-  TKIGES
++  TKDESTEP
++  TKDEIGES
+   TKMesh
+-  TKXDESTEP
+-  TKXDEIGES)
++  TKXSDRAWSTEP
++  TKXSDRAWIGES)
+ set(opencascade_missing_targets)
+ foreach (opencascade_req_target IN LISTS opencascade_req_targets)
+   if (NOT TARGET "${opencascade_req_target}")
+--- a/IO/OCCT/vtkOCCTReader.cxx
++++ b/IO/OCCT/vtkOCCTReader.cxx
+@@ -348,7 +348,7 @@ public:
+   int GetHash(const TDF_Label& label)
+   {
+     TopoDS_Shape aShape;
+-    return this->ShapeTool->GetShape(label, aShape) ? aShape.HashCode(INT_MAX) : 0;
++    return this->ShapeTool->GetShape(label, aShape) ? opencascade::hash(aShape) : 0;
+   }
+ 
+   //----------------------------------------------------------------------------

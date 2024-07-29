@@ -1,0 +1,50 @@
+diff -r 724cf5abf164 host/Makefile
+--- a/host/Makefile	Mon Oct 28 00:43:49 2013 +0100
++++ b/host/Makefile	Mon Oct 28 00:54:01 2013 +0100
+@@ -19,7 +19,7 @@
+ RM ?= rm -f
+ LUA_V ?= 5.1
+ EXTRA_INC ?=
+-LUA_INC ?= -I/usr/include/lua5.1
++LUA_INC ?= -I/usr/include
+ LIBDL ?= -ldl
+ PTHFLAGS ?=
+ PTHLIBS ?= -lpthread
+@@ -31,7 +31,7 @@
+ MANZEXT := .gz
+ 
+ # Current tool version as returned from tools
+-EKEYD_VERSION_S="1.1.4"
++EKEYD_VERSION_S="1.1.5"
+ 
+ # Attempt to detect an OS and set build options as appropriate
+ OSNAME=$(shell uname -s | tr A-Z a-z | tr -d /)
+@@ -91,10 +91,7 @@
+ override MANZCMD:=cat
+ override MANZEXT:=
+ endif
+-override LUA_INC:=-I/usr/local/include/lua51
+ override LIBDL:=
+-LIBDIRS += -L/usr/local/lib
+-INCLUDES += -I/usr/local/include
+ endif
+ endif
+ endif
+@@ -114,7 +111,7 @@
+ CFLAGS += '-DEKEYD_VERSION_S=""$(EKEYD_VERSION_S)""'
+ CFLAGS += $(EXTRA_CFLAGS)
+ 
+-LIBS += -llua$(LUA_V) -lm $(LIBDL)
++LIBS += -llua -lm $(LIBDL)
+ LDFLAGS += $(LIBDIRS)
+ 
+ 
+@@ -157,7 +154,7 @@
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ control.inc: bin2c.lua control.lua
+-	lua$(LUA_V) bin2c.lua +control.lua result > control.inc.new
++	lua bin2c.lua +control.lua result > control.inc.new
+ 	mv control.inc.new control.inc
+ 
+ lstate.o: lstate.c control.inc

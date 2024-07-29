@@ -1,0 +1,75 @@
+Use portable shebangs instead of hardcoding interpreters
+See also: https://blogs.gentoo.org/mgorny/2016/02/08/a-quick-note-on-portable-shebangs/
+
+--- a/scripts/dnadiff.pl
++++ b/scripts/dnadiff.pl
+@@ -1,4 +1,4 @@
+-#!__PERL_PATH -w
++#!/usr/bin/env perl
+ 
+ #-------------------------------------------------------------------------------
+ #   Programmer: Adam M Phillippy, University of Maryland
+--- a/scripts/exact-tandems.csh
++++ b/scripts/exact-tandems.csh
+@@ -1,4 +1,4 @@
+-#!__CSH_PATH -f
++#!/usr/bin/env csh
+ #
+ # Find exact tandem repeats in specified file involving an
+ # exact duplicate of at least the specified length
+--- a/scripts/mapview.pl
++++ b/scripts/mapview.pl
+@@ -1,4 +1,4 @@
+-#!__PERL_PATH
++#!/usr/bin/env perl
+ 
+ use lib "__SCRIPT_DIR";
+ use Foundation;
+--- a/scripts/mummerplot.pl
++++ b/scripts/mummerplot.pl
+@@ -1,4 +1,4 @@
+-#!__PERL_PATH
++#!/usr/bin/env perl
+ 
+ ################################################################################
+ #   Programmer: Adam M Phillippy, The Institute for Genomic Research
+--- a/scripts/nucmer2xfig.pl
++++ b/scripts/nucmer2xfig.pl
+@@ -1,4 +1,4 @@
+-#!__PERL_PATH
++#!/usr/bin/env perl
+ # (c) Steven Salzberg 2001
+ # Make an xfig plot for a comparison of a reference chromosome (or single
+ # molecule) versus a multifasta file of contigs from another genome.  
+--- a/scripts/nucmer.pl
++++ b/scripts/nucmer.pl
+@@ -1,4 +1,4 @@
+-#!__PERL_PATH
++#!/usr/bin/env perl
+ 
+ #-------------------------------------------------------------------------------
+ #   Programmer: Adam M Phillippy, The Institute for Genomic Research
+--- a/scripts/promer.pl
++++ b/scripts/promer.pl
+@@ -1,4 +1,4 @@
+-#!__PERL_PATH
++#!/usr/bin/env perl
+ 
+ #-------------------------------------------------------------------------------
+ #   Programmer: Adam M Phillippy, The Institute for Genomic Research
+--- a/scripts/run-mummer1.csh
++++ b/scripts/run-mummer1.csh
+@@ -1,4 +1,4 @@
+-#!__CSH_PATH -f
++#!/usr/bin/env csh
+ #
+ # **SEVERELY** antiquated script for running the mummer 1 suite
+ # -r option reverse complements the query sequence, coordinates of the reverse
+--- a/scripts/run-mummer3.csh
++++ b/scripts/run-mummer3.csh
+@@ -1,4 +1,4 @@
+-#!__CSH_PATH -f
++#!/usr/bin/env csh
+ #
+ # for running the basic mummer 3 suite, should use nucmer instead when possible
+ # to avoid the confusing reverse coordinate system of the raw programs.

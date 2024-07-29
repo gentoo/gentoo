@@ -1,0 +1,17 @@
+Vanilla LLVM does not support calling AMDGPU_KERNEL across different sources/bitcodes.
+Without this patch https://github.com/RadeonOpenCompute/ROCm-CompilerSupport/issues/45 occurs.
+Reference: https://github.com/llvm/llvm-project/issues/60313
+===================================================================
+--- comgr.orig/test/source1.cl
++++ comgr/test/source1.cl
+@@ -35,7 +35,9 @@
+ 
+ #include "include-a.h"
+ 
++void kernel source3(__global int *j) { *j = FOO; }
++
+ void kernel source1(__global int *j) {
+   *j += 2;
+-  source2(j);
++  source3(j);
+ }

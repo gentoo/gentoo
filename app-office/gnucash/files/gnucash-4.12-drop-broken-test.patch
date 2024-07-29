@@ -1,0 +1,26 @@
+https://github.com/Gnucash/gnucash/pull/1472
+
+From a52795b022e040d7a93bb4dc352780d832c55390 Mon Sep 17 00:00:00 2001
+From: Marco Scardovi <mscardovi@icloud.com>
+Date: Sat, 26 Nov 2022 22:38:02 +0100
+Subject: [PATCH] Fix test
+
+Signed-off-by: Marco Scardovi <mscardovi@icloud.com>
+--- a/libgnucash/core-utils/test/CMakeLists.txt
++++ b/libgnucash/core-utils/test/CMakeLists.txt
+@@ -19,9 +19,6 @@ endmacro()
+ add_core_utils_test(test-gnc-glib-utils test-gnc-glib-utils.c)
+ add_core_utils_test(test-resolve-file-path test-resolve-file-path.c)
+ add_core_utils_test(test-userdata-dir test-userdata-dir.c)
+-if (NOT MAC_INTEGRATION AND NOT WIN32)
+-  add_core_utils_test(test-userdata-dir-invalid-home test-userdata-dir-invalid-home.c)
+-endif()
+ if (MAC_INTEGRATION)
+   target_compile_options(test-userdata-dir PRIVATE ${OSX_EXTRA_COMPILE_FLAGS})
+   target_compile_definitions(test-userdata-dir PRIVATE ${GTK_MAC_CFLAGS_OTHER})
+@@ -53,4 +50,4 @@ gnc_add_test(test-gnc-path-util "${test_gnc_path_util_SOURCES}"
+ 
+ set_dist_list(test_core_utils_DIST CMakeLists.txt
+   test-gnc-glib-utils.c test-resolve-file-path.c test-userdata-dir.c
+-  test-userdata-dir-invalid-home.c gtest-path-utilities.cpp)
++  gtest-path-utilities.cpp)

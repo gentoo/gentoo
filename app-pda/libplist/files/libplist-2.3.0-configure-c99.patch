@@ -1,0 +1,22 @@
+https://github.com/libimobiledevice/libplist/commit/b3cf5bec39de69bf06c7813689f03cbe58f45ca9
+
+From b3cf5bec39de69bf06c7813689f03cbe58f45ca9 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Mon, 18 Dec 2023 11:14:40 +0100
+Subject: [PATCH] configure: Use string for tm_zone assignment
+
+This matches what the actual sources do.  Clang 16 and GCC 14
+no longer support converting ints to pointers implicitly, so the
+configure probe always fails with these compilers.
+--- a/configure.ac
++++ b/configure.ac
+@@ -129,7 +129,7 @@ AC_CACHE_CHECK(for tm_zone in struct tm, ac_cv_struct_tm_zone,
+       #include <time.h>
+     ], [
+       struct tm tm;
+-      tm.tm_zone = 1;
++      tm.tm_zone = (char*)"UTC";
+     ])],
+     [ac_cv_struct_tm_zone=yes],
+     [ac_cv_struct_tm_zone=no]
+

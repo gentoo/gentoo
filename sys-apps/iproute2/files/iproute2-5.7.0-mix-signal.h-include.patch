@@ -1,0 +1,10 @@
+--- a/devlink/devlink.c
++++ b/devlink/devlink.c
+@@ -15,6 +15,7 @@
+ #include <string.h>
+ #include <stdbool.h>
+ #include <unistd.h>
++#include <signal.h>
+ #include <getopt.h>
+ #include <limits.h>
+ #include <errno.h>

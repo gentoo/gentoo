@@ -1,0 +1,12 @@
+--- a/CMakeLists.txt	2022-05-10 08:26:00.636788471 +0200
++++ b/CMakeLists.txt	2022-05-10 08:26:57.097938381 +0200
+@@ -6696,9 +6696,6 @@
+   # ---[ Build google test
+   IF(NOT TARGET gtest)
+     SET(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+-    ADD_SUBDIRECTORY(
+-      "${GOOGLETEST_SOURCE_DIR}"
+-      "${CMAKE_BINARY_DIR}/googletest")
+   ENDIF()
+ 
+   ADD_LIBRARY(gemm-microkernel-tester STATIC test/gemm-microkernel-tester.cc)

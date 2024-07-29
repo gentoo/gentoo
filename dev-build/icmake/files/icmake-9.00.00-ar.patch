@@ -1,0 +1,32 @@
+--- icmake/bootstrap/flags
++++ icmake/bootstrap/flags
+@@ -14,3 +14,7 @@
+ if [ "${CC}" == "" ] ; then 
+     CC="gcc"
+ fi
++
++if [ "${AR}" == "" ] ; then 
++    CC="ar"
++fi
+--- icmake/bootstrap/functions
++++ icmake/bootstrap/functions
+@@ -35,7 +35,7 @@
+ 
+     echo -n .
+ 
+-    try ar crs ../tmp/lib${program}.a */*.o
++    try ${AR} crs ../tmp/lib${program}.a */*.o
+ 
+     echo -n .
+ 
+--- icmake/rss/icm_bootstrap
++++ icmake/rss/icm_bootstrap
+@@ -8,7 +8,7 @@
+ echo -n .
+ try ${CC} -c ${CFLAGS} *.c
+ echo -n .
+-try ar rs ../tmp/libicrss.a *.o
++try ${AR} rs ../tmp/libicrss.a *.o
+ echo -n .
+ rm *.o
+ echo .

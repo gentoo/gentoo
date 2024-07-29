@@ -1,0 +1,15 @@
+ libgtkpod/Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libgtkpod/Makefile.am b/libgtkpod/Makefile.am
+index 464741f..c69dac8 100644
+--- a/libgtkpod/Makefile.am
++++ b/libgtkpod/Makefile.am
+@@ -50,6 +50,7 @@ AM_CFLAGS = \
+ libgtkpod_la_LDFLAGS = $(LIBGTKPOD_LDFLAGS) -version-info $(LIBGTKPOD_SO_VERSION) -no-undefined
+ libgtkpod_la_LIBADD = \
+ 	$(LIBGTKPOD_LIBS) \
++	-lm \
+ 	@LIBOBJS@
+ 	
+ libgtkpodincludebase = $(includedir)/gtkpod

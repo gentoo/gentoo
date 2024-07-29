@@ -1,0 +1,74 @@
+From: Nicholas Vinson <nvinson234@gmail.com>
+To: libsmi@ibr.cs.tu-bs.de
+Cc: Nicholas Vinson <nvinson234@gmail.com>
+Subject: Implicit function declaration patch
+
+When building libsmi with clang 15.0.0, clang fails to build due to
+errors similar to:
+
+call to undeclared function 'smiyyerror'; ISO C99 and later do not support
+implicit function declarations
+
+This patch corrects those issues by introducing the needed
+declarations defore the function call.
+
+Thanks,
+Nicholas Vinson
+
+--- a/lib/yang-data.h
++++ b/lib/yang-data.h
+@@ -158,10 +158,12 @@ _YangIdentifierRef  *listIdentifierRef(Y
+ /*
+  *  Node and Module functions
+  */
+ _YangNode *addYangNode(const char *value, YangDecl nodeKind, _YangNode *parentPtr);
+ 
++void createIdentifierRef(_YangNode *node, char* prefix, char* ident);
++
+ int removeYangNode(_YangNode* target, _YangNode* child);
+ 
+ _YangModuleInfo *createModuleInfo(_YangNode *modulePtr);
+ 
+ void createTypeInfo(_YangNode *node);
+--- a/lib/parser-yang.y
++++ b/lib/parser-yang.y
+@@ -19,10 +19,15 @@
+ #include <config.h>
+     
+ #ifdef BACKEND_YANG
+ 
+ #define _ISOC99_SOURCE
++/* define _DEFAULT_SOURCE to get timegm() */
++#define _DEFAULT_SOURCE 1
++/* define _BSD_SOURCE & _SVID_SOURCE for backwards compatibility */
++#define _BSD_SOURCE 1
++#define _SVID_SOURCE 1
+ #include <stdio.h>
+ #include <errno.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include <ctype.h>
+@@ -44,10 +44,11 @@
+ #include "parser-yang.h"
+ #include "scanner-yang.h"
+ #include "yang-complex-types.h"
+ #include "util.h"
+ #include "error.h"
++#include "yang-check.h"
+     
+ #ifdef HAVE_DMALLOC_H
+ #include <dmalloc.h>
+ #endif
+ 
+--- a/lib/error.h
++++ b/lib/error.h
+@@ -40,6 +40,8 @@ extern char* smiGetErrorMsg(int id);
+ 
+ extern void smiPrintError(Parser *parser, int id, ...);
+ 
+ extern void smiPrintErrorAtLine(Parser *parser, int id, int line, ...);
+ 
++#include "smi-check.h"
++
+ #endif /* _ERROR_H */
+

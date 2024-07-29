@@ -1,0 +1,13 @@
+diff -ruN coin/src/doc/CMakeLists.txt my/src/doc/CMakeLists.txt
+--- coin/src/doc/CMakeLists.txt	2019-12-23 20:47:44.000000000 +0100
++++ my/src/doc/CMakeLists.txt	2022-10-17 21:02:17.868469249 +0200
+@@ -30,7 +30,8 @@
+     endif()
+   endif()
+   if(COIN_BUILD_DOCUMENTATION_QTHELP)
+-    find_program(QHG_LOCATION NAMES qhelpgenerator qhelpgenerator-qt5 DOC "Qt qhelpgenerator")
++    find_package(Qt5Help REQUIRED)
++    get_target_property(QHG_LOCATION Qt5::qhelpgenerator LOCATION)
+     if(NOT QHG_LOCATION)
+       message(FATAL_ERROR "Missing program Qt qhelpgenerator")
+     else()

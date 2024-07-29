@@ -1,0 +1,36 @@
+1. Edit webui ini files
+
+  - if your bareos-dir is not running on localhost you need
+    to edit /etc/bareos-webui/directors.ini
+
+  - maybe you want to edit the webui settings in
+    /etc/bareos-webui/configuration.ini
+
+  NOTE: If you want to run more than one instance of bareos-webui and
+        you need to use different ini-files per vhost you can set
+        BAREOS_WEBUI_CONFDIR in the webserver env to point to another
+        directory than /etc/bareos-webui.
+
+2. Edit bareos-dir configuration
+
+  - some required bareos-dir config snippets have been installed
+    to /etc/bareos/bareos-dir.d. You need at least to 
+    cp /etc/bareos/bareos-dir.d/console/admin.conf{.example,}
+    and edit /etc/bareos/bareos-dir.d/console/admin.conf to set
+    login credentials for webui login
+
+  - don't forget to reload bareos-dir
+
+3. Edit webserver configuration
+
+  - starting from bareos 23, using php-fpm is a requirement
+    so be sure to have a working php-fpm setup
+
+  - as a starting point you may include a config from
+    /usr/share/webapps/${PN}/${PVR}/conf
+
+  - IMPORTANT: make sure the docroot of your webserver points to
+    the public/ folder within webapp htdocs directory
+
+For more details about how to setup the bareos webui, see:
+https://docs.bareos.org/IntroductionAndTutorial/InstallingBareosWebui.html

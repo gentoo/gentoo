@@ -1,0 +1,24 @@
+diff --git a/src/gimmix-covers.c b/src/gimmix-covers.c
+index f2524c4..2dc37f3 100644
+--- a/src/gimmix-covers.c
++++ b/src/gimmix-covers.c
+@@ -29,7 +29,6 @@
+ #include <glib.h>
+ #include <glib/gstdio.h>
+ #include <curl/curl.h>
+-#include <curl/types.h>
+ #include <curl/easy.h>
+ #include <nxml.h>
+ #include <libxml/xmlreader.h>
+diff --git a/src/gimmix-lyrics.c b/src/gimmix-lyrics.c
+index ff58954..01990e2 100644
+--- a/src/gimmix-lyrics.c
++++ b/src/gimmix-lyrics.c
+@@ -30,7 +30,6 @@
+ #include <nxml.h>
+ #include <glib/gstdio.h>
+ #include <curl/curl.h>
+-#include <curl/types.h>
+ #include <curl/easy.h>
+ #include <libxml/xmlreader.h>
+ #include "gimmix-lyrics.h"

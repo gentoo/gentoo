@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/918079
+https://github.com/edwardgeorge/virtualenv-clone/pull/79
+
+From 028494ee84cf4626aab291c621b2b9ec23f8688a Mon Sep 17 00:00:00 2001
+From: matoro <matoro@users.noreply.github.com>
+Date: Mon, 18 Dec 2023 18:18:17 -0500
+Subject: [PATCH] Support Python 3.11, 3.12
+
+---
+ .travis.yml       | 2 ++
+ setup.py          | 2 ++
+ tests/__init__.py | 2 +-
+ tox.ini           | 2 +-
+ 4 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/tests/__init__.py b/tests/__init__.py
+index c9a52ca..14648f4 100644
+--- a/tests/__init__.py
++++ b/tests/__init__.py
+@@ -8,7 +8,7 @@
+ tmplocation = tempfile.mkdtemp()
+ venv_path = os.path.realpath(os.path.join(tmplocation,'srs_venv'))
+ clone_path = os.path.realpath(os.path.join(tmplocation,'clone_venv'))
+-versions = ['2.7', '3.4', '3.5', '3.6', '3.7', '3.8', '3.9', '3.10']
++versions = ['2.7', '3.4', '3.5', '3.6', '3.7', '3.8', '3.9', '3.10', '3.11', '3.12']
+ 
+ def clean():
+     if os.path.exists(tmplocation): shutil.rmtree(tmplocation)

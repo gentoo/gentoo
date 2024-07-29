@@ -1,0 +1,20 @@
+--- a/lib/selenium/webdriver/common/selenium_manager.rb	2023-10-06 08:41:15.713237699 +0200
++++ b/lib/selenium/webdriver/common/selenium_manager.rb	2023-10-06 08:42:45.809927730 +0200
+@@ -31,7 +31,7 @@
+         attr_writer :bin_path
+ 
+         def bin_path
+-          @bin_path ||= '../../../../../bin'
++          @bin_path ||= '/usr/bin'
+         end
+ 
+         # @param [Options] options browser options.
+@@ -82,7 +82,7 @@
+               elsif Platform.mac?
+                 "#{directory}/macos/selenium-manager"
+               elsif Platform.linux?
+-                "#{directory}/linux/selenium-manager"
++                "#{directory}/selenium-manager"
+               end
+             end)
+ 

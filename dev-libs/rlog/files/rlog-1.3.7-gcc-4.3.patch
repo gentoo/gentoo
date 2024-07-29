@@ -1,0 +1,10 @@
+--- a/rlog/RLogChannel.cpp
++++ b/rlog/RLogChannel.cpp
+@@ -20,6 +20,7 @@
+ #include "RLogChannel.h"
+ #include "rlog.h"
+ #include "Lock.h"
++#include <cstring>
+ 
+ using namespace std;
+ using namespace rlog;

@@ -1,0 +1,9 @@
+The leave utility waits until the specified time, then reminds you that you
+have to leave.  You are reminded 5 minutes and 1 minute before the actual
+time, at the time, and every minute thereafter.  When you log off, leave 
+exits just before it would have printed the next message.
+
+To get rid of leave you should either log off or use `kill -s KILL` giving its
+process id.
+
+This program is included with FreeBSD and is distributed under the BSD license.

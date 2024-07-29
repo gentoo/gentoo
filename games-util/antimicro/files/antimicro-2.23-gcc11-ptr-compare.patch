@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/791145
+--- a/src/mainwindow.cpp
++++ b/src/mainwindow.cpp
+@@ -364,7 +364,7 @@ void MainWindow::makeJoystickTabs()
+         ui->tabWidget->addTab(tabwidget, joytabName);
+     }
+ 
+-    if (joysticks > 0)
++    if (joysticks->size() > 0)
+     {
+         ui->tabWidget->setCurrentIndex(0);
+         ui->stackedWidget->setCurrentIndex(1);

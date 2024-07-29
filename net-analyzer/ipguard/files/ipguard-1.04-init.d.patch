@@ -1,0 +1,36 @@
+--- a/doc/ipguard.gentoo
++++ b/doc/ipguard.gentoo
+@@ -1,7 +1,7 @@
+ #! /sbin/runscript
+ ##  $Id: ipguard.gentoo,v 1.5 2010/07/12 03:46:52 sead Exp $
+ 
+-opts="reload"
++extra_commands="reload"
+ 
+ depend() {
+ 	use net
+@@ -9,20 +9,20 @@
+ 
+ start() {
+ 	ebegin "Starting ipguard"
+-	start-stop-daemon --start --quiet --pidfile /var/run/ipguard.pid \
+-		--exec /usr/sbin/ipguard -- -u 300 -xz
++	start-stop-daemon --start --quiet --pidfile /run/ipguard.pid \
++		--exec /usr/sbin/ipguard -- ${OPTS} ${IFACE}
+ 	eend $?
+ }
+ 
+ stop() {
+ 	ebegin "Stopping ipguard"
+-	start-stop-daemon --stop --quiet --pidfile /var/run/ipguard.pid
++	start-stop-daemon --stop --quiet --pidfile /run/ipguard.pid
+ 	eend $?
+ }
+ 
+ reload() {
+        ebegin "Reloading ipguard"
+-       start-stop-daemon --stop --quiet --pidfile /var/run/ipguard.pid \
++       start-stop-daemon --stop --quiet --pidfile /run/ipguard.pid \
+               --signal HUP
+        eend $?
+ }

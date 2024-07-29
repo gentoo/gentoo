@@ -1,0 +1,29 @@
+--- a/scripts/scripts.d/laptopmode.sh
++++ b/scripts/scripts.d/laptopmode.sh
+@@ -122,7 +122,7 @@
+ 	     )
+ 	 )
+ case "$KLEVEL" in
+-	"2.4"|"2.6")
++	"2.4"|"2.6"|"3."*)
+ 		true
+ 		;;
+ 	*)
+@@ -222,7 +222,7 @@
+ 				echo "1"				> /proc/sys/vm/laptop_mode
+ 				echo "30 500 0 0 $AGE $AGE 60 20 0"	> /proc/sys/vm/bdflush
+ 				;;
+-			"2.6")
++			"2.6"|"3."*)
+ 				echo "5"				> /proc/sys/vm/laptop_mode
+ 				echo "$AGE"				> /proc/sys/vm/dirty_writeback_centisecs
+ 				echo "$AGE"				> /proc/sys/vm/dirty_expire_centisecs
+@@ -268,7 +268,7 @@
+ 			"2.4")
+ 				echo "30 500 0 0 $U_AGE $B_AGE 60 20 0"	> /proc/sys/vm/bdflush
+ 				;;
+-			"2.6")
++			"2.6"|"3."*)
+ 				echo "$U_AGE"				> /proc/sys/vm/dirty_writeback_centisecs
+ 				echo "$B_AGE"				> /proc/sys/vm/dirty_expire_centisecs
+ 				echo "$DEF_DIRTY_RATIO"			> /proc/sys/vm/dirty_ratio

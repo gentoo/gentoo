@@ -1,0 +1,90 @@
+https://github.com/tessus/apachetop/pull/13
+
+From f89ae55bb09eb1a67fc73555d149fb85f82bfbd6 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 14 Feb 2023 03:34:36 +0000
+Subject: [PATCH] Fix C++17 compatibility (drop register keyword)
+
+register doesn't do anything in any reasonable C++ compiler anyway, but
+it was deprecated in C++14 and removed in C++17. Without this, apachetop
+will fail to compile with Clang 16 which defaults to -std=c++17.
+
+Bug: https://bugs.gentoo.org/894186
+--- a/src/inlines.cc
++++ b/src/inlines.cc
+@@ -4,10 +4,10 @@
+ #define ONE_EIGHTH      4
+ #define HIGH_BITS       (~((unsigned int)(~0) >> ONE_EIGHTH))
+ 
+-inline unsigned int StringHash(register const char *str)
++inline unsigned int StringHash(const char *str)
+ {
+-	register unsigned int val;
+-	register unsigned int i;
++	unsigned int val;
++	unsigned int i;
+ 
+ 	for (val = 0; *str; str++)
+ 	{
+@@ -19,9 +19,9 @@ inline unsigned int StringHash(register const char *str)
+ 	return val;
+ }
+ 
+-inline unsigned int QuickHash(register const char *str)
++inline unsigned int QuickHash(const char *str)
+ {
+-	register unsigned int val, tmp;
++	unsigned int val, tmp;
+ 
+ 	for(val = 0 ; *str ; str++)
+ 	{
+@@ -32,7 +32,7 @@ inline unsigned int QuickHash(register const char *str)
+ 	return val;
+ }
+ 
+-inline unsigned long TTHash(register const char *str)
++inline unsigned long TTHash(const char *str)
+ {
+ 	unsigned long hash = 5381;
+ 	int c;
+--- a/src/ohtbl.cc
++++ b/src/ohtbl.cc
+@@ -13,7 +13,7 @@ static int primes[] = {101, 241, 499, 1009, 2003, 3001, 4001, 5003,
+ 
+ int OAHash::getNextPrime(int size)
+ {
+-	register int *prime;
++	int *prime;
+ 	for (prime = &primes[0] ; *prime ; prime++)
+ 		if (*prime > size)
+ 			return *prime;
+@@ -51,7 +51,7 @@ void OAHash::destroy(void)
+ 
+ void *OAHash::insert(char *key, void *data)
+ {
+-	register unsigned int p, i;
++	unsigned int p, i;
+ 	void *d;
+  
+ 	// Do not exceed the number of positions in the table.
+@@ -81,7 +81,7 @@ void *OAHash::insert(char *key, void *data)
+ 
+ int OAHash::remove(char *key)
+ {
+-	register unsigned int p, i;
++	unsigned int p, i;
+ 
+ 	for (i = 0; i < positions; ++i)
+ 	{
+@@ -108,7 +108,7 @@ int OAHash::remove(char *key)
+ 
+ void *OAHash::lookup(char *key)
+ {
+-	register unsigned int p, i;
++	unsigned int p, i;
+ 
+ 	for (i = 0; i < positions; ++i)
+ 	{
+-- 
+2.39.1
+

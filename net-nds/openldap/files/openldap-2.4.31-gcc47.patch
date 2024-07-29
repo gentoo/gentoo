@@ -1,0 +1,16 @@
+Fix building with gcc-4.7
+
+https://bugs.gentoo.org/show_bug.cgi?id=420959
+http://www.openldap.org/its/index.cgi/Incoming?id=7304;page=16  #ITS 7304
+
+Patch written by Kacper Kowalik <xarthisius@gentoo.org>
+--- a/contrib/ldapc++/src/SaslInteractionHandler.cpp
++++ b/contrib/ldapc++/src/SaslInteractionHandler.cpp
+@@ -16,6 +16,7 @@
+ 
+ #include <stdio.h>
+ #include <string.h>
++#include <unistd.h>
+ #include "SaslInteractionHandler.h"
+ #include "SaslInteraction.h"
+ #include "debug.h"

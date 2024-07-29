@@ -1,0 +1,16 @@
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 96e03ab..ba0847a 100644
+--- a/icons/hicolor/Makefile.am
++++ b/icons/hicolor/Makefile.am
+@@ -21,7 +21,7 @@ icon_sizes   = 16 22 24 32 36 48 64 72 96 128 192
+ if BOOL_HICOLOR_THEME
+ 
+ .svg.svgz:
+-	gzip $< -c > $@
++	gzip -c $< > $@
+ 	for size in $(icon_sizes) ; do \
+ 		if test "x$(RSVG)" != "x" ; then \
+ 			$(RSVG) -w $${size} -h $${size} -f png $< $*_$${size}.png ; \

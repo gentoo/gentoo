@@ -1,0 +1,20 @@
+# /etc/conf.d/qbittorrent: config file for /etc/init.d/qbittorrent
+
+# User and group as which to run
+#QBITTORRENT_USER="qbittorrent"
+#QBITTORRENT_GROUP="qbittorrent"
+
+# Directory where qBittorrent saves its logs (and maybe downloads)
+#QBITTORRENT_DIRECTORY="/var/lib/qbittorrent"
+
+# umask used to create files
+#QBITTORRENT_UMASK=0022
+
+# I/O nice level of qBittorrent
+#QBITTORRENT_IONICE=0
+
+# Nice level of qBittorrent
+#QBITTORRENT_NICE=0
+
+# Extra opts given to qBittorrent
+#QBITTORRENT_OPTS=""

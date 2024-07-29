@@ -1,0 +1,171 @@
+https://gitlab.gnome.org/GNOME/libxslt/-/issues/116
+https://gitlab.gnome.org/GNOME/libxslt/-/commit/081cd6e97a620d035ed7df35e998e2d288bc7862
+
+From 081cd6e97a620d035ed7df35e998e2d288bc7862 Mon Sep 17 00:00:00 2001
+From: Nick Wellnhofer <wellnhofer@aevum.de>
+Date: Mon, 1 Jul 2024 13:21:14 +0200
+Subject: [PATCH] transform: Handle filesystem paths after libxml2 changes
+
+After changes in libxml2 2.13, base URIs and resolved URIs can be
+filesystem paths.
+
+Check for invalid URIs and remove fragment before resolving URI in
+xsltDocumentFunction.
+
+Handle filesystem paths in xsltCheckRead.
+
+Should fix #116.
+---
+ libxslt/functions.c | 64 ++++++++++++++++++++++++++-------------------
+ libxslt/security.c  | 13 +++++++++
+ 2 files changed, 50 insertions(+), 27 deletions(-)
+
+diff --git a/libxslt/functions.c b/libxslt/functions.c
+index 0c9dec43..d54f8f48 100644
+--- a/libxslt/functions.c
++++ b/libxslt/functions.c
+@@ -96,11 +96,10 @@ xsltXPathFunctionLookup (void *vctxt,
+  ************************************************************************/
+ 
+ static void
+-xsltDocumentFunctionLoadDocument(xmlXPathParserContextPtr ctxt, xmlChar* URI)
++xsltDocumentFunctionLoadDocument(xmlXPathParserContextPtr ctxt,
++                                 const xmlChar* URI, const xmlChar *fragment)
+ {
+     xsltTransformContextPtr tctxt;
+-    xmlURIPtr uri;
+-    xmlChar *fragment = NULL;
+     xsltDocumentPtr idoc; /* document info */
+     xmlDocPtr doc;
+     xmlXPathContextPtr xptrctxt = NULL;
+@@ -115,26 +114,7 @@ xsltDocumentFunctionLoadDocument(xmlXPathParserContextPtr ctxt, xmlChar* URI)
+         goto out_fragment;
+     }
+ 
+-    uri = xmlParseURI((const char *) URI);
+-    if (uri == NULL) {
+-	xsltTransformError(tctxt, NULL, NULL,
+-	    "document() : failed to parse URI\n");
+-        goto out_fragment;
+-    }
+-
+-    /*
+-     * check for and remove fragment identifier
+-     */
+-    fragment = (xmlChar *)uri->fragment;
+-    if (fragment != NULL) {
+-        xmlChar *newURI;
+-	uri->fragment = NULL;
+-	newURI = xmlSaveUri(uri);
+-	idoc = xsltLoadDocument(tctxt, newURI);
+-	xmlFree(newURI);
+-    } else
+-	idoc = xsltLoadDocument(tctxt, URI);
+-    xmlFreeURI(uri);
++    idoc = xsltLoadDocument(tctxt, URI);
+ 
+     if (idoc == NULL) {
+ 	if ((URI == NULL) ||
+@@ -194,7 +174,6 @@ out_fragment:
+     if (resObj == NULL)
+         resObj = xmlXPathNewNodeSet(NULL);
+     valuePush(ctxt, resObj);
+-    xmlFree(fragment);
+ }
+ 
+ /**
+@@ -210,7 +189,8 @@ xsltDocumentFunction(xmlXPathParserContextPtr ctxt, int nargs)
+ {
+     xmlXPathObjectPtr obj, obj2 = NULL;
+     xmlChar *base = NULL, *URI;
+-
++    xmlChar *newURI = NULL;
++    xmlChar *fragment = NULL;
+ 
+     if ((nargs < 1) || (nargs > 2)) {
+         xsltTransformError(xsltXPathGetTransformContext(ctxt), NULL, NULL,
+@@ -292,7 +272,32 @@ xsltDocumentFunction(xmlXPathParserContextPtr ctxt, int nargs)
+         valuePush(ctxt, xmlXPathNewNodeSet(NULL));
+     } else {
+         xsltTransformContextPtr tctxt;
++        xmlURIPtr uri;
++        const xmlChar *url;
++
+         tctxt = xsltXPathGetTransformContext(ctxt);
++
++        url = obj->stringval;
++
++        uri = xmlParseURI((const char *) url);
++        if (uri == NULL) {
++            xsltTransformError(tctxt, NULL, NULL,
++                "document() : failed to parse URI '%s'\n", url);
++            valuePush(ctxt, xmlXPathNewNodeSet(NULL));
++            goto error;
++        }
++
++        /*
++         * check for and remove fragment identifier
++         */
++        fragment = (xmlChar *)uri->fragment;
++        if (fragment != NULL) {
++            uri->fragment = NULL;
++            newURI = xmlSaveUri(uri);
++            url = newURI;
++        }
++        xmlFreeURI(uri);
++
+         if ((obj2 != NULL) && (obj2->nodesetval != NULL) &&
+             (obj2->nodesetval->nodeNr > 0) &&
+             IS_XSLT_REAL_NODE(obj2->nodesetval->nodeTab[0])) {
+@@ -313,7 +318,8 @@ xsltDocumentFunction(xmlXPathParserContextPtr ctxt, int nargs)
+                                       (xmlNodePtr) tctxt->style->doc);
+             }
+         }
+-        URI = xmlBuildURI(obj->stringval, base);
++
++        URI = xmlBuildURI(url, base);
+         if (base != NULL)
+             xmlFree(base);
+         if (URI == NULL) {
+@@ -326,10 +332,14 @@ xsltDocumentFunction(xmlXPathParserContextPtr ctxt, int nargs)
+                 valuePush(ctxt, xmlXPathNewNodeSet(NULL));
+             }
+         } else {
+-	    xsltDocumentFunctionLoadDocument( ctxt, URI );
++	    xsltDocumentFunctionLoadDocument(ctxt, URI, fragment);
+ 	    xmlFree(URI);
+ 	}
+     }
++
++error:
++    xmlFree(newURI);
++    xmlFree(fragment);
+     xmlXPathFreeObject(obj);
+     if (obj2 != NULL)
+         xmlXPathFreeObject(obj2);
+diff --git a/libxslt/security.c b/libxslt/security.c
+index 001ee6e4..3a66594f 100644
+--- a/libxslt/security.c
++++ b/libxslt/security.c
+@@ -422,6 +422,19 @@ xsltCheckRead(xsltSecurityPrefsPtr sec,
+     xmlURIPtr uri;
+     xsltSecurityCheck check;
+ 
++    if (xmlStrstr(URL, BAD_CAST "://") == NULL) {
++	check = xsltGetSecurityPrefs(sec, XSLT_SECPREF_READ_FILE);
++	if (check != NULL) {
++            ret = check(sec, ctxt, (const char *) URL);
++            if (ret == 0) {
++                xsltTransformError(ctxt, NULL, NULL,
++                             "Local file read for %s refused\n", URL);
++                return(0);
++            }
++        }
++        return(1);
++    }
++
+     uri = xmlParseURI((const char *)URL);
+     if (uri == NULL) {
+ 	xsltTransformError(ctxt, NULL, NULL,
+-- 
+GitLab

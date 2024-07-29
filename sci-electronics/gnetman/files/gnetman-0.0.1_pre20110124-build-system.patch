@@ -1,0 +1,22 @@
+--- a/src/batch/configure
++++ b/src/batch/configure
+@@ -72,8 +72,8 @@
+ flex -f -Pvr -o../verilog/vrscan.c ../verilog/vrscan.l
+ swig -tcl8 ../tcl/tclfunc.i
+ 
+-CFLAGS="-g -Wall -W -Wno-unused-parameter -Wno-unused-function -DDD_DEBUG -I../include -I../spice -I/usr/include/tcl8.4"
+-LIBS="-lpopt -ltcl8.4 -lddutil-dbg"
++CFLAGS="${CFLAGS} -W -Wno-unused-parameter -Wno-unused-function -I../include -I../spice"
++LIBS="-lpopt -ltcl -lddutil"
+ 
+ echo "CC=$CC
+ CFLAGS=$CFLAGS
+@@ -91,7 +91,7 @@
+ TARGET='../../bin/gnetman'
+ 
+ $(TARGET): $(OBJECTS)
+-	$(CC) $(CFLAGS) $(OBJECTS) $(LIBS) -o $(TARGET)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJECTS) $(LIBS) -o $(TARGET)
+ 
+ clean:
+ 	rm -f $(OBJECTS) ../*/*database.[ch] ../*/*scan.c ../*/*parse.c

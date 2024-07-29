@@ -1,0 +1,37 @@
+--- a/src/game/Makefile
++++ b/src/game/Makefile
+@@ -34,5 +34,4 @@
+ 
+-CC      := gcc
+-INC     := -I. -I.. -I../enet/include ${SDLCONF_I} -I./extensions -I./file_formats -I./platform
+-LDFLAGS := ${SDLCONF_L} -L../enet/lib -lSDL_ttf -lSDL_mixer -lGL -lGLU -lSDL_image -lphysfs -lenet
++INC     := -I. -I.. ${SDLCONF_I} -I./extensions -I./file_formats -I./platform
++LDLIBS := ${SDLCONF_L} -lSDL_ttf -lSDL_mixer -lGL -lGLU -lSDL_image -lphysfs -lenet -lm
+ 
+@@ -45,3 +44,3 @@
+ 
+-CFLAGS  := ${OPT} ${INC}
++CFLAGS  += ${INC} -DENET11
+ 
+@@ -55,3 +54,3 @@
+ ${EGO_BIN}: ${EGO_OBJ} 
+-	${CC} -o $@ $^ ${LDFLAGS} ${CFLAGS}
++	${CC} -o $@ $^ ${LDFLAGS} ${CFLAGS} ${LDLIBS}
+ 
+--- a/src/game/network.c
++++ b/src/game/network.c
+@@ -39,3 +39,3 @@
+ 
+-#include "enet/enet.h"
++#include <enet/enet.h>
+ #include "file_common.h"
+--- a/src/game/platform/file_linux.c
++++ b/src/game/platform/file_linux.c
+@@ -81,5 +81,5 @@
+     // these are read-only directories
+-    strncpy( linux_configPath, "/etc/egoboo-2.x/",         SDL_arraysize( linux_configPath ) );
++    strncpy( linux_configPath, "@GENTOO_CONFDIR@",         SDL_arraysize( linux_configPath ) );
+     strncpy( linux_binaryPath, "/games/",                  SDL_arraysize( linux_binaryPath ) );
+-    strncpy( linux_dataPath,   "/share/games/egoboo-2.x/", SDL_arraysize( linux_dataPath ) );
++    strncpy( linux_dataPath,   "@GENTOO_DATADIR@", SDL_arraysize( linux_dataPath ) );
+ #endif

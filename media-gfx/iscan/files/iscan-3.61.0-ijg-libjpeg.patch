@@ -1,0 +1,45 @@
+--- a/filters/jpeg.cpp
++++ b/filters/jpeg.cpp
+@@ -410,13 +410,13 @@
+   cinfo_.image_height = ctx_.height ();
+ 
+   jpeg_set_defaults (&cinfo_);
+-  jpeg_set_quality  (&cinfo_, quality_, true);
++  jpeg_set_quality  (&cinfo_, quality_, TRUE);
+ 
+   cinfo_.density_unit = 1;      // in dpi
+   cinfo_.X_density = ctx_.x_resolution ();
+   cinfo_.Y_density = ctx_.y_resolution ();
+ 
+-  jpeg_start_compress (&cinfo_, true);
++  jpeg_start_compress (&cinfo_, TRUE);
+ 
+   cache_ = new octet[ctx_.octets_per_line ()];
+   cache_size_ = ctx_.octets_per_line ();
+@@ -462,7 +462,7 @@
+   dmgr_.next_output_byte = jbuf_ + (jbuf_size_ - n);
+   dmgr_.free_in_buffer   = n;
+ 
+-  return true;
++  return TRUE;
+ }
+ 
+ void
+@@ -535,7 +535,7 @@
+ 
+   //jpegデータの一部が分割されて送られてきても正常に動作するように変更
+ 
+-  return false;
++  return FALSE;
+ }
+ 
+ void
+@@ -580,7 +580,7 @@
+ {
+   if (!header_done_)
+     {
+-      if (JPEG_SUSPENDED == jpeg_read_header (&cinfo_, true))
++      if (JPEG_SUSPENDED == jpeg_read_header (&cinfo_, TRUE))
+         {
+           log::trace ("jpeg_read_header suspended");
+           if (!reclaim_space ())

@@ -1,0 +1,10 @@
+--- a/states/hl/enscript.st
++++ b/states/hl/enscript.st
+@@ -510,6 +510,7 @@
+   /\.tex$/					tex;
+   /\.wmlscript$/				wmlscript;
+   /\.wmls$/					wmlscript;
++  /\.php$/					php;
+   /^.*$/					passthrough;
+ }
+ 

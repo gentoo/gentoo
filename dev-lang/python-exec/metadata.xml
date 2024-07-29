@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+  <upstream>
+    <maintainer status="active">
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+    </maintainer>
+    <bugs-to>https://github.com/projg2/python-exec/issues/</bugs-to>
+    <remote-id type="github">projg2/python-exec</remote-id>
+  </upstream>
+  <use>
+    <flag name="native-symlinks">
+      Install generic symlinks like python and python3.  If this flag
+      is disabled, only versioned python3.X executables will
+      be available to end users and ebuilds not using python eclasses.
+    </flag>
+  </use>
+</pkgmetadata>

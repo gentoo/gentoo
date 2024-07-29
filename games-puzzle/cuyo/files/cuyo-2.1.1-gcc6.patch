@@ -1,0 +1,45 @@
+--- a/src/pfaditerator.h
++++ b/src/pfaditerator.h
+@@ -21,6 +21,11 @@
+ #include "stringzeug.h"
+ 
+ 
++#if __cplusplus >= 201103L
++#define NOEXCEPT noexcept(false)
++#else
++#define NOEXCEPT
++#endif
+ 
+ 
+ /** Iteriert durch alle Pfade, an denen sich eine
+@@ -43,7 +48,7 @@
+ class PfadIterator {
+ public: 
+   PfadIterator(Str dat, bool auch_gz = false, bool setzDefault = false);
+-  ~PfadIterator();
++  ~PfadIterator() NOEXCEPT;
+   
+   /** N�chster Pfad */
+   PfadIterator & operator++();
+--- a/src/pfaditerator.cpp
++++ b/src/pfaditerator.cpp
+@@ -48,7 +48,7 @@
+      -1 und f�hren dann gleich ein ++ aus. */
+   ++(*this);
+ }
+-PfadIterator::~PfadIterator() {
++PfadIterator::~PfadIterator() NOEXCEPT {
+   /** Soll der default-Pfad gesetzt werden? */
+   if (mSetzDefault) {
+ 
+--- a/src/xpmladen.cpp
++++ b/src/xpmladen.cpp
+@@ -314,7 +314,7 @@
+   try {
+ 
+     /* Datei laden. Dabei werden gDatAnfang und gDatEnde gesetzt. */
+-    if (!ladeDatei(na)) return false;
++    if (!ladeDatei(na)) return NULL;
+ 
+ 
+     gDatBei = gDatAnfang;

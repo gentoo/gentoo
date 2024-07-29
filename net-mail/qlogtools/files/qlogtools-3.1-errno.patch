@@ -1,0 +1,13 @@
+diff -ur qlogtools-3.1.orig/qfilelog.c qlogtools-3.1/qfilelog.c
+--- qlogtools-3.1.orig/qfilelog.c	2001-06-12 14:41:47.000000000 -0700
++++ qlogtools-3.1/qfilelog.c	2003-07-31 21:52:51.000000000 -0700
+@@ -3,8 +3,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <unistd.h>
+-
+-extern int errno;
++#include <errno.h>
+ 
+ #define PAUSE sleep(60)
+ 

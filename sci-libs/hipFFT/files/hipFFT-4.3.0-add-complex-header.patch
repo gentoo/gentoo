@@ -1,0 +1,11 @@
+diff --color -uprN orig/clients/rider/rider.cpp hipFFT-rocm-4.3.0/clients/rider/rider.cpp
+--- orig/clients/rider/rider.cpp	2021-08-26 15:05:32.267279103 +0800
++++ hipFFT-rocm-4.3.0/clients/rider/rider.cpp	2021-08-26 15:05:48.795279212 +0800
+@@ -22,6 +22,7 @@
+ #include <cstddef>
+ #include <iostream>
+ #include <numeric>
++#include <complex>
+ #include <random>
+ #include <sstream>
+ 

@@ -1,0 +1,17 @@
+File uses implicit declaration of a library function. This is not allow with clang16s default settings.
+
+Bug: https://bugs.gentoo.org/882175
+Patch has been sent to upstream via mail
+
+#  Pascal Jäger <pascal.jaeger@leimstift.de> (2023-09-18)
+
+--- a/astime_x.c
++++ b/astime_x.c
+@@ -11,6 +11,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <math.h>
+ #include <time.h>
+ 

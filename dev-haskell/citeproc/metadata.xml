@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="executable">Build citeproc executable</flag>
+		<flag name="icu">Use Haskell bindings to the ICU library</flag>
+	</use>
+	<upstream>
+		<remote-id type="hackage">citeproc</remote-id>
+		<remote-id type="github">jgm/citeproc</remote-id>
+	</upstream>
+</pkgmetadata>

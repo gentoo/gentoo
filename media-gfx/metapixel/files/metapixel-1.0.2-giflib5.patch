@@ -1,0 +1,21 @@
+diff -u metapixel-1.0.2/debian/changelog metapixel-1.0.2/debian/changelog
+--- metapixel-1.0.2.orig/rwimg/rwgif.c
++++ metapixel-1.0.2/rwimg/rwgif.c
+@@ -54,7 +54,7 @@
+     
+     assert(data != 0);
+     
+-    data->file = DGifOpenFileName(filename);
++    data->file = DGifOpenFileName(filename, NULL);
+     
+     assert(data->file !=0);
+         
+@@ -137,7 +137,7 @@
+     }
+     free(buffer);
+     
+-    assert(DGifCloseFile(data->file) == GIF_OK);
++    assert(DGifCloseFile(data->file, NULL) == GIF_OK);
+     
+     return data;
+ }

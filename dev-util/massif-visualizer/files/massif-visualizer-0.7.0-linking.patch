@@ -1,0 +1,36 @@
+From d49c8946fea8ce239e258c5e69fefd1cae5cb5fe Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Tue, 6 Apr 2021 00:29:33 +0200
+Subject: [PATCH] Add some missing linkages
+
+Currently things work due to transitiveness, but we better not rely on that
+---
+ massifdata/CMakeLists.txt | 1 +
+ test/CMakeLists.txt       | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/massifdata/CMakeLists.txt b/massifdata/CMakeLists.txt
+index a8a7b98..4881a30 100644
+--- a/massifdata/CMakeLists.txt
++++ b/massifdata/CMakeLists.txt
+@@ -21,4 +21,5 @@ LINK_PRIVATE
+     KF5::Archive
+     KF5::KIOCore
+     KF5::I18n
++    KF5::ConfigCore
+ )
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index 38c510e..7ccbc2d 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ ecm_add_test(datamodeltest datamodeltest.cpp modeltest.cpp
+     TEST_NAME "datamodeltest"
+-    LINK_LIBRARIES mv-massifdata mv-visualizer Qt5::Core Qt5::Test KF5::KIOCore
++    LINK_LIBRARIES mv-massifdata mv-visualizer Qt5::Core Qt5::Test KF5::KIOCore KF5::ConfigCore
+ )
+ 
+ add_executable(massifparser massifparser.cpp)
+-- 
+GitLab
+

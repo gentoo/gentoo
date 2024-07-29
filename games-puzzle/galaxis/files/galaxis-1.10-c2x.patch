@@ -1,0 +1,15 @@
+Early fixes for upcoming C2x.
+--- a/galaxis.c
++++ b/galaxis.c
+@@ -32,4 +32,2 @@
+ #define rand()		lrand48()
+-extern long lrand48();
+-extern void srand48();
+ #define bzero(s, n)	(void)memset((char *)(s), '\0', n)
+@@ -648,5 +646,3 @@
+ 
+-int main(argc, argv)
+-int argc;
+-char *argv[];
++int main(int argc, char *argv[])
+ {

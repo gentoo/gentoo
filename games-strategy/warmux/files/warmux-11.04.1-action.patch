@@ -1,0 +1,12 @@
+diff -uNr warmux-11.04.orig/lib/warmux/action/action.cpp warmux-11.04/lib/warmux/action/action.cpp
+--- warmux-11.04.orig/lib/warmux/action/action.cpp      2012-03-27 15:18:08.440709875 +0200
++++ warmux-11.04/lib/warmux/action/action.cpp   2012-03-27 15:17:44.871711354 +0200
+@@ -85,7 +85,7 @@
+ {
+   m_creator = _creator;
+
+-  m_header.len = SDLNet_Read32(buffer);
++  m_header.len = SDLNet_Read32((void *)buffer);
+   ASSERT(m_header.len >= sizeof(Header));
+   buffer += 4;
+   // All of the following could be skipped for the actions we now,

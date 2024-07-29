@@ -1,0 +1,28 @@
+From b1cb26389d8c8aa646c4debae429fb1515408812 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 13 May 2024 15:51:04 +0200
+Subject: [PATCH] Support disabling C extensions via IMMUTABLES_EXT=0
+
+Support using IMMUTABLES_EXT environment variable to control whether
+the C extension is built explicitly.  When set to a value other than 1,
+the extension built is disabled.  This is helpful e.g. for future Python
+versions where the extension does not work (this is affecting 3.13 right
+now, but having an explicit option is more future-proof).
+---
+ setup.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 8cfc9c97..870de2d1 100644
+--- a/setup.py
++++ b/setup.py
+@@ -27,7 +27,8 @@
+             'unable to read the version from immutables/_version.py')
+ 
+ 
+-if platform.python_implementation() == 'CPython':
++if (platform.python_implementation() == 'CPython' and
++        os.environ.get('IMMUTABLES_EXT', '1') == '1'):
+     if os.environ.get("DEBUG_IMMUTABLES") == '1':
+         define_macros = []
+         undef_macros = ['NDEBUG']

@@ -1,0 +1,9 @@
+Creating mp3 files with u+x attributes is just silly
+
+--- a/file.c
++++ b/file.c
+@@ -136,3 +136,3 @@
+     file->fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC,
+-                    S_IRWXU | S_IRGRP | S_IROTH);
++                    S_IRUSR|S_IWUSR | S_IRGRP | S_IROTH);
+ 

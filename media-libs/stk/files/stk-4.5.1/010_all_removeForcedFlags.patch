@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -65,7 +65,7 @@ if test "$debug" = "yes"; then
+ else
+   AC_SUBST( debug, [no] )
+   AC_SUBST( cppflag, [] )
+-  AC_SUBST( cxxflag, [-O3] )
++  AC_SUBST( cxxflag, [] )
+   AC_SUBST( object_path, [Release] )
+ fi
+ AC_MSG_RESULT($debug)

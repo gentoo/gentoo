@@ -1,0 +1,17 @@
+Donot install -asan documents.
+
+Reference:
+https://github.com/RadeonOpenCompute/llvm-project/commit/e782e09f7b113a0f896c6cec7240d411aca1d73f
+https://github.com/RadeonOpenCompute/ROCm-CompilerSupport/issues/61
+
+--- a/hipamd/packaging/CMakeLists.txt	2023-11-18 23:25:45.000000000 +0800
++++ b/hipamd/packaging/CMakeLists.txt	2023-11-18 23:27:27.230354665 +0800
+@@ -36,8 +36,6 @@
+ ###Set License####
+ set(CPACK_RESOURCE_FILE_LICENSE ${hip_SOURCE_DIR}/LICENSE.txt)
+ install(FILES ${CPACK_RESOURCE_FILE_LICENSE} DESTINATION ${CMAKE_INSTALL_DOCDIR} COMPONENT binary)
+-# install license file in share/doc/hip-asan folder
+-install(FILES ${CPACK_RESOURCE_FILE_LICENSE} DESTINATION ${CMAKE_INSTALL_DOCDIR}-asan COMPONENT asan)
+ set(CPACK_RPM_PACKAGE_LICENSE "MIT")
+ #Begin binary files install
+ if(HIP_PLATFORM STREQUAL "amd" )

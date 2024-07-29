@@ -1,0 +1,26 @@
+From f7ad7429b0b17c70b0309a5a8ee04d1afc434df0 Mon Sep 17 00:00:00 2001
+From: Felix W <felix.wischke@gmail.com>
+Date: Fri, 9 Jun 2023 09:59:41 +0100
+Subject: [PATCH 6/6] Filter out distcc warnings to avoid confusing CMake
+
+Forward-ported from 3.16.5 to 3.18.0
+
+Bug: https://bugs.gentoo.org/691544
+Bug: https://gitlab.kitware.com/cmake/cmake/-/issues/22573
+[imported from cmake 3.18.0-filter_distcc_warning.patch]
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/Source/Checks/cm_cxx_features.cmake
++++ b/Source/Checks/cm_cxx_features.cmake
+@@ -55,6 +55,8 @@ function(cm_check_cxx_feature name)
+     string(REGEX REPLACE "[^\n]*icpc: command line warning #10121: overriding [^\n]*" "" check_output "${check_output}")
+     # Filter out ld warnings.
+     string(REGEX REPLACE "[^\n]*ld: warning: [^\n]*" "" check_output "${check_output}")
++    # Filter out distcc.
++    string(REGEX REPLACE "[^\n]*distcc\\[[0-9]+\\][^\n]*[Ww]arning:[^\n]*" "" check_output "${check_output}")
+     # If using the feature causes warnings, treat it as broken/unavailable.
+     if(check_output MATCHES "(^|[ :])[Ww][Aa][Rr][Nn][Ii][Nn][Gg]")
+       set(CMake_HAVE_CXX_${FEATURE} OFF CACHE INTERNAL "TRY_COMPILE" FORCE)
+-- 
+2.41.0
+

@@ -1,0 +1,32 @@
+--- a/Makefile.linux
++++ b/Makefile.linux
+@@ -47,19 +47,21 @@
+
+
+ # Installation settings
+-LIBDIR  = /usr/lib/
+-INCDIR  = /usr/local/include/
+-BINDIR  = /usr/local/bin/
+-MAN1DIR = /usr/local/share/man/man1/
+-CP = cp
++LIBDIR  = $(DESTDIR)/usr/$GENTOO_LIBDIR@/$(DEB_HOST_MULTIARCH)
++INCDIR  = $(DESTDIR)/usr/include/
++BINDIR  = $(DESTDIR)/usr/bin/
++MAN1DIR = $(DESTDIR)/usr/share/man/man1/
++CP = cp -P
+ MKDIR = mkdir -p
+
+-install:
+-	$(CP) lib/libopenctm.so $(LIBDIR)
++$(LIBDIR) $(INCDIR) $(BINDIR) $(MAN1DIR):
++	$(MKDIR) -p "$@"
++
++install: $(LIBDIR) $(INCDIR) $(BINDIR) $(MAN1DIR)
++	$(CP) lib/libopenctm.so* $(LIBDIR)
+ 	$(CP) lib/openctm.h $(INCDIR)
+ 	$(CP) lib/openctmpp.h $(INCDIR)
+ 	$(CP) tools/ctmconv $(BINDIR)
+ 	$(CP) tools/ctmviewer $(BINDIR)
+-	$(MKDIR) $(MAN1DIR)
+ 	$(CP) doc/ctmconv.1 $(MAN1DIR)
+ 	$(CP) doc/ctmviewer.1 $(MAN1DIR)

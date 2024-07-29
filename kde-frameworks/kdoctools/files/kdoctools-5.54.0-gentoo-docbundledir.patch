@@ -1,0 +1,26 @@
+From 79f31819b95fcb0bd3d30630f769706923d41609 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 28 Jan 2019 22:50:56 +0100
+Subject: [PATCH] xslt.cpp: Add /usr/share/help dir to list of paths containing
+ documentation
+
+---
+ src/xslt.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/xslt.cpp b/src/xslt.cpp
+index 1000e33..a0fbe4c 100644
+--- a/src/xslt.cpp
++++ b/src/xslt.cpp
+@@ -494,5 +494,7 @@ QStringList getKDocToolsCatalogs()
+ QStringList KDocTools::documentationDirs()
+ {
+     /* List of paths containing documentation */
+-    return QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QStringLiteral("doc/HTML"), QStandardPaths::LocateDirectory);
++    QStringList docDirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QStringLiteral("help"), QStandardPaths::LocateDirectory);
++    docDirs.append(QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QStringLiteral("doc/HTML"), QStandardPaths::LocateDirectory));
++    return docDirs;
+ }
+-- 
+2.20.1
+

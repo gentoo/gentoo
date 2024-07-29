@@ -1,0 +1,17 @@
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -127,12 +127,7 @@
+             set_target_properties(graphite2 PROPERTIES
+                 LINK_FLAGS      "-nodefaultlibs ${GRAPHITE_LINK_FLAGS}")
+ 
+-            if (GRAPHITE2_SANITIZERS)
+-                target_link_libraries(graphite2 c gcc_s)
+-            else()
+-                target_link_libraries(graphite2 c gcc)
+-            endif()
+-
++            target_link_libraries(graphite2 c gcc_s)
+             if (BUILD_SHARED_LIBS)
+                 nolib_test(stdc++ $<TARGET_SONAME_FILE:graphite2>)
+             endif ()
+

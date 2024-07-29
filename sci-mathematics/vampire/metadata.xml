@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription>
+    Vampire is a theorem prover, that is, a system able to prove theorems —
+    although now it can do much more! Its main focus is in proving theorems in
+    first-order logic but it can also prove non-theorems and build finite
+    models, as well as reasoning in combinations of theories, such as
+    arithmetic, arrays, and datatypes, and with higher-order logic.
+    The development of Vampire began in 1994 and has survived a number of
+    rewritings.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/vprover/vampire/issues/</bugs-to>
+    <remote-id type="github">vprover/vampire</remote-id>
+  </upstream>
+  <use>
+    <flag name="z3">Enable support for <pkg>sci-mathematics/z3</pkg></flag>
+  </use>
+</pkgmetadata>

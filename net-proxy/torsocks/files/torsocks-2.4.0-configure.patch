@@ -1,0 +1,23 @@
+Fix bashism in libc.so filename check, and don't unconditionally set _F_S=2,
+as it clobbers e.g. _F_S=3.
+--- a/configure.ac
++++ b/configure.ac
+@@ -124,7 +124,7 @@ AS_CASE([$host_os],
+ 	[linux*|kfreebsd*-gnu|freebsd*],
+ 	[
+ 		libc_name=`ldd /usr/bin/yes | grep 'libc\.' | cut -d ' ' -f 1 | tr -d '\t'`
+-		if test "${libc_name}" == ""; then
++		if test "${libc_name}" = ""; then
+ 			# Default libc on most system.
+ 			libc_name="libc.so.6"
+ 		fi
+@@ -258,9 +258,6 @@ AX_CHECK_LINK_FLAG([-pie],[LDFLAGS="$LDFLAGS -pie"],[],[])
+ AX_CHECK_LINK_FLAG([-z relro],[LDFLAGS="$LDFLAGS -z relro"],[],[])
+ AX_CHECK_LINK_FLAG([-z now],[LDFLAGS="$LDFLAGS -z now"],[],[])
+ 
+-dnl Add glibc hardening
+-CPPFLAGS="$CPPFLAGS -D_FORTIFY_SOURCE=2"
+-
+ ##############################################################################
+ # 10. Finish up
+ ##############################################################################

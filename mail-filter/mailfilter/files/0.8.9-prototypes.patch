@@ -1,0 +1,132 @@
+
+Patch from: https://github.com/nondeterministic/mailfilter/pull/7
+Bug: https://bugs.gentoo.org/870625
+
+From c8ce051933c29561bdc57de782d0445f1513100d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Holger=20Hoffst=C3=A4tte?= <holger@applied-asynchrony.com>
+Date: Wed, 14 Sep 2022 18:49:20 +0200
+Subject: [PATCH] Fix warnings about incorrect prototypes & use standard memcpy/memset
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Clang-15 rightfully complains about function definitions without proper
+prototypes. Also replace handrolled memcpy/memset with standard
+C library calls.
+
+Signed-off-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+---
+ src/md5c.c | 47 +++++++++++------------------------------------
+ 1 file changed, 11 insertions(+), 36 deletions(-)
+
+diff --git a/src/md5c.c b/src/md5c.c
+index 2c2c564..ae5ec8d 100644
+--- a/src/md5c.c
++++ b/src/md5c.c
+@@ -24,6 +24,7 @@ documentation and/or software.
+  */
+ 
+ #include "md5.h"
++#include <string.h>
+ 
+ /* Constants for MD5Transform routine.
+  */
+@@ -94,8 +95,7 @@ Rotation is separate from addition to prevent recomputation.
+ 
+ /* MD5 initialization. Begins an MD5 operation, writing a new context.
+  */
+-void MD5Init (context)
+-MD5_CTX *context;                                        /* context */
++void MD5Init (MD5_CTX *context)
+ {
+   context->count[0] = context->count[1] = 0;
+   /* Load magic initialization constants.
+@@ -110,10 +110,7 @@ MD5_CTX *context;                                        /* context */
+   operation, processing another message block, and updating the
+   context.
+  */
+-void MD5Update (context, input, inputLen)
+-MD5_CTX *context;                                        /* context */
+-unsigned char *input;                                /* input block */
+-unsigned int inputLen;                     /* length of input block */
++void MD5Update (MD5_CTX *context, unsigned char *input, unsigned int inputLen)
+ {
+   unsigned int i, index, partLen;
+ 
+@@ -152,9 +149,7 @@ unsigned int inputLen;                     /* length of input block */
+ /* MD5 finalization. Ends an MD5 message-digest operation, writing the
+   the message digest and zeroizing the context.
+  */
+-void MD5Final (digest, context)
+-unsigned char digest[16];                         /* message digest */
+-MD5_CTX *context;                                       /* context */
++void MD5Final (unsigned char digest[16], MD5_CTX *context)
+ {
+   unsigned char bits[8];
+   unsigned int index, padLen;
+@@ -180,9 +175,7 @@ MD5_CTX *context;                                       /* context */
+ 
+ /* MD5 basic transformation. Transforms state based on block.
+  */
+-static void MD5Transform (state, block)
+-uint32_t state[4];
+-unsigned char block[64];
++static void MD5Transform (uint32_t state[4], unsigned char block[64])
+ {
+   uint32_t a = state[0], b = state[1], c = state[2], d = state[3], x[16];
+ 
+@@ -272,10 +265,7 @@ unsigned char block[64];
+ /* Encodes input (uint32_t) into output (unsigned char). Assumes len is
+   a multiple of 4.
+  */
+-static void Encode (output, input, len)
+-unsigned char *output;
+-uint32_t *input;
+-unsigned int len;
++static void Encode (unsigned char *output, uint32_t *input, unsigned int len)
+ {
+   unsigned int i, j;
+ 
+@@ -290,10 +280,7 @@ unsigned int len;
+ /* Decodes input (unsigned char) into output (uint32_t). Assumes len is
+   a multiple of 4.
+  */
+-static void Decode (output, input, len)
+-uint32_t *output;
+-unsigned char *input;
+-unsigned int len;
++static void Decode (uint32_t *output, unsigned char *input, unsigned int len)
+ {
+   unsigned int i, j;
+ 
+@@ -305,26 +292,14 @@ unsigned int len;
+ /* Note: Replace "for loop" with standard memcpy if possible.
+  */
+ 
+-static void MD5_memcpy (output, input, len)
+-POINTER output;
+-POINTER input;
+-unsigned int len;
++static void MD5_memcpy (POINTER output, POINTER input, unsigned int len)
+ {
+-  unsigned int i;
+-
+-  for (i = 0; i < len; i++)
+-  output[i] = input[i];
++  memcpy(output, input, len);
+ }
+ 
+ /* Note: Replace "for loop" with standard memset if possible.
+  */
+-static void MD5_memset (output, value, len)
+-POINTER output;
+-int value;
+-unsigned int len;
++static void MD5_memset (POINTER output, int value, unsigned int len)
+ {
+-  unsigned int i;
+-
+-  for (i = 0; i < len; i++)
+- ((char *)output)[i] = (char)value;
++  memset(output, value, len);
+ }

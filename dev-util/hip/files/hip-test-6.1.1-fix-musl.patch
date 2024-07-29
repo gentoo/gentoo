@@ -1,0 +1,159 @@
+Fix musl errors:
+* reinterpret_cast from 'std::nullptr_t' to 'void **' is not allowed
+* error.h is GNU extension
+
+Upstream PR: https://github.com/ROCm/hip-tests/pull/463
+--- a/unit/rtc/headers/printf_common.h
++++ b/unit/rtc/headers/printf_common.h
+@@ -30,7 +30,6 @@ THE SOFTWARE.
+ #if defined(_WIN32)
+ #include <io.h>
+ #else
+-#include <error.h>
+ #include <unistd.h>
+ #endif
+ 
+@@ -110,7 +109,7 @@ struct CaptureStream {
+     saved_fd = dup(orig_fd);
+ 
+     if ((temp_fd = mkstemp(tempname)) == -1) {
+-      error(0, errno, "Error");
++      fprintf(stderr, "Error: %s\n", strerror(errno));
+       assert(false);
+     }
+   }
+@@ -118,11 +117,11 @@ struct CaptureStream {
+   void Begin() {
+     fflush(nullptr);
+     if (dup2(temp_fd, orig_fd) == -1) {
+-      error(0, errno, "Error");
++      fprintf(stderr, "Error: %s\n", strerror(errno));
+       assert(false);
+     }
+     if (close(temp_fd) != 0) {
+-      error(0, errno, "Error");
++      fprintf(stderr, "Error: %s\n", strerror(errno));
+       assert(false);
+     }
+   }
+@@ -130,11 +129,11 @@ struct CaptureStream {
+   void End() {
+     fflush(nullptr);
+     if (dup2(saved_fd, orig_fd) == -1) {
+-      error(0, errno, "Error");
++      fprintf(stderr, "Error: %s\n", strerror(errno));
+       assert(false);
+     }
+     if (close(saved_fd) != 0) {
+-      error(0, errno, "Error");
++      fprintf(stderr, "Error: %s\n", strerror(errno));
+       assert(false);
+     }
+   }
+@@ -148,7 +147,7 @@ struct CaptureStream {
+ 
+   ~CaptureStream() {
+     if (remove(tempname) != 0) {
+-      error(0, errno, "Error");
++      fprintf(stderr, "Error: %s\n", strerror(errno));
+       assert(false);
+     }
+   }
+--- a/unit/memory/hipMemRangeGetAttributes_old.cc
++++ b/unit/memory/hipMemRangeGetAttributes_old.cc
+@@ -268,7 +268,7 @@ TEST_CASE("Unit_hipMemRangeGetAttributes_NegativeTst") {
+     // Passing NULL as first parameter
+     SECTION("Passing NULL as first parameter") {
+       if (!CheckError(hipMemRangeGetAttributes(
+-                                      reinterpret_cast<void**>(NULL),
++                                      static_cast<void**>(NULL),
+                                       reinterpret_cast<size_t*>(dataSizes),
+                                       AttrArr, 4, Hmm, MEM_SIZE),
+                                       __LINE__)) {
+--- a/unit/occupancy/hipOccupancyMaxActiveBlocksPerMultiprocessor_old.cc
++++ b/unit/occupancy/hipOccupancyMaxActiveBlocksPerMultiprocessor_old.cc
+@@ -40,7 +40,7 @@ TEST_CASE("Unit_hipOccupancyMaxActiveBlocksPerMultiprocessor_Negative") {
+   ret = hipOccupancyMaxActiveBlocksPerMultiprocessor(NULL, f1, blockSize, 0);
+   REQUIRE(ret != hipSuccess);
+ 
+-  ret = hipOccupancyMaxActiveBlocksPerMultiprocessor(&numBlock, NULL, blockSize, 0);
++  ret = hipOccupancyMaxActiveBlocksPerMultiprocessor(&numBlock, static_cast<void*>(NULL), blockSize, 0);
+   REQUIRE(ret != hipSuccess);
+ 
+   ret = hipOccupancyMaxActiveBlocksPerMultiprocessor(&numBlock, f1, 0, 0);
+--- a/unit/occupancy/hipOccupancyMaxPotentialBlockSize_old.cc
++++ b/unit/occupancy/hipOccupancyMaxPotentialBlockSize_old.cc
+@@ -37,7 +37,7 @@ TEST_CASE("Unit_hipOccupancyMaxPotentialBlockSize_Negative") {
+ 
+ #ifndef __HIP_PLATFORM_NVIDIA__
+   // nvcc doesnt support kernelfunc(NULL) for api
+-  ret = hipOccupancyMaxPotentialBlockSize(&gridSize, &blockSize, NULL, 0, 0);
++  ret = hipOccupancyMaxPotentialBlockSize(&gridSize, &blockSize, static_cast<void*>(NULL), 0, 0);
+   REQUIRE(ret != hipSuccess);
+ #endif
+ }
+--- a/unit/occupancy/hipOccupancyMaxActiveBlocksPerMultiprocessor.cc
++++ b/unit/occupancy/hipOccupancyMaxActiveBlocksPerMultiprocessor.cc
+@@ -48,7 +48,7 @@ TEST_CASE("Unit_hipOccupancyMaxActiveBlocksPerMultiprocessor_Negative_Parameters
+       blockSize);
+ 
+   SECTION("Kernel function is NULL") {
+-    HIP_CHECK_ERROR(hipOccupancyMaxActiveBlocksPerMultiprocessor(&numBlocks, NULL, blockSize, 0),
++    HIP_CHECK_ERROR(hipOccupancyMaxActiveBlocksPerMultiprocessor(&numBlocks, static_cast<void*>(NULL), blockSize, 0),
+                     hipErrorInvalidDeviceFunction);
+   }
+ }
+--- a/unit/kernel/printf_common.h
++++ b/unit/kernel/printf_common.h
+@@ -24,7 +24,6 @@ THE SOFTWARE.
+ #define _STRESSTEST_PRINTF_COMMON_H_
+ 
+ #include <errno.h>
+-#include <error.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <unistd.h>
+@@ -47,17 +46,17 @@ struct CaptureStream {
+     saved_fd = dup(orig_fd);
+ 
+     if ((temp_fd = mkstemp(tempname)) == -1) {
+-      error(0, errno, "Error");
++      fprintf(stderr, "Error: %s\n", strerror(errno));
+       assert(false);
+     }
+ 
+     fflush(nullptr);
+     if (dup2(temp_fd, orig_fd) == -1) {
+-      error(0, errno, "Error");
++      fprintf(stderr, "Error: %s\n", strerror(errno));
+       assert(false);
+     }
+     if (close(temp_fd) != 0) {
+-      error(0, errno, "Error");
++      fprintf(stderr, "Error: %s\n", strerror(errno));
+       assert(false);
+     }
+   }
+@@ -67,11 +66,11 @@ struct CaptureStream {
+       return;
+     fflush(nullptr);
+     if (dup2(saved_fd, orig_fd) == -1) {
+-      error(0, errno, "Error");
++      fprintf(stderr, "Error: %s\n", strerror(errno));
+       assert(false);
+     }
+     if (close(saved_fd) != 0) {
+-      error(0, errno, "Error");
++      fprintf(stderr, "Error: %s\n", strerror(errno));
+       assert(false);
+     }
+     saved_fd = -1;
+@@ -90,7 +89,7 @@ struct CaptureStream {
+   ~CaptureStream() {
+     restoreStream();
+     if (remove(tempname) != 0) {
+-      error(0, errno, "Error");
++      fprintf(stderr, "Error: %s\n", strerror(errno));
+       assert(false);
+     }
+   }

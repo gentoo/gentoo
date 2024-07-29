@@ -1,0 +1,51 @@
+--- a/frmts/zlib/contrib/infback9/minified_zutil.c
++++ b/frmts/zlib/contrib/infback9/minified_zutil.c
+@@ -8,9 +8,9 @@
+ #include "minified_zutil.h"
+ 
+ #ifndef STDC
+-extern voidp  malloc OF((uInt size));
+-extern voidp  calloc OF((uInt items, uInt size));
+-extern void   free   OF((voidpf ptr));
++extern voidp  malloc (uInt size);
++extern voidp  calloc (uInt items, uInt size);
++extern void   free   (voidpf ptr);
+ #endif
+ 
+ voidpf ZLIB_INTERNAL zcalloc(voidpf opaque, unsigned items, unsigned size)
+--- a/frmts/zlib/contrib/infback9/minified_zutil.h
++++ b/frmts/zlib/contrib/infback9/minified_zutil.h
+@@ -191,9 +191,9 @@ extern z_const char * const z_errmsg[10]; /* indexed by 2-zlib_error */
+ /* provide prototypes for these when building zlib without LFS */
+ #if !defined(_WIN32) && \
+     (!defined(_LARGEFILE64_SOURCE) || _LFS64_LARGEFILE-0 == 0)
+-    ZEXTERN uLong ZEXPORT adler32_combine64 OF((uLong, uLong, z_off_t));
+-    ZEXTERN uLong ZEXPORT crc32_combine64 OF((uLong, uLong, z_off_t));
+-    ZEXTERN uLong ZEXPORT crc32_combine_gen64 OF((z_off_t));
++    ZEXTERN uLong ZEXPORT adler32_combine64 (uLong, uLong, z_off_t);
++    ZEXTERN uLong ZEXPORT crc32_combine64 (uLong, uLong, z_off_t);
++    ZEXTERN uLong ZEXPORT crc32_combine_gen64 (z_off_t);
+ #endif
+ 
+         /* common defaults */
+@@ -232,16 +232,16 @@ extern z_const char * const z_errmsg[10]; /* indexed by 2-zlib_error */
+ #    define zmemzero(dest, len) memset(dest, 0, len)
+ #  endif
+ #else
+-   void ZLIB_INTERNAL zmemcpy OF((Bytef* dest, const Bytef* source, uInt len));
+-   int ZLIB_INTERNAL zmemcmp OF((const Bytef* s1, const Bytef* s2, uInt len));
+-   void ZLIB_INTERNAL zmemzero OF((Bytef* dest, uInt len));
++   void ZLIB_INTERNAL zmemcpy (Bytef* dest, const Bytef* source, uInt len);
++   int ZLIB_INTERNAL zmemcmp (const Bytef* s1, const Bytef* s2, uInt len);
++   void ZLIB_INTERNAL zmemzero (Bytef* dest, uInt len);
+ #endif
+ 
+ /* Diagnostic functions */
+ #ifdef ZLIB_DEBUG
+ #  include <stdio.h>
+    extern int ZLIB_INTERNAL z_verbose;
+-   extern void ZLIB_INTERNAL z_error OF((char *m));
++   extern void ZLIB_INTERNAL z_error (char *m);
+ #  define Assert(cond,msg) {if(!(cond)) z_error(msg);}
+ #  define Trace(x) {if (z_verbose>=0) fprintf x ;}
+ #  define Tracev(x) {if (z_verbose>0) fprintf x ;}

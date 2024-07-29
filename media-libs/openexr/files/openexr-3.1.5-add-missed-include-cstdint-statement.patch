@@ -1,0 +1,21 @@
+https://github.com/AcademySoftwareFoundation/openexr/pull/1276
+
+From 974b14f67e89dddb6710364034116b3f7b9e0247 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Thu, 15 Sep 2022 18:58:01 +0200
+Subject: [PATCH] add missed #include <cstdint> statement
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/src/lib/OpenEXR/ImfTiledMisc.h
++++ b/src/lib/OpenEXR/ImfTiledMisc.h
+@@ -19,6 +19,7 @@
+ 
+ #include <stdio.h>
+ #include <vector>
++#include <cstdint>
+ 
+ OPENEXR_IMF_INTERNAL_NAMESPACE_HEADER_ENTER
+ 
+-- 
+2.37.3
+

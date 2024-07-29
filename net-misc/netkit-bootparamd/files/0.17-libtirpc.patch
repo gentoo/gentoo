@@ -1,0 +1,15 @@
+diff -ruN netkit-bootparamd-0.17.orig/rpc.bootparamd/main.c netkit-bootparamd-0.17/rpc.bootparamd/main.c
+--- netkit-bootparamd-0.17.orig/rpc.bootparamd/main.c	2000-07-22 16:23:56.000000000 -0000
++++ netkit-bootparamd-0.17/rpc.bootparamd/main.c	2017-10-04 14:17:49.887552574 -0000
+@@ -17,9 +17,11 @@
+ 
+ 
+ #ifdef __GLIBC__
++#ifndef _TIRPC_RPC_H
+ 	/* quick fix */
+ 	void get_myaddress(struct sockaddr_in *);
+ #endif
++#endif
+ 
+ int debug = 0;
+ int dolog = 0;

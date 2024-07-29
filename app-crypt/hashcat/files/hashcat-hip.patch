@@ -1,0 +1,170 @@
+commit eaf3de164bdc327c059d3ae1bd3d2a79f6cd47bd
+Author: Jens Steube <jens.steube@gmail.com>
+Date:   Tue Nov 1 19:36:03 2022 +0100
+
+    Remove option "-flegacy-pass-manager" if HIP backend is used. Support was removed from LLVM 15. There's no alternative option available.
+    Fixes #3469
+
+diff --git a/src/backend.c b/src/backend.c
+index 46a0bcdf1..193bbb447 100644
+--- a/src/backend.c
++++ b/src/backend.c
+@@ -8396,7 +8389,7 @@ static bool load_kernel (hashcat_ctx_t *hashcat_ctx, hc_device_param_t *device_p
+ 
+       hiprtc_options[1] = "-nocudainc";
+       hiprtc_options[2] = "-nocudalib";
+-      hiprtc_options[3] = "-flegacy-pass-manager";
++      hiprtc_options[3] = "";
+       hiprtc_options[4] = "";
+ 
+       // untested but it should work
+diff --git a/src/modules/module_00500.c b/src/modules/module_00500.c
+index deb73024b..e86de7a19 100644
+--- a/src/modules/module_00500.c
++++ b/src/modules/module_00500.c
+@@ -57,19 +57,6 @@ u64 module_tmp_size (MAYBE_UNUSED const hashconfig_t *hashconfig, MAYBE_UNUSED c
+   return tmp_size;
+ }
+ 
+-char *module_jit_build_options (MAYBE_UNUSED const hashconfig_t *hashconfig, MAYBE_UNUSED const user_options_t *user_options, MAYBE_UNUSED const user_options_extra_t *user_options_extra, MAYBE_UNUSED const hashes_t *hashes, MAYBE_UNUSED const hc_device_param_t *device_param)
+-{
+-  char *jit_build_options = NULL;
+-
+-  // AMD HIP
+-  if (device_param->opencl_device_vendor_id == VENDOR_ID_AMD_USE_HIP)
+-  {
+-    hc_asprintf (&jit_build_options, "-flegacy-pass-manager");
+-  }
+-
+-  return jit_build_options;
+-}
+-
+ static void md5crypt_decode (u8 digest[16], const u8 buf[22])
+ {
+   int l;
+@@ -304,7 +291,7 @@ void module_init (module_ctx_t *module_ctx)
+   module_ctx->module_hook23                   = MODULE_DEFAULT;
+   module_ctx->module_hook_salt_size           = MODULE_DEFAULT;
+   module_ctx->module_hook_size                = MODULE_DEFAULT;
+-  module_ctx->module_jit_build_options        = module_jit_build_options;
++  module_ctx->module_jit_build_options        = MODULE_DEFAULT;
+   module_ctx->module_jit_cache_disable        = MODULE_DEFAULT;
+   module_ctx->module_kernel_accel_max         = MODULE_DEFAULT;
+   module_ctx->module_kernel_accel_min         = MODULE_DEFAULT;
+diff --git a/src/modules/module_00501.c b/src/modules/module_00501.c
+index 22b28e385..b22c8f80d 100644
+--- a/src/modules/module_00501.c
++++ b/src/modules/module_00501.c
+@@ -59,19 +59,6 @@ u64 module_tmp_size (MAYBE_UNUSED const hashconfig_t *hashconfig, MAYBE_UNUSED c
+   return tmp_size;
+ }
+ 
+-char *module_jit_build_options (MAYBE_UNUSED const hashconfig_t *hashconfig, MAYBE_UNUSED const user_options_t *user_options, MAYBE_UNUSED const user_options_extra_t *user_options_extra, MAYBE_UNUSED const hashes_t *hashes, MAYBE_UNUSED const hc_device_param_t *device_param)
+-{
+-  char *jit_build_options = NULL;
+-
+-  // AMD HIP
+-  if (device_param->opencl_device_vendor_id == VENDOR_ID_AMD_USE_HIP)
+-  {
+-    hc_asprintf (&jit_build_options, "-flegacy-pass-manager");
+-  }
+-
+-  return jit_build_options;
+-}
+-
+ static void AES128_decrypt_cbc (const u32 key[4], const u32 iv[4], const u32 in[16], u32 out[16])
+ {
+   AES_KEY skey;
+@@ -383,7 +370,7 @@ void module_init (module_ctx_t *module_ctx)
+   module_ctx->module_hook23                   = MODULE_DEFAULT;
+   module_ctx->module_hook_salt_size           = MODULE_DEFAULT;
+   module_ctx->module_hook_size                = MODULE_DEFAULT;
+-  module_ctx->module_jit_build_options        = module_jit_build_options;
++  module_ctx->module_jit_build_options        = MODULE_DEFAULT;
+   module_ctx->module_jit_cache_disable        = MODULE_DEFAULT;
+   module_ctx->module_kernel_accel_max         = MODULE_DEFAULT;
+   module_ctx->module_kernel_accel_min         = MODULE_DEFAULT;
+diff --git a/src/modules/module_01500.c b/src/modules/module_01500.c
+index fcd6e9f04..acc09c075 100644
+--- a/src/modules/module_01500.c
++++ b/src/modules/module_01500.c
+@@ -168,11 +168,11 @@ char *module_jit_build_options (MAYBE_UNUSED const hashconfig_t *hashconfig, MAY
+   {
+     if ((user_options->attack_mode == ATTACK_MODE_BF) && (hashes->salts_cnt == 1) && (user_options->slow_candidates == false))
+     {
+-      hc_asprintf (&jit_build_options, "-D DESCRYPT_SALT=%u -D _unroll -flegacy-pass-manager", hashes->salts_buf[0].salt_buf[0] & 0xfff);
++      hc_asprintf (&jit_build_options, "-D DESCRYPT_SALT=%u -D _unroll", hashes->salts_buf[0].salt_buf[0] & 0xfff);
+     }
+     else
+     {
+-      hc_asprintf (&jit_build_options, "-D _unroll -flegacy-pass-manager");
++      hc_asprintf (&jit_build_options, "-D _unroll");
+     }
+   }
+   else
+diff --git a/src/modules/module_01600.c b/src/modules/module_01600.c
+index 63f6038a6..5c62252b1 100644
+--- a/src/modules/module_01600.c
++++ b/src/modules/module_01600.c
+@@ -57,19 +57,6 @@ u64 module_tmp_size (MAYBE_UNUSED const hashconfig_t *hashconfig, MAYBE_UNUSED c
+   return tmp_size;
+ }
+ 
+-char *module_jit_build_options (MAYBE_UNUSED const hashconfig_t *hashconfig, MAYBE_UNUSED const user_options_t *user_options, MAYBE_UNUSED const user_options_extra_t *user_options_extra, MAYBE_UNUSED const hashes_t *hashes, MAYBE_UNUSED const hc_device_param_t *device_param)
+-{
+-  char *jit_build_options = NULL;
+-
+-  // AMD HIP
+-  if (device_param->opencl_device_vendor_id == VENDOR_ID_AMD_USE_HIP)
+-  {
+-    hc_asprintf (&jit_build_options, "-flegacy-pass-manager");
+-  }
+-
+-  return jit_build_options;
+-}
+-
+ static void md5crypt_decode (u8 digest[16], const u8 buf[22])
+ {
+   int l;
+@@ -304,7 +291,7 @@ void module_init (module_ctx_t *module_ctx)
+   module_ctx->module_hook23                   = MODULE_DEFAULT;
+   module_ctx->module_hook_salt_size           = MODULE_DEFAULT;
+   module_ctx->module_hook_size                = MODULE_DEFAULT;
+-  module_ctx->module_jit_build_options        = module_jit_build_options;
++  module_ctx->module_jit_build_options        = MODULE_DEFAULT;
+   module_ctx->module_jit_cache_disable        = MODULE_DEFAULT;
+   module_ctx->module_kernel_accel_max         = MODULE_DEFAULT;
+   module_ctx->module_kernel_accel_min         = MODULE_DEFAULT;
+diff --git a/src/modules/module_06300.c b/src/modules/module_06300.c
+index 34dbb7a74..02fc4d051 100644
+--- a/src/modules/module_06300.c
++++ b/src/modules/module_06300.c
+@@ -57,19 +57,6 @@ u64 module_tmp_size (MAYBE_UNUSED const hashconfig_t *hashconfig, MAYBE_UNUSED c
+   return tmp_size;
+ }
+ 
+-char *module_jit_build_options (MAYBE_UNUSED const hashconfig_t *hashconfig, MAYBE_UNUSED const user_options_t *user_options, MAYBE_UNUSED const user_options_extra_t *user_options_extra, MAYBE_UNUSED const hashes_t *hashes, MAYBE_UNUSED const hc_device_param_t *device_param)
+-{
+-  char *jit_build_options = NULL;
+-
+-  // AMD HIP
+-  if (device_param->opencl_device_vendor_id == VENDOR_ID_AMD_USE_HIP)
+-  {
+-    hc_asprintf (&jit_build_options, "-flegacy-pass-manager");
+-  }
+-
+-  return jit_build_options;
+-}
+-
+ static void md5crypt_decode (u8 digest[16], const u8 buf[22])
+ {
+   int l;
+@@ -295,7 +282,7 @@ void module_init (module_ctx_t *module_ctx)
+   module_ctx->module_hook23                   = MODULE_DEFAULT;
+   module_ctx->module_hook_salt_size           = MODULE_DEFAULT;
+   module_ctx->module_hook_size                = MODULE_DEFAULT;
+-  module_ctx->module_jit_build_options        = module_jit_build_options;
++  module_ctx->module_jit_build_options        = MODULE_DEFAULT;
+   module_ctx->module_jit_cache_disable        = MODULE_DEFAULT;
+   module_ctx->module_kernel_accel_max         = MODULE_DEFAULT;
+   module_ctx->module_kernel_accel_min         = MODULE_DEFAULT;

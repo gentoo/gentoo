@@ -1,0 +1,12 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+ARCH="ppc-macos"
+ACCEPT_KEYWORDS="~ppc-macos"
+
+# multilib build stuff, single ABI (no multilib)
+MULTILIB_ABIS="ppc"
+DEFAULT_ABI="ppc"
+ABI="ppc"
+IUSE_IMPLICIT="abi_ppc_32"
+LIBDIR_ppc="lib"

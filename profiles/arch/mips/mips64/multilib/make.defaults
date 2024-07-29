@@ -1,0 +1,23 @@
+# Copyright 2011-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+PROFILE_ARCH="mips64"
+
+CHOST="mips64-unknown-linux-gnu"
+CFLAGS="-O2 -pipe"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"
+
+CFLAGS_o32="-mabi=32"
+CHOST_o32="${CHOST}"
+
+CFLAGS_n32="-mabi=n32"
+CHOST_n32="${CHOST}"
+
+CFLAGS_n64="-mabi=64"
+CHOST_n64="${CHOST}"
+
+SYMLINK_LIB="no"
+
+USE_EXPAND_HIDDEN="-ABI_MIPS"

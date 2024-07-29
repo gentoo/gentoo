@@ -1,0 +1,11 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -11,7 +11,7 @@
+ 	parse.o readcfg.o
+ 
+ seatris: $(OBJS)
+-	$(CC) $(LFLAGS) $(LIBS) -o seatris $(OBJS)
++	$(CC) $(LDFLAGS) -o seatris $(OBJS) $(LIBS)
+ 
+ clean:
+ 	rm -f *.o seatris

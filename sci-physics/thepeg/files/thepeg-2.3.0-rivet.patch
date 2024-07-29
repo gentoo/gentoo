@@ -1,0 +1,25 @@
+--- a/Analysis/RivetAnalysis.cc	2024-01-30 23:57:34.065788628 +0100
++++ b/Analysis/RivetAnalysis.cc	2024-01-31 00:00:54.544781058 +0100
+@@ -31,7 +31,22 @@
+   AnalysisHandler::analyze(event, ieve, loop, state);
+   // Rotate to CMS, extract final state particles and call analyze(particles).
+   // convert to hepmc
++#ifdef HAVE_HEPMC3
++    std::shared_ptr<HepMC3::GenRunInfo> ri = std::make_shared<HepMC3::GenRunInfo>();
++    std::vector<std::string>  w_names;
++    w_names.push_back("Default");
++    for ( map<string,double>::const_iterator w = event->optionalWeights().begin();
++     w != event->optionalWeights().end(); ++w ) {
++     w_names.push_back(w->first);
++    }
++    ri->set_weight_names(w_names);
++#endif
++
+   HepMC::GenEvent * hepmc = ThePEG::HepMCConverter<HepMC::GenEvent>::convert(*event);
++#ifdef HAVE_HEPMC3
++  hepmc->set_run_info(ri);
++#endif
++
+   // analyse the event
+   if(_nevent>1) CurrentGenerator::Redirect stdout(cout);
+   if ( _rivet ){

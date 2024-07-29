@@ -1,0 +1,12 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -9,9 +9,6 @@
+ 	$(INSTALL) -d $(DESTDIR)$(mandir)/man1
+ 	$(INSTALL) -m 0644 $(srcdir)/bristol.1 $(DESTDIR)$(mandir)/man1/
+ 	$(INSTALL) -m 0644 $(srcdir)/bristoljackstats.1 $(DESTDIR)$(mandir)/man1/
+-	gzip -9fn $(DESTDIR)$(mandir)/man1/bristol.1
+-	gzip -9fn $(DESTDIR)$(mandir)/man1/bristoljackstats.1
+-	cd $(DESTDIR)$(mandir)/man1 && ln -sf bristol.1.gz brighton.1.gz && ln -sf bristol.1.gz startBristol.1.gz
+ 
+ installdb:
+ 	mkdir -p -m 0755 $(DESTDIR)$(bristoldir)

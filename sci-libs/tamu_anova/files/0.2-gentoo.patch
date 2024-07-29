@@ -1,0 +1,35 @@
+diff --git a/Makefile.am b/Makefile.am
+index 6b11b79..ba5fac3 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,11 +1,11 @@
+-inst_LIBRARIES = libtamuanova.a
++lib_LTLIBRARIES = libtamuanova.la
+ pkginclude_HEADERS = tamu_anova.h
+-libtamuanova_a_SOURCES = anova_1.c anova_2.c
+-instdir = /usr/lib/
++libtamuanova_la_SOURCES = anova_1.c anova_2.c
++libtamuanova_la_LIBADD = $(GSL_LIBS)
+ 
+ TESTS = $(check_PROGRAMS)
+ check_PROGRAMS = test
+-test_LDADD = libtamuanova.a -lgsl -lgslcblas -lm
++test_LDADD = libtamuanova.la $(GSL_LIBS) -lm
+ test_SOURCES = test.c
+ 
+ CLEANFILES = test.dat
+diff --git a/configure.ac b/configure.ac
+index 7008594..1f161c3 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -7,6 +7,10 @@ AM_INIT_AUTOMAKE([gnu no-dependencies])
+ AC_CONFIG_HEADER([config.h])
+ 
+ AC_PROG_MAKE_SET
++AC_PROG_LIBTOOL
++PKG_PROG_PKG_CONFIG
++
++PKG_CHECK_MODULES(GSL, [ gsl ])
+ 
+ dnl Check for which system.
+ AC_CANONICAL_HOST

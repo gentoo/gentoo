@@ -1,0 +1,7 @@
+Ripped from Fedora.
+
+--- a/setserial.c
++++ b/setserial.c
+@@ -710,1 +710,1 @@
+-	fprintf(stderr, "\t  spd_normal\tuse 38.4kb when a buad rate of 38.4kb is selected\n");
++	fprintf(stderr, "\t  spd_normal\tuse 38.4kb when a baud rate of 38.4kb is selected\n");

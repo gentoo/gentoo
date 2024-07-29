@@ -1,0 +1,36 @@
+From: Huang Rui <vowstar@gmail.com>
+Date: Fri, 22 Mar 2024 18:18:40 +0800
+Subject: [PATCH] libgit2-1.8.0 compatibility: adjusted parent pointer type
+
+- Adjusted parent pointer type in git_commit_create call for compatibility
+  with libgit2 1.8.0 and above.
+- Included preprocessor checks to maintain support for versions older than
+  1.8.0.
+- Ensures consistent function behavior across different libgit2 versions.
+
+Fixes https://gitlab.com/kicad/code/kicad/-/issues/17536
+Signed-off-by: Huang Rui <vowstar@gmail.com>
+---
+ kicad/project_tree_pane.cpp | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+--- a/kicad/project_tree_pane.cpp
++++ b/kicad/project_tree_pane.cpp
+@@ -2233,7 +2233,14 @@ void PROJECT_TREE_PANE::onGitCommit( wxCommandEvent& aEvent )
+         }
+ 
+         git_oid           oid;
++    // Check if the libgit2 library version is 1.8.0 or higher
++#if ( LIBGIT2_VER_MAJOR > 1 ) || ( LIBGIT2_VER_MAJOR == 1 && LIBGIT2_VER_MINOR >= 8 )
++        // For libgit2 version 1.8.0 and above
++        git_commit* const parents[1] = { parent };
++#else
++        // For libgit2 versions older than 1.8.0
+         const git_commit* parents[1] = { parent };
++#endif
+ 
+         if( git_commit_create( &oid, repo, "HEAD", author, author, nullptr, commit_msg.mb_str(), tree,
+                            1, parents ) != 0 )
+-- 
+2.44.0
+

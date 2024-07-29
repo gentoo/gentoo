@@ -1,0 +1,11 @@
+--- a/configure
++++ b/configure
+@@ -81,7 +81,7 @@ fi
+ [ -n "$USE_XFT" ] && CFLAGS="$CFLAGS -DHAVE_XFT"
+ 
+ # Debian hardening options http://wiki.debian.org/Hardening
+-which dpkg-buildflags > /dev/null 2>&1
++false
+ if [ $? -eq 0 ];
+ then
+     CFLAGS="$CFLAGS -D_FORTIFY_SOURCE=2 `dpkg-buildflags --get CFLAGS`"

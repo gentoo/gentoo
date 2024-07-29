@@ -1,0 +1,56 @@
+https://github.com/quassel/quassel/pull/615
+
+From 020c163421691fa37330826df92ac0a248721290 Mon Sep 17 00:00:00 2001
+From: Jeremy Visser <jeremy@visser.name>
+Date: Tue, 18 Apr 2023 21:47:45 +1000
+Subject: [PATCH] uisupport: fix application name for .desktop shell
+ integration
+
+When building for KDE (cmake -DUSE_KDE=1), the KAboutData constructor
+as invoked by uisupport causes the resulting application name to be
+"org.kde.quassel".
+
+At least on GNOME, this "org.kde.quassel" doesn't match the
+corresponding "quasselclient.desktop" file, which means the app doesn't
+get a pretty name/icon in the app launcher.
+
+The solution is to call KAboutData::setDesktopFileName() with the
+desired name.
+
+This issue doesn't occur when building with USE_KDE=0 for two reasons:
+one, because QtUiApplication already calls
+QGuiApplication::setDesktopFileName() with the correct value, and two,
+if desktopFileName is unset, the binary name "quasselclient" would be used
+instead, which still matches "quasselclient.desktop".
+
+An alternative workaround would be to set this flag in the
+quasselclient.desktop file:
+
+    StartupWMClass=org.kde.quassel
+
+But I would say this is worse because the "org.kde" doesn't make sense,
+since this is not a KDE project.
+---
+ src/uisupport/aboutdata.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/uisupport/aboutdata.cpp b/src/uisupport/aboutdata.cpp
+index d489da3d6..380e54a54 100644
+--- a/src/uisupport/aboutdata.cpp
++++ b/src/uisupport/aboutdata.cpp
+@@ -114,13 +114,14 @@ AboutData& AboutData::addCredits(std::initializer_list<AboutPerson> credits)
+ 
+ KAboutData AboutData::kAboutData() const
+ {
+-    KAboutData aboutData(Quassel::buildInfo().applicationName, tr("Quassel IRC"), Quassel::buildInfo().plainVersionString);
++    KAboutData aboutData(Quassel::buildInfo().clientApplicationName, tr("Quassel IRC"), Quassel::buildInfo().plainVersionString);
+     aboutData.addLicense(KAboutLicense::GPL_V2);
+     aboutData.addLicense(KAboutLicense::GPL_V3);
+     aboutData.setShortDescription(tr("A modern, distributed IRC client"));
+     aboutData.setProgramLogo(QVariant::fromValue(QImage(":/pics/quassel-logo.png")));
+     aboutData.setBugAddress("https://bugs.quassel-irc.org/projects/quassel-irc/issues/new");
+     aboutData.setOrganizationDomain(Quassel::buildInfo().organizationDomain.toUtf8());
++    aboutData.setDesktopFileName(Quassel::buildInfo().clientApplicationName);
+ 
+     for (const auto& person : authors()) {
+         aboutData.addAuthor(person.prettyName(), person.task(), person.emailAddress());

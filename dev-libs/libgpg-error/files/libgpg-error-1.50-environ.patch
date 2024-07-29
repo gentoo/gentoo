@@ -1,0 +1,31 @@
+https://git.gnupg.org/cgi-bin/gitweb.cgi?p=libgpg-error.git;a=commit;h=a59e902b887fd92337c9728f668cf9c89da3957a
+
+From a59e902b887fd92337c9728f668cf9c89da3957a Mon Sep 17 00:00:00 2001
+From: Werner Koch <wk@gnupg.org>
+Date: Thu, 20 Jun 2024 12:05:15 +0200
+Subject: [PATCH] core: Declare environ for macOS and others.
+
+* src/spawn-posix.c (environ): Declare.
+--
+
+GnuPG-bug-id: 7169
+---
+ src/spawn-posix.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/spawn-posix.c b/src/spawn-posix.c
+index 7de02a9..96f1536 100644
+--- a/src/spawn-posix.c
++++ b/src/spawn-posix.c
+@@ -57,6 +57,9 @@
+ 
+ #include "gpgrt-int.h"
+ 
++/* (Only glibc's unistd.h declares this iff _GNU_SOURCE is used.)  */
++extern char **environ;
++
+ 
+ /* Definition for the gpgrt_spawn_actions_t.  Note that there is a
+  * different one for Windows.  */
+-- 
+2.30.2

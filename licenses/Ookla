@@ -1,0 +1,117 @@
+EULA
+
+This End User License Agreement ("Agreement") is a binding agreement between you ("End User" or "you")
+and Ookla, LLC ("Ookla"). This Agreement governs your use of the Speedtest Software,
+(including all related documentation, the "Software"). The Software is licensed, not sold, to you.
+
+Your use of this Software is subject to the Terms of Use and Privacy Policy at at these URLs:
+https://www.speedtest.net/about/terms and https://www.speedtest.net/about/privacy.
+
+BY INSTALLING THE SOFTWARE, YOU (A) ACKNOWLEDGE THAT YOU HAVE READ AND UNDERSTAND THIS AGREEMENT;
+AND (B) ACCEPT THIS AGREEMENT AND AGREE THAT YOU ARE LEGALLY BOUND BY ITS TERMS.
+IF YOU DO NOT AGREE TO THESE TERMS, DO NOT INSTALL THE SOFTWARE.
+
+IF YOU ARE ENTERING INTO THIS AGREEMENT ON BEHALF OF A COMPANY OR OTHER LEGAL ENTITY,
+YOU REPRESENT THAT YOU HAVE THE AUTHORITY TO BIND SUCH ENTITY AND ITS AFFILIATES TO THESE TERMS AND CONDITIONS,
+IN WHICH CASE THE TERMS "YOU" OR "YOUR" SHALL REFER TO SUCH ENTITY AND ITS AFFILIATES.
+IF YOU DO NOT HAVE SUCH AUTHORITY, OR IF YOU DO NOT AGREE WITH THESE TERMS OR CONDITIONS,
+YOU MAY NOT INSTALL OR USE THE SOFTWARE.
+
+1) Grant of License.
+Subject to the terms of this Agreement, Ookla grants you a limited, non-exclusive and non-transferable license
+to use the Software through a command line interface for your personal, non-commercial use on a single personal
+computer owned or otherwise controlled by you. The Software may contain open source software, subject to separate
+license terms made available with the Software or accompanying documentation.
+
+2) Restrictions On Use.
+You shall not:
+(a) copy the Software, except as expressly permitted herein;
+(b) modify, translate, adapt, or otherwise create derivative works or improvements, whether or not patentable, of the Software;
+(c) reverse engineer, disassemble, decompile, decode, or otherwise indirectly or directly attempt to derive or gain access to the source code of the Software or any part thereof;
+(d) remove, delete, alter, or obscure any trademarks or any copyright, trademark, patent, or other intellectual property or proprietary rights notices from the Software, including any copy thereof;
+(e) rent, lease, lend, sell, sublicense, assign, distribute, publish, transfer, or otherwise make available the Software, or any features or functionality of the Software, to any third party for any reason, including by making the Software available on a network where it is capable of being accessed by more than one device at any time; or
+(f) install or use the Software on any router, modem, or other non-personal computer device.
+
+3) Ownership.
+You agree without reservation that Ookla, its affiliates or its licensors own and retain all right, title and interest
+in and to the Software and the accompanying documentation, including without limitation, all intellectual property rights therein,
+including all copies, improvements, enhancements, derivative works and modifications thereof.
+Your rights to use the Software are limited to those expressly granted by this Agreement and Ookla reserves all rights not expressly
+granted to you herein. The grant of license herein shall not be deemed to result in the sale, transfer or any other conveyance of Ookla's
+intellectual property of whatsoever nature held or used by Ookla to you. Ookla will retain all rights in and to Ookla's intellectual property,
+including without limitation Ookla’s trademarks, the Software and documentation. By providing Ookla any feedback or ideas, suggestions,
+recommendations, modifications or improvements of the Software or documentation ("Feedback"), you grant Ookla all right, title,
+interest and ownership, including all intellectual property rights therein, to such Feedback. Ookla is free to use and incorporate
+such Feedback in Ookla’s services or technology, without payment of royalties or other consideration to you or liability of any kind.
+
+4) Updates..
+Ookla may from time to time in its sole discretion develop and provide Software updates,
+which may include upgrades, bug fixes, patches, other error corrections, and/or new features
+(collectively, including related documentation, "Updates"). Updates may also modify or delete
+in their entirety certain features and functionality. You agree that Ookla has no obligation to
+provide any Updates or to continue to provide or enable any particular features or functionality.
+
+5) Term and Termination.
+The term of Agreement commences when you install the Software and will continue in effect until
+terminated by you or Ookla as set forth herein. You may terminate this Agreement by deleting the
+Software and all copies thereof in your possession or control. Ookla may terminate this Agreement
+at any time without notice if it ceases to support the Software, which Ookla may do in its sole discretion.
+In addition, Ookla may terminate this Agreement immediately without any notice if you violate any of the
+terms and conditions of this Agreement. Upon termination all rights granted to you under this Agreement shall
+terminate and you must cease all use of the Software and delete all copies of the Software in your possession
+or control. Termination will not limit any of Ookla’s rights or remedies at law or in equity.
+
+6) Disclaimer.
+OOKLA, ITS AFFILIATES, AND ITS LICENSORS PROVIDE THE SOFTWARE AND DOCUMENTATION "AS IS" AND TO THE
+MAXIMUM EXTENT PERMITTED UNDER APPLICABLE LAW, EXPRESSLY DISCLAIM ALL WARRANTIES, WHETHER EXPRESS OR IMPLIED,
+STATUTORY, COMMON LAW, CUSTOM, USAGE, OR OTHERWISE, WITH RESPECT TO THE SOFTWARE AND DOCUMENTATION,
+INCLUDING WITHOUT LIMITATION, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+TITLE, AND NON-INFRINGEMENT, AND WARRANTIES THAT MAY ARISE OUT OF COURSE OF DEALING, COURSE OF PERFORMANCE,
+USAGE, OR TRADE PRACTICE. WITHOUT LIMITATION TO THE FOREGOING, OOKLA PROVIDES NO WARRANTY OR UNDERTAKING,
+AND MAKES NO REPRESENTATION OF ANY KIND THAT THE SOFTWARE WILL MEET YOUR REQUIREMENTS, ACHIEVE ANY INTENDED RESULTS,
+BE COMPATIBLE, OR WORK WITH ANY OTHER SOFTWARE, APPLICATIONS, SYSTEMS, OR SERVICES, OPERATE WITHOUT INTERRUPTION,
+MEET ANY PERFORMANCE OR RELIABILITY STANDARDS, OR BE ERROR-FREE, OR THAT ANY ERRORS OR DEFECTS CAN OR WILL BE CORRECTED.
+THIS DISCLAIMER OF WARRANTY MAY NOT BE VALID IN SOME JURISDICTIONS. YOU MAY HAVE ADDITIONAL WARRANTY RIGHTS UNDER APPLICABLE
+LAW WHICH MAY NOT BE WAIVED OR DISCLAIMED. OOKLA DOES NOT SEEK TO LIMIT YOUR WARRANTY RIGHTS TO ANY EXTENT NOT PERMITTED
+BY APPLICABLE LAW.
+
+7) Limitation of Liability.
+To the fullest extent permitted by applicable law, in no event shall Ookla, its affiliates or its licensors be liable to you
+for any loss of profits, loss of use, loss or corruption of data, interruption of business, computer failure or malfunction,
+or any indirect, special, incidental, consequential, exemplary, or punitive damages arising from or related to this Agreement
+or your use or inability to use the Software or documentation. Ookla's entire liability and your exclusive remedy for any damages
+under this Agreement will be limited in any event to your direct and actual damages, not to exceed one hundred percent (100%) of
+the total compensation paid by you under this Agreement. The foregoing limitations will apply whether such damages arise out of
+breach of contract, tort (including negligence), or otherwise and regardless of whether such damages were foreseeable or Ookla
+was advised of the possibility of such damages.
+
+8) Export Regulation.
+The Software may be subject to export laws and regulations of the United States and other jurisdictions.
+You represent and warrant that: (i) you are not named on any U.S. government denied-party list;
+and (ii) the Software and documentation will not be downloaded or used in a U.S.-embargoed country or region
+or in violation of any U.S. export law or regulation.
+
+9) Severability.
+In the event that any court of competent jurisdiction determines that any provision of this Agreement is unreasonable
+or unenforceable for any reason, it is the intention of the parties that said provision be enforced to the fullest
+extent permitted by law, that the Agreement shall thereby be reformed, and that in any event the remaining provisions
+of this Agreement shall remain in full force and effect.
+
+10) Applicable Law; Venue.
+This Agreement shall be construed in accordance with and governed by the laws of the State of New York,
+without regard to its choice of law rules. The parties agree that the federal and state courts located in New York City,
+New York shall have exclusive jurisdiction to settle any dispute or claim that arises out of or in connection with this Agreement.
+Each party hereby expressly consents to the jurisdiction of such courts with respect to any such dispute, waives any objection,
+whether on the grounds of venue, residence or domicile or on the ground that the proceeding has been brought in an inconvenient forum,
+and agrees that service of process in any such proceeding may be made by hand delivery or overnight courier with proof of delivery.
+In the event of any dispute arising out of or related to the Agreement, the substantially prevailing party shall be entitled to receive
+its reasonable attorneys’ fees and costs from the other party, in addition to any other relief to which the party is entitled.
+
+11) Waiver.
+No failure or delay by either party in exercising any right, power, or remedy hereunder shall operate as a waiver thereof.
+The waiver by one party of any breach or series of breaches of any provision of this Agreement by the other party will not
+operate or be construed as a waiver of any subsequent breach by that party of that or any other provision of this Agreement.
+
+12) Complete Agreement.
+This Agreement, the Terms of Use and Privacy Policy constitute the entire agreement between the parties with respect to the Software,
+and supersede any and all prior or contemporaneous communications, representations, proposals, agreements, and understandings between the parties.

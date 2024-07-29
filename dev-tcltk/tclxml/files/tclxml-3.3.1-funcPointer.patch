@@ -1,0 +1,38 @@
+From c1bc95aadd5334adf9c6d17ce918abf98af14c6f Mon Sep 17 00:00:00 2001
+From: Alfredo Tupone <tupone@gentoo.org>
+Date: Sat, 24 Feb 2024 20:38:49 +0100
+Subject: [PATCH] fix -Wincompatible-pointer-types
+
+---
+ docObj.c                                     | 4 +---
+ include/tclxml-libxml2/tclxml-libxml2Decls.h | 2 +-
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/docObj.c b/docObj.c
+index 20a1bd4..c4d5bf9 100644
+--- a/docObj.c
++++ b/docObj.c
+@@ -1852,9 +1852,7 @@ ErrorCodeToString(code)
+ }
+ 
+ void
+-TclXML_libxml2_ErrorHandler (ctx, error)
+-     void *ctx; /* ignore - depends on context */
+-     xmlErrorPtr error;
++TclXML_libxml2_ErrorHandler (void *ctx, const xmlError *error)
+ {
+   ThreadSpecificData *tsdPtr = Tcl_GetThreadData(&dataKey, sizeof(ThreadSpecificData));
+   Tcl_Obj *objPtr;
+diff --git a/include/tclxml-libxml2/tclxml-libxml2Decls.h b/include/tclxml-libxml2/tclxml-libxml2Decls.h
+index 3faa5f7..9ad6555 100644
+--- a/include/tclxml-libxml2/tclxml-libxml2Decls.h
++++ b/include/tclxml-libxml2/tclxml-libxml2Decls.h
+@@ -55,7 +55,7 @@ EXTERN void		TclXML_libxml2_DocKeep _ANSI_ARGS_((Tcl_Obj * objPtr,
+ 				TclXML_libxml2_DocumentHandling keep));
+ /* 10 */
+ EXTERN void		TclXML_libxml2_ErrorHandler _ANSI_ARGS_((void * ctx, 
+-				xmlErrorPtr error));
++				const xmlError *error));
+ /* 11 */
+ EXTERN void		TclXML_libxml2_ResetError _ANSI_ARGS_((
+ 				Tcl_Interp * interp));

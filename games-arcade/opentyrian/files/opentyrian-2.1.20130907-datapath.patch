@@ -1,0 +1,24 @@
+--- a/Makefile
++++ b/Makefile
+@@ -49,6 +49,10 @@
+ ALL_LDFLAGS += $(LDFLAGS)
+ LDLIBS += $(EXTRA_LDLIBS) $(SDL_LDLIBS)
+ 
++ifneq ($(DATA_PATH), )
++	CFLAGS += -DDATA_PATH=\"$(DATA_PATH)\"
++endif
++
+ # RULES ####################################################
+ 
+ .PHONY : all release clean
+--- a/src/file.c
++++ b/src/file.c
+@@ -34,7 +34,7 @@
+ #ifdef TARGET_MACOSX
+ 		tyrian_game_folder(),
+ #endif
+-		"/usr/share/opentyrian/data"
++		DATA_PATH
+ 	};
+ 	
+ 	static const char *dir = NULL;

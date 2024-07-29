@@ -1,0 +1,55 @@
+From 6ec47f4cf542ad9f7c4d30d557e4813b5c6f31d5 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gmail.com>
+Date: Sat, 4 Jun 2011 05:45:35 -0400
+Subject: [PATCH] Prevent file collision with gda-control-center-4.0's icons
+
+---
+ control-center/data/Makefile.am                    |   12 ++++++------
+ ... hicolor_apps_16x16_gda-control-center-5.0.png} |  Bin 833 -> 833 bytes
+ ... hicolor_apps_22x22_gda-control-center-5.0.png} |  Bin 1157 -> 1157 bytes
+ ... hicolor_apps_24x24_gda-control-center-5.0.png} |  Bin 1144 -> 1144 bytes
+ ...icolor_apps_256x256_gda-control-center-5.0.png} |  Bin 33543 -> 33543 bytes
+ ... hicolor_apps_32x32_gda-control-center-5.0.png} |  Bin 1867 -> 1867 bytes
+ ... hicolor_apps_48x48_gda-control-center-5.0.png} |  Bin 3144 -> 3144 bytes
+ control-center/gda-control-center-5.0.desktop.in   |    2 +-
+ 8 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/control-center/data/Makefile.am b/control-center/data/Makefile.am
+index 03fa362..862ec88 100644
+--- a/control-center/data/Makefile.am
++++ b/control-center/data/Makefile.am
+@@ -5,12 +5,12 @@ public_icons_themes = \
+ 	$(NULL)
+ 
+ public_icons = \
+-	hicolor_apps_16x16_gda-control-center.png \
+-	hicolor_apps_22x22_gda-control-center.png \
+-	hicolor_apps_24x24_gda-control-center.png \
+-	hicolor_apps_256x256_gda-control-center.png \
+-	hicolor_apps_32x32_gda-control-center.png \
+-	hicolor_apps_48x48_gda-control-center.png \
++	hicolor_apps_16x16_gda-control-center-5.0.png \
++	hicolor_apps_22x22_gda-control-center-5.0.png \
++	hicolor_apps_24x24_gda-control-center-5.0.png \
++	hicolor_apps_256x256_gda-control-center-5.0.png \
++	hicolor_apps_32x32_gda-control-center-5.0.png \
++	hicolor_apps_48x48_gda-control-center-5.0.png \
+ 	$(NULL)
+ 
+ private_icons = \
+diff --git a/control-center/gda-control-center-5.0.desktop.in b/control-center/gda-control-center-5.0.desktop.in
+index 6fd5b58..429787d 100644
+--- a/control-center/gda-control-center-5.0.desktop.in
++++ b/control-center/gda-control-center-5.0.desktop.in
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ _Name=Database access control center
+ _Comment=Configure your database access environment
+-Icon=gda-control-center
++Icon=gda-control-center-5.0
+ Exec=gda-control-center-5.0
+ Terminal=false
+ Type=Application
+-- 
+1.7.5.3
+

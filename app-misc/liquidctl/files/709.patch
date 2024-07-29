@@ -1,0 +1,32 @@
+From 470b159fddbf595ccbf6995b4f9e6a1462e97c65 Mon Sep 17 00:00:00 2001
+From: Jonas Malaco <jonas@protocubo.io>
+Date: Tue, 21 May 2024 15:53:40 -0300
+Subject: [PATCH] test_cli: don't change the type of sys.argv when
+ monkeypatching it
+
+When setting up for the CLI tests, we inadvertently change the type of
+sys.argv from list to tuple. That worked with OG docopt, but breaks
+docopt-ng. More importantly, the Python docs say sys.argv is a _list_.
+
+So even though docopt was able to handle it being a tuple, and docopt-ng
+seems (from a cursory look at its source) to still handle it being a
+string, let's use the correct type.
+
+Fixes: #708
+---
+ tests/test_cli.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_cli.py b/tests/test_cli.py
+index aa577ffc0..76791e896 100644
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -11,7 +11,7 @@
+ def main(monkeypatch, capsys):
+     """Return a function f(*args) to run main with `args` as `sys.argv`."""
+     def call_with_args(*args):
+-        monkeypatch.setattr(sys, 'argv', args)
++        monkeypatch.setattr(sys, 'argv', list(args))
+         try:
+             liquidctl.cli.main()
+         except SystemExit as exit:

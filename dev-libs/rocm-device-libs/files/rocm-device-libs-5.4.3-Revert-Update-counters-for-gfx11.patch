@@ -1,0 +1,216 @@
+From 8ce920dddac9846254aaf6261bafd8b22976b04e Mon Sep 17 00:00:00 2001
+From: Jeremy Newton <alexjnewt@hotmail.com>
+Date: Sun, 18 Dec 2022 20:48:21 -0500
+Subject: [PATCH] Revert "Update counters for gfx11"
+
+This reverts commit 85f95b94960c6f7ff4ff0242a399deb4a204fb6a.
+---
+ doc/OCKL.md       |  4 ++--
+ ockl/inc/ockl.h   |  3 ---
+ ockl/src/dm.cl    | 15 +++++++++++----
+ ockl/src/mtime.cl | 35 ++---------------------------------
+ ockl/src/wait.cl  | 18 +++++++++---------
+ 5 files changed, 24 insertions(+), 51 deletions(-)
+
+diff --git a/doc/OCKL.md b/doc/OCKL.md
+index 07574f6..05c5c49 100644
+--- a/doc/OCKL.md
++++ b/doc/OCKL.md
+@@ -99,8 +99,8 @@ The following table lists the available functions along with a brief description
+ | `int __ockl_mul24_i32(int,int);` | Multiply assuming operands fit in 24 bits |
+ | `uint __ockl_mul24_u32(uint,uint);` | |
+ | - | |
+-| `ulong __ockl_cyclectr_u64(void);` | Current value of free running 64-bit clock counter |
+-| `ulong __ockl_steadyctr_u64(void);` | Current value of constant speed 64-bit clock counter |
++| `ulong __ockl_memtime_u64(void);` | Current value of free running 64-bit clock counter |
++| `ulong __ockl_memrealtime_u64(void);` | Current value of constant speed 64-bit clock counter |
+ | - | |
+ | `uint __ockl_activelane_u32(void);` | Index of currently lane counting only active lanes in wavefront |
+ | - | |
+diff --git a/ockl/inc/ockl.h b/ockl/inc/ockl.h
+index d0b98d4..6300279 100644
+--- a/ockl/inc/ockl.h
++++ b/ockl/inc/ockl.h
+@@ -143,9 +143,6 @@ DECL_OCKL_NULLARY_U32(activelane)
+ 
+ DECL_OCKL_NULLARY_U64(memtime)
+ DECL_OCKL_NULLARY_U64(memrealtime)
+-DECL_OCKL_NULLARY_U64(cyclectr)
+-DECL_OCKL_NULLARY_U64(steadyctr)
+-
+ 
+ extern half OCKL_MANGLE_T(wfred_add,f16)(half x);
+ extern float OCKL_MANGLE_T(wfred_add,f32)(float x);
+diff --git a/ockl/src/dm.cl b/ockl/src/dm.cl
+index 245b4a1..26373dd 100644
+--- a/ockl/src/dm.cl
++++ b/ockl/src/dm.cl
+@@ -201,6 +201,13 @@ get_heap_ptr(void) {
+     }
+ }
+ 
++// realtime
++__attribute__((target("s-memrealtime"))) static ulong
++realtime(void)
++{
++    return __builtin_amdgcn_s_memrealtime();
++}
++
+ // The actual number of blocks in a slab with blocks of kind k
+ static uint
+ num_blocks(kind_t k)
+@@ -466,7 +473,7 @@ new_slab_wait(__global heap_t *hp, kind_t k)
+     uint aid = __ockl_activelane_u32();
+     if (aid == 0) {
+         ulong expected = AL(&hp->salloc_time[k].value, memory_order_relaxed);
+-        ulong now = __ockl_steadyctr_u64();
++        ulong now = realtime();
+         ulong dt = now - expected;
+         if  (dt < SLAB_TICKS)
+             __ockl_rtcwait_u32(SLAB_TICKS - (uint)dt);
+@@ -480,7 +487,7 @@ grow_recordable_wait(__global heap_t *hp, kind_t k)
+     uint aid = __ockl_activelane_u32();
+     if (aid == 0) {
+         ulong expected = AL(&hp->grow_time[k].value, memory_order_relaxed);
+-        ulong now = __ockl_steadyctr_u64();
++        ulong now = realtime();
+         ulong dt = now - expected;
+         if  (dt < GROW_TICKS)
+             __ockl_rtcwait_u32(GROW_TICKS - (uint)dt);
+@@ -540,7 +547,7 @@ try_grow_num_recordable_slabs(__global heap_t *hp, kind_t k)
+     uint ret = GROW_BUSY;
+     if (aid == 0) {
+         ulong expected = AL(&hp->grow_time[k].value, memory_order_relaxed);
+-        ulong now = __ockl_steadyctr_u64();
++        ulong now = realtime();
+         if (now - expected >= GROW_TICKS &&
+             ACE(&hp->grow_time[k].value, &expected, now, memory_order_relaxed))
+                 ret = GROW_FAILURE;
+@@ -687,7 +694,7 @@ try_allocate_new_slab(__global heap_t *hp, kind_t k)
+ 
+         if (aid == 0) {
+             ulong expected = AL(&hp->salloc_time[k].value, memory_order_relaxed);
+-            ulong now = __ockl_steadyctr_u64();
++            ulong now = realtime();
+             if (now - expected >= SLAB_TICKS &&
+                 ACE(&hp->salloc_time[k].value, &expected, now, memory_order_relaxed))
+                 ret = (__global sdata_t *)0;
+diff --git a/ockl/src/mtime.cl b/ockl/src/mtime.cl
+index 43f4161..543aaa3 100644
+--- a/ockl/src/mtime.cl
++++ b/ockl/src/mtime.cl
+@@ -5,48 +5,17 @@
+  * License. See LICENSE.TXT for details.
+  *===------------------------------------------------------------------------*/
+ 
+-#include "oclc.h"
+ #include "ockl.h"
+ 
+-__attribute__((target("s-memrealtime"))) static ulong
+-mem_realtime(void)
+-{
+-    return __builtin_amdgcn_s_memrealtime();
+-}
+-
+-__attribute__((target("gfx11-insts"))) static ulong
+-msg_realtime(void)
+-{
+-    return __builtin_amdgcn_s_sendmsg_rtnl(0x83);
+-}
+-
+-// Deprecated
+ __attribute__((target("s-memtime-inst"))) ulong
+ OCKL_MANGLE_U64(memtime)(void)
+ {
+     return __builtin_amdgcn_s_memtime();
+ }
+ 
+-// Deprecated
+-ulong
++__attribute__((target("s-memrealtime"))) ulong
+ OCKL_MANGLE_U64(memrealtime)(void)
+ {
+-    return mem_realtime();
+-}
+-
+-ulong
+-OCKL_MANGLE_U64(cyclectr)(void)
+-{
+-    return __builtin_readcyclecounter();
+-}
+-
+-ulong
+-OCKL_MANGLE_U64(steadyctr)(void)
+-{
+-    if (__oclc_ISA_version >= 11000) {
+-        return msg_realtime();
+-    } else {
+-        return mem_realtime();
+-    }
++    return __builtin_amdgcn_s_memrealtime();
+ }
+ 
+diff --git a/ockl/src/wait.cl b/ockl/src/wait.cl
+index 49b038e..b249599 100644
+--- a/ockl/src/wait.cl
++++ b/ockl/src/wait.cl
+@@ -10,47 +10,47 @@
+ #include "ockl.h"
+ #include "oclc.h"
+ 
+-void
++__attribute__((target("s-memrealtime"))) void
+ OCKL_MANGLE_T(rtcwait,u32)(uint ticks)
+ {
+-    ulong now = __ockl_steadyctr_u64();
++    ulong now = __builtin_amdgcn_s_memrealtime();
+     ulong end = now + __builtin_amdgcn_readfirstlane(ticks);
+ 
+     if (__oclc_ISA_version >= 9000) {
+         while (end > now + 1625) {
+             __builtin_amdgcn_s_sleep(127);
+-            now = __ockl_steadyctr_u64();
++            now = __builtin_amdgcn_s_memrealtime();
+         }
+ 
+         while (end > now + 806) {
+             __builtin_amdgcn_s_sleep(63);
+-            now = __ockl_steadyctr_u64();
++            now = __builtin_amdgcn_s_memrealtime();
+         }
+ 
+         while (end > now + 396) {
+             __builtin_amdgcn_s_sleep(31);
+-            now = __ockl_steadyctr_u64();
++            now = __builtin_amdgcn_s_memrealtime();
+         }
+     }
+ 
+     while (end > now + 192) {
+         __builtin_amdgcn_s_sleep(15);
+-        now = __ockl_steadyctr_u64();
++        now = __builtin_amdgcn_s_memrealtime();
+     }
+ 
+     while (end > now + 89) {
+         __builtin_amdgcn_s_sleep(7);
+-        now = __ockl_steadyctr_u64();
++        now = __builtin_amdgcn_s_memrealtime();
+     }
+ 
+     while (end > now + 38) {
+         __builtin_amdgcn_s_sleep(3);
+-        now = __ockl_steadyctr_u64();
++        now = __builtin_amdgcn_s_memrealtime();
+     }
+ 
+     while (end > now) {
+         __builtin_amdgcn_s_sleep(1);
+-        now = __ockl_steadyctr_u64();
++        now = __builtin_amdgcn_s_memrealtime();
+     }
+ }
+ 
+-- 
+2.34.1
+

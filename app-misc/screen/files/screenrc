@@ -1,0 +1,356 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+#
+# /etc/screenrc
+#
+# This is the system wide screenrc.
+#
+# You can use this file to change the default behavior of screen system wide
+# or copy it to ~/.screenrc and use it as a starting point for your own
+# settings.
+#
+# Commands in this file are used to set options, bind screen functions to
+# keys, redefine terminal capabilities, and to automatically establish one or
+# more windows at the beginning of your screen session.
+#
+# This is not a comprehensive list of options, look at the screen manual for
+# details on everything that you can put in this file.
+#
+#
+
+# ==============================================================================
+# SCREEN SETTINGS
+# ==============================================================================
+
+# ESCAPE - the COMMAND CHARACTER
+# ===============================================================
+# escape ^aa  # default
+# escape ^^^^ # suggested binding (Control-^) for Emacs users
+
+
+# PASSWORD
+# ===============================================================
+# This commands sets the *internal* password for the screen session.
+# WARNING!! If this is set then a "lock" command will only let you in to the
+# session after you enter the user's account password and then *also*
+# the internal password for that session. This gives additional safety but,
+# if you forget the internal password then you cannot resume your session.
+# Use :password to generate a password
+# password ODSJQf.4IJN7E    # "1234"
+
+
+# VARIABLES
+# ===============================================================
+# No annoying audible bell, using "visual bell"
+# vbell on				# default: off
+# vbell_msg "   -- Bell,Bell!! --   "	# default: "Wuff,Wuff!!"
+
+# Automatically detach on hangup.
+  autodetach on				# default: on
+
+# Don't display the copyright page
+  startup_message off			# default: on
+
+# Uses nethack-style messages
+# nethack on				# default: off
+
+# Affects the copying of text regions
+  crlf off				# default: off
+
+# Enable/disable multiuser mode. Standard screen operation is singleuser.
+# In multiuser mode the commands acladd, aclchg, aclgrp and acldel can be used
+# to enable (and disable) other user accessing this screen session.
+# Requires suid-root.
+  multiuser off
+
+# Change default scrollback value for new windows
+  defscrollback 1000			# default: 100
+
+# Define the time that all windows monitored for silence should
+# wait before displaying a message. Default 30 seconds.
+  silencewait 15			# default: 30
+
+# bufferfile:   The file to use for commands
+#               "readbuf" ('<') and  "writebuf" ('>'):
+  bufferfile            $HOME/.screen_exchange
+#
+# hardcopydir:  The directory which contains all hardcopies.
+# hardcopydir           ~/.hardcopy
+# hardcopydir           ~/.screen
+#
+# shell:  Default process started in screen's windows.
+# Makes it possible to use a different shell inside screen
+# than is set as the default login shell.
+# If begins with a '-' character, the shell will be started as a login shell.
+# shell                 zsh
+# shell                 bash
+# shell                 ksh
+  shell -$SHELL
+
+# shellaka '> |tcsh'
+# shelltitle '$ |bash'
+
+# emulate .logout message
+  pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended."
+
+# caption always " %w --- %c:%s"
+# caption always "%3n %t%? @%u%?%? [%h]%?%=%c"
+
+# advertise hardstatus support to $TERMCAP
+# termcapinfo  * '' 'hs:ts=\E_:fs=\E\\:ds=\E_\E\\'
+
+# set every new windows hardstatus line to somenthing descriptive
+# defhstatus "screen: ^En (^Et)"
+
+# don't kill window after the process died
+# zombie "^["
+
+# ignore displays that block on output
+defnonblock on
+
+# XTERM TWEAKS
+# ===============================================================
+
+# xterm understands both im/ic and doesn't have a status line.
+# Note: Do not specify im and ic in the real termcap/info file as
+# some programs (e.g. vi) will not work anymore.
+  termcap  xterm* hs@:cs=\E[%i%d;%dr:im=\E[4h:ei=\E[4l
+  terminfo xterm* hs@:cs=\E[%i%p1%d;%p2%dr:im=\E[4h:ei=\E[4l
+
+# 80/132 column switching must be enabled for ^AW to work
+# change init sequence to not switch width
+  termcapinfo  xterm* Z0=\E[?3h:Z1=\E[?3l:is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l
+
+# Make the output buffer large for (fast) xterms.
+# termcapinfo xterm* OL=10000
+  termcapinfo xterm* OL=100
+
+# tell screen that xterm can switch to dark background and has function
+# keys.
+  termcapinfo xterm* 'VR=\E[?5h:VN=\E[?5l'
+  termcapinfo xterm* 'k1=\E[11~:k2=\E[12~:k3=\E[13~:k4=\E[14~'
+  termcapinfo xterm* 'kh=\EOH:kI=\E[2~:kD=\E[3~:kH=\EOF:kP=\E[5~:kN=\E[6~'
+
+# special xterm hardstatus: use the window title.
+  termcapinfo xterm* 'hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007'
+
+#terminfo xterm 'vb=\E[?5h$<200/>\E[?5l'
+  termcapinfo xterm* 'vi=\E[?25l:ve=\E[34h\E[?25h:vs=\E[34l'
+
+# emulate part of the 'K' charset
+  termcapinfo xterm* 'XC=K%,%\E(B,[\304,\\\\\326,]\334,{\344,|\366,}\374,~\337'
+
+# xterm-52 tweaks:
+# - uses background color for delete operations
+  termcapinfo xterm* be
+
+# Do not use xterm's alternative window buffer, it breaks scrollback (see bug #61195)
+  termcapinfo xterm*|xs ti@:te=\E[2J
+
+# WYSE TERMINALS
+# ===============================================================
+
+#wyse-75-42 must have flow control (xo = "terminal uses xon/xoff")
+#essential to have it here, as this is a slow terminal.
+  termcapinfo wy75-42 xo:hs@
+
+# New termcap sequences for cursor application mode.
+  termcapinfo wy* CS=\E[?1h:CE=\E[?1l:vi=\E[?25l:ve=\E[?25h:VR=\E[?5h:VN=\E[?5l:cb=\E[1K:CD=\E[1J
+
+
+# OTHER TERMINALS
+# ===============================================================
+
+# make hp700 termcap/info better
+  termcapinfo  hp700 'Z0=\E[?3h:Z1=\E[?3l:hs:ts=\E[62"p\E[0$~\E[2$~\E[1$}:fs=\E[0}\E[61"p:ds=\E[62"p\E[1$~\E[61"p:ic@'
+
+# Extend the vt100 desciption by some sequences.
+  termcap  vt100* ms:AL=\E[%dL:DL=\E[%dM:UP=\E[%dA:DO=\E[%dB:LE=\E[%dD:RI=\E[%dC
+  terminfo vt100* ms:AL=\E[%p1%dL:DL=\E[%p1%dM:UP=\E[%p1%dA:DO=\E[%p1%dB:LE=\E[%p1%dD:RI=\E[%p1%dC
+  termcapinfo linux C8
+# old rxvt versions also need this
+# termcapinfo rxvt C8
+
+
+# KEYBINDINGS
+# ==============================================================
+# The "bind" command assign keys to (internal) commands
+# SCREEN checks all the keys you type; you type the key
+# which is known as the "command character" then SCREEN
+# eats this key, too, and checks whether this key is
+# "bound" to a command.  If so then SCREEN will execute it.
+#
+# The command "bind" allows you to chose which keys
+# will be assigned to the commands.
+#
+# Some commands are bound to several keys -
+# usually to both some letter and its corresponding
+# control key combination, eg the command
+# "(create) screen" is bound to both 'c' and '^C'.
+#
+# The following list shows the default bindings:
+#
+# break       ^B b
+# clear       C
+# colon       :
+# copy        ^[ [
+# detach      ^D d
+# digraph     ^V
+# displays    *
+# dumptermcap .
+# fit         F
+# flow        ^F f
+# focus       ^I
+# hardcopy    h
+# help        ?
+# history     { }
+# info        i
+# kill        K k
+# lastmsg     ^M m
+# license     ,
+# log         H
+# login       L
+# meta        x
+# monitor     M
+# next        ^@ ^N sp n
+# number      N
+# only        Q
+# other       ^X
+# pow_break   B
+# pow_detach  D
+# prev        ^H ^P p ^?
+# quit        \
+# readbuf     <
+# redisplay   ^L l
+# remove      X
+# removebuf   =
+# reset       Z
+# screen      ^C c
+# select      " '
+# silence     _
+# split       S
+# suspend     ^Z z
+# time        ^T t
+# title       A
+# vbell       ^G
+# version     v
+# width       W
+# windows     ^W w
+# wrap        ^R r
+# writebuf    >
+# xoff        ^S s
+# xon         ^Q q
+# ^]  paste .
+# -   select -
+# 0   select 0
+# 1   select 1
+# 2   select 2
+# 3   select 3
+# 4   select 4
+# 5   select 5
+# 6   select 6
+# 7   select 7
+# 8   select 8
+# 9   select 9
+# I   login on
+# O   login off
+# ]   paste .
+#
+
+# And here are the default bind commands if you need them:
+#
+# bind A title
+# bind C clear
+# bind D pow_detach
+# bind F fit
+# bind H log
+# bind I login on
+# bind K kill
+# bind L login
+# bind M monitor
+# bind N number
+# bind O login off
+# bind Q only
+# bind S split
+# bind W width
+# bind X remove
+# bind Z reset
+
+# Let's remove some dangerous key bindings ...
+  bind k
+  bind ^k
+# bind .  dumptermcap # default
+  bind .
+# bind ^\ quit        # default
+  bind ^\
+# bind \\ quit        # default
+  bind \\
+# bind ^h ???         # default
+  bind ^h
+# bind h  hardcopy    # default
+  bind h
+
+# ... and make them better.
+  bind 'K' kill
+  bind 'I' login on
+  bind 'O' login off
+  bind '}' history
+
+# Yet another hack:
+# Prepend/append register [/] to the paste if ^a^] is pressed.
+# This lets me have autoindent mode in vi.
+  register [ "\033:se noai\015a"
+  register ] "\033:se ai\015a"
+  bind ^] paste [.]
+
+
+# hardstatus alwaysignore
+# hardstatus alwayslastline "%Lw"
+
+# Resize the current region. The space will be removed from or added to
+# the region below or if there's not enough space from the region above.
+  bind = resize =
+  bind + resize +3
+  bind - resize -3
+# bind _ resize max
+#
+# attrcolor u "-u b"
+# attrcolor b "R"
+
+# STARTUP SCREENS
+# ===============================================================
+# Defines the time screen delays a new message when one message
+# is currently displayed. The default is 1 second.
+#  msgminwait 2
+
+# Time a message is displayed if screen is not disturbed by
+# other activity. The dafault is 5 seconds:
+#  msgwait 2
+
+# Briefly show the version number of this starting
+# screen session - but only for *one* second:
+#  msgwait 1
+#  version
+
+# Welcome the user:
+# echo "welcome :-)"
+# echo "I love you today."
+
+# Uncomment one/some following lines to automatically let
+# SCREEN start some programs in the given window numbers:
+# screen -t MAIL        0 mutt
+# screen -t EDIT        1 vim
+# screen -t GOOGLE      2 links http://www.google.com
+# screen -t NEWS        3 slrn
+# screen -t WWW         4 links http://www.math.fu-berlin.de/~guckes/
+# screen 5
+# screen 6
+
+# Set the environment variable var to value string. If only var is specified,
+# you'll be prompted to enter a value. If no parameters are specified,
+# you'll be prompted for both variable and value. The environment is
+# inherited by all subsequently forked shells.
+# setenv PROMPT_COMMAND 'echo -n -e "\033k\033\134"'
+
+# Don't you want to start programs which need a DISPLAY ?
+# setenv DISPLAY ''

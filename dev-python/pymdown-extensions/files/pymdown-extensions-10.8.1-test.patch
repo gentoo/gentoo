@@ -1,0 +1,66 @@
+From 321d5d8c7fa5965cb4c933eae8371113d40f9932 Mon Sep 17 00:00:00 2001
+From: facelessuser <faceless.shop@gmail.com>
+Date: Sun, 5 May 2024 06:50:56 -0600
+Subject: [PATCH] Update tests to account for latest Ruff and Pygments updates
+
+- Fix warning in Ruff
+- Fix test expectations of Pygments lexer output
+
+Fixes #2378
+---
+ tests/test_extensions/test_highlight.py    | 8 ++++----
+ tests/test_extensions/test_inlinehilite.py | 4 ++--
+ 3 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/tests/test_extensions/test_highlight.py b/tests/test_extensions/test_highlight.py
+index 2b020a8a2..4d4433c80 100644
+--- a/tests/test_extensions/test_highlight.py
++++ b/tests/test_extensions/test_highlight.py
+@@ -23,10 +23,10 @@ def test_guess(self):
+             ```
+             ''',
+             '''
+-            <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">test</span>
++            <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">test</span>
+             <span class="n">test</span><span class="o">.</span><span class="n">test</span><span class="p">()</span>
+             </code></pre></div>
+-            ''',
++            ''',  # noqa: E501
+             True
+         )
+ 
+@@ -52,10 +52,10 @@ def test_guess_block(self):
+             ```
+             ''',
+             '''
+-            <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">test</span>
++            <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">test</span>
+             <span class="n">test</span><span class="o">.</span><span class="n">test</span><span class="p">()</span>
+             </code></pre></div>
+-            ''',
++            ''',  # noqa: E501
+             True
+         )
+ 
+diff --git a/tests/test_extensions/test_inlinehilite.py b/tests/test_extensions/test_inlinehilite.py
+index 3cb853070..c82baa6dc 100644
+--- a/tests/test_extensions/test_inlinehilite.py
++++ b/tests/test_extensions/test_inlinehilite.py
+@@ -224,7 +224,7 @@ def test_guessing(self):
+ 
+         self.check_markdown(
+             r'`import module`.',
+-            r'<p><code class="inlinehilite"><span class="kn">import</span> <span class="nn">module</span></code>.</p>'
++            r'<p><code class="inlinehilite"><span class="kn">import</span><span class="w"> </span><span class="nn">module</span></code>.</p>'  # noqa: E501
+         )
+ 
+ 
+@@ -251,7 +251,7 @@ def test_guessing_inline(self):
+ 
+         self.check_markdown(
+             r'`import module`.',
+-            r'<p><code class="inlinehilite"><span class="kn">import</span> <span class="nn">module</span></code>.</p>'
++            r'<p><code class="inlinehilite"><span class="kn">import</span><span class="w"> </span><span class="nn">module</span></code>.</p>'  # noqa: E501
+         )
+ 
+     def test_no_guessing_block(self):

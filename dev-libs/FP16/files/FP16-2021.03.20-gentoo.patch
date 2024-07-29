@@ -1,0 +1,44 @@
+--- a/CMakeLists.txt	2022-05-10 09:11:41.286417033 +0200
++++ b/CMakeLists.txt	2022-05-10 09:12:48.647398387 +0200
+@@ -29,22 +29,10 @@
+ 
+ # ---[ Download deps
+ IF(NOT DEFINED PSIMD_SOURCE_DIR)
+-  MESSAGE(STATUS "Downloading PSimd to ${CMAKE_BINARY_DIR}/psimd-source (define PSIMD_SOURCE_DIR to avoid it)")
+-  CONFIGURE_FILE(cmake/DownloadPSimd.cmake "${CMAKE_BINARY_DIR}/psimd-download/CMakeLists.txt")
+-  EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
+-    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/psimd-download")
+-  EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" --build .
+-    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/psimd-download")
+   SET(PSIMD_SOURCE_DIR "${CMAKE_BINARY_DIR}/psimd-source" CACHE STRING "PSimd source directory")
+ ENDIF()
+ 
+ IF(FP16_BUILD_TESTS AND NOT DEFINED GOOGLETEST_SOURCE_DIR)
+-  MESSAGE(STATUS "Downloading Google Test to ${CMAKE_BINARY_DIR}/googletest-source (define GOOGLETEST_SOURCE_DIR to avoid it)")
+-  CONFIGURE_FILE(cmake/DownloadGoogleTest.cmake "${CMAKE_BINARY_DIR}/googletest-download/CMakeLists.txt")
+-  EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
+-    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/googletest-download")
+-  EXECUTE_PROCESS(COMMAND "${CMAKE_COMMAND}" --build .
+-    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/googletest-download")
+   SET(GOOGLETEST_SOURCE_DIR "${CMAKE_BINARY_DIR}/googletest-source" CACHE STRING "Google Test source directory")
+ ENDIF()
+ 
+@@ -86,18 +74,12 @@
+ 
+ # ---[ Configure psimd
+ IF(NOT TARGET psimd)
+-  ADD_SUBDIRECTORY(
+-    "${PSIMD_SOURCE_DIR}"
+-    "${CMAKE_BINARY_DIR}/psimd")
+ ENDIF()
+ 
+ IF(FP16_BUILD_TESTS)
+   # ---[ Build google test
+   IF(NOT TARGET gtest)
+     SET(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+-    ADD_SUBDIRECTORY(
+-      "${GOOGLETEST_SOURCE_DIR}"
+-      "${CMAKE_BINARY_DIR}/googletest")
+   ENDIF()
+ 
+   # ---[ Build FP16 unit tests

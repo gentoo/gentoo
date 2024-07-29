@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>arthurzam@gentoo.org</email>
+		<name>Arthur Zamarin</name>
+	</maintainer>
+	<use>
+		<flag name="jpeg">Enable JPEG support.</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourcehut">~emersion/grim</remote-id>
+		<bugs-to>https://todo.sr.ht/~emersion/grim</bugs-to>
+		<changelog>https://git.sr.ht/~emersion/grim/refs</changelog>
+	</upstream>
+</pkgmetadata>

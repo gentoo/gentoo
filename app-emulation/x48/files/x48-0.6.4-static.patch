@@ -1,0 +1,12 @@
+diff -Naur x48-0.6.4.orig/src/emulate.c x48-0.6.4/src/emulate.c
+--- x48-0.6.4.orig/src/emulate.c	2011-11-15 04:03:40.000000000 +0100
++++ x48-0.6.4/src/emulate.c	2020-06-23 21:30:30.895538239 +0200
+@@ -695,7 +695,7 @@
+   }
+ }
+ 
+-inline int
++static inline int
+ #ifdef __FunctionProto__
+ decode_8_thru_f(int op1)
+ #else

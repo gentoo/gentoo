@@ -1,0 +1,22 @@
+--- a/src/ext3.h	2008-04-09 13:20:31.000000000 +0200
++++ b/src/ext3.h	2018-05-07 23:16:35.413754674 +0200
+@@ -106,7 +106,7 @@
+     __u32 const* block(void) const { return i_block; }
+     __u32 generation(void) const { return i_generation; }
+     __u32 file_acl(void) const { return i_file_acl; }
+-    __u32 dir_acl(void) const { return i_dir_acl; }
++    __u32 size_high(void) const { return i_size_high; }
+     __u32 faddr(void) const { return i_faddr; }
+     __u16 uid_high(void) const { return i_uid_high; }
+     __u16 gid_high(void) const { return i_gid_high; }
+--- a/src/print_inode_to.cc	2008-10-17 03:27:15.000000000 +0200
++++ b/src/print_inode_to.cc	2018-05-07 23:16:54.379754601 +0200
+@@ -118,7 +118,7 @@
+     os << '\n';
+   }
+   //os << "File ACL: " << inode.file_acl() << '\n';
+-  //os << "Directory ACL: " << inode.dir_acl() << '\n';
++  //os << "Directory ACL: " << inode.size_high() << '\n';
+   //os << "Fragment address: " << inode.faddr() << '\n';
+   //os << "Fragment number: " << (int)inode.osd2.linux2.l_i_frag << '\n';
+   //os << "Fragment size: " << (int)inode.osd2.linux2.l_i_fsize << '\n';

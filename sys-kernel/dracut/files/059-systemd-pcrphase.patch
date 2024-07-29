@@ -1,0 +1,91 @@
+https://github.com/dracutdevs/dracut/pull/2586
+
+From cd6f683d634970112a29867137431d0d57f8c957 Mon Sep 17 00:00:00 2001
+From: Antonio Alvarez Feijoo <antonio.feijoo@suse.com>
+Date: Thu, 9 Feb 2023 13:55:47 +0100
+Subject: [PATCH] fix(systemd-pcrphase): only include
+ systemd-pcrphase-initrd.service
+
+The only systemd-pcrphase related unit configured to run in the initrd is
+systemd-pcrphase-initrd.service.
+Both systemd-pcrphase.service and systemd-pcrphase-sysinit.service contain
+`ConditionPathExists=!/etc/initrd-release`.
+
+Signed-off-by: Brian Harring <ferringb@gmail.com>
+---
+ modules.d/01systemd-pcrphase/module-setup.sh | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/modules.d/01systemd-pcrphase/module-setup.sh b/modules.d/01systemd-pcrphase/module-setup.sh
+index 3dbb4974..fa960a42 100755
+--- a/modules.d/01systemd-pcrphase/module-setup.sh
++++ b/modules.d/01systemd-pcrphase/module-setup.sh
+@@ -28,10 +28,6 @@ install() {
+ 
+     inst_multiple -o \
+         "$systemdutildir"/systemd-pcrphase \
+-        "$systemdsystemunitdir"/systemd-pcrphase.service \
+-        "$systemdsystemunitdir/systemd-pcrphase.service.d/*.conf" \
+-        "$systemdsystemunitdir"/systemd-pcrphase-sysinit.service \
+-        "$systemdsystemunitdir/systemd-pcrphase-sysinit.service/*.conf" \
+         "$systemdsystemunitdir"/systemd-pcrphase-initrd.service \
+         "$systemdsystemunitdir/systemd-pcrphase-initrd.service.d/*.conf" \
+         "$systemdsystemunitdir"/initrd.target.wants/systemd-pcrphase-initrd.service
+@@ -39,10 +35,6 @@ install() {
+     # Install the hosts local user configurations if enabled.
+     if [[ $hostonly ]]; then
+         inst_multiple -H -o \
+-            "$systemdsystemconfdir"/systemd-pcrphase.service \
+-            "$systemdsystemconfdir/systemd-pcrphase.service.d/*.conf" \
+-            "$systemdsystemconfdir"/systemd-pcrphase-sysinit.service \
+-            "$systemdsystemconfdir/systemd-pcrphase-sysinit.service.d/*.conf" \
+             "$systemdsystemconfdir"/systemd-pcrphase-initrd.service \
+             "$systemdsystemconfdir/systemd-pcrphase-initrd.service.d/*.conf" \
+             "$systemdsystemconfdir"/initrd.target.wants/systemd-pcrphase-initrd.service
+-- 
+2.41.0
+
+From cd93aaa2e096a8cbd1f1789dcce06857067b35c9 Mon Sep 17 00:00:00 2001
+From: Brian Harring <ferringb@gmail.com>
+Date: Mon, 11 Dec 2023 17:10:20 -0800
+Subject: [PATCH] fix(systemd-255): handle systemd-pcr{phase -> extend} rename
+
+The binary systemd-pcrphase was renamed to systemd-pcrextend
+in systemd 255, but the backing units were all left named
+systemd-pcrphase.
+
+Fixes: #2583
+
+Signed-off-by: Brian Harring <ferringb@gmail.com>
+---
+ modules.d/01systemd-pcrphase/module-setup.sh | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/modules.d/01systemd-pcrphase/module-setup.sh b/modules.d/01systemd-pcrphase/module-setup.sh
+index fa960a42c..87efd0c1a 100755
+--- a/modules.d/01systemd-pcrphase/module-setup.sh
++++ b/modules.d/01systemd-pcrphase/module-setup.sh
+@@ -6,7 +6,11 @@
+ check() {
+ 
+     # If the binary(s) requirements are not fulfilled the module can't be installed.
+-    require_binaries "$systemdutildir"/systemd-pcrphase || return 1
++    # systemd-255 renamed the binary, check for old and new location.
++    if ! require_binaries "$systemdutildir"/systemd-pcrphase && \
++       ! require_binaries "$systemdutildir"/systemd-pcrextend; then
++       return 1
++    fi
+ 
+     # Return 255 to only include the module, if another module requires it.
+     return 255
+@@ -28,6 +32,7 @@ install() {
+ 
+     inst_multiple -o \
+         "$systemdutildir"/systemd-pcrphase \
++        "$systemdutildir"/systemd-pcrextend \
+         "$systemdsystemunitdir"/systemd-pcrphase-initrd.service \
+         "$systemdsystemunitdir/systemd-pcrphase-initrd.service.d/*.conf" \
+         "$systemdsystemunitdir"/initrd.target.wants/systemd-pcrphase-initrd.service
+-- 
+2.41.0
+

@@ -1,0 +1,10 @@
+--- a/ripperX.pc.in
++++ b/ripperX.pc.in
+@@ -1,6 +1,7 @@
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+ libdir=@libdir@
++includedir=@includedir@
+ 
+ pkglibdir=${libdir}/@PACKAGE@
+ pkgincludedir=${includedir}/@PACKAGE@

@@ -1,0 +1,52 @@
+--- a/zorro.ids
++++ b/zorro.ids
+@@ -42,7 +42,7 @@
+ 	5000  A2620 68020 [Accelerator and RAM Expansion]
+ 	5100  A2630 68030 [Accelerator and RAM Expansion]
+ 	5400  A4091 [SCSI Host Adapter]
+-	5a00  A2065 [Ethernet Card]]
++	5a00  A2065 [Ethernet Card]
+ 	6000  Romulator Card
+ 	6100  A3000 Test Fixture [Miscellaneous Expansion Card]
+ 	6700  A2386-SX [ISA Bus Bridge]
+@@ -56,7 +56,7 @@
+ 02ff  Kolff Computer Supplies
+ 	0000  KCS Power PC [ISA Bus Bridge]
+ 03ec  Cardco Ltd.
+-	0400  Kronos 2000 [SCSI Host Adapter]]
++	0400  Kronos 2000 [SCSI Host Adapter]
+ 	0c00  A1000 [SCSI Host Adapter]
+ 	0e00  Escort [SCSI Host Adapter]
+ 	f500  A2410 HiRes [Graphics Card]
+@@ -229,6 +229,7 @@
+ 	0a00  Impact Series II [RAM Expansion]
+ 081e  Interworks Network
+ 0820  Hardital Synthesis
++	0100  Super Big Bang [Accelerator, SCSI Host Adapter and RAM Expansion]
+ 	1400  TQM 68030+68882 [Accelerator]
+ 0828  Applied Engineering
+ 	1000  DL2000 [Modem]
+@@ -363,7 +364,13 @@
+ 	1300  Warp Engine 40xx [Accelerator, SCSI Host Adapter and RAM Expansion]
+ 089e  ElBox Computer
+ 	0600  1200/4 [RAM Expansion]
+-	1900  PowerFlyer [IDE Interface]
++	0800  FastATA 1200 [IDE Interface]
++	1200  FastATA 1200 [IDE Interface]
++	1300  FastATA 1200 [IDE Interface]
++	1800  FastATA 1200 [IDE Interface]
++	1900  FastATA 4000 [IDE Interface]
++	1d00  FastATA 4000 [IDE Interface]
++	1e00  FastATA ZIV [IDE Interface]
+ 0a00  Harms Professional
+ 	1000  030 Plus [Accelerator]
+ 	d000  3500 Professional [Accelerator and RAM Expansion]
+@@ -383,7 +390,7 @@
+ 	ff00  Pixel64 RAM [Graphics Card]
+ 1212  Individual Computers
+ 	0000  Buddha [IDE Interface]
+-	1700  X-Surf [Ethernet Card]
++	1700  X-Surf [Ethernet Card and IDE Interface]
+ 	2a00  Catweasel [IDE Interface and Floppy Controller]
+ 1248  Kupke
+ 	0100  Golem HD 3000 [HD Controller]

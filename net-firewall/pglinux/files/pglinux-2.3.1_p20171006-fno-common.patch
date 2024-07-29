@@ -1,0 +1,21 @@
+--- a/pgld/src/blocklist.h
++++ b/pgld/src/blocklist.h
+@@ -74,6 +74,6 @@
+ void blocklist_stats(int clearhits);
+ block_entry_t * blocklist_find(uint32_t ip);
+ void blocklist_dump();
+-blocklist_t blocklist;
++extern blocklist_t blocklist;
+ 
+ #endif /* INC_BLOCKLIST_H */
+--- a/pgld/src/blocklist.c
++++ b/pgld/src/blocklist.c
+@@ -22,6 +22,8 @@
+ #include "blocklist.h"
+ #include "pgld.h"
+ 
++blocklist_t blocklist;
++
+ void blocklist_init() {
+     blocklist.entries = NULL;
+     blocklist.count = 0;

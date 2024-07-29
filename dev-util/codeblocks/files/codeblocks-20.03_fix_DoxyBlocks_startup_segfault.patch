@@ -1,0 +1,61 @@
+Upstream patch: https://sourceforge.net/p/codeblocks/code/12074/
+Upstream issue: https://sourceforge.net/p/codeblocks/tickets/839/
+Gentoo issue: https://bugs.gentoo.org/925955
+
+--- a/src/plugins/contrib/DoxyBlocks/DoxyBlocks.cpp
++++ b/src/plugins/contrib/DoxyBlocks/DoxyBlocks.cpp
+@@ -101,8 +101,8 @@
+ 
+ // constructor
+ DoxyBlocks::DoxyBlocks() :
+-    m_pToolbar(0l),
+-    m_DoxyBlocksLog(0l),
++    m_pToolbar(nullptr),
++    m_DoxyBlocksLog(nullptr),
+     m_LogPageIndex(0),
+     m_bAutoVersioning(false)
+ {
+@@ -234,8 +234,10 @@
+  */
+ void DoxyBlocks::OnUpdateUI(wxUpdateUIEvent& WXUNUSED(event))
+ {
+-    if(Manager::Get()->GetProjectManager()->GetProjects()->GetCount() == 0){
+-        m_pToolbar->Enable(false);
++    if (Manager::Get()->GetProjectManager()->GetProjects()->GetCount() == 0)
++    {
++        if (m_pToolbar)
++            m_pToolbar->Enable(false);
+         wxMenuBar *menuBar =  Manager::Get()->GetAppFrame()->GetMenuBar();
+         menuBar->FindItem(ID_MENU_DOXYWIZARD)->Enable(false);
+         menuBar->FindItem(ID_MENU_EXTRACTPROJECT)->Enable(false);
+@@ -264,14 +266,15 @@
+             Manager::Get()->ProcessEvent(evt);
+         }
+     }
+-    m_DoxyBlocksLog = 0;
+-}
+-
+-cbConfigurationPanel *DoxyBlocks::GetConfigurationPanel(wxWindow *parent)
++    m_DoxyBlocksLog = nullptr;
++}
++
++cbConfigurationPanel* DoxyBlocks::GetConfigurationPanel(wxWindow *parent)
+ {
+     //create and display the configuration dialog for your plugin
+-    if(!IsAttached()){
+-        return 0;
++    if (!IsAttached())
++    {
++        return nullptr;
+     }
+ 
+     // Get the version string before instantiating the panel so that it is recorded before
+@@ -346,7 +349,7 @@
+ 
+ cbConfigurationPanel* DoxyBlocks::GetProjectConfigurationPanel(wxWindow* /*parent*/, cbProject* /*project*/)
+ {
+-    return 0;
++    return nullptr;
+ }
+ 
+ void DoxyBlocks::OnConfigure(wxCommandEvent & WXUNUSED(event))

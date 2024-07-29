@@ -1,0 +1,160 @@
+--- trunk/src/java/de/renier/vdr/channel/editor/messages_en.properties	2008/06/18 07:43:28	10
++++ trunk/src/java/de/renier/vdr/channel/editor/messages_en.properties	2008/06/23 07:01:09	12
+@@ -4,15 +4,15 @@
+ ChannelDeletedPanel.0=Deleted channels (for recovery)
+ ChannelDeletedPanel.2=Clear removed channels
+ ChannelEditor.10=Move selected or clipboard items to selected tree
+-ChannelEditor.11=Remove selectedMarkierte Kan\u00E4le entfernen
++ChannelEditor.11=Remove selected
+ ChannelEditor.12=Add new channel
+ ChannelEditor.13=Add new category
+ ChannelEditor.14=Multiple channel rename - Add a text in front
+-ChannelEditor.15=Current statistic
++ChannelEditor.15=Current statistics
+ ChannelEditor.16=About
+ ChannelEditor.17=Clipboard
+ ChannelEditor.19=Removed channels
+-ChannelEditor.21=Letze Dateien
++ChannelEditor.21=Recent files
+ ChannelEditor.23=Tools
+ ChannelEditor.24=Channeleditor for VDR
+ ChannelEditor.25=Channeleditor
+@@ -32,10 +32,10 @@
+ ChannelPropertyPanel.12=NID:
+ ChannelPropertyPanel.13=RID:
+ ChannelPropertyPanel.14=
+-ChannelPropertyPanel.15=Bouqet:
+-ChannelPropertyPanel.16=Startnumber. (@):
++ChannelPropertyPanel.15=Bouquet:
++ChannelPropertyPanel.16=Start number. (@):
+ ChannelPropertyPanel.17=Alias:
+-ChannelPropertyPanel.18=can be exported through menu
++ChannelPropertyPanel.18=Can be exported through menu
+ ChannelPropertyPanel.19=jPanel1
+ ChannelPropertyPanel.24=Apply
+ ChannelSearchInputDialog.0=Channel search
+@@ -49,7 +49,7 @@
+ ChannelSearchInputDialog.8=Pidfield:
+ ChannelSearchInputDialog.9=Search parameter:
+ ChannelSearchInputDialog.10=Name:
+-ChannelSearchInputDialog.11=Bouqet:
++ChannelSearchInputDialog.11=Bouquet:
+ ChannelSearchInputDialog.12=Search
+ ChannelSearchInputDialog.14=Search term cannot be empty\!
+ ChannelSearchInputDialog.15=Enter at least one serch term\!
+@@ -63,9 +63,9 @@
+ PreferencesDialog.8=Language:
+ PreferencesAction.0=Settings
+ CreateChannelDialog.0=Add new Channel
+-CreateChannelDialog.1=<html><body>Bitte geben sie alle notwendigen Kanalinformationen an.<br><u>ACHTUNG</u> \u00E4ltere VDR Versionen k\u00F6nnen keine doppelten Kan\u00E4le in der Liste einlesen\!</body></html>
++CreateChannelDialog.1=<html><body>Please enter the complete channel data.<br><u>WARNING</u> older VDR versions are not able to read duplicate channels from the list\!</body></html>
+ CreateChannelDialog.2=Add channel
+-CreateChannelDialog.4=Es muss mindestens der Kanalname angegeben werden.
++CreateChannelDialog.4=Enter at least the channel name.
+ CreateChannelDialog.5=Abort
+ CreateChannelAction.0=Create new channel
+ CreateCategoryAction.0=Create new category
+@@ -88,25 +88,25 @@
+ ImportAliasAction.5=\ entrys could be assigned.\n
+ ImportAliasAction.6=The selected file:\n\n
+ ImportAliasAction.7=\n\ncould not be opened.\n\n\n
+-SortNameAction.0=after Name
+-SortTypeAction.0=after TV
+-SortTypeAction.1=after TV encrypted
+-SortTypeAction.2=after Radio
+-SortTypeAction.3=after Radio encrypted
+-SortTypeAction.4=after Service
+-SortTypeAction.5=after Service encrypted
++SortNameAction.0=by Name
++SortTypeAction.0=by TV
++SortTypeAction.1=by TV encrypted
++SortTypeAction.2=by Radio
++SortTypeAction.3=by Radio encrypted
++SortTypeAction.4=by Service
++SortTypeAction.5=by Service encrypted
+ SortTypeAction.6=not supported
+-SortBouqetAction.0=after Bouqet
+-SortFrequenzAction.0=after Frequency
++SortBouqetAction.0=by Bouquet
++SortFrequenzAction.0=by Frequency
+ OpenAction.0=Open
+ OpenAction.2=Nothing has been saved. Do you really want to open a new file?
+ OpenAction.3=Info
+-OpenAction.5=Configuration Files
++OpenAction.5=Channel lists
+ OpenAction.6=The selected file:\n\n
+ OpenAction.7=\n\ncould not be opened.\n\n\n
+ ParkAction.0=Clipboard
+ SaveAsAction.0=Save as
+-SaveAsAction.3=Configuration Files
++SaveAsAction.3=Channel lists
+ SaveAsAction.4=File '
+ SaveAsAction.5=' already exists.\nSave anyway? (old file will be overwritten)?
+ SaveAsAction.6=Info
+@@ -118,9 +118,9 @@
+ SaveAction.3=\nError message: 
+ SaveAction.4=Error
+ SaveAsAction.10=Error
+-StatisticAction.0=Statistic
++StatisticAction.0=Statistics
+ StatisticAction.4=<html><body>
+-StatisticAction.5=<h1>Statistic</h1>
++StatisticAction.5=<h1>Statistics</h1>
+ StatisticAction.6=<h3><u>File information:</u></h3>
+ StatisticAction.7=<table>
+ StatisticAction.8=<tr><td><font color=green>Loaded file</font></td><td><font color=blue>
+@@ -130,11 +130,11 @@
+ StatisticAction.12=<tr><td><font color=green>Filesize</font></td><td><font color=blue>
+ StatisticAction.13=\ Byte</font></td></tr>
+ StatisticAction.14=</table>
+-StatisticAction.15=<h3><u>Channelinformation:</u></h3>
++StatisticAction.15=<h3><u>Channel information:</u></h3>
+ StatisticAction.16=<table>
+ StatisticAction.17=<tr><td><font color=green>Number of channels</font></td><td><font color=blue>
+ StatisticAction.18=</font></td></tr>
+-StatisticAction.19=<tr><td><font color=green>Categorys</font></td><td><font color=blue>
++StatisticAction.19=<tr><td><font color=green>Categories</font></td><td><font color=blue>
+ StatisticAction.20=</font></td></tr>
+ StatisticAction.21=<tr><td><font color=green>TV</font></td><td><font color=blue>
+ StatisticAction.22=</font></td></tr>
+@@ -146,7 +146,7 @@
+ StatisticAction.28=\ Byte</font></td></tr>
+ StatisticAction.29=</table>
+ StatisticAction.30=</body></html>
+-StatisticAction.31=Statistic
++StatisticAction.31=Statistics
+ UnparkAction.0=Remove
+ ExportAliasAction.0=Export alias
+ ExportAliasAction.2=File '
+@@ -161,15 +161,15 @@
+ CloseAction.0=Quit
+ CloseAction.2=Clipboard not empty. Elements will be lost after quitting. Quit anyway?
+ CloseAction.3=Info
+-CloseAction.4=Changes unsaved. Do you really want to quit?
++CloseAction.4=Changes not saved. Do you really want to quit?
+ CloseAction.5=Info
+ SearchAction.0=Search
+-SearchAction.2=No Channel could be found\!\nSearch term: 
++SearchAction.2=No Channel found\!\nSearch term: 
+ SearchAction.3=Search result
+ AboutAction.0=About
+ AboutAction.2=<html><body>
+ AboutAction.3=<h1>Channeleditor for VDR Version 1.9.2.1</h1>
+-AboutAction.4=<p>Editor for channels.conf File.<br>
++AboutAction.4=<p>Editor for the VDR channels.conf File.<br>
+ AboutAction.5=Use at your own risk!</p><br>
+ AboutAction.6=<hr>
+ AboutAction.7=<p>Copyright(C) 2007 by Renier Roth</p>
+@@ -178,10 +178,10 @@
+ AboutAction.12=</body></html>
+ AboutAction.13=About
+ MultiRenameAction.0=Rename channel
+-MultiRenameAction.2=Function to add a text\nzu in front of each channel name in the last selected category. Each channel name in the last selected category\n\nIf root is selected, every channel will be renamed.\n\nPlease enter the text, which should be added:
++MultiRenameAction.2=Function to add a text\nin front of each channel name in the last selected category.\n\nIf the root knot is selected, every channel will be renamed.\n\nPlease enter the text, which should be added:
+ MultiRenameAction.3=Multiple rename
+ LocalProperties.5=Local settings
+ LocalProperties.6=Unable to load local settings\!
+-LocalProperties.10=Channelrditor property file
++LocalProperties.10=Channeleditor property file
+ LocalProperties.11=Local Settings
+ LocalProperties.12=Unable to save local settings\!

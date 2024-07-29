@@ -1,0 +1,81 @@
+--- a/ruby/curia/extconf.rb
++++ b/ruby/curia/extconf.rb
+@@ -2,10 +2,9 @@
+ 
+ dir_config("curia")
+ 
+-home = ENV['HOME']
+-$CFLAGS = "-I. -I../.. -I#{home}/include -I/usr/local/include"
+-$LDFLAGS = "-L../.. -L#{home}/lib -L/usr/local/lib"
+-$LIBS = "-L../.. -L#{home}/lib -L/usr/local/lib"
++$CFLAGS  << " -I../.. " << ENV["CFLAGS"]
++$LDFLAGS << " -L../.. " << ENV["LDFLAGS"]
++$LIBS    << " -L../.."
+ 
+ have_library("c", "main")
+ have_library("pthread", "main")
+--- a/ruby/curia/mod_curia.c
++++ b/ruby/curia/mod_curia.c
+@@ -84,7 +84,7 @@
+  *************************************************************************************************/
+ 
+ 
+-Init_mod_curia(){
++void Init_mod_curia(void){
+   crinit();
+   ccuriaerror = rb_define_class("CuriaError", rb_eStandardError);
+   ccuriaerror_ENOERR = rb_define_class("CuriaError_ENOERR", ccuriaerror);
+--- a/ruby/depot/extconf.rb
++++ b/ruby/depot/extconf.rb
+@@ -2,10 +2,9 @@
+ 
+ dir_config("depot")
+ 
+-home = ENV['HOME']
+-$CFLAGS = "-I. -I../.. -I#{home}/include -I/usr/local/include"
+-$LDFLAGS = "-L../.. -L#{home}/lib -L/usr/local/lib"
+-$LIBS = "-L../.. -L#{home}/lib -L/usr/local/lib"
++$CFLAGS  << " -I../.. " << ENV["CFLAGS"]
++$LDFLAGS << " -L../.. " << ENV["LDFLAGS"]
++$LIBS    << " -L../.."
+ 
+ have_library("c", "main")
+ have_library("pthread", "main")
+--- a/ruby/depot/mod_depot.c
++++ b/ruby/depot/mod_depot.c
+@@ -83,7 +83,7 @@
+  *************************************************************************************************/
+ 
+ 
+-Init_mod_depot(){
++void Init_mod_depot(void){
+   dpinit();
+   cdepoterror = rb_define_class("DepotError", rb_eStandardError);
+   cdepoterror_ENOERR = rb_define_class("DepotError_ENOERR", cdepoterror);
+--- a/ruby/villa/extconf.rb
++++ b/ruby/villa/extconf.rb
+@@ -2,10 +2,9 @@
+ 
+ dir_config("villa")
+ 
+-home = ENV['HOME']
+-$CFLAGS = "-I. -I../.. -I#{home}/include -I/usr/local/include"
+-$LDFLAGS = "-L../.. -L#{home}/lib -L/usr/local/lib"
+-$LIBS = "-L../.. -L#{home}/lib -L/usr/local/lib"
++$CFLAGS  << " -I../.. " << ENV["CFLAGS"]
++$LDFLAGS << " -L../.. " << ENV["LDFLAGS"]
++$LIBS    << " -L../.."
+ 
+ have_library("c", "main")
+ have_library("pthread", "main")
+--- a/ruby/villa/mod_villa.c
++++ b/ruby/villa/mod_villa.c
+@@ -97,7 +97,7 @@
+  *************************************************************************************************/
+ 
+ 
+-Init_mod_villa(){
++void Init_mod_villa(void){
+   vlinit();
+   cvillaerror = rb_define_class("VillaError", rb_eStandardError);
+   cvillaerror_ENOERR = rb_define_class("VillaError_ENOERR", cvillaerror);

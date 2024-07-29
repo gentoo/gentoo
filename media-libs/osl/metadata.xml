@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>negril.nx+gentoo@gmail.com</email>
+		<name>Paul Zander</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		A small but rich language for programmable shading in advanced
+		renderers and other applications, ideal for describing materials,
+		lights, displacement, and pattern generation.
+	</longdescription>
+	<use>
+		<flag name="gui">Build the osltoy binary (with Qt5)</flag>
+		<flag name="libcxx">Build against <pkg>sys-libs/libcxx</pkg> when using clang</flag>
+		<flag name="nofma">Do not use Fuse-Multiply-Add operations</flag>
+		<flag name="optix">Add support for NVIDIA's OptiX Raytracing Engine</flag>
+		<flag name="partio">Use <pkg>media-libs/partio</pkg></flag>
+		<flag name="qt6">Build the osltoy binary (with Qt6)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">AcademySoftwareFoundation/OpenShadingLanguage</remote-id>
+	</upstream>
+</pkgmetadata>

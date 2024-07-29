@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>xen0n@gentoo.org</email>
+		<name>WANG Xuerui</name>
+	</maintainer>
+	<use>
+		<flag name="fuse">Builds erofsfuse (requires <pkg>sys-fs/fuse</pkg>).</flag>
+		<flag name="uuid">Enables UUID support via <pkg>sys-apps/util-linux</pkg>.</flag>
+	</use>
+</pkgmetadata>

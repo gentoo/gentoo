@@ -1,0 +1,21 @@
+Crash handler requires glibc or libexecinfo (not packaged) and is enabled
+if build the editor (implies debug), but can be easily turned off.
+https://bugs.gentoo.org/894762
+--- a/platform/linuxbsd/crash_handler_linuxbsd.cpp
++++ b/platform/linuxbsd/crash_handler_linuxbsd.cpp
+@@ -38,3 +38,3 @@
+ 
+-#ifdef DEBUG_ENABLED
++#if defined(DEBUG_ENABLED) && defined(__GLIBC__)
+ #define CRASH_HANDLER_ENABLED 1
+--- a/platform/linuxbsd/detect.py
++++ b/platform/linuxbsd/detect.py
+@@ -329,8 +329,2 @@
+ 
+-    if not env["execinfo"] and platform.libc_ver()[0] != "glibc":
+-        # The default crash handler depends on glibc, so if the host uses
+-        # a different libc (BSD libc, musl), fall back to libexecinfo.
+-        print("Note: Using `execinfo=yes` for the crash handler as required on platforms where glibc is missing.")
+-        env["execinfo"] = True
+-
+     if env["execinfo"]:

@@ -1,0 +1,64 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -25,29 +25,29 @@ clean-local:
+ 	rm -rf autom4te.cache
+ 
+ install-data-local:
+-	install -d -m 755 $(DESTDIR)$(docdir)
+-	install -d -m 755 $(DESTDIR)$(docdir)/images
+-	install -d -m 755 $(DESTDIR)$(docdir)/images/icons
+-	install -d -m 755 $(DESTDIR)$(docdir)/images/prettyPhoto
+-	install -d -m 755 $(DESTDIR)$(docdir)/images/prettyPhoto/dark_rounded
+-	install -d -m 755 $(DESTDIR)$(docdir)/scripts
++	install -d -m 755 $(DESTDIR)$(htmldir)
++	install -d -m 755 $(DESTDIR)$(htmldir)/images
++	install -d -m 755 $(DESTDIR)$(htmldir)/images/icons
++	install -d -m 755 $(DESTDIR)$(htmldir)/images/prettyPhoto
++	install -d -m 755 $(DESTDIR)$(htmldir)/images/prettyPhoto/dark_rounded
++	install -d -m 755 $(DESTDIR)$(htmldir)/scripts
+ 	install -d -m 755 $(DESTDIR)$(pkgdatadir)/sf2
+-	install -c -m 644 $(top_srcdir)/doc/manuals/*.html $(DESTDIR)$(docdir)
+-	install -c -m 644 $(top_srcdir)/doc/manuals/images/*.png $(DESTDIR)$(docdir)/images/
+-	install -c -m 644 $(top_srcdir)/doc/manuals/images/*.jpg $(DESTDIR)$(docdir)/images/
+-	install -c -m 644 $(top_srcdir)/doc/manuals/images/prettyPhoto/dark_rounded/* $(DESTDIR)$(docdir)/images/prettyPhoto/dark_rounded/
+-	install -c -m 644 $(top_srcdir)/doc/manuals/images/icons/* $(DESTDIR)$(docdir)/images/icons/
+-	install -c -m 644 $(top_srcdir)/doc/manuals/scripts/*.css $(DESTDIR)$(docdir)/scripts/
+-	install -c -m 644 $(top_srcdir)/doc/manuals/scripts/*.js $(DESTDIR)$(docdir)/scripts/
++	install -c -m 644 $(top_srcdir)/doc/manuals/*.html $(DESTDIR)$(htmldir)
++	install -c -m 644 $(top_srcdir)/doc/manuals/images/*.png $(DESTDIR)$(htmldir)/images/
++	install -c -m 644 $(top_srcdir)/doc/manuals/images/*.jpg $(DESTDIR)$(htmldir)/images/
++	install -c -m 644 $(top_srcdir)/doc/manuals/images/prettyPhoto/dark_rounded/* $(DESTDIR)$(htmldir)/images/prettyPhoto/dark_rounded/
++	install -c -m 644 $(top_srcdir)/doc/manuals/images/icons/* $(DESTDIR)$(htmldir)/images/icons/
++	install -c -m 644 $(top_srcdir)/doc/manuals/scripts/*.css $(DESTDIR)$(htmldir)/scripts/
++	install -c -m 644 $(top_srcdir)/doc/manuals/scripts/*.js $(DESTDIR)$(htmldir)/scripts/
+ 	install -c -m 644 $(top_srcdir)/sf2/*.sf2 $(DESTDIR)$(pkgdatadir)/sf2/
+ 	    
+ uninstall-local:
+-	rm -f $(DESTDIR)$(docdir)/*.html
+-	rm -f $(DESTDIR)$(docdir)/images/*.png
+-	rm -f $(DESTDIR)$(docdir)/images/*.jpg
+-	rm -f $(DESTDIR)$(docdir)/images/icons/*.png
+-	rm -f $(DESTDIR)$(docdir)/images/prettyPhoto/dark_rounded/*
+-	rm -f $(DESTDIR)$(docdir)/scripts/*.css
+-	rm -f $(DESTDIR)$(docdir)/scripts/*.js
++	rm -f $(DESTDIR)$(htmldir)/*.html
++	rm -f $(DESTDIR)$(htmldir)/images/*.png
++	rm -f $(DESTDIR)$(htmldir)/images/*.jpg
++	rm -f $(DESTDIR)$(htmldir)/images/icons/*.png
++	rm -f $(DESTDIR)$(htmldir)/images/prettyPhoto/dark_rounded/*
++	rm -f $(DESTDIR)$(htmldir)/scripts/*.css
++	rm -f $(DESTDIR)$(htmldir)/scripts/*.js
+ 	rm -f $(DESTDIR)$(pkgdatadir)/sf2/*.sf2
+-	rmdir $(DESTDIR)$(docdir)/scripts $(DESTDIR)$(docdir)/images/icons $(DESTDIR)$(docdir)/images/prettyPhoto/dark_rounded $(DESTDIR)$(docdir)/images/prettyPhoto $(DESTDIR)$(docdir)/images $(DESTDIR)$(docdir) $(DESTDIR)$(pkgdatadir)/sf2 || true
++	rmdir $(DESTDIR)$(htmldir)/scripts $(DESTDIR)$(htmldir)/images/icons $(DESTDIR)$(htmldir)/images/prettyPhoto/dark_rounded $(DESTDIR)$(htmldir)/images/prettyPhoto $(DESTDIR)$(htmldir)/images $(DESTDIR)$(htmldir) $(DESTDIR)$(pkgdatadir)/sf2 || true
+--- a/configure.ac
++++ b/configure.ac
+@@ -253,7 +253,7 @@ fi
+ 
+ # Other defines
+ AC_DEFINE_UNQUOTED(PKGLIBDIR,"$prefix/share/calf/",[Calf shared data directory (bitmaps, GUI XML etc.)])
+-AC_DEFINE_UNQUOTED(PKGDOCDIR,"$prefix/share/doc/calf/",[Calf documentation directory])
++AC_DEFINE_UNQUOTED(PKGDOCDIR,"$htmldir",[Calf documentation directory])
+ 
+ 
+ ############################################################################################

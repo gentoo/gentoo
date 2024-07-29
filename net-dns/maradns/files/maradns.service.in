@@ -1,0 +1,9 @@
+[Unit]
+Description=maradns DNS server
+After=network.target
+
+[Service]
+ExecStart=@bindir@/maradns -cf @sysconfdir@/mararc
+
+[Install]
+WantedBy=multi-user.target

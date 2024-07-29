@@ -1,0 +1,24 @@
+diff --git a/src/zope/exceptions/tests/test_exceptionformatter.py b/src/zope/exceptions/tests/test_exceptionformatter.py
+index 92ea79a..0e18d8d 100644
+--- a/src/zope/exceptions/tests/test_exceptionformatter.py
++++ b/src/zope/exceptions/tests/test_exceptionformatter.py
+@@ -24,6 +24,7 @@ from urllib.error import HTTPError
+ 
+ 
+ IS_PY39_OR_GREATER = sys.version_info >= (3, 9)
++IS_PY313_OR_GREATER = sys.version_info >= (3, 13)
+ 
+ 
+ class TextExceptionFormatterTests(unittest.TestCase):
+@@ -763,8 +764,10 @@ class Test_format_exception(unittest.TestCase):
+             </ul><p>  File "&lt;string&gt;", line 1<br />
+                 import<br />
+                      ^<br />
+-            SyntaxError: invalid syntax<br />
++            SyntaxError: {error}<br />
+             </p>""").format(
++                error="Expected one or more names after 'import'"
++                      if IS_PY313_OR_GREATER else 'invalid syntax',
+                 module='zope.exceptions.tests.test_exceptionformatter',
+                 fn='test_format_exception_as_html',
+         )

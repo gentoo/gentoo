@@ -1,0 +1,24 @@
+diff -ur StreamDVD-0.4.orig/mplex/lpcmstrm_in.cpp StreamDVD-0.4/mplex/lpcmstrm_in.cpp
+--- StreamDVD-0.4.orig/mplex/lpcmstrm_in.cpp	2004-03-09 00:10:53.000000000 +0200
++++ StreamDVD-0.4/mplex/lpcmstrm_in.cpp	2009-08-05 22:05:48.000000000 +0300
+@@ -52,7 +52,7 @@
+ 
+ bool LPCMStream::Probe(IBitStream &bs )
+ {
+-    char *last_dot = strrchr( bs.StreamName(), '.' );
++    const char *last_dot = strrchr( bs.StreamName(), '.' );
+     return 
+         last_dot != NULL 
+         && strcmp( last_dot+1, "lpcm") == 0;
+diff -ur StreamDVD-0.4.orig/mplex/yuv4mpeg_ratio.c StreamDVD-0.4/mplex/yuv4mpeg_ratio.c
+--- StreamDVD-0.4.orig/mplex/yuv4mpeg_ratio.c	2004-03-09 00:10:53.000000000 +0200
++++ StreamDVD-0.4/mplex/yuv4mpeg_ratio.c	2009-08-05 22:07:49.000000000 +0300
+@@ -104,7 +104,7 @@
+ 
+ int y4m_parse_ratio(y4m_ratio_t *r, const char *s)
+ {
+-  char *t = strchr(s, ':');
++  const char *t = strchr(s, ':');
+   if (t == NULL) return Y4M_ERR_RANGE;
+   r->n = atoi(s);
+   r->d = atoi(t+1);

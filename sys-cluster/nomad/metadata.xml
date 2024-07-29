@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<use>
+		<flag name="ui">do not embed the ui in the binary</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">hashicorp/nomad</remote-id>
+	</upstream>
+</pkgmetadata>

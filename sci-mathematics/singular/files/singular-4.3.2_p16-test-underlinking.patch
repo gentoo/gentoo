@@ -1,0 +1,180 @@
+From 23444f771ec95036f6589349da232d8b59734a20 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sat, 9 Mar 2024 14:28:03 -0500
+Subject: [PATCH] **/Makefile.am: links tests with RESOURCES_LIBS
+
+Several test programs use functions from libsingular_resources, such
+as feInitResources(). Here we ensure that those test programs are
+actually linked with libsingular_resources by adding RESOURCES_LIBS to
+the corresponding LDADD lines. In the process, and for consistency, we
+have replaced some references to libomalloc.la with OMALLOC_LIBS.
+---
+ Singular/Makefile.am              | 6 +++---
+ kernel/GBEngine/Makefile.am       | 2 +-
+ kernel/Makefile.am                | 2 +-
+ kernel/combinatorics/Makefile.am  | 2 +-
+ kernel/fglm/Makefile.am           | 2 +-
+ kernel/groebner_walk/Makefile.am  | 2 +-
+ kernel/linear_algebra/Makefile.am | 2 +-
+ kernel/maps/Makefile.am           | 2 +-
+ kernel/numeric/Makefile.am        | 2 +-
+ kernel/oswrapper/Makefile.am      | 2 +-
+ kernel/spectrum/Makefile.am       | 2 +-
+ 11 files changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/Singular/Makefile.am b/Singular/Makefile.am
+index 6e27f805a..c68d2507d 100644
+--- a/Singular/Makefile.am
++++ b/Singular/Makefile.am
+@@ -162,7 +162,7 @@ dist_script_SCRIPTS = singularsurf singularsurf_jupyter singularsurf_win surfex
+ ESingular_CPPFLAGS = ${AM_CPPFLAGS} -DESINGULAR -DPROTO
+ ESingular_LDADD =  ${top_builddir}/libpolys/reporter/libreporter.la \
+ ${top_builddir}/libpolys/misc/libmisc.la ${OMALLOC_LIBS} \
+-${top_builddir}/resources/libsingular_resources.la
++$(RESOURCES_LIBS)
+ 
+ 
+ ESingular_SOURCES = emacs.cc feOptES.inc feOpt.cc
+@@ -171,7 +171,7 @@ ESingular_SOURCES = emacs.cc feOptES.inc feOpt.cc
+ TSingular_CPPFLAGS = ${AM_CPPFLAGS} -DTSINGULAR -DPROTO
+ TSingular_LDADD = ${top_builddir}/libpolys/reporter/libreporter.la \
+ ${top_builddir}/libpolys/misc/libmisc.la ${OMALLOC_LIBS} \
+-${top_builddir}/resources/libsingular_resources.la
++$(RESOURCES_LIBS)
+ 
+ TSingular_SOURCES = emacs.cc feOptTS.inc feOpt.cc
+ # utils.cc utils.h
+@@ -213,7 +213,7 @@ TESTS=test
+ check_PROGRAMS=$(TESTS)
+ 
+ test_SOURCES = test.cc
+-test_LDADD = ${builddir}/../omalloc/libomalloc.la libSingular.la
++test_LDADD = $(OMALLOC_LIBS) libSingular.la $(RESOURCES_LIBS)
+ 
+ #########################################################
+ # These files are built first
+diff --git a/kernel/GBEngine/Makefile.am b/kernel/GBEngine/Makefile.am
+index 8a3c2c5a9..e3a05483c 100644
+--- a/kernel/GBEngine/Makefile.am
++++ b/kernel/GBEngine/Makefile.am
+@@ -21,7 +21,7 @@ TESTS_ENVIRONMENT += SINGULAR_ROOT_DIR='${abs_top_builddir}'
+ TESTS = test
+ check_PROGRAMS = $(TESTS)
+ test_SOURCES = test.cc
+-test_LDADD   = libGBEngine.la ${builddir}/../../omalloc/libomalloc.la ${builddir}/../combinatorics/libcombinatorics.la ${builddir}/../linear_algebra/liblinear_algebra.la ${builddir}/../libkernelCommon.la  ${builddir}/../../Singular/libSingular.la
++test_LDADD   = libGBEngine.la $(OMALLOC_LIBS) ${builddir}/../combinatorics/libcombinatorics.la ${builddir}/../linear_algebra/liblinear_algebra.la ${builddir}/../libkernelCommon.la  ${builddir}/../../Singular/libSingular.la $(RESOURCES_LIBS)
+ 
+ CLEANFILES = $(TESTS)
+ 
+diff --git a/kernel/Makefile.am b/kernel/Makefile.am
+index fe093a4af..f615eab51 100644
+--- a/kernel/Makefile.am
++++ b/kernel/Makefile.am
+@@ -51,7 +51,7 @@ TESTS = test
+ check_PROGRAMS = $(TESTS)
+ 
+ test_SOURCES = test.cc
+-test_LDADD   = libkernel.la ${builddir}/../omalloc/libomalloc.la ${builddir}/../Singular/libSingular.la
++test_LDADD   = libkernel.la $(OMALLOC_LIBS) ${builddir}/../Singular/libSingular.la $(RESOURCES_LIBS)
+ 
+ # These files are built first
+ # BUILT_SOURCES = MOD
+diff --git a/kernel/combinatorics/Makefile.am b/kernel/combinatorics/Makefile.am
+index 31ab51968..816a99360 100644
+--- a/kernel/combinatorics/Makefile.am
++++ b/kernel/combinatorics/Makefile.am
+@@ -17,6 +17,6 @@ TESTS_ENVIRONMENT += SINGULAR_ROOT_DIR='${abs_top_builddir}'
+ TESTS = test
+ check_PROGRAMS = $(TESTS)
+ test_SOURCES = test.cc
+-test_LDADD   = libcombinatorics.la ${builddir}/../libkernelCommon.la ${builddir}/../../omalloc/libomalloc.la ${builddir}/../../Singular/libSingular.la
++test_LDADD   = libcombinatorics.la ${builddir}/../libkernelCommon.la $(OMALLOC_LIBS) ${builddir}/../../Singular/libSingular.la $(RESOURCES_LIBS)
+ 
+ CLEANFILES = $(TESTS)
+diff --git a/kernel/fglm/Makefile.am b/kernel/fglm/Makefile.am
+index 227e2c122..3b32dda76 100644
+--- a/kernel/fglm/Makefile.am
++++ b/kernel/fglm/Makefile.am
+@@ -17,6 +17,6 @@ TESTS_ENVIRONMENT += SINGULAR_ROOT_DIR='${abs_top_builddir}'
+ TESTS = test
+ check_PROGRAMS = $(TESTS)
+ test_SOURCES = test.cc
+-test_LDADD   = libfglm.la ${builddir}/../../omalloc/libomalloc.la ${builddir}/../../Singular/libSingular.la
++test_LDADD   = libfglm.la $(OMALLOC_LIBS) ${builddir}/../../Singular/libSingular.la $(RESOURCES_LIBS)
+ 
+ CLEANFILES = $(TESTS)
+diff --git a/kernel/groebner_walk/Makefile.am b/kernel/groebner_walk/Makefile.am
+index 9be32dd76..da3364489 100644
+--- a/kernel/groebner_walk/Makefile.am
++++ b/kernel/groebner_walk/Makefile.am
+@@ -17,6 +17,6 @@ TESTS_ENVIRONMENT += SINGULAR_ROOT_DIR='${abs_top_builddir}'
+ TESTS = test
+ check_PROGRAMS = $(TESTS)
+ test_SOURCES = test.cc
+-test_LDADD   = libgroebner_walk.la ${builddir}/../../omalloc/libomalloc.la ${builddir}/../../Singular/libSingular.la
++test_LDADD   = libgroebner_walk.la $(OMALLOC_LIBS) ${builddir}/../../Singular/libSingular.la $(RESOURCES_LIBS)
+ 
+ CLEANFILES = $(TESTS)
+diff --git a/kernel/linear_algebra/Makefile.am b/kernel/linear_algebra/Makefile.am
+index 82149611b..57fc6b5ef 100644
+--- a/kernel/linear_algebra/Makefile.am
++++ b/kernel/linear_algebra/Makefile.am
+@@ -23,6 +23,6 @@ TESTS_ENVIRONMENT += SINGULAR_ROOT_DIR='${abs_top_builddir}'
+ TESTS = test
+ check_PROGRAMS = $(TESTS)
+ test_SOURCES = test.cc
+-test_LDADD   = liblinear_algebra.la ${builddir}/../../omalloc/libomalloc.la ${builddir}/../../Singular/libSingular.la
++test_LDADD   = liblinear_algebra.la $(OMALLOC_LIBS) ${builddir}/../../Singular/libSingular.la $(RESOURCES_LIBS)
+ 
+ CLEANFILES = $(TESTS)
+diff --git a/kernel/maps/Makefile.am b/kernel/maps/Makefile.am
+index 6e846ef20..afff63804 100644
+--- a/kernel/maps/Makefile.am
++++ b/kernel/maps/Makefile.am
+@@ -17,6 +17,6 @@ TESTS_ENVIRONMENT += SINGULAR_ROOT_DIR='${abs_top_builddir}'
+ TESTS = test
+ check_PROGRAMS = $(TESTS)
+ test_SOURCES = test.cc
+-test_LDADD   = libmaps.la ${builddir}/../../omalloc/libomalloc.la ${builddir}/../../Singular/libSingular.la
++test_LDADD   = libmaps.la $(OMALLOC_LIBS) ${builddir}/../../Singular/libSingular.la $(RESOURCES_LIBS)
+ 
+ CLEANFILES = $(TESTS)
+diff --git a/kernel/numeric/Makefile.am b/kernel/numeric/Makefile.am
+index 8fb48461e..f40e9e60a 100644
+--- a/kernel/numeric/Makefile.am
++++ b/kernel/numeric/Makefile.am
+@@ -18,6 +18,6 @@ TESTS_ENVIRONMENT += SINGULAR_ROOT_DIR='${abs_top_builddir}'
+ TESTS = test
+ check_PROGRAMS = $(TESTS)
+ test_SOURCES = test.cc
+-test_LDADD   = libnumeric.la ${builddir}/../../omalloc/libomalloc.la ${builddir}/../../Singular/libSingular.la
++test_LDADD   = libnumeric.la $(OMALLOC_LIBS) ${builddir}/../../Singular/libSingular.la $(RESOURCES_LIBS)
+ 
+ CLEANFILES = $(TESTS)
+diff --git a/kernel/oswrapper/Makefile.am b/kernel/oswrapper/Makefile.am
+index ed4f2097a..e79f9da6a 100644
+--- a/kernel/oswrapper/Makefile.am
++++ b/kernel/oswrapper/Makefile.am
+@@ -19,6 +19,6 @@ TESTS_ENVIRONMENT += SINGULAR_ROOT_DIR='${abs_top_builddir}'
+ TESTS = test
+ check_PROGRAMS = $(TESTS)
+ test_SOURCES = test.cc
+-test_LDADD   = liboswrapper.la ${builddir}/../../omalloc/libomalloc.la ${builddir}/../../Singular/libSingular.la
++test_LDADD   = liboswrapper.la $(OMALLOC_LIBS) ${builddir}/../../Singular/libSingular.la $(RESOURCES_LIBS)
+ 
+ CLEANFILES = $(TESTS)
+diff --git a/kernel/spectrum/Makefile.am b/kernel/spectrum/Makefile.am
+index 28ef269b3..6eff47819 100644
+--- a/kernel/spectrum/Makefile.am
++++ b/kernel/spectrum/Makefile.am
+@@ -17,6 +17,6 @@ TESTS_ENVIRONMENT += SINGULAR_ROOT_DIR='${abs_top_builddir}'
+ TESTS = test
+ check_PROGRAMS = $(TESTS)
+ test_SOURCES = test.cc
+-test_LDADD   = libspectrum.la ${builddir}/../../omalloc/libomalloc.la ${builddir}/../../Singular/libSingular.la
++test_LDADD   = libspectrum.la $(OMALLOC_LIBS) ${builddir}/../../Singular/libSingular.la $(RESOURCES_LIBS)
+ 
+ CLEANFILES = $(TESTS)
+-- 
+2.43.0
+

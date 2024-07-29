@@ -1,0 +1,18 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -184,6 +184,7 @@ if(NOT MSVC)
+   ei_add_cxx_compiler_flag("-wd2304")                   # disable ICC's "warning #2304: non-explicit constructor with single argument may cause implicit type conversion" produced by -Wnon-virtual-dtor
+ 
+ 
++  if(NOT EIGEN_TEST_CXX11)
+   # The -ansi flag must be added last, otherwise it is also used as a linker flag by check_cxx_compiler_flag making it fails
+   # Moreover we should not set both -strict-ansi and -ansi
+   check_cxx_compiler_flag("-strict-ansi" COMPILER_SUPPORT_STRICTANSI)
+@@ -194,6 +195,7 @@ if(NOT MSVC)
+   else()
+     ei_add_cxx_compiler_flag("-ansi")
+   endif()
++  endif()
+ 
+   if(ANDROID_NDK)
+     ei_add_cxx_compiler_flag("-pie")

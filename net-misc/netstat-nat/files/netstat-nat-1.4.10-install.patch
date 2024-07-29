@@ -1,0 +1,11 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,7 +1,7 @@
+ bin_PROGRAMS = netstat-nat
+ netstat_nat_SOURCES = netstat-nat.c netstat-nat.h
+ docdir = $(prefix)/share/doc/$(PACKAGE)-$(VERSION)
+-doc_DATA = INSTALL NEWS README ChangeLog AUTHORS COPYING NEWS
++doc_DATA = NEWS README ChangeLog AUTHORS
+ dist_man_MANS = netstat-nat.1
+ EXTRA_DIST = netstat-nat.spec
+ SUBDIRS = 

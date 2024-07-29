@@ -1,0 +1,26 @@
+From 3ef6f2cb9da305ac71d807ac3a51c3c8c345676f Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sat, 2 Mar 2024 22:12:44 -0500
+Subject: [PATCH] don't install pastebin upload wrapper
+
+Signed-off-by: Eli Schwartz <eschwartz93@gmail.com>
+---
+ scripts/meson.build | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/scripts/meson.build b/scripts/meson.build
+index 7b1c1bc..6c31e5d 100644
+--- a/scripts/meson.build
++++ b/scripts/meson.build
+@@ -1,7 +1,4 @@
+-scripts = files(
+-    'pastebin',
+-    'upload-system-info',
+-    'xapp-gpu-offload')
++scripts = files('xapp-gpu-offload')
+ 
+ if get_option('xfce')
+ 	scripts += files('xfce4-set-wallpaper')
+-- 
+2.43.0
+

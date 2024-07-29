@@ -1,0 +1,141 @@
+From: Sam Hocevar <sam@hocevar.net>
+Date: Fri, 26 Feb 2021 10:55:38 +0100
+Subject: [1/2] canvas: fix an integer overflow in caca_resize().
+Origin: https://github.com/cacalabs/libcaca/commit/46b4ea7cea72d6b3ffe65d33e604b1774dcc2bbd
+Bug: https://github.com/cacalabs/libcaca/issues/52
+Bug-Debian: https://bugs.debian.org/983686
+Bug-Debian-Security: https://security-tracker.debian.org/tracker/CVE-2021-3410
+
+Fixes: #52 (CVE-2021-3410)
+---
+ caca/canvas.c       | 13 +++++++++++--
+ caca/codec/import.c |  1 +
+ caca/codec/text.c   | 21 ++++++++++++++-------
+ 3 files changed, 26 insertions(+), 9 deletions(-)
+
+diff --git a/caca/canvas.c b/caca/canvas.c
+index 3fdd37ae8ef9..d07153926c3a 100644
+--- a/caca/canvas.c
++++ b/caca/canvas.c
+@@ -45,6 +45,7 @@ static int caca_resize(caca_canvas_t *, int, int);
+  *
+  *  If an error occurs, NULL is returned and \b errno is set accordingly:
+  *  - \c EINVAL Specified width or height is invalid.
++ *  - \c EOVERFLOW Specified width and height overflowed.
+  *  - \c ENOMEM Not enough memory for the requested canvas size.
+  *
+  *  \param width The desired canvas width
+@@ -200,6 +201,7 @@ int caca_unmanage_canvas(caca_canvas_t *cv, int (*callback)(void *), void *p)
+  *
+  *  If an error occurs, -1 is returned and \b errno is set accordingly:
+  *  - \c EINVAL Specified width or height is invalid.
++ *  - \c EOVERFLOW Specified width and height overflowed.
+  *  - \c EBUSY The canvas is in use by a display driver and cannot be resized.
+  *  - \c ENOMEM Not enough memory for the requested canvas size. If this
+  *    happens, the canvas handle becomes invalid and should not be used.
+@@ -363,7 +365,7 @@ int caca_rand(int min, int max)
+ 
+ int caca_resize(caca_canvas_t *cv, int width, int height)
+ {
+-    int x, y, f, old_width, old_height, new_size, old_size;
++    int x, y, f, old_width, old_height, old_size;
+ 
+     old_width = cv->width;
+     old_height = cv->height;
+@@ -375,7 +377,14 @@ int caca_resize(caca_canvas_t *cv, int width, int height)
+      * dirty rectangle handling */
+     cv->width = width;
+     cv->height = height;
+-    new_size = width * height;
++    int new_size = width * height;
++
++    /* Check for overflow */
++    if (new_size / width != height)
++    {
++        seterrno(EOVERFLOW);
++        return -1;
++    }
+ 
+     /* If width or height is smaller (or both), we have the opportunity to
+      * reduce or even remove dirty rectangles */
+diff --git a/caca/codec/import.c b/caca/codec/import.c
+index 8836fd0893e3..2dafe3cf97c1 100644
+--- a/caca/codec/import.c
++++ b/caca/codec/import.c
+@@ -61,6 +61,7 @@ static ssize_t import_caca(caca_canvas_t *, void const *, size_t);
+  *
+  *  If an error occurs, -1 is returned and \b errno is set accordingly:
+  *  - \c ENOMEM Not enough memory to allocate canvas.
++ *  - \c EOVERFLOW Importing data caused a value overflow.
+  *  - \c EINVAL Invalid format requested.
+  *
+  *  \param cv A libcaca canvas in which to import the file.
+diff --git a/caca/codec/text.c b/caca/codec/text.c
+index 358b7224fe87..94a2a4d7bcdb 100644
+--- a/caca/codec/text.c
++++ b/caca/codec/text.c
+@@ -46,7 +46,7 @@ ssize_t _import_text(caca_canvas_t *cv, void const *data, size_t size)
+     char const *text = (char const *)data;
+     unsigned int width = 0, height = 0, x = 0, y = 0, i;
+ 
+-    caca_set_canvas_size(cv, width, height);
++    caca_set_canvas_size(cv, 0, 0);
+ 
+     for(i = 0; i < size; i++)
+     {
+@@ -70,15 +70,19 @@ ssize_t _import_text(caca_canvas_t *cv, void const *data, size_t size)
+             if(y >= height)
+                 height = y + 1;
+ 
+-            caca_set_canvas_size(cv, width, height);
++            if (caca_set_canvas_size(cv, width, height) < 0)
++                return -1;
+         }
+ 
+         caca_put_char(cv, x, y, ch);
+         x++;
+     }
+ 
+-    if(y > height)
+-        caca_set_canvas_size(cv, width, height = y);
++    if (y > height)
++    {
++        if (caca_set_canvas_size(cv, width, height = y) < 0)
++            return -1;
++    }
+ 
+     return (ssize_t)size;
+ }
+@@ -431,7 +435,8 @@ ssize_t _import_ansi(caca_canvas_t *cv, void const *data, size_t size, int utf8)
+             {
+                 savedattr = caca_get_attr(cv, -1, -1);
+                 caca_set_attr(cv, im.clearattr);
+-                caca_set_canvas_size(cv, width = x + wch, height);
++                if (caca_set_canvas_size(cv, width = x + wch, height) < 0)
++                    return -1;
+                 caca_set_attr(cv, savedattr);
+             }
+             else
+@@ -448,7 +453,8 @@ ssize_t _import_ansi(caca_canvas_t *cv, void const *data, size_t size, int utf8)
+             caca_set_attr(cv, im.clearattr);
+             if(growy)
+             {
+-                caca_set_canvas_size(cv, width, height = y + 1);
++                if (caca_set_canvas_size(cv, width, height = y + 1) < 0)
++                    return -1;
+             }
+             else
+             {
+@@ -480,7 +486,8 @@ ssize_t _import_ansi(caca_canvas_t *cv, void const *data, size_t size, int utf8)
+     {
+         savedattr = caca_get_attr(cv, -1, -1);
+         caca_set_attr(cv, im.clearattr);
+-        caca_set_canvas_size(cv, width, height = y);
++        if (caca_set_canvas_size(cv, width, height = y))
++            return -1;
+         caca_set_attr(cv, savedattr);
+     }
+ 
+-- 
+2.30.0
+

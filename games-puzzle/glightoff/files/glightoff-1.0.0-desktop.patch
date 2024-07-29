@@ -1,0 +1,15 @@
+--- a/glightoff.desktop.in
++++ b/glightoff.desktop.in
+@@ -1,10 +1,9 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ _Name=GLightOff
+ _Comment=Simple Light Off game
+ Exec=glightoff
+ Terminal=false
+ Type=Application
+-Icon=glightoff.png
+-Categories=GNOME;Application;Game;PuzzleGame;
++Icon=glightoff
++Categories=GNOME;Game;
+ StartupNotify=true

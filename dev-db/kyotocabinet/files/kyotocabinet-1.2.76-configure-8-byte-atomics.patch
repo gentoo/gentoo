@@ -1,0 +1,44 @@
+From: Shawn Landden <shawnlandden@gmail.com>
+Date: Thu, 21 Jun 2012 20:34:28 -0700
+Subject: configure: 8 byte atomics
+
+fix up configure test to handle lack of 8 byte atomics correctly
+
+as is the case with all ARM targets currently
+---
+ configure    |   29 +++++++++++++----------------
+ configure.in |   19 ++++++++++++++++---
+ 2 files changed, 29 insertions(+), 19 deletions(-)
+
+index a07063d..bfc6df0 100755
+--- a/configure.in
++++ b/configure.in
+@@ -238,9 +238,22 @@ fi
+ # Atomic operations
+ if test "$enable_atomic" != "no"
+ then
+-  printf 'checking for atomic operations... '
+-  AC_TRY_COMPILE([], [__sync_fetch_and_add], [MYGCCATOMIC=yes], [MYGCCATOMIC=no])
+-  if test "$MYGCCATOMIC" = "yes"
++  printf 'checking for 8 byte atomic operations... '
++  if printf '
++/* Some targets support 4 byte atomics, but not 8 byte atomics,
++ * and will fail at link time if they are used.
++ *
++ * http://gcc.gnu.org/onlinedocs/gcc-4.6.3/gcc/Atomic-Builtins.html
++ * http://gcc.gnu.org/wiki/Atomic
++ */
++#include <stdint.h>
++int
++main ()
++{
++uint64_t n = 0xdeadbeaf;
++__sync_bool_compare_and_swap(&n, 0xdeadbeaf, 0);
++return n;
++}' | $CC -xc -o config.tmp - >/dev/null 2>&1
+   then
+     MYCPPFLAGS="$MYCPPFLAGS -D_MYGCCATOMIC"
+     printf 'yes\n'
+-- 
+1.7.9.5
+

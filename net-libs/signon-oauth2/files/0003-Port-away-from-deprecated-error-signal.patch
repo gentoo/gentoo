@@ -1,0 +1,51 @@
+From 8211fd4a3ca31370069c6953db1589c1110dca90 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sun, 15 Oct 2023 18:59:12 +0200
+Subject: [PATCH 03/10] Port away from deprecated error() signal
+
+---
+ src/base-plugin.cpp        | 7 ++++++-
+ tests/oauth2plugintest.cpp | 8 +++++++-
+ 2 files changed, 13 insertions(+), 2 deletions(-)
+
+diff --git a/src/base-plugin.cpp b/src/base-plugin.cpp
+index d5ce81c..ffc8ad5 100644
+--- a/src/base-plugin.cpp
++++ b/src/base-plugin.cpp
+@@ -126,8 +126,13 @@ void BasePlugin::postRequest(const QNetworkRequest &request,
+     d->m_reply = d->m_networkAccessManager->post(request, data);
+     connect(d->m_reply, &QNetworkReply::finished,
+             this, &BasePlugin::onPostFinished);
+-    connect(d->m_reply, &QNetworkReply::error,
++#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
++    connect(d->m_reply, static_cast<void (QNetworkReply::*)(QNetworkReply::NetworkError)>(&QNetworkReply::error),
+             this, &BasePlugin::onNetworkError);
++#else
++    connect(d->m_reply, &QNetworkReply::errorOccurred,
++            this, &BasePlugin::onNetworkError);
++#endif
+     connect(d->m_reply, &QNetworkReply::sslErrors,
+             this, &BasePlugin::handleSslErrors);
+ }
+diff --git a/tests/oauth2plugintest.cpp b/tests/oauth2plugintest.cpp
+index 9e16950..f5221cc 100644
+--- a/tests/oauth2plugintest.cpp
++++ b/tests/oauth2plugintest.cpp
+@@ -148,7 +148,13 @@ public:
+ 
+ public Q_SLOTS:
+     void finish() { setFinished(true); Q_EMIT finished(); }
+-    void fail() { Q_EMIT error(error()); }
++    void fail() {
++#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
++        Q_EMIT error(error());
++#else
++        Q_EMIT errorOccurred(error());
++#endif
++    }
+ 
+ protected:
+     void abort() Q_DECL_OVERRIDE {}
+-- 
+2.43.0
+

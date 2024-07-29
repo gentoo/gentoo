@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>flow@gentoo.org</email>
+		<name>Florian Schmaus</name>
+	</maintainer>
+	<use>
+		<flag name="launcher">Install the launcher, i.e., an alternative to the udev/systemd hooks</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">phillipberndt/autorandr</remote-id>
+	</upstream>
+</pkgmetadata>

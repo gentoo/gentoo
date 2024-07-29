@@ -1,0 +1,74 @@
+--- a/src/Constante.cpp
++++ b/src/Constante.cpp
+@@ -27,6 +27,7 @@
+ #define DATADIR_BRIQUOLO "./"
+ #define PACKAGE "briquolo"
+ #endif
++#include <cstdlib>
+ 
+ #ifdef WIN32
+ #define WIN32_LEAN_AND_MEAN
+--- a/src/MOGL/MOGL_EnsembleObjet.cpp
++++ b/src/MOGL/MOGL_EnsembleObjet.cpp
+@@ -24,7 +24,8 @@
+ #include "MOGL_Armature.h"
+ #include "MOGL_Peau.h"
+ //#include
+-#include <stdio.h>
++#include <cstdio>
++#include <cstring>
+ 
+ //#include <mmsystem.h>
+ 
+--- a/src/MOGL/MOGL_GestionnaireObjet.cpp
++++ b/src/MOGL/MOGL_GestionnaireObjet.cpp
+@@ -21,6 +21,7 @@
+  *****************************************************************************/
+ #include "../I18n.h"
+ #include "MOGL_GestionnaireObjet.h"
++#include <cstring>
+ 
+ bool MOGL_GestionnaireObjet::ChargerObjetASCTriangle(const char * p_NomFichier, const MOGL_GestionnaireTexture & p_GM,
+                                                      MOGL_Objet & p_Objet)
+--- a/src/MOGL/MOGL_GestionnaireObjet.h
++++ b/src/MOGL/MOGL_GestionnaireObjet.h
+@@ -24,7 +24,8 @@
+ 
+ #include <vector>
+ #include <iostream>
+-#include <stdio.h>
++#include <cstdio>
++#include <cstring>
+ 
+ #include "MOGL_Triangle.h"
+ #include "MOGL_Objet.h"
+--- a/src/MOGL/MOGL_Image.h
++++ b/src/MOGL/MOGL_Image.h
+@@ -24,6 +24,7 @@
+ 
+ #include "MOGL_Structure.h"
+ #include <string>
++#include <cstring>
+ 
+ using namespace std;
+ 
+--- a/src/MOGL/MOGL_Objet.cpp
++++ b/src/MOGL/MOGL_Objet.cpp
+@@ -20,6 +20,7 @@
+  *
+  *****************************************************************************/
+ #include "MOGL_Objet.h"
++#include <cstdlib>
+ 
+ //MOGL_Objet::MOGL_Objet(): MOGL_ObjetAbstrait(), MOGL_ElementArbre()
+ MOGL_Objet::MOGL_Objet(): MOGL_Noeud(), _ModifieTriangle(true), _ModifieStrip(true),
+--- a/src/MOGL/MOGL_Peau.cpp
++++ b/src/MOGL/MOGL_Peau.cpp
+@@ -20,6 +20,7 @@
+  *
+  *****************************************************************************/
+ #include "MOGL_Peau.h"
++#include <cstdlib>
+ 
+ MOGL_Peau::MOGL_Peau(): MOGL_Noeud(), _ModifieTriangle(true)
+ {

@@ -1,0 +1,19 @@
+--- i/Makefile
++++ w/Makefile
+@@ -16,10 +16,14 @@ linux:
+ 	$(CC) -shared -o libzest.so `find mruby/build/host -type f | grep -v mrbc | grep -e "\.o$$" | grep -v bin` ./deps/libnanovg.a \
+ 		./deps/libnanovg.a \
+ 		src/osc-bridge/libosc-bridge.a \
+-		`pkg-config --libs libuv` -lm -lX11 -lGL -lpthread
++		$(CFLAGS) \
++		`pkg-config --libs libuv` -lm -lX11 -lGL -lpthread \
++		$(LDFLAGS)
+ 	$(CC) test-libversion.c deps/pugl/pugl/pugl_x11.c \
++		$(CFLAGS) \
+ 		  -DPUGL_HAVE_GL \
+-		  -ldl -o zest -lX11 -lGL -lpthread -I deps/pugl -std=gnu99 -Wno-trigraphs
++		  -ldl -o zest -lX11 -lGL -lpthread -I deps/pugl -std=gnu99 -Wno-trigraphs \
++			$(LDFLAGS)
+ 
+ osx: deps/libuv.a
+ 	ruby ./rebuild-fcache.rb

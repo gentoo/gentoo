@@ -1,0 +1,18 @@
+[Unit]
+Description=Gentoo Portage Exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=portage-exporter
+DynamicUser=yes
+Type=simple
+PassEnvironment=SERVE_ADDRESS SERVE_PATH VDB_UPDATE_INTERVAL
+ExecStart=/usr/bin/portage-exporter
+
+# Environment=SERVE_ADDRESS=:2112
+# Environment=SERVE_PATH=/metrics
+# Environment=VDB_UPDATE_INTERVAL=1800
+
+[Install]
+WantedBy=multi-user.target

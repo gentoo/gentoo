@@ -1,0 +1,17 @@
+Fixes a Perl bug making checksetup.pl fail 
+
+Fix by David Denoncin
+
+https://github.com/Perl/perl5/issues/17271
+https://bugzilla.mozilla.org/show_bug.cgi?id=1588175
+
+--- a/Bugzilla/Util.pm	2020-07-10 07:18:37.329165376 -0000
++++ b/Bugzilla/Util.pm	2020-07-10 07:18:55.869165262 -0000
+@@ -106,7 +106,6 @@
+     # |U+200e|Left-To-Right Mark        |0xe2 0x80 0x8e      |
+     # |U+200f|Right-To-Left Mark        |0xe2 0x80 0x8f      |
+     # --------------------------------------------------------
+-    $var =~ tr/\x{202a}-\x{202e}//d;
+   }
+   return $var;
+ }

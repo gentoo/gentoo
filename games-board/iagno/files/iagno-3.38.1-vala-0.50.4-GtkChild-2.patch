@@ -1,0 +1,245 @@
+From e8a0aeec350ea80349582142c0e8e3cd3f1bce38 Mon Sep 17 00:00:00 2001
+From: Rico Tzschichholz <ricotz@ubuntu.com>
+Date: Wed, 17 Mar 2021 11:48:39 +0100
+Subject: [PATCH] Reference of [GtkChild] fields is handled by GtkBuilder, type
+ must be unowned
+
+---
+ src/base-headerbar.vala         | 14 +++++++-------
+ src/base-view.vala              |  4 ++--
+ src/base-window.vala            |  6 +++---
+ src/game-actionbar.vala         |  6 +++---
+ src/game-headerbar.vala         |  4 ++--
+ src/history-button.vala         |  4 ++--
+ src/new-game-screen.vala        | 18 +++++++++---------
+ src/notifications-revealer.vala |  2 +-
+ src/overlayed-list.vala         | 10 +++++-----
+ src/registry-placeholder.vala   |  4 ++--
+ 10 files changed, 36 insertions(+), 36 deletions(-)
+
+diff --git a/src/base-headerbar.vala b/src/base-headerbar.vala
+index 075a3ef..256d761 100644
+--- a/src/base-headerbar.vala
++++ b/src/base-headerbar.vala
+@@ -20,7 +20,7 @@ using Gtk;
+ [GtkTemplate (ui = "/org/gnome/Reversi/ui/base-headerbar.ui")]
+ private class BaseHeaderBar : NightTimeAwareHeaderBar, AdaptativeWidget
+ {
+-    [GtkChild] protected Box center_box;
++    [GtkChild] protected unowned Box center_box;
+ 
+     construct
+     {
+@@ -190,13 +190,13 @@ private class BaseHeaderBar : NightTimeAwareHeaderBar, AdaptativeWidget
+     * * default widgets
+     \*/
+ 
+-    [GtkChild] private   Button     go_back_button;
+-    [GtkChild] private   Separator  ltr_left_separator;
+-    [GtkChild] private   Label      title_label;
+-    [GtkChild] private   MenuButton info_button;
+-    [GtkChild] private   Separator  ltr_right_separator;
++    [GtkChild] private   unowned Button     go_back_button;
++    [GtkChild] private   unowned Separator  ltr_left_separator;
++    [GtkChild] private   unowned Label      title_label;
++    [GtkChild] private   unowned MenuButton info_button;
++    [GtkChild] private   unowned Separator  ltr_right_separator;
+ 
+-    [GtkChild] protected Stack      quit_button_stack;
++    [GtkChild] protected unowned Stack      quit_button_stack;
+ 
+     protected void set_default_widgets_states (string?  title_label_text_or_null,
+                                                bool     show_go_back_button,
+diff --git a/src/base-view.vala b/src/base-view.vala
+index af884df..0889eae 100644
+--- a/src/base-view.vala
++++ b/src/base-view.vala
+@@ -20,7 +20,7 @@ using Gtk;
+ [GtkTemplate (ui = "/org/gnome/Reversi/ui/base-view.ui")]
+ private class BaseView : Stack, AdaptativeWidget
+ {
+-    [GtkChild] protected Grid main_grid;
++    [GtkChild] protected unowned Grid main_grid;
+ 
+     internal virtual bool handle_copy_text (out string copy_text)
+     {
+@@ -109,7 +109,7 @@ private class BaseView : Stack, AdaptativeWidget
+     * * notifications
+     \*/
+ 
+-    [GtkChild] private Overlay notifications_overlay;
++    [GtkChild] private unowned Overlay notifications_overlay;
+ 
+     private bool notifications_revealer_created = false;
+     private NotificationsRevealer notifications_revealer;
+diff --git a/src/base-window.vala b/src/base-window.vala
+index ed8e891..eccaba8 100644
+--- a/src/base-window.vala
++++ b/src/base-window.vala
+@@ -74,9 +74,9 @@ private class BaseWindow : AdaptativeWindow, AdaptativeWidget
+     * * main layout
+     \*/
+ 
+-    [GtkChild] private Grid main_grid;
+-    [GtkChild] private Button unfullscreen_button;
+-    [GtkChild] private Overlay main_overlay;
++    [GtkChild] private unowned Grid main_grid;
++    [GtkChild] private unowned Button unfullscreen_button;
++    [GtkChild] private unowned Overlay main_overlay;
+ 
+     protected void add_to_main_overlay (Widget widget)
+     {
+diff --git a/src/game-actionbar.vala b/src/game-actionbar.vala
+index e59bfdc..d1e9278 100644
+--- a/src/game-actionbar.vala
++++ b/src/game-actionbar.vala
+@@ -28,8 +28,8 @@ private class GameActionBar : Revealer, AdaptativeWidget
+     [CCode (notify = false)] public string  window_name  { private get; protected construct set; default = ""   ; }
+     [CCode (notify = false)] public Widget? game_widget  { private get; protected construct    ; default = null ; }
+ 
+-    [GtkChild] private ActionBar action_bar;
+-    [GtkChild] private Label game_label;
++    [GtkChild] private unowned ActionBar action_bar;
++    [GtkChild] private unowned Label game_label;
+ 
+     construct
+     {
+@@ -93,7 +93,7 @@ private class GameActionBar : Revealer, AdaptativeWidget
+ [GtkTemplate (ui = "/org/gnome/Reversi/ui/game-actionbar-placeholder.ui")]
+ private class GameActionBarPlaceHolder : Revealer, AdaptativeWidget
+ {
+-    [GtkChild] private Widget placeholder_child;
++    [GtkChild] private unowned Widget placeholder_child;
+     private GameActionBar actionbar;
+ 
+     internal GameActionBarPlaceHolder (GameActionBar _actionbar)
+diff --git a/src/game-headerbar.vala b/src/game-headerbar.vala
+index 8238b3d..8267d3d 100644
+--- a/src/game-headerbar.vala
++++ b/src/game-headerbar.vala
+@@ -23,8 +23,8 @@ using Gtk;
+ [GtkTemplate (ui = "/org/gnome/Reversi/ui/game-headerbar.ui")]
+ private class GameHeaderBar : BaseHeaderBar, AdaptativeWidget
+ {
+-    [GtkChild] private Button           new_game_button;
+-    [GtkChild] private Button           back_button;
++    [GtkChild] private unowned Button           new_game_button;
++    [GtkChild] private unowned Button           back_button;
+ 
+     [CCode (notify = false)] public bool window_has_name { private get; protected construct set; default = false; }
+     [CCode (notify = false)] public string window_name   { private get; protected construct set; default = ""; }
+diff --git a/src/history-button.vala b/src/history-button.vala
+index 4cd3673..05a7b49 100644
+--- a/src/history-button.vala
++++ b/src/history-button.vala
+@@ -25,8 +25,8 @@ private class HistoryButton : MenuButton, AdaptativeWidget
+ {
+     [CCode (notify = false)] public ThemeManager theme_manager { private get; protected construct; }
+ 
+-    [GtkChild] private Stack stack;
+-    [GtkChild] private DrawingArea drawing;
++    [GtkChild] private unowned Stack stack;
++    [GtkChild] private unowned DrawingArea drawing;
+ 
+     internal HistoryButton (GLib.Menu menu, ThemeManager theme_manager)
+     {
+diff --git a/src/new-game-screen.vala b/src/new-game-screen.vala
+index 4cb7d31..8401c39 100644
+--- a/src/new-game-screen.vala
++++ b/src/new-game-screen.vala
+@@ -23,11 +23,11 @@ using Gtk;
+ [GtkTemplate (ui = "/org/gnome/Reversi/ui/new-game-screen.ui")]
+ private class NewGameScreen : Box, AdaptativeWidget
+ {
+-    [GtkChild] private ModelButton modelbutton_one;
+-    [GtkChild] private ModelButton modelbutton_two;
++    [GtkChild] private unowned ModelButton modelbutton_one;
++    [GtkChild] private unowned ModelButton modelbutton_two;
+ 
+-    [GtkChild] private Gtk.MenuButton menubutton_one;
+-    [GtkChild] private Gtk.MenuButton menubutton_two;
++    [GtkChild] private unowned Gtk.MenuButton menubutton_one;
++    [GtkChild] private unowned Gtk.MenuButton menubutton_two;
+ 
+     construct
+     {
+@@ -106,12 +106,12 @@ private class NewGameScreen : Box, AdaptativeWidget
+         map.connect (() => games_box.show ());
+     }
+ 
+-    [GtkChild] private Box          games_box;
+-    [GtkChild] private Box          options_box;
++    [GtkChild] private unowned Box          games_box;
++    [GtkChild] private unowned Box          options_box;
+ 
+-    [GtkChild] private Label        games_label;
+-    [GtkChild] private Label        options_label;
+-    [GtkChild] private Separator    options_separator;
++    [GtkChild] private unowned Label        games_label;
++    [GtkChild] private unowned Label        options_label;
++    [GtkChild] private unowned Separator    options_separator;
+ 
+     private bool phone_size = false;
+     private bool extra_thin = false;
+diff --git a/src/notifications-revealer.vala b/src/notifications-revealer.vala
+index 85e96e9..8668ef2 100644
+--- a/src/notifications-revealer.vala
++++ b/src/notifications-revealer.vala
+@@ -20,7 +20,7 @@ using Gtk;
+ [GtkTemplate (ui = "/org/gnome/Reversi/ui/notifications-revealer.ui")]
+ private class NotificationsRevealer : Revealer, AdaptativeWidget
+ {
+-    [GtkChild] private Label notification_label;
++    [GtkChild] private unowned Label notification_label;
+ 
+     construct
+     {
+diff --git a/src/overlayed-list.vala b/src/overlayed-list.vala
+index 209b044..4ff47f1 100644
+--- a/src/overlayed-list.vala
++++ b/src/overlayed-list.vala
+@@ -20,12 +20,12 @@ using Gtk;
+ [GtkTemplate (ui = "/org/gnome/Reversi/ui/overlayed-list.ui")]
+ private abstract class OverlayedList : Overlay, AdaptativeWidget
+ {
+-    [GtkChild] protected ListBox        main_list_box;
++    [GtkChild] protected unowned ListBox        main_list_box;
+                private   StyleContext   main_list_box_context;
+                protected GLib.ListStore main_list_store = new GLib.ListStore (typeof (Widget));
+ 
+-    [GtkChild] private   ScrolledWindow scrolled;
+-    [GtkChild] private   Box            edit_mode_box;
++    [GtkChild] private   unowned ScrolledWindow scrolled;
++    [GtkChild] private   unowned Box            edit_mode_box;
+ 
+     /*\
+     * * differed construct
+@@ -45,8 +45,8 @@ private abstract class OverlayedList : Overlay, AdaptativeWidget
+     }
+ 
+ 
+-    [GtkChild] private ModelButton enter_edit_mode_button;
+-    [GtkChild] private ModelButton leave_edit_mode_button;
++    [GtkChild] private unowned ModelButton enter_edit_mode_button;
++    [GtkChild] private unowned ModelButton leave_edit_mode_button;
+     [CCode (notify = false)] public string edit_mode_action_prefix
+     {
+         construct
+diff --git a/src/registry-placeholder.vala b/src/registry-placeholder.vala
+index fdd8283..dc7bbaa 100644
+--- a/src/registry-placeholder.vala
++++ b/src/registry-placeholder.vala
+@@ -20,8 +20,8 @@ using Gtk;
+ [GtkTemplate (ui = "/org/gnome/Reversi/ui/registry-placeholder.ui")]
+ private class RegistryPlaceholder : Grid
+ {
+-    [GtkChild] private Label placeholder_label;
+-    [GtkChild] private Image placeholder_image;
++    [GtkChild] private unowned Label placeholder_label;
++    [GtkChild] private unowned Image placeholder_image;
+ 
+     [CCode (notify = false)] public string label     { internal construct set { placeholder_label.label = value; }}
+     [CCode (notify = false)] public string icon_name { private get; internal construct; }
+-- 
+GitLab
+

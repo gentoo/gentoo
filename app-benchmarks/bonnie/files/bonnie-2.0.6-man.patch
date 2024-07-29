@@ -1,0 +1,8 @@
+--- a/bonnie.1
++++ b/bonnie.1
+@@ -63 +63 @@
+-.TH Bonnie 1 "2.0.6" Textuality
++.TH bonnie 1 "2.0.6" Textuality
+@@ -67 +67 @@
+-.B Bonnie
++.B bonnie

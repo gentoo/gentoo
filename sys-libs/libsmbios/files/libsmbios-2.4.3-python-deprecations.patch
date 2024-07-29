@@ -1,0 +1,33 @@
+From 99e0ac359d55d7a66d944e038ad63a7f6ef6698d Mon Sep 17 00:00:00 2001
+From: troy <70726977+troygraben@users.noreply.github.com>
+Date: Mon, 26 Jul 2021 17:05:35 -0400
+Subject: [PATCH] Fix the TokenTable generator implementation
+
+This change supports PEP 479 by changing the generator to use return
+instead of raising StopIteration.
+
+This fixes the RuntimeError exception being raised with Python 3.7 and
+newer when the iterator reaches the end of the collection. This could be
+encountered when calling smbios-token-ctl --dump-tokens
+--- a/src/bin/smbios-token-ctl
++++ b/src/bin/smbios-token-ctl
+@@ -427,8 +427,6 @@ def main():
+         verboseLog.info( _("The token library returned this error:") )
+         verboseLog.info( str(e) )
+         moduleLog.info( cli.standardFailMessage )
+-    except StopIteration:
+-        pass
+ 
+     return exit_code
+ 
+--- a/src/python/libsmbios_c/smbios_token.py
++++ b/src/python/libsmbios_c/smbios_token.py
+@@ -131,7 +131,7 @@ def __iter__(self):
+             if bool(cur):
+                 yield cur.contents
+             else:
+-                raise StopIteration
++                return
+ 
+     @traceLog()
+     def __getitem__(self, id):

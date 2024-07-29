@@ -1,0 +1,61 @@
+--- monica-3.7.orig/monica.cpp	2024-06-15 10:17:52.270992952 -0700
++++ monica-3.7/monica.cpp	2024-06-15 10:53:54.255394576 -0700
+@@ -1276,7 +1276,7 @@
+ 	int bcheck = system("echo $SHELL | grep bash");
+ 	if (bcheck) {
+ 		fl_alert("Monica senses that BASH is not\nyour login shell...\n\nSince Monica uses bash init scripts to \nimplement gamma corrections on system login, \nyou will have to paste the call to monicarc \ninto your startup scripts by hand.\n\nAlternatively, you can make a direct call \nto xgamma in your X config file.");
+-		__builtin_exit (0);
++		exit (0);
+ 	} 
+   
+     fn_r = get_shell_rc_path();
+@@ -1563,13 +1563,13 @@
+ }
+ //---------------------------------------------------------------------
+ void exit_cb(Fl_Widget *, void *) {
+-  __builtin_exit(0);
++  exit(0);
+ }
+ //---------------------------------------------------------------------
+ void exit_save_cb(Fl_Widget *, void *s) {
+   int res = write_monicarc((Sliders*)s); 
+   if (res) res = add_monicarc_to_startup();
+-  __builtin_exit(0);
++  exit(0);
+ }
+ //---------------------------------------------------------------------
+ 
+@@ -1704,7 +1704,7 @@
+ //	if (no_ati_gamma && no_x_gamma) {
+     if (no_x_gamma) {
+ 		fl_alert("Monica cannot detect the presence\n of xgamma on your machine...\n\nIt is distributed with all versions of XFree86 \nand Xorg to date, so if you have X installed, \nit should be around or something might be \nwrong with your installation.\n\nXgamma is needed for Monica to function.");
+-		__builtin_exit (0);
++		exit (0);
+ 	}
+ //-- set global value of "xgamma" command string, accomodating ATI's fglrx_xgamma ---
+ //	if ( ! no_ati_gamma ) {
+@@ -1739,13 +1739,13 @@
+ 	printf("Copyright (C) 2005 Paul Sherman\n\n");
+ 	printf("Copyright (C) 2002 Tilo Riemer\n\n");
+ 	printf("Monica is published under a BSD like licence.\nSee Monica -l\n\n");
+-	__builtin_exit(0);
++	exit(0);
+       }
+       if ( (strcmp(argv[i], "-l") == 0) 
+           || (strcmp(argv[i], "--licence") == 0) 
+           || (strcmp(argv[i], "--license") == 0) ) {
+         printf("\n%s\n\n", LICENCE);
+-	__builtin_exit(0);
++	exit(0);
+       }
+       if ( (strcmp(argv[i], "-h") == 0) || (strcmp(argv[i], "--help") == 0) ) {
+ 	printf("\nUsage: Monica [options]\nwhere options are:\n");
+@@ -1766,7 +1766,7 @@
+ 	printf("\t-s[cheme]         scheme\n");
+ 	printf("\t-t[itle]          windowtitle\n\n");
+ 
+-	__builtin_exit(0);
++	exit(0);
+       } 
+       if ( (strcmp(argv[i], "-o") == 0) || (strcmp(argv[i], "--onthefly") == 0) ) {
+ 	g_toggle_apply_on_the_fly_checkbox = 1;

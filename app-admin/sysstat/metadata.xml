@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<upstream>
+		<remote-id type="github">sysstat/sysstat</remote-id>
+	</upstream>
+	<use>
+		<flag name="dcron">Adjust cronjobs to work properly under <pkg>sys-process/dcron</pkg></flag>
+	</use>
+</pkgmetadata>

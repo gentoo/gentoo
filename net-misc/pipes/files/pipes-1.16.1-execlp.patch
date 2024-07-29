@@ -1,0 +1,14 @@
+--- a/plis.c
++++ b/plis.c
+@@ -443,9 +443,9 @@
+                             if(!strncmp(argv[a], "pcon ", 5)) ChildPconTest(argv[a]);
+                             
+                             if(usesh)
+-                                execl(SHELL, "sh", "-c", argv[a], NULL);
++                                execl(SHELL, "sh", "-c", argv[a], (char *) NULL);
+                             else
+-                                execlp(argv[a], NULL);
++                                execlp(argv[a], ";", (char *) NULL);
+                         }
+                         else
+                         {

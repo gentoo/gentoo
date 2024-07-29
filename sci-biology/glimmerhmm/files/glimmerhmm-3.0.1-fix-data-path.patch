@@ -1,0 +1,20 @@
+--- a/train/trainGlimmerHMM
++++ b/train/trainGlimmerHMM
+@@ -12,7 +12,7 @@
+ use Cwd;
+ 
+ use FindBin;
+-use lib $FindBin::Bin;
++use lib "/usr/share/glimmerhmm/lib";
+ use orf;
+ use formtrain;
+ use dectree_allinfo;
+@@ -20,7 +20,7 @@
+ use splitiso;
+ 
+ my $workdir=cwd();
+-my $scriptdir=$FindBin::Bin; # directory where all training programs should be
++my $scriptdir="/usr/libexec/glimmerhmm/training_utils"; # directory where all training programs should be
+ 
+ #print "workdir=$workdir scriptdir=$scriptdir\n";exit;
+ 

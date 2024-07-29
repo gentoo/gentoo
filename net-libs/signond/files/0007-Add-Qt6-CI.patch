@@ -1,0 +1,91 @@
+https://gitlab.com/accounts-sso/signond/-/merge_requests/36
+
+From 10f791a62e229bcb5e3975c752bcd5519758240f Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Mon, 1 Aug 2022 19:37:41 +0200
+Subject: [PATCH 07/11] Add Qt6 CI
+
+---
+ .gitlab-ci.yml | 48 ++++++++++++++++++++++++++++++++++++++++--------
+ 1 file changed, 40 insertions(+), 8 deletions(-)
+
+diff --git a/.gitlab-ci.yml b/.gitlab-ci.yml
+index 409f6e2..c784909 100644
+--- a/.gitlab-ci.yml
++++ b/.gitlab-ci.yml
+@@ -1,18 +1,14 @@
+-image: ubuntu:bionic
+-
+ cache:
+   key: apt-cache
+   paths:
+   - apt-cache/
+ 
+-before_script:
+-  - export APT_CACHE_DIR=`pwd`/apt-cache && mkdir -pv $APT_CACHE_DIR
+-  - apt-get update -yq && apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y qt5-qmake qt5-default qtbase5-dev qtchooser pkg-config libqt5sql5-sqlite doxygen libdbus-1-dev
+-  - apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y dbus-test-runner libqtdbusmock1-dev libqtdbustest1-dev
+-  - apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y lcov gcovr
+-
+ build_amd64:
+   stage: build
++  image: ubuntu:bionic
++  before_script:
++    - export APT_CACHE_DIR=`pwd`/apt-cache && mkdir -pv $APT_CACHE_DIR
++    - apt-get update -yq && apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y qt5-qmake qt5-default qtbase5-dev qtchooser pkg-config libqt5sql5-sqlite doxygen libdbus-1-dev
+   script:
+     - mkdir build
+     - cd build
+@@ -24,6 +20,10 @@ build_amd64:
+ 
+ test_amd64:
+   stage: test
++  image: ubuntu:bionic
++  before_script:
++    - export APT_CACHE_DIR=`pwd`/apt-cache && mkdir -pv $APT_CACHE_DIR
++    - apt-get update -yq && apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y dbus-test-runner libqtdbusmock1-dev libqtdbustest1-dev lcov gcovr make qt5-qmake qt5-default qtbase5-dev qtchooser pkg-config libqt5sql5-sqlite doxygen libdbus-1-dev
+   script:
+     - find build | xargs touch # Avoid rebuilding
+     - cd build
+@@ -34,6 +34,38 @@ test_amd64:
+     paths:
+       - ./
+ 
++build_amd64_qt6:
++  stage: build
++  image: ubuntu:jammy
++  before_script:
++    - export APT_CACHE_DIR=`pwd`/apt-cache && mkdir -pv $APT_CACHE_DIR
++    - apt-get update -yq && apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y qmake6 qt6-base-dev pkg-config libqt6sql6-sqlite doxygen libdbus-1-dev g++ make
++  script:
++    - mkdir build
++    - cd build
++    - qmake6 CONFIG+=debug CONFIG+=coverage CONFIG+=enable-backup CONFIG+=enable-p2p ..
++    - make -j 4
++  artifacts:
++    paths:
++      - build/
++
++test_amd64_qt6:
++  stage: test
++  image: ubuntu:jammy
++  before_script:
++    - export APT_CACHE_DIR=`pwd`/apt-cache && mkdir -pv $APT_CACHE_DIR
++    - export DEBIAN_FRONTEND=noninteractive
++    - apt-get update -yq && apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y dbus-test-runner libqtdbusmock1-dev libqtdbustest1-dev lcov gcovr make qmake6 qt6-base-dev pkg-config libqt6sql6-sqlite doxygen libdbus-1-dev g++ make
++  script:
++    - find build | xargs touch # Avoid rebuilding
++    - cd build
++    - make coverage-html
++  dependencies:
++    - build_amd64_qt6
++  artifacts:
++    paths:
++      - ./
++
+ pages:
+   stage: deploy
+   script:
+-- 
+2.43.0
+

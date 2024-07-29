@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>hydrapolic@gmail.com</email>
+		<name>Tomáš Mózes</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+	<flag name="fuzzyhash">
+		Support fuzzy hash computations (to detect malware, for example)
+		using the <pkg>app-crypt/ssdeep</pkg> package.
+	</flag>
+	<flag name="geoip2">
+		Pull in <pkg>dev-libs/libmaxminddb</pkg> for use by the SecGeoLookupDb
+		directive.
+	</flag>
+	<flag name="json">
+		Suppose JSON in the request body parser through
+		<pkg>dev-libs/yajl</pkg>.
+	</flag>
+	<flag name="lmdb">
+		Add LMDB backend support
+	</flag>
+	<flag name="pcre2">
+		Use <pkg>dev-libs/libpcre2</pkg> as regex implementation
+	</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">SpiderLabs/ModSecurity</remote-id>
+	</upstream>
+</pkgmetadata>

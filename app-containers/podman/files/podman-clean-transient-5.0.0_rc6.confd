@@ -1,0 +1,8 @@
+# Config file for /etc/init.d/podman-clean-transient
+
+# Sets the podman log level
+# valid levels: debug, info, warn, error, fatal or panic
+#LOG_LEVEL="info"
+
+# Configure the user[:group] the podman will run as
+#RUN_AS_USER="root:root"

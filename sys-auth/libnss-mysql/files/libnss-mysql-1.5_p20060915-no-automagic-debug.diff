@@ -1,0 +1,14 @@
+diff -NuarwPbB libnss-mysql.orig/configure.in libnss-mysql/configure.in
+--- libnss-mysql.orig/configure.in	2005-09-04 03:34:00.000000000 +0000
++++ libnss-mysql/configure.in	2010-09-08 18:12:24.577317098 +0000
+@@ -38,7 +38,9 @@
+ AC_ARG_WITH(mysql,
+             [  --with-mysql=DIR        Location of your MySQL installation])
+ AC_ARG_ENABLE(debug,
+-            [  --enable-debug          Enable debug (see DEBUGGING)],
++            [  --enable-debug          Enable debug (see DEBUGGING)])
++
++AS_IF([test "x$enable_debug" = "xyes"],
+             [AC_DEFINE([DEBUG], 1, [Enable debug])])
+ 
+ case "$target_os" in

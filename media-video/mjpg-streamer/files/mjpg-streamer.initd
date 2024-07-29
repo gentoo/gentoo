@@ -1,0 +1,47 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+MJPG_STREAMER_PIDFILE="${MJPG_STREAMER_PIDFILE:-/var/run/${SVCNAME}.pid}"
+MY_NAME=$(printf %s "${SVCNAME}" | tr - _)
+
+depend() {
+	use logger
+	after modules
+}
+
+checkconfig() {
+	set --
+
+	[ "${INPUT_PLUGIN}" ] || set -- "$@" INPUT_PLUGIN
+	[ "${OUTPUT_PLUGIN}" ] || set -- "$@" OUTPUT_PLUGIN
+	[ "${MJPG_STREAMER_USER}" ] || set -- "$@" MJPG_STREAMER_USER
+	[ "${MJPG_STREAMER_GROUP}" ] || set -- "$@" MJPG_STREAMER_GROUP
+
+	if [ $# -gt 0 ]; then
+		eerror "Required variables in /etc/conf.d/${SVCNAME} are not set:"
+		eerror " $(IFS=,; printf %s "$*")"
+		return 1
+	fi
+
+	return 0
+}
+
+start() {
+	checkconfig || return $?
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --exec "/usr/bin/${MY_NAME}" \
+		--user "${MJPG_STREAMER_USER}" \
+		--group "${MJPG_STREAMER_GROUP}" -w 100 -b -m \
+		--pidfile "${MJPG_STREAMER_PIDFILE}" \
+		-- -i "/usr/@LIBDIR@/input_${INPUT_PLUGIN}.so ${INPUT_PLUGIN_OPTS}" \
+		-o "/usr/@LIBDIR@/output_${OUTPUT_PLUGIN}.so ${OUTPUT_PLUGIN_OPTS}"
+	eend $? "Check syslog to see why startup failed."
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --exec "/usr/bin/${MY_NAME}" \
+		--pidfile "${MJPG_STREAMER_PIDFILE}"
+	eend $?
+}

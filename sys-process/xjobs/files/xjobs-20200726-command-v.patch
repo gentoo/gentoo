@@ -1,0 +1,48 @@
+From c25bbd08331d88dc1f68806e204a091ed5693f9a Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Tue, 15 Sep 2020 20:03:06 -0400
+Subject: [PATCH 1/2] runtest1.sh,testdummy: use "command -v" instead of
+ "which".
+
+The "command -v" incantation is the POSIX-compatible version of the
+"which" command, described in
+
+  https://pubs.opengroup.org/onlinepubs/9699919799/utilities/command.html
+
+This commit changes two uses of "which" to "command -v" for maximum
+compatibility. This has a nice side effect; it eliminates the error
+output when the first of two alternatives is not found, as in
+
+  which: no gsleep in (...)
+
+before the "sleep" command is used as a fallback.
+---
+ runtest1.sh | 2 +-
+ testdummy   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/runtest1.sh b/runtest1.sh
+index 7584116..2dfadd1 100755
+--- a/runtest1.sh
++++ b/runtest1.sh
+@@ -1,4 +1,4 @@
+ #!/bin/sh
+ 
+-A=`which gawk || which awk`
++A="$(command -v gawk || command -v awk)"
+ $A "BEGIN{for (i=0;i<10;++i) print rand()*10}" | ./xjobs -j8 ./testdummy
+diff --git a/testdummy b/testdummy
+index 1787a46..f511806 100755
+--- a/testdummy
++++ b/testdummy
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+-S=`which gsleep||which sleep`
++S="$(command -v gsleep || command -v sleep)"
+ $S $1
+ expr "$1" \> "4" > /dev/null
+ if [ "$?" != "0" ]; then
+-- 
+2.26.2
+

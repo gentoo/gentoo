@@ -1,0 +1,140 @@
+--- a/getargs.h
++++ b/getargs.h
+@@ -37,4 +37,4 @@
+ 
+ /* getargs() prototype */
+ void getargs(int, char *[]);
+-int flagargs[NUMARGS];
++extern int flagargs[NUMARGS];
+--- a/sdl.c
++++ b/sdl.c
+@@ -282,7 +282,7 @@
+ #define SGN(a)		(((a)<0) ? -1 : 1)
+ 
+ /* Draw an horizontal line in the current color */
+-inline void draw_horzline(Sint16 x1, Sint16 x2, Sint32 y)
++void draw_horzline(Sint16 x1, Sint16 x2, Sint32 y)
+ {
+   int i;
+   if (x1 < x2) {
+@@ -296,7 +296,7 @@
+ }
+ 
+ /* Draw an vertical line in the current color */
+-inline void draw_vertline(Sint16 x, Sint16 y1, Sint32 y2)
++void draw_vertline(Sint16 x, Sint16 y1, Sint32 y2)
+ {
+   int i;
+   if (y1 < y2) {
+@@ -310,7 +310,7 @@
+ }
+ 
+ /* Draw a line between two coordinates */
+-inline void drawline(int x1,int y1,int x2,int y2)
++void drawline(int x1,int y1,int x2,int y2)
+ {
+   int d, x, y, ax, ay, sx, sy, dx, dy;
+   if((dx = x2 - x1) == 0) { /* vertical line */
+@@ -358,7 +358,7 @@
+   }
+ }
+ 
+-inline void MoveTo(int x,int y)
++void MoveTo(int x,int y)
+ {
+   current_x = convx(x);
+   current_y = convy(y);
+@@ -366,12 +366,12 @@
+ 
+ 
+ /* Scaling blit function by Greg Velichansky */
+-inline Uint32 ifloor(Uint32 i)
++Uint32 ifloor(Uint32 i)
+ {
+   return i & 0xFFFF0000;
+ }
+ 
+-inline Uint32 iceil(Uint32 i)
++Uint32 iceil(Uint32 i)
+ {
+   return (i & 0xFFFF) ? i : ifloor(i) + (1<<16);
+ }
+@@ -379,7 +379,7 @@
+ 
+ /* The most pedantic-a%& getpixel and putpixel ever, hopefully. */
+ /* There may still be endianness bugs! These will be fixed after adequte testing. XXX XXX XXX */
+-inline int SDL_GetPixel (SDL_Surface *f, Uint32 x, Uint32 y,
++int SDL_GetPixel (SDL_Surface *f, Uint32 x, Uint32 y,
+ 			 Uint8 *r, Uint8 *g, Uint8 *b)
+ {
+   /*const Uint32 mask[] = {0x0, 0xff, 0xffff, 0xffffff, 0xffffffff};*/
+@@ -515,7 +515,7 @@
+     SDL_UnlockSurface(screen);
+   }
+ }
+-inline void lock_graphics() {
++void lock_graphics() {
+   if ( SDL_MUSTLOCK(screen) ) {
+     if ( SDL_LockSurface(screen) < 0 ) {
+       return;
+@@ -523,13 +523,13 @@
+   }
+ }
+ 
+-inline void ResetRefreshCoords()
++void ResetRefreshCoords()
+ {
+   minx = miny = -1;
+   maxx = maxy = 0;
+ }
+ 
+-inline void RedrawObject() {
++void RedrawObject() {
+   if(minx >= 0) {
+     rects[rec_counter].x = minx;
+     rects[rec_counter].y = miny;
+@@ -540,7 +540,7 @@
+ }
+ 
+ static int is_poly=0;
+-inline void LineTo(int x,int y)
++void LineTo(int x,int y)
+ {
+   x = convx(x); y = convy(y);
+   drawline(current_x,current_y,x,y);
+@@ -549,7 +549,7 @@
+ }
+ 
+ 
+-inline void Polyline(POINT *pts,int n)
++void Polyline(POINT *pts,int n)
+ {
+   int f;
+   if(n<2) return;
+@@ -560,7 +560,7 @@
+     LineTo(pts->x, pts->y);
+ }
+ 
+-inline void Circle(Sint16 x, Sint16 y, Sint32 r)
++void Circle(Sint16 x, Sint16 y, Sint32 r)
+ {
+   x = convx(x);
+   y = convy(y);  
+@@ -569,7 +569,7 @@
+ }
+ 
+ /* doesn't set current_[xy] because hyperoid.c doesn't need it to */
+-inline void SetPixel(Sint16 x, Sint16 y,Uint32 c)
++void SetPixel(Sint16 x, Sint16 y,Uint32 c)
+ {
+   current_color = c;
+   x = convx(x);
+@@ -578,7 +578,7 @@
+ }
+ 
+ 
+-inline void set_colour(int c)
++void set_colour(int c)
+ {
+   current_color = c;
+ }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person" proxied="yes">
+  <email>azamat.hackimov@gmail.com</email>
+  <name>Azamat H. Hackimov</name>
+</maintainer>
+<maintainer type="project" proxied="proxy">
+  <email>proxy-maint@gentoo.org</email>
+  <name>Proxy Maintainers</name>
+</maintainer>
+<use>
+  <flag name="markdown">Enable support for Markdown</flag>
+  <flag name="minimagick">Enable image processing support via <pkg>dev-ruby/mini_magick</pkg></flag>
+  <flag name="passenger">Enable support for <pkg>www-apache/passenger</pkg></flag>
+  <flag name="standalone">Enable standalone mode with <pkg>www-servers/puma</pkg></flag>
+</use>
+</pkgmetadata>

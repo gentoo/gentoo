@@ -1,0 +1,22 @@
+don't force -static so we get both pic and non-pic objects
+
+https://bugs.gentoo.org/342669
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -117,12 +117,12 @@
+ @SET_MAKE@
+ 
+ %.o: %.c
+-	$(LIBTOOL) --tag=CC --mode=compile $(CC) -c $(CFLAGS) $< -o $@
++	$(LIBTOOL) --tag=CC --mode=compile $(CC) -c $(CFLAGS) $< -o $@ -static
+ %.o: %.cpp
+-	$(LIBTOOL) --tag=CXX --mode=compile $(CXX) -c $(CFLAGS) $< -o $@
++	$(LIBTOOL) --tag=CXX --mode=compile $(CXX) -c $(CFLAGS) $< -o $@ -static
+ 
+ %: %.o
+-	$(LIBTOOL) --tag=CC --mode=link $(CC) -o $@ -static \
++	$(LIBTOOL) --tag=CC --mode=link $(CC) -o $@ \
+ 		$^ $(OBJS) $(LDFLAGS) -lz ${LIBS}
+ 
+ include $(srcdir)/deps

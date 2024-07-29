@@ -1,0 +1,13 @@
+Index: rocprofiler-rocm-5.0.2/cmake_modules/env.cmake
+===================================================================
+--- rocprofiler-rocm-5.0.2.orig/cmake_modules/env.cmake
++++ rocprofiler-rocm-5.0.2/cmake_modules/env.cmake
+@@ -92,8 +92,6 @@ string ( TOLOWER "${CMAKE_BUILD_TYPE}" C
+ if ( "${CMAKE_BUILD_TYPE}" STREQUAL debug )
+   set ( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ggdb" )
+   set ( CMAKE_BUILD_TYPE "debug" )
+-else ()
+-  set ( CMAKE_BUILD_TYPE "release" )
+ endif ()
+ 
+ ## Extend Compiler flags based on Processor architecture

@@ -1,0 +1,10 @@
+--- a/ckpass.c
++++ b/ckpass.c
+@@ -30,6 +30,7 @@
+ #include <string.h>
+ #include <sys/mman.h>
+ #include <sys/stat.h>
++#include <sys/wait.h>
+ #include <unistd.h>
+ #include <fcntl.h>
+ #include <errno.h>

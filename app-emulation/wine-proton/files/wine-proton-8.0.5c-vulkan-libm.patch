@@ -1,0 +1,12 @@
+Valve's patches add use of "ceil" without using libm, it works
+by accident with -O2 but fails with -Os.
+
+ld: dlls/winevulkan/vulkan.o: in function `fshack_vk_queue_present':
+vulkan.c:(.text+0x12f46): undefined reference to `ceil'
+--- a/dlls/winevulkan/Makefile.in
++++ b/dlls/winevulkan/Makefile.in
+@@ -4,3 +4,3 @@
+ IMPORTS   = user32 gdi32 advapi32 setupapi win32u
+-UNIX_LIBS = -lwin32u $(PTHREAD_LIBS)
++UNIX_LIBS = -lm -lwin32u $(PTHREAD_LIBS)
+ 

@@ -1,0 +1,51 @@
+https://cgit.freebsd.org/ports/tree/graphics/libfpx/files/patch-null-casts
+https://bugs.gentoo.org/842123
+
+(May well fix libcxx too given the source.)
+--- a/oless/expdf.cxx
++++ b/oless/expdf.cxx
+@@ -610,5 +610,5 @@
+         olErr(EH_Err, STG_E_INVALIDFUNCTION);
+     olChk(Validate());
+-    if (snbExclude != NULL)
++    if (snbExclude != 0)
+         olErr(EH_Err, STG_E_INVALIDPARAMETER);
+     olChk(OpenEntry(pwcsName, STGTY_STORAGE, grfMode, (void **)&pdfExp));
+@@ -909,5 +909,5 @@
+     sc = OpenStorage(pwcsName, (IStorage*)NULL,
+                      STGM_DIRECT| STGM_READ| STGM_SHARE_EXCLUSIVE,
+-                     (SNBW)NULL, (DWORD)NULL, &pstgsrc);
++                     0, 0, &pstgsrc);
+ 
+     if (SUCCEEDED(sc))
+@@ -951,5 +951,5 @@
+         olChk(OpenStream(pwcsName, (void *)NULL,
+                          STGM_DIRECT | STGM_READ | STGM_SHARE_EXCLUSIVE,
+-                         (DWORD)NULL, &pstmsrc));
++                         0, &pstmsrc));
+ 
+         //  It's a stream
+@@ -1575,5 +1575,5 @@
+     olMemTo(EH_pst, pstExp = new CExposedStream());
+     olChkTo(EH_pstExp, pstExp->Init(pstDirect, this,
+-                                    df, pdfnName, (ULONG)NULL));
++                                    df, pdfnName, 0));
+     *ppStream = pstExp;
+     return S_OK;
+@@ -1624,5 +1624,5 @@
+     olMemTo(EH_pst, pstExp = new CExposedStream());
+     olChkTo(EH_pstExp, pstExp->Init(pstDirect, this,
+-                                    df, pdfnName, (ULONG)NULL));
++                                    df, pdfnName, 0));
+     *ppStream = pstExp;
+     return S_OK;
+--- a/oless/storage.cxx
++++ b/oless/storage.cxx
+@@ -144,5 +144,5 @@
+ 
+     olChk(ValidateNameW(pwcsName, CBMAXPATHCOMPLEN));
+-    olMem(pilb = new CFileILB(pwcsName, (DWORD)NULL, FALSE));
++    olMem(pilb = new CFileILB(pwcsName, 0, FALSE));
+     olChk(pilb->Open(STGM_READ));
+     sc = GetScode( StgIsStorageILockBytes(pilb) );
+

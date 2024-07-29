@@ -1,0 +1,21 @@
+# Darwin does not support thread-local storage (__thread)
+# http://lists.apple.com/archives/xcode-users/2006/Jun/msg00551.html
+# so use default from boost thread
+
+# use lseek for lseek64
+# sys/types.h is needed because of uint
+
+--- povray-3.7.0.RC6/vfe/unix/syspovconfig.h.orig	2013-03-01 11:09:42.000000000 -0700
++++ povray-3.7.0.RC6/vfe/unix/syspovconfig.h	2013-03-01 11:07:14.000000000 -0700
+@@ -171,9 +171,7 @@
+ #define METADATA_PLATFORM_STRING BUILD_ARCH
+ #define METADATA_COMPILER_STRING COMPILER_VERSION
+ 
+-#define DECLARE_THREAD_LOCAL_PTR(ptrType, ptrName)                __thread ptrType *ptrName
+-#define IMPLEMENT_THREAD_LOCAL_PTR(ptrType, ptrName, ignore)      __thread ptrType *ptrName
+-#define GET_THREAD_LOCAL_PTR(ptrName)                             (ptrName)
+-#define SET_THREAD_LOCAL_PTR(ptrName, ptrValue)                   (ptrName = ptrValue)
++#define lseek64 lseek
++#include <sys/types.h>
+
+ #endif

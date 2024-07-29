@@ -1,0 +1,24 @@
+Source: https://build.opensuse.org/package/view_file/openSUSE:Factory/csound/csound-6.08-xdg-open.patch
+Index: csound-6.12.2/installer/misc/vim/cshelp
+===================================================================
+--- csound-6.12.2.orig/installer/misc/vim/cshelp	2018-11-07 16:05:23.000000000 +0200
++++ csound-6.12.2/installer/misc/vim/cshelp	2019-04-05 15:32:23.670308342 +0200
+@@ -3,7 +3,9 @@
+ BROWSER_CMD=""
+ 
+ if [ "${DISPLAY}" != "" ] ; then
+-    if ( which links | grep -q -G -e "^/usr" ) ; then
++    if ( which xdg-open | grep -E -e "^(/usr)?/bin" ); then
++        BROWSER_CMD="xdg-open" ;
++    elif ( which links | grep -q -G -e "^/usr" ) ; then
+         BROWSER_CMD="links -g" ;
+     elif ( which konqueror | grep -q -G -e "^/opt" ) ; then
+         BROWSER_CMD="konqueror" ;
+@@ -38,5 +40,5 @@ else
+     OPNAME="${1}" ;
+ fi
+ 
+-exec ${BROWSER_CMD} "/usr/local/share/doc/csound/manual/${OPNAME}.html"
++exec ${BROWSER_CMD} "/usr/share/doc/csound-manual/${OPNAME}.html"
+ 
+

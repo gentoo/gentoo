@@ -1,0 +1,60 @@
+--- a/src/cosmo.c
++++ b/src/cosmo.c
+@@ -39,6 +39,11 @@
+ #include "cosmo.h"
+ #include "lf.h"
+ 
++char    gstr[MAXCHAR];
++int   bswapflag;
++
++double  H, H0, OmegaM, OmegaL, deltaMH;
++
+ /******************************** cosmo_dconf ********************************/
+ /*
+ Conformal distance. Numerical integration along geodesic, allowing for a
+--- a/src/cosmo.h
++++ b/src/cosmo.h
+@@ -38,7 +38,7 @@
+ 
+ /*------------------------------ global variables ---------------------------*/
+ 
+-double	H, H0, OmegaM, OmegaL, deltaMH;
++extern double	H, H0, OmegaM, OmegaL, deltaMH;
+ 
+ /*-------------------------------- protos -----------------------------------*/
+ 
+--- a/src/globals.h
++++ b/src/globals.h
+@@ -29,8 +29,8 @@
+ #include	"types.h"
+ 
+ /*----------------------- miscellaneous variables ---------------------------*/
+-char		gstr[MAXCHAR];
+-int		bswapflag;
++extern char		gstr[MAXCHAR];
++extern int		bswapflag;
+ 
+ /*------------------------------- functions ---------------------------------*/
+ extern	void	error(int, char *, char *),
+--- a/src/prefs.c
++++ b/src/prefs.c
+@@ -53,6 +53,8 @@
+ #include 	"prefs.h"
+ #include	"preflist.h"
+ 
++prefstruct  prefs;
++
+ /********************************* dumpprefs ********************************/
+ /*
+ Print the default preference parameters.
+--- a/src/prefs.h
++++ b/src/prefs.h
+@@ -136,7 +136,7 @@
+   double	time_diff;			/* Execution time */
+   }	prefstruct;
+ 
+-prefstruct	prefs;
++extern prefstruct	prefs;
+ 
+ /*----------------------------- Internal constants --------------------------*/
+ 

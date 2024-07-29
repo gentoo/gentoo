@@ -1,0 +1,103 @@
+Index: CMakeLists.txt
+===================================================================
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -0,0 +1,98 @@
++cmake_minimum_required(VERSION 2.8.12)
++
++project(voro++)
++
++set(PROJECT_VERSION "0.4.6")
++set(SOVERSION 0)
++
++# Cmake modules/macros are in a subdirectory to keep this file cleaner
++set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/CMakeModules)
++
++if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CXX_FLAGS)
++  #release comes with -O3 by default
++  set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel." FORCE)
++endif(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CXX_FLAGS)
++
++enable_language(CXX)
++
++######################################################################
++# compiler tests
++# these need ot be done early (before further tests).
++#####################################################################
++
++include(CheckCXXCompilerFlag)
++
++########################################################################
++# Standard install paths                                               #
++########################################################################
++include(GNUInstallDirs)
++
++########################################################################
++#Find external packages
++########################################################################
++find_package(Doxygen)
++
++########################################################################
++# Basic system tests (standard libraries, headers, functions, types)   #
++########################################################################
++include(CheckIncludeFileCXX)
++foreach(HEADER cmath cstdio cstdlib cstring ctime fstream iostream queue vector)
++  check_include_file_cxx(${HEADER} FOUND_${HEADER})
++  if(NOT FOUND_${HEADER})
++    message(FATAL_ERROR "Could not find needed header - ${HEADER}")
++  endif(NOT FOUND_${HEADER})
++endforeach(HEADER)
++
++set(MATH_LIBRARIES "m" CACHE STRING "math library")
++mark_as_advanced( MATH_LIBRARIES )
++include(CheckLibraryExists)
++foreach(FUNC sqrt)
++  check_library_exists(${MATH_LIBRARIES} ${FUNC} "" FOUND_${FUNC}_${MATH_LIBRARIES})
++  if(NOT FOUND_${FUNC}_${MATH_LIBRARIES})
++    message(FATAL_ERROR "Could not find needed math function - ${FUNC}")
++  endif(NOT FOUND_${FUNC}_${MATH_LIBRARIES})
++endforeach(FUNC)
++
++######################################
++# Include the following subdirectory # 
++######################################
++
++file(GLOB VORO_SOURCES src/*.cc)
++file(GLOB NOT_VORO_SOURCES src/v_base_wl.cc src/cmd_line.cc src/voro++.cc)
++list(REMOVE_ITEM VORO_SOURCES ${NOT_VORO_SOURCES})
++add_library(voro++ ${VORO_SOURCES})
++set_target_properties(voro++ PROPERTIES 
++  LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/src"
++  SOVERSION ${SOVERSION})
++install(TARGETS voro++ LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
++
++add_executable(cmd_line src/cmd_line.cc)
++target_link_libraries(cmd_line voro++)
++#cannot have two target with the same name
++set_target_properties(cmd_line PROPERTIES OUTPUT_NAME voro++ 
++  RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/src") 
++install(TARGETS cmd_line RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
++
++#for voto++.hh
++include_directories(${CMAKE_SOURCE_DIR}/src)
++file(GLOB EXAMPLE_SOURCES examples/*/*.cc) 
++foreach(SOURCE ${EXAMPLE_SOURCES})
++  string(REGEX REPLACE "^.*/([^/]*)\\.cc$" "\\1" PROGNAME "${SOURCE}")
++  if (NOT PROGNAME STREQUAL ellipsoid) #ellipsoid is broken
++    string(REGEX REPLACE "^.*/(examples/.*)/${PROGNAME}\\.cc$" "\\1" DIRNAME "${SOURCE}")
++    add_executable(${PROGNAME} ${SOURCE})
++    target_link_libraries(${PROGNAME} voro++)
++    set_target_properties(${PROGNAME} PROPERTIES 
++      RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${DIRNAME}" )
++  endif()
++endforeach(SOURCE)
++
++file(GLOB_RECURSE VORO_HEADERS src/*.hh)
++install(FILES ${VORO_HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/voro++)
++install(FILES ${CMAKE_SOURCE_DIR}/man/voro++.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
++
++if (DOXYGEN_FOUND)
++  add_custom_target(doxygen COMMAND ${DOXYGEN_EXECUTABLE} src/Doxyfile
++    COMMENT "Build doxygen documentation")
++endif (DOXYGEN_FOUND)
++

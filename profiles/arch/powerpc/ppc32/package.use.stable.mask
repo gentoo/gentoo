@@ -1,0 +1,97 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# When you add an entry to the top of this file, add your name, the date, and
+# an explanation of why something is getting masked. Please be extremely
+# careful not to commit atoms that are not valid, as it can cause large-scale
+# breakage, especially if it ends up in the daily snapshot.
+#
+## Example:
+##
+## # Dev E. Loper <developer@gentoo.org> (2012-06-28)
+## # Masking foo USE flag until we can get the
+## # foo stuff to work properly again (bug 12345)
+## =media-video/mplayer-0.90_pre5 foo
+## =media-video/mplayer-0.90_pre5-r1 foo
+#
+
+#--- END OF EXAMPLES ---
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2023-06-02)
+# Destabilizing ppc keywords on sci-*/* packages
+dev-perl/PDL gsl
+dev-python/numpy lapack
+dev-python/pythran test
+media-gfx/graphviz gts
+media-libs/a52dec djbfft
+sci-libs/gsl cblas-external
+sci-libs/hdf5 szip
+
+# Hans de Graaff <graaff@gentoo.org> (2023-03-28)
+# dev-ruby/stringex is not marked stable here yet
+dev-ruby/kramdown unicode
+
+# Sam James <sam@gentoo.org> (2022-11-19)
+# Deps not stable on ppc
+sys-devel/clang-common default-lld
+sys-devel/llvm binutils-plugin z3 xar
+
+# Sam James <sam@gentoo.org> (2022-07-27)
+# sys-devel/lld is not marked stable on ppc
+>=dev-lang/spidermonkey-78 lto
+
+# Sam James <sam@gentoo.org> (2022-05-11)
+# sys-apps/keyutils not stable here (test failures)
+# ... and samba[client] pulls in cifs-utils which pulls in keyutils.
+# bug #636252
+net-fs/nfs-utils nfsv4
+net-fs/samba client
+gnome-base/gvfs samba
+media-video/ffmpeg samba
+media-video/vlc samba
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# net-nds/openldap / dev-libs/cyrus-sasl not stable here
+dev-lang/php ldap-sasl
+mail-mta/postfix ldap-bind
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# No kerberos provider is marked stable here
+net-fs/samba system-heimdal system-mitkrb5
+sys-auth/pambase pam_krb5
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# sys-cluster/rdma-core is not marked stable here
+net-libs/libpcap rdma
+
+# Sam James <sam@gentoo.org> (2022-03-03)
+# sys-cluster/sanlock is not marked stable here
+sys-fs/lvm2 sanlock
+
+# Marek Szuba <marecki@gentoo.org> (2021-12-31)
+# No stable dev-ruby/{thor,tty-editor} on this arch yet
+# and there are many dependencies to go through before there are
+app-text/htmltidy test
+
+# Sam James <sam@gentoo.org> (2021-02-06)
+# Drags in too much unstable GNOME for now
+# bug #727572
+mail-client/claws-mail gdata
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-07-21)
+# Unstable test deps.
+dev-cpp/eigen test
+
+# Michael Weber <xmw@gentoo.org> (2017-03-01)
+# Mask until >sys-cluster/ceph-0.94 goes stable
+net-analyzer/rrdtool rados
+
+# Pacho Ramos <pacho@gentoo.org> (2015-05-15)
+# Missing keywords
+net-misc/connman l2tp openconnect
+sci-libs/plplot ocaml
+
+# Pacho Ramos <pacho@gentoo.org> (2014-07-02)
+# Mask due Gnome3 not going to be stabilized on this arch
+gnome-base/gvfs google
+mail-client/balsa webkit

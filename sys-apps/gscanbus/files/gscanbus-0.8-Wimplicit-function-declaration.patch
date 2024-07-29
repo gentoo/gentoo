@@ -1,0 +1,22 @@
+--- a/decodeselfid.c
++++ b/decodeselfid.c
+@@ -25,6 +25,8 @@
+ 
+ #include "decodeselfid.h"
+ 
++#include <string.h>
++
+ void printbin(FILE *stream, unsigned int i, unsigned char width) {
+ 	int j;
+ 	for (j=0; j<width; j++) {
+--- a/fatal.c
++++ b/fatal.c
+@@ -18,6 +18,8 @@
+  */
+ #include "fatal.h"
+ 
++#include <stdlib.h>
++
+ void fatal(char *s) {
+ 	fprintf(stderr, "Error: %s\n", s);
+ 	exit(1);

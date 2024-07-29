@@ -1,0 +1,29 @@
+https://patch-diff.githubusercontent.com/raw/maru-sama/rtsp-linux/pull/12.patch
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Sun, 28 Apr 2024 01:48:03 +0530
+Subject: [PATCH 1/1] Fix build with Linux 6.8
+
+With commit
+https://github.com/torvalds/linux/commit/57f22c8dab6b266ae36b89b073a4a33dea71e762
+strlcpy has been removed in favor of strscpy. Thus giving us build error
+such as nf_conntrack_rtsp.c: error: implicit declaration of function
+strlcpy.
+
+First reported on Gentoo Linux, please reffer:
+https://bugs.gentoo.org/928590
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/nf_conntrack_rtsp.c
++++ b/nf_conntrack_rtsp.c
+@@ -550,7 +550,7 @@ init(void)
+ 		}
+ 
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,0)
+-		strlcpy(hlpr->name, tmpname, sizeof(hlpr->name));
++		strscpy(hlpr->name, tmpname, sizeof(hlpr->name));
+ #else
+ 		hlpr->name = tmpname;
+ #endif
+-- 
+2.44.0
+

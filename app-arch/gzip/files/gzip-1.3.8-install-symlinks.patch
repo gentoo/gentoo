@@ -1,0 +1,11 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -926,7 +926,7 @@
+ 	     rm -f "$$dest" && \
+ 	     case $@ in \
+ 	     install-exec-hook) \
+-	       ln "$$source" "$$dest" || $(LN_S) "$$source" "$$dest";; \
++	       $(LN_S) "$$source" "$$dest";; \
+ 	     esac \
+ 	    ) || exit; \
+ 	  done; \

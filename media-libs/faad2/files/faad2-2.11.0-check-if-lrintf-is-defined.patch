@@ -1,0 +1,64 @@
+https://github.com/knik0/faad2/issues/188
+https://github.com/knik0/faad2/issues/190
+
+From 1001f9576cbb29242671c489cd861de61cfe08e2 Mon Sep 17 00:00:00 2001
+From: Fabian Greffrath <fabian@greffrath.com>
+Date: Thu, 9 Nov 2023 08:23:53 +0100
+Subject: [PATCH] check for lrintf() presence and define HAVE_LRINTF
+ accordingly
+
+Fixes #188
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,6 +3,8 @@
+ #  - Solaris 11.4 SRU 15 : 3.15
+ cmake_minimum_required(VERSION 3.15)
+ 
++include(CheckSymbolExists)
++
+ project(LIBFAAD2 LANGUAGES C)
+ 
+ # If FAAD is being bundled in another project, we don't want to
+@@ -90,6 +92,13 @@ set(FAAD_DEFINES
+   PACKAGE_VERSION=\"${FAAD_VERSION}\"
+ )
+ 
++check_symbol_exists(lrintf "math.h" HAVE_LRINTF)
++if(HAVE_LRINTF)
++  list(APPEND FAAD_DEFINES
++    HAVE_LRINTF=1
++  )
++endif()
++
+ set(FAAD_FLAGS
+   -Wall
+ )
+
+From 047fd22172a7ff6974b9ac6ca7e4ffdb1944f2e0 Mon Sep 17 00:00:00 2001
+From: Fabian Greffrath <fabian@greffrath.com>
+Date: Fri, 10 Nov 2023 20:01:30 +0100
+Subject: [PATCH] check for lrintf() in -lm and force linking if available
+
+Fixes #190
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,6 +3,7 @@
+ #  - Solaris 11.4 SRU 15 : 3.15
+ cmake_minimum_required(VERSION 3.15)
+ 
++include(CheckLibraryExists)
+ include(CheckSymbolExists)
+ 
+ project(LIBFAAD2 LANGUAGES C)
+@@ -106,6 +107,11 @@ set(FAAD_DEFINES
+   PACKAGE_VERSION=\"${FAAD_VERSION}\"
+ )
+ 
++check_library_exists(m lrintf "" HAVE_LIBM)
++if(HAVE_LIBM)
++  list(APPEND CMAKE_REQUIRED_LIBRARIES m)
++endif()
++
+ check_symbol_exists(lrintf "math.h" HAVE_LRINTF)
+ if(HAVE_LRINTF)
+   list(APPEND FAAD_DEFINES

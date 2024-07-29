@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/745291
+
+--- a/Makefile
++++ b/Makefile
+@@ -4,7 +4,7 @@
+ DRIVER_DIR=${DESTDIR}/${USBDROPDIR}/ifd-ASEKey.bundle
+ UDEV_DIR=${DESTDIR}/${UDEVDIR}
+ 
+-CC=${BUILD}-gcc
++CC?=gcc
+ 
+ SOURCES=usb.c atr.c DriverIO.c CommandTypes.c ReaderCommands.c T1Protocol.c MemoryCards.c InitCardParams.c ifdhandler.c
+ 

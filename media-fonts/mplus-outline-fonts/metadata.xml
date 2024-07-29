@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>fonts@gentoo.org</email>
+		<name>Fonts</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<use>
+		<flag name="ipafont">Generates new fonts merged with <pkg>media-fonts/ja-ipafonts</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="osdn">mplus-fonts</remote-id>
+	</upstream>
+</pkgmetadata>

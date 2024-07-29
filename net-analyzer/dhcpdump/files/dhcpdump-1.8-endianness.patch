@@ -1,0 +1,12 @@
+--- a/dhcpdump.c
++++ b/dhcpdump.c
+@@ -130,7 +130,7 @@
+ 	offset += ETHER_HDR_LEN;
+ 
+ 	// Check for IPv4 packets
+-	if (eh->ether_type != 8) { 
++	if (eh->ether_type != htons(0x0800)) { 
+ 		printf("Ignored non IPv4 packet: %d\n", eh->ether_type);
+ 		return;
+ 	}
+

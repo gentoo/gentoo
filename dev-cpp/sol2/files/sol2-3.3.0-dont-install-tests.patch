@@ -1,0 +1,10 @@
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -60,7 +60,6 @@ function(sol2_add_test_properties target-name)
+ 	
+ 	add_test(NAME ${target-name} COMMAND ${target-name})
+ 	if(SOL2_ENABLE_INSTALL)
+-		install(TARGETS ${target-name} RUNTIME DESTINATION bin)
+ 	endif()
+ endfunction()
+ 

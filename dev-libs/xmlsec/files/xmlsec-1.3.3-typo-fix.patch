@@ -1,0 +1,25 @@
+https://github.com/lsh123/xmlsec/commit/8262167fbc56bce353949b9b18e01af7f7331e76
+
+From 8262167fbc56bce353949b9b18e01af7f7331e76 Mon Sep 17 00:00:00 2001
+From: Antoine Martin <dev@ayakael.net>
+Date: Sun, 14 Jan 2024 09:13:11 -0500
+Subject: [PATCH] Fix typo with xmlSecKeyDataEcGetKlass in app.h include (#755)
+
+---
+ include/xmlsec/app.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/xmlsec/app.h b/include/xmlsec/app.h
+index 4fe2a744..324561b9 100644
+--- a/include/xmlsec/app.h
++++ b/include/xmlsec/app.h
+@@ -85,7 +85,7 @@ XMLSEC_EXPORT xmlSecKeyDataId                   xmlSecKeyDataDsaGetKlass(void);
+  *
+  * The EC key klass.
+  */
+-#define xmlSecKeyDataEcId                       xmlSecKeyDataEcetKlass()
++#define xmlSecKeyDataEcId                       xmlSecKeyDataEcGetKlass()
+ XMLSEC_EXPORT xmlSecKeyDataId                   xmlSecKeyDataEcGetKlass(void);
+ /**
+  * xmlSecKeyDataGost2001Id:
+

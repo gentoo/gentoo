@@ -1,0 +1,22 @@
+diff --git a/lib/exabgp/application/healthcheck.py b/lib/exabgp/application/healthcheck.py
+index a4f6b8d1..805cf8af 100644
+--- a/lib/exabgp/application/healthcheck.py
++++ b/lib/exabgp/application/healthcheck.py
+@@ -168,6 +168,7 @@
+     g.add_argument(
+         "--start-ip", metavar='N', type=int, default=0, help="index of the first IP in the list of IP addresses"
+     )
++    g.add_argument("--no-metric", action="store_true", default=False, help="don't send metrics when updating announcements")
+     g.add_argument(
+         "--up-metric", metavar='M', type=int, default=100, help="first IP get the metric M when the service is up"
+     )
+@@ -494,7 +495,8 @@
+             announce = "route {0} next-hop {1}".format(str(ip), options.next_hop or "self")
+ 
+             if command == "announce":
+-                announce = "{0} med {1}".format(announce, metric)
++                if not options.no_metric:
++                    announce = "{0} med {1}".format(announce, metric)
+                 if options.local_preference >= 0:
+                     announce = "{0} local-preference {1}".format(announce, options.local_preference)
+                 if options.community or options.disabled_community:

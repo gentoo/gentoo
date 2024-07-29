@@ -1,0 +1,18 @@
+GCC doesn't like this:
+
+filetree.c:744:9: error: variable-sized object may not be initialized
+
+Since there's nothing changing at runtime at all, just make the compiler
+see it's always going to be 1.
+
+--- a/lib/filetree.c
++++ b/lib/filetree.c
+@@ -740,7 +740,7 @@
+ 	size_t fspath1_size = 0, fspath2_size = 0;
+ 	size_t ns1_size = 0, ns2_size = 0;
+ 	const struct __xar_file_t * child1 = NULL, * child2 = NULL;
+-	const uint keys_to_ignore_count = 1;
++#define keys_to_ignore_count 1
+ 	char * keys_to_ignore[keys_to_ignore_count] = { "id" }; // ID is allowed ot mismatch
+ 	
+ 	// If the two pointers match, call it the same.

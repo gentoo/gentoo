@@ -1,0 +1,39 @@
+https://github.com/jgm/skylighting/pull/154
+
+From 00af1d629c2f185fd3c8d3eee55857b1325f345b Mon Sep 17 00:00:00 2001
+From: matoro <matoro@users.noreply.github.com>
+Date: Fri, 16 Sep 2022 10:30:35 -0400
+Subject: [PATCH] Notch up core test timeout even further
+
+On very slow/embedded cpus, 25 seconds is not sufficient (even 50
+seconds is not); I had to notch the test timeout up to 75 seconds for
+everything to pass.
+
+This disables the test timeouts completely.
+---
+ test/test-skylighting.hs | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/test-skylighting.hs b/test/test-skylighting.hs
+index a3977e72..0f05e573 100644
+--- a/test/test-skylighting.hs
++++ b/test/test-skylighting.hs
+@@ -224,8 +224,7 @@ p_no_drop cfg syntax t =
+ 
+ noDropTest :: TokenizerConfig -> [Text] -> Syntax -> TestTree
+ noDropTest cfg inps syntax =
+-  localOption (mkTimeout 25000000)
+-  $ testCase (Text.unpack (sName syntax))
++  testCase (Text.unpack (sName syntax))
+   $ mapM_ go inps
+     where go inp =
+               case tokenize cfg syntax inp of
+@@ -238,7 +237,7 @@ noDropTest cfg inps syntax =
+                       assertFailure ("Unexpected error: " ++ e ++ "\ninput = " ++ show inp)
+ 
+ tokenizerTest :: TokenizerConfig -> SyntaxMap -> Bool -> FilePath -> TestTree
+-tokenizerTest cfg sMap regen inpFile = localOption (mkTimeout 25000000) $
++tokenizerTest cfg sMap regen inpFile =
+   goldenTest testname getExpected getActual
+       (compareValues referenceFile) updateGolden
+   where testname = lang ++ " tokenizing of " ++ inpFile

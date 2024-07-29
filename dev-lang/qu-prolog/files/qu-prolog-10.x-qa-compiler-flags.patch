@@ -1,0 +1,22 @@
+--- qp10.7.orig/src/Makefile.in	2020-06-24 23:37:02.000000000 -0000
++++ qp10.7/src/Makefile.in	2021-06-26 08:07:51.916841713 -0000
+@@ -41,7 +41,7 @@
+ #export DEBUGGING=
+ 
+ export CXXFLAGS = -std=c++11 @GCC_ALIAS_FLAG@ -Wall -D_GNU_SOURCE=1 $(OPTIMISATION) @DEBUGGING@ @GCCINCLUDES@ -Wno-uninitialized `pkg-config --cflags libpcre2-8`
+-export QACXXFLAGS = -Wall -D_GNU_SOURCE=1 @DEBUGGING@ @GCCINCLUDES@ -Wno-uninitialized
++export QACXXFLAGS = -Wall -D_GNU_SOURCE=1 $(OPTIMISATION) @DEBUGGING@ @GCCINCLUDES@ -Wno-uninitialized
+ 
+ .PHONY: all
+ all: commands
+--- qp10.7.orig/src/Makefile.ipc.in	2020-06-24 23:37:02.000000000 -0000
++++ qp10.7/src/Makefile.ipc.in	2021-06-26 08:14:01.700826247 -0000
+@@ -20,7 +20,7 @@
+ 
+ 
+ pedro_token.o : pedro_token.c
+-	$(CXX) -fno-strict-aliasing -Wall -D_GNU_SOURCE=1 -O2  -DNDEBUG   -Wno-uninitialized -c -o pedro_token.o pedro_token.c 
++	$(CXX) $(CXXFLAGS) -c -o pedro_token.o pedro_token.c 
+ 
+ pedro_token.c: pedro_token.l
+ 	flex -opedro_token.c pedro_token.l

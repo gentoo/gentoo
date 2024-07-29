@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/878109
+
+--- a/meson.build
++++ b/meson.build
+@@ -126,7 +126,7 @@ bijiben_deps = [
+   dependency('libxml-2.0'),
+   dependency('libcurl'),
+   dependency('uuid'),
+-  dependency('webkit2gtk-4.0', version: '>= 2.26'),
++  dependency('webkit2gtk-4.1', version: '>= 2.26'),
+   cc.find_library('m')
+ ]

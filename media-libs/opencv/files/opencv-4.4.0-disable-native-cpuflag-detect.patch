@@ -1,0 +1,26 @@
+ cmake/OpenCVCompilerOptimizations.cmake | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/cmake/OpenCVCompilerOptimizations.cmake b/cmake/OpenCVCompilerOptimizations.cmake
+index 970dd28903..b56892bb12 100644
+--- a/cmake/OpenCVCompilerOptimizations.cmake
++++ b/cmake/OpenCVCompilerOptimizations.cmake
+@@ -156,12 +156,12 @@ if(";${CPU_BASELINE};" MATCHES ";NATIVE;" OR ";${CPU_BASELINE};" MATCHES ";HOST;
+   set(_add_native_flag ON)
+ elseif(";${CPU_BASELINE};" MATCHES ";DETECT;")
+   set(CPU_BASELINE_DETECT ON)
+-elseif(" ${CMAKE_CXX_FLAGS} " MATCHES " -march=native | -xHost | /QxHost ")
+-  if(DEFINED CPU_BASELINE)
+-    message(STATUS "CPU: Detected '-march=native' or '-xHost' compiler flag. Force CPU_BASELINE=DETECT.")
+-  endif()
+-  set(CPU_BASELINE "DETECT" CACHE STRING "${HELP_CPU_BASELINE}")
+-  set(CPU_BASELINE_DETECT ON)
++#elseif(" ${CMAKE_CXX_FLAGS} " MATCHES " -march=native | -xHost | /QxHost ")
++#  if(DEFINED CPU_BASELINE)
++#    message(STATUS "CPU: Detected '-march=native' or '-xHost' compiler flag. Force CPU_BASELINE=DETECT.")
++#  endif()
++#  set(CPU_BASELINE "DETECT" CACHE STRING "${HELP_CPU_BASELINE}")
++#  set(CPU_BASELINE_DETECT ON)
+ endif()
+ 
+ if(X86 OR X86_64)

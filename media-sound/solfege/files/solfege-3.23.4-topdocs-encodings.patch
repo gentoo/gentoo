@@ -1,0 +1,39 @@
+From 176610fa27d8415d67c8f24974e83e7e851b889c Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 22 Mar 2020 23:44:53 +0100
+Subject: [PATCH] Fix encoding
+
+---
+ topdocs/AUTHORS.texi | 2 +-
+ topdocs/README.texi  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/topdocs/AUTHORS.texi b/topdocs/AUTHORS.texi
+index dcef2fb..3bc9ba8 100644
+--- a/topdocs/AUTHORS.texi
++++ b/topdocs/AUTHORS.texi
+@@ -35,7 +35,7 @@ Small update to fr.po
+ Updated @file{es.po} file and added @file{es_MX.po}. Compiled binaries
+ for RedHat 8.0. Testing and bugreporting.
+ 
+-@item David Asorey ¡lvares and @email{die@@die.com.fr, Diego Duchowney}
++@item David Asorey √Ålvares and @email{die@@die.com.fr, Diego Duchowney}
+ 
+ Spannish translations.
+ 
+diff --git a/topdocs/README.texi b/topdocs/README.texi
+index fcedd28..b4aa798 100644
+--- a/topdocs/README.texi
++++ b/topdocs/README.texi
+@@ -166,7 +166,7 @@ You are welcome to ask questions on
+ @section History
+ 
+ The first versions of Solfege was written in the first quarter
+-of 1999 when I studied my 4th and last year at Malmˆ Academy of Music.
++of 1999 when I studied my 4th and last year at Malm√∂ Academy of Music.
+ I was writing a "special subject" (what is the english term??) about
+ ear training and used GNU Lilypond and LaTeX to typeset the paper.
+ 
+-- 
+2.25.2
+

@@ -1,0 +1,37 @@
+diff --git a/c_impl/blake3module.c b/c_impl/blake3module.c
+index 4448445..842421a 100644
+--- a/c_impl/blake3module.c
++++ b/c_impl/blake3module.c
+@@ -217,7 +217,7 @@ static PyObject *Blake3_update(Blake3Object *self, PyObject *args) {
+   // Success. We need to increment the refcount on self to return it, see:
+   // https://docs.python.org/3/extending/extending.html#ownership-rules.
+   Py_INCREF(self);
+-  ret = self;
++  ret = (PyObject *)self;
+ 
+ exit:
+   release_buf_if_acquired(&data);
+@@ -272,7 +272,7 @@ static PyObject *Blake3_update_mmap(Blake3Object *self, PyObject *args,
+   // Success. We need to increment the refcount on self to return it, see:
+   // https://docs.python.org/3/extending/extending.html#ownership-rules.
+   Py_INCREF(self);
+-  ret = self;
++  ret = (PyObject *)self;
+ 
+ exit:
+   if (file) {
+@@ -347,11 +347,11 @@ static PyObject *Blake3_reset(Blake3Object *self, PyObject *args) {
+ 
+ static PyMethodDef Blake3_methods[] = {
+     {"update", (PyCFunction)Blake3_update, METH_VARARGS, "add input bytes"},
+-    {"update_mmap", (PyCFunctionWithKeywords)Blake3_update_mmap,
++    {"update_mmap", (PyCFunction)Blake3_update_mmap,
+      METH_VARARGS | METH_KEYWORDS, "add input bytes from a filepath"},
+-    {"digest", (PyCFunctionWithKeywords)Blake3_digest,
++    {"digest", (PyCFunction)Blake3_digest,
+      METH_VARARGS | METH_KEYWORDS, "finalize the hash"},
+-    {"hexdigest", (PyCFunctionWithKeywords)Blake3_hexdigest,
++    {"hexdigest", (PyCFunction)Blake3_hexdigest,
+      METH_VARARGS | METH_KEYWORDS,
+      "finalize the hash and encode the result as hex"},
+     {"copy", (PyCFunction)Blake3_copy, METH_VARARGS,

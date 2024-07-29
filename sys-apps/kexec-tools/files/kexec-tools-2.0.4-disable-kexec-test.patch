@@ -1,0 +1,17 @@
+diff --git kexec-tools-2.0.3/kexec_test/Makefile kexec-tools-2.0.3/kexec_test/Makefile
+index fec6210..2ed4d51 100644
+--- kexec-tools-2.0.3/kexec_test/Makefile
++++ kexec-tools-2.0.3/kexec_test/Makefile
+@@ -8,12 +8,6 @@ dist += kexec_test/Makefile $(KEXEC_TEST_SRCS)				\
+ 	kexec_test/x86-setup-legacy-pic.S
+ 
+ BUILD_KEXEC_TEST = no
+-ifeq ($(ARCH),i386)
+-BUILD_KEXEC_TEST = yes
+-endif
+-ifeq ($(ARCH),x86_64)
+-BUILD_KEXEC_TEST = yes
+-endif
+ 
+ ifeq ($(BUILD_KEXEC_TEST),yes)
+ 

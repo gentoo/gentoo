@@ -1,0 +1,45 @@
+https://github.com/SimonKagstrom/kcov/commit/b63754b53b3a7cf43e13ec56bd0be76cb6175437
+
+From b63754b53b3a7cf43e13ec56bd0be76cb6175437 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Thu, 15 Sep 2022 19:55:21 +0100
+Subject: [PATCH] Fix build on gcc-13: add missing <stdint.h> include
+
+[ 15%] Building CXX object src/CMakeFiles/kcov.dir/writers/cobertura-writer.cc.o
+In file included from kcov/src/writers/cobertura-writer.cc:6:
+kcov/src/include/reporter.hh:24:90: error: 'uint64_t' has not been declared
+   24 |      LineExecutionCount(unsigned int hits, unsigned int possibleHits, uint64_t order) :
+      |                                                                       ^~~~~~~~
+--- a/src/include/collector.hh
++++ b/src/include/collector.hh
+@@ -2,6 +2,8 @@
+ 
+ #include <string>
+ 
++#include <stdint.h>
++
+ namespace kcov
+ {
+ 	class IFileParser;
+--- a/src/include/reporter.hh
++++ b/src/include/reporter.hh
+@@ -3,6 +3,7 @@
+ #include <string>
+ 
+ #include <stddef.h>
++#include <stdint.h>
+ 
+ namespace kcov
+ {
+--- a/src/include/source-file-cache.hh
++++ b/src/include/source-file-cache.hh
+@@ -3,6 +3,8 @@
+ #include <vector>
+ #include <string>
+ 
++#include <stdint.h>
++
+ namespace kcov
+ {
+ 	/**
+

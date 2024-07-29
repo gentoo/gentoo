@@ -1,0 +1,27 @@
+From 536714622135e53db3f8a5673db32c5de9620aa8 Mon Sep 17 00:00:00 2001
+From: Kai Krakow <kai@kaishome.de>
+Date: Tue, 29 Jul 2008 08:15:55 +0200
+Subject: [PATCH] Fix wait_for_children() loop
+
+Brain damage repaired: One should not wait while zero or
+more children exist... That's always the case. :-(
+---
+ src/readahead.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/src/readahead.c b/src/readahead.c
+index 466961d..08d9f4f 100644
+--- a/src/readahead.c
++++ b/src/readahead.c
+@@ -106,7 +106,7 @@ static void
+ wait_for_children (int maxprocs)
+ {
+   /* wait for child processes to terminate */
+-  while (procs >= maxprocs)
++  while (procs > maxprocs)
+     {
+       int status;
+       if (wait (&status) > 0)
+-- 
+1.5.4.5
+

@@ -1,0 +1,29 @@
+From a0f57bf7f984289c5b0ceefa2a784f97cd58428a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Germ=C3=A1n=20Poo-Caama=C3=B1o?= <gpoo@gnome.org>
+Date: Sat, 30 May 2020 16:15:27 -0400
+Subject: [PATCH] Fix implicit declaration of vasprintf
+
+Fix build when compiling with `-Werror=implicit-function-declaration`.
+---
+ core/synctex/synctex_parser.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/core/synctex/synctex_parser.c b/core/synctex/synctex_parser.c
+index 9eed566b3..a67006d39 100644
+--- a/core/synctex/synctex_parser.c
++++ b/core/synctex/synctex_parser.c
+@@ -55,6 +55,11 @@
+  *  First level objects are sheets and forms, containing boxes, glues, kerns...
+  *  The third tree allows to browse leaves according to tag and line.
+  */
++/* Declare _GNU_SOURCE for accessing vasprintf. For MSC compiler, vasprintf is
++ * defined in this file
++ */
++#define _GNU_SOURCE
++
+ #if defined(SYNCTEX_USE_LOCAL_HEADER)
+ #include "synctex_parser_local.h"
+ #else
+-- 
+2.44.0
+

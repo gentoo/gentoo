@@ -1,0 +1,11 @@
+--- a/bomber.c	2006-01-28 12:06:34.000000000 -0700
++++ b/bomber.c	2006-01-28 12:06:46.000000000 -0700
+@@ -1699,7 +1699,7 @@
+ }
+ void addtail(void *header,void *entry)
+ {
+-	while(((list *)header)->next) ((list *)header)=((list *)header)->next;
++	while(((list *)header)->next) header=((list *)header)->next;
+ 	((list *)header)->next=entry;
+ 	((list *)entry)->next=0;
+ }

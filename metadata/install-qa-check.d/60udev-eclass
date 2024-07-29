@@ -1,0 +1,68 @@
+# Copyright 2021-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# QA check: ensure that packages installing udev rules inherit the eclass
+# Maintainer: Sam James <sam@gentoo.org>
+
+# Implements three checks:
+# 1) Installation to /etc/udev/rules.d (which is a user-customization location);
+# 2) Installation of any udev rules to /lib/udev/rules.d without inheriting the eclass
+#    (needed for udev_reload in pkg_postinst);
+# 3) Check for installation of udev rules without calling udev_reload in
+#    pkg_postinst.
+udev_rules_check() {
+	# Check 1
+	# Scan image for files in /etc/udev/rules.d which is a forbidden location
+	# (We use this glob to avoid triggering on keepdir)
+	shopt -s nullglob
+	local files=( "${ED}"/etc/udev/rules.d/* )
+	shopt -u nullglob
+
+	if [[ ${#files[@]} -gt 0 ]]; then
+		eqawarn "QA Notice: files installed to /etc/udev/rules.d found"
+		eqawarn "udev rules files supplied by ebuilds must be installed to /lib/udev/rules.d/"
+	fi
+
+	# Check 2
+	# We're now going to check for whether we install files to /lib/udev/rules.d/ without
+	# inheriting the eclass (weak catch for ebuilds not calling udev_reload in pkg_postinst)
+
+	if [[ -n ${UDEV_OPTIONAL} ]] ; then
+		# While imperfect, using ${UDEV_OPTIONAL} is good enough to allow opting out
+		# for e.g. sys-apps/portage, sys-apps/systemd, sys-libs/pam, etc. We may want
+		# a better/more standardised way to opt out from QA checks in future.
+		# It's okay for some packages to do this because of circular dependencies and such
+		# See: https://archives.gentoo.org/gentoo-dev/message/0a96793036a4fdd9ac311a46950d7e7b
+		return
+	fi
+
+	if [[ -d "${ED}"/lib/udev/rules.d/ ]] ; then
+		if ! has udev ${INHERITED} ; then
+			eqawarn "QA Notice: package is installing udev rules without inheriting udev.eclass!"
+			eqawarn "Packages must inherit udev.eclass then call udev_reload in pkg_postinst."
+			return
+		fi
+
+		# Check 3
+		# Check whether we're installing udev rules without explicitly
+		# calling udev_reload in pkg_postinst, but we have inherited
+		# the eclass.
+		# Small risk of false positives if called indirectly.
+		# See: https://archives.gentoo.org/gentoo-dev/message/7bdfdc9a7560fd07436defd0253af0b8
+		local pkg_postinst_body="$(declare -fp pkg_postinst 2>&1)"
+		if [[ ! ${pkg_postinst_body} == *udev_reload* ]] ; then
+			eqawarn "QA Notice: package is installing udev rules without calling"
+			eqawarn "udev_reload in pkg_postinst phase"
+		fi
+		local pkg_postrm_body="$(declare -fp pkg_postrm 2>&1)"
+		if [[ ! ${pkg_postrm_body} == *udev_reload* ]] ; then
+			eqawarn "QA Notice: package is installing udev rules without calling"
+			eqawarn "udev_reload in pkg_postrm phase"
+		fi
+	fi
+}
+
+udev_rules_check
+: # guarantee successful exit
+
+# vim:ft=sh

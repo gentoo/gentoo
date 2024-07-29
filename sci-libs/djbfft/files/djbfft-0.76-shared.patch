@@ -1,0 +1,133 @@
+--- djbfft-0.76/Makefile.orig	1999-09-30 22:25:58.000000000 +0200
++++ djbfft-0.76/Makefile	2004-01-17 17:21:37.236669242 +0100
+@@ -2,6 +2,9 @@
+ 
+ SHELL=/bin/sh
+ 
++LIBPERMS=0644
++LIBDJBFFT=djbfft.a
++
+ default: it
+ 
+ 4c0.c: \
+@@ -569,8 +572,8 @@
+ 	./compile 8v5.c
+ 
+ accuracy: \
+-load accuracy.o djbfft.a math.lib
+-	./load accuracy djbfft.a  `cat math.lib`
++load accuracy.o $(LIBDJBFFT) math.lib
++	./load accuracy $(LIBDJBFFT)  `cat math.lib`
+ 
+ accuracy.o: \
+ compile accuracy.c fftc4.h complex4.h real4.h fftc8.h complex8.h \
+@@ -578,8 +581,8 @@
+ 	./compile accuracy.c
+ 
+ accuracy2: \
+-load accuracy2.o djbfft.a math.lib
+-	./load accuracy2 djbfft.a  `cat math.lib`
++load accuracy2.o $(LIBDJBFFT) math.lib
++	./load accuracy2 $(LIBDJBFFT)  `cat math.lib`
+ 
+ accuracy2.o: \
+ compile accuracy2.c fftc4.h complex4.h real4.h fftc8.h complex8.h \
+@@ -649,7 +652,7 @@
+ 	) > compilebase
+ 	chmod 755 compilebase
+ 
+-djbfft.a: \
++$(LIBDJBFFT): \
+ makelib 8sc.o 8u5.o 8u4.o 8u3.o 8u2.o 8u1.o 8u0.o 8mc.o 8c0.o 8c1.o \
+ 8c2.o 8c3.o 8c4.o 8c5.o 8d0.o 8d1.o 8d2.o 8d3.o 8d4.o 8d5.o 8v5.o \
+ 8v4.o 8v3.o 8v2.o 8v1.o 8v0.o 8mr.o 8r0.o 8r1.o 8r2.o 8r3.o 8r4.o \
+@@ -657,7 +660,7 @@
+ 4c1.o 4c2.o 4c3.o 4c4.o 4c5.o 4d0.o 4d1.o 4d2.o 4d3.o 4d4.o 4d5.o \
+ 4v5.o 4v4.o 4v3.o 4v2.o 4v1.o 4v0.o 4mr.o 4r0.o 4r1.o 4r2.o 4r3.o \
+ 4r4.o 4r5.o 4sr.o fftfreq.o
+-	./makelib djbfft.a 8sc.o 8u5.o 8u4.o 8u3.o 8u2.o 8u1.o \
++	./makelib $(LIBDJBFFT) 8sc.o 8u5.o 8u4.o 8u3.o 8u2.o 8u1.o \
+ 	8u0.o 8mc.o 8c0.o 8c1.o 8c2.o 8c3.o 8c4.o 8c5.o 8d0.o 8d1.o \
+ 	8d2.o 8d3.o 8d4.o 8d5.o 8v5.o 8v4.o 8v3.o 8v2.o 8v1.o 8v0.o \
+ 	8mr.o 8r0.o 8r1.o 8r2.o 8r3.o 8r4.o 8r5.o 8sr.o 4sc.o 4u5.o \
+@@ -692,7 +695,7 @@
+ 
+ hier.o: \
+ compile hier.c auto_home.h
+-	./compile hier.c
++	./compile -DLIBDJBFFT=\"$(LIBDJBFFT)\" -DLIBPERMS=$(LIBPERMS) hier.c
+ 
+ install: \
+ load install.o hier.o auto_home.o strerr.a substdio.a open.a error.a \
+@@ -731,7 +734,9 @@
+ 	( cat warn-auto.sh; \
+ 	echo 'main="$$1"; shift'; \
+ 	echo 'rm -f "$$main"'; \
+-	echo 'ar cr "$$main" $${1+"$$@"}'; \
++	echo 'if [ "$${main##*.}" = "a" ]'; \
++	echo 'then'; \
++	echo '  ar cr "$$main" $${1+"$$@"}'; \
+ 	case "`cat systype`" in \
+ 	sunos-5.*) ;; \
+ 	unix_sv*) ;; \
+@@ -740,8 +745,11 @@
+ 	dgux-*) ;; \
+ 	hp-ux-*) ;; \
+ 	sco*) ;; \
+-	*) echo 'ranlib "$$main"' ;; \
+-	esac \
++	*) echo '  ranlib "$$main"' ;; \
++	esac; \
++	echo 'else'; \
++	echo '  exec `head -1 conf-ld` -shared -Wl,-soname,libdjbfft.so.0.7.6 -o "$$main" $${1+"$$@"}'; \
++	echo 'fi'; \
+ 	) > makelib
+ 	chmod 755 makelib
+ 
+@@ -758,15 +766,15 @@
+ 	./compile open_trunc.c
+ 
+ prog: \
+-djbfft.a accuracy accuracy2 speed speed.out
++$(LIBDJBFFT) accuracy accuracy2 speed speed.out
+ 
+ setup: \
+ it install
+ 	./install
+ 
+ speed: \
+-load speed.o djbfft.a math.lib
+-	./load speed djbfft.a  `cat math.lib`
++load speed.o $(LIBDJBFFT) math.lib
++	./load speed $(LIBDJBFFT)  `cat math.lib`
+ 
+ speed.o: \
+ compile speed.c fftr4.h real4.h fftr8.h real8.h fftc4.h complex4.h \
+@@ -775,7 +783,7 @@
+ 
+ speed.out: \
+ speed
+-	./speed > speed.out
++	LD_LIBRARY_PATH=".:$$LD_LIBRARY_PATH" ./speed > speed.out
+ 
+ str.a: \
+ makelib byte_copy.o byte_cr.o str_len.o
+--- djbfft-0.76/hier.c.orig	1999-09-30 22:25:58.000000000 +0200
++++ djbfft-0.76/hier.c	2004-01-17 16:39:21.312774411 +0100
+@@ -2,12 +2,12 @@
+ 
+ void hier()
+ {
+-  h(auto_home,-1,-1,02755);
++  h(auto_home,-1,-1,0755);
+ 
+-  d(auto_home,"lib",-1,-1,02755);
+-  c(auto_home,"lib","djbfft.a",-1,-1,0644);
++  d(auto_home,"lib",-1,-1,0755);
++  c(auto_home,"lib",LIBDJBFFT,-1,-1,LIBPERMS);
+ 
+-  d(auto_home,"include",-1,-1,02755);
++  d(auto_home,"include",-1,-1,0755);
+   c(auto_home,"include","real4.h",-1,-1,0644);
+   c(auto_home,"include","real8.h",-1,-1,0644);
+   c(auto_home,"include","complex4.h",-1,-1,0644);

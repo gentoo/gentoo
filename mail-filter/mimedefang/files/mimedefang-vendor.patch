@@ -1,0 +1,30 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -42,7 +42,7 @@
+ PERLINSTALLSITELIB=@PERLINSTALLSITELIB@
+ PERLINSTALLPRIVLIB=@PERLINSTALLPRIVLIB@
+ PERLVENDORPREFIX=@PERLVENDORPREFIX@
+-PERLVENDORLIB=@PERLINSTALLPRIVLIB@/vendor_perl
++PERLVENDORLIB=@PERLVENDORLIB@
+ LDFLAGS=@LDFLAGS@
+ IP_HEADER=@IP_HEADER@
+ SPOOLDIR=@SPOOLDIR@
+--- a/configure
++++ b/configure
+@@ -662,6 +662,7 @@
+ PERLINSTALLPRIVLIB
+ PERLINSTALLARCHLIB
+ PERLVENDORPREFIX
++PERLVENDORLIB
+ PERLSITEPREFIX
+ PERLPREFIX
+ CONFDIR_EVAL
+@@ -3962,7 +3963,7 @@
+ fi
+ rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+ 
+-for thing in prefix siteprefix vendorprefix installarchlib installprivlib installbin installman1dir installman3dir installscript installsitearch installsitelib; do
++for thing in prefix siteprefix vendorprefix vendorlib installarchlib installprivlib installbin installman1dir installman3dir installscript installsitearch installsitelib; do
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for Perl installation variable $thing" >&5
+ printf %s "checking for Perl installation variable $thing... " >&6; }
+     val=`$PERL -V:$thing | sed -e "s/^.*='//" -e "s/';$//"`

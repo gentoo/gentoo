@@ -1,0 +1,32 @@
+From 4086abfd85e0bacc027ac1773d524093387265f9 Mon Sep 17 00:00:00 2001
+From: Matthew Smith <matthew@gentoo.org>
+Date: Sun, 16 Oct 2022 13:49:25 +0100
+Subject: [PATCH] build: docdir option
+
+--- a/meson.build
++++ b/meson.build
+@@ -46,7 +46,7 @@ endif
+ ## Paths
+ prefix = get_option('prefix')
+ data_dir = prefix / get_option('datadir') / 'knot-resolver'
+-doc_dir = prefix / get_option('datadir') / 'doc' / 'knot-resolver'
++doc_dir = get_option('docdir')
+ info_dir = prefix / get_option('datadir') / 'info'
+ examples_dir = doc_dir / 'examples'
+ etc_dir = prefix / get_option('sysconfdir') / 'knot-resolver'
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,6 +1,13 @@
+ # Configuration options
+ # SPDX-License-Identifier: GPL-3.0-or-later
+ 
++option(
++  'docdir',
++  type: 'string',
++  value: '/usr/share/doc/knot-resolver',
++  description: 'path to store documentation',
++)
++
+ option(
+   'keyfile_default',
+   type: 'string',

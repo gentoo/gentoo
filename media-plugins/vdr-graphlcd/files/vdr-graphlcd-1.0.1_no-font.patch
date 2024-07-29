@@ -1,0 +1,26 @@
+do not install any fonts, as they are not included in
+License GPL v2
+
+Signed-Off-By: Joerg Bornkessel <hd_brummy@gentoo.org> (17 Dec 2019)
+diff -Naur vdr-plugin-graphlcd-1.0.0.orgi/Makefile vdr-plugin-graphlcd-1.0.0/Makefile
+--- vdr-plugin-graphlcd-1.0.0.orgi/Makefile	2019-12-17 22:41:46.000000000 +0100
++++ vdr-plugin-graphlcd-1.0.0/Makefile	2019-12-17 22:42:09.000000000 +0100
+@@ -271,15 +271,15 @@
+ 	@install -m 644 HISTORY $(DESTDIR)$(INSTALLDOCDIR)
+ 
+ ttf-fonts:
+-	@install -d $(DESTDIR)$(RESDIR)/fonts
+-	@install -m 644 $(PLUGIN)/fonts/*.ttf $(DESTDIR)$(RESDIR)/fonts
++#	@install -d $(DESTDIR)$(RESDIR)/fonts
++#	@install -m 644 $(PLUGIN)/fonts/*.ttf $(DESTDIR)$(RESDIR)/fonts
+ 
+ resources:
+ 	@install -d $(DESTDIR)$(RESDIR)/fonts
+ 	@install -m 644 $(PLUGIN)/channels.alias $(DESTDIR)$(RESDIR)
+ 	@cp -a $(PLUGIN)/logos $(DESTDIR)$(RESDIR)
+ 	@cp -a $(PLUGIN)/skins $(DESTDIR)$(RESDIR)
+-	@install -m 644 $(PLUGIN)/fonts/*.fnt $(DESTDIR)$(RESDIR)/fonts
++#	@install -m 644 $(PLUGIN)/fonts/*.fnt $(DESTDIR)$(RESDIR)/fonts
+ 
+ dist: $(I18Npo) clean
+ 	@-rm -rf $(TMPDIR)/$(ARCHIVE)

@@ -1,0 +1,78 @@
+From 772a4d712abcf1c6c86f25bd306785815132d886 Mon Sep 17 00:00:00 2001
+From: Nikolai Krasheninnikov <nkrasheninnikov@yandex.ru>
+Date: Tue, 2 Apr 2024 09:07:53 +0000
+Subject: [PATCH] svn: Fix gcc-13 One Definition Rule compilation error with
+ LTO enabled
+
+columns_t enum defined multiple times in different translation units. Although this
+should not be an error, we move the definition to a separate unnamed namespace.
+
+BUG: 482524
+---
+ svn/svncommitdialog.cpp | 10 +++++-----
+ svn/svnlogdialog.cpp    | 14 +++++++-------
+ 2 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/svn/svncommitdialog.cpp b/svn/svncommitdialog.cpp
+index 41152434..f9a44265 100644
+--- a/svn/svncommitdialog.cpp
++++ b/svn/svncommitdialog.cpp
+@@ -54,6 +54,11 @@ QStringList makeContext(const QStringList &list, const QHash<QString, KVersionCo
+     return ret;
+ }
+ 
++enum columns_t {
++    columnPath,
++    columnStatus
++};
++
+ }
+ 
+ struct svnCommitEntryInfo_t {
+@@ -67,11 +72,6 @@ struct svnCommitEntryInfo_t {
+ };
+ Q_DECLARE_METATYPE(svnCommitEntryInfo_t);
+ 
+-enum columns_t {
+-    columnPath,
+-    columnStatus
+-};
+-
+ SvnCommitDialog::SvnCommitDialog(const QHash<QString, KVersionControlPlugin::ItemVersion> *versionInfo, const QStringList& context, QWidget *parent) :
+     QDialog(parent),
+     m_versionInfoHash(versionInfo),
+diff --git a/svn/svnlogdialog.cpp b/svn/svnlogdialog.cpp
+index 21abadaa..685f7ec5 100644
+--- a/svn/svnlogdialog.cpp
++++ b/svn/svnlogdialog.cpp
+@@ -49,6 +49,13 @@ bool resetAndRevertFileToRevision(const QString &filePath, ulong revision)
+     return true;
+ }
+ 
++enum columns_t {
++    columnRevision,
++    columnAuthor,
++    columnDate,
++    columnMessage
++};
++
+ }
+ 
+ struct svnLogEntryInfo_t {
+@@ -64,13 +71,6 @@ struct svnLogEntryInfo_t {
+ };
+ Q_DECLARE_METATYPE(svnLogEntryInfo_t);
+ 
+-enum columns_t {
+-    columnRevision,
+-    columnAuthor,
+-    columnDate,
+-    columnMessage
+-};
+-
+ SvnLogDialog::SvnLogDialog(const QString& contextDir, QWidget *parent) :
+     QDialog(parent),
+     m_contextDir(contextDir),
+-- 
+GitLab
+

@@ -1,0 +1,5 @@
+# /etc/conf.d/salt-api: config file for /etc/init.d/salt-api
+
+# see man pages for salt-minion or run `salt-api --help`
+# for valid cmdline options
+SALT_OPTS="--log-level=warning"

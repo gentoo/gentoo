@@ -1,0 +1,71 @@
+https://github.com/coin-or/CoinUtils/commit/1700ed92c2bc1562aabe65dee3b4885bd5c87fb9
+From: Stefan Vigerske <svigerske@gams.com>
+Date: Wed, 18 Aug 2021 15:09:53 +0200
+Subject: [PATCH] remove use of register storage class specifier
+
+- removed in C++17
+---
+ src/CoinOslC.h                | 16 ++++++++--------
+ src/CoinOslFactorization2.cpp |  4 ++--
+ 2 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/src/CoinOslC.h b/src/CoinOslC.h
+index 2f6d10aae..d8103f86b 100644
+--- a/src/CoinOslC.h
++++ b/src/CoinOslC.h
+@@ -33,30 +33,30 @@
+ extern "C" {
+ #endif
+ 
+-int c_ekkbtrn(register const EKKfactinfo *fact,
++int c_ekkbtrn(const EKKfactinfo *fact,
+   double *dwork1,
+   int *mpt, int first_nonzero);
+-int c_ekkbtrn_ipivrw(register const EKKfactinfo *fact,
++int c_ekkbtrn_ipivrw(const EKKfactinfo *fact,
+   double *dwork1,
+   int *mpt, int ipivrw, int *spare);
+ 
+-int c_ekketsj(register /*const*/ EKKfactinfo *fact,
++int c_ekketsj(/*const*/ EKKfactinfo *fact,
+   double *dwork1,
+   int *mpt2, double dalpha, int orig_nincol,
+   int npivot, int *nuspikp,
+   const int ipivrw, int *spare);
+-int c_ekkftrn(register const EKKfactinfo *fact,
++int c_ekkftrn(const EKKfactinfo *fact,
+   double *dwork1,
+   double *dpermu, int *mpt, int numberNonZero);
+ 
+-int c_ekkftrn_ft(register EKKfactinfo *fact,
++int c_ekkftrn_ft(EKKfactinfo *fact,
+   double *dwork1, int *mpt, int *nincolp);
+-void c_ekkftrn2(register EKKfactinfo *fact, double *dwork1,
++void c_ekkftrn2(EKKfactinfo *fact, double *dwork1,
+   double *dpermu1, int *mpt1, int *nincolp,
+   double *dwork1_ft, int *mpt_ft, int *nincolp_ft);
+ 
+-int c_ekklfct(register EKKfactinfo *fact);
+-int c_ekkslcf(register const EKKfactinfo *fact);
++int c_ekklfct(EKKfactinfo *fact);
++int c_ekkslcf(const EKKfactinfo *fact);
+ inline void c_ekkscpy(int n, const int *marr1, int *marr2)
+ {
+   CoinMemcpyN(marr1, n, marr2);
+diff --git a/src/CoinOslFactorization2.cpp b/src/CoinOslFactorization2.cpp
+index ab3225923..177ac437b 100644
+--- a/src/CoinOslFactorization2.cpp
++++ b/src/CoinOslFactorization2.cpp
+@@ -19,9 +19,9 @@
+ extern int ets_count;
+ extern int ets_check;
+ #endif
+-#define COIN_REGISTER register
++#define COIN_REGISTER
+ #define COIN_REGISTER2
+-#define COIN_REGISTER3 register
++#define COIN_REGISTER3
+ #ifdef COIN_USE_RESTRICT
+ #define COIN_RESTRICT2 __restrict
+ #else
+

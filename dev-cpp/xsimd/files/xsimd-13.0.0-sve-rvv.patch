@@ -1,0 +1,88 @@
+https://mail.kde.org/pipermail/distributions/2024-July/001511.html
+https://github.com/xtensor-stack/xsimd/commit/80a59235e3ffa51659aaa06f002bfd088b77023c
+
+From 80a59235e3ffa51659aaa06f002bfd088b77023c Mon Sep 17 00:00:00 2001
+From: Dmitry Kazakov <dimula73@gmail.com>
+Date: Fri, 14 Jun 2024 10:19:55 +0200
+Subject: [PATCH] Fix xsimd::available_architectures().has() for sve and rvv
+ archs
+
+Ideally the patch CPU detection code should also check if the length
+of SVE and RVV is actually supported by the current CPU implementation
+(i.e. ZCR_Elx.LEN register for SVE and something else for RVV), but
+I don't have such CPUs/emulators handy, so I cannot add such checks.
+
+Given that xsimd::available_architectures().has() is a new feature
+of XSIMD13 and the length check has never been present in XSIMD, this
+bug is not a regression at least.
+
+The patch also adds a unittest that reproduces the error the patch fixes
+---
+ include/xsimd/config/xsimd_cpuid.hpp | 12 ++++++++++--
+ test/test_arch.cpp                   | 15 +++++++++++++++
+ 2 files changed, 25 insertions(+), 2 deletions(-)
+
+diff --git a/include/xsimd/config/xsimd_cpuid.hpp b/include/xsimd/config/xsimd_cpuid.hpp
+index 6dda3be09..8021fceb8 100644
+--- a/include/xsimd/config/xsimd_cpuid.hpp
++++ b/include/xsimd/config/xsimd_cpuid.hpp
+@@ -42,6 +42,10 @@ namespace xsimd
+ #define ARCH_FIELD_EX(arch, field_name) \
+     unsigned field_name;                \
+     XSIMD_INLINE bool has(::xsimd::arch) const { return this->field_name; }
++
++#define ARCH_FIELD_EX_REUSE(arch, field_name) \
++    XSIMD_INLINE bool has(::xsimd::arch) const { return this->field_name; }
++
+ #define ARCH_FIELD(name) ARCH_FIELD_EX(name, name)
+ 
+             ARCH_FIELD(sse2)
+@@ -72,8 +76,12 @@ namespace xsimd
+             ARCH_FIELD(neon)
+             ARCH_FIELD(neon64)
+             ARCH_FIELD_EX(i8mm<::xsimd::neon64>, i8mm_neon64)
+-            ARCH_FIELD(sve)
+-            ARCH_FIELD(rvv)
++            ARCH_FIELD_EX(detail::sve<512>, sve)
++            ARCH_FIELD_EX_REUSE(detail::sve<256>, sve)
++            ARCH_FIELD_EX_REUSE(detail::sve<128>, sve)
++            ARCH_FIELD_EX(detail::rvv<512>, rvv)
++            ARCH_FIELD_EX_REUSE(detail::rvv<256>, rvv)
++            ARCH_FIELD_EX_REUSE(detail::rvv<128>, rvv)
+             ARCH_FIELD(wasm)
+ 
+ #undef ARCH_FIELD
+diff --git a/test/test_arch.cpp b/test/test_arch.cpp
+index b42073358..f1f50d546 100644
+--- a/test/test_arch.cpp
++++ b/test/test_arch.cpp
+@@ -38,6 +38,16 @@ struct check_supported
+     }
+ };
+ 
++struct check_cpu_has_intruction_set
++{
++    template <class Arch>
++    void operator()(Arch arch) const
++    {
++        static_assert(std::is_same<decltype(xsimd::available_architectures().has(arch)), bool>::value,
++                      "cannot test instruction set availability on CPU");
++    }
++};
++
+ struct check_available
+ {
+     template <class Arch>
+@@ -71,6 +81,11 @@ TEST_CASE("[multi arch support]")
+         xsimd::supported_architectures::for_each(check_supported {});
+     }
+ 
++    SUBCASE("xsimd::available_architectures::has")
++    {
++        xsimd::all_architectures::for_each(check_cpu_has_intruction_set {});
++    }
++
+     SUBCASE("xsimd::default_arch::name")
+     {
+         constexpr char const* name = xsimd::default_arch::name();
+

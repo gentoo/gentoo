@@ -1,0 +1,49 @@
+--- sobexsrv-1.0.1/src/obexsrv.c.orig	2016-06-13 01:59:28.000000000 +0300
++++ sobexsrv-1.0.1/src/obexsrv.c	2016-06-13 12:20:15.501101147 +0300
+@@ -32,6 +32,10 @@
+ #include <langinfo.h>
+ #include <assert.h>
+ 
++#if ((OPENOBEX_VERSION_MAJOR==1) && (OPENOBEX_VERSION_MINOR>=6))
++#include <string.h>
++#endif
++
+ #include "obexsrv.h"
+ #include "util.h"
+ #include "sdp.h"
+@@ -46,7 +50,8 @@
+ 
+ void UnicodeToChar(uint8_t *c, const uint8_t *uc, int size)
+ {
+-	iconv_t dsc = iconv_open(nl_langinfo(CODESET),"UTF16BE");
++	char *lang = nl_langinfo(CODESET);
++	iconv_t dsc = iconv_open(lang,"UTF16BE");
+ 	size_t isiz,osiz;
+ 	char *ip = (char*)uc;
+ 	char *op = (char*)c;
+@@ -54,7 +59,25 @@
+ 
+ 	if (iconv(dsc,&ip,&isiz,&op,&osiz) == -1) {
+ 		debug_printf("iconv: error %s\n", strerror(errno));
++#if ((OPENOBEX_VERSION_MAJOR==1) && (OPENOBEX_VERSION_MINOR>=6))
++		// try to convert ignoring errors
++		iconv_close(dsc);
++		debug_printf("iconv: characters that cannot be converted will be discarded\n");
++
++		// append "//IGNORE"
++		const char *const suf = "//IGNORE";
++		size_t len = strlen(lang);
++		char *cd = malloc(len + 9);
++		memcpy(cd, lang, len);
++		memcpy(cd+len, suf, 8);
++		cd[len+8] = '\0';
++
++		dsc = iconv_open(cd,"UTF16BE");
++		iconv(dsc,&ip,&isiz,&op,&osiz);
++		free(cd);
++#else
+ 		OBEX_UnicodeToChar(c,uc,size);
++#endif
+ 	}
+ 	iconv_close(dsc);
+ }

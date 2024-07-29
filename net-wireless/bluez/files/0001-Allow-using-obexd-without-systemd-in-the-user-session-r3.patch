@@ -1,0 +1,20 @@
+https://github.com/bluez/bluez/issues/806
+https://bugs.gentoo.org/928417
+--- bluez-5.73.orig/Makefile.obexd	2024-04-02 10:38:48.743419656 +0200
++++ bluez-5.73/Makefile.obexd	2024-04-02 10:40:53.300086281 +0200
+@@ -1,13 +1,13 @@
+ # SPDX-License-Identifier: GPL-2.0
+ if OBEX
+ 
++dbussessionbusdir = $(DBUS_SESSIONBUSDIR)
++dbussessionbus_DATA = obexd/src/org.bluez.obex.service
++
+ if SYSTEMD
+ systemduserunitdir = $(SYSTEMD_USERUNITDIR)
+ systemduserunit_DATA = obexd/src/obex.service
+ 
+-dbussessionbusdir = $(DBUS_SESSIONBUSDIR)
+-dbussessionbus_DATA = obexd/src/org.bluez.obex.service
+-
+ obexd-add-service-symlink:
+ 	$(LN_S) -f obex.service $(DESTDIR)$(SYSTEMD_USERUNITDIR)/dbus-org.bluez.obex.service

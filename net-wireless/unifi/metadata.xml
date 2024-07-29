@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		UniFi is a management controller software for Ubiquiti UniFi APs.
+		Its purpose is to configure and monitor all those APs.
+		Also all kind of statistics are collected, which can be accessed through UniFi.
+		There is also an internal RADIUS server, which can be used for WPA2-Enterprise.
+	</longdescription>
+	<use>
+		<flag name="system-mongodb">Using <pkg>dev-db/mongodb</pkg> systemd service instead of the bundled one</flag>
+	</use>
+</pkgmetadata>

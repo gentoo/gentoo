@@ -1,0 +1,11 @@
+ diff -up scim-tables-0.5.8/src/scim_generic_table.h.gcc43~ scim-tables-0.5.8/src/scim_generic_table.h
+--- scim-tables-0.5.8/src/scim_generic_table.h.gcc43~	2008-01-13 08:03:06.000000000 +0000
++++ scim-tables-0.5.8/src/scim_generic_table.h	2008-01-13 08:03:06.000000000 +0000
+@@ -24,6 +24,7 @@
+  * $Id: scim_generic_table.h,v 1.7 2006/08/23 10:25:32 suzhe Exp $
+  */
+ 
++#include <cstring>
+ #if !defined (__SCIM_GENERIC_TABLE_H)
+ #define __SCIM_GENERIC_TABLE_H
+ 

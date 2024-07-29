@@ -1,0 +1,23 @@
+Bug: https://bugs.gentoo.org/886067
+--- a/src/core/uae/newcpu.c
++++ b/src/core/uae/newcpu.c
+@@ -19,6 +19,8 @@
+ #include "options.h"
+ #include "memory.h"
+ #include "newcpu.h"
++#include "romcalls.h"
++#include "handles.h"
+ 
+ // tiemu begin
+ #include "tilibs.h"
+--- a/src/gui/logger/log_link.c
++++ b/src/gui/logger/log_link.c
+@@ -36,7 +36,7 @@
+ #include "filesel.h"
+ 
+ static GtkTextBuffer *txtbuf;
+-static logger_enabled = 0;
++static int logger_enabled = 0;
+ 
+ static void udpate_widgets(GtkWidget *button, GtkWidget *spin)
+ {

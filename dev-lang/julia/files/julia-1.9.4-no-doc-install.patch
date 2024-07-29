@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 68e2136..a38edee 100644
+--- a/Makefile
++++ b/Makefile
+@@ -236,7 +236,7 @@ define stringreplace
+ endef
+ 
+ 
+-install: $(build_depsbindir)/stringreplace $(BUILDROOT)/doc/_build/html/en/index.html
++install: $(build_depsbindir)/stringreplace
+ 	@$(MAKE) $(QUIET_MAKE) $(JULIA_BUILD_MODE)
+ 	@for subdir in $(bindir) $(datarootdir)/julia/stdlib/$(VERSDIR) $(docdir) $(man1dir) $(includedir)/julia $(libdir) $(private_libdir) $(sysconfdir) $(private_libexecdir); do \
+ 		mkdir -p $(DESTDIR)$$subdir; \

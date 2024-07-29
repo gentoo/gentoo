@@ -1,0 +1,35 @@
+diff -Nur apertium-3.2.0.orig/apertium/Makefile.am apertium-3.2.0/apertium/Makefile.am
+--- apertium-3.2.0.orig/apertium/Makefile.am	2011-07-29 06:55:49.000000000 +0100
++++ apertium-3.2.0/apertium/Makefile.am	2011-07-29 07:03:58.000000000 +0100
+@@ -66,10 +66,10 @@
+ 
+ instdir = apertium
+ 
+-apertiumdir = $(prefix)/share/apertium
++apertiumdir = $(datadir)/
+ apertiuminclude = $(prefix)/include/apertium-$(GENERIC_API_VERSION)
+ apertiumlib = $(prefix)/lib 
+-apertiumsysconf = $(prefix)/etc/apertium
++apertiumsysconf = $(sysconfdir)/apertium
+ 
+ apertium_DATA = deformat.xsl reformat.xsl new2old.xsl lexchoice.xsl \
+                 lexchoicebil.xsl tagger.dtd interchunk.dtd format.dtd \
+diff -Nur apertium-3.2.0.orig/Makefile.am apertium-3.2.0/Makefile.am
+--- apertium-3.2.0.orig/Makefile.am	2011-07-29 06:55:49.000000000 +0100
++++ apertium-3.2.0/Makefile.am	2011-07-29 07:08:39.000000000 +0100
+@@ -1,13 +1,10 @@
+ SUBDIRS = $(GENERIC_LIBRARY_NAME)
+ DIST_SUBDIRS = $(GENERIC_LIBRARY_NAME)
+ 
+-modesdir=$(prefix)/share/apertium/modes
++modesdir = $(datadir)/apertium/modes
++modes_DATA = README-MODES
+ 
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = apertium-$(GENERIC_RELEASE).pc
+ 
+ EXTRA_DIST=autogen.sh README-MODES
+-
+-install-data-local:
+-	mkdir -p $(modesdir)
+-	$(INSTALL_DATA) README-MODES  $(modesdir)/README

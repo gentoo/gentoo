@@ -1,0 +1,38 @@
+This patch makes shutdown use the Single User runlevel by default so
+the gettys are shutdown too.
+
+Roy Marples <uberlord@gentoo.org>
+
+Forward-ported from v2.86 to v2.94_beta
+Lars Wendler <polynomial-c@gentoo.org>
+--- a/man/shutdown.8
++++ b/man/shutdown.8
+@@ -44,7 +44,7 @@ mail and news processing programs a chance to exit cleanly, etc.
+ \fBshutdown\fP does its job by signalling the \fBinit\fP process, 
+ asking it to change the runlevel.
+ Runlevel \fB0\fP is used to halt the system, runlevel \fB6\fP is used
+-to reboot the system, and runlevel \fB1\fP is used to put to system into
++to reboot the system, and runlevel \fBS\fP is used to put to system into
+ a state where administrative tasks can be performed; this is the default
+ if neither the \fB-h\fP or \fB-r\fP flag is given to \fBshutdown\fP.
+ To see which actions are taken on halt or reboot see the appropriate
+--- a/src/shutdown.c
++++ b/src/shutdown.c
+@@ -547,7 +547,7 @@ int main(int argc, char **argv)
+ 		usage();
+   		exit(1);
+ 	}
+-	strcpy(down_level, "1");
++	strcpy(down_level, "S");
+ 	halttype = NULL;
+         memset(when, '\0', WHEN_SIZE);
+ 
+@@ -734,6 +734,8 @@ int main(int argc, char **argv)
+ 			strncpy(newstate, "for reboot", STATELEN);
+ 			break;
+ 		case '1':
++		case 'S':
++		case 's':
+ 			strncpy(newstate, "to maintenance mode", STATELEN);
+ 			break;
+ 		default:

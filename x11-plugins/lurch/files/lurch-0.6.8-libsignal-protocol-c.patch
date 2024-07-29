@@ -1,0 +1,92 @@
+From 72f286f389236fe99cb10fdeda3ee9b474de645d Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Fri, 4 Dec 2020 00:10:17 +0100
+Subject: [PATCH] lurch: Use system's libsignal-protocol-c shared library
+
+---
+ Makefile | 37 ++++++++++++++++++++++++-------------
+ 1 file changed, 24 insertions(+), 13 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 32bc9c9..937401d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -28,16 +28,21 @@ LIBPURPLE_LDFLAGS=$(shell $(PKG_CONFIG) --cflags purple) \
+ XML2_CFLAGS ?= $(shell $(XML2_CONFIG) --cflags)
+ XML2_LDFLAGS ?= $(shell $(XML2_CONFIG) --libs)
+ 
++LIBSIGNAL_PROTOCOL_C_CFLAGS ?= $(shell $(PKG_CONFIG) --cflags libsignal-protocol-c)
++LIBSIGNAL_PROTOCOL_C_LDFLAGS ?= $(shell $(PKG_CONFIG) --libs libsignal-protocol-c)
++
+ LIBGCRYPT_LDFLAGS ?= $(shell $(LIBGCRYPT_CONFIG) --libs)
+ 
+ PKGCFG_C=$(GLIB_CFLAGS) \
+ 	 $(LIBPURPLE_CFLAGS) \
++	 $(LIBSIGNAL_PROTOCOL_C_CFLAGS) \
+ 	 $(XML2_CFLAGS)
+ 
+ 
+ PKGCFG_L=$(shell $(PKG_CONFIG) --libs sqlite3 mxml) \
+  	$(GLIB_LDFLAGS) \
+ 	 $(LIBPURPLE_LDFLAGS) \
++	 $(LIBSIGNAL_PROTOCOL_C_LDFLAGS) \
+ 	 $(XML2_LDFLAGS) \
+ 	 $(LIBGCRYPT_LDFLAGS)
+ 
+@@ -51,7 +56,7 @@ else
+ endif
+ endif
+ 
+-HEADERS=-I$(HDIR)/jabber -I$(LOMEMO_SRC) -I$(AXC_SRC) -I$(AX_DIR)/src
++HEADERS=-I$(HDIR)/jabber -I$(LOMEMO_SRC) -I$(AXC_SRC)
+ CFLAGS += -std=c11 -Wall -g -Wstrict-overflow $(PKGCFG_C) $(HEADERS)
+ PLUGIN_CPPFLAGS=-DPURPLE_PLUGINS
+ # -D_BSD_SOURCE can be removed once nobody uses glibc <= 2.18 any more
+@@ -79,26 +84,32 @@ AXC_SRC=$(AXC_DIR)/src
+ AXC_BUILD=$(AXC_DIR)/build
+ AXC_PATH=$(AXC_BUILD)/libaxc-nt.a
+ 
+-AX_DIR=$(AXC_DIR)/lib/libsignal-protocol-c
+-AX_PATH=$(AX_DIR)/build/src/libsignal-protocol-c.a
+-
+-VENDOR_LIBS=$(LOMEMO_PATH) $(AXC_PATH) $(AX_PATH)
++VENDOR_LIBS=$(LOMEMO_PATH) $(AXC_PATH)
+ 
+ 
+ ### make rules
+ #
+-all: $(BDIR)/lurch.so
++all: $(BDIR)/lurch.so $(BDIR)/linkdummy
++
++
++$(BDIR)/linkdummy.c:
++	echo 'int main() { return 0; }' > $@
++
++$(BDIR)/liblinklurch.so: $(BDIR)/lurch.so | $(BDIR)
++	ln -f $^ $@
++
++$(BDIR)/linkdummy: $(BDIR)/linkdummy.o $(BDIR)/liblinklurch.so
++	$(CC) \
++		$(shell $(PKG_CONFIG) --libs purple) \
++		-L$(BDIR) -llinklurch \
++		$^ \
++		-o $@ \
++		$(LDFLAGS)
++
+ 
+ $(BDIR):
+ 	$(MKDIR_P) build
+ 
+-$(AX_PATH):
+-	cd $(AX_DIR)/ && \
+-	   $(MKDIR_P) build && \
+-	   cd build && \
+-	   $(CMAKE) $(CMAKE_FLAGS) .. \
+-	   && $(MAKE)
+-
+ $(AXC_PATH):
+ 	$(MAKE) -C "$(AXC_DIR)" build/libaxc-nt.a
+ 
+-- 
+2.27.0
+

@@ -1,0 +1,44 @@
+From 393d5c41284292f72f2dd2a3c8e246e972ac718c Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 11 Apr 2024 21:39:36 +0100
+Subject: [PATCH] sha2: fix aliasing violation
+
+`&context->buffer` is `uint8_t*`, but we try to access it as `sha2_word64*`, which
+is an aliasing violation (undefined behaviour).
+
+Use memcpy instead to avoid being miscompiled by e.g. >= GCC 12. This is
+just as fast with any modern compiler.
+
+Bug: https://gcc.gnu.org/PR114698
+Bug: https://github.com/NetBSD/pkgsrc/issues/122
+Bug: https://github.com/archiecobbs/libnbcompat/issues/4
+Bug: https://bugs.launchpad.net/ubuntu-power-systems/+bug/2033405
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ src/sha2.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/sha2.c b/src/sha2.c
+index bea1708..3925b97 100644
+--- a/src/sha2.c
++++ b/src/sha2.c
+@@ -604,7 +604,7 @@ void SHA256_Final(SHA256_CTX* context, sha2_byte digest[]) {
+ 			*context->buffer = 0x80;
+ 		}
+ 		/* Set the bit count: */
+-		*(sha2_word64*)&context->buffer[SHA256_SHORT_BLOCK_LENGTH] = context->bitcount;
++		memcpy(&context->buffer[SHA256_SHORT_BLOCK_LENGTH], &context->bitcount, sizeof(context->bitcount));
+ 
+ 		/* Final transform: */
+ 		SHA256_Transform(context, (sha2_word32*)context->buffer);
+@@ -921,8 +921,8 @@ void SHA512_Last(SHA512_CTX* context) {
+ 		*context->buffer = 0x80;
+ 	}
+ 	/* Store the length of input data (in bits): */
+-	*(sha2_word64*)&context->buffer[SHA512_SHORT_BLOCK_LENGTH] = context->bitcount[1];
+-	*(sha2_word64*)&context->buffer[SHA512_SHORT_BLOCK_LENGTH+8] = context->bitcount[0];
++	memcpy(&context->buffer[SHA512_SHORT_BLOCK_LENGTH], &context->bitcount[1], sizeof(context->bitcount[1]));
++	memcpy(&context->buffer[SHA512_SHORT_BLOCK_LENGTH+8], &context->bitcount[0], sizeof(context->bitcount[0]));
+ 
+ 	/* Final transform: */
+ 	SHA512_Transform(context, (sha2_word64*)context->buffer);

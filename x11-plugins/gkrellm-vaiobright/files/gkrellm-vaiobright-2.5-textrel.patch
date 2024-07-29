@@ -1,0 +1,38 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,10 +1,11 @@
+ HOME	= .
+ PREFIX  = /usr
+-CC	= cc
++CC	?= cc
+ INCLUDE	= -I./ -I${PREFIX}/include
+-OPTS	= -shared `pkg-config gtk+-2.0 --cflags`
++CFLAGS	+= -shared `${PKG_CONFIG} gtk+-2.0 --cflags` -fPIC
++LDFLAGS  += -shared -fPIC
+ DEFINES = 
+-LIBS	= `pkg-config gtk+-2.0 --cflags`
++LIBS	= `${PKG_CONFIG} gtk+-2.0 --libs`
+ 
+ GKVO	= vaiobright.o
+ GKV	= vaiobright.so 
+@@ -12,7 +13,7 @@
+ all:	$(GKV)
+ 
+ $(GKV): $(GKVO)
+-	$(CC) $(OPTS) -o $(GKV) $(GKVO) $(LIBS)
++	$(CC) $(LDFLAGS) -o $(GKV) $(GKVO) $(LIBS)
+ 
+ install:
+ 	@-echo "Copy the plugin ($(GKV) to ~/.gkrellm2/plugins/$(GKV) and restart gkrellm."
+@@ -22,9 +23,9 @@
+ 	@-rm *.o *.so
+ 
+ .c.so:	$(DEPEND)
+-	$(CC) $(OPTS) $(INCLUDE) $(DEFINES) -fPIC -c $*.c -o $@ 
++	$(CC) $(CFLAGS) $(INCLUDE) $(DEFINES) -fPIC -c $*.c -o $@ 
+ 
+ .c.o:	$(DEPEND)
+-	$(CC) $(OPTS) $(INCLUDE) $(DEFINES) -c $*.c -o $@
++	$(CC) $(CFLAGS) $(INCLUDE) $(DEFINES) -c $*.c -o $@
+ 
+ .SUFFIXES: .c .so .o

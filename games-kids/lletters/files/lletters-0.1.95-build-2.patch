@@ -1,0 +1,60 @@
+diff -ur lletters-0.1.95.orig/libqdwav/Makefile.in lletters-0.1.95/libqdwav/Makefile.in
+--- lletters-0.1.95.orig/libqdwav/Makefile.in	2008-04-09 19:23:13.000000000 +0300
++++ lletters-0.1.95/libqdwav/Makefile.in	2008-04-09 19:48:08.000000000 +0300
+@@ -225,7 +225,6 @@
+ sysconfdir = @sysconfdir@
+ target_alias = @target_alias@
+ noinst_LIBRARIES = libqdwav.a
+-AM_CFLAGS = -O2
+ libqdwav_a_SOURCES = wav_read.c wav_write.c
+ noinst_HEADERS = wav_lib.h
+ all: all-am
+diff -ur lletters-0.1.95.orig/libqdwav/wav_read.c lletters-0.1.95/libqdwav/wav_read.c
+--- lletters-0.1.95.orig/libqdwav/wav_read.c	2000-02-21 09:53:08.000000000 +0200
++++ lletters-0.1.95/libqdwav/wav_read.c	2008-04-09 19:51:23.000000000 +0300
+@@ -1,5 +1,6 @@
+ /* operations for verifying and reading wav files. */
+ 
++#include <string.h> /* for strs */
+ #include <stdio.h>
+ #include <fcntl.h>
+ #include <sys/stat.h>
+diff -ur lletters-0.1.95.orig/libqdwav/wav_write.c lletters-0.1.95/libqdwav/wav_write.c
+--- lletters-0.1.95.orig/libqdwav/wav_write.c	2008-04-09 19:23:13.000000000 +0300
++++ lletters-0.1.95/libqdwav/wav_write.c	2008-04-09 19:51:28.000000000 +0300
+@@ -1,3 +1,4 @@
++#include <string.h> /* for strs */
+ #include <stdio.h>
+ #include <fcntl.h>
+ #include <signal.h>
+diff -ur lletters-0.1.95.orig/list.c lletters-0.1.95/list.c
+--- lletters-0.1.95.orig/list.c	2000-02-23 06:54:57.000000000 +0200
++++ lletters-0.1.95/list.c	2008-04-09 19:51:35.000000000 +0300
+@@ -1,3 +1,4 @@
++#include <string.h> /* for strs */
+ #include "lletters.h"
+ 
+ /* prototype std lib functions */
+diff -ur lletters-0.1.95.orig/po/Makefile.in.in lletters-0.1.95/po/Makefile.in.in
+--- lletters-0.1.95.orig/po/Makefile.in.in	2008-04-09 19:23:13.000000000 +0300
++++ lletters-0.1.95/po/Makefile.in.in	2008-04-09 19:48:08.000000000 +0300
+@@ -111,9 +111,9 @@
+ install-data-no: all
+ install-data-yes: all
+ 	if test -r "$(MKINSTALLDIRS)"; then \
+-	  $(MKINSTALLDIRS) $(datadir); \
++	  $(MKINSTALLDIRS) $(DESTDIR)$(datadir); \
+ 	else \
+-	  $(SHELL) $(top_srcdir)/mkinstalldirs $(datadir); \
++	  $(SHELL) $(top_srcdir)/mkinstalldirs $(DESTDIR)$(datadir); \
+ 	fi
+ 	@catalogs='$(CATALOGS)'; \
+ 	for cat in $$catalogs; do \
+@@ -122,6 +122,7 @@
+ 	    *.gmo) destdir=$(gnulocaledir);; \
+ 	    *)     destdir=$(localedir);; \
+ 	  esac; \
++	  destdir="$(DESTDIR)$$destdir"; \
+ 	  lang=`echo $$cat | sed 's/\$(CATOBJEXT)$$//'`; \
+ 	  dir=$$destdir/$$lang/LC_MESSAGES; \
+ 	  if test -r "$(MKINSTALLDIRS)"; then \

@@ -1,0 +1,60 @@
+http://bugs.gentoo.org/342817
+
+--- catdvi-0.14-orig/config.mk.in
++++ catdvi-0.14/config.mk.in
+@@ -23,6 +23,7 @@
+ 
+ CFG_HAS_GETOPT_LONG = @CFG_HAS_GETOPT_LONG@
+ CFG_HAS_KPATHSEA = @CFG_HAS_KPATHSEA@
++CFG_HAS_KPATHSEA_VERSION_H = @CFG_HAS_KPATHSEA_VERSION_H@
+ CFG_KPATHSEA_HAS_GETOPT_LONG = @CFG_KPATHSEA_HAS_GETOPT_LONG@
+ CFG_SHOW_PSE2UNIC_WARNINGS = @CFG_SHOW_PSETOUNIC_WARNINGS@
+ 
+--- catdvi-0.14-orig/configure.in
++++ catdvi-0.14/configure.in
+@@ -48,6 +48,9 @@
+     AC_MSG_ERROR([*** kpathsea library (required) not found; try to use the --with-kpathsea-prefix option ***])
+ fi
+ 
++AC_CHECK_HEADERS([kpathsea/version.h], CFG_HAS_KPATHSEA_VERSION_H=yes, CFG_HAS_KPATHSEA_VERSION_H=no)
++AC_SUBST(CFG_HAS_KPATHSEA_VERSION_H)
++
+ dnl It seem libkpathsea provides a getopt_long() implementation
+ dnl if and only if the C library does not.
+ dnl
+--- catdvi-0.14-orig/GNUmakefile
++++ catdvi-0.14/GNUmakefile
+@@ -36,6 +36,10 @@
+ endif
+ endif
+ 
++ifeq ($(CFG_HAS_KPATHSEA_VERSION_H),yes)
++CPPFLAGS += -DCFG_HAS_KPATHSEA_VERSION_H
++endif
++
+ ifeq ($(CFG_HAS_KPATHSEA),yes)
+ FINDTFM = kpathsea.o
+ LDLIBS = -lkpathsea
+--- catdvi-0.14-orig/kpathsea.c
++++ catdvi-0.14/kpathsea.c
+@@ -21,6 +21,12 @@
+ #include "findtfm.h"
+ #include "version.h"
+ 
++#ifdef CFG_HAS_KPATHSEA_VERSION_H
++#include <kpathsea/version.h>
++#else 
++extern char * kpathsea_version_string;
++#endif
++
+ void setup_findtfm(char const * progname)
+ {
+         kpse_set_program_name(progname, PACKAGE);
+@@ -36,7 +42,6 @@
+ 
+ void version_findtfm(void)
+ {
+-        extern char * kpathsea_version_string;
+         puts(kpathsea_version_string);
+ }
+ 

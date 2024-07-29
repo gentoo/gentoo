@@ -1,0 +1,20 @@
+diff --git a/compute-runtime-22.24.23453/CMakeLists.txt b/compute-runtime-22.24.23453/CMakeLists.txt
+index f227808..83075f9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -702,7 +702,6 @@ if("${CMAKE_BUILD_TYPE}" STREQUAL "Release")
+   else()
+     if(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
+       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fstack-protector-strong")
+-      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -D_FORTIFY_SOURCE=2")
+       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wformat -Wformat-security")
+     else()
+       # gcc, g++ only
+@@ -711,7 +710,6 @@ if("${CMAKE_BUILD_TYPE}" STREQUAL "Release")
+       else()
+         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fstack-protector-strong")
+       endif()
+-      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -D_FORTIFY_SOURCE=2")
+       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wformat -Wformat-security")
+       set(CMAKE_SHARED_LINKER_FLAGS_RELEASE "${CMAKE_SHARED_LINKER_FLAGS_RELEASE} -Wl,-z,noexecstack")
+       set(CMAKE_SHARED_LINKER_FLAGS_RELEASE "${CMAKE_SHARED_LINKER_FLAGS_RELEASE} -Wl,-z,relro")

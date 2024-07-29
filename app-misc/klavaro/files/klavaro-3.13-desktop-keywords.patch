@@ -1,0 +1,73 @@
+From 5459092d6044ffbea644cf04ddaa4cf9a6f7c25b Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Fri, 14 Jan 2022 15:10:17 +0100
+Subject: [PATCH] Add missing semicolon at the end of klavaro.desktop
+
+---
+ data/klavaro.desktop.in | 50 ++++++++++++++++++++---------------------
+ 1 file changed, 25 insertions(+), 25 deletions(-)
+
+diff --git a/data/klavaro.desktop.in b/data/klavaro.desktop.in
+index 6c6deadb1e7a..cf2fc090fd7b 100644
+--- a/data/klavaro.desktop.in
++++ b/data/klavaro.desktop.in
+@@ -3,31 +3,31 @@ _Name=Klavaro
+ _GenericName=Yet another touch typing tutor
+ _Comment=A very flexible and efficient touch typing tutor.
+ # Translators: these are keywords related to the program. CAI above means Computer Aided Instruction. Feel free to add and/or change the keywords in your language.
+-Keywords=keyboard;typing;tutor;CAI
+-Keywords[ar]=keyboard;typing;tutor;CAI;type;لوحة المفاتيح;الكتابة;الكتابة باللمس
+-Keywords[bo]=ཡིག་འཇུག;མཐེབ་སྒྲོམ།;སྦྱོང་བརྡར།;CAI
+-Keywords[ca]=keyboard;typing;tutor;CAI
+-Keywords[cs]=klávesnice;psaní;psací stroj;na psacím stroji;výuka;učení;CUI
+-Keywords[da]=tastatur;blindskrift;øvelse;CAI;maskinskrivning;værktøj
+-Keywords[de]=keyboard;typing;tutor;CAI
+-Keywords[el]=πληκτρολόγιο;πληκτρολόγηση;εκπαίδευση;keyboard;typing;tutor;CAI
+-Keywords[eo]=tajpado;instruilo;gvidilo;ekzercilo
+-Keywords[eu]=giltzadia;mekanografiatzen;CAI
+-Keywords[fr]=clavier;dactylographie;tuteur;EAS
+-Keywords[gl]=teclado;mecanografía;titor;CAI
+-Keywords[hr]=tipkovnica;tipkanje;mentor;CAI;NPR
+-Keywords[hu]=billentyűzet;gépelés;oktató;gépírás;CAI
+-Keywords[it]=tastiera;digitazione;tutor;digitare
+-Keywords[nl]=toetsenbord;typen;blindtypen;typeles;lesprogramma;CAI
+-Keywords[pa]=ਕੀਬੋਰਡ:ਟਾਈਪਿੰਗ:ਸਿਖਿੱਅਕ:CAI
+-Keywords[pl]=klawiatura;pisanie na klawiaturze;nauczyciel;CAI
+-Keywords[pt_BR]=teclado;digitação;tutorial;CAI;aprendizado
+-Keywords[ru]=клавиатура;набор;тренажёр
+-Keywords[sl]=tipkovnica, tipkanje, tutor, računalniško podprto učenje
+-Keywords[sr]=тастатура;куцање;учење;учитељ;КАИ
+-Keywords[sv]=tangentbord;skriva;lära;CAI
+-Keywords[uk]=клавіатура;друк;швидкісний;набір;навчання;уроки;keyboard;typing;tutor;CAI
+-Keywords[vi]=bàn phím;bàn;phím;ban phim;ban;phim;luyện gõ;luyện;luyen;gõ;go;dạy;keyboard;typing;tutorial;CAI
++Keywords=keyboard;typing;tutor;CAI;
++Keywords[ar]=keyboard;typing;tutor;CAI;type;لوحة المفاتيح;الكتابة;الكتابة باللمس;
++Keywords[bo]=ཡིག་འཇུག;མཐེབ་སྒྲོམ།;སྦྱོང་བརྡར།;CAI;
++Keywords[ca]=keyboard;typing;tutor;CAI;
++Keywords[cs]=klávesnice;psaní;psací stroj;na psacím stroji;výuka;učení;CUI;
++Keywords[da]=tastatur;blindskrift;øvelse;CAI;maskinskrivning;værktøj;
++Keywords[de]=keyboard;typing;tutor;CAI;
++Keywords[el]=πληκτρολόγιο;πληκτρολόγηση;εκπαίδευση;keyboard;typing;tutor;CAI;
++Keywords[eo]=tajpado;instruilo;gvidilo;ekzercilo;
++Keywords[eu]=giltzadia;mekanografiatzen;CAI;
++Keywords[fr]=clavier;dactylographie;tuteur;EAS;
++Keywords[gl]=teclado;mecanografía;titor;CAI;
++Keywords[hr]=tipkovnica;tipkanje;mentor;CAI;NPR;
++Keywords[hu]=billentyűzet;gépelés;oktató;gépírás;CAI;
++Keywords[it]=tastiera;digitazione;tutor;digitare;
++Keywords[nl]=toetsenbord;typen;blindtypen;typeles;lesprogramma;CAI;
++Keywords[pa]=ਕੀਬੋਰਡ:ਟਾਈਪਿੰਗ:ਸਿਖਿੱਅਕ:CAI;
++Keywords[pl]=klawiatura;pisanie na klawiaturze;nauczyciel;CAI;
++Keywords[pt_BR]=teclado;digitação;tutorial;CAI;aprendizado;
++Keywords[ru]=клавиатура;набор;тренажёр;
++Keywords[sl]=tipkovnica, tipkanje, tutor, računalniško podprto učenje;
++Keywords[sr]=тастатура;куцање;учење;учитељ;КАИ;
++Keywords[sv]=tangentbord;skriva;lära;CAI;
++Keywords[uk]=клавіатура;друк;швидкісний;набір;навчання;уроки;keyboard;typing;tutor;CAI;
++Keywords[vi]=bàn phím;bàn;phím;ban phim;ban;phim;luyện gõ;luyện;luyen;gõ;go;dạy;keyboard;typing;tutorial;CAI;
+ 
+ Exec=klavaro
+ Icon=klavaro
+-- 
+2.34.1
+

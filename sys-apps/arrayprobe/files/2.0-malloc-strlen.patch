@@ -1,0 +1,20 @@
+--- a/probe.c
++++ b/probe.c
+@@ -354,7 +354,7 @@
+ 	int drivenum = event.detail.logstatchange.logicaldrivenumber;
+ 	logdrvs[drivenum].state.state = event.detail.logstatchange.newlogicaldrivestate;
+ 	logdrvs[drivenum].state.severity = logicaldrivestatusseverity[event.detail.logstatchange.newlogicaldrivestate];
+-	logdrvs[drivenum].state.message = (char *)malloc(strlen(logicaldrivestatusstr[event.detail.logstatchange.newlogicaldrivestate] + 1));
++	logdrvs[drivenum].state.message = (char *)malloc(strlen(logicaldrivestatusstr[event.detail.logstatchange.newlogicaldrivestate]) + 1);
+ 	strcpy (logdrvs[drivenum].state.message, logicaldrivestatusstr[event.detail.logstatchange.newlogicaldrivestate]);
+       }
+       if (verbose) {
+@@ -479,7 +479,7 @@
+ 	int ida_device = 0; /* only for use with -f , used to determine protocol to use */
+ 	int max_logical = 64; /* hardcoded */
+ 	int cur_logical = 0; /* number of drives detected */
+-	logdrv *logdrvs = (logdrv *)malloc(sizeof(logdrv)*max_logical);
++	logdrv *logdrvs;
+ 	int worst_disk;
+         int worst_sev = SEV_NORMAL;
+ 	int cntr;

@@ -1,0 +1,293 @@
+diff --git a/src/bin/mcscf/block_matrix.cc b/src/bin/mcscf/block_matrix.cc
+index fe1e131..3ad0bcd 100644
+--- a/src/bin/mcscf/block_matrix.cc
++++ b/src/bin/mcscf/block_matrix.cc
+@@ -1,6 +1,7 @@
+ #include "block_matrix.h"
+ #include "matrix_base.h"
+ #include "memory_manager.h"
++#include <cstdio>
+ 
+ extern FILE* outfile;
+ 
+diff --git a/src/bin/mcscf/block_vector.cc b/src/bin/mcscf/block_vector.cc
+index fb383c7..36f55d4 100644
+--- a/src/bin/mcscf/block_vector.cc
++++ b/src/bin/mcscf/block_vector.cc
+@@ -1,6 +1,7 @@
+ #include "block_vector.h"
+ #include "vector_base.h"
+ #include "memory_manager.h"
++#include <cstdio>
+ 
+ extern FILE* outfile;
+ 
+diff --git a/src/bin/mcscf/sblock_matrix.cc b/src/bin/mcscf/sblock_matrix.cc
+index 61aa7cc..4da4263 100644
+--- a/src/bin/mcscf/sblock_matrix.cc
++++ b/src/bin/mcscf/sblock_matrix.cc
+@@ -1,4 +1,5 @@
+ #include <cstdlib>
++#include <cstdio>
+ #include <psifiles.h>
+ #include "sblock_matrix.h"
+ 
+@@ -103,4 +104,4 @@ void SBlockMatrix::check(const char* cstr)
+   }
+ }
+ 
+-}}
+\ No newline at end of file
++}}
+diff --git a/src/bin/mcscf/sblock_vector.cc b/src/bin/mcscf/sblock_vector.cc
+index 63c3926..f24fc5b 100644
+--- a/src/bin/mcscf/sblock_vector.cc
++++ b/src/bin/mcscf/sblock_vector.cc
+@@ -1,4 +1,5 @@
+ #include <cstdlib>
++#include <cstdio>
+ #include <psifiles.h>
+ 
+ #include "sblock_vector.h"
+@@ -58,4 +59,4 @@ void SBlockVector::check(const char* cstr)
+   }
+ }
+ 
+-}}
+\ No newline at end of file
++}}
+diff --git a/src/bin/mcscf/scf.cc b/src/bin/mcscf/scf.cc
+index 77318fd..7d1e17f 100644
+--- a/src/bin/mcscf/scf.cc
++++ b/src/bin/mcscf/scf.cc
+@@ -5,6 +5,7 @@
+ 
+ #include <iostream>
+ #include <cmath>
++#include <cstdio>
+ 
+ extern FILE* outfile;
+ 
+diff --git a/src/bin/mcscf/scf_Feff.cc b/src/bin/mcscf/scf_Feff.cc
+index 584aa83..8a99c3b 100644
+--- a/src/bin/mcscf/scf_Feff.cc
++++ b/src/bin/mcscf/scf_Feff.cc
+@@ -1,4 +1,5 @@
+ #include <liboptions/liboptions.h>
++#include <cstdio>
+ 
+ #include "scf.h"
+ 
+diff --git a/src/bin/mcscf/scf_canonicalize_MO.cc b/src/bin/mcscf/scf_canonicalize_MO.cc
+index a2b3915..96bb6cc 100644
+--- a/src/bin/mcscf/scf_canonicalize_MO.cc
++++ b/src/bin/mcscf/scf_canonicalize_MO.cc
+@@ -1,6 +1,7 @@
+ #include "scf.h"
+ 
+ #include <liboptions/liboptions.h>
++#include <cstdio>
+ 
+ namespace psi{ namespace mcscf{
+ 
+diff --git a/src/bin/mcscf/scf_check_orthonormality.cc b/src/bin/mcscf/scf_check_orthonormality.cc
+index 63fbbbb..a13436c 100644
+--- a/src/bin/mcscf/scf_check_orthonormality.cc
++++ b/src/bin/mcscf/scf_check_orthonormality.cc
+@@ -1,5 +1,6 @@
+ #include <iostream>
+ #include <cmath>
++#include <cstdio>
+ 
+ #include "scf.h"
+ 
+diff --git a/src/bin/mcscf/scf_compute_energy.cc b/src/bin/mcscf/scf_compute_energy.cc
+index fe7ee6d..20194eb 100644
+--- a/src/bin/mcscf/scf_compute_energy.cc
++++ b/src/bin/mcscf/scf_compute_energy.cc
+@@ -1,4 +1,5 @@
+ #include <iostream>
++#include <cstdio>
+ 
+ #include "scf.h"
+ 
+diff --git a/src/bin/mcscf/scf_diis.cc b/src/bin/mcscf/scf_diis.cc
+index 9bcde15..261492a 100644
+--- a/src/bin/mcscf/scf_diis.cc
++++ b/src/bin/mcscf/scf_diis.cc
+@@ -1,4 +1,5 @@
+ #include <iostream>
++#include <cstdio>
+ 
+ #include <liboptions/liboptions.h>
+ 
+diff --git a/src/bin/mcscf/scf_iterate_scf_equations.cc b/src/bin/mcscf/scf_iterate_scf_equations.cc
+index 9e96360..3a3acc3 100644
+--- a/src/bin/mcscf/scf_iterate_scf_equations.cc
++++ b/src/bin/mcscf/scf_iterate_scf_equations.cc
+@@ -1,6 +1,7 @@
+ #include <cstdlib>
+ #include <iostream>
+ #include <cmath>
++#include <cstdio>
+ 
+ #include <liboptions/liboptions.h>
+ 
+diff --git a/src/bin/mcscf/scf_pairs.cc b/src/bin/mcscf/scf_pairs.cc
+index b0a8c9d..af5fc35 100644
+--- a/src/bin/mcscf/scf_pairs.cc
++++ b/src/bin/mcscf/scf_pairs.cc
+@@ -1,4 +1,5 @@
+ #include <iostream>
++#include <cstdio>
+ 
+ #include <libmoinfo/libmoinfo.h>
+ 
+diff --git a/src/bin/mcscf/scf_print_eigenvectors_and_MO.cc b/src/bin/mcscf/scf_print_eigenvectors_and_MO.cc
+index 3aac92a..e28e9e3 100644
+--- a/src/bin/mcscf/scf_print_eigenvectors_and_MO.cc
++++ b/src/bin/mcscf/scf_print_eigenvectors_and_MO.cc
+@@ -3,6 +3,7 @@
+ #include <string>
+ #include <utility>
+ #include <algorithm>
++#include <cstdio>
+ 
+ #include <libmoinfo/libmoinfo.h>
+ 
+diff --git a/src/bin/psimrcc/blas_algorithms.cc b/src/bin/psimrcc/blas_algorithms.cc
+index bb36025..0a5a3e2 100644
+--- a/src/bin/psimrcc/blas_algorithms.cc
++++ b/src/bin/psimrcc/blas_algorithms.cc
+@@ -1,5 +1,6 @@
+ #include <libmoinfo/libmoinfo.h>
+ #include <libutil/libutil.h>
++#include <cstdio>
+ 
+ #include "blas.h"
+ #include "memory_manager.h"
+diff --git a/src/bin/psimrcc/blas_compatibile.cc b/src/bin/psimrcc/blas_compatibile.cc
+index 8de6d73..7caf4f3 100644
+--- a/src/bin/psimrcc/blas_compatibile.cc
++++ b/src/bin/psimrcc/blas_compatibile.cc
+@@ -1,6 +1,7 @@
+ #include "blas.h"
+ #include <libutil/libutil.h>
+ #include <cstdlib>
++#include <cstdio>
+ 
+ extern FILE *infile, *outfile;
+ 
+diff --git a/src/bin/psimrcc/blas_parser.cc b/src/bin/psimrcc/blas_parser.cc
+index d211a24..78fe60a 100644
+--- a/src/bin/psimrcc/blas_parser.cc
++++ b/src/bin/psimrcc/blas_parser.cc
+@@ -3,6 +3,7 @@
+ #include "debugging.h"
+ #include <libutil/libutil.h>
+ #include <algorithm>
++#include <cstdio>
+ 
+ namespace psi{ namespace psimrcc{
+ 
+diff --git a/src/bin/psimrcc/blas_solve.cc b/src/bin/psimrcc/blas_solve.cc
+index b138a5b..f5dcdfc 100644
+--- a/src/bin/psimrcc/blas_solve.cc
++++ b/src/bin/psimrcc/blas_solve.cc
+@@ -1,6 +1,7 @@
+ #include "blas.h"
+ #include "debugging.h"
+ #include <libmoinfo/libmoinfo.h>
++#include <cstdio>
+ 
+ namespace psi{ namespace psimrcc{
+ 
+diff --git a/src/bin/psimrcc/index.cc b/src/bin/psimrcc/index.cc
+index 3465d88..68c2b77 100644
+--- a/src/bin/psimrcc/index.cc
++++ b/src/bin/psimrcc/index.cc
+@@ -5,6 +5,7 @@
+  ***************************************************************************/
+ #include <iostream>
+ #include <algorithm>
++#include <cstdio>
+ 
+ #include <libmoinfo/libmoinfo.h>
+ 
+diff --git a/src/bin/psimrcc/operation.cc b/src/bin/psimrcc/operation.cc
+index edbaed5..f4e881f 100644
+--- a/src/bin/psimrcc/operation.cc
++++ b/src/bin/psimrcc/operation.cc
+@@ -7,6 +7,7 @@
+ #include "debugging.h"
+ #include "blas.h"
+ #include <libutil/libutil.h>
++#include <cstdio>
+ 
+ namespace psi{ namespace psimrcc{
+ 
+diff --git a/src/bin/psimrcc/operation_compute.cc b/src/bin/psimrcc/operation_compute.cc
+index 7d2553c..72a1b39 100644
+--- a/src/bin/psimrcc/operation_compute.cc
++++ b/src/bin/psimrcc/operation_compute.cc
+@@ -11,6 +11,7 @@
+ #include "algebra_interface.h"
+ #include <libmoinfo/libmoinfo.h>
+ #include <cstdlib>
++#include <cstdio>
+ 
+ extern FILE *infile, *outfile;
+ 
+diff --git a/src/bin/psimrcc/sort_out_of_core.cc b/src/bin/psimrcc/sort_out_of_core.cc
+index 3f255c9..8fa31a3 100644
+--- a/src/bin/psimrcc/sort_out_of_core.cc
++++ b/src/bin/psimrcc/sort_out_of_core.cc
+@@ -8,6 +8,7 @@
+ #include "sort.h"
+ #include "matrix.h"
+ #include <libmoinfo/libmoinfo.h>
++#include <cstdio>
+ 
+ extern FILE* outfile;
+ 
+diff --git a/src/lib/libmoinfo/moinfo_model_space.cc b/src/lib/libmoinfo/moinfo_model_space.cc
+index 3bf2030..0a63cde 100644
+--- a/src/lib/libmoinfo/moinfo_model_space.cc
++++ b/src/lib/libmoinfo/moinfo_model_space.cc
+@@ -1,6 +1,7 @@
+ #include <iostream>
+ #include <cmath>
+ #include <cstdlib>
++#include <cstdio>
+ 
+ #include <psifiles.h>
+ #include <liboptions/liboptions.h>
+@@ -322,4 +323,4 @@ vector<string> MOInfo::get_matrix_names(std::string str)
+   return(names);
+ }
+ 
+-}
+\ No newline at end of file
++}
+diff --git a/src/lib/libmoinfo/moinfo_slaterdeterminant.cc b/src/lib/libmoinfo/moinfo_slaterdeterminant.cc
+index 8831cd5..a046679 100644
+--- a/src/lib/libmoinfo/moinfo_slaterdeterminant.cc
++++ b/src/lib/libmoinfo/moinfo_slaterdeterminant.cc
+@@ -1,4 +1,5 @@
+ #include <iostream>
++#include <cstdio>
+ #include "moinfo.h"
+ 
+ extern FILE *infile, *outfile;
+diff --git a/src/lib/libutil/stl_string.cc b/src/lib/libutil/stl_string.cc
+index 0ec247d..f719dcd 100644
+--- a/src/lib/libutil/stl_string.cc
++++ b/src/lib/libutil/stl_string.cc
+@@ -2,6 +2,7 @@
+ #include <cmath>
+ #include <iomanip>
+ #include <algorithm>
++#include <cstdio>
+ 
+ #include "libutil.h"
+ 

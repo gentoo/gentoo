@@ -1,0 +1,16 @@
+ icons/hicolor/gnome-mime-chemical.svg | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/icons/hicolor/gnome-mime-chemical.svg b/icons/hicolor/gnome-mime-chemical.svg
+index 1a8d428..804514c 100644
+--- a/icons/hicolor/gnome-mime-chemical.svg
++++ b/icons/hicolor/gnome-mime-chemical.svg
+@@ -5,7 +5,7 @@
+ 	<!ENTITY ns_svg "http://www.w3.org/2000/svg">
+ 	<!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+ ]>
+-<svg  xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
++<svg  xmlns:svg="&ns_svg;" xmlns:xlink="&ns_xlink;" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+ 	 width="128" height="128" viewBox="0 0 128 128" overflow="visible" enable-background="new 0 0 128 128" xml:space="preserve">
+ 	<g id="Layer_1">
+ 		<g>

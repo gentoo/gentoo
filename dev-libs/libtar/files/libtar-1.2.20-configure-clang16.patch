@@ -1,0 +1,43 @@
+https://src.fedoraproject.org/rpms/libtar/raw/175c39e7e572fea263fd2e35175646852a785def/f/libtar-configure-c99.patch
+
+Add additional #include directives to prevent implicit function
+declarations and build failures with future compilers.
+
+--- a/compat/module.ac
++++ b/compat/module.ac
+@@ -31,6 +31,8 @@ AC_DEFUN([COMPAT_FUNC_BASENAME], [
+     [compat_cv_func_basename_works],
+     [AC_TRY_RUN([
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ #ifdef HAVE_LIBGEN_H
+ # include <libgen.h>
+ #endif
+@@ -85,6 +87,8 @@ AC_DEFUN([COMPAT_FUNC_DIRNAME], [
+     [compat_cv_func_dirname_works],
+     [AC_TRY_RUN([
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ #ifdef HAVE_LIBGEN_H
+ # include <libgen.h>
+ #endif
+@@ -208,6 +212,7 @@ AC_DEFUN([COMPAT_FUNC_MAKEDEV], [
+     [compat_cv_func_makedev_three_args],
+     [AC_COMPILE_IFELSE([
+       AC_LANG_PROGRAM([[
++#include <stdlib.h>
+ #include <sys/types.h>
+ #ifdef MAJOR_IN_MKDEV
+ # include <sys/mkdev.h>
+@@ -248,6 +253,8 @@ AC_DEFUN([COMPAT_FUNC_SNPRINTF], [
+     [compat_cv_func_snprintf_works],
+     [AC_TRY_RUN([
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ 
+ typedef struct {
+   int length;
+

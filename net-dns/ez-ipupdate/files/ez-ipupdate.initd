@@ -1,0 +1,93 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="update"
+
+depend() {
+	need net
+	after rp-pppoe
+}
+
+getconfig() { # 0: no daemon / 1: daemon
+	local CONF NAME LIST=""
+	for CONF in /etc/ez-ipupdate/*.conf; do
+		if [ -f "${CONF}" ]; then
+			# Don't run configurations that are (not) daemons
+			grep -q '^[[:space:]]*daemon' "${CONF}"; [ $? -eq $1 ] && continue
+			# Don't run configurations that run in the foreground
+			grep -q '^[[:space:]]*foreground' "${CONF}" && continue
+			# add config to list
+			NAME="${CONF##*/}"
+			LIST="${LIST} ${NAME%.*}"
+		fi
+	done
+	echo ${LIST}
+}
+
+start() {
+	local NAME LIST=$(getconfig 1)
+
+	if [ -z "${LIST}" ]; then
+		eerror "You need at least one config file in /etc/ez-ipupdate"
+		eerror "containing the 'daemon' keyword and no 'foreground' keyword."
+		return 1
+	fi
+
+	for dir in /var/run/ez-ipupdate /var/cache/ez-ipupdate; do
+		checkpath -q -d -m 0750 -o ez-ipupd:ez-ipupd ${dir}
+	done
+
+	for NAME in ${LIST}; do
+		local CONFIG="/etc/ez-ipupdate/${NAME}.conf"
+		local PIDFILE="/var/run/ez-ipupdate/${NAME}.pid"
+		local CACHEFILE="/var/cache/ez-ipupdate/${NAME}.cache"
+		ebegin "Starting ez-ipupdate (${NAME})"
+		start-stop-daemon -p "${PIDFILE}" --start --quiet --exec /usr/sbin/ez-ipupdate \
+			--user ez-ipupd:ez-ipupd -- -c "${CONFIG}" -F "${PIDFILE}" -b "${CACHEFILE}"
+		eend $?
+	done
+	return 0  # do not fail
+}
+
+stop() {
+	local PIDFILE NAME
+	for PIDFILE in /var/run/ez-ipupdate/*.pid; do
+		if [ -f "${PIDFILE}" ]; then
+			NAME="${PIDFILE##*/}"
+			ebegin "Stopping ez-ipupdate (${NAME%.*})"
+        		start-stop-daemon --stop --signal QUIT --quiet --pidfile "${PIDFILE}"
+			eend $? || rm -f "${PIDFILE}"
+		else
+			eerror "No running ez-ipupdate process"
+		fi
+	done
+	return 0  # do not fail
+}
+
+update() {
+	local NAME TEXT LIST=$(getconfig 0)
+
+	if [ -z "${LIST}" ]; then
+		eerror "You need at least one config file in /etc/ez-ipupdate"
+		eerror "containing no 'daemon' and 'foreground' keyword."
+		return 1
+	fi
+
+	for NAME in ${LIST}; do
+		local CONFIG="/etc/ez-ipupdate/${NAME}.conf"
+		local CACHEFILE="/var/cache/ez-ipupdate/${NAME}.cache"
+		ebegin "Running ez-ipupdate (${NAME})"
+		TEXT=$(/usr/sbin/ez-ipupdate -q -R ez-ipupd -c "${CONFIG}" -b "${CACHEFILE}" 2>&1)
+		if eend $?; then
+			if [ -n "${TEXT}" ]; then
+				echo "${TEXT}" | while read line; do einfo "  $line"; done
+			fi
+		else
+			if [ -n "${TEXT}" ]; then
+				echo "${TEXT}" | while read line; do eerror "  $line"; done
+			fi
+		fi
+	done
+	return 0  # do not fail
+}

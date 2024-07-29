@@ -1,0 +1,5 @@
+# /etc/conf.d/ksmbd: config file for /etc/init.d/ksmbd
+#
+
+# Full path to config file. /etc/ksmbd/smb.conf is default if not set.
+#KSMBD_CONF="/etc/ksmbd/smb.conf"

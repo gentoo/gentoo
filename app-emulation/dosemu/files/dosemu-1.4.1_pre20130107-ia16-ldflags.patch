@@ -1,0 +1,44 @@
+Add a @IA16_LDFLAGS_EXTRA@ environment variable
+to be able to pass through -no-pie.
+
+It's a workaround for binutils ld.gold bug:
+https://bugs.gentoo.org/618366
+diff --git a/Makefile.conf.in b/Makefile.conf.in
+index cd4b34d..cc29931 100644
+--- a/Makefile.conf.in
++++ b/Makefile.conf.in
+@@ -55,2 +55,3 @@ ALL_LDFLAGS:=@DOSEMU_LDFLAGS@ ${LDFLAGS}
+ DOSBIN_LDFLAGS:=@DOSBIN_LDFLAGS@
++IA16_LDFLAGS_EXTRA:=@IA16_LDFLAGS_EXTRA@
+ LIBS:=@LIBS@
+diff --git a/configure.ac b/configure.ac
+index 0f06f57..a86208e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -604,2 +604,3 @@ AC_SUBST(X_LIBS)
+ AC_SUBST(X_CFLAGS)
++AC_SUBST(IA16_LDFLAGS_EXTRA)
+ 
+diff --git a/src/commands/Makefile b/src/commands/Makefile
+index 3139b85..c5c4607 100644
+--- a/src/commands/Makefile
++++ b/src/commands/Makefile
+@@ -56,3 +56,3 @@ dosbin: $(COM1) $(COM2) $(SYS)
+ $(D)/%.sys: %.o
+-	$(LD) $(ALL_LDFLAGS) -Wl,-Ttext,0,-e,_start16,--oformat,binary -nostdlib -s -o $@ $<
++	$(LD) $(ALL_LDFLAGS) -Wl,-Ttext,0,-e,_start16,--oformat,binary -nostdlib -s $(IA16_LDFLAGS_EXTRA) -o $@ $<
+ 	chmod -x $@ 
+@@ -60,3 +60,3 @@ $(D)/%.sys: %.o
+ $(D)/%.com: %.o
+-	$(LD) $(ALL_LDFLAGS) -Wl,-Ttext,100,-e,_start16,--oformat,binary -nostdlib -s -o $@ $<
++	$(LD) $(ALL_LDFLAGS) -Wl,-Ttext,100,-e,_start16,--oformat,binary -nostdlib -s $(IA16_LDFLAGS_EXTRA) -o $@ $<
+ 	chmod -x $@
+diff --git a/src/plugin/commands/Makefile b/src/plugin/commands/Makefile
+index 48f49d5..d3a5667 100644
+--- a/src/plugin/commands/Makefile
++++ b/src/plugin/commands/Makefile
+@@ -57,3 +57,3 @@ $(STUBFULL): $(D)/generic.com ./mkcomstub
+ $(D)/%.com: %.o
+-	$(LD) $(ALL_LDFLAGS) -Wl,-Ttext,0x100,-e,_start16,--oformat,binary -nostdlib -s -o $@ $<
++	$(LD) $(ALL_LDFLAGS) -Wl,-Ttext,0x100,-e,_start16,--oformat,binary -nostdlib -s $(IA16_LDFLAGS_EXTRA) -o $@ $<
+ 	chmod -x $@

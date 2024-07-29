@@ -1,0 +1,11 @@
+--- a/ndsad.cc
++++ b/ndsad.cc
+@@ -12,7 +12,7 @@
+  */
+ 
+ 
+-#define conf_path "/netup/utm5/ndsad.cfg"
++#define conf_path "/etc/ndsad.conf"
+ 
+ #include "pcap.local.h"
+ 

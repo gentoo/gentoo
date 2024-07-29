@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<name>Gentoo Base System</name>
+		<email>base-system@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<changelog>https://gitlab.com/gnutls/libtasn1/blob/master/NEWS</changelog>
+		<remote-id type="cpe">cpe:/a:gnu:libtasn1</remote-id>
+		<remote-id type="gitlab">gnutls/libtasn1</remote-id>
+	</upstream>
+</pkgmetadata>

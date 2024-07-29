@@ -1,0 +1,47 @@
+From 25252211283e05c692c8baf3e8a7c70224821762 Mon Sep 17 00:00:00 2001
+From: Rolf Eike Beer <eike@sf-mail.de>
+Date: Fri, 15 Nov 2019 19:40:22 +0100
+Subject: [PATCH] properly align the HMAC state buffers on the stack
+
+They need to have the same alignment as the contained data type, i.e. up to
+uint64. Otherwise usage of SHA HMACs causes bus errors on sparc.
+---
+ crypto/hmac.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/crypto/hmac.c b/crypto/hmac.c
+index abff0df..f4e48c0 100644
+--- a/crypto/hmac.c
++++ b/crypto/hmac.c
+@@ -34,7 +34,8 @@ void hmac_prepare(const struct hmac_control_block* hcb,
+ 		  void* midstate,
+ 		  const str* secret)
+ {
+-  unsigned char state[hcb->state_size];
++  uint64 statebuf[(hcb->state_size + 7) / sizeof(uint64)];
++  unsigned char *state = (unsigned char *)statebuf;
+   unsigned char block[hcb->block_size];
+   unsigned i;
+ 
+@@ -80,8 +81,9 @@ void hmac_finish(const struct hmac_control_block* hcb,
+ 		 const str* nonce,
+ 		 void* output)
+ {
+-  unsigned char state[hcb->state_size];
+-  
++  uint64 statebuf[(hcb->state_size + 7) / sizeof(uint64)];
++  unsigned char *state = (unsigned char *)statebuf;
++
+   /* Generate H1 = H(K XOR ipad, nonce) */
+   hcb->inject(state, midstate);
+   hcb->update(state, (const unsigned char*)nonce->s, nonce->len);
+@@ -106,7 +108,8 @@ void hmac(const struct hmac_control_block* hcb,
+ 	  const str* nonce,
+ 	  void* output)
+ {
+-  unsigned char midstate[hcb->state_size*2];
++  uint64 statebuf[(hcb->state_size * 2 + 7) / sizeof(uint64)];
++  unsigned char *midstate = (unsigned char *)statebuf;
+ 
+   hmac_prepare(hcb, midstate, secret);
+   hmac_finish(hcb, midstate, nonce, output);

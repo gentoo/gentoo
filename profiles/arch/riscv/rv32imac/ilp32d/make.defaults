@@ -1,0 +1,26 @@
+# Copyright 2019-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# RISC-V rv32imac/ilp32d no-multilib profile
+
+CHOST="riscv32-unknown-linux-gnu"
+
+MULTILIB_ABIS="ilp32d"
+DEFAULT_ABI="ilp32d"
+ABI="ilp32d"
+
+LIBDIR_ilp32d="lib"
+
+CFLAGS="-O2 -pipe -march=rv32imafdc -mabi=ilp32d"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"
+
+## Mike Gilbert <floppym@gentoo.org> (2021-12-17)
+## Prevent automagic use of 64-bit time_t.
+## https://bugs.gentoo.org/828001
+#
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2023-10-10)
+# We need to undo this for riscv32 since it only has the 64bit interface
+#
+enable_year2038="yes"

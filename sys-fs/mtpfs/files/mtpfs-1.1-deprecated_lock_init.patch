@@ -1,0 +1,24 @@
+diff -Naur mtpfs-1.1.orig/mtpfs.c mtpfs-1.1/mtpfs.c
+--- mtpfs-1.1.orig/mtpfs.c	2021-10-01 00:15:15.763423589 +0200
++++ mtpfs-1.1/mtpfs.c	2021-10-01 00:16:07.626486888 +0200
+@@ -1371,6 +1371,8 @@
+     extern int optind;
+     extern char *optarg;
+ 
++    g_mutex_init(&device_lock);
++
+     //while ((opt = getopt(argc, argv, "d")) != -1 ) {
+         //switch (opt) {
+         //case 'd':
+diff -Naur mtpfs-1.1.orig/mtpfs.h mtpfs-1.1/mtpfs.h
+--- mtpfs-1.1.orig/mtpfs.h	2021-10-01 00:15:15.779423609 +0200
++++ mtpfs-1.1/mtpfs.h	2021-10-01 00:16:20.322502337 +0200
+@@ -77,7 +77,7 @@
+ static GSList *myfiles = NULL;
+ static LIBMTP_playlist_t *playlists = NULL;
+ static gboolean playlists_changed = FALSE;
+-static GMutex device_lock = G_STATIC_MUTEX_INIT;
++static GMutex device_lock;
+ 
+ 
+ #endif /* _MTPFS_H_ */

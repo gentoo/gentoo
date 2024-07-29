@@ -1,0 +1,12 @@
+diff -r -U3 sbcl-2.4.3.orig/make-config.sh sbcl-2.4.3/make-config.sh
+--- sbcl-2.4.3.orig/make-config.sh	2024-03-30 00:02:12.000000000 +0700
++++ sbcl-2.4.3/make-config.sh	2024-04-03 22:07:49.912404814 +0700
+@@ -807,7 +807,7 @@
+ fi
+ 
+ if [ -n "$SOURCE_DATE_EPOCH" ]; then
+-  echo '"'hostname-id-"$SOURCE_DATE_EPOCH"'"' > output/build-id.inc
++  echo "\"${PV}\"" > output/build-id.inc
+ else
+   echo '"'`hostname`-`id -un`-`date +%Y-%m-%d-%H-%M-%S`'"' > output/build-id.inc
+ fi

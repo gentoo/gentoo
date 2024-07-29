@@ -1,0 +1,19 @@
+diff --git a/Makefile b/Makefile
+index 8116950..e8b4df9 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,4 +1,5 @@
+ CFLAGS ?= -g -O2 -Wall -Wextra -D_FORTIFY_SOURCE=2 -fstack-protector --param ssp-buffer-size=4
++LDFLAGS ?=
+ # for install-home
+ BINDIR ?= $(HOME)/bin
+ 
+@@ -24,7 +25,7 @@ all: ltunify read-dev-usbmon
+ read-dev-usbmon: read-dev-usbmon.c hidraw.c
+ 
+ ltunify: ltunify.c hidpp20.c
+-	$(CC) $(CFLAGS) -o $(OUTDIR)$@ $< -lrt $(LTUNIFY_DEFINES)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(OUTDIR)$@ $< -lrt $(LTUNIFY_DEFINES)
+ 
+ .PHONY: all clean install-home install install-udevrule uninstall
+ clean:

@@ -1,0 +1,34 @@
+https://bugs.gentoo.org/915086
+https://github.com/libffi/libffi/pull/800
+
+From 65f6869fd74630a9252ef89971b725b921f17061 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Tue, 10 Oct 2023 06:32:02 +0300
+Subject: [PATCH] Put optional symbols behind ifdefs
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/libffi.map.in
++++ b/libffi.map.in
+@@ -33,7 +33,10 @@ LIBFFI_BASE_8.0 {
+ 	ffi_raw_to_ptrarray;
+ 	ffi_raw_size;
+ 
++#if !FFI_NATIVE_RAW_API
+ 	ffi_java_raw_call;
++#endif
++
+ 	ffi_java_ptrarray_to_raw;
+ 	ffi_java_raw_to_ptrarray;
+ 	ffi_java_raw_size;
+@@ -62,8 +65,10 @@ LIBFFI_CLOSURE_8.0 {
+ 	ffi_prep_closure_loc;
+ 	ffi_prep_raw_closure;
+ 	ffi_prep_raw_closure_loc;
++#if !FFI_NATIVE_RAW_API
+ 	ffi_prep_java_raw_closure;
+ 	ffi_prep_java_raw_closure_loc;
++#endif
+ } LIBFFI_BASE_8.0;
+ #endif
+ 
+

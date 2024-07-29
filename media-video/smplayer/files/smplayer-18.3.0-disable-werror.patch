@@ -1,0 +1,9 @@
+gcc-8 is smarter about possible overflow detection.
+
+Reported-by: Mike Lothian
+Bug: https://bugs.gentoo.org/654724
+--- a/webserver/Makefile
++++ b/webserver/Makefile
+@@ -5 +5 @@ SOURCES = main.c mongoose.c
+-CFLAGS = -O2 -W -Wall -Werror -Wno-unused-function $(CFLAGS_EXTRA) $(MODULE_CFLAGS)
++CFLAGS = -O2 -W -Wall -Wno-unused-function $(CFLAGS_EXTRA) $(MODULE_CFLAGS)

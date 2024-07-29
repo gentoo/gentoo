@@ -1,0 +1,19 @@
+diff -Naur squirrelsh-1.2.6.orig//configure squirrelsh-1.2.6/configure
+--- squirrelsh-1.2.6.orig//configure	2012-03-12 20:19:01.000000000 -0400
++++ squirrelsh-1.2.6/configure	2012-03-12 20:32:25.000000000 -0400
+@@ -1163,7 +1163,6 @@
+ 	[ -z "$CFLAGS" ] && in_CFLAGS="$in_CFLAGS -fomit-frame-pointer"
+ 	[ -z "$CXXFLAGS" ] && in_CXXFLAGS="$in_CXXFLAGS -fomit-frame-pointer"
+ 	in_DEFINES="-DNDEBUG"
+-	[ -z "$LDFLAGS" ] && in_LDFLAGS="$in_LDFLAGS -s"
+ fi
+ 
+ if [ "$with_pcre" = "local" ] && [ "$with_libraries" = "static" ]; then
+@@ -1233,7 +1232,6 @@
+ 	in_CXXFLAGS_LIB="$in_CXXFLAGS -fPIC"
+ 	in_MAKE_LIB="$linker -shared $in_LDFLAGS -o \"\$(target)\" \$(objects)"
+ 	in_INSTALL_LIB="$installer -c -m 0755 \"\$(target)\" \"$libdir\""
+-	[ "$with_strip" ] && in_INSTALL_LIB="$in_INSTALL_LIB \\&\\& strip --strip-unneeded \"$libdir/\$(target_name)\""
+ 	in_UNINSTALL_LIB="rm -f \"$libdir/\$(target_name)\""
+ fi
+ 

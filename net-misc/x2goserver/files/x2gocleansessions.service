@@ -1,0 +1,10 @@
+[Unit]
+Description=x2go - remote desktop server
+After=syslog.target network.target
+
+[Service]
+ExecStart=/usr/sbin/x2gocleansessions
+PIDFile=/run/x2goserver.pid
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,26 @@
+From 8c87d708a168ab090f8e5fc01f2bf1db5103427d Mon Sep 17 00:00:00 2001
+From: Christopher Byrne <salah.coronya@gmail.com>
+Date: Fri, 15 Sep 2023 11:26:55 -0500
+Subject: [PATCH] build: Fix undefined references when using slibtool
+
+Signed-off-by: Christopher Byrne <salah.coronya@gmail.com>
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index a0ad0d5..34a751c 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -50,7 +50,7 @@ tpm2_la_LIBADD = $(TSS2_ESYS_LIBS) $(TSS2_TCTILDR_LIBS) $(LIBS) $(CODE_COVERAGE_
+ if TSS2_RC
+ tpm2_la_LIBADD += $(TSS2_RC_LIBS)
+ endif
+-tpm2_la_LDFLAGS = -module -avoid-version -no-undefined -export-symbols-regex 'OSSL_provider_init' $(COMMON_LDFLAGS) $(CODE_COVERAGE_LDFLAGS)
++tpm2_la_LDFLAGS = -module -avoid-version -export-symbols-regex 'OSSL_provider_init' $(COMMON_LDFLAGS) $(CODE_COVERAGE_LDFLAGS)
+ 
+ check_PROGRAMS = test/selftest
+ test_selftest_SOURCES = test/selftest.c
+-- 
+2.41.0
+

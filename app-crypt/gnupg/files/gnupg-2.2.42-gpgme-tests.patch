@@ -1,0 +1,39 @@
+https://bugs.gentoo.org/924386
+https://dev.gnupg.org/T7003
+https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg.git;a=commit;h=f50c543326c2eea6b40f548d61cf3a66a077bf54
+
+From f50c543326c2eea6b40f548d61cf3a66a077bf54 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Fri, 1 Mar 2024 13:59:43 +0900
+Subject: [PATCH] agent: Allow simple KEYINFO command when restricted.
+
+* agent/command.c (cmd_keyinfo): Only forbid list command.
+
+--
+
+GnuPG-bug-id: 7003
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+--- a/agent/command.c
++++ b/agent/command.c
+@@ -1282,9 +1282,6 @@ cmd_keyinfo (assuan_context_t ctx, char *line)
+   char hexgrip[41];
+   int disabled, ttl, confirm, is_ssh;
+ 
+-  if (ctrl->restricted)
+-    return leave_cmd (ctx, gpg_error (GPG_ERR_FORBIDDEN));
+-
+   if (has_option (line, "--ssh-list"))
+     list_mode = 2;
+   else
+@@ -1333,6 +1330,9 @@ cmd_keyinfo (assuan_context_t ctx, char *line)
+       char *dirname;
+       gnupg_dirent_t dir_entry;
+ 
++      if (ctrl->restricted)
++        return leave_cmd (ctx, gpg_error (GPG_ERR_FORBIDDEN));
++
+       dirname = make_filename_try (gnupg_homedir (),
+                                    GNUPG_PRIVATE_KEYS_DIR, NULL);
+       if (!dirname)
+-- 
+2.30.2

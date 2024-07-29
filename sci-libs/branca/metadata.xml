@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<longdescription lang="en">
+		This library is a spinoff from folium, that would host the non-map-specific features.
+		It may become a HTML+JS generation library in the future.
+		It is based on Jinja2 only.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">python-visualization/branca</remote-id>
+	</upstream>
+</pkgmetadata>

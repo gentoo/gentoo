@@ -1,0 +1,102 @@
+#!/sbin/openrc-run
+
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+VPNDIR="/etc/vpnc"
+VPN="${SVCNAME#*.}"
+if [ -n ${VPN} ] && [ ${SVCNAME} != "vpnc" ]; then
+	mkdir -p /var/run/vpnc
+	VPNPID="/var/run/vpnc/${VPN}.pid"
+else
+	VPNPID="/var/run/vpnc.pid"
+fi
+VPNCONF="${VPNDIR}/${VPN}.conf"
+VPNSCRIPTDIR="${VPNDIR}/scripts.d"
+PREUPSCRIPT="${VPNSCRIPTDIR}/${VPN}-preup.sh"
+PREDOWNSCRIPT="${VPNSCRIPTDIR}/${VPN}-predown.sh"
+POSTUPSCRIPT="${VPNSCRIPTDIR}/${VPN}-postup.sh"
+POSTDOWNSCRIPT="${VPNSCRIPTDIR}/${VPN}-postdown.sh"
+# We should source this file to avoid problems when init script
+# name differs from the default name
+. /etc/conf.d/vpnc
+
+depend() {
+	need net
+	before netmount
+}
+
+checktundevice() {
+	if [ ! -e /dev/net/tun ]; then
+		if ! modprobe tun ; then
+			eerror "TUN/TAP support is not available in this kernel"
+			return 1
+		fi
+	fi
+	if [ -h /dev/net/tun ] && [ -c /dev/misc/net/tun ]; then
+		ebegin "Detected broken /dev/net/tun symlink, fixing..."
+		rm -f /dev/net/tun
+		ln -s /dev/misc/net/tun /dev/net/tun
+		eend $?
+	fi
+}
+
+screenoutput() {
+    if [ "${VPNCOUTPUT}" = "yes" ]; then
+	export SCREEN_OUTPUT="/dev/stdout"
+    else
+	export SCREEN_OUTPUT="/dev/null"
+    fi
+}
+
+start() {
+	ebegin "Starting VPNC: ${VPN}"
+
+	checktundevice || return 1
+	screenoutput
+
+	if [ ! -e "${VPNCONF}" ]; then
+		eend 1 "${VPNCONF} does not exist"
+		return 1
+	fi
+
+	local args=""
+
+	if [ -x "${PREUPSCRIPT}" ] ; then 
+		"${PREUPSCRIPT}" > ${SCREEN_OUTPUT}
+	fi
+
+	start-stop-daemon --start --pidfile "${VPNPID}" --exec /usr/sbin/vpnc \
+		-- --pid-file "${VPNPID}" "${VPNCONF}" > ${SCREEN_OUTPUT}
+ 	local retval=$?
+ 	if [ ! ${retval} -eq 0 ]; then
+	eend ${retval}
+ 		return ${retval}
+ 	fi
+
+	if [ -x "${POSTUPSCRIPT}" ] ; then 
+		"${POSTUPSCRIPT}" > ${SCREEN_OUTPUT}
+	fi
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping VPNC: ${VPN}"
+	screenoutput
+	if [ -x "${PREDOWNSCRIPT}" ] ; then 
+		"${PREDOWNSCRIPT}" > ${SCREEN_OUTPUT}
+	fi
+
+	start-stop-daemon --stop --pidfile "${VPNPID}"
+ 	local retval=$?
+ 	if [ ! ${retval} -eq 0 ]; then
+	eend ${retval}
+ 		return ${retval}
+ 	fi
+
+
+	if [ -x "${POSTDOWNSCRIPT}" ] ; then 
+		"${POSTDOWNSCRIPT}" > ${SCREEN_OUTPUT}
+	fi
+	eend $?
+}

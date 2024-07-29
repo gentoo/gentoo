@@ -1,0 +1,16 @@
+[Unit]
+Description=Ethernet monitoring program that tracks net/IP pairings
+Documentation=man:arpwatch(8)
+Conflicts=
+After=systemd-networkd.service
+
+PIDFILE=/run/arpwatch.pid
+
+[Service]
+Type=forking
+ExecStartPre=/bin/rm -f /run/arpwatch.pid
+ExecStart=/usr/sbin/arpwatch $IFACES $PIDFILE $RUNUSER $OPTIONS $DATA
+Restart=on-abort
+
+[Install]
+Alias=arpwatchd.service

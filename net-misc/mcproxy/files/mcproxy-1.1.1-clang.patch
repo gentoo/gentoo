@@ -1,0 +1,93 @@
+From 842e2859669f8a721c10c4f8d019f78f37e29e48 Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <conrad@kostecki.com>
+Date: Sun, 20 Sep 2020 16:28:39 +0200
+Subject: [PATCH] mcproxy/mcproxy.pro: fix compilation with clang
+
+If -L/usr/lib is being included, this will break compiling on 64-bit with clang.
+
+Signed-off-by: Conrad Kostecki <conrad@kostecki.com>
+---
+ mcproxy/mcproxy.pro | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/mcproxy.pro b/mcproxy.pro
+index 5216198..b576b3c 100644
+--- a/mcproxy.pro
++++ b/mcproxy.pro
+@@ -15,7 +15,7 @@ tester {
+     HEADERS += include/tester/config_map.hpp \
+            include/tester/tester.hpp
+ 
+-    LIBS += -L/usr/lib -lboost_regex
++    LIBS += -lboost_regex
+ }
+ 
+ mcproxy { #default mode
+@@ -123,7 +123,7 @@ HEADERS += include/hamcast_logging.h \
+            include/parser/parser.hpp \
+            include/parser/interface.hpp
+ 
+-LIBS += -L/usr/lib -lpthread 
++LIBS += -lpthread
+ 
+ QMAKE_CLEAN += thread* 
+   
+From 5b2f3e3e2ea23c3bb8e72a90e18177f69e350d37 Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <conrad@kostecki.com>
+Date: Sun, 20 Sep 2020 16:38:03 +0200
+Subject: [PATCH] include/proxy/message_queue.hpp: fix compilation with clang
+
+Signed-off-by: Conrad Kostecki <conrad@kostecki.com>
+---
+ mcproxy/include/proxy/message_queue.hpp | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/include/proxy/message_queue.hpp b/include/proxy/message_queue.hpp
+index 347a616..ede35ab 100644
+--- a/include/proxy/message_queue.hpp
++++ b/include/proxy/message_queue.hpp
+@@ -101,7 +101,7 @@ bool message_queue<T, Compare>::is_empty() const
+ {
+     HC_LOG_TRACE("");
+ 
+-    std::lock_guard<std::mutex> lock(m_global_lock);
++    std::lock_guard<std::mutex> lock(this->m_global_lock);
+ 
+     return m_q.empty();
+ }
+@@ -111,7 +111,7 @@ unsigned int message_queue<T, Compare>::size() const
+ {
+     HC_LOG_TRACE("");
+ 
+-    std::lock_guard<std::mutex> lock(m_global_lock);
++    std::lock_guard<std::mutex> lock(this->m_global_lock);
+ 
+     return m_q.size();
+ }
+@@ -130,7 +130,7 @@ bool message_queue<T, Compare>::enqueue_loseable(const T& t)
+     HC_LOG_TRACE("");
+ 
+     {
+-        std::unique_lock<std::mutex> lock(m_global_lock);
++        std::unique_lock<std::mutex> lock(this->m_global_lock);
+         if (m_q.size() < m_size) {
+             m_q.push(t);
+         } else {
+@@ -148,7 +148,7 @@ void message_queue<T, Compare>::enqueue(const T& t)
+     HC_LOG_TRACE("");
+ 
+     {
+-        std::unique_lock<std::mutex> lock(m_global_lock);
++        std::unique_lock<std::mutex> lock(this->m_global_lock);
+         m_q.push(t);
+     }
+     cond_empty.notify_one();
+@@ -162,7 +162,7 @@ T message_queue<T, Compare>::dequeue(void)
+ 
+     T t;
+     {
+-        std::unique_lock<std::mutex> lock(m_global_lock);
++        std::unique_lock<std::mutex> lock(this->m_global_lock);
+         cond_empty.wait(lock, [&]() {
+             return m_q.size() != 0;
+         });

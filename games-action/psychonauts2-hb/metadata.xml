@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Razputin “Raz” Aquato, trained acrobat and powerful young psychic, has
+		realized his lifelong dream of joining the international psychic
+		espionage organization known as the Psychonauts! But these psychic super
+		spies are in trouble. Their leader hasn't been the same since he was
+		rescued from a kidnapping, and what's worse, there's a mole hiding in
+		headquarters.
+
+		Combining quirky missions and mysterious conspiracies, Psychonauts 2 is
+		a platform-adventure game with cinematic style and tons of customizable
+		psychic powers. Psychonauts 2 serves up danger, excitement and laughs in
+		equal measure as players guide Raz on a journey through the minds of
+		friends and foes on a quest to defeat a murderous psychic villain.
+	</longdescription>
+</pkgmetadata>

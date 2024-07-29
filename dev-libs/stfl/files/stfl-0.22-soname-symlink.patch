@@ -1,0 +1,10 @@
+--- stfl-0.22/Makefile.orig
++++ stfl-0.22/Makefile
+@@ -65,6 +65,7 @@
+ 	install -m 644 stfl.pc $(DESTDIR)$(prefix)/$(libdir)/pkgconfig/
+ 	install -m 644 libstfl.so.$(VERSION) $(DESTDIR)$(prefix)/$(libdir)
+ 	ln -fs libstfl.so.$(VERSION) $(DESTDIR)$(prefix)/$(libdir)/libstfl.so
++	ln -fs libstfl.so.$(VERSION) $(DESTDIR)$(prefix)/$(libdir)/$(SONAME)
+ 
+ stfl.pc: stfl.pc.in
+ 	sed 's,@VERSION@,$(VERSION),g' < $< | sed 's,@PREFIX@,$(prefix),g' > $@

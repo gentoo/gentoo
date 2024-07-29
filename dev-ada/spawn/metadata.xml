@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>ada@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="glib">
+			Add support to <pkg>dev-libs/glib</pkg>-based mainloop.
+		</flag>
+		<flag name="shared">Build shared library</flag>
+		<flag name="static-pic">Build static library with pic code</flag>
+	</use>
+	<longdescription lang="en">
+		This library provides simple API to spawn processes and communicate
+		with them. We provide two implementations of the same API - the
+		integrated into Glib event loop and the independent.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">AdaCore/spawn</remote-id>
+	</upstream>
+</pkgmetadata>

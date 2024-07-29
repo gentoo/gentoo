@@ -1,0 +1,36 @@
+From 1e838052b7ccc2a5bb6b674154450a4411de9e15 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Mon, 8 Jan 2024 21:28:27 +0100
+Subject: [PATCH] compose/cli/docker_client.py: Quickfix for
+ >=dev-python/docker-7
+
+Symptom was:
+> # docker-compose build
+> Traceback (most recent call last):
+> [..]
+>   File "[..]/python3.12/site-packages/compose/cli/docker_client.py", line 124, in docker_client
+>     kwargs = kwargs_from_env(environment=environment, ssl_version=tls_version)
+>              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> TypeError: kwargs_from_env() got an unexpected keyword argument 'ssl_version'
+
+Related: https://stackoverflow.com/a/77638834/11626624
+---
+ compose/cli/docker_client.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/compose/cli/docker_client.py b/compose/cli/docker_client.py
+index e4a0fea..f550e20 100644
+--- a/compose/cli/docker_client.py
++++ b/compose/cli/docker_client.py
+@@ -121,7 +121,7 @@ def docker_client(environment, version=None, context=None, tls_version=None):
+     according to the same logic as the official Docker client.
+     """
+     try:
+-        kwargs = kwargs_from_env(environment=environment, ssl_version=tls_version)
++        kwargs = kwargs_from_env(environment=environment)
+     except TLSParameterError:
+         raise UserError(
+             "TLS configuration is invalid - make sure your DOCKER_TLS_VERIFY "
+-- 
+2.43.0
+

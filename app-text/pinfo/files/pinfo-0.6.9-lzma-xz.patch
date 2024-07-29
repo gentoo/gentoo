@@ -1,0 +1,21 @@
+--- a/src/filehandling_functions.c
++++ b/src/filehandling_functions.c
+@@ -41,14 +41,16 @@
+  * you dump the file through `gunzip -d -c', etc.                              *
+  ******************************************************************************/
+ 
+-#define SuffixesNumber 4
++#define SuffixesNumber 6
+ 
+ Suffixes suffixes[SuffixesNumber] =
+ {
+ 	{"", 		"cat"},
+ 	{".gz",		"gzip -d -q -c"},
+ 	{".Z",		"gzip -d -q -c"},
+-	{".bz2",	"bzip2 -d -c"}
++	{".bz2",	"bzip2 -d -c"},
++	{".lzma",	"lzma -d -c"},
++	{".xz",		"xz -d -c"}
+ };
+ 
+ /*****************************************************************************/

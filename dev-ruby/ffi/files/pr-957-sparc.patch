@@ -1,0 +1,42 @@
+From 241b10322283743b79c9489993bfb964b5167f7f Mon Sep 17 00:00:00 2001
+From: matoro <matoro@users.noreply.github.com>
+Date: Wed, 25 May 2022 14:23:55 -0400
+Subject: [PATCH 1/2] Rename sparc64-linux -> sparcv9-linux
+
+In https://github.com/ffi/ffi/pull/575, 64-bit sparc was changed to also
+use sparcv9 as the platform name, but the types.conf directory was never
+renamed.  This breaks only on Ruby 3.0 and later due to the fileutils
+change to use keyword arguments in
+https://github.com/ruby/fileutils/commit/482de6d397742526d1111576e2791f9b7051e3c0
+---
+ lib/ffi/platform/{sparc64-linux => sparcv9-linux}/types.conf | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename lib/ffi/platform/{sparc64-linux => sparcv9-linux}/types.conf (100%)
+
+diff --git a/lib/ffi/platform/sparc64-linux/types.conf b/lib/ffi/platform/sparcv9-linux/types.conf
+similarity index 100%
+rename from lib/ffi/platform/sparc64-linux/types.conf
+rename to lib/ffi/platform/sparcv9-linux/types.conf
+
+From 76dc5c7d69a445268f47f5b6a9185e644bcd68e8 Mon Sep 17 00:00:00 2001
+From: matoro <matoro@users.noreply.github.com>
+Date: Mon, 13 Jun 2022 22:56:26 -0400
+Subject: [PATCH 2/2] Also normalize sparc64 -> sparcv9 in test fixture
+
+---
+ spec/ffi/fixtures/compile.rb | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/spec/ffi/fixtures/compile.rb b/spec/ffi/fixtures/compile.rb
+index f2e831a63..58ee5611d 100644
+--- a/spec/ffi/fixtures/compile.rb
++++ b/spec/ffi/fixtures/compile.rb
+@@ -22,6 +22,8 @@ module TestLibrary
+       "powerpc64"
+     when /ppc|powerpc/
+       "powerpc"
++    when /sparcv9|sparc64/
++      "sparcv9"
+     when /^arm/
+       if RbConfig::CONFIG['host_os'] =~ /darwin/
+         "aarch64"

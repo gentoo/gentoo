@@ -1,0 +1,11 @@
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -319,7 +319,7 @@
+ 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
+ pbbuttonsd$(EXEEXT): $(pbbuttonsd_OBJECTS) $(pbbuttonsd_DEPENDENCIES) 
+ 	@rm -f pbbuttonsd$(EXEEXT)
+-	$(CXXLINK) $(pbbuttonsd_LDFLAGS) $(pbbuttonsd_OBJECTS) $(pbbuttonsd_LDADD) $(LIBS)
++	$(LINK) $(pbbuttonsd_LDFLAGS) $(pbbuttonsd_OBJECTS) $(pbbuttonsd_LDADD) $(LIBS)
+ 
+ mostlyclean-compile:
+ 	-rm -f *.$(OBJEXT)

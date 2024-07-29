@@ -1,0 +1,21 @@
+diff --git a/src/bam/zslu.c b/src/bam/zslu.c
+index 973b911..d82c7fd 100644
+--- a/src/bam/zslu.c
++++ b/src/bam/zslu.c
+@@ -401,6 +401,7 @@ VPUBLIC int Zslu_factor(Zslu *thee)
+     SCformat *Lstore;
+     SuperMatrix *BB;
+     superlu_options_t *oopts;
++    SuperLUStat_t stat;
+ 
+     VASSERT( thee != VNULL );
+ 
+@@ -444,7 +445,7 @@ VPUBLIC int Zslu_factor(Zslu *thee)
+             Lstore->nnz + Ustore->nnz - thee->n);
+         printf("L\\U MB %.3f\ttotal MB needed %.3f\texpansions %d\n",
+             mem_usage.for_lu/1e6, mem_usage.total_needed/1e6,
+-            mem_usage.expansions);
++            stat.expansions);
+         fflush(stdout);
+ 
+     } else if ( info > 0 && thee->lwork == -1 ) {

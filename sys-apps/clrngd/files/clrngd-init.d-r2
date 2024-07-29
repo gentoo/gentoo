@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name='clrngd'
+command='/usr/sbin/clrngd'
+command_args="${clrngd_opts:-${DELAYTIME}}"
+description="Clock entropy for RNG"
+
+depend() {
+	after random
+	before net
+	provide entropy
+}

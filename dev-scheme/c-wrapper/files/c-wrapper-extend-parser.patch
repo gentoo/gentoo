@@ -1,0 +1,142 @@
+https://aur.archlinux.org/cgit/aur.git/tree/14_extend_parser.patch?h=gauche-c-wrapper
+
+Description: Include __int128, make statements before delcarations in functions possible and add some workaround to load x86intrin.h successfully.
+Author: Fabian Brosda <fabi3141@gmx.de>
+Last-Update: 2020-07-10
+
+--- a/lib/c-wrapper/c-parser.scm
++++ b/lib/c-wrapper/c-parser.scm
+@@ -181,6 +181,26 @@
+        ,@(reverse init-list)
+        ,@statements)))
+ 
++(define-maybe (%COMPOUND-STATEMENT-WITH-DECLARATION-EXT statements-before declaration-list statements)
++  (let ((var-list '())
++        (init-list '()))
++    (for-each (lambda (declaration)
++                (let* ((type (type-of declaration))
++                       (identifier (name-of declaration))
++                       (init-val (value-of declaration)))
++                  ;; TODO: typedef in compound_statement is not supported
++                  (push! var-list `(,identifier (make ,type)))
++                  (when init-val
++                    (push! init-list
++                           `(set! ((with-module c-wrapper.c-ffi ref) ,identifier)
++                                  ,init-val)))))
++              declaration-list)
++    `(begin
++       ,@statements-before
++       (let* ,(reverse var-list)
++       ,@(reverse init-list)
++       ,@statements))))
++
+ (define-maybe (%REF-ARRAY v index)
+   `((with-module c-wrapper.c-ffi ref) ,v ,(%INT index)))
+ 
+--- a/src/c-grammar.scm
++++ b/src/c-grammar.scm
+@@ -122,6 +122,7 @@
+   (LPAREN expr RPAREN) : (%EXPR-IN-PARENS $2)
+   (LPAREN compound_statement RPAREN) : (%COMPOUND-STATEMENT $2)
+   (LPAREN type_name RPAREN LCBRA initializer_list RCBRA) : #f
++  (LPAREN type_name RPAREN LCBRA initializer_list COMMA RCBRA) : #f
+   (objc_message_expr) : $1
+   (objc_selector_expr) : $1
+   (objc_protocol_expr) : #f
+@@ -474,8 +475,8 @@
+   (LCBRA RCBRA) : (%COMPOUND-STATEMENT '(0))
+   (LCBRA statement_list RCBRA) : (%COMPOUND-STATEMENT $2)
+   (LCBRA declaration_list RCBRA) : (%COMPOUND-STATEMENT '(0))
+-  (LCBRA declaration_list statement_list RCBRA)
+-  : (%COMPOUND-STATEMENT-WITH-DECLARATION $2 $3)
++  (LCBRA declaration_list statement_list RCBRA) : (%COMPOUND-STATEMENT-WITH-DECLARATION $2 $3)
++  (LCBRA statement_list declaration_list statement_list RCBRA) : (%COMPOUND-STATEMENT-WITH-DECLARATION-EXT $2 $3 $4)
+   (error RCBRA) : #f
+   )
+ 
+--- a/src/c-lex.c
++++ b/src/c-lex.c
+@@ -361,6 +361,7 @@
+         "void",
+         "_Bool",
+         "_Float128",
++        "__int128",
+         NULL,
+     };
+     int i;
+--- a/src/c-parser.c
++++ b/src/c-parser.c
+@@ -104,6 +104,7 @@
+ DEFINE_SYM(void);
+ DEFINE_SYM(_Bool);
+ DEFINE_SYM(_Float128);
++DEFINE_SYM(__int128);
+ DEFINE_SYM(__builtin_va_list);
+ DEFINE_SYM(U_struct);
+ DEFINE_SYM(U_union);
+@@ -472,7 +473,9 @@
+     } else if (SCM_EQ(car, SYM(_Bool))) {
+         SCM_RETURN(SYM(c_int));
+     } else if (SCM_EQ(car, SYM(_Float128))) {
+         SCM_RETURN(SYM(c_double));
++    } else if (SCM_EQ(car, SYM(__int128))) {
++        SCM_RETURN(SYM(c_longlong));
+     } else if (SCM_EQ(car, SYM(__builtin_va_list))) {
+         SCM_RETURN(SCM_LIST2(SCM_LIST3(SYM(with_module), SYM(c_wrapper_c_ffi), SYM(ptr)), SYM(c_void)));
+     } else if (SCM_PAIRP(car) && SCM_EQ(SCM_CAR(car), SYM(U_struct))) {
+@@ -1024,7 +1027,11 @@
+     Scm_ParserAttributeClear();
+     td_list = Scm_MakeTypeDeclList(type_spec_list, declarator_list);
+     SCM_FOR_EACH(pair, td_list) {
+-        Scm_ArgPoolAdd(SCM_TYPE_DECL_NAME(SCM_CAR(pair)));
++        // hack to avoid segfault when loading x86intrin.h
++        // TODO: why is this necessary?
++        if (!SCM_EQ(SCM_CAR(pair), SCM_FALSE)) {
++            Scm_ArgPoolAdd(SCM_TYPE_DECL_NAME(SCM_CAR(pair)));
++        }
+     }
+ 
+     SCM_RETURN(td_list);
+@@ -1865,6 +1872,7 @@
+     INIT_SYM(void, "void");
+     INIT_SYM(_Bool, "_Bool");
+     INIT_SYM(_Float128, "_Float128");
++    INIT_SYM(__int128, "__int128");
+     INIT_SYM(__builtin_va_list, "__builtin_va_list");
+     INIT_SYM(U_struct, "STRUCT");
+     INIT_SYM(U_union, "UNION");
+--- a/testsuite/Makefile.in
++++ b/testsuite/Makefile.in
+@@ -78,6 +78,7 @@
+ 	$(GOSH) -I../src -I../lib stdio-test.scm >> test.log
+ 	$(GOSH) -I../src -I../lib math-test.scm >> test.log
+ 	$(GOSH) -I../src -I../lib local-typedef.scm >> test.log
++	$(GOSH) -I../src -I../lib stmt-decl.scm >> test.log
+ 	$(GOSH) -I../src -I../lib inline-test.scm >> test.log
+ 	$(GOSH) -I../src -I../lib fptr_array-test.scm >> test.log
+ 	$(GOSH) -I../src -I../lib array_qualifier-test.scm >> test.log
+--- a/testsuite/stmt_decl.h
++++ b/testsuite/stmt_decl.h
+@@ -0,0 +1,6 @@
++void f(int arg1)
++{
++  arg1 = 3;
++  double tmp = arg1;
++  return tmp;
++}
+--- a/testsuite/stmt-decl.scm
++++ b/testsuite/stmt-decl.scm
+@@ -0,0 +1,13 @@
++;;;
++;;; Test include math.h
++;;;
++
++(use gauche.test)
++
++(test-start "test for statement before and after declaration in c function")
++(use c-wrapper)
++
++(c-include "stmt_decl.h")
++
++;; epilogue
++(test-end)

@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+# Copyright 1999-2007 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+	provide lirc
+}
+
+start() {
+	ebegin "Starting IRTrans"
+	eval start-stop-daemon --start --quiet --exec /usr/bin/irserver --pidfile /var/run/irtrans-irserver.pid \
+	-- -logfile /var/log/irserver.log -loglevel "${LOGLEVEL}" -pidfile /var/run/irtrans-irserver.pid "${OPT}" "${IRDEVICE}"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping IRTrans"
+	start-stop-daemon --stop --quiet --pidfile /var/run/irtrans-irserver.pid 
+	eend $?
+}

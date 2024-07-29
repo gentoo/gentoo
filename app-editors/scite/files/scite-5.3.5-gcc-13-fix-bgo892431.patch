@@ -1,0 +1,40 @@
+--- a/scite/scripts/HeaderOrder.txt	2023-05-28 04:10:36.897378314 +0300
++++ b/scite/scripts/HeaderOrder.txt	2023-05-28 04:11:48.740712313 +0300
+@@ -30,6 +30,7 @@
+ 
+ // C++ standard library
+ #include <stdexcept>
++#include <system_error>
+ #include <tuple>
+ #include <string>
+ #include <string_view>
+--- a/scite/src/MultiplexExtension.cxx	2023-05-28 04:16:48.680714993 +0300
++++ b/scite/src/MultiplexExtension.cxx	2023-05-28 04:17:58.230715597 +0300
+@@ -5,6 +5,7 @@
+ // Copyright 1998-2003 by Neil Hodgson <neilh@scintilla.org>
+ // The License.txt file describes the conditions under which this software may be distributed.
+ 
++#include <cstdint>
+ #include <string>
+ #include <string_view>
+ #include <vector>
+--- a/scite/src/SciTEBase.cxx	2023-05-28 04:20:08.850716714 +0300
++++ b/scite/src/SciTEBase.cxx	2023-05-28 04:21:35.867384145 +0300
+@@ -15,6 +15,7 @@
+ #include <ctime>
+ #include <cmath>
+ 
++#include <system_error>
+ #include <tuple>
+ #include <string>
+ #include <string_view>
+--- a/scite/src/SciTEProps.cxx	2023-05-28 04:22:53.904051478 +0300
++++ b/scite/src/SciTEProps.cxx	2023-05-28 04:23:43.374051910 +0300
+@@ -13,6 +13,7 @@
+ #include <ctime>
+ #include <clocale>
+ 
++#include <stdexcept>
+ #include <tuple>
+ #include <string>
+ #include <string_view>

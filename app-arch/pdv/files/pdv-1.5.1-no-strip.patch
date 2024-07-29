@@ -1,0 +1,12 @@
+diff --git a/extra.mk b/extra.mk
+index 65f6e72..e681adb 100644
+--- a/extra.mk
++++ b/extra.mk
+@@ -11,7 +11,6 @@ pdv_fixed.c : Makefile
+ 	touch $@
+ 
+ pdv_fixed : pdv_fixed.c pdv
+-	$(STRIPBIN) pdv
+ 	printf "%-5.5s" $$VERSION >> pdv
+ 	printf "\000\000\000\000\000\000\000\000" >> pdv
+ 	sleep 1

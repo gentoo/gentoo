@@ -1,0 +1,4 @@
+% -- tex4ht configuration params added by texmf-update --
+TEX4HTINPUTS=.;$TEXMF/tex4ht/base//;$TEXMF/tex4ht/ht-fonts//
+T4HTINPUTS=.;$TEXMF/tex4ht/base//
+% -- tex4ht configuration ends here --

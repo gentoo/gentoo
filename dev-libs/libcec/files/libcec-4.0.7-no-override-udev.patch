@@ -1,0 +1,24 @@
+ src/libcec/cmake/CheckPlatformSupport.cmake | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/libcec/cmake/CheckPlatformSupport.cmake b/src/libcec/cmake/CheckPlatformSupport.cmake
+index 5d423df..9e77924 100644
+--- a/src/libcec/cmake/CheckPlatformSupport.cmake
++++ b/src/libcec/cmake/CheckPlatformSupport.cmake
+@@ -90,6 +90,7 @@ else()
+   check_function_exists(flock HAVE_FLOCK)
+ 
+   # udev
++  if (${HAVE_LIBUDEV})
+   pkg_check_modules(UDEV udev)
+   if (UDEV_FOUND)
+     set(PLATFORM_LIBREQUIRES "${PLATFORM_LIBREQUIRES} ${UDEV_LIBRARIES}")
+@@ -106,6 +107,7 @@ else()
+     list(APPEND CMAKE_REQUIRED_LIBRARIES "${UDEV_LIBRARIES}")
+     set(HAVE_P8_USB_DETECT ON CACHE BOOL "p8 usb-cec detection supported" FORCE)
+   endif()
++  endif()
+ 
+   # xrandr
+   check_include_files("X11/Xlib.h;X11/Xatom.h;X11/extensions/Xrandr.h" HAVE_RANDR_HEADERS)
+

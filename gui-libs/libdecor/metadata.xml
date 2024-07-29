@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<use>
+		<flag name="dbus">Enable dbus to query current cursor theme</flag>
+		<flag name="gtk">Build GTK plugin</flag>
+		<flag name="examples">Build and install examples</flag>
+	</use>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>gonegrier.duarte@gmail.com</email>
+		<name>Gonçalo Negrier Duarte</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="freedesktop-gitlab">libdecor/libdecor</remote-id>
+	</upstream>
+</pkgmetadata>

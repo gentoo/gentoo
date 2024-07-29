@@ -1,0 +1,10 @@
+[Unit]
+Description=watchdog daemon
+After=syslog.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/watchdog
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,7 @@
+# Copyright 2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2023-01-29)
+# Fails to build on combination of ppc* + musl because of mcontext.
+# libsanitizer needs adapting, bug #892079.
+sys-devel/gcc sanitize

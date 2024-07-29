@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>ml@gentoo.org</email>
+		<name>ML</name>
+	</maintainer>
+	<longdescription lang="en">
+		A library implementing a simplex algorithm, in a functional style,
+		for solving systems of linear inequalities
+	</longdescription>
+	<upstream>
+		<remote-id type="github">OCamlPro-Iguernlala/ocplib-simplex</remote-id>
+	</upstream>
+</pkgmetadata>

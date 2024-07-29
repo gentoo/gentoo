@@ -1,0 +1,155 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a316b76..50176f0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,6 +6,8 @@ cmake_minimum_required( VERSION 3.2 )
+ 
+ cmake_policy( SET CMP0048 NEW )
+ 
++include( GNUInstallDirs )
++
+ #------------------------------------------------------------------------------
+ #   Define the project
+ #------------------------------------------------------------------------------
+@@ -131,8 +133,8 @@ set_target_properties( ${FULLNAME} PROPERTIES
+                        COMPILE_PDB_NAME            ${FULLNAME} )
+ 
+ install( TARGETS ${FULLNAME}
+-         PUBLIC_HEADER DESTINATION include
+-         ARCHIVE       DESTINATION ${LIB_INSTALL_DIR} )
++         PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_LIBDIR}/hercules-sdl/include
++         ARCHIVE       DESTINATION ${CMAKE_INSTALL_LIBDIR}/hercules-sdl/lib )
+ 
+ 
+ #------------------------------------------------------------------------------
+diff --git a/cmake/modules/ParseBinaryDir.cmake b/cmake/modules/ParseBinaryDir.cmake
+index 7983107..2ede77b 100644
+--- a/cmake/modules/ParseBinaryDir.cmake
++++ b/cmake/modules/ParseBinaryDir.cmake
+@@ -7,6 +7,8 @@ macro( ParseBinaryDir )
+     set(  CMAKE_DISABLE_IN_SOURCE_BUILD  ON  )
+     set(  CMAKE_DISABLE_SOURCE_CHANGES   ON  )
+ 
++    set( FULLNAME ${EXTPKG_NAME} )
++
+     #--------------------------------------------------------------------------
+     #  Make sure they are not trying to do an "in source" build by making
+     #  sure the cmake "binary" (build) directory is not a subdirectory of
+@@ -48,102 +50,6 @@ Remove the 'CMakeCache.txt' file and the entire 'CMakeFiles' directory and try a
+ 
+     TEST_BIG_ENDIAN( IS_BIG_ENDIAN )
+ 
+-    #--------------------------------------------------------------------------
+-    #   Split the binary build directory into its constituent components.
+-    #   Refer to the "BUILDING" document for more information.
+-    #--------------------------------------------------------------------------
+-
+-    get_filename_component( BINARY_HLQ "${CMAKE_BINARY_DIR}" DIRECTORY )
+-    get_filename_component( BINARY_DIR "${CMAKE_BINARY_DIR}" NAME )
+-
+-    trace( BINARY_HLQ )
+-    trace( BINARY_DIR )
+-
+-    string( FIND ${BINARY_DIR} " " _n )
+-    if( NOT ${_n} EQUAL -1 )
+-        message( FATAL_ERROR "Build directory name cannot have spaces! ${BINARY_DIR}" )
+-    endif()
+-
+-    #--------------------------------------------------------------------------
+-    #  First, split it into two parts: before the dot and after the dot
+-    #--------------------------------------------------------------------------
+-
+-    string( REGEX MATCH "([^\\.]*)" _xxxxx ${BINARY_DIR} )
+-    string( REGEX MATCH "([^.]*\$)" CONFIG ${BINARY_DIR} )
+-
+-    trace( _xxxxx )
+-    trace( CONFIG )
+-
+-    #--------------------------------------------------------------------------
+-    #  The second part tells us if this is a "Debug" or "Release" build.
+-    #--------------------------------------------------------------------------
+-
+-    string( LENGTH ${CONFIG} _n )
+-    if( ${_n} LESS 1 )
+-        message( FATAL_ERROR "Invalid Release/Debug build type! ${CONFIG}" )
+-    endif()
+-
+-    #--------------------------------------------------------------------------
+-    #  Capitalize "Debug" and "Release" for Visual Studio compatibility.
+-    #--------------------------------------------------------------------------
+-
+-    include( CapitalizeWord )
+-
+-    Capitalize_Word( ${CONFIG} CONFIG )
+-
+-    if(( NOT CONFIG STREQUAL "Debug" ) AND (NOT CONFIG STREQUAL "Release" ))
+-        message( FATAL_ERROR "Invalid Release/Debug build type! ${CONFIG}" )
+-    endif()
+-
+-    #--------------------------------------------------------------------------
+-    #  Define the "Debug" or "Release" build type
+-    #--------------------------------------------------------------------------
+-
+-    if( CONFIG STREQUAL "Debug" )
+-        set( CMAKE_BUILD_TYPE "Debug" CACHE PATH "" FORCE )
+-        set( DBGCHAR "d" )
+-    elseif( CONFIG STREQUAL "Release" )
+-        set( CMAKE_BUILD_TYPE "RelWithDebInfo" CACHE PATH "" FORCE )
+-        set( DBGCHAR "" )
+-    endif()
+-
+-    trace( CMAKE_BUILD_TYPE )
+-
+-    #--------------------------------------------------------------------------
+-    #  Now split the first part into the base package/product name
+-    #  and build architecture (32-bit ot 64-bit).
+-    #--------------------------------------------------------------------------
+-
+-    string( LENGTH ${_xxxxx} _n )
+-    if( ${_n} LESS 3 )
+-        message( FATAL_ERROR "Invalid base package name! ${_xxxxx}" )
+-    endif()
+-
+-    math( EXPR _n "${_n} - 2" )     # (want the last two characters)
+-
+-    string( SUBSTRING ${_xxxxx} 0 ${_n}    BASENAME )
+-    string( SUBSTRING ${_xxxxx}   ${_n} -1 BITNESS  )
+-
+-    if( NOT BITNESS STREQUAL "32" AND
+-        NOT BITNESS STREQUAL "64" )
+-        message( FATAL_ERROR "Invalid package architecture! ${BITNESS}" )
+-    endif()
+-
+-    #--------------------------------------------------------------------------
+-    #  Show results
+-    #--------------------------------------------------------------------------
+-
+-    set( SUFFIX   "${BITNESS}${DBGCHAR}" )
+-    set( FULLNAME "${BASENAME}${SUFFIX}" )
+-
+-    trace( BASENAME )
+-    trace( BITNESS  )
+-    trace( CONFIG   )
+-    trace( DBGCHAR  )
+-    trace( SUFFIX   )
+-    trace( FULLNAME )
+-    trace( CMAKE_BINARY_DIR )
+-
+     #--------------------------------------------------------------------------
+     #  Define the install directory
+     #--------------------------------------------------------------------------
+diff --git a/extra.txt b/extra.txt
+index dfb293d..6018eb6 100644
+--- a/extra.txt
++++ b/extra.txt
+@@ -2,8 +2,8 @@
+ #   Define additional files to be installed
+ #------------------------------------------------------------------------------
+
+-install( FILES "telnet.LICENSE.txt" DESTINATION . )
+-install( FILES "telnet.README.txt"  DESTINATION . )
++install( FILES "telnet.LICENSE.txt" DESTINATION ${CMAKE_INSTALL_DOCDIR} )
++install( FILES "telnet.README.txt"  DESTINATION ${CMAKE_INSTALL_DOCDIR} )
+ 
+ #------------------------------------------------------------------------------
+ 

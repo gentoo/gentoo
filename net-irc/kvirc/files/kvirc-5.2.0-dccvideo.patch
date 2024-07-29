@@ -1,0 +1,69 @@
+From da4659a9d9c30b6d89875f328cca88758ef568c6 Mon Sep 17 00:00:00 2001
+From: Aleksei Bavshin <alebastr89@gmail.com>
+Date: Wed, 17 Jan 2024 20:58:27 -0800
+Subject: [PATCH] Fix build with Qt5 and WANT_DCC_VIDEO
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+```
+src/modules/dcc/DccVideoWindow.cpp: In member function ‘virtual const QString& DccVideoWindow::target()’:
+src/modules/dcc/DccVideoWindow.cpp:660:40: error: cannot convert ‘QString’ to ‘QString*’ in assignment
+```
+---
+ src/modules/dcc/DccVideoWindow.cpp | 14 ++------------
+ src/modules/dcc/DccVideoWindow.h   |  2 +-
+ 2 files changed, 3 insertions(+), 13 deletions(-)
+
+diff --git a/src/modules/dcc/DccVideoWindow.cpp b/src/modules/dcc/DccVideoWindow.cpp
+index 7f4f66ea42..7cf8058fe8 100644
+--- a/src/modules/dcc/DccVideoWindow.cpp
++++ b/src/modules/dcc/DccVideoWindow.cpp
+@@ -396,7 +396,6 @@ DccVideoWindow::DccVideoWindow(DccDescriptor * dcc, const char * name)
+ {
+ 	m_pDescriptor = dcc;
+ 	m_pSlaveThread = nullptr;
+-	m_pszTarget = nullptr;
+ 
+ 	m_pButtonBox = new KviTalHBox(this);
+ 
+@@ -557,12 +556,6 @@ DccVideoWindow::~DccVideoWindow()
+ 	}
+ 
+ 	KviThreadManager::killPendingEvents(this);
+-
+-	if(m_pszTarget)
+-	{
+-		delete m_pszTarget;
+-		m_pszTarget = nullptr;
+-	}
+ }
+ 
+ void DccVideoWindow::resizeEvent(QResizeEvent *)
+@@ -654,11 +647,8 @@ void DccVideoWindow::connectionInProgress()
+ const QString & DccVideoWindow::target()
+ {
+ 	// This may change on the fly...
+-	if(!m_pszTarget)
+-		m_pszTarget = new QString();
+-
+-	m_pszTarget = QString::asprintf("%s@%s:%s", m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data());
+-	return *m_pszTarget;
++	m_szTarget = QString::asprintf("%s@%s:%s", m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data());
++	return m_szTarget;
+ }
+ 
+ void DccVideoWindow::getBaseLogFileName(QString & buffer)
+diff --git a/src/modules/dcc/DccVideoWindow.h b/src/modules/dcc/DccVideoWindow.h
+index 98bb622f5b..d0f957ea3e 100644
+--- a/src/modules/dcc/DccVideoWindow.h
++++ b/src/modules/dcc/DccVideoWindow.h
+@@ -129,7 +129,7 @@ class DccVideoWindow : public DccWindow
+ 	QGridLayout * m_pLayout;
+ 	QTimer m_Timer;
+ 	QLabel * m_pVideoLabel[3];
+-	QString * m_pszTarget;
++	QString m_szTarget;
+ 	DccVideoThread * m_pSlaveThread;
+ 	QByteArray m_tmpTextDataOut;
+ 	QString m_szLocalNick;

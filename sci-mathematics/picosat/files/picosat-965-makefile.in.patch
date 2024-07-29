@@ -1,0 +1,13 @@
+--- a/makefile.in
++++ b/makefile.in
+@@ -49,8 +49,8 @@ config.h: makefile VERSION mkconfig.sh # and actually picosat.c
+ 	rm -f $@; ./mkconfig.sh > $@
+ 
+ libpicosat.a: picosat.o version.o
+-	ar rc $@ picosat.o version.o
+-	ranlib $@
++	$(AR) rc $@ picosat.o version.o
++	$(RANLIB) $@
+ 
+ SONAME=-Xlinker -soname -Xlinker libpicosat.so
+ libpicosat.so: picosat.o version.o

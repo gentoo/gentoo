@@ -1,0 +1,28 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+# /etc/init.d/ipmievd
+
+depend() {
+  use logger modules
+  keyword -docker -lxc -prefix -systemd-nspawn
+}
+
+# TODO: ipmievd has a mode where it could be used to monitor multiple BMCs via
+# DEVICENUM or remote systems, and it would be valid to run multiple instances.
+# That is not supported by this init script at this time.
+
+description="IPMI event daemon for sending events to syslog LOCAL4"
+
+: "${DEVICENUM:=0}"
+: "${INTERFACE:=open}"
+: "${COMMAND:=open daemon}"
+: "${OPTIONS:=}"
+
+daemon=ipmievd
+
+pidfile=/run/${daemon}.pid${DEVICENUM} # see manpage re suffix
+command=/usr/sbin/${daemon}
+cachefile=/run/${daemon}.${DEVICENUM}.sdr-cache
+command_args="-d ${DEVICENUM} -S ${cachefile} -I ${INTERFACE} ${OPTIONS} ${COMMAND} pidfile=${pidfile}"
+required_files=/dev/ipmi$DEVICENUM

@@ -1,0 +1,36 @@
+diff -ur a/Makefile b/Makefile
+--- a/Makefile	2019-05-20 10:02:14.000000000 +0300
++++ b/Makefile	2019-05-20 10:32:04.972039000 +0300
+@@ -67,7 +67,7 @@
+ 
+ ifeq ($(SYSTEM_INIPARSER),1)
+     CFLAGS += -DUSE_SYSTEM_INIPARSER
+-    LIBS += -liniparser
++    LIBS += -liniparser4
+ else
+     SRC += src/iniparser/iniparser.c   \
+ 	   src/iniparser/dictionary.c
+diff -ur a/src/parse.h b/src/parse.h
+--- a/src/parse.h	2019-05-20 10:02:14.000000000 +0300
++++ b/src/parse.h	2019-05-20 10:32:04.968039000 +0300
+@@ -24,7 +24,7 @@
+ #include "ubridge.h"
+ 
+ #ifdef USE_SYSTEM_INIPARSER
+-#include <iniparser.h>
++#include <iniparser4/iniparser.h>
+ #else
+ #include "iniparser/iniparser.h"
+ #endif
+diff -ur a/src/ubridge.c b/src/ubridge.c
+--- a/src/ubridge.c	2019-05-20 10:02:14.000000000 +0300
++++ b/src/ubridge.c	2019-05-20 10:32:04.968039000 +0300
+@@ -26,7 +26,7 @@
+ #include <pthread.h>
+ 
+ #ifdef USE_SYSTEM_INIPARSER
+-#include <iniparser.h>
++#include <iniparser4/iniparser.h>
+ #else
+ #include "iniparser/iniparser.h"
+ #endif

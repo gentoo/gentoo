@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>arthurzam@gentoo.org</email>
+		<name>Arthur Zamarin</name>
+	</maintainer>
+	<use>
+		<flag name="plugins">Installed needed Python packages for using Sigil plugins</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">Sigil-Ebook/Sigil</remote-id>
+		<maintainer status="active">
+			<email>douglaslmassay@gmail.com</email>
+			<name>Doug Massay</name>
+		</maintainer>
+		<bugs-to>https://github.com/Sigil-Ebook/Sigil/issues</bugs-to>
+		<changelog>https://github.com/Sigil-Ebook/Sigil/blob/master/ChangeLog.txt</changelog>
+	</upstream>
+</pkgmetadata>

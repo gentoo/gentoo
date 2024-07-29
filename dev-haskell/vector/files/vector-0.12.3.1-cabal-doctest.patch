@@ -1,0 +1,86 @@
+From: hololeap <hololeap@protonmail.com>
+Signed-off-by: hololeap <hololeap@protonmail.com>
+Bug: https://github.com/gentoo-haskell/gentoo-haskell/issues/1231
+
+doctest pulls in the out-of-scope packages if they are installed on the
+system. The best workaround is to use migrate to cabal-doctest.
+
+diff -urN vector-0.12.3.1/Setup.hs vector-0.12.3.1-r1/Setup.hs
+--- vector-0.12.3.1/Setup.hs	2021-09-21 10:02:15.000000000 -0600
++++ vector-0.12.3.1-r1/Setup.hs	2022-03-22 22:12:57.107142731 -0600
+@@ -1,3 +1,6 @@
+-import Distribution.Simple
+-main = defaultMain
++module Main (main) where
+ 
++import Distribution.Extra.Doctest ( defaultMainWithDoctests )
++
++main :: IO ()
++main = defaultMainWithDoctests "vector-doctest"
+diff -urN vector-0.12.3.1/tests/doctests.hs vector-0.12.3.1-r1/tests/doctests.hs
+--- vector-0.12.3.1/tests/doctests.hs	2021-09-21 10:02:15.000000000 -0600
++++ vector-0.12.3.1-r1/tests/doctests.hs	2022-03-22 22:14:54.557142788 -0600
+@@ -1,4 +1,30 @@
+ import Test.DocTest (doctest)
++import GHC.IO.Encoding (setLocaleEncoding)
++import System.Directory (getCurrentDirectory, makeAbsolute)
++import System.FilePath.Posix ((</>))
++import System.IO (utf8)
++import Build_doctests (pkgs)
+ 
+ main :: IO ()
+-main = doctest ["-Iinclude", "-Iinternal", "Data"]
++main = do
++    setLocaleEncoding utf8
++    pwd    <- getCurrentDirectory
++    prefix <- makeAbsolute pwd
++
++    let customFlags =
++            [ "-package-env=-"
++            , "-hide-all-packages"
++            , "-no-user-package-db"
++            , "-package-db=" ++ prefix </> "dist/package.conf.inplace"
++            ]
++
++    let origFlags =
++            [ "-Iinclude"
++            , "-Iinternal"
++            ]
++
++    let modules =
++            [ "Data"
++            ]
++
++    doctest $ customFlags ++ pkgs ++ origFlags ++ modules
+diff -urN vector-0.12.3.1/vector.cabal vector-0.12.3.1-r1/vector.cabal
+--- vector-0.12.3.1/vector.cabal	2022-03-22 22:09:55.787142644 -0600
++++ vector-0.12.3.1-r1/vector.cabal	2022-03-22 22:12:23.547142715 -0600
+@@ -49,7 +49,7 @@
+ 
+ 
+ Cabal-Version:  >=1.10
+-Build-Type:     Simple
++Build-Type:     Custom
+ 
+ Extra-Source-Files:
+       changelog.md
+@@ -99,6 +99,11 @@
+   Default: False
+   Manual: True
+ 
++custom-setup
++  setup-depends:
++      base
++    , Cabal
++    , cabal-doctest
+ 
+ Library
+   Default-Language: Haskell2010
+@@ -288,4 +293,6 @@
+         base      -any
+       , doctest   >=0.15 && <0.19
+       , primitive >= 0.6.4.0 && < 0.8
+-      , vector    -any
++      , directory
++      , filepath
++      , base-compat

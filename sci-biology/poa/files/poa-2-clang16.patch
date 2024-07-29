@@ -1,0 +1,74 @@
+--- a/black_flag.c
++++ b/black_flag.c
+@@ -82,7 +82,7 @@
+ 
+ 
+ 
+-int handle_crash_init(void (*crash_fun)())
++int handle_crash_init(void (*crash_fun)(int))
+ {
+ #define HANDLE_CRASH_MAX 5
+   int i,signal_type[HANDLE_CRASH_MAX]
+--- a/black_flag.h
++++ b/black_flag.h
+@@ -230,7 +230,7 @@
+ ((INDEX)<(MINIMUM_BOUND) || (INDEX)>=(MAXIMUM_BOUND))
+ 
+ void handle_crash(int sigcode);
+-int handle_crash_init(void (*crash_fun)());
++int handle_crash_init(void (*crash_fun)(int));
+ int black_flag(int bug_level,
+ 	       char sourcefile[],
+ 	       int sourceline,
+--- a/default.h
++++ b/default.h
+@@ -19,7 +19,6 @@
+ 
+ typedef void *voidptr;  /* ~~e: should be moved out to generic typing header
+ 			   --- */
+-typedef int (*funptr)();
+ 
+ #define LOOPB(i,size) for ((i)=(size);(i)-- >0;)
+ #define LOOP(i,size) for ((i)=(size);(i)-- >0;)
+@@ -152,7 +151,7 @@
+   else if (NULL == ((memptr)=(ATYPE *)calloc((size_t)(N),sizeof(ATYPE))))  { \
+     fprintf(stderr,"%s, line %d: *** out of memory \n",__FILE__,__LINE__);                \
+     fprintf(stderr,"Unable to meet request: %s[%d]\n",STRINGIFY(memptr),(N));    \
+-    fprintf(stderr,"requested %d x %d bytes \n",(N),sizeof(ATYPE));   \
++    fprintf(stderr,"requested %d x %zu bytes \n",(N),sizeof(ATYPE));   \
+     MALLOC_FAILURE_ACTION;                                            \
+   }
+ 
+@@ -193,7 +192,7 @@
+     else { \
+       fprintf(stderr,"%s, line %d: *** out of memory \n",__FILE__,__LINE__); \
+       fprintf(stderr,"Unable to meet request: %s\n",STRINGIFY(memptr));  \
+-      fprintf(stderr,"requested %d x %d bytes \n",(NUM),sizeof(ATYPE));   \
++      fprintf(stderr,"requested %d x %zu bytes \n",(NUM),sizeof(ATYPE));   \
+       REALLOC_FAILURE_ACTION;                                             \
+     } \
+   }
+--- a/fasta_format.c
++++ b/fasta_format.c
+@@ -2,6 +2,7 @@
+ #include "default.h"
+ #include "seq_util.h"
+ 
++char *stringptr_cat_pos(stringptr *s1,const char s2[],int *pos);
+ 
+ 
+ /** reads FASTA formatted sequence file, and saves the sequences to
+--- a/msa_format.c
++++ b/msa_format.c
+@@ -16,6 +16,11 @@
+ 
+ #include "msa_format.h"
+ 
++void fuse_ring_identities(int len_x,LPOLetter_T seq_x[],
++        int len_y,LPOLetter_T seq_y[],
++        LPOLetterRef_T al_x[],
++        LPOLetterRef_T al_y[]);
++void build_seq_to_po_index(LPOSequence_T *seq);
+ 
+ /** is `ch' an allowed residue? (a-z OR A-Z OR ? OR [ OR ]) */
+ static int is_residue_char (char ch);

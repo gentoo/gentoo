@@ -1,0 +1,22 @@
+[Unit]
+Description=SQLgrey Postfix Grey-listing Policy service
+After=network.target
+
+[Service]
+User=sqlgrey
+Group=sqlgrey
+ExecStart=/usr/sbin/sqlgrey
+CapabilityBoundingSet=
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=full
+ProtectHome=yes
+NoNewPrivileges=yes
+MemoryDenyWriteExecute=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictRealtime=true
+
+[Install]
+WantedBy=multi-user.target

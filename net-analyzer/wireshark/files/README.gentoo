@@ -1,0 +1,3 @@
+NOTE: To capture traffic with wireshark as normal user you have to
+add yourself to the pcap group. This security measure ensures
+that only trusted users are allowed to sniff your traffic.

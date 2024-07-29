@@ -1,0 +1,157 @@
+- Fix building with --as-needed
+- Fix parallel make by defining two new targets
+- Fix one spelling error
+- Respect AR, CC, RANLIB, CFLAGS, LDFLAGS
+- Link GTK frontend against -lX11 since it uses XOpenDisplay all the time
+
+--- a/configure.in
++++ b/configure.in
+@@ -11,6 +11,9 @@
+ AC_PROG_MAKE_SET
+ AC_HEADER_STDC
+ 
++AC_CHECK_TOOL([AR], [ar])
++AC_PROG_RANLIB
++
+ 
+ HAVE_GTK2=no
+ HAVE_QT=no
+@@ -75,6 +78,7 @@
+ 
+ dnl We will only compile one NVClock gtk binary, choose the latest version availible
+ if test x"$enable_gtk" = "xyes"; then
++    PKG_CHECK_MODULES([X11], [x11])
+     PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.4.0, have_gtk2=yes, have_gtk2=no)
+     GTK2_CFLAGS=$GTK_CFLAGS
+     GTK2_LIBS=$GTK_LIBS
+@@ -109,22 +113,18 @@
+ 	X11_LIBS="$X11_LIBS $XEXT_LIBS"
+ 	if test x"$X11_LIBS" != x ; then
+ 		HAVE_NVCONTROL=yes
+-	AC_SUBST(X11_CFLAGS)
+-	AC_SUBST(X11_LIBS)
+ 	AC_DEFINE([HAVE_NVCONTROL], [1], [NV-CONTROL support for changing OpenGL settings])
+ 	fi
+ fi
+ 
++AC_SEARCH_LIBS([dlsym], [dl dld], [], [
++    AC_MSG_ERROR([unable to find the dlsym() function])
++])
++
+ AC_SUBST(HAVE_GTK2)
+ AC_SUBST(HAVE_QT)
+ AC_SUBST(HAVE_NVCONTROL)
+ 
+-AC_SUBST(CFLAGS)
+-AC_SUBST(LIBS)
+-
+-RANLIB=ranlib
+-AC_SUBST(RANLIB)
+-
+ 
+ AC_OUTPUT(src/Makefile
+ 	src/backend/Makefile
+@@ -141,7 +141,7 @@
+ if [test "$HAVE_NVCONTROL" = "yes"]; then
+     echo "- NV-CONTROL support enabled"
+ else
+-    echo "- NV-CONROL support disabled"
++    echo "- NV-CONTROL support disabled"
+ fi
+ if [test "$HAVE_GTK2" = "yes"]; then
+     echo "- GTK2 GUI enabled"
+--- a/src/backend/Makefile.in
++++ b/src/backend/Makefile.in
+@@ -1,11 +1,11 @@
+-CC=@CC@ -O0
+-AR=ar
++CC=@CC@
++AR=@AR@
+ RANLIB=@RANLIB@
+ 
+ system=@system@
+ HAVE_NVCONTROL=@HAVE_NVCONTROL@
+ OBJECTS=backend.o bios.o config.o error.o nv30.o nv40.o nv50.o info.o overclock.o utils.o i2c.o xf86i2c.o adt7473.o f75375.o lm99.o w83781d.o w83l785r.o libc_wrapper.o
+-CFLAGS=@X11_CFLAGS@ -I../.. -I../nvcontrol
++CFLAGS=@CFLAGS@ @X11_CFLAGS@ -I../.. -I../nvcontrol
+ 
+ ifeq ($(system), FreeBSD)
+     OBJECTS+=back_bsd.o
+--- a/src/gtk/Makefile.in
++++ b/src/gtk/Makefile.in
+@@ -20,20 +20,21 @@
+ 
+ ifeq ($(HAVE_NVCONTROL), yes)
+     DEPS=$(libbackend) $(libnvcontrol)
+-    LIBS=@GTK_LIBS@ -L../backend -lbackend -L../nvcontrol -lnvcontrol
++    LIBS=@LIBS@ @GTK_LIBS@ -L../backend -lbackend -L../nvcontrol -lnvcontrol
+     OBJECTS=banner.o gl.o hw.o main.o settings.o
+ else
+     DEPS=$(libbackend)
+-    LIBS=@GTK_LIBS@ -L../backend -lbackend
++    LIBS=@LIBS@ @GTK_LIBS@ -L../backend -lbackend
+     OBJECTS=banner.o hw.o main.o settings.o
+ endif
++X11_LIBS=@X11_LIBS@
+ 
+ 
+ .PHONY: clean distclean install
+ all: $(PROGRAM)
+ 
+ nvclock_gtk: $(DEPS) $(OBJECTS)
+-	$(CC) $(CFLAGS) -o nvclock_gtk $(OBJECTS) $(libbackend) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o nvclock_gtk $(OBJECTS) $(libbackend) $(LIBS) $(X11_LIBS)
+ 
+ clean:
+ 	rm -f nvclock_gtk *.core *.o *.exe
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -16,7 +16,7 @@
+ ifeq ($(HAVE_NVCONTROL), yes)
+     DEPS=$(libbackend) $(libnvcontrol)
+     INCLUDES=@X11_CFLAGS@ -I./backend -I./nvcontrol -I..
+-    LIBS=@X11_LIBS@ -L./backend -lbackend -L./nvcontrol -lnvcontrol
++    LIBS=-L./backend -lbackend -L./nvcontrol -lnvcontrol @X11_LIBS@
+ else
+     DEPS=$(libbackend)
+     INCLUDES=-I./backend -I./nvcontrol -I..
+@@ -30,12 +30,17 @@
+ 
+ all: all-recursive nvclock smartdimmer
+ 
++$(libbackend):
++	$(MAKE) -C backend
++
++$(libnvcontrol):
++	$(MAKE) -C nvcontrol
+ 
+ nvclock: $(DEPS) $(LIB) nvclock.c
+-	$(CC) $(CFLAGS) -o nvclock $(nvclock_SOURCES) $(INCLUDES) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o nvclock $(nvclock_SOURCES) $(INCLUDES) $(LIBS)
+ 
+ smartdimmer: $(DEPS) $(LIB) smartdimmer.c
+-	$(CC) $(CFLAGS) -o smartdimmer $(smartdimmer_SOURCES) $(INCLUDES) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o smartdimmer $(smartdimmer_SOURCES) $(INCLUDES) $(LIBS)
+ 
+ 
+ clean: clean-recursive clean-app
+--- a/src/nvcontrol/Makefile.in
++++ b/src/nvcontrol/Makefile.in
+@@ -1,5 +1,5 @@
+ CC=@CC@
+-AR=ar
++AR=@AR@
+ RANLIB=@RANLIB@
+ system=@system@
+ CFLAGS=@CFLAGS@
+--- a/src/qt/Makefile.in
++++ b/src/qt/Makefile.in
+@@ -31,7 +31,7 @@
+ all: $(PROGRAM)
+ 
+ nvclock_qt: $(DEPS) qt_nvclock.moc qt_xfree.moc $(OBJECTS)
+-	$(CXX) $(CXXFLAGS) -o nvclock_qt $(CXXFLAGS) $(OBJECTS) $(LIBS) 
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o nvclock_qt $(OBJECTS) $(LIBS) 
+ 
+ clean:
+ 	rm -f nvclock_qt *.core *.moc *.o

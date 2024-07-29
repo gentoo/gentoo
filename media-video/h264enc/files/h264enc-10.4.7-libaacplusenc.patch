@@ -1,0 +1,12 @@
+diff -Naur a/h264enc b/h264enc
+--- a/h264enc	2016-01-19 20:15:59.000000000 +0100
++++ b/h264enc	2019-12-17 14:14:45.321115770 +0100
+@@ -7525,7 +7525,7 @@
+ 		MPL[i]="$MPLAYER \"$AUDINPUT\" $MPLAYEROPTS ${channels[i]} ${audfilters[i]} -really-quiet -vc dummy -vo null -nocache -ao pcm:fast:file=\"$AUDPIPE\""
+ 		NERO[i]="$NEROAACENC -ignorelength ${neroaacbr[i]} -if \"$AUDPIPE\" -of \"$TEMPDIR/audio$i.aac\" &"
+ 		FDKAAC[i]="$FDKAACENC ${fdkaacbr[i]} \"$AUDPIPE\" \"$TEMPDIR/audio$i.aac\" &"
+-		AACPLUS[i]="$AACPLUSENC \"$AUDPIPE\" \"$TEMPDIR/audio$i.aac\" ${aacplusbr[i]} &"
++		AACPLUS[i]="$AACPLUSENC \"$AUDPIPE\" \"$TEMPDIR/audio$i.aac\" $(( ${aacplusbr[i]} * 1000 )) s &"
+ 		OGG[i]="$OGGENC ${vorbq[i]} \"$AUDPIPE\" -o \"$TEMPDIR/audio$i.ogg\" &"
+ 		OPUS[i]="$OPUSENC ${opusopts[i]} \"$AUDPIPE\" \"$TEMPDIR/audio$i.opus\" &"
+ 		FLACENC[i]="$FLAC ${flacq[i]} \"$AUDPIPE\" -o \"$TEMPDIR/audio$i.flac\" &"

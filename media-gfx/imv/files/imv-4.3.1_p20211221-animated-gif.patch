@@ -1,0 +1,19 @@
+Upstream priorizes freeimage in general, but nsgif supports animated
+gif while freeimage displays them as a static image. This allows setting
+USE=freeimage while still getting animations if (optional) USE=gif.
+--- a/src/main.c
++++ b/src/main.c
+@@ -20,2 +20,6 @@
+ 
++#ifdef IMV_BACKEND_LIBNSGIF
++  imv_install_backend(imv, &imv_backend_libnsgif);
++#endif
++
+ #ifdef IMV_BACKEND_FREEIMAGE
+@@ -39,6 +43,2 @@
+ #endif
+-
+-#ifdef IMV_BACKEND_LIBNSGIF
+-  imv_install_backend(imv, &imv_backend_libnsgif);
+-#endif
+ 

@@ -1,0 +1,9 @@
+diff -ruN linux-gpib-user-4.3.0.orig/language/Makefile.am linux-gpib-user-4.3.0/language/Makefile.am
+--- linux-gpib-user-4.3.0.orig/language/Makefile.am	2019-08-23 11:30:12.000000000 +0300
++++ linux-gpib-user-4.3.0/language/Makefile.am	2020-04-18 16:15:15.558426112 +0300
+@@ -73,4 +73,4 @@
+ 	$(do_subst) < $(srcdir)/perl/Makefile.PL.in >perl/Makefile.PL
+ 
+ perl/Makefile: perl/Makefile.PL
+-	-(cd perl && $(PERL) Makefile.PL)
++	-(cd perl && $(PERL) Makefile.PL PREFIX=$(EPREFIX)/usr INSTALLDIRS=vendor INSTALLMAN3DIR='none' DESTDIR="$(DESTDIR)" )

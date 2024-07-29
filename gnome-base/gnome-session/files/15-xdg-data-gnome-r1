@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ "$DESKTOP_SESSION" = "gnome" -o "$DESKTOP_SESSION" = "cinnamon" ]; then
+	if [ -z "$XDG_DATA_DIRS" ]; then
+		export XDG_DATA_DIRS=/usr/share/gnome:/usr/local/share/:/usr/share/
+	else
+		export XDG_DATA_DIRS=/usr/share/gnome:"$XDG_DATA_DIRS"
+	fi
+fi

@@ -1,0 +1,32 @@
+# HG changeset patch
+# User kristianf
+# Date 1382916823 -3600
+#      Mon Oct 28 00:33:43 2013 +0100
+# Node ID 0d99149615ec5ec70a6d03c685291ddc55babff6
+# Parent  fd192324ff9ae4c4c92cdb9c27f5ae100da136a6
+Rewrite static const char *usage
+
+diff -r fd192324ff9a -r 0d99149615ec host/ekey-setkey.c
+--- a/host/ekey-setkey.c	Mon Oct 28 00:31:59 2013 +0100
++++ b/host/ekey-setkey.c	Mon Oct 28 00:33:43 2013 +0100
+@@ -79,7 +79,7 @@
+     return mac;
+ }
+ 
+-static const char *usage =
++static const char usage[] =
+     "This is a low level tool. You probably wanted to use ekey-rekey instead.\n\n"
+     "Usage: %s [-d] [-h] [-n] [-f <keyring>] [-m <master>]\n"
+     "       [-s <serial>] <path>\n"
+diff -r fd192324ff9a -r 0d99149615ec host/ekeyd.c
+--- a/host/ekeyd.c	Mon Oct 28 00:31:59 2013 +0100
++++ b/host/ekeyd.c	Mon Oct 28 00:33:43 2013 +0100
+@@ -209,7 +209,7 @@
+     return (output_stream != NULL);
+ }
+ 
+-static const char *usage=
++static const char usage[] =
+     "Usage: %s [-f <configfile>] [-p <pidfile>] [-v] [-h]\n"
+     "Entropy Key Daemon\n\n"
+     "\t-f Read configuration from configfile\n"

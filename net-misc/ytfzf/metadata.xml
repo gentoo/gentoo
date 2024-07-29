@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ionen@gentoo.org</email>
+		<name>Ionen Wolkens</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<use>
+		<flag name="minimal">Skip all optional dependencies (may no longer work out-of-the-box and require custom setting up)</flag>
+		<flag name="thumbnails">Pull <pkg>media-gfx/ueberzugpp</pkg> or <pkg>media-gfx/ueberzug</pkg> for viewing thumbnails (default method when using -t)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">pystardust/ytfzf</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,5 @@
+# Config file for /etc/init.d/conserver
+# check CONSERVER(8) for details
+
+#CONSERVER_LOG="/var/log/conserver.log"
+#CONSERVER_OPTS=""

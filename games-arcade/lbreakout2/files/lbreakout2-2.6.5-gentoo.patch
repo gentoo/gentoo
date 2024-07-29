@@ -1,0 +1,75 @@
+--- a/common/gettext.h
++++ b/common/gettext.h
+@@ -24,6 +24,7 @@
+ 
+ /* Get declarations of GNU message catalog functions.  */
+ # include <libintl.h>
++# include <locale.h>
+ 
+ /* We need locale.h too, otherwise setlocale() bails out; cf. #643471 */
+ #if HAVE_LOCALE_H
+--- a/configure.in
++++ b/configure.in
+@@ -12,6 +12,7 @@
+ dnl Checks for programs.
+ AM_GNU_GETTEXT
+ AC_PROG_CC
++AM_PROG_AR
+ AC_PROG_RANLIB
+ AC_EXEEXT
+ 
+@@ -80,8 +81,6 @@
+ [  --enable-netdebug           Enable net packet debugging.], netdebug_flag="-DNET_DEBUG_MSG" )
+ AC_SUBST(netdebug_flag)
+ 
+-dnl set localedir
+-localedir=$datadir/locale
+ locdir_flag="-DLOCALEDIR=\\\"$localedir\\\""
+ 
+ dnl installation&highscore path
+--- a/docs/Makefile.am
++++ b/docs/Makefile.am
+@@ -7,11 +7,11 @@
+ warp.jpg screen.jpg
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(DESTDIR)$(doc_dir)/lbreakout2
++	$(mkinstalldirs) $(DESTDIR)$(doc_dir)
+ 	@for file in *.jpg; do\
+-	  $(INSTALL_DATA) $$file $(DESTDIR)$(doc_dir)/lbreakout2/$$file;\
++	  $(INSTALL_DATA) $$file $(DESTDIR)$(doc_dir)/$$file;\
+ 	done
+-	$(INSTALL_DATA) index.html $(DESTDIR)$(doc_dir)/lbreakout2/index.html
++	$(INSTALL_DATA) index.html $(DESTDIR)$(doc_dir)/index.html
+ 
+ win32-install-script:
+ 	@for file in $(EXTRA_DIST); do \
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,13 +1,8 @@
+ SUBDIRS = intl m4 po common gui game server client docs
+ 
+ EXTRA_DIST = config.rpath AUTHORS COPYING ChangeLog INSTALL README \
+-README-SDL.txt TODO lbreakout2.spec touchall lbreakout32.gif \
+-lbreakout48.gif lbreakout2.desktop.in win32_mancomp win32_preparchive
+-
+-desktopdir = $(datadir)/applications
+-desktop_DATA = lbreakout2.desktop
+-icondir = $(datadir)/icons
+-icon_DATA = lbreakout48.gif
++README-SDL.txt TODO lbreakout2.spec touchall \
++win32_mancomp win32_preparchive
+ 
+ WIN32_TEXT = AUTHORS COPYING ChangeLog INSTALL README README-SDL.txt \
+ TODO lbreakout2.spec ABOUT-NLS
+--- a/po/Makefile.in.in
++++ b/po/Makefile.in.in
+@@ -24,7 +24,7 @@
+ exec_prefix = @exec_prefix@
+ datadir = @datadir@
+ datarootdir = @datarootdir@
+-localedir = $(datadir)/locale
++localedir = @localedir@
+ gettextsrcdir = $(datadir)/gettext/po
+ 
+ INSTALL = @INSTALL@

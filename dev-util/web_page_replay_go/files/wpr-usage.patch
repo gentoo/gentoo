@@ -1,0 +1,46 @@
+From: Marek Behún <kabel@kernel.org>
+
+Make usage text in wpr.go does reflect usage information from README.md.
+
+diff --git a/wpr.go b/wpr.go
+--- a/wpr.go
++++ b/wpr.go
+@@ -28,25 +28,27 @@ const longUsage = `
+    %s [installroot|removeroot] [options]
+    %s [record|replay] [options] archive_file
+ 
+-   Before: Install a test root CA.
+-     $ GOPATH=$PWD go run src/wpr.go installroot
+-
+    To record web pages:
+-     1. Start this program in record mode.
+-        $ GOPATH=$PWD go run src/wpr.go record archive.json
++     1. Start wpr in record mode.
++        $ wpr record --http_port=8080 --https_port=8081 /tmp/archive.wprgo
+      2. Load the web pages you want to record in a web browser. It is important to
+         clear browser caches before this so that all subresources are requested
+-        from the network.
++        from the network. This can be done by specifying a new user-data-dir.
++        Example:
++        $ google-chrome-beta --user-data-dir=$foo \
++           --host-resolver-rules="MAP *:80 127.0.0.1:8080,MAP *:443 127.0.0.1:8081,EXCLUDE localhost"
++           --ignore-certificate-errors-spki-list=PhrPvGIaAMmd29hj8BCZOq096yj7uMpRNHpn5PDxI6I=
+      3. Kill the process to stop recording.
+ 
+    To replay web pages:
+-     1. Start this program in replay mode with a previously recorded archive.
+-        $ GOPATH=$PWD go run src/wpr.go replay archive.json
++     1. Start wpr in replay mode.
++        $ wpr replay --http_port=8080 --https_port=8081 /tmp/archive.wprgo
+      2. Load recorded pages in a web browser. A 404 will be served for any pages or
+         resources not in the recorded archive.
+-
+-   After: Remove the test root CA.
+-     $ GOPATH=$PWD go run src/wpr.go removeroot`
++        Example:
++        $ google-chrome-beta --user-data-dir=$foo \
++           --host-resolver-rules="MAP *:80 127.0.0.1:8080,MAP *:443 127.0.0.1:8081,EXCLUDE localhost"
++           --ignore-certificate-errors-spki-list=PhrPvGIaAMmd29hj8BCZOq096yj7uMpRNHpn5PDxI6I=`
+ 
+ type CertConfig struct {
+ 	// Flags common to all commands.

@@ -1,0 +1,21 @@
+From 3cf1c058a3e61deb370dde36024a106a213ab2c6 Mon Sep 17 00:00:00 2001
+From: Christoph Junghans <junghans@gentoo.org>
+Date: Sat, 21 May 2022 09:36:52 -0600
+Subject: [PATCH] Syncer.hh: fix build with gcc-12
+
+---
+ libgrive/src/base/Syncer.hh | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libgrive/src/base/Syncer.hh b/libgrive/src/base/Syncer.hh
+index 237b8949..9b6ae4f7 100644
+--- a/libgrive/src/base/Syncer.hh
++++ b/libgrive/src/base/Syncer.hh
+@@ -21,6 +21,7 @@
+ 
+ #include "util/FileSystem.hh"
+ 
++#include <memory>
+ #include <string>
+ #include <vector>
+ #include <iosfwd>

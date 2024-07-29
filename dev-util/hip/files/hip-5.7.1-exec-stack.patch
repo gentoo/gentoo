@@ -1,0 +1,31 @@
+Upstream bug: https://github.com/ROCm-Developer-Tools/clr/issues/22
+--- a/hipamd/src/hip_embed_pch.sh
++++ b/hipamd/src/hip_embed_pch.sh
+@@ -178,6 +178,7 @@ EOF
+ 
+   echo "// Automatically generated script for HIP RTC." > $mcinFile
+   if [[ $isWindows -eq 0 ]]; then
++    echo "  .section .note.GNU-stack,"",%progbits" >> $mcinFile
+     echo "  .type __hipRTC_header,@object" >> $mcinFile
+     echo "  .type __hipRTC_header_size,@object" >> $mcinFile
+   fi
+--- a/hipamd/src/hiprtc/cmake/HIPRTC.cmake
++++ b/hipamd/src/hiprtc/cmake/HIPRTC.cmake
+@@ -98,6 +98,7 @@ macro(generate_hiprtc_mcin HiprtcMcin HiprtcPreprocessedInput)
+     set(HIPRTC_TYPE_LINUX_ONLY "")
+   else()
+     set(HIPRTC_TYPE_LINUX_ONLY
++      "  .section .note.GNU-stack,\"\",%progbits\n"
+       "  .type __hipRTC_header,@object\n"
+       "  .type __hipRTC_header_size,@object")
+   endif()
+--- a/hipamd/src/hip_embed_pch.sh
++++ b/hipamd/src/hip_embed_pch.sh
+@@ -111,6 +111,7 @@ cat >$tmp/hip_pch.h <<EOF
+ EOF
+ 
+ cat >$tmp/hip_pch.mcin <<EOF
++  .section .note.GNU-stack,"",%progbits
+   .type __hip_pch_wave32,@object
+   .section .hip_pch_wave32,"aMS",@progbits,1
+   .data

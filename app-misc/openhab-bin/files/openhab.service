@@ -1,0 +1,26 @@
+[Unit]
+Description=openHAB - empowering the smart home
+Documentation=https://www.openhab.org/docs/
+Documentation=https://community.openhab.org
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+EnvironmentFile=/etc/env.d/50openhab
+EnvironmentFile=-/etc/default/openhab
+
+User=openhab
+
+WorkingDirectory=/usr/share/openhab
+ExecStart=openhab daemon
+ExecStop=openhab stop
+
+SuccessExitStatus=0 143
+RestartSec=15
+Restart=on-failure
+TimeoutStopSec=120
+
+LimitNOFILE=102642
+
+[Install]
+WantedBy=multi-user.target

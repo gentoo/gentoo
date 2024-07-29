@@ -1,0 +1,34 @@
+#829503
+--- a/src/pauker/program/gui/swing/LineLabeler.java
++++ b/src/pauker/program/gui/swing/LineLabeler.java
+@@ -25,7 +25,7 @@ import javax.swing.text.JTextComponent;
+ 
+ /**
+  * A panel for labelling the Pauker import dialog
+- * @author Ronny Standtke <Ronny.Standtke@gmx.net>
++ * @author Ronny Standtke
+  */
+ public class LineLabeler extends JPanel implements DocumentListener {
+ 
+--- a/src/pauker/program/Card.java
++++ b/src/pauker/program/Card.java
+@@ -118,7 +118,7 @@ public class Card {
+     /**
+      * sets if the card is learned or not
+      * @param learned if true the cards state is set to learned and the current date is used as
+-     * </CODE>learnedDate</CODE>
++     * <CODE>learnedDate</CODE>
+      */
+     public void setLearned(boolean learned) {
+         frontSide.setLearned(learned);
+LongTermBatch.java:101: error: @param name not found
+--- a/src/pauker/program/LongTermBatch.java
++++ b/src/pauker/program/LongTermBatch.java
+@@ -98,7 +98,6 @@ public class LongTermBatch extends Batch {
+     }
+ 
+     /** gets an expired card
+-     * @param i the index of the expired card
+      * @return the expired card
+      */
+     public Card getOldestExpiredCard() {

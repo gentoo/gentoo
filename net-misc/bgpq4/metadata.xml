@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>jaco@uls.co.za</email>
+		<name>Jaco Kroon</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		bgpq4 allows to generate different config entries with prefix lists, useful for Cisco/Juniper routers and their software analogs, such as Quagga.
+		This program is a successor of bgpq from same author, main difference - it supports IPv6.
+	</longdescription>
+	<longdescription lang="ru">
+		bgpq4 позволяет создавать различные чaсти конфигурационных файлов со списком сетей для маршрутизаторов Cisco/Juniper и их программных аналогов,
+		таких как Quagga.
+		Данная программа - идейный наследник bgpq от того же автора, основное отличие - поддержка IPv6.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">bgp/bgpq4</remote-id>
+		<bugs-to>https://github.com/bgp/bgpq4/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

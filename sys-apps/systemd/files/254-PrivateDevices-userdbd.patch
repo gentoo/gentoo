@@ -1,0 +1,242 @@
+https://bugs.gentoo.org/920331
+https://github.com/systemd/systemd/issues/30535
+
+From 4a9e03aa6bb2cbd23dac00f2b2a7642cc79eaade Mon Sep 17 00:00:00 2001
+From: Daan De Meyer <daan.j.demeyer@gmail.com>
+Date: Wed, 27 Sep 2023 11:55:59 +0200
+Subject: [PATCH 1/2] core: Make private /dev read-only after populating it
+
+---
+ src/core/namespace.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/core/namespace.c b/src/core/namespace.c
+index e2304f5d066da..d1153f7690140 100644
+--- a/src/core/namespace.c
++++ b/src/core/namespace.c
+@@ -995,6 +995,11 @@ static int mount_private_dev(MountEntry *m) {
+         if (r < 0)
+                 log_debug_errno(r, "Failed to set up basic device tree at '%s', ignoring: %m", temporary_mount);
+ 
++        /* Make the bind mount read-only. */
++        r = mount_nofollow_verbose(LOG_DEBUG, NULL, dev, NULL, MS_REMOUNT|MS_BIND|MS_RDONLY, NULL);
++        if (r < 0)
++                return r;
++
+         /* Create the /dev directory if missing. It is more likely to be missing when the service is started
+          * with RootDirectory. This is consistent with mount units creating the mount points when missing. */
+         (void) mkdir_p_label(mount_entry_path(m), 0755);
+
+From cd7f3702eb47c82a50bf74c2b7c15c2e4e1f5c79 Mon Sep 17 00:00:00 2001
+From: Daan De Meyer <daan.j.demeyer@gmail.com>
+Date: Wed, 27 Sep 2023 10:52:50 +0200
+Subject: [PATCH 2/2] core: Use a subdirectory of /run/ for PrivateDevices=
+
+When we're starting early boot services such as systemd-userdbd.service,
+/tmp might not yet be mounted, so let's use a directory in /run instead
+which is guaranteed to be available.
+---
+ src/core/execute.c        |  1 +
+ src/core/namespace.c      | 61 +++++++++++++++++++++++++++++----------
+ src/core/namespace.h      |  2 ++
+ src/test/test-namespace.c |  1 +
+ src/test/test-ns.c        |  1 +
+ 5 files changed, 50 insertions(+), 16 deletions(-)
+
+diff --git a/src/core/execute.c b/src/core/execute.c
+index a52df64d01081..89c3868d55f6c 100644
+--- a/src/core/execute.c
++++ b/src/core/execute.c
+@@ -3307,6 +3307,7 @@ static int apply_mount_namespace(
+                         extension_dir,
+                         root_dir || root_image ? params->notify_socket : NULL,
+                         host_os_release_stage,
++                        params->runtime_scope,
+                         error_path);
+ 
+         /* If we couldn't set up the namespace this is probably due to a missing capability. setup_namespace() reports
+diff --git a/src/core/namespace.c b/src/core/namespace.c
+index d1153f7690140..a0471ac8884bf 100644
+--- a/src/core/namespace.c
++++ b/src/core/namespace.c
+@@ -909,7 +909,19 @@ static int clone_device_node(
+         return 0;
+ }
+ 
+-static int mount_private_dev(MountEntry *m) {
++static char *settle_runtime_dir(RuntimeScope scope) {
++        char *runtime_dir;
++
++        if (scope != RUNTIME_SCOPE_USER)
++                return strdup("/run/");
++
++        if (asprintf(&runtime_dir, "/run/user/" UID_FMT, geteuid()) < 0)
++                return NULL;
++
++        return runtime_dir;
++}
++
++static int mount_private_dev(MountEntry *m, RuntimeScope scope) {
+         static const char devnodes[] =
+                 "/dev/null\0"
+                 "/dev/zero\0"
+@@ -918,13 +930,21 @@ static int mount_private_dev(MountEntry *m) {
+                 "/dev/urandom\0"
+                 "/dev/tty\0";
+ 
+-        char temporary_mount[] = "/tmp/namespace-dev-XXXXXX";
++        _cleanup_free_ char *runtime_dir = NULL, *temporary_mount = NULL;
+         const char *dev = NULL, *devpts = NULL, *devshm = NULL, *devhugepages = NULL, *devmqueue = NULL, *devlog = NULL, *devptmx = NULL;
+         bool can_mknod = true;
+         int r;
+ 
+         assert(m);
+ 
++        runtime_dir = settle_runtime_dir(scope);
++        if (!runtime_dir)
++                return log_oom_debug();
++
++        temporary_mount = path_join(runtime_dir, "systemd/namespace-dev-XXXXXX");
++        if (!temporary_mount)
++                return log_oom_debug();
++
+         if (!mkdtemp(temporary_mount))
+                 return log_debug_errno(errno, "Failed to create temporary directory '%s': %m", temporary_mount);
+ 
+@@ -1364,7 +1384,8 @@ static int apply_one_mount(
+                 MountEntry *m,
+                 const ImagePolicy *mount_image_policy,
+                 const ImagePolicy *extension_image_policy,
+-                const NamespaceInfo *ns_info) {
++                const NamespaceInfo *ns_info,
++                RuntimeScope scope) {
+ 
+         _cleanup_free_ char *inaccessible = NULL;
+         bool rbind = true, make = false;
+@@ -1379,8 +1400,7 @@ static int apply_one_mount(
+         switch (m->mode) {
+ 
+         case INACCESSIBLE: {
+-                _cleanup_free_ char *tmp = NULL;
+-                const char *runtime_dir;
++                _cleanup_free_ char *runtime_dir = NULL;
+                 struct stat target;
+ 
+                 /* First, get rid of everything that is below if there
+@@ -1396,14 +1416,14 @@ static int apply_one_mount(
+                                                mount_entry_path(m));
+                 }
+ 
+-                if (geteuid() == 0)
+-                        runtime_dir = "/run";
+-                else {
+-                        if (asprintf(&tmp, "/run/user/" UID_FMT, geteuid()) < 0)
+-                                return -ENOMEM;
+-
+-                        runtime_dir = tmp;
+-                }
++                /* We don't pass the literal runtime scope through here but one based purely on our UID. This
++                 * means that the root user's --user services will use the host's inaccessible inodes rather
++                 * then root's private ones. This is preferable since it means device nodes that are
++                 * overmounted to make them inaccessible will be overmounted with a device node, rather than
++                 * an AF_UNIX socket inode. */
++                runtime_dir = settle_runtime_dir(geteuid() == 0 ? RUNTIME_SCOPE_SYSTEM : RUNTIME_SCOPE_USER);
++                if (!runtime_dir)
++                        return log_oom_debug();
+ 
+                 r = mode_to_inaccessible_node(runtime_dir, target.st_mode, &inaccessible);
+                 if (r < 0)
+@@ -1523,7 +1543,7 @@ static int apply_one_mount(
+                 break;
+ 
+         case PRIVATE_DEV:
+-                return mount_private_dev(m);
++                return mount_private_dev(m, scope);
+ 
+         case BIND_DEV:
+                 return mount_bind_dev(m);
+@@ -1824,6 +1844,7 @@ static int apply_mounts(
+                 const NamespaceInfo *ns_info,
+                 MountEntry *mounts,
+                 size_t *n_mounts,
++                RuntimeScope scope,
+                 char **symlinks,
+                 char **error_path) {
+ 
+@@ -1875,7 +1896,7 @@ static int apply_mounts(
+                                 break;
+                         }
+ 
+-                        r = apply_one_mount(root, m, mount_image_policy, extension_image_policy, ns_info);
++                        r = apply_one_mount(root, m, mount_image_policy, extension_image_policy, ns_info, scope);
+                         if (r < 0) {
+                                 if (error_path && mount_entry_path(m))
+                                         *error_path = strdup(mount_entry_path(m));
+@@ -2030,6 +2051,7 @@ int setup_namespace(
+                 const char *extension_dir,
+                 const char *notify_socket,
+                 const char *host_os_release_stage,
++                RuntimeScope scope,
+                 char **error_path) {
+ 
+         _cleanup_(loop_device_unrefp) LoopDevice *loop_device = NULL;
+@@ -2490,7 +2512,14 @@ int setup_namespace(
+                 (void) base_filesystem_create(root, UID_INVALID, GID_INVALID);
+ 
+         /* Now make the magic happen */
+-        r = apply_mounts(root, mount_image_policy, extension_image_policy, ns_info, mounts, &n_mounts, symlinks, error_path);
++        r = apply_mounts(root,
++                         mount_image_policy,
++                         extension_image_policy,
++                         ns_info,
++                         mounts, &n_mounts,
++                         scope,
++                         symlinks,
++                         error_path);
+         if (r < 0)
+                 goto finish;
+ 
+diff --git a/src/core/namespace.h b/src/core/namespace.h
+index b6132154c5132..581403d89826d 100644
+--- a/src/core/namespace.h
++++ b/src/core/namespace.h
+@@ -16,6 +16,7 @@ typedef struct MountImage MountImage;
+ #include "fs-util.h"
+ #include "macro.h"
+ #include "namespace-util.h"
++#include "runtime-scope.h"
+ #include "string-util.h"
+ 
+ typedef enum ProtectHome {
+@@ -134,6 +135,7 @@ int setup_namespace(
+                 const char *extension_dir,
+                 const char *notify_socket,
+                 const char *host_os_release_stage,
++                RuntimeScope scope,
+                 char **error_path);
+ 
+ #define RUN_SYSTEMD_EMPTY "/run/systemd/empty"
+diff --git a/src/test/test-namespace.c b/src/test/test-namespace.c
+index 25aafc35ca837..42ac65d08c87a 100644
+--- a/src/test/test-namespace.c
++++ b/src/test/test-namespace.c
+@@ -206,6 +206,7 @@ TEST(protect_kernel_logs) {
+                                     NULL,
+                                     NULL,
+                                     NULL,
++                                    RUNTIME_SCOPE_SYSTEM,
+                                     NULL);
+                 assert_se(r == 0);
+ 
+diff --git a/src/test/test-ns.c b/src/test/test-ns.c
+index 77afd2f6b9eb8..eb3afed9e1c66 100644
+--- a/src/test/test-ns.c
++++ b/src/test/test-ns.c
+@@ -108,6 +108,7 @@ int main(int argc, char *argv[]) {
+                             NULL,
+                             NULL,
+                             NULL,
++                            RUNTIME_SCOPE_SYSTEM,
+                             NULL);
+         if (r < 0) {
+                 log_error_errno(r, "Failed to set up namespace: %m");

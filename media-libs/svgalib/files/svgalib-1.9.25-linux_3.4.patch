@@ -1,0 +1,29 @@
+diff '--color=auto' -Naurd svgalib-1.9.25.prev/kernel/svgalib_helper/Makefile svgalib-1.9.25/kernel/svgalib_helper/Makefile
+--- svgalib-1.9.25.prev/kernel/svgalib_helper/Makefile	2020-05-02 09:49:05.072052128 +0300
++++ svgalib-1.9.25/kernel/svgalib_helper/Makefile	2020-05-02 09:50:14.748043187 +0300
+@@ -11,9 +11,11 @@
+    PWD	:= $(shell pwd)
+    TARGET  := svgalib_helper
+ 
++   ifneq ($(TOPDIR),)
+       ifeq ($(PATCHLEVEL),4)
+          include $(TOPDIR)/Rules.make
+       endif
++   endif 
+ 
+ else
+ 
+diff '--color=auto' -Naurd svgalib-1.9.25.prev/kernel/svgalib_helper/main.c svgalib-1.9.25/kernel/svgalib_helper/main.c
+--- svgalib-1.9.25.prev/kernel/svgalib_helper/main.c	2020-05-02 09:49:05.075052085 +0300
++++ svgalib-1.9.25/kernel/svgalib_helper/main.c	2020-05-02 09:50:14.751043144 +0300
+@@ -38,7 +38,9 @@
+ 
+ #include <asm/processor.h>
+ #include <asm/uaccess.h>
+-#include <asm/system.h>   /* cli(), *_flags */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,4,0)
++  #include <asm/system.h>   /* cli(), *_flags */
++#endif
+ #include <asm/segment.h>  /* memcpy and such */
+ #include <asm/io.h>
+ #include <asm/pgtable.h>

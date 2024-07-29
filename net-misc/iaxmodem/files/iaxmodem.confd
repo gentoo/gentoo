@@ -1,0 +1,6 @@
+# Configfile for /etc/init.d/iaxmodem
+
+# Set the priority of the iaxmodem process
+# Value: (highest) -20..19 (lowest)
+#
+#IAXMODEM_NICE="-5"

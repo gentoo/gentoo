@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>salah.coronya@gmail.com</email>
+		<name>Christopher Byrne</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>virtualization@gentoo.org</email>
+		<name>Gentoo Virtualization Project</name>
+	</maintainer>
+	<use>
+		<flag name="fuse">Support <pkg>sys-fs/fuse</pkg> based /dev/tpm interface</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">stefanberger/swtpm</remote-id>
+	</upstream>
+</pkgmetadata>

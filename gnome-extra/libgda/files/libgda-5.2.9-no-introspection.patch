@@ -1,0 +1,61 @@
+From df00d64aae3a5751fda757623936d4863bf88f58 Mon Sep 17 00:00:00 2001
+From: matoro <82255-matoro@users.noreply.gitlab.gnome.org>
+Date: Wed, 22 Jun 2022 10:29:48 -0400
+Subject: [PATCH] Fixed behavior for --{enable,disable}-introspection
+
+This now works to compile using --disable-introspection even if
+gobject-introspection is not installed at all
+---
+ configure.ac | 30 +++++++-----------------------
+ 1 file changed, 7 insertions(+), 23 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index b9e973617..b610fc953 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -476,35 +476,19 @@ AC_SUBST(JSON_GLIB_LIBS)
+ dnl *********************************
+ dnl Check for GObject Introspection
+ dnl *********************************
+-GOBJECT_INTROSPECTION_CHECK([1.30.0])
+-
+-AC_ARG_ENABLE([gdaui-gi],
+-    AS_HELP_STRING([--disable-gdaui-gi[=@<:@yes/no@:>@]], [Disable GObject Introspection for libgda-ui [default=no]]),
+-    [
+-      if test x$enableval = xyes
+-      then
+-        disable_gdaui_gi=no
+-      else
+-        disable_gdaui_gi=yes
+-      fi
+-    ],[
+-      disable_gdaui_gi=no
+-    ])
+-
+-if test x$found_introspection != xyes
++m4_ifdef([GOBJECT_INTROSPECTION_CHECK], [GOBJECT_INTROSPECTION_CHECK([1.30.0])])
++if test "x$found_introspection" != "xyes"
+ then
+-  disable_gda_gi=yes
+-  disable_gdaui_gi=yes
++	disable_gda_gi=yes
++	disable_gdaui_gi=yes
+ fi
+ 
+-AM_CONDITIONAL(ENABLE_GDA_GI, [test x$disable_gda_gi != xyes])
+-
+-if test x$have_ui != xyes
++if test "x$have_ui" != "xyes"
+ then
+ 	disable_gdaui_gi=yes
+ fi
+-
+-AM_CONDITIONAL(ENABLE_GDAUI_GI, [test x$disable_gdaui_gi != xyes])
++AM_CONDITIONAL(ENABLE_GDA_GI, [test "$disable_gda_gi" != "yes"])
++AM_CONDITIONAL(ENABLE_GDAUI_GI, [test "$disable_gdaui_gi" != "yes"])
+ 
+ dnl ******************************
+ dnl Check for Vala Compiler
+-- 
+GitLab
+

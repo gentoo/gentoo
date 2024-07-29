@@ -1,0 +1,9 @@
+You probably want to modify
+${VHOST_CONFDIR}/mythweb.include
+to fit your needs and load it into your web server
+configuration.
+
+In order to prevent unauthorized access to your MythTV
+installation, MythWeb can be configured to require
+authentication using htdigest or htpasswd. See
+${VHOST_CONFDIR}/mythweb.include for more info.

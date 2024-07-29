@@ -1,0 +1,33 @@
+diff -Nur SPR-3.3.2.orig/src/SprAddBaggersApp.cc SPR-3.3.2/src/SprAddBaggersApp.cc
+--- SPR-3.3.2.orig/src/SprAddBaggersApp.cc	2011-03-29 05:52:30.000000000 +0100
++++ SPR-3.3.2/src/SprAddBaggersApp.cc	2011-05-04 00:58:45.000000000 +0100
+@@ -6,6 +6,7 @@
+ #include "StatPatternRecognition/SprClassifierReader.hh"
+ #include "StatPatternRecognition/SprStringParser.hh"
+ 
++#include <cstdio>
+ #include <stdlib.h>
+ #include <unistd.h>
+ #include <iostream>
+diff -Nur SPR-3.3.2.orig/src/SprAddColumnsForMCLApp.cc SPR-3.3.2/src/SprAddColumnsForMCLApp.cc
+--- SPR-3.3.2.orig/src/SprAddColumnsForMCLApp.cc	2011-03-29 05:52:30.000000000 +0100
++++ SPR-3.3.2/src/SprAddColumnsForMCLApp.cc	2011-05-04 00:59:02.000000000 +0100
+@@ -4,6 +4,7 @@
+ #include "StatPatternRecognition/SprMultiClassReader.hh"
+ #include "StatPatternRecognition/SprTrainedMultiClassLearner.hh"
+ 
++#include <cstdio>
+ #include <stdlib.h>
+ #include <unistd.h>
+ #include <iostream>
+diff -Nur SPR-3.3.2.orig/src/SprIndicatorMatrixApp.cc SPR-3.3.2/src/SprIndicatorMatrixApp.cc
+--- SPR-3.3.2.orig/src/SprIndicatorMatrixApp.cc	2011-03-29 05:52:30.000000000 +0100
++++ SPR-3.3.2/src/SprIndicatorMatrixApp.cc	2011-05-04 00:59:31.000000000 +0100
+@@ -4,6 +4,7 @@
+ #include "StatPatternRecognition/SprIndicatorMatrix.hh"
+ #include "StatPatternRecognition/SprConfig.hh"
+ 
++#include <cstdio>
+ #include <iostream>
+ #include <string>
+ #include <unistd.h>

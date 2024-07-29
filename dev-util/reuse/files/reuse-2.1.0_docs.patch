@@ -1,0 +1,15 @@
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -189,9 +189,9 @@
+     """Copy the markdown files from the root of the project into the docs/
+     directory.
+     """
+-    copyfile("../README.md", "readme.md")
+-    copyfile("../CHANGELOG.md", "history.md")
+-    copyfile("../CONTRIBUTING.md", "contributing.md")
++    copyfile("README.md", "docs/readme.md")
++    copyfile("CHANGELOG.md", "docs/history.md")
++    copyfile("CONTRIBUTING.md", "docs/contributing.md")
+ 
+ 
+ def setup(app):

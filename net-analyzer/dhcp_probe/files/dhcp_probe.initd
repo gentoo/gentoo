@@ -1,0 +1,47 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="reload"
+
+DHCP_PROBE_BINARY="/usr/sbin/dhcp_probe"
+DHCP_PROBE_CONFIG="/etc/dhcp_probe.cf"
+DHCP_PROBE_PIDFILE="/var/run/${SVCNAME}.pid"
+DHCP_PROBE_INTERFACE="${SVCNAME#*.}"
+
+depend() {
+	use logger
+	need net
+}
+
+checkconfig() {
+	if [ ! -e ${DHCP_PROBE_CONFIG} ]; then
+		eerror "You need an ${DHCP_PROBE_CONFIG} to run dhcp_probe."
+		eerror "A sample file is available in /usr/share/doc/dhcp_probe*"
+		return 1
+	elif [ ${SVCNAME} = dhcp_probe ]; then
+		eerror "Do not run this script directly! Instead, create symbolic links like so:"
+		eerror " # cd /etc/init.d"
+		eerror " # ln -s dhcp_probe dhcp_probe.[INTERFACE_NAME]"
+		eerror "for each interface that should be monitored"
+		return 1
+	fi
+}
+
+start() {
+	checkconfig
+	ebegin "Starting ${SVCNAME}"
+	${DHCP_PROBE_BINARY} ${DHCP_PROBE_OPTIONS} -p ${DHCP_PROBE_PIDFILE} ${DHCP_PROBE_INTERFACE}
+	eend ${?}
+}
+
+stop() {
+	if [ "${RC_CMD}" = "restart" ] ; then
+		checkconfig || return 1
+	fi
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --signal 9 \
+		--pidfile ${DHCP_PROBE_PIDFILE}
+	eend ${?}
+}
+

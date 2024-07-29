@@ -1,0 +1,50 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+state_dir=/var/lib/acpilight
+
+extra_commands="save restore"
+
+depend() {
+	need localmount
+	after bootmisc modules isapnp coldplug hotplug
+}
+
+restore() {
+	ebegin "Restoring brightness level"
+	if [ ! -r "${state_dir}/state" ] ; then
+		ewarn "No brightness level in ${state_dir}/state"
+		eend 0
+		return 0
+	fi
+	xbacklight "$(cat "${state_dir}/state")"
+	ewend $? "Could not restore brightness. The state file ${state_dir}/state is invalid or the system cannot apply the value."
+}
+
+save() {
+	local newValue
+	ebegin "Saving brightness level"
+	# Save the value here so an error won't record an empty/invalid value
+	newValue=$(xbacklight -get) && \
+		mkdir -p "${state_dir}" && \
+		echo "${newValue}" > "${state_dir}/state"
+	if [ $? -gt 0 ]; then
+		ewarn "Could not save brightness."
+		ewarn "The state file ${state_dir}/state cannot be written to or the system cannot read the brightness value."
+	fi
+	# Don't fail on error
+	eend 0
+}
+
+start() {
+	if [ "${RESTORE_ON_START}" = "yes" ]; then
+		restore
+	fi
+}
+
+stop() {
+	if [ "${SAVE_ON_STOP}" = "yes" ]; then
+		save
+	fi
+}

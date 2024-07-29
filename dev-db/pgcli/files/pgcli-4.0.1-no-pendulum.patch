@@ -1,0 +1,112 @@
+From da189aaa1852170cb852a7a435a20d8246e59c30 Mon Sep 17 00:00:00 2001
+From: Damien Baty <damien@damienbaty.com>
+Date: Mon, 19 Feb 2024 09:36:46 +0100
+Subject: [PATCH] feat: Replace pendulum by home-made duration-to-words
+ function
+
+diff --git a/pgcli/main.py b/pgcli/main.py
+index bbb1989d..cfa1c970 100644
+--- a/pgcli/main.py
++++ b/pgcli/main.py
+@@ -11,7 +11,6 @@
+ import threading
+ import shutil
+ import functools
+-import pendulum
+ import datetime as dt
+ import itertools
+ import platform
+@@ -800,9 +799,9 @@ def execute_command(self, text, handle_closed_connection=True):
+                         "Time: %0.03fs (%s), executed in: %0.03fs (%s)"
+                         % (
+                             query.total_time,
+-                            pendulum.Duration(seconds=query.total_time).in_words(),
++                            duration_in_words(query.total_time),
+                             query.execution_time,
+-                            pendulum.Duration(seconds=query.execution_time).in_words(),
++                            duration_in_words(query.execution_time),
+                         )
+                     )
+                 else:
+@@ -1735,5 +1734,28 @@ def parse_service_info(service):
+     return service_conf, service_file
+ 
+ 
++def duration_in_words(duration_in_seconds: float) -> str:
++    if not duration_in_seconds:
++        return "0 seconds"
++    components = []
++    hours, remainder = divmod(duration_in_seconds, 3600)
++    if hours > 1:
++        components.append(f"{hours} hours")
++    elif hours == 1:
++        components.append("1 hour")
++    minutes, seconds = divmod(remainder, 60)
++    if minutes > 1:
++        components.append(f"{minutes} minutes")
++    elif minutes == 1:
++        components.append("1 minute")
++    if seconds >= 2:
++        components.append(f"{int(seconds)} seconds")
++    elif seconds >= 1:
++        components.append("1 second")
++    elif seconds:
++        components.append(f"{round(seconds, 3)} second")
++    return " ".join(components)
++
++
+ if __name__ == "__main__":
+     cli()
+diff --git a/setup.py b/setup.py
+index f9dbc56a..640dca00 100644
+--- a/setup.py
++++ b/setup.py
+@@ -16,7 +16,6 @@
+     "psycopg-binary >= 3.0.14; sys_platform == 'win32'",
+     "sqlparse >=0.3.0,<0.5",
+     "configobj >= 5.0.6",
+-    "pendulum>=2.1.0",
+     "cli_helpers[styles] >= 2.2.1",
+ ]
+ 
+diff --git a/tests/test_main.py b/tests/test_main.py
+index cbf20a6a..0aeba80e 100644
+--- a/tests/test_main.py
++++ b/tests/test_main.py
+@@ -11,6 +11,7 @@
+ 
+ from pgcli.main import (
+     obfuscate_process_password,
++    duration_in_words,
+     format_output,
+     PGCli,
+     OutputSettings,
+@@ -488,3 +489,28 @@ def test_application_name_db_uri(tmpdir):
+     mock_pgexecute.assert_called_with(
+         "bar", "bar", "", "baz.com", "", "", application_name="cow"
+     )
++
++
++@pytest.mark.parametrize(
++    "duration_in_seconds,words",
++    [
++        (0, "0 seconds"),
++        (0.0009, "0.001 second"),
++        (0.0005, "0.001 second"),
++        (0.0004, "0.0 second"),  # not perfect, but will do
++        (0.2, "0.2 second"),
++        (1, "1 second"),
++        (1.4, "1 second"),
++        (2, "2 seconds"),
++        (3.4, "3 seconds"),
++        (60, "1 minute"),
++        (61, "1 minute 1 second"),
++        (123, "2 minutes 3 seconds"),
++        (3600, "1 hour"),
++        (7235, "2 hours 35 seconds"),
++        (9005, "2 hours 30 minutes 5 seconds"),
++        (86401, "24 hours 1 second"),
++    ],
++)
++def test_duration_in_words(duration_in_seconds, words):
++    assert duration_in_words(duration_in_seconds) == words

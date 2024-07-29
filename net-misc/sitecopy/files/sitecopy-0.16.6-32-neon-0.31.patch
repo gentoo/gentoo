@@ -1,0 +1,13 @@
+https://sources.debian.org/patches/sitecopy/1:0.16.6-9/32_neon-0.31.patch/
+https://bugs.gentoo.org/779847
+--- a/src/ftp.c
++++ b/src/ftp.c
+@@ -634,7 +634,7 @@ static int dtp_open_active(ftp_session *
+     char *a, *p;
+     int ret;
+     int listener;
+-    ksize_t alen;
++    size_t alen;
+     struct sockaddr_in addr;
+ 
+     ret = ftp_open(sess);

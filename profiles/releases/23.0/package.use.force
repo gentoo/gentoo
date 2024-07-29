@@ -1,0 +1,4 @@
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+>=sys-devel/gcc-12.2 default-znow default-stack-clash-protection

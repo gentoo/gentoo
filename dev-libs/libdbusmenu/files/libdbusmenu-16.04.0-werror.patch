@@ -1,0 +1,37 @@
+https://bugs.gentoo.org/691260
+
+--- a/libdbusmenu-glib/Makefile.am
++++ b/libdbusmenu-glib/Makefile.am
+@@ -68,3 +68,3 @@ libdbusmenu_glib_la_CFLAGS = \
+ 	$(COVERAGE_CFLAGS) \
+-	-Wall -Werror -Wno-error=deprecated-declarations \
++	-Wall -Wno-error=deprecated-declarations \
+ 	-DG_LOG_DOMAIN="\"LIBDBUSMENU-GLIB\""
+--- a/libdbusmenu-gtk/Makefile.am
++++ b/libdbusmenu-gtk/Makefile.am
+@@ -68,3 +68,3 @@ libdbusmenu_gtk_la_CFLAGS = \
+ 	-I$(top_srcdir) \
+-	-Wall -Werror -Wno-error=deprecated-declarations \
++	-Wall -Wno-error=deprecated-declarations \
+ 	-DG_LOG_DOMAIN="\"LIBDBUSMENU-GTK\""
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -105,3 +105,3 @@ TESTS_ENVIRONMENT = env GI_TYPELIB_PATH=$(top_builddir)/libdbusmenu-glib:$(top_b
+ DBUSMENU_GLIB_TEST_CFLAGS = \
+-	-Wall -Werror \
++	-Wall \
+ 	-DG_DISABLE_DEPRECATED \
+--- a/tools/Makefile.am
++++ b/tools/Makefile.am
+@@ -18,3 +18,3 @@ dbusmenu_dumper_CFLAGS = \
+ 	$(DBUSMENUDUMPER_CFLAGS) \
+-	-Wall -Werror
++	-Wall
+ 
+--- a/tools/testapp/Makefile.am
++++ b/tools/testapp/Makefile.am
+@@ -14,3 +14,3 @@ dbusmenu_testapp_CFLAGS = \
+ 	$(DBUSMENUGLIB_CFLAGS) \
+-	-Wall -Werror
++	-Wall
+ 

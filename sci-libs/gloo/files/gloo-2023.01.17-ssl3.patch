@@ -1,0 +1,19 @@
+--- a/gloo/CMakeLists.txt	2023-11-27 22:39:53.709670525 +0100
++++ b/gloo/CMakeLists.txt	2023-11-27 22:42:29.784250524 +0100
+@@ -77,7 +77,7 @@
+ if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
+   set(GLOO_HAVE_TRANSPORT_TCP 1)
+   if(${USE_TCP_OPENSSL_LINK} OR ${USE_TCP_OPENSSL_LOAD})
+-    find_package(OpenSSL 1.1 REQUIRED EXACT)
++    find_package(OpenSSL 1.1...<4 REQUIRED)
+     set(GLOO_HAVE_TRANSPORT_TCP_TLS 1)
+   else()
+     set(GLOO_HAVE_TRANSPORT_TCP_TLS 0)
+--- a/gloo/test/CMakeLists.txt	2023-11-27 22:42:55.969844380 +0100
++++ b/gloo/test/CMakeLists.txt	2023-11-27 22:43:14.873551147 +0100
+@@ -1,4 +1,4 @@
+-find_package(OpenSSL 1.1 REQUIRED EXACT)
++find_package(OpenSSL 1.1...<4 REQUIRED)
+ 
+ set(GLOO_TEST_SRCS
+   "${CMAKE_CURRENT_SOURCE_DIR}/allgather_test.cc"

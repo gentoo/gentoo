@@ -1,0 +1,14 @@
+diff --git a/src/test/bin/CMakeLists.txt b/src/test/bin/CMakeLists.txt
+index e53b879..ad0190d 100644
+--- a/src/test/bin/CMakeLists.txt
++++ b/src/test/bin/CMakeLists.txt
+@@ -3,6 +3,9 @@
+ 
+ if(BUILD_TESTING)
+ 
++  if(NOT OPENEXR_BUILD_TOOLS)
++    return()
++  endif()
+   find_package(Python3 COMPONENTS Interpreter)
+   if (NOT Python3_FOUND)
+     message(STATUS "Python3 not found: skipping bin tests")

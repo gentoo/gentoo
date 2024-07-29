@@ -1,0 +1,9 @@
+# This is the config snippet for Webalizer
+<Directory "/var/www/localhost/htdocs/webalizer">
+	Options None
+	AllowOverride None
+	Order allow,deny
+	Allow from all
+</Directory>
+
+# vim: ts=4 filetype=apache

@@ -1,0 +1,11 @@
+On a minimal QT installation, widgets may not necessarily be
+added and it needs to be explicitely done. Modifying ./configure
+directly given tarball lacks some files to run eautoreconf.
+
+https://bugs.gentoo.org/831361
+--- a/configure
++++ b/configure
+@@ -25748,2 +25748,3 @@
+ qtHaveModule(testlib):           QT += testlib
++qtHaveModule(widgets):           QT += widgets
+ percent.target = %

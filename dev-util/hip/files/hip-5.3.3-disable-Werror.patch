@@ -1,0 +1,16 @@
+Index: hipamd-rocm-5.3.3/src/CMakeLists.txt
+===================================================================
+--- hipamd-rocm-5.3.3.orig/src/CMakeLists.txt
++++ hipamd-rocm-5.3.3/src/CMakeLists.txt
+@@ -44,11 +44,6 @@ if(ADDRESS_SANITIZER)
+   set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} ${ASAN_LINKER_FLAGS} -Wl,--build-id=sha1")
+ endif()
+ 
+-if(CMAKE_COMPILER_IS_GNUCC)
+-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
+-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+-endif()
+-
+ option(DISABLE_DIRECT_DISPATCH "Disable Direct Dispatch" OFF)
+ 
+ option(BUILD_SHARED_LIBS "Build the shared library" ON)

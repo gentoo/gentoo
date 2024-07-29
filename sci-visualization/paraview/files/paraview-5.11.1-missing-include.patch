@@ -1,0 +1,11 @@
+diff -urNp ParaView-v5.11.1-orig/VTK/ThirdParty/libproj/vtklibproj/src/proj_json_streaming_writer.hpp ParaView-v5.11.1-dwok/VTK/ThirdParty/libproj/vtklibproj/src/proj_json_streaming_writer.hpp
+--- ParaView-v5.11.1-orig/VTK/ThirdParty/libproj/vtklibproj/src/proj_json_streaming_writer.hpp	2023-03-30 16:08:08.000000000 +0200
++++ ParaView-v5.11.1-dwok/VTK/ThirdParty/libproj/vtklibproj/src/proj_json_streaming_writer.hpp	2023-08-26 14:53:20.211944383 +0200
+@@ -33,6 +33,7 @@
+ 
+ #include <vector>
+ #include <string>
++#include <cstdint>
+ 
+ #define CPL_DLL
+ 

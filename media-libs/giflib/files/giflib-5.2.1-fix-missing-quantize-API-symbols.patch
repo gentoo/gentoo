@@ -1,0 +1,32 @@
+From ff8d9a59e79b79657e64430730c35835a84db619 Mon Sep 17 00:00:00 2001
+From: anthraxx <levente@leventepolyak.net>
+Date: Tue, 2 Apr 2019 11:46:18 +0200
+Subject: [PATCH] fix missing quantize API symbols
+
+GifQuantizeBuffer is required by many libs and applications
+like mplayer, libgdiplus (mono) and others.
+---
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index e4ded69..17d0a5c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -29,11 +29,11 @@ LIBPOINT=0
+ LIBVER=$(LIBMAJOR).$(LIBMINOR).$(LIBPOINT)
+ 
+ SOURCES = dgif_lib.c egif_lib.c gifalloc.c gif_err.c gif_font.c \
+-	gif_hash.c openbsd-reallocarray.c
++	gif_hash.c openbsd-reallocarray.c quantize.c
+ HEADERS = gif_hash.h  gif_lib.h  gif_lib_private.h
+ OBJECTS = $(SOURCES:.c=.o)
+ 
+-USOURCES = qprintf.c quantize.c getarg.c 
++USOURCES = qprintf.c getarg.c
+ UHEADERS = getarg.h
+ UOBJECTS = $(USOURCES:.c=.o)
+ 
+-- 
+2.21.0
+

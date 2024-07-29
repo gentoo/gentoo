@@ -1,0 +1,22 @@
+# https://github.com/bulletmark/libinput-gestures/pull/242
+# https://github.com/bulletmark/libinput-gestures/issues/334
+--- ../libinput-gestures	2024-05-05 22:27:48.297359689 +0300
++++ ../libinput-gestures	2024-05-05 22:29:17.473224613 +0300
+@@ -10,6 +10,7 @@
+ import platform
+ import re
+ import shlex
++import signal
+ import subprocess
+ import sys
+ import threading
+@@ -781,6 +782,9 @@
+     cmd = subprocess.Popen(shlex.split(command), stdout=subprocess.PIPE,
+             bufsize=1, universal_newlines=True)
+ 
++    # Avoid producing zombie processes
++    signal.signal(signal.SIGCHLD, signal.SIG_IGN)
++
+     # Store PIDs for potential kill
+     pidfile.write(f'{os.getpid()}\n{cmd.pid}\n')
+     pidfile.flush()

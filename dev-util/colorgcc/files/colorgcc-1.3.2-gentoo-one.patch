@@ -1,0 +1,242 @@
+--- a/colorgcc
++++ b/colorgcc
+@@ -88,16 +88,16 @@
+ #
+ # 1.0.0 Initial Version
+ 
++use strict;
++
+ use Term::ANSIColor;
+ use IPC::Open3;
++use Cwd 'abs_path';
++
++my(%nocolor, %colors, %compilerPaths);
+ 
+ sub initDefaults
+ {
+-   $compilerPaths{"gcc"} = "/usr/local/bin/gcc";
+-   $compilerPaths{"g++"} = "/usr/local/bin/g++";
+-   $compilerPaths{"cc"}  = "/usr/bin/cc";
+-   $compilerPaths{"c++"} = "/usr/local/bin/c++";
+-
+    $nocolor{"dumb"} = "true";
+ 
+    $colors{"srcColor"} = color("cyan");
+@@ -125,26 +125,26 @@
+       next if (m/^\#.*/);          # It's a comment.
+       next if (!m/(.*):\s*(.*)/);  # It's not of the form "foo: bar".
+ 
+-      $option = $1;
+-      $value = $2;
++      my $option = $1;
++      my $value = $2;
+ 
+-      if ($option =~ m/cc|c\+\+|gcc|g\+\+/)
+-      {
+-	 $compilerPaths{$option} = $value;
+-      }
+-      elsif ($option eq "nocolor")
++      if ($option eq "nocolor")
+       {
+ 	 # The nocolor option lists terminal types, separated by
+ 	 # spaces, not to do color on.
+-	 foreach $termtype (split(/\s+/, $value))
++	 foreach my $term (split(' ', $value))
+ 	 {
+-	    $nocolor{$termtype} = "true";
++	    $nocolor{$term} = 1;
+ 	 }
+       }
+-      else
++      elsif (defined $colors{$option})
+       {
+ 	 $colors{$option} = color($value);
+       }
++      else
++      {
++	 $compilerPaths{$option} = $value;
++      }
+    }
+    close(PREFS);
+ }
+@@ -180,41 +180,80 @@
+ initDefaults();
+ 
+ # Read the configuration file, if there is one.
+-$configFile = $ENV{"HOME"} . "/.colorgccrc";
++my $configFile = $ENV{"HOME"} . "/.colorgccrc";
+ if (-f $configFile)
+ {
+    loadPreferences($configFile);
+ }
++elsif (-f '/etc/colorgcc/colorgccrc')
++{
++   loadPreferences('/etc/colorgcc/colorgccrc');
++}
+ 
+ # Figure out which compiler to invoke based on our program name.
+ $0 =~ m%.*/(.*)$%;
+-$progName = $1 || $0;
+-
+-$compiler = $compilerPaths{$progName} || $compilerPaths{"gcc"};
+-
+-# Get the terminal type. 
+-$terminal = $ENV{"TERM"} || "dumb";
++my $progName = $1 || $0;
++my $compiler_pid;
+ 
+-# If it's in the list of terminal types not to color, or if
+-# we're writing to something that's not a tty, don't do color.
+-if (! -t STDOUT || $nocolor{$terminal})
++# If called as "colorgcc", just filter STDIN to STDOUT.
++if ($progName eq 'colorgcc')
+ {
+-   exec $compiler, @ARGV
+-      or die("Couldn't exec");
++   open(GCCOUT, "<&STDIN");
+ }
++else
++{
++   # See if the user asked for a specific compiler.
++   my $compiler;
++   if (!defined($compiler = $compilerPaths{$progName}))
++   {
++      # Find our wrapper dir on the PATH and tweak the PATH to remove
++      # everything up-to and including our wrapper dir.
++      if ($0 =~ m#(.*)/#)
++      {
++	 # We were called with an explicit path, so trim that off the PATH.
++	 my $find = $1;
++	 $find = abs_path($1) unless $find =~ m#^/#;
++	 $ENV{'PATH'} =~ s#.*(^|:)\Q$find\E(:|$)##;
++      }
++      else
++      {
++	 my(@dirs) = split(/:/, $ENV{'PATH'});
++	 while (defined($_ = shift @dirs))
++	 {
++	    if (-x "$_/$progName")
++	    {
++	       $ENV{'PATH'} = join(':', @dirs);
++	       last;
++	    }
++	 }
++      }
++      $compiler = $progName;
++   }
+ 
+-# Keep the pid of the compiler process so we can get its return
+-# code and use that as our return code.
+-$compiler_pid = open3('<&STDIN', \*GCCOUT, \*GCCOUT, $compiler, @ARGV);
++   # Get the terminal type. 
++   my $terminal = $ENV{"TERM"} || "dumb";
++
++   # If it's in the list of terminal types not to color, or if
++   # we're writing to something that's not a tty, don't do color.
++   if (! -t STDOUT || $nocolor{$terminal})
++   {
++      exec $compiler, @ARGV
++	 or die("Couldn't exec");
++   }
++
++   # Keep the pid of the compiler process so we can get its return
++   # code and use that as our return code.
++   $compiler_pid = open3('<&STDIN', \*GCCOUT, \*GCCOUT, $compiler, @ARGV);
++}
+ 
+ # Colorize the output from the compiler.
+ while(<GCCOUT>)
+ {
+-   if (m/^(.*?):([0-9]+):(.*)$/) # filename:lineno:message
++   if (m#^(.+?\.[^:/ ]+):([0-9]+):(.*)$#) # filename:lineno:message
+    {
+-      $field1 = $1 || "";
+-      $field2 = $2 || "";
+-      $field3 = $3 || "";
++      my $field1 = $1 || "";
++      my $field2 = $2 || "";
++      my $field3 = $3 || "";
+ 
+       if ($field3 =~ m/\s+warning:.*/)
+       {
+@@ -232,6 +271,10 @@
+       }
+       print("\n");
+    }
++   elsif (m/^:.+`.*'$/) # filename:message:
++   {
++      srcscan($_, $colors{"warningMessageColor"});
++   }
+    elsif (m/^(.*?):(.+):$/) # filename:message:
+    {
+       # No line number, treat as an "introductory" line of text.
+@@ -244,11 +287,9 @@
+    }
+ }
+ 
+-# Get the return code of the compiler and exit with that.
+-waitpid($compiler_pid, 0);
+-exit ($? >> 8);
+-
+-
+-
+-
+-
++if ($compiler_pid)
++{
++   # Get the return code of the compiler and exit with that.
++   waitpid($compiler_pid, 0);
++   exit ($? >> 8);
++}
+--- a/colorgccrc
++++ b/colorgccrc
+@@ -20,12 +20,14 @@
+ # For example, srcColor: bold cyan on_yellow
+ #
+ 
+-# Define the paths to the actual location of the various compilers.
++# Only define the paths to the actual location of the various compilers if
++# you need to do something weird.  For normal installs, we'll figure out
++# who to call next automatically.
+ # (Currently, colorgcc only understands these: g++ gcc c++ cc)
+-g++: /usr/local/bin/g++
+-gcc: /usr/local/bin/gcc
+-c++: /usr/local/bin/c++
+-cc:  /usr/bin/cc
++##g++: /usr/bin/g++
++##gcc: /usr/bin/gcc
++##c++: /usr/bin/c++
++##cc:  /usr/bin/cc
+ 
+ # Don't do color if our terminal type ($TERM) is one of these.
+ # (List all terminal types on one line, seperated by whitespace.)
+@@ -43,12 +45,10 @@
+ 
+ # Warnings
+ warningFileNameColor: reset
+-warningNumberColor:   white
++warningNumberColor:   blue
+ warningMessageColor:  yellow
+ 
+ # Errors
+ errorFileNameColor: reset
+-errorNumberColor:   white
++errorNumberColor:   blue
+ errorMessageColor:  bold red
+-
+-
+--- a/INSTALL
++++ b/INSTALL
+@@ -27,9 +27,9 @@
+ When "g++" is invoked, colorgcc is run instead.  colorgcc looks at the
+ program name to figure out which compiler to use. 
+ 
+-Copy the sample colorgccrc file to $HOME/.colorgccrc and make sure the
+-absolute paths for the compilers are correct for your system.
+-See the comments in the sample .colorgccrc for more information.
++Modify the file /etc/colorgcc/colorgccrc if you want to change the default
++values for everyone.  For individual customizations, copy this file to
++$HOME/.colorgccrc and change that.
+ 
+ 
+ Note:

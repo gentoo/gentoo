@@ -1,0 +1,38 @@
+From acb69eca6c25db44523efb4cb1e7088ae66d093d Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 3 Aug 2021 23:14:12 +0100
+Subject: [PATCH] Avoid calling umount
+
+Converting a sed into a patch.
+
+Ebuild had:
+	# sandbox violation with mtab writability wrt #438250
+	# don't sed configure.in without eautoreconf because of maintainer mode
+	sed -i 's:umount --fake:true --fake:' configure || die
+
+Bug: https://bugs.gentoo.org/438250
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 9946a0e..de433cb 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -101,11 +101,11 @@ util_linux_ok=yes
+ if test "$arch" = linux -a "$cross_compiling" != "yes"; then
+ 	AC_MSG_CHECKING([if umount supports --fake --no-canonicalize])
+ 	# exit code of umount is 1 if option is unrecognised, 2 otherwise
+-	umount --fake --no-canonicalize > /dev/null 2>&1
++	true --fake --no-canonicalize > /dev/null 2>&1
+ 	if test $? != 1; then
+ 		AC_MSG_RESULT([yes])
+ 	else
+-		firstline=`umount --fake --no-canonicalize 2>&1 | head -1`
++		firstline=`true --fake --no-canonicalize 2>&1 | head -1`
+ 		if test "$firstline" = 'umount: only root can use "--fake" option'; then
+ 			AC_MSG_RESULT([yes])
+ 		else
+-- 
+2.32.0
+

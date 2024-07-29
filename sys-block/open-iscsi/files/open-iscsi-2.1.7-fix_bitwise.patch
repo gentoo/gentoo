@@ -1,0 +1,52 @@
+From 0a6432de1a2186449d5e6557f75a9f30e487471d Mon Sep 17 00:00:00 2001
+From: Matthias Maier <tamiko@43-1.org>
+Date: Thu, 2 Jun 2022 13:12:43 -0500
+Subject: [PATCH] Use __bitwise instead of __bitwise__
+
+The iscsi_proto.h header goes into great length ensuring that the
+__bitwise macro is defined:
+
+  #if !defined(__bitwise)
+  /*
+   * If running svn modules we may need to define these.
+   * This should not go upstream since this is already properly defined there
+   */
+  #ifdef __CHECKER__
+  #define __bitwise__ __attribute__((bitwise))
+  #else
+  #define __bitwise__
+  #endif
+  #ifdef __CHECK_ENDIAN__
+  #define __bitwise __bitwise__
+  #else
+  #define __bitwise
+  #endif
+  #endif
+
+But then uses the __bitwise__ macro instead:
+
+  typedef uint32_t __bitwise__ itt_t;
+
+(This is the only occurence where the __bitwise__ (or __bitwise) macro
+is actually used). This seems to be a typo, changing this to __bitwise
+fixes compilation with gcc-11 onwards.
+---
+ include/iscsi_proto.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/iscsi_proto.h b/include/iscsi_proto.h
+index 1d14b89..3fe9018 100644
+--- a/include/iscsi_proto.h
++++ b/include/iscsi_proto.h
+@@ -63,7 +63,7 @@
+ #endif
+ 
+ /* initiator tags; opaque for target */
+-typedef uint32_t __bitwise__ itt_t;
++typedef uint32_t __bitwise itt_t;
+ /* below makes sense only for initiator that created this tag */
+ #define build_itt(itt, age) ((__force itt_t)\
+ 	((itt) | ((age) << ISCSI_AGE_SHIFT)))
+-- 
+2.35.1
+

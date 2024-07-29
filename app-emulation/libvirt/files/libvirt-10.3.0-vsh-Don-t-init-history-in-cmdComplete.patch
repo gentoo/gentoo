@@ -1,0 +1,84 @@
+From cab1e71f0161fd24c5d6ff4c379d3a242ea8c2d9 Mon Sep 17 00:00:00 2001
+Message-ID: <cab1e71f0161fd24c5d6ff4c379d3a242ea8c2d9.1714995961.git.mprivozn@redhat.com>
+From: Michal Privoznik <mprivozn@redhat.com>
+Date: Sat, 4 May 2024 05:12:54 +0200
+Subject: [PATCH] vsh: Don't init history in cmdComplete()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Recent rework of virshtest uncovered a subtle bug that was
+dormant in now vsh but before that even in monolithic virsh.
+
+In vsh.c there's this vshReadlineInit() function that's supposed
+to initialize readline library, i.e. set those global rl_*
+pointers.  But it also initializes history library. Then, when
+virsh/virt-admin quits, vshReadlineDeinit() is called which
+writes history into a file (ensuring the parent directory
+exists). So far no problem.
+
+Problem arises when cmdComplete() is called (from a bash
+completer, for instance). It does not guard call to
+vshReadlineInit() with check for interactive shell (and it should
+not), but it sets ctl->historyfile which signals to
+vshReadlineDeinit() the history should be written.
+
+Now, no real history is written, because nothing was entered on
+the stdin, but the parent directory is created nevertheless. With
+recent movement in virshtest.c this means some test cases might
+create virsh history file which breaks our promise of not
+touching user's data in test suite.
+
+Resolves: https://bugs.gentoo.org/931109
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+Reviewed-by: Ján Tomko <jtomko@redhat.com>
+---
+ tools/vsh.c | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/tools/vsh.c b/tools/vsh.c
+index 58855f63ba..e74045c24e 100644
+--- a/tools/vsh.c
++++ b/tools/vsh.c
+@@ -2973,7 +2973,7 @@ vshReadlineInit(vshControl *ctl)
+     const char *quote_characters = "\"'";
+ 
+     /* initialize readline stuff only once */
+-    if (ctl->historydir)
++    if (autoCompleteOpaque)
+         return 0;
+ 
+     /* Opaque data for autocomplete callbacks. */
+@@ -2989,6 +2989,11 @@ vshReadlineInit(vshControl *ctl)
+     rl_completer_quote_characters = quote_characters;
+     rl_char_is_quoted_p = vshReadlineCharIsQuoted;
+ 
++    /* Stuff below is needed only for interactive mode. */
++    if (!ctl->imode) {
++        return 0;
++    }
++
+     histsize_env = g_strdup_printf("%s_HISTSIZE", ctl->env_prefix);
+ 
+     /* Limit the total size of the history buffer */
+@@ -3149,7 +3154,7 @@ vshInit(vshControl *ctl, const vshCmdGrp *groups)
+     cmdGroups = groups;
+ 
+     if (vshInitDebug(ctl) < 0 ||
+-        (ctl->imode && vshReadlineInit(ctl) < 0))
++        vshReadlineInit(ctl) < 0)
+         return false;
+ 
+     return true;
+@@ -3168,7 +3173,7 @@ vshInitReload(vshControl *ctl)
+ 
+     if (ctl->imode)
+         vshReadlineDeinit(ctl);
+-    if (ctl->imode && vshReadlineInit(ctl) < 0)
++    if (vshReadlineInit(ctl) < 0)
+         return false;
+ 
+     return true;
+-- 
+2.43.2
+

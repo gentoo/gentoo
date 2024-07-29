@@ -1,0 +1,18 @@
+Fix broken .desktop file to comply with FDO specifications.
+
+--- a/bitmeter.desktop
++++ b/bitmeter.desktop
+@@ -4,10 +4,10 @@
+ Comment=JACK diagnostic tool
+ TryExec=bitmeter
+ Exec=bitmeter
+-Icon=bitmeter.xpm
+-Terminal=0
++Icon=bitmeter
++Terminal=false
+ Type=Application
+ StartupWMClass=Bitmeter
+-Categories=Application;Audio;AudioVideo;X-Jack
++Categories=Audio;AudioVideo;X-Jack
+ 
+ 

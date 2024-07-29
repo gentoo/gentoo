@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>julien@jroy.ca</email>
+    <name>Julien Roy</name>
+  </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>jethro.rosette@outlook.com</email>
+    <name>Jethro Rosettenstein</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <changelog>https://github.com/hyprwm/hyprwayland-scanner/releases</changelog>
+    <bugs-to>https://github.com/hyprwm/hyprwayland-scanner/issues</bugs-to>
+    <remote-id type="github">hyprwm/hyprwayland-scanner</remote-id>
+  </upstream>
+</pkgmetadata>

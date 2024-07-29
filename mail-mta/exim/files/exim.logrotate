@@ -1,0 +1,9 @@
+/var/log/exim/exim*.log {
+	daily
+	missingok
+	rotate 28
+	compress
+	delaycompress
+	notifempty
+	create 640 mail mail
+}

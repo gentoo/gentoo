@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Chirurgien helps understand and manipulate file formats. Features: file
+    format highlighting, file description panel, field edition, extraction,
+    deletion and insertion.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/leonardschardijn/Chirurgien/</bugs-to>
+    <remote-id type="github">leonardschardijn/Chirurgien</remote-id>
+  </upstream>
+</pkgmetadata>

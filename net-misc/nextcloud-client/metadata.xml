@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
+	<maintainer type="person">
+		<name>Florian Schmaus</name>
+		<email>flow@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="dolphin">Install the <pkg>kde-apps/dolphin</pkg> extension</flag>
+		<flag name="nautilus">Install the <pkg>gnome-base/nautilus</pkg> extension</flag>
+		<flag name="webengine">Enable old Flow1 login using <pkg>dev-qt/qtwebengine</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">nextcloud/desktop</remote-id>
+	</upstream>
+</pkgmetadata>

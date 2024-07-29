@@ -1,0 +1,14 @@
+## Description: Remove references to HAYES
+## Origin/Author: Andreas Moog <amoog@ubuntu.com>
+## Bug-Ubuntu: https://bugs.launchpad.net/bugs/756157
+--- ski//src/linux/syscall-linux.c
++++ ski.new//src/linux/syscall-linux.c
+@@ -2250,8 +2250,6 @@
+ 	case TIOCSERSETMULTI:	/* Set multiport config */
+ 	case TIOCMIWAIT:	/* wait for a change on serial input line(s) */
+ 	case TIOCGICOUNT:	/* read serial port inline interrupt counts */
+-	case TIOCGHAYESESP:	/* Get Hayes ESP configuration */
+-	case TIOCSHAYESESP:	/* Set Hayes ESP configuration */
+ 	case SIOCRTMSG:	/* call to routing system	*/
+ 	case SIOCSIFLINK:	/* set iface channel		*/
+ 	case SIOCGIFMEM:	/* get memory address (BSD)	*/

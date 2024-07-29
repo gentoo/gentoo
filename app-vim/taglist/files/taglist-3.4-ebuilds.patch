@@ -1,0 +1,12 @@
+--- a/plugin/taglist.vim
++++ b/plugin/taglist.vim
+@@ -205,6 +205,9 @@
+ let s:tlist_def_cobol_settings = 'cobol;d:data;f:file;g:group;p:paragraph;' .
+                                \ 'P:program;s:section'
+ 
++" ebuilds
++let s:tlist_def_ebuild_settings = 'sh;f:function'
++
+ " eiffel language
+ let s:tlist_def_eiffel_settings = 'eiffel;c:class;f:feature'
+ 

@@ -1,0 +1,31 @@
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+
+don't check for deprecated libavresample
+fix openjpeg version string
+
+diff --git a/modules/videoio/cmake/detect_ffmpeg.cmake b/modules/videoio/cmake/detect_ffmpeg.cmake
+index aa669f3..208dcc3 100644
+--- a/modules/videoio/cmake/detect_ffmpeg.cmake
++++ b/modules/videoio/cmake/detect_ffmpeg.cmake
+@@ -27,7 +27,7 @@ set(_used_ffmpeg_libraries ${_required_ffmpeg_libraries})
+ if(NOT HAVE_FFMPEG AND PKG_CONFIG_FOUND)
+   ocv_check_modules(FFMPEG libavcodec libavformat libavutil libswscale)
+   if(FFMPEG_FOUND)
+-    ocv_check_modules(FFMPEG_libavresample libavresample) # optional
++    # ocv_check_modules(FFMPEG_libavresample libavresample) # optional
+     if(FFMPEG_libavresample_FOUND)
+       list(APPEND FFMPEG_LIBRARIES ${FFMPEG_libavresample_LIBRARIES})
+       list(APPEND _used_ffmpeg_libraries libavresample)
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cbb302a..eab0a0a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1472,7 +1472,7 @@ endif()
+ 
+ if(HAVE_OPENJPEG)
+   status("    JPEG 2000:" OpenJPEG_FOUND
+-      THEN "OpenJPEG (ver ${OPENJPEG_VERSION})"
++      THEN "OpenJPEG (ver ${OPENJPEG_MAJOR_VERSION}.${OPENJPEG_MINOR_VERSION}.${OPENJPEG_BUILD_VERSION})"
+       ELSE "build (ver ${OPENJPEG_VERSION})"
+   )
+ elseif(HAVE_JASPER)

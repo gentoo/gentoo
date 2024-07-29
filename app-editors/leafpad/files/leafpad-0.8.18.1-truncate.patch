@@ -1,0 +1,20 @@
+diff --git a/src/file.c b/src/file.c
+index 5e44a43..4c90a37 100644
+--- a/src/file.c
++++ b/src/file.c
+@@ -190,6 +190,7 @@ gint file_save_real(GtkWidget *view, FileInfo *fi)
+ 	gtk_text_buffer_get_start_iter(buffer, &start);
+ 	gtk_text_buffer_get_end_iter(buffer, &end);	
+ 	str = gtk_text_buffer_get_text(buffer, &start, &end, FALSE);
++	gtk_text_buffer_set_modified(buffer, FALSE);
+ 	
+ 	switch (fi->lineend) {
+ 	case CR:
+@@ -229,7 +230,6 @@ gint file_save_real(GtkWidget *view, FileInfo *fi)
+ 		return -1;
+ 	}
+ 	
+-	gtk_text_buffer_set_modified(buffer, FALSE);
+ 	fclose(fp);
+ 	g_free(cstr);
+ 	

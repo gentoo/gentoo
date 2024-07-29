@@ -1,0 +1,34 @@
+From d585a1573819306bb3660db3f13a85b2fd254c63 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 17 Jun 2020 17:23:10 -0400
+Subject: [PATCH 1/1] utils/idna.c: adjust utf8proc.h header location.
+
+There are two upstreams for libutf8proc, and they each put utf8proc.h
+in a different location -- ostensibly as a performance art piece
+intended to remind the programmer that we as human beings are all
+slowly dying, and that our limited time here on earth should not be
+wasted. This commit switches the header location from the netsurf-
+upstream one that used to work, to the julia-upstream location that
+works now (that the Gentoo package follows the julia upstream).
+
+Bug: https://bugs.gentoo.org/721318
+---
+ utils/idna.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/utils/idna.c b/utils/idna.c
+index 628ef1f..f6e498a 100644
+--- a/utils/idna.c
++++ b/utils/idna.c
+@@ -167,7 +167,7 @@ idna__ace_to_ucs4(const char *ace_label,
+ 
+ #ifdef WITH_UTF8PROC
+ 
+-#include <libutf8proc/utf8proc.h>
++#include <utf8proc.h>
+ 
+ int32_t idna_contexto[] = {
+ 	/* CONTEXTO codepoints which have a rule defined */
+-- 
+2.26.2
+

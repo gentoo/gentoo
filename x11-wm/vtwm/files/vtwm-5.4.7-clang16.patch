@@ -1,0 +1,7 @@
+https://bugs.gentoo.org/874468
+--- a/gram.y
++++ b/gram.y
+@@ -86,2 +86,3 @@
+ static void yyerror();
++static int yylex();
+ static name_list **list;

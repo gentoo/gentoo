@@ -1,0 +1,30 @@
+--- a/dagrab.c
++++ b/dagrab.c
+@@ -416,7 +416,7 @@
+ 	return 0;
+ }
+ 
+-inline void cd_track_name(char *name, cd_trk_list * tl, int tn,
++void cd_track_name(char *name, cd_trk_list * tl, int tn,
+ 			  char *trackname)
+ {
+ 	if (opt_cddb)
+--- a/err.c
++++ b/err.c
+@@ -35,7 +35,7 @@
+ "\n%s: error writing wave file %s\n"			/* ERR_WRITING */
+ };
+ 
+-inline void die(int n, char *p)
++void die(int n, char *p)
+ {
+ 	fprintf(stderr, errs[n], PROGNAME, p);
+ 	exit(1);
+--- a/err.h
++++ b/err.h
+@@ -6,4 +6,4 @@
+ #define ERR_CHMOD	5
+ #define ERR_WRITING	6
+ 
+-inline void die(int n, char *p);
++void die(int n, char *p);

@@ -1,0 +1,121 @@
+--- a/Makefile
++++ b/Makefile
+@@ -21,6 +21,8 @@
+ KEYBLACKLISTAUTH = $(ALLKEYS:=-blacklist.auth)
+ KEYHASHBLACKLISTAUTH = $(ALLKEYS:=-hash-blacklist.auth)
+ 
++SSL_LIBS = $(shell $(PKG_CONFIG) $(STATIC_FLAG) --libs libcrypto)
++
+ export TOPDIR	:= $(shell pwd)/
+ 
+ include Make.rules
+@@ -88,31 +90,31 @@
+ ShimReplace.so: lib/lib-efi.a
+ 
+ cert-to-efi-sig-list: cert-to-efi-sig-list.o lib/lib.a
+-	$(CC) $(ARCH3264) -o $@ $< lib/lib.a -lcrypto
++	$(CC) $(LDFLAGS) $(ARCH3264) -o $@ $< lib/lib.a $(SSL_LIBS)
+ 
+ sig-list-to-certs: sig-list-to-certs.o lib/lib.a
+-	$(CC) $(ARCH3264) -o $@ $< lib/lib.a -lcrypto
++	$(CC) $(LDFLAGS) $(ARCH3264) -o $@ $< lib/lib.a $(SSL_LIBS)
+ 
+ sign-efi-sig-list: sign-efi-sig-list.o lib/lib.a
+-	$(CC) $(ARCH3264) -o $@ $< lib/lib.a -lcrypto
++	$(CC) $(LDFLAGS) $(ARCH3264) -o $@ $< lib/lib.a $(SSL_LIBS)
+ 
+ hash-to-efi-sig-list: hash-to-efi-sig-list.o lib/lib.a
+-	$(CC) $(ARCH3264) -o $@ $< lib/lib.a
++	$(CC) $(LDFLAGS) $(ARCH3264) -o $@ $< lib/lib.a
+ 
+ cert-to-efi-hash-list: cert-to-efi-hash-list.o lib/lib.a
+-	$(CC) $(ARCH3264) -o $@ $< lib/lib.a -lcrypto
++	$(CC) $(LDFLAGS) $(ARCH3264) -o $@ $< lib/lib.a $(SSL_LIBS)
+ 
+ efi-keytool: efi-keytool.o lib/lib.a
+-	$(CC) $(ARCH3264) -o $@ $< lib/lib.a
++	$(CC) $(LDFLAGS) $(ARCH3264) -o $@ $< lib/lib.a
+ 
+ efi-readvar: efi-readvar.o lib/lib.a
+-	$(CC) $(ARCH3264) -o $@ $< lib/lib.a -lcrypto
++	$(CC) $(LDFLAGS) $(ARCH3264) -o $@ $< lib/lib.a $(SSL_LIBS)
+ 
+ efi-updatevar: efi-updatevar.o lib/lib.a
+-	$(CC) $(ARCH3264) -o $@ $< lib/lib.a -lcrypto
++	$(CC) $(LDFLAGS) $(ARCH3264) -o $@ $< lib/lib.a $(SSL_LIBS)
+ 
+ flash-var: flash-var.o lib/lib.a
+-	$(CC) $(ARCH3264) -o $@ $< lib/lib.a
++	$(CC) $(LDFLAGS) $(ARCH3264) -o $@ $< lib/lib.a
+ 
+ clean:
+ 	rm -f PK.* KEK.* DB.* $(EFIFILES) $(EFISIGNED) $(BINARIES) *.o *.so
+--- a/Make.rules
++++ b/Make.rules
+@@ -15,8 +15,7 @@
+ endif
+ INCDIR	   = -I$(TOPDIR)include/ -I/usr/include/efi -I/usr/include/efi/$(ARCH) -I/usr/include/efi/protocol
+ CPPFLAGS   = -DCONFIG_$(ARCH)
+-CFLAGS	   = -O2 -g $(ARCH3264) -fpic -Wall -fshort-wchar -fno-strict-aliasing -fno-merge-constants -fno-stack-protector -ffreestanding -fno-stack-check
+-LDFLAGS	   = -nostdlib
++CFLAGS +=  $(ARCH3264) -fpic -Wall -fshort-wchar -fno-strict-aliasing -fno-merge-constants -fno-stack-protector -ffreestanding -fno-stack-check
+ CRTOBJ		= crt0-efi-$(ARCH).o
+ CRTPATHS	= /lib /lib64 /lib/efi /lib64/efi /usr/lib /usr/lib64 /usr/lib/efi /usr/lib64/efi /usr/lib/gnuefi /usr/lib64/gnuefi
+ CRTPATH		= $(shell for f in $(CRTPATHS); do if [ -e $$f/$(CRTOBJ) ]; then echo $$f; break; fi; done)
+@@ -24,10 +23,9 @@
+ # there's a bug in the gnu tools ... the .reloc section has to be
+ # aligned otherwise the file alignment gets screwed up
+ LDSCRIPT	= elf_$(ARCH)_efi.lds
+-LDFLAGS		+= -shared -Bsymbolic $(CRTOBJS) -L $(CRTPATH) -L /usr/lib -L /usr/lib64 -T $(LDSCRIPT)
++LIBS		+= -nostdlib -shared -Bsymbolic $(CRTOBJS) -L $(CRTPATH) -T $(LDSCRIPT)
+ LOADLIBES	= -lefi -lgnuefi $(shell $(CC) $(ARCH3264) -print-libgcc-file-name)
+ FORMAT		= --target=efi-app-$(ARCH)
+-OBJCOPY		= objcopy
+ MYGUID		= 11111111-2222-3333-4444-123456789abc
+ INSTALL		= install
+ BINDIR		= $(DESTDIR)/usr/bin
+@@ -47,12 +45,12 @@
+ endif
+ 
+ ifeq ($(ARCH),arm)
+-  LDFLAGS += --defsym=EFI_SUBSYSTEM=0x0a
++  LIBS += --defsym=EFI_SUBSYSTEM=0x0a
+   FORMAT = -O binary
+ endif
+ 
+ ifeq ($(ARCH),aarch64)
+-  LDFLAGS += --defsym=EFI_SUBSYSTEM=0x0a
++  LIBS += --defsym=EFI_SUBSYSTEM=0x0a
+   FORMAT = -O binary
+ endif
+ 
+@@ -61,9 +59,9 @@
+ 		   -j .rel -j .rela -j .rel.* -j .rela.* -j .rel* -j .rela* \
+ 		   -j .reloc $(FORMAT) $*.so $@
+ %.so: %.o
+-	$(LD) $(LDFLAGS) $^ -o $@ $(LOADLIBES)
++	$(LD) $(LIBS) $^ -o $@ $(LOADLIBES)
+ 	# check we have no undefined symbols
+-	nm -D $@ | grep ' U ' && exit 1 || exit 0
++	$(NM) -D $@ | grep ' U ' && exit 1 || exit 0
+ 
+ %.h: %.auth
+ 	./xxdi.pl $< > $@
+@@ -71,7 +69,7 @@
+ %.hash: %.efi hash-to-efi-sig-list
+ 	./hash-to-efi-sig-list $< $@
+ 
+-%-blacklist.esl: %.crt cert-to-efi-hash-list
++%-blacklist.esl: %.crt cert-to-efi-sig-list
+ 	./cert-to-efi-sig-list $< $@
+ 
+ %-hash-blacklist.esl: %.crt cert-to-efi-hash-list
+@@ -129,7 +127,7 @@
+ #	sbsign --key KEK.key --cert KEK.crt --output $@ $<
+ 
+ %.a:
+-	ar rcv $@ $^
++	$(AR) rcv $@ $^
+ 
+ doc/%.1: doc/%.1.in %
+ 	$(HELP2MAN) --no-info -i $< -o $@ ./$*

@@ -1,0 +1,10 @@
+--- a/timer.c
++++ b/timer.c
+@@ -8,6 +8,7 @@
+  */
+ #include <stdio.h>
+ #include <unistd.h>
++#include <stdlib.h> /* exit() */
+ #include "hunt.h"
+ 
+ struct list timejob_list = LIST_INIT(struct timejob, j_next);

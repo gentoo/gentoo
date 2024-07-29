@@ -1,0 +1,65 @@
+From 06a816c032c6f7fd79ced6e594dd4b33571a0e73 Mon Sep 17 00:00:00 2001
+From: Guillaume Duhamel <guillaume.duhamel@gmail.com>
+Date: Fri, 6 Jul 2018 08:08:22 +0200
+Subject: [PATCH] Fix qt 5.11 (#422)
+
+Header fixes for Qt 5.11
+---
+ yabause/src/qt/ui/UICheatRaw.cpp | 2 --
+ yabause/src/qt/ui/UICheatRaw.h   | 2 +-
+ yabause/src/qt/ui/UICheats.cpp   | 2 ++
+ yabause/src/qt/ui/UIHexInput.h   | 2 ++
+ 4 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/src/qt/ui/UICheatRaw.cpp b/src/qt/ui/UICheatRaw.cpp
+index 4ad82d770..3f78486bf 100755
+--- a/src/qt/ui/UICheatRaw.cpp
++++ b/src/qt/ui/UICheatRaw.cpp
+@@ -20,8 +20,6 @@
+ #include "UIHexInput.h"
+ #include "../QtYabause.h"
+ 
+-#include <QButtonGroup>
+-
+ UICheatRaw::UICheatRaw( QWidget* p )
+ 	: QDialog( p )
+ {
+diff --git a/src/qt/ui/UICheatRaw.h b/src/qt/ui/UICheatRaw.h
+index d97b429da..20318c670 100755
+--- a/src/qt/ui/UICheatRaw.h
++++ b/src/qt/ui/UICheatRaw.h
+@@ -21,7 +21,7 @@
+ 
+ #include "ui_UICheatRaw.h"
+ 
+-class QButtonGroup;
++#include <QButtonGroup>
+ 
+ class UICheatRaw : public QDialog, public Ui::UICheatRaw
+ {
+diff --git a/src/qt/ui/UICheats.cpp b/src/qt/ui/UICheats.cpp
+index c60279723..44d341c34 100755
+--- a/src/qt/ui/UICheats.cpp
++++ b/src/qt/ui/UICheats.cpp
+@@ -21,6 +21,8 @@
+ #include "UICheatRaw.h"
+ #include "../CommonDialogs.h"
+ 
++#include <QButtonGroup>
++
+ UICheats::UICheats( QWidget* p )
+ 	: QDialog( p )
+ {
+diff --git a/src/qt/ui/UIHexInput.h b/src/qt/ui/UIHexInput.h
+index f333b0166..4bd8aed48 100644
+--- a/src/qt/ui/UIHexInput.h
++++ b/src/qt/ui/UIHexInput.h
+@@ -22,6 +22,8 @@
+ #include "ui_UIHexInput.h"
+ #include "../QtYabause.h"
+ 
++#include <QValidator>
++
+ class HexValidator : public QValidator
+ {
+    Q_OBJECT

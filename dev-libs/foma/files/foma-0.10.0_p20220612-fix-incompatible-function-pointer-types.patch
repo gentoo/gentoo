@@ -1,0 +1,71 @@
+https://bugs.gentoo.org/930501
+
+--- a/foma/sigma.c
++++ b/foma/sigma.c
+@@ -338,8 +338,8 @@ struct ssort {
+   int number;
+ };
+ 
+-int ssortcmp(struct ssort *a, struct ssort *b) {
+-  return(strcmp(a->symbol, b->symbol));
++int ssortcmp(const void *a, const void *b) {
++  return(strcmp(((struct ssort*) a)->symbol, ((struct ssort*)b)->symbol));
+ }
+ 
+ struct sigma *sigma_copy(struct sigma *sigma) {
+@@ -369,7 +369,6 @@ struct sigma *sigma_copy(struct sigma *sigma) {
+ /* and sorts the sigma based on the symbol string contents        */
+ 
+ int sigma_sort(struct fsm *net) {
+-  int(*comp)() = ssortcmp;
+   int size, i, max, *replacearray;
+   struct ssort *ssort;
+   struct sigma *sigma;
+@@ -387,7 +386,7 @@ int sigma_sort(struct fsm *net) {
+     }
+   }
+   max = i;
+-  qsort(ssort, max, sizeof(struct ssort), comp);
++  qsort(ssort, max, sizeof(struct ssort), ssortcmp);
+   replacearray = malloc(sizeof(int)*(size+3));
+   for (i=0; i<max; i++)
+       replacearray[(ssort+i)->number] = i+3;
+--- a/foma/structures.c
++++ b/foma/structures.c
+@@ -46,20 +46,18 @@ void *fsm_get_option(unsigned long long option) {
+ 	return NULL;
+ }
+ 
+-int linesortcompin(struct fsm_state *a, struct fsm_state *b) {
+-    return (a->in - b->in);
++int linesortcompin(const void *a, const void *b) {
++    return (((struct fsm_state*)a)->in - ((struct fsm_state*)b)->in);
+ }
+ 
+-int linesortcompout(struct fsm_state *a, struct fsm_state *b) {
+-    return (a->out - b->out);
++int linesortcompout(const void *a, const void *b) {
++    return (((struct fsm_state*)a)->out - ((struct fsm_state*)b)->out);
+ }
+ 
+ void fsm_sort_arcs(struct fsm *net, int direction) {
+     /* direction 1 = in, direction = 2, out */
+     struct fsm_state *fsm;
+     int i, lasthead, numlines;
+-    int(*scin)() = linesortcompin;
+-    int(*scout)() = linesortcompout;
+     fsm = net->states;
+     for (i=0, numlines = 0, lasthead = 0 ; (fsm+i)->state_no != -1; i++) {
+ 	if ((fsm+i)->state_no != (fsm+i+1)->state_no || (fsm+i)->target == -1) {
+@@ -70,9 +68,9 @@ void fsm_sort_arcs(struct fsm *net, int direction) {
+ 	    if (numlines > 1) {
+ 		/* Sort, set numlines = 0 */
+ 		if (direction == 1)
+-		    qsort(fsm+lasthead, numlines, sizeof(struct fsm_state), scin);
++		    qsort(fsm+lasthead, numlines, sizeof(struct fsm_state), linesortcompin);
+ 		else
+-		    qsort(fsm+lasthead, numlines, sizeof(struct fsm_state), scout);		
++		    qsort(fsm+lasthead, numlines, sizeof(struct fsm_state), linesortcompout);
+ 	    }
+ 	    numlines = 0;
+ 	    lasthead = i + 1;

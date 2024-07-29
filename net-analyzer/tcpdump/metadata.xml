@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<use>
+		<flag name="smi">Build with <pkg>net-libs/libsmi</pkg> to load MIBs on the fly to decode SNMP packets</flag>
+		<flag name="drop-root">Drop privileges to pcap:pcap when run as root</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:tcpdump:tcpdump</remote-id>
+		<remote-id type="github">the-tcpdump-group/tcpdump</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,17 @@
+--- pythia8209/examples/main91.cc.orig	2015-06-05 07:44:27.000000000 +0300
++++ pythia8209/examples/main91.cc	2015-06-05 08:17:22.477228166 +0300
+@@ -62,13 +62,9 @@
+   // Statistics on event generation.
+   pythia.stat();
+ 
+-  // Show histogram. Possibility to close it.
+-  mult->Draw();
+-  std::cout << "\nDouble click on the histogram window to quit.\n";
+-  gPad->WaitPrimitive();
+-
+   // Save histogram on file and close file.
+   mult->Write();
++  outFile->Close();
+   delete outFile;
+ 
+   // Done.

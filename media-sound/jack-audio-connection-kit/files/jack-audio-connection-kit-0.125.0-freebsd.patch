@@ -1,0 +1,15 @@
+Index: jack-audio-connection-kit-0.125.0/configure
+===================================================================
+--- jack-audio-connection-kit-0.125.0.orig/configure
++++ jack-audio-connection-kit-0.125.0/configure
+@@ -15795,9 +15795,7 @@ HOST_DEFAULT_TMP_DIR=/dev/shm
+ USE_MD5SUM=1
+ case "${host_os}" in
+   freebsd*)
+-    # current FreeBSD header files conflict with the OSS driver's
+-    # barrier code, this may be fixed in 5.3, stay tuned.
+-    USE_BARRIER="no"
++    TRY_POSIX_SHM=yes
+     USE_MD5SUM=0
+     ;;
+   openbsd*)

@@ -1,0 +1,51 @@
+--- a/Makefile
++++ b/Makefile
+@@ -10,7 +10,7 @@ all: snappy
+ 
+ SNAPPY_OUT:=$(TARGET)/snappy-$(SNAPPY_VERSION)-$(os_arch)
+ SNAPPY_ARCHIVE:=$(TARGET)/snappy-$(SNAPPY_VERSION).tar.gz
+-SNAPPY_CC:=snappy-sinksource.cc snappy-stubs-internal.cc snappy-c.cc snappy.cc
++SNAPPY_CC:=
+ SNAPPY_SRC_DIR:=$(TARGET)/snappy-$(SNAPPY_VERSION)
+ SNAPPY_SRC:=$(addprefix $(SNAPPY_SRC_DIR)/,$(SNAPPY_CC))
+ SNAPPY_GIT_REPO_URL:=https://github.com/google/snappy
+@@ -102,7 +102,8 @@ $(TARGET)/jni-classes/org/xerial/snappy/BitShuffleNative.class: $(SRC)/org/xeria
+ 
+ $(SRC)/org/xerial/snappy/BitShuffleNative.h: $(TARGET)/jni-classes/org/xerial/snappy/BitShuffleNative.class
+ 
+-$(SNAPPY_SRC): $(SNAPPY_GIT_UNPACKED)
++$(SNAPPY_SRC):
++# $(SNAPPY_GIT_UNPACKED)
+ 
+ # aarch64 can use big-endian optimzied code
+ ifeq ($(OS_ARCH),aarch64)
+@@ -124,7 +125,7 @@ $(SNAPPY_OUT)/BitShuffleNative.o: $(SRC)/org/xerial/snappy/BitShuffleNative.cpp
+ 	$(CXX) $(CXXFLAGS) -c $< -o $@
+ 
+ $(SNAPPY_OUT)/$(LIBNAME): $(SNAPPY_OBJ)
+-	$(CXX) $(CXXFLAGS) -o $@ $+ $(LINKFLAGS)
++	$(CXX) $(CXXFLAGS) -o $@ $+ $(LINKFLAGS) -lsnappy
+     # Workaround for strip Protocol error when using VirtualBox on Mac
+ 	cp $@ /tmp/$(@F)
+ 	$(STRIP) /tmp/$(@F)
+@@ -145,9 +146,9 @@ snappy-jar-version:=snappy-java-$(shell ./script/dynver.sh | cut -d'=' -f2 | sed
+ jar-version:
+ 	echo $(snappy-jar-version)
+ 
+-native: jni-header snappy-header $(NATIVE_DLL)
+-native-nocmake: jni-header $(NATIVE_DLL)
+-snappy: native $(TARGET)/$(snappy-jar-version).jar
++native: $(NATIVE_DLL)
++native-nocmake: $(NATIVE_DLL)
++snappy: native
+ 
+ native-all: native native-arm clean-docker mac64 win32 win64 linux32 linux64 linux-ppc64le linux-riscv64 linux-s390x
+ 
+@@ -166,6 +167,7 @@ $(NATIVE_DLL): $(SNAPPY_OUT)/$(LIBNAME)
+ 	cp $(SNAPPY_OUT)/$(LIBNAME) $@
+ 	@mkdir -p $(NATIVE_TARGET_DIR)
+ 	cp $(SNAPPY_OUT)/$(LIBNAME) $(NATIVE_TARGET_DIR)/$(LIBNAME)
++	cp $< $(TARGET)/
+ 
+ package: $(TARGET)/$(snappy-jar-version).jar
+ 

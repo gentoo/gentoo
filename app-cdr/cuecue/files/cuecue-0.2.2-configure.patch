@@ -1,0 +1,13 @@
+-ansi -pednatic breaks various configure tests. autoconf already says
+not to use -Werror but any -W* is dangerous for configure itself.
+--- a/configure.in
++++ b/configure.in
+@@ -4,7 +4,7 @@ dnl AM_INIT_AUTOMAKE
+ 
+ AC_CONFIG_SRCDIR(src/libcuecue/cuecue.c)
+ 
+-CFLAGS="$CFLAGS -Wall -ansi -pedantic -g -Os"
++CFLAGS="-Wall -O2 ${CFLAGS}"
+ VERSION=0.2.2
+ 
+ PACKAGE="cuecue"

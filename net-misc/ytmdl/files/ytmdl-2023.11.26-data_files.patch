@@ -1,0 +1,11 @@
+--- a/setup.py
++++ b/setup.py
+@@ -52,7 +52,7 @@ for dirname, filename in file_map:
+         data_files.append((dirname, [filename]))
+ 
+ params = {
+-    'data_files': data_files,
++    'data_files': [],
+ }
+ 
+ 

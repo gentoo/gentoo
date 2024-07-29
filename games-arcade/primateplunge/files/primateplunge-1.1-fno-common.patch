@@ -1,0 +1,11 @@
+--- a/src/game.h
++++ b/src/game.h
+@@ -125,7 +125,7 @@
+ 
+ 
+ /* Glabals in main.c */
+-SDL_Surface *mainScreen;
++extern SDL_Surface *mainScreen;
+ 
+ /* Globals in game.c */
+ extern world* currentWorld;

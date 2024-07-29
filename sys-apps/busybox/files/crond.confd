@@ -1,0 +1,2 @@
+# Config file for /etc/init.d/busybox-crond
+CRONDARGS=

@@ -1,0 +1,41 @@
+--- a/conf/zabbix_agentd.conf
++++ b/conf/zabbix_agentd.conf
+@@ -5,6 +5,7 @@
+ 
+ ### Option: PidFile
+ #	Name of PID file.
++# THIS PARAMETER IS IGNORED IN GENTOO FOR SECURITY REASONS (https://bugs.gentoo.org/629884)
+ #
+ # Mandatory: no
+ # Default:
+--- a/conf/zabbix_proxy.conf
++++ b/conf/zabbix_proxy.conf
+@@ -109,6 +109,7 @@ LogFile=/tmp/zabbix_proxy.log
+ 
+ ### Option: PidFile
+ #	Name of PID file.
++# THIS PARAMETER IS IGNORED IN GENTOO FOR SECURITY REASONS (https://bugs.gentoo.org/629884)
+ #
+ # Mandatory: no
+ # Default:
+--- a/conf/zabbix_server.conf
++++ b/conf/zabbix_server.conf
+@@ -62,6 +62,7 @@ LogFile=/tmp/zabbix_server.log
+ 
+ ### Option: PidFile
+ #	Name of PID file.
++# THIS PARAMETER IS IGNORED IN GENTOO FOR SECURITY REASONS (https://bugs.gentoo.org/629884)
+ #
+ # Mandatory: no
+ # Default:
+--- a/src/libs/zbxnix/pid.c
++++ b/src/libs/zbxnix/pid.c
+@@ -26,6 +26,8 @@ static int	fdpid = -1;
+ 
+ int	create_pid_file(const char *pidfile)
+ {
++	return SUCCEED;
++
+ 	int		fd;
+ 	zbx_stat_t	buf;
+ 	struct flock	fl;

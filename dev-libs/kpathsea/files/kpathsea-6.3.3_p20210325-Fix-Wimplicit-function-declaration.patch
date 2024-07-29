@@ -1,0 +1,31 @@
+Sent upstream to tlbuild mailing list. Not yet in archive.
+
+From: Sam James <sam@gentoo.org>
+Date: Fri, 4 Nov 2022 04:58:38 +0000
+Subject: [PATCH] Fix -Wimplicit-function-declaration
+
+Add <stdlib.h> includes for exit(). Clang 16 makes -Wimplicit-function-declaration an error by default.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -45,7 +45,8 @@ if test "x$ac_cv_func_getcwd" = xyes; then
+ # We only need to run this if we have getcwd.
+ AC_CACHE_CHECK([whether getcwd uses fork or vfork],
+                [kb_cv_func_getcwd_forks],
+-               [AC_RUN_IFELSE([AC_LANG_PROGRAM([[int fork() { exit(1); }
++               [AC_RUN_IFELSE([AC_LANG_PROGRAM([[#include <stdlib.h>
++                                                 int fork() { exit(1); }
+                                                  int vfork() { exit(1); }
+                                                  extern char *getcwd();
+                                                  char path[100];]],
+--- a/configure
++++ b/configure
+@@ -13920,6 +13920,7 @@ else
+ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
++#include <stdlib.h>
+ int fork() { exit(1); }
+                                                  int vfork() { exit(1); }
+                                                  extern char *getcwd();

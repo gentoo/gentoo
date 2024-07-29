@@ -1,0 +1,60 @@
+From c01377081fc60132fd3e256ad56eab6b329f5493 Mon Sep 17 00:00:00 2001
+From: Gerald Combs <gerald@zing.org>
+Date: Thu, 1 Jun 2023 12:42:50 -0700
+Subject: [PATCH] libgcrypt.c: Fix type mismatches
+
+Fix
+
+    /build/libssh-0.10.5/src/libgcrypt.c:903:20: error: incompatible function pointer types initializing 'void (*)(struct ssh_cipher_struct *, void *, void *, size_t)' (aka 'void (*)(struct ssh_cipher_struct *, void *, void *, unsigned long long)') with an expression of type 'void (struct ssh_cipher_struct *, void *, void *, unsigned long)' [-Wincompatible-function-pointer-types]
+        .encrypt     = des3_encrypt,
+                       ^~~~~~~~~~~~
+    /build/libssh-0.10.5/src/libgcrypt.c:904:20: error: incompatible function pointer types initializing 'void (*)(struct ssh_cipher_struct *, void *, void *, size_t)' (aka 'void (*)(struct ssh_cipher_struct *, void *, void *, unsigned long long)') with an expression of type 'void (struct ssh_cipher_struct *, void *, void *, unsigned long)' [-Wincompatible-function-pointer-types]
+        .decrypt     = des3_decrypt
+                       ^~~~~~~~~~~~
+
+Fixes: #196
+
+Signed-off-by: Gerald Combs <gerald@zing.org>
+Reviewed-by: Jakub Jelen <jjelen@redhat.com>
+Reviewed-by: Norbert Pocs <npocs@redhat.com>
+---
+ src/libgcrypt.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/libgcrypt.c b/src/libgcrypt.c
+index cea20370b..58f510954 100644
+--- a/src/libgcrypt.c
++++ b/src/libgcrypt.c
+@@ -198,12 +198,12 @@ static int blowfish_set_key(struct ssh_cipher_struct *cipher, void *key, void *I
+ }
+ 
+ static void blowfish_encrypt(struct ssh_cipher_struct *cipher, void *in,
+-    void *out, unsigned long len) {
++    void *out, size_t len) {
+   gcry_cipher_encrypt(cipher->key[0], out, len, in, len);
+ }
+ 
+ static void blowfish_decrypt(struct ssh_cipher_struct *cipher, void *in,
+-    void *out, unsigned long len) {
++    void *out, size_t len) {
+   gcry_cipher_decrypt(cipher->key[0], out, len, in, len);
+ }
+ #endif /* WITH_BLOWFISH_CIPHER */
+@@ -469,12 +469,12 @@ static int des3_set_key(struct ssh_cipher_struct *cipher, void *key, void *IV) {
+ }
+ 
+ static void des3_encrypt(struct ssh_cipher_struct *cipher, void *in,
+-    void *out, unsigned long len) {
++    void *out, size_t len) {
+   gcry_cipher_encrypt(cipher->key[0], out, len, in, len);
+ }
+ 
+ static void des3_decrypt(struct ssh_cipher_struct *cipher, void *in,
+-    void *out, unsigned long len) {
++    void *out, size_t len) {
+   gcry_cipher_decrypt(cipher->key[0], out, len, in, len);
+ }
+ 
+-- 
+GitLab
+

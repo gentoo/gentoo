@@ -1,0 +1,20 @@
+--- aubio-0.4.9/wscript
++++ aubio-0.4.9/wscript
+@@ -557,7 +557,7 @@
+                 target = bld.path.find_or_declare('api/index.html'),
+                 cwd = bld.path.find_dir('doc'))
+         # evaluate nodes lazily to prevent build directory traversal warnings
+-        bld.install_files('${DATAROOTDIR}/doc/libaubio-doc/api',
++        bld.install_files('${DATAROOTDIR}/doc/' + os.environ['PF'] + '/libaubio-doc/api',
+                 bld.path.find_or_declare('api').ant_glob('**/*',
+                     generator=True), cwd=bld.path.find_or_declare('api'),
+                 relative_trick=True)
+@@ -582,7 +582,7 @@
+                 source = bld.path.find_dir('doc').ant_glob('*.rst'),
+                 target = bld.path.find_or_declare('manual/index.html'))
+         # evaluate nodes lazily to prevent build directory traversal warnings
+-        bld.install_files('${DATAROOTDIR}/doc/libaubio-doc/manual',
++        bld.install_files('${DATAROOTDIR}/doc/' + os.environ['PF'] + '/libaubio-doc/manual',
+                 bld.path.find_or_declare('manual').ant_glob('**/*',
+                     generator=True), cwd=bld.path.find_or_declare('manual'),
+                 relative_trick=True)

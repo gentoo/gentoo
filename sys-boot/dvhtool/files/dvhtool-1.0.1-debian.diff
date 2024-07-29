@@ -1,0 +1,135 @@
+--- dvhtool-1.0.1.orig/dvh.h
++++ dvhtool-1.0.1/dvh.h
+@@ -127,6 +127,8 @@
+ #define	PTYPE_XFSLOG	11		/* partition is sgi XFS log */
+ #define	PTYPE_XLV	12		/* partition is part of an XLV vol */
+ #define	PTYPE_XVM	13		/* partition is sgi XVM */
++#define	PTYPE_LSWAP	0x82		/* partition is Linux swap */
++#define	PTYPE_LINUX	0x83		/* partition is Linux native */
+ #define NPTYPES		16
+ 
+ #define	VHMAGIC		0xbe5a941	/* randomly chosen value */
+--- dvhtool-1.0.1.orig/dvhlib.c
++++ dvhtool-1.0.1/dvhlib.c
+@@ -50,6 +50,8 @@
+ 	case PTYPE_XFSLOG:	return "XFS Log";
+ 	case PTYPE_XLV:		return "XLV Volume";
+ 	case PTYPE_XVM:		return "XVM Volume";
++	case PTYPE_LSWAP:	return "Linux Swap";
++	case PTYPE_LINUX:	return "Linux Native";
+ 	}
+ 	return "Unknown Partition Type";
+ }
+@@ -325,8 +327,10 @@
+ 	if (res == -1)
+ 		die("Couldn't stat source file");
+ 
+-	/* XXX pad to blocksize? */
+-	size = vh->vh_pt[8].pt_nblks * blksize - istat.st_size;
++	/* calculate free blocks in vh */
++	size = vh->vh_pt[8].pt_nblks				/* total vh size */
++		- ( vh->vh_pt[8].pt_firstlbn + 4 )		/* reserved area */
++		- (( istat.st_size + blksize - 1 ) / blksize );	/* pad to blocksize */
+ 	/*
+ 	 * Are we replacing an existing file, check for enough space and free
+ 	 * entry in volume header
+@@ -336,16 +340,15 @@
+ 			/* It's an existing file, delete it.  */
+ 			memset(vd->vd_name, 0, VDNAMESIZE);
+ 			vd->vd_nbytes = 0;
+-			break;
+ 		}
+ 		if ( vd->vd_nbytes ) {
+-			size -= vd->vd_nbytes;
++			size -= (vd->vd_nbytes + blksize - 1 ) / blksize; /* pad to blocksize */
+ 			num++;
+ 		}
+ 		vd++;
+ 	}
+ 
+-	if ( num == NVDIR ) 
++	if ( num == NVDIR )
+ 		die("No more free entries in volume header");
+ 	if ( size <= 0 )
+ 		die("Not enough space left in volume header");
+@@ -403,7 +406,7 @@
+ 				die("Short write");
+ 			}
+ 		}
+-		dest += (vd->vd_nbytes + 511) / 512;	/* XXX Blocksize  */
++		dest += (vd->vd_nbytes + blksize - 1) / blksize;
+ 		vd++;
+ 	}
+ 
+--- dvhtool-1.0.1.orig/dvhtool.8
++++ dvhtool-1.0.1/dvhtool.8
+@@ -1,4 +1,4 @@
+-.TH DVHTOOL 1 "July 2000"
++.TH DVHTOOL 8 "July 2000"
+ .UC 4
+ .SH NAME
+ dvhtool \- Disk volume header manipulation tool
+@@ -85,4 +85,4 @@
+ .PP
+ .I dvhtool
+ was written by Ralf Baechle <ralf@oss.sgi.com>, Keith M. Wesolowski <wesolows@foobazco.org>,
+-Tor Arntsen <tor@spacetec.no>, Guido Guenther <guido.guenther@gmx.net>. 
++Tor Arntsen <tor@spacetec.no>, Guido Guenther <agx@debian.org>. 
+--- dvhtool-1.0.1.orig/Makefile.in
++++ dvhtool-1.0.1/Makefile.in
+@@ -1,4 +1,4 @@
+-# Makefile.in generated automatically by automake 1.4a from Makefile.am
++# Makefile.in generated automatically by automake 1.4-p4 from Makefile.am
+ 
+ # Copyright (C) 1994, 1995-8, 1999 Free Software Foundation, Inc.
+ # This Makefile.in is free software; the Free Software Foundation
+@@ -46,10 +46,9 @@
+ AUTOHEADER = @AUTOHEADER@
+ 
+ INSTALL = @INSTALL@
+-INSTALL_PROGRAM = @INSTALL_PROGRAM@
++INSTALL_PROGRAM = @INSTALL_PROGRAM@ $(AM_INSTALL_PROGRAM_FLAGS)
+ INSTALL_DATA = @INSTALL_DATA@
+ INSTALL_SCRIPT = @INSTALL_SCRIPT@
+-INSTALL_STRIP_FLAG =
+ transform = @program_transform_name@
+ 
+ NORMAL_INSTALL = :
+@@ -104,7 +103,7 @@
+ 
+ DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
+ 
+-TAR = gtar
++TAR = tar
+ GZIP_ENV = --best
+ DEP_FILES =  .deps/dvhlib.P .deps/dvhtool.P .deps/getopt.P \
+ .deps/getopt1.P .deps/pread.P
+@@ -124,7 +123,7 @@
+ $(ACLOCAL_M4):  configure.in  acinclude.m4
+ 	cd $(srcdir) && $(ACLOCAL)
+ 
+-config.status: $(srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
++config.status: $(srcdir)/configure.in $(CONFIG_STATUS_DEPENDENCIES)
+ 	$(SHELL) ./config.status --recheck
+ $(srcdir)/configure: $(srcdir)/configure.in $(ACLOCAL_M4) $(CONFIGURE_DEPENDENCIES)
+ 	cd $(srcdir) && $(AUTOCONF)
+@@ -173,8 +172,8 @@
+ 	$(mkinstalldirs) $(DESTDIR)$(sbindir)
+ 	@list='$(sbin_PROGRAMS)'; for p in $$list; do \
+ 	  if test -f $$p; then \
+-	    echo "  $(INSTALL_PROGRAM) $(INSTALL_STRIP_FLAG) $$p $(DESTDIR)$(sbindir)/`echo $$p|sed 's/$(EXEEXT)$$//'|sed '$(transform)'|sed 's/$$/$(EXEEXT)/'`"; \
+-	     $(INSTALL_PROGRAM) $(INSTALL_STRIP_FLAG) $$p $(DESTDIR)$(sbindir)/`echo $$p|sed 's/$(EXEEXT)$$//'|sed '$(transform)'|sed 's/$$/$(EXEEXT)/'`; \
++	    echo "  $(INSTALL_PROGRAM) $$p $(DESTDIR)$(sbindir)/`echo $$p|sed 's/$(EXEEXT)$$//'|sed '$(transform)'|sed 's/$$/$(EXEEXT)/'`"; \
++	     $(INSTALL_PROGRAM) $$p $(DESTDIR)$(sbindir)/`echo $$p|sed 's/$(EXEEXT)$$//'|sed '$(transform)'|sed 's/$$/$(EXEEXT)/'`; \
+ 	  else :; fi; \
+ 	done
+ 
+@@ -382,7 +381,7 @@
+ all-am: Makefile $(PROGRAMS) $(MANS) $(HEADERS) config.h
+ all-redirect: all-am
+ install-strip:
+-	$(MAKE) $(AM_MAKEFLAGS) INSTALL_STRIP_FLAG=-s install
++	$(MAKE) $(AM_MAKEFLAGS) AM_INSTALL_PROGRAM_FLAGS=-s install
+ installdirs:
+ 	$(mkinstalldirs)  $(DESTDIR)$(sbindir) $(DESTDIR)$(mandir)/man8
+ 

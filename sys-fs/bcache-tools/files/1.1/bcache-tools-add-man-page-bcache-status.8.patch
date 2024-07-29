@@ -1,0 +1,69 @@
+From 91fd5fb518ae535e36cff1ae188d1bcef874cf40 Mon Sep 17 00:00:00 2001
+From: Coly Li <colyli@suse.de>
+Date: Wed, 2 Sep 2020 20:09:06 +0800
+Subject: [PATCH 2/2] bcache-tools: add man page bcache-status.8
+
+Add the initial man page for bcache-status.
+
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ bcache-status.8 | 47 +++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 47 insertions(+)
+ create mode 100644 bcache-status.8
+
+diff --git a/bcache-status.8 b/bcache-status.8
+new file mode 100644
+index 0000000..f56cfb6
+--- /dev/null
++++ b/bcache-status.8
+@@ -0,0 +1,47 @@
++.TH bcache-status 8
++.SH NAME
++bcache-status \- Display useful bcache statistics
++
++.SH SYNOPSIS
++.B bcache-status [ --help ] [ -f ] [ -h ] [ -d ] [ -t ] [ -a ] [ -r ] [ -s ] [ -g ]
++
++.SH DESCRIPTION
++This command displays useful bcache statistics in a convenient way.
++
++.SH OPTIONS
++
++.TP
++.BR \-\-help
++Print help message and exit.
++
++.TP
++.BR \-f ", " \-\-five\-minute
++Print the last five minutes of stats.
++
++.TP
++.BR \-h ", " \-\-hour
++Print the last hour of stats.
++
++.TP
++.BR \-d ", " \-\-day
++Print the last day of stats.
++
++.TP
++.BR \-t ", " \-\-total
++Print total stats.
++
++.TP
++.BR \-a ", " \-\-all
++Print all stats.
++
++.TP
++.BR \-r ", " \-\-reset\-stats
++Reset stats after printing them.
++
++.TP
++.BR \-s ", " \-\-sub\-status
++Print subdevice status.
++
++.TP
++.BR \-g ", " \-\-gc
++Invoke GC before printing status (root only).
+-- 
+2.28.0
+

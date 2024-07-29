@@ -1,0 +1,196 @@
+diff -r -u glimmer3.02.old/docs/notes.tex glimmer3.02/docs/notes.tex
+--- glimmer3.02.old/docs/notes.tex	2006-06-12 21:40:14.000000000 +0200
++++ glimmer3.02/docs/notes.tex	2015-05-25 22:41:39.450340098 +0200
+@@ -306,7 +306,7 @@
+   The script would then run the commands:
+ \BSV\begin{verbatim}
+   long-orfs -n -t 1.15 genom.seq run1.longorfs
+-  extract -t genom.seq run1.longorfs > run1.train
++  glimmer_extract -t genom.seq run1.longorfs > run1.train
+   build-icm -r run1.icm < run1.train
+   glimmer3 -o50 -g110 -t30 genom.seq run1.icm run1
+ \end{verbatim}\ESV
+@@ -330,9 +330,9 @@
+ \end{verbatim}\ESV
+   The script would then run the commands:
+ \BSV\begin{verbatim}
+-  extract -t genom.seq train.coords > run2.train
++  glimmer_extract -t genom.seq train.coords > run2.train
+   build-icm -r run2.icm < run2.train
+-  upstream-coords.awk 25 0 train.coords | extract genom.seq - > run2.upstream
++  upstream-coords.awk 25 0 train.coords | glimmer_extract genom.seq - > run2.upstream
+   elph run2.upstream LEN=6 | get-motif-counts.awk > run2.motif
+   set startuse = `start-codon-distrib -3 genom.seq train.coords`
+   glimmer3 -o50 -g110 -t30 -b run2.motif -P $startuse genom.seq run2.icm run2
+@@ -358,11 +358,11 @@
+   The script would then run the commands:
+ \BSV\begin{verbatim}
+   long-orfs -n -t 1.15 genom.seq run3.longorfs
+-  extract -t genom.seq run3.longorfs > run3.train
++  glimmer_extract -t genom.seq run3.longorfs > run3.train
+   build-icm -r run3.icm < run3.train
+   glimmer3 -o50 -g110 -t30 genom.seq run3.icm run3.run1
+   tail +2 run3.run1.predict > run3.coords
+-  upstream-coords.awk 25 0 run3.coords | extract genom.seq - > run3.upstream
++  upstream-coords.awk 25 0 run3.coords | glimmer_extract genom.seq - > run3.upstream
+   elph run3.upstream LEN=6 | get-motif-counts.awk > run3.motif
+   set startuse = `start-codon-distrib -3 genom.seq run3.coords`
+   glimmer3 -o50 -g110 -t30 -b run3.motif -P $startuse genom.seq run3.icm run3
+@@ -1081,12 +1081,12 @@
+   \Pg{entropy-score}\, [\Desc{options}] \Desc{sequence} \Desc{coords}
+ \eq
+ 
+-\subsubsection{\Pg{extract} Program}
++\subsubsection{\Pg{glimmer_extract} Program}
+ This program reads a genome sequence and a list of coordinates
+ for it and outputs a multi-fasta file of the regions specified
+ by the coordinates.  Output goes to standard output.
+ \bq
+-  \Pg{extract}\, [\Desc{options}] \Desc{sequence} \Desc{coords}
++  \Pg{glimmer_extract}\, [\Desc{options}] \Desc{sequence} \Desc{coords}
+ \eq
+ 
+ \subsubsection{\Pg{multi-extract} Program}
+diff -r -u glimmer3.02.old/sample-run/g3-from-scratch.csh glimmer3.02/sample-run/g3-from-scratch.csh
+--- glimmer3.02.old/sample-run/g3-from-scratch.csh	2006-06-12 21:46:35.000000000 +0200
++++ glimmer3.02/sample-run/g3-from-scratch.csh	2015-05-25 22:40:18.450338748 +0200
+@@ -50,7 +50,7 @@
+ step2:
+ # Extract the training sequences from the genome file
+ echo "Step 2 of ${numsteps}:  Extracting training sequences"
+-$glimmerpath/extract -t $genome $tag.longorfs > $tag.train
++$glimmerpath/glimmer_extract -t $genome $tag.longorfs > $tag.train
+ if  ($status != 0)  then
+   echo "Failed to extract training sequences"
+   exit
+diff -r -u glimmer3.02.old/sample-run/g3-from-training.csh glimmer3.02/sample-run/g3-from-training.csh
+--- glimmer3.02.old/sample-run/g3-from-training.csh	2006-06-12 21:46:35.000000000 +0200
++++ glimmer3.02/sample-run/g3-from-training.csh	2015-05-25 22:40:18.450338748 +0200
+@@ -42,7 +42,7 @@
+ step1:
+ # Extract the training sequences from the genome file
+ echo "Step 1 of ${numsteps}:  Extracting training sequences"
+-$glimmerpath/extract -t $genome $coords > $tag.train
++$glimmerpath/glimmer_extract -t $genome $coords > $tag.train
+ if  ($status != 0)  then
+   echo "Failed to extract training sequences"
+   exit
+@@ -66,7 +66,7 @@
+ # upstream of the start locations in $coords
+ echo "Step 3 of ${numsteps}:  Making PWM from upstream regions"
+ $awkpath/upstream-coords.awk 25 0 $coords \
+-   | $glimmerpath/extract $genome - > $tag.upstream
++   | $glimmerpath/glimmer_extract $genome - > $tag.upstream
+ $elphbin $tag.upstream LEN=6 | $awkpath/get-motif-counts.awk > $tag.motif
+ if  ($status != 0)  then
+   echo "Failed to create PWM"
+diff -r -u glimmer3.02.old/sample-run/g3-iterated.csh glimmer3.02/sample-run/g3-iterated.csh
+--- glimmer3.02.old/sample-run/g3-iterated.csh	2006-06-13 14:15:28.000000000 +0200
++++ glimmer3.02/sample-run/g3-iterated.csh	2015-05-25 22:40:18.450338748 +0200
+@@ -57,7 +57,7 @@
+ step2:
+ # Extract the training sequences from the genome file
+ echo "Step 2 of ${numsteps}:  Extracting training sequences"
+-$glimmerpath/extract -t $genome $tag.longorfs > $tag.train
++$glimmerpath/glimmer_extract -t $genome $tag.longorfs > $tag.train
+ if  ($status != 0)  then
+   echo "Failed to extract training sequences"
+   exit
+@@ -103,7 +103,7 @@
+ # upstream of the start locations in $tag.coords
+ echo "Step 6 of ${numsteps}:  Making PWM from upstream regions"
+ $awkpath/upstream-coords.awk 25 0 $tag.coords \
+-   | $glimmerpath/extract $genome - > $tag.upstream
++   | $glimmerpath/glimmer_extract $genome - > $tag.upstream
+ $elphbin $tag.upstream LEN=6 | $awkpath/get-motif-counts.awk > $tag.motif
+ if  ($status != 0)  then
+   echo "Failed to create PWM"
+diff -r -u glimmer3.02.old/scripts/g3-from-scratch.csh glimmer3.02/scripts/g3-from-scratch.csh
+--- glimmer3.02.old/scripts/g3-from-scratch.csh	2006-06-12 21:40:14.000000000 +0200
++++ glimmer3.02/scripts/g3-from-scratch.csh	2015-05-25 22:44:44.190343177 +0200
+@@ -50,7 +50,7 @@
+ step2:
+ # Extract the training sequences from the genome file
+ echo "Step 2 of ${numsteps}:  Extracting training sequences"
+-$glimmerpath/extract -t $genome $tag.longorfs > $tag.train
++$glimmerpath/glimmer_extract -t $genome $tag.longorfs > $tag.train
+ if  ($status != 0)  then
+   echo "Failed to extract training sequences"
+   exit
+diff -r -u glimmer3.02.old/scripts/g3-from-training.csh glimmer3.02/scripts/g3-from-training.csh
+--- glimmer3.02.old/scripts/g3-from-training.csh	2006-06-12 21:40:14.000000000 +0200
++++ glimmer3.02/scripts/g3-from-training.csh	2015-05-25 22:44:44.190343177 +0200
+@@ -42,7 +42,7 @@
+ step1:
+ # Extract the training sequences from the genome file
+ echo "Step 1 of ${numsteps}:  Extracting training sequences"
+-$glimmerpath/extract -t $genome $coords > $tag.train
++$glimmerpath/glimmer_extract -t $genome $coords > $tag.train
+ if  ($status != 0)  then
+   echo "Failed to extract training sequences"
+   exit
+@@ -66,7 +66,7 @@
+ # upstream of the start locations in $coords
+ echo "Step 3 of ${numsteps}:  Making PWM from upstream regions"
+ $awkpath/upstream-coords.awk 25 0 $coords \
+-   | $glimmerpath/extract $genome - > $tag.upstream
++   | $glimmerpath/glimmer_extract $genome - > $tag.upstream
+ $elphbin $tag.upstream LEN=6 | $awkpath/get-motif-counts.awk > $tag.motif
+ if  ($status != 0)  then
+   echo "Failed to create PWM"
+diff -r -u glimmer3.02.old/scripts/g3-iterated.csh glimmer3.02/scripts/g3-iterated.csh
+--- glimmer3.02.old/scripts/g3-iterated.csh	2006-06-13 14:15:46.000000000 +0200
++++ glimmer3.02/scripts/g3-iterated.csh	2015-05-25 22:44:44.190343177 +0200
+@@ -57,7 +57,7 @@
+ step2:
+ # Extract the training sequences from the genome file
+ echo "Step 2 of ${numsteps}:  Extracting training sequences"
+-$glimmerpath/extract -t $genome $tag.longorfs > $tag.train
++$glimmerpath/glimmer_extract -t $genome $tag.longorfs > $tag.train
+ if  ($status != 0)  then
+   echo "Failed to extract training sequences"
+   exit
+@@ -103,7 +103,7 @@
+ # upstream of the start locations in $tag.coords
+ echo "Step 6 of ${numsteps}:  Making PWM from upstream regions"
+ $awkpath/upstream-coords.awk 25 0 $tag.coords \
+-   | $glimmerpath/extract $genome - > $tag.upstream
++   | $glimmerpath/glimmer_extract $genome - > $tag.upstream
+ $elphbin $tag.upstream LEN=6 | $awkpath/get-motif-counts.awk > $tag.motif
+ if  ($status != 0)  then
+   echo "Failed to create PWM"
+diff -r -u glimmer3.02.old/src/Util/Makefile glimmer3.02/src/Util/Makefile
+--- glimmer3.02.old/src/Util/Makefile	2006-06-12 21:40:14.000000000 +0200
++++ glimmer3.02/src/Util/Makefile	2015-05-25 22:43:12.760341653 +0200
+@@ -8,7 +8,7 @@
+ SOURCES = $(UTIL_SRCS)
+ OBJECTS = $(UTIL_OBJS)
+ 
+-PROGS = entropy-profile entropy-score extract multi-extract start-codon-distrib \
++PROGS = entropy-profile entropy-score glimmer_extract multi-extract start-codon-distrib \
+   uncovered window-acgt
+ 
+ LIBRARIES = 
+diff -r -u glimmer3.02.old/src/Util/extract.cc glimmer3.02/src/Util/extract.cc
+--- glimmer3.02.old/src/Util/extract.cc	2006-06-12 21:40:14.000000000 +0200
++++ glimmer3.02/src/Util/extract.cc	2015-05-25 22:44:01.760342470 +0200
+@@ -297,7 +297,7 @@
+ 
+   {
+    fprintf (stderr,
+-       "USAGE:  extract [options] <sequence-file> <coords>\n"
++       "USAGE:  glimmer_extract [options] <sequence-file> <coords>\n"
+        "\n"
+        "Read fasta-format <sequence-file> and extract from it the\n"
+        "subsequences specified by <coords>.  By default, <coords>\n"
+--- glimmer3.02.old/src/Util/Makefile	2015-05-25 22:43:12.760341653 +0200
++++ glimmer-3.02-r3/work/glimmer3.02/src/Util/Makefile	2015-05-25 23:13:34.230372010 +0200
+@@ -21,7 +21,7 @@
+ 
+ entropy-score:  entropy-score.o libGLMcommon.a
+ 
+-extract:  extract.o libGLMcommon.a
++glimmer_extract:  extract.o libGLMcommon.a
+ 
+ multi-extract:  multi-extract.o libGLMcommon.a
+ 

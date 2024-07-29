@@ -1,0 +1,79 @@
+From 7d87d5e2fc52c1d429fe99b505bf2db643c82da2 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Fri, 28 Apr 2023 14:58:02 +0300
+Subject: [PATCH] Fix buildsystem
+
+* Respect CC, CFLAGS, LDFLAGS
+* Don't strip binaries on install
+--- a/Makefile
++++ b/Makefile
+@@ -6,10 +6,13 @@ ifeq ($(STATIC),1)
+     STATIC_LIB=true
+ endif
+
+-CFLAGS=-O3 -DNDEBUG
++CC ?= cc
++PKG_CONFIG ?= pkg-config
++
++CFLAGS ?= -O3 -DNDEBUG
+ #CFLAGS=-g -DDEBUG
+
+-OPT=-DUSE_SFX_GEN
++OPT=-DUSE_SFX_GEN `$(PKG_CONFIG) --cflags libpulse-simple libpulse vorbisfile`
+ ifeq ($(FLAC),1)
+ 	OPT+=-DUSE_FLAC
+ endif
+@@ -25,7 +28,7 @@ else
+ LIB_DIR=$(DESTDIR)/lib
+ endif
+
+-DEP_LIB = -lpulse-simple -lpulse -lvorbisfile -lpthread -lm
++DEP_LIB = `$(PKG_CONFIG) --libs libpulse-simple libpulse vorbisfile` -lpthread -lm
+
+ ifdef STATIC_LIB
+ FAUN_LIB=libfaun.a
+@@ -49,10 +52,10 @@ obj:
+ 	mkdir obj
+
+ obj/tmsg.o: support/tmsg.c obj
+-	cc -c -pipe -Wall -W $< $(CFLAGS) -Isupport $(OPT) -fPIC -o $@
++	$(CC) -c -pipe -Wall -W $< $(CFLAGS) -Isupport $(OPT) -fPIC -o $@
+
+ obj/faun.o: faun.c support/wav_write.c support/wav_read.c support/flac.c support/sfx_gen.c support/well512.c support/os_thread.h support/tmsg.h support/flac.h support/sfx_gen.h support/well512.h obj
+-	cc -c -pipe -Wall -W $< $(CFLAGS) -Isupport $(OPT) -fPIC -o $@
++	$(CC) -c -pipe -Wall -W $< $(CFLAGS) -Isupport $(OPT) -fPIC -o $@
+
+ $(FAUN_LIB): obj/tmsg.o obj/faun.o
+ ifdef STATIC_LIB
+@@ -60,16 +63,16 @@ ifdef STATIC_LIB
+ 	ranlib $@
+ 	#strip -d $@
+ else
+-	cc -o $@ $^ -shared -Wl,-soname,$(FAUN_SO) $(DEP_LIB)
++	$(CC) -o $@ $^ -shared -Wl,-soname,$(FAUN_SO) $(LDFLAGS) $(DEP_LIB)
+ 	ln -sf $@ $(FAUN_SO)
+ 	ln -sf $@ libfaun.so
+ endif
+
+ faun_test: faun_test.c $(FAUN_LIB)
+-	cc -Wall -W $< $(CFLAGS) -I. -L. -lfaun $(DEP_STATIC) -o $@
++	$(CC) -Wall -W $< $(CFLAGS) -I. -L. -lfaun $(DEP_STATIC) $(LDFLAGS) -o $@
+
+ basic: example/basic.c $(FAUN_LIB)
+-	cc -Wall -W $< $(CFLAGS) -I. -L. -lfaun $(DEP_STATIC) -o $@
++	$(CC) -Wall -W $< $(CFLAGS) -I. -L. -lfaun $(DEP_STATIC) $(LDFLAGS) -o $@
+
+ install:
+ 	mkdir -p $(DESTDIR)/include $(LIB_DIR)
+@@ -77,7 +80,7 @@ install:
+ ifdef STATIC_LIB
+ 	install -m 644 $(FAUN_LIB) $(LIB_DIR)
+ else
+-	install -m 755 -s $(FAUN_LIB) $(LIB_DIR)
++	install -m 755 $(FAUN_LIB) $(LIB_DIR)
+ 	ln -s $(FAUN_LIB) $(LIB_DIR)/$(FAUN_SO)
+ 	ln -s $(FAUN_LIB) $(LIB_DIR)/libfaun.so
+ endif
+--
+2.39.2
+

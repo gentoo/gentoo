@@ -1,0 +1,3 @@
+DATAPLOT_FILES="/usr/share/dataplot"
+DATAPLOT_WEB="OFF"
+BROWSER="xdg-open"

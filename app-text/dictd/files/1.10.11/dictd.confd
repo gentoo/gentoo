@@ -1,0 +1,5 @@
+# If you have problems starting dictd in a UTF-8 locale, add an appropriate
+# --locale switch to DICTD_OPTS, e. g. "--locale=en_US.utf8"
+DICTD_OPTS="-s "
+DICTDCONF=/etc/dict/dictd.conf
+DLIBDIR=/usr/share/dict

@@ -1,0 +1,22 @@
+* no idea where these macros are, but we can surely do without this, for
+  now -- grobian@gentoo.org
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -504,16 +504,6 @@
+ 
+ AC_MSG_RESULT($result)
+ 
+-# add extra cflags if the compiler accepts them
+-AX_CFLAGS_WARN_ALL
+-MODULE_CFLAGS=""
+-if test "$ax_cv_c_compiler_vendor" = "gnu"; then
+-    AX_CFLAGS_GCC_OPTION([-fno-strict-aliasing], [MODULE_CFLAGS])
+-    if test "$target_cpu" = "alpha"; then
+-	AX_CFLAGS_GCC_OPTION([-mfp-trap-mode=sui -mtrap-precision=i])
+-    fi
+-fi
+-
+ # Define man page supplement
+ MAN_SUPPLEMENT=machine/m_$MODULE.man
+ AC_SUBST_FILE(MAN_SUPPLEMENT)

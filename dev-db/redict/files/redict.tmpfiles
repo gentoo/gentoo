@@ -1,0 +1,2 @@
+# redict runtime directory
+d /run/redict 0755 redict root -

@@ -1,0 +1,11 @@
+--- a/Main.cc
++++ b/Main.cc
+@@ -264,7 +264,7 @@
+ {
+     (void) signal(SIGINT, sig_int);
+ 
+-    char c;
++    int c;
+ 
+ #ifdef __DEBUG__
+     ferr = fopen("err.txt","w");

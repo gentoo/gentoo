@@ -1,0 +1,19 @@
+From b4663367d16190cf57b632cd59425b1b8b43f2f3 Mon Sep 17 00:00:00 2001
+From: Vincent Cheng <vcheng@debian.org>
+Date: Sat, 25 Jul 2015 21:10:10 -0700
+Subject: [PATCH] build with LDFLAGS defined by environment
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index ab37e6e..a83e465 100644
+--- a/Makefile
++++ b/Makefile
+@@ -30,4 +30,4 @@ CXXFLAGS += -DPRIMUS_libGLd='"$(PRIMUS_libGLd)"'
+ 
+ $(LIBDIR)/libGL.so.1: libglfork.cpp
+ 	mkdir -p $(LIBDIR)
+-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -fvisibility=hidden -fPIC -shared -Wl,-Bsymbolic -o $@ $< -lX11 -lpthread -lrt
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -fvisibility=hidden -fPIC -shared -Wl,-Bsymbolic -o $@ $< $(LDFLAGS) -lX11 -lpthread -lrt

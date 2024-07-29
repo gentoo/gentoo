@@ -1,0 +1,23 @@
+From a3985001b13132ce4841bf1170626f7ef8f9dae7 Mon Sep 17 00:00:00 2001
+From: Jim Easterbrook <jim@jim-easterbrook.me.uk>
+Date: Thu, 15 Feb 2024 16:41:35 +0000
+Subject: [PATCH] Restore localisation of error messages/exceptions
+
+Signed-off-by: Jim Easterbrook <jim@jim-easterbrook.me.uk>
+---
+ src/error.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/error.cpp b/src/error.cpp
+index c4ce1f2e01..135f4730d8 100644
+--- a/src/error.cpp
++++ b/src/error.cpp
+@@ -163,7 +163,7 @@ const char* Error::what() const noexcept {
+ }
+ 
+ void Error::setMsg(int count) {
+-  std::string msg{errList.at(static_cast<size_t>(code_))};
++  std::string msg{_(errList.at(static_cast<size_t>(code_)))};
+   auto pos = msg.find("%0");
+   if (pos != std::string::npos) {
+     msg.replace(pos, 2, std::to_string(static_cast<int>(code_)));

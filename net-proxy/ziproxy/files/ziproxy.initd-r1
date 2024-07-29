@@ -1,0 +1,25 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+start() {
+	local OPT="-d"
+	ebegin "Starting ${SVCNAME}"
+
+	[ -n "${CONFIG}"   ] && OPT="${OPT} -c ${CONFIG}"
+	[ -n "${ONLYFROM}" ] && OPT="${OPT} -f ${ONLYFROM}"
+
+	start-stop-daemon --start \
+		--exec /usr/sbin/ziproxy -- ${OPT} -u ziproxy -g ziproxy -p /var/run/${SVCNAME}.pid
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --quiet --pidfile /var/run/${SVCNAME}.pid
+	eend $?
+}

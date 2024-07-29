@@ -1,0 +1,20 @@
+--- a/src/ebusd/main_args.cpp
++++ b/src/ebusd/main_args.cpp
+@@ -79,7 +79,7 @@
+   .port = 8888,
+   .localOnly = false,
+   .httpPort = 0,
+-  .htmlPath = "/var/" PACKAGE "/html",
++  .htmlPath = "/var/lib" PACKAGE "/html",
+   .updateCheck = true,
+ 
+   .logFile = PACKAGE_LOGFILE,
+@@ -199,7 +199,7 @@
+   {"port",           'p',      "PORT",     0, "Listen for command line connections on PORT [8888]"},
+   {"localhost",      O_LOCAL,  nullptr,    0, "Listen for command line connections on 127.0.0.1 interface only"},
+   {"httpport",       O_HTTPPT, "PORT",     0, "Listen for HTTP connections on PORT, 0 to disable [0]"},
+-  {"htmlpath",       O_HTMLPA, "PATH",     0, "Path for HTML files served by HTTP port [/var/ebusd/html]"},
++  {"htmlpath",       O_HTMLPA, "PATH",     0, "Path for HTML files served by HTTP port [/var/lib/ebusd/html]"},
+   {"updatecheck",    O_UPDCHK, "MODE",     0, "Set automatic update check to MODE (on|off) [on]"},
+ 
+   {nullptr,          0,        nullptr,    0, "Log options:"},

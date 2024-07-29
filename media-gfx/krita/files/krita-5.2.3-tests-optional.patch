@@ -1,0 +1,90 @@
+From 2e9369281d44a2701ac7364568d381cca0d92ec5 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 12 Jul 2020 18:55:31 +0200
+Subject: [PATCH] KritaAddBrokenUnitTest.cmake, MacroKritaAddBenchmark.cmake:
+ Skip ecm_add_test early if Qt5::Test is not available
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ cmake/modules/KritaAddBrokenUnitTest.cmake | 4 ++++
+ cmake/modules/MacroKritaAddBenchmark.cmake | 4 ++++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/cmake/modules/KritaAddBrokenUnitTest.cmake b/cmake/modules/KritaAddBrokenUnitTest.cmake
+index b7d0e8d852..901a0a1f99 100644
+--- a/cmake/modules/KritaAddBrokenUnitTest.cmake
++++ b/cmake/modules/KritaAddBrokenUnitTest.cmake
+@@ -23,6 +23,10 @@ function(KRITA_ADD_BROKEN_UNIT_TEST)
+     message(FATAL_ERROR "ecm_add_test() called with multiple source files but without setting \"TEST_NAME\"")
+   endif()
+ 
++  if(NOT TARGET Qt5::Test)
++    return()
++  endif()
++
+   set(_testname ${ARG_NAME_PREFIX}${_targetname})
+ 
+   # add test to the global list of disabled tests
+diff --git a/cmake/modules/MacroKritaAddBenchmark.cmake b/cmake/modules/MacroKritaAddBenchmark.cmake
+index c748d8e319..f804d9b8f4 100644
+--- a/cmake/modules/MacroKritaAddBenchmark.cmake
++++ b/cmake/modules/MacroKritaAddBenchmark.cmake
+@@ -23,6 +23,10 @@ macro (KRITA_ADD_BENCHMARK _test_NAME)
+         set(_nogui "NOGUI")
+     endif()
+ 
++    if(NOT TARGET Qt5::Test)
++        return()
++    endif()
++
+     add_executable( ${_test_NAME} ${_srcList} )
+     ecm_mark_as_test(${_test_NAME})
+ 
+-- 
+2.27.0
+
+From 3c9fe10e25e94bdb1eb5e7b07ac2696635fdc5a3 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 17 Jun 2020 20:18:28 +0200
+Subject: [PATCH] Don't build tests when testing not requested
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+
+diff --git a/libs/flake/CMakeLists.txt b/libs/flake/CMakeLists.txt
+index cbdac265d2..1a50c1620a 100644
+--- a/libs/flake/CMakeLists.txt
++++ b/libs/flake/CMakeLists.txt
+@@ -9,8 +9,10 @@ include_directories(
+ )
+ 
+ add_subdirectory(styles)
+-add_subdirectory(tests)
+-add_subdirectory(resources/tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++    add_subdirectory(resources/tests)
++endif()
+ 
+ set(kritaflake_SRCS
+     KoGradientHelper.cpp
+diff --git a/libs/image/tiles3/CMakeLists.txt b/libs/image/tiles3/CMakeLists.txt
+index 88c0516360..01f2383ddb 100644
+--- a/libs/image/tiles3/CMakeLists.txt
++++ b/libs/image/tiles3/CMakeLists.txt
+@@ -1 +1,3 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1246,7 +1246,9 @@
+                            ${CMAKE_CURRENT_BINARY_DIR}
+ )
+ 
++if(BUILD_TESTING)
+ add_subdirectory(sdk/tests)
++endif()
+ 
+ add_subdirectory(libs)
+ add_subdirectory(plugins)

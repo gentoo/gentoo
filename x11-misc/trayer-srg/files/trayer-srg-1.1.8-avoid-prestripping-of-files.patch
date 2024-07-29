@@ -1,0 +1,24 @@
+Date: Sat, 3 Dec 2022 17:24:58 +0100
+Subject: [PATCH] avoid prestripping of files
+
+Bug: https://bugs.gentoo.org/837260
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+--- a/Makefile
++++ b/Makefile
+@@ -20,9 +20,9 @@ endif
+ TARGET = trayer
+ $(TARGET): $(OBJ)
+ 	$(CC) $(LDFLAGS) $(OBJ) -o $@ $(LIBS)
+-ifeq (,$(DEVEL))
+-	strip $@
+-endif
++# ifeq (,$(DEVEL))
++# 	strip $@
++# endif
+ 
+ all: $(TARGET)
+ 
+-- 
+2.38.1
+

@@ -1,0 +1,25 @@
+https://sources.debian.org/patches/cellwriter/1.3.6-2/fix_ftbfs.patch/
+https://bugs.gentoo.org/707182
+--- a/src/options.c
++++ b/src/options.c
+@@ -26,9 +26,6 @@ Foundation, Inc., 51 Franklin Street, Fi
+ #include <stdlib.h>
+ #include <string.h>
+ 
+-/* preprocess.c */
+-int ignore_stroke_dir, ignore_stroke_num;
+-
+ /* cellwidget.c */
+ extern int cell_width, cell_height, cell_cols_pref, cell_rows_pref,
+            train_on_input, right_to_left, keyboard_enabled, xinput_enabled;
+--- a/src/recognize.c
++++ b/src/recognize.c
+@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fi
+ #include "recognize.h"
+ 
+ /* preprocess.c */
+-int prep_examined;
++extern int prep_examined;
+ 
+ void engine_prep(void);
+ 

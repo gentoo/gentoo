@@ -1,0 +1,35 @@
+https://github.com/libcgroup/libcgroup/pull/243
+
+From a363c163fdeb48e0536545ece856899ed97e99b2 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 10 Sep 2022 13:52:57 +0100
+Subject: [PATCH] configure.ac: fix bashism
+
+configure scripts need to be runnable with a POSIX-compliant /bin/sh.
+
+On many (but not all!) systems, /bin/sh is provided by Bash, so errors
+like this aren't spotted. Notably Debian defaults to /bin/sh provided
+by dash which doesn't tolerate such bashisms as '=='.
+
+This retains compatibility with bash.
+
+Fixes configure warnings/errors like:
+```
+checking whether to build static libraries... no
+./configure: 14089: test: xno: unexpected operator
+checking for x86_64-pc-linux-gnu-g++... x86_64-pc-linux-gnu-g++
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -137,7 +137,7 @@ AC_ARG_ENABLE([opaque-hierarchy],
+ AC_ARG_ENABLE([tests],
+       [AS_HELP_STRING([--enable-tests],[compile libcgroup tests [default=yes]])],
+       [
+-		if test "x$enableval" == xno; then
++		if test "x$enableval" = xno; then
+ 			with_tests=false
+ 		else
+ 			with_tests=true
+

@@ -1,0 +1,14 @@
+/var/log/mythtv/*.log {
+	weekly
+	rotate 8
+	missingok
+	ifempty
+	nocreate
+	nocompress
+	sharedscripts
+	olddir /var/log/mythtv/old
+	lastaction
+		killall -HUP mythlogserver
+		find /var/log/mythtv/old -type f -mtime +30 -delete
+	endscript
+}

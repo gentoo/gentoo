@@ -1,0 +1,11 @@
+--- a/common/profile-sync-daemon.in	2015-07-29 16:57:24.000000000 -0400
++++ b/common/profile-sync-daemon.in	2017-07-25 21:35:59.209639588 -0400
+@@ -581,7 +581,7 @@
+ 				# check that the LAST DIRECTORY in the full path is unique
+ 				unique_count=$(echo ${DIRArr[@]##*/} |
+ 				sed 's/ /\n/g' | sort -u | wc -l)
+-				if [[ ${#DIRArr[@]##*/} -eq $unique_count ]]; then
++				if [[ ${#DIRArr[@]} -eq $unique_count ]]; then
+ 					# no problems so do nothing
+ 					return
+ 				else

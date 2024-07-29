@@ -1,0 +1,74 @@
+From 51bbb53d5805bfa5a4530b8706e2b7f77555016d Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Mon, 9 Jun 2014 15:34:43 +0200
+Subject: [PATCH] Fix minizip fork compilation
+
+---
+ src/minizip/ioapi.h   | 4 ++++
+ src/minizip/iowin32.h | 3 +++
+ src/minizip/unzip.h   | 4 ++++
+ src/minizip/zip.h     | 4 ++++
+ 4 files changed, 15 insertions(+)
+
+diff --git a/src/minizip/ioapi.h b/src/minizip/ioapi.h
+index e4462b8..75cc097 100644
+--- a/src/minizip/ioapi.h
++++ b/src/minizip/ioapi.h
+@@ -21,6 +21,10 @@
+ #ifndef _ZLIBIOAPI64_H
+ #define _ZLIBIOAPI64_H
+ 
++
++#define OF(x) x
++
++
+ #if (!defined(_WIN32)) && (!defined(WIN32)) && (!defined(__APPLE__))
+ 
+   // Linux needs this to support file operation on files larger then 4+GB
+diff --git a/src/minizip/iowin32.h b/src/minizip/iowin32.h
+index 0ca0969..71244d6 100644
+--- a/src/minizip/iowin32.h
++++ b/src/minizip/iowin32.h
+@@ -14,6 +14,9 @@
+ #include <windows.h>
+ 
+ 
++#define OF(x) x
++
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif
+diff --git a/src/minizip/unzip.h b/src/minizip/unzip.h
+index 2104e39..0b54c40 100644
+--- a/src/minizip/unzip.h
++++ b/src/minizip/unzip.h
+@@ -43,6 +43,10 @@
+ #ifndef _unz64_H
+ #define _unz64_H
+ 
++
++#define OF(x) x
++
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif
+diff --git a/src/minizip/zip.h b/src/minizip/zip.h
+index 16dea6b..906ba53 100644
+--- a/src/minizip/zip.h
++++ b/src/minizip/zip.h
+@@ -40,6 +40,10 @@
+ #ifndef _zip12_H
+ #define _zip12_H
+ 
++
++#define OF(x) x
++
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif
+-- 
+1.9.3
+

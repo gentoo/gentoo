@@ -1,0 +1,22 @@
+--- a/configure
++++ b/configure
+@@ -3489,7 +3489,7 @@
+ 	i?86-*-freebsd*)
+   		CC=cc
+ 		;;
+-	i?86-*-linux-*)
++	i?86-*-linux-* | x86_64-*-linux-*)
+   		CC=gcc
+ 		HOSTDEF="-DLINUX"
+ 		;;
+--- a/configure.in
++++ b/configure.in
+@@ -19,7 +19,7 @@
+ 	i?86-*-freebsd*)
+   		CC=cc
+ 		;;
+-	i?86-*-linux-*)
++	i?86-*-linux-* | x86_64-*-linux-*)
+   		CC=gcc
+ 		HOSTDEF="-DLINUX"
+ 		;;

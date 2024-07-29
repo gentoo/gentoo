@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		Bitflu is a free BitTorrent client. The client was written in Perl and
+		is designed to run as a daemon (7x24h , like mlnet) on Linux, *BSD and
+		maybe even OSX. 
+	</longdescription>
+</pkgmetadata>

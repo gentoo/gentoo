@@ -1,0 +1,26 @@
+diff -Nru mgetty-1.1.36.orig/Makefile mgetty-1.1.36/Makefile
+--- mgetty-1.1.36.orig/Makefile	2007-09-14 22:15:02.000000000 +0300
++++ mgetty-1.1.36/Makefile	2007-09-14 22:15:37.000000000 +0300
+@@ -164,7 +164,7 @@
+ #
+ # if your systems doesn't have one, use the shell script that I provide
+ # in "inst.sh" (taken from X11R5). Needed on IRIX5.2
+-INSTALL=install -c -o bin -g bin
++INSTALL=install -c
+ #INSTALL=install -c -o root -g wheel		# NeXT/BSD
+ #INSTALL=/usr/ucb/install -c -o bin -g bin	# AIX, Solaris 2.x
+ #INSTALL=installbsd -c -o bin -g bin		# OSF/1, AIX 4.1, 4.2
+@@ -693,6 +693,13 @@
+ 
+ install-vgetty: vgetty-install
+ 
++install-callback:
++	cd callback; $(MAKE) CFLAGS="$(CFLAGS)" CC="$(CC)" LDFLAGS="$(LDFLAGS)" \
++	BINDIR="$(BINDIR)" SBINDIR="$(SBINDIR)" LIBDIR="$(LIBDIR)" \
++	CONFDIR="$(CONFDIR)" MAN1DIR="$(MAN1DIR)" MAN8DIR="$(MAN8DIR)" INSTALL="$(INSTALL)" \
++	LN="$(LN)" MV="$(MV)" RM="$(RM)" \
++	LIBS="$(LIBS)" install
++	
+ ## test suite
+ test: bin-all
+ 	for D in g3 t ; do \

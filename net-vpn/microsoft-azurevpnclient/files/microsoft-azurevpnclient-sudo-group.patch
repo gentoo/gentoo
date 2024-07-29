@@ -1,0 +1,13 @@
+Gentoo does not have a sudo group, so use wheel instead.
+
+diff -Naur a/var/lib/polkit-1/localauthority/50-local.d/10-microsoft-azurevpnclient.pkla b/var/lib/polkit-1/localauthority/50-local.d/10-microsoft-azurevpnclient.pkla
+--- a/var/lib/polkit-1/localauthority/50-local.d/10-microsoft-azurevpnclient.pkla	2023-04-26 12:18:12.000000000 +0100
++++ b/var/lib/polkit-1/localauthority/50-local.d/10-microsoft-azurevpnclient.pkla	2024-05-03 11:23:22.657251999 +0100
+@@ -1,5 +1,5 @@
+-[Allow sudo group users to set DNS domains and servers without prompt]
+-Identity=unix-group:sudo
++[Allow wheel group users to set DNS domains and servers without prompt]
++Identity=unix-group:wheel
+ Action=org.freedesktop.resolve1.set-domains;org.freedesktop.resolve1.set-dns-servers
+ ResultAny=yes
+ ResultInactive=yes

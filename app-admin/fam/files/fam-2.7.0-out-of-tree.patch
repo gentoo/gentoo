@@ -1,0 +1,13 @@
+fix out of tree builds
+
+--- a/lib/Makefile.am
++++ b/lib/Makefile.am
+@@ -7,7 +7,7 @@
+ 	Client.h \
+ 	fam.c++
+ 
+-libfam_la_LDFLAGS = -export-symbols fam.sym
++libfam_la_LDFLAGS = -export-symbols $(srcdir)/fam.sym
+ libfam_la_LIBADD = -lstdc++
+ 
+ EXTRA_DIST = fam.sym

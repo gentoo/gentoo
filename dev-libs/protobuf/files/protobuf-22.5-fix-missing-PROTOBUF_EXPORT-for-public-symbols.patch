@@ -1,0 +1,32 @@
+From fc1c5512e524e0c00a276aa9a38b2cdb8fdf45c7 Mon Sep 17 00:00:00 2001
+From: Protobuf Team Bot <protobuf-github-bot@google.com>
+Date: Thu, 1 Jun 2023 09:14:48 -0700
+Subject: [PATCH] fix: missing `PROTOBUF_EXPORT` for public symbols
+
+PiperOrigin-RevId: 537042088
+---
+ src/google/protobuf/io/strtod.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/google/protobuf/io/strtod.h b/src/google/protobuf/io/strtod.h
+index 851c8e621..b368e4d87 100644
+--- a/src/google/protobuf/io/strtod.h
++++ b/src/google/protobuf/io/strtod.h
+@@ -60,12 +60,12 @@ PROTOBUF_EXPORT std::string SimpleFtoa(float value);
+ 
+ // A locale-independent version of the standard strtod(), which always
+ // uses a dot as the decimal separator.
+-double NoLocaleStrtod(const char* str, char** endptr);
++PROTOBUF_EXPORT double NoLocaleStrtod(const char* str, char** endptr);
+ 
+ // Casts a double value to a float value. If the value is outside of the
+ // representable range of float, it will be converted to positive or negative
+ // infinity.
+-float SafeDoubleToFloat(double value);
++PROTOBUF_EXPORT float SafeDoubleToFloat(double value);
+ 
+ }  // namespace io
+ }  // namespace protobuf
+-- 
+2.43.0
+

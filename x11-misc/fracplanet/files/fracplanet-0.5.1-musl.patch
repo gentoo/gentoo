@@ -1,0 +1,12 @@
+--- a/common.h
++++ b/common.h
+@@ -44,6 +44,9 @@
+ #include <boost/scoped_array.hpp>
+ #include <boost/scoped_ptr.hpp>
+ 
++#ifndef __STRING
++#define __STRING(x) #x
++#endif
+ #define stringify(S) __STRING(S)
+ 
+ typedef unsigned int uint;

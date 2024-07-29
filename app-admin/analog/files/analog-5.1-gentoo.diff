@@ -1,0 +1,20 @@
+--- a/src/anlghead.h	Wed Nov  7 06:06:46 2001
++++ b/src/anlghead.h	Mon Dec 31 16:47:43 2001
+@@ -81,15 +81,11 @@
+    and use that directory; or the current directory if it couldn't deduce a
+    directory. This may or may not work, so it's better to specify a location
+    explicitly here if you know where the files will be kept. */
+-#ifndef LANGDIR
+-#define LANGDIR NULL
+-#endif
++#define LANGDIR "/usr/share/analog/lang/"
+ /* Directory where the language files live. Actually, if this one is defined
+    to be NULL, they will be looked for inside the "lang" subdirectory of the
+    directory containing the analog binary. */
+-#ifndef CONFIGDIR
+-#define CONFIGDIR NULL
+-#endif
++#define CONFIGDIR "/etc/analog/" 
+ /* Directory containing configuration files. */
+ #ifndef LOGSDIR
+ #define LOGSDIR NULL

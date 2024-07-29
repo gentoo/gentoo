@@ -1,0 +1,27 @@
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Tue, 20 Jun 2017 08:04:39 +1200
+Subject: [PATCH] Remove need for '.' in @INC
+
+https://github.com/nanis/Crypt-SSLeay/pull/7
+
+---
+ Makefile.PL | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index fcc3a7d..937789a 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -8,7 +8,8 @@ use Getopt::Long qw( GetOptionsFromArray );
+ use Path::Class;
+ use Try::Tiny;
+ 
+-use inc::IO::Interactive::Tiny;
++use lib 'inc';
++use IO::Interactive::Tiny;
+ 
+ caller
+     or run(\@ARGV, [qw{ssl crypto ssl32 ssleay32 eay32 libeay32 z}]);
+-- 
+2.13.1
+

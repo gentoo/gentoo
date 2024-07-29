@@ -1,0 +1,22 @@
+--- a/host-src/tool/dc-tool.c
++++ b/host-src/tool/dc-tool.c
+@@ -24,6 +24,7 @@
+ #include <fcntl.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #ifdef _WIN32
+ #include <string.h>
+ #include <windows.h>
+--- a/host-src/tool/syscalls.c
++++ b/host-src/tool/syscalls.c
+@@ -24,6 +24,9 @@
+ #include <fcntl.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
++#include <arpa/inet.h>
++#include <time.h>
+ #include <sys/time.h>
+ #include <unistd.h>
+ #include <utime.h>

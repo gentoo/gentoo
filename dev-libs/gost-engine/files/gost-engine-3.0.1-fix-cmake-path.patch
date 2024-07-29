@@ -1,0 +1,27 @@
+From 2b22503cf83c56f27719eccce013999203e69db0 Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Tue, 3 Jan 2023 17:42:02 -0500
+Subject: [PATCH] Correct CMake files installation path
+
+install(EXPORT GostEngineConfig DESTINATION share/cmake/GostEngine) will to a path like this:
+/usr/GostEngine/share/cmake/GostEngine/GostEngineConfig.cmake
+which is not standard or expected. These files should be installed to:
+/usr/share/cmake/GostEngine/GostEngineConfig.cmake
+which can be done by changing the installation line to:
+install(EXPORT GostEngineConfig DESTINATION share/cmake/GostEngine)
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5053ae45..cae27c3b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -449,5 +449,5 @@ if (MSVC)
+   install(FILES $<TARGET_PDB_FILE:gost_prov>
+     EXPORT GostProviderConfig DESTINATION ${OPENSSL_MODULES_DIR} OPTIONAL)
+ endif()
+-install(EXPORT GostEngineConfig DESTINATION GostEngine/share/cmake/GostEngine)
+-install(EXPORT GostProviderConfig DESTINATION GostEngine/share/cmake/GostProvider)
++install(EXPORT GostEngineConfig DESTINATION share/cmake/GostEngine)
++install(EXPORT GostProviderConfig DESTINATION share/cmake/GostProvider)

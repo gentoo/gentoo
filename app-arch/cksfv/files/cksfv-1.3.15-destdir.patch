@@ -1,0 +1,18 @@
+The build system doesn't know about DESTDIR which is a problem for us
+when we want to have isolation in our phases (src_configure shouldn't
+need to know ${ED}).
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -23,9 +23,9 @@ all:
+ 	cd src && $(MAKE)
+ 
+ install:	all
+-	mkdir -p "$(BINDIR)" "$(MANDIR)/man1/"
+-	install src/cksfv "$(BINDIR)"
+-	install -m 644 cksfv.1 "$(MANDIR)/man1/"
++	mkdir -p "$(DESTDIR)$(BINDIR)" "$(DESTDIR)$(MANDIR)/man1/"
++	install src/cksfv "$(DESTDIR)$(BINDIR)"
++	install -m 644 cksfv.1 "$(DESTDIR)$(MANDIR)/man1/"
+ 
+ clean:	
+ 	rm -f *.o *~ *.core core

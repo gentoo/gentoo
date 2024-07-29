@@ -1,0 +1,219 @@
+Make perl shebangs more Prefix friendly
+See also: https://blogs.gentoo.org/mgorny/2016/02/08/a-quick-note-on-portable-shebangs/
+
+--- a/cd-hit-2d-para.pl
++++ b/cd-hit-2d-para.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ # =============================================================================
+ # CD-HIT
+ # http://cd-hit.org/
+--- a/cd-hit-div.pl
++++ b/cd-hit-div.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ #not like cd-hit-div, this script do not sort input
+ #or throw away seq
+--- a/cd-hit-para.pl
++++ b/cd-hit-para.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ # =============================================================================
+ # CD-HIT
+ # http://cd-hit.org/
+--- a/clstr2tree.pl
++++ b/clstr2tree.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ $clstr = shift;
+ $fr = shift; # for nr80.clstr $fr = 0.8
+--- a/clstr2txt.pl
++++ b/clstr2txt.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ my $no = 0;
+ my $clstr_no = "";
+--- a/clstr2xml.pl
++++ b/clstr2xml.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ #usage: clstr_xml.pl [-len|-size] level1.clstr [level2.clstr level3.clstr ...]
+ #purpose: to create xml file from cd-hit or hierarchical cd-hit(h-cd-hit) results
+--- a/clstr_cut.pl
++++ b/clstr_cut.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ #keep only top $no proteins in cluster
+ 
+--- a/clstr_merge_noorder.pl
++++ b/clstr_merge_noorder.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # order of clusters don't need to be the same
+ # but then I have to read everything into memory
+--- a/clstr_merge.pl
++++ b/clstr_merge.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # the order of clusters need to be identical
+ my ($master_clstr, @clstr) = @ARGV;
+--- a/clstr_quality_eval_by_link.pl
++++ b/clstr_quality_eval_by_link.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ ## calculate the sensitivity and specificity of clusters
+ ## if the input fasta file has pre-defined classification term
+--- a/clstr_quality_eval.pl
++++ b/clstr_quality_eval.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ ## calculate the sensitivity and specificity of clusters
+ ## if the input fasta file has pre-defined classification term
+--- a/clstr_reduce.pl
++++ b/clstr_reduce.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ 
+ $file90 = shift;
+--- a/clstr_renumber.pl
++++ b/clstr_renumber.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ $no = 0;
+ while($ll=<>){
+   if ($ll =~ /^>Cluster (\d+)/) {
+--- a/clstr_rep.pl
++++ b/clstr_rep.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ $rep = "";
+ $no = 0;
+--- a/clstr_reps_faa_rev.pl
++++ b/clstr_reps_faa_rev.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ # output single fasta file
+ # for each cluster output at least $cutoff seqs
+ 
+--- a/clstr_rev.pl
++++ b/clstr_rev.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ # if nr90 from nr100 and
+ #    nr80 from nr90, so I have nr90.clstr and nr80.clstr
+ # but, in nr80.clstr, some gi numbers whose from nr100 are there
+--- a/clstr_select.pl
++++ b/clstr_select.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ #my $by = shift;
+ my $min;
+--- a/clstr_select_rep.pl
++++ b/clstr_select_rep.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ #my $by = shift;
+ my $min;
+--- a/clstr_size_histogram.pl
++++ b/clstr_size_histogram.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ if(@ARGV==0){
+    print "Usage:\n\tclstr_size_histogram.pl [-bin N] clstr_file\n";
+--- a/clstr_size_stat.pl
++++ b/clstr_size_stat.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ if(@ARGV==0){
+    print "Usage:\n\tclstr_size_stat.pl clstr_file\n";
+--- a/clstr_sort_by.pl
++++ b/clstr_sort_by.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ my $sort_by_what = shift;
+    $sort_by_what = "no" unless $sort_by_what;
+--- a/clstr_sort_prot_by.pl
++++ b/clstr_sort_prot_by.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ my $sort_by = shift;
+    $sort_by = "len" unless ($sort_by);
+--- a/clstr_sql_tbl.pl
++++ b/clstr_sql_tbl.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ if(@ARGV==0){
+   print "Usage:\n\tclstr_sql_tbl.pl clstr_file tbl_file\n";
+--- a/clstr_sql_tbl_sort.pl
++++ b/clstr_sql_tbl_sort.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ if(@ARGV==0){
+    print "Usage:\n\tclstr_sql_tbl_sort.pl table_file level\n";
+--- a/make_multi_seq.pl
++++ b/make_multi_seq.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ #note you have to use "-d 0" in the cd-hit run
+ #note you better to use "-g 1" in the cd-hit run
+--- a/plot_2d.pl
++++ b/plot_2d.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ use Image::Magick;
+ 
+--- a/plot_len1.pl
++++ b/plot_len1.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ $file90 = shift;
+ $segs = shift;

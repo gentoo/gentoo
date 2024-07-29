@@ -1,0 +1,42 @@
+--- slib-3b5/~RScheme.init	2016-10-10 23:05:39.117046443 +0200
++++ slib-3b5/RScheme.init	2016-10-10 23:06:47.242857550 +0200
+@@ -52,7 +52,7 @@
+ 	  ;; Use this path if your scheme does not support GETENV
+ 	  ;; or if SCHEME_LIBRARY_PATH is not set.
+ 	  (case (software-type)
+-	    ((unix) "/usr/lib/slib/")
++	    ((unix) "/usr/share/slib/")
+ 	    ((vms) "lib$scheme:")
+ 	    ((ms-dos) "C:\\SLIB\\")
+ 	    (else "")))))
+--- slib-3b5/~gambit.init	2016-10-10 23:05:20.939634454 +0200
++++ slib-3b5/gambit.init	2016-10-10 23:07:46.571968697 +0200
+@@ -38,7 +38,7 @@
+   (let ((impl-path
+ 	 (or (getenv "GAMBIT_IMPLEMENTATION_PATH")
+ 	     (case (software-type)
+-	       ((unix) "/usr/local/share/gambc/")
++	       ((unix) "/usr/share/gambc/")
+ 	       ((vms) "scheme$src:")
+ 	       ((ms-dos) "C:\\scheme\\")
+ 	       ((windows) "c:/scheme/")
+@@ -65,7 +65,7 @@
+ 	  ;; Use this path if your scheme does not support GETENV
+ 	  ;; or if SCHEME_LIBRARY_PATH is not set.
+ 	  (case (software-type)
+-	    ((unix) "/usr/local/lib/slib/")
++	    ((unix) "/usr/share/slib/")
+ 	    ((macos) (string-append (implementation-vicinity) "slib:"))
+ 	    ((amiga) "dh0:scm/Library/")
+ 	    ((vms) "lib$scheme:")
+--- slib-3b5/~guile-2.init	2016-10-10 23:05:46.531807087 +0200
++++ slib-3b5/guile-2.init	2016-10-10 23:08:00.154538349 +0200
+@@ -199,7 +199,7 @@
+ (define implementation-vicinity
+   (cond ((getenv "GUILE_IMPLEMENTATION_PATH")
+ 	 => (lambda (path) (lambda () path)))
+-	(else %site-dir)))
++	(else %library-dir)))
+
+ ;;; (library-vicinity) should be defined to be the pathname of the
+ ;;; directory where files of Scheme library functions reside.

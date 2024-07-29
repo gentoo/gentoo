@@ -1,0 +1,30 @@
+https://github.com/zherczeg/sljit/commit/7a821cd714d132e46e748275a80d402beea24764
+with file path adjusted to libpcre2 layout
+
+From: lrzlin <54242813+lrzlin@users.noreply.github.com>
+Date: Wed, 10 Jan 2024 07:13:55 +0800
+Subject: [PATCH] Add LoongArch float to integer conversion special cases
+ (#226)
+
+--- a/src/sljit/sljitConfigInternal.h
++++ b/src/sljit/sljitConfigInternal.h
+@@ -198,7 +198,7 @@ extern "C" {
+ /* Type of public API functions. */
+ /*********************************/
+ 
+-#ifndef SLJIT_API_FUNC_ATTRIBUTE 
++#ifndef SLJIT_API_FUNC_ATTRIBUTE
+ #if (defined SLJIT_CONFIG_STATIC && SLJIT_CONFIG_STATIC)
+ /* Static ABI functions. For all-in-one programs. */
+ 
+@@ -399,6 +399,10 @@ typedef double sljit_f64;
+ #define SLJIT_CONV_MAX_FLOAT SLJIT_CONV_RESULT_MAX_INT
+ #define SLJIT_CONV_MIN_FLOAT SLJIT_CONV_RESULT_MIN_INT
+ #define SLJIT_CONV_NAN_FLOAT SLJIT_CONV_RESULT_MIN_INT
++#elif (defined SLJIT_CONFIG_LOONGARCH && SLJIT_CONFIG_LOONGARCH)
++#define SLJIT_CONV_MAX_FLOAT SLJIT_CONV_RESULT_MAX_INT
++#define SLJIT_CONV_MIN_FLOAT SLJIT_CONV_RESULT_MIN_INT
++#define SLJIT_CONV_NAN_FLOAT SLJIT_CONV_RESULT_ZERO
+ #else
+ #error "Result for float to integer conversion is not defined"
+ #endif

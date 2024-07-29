@@ -1,0 +1,5 @@
+# Config file for uftpd server
+
+# make sure you create the root directory
+UFTPD_ROOT="/uftpdroot"
+UFTDP_OPTS=""

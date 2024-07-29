@@ -1,0 +1,50 @@
+Debian patch for fixing build issues on JDK 10 and above.
+In particular, 'javah' needs to replaced by 'javac -h' since 'javah'
+has been removed due to JEP 313 (https://openjdk.java.net/jeps/313).
+
+To support Javadoc generation with JDK 17 and above, the '-source 1.8'
+option must be included in the arguments to 'javadoc'.  Otherwise, the
+following error would be raised:
+
+	src/gnu/io/LPRPort.java:373: error: invalid use of a restricted identifier 'yield'
+				yield();
+				^
+	  (to invoke a method called yield, qualify the yield with a receiver or type name)
+
+The original patch can be found at:
+https://salsa.debian.org/java-team/rxtx/-/blob/6500bd55f265de7d2dfef68dc1df5d8b990f66c3/debian/patches/java10-compatibility.patch
+
+Bug: https://bugs.gentoo.org/831394
+
+---
+Description: Fixes the build failure with Java 10
+Author: Emmanuel Bourg <ebourg@apache.org>
+Forwarded: no
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -111,11 +111,6 @@
+ $(CLASSES): $(javafiles) $(TOP)/Makefile
+ 	$(JAVAH_FIX)
+ 	$(JAVAC) $(javafiles)
+-	$(JAVAH) `(for i in $(javahfiles);do \
+-		if grep > /dev/null native.*\( $(SPATH)/gnu/io/$$i.java; then \
+-			echo $(CLASSDIR).$$i; \
+-		fi; \
+-	done)`
+ 	$(JAR) cf $(JARTARGET) $(CLASSTOP)/*
+ 
+ #  install librxtxSerial.so into the proper directory and copy $(JARTARGET) to its
+--- a/configure.in
++++ b/configure.in
+@@ -485,9 +485,9 @@
+ 	*)
+ 		find_java_native_include jni_md.h
+ 		JAVAH="\$(JPATH)/bin/javah -classpath \$(CLASSPATH) -d \$(DEST) -jni"
+-		JAVAC="\$(JPATH)/bin/javac -classpath \$(CLASSPATH) -d \$(TOP)/ -O -source 1.8 -target 1.8"
++		JAVAC="\$(JPATH)/bin/javac -classpath \$(CLASSPATH) -d \$(TOP)/ -O -source 1.8 -target 1.8 -h \$(DEST)"
+ 		JAR="\$(JPATH)/bin/jar"
+-		JAVADOC="\$(JPATH)/bin/javadoc"
++		JAVADOC="\$(JPATH)/bin/javadoc -source 1.8"
+ 		CFLAGS=$CFLAGS" -D_BSD_SOURCE"
+ 		;;
+ 	esac

@@ -1,0 +1,25 @@
+Subject: [PATCH] libtracefs meson: build tracefs-mmap by default
+
+Accordingly to Makefile let's add tracefs-mmap.c to build, this is needed
+for linking by other object files.
+
+Link: https://lore.kernel.org/linux-trace-devel/20240110203925.266999-1-giulio.benetti@benettiengineering.com
+---
+ src/meson.build | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/meson.build b/src/meson.build
+index 5b76554..f7a98b9 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -11,6 +11,7 @@ sources= [
+    'tracefs-instance.c',
+    'tracefs-kprobes.c',
+    'tracefs-marker.c',
++   'tracefs-mmap.c',
+    'tracefs-record.c',
+    'tracefs-sqlhist.c',
+    'tracefs-tools.c',
+-- 
+2.43.0
+

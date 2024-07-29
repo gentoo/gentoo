@@ -1,0 +1,29 @@
+Don't automagically force lld > gold > bfd. Leave it up to the user.
+
+In particular, avoids issues with LTO enabled (via the flag/scons option)
+where using GCC as compiler, as lld can't do LTO with GCC.
+
+https://bugs.gentoo.org/769986
+--- a/SConstruct
++++ b/SConstruct
+@@ -3109,20 +3109,6 @@ def doConfigure(myenv):
+         myenv.Append( CCFLAGS=["/Zc:inline"])
+ 
+     if myenv.ToolchainIs('gcc', 'clang'):
+-        # This tells clang/gcc to use the gold linker if it is available - we prefer the gold linker
+-        # because it is much faster. Don't use it if the user has already configured another linker
+-        # selection manually.
+-        if not any(flag.startswith('-fuse-ld=') for flag in env['LINKFLAGS']):
+-
+-            # lld has problems with separate debug info on some platforms. See:
+-            # - https://bugzilla.mozilla.org/show_bug.cgi?id=1485556
+-            # - https://bugzilla.mozilla.org/show_bug.cgi?id=1485556
+-            if get_option('separate-debug') == 'off':
+-                if not AddToLINKFLAGSIfSupported(myenv, '-fuse-ld=lld'):
+-                    AddToLINKFLAGSIfSupported(myenv, '-fuse-ld=gold')
+-            else:
+-                AddToLINKFLAGSIfSupported(myenv, '-fuse-ld=gold')
+-
+         # Usually, --gdb-index is too expensive in big static binaries, but for dynamic
+         # builds it works well.
+         if link_model.startswith("dynamic"):

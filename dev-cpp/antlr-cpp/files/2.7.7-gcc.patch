@@ -1,0 +1,12 @@
+diff -Naur antlr-2.7.7.orig/lib/cpp/antlr/CharScanner.hpp antlr-2.7.7/lib/cpp/antlr/CharScanner.hpp
+--- antlr-2.7.7.orig/lib/cpp/antlr/CharScanner.hpp	2006-11-01 21:37:17.000000000 +0000
++++ antlr-2.7.7/lib/cpp/antlr/CharScanner.hpp	2015-10-06 23:01:53.083655950 +0100
+@@ -10,6 +10,8 @@
+ 
+ #include <antlr/config.hpp>
+ 
++#include <cstdio>
++#include <cstring>
+ #include <map>
+ 
+ #ifdef HAS_NOT_CCTYPE_H

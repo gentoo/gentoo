@@ -1,0 +1,23 @@
+#!/bin/bash
+# Old style alert program:
+#
+# Syntax:
+#   alert_program_name /absolute/path/name
+#
+# The program specified via 'alert_program_name' will be called as follows:
+#   /absolute/path/name  name_of_calling_program  name_of_interface_on_which_the
+#_response_was_received  IP_source_of_the_response  ether_src_of_the_response
+
+DHCP_PROBE_DOMAIN=$(dnsdomainname)
+
+sendmail root <<EOF
+From: root@${DHCP_PROBE_DOMAIN} 
+Subject: $1 ALERT - $3 is acting as a DHCP server
+
+Called program: $0
+Calling program: $1
+Interface on which response was received: $2
+IP source of the response: $3
+Ethernet source of the response: $4
+
+EOF

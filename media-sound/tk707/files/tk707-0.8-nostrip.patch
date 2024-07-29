@@ -1,0 +1,13 @@
+Index: tk707-0.8/Makefile.am
+===================================================================
+--- tk707-0.8.orig/Makefile.am
++++ tk707-0.8/Makefile.am
+@@ -191,7 +191,7 @@ $(srcdir)/texi2help.c: texi2help.l
+ 
+ install-exec-local: tk707bin tk707.sh
+ 	$(mkinstalldirs) $(DESTDIR)$(bindir)
+-	sh $(srcdir)/install-sh -s -c tk707bin $(DESTDIR)$(bindir)/tk707bin
++	sh $(srcdir)/install-sh -c tk707bin $(DESTDIR)$(bindir)/tk707bin
+ 	$(INSTALL_SCRIPT) tk707.sh $(DESTDIR)$(bindir)/tk707
+ 
+ uninstall-local:

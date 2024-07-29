@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="gmp">Link against the GMP library for the ultimate performance of
+`zipBits`, `invertBits` and `countBits`. Users are strongly encouraged
+to enable this flag whenever possible.</flag>
+	</use>
+	<upstream>
+		<remote-id type="hackage">bitvec</remote-id>
+		<remote-id type="github">Bodigrim/bitvec</remote-id>
+	</upstream>
+</pkgmetadata>

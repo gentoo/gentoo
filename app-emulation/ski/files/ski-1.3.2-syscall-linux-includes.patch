@@ -1,0 +1,18 @@
+--- ski-1.3.2/src/linux/syscall-linux.c
++++ ski-1.3.2/src/linux/syscall-linux.c
+@@ -45,7 +45,6 @@
+ #include <linux/posix_types.h>
+ #include <linux/personality.h>
+ #include <linux/sockios.h>
+-#include <sys/io.h>
+ 
+ #include <sys/file.h>
+ #include <sys/fsuid.h>
+@@ -72,7 +71,6 @@
+ #include <sys/uio.h>
+ 
+ #include <linux/serial.h>
+-#include <asm/page.h>
+ #include <asm/unistd.h>
+ 
+ #include "std.h"

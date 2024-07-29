@@ -1,0 +1,53 @@
+https://gitlab.com/accounts-sso/signond/-/merge_requests/36
+
+From b1e63bd07f4fcf1a47f142674889b157b4d68af8 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Mon, 1 Aug 2022 19:27:34 +0200
+Subject: [PATCH 06/11] Port away from deprecated QMap::unite
+
+---
+ src/signond/signonidentity.cpp         | 3 +--
+ src/signond/signonsessioncoretools.cpp | 6 ++++++
+ 2 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/src/signond/signonidentity.cpp b/src/signond/signonidentity.cpp
+index 92ff476..aef4a97 100644
+--- a/src/signond/signonidentity.cpp
++++ b/src/signond/signonidentity.cpp
+@@ -288,8 +288,7 @@ void SignonIdentity::verifyUser(const QVariantMap &params,
+     }
+ 
+     //create ui request to ask password
+-    QVariantMap uiRequest;
+-    uiRequest.unite(params);
++    QVariantMap uiRequest = params;
+     uiRequest.insert(SSOUI_KEY_QUERYPASSWORD, true);
+     uiRequest.insert(SSOUI_KEY_USERNAME, info.userName());
+     uiRequest.insert(SSOUI_KEY_CAPTION, info.caption());
+diff --git a/src/signond/signonsessioncoretools.cpp b/src/signond/signonsessioncoretools.cpp
+index 8b74840..e856d1a 100644
+--- a/src/signond/signonsessioncoretools.cpp
++++ b/src/signond/signonsessioncoretools.cpp
+@@ -34,6 +34,7 @@ QVariantMap SignonDaemonNS::mergeVariantMaps(const QVariantMap &map1,
+     if (map1.isEmpty()) return map2;
+     if (map2.isEmpty()) return map1;
+ 
++#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
+     QVariantMap map = map1;
+     //map2 values will overwrite map1 values for the same keys.
+     QMapIterator<QString, QVariant> it(map2);
+@@ -43,6 +44,11 @@ QVariantMap SignonDaemonNS::mergeVariantMaps(const QVariantMap &map1,
+             map.remove(it.key());
+     }
+     return map.unite(map2);
++#else
++    QVariantMap map = map1;
++    map.insert(map2);
++    return map;
++#endif
+ }
+ 
+ /* --------------------- StoreOperation ---------------------- */
+-- 
+2.43.0
+

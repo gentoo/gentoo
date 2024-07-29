@@ -1,0 +1,26 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,16 +1,20 @@
+ GTK_INCLUDE = `pkg-config gtk+-2.0 --cflags`
+ GTK_LIB = `pkg-config gtk+-2.0 --libs`
+ 
+-FLAGS = -O2 -Wall -fPIC $(GTK_INCLUDE) 
++FLAGS = -fPIC $(GTK_INCLUDE) 
+ LIBS = $(GTK_LIB) 
+ LFLAGS = -shared
+ 
+-CC = gcc $(CFLAGS) $(FLAGS)
+ 
+ OBJS = gkrellshoot.o
+ 
++all: gkrellshoot.so
++
++%.o: %.c
++	$(CC) $(CFLAGS) $(LDFLAGS) $(FLAGS) -c -o $@ $<
++
+ gkrellshoot.so: $(OBJS)
+-	$(CC) $(OBJS) -o gkrellshoot.so $(LFLAGS) $(LIBS) 
++	$(CC) $(CFLAGS) $(LDFLAGS) $(FLAGS) $(OBJS) -o gkrellshoot.so $(LFLAGS) $(LIBS) 
+ 
+ clean:
+ 	rm -f *.o core *.so* *.bak *~

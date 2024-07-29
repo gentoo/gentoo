@@ -1,0 +1,52 @@
+commit f51a9eafb80a5c5e506d7fe416c0b768ec1a6655
+Author: Eray Aslan <eras@gentoo.org>
+Date:   Mon Jun 6 20:11:32 2011 +0300
+
+    Respect LDFLAGS and do not strip
+
+diff --git a/src/Makefile.in b/src/Makefile.in
+index fc5ac74..2b89866 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -39,7 +39,7 @@ INCLUDES	=	-I. -I$(srcdir)
+ 	$(CC) $(CFLAGS) $(INCLUDES) -c $<
+ 
+ $(TARGET): $(OBJS)
+-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TARGET) $(OBJS) $(LIBS)
+ 
+ .PHONY: clean
+ clean:
+@@ -52,6 +52,6 @@ distclean:
+ .PHONY: install
+ install: mboxgrep
+ 	$(INSTALL) -d $(prefix)/bin
+-	$(INSTALL) -s $(TARGET) $(prefix)/bin
++	$(INSTALL) $(TARGET) $(prefix)/bin
+ 
+ .NOEXPORT:
+commit 1a0a345ad4c38df41227e3f2600bcf05ed49bbd7
+Author: Eray Aslan <eras@gentoo.org>
+Date:   Mon Jun 6 20:52:06 2011 +0300
+
+    everyone has standard C headers nowadays
+
+diff --git a/src/md5.c b/src/md5.c
+index d6b8013..a797552 100644
+--- a/src/md5.c
++++ b/src/md5.c
+@@ -26,14 +26,8 @@
+ 
+ #include <sys/types.h>
+ 
+-#if STDC_HEADERS || defined _LIBC
+ # include <stdlib.h>
+ # include <string.h>
+-#else
+-# ifndef HAVE_MEMCPY
+-#  define memcpy(d, s, n) bcopy ((s), (d), (n))
+-# endif
+-#endif
+ 
+ #include "md5.h"
+ 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>shell-tools@gentoo.org</email>
+		<name>Gentoo Shell Tools Project</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>arthurzam@gentoo.org</email>
+		<name>Arthur Zamarin</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="gentoo">proj/gentoo-bashcomp</remote-id>
+		<remote-id type="github">gentoo/gentoo-bashcomp</remote-id>
+	</upstream>
+</pkgmetadata>

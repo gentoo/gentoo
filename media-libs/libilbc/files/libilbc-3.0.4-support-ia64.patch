@@ -1,0 +1,32 @@
+From b9d5baa0c7daca577b5c846504bc6f5f71087582 Mon Sep 17 00:00:00 2001
+From: matoro <matoro@users.noreply.github.com>
+Date: Mon, 2 May 2022 14:02:37 -0400
+Subject: [PATCH] add platform definition for IA64
+
+How I tested:
+    * built ffmpeg with libilbc enabled
+    * obtained a sample file from
+      https://web.archive.org/web/2016*/http://www.andrews-corner.org/samples/luckynight.lbc
+    * converted it to wav using ffmpeg on ia64 host
+    * compared to file converted on amd64 host
+    * did the same in reverse (converted wav to lbc)
+
+All comparisons were identical and sounded the same.
+---
+ rtc_base/system/arch.h | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/rtc_base/system/arch.h b/rtc_base/system/arch.h
+index be2367b85f..e00150b65f 100644
+--- a/rtc_base/system/arch.h
++++ b/rtc_base/system/arch.h
+@@ -79,6 +79,9 @@
+ #elif defined(__EMSCRIPTEN__)
+ #define WEBRTC_ARCH_32_BITS
+ #define WEBRTC_ARCH_LITTLE_ENDIAN
++#elif defined(_M_IA64) || defined(__ia64__) || defined(__ia64)
++#define WEBRTC_ARCH_64_BITS
++#define WEBRTC_ARCH_LITTLE_ENDIAN
+ #else
+ #error Please add support for your architecture in rtc_base/system/arch.h
+ #endif

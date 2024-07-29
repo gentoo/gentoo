@@ -1,0 +1,54 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,6 +2,7 @@
+ 
+ project(minisat)
+ 
++include(GNUInstallDirs)
+ #--------------------------------------------------------------------------------------------------
+ # Configurable options:
+ 
+@@ -44,24 +45,16 @@
+     minisat/core/Solver.cc
+     minisat/simp/SimpSolver.cc)
+ 
+-add_library(minisat-lib-static STATIC ${MINISAT_LIB_SOURCES})
+ add_library(minisat-lib-shared SHARED ${MINISAT_LIB_SOURCES})
+ 
+ target_link_libraries(minisat-lib-shared ${ZLIB_LIBRARY})
+-target_link_libraries(minisat-lib-static ${ZLIB_LIBRARY})
+ 
+ add_executable(minisat_core minisat/core/Main.cc)
+ add_executable(minisat_simp minisat/simp/Main.cc)
+ 
+-if(STATIC_BINARIES)
+-  target_link_libraries(minisat_core minisat-lib-static)
+-  target_link_libraries(minisat_simp minisat-lib-static)
+-else()
+-  target_link_libraries(minisat_core minisat-lib-shared)
+-  target_link_libraries(minisat_simp minisat-lib-shared)
+-endif()
++target_link_libraries(minisat_core minisat-lib-shared)
++target_link_libraries(minisat_simp minisat-lib-shared)
+ 
+-set_target_properties(minisat-lib-static PROPERTIES OUTPUT_NAME "minisat")
+ set_target_properties(minisat-lib-shared
+   PROPERTIES
+     OUTPUT_NAME "minisat" 
+@@ -73,11 +66,11 @@
+ #--------------------------------------------------------------------------------------------------
+ # Installation targets:
+ 
+-install(TARGETS minisat-lib-static minisat-lib-shared minisat_core minisat_simp 
+-        RUNTIME DESTINATION bin
+-        LIBRARY DESTINATION lib
+-        ARCHIVE DESTINATION lib)
++install(TARGETS minisat-lib-shared minisat_core minisat_simp 
++        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ install(DIRECTORY minisat/mtl minisat/utils minisat/core minisat/simp
+-        DESTINATION include/minisat
++        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/minisat
+         FILES_MATCHING PATTERN "*.h")

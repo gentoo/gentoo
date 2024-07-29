@@ -1,0 +1,38 @@
+This fixes the build for clang16.
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+diff --git a/hash.c b/hash.c
+index f3d7a3d..cf3c25a 100644
+--- a/hash.c
++++ b/hash.c
+@@ -148,7 +148,7 @@ void hash_init(hash_table* _hash_array, hash_entry data[]) {
+ }
+ 
+ void hash_free(hash_table* tab, 
+-	       void (*func)()) {
++	       void (*func)(void* data)) {
+   int i;
+   list* iter;
+ 
+
+--- a/read-rl.c
++++ b/read-rl.c
+@@ -99,7 +99,7 @@ static char** rl_esh_completion(char* word, int start, int end) {
+   }
+
+   if (openparen(rl_line_buffer[start])) {
+-    return completion_matches(word, rl_find_builtin);
++    return rl_completion_matches(word, (rl_compentry_func_t *)rl_find_builtin);
+
+   } else {
+     return NULL;
+@@ -110,7 +110,7 @@ void read_init(void) {
+   rl_bind_key('\012', rl_literal_newline);
+
+   /* rl_catch_signals = 0; */
+-  rl_attempted_completion_function = rl_esh_completion;
++  rl_attempted_completion_function = (rl_completion_func_t *)rl_esh_completion;
+ }
+
+ char* read_read(char* prompt) {

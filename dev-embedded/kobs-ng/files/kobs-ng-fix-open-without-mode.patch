@@ -1,0 +1,13 @@
+add missing mode to open() when using O_CREAT
+
+--- kobs-ng-3.0.35-4.1.0/src/main.c
++++ kobs-ng-3.0.35-4.1.0/src/main.c
+@@ -563,7 +563,7 @@
+ 	int sz = getpagesize();
+ 
+ 	from = open(file_name, O_RDONLY);
+-	to = open(tmp_file, O_CREAT | O_RDWR);
++	to = open(tmp_file, O_CREAT | O_RDWR, 0644);
+ 	if (from < 0 || to < 0) {
+ 		fprintf(stderr, "unable to create a temporary file\n");
+ 		exit(5);

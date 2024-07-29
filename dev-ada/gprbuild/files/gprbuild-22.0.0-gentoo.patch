@@ -1,0 +1,46 @@
+--- a/src/gprlib.adb	2019-06-02 10:57:49.807002425 +0200
++++ b/src/gprlib.adb	2019-06-02 11:01:32.986518447 +0200
+@@ -266,7 +266,9 @@
+ 
+    Driver_Name                   : Name_Id := No_Name;
+ 
+-   Gnatbind_Name                 : String_Access := new String'("gnatbind");
++   Gnatbind_Name                 : String_Access := new String'("@GNATBIND@");
++
++   Gnatbind_Path_Option          : constant String := "--gnatbind_path=";
+ 
+    Compiler_Name                 : String_Access := new String'("gcc");
+ 
+@@ -2081,7 +2083,7 @@
+                           and then Line (Last - 2 .. Last) = "gcc"
+                         then
+                            Gnatbind_Name :=
+-                             new String'(Line (1 .. Last - 3) & "gnatbind");
++                             new String'(Line (1 .. Last - 3) & "@GNATBIND@");
+                            Objcopy_Name :=
+                              new String'(Line (1 .. Last - 3) & "objcopy");
+ 
+@@ -2089,7 +2091,7 @@
+                           and then Line (Last - 6 .. Last) = "gcc.exe"
+                         then
+                            Gnatbind_Name :=
+-                             new String'(Line (1 .. Last - 7) & "gnatbind");
++                             new String'(Line (1 .. Last - 7) & "@GNATBIND@");
+                            Objcopy_Name :=
+                              new String'(Line (1 .. Last - 7) & "objcopy");
+                         end if;
+@@ -2241,7 +2243,13 @@
+                Mapping_File_Name := new String'(Line (1 .. Last));
+ 
+             when Binding_Options =>
+-               Binding_Options_Table.Append (Line (1 .. Last));
++               if Last > Gnatbind_Path_Option'Length
++                  and then Line (1 .. Gnatbind_Path_Option'Length) =
++                     Gnatbind_Path_Option then
++                     null;
++               else
++                  Binding_Options_Table.Append (Line (1 .. Last));
++               end if;
+ 
+             when Copy_Source_Dir =>
+                Copy_Source_Directory := new String'(Line (1 .. Last));

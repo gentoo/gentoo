@@ -1,0 +1,24 @@
+diff -Naur src.orig/wmgeneral.h src/wmgeneral.h
+--- src.orig/wmgeneral.h	2002-10-19 11:33:41.000000000 +0200
++++ src/wmgeneral.h	2020-03-01 16:22:30.891485480 +0100
+@@ -36,7 +36,7 @@
+  /* Global variable */
+ /*******************/
+ 
+-Display		*display;
++extern Display		*display;
+ 
+   /***********************/
+  /* Function Prototypes */
+diff -Naur src.orig/wmpuzzle.c src/wmpuzzle.c
+--- src.orig/wmpuzzle.c	2013-06-27 20:42:26.000000000 +0200
++++ src/wmpuzzle.c	2020-03-01 16:22:28.716484905 +0100
+@@ -41,6 +41,8 @@
+ int blank      = 15,
+ 	puzzle[16] = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+ 
++Display		*display;
++
+ int main(int argc, char *argv[])
+ {
+ 	int n,

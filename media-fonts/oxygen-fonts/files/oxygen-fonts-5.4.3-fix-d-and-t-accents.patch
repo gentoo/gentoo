@@ -1,0 +1,65 @@
+From 2e3c79fd0c05cce8a5251f5763022d80bf5c7df6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Miro=20Hron=C4=8Dok?= <miro@hroncok.cz>
+Date: Fri, 6 Apr 2018 21:06:13 -0600
+Subject: =?UTF-8?q?Fix=20=C4=8F=20and=20=C5=A5=20in=20regular=20and=20bold?=
+ =?UTF-8?q?=20fonts?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Summary:
+My commit in https://github.com/KDE/oxygen-fonts/pull/2 already had the ttfs in it, but this website has an unhandled exception when the patch file contains binary changes, so I've manually removed it.
+
+BUG: 386211
+
+Reviewers: #plasma, #vdg, ngraham
+
+Reviewed By: #vdg, ngraham
+
+Subscribers: abetts, #vdg, #plasma, aacid
+
+Differential Revision: https://phabricator.kde.org/D11719
+---
+ oxygen-fonts/Regular-400/src/Oxygen-Sans.sfd | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/oxygen-fonts/Regular-400/src/Oxygen-Sans.sfd b/oxygen-fonts/Regular-400/src/Oxygen-Sans.sfd
+index cc997d6..adddfb7 100644
+--- a/oxygen-fonts/Regular-400/src/Oxygen-Sans.sfd
++++ b/oxygen-fonts/Regular-400/src/Oxygen-Sans.sfd
+@@ -4380,11 +4380,11 @@ EndRedoes
+ EndUndoRedoHistory
+ Fore
+ SplineSet
+-1238 1025 m 5x39
+- 1239 1472 l 5
+- 1386 1472 l 5x3880
+- 1335 1025 l 5
+- 1238 1025 l 5x39
++1109 1025 m 5x39
++ 1110 1472 l 5
++ 1257 1472 l 5x3880
++ 1206 1025 l 5
++ 1109 1025 l 5x39
+ EndSplineSet
+ Refer: 167 100 N 1 0 0 1 0 0 2
+ EndChar
+@@ -8454,11 +8454,11 @@ EndRedoes
+ EndUndoRedoHistory
+ Fore
+ SplineSet
+-554 1245 m 5xc8
+- 555 1692 l 5
+- 702 1692 l 5xc4
+- 651 1245 l 5
+- 554 1245 l 5xc8
++485 1245 m 5xc8
++ 486 1692 l 5
++ 633 1692 l 5xc4
++ 582 1245 l 5
++ 485 1245 l 5xc8
+ EndSplineSet
+ Refer: 313 116 N 1 0 0 1 0 0 2
+ EndChar
+-- 
+cgit v1.1

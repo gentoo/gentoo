@@ -1,0 +1,47 @@
+Include stdlib.h for exit(3).
+Fix conflicting type for malloc(3).
+Avoid casting pointers from/to int.
+
+--- teco-orig/te_defs.h
++++ teco/te_defs.h
+@@ -6,6 +6,7 @@
+ /* version for multiple buffers 04/19/89 11.25                              */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <ctype.h>
+ #include <setjmp.h>
+ 
+--- teco-orig/te_rdcmd.c
++++ teco/te_rdcmd.c
+@@ -94,7 +94,8 @@
+ 			qreg[i].f = cbuf.f;         /* put the old command string in its place */
+ 			if (qreg[i].f) qreg[i].f->b = (struct buffcell *) &qreg[i];
+ 			qreg[i].z = cbuf.z;
+-			cbuf.f = (struct buffcell *) (cbuf.z = 0);      /* no old command string */
++			cbuf.f = NULL;              /* no old command string */
++			cbuf.z = 0;
+ 			err = 0;                    /* no previous error */
+ 			goto restart;
+ 			}
+--- teco-orig/te_utils.c
++++ teco/te_utils.c
+@@ -13,7 +13,6 @@
+ 
+ struct buffcell *get_bcell()
+     {
+-    char *malloc();
+     struct buffcell *p;
+     int i;
+ 
+--- teco-orig/te_window.c
++++ teco/te_window.c
+@@ -1051,7 +1051,7 @@
+ 	pp->c = loc % CELLSIZE;
+ 	pp->dot = loc;
+ 	}
+-    return( (int) pb0->f);
++    return(pb0->f != NULL);
+     }
+ 
+ /* routine to move N lines (back, forward, or 0)                */

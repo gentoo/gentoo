@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-physics@gentoo.org</email>
+    <name>Gentoo Physics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  Bullet is a professional open source multi-threaded 
+  3D Collision Detection and Rigid Body Dynamics Library
+  for games and animation.
+  </longdescription>
+  <use>
+    <flag restrict="&lt;=sci-physics/bullet-3.17" name="extras">Build the extras</flag>
+    <flag name="double-precision">Build libraries in double precision</flag>
+    <flag name="tbb">Enable multithreading with the Intel Threads Building Block <pkg>dev-cpp/tbb</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="google-code">bullet</remote-id>
+    <remote-id type="github">bulletphysics/bullet3</remote-id>
+  </upstream>
+</pkgmetadata>

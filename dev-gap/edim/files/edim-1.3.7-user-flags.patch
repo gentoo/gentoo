@@ -1,0 +1,29 @@
+From 305d6d280b2ed859ffbcf6d1de27b6e1826a4956 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Mon, 22 Jan 2024 20:03:53 -0500
+Subject: [PATCH] Makefile.in: pass user CPPFLAGS, CFLAGS, and LDFLAGS to gac
+
+As in the upstream Makefile.gappkg, and consistent with the idea that
+gac should be treated like a compiler, we now pass CPPFLAGS, CFLAGS,
+and LDFLAGS to gac explicitly, to later be passed on to the C compiler
+and linker.
+---
+ Makefile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index a6936e7..30971c3 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -8,7 +8,7 @@ include $(GAPPATH)/sysinfo.gap
+ 
+ bin/$(GAParch)/ediv.so: src/ediv.c Makefile
+ 	@mkdir -p bin/$(GAParch)
+-	$(GAC) -d -o bin/$(GAParch)/ediv.so src/ediv.c
++	$(GAC) -d -p "$(CPPFLAGS)" -p "$(CFLAGS)" -P "$(LDFLAGS)" -o bin/$(GAParch)/ediv.so src/ediv.c
+ 
+ doc:
+ 	$(GAP)  makedocrel.g
+-- 
+2.43.0
+

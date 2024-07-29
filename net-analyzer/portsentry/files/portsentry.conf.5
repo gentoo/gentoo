@@ -1,0 +1,217 @@
+.TH PORTSENTRY.CONF 5 
+.\" NAME should be all caps, SECTION should be 1-8, maybe w/ subsection
+.\" other parms are allowed: see man(7), man(1)
+.SH NAME
+portsentry.conf \- portsentry´s main configuration file
+.SH "DESCRIPTION"
+This manual page documents briefly the format of
+.BR portsentry ´s(8)
+configuration file.
+.SH OPTIONS
+.TP
+.B TCP_PORTS
+A comma delimited string of TCP ports you want PortSentry to
+listen to. This string can NOT have any spaces in it. You can put in as
+many sockets as you want. PortSentry will try to bind them all up until
+the default limit of 64.
+
+For the stealth scan detection modes, the ports are not "bound" per se, 
+but they are monitored at the socket level for connections. 
+
+For the Advanced Stealth Scan Detection (see below) this list is *ignored*
+.TP
+.B UDP_PORTS 
+The same as above, except for UDP ports. You need to be
+very careful with UDP mode as an attacker can forge a port sweep and
+make you block any number of hosts. Use this option with caution, or 
+not at all if your host is a well-known Internet connected system.
+
+For the Advanced Stealth Scan Detection (see below) this list is *ignored*
+
+.TP
+.B ADVANCED_PORTS_TCP 
+A number indicating the highest port number to
+monitor down from. Any port *below* this number is then monitored. The
+default is 1024 (reserved port range), but can be made as large as 65535
+(system max). I don't recommend going over 1024 with this option. 
+
+.TP
+.B ADVANCED_PORTS_UDP 
+Same as above, except for UDP.
+
+.TP
+.B ADVANCED_EXCLUDE_TCP 
+A comma delimited string of TCP ports that should
+be manually excluded from monitoring in Advanced mode. These are normally
+ports that may get hit by mistake by remote clients and shouldn't cause
+alarms (ident, SSL, etc).
+
+.TP
+.B ADVANCED_EXCLUDE_UDP 
+Same as above, except for UDP.
+
+.TP
+.B IGNORE_FILE 
+The path to the file that contains IP addresses of hosts you
+want to always be ignored.
+
+.TP
+.B BLOCKED_FILE 
+The path to the file that contains the IP addresses of
+blocked hosts.
+
+.TP
+.B RESOLVE_HOST - This option turns off DNS resolution for 
+hosts. If you have a slow DNS server it may be more effective 
+to turn off resolution. 
+
+.TP 
+.B BLOCK_UDP 
+This option disables all automatic responses to UDP probes.
+Because UDP can be easily forged, it may allow an attacker to start a
+denial of service attack against the protected host, causing it to block
+all manner of hosts that should normally be left alone. Setting this option
+to "0" will disable all responses, although the connects are still logged.
+This option is mainly useful for Internet exposed hosts. For internal hosts
+you should leave this enabled. If someone internally is firing spoofed
+packets at you, then you have a much bigger problem than a denial of service.
+
+.TP 
+.B BLOCK_TCP 
+Same as above, but for TCP. Packet forgery is not as big a problem
+though because PortSentry waits for a full connect to occur and this is much
+harder to forge in the basic modes. Leave this enabled, even for 
+Internet connected hosts. For stealth scan detection modes the UDP warning 
+applies:
+
+	An attacker can cause you to block hosts you don't want to
+	through packet forgery. I wouldn't worry about this until it is a
+	problem, but you should be aware of it.
+
+.TP 
+.B KILL_ROUTE 
+This is the command to run to drop the offending route(see
+.BR route (8))
+if an attack is detected. This is the *full path* to the route command
+along with the necessary parameters to make the command work. The macro
+.B $TARGET$ 
+will be substituted with the attacking host IP and is
+REQUIRED in this option. Your gateway should be a *dead host* on the 
+local subnet. On some systems though you can just put in the localhost
+address (127.0.0.1) and this will probably work. All packets from the 
+target host will get routed to this address so don't mess this up.
+More modern route commands will include a "-blackhole" or "-reject" flag.
+Check your man(1) pages and if your route command supports this feature
+you should use it (although we recommend using packet filtering
+instead, see below).
+
+Also be aware that this creates what is known as an "asynchronous
+route" which basically means packets enter your host via one route
+and are sent out on another (dead) route. This works OK for full
+TCP connect requests, but for UDP and stealth scan modes it
+still allows packets to activate PortSentry and you may get a 
+series of "already blocked" alarms by PortSentry. For UDP scans
+this method prevents ICMP messages from returning to the attacker
+so all ports appear open. However, if the attacker is performing
+an actual exploit with UDP the drop route method will not work. 
+The asynchronous route allows the packet to hit the system and the
+attacker could perform a "blind" attack with UDP if they know what
+the responses are going to be. 
+
+By far the best method is to use the local packet filter (see
+.BR ipfwadm (8),
+.BR ipchains (8),
+or
+.BR iptables (8)).
+This is a much cleaner solution and is
+detailed in the config file. The macro 
+.B $PORT$ 
+will substitute the port 
+that was connected to by the attacker, but this is NOT required for this
+option. The macro $MODE$ reports what mode the blocking occurred in
+(tcp, udp, stcp, sudp, atcp, audp) but is also NOT required.
+
+.TP
+.B KILL_HOSTS_DENY 
+This is the format of the string to drop into the
+hosts.deny file that TCP wrappers uses(see
+.BR hosts_access (5),
+and
+.BR hosts_options (5)).
+Again the 
+.B $TARGET$ 
+macro is
+expanded out to be the IP of the attacker and is required. You can
+also drop in any TCP wrapper escape codes here as well (%h, twist, 
+etc). The macro 
+.B $PORT$ 
+will substitute the port that was connected to 
+by the attacker, but this is NOT required for this option.
+The macro $MODE$ reports what mode the blocking occurred in 
+(tcp, udp, stcp, sudp, atcp, audp) but is also NOT required.
+
+.TP 
+.B KILL_RUN_CMD 
+This is a command you want run *before* the route
+is dropped to the attacker. You can put in any program/script you want
+executed when an attack is detected. WE NEVER RECOMMEND PUTTING IN
+RETALIATORY ACTION AGAINST AN ATTACKING HOST. Virtually every time you're
+are port scanned the host doing the scanning has been compromised itself.
+Therefore, if you retaliate you are probably attacking an innocent(?)
+party. Also the goal of security is to make the person GO AWAY. You don't
+want to irritate them into making a personal vendetta against you.
+Remember, even a 13 year old can run a [insert favorite D.O.S. program 
+here] attack against you from their Windows box to make your life
+miserable. As above, the 
+.BR $TARGET$ ,
+.B $PORT$ 
+and 
+.B $MODE$
+macros are available to you but they are not required with this option as above.
+
+.TP
+.B KILL_RUN_CMD_FIRST 
+Setting this to "1" makes the command above run before the route is
+dropped. Setting it to "0" makes the command run aftter the blocking
+has occurred.
+
+.TP
+.B SCAN_TRIGGER 
+PortSentry has a state engine that will remember hosts
+that connected to it. Setting this value will tell PortSentry to allow X
+number of grace port hits before it reacts. This will detect both
+sequential and random port sweeps. The default is 0 which will react
+immediately. A setting of 1 or 2 will reduce false alarms, anything
+higher is probably too much as anything more than 3 hits to different
+ports is pretty suspicious behavior. Usually you can leave this at 0
+without any consequence, with the exception of Advanced stealth scan 
+detection modes where you may create a "hair trigger" if you aren't 
+careful. Use your own discretion.
+
+.TP
+.B PORT_BANNER 
+A text banner you want displayed to the connecting host if
+the PortSentry is activated. Leave this commented out if you don't want this
+feature. If you do use it, try not to taunt the person too badly. We
+recommend keeping it professional and to the point. The banner is *not*
+displayed when stealth scan detection modes are used.
+
+.LP
+.SH "SEE ALSO"
+.BR portsentry(8),
+.BR hosts_access(5),
+.BR hosts_options(5),
+.BR route(8),
+.BR ipfwadm(8),
+.BR ipchains(8)
+
+.BR /usr/share/doc/portsentry/README.install
+.LP
+.SH AUTHOR
+.B portsentry
+was written by Craig H. Howland
+.B <crowland@users.sf.net>.
+
+This manual page is essentially just a "cut and paste" from the README.install file and was done by Guido Guenther <agx@debian.org>(hopefully without adding too many errors), for the Debian GNU/Linux system (but may be used by others).
+
+

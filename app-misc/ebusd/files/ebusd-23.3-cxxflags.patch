@@ -1,0 +1,28 @@
+From 6c2d102544f45856fb14484a3fc763822ff03376 Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <conikost@gentoo.org>
+Date: Sat, 13 Jan 2024 21:33:28 +0100
+Subject: [PATCH] configure.ac: quote CXXFLAGS
+
+CXXCLAGS needs to be quote, as otherwise the test could fail on some
+CXXFLAGS like '-mfpmath=sse,387'
+
+test: syntax error: `-mfpmath=sse,387' unexpected
+
+Signed-off-by: Conrad Kostecki <conikost@gentoo.org>
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 90368e04..0469eb20 100755
+--- a/configure.ac
++++ b/configure.ac
+@@ -8,7 +8,7 @@ AC_CONFIG_AUX_DIR([build])
+ AC_CONFIG_MACRO_DIR([m4])
+ AC_GNU_SOURCE
+ 
+-if test -z $CXXFLAGS; then
++if test -z "${CXXFLAGS}"; then
+ 	CXXFLAGS="-fpic -Wall -Wno-unused-function -Wextra -g -O2"
+ fi
+ AC_PROG_CXX([g++-6 g++-5 g++-4.9 g++-4.8 g++])

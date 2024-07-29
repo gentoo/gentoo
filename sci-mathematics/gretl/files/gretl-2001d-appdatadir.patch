@@ -1,0 +1,11 @@
+--- a/gui/Makefile.in
++++ b/gui/Makefile.in
+@@ -139,7 +139,7 @@
+ else
+   gretldir = $(datarootdir)/gretl
+   uidir = $(gretldir)/ui
+-  appdatadir = $(datarootdir)/appdata
++  appdatadir = $(datarootdir)/metainfo
+ endif
+ 
+ tooldir = $(topsrc)/tools

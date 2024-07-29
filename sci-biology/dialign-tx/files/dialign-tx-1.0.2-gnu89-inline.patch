@@ -1,0 +1,31 @@
+--- a/source/assemble.c
++++ b/source/assemble.c
+@@ -574,7 +574,7 @@
+  * returns a value <0 if there is an non-conflicting overlap
+  * returns 0 in all other non-conflicting cases
+  */
+-inline char confl_diag(struct alignment *algn, char *layer, struct diag *dg1, struct diag *dg2) {
++static inline char confl_diag(struct alignment *algn, char *layer, struct diag *dg1, struct diag *dg2) {
+   //  if(dg1->multi_dg || dg2->multi_dg) error(" confl_diag(): cannot accept multi dgs!");
+   int s1_1 = dg1->seq_p1.num;
+   int s1_2 = dg1->seq_p2.num;
+--- a/source/diag.c
++++ b/source/diag.c
+@@ -312,7 +312,7 @@
+ /** 
+  * calculates the overlap weight for the given diag 
+  */ 
+-inline void calc_ov_weight(struct diag* dg, struct diag_col *dcol, struct scr_matrix* smatrix,  
++void calc_ov_weight(struct diag* dg, struct diag_col *dcol, struct scr_matrix* smatrix,  
+ 		    struct prob_dist *pdist) { 
+   int sn1 = dg->seq_p1.num; 
+   int sn2 = dg->seq_p2.num; 
+@@ -958,7 +958,7 @@
+  * The pointer returned (and the ones included in the struct)  
+  * has to be deallocted explicitely from memory. 
+  */ 
+-inline struct simple_diag_col* find_diags_dialign(struct scr_matrix *smatrix,  
++static inline struct simple_diag_col* find_diags_dialign(struct scr_matrix *smatrix,  
+ 				struct prob_dist *pdist, struct seq* seq1,  
+ 				struct seq* seq2, struct alignment *algn, 
+ 				 long double **tmp_dist, int round) { 

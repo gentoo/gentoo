@@ -1,0 +1,21 @@
+From b1f7cadc105bcf1264da68ab69e0cdc6f8a5aa63 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fran=C3=A7ois=20Bissey?= <frp.bissey@gmail.com>
+Date: Sun, 7 Aug 2022 14:15:49 +1200
+Subject: [PATCH] Fix fflas-ffpack.pc.in for issue #364
+
+---
+ fflas-ffpack.pc.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/fflas-ffpack.pc.in b/fflas-ffpack.pc.in
+index b869dd8f..8d6c823a 100644
+--- a/fflas-ffpack.pc.in
++++ b/fflas-ffpack.pc.in
+@@ -1,6 +1,6 @@
+ prefix=@prefix@
+ exec_prefix=@prefix@
+-libdir=@prefix@/lib
++libdir=@libdir@
+ includedir=@prefix@/include
+ 
+ Name: fflas-ffpack

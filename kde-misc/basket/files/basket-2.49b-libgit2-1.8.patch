@@ -1,0 +1,25 @@
+From 161d0fe545c30119a15ae5106f8cf2a4ff5a8b1d Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sun, 28 Apr 2024 12:52:34 +0200
+Subject: [PATCH] Fix build against libgit
+
+---
+ src/gitwrapper.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/gitwrapper.cpp b/src/gitwrapper.cpp
+index 8015ec1f..d7399ea1 100644
+--- a/src/gitwrapper.cpp
++++ b/src/gitwrapper.cpp
+@@ -340,7 +340,7 @@ bool GitWrapper::commitIndex(git_repository *repo, git_index *index, QString mes
+         return false;
+     }
+ 
+-    const git_commit* parentarray[] = {commit};
++    git_commit *parentarray[] = {commit};
+     QByteArray commitmessageba = message.toUtf8();
+     const char *commitmessageCString = commitmessageba.data();
+     error = git_commit_create(&commit_id, repo, "HEAD", sig, sig, nullptr, commitmessageCString, tree, 1, parentarray);
+-- 
+GitLab
+

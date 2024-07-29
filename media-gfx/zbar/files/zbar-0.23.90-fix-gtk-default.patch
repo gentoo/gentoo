@@ -1,0 +1,35 @@
+From 468f6bda627d683b3f40dbaf242c158409666f7e Mon Sep 17 00:00:00 2001
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Date: Sat, 13 Mar 2021 18:04:57 +0100
+Subject: [PATCH] configure.ac: fix some issues with gtk parameter
+
+By default, it uses Gtk3. Also, the with_gtk set to "no"
+is wrong.
+
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index b6f87531..30a59f72 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -492,7 +492,7 @@ AS_IF([test "x$with_npapi" != "xno"],
+ AM_CONDITIONAL([HAVE_NPAPI], [test "x$with_npapi" = "xyes"])
+ 
+ dnl GTK
+-dnl For now, defaults to GTK version 2
++dnl For now, defaults to GTK version 3
+ 
+ AC_ARG_WITH([gtk],
+   [AS_HELP_STRING([--with-gtk],
+@@ -500,7 +500,7 @@ AC_ARG_WITH([gtk],
+   [AS_IF([test "x$with_gtk" != "xno"   && test "x$with_gtk" != "xauto" &&
+           test "x$with_gtk" != "xgtk2" && test "x$with_gtk" != "xgtk3"],
+          [echo "Invalid value for --with-gtk. Falling back to 'no'"
+-          with_gtk="xno"])],
++          with_gtk="no"])],
+   [with_gtk="auto"])
+ 
+ AC_ARG_VAR([GLIB_GENMARSHAL], [full path to glib-genmarshal])

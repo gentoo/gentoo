@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/730854
+--- a/src/ranking.c
++++ b/src/ranking.c
+@@ -7,3 +7,3 @@
+  **********************/
+-int ScoreRanking(void)
++void ScoreRanking(void)
+ {
+--- a/src/ranking.h
++++ b/src/ranking.h
+@@ -3,2 +3,3 @@
+ 
++void ScoreRanking(void);
+ void RankingScore(void);

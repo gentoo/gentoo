@@ -1,0 +1,212 @@
+From 9ced946bc4f6da7ccb74573af4a9a89400f9cd69 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 23 Oct 2022 18:21:25 +0100
+Subject: [PATCH] Fix build with Clang 16
+
+Bug: https://bugs.gentoo.org/724916
+Bug: https://bugs.gentoo.org/831310
+Bug: https://bugs.gentoo.org/861464
+Bug: https://bugs.gentoo.org/874105
+--- a/src/p_client.c
++++ b/src/p_client.c
+@@ -213,7 +213,7 @@ int repeatserverinit(int usern)
+ }
+ 
+ /* who is on the bounce ? */
+-int cmdbwho(usern)
++int cmdbwho(int usern)
+ {
+     struct usernodes *th;
+     int userl;
+@@ -508,7 +508,7 @@ int firstwelcome(void)
+ }
+ 
+ /* first user connects */
+-int firstuser(npeer)
++int firstuser(int npeer)
+ {
+     int linkto;
+     pcontext;
+--- a/tools/autoconf.c
++++ b/tools/autoconf.c
+@@ -38,6 +38,7 @@
+ #include <ctype.h>
+ #include <signal.h>
+ #include <errno.h>
++#include <time.h>
+ #include "config.h"
+ #include "src/p_version.h"
+ 
+From 907107edea5f9d74b59a7c24762cfa8413a42f90 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 23 Oct 2022 18:41:05 +0100
+Subject: [PATCH] Fix build with Clang 16
+
+--- a/src/p_client.c
++++ b/src/p_client.c
+@@ -22,6 +22,8 @@
+ #define P_CLIENT
+ 
+ #include <p_global.h>
++#include <stdio.h>
++#include <stdlib.h>
+ 
+ int cmdaddlink(int usern, int type);
+ int quitclient(int usern);
+--- a/src/p_dcc.c
++++ b/src/p_dcc.c
+@@ -22,6 +22,7 @@
+ #define P_DCC
+ 
+ #include <p_global.h>
++#include <stdlib.h>
+ 
+ #ifdef DCCCHAT
+ 
+--- a/src/p_hash.c
++++ b/src/p_hash.c
+@@ -25,6 +25,11 @@
+ 
+ /* local types */
+ 
++#ifdef IPV6
++int cmddefaultipv6(int usern);
++int cmdpreferipv6(int usern);
++#endif
++
+ struct hasht {
+     int commandmsgnum;
+     int(*handler)(int);
+@@ -174,8 +179,10 @@ struct hasht inboundhash[]={
+     {1252,	printhelp,	1253,	1254	,0,0},
+     {1450,	cmdbdone,	1451,	1452	,0,0},
+     {1460,	cmdsetconnectdelay,	1461,	1462	,0,1},
++#ifdef IPV6
+     {1480,	cmddefaultipv6,		1481,   1482    ,0,1},
+     {1490,	cmdpreferipv6,		1491,   1492    ,0,0},
++#endif
+ #ifdef MYSQL_IPCHECK
+ #ifdef HAVE_MYSQL
+     {2001,	cmdmysqlipcheck,	2002,	2003	,0,1},
+--- a/src/p_inifunc.c
++++ b/src/p_inifunc.c
+@@ -22,6 +22,7 @@
+ #define P_INIFUNC
+ 
+ #include <p_global.h>
++#include <stdlib.h>
+ 
+ /* reset the config cache */
+ 
+--- a/src/p_memory.c
++++ b/src/p_memory.c
+@@ -22,6 +22,7 @@
+ #define P_MEMORY
+ 
+ #include <p_global.h>
++#include <stdlib.h>
+ 
+ FILE *logm=NULL;
+ 
+--- a/src/p_network.c
++++ b/src/p_network.c
+@@ -22,6 +22,7 @@
+ #define P_NETWORK
+ 
+ #include <p_global.h>
++#include <stdlib.h>
+ 
+ int netdefault(int usern, char *netname, char *myparentnick);
+ 
+--- a/src/p_peer.c
++++ b/src/p_peer.c
+@@ -22,6 +22,7 @@
+ #define P_PEER
+ 
+ #include <p_global.h>
++#include <stdlib.h>
+ 
+ /* MySQL for IP check */
+ #ifdef MYSQL_IPCHECK
+--- a/src/p_script.c
++++ b/src/p_script.c
+@@ -22,6 +22,7 @@
+ #define P_SCRIPT
+ 
+ #include <p_global.h>
++#include <stdlib.h>
+ 
+ #ifdef SCRIPTING
+ 
+--- a/src/p_server.c
++++ b/src/p_server.c
+@@ -22,6 +22,8 @@
+ #define P_SERVER
+ 
+ #include <p_global.h>
++#include <stdlib.h>
++
+ void create_oidentd_conf();
+ 
+ sigjmp_buf serveralarmret;
+--- a/src/p_socket.c
++++ b/src/p_socket.c
+@@ -22,6 +22,7 @@
+ #define P_SOCKET
+ 
+ #include <p_global.h>
++#include <stdlib.h>
+ 
+ #define MAX_SENDQ 1000
+ 
+--- a/src/p_string.c
++++ b/src/p_string.c
+@@ -22,6 +22,7 @@
+ #define P_STRING
+ 
+ #include <p_global.h>
++#include <stdlib.h>
+ 
+ char langname[100];
+ 
+--- a/src/p_topology.c
++++ b/src/p_topology.c
+@@ -22,7 +22,7 @@
+ #define P_TOPOLOGY
+ 
+ #include <p_global.h>
+-
++#include <stdlib.h>
+ 
+ #define TP_ROOT		0
+ #define TP_LTO		1
+--- a/src/p_uchannel.c
++++ b/src/p_uchannel.c
+@@ -22,6 +22,7 @@
+ #define P_UCHANNEL
+ 
+ #include <p_global.h>
++#include <stdlib.h>
+ 
+ /* bring the channel modes into the right order, return formulated mode */
+ 
+--- a/src/p_userfile.c
++++ b/src/p_userfile.c
+@@ -22,6 +22,7 @@
+ #define P_USERFILE
+ 
+ #include <p_global.h>
++#include <stdlib.h>
+ 
+ /* loading a specific user */
+ 
+--- a/src/psybnc.c
++++ b/src/psybnc.c
+@@ -34,6 +34,7 @@
+ 
+ #include <p_global.h>
+ #include <p_data.h>
++#include <stdlib.h>
+ 
+ int slice=0;
+ 

@@ -1,0 +1,30 @@
+From 5fb5ec11e284c28edc8ee651900ceaff992921ed Mon Sep 17 00:00:00 2001
+From: Harri Nieminen <moikkis@gmail.com>
+Date: Sat, 4 Mar 2017 14:18:13 +0200
+Subject: [PATCH 1/2] Remove old docs and update datadir
+
+---
+ doc/Makefile.am | 11 ++---------
+ 1 file changed, 2 insertions(+), 9 deletions(-)
+
+diff --git a/doc/Makefile.am b/doc/Makefile.am
+index 16187f0..0c3c4a8 100644
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -1,11 +1,4 @@
+-datadir = $(prefix)/share/${PACKAGE}/doc
+-data_DATA=gmorgan0.75.pdf \
+-gmorgan0.75.odt \
+-gmorgan-old-es.pdf \
+-gmorgan-old-es.sxw \
+-gmorgan-old-fr.pdf \
+-gmorgan-old-fr.sxw \
+-gmorgan-old.pdf \
+-gmorgan-old.sxw 
++datadir = $(docdir)
++data_DATA=gmorgan0.75.pdf
+ 
+ EXTRA_DIST = $(data_DATA)
+-- 
+2.12.0
+

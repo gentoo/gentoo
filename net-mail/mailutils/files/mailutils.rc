@@ -1,0 +1,11 @@
+# Sample mailutils config file.  Read by all mailutils programs.
+# See info mailutils for details.
+
+# Gentoo default is maildir
+mailbox {
+  mailbox-type maildir;
+  mailbox-pattern .maildir;
+};
+
+# Place individual config files here
+include /etc/mailutils.d/;

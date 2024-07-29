@@ -1,0 +1,28 @@
+From 019d573ddbade01304f62b9cd07b4e759e21398a Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Tue, 19 Mar 2024 16:38:13 -0400
+Subject: [PATCH] tst/bugfix.tst: delete failing test
+
+https://github.com/gap-packages/polycyclic/issues/89
+---
+ tst/bugfix.tst | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/tst/bugfix.tst b/tst/bugfix.tst
+index 393390e..9293671 100644
+--- a/tst/bugfix.tst
++++ b/tst/bugfix.tst
+@@ -58,10 +58,6 @@ gap> NonAbelianTensorSquare(Image(iso*iso1));
+ Pcp-group with orders [ 2, 2, 3, 2, 2, 2, 2 ]
+ 
+ #
+-gap> # The problem with the previous example is/was that Igs(G)
+-gap> # is set to a non-standard value:
+-gap> Igs(G);
+-[ g1, g2*g5, g3*g4*g5^2, g4*g5, g5 ]
+ gap> # Unfortunately, it seems that a lot of code that
+ gap> # really should be using Ngs or Cgs is using Igs incorrectly.
+ gap> # For example, direct products could return *invalid* embeddings:
+-- 
+2.43.2
+

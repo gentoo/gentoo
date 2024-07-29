@@ -1,0 +1,13 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -42,9 +42,8 @@
+ fi
+ 
+ ERR="Required package missing!"
+-AC_CHECK_HEADER(ncurses.h,:,AC_MSG_ERROR([$ERR]))
++PKG_CHECK_MODULES(ncurses,ncurses,[LIBS="$LIBS $ncurses_LIBS"],AC_MSG_ERROR([$ERR]))
+ AC_CHECK_HEADER(getopt.h,:,AC_MSG_ERROR([$ERR]))
+-AC_CHECK_LIB(ncurses,initscr)
+ AC_CHECK_LIB(m,pow)
+ AC_CONFIG_FILES([Makefile])
+ AC_OUTPUT

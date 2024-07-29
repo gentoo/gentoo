@@ -1,0 +1,32 @@
+From 4cab6b74df4fb9ed7046faeb53c5ab01fa0716a1 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Sun, 17 Dec 2023 14:26:44 +0200
+Subject: [PATCH 3/5] Set soname version for shared library
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/configure.ac
++++ b/configure.ac
+@@ -175,9 +175,9 @@ AC_COMPILE_IFELSE([AC_LANG_SOURCE([ int foo(int val) { return val + 1; } ])],[
+             enable_shlib=no
+           fi
+        elif (${LD} -shared --whole-archive -soname conftest.so -o conftest.so.t conftest.a) 2>&5; then
+-		ac_cv_shared_link_args='$(LD) -shared --whole-archive -soname $@ -o $@.t'
++		ac_cv_shared_link_args="\$(LD) -shared --whole-archive -soname \$(@:${dmalloc_version}=${dmalloc_version_major}) -o \$@.t"
+ 	elif (${LD} -shared -o conftest.so.t -all -soname conftest.so.t -none -lc -all conftest.a) 2>&5; then
+-		ac_cv_shared_link_args='$(LD) -shared -o $@.t -all -soname $@ -none -lc -all'
++		ac_cv_shared_link_args="\$(LD) -shared -o \$@.t -all -soname \$(@:${dmalloc_version}=${dmalloc_version_major}) -none -lc -all"
+ 	elif (${LD} -G -o conftest.so.t conftest.a) 2>&5; then
+ 		ac_cv_shared_link_args='$(LD) -G -o $@.t'
+ 	else
+@@ -208,7 +208,7 @@ if test `uname` = "Darwin"; then
+ else
+ 	ac_cv_shared_lib_suffix=so
+ fi
+-shlibext="$ac_cv_shared_lib_suffix"
++shlibext="$ac_cv_shared_lib_suffix.$dmalloc_version"
+ AC_MSG_RESULT([$ac_cv_shared_lib_suffix])
+ AC_SUBST(shlibext)
+ 
+-- 
+2.43.0
+

@@ -1,0 +1,11 @@
+--- kit.orig/image/gif.c	2016-01-12 16:54:40.469530579 +0100
++++ kit/image/gif.c	2016-01-12 16:56:10.676527408 +0100
+@@ -122,7 +122,7 @@
+ 			if (GifFile->Image.Left + GifFile->Image.Width > GifFile->SWidth ||
+ 			   GifFile->Image.Top + GifFile->Image.Height > GifFile->SHeight) {
+ 				fprintf(stderr,
+-"Image %d is not confined to screen dimension, aborted.\n");
++"Image %s is not confined to screen dimension, aborted.\n", fullname);
+ 				exit(-2);
+ 			}
+ 			if (GifFile->Image.Interlace) {

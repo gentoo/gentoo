@@ -1,0 +1,25 @@
+This package does not contain the m4 macros from gettext, so if gettext is not
+installed the macros are lost when running eautoreconf.
+
+Embed the required m4 files and add the directory to configure.ac.
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -5,6 +5,7 @@
+ noinst_SCRIPTS=systype
+ PR=@PACKAGE@-@VERSION@
+ CLEAN_FILES=fastcheck.done
++AC_CONFIG_MACRO_DIR=-I m4
+ 
+ dist-hook:
+ 	mkdir $(distdir)/debian
+--- a/configure.in
++++ b/configure.in
+@@ -3,6 +3,7 @@
+ AC_INIT(src/crctab.c)
+ AM_INIT_AUTOMAKE(lrzsz, 0.12.20)
+ AC_CONFIG_HEADERS([config.h])
++AC_CONFIG_MACRO_DIR([m4])
+ 
+ 
+ dnl AC_C_CROSS is in AC_PROG_CC since 2.12

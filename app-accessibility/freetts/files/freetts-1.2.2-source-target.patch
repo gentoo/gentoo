@@ -1,0 +1,34 @@
+We want to get rid of rewrite-xml provided by javatoolkit.
+
+--- a/build.xml
++++ b/build.xml
+@@ -124,7 +124,8 @@ jsapi.exe from the lib directory.
+             description="Build just the srcs">
+         <mkdir dir="${classes_dir}" />
+         <javac debug="true"
+-               source="1.4"
++               source="8"
++               target="8"
+                deprecation="true"
+                srcdir="${src_dir}"
+                excludes="tests/**"
+@@ -145,7 +146,8 @@ jsapi.exe from the lib directory.
+             description="Build just the tests">
+         <mkdir dir="${classes_dir}" />
+         <javac debug="true"
+-               source="1.4"
++               source="8"
++               target="8"
+                deprecation="true"
+                srcdir="${src_dir}"
+                includes="tests/**"
+@@ -904,7 +906,8 @@ jsapi.exe from the lib directory.
+     <target name="javadoc" description="Generate javadoc">
+         <mkdir dir="${javadoc_dir}" />
+         <javadoc sourcepath="${src_dir}"
+-                 source="1.4"
++                 source="8"
++                 target="8"
+                  additionalparam="-breakiterator"
+                  destdir="${javadoc_dir}"
+                  packagenames="${javadoc_pkgs}"

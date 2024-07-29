@@ -1,0 +1,17 @@
+diff --git a/dependencies/CMakeLists.txt b/dependencies/CMakeLists.txt
+index 1d98e6f7..ad903481 100644
+--- a/dependencies/CMakeLists.txt
++++ b/dependencies/CMakeLists.txt
+@@ -20,8 +20,10 @@ if(SIMDJSON_GOOGLE_BENCHMARKS)
+ endif()
+ 
+ # The bulk of our benchmarking and testing data has been moved simdjson/simdjson-data
+-import_dependency(simdjson-data simdjson/simdjson-data a5b13babe65c1bba7186b41b43d4cbdc20a5c470)
+-add_dependency(simdjson-data)
++if(SIMDJSON_TESTS)
++	import_dependency(simdjson-data simdjson/simdjson-data a5b13babe65c1bba7186b41b43d4cbdc20a5c470)
++	add_dependency(simdjson-data)
++endif()
+ option(SIMDJSON_USE_BOOST_JSON "Try to include BOOST_JSON, this may break your binaries under some systems." OFF)
+ # This prevents variables declared with set() from unnecessarily escaping and
+ # should not be called more than once

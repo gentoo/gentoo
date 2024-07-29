@@ -1,0 +1,13 @@
+Index: icecast-2.3.3/m4/xiph_openssl.m4
+===================================================================
+--- icecast-2.3.3.orig/m4/xiph_openssl.m4
++++ icecast-2.3.3/m4/xiph_openssl.m4
+@@ -10,7 +10,7 @@ AC_ARG_WITH(openssl,
+     AC_HELP_STRING([--with-openssl=PFX],[Prefix where openssl is installed (optional)]),
+     openssl_prefix="$withval", openssl_prefix="")
+ 
+-if test "x$openssl_prefix" != "x" -a "x$openssl_prefix" != "xyes"; then
++if test "x$openssl_prefix" != "x" -a "x$openssl_prefix" != "xyes" -a "x$openssl_prefix" != "xno"; then
+     OPENSSL_LIBS="-L$openssl_prefix/lib -lssl"
+     OPENSSL_CFLAGS="-I$openssl_prefix/include"
+ else

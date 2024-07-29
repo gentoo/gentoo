@@ -1,0 +1,56 @@
+From d1c6739e93a788b7ea9da7915642b2c8d6ab0656 Mon Sep 17 00:00:00 2001
+From: Alexander Grund <alexander.grund@tu-dresden.de>
+Date: Fri, 3 Feb 2023 16:30:09 +0100
+Subject: [PATCH] Fix compatibility with Boost 1.74+
+
+This has turned into an error in Boost 1.81
+Fixes #1551
+---
+ libs/s25main/network/GameClient.cpp | 8 +++++++-
+ 3 files changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/libs/s25main/network/GameClient.cpp b/libs/s25main/network/GameClient.cpp
+index 84e351c08..0989d5877 100644
+--- a/libs/s25main/network/GameClient.cpp
++++ b/libs/s25main/network/GameClient.cpp
+@@ -119,7 +119,13 @@ bool GameClient::HostGame(const CreateServerInfo& csi, const boost::filesystem::
+     if(playedMapPath != map_path)
+     {
+         boost::system::error_code ignoredEc;
+-        copy_file(map_path, playedMapPath, boost::filesystem::copy_option::overwrite_if_exists, ignoredEc);
++        constexpr auto overwrite_existing =
++#if BOOST_VERSION >= 107400
++          boost::filesystem::copy_options::overwrite_existing;
++#else
++          boost::filesystem::copy_option::overwrite_if_exists;
++#endif
++        copy_file(map_path, playedMapPath, overwrite_existing, ignoredEc);
+     }
+     return GAMESERVER.Start(csi, map_path, map_type, hostPw)
+            && Connect("localhost", hostPw, csi.type, csi.port, true, csi.ipv6);
+
+From 96978da4aba9280217a5b36731c303c35819220b Mon Sep 17 00:00:00 2001
+From: Alexander Grund <Flamefire@users.noreply.github.com>
+Date: Thu, 23 May 2024 19:35:14 +0200
+Subject: [PATCH] Fix Boost.Filesystem include
+
+The directory iterator seems to have move to a different include.
+Just include all of it.
+---
+ callbacks.cpp | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/external/s25edit/callbacks.cpp b/external/s25edit/callbacks.cpp
+index 52ec86d..095c1d6 100644
+--- a/external/s25edit/callbacks.cpp
++++ b/external/s25edit/callbacks.cpp
+@@ -18,8 +18,7 @@
+ #include "CSurface.h"
+ #include "globals.h"
+ #include "helpers/format.hpp"
+-#include <boost/filesystem/operations.hpp>
+-#include <boost/filesystem/path.hpp>
++#include <boost/filesystem.hpp>
+ #include <algorithm>
+ 
+ namespace bfs = boost::filesystem;

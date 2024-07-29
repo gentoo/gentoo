@@ -1,0 +1,35 @@
+https://github.com/nm-l2tp/NetworkManager-l2tp/pull/208
+
+From bf46aec299c58321703f5431ebafcce561a98cef Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 23 Apr 2023 09:16:24 +0100
+Subject: [PATCH] configure.ac: fix bashisms in configure.ac
+
+configure scripts need to be runnable with a POSIX-compliant /bin/sh.
+
+On many (but not all!) systems, /bin/sh is provided by Bash, so errors
+like this aren't spotted. Notably Debian defaults to /bin/sh provided
+by dash which doesn't tolerate such bashisms as '=='.
+
+This retains compatibility with bash.
+--- a/configure.ac
++++ b/configure.ac
+@@ -197,7 +197,7 @@ fi
+ AM_CONDITIONAL(WITH_GNOME, test "$with_gnome" != no)
+ 
+ AC_ARG_WITH(gtk4, AS_HELP_STRING([--with-gtk4], [Build NetworkManager-l2tp with libnma-gtk4 support]), [], [with_gtk4_specified=no])
+-if test "$with_gtk4_specified" == no; then
++if test "$with_gtk4_specified" = no; then
+ 	with_gtk4=no
+ fi
+ if test "$with_gtk4" != yes; then
+@@ -256,7 +256,7 @@ NM_LD_GC
+ 
+ NM_PLUGIN_DIR="$libdir/NetworkManager"
+ AC_SUBST(NM_PLUGIN_DIR)
+-if test x"$enable_absolute_paths" == x"yes"; then
++if test x"$enable_absolute_paths" = x"yes"; then
+ 	NM_PLUGIN_DIR_NAME_FILE="$NM_PLUGIN_DIR/"
+ else
+ 	enable_absolute_paths=no
+

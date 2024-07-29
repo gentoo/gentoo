@@ -1,0 +1,33 @@
+From 988f954a7e185c521e7c0f720684e8a53068b136 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Thu, 15 Dec 2022 18:11:03 +0100
+Subject: [PATCH] tests/unit/cli_test.py: Fix access to
+ py._path.local.LocalPath
+
+.. for test CLITestCase.test_default_project_name:
+
+> class CLITestCase(unittest.TestCase):
+>
+>     def test_default_project_name(self):
+>         test_dir = py._path.local.LocalPath('tests/fixtures/simple-composefile')
+>         [..]
+---
+ tests/unit/cli_test.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/unit/cli_test.py b/tests/unit/cli_test.py
+index fa6e767..83ecef8 100644
+--- a/tests/unit/cli_test.py
++++ b/tests/unit/cli_test.py
+@@ -4,7 +4,7 @@ import tempfile
+ from io import StringIO
+ 
+ import docker
+-import py
++import py._path.local
+ import pytest
+ from docker.constants import DEFAULT_DOCKER_API_VERSION
+ 
+-- 
+2.39.0
+

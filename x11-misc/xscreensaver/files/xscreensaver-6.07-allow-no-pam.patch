@@ -1,0 +1,18 @@
+The use flag combination -pam +locking is not possible with that configure.ac.
+Having a pam conf and a /etc/pam.d could be remnants from a previous installation
+of pam and don't tell us for sure that the user does not want this.
+
+Bug: https://bugs.gentoo.org/908509
+
+# Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -4971,7 +4971,6 @@ elif test "$have_pam" = no -a "$enable_locking" = yes ; then
+   if test -d /etc/pam.d -o -f /etc/pam.conf ; then
+     warn  "Your system seems to have PAM, but PAM is not being used."
+     warn2 "That is probably not going to work out well."
+-    CONF_STATUS=1
+   fi
+ fi
+ 

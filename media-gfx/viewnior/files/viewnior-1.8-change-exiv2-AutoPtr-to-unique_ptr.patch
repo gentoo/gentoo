@@ -1,0 +1,92 @@
+# upstream PR: <https://github.com/hellosiyan/Viewnior/pull/130>
+
+From e98d86aecf20a1651552090c7b25d5fcdd41133a Mon Sep 17 00:00:00 2001
+From: tastytea <tastytea@tastytea.de>
+Date: Tue, 16 May 2023 10:54:40 +0200
+Subject: [PATCH] change exiv2 AutoPtr to unique_ptr
+
+exiv2-0.28.0 removed Exiv2::Image::AutoPtr and added
+Exiv2::Image::UniquePtr instead. since it's a typedef for
+std::unique_ptr<Image>, i'm using that directly instead of adding a
+condition on the exiv2 version.
+---
+ src/uni-exiv2.cpp | 21 +++++++++++----------
+ 1 file changed, 11 insertions(+), 10 deletions(-)
+
+diff --git a/src/uni-exiv2.cpp b/src/uni-exiv2.cpp
+index 0d14b9f..77064c2 100644
+--- a/src/uni-exiv2.cpp
++++ b/src/uni-exiv2.cpp
+@@ -22,12 +22,13 @@
+ 
+ #include <exiv2/exiv2.hpp>
+ #include <iostream>
++#include <memory>
+ 
+ #include "uni-exiv2.hpp"
+ 
+ #define ARRAY_SIZE(array) (sizeof array/sizeof(array[0]))
+ 
+-static Exiv2::Image::AutoPtr cached_image;
++static std::unique_ptr<Exiv2::Image> cached_image;
+ 
+ extern "C"
+ void
+@@ -35,8 +36,8 @@ uni_read_exiv2_map(const char *uri, void (*callback)(const char*, const char*, v
+ {
+     Exiv2::LogMsg::setLevel(Exiv2::LogMsg::mute);
+     try {
+-        Exiv2::Image::AutoPtr image = Exiv2::ImageFactory::open(uri);
+-        if ( image.get() == 0 ) {
++        std::unique_ptr<Exiv2::Image> image = Exiv2::ImageFactory::open(uri);
++        if (image == nullptr) {
+             return;
+         }
+ 
+@@ -91,14 +92,14 @@ uni_read_exiv2_to_cache(const char *uri)
+ {
+     Exiv2::LogMsg::setLevel(Exiv2::LogMsg::mute);
+ 
+-    if ( cached_image.get() != NULL ) {
++    if (cached_image != nullptr) {
+         cached_image->clearMetadata();
+-        cached_image.reset(NULL);
++        cached_image.reset(nullptr);
+     }
+ 
+     try {
+         cached_image = Exiv2::ImageFactory::open(uri);
+-        if ( cached_image.get() == 0 ) {
++        if (cached_image == nullptr) {
+             return 1;
+         }
+ 
+@@ -116,13 +117,13 @@ uni_write_exiv2_from_cache(const char *uri)
+ {
+     Exiv2::LogMsg::setLevel(Exiv2::LogMsg::mute);
+ 
+-    if ( cached_image.get() == NULL ) {
++    if (cached_image == nullptr) {
+         return 1;
+     }
+ 
+     try {
+-        Exiv2::Image::AutoPtr image = Exiv2::ImageFactory::open(uri);
+-        if ( image.get() == 0 ) {
++        std::unique_ptr<Exiv2::Image> image = Exiv2::ImageFactory::open(uri);
++        if (image == nullptr) {
+             return 2;
+         }
+ 
+@@ -130,7 +131,7 @@ uni_write_exiv2_from_cache(const char *uri)
+         image->writeMetadata();
+ 
+         cached_image->clearMetadata();
+-        cached_image.reset(NULL);
++        cached_image.reset(nullptr);
+ 
+         return 0;
+     } catch (Exiv2::AnyError& e) {
+-- 
+2.39.3
+

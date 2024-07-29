@@ -1,0 +1,144 @@
+hsc2hs can't detect values at compile-time if those are
+declared as pointers: https://github.com/haskell/win32/issues/88
+
+This patch is a huge hack: we encode absolute vaues from <windows.h>
+diff --git a/Graphics/Win32/GDI/Types.hsc b/Graphics/Win32/GDI/Types.hsc
+index c363530..8643cee 100644
+--- a/Graphics/Win32/GDI/Types.hsc
++++ b/Graphics/Win32/GDI/Types.hsc
+@@ -216,10 +216,10 @@ type   HWND       = HANDLE
+ type MbHWND       = Maybe HWND
+ 
+ #{enum HWND, castUINTPtrToPtr
+- , hWND_BOTTOM    = (UINT_PTR)HWND_BOTTOM
+- , hWND_NOTOPMOST = (UINT_PTR)HWND_NOTOPMOST
+- , hWND_TOP       = (UINT_PTR)HWND_TOP
+- , hWND_TOPMOST   = (UINT_PTR)HWND_TOPMOST
++ , hWND_BOTTOM    = (UINT_PTR)(INT_PTR)(1)
++ , hWND_NOTOPMOST = (UINT_PTR)(INT_PTR)(-2)
++ , hWND_TOP       = (UINT_PTR)(INT_PTR)(0)
++ , hWND_TOPMOST   = (UINT_PTR)(INT_PTR)(-1)
+  }
+ 
+ type   HMENU      = HANDLE
+diff --git a/Graphics/Win32/Misc.hsc b/Graphics/Win32/Misc.hsc
+index 1248b5a..c791a20 100644
+--- a/Graphics/Win32/Misc.hsc
++++ b/Graphics/Win32/Misc.hsc
+@@ -67,23 +67,23 @@ foreign import WINDOWS_CCONV unsafe "windows.h LoadIconW"
+   c_LoadIcon :: HINSTANCE -> Icon -> IO HICON
+ 
+ #{enum Cursor, castUINTPtrToPtr
+- , iDC_ARROW        = (UINT_PTR)IDC_ARROW
+- , iDC_IBEAM        = (UINT_PTR)IDC_IBEAM
+- , iDC_WAIT         = (UINT_PTR)IDC_WAIT
+- , iDC_CROSS        = (UINT_PTR)IDC_CROSS
+- , iDC_UPARROW      = (UINT_PTR)IDC_UPARROW
+- , iDC_SIZENWSE     = (UINT_PTR)IDC_SIZENWSE
+- , iDC_SIZENESW     = (UINT_PTR)IDC_SIZENESW
+- , iDC_SIZEWE       = (UINT_PTR)IDC_SIZEWE
+- , iDC_SIZENS       = (UINT_PTR)IDC_SIZENS
++ , iDC_ARROW        = (UINT_PTR)(32512)
++ , iDC_IBEAM        = (UINT_PTR)(32513)
++ , iDC_WAIT         = (UINT_PTR)(32514)
++ , iDC_CROSS        = (UINT_PTR)(32515)
++ , iDC_UPARROW      = (UINT_PTR)(32516)
++ , iDC_SIZENWSE     = (UINT_PTR)(32642)
++ , iDC_SIZENESW     = (UINT_PTR)(32643)
++ , iDC_SIZEWE       = (UINT_PTR)(32644)
++ , iDC_SIZENS       = (UINT_PTR)(32645)
+  }
+ 
+ #{enum Icon, castUINTPtrToPtr
+- , iDI_APPLICATION  = (UINT_PTR)IDI_APPLICATION
+- , iDI_HAND         = (UINT_PTR)IDI_HAND
+- , iDI_QUESTION     = (UINT_PTR)IDI_QUESTION
+- , iDI_EXCLAMATION  = (UINT_PTR)IDI_EXCLAMATION
+- , iDI_ASTERISK     = (UINT_PTR)IDI_ASTERISK
++ , iDI_APPLICATION  = (UINT_PTR)(32512)
++ , iDI_HAND         = (UINT_PTR)(32513)
++ , iDI_QUESTION     = (UINT_PTR)(32514)
++ , iDI_EXCLAMATION  = (UINT_PTR)(32515)
++ , iDI_ASTERISK     = (UINT_PTR)(32516)
+  }
+ 
+ ----------------------------------------------------------------
+diff --git a/Graphics/Win32/Resource.hsc b/Graphics/Win32/Resource.hsc
+index e8ad565..ca58fa2 100644
+--- a/Graphics/Win32/Resource.hsc
++++ b/Graphics/Win32/Resource.hsc
+@@ -61,23 +61,23 @@ foreign import WINDOWS_CCONV unsafe "windows.h EndUpdateResourceW"
+ type ResourceType = LPCTSTR
+ 
+ #{enum ResourceType, castUINTPtrToPtr
+- , rT_ACCELERATOR  = (UINT_PTR)RT_ACCELERATOR // Accelerator table
+- , rT_ANICURSOR    = (UINT_PTR)RT_ANICURSOR // Animated cursor
+- , rT_ANIICON      = (UINT_PTR)RT_ANIICON   // Animated icon
+- , rT_BITMAP       = (UINT_PTR)RT_BITMAP    // Bitmap resource
+- , rT_CURSOR       = (UINT_PTR)RT_CURSOR    // Hardware-dependent cursor resource
+- , rT_DIALOG       = (UINT_PTR)RT_DIALOG    // Dialog box
+- , rT_FONT         = (UINT_PTR)RT_FONT      // Font resource
+- , rT_FONTDIR      = (UINT_PTR)RT_FONTDIR    // Font directory resource
+- , rT_GROUP_CURSOR = (UINT_PTR)RT_GROUP_CURSOR // Hardware-independent cursor resource
+- , rT_GROUP_ICON   = (UINT_PTR)RT_GROUP_ICON // Hardware-independent icon resource
+- , rT_HTML         = (UINT_PTR)RT_HTML      // HTML document
+- , rT_ICON         = (UINT_PTR)RT_ICON      // Hardware-dependent icon resource
+- , rT_MENU         = (UINT_PTR)RT_MENU      // Menu resource
+- , rT_MESSAGETABLE = (UINT_PTR)RT_MESSAGETABLE // Message-table entry
+- , rT_RCDATA       = (UINT_PTR)RT_RCDATA    // Application-defined resource (raw data)
+- , rT_STRING       = (UINT_PTR)RT_STRING    // String-table entry
+- , rT_VERSION      = (UINT_PTR)RT_VERSION   // Version resource
++ , rT_ACCELERATOR  = (UINT_PTR)(9)
++ , rT_ANICURSOR    = (UINT_PTR)(21)
++ , rT_ANIICON      = (UINT_PTR)(22)
++ , rT_BITMAP       = (UINT_PTR)(2)
++ , rT_CURSOR       = (UINT_PTR)(1)
++ , rT_DIALOG       = (UINT_PTR)(5)
++ , rT_FONT         = (UINT_PTR)(8)
++ , rT_FONTDIR      = (UINT_PTR)(7)
++ , rT_GROUP_CURSOR = (UINT_PTR)(1 + DIFFERENCE)
++ , rT_GROUP_ICON   = (UINT_PTR)(3 + DIFFERENCE)
++ , rT_HTML         = (UINT_PTR)(23)
++ , rT_ICON         = (UINT_PTR)(3)
++ , rT_MENU         = (UINT_PTR)(4)
++ , rT_MESSAGETABLE = (UINT_PTR)(11)
++ , rT_RCDATA       = (UINT_PTR)(10)
++ , rT_STRING       = (UINT_PTR)(6)
++ , rT_VERSION      = (UINT_PTR)(16)
+  }
+ 
+ findResource :: HMODULE -> String -> ResourceType -> IO HRSRC
+diff --git a/Graphics/Win32/Window/PostMessage.hsc b/Graphics/Win32/Window/PostMessage.hsc
+index 7f4c9f0..609f3f6 100644
+--- a/Graphics/Win32/Window/PostMessage.hsc
++++ b/Graphics/Win32/Window/PostMessage.hsc
+@@ -41,7 +41,7 @@ foreign import WINDOWS_CCONV "windows.h PostThreadMessageW"
+   c_PostThreadMessage :: DWORD -> WindowMessage -> WPARAM -> LPARAM -> IO BOOL
+ 
+ #{enum HWND, castUINTPtrToPtr
+- , hWND_BROADCAST = (UINT_PTR)HWND_BROADCAST
++ , hWND_BROADCAST = (UINT_PTR)(0xffff)
+  }
+ 
+ foreign import WINDOWS_CCONV "windows.h InSendMessage"
+diff --git a/System/Win32/Registry.hsc b/System/Win32/Registry.hsc
+index afbb011..c7edfc1 100644
+--- a/System/Win32/Registry.hsc
++++ b/System/Win32/Registry.hsc
+@@ -80,11 +80,11 @@ import System.Win32.Types (castUINTPtrToPtr, failUnlessSuccessOr, maybePtr)
+ #include <windows.h>
+ 
+ #{enum HKEY, (unsafePerformIO . newForeignHANDLE . castUINTPtrToPtr)
+- , hKEY_CLASSES_ROOT    = (UINT_PTR)HKEY_CLASSES_ROOT
+- , hKEY_CURRENT_CONFIG  = (UINT_PTR)HKEY_CURRENT_CONFIG
+- , hKEY_CURRENT_USER    = (UINT_PTR)HKEY_CURRENT_USER
+- , hKEY_LOCAL_MACHINE   = (UINT_PTR)HKEY_LOCAL_MACHINE
+- , hKEY_USERS           = (UINT_PTR)HKEY_USERS
++ , hKEY_CLASSES_ROOT    = (UINT_PTR)(0x80000000)
++ , hKEY_CURRENT_CONFIG  = (UINT_PTR)(0x80000005)
++ , hKEY_CURRENT_USER    = (UINT_PTR)(0x80000001)
++ , hKEY_LOCAL_MACHINE   = (UINT_PTR)(0x80000002)
++ , hKEY_USERS           = (UINT_PTR)(0x80000003)
+  }
+ -- , PKEYERFORMANCE_DATA  NT only
+ -- , HKEY_DYN_DATA     95/98 only

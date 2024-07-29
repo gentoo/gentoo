@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="kwallet">
+			Enable encrypted storage of passwords with <pkg>kde-frameworks/kwallet</pkg>
+		</flag>
+		<flag name="udev">
+			Whether udev will be consulted when deciding if a volume is system or not
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">mhogomchungu/zuluCrypt</remote-id>
+	</upstream>
+</pkgmetadata>

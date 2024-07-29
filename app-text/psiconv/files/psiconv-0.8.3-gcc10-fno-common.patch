@@ -1,0 +1,21 @@
+--- a/program/psiconv/psiconv.c
++++ b/program/psiconv/psiconv.c
+@@ -41,6 +41,8 @@
+ #include "gen.h"
+ #include "psiconv.h"
+ 
++psiconv_list fileformat_list;
++
+ static void print_help(void);
+ static void print_version(void);
+ static void strtoupper(char *str);
+--- a/program/psiconv/psiconv.h
++++ b/program/psiconv/psiconv.h
+@@ -31,6 +31,6 @@
+   output_function *output;
+ } *psiconv_fileformat;
+ 
+-psiconv_list fileformat_list; /* of struct psiconv_fileformat */
++extern psiconv_list fileformat_list; /* of struct psiconv_fileformat */
+ 
+ #endif /* PSICONV_GEN_H */

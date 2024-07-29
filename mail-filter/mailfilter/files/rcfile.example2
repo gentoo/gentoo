@@ -1,0 +1,133 @@
+# -----------------------------------------------------------
+# Example rcfile from the INSTALL document
+# Example configuration based upon the INSTALL document, but 
+# showing some advanced features such as 'Negative Filters', 
+# extended Regular Expressions, etc. 
+# -----------------------------------------------------------
+
+
+# -----------------------------------------------------------
+# Logile path (be sure you have write permission in this
+# directory; you MUST specify a logfile)
+
+LOGFILE = "$HOME/logs/mailfilter.log"
+
+
+# -----------------------------------------------------------
+# Level of verbosity
+#
+#   0      Silent, show nothing at all
+#   1      Only show errors
+#   2      Only show "Deleted..." messages and errors
+#   3      Default; Show "Deleted..." messages,  errors
+#          and "Examining..." messages
+#   4      Like (3), except this also shows the current
+#          account's username
+#   5      Like (4), except this also shows which filter
+#          matched which string of an e-mail header
+#   6      Debugging mode; prints almost everything
+
+VERBOSE = 4
+
+
+# -----------------------------------------------------------
+# Server list  (Do not change the order of the fields!!)
+# Note: Port 110 is usually the port APOP and POP3 servers use,
+# port 995 is required if (say) POP3/SSL is specified.
+
+SERVER   = "pop.server.com"
+USER     = "username"
+PASS     = "password"
+PROTOCOL = "pop3"
+PORT     = 110
+
+SERVER   = "pop.secondserver.com"
+USER     = "anotherusername"
+PASS     = "anotherusername"
+PROTOCOL = "pop3/ssl"
+PORT     = 995
+
+
+# -----------------------------------------------------------
+# Do you want case sensitive e-mail filters? { yes | no }
+
+REG_CASE = "no"
+
+
+# -----------------------------------------------------------
+# Sets the type of Regular Expression used { extended | basic }
+#
+# (The default is 'basic', don't change unless you know what you
+#  are doing. Extended REs are more complex to set up.)
+
+# We want some additional smartness in our rules. That's why only 
+# extended Regular Expressions work for this sample set-up. 
+REG_TYPE = "extended"
+
+
+# -----------------------------------------------------------
+# Maximum e-mail size in bytes that should not be exceeded.
+
+# Accept only 250 KBytes message size. Friends can send more though. 
+# (See MAXSIZE_ALLOW for further information.) 
+MAXSIZE_DENY = 250000
+
+
+# -----------------------------------------------------------
+# Set maximum line length of any field in the message header
+ 
+MAXLENGTH = 998
+
+
+# This one filters mail from a certain person. 
+# (We need the back slash before the '.com' since we are using 
+# extended Regular Expressions.) 
+DENY="^From:.*spammer@any_spam_organisation\.com"
+
+# This one filters mail from everyone at a certain organisation:
+DENY = "^From:.*@any_provider_that_spams\.org"
+
+# We don't want any of those 'LEGAL' messages either
+# while stuff with 'legal' in the subject still interests us:
+DENY_CASE = "^Subject:.*LEGAL"
+
+# This one demonstrates the use of 'Negative Filters' and the 
+# logical OR '|' in Regular Expressions. 
+# (Again, the example works only with extended Regular Expressions.) 
+# Kill everything not directly addressed to own account: 
+DENY<>"(^To|^Cc):(.*username@server\.com|.*anotherusername@secondserver\.com)"
+
+# -----------------------------------------------------------  
+# Normalises the subject strings before parsing, e.g.
+# ',L.E-G,A.L; ,C.A-B`L`E, +.B-O`X` ;D`E`S,C;R,A.MB;L,E.R-]'
+# becomes 'LEGAL CABLE BOX DESCRAMBLER' which can be filtered.
+# 
+# If NORMAL is switched on, Mailfilter tries to apply filters
+# to both the normalised and the original subject.
+
+NORMAL = "yes"
+
+
+# -----------------------------------------------------------
+# The maximum e-mail size in bytes that messages from friends
+# should not exceed. Set this to 0 if all your friends (ALLOW)
+# can send messages as long as they want.
+
+MAXSIZE_ALLOW = 0
+
+
+# ----------------------------------------------------------
+# Set list of friends that always pass, if they do not
+# exceed the message length of MAXSIZE_ALLOW
+
+# This rule allows all mail from a friend who was unlucky enough
+# to have signed up with a spam organisation. With DENY we
+# block everyone else from that domain though! See above!
+ALLOW = "^From:.*a_friend_with_account@any_provider_that_spams\.org"
+
+# Of course we allow e-mail from anyone who has something to say about
+# mailfilter:
+ALLOW = "^Subject:.*mailfilter"
+
+# We also let our girlfriend send any e-mail she wants:
+ALLOW = "^From:.*my_girlfriend@any_provider\.com"

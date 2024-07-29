@@ -1,0 +1,22 @@
+From 399b3334d6519639cfe7f1c0457e2475b8ee5230 Mon Sep 17 00:00:00 2001
+From: Zdenek Dohnal <zdohnal@redhat.com>
+Date: Thu, 13 Oct 2022 14:03:37 +0200
+Subject: [PATCH] Fix debugprint() in options.py (fixes #291)
+
+---
+ options.py | 2 +-
+ 1 file changed, 1 insertions(+), 1 deletion(-)
+
+diff --git a/options.py b/options.py
+index d756f98dc..d7c236deb 100644
+--- a/options.py
++++ b/options.py
+@@ -423,7 +423,7 @@ def __init__(self, name, value, supported, on_change):
+             debugprint("Unknown value for %s: %s" % (name, value))
+             debugprint("Choices: %s" % (supported))
+             if len(supported) > 0:
+-                debugprint("Selecting from choices:", supported[0])
++                debugprint("Selecting from choices: %s" % supported[0])
+                 self.selector.set_active(0)
+         self.selector.connect("changed", self.changed)
+ 

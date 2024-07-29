@@ -1,0 +1,11 @@
+[Unit]
+Description=Invisible Internet Project
+After=network.target
+
+[Service]
+User=i2p
+ExecStart=/usr/bin/i2prouter
+KillSignal=SIGHUP
+
+[Install]
+WantedBy=multi-user.target

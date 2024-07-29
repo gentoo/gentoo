@@ -1,0 +1,19 @@
+Need to rename the declarations in md5.h using cpp too.
+
+https://bugs.gentoo.org/870841
+--- a/libradius/porting.h
++++ b/libradius/porting.h
+@@ -15,12 +15,12 @@
+ 
+ #else
+ 
+-#include "md5.h"
+ #define MD5_DIGEST_LENGTH 16
+ #define MD5Final    xrad_MD5Final
+ #define MD5Init     xrad_MD5Init
+ #define MD5Pad      xrad_MD5Pad
+ #define MD5Update   xrad_MD5Update
++#include "md5.h"
+ 
+ #endif
+ 

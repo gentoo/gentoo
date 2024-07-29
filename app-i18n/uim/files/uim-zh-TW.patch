@@ -1,0 +1,11 @@
+--- a/scm/im-custom.scm
++++ b/scm/im-custom.scm
+@@ -679,7 +679,7 @@
+ (define-custom 'uim-xim-fontset-zh-tw
+   (string-join '(
+     "-sony-fixed-medium-r-normal--16-*-*-*-c-80-iso8859-1"
+-    "-taipei-fixed-medium-r-normal--16-150-75-75-c-160-big5-0"
++    "-eten-fixed-medium-r-normal--16-150-75-75-c-160-big5.eten-0"
+     ) ",")
+   '(xim xim-preedit)
+   '(string ".*")

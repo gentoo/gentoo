@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/924410
+
+From c5b68a00867b2add28bfd62430c45781ac2e9cb8 Mon Sep 17 00:00:00 2001
+From: John Helmert III <ajak@gentoo.org>
+Date: Fri, 16 Feb 2024 22:14:24 -0800
+Subject: [PATCH] ckbsettingswriter: mirror QT version guards from ckbsettings
+
+The differing definitions between ckbsettingswriter.cpp and
+ckbsettings.cpp trigger compilation errors with -Werror=odr.
+
+Signed-off-by: John Helmert III <ajak@gentoo.org>
+--- a/src/gui/ckbsettingswriter.cpp
++++ b/src/gui/ckbsettingswriter.cpp
+@@ -1,9 +1,18 @@
+ #include "ckbsettingswriter.h"
++
++#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
++#include <QRecursiveMutex>
++#else
+ #include <QMutex>
++#endif
+ 
+ // Mirror ckbsettings.cpp
+ extern QAtomicInt cacheWritesInProgress;
++#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
++extern QRecursiveMutex settingsMutex, settingsCacheMutex;
++#else
+ extern QMutex settingsMutex, settingsCacheMutex;
++#endif
+ #define lockMutex           QMutexLocker locker(backing == _globalSettings ? &mutex : 0)
+ #define lockMutexStatic     QMutexLocker locker(&settingsMutex)
+ #define lockMutexStatic2    QMutexLocker locker2(&settingsMutex)

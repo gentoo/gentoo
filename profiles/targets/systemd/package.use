@@ -1,0 +1,6 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Mike Gilbert <floppym@gentoo.org> (2018-03-12)
+# Satisfy REQUIRED_USE by default, bug 650030.
+net-nds/rpcbind warmstarts

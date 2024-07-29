@@ -1,0 +1,48 @@
+diff -urN exim-4.69.orig/src/configure.default exim-4.69/src/configure.default
+--- exim-4.69.orig/src/configure.default	2008-05-05 10:17:44.000000000 +0100
++++ exim-4.69/src/configure.default	2008-05-05 10:18:26.000000000 +0100
+@@ -592,6 +592,22 @@
+   pipe_transport = address_pipe
+   reply_transport = address_reply
+ 
++# This router runs procmail if users have a .procmailrc file
++procmail:
++  check_local_user
++  driver = accept
++  transport = procmail_pipe
++  require_files = ${local_part}:+${home}:+${home}/.procmailrc:+/usr/bin/procmail
++  no_verify
++ 
++# This router runs maildrop if users have a .mailfilter file
++maildrop:
++  check_local_user
++  driver = accept
++  transport = maildrop_pipe
++  require_files = ${local_part}:+${home}:+${home}/.mailfilter:+/usr/bin/maildrop
++  no_verify
++
+ 
+ # This router matches local user mailboxes. If the router fails, the error
+ # message is "Unknown user".
+@@ -676,6 +692,21 @@
+ address_reply:
+   driver = autoreply
+ 
++# This transport is used for procmail
++procmail_pipe:
++  driver = pipe
++  command = "/usr/bin/procmail -d ${local_part}"
++  return_path_add
++  delivery_date_add
++  envelope_to_add
++
++# This transport is used for courier-maildrop filtering (Maildir filter system)
++maildrop_pipe:
++  driver = pipe
++  command = "/usr/bin/maildrop -d ${local_part}"
++  return_path_add
++  delivery_date_add
++  envelope_to_add
+ 
+ 
+ ######################################################################

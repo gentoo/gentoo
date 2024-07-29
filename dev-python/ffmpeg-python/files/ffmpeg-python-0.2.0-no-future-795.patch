@@ -1,0 +1,189 @@
+From 6abf0354bced3fc5f3a592870723c7446ae8747d Mon Sep 17 00:00:00 2001
+From: Lumir Balhar <lbalhar@redhat.com>
+Date: Wed, 20 Sep 2023 14:18:16 +0200
+Subject: [PATCH] Remove dependency on `future`
+
+---
+ ffmpeg/_ffmpeg.py |  5 +----
+ ffmpeg/_run.py    |  6 +++---
+ ffmpeg/_utils.py  | 36 +-----------------------------------
+ ffmpeg/nodes.py   |  3 +--
+ requirements.txt  |  1 -
+ setup.py          |  3 +--
+ tox.ini           |  1 -
+ 7 files changed, 7 insertions(+), 48 deletions(-)
+
+diff --git a/ffmpeg/_ffmpeg.py b/ffmpeg/_ffmpeg.py
+index 007624bb..57dc0c96 100644
+--- a/ffmpeg/_ffmpeg.py
++++ b/ffmpeg/_ffmpeg.py
+@@ -1,8 +1,5 @@
+ from __future__ import unicode_literals
+ 
+-from past.builtins import basestring
+-from ._utils import basestring
+-
+ from .nodes import (
+     filter_operator,
+     GlobalNode,
+@@ -79,7 +76,7 @@ def output(*streams_and_filename, **kwargs):
+     """
+     streams_and_filename = list(streams_and_filename)
+     if 'filename' not in kwargs:
+-        if not isinstance(streams_and_filename[-1], basestring):
++        if not isinstance(streams_and_filename[-1], str):
+             raise ValueError('A filename must be provided')
+         kwargs['filename'] = streams_and_filename.pop(-1)
+     streams = streams_and_filename
+diff --git a/ffmpeg/_run.py b/ffmpeg/_run.py
+index f42d1d73..7a8b3937 100644
+--- a/ffmpeg/_run.py
++++ b/ffmpeg/_run.py
+@@ -1,6 +1,6 @@
+ from __future__ import unicode_literals
+ from .dag import get_outgoing_edges, topo_sort
+-from ._utils import basestring, convert_kwargs_to_cmd_line_args
++from ._utils import convert_kwargs_to_cmd_line_args
+ from builtins import str
+ from functools import reduce
+ import copy
+@@ -140,7 +140,7 @@ def _get_output_args(node, stream_name_map):
+         args += ['-b:a', str(kwargs.pop('audio_bitrate'))]
+     if 'video_size' in kwargs:
+         video_size = kwargs.pop('video_size')
+-        if not isinstance(video_size, basestring) and isinstance(video_size, Iterable):
++        if not isinstance(video_size, str) and isinstance(video_size, Iterable):
+             video_size = '{}x{}'.format(video_size[0], video_size[1])
+         args += ['-video_size', video_size]
+     args += convert_kwargs_to_cmd_line_args(kwargs)
+@@ -185,7 +185,7 @@ def compile(stream_spec, cmd='ffmpeg', overwrite_output=False):
+     This is the same as calling :meth:`get_args` except that it also
+     includes the ``ffmpeg`` command as the first argument.
+     """
+-    if isinstance(cmd, basestring):
++    if isinstance(cmd, str):
+         cmd = [cmd]
+     elif type(cmd) != list:
+         cmd = list(cmd)
+diff --git a/ffmpeg/_utils.py b/ffmpeg/_utils.py
+index 9baa2c78..21f612ea 100644
+--- a/ffmpeg/_utils.py
++++ b/ffmpeg/_utils.py
+@@ -1,31 +1,9 @@
+ from __future__ import unicode_literals
+ from builtins import str
+-from past.builtins import basestring
+ import hashlib
+ import sys
+ 
+ 
+-if sys.version_info.major == 2:
+-    # noinspection PyUnresolvedReferences,PyShadowingBuiltins
+-    str = str
+-
+-try:
+-    from collections.abc import Iterable
+-except ImportError:
+-    from collections import Iterable
+-
+-
+-# `past.builtins.basestring` module can't be imported on Python3 in some environments (Ubuntu).
+-# This code is copy-pasted from it to avoid crashes.
+-class BaseBaseString(type):
+-    def __instancecheck__(cls, instance):
+-        return isinstance(instance, (bytes, str))
+-
+-    def __subclasshook__(cls, thing):
+-        # TODO: What should go here?
+-        raise NotImplemented
+-
+-
+ def with_metaclass(meta, *bases):
+     class metaclass(meta):
+         __call__ = type.__call__
+@@ -39,25 +17,13 @@ def __new__(cls, name, this_bases, d):
+     return metaclass('temporary_class', None, {})
+ 
+ 
+-if sys.version_info.major >= 3:
+-
+-    class basestring(with_metaclass(BaseBaseString)):
+-        pass
+-
+-else:
+-    # noinspection PyUnresolvedReferences,PyCompatibility
+-    from builtins import basestring
+-
+-
+ def _recursive_repr(item):
+     """Hack around python `repr` to deterministically represent dictionaries.
+ 
+     This is able to represent more things than json.dumps, since it does not require
+     things to be JSON serializable (e.g. datetimes).
+     """
+-    if isinstance(item, basestring):
+-        result = str(item)
+-    elif isinstance(item, list):
++    if isinstance(item, list):
+         result = '[{}]'.format(', '.join([_recursive_repr(x) for x in item]))
+     elif isinstance(item, dict):
+         kv_pairs = [
+diff --git a/ffmpeg/nodes.py b/ffmpeg/nodes.py
+index e8b28385..cc219c72 100644
+--- a/ffmpeg/nodes.py
++++ b/ffmpeg/nodes.py
+@@ -1,6 +1,5 @@
+ from __future__ import unicode_literals
+ 
+-from past.builtins import basestring
+ from .dag import KwargReprNode
+ from ._utils import escape_chars, get_hash_int
+ from builtins import object
+@@ -68,7 +67,7 @@ def __getitem__(self, index):
+         """
+         if self.selector is not None:
+             raise ValueError('Stream already has a selector: {}'.format(self))
+-        elif not isinstance(index, basestring):
++        elif not isinstance(index, str):
+             raise TypeError("Expected string index (e.g. 'a'); got {!r}".format(index))
+         return self.node.stream(label=self.label, selector=index)
+ 
+diff --git a/requirements.txt b/requirements.txt
+index f8b347e9..b4bc370e 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -6,7 +6,6 @@ certifi==2019.3.9
+ chardet==3.0.4
+ docutils==0.14
+ filelock==3.0.12
+-future==0.17.1
+ idna==2.8
+ imagesize==1.1.0
+ importlib-metadata==0.17
+diff --git a/setup.py b/setup.py
+index 72f381cb..2fbf9a3d 100644
+--- a/setup.py
++++ b/setup.py
+@@ -68,10 +68,9 @@
+     download_url=download_url,
+     keywords=keywords,
+     long_description=long_description,
+-    install_requires=['future'],
++    install_requires=[],
+     extras_require={
+         'dev': [
+-            'future==0.17.1',
+             'numpy==1.16.4',
+             'pytest-mock==1.10.4',
+             'pytest==4.6.1',
+diff --git a/tox.ini b/tox.ini
+index 98814078..eb8c6622 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -19,6 +19,5 @@ python =
+ [testenv]
+ commands = py.test -vv
+ deps =
+-    future
+     pytest
+     pytest-mock

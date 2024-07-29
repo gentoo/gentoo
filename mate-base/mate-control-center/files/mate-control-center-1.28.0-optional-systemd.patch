@@ -1,0 +1,250 @@
+From 86a190c7b0ac8e5dbd5545d9aea30da771e34b31 Mon Sep 17 00:00:00 2001
+From: Oz Tiram <oz.tiram@gmail.com>
+Date: Sun, 3 Mar 2024 14:36:27 +0100
+Subject: [PATCH 1/2] Make systemd optional
+
+There is not much of direct systemd usage in the system-info plugin.
+This patch suggestion enables building this plugin on system like
+alpine, voidlinux or gentoo with openrc.
+
+Signed-off-by: Oz Tiram <oz.tiram@gmail.com>
+---
+ capplets/system-info/mate-system-info.c | 12 ++++++++++--
+ configure.ac                            | 16 +++++++++++++++-
+ 2 files changed, 25 insertions(+), 3 deletions(-)
+
+diff --git a/capplets/system-info/mate-system-info.c b/capplets/system-info/mate-system-info.c
+index 36380678..180cdf3e 100644
+--- a/capplets/system-info/mate-system-info.c
++++ b/capplets/system-info/mate-system-info.c
+@@ -21,6 +21,7 @@
+  *
+  */
+ #include <gtk/gtk.h>
++#include <glib.h>
+ #include <glibtop/fsusage.h>
+ #include <glibtop/mountlist.h>
+ #include <glibtop/mem.h>
+@@ -159,6 +160,7 @@ mate_system_info_set_row (MateSystemInfo *info)
+ static char *
+ get_system_hostname (void)
+ {
++# ifdef HAVE_SYSTEMD
+     GDBusProxy         *hostnamed_proxy;
+     g_autoptr(GVariant) variant = NULL;
+     g_autoptr(GError)   error = NULL; 
+@@ -206,6 +208,9 @@ get_system_hostname (void)
+         g_object_unref (hostnamed_proxy);
+         return g_variant_dup_string (variant, NULL);
+     }
++# else
++    return g_strdup (g_get_host_name ());
++# endif
+ }
+ 
+ static char *
+@@ -493,7 +498,9 @@ static struct {
+     { "openvz", "OpenVZ" },
+     { "lxc", "LXC" },
+     { "lxc-libvirt", "LXC (libvirt)" },
+-    { "systemd-nspawn", "systemd (nspawn)" }
++# ifdef HAVE_SYSTEMD
++    { "systemd-nspawn", "systemd (nspawn)" },
++# endif
+ };
+ 
+ static char *
+@@ -666,7 +673,7 @@ mate_system_info_setup (MateSystemInfo *info)
+     kernel_text = get_kernel_vesrion ();
+     label = g_object_get_data (G_OBJECT (info->kernel_row), "labelvalue");
+     set_lable_style (label, "gray", 12, kernel_text, FALSE);
+-
++# ifdef HAVE_SYSTEMD
+     virt_text = get_system_virt ();
+     if (virt_text != NULL)
+     {
+@@ -674,6 +681,7 @@ mate_system_info_setup (MateSystemInfo *info)
+         label = g_object_get_data (G_OBJECT (info->virtualization_row), "labelvalue");
+         set_lable_style (label, "gray", 12, virt_text, FALSE);
+     }
++# endif
+     windowing_system_text = get_windowing_system ();
+     label = g_object_get_data (G_OBJECT (info->windowing_system_row), "labelvalue");
+     set_lable_style (label, "gray", 12, windowing_system_text, FALSE);
+diff --git a/configure.ac b/configure.ac
+index aa43d083..45d5365f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -121,7 +121,6 @@ PKG_CHECK_MODULES(TYPING, $GMODULE_ADD glib-2.0 >= $GLIB_REQUIRED gio-2.0 gtk+-3
+ PKG_CHECK_MODULES(GIO, gio-2.0)
+ PKG_CHECK_MODULES(GLIBTOP, libgtop-2.0)
+ PKG_CHECK_MODULES(UDISKS, udisks2)
+-PKG_CHECK_MODULES(SYSTEMD, systemd >= $SYSTEMD_REQUIRED)
+ 
+ PKG_CHECK_MODULES([DCONF], [dconf >= 0.13.4])
+ AC_SUBST(DCONF_CFLAGS)
+@@ -168,6 +167,20 @@ AC_ARG_ENABLE([libappindicator],
+                                                   [enable_appindicator=yes],
+                                                   [enable_appindicator=no])])])
+ 
++AC_ARG_ENABLE([systemd],
++              [AS_HELP_STRING([--enable-systemd[=@<:@no/auto/yes@:>@]],[Use systemd @<:@default=yes@:>@])],
++              [enable_systemd=$enableval],
++              [PKG_CHECK_EXISTS([$SYSTEMD >= $SYSTEMD_REQUIRED],
++                                [enable_systemd=no],
++                                ,
++                                )])
++
++AS_IF([test "x$enable_systemd" = xyes],
++      [AC_MSG_NOTICE([Building with systemd support.])
++       PKG_CHECK_MODULES([SYSTEMD],
++                         [systemd >= $SYSTEMD_REQUIRED],
++                         [AC_DEFINE(HAVE_SYSTEMD, 1, [Have systemd])])])
++
+ AS_IF([test "x$enable_appindicator" = xyes],
+       [AC_MSG_NOTICE([Buidling against Ubuntu AppIndicator.])
+        PKG_CHECK_MODULES([APPINDICATOR],
+@@ -313,6 +326,7 @@ Configure summary:
+ 
+         Ayatana AppIndicator (preferred)   $(test "x$enable_appindicator" = xyes && echo no || echo yes)
+         Ubuntu AppIndicator (legacy)       $(test "x$enable_appindicator" = xyes && echo yes || echo no)
++	Systemd:                           $(test "x$enable_systemd" = xyes && echo yes || echo no)
+ 
+         Accountsservice:           ${have_accountsservice}
+         Native Language support:   ${USE_NLS}
+-- 
+2.43.0
+
+
+From 0f0f4f7151cce75e44fe3fef870e7120b17866a4 Mon Sep 17 00:00:00 2001
+From: Oz Tiram <oz.tiram@gmail.com>
+Date: Mon, 4 Mar 2024 08:03:40 +0100
+Subject: [PATCH 2/2] Disable function definitions if systemd isn't found
+
+Signed-off-by: Oz Tiram <oz.tiram@gmail.com>
+---
+ capplets/system-info/mate-system-info.c | 23 ++++++++++++++++-------
+ 1 file changed, 16 insertions(+), 7 deletions(-)
+
+diff --git a/capplets/system-info/mate-system-info.c b/capplets/system-info/mate-system-info.c
+index 180cdf3e..00b0d8a3 100644
+--- a/capplets/system-info/mate-system-info.c
++++ b/capplets/system-info/mate-system-info.c
+@@ -132,13 +132,15 @@ static void
+ mate_system_info_set_row (MateSystemInfo *info)
+ {
+     mate_system_info_row_fill (info->hostname_row, _("Device Name"), FALSE);
++# ifdef HAVE_SYSTEMD
+     mate_system_info_row_fill (info->hardware_model_row, _("Hardware Model"), TRUE);
++    mate_system_info_row_fill (info->virtualization_row, _("Virtualization"), TRUE);
++# endif
+     mate_system_info_row_fill (info->memory_row, _("Memory"), TRUE);
+     mate_system_info_row_fill (info->processor_row, _("Processor"), TRUE);
+     mate_system_info_row_fill (info->graphics_row, _("Graphics"), TRUE);
+     mate_system_info_row_fill (info->disk_row, _("Disk Capacity"), FALSE);
+     mate_system_info_row_fill (info->kernel_row, _("Kernel Version"), FALSE);
+-    mate_system_info_row_fill (info->virtualization_row, _("Virtualization"), TRUE);
+     mate_system_info_row_fill (info->windowing_system_row, _("Windowing System"), TRUE);
+     mate_system_info_row_fill (info->mate_version_row, _("MATE Version"), TRUE);
+     mate_system_info_row_fill (info->os_name_row, _("OS Name"), TRUE);
+@@ -213,6 +215,7 @@ get_system_hostname (void)
+ # endif
+ }
+ 
++# ifdef HAVE_SYSTEMD
+ static char *
+ get_hardware_model (void)
+ {
+@@ -263,6 +266,7 @@ get_hardware_model (void)
+ 
+     return NULL;
+ }
++# endif
+ 
+ static char *
+ get_cpu_info (void)
+@@ -483,6 +487,7 @@ get_kernel_vesrion (void)
+     return g_strdup_printf ("%s %s", un.sysname, un.release);
+ }
+ 
++# ifdef HAVE_SYSTEMD
+ static struct {
+     const char *id;
+     const char *display;
+@@ -498,9 +503,7 @@ static struct {
+     { "openvz", "OpenVZ" },
+     { "lxc", "LXC" },
+     { "lxc-libvirt", "LXC (libvirt)" },
+-# ifdef HAVE_SYSTEMD
+-    { "systemd-nspawn", "systemd (nspawn)" },
+-# endif
++    { "systemd-nspawn", "systemd (nspawn)" }
+ };
+ 
+ static char *
+@@ -567,6 +570,7 @@ get_system_virt (void)
+ 
+     return get_virtualization_label (g_variant_get_string (inner, NULL));
+ }
++# endif
+ 
+ static char *
+ get_mate_desktop_version ()
+@@ -622,7 +626,10 @@ mate_system_info_setup (MateSystemInfo *info)
+ {
+     g_autofree char *logo_name = NULL;
+     g_autofree char *hostname_text = NULL;
++# ifdef HAVE_SYSTEMD
+     g_autofree char *hw_model_text = NULL;
++    g_autofree char *virt_text = NULL;
++# endif
+     g_autofree char *memory_text = NULL;
+     g_autofree char *cpu_text = NULL;
+     g_autofree char *os_type_text = NULL;
+@@ -630,7 +637,6 @@ mate_system_info_setup (MateSystemInfo *info)
+     g_autofree char *disk_text = NULL;
+     g_autofree char *kernel_text = NULL;
+     g_autofree char *windowing_system_text = NULL;
+-    g_autofree char *virt_text = NULL;
+     g_autofree char *de_text = NULL;
+     g_autofree char *graphics_hardware_string = NULL;
+ 
+@@ -645,6 +651,7 @@ mate_system_info_setup (MateSystemInfo *info)
+     label = g_object_get_data (G_OBJECT (info->hostname_row), "labelvalue");
+     set_lable_style (label, "gray", 12, hostname_text, FALSE);
+ 
++# if HAVE_SYSTEMD
+     hw_model_text = get_hardware_model ();
+     if (hw_model_text != NULL)
+     {
+@@ -652,7 +659,7 @@ mate_system_info_setup (MateSystemInfo *info)
+         label = g_object_get_data (G_OBJECT (info->hardware_model_row), "labelvalue");
+         set_lable_style (label, "gray", 12, hw_model_text, FALSE);
+     }
+-
++# endif
+     glibtop_get_mem (&mem);
+     memory_text = g_format_size_full (mem.total, G_FORMAT_SIZE_IEC_UNITS);
+     label = g_object_get_data (G_OBJECT (info->memory_row), "labelvalue");
+@@ -714,7 +721,10 @@ mate_system_info_class_init (MateSystemInfoClass *klass)
+     gtk_widget_class_set_template_from_resource (widget_class, "/org/mate/control-center/system-info/mate-system-info.ui");
+ 
+     gtk_widget_class_bind_template_child (widget_class, MateSystemInfo, hostname_row);
++# ifdef HAVE_SYSTEMD
+     gtk_widget_class_bind_template_child (widget_class, MateSystemInfo, hardware_box);
++    gtk_widget_class_bind_template_child (widget_class, MateSystemInfo, virtualization_row);
++# endif
+     gtk_widget_class_bind_template_child (widget_class, MateSystemInfo, disk_row);
+     gtk_widget_class_bind_template_child (widget_class, MateSystemInfo, mate_version_row);
+     gtk_widget_class_bind_template_child (widget_class, MateSystemInfo, graphics_row);
+@@ -725,7 +735,6 @@ mate_system_info_class_init (MateSystemInfoClass *klass)
+     gtk_widget_class_bind_template_child (widget_class, MateSystemInfo, os_name_row);
+     gtk_widget_class_bind_template_child (widget_class, MateSystemInfo, os_type_row);
+     gtk_widget_class_bind_template_child (widget_class, MateSystemInfo, processor_row);
+-    gtk_widget_class_bind_template_child (widget_class, MateSystemInfo, virtualization_row);
+     gtk_widget_class_bind_template_child (widget_class, MateSystemInfo, kernel_row);
+     gtk_widget_class_bind_template_child (widget_class, MateSystemInfo, windowing_system_row);
+ }
+-- 
+2.43.0
+

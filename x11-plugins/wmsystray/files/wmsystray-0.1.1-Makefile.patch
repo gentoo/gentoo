@@ -1,0 +1,52 @@
+diff -Naur wmsystray-0.1.1.orig/Makefile wmsystray-0.1.1/Makefile
+--- wmsystray-0.1.1.orig/Makefile	2004-03-01 05:35:47.000000000 +0100
++++ wmsystray-0.1.1/Makefile	2020-12-03 11:22:13.786357942 +0100
+@@ -1,13 +1,14 @@
+ prefix=/usr
+ bindir = ${prefix}/bin
+ mandir = ${prefix}/share/man
+-INSTALL = /bin/install
++INSTALL = install
+ INSTALLPROG = ${INSTALL} -m 0755
+ INSTALLMAN = ${INSTALL} -m 0644
++EXTRACFLAGS = 
+ 
+ all:
+-	make -C xembed xembed.o
+-	make -C wmsystray
++	make EXTRACFLAGS="${EXTRACFLAGS}" -C xembed xembed.o
++	make EXTRACFLAGS="${EXTRACFLAGS}" -C wmsystray
+ 
+ clean:
+ 	make -C xembed clean
+diff -Naur wmsystray-0.1.1.orig/wmsystray/Makefile wmsystray-0.1.1/wmsystray/Makefile
+--- wmsystray-0.1.1.orig/wmsystray/Makefile	2004-03-01 04:54:44.000000000 +0100
++++ wmsystray-0.1.1/wmsystray/Makefile	2020-12-03 11:26:57.544595661 +0100
+@@ -1,14 +1,13 @@
+ include ../Rules.make
+ 
+-CC = gcc
+-CFLAGS = ${X11CFLAGS} -DTRACE_LEVEL=${TRACE_LEVEL} -I../xembed -Wall -g
++CFLAGS = ${X11CFLAGS} -DTRACE_LEVEL=${TRACE_LEVEL} -I../xembed -g ${EXTRACFLAGS}
+ LDFLAGS = ${X11LDFLAGS} -lXpm
+ 
+ OBJS = main.o ui.o systray.o xpms.o
+ XEMBED_OBJS = ../xembed/xembed.o
+ 
+ wmsystray: ${OBJS} ${XEMBED_OBJS}
+-	gcc ${OBJS} ${XEMBED_OBJS} -o wmsystray ${LDFLAGS}
++	${CC} ${OBJS} ${XEMBED_OBJS} -o wmsystray ${LDFLAGS}
+ 
+ clean:
+ 	rm -f wmsystray ${OBJS}
+diff -Naur wmsystray-0.1.1.orig/xembed/Makefile wmsystray-0.1.1/xembed/Makefile
+--- wmsystray-0.1.1.orig/xembed/Makefile	2004-03-01 04:54:44.000000000 +0100
++++ wmsystray-0.1.1/xembed/Makefile	2020-12-03 11:22:13.786357942 +0100
+@@ -1,6 +1,6 @@
+ include ../Rules.make
+ 
+-CFLAGS = -DTRACE_LEVEL=${TRACE_LEVEL} ${X11CFLAGS} -Wall -g
++CFLAGS = -DTRACE_LEVEL=${TRACE_LEVEL} ${X11CFLAGS} -g ${EXTRACFLAGS}
+ LDFLAGS = ${X11LDFLAGS}
+ 
+ all: xembed.o

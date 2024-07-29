@@ -1,0 +1,66 @@
+From be2bcaaea228cdcb5981b261046175275c402fb9 Mon Sep 17 00:00:00 2001
+From: Konstantin Zhuravlyov <kzhuravl_dev@outlook.com>
+Date: Wed, 26 Jan 2022 12:02:52 -0500
+Subject: [PATCH] COMGR changes needed for
+ https://github.com/llvm/llvm-project/commit/83d59e05b201760e3f364ff6316301d347cbad95
+
+Change-Id: Iac01d024463865734879faf5f814e0862c26f7a1
+---
+ lib/comgr/src/comgr-compiler.cpp | 3 ++-
+ lib/comgr/src/comgr-env.h        | 1 +
+ lib/comgr/src/comgr-objdump.cpp  | 4 +++-
+ 3 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/lib/comgr/src/comgr-compiler.cpp b/lib/comgr/src/comgr-compiler.cpp
+index 6c2cba2..db4c8d5 100644
+--- a/src/comgr-compiler.cpp
++++ b/src/comgr-compiler.cpp
+@@ -605,7 +605,8 @@ static amd_comgr_status_t linkWithLLD(llvm::ArrayRef<const char *> Args,
+   ArrayRef<const char *> ArgRefs = llvm::makeArrayRef(LLDArgs);
+   static std::mutex MScreen;
+   MScreen.lock();
+-  bool LLDRet = lld::elf::link(ArgRefs, false, LogS, LogE);
++  bool LLDRet = lld::elf::link(ArgRefs, LogS, LogE, false, false);
++  lld::CommonLinkerContext::destroy();
+   MScreen.unlock();
+   if (!LLDRet) {
+     return AMD_COMGR_STATUS_ERROR;
+diff --git a/lib/comgr/src/comgr-env.h b/lib/comgr/src/comgr-env.h
+index eb13e61..aef57b3 100644
+--- a/src/comgr-env.h
++++ b/src/comgr-env.h
+@@ -36,6 +36,7 @@
+ #ifndef COMGR_ENV_H
+ #define COMGR_ENV_H
+ 
++#include "llvm/ADT/Optional.h"
+ #include "llvm/ADT/StringRef.h"
+ 
+ namespace COMGR {
+diff --git a/lib/comgr/src/comgr-objdump.cpp b/lib/comgr/src/comgr-objdump.cpp
+index 094bbac..b41e6c1 100644
+--- a/src/comgr-objdump.cpp
++++ b/src/comgr-objdump.cpp
+@@ -43,6 +43,7 @@
+ #include "llvm/ADT/STLExtras.h"
+ #include "llvm/ADT/StringExtras.h"
+ #include "llvm/ADT/Triple.h"
++#include "llvm/CodeGen/CommandFlags.h"
+ #include "llvm/DebugInfo/DWARF/DWARFContext.h"
+ #include "llvm/DebugInfo/Symbolize/Symbolize.h"
+ #include "llvm/MC/MCAsmInfo.h"
+@@ -2395,9 +2396,10 @@ llvm::DisassemHelper::disassembleAction(StringRef Input,
+   size_t ArgC = ArgV.size();
+   ArgV.push_back(nullptr);
+   COMGR::clearLLVMOptions();
++  llvm::codegen::RegisterCodeGenFlags CGF;
+   cl::ParseCommandLineOptions(ArgC, ArgV.data(), "llvm object file dumper\n",
+                               &ErrS);
+-  MCPU = lld::getCPUStr();
++  MCPU = llvm::codegen::getCPUStr();
+ 
+   ErrorOr<std::unique_ptr<MemoryBuffer>> BufOrErr =
+       MemoryBuffer::getMemBuffer(Input);
+-- 
+2.35.1
+

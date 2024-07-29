@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>u.scholz83@gmx.de</email>
+    <name>Uwe Scholz</name>
+   </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <maintainer status="active">
+      <email>u.scholz83@gmx.de</email>
+      <name>Uwe Scholz</name>
+    </maintainer>
+    <changelog>https://gitlab.gnome.org/GNOME/gnome-commander/-/blob/master/NEWS</changelog>
+    <bugs-to>https://gitlab.gnome.org/GNOME/gnome-commander/issues</bugs-to>
+  </upstream>
+  <use>
+    <flag name="gsf">Add metadata support for OLE, OLE2 and ODF</flag>
+    <flag name="pdf">Add metadata support for PDF</flag>
+    <flag name="taglib">Add metadata support for ID3, Vorbis, FLAC and APE</flag>
+  </use>
+</pkgmetadata>

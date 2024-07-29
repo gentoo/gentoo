@@ -1,0 +1,29 @@
+From 76ff042e1334fdbef9803ea71b5d8b1d380efd7e Mon Sep 17 00:00:00 2001
+From: "W. Trevor King" <wking@tremily.us>
+Date: Mon, 24 Aug 2015 20:58:26 -0700
+Subject: [PATCH 7/7] Use 'path' instead of 'fields[0]' for find_storage
+
+When my path is '/Internal storage/Music/...', fields[0] will be an
+empty string, and find_storage will fail to find a storage area that
+matches that empty string.  All of our other find_storage calls use
+the full path, so follow that example here.
+---
+ mtpfs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mtpfs.c b/mtpfs.c
+index 3fe17b8..291f49d 100644
+--- a/mtpfs.c
++++ b/mtpfs.c
+@@ -498,7 +498,7 @@ mtpfs_release (const char *path, struct fuse_file_info *fi)
+             int i;
+             int parent_id = 0;
+             int storageid;
+-            storageid = find_storage(fields[0]);
++            storageid = find_storage(path);
+             if (storageid < 0) {
+                 return_unlock (-ENOENT);
+             }
+-- 
+2.5.3
+

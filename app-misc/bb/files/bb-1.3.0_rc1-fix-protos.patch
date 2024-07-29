@@ -1,0 +1,13 @@
+Fixes warning:
+main.c: In function 'load_song':
+main.c:56:23: warning: incompatible implicit declaration of built-in function 'strlen'
+--- a/main.c
++++ b/main.c
+@@ -21,6 +21,7 @@
+  * 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
++#include <string.h>
+ #include <unistd.h>
+ #include "timers.h"
+ #include "bb.h"

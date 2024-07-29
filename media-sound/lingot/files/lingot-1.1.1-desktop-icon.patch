@@ -1,0 +1,11 @@
+--- a/org.nongnu.lingot.desktop
++++ b/org.nongnu.lingot.desktop
+@@ -7,7 +7,7 @@ Comment=LINGOT Is Not a Guitar-Only Tuner
+ Comment[cs]=(Nejen kytarová) ladička
+ Comment[fr]=Un accordeur de guitare, mais pas que
+ Exec=lingot
+-Icon=org.nongnu.lingot.svg
++Icon=org.nongnu.lingot
+ Terminal=false
+ Type=Application
+ Categories=GNOME;GTK;AudioVideo;

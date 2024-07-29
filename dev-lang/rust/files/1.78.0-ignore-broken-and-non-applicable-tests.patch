@@ -1,0 +1,30 @@
+From 1879d1d1a284bf51c752e47db284ce22701ed5d0 Mon Sep 17 00:00:00 2001
+From: Samuel Holland <samuel@sholland.org>
+Date: Sun, 16 Sep 2018 16:38:48 +0000
+Subject: [PATCH 12/15] Ignore broken and non-applicable tests
+
+c-link-to-rust-va-list-fn: unstable feature, broken on aarch64, #56475
+env-funky-keys: can't handle LD_PRELOAD (e.g. sandbox)
+long-linker-command-lines: takes >10 minutes to run (but still passes)
+simd-intrinsic-generic-bitmask.rs: broken on BE, #59356
+sparc-struct-abi: no sparc target
+sysroot-crates-are-unstable: can't run rustc without RPATH
+---
+ test/ui/env-funky-keys.rs                                   | 1 +
+ 6 files changed, 10 insertions(+)
+
+diff --git a/tests/ui/env-funky-keys.rs b/tests/ui/env-funky-keys.rs
+index c5c824ac58d..f3fe047a79c 100644
+--- a/tests/ui/env-funky-keys.rs
++++ b/tests/ui/env-funky-keys.rs
+@@ -1,6 +1,7 @@
+ //@ run-pass
+ //@ Ignore this test on Android, because it segfaults there.
+ 
++//@ ignore-test
+ //@ ignore-android
+ //@ ignore-windows
+ //@ ignore-cloudabi no execve
+-- 
+2.24.1
+

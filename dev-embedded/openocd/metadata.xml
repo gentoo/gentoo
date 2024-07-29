@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>embedded@gentoo.org</email>
+		<name>Embedded Gentoo</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>fercerpav@gmail.com</email>
+		<name>Paul Fertser</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>dlan@gentoo.org</email>
+		<name>Yixun Lan</name>
+	</maintainer>
+	<use>
+		<flag name="capstone">Use <pkg>dev-libs/capstone</pkg> for disassembly support</flag>
+		<flag name="cmsis-dap">Support for CMSIS-DAP compliant adapters</flag>
+		<flag name="dummy">Build the dummy port driver</flag>
+		<flag name="gpiod">Enable Linux GPIO bitbang support via libgpiod</flag>
+		<flag name="jlink"> Build the SEGGER J-Link driver</flag>
+		<flag name="ftdi">Enable support for USB FTDI chips via <pkg>dev-embedded/libftdi</pkg></flag>
+		<flag name="parport">Enable support for parport JTAG devices</flag>
+		<flag name="verbose-io">Verbose IO and comm JTAG and USB messages</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">openocd</remote-id>
+		<remote-id type="cpe">cpe:/a:openocd:open_on-chip_debugger</remote-id>
+	</upstream>
+</pkgmetadata>

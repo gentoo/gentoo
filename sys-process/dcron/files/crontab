@@ -1,0 +1,15 @@
+# for dcron 
+
+# dcron:
+# This is NOT the system crontab! dcron does not support a system crontab.
+# to get /etc/cron.{hourly|daily|weekly|montly} working with dcron run
+# crontab /etc/crontab
+# as root.
+# NOTE: This will REPLACE root's current crontab!!
+
+# check scripts in cron.hourly, cron.daily, cron.weekly and cron.monthly
+59   *  * * *  rm -f /var/spool/cron/lastrun/cron.hourly
+9    3  * * *  rm -f /var/spool/cron/lastrun/cron.daily
+19   4  * * 6  rm -f /var/spool/cron/lastrun/cron.weekly
+29   5  1 * *  rm -f /var/spool/cron/lastrun/cron.monthly
+*/10 *  * * *  test -x /usr/sbin/run-crons && /usr/sbin/run-crons

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+		<name>Gentoo Qt Project</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<changelog>https://github.com/Python-SIP/sip/blob/main/NEWS</changelog>
+		<doc>https://python-sip.readthedocs.io/en/latest/</doc>
+		<remote-id type="github">Python-SIP/sip</remote-id>
+		<remote-id type="pypi">sip</remote-id>
+	</upstream>
+</pkgmetadata>

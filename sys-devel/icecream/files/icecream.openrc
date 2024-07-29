@@ -1,0 +1,55 @@
+#!/sbin/openrc-run
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+start() {
+	basedir="${ICECREAM_BASEDIR:-"/var/cache/icecream"}"
+	verbosity="${ICECREAM_VERBOSITY:-"-v"}"
+	netname="${ICECREAM_NETNAME:+"-n ${ICECREAM_NETNAME}"}"
+	iceccd_logfile="${ICECREAM_LOG_FILE:-"/var/log/icecream/iceccd"}"
+	nice="${ICECREAM_NICE_LEVEL:+"--nice ${ICECREAM_NICE_LEVEL}"}"
+	scheduler="${ICECREAM_SCHEDULER_HOST:+"-s ${ICECREAM_SCHEDULER_HOST}"}"
+
+	if [ "$ICECREAM_RUN_SCHEDULER" = 'yes' ]; then
+		sched_logfile="${ICECREAM_SCHEDULER_LOG_FILE:-"/var/log/icecream/scheduler"}"
+
+		ebegin 'Starting Distributed Compiler Scheduler'
+		start-stop-daemon -u icecream --start --quiet --exec /usr/sbin/icecc-scheduler -- -d -l "$sched_logfile" $netname $verbosity
+		eend ${?}
+	fi
+
+	noremote=''
+	if test "$ICECREAM_ALLOW_REMOTE" = 'no' 2> /dev/null; then
+		noremote='--no-remote'
+	fi
+
+	maxjobs=''
+	if [ -n "$ICECREAM_MAX_JOBS" ]; then
+		if test "$ICECREAM_MAX_JOBS" -eq 0 2> /dev/null; then
+			maxjobs='-m 1'
+			noremote='--no-remote'
+		else
+			maxjobs="-m $ICECREAM_MAX_JOBS"
+		fi
+	fi
+
+	ebegin 'Starting Distributed Compiler Daemon'
+	start-stop-daemon --start --quiet --exec /usr/sbin/iceccd -- -d -l "$iceccd_logfile" $nice $scheduler $netname -u icecream -b "$basedir" $maxjobs $noremote $verbosity
+	eend ${?}
+}
+
+stop() {
+	ebegin 'Stopping Distributed Compiler Daemon'
+	start-stop-daemon --stop --quiet --name iceccd
+	eend ${?}
+
+	if [ "${ICECREAM_RUN_SCHEDULER}" = 'yes' ]; then
+		ebegin 'Stopping Distributed Compiler Scheduler'
+		start-stop-daemon --stop --quiet --name icecc-scheduler
+		eend ${?}
+	fi
+}

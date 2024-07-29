@@ -1,0 +1,30 @@
+Upstream-Commit: https://gitlab.xiph.org/xiph/tremor/-/commit/a733870e048fc139f696f1c57b50e0145d1ab6c2
+
+From a733870e048fc139f696f1c57b50e0145d1ab6c2 Mon Sep 17 00:00:00 2001
+From: Tim Terriberry <tterribe@xiph.org>
+Date: Fri, 5 Apr 2013 13:20:31 +0000
+Subject: [PATCH] Update pkgconfig files to reduce overlinking.
+
+Patch from Brad Smith.
+Reviewed by Ron Lee.
+Fixes #1943.
+
+git-svn-id: https://svn.xiph.org/trunk/Tremor@18906 0101bb08-14d6-0310-b084-bc0e0c8e3800
+---
+ vorbisidec.pc.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/vorbisidec.pc.in b/vorbisidec.pc.in
+index 9c09524..56fa656 100644
+--- a/vorbisidec.pc.in
++++ b/vorbisidec.pc.in
+@@ -8,7 +8,7 @@ includedir=@includedir@
+ Name: vorbisidec
+ Description: vorbisidec is the integer Ogg Vorbis library
+ Version: @VERSION@
+-Requires: ogg
++Requires.private: ogg
+ Conflicts:
+-Libs: -L${libdir} -lvorbisidec -lm
++Libs: -L${libdir} -lvorbisidec
+ Cflags: -I${includedir}

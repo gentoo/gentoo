@@ -1,0 +1,35 @@
+Fix --with-gpm-mouse usage to not be so freaky.  Don't patch 
+configure.in that way we avoid having to run autotools.
+
+  AC_ARG_WITH(gpm-mouse, 
+ -	[  --with-gpm-mouse=base-dir  Specifies the base gpm directory],
+ -	if test x$withval = xyes
+ +	[  --with-gpm-mouse=base-dir/no  Specifies the base gpm directory],
+ +	if test x$withval = xno
+  	then 
+ -		AC_MSG_WARN(Usage is: --with-gpm-mouse=base-dir)
+ +		gpm_mousedriver_test=no
+  	else
+--- aalib-1.4.0/configure
++++ aalib-1.4.0/configure
+@@ -28,7 +28,7 @@
+ ac_help="$ac_help
+   --with-curses-driver=no/yes Used to disable/force curses driver"
+ ac_help="$ac_help
+-  --with-gpm-mouse=base-dir  Specifies the base gpm directory"
++  --with-gpm-mouse=base-dir/no  Specifies the base gpm directory"
+ ac_help="$ac_help
+   --with-x                use the X Window System"
+ ac_help="$ac_help
+@@ -1960,9 +1960,9 @@
+ # Check whether --with-gpm-mouse or --without-gpm-mouse was given.
+ if test "${with_gpm_mouse+set}" = set; then
+   withval="$with_gpm_mouse"
+-  if test x$withval = xyes
++  if test x$withval = xno
+ 	then 
+-		echo "configure: warning: Usage is: --with-gpm-mouse=base-dir" 1>&2
++		gpm_mousedriver_test=no
+ 	else
+ 		LIBS="$LIBS -L$withval/lib -lgpm"
+                 cat >> confdefs.h <<\EOF

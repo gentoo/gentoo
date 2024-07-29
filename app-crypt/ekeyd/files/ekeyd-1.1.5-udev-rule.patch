@@ -1,0 +1,36 @@
+# HG changeset patch
+# User kristianf
+# Date 1382917319 -3600
+#      Mon Oct 28 00:41:59 2013 +0100
+# Node ID 902b9c6908618864319835d69981f9ea902be324
+# Parent  d96c42b36cb125e6e52cff623b7bdad1910284b4
+udev rule
+
+diff -r d96c42b36cb1 -r 902b9c690861 udev/fedora15/60-entropykey-uds.rules
+--- a/udev/fedora15/60-entropykey-uds.rules	Mon Oct 28 00:39:31 2013 +0100
++++ b/udev/fedora15/60-entropykey-uds.rules	Mon Oct 28 00:41:59 2013 +0100
+@@ -9,7 +9,7 @@
+ # For licence terms refer to the COPYING file.
+ 
+ # Detect an Entropy Key being inserted and extract serial number
+-ACTION=="add|change|remove", SUBSYSTEM=="usb", BUS=="usb", ATTRS{idVendor}=="20df", ATTRS{idProduct}=="0001", IMPORT{program}="/bin/echo ENTROPY_KEY_SERIAL=$attr{serial}"
++ACTION=="add|change|remove", SUBSYSTEM=="usb", ATTRS{idVendor}=="20df", ATTRS{idProduct}=="0001", IMPORT{program}="/bin/sh -c /bin/echo ENTROPY_KEY_SERIAL=$attr{serial}"
+ 
+ # And tell the ekeyd about the device action.
+ ENV{ENTROPY_KEY_SERIAL}!="", RUN+="/lib/udev/entropykey.sh"
+diff -r d96c42b36cb1 -r 902b9c690861 udev/fedora15/60-entropykey.rules
+--- a/udev/fedora15/60-entropykey.rules	Mon Oct 28 00:39:31 2013 +0100
++++ b/udev/fedora15/60-entropykey.rules	Mon Oct 28 00:41:59 2013 +0100
+@@ -9,10 +9,10 @@
+ # For licence terms refer to the COPYING file distributed with the source.
+ 
+ # Detect an Entropy Key being inserted and add info values to environment
+-ACTION=="add|change|remove", SUBSYSTEM=="tty", KERNEL=="ttyACM[0-9]*", BUS=="usb", ATTRS{idVendor}=="20df", ATTRS{idProduct}=="0001", IMPORT{program}="usb_id --export %p"
++ACTION=="add|change|remove", SUBSYSTEM=="tty", KERNEL=="ttyACM[0-9]*", ATTRS{idVendor}=="20df", ATTRS{idProduct}=="0001", IMPORT{builtin}="usb_id"
+ 
+ # Detect an Entropy Key being inserted and extract serial number
+-ACTION=="add|change|remove", SUBSYSTEM=="tty", KERNEL=="ttyACM[0-9]*", ATTRS{idVendor}=="20df", ATTRS{idProduct}=="0001", IMPORT{program}="/bin/echo ENTROPY_KEY_SERIAL=$env{ID_SERIAL_SHORT}"
++ACTION=="add|change|remove", SUBSYSTEM=="tty", KERNEL=="ttyACM[0-9]*", ATTRS{idVendor}=="20df", ATTRS{idProduct}=="0001", IMPORT{program}="/bin/sh -c /bin/echo ENTROPY_KEY_SERIAL=$env{ID_SERIAL_SHORT}"
+ 
+ # Add the /dev/entropykey/<serialnumber> symbolic link
+ ENV{ENTROPY_KEY_SERIAL}!="", SYMLINK+="entropykey/$env{ENTROPY_KEY_SERIAL}"

@@ -1,0 +1,67 @@
+https://github.com/flightaware/tclreadline/pull/46
+
+From 8c75e01b814ac852167611f5edae9659a1f709d2 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 23 Nov 2022 00:19:55 +0000
+Subject: [PATCH 1/2] Fix configure.ac compatibility with Clang 16
+
+Clang 16 makes -Wimplicit-function-declaration and -Wimplicit-int errors by default.
+
+Unfortunately, this can lead to misconfiguration or miscompilation of software as configure
+tests may then return the wrong result.
+
+We also fix -Wstrict-prototypes while here as it's easy to do and it prepares
+us for C23.
+
+For more information, see LWN.net [0] or LLVM's Discourse [1], the Gentoo wiki [2],
+or the (new) c-std-porting mailing list [3].
+
+[0] https://lwn.net/Articles/913505/
+[1] https://discourse.llvm.org/t/configure-script-breakage-with-the-new-werror-implicit-function-declaration/65213
+[2] https://wiki.gentoo.org/wiki/Modern_C_porting
+[3] hosted at lists.linux.dev.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -245,7 +245,8 @@ AC_TRY_LINK(,[
+ AC_MSG_CHECKING([for the readline version number])
+ AC_TRY_RUN([
+ #include <stdio.h>
+-int main () {
++#include <unistd.h>
++int main (void) {
+     FILE *fp = fopen("conftestversion", "w");
+     extern char *rl_library_version;
+     fprintf(fp, "%s", rl_library_version);
+
+From b64772750c7543fe66165fd7862b355d289412b6 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 23 Nov 2022 00:21:34 +0000
+Subject: [PATCH 2/2] Fix -Wint-conversion in readline configure test
+
+Fixes the following warning with Clang 16:
+```
+configure:12873: clang-16 -o conftest -g -O2   conftest.c -lreadline  >&5
+conftest.c:33:11: error: incompatible pointer to integer conversion passing 'FILE *' (aka 'struct _IO_FILE *') to parameter of type 'int' [-Wint-conversion]
+    close(fp);
+          ^~
+/usr/include/unistd.h:358:23: note: passing argument to parameter '__fd' here
+extern int close (int __fd);
+```
+
+fopen should be paired with fclose.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -250,7 +250,7 @@ int main (void) {
+     FILE *fp = fopen("conftestversion", "w");
+     extern char *rl_library_version;
+     fprintf(fp, "%s", rl_library_version);
+-    close(fp);
++    fclose(fp);
+     return 0;
+ }],
+     READLINE_VERSION=`cat conftestversion`
+

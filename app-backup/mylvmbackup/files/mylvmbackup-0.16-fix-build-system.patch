@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -58,7 +58,7 @@
+ 	README \
+ 	TODO
+ CLEANFILES = $(NAME).spec $(NAME) $(MAN1) $(MAN1).html
+-prefix = /usr/local
++prefix = /usr
+ sysconfdir = /etc
+ bindir = $(prefix)/bin
+ datadir = $(prefix)/share/mylvmbackup

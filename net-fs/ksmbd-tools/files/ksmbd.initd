@@ -1,0 +1,41 @@
+#!/sbin/openrc-run
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+KSMBD_CONF="${KSMBD_CONF:-/etc/ksmbd/ksmbd.conf}"
+KSMBD_OPTS="${KSMBD_OPTS:-}"
+
+depend() {
+	need localmount 
+	use net 
+}
+
+description="ksmbd userspace daemon"
+
+command="/sbin/ksmbd.mountd"
+command_control="/sbin/ksmbd.control"
+command_args="--config=${KSMBD_CONF} ${KSMBD_OPTS}"
+
+extra_started_commands="reload"
+
+required_files="${KSMBD_CONF}"
+
+reload() {
+	ebegin "Reloading ${RC_SVCNAME}"
+	"${command_control}" --reload
+	eend $?
+}
+
+start_pre() {
+	/sbin/modprobe -q ksmbd || return 0
+}
+
+stop() {
+	ebegin "Stopping ${RC_SVCNAME}"
+	"${command_control}" --shutdown
+	eend $?
+}
+
+stop_post() {
+	/sbin/modprobe -r -q ksmbd || return 0
+}

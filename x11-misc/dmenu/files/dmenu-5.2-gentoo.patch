@@ -1,0 +1,26 @@
+From 3c494e2289c93ab6262409f9498866bdfd57bcf4 Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Fri, 7 Oct 2022 11:29:04 -0700
+Subject: [PATCH] gentoo patch
+
+--- a/config.mk
++++ b/config.mk
+@@ -20,13 +20,13 @@ FREETYPEINC = /usr/include/freetype2
+ #MANPREFIX = ${PREFIX}/man
+ 
+ # includes and libs
+-INCS = -I$(X11INC) -I$(FREETYPEINC)
+-LIBS = -L$(X11LIB) -lX11 $(XINERAMALIBS) $(FREETYPELIBS)
++INCS = $(X11INC) $(FREETYPEINC)
++LIBS = $(X11LIB) $(XINERAMALIBS) $(FREETYPELIBS)
+ 
+ # flags
+-CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=700 -D_POSIX_C_SOURCE=200809L -DVERSION=\"$(VERSION)\" $(XINERAMAFLAGS)
+-CFLAGS   = -std=c99 -pedantic -Wall -Os $(INCS) $(CPPFLAGS)
+-LDFLAGS  = $(LIBS)
++CPPFLAGS += -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=700 -D_POSIX_C_SOURCE=200809L -DVERSION=\"$(VERSION)\" $(XINERAMAFLAGS)
++CFLAGS   += -std=c99 -pedantic -Wall $(INCS) $(CPPFLAGS)
++LDFLAGS  += $(LIBS)
+ 
+ # compiler and linker
+ CC = cc

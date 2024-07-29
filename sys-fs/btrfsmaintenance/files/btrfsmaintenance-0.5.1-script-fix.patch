@@ -1,0 +1,12 @@
+https://github.com/kdave/btrfsmaintenance/pull/119
+--- a/btrfsmaintenance-functions
++++ b/btrfsmaintenance-functions
+@@ -101,7 +101,7 @@
+ 	else
+ 		# Flock older than 2.27 does not support --verbose option, check
+ 		# if it's available as we'd like to log the information
+-		if /usr/bin/flock --help 2>&1 | grep -q -- --verbose;
++		if /usr/bin/flock --help 2>&1 | grep -q -- --verbose; then
+ 			verbose="--verbose"
+ 		fi
+ 

@@ -1,0 +1,28 @@
+diff --git a/install.sh b/install.sh
+index bd89420..6ad695e 100755
+--- a/install.sh
++++ b/install.sh
+@@ -1179,9 +1179,8 @@ if [ ${PRODUCT} = shorewall ]; then
+     [ -n "$INSTALLD" ] || make_parent_directory ${DESTDIR}${MANDIR}/man5 0755
+ 
+     for f in *.5; do
+-	gzip -9c $f > $f.gz
+-	run_install $INSTALLD  -m 0644 $f.gz ${DESTDIR}${MANDIR}/man5/$f.gz
+-	echo "Man page $f.gz installed to ${DESTDIR}${MANDIR}/man5/$f.gz"
++	run_install $INSTALLD  -m 0644 $f ${DESTDIR}${MANDIR}/man5/$f
++	echo "Man page $f installed to ${DESTDIR}${MANDIR}/man5/$f"
+     done
+ fi
+ 
+@@ -1212,9 +1211,8 @@ fi
+ [ -n "$INSTALLD" ] || make_parent_directory ${DESTDIR}${MANDIR}/man8 0755
+ 
+ for f in *.8; do
+-    gzip -9c $f > $f.gz
+-    run_install $INSTALLD  -m 0644 $f.gz ${DESTDIR}${MANDIR}/man8/$f.gz
+-    echo "Man page $f.gz installed to ${DESTDIR}${MANDIR}/man8/$f.gz"
++    run_install $INSTALLD  -m 0644 $f ${DESTDIR}${MANDIR}/man8/$f
++    echo "Man page $f installed to ${DESTDIR}${MANDIR}/man8/$f"
+ done
+ 
+ cd ..

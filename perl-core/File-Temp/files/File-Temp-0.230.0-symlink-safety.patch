@@ -1,0 +1,37 @@
+From: John Lightsey <jd@cpanel.net>
+Date: Mon, 27 Jun 2011 13:07:44 -0500
+Subject: [PATCH] symlink safety
+
+Add check for unsafe symbolic links to _is_safe() directory check.
+
+
+diff -ruN File-Temp-0.23.orig/lib/File/Temp.pm File-Temp-0.23/lib/File/Temp.pm
+--- File-Temp-0.23.orig/lib/File/Temp.pm	2013-03-14 22:56:59.000000000 +0100
++++ File-Temp-0.23/lib/File/Temp.pm	2014-10-15 23:46:29.894611586 +0200
+@@ -672,7 +672,25 @@
+   my $err_ref = shift;
+ 
+   # Stat path
+-  my @info = stat($path);
++  my @info = lstat($path);
++  my $symlink_test_path = $path;
++  my $symlink_loop_count = 0;
++  while (-l _) {
++    if (++$symlink_loop_count >= 50) {
++      $$err_ref = "50 levels of symlinks encountered at $path";
++      return 0;
++    }
++    if ( $info[4] <= File::Temp->top_system_uid() || $info[4] == $>) {
++      # safe to traverse
++      $symlink_test_path = readlink($symlink_test_path);
++      @info = lstat($symlink_test_path);
++    }
++    else {
++      $$err_ref = "Unsafe symlink at $path";
++      return 0;
++    }
++  }
++
+   unless (scalar(@info)) {
+     $$err_ref = "stat(path) returned no values";
+     return 0;

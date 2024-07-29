@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  PaStiX (Parallel Sparse matriX package) is a scientific library that
+  provides a high performance parallel solver for very large sparse
+  linear systems based on direct methods.  Numerical algorithms are
+  implemented in single or double precision (real or complex) using
+  LLt, LDLt and LU with static pivoting (for non symmetric matrices
+  having a symmetric pattern).  This solver provides also an adaptive
+  blockwise iLU(k) factorization that can be used as a parallel
+  preconditioner using approximated supernodes to build a coarser
+  block structure of the incomplete factors.
+  </longdescription>
+  <use>
+    <flag name="fortran">Install the Fortran interface</flag>
+    <flag name="int64">Use 64- rather than 32-bit integer representation</flag>
+    <flag name="metis">Enable matrix ordering with <pkg>sci-libs/metis</pkg></flag>
+    <flag name="scotch">Enable matrix ordering with <pkg>sci-libs/scotch</pkg></flag>
+    <flag name="starpu">Enable support for ther <pkg>dev-libs/starpu</pkg> runtime</flag>
+  </use>
+</pkgmetadata>

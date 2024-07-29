@@ -1,0 +1,72 @@
+https://bugs.gentoo.org/874345
+https://github.com/doctest/doctest/pull/770
+https://github.com/doctest/doctest/issues/711
+
+commit 1ffb66bff7533f7ea42d801facf1b87d72621ac5
+Author: matoro <matoro@users.noreply.github.com>
+Date:   Sat Apr 15 11:15:25 2023 -0400
+
+    Add sleep of one clock-resolution to test which should trigger timeout
+    
+    Fixes https://github.com/doctest/doctest/issues/711 under HPPA, and
+    partially under alpha.
+
+diff --git a/examples/all_features/CMakeLists.txt b/examples/all_features/CMakeLists.txt
+index ebc75c2..4556227 100644
+--- a/examples/all_features/CMakeLists.txt
++++ b/examples/all_features/CMakeLists.txt
+@@ -39,6 +39,12 @@ set(files_all
+ # add the executable
+ add_executable(all_features ${files_all})
+ target_link_libraries(all_features doctest ${CMAKE_THREAD_LIBS_INIT})
++if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
++    target_link_options(all_features PRIVATE "-rtlib=compiler-rt")
++    if(LINUX)
++        target_link_libraries(all_features "-lgcc_s")
++    endif()
++endif()
+ 
+ # easy way to fix test coverage - disable colors and crash handling
+ target_compile_definitions(all_features PRIVATE
+@@ -124,6 +130,12 @@ function(add_test_all_features test_name flags)
+     add_executable(${test_name} ${files_with_output})
+     target_compile_definitions(${test_name} PRIVATE ${flags})
+     target_link_libraries(${test_name} doctest ${CMAKE_THREAD_LIBS_INIT})
++    if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
++        target_link_options(${test_name} PRIVATE "-rtlib=compiler-rt")
++        if(LINUX)
++            target_link_libraries(${test_name} "-lgcc_s")
++        endif()
++    endif()
+ 
+     doctest_add_test_impl(NAME ${test_name} COMMAND $<TARGET_FILE:${test_name}> --no-skipped-summary --no-version -ob=name)
+ endfunction()
+diff --git a/examples/all_features/test_cases_and_suites.cpp b/examples/all_features/test_cases_and_suites.cpp
+index 13b316d..d87f2fd 100644
+--- a/examples/all_features/test_cases_and_suites.cpp
++++ b/examples/all_features/test_cases_and_suites.cpp
+@@ -2,6 +2,12 @@
+ 
+ #include "header.h"
+ 
++DOCTEST_MAKE_STD_HEADERS_CLEAN_FROM_WARNINGS_ON_WALL_BEGIN
++#include <chrono>
++#include <ctime>
++#include <thread>
++DOCTEST_MAKE_STD_HEADERS_CLEAN_FROM_WARNINGS_ON_WALL_END
++
+ static int doStuff() {
+     int a = 5;
+     a += 2;
+@@ -46,6 +52,11 @@ TEST_CASE_FIXTURE(SomeFixture, "fixtured test - not part of a test suite") {
+ 
+ TEST_CASE("normal test in a test suite from a decorator" * doctest::test_suite("ts1") *
+           doctest::timeout(0.000001)) {
++#ifndef _WIN32
++    struct timespec res{};
++    clock_getres(CLOCK_MONOTONIC, &res);
++    std::this_thread::sleep_for(std::chrono::nanoseconds(res.tv_nsec));
++#endif
+     MESSAGE("failing because of the timeout decorator!");
+ }
+ 

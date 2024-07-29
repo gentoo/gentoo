@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>peeweep@0x0.ee</email>
+		<name>jinqiang zhang</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>cat@catcream.org</email>
+		<name>Alfred Persson</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		genfstab helps fill in an fstab file by autodetecting all the current
+		mounts below a given mountpoint and printing them in fstab-compatible
+		format to standard output. It can be used to persist a manually mounted
+		filesystem hierarchy and is often used during the initial install and
+		configuration of an OS.
+	</longdescription>
+	<longdescription lang="it">
+		genfstab aiuta a compilare un file fstab rilevando automaticamente
+		tutti i montaggi correnti al di sotto di un dato punto di montaggio
+		e stampandoli in un formato compatibile con fstab sullo standard output.
+		Può essere utilizzato per rendere persistente una gerarchia di file
+		system montata manualmente e viene spesso utilizzato durante
+		l'installazione iniziale e la configurazione di un sistema operativo.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">archlinux/arch-install-scripts</remote-id>
+	</upstream>
+</pkgmetadata>

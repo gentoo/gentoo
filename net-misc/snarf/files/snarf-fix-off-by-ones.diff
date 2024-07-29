@@ -1,0 +1,45 @@
+diff -ruNp snarf-7.0.orig/ftp.c snarf-7.0/ftp.c
+--- snarf-7.0.orig/ftp.c	2000-08-09 00:27:24.000000000 +0100
++++ snarf-7.0/ftp.c	2007-03-30 20:47:46.046783664 +0100
+@@ -89,7 +89,7 @@ get_line(UrlResource *rsrc, int control)
+         char *end;
+         char buf[BUFSIZE+1];
+ 
+-        while( (bytes_read = read(control, buf, BUFSIZE)) ) {
++        while( (bytes_read = read(control, buf, BUFSIZE)) > 0 ) {
+                 if( rsrc->options & OPT_VERBOSE )
+                         fwrite(buf, 1, bytes_read, stderr);
+ 
+diff -ruNp snarf-7.0.orig/http.c snarf-7.0/http.c
+--- snarf-7.0.orig/http.c	2007-03-30 20:46:21.176685880 +0100
++++ snarf-7.0/http.c	2007-03-30 20:47:46.205759496 +0100
+@@ -365,7 +365,7 @@ http_transfer(UrlResource *rsrc)
+ 
+         bytes_read = read(sock, buf, 8);
+ 
+-        if( bytes_read == 0 ) {
++        if( bytes_read <= 0 ) {
+                 close(sock);
+                 return 0;
+         }
+diff -ruNp snarf-7.0.orig/url.c snarf-7.0/url.c
+--- snarf-7.0.orig/url.c	1998-11-16 01:29:44.000000000 +0000
++++ snarf-7.0/url.c	2007-03-30 20:47:46.205759496 +0100
+@@ -96,7 +96,7 @@ get_username(char *string, Url *u)
+                 return string;
+         }
+  
+-        username = malloc(i);
++        username = malloc(i+1);
+         memcpy(username, string, i + 1);
+ 
+         username[i] = '\0';
+@@ -135,7 +135,7 @@ get_password(char *string, Url *u)
+ 
+         for(i = 0 ; string[i] != '@'; i++);
+         
+-        password = malloc(i);
++        password = malloc(i+1);
+ 
+         /* and finally, get the password portion */
+         memcpy(password, string, i);

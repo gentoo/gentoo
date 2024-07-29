@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/870679
+https://bugs.gentoo.org/871279
+
+Generated file and configure.in is written for autoconf 2.13.
+--- a/configure
++++ b/configure
+@@ -752,5 +752,5 @@
+ #include "confdefs.h"
+ 
+-main(){return(0);}
++int main(void){return(0);}
+ EOF
+ if { (eval echo configure:757: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+@@ -1356,4 +1356,5 @@
+ #include "confdefs.h"
+ 
++void ${x_direct_test_function}(void);
+ int main() {
+ ${x_direct_test_function}()
+@@ -2440,4 +2441,5 @@
+ #include "confdefs.h"
+ 
++void XpmReadFileToPixmap(void);
+ int main() {
+ XpmReadFileToPixmap()

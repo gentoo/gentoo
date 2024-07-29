@@ -1,0 +1,23 @@
+https://github.com/gnif/vendor-reset/commit/084881c6e9e11bdadaf05798e669568848e698a3.patch
+From: =?UTF-8?q?Marcus=20K=C3=B6hler?= <khler.marcus@gmail.com>
+Date: Mon, 25 Dec 2023 21:43:41 +0100
+Subject: [PATCH] Allow correct compilation with Clang/LLVM
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Marcus Köhler <khler.marcus@gmail.com>
+--- a/src/hook.c
++++ b/src/hook.c
+@@ -30,7 +30,11 @@ static bool hook_installed = false;
+ static int (*orig_pci_dev_specific_reset)(struct pci_dev *dev, int probe);
+ 
+ /* TCO breaks the hook, we must disable it for this function */
++#if defined(__GNUC__) && !defined(__llvm__)
+ __attribute__((optimize("-fno-optimize-sibling-calls")))
++#elif defined(__clang__)
++__attribute__((disable_tail_calls))
++#endif
+ static int hooked_pci_dev_specific_reset(struct pci_dev *dev, int probe)
+ {
+   int ret;

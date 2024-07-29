@@ -1,0 +1,72 @@
+Fix some byte-compiler warnings
+
+--- gnuserv-3.12.8/gnuserv-compat.el
++++ gnuserv-3.12.8/gnuserv-compat.el
+@@ -100,7 +100,7 @@
+ ;; `delete-frame' and `filtered-frame-list' to handle some device
+ ;; stuff.
+ 
+-(if (string-match "XEmacs" (emacs-version))
++(if (featurep 'xemacs)
+     nil
+   
+   ;; XEmacs `make-frame' takes an optional device to create the frame
+@@ -140,7 +140,7 @@
+ ;; part we use devices.el from the Emacs-W3 distribution.  In some
+ ;; places the implementation seems wrong, so we "fix" it!
+ 
+-(if (string-match "XEmacs" (emacs-version))
++(if (featurep 'xemacs)
+     nil
+ 
+   (defalias 'device-list 'frame-list)
+--- gnuserv-3.12.8/gnuserv.el
++++ gnuserv-3.12.8/gnuserv.el
+@@ -455,13 +455,14 @@
+ 		       gnuserv-view-file-function
+ 		     gnuserv-find-file-function)
+ 		   path)
+-	  (goto-line line)
++	  (goto-char (point-min))
++	  (forward-line (1- line))
+ 	  ;; Don't memorize the quick and view buffers.
+ 	  (unless (or quick view)
+ 	    (cl-pushnew (current-buffer) (gnuclient-buffers client))
+ 	    (setq gnuserv-minor-mode t)
+ 	    ;; Add the "Done" button to the menubar, only in this buffer.
+-	    (if (and (featurep 'menubar) current-menubar)
++	    (if (and (eval-when-compile (featurep 'menubar)) current-menubar)
+ 	      (progn (set-buffer-menubar current-menubar)
+ 	      (add-menu-button nil ["Done" gnuserv-edit]))
+ 	      ))
+@@ -616,12 +617,11 @@
+     (when (null (gnuclient-buffers client))
+       (gnuserv-kill-client client)))
+   ;; Get rid of the buffer.
+-  (save-excursion
+-    (set-buffer buffer)
++  (with-current-buffer buffer
+     (run-hooks 'gnuserv-done-hook)
+     (setq gnuserv-minor-mode nil)
+     ;; Delete the menu button.
+-    (if (and (featurep 'menubar) current-menubar)
++    (if (and (eval-when-compile (featurep 'menubar)) current-menubar)
+       (delete-menu-item '("Done")))
+     (funcall (if (gnuserv-temp-file-p buffer)
+ 		 gnuserv-done-temp-file-function
+@@ -685,7 +685,6 @@
+ ;; This serves to run the hook and reset
+ ;; `allow-deletion-of-last-visible-frame'.
+ (defun gnuserv-prepare-shutdown ()
+-  (setq allow-deletion-of-last-visible-frame nil)
+   (run-hooks 'gnuserv-shutdown-hook))
+ 
+ ;; This is a user-callable function, too.
+@@ -716,7 +715,6 @@
+     (set-process-sentinel gnuserv-process 'gnuserv-sentinel)
+     (set-process-filter gnuserv-process 'gnuserv-process-filter)
+     (set-process-query-on-exit-flag gnuserv-process nil)
+-    (setq allow-deletion-of-last-visible-frame t)
+     (run-hooks 'gnuserv-init-hook)))
+ 
+ 

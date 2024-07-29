@@ -1,0 +1,112 @@
+https://sqlite.org/forum/forumpost/7dfd585ce1
+https://sqlite.org/src/info/d0fbe779bc2460e1
+
+Index: test/func4.test
+==================================================================
+--- a/test/func4.test
++++ b/test/func4.test
+@@ -1,6 +1,6 @@
+-# 2013 March 10
++# 2023-03-10
+ #
+ # The author disclaims copyright to this source code.  In place of
+ # a legal notice, here is a blessing:
+ #
+ #    May you do good and not evil.
+@@ -7,11 +7,14 @@
+ #    May you find forgiveness for yourself and forgive others.
+ #    May you share freely, never taking more than you give.
+ #
+ #***********************************************************************
+ # This file implements regression tests for SQLite library. The focus of
+-# this file is testing the tointeger() and toreal() functions.
++# this file is testing the tointeger() and toreal() functions that are
++# part of the "totype.c" extension.  This file does not test the core
++# SQLite library.  Failures of tests in this file are related to the
++# ext/misc/totype.c extension.
+ #
+ # Several of the toreal() tests are disabled on platforms where floating
+ # point precision is not high enough to represent their constant integer
+ # expression arguments as double precision floating point values.
+ #
+@@ -21,10 +24,24 @@
+ set tcl_precision 0
+ load_static_extension db totype
+ 
+ set highPrecision(1) [expr \
+     {[db eval {SELECT tointeger(9223372036854775807 + 1);}] eq {{}}}]
++set highPrecision(2) [expr \
++    {[db eval {SELECT toreal(-9223372036854775808 + 1);}] eq {{}}}]
++
++# highPrecision(3) is only known to be false on i586 with gcc-13 and -O2.
++# It is true on the exact same platform with -O0.  Both results seem
++# reasonable, so we'll just very the expectation accordingly.
++#
++set highPrecision(3) [expr \
++    {[db eval {SELECT toreal(9007199254740992 + 1);}] eq {{}}}]
++
++if {!$highPrecision(1) || !$highPrecision(2) || !$highPrecision(3)} {
++  puts "NOTICE: use_long_double: [use_long_double] \
++        highPrecision: $highPrecision(1) $highPrecision(2) $highPrecision(3)"
++}
+ 
+ do_execsql_test func4-1.1 {
+   SELECT tointeger(NULL);
+ } {{}}
+ do_execsql_test func4-1.2 {
+@@ -193,12 +210,10 @@
+ do_execsql_test func4-1.55 {
+   SELECT tointeger(18446744073709551616 + 1);
+ } {{}}
+ 
+ ifcapable floatingpoint {
+-  set highPrecision(2) [expr \
+-      {[db eval {SELECT toreal(-9223372036854775808 + 1);}] eq {{}}}]
+ 
+   do_execsql_test func4-2.1 {
+     SELECT toreal(NULL);
+   } {{}}
+   do_execsql_test func4-2.2 {
+@@ -339,14 +354,18 @@
+     SELECT toreal(9007199254740992 - 1);
+   } {9007199254740991.0}
+   do_execsql_test func4-2.45 {
+     SELECT toreal(9007199254740992);
+   } {9007199254740992.0}
+-  if {$highPrecision(2)} {
++  if {$highPrecision(3)} {
++    do_execsql_test func4-2.46 {
++      SELECT toreal(9007199254740992 + 1);
++    } {{}}
++  } else {
+     do_execsql_test func4-2.46 {
+       SELECT toreal(9007199254740992 + 1);
+-    } {{}}
++    } {9007199254740992.0}
+   }
+   do_execsql_test func4-2.47 {
+     SELECT toreal(9007199254740992 + 2);
+   } {9007199254740994.0}
+   do_execsql_test func4-2.48 {
+@@ -624,14 +643,18 @@
+     SELECT tointeger(toreal(9007199254740992 - 1));
+   } {9007199254740991}
+   do_execsql_test func4-5.22 {
+     SELECT tointeger(toreal(9007199254740992));
+   } {9007199254740992}
+-  if {$highPrecision(2)} {
++  if {$highPrecision(3)} {
+     do_execsql_test func4-5.23 {
+       SELECT tointeger(toreal(9007199254740992 + 1));
+     } {{}}
++  } else {
++    do_execsql_test func4-5.23 {
++      SELECT tointeger(toreal(9007199254740992 + 1));
++    } {9007199254740992}
+   }
+   do_execsql_test func4-5.24 {
+     SELECT tointeger(toreal(9007199254740992 + 2));
+   } {9007199254740994}
+   if {$highPrecision(1)} {
+
+

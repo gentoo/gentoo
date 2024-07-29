@@ -1,0 +1,93 @@
+diff --git a/Makefile.am b/Makefile.am
+index 799b2c0..ff49ce2 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,8 +1,8 @@
+ SUBDIRS = intl po scripts
+-bin_PROGRAMS = kq mapdraw mapdiff mapdump $(MAPDRAW2)
+-EXTRA_PROGRAMS = mapdraw2
++bin_PROGRAMS = kqlives kqlives-mapdraw kqlives-mapdiff kqlives-mapdump $(MAPDRAW2)
++EXTRA_PROGRAMS = kqlives-mapdraw2
+ 
+-kq_SOURCES = src/enemyc.c src/intrface.c src/sgame.c src/bounds.c \
++kqlives_SOURCES = src/enemyc.c src/intrface.c src/sgame.c src/bounds.c \
+ 	src/combat.c src/entity.c src/movement.c src/shopmenu.c \
+ 	src/credits.c src/eqpmenu.c src/itemmenu.c src/music.c src/timing.c \
+ 	src/disk.c src/eskill.c src/kq.c  src/res.c \
+@@ -20,29 +20,29 @@ kq_SOURCES = src/enemyc.c src/intrface.c src/sgame.c src/bounds.c \
+ 	include/eskill.h include/magic.h include/selector.h \
+ 	include/bounds.h include/gettext.h include/console.h
+ 
+-EXTRA_kq_SOURCES = src/unix.c src/osx.m src/beos.c src/win.c src/dos.c src/winres.rc
+-kq_LDADD = $(kq_extra_files) $(ALLEGRO_LIBS) $(LIBINTL)
+-kq_DEPENDENCIES = $(kq_extra_files)
++EXTRA_kqlives_SOURCES = src/unix.c src/osx.m src/beos.c src/win.c src/dos.c src/winres.rc
++kqlives_LDADD = $(kq_extra_files) $(ALLEGRO_LIBS) $(LIBINTL)
++kqlives_DEPENDENCIES = $(kq_extra_files)
+ 
+-mapdraw_SOURCES = maps/mapdata.c maps/mapdraw.h maps/mapedit.c \
++kqlives_mapdraw_SOURCES = maps/mapdata.c maps/mapdraw.h maps/mapedit.c \
+ 	maps/mapfile.c maps/mapent.c maps/mapshared.c src/disk.c \
+ 	maps/mapstructs.c src/bounds.c include/disk.h include/structs.h
+-mapdraw_LDADD = $(ALLEGRO_LIBS) $(LIBINTL)
++kqlives_mapdraw_LDADD = $(ALLEGRO_LIBS) $(LIBINTL)
+ 
+-mapdraw2_SOURCES = maps/mapdraw2.c maps/mapdraw2.h \
++kqlives_mapdraw2_SOURCES = maps/mapdraw2.c maps/mapdraw2.h \
+ 	maps/mainwindow.c maps/mapedit2.c maps/mapedit2.h \
+ 	maps/mapshared.c maps/mapdraw.h src/disk.c \
+         src/bounds.c include/disk.h include/structs.h
+-mapdraw2_LDADD = $(GTK_LIBS) $(ALLEGRO_LIBS) $(LIBINTL)
+-mapdraw2_CPPFLAGS = $(AM_CPPFLAGS) $(GTK_CFLAGS)
++kqlives_mapdraw2_LDADD = $(GTK_LIBS) $(ALLEGRO_LIBS) $(LIBINTL)
++kqlives_mapdraw2_CPPFLAGS = $(AM_CPPFLAGS) $(GTK_CFLAGS)
+ 
+-mapdiff_SOURCES = maps/mapdraw.h maps/mapdiff.c src/disk.c \
++kqlives_mapdiff_SOURCES = maps/mapdraw.h maps/mapdiff.c src/disk.c \
+ 	include/disk.h include/structs.h
+-mapdiff_LDADD = $(ALLEGRO_LIBS) $(LIBINTL)
++kqlives_mapdiff_LDADD = $(ALLEGRO_LIBS) $(LIBINTL)
+ 
+-mapdump_SOURCES = maps/mapdump.c maps/mapshared.c maps/mapdata.c \
++kqlives_mapdump_SOURCES = maps/mapdump.c maps/mapshared.c maps/mapdata.c \
+ 	src/disk.c src/bounds.c include/disk.h include/structs.h
+-mapdump_LDADD = $(ALLEGRO_LIBS) $(LIBINTL)
++kqlives_mapdump_LDADD = $(ALLEGRO_LIBS) $(LIBINTL)
+ 
+ APPR=KQ.app/Contents/Resources
+ KQ.app: kq
+@@ -88,10 +88,10 @@ dist_music_DATA = music/aa_arofl.xm music/exp.s3m music/oxford.s3m \
+ 
+ musicdir = $(pkgdatadir)/music
+ 
+-dist_man_MANS = debian/kq.6
++dist_man_MANS = debian/kqlives.6
+ 
+ AM_CPPFLAGS = $(WARNING_CFLAGS) -I$(top_srcdir)/include \
+-	-DKQ_BIN=\"$(bindir)/kq$(EXEEXT)\" \
++	-DKQ_BIN=\"$(bindir)/kqlives$(EXEEXT)\" \
+ 	-DKQ_DATA=\"$(pkgdatadir)\" \
+ 	-DKQ_LIB=\"$(pkglibdir)\" \
+ 	-DKQ_LOCALE=\"$(localedir)\" \
+diff --git a/configure.ac b/configure.ac
+index 679d74f..48db735 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -2,7 +2,7 @@
+ # Process this file with autoconf to produce a configure script.
+ 
+ AC_PREREQ(2.61)
+-AC_INIT([KQ],[0.99],[peterhull90@users.sourceforge.net])
++AC_INIT([KQLIVES],[0.99],[peterhull90@users.sourceforge.net])
+ AC_CONFIG_SRCDIR([src/kq.c])
+ AC_CONFIG_HEADER([config.h])
+ AC_CANONICAL_BUILD
+@@ -88,7 +88,7 @@ AC_SEARCH_LIBS(lua_gettop, lua50 lua5.1 lua, [], [AC_MSG_ERROR([Lua not found])]
+ PKG_CHECK_MODULES(GTK, [gtk+-2.0 >= 2.8.0 libglade-2.0 >= 2.4.0],
+   [AC_SUBST(GTK_LIBS)
+   AC_SUBST(GTK_CFLAGS)
+-  MAPDRAW2="mapdraw2${EXEEXT}"],
++  MAPDRAW2="kqlives-mapdraw2${EXEEXT}"],
+   [MAPDRAW2=""])
+ AC_SUBST(MAPDRAW2)
+ 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <upstream>
+    <bugs-to>https://git.janouch.name/p/sensei-raw-ctl/issues</bugs-to>
+    <changelog>https://git.janouch.name/p/sensei-raw-ctl/commits/branch/master</changelog>
+  </upstream>
+  <!-- maintainer-needed -->
+</pkgmetadata>

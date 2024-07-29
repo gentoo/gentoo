@@ -1,0 +1,10 @@
+--- a/src/todoterm.cc
++++ b/src/todoterm.cc
+@@ -2,6 +2,7 @@
+ #include "todoterm.h"
+ 
+ #ifdef USETERMCAP
++#include <cstdlib>
+ #include <iostream>
+ #include <string>
+ #include <stdexcept>

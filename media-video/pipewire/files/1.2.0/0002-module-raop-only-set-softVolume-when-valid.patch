@@ -1,0 +1,30 @@
+From 82b9fa118f2fa009b5eb2891378fe003e2573bbe Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Mon, 1 Jul 2024 11:27:17 +0200
+Subject: [PATCH 2/5] module-raop: only set softVolume when valid
+
+---
+ src/modules/module-raop-sink.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/modules/module-raop-sink.c b/src/modules/module-raop-sink.c
+index 05e467d24..8ad28693f 100644
+--- a/src/modules/module-raop-sink.c
++++ b/src/modules/module-raop-sink.c
+@@ -1643,10 +1643,10 @@ static void stream_props_changed(struct impl *impl, uint32_t id, const struct sp
+ 				impl->volume = volume;
+ 
+ 				rtsp_send_volume(impl);
++				spa_pod_builder_prop(&b, SPA_PROP_softVolumes, 0);
++				spa_pod_builder_array(&b, sizeof(float), SPA_TYPE_Float,
++						n_vols, soft_vols);
+ 			}
+-			spa_pod_builder_prop(&b, SPA_PROP_softVolumes, 0);
+-			spa_pod_builder_array(&b, sizeof(float), SPA_TYPE_Float,
+-					n_vols, soft_vols);
+ 			spa_pod_builder_raw_padded(&b, prop, SPA_POD_PROP_SIZE(prop));
+ 			break;
+ 		}
+-- 
+2.45.2
+

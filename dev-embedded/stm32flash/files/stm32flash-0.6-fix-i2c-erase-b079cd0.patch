@@ -1,0 +1,103 @@
+From b079cd09bc942b4a489cad29524418441a44fc82 Mon Sep 17 00:00:00 2001
+From: Yann Sionneau <ysionneau@kalray.eu>
+Date: Wed, 28 Apr 2021 14:16:01 +0200
+Subject: [PATCH 01/15] Follow bootloader protocol for page-by-page erase over
+ I2C
+
+For I2C the protocol is slighly different than for USART,
+requiring a checksum after the number of pages.
+
+https://sourceforge.net/p/stm32flash/tickets/98/
+
+Signed-off-by: Yann Sionneau <ysionneau@kalray.eu>
+[Tormod: Add port flag, no wait, amend messages]
+Signed-off-by: Tormod Volden <debian.tormod@gmail.com>
+---
+ i2c.c   |  2 +-
+ port.h  |  1 +
+ stm32.c | 37 +++++++++++++++++++++++++++++++++++++
+ 3 files changed, 39 insertions(+), 1 deletion(-)
+
+diff --git a/i2c.c b/i2c.c
+index bb99545..8425b41 100644
+--- a/i2c.c
++++ b/i2c.c
+@@ -204,7 +204,7 @@ static port_err_t i2c_flush(struct port_interface __unused *port)
+ 
+ struct port_interface port_i2c = {
+ 	.name	= "i2c",
+-	.flags	= PORT_STRETCH_W,
++	.flags	= PORT_STRETCH_W | PORT_NPAG_CSUM,
+ 	.open	= i2c_open,
+ 	.close	= i2c_close,
+ 	.flush  = i2c_flush,
+diff --git a/port.h b/port.h
+index 4e728d7..1a28dc6 100644
+--- a/port.h
++++ b/port.h
+@@ -34,6 +34,7 @@ typedef enum {
+ #define PORT_CMD_INIT	(1 << 2)	/* use INIT cmd to autodetect speed */
+ #define PORT_RETRY	(1 << 3)	/* allowed read() retry after timeout */
+ #define PORT_STRETCH_W	(1 << 4)	/* warning for no-stretching commands */
++#define PORT_NPAG_CSUM	(1 << 5)	/* checksum after number of pages to erase */
+ 
+ /* all options and flags used to open and configure an interface */
+ struct port_options {
+diff --git a/stm32.c b/stm32.c
+index 966048b..82fa26a 100644
+--- a/stm32.c
++++ b/stm32.c
+@@ -843,6 +843,25 @@ static stm32_err_t stm32_pages_erase(const stm32_t *stm, uint32_t spage, uint32_
+ 
+ 		buf[i++] = pages - 1;
+ 		cs ^= (pages-1);
++		/* For I2C send a checksum after the number of pages (AN4221) */
++		if (port->flags && PORT_NPAG_CSUM) {
++			buf[i++] = cs;
++			p_err = port->write(port, buf, i);
++			if (p_err != PORT_ERR_OK) {
++				fprintf(stderr, "Erase failed sending number of pages.");
++				free(buf);
++				return STM32_ERR_UNKNOWN;
++			}
++			s_err = stm32_get_ack(stm);
++			if (s_err != STM32_ERR_OK) {
++				fprintf(stderr, "Erase failed, no ack after number of pages.");
++				free(buf);
++				return STM32_ERR_UNKNOWN;
++			}
++			cs = 0;
++			i = 0;
++		}
++
+ 		for (pg_num = spage; pg_num < (pages + spage); pg_num++) {
+ 			buf[i++] = pg_num;
+ 			cs ^= pg_num;
+@@ -876,6 +895,24 @@ static stm32_err_t stm32_pages_erase(const stm32_t *stm, uint32_t spage, uint32_
+ 	buf[i++] = pg_byte;
+ 	cs ^= pg_byte;
+ 
++	if (port->flags & PORT_NPAG_CSUM) {
++		buf[i++] = cs;
++		p_err = port->write(port, buf, i);
++		if (p_err != PORT_ERR_OK) {
++			fprintf(stderr, "Extended erase failed sending number of pages.");
++			free(buf);
++			return STM32_ERR_UNKNOWN;
++		}
++		s_err = stm32_get_ack(stm);
++		if (s_err != STM32_ERR_OK) {
++			fprintf(stderr, "Extended erase failed, no ack after number of pages.");
++			free(buf);
++			return STM32_ERR_UNKNOWN;
++		}
++		cs = 0;
++		i = 0;
++	}
++
+ 	for (pg_num = spage; pg_num < spage + pages; pg_num++) {
+ 		pg_byte = pg_num >> 8;
+ 		cs ^= pg_byte;
+-- 
+2.33.0.309.g3052b89438-goog
+

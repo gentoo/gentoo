@@ -1,0 +1,20 @@
+According to documentation upstream build scripts only look for these
+packages to try and guess whether support for them has been enabled
+in app-text/sword.
+
+--- a/platforms/common/core/core.pro
++++ b/platforms/common/core/core.pro
+@@ -173,13 +173,5 @@
+ # Clucene
+ include(../../common/clucene/clucene.pro)
+ 
+-# CURL
+-# optional
+-curl:include(../../common/curl/curl.pro)
+-
+-# ICU
+-# optional
+-icu:include(../../common/icu/icu.pro)
+-
+ # Sword
+ include(../../common/sword/sword.pro)

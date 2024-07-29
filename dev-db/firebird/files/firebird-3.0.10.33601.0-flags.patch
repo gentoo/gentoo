@@ -1,0 +1,25 @@
+# Compile externs with same CXX/CC/CFLAGS/CXXFLAGS/LDFLAGS as main
+--- a/builds/posix/Makefile.in
++++ b/builds/posix/Makefile.in
+@@ -127,8 +127,8 @@
+ endif
+ 
+ extern:
+-	$(MAKE) -C $(ROOT)/extern/btyacc
+-	$(MAKE) -C $(ROOT)/extern/cloop TARGET=release WITH_FPC=0 BUILD_DIR=$(TMP_ROOT)/cloop OUT_DIR=$(GEN_ROOT)/$(TARGET)/cloop
++	$(MAKE) -C $(ROOT)/extern/btyacc CC="$(CC)" CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)"
++	$(MAKE) -C $(ROOT)/extern/cloop TARGET=release WITH_FPC=0 BUILD_DIR=$(TMP_ROOT)/cloop OUT_DIR=$(GEN_ROOT)/$(TARGET)/cloop CXX="$(CXX)" CXXFLAGS="$(OPTIMIZE_FLAGS)" CFLAGS="${CFLAGS}" CC="${CC}" LDFLAGS="$(LDDFLAGS)"
+ 
+ ifeq ($(TOMBUILD_FLG),Y)
+ 	$(MAKE) -C $(ROOT)/extern/libtommath -f makefile.shared LIBTOOL=$(LIBTOOL)
+@@ -592,8 +592,8 @@
+ 	$(EXE_LINK) $(EXE_LINK_OPTIONS) $^ -o $@ $(FIREBIRD_LIBRARY_LINK) $(LINK_LIBS) $(call LINK_DARWIN_RPATH,..)
+ 
+ examples: include_generic
+-	$(MAKE) -f Makefile.examples -C $(GEN_ROOT)/examples/
+-	$(MAKE) -f Makefile.plugins_examples
++	$(MAKE) -f Makefile.examples -C $(GEN_ROOT)/examples/ CXX="${CXX}" CXXFLAGS="${CXXFLAGS}" LDFLAGS="${LDFLAGS}"
++	$(MAKE) -f Makefile.plugins_examples CXX="${CXX}" CXXFLAGS="${CXXFLAGS}" LDFLAGS="${LDFLAGS}"
+ 
+ message_file:	$(FIREBIRD_MSG)
+ 

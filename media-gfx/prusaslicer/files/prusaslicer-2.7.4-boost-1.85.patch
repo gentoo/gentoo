@@ -1,0 +1,30 @@
+--- PrusaSlicer-version_2.7.4.old/src/slic3r/Config/Snapshot.cpp
++++ PrusaSlicer-version_2.7.4/src/slic3r/Config/Snapshot.cpp
+@@ -12,6 +12,7 @@
+ #include <boost/property_tree/ini_parser.hpp>
+ #include <boost/property_tree/ptree_fwd.hpp>
+ #include <boost/filesystem/operations.hpp>
++#include <boost/filesystem/directory.hpp>
+ #include <boost/log/trivial.hpp>
+ 
+ #include "libslic3r/PresetBundle.hpp"
+--- PrusaSlicer-version_2.7.4.old/src/slic3r/Config/Version.cpp
++++ PrusaSlicer-version_2.7.4/src/slic3r/Config/Version.cpp
+@@ -7,6 +7,7 @@
+ #include <cctype>
+ 
+ #include <boost/filesystem/operations.hpp>
++#include <boost/filesystem/directory.hpp>
+ #include <boost/nowide/fstream.hpp>
+ 
+ #include "libslic3r/libslic3r.h"
+--- PrusaSlicer-version_2.7.4.old/src/slic3r/GUI/RemovableDriveManager.cpp
++++ PrusaSlicer-version_2.7.4/src/slic3r/GUI/RemovableDriveManager.cpp
+@@ -35,7 +35,6 @@
+ #include <pwd.h>
+ #include <boost/filesystem.hpp>
+ #include <boost/system/error_code.hpp>
+-#include <boost/filesystem/convenience.hpp>
+ #include <boost/process.hpp>
+ #endif
+ 

@@ -1,0 +1,31 @@
+From dd01f3be61f4d3e7078e06b759a890dcf33c2268 Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <conikost@gentoo.org>
+Date: Thu, 10 Nov 2022 23:53:40 +0100
+Subject: [PATCH] Fix compilation with >=GCC-12 and Musl
+
+This will fix a compiling failure:
+g++  -O2 -pipe -MMD -MP -MMD -MP -fPIC -I.. -c -D_GNU_SOURCE  skin.c
+In file included from config.c:2:
+type.h:48:17: error: expected ')' before 'Number'
+   48 |     cType(time_t Number): mType(number), mNumber(Number), mUpdateIn(0) {}
+      |          ~      ^~~~~~~
+      |                 )
+
+Signed-off-by: Conrad Kostecki <conikost@gentoo.org>
+---
+ glcdskin/type.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/glcdskin/type.h b/glcdskin/type.h
+index 4d54de8..350fa5f 100644
+--- a/glcdskin/type.h
++++ b/glcdskin/type.h
+@@ -19,6 +19,8 @@
+ #include <stdint.h>
+ #include <stdlib.h>
+ 
++#include <time.h>
++
+ namespace GLCD
+ {
+ 

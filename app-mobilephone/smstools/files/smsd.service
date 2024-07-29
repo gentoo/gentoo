@@ -1,0 +1,11 @@
+[Unit]
+Description=SMS Server Tools 3
+
+[Service]
+User=smsd
+PIDFile=/run/smsd/smsd.pid
+ExecStart=/usr/bin/smsd -n MAINPROCESS -l/var/log/smsd.log \
+	-p/run/smsd/smsd.pid -i/run/smsd/smsd.working
+
+[Install]
+WantedBy=multi-user.target

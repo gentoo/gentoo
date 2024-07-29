@@ -1,0 +1,114 @@
+diff --git a/Makefile b/Makefile
+index faf7e8f..2c06010 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,5 @@
+ PREFIX=/usr
+-DATADIR=${PREFIX}/share/wordwarvi
++DATADIR?=${PREFIX}/share/wordwarvi
+ MANDIR?=${PREFIX}/share/man
+ MANPAGEDIR=${MANDIR}/man6
+ 
+@@ -12,8 +12,8 @@ WITHAUDIO=yes
+ # WITHAUDIO=no
+ 
+ ifeq (${WITHAUDIO},yes)
+-SNDLIBS=`pkg-config --libs portaudio-2.0 vorbisfile`
+-SNDFLAGS=-DWITHAUDIOSUPPORT `pkg-config --cflags portaudio-2.0`
++SNDLIBS=`${PKG_CONFIG} --libs portaudio-2.0 vorbisfile`
++SNDFLAGS=-DWITHAUDIOSUPPORT `${PKG_CONFIG} --cflags portaudio-2.0`
+ OGGOBJ=ogg_to_pcm.o
+ else
+ SNDLIBS=
+@@ -24,53 +24,41 @@ endif
+ CC ?= gcc
+ BUILD_CC ?= gcc
+ 
+-# DEBUG=-g
+-# DEBUG=
+-# PROFILE_FLAG=-pg
+-#PROFILE_FLAG=
+-#OPTIMIZE_FLAG=
+-# OPTIMIZE_FLAG=-O3
+-#OPTIMIZE_FLAG=-O3 -pedantic -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security
+-OPTIMIZE_FLAG=-O3 -pedantic
+-
+-
+-LDFLAGS=${PROFILE_FLAG}
+-
+ DEFINES=${SNDFLAGS} -DDATADIR=\"${DATADIR}/\"
+ 
+ all:	wordwarvi wordwarvi.6.gz
+ 
+ HAS_PORTAUDIO_2_0:
+ ifeq (${WITHAUDIO},yes)
+-	pkg-config --print-errors --exists portaudio-2.0
++	${PKG_CONFIG} --print-errors --exists portaudio-2.0
+ else
+ endif
+ 
+ HAS_VORBISFILE:
+ ifeq (${WITHAUDIO},yes)
+-	pkg-config --print-errors --exists vorbisfile
++	${PKG_CONFIG} --print-errors --exists vorbisfile
+ else
+ endif
+ 
+ joystick.o:	joystick.c joystick.h Makefile
+-	$(CC) ${DEBUG} ${PROFILE_FLAG} ${OPTIMIZE_FLAG} -pthread -Wall -c joystick.c
++	$(CC) ${DEBUG} ${PROFILE_FLAG} ${CFLAGS} -pthread -Wall -c joystick.c
+ 
+ ogg_to_pcm.o:	ogg_to_pcm.c ogg_to_pcm.h Makefile
+-	$(CC) ${DEBUG} ${PROFILE_FLAG} ${OPTIMIZE_FLAG} `pkg-config --cflags vorbisfile` \
++	$(CC) ${DEBUG} ${PROFILE_FLAG} ${CFLAGS} `${PKG_CONFIG} --cflags vorbisfile` \
+ 		-pthread -Wall -c ogg_to_pcm.c
+ 
+ wwviaudio.o:	wwviaudio.c wwviaudio.h ogg_to_pcm.h my_point.h Makefile
+-	$(CC) -Wall ${DEBUG} ${PROFILE_FLAG} ${OPTIMIZE_FLAG} \
++	$(CC) -Wall ${DEBUG} ${PROFILE_FLAG} ${CFLAGS} \
+ 		${DEFINES} \
+-		-pthread `pkg-config --cflags vorbisfile` \
++		-pthread `${PKG_CONFIG} --cflags vorbisfile` \
+ 		-c wwviaudio.c
+ 
+ rumble.o:	rumble.c rumble.h Makefile
+-	$(CC) ${DEBUG} ${PROFILE_FLAG} ${OPTIMIZE_FLAG} `pkg-config --cflags vorbisfile` \
++	$(CC) ${DEBUG} ${PROFILE_FLAG} ${CFLAGS} `${PKG_CONFIG} --cflags vorbisfile` \
+ 		-pthread -Wall -c rumble.c
+ 
+ wwvi_font.o:	wwvi_font.c wwvi_font.h my_point.h Makefile
+-	$(CC) ${DEBUG} ${PROFILE_FLAG} ${OPTIMIZE_FLAG} -pthread -Wall -c wwvi_font.c
++	$(CC) ${DEBUG} ${PROFILE_FLAG} ${CFLAGS} -pthread -Wall -c wwvi_font.c
+ 
+ stamp:	stamp.c
+ 	$(BUILD_CC) -o stamp stamp.c
+@@ -78,14 +66,14 @@ stamp:	stamp.c
+ wordwarvi:	wordwarvi.c joystick.o rumble.o ${OGGOBJ} wwviaudio.o wwvi_font.o \
+ 		Makefile version.h stamp levels.h rumble.h
+ 	./stamp > stamp.h
+-	$(CC) ${DEBUG} ${PROFILE_FLAG} ${OPTIMIZE_FLAG} ${SCREENSAVERFLAG} -pthread -Wall  ${DEFINES} \
++	$(CC) $(LDFLAGS) ${DEBUG} ${PROFILE_FLAG} ${CFLAGS} ${SCREENSAVERFLAG} -pthread -Wall  ${DEFINES} \
+ 		joystick.o \
+ 		rumble.o \
+ 		wwvi_font.o \
+ 		${OGGOBJ} \
+ 		wwviaudio.o \
+ 		wordwarvi.c -o wordwarvi -lm ${SNDLIBS} \
+-		`pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0 gthread-2.0`
++		`${PKG_CONFIG} --cflags gtk+-2.0` `${PKG_CONFIG} --libs gtk+-2.0 gthread-2.0`
+ 	/bin/rm stamp.h
+ 
+ wordwarvi.6.gz:	wordwarvi.6
+diff --git a/wwviaudio.c b/wwviaudio.c
+index ad79d96..dca0cb4 100644
+--- a/wwviaudio.c
++++ b/wwviaudio.c
+@@ -121,7 +121,7 @@ int wwviaudio_read_ogg_clip(int clipnum, char *filename)
+ 	if (clipnum >= max_sound_clips || clipnum < 0)
+ 		return -1;
+ 
+-	snprintf(filebuf, PATH_MAX, "%s/%s", DATADIR, filename);
++	snprintf(filebuf, PATH_MAX, "GENTOO_DATADIR/%s", DATADIR, filename);
+ 	rc = stat(filebuf, &statbuf);
+ 	if (rc != 0) {
+ 		strncpy(filebuf, filename, PATH_MAX);

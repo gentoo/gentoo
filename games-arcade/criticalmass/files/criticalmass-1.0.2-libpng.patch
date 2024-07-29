@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/206258
+https://bugs.gentoo.org/383207
+--- a/configure.in
++++ b/configure.in
+@@ -101,3 +101,3 @@
+     CXXFLAGS="$CXXFLAGS -I/usr/X11R6/include"
+-	AC_CHECK_LIB(png12, main,, AC_MSG_ERROR(libpng is needed))
++	AC_CHECK_LIB(png, main,, AC_MSG_ERROR(libpng is needed))
+ 	AC_CHECK_LIB(z, main,, AC_MSG_ERROR(libz is needed))
+--- a/game/main.cpp
++++ b/game/main.cpp
+@@ -30,2 +30,4 @@
+ 
++#include <zlib.h>
++
+ void migrateConfig( void)
+--- a/utilssdl/PNG.cpp
++++ b/utilssdl/PNG.cpp
+@@ -47,3 +47,3 @@
+ 
+-    check = fwrite( data, 1, length, (FILE *)(png->io_ptr));
++    check = fwrite( data, 1, length, (FILE *)(png_get_io_ptr(png)));
+     if( check != length)
+@@ -74,3 +74,3 @@
+ 
+-    if( setjmp(_png->jmpbuf))
++    if( setjmp(png_jmpbuf(_png)))
+     {

@@ -1,0 +1,55 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="configcheck"
+#extra_started_commands=""
+
+DNSDIST_INSTANCE="${SVCNAME#dnsdist[.-]}"
+DNSDIST_CONFFILE="/etc/dnsdist/${SVCNAME#dnsdist[.-]}.conf"
+DNSDIST="/usr/bin/dnsdist"
+PIDDIR=/run/dnsdist
+PIDFILE=$PIDDIR/$SVCNAME.pid
+
+
+if [ -n "${DNSDIST_INSTANCE}" ] && [ "${DNSDIST_INSTANCE}" != "dnsdist" ]
+then
+	DNSDIST_INSTANCE="dnsdist-${SVCNAME#dnsdist[.-]}"
+	DNSDIST_CONFFILE="/etc/dnsdist/${DNSDIST_INSTANCE}.conf"
+else
+	DNSDIST_INSTANCE="default"
+fi
+
+depend() {
+	need net
+}
+
+start() {
+	checkpath -q -d ${PIDDIR} -o ${DNSDIST_USER}:${DNSDIST_GROUP}
+
+	configcheck || return 1
+
+	ebegin "Starting dnsdist (${DNSDIST_INSTANCE})"
+	start-stop-daemon --start --exec $DNSDIST --pidfile ${PIDFILE} \
+		-b -m -- --supervised -u ${DNSDIST_USER} \
+		-g ${DNSDIST_GROUP} -C $DNSDIST_CONFFILE ${DNSDIST_OPTIONS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping dnsdist (${DNSDIST_INSTANCE})"
+	start-stop-daemon --stop --exec $DNSDIST --pidfile ${PIDFILE}
+	eend $?
+}
+
+configcheck() {
+	ebegin "Checking configuration file (${DNSDIST_CONFFILE})"
+	$DNSDIST --check-config -C $DNSDIST_CONFFILE > /dev/null
+
+	if [ $? -ne 0 ]; then
+		$DNSDIST --check-config -C $DNSDIST_CONFFILE
+	fi
+
+	eend $? "failed, please correct errors above"
+}
+

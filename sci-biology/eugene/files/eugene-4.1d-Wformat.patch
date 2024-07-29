@@ -1,0 +1,84 @@
+Fix -Wformat warnings caused by wrong printf specifiers:
+* Sensor.Riken.cc:95:61: warning: format ‘%d’ expects argument of type ‘int’, but
+* argument 3 has type ‘std::vector<RAFLgene>::size_type {aka long unsigned int}’ [-Wformat=]
+*    fprintf(stderr, "%d RAFL EST pairs read, ", RAFLtmp.size());
+
+--- a/src/Hits.cc
++++ b/src/Hits.cc
+@@ -163,7 +163,7 @@
+     if (ThisHit != NULL)
+         for (int i=0; i<*NumHits-1; i++) ThisHit = ThisHit->Next;
+ 
+-    while ((read=fscanf(HitFile,"%d %d %d %lf %d %s %d %d %as\n", &deb, &fin,
++    while ((read=fscanf(HitFile,"%d %d %d %lf %d %s %d %d %ss\n", &deb, &fin,
+                         &poids, &evalue, &phase, HitId, &HSPDeb, &HSPFin,HSP)) >= 8)
+     {
+         if (HSP) fprintf(stderr, "%s", HSP);
+--- a/src/SensorPlugins/Est/Sensor.Est.cc
++++ b/src/SensorPlugins/Est/Sensor.Est.cc
+@@ -1353,13 +1353,13 @@
+     exit(2);
+   }
+ 
+-  fprintf(fp, "vPos %d\n",  vPos.size());
++  fprintf(fp, "vPos %zu\n",  vPos.size());
+   for (int i=0; i< vPos.size();i++ )
+   {
+     fprintf(fp, "vPos %d\t%d\n",i,  vPos[i]);
+   }
+   
+-  fprintf(fp, "vESTMatch %d\n",  vESTMatch.size());
++  fprintf(fp, "vESTMatch %zu\n",  vESTMatch.size());
+   for (int i=0; i< vESTMatch.size();i++ )
+   {
+     fprintf(fp, "vESTMatch %d\t\n", vESTMatch[i]);
+--- a/src/SensorPlugins/Riken/Sensor.Riken.cc
++++ b/src/SensorPlugins/Riken/Sensor.Riken.cc
+@@ -92,7 +92,7 @@
+   
+   
+   
+-  fprintf(stderr, "%d RAFL EST pairs read, ", RAFLtmp.size());
++  fprintf(stderr, "%zu RAFL EST pairs read, ", RAFLtmp.size());
+   
+   sort(RAFLtmp.begin(), RAFLtmp.end(), Before);
+   
+@@ -148,7 +148,7 @@
+     }
+   }
+   
+-  fprintf(stderr,"resulting %d\n",RAFL.size());
++  fprintf(stderr,"resulting %zu\n",RAFL.size());
+   fflush(stderr);
+ 
+   //    for (RAFLtmpindice=0; RAFLtmpindice< (int)RAFL.size(); RAFLtmpindice++) {
+--- a/src/SensorPlugins/SMachine/Sensor.SMachine.cc
++++ b/src/SensorPlugins/SMachine/Sensor.SMachine.cc
+@@ -197,7 +197,7 @@
+   fclose(fp);
+ 
+   if (end ==2) {
+-    fprintf(stderr, "Error in SpliceMachine splice site file %s, line %d\n", name, len);
++    fprintf(stderr, "Error in SpliceMachine splice site file %s, line %zu\n", name, len);
+     exit(2);
+   }
+ }
+--- a/src/SoTerms.cc
++++ b/src/SoTerms.cc
+@@ -67,14 +67,14 @@
+     j++;
+     if (line[0] == 'i' && line[1] == 'd') 
+     {
+-      i = sscanf(line, "id: %s", &value);
++      i = sscanf(line, "id: %s", value);
+       if (i > 0) 
+       {
+ 	char soId[60];
+ 	char soName[60];
+ 	strcpy (soId, value );
+ 	fgets (line, MAX_LINE, fp);
+-	i = sscanf(line, "name: %s", &value);
++	i = sscanf(line, "name: %s", value);
+ 	strcpy (soName, value );
+ 	idToName_[to_string(soId)]=to_string(soName);
+ 	nameToId_[to_string(soName)]=to_string(soId);

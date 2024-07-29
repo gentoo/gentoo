@@ -1,0 +1,12 @@
+Fix build failure on alpha:
+  plt.c:32:12: error: dereferencing pointer to incomplete type ‘struct library_symbol’
+    return sym->enter_addr;
+            ^
+--- a/sysdeps/linux-gnu/alpha/plt.c     2012-11-10 13:43:55.000000000 +0100
++++ b/sysdeps/linux-gnu/alpha/plt.c 2016-06-27 23:21:28.000000000 +0200
+@@ -23,0 +24 @@
++#include "library.h"
+--- a/sysdeps/linux-gnu/alpha/trace.c   2016-06-27 23:30:08.000000000 +0200
++++ b/sysdeps/linux-gnu/alpha/trace.c       2016-06-27 23:25:20.000000000 +0200
+@@ -29,0 +30 @@
++#include "backend.h"

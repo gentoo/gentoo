@@ -1,0 +1,14 @@
+Diminishing is one of core features of use-package, normally
+it would have to be required before using use-package.
+This patch will load diminish when use-package loads.
+index 1f3895f..a38ee48 100644
+--- a/use-package-diminish.el
++++ b/use-package-diminish.el
+@@ -33,6 +33,7 @@
+ 
+ ;;; Code:
+ 
++(require 'diminish)
+ (require 'use-package-core)
+ 
+ (defun use-package-normalize-diminish (name label arg &optional recursed)

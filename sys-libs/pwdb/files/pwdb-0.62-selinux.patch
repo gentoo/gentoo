@@ -1,0 +1,443 @@
+--- a/examples/Makefile
++++ b/examples/Makefile
+@@ -4,6 +4,8 @@ PROGS	= posix gentest tpwdb radtest grou
+ SRCS = $(addsuffix .c,$(PROGS))
+ OBJS = $(addsuffix .o,$(PROGS))
+ 
++SELINUXLIBS = -lselinux
++
+ # rules
+ junk:
+ 	@echo "this is not a top-level Makefile"
+@@ -14,20 +16,20 @@ junk:
+ 
+ all:	${PROGS} ../libpwdb/libpwdb.a
+ 
+-posix: posix.o ../libpwdb/libpwdb.a
+-	$(CC) -o $@ $< ../libpwdb/libpwdb.a -lnsl
++posix: posix.o ../libpwdb/libpwdb.a 
++	$(CC) -o $@ $< ../libpwdb/libpwdb.a -lnsl ${SELINUXLIBS}
+ 
+ tpwdb: tpwdb.o ../libpwdb/libpwdb.a
+-	${CC} -g -o $@ $< ../libpwdb/libpwdb.a -lnsl
++	${CC} -g -o $@ $< ../libpwdb/libpwdb.a -lnsl ${SELINUXLIBS}
+ 
+ radtest: radtest.o ../libpwdb/libpwdb.a
+-	${CC} -g -o $@ $< ../libpwdb/libpwdb.a -lnsl
++	${CC} -g -o $@ $< ../libpwdb/libpwdb.a -lnsl ${SELINUXLIBS}
+ 
+ gentest: gentest.o ../libpwdb/libpwdb.a
+-	${CC} -g -o $@ $< ../libpwdb/libpwdb.a -lnsl
++	${CC} -g -o $@ $< ../libpwdb/libpwdb.a -lnsl ${SELINUXLIBS}
+ 
+ grouptest: grouptest.o ../libpwdb/libpwdb.a 
+-	${CC} -g -o $@ $< ../libpwdb/libpwdb.a -lnsl
++	${CC} -g -o $@ $< ../libpwdb/libpwdb.a -lnsl ${SELINUXLIBS}
+ 
+ clean:
+ 	rm -f ${PROGS} *.o *~
+--- a/libpwdb/shadow/shadowio.c
++++ b/libpwdb/shadow/shadowio.c
+@@ -16,6 +16,12 @@
+ 
+ #include "../_pwdb_internal.h"
+ 
++#ifdef WITH_SELINUX
++#include <selinux/selinux.h>
++static int selinux_enabled=0;
++static security_context_t prev_context=NULL;
++#endif
++
+ struct spw_file_entry {
+         char *spwf_line;
+         int spwf_changed;
+@@ -259,8 +265,28 @@ int __pwdb_spw_close (void)
+ 		if (fstat (fileno (spwfp), &sb))
+ 			return 0;
+ 
+-		if (create_backup_file(spwfp, backup, &sb))
+-			return 0;
++#ifdef WITH_SELINUX
++		if (selinux_enabled=is_selinux_enabled()) {
++		  security_context_t passwd_context=NULL;
++		  if (fgetfilecon(fileno (spwfp),&passwd_context)<0) {
++		    return 0;
++		  };
++		  if (getfscreatecon(&prev_context)<0) {
++		    freecon(passwd_context);
++		    return 0;
++		  }
++		  if (setfscreatecon(passwd_context)) {
++		    freecon(passwd_context);
++		    freecon(prev_context);
++		    return 0;
++		  }
++		  freecon(passwd_context);
++		}
++#endif
++		if (create_backup_file(spwfp, backup, &sb)){
++		  errors++;
++		  goto errorexit;
++		}
+ 
+ 		isopen = 0;
+ 		(void) fclose (spwfp);
+@@ -278,11 +304,15 @@ int __pwdb_spw_close (void)
+ 		 */
+ 
+ 		spwfp = fopen_with_umask(newfile, "w", 0777);
+-		if (!spwfp)
+-			return 0;
++		if (!spwfp){
++		  errors++;
++		  goto errorexit;
++		}
+ 		if (chown(newfile, sb.st_uid, sb.st_gid) ||
+-		    chmod(newfile, sb.st_mode))
+-			return 0;
++		    chmod(newfile, sb.st_mode)){
++		  errors++;
++		  goto errorexit;
++		}
+ 
+ 		/*
+ 		 * Check each member in the list and write out any elements
+@@ -308,7 +338,7 @@ int __pwdb_spw_close (void)
+ 
+ 		if (errors) {
+ 			unlink (newfile);
+-			return 0;
++			goto errorexit;
+ 		}
+ 
+ 		/*
+@@ -352,7 +382,20 @@ int __pwdb_spw_close (void)
+ 	}
+ 	spwf_tail = 0;
+ 	isopen = 0;
+-	return 1;
++
++	errorexit:
++#ifdef WITH_SELINUX
++	if (selinux_enabled) {
++	  if (setfscreatecon(prev_context)) {
++	    errors++;
++	  }
++	  if (prev_context != NULL) {
++	    freecon(prev_context);
++	    prev_context=NULL;
++	  }
++	}
++#endif
++	return errors==0;
+ }
+ 
+ int __pwdb_spw_update (const struct __pwdb_spwd *spwd)
+--- a/libpwdb/shadow/sgroupio.c
++++ b/libpwdb/shadow/sgroupio.c
+@@ -16,6 +16,12 @@
+ 
+ #include "../_pwdb_internal.h"
+ 
++#ifdef WITH_SELINUX
++#include <selinux/selinux.h>
++static int selinux_enabled=0;
++static security_context_t prev_context=NULL;
++#endif
++
+ static	int	islocked;
+ static	int	isopen;
+ static	int	open_modes;
+@@ -278,8 +284,28 @@ int __pwdb_sgr_close (void)
+ 		if (fstat (fileno (sgrfp), &sb))
+ 			return 0;
+ 
+-		if (create_backup_file(sgrfp, backup, &sb))
+-			return 0;
++#ifdef WITH_SELINUX
++		if (selinux_enabled=is_selinux_enabled()) {
++		  security_context_t passwd_context=NULL;
++		  if (fgetfilecon(fileno (sgrfp),&passwd_context)<0) {
++		    return 0;
++		  };
++		  if (getfscreatecon(&prev_context)<0) {
++		    freecon(passwd_context);
++		    return 0;
++		  }
++		  if (setfscreatecon(passwd_context)) {
++		    freecon(passwd_context);
++		    freecon(prev_context);
++		    return 0;
++		  }
++		  freecon(passwd_context);
++		}
++#endif
++		if (create_backup_file(sgrfp, backup, &sb)){
++		  errors++;
++		  goto errorexit;
++		}
+ 
+ 		isopen = 0;
+ 		(void) fclose (sgrfp);
+@@ -296,11 +322,15 @@ int __pwdb_sgr_close (void)
+ 		 */
+ 
+ 		sgrfp = fopen_with_umask(newfile, "w", 0777);
+-		if (!sgrfp)
+-			return 0;
++		if (!sgrfp){
++		  errors++;
++		  goto errorexit;
++		}
+ 		if (chown(newfile, sb.st_uid, sb.st_gid) ||
+-		    chmod(newfile, sb.st_mode))
+-			return 0;
++		    chmod(newfile, sb.st_mode)){
++		  errors++;
++		  goto errorexit;
++		}
+ 
+ 		/*
+ 		 * Check each member in the list and write out any elements
+@@ -326,7 +356,7 @@ int __pwdb_sgr_close (void)
+ 
+ 		if (errors) {
+ 			unlink (newfile);
+-			return 0;
++			goto errorexit;
+ 		}
+ 
+ 		/*
+@@ -370,7 +400,20 @@ int __pwdb_sgr_close (void)
+ 	}
+ 	sgr_tail = 0;
+ 	isopen = 0;
+-	return 1;
++
++	errorexit:
++#ifdef WITH_SELINUX
++	if (selinux_enabled) {
++	  if (setfscreatecon(prev_context)) {
++	    errors++;
++	  }
++	  if (prev_context != NULL) {
++	    freecon(prev_context);
++	    prev_context=NULL;
++	  }
++	}
++#endif
++	return errors==0;
+ }
+ 
+ int __pwdb_sgr_update (const struct __pwdb_sgrp *sgrent)
+--- a/libpwdb/unix/pwio.c
++++ b/libpwdb/unix/pwio.c
+@@ -16,6 +16,11 @@
+ 
+ #include "../_pwdb_internal.h"
+ 
++#ifdef WITH_SELINUX
++#include <selinux/selinux.h>
++static int selinux_enabled=0;
++static security_context_t prev_context=NULL;
++#endif
+ struct pw_file_entry {
+         char *pwf_line;
+         int pwf_changed;
+@@ -204,8 +209,28 @@ int __pwdb_pw_close (void)
+ 		if (fstat (fileno (pwfp), &sb))
+ 			return 0;
+ 
+-		if (create_backup_file(pwfp, backup, &sb))
+-			return 0;
++#ifdef WITH_SELINUX
++		if (selinux_enabled=is_selinux_enabled()) {
++		  security_context_t passwd_context=NULL;
++		  if (fgetfilecon(fileno (pwfp),&passwd_context)<0) {
++		    return 0;
++		  };
++		  if (getfscreatecon(&prev_context)<0) {
++		    freecon(passwd_context);
++		    return 0;
++		  }
++		  if (setfscreatecon(passwd_context)) {
++		    freecon(passwd_context);
++		    freecon(prev_context);
++		    return 0;
++		  }
++		  freecon(passwd_context);
++		}
++#endif
++		if (create_backup_file(pwfp, backup, &sb)) {
++		  errors++;
++		  goto errorexit;
++		}
+ 
+ 		isopen = 0;
+ 		(void) fclose (pwfp);
+@@ -222,11 +247,15 @@ int __pwdb_pw_close (void)
+ 		 */
+ 
+ 		pwfp = fopen_with_umask(newfile, "w", 0777);
+-		if (!pwfp)
+-			return 0;
++		if (!pwfp) {
++		  errors++;
++		  goto errorexit;
++		}
+ 		if (chown(newfile, sb.st_uid, sb.st_gid) ||
+-		    chmod(newfile, sb.st_mode))
+-			return 0;
++		    chmod(newfile, sb.st_mode)) {
++		  errors++;
++		  goto errorexit;
++		}
+ 
+ 		/*
+ 		 * Check each member in the list and write out any elements
+@@ -251,7 +280,7 @@ int __pwdb_pw_close (void)
+ 
+ 		if (errors) {
+ 			unlink (newfile);
+-			return 0;
++			goto errorexit;
+ 		}
+ 
+ 		/*
+@@ -294,7 +323,20 @@ int __pwdb_pw_close (void)
+ 	}
+ 	pwf_tail = 0;
+ 	isopen = 0;
+-	return 1;
++	
++	errorexit:
++#ifdef WITH_SELINUX
++	if (selinux_enabled) {
++	  if (setfscreatecon(prev_context)) {
++	    errors++;
++	  }
++	  if (prev_context != NULL) {
++	    freecon(prev_context);
++	    prev_context=NULL;
++	  }
++	}
++#endif
++	return errors==0;
+ }
+ 
+ /*
+--- a/libpwdb/unix/groupio.c
++++ b/libpwdb/unix/groupio.c
+@@ -11,6 +11,12 @@
+ #include "../_pwdb_internal.h"
+ 
+ 
++#ifdef WITH_SELINUX
++#include <selinux/selinux.h>
++int selinux_enabled=0;
++static security_context_t prev_context=NULL;
++#endif
++
+ static	int	islocked;
+ static	int	isopen;
+ static	int	open_modes;
+@@ -259,8 +265,28 @@ int __pwdb_gr_close (void)
+ 		if (fstat (fileno (grfp), &sb))
+ 			return 0;
+ 
+-		if (create_backup_file(grfp, backup, &sb))
+-			return 0;
++#ifdef WITH_SELINUX
++		if (selinux_enabled=is_selinux_enabled()) {
++		  security_context_t group_context=NULL;
++		  if (fgetfilecon(fileno (grfp),&group_context)<0) {
++		    return 0;
++		  };
++		  if (getfscreatecon(&prev_context)<0) {
++		    freecon(group_context);
++		    return 0;
++		  }
++		  if (setfscreatecon(group_context)) {
++		    freecon(group_context);
++		    freecon(prev_context);
++		    return 0;
++		  }
++		  freecon(group_context);
++		}
++#endif
++		if (create_backup_file(grfp, backup, &sb)) {
++		  errors++;
++		  goto errorexit;
++		}
+ 
+ 		isopen = 0;
+ 		(void) fclose (grfp);
+@@ -278,11 +304,15 @@ int __pwdb_gr_close (void)
+ 		 */
+ 
+ 		grfp = fopen_with_umask(newfile, "w", 0777);
+-		if (!grfp)
+-			return 0;
++		if (!grfp) {
++		  errors++;
++		  goto errorexit;
++		}
+ 		if (chown(newfile, sb.st_uid, sb.st_gid) ||
+-		    chmod(newfile, sb.st_mode))
+-			return 0;
++		    chmod(newfile, sb.st_mode)) {
++		  errors++;
++		  goto errorexit;
++		}
+ 
+ 		/*
+ 		 * Check each member in the list and write out any elements
+@@ -308,7 +338,7 @@ int __pwdb_gr_close (void)
+ 
+ 		if (errors) {
+ 			unlink (newfile);
+-			return 0;
++			goto errorexit;
+ 		}
+ 
+ 		/*
+@@ -351,7 +381,19 @@ int __pwdb_gr_close (void)
+ 	}
+ 	grf_tail = 0;
+ 	isopen = 0;
+-	return 1;
++	errorexit:
++#ifdef WITH_SELINUX
++	if (selinux_enabled) {
++	  if (setfscreatecon(prev_context)) {
++	    errors++;
++	  }
++	  if (prev_context != NULL) {
++	    freecon(prev_context);
++	    prev_context=NULL;
++	  }
++	}
++#endif
++	return errors==0;
+ }
+ 
+ /* update an entry */
+--- a/libpwdb/Makefile
++++ b/libpwdb/Makefile
+@@ -22,7 +22,7 @@ HEADERS	= pwdb/pwdb_public.h pwdb/pwdb_c
+ 
+ # needed for generic interface compilation
+ # if header files are not installed (CG)
+-CFLAGS+=-I.
++CFLAGS+=-I. -DWITH_SELINUX
+ 
+ CFLAGS+=# -DDEBUG
+ 
+@@ -50,6 +50,7 @@
+ 
+ all: $(LIBSTATIC) $(LIBDYNAME) 
+ 
++$(LIBDYNAME): LDLIBS += -lselinux
+ 
+ $(LIBDYNAME): $(LIBOBJ)
+ 	$(CC) $(LDFLAGS) -shared -Wl,-soname -Wl,$(LIBSONAME) -Wl,-x -o $(LIBFILENAME) $(LIBOBJ)  -lcrypt -lnsl $(LDLIBS)

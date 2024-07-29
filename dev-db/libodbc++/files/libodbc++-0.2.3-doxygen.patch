@@ -1,0 +1,12 @@
+diff -ur libodbc++-0.2.3-orig/doc/progref/Doxyfile libodbc++-0.2.3/doc/progref/Doxyfile
+--- libodbc++-0.2.3-orig/doc/progref/Doxyfile	2006-04-08 01:03:20.000000000 -0400
++++ libodbc++-0.2.3/doc/progref/Doxyfile	2006-04-08 01:06:03.000000000 -0400
+@@ -256,7 +256,7 @@
+ # each generated HTML page. If it is left blank doxygen will generate a 
+ # standard footer.
+ 
+-HTML_FOOTER          = footer
++HTML_FOOTER          =
+ 
+ # The HTML_STYLESHEET tag can be used to specify a user defined cascading
+ # style sheet that is used by each HTML page. It can be used to 

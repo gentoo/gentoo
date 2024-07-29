@@ -1,0 +1,253 @@
+# Copyright 2019-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# QA checks related to site-packages directory:
+# - missing, mismatched or stray .pyc files
+# Maintainer: Python project <python@gentoo.org>
+
+python_site_check() {
+	local save=$(shopt -p nullglob)
+	shopt -s nullglob
+	local progs=( "${EPREFIX}"/usr/lib/python-exec/*/gpep517 )
+	local bad_libdirs=()
+	[[ $(get_libdir) != lib ]] && bad_libdirs=(
+		"${ED}/usr/$(get_libdir)"/{python3,pypy}*
+	)
+	${save}
+
+	local forbidden_package_names=(
+		# NB: setuptools/discovery.py is a good source of ideas
+		benchmark benchmarks dist doc docs examples scripts tasks
+		test tests tools util utils
+		# catch double-prefix installs, e.g. https://bugs.gentoo.org/618134
+		lib $(get_libdir) usr
+		.pytest_cache .hypothesis _trial_temp
+	)
+
+	local invalid=()
+	local mismatched_timestamp=()
+	local mismatched_data=()
+	local missing=()
+	local stray=()
+
+	local bad_versions=()
+	local eggs=()
+	local outside_site=()
+	local stray_packages=()
+
+	# Avoid running the check if sufficiently new gpep517 is not installed
+	# yet. It's valid to schedule (for merge order) >=gpep517-8 after
+	# packages which have this check run if they don't use distutils-r1.
+	if [[ ${EAPI} == [0123] ]] || ! nonfatal has_version ">=dev-python/gpep517-8" ; then
+		return
+	fi
+
+	local f prog
+	for prog in "${progs[@]}"; do
+		local impl=${prog%/*}
+		impl=${impl##*/}
+
+		# NB: using ${impl}* to catch pypy3.* for pypy3
+		local pydir=( "${ED}"/usr/lib/${impl}* )
+		[[ -d ${pydir} ]] || continue
+
+		# check for packages installing outside site-packages
+		case ${CATEGORY}/${PN} in
+			dev-lang/python|dev-python/pypy*)
+				;;
+			*)
+				while IFS= read -d $'\0' -r f; do
+					outside_site+=( "${f}" )
+				done < <(
+					find "${pydir}" -mindepth 1 -maxdepth 1 \
+						'!' -name site-packages -print0
+				)
+				;;
+		esac
+
+		local sitedir=( "${pydir}"/site-packages )
+		[[ -d ${sitedir} ]] || continue
+
+		# check for bad package versions
+		while IFS= read -d $'\0' -r f; do
+			bad_versions+=( "${f#${ED}}" )
+		done < <(
+			find "${sitedir}" -maxdepth 1 '(' \
+				-name '*-0.0.0.dist-info' -o \
+				-name '*UNKNOWN*.dist-info' -o \
+				-name '*-0.0.0.egg-info' -o \
+				-name '*UNKNOWN*.egg-info' \
+				')' -print0
+		)
+
+		# check for deprecated egg format
+		while IFS= read -d $'\0' -r f; do
+			eggs+=( "${f#${ED}}" )
+		done < <(
+			find "${sitedir}" -maxdepth 1 '(' \
+				-name '*.egg-info' -o \
+				-name '*.egg' \
+				')' -print0
+		)
+
+		# check for stray files in site-packages
+		while IFS= read -d $'\0' -r f; do
+			stray_packages+=( "${f#${ED}}" )
+		done < <(
+			find "${sitedir}" -maxdepth 1 -type f '!' '(' \
+					-name '*.egg' -o \
+					-name '*.egg-info' -o \
+					-name '*.pth' -o \
+					-name '*.py' -o \
+					-name '*.pyi' -o \
+					-name "*$(get_modname)" -o \
+					-name 'README.txt' \
+				')' -print0
+		)
+		# check for forbidden packages
+		for f in "${forbidden_package_names[@]}"; do
+			[[ -d ${sitedir}/${f} ]] && stray_packages+=(
+				"${sitedir#${ED}}/${f}"
+			)
+		done
+
+		einfo "Verifying compiled files for ${impl}"
+		local kind pyc py
+		while IFS=: read -r kind pyc py extra; do
+			case ${kind} in
+				invalid)
+					invalid+=( "${pyc}" )
+					;;
+				mismatched)
+					case ${extra} in
+						timestamp)
+							mismatched_timestamp+=( "${pyc}" )
+							;;
+						*)
+							mismatched_data+=( "${pyc}" )
+							;;
+					esac
+					;;
+				missing)
+					missing+=( "${pyc}" )
+					;;
+				older)
+					# older warnings were produced by earlier version
+					# of gpep517 but the check was incorrect, so we just
+					# ignore them
+					;;
+				stray)
+					stray+=( "${pyc}" )
+					;;
+			esac
+		done < <("${prog}" verify-pyc --destdir "${D}" --prefix "${EPREFIX}"/usr)
+	done
+
+	local found=
+	if [[ ${missing[@]} ]]; then
+		eqawarn
+		eqawarn "QA Notice: This package installs one or more Python modules that are"
+		eqawarn "not byte-compiled."
+		eqawarn "The following files are missing:"
+		eqawarn
+		eqatag -v python-site.pyc.missing "${missing[@]}"
+		found=1
+	fi
+
+	if [[ ${invalid[@]} ]]; then
+		eqawarn
+		eqawarn "QA Notice: This package installs one or more compiled Python modules"
+		eqawarn "that seem to be invalid (do not have the correct header)."
+		eqawarn "The following files are invalid:"
+		eqawarn
+		eqatag -v python-site.pyc.invalid "${invalid[@]}"
+		found=1
+	fi
+
+	if [[ ${mismatched_data[@]} ]]; then
+		eqawarn
+		eqawarn "QA Notice: This package installs one or more compiled Python modules whose"
+		eqawarn ".py files have different content (size or hash) than recorded:"
+		eqawarn
+		eqatag -v python-site.pyc.mismatched.data "${mismatched_data[@]}"
+		found=1
+	fi
+
+	if [[ ${mismatched_timestamp[@]} ]]; then
+		eqawarn
+		eqawarn "QA Notice: This package installs one or more compiled Python modules whose"
+		eqawarn ".py files have different timestamps than recorded:"
+		eqawarn
+		eqatag -v python-site.pyc.mismatched.timestamp "${mismatched_timestamp[@]}"
+		found=1
+	fi
+
+	if [[ ${stray[@]} ]]; then
+		eqawarn
+		eqawarn "QA Notice: This package installs one or more compiled Python modules"
+		eqawarn "that do not match installed modules (or their implementation)."
+		eqawarn "The following files are stray:"
+		eqawarn
+		eqatag -v python-site.pyc.stray "${stray[@]}"
+		found=1
+	fi
+
+	if [[ ${found} ]]; then
+		eqawarn
+		eqawarn "For more information on bytecode files and related issues, please see:"
+		eqawarn "  https://projects.gentoo.org/python/guide/qawarn.html#compiled-bytecode-related-warnings"
+	fi
+
+	if [[ ${bad_versions[@]} ]]; then
+		eqawarn
+		eqawarn "QA Notice: The following Python packages were installed with"
+		eqawarn "invalid/suspicious names or versions in the site-packages directory:"
+		eqawarn
+		eqatag -v python-site.bad_version "${bad_versions[@]}"
+	fi
+
+	if [[ ${eggs[@]} ]]; then
+		eqawarn
+		eqawarn "QA Notice: The following deprecated .egg or .egg-info files were found."
+		eqawarn "Please migrate the ebuild to use the PEP517 build."
+		eqawarn
+		eqatag -v python-site.egg "${eggs[@]}"
+	fi
+
+	if [[ ${stray_packages[@]} ]]; then
+		eqawarn
+		eqawarn "QA Notice: The following unexpected files/directories were found"
+		eqawarn "top-level in the site-packages directory:"
+		eqawarn
+		eqatag -v python-site.stray "${stray_packages[@]}"
+		eqawarn
+		eqawarn "This is most likely a bug in the build system.  More information"
+		eqawarn "can be found in the Python Guide:"
+		eqawarn "https://projects.gentoo.org/python/guide/qawarn.html#stray-top-level-files-in-site-packages"
+		# TODO: make this fatal once we fix the existing issues, and remove
+		# the previous version from distutils-r1
+		#die "Failing install because of stray top-level files in site-packages"
+	fi
+
+	if [[ ${bad_libdirs[@]} ]]; then
+		eqawarn
+		eqawarn "QA Notice: Package installs Python files to /usr/$(get_libdir)"
+		eqawarn "instead of /usr/lib (use \$(python_get_sitedir)):"
+		eqawarn
+		eqatag -v python-site.libdir "${bad_libdirs[@]#${ED}}"
+	fi
+
+	if [[ ${outside_site[@]} ]]; then
+		eqawarn
+		eqawarn "QA Notice: Files found installed directly into Python stdlib,"
+		eqawarn "instead of site-packages (use \$(python_get_sitedir)):"
+		eqawarn
+		eqatag -v python-site.stdlib "${outside_site[@]}"
+	fi
+}
+
+python_site_check
+
+: # guarantee successful exit
+
+# vim:ft=ebuild

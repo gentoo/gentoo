@@ -1,0 +1,21 @@
+Per mk-configure(7), Makefiles should use CFLAGS0 and CPPFLAGS0 for their
+own flags. This allows setting CFLAGS and CPPFLAGS ourselves during the build
+without clobbering important settings/definitions like MAA_MAJOR.
+--- a/maa/Makefile
++++ b/maa/Makefile
+@@ -22,11 +22,11 @@ arg.o arg.os: ${.OBJDIR}/arggram.c arg.c
+ ${.OBJDIR}/arggram.c: arggram.txt
+ 	awk -f ${SRCDIR_maa}/arggram2c < ${SRCDIR_maa}/arggram.txt > $@
+ 
+-CFLAGS +=	-DMAA_MAJOR=${MAA_MAJOR}
+-CFLAGS +=	-DMAA_MINOR=${MAA_MINOR}
+-CFLAGS +=	-DMAA_TEENY=${MAA_TEENY}
++CFLAGS0 +=	-DMAA_MAJOR=${MAA_MAJOR}
++CFLAGS0 +=	-DMAA_MINOR=${MAA_MINOR}
++CFLAGS0 +=	-DMAA_TEENY=${MAA_TEENY}
+ 
+-CPPFLAGS +=	-I. -I${.OBJDIR}
++CPPFLAGS0 +=	-I. -I${.OBJDIR}
+ 
+ #MAN =		maa.1
+ 

@@ -1,0 +1,72 @@
+diff -ru tcl3d/config_Linux tcl3d-m/config_Linux
+--- tcl3d/config_Linux	2010-08-30 15:57:56.000000000 -0400
++++ tcl3d-m/config_Linux	2016-10-30 13:28:34.080601812 -0400
+@@ -74,6 +74,8 @@
+ TKINCDIR     = $(TKDIR)/include
+ TCLLIBDIR    = $(TCLDIR)/lib
+ TKLIBDIR     = $(TKDIR)/lib
++TCLLIBINCDIR = $(TCLLIBDIR)/tcl$(TCLVERSION)/include
++TKLIBINCDIR  = $(TCLLIBDIR)/tk$(TCLVERSION)/include
+ TCLSTUBLIBS  = $(TKLIBDIR)/libtkstub$(TCLVERSION)$(LIBEXT) $(TCLLIBDIR)/libtclstub$(TCLVERSION)$(LIBEXT)
+ TCLSTDLIBS   = $(TKLIBDIR)/libtk$(TCLVERSION)$(LIBEXT) $(TCLLIBDIR)/libtcl$(TCLVERSION)$(LIBEXT)
+ TCLSH        = tclsh$(TCLVERSION)
+@@ -84,7 +86,13 @@
+ CPDIR        = csh -f cpdir
+ MKDIR        = mkdir -p
+ 
+-INCL   = -I. -I$(TCLINCDIR)
++INCL   = \
++		-I. \
++		-I$(TCLINCDIR) \
++		-I$(TCLLIBINCDIR)/generic \
++		-I$(TCLLIBINCDIR)/unix \
++		-I$(TKLIBINCDIR)/generic \
++		-I$(TKLIBINCDIR)/unix
+ 
+ ifdef WITH_STUBS
+ TCLLIBS = $(TCLSTUBLIBS)
+diff -ru tcl3d/config_Linux64 tcl3d-m/config_Linux64
+--- tcl3d/config_Linux64	2010-12-30 16:06:48.000000000 -0500
++++ tcl3d-m/config_Linux64	2016-10-30 13:08:33.326771912 -0400
+@@ -74,6 +74,8 @@
+ TKINCDIR     = $(TKDIR)/include
+ TCLLIBDIR    = $(TCLDIR)/lib64
+ TKLIBDIR     = $(TKDIR)/lib64
++TCLLIBINCDIR = $(TCLLIBDIR)/tcl$(TCLVERSION)/include
++TKLIBINCDIR  = $(TCLLIBDIR)/tk$(TCLVERSION)/include
+ TCLSTUBLIBS  = $(TKLIBDIR)/libtkstub$(TCLVERSION)$(LIBEXT) $(TCLLIBDIR)/libtclstub$(TCLVERSION)$(LIBEXT)
+ TCLSTDLIBS   = $(TKLIBDIR)/libtk$(TCLVERSION)$(SHLIBEXT) $(TCLLIBDIR)/libtcl$(TCLVERSION)$(SHLIBEXT)
+ TCLSH        = tclsh$(TCLVERSION)
+@@ -84,7 +86,13 @@
+ CPDIR        = csh -f cpdir
+ MKDIR        = mkdir -p
+ 
+-INCL   = -I. -I$(TCLINCDIR)
++INCL   = \
++		-I. \
++		-I$(TCLINCDIR) \
++		-I$(TCLLIBINCDIR)/generic \
++		-I$(TCLLIBINCDIR)/unix \
++		-I$(TKLIBINCDIR)/generic \
++		-I$(TKLIBINCDIR)/unix
+ 
+ ifdef WITH_STUBS
+ TCLLIBS = $(TCLSTUBLIBS)
+diff -ru tcl3d/tcl3dOsg/Makefile tcl3d-m/tcl3dOsg/Makefile
+--- tcl3d/tcl3dOsg/Makefile	2010-09-30 16:20:28.000000000 -0400
++++ tcl3d-m/tcl3dOsg/Makefile	2016-10-30 13:12:53.367593401 -0400
+@@ -308,12 +308,13 @@
+     OPT += /Od
+ endif
+ CFLAGS = $(OPT) $(PPDEFS) -I$(GL_INCDIR) -Iinclude $(INCL)   
++CXXFLAGS = -fpermissive
+ 
+ .SUFFIXES:                    # Delete the default suffixes.
+ .SUFFIXES: .cpp $(OBJEXT) .h  # Install our own suffixes.
+ 
+ .cpp$(OBJEXT):
+-	$(CXX) $(CFLAGS) $<
++	$(CXX) $(CFLAGS) $(CXXFLAGS) $<
+ 
+ all: osg osganimation osgdb osgfx osgga osgmanipulator osgopenthreads \
+      osgparticle osgsim osgshadow osgterrain osgtext osgutil osgviewer \

@@ -1,0 +1,23 @@
+the wart util is used at build time only, so use BUILD_* so we can cross-compile
+
+--- a/makefile
++++ b/makefile
+@@ -1406,12 +1406,17 @@
+ 
+ ckctel.$(EXT): ckcsym.h ckcdeb.h ckcker.h ckcnet.h ckctel.h ckclib.h
+ 
++BUILD_CC ?= $(CC)
++BUILD_CFLAGS ?= $(CFLAGS)
++BUILD_CPPFLAGS ?= $(CPPFLAGS)
++BUILD_LDFLAGS ?= $(LDFLAGS)
+ wart: ckwart.$(EXT)
+-	$(CC) $(LNKFLAGS) -o wart ckwart.$(EXT) $(LIBS)
++	$(BUILD_CC) $(BUILD_CFLAGS) $(BUILD_CPPFLAGS) -o wart ckwart.$(EXT) $(BUILD_LDFLAGS)
+ 
+ ckcmdb.$(EXT): ckcmdb.c ckcdeb.h ckcsym.h ckclib.h
+ 
+ ckwart.$(EXT): ckwart.c
++	$(BUILD_CC) $(BUILD_CFLAGS) $(BUILD_CPPFLAGS) -o $@ -c $<
+ 
+ ckudia.$(EXT): ckudia.c ckcker.h ckcdeb.h ckucmd.h ckcasc.h ckcsym.h ckcsig.h \
+ 		ckcnet.h ckctel.h ckclib.h

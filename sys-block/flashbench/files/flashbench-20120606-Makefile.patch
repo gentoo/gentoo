@@ -1,0 +1,23 @@
+diff --git a/Makefile b/Makefile
+index f83b220..ffe20fa 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,6 @@
+-CC	:= gcc
+-CFLAGS	:= -O2 -Wall -Wextra -Wno-missing-field-initializers -Wno-unused-parameter -g2
+-LDFLAGS := -lrt
++CC	?= gcc
++CFLAGS	+= -Wall -Wextra -Wno-missing-field-initializers -Wno-unused-parameter
++LIBS := -lrt
+ 
+ all: flashbench erase
+ 
+@@ -9,7 +9,7 @@ vm.o: vm.c vm.h dev.h
+ flashbench.o: flashbench.c vm.h dev.h
+ 
+ flashbench: flashbench.o dev.o vm.o
+-	$(CC) -o $@ flashbench.o dev.o vm.o $(LDFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ flashbench.o dev.o vm.o $(LIBS)
+ 
+ 
+ erase: erase.o

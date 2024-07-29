@@ -1,0 +1,20 @@
+--- a/lib/sparklines.rb	2023-04-26 07:46:30.263829168 +0200
++++ b/lib/sparklines.rb	2023-04-26 07:48:47.140656193 +0200
+@@ -685,7 +685,7 @@
+     @draw = Magick::Draw.new
+     @draw.pointsize = @@pointsize # TODO Use height
+     @draw.pointsize = @options[:font_size] if @options.has_key?(:font_size)
+-    @canvas = Magick::Image.new(w , h) { self.background_color = bkg_col }
++    @canvas = Magick::Image.new(w , h) { |image| image.background_color = bkg_col }
+ 
+     # Make room for label and last value
+     unless @options[:label].nil?
+@@ -697,7 +697,7 @@
+       w += @label_and_data_last_width
+     end
+ 
+-    @canvas = Magick::Image.new(w , h) { self.background_color = bkg_col }
++    @canvas = Magick::Image.new(w , h) { |image| image.background_color = bkg_col }
+     @canvas.format = "PNG"
+ 
+     # Draw label and last value

@@ -1,0 +1,79 @@
+https://github.com/lxde/lxpanel/commit/6eebb78d2cb87276334641965793a8feebc952ab
+
+From 6eebb78d2cb87276334641965793a8feebc952ab Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Br=C3=BCckl?= <ib@wupperonline.de>
+Date: Fri, 6 Nov 2020 05:56:08 +0100
+Subject: [PATCH] Show the dialog icon after the window has been presented
+
+This fixes a bug that sometimes made the icon not appear where
+it was supposed to, but in the upper left corner of the dialog
+above the tab.
+--- a/plugins/netstatus/netstatus-dialog.c
++++ b/plugins/netstatus/netstatus-dialog.c
+@@ -1,6 +1,7 @@
+ /*
+  * Copyright (C) 2003 Sun Microsystems, Inc.
+  * Copyright (C) 2004 Red Hat Inc.
++ * Copyright (C) 2020 Ingo Brückl
+  *
+  * This program is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU General Public License as
+@@ -629,7 +630,6 @@ netstatus_dialog_setup_connection (NetstatusDialogData *data)
+   netstatus_icon_set_tooltips_enabled (NETSTATUS_ICON (icon), FALSE);
+   netstatus_icon_set_show_signal (NETSTATUS_ICON (icon), FALSE);
+   gtk_box_pack_end (GTK_BOX (hbox), icon, FALSE, TRUE, 4);
+-  gtk_widget_show (icon);
+ 
+   data->icon = NETSTATUS_ICON (icon);
+ 
+@@ -873,3 +873,12 @@ const char* netstatus_dialog_get_iface_name( GtkWidget* dialog )
+     data = g_object_get_data (G_OBJECT (dialog), "netstatus-dialog-data");
+     return netstatus_iface_get_name (data->iface);
+ }
++
++void netstatus_dialog_present (GtkWidget *dialog)
++{
++    NetstatusDialogData *data;
++
++    data = g_object_get_data(G_OBJECT(dialog), "netstatus-dialog-data");
++    gtk_window_present(GTK_WINDOW(dialog));
++    gtk_widget_show(data->icon);
++}
+--- a/plugins/netstatus/netstatus-dialog.h
++++ b/plugins/netstatus/netstatus-dialog.h
+@@ -1,5 +1,6 @@
+ /*
+  * Copyright (C) 2003 Sun Microsystems, Inc.
++ * Copyright (C) 2020 Ingo Brückl
+  *
+  * This program is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU General Public License as
+@@ -38,6 +39,8 @@ const char* netstatus_dialog_get_configuration_tool( GtkWidget* dialog );
+ /* 2009.05.10 Add by Hong Jen Yee (PCMan) to be used in lxpanel plugin */
+ const char* netstatus_dialog_get_iface_name( GtkWidget* dialog );
+ 
++void netstatus_dialog_present(GtkWidget *dialog);
++
+ G_END_DECLS
+ 
+ #endif /* __NETSTATUS_DIALOG_H__ */
+--- a/plugins/netstatus/netstatus.c
++++ b/plugins/netstatus/netstatus.c
+@@ -3,6 +3,7 @@
+  *               2008 Fred Chien <fred@lxde.org>
+  *               2009 martyj19 <martyj19@comcast.net>
+  *               2014 Andriy Grytsenko <andrej@rep.kiev.ua>
++ *               2020 Ingo Brückl
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+@@ -99,7 +100,7 @@ static gboolean on_button_press( GtkWidget* widget, GdkEventButton* evt, LXPanel
+             netstatus_dialog_set_configuration_tool( ns->dlg, ns->config_tool );
+             g_signal_connect( ns->dlg, "response", G_CALLBACK(on_response), ns );
+         }
+-        gtk_window_present( GTK_WINDOW(ns->dlg) );
++        netstatus_dialog_present(ns->dlg);
+     }
+     return TRUE;
+ }
+

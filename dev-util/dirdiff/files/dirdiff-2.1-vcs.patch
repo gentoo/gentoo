@@ -1,0 +1,16 @@
+ dirdiff | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dirdiff b/dirdiff
+index c5522b6..f470348 100755
+--- a/dirdiff
++++ b/dirdiff
+@@ -37,7 +37,7 @@ set nxdirmode 0
+ set docvsignore 0
+ 
+ set defaultcvsignore {
+-    RCS SCCS CVS CVS.adm RCSLOG cvslog.* tags TAGS
++    RCS SCCS CVS CVS.adm RCSLOG cvslog.* .svn .git tags TAGS
+     .make.state .nse_depinfo *~ \#* .\#* ,* _$* *$
+     *.old *.bak *.BAK *.orig *.rej .del-* *.a *.olb
+     *.o *.obj *.so *.exe *.Z *.elc *.ln core

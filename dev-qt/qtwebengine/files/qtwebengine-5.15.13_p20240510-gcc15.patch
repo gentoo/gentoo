@@ -1,0 +1,35 @@
+https://bugs.gentoo.org/936416
+
+Backport of two upstream commits:
+* https://chromium-review.googlesource.com/c/chromium/src/+/5512719
+* https://quiche.googlesource.com/quiche/+/c1af894e0f5c4f732a983e7c93227854e203570e%5E%21/#F0
+--- a/src/3rdparty/chromium/base/containers/id_map.h
++++ b/src/3rdparty/chromium/base/containers/id_map.h
+@@ -153,8 +153,8 @@ class IDMap final {
+     }
+ 
+     const Iterator& operator=(const Iterator& iter) {
+-      map_ = iter.map;
+-      iter_ = iter.iter;
++      map_ = iter.map_;
++      iter_ = iter.iter_;
+       Init();
+       return *this;
+     }
+--- a/src/3rdparty/chromium/net/third_party/quiche/src/quic/core/quic_interval_deque.h
++++ b/src/3rdparty/chromium/net/third_party/quiche/src/quic/core/quic_interval_deque.h
+@@ -198,12 +198,12 @@ class QUIC_NO_EXPORT QuicIntervalDeque {
+     Iterator operator+(difference_type amount) const {
+       Iterator copy = *this;
+       copy.index_ += amount;
+-      DCHECK(copy.index_ < copy.deque_->size());
++      DCHECK(copy.index_ < copy.deque_->Size());
+       return copy;
+     }
+     Iterator& operator+=(difference_type amount) {
+       index_ += amount;
+-      DCHECK(index_ < deque_->size());
++      DCHECK(index_ < deque_->Size());
+       return *this;
+     }
+     difference_type operator-(const Iterator& rhs) const {

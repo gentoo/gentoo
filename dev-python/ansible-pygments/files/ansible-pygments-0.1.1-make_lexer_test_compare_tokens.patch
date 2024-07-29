@@ -1,0 +1,324 @@
+Backported upstream patch 179c74e9f1a5dc870dec6d4db6cab60d2dca1ed2
+
+--- a/tests/lexer_test.py
++++ b/tests/lexer_test.py
+@@ -1,26 +1,24 @@
+ # Author: Felix Fontein <felix@fontein.de>
+ # License: BSD-2-Clause
+ # Copyright: Felix Fontein <felix@fontein.de>, 2021
+-"""Tests for Pygments lexers."""
++"""Tests for Pygments lexers.
+ 
+-from pygments import highlight
+-# pylint: disable=no-name-in-module
+-# Ref: https://github.com/PyCQA/pylint/issues/491
+-from pygments.formatters import HtmlFormatter
+-
+-from ansible_pygments.lexers import AnsibleOutputLexer
++They rely on token comparison for stability reasons. Relying on
++additional style formatting is known to break with updates to
++the pygments library itself.
++"""
+ 
++from pygments import __version__ as _pygments_version
++from pygments.lexers import get_lexer_by_name as _get_lexer_by_name
++from pygments.token import Token
+ 
+-def run_test(data, lexer):
+-    """Format the data snippet as HTML using a given lexer."""
+-    formatter = HtmlFormatter()
+-    result = highlight(data, lexer, formatter)
+-    return formatter.get_style_defs('.highlight'), result
++PYGMENTS_VERSION_INFO = tuple(map(int, _pygments_version.split('.')))
++IS_OLD_PYGMENTS_PRE_2_14 = PYGMENTS_VERSION_INFO <= (2, 14, 0)
+ 
+ 
+ def test_ansible_output_lexer():
+-    """Test that AnsibleOutputLexer produces expected HTML output."""
+-    data = R"""
++    """Test that ``AnsibleOutputLexer`` produces expected tokens."""
++    ansible_play_output_example = R"""
+ ok: [windows] => {
+     "account": {
+         "account_name": "vagrant-domain",
+@@ -71,58 +69,226 @@
+ 
+ changed: [localhost]
+ """
+-    _, result = run_test(data, AnsibleOutputLexer())
+-    print(result)
+ 
+-    # pylint: disable=line-too-long
+-    assert result == R"""<div class="highlight"><pre><span></span><span class="k">ok</span><span class="p">:</span> <span class="p">[</span><span class="nv">windows</span><span class="p">]</span> <span class="p">=&gt;</span> <span class="p">{</span>
+-    <span class="nt">&quot;account&quot;</span><span class="p">:</span> <span class="p">{</span>
+-        <span class="nt">&quot;account_name&quot;</span><span class="p">:</span> <span class="s">&quot;vagrant-domain&quot;</span><span class="p">,</span>
+-        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s">&quot;User&quot;</span>
+-    <span class="p">},</span>
+-    <span class="nt">&quot;authentication_package&quot;</span><span class="p">:</span> <span class="s">&quot;Kerberos&quot;</span><span class="p">,</span>
+-    <span class="nt">&quot;user_flags&quot;</span><span class="p">:</span> <span class="p">[]</span>
+-<span class="p">}</span>
+-
+-<span class="k">TASK</span> <span class="p">[</span><span class="l">paused</span><span class="p">]</span> <span class="nv">************************************************************************************************************************************</span>
+-<span class="w">Sunday 11 November 2018  20:16:48 +0100 (0:00:00.041)       0:07:59.637 *******</span>
+-<span class="gd">--- before</span><span class="w"></span>
+-<span class="gi">+++ after</span><span class="w"></span>
+-<span class="gu">@@ -1,5 +1,5 @@</span><span class="w"></span>
+-<span class="w"> </span>{<span class="w"></span>
+-<span class="gd">-  &quot;exists&quot;: false,</span><span class="w"></span>
+-<span class="gd">-  &quot;paused&quot;: false,</span><span class="w"></span>
+-<span class="gd">-  &quot;running&quot;: false</span><span class="w"></span>
+-<span class="gi">+  &quot;exists&quot;: true,</span><span class="w"></span>
+-<span class="gi">+  &quot;paused&quot;: true,</span><span class="w"></span>
+-<span class="gi">+  &quot;running&quot;: true</span><span class="w"></span>
+-<span class="w"> </span>}<span class="w"></span>
+-<span class="w">\ No newline at end of file</span>
+-
+-<span class="k">changed</span><span class="p">:</span> <span class="p">[</span><span class="nv">localhost</span><span class="p">]</span>
+-
+-<span class="k">TASK</span> <span class="p">[</span><span class="l">volumes (more volumes)</span><span class="p">]</span> <span class="nv">********************************************************************************************************************</span>
+-<span class="w">Sunday 11 November 2018  20:19:25 +0100 (0:00:00.607)       0:10:36.974 *******</span>
+-<span class="gd">--- before</span><span class="w"></span>
+-<span class="gi">+++ after</span><span class="w"></span>
+-<span class="gu">@@ -1,11 +1,11 @@</span><span class="w"></span>
+-<span class="w"> </span>{<span class="w"></span>
+-<span class="w"> </span>  &quot;expected_binds&quot;: [<span class="w"></span>
+-<span class="gd">-    &quot;/tmp:/tmp:rw&quot;,</span><span class="w"></span>
+-<span class="gd">-    &quot;/:/whatever:rw,z&quot;</span><span class="w"></span>
+-<span class="gi">+    &quot;/tmp:/somewhereelse:ro,Z&quot;,</span><span class="w"></span>
+-<span class="gi">+    &quot;/tmp:/tmp:rw&quot;</span><span class="w"></span>
+-<span class="w"> </span>  ],<span class="w"></span>
+-<span class="w"> </span>  &quot;expected_volumes&quot;: {<span class="w"></span>
+-<span class="gd">-    &quot;/tmp&quot;: {},</span><span class="w"></span>
+-<span class="gd">-    &quot;/whatever&quot;: {}</span><span class="w"></span>
+-<span class="gi">+    &quot;/somewhereelse&quot;: {},</span><span class="w"></span>
+-<span class="gi">+    &quot;/tmp&quot;: {}</span><span class="w"></span>
+-<span class="w"> </span>  },<span class="w"></span>
+-<span class="w"> </span>  &quot;running&quot;: true<span class="w"></span>
+-<span class="w"> </span>}<span class="w"></span>
+-<span class="w">\ No newline at end of file</span>
+-
+-<span class="k">changed</span><span class="p">:</span> <span class="p">[</span><span class="nv">localhost</span><span class="p">]</span>
+-</pre></div>
+-"""
++    expected_resulting_text_tokens = [
++        (0, Token.Text.Whitespace, '\n'),
++        (1, Token.Keyword, 'ok'),
++        (3, Token.Punctuation, ':'),
++        (4, Token.Text, ' '),
++        (5, Token.Punctuation, '['),
++        (6, Token.Name.Variable, 'windows'),
++        (13, Token.Punctuation, ']'),
++        (14, Token.Text, ' '),
++        (15, Token.Punctuation, '=>'),
++        (17, Token.Text, ' '),
++        (18, Token.Punctuation, '{'),
++        (19, Token.Text, '\n    '),
++        (24, Token.Name.Tag, '"account"'),
++        (33, Token.Punctuation, ':'),
++        (34, Token.Text, ' '),
++        (35, Token.Punctuation, '{'),
++        (36, Token.Text, '\n        '),
++        (45, Token.Name.Tag, '"account_name"'),
++        (59, Token.Punctuation, ':'),
++        (60, Token.Text, ' '),
++        (61, Token.Literal.String, '"vagrant-domain"'),
++        (77, Token.Punctuation, ','),
++        (78, Token.Text, '\n        '),
++        (87, Token.Name.Tag, '"type"'),
++        (93, Token.Punctuation, ':'),
++        (94, Token.Text, ' '),
++        (95, Token.Literal.String, '"User"'),
++        (101, Token.Text, '\n    '),
++        (106, Token.Punctuation, '}'),
++        (107, Token.Punctuation, ','),
++        (108, Token.Text, '\n    '),
++        (113, Token.Name.Tag, '"authentication_package"'),
++        (137, Token.Punctuation, ':'),
++        (138, Token.Text, ' '),
++        (139, Token.Literal.String, '"Kerberos"'),
++        (149, Token.Punctuation, ','),
++        (150, Token.Text, '\n    '),
++        (155, Token.Name.Tag, '"user_flags"'),
++        (167, Token.Punctuation, ':'),
++        (168, Token.Text, ' '),
++        (169, Token.Punctuation, '['),
++        (170, Token.Punctuation, ']'),
++        (171, Token.Text, '\n'),
++        (172, Token.Punctuation, '}'),
++        (173, Token.Text, '\n'),
++        (174, Token.Text.Whitespace, '\n'),
++        (175, Token.Keyword, 'TASK'),
++        (179, Token.Text, ' '),
++        (180, Token.Punctuation, '['),
++        (181, Token.Literal, 'paused'),
++        (187, Token.Punctuation, ']'),
++        (188, Token.Text, ' '),
++        (
++            189,
++            Token.Name.Variable,
++            '*' * 132,
++        ),
++        (321, Token.Text, '\n'),
++        *(
++            (
++                (
++                    322,
++                    Token.Text.Whitespace,
++                    'Sunday 11 November 2018  20:16:48 +0100 (0:00:00.041)       '
++                    '0:07:59.637 *******\n',
++                ),
++            ) if IS_OLD_PYGMENTS_PRE_2_14 else (
++                (
++                    322,
++                    Token.Text,
++                    'Sunday 11 November 2018  20:16:48 +0100 (0:00:00.041)       '
++                    '0:07:59.637 *******',
++                ),
++                (401, Token.Text.Whitespace, '\n'),
++            )
++        ),
++        (402, Token.Generic.Deleted, '--- before'),
++        (412, Token.Text.Whitespace, '\n'),
++        (413, Token.Generic.Inserted, '+++ after'),
++        (422, Token.Text.Whitespace, '\n'),
++        (423, Token.Generic.Subheading, '@@ -1,5 +1,5 @@'),
++        (438, Token.Text.Whitespace, '\n'),
++        (439, Token.Text.Whitespace, ' '),
++        (440, Token.Text, '{'),
++        (441, Token.Text.Whitespace, '\n'),
++        (442, Token.Generic.Deleted, '-  "exists": false,'),
++        (461, Token.Text.Whitespace, '\n'),
++        (462, Token.Generic.Deleted, '-  "paused": false,'),
++        (481, Token.Text.Whitespace, '\n'),
++        (482, Token.Generic.Deleted, '-  "running": false'),
++        (501, Token.Text.Whitespace, '\n'),
++        (502, Token.Generic.Inserted, '+  "exists": true,'),
++        (520, Token.Text.Whitespace, '\n'),
++        (521, Token.Generic.Inserted, '+  "paused": true,'),
++        (539, Token.Text.Whitespace, '\n'),
++        (540, Token.Generic.Inserted, '+  "running": true'),
++        (558, Token.Text.Whitespace, '\n'),
++        (559, Token.Text.Whitespace, ' '),
++        (560, Token.Text, '}'),
++        (561, Token.Text.Whitespace, '\n'),
++        *(
++            (
++                (
++                    562,
++                    Token.Text.Whitespace,
++                    '\\ No newline at end of file\n',
++                ),
++            ) if IS_OLD_PYGMENTS_PRE_2_14 else (
++                (562, Token.Text, '\\ No newline at end of file'),
++                (589, Token.Text.Whitespace, '\n'),
++            )
++        ),
++        (590, Token.Text.Whitespace, '\n'),
++        (591, Token.Keyword, 'changed'),
++        (598, Token.Punctuation, ':'),
++        (599, Token.Text, ' '),
++        (600, Token.Punctuation, '['),
++        (601, Token.Name.Variable, 'localhost'),
++        (610, Token.Punctuation, ']'),
++        (611, Token.Text, '\n'),
++        (612, Token.Text.Whitespace, '\n'),
++        (613, Token.Keyword, 'TASK'),
++        (617, Token.Text, ' '),
++        (618, Token.Punctuation, '['),
++        (619, Token.Literal, 'volumes (more volumes)'),
++        (641, Token.Punctuation, ']'),
++        (642, Token.Text, ' '),
++        (
++            643,
++            Token.Name.Variable,
++            '*' * 116,
++        ),
++        (759, Token.Text, '\n'),
++        *(
++            (
++                (
++                    760,
++                    Token.Text.Whitespace,
++                    'Sunday 11 November 2018  20:19:25 +0100 (0:00:00.607)       '
++                    '0:10:36.974 *******\n',
++                ),
++            ) if IS_OLD_PYGMENTS_PRE_2_14 else (
++                (
++                    760,
++                    Token.Text,
++                    'Sunday 11 November 2018  20:19:25 +0100 (0:00:00.607)       '
++                    '0:10:36.974 *******',
++                ),
++                (839, Token.Text.Whitespace, '\n'),
++            )
++        ),
++        (840, Token.Generic.Deleted, '--- before'),
++        (850, Token.Text.Whitespace, '\n'),
++        (851, Token.Generic.Inserted, '+++ after'),
++        (860, Token.Text.Whitespace, '\n'),
++        (861, Token.Generic.Subheading, '@@ -1,11 +1,11 @@'),
++        (878, Token.Text.Whitespace, '\n'),
++        (879, Token.Text.Whitespace, ' '),
++        (880, Token.Text, '{'),
++        (881, Token.Text.Whitespace, '\n'),
++        (882, Token.Text.Whitespace, ' '),
++        (883, Token.Text, '  "expected_binds": ['),
++        (904, Token.Text.Whitespace, '\n'),
++        (905, Token.Generic.Deleted, '-    "/tmp:/tmp:rw",'),
++        (925, Token.Text.Whitespace, '\n'),
++        (926, Token.Generic.Deleted, '-    "/:/whatever:rw,z"'),
++        (949, Token.Text.Whitespace, '\n'),
++        (950, Token.Generic.Inserted, '+    "/tmp:/somewhereelse:ro,Z",'),
++        (982, Token.Text.Whitespace, '\n'),
++        (983, Token.Generic.Inserted, '+    "/tmp:/tmp:rw"'),
++        (1002, Token.Text.Whitespace, '\n'),
++        (1003, Token.Text.Whitespace, ' '),
++        (1004, Token.Text, '  ],'),
++        (1008, Token.Text.Whitespace, '\n'),
++        (1009, Token.Text.Whitespace, ' '),
++        (1010, Token.Text, '  "expected_volumes": {'),
++        (1033, Token.Text.Whitespace, '\n'),
++        (1034, Token.Generic.Deleted, '-    "/tmp": {},'),
++        (1050, Token.Text.Whitespace, '\n'),
++        (1051, Token.Generic.Deleted, '-    "/whatever": {}'),
++        (1071, Token.Text.Whitespace, '\n'),
++        (1072, Token.Generic.Inserted, '+    "/somewhereelse": {},'),
++        (1098, Token.Text.Whitespace, '\n'),
++        (1099, Token.Generic.Inserted, '+    "/tmp": {}'),
++        (1114, Token.Text.Whitespace, '\n'),
++        (1115, Token.Text.Whitespace, ' '),
++        (1116, Token.Text, '  },'),
++        (1120, Token.Text.Whitespace, '\n'),
++        (1121, Token.Text.Whitespace, ' '),
++        (1122, Token.Text, '  "running": true'),
++        (1139, Token.Text.Whitespace, '\n'),
++        (1140, Token.Text.Whitespace, ' '),
++        (1141, Token.Text, '}'),
++        (1142, Token.Text.Whitespace, '\n'),
++        *(
++            (
++                (
++                    1143,
++                    Token.Text.Whitespace,
++                    '\\ No newline at end of file\n',
++                ),
++            ) if IS_OLD_PYGMENTS_PRE_2_14 else (
++                (1143, Token.Text, '\\ No newline at end of file'),
++                (1170, Token.Text.Whitespace, '\n'),
++            )
++        ),
++        (1171, Token.Text.Whitespace, '\n'),
++        (1172, Token.Keyword, 'changed'),
++        (1179, Token.Punctuation, ':'),
++        (1180, Token.Text, ' '),
++        (1181, Token.Punctuation, '['),
++        (1182, Token.Name.Variable, 'localhost'),
++        (1191, Token.Punctuation, ']'),
++        (1192, Token.Text, '\n'),
++    ]
++
++    unprocessed_text_tokens = list(
++        _get_lexer_by_name('ansible-output').
++        get_tokens_unprocessed(ansible_play_output_example),
++    )
++    assert unprocessed_text_tokens == expected_resulting_text_tokens

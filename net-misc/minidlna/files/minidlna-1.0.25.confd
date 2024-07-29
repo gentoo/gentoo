@@ -1,0 +1,14 @@
+# /etc/conf.d/minidlna
+
+# Should minidlna rescan the entire collection on startup?
+# Warning: This may take a long time!
+RESCAN="false"
+
+# The location of the config file
+#CONFIG="/etc/minidlna.conf"
+
+# Specify the user/group minidlna should run as
+#M_USER="minidlna"
+#M_GROUP="minidlna"
+
+# vim: ft=gentoo-conf-d

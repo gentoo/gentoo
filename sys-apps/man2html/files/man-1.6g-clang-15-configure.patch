@@ -1,0 +1,83 @@
+--- a/configure
++++ b/configure
+@@ -223,7 +223,7 @@ compile="$CC $DEFS conftest.c -o conftest $LIBS >/dev/null 2>&1"
+ echo checking for ANSI C header files
+ echo "#include <stdlib.h>
+ #include <string.h>
+-main() { exit(0); strerror(0); }" > conftest.c
++int main(void) { exit(0); strerror(0); }" > conftest.c
+ eval $compile
+ if test -s conftest && ./conftest 2>/dev/null; then
+   DEFS="$DEFS -DSTDC_HEADERS"
+@@ -236,7 +236,8 @@ rm -f conftest conftest.c
+ 
+ echo checking for sys/termios.h
+ echo "#include <sys/termios.h>
+-main() { exit(0); }" > conftest.c
++#include <stdlib.h>
++int main(void) { exit(0); }" > conftest.c
+ eval $compile
+ if test -s conftest && ./conftest 2>/dev/null; then
+   DEFS="$DEFS -DTERMIOS_HEADER"
+@@ -245,8 +246,9 @@ rm -f conftest conftest.c
+ 
+ echo checking for POSIX.1 header files
+ echo "#include <unistd.h>
++#include <stdlib.h>
+ #ifdef _POSIX_VERSION
+-main() { exit(0); }
++int main(void) { exit(0); }
+ #else
+ # error no _POSIX_VERSION
+ #endif" > conftest.c
+@@ -258,7 +260,8 @@ rm -f conftest conftest.c
+ 
+ echo checking for BSD string and memory functions
+ echo "#include <strings.h>
+-main() { exit(0); rindex(0, 0); bzero(0, 0); }" > conftest.c
++#include <stdlib.h>
++int main(void) { exit(0); rindex(0, 0); bzero(0, 0); }" > conftest.c
+ eval $compile
+ if test -s conftest ; then :
+   else DEFS="$DEFS -DUSG"
+@@ -267,7 +270,8 @@ rm -f conftest conftest.c
+ 
+ echo checking whether sys/types.h defines uid_t
+ echo '#include <sys/types.h>
+-main() { uid_t x; exit(0); }' > conftest.c
++#include <stdlib.h>
++int main(void) { uid_t x; exit(0); }' > conftest.c
+ eval $compile
+ if test -s conftest ; then :
+ else
+@@ -300,7 +304,8 @@ char *alloca ();
+ #endif
+ #endif
+ #endif
+-main() { char *p = (char *) alloca(1); exit(0); }' > conftest.c
++#include <stdlib.h>
++int main(void) { char *p = (char *) alloca(1); exit(0); }' > conftest.c
+ eval $compile
+ if test -s conftest ; then :
+ elif test -d /usr/ucblib; then LIBS="$LIBS -L/usr/ucblib -lucb"
+@@ -312,7 +317,8 @@ rm -f conftest conftest.c
+ if [ $usenls = true ]; then
+   echo checking for nls
+   echo '#include <nl_types.h>
+-  main() {nl_catd catfd; exit(0); }' > conftest.c
++  #include <stdlib.h>
++  int main(void) {nl_catd catfd; exit(0); }' > conftest.c
+   eval $compile
+   if test -s conftest && ./conftest 2>/dev/null; then :
+   else
+@@ -329,8 +335,9 @@ echo checking for getopt.h
+ echo '#define _GNU_SOURCE
+ #include <getopt.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ struct option long_opts[] = { { "", no_argument, NULL, 0 } };
+-main() { exit(0); }' > conftest.c
++int main(void) { exit(0); }' > conftest.c
+ eval $compile
+ if test -s conftest ; then
+   manpathoption="--path"

@@ -1,0 +1,13 @@
+--- a/src/options.h
++++ b/src/options.h
+@@ -32,10 +32,8 @@
+     char *audio_mpeg_player;
+     int mpeg_player_specified;
+     int newpfx;
+-#ifndef NO_DISPLAY_WINDOW
+     char *savedimgpfx;
+     int enable_gtk_display;
+-#endif
+     char *drop_username;
+ 	int list_interfaces;
+     int monitor_mode;

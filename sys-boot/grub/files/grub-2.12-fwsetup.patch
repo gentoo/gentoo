@@ -1,0 +1,38 @@
+From 6e0b2277eba062bf7950536cd27f9789c545d20f Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Thu, 11 Apr 2024 15:33:45 -0400
+Subject: [PATCH] grub.d: avoid calling fwsetup unconditionally
+
+This causes grub to enter the firmware setup on boot when using a
+grub core that does not support the 'fwsetup --is-supported' option.
+
+Upstream has rejected attempts to resolve this, so we will carry this as
+a distro patch for a bit.
+
+Bug: https://bugs.gentoo.org/925370
+---
+ util/grub.d/30_uefi-firmware.in | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/util/grub.d/30_uefi-firmware.in b/util/grub.d/30_uefi-firmware.in
+index 1c2365ddb..b6041b55e 100644
+--- a/util/grub.d/30_uefi-firmware.in
++++ b/util/grub.d/30_uefi-firmware.in
+@@ -32,11 +32,8 @@ gettext_printf "Adding boot menu entry for UEFI Firmware Settings ...\n" >&2
+ 
+ cat << EOF
+ if [ "\$grub_platform" = "efi" ]; then
+-	fwsetup --is-supported
+-	if [ "\$?" = 0 ]; then
+-		menuentry '$LABEL' \$menuentry_id_option 'uefi-firmware' {
+-			fwsetup
+-		}
+-	fi
++	menuentry '$LABEL' \$menuentry_id_option 'uefi-firmware' {
++		fwsetup
++	}
+ fi
+ EOF
+-- 
+2.44.0
+

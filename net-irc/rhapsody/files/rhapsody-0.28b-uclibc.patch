@@ -1,0 +1,10 @@
+--- rhapsody-0.28b/src/main.c.orig	2008-04-29 09:53:53 +0000
++++ rhapsody-0.28b/src/main.c	2008-04-29 09:55:13 +0000
+@@ -20,6 +20,7 @@
+ /*                                                                           */
+ /*****************************************************************************/
+ 
++#define _GNU_SOURCE 
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <errno.h>

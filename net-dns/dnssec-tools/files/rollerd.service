@@ -1,0 +1,8 @@
+[Unit]
+Description=DNSSEC control daemon
+
+[Service]
+ExecStart=/usr/bin/rollerd -foreground --rrfile /etc/dnssec-tools/dnssec-tools.rollrec -directory /var/bind/pri
+
+[Install]
+WantedBy=multi-user.target

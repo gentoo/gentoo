@@ -1,0 +1,36 @@
+commit 07a9fcefbab049d66cb174ca2c9b91fecc444c5b
+Author: Igor V. Kovalenko <igor.v.kovalenko@gmail.com>
+Date:   Sat Jul 9 09:12:38 2022 +0300
+
+    build-sys: meson: Move qpaeq to daemon build
+    
+    Equalizer control requires server modules only available when daemon is built.
+    Move qpaeq script to be installed together with daemon.
+    
+    Part-of: <https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/734>
+
+diff --git a/src/utils/meson.build b/src/utils/meson.build
+index 28e1fc10a..8496d0bc5 100644
+--- a/src/utils/meson.build
++++ b/src/utils/meson.build
+@@ -72,6 +72,10 @@ if get_option('daemon')
+       c_args : pa_c_args,
+     )
+   endif
++
++  if dbus_dep.found() and fftw_dep.found()
++    install_data('qpaeq', install_dir : bindir)
++  endif
+ endif
+ 
+ if get_option('client')
+@@ -117,9 +121,5 @@ if get_option('client')
+     )
+   endif
+ 
+-  if dbus_dep.found() and fftw_dep.found()
+-    install_data('qpaeq', install_dir : bindir)
+-  endif
+-
+   install_data('pa-info', install_dir : bindir)
+ endif

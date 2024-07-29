@@ -1,0 +1,24 @@
+From f4cd320421d80075c280dc23115d00ecefb8501c Mon Sep 17 00:00:00 2001
+From: Thomas Bracht Laumann Jespersen <t@laumann.xyz>
+Date: Sat, 26 Mar 2022 16:08:49 +0100
+Subject: [PATCH] pkgconfig
+
+--- a/Makefile
++++ b/Makefile
+@@ -1,10 +1,10 @@
+ 
+ PREFIX ?= /usr/local
+-GTK_CONFIG = pkg-config gtk+-2.0
++PKG_CONFIG ?= pkg-config
+ PLUGIN_DIR ?= $(PREFIX)/lib/gkrellm2/plugins
+ GKRELLM_INCLUDE = -I$(PREFIX)/include
+-GTK_CFLAGS = `$(GTK_CONFIG) --cflags` 
+-GTK_LIB = `$(GTK_CONFIG) --libs`
++GTK_CFLAGS = $(shell ${PKG_CONFIG} gtk+-2.0 --cflags)
++GTK_LIB = $(shell ${PKG_CONFIG} gtk+-2.0 --libs)
+ FLAGS = -fPIC $(GTK_CFLAGS) $(GKRELLM_INCLUDE)
+ LIBS = $(GTK_LIB)
+ LFLAGS = -shared
+-- 
+2.34.1
+

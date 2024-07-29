@@ -1,0 +1,90 @@
+--- wakeonlan-0.41.orig/wakeonlan
++++ wakeonlan-0.41/wakeonlan
+@@ -5,6 +5,7 @@
+ #########################################################################       
+ 
+ use strict;
++use Net::hostent;
+ use Socket;
+ use Getopt::Std;
+ use vars qw($VERSION $opt_v $opt_h $opt_i $opt_p $opt_f);
+@@ -44,19 +45,64 @@
+ 
+ sub wake
+ {
+-	my $hwaddr  = shift;
++	my $host    = shift;
+ 	my $ipaddr  = shift || $DEFAULT_IP;
+ 	my $port    = shift || $DEFAULT_PORT;
+ 
+ 	my ($raddr, $them, $proto);
+-	my ($hwaddr_re, $pkt);
++	my ($hwaddr, $hwaddr_re, $pkt);
+ 	
+-	# Validate hardware address (ethernet address)
++	# get the hardware address (ethernet address)
+ 
+ 	$hwaddr_re = join(':', ('[0-9A-Fa-f]{1,2}') x 6);
+-	if ($hwaddr !~ m/^$hwaddr_re$/) {
+-		warn "Invalid hardware address: $hwaddr\n";
+-		return undef;
++	if ($host =~ m/^$hwaddr_re$/) {
++		$hwaddr = $host;
++	} else {
++		# $host is not a hardware address, try to resolve it
++		my $ip_re = join('\.', ('([0-9]|[1-9][0-9]|1[0-9]{2}|2([0-4][0-9]|5[0-5]))') x 4);
++		my $ip_addr;
++		if ($host =~ m/^$ip_re$/) {
++			$ip_addr = $host;
++		} else {
++			my $h;
++			unless ($h = gethost($host)) {
++				warn "$host is not a hardware address and I could not resolve it as to an IP address.\n";
++				return undef;
++			}
++			$ip_addr = inet_ntoa($h->addr);
++		}
++		# look up ip in /etc/ethers
++		unless (open (ETHERS, '<', '/etc/ethers')) {
++			warn "$host is not a hardware address and I could not open /etc/ethers.\n";
++			return undef;
++		}
++		while (<ETHERS>) {
++			if (($_ !~ m/^$/) && ($_ !~ m/^#/)) { # ignore comments
++				my ($mac, $ip);
++				($mac, $ip) = split(' ', $_, 3);
++				if ($ip =~ m/^$ip_re$/) {
++					if ($ip eq $ip_addr) {
++						$hwaddr = $mac;
++						last;
++					}
++					next;
++				} else {
++					my $h2;
++					unless ($h2 = gethost($ip)) {
++						next;
++					}
++					if (inet_ntoa($h2->addr) eq $ip_addr) {
++						$hwaddr = $mac;
++						last;
++					}
++				}
++			}
++		}
++		close (ETHERS);
++		unless (defined($hwaddr)) {
++			warn "Could not find $host in /etc/ethers\n";
++			return undef;
++		}
+ 	}
+ 
+ 	# Generate magic sequence
+@@ -68,7 +114,7 @@
+ 
+ 	# Allocate socket and send packet
+ 
+-	$raddr = gethostbyname($ipaddr);
++	$raddr = gethostbyname($ipaddr)->addr;
+ 	$them = pack_sockaddr_in($port, $raddr);
+ 	$proto = getprotobyname('udp');
+ 

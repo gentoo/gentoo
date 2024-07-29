@@ -1,0 +1,84 @@
+ CMakeLists.txt         | 29 +++++++++++++++++++++++++++--
+ SRC/CMakeLists.txt     |  7 ++++++-
+ TESTING/CMakeLists.txt |  5 +++++
+ 3 files changed, 38 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 37fb433..fe29d4c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -28,7 +28,33 @@ set(CPACK_PACKAGE_VERSION_MAJOR 3)
+ set(CPACK_PACKAGE_VERSION_MINOR 2)
+ set(CPACK_PACKAGE_VERSION_PATCH 1)
+ 
+-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
++if(BLAS_LIBRARIES)
++  include(CheckFortranFunctionExists)
++  set(CMAKE_REQUIRED_LIBRARIES ${BLAS_LIBRARIES})
++  CHECK_FORTRAN_FUNCTION_EXISTS("dgemm" BLAS_FOUND)
++  unset( CMAKE_REQUIRED_LIBRARIES )
++  if(BLAS_FOUND)
++    message(STATUS "--> BLAS supplied by user is WORKING, will use ${BLAS_LIBRARIES}.")
++  else(BLAS_FOUND)
++    message(ERROR "--> BLAS supplied by user is not WORKING, CANNOT USE ${BLAS_LIBRARIES}.")
++    message(ERROR "-->     Will use REFERENCE BLAS (by default)")
++    message(ERROR "-->     Or Correct your BLAS_LIBRARIES entry ")
++    message(ERROR "-->     Or Consider checking USE_OPTIMIZED_BLAS")
++  endif(BLAS_FOUND)
++else(BLAS_LIBRARIES)
++   # User did not provide a BLAS Library
++   find_package(PkgConfig)
++   pkg_check_modules(BLAS blas)
++endif (BLAS_LIBRARIES)
++
++if(NOT BLAS_FOUND)
++    message(FATAL_ERROR "--> BLAS libraries needed but not found.")
++endif(NOT BLAS_FOUND)
++
++if(BLAS_LIBRARY_DIRS)
++#   SET_TARGET_PROPERTIES(clapack PROPERTIES LINK_FLAGS ${LINK_FLAGS} -L"${BLAS_LIBRARY_DIRS}")
++	SET (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -L\"${BLAS_LIBRARY_DIRS}\"")
++endif()
+ 
+ add_subdirectory(SRC)
+ 
+@@ -44,4 +70,3 @@ configure_file(${CLAPACK_SOURCE_DIR}/clapack-config-version.cmake.in
+   ${CLAPACK_BINARY_DIR}/clapack-config-version.cmake @ONLY)
+ configure_file(${CLAPACK_SOURCE_DIR}/clapack-config.cmake.in
+   ${CLAPACK_BINARY_DIR}/clapack-config.cmake @ONLY)
+-
+diff --git a/SRC/CMakeLists.txt b/SRC/CMakeLists.txt
+index 7b75ee9..39380ed 100644
+--- a/SRC/CMakeLists.txt
++++ b/SRC/CMakeLists.txt
+@@ -376,8 +376,13 @@ if(BUILD_COMPLEX16)
+   set(ALLOBJ  ${ZLASRC} ${ALLAUX} ${DZLAUX})
+ endif()
+ 
++set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
++
+ add_library(clapack SHARED ${ALLOBJ} ${ALLXOBJ})
+-target_link_libraries(clapack blas f2c m)
++target_link_libraries(clapack ${BLAS_LIBRARIES} f2c m)
++if(BLAS_LIBRARY_DIRS)
++	SET_TARGET_PROPERTIES(clapack PROPERTIES LINK_FLAGS ${LINK_FLAGS} -L"${BLAS_LIBRARY_DIRS}")
++endif()
+ set_target_properties(clapack PROPERTIES SOVERSION "${CLAPACK_VERSION}")
+ 
+ install(
+diff --git a/TESTING/CMakeLists.txt b/TESTING/CMakeLists.txt
+index d59359d..174672e 100644
+--- a/TESTING/CMakeLists.txt
++++ b/TESTING/CMakeLists.txt
+@@ -4,6 +4,11 @@ if(MSVC_VERSION)
+   string(REGEX REPLACE "(.*)/STACK:(.*) (.*)" "\\1/STACK:900000000000000000 \\3"
+     CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}")
+ endif()
++if(BLAS_LIBRARY_DIRS)
++#   SET_TARGET_PROPERTIES(clapack PROPERTIES LINK_FLAGS ${LINK_FLAGS} -L"${BLAS_LIBRARY_DIRS}")
++       SET (CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -L\"${BLAS_LIBRARY_DIRS}\"")
++endif()
++
+ add_subdirectory(MATGEN)
+ add_subdirectory(LIN)
+ add_subdirectory(EIG)

@@ -1,0 +1,15 @@
+* check ncurses first, such that we only link agains (system) termcap if
+  necessary (never the case in prefix) -- grobian@gentoo.org
+* check tinfo in case of ncurses[tinfo] -- jer@gentoo.org
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -174,7 +174,7 @@
+ AC_CHECK_LIB(kvm, kvm_open)
+ # -lmld -lmach
+ AC_CHECK_LIB(mach, vm_statistics)
+-AC_SEARCH_LIBS(tgetent, termcap curses ncurses)
++AC_SEARCH_LIBS(tgetent, ncurses tinfo curses termcap)
+ AC_CHECK_LIB(m, exp)
+ 
+ # check for libraries required by extension

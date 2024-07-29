@@ -1,0 +1,9 @@
+For running Weston you need to have $XDG_RUNTIME_DIR in your environment,
+directory must exist and have correct permissions. If you are not using systemd,
+it will not be created automatically, you can create it using your shell,
+add these lines to ~/.bash_profile:
+
+# wayland
+export XDG_RUNTIME_DIR=/tmp/.runtime-${USER}
+mkdir -p "${XDG_RUNTIME_DIR}"
+chmod 0700 "${XDG_RUNTIME_DIR}"

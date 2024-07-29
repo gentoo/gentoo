@@ -1,0 +1,11 @@
+--- a/src/Makefile	2001-10-29 18:40:48.000000000 +0100
++++ b/src/Makefile	2010-09-17 07:28:09.000000000 +0200
+@@ -60,7 +60,7 @@
+ all:	jail
+ 
+ jail:	jail.c $(OBJ)
+-	$(CC) $(CFLAGS) $(INCLUDE) jail.c -o jail $(OBJ) $(LIBS) && \
++	$(CC) $(CFLAGS) $(LDFLAGS) $(INCLUDE) jail.c -o jail $(OBJ) $(LIBS) && \
+ 	cp jail ../bin
+ 
+ clean:

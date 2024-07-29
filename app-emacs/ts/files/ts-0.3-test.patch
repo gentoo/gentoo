@@ -1,0 +1,100 @@
+--- a/test/test.el
++++ b/test/test.el
+@@ -254,24 +254,6 @@
+ 
+ ;;;;; Formatting
+ 
+-(ert-deftest ts-format ()
+-  ;; We test two timestamps to help avoid problems with the test
+-  ;; machine's local timezone affecting results.
+-  (let ((ts (make-ts :year 2019 :month 7 :day 27 :hour 20 :minute 48 :second 08 :tz-offset "-0400")))
+-    ;; Following the pattern in the function:
+-    (should (equal (ts-format ts) "2019-07-27 20:48:08 -0400"))
+-    (should (equal (ts-format "%Y" ts) "2019"))
+-    (should (ts-format "%Y"))
+-    (should (equal (ts-format nil ts) "2019-07-27 20:48:08 -0400"))
+-    (should (ts-format)))
+-  (let ((ts (make-ts :year 2019 :month 7 :day 27 :hour 19 :minute 48 :second 08 :tz-offset "-0500")))
+-    ;; Following the pattern in the function:
+-    (should (equal (ts-format ts) "2019-07-27 19:48:08 -0500"))
+-    (should (equal (ts-format "%Y" ts) "2019"))
+-    (should (ts-format "%Y"))
+-    (should (equal (ts-format nil ts) "2019-07-27 19:48:08 -0500"))
+-    (should (ts-format))))
+-
+ ;;;;; Parsing
+ 
+ (ert-deftest ts-parse ()
+@@ -355,13 +337,6 @@
+     ;; 12:12, which means 0 seconds.
+     (should (eq (ts-S ts) 0))))
+ 
+-(ert-deftest ts-parse-org ()
+-  ;; NOTE: Not sure how to best handle loading `org-parse-time-string'.  Calling (require 'ts)
+-  ;; shouldn't cause Org to be loaded, so the user will probably have to do that.
+-  (require 'org)
+-  (let* ((org-ts-string "<2015-09-24 Thu .+1d>"))
+-    (should (equal 1443070800.0 (ts-unix (ts-parse-org org-ts-string))))))
+-
+ (ert-deftest ts-parse-org-fill ()
+   (should-error (ts-parse-org-fill nil "<2015-09-24 Thu .+1d>"))
+   (let ((ts (ts-parse-org-fill 'begin "<2015-09-24 Thu .+1d>")))
+@@ -413,27 +388,6 @@
+     (should (eq (ts-M ts) 12))
+     (should (eq (ts-S ts) 0))))
+ 
+-(ert-deftest ts-parse-org-element ()
+-  (let ((org-ts '(timestamp (:type active
+-                                   :raw-value "<2015-09-24 Thu .+1d>"
+-                                   :year-start 2015 :month-start 9 :day-start 24
+-                                   :hour-start nil :minute-start nil
+-                                   :year-end 2015 :month-end 9 :day-end 24
+-                                   :hour-end nil :minute-end nil
+-                                   :begin 230314 :end 230335 :post-blank 0
+-                                   :repeater-type restart :repeater-value 1 :repeater-unit day))))
+-    (should (equal 1443070800.0 (ts-unix (ts-parse-org-element org-ts)))))
+-  (let ((org-ts-string "<2015-09-24 Thu .+1d>"))
+-    (with-temp-buffer
+-      (delay-mode-hooks
+-        (org-mode)
+-        (save-excursion
+-          (insert org-ts-string))
+-        (should (->> (org-element-context)
+-                     (ts-parse-org-element)
+-                     (ts-unix)
+-                     (equal 1443070800.0)))))))
+-
+ ;;;;; Other
+ 
+ (ert-deftest ts-apply ()
+@@ -443,30 +397,6 @@
+     (should (= (- (ts-year now) (ts-year then))
+                expected-difference))))
+ 
+-(ert-deftest ts-fill ()
+-  (let ((zones '("America/Chicago" (-18000 "CDT")))
+-        ts)
+-    (dolist (zone zones)
+-      (setf ts (ts-fill (make-ts :unix 1625426636.7569551) zone))
+-      (should (equal (ts-year ts) 2021))
+-      (should (equal (ts-month-num ts) 7))
+-      (should (equal (ts-day-of-month-num ts) 4))
+-      (should (equal (ts-day-of-week-num ts) 0))
+-      (should (equal (ts-hour ts) 14))
+-      (should (equal (ts-minute ts) 23))
+-      (should (equal (ts-second ts) 56))
+-      (should (equal (ts-month-name ts) "July"))
+-      (should (equal (ts-month-abbr ts) "Jul"))
+-      (should (equal (ts-day-abbr ts) "Sun"))
+-      (should (equal (ts-day-name ts) "Sunday"))
+-      (should (equal (ts-day-of-year ts) 185))
+-      (should (equal (ts-week-of-year ts) 26))
+-      (should (equal (ts-tz-abbr ts) "CDT"))
+-      (should (equal (ts-tz-offset ts) "-0500"))))
+-  ;; If ZONE is the plain integer -18000, the tz-abbr ("%z" to `format-time-string')
+-  ;; is "-05" rather than the zone abbreviation, so we test it separately.
+-  (should (equal (ts-tz-abbr (ts-fill (make-ts :unix 1625426636.7569551) -18000)) "-05")))
+-
+ (ert-deftest ts-now ()
+   "Ensure `ts-now' returns what appears to be the current time."
+   (should (equal (floor (ts-unix (ts-now)))

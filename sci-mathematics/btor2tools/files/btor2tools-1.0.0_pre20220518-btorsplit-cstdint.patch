@@ -1,0 +1,10 @@
+--- a/src/btorsplit.cpp
++++ b/src/btorsplit.cpp
+@@ -19,6 +19,7 @@
+ #include <sstream>
+ #include <unordered_set>
+ #include <vector>
++#include <cstdint>
+ 
+ /*--------------------------------------------------------------------------*/
+ 

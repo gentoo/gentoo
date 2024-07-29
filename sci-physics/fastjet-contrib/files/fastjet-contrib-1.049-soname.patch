@@ -1,0 +1,11 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -54,7 +54,7 @@
+ 
+ fragile_SHARED_SRC_LIST=@FRAGILE_SHARED_SRC_LIST@
+ libfastjetcontribfragile.@DYNLIBEXT@: $(fragile_SHARED_SRC_LIST)
+-	$(CXX) @DYNLIBOPT@ -fPIC -DPIC $(CXXFLAGS) `$(FASTJETCONFIG) --cxxflags --libs` $(fragile_SHARED_SRC_LIST) -o libfastjetcontribfragile.@DYNLIBEXT@
++	$(CXX) @DYNLIBOPT@ -fPIC -DPIC -Wl,-Ol -Wl,--as-needed -Wl,-soname,fastjetcontribfragile.so.0 $(LDFLAGS) $(CXXFLAGS) `$(FASTJETCONFIG) --cxxflags --libs` $(fragile_SHARED_SRC_LIST) -o libfastjetcontribfragile.@DYNLIBEXT@
+ 
+ fragile-shared-install: fragile-shared
+ 	utils/install-sh -c -m 755 libfastjetcontribfragile.@DYNLIBEXT@ $(PREFIX)/lib

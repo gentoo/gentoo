@@ -1,0 +1,14 @@
+Don't crash when LANG is not set
+
+--- lletters-0.1.95/lln.c	2020-10-03 20:22:43.470743688 +0100
++++ lletters-0.1.95/lln.c	2020-10-03 20:31:03.322335396 +0100
+@@ -138,7 +138,8 @@ main (int argc, char *argv[])
+   /* End change by Gopal Narayanan */
+ 
+   /* Change by Lalo Martins, Feb 27 1999: */
+-  lang = strtok(getenv ("LANG"), "_");
++  char* envlang = getenv("LANG");
++  lang = strtok(envlang ? envlang : "", "_");
+ //  lang = strtok(lang, "_");
+ 
+   if (!lang)

@@ -1,0 +1,55 @@
+diff -urN spindown-0.4.0.orig/Makefile spindown-0.4.0/Makefile
+--- spindown-0.4.0.orig/Makefile	2009-04-18 18:32:59.000000000 +0200
++++ spindown-0.4.0/Makefile	2012-03-11 00:22:07.684197769 +0100
+@@ -4,7 +4,8 @@
+ OBJS = main.o diskset.o disk.o spindown.o iniparser.o dictionary.o log.o spindownd.o\
+         exceptions.o
+ CC = g++
+-CFLAGS =-O1
++CFLAGS +=
++LDFLAGS +=
+ SRC = src/
+ INPARSER = $(SRC)ininiparser3.0b/
+ SRCDIR = spindown-$(VERSION)
+@@ -60,31 +61,31 @@
+ 	rm -d -r -f $(SRCDIR)
+ 
+ spindownd: $(OBJS)
+-	g++ $(CFLAGS) -o spindownd $(OBJS)
++	g++ $(CFLAGS) $(LDFLAGS) -o spindownd $(OBJS)
+ 
+ main.o: $(SRC)main.cpp $(SRC)general.h
+-	g++ $(CFLAGS) -c $(SRC)main.cpp
++	g++ $(CFLAGS) $(LDFLAGS) -c $(SRC)main.cpp
+ 
+ diskset.o: $(SRC)diskset.cpp $(SRC)diskset.h $(SRC)general.h
+-	g++ $(CFLAGS) -c $(SRC)diskset.cpp
++	g++ $(CFLAGS) $(LDFLAGS) -c $(SRC)diskset.cpp
+ 
+ disk.o: $(SRC)disk.cpp $(SRC)disk.h $(SRC)general.h
+-	g++ $(CFLAGS) -c $(SRC)disk.cpp
++	g++ $(CFLAGS) $(LDFLAGS) -c $(SRC)disk.cpp
+ 
+ spindown.o: $(SRC)spindown.cpp $(SRC)spindown.h $(SRC)general.h
+-	g++ $(CFLAGS) -c $(SRC)spindown.cpp
++	g++ $(CFLAGS) $(LDFLAGS) -c $(SRC)spindown.cpp
+ 
+ spindownd.o: $(SRC)spindownd.cpp $(SRC)spindownd.h $(SRC)general.h
+-	g++ $(CFLAGS) -c $(SRC)spindownd.cpp
++	g++ $(CFLAGS) $(LDFLAGS) -c $(SRC)spindownd.cpp
+ 
+ log.o: $(SRC)log.cpp $(SRC)log.h $(SRC)general.h
+-	g++ $(CFLAGS) -c $(SRC)log.cpp
++	g++ $(CFLAGS) $(LDFLAGS) -c $(SRC)log.cpp
+ 
+ exceptions.o: $(SRC)exceptions.cpp $(SRC)exceptions.h $(SRC)general.h
+-	g++ $(CFLAGS) -c $(SRC)exceptions.cpp
++	g++ $(CFLAGS) $(LDFLAGS) -c $(SRC)exceptions.cpp
+ 
+ iniparser.o: $(INPARSER)iniparser.c
+-	g++ $(CFLAGS) -c $(INPARSER)iniparser.c
++	g++ $(CFLAGS) $(LDFLAGS) -c $(INPARSER)iniparser.c
+ 
+ dictionary.o: $(INPARSER)dictionary.c
+-	g++ $(CFLAGS) -c $(INPARSER)dictionary.c
++	g++ $(CFLAGS) $(LDFLAGS) -c $(INPARSER)dictionary.c

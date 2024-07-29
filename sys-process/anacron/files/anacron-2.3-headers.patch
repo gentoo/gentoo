@@ -1,0 +1,40 @@
+add headers for various function prototypes
+
+--- a/main.c
++++ b/main.c
+@@ -24,6 +24,7 @@
+ 
+ #include <time.h>
+ #include <stdio.h>
++#include <stdlib.h> /* exit */
+ #include <unistd.h>
+ #include <signal.h>
+ #include <fcntl.h>
+--- a/log.c
++++ b/log.c
+@@ -37,6 +37,7 @@
+ #include <unistd.h>
+ #include <syslog.h>
+ #include <stdio.h>
++#include <stdlib.h> /* exit */
+ #include <stdarg.h>
+ #include <errno.h>
+ #include <signal.h>
+@@ -78,6 +79,7 @@ make_msg(const char *fmt, va_list args)
+ 	strcpy(msg + sizeof(msg) - sizeof(truncated), truncated);
+ }
+ 
++#define log my_log /* log is a math builtin */
+ static void
+ log(int priority, const char *fmt, va_list args)
+ /* Log a message, described by "fmt" and "args", with the specified
+--- a/matchrx.c
++++ b/matchrx.c
+@@ -23,6 +23,7 @@
+ 
+ 
+ #include <stdio.h>
++#include <string.h> /* memset */
+ #include <regex.h>
+ #include <stdarg.h>
+ #include <stdlib.h>

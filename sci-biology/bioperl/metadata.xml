@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-biology@gentoo.org</email>
+    <name>Gentoo Biology Project</name>
+  </maintainer>
+  <use>
+    <flag name="run">Install <pkg>sci-biology/bioperl-run</pkg></flag>
+    <flag name="network">Install <pkg>sci-biology/bioperl-run</pkg></flag>
+    <flag name="db">Install <pkg>sci-biology/bioperl-run</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="cpan">BioPerl</remote-id>
+  </upstream>
+</pkgmetadata>

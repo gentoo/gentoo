@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=WmSysTray
+Comment=SysTray dockapp for WindowMaker
+Comment[pl]=Dokowalny SysTray dla WindowMakera
+Exec=wmsystray
+Type=Application
+Terminal=false
+Categories=Utility;

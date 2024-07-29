@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+  <maintainer type="person">
+    <email>frp.bissey@gmail.com</email>
+    <name>François Bissey</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    This package provides routines for factoring integers, in
+    particular:
+
+      * Pollard's p-1
+      * Williams' p+1
+      * Elliptic Curves Method (ECM)
+      * Continued Fraction Algorithm (CFRAC)
+      * Multiple Polynomial Quadratic Sieve (MPQS)
+
+    It also provides access to Richard P. Brent's tables of factors of
+    integers of the form b^k +/- 1.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">gap-packages/FactInt</remote-id>
+  </upstream>
+</pkgmetadata>

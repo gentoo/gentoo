@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The kde-frameworks category contains KDE Frameworks –
+		add-on libraries for programming with Qt.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie kde-frameworks enthält die KDE Frameworks –
+		Erweiterungen für Qt.
+	</longdescription>
+</catmetadata>

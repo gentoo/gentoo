@@ -1,0 +1,6 @@
+[Unit]
+Description=ZFS daily snapshot service
+Documentation=man:zfs-auto-snapshot(8)
+
+[Service]
+ExecStart=@GENTOO_PORTAGE_EPREFIX@/usr/sbin/zfs-auto-snapshot @DEFAULT_EXCLUDE@ --skip-scrub --label=daily --keep=31 //

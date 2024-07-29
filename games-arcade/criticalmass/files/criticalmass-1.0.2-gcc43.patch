@@ -1,0 +1,46 @@
+https://bugs.gentoo.org/218299
+--- a/tinyxml/tinyxml.cpp
++++ b/tinyxml/tinyxml.cpp
+@@ -25,2 +25,4 @@
+ 
++#include <cstring>
++
+ 
+--- a/tinyxml/tinyxml.h
++++ b/tinyxml/tinyxml.h
+@@ -32,2 +32,3 @@
+ 
++#include <cstdlib>
+ #include <string>
+--- a/tinyxml/tinyxmlparser.cpp
++++ b/tinyxml/tinyxmlparser.cpp
+@@ -27,2 +27,4 @@
+ 
++#include <cstring>
++
+ const char* TiXmlBase::SkipWhiteSpace( const char* p )
+--- a/utils/ResourceManager.cpp
++++ b/utils/ResourceManager.cpp
+@@ -24,2 +24,4 @@
+ 
++#include <cstring>
++
+ #ifdef WIN32
+--- a/utils/Value.hpp
++++ b/utils/Value.hpp
+@@ -17,2 +17,3 @@
+ 
++#include <cstdlib>
+ #include <stdio.h>
+--- a/utils/zStream.cpp
++++ b/utils/zStream.cpp
+@@ -14,2 +14,3 @@
+ //
++#include <cstdlib>
+ #include <Trace.hpp>
+--- a/utils/zStreamBufferImplZLib.cpp
++++ b/utils/zStreamBufferImplZLib.cpp
+@@ -14,2 +14,3 @@
+ //
++#include <cstdlib>
+ #include <Trace.hpp>

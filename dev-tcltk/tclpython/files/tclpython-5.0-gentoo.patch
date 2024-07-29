@@ -1,0 +1,46 @@
+--- a/Makefile	2018-10-28 17:21:20.274137396 +0100
++++ b/Makefile	2018-10-28 17:21:47.696694473 +0100
+@@ -16,11 +16,11 @@
+ LIBRARY:= $(PKG_NAME).so.$(PKG_VERSION)
+ 
+ TCL_VERSION=$(shell echo 'puts $\$$tcl_version' | tclsh)
+-CFLAGS:= -O2 -Wall -fPIC -DUSE_TCL_STUBS
++CFLAGS:= $(MYCFLAGS) -fPIC -DUSE_TCL_STUBS
+ CFLAGS+= $(shell $(PYTHON_CONFIG) --includes)
+ CFLAGS+= -I/usr/include/tcl$(TCL_VERSION)
+ CFLAGS+= -DTCLPYTHON_VERSION=$(PKG_VERSION)
+-LDFLAGS:= -shared -s
++LDFLAGS:= $(MYLDFLAGS) -shared
+ LDFLAGS+= $(shell $(PYTHON_CONFIG) --libs)
+ LDFLAGS+= -ltclstub$(TCL_VERSION)
+ 
+@@ -62,7 +62,8 @@
+ $(OUTPUT_DIR)/pkgIndex.tcl:pkg/pkgIndex.tcl
+ 	cp -t $(dir $@) $^
+ 	
+-package: $(OUTPUT_DIR)/$(LIBRARY) $(OUTPUT_DIR)/pkgIndex.tcl
++package: $(OUTPUT_DIR)/$(LIBRARY)
++	${MAKE} $(OUTPUT_DIR)/pkgIndex.tcl
+ 
+ ifneq ($(MAKECMDGOALS), clean)
+   -include $(DEPEND)
+--- a/src/py.c	2022-02-06 10:20:03.352580186 +0100
++++ b/src/py.c	2022-02-06 11:16:49.504796684 +0100
+@@ -24,7 +24,6 @@
+             // First time initializing Python
+             Py_NoSiteFlag = 1;
+             Py_Initialize();
+-            PyEval_InitThreads();
+             GlobalThread = PyEval_SaveThread();
+         }
+         
+@@ -60,7 +59,8 @@
+     #ifdef WITH_THREAD
+         PyEval_RestoreThread(interp->thread_state);
+         Py_EndInterpreter(interp->thread_state);
+-        PyEval_ReleaseLock();
++        PyThreadState_Swap(GlobalThread);
++        PyEval_SaveThread();
+     #endif
+     
+     free(interp);

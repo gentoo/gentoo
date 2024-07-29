@@ -1,0 +1,15 @@
+Fix some missing (transparent) text with libsdl-1.2.15_p20210224.
+Same issue as t4k-common-0.1.1 given tuxtype shares the same
+code and wasn't migrated to support the separate library yet.
+--- a/src/SDL_extras.c
++++ b/src/SDL_extras.c
+@@ -1297,3 +1297,3 @@
+   /* Use color key for eventual transparency: */
+-  color_key = SDL_MapRGB(bg->format, 01, 01, 01);
++  color_key = SDL_MapRGBA(bg->format, 01, 01, 01, 0xff);
+   SDL_FillRect(bg, NULL, color_key);
+@@ -1344,3 +1344,3 @@
+   SDL_SetColorKey(bg, SDL_SRCCOLORKEY|SDL_RLEACCEL, color_key);
+-  out = SDL_DisplayFormatAlpha(bg);
++  out = SDL_DisplayFormat(bg);
+   SDL_FreeSurface(bg);

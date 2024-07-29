@@ -1,0 +1,13 @@
+https://src.fedoraproject.org/rpms/pstoedit/raw/rawhide/f/pstoedit-fix-gcc12.patch
+https://bugs.gentoo.org/844040
+--- a/src/drvpptx.cpp
++++ b/src/drvpptx.cpp
+@@ -65,6 +65,7 @@
+ #define ZIP_EXTERN extern
+ 
+ #include <zip.h>
++#include <memory>
+ 
+ #ifdef _MSC_VER
+ // MS VC++ Windows
+
