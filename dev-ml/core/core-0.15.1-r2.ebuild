@@ -38,7 +38,7 @@ RDEPEND="
 	dev-ml/ppx_pipebang:=
 	dev-ml/ppx_sexp_message:=
 	dev-ml/ppx_sexp_value:=
-	dev-ml/ppx_stable:=
+	dev-ml/ppx_stable:${SLOT}[ocamlopt?]
 	dev-ml/ppx_string:${SLOT}[ocamlopt?]
 	dev-ml/ppx_ignore_instrumentation:${SLOT}[ocamlopt?]
 	dev-ml/typerep:${SLOT}[ocamlopt?]
