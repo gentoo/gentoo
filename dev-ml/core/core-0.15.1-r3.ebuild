@@ -33,11 +33,11 @@ RDEPEND="
 	dev-ml/ppx_let:=
 	dev-ml/ppx_log:=
 	dev-ml/ppx_jane:${SLOT}
-	dev-ml/ppx_module_timer:=
-	dev-ml/ppx_optional:=
-	dev-ml/ppx_pipebang:=
-	dev-ml/ppx_sexp_message:=
-	dev-ml/ppx_sexp_value:=
+	dev-ml/ppx_module_timer:${SLOT}[ocamlopt?]
+	dev-ml/ppx_optional:${SLOT}[ocamlopt?]
+	dev-ml/ppx_pipebang:${SLOT}[ocamlopt?]
+	dev-ml/ppx_sexp_message:${SLOT}[ocamlopt?]
+	dev-ml/ppx_sexp_value:${SLOT}[ocamlopt?]
 	dev-ml/ppx_stable:${SLOT}[ocamlopt?]
 	dev-ml/ppx_string:${SLOT}[ocamlopt?]
 	dev-ml/ppx_ignore_instrumentation:${SLOT}[ocamlopt?]
