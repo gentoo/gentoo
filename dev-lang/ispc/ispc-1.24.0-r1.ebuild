@@ -42,6 +42,10 @@ BDEPEND="
 	${PYTHON_DEPS}
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.24.0-ignore-git.patch"
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
