@@ -121,22 +121,30 @@ test_fix_tool_path() {
 	tend ${?}
 }
 
+# full range
+test_globals '14 15 16 17 18 19' \
+	"+llvm_slot_18 llvm_slot_15 llvm_slot_16 llvm_slot_17 llvm_slot_19" \
+	"^^ ( llvm_slot_15 llvm_slot_16 llvm_slot_17 llvm_slot_18 llvm_slot_19 )" \
+	"llvm_slot_15(-)?,llvm_slot_16(-)?,llvm_slot_17(-)?,llvm_slot_18(-)?,llvm_slot_19(-)?"
 test_globals '14 15 16 17 18' \
-	"+llvm_slot_17 llvm_slot_15 llvm_slot_16 llvm_slot_18" \
+	"+llvm_slot_18 llvm_slot_15 llvm_slot_16 llvm_slot_17" \
 	"^^ ( llvm_slot_15 llvm_slot_16 llvm_slot_17 llvm_slot_18 )" \
 	"llvm_slot_15(-)?,llvm_slot_16(-)?,llvm_slot_17(-)?,llvm_slot_18(-)?"
+# older than stable
 test_globals '14 15 16' \
 	"+llvm_slot_16 llvm_slot_15" \
 	"^^ ( llvm_slot_15 llvm_slot_16 )" \
 	"llvm_slot_15(-)?,llvm_slot_16(-)?"
-test_globals '15 18' \
-	"+llvm_slot_15 llvm_slot_18" \
-	"^^ ( llvm_slot_15 llvm_slot_18 )" \
-	"llvm_slot_15(-)?,llvm_slot_18(-)?"
-test_globals '18' \
-	"+llvm_slot_18" \
-	"^^ ( llvm_slot_18 )" \
-	"llvm_slot_18(-)?"
+# old + newer than current stable
+test_globals '15 19' \
+	"+llvm_slot_15 llvm_slot_19" \
+	"^^ ( llvm_slot_15 llvm_slot_19 )" \
+	"llvm_slot_15(-)?,llvm_slot_19(-)?"
+# newer than current stable
+test_globals '19' \
+	"+llvm_slot_19" \
+	"^^ ( llvm_slot_19 )" \
+	"llvm_slot_19(-)?"
 
 LLVM_COMPAT=( {14..18} )
 inherit llvm-r1
