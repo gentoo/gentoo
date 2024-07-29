@@ -453,6 +453,7 @@ src_prepare() {
 		"${FILESDIR}/chromium-126-oauth2-client-switches.patch"
 		"${FILESDIR}/chromium-127-browser-ui-deps.patch"
 		"${FILESDIR}/chromium-127-bindgen-custom-toolchain.patch"
+		"${FILESDIR}/chromium-127-enterprise-companion.patch"
 	)
 
 	# 127: test deps are broken for ui/lens with system ICU "//third_party/icu:icuuc_public"
