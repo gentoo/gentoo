@@ -1,0 +1,28 @@
+# https://github.com/xyproto/zsnes/issues/19#issuecomment-1710906677
+# https://github.com/TrashRaccoonSnuffy/zsnes/commit/f77ec1a0
+
+Author: Sneed <127693805+TrashRaccoonSnuffy@users.noreply.github.com>
+Date: Thu, 7 Sep 2023 21:06:10 -0300
+
+    Fix a buffer overflow
+
+--- a/initc.c
++++ b/initc.c
+@@ -1364,7 +1364,7 @@ void clearmem(void)
+ }
+ 
+ extern uint8_t BRRBuffer[];
+-extern uint8_t echoon0;
++extern uint8_t echoon0[];
+ extern uint32_t PHdspsave;
+ extern uint32_t PHdspsave2;
+ s4 echobuf[22500];
+@@ -1373,7 +1373,7 @@ extern uint8_t DSPMem[256];
+ void clearvidsound()
+ {
+     memset(BRRBuffer, 0, PHdspsave);
+-    memset(&echoon0, 0, PHdspsave2);
++    memset(echoon0, 0, PHdspsave2);
+     memset(&echobuf, 0, sizeof(echobuf));
+     memset(spcBuffera, 0, 65536 * 4 + 4096);
+     memset(DSPMem, 0, 256);
