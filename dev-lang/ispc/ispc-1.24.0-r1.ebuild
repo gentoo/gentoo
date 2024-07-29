@@ -87,7 +87,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DARM_ENABLED=$(usex arm)
 		-DCMAKE_SKIP_RPATH=ON
-		-DISPC_INCLUDE_EXAMPLES=OFF
+		-DISPC_INCLUDE_EXAMPLES="$(usex examples)"
 		-DISPC_INCLUDE_TESTS=$(usex test)
 		-DISPC_INCLUDE_UTILS=OFF
 		-DISPCRT_BUILD_GPU=$(usex gpu)
