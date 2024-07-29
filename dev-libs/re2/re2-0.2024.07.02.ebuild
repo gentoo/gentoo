@@ -22,16 +22,15 @@ SLOT="0/${SONAME}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~sparc ~x86"
 IUSE="benchmark icu test test-full"
 REQUIRED_USE="
-	sparc? ( !benchmark )
 	test-full? ( test )
 "
 RESTRICT="!test? ( test )"
 
-BDEPEND="icu? ( virtual/pkgconfig )"
+BDEPEND="virtual/pkgconfig"
 RDEPEND="
-	!sparc? ( benchmark? ( dev-cpp/benchmark ) )
-	icu? ( dev-libs/icu:0=[${MULTILIB_USEDEP}] )
 	dev-cpp/abseil-cpp:=
+	benchmark? ( dev-cpp/benchmark )
+	icu? ( dev-libs/icu:0=[${MULTILIB_USEDEP}] )
 "
 DEPEND="
 	${RDEPEND}
