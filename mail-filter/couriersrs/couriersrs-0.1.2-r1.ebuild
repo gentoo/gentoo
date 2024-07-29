@@ -11,7 +11,7 @@ SRC_URI="https://github.com/mawis/courier-srs/releases/download/${PV}/${P}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DEPEND="dev-libs/popt
 	mail-filter/libsrs2"
