@@ -110,7 +110,6 @@ games-mud/crystal
 games-mud/gmudix
 games-mud/kildclient
 games-puzzle/color-lines
-games-puzzle/einstein
 games-puzzle/hangman
 games-puzzle/magiccube4d
 games-puzzle/scramble
