@@ -40,7 +40,7 @@ RDEPEND="
 	dev-ml/ppx_sexp_value:=
 	dev-ml/ppx_stable:=
 	dev-ml/ppx_string:=
-	dev-ml/ppx_ignore_instrumentation:=
+	dev-ml/ppx_ignore_instrumentation:${SLOT}[ocamlopt?]
 	dev-ml/typerep:${SLOT}[ocamlopt?]
 "
 DEPEND="${RDEPEND}"
