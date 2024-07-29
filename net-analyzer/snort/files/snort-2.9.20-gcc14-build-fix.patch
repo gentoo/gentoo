@@ -1,0 +1,12 @@
+Bug: https://bugs.gentoo.org/921185
+--- a/src/dynamic-preprocessors/dcerpc2/dce2_smb.h
++++ b/src/dynamic-preprocessors/dcerpc2/dce2_smb.h
+@@ -145,7 +145,7 @@ typedef struct _DCE2_SmbFileTracker
+     bool is_ipc;
+     bool is_smb2;
+     uint16_t file_name_len;
+-    uint8_t *file_name;
++    char *file_name;
+     union
+     {
+         struct
