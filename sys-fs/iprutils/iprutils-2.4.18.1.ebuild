@@ -5,13 +5,12 @@ EAPI=7
 inherit autotools bash-completion-r1
 
 DESCRIPTION="IBM's tools for support of the ipr SCSI controller"
-SRC_URI="https://downloads.sourceforge.net/iprdd/${P}.tar.gz"
 HOMEPAGE="https://sourceforge.net/projects/iprdd/"
+SRC_URI="https://downloads.sourceforge.net/iprdd/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="IBM"
+SLOT="0"
 KEYWORDS="ppc ppc64"
-IUSE=""
 
 IPRUTILS_DEPEND="
 	>=sys-libs/ncurses-5.4-r5:=
