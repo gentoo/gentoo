@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,16 +6,14 @@ EAPI=7
 DESCRIPTION="Icons for on-screen-display notification agent"
 HOMEPAGE="https://launchpad.net/notify-osd"
 SRC_URI="mirror://ubuntu/pool/main/n/${PN}/${PN}_${PV}.tar.gz"
+S=${WORKDIR}/${PN}
 
 LICENSE="CC-BY-SA-3.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="x11-misc/notify-osd"
 DEPEND=""
-
-S=${WORKDIR}/${PN}
 
 src_install() {
 	default
