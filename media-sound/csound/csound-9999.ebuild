@@ -8,7 +8,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-1 luajit )
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit cmake lua-single python-single-r1
 
@@ -22,7 +22,7 @@ else
 			https://github.com/csound/csound/releases/download/${PV}/${DOC_P}_manual_pdf.zip
 			https://github.com/csound/csound/releases/download/${PV}/${DOC_P}_manual_html.zip
 		)"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Sound design and signal processing system for composition and performance"
@@ -69,7 +69,7 @@ CDEPEND="
 	osc? ( media-libs/liblo )
 	portaudio? ( media-libs/portaudio )
 	portmidi? ( media-libs/portmidi )
-	pulseaudio? ( media-libs/libpulse )
+	pulseaudio? ( media-sound/pulseaudio )
 	utils? ( !media-sound/snd )
 	vim-syntax? ( !app-vim/csound-syntax )
 "
@@ -105,6 +105,13 @@ src_prepare() {
 	sed -e '/set(PLUGIN_INSTALL_DIR/s/-${APIVERSION}//' \
 		-e '/-O3/d' \
 		-i CMakeLists.txt || die
+
+	if use doc; then
+		local png="${WORKDIR}/html/images/delayk.png"
+		pngfix -q --out=${png/.png/fixed.png} ${png} # see pngfix help for exit codes
+		[[ $? -gt 15 ]] && die "Failed to fix ${png}"
+		mv -f ${png/.png/fixed.png} ${png} || die
+	fi
 }
 
 src_configure() {
