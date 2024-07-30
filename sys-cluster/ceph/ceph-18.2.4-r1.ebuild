@@ -62,6 +62,7 @@ DEPEND="
 	dev-cpp/yaml-cpp:=
 	dev-python/natsort[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-vcs/git
 	net-dns/c-ares:=
 	net-libs/gnutls:=
 	sys-auth/oath-toolkit:=
