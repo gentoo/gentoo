@@ -15,9 +15,13 @@
 # edit USE flag to control which GPU architecture to compile. Using
 # ${ROCM_USEDEP} can ensure coherence among dependencies. Ebuilds can call the
 # function get_amdgpu_flag to translate activated target to GPU compile flags,
-# passing it to configuration. Function check_amdgpu can help ebuild ensure
+# passing it to configuration. Function rocm_use_hipcc switches active compiler
+# to hipcc and cleans incompatible flags (useful for users with gcc-only flags
+# in /etc/portage/make.conf). Function check_amdgpu can help ebuild ensure
 # read and write permissions to GPU device in src_test phase, throwing friendly
-# error message if unavailable.
+# error message if unavailable. However src_configure in general should not
+# access any GPU devices. If it does, it usually means that CMakeLists.txt
+# ignores AMDGPU_TARGETS in favor of autodetected GPU, which is not desired.
 #
 # @EXAMPLE:
 # Example ebuild for ROCm library in https://github.com/ROCmSoftwarePlatform
@@ -39,14 +43,12 @@
 # "
 #
 # src_configure() {
-#     # avoid sandbox violation
-#     addpredict /dev/kfd
-#     addpredict /dev/dri/
+#     rocm_use_hipcc
 #     local mycmakeargs=(
 #         -DAMDGPU_TARGETS="$(get_amdgpu_flags)"
 #         -DBUILD_CLIENTS_TESTS=$(usex test ON OFF)
 #     )
-#     CXX=hipcc cmake_src_configure
+#     cmake_src_configure
 # }
 #
 # src_test() {
@@ -89,6 +91,8 @@ esac
 
 if [[ ! ${_ROCM_ECLASS} ]]; then
 _ROCM_ECLASS=1
+
+inherit flag-o-matic
 
 # @ECLASS_VARIABLE: ROCM_VERSION
 # @REQUIRED
@@ -231,3 +235,12 @@ check_amdgpu() {
 }
 
 fi
+
+# @FUNCTION: rocm_use_hipcc
+# @USAGE: rocm_use_hipcc
+# @DESCRIPTION:
+# switch active C and C++ compilers to hipcc and clean unsupported flags.
+rocm_use_hipcc() {
+	export CC=hipcc CXX=hipcc
+	strip-unsupported-flags
+}
