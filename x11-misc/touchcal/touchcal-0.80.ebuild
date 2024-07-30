@@ -12,7 +12,6 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${PN}_${PV}.orig.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 x86"
-IUSE=""
 
 DEPEND="
 	sys-libs/ncurses:0=
