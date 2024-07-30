@@ -18,6 +18,8 @@ RESTRICT="!test? ( test )"
 DEPEND=">=sci-mathematics/primesieve-12.0:="
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-gcc-15-buildfix.patch" )
+
 DOCS=(
 	ChangeLog
 	README.md
