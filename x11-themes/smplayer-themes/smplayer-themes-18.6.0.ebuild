@@ -12,7 +12,6 @@ SRC_URI="https://downloads.sourceforge.net/smplayer/${P}.tar.bz2"
 LICENSE="CC-BY-2.5 CC-BY-SA-2.5 CC-BY-SA-3.0 CC0-1.0 GPL-2 GPL-3+ LGPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~hppa ~ppc ~ppc64 x86"
-IUSE=""
 
 DEPEND="dev-qt/qtcore:5"
 RDEPEND="media-video/smplayer"
