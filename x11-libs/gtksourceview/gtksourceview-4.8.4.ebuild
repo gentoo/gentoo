@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,11 +10,10 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GtkSourceView"
 
 LICENSE="LGPL-2.1+"
 SLOT="4"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 IUSE="glade gtk-doc +introspection +vala"
 REQUIRED_USE="vala? ( introspection )"
-
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND="
 	>=dev-libs/glib-2.48:2
@@ -63,8 +62,10 @@ src_install() {
 	newins "${FILESDIR}"/4.6-gentoo.lang gentoo.lang
 
 	# Avoid conflict with gtksourceview:3.0 glade-catalog
-	# TODO: glade doesn't actually show multiple GtkSourceView widget collections, so with both installed, can't really be sure which ones are used
+	# TODO: glade doesn't actually show multiple GtkSourceView widget collections,
+	# so with both installed, can't really be sure which ones are used
 	if use glade; then
-		mv "${ED}"/usr/share/glade/catalogs/gtksourceview.xml "${ED}"/usr/share/glade/catalogs/gtksourceview-${SLOT}.xml || die
+		mv "${ED}/usr/share/glade/catalogs/gtksourceview.xml" \
+		   "${ED}/usr/share/glade/catalogs/gtksourceview-${SLOT}.xml" || die
 	fi
 }
