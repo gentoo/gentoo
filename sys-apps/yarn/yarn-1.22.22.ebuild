@@ -8,17 +8,15 @@ MY_P="${PN}-v${PV}"
 DESCRIPTION="Fast, reliable, and secure node dependency management"
 HOMEPAGE="https://yarnpkg.com"
 SRC_URI="https://github.com/yarnpkg/yarn/releases/download/v${PV}/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~x86"
-IUSE=""
 
 RDEPEND="!dev-util/cmdtest
 	net-libs/nodejs"
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
