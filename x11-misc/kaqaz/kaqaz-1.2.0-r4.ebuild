@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,6 +7,10 @@ inherit qmake-utils
 
 DESCRIPTION="Modern note manager"
 HOMEPAGE="https://github.com/sialan-labs/kaqaz/"
+
+LICENSE="GPL-3+"
+SLOT="0"
+
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/sialan-labs/kaqaz.git"
@@ -14,10 +18,6 @@ else
 	SRC_URI="https://github.com/sialan-labs/kaqaz/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
-
-LICENSE="GPL-3+"
-SLOT="0"
-IUSE=""
 
 RDEPEND="
 	dev-qt/qtcore:5
