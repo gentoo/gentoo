@@ -11,7 +11,6 @@ SRC_URI="https://codeberg.org/jbruchon/dev86/archive/v${PV}.tar.gz -> Dev86src-$
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-IUSE=""
 
 RDEPEND="sys-devel/bin86"
 DEPEND="${RDEPEND}"

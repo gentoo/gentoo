@@ -12,7 +12,6 @@ SRC_URI="http://v3.sk/~lkundrak/dev86/Dev86src-${PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
-IUSE=""
 
 RDEPEND="sys-devel/bin86"
 DEPEND="${RDEPEND}
