@@ -7,11 +7,9 @@ DESCRIPTION="a diff-capable 'du-browser'"
 HOMEPAGE="http://gt5.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
-KEYWORDS="amd64 ~sparc x86"
-
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
+KEYWORDS="amd64 ~sparc x86"
 
 RDEPEND="|| ( www-client/links
 		www-client/elinks
