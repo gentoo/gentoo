@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-make.patch
+	"${FILESDIR}"/${PN}-2.4.1-make.patch
 )
 
 src_configure() {
