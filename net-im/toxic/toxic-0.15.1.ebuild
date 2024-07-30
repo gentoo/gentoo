@@ -21,7 +21,8 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 BDEPEND="dev-libs/libconfig:=
 	virtual/pkgconfig"
 
-RDEPEND=">=net-libs/tox-0.2.19:=
+RDEPEND="
+	>=net-libs/tox-0.2.19:=[experimental?]
 	net-misc/curl
 	sys-kernel/linux-headers
 	sys-libs/ncurses:=
@@ -30,7 +31,6 @@ RDEPEND=">=net-libs/tox-0.2.19:=
 		media-libs/openal
 	)
 	debug? ( llvm? ( sys-devel/llvm:* ) )
-	experimental? ( net-libs/tox[experimental] )
 	notification? ( x11-libs/libnotify )
 	python? ( ${PYTHON_DEPS} )
 	qrcode? (
