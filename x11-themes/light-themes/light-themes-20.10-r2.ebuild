@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,18 +11,16 @@ SRC_URI="
 	mirror://ubuntu/pool/main/${MY_PN:0:1}/${MY_PN}/${MY_PN}_${PV}.orig.tar.gz
 	https://dev.gentoo.org/~pacho/${PN}/Gentoo-Buttons-r1.tar.xz
 "
+S="${WORKDIR}"/${MY_PN}-${PV}
 
 LICENSE="CC-BY-SA-3.0 CC-BY-SA-4.0"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 BDEPEND="app-arch/xz-utils"
 RDEPEND="
 	x11-themes/gtk-engines-murrine
 "
-
-S="${WORKDIR}"/${MY_PN}-${PV}
 
 src_prepare() {
 	cp -RL Ambiance/ Ambiance-Gentoo || die
