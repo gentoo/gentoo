@@ -39,7 +39,6 @@ RDEPEND="
 			virtual/opengl
 		)
 		!qt6? ( qt5? (
-			!dev-qt/qtbase:6
 			dev-qt/qtcore:5
 			dev-qt/qtgui:5
 			dev-qt/qtopengl:5[-gles2-only(-),-gles2(-)]
@@ -87,6 +86,11 @@ pkg_pretend() {
 pkg_setup() {
 	check_llvm
 	CONFIG_CHECK="~SHMEM" linux-info_pkg_setup
+}
+
+src_prepare() {
+	default
+	use qt6 || sed -i "/^dep_qt6/s/'qt6/&DiSaBlEd/" meson.build || die
 }
 
 multilib_src_configure() {
