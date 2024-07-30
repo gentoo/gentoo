@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,13 +12,11 @@ HOMEPAGE="http://aufs.sourceforge.net/"
 # find ${T} -type f \( ! -name "*aufs*" \) -delete
 # find ${T} -type d -empty -delete
 SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
-
-SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
-IUSE=""
-
 S="${WORKDIR}"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 src_install() {
 	doheader -r include/*
