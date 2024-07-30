@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,6 @@ SRC_URI="https://www.dockapps.net/download/${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc ~sparc x86"
-IUSE=""
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext"
@@ -25,7 +24,7 @@ BDEPEND="
 	sys-devel/gcc
 	>=x11-misc/imake-1.0.8-r1"
 
-PATCHES=( "${WORKDIR}"/${P}-misc.patch )
+PATCHES=( "${WORKDIR}/${P}-misc.patch" )
 
 src_configure() {
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
