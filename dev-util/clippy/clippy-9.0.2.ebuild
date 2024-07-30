@@ -4,7 +4,7 @@
 EAPI=8
 
 MY_P="frr-${PV}"
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit autotools python-single-r1
 
 DESCRIPTION="Standalone clippy tool built from FRR sources"
