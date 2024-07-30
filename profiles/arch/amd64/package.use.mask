@@ -84,7 +84,7 @@ sys-kernel/installkernel -grub
 
 # Michał Górny <mgorny@gentoo.org> (2023-12-31)
 # Requires dev-libs/level-zero.
-dev-lang/ispc -gpu
+dev-lang/ispc -gpu -level-zero
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-12-18)
 # Experimental and only available on a subset of architectures

@@ -15,6 +15,9 @@
 		<flag name="gpu">
 			Enable Level0 GPU support in ispcrt.
 		</flag>
+		<flag name="level-zero">
+			Enable oneAPI Level Zero GPU support in ispcrt.
+		</flag>
 		<flag name="openmp">
 			Build with OpenMP task model (otherwise, TBB task model is used).
 		</flag>

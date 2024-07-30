@@ -21,7 +21,7 @@ SRC_URI="
 LICENSE="BSD BSD-2 UoI-NCSA"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="cross examples gpu openmp test utils"
+IUSE="cross examples level-zero openmp test utils"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -29,7 +29,7 @@ RDEPEND="
 		sys-devel/clang:${LLVM_SLOT}
 	')
 	sys-libs/ncurses:=
-	gpu? ( dev-libs/level-zero:= )
+	level-zero? ( dev-libs/level-zero:= )
 	!openmp? ( dev-cpp/tbb:= )
 "
 DEPEND="
@@ -91,7 +91,7 @@ src_configure() {
 		-DISPC_INCLUDE_EXAMPLES="$(usex examples)"
 		-DISPC_INCLUDE_TESTS=$(usex test)
 		-DISPC_INCLUDE_UTILS="$(usex utils)"
-		-DISPCRT_BUILD_GPU=$(usex gpu)
+		-DISPCRT_BUILD_GPU="$(usex level-zero)"
 		-DISPCRT_BUILD_TASK_MODEL=$(usex openmp OpenMP TBB)
 	)
 	cmake_src_configure
