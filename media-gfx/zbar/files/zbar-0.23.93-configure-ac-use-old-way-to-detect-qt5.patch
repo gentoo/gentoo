@@ -1,0 +1,26 @@
+From a549566ea11eb03622bd4458a1728ffe3f589163 Mon Sep 17 00:00:00 2001
+From: Boyuan Yang <byang@debian.org>
+Date: Wed, 10 Jan 2024 10:57:29 -0500
+Subject: [PATCH] configure.ac: Use old way to detect Qt5
+
+Bug: https://github.com/mchehab/zbar/issues/277
+Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index a2251e3d..0e5641e5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -675,8 +675,8 @@ AS_IF([test "x$with_qt" != "xno"],
+        AS_IF([test "x$with_qt6" = "xno"],
+              [PKG_CHECK_MODULES([QT],
+                                [Qt5Core >= 5 Qt5Gui >= 5 Qt5Widgets >= 5.0 Qt5X11Extras >= 5.0],
+-                               [MOC=`$PKG_CONFIG Qt5 --variable=moc`
+-                                QT_VERSION=`$PKG_CONFIG Qt5 --modversion`
++                               [AC_CHECK_PROGS([MOC], [moc-qt5 moc])
++                                QT_VERSION=`$PKG_CONFIG Qt5Gui --modversion`;
+                                 qt_pkgconfig_file="zbar-qt5.pc"
+                                ],
+                                [with_qt="no"])])
