@@ -39,6 +39,10 @@ BDEPEND="
 	virtual/pkgconfig"
 
 src_prepare() {
+	# fix build for MUSL (bug #936813)
+	if use elibc_musl ; then
+		eapply -p1 "${FILESDIR}/$P-musl.patch"
+	fi
 	cmake_src_prepare
 	# drop deprecated desktop category (bug #475730)
 	sed -i -e "s:Categories=Application;:Categories=:g" src/qtel/qtel.desktop || die
