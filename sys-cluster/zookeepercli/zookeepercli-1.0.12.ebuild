@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,16 +11,18 @@ EGO_VENDOR=(
 
 inherit golang-vcs-snapshot
 
-KEYWORDS="~amd64"
 EGIT_COMMIT="v${PV}"
+
+DESCRIPTION="Simple, lightweight, dependable CLI for ZooKeeper"
+HOMEPAGE="https://github.com/openark/zookeepercli"
 SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
 S="${WORKDIR}/${P}/src/${EGO_PN}"
-DESCRIPTION="Simple, lightweight, dependable CLI for ZooKeeper"
-HOMEPAGE="https://github.com/openark/zookeepercli"
+
 LICENSE="Apache-2.0 BSD"
 SLOT="0"
-IUSE=""
+KEYWORDS="~amd64"
+
 DEPEND=">=dev-lang/go-1.9:="
 
 src_compile() {
