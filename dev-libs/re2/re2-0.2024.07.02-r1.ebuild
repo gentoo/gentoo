@@ -28,7 +28,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="virtual/pkgconfig"
 RDEPEND="
-	dev-cpp/abseil-cpp:=
+	>=dev-cpp/abseil-cpp-20240116.2-r3:=
 	benchmark? ( dev-cpp/benchmark )
 	icu? ( dev-libs/icu:0=[${MULTILIB_USEDEP}] )
 "
