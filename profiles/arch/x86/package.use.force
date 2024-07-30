@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-07-30)
+# We circumvent the auto-detection, so re-enable here
+dev-lang/ispc ispc_targets_X86
+
 # Joonas Niilola <juippis@gentoo.org> (2023-03-16)
 # Fails with -jit, #901463.
 >=dev-lang/spidermonkey-102.6.0 jit

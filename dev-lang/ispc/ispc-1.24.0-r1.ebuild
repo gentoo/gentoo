@@ -5,6 +5,12 @@ EAPI=8
 
 LLVM_COMPAT=( {17..18} )
 PYTHON_COMPAT=( python3_{10..13} )
+ISPC_TARGETS=(
+	ARM
+	WebAssembly # TODO needs dev-util/emscripten
+	X86
+	XE
+)
 
 inherit cmake llvm-r1 multiprocessing python-any-r1 toolchain-funcs
 
@@ -21,14 +27,23 @@ SRC_URI="
 LICENSE="BSD BSD-2 UoI-NCSA"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="cross examples level-zero openmp test utils"
+IUSE="cross examples level-zero openmp test utils ${ISPC_TARGETS[*]/#/ispc_targets_}"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	$(llvm_gen_dep '
 		sys-devel/clang:${LLVM_SLOT}
+		ispc_targets_ARM? (
+			sys-devel/clang:${LLVM_SLOT}[llvm_targets_AArch64(-),llvm_targets_ARM(-)]
+		)
 	')
 	sys-libs/ncurses:=
+	ispc_targets_XE? (
+		$(llvm_gen_dep '
+			dev-util/spirv-llvm-translator:${LLVM_SLOT}
+		')
+		dev-libs/intel-vc-intrinsics[${LLVM_USEDEP}]
+	)
 	level-zero? ( dev-libs/level-zero:= )
 	!openmp? ( dev-cpp/tbb:= )
 "
@@ -40,6 +55,10 @@ BDEPEND="
 	app-alternatives/yacc
 	app-alternatives/lex
 	${PYTHON_DEPS}
+"
+
+REQUIRED_USE="
+	level-zero? ( ispc_targets_XE )
 "
 
 PATCHES=(
@@ -57,12 +76,18 @@ pkg_setup() {
 }
 
 src_prepare() {
-	if use amd64; then
+	if ! use x86; then
 		# On amd64 systems, build system enables x86/i686 build too.
 		# This ebuild doesn't even have multilib support, nor need it.
 		# https://bugs.gentoo.org/730062
 		einfo "Removing auto-x86 build on amd64"
 		sed -i -e 's:set(target_arch "i686"):return():' cmake/GenerateBuiltins.cmake || die
+	fi
+
+	if ! use arm; then
+		# same as above
+		einfo "Removing auto-arm build on arm64"
+		sed -i -e 's:set(target_arch "armv7"):return():' cmake/GenerateBuiltins.cmake || die
 	fi
 
 	# do not require bundled gtest
@@ -85,15 +110,27 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DARM_ENABLED=$(usex arm)
 		-DCMAKE_SKIP_RPATH=ON
 		-DISPC_CROSS="$(usex cross)"
 		-DISPC_INCLUDE_EXAMPLES="$(usex examples)"
 		-DISPC_INCLUDE_TESTS=$(usex test)
 		-DISPC_INCLUDE_UTILS="$(usex utils)"
-		-DISPCRT_BUILD_GPU="$(usex level-zero)"
 		-DISPCRT_BUILD_TASK_MODEL=$(usex openmp OpenMP TBB)
+
+		-DARM_ENABLED="$(usex ispc_targets_ARM)"
+		-DWASM_ENABLED="$(usex ispc_targets_WebAssembly)"
+		-DX86_ENABLED="$(usex ispc_targets_X86)"
+		-DXE_ENABLED="$(usex ispc_targets_XE)"
 	)
+
+	if use ispc_targets_XE; then
+		mycmakeargs+=(
+			-DISPC_INCLUDE_XE_EXAMPLES="$(usex examples)"
+			-DISPCRT_BUILD_GPU="$(usex level-zero)"
+			-DLLVMSPIRVLibPath="$(get_llvm_prefix)/$(get_libdir)/libLLVMSPIRVLib.so" # this is slotted
+		)
+	fi
+
 	cmake_src_configure
 }
 

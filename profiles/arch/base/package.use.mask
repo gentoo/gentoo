@@ -1,6 +1,14 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-07-30)
+# Requires dev-utils/emscripten.
+dev-lang/ispc ispc_targets_WebAssembly
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-07-30)
+# dev-util/intel-graphics-compiler is amd64 only.
+dev-lang/ispc ispc_targets_XE
+
 # matoro <matoro_gentoo@matoro.tk> (2024-07-14)
 # Abandoned upstream, does not take bug reports, unsupported in Gentoo.
 # Only remaining use is as a requirement for dev-lang/go on arm{,64}.

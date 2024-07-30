@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-07-16)
+# dev-util/intel-graphics-compiler is amd64 only.
+dev-lang/ispc -ispc_targets_XE
+
 # orbea <orbea@riseup.net> (2024-07-19)
 # Unmask the dynarec flag which has amd64 asm.
 games-emulation/rmg -dynarec

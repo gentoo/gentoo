@@ -15,6 +15,18 @@
 		<flag name="gpu">
 			Enable Level0 GPU support in ispcrt.
 		</flag>
+		<flag name="ispc_targets_ARM">
+			ARM CPU target (includes AArch64)
+		</flag>
+		<flag name="ispc_targets_WebAssembly">
+			WebAssembly backend
+		</flag>
+		<flag name="ispc_targets_X86">
+			X86 CPU target (includes amd64)
+		</flag>
+		<flag name="ispc_targets_XE">
+			Intel XE (GPU) target (32-bit and 64-bit)
+		</flag>
 		<flag name="level-zero">
 			Enable oneAPI Level Zero GPU support in ispcrt.
 		</flag>
