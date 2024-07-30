@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,14 +10,11 @@ SRC_URI="http://oss.oracle.com/projects/endpoint/dist/files/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc x86"
-IUSE=""
 
 RDEPEND=">=sys-libs/libraw1394-0.9
 	>=dev-libs/glib-2:2"
 DEPEND="${RDEPEND}"
-BDEPEND="
-	virtual/pkgconfig
-"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-errormessages.patch
