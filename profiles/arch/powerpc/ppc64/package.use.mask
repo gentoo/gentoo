@@ -24,10 +24,6 @@ app-emulation/libvirt -virtiofsd
 # media-libs/shaderc is keyworded here.
 media-libs/libplacebo -shaderc
 
-# Sam James <sam@gentoo.org> (2023-09-22)
-# Qt 6 not keyworded here.
-dev-build/cmake gui
-
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2023-08-14)
 # OpenMW is only playtested with LuaJIT, and in fact unit tests fail with Lua-5.
 # Therefore apply mask/force to override the profile's defaults, and invert on

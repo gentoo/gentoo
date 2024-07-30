@@ -49,10 +49,6 @@ dev-python/nbconvert test
 dev-perl/DBD-mysql mysql
 
 # Sam James <sam@gentoo.org> (2023-09-22)
-# Qt 6 not keyworded here.
-dev-build/cmake gui
-
-# Sam James <sam@gentoo.org> (2023-09-22)
 # sys-apps/flatpak is not keyworded here
 sys-apps/xdg-desktop-portal flatpak
 

@@ -120,10 +120,6 @@ dev-qt/qtgui vulkan
 sys-apps/openrc s6
 sys-apps/openrc-navi s6
 
-# Sam James <sam@gentoo.org> (2023-09-22)
-# Qt 6 not keyworded here.
-dev-build/cmake gui
-
 # Sam James <sam@gentoo.org> (2023-07-21)
 # Requires app-emulation/qemu.
 sys-kernel/gentoo-kernel test
