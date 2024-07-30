@@ -15,7 +15,6 @@ S="${WORKDIR}"/${MY_P}
 LICENSE="GPL-2"
 SLOT="0/5.3.1" # copy ABI_VERSION because it seems upstream change it randomly
 KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
-IUSE=""
 
 RDEPEND=">=dev-libs/glib-2.18:2"
 DEPEND="${RDEPEND}"
