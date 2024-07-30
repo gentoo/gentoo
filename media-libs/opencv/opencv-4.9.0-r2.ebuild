@@ -690,7 +690,7 @@ multilib_src_configure() {
 
 	if multilib_is_native_abi && use cuda; then
 		cuda_add_sandbox -w
-		sandbox_write "/proc/self/task"
+		addwrite "/proc/self/task"
 		CUDAHOSTCXX="$(cuda_get_cuda_compiler)"
 		CUDAARCHS="$(cuda_get_host_native_arch)"
 		export CUDAHOSTCXX
