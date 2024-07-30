@@ -9,11 +9,11 @@ DESCRIPTION="Linux boot loader for EFI-based systems such as IA-64"
 HOMEPAGE="https://sourceforge.net/projects/elilo/"
 SRC_URI="https://downloads.sourceforge.net/elilo/${P}-all.tar.gz
 	mirror://debian/pool/main/e/elilo/elilo_3.14-3.debian.tar.gz"
+S="${WORKDIR}/${P}-source"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ia64 ~x86"
-IUSE=""
 
 # gnu-efi contains only static libs, so there's no run-time dep on it
 DEPEND=">=sys-boot/gnu-efi-3.0g
@@ -21,8 +21,6 @@ DEPEND=">=sys-boot/gnu-efi-3.0g
 # dosfstools[compat] to enable 'dosfsck' symlink
 RDEPEND="sys-boot/efibootmgr
 	sys-fs/dosfstools[compat]"
-
-S="${WORKDIR}/${P}-source"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.16-elilo-loop.patch #299665
