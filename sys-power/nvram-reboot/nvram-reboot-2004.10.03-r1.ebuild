@@ -9,15 +9,11 @@ MY_P="${P/nvram-/}"
 DESCRIPTION="PowerOff Boot-Images for nvram-wakeup (not needed for GRUB)"
 HOMEPAGE="https://sourceforge.net/projects/nvram-wakeup/"
 SRC_URI="https://downloads.sourceforge.net/nvram-wakeup/${MY_P}.tar.bz2"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
-
-DEPEND=""
-
-S="${WORKDIR}/${MY_P}"
 
 src_install() {
 	insinto /boot/nvram-wakeup
