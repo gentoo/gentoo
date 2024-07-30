@@ -9,6 +9,9 @@
 		<remote-id type="github">ispc/ispc</remote-id>
 	</upstream>
 	<use>
+		<flag name="cross">
+			Build ISPC with cross target support.
+		</flag>
 		<flag name="gpu">
 			Enable Level0 GPU support in ispcrt.
 		</flag>

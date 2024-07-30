@@ -21,7 +21,7 @@ SRC_URI="
 LICENSE="BSD BSD-2 UoI-NCSA"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="examples gpu openmp test utils"
+IUSE="cross examples gpu openmp test utils"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -87,6 +87,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DARM_ENABLED=$(usex arm)
 		-DCMAKE_SKIP_RPATH=ON
+		-DISPC_CROSS="$(usex cross)"
 		-DISPC_INCLUDE_EXAMPLES="$(usex examples)"
 		-DISPC_INCLUDE_TESTS=$(usex test)
 		-DISPC_INCLUDE_UTILS="$(usex utils)"
