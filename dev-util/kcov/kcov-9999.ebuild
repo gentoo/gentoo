@@ -1,9 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake
+PYTHON_COMPAT=( python3_{10..12} )
+inherit cmake python-any-r1
 
 DESCRIPTION="Kcov is a code coverage tester for compiled languages, Python and Bash"
 HOMEPAGE="https://github.com/SimonKagstrom/kcov"
@@ -24,6 +25,12 @@ RDEPEND="dev-libs/elfutils
 	sys-libs/zlib
 	binutils? ( sys-libs/binutils-libs:= )"
 DEPEND="${RDEPEND}"
+BDEPEND="${PYTHON_DEPS}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-binutils-2.39.patch
+	"${FILESDIR}"/${P}-gcc-13.patch
+)
 
 src_configure() {
 	local mycmakeargs=(
