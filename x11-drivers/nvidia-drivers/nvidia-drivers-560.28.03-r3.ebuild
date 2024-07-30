@@ -25,9 +25,6 @@ S=${WORKDIR}
 LICENSE="NVIDIA-r2 Apache-2.0 BSD BSD-2 GPL-2 MIT ZLIB curl openssl"
 SLOT="0/${PV%%.*}"
 # no keywords due to being a beta, feel free to opt-in for testing
-# note: before keywording a 560 release, should likely unmask
-# egl-wayland-1.1.14 (maybe do a snapshot) and >=depend on it,
-# it seems to fix a fair amount of issues with 560
 #KEYWORDS="-* ~amd64 ~arm64"
 # note: kernel-open is an upstream default in >=560 if all GPUs on the system
 # support it but, since no automagic here, keeping it off for the wider support
@@ -66,10 +63,8 @@ RDEPEND="
 	)
 	powerd? ( sys-apps/dbus[abi_x86_32(-)?] )
 	wayland? (
+		>=gui-libs/egl-gbm-1.1.1-r2[abi_x86_32(-)?]
 		>=gui-libs/egl-wayland-1.1.13.1[abi_x86_32(-)?]
-		media-libs/mesa[gbm(+),abi_x86_32(-)?]
-		x11-libs/libdrm[abi_x86_32(-)?]
-		!gui-libs/egl-gbm
 	)
 "
 DEPEND="
@@ -247,9 +242,9 @@ src_install() {
 
 	local skip_files=(
 		$(usev !X "libGLX_nvidia libglxserver_nvidia")
-		$(usev !wayland "libnvidia-egl-gbm 15_nvidia_gbm")
 		libGLX_indirect # non-glvnd unused fallback
 		libnvidia-{gtk,wayland-client} nvidia-{settings,xconfig} # from source
+		libnvidia-egl-gbm 15_nvidia_gbm # gui-libs/egl-gbm
 		libnvidia-egl-wayland 10_nvidia_wayland # gui-libs/egl-wayland
 		libnvidia-pkcs11.so # using the openssl3 version instead
 	)
