@@ -28,6 +28,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.0-werror.patch
+	"${FILESDIR}"/${P}-abi-check.patch
 )
 
 src_install() {
