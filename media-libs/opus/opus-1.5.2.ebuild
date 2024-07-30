@@ -14,7 +14,11 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv sparc x86"
 INTRINSIC_FLAGS="cpu_flags_x86_sse cpu_flags_arm_neon"
-IUSE="custom-modes debug doc hardened static-libs test ${INTRINSIC_FLAGS}"
+IUSE="custom-modes debug deep-plc dred doc hardened osce static-libs test ${INTRINSIC_FLAGS}"
+REQUIRED_USE="
+	dred? ( deep-plc )
+	osce? ( deep-plc )
+"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -38,6 +42,9 @@ multilib_src_configure() {
 		$(meson_feature test tests)
 		$(meson_use debug assertions)
 		$(meson_use hardened hardening)
+		$(meson_feature deep-plc)
+		$(meson_feature dred)
+		$(meson_feature osce)
 
 		$(meson_native_use_feature doc docs)
 
