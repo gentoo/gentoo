@@ -12,7 +12,6 @@ SRC_URI="https://downloads.sourceforge.net/project/spacenav/spacenavd%20config%2
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 COMMON_DEPEND="x11-libs/gtk+:2"
 DEPEND="${COMMON_DEPEND}
