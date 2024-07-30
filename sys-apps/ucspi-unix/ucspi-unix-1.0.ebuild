@@ -12,7 +12,6 @@ SRC_URI="https://untroubled.org/ucspi-unix/archive/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~loong ~riscv ~sparc x86"
-IUSE=""
 
 # We statically link bglibs.
 DEPEND=">=dev-libs/bglibs-2.04"
