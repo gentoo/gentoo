@@ -47,8 +47,6 @@ RDEPEND="
 	' 3.10)
 	>=dev-python/truststore-0.9.1[${PYTHON_USEDEP}]
 	>=dev-python/typing-extensions-4.12.2[${PYTHON_USEDEP}]
-
-	>=dev-python/setuptools-39.2.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	${RDEPEND}
