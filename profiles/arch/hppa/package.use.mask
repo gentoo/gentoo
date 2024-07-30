@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Matt Jolly <kangie@gentoo.org> (2024-12-08)
+# dev-vcs/mercurial is not keyworded on hppa
+app-eselect/eselect-repository mercurial
+
 # Ionen Wolkens <ionen@gentoo.org> (2024-12-02)
 # media-video/pipewire is not keyworded here.
 dev-qt/qtmultimedia:6 screencast
