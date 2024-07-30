@@ -16,21 +16,27 @@ SRC_URI="https://github.com/sm0svx/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="ogg qt5 rtlsdr"
 
-DEPEND="dev-lang/tcl:0
-	dev-libs/jsoncpp
-	=dev-libs/libgpiod-1*
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtwidgets:5
+DEPEND="dev-lang/tcl:=
+	dev-libs/jsoncpp:=
+	dev-libs/libgcrypt:=
+	=dev-libs/libgpiod-1*:=
+	dev-libs/libsigc++:2
+	dev-libs/popt
 	media-libs/alsa-lib
 	media-sound/gsm
-	dev-libs/libgcrypt:0
 	media-libs/speex
 	media-libs/opus
-	dev-libs/libsigc++:2
-	dev-libs/popt"
+	net-misc/curl
+	ogg? ( media-libs/libogg )
+	rtlsdr? ( net-wireless/rtl-sdr )
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtnetwork:5
+		dev-qt/qtwidgets:5
+	)"
 RDEPEND="${DEPEND}
 	acct-group/svxlink
 	acct-user/svxlink"
@@ -43,6 +49,16 @@ src_prepare() {
 	if use elibc_musl ; then
 		eapply -p1 "${FILESDIR}/$P-musl.patch"
 	fi
+	if ! use ogg ; then
+		# drop automatic discovery of dependency
+		sed -i -e "s/find_package(OGG)/#/g" \
+				src/async/audio/CMakeLists.txt || die
+	fi
+	if ! use rtlsdr ; then
+		# drop automatic discovery of dependency
+		sed -i -e "s/find_package(RtlSdr)/#/g" \
+				src/svxlink/trx/CMakeLists.txt || die
+	fi
 	cmake_src_prepare
 	# drop deprecated desktop category (bug #475730)
 	sed -i -e "s:Categories=Application;:Categories=:g" src/qtel/qtel.desktop || die
@@ -53,8 +69,10 @@ src_configure() {
 	filter-lto
 
 	local mycmakeargs=(
+		-DUSE_QT="$(usex qt5)"
 		-DSYSCONF_INSTALL_DIR=/etc
 		-DLOCAL_STATE_DIR=/var
+		-DUSE_OSS=NO
 	)
 	cmake_src_configure
 }
