@@ -1,0 +1,60 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,12 +1,8 @@
+ # Unix gcc or DOS go32 cross-compiling gcc
+ #
+ VERS = 2.4.1
+-CC = gcc
+-LD = gcc
+ # for testing. not to be used; build failures in misc/.
+ #CFLAGS = -O2 -W -Wall -pedantic -ansi -g
+-CFLAGS = -O2 -g
+-LDFLAGS = -lc
+ 
+ # for DOS?
+ # CC = gcc-go32
+@@ -29,19 +25,19 @@
+ 
+ TESTS=ALL
+ 
+-all: killxa xa uncpk
++all: xa uncpk
+ 
+ killxa:
+ 	rm -f xa
+ 
+ xa:
+-	(cd src && LD=${LD} CC="${CC} ${CFLAGS}" ${MAKE})
++	(cd src && ${MAKE})
+ 
+ #load:	
+ #	(cd loader && CC="${CC} ${CFLAGS}" ${MAKE})
+ 
+ uncpk:
+-	(cd misc && CC="${CC} ${CFLAGS}" ${MAKE})
++	(cd misc && ${MAKE})
+ 
+ dos: clean
+ 	(cd src && LD=gcc-go32 CC=gcc-go32 CFLAGS="-W -Wall -pedantic" ${MAKE})
+--- a/misc/Makefile
++++ b/misc/Makefile
+@@ -2,7 +2,7 @@
+ XCBMLIB = ..
+ 
+ # -Wall -ansi et al. cause compile problems.
+-CFLAGS =  -O2 -g
++CFLAGS := $(CFLAGS) $(CPPFLAGS) $(LDFLAGS)
+ 
+ LIBS = #-lncurses -ltermcap -lm
+ 
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -9,7 +9,7 @@
+ all: xa
+ 
+ xa: ${OBJ}
+-	${LD} -o ../xa ${OBJ} ${LDFLAGS}
++	${CC} ${LDFLAGS} -o ../xa ${OBJ}
+ 
+ clean: 
+ 	rm -f *.o *.o65
