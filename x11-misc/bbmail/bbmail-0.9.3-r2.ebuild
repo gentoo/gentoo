@@ -9,10 +9,9 @@ DESCRIPTION="blackbox mail notification"
 HOMEPAGE="https://sourceforge.net/projects/bbtools"
 SRC_URI="https://downloads.sourceforge.net/bbtools/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE=""
 
 RDEPEND="
 	dev-lang/perl
