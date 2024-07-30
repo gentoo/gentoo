@@ -13,6 +13,8 @@ SLOT="0/2"
 KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_popcnt"
 
+PATCHES=( "${FILESDIR}/${P}-gcc-15-buildfix.patch" )
+
 src_configure() {
 	econf \
 		$(use_enable cpu_flags_x86_popcnt popcnt) \
