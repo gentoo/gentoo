@@ -111,6 +111,7 @@ BDEPEND=">=virtual/rust-1.74.0"
 # rust does not use *FLAGS from make.conf, silence portage warning
 # update with proper path to binaries this crate installs, omit leading /
 QA_FLAGS_IGNORED="usr/bin/${PN}"
+QA_PRESTRIPPED="usr/bin/${PN}"
 
 src_prepare() {
 	# Remove the linker configs (in `.cargo/config.toml`) specific to GitHub CI.
