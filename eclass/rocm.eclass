@@ -15,9 +15,13 @@
 # edit USE flag to control which GPU architecture to compile. Using
 # ${ROCM_USEDEP} can ensure coherence among dependencies. Ebuilds can call the
 # function get_amdgpu_flag to translate activated target to GPU compile flags,
-# passing it to configuration. Function check_amdgpu can help ebuild ensure
+# passing it to configuration. Function rocm_use_hipcc switches active compiler
+# to hipcc and cleans incompatible flags (useful for users with gcc-only flags
+# in /etc/portage/make.conf). Function check_amdgpu can help ebuild ensure
 # read and write permissions to GPU device in src_test phase, throwing friendly
-# error message if unavailable.
+# error message if unavailable. However src_configure in general should not
+# access any AMDGPU devices. If it does, it usually means that CMakeLists.txt
+# ignores AMDGPU_TARGETS in favor of autodetected GPU, which is not desired.
 #
 # @EXAMPLE:
 # Example ebuild for ROCm library in https://github.com/ROCmSoftwarePlatform
@@ -39,14 +43,12 @@
 # "
 #
 # src_configure() {
-#     # avoid sandbox violation
-#     addpredict /dev/kfd
-#     addpredict /dev/dri/
+#     rocm_use_hipcc
 #     local mycmakeargs=(
 #         -DAMDGPU_TARGETS="$(get_amdgpu_flags)"
 #         -DBUILD_CLIENTS_TESTS=$(usex test ON OFF)
 #     )
-#     CXX=hipcc cmake_src_configure
+#     cmake_src_configure
 # }
 #
 # src_test() {
@@ -89,6 +91,8 @@ esac
 
 if [[ ! ${_ROCM_ECLASS} ]]; then
 _ROCM_ECLASS=1
+
+inherit flag-o-matic
 
 # @ECLASS_VARIABLE: ROCM_VERSION
 # @REQUIRED
@@ -231,3 +235,27 @@ check_amdgpu() {
 }
 
 fi
+
+# @FUNCTION: rocm_use_hipcc
+# @USAGE: rocm_use_hipcc
+# @DESCRIPTION:
+# switch active C and C++ compilers to hipcc, clean unsupported flags and setup ROCM_TARGET_LST file.
+rocm_use_hipcc() {
+	# During the configuration stage, CMake tests whether the compiler is able to compile a simple program.
+	# Since CMake checker does not specify --offload-arch=, hipcc enumerates devices using four methods
+	# until it finds at least one device. Last way is by accessing them (via rocminfo).
+	# To prevent potential sandbox violations, we set the ROCM_TARGET_LST variable (which is checked first).
+	local target_lst="${T}"/gentoo_rocm_target.lst
+	if [[ "${AMDGPU_TARGETS[@]}" = "" ]]; then
+		# Expected no GPU code; still need to calm down sandbox
+		echo "gfx000" > "${target_lst}" || die
+	else
+		printf "%s\n" ${AMDGPU_TARGETS[@]} > "${target_lst}" || die
+	fi
+	export ROCM_TARGET_LST="${target_lst}"
+
+	# Export updated CC and CXX. Note that CC is needed even if no C code used,
+	# as CMake checks that C compiler can compile a simple test program.
+	export CC=hipcc CXX=hipcc
+	strip-unsupported-flags
+}
