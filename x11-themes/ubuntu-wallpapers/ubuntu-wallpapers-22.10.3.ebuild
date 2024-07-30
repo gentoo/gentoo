@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,20 +7,12 @@ DESCRIPTION="Ubuntu wallpapers"
 HOMEPAGE="https://launchpad.net/ubuntu/+source/ubuntu-wallpapers"
 MY_P="${PN}_${PV}"
 SRC_URI="mirror://ubuntu/pool/main/u/${PN}/${MY_P}.orig.tar.gz"
+S="${WORKDIR}/${MY_P/_/-}"
 
 # Review COPYING file for updates
 LICENSE="CC-BY-SA-3.0"
-
-KEYWORDS="amd64 arm x86"
-IUSE=""
-
-RDEPEND=""
-DEPEND=""
-BDEPEND=""
-
-S="${WORKDIR}/${MY_P/_/-}"
-
 SLOT="0"
+KEYWORDS="amd64 arm x86"
 
 src_compile() { :; }
 src_test() { :; }
