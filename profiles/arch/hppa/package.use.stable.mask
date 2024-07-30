@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2024-07-31)
+# Qt 6 not stable here.
+dev-build/cmake gui
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-07-25)
 # Moved to stable.mask, issue is fixed in unstable v40
 # Sam James <sam@gentoo.org> (2024-06-19)
