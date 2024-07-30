@@ -59,5 +59,5 @@ python_test() {
 	)
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p subprocess -m "not isolated and not network"
+	epytest -p pytest-subprocess -m "not isolated and not network"
 }
