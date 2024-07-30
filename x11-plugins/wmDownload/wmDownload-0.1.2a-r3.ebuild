@@ -5,21 +5,19 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="dockapp that displays how much data you've received on each eth and ppp device"
-SRC_URI="https://downloads.sourceforge.net/wmdownload/${P}.tar.gz"
 HOMEPAGE="https://wmdownload.sourceforge.net/"
+SRC_URI="https://downloads.sourceforge.net/wmdownload/${P}.tar.gz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
-IUSE=""
 
 RDEPEND=">=x11-libs/libdockapp-0.7:=
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/${PN}"
 
 PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 DOCS=( CHANGELOG CREDITS HINTS README TODO )
