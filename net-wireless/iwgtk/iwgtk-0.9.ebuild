@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,10 +11,8 @@ SRC_URI="https://github.com/J-Lentz/iwgtk/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
 BDEPEND="app-text/scdoc"
-
 DEPEND="
 	app-accessibility/at-spi2-core:2
 	dev-libs/glib:2
@@ -24,7 +22,6 @@ DEPEND="
 	x11-libs/gdk-pixbuf:2
 	x11-libs/pango:0
 "
-
 RDEPEND="
 	${DEPEND}
 	>=net-wireless/iwd-1.29
