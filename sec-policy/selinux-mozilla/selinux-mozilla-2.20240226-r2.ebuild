@@ -3,9 +3,6 @@
 
 EAPI="7"
 
-IUSE="alsa"
-MODS="mozilla"
-
 inherit selinux-policy-2
 
 DESCRIPTION="SELinux policy for mozilla"
@@ -13,6 +10,10 @@ DESCRIPTION="SELinux policy for mozilla"
 if [[ ${PV} != 9999* ]] ; then
 	KEYWORDS="amd64 arm arm64 ~mips x86"
 fi
+
+IUSE="alsa"
+MODS="mozilla"
+
 DEPEND="${DEPEND}
 	sec-policy/selinux-xserver
 "
