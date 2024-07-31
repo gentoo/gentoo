@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,13 +10,11 @@ HOMEPAGE="https://nuand.com/fx3.php"
 #automated builds from git are available, but likely unneeded
 #http://hoopycat.com/bladerf_builds/
 SRC_URI="https://nuand.com/fx3/bladeRF_fw_v${PV}.img"
+S="${DISTDIR}"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~riscv x86"
-IUSE=""
-
-S="${DISTDIR}"
 
 src_unpack() {
 	true
