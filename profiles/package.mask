@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-09-04)
+# Unmaintained upstream, latest media-libs/phonon release incompatible.
+# Removal on 2024-10-04.
+media-libs/phonon-gstreamer
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-04)
 # KF5 Porting aids (from KDElibs4). No more, or PMASKED revdeps.
 # Removal on 2024-10-04. Bug #755956
 kde-frameworks/khtml
