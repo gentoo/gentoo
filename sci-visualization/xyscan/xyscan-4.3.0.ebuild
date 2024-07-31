@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,11 +9,11 @@ inherit desktop qmake-utils
 DESCRIPTION="Tool for extracting data points from graphs"
 HOMEPAGE="http://rhig.physics.yale.edu/~ullrich/software/xyscan/"
 SRC_URI="http://rhig.physics.yale.edu/~ullrich/software/${PN}/Distributions/${MY_PV}/${PN}-${MY_PV}-src.tgz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE=""
 
 RDEPEND="
 	app-text/poppler[qt5]
@@ -25,8 +25,6 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 "
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/${PN}"
 
 src_prepare() {
 	default
