@@ -221,15 +221,13 @@ LICENSE="|| ( Apache-2.0 Boost-1.0 )
 	|| ( Unlicense MIT )
 	openssl"
 SLOT="0/0"
-IUSE=""
+
 DOCS=( COPYING README.md )
 
 BDEPEND="
 	>=virtual/rust-1.66.0[${MULTILIB_USEDEP}]
 	dev-build/cmake
 "
-DEPEND=""
-RDEPEND=""
 
 BUILD_DIR="${WORKDIR}/${P}"
 
