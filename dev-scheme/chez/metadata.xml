@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 
 <pkgmetadata>
-  <maintainer type="person">
-    <email>matthew@gentoo.org</email>
-    <name>Matthew Smith</name>
-  </maintainer>
   <maintainer type="project">
     <email>scheme@gentoo.org</email>
     <name>Gentoo Scheme Project</name>
