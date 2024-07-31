@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby30 ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_EXTENSIONS=(ext/extconf.rb)
 RUBY_FAKEGEM_EXTRADOC="readme.md"
@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/socketry/io-event"
 SRC_URI="https://github.com/socketry/io-event/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="$(ver_cut 1)"
+SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="+io-uring"
 
