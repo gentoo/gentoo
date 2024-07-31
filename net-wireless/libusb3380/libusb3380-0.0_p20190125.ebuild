@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,8 +18,6 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE=""
 
 DEPEND="virtual/libusb:1"
 RDEPEND="${DEPEND}"
-BDEPEND=""
