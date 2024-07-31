@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="sqlite"
 DISTUTILS_USE_PEP517="setuptools"
 inherit distutils-r1 xdg
@@ -28,7 +28,7 @@ DEPEND="
 
 RDEPEND="${DEPEND}
 	dev-python/pycairo[${PYTHON_USEDEP}]
-	x11-libs/vte
+	x11-libs/vte:2.91
 "
 
 S="${WORKDIR}/${MY_PN}-${MY_PV}"
