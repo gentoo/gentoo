@@ -19,6 +19,7 @@ EMESON_SOURCE=${S}/build/meson
 
 PATCHES=(
 	"${FILESDIR}/${PV}-fix-freestanding-test.patch"
+	"${FILESDIR}/${PV}-meson-do-not-force-c99-mode.patch"
 )
 
 multilib_src_configure() {
