@@ -18,7 +18,6 @@ fi
 
 LICENSE="GPL-2+ LGPL-2"
 SLOT="0"
-IUSE=""
 
 DEPEND="
 	dev-lang/R
