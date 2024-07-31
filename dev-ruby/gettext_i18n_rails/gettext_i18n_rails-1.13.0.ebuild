@@ -23,8 +23,8 @@ KEYWORDS="~amd64"
 IUSE="test"
 
 ruby_add_bdepend "test? (
-	dev-ruby/rails:7.1
-	dev-ruby/activerecord:7.1[sqlite]
+	dev-ruby/rails:7.0
+	dev-ruby/activerecord:7.0[sqlite]
 	dev-ruby/temple
 	dev-ruby/ruby-gettext
 	dev-ruby/haml
