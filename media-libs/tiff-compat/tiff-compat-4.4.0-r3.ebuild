@@ -74,6 +74,7 @@ multilib_src_configure() {
 		$(use_enable webp)
 		$(use_enable zlib)
 		$(use_enable zstd)
+		--disable-libdeflate #bug #930111
 	)
 
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
