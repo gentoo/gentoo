@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,6 @@ SRC_URI="https://download.geogebra.org/installers/$(ver_cut 1-2)/GeoGebra-Linux-
 LICENSE="Geogebra CC-BY-NC-SA-3.0 GPL-3 Apache-2.0 BSD-2 BSD BSD-4 colt EPL-1.0 icu LGPL-2.1 LGPL-2.1+ MIT W3C || ( GPL-2 CDDL )"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
-IUSE=""
 
 RDEPEND="
 	dev-java/java-config
