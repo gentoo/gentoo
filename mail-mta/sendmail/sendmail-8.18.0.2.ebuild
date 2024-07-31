@@ -20,7 +20,7 @@ fi
 
 LICENSE="Sendmail GPL-2" # GPL-2 is here for initscript
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ppc ~riscv x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~riscv x86"
 IUSE="ipv6 ldap mbox nis sasl selinux sockets ssl tcpd"
 
 DEPEND="
