@@ -14,14 +14,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="cpu_flags_x86_aes i2p-hardening +upnp"
 
-RDEPEND="
-	acct-user/i2pd
-	acct-group/i2pd
+DEPEND="
 	dev-libs/boost:=
 	dev-libs/openssl:0=[-bindist(-)]
 	sys-libs/zlib
-	upnp? ( net-libs/miniupnpc:= )"
-DEPEND="${RDEPEND}"
+	upnp? ( net-libs/miniupnpc:= )
+"
+RDEPEND="
+	acct-user/i2pd
+	acct-group/i2pd
+	${DEPEND}
+"
 
 CMAKE_USE_DIR="${WORKDIR}/${P}/build"
 
