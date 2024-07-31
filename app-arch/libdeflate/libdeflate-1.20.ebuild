@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake-multilib
 
 DESCRIPTION="Heavily optimized DEFLATE/zlib/gzip (de)compression"
 HOMEPAGE="https://github.com/ebiggers/libdeflate"
@@ -31,7 +31,7 @@ REQUIRED_USE="
 "
 
 DEPEND="
-	test? ( sys-libs/zlib )
+	test? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
 "
 
 PATCHES=(
@@ -55,5 +55,5 @@ src_configure() {
 		-DLIBDEFLATE_BUILD_TESTS="$(usex test)"
 	)
 
-	cmake_src_configure
+	cmake-multilib_src_configure
 }
