@@ -12,7 +12,6 @@ SRC_URI="https://github.com/BatchDrake/sigutils/archive/v${PV}.tar.gz -> ${P}.ta
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="
 	sci-libs/fftw:3.0=
@@ -20,7 +19,6 @@ DEPEND="
 	media-libs/libsndfile:=
 "
 RDEPEND="${DEPEND}"
-BDEPEND=""
 
 src_prepare() {
 	#sed -i -e "s#DESTINATION lib#DESTINATION $(get_libdir)#" -e "s#/lib/#/$(get_libdir)/#" CMakeLists.txt
