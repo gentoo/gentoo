@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake elisp-common flag-o-matic
 
 DESCRIPTION="Graphics Layout Engine"
-HOMEPAGE="http://glx.sourceforge.io/ https://github.com/vlabella/GLE/"
+HOMEPAGE="https://glx.sourceforge.io/ https://github.com/vlabella/GLE/"
 IUSE="doc emacs"
 LIB_VERSION="d476418f006b001dc7f47dcafb413c0557fa44a7"
 SRC_URI="https://github.com/vlabella/GLE/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
