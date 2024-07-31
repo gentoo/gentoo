@@ -1,15 +1,18 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+DESCRIPTION="Viewer and editor for GDS and OASIS integrated circuit layouts"
+HOMEPAGE="https://www.klayout.de/"
 
 RUBY_OPTIONAL=no
 USE_RUBY="ruby31"
 # note: define maximally ONE implementation here
 
-PYTHON_COMPAT=( python3_{9,10,11,12} )
+PYTHON_COMPAT=( python3_{10..12} )
 
-inherit toolchain-funcs python-single-r1 ruby-ng
+inherit python-single-r1 ruby-ng toolchain-funcs
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/klayoutmatthias/${PN}.git"
@@ -20,11 +23,9 @@ else
 	KEYWORDS="amd64 ~x86"
 fi
 
-DESCRIPTION="Viewer and editor for GDS and OASIS integrated circuit layouts"
-HOMEPAGE="https://www.klayout.de/"
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
+
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="
