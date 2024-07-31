@@ -272,6 +272,7 @@ python_gen_any_dep() {
 # This function will call python_check_deps() if defined.
 python_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
+	_python_sanity_checks
 
 	# support developer override
 	if [[ ${PYTHON_COMPAT_OVERRIDE} ]]; then

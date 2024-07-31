@@ -393,6 +393,7 @@ python_gen_impl_dep() {
 # the Python build environment up for it.
 python_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
+	_python_sanity_checks
 
 	unset EPYTHON
 
