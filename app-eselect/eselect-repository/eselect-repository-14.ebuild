@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit python-single-r1
+inherit optfeature python-single-r1
 
 DESCRIPTION="Manage repos.conf via eselect"
 HOMEPAGE="https://github.com/projg2/eselect-repository/"
@@ -55,4 +55,12 @@ src_test() {
 src_install() {
 	emake "${MAKEARGS[@]}" DESTDIR="${D}" install
 	einstalldocs
+}
+
+pkg_postinst() {
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
+		optfeature_header "To sync remote repositories you may need to install the following packages:"
+		optfeature "Git repositories (the most commonly-encountered kind)" dev-vcs/git
+		optfeature "Mercurial repositories" dev-vcs/mercurial
+	fi
 }
