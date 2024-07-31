@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,12 +7,12 @@ inherit cmake
 
 DESCRIPTION="Qt5 GUI ALSA tools: mixer, configuration browser"
 HOMEPAGE="https://gitlab.com/sebholt/qastools"
-SRC_URI="https://gitlab.com/sebholt/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.gz"
+SRC_URI="https://gitlab.com/sebholt/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2"
+S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 BDEPEND="
 	dev-qt/linguist-tools:5
@@ -29,8 +29,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}/${P}-nomancompress.patch" )
-
-S="${WORKDIR}"/${PN}-v${PV}
 
 src_configure() {
 	local mycmakeargs=(
