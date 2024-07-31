@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,11 +7,11 @@ inherit qmake-utils
 DESCRIPTION="The free digital signal analyzer"
 HOMEPAGE="https://github.com/BatchDrake/SigDigger"
 SRC_URI="https://github.com/BatchDrake/SigDigger/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/SigDigger-${PV}"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="
 	dev-qt/qtcore:5
@@ -28,9 +28,6 @@ DEPEND="
 	sci-libs/fftw:3.0=
 "
 RDEPEND="${DEPEND}"
-BDEPEND=""
-
-S="${WORKDIR}/SigDigger-${PV}"
 
 src_configure() {
 	#prevent stripping
