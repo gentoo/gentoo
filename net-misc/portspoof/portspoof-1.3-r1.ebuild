@@ -5,11 +5,8 @@ EAPI=8
 
 inherit flag-o-matic
 
-DESCRIPTION="return SYN+ACK for every port connection attempt"
-HOMEPAGE="http://portspoof.org/"
-LICENSE="GPL-2+"
-SLOT="0"
-IUSE=""
+DESCRIPTION="Return SYN+ACK for every port connection attempt"
+HOMEPAGE="https://portspoof.org/"
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3 autotools
@@ -19,15 +16,18 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
+LICENSE="GPL-2+"
+SLOT="0"
+
 src_prepare() {
 	default
-	if [[ ${PV} == "9999" ]] ; then
+	if [[ ${PV} == *9999* ]] ; then
 		mv configure.in configure.ac || die
 		eautoreconf
 	fi
 	sed -i \
 	's#/usr/local/bin/portspoof -D -c /usr/local/etc/portspoof.conf -s /usr/local/etc/portspoof_signatures#/usr/bin/portspoof -D -c /etc/portspoof.conf -s /etc/portspoof_signatures#'\
-	 system_files/init.d/portspoof.sh
+	 system_files/init.d/portspoof.sh || die
 	sed -i '/#include <sys\/sysctl.h>/d' src/connection.h || die
 }
 
