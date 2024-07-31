@@ -6,16 +6,14 @@ EAPI=7
 DESCRIPTION="Subcheck checks srt subtitle files for errors"
 HOMEPAGE="http://subcheck.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="!sci-biology/ncbi-tools++"  # bug 377093
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${PN}"
 
 src_prepare() {
 	default
