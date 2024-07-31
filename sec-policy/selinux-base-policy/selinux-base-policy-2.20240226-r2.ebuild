@@ -3,6 +3,9 @@
 
 EAPI="7"
 
+DESCRIPTION="SELinux policy for core modules"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:SELinux"
+
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="${SELINUX_GIT_REPO:-https://anongit.gentoo.org/git/proj/hardened-refpolicy.git}"
 	EGIT_BRANCH="${SELINUX_GIT_BRANCH:-master}"
@@ -14,10 +17,10 @@ else
 			https://dev.gentoo.org/~perfinion/patches/${PN}/patchbundle-${PN}-${PVR}.tar.bz2"
 	KEYWORDS="amd64 arm arm64 ~mips ~riscv x86"
 fi
+S="${WORKDIR}/"
 
-HOMEPAGE="https://wiki.gentoo.org/wiki/Project:SELinux"
-DESCRIPTION="SELinux policy for core modules"
-
+LICENSE="GPL-2"
+SLOT="0"
 IUSE="systemd +unconfined"
 
 PDEPEND="unconfined? ( sec-policy/selinux-unconfined )"
@@ -29,9 +32,6 @@ BDEPEND="
 
 MODS="application authlogin bootloader clock consoletype cron dmesg fstools getty hostname init iptables libraries locallogin logging lvm miscfiles modutils mount mta netutils nscd portage raid rsync selinuxutil setrans ssh staff storage su sysadm sysnetwork systemd tmpfiles udev userdomain usermanage unprivuser xdg"
 DEL_MODS="hotplug"
-LICENSE="GPL-2"
-SLOT="0"
-S="${WORKDIR}/"
 
 # Code entirely copied from selinux-eclass (cannot inherit due to dependency on
 # itself), when reworked reinclude it. Only postinstall (where -b base.pp is

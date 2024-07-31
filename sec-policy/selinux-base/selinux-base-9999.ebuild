@@ -3,6 +3,9 @@
 
 EAPI="7"
 
+DESCRIPTION="Gentoo base policy for SELinux"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:SELinux"
+
 PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="xml(+)"
 inherit python-any-r1
@@ -19,13 +22,11 @@ else
 
 	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
 fi
+S="${WORKDIR}/"
 
-IUSE="doc +unknown-perms systemd +ubac +unconfined"
-
-DESCRIPTION="Gentoo base policy for SELinux"
-HOMEPAGE="https://wiki.gentoo.org/wiki/Project:SELinux"
 LICENSE="GPL-2"
 SLOT="0"
+IUSE="doc +unknown-perms systemd +ubac +unconfined"
 
 RDEPEND=">=sys-apps/policycoreutils-2.8"
 DEPEND="${RDEPEND}"
@@ -33,8 +34,6 @@ BDEPEND="
 	${PYTHON_DEPS}
 	>=sys-apps/checkpolicy-2.8
 	sys-devel/m4"
-
-S=${WORKDIR}/
 
 src_prepare() {
 	if [[ ${PV} != 9999* ]]; then
