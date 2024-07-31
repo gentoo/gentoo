@@ -19,6 +19,7 @@ EMESON_SOURCE=${S}/build/meson
 
 PATCHES=(
 	"${FILESDIR}/${PV}-fix-freestanding-test.patch"
+	# https://github.com/lz4/lz4/pull/1485
 	"${FILESDIR}/${PV}-meson-do-not-force-c99-mode.patch"
 )
 
