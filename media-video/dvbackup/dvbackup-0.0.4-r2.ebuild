@@ -12,7 +12,6 @@ SRC_URI="https://downloads.sourceforge.net/dvbackup/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
 DEPEND="sys-libs/glibc
 	dev-libs/popt
