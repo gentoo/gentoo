@@ -10,17 +10,16 @@ inherit python-single-r1 toolchain-funcs
 DESCRIPTION="Command-line ape 2.0 tagger"
 HOMEPAGE="https://robert.muth.org/Apetag/"
 SRC_URI="https://robert.muth.org/Apetag/${PN}.${PV}.tar.gz"
+S="${WORKDIR}/${PN^}"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 ~riscv x86"
-IUSE=""
+
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
-
-S=${WORKDIR}/${PN^}
 
 DOCS=( 00readme )
 
