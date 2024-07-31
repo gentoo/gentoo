@@ -1,0 +1,11 @@
+--- a/server/c_chat.c	2024-06-24 08:49:34.803705760 -0000
++++ b/server/c_chat.c	2024-06-24 08:50:21.532557066 -0000
+@@ -651,7 +651,7 @@
+         const char *self_reply;
+         if (emotion > EMOTE_FIRST && emotion < EMOTE_LAST && single_emotes[emotion - 1][0] != NULL) {
+             self_reply = single_emotes[emotion - 1][0];
+-            snprintf(buf2, sizeof(buf2), single_emotes[emotion - 1][1], op->name);
++            snprintf(buf2, sizeof(buf2), "%s", single_emotes[emotion - 1][1], op->name);
+         } else {
+             self_reply = "You are a nut.";
+             snprintf(buf2, sizeof(buf2), "%s dances with glee.", op->name);
