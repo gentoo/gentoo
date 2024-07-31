@@ -135,6 +135,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-icu75.patch
 	# backport test-only fix for lxml 5
 	"${FILESDIR}"/e9cc00560a28f56a303cca97630ab58e519dd9c8.patch
+	# Security backport for CVE-2024-7008
+	"${FILESDIR}"/${P}-xss-backport.patch
 )
 
 src_prepare() {
