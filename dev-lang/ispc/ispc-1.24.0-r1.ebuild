@@ -116,10 +116,12 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=ON
 		-DISPC_CROSS="$(usex cross)"
+		-DISPC_INCLUDE_BENCHMARKS="no"
 		-DISPC_INCLUDE_EXAMPLES="$(usex examples)"
-		-DISPC_INCLUDE_TESTS=$(usex test)
+		-DISPC_INCLUDE_TESTS="$(usex test)"
 		-DISPC_INCLUDE_RT="$(usex ispcrt)"
 		-DISPC_INCLUDE_UTILS="$(usex utils)"
+		-DISPC_STATIC_LINK="no"
 
 		-DARM_ENABLED="$(usex ispc_targets_ARM)"
 		-DWASM_ENABLED="$(usex ispc_targets_WebAssembly)"
