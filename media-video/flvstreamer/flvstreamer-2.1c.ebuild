@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,13 +8,11 @@ inherit toolchain-funcs
 DESCRIPTION="Open source command-line RTMP client to stream audio or video flash content"
 HOMEPAGE="https://savannah.nongnu.org/projects/flvstreamer/"
 SRC_URI="mirror://nongnu/${PN}/source/${P}.tar.gz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
-IUSE=""
-
-S="${WORKDIR}/${PN}"
 
 src_prepare() {
 	default
