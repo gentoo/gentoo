@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,11 +8,10 @@ inherit qmake-utils git-r3 xdg-utils
 DESCRIPTION="Cross-platform libmpv-based multimedia player with uncluttered design"
 HOMEPAGE="http://bakamplayer.u8sand.net/"
 EGIT_REPO_URI="https://github.com/u8sand/Baka-MPlayer.git"
+S="${WORKDIR}/baka-mplayer-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
 BDEPEND="
 	dev-qt/linguist-tools:5
@@ -29,8 +28,6 @@ RDEPEND="
 	x11-libs/libX11
 "
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/baka-mplayer-${PV}"
 
 src_prepare() {
 	default
