@@ -8,11 +8,11 @@ inherit cmake
 DESCRIPTION="Protobuf messages and functions for robot applications"
 HOMEPAGE="https://github.com/ignitionrobotics/ign-msgs"
 SRC_URI="https://github.com/ignitionrobotics/ign-msgs/archive/${PN}5_${PV}.tar.gz"
+S="${WORKDIR}/gz-msgs-ignition-msgs5_${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="5"
 KEYWORDS="~amd64"
-IUSE=""
 
 RDEPEND="dev-libs/protobuf:=
 	sci-libs/ignition-math:6=
@@ -21,6 +21,7 @@ RDEPEND="dev-libs/protobuf:=
 DEPEND="${RDEPEND}
 	dev-build/ignition-cmake:2"
 BDEPEND="dev-build/ignition-cmake:2"
+
 CMAKE_BUILD_TYPE=RelWithDebInfo
-S="${WORKDIR}/gz-msgs-ignition-msgs5_${PV}"
+
 PATCHES=( "${FILESDIR}/protobuf.patch" )
