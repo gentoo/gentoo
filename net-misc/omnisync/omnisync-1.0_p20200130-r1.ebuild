@@ -14,9 +14,11 @@ SRC_URI="https://gitlab.com/grknight/omnisync/-/archive/${SNAPSHOT}/omnisync-${S
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-RDEPEND="net-libs/gnutls:= net-analyzer/net-snmp:="
+RDEPEND="
+	net-analyzer/net-snmp:=
+	net-libs/gnutls:=
+"
 DEPEND="${RDEPEND}"
 DOCS=( readme.txt Changes )
 
