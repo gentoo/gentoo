@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1 xdg
@@ -19,10 +19,10 @@ else
 	SRC_URI="https://github.com/ozmartian/${PN}/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 x86"
 fi
+S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
 
 DEPEND="
 	>=media-video/mpv-0.25:=[libmpv]
@@ -36,8 +36,6 @@ BDEPEND="
 	${PYTHON_DEPS}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-
-S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 src_install() {
 	distutils-r1_src_install
