@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake xdg
+inherit cmake flag-o-matic xdg
 
 DESCRIPTION="Cross-platform music production software"
 HOMEPAGE="https://lmms.io"
@@ -90,6 +90,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/860867
+	# https://github.com/LMMS/lmms/pull/6174
+	#
+	# Fixed upstream, remove whenever they finally release a new version.
+	filter-lto
+
 	local mycmakeargs=(
 		-DUSE_WERROR=FALSE
 		-DWANT_CAPS=FALSE
