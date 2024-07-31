@@ -41,8 +41,8 @@ RDEPEND="${DEPEND}
 	acct-group/svxlink
 	acct-user/svxlink"
 BDEPEND="
-	dev-qt/linguist-tools:5
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	qt5? ( dev-qt/linguist-tools:5 )"
 
 src_prepare() {
 	# fix build for MUSL (bug #936813)
