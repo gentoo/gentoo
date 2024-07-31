@@ -3,9 +3,6 @@
 
 EAPI="7"
 
-IUSE="alsa"
-MODS="mplayer"
-
 inherit selinux-policy-2
 
 DESCRIPTION="SELinux policy for mplayer"
@@ -13,3 +10,6 @@ DESCRIPTION="SELinux policy for mplayer"
 if [[ ${PV} != 9999* ]] ; then
 	KEYWORDS="amd64 arm arm64 ~mips x86"
 fi
+
+IUSE="alsa"
+MODS="mplayer"
