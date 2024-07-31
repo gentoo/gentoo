@@ -10,14 +10,13 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
 RDEPEND=">=dev-lang/perl-5.6.1
 	dev-perl/perl-ldap
 	dev-perl/URI
 	virtual/perl-Digest-MD5
 	dev-perl/Authen-SASL"
-DEPEND=${RDEPEND}
+DEPEND="${RDEPEND}"
 
 src_configure() {
 	# non-standard configure system!
