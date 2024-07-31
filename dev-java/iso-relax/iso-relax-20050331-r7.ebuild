@@ -19,7 +19,8 @@ KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-sol
 CP_DEPEND=">=dev-java/ant-1.10.14-r3:0"
 DEPEND="${CP_DEPEND}
 	>=virtual/jdk-1.8:*"
-RDEPEND=">=virtual/jre-1.8:*"
+RDEPEND="${CP_DEPEND}
+	>=virtual/jre-1.8:*"
 
 JAVA_SRC_DIR="src"
 
