@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit cmake python-single-r1 xdg
 
@@ -15,7 +15,7 @@ if [[ "${PV}" = *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/whoozle/android-file-transfer-linux.git"
 else
 	SRC_URI="https://github.com/whoozle/android-file-transfer-linux/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="LGPL-2.1"
@@ -53,6 +53,10 @@ BDEPEND="
 	virtual/pkgconfig
 	qt5? ( dev-qt/linguist-tools:5 )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.2-gcc13.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
