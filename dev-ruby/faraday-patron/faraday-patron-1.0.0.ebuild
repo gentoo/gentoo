@@ -16,7 +16,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Faraday adapter for Patron"
 HOMEPAGE="https://github.com/lostisland/faraday-patron"
-SRC_URI="https://github.com/lostisland/faraday-patron/archive/v1.0.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lostisland/faraday-patron/archive/v$(ver_cut 1-2).tar.gz -> ${P}.tar.gz"
 RUBY_S="faraday-patron-1.0"
 
 LICENSE="MIT"

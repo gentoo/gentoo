@@ -3,8 +3,9 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby30 ruby31 ruby32 ruby33"
 
+RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_RECIPE_DOC="none"
 
 RUBY_FAKEGEM_GEMSPEC="faker.gemspec"
@@ -12,15 +13,15 @@ RUBY_FAKEGEM_GEMSPEC="faker.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="A library for generating fake data such as names, addresses, and phone numbers"
-HOMEPAGE="https://github.com/faker-ruby/faker"
-SRC_URI="https://github.com/faker-ruby/faker/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/stympy/faker"
+SRC_URI="https://github.com/stympy/faker/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="test"
 
-ruby_add_rdepend ">=dev-ruby/i18n-1.8.11:1 !<dev-ruby/faker-2.23.0-r1"
+ruby_add_rdepend ">=dev-ruby/i18n-1.8.11:1"
 
 ruby_add_bdepend "test? ( dev-ruby/timecop )"
 

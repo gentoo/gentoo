@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/bokmann/font-awesome-rails https://rubygems.org/gem
 LICENSE="MIT OFL-1.1"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
 ruby_add_rdepend "<dev-ruby/railties-8.0:*
-	>=dev-ruby/railties-3.2:*"
+	>=dev-ruby/railties-3.2:*
+"

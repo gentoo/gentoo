@@ -1,8 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby30 ruby31 ruby32"
+USE_RUBY="ruby30 ruby31 ruby32 ruby33"
 RUBY_FAKEGEM_GEMSPEC="facter.gemspec"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="yard"
@@ -21,7 +21,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_BRANCH="master"
 else
 	[[ "${PV}" = *_rc* ]] || \
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~riscv ~x86"
 	#KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 	SRC_URI="https://github.com/puppetlabs/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
@@ -33,6 +33,7 @@ ruby_add_bdepend "test? ( dev-ruby/simplecov dev-ruby/timecop dev-ruby/webmock )
 
 PATCHES=(
 	"${FILESDIR}"/facter-4.4.3-rspec-gentoo-tweak.patch
+	"${FILESDIR}"/facter-4.7.0-gentoo-thor-gemspec.patch
 )
 
 src_unpack() {

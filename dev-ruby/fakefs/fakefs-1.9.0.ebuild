@@ -6,9 +6,7 @@ EAPI=8
 USE_RUBY="ruby30 ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_RECIPE_TEST="none"
-
 RUBY_FAKEGEM_EXTRADOC="CONTRIBUTORS README.md"
-
 RUBY_FAKEGEM_GEMSPEC="fakefs.gemspec"
 
 inherit ruby-fakegem
@@ -20,7 +18,6 @@ SRC_URI="https://github.com/defunkt/fakefs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE=""
 
 ruby_add_bdepend "
 	test? (

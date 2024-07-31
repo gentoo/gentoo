@@ -7,9 +7,7 @@ USE_RUBY="ruby31 ruby32"
 
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
-
 RUBY_FAKEGEM_EXTRADOC="README.md"
-
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
 inherit ruby-fakegem
