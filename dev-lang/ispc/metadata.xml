@@ -27,6 +27,9 @@
 		<flag name="ispc_targets_XE">
 			Intel XE (GPU) target (32-bit and 64-bit)
 		</flag>
+		<flag name="ispcrt">
+			Generate build targets for ISPC runtime.
+		</flag>
 		<flag name="level-zero">
 			Enable oneAPI Level Zero GPU support in ispcrt.
 		</flag>

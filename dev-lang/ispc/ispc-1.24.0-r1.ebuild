@@ -118,6 +118,7 @@ src_configure() {
 		-DISPC_CROSS="$(usex cross)"
 		-DISPC_INCLUDE_EXAMPLES="$(usex examples)"
 		-DISPC_INCLUDE_TESTS=$(usex test)
+		-DISPC_INCLUDE_RT="$(usex ispcrt)"
 		-DISPC_INCLUDE_UTILS="$(usex utils)"
 
 		-DARM_ENABLED="$(usex ispc_targets_ARM)"
@@ -126,19 +127,24 @@ src_configure() {
 		-DXE_ENABLED="$(usex ispc_targets_XE)"
 	)
 
-	# NOTE mirror the priority in ispcrt/detail/cpu/CMakeLists.txt
-	local ISPCRT_BUILD_TASK_MODEL
-	if use openmp; then
-		ISPCRT_BUILD_TASK_MODEL="OpenMP"
-	elif use tbb; then
-		ISPCRT_BUILD_TASK_MODEL="TBB"
-	else
-		ISPCRT_BUILD_TASK_MODEL="Threads"
-	fi
+	if use ispcrt; then
+		# NOTE mirror the priority in ispcrt/detail/cpu/CMakeLists.txt
+		local ISPCRT_BUILD_TASK_MODEL
+		if use openmp; then
+			ISPCRT_BUILD_TASK_MODEL="OpenMP"
+		elif use tbb; then
+			ISPCRT_BUILD_TASK_MODEL="TBB"
+		else
+			ISPCRT_BUILD_TASK_MODEL="Threads"
+		fi
 
-	mycmakeargs+=(
-		-DISPCRT_BUILD_TASK_MODEL="${ISPCRT_BUILD_TASK_MODEL}"
-	)
+		mycmakeargs+=(
+			-DISPCRT_BUILD_CPU="yes"
+			-DISPCRT_BUILD_STATIC="no"
+			-DISPCRT_BUILD_TESTS="$(usex test)"
+			-DISPCRT_BUILD_TASK_MODEL="${ISPCRT_BUILD_TASK_MODEL}"
+		)
+	fi
 
 	if use ispc_targets_XE; then
 		mycmakeargs+=(
@@ -146,6 +152,11 @@ src_configure() {
 			-DISPCRT_BUILD_GPU="$(usex level-zero)"
 			-DLLVMSPIRVLibPath="$(get_llvm_prefix)/$(get_libdir)/libLLVMSPIRVLib.so" # this is slotted
 		)
+		if use ispcrt; then
+			mycmakeargs+=(
+				-DISPCRT_BUILD_GPU="$(usex level-zero)"
+			)
+		fi
 	fi
 
 	cmake_src_configure
