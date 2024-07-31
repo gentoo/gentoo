@@ -38,15 +38,6 @@ pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
-src_prepare() {
-	sed -i \
-		-e "s#\"lib\"#\"$(get_libdir)\"#g" \
-		-e "s#\"lib/#\"$(get_libdir)/#g" \
-		cmake/install_helpers.cmake || die "sed failed"
-
-	cmake_src_prepare
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DGINKGO_DEVEL_TOOLS=OFF
