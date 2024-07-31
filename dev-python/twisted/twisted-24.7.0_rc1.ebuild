@@ -117,6 +117,8 @@ python_test() {
 
 	# breaks some tests by overriding empty environment
 	local -x SANDBOX_ON=0
+	# for py3.13, see
+	# https://github.com/twisted/twisted/pull/12092#issuecomment-2194326096
 	local -x LINES=25
 	local -x COLUMNS=80
 	"${EPYTHON}" -m twisted.trial twisted ||
