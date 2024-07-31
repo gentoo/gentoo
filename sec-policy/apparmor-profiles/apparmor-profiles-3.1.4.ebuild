@@ -8,6 +8,7 @@ MY_PV="$(ver_cut 1-2)"
 DESCRIPTION="A collection of profiles for the AppArmor application security system"
 HOMEPAGE="https://gitlab.com/apparmor/apparmor/wikis/home"
 SRC_URI="https://launchpad.net/apparmor/${MY_PV}/${PV}/+download/apparmor-${PV}.tar.gz"
+S="${WORKDIR}/apparmor-${PV}/profiles"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -15,8 +16,6 @@ KEYWORDS="amd64 ~ppc64"
 IUSE="minimal"
 
 RESTRICT="test"
-
-S=${WORKDIR}/apparmor-${PV}/profiles
 
 src_install() {
 	if use minimal ; then
