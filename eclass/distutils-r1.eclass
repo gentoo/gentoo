@@ -936,6 +936,7 @@ _distutils-r1_print_package_versions() {
 # distutils patches and/or quirks.
 distutils-r1_python_prepare_all() {
 	debug-print-function ${FUNCNAME} "${@}"
+	_python_sanity_checks
 	_distutils-r1_check_all_phase_mismatch
 
 	if [[ ! ${DISTUTILS_OPTIONAL} ]]; then
