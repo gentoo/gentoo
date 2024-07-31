@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31 ruby32"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32 ruby33"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
@@ -17,7 +17,6 @@ SRC_URI="https://github.com/metabahn/llhttp/archive/refs/tags/${MY_PV}.tar.gz ->
 LICENSE="MPL-2.0"
 SLOT="$(ver_cut 1)/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE=""
 RUBY_S="llhttp-${MY_PV}/ffi"
 
 ruby_add_rdepend "=dev-ruby/ffi-compiler-1*"

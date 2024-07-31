@@ -19,7 +19,6 @@ SRC_URI="https://github.com/bryanp/llhttp/archive/refs/tags/${MY_PV}.tar.gz -> l
 LICENSE="MPL-2.0"
 SLOT="$(ver_cut 1)/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE=""
 RUBY_S="llhttp-${MY_PV}/ffi"
 
 ruby_add_rdepend "=dev-ruby/ffi-compiler-1*"
