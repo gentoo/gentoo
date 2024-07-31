@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,6 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
 
 DEPEND="
 	>=sys-apps/util-linux-2.30.2
@@ -30,7 +29,8 @@ CONFIG_CHECK="~BTRFS_FS"
 ERROR_BTRFS_FS="CONFIG_BTRFS_FS: bees does currently only work with btrfs"
 
 PATCHES=(
-	"${FILESDIR}/0001-HACK-crucible-Work-around-kernel-memory-fragmentatio.patch"
+	"${FILESDIR}/0001-context-demote-abandoned-toxic-match-to-debug-log-le.patch"
+	"${FILESDIR}/0002-HACK-crucible-Work-around-kernel-memory-fragmentatio_v2.patch"
 )
 
 pkg_pretend() {
