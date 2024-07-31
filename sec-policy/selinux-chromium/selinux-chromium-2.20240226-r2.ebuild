@@ -3,9 +3,6 @@
 
 EAPI="7"
 
-IUSE="alsa"
-MODS="chromium"
-
 inherit selinux-policy-2
 
 DESCRIPTION="SELinux policy for chromium"
@@ -13,6 +10,9 @@ DESCRIPTION="SELinux policy for chromium"
 if [[ ${PV} != 9999* ]] ; then
 	KEYWORDS="amd64 arm arm64 ~mips x86"
 fi
+
+IUSE="alsa"
+MODS="chromium"
 
 DEPEND="${DEPEND}
 	sec-policy/selinux-xserver
