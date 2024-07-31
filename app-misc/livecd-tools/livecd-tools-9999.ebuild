@@ -1,9 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit linux-info
+
+KEYMAP_VER=v1.0.0
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/proj/livecd-tools.git"
@@ -15,18 +17,14 @@ fi
 
 DESCRIPTION="Gentoo LiveCD tools for autoconfiguration of hardware"
 HOMEPAGE="https://gitweb.gentoo.org/proj/livecd-tools.git/"
-
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 
 RDEPEND="
 	dev-util/dialog
 	media-sound/alsa-utils
 	net-dialup/mingetty
-	|| (
-		sys-apps/openrc
-		sys-apps/openrc-navi
-	)
+	sys-apps/openrc
 	sys-apps/pciutils
 "
 
@@ -45,4 +43,12 @@ src_install() {
 	dosbin net-setup
 	into /
 	dosbin livecd-functions.sh
+	# Add the keymap hook for dracut
+	insinto /usr/lib/dracut/modules.d
+	doins -r dracut/90dokeymap
+	insinto /lib
+	doins -r lib/keymaps
+	# Copying Genkernel's hack to create /mnt/gentoo until a cleaner
+	# solution is created.
+	keepdir /mnt/gentoo
 }
