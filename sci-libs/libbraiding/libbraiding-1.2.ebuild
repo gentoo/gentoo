@@ -1,11 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="Expose the functionality of cbraid as a shared library"
 HOMEPAGE="https://github.com/miguelmarco/libbraiding"
-
 SRC_URI="https://github.com/miguelmarco/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 # A few source headers still say GPLv2, but I believe that to be an
@@ -13,7 +12,6 @@ SRC_URI="https://github.com/miguelmarco/${PN}/releases/download/${PV}/${P}.tar.g
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE=""
 
 src_install() {
 	default
