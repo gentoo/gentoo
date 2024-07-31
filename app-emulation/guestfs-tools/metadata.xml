@@ -13,4 +13,7 @@
     <email>virtualization@gentoo.org</email>
     <name>Gentoo Virtualization Project</name>
   </maintainer>
+  <use>
+    <flag name="libvirt">Use <pkg>app-emulation/libvirt</pkg> to manipulate VMs</flag>
+  </use>
 </pkgmetadata>
