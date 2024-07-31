@@ -27,7 +27,7 @@ SRC_URI="
 LICENSE="BSD BSD-2 UoI-NCSA"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="cross examples level-zero openmp test utils ${ISPC_TARGETS[*]/#/ispc_targets_}"
+IUSE="cross examples ispcrt level-zero openmp tbb test utils ${ISPC_TARGETS[*]/#/ispc_targets_}"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -45,7 +45,11 @@ RDEPEND="
 		dev-libs/intel-vc-intrinsics[${LLVM_USEDEP}]
 	)
 	level-zero? ( dev-libs/level-zero:= )
-	!openmp? ( dev-cpp/tbb:= )
+	!openmp? (
+		tbb? (
+			dev-cpp/tbb:=
+		)
+	)
 "
 DEPEND="
 	${RDEPEND}
@@ -115,12 +119,25 @@ src_configure() {
 		-DISPC_INCLUDE_EXAMPLES="$(usex examples)"
 		-DISPC_INCLUDE_TESTS=$(usex test)
 		-DISPC_INCLUDE_UTILS="$(usex utils)"
-		-DISPCRT_BUILD_TASK_MODEL=$(usex openmp OpenMP TBB)
 
 		-DARM_ENABLED="$(usex ispc_targets_ARM)"
 		-DWASM_ENABLED="$(usex ispc_targets_WebAssembly)"
 		-DX86_ENABLED="$(usex ispc_targets_X86)"
 		-DXE_ENABLED="$(usex ispc_targets_XE)"
+	)
+
+	# NOTE mirror the priority in ispcrt/detail/cpu/CMakeLists.txt
+	local ISPCRT_BUILD_TASK_MODEL
+	if use openmp; then
+		ISPCRT_BUILD_TASK_MODEL="OpenMP"
+	elif use tbb; then
+		ISPCRT_BUILD_TASK_MODEL="TBB"
+	else
+		ISPCRT_BUILD_TASK_MODEL="Threads"
+	fi
+
+	mycmakeargs+=(
+		-DISPCRT_BUILD_TASK_MODEL="${ISPCRT_BUILD_TASK_MODEL}"
 	)
 
 	if use ispc_targets_XE; then

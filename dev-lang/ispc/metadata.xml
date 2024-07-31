@@ -31,7 +31,10 @@
 			Enable oneAPI Level Zero GPU support in ispcrt.
 		</flag>
 		<flag name="openmp">
-			Build with OpenMP task model (otherwise, TBB task model is used).
+			Build with OpenMP task model.
+		</flag>
+		<flag name="tbb">
+			Build with the Intel Threads Building Block task model (<pkg>dev-cpp/tbb</pkg>)
 		</flag>
 		<flag name="utils">
 			Build utils.
