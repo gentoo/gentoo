@@ -24,7 +24,6 @@ HOMEPAGE="https://github.com/codegram/date_validator"
 LICENSE="MIT"
 SLOT="3"
 KEYWORDS="~amd64"
-IUSE=""
 
 ruby_add_rdepend "
 	>=dev-ruby/activemodel-3.0:*

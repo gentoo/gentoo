@@ -20,7 +20,6 @@ HOMEPAGE="https://github.com/DatabaseCleaner/database_cleaner-active_record"
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE=""
 
 ruby_add_rdepend "
 	|| ( dev-ruby/activerecord:6.1 )
