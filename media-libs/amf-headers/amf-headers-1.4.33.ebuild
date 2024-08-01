@@ -3,6 +3,9 @@
 
 EAPI=8
 
+DESCRIPTION="The Advanced Media Framework (AMF) SDK"
+HOMEPAGE="https://github.com/GPUOpen-LibrariesAndSDKs/AMF"
+
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/GPUOpen-LibrariesAndSDKs/AMF"
@@ -10,15 +13,10 @@ else
 	SRC_URI="https://github.com/GPUOpen-LibrariesAndSDKs/AMF/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 ~arm64"
 fi
-
-DESCRIPTION="The Advanced Media Framework (AMF) SDK"
-HOMEPAGE="https://github.com/GPUOpen-LibrariesAndSDKs/AMF"
+S="${WORKDIR}/AMF-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE=""
-
-S="${WORKDIR}/AMF-${PV}"
 
 src_unpack() {
 	default
