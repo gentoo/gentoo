@@ -221,11 +221,6 @@ sci-astronomy/esomidas
 =dev-libs/libxml2-2.13.1
 =dev-libs/libxslt-1.1.41
 
-# James Le Cuirot <chewi@gentoo.org> (2024-07-01)
-# Ancient, dead upstream, generally awful.
-# Removal on 2024-08-01.  Bugs #935307, #935308, #935309.
-games-arcade/spacerider
-
 # Sam James <sam@gentoo.org> (2024-06-25)
 # Subvolume printing is broken: https://github.com/kdave/btrfs-progs/issues/829
 =sys-fs/btrfs-progs-6.9.1
