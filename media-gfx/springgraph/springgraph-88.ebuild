@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,15 +12,13 @@ DESCRIPTION="Generate spring graphs from graphviz input files"
 HOMEPAGE="http://www.chaosreigns.com/code/springgraph"
 SRC_URI="http://www.chaosreigns.com/code/springgraph/dl/${PN}.pl.${PV}
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${SRC_DEBIAN_PATCH}"
+S="${WORKDIR}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE=""
 
 RDEPEND="dev-perl/GD"
-
-S=${WORKDIR}
 
 PATCHES=( "${SRC_DEBIAN_PATCH%.gz}" )
 
