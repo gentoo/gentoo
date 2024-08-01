@@ -12,7 +12,6 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.bz2"
 LICENSE="qwt"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 RDEPEND="
 	dev-qt/qtcore:5

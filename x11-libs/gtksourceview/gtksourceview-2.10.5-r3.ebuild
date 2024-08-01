@@ -12,7 +12,6 @@ HOMEPAGE="https://www.gnome.org/"
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="2.0"
 KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
-IUSE=""
 
 RDEPEND="
 	>=x11-libs/gtk+-2.12:2
