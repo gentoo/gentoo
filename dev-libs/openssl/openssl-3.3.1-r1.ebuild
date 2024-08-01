@@ -23,7 +23,7 @@ else
 	"
 
 	if [[ ${PV} != *_alpha* && ${PV} != *_beta* ]] ; then
-		KEYWORDS="~amd64 ~arm ~m68k ~mips ~s390 ~sparc ~x86"
+		KEYWORDS="~amd64 ~arm ~m68k ~mips ~s390 ~sparc ~x86 ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 	fi
 fi
 
