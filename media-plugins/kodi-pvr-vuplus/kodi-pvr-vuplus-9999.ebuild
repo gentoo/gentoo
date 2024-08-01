@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake kodi-addon
+inherit kodi-addon
 
 DESCRIPTION="Kodi's VuPlus client addon"
 HOMEPAGE="https://github.com/kodi-pvr/pvr.vuplus"

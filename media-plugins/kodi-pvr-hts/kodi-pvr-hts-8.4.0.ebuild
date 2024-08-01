@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake kodi-addon
+inherit kodi-addon
 
 DESCRIPTION="Tvheadend Live TV and Radio PVR client addon for Kodi"
 HOMEPAGE="https://github.com/kodi-pvr/pvr.hts"

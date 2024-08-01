@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake kodi-addon
+inherit kodi-addon
 
 DESCRIPTION="2048 for Kodi"
 HOMEPAGE="https://github.com/kodi-game/game.libretro.2048"

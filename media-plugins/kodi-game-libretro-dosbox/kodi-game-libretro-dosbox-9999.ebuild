@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake kodi-addon
+inherit kodi-addon
 
 DESCRIPTION="DOSBox GameClient for Kodi"
 HOMEPAGE="https://github.com/kodi-game/game.libretro.dosbox"

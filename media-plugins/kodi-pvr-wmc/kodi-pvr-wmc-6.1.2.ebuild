@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake kodi-addon
+inherit kodi-addon
 
 DESCRIPTION="Kodi's Windows Media Center client addon"
 HOMEPAGE="https://github.com/kodi-pvr/pvr.wmc"

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake kodi-addon
+inherit kodi-addon
 
 DESCRIPTION="Flac encoder addon for Kodi"
 HOMEPAGE="https://github.com/xbmc/audioencoder.flac"

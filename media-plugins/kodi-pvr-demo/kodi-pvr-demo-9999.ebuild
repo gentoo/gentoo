@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake kodi-addon
+inherit kodi-addon
 
 DESCRIPTION="Demo PVR for Kodi"
 HOMEPAGE="https://github.com/kodi-pvr/pvr.demo"

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake kodi-addon
+inherit kodi-addon
 
 DESCRIPTION="Libarchive VFS add-on for Kodi"
 HOMEPAGE="https://github.com/xbmc/vfs.libarchive"

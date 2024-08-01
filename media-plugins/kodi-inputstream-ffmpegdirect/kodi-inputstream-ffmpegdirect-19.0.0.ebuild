@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake kodi-addon
+inherit kodi-addon
 
 DESCRIPTION="Kodi's FFMpeg Direct Inputstream addon"
 HOMEPAGE="https://github.com/xbmc/inputstream.ffmpegdirect"

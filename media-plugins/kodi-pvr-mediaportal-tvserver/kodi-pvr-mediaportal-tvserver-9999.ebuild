@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake kodi-addon
+inherit kodi-addon
 
 DESCRIPTION="Kodi's MediaPortal TVServer client addon"
 HOMEPAGE="https://github.com/kodi-pvr/pvr.mediaportal.tvserver"

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake kodi-addon
+inherit kodi-addon
 
 DESCRIPTION="SPC decoder addon for Kodi"
 HOMEPAGE="https://github.com/xbmc/audiodecoder.snesapu"

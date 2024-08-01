@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake kodi-addon
+inherit kodi-addon
 
 DESCRIPTION="Pyro screensaver for Kodi"
 HOMEPAGE="https://github.com/xbmc/screensaver.pyro"

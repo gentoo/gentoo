@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake kodi-addon
+inherit kodi-addon
 
 KODI_PLUGIN_NAME="imagedecoder.raw"
 DESCRIPTION="RAW image decoder for Kodi"

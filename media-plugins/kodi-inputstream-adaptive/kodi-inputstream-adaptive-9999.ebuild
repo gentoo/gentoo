@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake kodi-addon
+inherit kodi-addon
 
 DESCRIPTION="Kodi's Adaptive inputstream addon"
 HOMEPAGE="https://github.com/peak3d/inputstream.adaptive.git"
