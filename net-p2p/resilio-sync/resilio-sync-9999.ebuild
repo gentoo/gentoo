@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,19 +14,18 @@ SRC_URI="amd64? ( ${BASE_URI//@arch@/x64} )
 	arm? ( ${BASE_URI//@arch@/armhf} )
 	arm64? ( ${BASE_URI//@arch@/arm64} )
 	x86? ( ${BASE_URI//@arch@/i386} )"
+S="${WORKDIR}"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+
 RESTRICT="bindist mirror"
 
 RDEPEND="acct-group/rslsync
 	acct-user/rslsync
 	virtual/libcrypt:="
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}"
 
 DOC_CONTENTS="You may need to review /etc/resilio-sync/config.json\\n
 Default metadata path is /var/lib/resilio-sync/.sync\\n
