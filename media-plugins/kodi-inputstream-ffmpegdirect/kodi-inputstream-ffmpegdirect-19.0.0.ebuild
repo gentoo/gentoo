@@ -26,7 +26,7 @@ esac
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
+
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc-13-fix.patch # Bug 915943

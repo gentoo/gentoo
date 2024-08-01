@@ -27,7 +27,7 @@ esac
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE=""
+
 
 DEPEND+="
 	>=media-libs/libogg-1.3.5

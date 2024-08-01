@@ -27,7 +27,7 @@ esac
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE=""
+
 
 DEPEND+="
 	>=media-libs/glm-0.9.9.8-r1

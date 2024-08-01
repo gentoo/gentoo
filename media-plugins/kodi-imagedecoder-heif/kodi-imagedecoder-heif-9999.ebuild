@@ -28,7 +28,7 @@ esac
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE=""
+
 
 DEPEND+="
 	>=media-libs/libde265-1.0.8

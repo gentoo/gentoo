@@ -27,6 +27,6 @@ esac
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE=""
+
 
 RDEPEND="${DEPEND}"

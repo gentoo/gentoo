@@ -25,7 +25,7 @@ esac
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
+
 
 DEPEND="
 	~media-tv/kodi-9999

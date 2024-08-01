@@ -26,7 +26,7 @@ esac
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
+
 
 DEPEND="
 	net-libs/libssh[sftp]

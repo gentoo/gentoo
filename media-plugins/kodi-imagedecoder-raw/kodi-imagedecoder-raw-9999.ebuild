@@ -27,7 +27,7 @@ esac
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE=""
+
 
 DEPEND+="
 	>=media-libs/libjpeg-turbo-2.1.1

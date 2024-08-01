@@ -27,7 +27,7 @@ esac
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE=""
+
 
 DEPEND+="
 	>=media-libs/libmodplug-0.8.9.0
