@@ -7,11 +7,11 @@ inherit cmake kodi-addon
 
 DESCRIPTION="RAR VFS addon for Kodi"
 HOMEPAGE="https://github.com/xbmc/vfs.rar"
-SRC_URI=""
+
 
 case ${PV} in
 9999)
-	SRC_URI=""
+	
 	EGIT_REPO_URI="https://github.com/xbmc/vfs.rar.git"
 	EGIT_BRANCH="Matrix"
 	inherit git-r3

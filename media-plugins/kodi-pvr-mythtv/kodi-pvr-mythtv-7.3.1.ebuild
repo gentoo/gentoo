@@ -7,11 +7,11 @@ inherit cmake kodi-addon
 
 DESCRIPTION="MythTV PVR for Kodi"
 HOMEPAGE="https://github.com/janbar/pvr.mythtv"
-SRC_URI=""
+
 
 case ${PV} in
 9999)
-	SRC_URI=""
+	
 	EGIT_REPO_URI="https://github.com/janbar/pvr.mythtv.git"
 	inherit git-r3
 	;;

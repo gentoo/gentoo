@@ -7,11 +7,11 @@ inherit cmake kodi-addon
 
 DESCRIPTION="Kodi's Adaptive inputstream addon"
 HOMEPAGE="https://github.com/peak3d/inputstream.adaptive.git"
-SRC_URI=""
+
 
 case ${PV} in
 9999)
-	SRC_URI=""
+	
 	EGIT_REPO_URI="https://github.com/peak3d/inputstream.adaptive.git"
 	EGIT_BRANCH="Matrix"
 	inherit git-r3

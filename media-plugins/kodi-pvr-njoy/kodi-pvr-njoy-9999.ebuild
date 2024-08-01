@@ -7,11 +7,11 @@ inherit cmake kodi-addon
 
 DESCRIPTION="Kodi's Njoy N7 client addon"
 HOMEPAGE="https://github.com/kodi-pvr/pvr.njoy"
-SRC_URI=""
+
 
 case ${PV} in
 9999)
-	SRC_URI=""
+	
 	EGIT_REPO_URI="https://github.com/kodi-pvr/pvr.njoy.git"
 	inherit git-r3
 	;;

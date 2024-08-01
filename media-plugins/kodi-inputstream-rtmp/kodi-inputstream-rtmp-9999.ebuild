@@ -11,7 +11,7 @@ KODI_PLUGIN_NAME="inputstream.rtmp"
 
 case ${PV} in
 9999)
-	SRC_URI=""
+	
 	EGIT_REPO_URI="https://github.com/xbmc/${KODI_PLUGIN_NAME}.git"
 	EGIT_BRANCH="Matrix"
 	inherit git-r3

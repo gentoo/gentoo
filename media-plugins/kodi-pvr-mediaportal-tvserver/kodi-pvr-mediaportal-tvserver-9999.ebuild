@@ -7,11 +7,11 @@ inherit cmake kodi-addon
 
 DESCRIPTION="Kodi's MediaPortal TVServer client addon"
 HOMEPAGE="https://github.com/kodi-pvr/pvr.mediaportal.tvserver"
-SRC_URI=""
+
 
 case ${PV} in
 9999)
-	SRC_URI=""
+	
 	EGIT_REPO_URI="https://github.com/kodi-pvr/pvr.mediaportal.tvserver.git"
 	inherit git-r3
 	DEPEND="~media-tv/kodi-9999"

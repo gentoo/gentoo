@@ -7,10 +7,10 @@ inherit cmake kodi-addon
 
 DESCRIPTION="Snes9x GameClient for Kodi"
 HOMEPAGE="https://github.com/kodi-game/game.libretro.snes9x"
-SRC_URI=""
+
 
 if [[ ${PV} == *9999 ]]; then
-	SRC_URI=""
+	
 	EGIT_REPO_URI="https://github.com/kodi-game/game.libretro.snes9x.git"
 	inherit git-r3
 	DEPEND="${DEPEND}

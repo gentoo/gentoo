@@ -7,11 +7,11 @@ inherit cmake kodi-addon
 
 DESCRIPTION="Lame MP3 encoder addon for Kodi"
 HOMEPAGE="https://github.com/xbmc/audioencoder.lame"
-SRC_URI=""
+
 
 case ${PV} in
 9999)
-	SRC_URI=""
+	
 	EGIT_REPO_URI="https://github.com/xbmc/audioencoder.lame.git"
 	inherit git-r3
 	DEPEND="~media-tv/kodi-9999"

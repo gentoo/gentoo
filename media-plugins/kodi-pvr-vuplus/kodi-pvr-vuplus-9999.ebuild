@@ -7,11 +7,11 @@ inherit cmake kodi-addon
 
 DESCRIPTION="Kodi's VuPlus client addon"
 HOMEPAGE="https://github.com/kodi-pvr/pvr.vuplus"
-SRC_URI=""
+
 
 case ${PV} in
 9999)
-	SRC_URI=""
+	
 	EGIT_REPO_URI="https://github.com/kodi-pvr/pvr.vuplus.git"
 	inherit git-r3
 	;;

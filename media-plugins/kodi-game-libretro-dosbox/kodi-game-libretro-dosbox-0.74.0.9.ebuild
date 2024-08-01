@@ -7,10 +7,10 @@ inherit cmake kodi-addon
 
 DESCRIPTION="DOSBox GameClient for Kodi"
 HOMEPAGE="https://github.com/kodi-game/game.libretro.dosbox"
-SRC_URI=""
+
 
 if [[ ${PV} == *9999 ]]; then
-	SRC_URI=""
+	
 	EGIT_REPO_URI="https://github.com/kodi-game/game.libretro.dosbox.git"
 	inherit git-r3
 	DEPEND="

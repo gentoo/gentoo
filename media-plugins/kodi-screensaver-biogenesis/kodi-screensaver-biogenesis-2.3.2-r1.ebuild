@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/xbmc/screensaver.biogenesis"
 
 case ${PV} in
 9999)
-	SRC_URI=""
+	
 	EGIT_REPO_URI="https://github.com/xbmc/screensaver.biogenesis.git"
 	inherit git-r3
 	DEPEND="~media-tv/kodi-9999"

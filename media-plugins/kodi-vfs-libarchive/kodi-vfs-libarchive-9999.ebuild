@@ -7,11 +7,11 @@ inherit cmake kodi-addon
 
 DESCRIPTION="Libarchive VFS add-on for Kodi"
 HOMEPAGE="https://github.com/xbmc/vfs.libarchive"
-SRC_URI=""
+
 
 case ${PV} in
 9999)
-	SRC_URI=""
+	
 	EGIT_REPO_URI="https://github.com/xbmc/vfs.libarchive.git"
 	EGIT_BRANCH="Matrix"
 	inherit git-r3

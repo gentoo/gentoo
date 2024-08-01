@@ -7,11 +7,11 @@ inherit cmake kodi-addon
 
 DESCRIPTION="Zattoo PVR addon for Kodi"
 HOMEPAGE="https://github.com/rbuehlma/pvr.zattoo"
-SRC_URI=""
+
 
 case ${PV} in
 9999)
-	SRC_URI=""
+	
 	EGIT_REPO_URI="https://github.com/rbuehlma/pvr.zattoo.git"
 	inherit git-r3
 	DEPEND="~media-tv/kodi-9999"

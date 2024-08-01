@@ -7,10 +7,10 @@ inherit cmake kodi-addon
 
 DESCRIPTION="Tvheadend Live TV and Radio PVR client addon for Kodi"
 HOMEPAGE="https://github.com/kodi-pvr/pvr.hts"
-SRC_URI=""
+
 
 if [[ ${PV} == 9999 ]]; then
-	SRC_URI=""
+	
 	EGIT_REPO_URI="https://github.com/kodi-pvr/pvr.hts.git"
 	inherit git-r3
 else

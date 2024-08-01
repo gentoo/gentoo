@@ -7,11 +7,11 @@ inherit cmake kodi-addon
 
 DESCRIPTION="Demo PVR for Kodi"
 HOMEPAGE="https://github.com/kodi-pvr/pvr.demo"
-SRC_URI=""
+
 
 case ${PV} in
 9999)
-	SRC_URI=""
+	
 	EGIT_REPO_URI="https://github.com/kodi-pvr/pvr.demo.git"
 	inherit git-r3
 	;;

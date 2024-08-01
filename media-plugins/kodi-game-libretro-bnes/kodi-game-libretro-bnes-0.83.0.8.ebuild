@@ -7,10 +7,10 @@ inherit cmake kodi-addon
 
 DESCRIPTION="bNES GameClient for Kodi"
 HOMEPAGE="https://github.com/kodi-game/game.libretro.bnes"
-SRC_URI=""
+
 
 if [[ ${PV} == *9999 ]]; then
-	SRC_URI=""
+	
 	EGIT_REPO_URI="https://github.com/kodi-game/game.libretro.bnes.git"
 	inherit git-r3
 	DEPEND="~media-tv/kodi-9999"

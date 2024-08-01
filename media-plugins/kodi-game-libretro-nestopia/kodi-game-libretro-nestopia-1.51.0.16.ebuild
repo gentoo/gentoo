@@ -7,10 +7,10 @@ inherit cmake kodi-addon
 
 DESCRIPTION="Nestopia GameClient for Kodi"
 HOMEPAGE="https://github.com/kodi-game/game.libretro.nestopia"
-SRC_URI=""
+
 
 if [[ ${PV} == *9999 ]]; then
-	SRC_URI=""
+	
 	EGIT_REPO_URI="https://github.com/kodi-game/game.libretro.nestopia.git"
 	inherit git-r3
 	DEPEND="

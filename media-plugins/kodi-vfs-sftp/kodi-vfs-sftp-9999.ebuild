@@ -7,11 +7,11 @@ inherit cmake kodi-addon
 
 DESCRIPTION="SFTP VFS addon for Kodi"
 HOMEPAGE="https://github.com/xbmc/vfs.sftp"
-SRC_URI=""
+
 
 case ${PV} in
 9999)
-	SRC_URI=""
+	
 	EGIT_REPO_URI="https://github.com/xbmc/vfs.sftp.git"
 	EGIT_BRANCH="Matrix"
 	inherit git-r3

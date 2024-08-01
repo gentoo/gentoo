@@ -11,7 +11,7 @@ KODI_PLUGIN_NAME="visualization.waveform"
 
 case ${PV} in
 9999)
-	SRC_URI=""
+	
 	EGIT_REPO_URI="https://github.com/xbmc/${KODI_PLUGIN_NAME}.git"
 	inherit git-r3
 	DEPEND="~media-tv/kodi-9999"

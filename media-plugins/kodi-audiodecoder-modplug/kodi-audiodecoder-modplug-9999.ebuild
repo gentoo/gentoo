@@ -7,11 +7,11 @@ inherit cmake kodi-addon
 
 DESCRIPTION="Modplug decoder addon for Kodi"
 HOMEPAGE="https://github.com/xbmc/audiodecoder.modplug"
-SRC_URI=""
+
 
 case ${PV} in
 9999)
-	SRC_URI=""
+	
 	EGIT_REPO_URI="https://github.com/xbmc/audiodecoder.modplug.git"
 	inherit git-r3
 	DEPEND="~media-tv/kodi-9999"

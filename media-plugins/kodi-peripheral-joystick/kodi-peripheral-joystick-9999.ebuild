@@ -7,11 +7,11 @@ inherit cmake kodi-addon
 
 DESCRIPTION="Libretro compatibility layer for the Kodi Game API"
 HOMEPAGE="https://github.com/xbmc/peripheral.joystick"
-SRC_URI=""
+
 
 case ${PV} in
 9999)
-	SRC_URI=""
+	
 	EGIT_BRANCH="Matrix"
 	EGIT_REPO_URI="https://github.com/xbmc/peripheral.joystick.git"
 	inherit git-r3

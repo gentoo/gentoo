@@ -7,11 +7,11 @@ inherit cmake kodi-addon
 
 DESCRIPTION="SidPlay decoder addon for Kodi"
 HOMEPAGE="https://github.com/xbmc/audiodecoder.sidplay"
-SRC_URI=""
+
 
 case ${PV} in
 9999)
-	SRC_URI=""
+	
 	EGIT_REPO_URI="https://github.com/xbmc/audiodecoder.sidplay.git"
 	inherit git-r3
 	;;

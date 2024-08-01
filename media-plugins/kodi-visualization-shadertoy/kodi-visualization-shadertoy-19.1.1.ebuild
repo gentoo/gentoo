@@ -7,11 +7,11 @@ inherit cmake kodi-addon
 
 DESCRIPTION="Shadertoy visualizer for Kodi"
 HOMEPAGE="https://github.com/xbmc/visualization.shadertoy"
-SRC_URI=""
+
 
 case ${PV} in
 9999)
-	SRC_URI=""
+	
 	EGIT_REPO_URI="https://github.com/xbmc/visualization.shadertoy.git"
 	inherit git-r3
 	;;

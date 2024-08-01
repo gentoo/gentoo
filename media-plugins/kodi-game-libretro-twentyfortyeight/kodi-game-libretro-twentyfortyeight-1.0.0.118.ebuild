@@ -7,10 +7,10 @@ inherit cmake kodi-addon
 
 DESCRIPTION="2048 for Kodi"
 HOMEPAGE="https://github.com/kodi-game/game.libretro.2048"
-SRC_URI=""
+
 
 if [[ ${PV} == *9999 ]]; then
-	SRC_URI=""
+	
 	EGIT_REPO_URI="https://github.com/kodi-game/game.libretro.2048.git"
 	inherit git-r3
 else

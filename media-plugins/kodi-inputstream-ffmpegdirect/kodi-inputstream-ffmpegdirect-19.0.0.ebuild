@@ -7,11 +7,11 @@ inherit cmake kodi-addon
 
 DESCRIPTION="Kodi's FFMpeg Direct Inputstream addon"
 HOMEPAGE="https://github.com/xbmc/inputstream.ffmpegdirect"
-SRC_URI=""
+
 
 case ${PV} in
 9999)
-	SRC_URI=""
+	
 	EGIT_REPO_URI="https://github.com/xbmc/inputstream.ffmpegdirect.git"
 	EGIT_BRANCH="Matrix"
 	inherit git-r3
