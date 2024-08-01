@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,11 +8,11 @@ inherit vdr-plugin-2
 DESCRIPTION="VDR Plugin: Play video files not supported by VDR with mplayer (divx and more)"
 HOMEPAGE="https://www.muempf.de/"
 SRC_URI="https://www.muempf.de/down/vdr-mp3-${PV}.tar.gz"
+S="${WORKDIR}/mp3-${PV}"
 
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND=">=media-video/vdr-1.4.2"
 
@@ -20,12 +20,10 @@ RDEPEND="${DEPEND}
 	media-video/mplay-sh
 	sys-apps/util-linux"
 
-S=${WORKDIR}/mp3-${PV}
-
 PATCHES=( "${FILESDIR}/${PV}/01_gentoo.diff" )
 
-VDR_RCADDON_FILE=${FILESDIR}/rc-addon-0.9.15.sh
-VDR_CONFD_FILE=${FILESDIR}/confd-0.9.15.sh
+VDR_RCADDON_FILE="${FILESDIR}/rc-addon-0.9.15.sh"
+VDR_CONFD_FILE="${FILESDIR}/confd-0.9.15.sh"
 
 src_prepare() {
 	vdr-plugin-2_src_prepare
