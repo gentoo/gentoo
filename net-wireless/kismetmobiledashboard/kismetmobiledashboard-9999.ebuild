@@ -1,4 +1,4 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,11 +16,9 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
 
 DEPEND="net-wireless/kismet"
 RDEPEND="${DEPEND}"
-BDEPEND=""
 
 src_prepare() {
 	sed -i 's#\$(INSTALL)#install#' Makefile
