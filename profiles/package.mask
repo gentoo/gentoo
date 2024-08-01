@@ -228,14 +228,6 @@ games-arcade/spacerider
 games-arcade/tuxdash
 games-arcade/xsfcave
 
-# NHOrus <jy6x2b32pie9@yahoo.com> (2024-06-28)
-# games-puzzle/seatris: last rites
-# Twenty-year-old tetris clone with upstream that wasn't touched since,
-# broken code and broken autoconf.
-# Removed after 2024-08-01
-# Bug: https://bugs.gentoo.org/935057
-games-puzzle/seatris
-
 # Sam James <sam@gentoo.org> (2024-06-25)
 # Subvolume printing is broken: https://github.com/kdave/btrfs-progs/issues/829
 =sys-fs/btrfs-progs-6.9.1
