@@ -100,18 +100,23 @@ check_uptodate() {
 		has "${i}" "${prod_targets[@]}" || exp_targets+=( "${i}" )
 	done
 
+	local outdated
 	if [[ ${exp_targets[*]} != ${ALL_LLVM_EXPERIMENTAL_TARGETS[*]} ]]; then
-		eqawarn "ALL_LLVM_EXPERIMENTAL_TARGETS is outdated!"
-		eqawarn "    Have: ${ALL_LLVM_EXPERIMENTAL_TARGETS[*]}"
-		eqawarn "Expected: ${exp_targets[*]}"
-		eqawarn
+		eerror "ALL_LLVM_EXPERIMENTAL_TARGETS are outdated!"
+		eerror "    Have: ${ALL_LLVM_EXPERIMENTAL_TARGETS[*]}"
+		eerror "Expected: ${exp_targets[*]}"
+		eerror
+		outdated=1
 	fi
 
 	if [[ ${prod_targets[*]} != ${ALL_LLVM_PRODUCTION_TARGETS[*]} ]]; then
-		eqawarn "ALL_LLVM_PRODUCTION_TARGETS is outdated!"
-		eqawarn "    Have: ${ALL_LLVM_PRODUCTION_TARGETS[*]}"
-		eqawarn "Expected: ${prod_targets[*]}"
+		eerror "ALL_LLVM_PRODUCTION_TARGETS are outdated!"
+		eerror "    Have: ${ALL_LLVM_PRODUCTION_TARGETS[*]}"
+		eerror "Expected: ${prod_targets[*]}"
+		outdated=1
 	fi
+
+	[[ ${outdated} ]] && die "Update ALL_LLVM*_TARGETS"
 }
 
 check_distribution_components() {
@@ -172,9 +177,10 @@ check_distribution_components() {
 		done
 
 		if [[ ${#add[@]} -gt 0 || ${#remove[@]} -gt 0 ]]; then
-			eqawarn "get_distribution_components() is outdated!"
-			eqawarn "   Add: ${add[*]}"
-			eqawarn "Remove: ${remove[*]}"
+			eerror "get_distribution_components() is outdated!"
+			eerror "   Add: ${add[*]}"
+			eerror "Remove: ${remove[*]}"
+			die "Update get_distribution_components()!"
 		fi
 		cd - >/dev/null || die
 	fi
@@ -249,9 +255,9 @@ get_distribution_components() {
 			llvm-c-test
 			llvm-cat
 			llvm-cfi-verify
-			llvm-cgdata
 			llvm-config
 			llvm-cov
+			llvm-ctxprof-util
 			llvm-cvtres
 			llvm-cxxdump
 			llvm-cxxfilt
