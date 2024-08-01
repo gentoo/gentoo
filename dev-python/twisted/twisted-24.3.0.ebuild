@@ -55,7 +55,6 @@ RDEPEND="
 		>=dev-python/idna-2.4[${PYTHON_USEDEP}]
 	)
 "
-# tests fail with openssh-9.8, see https://github.com/twisted/twisted/issues/12273
 BDEPEND="
 	>=dev-python/hatch-fancy-pypi-readme-22.5.0[${PYTHON_USEDEP}]
 	>=dev-python/incremental-22.10.0[${PYTHON_USEDEP}]
@@ -73,7 +72,6 @@ BDEPEND="
 			>=dev-python/pyhamcrest-2[${PYTHON_USEDEP}]
 			>=dev-python/pyserial-3.0[${PYTHON_USEDEP}]
 			virtual/openssh
-			<net-misc/openssh-9.8
 			ssl? (
 				>=dev-python/pyopenssl-21.0.0[${PYTHON_USEDEP}]
 				>=dev-python/service-identity-18.1.0[${PYTHON_USEDEP}]
@@ -81,6 +79,10 @@ BDEPEND="
 		' "${PYTHON_TESTED[@]}")
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-24.3.0-skip-dsa-tests.patch"
+)
 
 python_prepare_all() {
 	# upstream test for making releases; not very useful and requires
