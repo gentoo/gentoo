@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="AGPL-3 GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="app-admin/ryzen_smu"
 
