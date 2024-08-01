@@ -18,7 +18,6 @@ HOMEPAGE="https://capistranorb.com/"
 LICENSE="MIT"
 SLOT="3"
 KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
-IUSE=""
 
 ruby_add_rdepend "
 	>=dev-ruby/airbrussh-1.0.0

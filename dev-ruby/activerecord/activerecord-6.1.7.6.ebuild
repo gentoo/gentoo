@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -79,13 +79,15 @@ all_ruby_prepare() {
 
 	# Avoid tests that no longer work with newer sqlite versions
 	rm -f test/cases/adapters/sqlite3/explain_test.rb || die
-	sed -i -e '/test_references_stays_as_integer_column/askip "Fails on case difference"' test/cases/migration/compatibility_test.rb || die
+	sed -i -e '/test_references_stays_as_integer_column/askip "Fails on case difference"' \
+		test/cases/migration/compatibility_test.rb || die
 
 	# Avoid test failing to bind limit length in favor of security release
 	sed -i -e '/test_too_many_binds/askip "Fails on Gentoo"' test/cases/bind_parameter_test.rb || die
 
 	# Avoid test failing related to rubygems
-	sed -i -e '/test_generates_absolute_path_with_given_root/askip "rubygems actiovation monitor"' test/cases/tasks/sqlite_rake_test.rb || die
+	sed -i -e '/test_generates_absolute_path_with_given_root/askip "rubygems actiovation monitor"' \
+		test/cases/tasks/sqlite_rake_test.rb || die
 }
 
 each_ruby_test() {

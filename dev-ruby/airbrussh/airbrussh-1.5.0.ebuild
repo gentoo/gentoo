@@ -17,7 +17,6 @@ SRC_URI="https://github.com/mattbrictson/airbrussh/archive/v${PV}.tar.gz -> ${P}
 LICENSE="MIT"
 SLOT="1"
 KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
-IUSE=""
 
 ruby_add_rdepend ">dev-ruby/sshkit-1.7.0"
 

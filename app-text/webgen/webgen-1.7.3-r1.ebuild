@@ -1,8 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-USE_RUBY="ruby30 ruby31 ruby32"
+EAPI=8
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_RECIPE_DOC="task"
 RUBY_FAKEGEM_DOCDIR="htmldoc/rdoc"
@@ -28,6 +28,7 @@ ruby_add_bdepend "doc? ( dev-ruby/rdoc )
 ruby_add_rdepend ">=dev-ruby/cmdparse-3.0.1:3
 	>=dev-ruby/systemu-2.5 =dev-ruby/systemu-2*
 	>=dev-ruby/kramdown-2.3:2
+	>=dev-ruby/psych-5.1:5
 	builder? ( >=dev-ruby/builder-2.1.0:* )
 	highlight? ( >=dev-ruby/coderay-1.0 )
 	markdown? ( dev-ruby/maruku )"

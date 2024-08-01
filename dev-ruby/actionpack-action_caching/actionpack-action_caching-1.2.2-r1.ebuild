@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,11 +10,10 @@ inherit ruby-fakegem
 
 DESCRIPTION="Action caching for Action Pack (removed from core in Rails 4.0)"
 HOMEPAGE="https://github.com/rails/actionpack-action_caching"
-LICENSE="MIT"
 
-KEYWORDS="~amd64"
+LICENSE="MIT"
 SLOT="0"
-IUSE=""
+KEYWORDS="~amd64"
 
 ruby_add_rdepend ">=dev-ruby/actionpack-4.0.0:*"
 

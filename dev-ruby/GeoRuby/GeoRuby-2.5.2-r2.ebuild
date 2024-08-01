@@ -6,11 +6,8 @@ EAPI=8
 USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
-
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
-
 RUBY_FAKEGEM_EXTRADOC="README.md"
-
 RUBY_FAKEGEM_NAME="georuby"
 
 inherit ruby-fakegem
@@ -21,7 +18,6 @@ HOMEPAGE="https://github.com/nofxx/georuby"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 all_ruby_prepare() {
 	# Avoid specs that are also failing in upstream Travis.
