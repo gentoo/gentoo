@@ -225,7 +225,6 @@ sci-astronomy/esomidas
 # Ancient, dead upstream, generally awful.
 # Removal on 2024-08-01.  Bugs #935307, #935308, #935309.
 games-arcade/spacerider
-games-arcade/tuxdash
 games-arcade/xsfcave
 
 # Sam James <sam@gentoo.org> (2024-06-25)
