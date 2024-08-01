@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,11 +8,10 @@ inherit autotools flag-o-matic
 DESCRIPTION="Basic CD Player for blackbox wm"
 HOMEPAGE="http://tranber1.free.fr/bbcd.html"
 SRC_URI="http://tranber1.free.fr/${P}.tar.gz"
-LICENSE="GPL-2"
 
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE=""
 
 RDEPEND=">=media-libs/libcdaudio-0.99.12-r4
 	x11-libs/libX11"
