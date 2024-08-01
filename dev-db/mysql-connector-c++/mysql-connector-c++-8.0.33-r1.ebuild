@@ -41,7 +41,7 @@ src_prepare() {
 	#
 	# https://bugs.gentoo.org/921309
 	# https://bugs.mysql.com/bug.php?id=115734
-	sed -i 's/prc_cnt AND NOT/FALSE AND NOT/' cdk/cmake/dependency.cmake
+	sed -i 's/prc_cnt AND NOT/FALSE AND NOT/' cdk/cmake/dependency.cmake || die
 }
 
 src_configure() {
