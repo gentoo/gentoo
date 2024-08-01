@@ -10,17 +10,19 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/msgraph"
 
 LICENSE="LGPL-2+"
 SLOT="0/1"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64"
 
-IUSE="debug gtk-doc +introspection man"
+IUSE="debug gtk-doc +introspection man test"
+REQUIRED_USE="gtk-doc? ( introspection )"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.28.0:2
 	dev-libs/json-glib
-	net-libs/rest
-	>=net-libs/libsoup-3.0:3.0
-	net-libs/gnome-online-accounts
-	>=net-libs/uhttpmock-0.11.0
+	net-libs/rest:1.0
+	net-libs/libsoup:3.0
+	net-libs/gnome-online-accounts:=
+	>=net-libs/uhttpmock-0.11.0:1.0
 	introspection? ( >=dev-libs/gobject-introspection-0.6.2:= )
 "
 
@@ -30,12 +32,16 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	dev-libs/gobject-introspection-common
 "
-BDEPEND="gtk-doc? ( dev-util/gtk-doc )"
+BDEPEND="
+	gtk-doc? ( dev-util/gtk-doc )
+	test? ( net-libs/uhttpmock:1.0 )
+"
 
 src_configure() {
 	local emesonargs=(
 		$(meson_use gtk-doc gtk_doc)
 		$(meson_use introspection)
+		$(meson_use test tests)
 	)
 	meson_src_configure
 }
