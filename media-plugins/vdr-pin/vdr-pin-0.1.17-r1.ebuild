@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,19 +10,17 @@ VERSION_GIT="9f8fb2260b73971d69691962df472c992d94b123"
 DESCRIPTION="VDR plugin: enable/disable parentalrating in records"
 HOMEPAGE="https://projects.vdr-developer.org/projects/plg-pin"
 SRC_URI="https://projects.vdr-developer.org/git/vdr-plugin-pin.git/snapshot/vdr-plugin-pin-${VERSION_GIT}.tar.bz2"
-KEYWORDS="~amd64 ~x86"
+S="${WORKDIR}/vdr-plugin-pin-${VERSION_GIT}"
 
-SLOT="0"
 LICENSE="GPL-2"
-IUSE=""
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="media-video/vdr[pinplugin]"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/vdr-plugin-pin-${VERSION_GIT}"
-
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.1.17-gcc11-strstr-ptr-comp.patch
+	"${FILESDIR}/${PN}-0.1.17-gcc11-strstr-ptr-comp.patch"
 )
 
 src_prepare() {
