@@ -27,7 +27,7 @@ fi
 LICENSE="BSD curl ISC test? ( BSD-4 )"
 SLOT="0"
 IUSE="+adns +alt-svc brotli debug +ftp gnutls gopher +hsts +http2 +http3 idn +imap kerberos ldap mbedtls +openssl +pop3"
-IUSE+=" +psl +progress-meter +quic rtmp rustls samba +smtp ssh ssl sslv3 static-libs test telnet +tftp websockets zstd"
+IUSE+=" +psl +progress-meter +quic rtmp rustls samba +smtp ssh ssl sslv3 static-libs test telnet +tftp +websockets zstd"
 # These select the default tls implementation / which quic impl to use
 IUSE+=" +curl_quic_openssl curl_quic_ngtcp2 curl_ssl_gnutls curl_ssl_mbedtls +curl_ssl_openssl curl_ssl_rustls"
 RESTRICT="!test? ( test )"
