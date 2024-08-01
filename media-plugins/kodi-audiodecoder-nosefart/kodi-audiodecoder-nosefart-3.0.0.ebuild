@@ -8,10 +8,9 @@ inherit kodi-addon
 DESCRIPTION="Nosefart decoder addon for Kodi"
 HOMEPAGE="https://github.com/xbmc/audiodecoder.nosefart"
 
-
 case ${PV} in
 9999)
-	
+
 	EGIT_REPO_URI="https://github.com/xbmc/audiodecoder.nosefart"
 	inherit git-r3
 	;;

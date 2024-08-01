@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,10 +8,9 @@ inherit kodi-addon
 DESCRIPTION="Kodi's FFMpeg Direct Inputstream addon"
 HOMEPAGE="https://github.com/xbmc/inputstream.ffmpegdirect"
 
-
 case ${PV} in
 9999)
-	
+
 	EGIT_REPO_URI="https://github.com/xbmc/inputstream.ffmpegdirect.git"
 	EGIT_BRANCH="Matrix"
 	inherit git-r3
@@ -26,7 +25,6 @@ esac
 
 LICENSE="GPL-2"
 SLOT="0"
-
 
 BDEPEND="
 	virtual/pkgconfig
