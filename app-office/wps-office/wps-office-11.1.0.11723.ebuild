@@ -8,18 +8,17 @@ MY_PV="$(ver_cut 4)"
 
 DESCRIPTION="WPS Office is an office productivity suite"
 HOMEPAGE="https://www.wps.com/office/linux/"
+SRC_URI="amd64? ( https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/${MY_PV}/${PN}_${PV}.XA_amd64.deb )"
+S="${WORKDIR}"
+
+LICENSE="WPS-EULA"
+SLOT="0"
 
 KEYWORDS="~amd64"
+IUSE="systemd"
 
-SRC_URI="
-	amd64?	( https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/${MY_PV}/${PN}_${PV}.XA_amd64.deb )
-"
-
-SLOT="0"
 RESTRICT="bindist strip mirror" # mirror as explained at bug #547372
 QA_PREBUILT="*"
-LICENSE="WPS-EULA"
-IUSE="systemd"
 
 # Deps got from this (listed in order):
 # rpm -qpR wps-office-10.1.0.5707-1.a21.x86_64.rpm
@@ -65,8 +64,6 @@ RDEPEND="
 	x11-libs/libXtst
 	systemd? ( sys-apps/systemd )
 "
-
-S="${WORKDIR}"
 
 src_install() {
 	# https://bugs.gentoo.org/878451
