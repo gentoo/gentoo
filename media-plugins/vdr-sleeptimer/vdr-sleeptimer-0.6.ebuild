@@ -12,7 +12,7 @@ SRC_URI="http://linvdr.org/download/vdr-sleeptimer/${VDRPLUGIN}-${PV}.tar.gz"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 LICENSE="GPL-2"
-IUSE=""
+
 
 DEPEND=">=media-video/vdr-1.2.6"
 
