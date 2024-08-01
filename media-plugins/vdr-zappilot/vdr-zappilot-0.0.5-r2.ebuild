@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,6 @@ SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz"
 KEYWORDS="amd64 x86"
 SLOT="0"
 LICENSE="GPL-2"
-IUSE=""
 
 DEPEND=">=media-video/vdr-1.7.34"
 RDEPEND="${DEPEND}"
