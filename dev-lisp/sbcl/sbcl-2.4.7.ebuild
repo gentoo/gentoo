@@ -124,11 +124,6 @@ src_prepare() {
 	filter-flags -fomit-frame-pointer -Wl,-s
 	filter-ldflags -s
 
-	# -Werror=lto-type-mismatch
-	# https://bugs.gentoo.org/917557
-	# https://bugs.launchpad.net/gentoo/+bug/2072800
-	filter-lto
-
 	# original bugs #526194, #620532
 	# this broke no-pie default builds, c.f. bug #632670
 	# Pass CFLAGS down by appending our value, to let users override
