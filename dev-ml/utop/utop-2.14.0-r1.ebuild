@@ -12,7 +12,7 @@ SRC_URI="https://github.com/ocaml-community/utop/archive/${PV}.tar.gz -> ${P}.ta
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="emacs +ocamlopt"
+IUSE="emacs +ocamlopt test"
 
 ELISP_DEPEND="
 	emacs? (
@@ -37,7 +37,10 @@ BDEPEND="
 	dev-ml/cppo
 	dev-ml/findlib
 	${ELISP_DEPEND}
+	test? ( dev-ml/alcotest )
 "
+
+RESTRICT="!test? ( test )"
 
 SITEFILE="50${PN}-gentoo.el"
 
