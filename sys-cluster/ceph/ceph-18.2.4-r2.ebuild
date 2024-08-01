@@ -298,8 +298,9 @@ src_prepare() {
 	rm src/test/cli/ceph-authtool/cap*.t || die
 
 	if use parquet; then
+		# hammer in newer version of parquet/arrow
 		rm -rf src/arrow/
-		mv ${WORKDIR}/apache-arrow-17.0.0 src/arrow || die
+		mv "${WORKDIR}/apache-arrow-17.0.0 src/arrow" || die
 	fi
 }
 
