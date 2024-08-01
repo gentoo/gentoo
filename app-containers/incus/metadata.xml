@@ -29,6 +29,6 @@
     machines, or in general run and manage your infrastructure in a cost-effective way.
   </longdescription>
   <upstream>
-    <remote-id type="github">canonical/lxd</remote-id>
+    <remote-id type="github">lxc/incus</remote-id>
   </upstream>
 </pkgmetadata>
