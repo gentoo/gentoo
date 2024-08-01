@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,18 +11,16 @@ MY_PX="${PV/.${DATE}_p/-${DATE}-}"
 DESCRIPTION="A small C helper library for storing sets of IPv4 and IPv6 addresses"
 HOMEPAGE="https://github.com/rogers0/libcorkipset"
 SRC_URI="https://github.com/rogers0/${PN}/archive/debian/${MY_PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-debian-${MY_PX}"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
-IUSE=""
 
 DEPEND="net-libs/libcork"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${PN}-debian-${MY_PX}"
-
-PATCHES=( "${S}"/debian/patches/ )
+PATCHES=( "${S}/debian/patches/" )
 
 src_prepare() {
 	cmake_src_prepare
