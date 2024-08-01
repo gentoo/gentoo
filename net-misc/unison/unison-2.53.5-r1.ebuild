@@ -86,6 +86,11 @@ src_test() {
 }
 
 src_install() {
+	# OCaml generates textrels on 32-bit arches
+	if use arm || use ppc || use x86 ; then
+		export QA_TEXTRELS='.*'
+	fi
+
 	# install manually, since it's just too much
 	# work to force the Makefile to do the right thing.
 	cd "${S}/src" || die
