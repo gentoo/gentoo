@@ -9,6 +9,7 @@ HOMEPAGE="https://fonts.google.com/noto https://github.com/notofonts/notofonts.g
 
 COMMIT="e5cbf4c15ada3ab6cfc882c809c7759d54f494c6"
 SRC_URI="https://github.com/notofonts/notofonts.github.io/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/notofonts.github.io-${COMMIT}"
 
 LICENSE="OFL-1.1"
 SLOT="0"
@@ -20,8 +21,6 @@ IUSE="cjk +extra"
 RDEPEND="cjk? ( media-fonts/noto-cjk )"
 
 RESTRICT="binchecks strip"
-
-S="${WORKDIR}/notofonts.github.io-${COMMIT}"
 
 FONT_SUFFIX="ttf"
 FONT_CONF=(
