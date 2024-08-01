@@ -92,6 +92,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/924671
+	# https://bugs.mysql.com/bug.php?id=115735
+	filter-lto
+
 	if has_version dev-db/libiodbc ; then
 		IODBC="-DIODBC_CONFIG_PATH=/usr/bin/iodbc-config"
 	fi
