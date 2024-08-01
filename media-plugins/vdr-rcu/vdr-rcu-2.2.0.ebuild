@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,6 +13,5 @@ SRC_URI="mirror://gentoo/${P}.tar.gz
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 LICENSE="GPL-2"
-IUSE=""
 
 DEPEND=">=media-video/vdr-2.2.0"
