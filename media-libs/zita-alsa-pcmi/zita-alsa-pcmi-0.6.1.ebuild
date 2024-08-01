@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,11 +12,9 @@ SRC_URI="http://kokkinizita.linuxaudio.org/linuxaudio/downloads/${P}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
-IUSE=""
 
-CDEPEND="media-libs/alsa-lib"
-DEPEND="${CDEPEND}"
-RDEPEND="${CDEPEND}"
+DEPEND="media-libs/alsa-lib"
+RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS COPYING README )
 
