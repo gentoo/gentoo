@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-07-31)
+# Unmaintained upstream, latest media-libs/phonon release incompatible.
+# Removal on 2024-08-31.
+media-libs/phonon-gstreamer
+
 # James Le Cuirot <chewi@gentoo.org> (2024-07-29)
 # Superseded by media-libs/libv4l[utils].
 # Removal on 2024-08-29. Bug #936674.
