@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit autotools elisp-common python-any-r1
+inherit autotools elisp-common flag-o-matic python-any-r1
 
 DESCRIPTION="A simple but powerful template language for C++"
 HOMEPAGE="https://github.com/olafvdspek/ctemplate"
@@ -33,6 +33,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/924637
+	# https://github.com/OlafvdSpek/ctemplate/issues/157
+	filter-lto
+
 	econf $(use_enable static-libs static)
 }
 
