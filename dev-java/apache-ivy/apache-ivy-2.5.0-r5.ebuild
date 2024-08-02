@@ -11,8 +11,8 @@ inherit java-pkg-2 java-pkg-simple java-osgi
 
 DESCRIPTION="Ivy is a free java based dependency manager"
 HOMEPAGE="https://ant.apache.org/ivy/"
-SRC_URI="https://archive.apache.org/dist/ant/ivy/${PV}/apache-ivy-${PV}-src.tar.gz"
-S="${WORKDIR}/apache-ivy-${PV}"
+SRC_URI="https://archive.apache.org/dist/ant/ivy/${PV}/${P}-src.tar.gz"
+S="${WORKDIR}/${P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -70,7 +70,7 @@ JAVA_TEST_GENTOO_CLASSPATH="
 "
 JAVA_TEST_SRC_DIR="test-src/java"
 JAVA_TEST_RESOURCE_DIRS="test"
-JAVA_GENTOO_CLASSPATH_EXTRA="ant-ivy.jar:test.jar:custom-resolver.jar"
+JAVA_GENTOO_CLASSPATH_EXTRA="apache-ivy.jar:test.jar:custom-resolver.jar"
 
 # according to 57,60 build-release.xml
 # https://github.com/apache/ant-ivy/commit/c0c8df492d2312c983f50cfdc5841e18177f6f7b
@@ -190,7 +190,7 @@ src_test() {
 
 src_install() {
 	default
-	java-osgi_dojar-fromfile "ant-ivy.jar" "META-INF/MANIFEST.MF" "ant-ivy"
+	java-osgi_dojar-fromfile "apache-ivy.jar" "META-INF/MANIFEST.MF" "apache-ivy"
 	use doc && java-pkg_dojavadoc target/api
 	use source && java-pkg_dosrc src/*
 }
