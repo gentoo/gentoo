@@ -12,6 +12,7 @@ inherit java-pkg-2 java-pkg-simple java-osgi
 DESCRIPTION="Ivy is a free java based dependency manager"
 HOMEPAGE="https://ant.apache.org/ivy/"
 SRC_URI="https://archive.apache.org/dist/ant/ivy/${PV}/apache-ivy-${PV}-src.tar.gz"
+S="${WORKDIR}/apache-ivy-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="2"
@@ -24,7 +25,7 @@ CDEPEND="
 	>=dev-java/ant-1.10.14-r3:0
 	dev-java/bcpg:0
 	dev-java/bcprov:0
-	dev-java/httpcomponents-client
+	dev-java/httpcomponents-client:4
 	dev-java/commons-vfs:2
 	dev-java/httpcore:0
 	dev-java/jakarta-oro:2.0
@@ -44,8 +45,6 @@ RDEPEND="${CDEPEND}
 	virtual/jre:1.8"
 
 DOCS=( LICENSE NOTICE README.adoc )
-
-S="${WORKDIR}/apache-ivy-${PV}"
 
 JAVA_GENTOO_CLASSPATH="
 	ant
