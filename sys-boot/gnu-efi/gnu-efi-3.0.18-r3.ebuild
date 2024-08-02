@@ -33,6 +33,7 @@ RESTRICT="strip"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-clang.patch
+	"${FILESDIR}"/${PN}-3.0.18-remove-linux-headers.patch
 )
 
 check_and_set_objcopy() {
