@@ -1,3 +1,4 @@
 move sci-libs/rtree dev-python/rtree
 move dev-python/mapbox_earcut dev-python/mapbox-earcut
 move dev-qt/kdsingleapplication dev-libs/kdsingleapplication
+move dev-java/ant-ivy dev-java/apache-ivy

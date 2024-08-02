@@ -33,7 +33,7 @@ RESTRICT="test"
 
 CDEPEND="
 	>=dev-java/ant-1.10.14-r3:0
-	dev-java/ant-ivy:0
+	dev-java/apache-ivy:0
 	dev-java/bcel:0
 	dev-java/commons-httpclient:3
 	dev-java/xerces:2
@@ -54,7 +54,7 @@ RDEPEND="${CDEPEND}
 	>=virtual/jre-1.8:*"
 
 #	JAVA_GENTOO_CLASSPATH="commons-httpclient-3,ant-core,bcel,ant-ivy-2,!!!groupId-not-found!!!,xerces-2"
-JAVA_GENTOO_CLASSPATH="commons-httpclient-3,ant,bcel,ant-ivy,xerces-2"
+JAVA_GENTOO_CLASSPATH="commons-httpclient-3,ant,bcel,apache-ivy,xerces-2"
 JAVA_SRC_DIR="src/main/java"
 JAVA_RESOURCE_DIRS="src/main/resources"
 
