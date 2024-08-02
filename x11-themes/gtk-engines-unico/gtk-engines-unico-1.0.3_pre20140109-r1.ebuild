@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,11 +11,11 @@ inherit autotools multilib-minimal
 DESCRIPTION="The Unico GTK+ 3.x theming engine"
 HOMEPAGE="https://launchpad.net/unico"
 SRC_URI="https://launchpad.net/ubuntu/+archive/primary/+files/${MY_P}.orig.tar.gz"
+S="${WORKDIR}/${MY_PN}-${MY_PV}"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~ppc64 x86"
-IUSE=""
 
 RDEPEND="
 	>=dev-libs/glib-2.26:2[${MULTILIB_USEDEP}]
@@ -24,8 +24,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-S="${WORKDIR}/${MY_PN}-${MY_PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.3_pre20140109-slibtool-lm.patch

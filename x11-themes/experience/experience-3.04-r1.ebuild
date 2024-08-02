@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,16 +6,14 @@ EAPI=7
 DESCRIPTION="GTK+2 themes which copy and improve the look of XP Luna"
 HOMEPAGE="https://web.archive.org/web/20130730053042/https://art.gnome.org/themes/gtk2/1058"
 SRC_URI="mirror://gnome/teams/art.gnome.org/themes/gtk2/GTK2-EXperience.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc sparc x86"
-IUSE=""
 
 RDEPEND="x11-themes/gtk-engines-experience"
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}"
 
 src_prepare() {
 	default

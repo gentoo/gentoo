@@ -7,12 +7,10 @@ DESCRIPTION="Ubuntu wallpapers"
 HOMEPAGE="https://launchpad.net/ubuntu/+source/ubuntu-wallpapers"
 MY_P="${PN}_${PV}"
 SRC_URI="mirror://ubuntu/pool/main/u/${PN}/${MY_P}.orig.tar.gz"
-
 S="${WORKDIR}/${MY_P}.orig"
 
 # Review COPYING file for updates
 LICENSE="CC-BY-SA-3.0"
-
 SLOT="0"
 KEYWORDS="amd64 arm x86"
 
