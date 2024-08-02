@@ -12,11 +12,11 @@ MY_PV="${PV//\./}"
 DESCRIPTION="Canon UFR II / LIPSLX Printer Driver for Linux"
 HOMEPAGE="https://www.canon-europe.com/support/products/imagerunner/"
 SRC_URI="https://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwNzY1ODM5&cmp=ABX&lang=EN -> linux-UFRII-drv-v${MY_PV}-m17n-${CANON_REL}.tar.gz"
+S="${WORKDIR}/linux-UFRII-drv-v${MY_PV}-m17n/Sources"
 
 LICENSE="Canon-UFR-II GPL-2 MIT"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
 
 DEPEND="dev-libs/atk
 	dev-libs/glib:2
@@ -38,8 +38,6 @@ HTML_DOCS=(
 	"${WORKDIR}"/linux-UFRII-drv-v${MY_PV}-m17n/Documents/uk_eng/README-ufr2-${PV//0}xUK.html
 	"${WORKDIR}"/linux-UFRII-drv-v${MY_PV}-m17n/Documents/uk_eng/UsersGuide-ufr2-UK.html
 )
-
-S="${WORKDIR}/linux-UFRII-drv-v${MY_PV}-m17n/Sources"
 
 common_op() {
 	local i
