@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2024-08-02)
+# Unreliable software, unmaintained in Gentoo. Having it in the main
+# repositories may give users an impression of it being a safe tool.
+# Removal on 2024-09-01.
+app-backup/mkstage4
+
 # James Le Cuirot <chewi@gentoo.org> (2024-07-29)
 # Superseded by media-libs/libv4l[utils].
 # Removal on 2024-08-29. Bug #936674.
