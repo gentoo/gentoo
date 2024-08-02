@@ -154,6 +154,10 @@ check_distribution_components() {
 					docs-llvm-html)
 						use doc || continue
 						;;
+					# used only w/ USE=debuginfd
+					llvm-debuginfod)
+						use debuginfod || continue
+						;;
 				esac
 
 				all_targets+=( "${l}" )
