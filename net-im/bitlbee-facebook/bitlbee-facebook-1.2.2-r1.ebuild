@@ -28,6 +28,10 @@ BDEPEND="
 	dev-util/glib-utils
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-make-deps.patch"
+)
+
 src_prepare() {
 	default
 	eautoreconf
