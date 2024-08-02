@@ -90,6 +90,7 @@ DEPEND="
 	ldap? ( net-nds/openldap:= )
 	lttng? ( dev-util/lttng-ust:= )
 	parquet? (
+		>=app-arch/lz4-1.10
 		dev-cpp/xsimd
 		dev-libs/re2:=
 	)
