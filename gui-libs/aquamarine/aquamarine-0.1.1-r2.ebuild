@@ -26,7 +26,6 @@ RDEPEND="
 	>=dev-libs/libinput-1.26.1
 	>=dev-util/hyprwayland-scanner-0.4.0
 	>=gui-libs/hyprutils-0.1.5
-	gui-libs/egl-gbm
 	x11-libs/cairo
 	x11-libs/libxkbcommon
 	x11-libs/libdrm
