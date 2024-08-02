@@ -8,20 +8,19 @@ inherit desktop qmake-utils xdg-utils
 DESCRIPTION="Plot parametric and implicit surfaces"
 HOMEPAGE="https://www.facebook.com/pages/MathMod/529510253833102"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.src.zip"
+S="${WORKDIR}/${PN}-branches-274-trunk"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
+BDEPEND="app-arch/unzip"
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtopengl:5
 	dev-qt/qtwidgets:5"
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}"/${PN}-branches-274-trunk
 
 src_configure() {
 	eqmake5 MathMod.pro
