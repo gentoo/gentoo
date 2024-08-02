@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,6 @@ LICENSE="GPL-2"
 SLOT="0"
 # ia64 only: dumps state of ia64 machine, uses ia64_fpreg structs, bug #725766
 KEYWORDS="-* ~ia64"
-IUSE=""
 
 PATCHES=( "${FILESDIR}"/${P}-build.patch )
 

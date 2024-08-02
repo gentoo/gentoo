@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,16 +9,14 @@ DESCRIPTION="Various sparc utilities from Debian GNU/Linux"
 HOMEPAGE="https://packages.debian.org/sparc-utils"
 SRC_URI="mirror://debian/pool/main/s/${PN}/${PN}_${PV}.orig.tar.gz
 	mirror://debian/pool/main/s/${PN}/${PN}_${PV}-4.diff.gz"
+S="${WORKDIR}/${P}.orig"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="-* sparc"
-IUSE=""
 
 DEPEND="virtual/os-headers"
 RDEPEND=">=sys-apps/util-linux-2.13-r1"
-
-S=${WORKDIR}/${P}.orig
 
 PATCHES=(
 	"${WORKDIR}/${PN}_${PV}-4.diff"

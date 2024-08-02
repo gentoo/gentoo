@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,6 @@ SRC_URI="https://dev.gentoo.org/~gyakovlev/distfiles/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ia64 ~ppc ppc64 ~riscv x86 ~amd64-linux ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE=""
 
 BDEPEND="
 	app-crypt/p11-kit[trust(+)]
@@ -20,7 +19,8 @@ BDEPEND="
 "
 
 RDEPEND="${BDEPEND}
-	!<dev-java/java-config-2.2"
+	!<dev-java/java-config-2.2
+"
 
 src_install() {
 	default
