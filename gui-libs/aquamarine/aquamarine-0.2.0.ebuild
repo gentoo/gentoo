@@ -19,6 +19,8 @@ fi
 LICENSE="BSD"
 SLOT="0"
 
+# Upstream states that the simpleWindow test is broken.
+RESTRICT="test"
 RDEPEND="
 	dev-libs/wayland
 	media-libs/mesa[opengl]
