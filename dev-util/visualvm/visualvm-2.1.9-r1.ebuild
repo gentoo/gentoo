@@ -30,7 +30,7 @@ SRC_URI="https://github.com/oracle/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 S="${WORKDIR}/${P}/${PN}"
 
 LICENSE="GPL-2-with-linking-exception"
-SLOT="7"
+SLOT="0"
 KEYWORDS="amd64"
 
 BDEPEND="
@@ -52,6 +52,7 @@ DEPEND="
 
 RDEPEND="
 	${COMMON_DEPEND}
+	!dev-util/visualvm:7
 	dev-java/asm:9
 	dev-java/hamcrest-core:1.3
 	dev-java/jcommander:0
