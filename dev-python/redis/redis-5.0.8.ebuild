@@ -32,6 +32,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-db/redis
+		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 	)
