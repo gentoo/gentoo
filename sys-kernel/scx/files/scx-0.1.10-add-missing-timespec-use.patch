@@ -1,0 +1,19 @@
+From 33816a2c21e760a2ecc421cc13caa80757a958f6 Mon Sep 17 00:00:00 2001
+From: Violet Purcell <vimproved@inventati.org>
+Date: Wed, 12 Jun 2024 12:43:34 -0400
+Subject: [PATCH] scx_rustland_core: add missing libc::timespec use
+
+--- a/rust/scx_rustland_core/assets/bpf.rs
++++ b/rust/scx_rustland_core/assets/bpf.rs
+@@ -15,7 +15,7 @@ use libbpf_rs::skel::OpenSkel;
+ use libbpf_rs::skel::Skel;
+ use libbpf_rs::skel::SkelBuilder;
+ 
+-use libc::{sched_param, sched_setscheduler};
++use libc::{sched_param, sched_setscheduler, timespec};
+ 
+ use scx_utils::compat;
+ use scx_utils::init_libbpf_logging;
+-- 
+2.45.2
+
