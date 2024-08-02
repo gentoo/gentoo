@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>tamiko@gentoo.org</email>
-		<name>Matthias Maier</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="charts">Enable QtCharts usage in the GUI</flag>
 		<flag name="htmlreport">install cppcheck-htmlreport</flag>
