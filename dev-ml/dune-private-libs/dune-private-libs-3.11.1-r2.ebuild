@@ -30,3 +30,7 @@ src_configure() {
 src_compile() {
 	dune-compile ordering dyn stdune ${PN}
 }
+
+src_install() {
+	dune-install ordering dyn stdune ${PN}
+}
