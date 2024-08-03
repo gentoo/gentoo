@@ -37,6 +37,7 @@
 # Guile rework masks.  Mask all packages or package versions that are
 # being bumped as part of the Guile reslotting process.
 # Masked until the whole Guile ecosystem is updated.
+dev-scheme/guile-commonmark
 >=dev-scheme/guile-reader-0.6.3-r100
 dev-scheme/guile:2.2
 dev-scheme/guile:3.0
