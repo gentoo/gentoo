@@ -1,0 +1,83 @@
+From 7bf62b4e8848ce0990cb8d09b8b630dc4140f41b Mon Sep 17 00:00:00 2001
+From: Thomas Grainger <tagrain@gmail.com>
+Date: Tue, 30 Jul 2024 11:52:27 +0100
+Subject: [PATCH] generate certs with trustme 586f775
+
+diff --git a/pytest_httpbin/certs.py b/pytest_httpbin/certs.py
+index 75444d5..230f41b 100644
+--- a/pytest_httpbin/certs.py
++++ b/pytest_httpbin/certs.py
+@@ -15,7 +15,7 @@
+ def where():
+     """Return the preferred certificate bundle."""
+     # vendored bundle inside Requests
+-    return os.path.join(os.path.dirname(__file__), "certs", "cacert.pem")
++    return os.path.join(os.path.dirname(__file__), "certs", "client.pem")
+ 
+ 
+ if __name__ == "__main__":
+diff --git a/pytest_httpbin/certs/client.pem b/pytest_httpbin/certs/client.pem
+new file mode 100644
+index 0000000..7946137
+--- /dev/null
++++ b/pytest_httpbin/certs/client.pem
+@@ -0,0 +1,12 @@
++-----BEGIN CERTIFICATE-----
++MIIB0TCCAXegAwIBAgIUScnyyX1CI+ywC6GdKol8IIwuGnkwCgYIKoZIzj0EAwIw
++RDEbMBkGA1UECgwSdHJ1c3RtZSB2MS4xLjArZGV2MSUwIwYDVQQLDBxUZXN0aW5n
++IENBICNBdXNVcWJaNG81d3pjb0tCMCAXDTAwMDEwMTAwMDAwMFoYDzMwMDAwMTAx
++MDAwMDAwWjBEMRswGQYDVQQKDBJ0cnVzdG1lIHYxLjEuMCtkZXYxJTAjBgNVBAsM
++HFRlc3RpbmcgQ0EgI0F1c1VxYlo0bzV3emNvS0IwWTATBgcqhkjOPQIBBggqhkjO
++PQMBBwNCAARhrRi78wmZY28t3/y8MTDDCsi7Lzir4WaQm96gf4/9kSolBTFVDUvB
++MkSC7Yged+2bWEzTRERZQLf88uiorUnAo0UwQzAdBgNVHQ4EFgQUHymIBJV4gCrA
++qv+6Q9pSJFtd7PYwEgYDVR0TAQH/BAgwBgEB/wIBCTAOBgNVHQ8BAf8EBAMCAYYw
++CgYIKoZIzj0EAwIDSAAwRQIgLf0sybmdbJoTIgZWrU1k11oecQbdkzh+3jFtNEFn
++zYUCIQCRXjIBDZXtyaywk3DgIggByCQxrrB5vjlnyYTd9vNUSw==
++-----END CERTIFICATE-----
+diff --git a/pytest_httpbin/certs/server.key b/pytest_httpbin/certs/server.key
+new file mode 100644
+index 0000000..fd9fd82
+--- /dev/null
++++ b/pytest_httpbin/certs/server.key
+@@ -0,0 +1,5 @@
++-----BEGIN EC PRIVATE KEY-----
++MHcCAQEEIPNMu1H1DN9x0VLZNzO3BFp5boEGyc80XFaR1ML18uFRoAoGCCqGSM49
++AwEHoUQDQgAEiNIfYxmsmjemcRRpcd4qP+x1yONFBZZli7CEKxg9j3x5j1OJPeyC
++BQ83kogrxJYLbRjdHUx4VOCEXjffmYhnMA==
++-----END EC PRIVATE KEY-----
+diff --git a/pytest_httpbin/certs/server.pem b/pytest_httpbin/certs/server.pem
+new file mode 100644
+index 0000000..7c70f64
+--- /dev/null
++++ b/pytest_httpbin/certs/server.pem
+@@ -0,0 +1,15 @@
++-----BEGIN CERTIFICATE-----
++MIICTDCCAfOgAwIBAgIUZ9rBQX/YRZFcqXCIzOSAd1D0IUcwCgYIKoZIzj0EAwIw
++RDEbMBkGA1UECgwSdHJ1c3RtZSB2MS4xLjArZGV2MSUwIwYDVQQLDBxUZXN0aW5n
++IENBICNBdXNVcWJaNG81d3pjb0tCMCAXDTAwMDEwMTAwMDAwMFoYDzMwMDAwMTAx
++MDAwMDAwWjBGMRswGQYDVQQKDBJ0cnVzdG1lIHYxLjEuMCtkZXYxJzAlBgNVBAsM
++HlRlc3RpbmcgY2VydCAjLVdQNWpjLTllQ0U0S0JxMjBZMBMGByqGSM49AgEGCCqG
++SM49AwEHA0IABIjSH2MZrJo3pnEUaXHeKj/sdcjjRQWWZYuwhCsYPY98eY9TiT3s
++ggUPN5KIK8SWC20Y3R1MeFTghF4335mIZzCjgb4wgbswHQYDVR0OBBYEFCO99Ega
++h7pEyFEJVwe09DZzNHDtMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUHymIBJV4
++gCrAqv+6Q9pSJFtd7PYwLwYDVR0RAQH/BCUwI4IJbG9jYWxob3N0hwR/AAABhxAA
++AAAAAAAAAAAAAAAAAAABMA4GA1UdDwEB/wQEAwIFoDAqBgNVHSUBAf8EIDAeBggr
++BgEFBQcDAgYIKwYBBQUHAwEGCCsGAQUFBwMDMAoGCCqGSM49BAMCA0cAMEQCIHB0
++imdD2aQuq4DipTvnFJjmT+w8i3D/Pz8X6bPdkJW/AiATl+m4TW4BE5v1ID3ftDhz
++ja8s574nAjDAqcSL7otVpQ==
++-----END CERTIFICATE-----
+diff --git a/pytest_httpbin/serve.py b/pytest_httpbin/serve.py
+index c15c227..8310140 100644
+--- a/pytest_httpbin/serve.py
++++ b/pytest_httpbin/serve.py
+@@ -60,8 +60,8 @@ def finish_request(self, request, client_address):
+         try:
+             context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+             context.load_cert_chain(
+-                os.path.join(CERT_DIR, "cert.pem"),
+-                os.path.join(CERT_DIR, "key.pem"),
++                os.path.join(CERT_DIR, "server.pem"),
++                os.path.join(CERT_DIR, "server.key"),
+             )
+             with context.wrap_socket(
+                 request, server_side=True, suppress_ragged_eofs=False
