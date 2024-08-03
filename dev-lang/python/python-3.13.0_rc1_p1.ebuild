@@ -249,6 +249,8 @@ src_configure() {
 		-x test_gdb
 		# flaky: https://github.com/python/cpython/issues/121973
 		-x test_pyrepl
+		# flaky: https://github.com/python/cpython/issues/122136 (bug #936314)
+		-x test_asyncio
 	)
 
 	# Arch-specific skips.  See #931888 for a collection of these.
