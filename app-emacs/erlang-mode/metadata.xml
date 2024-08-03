@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>matthew@gentoo.org</email>
+    <name>Matthew Smith</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <stabilize-allarches/>
+  <upstream>
+    <remote-id type="github">erlang/otp</remote-id>
+  </upstream>
+</pkgmetadata>
