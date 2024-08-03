@@ -14,7 +14,6 @@ RDEPEND="
 		www-servers/lighttpd
 		www-servers/fnord
 		www-servers/h2o
-		www-servers/monkeyd
 		www-servers/nginx
 		www-servers/tomcat
 		www-servers/caddy
