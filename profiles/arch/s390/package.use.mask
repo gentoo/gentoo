@@ -1,10 +1,6 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Ulrich Müller <ulm@gentoo.org> (2024-08-03)
-# Needs dev-libs/openspecfun which is not yet keyworded
-sci-visualization/gnuplot amos
-
 # Michał Górny <mgorny@gentoo.org> (2024-07-24)
 # Full testing requires www-client/firefox.
 dev-python/selenium test-rust
