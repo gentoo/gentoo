@@ -16,12 +16,23 @@
   primarily for the visual display of scientific data.
 </longdescription>
 <use>
-  <flag name="gd">Add support for <pkg>media-libs/gd</pkg>.
-    Needed for GIF, JPEG, and PNG image output.</flag>
-  <flag name="libcerf">Enable special functions from
-    <pkg>sci-libs/libcerf</pkg></flag>
+  <flag name="amos">
+    Enable Amos routines for complex Airy and Bessel functions
+    (<pkg>dev-libs/openspecfun</pkg>)
+  </flag>
   <flag name="bitmap">Enable dot-matrix printers and pbm terminal</flag>
-  <flag name="regis">Enable ReGIS terminal</flag>
+  <flag name="gd">
+    Add support for <pkg>media-libs/gd</pkg>.
+    Needed for GIF, JPEG, and PNG image output.
+  </flag>
+  <flag name="gpic">Include support for gpic terminal</flag>
+  <flag name="libcerf">
+    Enable special functions from <pkg>sci-libs/libcerf</pkg>
+  </flag>
+  <flag name="metafont">Include support for metafont terminal</flag>
+  <flag name="metapost">Include support for metapost terminal</flag>
+  <flag name="regis">Include support for ReGIS terminal</flag>
+  <flag name="tgif">Include support for tgif terminal</flag>
 </use>
 <upstream>
   <remote-id type="sourceforge">gnuplot</remote-id>

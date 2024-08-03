@@ -1,0 +1,16 @@
+https://sourceforge.net/p/gnuplot/bugs/2727/
+
+--- a/demo/watchpoints.dem
++++ b/demo/watchpoints.dem
+@@ -7,6 +7,11 @@ if (!strstrt(GPVAL_COMPILE_OPTIONS, "+WATCHPOINTS")) {
+     exit  # return to caller
+ }
+ 
++if (!strstrt(GPVAL_COMPILE_OPTIONS, "+LIBCERF")) {
++    print "This copy of gnuplot does not support FresnelC, FresnelS"
++    exit;
++}
++
+ # watchpoints are only active on plots "with lines" or "with linespoints"
+ #
+ set style data lines
