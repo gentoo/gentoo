@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-08-04)
+# Fails to build, bug 936234. Mask for now so we can keep building stages.
+=sys-apps/iproute2-6.10.0
+
 # Robert Förster <Dessa@gmake.de> (2024-05-06)
 # needs mongodb
 net-wireless/unifi
