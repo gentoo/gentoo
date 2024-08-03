@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
+  <maintainer type="person">
+    <email>arthurzam@gentoo.org</email>
+    <name>Arthur Zamarin</name>
+  </maintainer>
   <longdescription>
 The Netwide Assembler, NASM, is an 80x86 assembler designed for portability
 and modularity. It supports a range of object file formats, including Linux
