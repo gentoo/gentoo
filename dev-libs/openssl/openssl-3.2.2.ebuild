@@ -18,8 +18,10 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="
-		mirror://openssl/source/${MY_P}.tar.gz
-		verify-sig? ( mirror://openssl/source/${MY_P}.tar.gz.asc )
+		https://github.com/openssl/openssl/releases/download/${P}/${P}.tar.gz
+		verify-sig? (
+			https://github.com/openssl/openssl/releases/download/${P}/${P}.tar.gz.asc
+		)
 	"
 
 	if [[ ${PV} != *_alpha* && ${PV} != *_beta* ]] ; then
