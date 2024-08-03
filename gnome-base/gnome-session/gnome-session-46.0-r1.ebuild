@@ -76,10 +76,8 @@ src_configure() {
 		-Dsession_selector=true # gnome-custom-session
 		$(meson_use doc docbook)
 		-Dman=true
+		-Dsystemduserunitdir="$(systemd_get_userunitdir)"
 	)
-	use systemd && local emesonargs+=( -Dsystemduserunitdir="$(systemd_get_userunitdir)" )
-	# Set a dummy systemduserunitdir to avoid dependency on systemd
-	use elogind && local emesonargs+=( -Dsystemduserunitdir="${T}" )
 	meson_src_configure
 }
 
