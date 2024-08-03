@@ -19,6 +19,7 @@ RDEPEND="
 	>=gui-libs/gtk-4.12.0:4[X(+)?]
 	>=dev-cpp/gtkmm-4.0.0:4.0
 	>=gnome-base/libgtop-2.41.2:2=
+	>=gui-libs/libadwaita-1.4.0:1
 	>=gnome-base/librsvg-2.46:2
 	>=dev-libs/libxml2-2.0:2
 	X? ( >=x11-libs/libwnck-2.91.0:3 )
