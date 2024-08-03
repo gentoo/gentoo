@@ -33,6 +33,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Orlitzky <mjo@gentoo.org> (2024-08-03)
+# Unmaintained package. Upstream is not quite _dead_, but the project
+# domain (where tarballs and documentation were hosted) was hijacked in
+# 2022 and nothing has been done about it. As a result, the version in
+# Gentoo is far out of date. Four open bugs, no interest. Removal on
+# or after 2024-09-03.
+acct-group/monkeyd
+acct-user/monkeyd
+www-servers/monkeyd
+
 # Sam James <sam@gentoo.org> (2024-08-02)
 # Unreliable software, unmaintained in Gentoo. Having it in the main
 # repositories may give users an impression of it being a safe tool.
