@@ -1309,7 +1309,7 @@ toolchain_src_configure() {
 	fi
 
 	if in_iuse ada ; then
-		confgcc+=( --disable-libada )
+		confgcc+=( $(use_enable ada libada) )
 	fi
 
 	if in_iuse cet ; then
