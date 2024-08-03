@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>mechakotik@gmail.com</email>
+		<name>Andrei Sabalenka</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/mechakotik/rog-daemon/issues</bugs-to>
+		<remote-id type="github">mechakotik/rog-daemon</remote-id>
+	</upstream>
+	<use>
+		<flag name="profile">Build support for controlling profile</flag>
+		<flag name="fan-curve">Build support for custom fan curves</flag>
+		<flag name="mux">Build support for MUX switch</flag>
+		<flag name="panel-od">Build support for Panel Overdrive</flag>
+	</use>
+</pkgmetadata>
+
