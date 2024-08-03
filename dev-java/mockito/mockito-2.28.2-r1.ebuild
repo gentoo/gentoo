@@ -16,25 +16,25 @@ S="${WORKDIR}/${P}"
 
 LICENSE="MIT"
 SLOT="2"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
+# Tests need a version of byte-buddy supporting Java 21. #930103 
 CP_DEPEND="
 	dev-java/asm:9
-	dev-java/byte-buddy:0
+	>=dev-java/byte-buddy-1.14.13:0
+	dev-java/hamcrest-core:1.3
+	dev-java/junit:4
 	dev-java/objenesis:0
+	dev-java/opentest4j:0
 "
 
-DEPEND="
-	dev-java/junit:4
-	dev-java/opentest4j:0
+DEPEND="${CP_DEPEND}
 	>=virtual/jdk-1.8:*
-	${CP_DEPEND}
 	test? ( dev-java/assertj-core:3 )
 "
 
-RDEPEND="
+RDEPEND="${CP_DEPEND}
 	>=virtual/jre-1.8:*
-	${CP_DEPEND}
 "
 
 # see https://bugs.gentoo.org/903897
@@ -78,6 +78,9 @@ src_test() {
 	# Increasing number of test failures with higher Java versions
 	# Test failures are documented in https://bugs.gentoo.org/903897
 	local vm_version="$(java-config -g PROVIDES_VERSION)"
+	if ver_test "${vm_version}" -ge 21; then
+		eapply "${FILESDIR}/mockito-2.28.2-UnusedStubbingsTest-java21.patch"
+	fi
 	if ver_test "${vm_version}" -ge 11; then
 		JAVA_TEST_EXCLUDES+=(
 			org.mockito.internal.stubbing.defaultanswers.ReturnsMocksTest
