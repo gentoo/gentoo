@@ -1,0 +1,28 @@
+From b2301ad49894fa7a6edc89a3b2128be274bd2996 Mon Sep 17 00:00:00 2001
+From: Philipp Herzog <ph@flyingcircus.io>
+Date: Sat, 3 Aug 2024 11:10:37 +0200
+Subject: [PATCH] Store formatted variables in a variable
+
+This fixes compilation errors when compiling with slightly less recent
+rust compilers, e.g. 1.78.0 and 1.77.1.
+
+The performance overhead of formatting the string here is neglegible in
+any case since the string is only discarded if there are zero or one
+variables, in which case the extra call to `join` is very cheap.
+
+Upstream: https://github.com/gleam-lang/gleam/pull/3484
+--- a/compiler-core/src/language_server/code_action.rs
++++ b/compiler-core/src/language_server/code_action.rs
+@@ -344,10 +344,11 @@ impl<'ast> ast::visit::Visit<'ast> for LetAssertToCase<'_> {
+         self.visit_typed_pattern(&assignment.pattern);
+         let variables = std::mem::take(&mut self.pattern_variables);
+ 
++        let formatted_all = format!("#({})", variables.join(", "));
+         let assigned = match variables.len() {
+             0 => "_",
+             1 => variables.first().expect("Variables is length one"),
+-            _ => &format!("#({})", variables.join(", ")),
++            _ => &formatted_all,
+         };
+ 
+         let edit = TextEdit {
