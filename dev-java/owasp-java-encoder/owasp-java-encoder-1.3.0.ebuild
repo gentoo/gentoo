@@ -21,8 +21,12 @@ KEYWORDS="~amd64"
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"
 
-# skipping 10 tests because kinda unpredictable as it expects that it cannot
-# surpass a predefined value, which in some case obviously doesn't work.
+# skipping 10 tests because they seem to be unreliable depending on hardware used
+# as some of them fail on some setups because the benchmark results don't align
+# with the hardcoded value 200 for the expected results. here are some examples:
+# Benchmarked Encode.forJavaScript: 442,382250 ns/op (+253,85% on baseline)
+# Benchmarked Encode.forCssString: 446,929231 ns/op (+257,49% on baseline)
+# Benchmarked Encode.forJava: 409,038065 ns/op (+227,18% on baseline)
 JAVA_RM_FILES=( src/test/java/org/owasp/encoder/BenchmarkTest.java )
 JAVA_SRC_DIR="src/main/java"
 JAVA_TEST_GENTOO_CLASSPATH="junit-4"
