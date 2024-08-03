@@ -392,11 +392,6 @@ sec-keys/openpgp-keys-jiatan
 # Mask experimental software
 =mail-mta/postfix-3.10*
 
-# Ulrich Müller <ulm@gentoo.org> (2024-02-08)
-# Masked for testing.
-# Test failure in watchpoints.dem, undefined function FresnelC.
-~sci-visualization/gnuplot-6.0.0
-
 # Sam James <sam@gentoo.org> (2023-12-14)
 # Gentoo's kernel maintainers have decided to discontinue gentoo-sources and
 # gentoo-kernel for old kernel LTS branches because of the resources to require
