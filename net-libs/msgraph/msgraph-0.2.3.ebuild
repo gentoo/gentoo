@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 	dev-libs/gobject-introspection-common
 "
 BDEPEND="
-	gtk-doc? ( dev-util/gtk-doc )
+	gtk-doc? ( dev-util/gi-docgen )
 	test? ( net-libs/uhttpmock:1.0 )
 "
 
