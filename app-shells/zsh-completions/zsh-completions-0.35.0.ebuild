@@ -8,7 +8,7 @@ if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/zsh-users/zsh-completions.git"
 else
 	SRC_URI="https://github.com/zsh-users/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
+	KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv sparc x86 ~x64-macos"
 fi
 
 DESCRIPTION="Additional completion definitions for Zsh"
