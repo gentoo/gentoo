@@ -12,7 +12,7 @@ S="${WORKDIR}"/${P/_}
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ia64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 ~ia64 ~loong ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 IUSE="doc lto"
 
 QA_CONFIG_IMPL_DECL_SKIP=(
