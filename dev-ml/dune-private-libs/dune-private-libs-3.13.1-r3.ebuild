@@ -21,7 +21,11 @@ BDEPEND=">=dev-ml/dune-3.5"
 DEPEND="
 	dev-ml/csexp:=[ocamlopt?]
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!dev-ml/stdune
+	!dev-ml/dyn
+	!dev-ml/ordering
+"
 
 src_configure() {
 	:
