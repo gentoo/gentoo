@@ -11,7 +11,7 @@ SRC_URI="https://github.com/graysky2/modprobed-db/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 src_install() {
 	emake install DESTDIR="${D}" PREFIX="${EPREFIX}/usr" INITDIR_SYSTEMD="$(systemd_get_userunitdir)"
