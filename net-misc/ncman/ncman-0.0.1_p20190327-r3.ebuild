@@ -3,7 +3,7 @@
 
 EAPI=8
 
-COMMIT=""
+COMMIT="21a55145ddbc5d085e91352586875abe92cff73b"
 inherit flag-o-matic meson
 
 DESCRIPTION="An ncurses UI for connman, forked from connman-json-client"
@@ -20,10 +20,14 @@ fi
 LICENSE="GPL-2+"
 SLOT="0"
 
-RDEPEND="dev-libs/json-c:0=
+RDEPEND="
+	dev-libs/json-c:0=
 	>=sys-apps/dbus-1.4
-	sys-libs/ncurses:0="
+	sys-libs/ncurses:0=
+"
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}"/${PN}-fix-for-json-c-0.14.patch )
 
 [[ ${PV} == *9999* ]] || S="${WORKDIR}/${PN}-${COMMIT}"
 
