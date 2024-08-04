@@ -69,7 +69,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DCAPSTONE_BUILD_TESTS="$(usex test)"
+		-DCAPSTONE_BUILD_TESTS=ON
 	)
 	cmake_src_configure
 
