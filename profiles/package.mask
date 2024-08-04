@@ -245,11 +245,6 @@ sci-astronomy/esomidas
 # The symbol versioning "fix" breaks anything built with 3.0.0.
 =dev-libs/libassuan-3.0.1
 
-# Hans de Graaff <graaff@gentoo.org> (2024-06-21)
-# Obsolete slot. Please use a newer slot instead.
-# Masked for removal on 2024-07-21.
-dev-ruby/public_suffix:4
-
 # Cédric Krier <cedk@gentoo.org> (2023-06-15)
 # critical regression with potential data loss:
 # https://lists.mercurial-scm.org/pipermail/mercurial-devel/2024-June/297954.html
