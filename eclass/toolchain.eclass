@@ -1878,18 +1878,6 @@ gcc_do_make() {
 	pushd "${WORKDIR}"/build >/dev/null || die
 	emake "${emakeargs[@]}" ${GCC_MAKE_TARGET}
 
-	if is_ada; then
-		# Without these links, it is not getting the good compiler
-		# TODO: Need to check why
-		ln -s gcc ../build/prev-gcc || die
-		ln -s ${CHOST} ../build/prev-${CHOST} || die
-
-		# Building standard ada library
-		emake -C gcc gnatlib-shared
-		# Building gnat toold
-		emake -C gcc gnattools
-	fi
-
 	if ! is_crosscompile && _tc_use_if_iuse cxx && _tc_use_if_iuse doc ; then
 		if type -p doxygen > /dev/null ; then
 			cd "${CTARGET}"/libstdc++-v3/doc || die
