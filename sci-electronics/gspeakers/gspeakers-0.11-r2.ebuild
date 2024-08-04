@@ -12,8 +12,8 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
+BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	dev-cpp/gtkmm:2.4
 	>=dev-libs/libsigc++-2.6:2
@@ -25,16 +25,13 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}"
-BDEPEND="
-	virtual/pkgconfig
-"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-cxxflags.patch
-	"${FILESDIR}"/${P}-gcc43.patch
-	"${FILESDIR}"/${P}-glib-single-include.patch
-	"${FILESDIR}"/${P}-fix-sigc-includes.patch
-	"${FILESDIR}"/${P}-c++11.patch
+	"${FILESDIR}/${P}-cxxflags.patch"
+	"${FILESDIR}/${P}-gcc43.patch"
+	"${FILESDIR}/${P}-glib-single-include.patch"
+	"${FILESDIR}/${P}-fix-sigc-includes.patch"
+	"${FILESDIR}/${P}-c++11.patch"
 )
 
 src_prepare() {
