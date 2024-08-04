@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-07-30)
+# We circumvent the auto-detection, so re-enable here
+dev-lang/ispc ispc_targets_ARM
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-04-12)
 # supports 64 bit neon
 media-libs/opencv cpu_flags_arm_neon
