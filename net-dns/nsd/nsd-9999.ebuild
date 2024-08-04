@@ -52,8 +52,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-munin-gentoo-paths.patch"
 )
 
-NSD_TMPFILESD_VER="1"		# Cur version of NSD's tmpfiles.d config.
-
 NSD_DBDIR="/var/db/nsd"		# Default dir for NSD's databases.
 NSD_ZNDIR="/var/lib/nsd"	# Default dir for NSD's zone files.
 
@@ -125,9 +123,9 @@ src_install() {
 	emake DESTDIR="${D}" install
 
 	dodoc doc/{ChangeLog,CREDITS,NSD-4-features,NSD-FOR-BIND-USERS,README,RELNOTES,REQUIREMENTS}
-	newinitd "contrib/nsd.openrc.in" nsd
+	newinitd "contrib/nsd.openrc" nsd
 	newconfd "contrib/nsd.openrc.conf" nsd
-	newtmpfiles "${FILESDIR}/nsd.tmpfilesd-r${NSD_TMPFILESD_VER}" nsd.conf
+	newtmpfiles "contrib/nsd-tmpfiles.conf" nsd.conf
 
 	# Install munin plugin and config, if requested.
 	if use munin ; then
