@@ -49,6 +49,7 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}/${PN}-4.10.1-simdzone-configure_ac-_mm_popcnt_u64.patch"
 	"${FILESDIR}/${PN}-munin-gentoo-paths.patch"
 )
 
