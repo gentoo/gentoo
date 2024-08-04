@@ -49,10 +49,11 @@ DEPEND="${LUA_DEPS}
 	$(lua_gen_cond_dep '
 		dev-lua/LuaBitOp[${LUA_USEDEP}]
 	' lua5-{1,2})
+	>=dev-libs/libutf8proc-2.9.0:=
 	>=dev-libs/libuv-1.46.0:=
 	>=dev-libs/libvterm-0.3.3
 	>=dev-libs/msgpack-3.0.0:=
-	>=dev-libs/tree-sitter-0.20.9:=
+	>=dev-libs/tree-sitter-0.22.6:=
 	=dev-libs/tree-sitter-bash-0.21*
 	=dev-libs/tree-sitter-c-0.21*
 	=dev-libs/tree-sitter-lua-0.1*
