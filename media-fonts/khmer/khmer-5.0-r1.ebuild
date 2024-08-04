@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/khmer/All_KhmerOS_${PV}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~loong ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~loong ~riscv x86"
 
 BDEPEND="app-arch/unzip"
 
@@ -32,5 +32,5 @@ pkg_postinst() {
 
 	elog "To prefer using Khmer OS fonts, run:"
 	elog
-	elog "	eselect fontconfig enable 65-khmer.conf"
+	elog "  eselect fontconfig enable 65-khmer.conf"
 }
