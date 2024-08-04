@@ -7,12 +7,19 @@ inherit autotools
 
 DESCRIPTION="Fork of Con Kolivas' lrzip program for compressing large files"
 HOMEPAGE="https://github.com/pete4abw/lrzip-next"
-SRC_URI="https://github.com/pete4abw/lrzip-next/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+
+GH_BASE="https://github.com/pete4abw/lrzip-next"
+if [[ ${PV} == *9999 ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="${GH_BASE}.git"
+else
+	SRC_URI="${GH_BASE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE="asm static-libs year2038"
+IUSE="asm +largefile static-libs year2038"
 
 RDEPEND="app-arch/bzip2
 	app-arch/bzip3
@@ -27,6 +34,9 @@ BDEPEND="amd64? ( dev-lang/nasm )"
 
 src_prepare() {
 	default
+
+	eapply "${FILESDIR}/${PN}-0.13.1-fix-lzma_asm_makefile-echo.patch"
+	eapply "${FILESDIR}/${PN}-0.13.1-use-acx_pthread-configure_ac.patch"
 
 	# configure.ac uses a small helper script, ./util/gitdesc.sh, to
 	# see if it's a tarball or git repo copy.  If tarball, it extracts
@@ -45,15 +55,15 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
-		$(use_enable static-libs static) \
 		$(use_enable amd64 asm)
+		$(use_enable largefile) \
+		$(use_enable static-libs static)
 	)
 
-	# This configure switch disappears on a musl system for some
-	# reason.  However, this package is currently broken on musl,
-	# but we'll leave this in place while we see if upstream has
-	# any advice.
-	if ! use elibc_musl; then
+	# This configure switch only appears for glibc-based userlands.
+	# It enables 64-bit time_t to support timestamps greater than
+	# the year 2038 (D_TIME_BITS=64).
+	if use elibc_glibc; then
 		myconf+=( $(use_enable year2038) )
 	fi
 
@@ -63,5 +73,5 @@ src_configure() {
 src_install() {
 	default
 
-	find "${ED}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -type f -delete || die
 }
