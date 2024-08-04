@@ -1661,9 +1661,6 @@ gcc_do_filter_flags() {
 
 		# New in GCC 14.
 		filter-flags -Walloc-size
-	else
-		# Makes things painfully slow and no real benefit for the compiler.
-		append-flags $(test-flags-CC -fno-harden-control-flow-redundancy)
 	fi
 
 	# Please use USE=lto instead (bug #906007).
