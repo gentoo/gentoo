@@ -10,7 +10,6 @@
 		<remote-id type="github">musescore/MuseScore</remote-id>
 	</upstream>
 	<use>
-		<flag name="jumbo-build">Combine source files to speed up build process, requires more memory</flag>
 		<flag name="osc">Enable OSC remote control protocol</flag>
 		<flag name="omr">Enable PDF import (OMR - optical music recognition)</flag>
 		<flag name="portmidi">Enable support for building against <pkg>media-libs/portmidi</pkg></flag>
