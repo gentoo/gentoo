@@ -218,11 +218,6 @@ dev-python/pathlib2
 # Removal on 2024-08-04.  Bugs #935553, #875746, #875245, #731094.
 media-video/luvcview
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-05)
-# EAPI=6, no reverse dependencies, fails tests.
-# Removal on 2024-08-04.  Bugs #935549, #873463, #741508.
-sci-libs/minuit
-
 # Joonas Niilola <juippis@gentoo.org> (2024-07-04)
 # libxml2-2.13.1 removed "deprecated" symbols that other (older)
 # packages depend upon. It can be mitigated with a --with-legacy
