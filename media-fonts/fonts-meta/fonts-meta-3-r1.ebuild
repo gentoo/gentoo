@@ -113,7 +113,6 @@ RDEPEND="media-fonts/cantarell
 		media-fonts/liberation-fonts
 		media-fonts/open-sans
 		media-fonts/quivira
-		media-fonts/signika
 		media-fonts/tex-gyre
 		media-fonts/ttf-bitstream-vera
 		media-fonts/urw-fonts
