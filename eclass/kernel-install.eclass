@@ -560,21 +560,21 @@ kernel-install_pkg_pretend() {
 		ewarn "that distribution kernels will boot without an initramfs."
 		ewarn
 		ewarn "You have disabled the initramfs USE flag, and as a result the package manager"
-        ewarn "will not enforce the configuration of an initramfs generator in"
-        ewarn "sys-kernel/installkernel."
-        ewarn
+		ewarn "will not enforce the configuration of an initramfs generator in"
+		ewarn "sys-kernel/installkernel."
+		ewarn
 		ewarn "If you wish to use a custom initramfs generator, then please ensure that" 
-        ewarn "/sbin/installkernel is capable of calling it via a kernel installation hook,"
-        ewarn "and is also configured to use it via /etc/kernel/install.conf."
-        ewarn
-        ewarn "If you wish to boot without an initramfs, then please ensure that"
-        ewarn "all kernel drivers required to boot your system are built into the"
-        ewarn "kernel by modifying the default distribution kernel configuration"
-        ewarn "using /etc/kernel/config.d"
-        ewarn
+		ewarn "/sbin/installkernel is capable of calling it via a kernel installation hook,"
+		ewarn "and is also configured to use it via /etc/kernel/install.conf."
+		ewarn
+		ewarn "If you wish to boot without an initramfs, then please ensure that"
+		ewarn "all kernel drivers required to boot your system are built into the"
+		ewarn "kernel by modifying the default distribution kernel configuration"
+		ewarn "using /etc/kernel/config.d"
+		ewarn
 		ewarn "Please refer to the installkernel and distribution kernel documentation:"
 		ewarn "    https://wiki.gentoo.org/wiki/Installkernel"
-        ewarn "    https://wiki.gentoo.org/wiki/Project:Distribution_Kernel"
+		ewarn "    https://wiki.gentoo.org/wiki/Project:Distribution_Kernel"
 	fi
 }
 
