@@ -28,7 +28,7 @@ else
 		verify-sig? ( https://github.com/eduvpn/eduvpn-common/releases/download/${PV}/eduvpn-common-${PV}.tar.xz.asc )
 		https://www-user.tu-chemnitz.de/~hamari/eduvpn/${P}-deps.tar.xz
 	"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 x86"
 fi
 
 LICENSE="GPL-3+"
