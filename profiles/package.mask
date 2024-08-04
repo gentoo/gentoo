@@ -223,11 +223,6 @@ media-video/luvcview
 # Removal on 2024-08-04.  Bugs #935549, #873463, #741508.
 sci-libs/minuit
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-05)
-# EAPI=6, many compilation and configure issues, more QA issues.
-# Removal on 2024-08-04.  Bug #935545.
-sci-astronomy/esomidas
-
 # Joonas Niilola <juippis@gentoo.org> (2024-07-04)
 # libxml2-2.13.1 removed "deprecated" symbols that other (older)
 # packages depend upon. It can be mitigated with a --with-legacy
