@@ -52,8 +52,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-munin-gentoo-paths.patch"
 )
 
-NSD_CONFD_VER="1"		# Cur version of NSD's OpenRC conf.d file.
-NSD_INITD_VER="2"		# Cur version of NSD's OpenRC init.d script.
 NSD_TMPFILESD_VER="1"		# Cur version of NSD's tmpfiles.d config.
 
 NSD_DBDIR="/var/db/nsd"		# Default dir for NSD's databases.
@@ -113,7 +111,9 @@ src_configure() {
 		)
 	fi
 
-	# This configure switch is only available on a glibc-based system.
+	# This configure switch only appears on glibc-based userlands.
+	# It enables 64-bit time_t to support timestamps greater than
+	# the year 2038 (D_TIME_BITS=64).
 	if use elibc_glibc; then
 		myconf+=( $(use_enable year2038) )
 	fi
@@ -125,14 +125,14 @@ src_install() {
 	emake DESTDIR="${D}" install
 
 	dodoc doc/{ChangeLog,CREDITS,NSD-4-features,NSD-FOR-BIND-USERS,README,RELNOTES,REQUIREMENTS}
-	newinitd "${FILESDIR}/nsd.initd-r${NSD_INITD_VER}" nsd
-	newconfd "${FILESDIR}/nsd.confd-r${NSD_CONFD_VER}" nsd
+	newinitd "contrib/nsd.openrc.in" nsd
+	newconfd "contrib/nsd.openrc.conf" nsd
 	newtmpfiles "${FILESDIR}/nsd.tmpfilesd-r${NSD_TMPFILESD_VER}" nsd.conf
 
 	# Install munin plugin and config, if requested.
 	if use munin ; then
 		exeinto "/usr/libexec/munin/plugins"
-		doexe contrib/nsd_munin_
+		doexe "contrib/nsd_munin_"
 		insinto "/etc/munin/plugin-conf.d"
 		newins "${FILESDIR}/nsd.munin-conf" nsd_munin
 	fi
