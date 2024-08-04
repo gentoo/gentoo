@@ -37,6 +37,7 @@
 # Guile rework masks.  Mask all packages or package versions that are
 # being bumped as part of the Guile reslotting process.
 # Masked until the whole Guile ecosystem is updated.
+>=dev-scheme/slib-3.3.1-r100
 www-apps/haunt
 dev-scheme/guile-commonmark
 >=dev-scheme/guile-reader-0.6.3-r100
