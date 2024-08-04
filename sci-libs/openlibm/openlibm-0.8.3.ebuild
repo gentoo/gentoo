@@ -29,6 +29,8 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC CXX FC AR LD
+	# Build system uses the riscv64 arch variable
+	use riscv && export ARCH=riscv64
 	default
 }
 
