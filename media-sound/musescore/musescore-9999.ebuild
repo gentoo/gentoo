@@ -38,6 +38,7 @@ RDEPEND="
 	dev-qt/qtbase[concurrent,dbus,gui,network,opengl,widgets,xml]
 	dev-qt/qtdeclarative:6
 	dev-qt/qtnetworkauth:6
+	dev-qt/qtscxml:6
 	dev-qt/qtsvg:6
 	dev-qt/qttools:6[assistant]
 	>=media-libs/alsa-lib-1.0.0
