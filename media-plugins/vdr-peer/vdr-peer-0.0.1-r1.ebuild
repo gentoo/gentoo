@@ -13,5 +13,5 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="media-video/vdr"
+DEPEND="~media-video/vdr-2.2.0"
 RDEPEND="${DEPEND}"
