@@ -2,15 +2,16 @@ https://sourceforge.net/p/gnuplot/bugs/2727/
 
 --- a/demo/watchpoints.dem
 +++ b/demo/watchpoints.dem
-@@ -7,6 +7,11 @@ if (!strstrt(GPVAL_COMPILE_OPTIONS, "+WATCHPOINTS")) {
-     exit  # return to caller
- }
+@@ -67,6 +67,12 @@
+ pause -1 "<cr> to continue"
  
+ reset
++
 +if (!strstrt(GPVAL_COMPILE_OPTIONS, "+LIBCERF")) {
 +    print "This copy of gnuplot does not support FresnelC, FresnelS"
 +    exit;
 +}
 +
- # watchpoints are only active on plots "with lines" or "with linespoints"
- #
- set style data lines
+ unset key
+ set title "Find y intercepts of a parametric function" offset 0,-1
+ set xrange [-0.1 : 0.9]
