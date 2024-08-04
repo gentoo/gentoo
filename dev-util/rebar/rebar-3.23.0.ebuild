@@ -18,7 +18,7 @@ S="${WORKDIR}"/${MY_PN}-${PV}
 
 LICENSE="Apache-2.0 MIT BSD"
 SLOT="3"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~ia64 ppc ppc64 sparc x86"
 IUSE="test"
 
 RESTRICT="!test? ( test )"
