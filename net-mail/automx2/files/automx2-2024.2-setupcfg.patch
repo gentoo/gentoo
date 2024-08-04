@@ -1,0 +1,13 @@
+diff --color -r -u a/setup.cfg b/setup.cfg
+--- a/setup.cfg	2024-02-21 05:58:03.000000000 +0100
++++ b/setup.cfg	2024-07-08 18:27:14.404495000 +0200
+@@ -51,6 +51,9 @@
+ packages = find:
+ python_requires = >=3.7
+ 
++[options.packages.find]
++exclude = test*
++
+ [options.package_data]
+ * =
+     contrib/flask.sh
