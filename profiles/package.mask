@@ -213,11 +213,6 @@ net-dialup/openl2tp
 # Removal on 2024-08-05.  Bug #935676.
 dev-python/pathlib2
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-05)
-# EAPI=6, no reverse dependencies, various issues with modern C.
-# Removal on 2024-08-04.  Bugs #935553, #875746, #875245, #731094.
-media-video/luvcview
-
 # Joonas Niilola <juippis@gentoo.org> (2024-07-04)
 # libxml2-2.13.1 removed "deprecated" symbols that other (older)
 # packages depend upon. It can be mitigated with a --with-legacy
