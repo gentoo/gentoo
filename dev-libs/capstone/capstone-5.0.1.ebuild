@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
@@ -62,7 +62,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DCAPSTONE_BUILD_TESTS="$(usex test)"
+		-DCAPSTONE_BUILD_TESTS=ON
 	)
 	cmake_src_configure
 
