@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-CVE-2020-29074.patch
 	"${FILESDIR}"/${P}-implicit-function-declaration.patch
 	"${FILESDIR}"/${P}-libressl.patch # 903001
+	"${FILESDIR}"/${P}-fix-build-on-32bit.patch
 )
 
 src_prepare() {
