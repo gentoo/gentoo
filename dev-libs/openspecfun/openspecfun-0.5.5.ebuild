@@ -11,7 +11,7 @@ SRC_URI="https://github.com/JuliaLang/openspecfun/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="MIT public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~s390 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux"
 
 DEPEND="sci-libs/openlibm:="
 RDEPEND="${DEPEND}"
