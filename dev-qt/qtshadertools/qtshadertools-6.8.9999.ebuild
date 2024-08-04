@@ -15,3 +15,7 @@ RDEPEND="
 	~dev-qt/qtbase-${PV}:6[gui]
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.7.2-gcc15.patch
+)

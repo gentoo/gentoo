@@ -1,0 +1,8 @@
+https://bugs.gentoo.org/937261
+https://github.com/KhronosGroup/glslang/pull/3684
+--- a/src/3rdparty/glslang/SPIRV/SpvBuilder.h
++++ b/src/3rdparty/glslang/SPIRV/SpvBuilder.h
+@@ -58,2 +58,3 @@
+ #include <algorithm>
++#include <cstdint>
+ #include <map>
