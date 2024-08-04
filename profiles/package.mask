@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sasha Finkelstein <fnkl.kernel@gmail.com> (2024-08-04)
+# Both SRC_URI and HOMEPAGE are gone. Bug #937272
+media-fonts/signika
+
 # Michael Orlitzky <mjo@gentoo.org> (2024-08-03)
 # Unmaintained package. Upstream is not quite _dead_, but the project
 # domain (where tarballs and documentation were hosted) was hijacked in
