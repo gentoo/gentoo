@@ -10,7 +10,6 @@ EAPI="8"
 GENPATCHREV="4"				# Tarball revision for patches
 
 # Directories
-S="${WORKDIR}/linux-${OKV}"
 MIPS_PATCHES="${WORKDIR}/mips-patches"
 
 # Kernel-2 Vars
@@ -32,7 +31,11 @@ BASE_KV="$(ver_cut 1-2).0"
 [[ "${EXTRAVERSION}" = -rc* ]] && KVE="${EXTRAVERSION}"
 
 # Portage Vars
+DESCRIPTION="Kernel.org sources for MIPS-based machines"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:MIPS"
+SRC_URI="${KERNEL_URI}
+	https://dev.gentoo.org/~kumba/distfiles/${PN}-${BASE_KV}-patches-v${GENPATCHREV}.tar.xz"
+S="${WORKDIR}/linux-${OKV}"
 KEYWORDS="-* ~mips"
 IUSE="experimental ip27 ip28 ip30 symlink"
 
@@ -53,10 +56,6 @@ SV_IP27=""				# 	    DO_IP27 == "no", 			   IP27
 SV_IP28=""				# 	    DO_IP28 == "no", 			   IP28
 SV_IP30=""				# 	    DO_IP30 == "no", 			   IP30
 SV_IP32=""				# 	    DO_IP32 == "no", 			   IP32
-
-DESCRIPTION="Kernel.org sources for MIPS-based machines"
-SRC_URI="${KERNEL_URI}
-	https://dev.gentoo.org/~kumba/distfiles/${PN}-${BASE_KV}-patches-v${GENPATCHREV}.tar.xz"
 
 #//------------------------------------------------------------------------------
 
