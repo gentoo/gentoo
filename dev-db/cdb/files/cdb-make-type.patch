@@ -1,0 +1,119 @@
+fixes all warnings below, because they annoyed me
+return type of 'main' is not 'int' [-Wmain-return-type]
+diff '--color=auto' -ru a/auto-str.c b/auto-str.c
+--- a/auto-str.c	2024-06-28 09:58:21.705876043 -0000
++++ b/auto-str.c	2024-06-28 09:58:28.913833538 -0000
+@@ -11,7 +11,7 @@
+   if (buffer_puts(&ss1,s) == -1) _exit(111);
+ }
+ 
+-void main(argc,argv)
++int main(argc,argv)
+ int argc;
+ char **argv;
+ {
+diff '--color=auto' -ru a/cdbdump.c b/cdbdump.c
+--- a/cdbdump.c	2024-06-28 09:58:21.706876037 -0000
++++ b/cdbdump.c	2024-06-28 09:58:28.901833608 -0000
+@@ -58,7 +58,7 @@
+ 
+ char strnum[FMT_ULONG];
+ 
+-void main()
++int main()
+ {
+   uint32_t eod;
+   uint32_t klen;
+diff '--color=auto' -ru a/cdbget.c b/cdbget.c
+--- a/cdbget.c	2024-06-28 09:58:21.711876007 -0000
++++ b/cdbget.c	2024-06-28 09:58:28.898833626 -0000
+@@ -23,7 +23,7 @@
+ static struct cdb c;
+ char buf[1024];
+ 
+-void main(int argc,char **argv)
++int main(int argc,char **argv)
+ {
+   char *key;
+   int r;
+diff '--color=auto' -ru a/cdbmake.c b/cdbmake.c
+--- a/cdbmake.c	2024-06-28 09:58:21.716875978 -0000
++++ b/cdbmake.c	2024-06-28 09:58:28.900833614 -0000
+@@ -36,7 +36,7 @@
+ 
+ static struct cdb_make c;
+ 
+-void main(int argc,char **argv)
++int main(int argc,char **argv)
+ {
+   unsigned int klen;
+   unsigned int dlen;
+diff '--color=auto' -ru a/cdbstats.c b/cdbstats.c
+--- a/cdbstats.c	2024-06-28 09:58:21.718875966 -0000
++++ b/cdbstats.c	2024-06-28 09:58:28.903833597 -0000
+@@ -69,7 +69,7 @@
+ static unsigned long numrecords;
+ static unsigned long numd[11];
+ 
+-void main()
++int main()
+ {
+   uint32_t eod;
+   uint32_t klen;
+diff '--color=auto' -ru a/cdbtest.c b/cdbtest.c
+--- a/cdbtest.c	2024-06-28 09:58:21.718875966 -0000
++++ b/cdbtest.c	2024-06-28 09:58:28.904833591 -0000
+@@ -67,7 +67,7 @@
+ 
+ static struct cdb c;
+ 
+-void main()
++int main()
+ {
+   uint32_t eod;
+   uint32_t klen;
+diff '--color=auto' -ru a/install.c b/install.c
+--- a/install.c	2024-06-28 09:58:21.719875960 -0000
++++ b/install.c	2024-06-28 09:58:28.928833449 -0000
+@@ -137,7 +137,7 @@
+     strerr_die6sys(111,FATAL,"unable to chmod .../",subdir,"/",file,": ");
+ }
+ 
+-void main()
++int main()
+ {
+   fdsourcedir = open_read(".");
+   if (fdsourcedir == -1)
+diff '--color=auto' -ru a/instcheck.c b/instcheck.c
+--- a/instcheck.c	2024-06-28 09:58:21.719875960 -0000
++++ b/instcheck.c	2024-06-28 09:58:28.929833443 -0000
+@@ -101,7 +101,7 @@
+   perm("",home,"/",file,S_IFREG,uid,gid,mode);
+ }
+ 
+-void main()
++int main()
+ {
+   hier();
+   _exit(0);
+diff '--color=auto' -ru a/testzero.c b/testzero.c
+--- a/testzero.c	2024-06-28 09:58:21.720875954 -0000
++++ b/testzero.c	2024-06-28 09:58:28.908833567 -0000
+@@ -14,7 +14,7 @@
+ static char data[65536];
+ struct cdb_make c;
+ 
+-void main(int argc,char **argv)
++int main(int argc,char **argv)
+ {
+   int fd;
+   unsigned long loop;
+diff '--color=auto' -ru a/tryulong32.c b/tryulong32.c
+--- a/tryulong32.c	2024-06-28 09:58:21.715875984 -0000
++++ b/tryulong32.c	2024-06-28 09:58:28.936833402 -0000
+@@ -1,4 +1,4 @@
+-void main()
++int main()
+ {
+   unsigned long u;
+   u = 1;
