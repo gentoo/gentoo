@@ -15,7 +15,7 @@ S="${WORKDIR}/wrapper_${PV}_src"
 
 LICENSE="tanuki-community"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 x86"
 RESTRICT="!test? ( test )"
 
 RDEPEND=">=virtual/jre-1.8:*"
