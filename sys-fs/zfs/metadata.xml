@@ -14,7 +14,7 @@
 	</use>
 	<upstream>
 		<bugs-to>https://github.com/openzfs/zfs/issues</bugs-to>
-		<doc>https://openzfs.github.io/openzfs-docs</doc>
+		<doc>https://openzfs.github.io/openzfs-docs/</doc>
 		<remote-id type="github">openzfs/zfs</remote-id>
 	</upstream>
 	<longdescription lang="en">
