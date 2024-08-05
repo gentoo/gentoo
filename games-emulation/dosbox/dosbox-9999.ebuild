@@ -58,6 +58,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing, -Weror=odr
+	# https://bugs.gentoo.org/858638
+	#
+	# Upstream is kinda dead. Just use dosbox-staging... where I reported
+	# similar issues and they were fixed. ;)
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	use glide && append-cppflags -I"${EPREFIX}"/usr/include/openglide
 
 	ac_cv_lib_X11_main=$(usex X yes no) \
