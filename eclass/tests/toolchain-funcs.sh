@@ -210,6 +210,16 @@ if type -P gcc &>/dev/null; then
 	tbegin "tc-get-c-rtlib (gcc)"
 	[[ $(CC=gcc tc-get-c-rtlib) == libgcc ]]
 	tend $?
+
+	tbegin "tc-is-lto (gcc, -fno-lto)"
+	CC=gcc CFLAGS=-fno-lto tc-is-lto
+	[[ $? -eq 1 ]]
+	tend $?
+
+	tbegin "tc-is-lto (gcc, -flto)"
+	CC=gcc CFLAGS=-flto tc-is-lto
+	[[ $? -eq 0 ]]
+	tend $?
 fi
 
 if type -P clang &>/dev/null; then
@@ -232,6 +242,16 @@ if type -P clang &>/dev/null; then
 		[[ $(CC=clang CFLAGS="--rtlib=${rtlib}" tc-get-c-rtlib) == ${rtlib} ]]
 		tend $?
 	done
+
+	tbegin "tc-is-lto (clang, -fno-lto)"
+	CC=clang CFLAGS=-fno-lto tc-is-lto
+	[[ $? -eq 1 ]]
+	tend $?
+
+	tbegin "tc-is-lto (clang, -flto)"
+	CC=clang CFLAGS=-flto tc-is-lto
+	[[ $? -eq 0 ]]
+	tend $?
 fi
 
 texit
