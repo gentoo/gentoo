@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit estack linux-info optfeature python-any-r1 bash-completion-r1 toolchain-funcs
 
