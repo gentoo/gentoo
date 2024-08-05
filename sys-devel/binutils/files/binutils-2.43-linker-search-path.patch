@@ -1,0 +1,43 @@
+https://bugs.gentoo.org/892549
+https://github.com/gentoo/binutils-gdb/pull/5
+
+From 470487917306e169fc3ca983c2edf2370b211861 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 11 Feb 2023 15:15:20 +0000
+Subject: [PATCH] ldelf.c: Always consider -L arguments when handling DT_NEEDED
+
+This is for consistency with other linkers, including gold. Without
+this, we typically rely on ld.so.conf to find libraries such as
+libstdc++.so.6, while other linkers do not use this file at all.
+---
+ ld/ldelf.c | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/ld/ldelf.c b/ld/ldelf.c
+index 09691609fc0..11edff8c8ec 100644
+--- a/ld/ldelf.c
++++ b/ld/ldelf.c
+@@ -1093,8 +1093,8 @@ ldelf_handle_dt_needed (struct elf_link_hash_table *htab,
+ 	 linker will search.  That means that we want to use
+ 	 rpath_link, rpath, then the environment variable
+ 	 LD_LIBRARY_PATH (native only), then the DT_RPATH/DT_RUNPATH
+-	 entries (native only), then the linker script LIB_SEARCH_DIRS.
+-	 We do not search using the -L arguments.
++	 entries (native only), then the linker script LIB_SEARCH_DIRS,
++	 then the -L arguments.
+ 
+ 	 We search twice.  The first time, we skip objects which may
+ 	 introduce version mismatches.  The second time, we force
+@@ -1168,11 +1168,7 @@ ldelf_handle_dt_needed (struct elf_link_hash_table *htab,
+ 	  len = strlen (l->name);
+ 	  for (search = search_head; search != NULL; search = search->next)
+ 	    {
+-	      char *filename;
+-
+-	      if (search->source != search_dir_linker_script)
+-		continue;
+-	      filename = (char *) xmalloc (strlen (search->name) + len + 2);
++	      char *filename = (char *) xmalloc (strlen (search->name) + len + 2);
+ 	      sprintf (filename, "%s/%s", search->name, l->name);
+ 	      nn.name = filename;
+ 	      if (ldelf_try_needed (&nn, force, is_linux))
