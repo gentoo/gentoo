@@ -1,7 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit flag-o-matic
 
 DESCRIPTION="A console based XMPP client inspired by Irssi"
 HOMEPAGE="https://profanity-im.github.io"
@@ -47,6 +49,11 @@ DEPEND="
 "
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/932874
+	# https://github.com/profanity-im/profanity/issues/1992
+	filter-lto
+
 	local myeconfargs=(
 		--enable-gdk-pixbuf
 		$(use_enable libnotify notifications)
