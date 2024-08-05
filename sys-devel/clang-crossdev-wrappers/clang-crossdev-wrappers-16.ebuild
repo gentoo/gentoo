@@ -3,8 +3,6 @@
 
 EAPI=8
 
-inherit crossdev
-
 DESCRIPTION="Symlinks to a Clang crosscompiler"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:LLVM"
 S="${WORKDIR}"
