@@ -19,8 +19,12 @@ RDEPEND="dev-python/cvxopt[${PYTHON_USEDEP}]"
 DOCS=( doc/README.rst )
 
 distutils_enable_sphinx doc/source
+
+# There are no additional dependencies even though we're not really
+# using setup.py to run the test suite any more. The __main__.py
+# runner has its own exit code handling.
 distutils_enable_tests setup.py
 
 python_test() {
-	esetup.py test
+	PYTHONPATH="." "${EPYTHON}" test/__main__.py --verbose
 }
