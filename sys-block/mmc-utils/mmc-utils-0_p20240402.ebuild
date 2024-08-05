@@ -17,7 +17,7 @@ S="${WORKDIR}/${PN}-${MY_COMMIT}"
 LICENSE="GPL-2 BSD"
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 RDEPEND="!dev-lang/mercury"
 
