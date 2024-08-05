@@ -3,13 +3,14 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit flag-o-matic multiprocessing python-any-r1 rust-toolchain toolchain-funcs
 
 DESCRIPTION="Rust standard library, standalone (for crossdev)"
 HOMEPAGE="https://www.rust-lang.org"
 SRC_URI="https://static.rust-lang.org/dist/rustc-${PV}-src.tar.xz"
+S="${WORKDIR}/${P/-std/c}-src"
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4"
 SLOT="stable/$(ver_cut 1-2)"
@@ -35,8 +36,6 @@ RDEPEND="${DEPEND}"
 RESTRICT="test"
 
 QA_FLAGS_IGNORED="usr/lib/rust/${PV}/rustlib/.*/lib/lib.*.so"
-
-S="${WORKDIR}/${P/-std/c}-src"
 
 #
 # The cross magic
