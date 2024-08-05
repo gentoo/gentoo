@@ -131,7 +131,7 @@ BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-danielstenberg )
 "
 
-DOCS=( CHANGES README docs/{FEATURES.md,INTERNALS.md,FAQ,BUGS.md,CONTRIBUTE.md} )
+DOCS=( README docs/{FEATURES.md,INTERNALS.md,FAQ,BUGS.md,CONTRIBUTE.md} )
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/curl/curlbuild.h
@@ -345,7 +345,7 @@ multilib_src_test() {
 	# See https://github.com/curl/curl/blob/master/tests/runtests.pl#L5721
 	# -n: no valgrind (unreliable in sandbox and doesn't work correctly on all arches)
 	# -v: verbose
-	# -a: keep going on failure (so we see everything which breaks, not just 1st test)
+	# -a: keep going on failure (so we see everything that breaks, not just 1st test)
 	# -k: keep test files after completion
 	# -am: automake style TAP output
 	# -p: print logs if test fails
