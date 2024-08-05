@@ -36,6 +36,7 @@
 		<flag name="video">Control video support (disable at your own risk)</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://github.com/libsdl-org/SDL/issues</bugs-to>
 		<remote-id type="github">libsdl-org/SDL</remote-id>
 	</upstream>
 </pkgmetadata>
