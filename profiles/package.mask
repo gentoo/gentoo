@@ -208,11 +208,6 @@ net-dialup/openl2tp
 # New major ffmpeg version. Tracker bug #928905.
 >=media-video/ffmpeg-7.0
 
-# Michał Górny <mgorny@gentoo.org> (2024-07-06)
-# Leftover backport for Python 3.9.  No revdeps.
-# Removal on 2024-08-05.  Bug #935676.
-dev-python/pathlib2
-
 # Joonas Niilola <juippis@gentoo.org> (2024-07-04)
 # libxml2-2.13.1 removed "deprecated" symbols that other (older)
 # packages depend upon. It can be mitigated with a --with-legacy
