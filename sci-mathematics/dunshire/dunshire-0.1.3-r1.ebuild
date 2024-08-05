@@ -26,5 +26,5 @@ distutils_enable_sphinx doc/source
 distutils_enable_tests setup.py
 
 python_test() {
-	PYTHONPATH="." "${EPYTHON}" test/__main__.py --verbose
+	PYTHONPATH="." "${EPYTHON}" test/__main__.py --verbose || die
 }
