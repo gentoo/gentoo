@@ -18,6 +18,7 @@ KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
 RDEPEND="
+	dev-libs/libltdl
 	virtual/blas
 	virtual/lapack
 "
