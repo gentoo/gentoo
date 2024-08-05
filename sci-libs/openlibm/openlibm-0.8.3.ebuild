@@ -27,11 +27,16 @@ src_prepare() {
 	fi
 }
 
-src_configure() {
-	tc-export CC CXX FC AR LD
+src_compile() {
 	# Build system uses the riscv64 arch variable
 	use riscv && export ARCH=riscv64
-	default
+
+	emake \
+		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
+		FC="$(tc-getFC)" \
+		AR="$(tc-getAR)" \
+		LD="$(tc-getLD)"
 }
 
 src_install() {
