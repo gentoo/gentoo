@@ -1234,6 +1234,7 @@ tc-get-build-ptr-size() {
 # @RETURN: Shell true if we are using LTO, shell false otherwise
 tc-is-lto() {
 	local f="${T}/test-lto.o"
+	local ret=1
 
 	case $(tc-get-compiler-type) in
 		clang)
@@ -1241,14 +1242,15 @@ tc-is-lto() {
 			# If LTO is used, clang will output bytecode and llvm-bcanalyzer
 			# will run successfully.  Otherwise, it will output plain object
 			# file and llvm-bcanalyzer will exit with error.
-			llvm-bcanalyzer "${f}" &>/dev/null && return 0
+			llvm-bcanalyzer "${f}" &>/dev/null && ret=0
 			;;
 		gcc)
 			$(tc-getCC) ${CFLAGS} -c -o "${f}" -x c - <<<"" || die
-			[[ $($(tc-getREADELF) -S "${f}") == *.gnu.lto* ]] && return 0
+			[[ $($(tc-getREADELF) -S "${f}") == *.gnu.lto* ]] && ret=0
 			;;
 	esac
-	return 1
+	rm -f "${f}" || die
+	return "${ret}"
 }
 
 fi
