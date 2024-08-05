@@ -278,7 +278,7 @@ LICENSE+="
 	ISC MIT Unicode-DFS-2016 WTFPL-2
 "
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="suid"
 
 FILECAPS=( cap_net_raw+p usr/bin/trip )
