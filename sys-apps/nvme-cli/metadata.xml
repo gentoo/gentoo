@@ -10,5 +10,6 @@
 	</upstream>
 	<use>
 		<flag name="json">Support JSON output via <pkg>dev-libs/json-c</pkg></flag>
+		<flag name="pdc">Set default Persistent Discovery Controllers behavior</flag>
 	</use>
 </pkgmetadata>
