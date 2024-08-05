@@ -56,7 +56,7 @@ DEPEND="
 	>=dev-libs/hyprland-protocols-0.3
 	>=dev-libs/hyprlang-0.3.2
 	>=dev-libs/wayland-protocols-1.36
-	>=gui-libs/hyprutils-0.2.0
+	>=gui-libs/hyprutils-0.2.1
 "
 BDEPEND="
 	${WLROOTS_BDEPEND}
