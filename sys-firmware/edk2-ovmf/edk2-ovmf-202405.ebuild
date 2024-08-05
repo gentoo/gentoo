@@ -17,10 +17,6 @@ BUNDLED_MIPI_SYS_T_SUBMODULE_SHA="370b5944c046bab043dd8b133727b2135af7747a"
 BUNDLED_MBEDTLS_SUBMODULE_SHA="8c89224991adff88d53cd380f42a2baa36f91454"
 BUNDLED_LIBSPDM_SUBMODULE_SHA="828ef62524bcaeca4e90d0c021221e714872e2b5"
 
-# TODO: talk with tamiko about unbundling (mva)
-
-# TODO: the binary 202105 package currently lacks the preseeded
-#       OVMF_VARS.secboot.fd file (that we typically get from fedora)
 SRC_URI="https://github.com/tianocore/edk2/archive/edk2-stable${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/openssl/openssl/archive/${BUNDLED_OPENSSL_SUBMODULE_SHA}.tar.gz -> openssl-${BUNDLED_OPENSSL_SUBMODULE_SHA}.tar.gz
 	https://github.com/google/brotli/archive/${BUNDLED_BROTLI_SUBMODULE_SHA}.tar.gz -> brotli-${BUNDLED_BROTLI_SUBMODULE_SHA}.tar.gz
@@ -90,10 +86,6 @@ src_prepare() {
 	cp -rl "${WORKDIR}/libspdm-${BUNDLED_LIBSPDM_SUBMODULE_SHA}"/* "SecurityPkg/DeviceSecurity/SpdmLib/libspdm" \
 		|| die "copying libspdm failed"
 
-	sed -i -r \
-		-e "/function SetupPython3/,/\}/{s,\\\$\(whereis python3\),${EPYTHON},g}" \
-		"${S}"/edksetup.sh || die "Fixing for correct Python3 support failed"
-
 	default
 }
 
@@ -124,14 +116,14 @@ src_compile() {
 
 	# Build all EFI firmware blobs:
 
-	mkdir -p ovmf
+	mkdir -p ovmf || die
 
 	./OvmfPkg/build.sh \
 		-a "${TARGET_ARCH}" -b "${TARGET_NAME}" -t "${TARGET_TOOLS}" \
 		${BUILD_FLAGS} || die "OvmfPkg/build.sh failed"
 
 	cp Build/OvmfX64/*/FV/OVMF_*.fd ovmf/
-	rm -rf Build/OvmfX64
+	rm -r Build/OvmfX64 || die
 
 	./OvmfPkg/build.sh \
 		-a "${TARGET_ARCH}" -b "${TARGET_NAME}" -t "${TARGET_TOOLS}" \
