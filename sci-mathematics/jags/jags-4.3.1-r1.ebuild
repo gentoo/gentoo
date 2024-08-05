@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit libtool toolchain-funcs
 
 MYP="JAGS-${PV}"
 
@@ -30,6 +30,11 @@ BDEPEND="
 		dev-texlive/texlive-latexextra
 	)
 "
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 src_configure() {
 	econf \
