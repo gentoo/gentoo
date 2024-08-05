@@ -766,13 +766,35 @@ kernel-install_compress_modules() {
 
 	if use modules-compress; then
 		einfo "Compressing kernel modules ..."
-		# xz options taken from scripts/Makefile.modinst
-		# we don't do 'xz -T' because it applies multithreading per file,
-		# so it works only for big files, and we have lots of small files
-		# instead
-		find "${ED}/lib" -name '*.ko' -print0 |
-			xargs -0 -P "$(makeopts_jobs)" -n 128 \
-				xz --check=crc32 --lzma2=dict=1MiB
+		if [[ -z ${KV_FULL} ]]; then
+			KV_FULL=${PV}${KV_LOCALVERSION}
+		fi
+		local suffix=$(dist-kernel_get_module_suffix "${ED}/usr/src/linux-${KV_FULL}")
+		local compress=()
+		# Options taken from linux-mod-r1.eclass.
+		# We don't instruct the compressor to parallelize because it applies
+		# multithreading per file, so it works only for big files, and we have
+		# lots of small files instead.
+		case ${suffix} in
+			.ko)
+				return
+				;;
+			.ko.gz)
+				compress+=( gzip )
+				;;
+			.ko.xz)
+				compress+=( xz --check=crc32 --lzma2=dict=1MiB )
+				;;
+			.ko.zst)
+				compress+=( zstd -q --rm )
+				;;
+			*)
+				die "Unknown compressor: ${suffix}"
+				;;
+		esac
+
+		find "${ED}/lib/modules/${KV_FULL}" -name '*.ko' -print0 |
+			xargs -0 -P "$(makeopts_jobs)" -n 128 "${compress[@]}"
 		assert "Compressing kernel modules failed"
 	fi
 }
