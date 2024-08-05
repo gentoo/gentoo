@@ -171,6 +171,7 @@ src_install() {
 
 	insinto /etc/logrotate.d
 	newins installkernel.logrotate installkernel
+	keepdir /var/lib/misc
 
 	into /
 	dosbin installkernel
