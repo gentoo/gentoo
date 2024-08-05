@@ -1,0 +1,49 @@
+diff --git a/build.xml b/build.xml
+index 47a0f2a..47f8f2b 100644
+--- a/build.xml
++++ b/build.xml
+@@ -180,8 +180,6 @@
+   <target name="init-codegen" depends="debuggen,subst">
+     <javac destdir="${build.classes.dir}" 
+            classpathref="codegen-classpath"
+-	   source="${jvm.target.version}"
+-	   target="${jvm.target.version}"
+            debug="true">
+       <src>
+ 	<pathelement location="${build.codegen.dir}" />
+@@ -224,8 +222,6 @@
+   <target name="compile-common" depends="codegen">
+     <javac destdir="${build.classes.dir}" 
+            classpathref="build-classpath" 
+-	   source="${jvm.target.version}"
+-	   target="${jvm.target.version}"
+            debug="on">
+       <sourcepath>
+ 	<pathelement location="${build.codegen.dir}" />
+@@ -246,8 +242,6 @@
+   <target name="compile-subst" depends="codegen">
+     <javac destdir="${build.classes.dir}" 
+            classpathref="build-classpath" 
+-	   source="${jvm.target.version}"
+-	   target="${jvm.target.version}"
+            debug="on">
+       <sourcepath>
+ 	<pathelement location="${build.codegen.dir}" />
+@@ -262,8 +256,6 @@
+   <target name="compile-mgmt" depends="codegen" unless="no-mgmt">
+     <javac destdir="${build.classes.dir}" 
+            classpathref="build-classpath" 
+-	   source="${jvm.target.version}"
+-	   target="${jvm.target.version}"
+            debug="on">
+       <sourcepath>
+ 	<pathelement location="${java.src.dir}" />
+@@ -318,8 +310,6 @@
+   <target name="compile-junit" depends="compile">
+     <javac destdir="${test.classes.dir}" 
+            classpathref="test-classpath" 
+-	   source="${jvm.target.version}"
+-	   target="${jvm.target.version}"
+            debug="on">
+       <sourcepath>
+ 	<pathelement location="${java.src.dir}" />
