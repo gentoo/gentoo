@@ -1,0 +1,35 @@
+From b364687b8a696c78f2d3c46e0c45c2dc28e79a33 Mon Sep 17 00:00:00 2001
+From: Michael Webster <miketwebster@gmail.com>
+Date: Sat, 10 Aug 2024 08:06:28 -0400
+Subject: [PATCH] Remove Gdk references and meson dependency.
+
+ref: 54fca8b5b6a2b
+---
+ src/meson.build | 1 -
+ src/settings.c  | 1 -
+ 2 files changed, 2 deletions(-)
+
+diff --git a/src/meson.build b/src/meson.build
+index f4128c8..a3e8aa5 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -61,7 +61,6 @@ deps = [
+   meson.get_compiler('c').find_library('m'),
+   dependency('glib-2.0', version: '>= 2.44'),
+   dependency('gio-unix-2.0'),
+-  dependency('gdk-3.0'),
+   xdg_desktop_portal_dep,
+ ]
+ 
+diff --git a/src/settings.c b/src/settings.c
+index 55014fb..1e77664 100644
+--- a/src/settings.c
++++ b/src/settings.c
+@@ -24,7 +24,6 @@
+ #include <string.h>
+ #include <glib/gi18n.h>
+ #include <gio/gio.h>
+-#include <gdk/gdk.h>
+ 
+ #include "settings.h"
+ #include "utils.h"
