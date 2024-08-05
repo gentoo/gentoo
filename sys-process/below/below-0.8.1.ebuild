@@ -308,7 +308,7 @@ LICENSE="Apache-2.0"
 LICENSE+=" BSD-2 BSD ISC MIT Unicode-DFS-2016 Unlicense"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ~ppc64"
 
 BDEPEND="
 	sys-devel/clang
