@@ -37,6 +37,12 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/927585
+	#
+	# Testsuite issue. Seems fixed in 2.8.
+	filter-lto
+
 	filter-flags -ffast-math
 
 	if use cblas-external; then
