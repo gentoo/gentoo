@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-ant-2.eclass
+# @DEPRECATED: none
 # @MAINTAINER:
 # java@gentoo.org
 # @AUTHOR:
