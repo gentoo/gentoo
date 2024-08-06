@@ -79,9 +79,9 @@ RDEPEND="${DEPEND}
 
 # ESR and rapid dependencies.
 if [[ -n ${MOZ_ESR} ]] ; then
-	RDEPEND+="!www-client/firefox-bin:rapid"
+	RDEPEND+=" !www-client/firefox-bin:rapid"
 else
-	RDEPEND+="!www-client/firefox-bin:esr"
+	RDEPEND+=" !www-client/firefox-bin:esr"
 fi
 
 QA_PREBUILT="opt/${MOZ_PN}/*"
