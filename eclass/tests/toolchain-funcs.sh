@@ -220,6 +220,26 @@ if type -P gcc &>/dev/null; then
 	CC=gcc CFLAGS=-flto tc-is-lto
 	[[ $? -eq 0 ]]
 	tend $?
+
+	case $(gcc -dumpmachine) in
+		i*86*-gnu*|arm*-gnu*|powerpc-*-gnu)
+			tbegin "tc-has-64bit-time_t (_TIME_BITS=32)"
+			CC=gcc CFLAGS="-U_TIME_BITS -D_TIME_BITS=32" tc-has-64bit-time_t
+			[[ $? -eq 1 ]]
+			tend $?
+
+			tbegin "tc-has-64bit-time_t (_TIME_BITS=64)"
+			CC=gcc CFLAGS="-U_FILE_OFFSET_BITS -U_TIME_BITS -D_FILE_OFFSET_BITS=64 -D_TIME_BITS=64" tc-has-64bit-time_t
+			[[ $? -eq 0 ]]
+			tend $?
+			;;
+		*)
+			tbegin "tc-has-64bit-time_t"
+			CC=gcc tc-has-64bit-time_t
+			[[ $? -eq 0 ]]
+			tend $?
+			;;
+	esac
 fi
 
 if type -P clang &>/dev/null; then
