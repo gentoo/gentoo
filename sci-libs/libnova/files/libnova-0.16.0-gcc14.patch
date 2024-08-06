@@ -1,0 +1,24 @@
+From 1be82238860bba941b1b16c6f31763577a17b8af Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 6 Aug 2024 21:49:52 +0200
+Subject: Fix build with >=GCC-14
+
+---
+ src/parallax.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/parallax.c b/src/parallax.c
+index 733e26c..0c11f04 100644
+--- a/src/parallax.c
++++ b/src/parallax.c
+@@ -17,6 +17,7 @@
+  */
+ 
+ #include <math.h>
++#include <libnova/earth.h>
+ #include <libnova/parallax.h>
+ #include <libnova/utility.h>
+ #include <libnova/sidereal_time.h>
+-- 
+2.45.2
+
