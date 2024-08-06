@@ -1,0 +1,36 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,20 +1,19 @@
+ SUBDIRS = src
+ 
+-man_MANS = doc/$(PACKAGE).6
++man_MANS = doc/batrachians.6
+ 
+ RPMBUILD = rpmbuild
+ rpm: dist
+ 	$(RPMBUILD) -ta $(distdir).tar.gz
+ 
+-docdir = $(datarootdir)/doc/$(PACKAGE)-$(VERSION)
+ doc_DATA = \
+ 	AUTHORS \
+-	COPYING \
+ 	NEWS \
+ 	README \
+ 	THANKS
+ 
+ EXTRA_DIST = \
++	COPYING \
+ 	bootstrap \
+ 	autogen.sh \
+ 	$(PACKAGE).spec \
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -20,7 +20,7 @@
+     $(W_SUGGEST_OVERRIDE) \
+ 	$(FLATZEBRA_CFLAGS)
+ 
+-pkgsounddir = $(datarootdir)/sounds/$(PACKAGE)
++pkgsounddir = $(pkgdatadir)/sounds/$(PACKAGE)
+ pkgsound_DATA = \
+ 	sounds/game-starts.wav \
+ 	sounds/game-ends.wav \
