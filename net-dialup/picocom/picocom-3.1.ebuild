@@ -1,18 +1,17 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit toolchain-funcs
 
-DESCRIPTION="minimal dumb-terminal emulation program"
+DESCRIPTION="A minimal dumb-terminal emulation program"
 HOMEPAGE="https://github.com/npat-efault/picocom"
 SRC_URI="https://github.com/npat-efault/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ia64 ~loong ~ppc ppc64 ~riscv ~sparc x86"
-IUSE=""
 
 src_compile() {
 	# CPPFLAGS is shared between CFLAGS and CXXFLAGS, but there is no
