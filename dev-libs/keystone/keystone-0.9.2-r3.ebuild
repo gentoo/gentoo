@@ -50,6 +50,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}/${P}-strict-prototypes.patch"
+	"${FILESDIR}/${PN}-0.9.2-gcc15-cstdint.patch"
 )
 
 # Upstream doesn't flag patch releases (bug 858395)
