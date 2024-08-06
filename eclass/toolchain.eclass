@@ -1898,7 +1898,6 @@ gcc_do_make() {
 #---->> src_test <<----
 
 # TODO: add JIT testing
-# TODO: add multilib testing
 toolchain_src_test() {
 	# GCC's testsuite is a special case.
 	#
@@ -1947,6 +1946,9 @@ toolchain_src_test() {
 
 		# Go doesn't support this and causes noisy warnings
 		filter-flags -Wbuiltin-declaration-mismatch
+
+		# TODO: Does this handle s390 (-m31) correctly?
+		is_multilib && GCC_TESTS_RUNTESTFLAGS+=" --target_board=unix\{,-m32\}"
 
 		# nonfatal here as we die if the comparison below fails. Also, note that
 		# the exit code of targets other than 'check' may be unreliable.
