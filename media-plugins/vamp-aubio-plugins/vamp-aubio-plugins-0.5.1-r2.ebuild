@@ -18,7 +18,6 @@ LICENSE="GPL-2"
 SLOT="0"
 # bug #748057, configure script only allows amd64/x86
 KEYWORDS="-* amd64 -x86"
-IUSE=""
 
 DEPEND="media-libs/aubio
 	media-libs/vamp-plugin-sdk

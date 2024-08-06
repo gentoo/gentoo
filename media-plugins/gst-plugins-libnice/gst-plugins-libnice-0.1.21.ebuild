@@ -1,18 +1,18 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 inherit meson-multilib
 
+MY_P="libnice-${PV}"
 DESCRIPTION="GStreamer plugin for ICE (RFC 5245) support"
 HOMEPAGE="https://libnice.freedesktop.org/"
-MY_P=libnice-${PV}
 SRC_URI="https://nice.freedesktop.org/releases/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="|| ( MPL-1.1 LGPL-2.1 )"
 SLOT="1.0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE=""
 
 RDEPEND="
 	~net-libs/libnice-${PV}[${MULTILIB_USEDEP}]
@@ -26,8 +26,6 @@ PATCHES=(
 	"${FILESDIR}"/gst-plugins-libnice-0.1.21-no-install-version.patch
 	"${FILESDIR}"/gst-plugins-libnice-0.1.21-use-installed-libnice.patch
 )
-
-S=${WORKDIR}/${MY_P}
 
 multilib_src_configure() {
 	# gnutls vs openssl left intentionally automagic here - the chosen USE flag configuration of libnice will ensure
