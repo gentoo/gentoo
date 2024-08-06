@@ -12,4 +12,3 @@ SRC_URI="https://downloads.sourceforge.net/openicc/OpenICC-Profiles/${P}.tar.bz2
 LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
