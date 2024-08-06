@@ -584,8 +584,8 @@ pkg_setup() {
 			# (PORTAGE_SCHEDULING_POLICY) update...
 			addpredict /proc
 
-			# May need a wider addpredict when using wayland+pgo.
-			addpredict /dev/dri
+			# Clear tons of conditions, since PGO is hardware-dependant.
+			addpredict /dev
 
 			# Allow access to GPU during PGO run
 			local ati_cards mesa_cards nvidia_cards render_cards
