@@ -42,5 +42,5 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	>=kde-frameworks/kirigami-${KFMIN}:6
 	x11-themes/sound-theme-freedesktop
-	test? ( >=dev-qt/qtwayland-${QTMIN}:6 )
 "
+BDEPEND="test? ( >=dev-qt/qtwayland-${QTMIN}:6 )"
