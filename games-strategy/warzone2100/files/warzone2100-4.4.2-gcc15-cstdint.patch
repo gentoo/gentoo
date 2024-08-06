@@ -1,0 +1,30 @@
+--- a/3rdparty/SQLiteCpp/include/SQLiteCpp/Statement.h
++++ b/3rdparty/SQLiteCpp/include/SQLiteCpp/Statement.h
+@@ -14,6 +14,7 @@
+ #include <SQLiteCpp/Exception.h>
+ #include <SQLiteCpp/Utils.h> // SQLITECPP_PURE_FUNC
+ 
++#include <cstdint>
+ #include <string>
+ #include <map>
+ #include <memory>
+--- a/lib/wzmaplib/include/wzmaplib/map_io.h
++++ b/lib/wzmaplib/include/wzmaplib/map_io.h
+@@ -21,6 +21,7 @@
+ #pragma once
+ 
+ #include <cstddef>
++#include <cstdint>
+ #include <string>
+ #include <memory>
+ #include <vector>
+--- a/lib/wzmaplib/src/map_script.h
++++ b/lib/wzmaplib/src/map_script.h
+@@ -19,6 +19,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <vector>
+ #include <string>
+ #include <memory>
