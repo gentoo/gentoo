@@ -31,26 +31,29 @@ esac
 rust_abi() {
 	local CTARGET=${1:-${CHOST}}
 	case ${CTARGET%%*-} in
-		aarch64*gnu)  echo aarch64-unknown-linux-gnu;;
-		aarch64*musl) echo aarch64-unknown-linux-musl;;
-		armv6j*h*)    echo arm-unknown-linux-gnueabihf;;
-		armv6j*s*)    echo arm-unknown-linux-gnueabi;;
-		armv7a*h*)    echo armv7-unknown-linux-gnueabihf;;
-		i?86*)        echo i686-unknown-linux-gnu;;
-		loongarch64*) echo loongarch64-unknown-linux-gnu;;
-		mips64el*)    echo mips64el-unknown-linux-gnuabi64;;
-		mips64*)      echo mips64-unknown-linux-gnuabi64;;
-		mipsel*)      echo mipsel-unknown-linux-gnu;;
-		mips*)        echo mips-unknown-linux-gnu;;
-		powerpc64le*) echo powerpc64le-unknown-linux-gnu;;
-		powerpc64*)   echo powerpc64-unknown-linux-gnu;;
-		powerpc*)     echo powerpc-unknown-linux-gnu;;
-		riscv64*gnu)  echo riscv64gc-unknown-linux-gnu;;
-		riscv64*musl) echo riscv64gc-unknown-linux-musl;;
-		s390x*)       echo s390x-unknown-linux-gnu;;
-		x86_64*gnu)   echo x86_64-unknown-linux-gnu;;
-		x86_64*musl)  echo x86_64-unknown-linux-musl;;
-		*)            echo ${CTARGET};;
+		aarch64*gnu)      echo aarch64-unknown-linux-gnu;;
+		aarch64*musl)     echo aarch64-unknown-linux-musl;;
+		armv6j*h*)        echo arm-unknown-linux-gnueabihf;;
+		armv6j*s*)        echo arm-unknown-linux-gnueabi;;
+		armv7a*h*)        echo armv7-unknown-linux-gnueabihf;;
+		i?86*)            echo i686-unknown-linux-gnu;;
+		loongarch64*)     echo loongarch64-unknown-linux-gnu;;
+		mips64el*)        echo mips64el-unknown-linux-gnuabi64;;
+		mips64*)          echo mips64-unknown-linux-gnuabi64;;
+		mipsel*)          echo mipsel-unknown-linux-gnu;;
+		mips*)            echo mips-unknown-linux-gnu;;
+		powerpc64le*gnu)  echo powerpc64le-unknown-linux-gnu;;
+		powerpc64le*musl) echo powerpc64le-unknown-linux-musl;;
+		powerpc64*gnu)    echo powerpc64-unknown-linux-gnu;;
+		powerpc64*musl)   echo powerpc64-unknown-linux-musl;;
+		powerpc*gnu)      echo powerpc-unknown-linux-gnu;;
+		powerpc*musl)     echo powerpc-unknown-linux-musl;;
+		riscv64*gnu)      echo riscv64gc-unknown-linux-gnu;;
+		riscv64*musl)     echo riscv64gc-unknown-linux-musl;;
+		s390x*)           echo s390x-unknown-linux-gnu;;
+		x86_64*gnu)       echo x86_64-unknown-linux-gnu;;
+		x86_64*musl)      echo x86_64-unknown-linux-musl;;
+		*)                echo ${CTARGET};;
   esac
 }
 
