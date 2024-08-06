@@ -306,6 +306,10 @@ git_emake() {
 		OPTCFLAGS="${CFLAGS}"
 		OPTLDFLAGS="${LDFLAGS}"
 
+		CURL_CONFIG="${ESYSROOT}/usr/bin/curl-config"
+		CURL_CFLAGS="$($(tc-getPKG_CONFIG) --cflags libcurl)"
+		CURL_LDFLAGS="$($(tc-getPKG_CONFIG) --libs libcurl)"
+
 		PERL_PATH="${EPREFIX}/usr/bin/perl"
 		PERL_MM_OPT=""
 
