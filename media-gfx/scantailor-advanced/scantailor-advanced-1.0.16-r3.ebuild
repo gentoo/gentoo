@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,6 @@ SRC_URI="https://github.com/4lex4/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2 GPL-3 public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE=""
 
 COMMON_DEPEND="
 	dev-qt/qtcore:5

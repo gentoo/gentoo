@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,6 @@ SRC_URI="http://homepage3.nifty.com/slokar/fb/${P}.tar.gz"
 LICENSE="w3m BSD"
 SLOT="0"
 KEYWORDS="~amd64 ppc x86"
-IUSE=""
 
 DEPEND="media-libs/stimg"
 RDEPEND="${DEPEND}

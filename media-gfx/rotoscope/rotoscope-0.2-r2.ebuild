@@ -10,7 +10,6 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${PN}_${PV}.orig.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 RDEPEND="x11-libs/gtk+:2
 	>=gnome-base/libglade-2"

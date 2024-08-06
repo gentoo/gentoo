@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,16 +11,14 @@ inherit distutils-r1 xdg
 MY_PN="DisplayCAL"
 MY_P="${MY_PN}-${PV}"
 
-SRC_URI="https://github.com/eoyilmaz/displaycal-py3/releases/download/${PV}/${MY_P}.tar.gz"
-KEYWORDS="~amd64"
-S="${WORKDIR}/${MY_P}"
-
 DESCRIPTION="Modernize the DisplayCAL code including Python 3 support"
 HOMEPAGE="https://github.com/eoyilmaz/displaycal-py3"
+SRC_URI="https://github.com/eoyilmaz/displaycal-py3/releases/download/${PV}/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
+KEYWORDS="~amd64"
 
 RESTRICT="test"
 
