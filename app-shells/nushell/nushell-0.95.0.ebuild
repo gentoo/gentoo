@@ -688,7 +688,7 @@ LICENSE+="
 	Unicode-DFS-2016 ZLIB
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv"
 IUSE="plugins X"
 
 DEPEND="
