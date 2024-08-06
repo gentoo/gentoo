@@ -19,6 +19,11 @@ fi
 if [[ -n ${MOZ_ESR} ]] ; then
 	# ESR releases have slightly different version numbers
 	MOZ_PV="${MOZ_PV}esr"
+	HOMEPAGE="https://www.mozilla.com/firefox https://www.mozilla.org/firefox/enterprise/"
+	SLOT="esr"
+else
+	HOMEPAGE="https://www.mozilla.com/firefox"
+	SLOT="rapid"
 fi
 
 MOZ_PN="${PN%-bin}"
@@ -34,10 +39,8 @@ SRC_URI="amd64? ( ${MOZ_SRC_BASE_URI}/linux-x86_64/en-US/${MOZ_P}.tar.bz2 -> ${P
 	x86? ( ${MOZ_SRC_BASE_URI}/linux-i686/en-US/${MOZ_P}.tar.bz2 -> ${PN}_i686-${PV}.tar.bz2 )"
 
 DESCRIPTION="Firefox Web Browser"
-HOMEPAGE="https://www.mozilla.com/firefox"
 
 KEYWORDS="-* amd64 x86"
-SLOT="rapid"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 IUSE="+alsa +gmp-autoupdate +pulseaudio selinux wayland"
 
@@ -46,7 +49,6 @@ RESTRICT="strip"
 BDEPEND="app-arch/unzip"
 RDEPEND="${DEPEND}
 	!www-client/firefox-bin:0
-	!www-client/firefox-bin:esr
 	>=app-accessibility/at-spi2-core-2.46.0:2
 	>=dev-libs/glib-2.26:2
 	media-libs/alsa-lib
@@ -74,6 +76,13 @@ RDEPEND="${DEPEND}
 	pulseaudio? ( media-libs/libpulse )
 	selinux? ( sec-policy/selinux-mozilla )
 "
+
+# ESR and rapid dependencies.
+if [[ -n ${MOZ_ESR} ]] ; then
+	RDEPEND+="!www-client/firefox-bin:rapid"
+else
+	RDEPEND+="!www-client/firefox-bin:esr"
+fi
 
 QA_PREBUILT="opt/${MOZ_PN}/*"
 
@@ -247,9 +256,14 @@ src_install() {
 	local app_name="Mozilla ${MOZ_PN^} (bin)"
 	local desktop_file="${FILESDIR}/${PN}-r3.desktop"
 	local desktop_filename="${PN}.desktop"
-	local exec_command="${PN}"
 	local icon="${PN}"
 	local use_wayland="false"
+
+	if [[ -n ${MOZ_ESR} ]] ; then
+		local exec_command="${PN} --name=firefox"
+	else
+		local exec_command="${PN}"
+	fi
 
 	if use wayland ; then
 		use_wayland="true"
