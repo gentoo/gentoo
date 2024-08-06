@@ -10,6 +10,7 @@ MY_P="${P/_pre/pre}"
 DESCRIPTION="Namazu is a full-text search engine"
 HOMEPAGE="http://www.namazu.org/"
 SRC_URI="http://www.namazu.org/test/${MY_P}.tar.gz"
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -34,7 +35,6 @@ RDEPEND="dev-perl/File-MMagic
 	)"
 DEPEND="${RDEPEND}"
 BDEPEND="nls? ( sys-devel/gettext )"
-S="${WORKDIR}"/${MY_P}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-gentoo.patch
