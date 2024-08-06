@@ -1,0 +1,41 @@
+From fc09623adbf4581a50b1355c27a4df849ffb18c4 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Tue, 6 Aug 2024 12:03:17 +0200
+Subject: [PATCH] make gRPC less verbose in tests
+
+Bug: https://github.com/grpc/grpc/issues/37222
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+---
+ test/cases/intercept/preload/build_stderr_captured.sh | 2 +-
+ test/cases/intercept/wrapper/build_stderr_captured.sh | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/cases/intercept/preload/build_stderr_captured.sh b/test/cases/intercept/preload/build_stderr_captured.sh
+index b7c7d97..47ea183 100644
+--- a/test/cases/intercept/preload/build_stderr_captured.sh
++++ b/test/cases/intercept/preload/build_stderr_captured.sh
+@@ -2,7 +2,7 @@
+ 
+ # REQUIRES: preload, shell, dynamic-shell
+ # RUN: %{shell} %s 2> %t.orig.stderr
+-# RUN: %{intercept} --output %t.json -- %{shell} %s 2> %t.fwd.stderr
++# RUN: env GRPC_VERBOSITY="ERROR" %{intercept} --output %t.json -- %{shell} %s 2> %t.fwd.stderr
+ # RUN: diff %t.orig.stderr %t.fwd.stderr
+ 
+ >&2 $ECHO "Lorem ipsum dolor sit amet, consectetur adipiscing elit,"
+diff --git a/test/cases/intercept/wrapper/build_stderr_captured.sh b/test/cases/intercept/wrapper/build_stderr_captured.sh
+index f99dbbc..4d2be8b 100644
+--- a/test/cases/intercept/wrapper/build_stderr_captured.sh
++++ b/test/cases/intercept/wrapper/build_stderr_captured.sh
+@@ -2,7 +2,7 @@
+ 
+ # REQUIRES: shell
+ # RUN: %{shell} %s 2> %t.orig.stderr
+-# RUN: %{intercept} --force-wrapper --output %t.json -- %{shell} %s 2> %t.fwd.stderr
++# RUN: env GRPC_VERBOSITY="ERROR" %{intercept} --force-wrapper --output %t.json -- %{shell} %s 2> %t.fwd.stderr
+ # RUN: diff %t.orig.stderr %t.fwd.stderr
+ 
+ >&2 $ECHO "Lorem ipsum dolor sit amet, consectetur adipiscing elit,"
+-- 
+2.45.2
+
