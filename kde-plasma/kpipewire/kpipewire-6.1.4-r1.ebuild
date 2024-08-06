@@ -37,6 +37,7 @@ DEPEND="${COMMON_DEPEND}
 		dev-libs/wayland
 		>=dev-qt/qtwayland-${QTMIN}:6
 		>=kde-plasma/kwayland-${PVCUT}:6
+		media-video/pipewire[extra]
 	)
 "
 RDEPEND="${COMMON_DEPEND}
