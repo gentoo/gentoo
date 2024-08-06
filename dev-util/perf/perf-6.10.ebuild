@@ -176,6 +176,7 @@ src_prepare() {
 
 	pushd "${S_K}" >/dev/null || die
 	eapply "${FILESDIR}"/perf-6.4-libtracefs.patch
+	eapply "${FILESDIR}"/perf-6.10-bpf-capstone.patch
 	eapply "${FILESDIR}"/perf-6.10-expr.patch
 	popd || die
 
