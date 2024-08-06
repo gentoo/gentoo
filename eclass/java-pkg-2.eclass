@@ -1,4 +1,4 @@
-# Copyright 2004-2023 Gentoo Authors
+# Copyright 2004-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-pkg-2.eclass
@@ -63,6 +63,7 @@ java-pkg-2_src_prepare() {
 
 
 # @FUNCTION: java-pkg-2_src_compile
+# @DEPRECATED: none
 # @DESCRIPTION:
 # Default src_compile for java packages
 #
@@ -98,6 +99,7 @@ java-pkg-2_src_compile() {
 }
 
 # @FUNCTION: java-pkg-2_src_test
+# @DEPRECATED: none
 # @DESCRIPTION:
 # src_test, not exported.
 java-pkg-2_src_test() {
