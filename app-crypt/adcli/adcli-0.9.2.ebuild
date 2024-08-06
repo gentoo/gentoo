@@ -31,5 +31,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable doc)
+	econf \
+		$(use_enable doc) \
+		KRB5_CONFIG="${ESYSROOT}"/usr/bin/krb5-config
 }
