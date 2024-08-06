@@ -46,6 +46,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.1.4-tests.patch"
+	"${FILESDIR}/${PN}-3.1.4-reduce-grpc-verbosity.patch"
 )
 
 pkg_setup() {
