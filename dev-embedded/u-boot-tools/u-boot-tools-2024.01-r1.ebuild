@@ -23,6 +23,7 @@ IUSE="envtools"
 RDEPEND="
 	dev-libs/openssl:=
 	net-libs/gnutls:=
+	sys-apps/util-linux:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -79,7 +80,7 @@ src_install() {
 	cd tools || die
 
 	if ! use envtools; then
-		dobin dumpimage fdtgrep gen_eth_addr img2srec mkenvimage mkimage
+		dobin dumpimage fdtgrep gen_eth_addr img2srec mkeficapsule mkenvimage mkimage
 	fi
 
 	dobin env/fw_printenv
