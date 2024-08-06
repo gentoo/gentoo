@@ -12,7 +12,6 @@
 	<flag name="chafa">Enables text/graphics renderer with <pkg>media-gfx/chafa</pkg></flag>
 	<flag name="ddcutil">Use <pkg>app-misc/ddcutil</pkg> to query monitor settings</flag>
 	<flag name="drm">Enables support for X.org's <pkg>x11-libs/libdrm</pkg></flag>
-	<flag name="nvidia-gpu">Enables extra support for NVIDIA GPU</flag>
 	<flag name="osmesa">Enables offscreen rendering support from <pkg>media-libs/mesa</pkg></flag>
 	<flag name="vulkan">Enables reading GPU via <pkg>media-libs/vulkan-loader</pkg></flag>
 	<flag name="xfce">Enables support for XFCE config</flag>
