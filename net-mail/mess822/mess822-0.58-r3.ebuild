@@ -6,8 +6,11 @@ EAPI=8
 inherit toolchain-funcs
 
 DESCRIPTION="Collection of utilities for parsing Internet mail messages"
-SRC_URI="http://cr.yp.to/software/${P}.tar.gz"
 HOMEPAGE="http://cr.yp.to/mess822.html"
+SRC_URI="
+	http://cr.yp.to/software/${P}.tar.gz
+	https://dev.gentoo.org/~arkamar/distfiles/${P}-modern-compilers.patch.xz
+"
 
 LICENSE="public-domain"
 SLOT="0"
@@ -18,7 +21,7 @@ RESTRICT="test"
 RDEPEND="sys-apps/sed"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-implicit.patch
+	"${WORKDIR}/${P}-modern-compilers.patch"
 )
 
 src_prepare() {
@@ -28,11 +31,11 @@ src_prepare() {
 	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld || die
 	echo "/usr" > conf-home || die
 
-	# fix errno.h problem; bug #26165
-	sed -i 's/^extern int errno;/#include <errno.h>/' error.h || die
-
-	sed -i -e "s/ar/$(tc-getAR)/" make-makelib.sh || die
-	sed -i -e "s/ranlib/$(tc-getRANLIB)/" make-makelib.sh || die
+	local sed_args=(
+		-e "s:ar:$(tc-getAR):"
+		-e "s:ranlib:$(tc-getRANLIB):"
+	)
+	sed -i "${sed_args[@]}" make-makelib.sh || die "sed make-makelib.sh failed"
 }
 
 src_install() {
@@ -42,15 +45,15 @@ src_install() {
 	# Now that the commands are compiled, update the conf-home file to point
 	# to the installation image directory.
 	echo "${ED}/usr/" > conf-home || die
-	sed -i -e "s:\"/etc\":\"${ED}/etc\":" hier.c || die "sed hier.c failed"
+
+	local sed_args=(
+		-e "s:\"/etc\":\"${ED}/etc\":"
+		-e "s:lib:$(get_libdir):"
+		-e "s:man:share/man:"
+	)
+	sed -i "${sed_args[@]}" hier.c || die "sed hier.c failed"
 
 	emake setup
 
-	# Move the man pages into /usr/share/man
-	mv "${ED}/usr/man" "${ED}/usr/share/" || die
-
-	dodir /usr/$(get_libdir)
-	mv "${ED}/usr/lib/${PN}.a" "${ED}/usr/$(get_libdir)/${PN}.a" || die
-	rmdir "${ED}/usr/lib" || die
-	dodoc BLURB CHANGES INSTALL README THANKS TODO VERSION
+	einstalldocs
 }
