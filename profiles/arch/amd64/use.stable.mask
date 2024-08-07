@@ -8,10 +8,6 @@
 # ROCm/HIP is not suitable for stabilization.
 hip
 
-# Jimi Huotari <chiitoo@gentoo.org> (2023-03-03)
-# Mask until stable.
-pyside6
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-06)
 # sci-libs/mkl is not stable, needs online registration to even run pkg_setup
 mkl

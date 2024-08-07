@@ -29,10 +29,6 @@ sys-kernel/installkernel ugrd
 # Experimental, virt-firmware is keyworded only unstable
 sys-kernel/installkernel efistub
 
-# Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
-# dev-python/pyside6 is not stable here yet
-dev-python/QtPy pyside6
-
 # Ionen Wolkens <ionen@gentoo.org> (2024-01-16)
 # cuda (and thus cudnn) are not available in stable
 media-libs/opencv cudnn
