@@ -1,0 +1,65 @@
+https://patch-diff.githubusercontent.com/raw/linux-rdma/rdma-core/pull/1471.patch
+From: Nicolas Morey <nmorey@suse.com>
+Date: Tue, 4 Jun 2024 08:49:04 +0200
+Subject: [PATCH 1/2] rping: drop useless basename call
+
+Drop calls to basename on a constant string without a path in it ("rping")
+
+Signed-off-by: Nicolas Morey <nmorey@suse.com>
+--- a/librdmacm/examples/rping.c
++++ b/librdmacm/examples/rping.c
+@@ -34,7 +34,6 @@
+ #include <endian.h>
+ #include <getopt.h>
+ #include <stdlib.h>
+-#include <string.h>
+ #include <stdio.h>
+ #include <errno.h>
+ #include <sys/types.h>
+@@ -1253,9 +1252,9 @@ static int get_addr(char *dst, struct sockaddr *addr)
+ static void usage(const char *name)
+ {
+ 	printf("%s -s [-vVd] [-S size] [-C count] [-a addr] [-p port]\n", 
+-	       basename(name));
++	       name);
+ 	printf("%s -c [-vVd] [-S size] [-C count] [-I addr] -a addr [-p port]\n", 
+-	       basename(name));
++	       name);
+ 	printf("\t-c\t\tclient side\n");
+ 	printf("\t-I\t\tSource address to bind to for client.\n");
+ 	printf("\t-s\t\tserver side.  To bind to any address with IPv6 use -a ::0\n");
+
+From e8b215a7d85c8228d0bd90c17f20b42a03e44dbe Mon Sep 17 00:00:00 2001
+From: Nicolas Morey <nmorey@suse.com>
+Date: Tue, 4 Jun 2024 08:51:51 +0200
+Subject: [PATCH 2/2] kernel-boot,mlx5: use POSIX version of basename
+
+Include libgen.h to use the POSIX version and not the GNU version of basename.
+Because it is used on readlink from sysfs paths, there is no risk of trailing '/'
+so they both behave the same way.
+
+This fixes issues with the latest musl which removed the GNU implementation of basename.
+
+Signed-off-by: Nicolas Morey <nmorey@suse.com>
+--- a/kernel-boot/rdma_rename.c
++++ b/kernel-boot/rdma_rename.c
+@@ -4,7 +4,7 @@
+ #define _GNU_SOURCE
+ #include <stdio.h>
+ #include <stdlib.h>
+-#include <string.h>
++#include <libgen.h>
+ #include <stdbool.h>
+ #include <errno.h>
+ #include <unistd.h>
+--- a/providers/mlx5/mlx5_vfio.c
++++ b/providers/mlx5/mlx5_vfio.c
+@@ -14,7 +14,7 @@
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #include <sys/mman.h>
+-#include <string.h>
++#include <libgen.h>
+ #include <sys/param.h>
+ #include <linux/vfio.h>
+ #include <sys/eventfd.h>
