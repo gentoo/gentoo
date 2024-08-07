@@ -37,11 +37,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-# the crun test suite is comprehensive to the extent that tests will fail
-# within a sandbox environment, due to the nature of the privileges
-# required to create linux "containers".
-RESTRICT="test"
-
 src_configure() {
 	local myeconfargs=(
 		$(use_enable bpf)
@@ -62,4 +57,19 @@ src_install() {
 
 	einfo "Cleaning up .la files"
 	find "${ED}" -name '*.la' -delete || die
+}
+
+src_test() {
+	emake check-TESTS -C ./libocispec
+
+	# the crun test suite is comprehensive to the extent that tests will fail
+	# within a sandbox environment, due to the nature of the privileges
+	# required to create linux "containers".
+	local supported_tests=(
+		"tests/tests_libcrun_utils"
+		"tests/tests_libcrun_errors"
+		"tests/tests_libcrun_intelrdt"
+		"tests/test_oci_features"
+	)
+	emake check-TESTS TESTS="${supported_tests[*]}"
 }
