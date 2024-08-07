@@ -10,8 +10,8 @@ inherit autotools flag-o-matic python-any-r1 qmake-utils
 MY_P=qp${PV}
 
 DESCRIPTION="Extended Prolog supporting quantifiers, object-variables and substitutions"
-HOMEPAGE="http://staff.itee.uq.edu.au/pjr/HomePages/QuPrologHome.html"
-SRC_URI="http://staff.itee.uq.edu.au/pjr/HomePages/QPFiles/${MY_P}.tar.gz"
+HOMEPAGE="https://staff.itee.uq.edu.au/pjr/HomePages/QuPrologHome.html"
+SRC_URI="https://staff.itee.uq.edu.au/pjr/HomePages/QPFiles/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2+"
 SLOT="0"
