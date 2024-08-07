@@ -21,8 +21,9 @@ LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 IUSE="notmuch"
 
-DEPEND="notmuch? ( net-mail/notmuch:= )"
-RDEPEND="${DEPEND}"
+COMMON_DEPEND="notmuch? ( net-mail/notmuch:= )"
+DEPEND="${COMMON_DEPEND}"
+RDEPEND="${COMMON_DEPEND}"
 BDEPEND="
 	>=app-text/scdoc-1.11.3
 	>=dev-lang/go-1.18
