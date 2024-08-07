@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit secureboot toolchain-funcs
 
 DESCRIPTION="Linux boot loader for EFI-based systems such as IA-64"
 HOMEPAGE="https://sourceforge.net/projects/elilo/"
@@ -89,4 +89,6 @@ src_install() {
 
 	dodoc docs/* "${FILESDIR}"/elilo.conf.sample
 	doman debian/*.[0-9]
+
+	secureboot_auto_sign --in-place
 }
