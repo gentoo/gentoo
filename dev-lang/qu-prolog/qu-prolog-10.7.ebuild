@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit autotools python-any-r1 qmake-utils
+inherit autotools flag-o-matic python-any-r1 qmake-utils
 
 MY_P=qp${PV}
 
@@ -46,6 +46,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/924768
+	# Upstream's sole provided contact method is email. I have sent an email
+	# describing the issue. -- Eli
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	econf \
 		--libdir=/usr/$(get_libdir) \
 		$(use_enable debug) \
