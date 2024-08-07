@@ -1947,24 +1947,25 @@ toolchain_src_test() {
 		# Go doesn't support this and causes noisy warnings
 		filter-flags -Wbuiltin-declaration-mismatch
 
-		local suppress_warn="/-Wno-format/-Wno-format-security/-Wno-trampolines"
-		GCC_TESTS_RUNTESTFLAGS+=" --target_board=unix\{${suppress_warn}"
 		# TODO: Does this handle s390 (-m31) correctly?
-		is_multilib && GCC_TESTS_RUNTESTFLAGS+=",-m32/${suppress_warn}"
-		GCC_TESTS_RUNTESTFLAGS+="\}"
+		is_multilib && GCC_TESTS_RUNTESTFLAGS+=" --target_board=unix\{,-m32\}"
+
+		GCC_TESTS_RUNTESTFLAGS=(
+			"${GCC_TESTS_RUNTESTFLAGS}"
+                        CFLAGS_FOR_TARGET="${CFLAGS_FOR_TARGET:-${CFLAGS}}"
+                        CXXFLAGS_FOR_TARGET="${CXXFLAGS_FOR_TARGET:-${CXXFLAGS}}"
+                        LDFLAGS_FOR_TARGET="${LDFLAGS_FOR_TARGET:-${LDFLAGS}}"
+                        CFLAGS="${CFLAGS}"
+                        CXXFLAGS="${CXXFLAGS}"
+                        FCFLAGS="${FCFLAGS}"
+                        FFLAGS="${FFLAGS}"
+                        LDFLAGS="${LDFLAGS}"
+		)
 
 		# nonfatal here as we die if the comparison below fails. Also, note that
 		# the exit code of targets other than 'check' may be unreliable.
 		nonfatal emake -C "${WORKDIR}"/build -k "${GCC_TESTS_CHECK_TARGET}" \
-			RUNTESTFLAGS="${GCC_TESTS_RUNTESTFLAGS}" \
-			CFLAGS_FOR_TARGET="${CFLAGS_FOR_TARGET:-${CFLAGS}}" \
-			CXXFLAGS_FOR_TARGET="${CXXFLAGS_FOR_TARGET:-${CXXFLAGS}}" \
-			LDFLAGS_FOR_TARGET="${LDFLAGS_FOR_TARGET:-${LDFLAGS}}" \
-			CFLAGS="${CFLAGS}" \
-			CXXFLAGS="${CXXFLAGS}" \
-			FCFLAGS="${FCFLAGS}" \
-			FFLAGS="${FFLAGS}" \
-			LDFLAGS="${LDFLAGS}"
+			RUNTESTFLAGS="${GCC_TESTS_RUNTESTFLAGS[*]}"
 	)
 
 	# Produce an updated failure manifest.
