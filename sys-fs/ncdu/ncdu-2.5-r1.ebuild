@@ -16,7 +16,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-EZIG_MIN="0.12"
+EZIG_MIN="0.13"
 EZIG_MAX_EXCLUSIVE="0.14"
 
 DEPEND="sys-libs/ncurses:=[unicode(+)]"
