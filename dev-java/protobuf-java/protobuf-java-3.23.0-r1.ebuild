@@ -1,4 +1,4 @@
-# Copyright 2008-2023 Gentoo Authors
+# Copyright 2008-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,6 @@ S="${WORKDIR}/protobuf-${PV#3.}"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos"
-IUSE="system-protoc"
 
 DEPEND="
 	>=virtual/jdk-1.8:*
@@ -31,10 +30,9 @@ DEPEND="
 		)
 "
 RDEPEND=">=virtual/jre-1.8:*"
-
 BDEPEND="
-	system-protoc? ( ~dev-libs/protobuf-${PV#3.}:0  )
-	!system-protoc? ( >=dev-cpp/abseil-cpp-20230125.2 )
+	>=dev-cpp/abseil-cpp-20230125.2
+	<dev-cpp/abseil-cpp-20240116.2
 "
 
 PATCHES=(
@@ -50,20 +48,11 @@ JAVA_TEST_GENTOO_CLASSPATH="guava,junit-4,mockito-4"
 JAVA_TEST_SRC_DIR="java/core/src/test/java"
 
 run-protoc() {
-	if use system-protoc; then
-		protoc $1
-	else
-		"${BUILD_DIR}"/protoc $1
-	fi
+	"${BUILD_DIR}"/protoc $1
 }
 
 src_prepare() {
-	# If the corrsponding version of system-protoc is not available we build protoc locally
-	if use system-protoc; then
-		:
-	else
-		cmake_src_prepare
-	fi
+	cmake_src_prepare
 	java-pkg-2_src_prepare
 
 	mkdir "${JAVA_RESOURCE_DIRS}" || die
@@ -104,19 +93,11 @@ src_configure() {
 		-Dprotobuf_BUILD_TESTS=OFF
 		-Dprotobuf_ABSL_PROVIDER=package
 	)
-	if use system-protoc; then
-		:
-	else
-		cmake_src_configure
-	fi
+	cmake_src_configure
 }
 
 src_compile() {
-	if use system-protoc; then
-		:
-	else
-		cmake_src_compile
-	fi
+	cmake_src_compile
 
 	einfo "Run protoc to generate sources"
 	run-protoc \
