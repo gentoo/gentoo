@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit desktop
+inherit desktop xdg
 
 DESCRIPTION="Fly a plane around and bomb/shoot the enemy (port of Planegame from Amiga)"
 HOMEPAGE="https://github.com/moggers87/apricots"
@@ -31,6 +31,6 @@ src_install() {
 	insinto /etc
 	doins ${PN}/${PN}.cfg
 
-	doicon "${DISTDIR}"/${PN}.png
+	doicon -s 128 "${DISTDIR}"/${PN}.png
 	make_desktop_entry ${PN} ${PN^}
 }
