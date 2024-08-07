@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2024-08-07)
+# Upstream doesn't recommend updating from 115 just yet. New
+# installs are fine. Downgrading from 128 to 115 may be impossible
+# so have backups ready if you attempt an upgrade.
+>=mail-client/thunderbird-128.1.0
+>=mail-client/thunderbird-bin-128.1.0
+
 # Michał Górny <mgorny@gentoo.org> (2024-08-06)
 # Superseded by dev-libs/libayatana-*.  No revdeps left.
 # Removal on 2024-09-05.  Bug #936881.
