@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,8 +6,8 @@ EAPI=8
 inherit cmake
 
 DESCRIPTION="The OpenAL Utility Toolkit"
-HOMEPAGE="https://kcat.strangesoft.net/alure.html"
-SRC_URI="https://kcat.strangesoft.net/alure-releases/${P}.tar.bz2"
+HOMEPAGE="https://web.archive.org/web/20200503181758/https://kcat.strangesoft.net/alure.html"
+SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
@@ -27,6 +27,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${P}-include-unistd.patch
 	"${FILESDIR}"/${P}-new-dumb.patch
+	"${FILESDIR}"/${P}-cmake-flags.patch
 )
 
 src_prepare() {
@@ -38,6 +39,7 @@ src_prepare() {
 src_configure() {
 	# FIXME: libmodplug/sndfile.h from libmodplug conflict with sndfile.h from libsndfile
 	local mycmakeargs=(
+		-DDYNLOAD=OFF
 		-DMODPLUG=OFF
 		-DDUMB=$(usex dumb)
 		-DBUILD_EXAMPLES=$(usex examples)
