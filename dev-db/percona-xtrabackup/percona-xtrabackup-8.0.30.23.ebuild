@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -51,6 +51,8 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.0.26-remove-rpm.patch
 	"${FILESDIR}"/${PN}-8.0.30.23-gcc13.patch
+	# procps 4 support, released in 8.0.33
+	"${FILESDIR}"/6038a7934cbd4e6c01389fdc9b8ffabf8c3e006a.patch
 )
 
 S="${WORKDIR}/percona-xtrabackup-${MY_PV}"
