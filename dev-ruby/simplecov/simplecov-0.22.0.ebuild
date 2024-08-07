@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/simplecov-ruby/simplecov"
 SRC_URI="https://github.com/simplecov-ruby/simplecov/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 
-KEYWORDS="amd64 ~arm64 ~hppa ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~hppa ~ppc64 ~riscv x86"
 SLOT="0.8"
 IUSE="doc"
 
