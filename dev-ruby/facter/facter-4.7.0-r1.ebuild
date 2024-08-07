@@ -21,7 +21,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_BRANCH="master"
 else
 	[[ "${PV}" = *_rc* ]] || \
-	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm64 ~hppa ~riscv ~x86"
 	#KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 	SRC_URI="https://github.com/puppetlabs/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
