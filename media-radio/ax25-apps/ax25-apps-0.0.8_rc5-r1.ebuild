@@ -23,7 +23,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND="
-	>=dev-libs/libax25-0.0.12_rc2:=
+	>=dev-libs/libax25-0.0.12_rc2
 	sys-libs/ncurses:=
 	!dev-ruby/listen
 "
@@ -34,6 +34,9 @@ src_prepare() {
 	# fix missing prototype for malloc
 	sed -i -e "/^#include /i #include <stdlib.h>" ax25ipd/routing.c || die
 	eapply "${FILESDIR}"/${PN}-0.0.8_rc5-tinfo.patch
+	if use elibc_musl ; then
+		eapply -p1 "${FILESDIR}/${PN}-0.0.8-musl.patch"
+	fi
 	eapply_user
 	eautoreconf
 }
