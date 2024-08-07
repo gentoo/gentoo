@@ -1,13 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
 DESCRIPTION="EB is a C library and utilities for accessing CD-ROM books"
 HOMEPAGE="https://web.archive.org/web/20120330123930/http://www.sra.co.jp/people/m-kasahr/eb/"
-SRC_URI="ftp://ftp.sra.co.jp/pub/misc/eb/${P}.tar.lzma"
+SRC_URI="ftp://ftp.sra.co.jp/pub/misc/eb/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
@@ -32,12 +32,14 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		$(use_enable ipv6) \
-		$(use_enable nls) \
-		$(use_enable threads pthread) \
-		--with-pkgdocdir="${EPREFIX}"/usr/share/doc/${PF}/html \
-		--disable-static
+	local myeconfargs=(
+		$(use_enable ipv6)
+		$(use_enable nls)
+		$(use_enable threads pthread)
+		--with-pkgdocdir="${EPREFIX}"/usr/share/doc/${PF}/html
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
