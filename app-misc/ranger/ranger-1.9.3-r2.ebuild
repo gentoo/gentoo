@@ -25,6 +25,10 @@ SLOT="0"
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/${P}-color-crash-fix.patch
+)
+
 src_prepare() {
 	distutils-r1_src_prepare
 
