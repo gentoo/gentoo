@@ -1948,10 +1948,10 @@ toolchain_src_test() {
 		filter-flags -Wbuiltin-declaration-mismatch
 
 		local suppress_warn="/-Wno-format/-Wno-format-security/-Wno-trampolines"
-		RUNTESTFLAGS+=" --target_board=unix\{${suppress_warn}"
+		GCC_TESTS_RUNTESTFLAGS+=" --target_board=unix\{${suppress_warn}"
 		# TODO: Does this handle s390 (-m31) correctly?
-		is_multilib && GCC_TESTS_RUNTESTFLAGS+=" ,-m32/${suppress_warn}"
-		RUNTESTFLAGS+="\}"
+		is_multilib && GCC_TESTS_RUNTESTFLAGS+=",-m32/${suppress_warn}"
+		GCC_TESTS_RUNTESTFLAGS+="\}"
 
 		# nonfatal here as we die if the comparison below fails. Also, note that
 		# the exit code of targets other than 'check' may be unreliable.
