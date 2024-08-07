@@ -48,7 +48,7 @@ BDEPEND="
 		app-alternatives/bc
 		sys-process/procps
 	)
-	verify-sig? ( >=sec-keys/openpgp-keys-openssl-20230801 )"
+	verify-sig? ( >=sec-keys/openpgp-keys-openssl-20240424 )"
 
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
