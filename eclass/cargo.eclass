@@ -259,19 +259,6 @@ cargo_crate_uris() {
 cargo_gen_config() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	# The default linker is "cc" so override by setting linker to CC in the
-	# RUSTFLAGS. The given linker cannot include any arguments, so split these
-	# into link-args along with LDFLAGS. Also include external RUSTFLAGS.
-	# Note that as of Rust 1.80, the build host RUSTFLAGS are ignored when
-	# cross-compiling unless you use the unstable host-config feature available
-	# with USE=nightly. There is no simple way around this.
-	tc-export_build_env
-	local LD_A=( $(tc-getBUILD_CC) ${BUILD_LDFLAGS} )
-	local MY_BUILD_RUSTFLAGS="-C strip=none -C linker=${LD_A[0]}"
-	[[ ${#LD_A[@]} -gt 1 ]] && MY_BUILD_RUSTFLAGS+="$(printf -- ' -C link-arg=%s' "${LD_A[@]:1}")"
-	MY_BUILD_RUSTFLAGS+=" ${RUSTFLAGS} ${BUILD_RUSTFLAGS}"
-	tc-is-cross-compiler || MY_BUILD_RUSTFLAGS+=" ${TARGET_RUSTFLAGS}"
-
 	mkdir -p "${ECARGO_HOME}" || die
 
 	cat > "${ECARGO_HOME}/config.toml" <<- _EOF_ || die "Failed to create cargo config"
@@ -286,7 +273,6 @@ cargo_gen_config() {
 	offline = true
 
 	[build]
-	rustflags = "${MY_BUILD_RUSTFLAGS}"
 	jobs = $(makeopts_jobs)
 	incremental = false
 
@@ -541,10 +527,11 @@ cargo_src_configure() {
 # @USAGE: Command with its arguments
 # @DESCRIPTION:
 # Run the given command under an environment needed for performing tasks with
-# Cargo such as building. RUSTFLAGS is used for both the build and target host.
-# BUILD_RUSTFLAGS and TARGET_RUSTFLAGS are used for just the build host and
-# target host respectively. Ensure these are set consistently between Cargo
-# invocations, otherwise rebuilds will occur.
+# Cargo such as building. RUSTFLAGS are appended to additional flags set here.
+# Ensure these are set consistently between Cargo invocations, otherwise
+# rebuilds will occur. Project-specific rustflags set against [build] will not
+# take affect due to Cargo limitations, so add these to your ebuild's RUSTFLAGS
+# if they seem important.
 cargo_env() {
 	[[ ${_CARGO_GEN_CONFIG_HAS_RUN} ]] || \
 		die "FATAL: please call cargo_gen_config before using ${FUNCNAME}"
@@ -569,14 +556,40 @@ cargo_env() {
 		HOST_CFLAGS=${BUILD_CFLAGS}
 		HOST_CXXFLAGS=${BUILD_CXXFLAGS}
 
-	if tc-is-cross-compiler; then
-		local -x CARGO_BUILD_TARGET=$(rust_abi)
-		local TRIPLE=${CARGO_BUILD_TARGET//-/_}
-		local TRIPLE=${TRIPLE^^} LD_A=( $(tc-getCC) ${LDFLAGS} )
-		local -x CARGO_TARGET_"${TRIPLE}"_RUSTFLAGS="-C strip=none -C linker=${LD_A[0]}"
-		[[ ${#LD_A[@]} -gt 1 ]] && local CARGO_TARGET_"${TRIPLE}"_RUSTFLAGS+="$(printf -- ' -C link-arg=%s' "${LD_A[@]:1}")"
-		local CARGO_TARGET_"${TRIPLE}"_RUSTFLAGS+=" ${RUSTFLAGS} ${TARGET_RUSTFLAGS}"
-	fi
+	# Unfortunately, Cargo is *really* bad at handling flags. In short, it uses
+	# the first of the RUSTFLAGS env var, any target-specific config, and then
+	# any generic [build] config. It can merge within the latter two types from
+	# different sources, but it will not merge across these different types, so
+	# if a project sets flags under [target.'cfg(all())'], it will override any
+	# flags we set under [build] and vice-versa.
+	#
+	# It has been common for users and ebuilds to set RUSTFLAGS, which would
+	# have overridden whatever a project sets anyway, so the least-worst option
+	# is to include those RUSTFLAGS in target-specific config here, which will
+	# merge with any the project sets. Only flags in generic [build] config set
+	# by the project will be lost, and ebuilds will need to add those to
+	# RUSTFLAGS themselves if they are important.
+	#
+	# We could potentially inspect a project's generic [build] config and
+	# reapply those flags ourselves, but that would require a proper toml parser
+	# like tomlq, it might lead to confusion where projects also have
+	# target-specific config, and converting arrays to strings may not work
+	# well. Nightly features to inspect the config might help here in future.
+	#
+	# As of Rust 1.80, it is not possible to set separate flags for the build
+	# host and the target host when cross-compiling. The flags given are applied
+	# to the target host only with no flags being applied to the build host. The
+	# nightly host-config feature will improve this situation later.
+	#
+	# The default linker is "cc" so override by setting linker to CC in the
+	# RUSTFLAGS. The given linker cannot include any arguments, so split these
+	# into link-args along with LDFLAGS.
+	local -x CARGO_BUILD_TARGET=$(rust_abi)
+	local TRIPLE=${CARGO_BUILD_TARGET//-/_}
+	local TRIPLE=${TRIPLE^^} LD_A=( $(tc-getCC) ${LDFLAGS} )
+	local -x CARGO_TARGET_"${TRIPLE}"_RUSTFLAGS="-C strip=none -C linker=${LD_A[0]}"
+	[[ ${#LD_A[@]} -gt 1 ]] && local CARGO_TARGET_"${TRIPLE}"_RUSTFLAGS+="$(printf -- ' -C link-arg=%s' "${LD_A[@]:1}")"
+	local CARGO_TARGET_"${TRIPLE}"_RUSTFLAGS+=" ${RUSTFLAGS}"
 
 	(
 		# These variables will override the above, even if empty, so unset them
