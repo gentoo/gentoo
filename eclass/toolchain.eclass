@@ -1947,8 +1947,11 @@ toolchain_src_test() {
 		# Go doesn't support this and causes noisy warnings
 		filter-flags -Wbuiltin-declaration-mismatch
 
+		local suppress_warn="/-Wno-format/-Wno-format-security/-Wno-trampolines"
+		RUNTESTFLAGS+=" --target_board=unix\{${suppress_warn}"
 		# TODO: Does this handle s390 (-m31) correctly?
-		is_multilib && GCC_TESTS_RUNTESTFLAGS+=" --target_board=unix\{,-m32\}"
+		is_multilib && GCC_TESTS_RUNTESTFLAGS+=" ,-m32/${suppress_warn}"
+		RUNTESTFLAGS+="\}"
 
 		# nonfatal here as we die if the comparison below fails. Also, note that
 		# the exit code of targets other than 'check' may be unreliable.
