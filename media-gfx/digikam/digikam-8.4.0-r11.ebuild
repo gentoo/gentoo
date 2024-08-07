@@ -15,15 +15,17 @@ SRC_URI="mirror://kde/stable/${PN}/${PV}/digiKam-${PV/_/-}.tar.xz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE="addressbook calendar geolocation gphoto2 heif +imagemagick jpegxl +lensfun mysql opengl openmp +panorama scanner semantic-desktop spell video"
+IUSE="addressbook calendar geolocation gphoto2 heif +imagemagick jpegxl +lensfun mysql openmp +panorama scanner semantic-desktop spell video"
 
 # bug 366505
 RESTRICT="test"
 
 COMMON_DEPEND="
 	dev-libs/expat
-	>=dev-qt/qtbase-${QTMIN}:6[concurrent,dbus,-gles2-only,gui,mysql?,network,sql,widgets,xml]
+	>=dev-qt/qtbase-${QTMIN}:6[concurrent,dbus,-gles2-only,gui,mysql?,network,opengl,sql,widgets,xml]
 	>=dev-qt/qtnetworkauth-${QTMIN}:6
+	>=dev-qt/qtscxml-${QTMIN}:6
+	>=dev-qt/qtsvg-${QTMIN}:6
 	>=dev-qt/qtwebengine-${QTMIN}:6[widgets]
 	>=kde-frameworks/kconfig-${KFMIN}:6
 	>=kde-frameworks/kconfigwidgets-${KFMIN}:6
@@ -45,6 +47,7 @@ COMMON_DEPEND="
 	media-libs/libpng:=
 	>=media-libs/opencv-3.3.0:=[contrib,contribdnn,features2d]
 	media-libs/tiff:=
+	virtual/opengl
 	x11-libs/libX11
 	addressbook? (
 		>=kde-apps/akonadi-contacts-24.05.2:6
@@ -59,10 +62,6 @@ COMMON_DEPEND="
 	imagemagick? ( media-gfx/imagemagick:= )
 	jpegxl? ( media-libs/libjxl:= )
 	lensfun? ( media-libs/lensfun )
-	opengl? (
-		>=dev-qt/qtbase-${QTMIN}:6[opengl]
-		virtual/opengl
-	)
 	panorama? ( >=kde-frameworks/threadweaver-${KFMIN}:6 )
 	scanner? ( >=kde-apps/libksane-24.05.2:6 )
 	semantic-desktop? ( >=kde-frameworks/kfilemetadata-${KFMIN}:6 )
@@ -124,7 +123,6 @@ src_configure() {
 		$(cmake_use_find_package lensfun LensFun)
 		-DENABLE_MYSQLSUPPORT=$(usex mysql)
 		-DENABLE_INTERNALMYSQL=$(usex mysql)
-		$(cmake_use_find_package opengl OpenGL)
 		$(cmake_use_find_package panorama KF6ThreadWeaver)
 		$(cmake_use_find_package scanner KSaneWidgets6)
 		-DENABLE_KFILEMETADATASUPPORT=$(usex semantic-desktop)
