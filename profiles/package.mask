@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Filip Kobierski <fkobi@pm.me> (2024.08.07)
+# It's been in the tree for over ten years, without a maintainer.
+# During this time it has recieved 4 non-generic commits.
+# SRC_URI redirect to nagios, which is packaged already.
+# Only we and one derivative ship it. Bug #937515
+# Removal on 2024.09.07
+net-analyzer/nagtrap
+
 # Michał Górny <mgorny@gentoo.org> (2024-08-06)
 # Superseded by dev-libs/libayatana-*.  No revdeps left.
 # Removal on 2024-09-05.  Bug #936881.
