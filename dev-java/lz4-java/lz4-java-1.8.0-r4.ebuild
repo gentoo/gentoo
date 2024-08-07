@@ -39,13 +39,25 @@ JAVA_TEST_RESOURCE_DIRS="src/test-resources"
 JAVA_TEST_SRC_DIR="src/test"
 
 src_prepare() {
-	default
+	default #780585
+	java-pkg-2_src_prepare
+	# remove precompiled native libraries
+	rm -r src/resources/net || die
+
+	# https://bugs.gentoo.org/936533
+	if has_version \>=app-arch/lz4-1.10.0:*; then
+		einfo "using >=lz4-1.10.0"
+		JAVA_TEST_EXCLUDES=(
+			net.jpountz.xxhash.XXHash32Test	# should be: OK (63 tests)
+			net.jpountz.xxhash.XXHash64Test	# should be: OK (63tests)
+			net.jpountz.xxhash.XXHashFactoryTest
+			net.jpountz.lz4.LZ4FactoryTest
+			net.jpountz.lz4.LZ4Test	# should be: Tests run: 79,  Failures: 79
+		)
+	fi
 }
 
 src_compile() {
-	# remove precompiled native libraries
-	rm -r src/resources || die
-
 	# cannot include template 'decompressor.template': file not found.]
 	cp src/build/source_templates/* . || die
 
