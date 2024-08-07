@@ -6,9 +6,9 @@ EAPI=8
 inherit toolchain-funcs
 
 DESCRIPTION="Collection of utilities for parsing Internet mail messages"
-HOMEPAGE="http://cr.yp.to/mess822.html"
+HOMEPAGE="https://cr.yp.to/mess822.html"
 SRC_URI="
-	http://cr.yp.to/software/${P}.tar.gz
+	https://cr.yp.to/software/${P}.tar.gz
 	https://dev.gentoo.org/~arkamar/distfiles/${P}-modern-compilers.patch.xz
 "
 
