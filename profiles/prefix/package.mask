@@ -8,6 +8,10 @@
 # NOTE: Please add your entry at the top!
 #
 
+# Fabian Groffen <grobian@gentoo.org> <2024-08-07)
+# installs files out of prefix, breaks bootstrap #937463
+>sys-apps/gentoo-functions-1.7
+
 # Fabian Groffen <grobian@gentoo.org> (2020-08-02)
 # Python 2 is no longer supported
 # Recent Portage releases no longer supports Python 2, and the version
