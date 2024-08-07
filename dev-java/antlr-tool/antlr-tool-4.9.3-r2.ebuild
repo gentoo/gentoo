@@ -23,6 +23,7 @@ SRC_URI="
 	https://github.com/antlr/antlr4/archive/${PV}.tar.gz -> ${MY_P}.tar.gz
 	https://repo1.maven.org/maven2/org/antlr/antlr4/${PV}/antlr4-${PV}-sources.jar -> ${P}-sources.jar
 "
+S="${WORKDIR}/${MY_PN}4-${PV}"
 
 LICENSE="BSD"
 SLOT="4"
@@ -50,8 +51,6 @@ RDEPEND="
 	>=virtual/jre-1.8:*
 	${CP_DEPEND}
 "
-
-S="${WORKDIR}/${MY_PN}4-${PV}"
 
 JAVA_SRC_DIR=(
 	tool/src
