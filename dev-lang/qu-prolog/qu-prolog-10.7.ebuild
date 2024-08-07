@@ -49,7 +49,8 @@ src_configure() {
 	# -Werror=strict-aliasing
 	# https://bugs.gentoo.org/924768
 	# Upstream's sole provided contact method is email. I have sent an email
-	# describing the issue. -- Eli
+	# describing the issue with a fairly rapid response saying there will be
+	# a new release "shortly" and that hopefully it will include a fix. -- Eli
 	append-flags -fno-strict-aliasing
 	filter-lto
 
