@@ -65,6 +65,8 @@ PATCHES=(
 	"${FILESDIR}"/openssl-3.3.1-pkg-config.patch
 	# https://bugs.gentoo.org/936576
 	"${FILESDIR}"/openssl-3.3.1-pkg-config-deux.patch
+	# https://bugs.gentoo.org/937457
+	"${FILESDIR}"/openssl-3.3.1-cmake-generator.patch
 )
 
 pkg_setup() {
