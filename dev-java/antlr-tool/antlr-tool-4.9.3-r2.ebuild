@@ -103,7 +103,7 @@ src_test() {
 	)
 	local CP="${S}/${JAVA_JAR_FILENAME}"
 	for test_dep in "${test_deps[@]}"; do
-		CP+=":$(java-pkg_getjars --with-dependencies "${test_dep}")"
+		CP+=":$(java-pkg_getjars --build-only --with-dependencies "${test_dep}")"
 	done
 	for res_dir in "${JAVA_TEST_RESOURCE_DIRS[@]}"; do
 		CP+=":${res_dir}"
