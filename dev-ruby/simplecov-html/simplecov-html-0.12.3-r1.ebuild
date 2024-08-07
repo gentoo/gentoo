@@ -18,6 +18,6 @@ DESCRIPTION="Generates a HTML report of your SimpleCov ruby code coverage result
 HOMEPAGE="https://github.com/simplecov-ruby/simplecov-html"
 LICENSE="MIT"
 
-KEYWORDS="amd64 ~arm64 ~hppa ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
 SLOT="$(ver_cut 1-2)"
 IUSE="doc"
