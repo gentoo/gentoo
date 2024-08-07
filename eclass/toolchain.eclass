@@ -1968,6 +1968,7 @@ toolchain_src_test() {
 	)
 
 	# Produce an updated failure manifest.
+	# XXX: Manifests aren't ideal w/ multilib because of https://gcc.gnu.org/PR116260
 	einfo "Generating a new failure manifest ${T}/${CHOST}.xfail"
 	rm -f "${T}"/${CHOST}.xfail
 	edo "${T}"/validate_failures.py \
