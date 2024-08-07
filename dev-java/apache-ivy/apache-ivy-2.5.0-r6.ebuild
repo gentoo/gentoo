@@ -7,11 +7,12 @@ JAVA_PKG_IUSE="doc source test"
 MAVEN_ID="org.apache.ivy:ivy:2.5.0"
 JAVA_TESTING_FRAMEWORKS="junit-4"
 
-inherit java-pkg-2 java-pkg-simple java-osgi
+inherit java-pkg-2 java-pkg-simple java-osgi verify-sig
 
 DESCRIPTION="Ivy is a free java based dependency manager"
 HOMEPAGE="https://ant.apache.org/ivy/"
-SRC_URI="https://archive.apache.org/dist/ant/ivy/${PV}/${P}-src.tar.gz"
+SRC_URI="https://archive.apache.org/dist/ant/ivy/${PV}/${P}-src.tar.gz
+	verify-sig? ( https://archive.apache.org/dist/ant/ivy/${PV}/${P}-src.tar.gz.asc )"
 S="${WORKDIR}/${P}"
 
 LICENSE="Apache-2.0"
@@ -37,6 +38,9 @@ CDEPEND="
 		dev-java/hamcrest-library:1.3
 		dev-java/xmlunit:1
 	)"
+
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/ant.apache.org.asc"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-ant )"
 
 # Restrict to jdk:1.8 since java.util.jar.Pack200 was removed.
 DEPEND="${CDEPEND}
