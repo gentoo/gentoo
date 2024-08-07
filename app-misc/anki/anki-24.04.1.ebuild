@@ -671,7 +671,7 @@ declare -A GIT_CRATES=(
 	[linkcheck]='https://github.com/ankitects/linkcheck;184b2ca50ed39ca43da13f0b830a463861adb9ca;linkcheck-%commit%'
 	[percent-encoding-iri]='https://github.com/ankitects/rust-url;bb930b8d089f4d30d7d19c12e54e66191de47b88;rust-url-%commit%/percent_encoding'
 )
-inherit cargo desktop flag-o-matic multiprocessing ninja-utils optfeature \
+inherit cargo desktop edo multiprocessing ninja-utils optfeature \
 	python-single-r1 readme.gentoo-r1 toolchain-funcs xdg
 
 DESCRIPTION="A spaced-repetition memory training program (flash cards)"
@@ -847,7 +847,7 @@ src_prepare() {
 		# Some parts of the runner build system expect to be in a git repository
 		mkdir .git || die
 
-		# Creating the pseudo venv early skips pip dependency checks in src_compile.
+		# Creating the pseudo venv early skips pip dependency checks in src_configure.
 		mkdir -p out/pyenv/bin || die
 		ln -s "${PYTHON}" out/pyenv/bin/python || die
 		# TODO: ln -s "${BROOT}/usr/bin/protoc-gen-mypy" out/pyenv/bin || die
@@ -857,28 +857,33 @@ src_prepare() {
 		if ! use qt6; then
 			sed -i "s/import PyQt6/raise ImportError/" qt/aqt/qt/__init__.py || die
 		fi
+
+		# Fix hardcoded runner location
+		export CARGO_TARGET_DIR="${S}"/out/rust
+		cbuild_dir="$(CHOST=${CBUILD:-${CHOST}} cargo_target_dir)"
+		sed "s,rust/release,${cbuild_dir##*out/}," \
+			-i build/ninja_gen/src/render.rs || die
+
+		# Separate src_configure from runner build
+		sed '/ConfigureBuild/d' -i build/ninja_gen/src/build.rs || die
+	fi
+}
+
+src_configure() {
+	cargo_src_configure
+	if use gui; then
+		CHOST=${CBUILD:-${CHOST}} cargo_src_compile -p configure
+		cargo_env edo "${cbuild_dir}"/configure
 	fi
 }
 
 src_compile() {
-	filter-lto
-	tc-export AR CC PKG_CONFIG
-	export CARGO_TARGET_DIR="${S}"/out/rust
-
-	# Overview of the build process
-	#
-	# 1. The "runner" build system is built explicitly with the "--release" flag
-	#     to avoid issues with hardcoded paths.  Once completed the binaries are
-	#     placed into "${S}"/out/rust/release.
-	# 2. As soon as step 1 is finished, the "runner" build system is executed,
-	#    which then processes the following steps:
-	#    * build remaining components of "runner" (= ninja_gen, configure, etc.)
-	#    * generate the ninja file and run ninja afterwards
-	#    * create the Python wheel files in "${S}"/out/wheels
-
-	cargo build --release --package runner || die
 	if use gui; then
-		out/rust/release/runner build -- $(get_NINJAOPTS) wheels  || die
+		MY_RUNNER="cargo_env edo ${cbuild_dir}/runner build -- $(get_NINJAOPTS)"
+		unset cbuild_dir
+
+		CHOST=${CBUILD:-${CHOST}} cargo_src_compile -p runner
+		${MY_RUNNER} wheels
 	else
 		cargo_src_compile --package anki-sync-server
 	fi
@@ -906,8 +911,7 @@ src_test() {
 		"${S}"/build/ninja_gen/src/cargo.rs || die
 
 	for runner in pytest rust_test jest; do
-		out/rust/release/runner build -- $(get_NINJAOPTS) check:$runner  || \
-		die "check:$runner failed!"
+		${MY_RUNNER} check:${runner}
 	done
 }
 
