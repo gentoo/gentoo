@@ -321,7 +321,7 @@ multilib_src_configure() {
 	   use video_cards_r300 ||
 	   use video_cards_r600 ||
 	   use video_cards_radeonsi ||
-	   use video_cards_vmware || # swrast
+	   use video_cards_vmware || # svga
 	   use video_cards_zink; then
 		emesonargs+=($(meson_use d3d9 gallium-nine))
 	else
