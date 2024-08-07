@@ -1,0 +1,35 @@
+diff --git a/tcpip/rip98d.c b/tcpip/rip98d.c
+index 50df60e..70b92f1 100644
+--- a/tcpip/rip98d.c
++++ b/tcpip/rip98d.c
+@@ -243,7 +243,7 @@ int main(int argc, char **argv)
+ 	loc_addr.sin_addr.s_addr = htonl(INADDR_ANY);
+ 	loc_addr.sin_port        = htons(RIP_PORT);
+ 
+-	if (bind(s, &loc_addr, sizeof(loc_addr)) < 0) {
++	if (bind(s, (struct sockaddr *)&loc_addr, sizeof(loc_addr)) < 0) {
+ 		perror("rip98d: bind");
+ 		close(s);
+ 		return 1;
+diff --git a/tcpip/ttylinkd.c b/tcpip/ttylinkd.c
+index c530d73..10f568e 100644
+--- a/tcpip/ttylinkd.c
++++ b/tcpip/ttylinkd.c
+@@ -43,7 +43,7 @@
+ 
+ #include <syslog.h>
+ #include <sys/types.h>
+-#include <sys/errno.h>
++#include <errno.h>
+ #include <sys/time.h>
+ #include <sys/ioctl.h>
+ 
+@@ -308,7 +308,7 @@ int main(int argc, char *argv[])
+ 		exit(1);
+ 	}
+ 
+-	if (bind(ctl_skt, &ctl_sin, sizeof(ctl_sin)) != 0)
++	if (bind(ctl_skt, (struct sockaddr *)&ctl_sin, sizeof(ctl_sin)) != 0)
+ 	{
+ 		syslog(LOG_DAEMON | LOG_CRIT, "main(): Error when trying to bind() control socket.");
+ 		close(skt);

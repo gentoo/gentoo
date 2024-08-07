@@ -6,9 +6,14 @@ EAPI="8"
 MY_P=${P/_/-}
 
 DESCRIPTION="Basic AX.25 (Amateur Radio) administrative tools and daemons"
-HOMEPAGE="http://www.linux-ax25.org/"
-SRC_URI="http://www.linux-ax25.org/pub/${PN}/${MY_P}.tar.gz"
-
+HOMEPAGE="
+	https://linux-ax25.in-berlin.de/
+	https://packet-radio.net/ax-25/
+" # NOTE: ...in-berlin.de does not work but subdomains do
+SRC_URI="
+	https://linux-ax25.in-berlin.de/pub/${PN}/${MY_P}.tar.gz
+	https://ham.packet-radio.net/packet/ax25/ax25-apps/${MY_P}.tar.gz
+"
 S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"
@@ -30,10 +35,11 @@ RDEPEND="${DEPEND}
 	sys-libs/zlib"
 
 src_prepare() {
-	eapply_user
 	if use elibc_musl ; then
 		eapply -p1 "${FILESDIR}/${PN}-0.0.10-musl.patch"
 	fi
+	eapply -p1 "${FILESDIR}/${PN}-0.0.10-fix-pointer-types.patch"
+	eapply_user
 }
 
 src_configure() {
