@@ -160,7 +160,7 @@ dist-kernel_PV_to_KV() {
 }
 
 # @FUNCTION: dist-kernel_get_module_suffix
-# @USAGE: <kernel_dir>
+# @USAGE: <kernel_config>
 # @DESCRIPTION:
 # Returns the suffix for kernel modules based on the CONFIG_MODULES_COMPESS_*
 # setting in the kernel config and USE=modules-compress.
@@ -169,7 +169,7 @@ dist-kernel_get_module_suffix() {
 
 	[[ ${#} -eq 1 ]] || die "${FUNCNAME}: invalid arguments"
 
-	local config=${1}/.config
+	local config=${1}
 
 	if ! in_iuse modules-compress || ! use modules-compress; then
 		echo .ko
@@ -198,7 +198,19 @@ dist-kernel_compressed_module_cleanup() {
 
 	[[ ${#} -ne 1 ]] && die "${FUNCNAME}: invalid arguments"
 	local path=${1}
-	local preferred=$(dist-kernel_get_module_suffix "${path}/source")
+	local config_path=/usr/src/linux-${KV_FULL}/.config
+
+	local option
+	for option in config source/.config build/.config; do
+		if [[ -f ${path}/${option} ]]; then
+			config_path=${path}/${option}
+			break
+		fi
+	done
+
+	local preferred=
+	[[ -f ${config_path} ]] && preferred=$(dist-kernel_get_module_suffix "${config_path}")
+
 	local basename suffix
 
 	while read -r basename; do
