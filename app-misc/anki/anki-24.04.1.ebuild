@@ -520,8 +520,6 @@ CRATES="
 	thread_local@1.1.8
 	tiff@0.9.1
 	time-core@0.1.2
-	time-macros@0.2.17
-	time@0.3.34
 	tinystr@0.7.5
 	tinytemplate@1.2.1
 	tinyvec@1.6.0
@@ -663,6 +661,12 @@ CRATES="
 	zstd@0.13.0
 	zune-inflate@0.2.54
 "
+# https://github.com/time-rs/time/issues/693
+# cargo update time@0.3.34 --precise 0.3.36
+CRATES+="
+	time-macros@0.2.18
+	time@0.3.36
+"
 declare -A GIT_CRATES=(
 	[linkcheck]='https://github.com/ankitects/linkcheck;184b2ca50ed39ca43da13f0b830a463861adb9ca;linkcheck-%commit%'
 	[percent-encoding-iri]='https://github.com/ankitects/rust-url;bb930b8d089f4d30d7d19c12e54e66191de47b88;rust-url-%commit%/percent_encoding'
@@ -699,6 +703,7 @@ PATCHES=(
 	"${FILESDIR}"/${PV}/remove-mypy-protobuf.patch
 	"${FILESDIR}"/${PV}/remove-yarn.patch
 	"${FILESDIR}"/${PV}/revert-cert-store-hack.patch
+	"${FILESDIR}"/${PV}/rust-1.80.0.patch
 	"${FILESDIR}"/23.12.1/use-system-nextest.patch
 	"${FILESDIR}"/23.12.1/remove-formatter-dep.patch
 )
