@@ -221,7 +221,7 @@ BDEPEND="
 			>=dev-python/selenium-3.141.0
 			>=dev-util/web_page_replay_go-20220314
 		)
-		dev-util/bindgen
+		>=dev-util/bindgen-0.68.0
 	)
 	>=dev-build/gn-${GN_MIN_VER}
 	dev-build/ninja
