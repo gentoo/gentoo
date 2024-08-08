@@ -20,3 +20,11 @@ HOMEPAGE="https://github.com/KhronosGroup/Vulkan-Headers"
 
 LICENSE="Apache-2.0"
 SLOT="0"
+
+src_configure() {
+	local mycmakeargs=(
+		-DVULKAN_HEADERS_ENABLE_MODULE=OFF
+	)
+
+	cmake_src_configure
+}
