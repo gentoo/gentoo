@@ -1,0 +1,50 @@
+Fix for error: invalid argument '-std=c++17' not allowed with 'C'
+https://github.com/pytorch/pytorch/issues/103222
+--- a/c10/hip/CMakeLists.txt
++++ b/c10/hip/CMakeLists.txt
+@@ -36,6 +36,7 @@ if(NOT BUILD_LIBTORCHLESS)
+ 
+   # Propagate HIP_CXX_FLAGS that were set from Dependencies.cmake
+   target_compile_options(c10_hip PRIVATE ${HIP_CXX_FLAGS})
++  set_target_properties(c10_hip PROPERTIES CXX_STANDARD 17 CXX_EXTENSIONS OFF)
+ 
+   # caffe2_hip adds a bunch of dependencies like rocsparse, but c10/hip is supposed to be
+   # minimal.  I'm not sure if we need hip_hcc or not; for now leave it out
+--- a/caffe2/CMakeLists.txt
++++ b/caffe2/CMakeLists.txt
+@@ -1670,6 +1670,7 @@ if(USE_ROCM)
+ 
+   # Since PyTorch files contain HIP headers, these flags are required for the necessary definitions to be added.
+   target_compile_options(torch_hip PUBLIC ${HIP_CXX_FLAGS})  # experiment
++  set_target_properties(torch_hip PROPERTIES CXX_STANDARD 17 CXX_EXTENSIONS OFF)
+ 
+   target_link_libraries(torch_hip PUBLIC c10_hip)
+ 
+@@ -1867,6 +1868,7 @@ if(BUILD_TEST)
+       target_include_directories(${test_name} PRIVATE $<INSTALL_INTERFACE:include>)
+       target_include_directories(${test_name} PRIVATE ${Caffe2_CPU_INCLUDE} ${Caffe2_HIP_INCLUDE})
+       target_compile_options(${test_name} PRIVATE ${HIP_CXX_FLAGS})
++      set_target_properties(${test_name} PROPERTIES CXX_STANDARD 17 CXX_EXTENSIONS OFF)
+       add_test(NAME ${test_name} COMMAND $<TARGET_FILE:${test_name}>)
+       if(INSTALL_TEST)
+         install(TARGETS ${test_name} DESTINATION test)
+--- a/cmake/Dependencies.cmake
++++ b/cmake/Dependencies.cmake
+@@ -1050,7 +1050,6 @@ if(USE_ROCM)
+     list(APPEND HIP_CXX_FLAGS -Wno-duplicate-decl-specifier)
+     list(APPEND HIP_CXX_FLAGS -DCAFFE2_USE_MIOPEN)
+     list(APPEND HIP_CXX_FLAGS -DTHRUST_DEVICE_SYSTEM=THRUST_DEVICE_SYSTEM_HIP)
+-    list(APPEND HIP_CXX_FLAGS -std=c++17)
+     list(APPEND HIP_CXX_FLAGS -DHIPBLAS_V2)
+     if(HIP_NEW_TYPE_ENUMS)
+       list(APPEND HIP_CXX_FLAGS -DHIP_NEW_TYPE_ENUMS)
+--- a/cmake/public/utils.cmake
++++ b/cmake/public/utils.cmake
+@@ -332,6 +332,7 @@ function(caffe2_hip_binary_target target_name_or_src)
+   caffe2_binary_target(${target_name_or_src})
+ 
+   target_compile_options(${__target} PRIVATE ${HIP_CXX_FLAGS})
++  set_target_properties(${__target} PROPERTIES CXX_STANDARD 17 CXX_EXTENSIONS OFF)
+   target_include_directories(${__target} PRIVATE ${Caffe2_HIP_INCLUDE})
+ endfunction()
+ 
