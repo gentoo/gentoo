@@ -7,7 +7,7 @@
 -man_MANS = doc/$(PACKAGE).6
 +man_MANS = doc/afternoonstalker.6
  
--docdir = $(datadir)/doc/$(PACKAGE)-$(VERSION)
+-docdir = $(datarootdir)/doc/$(PACKAGE)-$(VERSION)
  doc_DATA = \
  	AUTHORS \
 -	COPYING \
@@ -22,20 +22,21 @@
  	$(PACKAGE).spec \
 --- a/src/Makefile.am
 +++ b/src/Makefile.am
-@@ -114,13 +114,13 @@
+@@ -42,7 +42,7 @@
+ pixmapdir = $(datarootdir)/pixmaps
+ pixmap_DATA = images/$(PACKAGE).png
+ 
+-pkgpixmapdir = $(datarootdir)/pixmaps/$(PACKAGE)
++pkgpixmapdir = $(pkgdatadir)/pixmaps/$(PACKAGE)
+ pkgpixmap_DATA = \
+ 	images/cobweb_tile.xpm \
+ 	images/floor_tile.xpm \
+@@ -122,7 +122,7 @@
  	images/digit8.xpm \
  	images/digit9.xpm
  
--desktopentrydir = $(datadir)/applications
-+desktopentrydir = $(datarootdir)/applications
- desktopentry_DATA = $(PACKAGE).desktop
- 
--pixmapdir = $(datadir)/pixmaps
-+pixmapdir = $(datarootdir)/pixmaps
- pixmap_DATA = images/$(PACKAGE).png
- 
--pkgsounddir = $(datadir)/sounds/$(PACKAGE)
-+pkgsounddir = $(pkgdatadir)/sounds
+-pkgsounddir = $(datarootdir)/sounds/$(PACKAGE)
++pkgsounddir = $(pkgdatadir)/sounds/$(PACKAGE)
  pkgsound_DATA = \
  	sounds/gun-pickup.wav \
  	sounds/bat-killed.wav \
