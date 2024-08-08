@@ -12,5 +12,8 @@
 	<upstream>
 		<remote-id type="github">mapeditor/tiled</remote-id>
 	</upstream>
+	<use>
+		<flag name="minimal">Exclude optional plugins and development headers</flag>
+	</use>
 </pkgmetadata>
 

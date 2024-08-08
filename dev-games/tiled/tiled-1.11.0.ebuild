@@ -13,7 +13,7 @@ SRC_URI="https://github.com/mapeditor/tiled/archive/v${PV}/${P}.tar.gz"
 LICENSE="BSD BSD-2 GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="python examples"
+IUSE="python minimal examples"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
@@ -31,6 +31,8 @@ BDEPEND="
 	dev-qt/qttools:6[linguist]
 "
 
+QBS_PRODUCTS="tiled,csv,json"
+
 pkg_setup() {
 	if use python; then
 		python-single-r1_pkg_setup
@@ -40,6 +42,10 @@ pkg_setup() {
 src_configure() {
 	if use python; then
 		eapply "${FILESDIR}"/${P}-python.patch
+		QBS_PRODUCTS="${QBS_PRODUCTS},python"
+	fi
+	if ! use minimal; then
+		QBS_PRODUCTS="${QBS_PRODUCTS},defold,defoldcollection,droidcraft,flare,gmx,json1,lua,replicaisland,rpmap,tbin,tengine,terraingenerator,tmxrasterizer,tmxviewer,tscn,yy"
 	fi
 
 	qbs setup-qt /usr/bin/qmake6 qt6 || die
@@ -62,17 +68,18 @@ src_compile() {
 	qbs build \
 		qbs.installPrefix:"/usr" \
 		projects.Tiled.useRPaths:false \
-		projects.Tiled.installHeaders:true \
+		projects.Tiled.installHeaders:$(usex minimal false true) \
 		project.libDir:$(get_libdir) \
 		modules.cpp.cFlags:$(qbs_format_flags ${CFLAGS}) \
 		modules.cpp.cxxFlags:$(qbs_format_flags ${CXXFLAGS}) \
 		modules.cpp.linkerFlags:$(qbs_format_flags $(raw-ldflags ${LDFLAGS})) \
+		-p ${QBS_PRODUCTS} \
 		-j $(get_makeopts_jobs) \
 		|| die
 }
 
 src_install() {
-	qbs install --install-root "${D}" || die
+	qbs install -p ${QBS_PRODUCTS} --install-root "${D}" || die
 
 	if use examples; then
 		docompress -x /usr/share/doc/${PF}/examples
