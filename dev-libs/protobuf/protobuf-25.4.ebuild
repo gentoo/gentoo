@@ -56,7 +56,7 @@ COMMON_DEPEND="
 
 DEPEND="
 	${COMMON_DEPEND}
-	test? ( >=dev-cpp/gtest-1.11[${MULTILIB_USEDEP}] )
+	test? ( >=dev-cpp/gtest-1.9[${MULTILIB_USEDEP}] )
 "
 RDEPEND="
 	${COMMON_DEPEND}
