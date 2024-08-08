@@ -1,0 +1,85 @@
+From abd440342e166a90d08610bf5b31d2a8357eafbe Mon Sep 17 00:00:00 2001
+From: Tom Hughes <tom@compton.nu>
+Date: Sun, 19 May 2013 15:43:18 +0100
+Subject: [PATCH 07/15] Implement grain-extract blending mode (GIMP)
+
+---
+ include/agg_pixfmt_rgba.h | 48 +++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 48 insertions(+)
+
+diff --git a/include/agg_pixfmt_rgba.h b/include/agg_pixfmt_rgba.h
+index f576ce4..42f0a05 100644
+--- a/include/agg_pixfmt_rgba.h
++++ b/include/agg_pixfmt_rgba.h
+@@ -1442,6 +1442,52 @@ namespace agg
+         }
+     };
+ 
++    //==============================================comp_op_rgba_grain_extract
++    template <typename ColorT, typename Order> struct comp_op_rgba_grain_extract
++    {
++        typedef ColorT color_type;
++        typedef Order order_type;
++        typedef typename color_type::value_type value_type;
++        typedef typename color_type::calc_type calc_type;
++        typedef typename color_type::long_type long_type;
++        enum base_scale_e
++        {
++            base_shift = color_type::base_shift,
++            base_mask  = color_type::base_mask
++        };
++
++        // E = I - M + 128
++        static AGG_INLINE void blend_pix(value_type* p,
++                                         unsigned sr, unsigned sg, unsigned sb,
++                                         unsigned sa, unsigned cover)
++        {
++            calc_type da = (p[Order::A] * sa + 255) >> 8;
++
++            int dr = p[Order::R] - sr + 128;
++            int dg = p[Order::G] - sg + 128;
++            int db = p[Order::B] - sb + 128;
++
++            dr = dr < 0 ? 0 : (dr > 255 ? 255 : dr);
++            dg = dg < 0 ? 0 : (dg > 255 ? 255 : dg);
++            db = db < 0 ? 0 : (db > 255 ? 255 : db);
++
++            p[Order::A] = da;
++
++            if(da < 255)
++            {
++                p[Order::R] = (dr * da + 255) >> 8;
++                p[Order::G] = (dg * da + 255) >> 8;
++                p[Order::B] = (db * da + 255) >> 8;
++            }
++            else
++            {
++                p[Order::R] = dr;
++                p[Order::G] = dg;
++                p[Order::B] = db;
++            }
++        }
++    };
++
+     //======================================================comp_op_table_rgba
+     template<class ColorT, class Order> struct comp_op_table_rgba
+     {
+@@ -1489,6 +1535,7 @@ namespace agg
+         comp_op_rgba_invert     <ColorT,Order>::blend_pix,
+         comp_op_rgba_invert_rgb <ColorT,Order>::blend_pix,
+         comp_op_rgba_grain_merge<ColorT,Order>::blend_pix,
++        comp_op_rgba_grain_extract<ColorT,Order>::blend_pix,
+         0
+     };
+ 
+@@ -1525,6 +1572,7 @@ namespace agg
+         comp_op_invert,        //----comp_op_invert
+         comp_op_invert_rgb,    //----comp_op_invert_rgb
+         comp_op_grain_merge,   //----comp_op_grain_merge
++        comp_op_grain_extract, //----comp_op_grain_extract
+ 
+         end_of_comp_op_e
+     };
+-- 
+1.8.1.4
+
