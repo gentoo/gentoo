@@ -76,6 +76,12 @@ IDEPEND="app-eselect/eselect-zig"
 
 DOCS=( "README.md" "doc/build.zig.zon.md" )
 
+PATCHES=(
+	"${FILESDIR}/zig-0.13.0-search-prefix-new-sub-dirs.patch"
+	"${FILESDIR}/zig-0.13.0-test-std-kernel-version.patch"
+	"${FILESDIR}/zig-0.13.0-skip-test-stack_iterator.patch"
+)
+
 # zig-build does not set this for us since we use ZIG_OPTIONAL=1
 QA_FLAGS_IGNORED="usr/.*/zig/${PV}/bin/zig"
 
