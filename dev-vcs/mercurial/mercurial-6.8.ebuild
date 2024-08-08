@@ -225,6 +225,13 @@ python_prepare_all() {
 	sed -i -e 's:xcodebuild:nocodebuild:' setup.py || die
 	sed -i -e 's/__APPLE__/__NO_APPLE__/g' mercurial/cext/osutil.c || die
 
+	# Build assumes the Rust target directory, which is wrong for us.
+	sed -i -r "s:\brust[/,' ]+target[/,' ]+release\b:rust/$(cargo_target_dir):g" \
+		Makefile \
+		setup.py \
+		tests/run-tests.py \
+		|| die
+
 	distutils-r1_python_prepare_all
 }
 
