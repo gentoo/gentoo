@@ -1957,6 +1957,9 @@ toolchain_src_test() {
 
 		# nonfatal here as we die if the comparison below fails. Also, note that
 		# the exit code of targets other than 'check' may be unreliable.
+		#
+		# CFLAGS and so on are repeated here because of tests vs building test
+		# deps like libbacktrace.
 		nonfatal emake -C "${WORKDIR}"/build -k "${GCC_TESTS_CHECK_TARGET}" \
 			RUNTESTFLAGS=" \
 				${GCC_TESTS_RUNTESTFLAGS} \
