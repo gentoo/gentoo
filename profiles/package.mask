@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernard Cafarelli <voyageur@gentoo.org> (2024-08-08)
+# Last release in 2004, website disappeared a long time ago.
+# Bad code quality, not packaged in other distros or dockapps.net
+# Many alternatives for audio recording available
+# Removal on 2024-09-08, bug #931764
+x11-plugins/wmrecord
+
 # Eli Schwartz <eschwartz93@gmail.com> (2024-05-26)
 # Unmaintained, website gone. Last released in 2010. Fails to build
 # with GCC 14, detects and builds against nonexisting dependencies.
