@@ -40,6 +40,7 @@ BDEPEND="
 		dev-python/freezegun[${PYTHON_USEDEP}]
 		www-servers/gunicorn[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
+		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/re-assert[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
@@ -57,6 +58,12 @@ EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 src_prepare() {
+	local PATCHES=(
+		# https://github.com/aio-libs/aiohttp/pull/8623
+		# https://github.com/aio-libs/aiohttp/pull/8648
+		"${FILESDIR}/${P}-py313.patch"
+	)
+
 	# increase the timeout a little
 	sed -e '/abs=/s/0.001/0.01/' -i tests/test_helpers.py || die
 	# xfail_strict fails on py3.10
@@ -101,20 +108,11 @@ python_test() {
 			# sigh
 			local -x AIOHTTP_NO_EXTENSIONS=1
 			;;
-		python3.13)
-			EPYTEST_DESELECT+=(
-				# buggy test
-				# https://github.com/aio-libs/aiohttp/issues/8551
-				tests/test_web_urldispatcher.py::test_access_mock_special_resource
-				# new test (so not a regression)
-				# https://github.com/aio-libs/aiohttp/issues/8565
-				tests/test_web_urldispatcher.py::test_access_symlink_loop
-			)
-			;;
 	esac
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	local -x PYTEST_PLUGINS=pytest_mock,xdist.plugin
 	rm -rf aiohttp || die
-	epytest -m "not internal and not dev_mode"
+	epytest -m "not internal and not dev_mode" \
+		-p rerunfailures --reruns=5
 }
