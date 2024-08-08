@@ -124,7 +124,7 @@ src_prepare() {
 
 	# bug (912315)
 	eapply "${FILESDIR}/${PN}-2.10-allow-legacy-renegotiation.patch"
-	eapply "${FILESDIR}/${P}-Drop-security-level-to-0-with-OpenSSL-3.0-wh.patch"
+	eapply "${FILESDIR}/${PN}-2.10-Drop-security-level-to-0-with-OpenSSL-3.0-wh.patch"
 
 	# bug (640492)
 	sed -i 's#-Werror ##' wpa_supplicant/Makefile || die
