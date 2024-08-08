@@ -5,7 +5,7 @@ EAPI=8
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 
-inherit cmake
+inherit cmake flag-o-matic
 
 # TODO: just keep it unbundled...?
 MY_BOOST_VERSION="1.77.0"
@@ -69,6 +69,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/855245
+	# https://perconadev.atlassian.net/browse/PXB-3345
+	filter-lto
+
 	CMAKE_BUILD_TYPE="RelWithDebInfo"
 
 	local mycmakeargs=(
