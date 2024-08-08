@@ -41,7 +41,7 @@ BDEPEND="
 	)
 "
 
-EPYTEST_XDIST=1
+# some tests randomly fail with xdist, bug #936524
 distutils_enable_tests pytest
 
 python_test() {
@@ -57,9 +57,6 @@ python_test() {
 		archiver.py::ArchiverTestCase::test_create_paths_from_command_with_failed_command
 		archiver.py::RemoteArchiverTestCase::test_create_content_from_command_with_failed_command
 		archiver.py::RemoteArchiverTestCase::test_create_paths_from_command_with_failed_command
-		# similar issues since py3.13
-		archiver.py::RemoteArchiverTestCase::test_recreate_rechunkify
-		archiver.py::RemoteArchiverTestCase::test_recreate_skips_nothing_to_do
 	)
 
 	# This disables fuse releated tests
