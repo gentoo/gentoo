@@ -1,0 +1,20 @@
+--- a/torch/__init__.py
++++ b/torch/__init__.py
+@@ -223,7 +223,7 @@ def _load_global_deps() -> None:
+     if library_path:
+         global_deps_lib_path = os.path.join(library_path, 'lib', lib_name)
+     try:
+-        ctypes.CDLL(global_deps_lib_path, mode=ctypes.RTLD_GLOBAL)
++        ctypes.CDLL(lib_name, mode=ctypes.RTLD_GLOBAL)
+     except OSError as err:
+         # Can only happen for wheel with cuda libs as PYPI deps
+         # As PyTorch is not purelib, but nvidia-*-cu12 is
+@@ -245,7 +245,7 @@ def _load_global_deps() -> None:
+             raise err
+         for lib_folder, lib_name in cuda_libs.items():
+             _preload_cuda_deps(lib_folder, lib_name)
+-        ctypes.CDLL(global_deps_lib_path, mode=ctypes.RTLD_GLOBAL)
++        ctypes.CDLL(lib_name, mode=ctypes.RTLD_GLOBAL)
+ 
+     if library_path:
+         # loading libtorch_global_deps first due its special logic
