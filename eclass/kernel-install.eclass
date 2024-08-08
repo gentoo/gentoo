@@ -769,7 +769,7 @@ kernel-install_compress_modules() {
 		if [[ -z ${KV_FULL} ]]; then
 			KV_FULL=${PV}${KV_LOCALVERSION}
 		fi
-		local suffix=$(dist-kernel_get_module_suffix "${ED}/usr/src/linux-${KV_FULL}")
+		local suffix=$(dist-kernel_get_module_suffix "${ED}/usr/src/linux-${KV_FULL}/.config")
 		local compress=()
 		# Options taken from linux-mod-r1.eclass.
 		# We don't instruct the compressor to parallelize because it applies
