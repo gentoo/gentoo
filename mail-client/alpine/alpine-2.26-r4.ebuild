@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -68,8 +68,16 @@ src_configure() {
 		)
 	fi
 
+	# Bug 935343; see imap/docs/bugs.txt
+	if use ipv6; then
+		sed -i "s/IP=4/IP=6/" imap/Makefile || die
+	fi
+
 	# problems with strict prototypes, not easily patched #870766
 	append-cflags -Wno-error=strict-prototypes
+
+	# problems with incompatible pointer types, not easily patched #920365
+	append-cflags -Wno-error=incompatible-pointer-types
 
 	econf "${myconf[@]}"
 }
