@@ -1927,6 +1927,13 @@ toolchain_src_test() {
 		# Unexpected warnings confuse the tests.
 		filter-flags -W*
 
+		# May break parsing.
+		filter-flags '-fdiagnostics-color=*' '-fdiagnostics-urls=*'
+
+		# Gentoo QA flags which don't belong in tests
+		filter-flags -frecord-gcc-switches
+		filter-flags '-Wl,--defsym=__gentoo_check_ldflags__=0'
+
 		# Workaround our -Wformat-security default which breaks
 		# various tests as it adds unexpected warning output.
 		# (Only for C/C++ here to avoid noise for Fortran.)
