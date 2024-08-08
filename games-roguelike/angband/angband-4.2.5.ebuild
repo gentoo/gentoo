@@ -3,12 +3,16 @@
 
 EAPI=8
 
+# Generate the man page from the source tree with:
+# sudo emerge -u dev-python/sphinx
+# DOC_HTML_THEME=classic sphinx-build -b man docs .
+
 inherit autotools desktop xdg-utils
 
 DESCRIPTION="Roguelike dungeon exploration game based on the books of J.R.R. Tolkien"
 HOMEPAGE="https://rephial.org/"
 SRC_URI="https://github.com/angband/angband/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
-	https://dev.gentoo.org/~steils/distfiles/${PN}-4.2.4-man.tar.gz"
+	https://dev.gentoo.org/~chewi/distfiles/${P}-man.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
