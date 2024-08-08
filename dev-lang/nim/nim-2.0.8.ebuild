@@ -77,6 +77,9 @@ src_configure() {
 	EOF
 
 	cp -r "${WORKDIR}/atlas-${ATLAS_V}" "${S}/dist/atlas" || die
+
+	mkdir -p "${S}/dist/atlas/dist" || die
+	cp -r "${S}/dist/nimble/dist/sat" "${S}/dist/atlas/dist/sat" || die
 }
 
 src_compile() {
