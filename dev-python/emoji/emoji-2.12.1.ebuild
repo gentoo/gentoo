@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 RDEPEND="
 	>=dev-python/typing-extensions-4.7.0[${PYTHON_USEDEP}]
