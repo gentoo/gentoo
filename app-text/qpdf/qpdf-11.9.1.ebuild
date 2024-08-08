@@ -54,6 +54,10 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/jberkenbilt.asc
 
+PATCHES=(
+	"${FILESDIR}/${PN}-11.9.1-include-cstdint.patch" #937571
+)
+
 src_unpack() {
 	if use verify-sig ; then
 		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.gz{,.asc}
