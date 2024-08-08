@@ -7,8 +7,6 @@ CMAKE_MAKEFILE_GENERATOR="emake"
 
 inherit cmake flag-o-matic
 
-# TODO: just keep it unbundled...?
-MY_BOOST_VERSION="1.77.0"
 MY_PV=$(ver_rs 3 '-')
 MY_PV="${MY_PV//_pre*}"
 MY_PN="Percona-XtraBackup"
@@ -19,7 +17,7 @@ DESCRIPTION="Hot backup utility for MySQL based servers"
 HOMEPAGE="https://www.percona.com/software/mysql-database/percona-xtrabackup"
 SRC_URI="
 	https://downloads.percona.com/downloads/${MY_PN}-innovative-release/${MY_PN}-${MY_PV}/source/tarball/${PN}-${MY_PV}.tar.gz
-	https://boostorg.jfrog.io/artifactory/main/release/${MY_BOOST_VERSION}/source/boost_$(ver_rs 1- _ ${MY_BOOST_VERSION}).tar.bz2"
+"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -60,13 +58,6 @@ S="${WORKDIR}/percona-xtrabackup-${MY_PV}"
 src_prepare() {
 	cmake_src_prepare
 
-	local bundled_boost_version=$(sed -En '/^SET\(BOOST_PACKAGE_NAME /{s/[^0-9.]//gp}' cmake/boost.cmake)
-	if [[ ${MY_BOOST_VERSION//./} != ${bundled_boost_version} ]] ; then
-		eerror "Source Boost version: ${bundled_boost_version}"
-		eerror "Ebuild Boost version: ${MY_BOOST_VERSION}"
-		die "Ebuild needs to fix MY_BOOST_VERSION!"
-	fi
-
 	local extra
 	# rapidjson: last released in 2016 and totally unviable to devendor
 	# lz4: in storage/innobase/xtrabackup/src/CMakeLists.txt it is used even when =system
@@ -89,7 +80,6 @@ src_configure() {
 		-DBUILD_SHARED_LIBS=OFF
 		-DCOMPILATION_COMMENT="Gentoo Linux ${PF}"
 		-DINSTALL_PLUGINDIR=$(get_libdir)/${PN}/plugin
-		-DWITH_BOOST="${WORKDIR}/boost_$(ver_rs 1- _ ${MY_BOOST_VERSION})"
 		-DWITH_MAN_PAGES=ON
 		-DWITH_SYSTEM_LIBS=ON
 		# not handled via SYSTEM_LIBS
