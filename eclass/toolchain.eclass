@@ -1936,6 +1936,10 @@ toolchain_src_test() {
 		# tests too.
 		append-flags -Wno-trampolines
 
+		# Avoid confusing tests like Fortran/C interop ones where
+		# CFLAGS are used.
+		append-flags -Wno-complain-wrong-lang
+
 		# Issues with Ada tests:
 		# gnat.dg/align_max.adb
 		# gnat.dg/trampoline4.adb
