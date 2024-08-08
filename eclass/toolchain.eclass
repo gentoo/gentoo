@@ -1961,6 +1961,7 @@ toolchain_src_test() {
 		append-flags -g
 
 		# TODO: Does this handle s390 (-m31) correctly?
+		# TODO: What if there are multiple ABIs like x32 too?
 		is_multilib && GCC_TESTS_RUNTESTFLAGS+=" --target_board=unix{,-m32}"
 
 		# nonfatal here as we die if the comparison below fails. Also, note that
