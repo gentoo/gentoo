@@ -26,6 +26,7 @@ KEYWORDS="amd64 x86"
 
 DEPEND="
 	app-arch/lz4:0=
+	app-arch/zstd:=
 	app-editors/vim-core
 	dev-libs/icu:=
 	dev-libs/libaio
@@ -37,11 +38,12 @@ DEPEND="
 	dev-libs/libgpg-error
 	dev-libs/openssl:0=
 	dev-libs/protobuf:=
-	dev-libs/rapidjson
 	dev-libs/re2:=
 	dev-python/sphinx
 	net-misc/curl
-	sys-libs/zlib:="
+	sys-libs/zlib:=
+	sys-process/procps:=
+"
 
 RDEPEND="
 	${DEPEND}
@@ -66,6 +68,13 @@ src_prepare() {
 		eerror "Ebuild Boost version: ${MY_BOOST_VERSION}"
 		die "Ebuild needs to fix MY_BOOST_VERSION!"
 	fi
+
+	local extra
+	# rapidjson: last released in 2016 and totally unviable to devendor
+	# lz4: in storage/innobase/xtrabackup/src/CMakeLists.txt it is used even when =system
+	for extra in curl icu libcbor libedit libevent libfido2 zlib zstd; do
+		rm -r "extra/${extra}/" || die "failed to remove bundled libs"
+	done
 }
 
 src_configure() {
@@ -85,6 +94,8 @@ src_configure() {
 		-DWITH_BOOST="${WORKDIR}/boost_$(ver_rs 1- _ ${MY_BOOST_VERSION})"
 		-DWITH_MAN_PAGES=ON
 		-DWITH_SYSTEM_LIBS=ON
+		# not handled via SYSTEM_LIBS
+		-DWITH_ZLIB=system
 	)
 
 	cmake_src_configure
