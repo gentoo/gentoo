@@ -27,4 +27,6 @@ all_ruby_prepare() {
 		-i ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	sed -i -e '/simplecov/I s:^:#:' spec/spec_helper.rb || die
+
+	sed -i -e 's/1.1.0/1.1.1/' lib/hashdiff/version.rb || die
 }
