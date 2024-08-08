@@ -1,0 +1,33 @@
+From e3138533bf97e1133371944b28e65bae5e8ae95c Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Sat, 10 Aug 2024 13:43:28 +0200
+Subject: [PATCH] fix JsonCPP name
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+---
+ cmake/conformance.cmake | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/conformance.cmake b/cmake/conformance.cmake
+index c5d8c7c..2e059ea 100644
+--- a/cmake/conformance.cmake
++++ b/cmake/conformance.cmake
+@@ -9,7 +9,7 @@ if (protobuf_JSONCPP_PROVIDER STREQUAL "module")
+             "  cmake -Dprotobuf_BUILD_CONFORMANCE=OFF\n")
+   endif()
+ elseif(protobuf_JSONCPP_PROVIDER STREQUAL "package")
+-  find_package(jsoncpp REQUIRED)
++  find_package(JsonCpp REQUIRED)
+ endif()
+ 
+ file(MAKE_DIRECTORY ${protobuf_BINARY_DIR}/conformance)
+@@ -140,5 +140,5 @@ if(protobuf_JSONCPP_PROVIDER STREQUAL "module")
+     target_link_libraries(conformance_test_runner jsoncpp_static)
+   endif()
+ else()
+-  target_link_libraries(conformance_test_runner jsoncpp)
++  target_link_libraries(conformance_test_runner JsonCpp::JsonCpp)
+ endif()
+-- 
+2.46.0
+
