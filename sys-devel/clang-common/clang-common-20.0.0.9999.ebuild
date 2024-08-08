@@ -12,9 +12,10 @@ LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
 IUSE="
 	default-compiler-rt default-libcxx default-lld
-	bootstrap-prefix cet hardened llvm-libunwind
+	bootstrap-prefix cet hardened llvm-libunwind polly
 "
 
+RDEPEND=" polly? ( ~sys-devel/polly-${PV} ) "
 PDEPEND="
 	sys-devel/clang:*
 	default-compiler-rt? (
@@ -151,6 +152,7 @@ src_install() {
 		--unwindlib=$(usex default-compiler-rt libunwind libgcc)
 		--stdlib=$(usex default-libcxx libc++ libstdc++)
 		-fuse-ld=$(usex default-lld lld bfd)
+		$(usex polly "-fplugin=LLVMPolly.so -fpass-plugin=LLVMPolly.so" "")
 	EOF
 
 	newins - gentoo-gcc-install.cfg <<-EOF
