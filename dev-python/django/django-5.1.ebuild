@@ -56,6 +56,8 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/django-4.0-bashcomp.patch
+	# https://code.djangoproject.com/ticket/35661
+	"${FILESDIR}"/django-5.1-more-pypy3.patch
 )
 
 distutils_enable_sphinx docs --no-autodoc

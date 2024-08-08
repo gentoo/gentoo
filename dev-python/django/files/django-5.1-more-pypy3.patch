@@ -1,0 +1,51 @@
+From d9aeb23edb6cc861360ffbb59a45beccafe55dcb Mon Sep 17 00:00:00 2001
+From: Mariusz Felisiak <felisiak.mariusz@gmail.com>
+Date: Thu, 8 Aug 2024 08:13:29 +0200
+Subject: [PATCH] [5.1.x] Fixed #35661 -- Fixed
+ test_too_many_digits_to_rander() test crash on PyPy.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Thanks Michał Górny for the report.
+
+Backport of 7fb15ad5bcae05324ee8913e4b2c6c982e8f2de0 from main.
+---
+ .../template_tests/filter_tests/test_floatformat.py  | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/tests/template_tests/filter_tests/test_floatformat.py b/tests/template_tests/filter_tests/test_floatformat.py
+index 3d6c34a55232..6183f6a0691d 100644
+--- a/tests/template_tests/filter_tests/test_floatformat.py
++++ b/tests/template_tests/filter_tests/test_floatformat.py
+@@ -4,6 +4,7 @@
+ from django.test import SimpleTestCase
+ from django.utils import translation
+ from django.utils.safestring import mark_safe
++from django.utils.version import PYPY
+ 
+ from ..utils import setup
+ 
+@@ -181,12 +182,21 @@ def test_too_many_digits_to_render(self):
+             "-1E10000000000000000",
+             "1e10000000000000000",
+             "-1e10000000000000000",
+-            "1" + "0" * 1_000_000,
+         ]
+         for value in cases:
+             with self.subTest(value=value):
+                 self.assertEqual(floatformat(value), value)
+ 
++    def test_too_many_digits_to_render_very_long(self):
++        value = "1" + "0" * 1_000_000
++        if PYPY:
++            # PyPy casts decimal parts to int, which reaches the integer string
++            # conversion length limit (default 4300 digits, CVE-2020-10735).
++            with self.assertRaises(ValueError):
++                floatformat(value)
++        else:
++            self.assertEqual(floatformat(value), value)
++
+     def test_float_dunder_method(self):
+         class FloatWrapper:
+             def __init__(self, value):
