@@ -54,6 +54,8 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 
+PATCHES=( "${FILESDIR}/${PN}-0.76.3-stdint.patch" )
+
 src_prepare() {
 	default
 	use vala && vala_setup
