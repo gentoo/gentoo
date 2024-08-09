@@ -30,7 +30,7 @@ DEPEND="
 	>=x11-libs/pango-1.22.0
 	>=dev-libs/libpcre2-10.21
 	systemd? ( >=sys-apps/systemd-220:= )
-	sys-libs/zlib
+	>=app-arch/lz4-1.9
 	x11-libs/pango
 "
 RDEPEND="
