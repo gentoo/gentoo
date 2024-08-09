@@ -5,7 +5,7 @@ EAPI=8
 inherit gnome.org readme.gentoo-r1 meson xdg
 
 DESCRIPTION="JavaScript extensions for GNOME Shell"
-HOMEPAGE="https://wiki.gnome.org/Projects/GnomeShell/Extensions"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-shell-extensions"
 
 LICENSE="GPL-2+"
 SLOT="0"
