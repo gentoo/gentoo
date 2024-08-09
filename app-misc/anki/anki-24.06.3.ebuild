@@ -30,7 +30,7 @@ CRATES="
 	async-compression@0.4.6
 	async-stream-impl@0.3.5
 	async-stream@0.3.5
-	async-trait@0.1.77
+	async-trait@0.1.80
 	autocfg@1.1.0
 	axum-client-ip@0.4.2
 	axum-core@0.3.4
@@ -39,6 +39,7 @@ CRATES="
 	backtrace@0.3.69
 	base64@0.13.1
 	base64@0.21.7
+	base64@0.22.1
 	base64ct@1.6.0
 	bincode@2.0.0-rc.3
 	bit-set@0.5.3
@@ -52,20 +53,21 @@ CRATES="
 	block@0.1.6
 	bstr@1.9.1
 	bumpalo@3.15.3
-	burn-autodiff@0.12.1
-	burn-candle@0.12.1
-	burn-common@0.12.1
-	burn-compute@0.12.1
-	burn-core@0.12.1
-	burn-dataset@0.12.1
-	burn-derive@0.12.1
-	burn-fusion@0.12.1
-	burn-ndarray@0.12.1
-	burn-tch@0.12.1
-	burn-tensor@0.12.1
-	burn-train@0.12.1
-	burn-wgpu@0.12.1
-	burn@0.12.1
+	burn-autodiff@0.13.1
+	burn-candle@0.13.1
+	burn-common@0.13.1
+	burn-compute@0.13.1
+	burn-core@0.13.1
+	burn-dataset@0.13.1
+	burn-derive@0.13.1
+	burn-fusion@0.13.1
+	burn-jit@0.13.1
+	burn-ndarray@0.13.1
+	burn-tch@0.13.1
+	burn-tensor@0.13.1
+	burn-train@0.13.1
+	burn-wgpu@0.13.1
+	burn@0.13.1
 	bytemuck@1.14.3
 	bytemuck_derive@1.5.0
 	byteorder@1.5.0
@@ -73,11 +75,12 @@ CRATES="
 	bzip2-sys@0.1.11+1.0.8
 	bzip2@0.4.4
 	camino@1.1.6
-	candle-core@0.3.3
+	candle-core@0.4.1
 	cast@0.3.0
 	cbc@0.1.2
 	cc@1.0.88
 	cfg-if@1.0.0
+	cfg_aliases@0.1.1
 	chrono@0.4.34
 	ciborium-io@0.2.2
 	ciborium-ll@0.2.2
@@ -93,7 +96,9 @@ CRATES="
 	codespan@0.11.1
 	color_quant@1.1.0
 	colorchoice@1.0.0
-	com-rs@0.2.1
+	com@0.6.0
+	com_macros@0.6.0
+	com_macros_support@0.6.0
 	concurrent-queue@2.4.0
 	constant_time_eq@0.1.5
 	constant_time_eq@0.3.0
@@ -113,7 +118,7 @@ CRATES="
 	crypto-common@0.1.6
 	csv-core@0.1.11
 	csv@1.3.0
-	d3d12@0.7.0
+	d3d12@0.19.0
 	dashmap@5.5.3
 	data-encoding@2.5.0
 	deadpool-runtime@0.1.3
@@ -165,7 +170,7 @@ CRATES="
 	forwarded-header-value@0.1.1
 	fs2@0.4.3
 	fsevent-sys@4.1.0
-	fsrs@0.5.5
+	fsrs@0.6.4
 	futf@0.1.5
 	futures-channel@0.3.30
 	futures-core@0.3.30
@@ -189,7 +194,7 @@ CRATES="
 	generic-array@0.14.7
 	getopts@0.2.21
 	getrandom@0.1.16
-	getrandom@0.2.12
+	getrandom@0.2.14
 	gif@0.13.1
 	gimli@0.28.1
 	gix-features@0.36.1
@@ -204,16 +209,16 @@ CRATES="
 	glutin_wgl_sys@0.5.0
 	gpu-alloc-types@0.3.0
 	gpu-alloc@0.6.0
-	gpu-allocator@0.23.0
+	gpu-allocator@0.25.0
 	gpu-descriptor-types@0.1.2
 	gpu-descriptor@0.2.4
-	h2@0.3.24
-	half@2.4.0
+	h2@0.3.26
+	half@2.4.1
 	handlebars@5.1.0
 	hashbrown@0.13.2
 	hashbrown@0.14.3
 	hashlink@0.8.4
-	hassle-rs@0.10.0
+	hassle-rs@0.11.0
 	headers-core@0.2.0
 	headers@0.3.9
 	heck@0.4.1
@@ -256,6 +261,7 @@ CRATES="
 	itertools@0.11.0
 	itertools@0.12.1
 	itoa@1.0.10
+	jni-sys@0.3.0
 	jpeg-decoder@0.3.1
 	js-sys@0.3.68
 	junction@1.0.0
@@ -275,7 +281,7 @@ CRATES="
 	linkify@0.7.0
 	linux-raw-sys@0.4.13
 	lock_api@0.4.11
-	log@0.4.20
+	log@0.4.21
 	lzma-sys@0.1.20
 	mac@0.1.1
 	malloc_buf@0.0.6
@@ -299,11 +305,11 @@ CRATES="
 	mio@0.8.11
 	multer@2.1.0
 	multimap@0.8.3
-	naga@0.14.2
-	nanorand@0.7.0
+	naga@0.19.2
 	native-tls@0.2.11
 	ndarray-rand@0.14.0
 	ndarray@0.15.6
+	ndk-sys@0.5.0+25.2.9519653
 	new_debug_unreachable@1.0.4
 	nom@7.1.3
 	nonempty@0.7.0
@@ -376,7 +382,7 @@ CRATES="
 	prettyplease@0.2.16
 	proc-macro-crate@3.1.0
 	proc-macro-hack@0.5.20+deprecated
-	proc-macro2@1.0.78
+	proc-macro2@1.0.81
 	profiling@1.0.15
 	prost-build@0.12.3
 	prost-derive@0.12.3
@@ -408,10 +414,10 @@ CRATES="
 	rand_hc@0.2.0
 	range-alloc@0.1.3
 	raw-cpuid@10.7.0
-	raw-window-handle@0.5.2
+	raw-window-handle@0.6.1
 	rawpointer@0.2.1
 	rayon-core@1.12.1
-	rayon@1.9.0
+	rayon@1.10.0
 	rc2@0.8.1
 	rcgen@0.10.0
 	reborrow@0.5.5
@@ -435,11 +441,12 @@ CRATES="
 	rustix@0.38.31
 	rustls-native-certs@0.6.3
 	rustls-pemfile@1.0.4
+	rustls-pemfile@2.1.2
 	rustls-pki-types@1.3.1
 	rustls-webpki@0.101.7
 	rustls-webpki@0.102.2
-	rustls@0.21.10
-	rustls@0.22.2
+	rustls@0.21.11
+	rustls@0.22.4
 	rustversion@1.0.14
 	ryu@1.0.17
 	safemem@0.3.3
@@ -461,7 +468,7 @@ CRATES="
 	serde-aux@4.5.0
 	serde@1.0.197
 	serde_derive@1.0.197
-	serde_json@1.0.114
+	serde_json@1.0.116
 	serde_path_to_error@0.1.15
 	serde_qs@0.8.5
 	serde_repr@0.1.18
@@ -488,7 +495,7 @@ CRATES="
 	socket2@0.5.6
 	spin@0.5.2
 	spin@0.9.8
-	spirv@0.2.0+1.5.4
+	spirv@0.3.0+sdk-1.3.268.0
 	stable_deref_trait@1.2.0
 	static_assertions@1.1.0
 	string_cache@0.8.7
@@ -514,8 +521,8 @@ CRATES="
 	termcolor@1.4.1
 	terminal_size@0.3.0
 	text_placeholder@0.5.0
-	thiserror-impl@1.0.57
-	thiserror@1.0.57
+	thiserror-impl@1.0.59
+	thiserror@1.0.59
 	thread-tree@0.3.3
 	thread_local@1.1.8
 	tiff@0.9.1
@@ -579,7 +586,7 @@ CRATES="
 	utf-8@0.7.6
 	utf8parse@0.2.1
 	utime@0.3.1
-	uuid@1.7.0
+	uuid@1.8.0
 	valuable@0.1.0
 	vcpkg@0.2.15
 	version_check@0.9.4
@@ -597,15 +604,15 @@ CRATES="
 	wasm-bindgen-shared@0.2.91
 	wasm-bindgen@0.2.91
 	wasm-streams@0.4.0
-	web-sys@0.3.64
+	web-sys@0.3.68
 	web-time@1.1.0
 	webpki-roots@0.25.4
 	webpki-roots@0.26.1
 	weezl@0.1.8
-	wgpu-core@0.18.1
-	wgpu-hal@0.18.1
-	wgpu-types@0.18.0
-	wgpu@0.18.0
+	wgpu-core@0.19.4
+	wgpu-hal@0.19.4
+	wgpu-types@0.19.2
+	wgpu@0.19.4
 	which@4.4.2
 	which@5.0.0
 	widestring@1.0.2
@@ -684,10 +691,10 @@ HOMEPAGE="https://apps.ankiweb.net/"
 # scheme prevents unnecessary downloads of the (sizeable) node_modules
 # folder.
 declare -A COMMITS=(
-	[anki]="ccd9ca1a8309b80bcb50ddc5d99c7ce63440bce9"
-	[ftl-core]="e3af3c983241448a239871ca573c9dd2fa5e8619"
-	[ftl-desktop]="45155310c3302cbbbe645dec52ca196894422463"
-	[node_modules]="ea8f0c1491d0b0f9e0fdff589b1f0d297e6e11a6"
+	[anki]="d678e39350a2d243242a69f4e22f5192b04398f2"
+	[ftl-core]="b4813a328f44c8224d2649adbdbcbef095db9a40"
+	[ftl-desktop]="b95608421ba2ba1cdca407933aff9ba25d567e12"
+	[node_modules]="b9a182d8e2f3a11b633a6d5fbb582e9e7d8a4f34"
 )
 SRC_URI="${CARGO_CRATE_URIS}
 	https://github.com/ankitects/anki/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz
@@ -700,10 +707,10 @@ SRC_URI="${CARGO_CRATE_URIS}
 
 PATCHES=(
 	"${FILESDIR}"/${PV}/ninja-gentoo-setup.patch
-	"${FILESDIR}"/${PV}/remove-mypy-protobuf.patch
 	"${FILESDIR}"/${PV}/remove-yarn.patch
-	"${FILESDIR}"/${PV}/revert-cert-store-hack.patch
-	"${FILESDIR}"/${PV}/rust-1.80.0.patch
+	"${FILESDIR}"/24.04.1/remove-mypy-protobuf.patch
+	"${FILESDIR}"/24.04.1/revert-cert-store-hack.patch
+	"${FILESDIR}"/24.04.1/rust-1.80.0.patch
 	"${FILESDIR}"/23.12.1/use-system-nextest.patch
 	"${FILESDIR}"/23.12.1/remove-formatter-dep.patch
 )
@@ -789,6 +796,7 @@ BDEPEND="
 		app-alternatives/ninja
 		app-arch/unzip
 		>=net-libs/nodejs-20.12.1
+		sys-apps/yarn
 		$(python_gen_cond_dep 'dev-python/wheel[${PYTHON_USEDEP}]')
 		qt6?	( $(python_gen_cond_dep 'dev-python/PyQt6[${PYTHON_USEDEP}]') )
 		!qt6?	( $(python_gen_cond_dep 'dev-python/PyQt5[${PYTHON_USEDEP}]') )
@@ -816,6 +824,7 @@ pkg_setup() {
 	if use gui; then
 		python-single-r1_pkg_setup
 		export NODE_BINARY="${BROOT}"/usr/bin/node
+		export YARN_BINARY="${BROOT}"/usr/bin/yarn
 		export OFFLINE_BUILD=1
 		if ! use debug; then
 			if tc-is-lto; then
@@ -910,7 +919,7 @@ src_test() {
 		"${S}"/build/ninja_gen/src/cargo.rs || die
 
 	local runner
-	for runner in pytest rust_test jest; do
+	for runner in pytest rust_test vitest; do
 		${MY_RUNNER} check:${runner}
 	done
 }
