@@ -216,6 +216,9 @@ src_unpack() {
 	if use rust; then
 		local S="${S}/rust/hg-cpython"
 		cargo_src_unpack
+	else
+		# Needed because distutils-r1 install under cargo_env if cargo is inherited
+		cargo_gen_config
 	fi
 }
 
