@@ -27,6 +27,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-libs/libxslt
 	app-text/docbook-xsl-stylesheets
+	>=dev-python/docutils-0.21.1
 "
 
 S="${WORKDIR}/glib-${PV}/gio/gdbus-2.0/codegen"
