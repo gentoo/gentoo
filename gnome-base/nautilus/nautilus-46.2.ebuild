@@ -37,7 +37,6 @@ RDEPEND="${DEPEND}
 	>=app-misc/tracker-miners-3.0:3=
 " # uses org.freedesktop.Tracker.Miner.Files gsettings schema from tracker-miners
 BDEPEND="
-	dev-build/gtk-doc-am
 	>=dev-util/gdbus-codegen-2.51.2
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
