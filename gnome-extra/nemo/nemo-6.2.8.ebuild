@@ -45,9 +45,6 @@ COMMON_DEPEND="
 	tracker? (
 		app-misc/tracker:3
 	)
-	wayland? (
-		>=gui-libs/gtk-layer-shell-0.8.0
-	)
 	xmp? (
 		>=media-libs/exempi-2.2.0:=
 	)
@@ -121,7 +118,6 @@ src_configure() {
 		$(meson_use selinux)
 		$(meson_use tracker)
 		$(meson_use gtk-doc gtk_doc)
-		$(meson_use wayland gtk_layer_shell)
 	)
 	meson_src_configure
 }

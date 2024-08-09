@@ -16,7 +16,6 @@ KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 DEPEND="
 	>=dev-libs/glib-2.44:2
 	>=sys-apps/xdg-desktop-portal-1.5
-	x11-libs/gtk+:3
 "
 RDEPEND="
 	${DEPEND}
