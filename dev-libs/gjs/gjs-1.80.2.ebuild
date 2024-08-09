@@ -6,7 +6,7 @@ EAPI=8
 inherit flag-o-matic gnome.org meson virtualx
 
 DESCRIPTION="Javascript bindings for GNOME"
-HOMEPAGE="https://wiki.gnome.org/Projects/Gjs https://gitlab.gnome.org/GNOME/gjs"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gjs"
 
 LICENSE="MIT || ( MPL-1.1 LGPL-2+ GPL-2+ )"
 SLOT="0"
