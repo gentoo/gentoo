@@ -1,0 +1,13 @@
+diff --git a/Source/Common/Platform/NMR_ImportStream_Unique_Memory.cpp b/Source/Common/Platform/NMR_ImportStream_Unique_Memory.cpp
+index 43fd428..e966aa0 100644
+--- a/Source/Common/Platform/NMR_ImportStream_Unique_Memory.cpp
++++ b/Source/Common/Platform/NMR_ImportStream_Unique_Memory.cpp
+@@ -35,6 +35,8 @@ This is a platform independent class for keeping data in a memory stream that ow
+ #include "Common/NMR_Exception.h"
+ #include "Common/NMR_Exception_Windows.h"
+ 
++#include <cstdint>
++
+ namespace NMR {
+ 
+ 	CImportStream_Unique_Memory::CImportStream_Unique_Memory()
