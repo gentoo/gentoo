@@ -14,7 +14,7 @@ DESCRIPTION="A deep learning framework"
 HOMEPAGE="https://pytorch.org/"
 SRC_URI="https://github.com/pytorch/${MYPN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${MYP}.tar.gz
-	https://dev.gentoo.org/~tupone/distfiles/caffe2-20240809.tar.gz"
+	https://dev.gentoo.org/~tupone/distfiles/${PN}-patches-20240809.tar.gz"
 
 S="${WORKDIR}"/${MYP}
 
