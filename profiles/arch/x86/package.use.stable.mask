@@ -18,7 +18,7 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-07-21)
-# Need as-yet-unkeyworded KF6-based counterparts (bug #934361)
+# Need not as yet stable KF6-based counterparts (bug #934361)
 kde-apps/libkcddb kf6compat
 kde-apps/libkcompactdisc kf6compat
 kde-apps/libksane kf6compat
