@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome2
 
 DESCRIPTION="Program for creating labels and business cards"
-HOMEPAGE="https://glabels.org/"
+HOMEPAGE="https://github.com/jimevins/glabels-qt"
 
 LICENSE="GPL-3+ LGPL-3+ CC-BY-SA-3.0 MIT"
 SLOT="0"
@@ -35,6 +35,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/glabels-externs.patch # Fix compilation with -fno-common/gcc10; patch from Fedora
+	"${FILESDIR}"/glabels-gcc14.patch
 )
 
 src_configure() {

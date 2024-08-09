@@ -1,0 +1,27 @@
+diff -Naur a/src/pixbuf-cache.c b/src/pixbuf-cache.c
+--- a/src/pixbuf-cache.c	2016-01-24 02:06:18.000000000 +0000
++++ b/src/pixbuf-cache.c	2024-08-09 22:11:46.908878425 +0100
+@@ -125,7 +125,7 @@
+ 	record = g_new0 (CacheRecord, 1);
+ 	record->key        = g_strdup (name);
+ 	record->references = 0; /* Nobody has referenced it yet. */
+-	record->pixbuf     = g_object_ref (G_OBJECT (pixbuf));
++	record->pixbuf     = pixbuf;
+ 
+ 	g_hash_table_insert (pixbuf_cache, record->key, record);
+ 
+diff -Naur a/src/ui-commands.c b/src/ui-commands.c
+--- a/src/ui-commands.c	2016-01-24 02:06:18.000000000 +0000
++++ b/src/ui-commands.c	2024-08-09 22:10:18.466271055 +0100
+@@ -1071,9 +1071,10 @@
+         } else {
+ 
+                 window->merge_dialog =
++                        GL_MERGE_PROPERTIES_DIALOG(
+                         g_object_ref (
+                                 gl_merge_properties_dialog_new (GL_VIEW(window->view)->label,
+-                                                                GTK_WINDOW(window)) );
++                                                                GTK_WINDOW(window)) ));
+ 
+                 g_signal_connect (G_OBJECT(window->merge_dialog), "destroy",
+                                   G_CALLBACK (gtk_widget_destroyed),
