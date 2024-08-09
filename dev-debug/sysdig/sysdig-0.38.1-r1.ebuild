@@ -5,7 +5,7 @@ EAPI=8
 
 LUA_COMPAT=( luajit )
 
-inherit bash-completion-r1 cmake lua-single
+inherit bash-completion-r1 cmake flag-o-matic lua-single
 
 DESCRIPTION="A system exploration and troubleshooting tool"
 HOMEPAGE="https://sysdig.com/"
