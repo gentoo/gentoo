@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit gnome.org gnome2-utils meson optfeature python-single-r1 virtualx xdg
 
@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GnomeShell https://gitlab.gnome.org/GN
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 
 IUSE="elogind gtk-doc +ibus +networkmanager pipewire systemd test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -22,13 +22,13 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	>=gnome-extra/evolution-data-server-3.46.0:=
 	>=app-crypt/gcr-3.90.0:4=[introspection]
-	>=dev-libs/glib-2.68:2
+	>=dev-libs/glib-2.79.2:2
 	>=dev-libs/gobject-introspection-1.49.1:=
 	>=dev-libs/gjs-1.73.1[cairo]
 	>=gui-libs/gtk-4:4[introspection]
 	>=x11-wm/mutter-46.0:0/14[introspection,test?]
 	>=sys-auth/polkit-0.120_p20220509[introspection]
-	>=gnome-base/gsettings-desktop-schemas-42_beta[introspection]
+	>=gnome-base/gsettings-desktop-schemas-46_beta[introspection]
 	>=app-i18n/ibus-1.5.19
 	>=gnome-base/gnome-desktop-40.0:4=
 	networkmanager? (
