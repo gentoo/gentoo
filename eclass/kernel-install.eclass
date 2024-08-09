@@ -796,6 +796,9 @@ kernel-install_compress_modules() {
 		find "${ED}/lib/modules/${KV_FULL}" -name '*.ko' -print0 |
 			xargs -0 -P "$(makeopts_jobs)" -n 128 "${compress[@]}"
 		assert "Compressing kernel modules failed"
+
+		# Module paths have changed, run depmod
+		depmod --all --basedir "${ED}" ${KV_FULL} || die
 	fi
 }
 
