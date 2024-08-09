@@ -65,9 +65,7 @@ DEPEND="
 		x11-libs/libXt
 		x11-libs/libXtst
 	)"
-RDEPEND="${DEPEND}
-	java? ( >=virtual/jre-1.8:* )
-"
+RDEPEND="${DEPEND}"
 BDEPEND="
 	>=dev-lang/tcl-8.6.13-r1
 	virtual/pkgconfig
