@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~ppc64 ~riscv"
 
 RDEPEND=">=dev-cpp/robin-map-1.3.0"
 DEPEND="${RDEPEND}"
