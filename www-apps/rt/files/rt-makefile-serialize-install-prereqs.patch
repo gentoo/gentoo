@@ -5,7 +5,7 @@ diff -Naruw rt-4.2.11.orig/Makefile.in rt-4.2.11/Makefile.in
  	rm -rf $(DESTDIR)$(MASON_DATA_PATH)/etc/*
  	rm -rf $(DESTDIR)$(MASON_DATA_PATH)/obj/*
  
-+.NOTPARALLEL: testdeps config-install dirs files-install fixperms instruct
++.NOTPARALLEL: install
 +
  install: testdeps config-install dirs files-install fixperms instruct
  
