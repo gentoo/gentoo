@@ -13,7 +13,7 @@ HOMEPAGE="https://apps.kde.org/krecorder/"
 
 LICENSE="CC0-1.0 CC-BY-4.0 GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 DEPEND="
 	dev-libs/kirigami-addons:6
