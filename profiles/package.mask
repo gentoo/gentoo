@@ -37,6 +37,8 @@
 # Mask until we find out a way to deal better with the upstream
 # introduced circular dep, bug #937616
 >=dev-libs/glib-2.80
+>=dev-util/glib-utils-2.80
+>=dev-util/gdbus-codegen-2.80
 >=gnome-base/gnome-shell-46
 >=gnome-extra/gnome-shell-extensions-46
 >=gnome-base/nautilus-46
