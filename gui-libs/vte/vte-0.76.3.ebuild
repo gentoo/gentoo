@@ -9,7 +9,11 @@ inherit gnome.org meson python-any-r1 vala xdg
 DESCRIPTION="Library providing a virtual terminal emulator widget"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/vte/"
 
-SRC_URI="${SRC_URI} !vanilla? ( https://dev.gentoo.org/~pacho/distfiles/${P}-command-notify.patch.xz https://dev.gentoo.org/~pacho/distfiles/${P}-a11y-implement-GtkAccessibleText.patch.xz )"
+SRC_URI="${SRC_URI}
+	!vanilla? (
+		https://dev.gentoo.org/~pacho/${PN}/${P}-command-notify.patch.xz
+		https://dev.gentoo.org/~pacho/${PN}/${P}-a11y-implement-GtkAccessibleText.patch.xz )
+"
 # Once SIXEL support ships (0.66 or later), might need xterm license (but code might be considered upgraded to LGPL-3+)
 LICENSE="LGPL-3+ GPL-3+"
 SLOT="2.91-gtk4" # vte_api_version + "-gtk4" in meson.build
