@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>mechakotik@gmail.com</email>
+		<name>Andrei Sabalenka</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<upstream>
-		<remote-id type="github">bjorn/tiled</remote-id>
+		<remote-id type="github">mapeditor/tiled</remote-id>
 	</upstream>
+	<use>
+		<flag name="minimal">Exclude optional plugins and development headers</flag>
+	</use>
 </pkgmetadata>
+
