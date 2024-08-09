@@ -1,0 +1,30 @@
+From 05ed7fe8985d4903fb33031519eb3bc3d1211fa9 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Fri, 30 Aug 2024 02:14:26 +0200
+Subject: [PATCH] lto odr
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/absl/flags/CMakeLists.txt b/absl/flags/CMakeLists.txt
+index 7376d11..9914f73 100644
+--- a/absl/flags/CMakeLists.txt
++++ b/absl/flags/CMakeLists.txt
+@@ -326,6 +326,7 @@ absl_cc_test(
+     GTest::gtest_main
+ )
+ 
++#[===[
+ absl_cc_test(
+   NAME
+     flags_flag_test
+@@ -349,6 +350,7 @@ absl_cc_test(
+     absl::time
+     GTest::gtest_main
+ )
++]===]
+ 
+ absl_cc_test(
+   NAME
+-- 
+2.46.0
+
