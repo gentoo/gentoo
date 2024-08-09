@@ -1,0 +1,80 @@
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -15,77 +15,3 @@
+   check: true
+ )
+ 
+-cargo_options = [ '--manifest-path', source_root / 'Cargo.toml' ]
+-cargo_options += [ '--target-dir', build_root / 'src' ]
+-
+-if get_option('profile') == 'development'
+-  rust_target = 'debug'
+-  message('Building in debug mode')
+-else
+-  cargo_options += [ '--release' ]
+-  rust_target = 'release'
+-  message('Building in release mode')
+-endif
+-
+-if gtk4_x11.found()
+-  cargo_options += [ '--features', 'x11' ]
+-endif
+-
+-if get_option('disable-glycin-sandbox')
+-  cargo_options += [ '--features', 'disable-glycin-sandbox' ]
+-endif
+-
+-cargo_env = { 'CARGO_HOME': build_root / 'cargo-home' }
+-
+-cargo_build = custom_target(
+-  'cargo-build',
+-  build_by_default: true,
+-  build_always_stale: true,
+-  output: 'src',
+-  console: true,
+-  env: cargo_env,
+-  command: [
+-    cargo, 'build',
+-    cargo_options,
+-  ]
+-)
+-
+-copy_binary = custom_target(
+-  'cp-binary',
+-  depends: cargo_build,
+-  build_by_default: true,
+-  build_always_stale: true,
+-  install: true,
+-  install_dir: get_option('bindir'),
+-  output: meson.project_name(),
+-  command: [
+-    'cp',
+-    'src' / rust_target / meson.project_name(),
+-    '@OUTPUT@',
+-  ],
+-)
+-
+-cargo_doc = custom_target(
+-  'cargo-doc',
+-  build_by_default: false,
+-  build_always_stale: true,
+-  output: 'doc',
+-  console: true,
+-  command: [
+-    cargo, 'doc',
+-    cargo_options + ['--no-deps', '--document-private-items'],
+-  ],
+-)
+-
+-test(
+-  'cargo-test',
+-  cargo,
+-  args: [
+-    'test',
+-    cargo_options,
+-    '--',
+-    '--test-threads=1',
+-  ],
+-  is_parallel: false,
+-  timeout: 1800,
+-)
