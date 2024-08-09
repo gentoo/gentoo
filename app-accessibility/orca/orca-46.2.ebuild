@@ -56,6 +56,6 @@ src_configure() {
 }
 
 src_install() {
-	default
+	meson_src_install
 	python_optimize
 }
