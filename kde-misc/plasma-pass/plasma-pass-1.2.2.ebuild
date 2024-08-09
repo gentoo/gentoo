@@ -12,7 +12,7 @@ HOMEPAGE="https://www.dvratil.cz/2018/05/plasma-pass/ https://invent.kde.org/pla
 
 if [[ ${KDE_BUILD_TYPE} != live ]] ; then
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~riscv"
+	KEYWORDS="~amd64 ~ppc64 ~riscv"
 fi
 
 LICENSE="LGPL-2.1+"
