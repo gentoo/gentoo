@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit gnome.org gnome2-utils meson python-any-r1 udev xdg
 
 DESCRIPTION="GNOME compositing window manager based on Clutter"
@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 	SRC_URI=""
 	SLOT="0/14" # This can get easily out of date, but better than 9967
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 	SLOT="0/$(($(ver_cut 1) - 32))" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 fi
 
@@ -44,7 +44,6 @@ DEPEND="
 	>=gnome-base/gsettings-desktop-schemas-42.0[introspection?]
 	>=dev-libs/glib-2.75.1:2
 	gnome-base/gnome-settings-daemon
-	>=dev-libs/json-glib-0.12.0[introspection?]
 	>=x11-libs/libxkbcommon-0.4.3
 	x11-libs/libICE
 	>=app-accessibility/at-spi2-core-2.46:2[introspection?]
@@ -61,7 +60,7 @@ DEPEND="
 	media-libs/libglvnd[X]
 
 	wayland? (
-		>=dev-libs/wayland-protocols-1.32
+		>=dev-libs/wayland-protocols-1.33
 		>=dev-libs/wayland-1.22.0
 
 		>=x11-libs/libdrm-2.4.118
