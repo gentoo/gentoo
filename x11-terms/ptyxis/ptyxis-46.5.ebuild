@@ -5,7 +5,7 @@ EAPI=8
 
 inherit gnome.org gnome2-utils meson xdg
 
-DESCRIPTION="Ptyxis is a terminal for GNOME with first-class support for containers."
+DESCRIPTION="A terminal for a container-oriented desktop"
 HOMEPAGE="https://gitlab.gnome.org/chergert/ptyxis"
 
 LICENSE="LGPL-3+"
