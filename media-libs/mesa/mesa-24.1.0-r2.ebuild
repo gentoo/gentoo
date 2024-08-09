@@ -5,43 +5,40 @@ EAPI=8
 
 LLVM_COMPAT=( {15..18} )
 LLVM_OPTIONAL=1
-CARGO_OPTIONAL=1
 PYTHON_COMPAT=( python3_{10..12} )
 
 inherit flag-o-matic llvm-r1 meson-multilib python-any-r1 linux-info rust-toolchain toolchain-funcs
 
 MY_P="${P/_/-}"
 
-CRATES="
-	syn@2.0.39
-	proc-macro2@1.0.70
-	quote@1.0.33
-	unicode-ident@1.0.12
-	paste@1.0.14
-"
+SYN_PV=2.0.39
+PROC_MACRO2_PV=1.0.70
+QUOTE_PV=1.0.33
+UNICODE_IDENT_PV=1.0.12
+PASTE_PV=1.0.14
 
-inherit cargo
+NAK_URI="
+	https://github.com/dtolnay/syn/archive/refs/tags/${SYN_PV}.tar.gz -> syn-${SYN_PV}.tar.gz
+	https://github.com/dtolnay/proc-macro2/archive/refs/tags/${PROC_MACRO2_PV}.tar.gz -> proc-macro2-${PROC_MACRO2_PV}.tar.gz
+	https://github.com/dtolnay/quote/archive/refs/tags/${QUOTE_PV}.tar.gz -> quote-${QUOTE_PV}.tar.gz
+	https://github.com/dtolnay/unicode-ident/archive/refs/tags/${UNICODE_IDENT_PV}.tar.gz -> unicode-ident-${UNICODE_IDENT_PV}.tar.gz
+	https://github.com/dtolnay/paste/archive/refs/tags/${PASTE_PV}.tar.gz -> paste-${PASTE_PV}.tar.gz
+"
 
 DESCRIPTION="OpenGL-like graphic library for Linux"
 HOMEPAGE="https://www.mesa3d.org/ https://mesa.freedesktop.org/"
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/mesa.git"
+	SRC_URI="${NAK_URI}"
 	inherit git-r3
 else
 	SRC_URI="
 		https://archive.mesa3d.org/${MY_P}.tar.xz
+		${NAK_URI}
 	"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-solaris"
 fi
-
-# This should be {CARGO_CRATE_URIS//.crate/.tar.gz} to correspond to the wrap files,
-# but there are "stale" distfiles on the mirrors with the wrong names.
-# export MESON_PACKAGE_CACHE_DIR="${DISTDIR}"
-SRC_URI+="
-	${CARGO_CRATE_URIS}
-"
-
 S="${WORKDIR}/${MY_P}"
 EGIT_CHECKOUT_DIR=${S}
 
@@ -151,20 +148,21 @@ DEPEND="${RDEPEND}
 		x11-base/xorg-proto
 	)
 "
+# meson-1.4.0 contains a regression, so it fails to compile nouveau/NVK
+# see https://gitlab.freedesktop.org/mesa/mesa/-/issues/10855
 BDEPEND="
 	${PYTHON_DEPS}
 	opencl? (
 		>=virtual/rust-1.62.0
 		>=dev-util/bindgen-0.58.0
+		>=dev-build/meson-1.3.1
 	)
-	>=dev-build/meson-1.4.1
 	app-alternatives/yacc
 	app-alternatives/lex
 	virtual/pkgconfig
 	$(python_gen_any_dep "
 		>=dev-python/mako-0.8.0[\${PYTHON_USEDEP}]
 		dev-python/packaging[\${PYTHON_USEDEP}]
-		dev-python/pyyaml[\${PYTHON_USEDEP}]
 	")
 	video_cards_intel? (
 		~dev-util/intel_clc-${PV}
@@ -177,6 +175,7 @@ BDEPEND="
 			>=dev-util/bindgen-0.68.1
 			>=dev-util/cbindgen-0.26.0
 			>=virtual/rust-1.74.1
+			<dev-build/meson-1.4.0
 			|| ( sys-libs/libunwind sys-libs/llvm-libunwind )
 		)
 	)
@@ -191,20 +190,8 @@ x86? (
 )"
 
 src_unpack() {
-	if [[ ${PV} == 9999 ]]; then
-		git-r3_src_unpack
-	else
-		unpack ${MY_P}.tar.xz
-	fi
-
-	# We need this because we cannot tell meson to use DISTDIR yet
-	pushd "${DISTDIR}" >/dev/null || die
-	mkdir -p "${S}"/subprojects/packagecache || die
-	local i
-	for i in *.crate; do
-		ln -s "${PWD}/${i}" "${S}/subprojects/packagecache/${i/.crate/}.tar.gz" || die
-	done
-	popd >/dev/null || die
+	[[ ${PV} == 9999 ]] && git-r3_src_unpack
+	unpack ${A}
 }
 
 pkg_pretend() {
@@ -264,8 +251,7 @@ pkg_pretend() {
 
 python_check_deps() {
 	python_has_version -b ">=dev-python/mako-0.8.0[${PYTHON_USEDEP}]" &&
-	python_has_version -b "dev-python/packaging[${PYTHON_USEDEP}]" &&
-	python_has_version -b "dev-python/pyyaml[${PYTHON_USEDEP}]" || return 1
+	python_has_version -b "dev-python/packaging[${PYTHON_USEDEP}]" || return 1
 	if use llvm && use vulkan && use video_cards_intel && use amd64; then
 		python_has_version -b "dev-python/ply[${PYTHON_USEDEP}]" || return 1
 	fi
@@ -300,6 +286,20 @@ src_prepare() {
 	default
 	sed -i -e "/^PLATFORM_SYMBOLS/a '__gentoo_check_ldflags__'," \
 		bin/symbols-check.py || die # bug #830728
+
+	if use video_cards_nvk; then
+		# NVK Subproject Handling
+		pushd "${S}" >/dev/null || die
+		for subpkg in proc-macro2-${PROC_MACRO2_PV} syn-${SYN_PV} quote-${QUOTE_PV} unicode-ident-${UNICODE_IDENT_PV} paste-${PASTE_PV}; do
+			# copy subprojects folder
+			cp -r ../${subpkg} subprojects || die
+			# copy meson.build
+			cp subprojects/packagefiles/${subpkg%-*}/meson.build subprojects/${subpkg} || die
+			# ovewrite subpkg version when needed
+			sed -i -e "s/directory = \S\+/directory = ${subpkg}/" subprojects/${subpkg%-*}.wrap || die
+		done
+		popd >/dev/null || die
+	fi
 }
 
 multilib_src_configure() {
@@ -370,8 +370,7 @@ multilib_src_configure() {
 		gallium_enable -- kmsro
 	fi
 
-	gallium_enable !llvm softpipe
-	gallium_enable llvm llvmpipe
+	gallium_enable -- swrast
 	gallium_enable video_cards_d3d12 d3d12
 	gallium_enable video_cards_freedreno freedreno
 	gallium_enable video_cards_intel crocus i915 iris
