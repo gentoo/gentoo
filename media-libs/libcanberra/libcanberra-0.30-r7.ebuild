@@ -5,8 +5,8 @@ EAPI=7
 inherit libtool multilib-minimal systemd
 
 DESCRIPTION="Portable sound event library"
-HOMEPAGE="http://0pointer.de/lennart/projects/libcanberra/"
-SRC_URI="http://0pointer.de/lennart/projects/${PN}/${P}.tar.xz"
+HOMEPAGE="https://0pointer.de/lennart/projects/libcanberra/"
+SRC_URI="https://0pointer.de/lennart/projects/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
