@@ -11,7 +11,7 @@ DESCRIPTION="A system exploration and troubleshooting tool"
 HOMEPAGE="https://sysdig.com/"
 
 # The version of falcosecurity-libs required by sysdig as source tree
-LIBS_VERSION="0.17.2"
+LIBS_VERSION="0.17.3"
 SRC_URI="https://github.com/draios/sysdig/archive/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/falcosecurity/libs/archive/${LIBS_VERSION}.tar.gz -> falcosecurity-libs-${LIBS_VERSION}.tar.gz"
 
@@ -52,10 +52,10 @@ PATCHES=( "${FILESDIR}/${PV}-scap-loader.patch" )
 
 src_prepare() {
 	# manually apply patches to falcosecurity-libs dependency
-	pushd "${WORKDIR}"
+	pushd "${WORKDIR}/libs-${LIBS_VERSION}"
 		# musl has no libanl (#929227)
 		if [ ${ELIBC} == "musl" ] ; then
-			eapply -p0 "${FILESDIR}/${PV}-libs-no-libanl.patch" || die
+			eapply "${FILESDIR}/${PV}-libs-no-libanl.patch" || die
 		fi
 	popd
 
@@ -72,10 +72,6 @@ src_configure() {
 	# known problems with strict aliasing:
 	# https://github.com/falcosecurity/libs/issues/1964
 	append-flags -fno-strict-aliasing
-
-	# multiple issues with LTO (known/in progress)
-	# https://github.com/falcosecurity/libs/issues/1963
-	filter-lto
 
 	local mycmakeargs=(
 		# do not build the kernel driver
