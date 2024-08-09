@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="dockapp for checking up to 7 pop3 accounts"
 HOMEPAGE="https://www.dockapps.net/wmpop3lb"
@@ -10,7 +10,7 @@ S="${WORKDIR}/${P/-}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~sparc x86"
+KEYWORDS="~amd64 ~sparc ~x86"
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext
