@@ -57,6 +57,11 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 
+PATCHES=(
+	# backport fix for tests incompatibility with dbusmock 0.30.0
+	"${FILESDIR}"/6cd7c2ab82575b76f876ee2bd2d31f6cb77f022f.patch
+)
+
 python_check_deps() {
 	python_has_version \
 		"dev-python/pytest[${PYTHON_USEDEP}]" \
