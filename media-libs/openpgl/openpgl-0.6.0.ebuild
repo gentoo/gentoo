@@ -14,12 +14,11 @@ SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="-* ~amd64 ~arm64"
 
 X86_CPU_FLAGS=( sse4_2 avx2 avx512dq )
-CPU_FLAGS=( cpu_flags_arm_neon "${X86_CPU_FLAGS[@]/#/cpu_flags_x86_}" )
+CPU_FLAGS=( "${X86_CPU_FLAGS[@]/#/cpu_flags_x86_}" )
 IUSE="${CPU_FLAGS[*]} debug"
 
 REQUIRED_USE="
 	amd64? ( || ( ${X86_CPU_FLAGS[*]/#/cpu_flags_x86_} ) )
-	arm64? ( cpu_flags_arm_neon )
 "
 
 RDEPEND="
@@ -40,13 +39,13 @@ src_configure() {
 		-DOPENPGL_ISA_SSE4="$(usex cpu_flags_x86_sse4_2)"
 		-DOPENPGL_ISA_AVX2="$(usex cpu_flags_x86_avx2)"
 		-DOPENPGL_ISA_AVX512="$(usex cpu_flags_x86_avx512dq)"
-		-DOPENPGL_ISA_NEON="$(usex cpu_flags_arm_neon)"
+		-DOPENPGL_ISA_NEON="$(usex arm64)"
 		# TODO look into neon 2x support
-		# -DOPENPGL_ISA_NEON2X="$(usex cpu_flags_arm_neon2x)"
+		# -DOPENPGL_ISA_NEON2X="$(usex arm64)"
 	)
 
 	# This is currently needed on arm64 to get the NEON SIMD wrapper to compile the code successfully
-	use cpu_flags_arm_neon && append-flags -flax-vector-conversions
+	use arm64 && append-flags -flax-vector-conversions
 
 	# Disable asserts
 	append-cppflags "$(usex debug '' '-DNDEBUG')"
