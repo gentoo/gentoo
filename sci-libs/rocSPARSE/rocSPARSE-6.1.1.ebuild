@@ -93,6 +93,8 @@ src_configure() {
 	addpredict /dev/kfd
 	addpredict /dev/dri/
 
+	rocm_use_hipcc
+
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=ON
 		-DAMDGPU_TARGETS="$(get_amdgpu_flags)"
@@ -103,7 +105,7 @@ src_configure() {
 		-DBUILD_CLIENTS_BENCHMARKS=$(usex benchmark ON OFF)
 	)
 
-	CXX=hipcc cmake_src_configure
+	cmake_src_configure
 }
 
 src_test() {
