@@ -1,0 +1,55 @@
+From 5965591080306c66a48e961d264f212989fdae94 Mon Sep 17 00:00:00 2001
+From: Michael Reeves <reeves.87@gmail.com>
+Date: Thu, 4 Jul 2024 07:50:21 -0400
+Subject: [PATCH] Handle 0 height QWidget in getNofVisibleLines
+
+BUG:487338
+FIXED-IN:1.11.3
+---
+ src/difftextwindow.cpp    | 8 +++++---
+ src/mergeresultwindow.cpp | 3 ++-
+ 2 files changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/src/difftextwindow.cpp b/src/difftextwindow.cpp
+index 783d13a66..85c0419fd 100644
+--- a/src/difftextwindow.cpp
++++ b/src/difftextwindow.cpp
+@@ -574,7 +574,9 @@ LineRef DiffTextWindow::convertDiff3LineIdxToLine(const LineType d3lIdx) const
+ */
+ LineRef getBestFirstLine(LineRef line, LineType nofLines, LineRef firstLine, LineType visibleLines)
+ {
+-    if(line < visibleLines) //well known result.
++    assert(visibleLines >= 0); // VisibleLines should not be < 0.
++
++    if(line < visibleLines || visibleLines == 0) //well known result.
+         return 0;
+ 
+     LineRef newFirstLine = firstLine;
+@@ -1412,8 +1414,8 @@ void DiffTextWindow::resizeEvent(QResizeEvent* e)
+ LineType DiffTextWindow::getNofVisibleLines() const
+ {
+     QFontMetrics fm = fontMetrics();
+-
+-    return height() / fm.lineSpacing() - 1;
++    //QWidget::height() may return 0 with certian configurations with 0 length input files loaded.
++    return std::max((LineType)ceil(height() / fm.lineSpacing()) - 1, 0);
+ }
+ 
+ qint32 DiffTextWindow::getVisibleTextAreaWidth() const
+diff --git a/src/mergeresultwindow.cpp b/src/mergeresultwindow.cpp
+index b1100569d..46e50c945 100644
+--- a/src/mergeresultwindow.cpp
++++ b/src/mergeresultwindow.cpp
+@@ -471,7 +471,8 @@ qint32 MergeResultWindow::getVisibleTextAreaWidth() const
+ qint32 MergeResultWindow::getNofVisibleLines() const
+ {
+     QFontMetrics fm = fontMetrics();
+-    return (height() - 3) / fm.lineSpacing() - 2;
++    //QWidget::height() may return 0 with certian configurations with 0 length input files loaded.
++    return std::max((qint32)ceil((height() - 3) / fm.lineSpacing()) - 2, 0);
+ }
+ 
+ qint32 MergeResultWindow::getTextXOffset() const
+-- 
+GitLab
+
