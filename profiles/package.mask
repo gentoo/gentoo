@@ -39,7 +39,9 @@
 >=dev-libs/glib-2.80
 >=gnome-base/gnome-shell-46
 >=gnome-extra/gnome-shell-extensions-46
->=gnome-base/nautilis-46
+>=gnome-base/nautilus-46
+>=dev-libs/gobject-introspection-1.80
+>=dev-libs/gobject-introspection-common-1.80
 
 # Bernard Cafarelli <voyageur@gentoo.org> (2024-08-08)
 # Last release in 2004, website disappeared a long time ago.
