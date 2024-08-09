@@ -46,6 +46,8 @@
 		<flag name="vtk">Build new 3D visualization module viz based on <pkg>sci-libs/vtk</pkg></flag>
 	</use>
 	<upstream>
+		<changelog>https://github.com/opencv/opencv/wiki/ChangeLog</changelog>
+		<doc>https://docs.opencv.org</doc>
 		<remote-id type="cpe">cpe:/a:opencv:opencv</remote-id>
 		<remote-id type="github">opencv/opencv</remote-id>
 		<remote-id type="github">opencv/opencv_contrib</remote-id>
