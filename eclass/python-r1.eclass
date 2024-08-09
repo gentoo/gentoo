@@ -789,7 +789,7 @@ python_replicate_script() {
 		)
 
 		python_fix_shebang -q \
-			"${files[@]/*\//${D%/}/${PYTHON_SCRIPTDIR}/}"
+			"${files[@]/*\//${D}${PYTHON_SCRIPTDIR}/}"
 	}
 
 	local files=( "${@}" )

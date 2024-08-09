@@ -6,7 +6,7 @@
 # Vim Maintainers <vim@gentoo.org>
 # @AUTHOR:
 # Ciaran McCreesh <ciaranm@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Eclass for managing Vim spell files.
 # @DESCRIPTION:
 # How to make a vim spell file package using prebuilt spell lists
@@ -63,7 +63,7 @@
 # for another language rather than keeping them Gentoo-specific.
 
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 

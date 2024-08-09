@@ -6,7 +6,7 @@
 # Pacho Ramos <pacho@gentoo.org>
 # @AUTHOR:
 # Author: Pacho Ramos <pacho@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: install a doc file shown via elog messages
 # @DESCRIPTION:
 # An eclass for installing a README.gentoo doc file recording tips
@@ -21,7 +21,7 @@ if [[ -z ${_README_GENTOO_ECLASS} ]]; then
 _README_GENTOO_ECLASS=1
 
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -78,7 +78,7 @@ readme.gentoo_create_doc() {
 	( # subshell to avoid pollution of calling environment
 		docinto .
 		dodoc "${T}"/README.gentoo
-	) || die
+	)
 	README_GENTOO_DOC_VALUE=$(< "${T}/README.gentoo")
 }
 

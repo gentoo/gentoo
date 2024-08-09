@@ -4,7 +4,7 @@
 # @ECLASS: toolchain-funcs.eclass
 # @MAINTAINER:
 # Toolchain Ninjas <toolchain@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: functions to query common info about the toolchain
 # @DESCRIPTION:
 # The toolchain-funcs aims to provide a complete suite of functions
@@ -14,7 +14,7 @@
 # something sane.
 
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -1029,7 +1029,6 @@ gen_usr_ldscript() {
 	ewarn "${FUNCNAME}: Please migrate to usr-ldscript.eclass"
 
 	local lib libdir=$(get_libdir) output_format="" auto=false suffix=$(get_libname)
-	[[ -z ${ED+set} ]] && local ED=${D%/}${EPREFIX}/
 
 	tc-is-static-only && return
 

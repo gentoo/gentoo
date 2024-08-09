@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: perl-functions.eclass
@@ -157,7 +157,7 @@ perl_fix_packlist() {
                         einfo "Fixing packlist file /${f#${D}}"
 
 			# remove the temporary build dir path
-			sed -i -e "s:${D%/}/:/:g" "${f}"
+			sed -i -e "s:${D}/:/:g" "${f}" || die
 
 			# remove duplicate entries
 			sort -u "${f}" > "${packlist_temp}"
@@ -185,7 +185,7 @@ perl_remove_temppath() {
 	find "${D}" -type f -not -name '*.so' -print0 | while read -rd '' f ; do
 		if file "${f}" | grep -q -i " text" ; then
 			grep -q "${D}" "${f}" && ewarn "QA: File contains a temporary path ${f}"
-			sed -i -e "s:${D%/}/:/:g" "${f}"
+			sed -i -e "s:${D}/:/:g" "${f}" || die
 		fi
 	done
 }

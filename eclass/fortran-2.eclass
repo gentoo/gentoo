@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: fortran-2.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author Justin Lecher <jlec@gentoo.org>
 # Test functions provided by Sebastien Fabbro and Kacper Kowalik
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Simplify fortran compiler management
 # @DESCRIPTION:
 # If you need a fortran compiler, then you should be inheriting this eclass.
@@ -27,7 +27,7 @@
 # FORTRAN_NEED_OPENMP=1
 
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -66,9 +66,7 @@ inherit toolchain-funcs
 for _f_use in ${FORTRAN_NEEDED}; do
 	case ${_f_use} in
 		always)
-			if [[ ${EAPI} != [56] ]]; then
-				BDEPEND+=" virtual/fortran"
-			fi
+			BDEPEND+=" virtual/fortran"
 			DEPEND+=" virtual/fortran"
 			RDEPEND+=" virtual/fortran"
 			break
@@ -77,16 +75,10 @@ for _f_use in ${FORTRAN_NEEDED}; do
 			break
 			;;
 		test)
-			if [[ ${EAPI} != [56] ]]; then
-				BDEPEND+=" ${_f_use}? ( virtual/fortran )"
-			else
-				DEPEND+=" ${_f_use}? ( virtual/fortran )"
-			fi
+			BDEPEND+=" ${_f_use}? ( virtual/fortran )"
 			;;
 		*)
-			if [[ ${EAPI} != [56] ]]; then
-				BDEPEND+=" ${_f_use}? ( virtual/fortran )"
-			fi
+			BDEPEND+=" ${_f_use}? ( virtual/fortran )"
 			DEPEND+=" ${_f_use}? ( virtual/fortran )"
 			RDEPEND+=" ${_f_use}? ( virtual/fortran )"
 			;;

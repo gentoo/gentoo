@@ -2355,7 +2355,7 @@ fix_libtool_libdir_paths() {
 	pushd "${D}" >/dev/null || die
 
 	pushd "./${libpath}" >/dev/null || die
-	local dir="${PWD#${D%/}}"
+	local dir="${PWD#${D}}"
 	local allarchives=$(echo *.la)
 	allarchives="\(${allarchives// /\\|}\)"
 	popd >/dev/null || die

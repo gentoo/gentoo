@@ -381,7 +381,7 @@ gap-pkg_src_install() {
 		# usual "find" command doesn't work here because occasionally we
 		# find *.la files in GAP packages that are not libtool archives
 		# and should not be deleted.
-		find "${ED%/}$(gap-pkg_dir)/bin" -type f -name '*.la' -delete || die
+		find "${ED}$(gap-pkg_dir)/bin" -type f -name '*.la' -delete || die
 	fi
 }
 
