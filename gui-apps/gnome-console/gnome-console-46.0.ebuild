@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome.org gnome2-utils meson xdg
 
 DESCRIPTION="A simple user-friendly terminal emulator for the GNOME desktop"
-HOMEPAGE="https://gitlab.gnome.org/GNOME/console"
+HOMEPAGE="https://apps.gnome.org/Console/ https://gitlab.gnome.org/GNOME/console"
 
 LICENSE="LGPL-3+"
 SLOT="0"
