@@ -132,8 +132,8 @@ BDEPEND="
 # app-text/asciidoc
 
 PATCHES=(
-        # Change favorites defaults, bug #479918
-        "${FILESDIR}"/46.4-defaults.patch
+	# Change favorites defaults, bug #479918
+	"${FILESDIR}"/46.4-defaults.patch
 )
 
 src_prepare() {
