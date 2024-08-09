@@ -396,15 +396,6 @@ mips		default/linux/mips/23.0/split-usr/multilib/n32			exp
 mips		default/linux/mips/23.0/split-usr/multilib/n64			exp
 
 
-# Deprecated PPC64 Profiles
-# @MAINTAINER: ppc64@gentoo.org
-ppc		default/linux/powerpc/ppc64/17.0/32bit-userland				exp
-ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/desktop			exp
-ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/desktop/gnome		exp
-ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/desktop/gnome/systemd	exp
-ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/developer		exp
-
-
 # PPC profiles
 # @MAINTAINER: gyakovlev@gentoo.org, ppc@gentoo.org, musl@gentoo.org
 ppc		default/linux/ppc/17.0						exp
