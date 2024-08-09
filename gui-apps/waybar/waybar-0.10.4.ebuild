@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,15 +13,14 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/Alexays/${PN^}.git"
 else
 	SRC_URI="https://github.com/Alexays/${PN^}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64"
+	KEYWORDS="~amd64"
 	S="${WORKDIR}/${PN^}-${PV}"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="evdev experimental jack +libinput +logind mpd mpris network +popups pipewire pulseaudio sndio systemd test tray +udev upower wifi"
+IUSE="evdev experimental jack +libinput +logind mpd mpris network pipewire pulseaudio sndio systemd test tray +udev upower wifi"
 REQUIRED_USE="
-	mpris? ( logind )
 	upower? ( logind )
 "
 
@@ -40,10 +39,11 @@ RDEPEND="
 	dev-libs/jsoncpp:=
 	dev-libs/libinput:=
 	dev-libs/libsigc++:2
-	>=dev-libs/libfmt-7.0.0:=
-	>=dev-libs/spdlog-1.8.5:=
+	>=dev-libs/libfmt-8.1.1:=
+	>=dev-libs/spdlog-1.10.0:=
 	dev-libs/date:=
 	dev-libs/wayland
+	gui-libs/gtk-layer-shell
 	gui-libs/wlroots:=
 	x11-libs/gtk+:3[wayland]
 	x11-libs/libxkbcommon
@@ -57,8 +57,7 @@ RDEPEND="
 	mpd? ( media-libs/libmpdclient )
 	mpris? ( >=media-sound/playerctl-2 )
 	network? ( dev-libs/libnl:3 )
-	popups? ( gui-libs/gtk-layer-shell )
-	pipewire? ( media-video/wireplumber:0/0.4 )
+	pipewire? ( media-video/wireplumber:0/0.5 )
 	pulseaudio? ( media-libs/libpulse )
 	sndio? ( media-sound/sndio:= )
 	systemd? ( sys-apps/systemd:= )
@@ -86,9 +85,9 @@ src_configure() {
 		$(meson_feature mpd)
 		$(meson_feature mpris)
 		$(meson_feature network libnl)
-		$(meson_feature popups gtk-layer-shell)
 		$(meson_feature pulseaudio)
 		$(meson_feature pipewire wireplumber)
+		$(meson_feature pipewire)
 		$(meson_feature sndio)
 		$(meson_feature systemd)
 		$(meson_feature test tests)
