@@ -6,11 +6,12 @@ EAPI=8
 WX_GTK_VER="3.2-gtk3"
 VIRTUALX_REQUIRED="manual"
 
-inherit flag-o-matic java-pkg-opt-2 java-ant-2 toolchain-funcs virtualx wxwidgets
+inherit flag-o-matic java-pkg-opt-2 java-pkg-simple toolchain-funcs virtualx wxwidgets
 
 DESCRIPTION="A WAM based Prolog system"
-HOMEPAGE="http://ctp.di.fct.unl.pt/~amd/cxprolog"
+HOMEPAGE="http://ctp.di.fct.unl.pt/~amd/cxprolog/"
 SRC_URI="http://ctp.di.fct.unl.pt/~amd/cxprolog/cxunix/${P}.src.tgz"
+S="${WORKDIR}"/${P}
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -18,26 +19,33 @@ KEYWORDS="~amd64 ~x86"
 IUSE="examples java +readline test wxwidgets"
 RESTRICT="!test? ( test )"
 
-RDEPEND="readline? ( sys-libs/readline:= )
-	java? ( >=virtual/jdk-1.8:= )
-	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )"
+COMMON_DEP="
+	readline? ( sys-libs/readline:= )
+	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )
+"
 
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEP}
+	java? ( >=virtual/jdk-1.8:* )
 	test? (
 		java? ( ${VIRTUALX_DEPEND} )
 		wxwidgets? ( ${VIRTUALX_DEPEND} )
 	)"
 
-S="${WORKDIR}"/${P}
+RDEPEND="${COMMON_DEP}
+	java? ( >=virtual/jre-1.8:* )"
+
+DOCS=( ChangeLog.txt MANUAL.txt README.txt )
+PATCHES=(
+	"${FILESDIR}"/${P}-portage.patch
+	"${FILESDIR}"/${P}-printf-musl.patch
+	"${FILESDIR}"/${P}-test-io.patch
+)
 
 src_prepare() {
-	eapply "${FILESDIR}"/${P}-portage.patch
-	eapply "${FILESDIR}"/${P}-printf-musl.patch
-	eapply "${FILESDIR}"/${P}-test-io.patch
-	eapply_user
+	default #780585
+	use java && java-pkg-opt-2_src_prepare && java-pkg_clean
 
 	sed -i -e "s|lib/cxprolog|$(get_libdir)/cxprolog|" "${S}"/src/FileSys.c || die
-	cp "${FILESDIR}"/build.xml "${S}"/build.xml || die
 	cp "${FILESDIR}"/cx_dev_boot.pl "${S}"/cx_dev_boot.pl || die
 	rm -f "${S}"/pl/test_file_io_1.txt
 
@@ -90,7 +98,7 @@ src_compile() {
 
 	if use java; then
 		JAVA_SRC_DIR="${S}/lib/cxprolog/java"
-		eant jar
+		java-pkg-simple_src_compile
 	fi
 }
 
@@ -100,7 +108,7 @@ cxprolog_src_test() {
 	if use java; then
 		local test_javadir="${S}"/pl/$(get_libdir)/cxprolog/java
 		mkdir -p "${test_javadir}" || die
-		ln -s "${S}"/dist/prolog.jar "${test_javadir}"/prolog.jar || die
+		ln -s "${S}"/cxprolog.jar "${test_javadir}"/prolog.jar || die
 	fi
 
 	LD_LIBRARY_PATH="${S}" \
@@ -132,11 +140,9 @@ src_install() {
 	doins pl/*.{pl,txt}
 
 	if use java; then
-		insinto /usr/$(get_libdir)/cxprolog/java
-		doins dist/prolog.jar
+		java-pkg_jarinto /usr/$(get_libdir)/cxprolog/java
+		java-pkg_newjar cxprolog.jar prolog.jar
 	fi
-
-	dodoc ChangeLog.txt MANUAL.txt README.txt
 
 	if use examples; then
 		dodoc -r examples

@@ -6,7 +6,7 @@ EAPI=8
 DISABLE_AUTOFORMATTING="yes"
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit edo flag-o-matic java-pkg-opt-2 java-ant-2 python-any-r1
+inherit edo flag-o-matic java-pkg-opt-2 python-any-r1
 inherit qmake-utils readme.gentoo-r1 systemd toolchain-funcs user-info
 
 DESCRIPTION="Open Source DVR and media center hub"
@@ -107,7 +107,7 @@ RDEPEND="
 	xmltv? (
 		dev-perl/XML-LibXML
 		media-tv/xmltv
-	 )
+	)
 	xvid? ( media-libs/xvid )
 	zeroconf? (
 		dev-libs/openssl:=
@@ -131,6 +131,7 @@ DEPEND="
 "
 BDEPEND="
 	virtual/pkgconfig
+	java? ( >=dev-java/ant-1.10.14-r3 )
 	opengl? ( virtual/opengl )
 	python? (
 		${PYTHON_DEPS}
@@ -163,6 +164,10 @@ pkg_setup() {
 
 src_prepare() {
 	default
+	cat > external/libmythbluray/src/libbluray/bdj/build.properties <<-EOF
+		java_version_asm=1.8
+		java_version_bdj=1.8
+	EOF
 	# https://github.com/MythTV/mythtv/pull/824
 	# https://github.com/MythTV/mythtv/pull/838
 	# https://bugs.gentoo.org/888291
@@ -366,7 +371,8 @@ src_install() {
 	use python && python_fix_shebang "${ED}/usr/share/mythtv"
 
 	# Make shell & perl scripts executable
-	find "${ED}" -type f \( -name '*.sh' -o -name '*.pl' \) -exec chmod a+x {} \; || die "Failed to make script executable"
+	find "${ED}" -type f \( -name '*.sh' -o -name '*.pl' \) -exec chmod a+x {} \; \
+		|| die "Failed to make script executable"
 }
 
 pkg_postinst() {

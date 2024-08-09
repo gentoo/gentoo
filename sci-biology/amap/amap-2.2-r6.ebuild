@@ -1,24 +1,26 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit java-pkg-opt-2 java-ant-2 toolchain-funcs
+JAVA_PKG_IUSE="doc source"
 
-MY_P=${PN}.${PV}
+inherit java-pkg-opt-2 java-pkg-simple toolchain-funcs
 
 DESCRIPTION="Protein multiple-alignment-based sequence annealing"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
-SRC_URI="http://baboon.math.berkeley.edu/${PN}/download/${MY_P}.tar.gz"
-S="${WORKDIR}/${PN}-align"
+SRC_URI="http://baboon.math.berkeley.edu/amap/download/${P/-/.}.tar.gz"
+S="${WORKDIR}/amap-align"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="java"
 
+DEPEND="java? ( >=virtual/jdk-1.8:* )"
 RDEPEND="java? ( >=virtual/jre-1.8:* )"
-BDEPEND="${RDEPEND}"
+
+DOCS=( align/{README,PROBCONS.README} )
 
 PATCHES=(
 	"${FILESDIR}"/${P}-makefile.patch
@@ -27,7 +29,7 @@ PATCHES=(
 
 src_prepare() {
 	default
-	java-pkg-opt-2_src_prepare
+	use java && java-pkg-opt-2_src_prepare &&java-pkg_clean
 }
 
 src_configure() {
@@ -36,24 +38,18 @@ src_configure() {
 
 src_compile() {
 	emake -C align
-
 	if use java; then
-		pushd display >/dev/null || die
-		eant -Ddisplay all || die
-		popd >/dev/null || die
+		JAVA_JAR_FILENAME="amapdisplay.jar"
+		JAVA_SRC_DIR="display/src"
+		java-pkg-simple_src_compile
 	fi
 }
 
 src_install() {
 	dobin align/${PN}
 
-	dodoc align/{README,PROBCONS.README}
-
 	insinto /usr/share/${PN}
 	doins -r examples
 
-	if use java; then
-		java-pkg_newjar display/AmapDisplay.jar amapdisplay.jar
-		java-pkg_dolauncher amapdisplay --jar amapdisplay.jar
-	fi
+	use java && java-pkg-simple_src_install
 }
