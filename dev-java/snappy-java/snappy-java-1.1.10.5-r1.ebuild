@@ -16,10 +16,10 @@ HOMEPAGE="https://github.com/xerial/snappy-java/"
 HCV="3.3.5"
 SRC_URI="https://github.com/xerial/snappy-java/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	test? ( https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-common/${HCV}/hadoop-common-${HCV}.jar )"
-S="${WORKDIR}/snappy-java-${PV}"
+S="${WORKDIR}/${P}"
 
 LICENSE="Apache-2.0"
-SLOT="1.1"
+SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 CP_DEPEND="dev-java/osgi-core:0"
@@ -41,6 +41,7 @@ DEPEND=">=virtual/jdk-1.8:*
 	)"
 
 RDEPEND=">=virtual/jre-1.8:*
+	!dev-java/snappy-java:1.1
 	${CP_DEPEND}
 	${CDEPEND}"
 
