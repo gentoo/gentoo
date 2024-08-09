@@ -13,26 +13,27 @@ SRC_URI="
 	https://github.com/greenbone/openvas-scanner/archive/v${PV}.tar.gz -> ${P}.tar.gz
 "
 
-SLOT="0"
 LICENSE="GPL-2 GPL-2+"
-KEYWORDS="amd64 ~x86"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc snmp test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	acct-user/gvm
+	app-crypt/gpgme:=
 	>=dev-db/redis-5.0.3
 	>=dev-libs/glib-2.42:2
-	>=dev-libs/json-glib-1.4.4
-	>=net-libs/gnutls-3.2.15:=
-	>=net-analyzer/gvm-libs-22.4
-	net-libs/libpcap
-	app-crypt/gpgme:=
 	>=dev-libs/libgcrypt-1.6:=
 	dev-libs/libgpg-error
 	>=dev-libs/libksba-1.0.7
-	>=net-libs/libssh-0.6.0:=
 	dev-libs/libbsd
+	>=net-libs/libssh-0.6.0:=
+	>=dev-libs/json-glib-1.4.4
+	>=net-analyzer/gvm-libs-22.4
+	>=net-libs/gnutls-3.6.4:=
+	net-libs/libpcap
+	>=net-misc/curl-7.74.0[ssl]
 	snmp? ( net-analyzer/net-snmp:= )
 "
 RDEPEND="${DEPEND}"
@@ -82,7 +83,6 @@ src_configure() {
 		"-DSBINDIR=${EPREFIX}/usr/bin"
 		"-DOPENVAS_FEED_LOCK_PATH=${EPREFIX}/var/lib/openvas/feed-update.lock"
 		"-DOPENVAS_RUN_DIR=/run/ospd"
-		"-DINSTALL_OLD_SYNC_SCRIPT=OFF"
 		"-DBUILD_WITH_NETSNMP=$(usex snmp)"
 	)
 	cmake_src_configure
