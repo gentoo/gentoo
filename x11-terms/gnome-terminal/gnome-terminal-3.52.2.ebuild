@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-terminal"
 
 # Upstream is hostile and refuses to upload tarballs.
 SRC_URI="https://gitlab.gnome.org/GNOME/${PN}/-/archive/${PV}/${P}.tar.bz2"
-SRC_URI+=" !vanilla? ( https://dev.gentoo.org/~pacho/distfiles/${P}-cntr-ntfy-autottl-ts.patch.xz )"
+SRC_URI+=" !vanilla? ( https://dev.gentoo.org/~pacho/${PN}/${P}-cntr-ntfy-autottl-ts.patch.xz )"
 
 LICENSE="GPL-3+ GPL-3 CC-BY-SA-3.0 FDL-1.3"
 
