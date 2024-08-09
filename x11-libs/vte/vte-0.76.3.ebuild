@@ -11,7 +11,11 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/vte/"
 
 # Upstream is hostile and refuses to upload tarballs.
 SRC_URI="https://gitlab.gnome.org/GNOME/${PN}/-/archive/${PV}/${P}.tar.bz2"
-SRC_URI="${SRC_URI} !vanilla? ( https://dev.gentoo.org/~pacho/distfiles/${P}-command-notify.patch.xz https://dev.gentoo.org/~pacho/distfiles/${P}-a11y-implement-GtkAccessibleText.patch.xz )"
+SRC_URI="${SRC_URI}
+	!vanilla? (
+		https://dev.gentoo.org/~pacho/${PN}/${P}-command-notify.patch.xz
+		https://dev.gentoo.org/~pacho/${PN}/${P}-a11y-implement-GtkAccessibleText.patch.xz )
+"
 # Once SIXEL support ships (0.66 or later), might need xterm license (but code might be considered upgraded to LGPL-3+)
 LICENSE="LGPL-3+ GPL-3+"
 
