@@ -33,7 +33,7 @@ RDEPEND="
 	>=dev-libs/libffi-3.0.13-r1:=[${MULTILIB_USEDEP}]
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	>=virtual/libintl-0-r2[${MULTILIB_USEDEP}]
-	introspection? ( >=dev-libs/gobject-introspection-1.80.1[${MULTILIB_USEDEP}] )
+	introspection? ( >=dev-libs/gobject-introspection-1.80.1 )
 	kernel_linux? ( >=sys-apps/util-linux-2.23[${MULTILIB_USEDEP}] )
 	selinux? ( >=sys-libs/libselinux-2.2.2-r5[${MULTILIB_USEDEP}] )
 	xattr? ( !elibc_glibc? ( >=sys-apps/attr-2.4.47-r1[${MULTILIB_USEDEP}] ) )
