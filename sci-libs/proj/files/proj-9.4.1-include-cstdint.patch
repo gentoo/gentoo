@@ -1,0 +1,37 @@
+https://github.com/rouault/PROJ/commit/35546a7eb1846b93bd035932562193b980c27520
+
+From 35546a7eb1846b93bd035932562193b980c27520 Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Wed, 7 Aug 2024 11:25:30 +0200
+Subject: [PATCH] Add missing include cstdint
+
+Fixes #4215
+---
+ src/apps/cct.cpp   | 1 +
+ src/apps/cs2cs.cpp | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/apps/cct.cpp b/src/apps/cct.cpp
+index f7d46cd655..193fff6e47 100644
+--- a/src/apps/cct.cpp
++++ b/src/apps/cct.cpp
+@@ -79,6 +79,7 @@ Thomas Knudsen, thokn@sdfe.dk, 2016-05-25/2017-10-26
+ #include <string.h>
+ 
+ #include <algorithm>
++#include <cstdint>
+ #include <fstream> // std::ifstream
+ #include <iostream>
+ 
+diff --git a/src/apps/cs2cs.cpp b/src/apps/cs2cs.cpp
+index 27caa603cc..88353bf8f0 100644
+--- a/src/apps/cs2cs.cpp
++++ b/src/apps/cs2cs.cpp
+@@ -36,6 +36,7 @@
+ #include <string.h>
+ 
+ #include <cassert>
++#include <cstdint>
+ #include <iostream>
+ #include <string>
+ #include <vector>
