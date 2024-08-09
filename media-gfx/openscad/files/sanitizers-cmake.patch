@@ -1,0 +1,15 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b034cd03b..2509c9701 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -103,8 +103,8 @@ endif(CLANG_TIDY)
+ 
+ add_executable(OpenSCAD)
+ 
+-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/submodules/sanitizers-cmake/cmake" ${CMAKE_MODULE_PATH})
+-find_package(Sanitizers)
++set(CMAKE_MODULE_PATH "/usr/share/sanitizers-cmake" ${CMAKE_MODULE_PATH})
++find_package(Sanitizers REQUIRED)
+ 
+ # Strict c++17, e.g. no GNU extensions
+ set_property(TARGET OpenSCAD PROPERTY CXX_STANDARD 17)
