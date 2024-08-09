@@ -21,6 +21,7 @@ REQUIRED_USE="motif? ( coin )"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
+	virtual/lapack
 	coin? (
 		>=media-libs/coin-4
 		virtual/opengl
@@ -76,6 +77,9 @@ src_configure() {
 		"-DUSE_GSL=$(usex gsl ON OFF)"
 		"-DUSE_JPEG=$(usex jpeg ON OFF)"
 		"-DUSE_PNG=$(usex png ON OFF)"
+		"-DUSE_LAPACK=ON"
+		# disable using the builtin copy
+		"-DWITH_LAPACK=OFF"
 		"-DUSE_LIBUSB_1=$(usex usb ON OFF)"
 		"-DUSE_OGRE=$(usex ogre ON OFF)"
 		"-DUSE_OIS=$(usex ogre ON OFF)"
