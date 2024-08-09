@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd
+inherit optfeature systemd
 
 DESCRIPTION="Clipboard management"
 HOMEPAGE="https://github.com/cdown/clipmenu"
@@ -49,6 +49,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	optfeature "ignoring specific windows via CM_IGNORE_WINDOW" x11-misc/xdotool
+
 	if systemd_is_booted || has_version sys-apps/systemd; then
 		einfo ""
 		einfo "Make sure to import \$DISPLAY when using the systemd unit for clipmenud"
