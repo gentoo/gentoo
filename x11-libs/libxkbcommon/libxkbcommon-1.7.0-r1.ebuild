@@ -41,6 +41,10 @@ DEPEND="${RDEPEND}
 	tools? ( wayland? ( >=dev-libs/wayland-protocols-1.12 ) )
 "
 
+PATCHES=(
+	"${FILESDIR}"/libxkbcommon-1.7.0-symbol-ver.patch
+)
+
 pkg_setup() {
 	if use test; then
 		python-any-r1_pkg_setup
