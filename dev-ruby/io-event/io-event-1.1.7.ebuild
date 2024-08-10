@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,6 @@ SRC_URI="https://github.com/socketry/io-event/archive/v${PV}.tar.gz -> ${P}.tar.
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
-IUSE=""
 
 ruby_add_bdepend "test? ( >=dev-ruby/sus-0.6:0 )"
 

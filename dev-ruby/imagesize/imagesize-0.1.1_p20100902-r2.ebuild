@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,10 +14,10 @@ DESCRIPTION="Measure image size (GIF, PNG, JPEG, etc)"
 HOMEPAGE="http://imagesize.rubyforge.org/"
 COMMIT_ID="bd5be2afb088beba3f0d863cef4eac7db56ca804"
 SRC_URI="https://github.com/mattheworiordan/${PN}/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
+
 LICENSE="Ruby-BSD"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
-IUSE=""
 
 RUBY_S="${PN}-${COMMIT_ID}"
 
