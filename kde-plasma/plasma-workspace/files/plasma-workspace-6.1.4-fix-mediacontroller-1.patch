@@ -1,0 +1,39 @@
+From 9a294b8a91170ed2bd5c75a65c81fee7c58839d2 Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Fri, 9 Aug 2024 00:57:00 +0000
+Subject: [PATCH] applets/mediacontroller: use Play/Pause to control players
+
+Some players don't report updated CanPlay or CanPause properties to
+MPRIS, which is a problem for PlayPause() as it requires the player can
+play and pause at the same time. Use Play/Pause to work around it.
+
+CCBUG: 490569
+
+
+(cherry picked from commit c5edc144665a0d814a908ae6a120a288f7965d7d)
+
+Co-authored-by: Fushan Wen <qydwhotmail@gmail.com>
+---
+ applets/mediacontroller/package/contents/ui/main.qml | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/applets/mediacontroller/package/contents/ui/main.qml b/applets/mediacontroller/package/contents/ui/main.qml
+index 885c972ae71..fa09d2a86c4 100644
+--- a/applets/mediacontroller/package/contents/ui/main.qml
++++ b/applets/mediacontroller/package/contents/ui/main.qml
+@@ -174,7 +174,11 @@ PlasmoidItem {
+         mpris2Model.currentPlayer.Pause();
+     }
+     function togglePlaying() {
+-        mpris2Model.currentPlayer.PlayPause();
++        if (root.isPlaying) {
++            mpris2Model.currentPlayer.Pause();
++        } else {
++            mpris2Model.currentPlayer.Play();
++        }
+     }
+     function stop() {
+         mpris2Model.currentPlayer.Stop();
+-- 
+GitLab
+

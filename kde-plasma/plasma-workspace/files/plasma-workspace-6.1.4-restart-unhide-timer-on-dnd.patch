@@ -1,0 +1,38 @@
+From 84d0555e4484cde0cfd41c63047b69381e511767 Mon Sep 17 00:00:00 2001
+From: Yifan Zhu <fanzhuyifan@gmail.com>
+Date: Wed, 7 Aug 2024 17:12:02 +0000
+Subject: [PATCH] shell/panelview: restart unhide timer on drag leave
+
+Otherwise the autohide and dodge windows panels don't rehide when
+leaving them during drag and drop.
+
+CCBUG: 450579
+
+
+(cherry picked from commit 72e963100eb630771a9f2b7ce57375a7ddc0f59f)
+
+Co-authored-by: Yifan Zhu <fanzhuyifan@gmail.com>
+---
+ shell/panelview.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/shell/panelview.cpp b/shell/panelview.cpp
+index 095315a8c85..5a88764cf3c 100644
+--- a/shell/panelview.cpp
++++ b/shell/panelview.cpp
+@@ -1194,8 +1194,11 @@ bool PanelView::event(QEvent *e)
+         }
+         break;
+     }
+-    // DragLeave just works
+     case QEvent::DragLeave:
++        m_containsMouse = false;
++        if (edgeActivated()) {
++            m_unhideTimer.start();
++        }
+         break;
+     case QEvent::DragMove: {
+         QDragMoveEvent *de = static_cast<QDragMoveEvent *>(e);
+-- 
+GitLab
+

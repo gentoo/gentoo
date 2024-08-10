@@ -1,0 +1,36 @@
+From ab80bee1724804650147a1c9485ee67ae4f42f83 Mon Sep 17 00:00:00 2001
+From: Marco Martin <notmart@gmail.com>
+Date: Mon, 12 Aug 2024 18:56:04 +0000
+Subject: [PATCH] Fix svg images
+
+Image delegate needs to be loaded also for ScalableImage
+
+BUG:491369
+
+
+(cherry picked from commit 1c6e817a476e76970437faa7fef1dbdc5d3be082)
+
+1c6e817a Fix svg images
+
+Co-authored-by: Marco Martin <notmart@gmail.com>
+---
+ wallpapers/image/imagepackage/contents/ui/ImageStackView.qml | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/wallpapers/image/imagepackage/contents/ui/ImageStackView.qml b/wallpapers/image/imagepackage/contents/ui/ImageStackView.qml
+index 70545d8814e..bbf64138a4b 100644
+--- a/wallpapers/image/imagepackage/contents/ui/ImageStackView.qml
++++ b/wallpapers/image/imagepackage/contents/ui/ImageStackView.qml
+@@ -43,7 +43,8 @@ QQC2.StackView {
+ 
+     function createBackgroundComponent() {
+         switch (mediaProxy.backgroundType) {
+-        case Wallpaper.BackgroundType.Image: {
++        case Wallpaper.BackgroundType.Image:
++        case Wallpaper.BackgroundType.VectorImage: {
+             if (!staticImageComponent) {
+                 staticImageComponent = Qt.createComponent("mediacomponent/StaticImageComponent.qml");
+             }
+-- 
+GitLab
+
