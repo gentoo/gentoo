@@ -43,7 +43,7 @@ RDEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	php? (
 		dev-util/kdevelop:5=
-		dev-util/kdevelop-pg-qt:5
+		dev-util/kdevelop-pg-qt:0
 		dev-util/kdevelop-php:5
 	)
 "

@@ -72,7 +72,7 @@ COMMON_DEPEND="
 		>=kde-frameworks/krunner-${KFMIN}:5
 		>=kde-plasma/libplasma-${KFMIN}:5
 	)
-	qmake? ( dev-util/kdevelop-pg-qt:5 )
+	qmake? ( dev-util/kdevelop-pg-qt:0 )
 	subversion? (
 		dev-libs/apr:1
 		dev-libs/apr-util:1
