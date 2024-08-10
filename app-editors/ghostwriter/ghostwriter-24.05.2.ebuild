@@ -39,4 +39,4 @@ BDEPEND="
 
 DOCS=( CHANGELOG.md README.md )
 
-PATCHES=( "${FILESDIR}/${P}-bogusdep.patch" ) # in 24.08, bug 936578
+PATCHES=( "${FILESDIR}/${P}-bogusdep.patch" ) # in 24.08, bugs 936578 and 937708
