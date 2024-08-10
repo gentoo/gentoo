@@ -59,6 +59,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-uncompressed-man-pages.patch"
 	"${FILESDIR}/${PN}-4.4.0-unbundle-deps.patch"
+	"${FILESDIR}/${PN}-4.4.0-unbundle-harfbuzz.patch"
 	"${FILESDIR}/${PN}-4.2.0-dynamic_cast-crash.patch"
 )
 
@@ -86,13 +87,11 @@ src_configure() {
 	export PATH="$(qt5_get_bindir):${PATH}"
 
 	local mycmakeargs=(
+		-DCMAKE_BUILD_TYPE="release"
 		-DCMAKE_CXX_FLAGS_RELEASE="${CXXFLAGS}"
 		-DCMAKE_C_FLAGS_RELEASE="${CFLAGS}"
 		-DCMAKE_INSTALL_PREFIX=/usr
 		-DCMAKE_SKIP_RPATH=TRUE
-		-DMUE_BUILD_CRASHPAD_CLIENT=OFF
-		-DMUE_BUILD_UNIT_TESTS="$(usex test)"
-		-DMUE_BUILD_UPDATE_MODULE=OFF
 		-DMUE_BUILD_VIDEOEXPORT_MODULE="$(usex video)"
 		-DMUE_COMPILE_USE_CCACHE=OFF
 		-DMUE_COMPILE_USE_SYSTEM_FLAC=ON
@@ -100,15 +99,23 @@ src_configure() {
 		-DMUE_COMPILE_USE_SYSTEM_OPUSENC=ON
 		-DMUE_COMPILE_USE_SYSTEM_TINYXML=ON
 		-DMUE_DOWNLOAD_SOUNDFONT=OFF
-		-DMUE_ENABLE_AUDIO_JACK=$(usex jack)
-		-DMUSESCORE_BUILD_MODE=release
+		-DMUSE_APP_BUILD_MODE="release"
+		-DMUSE_MODULE_AUDIO_JACK="$(usex jack)"
+		-DMUSE_MODULE_DIAGNOSTICS_CRASHPAD_CLIENT=OFF
+		# tests
+		-DMUE_BUILD_BRAILLE_TESTS="$(usex test)"
+		-DMUE_BUILD_ENGRAVING_TESTS="$(usex test)"
+		-DMUE_BUILD_IMPORTEXPORT_TESTS="$(usex test)"
+		-DMUE_BUILD_NOTATION_TESTS="$(usex test)"
+		-DMUE_BUILD_PLAYBACK_TESTS="$(usex test)"
+		-DMUE_BUILD_PROJECT_TESTS="$(usex test)"
 	)
 	cmake_src_configure
 }
 
 src_compile() {
 	cd "${BUILD_DIR}" || die
-	cmake_build lrelease manpages
+	cmake_build
 	cmake_src_compile
 }
 
