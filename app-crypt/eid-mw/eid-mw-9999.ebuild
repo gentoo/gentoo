@@ -29,34 +29,14 @@ BDEPEND="virtual/pkgconfig"
 
 REQUIRED_USE="dialogs? ( gtk )"
 
+PATCHES=(
+	"${FILESDIR}/0001-Do-not-build-xpi-module.patch"
+	"${FILESDIR}/0001-Fix-libdir-for-manifestdir.patch"
+	"${FILESDIR}/0001-Remove-uml-build.patch"
+	)
+
 src_prepare() {
 	default
-
-	# xpi module : we don't want it anymore
-	sed -i -e '/SUBDIRS/ s:plugins_tools/xpi ::' Makefile.am || die
-	sed -i -e '/plugins_tools\/xpi/ d' configure.ac || die
-
-	# hardcoded lsb_info
-	sed -i \
-		-e "s:get_lsb_info('i'):strdup(_(\"Gentoo\")):" \
-		-e "s:get_lsb_info('r'):strdup(_(\"n/a\")):" \
-		-e "s:get_lsb_info('c'):strdup(_(\"n/a\")):" \
-		plugins_tools/aboutmw/gtk/about-main.c || die
-
-	# Fix libdir for manifestdir
-	sed -i \
-		-e "/pkcs11_manifestdir/ s:prefix)/lib:libdir):" \
-		-e "/managed_storage_manifestdir/ s:prefix)/lib:libdir):" \
-		cardcomm/pkcs11/src/Makefile.am || die
-
-	# See bug #811270 (remove uml build)
-	sed -i \
-		-e 's:cardlayer/uml::' \
-		cardcomm/pkcs11/src/Makefile.am || die
-	sed -i \
-		-e 's:uml::' \
-		plugins_tools/eid-viewer/Makefile.am || die
-
 	eautoreconf
 }
 
