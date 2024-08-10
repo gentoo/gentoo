@@ -71,6 +71,7 @@ app-alternatives/ninja samurai
 # indicate a passing test suite, you must check the logs.
 # https://buildd.debian.org/status/logs.php?pkg=weston&arch=alpha
 gui-libs/gtk wayland
+dev-libs/libportal wayland
 
 # matoro <matoro_gentoo@matoro.tk> (2023-06-18)
 # sci-physics/bullet not keyworded here (#908240)
