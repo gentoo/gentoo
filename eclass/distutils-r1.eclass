@@ -2109,8 +2109,10 @@ _distutils-r1_post_python_install() {
 		local strays=()
 		local p
 		mapfile -d $'\0' -t strays < <(
+			# jar for jpype, https://bugs.gentoo.org/937642
 			find "${sitedir}" -maxdepth 1 -type f '!' '(' \
 					-name '*.egg-info' -o \
+					-name '*.jar' -o \
 					-name '*.pth' -o \
 					-name '*.py' -o \
 					-name '*.pyi' -o \
