@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="amd64 arm64 ~riscv"
 
 # NB: numpy & siphash24 are an "extra" (optional) deps
 RDEPEND="
