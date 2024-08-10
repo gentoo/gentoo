@@ -29,6 +29,9 @@ RDEPEND="
 "
 BDEPEND="
 	dev-python/versioneer[${PYTHON_USEDEP}]
+	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
+	)
 "
 
 distutils_enable_tests pytest
