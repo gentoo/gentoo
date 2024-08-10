@@ -39,6 +39,7 @@ RDEPEND="
 "
 
 BDEPEND="
+	dev-python/versioneer[${PYTHON_USEDEP}]
 	test? (
 		dev-python/magic-wormhole-mailbox-server[${PYTHON_USEDEP}]
 		~dev-python/magic-wormhole-transit-relay-0.2.1[${PYTHON_USEDEP}]
@@ -46,6 +47,11 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	distutils-r1_src_prepare
+	rm versioneer.py || die
+}
 
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
