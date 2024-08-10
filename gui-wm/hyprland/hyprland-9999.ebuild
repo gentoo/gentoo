@@ -32,6 +32,17 @@ HYPRPM_RDEPEND="
 	dev-vcs/git
 	virtual/pkgconfig
 "
+
+XWAYLAND_DEPEND="
+	X? (
+		x11-libs/libxcb:0=
+		x11-base/xwayland
+		x11-libs/xcb-util-errors
+		x11-libs/xcb-util-renderutil
+		x11-libs/xcb-util-wm
+	)
+"
+
 RDEPEND="
 	${HYPRPM_RDEPEND}
 	dev-cpp/tomlplusplus
@@ -46,36 +57,33 @@ RDEPEND="
 	x11-libs/libxkbcommon
 	x11-libs/pango
 	x11-libs/pixman
-	X? (
-		x11-libs/libxcb:0=
-	)
+	${XWAYLAND_DEPEND}
 "
 DEPEND="
 	${RDEPEND}
-	${WLROOTS_DEPEND}
 	>=dev-libs/hyprland-protocols-0.3
 	>=dev-libs/hyprlang-0.3.2
 	>=dev-libs/wayland-protocols-1.36
 	>=gui-libs/hyprutils-0.2.1
 "
 BDEPEND="
-	${WLROOTS_BDEPEND}
-	|| ( >=sys-devel/gcc-13:* >=sys-devel/clang-16:* )
+	|| ( >=sys-devel/gcc-14:* >=sys-devel/clang-18:* )
 	app-misc/jq
 	dev-build/cmake
 	>=dev-util/hyprwayland-scanner-0.3.8
 	virtual/pkgconfig
+	${XWAYLAND_DEPEND}
 "
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} == binary ]] && return
 
-	if tc-is-gcc && ver_test $(gcc-version) -lt 13 ; then
-		eerror "Hyprland requires >=sys-devel/gcc-13 to build"
+	if tc-is-gcc && ver_test $(gcc-version) -lt 14 ; then
+		eerror "Hyprland requires >=sys-devel/gcc-14 to build"
 		eerror "Please upgrade GCC: emerge -v1 sys-devel/gcc"
 		die "GCC version is too old to compile Hyprland!"
-	elif tc-is-clang && ver_test $(clang-version) -lt 16 ; then
-		eerror "Hyprland requires >=sys-devel/clang-16 to build"
+	elif tc-is-clang && ver_test $(clang-version) -lt 18 ; then
+		eerror "Hyprland requires >=sys-devel/clang-18 to build"
 		eerror "Please upgrade Clang: emerge -v1 sys-devel/clang"
 		die "Clang version is too old to compile Hyprland!"
 	fi
@@ -86,8 +94,6 @@ src_configure() {
 		$(meson_feature legacy-renderer legacy_renderer)
 		$(meson_feature systemd)
 		$(meson_feature X xwayland)
-		-Dwlroots:backends=drm,libinput$(usev X ',x11')
-		-Dwlroots:xcb-errors=disabled
 	)
 
 	meson_src_configure
