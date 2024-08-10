@@ -17,14 +17,14 @@ alpha		default/linux/alpha/17.0/desktop				exp
 alpha		default/linux/alpha/17.0/desktop/gnome				exp
 alpha		default/linux/alpha/17.0/desktop/gnome/systemd/merged-usr	exp
 alpha		default/linux/alpha/17.0/developer				exp
-alpha		default/linux/alpha/23.0					exp
-alpha		default/linux/alpha/23.0/systemd				exp
-alpha		default/linux/alpha/23.0/desktop				exp
-alpha		default/linux/alpha/23.0/desktop/gnome				exp
-alpha		default/linux/alpha/23.0/desktop/gnome/systemd			exp
-alpha		default/linux/alpha/23.0/split-usr				exp
-alpha		default/linux/alpha/23.0/split-usr/desktop			exp
-alpha		default/linux/alpha/23.0/split-usr/desktop/gnome		exp
+alpha		default/linux/alpha/23.0					stable
+alpha		default/linux/alpha/23.0/systemd				stable
+alpha		default/linux/alpha/23.0/desktop				stable
+alpha		default/linux/alpha/23.0/desktop/gnome				stable
+alpha		default/linux/alpha/23.0/desktop/gnome/systemd			stable
+alpha		default/linux/alpha/23.0/split-usr				stable
+alpha		default/linux/alpha/23.0/split-usr/desktop			stable
+alpha		default/linux/alpha/23.0/split-usr/desktop/gnome		stable
 
 
 # AMD64 Profiles
