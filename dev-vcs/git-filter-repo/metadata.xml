@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>mpagano@gentoo.org</email>
+		<name>Mike Pagano</name>
+	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">newren/git-filter-repo</remote-id>
