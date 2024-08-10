@@ -32,9 +32,15 @@ RDEPEND="
 	dev-python/twisted[ssl,${PYTHON_USEDEP}]
 "
 BDEPEND="
+	dev-python/versioneer[${PYTHON_USEDEP}]
 	test? (
 		dev-python/treq[${PYTHON_USEDEP}]
 	)
 "
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	distutils-r1_src_prepare
+	rm versioneer.py || die
+}
