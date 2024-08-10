@@ -1,0 +1,38 @@
+From 2e5b6e80acc9ffc42afe329facdcb443dca21a34 Mon Sep 17 00:00:00 2001
+From: Vincent Hardy <vincent.hardy.be@gmail.com>
+Date: Thu, 8 Aug 2024 10:30:27 +0200
+Subject: [PATCH] Do not build xpi module
+
+xpi module has to be installed by the users
+---
+ Makefile.am  | 2 +-
+ configure.ac | 1 -
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 209a83c85..1073a8141 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,7 +1,7 @@
+ ACLOCAL_AMFLAGS = -I scripts/m4
+ EXTRA_DIST = scripts/build-aux/config.rpath scripts/build-aux/genver.sh .version debian rpm doc
+ 
+-SUBDIRS=cardcomm/pkcs11/src doc/sdk/include/v240 plugins_tools/util tests/unit plugins_tools/xpi plugins_tools/chrome_pkcs11 tests/fuzz
++SUBDIRS=cardcomm/pkcs11/src doc/sdk/include/v240 plugins_tools/util tests/unit plugins_tools/chrome_pkcs11 tests/fuzz
+ 
+ if GTK
+ SUBDIRS += plugins_tools/aboutmw/gtk plugins_tools/eid-viewer
+diff --git a/configure.ac b/configure.ac
+index 845e8487c..b729bb870 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -275,6 +275,5 @@ AC_CONFIG_FILES([Makefile
+ 		 plugins_tools/eid-viewer/gtk/eid-viewer.desktop.sh
+ 		 plugins_tools/eid-viewer/uml/Makefile
+ 		 rpm/eid-mw.spec])
+-AC_CONFIG_SUBDIRS([plugins_tools/xpi])
+ 
+ AC_OUTPUT
+-- 
+2.44.2
+

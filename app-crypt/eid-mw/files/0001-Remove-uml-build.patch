@@ -1,0 +1,48 @@
+From 3ad7dc89bdcae1607b90909cb2a5598363da74cf Mon Sep 17 00:00:00 2001
+From: Vincent Hardy <vincent.hardy.be@gmail.com>
+Date: Thu, 8 Aug 2024 15:02:00 +0200
+Subject: [PATCH] Remove uml build
+
+See bug #811270
+---
+ cardcomm/pkcs11/src/Makefile.am      | 3 +--
+ plugins_tools/eid-viewer/Makefile.am | 2 +-
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/cardcomm/pkcs11/src/Makefile.am b/cardcomm/pkcs11/src/Makefile.am
+index 33201b147..5decdfb26 100644
+--- a/cardcomm/pkcs11/src/Makefile.am
++++ b/cardcomm/pkcs11/src/Makefile.am
+@@ -148,7 +148,6 @@ noinst_HEADERS = \
+ 	dialogs/dialogsgtk/gtk_dialog_names.h \
+ 	fuzz/beid_fuzz.h
+ 
+-SUBDIRS = cardlayer/uml
+ if NO_DIALOGS
+ libbeidpkcs11_la_CXXFLAGS += -DNO_DIALOGS
+ libbeidpkcs11_la_LIBADD += libbeidcommon.la
+@@ -171,7 +170,7 @@ libdialogs_la_SOURCES = \
+ 	dialogs/dialogsgtk/dlgs_gtk.cpp \
+ 	dialogs/dialogsgtk/single_dialog.c
+ libexec_PROGRAMS = beid-askpin beid-changepin beid-badpin beid-askaccess beid-spr-askpin beid-spr-changepin
+-SUBDIRS += dialogs/dialogsgtk/po
++SUBDIRS = dialogs/dialogsgtk/po
+ endif
+ endif
+ 
+diff --git a/plugins_tools/eid-viewer/Makefile.am b/plugins_tools/eid-viewer/Makefile.am
+index a25746d3d..0a631d41c 100644
+--- a/plugins_tools/eid-viewer/Makefile.am
++++ b/plugins_tools/eid-viewer/Makefile.am
+@@ -139,7 +139,7 @@ libeidviewer_la_LIBADD = $(top_builddir)/plugins_tools/util/liblabels.la $(top_b
+ libeidviewer_la_LDFLAGS = -version-info 1:0:1
+ AM_CFLAGS = @GTK_CFLAGS@ -I. -I$(srcdir)/include -Igtk -DDATAROOTDIR='"$(datarootdir)"' -I$(top_srcdir)/doc/sdk/include/v240 -I$(top_srcdir)/cardcomm/pkcs11/src/fuzz -I$(top_srcdir)/plugins_tools/util @SSL_CFLAGS@ @GIO_CFLAGS@ @XML2_CFLAGS@ @CURL_CFLAGS@ @libproxy_CFLAGS@ -fvisibility=hidden @FUZZING@
+ AM_CXXFLAGS = $(AM_CFLAGS) -std=c++98
+-SUBDIRS = . gtk/po test uml
++SUBDIRS = . gtk/po test
+ 
+ resources/%.c: resources/%.png
+ 	printf '%s\n' '#include <gdk-pixbuf/gdk-pixdata.h>' '#if __GNUC__ >= 4' '#pragma GCC diagnostic push' '#pragma GCC diagnostic ignored "-Wpointer-sign"' '#endif' > $@
+-- 
+2.44.2
+
