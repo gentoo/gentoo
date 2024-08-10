@@ -32,6 +32,17 @@ HYPRPM_RDEPEND="
 	dev-vcs/git
 	virtual/pkgconfig
 "
+
+XWAYLAND_DEPEND="
+	X? (
+		x11-libs/libxcb:0=
+		x11-base/xwayland
+		x11-libs/xcb-util-errors
+		x11-libs/xcb-util-renderutil
+		x11-libs/xcb-util-wm
+	)
+"
+
 RDEPEND="
 	${HYPRPM_RDEPEND}
 	dev-cpp/tomlplusplus
@@ -46,25 +57,22 @@ RDEPEND="
 	x11-libs/libxkbcommon
 	x11-libs/pango
 	x11-libs/pixman
-	X? (
-		x11-libs/libxcb:0=
-	)
+	${XWAYLAND_DEPEND}
 "
 DEPEND="
 	${RDEPEND}
-	${WLROOTS_DEPEND}
 	>=dev-libs/hyprland-protocols-0.3
 	>=dev-libs/hyprlang-0.3.2
 	>=dev-libs/wayland-protocols-1.36
 	>=gui-libs/hyprutils-0.2.1
 "
 BDEPEND="
-	${WLROOTS_BDEPEND}
 	|| ( >=sys-devel/gcc-13:* >=sys-devel/clang-16:* )
 	app-misc/jq
 	dev-build/cmake
 	>=dev-util/hyprwayland-scanner-0.3.8
 	virtual/pkgconfig
+	${XWAYLAND_DEPEND}
 "
 
 pkg_setup() {
@@ -86,8 +94,6 @@ src_configure() {
 		$(meson_feature legacy-renderer legacy_renderer)
 		$(meson_feature systemd)
 		$(meson_feature X xwayland)
-		-Dwlroots:backends=drm,libinput$(usev X ',x11')
-		-Dwlroots:xcb-errors=disabled
 	)
 
 	meson_src_configure
