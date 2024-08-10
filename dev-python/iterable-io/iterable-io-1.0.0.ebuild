@@ -17,6 +17,6 @@ HOMEPAGE="
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 distutils_enable_tests pytest
