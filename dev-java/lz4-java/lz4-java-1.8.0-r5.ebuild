@@ -84,7 +84,7 @@ src_compile() {
 		-Wl,-soname,liblz4-java.so \
 		-o liblz4-java.so \
 		build/objects/src/jni/net_jpountz_lz4_LZ4JNI.o \
-		build/objects/src/jni/net_jpountz_xxhash_XXHashJNI.o -llz4
+		build/objects/src/jni/net_jpountz_xxhash_XXHashJNI.o -llz4 -lxxhash
 }
 
 src_install() {
