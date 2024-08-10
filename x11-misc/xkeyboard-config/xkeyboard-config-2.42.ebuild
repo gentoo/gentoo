@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{11..12} )
 inherit meson python-any-r1
 
 DESCRIPTION="X keyboard configuration database"
-HOMEPAGE="https://www.freedesktop.org/wiki/Software/XKeyboardConfig https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/XKeyboardConfig/ https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config"
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config.git"
@@ -26,8 +26,8 @@ BDEPEND="
 	dev-lang/perl
 	dev-libs/libxslt
 	sys-devel/gettext
+	${PYTHON_DEPS}
 	test? (
-		${PYTHON_DEPS}
 		x11-apps/xkbcomp
 		x11-libs/libxkbcommon
 		$(python_gen_any_dep '
@@ -47,7 +47,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	python-any-r1_pkg_setup
 }
 
 src_prepare() {
