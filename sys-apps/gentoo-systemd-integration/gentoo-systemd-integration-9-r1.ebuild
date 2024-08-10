@@ -22,8 +22,7 @@ SLOT="0"
 RDEPEND="acct-group/floppy
 	acct-group/usb
 	>=sys-apps/systemd-207
-	!sys-fs/eudev
-	!sys-fs/udev"
+"
 DEPEND=">=sys-apps/systemd-207"
 BDEPEND="virtual/pkgconfig"
 
