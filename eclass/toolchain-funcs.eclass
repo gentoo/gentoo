@@ -251,7 +251,7 @@ tc-detect-is-softfloat() {
 
 	case ${CTARGET:-${CHOST}} in
 		# Avoid autodetection for bare-metal targets. bug #666896
-		*-newlib|*-elf|*-eabi)
+		*-newlib|*-elf|*-eabi|arm64-apple-darwin*)
 			return 1 ;;
 
 		# arm-unknown-linux-gnueabi is ambiguous. We used to treat it as
@@ -294,6 +294,8 @@ tc-tuple-is-softfloat() {
 			echo "no" ;;
 		# bare-metal targets have their defaults. bug #666896
 		*-newlib|*-elf|*-eabi)
+			echo "no" ;;
+		arm64-apple-darwin*)
 			echo "no" ;;
 		arm*)
 			echo "yes" ;;
@@ -626,7 +628,14 @@ tc-has-tls() {
 		-*) die "Usage: tc-has-tls [-c|-l] [toolchain prefix]";;
 	esac
 
-	: "${flags:=-fPIC -shared -Wl,-z,defs}"
+	case "${CHOST}" in
+		*-darwin*)
+			# bug #612370
+			: ${flags:=-dynamiclib}
+			;;
+		*)
+			: ${flags:=-fPIC -shared -Wl,-z,defs}
+	esac
 	[[ $1 == -* ]] && shift
 	$(tc-getCC "$@") ${flags} "${base}.c" -o "${base}" >&/dev/null
 	local ret=$?
@@ -645,6 +654,7 @@ tc-ninja_magic_to_arch() {
 	[[ -z ${host} ]] && host=${CTARGET:-${CHOST}}
 
 	case ${host} in
+		arm64*)		echo arm64;;
 		aarch64*)	echo arm64;;
 		alpha*)		echo alpha;;
 		arc*)		echo arc;;
@@ -1032,6 +1042,7 @@ gen_usr_ldscript() {
 	[[ -z ${ED+set} ]] && local ED=${D%/}${EPREFIX}/
 
 	tc-is-static-only && return
+	use prefix && return
 
 	# We only care about stuffing / for the native ABI, bug #479448
 	if [[ $(type -t multilib_is_native_abi) == "function" ]] ; then
