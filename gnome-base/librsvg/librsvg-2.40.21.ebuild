@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/LibRsvg"
 
 LICENSE="LGPL-2+"
 SLOT="2"
-KEYWORDS="~alpha arm hppa ~ia64 ~loong ~mips ppc ~ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha arm hppa ~ia64 ~loong ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
 
 IUSE="+introspection tools +vala"
 REQUIRED_USE="vala? ( introspection )"
