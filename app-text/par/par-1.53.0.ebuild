@@ -15,11 +15,6 @@ LICENSE="|| ( MIT par )"
 SLOT="0"
 KEYWORDS="~amd64 ~mips ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
-DEPEND="
-	!dev-util/par
-	!app-arch/par
-"
-
 src_compile() {
 	emake -f protoMakefile CC="$(tc-getCC) ${CFLAGS} -c" \
 		LINK1="$(tc-getCC) ${LDFLAGS}"
