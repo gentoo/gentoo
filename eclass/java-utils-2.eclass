@@ -1140,7 +1140,7 @@ java-pkg_jarfrom() {
 # @USAGE: [--build-only] [--runtime-only] [--with-dependencies] <package1>[,<package2>...]
 # @DESCRIPTION:
 # Get the classpath provided by any number of packages
-# Among other things, this can be passed to 'javac -classpath' or 'ant -lib'.
+# Among other things, this can be passed to 'javac -classpath'.
 # The providing packages are recorded as dependencies into package.env DEPEND
 # line, unless "--build-only" is passed as the very first argument, for jars
 # that have to be present only at build time and are not needed on runtime
