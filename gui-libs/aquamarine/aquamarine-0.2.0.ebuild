@@ -19,7 +19,7 @@ fi
 LICENSE="BSD"
 SLOT="0"
 
-# Upstream states that the simpleWindow test is broken.
+# Upstream states that the simpleWindow test is broken, see bug 936653
 RESTRICT="test"
 RDEPEND="
 	dev-libs/wayland
