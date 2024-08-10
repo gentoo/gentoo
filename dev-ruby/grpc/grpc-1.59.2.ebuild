@@ -16,7 +16,6 @@ HOMEPAGE="https://github.com/grpc/grpc"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE=""
 
 ruby_add_rdepend "
 	dev-ruby/googleapis-common-protos-types:1
