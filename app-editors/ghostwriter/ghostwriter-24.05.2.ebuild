@@ -38,3 +38,5 @@ BDEPEND="
 "
 
 DOCS=( CHANGELOG.md README.md )
+
+PATCHES=( "${FILESDIR}/${P}-bogusdep.patch" ) # in 24.08, bug 936578

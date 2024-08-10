@@ -1,0 +1,41 @@
+From 6d680805c08d131ea3a98c4d3fe87d51a92f2ffa Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 10 Aug 2024 12:41:33 +0200
+Subject: [PATCH] Drop unused Qt5Compat dependency
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/CMakeLists.txt | 10 ----------
+ 1 file changed, 10 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 33ce58f..da55382 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -90,10 +90,6 @@ find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED COMPONENTS
+     WebEngineWidgets
+ )
+ 
+-if (QT_MAJOR_VERSION STREQUAL "6")
+-    find_package(Qt6 REQUIRED COMPONENTS Core5Compat)
+-endif()
+-
+ find_package(
+     KF${KF_MAJOR_VERSION} ${KF_MIN_VERSION}
+     REQUIRED
+@@ -135,12 +131,6 @@ target_link_libraries(ghostwriter PRIVATE
+     ${CMARK_LIBS}
+ )
+ 
+-if (QT_MAJOR_VERSION STREQUAL "6")
+-    target_link_libraries(ghostwriter PRIVATE
+-        Qt::Core5Compat
+-    )
+-endif()
+-
+ set_target_properties(ghostwriter PROPERTIES
+     WIN32_EXECUTABLE ON
+     MACOSX_BUNDLE ON
+-- 
+2.45.2
+
