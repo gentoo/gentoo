@@ -38,11 +38,6 @@ BDEPEND="
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
-PATCHES=(
-	# https://github.com/mpmath/mpmath/pull/816
-	"${FILESDIR}/${P}-numpy-2.patch"
-)
-
 python_test() {
 	local EPYTEST_DESELECT=(
 		# TODO
@@ -51,6 +46,10 @@ python_test() {
 		mpmath/tests/test_cli.py::test_bare_console_pretty
 		mpmath/tests/test_cli.py::test_bare_console_without_ipython
 		mpmath/tests/test_cli.py::test_bare_console_wrap_floats
+		# precision problems on some arches, also np2
+		# https://github.com/mpmath/mpmath/pull/816
+		# https://github.com/mpmath/mpmath/issues/836
+		mpmath/tests/test_convert.py::test_compatibility
 	)
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
