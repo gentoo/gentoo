@@ -14,7 +14,7 @@ HOMEPAGE="https://www.riverbankcomputing.com/software/pyqt/"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv x86"
 
 IUSE="
 	bluetooth dbus debug declarative designer examples gles2-only gui help location
