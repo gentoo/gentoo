@@ -5,6 +5,10 @@
 		<email>zx2c4@gentoo.org</email>
 		<name>Jason A. Donenfeld</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>mpagano@gentoo.org</email>
+		<name>Mike Pagano</name>
+	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">b4</remote-id>
