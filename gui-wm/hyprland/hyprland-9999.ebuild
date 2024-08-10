@@ -47,6 +47,7 @@ RDEPEND="
 	x11-libs/libxkbcommon
 	x11-libs/pango
 	x11-libs/pixman
+	x11-libs/libXcursor
 	X? (
 		x11-libs/libxcb:0=
 		x11-base/xwayland
