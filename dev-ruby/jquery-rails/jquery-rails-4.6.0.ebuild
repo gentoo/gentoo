@@ -22,8 +22,6 @@ LICENSE="MIT"
 SLOT="4"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
 
-IUSE=""
-
 ruby_add_rdepend "
 	>=dev-ruby/railties-4.2.0:*
 	>=dev-ruby/thor-0.14:* <dev-ruby/thor-2:*
