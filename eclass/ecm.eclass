@@ -84,8 +84,8 @@ fi
 
 # @ECLASS_VARIABLE: ECM_HANDBOOK
 # @DESCRIPTION:
-# Will accept "true", "false", "optional", "forceoptional". If set to "false",
-# do nothing.
+# Will accept "true", "false", "optional", "forceoptional", "forceoff".
+# If set to "false" (default), do nothing.
 # Otherwise, add "+handbook" to IUSE, add the appropriate dependency, and let
 # KF${_KFSLOT}DocTools generate and install the handbook from docbook file(s)
 # found in ECM_HANDBOOK_DIR. However if !handbook, disable build of
@@ -233,7 +233,7 @@ case ${ECM_HANDBOOK} in
 		IUSE+=" +handbook"
 		BDEPEND+=" handbook? ( >=kde-frameworks/kdoctools-${KFMIN}:${_KFSLOT} )"
 		;;
-	false) ;;
+	false|forceoff) ;;
 	*)
 		eerror "Unknown value for \${ECM_HANDBOOK}"
 		die "Value ${ECM_HANDBOOK} is not supported"
@@ -446,13 +446,22 @@ ecm_punt_bogus_dep() {
 	fi
 }
 
+# @FUNCTION: _ecm_punt_kdoctools_install
+# @INTERNAL
+# @DESCRIPTION:
+# Disables kdoctools_install(po) call.
+_ecm_punt_kdoctools_install() {
+	sed -e "s/^ *kdoctools_install.*(po.*)/#& # disabled by ecm.eclass/" \
+		-i CMakeLists.txt || die
+}
+
 # @FUNCTION: ecm_punt_po_install
 # @DESCRIPTION:
-# Disables handling of a po subdirectory, typically when the package
+# Disables handling of po subdirectories, typically when the package
 # is outsourcing common files to a ${PN}-common split package.
 ecm_punt_po_install() {
-	sed -e "s/^ki18n_install.*(po.*)/#& # disabled by ecm.eclass/" \
-		-e "s/^kdoctools_install.*(po.*)/#& # disabled by ecm.eclass/" \
+	_ecm_punt_kdoctools_install
+	sed -e "s/^ *ki18n_install.*(po.*)/#& # disabled by ecm.eclass/" \
 		-i CMakeLists.txt || die
 }
 
@@ -488,13 +497,16 @@ ecm_src_prepare() {
 	fi
 
 	# only enable handbook when required
-	if in_iuse handbook && ! use handbook ; then
+	if [[ ${ECM_HANDBOOK} == forceoff ]] ||
+		{ [[ ${ECM_HANDBOOK} = forceoptional ]] && in_iuse handbook && ! use handbook; }
+	then
+		ecm_punt_kf_module DocTools
+		_ecm_punt_kdoctools_install
+	fi
+	if [[ ${ECM_HANDBOOK} == forceoff ]] ||
+		{ in_iuse handbook && ! use handbook; }
+	then
 		cmake_comment_add_subdirectory ${ECM_HANDBOOK_DIR}
-
-		if [[ ${ECM_HANDBOOK} = forceoptional ]] ; then
-			ecm_punt_kf_module DocTools
-			sed -i -e "/kdoctools_install/I s/^/#DONT/" CMakeLists.txt || die
-		fi
 	fi
 
 	# drop translations when nls is not wanted
