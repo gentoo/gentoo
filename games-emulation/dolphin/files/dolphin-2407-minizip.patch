@@ -1,0 +1,18 @@
+From 18ba49ec1ece5af136a75cb63530f7d1131bf8a7 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Fri, 9 Aug 2024 09:11:21 +0300
+Subject: [PATCH 2/2] minizip
+
+--- a/Externals/minizip-ng/CMakeLists.txt
++++ b/Externals/minizip-ng/CMakeLists.txt
+@@ -1,5 +1,7 @@
+ project(minizip C)
+ 
++include(CheckFunctionExists)
++
+ add_library(minizip STATIC
+   minizip-ng/mz.h
+   minizip-ng/mz_compat.c
+-- 
+2.45.2
+
