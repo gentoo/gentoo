@@ -14,7 +14,7 @@ SRC_URI="https://github.com/gcovr/gcovr/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~loong ~x86"
+KEYWORDS="amd64 ~loong ~x86"
 
 RDEPEND="
 	dev-python/jinja[${PYTHON_USEDEP}]
