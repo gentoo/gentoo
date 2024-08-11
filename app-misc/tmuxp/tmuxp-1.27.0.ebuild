@@ -1,4 +1,4 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,6 +33,11 @@ BDEPEND="
 EPYTEST_DESELECT=(
 	# test doesn't get along with sandbox
 	"tests/cli/test_load.py::test_load_zsh_autotitle_warning"
+)
+
+EPYTEST_IGNORE=(
+	# not actually tests, but throws off test collection
+	"tests/fixtures/"
 )
 
 distutils_enable_tests pytest
