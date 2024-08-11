@@ -1,0 +1,27 @@
+https://github.com/dolphin-emu/dolphin/pull/12986
+https://github.com/dolphin-emu/dolphin/commit/9c5cd817e39b44ff2eb68c75d9405c582207b53b
+
+From 9c5cd817e39b44ff2eb68c75d9405c582207b53b Mon Sep 17 00:00:00 2001
+From: mitaclaw <140017135+mitaclaw@users.noreply.github.com>
+Date: Thu, 8 Aug 2024 09:42:14 -0700
+Subject: [PATCH] CMakeLists: Fix LLVM Usage In UICommon
+
+This compile definition was removed in 68cbd2640d4663fe29e21234dc068769cb9bc673 because it was complicated by changes in 50dc0ffbceebe0f633bd63cd4710a3e2f548d688. Thus, the LLVM disassembler would never be used in UICommon's Disassembler class.
+--- a/Source/Core/UICommon/CMakeLists.txt
++++ b/Source/Core/UICommon/CMakeLists.txt
+@@ -56,6 +56,7 @@ if(ENABLE_LLVM)
+   find_package(LLVM CONFIG)
+   if(LLVM_FOUND)
+     message(STATUS "LLVM found, enabling LLVM support in disassembler")
++    target_compile_definitions(uicommon PRIVATE HAVE_LLVM)
+     # Minimal documentation about LLVM's CMake functions is available here:
+     # https://releases.llvm.org/16.0.0/docs/CMake.html#embedding-llvm-in-your-project
+     # https://groups.google.com/g/llvm-dev/c/YeEVe7HTasQ?pli=1
+@@ -69,6 +70,7 @@ if(ENABLE_LLVM)
+     llvm_config(uicommon USE_SHARED
+       mcdisassembler target ${LLVM_EXPAND_COMPONENTS}
+     )
++    target_include_directories(uicommon PRIVATE ${LLVM_INCLUDE_DIRS})
+   endif()
+ endif()
+ 
