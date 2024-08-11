@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-08-11)
+# HOMEPAGE and SRC_URI return 404, Gentoo is last distribution.
+# Removal on 2024-09-10.  Bugs #937775, #675028.
+media-sound/SmarTagger
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-08-10)
 # Mask KF6-based version for now until actual KF6-based consumers
 # also move to ::gentoo.
