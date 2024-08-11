@@ -90,10 +90,6 @@ pkg_setup() {
 	use system-lua && lua-single_pkg_setup
 }
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-3.1.0_beta4-fix-manpage-install-location.patch
-)
-
 src_prepare() {
 	# Upstream's meson.build is not very friendly to our needs
 	sed -i -e "s:doc/freeciv:doc/${PF}:" meson.build || die
