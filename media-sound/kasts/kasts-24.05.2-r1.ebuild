@@ -13,7 +13,7 @@ HOMEPAGE="https://apps.kde.org/kasts/"
 LICENSE="GPL-2 GPL-2+ GPL-3+ BSD LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="gstreamer networkmanager vlc"
+IUSE="gstreamer vlc"
 
 DEPEND="
 	dev-libs/kirigami-addons:6
@@ -35,24 +35,15 @@ DEPEND="
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-good:1.0
 	)
-	networkmanager? ( >=kde-frameworks/networkmanager-qt-${KFMIN}:6 )
 	vlc? ( media-video/vlc:= )
 "
-RDEPEND="${DEPEND}
-	>=dev-qt/qt5compat-${QTMIN}:6[qml]
-"
+RDEPEND="${DEPEND}"
 BDEPEND="gstreamer? ( virtual/pkgconfig )"
-
-src_prepare() {
-	ecm_src_prepare
-	ecm_punt_qt_module Test
-}
 
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_EXAMPLE_PLAYER=OFF
 		-DBUILD_GSTREAMER_BACKEND=$(usex gstreamer)
-		$(cmake_use_find_package networkmanager KF6NetworkManagerQt)
 		$(cmake_use_find_package vlc LIBVLC)
 	)
 	ecm_src_configure
