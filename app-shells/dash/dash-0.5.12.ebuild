@@ -29,9 +29,6 @@ DEPEND="
 src_prepare() {
 	default
 
-	# Fix the invalid sort
-	sed -i -e 's/LC_COLLATE=C/LC_ALL=C/g' src/mkbuiltins || die
-
 	[[ ${PV} == 9999 ]] && eautoreconf
 
 	# Use pkg-config for libedit linkage
