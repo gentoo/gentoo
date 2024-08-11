@@ -2049,7 +2049,7 @@ toolchain_src_test() {
 			eerror "GCC_TESTS_IGNORE_NO_BASELINE is set, ignoring test result and creating a new baseline..."
 		elif [[ -n ${GCC_TESTS_REGEN_BASELINE} ]] ; then
 			eerror "GCC_TESTS_REGEN_BASELINE is set, ignoring test result and creating using a new baseline..."
-		elif [[ ${ret} != 0 ]]; then
+		elif [[ ${ret} != 0 ]] ; then
 			eerror "(Set GCC_TESTS_IGNORE_NO_BASELINE=1 to make this non-fatal and generate a baseline.)"
 			die "Tests failed (failures occurred with no reference data)"
 		fi
