@@ -5,7 +5,7 @@ EAPI=8
 
 CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
 LUA_COMPAT=( luajit )
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit cmake flag-o-matic lua-single optfeature python-single-r1 xdg
 
@@ -26,9 +26,12 @@ if [[ ${PV} == 9999 ]]; then
 	)
 else
 	SRC_URI="
-		https://github.com/obsproject/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-		https://github.com/obsproject/obs-browser/archive/${OBS_BROWSER_COMMIT}.tar.gz -> obs-browser-${OBS_BROWSER_COMMIT}.tar.gz
-		https://github.com/obsproject/obs-websocket/archive/${OBS_WEBSOCKET_COMMIT}.tar.gz -> obs-websocket-${OBS_WEBSOCKET_COMMIT}.tar.gz
+		https://github.com/obsproject/${PN}/archive/${PV}.tar.gz
+			-> ${P}.tar.gz
+		https://github.com/obsproject/obs-browser/archive/${OBS_BROWSER_COMMIT}.tar.gz
+			-> obs-browser-${OBS_BROWSER_COMMIT}.tar.gz
+		https://github.com/obsproject/obs-websocket/archive/${OBS_WEBSOCKET_COMMIT}.tar.gz
+			-> obs-websocket-${OBS_WEBSOCKET_COMMIT}.tar.gz
 	"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
@@ -39,9 +42,8 @@ LICENSE="Boost-1.0 GPL-2+ MIT Unlicense"
 SLOT="0"
 IUSE="
 	+alsa browser decklink fdk jack lua mpegts nvenc pipewire pulseaudio
-	python qsv speex +ssl test truetype v4l vlc wayland websocket
+	python qsv sndio speex test-input truetype v4l vlc wayland websocket
 "
-RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	browser? ( || ( alsa pulseaudio ) )
 	lua? ( ${LUA_REQUIRED_USE} )
@@ -66,6 +68,7 @@ DEPEND="
 	media-libs/x264:=
 	media-video/ffmpeg:=[nvenc?,opus,x264]
 	net-misc/curl
+	net-libs/mbedtls:=
 	sys-apps/dbus
 	sys-apps/pciutils
 	sys-apps/util-linux
@@ -116,9 +119,8 @@ DEPEND="
 	pulseaudio? ( media-libs/libpulse )
 	python? ( ${PYTHON_DEPS} )
 	qsv? ( media-libs/libvpl )
+	sndio? ( media-sound/sndio )
 	speex? ( media-libs/speexdsp )
-	ssl? ( net-libs/mbedtls:= )
-	test? ( dev-util/cmocka )
 	truetype? (
 		media-libs/fontconfig
 		media-libs/freetype
@@ -189,32 +191,31 @@ src_configure() {
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
 		$(usev browser -DCEF_ROOT_DIR=../${CEF_DIR})
-		-DCALM_DEPRECATION=ON
-		-DCCACHE_SUPPORT=OFF
 		-DENABLE_ALSA=$(usex alsa)
 		-DENABLE_AJA=OFF
 		-DENABLE_BROWSER=$(usex browser)
+		-DENABLE_CCACHE=OFF
 		-DENABLE_DECKLINK=$(usex decklink)
+		-DENABLE_FFMPEG_NVENC=$(usex nvenc)
 		-DENABLE_FREETYPE=$(usex truetype)
 		-DENABLE_JACK=$(usex jack)
 		-DENABLE_LIBFDK=$(usex fdk)
-		-DENABLE_NATIVE_NVENC=OFF
 		-DENABLE_NEW_MPEGTS_OUTPUT=$(usex mpegts)
+		-DENABLE_NVENC=$(usex nvenc)
 		-DENABLE_PIPEWIRE=$(usex pipewire)
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
 		-DENABLE_QSV11=$(usex qsv)
 		-DENABLE_RNNOISE=ON
-		-DENABLE_RTMPS=$(usex ssl ON OFF) # Needed for bug 880861
+		-DENABLE_SNDIO=$(usex sndio)
 		-DENABLE_SPEEXDSP=$(usex speex)
-		-DENABLE_UNIT_TESTS=$(usex test)
+		-DENABLE_TEST_INPUT=$(usex test-input)
 		-DENABLE_V4L2=$(usex v4l)
 		-DENABLE_VLC=$(usex vlc)
 		-DENABLE_VST=ON
 		-DENABLE_WAYLAND=$(usex wayland)
 		-DENABLE_WEBRTC=OFF # Requires libdatachannel.
 		-DENABLE_WEBSOCKET=$(usex websocket)
-		-DOBS_MULTIARCH_SUFFIX=${libdir#lib}
-		-DUNIX_STRUCTURE=1
+		-DOBS_CMAKE_VERSION=3
 	)
 
 	if [[ ${PV} != 9999 ]]; then
@@ -233,7 +234,7 @@ src_configure() {
 		mycmakeargs+=( -DENABLE_SCRIPTING=OFF )
 	fi
 
-	if use browser && use ssl; then
+	if use browser; then
 		mycmakeargs+=( -DENABLE_WHATSNEW=ON )
 	else
 		mycmakeargs+=( -DENABLE_WHATSNEW=OFF )
