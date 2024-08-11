@@ -17,7 +17,6 @@ SRC_URI="https://github.com/gjtorikian/html-pipeline/archive/v${PV}.tar.gz -> ${
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64"
-IUSE=""
 
 ruby_add_rdepend "
 	>=dev-ruby/activesupport-2:*

@@ -16,7 +16,6 @@ HOMEPAGE="https://rubyworks.github.io/hashery/"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE=""
 
 ruby_add_bdepend "test? (
 	dev-ruby/lemon
