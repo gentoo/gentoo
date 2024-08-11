@@ -249,14 +249,6 @@ dev-ruby/rspectacular
 ~dev-vcs/mercurial-6.7.2
 ~dev-vcs/mercurial-6.7.3
 
-# Viorel Munteanu <ceamac@gentoo.org> (2024-06-11)
-# dev-php/pear, dev-php/PEAR-* and their reverse dependencies: mask for removal
-# in 30 days.
-# They are all unmaintained, most of the ebuilds are still EAPI 6, and together
-# they have around 40 bugs.
-# Removal: 2024-08-11.  Bug #933998.
-dev-php/PEAR-Mail_mimeDecode
-
 # Alfredo Tupone <tupone@gentoo.org> (2024-06-09)
 # Not ready for testing
 >=dev-lang/ocaml-5
