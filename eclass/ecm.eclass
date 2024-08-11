@@ -446,6 +446,16 @@ ecm_punt_bogus_dep() {
 	fi
 }
 
+# @FUNCTION: ecm_punt_po_install
+# @DESCRIPTION:
+# Disables handling of a po subdirectory, typically when the package
+# is outsourcing common files to a ${PN}-common split package.
+ecm_punt_po_install() {
+	sed -e "s/^ki18n_install.*(po.*)/#& # disabled by ecm.eclass/" \
+		-e "s/^kdoctools_install.*(po.*)/#& # disabled by ecm.eclass/" \
+		-i CMakeLists.txt || die
+}
+
 # @FUNCTION: ecm_pkg_pretend
 # @DESCRIPTION:
 # Checks if the active compiler meets the minimum version requirements.
