@@ -9,7 +9,7 @@ SRC_URI="http://noedler.de/projekte/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 RDEPEND="
 	dev-libs/glib:2
