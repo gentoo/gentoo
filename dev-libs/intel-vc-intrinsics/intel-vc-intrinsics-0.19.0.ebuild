@@ -4,7 +4,7 @@
 EAPI=8
 
 CMAKE_BUILD_TYPE="Release"
-LLVM_COMPAT=( {15..17} )
+LLVM_COMPAT=( {15..18} )
 MY_PN="${PN/intel-/}"
 MY_P="${MY_PN}-${PV}"
 PYTHON_COMPAT=( python3_{10..13} )
