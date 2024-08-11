@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2024-08-11)
+# Issues building any Firefox version with 0.27.0. Most likely a
+# faulty version release, but bumped it as package.masked so no one
+# else will. https://github.com/mozilla/cbindgen/issues/990
+=dev-util/cbindgen-0.27.0
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-08-10)
 # Mask KF6-based version for now until actual KF6-based consumers
 # also move to ::gentoo.
