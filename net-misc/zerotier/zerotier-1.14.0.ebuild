@@ -413,9 +413,11 @@ src_prepare() {
 
 	#1. Dont call cargo, we'll run it with cargo eclass functions
 	#2. Remove man page compression and install, we'll handle it with ebuild functions
+	#3. Gentoo generates target specific build dirs now bug #937782
 	sed -i \
 		-e '/ifeq ($(ZT_SSO_SUPPORTED)/,/endif/ { /cargo build/d }' \
 		-e '/install:/,/^$/ { /man[0-9]/d }' \
+		-e "s|rustybits/target/$(usex debug debug release)|rustybits/$(cargo_target_dir)|" \
 		make-linux.mk || die
 }
 
