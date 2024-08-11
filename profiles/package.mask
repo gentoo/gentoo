@@ -219,12 +219,6 @@ gui-wm/hikari
 # Removal on 2024-08-12.
 dev-ruby/rspectacular
 
-# Michał Górny <mgorny@gentoo.org> (2024-07-12)
-# Obsoleted by dev-python/pytest-freezer (usually a drop-in replacement).
-# No reverse dependencies left.
-# Removal on 2024-08-11.  Bug #934604.
-dev-python/pytest-freezegun
-
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
 # New major ffmpeg version. Tracker bug #928905.
 >=media-video/ffmpeg-7.0
