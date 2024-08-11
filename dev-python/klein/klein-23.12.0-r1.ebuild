@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="amd64 ~riscv"
 
 RDEPEND="
-	>=dev-python/attrs-20.1.0[${PYTHON_USEDEP}]
+	<dev-python/attrs-24[${PYTHON_USEDEP}]
 	dev-python/hyperlink[${PYTHON_USEDEP}]
 	dev-python/incremental[${PYTHON_USEDEP}]
 	dev-python/tubes[${PYTHON_USEDEP}]
