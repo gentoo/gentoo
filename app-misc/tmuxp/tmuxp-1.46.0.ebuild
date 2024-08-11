@@ -26,7 +26,6 @@ BDEPEND="
 		>=dev-python/pytest-6.2.5[${PYTHON_USEDEP}]
 		>=dev-python/pytest-mock-3.14.0[${PYTHON_USEDEP}]
 		>=dev-python/pytest-rerunfailures-4.2[${PYTHON_USEDEP}]
-		>=dev-python/tomli-1.1.0[${PYTHON_USEDEP}]
 		!dev-python/flaky
 	)
 "

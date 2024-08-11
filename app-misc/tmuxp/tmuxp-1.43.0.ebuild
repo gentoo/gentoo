@@ -25,7 +25,6 @@ BDEPEND="
 	test? (
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		>=dev-python/pytest-rerunfailures-4.2[${PYTHON_USEDEP}]
-		>=dev-python/tomli-1.1.0[${PYTHON_USEDEP}]
 		!dev-python/flaky
 	)
 "
