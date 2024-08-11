@@ -16,7 +16,7 @@ IUSE="doc static-libs"
 
 RDEPEND="
 	dev-lang/tcl:0=
-	sci-astronomy/wcstools:0=
+	sci-astronomy/wcstools
 	sci-visualization/gnuplot
 	sys-libs/zlib:0=
 "
@@ -31,6 +31,7 @@ src_prepare() {
 		-e '/^SUBLIBS/s|wcs||g' \
 		-e 's/mkdir/mkdir -p/g' \
 		-e '/mklib/s|-o $(PACKAGE)|-o $(PACKAGE) $(LIBS)|g' \
+		-e 's|./mklib|& -linker "$(CC)" -ldflags "$(LDFLAGS)"|' \
 		-e "s| ar| $(tc-getAR)|g" \
 		-e "s|ar cruv|$(tc-getAR) cruv|g" \
 		-e "s|WCS_INC.*=.*|WCS_INC = $($(tc-getPKG_CONFIG) --cflags wcstools)|g" \
@@ -71,11 +72,11 @@ src_install() {
 		|| die
 
 	if use doc; then
-		dodoc doc/*.pdf doc/*html doc/*c \
+		dodoc doc/*.pdf doc/*html doc/*c
 		docompress -x /usr/share/doc/${PF}/*.c
 	fi
 
 	if ! use static-libs; then
-		find "${ED}" -name "*.a" -delete || die
+		find "${ED}" -name "*.a" -type f -delete || die
 	fi
 }
