@@ -14,6 +14,8 @@ inherit cmake lua-single python-single-r1
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/csound/csound.git"
+	# vcpkg is not used anyway
+	EGIT_SUBMODULES=()
 	inherit git-r3
 else
 	DOC_P="Csound${PV}"
