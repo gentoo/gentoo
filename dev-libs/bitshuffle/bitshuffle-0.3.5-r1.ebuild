@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,6 +14,10 @@ SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 DEPEND="
+	app-arch/lz4
+"
+
+RDEPEND="
 	app-arch/lz4
 "
 
