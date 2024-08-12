@@ -147,6 +147,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.6.3-gcc14-avx512fp16.patch
 	"${FILESDIR}"/${PN}-6.7.2-CVE-2024-39936.patch
 	"${FILESDIR}"/${PN}-6.7.2-gcc15-odr.patch
+	"${FILESDIR}"/${PN}-6.7.2-float16-sse2.patch
 )
 
 src_prepare() {
