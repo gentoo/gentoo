@@ -98,7 +98,7 @@ src_install() {
 	dosym ../kexec.conf /etc/conf.d/kexec
 
 	dosbin "${FILESDIR}"/kexec-auto-load
-	systemd_dounit "${FILESDIR}"/kexec.service
+	systemd_newunit "${FILESDIR}"/kexec.service-r1 kexec.service
 }
 
 pkg_postinst() {
