@@ -73,6 +73,7 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtimageformats-${QTMIN}:6
+	>=kde-apps/thumbnailers-${PVCUT}:6
 	>=kde-frameworks/kimageformats-${KFMIN}:6
 "
 BDEPEND="
