@@ -18,4 +18,4 @@ HOMEPAGE="https://github.com/Python-SIP/sip/"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv"
