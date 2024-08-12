@@ -1969,6 +1969,9 @@ toolchain_src_test() {
 		#
 		# CFLAGS and so on are repeated here because of tests vs building test
 		# deps like libbacktrace.
+		#
+		# TODO: Should we try pass in the regular user flags for the non-RUNTESTFLAGS
+		# instances below for building e.g. libbacktrace?
 		nonfatal emake -C "${WORKDIR}"/build -k "${GCC_TESTS_CHECK_TARGET}" \
 			RUNTESTFLAGS=" \
 				${GCC_TESTS_RUNTESTFLAGS} \
