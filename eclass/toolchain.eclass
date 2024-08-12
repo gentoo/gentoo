@@ -1926,19 +1926,6 @@ toolchain_src_test() {
 
 	# Use a subshell to allow meddling with flags just for the testsuite
 	(
-		# Unexpected warnings confuse the tests.
-		filter-flags -W*
-		# May break parsing.
-		filter-flags '-fdiagnostics-color=*' '-fdiagnostics-urls=*'
-		# Gentoo QA flags which don't belong in tests
-		filter-flags -frecord-gcc-switches
-		filter-flags '-Wl,--defsym=__gentoo_check_ldflags__=0'
-		# Go doesn't support this and causes noisy warnings
-		filter-flags -Wbuiltin-declaration-mismatch
-		# The ASAN tests at least need LD_PRELOAD and the contract
-		# tests.
-		filter-flags -fno-semantic-interposition
-
 		# Workaround our -Wformat-security default which breaks
 		# various tests as it adds unexpected warning output.
 		GCC_TESTS_CFLAGS+=" -Wno-format-security -Wno-format"
