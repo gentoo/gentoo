@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-08-12)
+# Builds a amd vendored opencl runtime that causes collisions.
+# Hardly useful outside of maintainer testing. #934963, #936317
+dev-util/hip opencl
+
 # matoro <matoro_gentoo@matoro.tk> (2024-07-14)
 # Abandoned upstream, does not take bug reports, unsupported in Gentoo.
 # Only remaining use is as a requirement for dev-lang/go on arm{,64}.
