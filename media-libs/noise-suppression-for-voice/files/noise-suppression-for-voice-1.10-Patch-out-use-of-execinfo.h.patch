@@ -1,0 +1,51 @@
+From 74ff3c3990e725c6f9ae407e5f28673570fa4645 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Kacper=20S=C5=82omi=C5=84ski?=
+ <kacper.slominski72@gmail.com>
+Date: Sun, 11 Aug 2024 22:38:58 +0200
+Subject: [PATCH 1/3] Patch out use of execinfo.h
+
+Not available on musl, and the backtrace functionality is unused
+anyway (only called by the leak detector AFAICS).
+---
+ external/JUCE/modules/juce_core/juce_core.cpp            | 4 ----
+ .../JUCE/modules/juce_core/system/juce_SystemStats.cpp   | 9 +--------
+ 2 files changed, 1 insertion(+), 12 deletions(-)
+
+diff --git a/external/JUCE/modules/juce_core/juce_core.cpp b/external/JUCE/modules/juce_core/juce_core.cpp
+index 067a189..e3e6254 100644
+--- a/external/JUCE/modules/juce_core/juce_core.cpp
++++ b/external/JUCE/modules/juce_core/juce_core.cpp
+@@ -101,10 +101,6 @@
+  #include <sys/time.h>
+  #include <net/if.h>
+  #include <sys/ioctl.h>
+-
+- #if ! (JUCE_ANDROID || JUCE_WASM)
+-  #include <execinfo.h>
+- #endif
+ #endif
+ 
+ #if JUCE_MAC || JUCE_IOS
+diff --git a/external/JUCE/modules/juce_core/system/juce_SystemStats.cpp b/external/JUCE/modules/juce_core/system/juce_SystemStats.cpp
+index 3fe9ac7..840c731 100644
+--- a/external/JUCE/modules/juce_core/system/juce_SystemStats.cpp
++++ b/external/JUCE/modules/juce_core/system/juce_SystemStats.cpp
+@@ -173,14 +173,7 @@ String SystemStats::getStackBacktrace()
+     }
+ 
+    #else
+-    void* stack[128];
+-    auto frames = backtrace (stack, numElementsInArray (stack));
+-    char** frameStrings = backtrace_symbols (stack, frames);
+-
+-    for (int i = 0; i < frames; ++i)
+-        result << frameStrings[i] << newLine;
+-
+-    ::free (frameStrings);
++    jassertfalse; // patched out <execinfo.h>
+    #endif
+ 
+     return result;
+-- 
+2.44.2
+
