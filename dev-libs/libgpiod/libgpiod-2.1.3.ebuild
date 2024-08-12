@@ -30,11 +30,6 @@ DEPEND="
 	)
 "
 
-PATCHES=(
-	# bug 913899
-	"${FILESDIR}"/${PN}-2.1-libtool.patch
-)
-
 pkg_setup() {
 	CONFIG_CHECK="~GPIO_CDEV_V1"
 	linux-info_pkg_setup
