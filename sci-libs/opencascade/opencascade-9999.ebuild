@@ -97,8 +97,6 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-7.5.1-0005-fix-write-permissions-on-scripts.patch"
-	"${FILESDIR}/${PN}-7.5.1-0006-fix-creation-of-custom.sh-script.patch"
 	"${FILESDIR}/${PN}-7.7.0-fix-installation-of-cmake-config-files.patch"
 	"${FILESDIR}/${PN}-7.7.0-avoid-pre-stripping-binaries.patch"
 	"${FILESDIR}/${PN}-7.7.0-build-against-vtk-9.2.patch"
