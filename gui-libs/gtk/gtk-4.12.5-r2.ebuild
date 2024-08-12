@@ -106,6 +106,8 @@ PATCHES=(
 	# such support.
 	# https://bugs.gentoo.org/624960
 	"${FILESDIR}"/0001-gdk-add-a-poison-macro-to-hide-GDK_WINDOWING_.patch
+	# backport patch to fix race conditions in building generated headers
+	"${FILESDIR}"/6510b876d1cb5428db4822974cdebfed209692b0.patch
 )
 
 python_check_deps() {
