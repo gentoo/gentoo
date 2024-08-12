@@ -6,7 +6,8 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=libksane</bugs-to>
+		<remote-id type="kde-invent">graphics/libksane</remote-id>
 	</upstream>
 	<use>
 		<flag name="kwallet">Enable encrypted storage of passwords with <pkg>kde-frameworks/kwallet</pkg></flag>
