@@ -33,6 +33,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-08-11)
+# >=1.1.14 enables usage of explicit sync (with >=nvidia-drivers-560
+# and compositors that supports like kwin-6), which currently seems
+# to be causing too many problems ranging from application crashes
+# and potential VRAM leaking (even with the fixes in 1.1.15) and may
+# be better left masked for the time being. It can hwoever solve
+# flicking/stutter issues on some setups so users may want to unmask
+# if heavily affected (bug #937773).
+>=gui-libs/egl-wayland-1.1.14
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-08-11)
 # HOMEPAGE and SRC_URI return 404, Gentoo is last distribution.
 # Removal on 2024-09-10.  Bugs #937775, #675028.
