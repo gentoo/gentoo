@@ -1920,6 +1920,8 @@ toolchain_src_test() {
 	local -x LD_PRELOAD=
 
 	# Controls running expensive tests in e.g. the torture testsuite.
+	# Note that 'TEST', not 'TESTS', is correct here as it's a GCC
+	# testsuite variable, not ours.
 	local -x GCC_TEST_RUN_EXPENSIVE=1
 
 	# Use a subshell to allow meddling with flags just for the testsuite
