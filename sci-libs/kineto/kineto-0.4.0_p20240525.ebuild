@@ -32,6 +32,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.4.0-gcc13.patch
+	"${FILESDIR}"/kineto-0.4.0_p20240525-libfmt-11.patch
 )
 
 src_prepare() {
