@@ -21,6 +21,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
+# https://github.com/frescobaldi/python-ly/issues/153
 RESTRICT="test"
 
 BDEPEND="
