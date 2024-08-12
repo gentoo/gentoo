@@ -7,8 +7,7 @@ inherit cmake toolchain-funcs git-r3
 
 DESCRIPTION="Open Source Flight Simulator"
 HOMEPAGE="https://www.flightgear.org/"
-EGIT_REPO_URI="git://git.code.sf.net/p/${PN}/${PN}
-	git://mapserver.flightgear.org/${PN}"
+EGIT_REPO_URI="https://git.code.sf.net/p/${PN}/${PN}"
 EGIT_BRANCH="next"
 
 LICENSE="GPL-2"
