@@ -213,10 +213,11 @@ python_test() {
 	:;
 }
 
-python_install(){
-	mkdir -p "${T}/scripts" || die
-	grep -Rl "${D}/usr/bin" -e "/usr/bin/env python" | xargs mv -t "${T}/scripts"
-	python_doscript "${T}"/scripts/*
+python_install() {
+	while read -d '' -r file ; do
+		grep -q "#!/usr/bin/env python" "${file}" && python_doscript "${file}"
+	done < <(find "${T}"/scripts -type f -print0)
+
 	distutils-r1_python_install
 }
 
@@ -231,7 +232,13 @@ src_install() {
 	find "${D}"/python-discard/ -type d -delete
 	# Install correct multi-python copy
 	pushd "${P}" || die
-	use python && distutils-r1_src_install
+	if use python ; then
+		mkdir -p "${T}/scripts" || die
+		grep -Rl "${D}/usr/bin" -e "/usr/bin/env python" | xargs cp -t "${T}/scripts"
+		assert "Moving Python scripts failed"
+
+		distutils-r1_src_install
+	fi
 	popd || die
 }
 
