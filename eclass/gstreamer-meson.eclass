@@ -35,7 +35,7 @@ case "${EAPI:-0}" in
 		;;
 esac
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 [[ ${EAPI} == 8 ]] && inherit python-any-r1
 
 # TODO: Remove after all older versions are gone from tree
