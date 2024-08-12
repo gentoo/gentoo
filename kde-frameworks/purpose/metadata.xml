@@ -6,7 +6,8 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=frameworks-purpose</bugs-to>
+		<remote-id type="kde-invent">frameworks/purpose</remote-id>
 	</upstream>
 	<use>
 		<flag name="kaccounts">Enable support for system-wide defined KAccounts</flag>
