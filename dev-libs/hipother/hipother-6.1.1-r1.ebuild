@@ -12,6 +12,10 @@ LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 
+RDEPEND="
+	!<dev-util/hip-6
+"
+
 src_install() {
 	insinto /usr/include
 	doins -r hipnv/include/hip
