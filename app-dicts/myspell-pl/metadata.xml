@@ -2,8 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<!-- upstream is the HOMEPAGE -->
 	<stabilize-allarches/>
-	<upstream>
-		<remote-id type="sourceforge">synonimy</remote-id>
-	</upstream>
 </pkgmetadata>
