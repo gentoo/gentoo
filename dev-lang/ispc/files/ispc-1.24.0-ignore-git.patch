@@ -1,0 +1,25 @@
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Don't attempt to find git
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -268,7 +268,6 @@ endif()
+ list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/ispcrt/cmake)
+ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/FixWindowsPath.cmake)
+ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindLLVM.cmake)
+-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/Git.cmake)
+ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/GenerateBuiltins.cmake)
+ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/Stdlib.cmake)
+ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/Version.cmake)
+--- a/ispcrt/tests/CMakeLists.txt
++++ b/ispcrt/tests/CMakeLists.txt
+@@ -11,9 +11,6 @@ project(${ISPCRT_TESTS_PROJECT_NAME}
+ #################### Add Google Test to the project #####################
+ 
+ # Tests depend on Google Test submodule
+-if (NOT GIT_BINARY)
+-    include(${CMAKE_CURRENT_SOURCE_DIR}/../../cmake/Git.cmake)
+-endif()
+ if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/vendor/google/googletest/CMakeLists.txt")
+     message(STATUS "Google Test submodule update")
+     execute_process(COMMAND ${GIT_BINARY} submodule update --init --recursive

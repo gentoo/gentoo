@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-07-30)
+# We circumvent the auto-detection, so re-enable here
+dev-lang/ispc ispc_targets_ARM
+
 # matoro <matoro_gentoo@matoro.tk> (2022-08-31)
 # GHC does not gain native codegen for arm until 9.2.
 # We don't want an unregisterised build, so force LLVM codegen.
