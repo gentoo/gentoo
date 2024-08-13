@@ -39,12 +39,6 @@ DEPEND="${JAVA_PKG_E_DEPEND}"
 # Nothing special for RDEPEND... just the same as DEPEND.
 RDEPEND="${DEPEND}"
 
-# Commons packages follow the same rules so do it here
-if [[ ${CATEGORY} = dev-java && ${PN} = commons-* ]]; then
-	HOMEPAGE="http://commons.apache.org/${PN#commons-}/"
-	SRC_URI="mirror://apache/${PN/-///}/source/${P}-src.tar.gz"
-fi
-
 
 # @FUNCTION: java-pkg-2_pkg_setup
 # @DESCRIPTION:
