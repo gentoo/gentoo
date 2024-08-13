@@ -547,7 +547,10 @@ cmake_src_configure() {
 	_EOF_
 
 	if [[ -n ${_ECM_ECLASS} ]]; then
-		echo 'set(ECM_DISABLE_QMLPLUGINDUMP ON CACHE BOOL "")' >> "${common_config}" || die
+		cat >> ${common_config} <<- _EOF_ || die
+			set(ECM_DISABLE_QMLPLUGINDUMP ON CACHE BOOL "")
+			set(ECM_DISABLE_APPSTREAMTEST ON CACHE BOOL "")
+		_EOF_
 	fi
 
 	# See bug 689410
