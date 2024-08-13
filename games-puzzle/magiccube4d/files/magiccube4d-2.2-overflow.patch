@@ -1,0 +1,20 @@
+Fix an sprintf() overflow that causes the game to crash on startup when save
+state exists on disk.  The target variable of the sprintf() call is unused.
+
+Author: Bryan Gardiner <bog@khumba.net>
+Fixes: https://bugs.gentoo.org/921536
+
+diff -ru magiccube4d-src-2_2/MacroManager.cpp magiccube4d-src-2_2-b/MacroManager.cpp
+--- magiccube4d-src-2_2/MacroManager.cpp	2003-06-09 14:01:07.000000000 -0700
++++ magiccube4d-src-2_2-b/MacroManager.cpp	2024-01-01 08:18:33.506996196 -0800
+@@ -246,10 +246,6 @@
+     int face, stickerwithinface;
+     struct stickerspec sticker;
+     char name[1234];
+-    char format[10];
+-    sprintf(format, " @%%%d[^@]@(", (int)sizeof(name) - 1);
+-    sprintf(format, " @%%[^@]@(");  /* ARGH! FIX THIS-- maybe the other way
+-                                       worked after all, check it out */
+     /* FIX THIS!  overflow is quite likely if the final delimiter is missing
+        in the file */
+ 
