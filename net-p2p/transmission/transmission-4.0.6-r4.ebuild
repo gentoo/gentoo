@@ -41,7 +41,7 @@ BDEPEND="
 	qt6? ( dev-qt/qttools:6[linguist] )
 "
 COMMON_DEPEND="
-	app-arch/libdeflate:=
+	app-arch/libdeflate:=[gzip(+)]
 	>=dev-libs/libevent-2.1.0:=[threads(+)]
 	!mbedtls? ( dev-libs/openssl:0= )
 	mbedtls? ( net-libs/mbedtls:0= )
