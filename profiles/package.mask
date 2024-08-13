@@ -222,12 +222,6 @@ app-i18n/kinput2
 # Removal on 2024-08-14.
 dev-ruby/wirble
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-13)
-# Maintainer-needed, depends on very old gui-libs/wlroots version,
-# no activity upstream since Jan 2022.
-# Removal on 2024-08-12.  Bugs #935921, #867808.
-gui-wm/hikari
-
 # Hans de Graaff <graaff@gentoo.org> (2024-07-12)
 # Test dependency that is no longer maintained, last release in
 # 2019. Broken in various ways. No reverse dependencies left.
