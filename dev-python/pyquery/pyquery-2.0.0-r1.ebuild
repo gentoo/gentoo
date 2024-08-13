@@ -21,7 +21,6 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ppc ppc64 ~riscv ~s390 
 RDEPEND="
 	>=dev-python/lxml-2.1[${PYTHON_USEDEP}]
 	>=dev-python/cssselect-1.2.0[${PYTHON_USEDEP}]
-	>=dev-python/webob-1.1.9[${PYTHON_USEDEP}]
 "
 DEPEND="
 	test? (
