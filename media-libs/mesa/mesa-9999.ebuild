@@ -362,15 +362,6 @@ multilib_src_configure() {
 		emesonargs+=(-Dgallium-xa=disabled)
 	fi
 
-	if use video_cards_freedreno ||
-	   use video_cards_lima ||
-	   use video_cards_panfrost ||
-	   use video_cards_v3d ||
-	   use video_cards_vc4 ||
-	   use video_cards_vivante; then
-		gallium_enable -- kmsro
-	fi
-
 	gallium_enable !llvm softpipe
 	gallium_enable llvm llvmpipe
 	gallium_enable video_cards_d3d12 d3d12
