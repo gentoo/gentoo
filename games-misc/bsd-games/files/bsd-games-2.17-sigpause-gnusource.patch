@@ -1,0 +1,14 @@
+sigpause(3) is only declared if _GNU_SOURCE is defined.
+
+--- a/hunt/hunt/otto.c
++++ b/hunt/hunt/otto.c
+@@ -43,6 +43,8 @@
+  *	Id: otto.c,v 1.14 2003/04/16 06:11:54 gregc Exp
+  */
+ 
++#define _GNU_SOURCE /* for sigpause(3) */
++
+ #include <sys/cdefs.h>
+ #ifndef lint
+ __RCSID("$NetBSD: otto.c,v 1.8 2004/11/05 21:30:32 dsl Exp $");
+
