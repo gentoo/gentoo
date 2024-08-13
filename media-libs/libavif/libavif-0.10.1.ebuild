@@ -24,7 +24,7 @@ DEPEND="media-libs/libjpeg-turbo[${MULTILIB_USEDEP}]
 	dav1d? ( >=media-libs/dav1d-1.0.0:=[${MULTILIB_USEDEP}] )
 	gdk-pixbuf? ( x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}] )
 	rav1e? ( >=media-video/rav1e-0.5.1:=[capi] )
-	svt-av1? ( >=media-libs/svt-av1-0.9.1 )"
+	svt-av1? ( >=media-libs/svt-av1-0.9.1:= )"
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
