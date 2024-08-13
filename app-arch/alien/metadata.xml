@@ -5,4 +5,7 @@
     <email>lordvan@gentoo.org</email>
     <name>Thomas Raschbacher</name>
   </maintainer>
+  <upstream>
+    <remote-id type="sourceforge">alien-pkg-convert</remote-id>
+  </upstream>
 </pkgmetadata>
