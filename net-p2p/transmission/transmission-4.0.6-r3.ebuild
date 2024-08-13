@@ -77,6 +77,10 @@ RDEPEND="${COMMON_DEPEND}
 	${ACCT_DEPEND}
 "
 
+PATCHES=(
+	"${FILESDIR}/transmission-4.0.6-miniupnpc-2.2.8.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DOCDIR=share/doc/${PF}
