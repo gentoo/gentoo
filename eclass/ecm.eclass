@@ -649,6 +649,9 @@ ecm_src_test() {
 # Wrapper for cmake_src_install. Drops executable bit from .desktop files
 # installed inside /usr/share/applications. This is set by cmake when install()
 # is called in PROGRAM form, as seen in many kde.org projects.
+# In case kde.org.eclass is detected, in case KDE_ORG_NAME != PN, tries real
+# hard to detect, then rename, metainfo.xml appdata files to something unique
+# including SLOT if else than "0" (basically KDE_ORG_NAME -> PN+SLOT).
 ecm_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -663,6 +666,33 @@ ecm_src_install() {
 				fperms a-x "${f#${ED}}"
 			fi
 		done
+	fi
+
+	mv_metainfo() {
+		if [[ -f ${1} ]]; then
+			mv -v ${1} ${1/${2}/${3}} || die
+		fi
+	}
+
+	if [[ -n ${_KDE_ORG_ECLASS} && -d "${ED}"/usr/share/metainfo/ ]]; then
+		if [[ ${KDE_ORG_NAME} != ${PN} ]]; then
+			local ecm_metainfo
+			pushd "${ED}"/usr/share/metainfo/ > /dev/null || die
+			for ecm_metainfo in find * -type f -iname "*metainfo.xml"; do
+				case ${ecm_metainfo} in
+					*${KDE_ORG_NAME}*)
+						mv_metainfo ${ecm_metainfo} ${KDE_ORG_NAME} ${PN}${SLOT/0*/}
+						;;
+					*${KDE_ORG_NAME/-/_}*)
+						mv_metainfo ${ecm_metainfo} ${KDE_ORG_NAME/-/_} ${PN}${SLOT/0*/}
+						;;
+					org.kde.*)
+						mv_metainfo ${ecm_metainfo} "org.kde." "org.kde.${PN}${SLOT/0*/}-"
+						;;
+				esac
+			done
+			popd > /dev/null || die
+		fi
 	fi
 }
 
