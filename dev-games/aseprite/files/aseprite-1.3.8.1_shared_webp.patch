@@ -1,0 +1,63 @@
+From 5feabc582b9e243aec2f88ac590a6ce089c01a62 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Sun, 10 Jul 2022 20:14:00 +0300
+Subject: [PATCH 3/5] Use shared webp library
+
+Added option -DUSE_SHARED_WEBP
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -47,6 +47,7 @@ option(USE_SHARED_LIBARCHIVE "Use your installed copy of libarchive" off)
+ option(USE_SHARED_LIBPNG  "Use your installed copy of libpng" off)
+ option(USE_SHARED_TINYXML "Use your installed copy of tinyxml" off)
+ option(USE_SHARED_PIXMAN  "Use your installed copy of pixman" off)
++option(USE_SHARED_WEBP    "Use your installed copy of webp" off)
+ option(USE_SHARED_FREETYPE "Use shared FreeType library" off)
+ option(USE_SHARED_HARFBUZZ "Use shared HarfBuzz library" off)
+ option(ENABLE_ASEPRITE_EXE "Compile main Aseprite executable" on)
+@@ -352,17 +353,23 @@ add_subdirectory(laf)
+ 
+ # libwebp
+ if(ENABLE_WEBP)
+-  # Use libwebp from Skia
+-  if(LAF_BACKEND STREQUAL "skia")
+-    find_library(WEBP_LIBRARIES webp
+-      NAMES libwebp # required for Windows
+-      PATHS "${SKIA_LIBRARY_DIR}" NO_DEFAULT_PATH)
+-    set(WEBP_INCLUDE_DIR "${SKIA_DIR}/third_party/externals/libwebp/src")
++  if(USE_SHARED_WEBP)
++    find_package(PkgConfig QUIET)
++    pkg_check_modules(WEBP libwebp libwebpdemux libwebpmux)
++    include_directories(${WEBP_INCLUDE_DIR})
+   else()
+-    set(WEBP_LIBRARIES webp webpdemux libwebpmux)
+-    set(WEBP_INCLUDE_DIR ${LIBWEBP_DIR}/src)
++    # Use libwebp from Skia
++    if(LAF_BACKEND STREQUAL "skia")
++      find_library(WEBP_LIBRARIES webp
++        NAMES libwebp # required for Windows
++        PATHS "${SKIA_LIBRARY_DIR}" NO_DEFAULT_PATH)
++      set(WEBP_INCLUDE_DIR "${SKIA_DIR}/third_party/externals/libwebp/src")
++    else()
++      set(WEBP_LIBRARIES webp webpdemux libwebpmux)
++      set(WEBP_INCLUDE_DIR ${LIBWEBP_DIR}/src)
++    endif()
++    include_directories(${WEBP_INCLUDE_DIR})
+   endif()
+-  include_directories(${WEBP_INCLUDE_DIR})
+ endif()
+ message(STATUS "aseprite libwebp: ${WEBP_LIBRARIES}")
+ 
+--- a/third_party/CMakeLists.txt
++++ b/third_party/CMakeLists.txt
+@@ -33,7 +33,7 @@ if(NOT USE_SHARED_GIFLIB)
+   add_subdirectory(giflib)
+ endif()
+ 
+-if(ENABLE_WEBP AND NOT LAF_BACKEND STREQUAL "skia")
++if(ENABLE_WEBP AND NOT USE_SHARED_WEBP AND NOT LAF_BACKEND STREQUAL "skia")
+   set(WEBP_BUILD_EXTRAS OFF CACHE BOOL "Build extras.")
+   set(WEBP_BUILD_ANIM_UTILS OFF CACHE BOOL "Build animation utilities.")
+   set(WEBP_BUILD_CWEBP OFF CACHE BOOL "Build the cwebp command line tool.")
+-- 
+2.44.2
+

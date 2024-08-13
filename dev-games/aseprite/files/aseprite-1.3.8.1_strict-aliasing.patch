@@ -1,0 +1,49 @@
+From 49a1e9a1355dd48c79712b95994b53529f3d5144 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Tue, 2 Jan 2024 21:09:04 +0300
+Subject: [PATCH 5/5] Fix strict-aliasing warnings
+
+--- a/src/dio/aseprite_decoder.cpp
++++ b/src/dio/aseprite_decoder.cpp
+@@ -28,10 +28,20 @@
+ #include "zlib.h"
+ 
+ #include <cstdio>
++#include <cstring>
+ #include <vector>
+ 
+ namespace dio {
+ 
++template <typename T>
++T
++copy_reinterpret_cast(const void* ptr)
++{
++  T tmp;
++  std::memcpy(&tmp, ptr, sizeof(T));
++  return tmp;
++}
++
+ bool AsepriteDecoder::decode()
+ {
+   bool ignore_old_color_chunks = false;
+@@ -425,7 +435,7 @@ float AsepriteDecoder::readFloat()
+ 
+   // Little endian.
+   int v = ((b4 << 24) | (b3 << 16) | (b2 << 8) | b1);
+-  return *reinterpret_cast<float*>(&v);
++  return *copy_reinterpret_cast<float*>(&v);
+ }
+ 
+ double AsepriteDecoder::readDouble()
+@@ -465,7 +475,7 @@ double AsepriteDecoder::readDouble()
+                  ((long long)b3 << 16) |
+                  ((long long)b2 << 8) |
+                  (long long)b1);
+-  return *reinterpret_cast<double*>(&v);
++  return *copy_reinterpret_cast<double*>(&v);
+ }
+ 
+ doc::Palette* AsepriteDecoder::readColorChunk(doc::Palette* prevPal,
+-- 
+2.44.2
+
