@@ -43,12 +43,18 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	${PYTHON_DEPS}
-	$(python_gen_any_dep ">=dev-python/mako-0.8.0[\${PYTHON_USEDEP}]")
+	$(python_gen_any_dep "
+		>=dev-python/mako-0.8.0[\${PYTHON_USEDEP}]
+		dev-python/packaging[\${PYTHON_USEDEP}]
+		dev-python/pyyaml[\${PYTHON_USEDEP}]
+	")
 	virtual/pkgconfig
 "
 
 python_check_deps() {
-	python_has_version -b ">=dev-python/mako-0.8.0[${PYTHON_USEDEP}]"
+	python_has_version -b ">=dev-python/mako-0.8.0[${PYTHON_USEDEP}]" &&
+	python_has_version -b "dev-python/packaging[${PYTHON_USEDEP}]" &&
+	python_has_version -b "dev-python/pyyaml[${PYTHON_USEDEP}]" || return 1
 }
 
 pkg_setup() {
