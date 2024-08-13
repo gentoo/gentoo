@@ -550,6 +550,7 @@ cmake_src_configure() {
 		cat >> ${common_config} <<- _EOF_ || die
 			set(ECM_DISABLE_QMLPLUGINDUMP ON CACHE BOOL "")
 			set(ECM_DISABLE_APPSTREAMTEST ON CACHE BOOL "")
+			set(ECM_DISABLE_GIT ON CACHE BOOL "")
 		_EOF_
 	fi
 
