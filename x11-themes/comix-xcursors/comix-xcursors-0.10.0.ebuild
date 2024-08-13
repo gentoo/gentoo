@@ -20,7 +20,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ~ppc64 ~s390 ~sparc x86"
 IUSE="lefthanded opaque"
 
 RDEPEND="x11-libs/libXcursor"
