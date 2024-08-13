@@ -140,7 +140,7 @@ CDEPEND="
 		sys-libs/libcap
 		x11-libs/libdrm
 	)
-	svt-av1? ( media-libs/svt-av1 )
+	svt-av1? ( media-libs/svt-av1:= )
 	trayicon? (
 		dev-libs/libayatana-appindicator
 		x11-libs/libnotify
