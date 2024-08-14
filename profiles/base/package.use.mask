@@ -40,7 +40,7 @@ net-misc/openssh xmss
 # Matt Turner <mattst88@gentoo.org> (2024-05-08)
 # Brand new, introduces lots of new aspects to the build.
 # Masked for further testing.
-media-libs/mesa video_cards_nvk
+<media-libs/mesa-24.2 video_cards_nvk
 
 # Michał Górny <mgorny@gentoo.org> (2024-04-27)
 # dev-python/uv is nowhere near ready to be stabilized.
