@@ -19,7 +19,7 @@ LICENSE="ISC LGPL-2.1+ Apache-2.0"
 SLOT="0"
 
 DEPEND="
-	app-arch/libdeflate[zlib]
+	app-arch/libdeflate
 	app-arch/lz4:=
 	dev-libs/libuv:=
 	sys-libs/zlib
