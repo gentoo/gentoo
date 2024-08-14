@@ -24,7 +24,6 @@ IUSE="debug +drm +gtk +pango selinux freetype +split-usr +udev doc upstart-monit
 
 BDEPEND="
 	app-text/docbook-xsl-stylesheets
-	>=dev-build/meson-0.62
 	dev-libs/libxslt
 	virtual/pkgconfig
 "
@@ -32,7 +31,6 @@ BDEPEND="
 DEPEND="
 	dev-libs/libevdev
 	>=media-libs/libpng-1.2.16:=
-	virtual/libc
 	x11-libs/libxkbcommon
 	x11-misc/xkeyboard-config
 	drm? ( x11-libs/libdrm )
@@ -84,10 +82,6 @@ src_configure() {
 		$(meson_use upstart-monitoring)
 	)
 	meson_src_configure
-}
-
-src_compile() {
-	meson_src_compile
 }
 
 src_install() {
