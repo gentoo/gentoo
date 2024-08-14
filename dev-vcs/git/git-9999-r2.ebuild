@@ -469,6 +469,8 @@ src_test() {
 	# Now run the tests, keep going if we hit an error, and don't terminate on
 	# failure
 	local rc
+	# t0610-reftable-basics.sh uses $A
+	local -x A=
 	einfo "Start test run"
 	#MAKEOPTS=-j1
 	nonfatal git_emake --keep-going test
