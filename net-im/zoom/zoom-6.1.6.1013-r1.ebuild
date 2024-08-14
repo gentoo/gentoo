@@ -13,10 +13,10 @@ S="${WORKDIR}/${PN}"
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="+bundled-qt opencl pulseaudio wayland"
+IUSE="+bundled-qt opencl pulseaudio wayland +zoom-symlink"
 RESTRICT="mirror bindist strip"
 
-RDEPEND="!games-engines/zoom
+RDEPEND="zoom-symlink? ( !games-engines/zoom )
 	>=app-accessibility/at-spi2-core-2.46.0:2
 	app-crypt/mit-krb5
 	dev-libs/expat
@@ -150,7 +150,8 @@ src_install() {
 		fi
 	fi
 
-	dosym -r /opt/zoom/ZoomLauncher /usr/bin/zoom
+	use zoom-symlink && dosym -r /opt/zoom/ZoomLauncher /usr/bin/zoom
+
 	make_desktop_entry "zoom %U" Zoom videoconference-zoom \
 		"Network;VideoConference;" \
 		"MimeType=$(printf '%s;' \
