@@ -28,13 +28,12 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-DEPEND="
+COMMON_DEPEND="
 	dev-libs/libevdev
 	>=media-libs/libpng-1.2.16:=
 	x11-libs/libxkbcommon
 	x11-misc/xkeyboard-config
 	drm? ( x11-libs/libdrm )
-	elibc_musl? ( sys-libs/rpmatch-standalone )
 	freetype? ( media-libs/freetype:2 )
 	gtk? (
 		dev-libs/glib:2
@@ -49,7 +48,11 @@ DEPEND="
 	udev? ( virtual/libudev )
 "
 
-RDEPEND="${DEPEND}
+DEPEND="${COMMON_DEPEND}
+	elibc_musl? ( sys-libs/rpmatch-standalone )
+"
+
+RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-plymouthd )
 	udev? ( virtual/udev )
 "
