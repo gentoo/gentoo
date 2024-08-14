@@ -6,7 +6,7 @@ EAPI=8
 inherit alternatives flag-o-matic toolchain-funcs multilib multiprocessing
 
 PATCH_VER=2
-CROSS_VER=1.5.3
+CROSS_VER=1.6
 PATCH_BASE="perl-5.40.0-patches-${PATCH_VER}"
 PATCH_DEV=dilfridge
 
