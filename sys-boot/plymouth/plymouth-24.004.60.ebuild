@@ -20,7 +20,7 @@ HOMEPAGE="https://cgit.freedesktop.org/plymouth/"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="debug +drm +gtk +pango selinux freetype +split-usr +udev doc upstart-monitoring systemd"
+IUSE="debug +drm +gtk +pango selinux freetype +split-usr +udev doc systemd"
 
 BDEPEND="
 	app-text/docbook-xsl-stylesheets
@@ -47,10 +47,6 @@ DEPEND="
 	)
 	systemd? ( sys-apps/systemd )
 	udev? ( virtual/libudev )
-	upstart-monitoring? (
-		sys-apps/dbus
-		sys-libs/ncurses
-	)
 "
 
 RDEPEND="${DEPEND}
@@ -79,7 +75,6 @@ src_configure() {
 		$(meson_use systemd systemd-integration)
 		$(meson_use doc docs)
 		$(meson_use debug tracing)
-		$(meson_use upstart-monitoring)
 	)
 	meson_src_configure
 }

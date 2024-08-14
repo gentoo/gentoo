@@ -14,8 +14,6 @@
 			directories</flag>
 		<flag name="freetype">Build with freetype support (if enabled, used for
 			encryption prompts)</flag>
-		<flag name="upstart-monitoring">Listen for messages on the Upstart
-			D-Bus interface</flag>
 	</use>
 	<longdescription lang="en">
 		Plymouth is an application that runs very early in the boot process
