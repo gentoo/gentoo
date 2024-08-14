@@ -47,6 +47,10 @@ DEPEND="${RDEPEND}
 	java? ( dev-lang/swig )
 	python? ( dev-lang/swig )"
 
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
+
 src_unpack() {
 	default
 	mv "${WORKDIR}"/yap-${PV_COMMIT} "${WORKDIR}"/${P} || die
