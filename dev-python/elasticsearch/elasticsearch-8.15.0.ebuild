@@ -42,6 +42,7 @@ BDEPEND="
 		dev-python/opentelemetry-api[${PYTHON_USEDEP}]
 		dev-python/opentelemetry-sdk[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
+		dev-python/pyarrow[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
 		>=dev-python/pyyaml-5.4[${PYTHON_USEDEP}]
