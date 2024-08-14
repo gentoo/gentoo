@@ -125,10 +125,6 @@ dev-qt/qtbase -renderdoc
 media-video/pipewire -roc
 
 # Matt Jolly <kangie@gentoo.org> (2023-08-10)
-# 'ssl' USE required for curl's nghttp3/quic support
-net-libs/ngtcp2 -ssl
-
-# Matt Jolly <kangie@gentoo.org> (2023-08-10)
 # nghttp3 has been tested to work on amd64
 net-misc/curl -nghttp3
 

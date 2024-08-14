@@ -683,7 +683,7 @@ dev-python/statsmodels doc
 # Craig Andrews <candrews@gentoo.org> (2019-09-12)
 # OpenSSL (as of version 1.1.1) doesn't have APIs for QUIC support
 # see https://github.com/openssl/openssl/pull/8797
-net-libs/ngtcp2 ssl
+net-libs/ngtcp2 openssl
 net-misc/curl nghttp3
 
 # Thomas Deutschmann <whissi@gentoo.org> (2019-09-02)
