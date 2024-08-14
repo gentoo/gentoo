@@ -20,7 +20,7 @@ KEYWORDS="amd64 arm64 ppc64"
 
 CP_DEPEND="
 	dev-java/commons-cli:1
-	dev-java/swt:4.27
+	dev-java/swt:4.27[cairo]
 "
 
 # Due to removal of AENameServiceDescriptor it would fail to start under jdk:1.8
@@ -57,7 +57,6 @@ src_prepare() {
 	# "error: package sun.net.spi.nameservice does not exist"
 	# https://github.com/BiglySoftware/BiglyBT/pull/2611
 	rm -r core/src/com/biglybt/core/util/spi || die
-#	rm -r core/src/META-INF || die
 
 	cp -r core/{src,resources} || die
 	find core/resources -type f -name '*.java' -exec rm -rf {} + || die "deleting classes failed"
