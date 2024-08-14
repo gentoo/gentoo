@@ -12,7 +12,7 @@ inherit cmake flag-o-matic python-single-r1
 PATCHSET_VER="0"
 
 DESCRIPTION="YAP is a high-performance Prolog compiler"
-HOMEPAGE="http://www.dcc.fc.up.pt/~vsc/Yap/"
+HOMEPAGE="https://web.archive.org/web/20181115131216/http://www.dcc.fc.up.pt/~vsc/Yap/"
 SRC_URI="https://github.com/vscosta/yap/archive/${PV_COMMIT}.tar.gz -> ${PN}-${PV_COMMIT}.tar.gz
 	https://dev.gentoo.org/~keri/distfiles/yap/${P}-gentoo-patchset-${PATCHSET_VER}.tar.gz"
 
