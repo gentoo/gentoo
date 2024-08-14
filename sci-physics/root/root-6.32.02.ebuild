@@ -96,7 +96,6 @@ CDEPEND="
 	http? ( dev-libs/fcgi:0= )
 	libcxx? ( sys-libs/libcxx )
 	unuran? ( sci-mathematics/unuran:0= )
-	minuit? ( !sci-libs/minuit )
 	mpi? ( virtual/mpi[fortran?] )
 	mysql? ( dev-db/mysql-connector-c )
 	odbc? (
