@@ -622,12 +622,16 @@ src_configure() {
 	# modifying 'optimize' prevents cross configure script from appending required flags
 	if tc-is-cross-compiler; then
 		append-cflags "-fwrapv"
+		tc-export_build_env
 
 		# Needed for the CHOST build too (bug #932385)
 		export CFLAGS="${CFLAGS} -D_GNU_SOURCE"
 
 		# bug #913171
-		export HOSTCFLAGS="${CFLAGS_FOR_BUILD} -D_GNU_SOURCE"
+		export \
+			HOSTCC=$(tc-getBUILD_CC) \
+			HOSTCFLAGS="${CFLAGS_FOR_BUILD} -D_GNU_SOURCE" \
+			HOSTLDFLAGS="${LDFLAGS_FOR_BUILD}"
 	fi
 
 	# bug #877659, bug #821577
