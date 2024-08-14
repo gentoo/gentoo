@@ -1,10 +1,6 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Matt Jolly <kangie@gentoo.org> (2023-08-10)
-# http3 is avilable via openssl[quic] on this arch.
-net-misc/curl -http3 -quic -curl_quic_openssl curl_quic_ngtcp2
-
 # orbea <orbea@riseup.net> (2024-07-19)
 # Unmask the dynarec flag which has x86 asm.
 games-emulation/rmg -dynarec

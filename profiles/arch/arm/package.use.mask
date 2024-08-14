@@ -9,10 +9,6 @@ sci-visualization/gnuplot amos
 # Full testing requires www-client/firefox.
 dev-python/selenium test-rust
 
-# Matt Jolly <kangie@gentoo.org> (2023-08-10)
-# nghttp3 has been tested to work on amd64
-net-misc/curl -http3 -quic -curl_quic_openssl curl_quic_ngtcp2
-
 # orbea <orbea@riseup.net> (2024-07-19)
 # Unmask the dynarec flag which has arm asm.
 games-emulation/rmg -dynarec
