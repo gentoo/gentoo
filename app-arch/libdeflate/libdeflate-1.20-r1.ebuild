@@ -20,14 +20,10 @@ LICENSE="MIT"
 SLOT="0"
 # the zlib USE-flag enables support for zlib
 # the test USE-flag programs depend on sys-libs/zlib for comparison tests
-IUSE="+gzip +utils +zlib test"
+IUSE="+utils test"
 
 RESTRICT="
 	!test? ( test )
-"
-
-REQUIRED_USE="
-	utils? ( gzip )
 "
 
 DEPEND="
@@ -47,10 +43,10 @@ src_configure() {
 		-DLIBDEFLATE_COMPRESSION_SUPPORT="yes"
 		-DLIBDEFLATE_DECOMPRESSION_SUPPORT="yes"
 
-		-DLIBDEFLATE_BUILD_GZIP="$(usex gzip "$(usex utils)" )"
-		-DLIBDEFLATE_GZIP_SUPPORT="$(usex gzip)"
+		-DLIBDEFLATE_BUILD_GZIP="$(usex utils)"
+		-DLIBDEFLATE_GZIP_SUPPORT="yes"
 
-		-DLIBDEFLATE_ZLIB_SUPPORT="$(usex zlib)"
+		-DLIBDEFLATE_ZLIB_SUPPORT="yes"
 
 		-DLIBDEFLATE_BUILD_TESTS="$(usex test)"
 	)
