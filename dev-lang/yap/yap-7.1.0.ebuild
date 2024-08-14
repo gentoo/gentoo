@@ -7,7 +7,7 @@ PV_COMMIT=77bb2ba5eadfb95b67abccd22b298cfb75dd3328
 
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit cmake flag-o-matic python-single-r1
+inherit cmake python-single-r1
 
 PATCHSET_VER="3"
 
