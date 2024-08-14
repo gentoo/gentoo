@@ -1,0 +1,82 @@
+From ee41933e3ea15769cea32a514cdaeecbe84b70b9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Edgar=20Andr=C3=A9s=20Margffoy=20Tuay?= <andfoy@gmail.com>
+Date: Wed, 31 Jul 2024 11:43:59 -0500
+Subject: [PATCH] Add CI to test scikit-image against free-threaded Python 3.13
+ (#7463)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+enables testing scikit-image against free-threaded Python,
+this is part of the ongoing effort to test projects against the
+changes proposed in PEP703
+
+---------
+
+Co-authored-by: Stefan van der Walt <sjvdwalt@gmail.com>
+Co-authored-by: Lars Grüter <lagru+github@mailbox.org>
+---
+ .github/workflows/tests.yml     | 26 ++++++++++++++++++++++++++
+ TODO.txt                        |  2 ++
+ meson.build                     |  2 +-
+ skimage/measure/_regionprops.py |  9 ++++++---
+ skimage/meson.build             | 10 +++++++++-
+ skimage/transform/_geometric.py |  2 +-
+ skimage/util/_map_array.py      |  2 +-
+ tools/github/before_install.sh  |  6 ++++++
+ 8 files changed, 52 insertions(+), 7 deletions(-)
+
+diff --git a/skimage/measure/_regionprops.py b/skimage/measure/_regionprops.py
+index 9f34d6a1c..82a03b394 100644
+--- a/skimage/measure/_regionprops.py
++++ b/skimage/measure/_regionprops.py
+@@ -1,4 +1,5 @@
+ import inspect
++import sys
+ from functools import wraps
+ from math import atan2
+ from math import pi as PI
+@@ -1406,9 +1407,11 @@ def _parse_docs():
+     import textwrap
+ 
+     doc = regionprops.__doc__ or ''
+-    matches = re.finditer(
+-        r'\*\*(\w+)\*\* \:.*?\n(.*?)(?=\n    [\*\S]+)', doc, flags=re.DOTALL
+-    )
++    arg_regex = r'\*\*(\w+)\*\* \:.*?\n(.*?)(?=\n    [\*\S]+)'
++    if sys.version_info >= (3, 13):
++        arg_regex = r'\*\*(\w+)\*\* \:.*?\n(.*?)(?=\n[\*\S]+)'
++
++    matches = re.finditer(arg_regex, doc, flags=re.DOTALL)
+     prop_doc = {m.group(1): textwrap.dedent(m.group(2)) for m in matches}
+ 
+     return prop_doc
+diff --git a/skimage/transform/_geometric.py b/skimage/transform/_geometric.py
+index 6f696e95b..56cedae63 100644
+--- a/skimage/transform/_geometric.py
++++ b/skimage/transform/_geometric.py
+@@ -687,7 +687,7 @@ class ProjectiveTransform(_GeometricTransform):
+ 
+         return dst[:, :ndim]
+ 
+-    def __array__(self, dtype=None):
++    def __array__(self, dtype=None, copy=None):
+         if dtype is None:
+             return self.params
+         else:
+diff --git a/skimage/util/_map_array.py b/skimage/util/_map_array.py
+index 1f852fdb6..125dfb211 100644
+--- a/skimage/util/_map_array.py
++++ b/skimage/util/_map_array.py
+@@ -129,7 +129,7 @@ class ArrayMap:
+         """Return one more than the maximum label value being remapped."""
+         return np.max(self.in_values) + 1
+ 
+-    def __array__(self, dtype=None):
++    def __array__(self, dtype=None, copy=None):
+         """Return an array that behaves like the arraymap when indexed.
+ 
+         This array can be very large: it is the size of the largest value
+-- 
+2.45.2
+
