@@ -7,8 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="ucontext implementation featuring glibc-compatible ABI"
 HOMEPAGE="https://github.com/kaniini/libucontext"
-SRC_URI="https://github.com/kaniini/libucontext/archive/refs/tags/${P}.tar.gz"
-S="${WORKDIR}"/${PN}-${P}
+SRC_URI="https://distfiles.ariadne.space/libucontext/${P}.tar.xz"
 
 LICENSE="ISC"
 SLOT="0"
