@@ -13,7 +13,7 @@ S="${WORKDIR}"/${PN}
 
 LICENSE="Apache-2.0 BSD BSD-2 CC0-1.0 ISC MIT MPL-2.0 Unlicense"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="selinux tools"
 
 RDEPEND="acct-group/syncthing
