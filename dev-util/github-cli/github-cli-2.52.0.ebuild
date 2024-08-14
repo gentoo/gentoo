@@ -25,6 +25,13 @@ RDEPEND=">=dev-vcs/git-1.7.3"
 RESTRICT="test"
 
 src_unpack() {
+	# Filter LTO flags to avoid build failures.
+	filter-lto
+	# Filter '-ggdb3' flag to avoid build failures. bugs.gentoo.org/847991
+	filter-flags "-ggdb3"
+	# Go LDFLAGS are not the same as GCC/Binutils LDFLAGS
+	unset LDFLAGS
+
 	if [[ ${PV} == *9999 ]]; then
 		git-r3_src_unpack
 		go-module_live_vendor
@@ -35,12 +42,6 @@ src_unpack() {
 
 src_compile() {
 	[[ ${PV} == *9999 ]] || export GH_VERSION="v${PV}"
-	# Filter LTO flags to avoid build failures.
-	filter-lto
-	# Filter '-ggdb3' flag to avoid build failures. bugs.gentoo.org/847991
-	filter-flags "-ggdb3"
-	# Go LDFLAGS are not the same as GCC/Binutils LDFLAGS
-	unset LDFLAGS
 	# Once we set up cross compiling, this line will need to be adjusted
 	# to compile for the target.
 	# Everything else in this function happens on the host.
