@@ -18,11 +18,11 @@ SRC_URI="https://download.redis.io/releases/${P}.tar.gz"
 LICENSE="Boost-1.0 SSPL-1"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="jemalloc selinux ssl systemd tcmalloc test"
+IUSE="+jemalloc selinux ssl systemd tcmalloc test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	jemalloc? ( >=dev-libs/jemalloc-5.1:= )
+	jemalloc? ( >=dev-libs/jemalloc-5.1:=[stats] )
 	ssl? ( dev-libs/openssl:0= )
 	systemd? ( sys-apps/systemd:= )
 	tcmalloc? ( dev-util/google-perftools )
