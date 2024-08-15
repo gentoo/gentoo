@@ -41,8 +41,7 @@ LICENSE="
 "
 SLOT="0"
 KEYWORDS="-* ~amd64"
-# TODO: USE=strip from dev-util/mingw64-toolchain?
-IUSE="+bin-symlinks custom-cflags"
+IUSE="+bin-symlinks custom-cflags +strip"
 
 RDEPEND="
 	dev-libs/gmp:=
@@ -194,6 +193,17 @@ src_compile() {
 	# which does not make use of cross-library dependencies: the libdep.a
 	# for the native binutils will do.
 	rm -f ${sysroot}/lib/bfd-plugins/libdep.a || die
+
+	# portage doesn't know the right strip executable to use for CTARGET
+	# and it can lead to .a mangling, notably with 32bit (breaks toolchain)
+	dostrip -x ${bpftdir}/{${CTARGET}/lib{,32},lib/gcc/${CTARGET}}
+
+	# ... and instead do it here given this saves ~60MB
+	if use strip; then
+		einfo "Stripping ${CTARGET} static libraries ..."
+		find "${sysroot}"/{,lib/gcc/}${CTARGET} -type f -name '*.a' \
+			-exec ${CTARGET}-strip --strip-unneeded {} + || die
+	fi
 }
 
 src_install() {
