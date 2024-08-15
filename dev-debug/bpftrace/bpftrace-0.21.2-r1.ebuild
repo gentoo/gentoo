@@ -11,6 +11,7 @@ DESCRIPTION="High-level tracing language for eBPF"
 HOMEPAGE="https://github.com/bpftrace/bpftrace"
 MY_PV="${PV//_/}"
 SRC_URI="https://github.com/bpftrace/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI+=" https://github.com/bpftrace/${PN}/releases/download/v${MY_PV}/man.tar.xz -> ${P}-man.gh.tar.xz"
 S="${WORKDIR}/${PN}-${MY_PV:-${PV}}"
 
 LICENSE="Apache-2.0"
@@ -92,4 +93,6 @@ src_configure() {
 src_install() {
 	cmake_src_install
 	doman man/man8/*.?
+	gunzip "${WORKDIR}/man/man8/bpftrace.8.gz" || die
+	doman "${WORKDIR}/man/man8/bpftrace.8"
 }
