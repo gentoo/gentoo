@@ -15,5 +15,6 @@
   </maintainer>
   <upstream>
     <changelog>https://josm.openstreetmap.de/wiki/StartupPage</changelog>
+    <remote-id type="github">JOSM/josm</remote-id>
   </upstream>
 </pkgmetadata>
