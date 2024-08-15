@@ -41,8 +41,8 @@ LICENSE="
 "
 SLOT="0"
 KEYWORDS="-* ~amd64"
-# TODO: USE=strip, USE=bin-symlinks from dev-util/mingw64-toolchain
-IUSE="custom-cflags"
+# TODO: USE=strip from dev-util/mingw64-toolchain?
+IUSE="+bin-symlinks custom-cflags"
 
 RDEPEND="
 	dev-libs/gmp:=
@@ -50,6 +50,10 @@ RDEPEND="
 	dev-libs/mpfr:=
 	sys-libs/zlib:=
 	virtual/libiconv
+	bin-symlinks? (
+		!cross-bpf-unknown-none/binutils
+		!cross-bpf-unknown-none/gcc
+	)
 "
 DEPEND="${RDEPEND}"
 
@@ -81,7 +85,8 @@ src_compile() {
 	CTARGET=bpf-unknown-none
 
 	BPFT_D=${T}/root # moved to ${D} in src_install
-	local prefix=${EPREFIX}/usr
+	local bpftdir=/usr/lib/${PN}
+	local prefix=${EPREFIX}${bpftdir}
 	local sysroot=${BPFT_D}${prefix}
 	local -x PATH=${sysroot}/bin:${PATH}
 
@@ -176,6 +181,14 @@ src_compile() {
 	# build with same ordering that crossdev would do
 	bpft-build binutils
 	bpft-build gcc
+
+	if use bin-symlinks; then
+		mkdir -p -- "${BPFT_D}${EPREFIX}"/usr/bin/ || die
+		local bin
+		for bin in "${sysroot}"/bin/*; do
+			ln -rs -- "${bin}" "${BPFT_D}${EPREFIX}"/usr/bin/ || die
+		done
+	fi
 
 	# Delete libdep.a, which has a colliding name and is useless for bpf,
 	# which does not make use of cross-library dependencies: the libdep.a

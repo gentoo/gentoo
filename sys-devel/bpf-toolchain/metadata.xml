@@ -5,6 +5,13 @@
 		<email>toolchain@gentoo.org</email>
 		<name>Gentoo Toolchain Project</name>
 	</maintainer>
+	<use>
+		<flag name="bin-symlinks">
+			Symlink executables to usr/bin to be in default
+			PATH (conflicts with crossdev bpf, and crossdev
+			is preferable for a fully featured toolchain)
+		</flag>
+	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:gnu:gcc</remote-id>
 		<remote-id type="cpe">cpe:/a:gnu:binutils</remote-id>
