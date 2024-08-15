@@ -42,6 +42,12 @@ go-env_set_compile_environment() {
 	# XXX: Hack for checking ICE (bug #912152, gcc PR113204)
 	has_version -b "sys-devel/gcc[debug]" && filter-lto
 
+	# bug #929219
+	if tc-is-gcc ; then
+		replace-flags -g3 -g
+		replace-flags -ggdb3 -ggdb
+	fi
+
 	export CGO_CFLAGS="${CGO_CFLAGS:-$CFLAGS}"
 	export CGO_CPPFLAGS="${CGO_CPPFLAGS:-$CPPFLAGS}"
 	export CGO_CXXFLAGS="${CGO_CXXFLAGS:-$CXXFLAGS}"
