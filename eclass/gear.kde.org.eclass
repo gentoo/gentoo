@@ -262,4 +262,28 @@ if $(ver_test -gt 24.04.75); then
 	esac
 fi
 
+# list of applications ported to KF6 post-24.05 in SLOT=6 having to block SLOT=5
+if $(ver_test -gt 24.07.75); then
+	case ${PN} in
+		k3b | \
+		kde-dev-scripts | \
+		kdesdk-thumbnailers | \
+		kdevelop | \
+		kdevelop-php | \
+		kdevelop-python | \
+		kgraphviewer | \
+		kimagemapeditor | \
+		kmplot | \
+		kompare | \
+		krdc | \
+		libkomparediff2 | \
+		lokalize | \
+		massif-visualizer | \
+		poxml | \
+		skanlite)
+			RDEPEND+=" !${CATEGORY}/${PN}:5" ;;
+		*) ;;
+	esac
+fi
+
 fi
