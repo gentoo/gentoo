@@ -106,9 +106,9 @@ src_install() {
 	keepdir /var/spool/plymouth
 	# /var/lib/plymouth is created at runtime, and is used to store boot/shutdown
 	# durations, it doesn't need to be created at build.
-	rm -rf "${ED}"/var/lib || die
+	rm -r "${ED}"/var/lib || die
 	# /run/plymouth is also created at runtime
-	rm -rf "${ED}"/run || die
+	rm -r "${ED}"/run || die
 
 	readme.gentoo_create_doc
 }
