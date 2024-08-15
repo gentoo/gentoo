@@ -281,6 +281,12 @@ src_prepare() {
 	# bug #908814
 	filter-lto
 
+	# bug #843437
+	cat >> LocalConfig.kmk <<-EOF || die
+		CXXFLAGS=${CXXFLAGS}
+		CFLAGS=${CFLAGS}
+	EOF
+
 	if use sdl; then
 		sed -i 's/sdl-config/sdl2-config/' configure || die
 		echo -e "\nVBOX_WITH_VBOXSDL=1" >> LocalConfig.kmk || die
