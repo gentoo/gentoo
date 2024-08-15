@@ -439,7 +439,7 @@ src_prepare() {
 	tc-is-static-only || src_prepare_dynamic
 
 	if use gdbm; then
-		sed -i "s:INC => .*:INC => \"-I${EROOT}/usr/include/gdbm\":g" \
+		sed -i "s:INC => .*:INC => \"-I${ESYSROOT}/usr/include/gdbm\":g" \
 			ext/NDBM_File/Makefile.PL || die
 	fi
 
@@ -577,12 +577,12 @@ src_configure() {
 	use m68k && append-ldflags -Wl,-z,norelro
 
 	export BUILD_BZIP2=0
-	export BZIP2_INCLUDE=${EROOT}/usr/include
-	export BZIP2_LIB=${EROOT}/usr/$(get_libdir)
+	export BZIP2_INCLUDE=${ESYSROOT}/usr/include
+	export BZIP2_LIB=${ESYSROOT}/usr/$(get_libdir)
 
 	export BUILD_ZLIB=False
-	export ZLIB_INCLUDE=${EROOT}/usr/include
-	export ZLIB_LIB=${EROOT}/usr/$(get_libdir)
+	export ZLIB_INCLUDE=${ESYSROOT}/usr/include
+	export ZLIB_LIB=${ESYSROOT}/usr/$(get_libdir)
 
 	# allow either gdbm to provide ndbm (in <gdbm/ndbm.h>) or db1
 	myndbm='U'
