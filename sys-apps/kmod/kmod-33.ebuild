@@ -91,11 +91,21 @@ src_configure() {
 		$(use_with zstd)
 	)
 
+	if [[ ${PV} != 9999 ]] ; then
+		# See src_install
+		myeconfargs+=( --disable-manpages )
+	fi
+
 	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
+
+	if [[ ${PV} != 9999 ]] ; then
+		# The dist logic is broken but the files are in there (bug #937942)
+		emake -C man DESTDIR="${D}" install
+	fi
 
 	find "${ED}" -type f -name "*.la" -delete || die
 
