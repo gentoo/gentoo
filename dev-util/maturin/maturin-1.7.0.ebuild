@@ -487,7 +487,6 @@ python_compile_all() {
 }
 
 python_test() {
-	local -x COLUMNS=100 # match clap_builder crate default
 	local -x MATURIN_TEST_PYTHON=${EPYTHON}
 	local -x PIP_CONFIG_FILE=${T}/pip.conf
 	local -x VIRTUALENV_SYSTEM_SITE_PACKAGES=1
@@ -496,6 +495,8 @@ python_test() {
 	local -x PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
 
 	local skip=(
+		# picky cli output test that easily benignly fail (bug #937992)
+		--skip cli_tests
 		# avoid need for wasm over a single hello world test
 		--skip integration_wasm_hello_world
 		# fragile depending on rust version, also wants libpypy*-c.so for pypy
