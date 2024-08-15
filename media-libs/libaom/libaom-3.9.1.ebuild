@@ -50,6 +50,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.0-posix-c-source-ftello.patch
 	"${FILESDIR}"/${PN}-3.7.0-allow-fortify-source.patch
 	"${FILESDIR}"/${PN}-3.8.1-tests-parallel.patch
+	"${FILESDIR}"/${PN}-3.9.1-gcc15-cstdint.patch
 )
 
 multilib_src_configure() {
