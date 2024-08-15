@@ -203,6 +203,9 @@ src_install() {
 }
 
 pkg_postinst() {
+	use bin-symlinks && has_version dev-util/shadowman && [[ ! ${ROOT} ]] &&
+		eselect compiler-shadow update all
+
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
 		elog "Note that this package is primarily intended for DTrace, systemd, and related"
 		elog "packages to depend on without needing a manual crossdev setup."
@@ -211,4 +214,9 @@ pkg_postinst() {
 		elog "Use sys-devel/crossdev if need full toolchain/customization:"
 		elog "    https://wiki.gentoo.org/wiki/Crossdev"
 	fi
+}
+
+pkg_postrm() {
+	use bin-symlinks && has_version dev-util/shadowman && [[ ! ${ROOT} ]] &&
+		eselect compiler-shadow clean all
 }
