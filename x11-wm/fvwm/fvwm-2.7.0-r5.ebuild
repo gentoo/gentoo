@@ -12,7 +12,7 @@ SRC_URI="https://github.com/fvwmorg/fvwm/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+ FVWM"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="bidi debug doc netpbm nls perl png readline stroke svg tk truetype +vanilla xinerama lock"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
