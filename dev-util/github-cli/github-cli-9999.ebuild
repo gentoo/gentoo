@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit bash-completion-r1 flag-o-matic go-module
+inherit bash-completion-r1 go-module
 
 DESCRIPTION="GitHub CLI"
 HOMEPAGE="https://github.com/cli/cli"
@@ -25,13 +25,6 @@ RDEPEND=">=dev-vcs/git-1.7.3"
 RESTRICT="test"
 
 src_unpack() {
-	# Filter LTO flags to avoid build failures.
-	filter-lto
-	# Filter '-ggdb3' flag to avoid build failures. bugs.gentoo.org/847991
-	filter-flags "-ggdb3"
-	# Go LDFLAGS are not the same as GCC/Binutils LDFLAGS
-	unset LDFLAGS
-
 	if [[ ${PV} == *9999 ]]; then
 		git-r3_src_unpack
 		go-module_live_vendor
