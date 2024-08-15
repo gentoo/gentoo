@@ -30,6 +30,10 @@ SRC_URI+=" mips? (
 SRC_URI+=" riscv? (
 	elibc_musl? ( ${GENTOO_BIN_BASEURI}/${MY_P}-riscv64gc-unknown-linux-musl.tar.xz )
 )"
+SRC_URI+=" ppc64? ( elibc_musl? (
+	big-endian?  ( ${GENTOO_BIN_BASEURI}/${MY_P}-powerpc64-unknown-linux-musl.tar.xz )
+	!big-endian? ( ${GENTOO_BIN_BASEURI}/${MY_P}-powerpc64le-unknown-linux-musl.tar.xz )
+) )"
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4"
 SLOT="stable"
