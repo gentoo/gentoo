@@ -115,10 +115,9 @@ src_install() {
 
 pkg_postinst() {
 	readme.gentoo_print_elog
-	if ! has_version "sys-kernel/dracut" && ! has_version "sys-kernel/genkernel-next[plymouth]"; then
-		ewarn "Neither dracut or genkernel-next[plymouth] are installed"
-		ewarn "if you wish to have an initramfs with plymouth support, you can"
-		ewarn "emerge 'sys-kernel/dracut' or genkernel-next[plymouth] otherwise"
+	if ! has_version "sys-kernel/dracut"; then
+		ewarn "dracut is not installed, if you wish to have an initramfs with"
+		ewarn "plymouth support, you can emerge 'sys-kernel/dracut' otherwise"
 		ewarn "you can look at the plymouth wiki for other methods:"
 		ewarn "https://wiki.gentoo.org/wiki/Plymouth#Building_Initramfs"
 	fi
