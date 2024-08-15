@@ -12,4 +12,7 @@
 	<use>
 		<flag name="sync">Enable "task sync" support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">GothenburgBitFactory/taskwarrior</remote-id>
+	</upstream>
 </pkgmetadata>
