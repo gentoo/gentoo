@@ -13,4 +13,4 @@ SRC_URI="https://github.com/neovim/tree-sitter-vimdoc/archive/v${PV}.tar.gz -> $
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
