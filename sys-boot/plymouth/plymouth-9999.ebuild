@@ -23,9 +23,11 @@ SLOT="0"
 IUSE="debug +drm +gtk +pango selinux freetype +split-usr +udev doc systemd"
 
 BDEPEND="
-	app-text/docbook-xsl-stylesheets
-	dev-libs/libxslt
 	virtual/pkgconfig
+	doc? (
+		app-text/docbook-xsl-stylesheets
+		dev-libs/libxslt
+	)
 "
 
 COMMON_DEPEND="
