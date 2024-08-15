@@ -33,6 +33,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-geotiff.patch
+	"${FILESDIR}"/${PN}-9.3.0-include-cstdint.patch
 )
 
 src_unpack() {

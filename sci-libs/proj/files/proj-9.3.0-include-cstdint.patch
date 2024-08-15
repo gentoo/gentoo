@@ -1,0 +1,29 @@
+https://github.com/OSGeo/PROJ/commit/8b78ba4c18daba35bd0d2c19e665add1eeb769c8
+https://bugs.gentoo.org/937472
+https://gcc.gnu.org/pipermail/gcc-cvs/2024-August/407124.html
+
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Wed, 7 Aug 2024 11:25:30 +0200
+Subject: [PATCH] Add missing include cstdint
+
+Fixes #4215
+--- a/src/apps/cct.cpp
++++ b/src/apps/cct.cpp
+@@ -79,6 +79,7 @@ Thomas Knudsen, thokn@sdfe.dk, 2016-05-25/2017-10-26
+ #include <string.h>
+ 
+ #include <algorithm>
++#include <cstdint>
+ #include <fstream> // std::ifstream
+ #include <iostream>
+ 
+--- a/src/apps/cs2cs.cpp
++++ b/src/apps/cs2cs.cpp
+@@ -36,6 +36,7 @@
+ #include <string.h>
+ 
+ #include <cassert>
++#include <cstdint>
+ #include <iostream>
+ #include <string>
+ #include <vector>
