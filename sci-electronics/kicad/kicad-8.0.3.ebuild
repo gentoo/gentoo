@@ -80,11 +80,15 @@ fi
 
 CHECKREQS_DISK_BUILD="1500M"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-8.0.3-gcc15-cstdint.patch
+)
+
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 
 	python-single-r1_pkg_setup
-	setup-wxwidgets
+	#setup-wxwidgets
 	check-reqs_pkg_setup
 }
 
