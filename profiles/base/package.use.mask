@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-09-12)
+# No suitable version of dev-libs/protobuf available.
+=dev-java/protobuf-java-4.28.1 system-protoc
+
 # Sam James <sam@gentoo.org> (2024-09-07)
 # yacc[reference] exists more for curiosity than anything else, it's
 # not for real use on systems.
@@ -236,10 +240,6 @@ dev-libs/openssl sslv2 sslv3
 # Sam James <sam@gentoo.org> (2023-06-29)
 # Needs <dev-libs/openssl-3 which is EOL beyond September 2023.
 net-misc/curl sslv3
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-05-04)
-# No suitable version of dev-libs/protobuf available.
-=dev-java/protobuf-java-3.23.0 system-protoc
 
 # Joonas Niilola <juippis@gentoo.org> (2023-06-06)
 # Runtime not tested, may require more configuration in the ebuild.
