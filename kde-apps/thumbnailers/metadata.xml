@@ -9,6 +9,8 @@
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
 	<use>
+		<flag name="blender">Enable blender thumbnail generation using <pkg>kde-frameworks/karchive</pkg></flag>
 		<flag name="mobi">Enable mobipocket thumbnail generation using <pkg>kde-apps/kdegraphics-mobipocket</pkg></flag>
+<!--		<flag name="video">Enable video thumbnail generation using <pkg>kde-apps/ffmpegthumbs</pkg></flag> -->
 	</use>
 </pkgmetadata>
