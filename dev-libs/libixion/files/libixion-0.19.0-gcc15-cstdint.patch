@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/937388
+https://gitlab.com/ixion/ixion/-/issues/63
+https://gitlab.com/ixion/ixion/-/merge_requests/70
+
+From cb662d675aaa419972d39c5606713919e3e1d6f9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Kacper=20S=C5=82omi=C5=84ski?=
+ <kacper.slominski72@gmail.com>
+Date: Wed, 14 Aug 2024 03:41:24 +0200
+Subject: [PATCH] Add a missing <cstdint> include
+
+--- a/include/ixion/compute_engine.hpp
++++ b/include/ixion/compute_engine.hpp
+@@ -13,6 +13,7 @@
+ 
+ #include <memory>
+ #include <string>
++#include <cstdint>
+ 
+ namespace ixion { namespace draft {
+ 
+-- 
+GitLab
