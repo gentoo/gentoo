@@ -1,0 +1,31 @@
+https://gitlab.com/hepcedar/lhapdf/merge_requests/96
+
+From: Christopher Fore <csfore@posteo.net>
+Date: Wed, 14 Aug 2024 20:38:03 -0400
+Subject: [PATCH] yamlcpp: Explicitly include <cstdint>
+
+GCC 15 will no longer include <cstdint> by default, resulting in build
+failures in projects that do not explicitly include it.
+
+Error:
+emitterutils.cpp:221:11: error: 'uint16_t' was not declared in this scope
+  221 | std::pair<uint16_t, uint16_t> EncodeUTF16SurrogatePair(int codePoint) {
+      |           ^~~~~~~~
+emitterutils.cpp:13:1:
+note: 'uint16_t' is defined in header '<cstdint>';
+this is probably fixable by adding '#include <cstdint>'
+   12 | #include "yaml-cpp/null.h"
+  +++ |+#include <cstdint>
+   13 | #include "yaml-cpp/ostream_wrapper.h"
+
+See-also: https://gcc.gnu.org/pipermail/gcc-cvs/2024-August/407124.html
+See-also: https://bugs.gentoo.org/937778
+Signed-off-by: Christopher Fore <csfore@posteo.net>
+--- a/src/yamlcpp/emitterutils.cpp
++++ b/src/yamlcpp/emitterutils.cpp
+@@ -1,4 +1,5 @@
+ #include <algorithm>
++#include <cstdint>
+ #include <iomanip>
+ #include <sstream>
+ 
