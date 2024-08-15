@@ -88,7 +88,7 @@ pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 
 	python-single-r1_pkg_setup
-	#setup-wxwidgets
+	setup-wxwidgets
 	check-reqs_pkg_setup
 }
 
