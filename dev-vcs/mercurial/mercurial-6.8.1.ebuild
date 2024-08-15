@@ -18,10 +18,12 @@ CRATES="
 	atty@0.2.14
 	autocfg@1.1.0
 	bitflags@1.3.2
+	bitflags@2.6.0
 	bitmaps@2.1.0
 	bitvec@1.0.1
 	block-buffer@0.9.0
 	block-buffer@0.10.3
+	bstr@1.6.0
 	bumpalo@3.11.1
 	byteorder@1.4.3
 	bytes-cast@0.3.0
@@ -52,6 +54,8 @@ CRATES="
 	diff@0.1.13
 	digest@0.9.0
 	digest@0.10.5
+	dirs@5.0.1
+	dirs-sys@0.4.1
 	either@1.8.0
 	env_logger@0.9.3
 	fastrand@1.8.0
@@ -80,6 +84,7 @@ CRATES="
 	lazy_static@1.4.0
 	libc@0.2.137
 	libm@0.2.6
+	libredox@0.1.3
 	libz-sys@1.1.8
 	link-cplusplus@1.0.7
 	log@0.4.17
@@ -94,6 +99,7 @@ CRATES="
 	num_cpus@1.14.0
 	once_cell@1.16.0
 	opaque-debug@0.3.0
+	option-ext@0.2.0
 	os_str_bytes@6.4.0
 	output_vt100@0.1.3
 	paste@1.0.9
@@ -119,7 +125,9 @@ CRATES="
 	rayon@1.7.0
 	rayon-core@1.11.0
 	redox_syscall@0.2.16
+	redox_users@0.4.5
 	regex@1.7.0
+	regex-automata@0.3.9
 	regex-syntax@0.6.28
 	remove_dir_all@0.5.3
 	rustc_version@0.4.0
@@ -133,6 +141,7 @@ CRATES="
 	serde_spanned@0.6.1
 	sha-1@0.9.8
 	sha-1@0.10.0
+	shellexpand@3.1.0
 	sized-chunks@0.6.5
 	stable_deref_trait@1.2.0
 	static_assertions@1.1.0
@@ -141,6 +150,8 @@ CRATES="
 	tap@1.0.1
 	tempfile@3.3.0
 	termcolor@1.1.3
+	thiserror@1.0.39
+	thiserror-impl@1.0.39
 	thread_local@1.1.4
 	toml@0.6.0
 	toml_datetime@0.5.1
@@ -166,13 +177,22 @@ CRATES="
 	winapi-i686-pc-windows-gnu@0.4.0
 	winapi-util@0.1.5
 	winapi-x86_64-pc-windows-gnu@0.4.0
+	windows-sys@0.48.0
+	windows-targets@0.48.5
 	windows-targets@0.52.0
+	windows_aarch64_gnullvm@0.48.5
 	windows_aarch64_gnullvm@0.52.0
+	windows_aarch64_msvc@0.48.5
 	windows_aarch64_msvc@0.52.0
+	windows_i686_gnu@0.48.5
 	windows_i686_gnu@0.52.0
+	windows_i686_msvc@0.48.5
 	windows_i686_msvc@0.52.0
+	windows_x86_64_gnu@0.48.5
 	windows_x86_64_gnu@0.52.0
+	windows_x86_64_gnullvm@0.48.5
 	windows_x86_64_gnullvm@0.52.0
+	windows_x86_64_msvc@0.48.5
 	windows_x86_64_msvc@0.52.0
 	wyz@0.5.1
 	yansi@0.5.1
