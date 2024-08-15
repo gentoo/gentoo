@@ -99,6 +99,17 @@ src_install() {
 		dosym ../usr/sbin/plymouthd /sbin/plymouthd
 	fi
 
+	# the file /var/spool/plymouth/boot.log is linked to the boot log after
+	# booting when there are errors, there is no runtime check to create this
+	# directory (the file is directly linked using unistd `link`) meaning there
+	# may be missing logs or unexpected behaviour if it is not kept.
+	keepdir /var/spool/plymouth
+	# /var/lib/plymouth is created at runtime, and is used to store boot/shutdown
+	# durations, it doesn't need to be created at build.
+	rm -rf "${ED}"/var/lib || die
+	# /run/plymouth is also created at runtime
+	rm -rf "${ED}"/run || die
+
 	readme.gentoo_create_doc
 }
 
