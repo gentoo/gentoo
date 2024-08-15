@@ -1,0 +1,59 @@
+https://github.com/mgieseki/dvisvgm/pull/273
+
+From 094a630bc8f49e233b2b21f34b6fdb3312d6ba2a Mon Sep 17 00:00:00 2001
+Message-ID: <094a630bc8f49e233b2b21f34b6fdb3312d6ba2a.1723683010.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Thu, 15 Aug 2024 01:34:04 +0100
+Subject: [PATCH] Add missing `<cstdint>` includes
+
+`uint8_t`, `uint32_t` are used without including `<cstdint>`
+which fails to build w/ GCC 15 after a change in libstdc++ [0]
+
+[0] https://gcc.gnu.org/git/?p=gcc.git;a=commit;h=3a817a4a5a6d94da9127af3be9f84a74e3076ee2
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ src/Character.hpp    | 1 +
+ src/HashFunction.hpp | 1 +
+ src/utility.hpp      | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/src/Character.hpp b/src/Character.hpp
+index 0569205a..2b71c163 100644
+--- a/src/Character.hpp
++++ b/src/Character.hpp
+@@ -21,6 +21,7 @@
+ #ifndef CHARACTER_HPP
+ #define CHARACTER_HPP
+ 
++#include <cstdint>
+ 
+ class Character {
+ 	public:
+diff --git a/src/HashFunction.hpp b/src/HashFunction.hpp
+index 703a0bc0..7f5da89d 100644
+--- a/src/HashFunction.hpp
++++ b/src/HashFunction.hpp
+@@ -21,6 +21,7 @@
+ #ifndef HASHFUNCTION_HPP
+ #define HASHFUNCTION_HPP
+ 
++#include <cstdint>
+ #include <istream>
+ #include <memory>
+ #include <string>
+diff --git a/src/utility.hpp b/src/utility.hpp
+index bff301c4..75719480 100644
+--- a/src/utility.hpp
++++ b/src/utility.hpp
+@@ -25,6 +25,7 @@
+ #include <config.h>
+ #endif
+ 
++#include <cstdint>
+ #include <iomanip>
+ #include <functional>
+ #include <memory>
+-- 
+2.45.2
+
