@@ -55,6 +55,9 @@ RDEPEND="
 		>=dev-python/idna-2.4[${PYTHON_USEDEP}]
 	)
 "
+IDEPEND="
+	>=dev-python/zope-interface-5[${PYTHON_USEDEP}]
+"
 BDEPEND="
 	>=dev-python/hatch-fancy-pypi-readme-22.5.0[${PYTHON_USEDEP}]
 	>=dev-python/incremental-22.10.0[${PYTHON_USEDEP}]
