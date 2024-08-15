@@ -51,12 +51,15 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_prepare_all() {
+	distutils-r1_python_prepare_all
+
 	# pytest-socket dep relevant only to test_integration, and upstream
 	# disables it anyway
 	sed -i -e '/--disable-socket/d' pytest.ini || die
 	sed -i -e '/--cov/d' pytest.ini || die
+	# unnecessary pin
+	sed -i -e '/pkginfo </d' pyproject.toml || die
 
-	distutils-r1_python_prepare_all
 	export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 }
 
