@@ -1,0 +1,25 @@
+diff --git a/setup.py b/setup.py
+index c1775b5..5051c6b 100755
+--- a/setup.py
++++ b/setup.py
+@@ -12,6 +12,10 @@ from autogen.paths import include_dirs, library_dirs
+ 
+ ext_kwds = dict(include_dirs=include_dirs(), library_dirs=library_dirs())
+ 
++# Generate auto-generated sources from pari.desc
++# This needs to be done before build/build_ext so the generated pxd is moved
++# to the build directory and installed with newer setuptools.
++rebuild()
+ 
+ if "READTHEDOCS" in os.environ:
+     # When building with readthedocs, disable optimizations to decrease
+@@ -28,9 +32,6 @@ if "READTHEDOCS" in os.environ:
+ # Adapted from Cython's new_build_ext
+ class build_ext(_build_ext):
+     def finalize_options(self):
+-        # Generate auto-generated sources from pari.desc
+-        rebuild()
+-
+         self.directives = {
+             "autotestdict.cdef": True,
+             "binding": True,
