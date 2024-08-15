@@ -13,4 +13,4 @@ SRC_URI="https://github.com/tree-sitter-grammars/tree-sitter-lua/archive/v${PV}.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
