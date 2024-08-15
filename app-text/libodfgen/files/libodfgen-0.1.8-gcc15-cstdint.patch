@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/937527
+https://sourceforge.net/p/libwpd/tickets/27/
+--- a/src/OdfGenerator.cxx
++++ b/src/OdfGenerator.cxx
+@@ -33,6 +33,7 @@
+ #include <math.h>
+ 
+ #include <cctype>
++#include <cstdint>
+ #include <limits>
+ #include <memory>
+ #include <string>
