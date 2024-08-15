@@ -1,0 +1,33 @@
+https://github.com/jbeder/yaml-cpp/pull/1310
+
+From: Christopher Fore <csfore@posteo.net>
+Date: Wed, 14 Aug 2024 21:02:32 -0400
+Subject: [PATCH] emitterutils: Explicitly include <cstdint>
+
+GCC 15 will no longer include it by default, resulting in build
+failures in projects that do not explicitly include it.
+
+Error:
+src/emitterutils.cpp:221:11: error: 'uint16_t' was not declared in this scope
+  221 | std::pair<uint16_t, uint16_t> EncodeUTF16SurrogatePair(int codePoint) {
+      |           ^~~~~~~~
+src/emitterutils.cpp:13:1: note: 'uint16_t' is defined in header '<cstdint>';
+this is probably fixable by adding '#include <cstdint>'
+   12 | #include "yaml-cpp/null.h"
+  +++ |+#include <cstdint>
+   13 | #include "yaml-cpp/ostream_wrapper.h"
+
+Tests pass.
+
+Closes: #1307
+See-also: https://gcc.gnu.org/pipermail/gcc-cvs/2024-August/407124.html
+See-also: https://bugs.gentoo.org/937412
+Signed-off-by: Christopher Fore <csfore@posteo.net>
+--- a/src/emitterutils.cpp
++++ b/src/emitterutils.cpp
+@@ -1,4 +1,5 @@
+ #include <algorithm>
++#include <cstdint>
+ #include <iomanip>
+ #include <sstream>
+ 
