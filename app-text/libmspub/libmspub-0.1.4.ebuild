@@ -33,7 +33,12 @@ BDEPEND="
 	doc? ( app-text/doxygen )
 "
 
-PATCHES=( "${FILESDIR}/${P}-gcc10.patch" )
+PATCHES=(
+	# upstream backport
+	"${FILESDIR}/${P}-gcc10.patch"
+	# manually backported
+	"${FILESDIR}/${P}-gcc15.patch"
+)
 
 src_prepare() {
 	default
