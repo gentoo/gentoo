@@ -219,7 +219,6 @@ dev-ruby/rmagick:4
 # Removal on 2024-08-14.  Bug 936129.
 # Bug #829613, #854579, #871603, #874114, #934595.
 app-i18n/freewnn
-app-i18n/im-freewnn
 
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
 # New major ffmpeg version. Tracker bug #928905.
