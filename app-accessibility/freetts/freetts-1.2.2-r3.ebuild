@@ -13,7 +13,7 @@ SRC_URI="https://downloads.sourceforge.net/project/freetts/FreeTTS/FreeTTS%20${P
 
 LICENSE="jsapi? ( sun-bcla-jsapi ) freetts"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm64 ppc64 x86"
 IUSE="jsapi mbrola"
 
 BDEPEND="app-arch/unzip"
