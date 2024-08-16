@@ -466,7 +466,7 @@ tc-ld-is-bfd() {
 	# Then see if they're selecting bfd via compiler flags.
 	# Note: We're assuming they're using LDFLAGS to hold the
 	# options and not CFLAGS/CXXFLAGS.
-	local base="${T}/test-tc-bfd"
+	local base="${T}/test-tc-linker"
 	cat <<-EOF > "${base}.c"
 	int main(void) { return 0; }
 	EOF
@@ -501,7 +501,7 @@ tc-ld-is-gold() {
 	# Then see if they're selecting gold via compiler flags.
 	# Note: We're assuming they're using LDFLAGS to hold the
 	# options and not CFLAGS/CXXFLAGS.
-	local base="${T}/test-tc-gold"
+	local base="${T}/test-tc-linker"
 	cat <<-EOF > "${base}.c"
 	int main(void) { return 0; }
 	EOF
@@ -534,7 +534,7 @@ tc-ld-is-lld() {
 	# Then see if they're selecting lld via compiler flags.
 	# Note: We're assuming they're using LDFLAGS to hold the
 	# options and not CFLAGS/CXXFLAGS.
-	local base="${T}/test-tc-lld"
+	local base="${T}/test-tc-linker"
 	cat <<-EOF > "${base}.c"
 	int main(void) { return 0; }
 	EOF
@@ -568,7 +568,7 @@ tc-ld-is-mold() {
 	# Then see if they're selecting mold via compiler flags.
 	# Note: We're assuming they're using LDFLAGS to hold the
 	# options and not CFLAGS/CXXFLAGS.
-	local base="${T}/test-tc-mold"
+	local base="${T}/test-tc-linker"
 	cat <<-EOF > "${base}.c"
 	int main(void) { return 0; }
 	EOF
