@@ -1,11 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
-DESCRIPTION="edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg"
+DESCRIPTION="edb is a cross platform AArch32/x86/x86-64 debugger, inspired by Ollydbg"
 HOMEPAGE="https://github.com/eteran/edb-debugger"
 
 if [[ ${PV} == 9999 ]] ; then
@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/eteran/edb-debugger/releases/download/${PV}/edb-debugger-${PV}.tgz"
-	S="${WORKDIR}"/${PN}
+	S="${WORKDIR}/${PN}"
 
 	KEYWORDS="~amd64 ~x86"
 fi
@@ -38,9 +38,8 @@ DEPEND="dev-libs/boost
 BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
-	# Make the desktop's entries somewhat better
-	sed -i -e 's/GenericName=edb debugger/GenericName=Evan\x27s Debugger/' edb.desktop || die
-	sed -i -e 's/Comment=edb debugger/Comment=edb is a cross platform x86\/x86-64 debugger/' edb.desktop || die
+	# https://github.com/eteran/edb-debugger/pull/871
+	sed -i 's@^Comment=.*platform @&AArch32/@' edb.desktop || die
 
 	if ! use graphviz; then
 		sed -i -e '/pkg_check_modules(GRAPHVIZ/d' CMakeLists.txt || die
