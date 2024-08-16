@@ -211,15 +211,6 @@ games-strategy/crimson
 # dependencies left. Removal on 2024-08-17.
 dev-ruby/rmagick:4
 
-# Eli Schwartz <eschwartz@gentoo.org> (2024-07-15)
-# FreeWnn has no activity upstream on its (very slow!) development site
-# since 2015. Website is gone. Various build failures, fails to build
-# with gcc 14.  All of its reverse dependencies are even more dead, as
-# they do not even have distfiles anymore.
-# Removal on 2024-08-14.  Bug 936129.
-# Bug #829613, #854579, #871603, #874114, #934595.
-app-i18n/freewnn
-
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
 # New major ffmpeg version. Tracker bug #928905.
 >=media-video/ffmpeg-7.0
