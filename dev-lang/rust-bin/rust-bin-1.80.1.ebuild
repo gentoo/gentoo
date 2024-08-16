@@ -16,7 +16,7 @@ SRC_URI="$(rust_all_arch_uris ${MY_P})
 	rust-src? ( ${MY_SRC_URI} )
 "
 # Keep this separate to allow easy commenting out if not yet built
-#SRC_URI+=" sparc? ( ${GENTOO_BIN_BASEURI}/${MY_P}-sparc64-unknown-linux-gnu.tar.xz ) "
+SRC_URI+=" sparc? ( ${GENTOO_BIN_BASEURI}/${MY_P}-sparc64-unknown-linux-gnu.tar.xz ) "
 SRC_URI+=" mips? (
 	abi_mips_o32? (
 		big-endian?  ( ${GENTOO_BIN_BASEURI}/${MY_P}-mips-unknown-linux-gnu.tar.xz )
