@@ -198,7 +198,7 @@ src_compile() {
 	# and it can lead to .a mangling, notably with 32bit (breaks toolchain)
 	dostrip -x ${bpftdir}/{${CTARGET}/lib{,32},lib/gcc/${CTARGET}}
 
-	# ... and instead do it here given this saves ~60MB
+	# TODO: Check if this is worth doing, it may not be
 	if use strip; then
 		einfo "Stripping ${CTARGET} static libraries ..."
 		find "${sysroot}"/{,lib/gcc/}${CTARGET} -type f -name '*.a' \
