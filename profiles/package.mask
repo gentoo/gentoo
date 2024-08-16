@@ -223,12 +223,6 @@ app-i18n/im-freewnn
 app-dicts/wnn-ldic
 app-i18n/kinput2
 
-# Hans de Graaff <graaff@gentoo.org> (2024-07-14)
-# Ancient package, last release ca. 2009. Upstream is gone. All
-# improvements are now available in dev-ruby/irb itself.
-# Removal on 2024-08-14.
-dev-ruby/wirble
-
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
 # New major ffmpeg version. Tracker bug #928905.
 >=media-video/ffmpeg-7.0
