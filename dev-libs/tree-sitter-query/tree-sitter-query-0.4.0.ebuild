@@ -13,4 +13,4 @@ SRC_URI="https://github.com/tree-sitter-grammars/tree-sitter-query/archive/v${PV
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
