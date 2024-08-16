@@ -29,6 +29,9 @@ BDEPEND="
 src_prepare() {
 	default
 
+	# skip unnecessary examples & automagic dependency on nettle
+	sed -i '/build_examples=/s/yes/no/' configure.ac || die
+
 	eautoreconf
 }
 
@@ -37,7 +40,6 @@ src_configure() {
 		# no options... and cmake build has different issues
 		$(usev !doc ac_cv_path_SPHINX_BUILD=)
 		$(usev !test ac_cv_lib_cunit_CU_initialize_registry=)
-		PKG_CONFIG=false # disables examples by failing to find nettle
 	)
 
 	econf "${econfargs[@]}"
