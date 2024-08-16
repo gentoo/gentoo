@@ -18,8 +18,13 @@ KEYWORDS="~amd64"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
-DEPEND="test? ( dev-util/cunit )"
-BDEPEND="doc? ( dev-python/sphinx )"
+DEPEND="
+	test? ( dev-util/cunit )
+"
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( dev-python/sphinx )
+"
 
 src_prepare() {
 	default
