@@ -857,11 +857,9 @@ src_configure() {
 		mozconfig_add_options_ac '' --enable-sandbox
 	fi
 
-	# Enable JIT on riscv64 explicitly, since it's not activated automatically via "known arches" list.
+	# Enable JIT on riscv64 explicitly
 	# Can be removed once upstream enable it by default in the future.
-	# Update 129.0.1: Disable jit on riscv (this line can be blanked to disable by default),
-	# bgo#937867.
-	use riscv && mozconfig_add_options_ac 'Disable JIT for RISC-V 64' --disable-jit
+	use riscv && mozconfig_add_options_ac 'Enable JIT for RISC-V 64' --enable-jit
 
 	if [[ -s "${S}/api-google.key" ]] ; then
 		local key_origin="Gentoo default"
