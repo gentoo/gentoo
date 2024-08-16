@@ -135,7 +135,7 @@ DEPEND="${COMMON_DEPEND}
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}/php-8.3.9-optional-png-testfixen.patch"
+	"${FILESDIR}/php-8.3.10-optional-png-testfixen.patch"
 	"${FILESDIR}/php-8.3.9-gd-cachevars.patch"
 )
 
