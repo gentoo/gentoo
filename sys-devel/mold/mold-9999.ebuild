@@ -47,20 +47,20 @@ src_prepare() {
 	cmake_src_prepare
 
 	# Needs unpackaged dwarfdump
-	rm test/elf/{{dead,compress}-debug-sections,compressed-debug-info}.sh || die
+	rm test/{{dead,compress}-debug-sections,compressed-debug-info}.sh || die
 
 	# Heavy tests, need qemu
-	rm test/elf/gdb-index-{compress-output,dwarf{2,3,4,5}}.sh || die
-	rm test/elf/lto-{archive,dso,gcc,llvm,version-script}.sh || die
+	rm test/gdb-index-{compress-output,dwarf{2,3,4,5}}.sh || die
+	rm test/lto-{archive,dso,gcc,llvm,version-script}.sh || die
 
 	# Sandbox sadness
-	rm test/elf/run.sh || die
+	rm test/run.sh || die
 	sed -i 's|`pwd`/mold-wrapper.so|"& ${LD_PRELOAD}"|' \
-		test/elf/mold-wrapper{,2}.sh || die
+		test/mold-wrapper{,2}.sh || die
 
 	# static-pie tests require glibc built with static-pie support
 	if ! has_version -d 'sys-libs/glibc[static-pie(+)]'; then
-		rm test/elf/{,ifunc-}static-pie.sh || die
+		rm test/{,ifunc-}static-pie.sh || die
 	fi
 }
 
