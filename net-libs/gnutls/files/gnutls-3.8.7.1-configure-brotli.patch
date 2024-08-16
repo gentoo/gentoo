@@ -1,0 +1,156 @@
+https://bugs.gentoo.org/937997
+https://gitlab.com/gnutls/gnutls/-/merge_requests/1867
+
+From 292f96f26d7ce80e4a165c903c4fd569b85c1c1f Mon Sep 17 00:00:00 2001
+From: Daiki Ueno <ueno@gnu.org>
+Date: Fri, 16 Aug 2024 09:42:15 +0900
+Subject: [PATCH 1/3] build: fix setting AM_CONDITIONAL for brotli and zstd
+
+As the with_{libbrotli,libzsttd} variables are unset if configured
+with --without-{brotli,zstd}, check the unequality to "no" doesn't
+work; use explicit matching with "yes" instead.
+
+Signed-off-by: Daiki Ueno <ueno@gnu.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -1158,7 +1158,7 @@ if test x$ac_brotli != xno; then
+ else
+     AC_MSG_RESULT(no)
+ fi
+-AM_CONDITIONAL(HAVE_LIBBROTLI, test "$with_libbrotlienc" != "no" && test "$with_libbrotlidec" != "no")
++AM_CONDITIONAL(HAVE_LIBBROTLI, test "$with_libbrotlienc" = yes && test "$with_libbrotlidec" = yes)
+ 
+ AS_IF([test "$ac_cv_dlopen_soname_works" = yes], [
+     save_CFLAGS=$CFLAGS
+@@ -1203,7 +1203,7 @@ if test x$ac_zstd != xno; then
+ else
+     AC_MSG_RESULT(no)
+ fi
+-AM_CONDITIONAL(HAVE_LIBZSTD, test "$with_libzstd" != "no")
++AM_CONDITIONAL(HAVE_LIBZSTD, test "$with_libzstd" = yes)
+ 
+ AS_IF([test "$ac_cv_dlopen_soname_works" = yes], [
+     save_CFLAGS=$CFLAGS
+-- 
+GitLab
+
+
+From 546153198d2fb8fc4902f23de6254bb7988de534 Mon Sep 17 00:00:00 2001
+From: Daiki Ueno <ueno@gnu.org>
+Date: Fri, 16 Aug 2024 09:48:31 +0900
+Subject: [PATCH 2/3] build: don't emit Requires.private for dlopened libraries
+
+Signed-off-by: Daiki Ueno <ueno@gnu.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -1100,11 +1100,6 @@ if test x$ac_zlib != xno; then
+     PKG_CHECK_EXISTS(zlib, ZLIB_HAS_PKGCONFIG=y, ZLIB_HAS_PKGCONFIG=n)
+     if test "$ZLIB_HAS_PKGCONFIG" = "y" ; then
+         PKG_CHECK_MODULES(ZLIB, [zlib])
+-	if test "x$GNUTLS_REQUIRES_PRIVATE" = x; then
+-	    GNUTLS_REQUIRES_PRIVATE="Requires.private: zlib"
+-	else
+-	    GNUTLS_REQUIRES_PRIVATE="$GNUTLS_REQUIRES_PRIVATE, zlib"
+-	fi
+ 	ac_zlib=yes
+     else
+ 	AC_LIB_HAVE_LINKFLAGS(z,, [#include <zlib.h>], [compress (0, 0, 0, 0);])
+@@ -1134,6 +1129,13 @@ AS_IF([test "$ac_cv_dlopen_soname_works" = yes], [
+                    compress (0, 0, 0, 0);])])
+     LIBS="$save_LIBS"
+     CFLAGS="$save_CFLAGS"
++],
++      [test "$ZLIB_HAS_PKGCONFIG" = y && test "$ac_zlib" = yes], [
++    if test "x$GNUTLS_REQUIRES_PRIVATE" = x; then
++        GNUTLS_REQUIRES_PRIVATE="Requires.private: zlib"
++    else
++        GNUTLS_REQUIRES_PRIVATE="$GNUTLS_REQUIRES_PRIVATE, zlib"
++    fi
+ ])
+ 
+ AC_ARG_WITH(brotli,
+@@ -1146,11 +1148,6 @@ if test x$ac_brotli != xno; then
+     PKG_CHECK_MODULES(LIBBROTLIDEC, [libbrotlidec >= 1.0.0], [with_libbrotlidec=yes], [with_libbrotlidec=no])
+     if test "${with_libbrotlienc}" = "yes" && test "${with_libbrotlidec}" = "yes"; then
+ 	AC_DEFINE([HAVE_LIBBROTLI], 1, [Define if BROTLI compression is enabled.])
+-	if test "x$GNUTLS_REQUIRES_PRIVATE" = "x"; then
+-	    GNUTLS_REQUIRES_PRIVATE="Requires.private: libbrotlienc, libbrotlidec"
+-	else
+-	    GNUTLS_REQUIRES_PRIVATE="${GNUTLS_REQUIRES_PRIVATE}, libbrotlienc, libbrotlidec"
+-	fi
+ 	need_ltlibdl=yes
+     else
+ 	AC_MSG_WARN(*** LIBBROTLI was not found. You will not be able to use BROTLI compression.)
+@@ -1180,6 +1177,13 @@ AS_IF([test "$ac_cv_dlopen_soname_works" = yes], [
+            BrotliDecoderVersion();])])
+     LIBS="$save_LIBS"
+     CFLAGS="$save_CFLAGS"
++],
++      [test "$with_libbrotlienc" = yes && test "$with_libbrotlidec" = yes], [
++    if test "x$GNUTLS_REQUIRES_PRIVATE" = "x"; then
++        GNUTLS_REQUIRES_PRIVATE="Requires.private: libbrotlienc, libbrotlidec"
++    else
++        GNUTLS_REQUIRES_PRIVATE="${GNUTLS_REQUIRES_PRIVATE}, libbrotlienc, libbrotlidec"
++    fi
+ ])
+ 
+ AC_ARG_WITH(zstd,
+@@ -1191,11 +1195,6 @@ if test x$ac_zstd != xno; then
+     PKG_CHECK_MODULES(LIBZSTD, [libzstd >= 1.3.0], [with_libzstd=yes], [with_libzstd=no])
+     if test "${with_libzstd}" = "yes"; then
+ 	AC_DEFINE([HAVE_LIBZSTD], 1, [Define if ZSTD compression is enabled.])
+-	if test "x$GNUTLS_REQUIRES_PRIVATE" = "x"; then
+-	    GNUTLS_REQUIRES_PRIVATE="Requires.private: libzstd"
+-	else
+-	    GNUTLS_REQUIRES_PRIVATE="${GNUTLS_REQUIRES_PRIVATE}, libzstd"
+-	fi
+ 	need_ltlibdl=yes
+     else
+ 	AC_MSG_WARN(*** LIBZSTD was not found. You will not be able to use ZSTD compression.)
+@@ -1215,6 +1214,13 @@ AS_IF([test "$ac_cv_dlopen_soname_works" = yes], [
+            ZSTD_versionNumber();])])
+     LIBS="$save_LIBS"
+     CFLAGS="$save_CFLAGS"
++],
++      [test "$with_libzstd" = yes], [
++    if test "x$GNUTLS_REQUIRES_PRIVATE" = "x"; then
++        GNUTLS_REQUIRES_PRIVATE="Requires.private: libzstd"
++    else
++        GNUTLS_REQUIRES_PRIVATE="${GNUTLS_REQUIRES_PRIVATE}, libzstd"
++    fi
+ ])
+ 
+ AC_ARG_WITH(liboqs,
+-- 
+GitLab
+
+
+From 8d0ec0ccdfeaae0d56426169d4c7b490e3b07826 Mon Sep 17 00:00:00 2001
+From: Daiki Ueno <ueno@gnu.org>
+Date: Fri, 16 Aug 2024 13:35:47 +0900
+Subject: [PATCH 3/3] build: add liboqs in Requires.private in gnutls.pc if
+ needed
+
+When --with-liboqs is specified and liboqs cannot be dlopen'ed, it
+will be linked at build time. In that case gnutls.pc should indicate
+that through Requires.private.
+
+Signed-off-by: Daiki Ueno <ueno@gnu.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -1256,6 +1256,13 @@ AS_IF([test "$ac_cv_dlopen_soname_works" = yes], [
+                    OQS_version ();])])
+     LIBS="$save_LIBS"
+     CFLAGS="$save_CFLAGS"
++],
++      [test "$have_liboqs" = yes], [
++    if test "x$GNUTLS_REQUIRES_PRIVATE" = x; then
++        GNUTLS_REQUIRES_PRIVATE="Requires.private: liboqs"
++    else
++        GNUTLS_REQUIRES_PRIVATE="$GNUTLS_REQUIRES_PRIVATE, liboqs"
++    fi
+ ])
+ 
+ AM_CONDITIONAL(NEED_LTLIBDL, test "$need_ltlibdl" = yes)
+-- 
+GitLab

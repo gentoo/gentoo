@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gnutls.asc
-inherit libtool multilib-minimal verify-sig flag-o-matic
+inherit autotools multilib-minimal verify-sig flag-o-matic
 
 DESCRIPTION="A secure communications library implementing the SSL, TLS and DTLS protocols"
 HOMEPAGE="https://www.gnutls.org/"
@@ -72,6 +72,10 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	static_assert
 )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.8.7.1-configure-brotli.patch
+)
+
 src_prepare() {
 	default
 
@@ -93,7 +97,10 @@ src_prepare() {
 	fi
 
 	# Use sane .so versioning on FreeBSD.
-	elibtoolize
+	#elibtoolize
+
+	# Switch back to elibtoolize after 3.8.7.1
+	eautoreconf
 }
 
 multilib_src_configure() {
