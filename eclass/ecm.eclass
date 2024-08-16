@@ -122,6 +122,15 @@ if [[ ${CATEGORY} = kde-frameworks ]]; then
 fi
 : "${ECM_QTHELP:=false}"
 
+# @ECLASS_VARIABLE: ECM_REMOVE_FROM_INSTALL
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Array of <paths> to remove from install image.
+if [[ ${ECM_REMOVE_FROM_INSTALL} ]]; then
+	[[ ${ECM_REMOVE_FROM_INSTALL@a} == *a* ]] ||
+		die "ECM_REMOVE_FROM_INSTALL must be an array"
+fi
+
 # @ECLASS_VARIABLE: ECM_TEST
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -679,9 +688,9 @@ ecm_src_install() {
 
 	cmake_src_install
 
+	local f
 	# bug 621970
 	if [[ -d "${ED}"/usr/share/applications ]]; then
-		local f
 		for f in "${ED}"/usr/share/applications/*.desktop; do
 			if [[ -x ${f} ]]; then
 				einfo "Removing executable bit from ${f#${ED}}"
@@ -716,6 +725,10 @@ ecm_src_install() {
 			popd > /dev/null || die
 		fi
 	fi
+
+	for f in "${ECM_REMOVE_FROM_INSTALL[@]}"; do
+		rm -r "${ED}"${f} || die
+	done
 }
 
 # @FUNCTION: ecm_pkg_preinst
