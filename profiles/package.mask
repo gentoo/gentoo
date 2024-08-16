@@ -221,7 +221,6 @@ dev-ruby/rmagick:4
 app-i18n/freewnn
 app-i18n/im-freewnn
 app-dicts/wnn-ldic
-app-i18n/kinput2
 
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
 # New major ffmpeg version. Tracker bug #928905.
