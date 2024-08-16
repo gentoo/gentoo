@@ -15,7 +15,7 @@ SRC_URI="https://github.com/apjanke/ronn-ng/archive/refs/tags/v${PV}.tar.gz -> $
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc ~x86"
 
 RDEPEND+="!app-text/ronn"
 
