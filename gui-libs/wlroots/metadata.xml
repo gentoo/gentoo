@@ -29,6 +29,7 @@
 		<flag name="liftoff">Enable support for libliftoff KMS plane backend</flag>
 		<flag name="libinput">Enable support for input devices via <pkg>dev-libs/libinput</pkg></flag>
 		<flag name="session">Enable session support (is required for DRM and libinput)</flag>
+		<flag name="tinywl">Install the minimal wayland client, tinywl</flag>
 		<flag name="x11-backend">Enable support for handling input/output devices through <pkg>x11-libs/libxcb</pkg></flag>
 		<flag name="xcb-errors">Better error reporting when using xwayland</flag>
 		<flag name="X">Enable support for X11 applications (XWayland)</flag>
