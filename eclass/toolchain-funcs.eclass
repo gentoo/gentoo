@@ -632,8 +632,9 @@ _tc-has-openmp() {
 		int nthreads, tid, ret = 0;
 		#pragma omp parallel private(nthreads, tid)
 		{
-		tid = omp_get_thread_num();
-		nthreads = omp_get_num_threads(); ret += tid + nthreads;
+			tid = omp_get_thread_num();
+			nthreads = omp_get_num_threads();
+			ret += tid + nthreads;
 		}
 		return ret;
 	}
