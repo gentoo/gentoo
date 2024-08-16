@@ -21,7 +21,6 @@
 		<flag name="mpd">Enable support for the Music Player Daemon</flag>
 		<flag name="mpris">Enable support for mpris</flag>
 		<flag name="network">Enable libnl support for network related features</flag>
-		<flag name="popups">Enable popup support with gtk-layer-shell</flag>
 		<flag name="sndio">Enable support for volume control via sndio</flag>
 		<flag name="pipewire">Enable support for pipewire</flag>
 		<flag name="pulseaudio">Enable support for volume control via PulseAudio</flag>
