@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Eli Schwartz <eschwartz@gentoo.org> (2024-08-15)
+# Abandoned upstream since 2011, unmaintained in gentoo since 2017. Tons of
+# patches, breaks again with GCC 14. Severe QA issues, automagic dependencies,
+# sole reverse dependency wants to remove it anyway.
+# Removal on 2024-09-14. Bug #829229, #854900, #863959, #880839, #882265, #931102, #914924.
+app-text/cuneiform
+
 # Ionen Wolkens <ionen@gentoo.org> (2024-08-11)
 # >=1.1.14 enables usage of explicit sync (with >=nvidia-drivers-560
 # and compositors that supports like kwin-6), which currently seems
