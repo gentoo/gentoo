@@ -615,6 +615,8 @@ tc-ld-force-bfd() {
 
 	# Set up LDFLAGS to select bfd based on the gcc / clang version.
 	if tc-is-gcc || tc-is-clang ; then
+		export CFLAGS="${CFLAGS} -fuse-ld=bfd"
+		export CXXFLAGS="${CXXFLAGS} -fuse-ld=bfd"
 		export LDFLAGS="${LDFLAGS} -fuse-ld=bfd"
 	fi
 }
