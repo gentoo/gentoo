@@ -29,10 +29,6 @@ DEPEND=">=net-misc/curl-7.81.0"
 RDEPEND="${DEPEND}"
 BDEPEND="test? ( ${PYTHON_DEPS} )"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.14-fix-makefile.patch
-)
-
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
