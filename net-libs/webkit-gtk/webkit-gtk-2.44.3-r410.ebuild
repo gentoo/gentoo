@@ -13,6 +13,8 @@ DESCRIPTION="Open source web browser engine"
 HOMEPAGE="https://www.webkitgtk.org"
 SRC_URI="https://www.webkitgtk.org/releases/${MY_P}.tar.xz"
 
+S="${WORKDIR}/${MY_P}"
+
 LICENSE="LGPL-2+ BSD"
 SLOT="4.1/0" # soname version of libwebkit2gtk-4.1
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
@@ -112,8 +114,6 @@ BDEPEND="
 	wayland? ( dev-util/wayland-scanner )
 "
 
-S="${WORKDIR}/${MY_P}"
-
 CHECKREQS_DISK_BUILD="18G" # and even this might not be enough, bug #417307
 
 # We cannot use PATCHES because src_prepare() calls cmake_src_prepare and
@@ -149,6 +149,10 @@ src_prepare() {
 	eapply "${FILESDIR}"/2.42.3-arm64-non-jumbo-fix-925621.patch
 	# Fix USE=-jumbo-build on all arches
 	eapply "${FILESDIR}"/2.44.1-non-unified-build-fixes.patch
+	# Recommended upstream fixes for 2.44.3
+	# https://lists.webkit.org/pipermail/webkit-gtk/2024-August/004002.html
+	eapply "${FILESDIR}"/${PV}-fix-clang-lto-crash.patch
+	eapply "${FILESDIR}"/${PV}-fix-wasm.patch
 }
 
 src_configure() {

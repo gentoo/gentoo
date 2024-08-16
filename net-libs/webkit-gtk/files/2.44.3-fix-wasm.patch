@@ -1,0 +1,48 @@
+From 9140ce712aa87091613874d802787ab476be0e39 Mon Sep 17 00:00:00 2001
+From: Michael Catanzaro <mcatanzaro@redhat.com>
+Date: Wed, 14 Aug 2024 14:58:05 -0500
+Subject: [PATCH] Revert "Cherry-pick 272448.770@safari-7618-branch
+ (6d311cd7fefc). https://bugs.webkit.org/show_bug.cgi?id=271175"
+ https://bugs.webkit.org/show_bug.cgi?id=278113
+
+This reverts commit 279c9d7963182cc35cf4e0bfebe87df2d83eaef8.
+
+This broke wasm, and I don't know how to fix it.
+
+Canonical link: https://commits.webkit.org/274313.373@webkitglib/2.44
+---
+ .../stress/many-calls-results-on-stack.js     | 39 -------------------
+ Source/JavaScriptCore/wasm/WasmBBQJIT.cpp     | 19 ---------
+ 2 files changed, 58 deletions(-)
+ delete mode 100644 JSTests/wasm/stress/many-calls-results-on-stack.js
+
+diff --git a/Source/JavaScriptCore/wasm/WasmBBQJIT.cpp b/Source/JavaScriptCore/wasm/WasmBBQJIT.cpp
+index 9049865e8ce7..3f142cf5e90f 100644
+--- a/Source/JavaScriptCore/wasm/WasmBBQJIT.cpp
++++ b/Source/JavaScriptCore/wasm/WasmBBQJIT.cpp
+@@ -3958,25 +3958,6 @@ void BBQJIT::returnValuesFromCall(Vector<Value, N>& results, const FunctionSigna
+                     ASSERT(m_validFPRs.contains(returnLocation.asFPR(), Width::Width128));
+                     m_fprSet.add(returnLocation.asFPR(), Width::Width128);
+                 }
+-            } else {
+-                ASSERT(returnLocation.isStackArgument());
+-                // FIXME: Ideally, we would leave these values where they are but a subsequent call could clobber them before they are used.
+-                // That said, stack results are very rare so this isn't too painful.
+-                // Even if we did leave them where they are, we'd need to flush them to their canonical location at the next branch otherwise
+-                // we could have something like (assume no result regs for simplicity):
+-                // call (result i32 i32) $foo
+-                // if (result i32) // Stack: i32(StackArgument:8) i32(StackArgument:0)
+-                //   // Stack: i32(StackArgument:8)
+-                // else
+-                //   call (result i32 i32) $bar // Stack: i32(StackArgument:8) we have to flush the stack argument to make room for the result of bar
+-                //   drop // Stack: i32(Stack:X) i32(StackArgument:8) i32(StackArgument:0)
+-                //   drop // Stack: i32(Stack:X) i32(StackArgument:8)
+-                // end
+-                // return // Stack i32(*Conflicting locations*)
+-
+-                Location canonicalLocation = canonicalSlot(result);
+-                emitMoveMemory(result.type(), returnLocation, canonicalLocation);
+-                returnLocation = canonicalLocation;
+             }
+         }
+         bind(result, returnLocation);
