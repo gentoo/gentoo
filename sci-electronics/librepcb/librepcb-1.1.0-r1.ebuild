@@ -44,8 +44,9 @@ RDEPEND="
 		dev-qt/qtsvg:6
 	)
 	opencascade? ( sci-libs/opencascade:= )
+	media-libs/libglvnd[X]
 	sys-libs/zlib
-	virtual/opengl"
+	virtual/glu"
 
 DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )
