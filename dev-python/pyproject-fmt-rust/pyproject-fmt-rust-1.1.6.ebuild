@@ -143,7 +143,7 @@ LICENSE+="
 	|| ( Apache-2.0 Boost-1.0 )
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 distutils_enable_tests pytest
 
