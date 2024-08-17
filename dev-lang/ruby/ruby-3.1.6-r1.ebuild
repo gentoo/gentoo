@@ -94,7 +94,7 @@ src_prepare() {
 	rm -fr ext/fiddle/libffi-3.2.1 || die
 
 	# Remove webrick tests because setting LD_LIBRARY_PATH does not work for them.
-	# rm -rf tool/test/webrick || die
+	rm -rf tool/test/webrick || die
 
 	# Remove tests that are known to fail or require a network connection
 	rm -f test/ruby/test_process.rb test/rubygems/test_gem{,_path_support}.rb || die
@@ -222,10 +222,12 @@ src_configure() {
 }
 
 src_compile() {
+	local -x LD_LIBRARY_PATH="${S}${LD_LIBRARY_PATH+:}${LD_LIBRARY_PATH}"
 	emake V=1 EXTLDFLAGS="${LDFLAGS}" MJIT_CFLAGS="${CFLAGS}" MJIT_OPTFLAGS="" MJIT_DEBUGFLAGS=""
 }
 
 src_test() {
+	local -x LD_LIBRARY_PATH="${S}${LD_LIBRARY_PATH+:}${LD_LIBRARY_PATH}"
 	emake V=1 check
 }
 
