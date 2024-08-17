@@ -26,6 +26,7 @@ HTML_DOCS=( MANUAL )
 
 DEPEND="${RDEPEND}"
 BDEPEND="
+	app-arch/xz-utils[extra-filters(+)]
 	uasm? ( dev-lang/uasm )
 	jwasm? ( dev-lang/jwasm )
 "
