@@ -25,7 +25,7 @@ KEYWORDS="-* ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86"
 RESTRICT="strip"
 
 RDEPEND="!app-arch/upx"
-BDEPEND="app-arch/xz-utils[extra-filters]"
+BDEPEND="app-arch/xz-utils[extra-filters(+)]"
 
 QA_PREBUILT="/opt/bin/upx"
 
