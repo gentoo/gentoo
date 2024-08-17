@@ -200,7 +200,6 @@ games-mud/gmudix
 games-mud/kildclient
 games-puzzle/color-lines
 games-puzzle/hangman
-games-puzzle/magiccube4d
 games-puzzle/scramble
 games-puzzle/zaz
 games-simulation/cannonsmash
