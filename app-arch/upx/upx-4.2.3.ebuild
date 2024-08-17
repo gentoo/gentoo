@@ -17,7 +17,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="!app-arch/upx-bin"
-BDEPEND="app-arch/xz-utils[extra-filters]"
+BDEPEND="app-arch/xz-utils[extra-filters(+)]"
 
 src_configure() {
 	local mycmakeargs=(
