@@ -80,13 +80,12 @@ src_prepare() {
 }
 
 src_configure() {
-	ln -s "${BROOT}"/usr/bin/luajit "${BUILD_DIR}"/luajit || die
 	# TODO: Investigate USE_BUNDLED, doesn't seem to be needed right now
 	local mycmakeargs=(
 		# appends -flto
 		-DENABLE_LTO=OFF
 		-DPREFER_LUA=$(usex lua_single_target_luajit no "$(lua_get_version)")
-		-DLUA_PRG="${ELUA}"
+		-DLUA_PRG="${LUA}"
 	)
 	cmake_src_configure
 }
