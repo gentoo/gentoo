@@ -33,7 +33,7 @@ RDEPEND="
 "
 # bug #801460
 BDEPEND="
-	app-arch/xz-utils[extra-filters]
+	app-arch/xz-utils[extra-filters(+)]
 	app-eselect/eselect-blas
 	app-eselect/eselect-lapack
 "
