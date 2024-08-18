@@ -70,11 +70,11 @@ pkg_pretend() {
 	# TODO: optional kernel patches
 
 	# Basics for debugging information, BPF
-	local CONFIG_CHECK="~BPF ~DEBUG_INFO_BTF ~KALLSYMS_ALL ~CUSE"
+	local CONFIG_CHECK="~BPF ~DEBUG_INFO_BTF ~KALLSYMS_ALL"
+
+	CONFIG_CHECK+=" ~CUSE"
 
 	# Tracing
-	# TODO: CONFIG_HAVE_SYSCALL_TRACEPOINTS - is it auto?
-	# TODO: CONFIG_UPROBE_EVENTS maybe?
 	CONFIG_CHECK+=" ~FTRACE_SYSCALLS ~UPROBE_EVENTS ~DYNAMIC_FTRACE ~FUNCTION_TRACER"
 
 	# https://gcc.gnu.org/PR84052
