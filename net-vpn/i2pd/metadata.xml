@@ -9,11 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<use>
-		<flag name="i2p-hardening">
-			Compile with hardening on vanilla compilers/linkers
-		</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">PurpleI2P/i2pd</remote-id>
 	</upstream>
