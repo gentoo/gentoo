@@ -1,0 +1,51 @@
+From c3c89cfca876b9c56586afc374ea92a7b25998c3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Matt=C3=A9o=20Rossillol=E2=80=91=E2=80=91Laruelle?=
+ <beatussum@protonmail.com>
+Date: Sun, 18 Aug 2024 15:18:19 +0200
+Subject: [PATCH] remove failing test conflicting with sandbox
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+sys-apps/sandbox is based on `LD_PRELOAD`; however,
+`--bash-handle-sh-invocation` uses it too. This option seems to conflict with
+the sandbox environment and the associated test fails fails.
+
+Indeed, according to the Kcov man page, this option handles "invocations of
+/bin/sh scripts via using a LD_PRELOADed library that replaces execve (i.e.,
+/bin/sh is executed as /bin/bash)".
+
+Signed-off-by: Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com>
+---
+ tests/tools/test_bash_linux_only.py | 15 ---------------
+ 1 file changed, 15 deletions(-)
+
+diff --git a/tests/tools/test_bash_linux_only.py b/tests/tools/test_bash_linux_only.py
+index d0a46bb..87022e0 100644
+--- a/tests/tools/test_bash_linux_only.py
++++ b/tests/tools/test_bash_linux_only.py
+@@ -2,21 +2,6 @@ import libkcov
+ from libkcov import cobertura
+ 
+ 
+-class bash_sh_shebang(libkcov.TestCase):
+-    def runTest(self):
+-        rv, o = self.do(
+-            self.kcov
+-            + " --bash-handle-sh-invocation "
+-            + self.outbase
+-            + "/kcov "
+-            + self.sources
+-            + "/tests/bash/shell-main"
+-        )
+-
+-        dom = cobertura.parseFile(self.outbase + "/kcov/shell-main/cobertura.xml")
+-        assert cobertura.hitsPerLine(dom, "sh-shebang.sh", 4) == 1
+-
+-
+ class bash_exit_before_child(libkcov.TestCase):
+     def runTest(self):
+         # kcovKcov shouldn't wait for the background process, so call it with kcovKcov = False
+-- 
+2.44.2
+
