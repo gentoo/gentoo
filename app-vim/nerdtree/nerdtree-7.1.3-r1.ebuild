@@ -20,3 +20,7 @@ LICENSE="WTFPL-2"
 VIM_PLUGIN_HELPFILES="NERD_tree"
 
 DOCS=( CHANGELOG.md README.markdown )
+
+src_install() {
+	vim-plugin_src_install lib nerdtree_plugin
+}
