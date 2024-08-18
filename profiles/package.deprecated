@@ -17,6 +17,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfred Wingate <parona@protonmail.com> (2024-08-18)
+# Deprecated in favour of correct use of media-libs/libglvnd.
+#   libGL,libGLX -> media-libs/libglvnd[X]
+#   libOpenGL -> media-libs/libglvnd
+# https://wiki.gentoo.org/wiki/User:ManDay/Deprecating_the_virtual_OpenGL_ebuild
+# Bug: https://bugs.gentoo.org/890334
+virtual/opengl
+
 # Michał Górny <mgorny@gentoo.org> (2024-07-23)
 # Abandoned and broken with pytest-8.  Superseded
 # by dev-python/pytest-lazy-fixtures (plural), which requires small
