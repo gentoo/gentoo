@@ -17,7 +17,7 @@ S="${WORKDIR}"
 
 LICENSE="LGPL-2 BSD rar? ( unRAR )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE="uasm jwasm rar"
 REQUIRED_USE="?? ( uasm jwasm )"
 
