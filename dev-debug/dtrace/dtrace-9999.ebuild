@@ -6,7 +6,7 @@ EAPI=8
 inherit edo flag-o-matic linux-info systemd toolchain-funcs udev
 
 DESCRIPTION="Dynamic systemwide tracing tool"
-HOMEPAGE="https://github.com/oracle/dtrace-utils"
+HOMEPAGE="https://github.com/oracle/dtrace-utils https://wiki.gentoo.org/wiki/DTrace"
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_BRANCH="devel"
@@ -151,6 +151,8 @@ pkg_postinst() {
 
 	# TODO: Restart it on upgrade? (it will carry across its own persistent state)
 	if [[ -n ${REPLACING_VERSIONS} ]]; then
+		einfo "See https://wiki.gentoo.org/wiki/DTrace for getting started."
+
 		# TODO: Make this more intelligent wrt comparison
 		if systemd_is_booted ; then
 			einfo "Restart the DTrace 'dtprobed' service after upgrades:"

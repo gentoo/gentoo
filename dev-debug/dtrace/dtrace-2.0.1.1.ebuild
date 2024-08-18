@@ -6,7 +6,7 @@ EAPI=8
 inherit edo flag-o-matic linux-info systemd toolchain-funcs udev
 
 DESCRIPTION="Dynamic systemwide tracing tool"
-HOMEPAGE="https://github.com/oracle/dtrace-utils"
+HOMEPAGE="https://github.com/oracle/dtrace-utils https://wiki.gentoo.org/wiki/DTrace"
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_BRANCH="devel"
@@ -95,7 +95,6 @@ src_configure() {
 	tc-export CC
 
 	# TODO: Can drop once https://lore.kernel.org/dtrace/20240425164057.420580-1-nick.alcock@oracle.com/ is in
-	# XXX: That wasn't enough, need to report upstream the other issues during build
 	tc-enables-fortify-source && append-cppflags -U_FORTIFY_SOURCE
 
 	# lld does this by default, so fix that, although lld fails anyway...
@@ -151,6 +150,8 @@ pkg_postinst() {
 
 	# TODO: Restart it on upgrade? (it will carry across its own persistent state)
 	if [[ -n ${REPLACING_VERSIONS} ]]; then
+		einfo "See https://wiki.gentoo.org/wiki/DTrace for getting started."
+
 		# TODO: Make this more intelligent wrt comparison
 		if systemd_is_booted ; then
 			einfo "Restart the DTrace 'dtprobed' service after upgrades:"
