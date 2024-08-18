@@ -3,15 +3,15 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..11} )
 WX_GTK_VER="3.2-gtk3"
 
-inherit check-reqs cmake flag-o-matic optfeature python-single-r1 toolchain-funcs wxwidgets xdg-utils
+inherit check-reqs cmake optfeature python-single-r1 toolchain-funcs wxwidgets xdg-utils
 
 DESCRIPTION="Electronic Schematic and PCB design tools"
 HOMEPAGE="https://www.kicad.org"
 
-if [[ ${PV} == *9999* ]]; then
+if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.com/kicad/code/kicad.git"
 	inherit git-r3
 else
@@ -21,7 +21,7 @@ else
 	S="${WORKDIR}/${PN}-${MY_PV}"
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+		KEYWORDS="amd64 ~arm64 ~riscv ~x86"
 	fi
 fi
 
@@ -39,16 +39,15 @@ RESTRICT="!test? ( test )"
 # Depend on opencascade:0 to get unslotted variant (so we know path to it), bug #833301
 # Depend wxGTK version needs to be limited due to switch from EGL to GLX, bug #911120
 COMMON_DEPEND="
-	app-crypt/libsecret
 	dev-db/unixODBC
 	dev-libs/boost:=[context,nls]
-	dev-libs/libgit2:=
 	media-libs/freeglut
 	media-libs/glew:0=
 	>=media-libs/glm-0.9.9.1
 	media-libs/mesa[X(+)]
 	net-misc/curl
-	>=sci-libs/opencascade-7.5.0:0=
+	>=sci-libs/opencascade-7.3.0:0=
+	<sci-libs/opencascade-7.8.0:0=
 	>=x11-libs/cairo-1.8.8:=
 	>=x11-libs/pixman-0.30
 	>sci-electronics/ngspice-27[shared]
@@ -81,14 +80,13 @@ fi
 CHECKREQS_DISK_BUILD="1500M"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-8.0.3-gcc15-cstdint.patch
+	"${FILESDIR}"/${PN}-7.0.0-werror.patch
 )
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 
 	python-single-r1_pkg_setup
-	setup-wxwidgets
 	check-reqs_pkg_setup
 }
 
@@ -98,11 +96,6 @@ src_unpack() {
 	else
 		default_src_unpack
 	fi
-}
-
-src_prepare() {
-	filter-lto # Bug 927482
-	cmake_src_prepare
 }
 
 src_configure() {
@@ -128,10 +121,10 @@ src_configure() {
 		-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade
 		-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)/opencascade
 
-		-DKICAD_SPICE_QA="$(usex test)"
 		-DKICAD_BUILD_QA_TESTS="$(usex test)"
 	)
 
+	setup-wxwidgets
 	cmake_src_configure
 }
 
@@ -145,16 +138,10 @@ src_compile() {
 src_test() {
 	# Test cannot find library in Portage's sandbox. Let's create a link so test can run.
 	mkdir -p "${BUILD_DIR}/qa/eeschema/" || die
-	ln -s "${BUILD_DIR}/eeschema/_eeschema.kiface" "${BUILD_DIR}/qa/eeschema/_eeschema.kiface" || die
-
-	export CMAKE_SKIP_TESTS=(
-		qa_pcbnew
-		qa_cli
-	)
+	dosym "${BUILD_DIR}/eeschema/_eeschema.kiface" "${BUILD_DIR}/qa/eeschema/_eeschema.kiface" || die
 
 	# LD_LIBRARY_PATH is there to help it pick up the just-built libraries
-	LD_LIBRARY_PATH="${BUILD_DIR}/common:${BUILD_DIR}/common/gal:${BUILD_DIR}/3d-viewer/3d_cache/sg:${LD_LIBRARY_PATH}" \
-		cmake_src_test
+	LD_LIBRARY_PATH="${BUILD_DIR}/3d-viewer/3d_cache/sg:${LD_LIBRARY_PATH}" cmake_src_test
 }
 
 src_install() {
