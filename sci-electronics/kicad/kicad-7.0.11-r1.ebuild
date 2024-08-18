@@ -21,7 +21,7 @@ else
 	S="${WORKDIR}/${PN}-${MY_PV}"
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="amd64 ~arm64 ~riscv ~x86"
+		KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 	fi
 fi
 
@@ -87,7 +87,6 @@ pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 
 	python-single-r1_pkg_setup
-	setup-wxwidgets
 	check-reqs_pkg_setup
 }
 
@@ -125,6 +124,7 @@ src_configure() {
 		-DKICAD_BUILD_QA_TESTS="$(usex test)"
 	)
 
+	setup-wxwidgets
 	cmake_src_configure
 }
 
