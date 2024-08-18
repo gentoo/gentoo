@@ -208,7 +208,10 @@ IUSE="+git"
 
 DEPEND="git? ( >=dev-libs/libgit2-1.7.0:= )"
 RDEPEND="${DEPEND}"
-BDEPEND=">=virtual/rust-1.70.0"
+BDEPEND="
+	>=virtual/rust-1.70.0
+	<virtual/rust-1.80.0
+"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 
