@@ -12,7 +12,7 @@ SRC_URI="https://github.com/PurpleI2P/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="cpu_flags_x86_aes i2p-hardening +upnp"
+IUSE="cpu_flags_x86_aes +upnp"
 
 DEPEND="
 	dev-libs/boost:=
@@ -30,16 +30,10 @@ CMAKE_USE_DIR="${WORKDIR}/${P}/build"
 
 DOCS=( ../README.md ../contrib/i2pd.conf ../contrib/tunnels.conf )
 
-pkg_pretend() {
-	if use i2p-hardening && ! tc-is-gcc; then
-		die "i2p-hardening requires gcc"
-	fi
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_AESNI=$(usex cpu_flags_x86_aes ON OFF)
-		-DWITH_HARDENING=$(usex i2p-hardening ON OFF)
+		-DWITH_HARDENING=OFF # worsens or matches the non-hardened profiles
 		-DWITH_STATIC=OFF
 		-DWITH_UPNP=$(usex upnp ON OFF)
 		-DWITH_LIBRARY=ON
