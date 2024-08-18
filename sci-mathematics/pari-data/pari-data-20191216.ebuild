@@ -10,17 +10,15 @@ HOMEPAGE="https://pari.math.u-bordeaux.fr/packages.html"
 # with new versions. When that happens, we need to bump this
 # package to a new version so that any mirrored tarballs will
 # get re-fetched to a new name.
-SRC_URI=""
 for p in elldata galpol seadata nftables galdata; do
 	SRC_URI+="https://pari.math.u-bordeaux.fr/pub/pari/packages/${p}.tgz \
 		-> ${p}-${PV}.tgz "
 done
 
+S="${WORKDIR}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ~ppc ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE=""
-S="${WORKDIR}"
 
 src_install() {
 	insinto /usr/share/pari
