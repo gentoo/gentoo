@@ -39,6 +39,10 @@ DEPEND="
 BDEPEND="test? ( ${PYTHON_DEPS} )"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-remove-failing-test-conflicting-with-sandbox.patch"
+)
+
 DOCS=(
 	doc/
 	CONTRIBUTING.md
@@ -51,24 +55,26 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake_src_prepare
-
 	if use test; then
 		sed -Ei "/skip_python2/ s/= .+/= True/" tests/tools/test_python.py \
-			|| die
+			|| die "Cannot disable Python 2 tests"
 
-		echo "add_subdirectory (tests)" >> CMakeLists.txt || die
+		cat <<- EOF >> CMakeLists.txt || die "Cannot enable test building"
+		add_compile_options (-g)
+		add_subdirectory (tests)
+		EOF
 	fi
+
+	cmake_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=( -DKCOV_INSTALL_DOCDIR:PATH="share/doc/${PF}" )
-
 	cmake_src_configure
 }
 
 src_test() {
-	PYTHONPATH="${S}/tests/tools" edo python3 -m libkcov \
+	PYTHONPATH="${S}/tests/tools" edo "${PYTHON}" -m libkcov \
 		-v \
 		"${BUILD_DIR}/src/kcov" \
 		"${T}" \
