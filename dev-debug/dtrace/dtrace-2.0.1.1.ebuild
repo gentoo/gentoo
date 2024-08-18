@@ -5,7 +5,7 @@ EAPI=8
 
 inherit edo flag-o-matic linux-info systemd toolchain-funcs udev
 
-DESCRIPTION="Dynamic systemwide tracing tool"
+DESCRIPTION="Dynamic BPF-based system-wide tracing tool"
 HOMEPAGE="https://github.com/oracle/dtrace-utils https://wiki.gentoo.org/wiki/DTrace"
 
 if [[ ${PV} == 9999 ]]; then
@@ -60,9 +60,9 @@ RDEPEND="
 "
 BDEPEND="
 	dev-build/make
-	>=sys-devel/bpf-toolchain-14.1.0
 	sys-apps/gawk
 	sys-devel/bison
+	>=sys-devel/bpf-toolchain-14.1.0
 	sys-devel/flex
 "
 
