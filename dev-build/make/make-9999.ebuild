@@ -66,6 +66,10 @@ src_prepare() {
 	if [[ ${PV} == 9999 ]] ; then
 		eautoreconf
 	fi
+
+	if use guile; then
+		guile_bump_sources
+	fi
 }
 
 pkg_setup() {

@@ -68,7 +68,7 @@ src_prepare() {
 	fi
 
 	if use guile; then
-		guile-single_src_prepare
+		guile_bump_sources
 	fi
 }
 
