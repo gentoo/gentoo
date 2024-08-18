@@ -23,8 +23,7 @@ LICENSE+="
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="heif jpegxl svg test"
-# TODO: figure out how to make tests work from inside the ebuild
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.60:2
@@ -32,7 +31,7 @@ RDEPEND="
 	heif? ( >=media-libs/libheif-1.17.0:= )
 	jpegxl? ( >=media-libs/libjxl-0.10.0:= )
 	svg? (
-		>=gnome-base/librsvg-2.52.0
+		>=gnome-base/librsvg-2.52.0:2
 		>=x11-libs/cairo-1.17.0
 	)
 "
@@ -47,6 +46,13 @@ DEPEND="
 ECARGO_VENDOR=${S}/vendor
 
 QA_FLAGS_IGNORED="usr/libexec/glycin-loaders/.*"
+
+src_prepare() {
+	default
+
+	# https://gitlab.gnome.org/sophie-h/glycin/-/issues/81
+	sed -i -e '\|/fonts|d' tests/tests.rs || die
+}
 
 src_configure() {
 	local formats=(
@@ -66,4 +72,11 @@ src_configure() {
 
 	meson_src_configure
 	ln -s "${CARGO_HOME}" "${BUILD_DIR}/cargo-home" || die
+}
+
+src_test() {
+	# tests write to /proc/*/uid_map
+	# apparently, "addpredict /" in Portage breaks it
+	local -x SANDBOX_ON=0
+	meson_src_test
 }
