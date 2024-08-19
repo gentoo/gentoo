@@ -42,6 +42,12 @@ DEPEND="
 		>=media-libs/lcms-2.14:2
 	)
 "
+BDEPEND="
+	test? (
+		sys-apps/bubblewrap
+		sys-apps/dbus
+	)
+"
 
 ECARGO_VENDOR=${S}/vendor
 
