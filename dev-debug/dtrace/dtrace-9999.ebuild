@@ -65,6 +65,9 @@ BDEPEND="
 	>=sys-devel/bpf-toolchain-14.1.0
 	sys-devel/flex
 "
+# TODO: Make this optional, valgrind.h is included unconditionally
+# https://github.com/oracle/dtrace-utils/issues/80
+DEPEND+=" dev-debug/valgrind"
 
 pkg_pretend() {
 	# TODO: optional kernel patches
