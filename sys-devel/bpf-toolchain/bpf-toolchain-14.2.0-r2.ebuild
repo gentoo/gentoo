@@ -40,7 +40,7 @@ LICENSE="
 	LGPL-3+ || ( GPL-3+ libgcc libstdc++ gcc-runtime-library-exception-3.1 )
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~s390 ~x86"
+KEYWORDS="~amd64 ~arm64 ~mips ~s390 ~x86"
 IUSE="+bin-symlinks custom-cflags +strip"
 
 RDEPEND="
