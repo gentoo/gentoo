@@ -3,4 +3,4 @@
 
 # For better testing of time64, we use gcc-14 here already in an otherwise stable
 # environment.
-sys-devel/gcc:14
+sys-devel/gcc:14 ~x86
