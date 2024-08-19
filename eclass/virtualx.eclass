@@ -113,6 +113,7 @@ virtx() {
 	export XAUTHORITY=
 
 	einfo "Starting Xvfb ..."
+	addpredict /dev/dri/ # Needed for Xvfb w/ >=mesa-24.2.0
 
 	debug-print "${FUNCNAME}: Xvfb -displayfd 1 ${xvfbargs[*]}"
 	local logfile=${T}/Xvfb.log
