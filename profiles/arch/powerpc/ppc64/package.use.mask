@@ -216,3 +216,7 @@ net-im/pidgin gstreamer
 
 # mask custom-cpuopts and cpudetection on ppc64 for mplayer - bug #234629
 media-video/mplayer cpudetection
+
+# Anthony Ryan <anthonyryan1@gmail.com> (2024-10-13)
+# Test dependency dev-libs/stb not keyworded on this arch.
+media-libs/zxing-cpp test
