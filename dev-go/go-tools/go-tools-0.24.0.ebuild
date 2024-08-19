@@ -29,12 +29,8 @@ GO_TOOLS_BINS=(
 
 src_compile() {
 	local bin packages
-	readarray -t packages < <(ego list ./...)
-	GOBIN="${S}/bin" nonfatal ego install -work "${packages[@]}" || true
-	for bin in "${GO_TOOLS_BINS[@]}"; do
-		[[ -x ${S}/bin/${bin} ]] || \
-			die "File not found, check build log: ${S}/bin/${bin}"
-	done
+	readarray -t packages < <(ego list ./... | grep -E "/($(echo "${GO_TOOLS_BINS[@]}" | tr ' ' '|'))$")
+	GOBIN="${S}/bin" ego install -work "${packages[@]}"
 }
 
 src_test() {
