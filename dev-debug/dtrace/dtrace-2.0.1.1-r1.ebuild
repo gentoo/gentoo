@@ -116,7 +116,7 @@ src_configure() {
 	local confargs=(
 		# TODO: Maybe we should set the UNPRIV_UID to something? -3 is a bit... kludgy
 		--prefix="${EPREFIX}"/usr
-		--mandir="${EPREFIX}"/usr/share/man
+		--mandir="${EPREFIX}"/usr/share/man/man8
 		--docdir="${EPREFIX}"/usr/share/doc/${PF}
 		HAVE_LIBCTF=yes
 		HAVE_LIBSYSTEMD=$(usex systemd)
