@@ -275,8 +275,8 @@ CRATES="
 	thiserror@1.0.58
 	thread_local@1.1.8
 	time-core@0.1.2
-	time-macros@0.2.17
-	time@0.3.34
+	time-macros@0.2.18
+	time@0.3.36
 	tinyvec@1.6.0
 	tinyvec_macros@0.1.1
 	tokio-io-timeout@1.2.0
@@ -399,6 +399,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.14.0-respect-ldflags.patch
 	"${FILESDIR}"/${PN}-1.10.1-add-armv7a-support.patch
 	"${FILESDIR}"/${PN}-1.12.2-noexecstack.patch
+	"${FILESDIR}"/${PN}-1.14.0-update-time.patch
 )
 
 DOCS=( README.md AUTHORS.md )
