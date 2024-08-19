@@ -8,7 +8,7 @@ ECM_TEST="true"
 KFMIN=6.3.0
 PVCUT=$(ver_cut 1-3)
 QTMIN=6.7.1
-inherit ecm plasma.kde.org
+inherit ecm flag-o-matic plasma.kde.org toolchain-funcs
 
 DESCRIPTION="Library and examples for creating an RDP server"
 HOMEPAGE+=" https://quantumproductions.info/articles/2023-08/remote-desktop-using-rdp-protocol-plasma-wayland"
@@ -40,3 +40,11 @@ RDEPEND="${COMMON_DEPEND}
 	>=kde-frameworks/kirigami-${KFMIN}:6
 "
 BDEPEND=">=kde-frameworks/kcmutils-${KFMIN}:6"
+
+src_configure() {
+	# std::jthread and std::stop_token are implemented as experimental in libcxx
+	# enable these experimental libraries on clang systems
+	# https://libcxx.llvm.org/Status/Cxx20.html#note-p0660
+	[[ $(tc-get-cxx-stdlib) == 'libc++' ]] && append-cxxflags -fexperimental-library
+	ecm_src_configure
+}
