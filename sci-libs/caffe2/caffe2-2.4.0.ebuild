@@ -121,6 +121,7 @@ PATCHES=(
 	../patches/${PN}-2.4.0-exclude-aotriton.patch
 	../patches/${PN}-2.3.0-fix-rocm-gcc14-clamp.patch
 	../patches/${PN}-2.3.0-fix-libcpp.patch
+	"${FILESDIR}"/${PN}-2.4.0-libfmt-11.patch
 )
 
 src_prepare() {
