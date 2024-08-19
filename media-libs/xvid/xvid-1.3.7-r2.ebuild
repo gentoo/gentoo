@@ -8,7 +8,7 @@ MY_P="${MY_PN}-${PV}"
 inherit flag-o-matic multilib-minimal
 
 DESCRIPTION="High performance/quality MPEG-4 video de-/encoding solution"
-HOMEPAGE="https://www.xvid.org/"
+HOMEPAGE="https://labs.xvid.com/source/ https://www.xvid.org/"
 SRC_URI="https://downloads.xvid.com/downloads/${MY_P}.tar.bz2"
 S="${WORKDIR}/${MY_PN}/build/generic"
 
