@@ -20,7 +20,11 @@ SITEFILE="50${PN}-gentoo.el"
 src_install() {
 	insinto "${SITEETC}/${PN}"
 	doins zenburn-theme.el
-	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+
+	local sha256=$(sha256sum zenburn-theme.el) || die
+	sed "s:@SHA256@:${sha256%% *}:" "${FILESDIR}/${SITEFILE}" \
+		> "${T}/${SITEFILE}" || die
+	elisp-site-file-install "${T}/${SITEFILE}"
 
 	dodoc CHANGELOG.md CONTRIBUTING.md README.md
 	dodoc -r screenshots
@@ -28,6 +32,6 @@ src_install() {
 
 	local DOC_CONTENTS="To enable zenburn by default, initialise it
 		in your ~/.emacs:
-		\n\t(load-theme 'zenburn 'no-confirm)"
+		\n\t(load-theme 'zenburn)"
 	readme.gentoo_create_doc
 }
