@@ -11,8 +11,8 @@ SRC_URI="ftp://ftp.sra.co.jp/pub/misc/eb/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
-IUSE="ipv6 nls threads"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+IUSE="nls threads"
 
 RDEPEND="
 	sys-libs/zlib
@@ -34,7 +34,7 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		$(use_enable ipv6)
+		--enable-ipv6
 		$(use_enable nls)
 		$(use_enable threads pthread)
 		--with-pkgdocdir="${EPREFIX}"/usr/share/doc/${PF}/html
