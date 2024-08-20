@@ -69,6 +69,13 @@ BDEPEND="
 # https://github.com/oracle/dtrace-utils/issues/80
 DEPEND+=" dev-debug/valgrind"
 
+QA_PRESTRIPPED="
+	usr/.*/dtrace/testsuite/test/triggers/.*
+"
+QA_FLAGS_IGNORED="
+	usr/.*/dtrace/testsuite/test/triggers/.*
+"
+
 pkg_pretend() {
 	# TODO: optional kernel patches
 
