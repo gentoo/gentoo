@@ -203,7 +203,6 @@ games-mud/kildclient
 games-puzzle/color-lines
 games-puzzle/hangman
 games-puzzle/scramble
-games-puzzle/zaz
 
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
 # New major ffmpeg version. Tracker bug #928905.
