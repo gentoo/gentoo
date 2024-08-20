@@ -196,7 +196,6 @@ dev-util/cucumber-html-formatter:20
 # Removal on 2024-08-18.  Bug #936299.
 games-arcade/sdl-sopwith
 games-arcade/syobon
-games-arcade/wop
 
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
 # New major ffmpeg version. Tracker bug #928905.
