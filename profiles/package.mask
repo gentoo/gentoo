@@ -197,7 +197,6 @@ dev-util/cucumber-html-formatter:20
 games-arcade/sdl-sopwith
 games-arcade/syobon
 games-arcade/wop
-games-mud/crystal
 
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
 # New major ffmpeg version. Tracker bug #928905.
