@@ -1,6 +1,10 @@
 # Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-08-19)
+# kde-apps/kdesdk-thumbnailers is not yet keyworded
+kde-apps/thumbnailers gettext
+
 # Hans de Graaff <graaff@gentoo.org> (2024-08-18)
 # Requires large parts of dev-ruby/rails to be keyworded
 dev-ruby/minitest-hooks test
