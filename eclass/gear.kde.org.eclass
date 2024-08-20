@@ -94,7 +94,6 @@ if $(ver_test -gt 24.01.75); then
 		dragon | \
 		elisa | \
 		eventviews | \
-		ffmpegthumbs | \
 		filelight | \
 		granatier | \
 		grantlee-editor | \
@@ -268,7 +267,6 @@ if $(ver_test -gt 24.07.75); then
 	case ${PN} in
 		k3b | \
 		kde-dev-scripts | \
-		kdesdk-thumbnailers | \
 		kdevelop | \
 		kdevelop-php | \
 		kdevelop-python | \
