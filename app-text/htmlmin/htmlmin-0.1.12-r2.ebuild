@@ -21,6 +21,12 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
 
+RDEPEND="
+	$(python_gen_cond_dep '
+		dev-python/legacy-cgi[${PYTHON_USEDEP}]
+	' 3.13)
+"
+
 distutils_enable_tests setup.py
 
 src_prepare() {
