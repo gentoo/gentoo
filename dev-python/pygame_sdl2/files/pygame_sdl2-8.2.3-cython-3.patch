@@ -1,0 +1,204 @@
+diff '--color=auto' -Naurd pygame_sdl2-2.1.0+renpy8.2.3.orig/src/pygame_sdl2/mixer_music.pyx pygame_sdl2-2.1.0+renpy8.2.3/src/pygame_sdl2/mixer_music.pyx
+--- pygame_sdl2-2.1.0+renpy8.2.3.orig/src/pygame_sdl2/mixer_music.pyx	2015-04-04 18:05:58.000000000 +0300
++++ pygame_sdl2-2.1.0+renpy8.2.3/src/pygame_sdl2/mixer_music.pyx	2024-08-20 23:31:04.313616957 +0300
+@@ -27,7 +27,7 @@
+ cdef object queued_music = None
+ cdef int endevent = 0
+ 
+-cdef void music_finished():
++cdef void music_finished() noexcept:
+     global queued_music
+     if queued_music:
+         load(queued_music)
+diff '--color=auto' -Naurd pygame_sdl2-2.1.0+renpy8.2.3.orig/src/pygame_sdl2/mixer.pyx pygame_sdl2-2.1.0+renpy8.2.3/src/pygame_sdl2/mixer.pyx
+--- pygame_sdl2-2.1.0+renpy8.2.3.orig/src/pygame_sdl2/mixer.pyx	2019-04-03 08:15:40.000000000 +0300
++++ pygame_sdl2-2.1.0+renpy8.2.3/src/pygame_sdl2/mixer.pyx	2024-08-20 23:27:49.115394156 +0300
+@@ -57,7 +57,7 @@
+             Mix_PlayChannelTimed(channel, next_sound.chunk, 0, -1)
+ 
+ 
+-cdef void channel_callback(int channel) with gil:
++cdef void channel_callback(int channel) noexcept with gil:
+ 
+     cdef int etype = 0
+     cdef SDL_Event e
+diff '--color=auto' -Naurd pygame_sdl2-2.1.0+renpy8.2.3.orig/src/pygame_sdl2/rwobject.pyx pygame_sdl2-2.1.0+renpy8.2.3/src/pygame_sdl2/rwobject.pyx
+--- pygame_sdl2-2.1.0+renpy8.2.3.orig/src/pygame_sdl2/rwobject.pyx	2024-01-29 06:06:06.000000000 +0300
++++ pygame_sdl2-2.1.0+renpy8.2.3/src/pygame_sdl2/rwobject.pyx	2024-08-20 23:22:53.081539270 +0300
+@@ -63,7 +63,7 @@
+     msg = <char *> e
+     SDL_SetError("%s", msg)
+ 
+-cdef Sint64 python_size(SDL_RWops *context) with gil:
++cdef Sint64 python_size(SDL_RWops *context) noexcept with gil:
+     f = <object> context.hidden.unknown.data1
+ 
+     try:
+@@ -76,7 +76,7 @@
+ 
+     return rv
+ 
+-cdef Sint64 python_seek(SDL_RWops *context, Sint64 seek, int whence) with gil:
++cdef Sint64 python_seek(SDL_RWops *context, Sint64 seek, int whence) noexcept with gil:
+     f = <object> context.hidden.unknown.data1
+ 
+     try:
+@@ -88,7 +88,7 @@
+ 
+     return rv
+ 
+-cdef size_t python_read(SDL_RWops *context, void *ptr, size_t size, size_t maxnum) with gil:
++cdef size_t python_read(SDL_RWops *context, void *ptr, size_t size, size_t maxnum) noexcept with gil:
+     f = <object> context.hidden.unknown.data1
+ 
+     try:
+@@ -100,7 +100,7 @@
+     memcpy(ptr, <void *><char *> data, len(data))
+     return len(data)
+ 
+-cdef size_t python_write(SDL_RWops *context, const void *ptr, size_t size, size_t maxnum) with gil:
++cdef size_t python_write(SDL_RWops *context, const void *ptr, size_t size, size_t maxnum) noexcept with gil:
+     f = <object> context.hidden.unknown.data1
+     data = (<char *> ptr)[:size * maxnum]
+ 
+@@ -112,7 +112,7 @@
+ 
+     return len(data)
+ 
+-cdef int python_close(SDL_RWops *context) with gil:
++cdef int python_close(SDL_RWops *context) noexcept with gil:
+     if context != NULL:
+         if context.hidden.unknown.data1 != NULL:
+             f = <object> context.hidden.unknown.data1
+@@ -135,11 +135,11 @@
+     Sint64 length
+     Sint64 tell
+ 
+-cdef Sint64 subfile_size(SDL_RWops *context) nogil:
++cdef Sint64 subfile_size(SDL_RWops *context) noexcept nogil:
+     cdef SubFile *sf = <SubFile *> context.hidden.unknown.data1
+     return sf.length
+ 
+-cdef Sint64 subfile_seek(SDL_RWops *context, Sint64 seek, int whence) nogil:
++cdef Sint64 subfile_seek(SDL_RWops *context, Sint64 seek, int whence) noexcept nogil:
+     cdef SubFile *sf = <SubFile *> context.hidden.unknown.data1
+ 
+     if whence == RW_SEEK_SET:
+@@ -151,7 +151,7 @@
+ 
+     return sf.tell
+ 
+-cdef size_t subfile_read(SDL_RWops *context, void *ptr, size_t size, size_t maxnum) nogil:
++cdef size_t subfile_read(SDL_RWops *context, void *ptr, size_t size, size_t maxnum) noexcept nogil:
+     cdef SubFile *sf = <SubFile *> context.hidden.unknown.data1
+ 
+     cdef Sint64 left = sf.length - sf.tell
+@@ -170,7 +170,7 @@
+ 
+     return rv
+ 
+-cdef int subfile_close(SDL_RWops *context) nogil:
++cdef int subfile_close(SDL_RWops *context) noexcept nogil:
+     cdef SubFile *sf
+ 
+     if context != NULL:
+@@ -191,13 +191,13 @@
+     Sint64 split
+     Sint64 tell
+ 
+-cdef Sint64 splitfile_size(SDL_RWops *context) nogil:
++cdef Sint64 splitfile_size(SDL_RWops *context) noexcept nogil:
+     cdef SplitFile *sf = <SplitFile *> context.hidden.unknown.data1
+     cdef Sint64 rv
+ 
+     return SDL_RWsize(sf.a) + SDL_RWsize(sf.b)
+ 
+-cdef Sint64 splitfile_seek(SDL_RWops *context, Sint64 seek, int whence) nogil:
++cdef Sint64 splitfile_seek(SDL_RWops *context, Sint64 seek, int whence) noexcept nogil:
+     cdef SplitFile *sf = <SplitFile *> context.hidden.unknown.data1
+     cdef Sint64 rv
+ 
+@@ -220,7 +220,7 @@
+     else:
+         return sf.tell
+ 
+-cdef size_t splitfile_read(SDL_RWops *context, void *ptr, size_t size, size_t maxnum) nogil:
++cdef size_t splitfile_read(SDL_RWops *context, void *ptr, size_t size, size_t maxnum) noexcept nogil:
+     cdef SplitFile *sf = <SplitFile *> context.hidden.unknown.data1
+     cdef Sint64 left = splitfile_size(context) - sf.tell
+     cdef size_t rv
+@@ -251,7 +251,7 @@
+ 
+     return (left_read + right_read) // size
+ 
+-cdef int splitfile_close(SDL_RWops *context) nogil:
++cdef int splitfile_close(SDL_RWops *context) noexcept nogil:
+     cdef SplitFile *sf
+ 
+     if context != NULL:
+@@ -274,12 +274,12 @@
+     Uint8 *here
+     Uint8 *stop
+ 
+-cdef Sint64 buffile_size(SDL_RWops *context) nogil:
++cdef Sint64 buffile_size(SDL_RWops *context) noexcept nogil:
+     cdef BufFile *bf = <BufFile *> context.hidden.unknown.data1
+ 
+     return bf.stop - bf.base
+ 
+-cdef Sint64 buffile_seek(SDL_RWops *context, Sint64 offset, int whence) nogil:
++cdef Sint64 buffile_seek(SDL_RWops *context, Sint64 offset, int whence) noexcept nogil:
+     cdef BufFile *bf = <BufFile *> context.hidden.unknown.data1
+ 
+     cdef Uint8 *newpos
+@@ -302,7 +302,7 @@
+ 
+     return bf.here - bf.base
+ 
+-cdef size_t buffile_read(SDL_RWops *context, void *ptr, size_t size, size_t maxnum) nogil:
++cdef size_t buffile_read(SDL_RWops *context, void *ptr, size_t size, size_t maxnum) noexcept nogil:
+     cdef BufFile *bf = <BufFile *> context.hidden.unknown.data1
+     cdef size_t total_bytes = 0
+     cdef size_t mem_available = 0
+@@ -320,7 +320,7 @@
+ 
+     return (total_bytes // size)
+ 
+-cdef size_t buffile_write(SDL_RWops *context, const void *ptr, size_t size, size_t num) nogil:
++cdef size_t buffile_write(SDL_RWops *context, const void *ptr, size_t size, size_t num) noexcept nogil:
+     cdef BufFile *bf = <BufFile *> context.hidden.unknown.data1
+ 
+     if bf.view.readonly != 0:
+@@ -333,7 +333,7 @@
+ 
+     return num
+ 
+-cdef int buffile_close(SDL_RWops *context) with gil:
++cdef int buffile_close(SDL_RWops *context) noexcept with gil:
+     cdef BufFile *bf
+ 
+     if context != NULL:
+diff '--color=auto' -Naurd pygame_sdl2-2.1.0+renpy8.2.3.orig/src/pygame_sdl2/surface.pyx pygame_sdl2-2.1.0+renpy8.2.3/src/pygame_sdl2/surface.pyx
+--- pygame_sdl2-2.1.0+renpy8.2.3.orig/src/pygame_sdl2/surface.pyx	2023-03-30 06:10:16.000000000 +0300
++++ pygame_sdl2-2.1.0+renpy8.2.3/src/pygame_sdl2/surface.pyx	2024-08-20 23:23:41.720844257 +0300
+@@ -34,7 +34,7 @@
+     int pygame_Blit (SDL_Surface * src, SDL_Rect * srcrect,
+                  SDL_Surface * dst, SDL_Rect * dstrect, int the_args);
+ 
+-cdef void move_pixels(Uint8 *src, Uint8 *dst, int h, int span, int srcpitch, int dstpitch) nogil:
++cdef void move_pixels(Uint8 *src, Uint8 *dst, int h, int span, int srcpitch, int dstpitch) noexcept nogil:
+     if src < dst:
+         src += (h - 1) * srcpitch;
+         dst += (h - 1) * dstpitch;
+diff '--color=auto' -Naurd pygame_sdl2-2.1.0+renpy8.2.3.orig/src/pygame_sdl2/transform.pyx pygame_sdl2-2.1.0+renpy8.2.3/src/pygame_sdl2/transform.pyx
+--- pygame_sdl2-2.1.0+renpy8.2.3.orig/src/pygame_sdl2/transform.pyx	2015-08-13 03:31:25.000000000 +0300
++++ pygame_sdl2-2.1.0+renpy8.2.3/src/pygame_sdl2/transform.pyx	2024-08-20 23:24:30.513150042 +0300
+@@ -119,7 +119,7 @@
+     p += x
+     return p[0]
+ 
+-cdef void set_at(SDL_Surface *surf, int x, int y, uint32_t color) nogil:
++cdef void set_at(SDL_Surface *surf, int x, int y, uint32_t color) noexcept nogil:
+     cdef uint32_t *p = <uint32_t*>surf.pixels
+     p += y * (surf.pitch // sizeof(uint32_t))
+     p += x
