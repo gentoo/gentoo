@@ -256,6 +256,7 @@ if $(ver_test -gt 24.04.75); then
 		itinerary | \
 		kio-perldoc | \
 		kolourpaint | \
+		libkcompactdisc | \
 		signon-kwallet-extension)
 			RDEPEND+=" !${CATEGORY}/${PN}:5" ;;
 		*) ;;
