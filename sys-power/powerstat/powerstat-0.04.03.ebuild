@@ -3,15 +3,15 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://github.com/ColinIanKing/${PN}.git"
-
-inherit bash-completion-r1 git-r3 toolchain-funcs
+inherit bash-completion-r1 toolchain-funcs
 
 DESCRIPTION="Laptop power measuring tool"
 HOMEPAGE="https://launchpad.net/ubuntu/+source/powerstat https://github.com/ColinIanKing/powerstat"
+SRC_URI="https://github.com/ColinIanKing/${PN}/archive/V${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 src_prepare() {
 	default
