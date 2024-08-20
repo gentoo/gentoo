@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DISABLE_AUTOFORMATTING=1
 FORCE_PRINT_ELOG=1
@@ -20,7 +20,7 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="mysql test"
+IUSE="mysql +nat +reuseport tcpfastopen test"
 
 # Some hiccups setting up local network server.
 RESTRICT="test"
@@ -50,6 +50,9 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_MYSQL=$(usex mysql)
+		-DENABLE_NAT=$(usex nat)
+		-DENABLE_REUSE_PORT=$(usex reuseport)
+		-DFORCE_TCP_FASTOPEN=$(usex tcpfastopen)
 		-DSYSTEMD_SERVICE=ON
 		-DSYSTEMD_SERVICE_PATH=$(systemd_get_systemunitdir)
 	)
