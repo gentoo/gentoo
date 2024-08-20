@@ -201,7 +201,6 @@ games-mud/crystal
 games-mud/gmudix
 games-mud/kildclient
 games-puzzle/color-lines
-games-puzzle/hangman
 
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
 # New major ffmpeg version. Tracker bug #928905.
