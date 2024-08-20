@@ -105,7 +105,7 @@ src_configure() {
 
 	tc-export CC
 
-	# TODO: Can drop once https://lore.kernel.org/dtrace/20240425164057.420580-1-nick.alcock@oracle.com/ is in
+	# https://github.com/oracle/dtrace-utils/issues/78
 	tc-enables-fortify-source && append-cppflags -U_FORTIFY_SOURCE
 
 	# lld does this by default, so fix that, although lld fails anyway...
