@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~arm64 ~loong ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
-	>=dev-vcs/git-$(ver_cut 1-2)
+	dev-vcs/git
 "
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
