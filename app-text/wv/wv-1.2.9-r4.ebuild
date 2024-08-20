@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-format-security.patch
 	"${FILESDIR}"/${P}-C99-decls.patch
 	"${FILESDIR}"/${P}-gcc14-build-fix.patch
+	"${FILESDIR}"/${P}-gsf-doc-meta-data.patch
 )
 
 src_prepare() {
