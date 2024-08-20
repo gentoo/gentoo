@@ -13,7 +13,7 @@ SRC_URI="https://github.com/mapeditor/tiled/archive/v${PV}/${P}.tar.gz"
 LICENSE="BSD BSD-2 GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="examples minimal python"
+IUSE="minimal python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
@@ -83,8 +83,6 @@ src_compile() {
 src_install() {
 	edo qbs install -p ${QBS_PRODUCTS} --install-root "${D}"
 
-	if use examples; then
-		docompress -x /usr/share/doc/${PF}/examples
-		dodoc -r examples
-	fi
+	docompress -x /usr/share/doc/${PF}/examples
+	dodoc -r examples
 }
