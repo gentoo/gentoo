@@ -217,11 +217,6 @@ games-puzzle/zaz
 games-simulation/cannonsmash
 games-strategy/crimson
 
-# Hans de Graaff <graaff@gentoo.org> (2024-07-17)
-# Obsolete slot. Please use a newer slot instead. No reverse
-# dependencies left. Removal on 2024-08-17.
-dev-ruby/rmagick:4
-
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
 # New major ffmpeg version. Tracker bug #928905.
 >=media-video/ffmpeg-7.0
