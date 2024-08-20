@@ -31,7 +31,10 @@ RDEPEND="
 	=dev-python/gast-0.5*[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	>=dev-python/ply-3.4[${PYTHON_USEDEP}]
-	<dev-python/setuptools-73[${PYTHON_USEDEP}]
+	|| (
+		<dev-python/setuptools-73[${PYTHON_USEDEP}]
+		>=dev-python/setuptools-73.0.1[${PYTHON_USEDEP}]
+	)
 "
 DEPEND="
 	test? (
