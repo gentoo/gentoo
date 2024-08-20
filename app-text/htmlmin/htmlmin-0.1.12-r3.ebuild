@@ -21,15 +21,12 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
 
-RDEPEND="
-	$(python_gen_cond_dep '
-		dev-python/legacy-cgi[${PYTHON_USEDEP}]
-	' 3.13)
-"
-
 distutils_enable_tests setup.py
 
 src_prepare() {
-	sed '/prune/d' -i MANIFEST.in || die
 	distutils-r1_src_prepare
+
+	sed -i -e '/prune/d' MANIFEST.in || die
+	# unused import
+	sed -i -e '/cgi/d' htmlmin/main.py || die
 }
