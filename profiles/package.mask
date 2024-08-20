@@ -196,11 +196,6 @@ dev-util/cucumber-cucumber-expressions:16
 dev-util/cucumber-gherking:22
 dev-util/cucumber-html-formatter:20
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-20)
-# EAPI=6, fails to apply patch during src_prepare.
-# Removal on 2024-08-19.  Bugs #936398, #908957, #908959.
-media-video/raspberrypi-omxplayer
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-07-19)
 # EAPI=6 games. Feel free to drop any package after bumping it's EAPI.
 # Removal on 2024-08-18.  Bug #936299.
