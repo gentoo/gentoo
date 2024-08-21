@@ -21,7 +21,10 @@ IUSE="kf6compat +share"
 COMMON_DEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
-	kde-apps/kaccounts-integration:6[qt5]
+	|| (
+		kde-apps/kaccounts-integration:6[qt5]
+		>=kde-apps/kaccounts-integration-23.08:5
+	)
 	kde-apps/libkgapi:5
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
@@ -46,9 +49,10 @@ ECM_REMOVE_FROM_INSTALL=(
 	/usr/share/remoteview/gdrive-network.desktop
 )
 
-PATCHES=( "${FILESDIR}/${P}-kaccounts-integration-24.02.patch" )
-
 src_prepare() {
+	if has_version -b "kde-apps/kaccounts-integration:6[qt5]"; then
+		PATCHES+=( "${FILESDIR}/${P}-kaccounts-integration-24.02.patch" )
+	fi
 	ecm_src_prepare
 	ecm_punt_po_install
 }
