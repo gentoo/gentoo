@@ -616,30 +616,28 @@ kernel-build_merge_configs() {
 
 	local merge_configs=( "${@}" )
 
-	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
-		if use modules-sign; then
-			: "${MODULES_SIGN_HASH:=sha512}"
-			cat <<-EOF > "${WORKDIR}/modules-sign.config" || die
-				## Enable module signing
-				CONFIG_MODULE_SIG=y
-				CONFIG_MODULE_SIG_ALL=y
-				CONFIG_MODULE_SIG_FORCE=y
-				CONFIG_MODULE_SIG_${MODULES_SIGN_HASH^^}=y
-			EOF
-			if [[ -n ${MODULES_SIGN_KEY_CONTENTS} ]]; then
-				(umask 066 && touch "${T}/kernel_key.pem" || die)
-				echo "${MODULES_SIGN_KEY_CONTENTS}" > "${T}/kernel_key.pem" || die
-				unset MODULES_SIGN_KEY_CONTENTS
-				export MODULES_SIGN_KEY="${T}/kernel_key.pem"
-			fi
-			if [[ ${MODULES_SIGN_KEY} == pkcs11:* || -r ${MODULES_SIGN_KEY} ]]; then
-				echo "CONFIG_MODULE_SIG_KEY=\"${MODULES_SIGN_KEY}\"" \
-					>> "${WORKDIR}/modules-sign-key.config"
-			elif [[ -n ${MODULES_SIGN_KEY} ]]; then
-				die "MODULES_SIGN_KEY=${MODULES_SIGN_KEY} not found or not readable!"
-			fi
-			merge_configs+=( "${WORKDIR}/modules-sign.config" )
+	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]] && use modules-sign; then
+		: "${MODULES_SIGN_HASH:=sha512}"
+		cat <<-EOF > "${WORKDIR}/modules-sign.config" || die
+			## Enable module signing
+			CONFIG_MODULE_SIG=y
+			CONFIG_MODULE_SIG_ALL=y
+			CONFIG_MODULE_SIG_FORCE=y
+			CONFIG_MODULE_SIG_${MODULES_SIGN_HASH^^}=y
+		EOF
+		if [[ -n ${MODULES_SIGN_KEY_CONTENTS} ]]; then
+			(umask 066 && touch "${T}/kernel_key.pem" || die)
+			echo "${MODULES_SIGN_KEY_CONTENTS}" > "${T}/kernel_key.pem" || die
+			unset MODULES_SIGN_KEY_CONTENTS
+			export MODULES_SIGN_KEY="${T}/kernel_key.pem"
 		fi
+		if [[ ${MODULES_SIGN_KEY} == pkcs11:* || -r ${MODULES_SIGN_KEY} ]]; then
+			echo "CONFIG_MODULE_SIG_KEY=\"${MODULES_SIGN_KEY}\"" \
+				>> "${WORKDIR}/modules-sign-key.config"
+		elif [[ -n ${MODULES_SIGN_KEY} ]]; then
+			die "MODULES_SIGN_KEY=${MODULES_SIGN_KEY} not found or not readable!"
+		fi
+		merge_configs+=( "${WORKDIR}/modules-sign.config" )
 	fi
 
 	# Only semi-related but let's use that to avoid changing stable ebuilds.
