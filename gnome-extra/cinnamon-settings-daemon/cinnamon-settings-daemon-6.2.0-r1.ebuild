@@ -28,7 +28,6 @@ RDEPEND="
 	>=sys-auth/polkit-0.97
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
-	>=x11-libs/gtk+-3.14.0:3[wayland=]
 	>=x11-libs/libnotify-0.7.3
 	x11-libs/libX11
 	x11-libs/libXext
@@ -44,8 +43,13 @@ RDEPEND="
 		app-admin/system-config-printer
 		net-print/cups-pk-helper )
 	input_devices_wacom? (
+		>=x11-libs/gtk+-3.14.0:3[wayland=]
 		>=dev-libs/libwacom-0.7:=
-		>=gnome-base/librsvg-2.36.2 )
+		>=gnome-base/librsvg-2.36.2
+	)
+	!input_devices_wacom? (
+		>=x11-libs/gtk+-3.14.0:3
+	)
 	smartcard? (
 		dev-libs/nspr
 		>=dev-libs/nss-3.11.2
