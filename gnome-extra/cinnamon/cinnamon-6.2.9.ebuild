@@ -32,7 +32,7 @@ DEPEND="
 	virtual/opengl
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2[introspection]
-	>=x11-libs/gtk+-3.12.0:3[introspection,wayland?]
+	>=x11-libs/gtk+-3.12.0:3[introspection,wayland?,X]
 	>=x11-libs/libnotify-0.7.3:0=[introspection]
 	x11-libs/libX11
 	>=x11-libs/libXfixes-5.0
