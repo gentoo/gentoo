@@ -6,8 +6,8 @@ EAPI=8
 inherit autotools flag-o-matic fortran-2 toolchain-funcs
 
 DESCRIPTION="Performance Application Programming Interface"
-HOMEPAGE="https://icl.cs.utk.edu/papi/"
-SRC_URI="https://icl.cs.utk.edu/projects/${PN}/downloads/${P}.tar.gz"
+HOMEPAGE="https://icl.utk.edu/papi/"
+SRC_URI="https://icl.utk.edu/projects/${PN}/downloads/${P}.tar.gz"
 S="${WORKDIR}/${P}/src"
 
 LICENSE="BSD"
