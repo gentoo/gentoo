@@ -23,8 +23,8 @@ SLOT="1"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="test"
 
-RDEPEND=" dev-db/postgresql:*"
-DEPEND=" dev-db/postgresql
+RDEPEND="dev-db/postgresql:*"
+DEPEND="dev-db/postgresql
 	test? ( >=dev-db/postgresql-9.4[server(+),threads(+)] )"
 
 all_ruby_prepare() {
