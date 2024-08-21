@@ -80,7 +80,10 @@ src_prepare() {
 	default
 
 	# remove patch.* that breaks GIT_CRATES
-	sed -i -e "/^\[patch/,\$s@^\(reqwest-middleware = \).*@\1 { path = \"${WORKDIR}/reqwest-middleware-21ceec9a5fd2e8d6f71c3ea2999078fecbd13cbe/reqwest-middleware\" }@" Cargo.toml || die
+	local reqmw=${GIT_CRATES[reqwest-middleware]}
+	reqmw=${reqmw#*;}
+	reqmw=${reqmw%;*}
+	sed -i -e "/^\[patch/,\$s@^\(reqwest-middleware = \).*@\1 { path = \"${WORKDIR}/reqwest-middleware-${reqmw}/reqwest-middleware\" }@" Cargo.toml || die
 
 	# https://github.com/vorot93/tokio-tar/pull/23
 	# (fortunately uv already depends on portable-atomic, so we don't
