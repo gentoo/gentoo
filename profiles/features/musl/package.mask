@@ -2,8 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2024-08-21)
-# Needs porting to musl. Fails to compile in a few ways. See bug #925857.
+# systemtap needs porting to musl. Fails to compile in a few ways.
+# See bug #925857.
 dev-debug/systemtap
+sys-apps/tuned
 
 # Robert Förster <Dessa@gmake.de> (2024-05-06)
 # needs mongodb
