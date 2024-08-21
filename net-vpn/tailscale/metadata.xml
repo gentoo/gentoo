@@ -5,10 +5,6 @@
 		<name>William Hubbs</name>
 		<email>williamh@gentoo.org</email>
 	</maintainer>
-	<maintainer type="person">
-		<name>Patrick McLean</name>
-		<email>chutzpah@gentoo.org</email>
-	</maintainer>
 	<upstream>
 		<remote-id type="github">tailscale/tailscale</remote-id>
 	</upstream>
