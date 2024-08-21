@@ -45,6 +45,7 @@ DOCS=( README.md VERSION )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0.0-system-mathjax.patch"
+	"${FILESDIR}/${PN}-2.2.0-include-algorithm.patch"
 )
 
 src_prepare() {
