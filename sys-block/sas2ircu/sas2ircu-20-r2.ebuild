@@ -54,7 +54,7 @@ pkg_setup() {
 	if ! use x86; then
 		# For newer kernels it needs to be enabled as well, don't know
 		# how to check for that short of running the binary.
-		local CONFIG_CHECK="CONFIG_IA32_EMULATION"
+		local CONFIG_CHECK="IA32_EMULATION"
 		check_extra_config
 	fi
 }
