@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} pypy3 )
 
-inherit autotools linux-info python-single-r1
+inherit autotools flag-o-matic linux-info python-single-r1 toolchain-funcs
 
 DESCRIPTION="Linux trace/probe tool"
 HOMEPAGE="https://sourceware.org/systemtap/"
@@ -130,6 +130,20 @@ src_configure() {
 
 	# Use bash because of bashisms with brace expansion in Makefile.am (bug #913947)
 	CONFIG_SHELL="${BROOT}"/bin/bash PYTHON3="${PYTHON}" econf "${myeconfargs[@]}"
+}
+
+src_test() {
+	# TODO: Install tests like dev-debug/dtrace[install-tests] and
+	# e.g. Fedora does.
+	(
+		strip-flags
+		filter-flags '-fcf-protection=*'
+		filter-flags '-fdiagnostics-color=*' '-fdiagnostics-urls=*'
+		filter-flags '-g*'
+		filter-lto
+		tc-ld-force-bfd
+		emake -Onone -k check CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}" LDFLAGS="${LDFLAGS}"
+	)
 }
 
 src_install() {
