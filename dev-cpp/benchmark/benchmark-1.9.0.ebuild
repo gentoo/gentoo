@@ -15,7 +15,7 @@ SLOT="0/$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86"
 IUSE="doc +exceptions libcxx libpfm lto test +tools"
 RESTRICT="!test? ( test )"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="tools? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
 	libcxx? ( sys-libs/libcxx[${MULTILIB_USEDEP}] )
