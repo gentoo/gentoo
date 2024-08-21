@@ -74,6 +74,7 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.8.7.1-configure-brotli.patch
+	"${FILESDIR}"/${PN}-3.8.7.1-tests.patch
 )
 
 src_prepare() {
