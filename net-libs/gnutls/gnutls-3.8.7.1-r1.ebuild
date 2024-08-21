@@ -90,13 +90,6 @@ src_prepare() {
 	# fails to compile in certain configurations
 	sed -i -e 's/__APPLE__/__NO_APPLE__/' lib/system/certs.c || die
 
-	if [[ ${CHOST} == *-solaris* ]] ; then
-		# should be gone on next release, for gnulib memset_s breakage
-		append-cppflags -D__STDC_WANT_LIB_EXT1__=1
-		# alloca usage, similar
-		sed -i -e '$a#include <alloca.h>' config.h.in || die
-	fi
-
 	# Use sane .so versioning on FreeBSD.
 	#elibtoolize
 
@@ -156,6 +149,12 @@ multilib_src_configure() {
 	)
 
 	ECONF_SOURCE="${S}" econf "${libconf[@]}" "${myeconfargs[@]}"
+
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# gnulib ends up defining its own pthread_mutexattr_gettype
+		# otherwise, which is causing versioning problems
+		echo "#define PTHREAD_IN_USE_DETECTION_HARD 1" >> config.h || die
+	fi
 }
 
 multilib_src_install_all() {
