@@ -19,6 +19,8 @@ KEYWORDS="amd64 ~arm64 ~riscv ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+BDEPEND="dev-build/cmake"
+
 src_configure() {
 	local emesonargs=(
 		-Dbuild_lib=true
