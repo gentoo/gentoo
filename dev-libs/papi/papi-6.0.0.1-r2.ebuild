@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools fortran-2 toolchain-funcs
+inherit autotools flag-o-matic fortran-2 toolchain-funcs
 
 DESCRIPTION="Performance Application Programming Interface"
 HOMEPAGE="https://icl.cs.utk.edu/papi/"
@@ -33,6 +33,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/855983
+	# https://github.com/icl-utk-edu/papi/issues/218
+	filter-lto
+
 	tc-export AR
 
 	# TODO: Could try adding
