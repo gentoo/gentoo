@@ -30,10 +30,10 @@ CP_DEPEND="
 	<dev-java/protobuf-java-3.26.0:0
 	dev-java/slf4j-api:0
 "
-DEPEND=" ${CP_DEPEND}
+DEPEND="${CP_DEPEND}
 	>=virtual/jdk-1.8:*
 "
-RDEPEND=" ${CP_DEPEND}
+RDEPEND="${CP_DEPEND}
 	>=virtual/jre-1.8:*
 "
 
