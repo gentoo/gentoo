@@ -54,6 +54,7 @@ RDEPEND="
 	acct-group/stapsys
 	acct-group/stapusr
 "
+# which: https://sourceware.org/PR32106
 BDEPEND="
 	test? (
 		dev-util/dejagnu
