@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python3_{10..11} pypy3 )
 inherit autotools linux-info python-single-r1
 
 DESCRIPTION="A linux trace/probe tool"
-HOMEPAGE="https://www.sourceware.org/systemtap"
-SRC_URI="https://www.sourceware.org/ftp/${PN}/releases/${P}.tar.gz"
+HOMEPAGE="https://sourceware.org/systemtap/"
+SRC_URI="https://sourceware.org/ftp/${PN}/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
