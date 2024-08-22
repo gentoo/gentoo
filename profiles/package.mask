@@ -186,11 +186,6 @@ dev-debug/gdb-apple
 # Removal on 2024-08-23.  Bug #936581.
 app-accessibility/epos
 
-# David Seifert <soap@gentoo.org> (2024-07-22)
-# Unmaintained, replaced by app-portage/pram which has more features
-# and works better for merging PRs. Removal on 2024-08-21.
-dev-perl/Gentoo-App-Pram
-
 # Hans de Graaff <graaff@gentoo.org> (2024-07-21)
 # Obsolete slots that are no longer used by any cucumber
 # version. Removal on 2024-08-21.
