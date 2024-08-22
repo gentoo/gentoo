@@ -325,7 +325,7 @@ ecm-common-check_deps() {
 # preferring KF6.  The result is stored in _KFSLOT, which is then handed
 # to CMakeLists.txt as KFSLOT var for further use.
 ecm-common_pkg_setup() {
-	$(ver_test ${KFMIN} -lt 5.240) && return
+	$(ver_test ${KFMIN} -ge 5.240) && return
 
 	if has_version -b "kde-frameworks/ki18n:6" && {
 		! in_iuse handbook || {
