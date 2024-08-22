@@ -85,11 +85,21 @@ pkg_pretend() {
 	CONFIG_CHECK+=" ~CUSE"
 
 	# Tracing
-	CONFIG_CHECK+=" ~FTRACE_SYSCALLS ~UPROBE_EVENTS ~DYNAMIC_FTRACE ~FUNCTION_TRACER"
+	CONFIG_CHECK+=" ~TRACING"
+	CONFIG_CHECK+=" ~UPROBES ~UPROBE_EVENTS"
+	CONFIG_CHECK+=" ~FTRACE ~FTRACE_SYSCALLS ~DYNAMIC_FTRACE ~FUNCTION_TRACER"
 	CONFIG_CHECK+=" ~FPROBE"
+	# DTrace can fallback to kprobes for fbt but people often want them off
+	# for security and newer kernels work fine with BPF for that, so
+	# let's omit it.
 
 	# https://gcc.gnu.org/PR84052
 	CONFIG_CHECK+=" !GCC_PLUGIN_RANDSTRUCT"
+
+	if use install-tests ; then
+		# See test/modules
+		CONFIG_CHECK+=" ~EXT4_FS ~ISO9660_FS ~NFS_FS ~RDS ~TUN"
+	fi
 
 	check_extra_config
 }
