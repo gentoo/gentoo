@@ -38,6 +38,8 @@ BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 
+distutils_enable_tests pytest
+
 src_configure() {
 	export PYYAML_FORCE_CYTHON=1
 }
@@ -47,11 +49,7 @@ python_test() {
 	local -x PYTHONPATH="tests/legacy_tests:${PYTHONPATH}"
 	# upstream indicates testing may pollute the package
 	cp -a "${BUILD_DIR}"/{install,test} || die
-	"${BUILD_DIR}"/test/usr/bin/python <<-EOF || die "Tests failed on ${EPYTHON}"
-		import sys
-		import test_all
-		sys.exit(0 if test_all.main() else 1)
-	EOF
+	epytest
 }
 
 python_install_all() {
