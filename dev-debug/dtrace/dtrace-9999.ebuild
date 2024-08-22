@@ -91,7 +91,7 @@ pkg_pretend() {
 	CONFIG_CHECK+=" ~FPROBE"
 	# DTrace can fallback to kprobes for fbt but people often want them off
 	# for security and newer kernels work fine with BPF for that, so
-	# let's omit it.
+	# let's omit it. kprobes are slower and scale poorly.
 
 	# https://gcc.gnu.org/PR84052
 	CONFIG_CHECK+=" !GCC_PLUGIN_RANDSTRUCT"
