@@ -195,7 +195,7 @@ REQUIRED_USE="
 PATCHES=(
 	# Downloaded patchset
 	"${WORKDIR}"/virtualbox-patches-7.1.0_beta1/patches
-	"${FILESDIR}"/${P}-link-with-mold.patch
+	"${FILESDIR}"/${PN}-7.1.0_beta1-link-with-mold.patch
 )
 
 DOCS=()	# Don't install the default README file during einstalldocs
