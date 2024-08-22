@@ -49,9 +49,9 @@ BDEPEND="
 	qt5? ( dev-qt/linguist-tools:5 )
 	qt6? ( dev-qt/qttools:6[linguist] )
 "
-PDEPEND="
-	!minimal? ( >=media-libs/phonon-vlc-0.12.0[qt5?,qt6?] )
-"
+PDEPEND="!minimal? ( >=media-libs/phonon-vlc-0.12.0[qt5?,qt6?] )"
+
+PATCHES=( "${FILESDIR}/${P}-cmake.patch" ) # bug 938315
 
 pkg_setup() {
 	MULTIBUILD_VARIANTS=( $(usev qt5) $(usev qt6) )
