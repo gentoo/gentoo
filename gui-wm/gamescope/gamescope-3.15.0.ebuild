@@ -36,7 +36,7 @@ SLOT="0"
 IUSE="avif libei pipewire +sdl +wsi-layer"
 
 RDEPEND="
-	>=dev-libs/wayland-1.21
+	>=dev-libs/wayland-1.23
 	gui-libs/libdecor
 	<media-libs/libdisplay-info-0.3:=
 	media-libs/vulkan-loader
