@@ -134,6 +134,8 @@ src_prepare() {
 	# -O3 and company cause random crashes in applications, bug #133469
 	replace-flags -O3 -O2
 	strip-flags
+	# Not compatible with C23 decls
+	append-flags -std=gnu17
 
 	if ! use test ; then
 		# don't waste time building tests
