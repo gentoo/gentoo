@@ -129,7 +129,6 @@ dev-python/pyside6 3d location scxml
 app-office/libreoffice clang
 <dev-db/postgresql-16 llvm
 <dev-lang/rust-1.73.0 wasm
-dev-lang/spidermonkey clang lto
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-07-26)
 # MPV currently[1] has no plans to support >=lua5-3 making luajit
