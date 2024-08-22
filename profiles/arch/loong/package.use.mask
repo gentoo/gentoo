@@ -1,6 +1,11 @@
 # Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2024-08-22)
+# dev-lang/spidermonkey gained JIT support for loong since version 107,
+# but the nearest packaged version is 115.
+>=dev-lang/spidermonkey-115 -jit
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-08-19)
 # kde-apps/kdesdk-thumbnailers is not yet keyworded
 kde-apps/thumbnailers gettext
