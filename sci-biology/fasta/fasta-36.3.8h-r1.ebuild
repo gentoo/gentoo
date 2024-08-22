@@ -42,6 +42,11 @@ src_prepare() {
 	export CC_ALT="${CC_ALT}"
 	export ALT="${ALT}"
 
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/862267
+	# https://github.com/wrpearson/fasta36/issues/63
+	filter-lto
+
 	eapply "${FILESDIR}"/${P}-ldflags.patch
 
 	sed \
