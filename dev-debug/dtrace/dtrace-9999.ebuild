@@ -21,7 +21,7 @@ fi
 
 LICENSE="UPL-1.0"
 SLOT="0"
-IUSE="install-tests systemd"
+IUSE="systemd install-tests"
 
 # XXX: right now, we auto-adapt to whether multilibs are present:
 # should we force them to be? how?
