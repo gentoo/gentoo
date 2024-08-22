@@ -70,6 +70,7 @@ criu_arch() {
 	case ${ARCH} in
 		amd64) echo "x86";;
 		arm64) echo "aarch64";;
+		loong) echo "loongarch64";;
 		ppc64*) echo "ppc64";;
 		*)     echo "${ARCH}";;
 	esac
