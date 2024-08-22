@@ -194,6 +194,9 @@ src_configure() {
 		modules="${modules},tk"
 	fi
 
+	# Fix co-routine selection for x32, bug 933070
+	[[ ${CHOST} == *gnux32 ]] && myconf="${myconf} --with-coroutine=amd64"
+
 	# Provide an empty LIBPATHENV because we disable rpath but we do not
 	# need LD_LIBRARY_PATH by default since that breaks USE=multitarget
 	# #564272

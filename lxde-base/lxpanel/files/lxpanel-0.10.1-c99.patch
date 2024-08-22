@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/919092
+https://github.com/lxde/lxpanel/pull/70
+
+From 914bcc3945503be2506e112883a648b867c6db57 Mon Sep 17 00:00:00 2001
+From: Ravi Kant Sharma <600723+raviksharma@users.noreply.github.com>
+Date: Tue, 23 Jul 2024 18:02:44 +0200
+Subject: [PATCH] fix build failure on gcc-14
+
+gcc-14 treats implicitly casting all pointer types to all other pointer types as error now.
+
+https://gcc.gnu.org/gcc-14/porting_to.html#warnings-as-errors
+---
+ plugins/tray.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/tray.c b/plugins/tray.c
+index 3e66b81f..42d4917c 100644
+--- a/plugins/tray.c
++++ b/plugins/tray.c
+@@ -631,7 +631,7 @@ static GtkWidget *tray_constructor(LXPanel *panel, config_setting_t *settings)
+     /* Add GDK event filter. */
+     gdk_window_add_filter(NULL, (GdkFilterFunc) tray_event_filter, tr);
+     /* Reference the window since it is never added to a container. */
+-    tr->invisible = g_object_ref_sink(G_OBJECT(invisible));
++    tr->invisible = (GtkWidget *) g_object_ref_sink(G_OBJECT(invisible));
+     tr->invisible_window = GDK_WINDOW_XID(gtk_widget_get_window(invisible));
+ 
+     /* Allocate top level widget and set into Plugin widget pointer. */
+

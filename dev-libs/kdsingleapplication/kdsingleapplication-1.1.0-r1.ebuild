@@ -34,7 +34,7 @@ src_configure() {
 		-DKDSingleApplication_EXAMPLES=$(usex examples)
 		-DKDSingleApplication_TESTS=$(usex test)
 	)
-	use examples && mycmakeargs+=(
+	use doc && mycmakeargs+=(
 		-DQHELPGEN_EXECUTABLE="$(qt6_get_bindir)/../libexec/qhelpgenerator"
 	)
 	cmake_src_configure

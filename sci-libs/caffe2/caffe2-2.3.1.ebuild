@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-ROCM_VERSION=5.7
+ROCM_VERSION=6.1
 inherit python-single-r1 cmake cuda flag-o-matic prefix rocm
 
 MYPN=pytorch
@@ -13,7 +13,8 @@ MYP=${MYPN}-${PV}
 DESCRIPTION="A deep learning framework"
 HOMEPAGE="https://pytorch.org/"
 SRC_URI="https://github.com/pytorch/${MYPN}/archive/refs/tags/v${PV}.tar.gz
-	-> ${MYP}.tar.gz"
+	-> ${MYP}.tar.gz
+	https://dev.gentoo.org/~tupone/distfiles/${PN}-patches-20240809.tar.gz"
 
 S="${WORKDIR}"/${MYP}
 
@@ -65,19 +66,23 @@ RDEPEND="
 	opencv? ( media-libs/opencv:= )
 	qnnpack? ( sci-libs/QNNPACK )
 	rocm? (
-		=dev-util/hip-5.7*
-		=dev-libs/rccl-5.7*[${ROCM_USEDEP}]
-		=sci-libs/rocThrust-5.7*[${ROCM_USEDEP}]
-		=sci-libs/rocPRIM-5.7*[${ROCM_USEDEP}]
-		=sci-libs/hipBLAS-5.7*[${ROCM_USEDEP}]
-		sci-libs/hipBLASLt
-		=sci-libs/hipFFT-5.7*[${ROCM_USEDEP}]
-		=sci-libs/hipSPARSE-5.7*[${ROCM_USEDEP}]
-		=sci-libs/hipRAND-5.7*[${ROCM_USEDEP}]
-		=sci-libs/hipCUB-5.7*[${ROCM_USEDEP}]
-		=sci-libs/hipSOLVER-5.7*[${ROCM_USEDEP}]
-		=sci-libs/miopen-5.7*[${ROCM_USEDEP}]
-		=dev-util/roctracer-5.7*[${ROCM_USEDEP}]
+		=dev-util/hip-6.1*
+		=dev-libs/rccl-6.1*[${ROCM_USEDEP}]
+		=sci-libs/rocThrust-6.1*[${ROCM_USEDEP}]
+		=sci-libs/rocPRIM-6.1*[${ROCM_USEDEP}]
+		=sci-libs/hipBLAS-6.1*[${ROCM_USEDEP}]
+		=sci-libs/hipFFT-6.1*[${ROCM_USEDEP}]
+		=sci-libs/hipSPARSE-6.1*[${ROCM_USEDEP}]
+		=sci-libs/hipRAND-6.1*[${ROCM_USEDEP}]
+		=sci-libs/hipCUB-6.1*[${ROCM_USEDEP}]
+		=sci-libs/hipSOLVER-6.1*[${ROCM_USEDEP}]
+		=sci-libs/miopen-6.1*[${ROCM_USEDEP}]
+		=dev-util/roctracer-6.1*[${ROCM_USEDEP}]
+
+		amdgpu_targets_gfx90a? ( =sci-libs/hipBLASLt-6.1*[amdgpu_targets_gfx90a] )
+		amdgpu_targets_gfx940? ( =sci-libs/hipBLASLt-6.1*[amdgpu_targets_gfx940] )
+		amdgpu_targets_gfx941? ( =sci-libs/hipBLASLt-6.1*[amdgpu_targets_gfx941] )
+		amdgpu_targets_gfx942? ( =sci-libs/hipBLASLt-6.1*[amdgpu_targets_gfx942] )
 	)
 	distributed? ( sci-libs/tensorpipe[cuda?] )
 	xnnpack? ( >=sci-libs/XNNPACK-2022.12.22 )
@@ -102,16 +107,21 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.2.1-gentoo.patch
-	"${FILESDIR}"/${PN}-1.13.0-install-dirs.patch
-	"${FILESDIR}"/${PN}-1.12.0-glog-0.6.0.patch
-	"${FILESDIR}"/${PN}-1.13.1-tensorpipe.patch
-	"${FILESDIR}"/${PN}-2.3.0-cudnn_include_fix.patch
-	"${FILESDIR}"/${PN}-2.1.2-fix-rpath.patch
-	"${FILESDIR}"/${PN}-2.1.2-fix-openmp-link.patch
-	"${FILESDIR}"/${PN}-2.3.0-rocm-fix-std-cpp17.patch
-	"${FILESDIR}"/${PN}-2.2.2-musl.patch
-	"${FILESDIR}"/${PN}-2.3.0-CMakeFix.patch
+	../patches/${PN}-2.2.1-gentoo.patch
+	../patches/${PN}-1.13.0-install-dirs.patch
+	../patches/${PN}-1.12.0-glog-0.6.0.patch
+	../patches/${PN}-1.13.1-tensorpipe.patch
+	../patches/${PN}-2.3.0-cudnn_include_fix.patch
+	../patches/${PN}-2.1.2-fix-rpath.patch
+	../patches/${PN}-2.1.2-fix-openmp-link.patch
+	../patches/${PN}-2.3.0-rocm-fix-std-cpp17.patch
+	../patches/${PN}-2.2.2-musl.patch
+	../patches/${PN}-2.3.0-CMakeFix.patch
+	../patches/${PN}-2.3.0-exclude-aotriton.patch
+	../patches/${PN}-2.3.0-fix-rocm-gcc14-clamp.patch
+	../patches/${PN}-2.3.0-optional-hipblaslt.patch
+	../patches/${PN}-2.3.0-fix-libcpp.patch
+	../patches/${PN}-2.3.0-fix-gcc-clang-abi-compat.patch
 )
 
 src_prepare() {
@@ -236,11 +246,20 @@ src_configure() {
 		)
 	elif use rocm; then
 		export PYTORCH_ROCM_ARCH="$(get_amdgpu_flags)"
+		local use_hipblaslt="OFF"
+		if use amdgpu_targets_gfx90a || use amdgpu_targets_gfx940 || use amdgpu_targets_gfx941 \
+			|| use amdgpu_targets_gfx942; then
+			use_hipblaslt="ON"
+		fi
 
 		mycmakeargs+=(
 			-DUSE_NCCL=ON
 			-DUSE_SYSTEM_NCCL=ON
+			-DUSE_HIPBLASLT=${use_hipblaslt}
 		)
+
+		# ROCm libraries produce too much warnings
+		append-cxxflags -Wno-deprecated-declarations -Wno-unused-result
 	fi
 
 	if use onednn; then

@@ -230,7 +230,6 @@ sys-firmware/seabios binary
 net-analyzer/snort libtirpc
 net-fs/autofs libtirpc
 net-misc/netkit-bootparamd libtirpc
-sci-astronomy/esomidas libtirpc
 sys-cluster/glusterfs libtirpc
 
 # Maciej Mrozowski <reavertm@gentoo.org> (2016-09-01)

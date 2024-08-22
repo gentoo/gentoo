@@ -41,7 +41,9 @@ ruby_add_bdepend "test? (
 all_ruby_prepare() {
 	sed -i -e 's:_relative ": "./:' ${RUBY_FAKEGEM_GEMSPEC} || die
 
-	sed -i	-e 's/if RUN_COVERAGE/if false/' test/test_helper.rb || die
+	sed -e 's/if RUN_COVERAGE/if false/' \
+		-e '3igem "actionpack"' \
+		-i test/test_helper.rb || die
 
 	# # Avoid test tripped up by kwargs confusion
 	sed -e '/test_authorize/askip "kwargs confusion"' \

@@ -1,10 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: lua-utils.eclass
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
-# Marek Szuba <marecki@gentoo.org>
 # @AUTHOR:
 # Marek Szuba <marecki@gentoo.org>
 # Based on python-utils-r1.eclass by Michał Górny <mgorny@gentoo.org> et al.
@@ -144,18 +143,18 @@ _lua_wrapper_setup() {
 		_lua_export "${impl}" ELUA LUA
 
 		# Lua interpreter
-		ln -s "${EPREFIX}"/usr/bin/${ELUA} "${workdir}"/bin/lua || die
+		ln -s "${LUA}" "${workdir}"/bin/lua || die
 
 		# Lua compiler, or a stub for it in case of luajit
 		if [[ ${ELUA} == luajit ]]; then
 			# Just in case
-			ln -s "${EPREFIX}"/bin/true "${workdir}"/bin/luac || die
+			ln -s "${BROOT}"/bin/true "${workdir}"/bin/luac || die
 		else
-			ln -s "${EPREFIX}"/usr/bin/${ELUA/a/ac} "${workdir}"/bin/luac || die
+			ln -s "${BROOT}"/usr/bin/${ELUA/a/ac} "${workdir}"/bin/luac || die
 		fi
 
 		# pkg-config
-		ln -s "${EPREFIX}"/usr/$(get_libdir)/pkgconfig/${ELUA}.pc \
+		ln -s "${ESYSROOT}"/usr/$(get_libdir)/pkgconfig/${ELUA}.pc \
 			"${workdir}"/pkgconfig/lua.pc || die
 	fi
 
@@ -264,7 +263,7 @@ _lua_export() {
 				debug-print "${FUNCNAME}: ELUA = ${ELUA}"
 				;;
 			LUA)
-				export LUA="${EPREFIX}"/usr/bin/${impl}
+				export LUA="${BROOT}"/usr/bin/${impl}
 				debug-print "${FUNCNAME}: LUA = ${LUA}"
 				;;
 			LUA_CFLAGS)

@@ -1,0 +1,64 @@
+From 7430d876b0efdb3f828a92df60a9e2d4d7ebc113 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 17 Aug 2024 23:31:43 +0100
+Subject: [PATCH] Write config to XDG_CONFIG_HOME or ~/.config unless old
+ config exists or on Win
+
+Storing configuration outside a standard user configuration directory is bad
+practise and very unhelpful for distributions wanting to package this software.
+
+This respects the old configuation location for compatibility.
+
+XDG_CONFIG_HOME or ~/.config should make sense on just about any non-Windows OS.
+---
+ src/com/superliminal/util/PropertyManager.java | 18 ++++++++++++++++--
+ 1 file changed, 16 insertions(+), 2 deletions(-)
+
+diff --git a/src/com/superliminal/util/PropertyManager.java b/src/com/superliminal/util/PropertyManager.java
+index 80567fc..2a6de12 100644
+--- a/src/com/superliminal/util/PropertyManager.java
++++ b/src/com/superliminal/util/PropertyManager.java
+@@ -4,6 +4,8 @@ import java.util.*;
+ import java.io.*;
+ import java.awt.*;
+ import java.net.*;
++import java.nio.file.InvalidPathException;
++import java.nio.file.Paths;
+ 
+ /**
+  * Title: PropertyManager
+@@ -101,8 +103,19 @@ public class PropertyManager extends Properties {
+      * Applications should load any user-specific property overrides directly into this object
+      * and then call setProperty whenever a user action needs to change one.
+      */
+-    public final static PropertyManager userprefs = new LocalProps(new File(StaticUtils.getBinDir(), PRODUCT_NAME + ".props"));
++    public final static PropertyManager userprefs;
+     static {
++        File propsFile = Paths.get(StaticUtils.getBinDir(), PRODUCT_NAME + ".props").toFile();
++
++        if (!propsFile.canWrite() && !System.getProperty("os.name").startsWith("Windows")) {
++            try {
++                propsFile = Paths.get(System.getenv("XDG_CONFIG_HOME"), PRODUCT_NAME + ".props").toFile();
++            } catch (NullPointerException | InvalidPathException e) {
++                propsFile = Paths.get(System.getProperty("user.home"), ".config", PRODUCT_NAME + ".props").toFile();
++            }
++        }
++
++        userprefs = new LocalProps(propsFile);
+         System.out.println("Launch dir: " + StaticUtils.getBinDir());
+     }
+ 
+@@ -256,8 +269,9 @@ public class PropertyManager extends Properties {
+             if(localPropFile == null || storeFailed)
+                 return;
+             try {
++                localPropFile.getParentFile().mkdirs();
+                 this.store(new FileOutputStream(localPropFile), PRODUCT_NAME + " User Preferences");
+-            } catch(IOException e) {
++            } catch(IOException | SecurityException e) {
+                 storeFailed = true; // so as to only give fail msg once
+                 if(!localPropFile.canWrite())
+                     System.err.println("Can't write");
+-- 
+2.45.2
+

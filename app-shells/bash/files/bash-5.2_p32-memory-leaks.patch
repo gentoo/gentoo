@@ -1,0 +1,130 @@
+[Compared to bash-5.2_p26-memory-leaks.patch, this drops a hunk for
+builtins/evalstring.c as the open_redir_file issue is fixed in patch 31
+upstream for bash-5.2]
+
+https://lists.gnu.org/archive/html/bug-bash/2024-01/msg00036.html
+https://lists.gnu.org/archive/html/bug-bash/2024-01/txtm8yNNPR9RQ.txt
+
+For evalstring.c:
+* https://lists.gnu.org/archive/html/bug-bash/2024-01/msg00011.html
+* https://git.savannah.gnu.org/cgit/bash.git/diff/builtins/evalstring.c?h=devel&id=81f7b44564cd1510788035cea7c59631865a7db2&dt=1#n766
+
+From 711ab85262884f2b91f09eceb9aefd0e2426ce67 Mon Sep 17 00:00:00 2001
+From: Grisha Levit <grishalevit@gmail.com>
+Date: Sat, 3 Jun 2023 16:51:26 -0400
+Subject: [PATCH] various leaks
+
+Found mostly by normal usage running a no-bash-malloc build with clang's
+LeakSanitizer enabled. So far seems to provide very accurate results.
+
+* arrayfunc.c
+- quote_compound_array_word: make sure to free VALUE
+- bind_assoc_var_internal: if assigning to a dynamic variable, make sure
+  to free the key (usually assoc_insert would do it)
+
+* bashline.c
+- bash_command_name_stat_hook: free original *NAME if we are going to
+  change what it points to (what the callers seem to expect)
+
+* builtins/evalstring.c
+- parse_and_execute: make sure to dispose of the parsed command
+  resulting from a failed function import attempt
+
+* examples/loadables/stat.c
+- loadstat: bind_assoc_variable does not free its VALUE argument so make
+  sure to do it
+
+* subst.c
+- param_expand: free temp1 value for codepaths that don't do it
+---
+ arrayfunc.c               | 6 +++++-
+ bashline.c                | 1 +
+ builtins/evalstring.c     | 4 ++++
+ examples/loadables/stat.c | 1 +
+ subst.c                   | 2 ++
+ 5 files changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/arrayfunc.c b/arrayfunc.c
+index 2c05d15b..8ba64084 100644
+--- arrayfunc.c
++++ arrayfunc.c
+@@ -208,7 +208,10 @@ bind_assoc_var_internal (entry, hash, key, value, flags)
+   newval = make_array_variable_value (entry, 0, key, value, flags);
+ 
+   if (entry->assign_func)
+-    (*entry->assign_func) (entry, newval, 0, key);
++    {
++      (*entry->assign_func) (entry, newval, 0, key);
++      FREE (key);
++    }
+   else
+     assoc_insert (hash, key, newval);
+ 
+@@ -985,6 +988,7 @@ quote_compound_array_word (w, type)
+   if (t != w+ind)
+    free (t);
+   strcpy (nword + i, value);
++  free (value);
+ 
+   return nword;
+ }
+diff --git a/bashline.c b/bashline.c
+index c85b05b6..bd7548cc 100644
+--- bashline.c
++++ bashline.c
+@@ -1928,6 +1928,7 @@ bash_command_name_stat_hook (name)
+   result = search_for_command (cname, 0);
+   if (result)
+     {
++      FREE (*name);
+       *name = result;
+       return 1;
+     }
+diff --git a/builtins/evalstring.c b/builtins/evalstring.c
+index df3dd68e..20c6a4a7 100644
+--- builtins/evalstring.c
++++ builtins/evalstring.c
+@@ -461,6 +461,8 @@ parse_and_execute (string, from_file, flags)
+ 		      should_jump_to_top_level = 0;
+ 		      last_result = last_command_exit_value = EX_BADUSAGE;
+ 		      set_pipestatus_from_exit (last_command_exit_value);
++		      dispose_command(command);
++		      global_command = (COMMAND *)NULL;
+ 		      reset_parser ();
+ 		      break;
+ 		    }
+ 
+diff --git a/examples/loadables/stat.c b/examples/loadables/stat.c
+index 1e60e7b6..ed5c9764 100644
+--- examples/loadables/stat.c
++++ examples/loadables/stat.c
+@@ -349,6 +349,7 @@ loadstat (vname, var, fname, flags, fmt, sp)
+       key = savestring (arraysubs[i]);
+       value = statval (i, fname, flags, fmt, sp);
+       v = bind_assoc_variable (var, vname, key, value, ASS_FORCE);
++      free (value);
+     }
+   return 0;
+ }
+diff --git a/subst.c b/subst.c
+index 1ac6eb2d..ff0602da 100644
+--- subst.c
++++ subst.c
+@@ -10727,6 +10727,7 @@ comsub:
+ 	    {
+ 	      chk_atstar (temp, quoted, pflags, quoted_dollar_at_p, contains_dollar_at);
+ 	      tdesc = parameter_brace_expand_word (temp, SPECIAL_VAR (temp, 0), quoted, pflags, 0);
++	      free (temp1);
+ 	      if (tdesc == &expand_wdesc_error || tdesc == &expand_wdesc_fatal)
+ 		return (tdesc);
+ 	      ret = tdesc;
+@@ -10739,6 +10740,7 @@ comsub:
+ 	    {
+ 	      set_exit_status (EXECUTION_FAILURE);
+ 	      report_error (_("%s: invalid variable name for name reference"), temp);
++	      free (temp1);
+ 	      return (&expand_wdesc_error);	/* XXX */
+ 	    }
+ 	  else
+-- 
+2.43.0

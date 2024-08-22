@@ -354,6 +354,9 @@ src_prepare() {
 	# - https://github.com/php/php-src/issues/14786
 	#
 	rm ext/dba/tests/dba_gdbm.phpt || die
+
+	# https://github.com/php/php-src/pull/14439
+	rm ext/openssl/tests/bug74341.phpt || die
 }
 
 src_configure() {

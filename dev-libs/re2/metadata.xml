@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>aliaksei.urbanski@gmail.com</email>
+		<name>Aliaksei Urbanski</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="benchmark">Build a benchmark binary, install it as re2-bench</flag>
+		<flag name="test-full">Run additional, quite slow tests</flag>
+	</use>
 	<upstream>
+		<bugs-to>https://github.com/google/re2/issues</bugs-to>
 		<remote-id type="github">google/re2</remote-id>
 	</upstream>
 </pkgmetadata>

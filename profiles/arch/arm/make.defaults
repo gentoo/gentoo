@@ -25,7 +25,3 @@ VIDEO_CARDS="exynos fbdev omap"
 # Michał Górny <mgorny@gentoo.org> (2017-03-14)
 # Unhide the ARM-specific USE_EXPANDs.
 USE_EXPAND_HIDDEN="-CPU_FLAGS_ARM"
-
-# Hans de Graaff <graaff@gentoo.org> (2024-05-20)
-# Allow ruby32 stabling: https://bugs.gentoo.org/932285
-RUBY_TARGETS="ruby31 -ruby32"

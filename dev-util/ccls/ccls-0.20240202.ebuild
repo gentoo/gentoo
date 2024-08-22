@@ -33,6 +33,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/ccls-0.20240202-gcc15-cstdint.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DCCLS_VERSION=${PV}

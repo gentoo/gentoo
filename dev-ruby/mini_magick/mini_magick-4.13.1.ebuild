@@ -27,8 +27,8 @@ IUSE="test"
 # It's only used at runtime in this case because this extension only
 # _calls_ the commands. But when we run tests we're going to need tiff
 # and jpeg support at a minimum.
-RDEPEND=" media-gfx/imagemagick"
-DEPEND=" test? ( virtual/imagemagick-tools[jpeg,png,tiff] )"
+RDEPEND="media-gfx/imagemagick"
+DEPEND="test? ( virtual/imagemagick-tools[jpeg,png,tiff] )"
 
 ruby_add_bdepend "test? ( dev-ruby/mocha dev-ruby/webmock )"
 

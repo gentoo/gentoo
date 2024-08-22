@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit gnome2-utils meson python-any-r1 virtualx
+inherit flag-o-matic gnome2-utils meson python-any-r1 virtualx
 
 DESCRIPTION="Compositing window manager forked from Mutter for use with Cinnamon"
 HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/muffin"
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/linuxmint/muffin/archive/${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="BSD GPL-2+ LGPL-2+ LGPL-2.1+ MIT SGI-B-2.0"
 SLOT="0"
 IUSE="input_devices_wacom +introspection screencast sysprof systemd test udev wayland video_cards_nvidia"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
 REQUIRED_USE="wayland? ( udev )"
 
 # Dependencies listed in meson order
@@ -163,6 +163,10 @@ src_configure() {
 			$(meson_use video_cards_nvidia wayland_eglstream)
 		)
 	fi
+
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/933879
+	use wayland && filter-lto
 
 	meson_src_configure
 }

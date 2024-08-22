@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/dracut-ng/dracut-ng"
 else
 	if [[ "${PV}" != *_rc* ]]; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+		KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 	fi
 	SRC_URI="https://github.com/dracut-ng/dracut-ng/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-ng-${PV}"
@@ -150,6 +150,10 @@ pkg_postinst() {
 	optfeature \
 		"Enable rngd service to help generating entropy early during boot" \
 		sys-apps/rng-tools
+	optfeature "building Unified Kernel Images with dracut (--uefi)" \
+		"sys-apps/systemd[boot]" "sys-apps/systemd-utils[boot]"
 	optfeature "automatically generating an initramfs on each kernel installation" \
 		"sys-kernel/installkernel[dracut]"
+	optfeature "automatically generating an UKI on each kernel installation" \
+		"sys-kernel/installkernel[dracut,uki]"
 }

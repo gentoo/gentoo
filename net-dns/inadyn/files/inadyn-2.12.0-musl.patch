@@ -1,0 +1,217 @@
+From b9edfbfb94b3582cf32dfc04e0dd867ecef2ba92 Mon Sep 17 00:00:00 2001
+From: Joachim Wiberg <troglobit@gmail.com>
+Date: Sat, 3 Aug 2024 13:25:39 +0200
+Subject: [PATCH] Refactor mkpath() to drop all uses of strdupa()
+
+Fixes #488
+
+Signed-off-by: Joachim Wiberg <troglobit@gmail.com>
+---
+ include/Makefile.am |  2 +-
+ include/compat.h    |  4 ++--
+ include/strdupa.h   | 52 -----------------------------------------
+ src/makepath.c      | 56 ++++++++++++++++++++++++++++++---------------
+ src/os.c            |  2 +-
+ 5 files changed, 42 insertions(+), 74 deletions(-)
+ delete mode 100644 include/strdupa.h
+
+diff --git a/include/Makefile.am b/include/Makefile.am
+index 4e112c16..31534b8a 100644
+--- a/include/Makefile.am
++++ b/include/Makefile.am
+@@ -5,4 +5,4 @@ noinst_HEADERS	= base64.h	md5.h		sha1.h		\
+ 		  jsmn.h	json.h		log.h		\
+ 		  md5.h		os.h		plugin.h	\
+ 		  queue.h	sha1.h		ssl.h		\
+-		  strdupa.h	tcp.h
++		  tcp.h
+diff --git a/include/compat.h b/include/compat.h
+index 35f2edf7..3eb1b1e8 100644
+--- a/include/compat.h
++++ b/include/compat.h
+@@ -29,14 +29,14 @@
+ #include <unistd.h>
+ #include <sys/param.h> /* MAX(), isset(), setbit(), TRUE, FALSE, et consortes. :-) */
+ #include <sys/types.h>
+-#include "strdupa.h"
+ 
+ /* From The Practice of Programming, by Kernighan and Pike */
+ #ifndef NELEMS
+ #define NELEMS(array) (sizeof(array) / sizeof(array[0]))
+ #endif
+ 
+-int     mkpath     (char *dir, mode_t mode);
++int     mkpath     (const char *dir, mode_t mode);
++int     makepath   (const char *dir);
+ 
+ #ifndef pidfile
+ int     pidfile    (const char *basename);
+diff --git a/include/strdupa.h b/include/strdupa.h
+deleted file mode 100644
+index ccd177e8..00000000
+--- a/include/strdupa.h
++++ /dev/null
+@@ -1,52 +0,0 @@
+-/* ==========================================================================
+- * strdupa.h - Re-implementation of glibc strdupa.
+- * --------------------------------------------------------------------------
+- * Copyright (c) 2009  William Ahern
+- *
+- * Permission is hereby granted, free of charge, to any person obtaining a
+- * copy of this software and associated documentation files (the
+- * "Software"), to deal in the Software without restriction, including
+- * without limitation the rights to use, copy, modify, merge, publish,
+- * distribute, sublicense, and/or sell copies of the Software, and to permit
+- * persons to whom the Software is furnished to do so, subject to the
+- * following conditions:
+- *
+- * The above copyright notice and this permission notice shall be included
+- * in all copies or substantial portions of the Software.
+- *
+- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+- * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+- * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+- * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+- * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+- * USE OR OTHER DEALINGS IN THE SOFTWARE.
+- * ==========================================================================
+- */
+-#ifndef LITE_STRDUPA_H
+-#define LITE_STRDUPA_H
+-
+-#if !defined(HAVE_STRDUPA)
+-#if defined(strdupa)
+-#define HAVE_STRDUPA	1
+-#endif
+-#endif
+-
+-#if !HAVE_STRDUPA
+-#if defined(__GNUC__)
+-#include <stddef.h>	/* size_t */
+-#include <string.h>	/* memcpy(3) strlen(3) */
+-
+-#define strdupa(src) (__extension__ ({			\
+-	size_t len_	= strlen(src);			\
+-	char *dst_	= __builtin_alloca(len_ + 1);	\
+-	dst_[len_]	= '\0';				\
+-	(char *)memcpy(dst_, src, len_);		\
+-}))
+-
+-#else  /* If not GCC, e.g. Clang */
+-#error strdupa() may use an unsupported GNU C API, please forward any fix to maintainer, cheers!
+-#endif /* __GNUC__ */
+-#endif /* !HAVE_STRDUPA */
+-
+-#endif /* LITE_STRDUPA_H */
+diff --git a/src/makepath.c b/src/makepath.c
+index 5235c19d..9774c737 100644
+--- a/src/makepath.c
++++ b/src/makepath.c
+@@ -1,6 +1,6 @@
+ /* mkpath() -- Create all components leading up to a given directory
+  *
+- * Copyright (c) 2013-2021  Joachim Wiberg <troglobit@gmail.com>
++ * Copyright (c) 2013-2024  Joachim Wiberg <troglobit@gmail.com>
+  *
+  * Permission to use, copy, modify, and/or distribute this software for any
+  * purpose with or without fee is hereby granted, provided that the above
+@@ -16,11 +16,35 @@
+  */
+ 
+ #include <errno.h>
+-#include <libgen.h>
+-#include <sys/stat.h>
+-#include <sys/types.h>
++#include <string.h>		/* strdup(), strrchr() */
++#include <stdlib.h>		/* free() */
++#include <sys/stat.h>		/* mkdir() */
++
+ #include "compat.h"
+ 
++/* Recursively create directories */
++static int _mkpath(char *dir, mode_t mode)
++{
++	char *slash;
++
++	if (!mkdir(dir, mode) || errno == EEXIST)
++		return 0;
++
++	if (errno != ENOENT)
++		return -1;
++
++	slash = strrchr(dir, '/');
++	if (!slash)
++		return -1;
++
++	*slash = 0;
++	if (_mkpath(dir, mode) == -1)
++		return -1;
++
++	*slash = '/';
++	return mkdir(dir, mode);
++}
++
+ /**
+  * mkpath - Like makepath() but takes a mode_t argument
+  * @dir:  Directory to created, relative or absolute
+@@ -29,21 +53,24 @@
+  * Returns:
+  * POSIX OK(0) on success, otherwise -1 with @errno set.
+  */
+-int mkpath(char *dir, mode_t mode)
++int mkpath(const char *dir, mode_t mode)
+ {
+-	struct stat sb;
++	char *_dir;
++	int rc;
+ 
+ 	if (!dir) {
+ 		errno = EINVAL;
+ 		return 1;
+ 	}
+ 
+-	if (!stat(dir, &sb))
+-		return 0;
++	_dir = strdup(dir);
++	if (!_dir)
++		return -1;
+ 
+-	mkpath(dirname(strdupa(dir)), mode);
++	rc = _mkpath(_dir, mode);
++	free(_dir);
+ 
+-	return mkdir(dir, mode);
++	return rc;
+ }
+ 
+ /**
+@@ -56,14 +83,7 @@ int mkpath(char *dir, mode_t mode)
+  * fails allocating temporary memory.  For other error codes see the
+  * mkdir() syscall description.
+  */
+-int makepath(char *dir)
++int makepath(const char *dir)
+ {
+ 	return mkpath(dir, 0777);
+ }
+-
+-/**
+- * Local Variables:
+- *  indent-tabs-mode: t
+- *  c-file-style: "linux"
+- * End:
+- */
+diff --git a/src/os.c b/src/os.c
+index bc85b1d7..2b169062 100644
+--- a/src/os.c
++++ b/src/os.c
+@@ -266,7 +266,7 @@ int os_check_perms(void)
+ 			}
+ 		}
+ 
+-		pidfile_dir = dirname(strdupa(pidfn));
++		pidfile_dir = dirname(pidfn);
+ 		if (access(pidfile_dir, F_OK)) {
+ 			if (mkpath(pidfile_dir, 0755) && errno != EEXIST)
+ 				logit(LOG_ERR, "No write permission to %s, aborting.", pidfile_dir);

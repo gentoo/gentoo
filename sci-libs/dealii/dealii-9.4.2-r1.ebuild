@@ -79,7 +79,7 @@ DEPEND="${RDEPEND}
 	doc? ( app-text/doxygen[dot] dev-lang/perl )"
 
 BDEPEND="
-	verify-sig? ( sec-keys/openpgp-keys-dealii )"
+	verify-sig? ( <=sec-keys/openpgp-keys-dealii-20230904 )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.1.1-no-ld-flags.patch

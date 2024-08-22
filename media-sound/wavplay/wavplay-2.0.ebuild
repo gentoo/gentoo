@@ -12,9 +12,8 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 x86"
-IUSE=""
 
-PATCHES=( "${FILESDIR}"/${PN}-2.0-pkgdata-install-fix.patch )
+PATCHES=( "${FILESDIR}/${PN}-2.0-pkgdata-install-fix.patch" )
 
 src_prepare() {
 	default

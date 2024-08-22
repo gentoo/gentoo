@@ -1,0 +1,253 @@
+From f9aea9105b6c1a8d7bff0ec0675f84f2ffb1db6f Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Wed, 20 Dec 2023 14:16:19 +0100
+Subject: [PATCH 1/2] tracing: Fix C type errors in librados tracing
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This fixes type errors like this:
+
+In file included from /usr/include/lttng/tracepoint-event.h:69,
+                 from …-build/include/tracing/librados.h:4143,
+                 from …/src/tracing/librados.c:6
+:
+…-build/include/tracing/librados.h:
+ In function ‘lttng_ust__event_probe__librados___rados_mon_command_exit’:
+…-build/include/tracing/librados.h:477:9: error: initialization of ‘size_t’ {aka ‘long unsigned int’} from ‘size_t *’ {aka ‘long unsigned int *’} makes integer from pointer without a cast
+  477 |         ceph_ctf_integerp(size_t, outslen, outslen)
+      |         ^~~~~~~~~~~~~~~~~
+
+GCC 14 will likely treat these type mismatches as an error
+and fail the build.
+
+Signed-off-by: Florian Weimer <fweimer@redhat.com>
+---
+ src/tracing/librados.tp      | 4 ++--
+ src/tracing/tracing-common.h | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/tracing/librados.tp b/src/tracing/librados.tp
+index 8b5e78ef15d65..8e116124b83d5 100644
+--- a/src/tracing/librados.tp
++++ b/src/tracing/librados.tp
+@@ -2628,7 +2628,7 @@ TRACEPOINT_EVENT(librados, rados_watch3_enter,
+     TP_FIELDS(
+         ctf_integer_hex(rados_ioctx_t, ioctx, ioctx)
+         ctf_string(oid, oid)
+-        ctf_integer_hex(uint64_t, phandle, phandle)
++        ctf_integer_hex(uint64_t*, phandle, phandle)
+         ctf_integer_hex(rados_watchcb2_t, callback, callback)
+         ctf_integer(uint32_t, timeout, timeout)
+         ctf_integer_hex(void*, arg, arg)
+@@ -2658,7 +2658,7 @@ TRACEPOINT_EVENT(librados, rados_aio_watch2_enter,
+         ctf_integer_hex(rados_ioctx_t, ioctx, ioctx)
+         ctf_string(oid, oid)
+         ctf_integer_hex(rados_completion_t, completion, completion)
+-        ctf_integer_hex(uint64_t, phandle, phandle)
++        ctf_integer_hex(uint64_t*, phandle, phandle)
+         ctf_integer_hex(rados_watchcb2_t, callback, callback)
+         ctf_integer(uint32_t, timeout, timeout)
+         ctf_integer_hex(void*, arg, arg)
+diff --git a/src/tracing/tracing-common.h b/src/tracing/tracing-common.h
+index 3e07f9de8e85c..03449ab588615 100644
+--- a/src/tracing/tracing-common.h
++++ b/src/tracing/tracing-common.h
+@@ -21,7 +21,7 @@
+ // type should be an integer type
+ // val should have type type*
+ #define ceph_ctf_integerp(type, field, val) \
+-    ctf_integer(type, field, (val) == NULL ? 0 : (val)) \
++    ctf_integer(type, field, (val) == NULL ? 0 : *(val)) \
+     ctf_integer(uint8_t, field##_isnull, (val) == NULL)
+ 
+ // val should have type char*
+
+From a49d154f4a8e493baf2296a15c7b5c56cd25e993 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Wed, 20 Dec 2023 14:59:19 +0100
+Subject: [PATCH 2/2] pybind: Fix C type errors in Cython-generated Python
+ bindings
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Several Ceph APIs use bool * types, which correspond to
+libcpp.bool * types in Cython.  The bint type has an incorrect
+size 4 and cannot be used as a replacement.
+
+This prevents a compilation failure with future compilers:
+
+…-build/src/pybind/rbd/rbd.c: In function ‘__pyx_pf_3rbd_3RBD_104namespace_exists’:
+…-build/src/pybind/rbd/rbd.c:42165:76: error: passing argument 3 of ‘rbd_namespace_exists’ from incompatible pointer type
+42165 |         __pyx_v_ret = rbd_namespace_exists(__pyx_v__ioctx, __pyx_v__name, (&__pyx_v__exists));
+      |                                                                           ~^~~~~~~~~~~~~~~~~
+      |                                                                            |
+      |                                                                            int *
+In file included from …-build/src/pybind/rbd/rbd.c:1268:
+…/src/include/rbd/librbd.h:1496:45: note: expected ‘_Bool *’ but argument is of type ‘int *’
+ 1496 |                                       bool *exists);
+      |                                             ^
+
+Signed-off-by: Florian Weimer <fweimer@redhat.com>
+---
+ src/pybind/rbd/c_rbd.pxd    | 5 +++--
+ src/pybind/rbd/mock_rbd.pxi | 9 +++++++--
+ src/pybind/rbd/rbd.pyx      | 9 +++++----
+ src/pybind/rgw/mock_rgw.pxi | 9 +++++++--
+ src/pybind/rgw/rgw.pyx      | 3 ++-
+ 5 files changed, 24 insertions(+), 11 deletions(-)
+
+diff --git a/src/pybind/rbd/c_rbd.pxd b/src/pybind/rbd/c_rbd.pxd
+index 885f7bd46abde..bda23bbc4735f 100644
+--- a/src/pybind/rbd/c_rbd.pxd
++++ b/src/pybind/rbd/c_rbd.pxd
+@@ -2,6 +2,7 @@
+ 
+ from libc.stdint cimport *
+ from ctime cimport time_t, timespec
++cimport libcpp
+ 
+ cdef extern from "rados/librados.h":
+     enum:
+@@ -525,7 +526,7 @@ cdef extern from "rbd/librbd.h" nogil:
+     int rbd_snap_unprotect(rbd_image_t image, const char *snap_name)
+     int rbd_snap_is_protected(rbd_image_t image, const char *snap_name,
+                               int *is_protected)
+-    int rbd_snap_exists(rbd_image_t image, const char *snapname, bint *exists)
++    int rbd_snap_exists(rbd_image_t image, const char *snapname, libcpp.bool *exists)
+     int rbd_snap_get_limit(rbd_image_t image, uint64_t *limit)
+     int rbd_snap_set_limit(rbd_image_t image, uint64_t limit)
+     int rbd_snap_get_timestamp(rbd_image_t image, uint64_t snap_id, timespec *timestamp)
+@@ -711,7 +712,7 @@ cdef extern from "rbd/librbd.h" nogil:
+     int rbd_namespace_list(rados_ioctx_t io, char *namespace_names,
+                            size_t *size)
+     int rbd_namespace_exists(rados_ioctx_t io, const char *namespace_name,
+-                             bint *exists)
++                             libcpp.bool *exists)
+ 
+     int rbd_pool_init(rados_ioctx_t, bint force)
+ 
+diff --git a/src/pybind/rbd/mock_rbd.pxi b/src/pybind/rbd/mock_rbd.pxi
+index 11872bd8146de..364f965fbad43 100644
+--- a/src/pybind/rbd/mock_rbd.pxi
++++ b/src/pybind/rbd/mock_rbd.pxi
+@@ -3,6 +3,11 @@
+ from libc.stdint cimport *
+ from ctime cimport time_t, timespec
+ 
++# Make the bool type available as libcpp.bool, for both C and C++.
++cimport libcpp
++cdef extern from "<stdbool.h>":
++    pass
++
+ cdef nogil:
+     enum:
+         _LIBRADOS_SNAP_HEAD "LIBRADOS_SNAP_HEAD"
+@@ -637,7 +642,7 @@ cdef nogil:
+     int rbd_snap_is_protected(rbd_image_t image, const char *snap_name,
+                               int *is_protected):
+         pass
+-    int rbd_snap_exists(rbd_image_t image, const char *snapname, bint *exists):
++    int rbd_snap_exists(rbd_image_t image, const char *snapname, libcpp.bool *exists):
+         pass
+     int rbd_snap_get_limit(rbd_image_t image, uint64_t *limit):
+         pass
+@@ -896,7 +901,7 @@ cdef nogil:
+                            size_t *size):
+         pass
+     int rbd_namespace_exists(rados_ioctx_t io, const char *namespace_name,
+-                             bint *exists):
++                             libcpp.bool *exists):
+         pass
+     int rbd_pool_init(rados_ioctx_t io, bint force):
+         pass
+diff --git a/src/pybind/rbd/rbd.pyx b/src/pybind/rbd/rbd.pyx
+index fcb2fb3470600..f59ba23f0fe21 100644
+--- a/src/pybind/rbd/rbd.pyx
++++ b/src/pybind/rbd/rbd.pyx
+@@ -23,6 +23,7 @@ from libc cimport errno
+ from libc.stdint cimport *
+ from libc.stdlib cimport malloc, realloc, free
+ from libc.string cimport strdup, memset
++cimport libcpp
+ 
+ try:
+     from collections.abc import Iterable
+@@ -1935,12 +1936,12 @@ class RBD(object):
+         cdef:
+             rados_ioctx_t _ioctx = convert_ioctx(ioctx)
+             const char *_name = name
+-            bint _exists = False
++            libcpp.bool _exists = False
+         with nogil:
+             ret = rbd_namespace_exists(_ioctx, _name, &_exists)
+         if ret != 0:
+             raise make_ex(ret, 'error verifying namespace')
+-        return bool(_exists != 0)
++        return _exists
+ 
+     def namespace_list(self, ioctx):
+         """
+@@ -3679,12 +3680,12 @@ cdef class Image(object):
+         name = cstr(name, 'name')
+         cdef:
+             char *_name = name
+-            bint _exists = False
++            libcpp.bool _exists = False
+         with nogil:
+             ret = rbd_snap_exists(self.image, _name, &_exists)
+         if ret != 0:
+             raise make_ex(ret, 'error getting snapshot exists for %s' % self.name)
+-        return bool(_exists != 0)
++        return _exists
+ 
+     @requires_not_closed
+     def get_snap_limit(self):
+diff --git a/src/pybind/rgw/mock_rgw.pxi b/src/pybind/rgw/mock_rgw.pxi
+index ca893a5bb8a16..806d4df75de05 100644
+--- a/src/pybind/rgw/mock_rgw.pxi
++++ b/src/pybind/rgw/mock_rgw.pxi
+@@ -1,5 +1,10 @@
+ # cython: embedsignature=True
+ 
++# Make the bool type available as libcpp.bool, for both C and C++.
++cimport libcpp
++cdef extern from "<stdbool.h>":
++    pass
++
+ cdef nogil:
+     ctypedef void* librgw_t
+ 
+@@ -111,8 +116,8 @@ cdef nogil:
+ 
+     int rgw_readdir(rgw_fs *fs,
+                     rgw_file_handle *parent_fh, uint64_t *offset,
+-                    bint (*cb)(const char *name, void *arg, uint64_t offset, stat *st, uint32_t st_mask, uint32_t flags) nogil except? -9000,
+-                    void *cb_arg, bint *eof, uint32_t flags) except? -9000:
++                    libcpp.bool (*cb)(const char *name, void *arg, uint64_t offset, stat *st, uint32_t st_mask, uint32_t flags) nogil except? -9000,
++                    void *cb_arg, libcpp.bool *eof, uint32_t flags) except? -9000:
+         pass
+ 
+     int rgw_getattr(rgw_fs *fs,
+diff --git a/src/pybind/rgw/rgw.pyx b/src/pybind/rgw/rgw.pyx
+index 9bbcdfff586a8..d210a70bbb8e3 100644
+--- a/src/pybind/rgw/rgw.pyx
++++ b/src/pybind/rgw/rgw.pyx
+@@ -7,6 +7,7 @@ from cpython cimport PyObject, ref, exc, array
+ from libc.stdint cimport *
+ from libc.stdlib cimport malloc, realloc, free
+ from cstat cimport stat
++cimport libcpp
+ 
+ IF BUILD_DOC:
+     include "mock_rgw.pxi"
+@@ -373,7 +374,7 @@ cdef class LibRGWFS(object):
+         cdef:
+             rgw_file_handle *_dir_handler = <rgw_file_handle*>dir_handler.handler
+             uint64_t _offset = offset
+-            bint _eof
++            libcpp.bool _eof
+             uint32_t _flags = flags
+         with nogil:
+             ret = rgw_readdir(self.fs, _dir_handler, &_offset, &readdir_cb,

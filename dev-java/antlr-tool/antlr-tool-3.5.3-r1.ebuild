@@ -48,7 +48,6 @@ RDEPEND="
 	${CP_DEPEND}
 "
 
-S="${WORKDIR}"
 TARBALL_S="${S}/${MY_PN}3-${PV}"
 
 JAVA_SRC_DIR="org"

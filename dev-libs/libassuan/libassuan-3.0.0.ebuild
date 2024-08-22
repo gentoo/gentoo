@@ -10,7 +10,7 @@ EAPI=8
 # any subsequent ones linked within so you're covered for a while.)
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gnupg.asc
-inherit libtool verify-sig
+inherit verify-sig libtool
 
 DESCRIPTION="IPC library used by GnuPG and GPGME"
 HOMEPAGE="https://www.gnupg.org/related_software/libassuan/index.en.html"
@@ -28,17 +28,8 @@ BDEPEND="verify-sig? ( sec-keys/openpgp-keys-gnupg )"
 
 src_prepare() {
 	default
-
-	if [[ ${CHOST} == *-solaris* ]] ; then
-		elibtoolize
-
-		# fix standards conflict
-		sed -i \
-			-e '/_XOPEN_SOURCE/s/500/600/' \
-			-e 's/_XOPEN_SOURCE_EXTENDED/_NO&/' \
-			-e 's/__EXTENSIONS__/_NO&/' \
-			configure || die
-	fi
+	# for Solaris shared libraries
+	elibtoolize
 }
 
 src_configure() {

@@ -17,7 +17,7 @@ HOMEPAGE="https://www.ruby-lang.org/"
 SRC_URI="https://cache.ruby-lang.org/pub/ruby/${SLOT}/${MY_P}.tar.xz"
 
 LICENSE="|| ( Ruby-BSD BSD-2 )"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="berkdb debug doc examples gdbm ipv6 jemalloc jit socks5 +ssl static-libs systemtap tk valgrind xemacs"
 
 RDEPEND="
@@ -72,6 +72,7 @@ PDEPEND="
 src_prepare() {
 	eapply "${FILESDIR}"/"${SLOT}"/011*.patch
 	eapply "${FILESDIR}"/"${SLOT}"/012*.patch
+	eapply "${FILESDIR}"/"${SLOT}"/013*.patch
 	eapply "${FILESDIR}"/"${SLOT}"/020*.patch
 	eapply "${FILESDIR}"/"${SLOT}"/902*.patch
 
@@ -93,7 +94,7 @@ src_prepare() {
 	rm -fr ext/fiddle/libffi-3.2.1 || die
 
 	# Remove webrick tests because setting LD_LIBRARY_PATH does not work for them.
-	# rm -rf tool/test/webrick || die
+	rm -rf tool/test/webrick || die
 
 	# Remove tests that are known to fail or require a network connection
 	rm -f test/ruby/test_process.rb test/rubygems/test_gem{,_path_support}.rb || die
@@ -221,10 +222,12 @@ src_configure() {
 }
 
 src_compile() {
+	local -x LD_LIBRARY_PATH="${S}${LD_LIBRARY_PATH+:}${LD_LIBRARY_PATH}"
 	emake V=1 EXTLDFLAGS="${LDFLAGS}" MJIT_CFLAGS="${CFLAGS}" MJIT_OPTFLAGS="" MJIT_DEBUGFLAGS=""
 }
 
 src_test() {
+	local -x LD_LIBRARY_PATH="${S}${LD_LIBRARY_PATH+:}${LD_LIBRARY_PATH}"
 	emake V=1 check
 }
 

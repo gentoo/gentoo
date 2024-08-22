@@ -73,6 +73,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-nvcc-test.patch
 	"${FILESDIR}"/${PN}-4.0-objdump.patch
 	"${FILESDIR}"/${PN}-4.10-avoid-run-user.patch
+	"${FILESDIR}"/${PN}-4.10-libfmt11.patch
 )
 
 src_unpack() {

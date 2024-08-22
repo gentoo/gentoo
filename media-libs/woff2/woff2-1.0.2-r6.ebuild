@@ -20,6 +20,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-aliasing.patch
+	"${FILESDIR}"/${PN}-1.0.2-gcc15.patch
 )
 
 src_configure() {

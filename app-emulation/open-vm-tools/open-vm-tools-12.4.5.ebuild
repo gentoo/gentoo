@@ -64,6 +64,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/10.1.0-Werror.patch
 	"${FILESDIR}"/11.3.5-icu.patch
+	"${FILESDIR}"/12.4.5-xmlsec1-pc.patch
 )
 
 pkg_setup() {
@@ -99,6 +100,10 @@ src_configure() {
 	)
 	# Avoid a bug in configure.ac
 	use ssl || myeconfargs+=( --without-ssl )
+
+	# Avoid relying on dnet-config script, which breaks cross-compiling. This
+	# library has no pkg-config file.
+	export CUSTOM_DNET_LIBS="-ldnet"
 
 	econf "${myeconfargs[@]}"
 }

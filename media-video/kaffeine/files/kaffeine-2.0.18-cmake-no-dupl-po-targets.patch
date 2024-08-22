@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt	2019-05-14 15:04:58.000000000 +0200
++++ b/CMakeLists.txt	2024-08-04 22:36:49.346618444 +0200
+@@ -112,8 +112,3 @@
+ if(BUILD_TOOLS)
+   add_subdirectory(tools)
+ endif(BUILD_TOOLS)
+-
+-  find_package(KF5DocTools CONFIG)
+-  if(KF5DocTools_FOUND)
+-    kdoctools_install(po)
+-  endif()

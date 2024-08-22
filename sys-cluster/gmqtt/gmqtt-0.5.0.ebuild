@@ -12,7 +12,7 @@ SRC_URI+=" https://dev.gentoo.org/~zmedico/dist/${P}-deps.tar.xz"
 LICENSE="MIT Apache-2.0 BSD BSD-2 ISC MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+
 RESTRICT="test"
 
 src_compile() {

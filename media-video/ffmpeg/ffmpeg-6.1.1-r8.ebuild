@@ -293,7 +293,7 @@ RDEPEND="
 		x11-libs/cairo[${MULTILIB_USEDEP}]
 	)
 	nvenc? ( >=media-libs/nv-codec-headers-11.1.5.3 )
-	svt-av1? ( >=media-libs/svt-av1-0.9.0[${MULTILIB_USEDEP}] )
+	svt-av1? ( >=media-libs/svt-av1-0.9.0:=[${MULTILIB_USEDEP}] )
 	truetype? (
 		>=media-libs/freetype-2.5.0.1:2[${MULTILIB_USEDEP}]
 		media-libs/harfbuzz:=[${MULTILIB_USEDEP}]

@@ -1,3 +1,4 @@
 move sci-libs/rtree dev-python/rtree
 move dev-python/mapbox_earcut dev-python/mapbox-earcut
 move dev-qt/kdsingleapplication dev-libs/kdsingleapplication
+slotmove dev-util/kdevelop-pg-qt 5 0

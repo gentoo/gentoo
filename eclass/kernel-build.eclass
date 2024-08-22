@@ -521,7 +521,7 @@ kernel-build_src_install() {
 				--output="${image%/*}/uki.efi"
 			)
 
-			if [[ ${KERNEL_IUSE_SECUREBOOT} ]] && use secureboot; then
+			if [[ ${KERNEL_IUSE_MODULES_SIGN} ]] && use secureboot; then
 				ukify_args+=(
 					--signtool=sbsign
 					--secureboot-private-key="${SECUREBOOT_SIGN_KEY}"

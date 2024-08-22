@@ -5,9 +5,6 @@
 		<email>andrewammerlaan@gentoo.org</email>
 		<name>Andrew Ammerlaan</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>tamiko@gentoo.org</email>
-	</maintainer>
 	<upstream>
 		<remote-id type="launchpad">ubuntu</remote-id>
 	</upstream>

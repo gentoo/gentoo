@@ -14,7 +14,7 @@ SRC_URI="https://github.com/javacc/javacc/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="7.0.4"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm arm64 x86"
 
 BDEPEND=">=dev-java/ant-1.10.14-r3:0"
 

@@ -88,10 +88,6 @@ CMAKE_SKIP_TESTS=(
 	tst_qwindowcapturebackend
 )
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-6.8.0-gst-x11-wayland-detect.patch
-)
-
 src_configure() {
 	# normally passed by the build system, but needed for 32-on-64 chroots
 	use x86 && append-cppflags -DPFFFT_SIMD_DISABLE

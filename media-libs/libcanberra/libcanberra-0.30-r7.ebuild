@@ -1,12 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit multilib-minimal systemd
+inherit libtool multilib-minimal systemd
 
 DESCRIPTION="Portable sound event library"
-HOMEPAGE="http://0pointer.de/lennart/projects/libcanberra/"
-SRC_URI="http://0pointer.de/lennart/projects/${PN}/${P}.tar.xz"
+HOMEPAGE="https://0pointer.de/lennart/projects/libcanberra/"
+SRC_URI="https://0pointer.de/lennart/projects/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
@@ -47,6 +47,11 @@ PATCHES=(
 	# gtk: Don't assume all GdkDisplays are GdkX11Displays: broadway/wayland (from 'master')
 	"${FILESDIR}/${PN}-0.30-wayland.patch"
 )
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \

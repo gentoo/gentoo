@@ -9,6 +9,6 @@
 		<name>Andrew Ammerlaan</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">oneapi-src/oneVPL-intel-gpu</remote-id>
+		<remote-id type="github">intel/vpl-gpu-rt</remote-id>
 	</upstream>
 </pkgmetadata>

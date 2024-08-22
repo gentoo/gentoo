@@ -6,7 +6,7 @@ EAPI=8
 inherit alternatives flag-o-matic toolchain-funcs multilib multiprocessing
 
 PATCH_VER=2
-CROSS_VER=1.5.3
+CROSS_VER=1.6
 PATCH_BASE="perl-5.40.0-patches-${PATCH_VER}"
 PATCH_DEV=dilfridge
 
@@ -439,7 +439,7 @@ src_prepare() {
 	tc-is-static-only || src_prepare_dynamic
 
 	if use gdbm; then
-		sed -i "s:INC => .*:INC => \"-I${EROOT}/usr/include/gdbm\":g" \
+		sed -i "s:INC => .*:INC => \"-I${ESYSROOT}/usr/include/gdbm\":g" \
 			ext/NDBM_File/Makefile.PL || die
 	fi
 
@@ -577,12 +577,12 @@ src_configure() {
 	use m68k && append-ldflags -Wl,-z,norelro
 
 	export BUILD_BZIP2=0
-	export BZIP2_INCLUDE=${EROOT}/usr/include
-	export BZIP2_LIB=${EROOT}/usr/$(get_libdir)
+	export BZIP2_INCLUDE=${ESYSROOT}/usr/include
+	export BZIP2_LIB=${ESYSROOT}/usr/$(get_libdir)
 
 	export BUILD_ZLIB=False
-	export ZLIB_INCLUDE=${EROOT}/usr/include
-	export ZLIB_LIB=${EROOT}/usr/$(get_libdir)
+	export ZLIB_INCLUDE=${ESYSROOT}/usr/include
+	export ZLIB_LIB=${ESYSROOT}/usr/$(get_libdir)
 
 	# allow either gdbm to provide ndbm (in <gdbm/ndbm.h>) or db1
 	myndbm='U'
@@ -622,12 +622,16 @@ src_configure() {
 	# modifying 'optimize' prevents cross configure script from appending required flags
 	if tc-is-cross-compiler; then
 		append-cflags "-fwrapv"
+		tc-export_build_env
 
 		# Needed for the CHOST build too (bug #932385)
 		export CFLAGS="${CFLAGS} -D_GNU_SOURCE"
 
 		# bug #913171
-		export HOSTCFLAGS="${CFLAGS_FOR_BUILD} -D_GNU_SOURCE"
+		export \
+			HOSTCC=$(tc-getBUILD_CC) \
+			HOSTCFLAGS="${CFLAGS_FOR_BUILD} -D_GNU_SOURCE" \
+			HOSTLDFLAGS="${LDFLAGS_FOR_BUILD}"
 	fi
 
 	# bug #877659, bug #821577

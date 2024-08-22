@@ -210,6 +210,36 @@ if type -P gcc &>/dev/null; then
 	tbegin "tc-get-c-rtlib (gcc)"
 	[[ $(CC=gcc tc-get-c-rtlib) == libgcc ]]
 	tend $?
+
+	tbegin "tc-is-lto (gcc, -fno-lto)"
+	CC=gcc CFLAGS=-fno-lto tc-is-lto
+	[[ $? -eq 1 ]]
+	tend $?
+
+	tbegin "tc-is-lto (gcc, -flto)"
+	CC=gcc CFLAGS=-flto tc-is-lto
+	[[ $? -eq 0 ]]
+	tend $?
+
+	case $(gcc -dumpmachine) in
+		i*86*-gnu*|arm*-gnu*|powerpc-*-gnu)
+			tbegin "tc-has-64bit-time_t (_TIME_BITS=32)"
+			CC=gcc CFLAGS="-U_TIME_BITS -D_TIME_BITS=32" tc-has-64bit-time_t
+			[[ $? -eq 1 ]]
+			tend $?
+
+			tbegin "tc-has-64bit-time_t (_TIME_BITS=64)"
+			CC=gcc CFLAGS="-U_FILE_OFFSET_BITS -U_TIME_BITS -D_FILE_OFFSET_BITS=64 -D_TIME_BITS=64" tc-has-64bit-time_t
+			[[ $? -eq 0 ]]
+			tend $?
+			;;
+		*)
+			tbegin "tc-has-64bit-time_t"
+			CC=gcc tc-has-64bit-time_t
+			[[ $? -eq 0 ]]
+			tend $?
+			;;
+	esac
 fi
 
 if type -P clang &>/dev/null; then
@@ -232,6 +262,16 @@ if type -P clang &>/dev/null; then
 		[[ $(CC=clang CFLAGS="--rtlib=${rtlib}" tc-get-c-rtlib) == ${rtlib} ]]
 		tend $?
 	done
+
+	tbegin "tc-is-lto (clang, -fno-lto)"
+	CC=clang CFLAGS=-fno-lto tc-is-lto
+	[[ $? -eq 1 ]]
+	tend $?
+
+	tbegin "tc-is-lto (clang, -flto)"
+	CC=clang CFLAGS=-flto tc-is-lto
+	[[ $? -eq 0 ]]
+	tend $?
 fi
 
 texit

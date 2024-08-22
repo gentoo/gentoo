@@ -1,0 +1,29 @@
+--- a/buildscripts/packaging/Linux+BSD/SetupAppImagePackaging.cmake
++++ b/buildscripts/packaging/Linux+BSD/SetupAppImagePackaging.cmake
+@@ -99,7 +99,7 @@ configure_file(${MAN_TARGET} ${MAN_BUILD})
+ # Note: Compressing man pages is normal on Linux but not OpenBSD
+ find_program(GZIP_EXECUTABLE gzip DOC "A tool for compressing manpages (optional).")
+ 
+-if(GZIP_EXECUTABLE AND NOT CMAKE_SYSTEM_NAME MATCHES "OpenBSD")
++if(GZIP_EXECUTABLE AND NOT CMAKE_SYSTEM_NAME MATCHES "OpenBSD" AND false)
+     message(STATUS "Found 'gzip'. Man pages will be compressed.")
+     set(MAN_TARGET ${MAN_BUILD})
+     set(MAN_EXTENSION ${MAN_EXTENSION}.gz)
+@@ -116,7 +116,7 @@ if(GZIP_EXECUTABLE AND NOT CMAKE_SYSTEM_NAME MATCHES "OpenBSD")
+         COMMAND echo "Man pages have been compressed ready for installation."
+         VERBATIM
+     )
+-else(GZIP_EXECUTABLE AND NOT CMAKE_SYSTEM_NAME MATCHES "OpenBSD")
++else(GZIP_EXECUTABLE AND NOT CMAKE_SYSTEM_NAME MATCHES "OpenBSD" AND false)
+     if(CMAKE_SYSTEM_NAME MATCHES "OpenBSD")
+         message(STATUS "System is OpenBSD: Man pages will not be compressed.")
+     else(CMAKE_SYSTEM_NAME MATCHES "OpenBSD")
+@@ -127,7 +127,7 @@ else(GZIP_EXECUTABLE AND NOT CMAKE_SYSTEM_NAME MATCHES "OpenBSD")
+         COMMAND echo "Man pages will be installed uncompressed."
+         VERBATIM
+     )
+-endif(GZIP_EXECUTABLE AND NOT CMAKE_SYSTEM_NAME MATCHES "OpenBSD")
++endif(GZIP_EXECUTABLE AND NOT CMAKE_SYSTEM_NAME MATCHES "OpenBSD" AND false)
+ 
+ # Install man pages in either compressed or uncompressed form
+ install(FILES ${MAN_BUILD} DESTINATION share/man/man1 COMPONENT doc)

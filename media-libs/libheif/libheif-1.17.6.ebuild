@@ -39,7 +39,7 @@ DEPEND="
 	gdk-pixbuf? ( x11-libs/gdk-pixbuf[${MULTILIB_USEDEP}] )
 	go? ( dev-lang/go )
 	rav1e? ( media-video/rav1e:= )
-	svt-av1? ( media-libs/svt-av1[${MULTILIB_USEDEP}] )
+	svt-av1? ( media-libs/svt-av1:=[${MULTILIB_USEDEP}] )
 	x265? ( media-libs/x265:=[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}"
 

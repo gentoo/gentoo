@@ -29,6 +29,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}/${PN}-2.12.0-musl.patch" )
+
 src_configure() {
 	# Tests would need a custom config file in homedir per configure help?
 	local myeconfargs=(

@@ -12,7 +12,7 @@ SRC_URI="https://github.com/mpagano/portpeek/releases/download/v${PV}/${P}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv ~sparc ~x86"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

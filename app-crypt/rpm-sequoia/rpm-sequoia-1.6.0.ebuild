@@ -294,5 +294,6 @@ src_install() {
 	dosym librpm_sequoia.so.1 /usr/$(get_libdir)/librpm_sequoia.so
 
 	insinto /usr/$(get_libdir)/pkgconfig
-	doins "$(cargo_target_dir)"/rpm-sequoia.pc
+	# build.rs sets the output dir to be target/<PROFILE>, so don't use helper.
+	doins target/$(usex debug debug release)/rpm-sequoia.pc
 }

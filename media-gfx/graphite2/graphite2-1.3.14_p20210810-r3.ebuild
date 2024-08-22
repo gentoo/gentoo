@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.3.14-fix-nodefaultlibs-deux.patch"
 	"${FILESDIR}/${PN}-1.3.14-fix-nodefaultlibs.patch"
 	"${FILESDIR}/${PN}-1.3.5-fix-gcc-linking.patch"
+	"${FILESDIR}/${PN}-1.3.14-gcc15.patch"
 )
 
 pkg_setup() {

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ECM_HANDBOOK="true"
+ECM_HANDBOOK="optional"
 KFMIN=5.115.0
 inherit ecm gear.kde.org
 
@@ -14,16 +14,10 @@ SLOT="5"
 KEYWORDS="amd64 arm64 ~riscv x86"
 IUSE=""
 
-# kdelibs4support - required for kdex.dtd
-# kdoctools - to use ECM instead of kdelibs4
-DEPEND="
-	>=kde-frameworks/kdelibs4support-${KFMIN}:5
-	>=kde-frameworks/kdoctools-${KFMIN}:5
-"
 RDEPEND="
 	app-arch/advancecomp
-	media-gfx/optipng
 	dev-perl/XML-DOM
+	media-gfx/optipng
 "
 
 src_prepare() {

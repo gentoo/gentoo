@@ -46,6 +46,16 @@ go-env_set_compile_environment() {
 	export CGO_CPPFLAGS="${CGO_CPPFLAGS:-$CPPFLAGS}"
 	export CGO_CXXFLAGS="${CGO_CXXFLAGS:-$CXXFLAGS}"
 	export CGO_LDFLAGS="${CGO_LDFLAGS:-$LDFLAGS}"
+
+	# bug #929219
+	if tc-is-gcc ; then
+		CGO_CFLAGS=$(
+			CFLAGS=${CGO_CFLAGS}
+			replace-flags -g3 -g
+			replace-flags -ggdb3 -ggdb
+			printf %s "${CFLAGS}"
+		)
+	fi
 }
 
 # @FUNCTION: go-env_goos

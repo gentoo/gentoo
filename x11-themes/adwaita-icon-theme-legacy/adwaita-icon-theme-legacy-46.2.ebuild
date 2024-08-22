@@ -35,6 +35,6 @@ src_test() {
 src_install() {
 	meson_src_install
 	# https://gitlab.gnome.org/GNOME/adwaita-icon-theme-legacy/-/issues/3
-	mv "${D}"/usr/share/licenses/adwaita-icon-theme \
-		"${D}"/usr/share/licenses/adwaita-icon-theme-legacy || die
+	mv "${ED}"/usr/share/licenses/adwaita-icon-theme \
+		"${ED}"/usr/share/licenses/adwaita-icon-theme-legacy || die
 }

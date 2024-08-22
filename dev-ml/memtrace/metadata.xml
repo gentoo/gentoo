@@ -7,7 +7,7 @@
     <name>ML</name>
   </maintainer>
   <upstream>
-    <bugs-to>https://gitlab.com/janestreet/memtrace/issues/</bugs-to>
+    <bugs-to>https://github.com/janestreet/memtrace/issues/</bugs-to>
     <remote-id type="github">janestreet/memtrace</remote-id>
   </upstream>
 </pkgmetadata>

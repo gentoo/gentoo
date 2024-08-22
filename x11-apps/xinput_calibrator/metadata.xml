@@ -6,6 +6,6 @@
     <name>X11</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">tias/xinput_calibrator</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/app/xinput-calibrator</remote-id>
   </upstream>
 </pkgmetadata>

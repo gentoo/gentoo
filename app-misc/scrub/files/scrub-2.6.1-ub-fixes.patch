@@ -1,0 +1,44 @@
+https://github.com/chaos/scrub/commit/9c9b3f28439835f44329228e2435f3f89e7dcee1
+
+From 9c9b3f28439835f44329228e2435f3f89e7dcee1 Mon Sep 17 00:00:00 2001
+From: Sergio Correia <scorreia@redhat.com>
+Date: Wed, 17 Mar 2021 08:08:07 -0300
+Subject: [PATCH] Minor fixes to keep clang static analyzer happy
+
+- Initialize `written' and `checked' in scrub()
+- Initialize `mp->thd' before using it in refill_init()
+- Do not assign return of read_all() to `n', if we do not read this
+  value, in writesig()
+--- a/src/fillfile.c
++++ b/src/fillfile.c
+@@ -122,6 +122,7 @@ refill_init(struct memstruct **mpp, refill_t refill, int memsize)
+     }
+     mp->size = memsize;
+     mp->refill = refill;
++    mp->thd = 0;
+ #if WITH_PTHREADS
+     if (!no_threads) {
+         if ((mp->err = pthread_create(&mp->thd, NULL, refill_thread, mp))) {
+--- a/src/scrub.c
++++ b/src/scrub.c
+@@ -445,7 +445,7 @@ scrub(char *path, off_t size, const sequence_t *seq, int bufsize,
+     prog_t p;
+     char sizestr[80];
+     bool isfull = false;
+-    off_t written, checked;
++    off_t written = (off_t)-1, checked = (off_t)-1;
+     int pcol = progress_col(seq);
+ 
+     if (!(buf = alloc_buffer(bufsize))) {
+--- a/src/sig.c
++++ b/src/sig.c
+@@ -74,7 +74,7 @@ writesig(char *path)
+         goto nomem;
+     if ((fd = open(path, O_RDWR)) < 0)
+         goto error;
+-    if ((n = read_all(fd, buf, blocksize)) < 0)
++    if (read_all(fd, buf, blocksize) < 0)
+         goto error;
+     memcpy(buf, SCRUB_MAGIC, sizeof(SCRUB_MAGIC));
+     if (lseek(fd, 0, SEEK_SET) < 0)
+

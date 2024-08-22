@@ -13,7 +13,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-3"
 SLOT="1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 BDEPEND="app-arch/unzip:0"
 CDEPEND="

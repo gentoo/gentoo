@@ -1,0 +1,81 @@
+diff --git a/src/async/audio/AsyncAudioContainerPcm.h b/src/async/audio/AsyncAudioContainerPcm.h
+index 5ce66dd..a38bd9f 100644
+# add forgotten include
+--- a/src/async/audio/AsyncAudioContainerPcm.h
++++ b/src/async/audio/AsyncAudioContainerPcm.h
+@@ -40,7 +40,6 @@ An example of how to use the Async::AudioContainer class
+ 
+ #include <vector>
+ 
+-
+ /****************************************************************************
+  *
+  * Project Includes
+@@ -48,7 +47,7 @@ An example of how to use the Async::AudioContainer class
+  ****************************************************************************/
+ 
+ #include <AsyncAudioContainer.h>
+-
++#include <cstdint>
+ 
+ /****************************************************************************
+  *
+diff --git a/src/async/core/AsyncAtTimer.h b/src/async/core/AsyncAtTimer.h
+index 7aa593b..5404a47 100644
+# timeval is defined in <<F2>sys/tims.h>
+--- a/src/async/core/AsyncAtTimer.h
++++ b/src/async/core/AsyncAtTimer.h
+@@ -43,7 +43,7 @@ An example of how to use the AsyncAtTimer class
+  *
+  ****************************************************************************/
+ 
+-#include <time.h>
++#include <sys/time.h>
+ #include <sigc++/sigc++.h>
+ 
+ 
+diff --git a/src/async/cpp/AsyncCppDnsLookupWorker.cpp b/src/async/cpp/AsyncCppDnsLookupWorker.cpp
+index f2e39b0..df73eb9 100644
+# res_xx functions are stateless in MUSL, so no res_nxxx is needed
+# furthermore no res_close exists
+--- a/src/async/cpp/AsyncCppDnsLookupWorker.cpp
++++ b/src/async/cpp/AsyncCppDnsLookupWorker.cpp
+@@ -306,12 +306,12 @@ void CppDnsLookupWorker::workerFunc(CppDnsLookupWorker::ThreadContext& ctx)
+   if (qtype != 0)
+   {
+     struct __res_state state;
+-    int ret = res_ninit(&state);
++    int ret = res_init();
+     if (ret != -1)
+     {
+       state.options = RES_DEFAULT;
+       const char *dname = ctx.label.c_str();
+-      ctx.anslen = res_nsearch(&state, dname, ns_c_in, qtype,
++      ctx.anslen = res_search(dname, ns_c_in, qtype,
+                                ctx.answer, sizeof(ctx.answer));
+       if (ctx.anslen == -1)
+       {
+@@ -324,7 +324,7 @@ void CppDnsLookupWorker::workerFunc(CppDnsLookupWorker::ThreadContext& ctx)
+         //        does not grow with every failed lookup. But even so, it seems
+         //        that res_close is not cleaning up properly.
+         //        Glibc 2.33-18 on Fedora 34.
+-      res_nclose(&state);
++
+     }
+     else
+     {
+@@ -538,12 +538,10 @@ void CppDnsLookupWorker::printErrno(const std::string& msg)
+ {
+   char errbuf[1024];
+   char* errmsg = errbuf;
+-#if (_POSIX_C_SOURCE >= 200112L) && ! _GNU_SOURCE
++
+   int ret = strerror_r(errno, errbuf, sizeof(errbuf));
+   assert(ret == 0);
+-#else
+-  errmsg = strerror_r(errno, errbuf, sizeof(errbuf));
+-#endif
++
+   std::cerr << "*** " << msg << ": " << errmsg << std::endl;
+ } /* CppDnsLookupWorker::printErrno */
+ 

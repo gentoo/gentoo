@@ -214,6 +214,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with python python3-bindings)
 		# Annoyingly configure requires that you pick systemd XOR sysv
 		--with-initscript=$(usex systemd systemd sysv)
+		KRB5_CONFIG="${ESYSROOT}"/usr/bin/krb5-config
 	)
 
 	use systemd && myconf+=(

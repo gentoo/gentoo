@@ -18,7 +18,7 @@ else
 		https://github.com/Flowdalic/conmon/commit/ff8794c5bc0805cc430229728befde16da47b68c.patch
 			-> ${PN}-2.1.11-make-docs-target-not-depend-on-install.tools.patch
 	"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv"
 fi
 
 LICENSE="Apache-2.0"

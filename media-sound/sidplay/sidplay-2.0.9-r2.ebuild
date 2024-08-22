@@ -10,7 +10,6 @@ SRC_URI="https://downloads.sourceforge.net/sidplay2/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ppc ~sparc x86"
-IUSE=""
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="media-libs/libsidplay:2"

@@ -35,7 +35,7 @@ HOMEPAGE="https://btrfs.readthedocs.io/en/latest/"
 
 LICENSE="GPL-2"
 SLOT="0/0" # libbtrfs soname
-IUSE="+convert +man reiserfs static static-libs udev +zstd"
+IUSE="+convert +man experimental reiserfs static static-libs udev +zstd"
 # Could support it with just !systemd => eudev, see mdadm, but let's
 # see if someone asks for it first.
 REQUIRED_USE="static? ( !udev )"
@@ -131,7 +131,7 @@ src_configure() {
 		--bindir="${EPREFIX}"/sbin
 
 		--enable-lzo
-		--disable-experimental
+		$(use_enable experimental)
 		--disable-python
 		$(use_enable convert)
 		$(use_enable man documentation)
@@ -170,6 +170,11 @@ src_install() {
 	)
 
 	emake V=1 DESTDIR="${D}" install "${makeargs[@]}"
+
+	if use experimental; then
+		exeinto /sbin
+		doexe btrfs-corrupt-block
+	fi
 
 	newbashcomp btrfs-completion btrfs
 }

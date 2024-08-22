@@ -14,10 +14,12 @@ SRC_URI="https://github.com/marzer/tomlplusplus/archive/refs/tags/v${PV}.tar.gz 
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~riscv ~x86"
 
 IUSE="test"
 RESTRICT="!test? ( test )"
+
+BDEPEND="dev-build/cmake"
 
 src_configure() {
 	local emesonargs=(

@@ -34,9 +34,9 @@ GRUB_DISTRIBUTOR="Gentoo"
 # Uncomment to disable graphical terminal (grub-pc only)
 #GRUB_TERMINAL=console
 
-# The resolution used on graphical terminal.
-# Note that you can use only modes which your graphic card supports via VBE.
-# You can see them in real GRUB with the command `vbeinfo'.
+# Resolution used on graphical terminal.
+# The list of valid modes may be obtained using the 'vbeinfo' (PC BIOS) or
+# 'videoinfo' (EFI) command from a GRUB boot prompt.
 #GRUB_GFXMODE=640x480
 
 # Set to 'text' to force the Linux kernel to boot in normal text

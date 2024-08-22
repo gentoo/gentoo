@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-08-12)
+# Builds a amd vendored opencl runtime that causes collisions.
+# Hardly useful outside of maintainer testing. #934963, #936317
+dev-util/hip opencl
+
 # matoro <matoro_gentoo@matoro.tk> (2024-07-14)
 # Abandoned upstream, does not take bug reports, unsupported in Gentoo.
 # Only remaining use is as a requirement for dev-lang/go on arm{,64}.
@@ -297,7 +302,7 @@ app-emulation/aranym jit
 
 # Craig Andrews <candrews@gentoo.org> (2019-10-08)
 # net-libs/nghttp3 net-libs/ngtcp2[ssl] are not available on all arches
-net-misc/curl nghttp3 http3 quic
+net-misc/curl nghttp3
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
 # Moved from arch/powerpc/ppc64 as it applies to most architectures.

@@ -22,7 +22,7 @@ else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
-	KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~hppa ~ppc ~ppc64 x86"
 fi
 
 LICENSE="MIT"

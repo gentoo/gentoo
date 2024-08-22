@@ -11,7 +11,7 @@ SRC_URI="ftp://bird.network.cz/pub/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86 ~x64-macos"
+KEYWORDS="amd64 ~arm64 ~loong ~x86 ~x64-macos"
 IUSE="+client custom-cflags debug libssh"
 
 RDEPEND="

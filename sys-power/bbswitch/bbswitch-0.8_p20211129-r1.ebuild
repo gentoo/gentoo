@@ -19,15 +19,13 @@ fi
 DESCRIPTION="Toggle discrete NVIDIA Optimus graphics card"
 HOMEPAGE="https://github.com/Bumblebee-Project/bbswitch"
 
-SLOT="0"
 LICENSE="GPL-3+"
-IUSE=""
+SLOT="0"
 
 DEPEND="
 	virtual/linux-sources
 	sys-kernel/linux-headers
 "
-RDEPEND=""
 
 PATCHES=( "${FILESDIR}/${PN}-kernel-5.18.patch" )
 

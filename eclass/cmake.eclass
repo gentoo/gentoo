@@ -388,7 +388,7 @@ cmake_src_prepare() {
 	local name
 	for name in "${modules_list[@]}" ; do
 		if [[ ${EAPI} == 7 ]]; then
-			find "${S}" -name ${name}.cmake -exec rm -v {} + || die
+			find "${S}" -name "${name}.cmake" -exec rm -v {} + || die
 		else
 			find -name "${name}.cmake" -exec rm -v {} + || die
 		fi
@@ -542,10 +542,16 @@ cmake_src_configure() {
 		set(BUILD_SHARED_LIBS ON CACHE BOOL "")
 		set(Python3_FIND_UNVERSIONED_NAMES FIRST CACHE STRING "")
 		set(CMAKE_DISABLE_PRECOMPILE_HEADERS ON CACHE BOOL "")
+		set(CMAKE_TLS_VERIFY ON CACHE BOOL "")
+		set(CMAKE_COMPILE_WARNING_AS_ERROR OFF CACHE BOOL "")
 	_EOF_
 
 	if [[ -n ${_ECM_ECLASS} ]]; then
-		echo 'set(ECM_DISABLE_QMLPLUGINDUMP ON CACHE BOOL "")' >> "${common_config}" || die
+		cat >> ${common_config} <<- _EOF_ || die
+			set(ECM_DISABLE_QMLPLUGINDUMP ON CACHE BOOL "")
+			set(ECM_DISABLE_APPSTREAMTEST ON CACHE BOOL "")
+			set(ECM_DISABLE_GIT ON CACHE BOOL "")
+		_EOF_
 	fi
 
 	# See bug 689410

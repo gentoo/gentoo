@@ -1,0 +1,97 @@
+From 02961d854c8f4277219699cd66970d1e90b371d4 Mon Sep 17 00:00:00 2001
+From: Steve Repsher <steverep@users.noreply.github.com>
+Date: Wed, 7 Aug 2024 07:51:50 -0400
+Subject: [PATCH] Fix monkey patches for pathlib changes in Python 3.13 (#8619)
+
+(cherry picked from commit d1c8dfbb11ea9989446e295fcee350255d5461c0)
+---
+ CHANGES/8551.contrib.rst        | 1 +
+ tests/test_web_urldispatcher.py | 8 ++++----
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+ create mode 100644 CHANGES/8551.contrib.rst
+
+diff --git a/tests/test_web_urldispatcher.py b/tests/test_web_urldispatcher.py
+index a799f4ba146..de44ea0648c 100644
+--- a/tests/test_web_urldispatcher.py
++++ b/tests/test_web_urldispatcher.py
+@@ -434,10 +434,10 @@ def mock_iterdir(self: pathlib.Path) -> Generator[pathlib.Path, None, None]:
+             raise PermissionError()
+         return real_iterdir(self)
+ 
+-    def mock_is_dir(self: pathlib.Path) -> bool:
++    def mock_is_dir(self: pathlib.Path, **kwargs: Any) -> bool:
+         if my_dir.samefile(self.parent):
+             raise PermissionError()
+-        return real_is_dir(self)
++        return real_is_dir(self, **kwargs)
+ 
+     monkeypatch.setattr("pathlib.Path.iterdir", mock_iterdir)
+     monkeypatch.setattr("pathlib.Path.is_dir", mock_is_dir)
+@@ -554,8 +554,8 @@ async def test_access_mock_special_resource(
+     real_result = my_special.stat()
+     real_stat = pathlib.Path.stat
+ 
+-    def mock_stat(self: pathlib.Path) -> os.stat_result:
+-        s = real_stat(self)
++    def mock_stat(self: pathlib.Path, **kwargs: Any) -> os.stat_result:
++        s = real_stat(self, **kwargs)
+         if os.path.samestat(s, real_result):
+             mock_mode = S_IFIFO | S_IMODE(s.st_mode)
+             s = os.stat_result([mock_mode] + list(s)[1:])
+From 75ff8e12d0c95af9347bb16de785d028930f7228 Mon Sep 17 00:00:00 2001
+From: Steve Repsher <steverep@users.noreply.github.com>
+Date: Thu, 8 Aug 2024 10:55:35 -0400
+Subject: [PATCH] Fix response to circular symlinks with Python v3.13 (#8642)
+
+Co-authored-by: J. Nick Koston <nick@koston.org>
+(cherry picked from commit e494277110e40fb5c1cc65a1558dfea7d8ae7ca8)
+---
+ CHANGES/8565.bugfix.rst      | 1 +
+ aiohttp/web_fileresponse.py  | 4 +++-
+ aiohttp/web_urldispatcher.py | 9 +++++----
+ 3 files changed, 9 insertions(+), 5 deletions(-)
+ create mode 100644 CHANGES/8565.bugfix.rst
+
+diff --git a/aiohttp/web_fileresponse.py b/aiohttp/web_fileresponse.py
+index 7fc5b3d787f..d8bbbe08993 100644
+--- a/aiohttp/web_fileresponse.py
++++ b/aiohttp/web_fileresponse.py
+@@ -191,7 +191,9 @@ async def prepare(self, request: "BaseRequest") -> Optional[AbstractStreamWriter
+             file_path, st, file_encoding = await loop.run_in_executor(
+                 None, self._get_file_path_stat_encoding, accept_encoding
+             )
+-        except FileNotFoundError:
++        except OSError:
++            # Most likely to be FileNotFoundError or OSError for circular
++            # symlinks in python >= 3.13, so respond with 404.
+             self.set_status(HTTPNotFound.status_code)
+             return await super().prepare(request)
+ 
+diff --git a/aiohttp/web_urldispatcher.py b/aiohttp/web_urldispatcher.py
+index 688946626fd..558fb7d0c9b 100644
+--- a/aiohttp/web_urldispatcher.py
++++ b/aiohttp/web_urldispatcher.py
+@@ -80,9 +80,9 @@
+     BaseDict = dict
+ 
+ CIRCULAR_SYMLINK_ERROR = (
+-    OSError
++    (OSError,)
+     if sys.version_info < (3, 10) and sys.platform.startswith("win32")
+-    else RuntimeError
++    else (RuntimeError,) if sys.version_info < (3, 13) else ()
+ )
+ 
+ YARL_VERSION: Final[Tuple[int, ...]] = tuple(map(int, yarl_version.split(".")[:2]))
+@@ -694,8 +694,9 @@ def _resolve_path_to_response(self, unresolved_path: Path) -> StreamResponse:
+             else:
+                 file_path = unresolved_path.resolve()
+                 file_path.relative_to(self._directory)
+-        except (ValueError, CIRCULAR_SYMLINK_ERROR) as error:
+-            # ValueError for relative check; RuntimeError for circular symlink.
++        except (ValueError, *CIRCULAR_SYMLINK_ERROR) as error:
++            # ValueError is raised for the relative check. Circular symlinks
++            # raise here on resolving for python < 3.13.
+             raise HTTPNotFound() from error
+ 
+         # if path is a directory, return the contents if permitted. Note the

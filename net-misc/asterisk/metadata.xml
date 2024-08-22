@@ -13,7 +13,6 @@
 		<flag name="blocks">Utlize -fblocks (only supported by, and required when using, clang/LLVM)</flag>
 		<flag name="cluster">Enable high-availability support through the Corosync Cluster Engine</flag>
 		<flag name="codec2">Enable Codec2 support in asterisk</flag>
-		<flag name="dahdi">Support Digium compatible hardware (formerly known as Zaptel)</flag>
 		<flag name="deprecated">Enable deprecated features (eg, app_macro)</flag>
 		<flag name="gtalk">Enable support for Google Talk services</flag>
 		<flag name="http">Enable embedded web server</flag>

@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Gentoo Authors
+# Copyright 2013-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,6 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Systemd"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE=""
 
 RDEPEND="acct-group/floppy
 	acct-group/usb

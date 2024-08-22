@@ -55,8 +55,3 @@ src_configure() {
 	)
 	ecm_src_configure
 }
-
-src_install() {
-	ecm_src_install
-	rm "${D}"/usr/share/metainfo/org.kde.dolphin-plugins.metainfo.xml || die
-}

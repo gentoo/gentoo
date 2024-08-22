@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="FreeRADIUS Client framework"
 HOMEPAGE="https://wiki.freeradius.org/project/Radiusclient"
@@ -40,6 +40,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/927175
+	# https://github.com/FreeRADIUS/freeradius-client/issues/128
+	filter-lto
+
 	local myeconfargs=(
 		$(use_enable scp)
 		$(use_enable shadow)

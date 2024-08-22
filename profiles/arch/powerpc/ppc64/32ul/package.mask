@@ -1,7 +1,0 @@
-# Copyright 1999-2022 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# Sam James <sam@gentoo.org> (2022-01-18)
-# No bootstrap binary available on big endian PPC64 right now
-# But there is one for PPC (big endian).
--dev-lisp/sbcl

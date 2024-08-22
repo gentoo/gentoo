@@ -322,6 +322,7 @@ DOTNET_PKG_PROJECTS=(
 DOTNET_PKG_BAD_PROJECTS=(
 	src/quicktest/QuickTest.fsproj
 	tests/Js/Main/Fable.Tests.fsproj
+	tests/Rust/Fable.Tests.Rust.fsproj
 )
 
 pkg_setup() {

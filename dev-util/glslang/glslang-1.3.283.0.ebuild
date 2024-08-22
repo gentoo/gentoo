@@ -32,6 +32,10 @@ BDEPEND="${PYTHON_DEPS}
 DEPEND="~dev-util/spirv-tools-${PV}[${MULTILIB_USEDEP}]"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.3.283.0-gcc15.patch
+)
+
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DENABLE_PCH=OFF

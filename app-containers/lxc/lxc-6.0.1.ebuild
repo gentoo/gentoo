@@ -18,7 +18,7 @@ IUSE="apparmor +caps examples io-uring lto man pam seccomp selinux ssl systemd t
 RDEPEND="acct-group/lxc
 	acct-user/lxc
 	apparmor? ( sys-libs/libapparmor )
-	caps? ( sys-libs/libcap[static-libs] )
+	caps? ( sys-libs/libcap )
 	io-uring? ( >=sys-libs/liburing-2:= )
 	pam? ( sys-libs/pam )
 	seccomp? ( sys-libs/libseccomp )
@@ -28,8 +28,10 @@ RDEPEND="acct-group/lxc
 		sys-apps/dbus
 		sys-apps/systemd:=
 	)
-	tools? ( sys-libs/libcap[static-libs] )"
+	tools? ( sys-libs/libcap )"
 DEPEND="${RDEPEND}
+	caps? ( sys-libs/libcap[static-libs] )
+	tools? ( sys-libs/libcap[static-libs] )
 	sys-kernel/linux-headers"
 BDEPEND="virtual/pkgconfig
 	man? ( app-text/docbook2X )

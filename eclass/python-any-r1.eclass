@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-any-r1.eclass
@@ -272,6 +272,7 @@ python_gen_any_dep() {
 # This function will call python_check_deps() if defined.
 python_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
+	_python_sanity_checks
 
 	# support developer override
 	if [[ ${PYTHON_COMPAT_OVERRIDE} ]]; then

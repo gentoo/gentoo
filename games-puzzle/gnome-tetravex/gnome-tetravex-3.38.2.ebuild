@@ -1,13 +1,13 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{9..11} )
+EAPI=8
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit gnome.org gnome2-utils meson python-any-r1 vala xdg
 
 DESCRIPTION="Complete the puzzle by matching numbered tiles"
-HOMEPAGE="https://wiki.gnome.org/Apps/Tetravex"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-tetravex"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0"
@@ -33,8 +33,8 @@ PATCHES=(
 )
 
 src_prepare() {
-	xdg_src_prepare
-	vala_src_prepare
+	default
+	vala_setup
 }
 
 src_configure() {

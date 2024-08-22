@@ -99,7 +99,7 @@ multilib_src_configure() {
 		$(meson_native_use_bool utils v4l-utils)
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
 		-Dsystemdsystemunitdir="$(systemd_get_systemunitdir)"
-		-Dudevdir="$(get_udevdir)"
+		-Dudevdir="${EPREFIX}$(get_udevdir)"
 		$(meson_native_use_feature doc doxygen-doc)
 		$(meson_native_use_bool doc doxygen-html)
 		$(meson_native_use_bool doc doxygen-man)

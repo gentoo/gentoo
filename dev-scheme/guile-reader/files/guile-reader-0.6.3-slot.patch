@@ -1,0 +1,66 @@
+From d75f6155c5ff58ac2b3fee311f7056e01b1b6981 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@aarsen.me>
+Date: Sat, 3 Aug 2024 18:29:21 +0200
+Subject: [PATCH 2/2] use the guile extension directory for libguile-reader.so
+
+this directory is slotted, and so, allows parallel installation.
+---
+ configure.ac             | 2 ++
+ modules/Makefile.am      | 3 ++-
+ modules/system/reader.in | 2 +-
+ src/Makefile.am          | 2 +-
+ 4 files changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index c34e4dd..2ddd308 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -114,6 +114,8 @@ fi
+ AC_PATH_PROGS([GUILD], [guild guile-tools])
+ GUILE_SITE_DIR
+ 
++AC_SUBST([guileextdir], ["${GUILE_EXTENSION}"])
++
+ clean_LIBS="$LIBS"
+ clean_CFLAGS="$CFLAGS"
+ LIBS="$LIBS $GUILE_LIBS"
+diff --git a/modules/Makefile.am b/modules/Makefile.am
+index 25f2499..b0d4fd4 100644
+--- a/modules/Makefile.am
++++ b/modules/Makefile.am
+@@ -13,7 +13,8 @@ nobase_nodist_guilemodule_DATA =		\
+ 
+ .in.scm:
+ 	$(AM_V_GEN)$(MKDIR_P) `dirname "$@"` ;				\
+-	$(SED) -e 's|[@]libdir[@]|$(libdir)|g' < "$<" > "$@.tmp" ;	\
++	$(SED) -e 's|[@]guileextdir[@]|$(guileextdir)|g'		\
++		< "$<" > "$@.tmp" ;					\
+ 	mv "$@.tmp" "$@"
+ 
+ if HAVE_GUILE2
+diff --git a/modules/system/reader.in b/modules/system/reader.in
+index fbef2ac..cd23ba7 100644
+--- a/modules/system/reader.in
++++ b/modules/system/reader.in
+@@ -58,7 +58,7 @@
+ 
+ (define %libguile-reader
+   (string-append (or (getenv "GUILE_READER_LIBDIR")
+-                     "@libdir@")
++                     "@guileextdir@")
+                  "/libguile-reader"))
+ 
+ (load-extension %libguile-reader "scm_reader_init_bindings")
+diff --git a/src/Makefile.am b/src/Makefile.am
+index e029bac..71294c2 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,4 +1,4 @@
+-lib_LTLIBRARIES = libguile-reader.la
++guileext_LTLIBRARIES = libguile-reader.la
+ libguile_reader_la_SOURCES = reader.c token-readers.c reader-lib.c compat.c
+ libguile_reader_la_LDFLAGS = -module -version-info 1:0:0 $(GUILE_LDFLAGS)
+ 
+-- 
+2.45.2
+

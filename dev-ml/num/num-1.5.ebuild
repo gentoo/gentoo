@@ -22,6 +22,10 @@ DEPEND="dev-ml/findlib:=[ocamlopt?]"
 src_compile() {
 	emake CFLAGS="${CFLAGS}" \
 		NATDYNLINK="$(usex ocamlopt true false)" \
+		NATIVE_COMPILER="$(usex ocamlopt true false)" \
+		-C src num_top.ml
+	emake CFLAGS="${CFLAGS}" \
+		NATDYNLINK="$(usex ocamlopt true false)" \
 		NATIVE_COMPILER="$(usex ocamlopt true false)"
 }
 

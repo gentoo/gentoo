@@ -32,10 +32,6 @@ dev-lang/python jit
 # bug #887223, bug #891367, bug #903891, bug #917139
 dev-lang/ruby static-libs
 
-# Alfredo Tupone <tupone@gentoo.org> (2024-05-28)
-# Not working, bug #931046
->=sci-libs/caffe2-2.3.0 rocm
-
 # Sam James <sam@gentoo.org> (2024-05-09)
 # Experimental option upstream which seems undertested and underdocumented.
 # Fails to build with stricter C compilers too (bug #919685).
@@ -44,7 +40,7 @@ net-misc/openssh xmss
 # Matt Turner <mattst88@gentoo.org> (2024-05-08)
 # Brand new, introduces lots of new aspects to the build.
 # Masked for further testing.
-media-libs/mesa video_cards_nvk
+<media-libs/mesa-24.2 video_cards_nvk
 
 # Michał Górny <mgorny@gentoo.org> (2024-04-27)
 # dev-python/uv is nowhere near ready to be stabilized.
@@ -58,10 +54,6 @@ app-admin/testdisk ewf
 # Mike Gilbert <floppym@gentoo.org> (2024-04-18)
 # Wayland client is broken/deprecated by upstream. Bug 930197.
 >=net-misc/freerdp-3 wayland
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-04-06)
-# Depends on last-rited kde-apps/ktp-accounts-kcm
-dev-util/kdevelop reviewboard
 
 # Michał Górny <mgorny@gentoo.org> (2024-03-26)
 # sys-auth/pam_ssh is being last rited, bug #892031.
@@ -687,7 +679,7 @@ dev-python/statsmodels doc
 # Craig Andrews <candrews@gentoo.org> (2019-09-12)
 # OpenSSL (as of version 1.1.1) doesn't have APIs for QUIC support
 # see https://github.com/openssl/openssl/pull/8797
-net-libs/ngtcp2 ssl
+net-libs/ngtcp2 openssl
 net-misc/curl nghttp3
 
 # Thomas Deutschmann <whissi@gentoo.org> (2019-09-02)

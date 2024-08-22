@@ -13,9 +13,9 @@ PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="threads(+)"
 USE_RUBY="ruby31 ruby32"
 
-inherit vim-doc flag-o-matic bash-completion-r1 lua-single python-single-r1 ruby-single toolchain-funcs desktop xdg-utils
+inherit bash-completion-r1 flag-o-matic lua-single desktop python-single-r1 ruby-single toolchain-funcs vim-doc xdg-utils
 
-if [[ ${PV} == 9999* ]] ; then
+if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/vim/vim.git"
 else
@@ -29,7 +29,7 @@ HOMEPAGE="https://www.vim.org https://github.com/vim/vim"
 
 LICENSE="vim"
 SLOT="0"
-IUSE="X acl crypt cscope debug gpm lua minimal nls perl python racket ruby selinux sound tcl terminal vim-pager"
+IUSE="acl crypt cscope debug gpm lua minimal nls perl python racket ruby selinux sound tcl terminal vim-pager X"
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -37,18 +37,18 @@ REQUIRED_USE="
 "
 
 RDEPEND="
+	~app-editors/vim-core-${PV}
 	>=app-eselect/eselect-vi-1.1
 	>=sys-libs/ncurses-5.2-r2:0=
-	nls? ( virtual/libintl )
 	acl? ( kernel_linux? ( sys-apps/acl ) )
 	crypt? ( dev-libs/libsodium:= )
 	cscope? ( dev-util/cscope )
 	gpm? ( >=sys-libs/gpm-1.19.3 )
-	lua? ( ${LUA_DEPS}
+	lua? (
+		${LUA_DEPS}
 		$(lua_gen_impl_dep 'deprecated' lua5-1)
 	)
-	~app-editors/vim-core-${PV}
-	vim-pager? ( app-editors/vim-core[-minimal] )
+	nls? ( virtual/libintl )
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
 	racket? ( dev-scheme/racket )
@@ -56,6 +56,7 @@ RDEPEND="
 	selinux? ( sys-libs/libselinux )
 	sound? ( media-libs/libcanberra )
 	tcl? ( dev-lang/tcl:0= )
+	vim-pager? ( app-editors/vim-core[-minimal] )
 	X? ( x11-libs/libXt )
 "
 DEPEND="${RDEPEND}
@@ -76,7 +77,7 @@ if [[ ${PV} != 9999* ]]; then
 	)
 fi
 
-# platform-specific checks (bug #898452):
+# platform-specific checks (bug #898450 #898452):
 # - acl()     -- Solaris
 # - statacl() -- AIX
 QA_CONFIG_IMPL_DECL_SKIP=(
@@ -153,7 +154,8 @@ src_prepare() {
 	# (2) Rebuild auto/configure
 	# (3) Notice auto/configure is newer than auto/config.mk
 	# (4) Run ./configure (with wrong args) to remake auto/config.mk
-	sed -i 's# auto/config\.mk:#:#' src/Makefile || die "Makefile sed failed"
+	sed -i -e \
+		's# auto/config\.mk:#:#' src/Makefile || die "Makefile sed failed"
 	rm src/auto/configure || die "rm failed"
 
 	# bug 908961
@@ -177,8 +179,9 @@ src_configure() {
 
 	# This should fix a sandbox violation (see bug #24447). The hvc
 	# things are for ppc64, see bug #86433.
+	local file
 	for file in /dev/pty/s* /dev/console /dev/hvc/* /dev/hvc*; do
-		if [[ -e "${file}" ]]; then
+		if [[ -e ${file} ]]; then
 			addwrite ${file}
 		fi
 	done
@@ -316,6 +319,7 @@ src_test() {
 	# Hangs.
 	export TEST_SKIP_PAT='\(Test_expand_star_star\|Test_exrc\|Test_job_tty_in_out\|Test_spelldump_bang\|Test_fuzzy_completion_env\|Test_term_mouse_multiple_clicks_to_select_mode\|Test_spelldump\)'
 
+	# Don't do additional GUI tests.
 	emake -j1 -C src/testdir nongui
 }
 
@@ -355,23 +359,23 @@ src_install() {
 }
 
 pkg_postinst() {
-	# Update documentation tags (from vim-doc.eclass)
+	# update documentation tags (from vim-doc.eclass)
 	update_vim_helptags
-
-	# Call eselect vi update
-	eselect_vi_update
 
 	# update desktop file mime cache
 	xdg_desktop_database_update
+
+	# call eselect vi update
+	eselect_vi_update
 }
 
 pkg_postrm() {
-	# Update documentation tags (from vim-doc.eclass)
+	# update documentation tags (from vim-doc.eclass)
 	update_vim_helptags
-
-	# Call eselect vi update
-	eselect_vi_update
 
 	# update desktop file mime cache
 	xdg_desktop_database_update
+
+	# call eselect vi update
+	eselect_vi_update
 }

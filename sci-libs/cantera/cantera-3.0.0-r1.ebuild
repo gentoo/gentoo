@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 FORTRAN_NEEDED=fortran
 FORTRAN_STANDARD="77 90"
 
-inherit fortran-2 python-single-r1 scons-utils toolchain-funcs
+inherit flag-o-matic fortran-2 python-single-r1 scons-utils toolchain-funcs
 
 DESCRIPTION="Object-oriented tool suite for chemical kinetics, thermodynamics, and transport"
 HOMEPAGE="https://www.cantera.org"
@@ -78,6 +78,10 @@ pkg_setup() {
 ## Full list of configuration options of Cantera is presented here:
 ## http://cantera.org/docs/sphinx/html/compiling/config-options.html
 src_configure() {
+	# -Werror=odr, -Werror=lto-type-mismatch
+	# https://github.com/Cantera/cantera/issues/1783
+	filter-lto
+
 	scons_vars=(
 		AR="$(tc-getAR)"
 		CC="$(tc-getCC)"

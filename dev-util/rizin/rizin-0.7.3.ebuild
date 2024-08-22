@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 # This is the commit that the CI for the release commit used
 BINS_COMMIT="1203a9a2f51e32337c8434d9f4f7c4543552e271"
@@ -19,7 +19,7 @@ S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="Apache-2.0 BSD LGPL-3 MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="test"
 
 # Need to audit licenses of the binaries used for testing

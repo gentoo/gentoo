@@ -25,6 +25,7 @@ BDEPEND="
 	$(vala_depend)
 	dev-libs/appstream-glib
 	dev-util/itstool
+	gui-libs/libadwaita:1[vala]
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "

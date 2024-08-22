@@ -19,8 +19,9 @@
     <flag name="pipewire">Build with PipeWire support.</flag>
     <flag name="python">Build with scripting support for Python 3.</flag>
     <flag name="qsv">Build with Intel Quick Sync Video support.</flag>
+    <flag name="sndio">Build with sndio support.</flag>
     <flag name="speex">Build with Speex noise suppression filter support.</flag>
-    <flag name="ssl">Build with TLS/SSL support for RTMPS connections.</flag>
+    <flag name="test-input">Build and install input sources used for testing.</flag>
     <flag name="vlc">Build with VLC media source support.</flag>
     <flag name="websocket">Build with WebSocket API support.</flag>
   </use>

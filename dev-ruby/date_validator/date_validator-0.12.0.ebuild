@@ -24,7 +24,7 @@ HOMEPAGE="https://github.com/codegram/date_validator"
 LICENSE="MIT"
 SLOT="3"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="doc test"
 
 ruby_add_rdepend "
 	>=dev-ruby/activemodel-3.0:*
@@ -46,5 +46,6 @@ all_ruby_prepare() {
 	sed -i \
 		-e '/[Bb]undler/s/^/#/' Rakefile || die
 	# Fix tests
-	sed -i -e "1irequire 'active_support'; require 'active_support/core_ext/time/zones'" test/test_helper.rb || die
+	sed -e "1igem 'activemodel'; require 'active_support'; require 'active_support/core_ext/time/zones'" \
+		-i test/test_helper.rb || die
 }

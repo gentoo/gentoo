@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake toolchain-funcs
+inherit cmake flag-o-matic toolchain-funcs
 
 DESCRIPTION="Numerical linear algebra software package"
 HOMEPAGE="https://ginkgo-project.github.io/"
@@ -38,16 +38,15 @@ pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
-src_prepare() {
-	sed -i \
-		-e "s#\"lib\"#\"$(get_libdir)\"#g" \
-		-e "s#\"lib/#\"$(get_libdir)/#g" \
-		cmake/install_helpers.cmake || die "sed failed"
-
-	cmake_src_prepare
-}
-
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/862705
+	# https://github.com/ginkgo-project/ginkgo/issues/1657
+	#
+	# Do not trust it with LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	local mycmakeargs=(
 		-DGINKGO_DEVEL_TOOLS=OFF
 		-DGINKGO_BUILD_TESTS=OFF

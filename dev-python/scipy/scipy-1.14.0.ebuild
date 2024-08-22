@@ -67,7 +67,7 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-arch/unzip )
 	fortran? (
-		>=dev-python/pythran-0.14.0[${PYTHON_USEDEP}]
+		>=dev-python/pythran-0.16.0[${PYTHON_USEDEP}]
 	)
 	test? (
 		>=dev-python/hypothesis-6.30[${PYTHON_USEDEP}]
@@ -97,18 +97,6 @@ python_configure_all() {
 
 	# https://bugs.gentoo.org/932721
 	has_version '>=dev-python/numpy-2.0.0' && filter-lto
-
-	# hide real scipy, to prevent pythran crashing when scipy is being
-	# rebuilt for new numpy ABI
-	# https://github.com/serge-sans-paille/pythran/issues/2194
-	cat >> "${T}/scipy.py" <<-EOF || die
-		raise ImportError("hide real scipy")
-	EOF
-}
-
-python_compile() {
-	local -x PYTHONPATH="${T}${PYTHONPATH+:${PYTHONPATH}}"
-	distutils-r1_python_compile
 }
 
 python_test() {

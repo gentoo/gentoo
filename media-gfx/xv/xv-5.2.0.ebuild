@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake desktop
+inherit cmake desktop flag-o-matic
 
 JUMBOV=20070520
 DESCRIPTION="Interactive image manipulation program supporting a wide variety of formats"
@@ -33,6 +33,11 @@ PATCHES=(
 )
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/859823
+	# https://github.com/jasper-software/xv/issues/25
+	filter-lto
+
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
 		-DXV_ENABLE_JPEG=$(usex jpeg)

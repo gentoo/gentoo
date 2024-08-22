@@ -20,7 +20,6 @@ HOMEPAGE="http://fedoraproject.org/wiki/Features/numad"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE=""
 
 CONFIG_CHECK="~NUMA ~CPUSETS"
 

@@ -13,12 +13,12 @@
 #ROOTPART="/dev/hda3"
 
 # Kernel image pathname, relative from BOOTPART.
-# If it's one of 
+# If it's one of
 # {kernel-genkernel,bzImage,vmlinuz,kernel}-<currently running kernel version>,
 # or bzImage, vmlinuz (without suffix),
 # then it's automaticaly detected.
 # Setting it to "-" will disable kexec.
-#KNAME="vmlinuz-3.9.0"
+#KNAME="kernel"
 
 # Initrd
 # Same automatic detection restriction as for KNAME apply.
@@ -31,4 +31,4 @@
 #KPARAM="splash=silent,theme:emergence"
 
 # Do not try to mount /boot
-# DONT_MOUNT_BOOT="yes"
+#DONT_MOUNT_BOOT="yes"

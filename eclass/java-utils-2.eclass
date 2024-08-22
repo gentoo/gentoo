@@ -1926,7 +1926,7 @@ etestng() {
 
 	local runner=org.testng.TestNG
 	if [[ ${PN} != testng ]]; then
-		local cp=$(java-pkg_getjars --with-dependencies testng)
+		local cp=$(java-pkg_getjars --build-only --with-dependencies testng)
 	else
 		local cp=testng.jar
 	fi
@@ -2723,7 +2723,13 @@ java-pkg_build-vm-from-handle() {
 	fi
 
 	for vm in ${JAVA_PKG_WANT_BUILD_VM}; do
-		if java-config-2 --select-vm=${vm} 2>/dev/null; then
+		local java_config
+		for java_config in java-config{,-2}; do
+			type -p ${java_config} >/dev/null && break
+		done
+		[[ -z ${java_config} ]] && die "No java-config binary in PATH"
+
+		if ${java_config} --select-vm=${vm} 2>/dev/null; then
 			echo ${vm}
 			return 0
 		fi

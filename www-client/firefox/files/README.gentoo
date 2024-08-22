@@ -18,11 +18,3 @@ have switched off the use of this service by default.
 To re-enable this service set the following in "about:config":
   app.normandy.enabled=true
 
-
-## Firefox >100 compatibility
-Unfortunately Firefox-100.0 breaks compatibility with some sites using 
-useragent checks. To temporarily fix this, enter about:config and modify 
-network.http.useragent.forceVersion preference to "99" Or install an addon to 
-change your useragent. 
-See: https://support.mozilla.org/en-US/kb/difficulties-opening-or-using-website-firefox-100
-

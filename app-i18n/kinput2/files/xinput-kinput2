@@ -1,5 +1,0 @@
-XIM=kinput2
-XIM_PROGRAM="@EPREFIX@/usr/bin/kinput2"
-XIM_ARGS="-@SERVER@ +kinput -xim"
-GTK_IM_MODULE=xim
-QT_IM_MODULE=xim

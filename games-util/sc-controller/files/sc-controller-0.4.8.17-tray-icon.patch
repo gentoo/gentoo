@@ -1,0 +1,60 @@
+From 828a4fa17a6cc1df1a149411c3f3ede52ec5a199 Mon Sep 17 00:00:00 2001
+From: angrylinuxuser <angrylinuxuser@gmail.com>
+Date: Sun, 23 Jun 2024 18:24:43 +0200
+Subject: [PATCH] Fix tray icon not showing up
+
+---
+ scc/gui/statusicon.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/scc/gui/statusicon.py b/scc/gui/statusicon.py
+index f5257270..713c56ba 100644
+--- a/scc/gui/statusicon.py
++++ b/scc/gui/statusicon.py
+@@ -350,8 +350,8 @@ def _load_fallback(self):
+ 			for StatusIconBackend in status_icon_backends:
+ 				try:
+ 					self._status_fb = StatusIconBackend(*self._arguments[0], **self._arguments[1])
+-					self._status_fb.connect(b"clicked",        self._on_click)
+-					self._status_fb.connect(b"notify::active", self._on_notify_active_fb)
++					self._status_fb.connect("clicked",        self._on_click)
++					self._status_fb.connect("notify::active", self._on_notify_active_fb)
+ 					self._on_notify_active_fb()
+ 					
+ 					log.warning("StatusIcon: Using backend %s (fallback)" % StatusIconBackend.__name__)
+
+From a9ebf39749e885114bfec8a3b0ec6b9e62d213c7 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Thu, 15 Aug 2024 21:13:26 +0100
+Subject: [PATCH] Support libayatana-appindicator as libappindicator is now
+ dead
+
+It seems to be a drop-in replacement.
+---
+ scc/gui/statusicon.py | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/scc/gui/statusicon.py b/scc/gui/statusicon.py
+index f5257270..317b1aa3 100644
+--- a/scc/gui/statusicon.py
++++ b/scc/gui/statusicon.py
+@@ -263,8 +263,14 @@ class StatusIconAppIndicator(StatusIconDBus):
+ 		StatusIcon.__init__(self, *args, **kwargs)
+ 		
+ 		try:
+-			from gi.repository import AppIndicator3 as appindicator
+-			
++			import gi
++			try:
++				gi.require_version("AyatanaAppIndicator3", "0.1")
++				from gi.repository import AyatanaAppIndicator3 as appindicator
++			except ImportError:
++				gi.require_version("AppIndicator3", "0.1")
++				from gi.repository import AppIndicator3 as appindicator
++
+ 			self._status_active  = appindicator.IndicatorStatus.ACTIVE
+ 			self._status_passive = appindicator.IndicatorStatus.PASSIVE
+ 		except ImportError:
+-- 
+2.45.2
+

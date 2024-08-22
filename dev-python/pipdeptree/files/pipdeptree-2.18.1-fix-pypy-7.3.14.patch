@@ -1,6 +1,15 @@
---- a/tests/test_non_host.py	2024-06-12 21:33:13.696206671 +0200
-+++ b/tests/test_non_host.py	2024-06-12 21:46:40.146193582 +0200
-@@ -32,10 +32,10 @@
+diff --git a/tests/test_non_host.py b/tests/test_non_host.py
+index 2849375..ed7b7b3 100644
+--- a/tests/test_non_host.py
++++ b/tests/test_non_host.py
+@@ -1,5 +1,6 @@
+ from __future__ import annotations
+
++import json
+ import sys
+ from platform import python_implementation
+ from typing import TYPE_CHECKING
+@@ -31,10 +32,10 @@ def test_custom_interpreter(
      result = virtualenv.cli_run([str(tmp_path / "venv"), "--activators", ""])
      py = str(result.creator.exe.relative_to(tmp_path))
      cmd = ["", f"--python={result.creator.exe}"] if args_joined else ["", "--python", py]
@@ -13,4 +22,3 @@
      implementation = python_implementation()
      if implementation == "CPython":
          expected = {"pip", "setuptools", "wheel"}
-
