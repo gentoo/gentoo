@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE=""
 
-DEPEND="dev-util/patchutils"
+BDEPEND="dev-util/patchutils"
 RDEPEND="x11-apps/xauth
 	x11-base/xorg-server[xvfb]"
 
