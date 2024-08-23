@@ -1,0 +1,15 @@
+Bug: https://bugs.gentoo.org/927899
+--- a/src/print_trans.c
++++ b/src/print_trans.c
+@@ -61,8 +61,9 @@ get_trans_text ()
+   gchar *retval = NULL;
+   trans_label *tlabel;
+   int i;
+-  const gchar *newch1=NULL, *newch2 = NULL;
+-  const gchar *tmpstr=NULL;
++  gchar *newch1=NULL;
++  const gchar *newch2 = NULL;
++  gchar *tmpstr=NULL;
+   GString *s = g_string_new (NULL);
+ 
+ 
