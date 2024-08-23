@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Brave
+Comment=Brave Web Browser
+Exec=/usr/bin/brave-bin %u
+Icon=brave-bin
+Terminal=false
+Type=Application
+MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
+Categories=Network;WebBrowser;
