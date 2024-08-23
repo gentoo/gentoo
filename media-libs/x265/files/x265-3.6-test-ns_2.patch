@@ -1,0 +1,30 @@
+--- source.orig/encoder/encoder.cpp
++++ source/encoder/encoder.cpp
+@@ -1478,7 +1478,7 @@ int Encoder::encode(const x265_picture* pic_in, x265_picture* pic_out)
+     if (m_exportedPic)
+     {
+         if (!m_param->bUseAnalysisFile && m_param->analysisSave)
+-            x265_free_analysis_data(m_param, &m_exportedPic->m_analysisData);
++            PARAM_NS::x265_free_analysis_data(m_param, &m_exportedPic->m_analysisData);
+ 
+         ATOMIC_DEC(&m_exportedPic->m_countRefEncoders);
+ 
+--- a/common/threadpool.cpp
++++ b/common/threadpool.cpp
+@@ -25,6 +25,7 @@
+ #include "common.h"
+ #include "threadpool.h"
+ #include "threading.h"
++#include "param.h"
+ 
+ #include <new>
+ 
+@@ -314,7 +315,7 @@ ThreadPool* ThreadPool::allocThreadPools(x265_param* p, int& numPools, bool isTh
+                    sprintf(nextCount, "%d", cpusPerNode[i]);
+              strcat(poolString, nextCount);
+          }
+-         x265_param_parse(p, "pools", poolString);
++         PARAM_NS::x265_param_parse(p, "pools", poolString);
+      }
+ #endif
+     if (p->numaPools && *p->numaPools)
