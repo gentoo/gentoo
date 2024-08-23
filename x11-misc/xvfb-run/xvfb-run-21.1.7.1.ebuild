@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,8 @@ S="${WORKDIR}"/
 
 src_prepare() {
 	# Not in src_unpack to silence warning "'patch' call should be moved to src_prepare"
-	filterdiff --include='*xvfb-run*' ${MY_PN}_${MY_PV}.diff | patch || die
+	filterdiff --include='*xvfb-run*' ${MY_PN}_${MY_PV}.diff | patch
+	assert "filterdiff+patch failed"
 	eapply_user
 }
 

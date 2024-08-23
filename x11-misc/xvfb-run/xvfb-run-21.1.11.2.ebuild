@@ -22,6 +22,7 @@ S="${WORKDIR}"/
 src_prepare() {
 	# Not in src_unpack to silence warning "'patch' call should be moved to src_prepare"
 	filterdiff --include='*xvfb-run*' ${MY_PN}_${MY_PV}.diff | patch || die
+	assert "filterdiff+patch failed"
 	eapply_user
 }
 
