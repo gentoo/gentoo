@@ -1,0 +1,40 @@
+Bug: https://bugs.gentoo.org/894372
+--- a/aee.c
++++ b/aee.c
+@@ -1543,7 +1543,7 @@ struct bufr *buf_alloc()	/* allocate space for buffers		*/
+ 	temp_buf->main_buffer = FALSE;
+ 	temp_buf->edit_buffer = FALSE;
+ 	temp_buf->dos_file = FALSE;
+-	temp_buf->journ_fd = NULL;
++	temp_buf->journ_fd = 0;
+ 	return (temp_buf);
+ }
+ 
+--- a/journal.c
++++ b/journal.c
+@@ -72,6 +72,7 @@ char *jrn_vers_str = "@(#)                           journal.c $Revision: 1.41 $
+ #include "aee.h"
+ 
+ #include <time.h>
++#include <wchar.h>
+ 
+ /*
+  |	writes the contents of the line, updates the value stored in 
+@@ -310,7 +311,7 @@ char *file_name;
+ 		 |	Unable to open journal file.
+ 		 */
+ 
+-		buffer->journ_fd = NULL;
++		buffer->journ_fd = 0;
+ 		return(1);
+ 	}
+ 
+@@ -860,7 +861,7 @@ struct bufr *buffer;
+ 	{
+ 		wprintw(com_win, cant_opn_rcvr_fil_msg);
+ 		buffer->journalling = FALSE;
+-		buffer->journ_fd = NULL;
++		buffer->journ_fd = 0;
+ 		return;
+ 	}
+ 
