@@ -14,8 +14,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 IUSE="hardened"
 
-RDEPEND="!!dev-lang/mono" #File collision (bug 614364)
-
 PATCHES=(
 	"${FILESDIR}/${PN}-1.4.1-build-fix.patch"
 )
@@ -30,4 +28,10 @@ src_compile() {
 src_install() {
 	dobin bin/*
 	dodoc CHANGELOG README.md
+	mv -iv "${ED}"/usr/bin/mkbundle{,.cfssl} || die
+}
+
+pkg_postinst() {
+	ewarn "Please note that mkbundle is renamed to mkbundle.cfssl, to avoid"
+	ewarn "collision with mkbundle in dev-lang/mono"
 }
