@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit systemd toolchain-funcs
 
@@ -46,10 +46,11 @@ src_compile() {
 
 	if use sodium
 	then
+		# -I${includedir}/sodium needed as tinyssh uses `#include "crypto_auth_hmacsha256.h"` rather than `#include <sodium.h>`
 		emake \
 			CC="$(tc-getCC)" \
 			LIBS="$("${PKG_CONFIG}" --libs libsodium)" \
-			CFLAGS="${CFLAGS} $("${PKG_CONFIG}" --cflags libsodium)" \
+			CFLAGS="${CFLAGS} $("${PKG_CONFIG}" --cflags libsodium) -I$("${PKG_CONFIG}" --variable=includedir libsodium)/sodium/" \
 			LDFLAGS="${LDFLAGS}"
 	else
 		emake CC="$(tc-getCC)"
