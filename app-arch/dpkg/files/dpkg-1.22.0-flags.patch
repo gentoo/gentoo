@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -222,8 +222,6 @@ AC_DEFINE([LIBDPKG_VOLATILE_API], [1], [Acknowledge the volatility of the API.])
+ DPKG_COMPILER_WARNINGS
+ DPKG_COMPILER_SANITIZER
+ DPKG_COMPILER_ANALYZER
+-DPKG_COMPILER_OPTIMIZATIONS
+-DPKG_LINKER_OPTIMIZATIONS
+ DPKG_ARCHITECTURE
+ AC_DEFINE([PACKAGE_RELEASE], [PACKAGE_VERSION " (" ARCHITECTURE ")"],
+   [Define the project release information, version and architecture])
