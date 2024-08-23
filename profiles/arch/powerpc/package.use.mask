@@ -5,10 +5,6 @@
 # kde-apps/kdesdk-thumbnailers is not yet keyworded
 kde-apps/thumbnailers gettext
 
-# Ulrich Müller <ulm@gentoo.org> (2024-08-03)
-# Needs dev-libs/openspecfun which is not yet keyworded
-sci-visualization/gnuplot amos
-
 # Thomas Bettler <thomas.bettler@gmail.com> (2024-06-10)
 # requires dev-libs/apache-arrow which is net yet keyworded
 sci-libs/gdal parquet
