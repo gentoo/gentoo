@@ -1,13 +1,14 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="A UNIX init scheme with service supervision"
 HOMEPAGE="http://smarden.org/runit/"
 SRC_URI="http://smarden.org/runit/${P}.tar.gz"
+S=${WORKDIR}/admin/${P}/src
 
 LICENSE="BSD"
 SLOT="0"
@@ -16,13 +17,11 @@ IUSE="static"
 
 RDEPEND="sys-apps/openrc"
 
-S=${WORKDIR}/admin/${P}/src
-
 src_prepare() {
 	default
 
-	# we either build everything or nothing static
-	sed -i -e 's:-static: :' Makefile
+	# We either build everything or nothing static
+	sed -i -e 's:-static: :' Makefile || die
 
 	# see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=726008
 	[[ ${COMPILER} == "diet" ]] &&
@@ -33,8 +32,8 @@ src_prepare() {
 src_configure() {
 	use static && append-ldflags -static
 
-	echo "$(tc-getCC) ${CFLAGS}"  > conf-cc
-	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld
+	echo "$(tc-getCC) ${CFLAGS}"  > conf-cc || die
+	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld || die
 }
 
 src_install() {
@@ -49,7 +48,6 @@ src_install() {
 	einstalldocs
 	doman ../man/*.[18]
 
-	dodir /etc/runit
 	exeinto /etc/runit
 	doexe "${FILESDIR}"/ctrlaltdel
 	newexe "${FILESDIR}"/1-${PV} 1
@@ -74,11 +72,11 @@ src_install() {
 }
 
 default_config() {
-	local sv="${EROOT}"etc/sv
-	local service="${EROOT}"etc/service
+	local sv="${EROOT}"/etc/sv
+	local service="${EROOT}"/etc/service
 	mkdir -p "${service}" || die
 	for x in tty1 tty2 tty3 tty4 tty5 tty6; do
-	ln -sf "${sv}"/getty-$x "${service}"/getty-$x || die
+		ln -sf "${sv}"/getty-$x "${service}"/getty-$x || die
 	done
 	einfo "The links to services runit will supervise are installed"
 	einfo "in $service."
@@ -89,12 +87,12 @@ default_config() {
 
 migrate_from_211() {
 	# Create /etc/service and /var/service if requested
-	if [ -e "${T}"/make_var_service ]; then
-		ln -sf "${EROOT}"etc/runit/runsvdir/current "${EROOT}"etc/service || die
-		ln -sf "${EROOT}"etc/runit/runsvdir/current "${EROOT}"var/service || die
+	if [[ -e "${T}"/make_var_service ]]; then
+		ln -sf "${EROOT}"/etc/runit/runsvdir/current "${EROOT}"/etc/service || die
+		ln -sf "${EROOT}"/etc/runit/runsvdir/current "${EROOT}"/var/service || die
 	fi
-	if [ -d "${T}"/runsvdir ]; then
-		cp -a "${T}"/runsvdir "${EROOT}"etc/runit || die
+	if [[ -d "${T}"/runsvdir ]]; then
+		cp -a "${T}"/runsvdir "${EROOT}"/etc/runit || die
 	fi
 	return 0
 }
@@ -106,9 +104,9 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	if [[ -z $REPLACING_VERSIONS ]]; then
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		default_config
-	elif [[ -n $pre_212 ]]; then
+	elif [[ -n ${pre_212} ]]; then
 		migrate_from_211
 	fi
 
@@ -118,20 +116,20 @@ pkg_postinst() {
 	ewarn "source /etc/profile"
 	ewarn
 
-	if [ -L "${EROOT}"var/service ]; then
+	if [[ -L "${EROOT}"/var/service ]]; then
 		ewarn "Once this version of runit is active, please remove the"
-		ewarn "compatibility symbolic link at ${EROOT}var/service"
-		ewarn "The correct path now is ${EROOT}etc/service"
+		ewarn "compatibility symbolic link at ${EROOT}/var/service"
+		ewarn "The correct path now is ${EROOT}/etc/service"
 		ewarn
 	fi
 
-	if [ -L "${EROOT}"etc/runit/runsvdir/all ]; then
-		ewarn "${EROOT}etc/runit/runsvdir/all has moved to"
-		iewarn "${EROOT}etc/sv."
-		ewarn "Any symbolic links under ${EROOT}etc/runit/runsvdir"
+	if [[ -L "${EROOT}"/etc/runit/runsvdir/all ]]; then
+		ewarn "${EROOT}/etc/runit/runsvdir/all has moved to"
+		ewarn "${EROOT}/etc/sv."
+		ewarn "Any symbolic links under ${EROOT}/etc/runit/runsvdir"
 		ewarn "which point to services through ../all should be updated to"
-		ewarn "point to them through ${EROOT}etc/sv."
-		ewarn "Once that is done, ${EROOT}etc/runit/runsvdir/all should be"
+		ewarn "point to them through ${EROOT}/etc/sv."
+		ewarn "Once that is done, ${EROOT}/etc/runit/runsvdir/all should be"
 		ewarn "removed."
 		ewarn
 	fi
