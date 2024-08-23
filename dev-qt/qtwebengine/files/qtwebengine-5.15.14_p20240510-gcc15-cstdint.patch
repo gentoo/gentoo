@@ -28,3 +28,133 @@
  #include <memory>
  #include <string>
  #include <vector>
+--- a/src/3rdparty/chromium/cc/input/main_thread_scrolling_reason.h
++++ b/src/3rdparty/chromium/cc/input/main_thread_scrolling_reason.h
+@@ -5,6 +5,7 @@
+ #ifndef CC_INPUT_MAIN_THREAD_SCROLLING_REASON_H_
+ #define CC_INPUT_MAIN_THREAD_SCROLLING_REASON_H_
+ 
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ #include "cc/cc_export.h"
+--- a/src/3rdparty/chromium/gpu/command_buffer/common/skia_utils.h
++++ b/src/3rdparty/chromium/gpu/command_buffer/common/skia_utils.h
+@@ -5,6 +5,7 @@
+ #ifndef GPU_COMMAND_BUFFER_COMMON_SKIA_UTILS_H_
+ #define GPU_COMMAND_BUFFER_COMMON_SKIA_UTILS_H_
+ 
++#include <cstdint>
+ #include <memory>
+ 
+ #include "base/optional.h"
+--- a/src/3rdparty/chromium/gpu/command_buffer/service/gpu_fence_manager.h
++++ b/src/3rdparty/chromium/gpu/command_buffer/service/gpu_fence_manager.h
+@@ -5,6 +5,7 @@
+ #ifndef GPU_COMMAND_BUFFER_SERVICE_GPU_FENCE_MANAGER_H_
+ #define GPU_COMMAND_BUFFER_SERVICE_GPU_FENCE_MANAGER_H_
+ 
++#include <cstdint>
+ #include <memory>
+ #include <vector>
+ 
+--- a/src/3rdparty/chromium/net/tools/huffman_trie/trie_entry.h
++++ b/src/3rdparty/chromium/net/tools/huffman_trie/trie_entry.h
+@@ -5,6 +5,7 @@
+ #ifndef NET_TOOLS_HUFFMAN_TRIE_TRIE_ENTRY_H_
+ #define NET_TOOLS_HUFFMAN_TRIE_TRIE_ENTRY_H_
+ 
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ #include <vector>
+--- a/src/3rdparty/chromium/third_party/pdfium/core/fpdfapi/page/cpdf_function.h
++++ b/src/3rdparty/chromium/third_party/pdfium/core/fpdfapi/page/cpdf_function.h
+@@ -7,6 +7,7 @@
+ #ifndef CORE_FPDFAPI_PAGE_CPDF_FUNCTION_H_
+ #define CORE_FPDFAPI_PAGE_CPDF_FUNCTION_H_
+ 
++#include <cstdint>
+ #include <memory>
+ #include <set>
+ #include <vector>
+--- a/src/3rdparty/chromium/third_party/pdfium/core/fxcodec/jbig2/JBig2_DocumentContext.h
++++ b/src/3rdparty/chromium/third_party/pdfium/core/fxcodec/jbig2/JBig2_DocumentContext.h
+@@ -7,6 +7,7 @@
+ #ifndef CORE_FXCODEC_JBIG2_JBIG2_DOCUMENTCONTEXT_H_
+ #define CORE_FXCODEC_JBIG2_JBIG2_DOCUMENTCONTEXT_H_
+ 
++#include <cstdint>
+ #include <list>
+ #include <memory>
+ #include <utility>
+--- a/src/3rdparty/chromium/third_party/pdfium/third_party/base/span.h
++++ b/src/3rdparty/chromium/third_party/pdfium/third_party/base/span.h
+@@ -9,6 +9,7 @@
+ 
+ #include <algorithm>
+ #include <array>
++#include <cstdint>
+ #include <iterator>
+ #include <type_traits>
+ #include <utility>
+--- a/src/3rdparty/chromium/third_party/perfetto/include/perfetto/tracing/tracing_backend.h
++++ b/src/3rdparty/chromium/third_party/perfetto/include/perfetto/tracing/tracing_backend.h
+@@ -17,6 +17,7 @@
+ #ifndef INCLUDE_PERFETTO_TRACING_TRACING_BACKEND_H_
+ #define INCLUDE_PERFETTO_TRACING_TRACING_BACKEND_H_
+ 
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ 
+--- a/src/3rdparty/chromium/third_party/webrtc/api/fec_controller.h
++++ b/src/3rdparty/chromium/third_party/webrtc/api/fec_controller.h
+@@ -11,6 +11,7 @@
+ #ifndef API_FEC_CONTROLLER_H_
+ #define API_FEC_CONTROLLER_H_
+ 
++#include <cstdint>
+ #include <memory>
+ #include <vector>
+ 
+--- a/src/3rdparty/chromium/third_party/webrtc/api/network_state_predictor.h
++++ b/src/3rdparty/chromium/third_party/webrtc/api/network_state_predictor.h
+@@ -11,6 +11,7 @@
+ #ifndef API_NETWORK_STATE_PREDICTOR_H_
+ #define API_NETWORK_STATE_PREDICTOR_H_
+ 
++#include <cstdint>
+ #include <memory>
+ #include <vector>
+ 
+--- a/src/3rdparty/chromium/third_party/webrtc/modules/video_coding/timestamp_map.h
++++ b/src/3rdparty/chromium/third_party/webrtc/modules/video_coding/timestamp_map.h
+@@ -11,6 +11,7 @@
+ #ifndef MODULES_VIDEO_CODING_TIMESTAMP_MAP_H_
+ #define MODULES_VIDEO_CODING_TIMESTAMP_MAP_H_
+ 
++#include <cstdint>
+ #include <memory>
+ 
+ namespace webrtc {
+--- a/src/3rdparty/chromium/third_party/webrtc/video/stats_counter.h
++++ b/src/3rdparty/chromium/third_party/webrtc/video/stats_counter.h
+@@ -11,6 +11,7 @@
+ #ifndef VIDEO_STATS_COUNTER_H_
+ #define VIDEO_STATS_COUNTER_H_
+ 
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ 
+--- a/src/3rdparty/chromium/third_party/woff2/include/woff2/output.h
++++ b/src/3rdparty/chromium/third_party/woff2/include/woff2/output.h
+@@ -10,6 +10,7 @@
+ #define WOFF2_WOFF2_OUT_H_
+ 
+ #include <algorithm>
++#include <cstdint>
+ #include <cstring>
+ #include <memory>
+ #include <string>
