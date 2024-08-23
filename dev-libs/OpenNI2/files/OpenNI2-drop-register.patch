@@ -1,0 +1,33 @@
+Bug: https://bugs.gentoo.org/895034
+--- a/Source/Drivers/PS1080/Sensor/Bayer.cpp
++++ b/Source/Drivers/PS1080/Sensor/Bayer.cpp
+@@ -47,7 +47,7 @@ void fillRGB(unsigned width, unsigned height, const XnUInt8* bayer_pixel, unsign
+ 	if (nDownSampleStep == 1)
+ 	{
+ 		//register const XnUInt8 *bayer_pixel = image_md_->Data ();
+-		register unsigned yIdx, xIdx;
++		unsigned yIdx, xIdx;
+ 		
+ 		int bayer_line_step = width;
+ 		int bayer_line_step2 = width << 1;
+@@ -1131,15 +1131,15 @@ void fillRGB(unsigned width, unsigned height, const XnUInt8* bayer_pixel, unsign
+ 	else if (nDownSampleStep > 1)
+ 	{		
+ 		// get each or each 2nd pixel group to find rgb values!
+-		register unsigned bayerXStep = nDownSampleStep;
+-		register unsigned bayerYSkip = (nDownSampleStep - 1) * width;
++		unsigned bayerXStep = nDownSampleStep;
++		unsigned bayerYSkip = (nDownSampleStep - 1) * width;
+ 		
+ 		// Downsampling and debayering at once
+-		register const XnUInt8* bayer_buffer = bayer_pixel;
++		const XnUInt8* bayer_buffer = bayer_pixel;
+ 		
+-		for (register unsigned yIdx = 0; yIdx < height; ++yIdx, bayer_buffer += bayerYSkip, rgb_buffer += rgb_line_skip) // skip a line
++		for (unsigned yIdx = 0; yIdx < height; ++yIdx, bayer_buffer += bayerYSkip, rgb_buffer += rgb_line_skip) // skip a line
+ 		{
+-			for (register unsigned xIdx = 0; xIdx < width; ++xIdx, rgb_buffer += 3, bayer_buffer += bayerXStep)
++			for (unsigned xIdx = 0; xIdx < width; ++xIdx, rgb_buffer += 3, bayer_buffer += bayerXStep)
+ 			{
+ 				rgb_buffer[ 2 ] = bayer_buffer[ width ];
+ 				rgb_buffer[ 1 ] = AVG (bayer_buffer[0], bayer_buffer[ width + 1]);
