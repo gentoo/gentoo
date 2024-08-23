@@ -68,9 +68,9 @@ src_unpack() {
 		eshopts_push -o noglob
 		ebegin "Filtering partial source patch"
 		xzcat "${DISTDIR}"/${LINUX_PATCH} | filterdiff -p1 ${paths[@]/#/-i} > ${P}.patch
-		test -s ${P}.patch
 		assert -n "Unpacking to ${P} from ${DISTDIR}/${LINUX_PATCH} failed"
 		eend $? || die "filterdiff failed"
+		test -s ${P}.patch || die "patch is empty?!"
 		eshopts_pop
 	fi
 
