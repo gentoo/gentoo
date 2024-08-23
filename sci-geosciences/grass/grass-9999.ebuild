@@ -39,7 +39,8 @@ fi
 IUSE="blas bzip2 cxx fftw geos lapack las mysql netcdf nls odbc opencl opengl openmp pdal png postgres readline sqlite svm threads tiff truetype X zstd"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
-	opengl? ( X )"
+	opengl? ( X )
+	pdal? ( cxx )"
 
 RDEPEND="
 	${PYTHON_DEPS}
