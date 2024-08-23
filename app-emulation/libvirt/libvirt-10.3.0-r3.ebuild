@@ -21,7 +21,7 @@ if [[ ${PV} = *9999* ]]; then
 else
 	SRC_URI="https://libvirt.org/sources/${P}.tar.xz
 		verify-sig? ( https://libvirt.org/sources/${P}.tar.xz.asc )"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 fi
 
 DESCRIPTION="C toolkit to manipulate virtual machines"
@@ -90,7 +90,10 @@ RDEPEND="
 	libssh2? ( >=net-libs/libssh2-1.3 )
 	lvm? ( >=sys-fs/lvm2-2.02.48-r2[lvm] )
 	lxc? ( !sys-apps/systemd[cgroup-hybrid(-)] )
-	nbd? ( sys-block/nbdkit )
+	nbd? (
+		sys-block/nbdkit
+		sys-libs/libnbd
+	)
 	nfs? ( net-fs/nfs-utils )
 	numa? (
 		>sys-process/numactl-2.0.2
@@ -152,6 +155,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9.4.0-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-9.9.0-do-not-use-sysconfig.patch
 	"${FILESDIR}"/${PN}-9.6.0-fix-paths-for-apparmor.patch
+	"${FILESDIR}"/${PN}-10.3.0-vsh-Don-t-init-history-in-cmdComplete.patch
 	"${FILESDIR}"/${PN}-10.5.0-virt-aa-helper-Allow-RO-access-to-usr-share-edk2-ovm.patch
 )
 

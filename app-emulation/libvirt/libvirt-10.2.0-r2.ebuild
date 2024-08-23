@@ -90,7 +90,10 @@ RDEPEND="
 	libssh2? ( >=net-libs/libssh2-1.3 )
 	lvm? ( >=sys-fs/lvm2-2.02.48-r2[lvm] )
 	lxc? ( !sys-apps/systemd[cgroup-hybrid(-)] )
-	nbd? ( sys-block/nbdkit )
+	nbd? (
+		sys-block/nbdkit
+		sys-libs/libnbd
+	)
 	nfs? ( net-fs/nfs-utils )
 	numa? (
 		>sys-process/numactl-2.0.2
@@ -152,8 +155,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9.4.0-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-9.9.0-do-not-use-sysconfig.patch
 	"${FILESDIR}"/${PN}-9.6.0-fix-paths-for-apparmor.patch
-	"${FILESDIR}"/${PN}-10.1.0-Fix-off-by-one-error-in-udevListInterfacesByStatus.patch
-	"${FILESDIR}"/${PN}-10.2.0-remote-check-for-negative-array-lengths-before-alloc.patch
 	"${FILESDIR}"/${PN}-10.5.0-virt-aa-helper-Allow-RO-access-to-usr-share-edk2-ovm.patch
 )
 

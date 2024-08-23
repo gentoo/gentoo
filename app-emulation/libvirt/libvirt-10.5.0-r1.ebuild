@@ -30,9 +30,9 @@ LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 IUSE="
 	apparmor audit bash-completion +caps dtrace firewalld fuse glusterfs
-	iscsi iscsi-direct +libvirtd lvm libssh libssh2 lxc nfs nls numa openvz
-	parted pcap policykit +qemu rbd sasl selinux test +udev virtiofsd
-	virtualbox +virt-network wireshark-plugins xen zfs
+	iscsi iscsi-direct +libvirtd lvm libssh libssh2 lxc nbd nfs nls numa
+	openvz parted pcap policykit +qemu rbd sasl selinux test +udev
+	virtiofsd virtualbox +virt-network wireshark-plugins xen zfs
 "
 RESTRICT="!test? ( test )"
 
@@ -53,7 +53,6 @@ BDEPEND="
 	dev-perl/XML-XPath
 	dev-python/docutils
 	virtual/pkgconfig
-	net-libs/rpcsvc-proto
 	bash-completion? ( >=app-shells/bash-completion-2.0 )
 	verify-sig? ( sec-keys/openpgp-keys-libvirt )"
 
@@ -91,6 +90,10 @@ RDEPEND="
 	libssh2? ( >=net-libs/libssh2-1.3 )
 	lvm? ( >=sys-fs/lvm2-2.02.48-r2[lvm] )
 	lxc? ( !sys-apps/systemd[cgroup-hybrid(-)] )
+	nbd? (
+		sys-block/nbdkit
+		sys-libs/libnbd
+	)
 	nfs? ( net-fs/nfs-utils )
 	numa? (
 		>sys-process/numactl-2.0.2
@@ -116,7 +119,10 @@ RDEPEND="
 	virt-network? (
 		net-dns/dnsmasq[dhcp,ipv6(+),script]
 		net-firewall/ebtables
-		>=net-firewall/iptables-1.4.10[ipv6(+)]
+		|| (
+			>=net-firewall/iptables-1.4.10[ipv6(+)]
+			net-firewall/nftables
+		)
 		net-misc/radvd
 		sys-apps/iproute2[-minimal]
 	)
@@ -136,6 +142,11 @@ DEPEND="
 	${BDEPEND}
 	${RDEPEND}
 	${PYTHON_DEPS}
+	test? (
+		$(python_gen_any_dep '
+			dev-python/pytest[${PYTHON_USEDEP}]
+		')
+	)
 "
 # The 'circular' dependency on dev-python/libvirt-python is because of
 # virt-qemu-qmp-proxy.
@@ -147,11 +158,13 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9.4.0-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-9.9.0-do-not-use-sysconfig.patch
 	"${FILESDIR}"/${PN}-9.6.0-fix-paths-for-apparmor.patch
-	"${FILESDIR}"/${PN}-9.10.0-virxml-include-libxml-xmlsave.h-for-xmlIndentTreeOut.patch
-	"${FILESDIR}"/${PN}-10.1.0-Fix-off-by-one-error-in-udevListInterfacesByStatus.patch
-	"${FILESDIR}"/${PN}-10.2.0-remote-check-for-negative-array-lengths-before-alloc.patch
-	"${FILESDIR}"/${PN}-10.5.0-virt-aa-helper-Allow-RO-access-to-usr-share-edk2-ovm.patch
 )
+
+python_check_deps() {
+	if use test; then
+		python_has_version -d "dev-python/pytest[${PYTHON_USEDEP}]"
+	fi
+}
 
 pkg_setup() {
 	# Check kernel configuration:
@@ -275,6 +288,7 @@ src_configure() {
 		$(meson_feature lvm storage_lvm)
 		$(meson_feature lvm storage_mpath)
 		$(meson_feature lxc driver_lxc)
+		$(meson_feature nbd nbdkit)
 		$(meson_feature nls)
 		$(meson_feature numa numactl)
 		$(meson_feature numa numad)
