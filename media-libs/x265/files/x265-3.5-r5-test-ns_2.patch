@@ -1,0 +1,11 @@
+--- source.orig/encoder/encoder.cpp
++++ source/encoder/encoder.cpp
+@@ -1592,7 +1592,7 @@ int Encoder::encode(const x265_picture*
+     if (m_exportedPic)
+     {
+         if (!m_param->bUseAnalysisFile && m_param->analysisSave)
+-            x265_free_analysis_data(m_param, &m_exportedPic->m_analysisData);
++            PARAM_NS::x265_free_analysis_data(m_param, &m_exportedPic->m_analysisData);
+         ATOMIC_DEC(&m_exportedPic->m_countRefEncoders);
+         m_exportedPic = NULL;
+         m_dpb->recycleUnreferenced();
