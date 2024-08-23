@@ -7,7 +7,11 @@ inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="A UNIX init scheme with service supervision"
 HOMEPAGE="https://smarden.org/runit/"
-SRC_URI="https://smarden.org/runit/${P}.tar.gz"
+PATCH_VER=20240905
+SRC_URI="
+	https://smarden.org/runit/${P}.tar.gz
+	https://github.com/clan/runit/releases/download/${PV}-r5/${P}-patches-${PATCH_VER}.tar.xz
+"
 S=${WORKDIR}/admin/${P}/src
 
 LICENSE="BSD"
@@ -17,8 +21,18 @@ IUSE="static"
 
 RDEPEND="sys-apps/openrc"
 
+src_unpack() {
+	unpack ${P}.tar.gz
+	unpack ${P}-patches-${PATCH_VER}.tar.xz
+}
+
 src_prepare() {
 	default
+	cd "${S}"/..
+	eapply -p3 "${WORKDIR}"/patches
+
+	cd "${S}"
+
 
 	# We either build everything or nothing static
 	sed -i -e 's:-static: :' Makefile || die
