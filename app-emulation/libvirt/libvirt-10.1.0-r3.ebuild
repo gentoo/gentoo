@@ -90,7 +90,10 @@ RDEPEND="
 	libssh2? ( >=net-libs/libssh2-1.3 )
 	lvm? ( >=sys-fs/lvm2-2.02.48-r2[lvm] )
 	lxc? ( !sys-apps/systemd[cgroup-hybrid(-)] )
-	nbd? ( sys-block/nbdkit )
+	nbd? (
+		sys-block/nbdkit
+		sys-libs/libnbd
+	)
 	nfs? ( net-fs/nfs-utils )
 	numa? (
 		>sys-process/numactl-2.0.2
