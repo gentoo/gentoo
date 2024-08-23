@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,10 +28,11 @@ RDEPEND="
 	sys-apps/ucspi-tcp
 "
 
-src_prepare() {
-	# Leave optimization level to user CFLAGS
-	sed -i 's/-Os -fomit-frame-pointer -funroll-loops//g' ./conf-cc || die
+PATCHES=(
+	"${FILESDIR}/tinyssh-20240101_conf_cflags.patch"
+)
 
+src_prepare() {
 	# Use make-tinysshcc.sh script, which has no tests and doesn't execute
 	# binaries. See https://github.com/janmojzis/tinyssh/issues/2
 	sed -i 's/make-tinyssh\.sh/make-tinysshcc.sh/g' ./Makefile || die
