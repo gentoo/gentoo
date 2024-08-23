@@ -21,7 +21,7 @@ fi
 
 LICENSE="ISC"
 SLOT="0"
-IUSE="debug jemalloc selinux systemd utempter vim-syntax"
+IUSE="debug jemalloc selinux sixel systemd utempter vim-syntax"
 
 DEPEND="
 	dev-libs/libevent:=
@@ -71,6 +71,7 @@ src_configure() {
 		--sysconfdir="${EPREFIX}"/etc
 		$(use_enable debug)
 		$(use_enable jemalloc)
+		$(use_enable sixel)
 		$(use_enable systemd)
 		$(use_enable utempter)
 
