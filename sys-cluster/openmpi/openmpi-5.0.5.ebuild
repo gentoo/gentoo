@@ -36,10 +36,10 @@ RDEPEND="
 	!sys-cluster/mpich
 	!sys-cluster/mpich2
 	!sys-cluster/nullmpi
-	!sys-cluster/prrte
 	>=dev-libs/libevent-2.0.22:=[threads(+)]
 	>=sys-apps/hwloc-2.0.2:=
 	sys-cluster/pmix:=
+	sys-cluster/prrte:=
 	>=sys-libs/zlib-1.2.8-r1
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.19-r1:= )
 	openmpi_fabrics_ofed? ( sys-cluster/rdma-core )
@@ -97,6 +97,7 @@ src_configure() {
 
 		--with-hwloc=external
 		--with-libevent=external
+		--with-prrte=external
 
 		# Oiriginally supposed to be re-enabled for 5.0!
 		# See https://github.com/open-mpi/ompi/issues/9697#issuecomment-1003746357
