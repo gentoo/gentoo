@@ -1,0 +1,74 @@
+From: Eric Joldasov <bratishkaerik@landless-city.net>
+
+Patch for the purposes of cross-compiling support in "zig-build".
+
+This does not handle a problem with not separating different search prefixes for binaries and
+for libraries, since solving this will require adding a separate flag which is too incompatible
+with 9999 version, which I also want to support as much as possible in zig-build.
+
+Add "lib64" and "lib32" directories (depends on "usize" bitsize on system) before "lib"
+when using "--search-prefix" so that libraries from lib64/lib32 are not overwritten by
+libraries from "lib" which can have different bitwidth.
+
+Ideally it should be unified with logic in std.zig.NativePaths (and maybe aro.toolchains.Linux?),
+and have mentioned different search prefixes, so upstream patch will be very different.
+
+diff --git a/lib/std/Build/Step/Compile.zig b/lib/std/Build/Step/Compile.zig
+index d18d8de413..ff69585c69 100644
+--- a/lib/std/Build/Step/Compile.zig
++++ b/lib/std/Build/Step/Compile.zig
+@@ -1595,17 +1595,6 @@ fn make(step: *Step, prog_node: std.Progress.Node) !void {
+         // This prevents a warning, that should probably be upgraded to an error in Zig's
+         // CLI parsing code, when the linker sees an -L directory that does not exist.
+ 
+-        if (prefix_dir.accessZ("lib", .{})) |_| {
+-            try zig_args.appendSlice(&.{
+-                "-L", b.pathJoin(&.{ search_prefix, "lib" }),
+-            });
+-        } else |err| switch (err) {
+-            error.FileNotFound => {},
+-            else => |e| return step.fail("unable to access '{s}/lib' directory: {s}", .{
+-                search_prefix, @errorName(e),
+-            }),
+-        }
+-
+         if (prefix_dir.accessZ("include", .{})) |_| {
+             try zig_args.appendSlice(&.{
+                 "-I", b.pathJoin(&.{ search_prefix, "include" }),
+@@ -1616,6 +1605,36 @@ fn make(step: *Step, prog_node: std.Progress.Node) !void {
+                 search_prefix, @errorName(e),
+             }),
+         }
++
++        blk: {
++            const lib_arch_dir = switch (compile.rootModuleTarget().ptrBitWidth()) {
++                64 => "lib64",
++                32 => "lib32",
++                // Can't find info on whether "lib16" or "lib128" exist, but for Gentoo this should be enough.
++                else => break :blk,
++            };
++            if (prefix_dir.accessZ(lib_arch_dir, .{})) |_| {
++                try zig_args.appendSlice(&.{
++                    "-L", b.pathJoin(&.{ search_prefix, lib_arch_dir }),
++                });
++            } else |err| switch (err) {
++                error.FileNotFound => break :blk,
++                else => |e| return step.fail("unable to access '{s}/{s}' directory: {s}", .{
++                    lib_arch_dir, search_prefix, @errorName(e),
++                }),
++            }
++        }
++
++        if (prefix_dir.accessZ("lib", .{})) |_| {
++            try zig_args.appendSlice(&.{
++                "-L", b.pathJoin(&.{ search_prefix, "lib" }),
++            });
++        } else |err| switch (err) {
++            error.FileNotFound => {},
++            else => |e| return step.fail("unable to access '{s}/lib' directory: {s}", .{
++                search_prefix, @errorName(e),
++            }),
++        }
+     }
+ 
+     if (compile.rc_includes != .any) {
