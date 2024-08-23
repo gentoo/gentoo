@@ -21,7 +21,12 @@ SRC_URI="mirror://gnu/binutils/${MY_P}.tar.xz
 
 LICENSE="|| ( GPL-3 LGPL-3 )"
 
-SLOT="0/${PV%_p?}.0"
+if [[ ${PV} == 2.43 ]] ; then
+	SLOT="0/${PV%_p?}.1"
+else
+	die "Please cleanup the ebuild to drop the 2.43 fudge!"
+	SLOT="0/${PV%_p?}.0"
+fi
 
 IUSE="64-bit-bfd cet multitarget nls static-libs test"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
