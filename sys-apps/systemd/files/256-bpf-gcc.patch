@@ -1,0 +1,26 @@
+https://github.com/systemd/systemd/commit/dde6f1d7456db7aa72d24b1d6956b419b6f9945c
+
+From dde6f1d7456db7aa72d24b1d6956b419b6f9945c Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 24 Aug 2024 13:09:47 +0100
+Subject: [PATCH] meson: search for 'bpf-unknown-none' too
+
+We currently search for 'bpf-gcc' and 'bpf-none-gcc'. Gentoo's
+sys-devel/bpf-toolchain package uses 'bpf-unknown-none-gcc', as does Fedora's
+cross-binutils. Search for this name too.
+---
+ meson.build | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/meson.build b/meson.build
+index 5e0b666c64b17..fbc2bbdf2f22f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1109,6 +1109,7 @@ else
+         elif bpf_compiler == 'gcc'
+                 bpf_gcc = find_program('bpf-gcc',
+                                        'bpf-none-gcc',
++                                       'bpf-unknown-none-gcc',
+                                        required : true,
+                                        version : '>= 13.1.0')
+                 bpf_gcc_found = bpf_gcc.found()
