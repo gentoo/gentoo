@@ -17,9 +17,16 @@ KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="
 	app-misc/pax-utils
-	>=dev-python/zenlib-2.2.0[${PYTHON_USEDEP}]
-	>=dev-python/pycpio-1.2.1[${PYTHON_USEDEP}]
+	>=dev-python/zenlib-2.2.3[${PYTHON_USEDEP}]
+	>=dev-python/pycpio-1.3.2[${PYTHON_USEDEP}]
 	sys-apps/pciutils
+"
+
+BDEPEND="
+	test? (
+		amd64? ( app-emulation/qemu[qemu_softmmu_targets_x86_64] )
+		arm64? ( app-emulation/qemu[qemu_softmmu_targets_aarch64] )
+	)
 "
 
 python_install_all() {
@@ -45,4 +52,23 @@ pkg_postinst() {
 	optfeature "ugrd.fs.btrfs support" sys-fs/btrfs-progs
 	optfeature "ugrd.crypto.gpg support" app-crypt/gnupg
 	optfeature "ugrd.fs.lvm support" sys-fs/lvm2[lvm]
+}
+
+distutils_enable_tests unittest
+
+src_test() {
+	if [[ ! -w '/dev/kvm' ]]; then
+		ewarn "Skipping tests: Cannot write to /dev/kvm."
+		return 1
+	fi
+	if [[ ! -r "$(command -v mount)" ]]; then
+		ewarn "Cannot read the mount binary, tests may fail until"
+		ewarn "util-linux is re-emerged without the sfperms feature."
+	fi
+
+	distutils-r1_src_test
+}
+
+python_test() {
+	eunittest tests/
 }
