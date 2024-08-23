@@ -632,7 +632,6 @@ src_configure() {
 
 	if use nginx_modules_http_vod; then
 		http_enabled=1
-		export HTTP_POSTPONE=no
 		myconf+=( --add-module=${HTTP_VOD_MODULE_WD} )
 	fi
 
