@@ -13,7 +13,7 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://bitbucket.org/multicoreware/x265_git/"
 	MY_P="${PN}-${PV}"
 else
-	SRC_URI="https://bitbucket.org/multicoreware/x265_git/downloads/${PN}_${PV}.tar.gz -> ${PN}-${PV}.tar.gz"
+	SRC_URI="https://bitbucket.org/multicoreware/x265_git/downloads/${PN}_${PV}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~x86"
 	MY_P="${PN}_${PV}"
 fi
@@ -23,7 +23,7 @@ unset MY_P
 
 LICENSE="GPL-2"
 # subslot = libx265 soname
-SLOT="0/212"
+SLOT="0/199"
 IUSE="+10bit +12bit cpu_flags_ppc_vsx2 numa test"
 RESTRICT="!test? ( test )"
 
@@ -35,12 +35,13 @@ BDEPEND="
 	abi_x86_64? ( ${ASM_DEPEND} )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-9999-arm.patch"
+	"${FILESDIR}/arm-r1.patch"
 	"${FILESDIR}/neon.patch"
 	"${FILESDIR}/tests.patch"
+	"${FILESDIR}/test-ns.patch"
 	"${FILESDIR}/${PN}-3.5-r5-cpp-std.patch"
 	"${FILESDIR}/${PN}-3.5-r5-gcc15.patch"
-	"${FILESDIR}/${PN}-9999-test-ns.patch"
+	"${FILESDIR}/${PN}-3.5-r5-test-ns_2.patch"
 )
 
 pkg_setup() {
