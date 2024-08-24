@@ -14,6 +14,10 @@ SLOT="0/4"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="static-libs"
 
+PATCHES=(
+	"${FILESDIR}"/libpfm-4.13.0-musl-WORDSIZE_undeclared.patch
+)
+
 src_prepare() {
 	default
 
@@ -29,8 +33,7 @@ src_compile() {
 }
 
 src_test() {
-	cd tests || die
-	./validate || die
+	./tests/validate -A || die
 }
 
 src_install() {
