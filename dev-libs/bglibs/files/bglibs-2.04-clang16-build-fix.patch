@@ -1,0 +1,61 @@
+Bug: https://bugs.gentoo.org/895036
+--- a/net/bindu.c
++++ b/net/bindu.c
+@@ -21,6 +21,7 @@
+ #include <sys/socket.h>
+ #include <sys/un.h>
+ #include <unistd.h>
++#include <string.h>
+ #include "socket.h"
+ 
+ /** Bind a UNIX domain address (path) to a socket. */
+--- a/net/connectu.c
++++ b/net/connectu.c
+@@ -21,6 +21,7 @@
+ #include <sys/socket.h>
+ #include <sys/un.h>
+ #include <unistd.h>
++#include <string.h>
+ #include "socket.h"
+ 
+ /** Make an UNIX domain connection. */
+--- a/unix/sig_all.c
++++ b/unix/sig_all.c
+@@ -32,7 +32,7 @@ void sig_all_default(void)
+ void sig_all_block(void)
+ {
+   int i;
+-#ifdef HASSIGPROCMASK
++#if defined(HASSIGPROCMASK) || !defined(__GLIBC__)
+   sigset_t set;
+   sigemptyset(&set);
+   for (i = 1; i < SIGMAX; i++)
+@@ -46,7 +46,7 @@ void sig_all_block(void)
+ 
+ void sig_all_unblock(void)
+ {
+-#ifdef HASSIGPROCMASK
++#if defined(HASSIGPROCMASK) || !defined(__GLIBC__)
+   sigset_t set;
+   sigemptyset(&set);
+   sigprocmask(SIG_UNBLOCK, &set, 0);
+--- a/unix/sig_block.c
++++ b/unix/sig_block.c
+@@ -21,7 +21,7 @@
+ 
+ void sig_block(int s)
+ {
+-#ifdef HASSIGPROCMASK
++#if defined(HASSIGPROCMASK) || !defined(__GLIBC__)
+   sigset_t set;
+   sigemptyset(&set);
+   sigaddset(&set, s);
+@@ -33,7 +33,7 @@ void sig_block(int s)
+ 
+ void sig_unblock(int s)
+ {
+-#ifdef HASSIGPROCMASK
++#if defined(HASSIGPROCMASK) || !defined(__GLIBC__)
+   sigset_t set;
+   sigemptyset(&set);
+   sigaddset(&set, s);
