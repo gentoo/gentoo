@@ -33,3 +33,8 @@ src_prepare() {
 	sed -i -e "s:^prefix = /usr/local:prefix = \${DESTDIR}/:" Makefile \
 		|| die "sed failed"
 }
+
+src_compile() {
+	# bug #795240
+	emake -j1
+}
