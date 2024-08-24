@@ -1,0 +1,28 @@
+https://bugs.kde.org/show_bug.cgi?id=490791
+https://codereview.qt-project.org/c/qt/qtbase/+/584636
+From: David Edmundson <davidedmundson@kde.org>
+Date: Wed, 31 Jul 2024 11:59:14 +0100
+Subject: [PATCH] QWidget: Store initialScreen as QPointer
+
+A Toplevel QWidget can hold a pointer to the screen where it will
+eventually show contents, before a QWidgetWindow is created which then
+takes precedence.
+
+The screen member of QWindows is always kept up-to-date when a screen is
+removed, but not the contents of a toplevel window. If a widget has
+setScreen called but is never shown, it has potentially dangling pointer
+which can cause issues in the future.
+
+Pick-to: 6.5
+Change-Id: Ia7c80549e8b3c90a75cdde745487e87ecddaca63
+Reviewed-by: Volker Hilsheimer <volker.hilsheimer@qt.io>
+(cherry picked from commit d67acf94afffde6a71498be6e30447f3acf7558e)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+(cherry picked from commit 6af4e5f604fff40cdb3be40099b8884362806ef4)
+--- a/src/widgets/kernel/qwidget_p.h
++++ b/src/widgets/kernel/qwidget_p.h
+@@ -110,3 +110,3 @@
+     Qt::WindowFlags savedFlags; // Save widget flags while showing fullscreen
+-    QScreen *initialScreen; // Screen when passing a QDesktop[Screen]Widget as parent.
++    QPointer<QScreen> initialScreen; // Screen when passing a QDesktop[Screen]Widget as parent.
+ 
