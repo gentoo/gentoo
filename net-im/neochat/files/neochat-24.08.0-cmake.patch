@@ -1,0 +1,38 @@
+From a7e06375fddf7927b0b2bb5e8f986ace9d9a57eb Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 11 Aug 2024 17:58:58 +0200
+Subject: [PATCH] Include missing ECMQmlModule
+
+Amends bc67033c003e7f8b73fadd4239ab5b737de27877 and e0c3a1c14395117661521f0d880bdcf52124d1e1
+
+No idea why this isn't caught by CI, but it fails for me otherwise.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+(cherry picked from commit 22743b6d8b3ddcd301ab80ef48a7896c18de464f)
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8d3e92f71..b5a2c9e34 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -38,6 +38,7 @@ include(KDEGitCommitHooks)
+ include(ECMCheckOutboundLicense)
+ include(ECMQtDeclareLoggingCategory)
+ include(ECMAddAndroidApk)
++include(ECMQmlModule)
+ if (NOT ANDROID)
+     include(KDEClangFormat)
+ endif()
+@@ -59,7 +60,6 @@ set_package_properties(Qt6 PROPERTIES
+     PURPOSE "Basic application components"
+ )
+ 
+-qt_policy(SET QTP0001 NEW)
+ if (QT_KNOWN_POLICY_QTP0004)
+ qt_policy(SET QTP0004 NEW)
+ endif ()
+-- 
+2.46.0
+
