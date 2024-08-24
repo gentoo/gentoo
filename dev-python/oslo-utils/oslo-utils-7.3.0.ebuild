@@ -33,9 +33,11 @@ RDEPEND="
 	>=dev-python/pyyaml-3.13[${PYTHON_USEDEP}]
 	dev-python/tzdata[${PYTHON_USEDEP}]
 "
+# qemu needed for qemu-img
 BDEPEND="
 	>=dev-python/pbr-2.2.0[${PYTHON_USEDEP}]
 	test? (
+		app-emulation/qemu
 		>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
 		>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
