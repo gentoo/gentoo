@@ -116,6 +116,8 @@ src_test() {
 		'tests/test_functional_sorting.py::TestDownloadSorting'
 		# Bug https://bugs.gentoo.org/934331 fixed in 4.3.3.
 		'tests/test_sorting.py::TestSortingSorter'
+		# cryptography-43, https://bugs.gentoo.org/938453
+		'tests/test_utils/test_cert_gen.py::TestCertGen::test_generate_key_custom[512-test_key.pem]'
 	)
 
 	# The test suite is prone to being broken by random plugins that happen
