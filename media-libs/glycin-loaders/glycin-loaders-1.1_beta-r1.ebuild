@@ -69,7 +69,7 @@ src_configure() {
 	)
 	local formats_s=${formats[*]}
 	local emesonargs=(
-		-Dprofile=$(usex debug release dev)
+		-Dprofile=$(usex debug dev release)
 		-Dglycin-loaders=true
 		-Dloaders="${formats_s// /,}"
 		-Dtests=$(usex test true false)
