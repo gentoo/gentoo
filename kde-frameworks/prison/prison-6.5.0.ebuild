@@ -25,6 +25,8 @@ DEPEND="${RDEPEND}
 	test? ( >=dev-qt/qtbase-${QTMIN}:6[concurrent,widgets] )
 "
 
+PATCHES=( "${FILESDIR}/${P}-cmake.patch" ) # bug 938343
+
 src_configure() {
 	local mycmakeargs=(
 		# TODO: WITH_MULTIMEDIA?
