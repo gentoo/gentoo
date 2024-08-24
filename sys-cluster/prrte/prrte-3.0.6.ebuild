@@ -11,7 +11,7 @@ SRC_URI="https://github.com/openpmix/prrte/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1)"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 
 DEPEND="
 	dev-libs/libevent:=
