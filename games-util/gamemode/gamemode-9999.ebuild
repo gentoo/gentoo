@@ -68,7 +68,7 @@ multilib_src_configure() {
 pkg_postinst() {
 	elog
 	elog "GameMode requires permissions to adjust your PAM limits and change system"
-	elog "performance settings (overclocking, scheduling, L2 cache usage, mitigations"
+	elog "performance settings (overclocking, scheduling, L3 cache usage, mitigations"
 	elog "etc). This permission is granted via the gamemode group."
 	elog
 	elog "Run the following command as root to add your user:"
