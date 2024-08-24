@@ -213,6 +213,8 @@ SITEFILE="70${PN}-gentoo.el"
 
 RESTRICT="!test? ( test )"
 
+PATCHES=( "${FILESDIR}/python3.12.patch" )
+
 src_unpack() {
 	default_src_unpack
 	if use rust; then
