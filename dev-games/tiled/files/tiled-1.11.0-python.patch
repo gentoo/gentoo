@@ -1,55 +1,38 @@
-diff --git a/qbs/imports/PythonProbe.qbs b/qbs/imports/PythonProbe.qbs
-index 52eae7fc..93b4270c 100644
---- a/qbs/imports/PythonProbe.qbs
-+++ b/qbs/imports/PythonProbe.qbs
-@@ -7,7 +7,6 @@ import qbs.Utilities
- Probe {
-     id: pythonDllProbe
- 
--    property string pythonDir: pythonInstallDir // Input
-     property string buildVariant: qbs.buildVariant // Input
-     property string minVersion: "3.5" // Input
-     property string fileNamePrefix // Output
-@@ -17,18 +16,9 @@ Probe {
-             console.warn(msg + " The Python plugin will not be available.");
-         }
- 
--        if (!pythonDir) {
--            printWarning("PYTHONHOME not set.");
--            return;
--        }
--        if (!File.exists(pythonDir)) {
--            printWarning("The provided Python installation directory '" + pythonDir
--                         + "' does not exist.");
--            return;
--        }
-         var p = new Process();
-         try {
--            var pythonFilePath = FileInfo.joinPaths(pythonDir, "python.exe");
-+            var pythonFilePath = "python";
-             p.exec(pythonFilePath, ["--version"], true);
-             var output = p.readStdOut().trim();
-             var magicPrefix = "Python ";
-@@ -45,9 +35,7 @@ Probe {
-                 return;
-             }
-             if (Utilities.versionCompare(versionNumberString, minVersion) < 0) {
--                printWarning("The Python installation at '" + pythonDir
--                             + "' has version " + versionNumberString + ", but " + minVersion + " or higher "
--                             + "is required.");
-+                printWarning("The Python installation has version " + versionNumberString + ", but " + minVersion + " or higher " + "is required.");
-                 return;
-             }
-             found = true;
+commit addf46e590b0bcf8c0fe60409938b64667c98baf
+Author: Andrei Sabalenka <mechakotik@gmail.com>
+Date:   Wed Aug 21 23:35:47 2024 +0300
+
+    Qbs: Add option to specify custom Python pkg-config name
+    
+    I am Gentoo maintainer of Tiled. In Gentoo, there may be many Python versions installed at the same time for compatibility reasons, and each version has separate name in pkg-config.
+    
+    For example, for Python 3.12 it would be named python-3.12-embed, so running pkg-config for python-embed will fail. Adding this option so it's possible to specify the correct name from build script.
+
+https://github.com/mapeditor/tiled/commit/7969644284ae0a1d09b3ab14a7a68f65c79e7976
+https://github.com/mapeditor/tiled/pull/4039
+
 diff --git a/src/plugins/python/python.qbs b/src/plugins/python/python.qbs
-index f1c959d3..8c43af9c 100644
+index f1c959d3..abe9403f 100644
 --- a/src/plugins/python/python.qbs
 +++ b/src/plugins/python/python.qbs
-@@ -28,7 +28,6 @@ TiledPlugin {
+@@ -22,7 +22,7 @@ TiledPlugin {
  
-     PythonProbe {
-         id: pythonDllProbe
--        pythonDir: Environment.getEnv("PYTHONHOME")
+     Probes.PkgConfigProbe {
+         id: pkgConfigPython3
+-        name: "python3-embed"
++        name: project.pythonPkgConfigName
          minVersion: "3.8"
      }
  
+diff --git a/tiled.qbs b/tiled.qbs
+index c8d5018d..fb54d9ba 100644
+--- a/tiled.qbs
++++ b/tiled.qbs
+@@ -18,6 +18,7 @@ Project {
+     property bool sentry: false
+     property bool dbus: true
+     property string openSslPath: Environment.getEnv("OPENSSL_PATH")
++    property string pythonPkgConfigName: "python3-embed"
+ 
+     references: [
+         "dist/archive.qbs",

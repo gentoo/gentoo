@@ -68,6 +68,7 @@ src_configure() {
 		qbs.installPrefix:"/usr" \
 		projects.Tiled.useRPaths:false \
 		projects.Tiled.installHeaders:$(usex minimal false true) \
+		projects.Tiled.pythonPkgConfigName:python-${EPYTHON#python}-embed \
 		project.libDir:$(get_libdir) \
 		modules.cpp.cFlags:$(qbs_format_flags ${CFLAGS}) \
 		modules.cpp.cxxFlags:$(qbs_format_flags ${CXXFLAGS}) \
