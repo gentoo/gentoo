@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit qt6-build toolchain-funcs
+inherit flag-o-matic qt6-build toolchain-funcs
 
 DESCRIPTION="Cross-platform application development framework"
 
@@ -99,7 +99,7 @@ COMMON_DEPEND="
 			cups? ( net-print/cups )
 			gtk? (
 				x11-libs/gdk-pixbuf:2
-				x11-libs/gtk+:3
+				>=x11-libs/gtk+-3.24.41-r1:3[X?,wayland?]
 				x11-libs/pango
 			)
 		)
@@ -166,6 +166,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# The only component that uses gdk backends is the qgtk3 platformtheme plugin
+	if use gtk; then
+		# defang automagic dependencies
+		use wayland || append-cxxflags -DGENTOO_GTK_HIDE_WAYLAND
+		use X || append-cxxflags -DGENTOO_GTK_HIDE_X11
+	fi
+
 	local mycmakeargs=(
 		-DBUILD_WITH_PCH=OFF
 
