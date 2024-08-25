@@ -10,6 +10,7 @@
 		<name>Gentoo Proxy Maintainers</name>
 	</maintainer>
 	<use>
+		<flag name="collada">Add support for Collada interchange format through <pkg>media-libs/opencollada</pkg></flag>
 		<flag name="samples">Build viewer library</flag>
 	</use>
 	<upstream>
