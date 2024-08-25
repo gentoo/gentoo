@@ -1,0 +1,58 @@
+From 0ec68d7f5695403eccac75025ba7f6f7ecf1814e Mon Sep 17 00:00:00 2001
+From: Tom Hughes <tom@compton.nu>
+Date: Sun, 19 May 2013 16:49:08 +0100
+Subject: [PATCH 11/15] Avoid division by zero in color-burn mode
+
+FIXME: re-work using latest math from http://www.w3.org/TR/SVGCompositing/
+---
+ include/agg_pixfmt_rgba.h | 21 ++++++++++++++++++---
+ 1 file changed, 18 insertions(+), 3 deletions(-)
+
+diff --git a/include/agg_pixfmt_rgba.h b/include/agg_pixfmt_rgba.h
+index 6c4bc37..5d6b511 100644
+--- a/include/agg_pixfmt_rgba.h
++++ b/include/agg_pixfmt_rgba.h
+@@ -1027,6 +1027,21 @@ namespace agg
+         //   Dca' = Sa.(Sca.Da + Dca.Sa - Sa.Da)/Sca + Sca.(1 - Da) + Dca.(1 - Sa)
+         // 
+         // Da'  = Sa + Da - Sa.Da 
++
++
++        // http://www.w3.org/TR/SVGCompositing/
++        // if Sca == 0 and Dca == Da
++        //   Dca' = Sa × Da + Sca × (1 - Da) + Dca × (1 - Sa)
++        //        = Sa × Da + Dca × (1 - Sa)
++        //        = Da = Dca
++        // otherwise if Sca == 0
++        //   Dca' = Sca × (1 - Da) + Dca × (1 - Sa)
++        //        = Dca × (1 - Sa)
++        // otherwise if Sca > 0
++        //   Dca' = Sa × Da - Sa × Da × min(1, (1 - Dca/Da) × Sa/Sca) + Sca × (1 - Da) + Dca × (1 - Sa)
++        //        = Sa × Da × (1 - min(1, (1 - Dca/Da) × Sa/Sca)) + Sca × (1 - Da) + Dca × (1 - Sa)
++
++        //   sa * da * (255 - std::min(255, (255 - p[0]/da)*(sa/(sc*sa)) +
+         static AGG_INLINE void blend_pix(value_type* p, 
+                                          unsigned sr, unsigned sg, unsigned sb, 
+                                          unsigned sa, unsigned cover)
+@@ -1056,15 +1071,15 @@ namespace agg
+ 
+                 p[Order::R] = (value_type)(((srda + drsa <= sada) ? 
+                     sr * d1a + dr * s1a :
+-                    sa * (srda + drsa - sada) / sr + sr * d1a + dr * s1a + base_mask) >> base_shift);
++                   (sr > 0 ? sa * (srda + drsa - sada) / sr + sr * d1a + dr * s1a + base_mask : 0)) >> base_shift);
+ 
+                 p[Order::G] = (value_type)(((sgda + dgsa <= sada) ? 
+                     sg * d1a + dg * s1a :
+-                    sa * (sgda + dgsa - sada) / sg + sg * d1a + dg * s1a + base_mask) >> base_shift);
++                   (sg > 0 ? sa * (sgda + dgsa - sada) / sg + sg * d1a + dg * s1a + base_mask : 0)) >> base_shift);
+ 
+                 p[Order::B] = (value_type)(((sbda + dbsa <= sada) ? 
+                     sb * d1a + db * s1a :
+-                    sa * (sbda + dbsa - sada) / sb + sb * d1a + db * s1a + base_mask) >> base_shift);
++                   (sb > 0 ? sa * (sbda + dbsa - sada) / sb + sb * d1a + db * s1a + base_mask : 0)) >> base_shift);
+ 
+                 p[Order::A] = (value_type)(sa + da - ((sa * da + base_mask) >> base_shift));
+             }
+-- 
+1.8.1.4
+
