@@ -1,6 +1,12 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-08-25)
+# alternatives not available on mips
+app-alternatives/awk nawk
+app-alternatives/bc gh
+app-alternatives/lex reflex
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-07-05)
 # Avoid unkeyworded media-gfx/libimagequant
 dev-python/pillow imagequant
