@@ -309,6 +309,38 @@ _ecm-common_summary() {
 	_EOF_
 }
 
+# @FUNCTION: _ecm-common-check_deps
+# @INTERNAL
+# @DESCRIPTION:
+# Check existence of requested KF6 dependencies.
+_ecm-common-check_deps() {
+	local chk=0
+	case ${1} in
+		i18n)
+			if [[ ${ECM_I18N} ]]; then
+				chk=$(has_version -b "kde-frameworks/ki18n:6")
+			fi
+			;;
+		doctools)
+			if [[ ${ECM_HANDBOOK} ]] && in_iuse handbook; then
+				if use handbook; then
+					chk=$(has_version -b "kde-frameworks/kdoctools:6")
+				fi
+			fi
+			;;
+		kcmutils)
+			if [[ ${ECM_KCM_TARGETS} ]]; then
+				chk=$(has_version -b "kde-frameworks/kcmutils:6")
+			fi
+			;;
+		*)
+			eerror "Unknown value for _ecm-common-check_deps()"
+			die "Value ${1} is not supported"
+			;;
+	esac
+	return ${chk}
+}
+
 # @FUNCTION: ecm-common-check_deps
 # @DESCRIPTION:
 # Override this to add more KF6 has_version checks to pkg_setup(),
@@ -327,15 +359,8 @@ ecm-common-check_deps() {
 ecm-common_pkg_setup() {
 	$(ver_test ${KFMIN} -ge 5.240) && return
 
-	if has_version -b "kde-frameworks/ki18n:6" && {
-		! in_iuse handbook || {
-			in_iuse handbook && use handbook &&
-				has_version -b "kde-frameworks/kdoctools:6"
-			}
-		} && {
-			! [[ ${ECM_KCM_TARGETS} ]] ||
-				has_version -b "kde-frameworks/kcmutils:6"
-		} && ecm-common-check_deps
+	if _ecm-common-check_deps i18n && _ecm-common-check_deps doctools &&
+		_ecm-common-check_deps kcmutils && ecm-common-check_deps
 	then
 		_KFSLOT=6
 	else
