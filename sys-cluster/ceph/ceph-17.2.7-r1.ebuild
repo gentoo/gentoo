@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0 LGPL-2.1 CC-BY-SA-3.0 GPL-2 GPL-2+ LGPL-2+ LGPL-2.1 LGPL-3 GPL-3 BSD Boost-1.0 MIT public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ppc64"
 
 CPU_FLAGS_X86=(avx2 avx512f pclmul sse{,2,3,4_1,4_2} ssse3)
 
@@ -56,7 +56,7 @@ DEPEND="
 	dev-libs/libutf8proc:=
 	dev-libs/nss:=
 	dev-libs/openssl:=
-	<dev-libs/rocksdb-7.9.3:=
+	<dev-libs/rocksdb-6.15:=
 	dev-libs/thrift:=
 	dev-libs/xmlsec:=[openssl]
 	dev-cpp/yaml-cpp:=
@@ -81,17 +81,14 @@ DEPEND="
 	!jemalloc? ( >=dev-util/google-perftools-2.6.1:= )
 	jaeger? (
 		dev-cpp/nlohmann_json:=
-		dev-cpp/opentelemetry-cpp:=[jaeger]
+		<dev-cpp/opentelemetry-cpp-1.10.0:=[jaeger]
 	)
 	kafka? ( dev-libs/librdkafka:= )
 	kerberos? ( virtual/krb5 )
 	ldap? ( net-nds/openldap:= )
 	lttng? ( dev-util/lttng-ust:= )
 	parquet? ( dev-libs/re2:= )
-	pmdk? (
-		>=dev-libs/pmdk-1.10.0:=
-		sys-block/ndctl:=
-	)
+	pmdk? ( >=dev-libs/pmdk-1.10.0:= )
 	rabbitmq? ( net-libs/rabbitmq-c:= )
 	radosgw? (
 		dev-libs/icu:=
@@ -108,6 +105,7 @@ DEPEND="
 	zbd? ( sys-block/libzbd:= )
 	zfs? ( sys-fs/zfs:= )
 "
+# <cython-3: bug #907739
 BDEPEND="
 	amd64? ( dev-lang/nasm )
 	x86? ( dev-lang/yasm )
@@ -200,6 +198,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-12.2.0-use-provided-cpu-flag-values.patch"
 	"${FILESDIR}/ceph-14.2.0-cflags.patch"
 	"${FILESDIR}/ceph-12.2.4-boost-build-none-options.patch"
+	"${FILESDIR}/ceph-16.2.2-cflags.patch"
 	"${FILESDIR}/ceph-17.2.1-no-virtualenvs.patch"
 	"${FILESDIR}/ceph-13.2.2-dont-install-sysvinit-script.patch"
 	"${FILESDIR}/ceph-14.2.0-dpdk-cflags.patch"
@@ -207,12 +206,17 @@ PATCHES=(
 	"${FILESDIR}/ceph-16.2.0-spdk-tinfo.patch"
 	"${FILESDIR}/ceph-16.2.0-jaeger-system-boost.patch"
 	"${FILESDIR}/ceph-16.2.0-liburing.patch"
+	"${FILESDIR}/ceph-17.2.0-cyclic-deps.patch"
 	"${FILESDIR}/ceph-17.2.0-pybind-boost-1.74.patch"
 	"${FILESDIR}/ceph-17.2.0-findre2.patch"
-	"${FILESDIR}/ceph-18.2.0-system-opentelemetry.patch"
+	"${FILESDIR}/ceph-17.2.0-install-dbstore.patch"
+	"${FILESDIR}/ceph-17.2.0-deprecated-boost.patch"
+	"${FILESDIR}/ceph-17.2.0-system-opentelemetry.patch"
+	"${FILESDIR}/ceph-17.2.0-fuse3.patch"
 	"${FILESDIR}/ceph-17.2.0-osd_class_dir.patch"
 	"${FILESDIR}/ceph-17.2.0-gcc12-header.patch"
 	"${FILESDIR}/ceph-17.2.3-flags.patch"
+	"${FILESDIR}/ceph-17.2.4-cyclic-deps.patch"
 	# https://bugs.gentoo.org/866165
 	"${FILESDIR}/ceph-17.2.5-suppress-cmake-warning.patch"
 	"${FILESDIR}/ceph-17.2.5-gcc13-deux.patch"
@@ -223,12 +227,9 @@ PATCHES=(
 	"${FILESDIR}/ceph-17.2.6-arrow-flatbuffers-c++14.patch"
 	# https://bugs.gentoo.org/868891
 	"${FILESDIR}/ceph-17.2.6-cmake.patch"
-	"${FILESDIR}/ceph-18.2.0-cyclic-deps.patch"
 	# https://bugs.gentoo.org/907739
 	"${FILESDIR}/ceph-18.2.0-cython3.patch"
-	# https://bugs.gentoo.org/936889
-	"${FILESDIR}/ceph-18.2.1-gcc14.patch"
-	"${FILESDIR}/ceph-18.2.1-gcc14-2.patch"
+	"${FILESDIR}/ceph-17.2.7-fmt-fixes.patch"
 )
 
 check-reqs_export_vars() {
@@ -412,7 +413,6 @@ python_compile() {
 	ceph_src_configure
 
 	cmake_build src/pybind/CMakeFiles/cython_modules
-	cmake_build cephadm
 }
 
 src_install() {
@@ -420,7 +420,6 @@ src_install() {
 
 	python_setup
 	cmake_src_install
-
 	python_optimize
 
 	find "${ED}" -name '*.la' -type f -delete || die
@@ -478,6 +477,9 @@ python_install() {
 	local CMAKE_USE_DIR="${S}"
 	DESTDIR="${ED}" cmake_build src/pybind/install
 	DESTDIR="${ED}" cmake_build src/cephadm/install
+
+	python_scriptinto /usr/sbin
+	python_doscript src/cephadm/cephadm
 
 	python_optimize
 }

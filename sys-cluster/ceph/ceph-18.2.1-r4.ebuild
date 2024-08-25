@@ -62,7 +62,6 @@ DEPEND="
 	dev-cpp/yaml-cpp:=
 	dev-python/natsort[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
-	dev-vcs/git
 	net-dns/c-ares:=
 	net-libs/gnutls:=
 	sys-auth/oath-toolkit:=
@@ -82,16 +81,13 @@ DEPEND="
 	!jemalloc? ( >=dev-util/google-perftools-2.6.1:= )
 	jaeger? (
 		dev-cpp/nlohmann_json:=
-		dev-cpp/opentelemetry-cpp:=[jaeger]
+		<dev-cpp/opentelemetry-cpp-1.10.0:=[jaeger]
 	)
 	kafka? ( dev-libs/librdkafka:= )
 	kerberos? ( virtual/krb5 )
 	ldap? ( net-nds/openldap:= )
 	lttng? ( dev-util/lttng-ust:= )
-	parquet? (
-		<dev-cpp/abseil-cpp-20240116.2
-		<dev-libs/re2-0.2024.07.02:=
-	)
+	parquet? ( dev-libs/re2:= )
 	pmdk? (
 		>=dev-libs/pmdk-1.10.0:=
 		sys-block/ndctl:=
@@ -210,6 +206,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-16.2.0-rocksdb-cmake.patch"
 	"${FILESDIR}/ceph-16.2.0-spdk-tinfo.patch"
 	"${FILESDIR}/ceph-16.2.0-jaeger-system-boost.patch"
+	"${FILESDIR}/ceph-16.2.0-liburing.patch"
 	"${FILESDIR}/ceph-17.2.0-pybind-boost-1.74.patch"
 	"${FILESDIR}/ceph-17.2.0-findre2.patch"
 	"${FILESDIR}/ceph-18.2.0-system-opentelemetry.patch"
@@ -232,7 +229,6 @@ PATCHES=(
 	# https://bugs.gentoo.org/936889
 	"${FILESDIR}/ceph-18.2.1-gcc14.patch"
 	"${FILESDIR}/ceph-18.2.1-gcc14-2.patch"
-	"${FILESDIR}/ceph-18.2.4-liburing.patch"
 )
 
 check-reqs_export_vars() {
