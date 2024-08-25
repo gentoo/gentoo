@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -383,8 +383,12 @@ src_prepare() {
 		-e 's|/bin/sh|/bin/bash|g' \
 		-i tests/scripts/* || die "sed failed"
 
+	if test -e configure.in -a ! -e configure.ac ; then
+		mv -f configure.in configure.ac
+	fi
+
 	# Required for autoconf-2.70 #765043
-	sed 's@^AM_INIT_AUTOMAKE.*@AC_PROG_MAKE_SET@' -i configure.in || die
+	sed 's@^AM_INIT_AUTOMAKE.*@AC_PROG_MAKE_SET@' -i configure.ac || die
 	AT_NOEAUTOMAKE=yes eautoreconf
 }
 
