@@ -141,7 +141,7 @@ src_install() {
 				plugins/platforms/libqwayland*.so qml/QtWayland || die
 		)
 	else
-		local qtzoom="5.12" qtver=$(best_version dev-qt/qtcore:5)
+		local qtzoom="5.15" qtver=$(best_version dev-qt/qtcore:5)
 		if [[ ${qtver} != dev-qt/qtcore-${qtzoom}.* ]]; then
 			ewarn "You have disabled the bundled-qt USE flag."
 			ewarn "You may experience problems when running Zoom with"
