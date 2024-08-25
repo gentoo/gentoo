@@ -2,6 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-08-25)
+# simplify the dep tree
+app-admin/syslog-ng amqp grpc kafka mongodb smtp
+app-crypt/pinentry efl
+app-text/doxygen gui
+dev-build/cmake gui
+dev-util/glade gjs
+dev-util/pkgcheck emacs
+dev-util/ragel doc
+dev-vcs/git doc subversion
+mail-mta/postfix mongodb
+media-sound/liblc3 test
+net-misc/rsync rrsync
+net-firewall/nftables doc
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-08-25)
 # Some optional emacs dependencies are not keyworded.
 app-editors/emacs gui mailutils
 
