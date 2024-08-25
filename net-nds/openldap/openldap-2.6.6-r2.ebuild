@@ -817,6 +817,7 @@ multilib_src_install() {
 multilib_src_install_all() {
 	dodoc ANNOUNCEMENT CHANGES COPYRIGHT README
 	docinto rfc ; dodoc doc/rfc/*.txt
+	rmdir -p "${D}"/var/openldap-lloadd # Created but not used by any part of current codebase.
 }
 
 pkg_preinst() {
