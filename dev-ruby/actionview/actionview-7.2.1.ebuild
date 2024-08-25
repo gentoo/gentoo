@@ -74,3 +74,14 @@ all_ruby_prepare() {
 	sed -e '/test_sanitized_allowed_\(tags_class_method\|attributes_class_method\)/askip "Removed upstream"' \
 		-i test/template/sanitize_helper_test.rb || die
 }
+
+each_ruby_prepare() {
+	# The new prism parser is currently unpackaged and only included with ruby33.
+	case ${RUBY} in
+		*ruby31|*ruby32)
+			sed -e '/prism/ s:^:#:' \
+				-e '/PrismRubyTrackerTest/,/^end/ s:^:#:' \
+				-i test/template/dependency_tracker_test.rb || die
+			;;
+	esac
+}
