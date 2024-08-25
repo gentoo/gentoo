@@ -49,6 +49,7 @@ DEPEND="
 	)
 	snippets? ( >=kde-frameworks/knewstuff-${KFMIN}:6 )
 	sql? (
+		dev-libs/qtkeychain:0[qt6]
 		>=dev-qt/qtbase-${QTMIN}:6[sql]
 		>=kde-frameworks/kwallet-${KFMIN}:6
 	)
