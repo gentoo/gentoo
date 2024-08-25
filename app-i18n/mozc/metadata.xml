@@ -11,6 +11,7 @@
 		<flag name="gui">Install graphical user interface tool (mozc_tool)</flag>
 		<flag name="ibus">Enable support for <pkg>app-i18n/ibus</pkg></flag>
 		<flag name="renderer">Enable native candidate window</flag>
+		<flag name="ut">Build with Mozc UT dictionaries provided by <pkg>app-i18n/mozc-ut</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">google/mozc</remote-id>

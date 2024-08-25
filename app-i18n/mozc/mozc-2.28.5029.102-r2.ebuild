@@ -47,7 +47,7 @@ fi
 LICENSE="BSD BSD-2 ipadic public-domain unicode"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug emacs fcitx4 fcitx5 +gui ibus renderer test"
+IUSE="debug emacs fcitx4 fcitx5 +gui ibus renderer test ut"
 REQUIRED_USE="|| ( emacs fcitx4 fcitx5 ibus )"
 RESTRICT="!test? ( test )"
 
@@ -93,7 +93,9 @@ DEPEND="
 	test? (
 		>=dev-cpp/gtest-1.8.0
 		dev-libs/jsoncpp
-	)"
+	)
+	ut? ( app-i18n/mozc-ut )
+"
 RDEPEND="
 	>=dev-cpp/abseil-cpp-20230802.0:=[cxx17(+)]
 	>=dev-libs/protobuf-3.0.0:=
@@ -229,6 +231,11 @@ src_prepare() {
 	if [[ -f /mozcdic-ut.txt && -s mozcdic-ut.txt ]]; then
 		einfo "mozcdic-ut.txt found. Adding to mozc dictionary..."
 		cat mozcdic-ut.txt >> "${WORKDIR}/${P}/src/data/dictionary_oss/dictionary00.txt" || die
+	fi
+
+	if use ut; then
+		einfo "mozcdic-ut.txt found. Adding to mozc dictionary..."
+		cat /usr/share/mozc-ut/mozcdic-ut.txt >> "${WORKDIR}/${P}/src/data/dictionary_oss/dictionary00.txt" || die
 	fi
 }
 
