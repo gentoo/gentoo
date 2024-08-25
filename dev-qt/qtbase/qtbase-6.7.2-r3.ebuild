@@ -149,6 +149,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.7.2-gcc15-odr.patch
 	"${FILESDIR}"/${PN}-6.7.2-float16-sse2.patch
 	"${FILESDIR}"/${PN}-6.7.2-qwindowprivate-crash.patch
+	"${FILESDIR}"/${PN}-6.7.2-qcontiguouscache.patch
 )
 
 src_prepare() {
