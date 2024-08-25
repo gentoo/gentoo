@@ -625,18 +625,6 @@ kernel-build_merge_configs() {
 			CONFIG_MODULE_SIG_FORCE=y
 			CONFIG_MODULE_SIG_${MODULES_SIGN_HASH^^}=y
 		EOF
-		if [[ -n ${MODULES_SIGN_KEY_CONTENTS} ]]; then
-			(umask 066 && touch "${T}/kernel_key.pem" || die)
-			echo "${MODULES_SIGN_KEY_CONTENTS}" > "${T}/kernel_key.pem" || die
-			unset MODULES_SIGN_KEY_CONTENTS
-			export MODULES_SIGN_KEY="${T}/kernel_key.pem"
-		fi
-		if [[ ${MODULES_SIGN_KEY} == pkcs11:* || -r ${MODULES_SIGN_KEY} ]]; then
-			echo "CONFIG_MODULE_SIG_KEY=\"${MODULES_SIGN_KEY}\"" \
-				>> "${WORKDIR}/modules-sign-key.config"
-		elif [[ -n ${MODULES_SIGN_KEY} ]]; then
-			die "MODULES_SIGN_KEY=${MODULES_SIGN_KEY} not found or not readable!"
-		fi
 		merge_configs+=( "${WORKDIR}/modules-sign.config" )
 	fi
 
@@ -657,7 +645,19 @@ kernel-build_merge_configs() {
 	fi
 
 	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]] && use modules-sign; then
-		merge_configs+=( "${WORKDIR}/modules-sign-key.config" )
+		if [[ -n ${MODULES_SIGN_KEY_CONTENTS} ]]; then
+			(umask 066 && touch "${T}/kernel_key.pem" || die)
+			echo "${MODULES_SIGN_KEY_CONTENTS}" > "${T}/kernel_key.pem" || die
+			unset MODULES_SIGN_KEY_CONTENTS
+			export MODULES_SIGN_KEY="${T}/kernel_key.pem"
+		fi
+		if [[ ${MODULES_SIGN_KEY} == pkcs11:* || -r ${MODULES_SIGN_KEY} ]]; then
+			echo "CONFIG_MODULE_SIG_KEY=\"${MODULES_SIGN_KEY}\"" \
+				>> "${WORKDIR}/modules-sign-key.config"
+			merge_configs+=( "${WORKDIR}/modules-sign-key.config" )
+		elif [[ -n ${MODULES_SIGN_KEY} ]]; then
+			die "MODULES_SIGN_KEY=${MODULES_SIGN_KEY} not found or not readable!"
+		fi
 	fi
 
 	if [[ ${#user_configs[@]} -gt 0 ]]; then
