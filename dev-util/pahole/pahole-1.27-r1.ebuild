@@ -29,7 +29,7 @@ else
 	fi
 	S="${WORKDIR}"/${MY_P}
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-arnaldocarvalhodemelo )"
-	KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv x86"
+	KEYWORDS="amd64 arm ~arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 fi
 
 LICENSE="GPL-2" # only
