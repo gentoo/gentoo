@@ -9,20 +9,13 @@ potentially fail even if PHONON_BUILD_DESIGNER_PLUGIN was not requested.
 
 Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
 ---
- CMakeLists.txt | 32 ++++++++++++++++++--------------
- 1 file changed, 18 insertions(+), 14 deletions(-)
+ CMakeLists.txt | 32 +++++++++++++++++-------------
+ 1 file changed, 17 insertions(+), 13 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index c00760fc..babeb392 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -1,5 +1,5 @@
- cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
--project(Phonon VERSION "4.12.0")
-+project(Phonon VERSION "4.11.1")
- 
- include(FeatureSummary)
- 
 @@ -116,23 +116,27 @@ foreach(version ${VERSIONS})
      # https://bugreports.qt.io/browse/QTBUG-114706
      add_library(Qt::Widgets ALIAS Qt${QT_MAJOR_VERSION}::Widgets)
