@@ -102,7 +102,6 @@ multilib_src_configure() {
 		$(multilib_is_native_abi || echo "-DENABLE_CLI=OFF")
 		-DENABLE_PIC=ON
 		-DENABLE_LIBNUMA="$(usex numa)"
-		-DENABLE_MULTIVIEW="yes"
 		-DENABLE_SVT_HEVC="no" # missing
 		-DENABLE_VTUNE="no" # missing
 		-DGIT_ARCHETYPE=1 #814116
@@ -140,13 +139,13 @@ multilib_src_configure() {
 
 		local liblist="" v=
 		for v in "${MULTIBUILD_VARIANTS[@]}" ; do
-			ln -sf "${BUILD_DIR}-${v}/libx265.a" "${BUILD_DIR%-*}/libx265_${v}.a" || die
+			ln -s "${BUILD_DIR}-${v}/libx265.a" "${BUILD_DIR}/libx265_${v}.a" || die
 			liblist+="libx265_${v}.a;"
 		done
 
 		mycmakeargs+=(
 			-DEXTRA_LIB="${liblist}"
-			-DEXTRA_LINK_FLAGS="-L${BUILD_DIR%-*}"
+			-DEXTRA_LINK_FLAGS="-L${BUILD_DIR}"
 			-DLINKED_10BIT"=$(usex 10bit)"
 			-DLINKED_12BIT="$(usex 12bit)"
 		)
