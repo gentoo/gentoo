@@ -14,7 +14,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc64 ~x86 ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ppc64 ~ppc-macos ~x64-macos"
 IUSE="ant-task examples test vim-syntax"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( ant-task )"
