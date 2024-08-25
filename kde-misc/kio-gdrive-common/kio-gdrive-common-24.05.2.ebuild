@@ -6,7 +6,10 @@ EAPI=8
 ECM_HANDBOOK="true"
 KDE_ORG_CATEGORY="network"
 KDE_ORG_NAME="${PN/-common/}"
-KF5_BDEPEND=( "kde-apps/kaccounts-integration:5" )
+KF5_BDEPEND=( "|| (
+	kde-apps/kaccounts-integration:6[qt5]
+	kde-apps/kaccounts-integration:5
+)" )
 KF6_BDEPEND=( "kde-apps/kaccounts-integration:6" )
 KFMIN=5.115.0
 inherit ecm-common gear.kde.org
