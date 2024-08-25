@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-08-25)
+# net-libs/webkit-gtk has no mips keywords
+app-editors/emacs xwidgets
+dev-util/glade webkit
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-08-25)
 # alternatives not available on mips
 app-alternatives/awk nawk
 app-alternatives/bc gh
