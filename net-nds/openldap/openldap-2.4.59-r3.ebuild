@@ -422,9 +422,11 @@ src_configure() {
 	# The configure scripts make some assumptions that aren't valid in newer GCC.
 	# https://bugs.gentoo.org/920380
 	append-flags $(test-flags-CC -Wno-error=implicit-int)
-	# conftest.c:113:16: error: passing argument 1 of 'pthread_detach' makes integer from pointer without a cast [-Wint-conversion]
+	# conftest.c:113:16: error: passing argument 1 of 'pthread_detach' makes
+	# integer from pointer without a cast [-Wint-conversion]
 	append-flags $(test-flags-CC -Wno-error=int-conversion)
-	# error: passing argument 3 of ‘ldap_bv2rdn’ from incompatible pointer type [-Wincompatible-pointer-types]
+	# error: passing argument 3 of ‘ldap_bv2rdn’ from incompatible pointer type
+	# [-Wincompatible-pointer-types]
 	# expected ‘char **’ but argument is of type ‘const char **’
 	append-flags $(test-flags-CC -Wno-error=incompatible-pointer-types)
 
@@ -714,7 +716,8 @@ multilib_src_compile() {
 		build_contrib_module "allowed" "allowed.c" "allowed"
 		build_contrib_module "autogroup" "autogroup.c" "autogroup"
 		build_contrib_module "cloak" "cloak.c" "cloak"
-		# build_contrib_module "comp_match" "comp_match.c" "comp_match" # really complex, adds new external deps, questionable demand
+		# comp_match: really complex, adds new external deps, questionable demand
+		# build_contrib_module "comp_match" "comp_match.c" "comp_match"
 		build_contrib_module "denyop" "denyop.c" "denyop-overlay"
 		build_contrib_module "dsaschema" "dsaschema.c" "dsaschema-plugin"
 		build_contrib_module "dupent" "dupent.c" "dupent"
@@ -778,7 +781,8 @@ multilib_src_install() {
 			einfo "Adding $(basename ${x})"
 			sed -e "/###INSERTDYNAMICMODULESHERE###$/a# moduleload\t$(basename ${x})" -i "${configfile}" || die
 		done
-		sed -e "s:###INSERTDYNAMICMODULESHERE###$:# modulepath\t${EPREFIX}/usr/$(get_libdir)/openldap/openldap:" -i "${configfile}"
+		sed -e "s:###INSERTDYNAMICMODULESHERE###$:# modulepath\t${EPREFIX}/usr/$(get_libdir)/openldap/openldap:" \
+			-i "${configfile}"
 		use prefix || fowners root:ldap /etc/openldap/slapd.conf
 		fperms 0640 /etc/openldap/slapd.conf
 		cp "${configfile}" "${configfile}".default || die

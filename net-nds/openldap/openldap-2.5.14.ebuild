@@ -339,7 +339,10 @@ src_prepare() {
 	#
 	# Fish out MDB_VERSION_MAJOR/MDB_VERSION_MINOR/MDB_VERSION_PATCH from
 	# the bundled lmdb's header to find out the version.
-	local bundled_lmdb_version=$(sed -En '/^#define MDB_VERSION_(MAJOR|MINOR|PATCH)(\s+)?/{s/[^0-9.]//gp}' libraries/liblmdb/lmdb.h || die)
+	local bundled_lmdb_version=$(
+		sed -En '/^#define MDB_VERSION_(MAJOR|MINOR|PATCH)(\s+)?/{s/[^0-9.]//gp}' \
+			libraries/liblmdb/lmdb.h || die
+		)
 	printf -v bundled_lmdb_version "%s." ${bundled_lmdb_version}
 
 	if [[ ${SYSTEM_LMDB_VER}. != ${bundled_lmdb_version} ]] ; then
@@ -708,7 +711,8 @@ multilib_src_install() {
 			einfo "Adding $(basename ${x})"
 			sed -e "/###INSERTDYNAMICMODULESHERE###$/a# moduleload\t$(basename ${x})" -i "${configfile}" || die
 		done
-		sed -e "s:###INSERTDYNAMICMODULESHERE###$:# modulepath\t${EPREFIX}/usr/$(get_libdir)/openldap/openldap:" -i "${configfile}"
+		sed -e "s:###INSERTDYNAMICMODULESHERE###$:# modulepath\t${EPREFIX}/usr/$(get_libdir)/openldap/openldap:" \
+			-i "${configfile}"
 		use prefix || fowners root:ldap /etc/openldap/slapd.conf
 		fperms 0640 /etc/openldap/slapd.conf
 		cp "${configfile}" "${configfile}".default || die

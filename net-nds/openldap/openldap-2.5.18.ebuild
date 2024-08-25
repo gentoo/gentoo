@@ -337,7 +337,10 @@ src_prepare() {
 	#
 	# Fish out MDB_VERSION_MAJOR/MDB_VERSION_MINOR/MDB_VERSION_PATCH from
 	# the bundled lmdb's header to find out the version.
-	local bundled_lmdb_version=$(sed -En '/^#define MDB_VERSION_(MAJOR|MINOR|PATCH)(\s+)?/{s/[^0-9.]//gp}' libraries/liblmdb/lmdb.h || die)
+	local bundled_lmdb_version=$(
+		sed -En '/^#define MDB_VERSION_(MAJOR|MINOR|PATCH)(\s+)?/{s/[^0-9.]//gp}' \
+		libraries/liblmdb/lmdb.h || die
+	)
 	printf -v bundled_lmdb_version "%s." ${bundled_lmdb_version}
 
 	if [[ ${SYSTEM_LMDB_VER}. != ${bundled_lmdb_version} ]] ; then
@@ -408,9 +411,11 @@ multilib_src_configure() {
 	# The configure scripts make some assumptions that aren't valid in newer GCC.
 	# https://bugs.gentoo.org/920380
 	append-flags $(test-flags-CC -Wno-error=implicit-int)
-	# conftest.c:113:16: error: passing argument 1 of 'pthread_detach' makes integer from pointer without a cast [-Wint-conversion]
+	# conftest.c:113:16: error: passing argument 1 of 'pthread_detach' makes
+	# integer from pointer without a cast [-Wint-conversion]
 	append-flags $(test-flags-CC -Wno-error=int-conversion)
-	# error: passing argument 3 of ‘ldap_bv2rdn’ from incompatible pointer type [-Wincompatible-pointer-types]
+	# error: passing argument 3 of ‘ldap_bv2rdn’ from incompatible pointer type
+	# [-Wincompatible-pointer-types]
 	# expected ‘char **’ but argument is of type ‘const char **’
 	append-flags $(test-flags-CC -Wno-error=incompatible-pointer-types)
 
@@ -565,7 +570,6 @@ src_configure_cxx() {
 	popd &>/dev/null || die "popd contrib/ldapc++"
 }
 
-
 multilib_src_compile() {
 	tc-export AR CC CXX
 	emake CC="$(tc-getCC)" SHELL="${EPREFIX}"/bin/sh
@@ -716,7 +720,8 @@ multilib_src_install() {
 			einfo "Adding $(basename ${x})"
 			sed -e "/###INSERTDYNAMICMODULESHERE###$/a# moduleload\t$(basename ${x})" -i "${configfile}" || die
 		done
-		sed -e "s:###INSERTDYNAMICMODULESHERE###$:# modulepath\t${EPREFIX}/usr/$(get_libdir)/openldap/openldap:" -i "${configfile}"
+		sed -e "s:###INSERTDYNAMICMODULESHERE###$:# modulepath\t${EPREFIX}/usr/$(get_libdir)/openldap/openldap:" \
+			-i "${configfile}"
 		use prefix || fowners root:ldap /etc/openldap/slapd.conf
 		fperms 0640 /etc/openldap/slapd.conf
 		cp "${configfile}" "${configfile}".default || die
