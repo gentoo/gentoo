@@ -19,3 +19,20 @@ index 96b0223..cdc5618 100644
  
  dnl Define DOUBLEVAL if bigendian
  if test "x$ac_cv_c_bigendian" = "xyes"; then
+diff --git a/src/first.h b/src/first.h
+index 7852c73..21e15b9 100644
+--- a/src/first.h
++++ b/src/first.h
+@@ -25,9 +25,9 @@
+ #define register 
+ 
+ 
+-#ifdef _GLIBCXX_ASSERTIONS
+-#undef _GLIBCXX_ASSERTIONS
+-#endif
++// #ifdef _GLIBCXX_ASSERTIONS
++// #undef _GLIBCXX_ASSERTIONS
++// #endif
+ 
+ #if defined NUMWORKS && !defined SDL_KHICAS
+ #define KHICAS 1
