@@ -23,8 +23,6 @@ PATCHES=(
 	"${FILESDIR}/gcc-no-implicit-function-declaration-$(ver_cut 1-2 ${PV}).patch"
 )
 
-echo "PATCHES is ${PATCHES}"
-
 src_configure() {
 	econf \
 		--with-cupsfilterdir="${EPREFIX}/usr/libexec/cups/filter"
