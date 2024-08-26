@@ -17,6 +17,7 @@ HOMEPAGE="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+IUSE="noshim"
 
 RDEPEND="
 	dev-python/cryptography[${PYTHON_USEDEP}]
@@ -31,6 +32,13 @@ BDEPEND="
 "
 
 distutils_enable_tests unittest
+
+src_prepare() {
+	if use noshim; then
+		PATCHES+=( "${FILESDIR}"/no_shim_check.patch )
+	fi
+	default
+}
 
 python_test() {
 	eunittest tests

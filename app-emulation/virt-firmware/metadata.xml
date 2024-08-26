@@ -12,6 +12,13 @@
     Variable stores (OVMF_VARS.fd) can be modified, for example to enroll
     secure boot certificates.
   </longdescription>
+  <use>
+    <flag name="noshim">
+      Completely disables checking for <pkg>sys-boot/shim</pkg> in your
+      EFI; useful when you want to use <pkg>sys-kernel/installkernel</pkg>
+      with the efistub USE flag.
+    </flag>
+  </use>
   <upstream>
     <remote-id type="pypi">virt-firmware</remote-id>
     <remote-id type="gitlab">kraxel/virt-firmware</remote-id>

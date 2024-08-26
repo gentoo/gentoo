@@ -1,0 +1,14 @@
+diff --git a/virt/firmware/bootcfg/main.py b/virt/firmware/bootcfg/main.py
+index 7294efa..32302da 100644
+--- a/virt/firmware/bootcfg/main.py
++++ b/virt/firmware/bootcfg/main.py
+@@ -80,9 +80,6 @@ def create_boot_entry(efiuki, options):
+ 
+ 
+ def add_uki(cfg, options):
+-    if not options.shim and not firmware_loads_efi_binary(cfg, options.adduki):
+-        logging.error('shim binary needed but not found or specified')
+-        sys.exit(1)
+     if not options.title:
+         logging.error('entry title not specified')
+         sys.exit(1)
