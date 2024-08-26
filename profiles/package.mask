@@ -366,6 +366,7 @@ dev-scheme/guile:3.0
 >=dev-scheme/goosh-1.3-r100
 >=dev-scheme/guile-colorized-0.1_p20191205-r100
 >=dev-scheme/guile-config-0.5.1-r100
+>=dev-scheme/guile-dbi-2.1.9
 
 # Eli Schwartz <eschwartz@gentoo.org> (2024-08-15)
 # Abandoned upstream since 2011, unmaintained in gentoo since 2017. Tons of
