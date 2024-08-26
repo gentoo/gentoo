@@ -7,6 +7,7 @@ app-admin/syslog-ng amqp grpc kafka mongodb smtp
 app-crypt/pinentry efl
 app-text/doxygen gui
 dev-build/cmake gui
+dev-libs/libisoburn frontend-optional
 dev-util/glade gjs
 dev-util/pkgcheck emacs
 dev-util/ragel doc
