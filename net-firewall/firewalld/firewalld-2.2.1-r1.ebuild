@@ -25,7 +25,7 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/dbus-python[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
-		>=net-firewall/nftables-0.9.4[python,json]
+		>=net-firewall/nftables-0.9.4[python,json,${PYTHON_USEDEP}]
 		gui? (
 			x11-libs/gtk+:3
 			dev-python/PyQt6[gui,widgets,${PYTHON_USEDEP}]
