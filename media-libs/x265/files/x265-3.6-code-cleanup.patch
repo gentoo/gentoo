@@ -1,0 +1,140 @@
+From bca0b4b72977683794d441e57adc8c279ff4bfca Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Mon, 26 Aug 2024 14:25:35 +0200
+Subject: [PATCH 1/4] use boolean compare instead of bitwise
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/common/cudata.cpp b/common/cudata.cpp
+index 19281de..d5b295f 100644
+--- a/common/cudata.cpp
++++ b/common/cudata.cpp
+@@ -73,7 +73,7 @@ inline bool isEqualRow(int addrA, int addrB)
+ /* Check whether 2 addresses point to the same row or column */
+ inline bool isEqualRowOrCol(int addrA, int addrB)
+ {
+-    return isEqualCol(addrA, addrB) | isEqualRow(addrA, addrB);
++    return isEqualCol(addrA, addrB) || isEqualRow(addrA, addrB);
+ }
+ 
+ /* Check whether one address points to the first column */
+
+From da3eb3ea55be74e440b272e24d7d8e67cb7a76db Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Mon, 26 Aug 2024 14:44:55 +0200
+Subject: [PATCH 2/4] fix variable shadowing
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/common/cudata.h b/common/cudata.h
+index 8397f05..7f132e6 100644
+--- a/common/cudata.h
++++ b/common/cudata.h
+@@ -48,7 +48,7 @@ enum PartSize
+     SIZE_2NxnD, // asymmetric motion partition, 2Nx(3N/2) + 2Nx( N/2)
+     SIZE_nLx2N, // asymmetric motion partition, ( N/2)x2N + (3N/2)x2N
+     SIZE_nRx2N, // asymmetric motion partition, (3N/2)x2N + ( N/2)x2N
+-    NUM_SIZES
++    PART_NUM_SIZES
+ };
+ 
+ enum PredMode
+
+From 4ec09af244e2cfe3dfb739d74af7640ac114e775 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Mon, 26 Aug 2024 14:45:33 +0200
+Subject: [PATCH 3/4] register is a unused and reserved keyword in c++-17
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/common/md5.cpp b/common/md5.cpp
+index a9042f4..7e638e7 100644
+--- a/common/md5.cpp
++++ b/common/md5.cpp
+@@ -185,7 +185,10 @@ void MD5Final(MD5Context *ctx, uint8_t *digest)
+  */
+ void MD5Transform(uint32_t *buf, uint32_t *in)
+ {
+-    register uint32_t a, b, c, d;
++#if __cplusplus < 201703L
++    register
++#endif
++    uint32_t a, b, c, d;
+ 
+     a = buf[0];
+     b = buf[1];
+
+From 09379bbfe797e54f91ef5702c802f75aad604067 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Mon, 26 Aug 2024 14:26:55 +0200
+Subject: [PATCH 4/4] use std::abs instead of abs to avoid truncating values
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/common/pixel.cpp b/common/pixel.cpp
+index 3cd074c..62410f3 100644
+--- a/common/pixel.cpp
++++ b/common/pixel.cpp
+@@ -124,10 +124,10 @@ int ads_x4(int encDC[4], uint32_t *sums, int delta, uint16_t *costMvX, int16_t *
+     int nmv = 0;
+     for (int16_t i = 0; i < width; i++, sums++)
+     {
+-        int ads = abs(encDC[0] - long(sums[0]))
+-            + abs(encDC[1] - long(sums[lx >> 1]))
+-            + abs(encDC[2] - long(sums[delta]))
+-            + abs(encDC[3] - long(sums[delta + (lx >> 1)]))
++        int ads = std::abs(encDC[0] - long(sums[0]))
++            + std::abs(encDC[1] - long(sums[lx >> 1]))
++            + std::abs(encDC[2] - long(sums[delta]))
++            + std::abs(encDC[3] - long(sums[delta + (lx >> 1)]))
+             + costMvX[i];
+         if (ads < thresh)
+             mvs[nmv++] = i;
+@@ -141,8 +141,8 @@ int ads_x2(int encDC[2], uint32_t *sums, int delta, uint16_t *costMvX, int16_t *
+     int nmv = 0;
+     for (int16_t i = 0; i < width; i++, sums++)
+     {
+-        int ads = abs(encDC[0] - long(sums[0]))
+-            + abs(encDC[1] - long(sums[delta]))
++        int ads = std::abs(encDC[0] - long(sums[0]))
++            + std::abs(encDC[1] - long(sums[delta]))
+             + costMvX[i];
+         if (ads < thresh)
+             mvs[nmv++] = i;
+@@ -156,7 +156,7 @@ int ads_x1(int encDC[1], uint32_t *sums, int, uint16_t *costMvX, int16_t *mvs, i
+     int nmv = 0;
+     for (int16_t i = 0; i < width; i++, sums++)
+     {
+-        int ads = abs(encDC[0] - long(sums[0]))
++        int ads = std::abs(encDC[0] - long(sums[0]))
+             + costMvX[i];
+         if (ads < thresh)
+             mvs[nmv++] = i;
+diff --git a/encoder/analysis.cpp b/encoder/analysis.cpp
+index aabf386..127032d 100644
+--- a/encoder/analysis.cpp
++++ b/encoder/analysis.cpp
+@@ -2692,8 +2692,8 @@ void Analysis::classifyCU(const CUData& ctu, const CUGeom& cuGeom, const Mode& b
+             {
+                 offset = (depth * X265_REFINE_INTER_LEVELS) + i;
+                 /* Calculate distance values */
+-                diffRefine[i] = abs((int64_t)(trainData.cuVariance - m_frame->m_classifyVariance[offset]));
+-                diffRefineRd[i] = abs((int64_t)(cuCost - m_frame->m_classifyRd[offset]));
++                diffRefine[i] = std::abs((int64_t)(trainData.cuVariance - m_frame->m_classifyVariance[offset]));
++                diffRefineRd[i] = std::abs((int64_t)(cuCost - m_frame->m_classifyRd[offset]));
+ 
+                 /* Calculate prior probability - ranges between 0 and 1 */
+                 if (trainingCount)
+diff --git a/encoder/ratecontrol.cpp b/encoder/ratecontrol.cpp
+index 9f2b8d9..7732ccd 100644
+--- a/encoder/ratecontrol.cpp
++++ b/encoder/ratecontrol.cpp
+@@ -1891,7 +1891,7 @@ double RateControl::tuneQScaleForGrain(double rcOverflow)
+     int newQp = rcOverflow > 1.1 ? curQp + 2 : rcOverflow > 1 ? curQp + 1 : curQp - 1 ;
+     double projectedBitrate =  int(m_fps + 0.5) * m_qpToEncodedBits[newQp];
+     if (curBitrate > 0 && projectedBitrate > 0)
+-        q =  abs(projectedBitrate - m_bitrate) < abs (curBitrate - m_bitrate) ? x265_qp2qScale(newQp) : m_lastQScaleFor[P_SLICE];
++        q =  std::abs(projectedBitrate - m_bitrate) < std::abs (curBitrate - m_bitrate) ? x265_qp2qScale(newQp) : m_lastQScaleFor[P_SLICE];
+     else
+         q = rcOverflow > 1 ? qScaleAvg * qpstep : rcOverflow < 1 ?  qScaleAvg / qpstep : m_lastQScaleFor[P_SLICE];
+     return q;
