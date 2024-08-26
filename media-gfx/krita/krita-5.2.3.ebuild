@@ -98,6 +98,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.2.2-fftw.patch # bug 913518
 	# git master
 	"${FILESDIR}"/${PN}-5.1.5-sip-6.8.patch # bug 919139
+	"${FILESDIR}"/${PN}-5.2.3-znver4-xsimd.patch # bug 936296
 )
 
 pkg_setup() {
