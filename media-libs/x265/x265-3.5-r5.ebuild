@@ -42,6 +42,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.5-r5-cpp-std.patch"
 	"${FILESDIR}/${PN}-3.5-r5-gcc15.patch"
 	"${FILESDIR}/${PN}-3.5-r5-test-ns_2.patch"
+	"${FILESDIR}/${PN}-3.6-cmake-cleanup.patch"
+	"${FILESDIR}/${PN}-3.6-code-cleanup.patch"
 )
 
 pkg_setup() {
@@ -99,7 +101,6 @@ multilib_src_configure() {
 	filter-lto
 
 	local mycmakeargs=(
-		$(multilib_is_native_abi || echo "-DENABLE_CLI=OFF")
 		-DENABLE_PIC=ON
 		-DENABLE_LIBNUMA="$(usex numa)"
 		-DENABLE_SVT_HEVC="no" # missing
@@ -107,6 +108,11 @@ multilib_src_configure() {
 		-DGIT_ARCHETYPE=1 #814116
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 	)
+	if multilib_is_native_abi; then
+		mycmakeargs+=(
+			-DENABLE_CLI="no"
+		)
+	fi
 
 	# Unfortunately, the asm for x86/x32/arm isn't PIC-safe.
 	# x86 # Bug #528202, bug #913412
@@ -114,7 +120,9 @@ multilib_src_configure() {
 	if [[ ${ABI} = x86 ]] || [[ ${ABI} = x32 ]] || [[ ${ABI} = arm ]] ; then
 		mycmakeargs+=(
 			-DENABLE_ASSEMBLY=OFF
-			-DENABLE_TESTS="no" #728748
+			# ENABLE_TESTS requires ENABLE_ASSEMBLY=ON to be visible
+			# source/CMakeLists.txt:858
+			# -DENABLE_TESTS="no" #728748
 		)
 	else
 		mycmakeargs+=(
