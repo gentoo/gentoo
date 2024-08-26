@@ -1,0 +1,32 @@
+https://github.com/opencog/guile-dbi/commit/56e12dcab139c373dafccdd72fa2a140d82f3910
+https://github.com/opencog/guile-dbi/issues/6
+https://github.com/opencog/guile-dbi/issues/7
+
+From 56e12dcab139c373dafccdd72fa2a140d82f3910 Mon Sep 17 00:00:00 2001
+From: Linas Vepstas <linas@linas.org>
+Date: Mon, 17 Jul 2023 19:42:45 +0300
+Subject: [PATCH] Bug-fix for issues #6 and #7
+
+Seems to work for me...
+--- a/configure.ac
++++ b/configure.ac
+@@ -53,13 +53,13 @@ LTDL_INIT
+ 
+ # Checks for libraries.
+ PKG_CHECK_MODULES([GUILE], [guile-3.0])
+-#GUILE_PKG([3.0])
+-#GUILE_FLAGS
+-#GUILE_SITE_DIR
++GUILE_PKG([3.0])
++GUILE_FLAGS
++GUILE_SITE_DIR
+ #--
+-#CFLAGS="${CFLAGS} ${LTDLINCL} `$GUILECONFIG compile`"
+-#LIBS="$LIBLTDL `$GUILECONFIG link`"
+-#GUILE_SITE=`$GUILECONFIG info sitedir`
++CFLAGS="${CFLAGS} ${LTDLINCL} `$GUILE_CONFIG compile`"
++LIBS="$LIBLTDL `$GUILE_CONFIG link`"
++GUILE_SITE=`$GUILE_CONFIG info sitedir`
+ 
+ # Check for makeinfo; avoid ugliness if not installed.
+ AC_CHECK_PROG(have_makeinfo,makeinfo,yes,no)
