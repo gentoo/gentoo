@@ -163,7 +163,6 @@ media-video/bdsup2sub
 # Lacks maintainer capacity for dev-lang/scala.
 # Removal on 2024-08-26.  Bugs #932012, #932737, #933607.
 dev-lang/scala
-dev-lang/mozart
 
 # Alfred Wingate <parona@protonmail.com> (2024-07-24)
 # Includes change that breaks firewalld notably.
