@@ -34,6 +34,7 @@ DOCS=( CHANGELOG.md README.md readme.pdf )
 
 PATCHES=(
 	"${FILESDIR}/embree-4.3.1-dont-install-tutorials.patch"
+	"${FILESDIR}/${PN}-4.3.2-fix-output-operator.patch"
 )
 
 pkg_setup() {
