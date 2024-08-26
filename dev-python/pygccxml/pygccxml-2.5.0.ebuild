@@ -40,6 +40,7 @@ EPYTEST_DESELECT=(
 
 python_prepare_all() {
 	local PATCHES=(
+		"${FILESDIR}/${PN}-2.5.0-fix-tests.patch"
 		"${FILESDIR}/${PN}-2.4.0-doc.patch"
 		# https://github.com/CastXML/pygccxml/pull/179
 		"${FILESDIR}/${P}-which.patch"
