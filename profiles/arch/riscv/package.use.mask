@@ -1,6 +1,12 @@
 # Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Orlitzky <mjo@gentoo.org> (2024-08-26)
+# There's an unexplained test failure in sci-libs/qd that I've emailed
+# the authors about. Until we know what's up with that, USE=qd should
+# remain masked for consumers.
+sci-libs/fplll qd
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-07-06)
 # KDE PIM is not keyworded here
 kde-apps/libkgapi:5 kf6compat
