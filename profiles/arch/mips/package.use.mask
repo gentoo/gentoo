@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-08-26)
+# dev-util/bpftool and/or sys-devel/bpf-toolchain not keyworded here
+sys-apps/systemd bpf
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-08-26)
 # dev-ruby/thor not keyworded here
 app-text/htmltidy test
 
