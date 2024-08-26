@@ -356,7 +356,7 @@ multilib_src_test() {
 	addpredict "/test.db"
 	addpredict "/ÿ.db"
 
-	emake -Onone HAVE_TCL="$(usex tcl 1 "")" $(usex debug 'fulltest' 'test')
+	emake -Onone $(usex debug 'fulltest' 'test')
 }
 
 multilib_src_install() {
