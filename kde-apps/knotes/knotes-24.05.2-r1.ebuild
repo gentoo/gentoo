@@ -23,15 +23,15 @@ COMMON_DEPEND="
 	>=dev-libs/ktextaddons-1.5.4:6
 	dev-libs/libxslt
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,widgets,xml]
-	>=kde-apps/akonadi-${PVCUT}:6
-	>=kde-apps/akonadi-notes-${PVCUT}:6
-	>=kde-apps/akonadi-search-${PVCUT}:6
-	>=kde-apps/grantleetheme-${PVCUT}:6
-	>=kde-apps/kcalutils-${PVCUT}:6
-	>=kde-apps/kmime-${PVCUT}:6
-	>=kde-apps/kontactinterface-${PVCUT}:6
-	>=kde-apps/libkdepim-${PVCUT}:6
-	>=kde-apps/pimcommon-${PVCUT}:6
+	~kde-apps/akonadi-${PVCUT}:6
+	~kde-apps/akonadi-notes-${PVCUT}:6
+	~kde-apps/akonadi-search-${PVCUT}:6
+	~kde-apps/grantleetheme-${PVCUT}:6
+	~kde-apps/kcalutils-${PVCUT}:6
+	~kde-apps/kmime-${PVCUT}:6
+	~kde-apps/kontactinterface-${PVCUT}:6
+	~kde-apps/libkdepim-${PVCUT}:6
+	~kde-apps/pimcommon-${PVCUT}:6
 	>=kde-frameworks/kcalendarcore-${KFMIN}:6
 	>=kde-frameworks/kcmutils-${KFMIN}:6
 	>=kde-frameworks/kcompletion-${KFMIN}:6
