@@ -3,10 +3,12 @@
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-08-25)
 # simplify the dep tree
-app-admin/syslog-ng amqp grpc kafka mongodb smtp
+app-admin/syslog-ng amqp grpc kafka mongodb smtp test
 app-crypt/pinentry efl
 app-text/doxygen gui
 dev-build/cmake gui
+dev-db/mysql cjk
+dev-db/percona-server cjk
 dev-libs/libisoburn frontend-optional
 dev-util/glade gjs
 dev-util/pkgcheck emacs
@@ -113,7 +115,7 @@ net-analyzer/rrdtool rados
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-22)
 # Qt 5 is not keyworded here
-app-admin/setools X
+app-admin/setools X test
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-22)
 # Qt 5 is not keyworded here
