@@ -7,7 +7,6 @@ move app-doc/psmark app-text/psmark
 move app-doc/xmltoman app-text/xmltoman
 move app-doc/zeal app-text/zeal
 move sys-devel/gdb dev-debug/gdb
-move sys-devel/gdb-apple dev-debug/gdb-apple
 move dev-util/lldb dev-debug/lldb
 move dev-util/cgdb dev-debug/cgdb
 move dev-util/ninja dev-build/ninja

@@ -171,12 +171,6 @@ dev-lang/mozart-stdlib
 # Removal on 2024-08-26.  Bug #936756.
 www-apps/rt
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-27)
-# EAPI=6, awaits version bump. This is *-macos prefix only package, so
-# hard to verify EAPI bump without the maintainer.
-# Removal on 2024-08-26.  Bug #936755.
-dev-debug/gdb-apple
-
 # Alfred Wingate <parona@protonmail.com> (2024-07-24)
 # Includes change that breaks firewalld notably.
 #
