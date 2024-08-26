@@ -68,6 +68,11 @@ src_test() {
 src_install() {
 	meson_src_install
 
+	mv "${ED}"/usr/share/doc/appmenu-gtk-module/* "${ED}"/usr/share/doc/${PF} || die
+	rmdir "${ED}"/usr/share/doc/appmenu-gtk-module || die
+
+	rm "${ED}"/usr/share/licenses/appmenu-gtk-module/LICENSE || die
+
 	exeinto /etc/X11/xinit/xinitrc.d
 	newexe "${FILESDIR}"/${PN}-r1 85-${PN}
 }
