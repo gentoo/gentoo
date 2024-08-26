@@ -363,6 +363,7 @@ dev-scheme/guile:3.0
 >=dev-scheme/akku-1.1.0-r100
 >=dev-scheme/bytestructures-2.0.2-r100
 >=dev-scheme/fibers-1.2.0_p20230522-r100
+>=dev-scheme/goosh-1.3-r100
 
 # Eli Schwartz <eschwartz@gentoo.org> (2024-08-15)
 # Abandoned upstream since 2011, unmaintained in gentoo since 2017. Tons of
