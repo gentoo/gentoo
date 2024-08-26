@@ -38,6 +38,7 @@ DOCS=( CHANGELOG.md README.md readme.pdf )
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.13.5-fix-openimageio-test.patch
 	"${FILESDIR}"/${PN}-3.13.5-fix-arm64.patch
+	"${FILESDIR}/${PN}-4.3.2-fix-output-operator.patch"
 )
 
 pkg_setup() {
