@@ -164,7 +164,6 @@ media-video/bdsup2sub
 # Removal on 2024-08-26.  Bugs #932012, #932737, #933607.
 dev-lang/scala
 dev-lang/mozart
-dev-lang/mozart-stdlib
 
 # Alfred Wingate <parona@protonmail.com> (2024-07-24)
 # Includes change that breaks firewalld notably.
