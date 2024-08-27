@@ -388,6 +388,7 @@ dev-scheme/guile:3.0
 >=media-sound/lilypond-2.24.4-r100
 >=net-analyzer/alive-2.0.5-r100
 >=net-irc/weechat-4.3.4-r100
+>=net-mail/mailutils-3.17-r100
 
 # Eli Schwartz <eschwartz@gentoo.org> (2024-08-15)
 # Abandoned upstream since 2011, unmaintained in gentoo since 2017. Tons of
