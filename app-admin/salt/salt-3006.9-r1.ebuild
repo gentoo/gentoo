@@ -70,7 +70,7 @@ RDEPEND="
 		>=dev-python/ioflo-1.1.7[${PYTHON_USEDEP}]
 		>=dev-python/raet-0.6.0[${PYTHON_USEDEP}]
 	)
-	cherrypy? ( >=dev-python/cherrypy-3.2.2[${PYTHON_USEDEP}] )
+	cherrypy? ( >=dev-python/cherrypy-18.6.1[${PYTHON_USEDEP}] )
 	cheetah? ( >=dev-python/cheetah3-3.2.2[${PYTHON_USEDEP}] )
 	genshi? ( dev-python/genshi[${PYTHON_USEDEP}] )
 	mongodb? ( dev-python/pymongo[${PYTHON_USEDEP}] )
