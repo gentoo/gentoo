@@ -142,6 +142,7 @@ RESTRICT="
 
 PATCHES=(
 	"${FILESDIR}/salt-3003-gentoolkit-revdep.patch"
+	"${FILESDIR}/salt-3006.9-pam-module.patch"
 )
 
 python_prepare_all() {
@@ -396,6 +397,14 @@ python_prepare_all() {
 		| xargs -0 -- sed -i -e 's:[.]called_once:.assert_called_once:g' -- || die
 
 	distutils-r1_python_prepare_all
+}
+
+python_prepare() {
+	if [[ ${EPYTHON#*.} -ge 12 ]]; then
+		# stop annoying warning from spamming logs
+		grep -Rl datetime.datetime.utcnow salt \
+			| xargs sed -i 's:datetime.datetime.utcnow():datetime.datetime.now(datetime.UTC):'
+	fi
 }
 
 python_install_all() {

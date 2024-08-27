@@ -138,6 +138,7 @@ RESTRICT="!test? ( test ) x86? ( test )"
 PATCHES=(
 	"${FILESDIR}/salt-3003-gentoolkit-revdep.patch"
 	"${FILESDIR}/salt-3005.1-no-entry-points.patch"
+	"${FILESDIR}/salt-3006.9-pam-module.patch"
 )
 
 python_prepare_all() {
