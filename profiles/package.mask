@@ -158,6 +158,11 @@ media-video/bdsup2sub
 =dev-python/ensurepip-setuptools-72.0.0
 =dev-python/setuptools-72.0.0
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-27)
+# EAPI=6 package, awaits version bump.
+# Removal on 2024-08-26.  Bug #936756.
+www-apps/rt
+
 # Alfred Wingate <parona@protonmail.com> (2024-07-24)
 # Includes change that breaks firewalld notably.
 #

@@ -1,0 +1,12 @@
+diff -Naruw rt-4.2.11.orig/Makefile.in rt-4.2.11/Makefile.in
+--- rt-4.2.11.orig/Makefile.in	2015-04-27 20:56:16.000000000 -0400
++++ rt-4.2.11/Makefile.in	2015-05-14 13:50:05.279292835 -0400
+@@ -359,6 +359,8 @@
+ 	rm -rf $(DESTDIR)$(MASON_DATA_PATH)/etc/*
+ 	rm -rf $(DESTDIR)$(MASON_DATA_PATH)/obj/*
+ 
++.NOTPARALLEL: testdeps config-install dirs files-install fixperms instruct
++
+ install: testdeps config-install dirs files-install fixperms instruct
+ 
+ files-install: libs-install etc-install config-install bin-install sbin-install html-install doc-install font-install po-install static-install
