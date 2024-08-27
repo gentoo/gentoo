@@ -180,6 +180,7 @@ net-wireless/gnuradio
 net-wireless/gqrx
 net-wireless/gr-iqbal
 net-wireless/gr-osmosdr
+app-emulation/diskimage-builder
 
 # Various packages requiring Rust.
 app-admin/ansible
