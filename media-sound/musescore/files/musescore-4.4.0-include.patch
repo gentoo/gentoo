@@ -1,0 +1,11 @@
+--- a/src/framework/audio/internal/fx/reverb/vectorops.h
++++ b/src/framework/audio/internal/fx/reverb/vectorops.h
+@@ -27,6 +27,8 @@
+ 
+ #include <cstdint>
+ 
++#include <cstring>
++
+ //
+ // This header is provided for convenience, to easily wrap vector operations around
+ // their platform-specific optimised libraries (e.g. IPP, vDSP), if desired.
