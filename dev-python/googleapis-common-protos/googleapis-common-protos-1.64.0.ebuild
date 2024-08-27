@@ -24,9 +24,9 @@ RDEPEND="
 	!dev-python/namespace-google
 "
 
+distutils_enable_tests pytest
+
 python_compile() {
 	distutils-r1_python_compile
 	find "${BUILD_DIR}" -name '*.pth' -delete || die
 }
-
-# no tests as this is all generated code
