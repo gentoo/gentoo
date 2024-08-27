@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/dracut-ng/dracut-ng"
 else
 	if [[ "${PV}" != *_rc* ]]; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+		KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 	fi
 	SRC_URI="https://github.com/dracut-ng/dracut-ng/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-ng-${PV}"
@@ -66,6 +66,8 @@ PATCHES=(
 	"${FILESDIR}"/gentoo-ldconfig-paths-r1.patch
 	# Gentoo specific acct-user and acct-group conf adjustments
 	"${FILESDIR}"/${PN}-103-acct-user-group-gentoo.patch
+	# https://github.com/dracut-ng/dracut-ng/pull/507
+	"${FILESDIR}"/${PN}-103-systemd-udev-256-kmod.patch
 )
 
 src_configure() {
