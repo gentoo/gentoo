@@ -20,7 +20,9 @@ SRC_URI="https://github.com/POV-Ray/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~soap/distfiles/${P}_p20160914-fix-c++14.patch.bz2"
 S=${WORKDIR}/${PN}-${MY_PV}
 
-LICENSE="AGPL-3+ CC-BY-SA-3.0 CC-BY-NC-SA-2.5"
+# Upstream claims to have CC-BY-NC-SA-2.5 documentation, but it doesn't seem
+# to actually be in the sources, so we don't distribute it either.
+LICENSE="AGPL-3+ CC-BY-SA-3.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="debug +io-restrictions tiff X"
