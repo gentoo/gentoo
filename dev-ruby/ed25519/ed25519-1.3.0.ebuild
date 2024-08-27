@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,6 @@ SRC_URI="https://github.com/crypto-rb/ed25519/archive/v${PV}.tar.gz -> ${P}.tar.
 LICENSE="MIT"
 SLOT="1"
 KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
-IUSE=""
 
 all_ruby_prepare() {
 	sed -i -e '/\(bundler\|coverall\)/I s:^:#:' spec/spec_helper.rb || die
