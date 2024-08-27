@@ -1,21 +1,26 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit cmake udev
 
+DESCRIPTION="Tool suite used to flash firmware onto Samsung devices"
+HOMEPAGE="
+	https://git.sr.ht/~grimler/Heimdall
+	https://glassechidna.com.au/heimdall/
+	https://github.com/Benjamin-Dobell/Heimdall
+"
+
 if [[ ${PV} != 9999 ]]; then
 	SRC_URI="https://git.sr.ht/~grimler/Heimdall/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm64"
 	S="${WORKDIR}/Heimdall-v${PV}"
+
+	KEYWORDS="~amd64 ~arm64"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://git.sr.ht/~grimler/Heimdall"
 fi
-
-DESCRIPTION="Tool suite used to flash firmware onto Samsung devices"
-HOMEPAGE="https://git.sr.ht/~grimler/Heimdall https://glassechidna.com.au/heimdall/ https://github.com/Benjamin-Dobell/Heimdall"
 
 LICENSE="MIT"
 SLOT="0"
@@ -41,10 +46,9 @@ src_configure() {
 }
 
 src_install() {
-	dobin "${BUILD_DIR}"/bin/heimdall
-	use gui && dobin "${BUILD_DIR}"/bin/heimdall-frontend
+	cmake_src_install
+
 	udev_dorules heimdall/60-heimdall.rules
-	dodoc README.md Linux/README
 }
 
 pkg_postinst() {
