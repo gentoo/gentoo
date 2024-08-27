@@ -30,7 +30,7 @@ BDEPEND="
 "
 DEPEND="
 	media-libs/dav1d:=[${MULTILIB_USEDEP}]
-	media-libs/libde265:=[${MULTILIB_USEDEP}]
+	media-libs/libde265[${MULTILIB_USEDEP}]
 	media-libs/libpng:0=[${MULTILIB_USEDEP}]
 	media-libs/tiff:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib:=[${MULTILIB_USEDEP}]
@@ -39,7 +39,7 @@ DEPEND="
 	gdk-pixbuf? ( x11-libs/gdk-pixbuf[${MULTILIB_USEDEP}] )
 	go? ( dev-lang/go )
 	rav1e? ( media-video/rav1e:= )
-	svt-av1? ( media-libs/svt-av1[${MULTILIB_USEDEP}] )
+	svt-av1? ( media-libs/svt-av1:=[${MULTILIB_USEDEP}] )
 	x265? ( media-libs/x265:=[${MULTILIB_USEDEP}] )
 "
 RDEPEND="${DEPEND}"
