@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/erocarrera/pefile/releases/download/v${PV}/${P}.tar.gz -> ${P}.gh.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="MIT"
@@ -24,3 +24,4 @@ SLOT="0"
 # Unfortunately there is nothing we can test here. Upstream doesn't ship a test
 # suite inside the release files. The test fixtures in the source repo is
 # encrypted so that only their CI pipeline is able to run the tests.
+RESTRICT="test"
