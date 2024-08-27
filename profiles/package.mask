@@ -394,6 +394,7 @@ dev-scheme/guile:3.0
 >=sci-libs/linux-gpib-4.3.6-r100
 >=sci-libs/nlopt-2.7.1-r100
 >=sys-devel/autogen-5.18.16-r100
+>=www-client/elinks-0.16.1.1-r100
 
 # Eli Schwartz <eschwartz@gentoo.org> (2024-08-15)
 # Abandoned upstream since 2011, unmaintained in gentoo since 2017. Tons of
