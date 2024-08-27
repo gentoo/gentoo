@@ -399,14 +399,6 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-python_prepare() {
-	if [[ ${EPYTHON#*.} -ge 12 ]]; then
-		# stop annoying warning from spamming logs
-		grep -Rl datetime.datetime.utcnow salt \
-			| xargs sed -i 's:datetime.datetime.utcnow():datetime.datetime.now(datetime.UTC):'
-	fi
-}
-
 python_install_all() {
 	local -x USE_SETUPTOOLS=1
 	distutils-r1_python_install_all
