@@ -9,6 +9,8 @@ DESCRIPTION="Library to compute the homfly polynomial of a link"
 HOMEPAGE="https://github.com/miguelmarco/libhomfly"
 SRC_URI="https://github.com/miguelmarco/${PN}/releases/download/${MY_PV}/${MY_P}.tar.gz"
 
+S="${WORKDIR}/${MY_P}"
+
 LICENSE="Unlicense"
 SLOT="0"
 KEYWORDS="amd64 ~riscv"
@@ -16,8 +18,6 @@ IUSE="static-libs"
 
 DEPEND="dev-libs/boehm-gc"
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${MY_P}"
 
 src_configure() {
 	econf $(use_enable static-libs static)
