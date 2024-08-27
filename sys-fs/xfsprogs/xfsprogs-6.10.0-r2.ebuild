@@ -25,6 +25,10 @@ DEPEND="${RDEPEND}"
 BDEPEND="nls? ( sys-devel/gettext )"
 RDEPEND+=" selinux? ( sec-policy/selinux-xfs )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.10.0-c++-void.patch
+)
+
 src_prepare() {
 	default
 
