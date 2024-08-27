@@ -69,7 +69,7 @@ src_configure() {
 		# Doesn't do anything beyond adding -flto (bug #930947).
 		--disable-lto
 		# The default value causes double 'lib'
-		--localstatedir=/var
+		--localstatedir="${EPREFIX}/var"
 		--with-crond-dir="${EPREFIX}/etc/cron.d"
 		--with-systemd-unit-dir="$(systemd_get_systemunitdir)"
 		--with-udev-rule-dir="$(get_udevdir)/rules.d"
