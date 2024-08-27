@@ -76,15 +76,17 @@ src_prepare() {
 }
 
 python_configure() {
-	local v=$(
-		"${EPYTHON}" - <<-EOF
-			import sys
-			print(".".join(str(x) for x in sys.version_info[:2]))
-		EOF
-	)
-	if [[ ! -e .pipx_tests/package_cache/${v} ]]; then
-		ln -s "${WORKDIR}/${TEST_SHIM}" \
-			".pipx_tests/package_cache/${v}" || die
+	if use test; then
+		local v=$(
+			"${EPYTHON}" - <<-EOF
+				import sys
+				print(".".join(str(x) for x in sys.version_info[:2]))
+			EOF
+		)
+		if [[ ! -e .pipx_tests/package_cache/${v} ]]; then
+			ln -s "${WORKDIR}/${TEST_SHIM}" \
+				".pipx_tests/package_cache/${v}" || die
+		fi
 	fi
 }
 
