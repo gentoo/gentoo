@@ -383,6 +383,7 @@ dev-scheme/guile:3.0
 >=dev-scheme/guile-ssh-0.16.4-r100
 >=dev-scheme/guile-zlib-0.1.0-r100
 >=dev-scheme/guile-zstd-0.1.1-r100
+>=dev-scheme/xdgdirs-2.2-r100
 
 # Eli Schwartz <eschwartz@gentoo.org> (2024-08-15)
 # Abandoned upstream since 2011, unmaintained in gentoo since 2017. Tons of
