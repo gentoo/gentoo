@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 
 inherit distutils-r1 pypi
 
@@ -65,19 +65,27 @@ src_prepare() {
 		cp -vs "${DISTDIR}"/pip-24.0-py3-none-any.whl \
 			"${WORKDIR}/${TEST_SHIM}/" || die
 		mkdir -p .pipx_tests/package_cache || die
-		local v
-		for v in 3.{10..12}; do
-			ln -s "${WORKDIR}/${TEST_SHIM}" \
-				".pipx_tests/package_cache/${v}" || die
-		done
 
-		: > scripts/update_package_cache.py || die
+		> scripts/update_package_cache.py || die
 		# sigh
 		sed -e 's:server = str.*:server = "pypi-server":' \
 			-i tests/conftest.py || die
 	fi
 
 	distutils-r1_src_prepare
+}
+
+python_configure() {
+	local v=$(
+		"${EPYTHON}" - <<-EOF
+			import sys
+			print(".".join(str(x) for x in sys.version_info[:2]))
+		EOF
+	)
+	if [[ ! -e .pipx_tests/package_cache/${v} ]]; then
+		ln -s "${WORKDIR}/${TEST_SHIM}" \
+			".pipx_tests/package_cache/${v}" || die
+	fi
 }
 
 python_test() {
