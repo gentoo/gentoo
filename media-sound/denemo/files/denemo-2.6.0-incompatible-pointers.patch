@@ -1,0 +1,36 @@
+diff --git a/src/source/proof.c b/src/source/proof.c
+index f9a02bf0e..3b8f5fc82 100644
+--- a/src/source/proof.c
++++ b/src/source/proof.c
+@@ -280,7 +280,7 @@ press (EvView * view,  GdkEventButton  *event, EvDocumentModel *model)
+         infodialog (help_text);
+     nearest_annotation_text = NULL;
+     extern EvMappingList * ev_document_annotations_get_annotations();
+-    EvMappingList *mapping_list = ev_document_annotations_get_annotations (doc, ev_document_get_page(doc, i));
++    EvMappingList *mapping_list = ev_document_annotations_get_annotations (EV_DOCUMENT_ANNOTATIONS (doc), ev_document_get_page(doc, i));
+     if(mapping_list)
+     {
+     gdouble nearest = G_MAXDOUBLE;
+@@ -313,7 +313,7 @@ find_annotated_pages (EvDocumentModel *model)
+     for (i=0; i< ev_document_get_n_pages(doc);i++)
+         {
+             extern EvMappingList * ev_document_annotations_get_annotations();
+-            EvMappingList *mapping_list = ev_document_annotations_get_annotations (doc, ev_document_get_page(doc, i));
++            EvMappingList *mapping_list = ev_document_annotations_get_annotations (EV_DOCUMENT_ANNOTATIONS (doc), ev_document_get_page(doc, i));
+             if(mapping_list)
+             {
+              annotated_pages = g_list_append (annotated_pages, GINT_TO_POINTER(i));
+diff --git a/tests/integration.c b/tests/integration.c
+index f3aad7a1f..5910425e6 100644
+--- a/tests/integration.c
++++ b/tests/integration.c
+@@ -248,7 +248,7 @@ parse_dir_and_run_complex_test(gchar* path, const gchar* extension)
+   while(files){
+     filename = g_build_filename(path, files->data, NULL);
+     gchar* test_case_path = g_strdup_printf("%s-%d", test_case_path_fragment, test_case_path_counter);
+-    g_test_add (test_case_path, gchar*, filename, setup, test_open_save_complex_file, teardown);
++    g_test_add (test_case_path, void, filename, setup, test_open_save_complex_file, teardown);
+     g_free(test_case_path);
+     test_case_path_counter ++;
+     files = g_list_next(files);
+
