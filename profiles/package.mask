@@ -392,6 +392,7 @@ dev-scheme/guile:3.0
 >=sci-electronics/geda-1.10.2-r100
 >=sci-electronics/gwave-20190116-r100
 >=sci-libs/linux-gpib-4.3.6-r100
+>=sci-libs/nlopt-2.7.1-r100
 
 # Eli Schwartz <eschwartz@gentoo.org> (2024-08-15)
 # Abandoned upstream since 2011, unmaintained in gentoo since 2017. Tons of
