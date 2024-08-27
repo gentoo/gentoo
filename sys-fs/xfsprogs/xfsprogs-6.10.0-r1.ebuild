@@ -97,6 +97,8 @@ src_install() {
 	if ! use static-libs; then
 		rm "${ED}/usr/$(get_libdir)/libhandle.a" || die
 	fi
+
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postrm() {
