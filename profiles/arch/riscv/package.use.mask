@@ -6,6 +6,7 @@
 # the authors about. Until we know what's up with that, USE=qd should
 # remain masked for consumers.
 sci-libs/fplll qd
+sci-mathematics/lcalc double-double quad-double
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-07-06)
 # KDE PIM is not keyworded here
