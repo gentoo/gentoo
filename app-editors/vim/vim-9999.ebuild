@@ -158,6 +158,13 @@ src_prepare() {
 		's# auto/config\.mk:#:#' src/Makefile || die "Makefile sed failed"
 	rm src/auto/configure || die "rm failed"
 
+	# --with-features=huge forces on cscope even if we --disable it. We need
+	# to sed this out to avoid screwiness. (1 Sep 2004 ciaranm)
+	if ! use cscope; then
+		sed -i -e \
+			'/# define FEAT_CSCOPE/d' src/feature.h || die "couldn't disable cscope"
+	fi
+
 	# bug 908961
 	if use elibc_musl ; then
 		sed -i -e '/ja.sjis/d' src/po/Make_all.mak || die
@@ -186,16 +193,19 @@ src_configure() {
 		fi
 	done
 
-	local myconf=()
+	local myconf=(
+		--with-modified-by="Gentoo-${PVR} (RIP Bram)"
+		--enable-gui=no
+		--disable-darwin
+	)
+
 	if use minimal; then
-		myconf=(
+		myconf+=(
 			--with-features=tiny
 			--disable-nls
 			--disable-canberra
 			--disable-acl
-			--enable-gui=no
 			--without-x
-			--disable-darwin
 			--disable-luainterp
 			--disable-perlinterp
 			--disable-pythoninterp
@@ -208,7 +218,7 @@ src_configure() {
 	else
 		use debug && append-flags "-DDEBUG"
 
-		myconf=(
+		myconf+=(
 			--with-features=huge
 			$(use_enable sound canberra)
 			$(use_enable acl)
@@ -226,13 +236,6 @@ src_configure() {
 			$(use_enable terminal)
 		)
 
-		# --with-features=huge forces on cscope even if we --disable it. We need
-		# to sed this out to avoid screwiness. (1 Sep 2004 ciaranm)
-		if ! use cscope; then
-			sed -i -e \
-				'/# define FEAT_CSCOPE/d' src/feature.h || die "sed failed"
-		fi
-
 		if use lua; then
 			# -DLUA_COMPAT_OPENLIB=1 is required to enable the
 			# deprecated (in 5.1) luaL_openlib API (#874690)
@@ -248,8 +251,6 @@ src_configure() {
 		# don't test USE=X here ... see bug #19115
 		# but need to provide a way to link against X ... see bug #20093
 		myconf+=(
-			--enable-gui=no
-			--disable-darwin
 			$(use_with X x)
 		)
 	fi
@@ -268,9 +269,7 @@ src_configure() {
 			   vim_cv_toupper_broken=no
 	fi
 
-	econf \
-		--with-modified-by="Gentoo-${PVR} (RIP Bram)" \
-		"${myconf[@]}"
+	econf "${myconf[@]}"
 }
 
 src_compile() {
