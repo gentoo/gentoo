@@ -6,11 +6,11 @@ EAPI=8
 inherit gap-pkg
 
 DESCRIPTION="Graphs, digraphs, and multidigraphs in GAP"
-SLOT="0"
 SRC_URI="https://github.com/digraphs/Digraphs/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
-KEYWORDS="~amd64"
+SLOT="0"
+KEYWORDS="~amd64 ~riscv"
 
 DEPEND="sci-mathematics/gap:=
 	sci-mathematics/planarity

@@ -6,11 +6,11 @@ EAPI=8
 inherit gap-pkg toolchain-funcs
 
 DESCRIPTION="GAP methods to enumerate orbits"
-SLOT="0"
 SRC_URI="https://github.com/gap-packages/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
-KEYWORDS="~amd64"
+SLOT="0"
+KEYWORDS="~amd64 ~riscv"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 
