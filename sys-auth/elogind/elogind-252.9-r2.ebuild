@@ -54,8 +54,9 @@ DOCS=( README.md)
 
 PATCHES=(
 	"${FILESDIR}/${P}-nodocs.patch"
-	"${FILESDIR}/${PN}-252.9-musl-lfs.patch"
-	"${FILESDIR}/${PN}-252.9-musl-1.2.5.patch"
+	"${FILESDIR}/${P}-musl-lfs.patch"
+	"${FILESDIR}/${P}-musl-1.2.5.patch"
+	"${FILESDIR}/${P}-py-exec.patch" # bug 933398
 )
 
 python_check_deps() {
