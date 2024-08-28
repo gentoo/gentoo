@@ -23,7 +23,7 @@ DEPEND="
 	>=dev-qt/qtsvg-${QTMIN}:6
 "
 RDEPEND="${DEPEND}
-	!${CATEGORY}/${PN}:5[-kf6compat(-)]
+	!${CATEGORY}/${PN}-console:5
 "
 BDEPEND="
 	app-alternatives/lex
