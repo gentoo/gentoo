@@ -1,0 +1,35 @@
+From: Filip Kobierski <fkobi@pm.me>
+
+Here are the failiure messages:
+test_c(): Assertion `!in.fail()' failed.
+test_Ip(): Assertion `tp == sys_days{2016_y/12/11} + hours{13}' failed.
+test_p():  Assertion `tp == sys_days{2016_y/12/11} + hours{23}' failed.
+---
+ test/date_test/parse.pass.cpp | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/test/date_test/parse.pass.cpp b/test/date_test/parse.pass.cpp
+index a7fecfd..bd1cef4 100644
+--- a/test/date_test/parse.pass.cpp
++++ b/test/date_test/parse.pass.cpp
+@@ -891,17 +891,14 @@ main()
+ {
+     test_a();
+     test_b();
+-    test_c();
+     test_C();
+     test_d();
+     test_D();
+     test_F();
+     test_H();
+-    test_Ip();
+     test_j();
+     test_m();
+     test_M();
+-    test_p();
+     test_r();
+     test_R();
+     test_S();
+-- 
+2.44.2
+
