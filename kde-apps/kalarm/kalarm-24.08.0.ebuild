@@ -63,6 +63,7 @@ RDEPEND="${COMMON_DEPEND}
 	pim? ( >=kde-apps/kdepim-runtime-${PVCUT}:6 )
 "
 DEPEND="${COMMON_DEPEND}
+	speech? ( kde-apps/kpimtextedit[speech] )
 	X? ( x11-base/xorg-proto )
 "
 
