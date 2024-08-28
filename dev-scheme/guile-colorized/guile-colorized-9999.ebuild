@@ -1,7 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+GUILE_COMPAT=( 2-2 3-0 )
+inherit guile
 
 DESCRIPTION="Colorized REPL for GNU Guile"
 HOMEPAGE="https://gitlab.com/NalaGinrut/guile-colorized/"
@@ -20,20 +23,20 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 
-RDEPEND=">=dev-scheme/guile-2.0.9:="
+REQUIRED_USE="${GUILE_REQUIRED_USE}"
+
+RDEPEND="${GUILE_DEPS}"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	default
-
-	# http://debbugs.gnu.org/cgi/bugreport.cgi?bug=38112
-	find "${S}" -name "*.scm" -exec touch {} + || die
-}
-
 src_install() {
-	einstalldocs
+	my_install() {
+		local loadpath=$(${GUILE} -c '(display (string-append (car %load-path) "/ice-9"))')
+		mkdir -p "${SLOTTED_D}${loadpath}" || die
+		emake -C "${S}" TARGET="${SLOTTED_D}${loadpath}" install
+	}
+	guile_foreach_impl my_install
+	guile_merge_roots
+	guile_unstrip_ccache
 
-	local loadpath=$(guile -c '(display (string-append (car %load-path) "/ice-9"))')
-	mkdir -p "${D}${loadpath}"
-	emake TARGET="${D}${loadpath}" install
+	einstalldocs
 }
