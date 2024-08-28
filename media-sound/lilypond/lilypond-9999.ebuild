@@ -3,9 +3,11 @@
 
 EAPI=8
 
+GUILE_REQ_USE="deprecated,regex"
+GUILE_COMPAT=( 2-2 3-0 )
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit elisp-common autotools python-single-r1 toolchain-funcs xdg-utils
+inherit elisp-common autotools guile-single python-single-r1 toolchain-funcs xdg-utils
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -24,7 +26,7 @@ SLOT="0"
 LANG_USE="l10n_ca l10n_cs l10n_de l10n_en l10n_fr l10n_hu l10n_it l10n_ja l10n_nl l10n_pt l10n_zh"
 IUSE="debug doc emacs profile ${LANG_USE}"
 unset LANG_USE
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="${GUILE_REQUIRED_USE} ${PYTHON_REQUIRED_USE}"
 
 BDEPEND="
 	dev-texlive/texlive-metapost
@@ -35,12 +37,16 @@ BDEPEND="
 	doc? ( app-text/texi2html )
 "
 RDEPEND="app-text/ghostscript-gpl
-	>=dev-scheme/guile-3.0.7:12=[deprecated,regex]
+	dev-libs/boehm-gc
+	dev-libs/glib:2
+	dev-libs/libatomic_ops
 	media-fonts/tex-gyre
 	media-libs/fontconfig
 	media-libs/freetype:2
+	media-libs/harfbuzz
 	>=x11-libs/pango-1.40
 	emacs? ( >=app-editors/emacs-23.1:* )
+	${GUILE_DEPS}
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	app-text/t1utils
@@ -60,12 +66,15 @@ RESTRICT="test"
 
 DOCS=( DEDICATION README.md ROADMAP )
 
-# guile generates ELF files without use of C or machine code
-# It's a portage's false positive. bug #677600
-QA_PREBUILT='*[.]go'
+QA_PREBUILT="usr/*/${PN}/${PV}/ccache/*"
+
+pkg_setup() {
+	guile-single_pkg_setup
+	python-single-r1_pkg_setup
+}
 
 src_prepare() {
-	default
+	guile-single_src_prepare
 
 	# respect CFLAGS
 	sed -i 's/OPTIMIZE -g/OPTIMIZE/' aclocal.m4 || die
@@ -119,6 +128,8 @@ src_install() {
 			|| die "elisp-install failed"
 		elisp-site-file-install "${FILESDIR}"/50${PN}-gentoo.el
 	fi
+
+	guile_unstrip_ccache
 
 	python_fix_shebang "${ED}"
 
