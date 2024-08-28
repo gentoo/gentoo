@@ -68,7 +68,8 @@ RDEPEND="
 	tcl? ( dev-lang/tcl:0= )
 "
 DEPEND="${RDEPEND}
-	x11-base/xorg-proto"
+	x11-base/xorg-proto
+"
 # configure runs the Lua interpreter
 BDEPEND="
 	dev-build/autoconf
@@ -191,9 +192,15 @@ src_configure() {
 		fi
 	done
 
+	local myconf=(
+		--with-modified-by="Gentoo-${PVR} (RIP Bram)"
+		--with-vim-name=gvim
+		--with-x
+	)
+
 	use debug && append-flags "-DDEBUG"
 
-	local myconf=(
+	myconf+=(
 		--with-features=huge
 		--disable-gpm
 		--with-gnome=no
@@ -251,11 +258,7 @@ src_configure() {
 			   vim_cv_toupper_broken=no
 	fi
 
-	econf \
-		--with-modified-by="Gentoo-${PVR} (RIP Bram)" \
-		--with-vim-name=gvim \
-		--with-x \
-		"${myconf[@]}"
+	econf "${myconf[@]}"
 }
 
 src_compile() {
