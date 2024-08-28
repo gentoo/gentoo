@@ -19,7 +19,8 @@ VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/yubico.com.asc"
 RESTRICT="!test? ( test )"
 
 RDEPEND="sys-apps/pcsc-lite
-	dev-libs/openssl:=[-bindist(-)]"
+	dev-libs/openssl:=[-bindist(-)]
+	sys-libs/zlib"
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )"
 BDEPEND="dev-util/gengetopt
