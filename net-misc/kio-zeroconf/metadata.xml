@@ -9,7 +9,4 @@
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 		<remote-id type="kde-invent">network/kio-zeroconf</remote-id>
 	</upstream>
-	<use>
-		<flag name="kf6compat">Disable components colliding with KF6, depend on KF6 components instead</flag>
-	</use>
 </pkgmetadata>
