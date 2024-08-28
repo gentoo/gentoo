@@ -25,6 +25,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	sys-apps/grep[pcre]
 	>=sys-devel/clang-11.0.0
+	sys-devel/m4
 "
 
 # Not prebuilt -- we build them -- but they're not ordinary ELF objects either.
