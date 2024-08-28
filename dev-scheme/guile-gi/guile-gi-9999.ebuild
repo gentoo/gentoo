@@ -1,9 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit virtualx autotools
+GUILE_COMPAT=( 2-2 3-0 )
+inherit virtualx autotools guile
 
 DESCRIPTION="Bindings for GObject Introspection and libgirepository for Guile"
 HOMEPAGE="https://spk121.github.io/guile-gi/"
@@ -19,42 +20,45 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 
+REQUIRED_USED="${GUILE_REQUIRED_USE}"
+
 DEPEND="
-	>=dev-scheme/guile-2.0.9:=
+	${GUILE_DEPS}
 	dev-libs/gobject-introspection
 	x11-libs/gtk+:3[introspection]
 "
 RDEPEND="${DEPEND}"
 BDEPEND="sys-apps/texinfo"
 
-# guile generates ELF files without use of C or machine code
-# It's a portage's false positive. bug #677600
-QA_PREBUILT='*[.]go'
+PATCHES=(
+	"${FILESDIR}"/guile-gi-0.3.2-function-cast.patch
+)
 
 src_prepare() {
-	default
-
-	# http://debbugs.gnu.org/cgi/bugreport.cgi?bug=38112
-	find "${S}" -name "*.scm" -exec touch {} + || die
+	guile_src_prepare
 
 	eautoreconf
 }
 
 src_configure() {
-	econf --disable-static --enable-introspection=yes
+	guile_foreach_impl econf --enable-introspection=yes
+}
+
+src_compile() {
+	my_compile() {
+		mkdir test || die
+		default
+	}
+	guile_foreach_impl my_compile
 }
 
 src_test() {
-	virtx default
+	guile_foreach_impl virtx default
 }
 
 src_install() {
-	default
+	guile_src_install
 
-	mv "${D}"/usr/share/doc/${PN} "${D}"/usr/share/doc/${PF} || die
+	mv "${ED}"/usr/share/doc/${PN} "${ED}"/usr/share/doc/${PF} || die
 	find "${ED}" -type f -name '*.la' -delete || die
-
-	# Workaround llvm-strip problem of mangling guile ELF debug
-	# sections. Bug https://bugs.gentoo.org/905898
-	dostrip -x /usr/$(get_libdir)/guile
 }
