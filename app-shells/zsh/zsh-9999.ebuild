@@ -47,11 +47,7 @@ BDEPEND="
 if [[ ${PV} == *9999 ]] ; then
 	BDEPEND+="
 		app-text/yodl
-		doc? (
-			sys-apps/texinfo
-			app-text/texi2html
-			virtual/latex-base
-		)
+		doc? ( virtual/texi2dvi )
 	"
 fi
 
@@ -166,7 +162,10 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install $(usex doc "install.info" "")
+	emake DESTDIR="${D}" install
+	if use doc; then
+		emake -C Doc DESTDIR="${D}" install.html install.html
+	fi
 
 	insinto /etc/zsh
 	export PREFIX_QUOTE_CHAR='"' PREFIX_EXTRA_REGEX="/EUID/s,0,${EUID},"
@@ -199,12 +198,8 @@ src_install() {
 
 	dodoc ChangeLog* META-FAQ NEWS README config.modules
 
-	if use doc ; then
-		pushd "${WORKDIR}/${PN}-${PV%_*}" >/dev/null
-		dodoc Doc/zsh.{dvi,pdf}
-		docinto html
-		dodoc Doc/*.html
-		popd >/dev/null
+	if use doc; then
+		dodoc Doc/intro.{a4,us}.pdf Doc/zsh_{a4,us}.{dvi,pdf}
 	fi
 
 	docinto StartupFiles
