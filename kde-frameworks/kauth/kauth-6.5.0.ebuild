@@ -31,6 +31,8 @@ PDEPEND="policykit? ( kde-plasma/polkit-kde-agent:* )"
 CMAKE_SKIP_TESTS=(
 	# KAuthHelperTest test fails, bug 654842
 	KAuthHelperTest
+	# bug 938505
+	KAuthFdTest
 )
 
 src_configure() {
