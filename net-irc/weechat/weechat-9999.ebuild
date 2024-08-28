@@ -3,10 +3,11 @@
 
 EAPI=8
 
+GUILE_COMPAT=( 2-2 3-0 )
 LUA_COMPAT=( lua5-{1..4} )
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit cmake lua-single python-single-r1 xdg
+inherit cmake guile-single lua-single python-single-r1 xdg
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
@@ -36,6 +37,7 @@ IUSE="doc enchant man nls relay-api selinux test +zstd ${SCRIPT_LANGS} ${PLUGINS
 
 REQUIRED_USE="
 	enchant? ( spell )
+	guile? ( ${GUILE_REQUIRED_USE} )
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	test? ( nls )
@@ -49,7 +51,7 @@ RDEPEND="
 	sys-libs/zlib:=
 	net-misc/curl[ssl]
 	charset? ( virtual/libiconv )
-	guile? ( >=dev-scheme/guile-2.0:12= )
+	guile? ( ${GUILE_DEPS} )
 	lua? ( ${LUA_DEPS} )
 	nls? ( virtual/libintl )
 	perl? (
@@ -90,12 +92,15 @@ DOCS="AUTHORS.md CHANGELOG.md CONTRIBUTING.md UPGRADING.md README.md"
 RESTRICT="!test? ( test )"
 
 pkg_setup() {
+	use guile && guile-single_pkg_setup
 	use lua && lua-single_pkg_setup
 	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
 	cmake_src_prepare
+
+	use guile && guile_bump_sources
 
 	# install only required translations
 	local i
@@ -184,4 +189,10 @@ src_test() {
 		eerror "en_US.UTF-8 locale is required to run ${PN}'s ${FUNCNAME}"
 		die "required locale missing"
 	fi
+}
+
+src_install() {
+	cmake_src_install
+
+	use guile && guile_unstrip_ccache
 }
