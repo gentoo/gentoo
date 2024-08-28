@@ -42,7 +42,7 @@ check_and_set_objcopy() {
 		# llvm-objcopy does not support EFI target, try to use binutils objcopy or fail
 		tc-export OBJCOPY
 		OBJCOPY="${OBJCOPY/llvm-/}"
-		LANG=C LC_ALL=C "${OBJCOPY}" --help | grep -q '\<pei-' || die "${OBJCOPY} (objcopy) does not support EFI target"
+		LC_ALL=C "${OBJCOPY}" --help | grep -q '\<pei-' || die "${OBJCOPY} (objcopy) does not support EFI target"
 	fi
 }
 
@@ -103,9 +103,9 @@ src_compile() {
 	# bug #933080, #938012
 	local CPPINCLUDEDIR
 	if tc-is-gcc; then
-		CPPINCLUDEDIR=$(LANG=C ${CC} -print-search-dirs 2> /dev/null | grep ^install: | cut -f2 -d' ')/include
+		CPPINCLUDEDIR=$(LC_ALL=C ${CC} -print-search-dirs 2> /dev/null | grep ^install: | cut -f2 -d' ')/include
 	elif tc-is-clang; then
-		CPPINCLUDEDIR=$(LANG=C ${CC} -print-resource-dir 2> /dev/null)/include
+		CPPINCLUDEDIR=$(LC_ALL=C ${CC} -print-resource-dir 2> /dev/null)/include
 	fi
 	append-cflags "-nostdinc -isystem ${CPPINCLUDEDIR} -isystem ${ESYSROOT}/usr/include"
 
