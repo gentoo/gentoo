@@ -24,6 +24,9 @@ RDEPEND="
 	>=dev-libs/gobject-introspection-common-${PV}
 	>=dev-libs/glib-2.79.0:2
 	dev-libs/libffi:=
+	$(python_gen_cond_dep '
+		dev-python/setuptools[${PYTHON_USEDEP}]
+	' 3.12)
 	doctool? (
 		$(python_gen_cond_dep '
 			dev-python/mako[${PYTHON_USEDEP}]
