@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # please keep this ebuild at EAPI 8 -- sys-apps/portage dep
@@ -31,7 +31,7 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	dev-python/pycparser[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
+	<dev-python/setuptools-74[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	${RDEPEND}

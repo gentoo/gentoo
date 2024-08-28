@@ -27,10 +27,11 @@ DEPEND="
 	>=dev-libs/libffi-3.4.4-r1:=
 "
 # setuptools as a modern distutils provider
+# <setuptools-74 for https://github.com/python-cffi/cffi/issues/117
 RDEPEND="
 	${DEPEND}
 	dev-python/pycparser[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
+	<dev-python/setuptools-74[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	${RDEPEND}
