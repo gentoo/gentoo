@@ -12,7 +12,8 @@ HOMEPAGE="
 "
 SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
-LICENSE="GPL-2+"
+# CC for /usr/share/backgrounds, see backgrounds/README.md
+LICENSE="GPL-2+ CC-BY-SA-4.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 IUSE="libnotify +thunar wayland X"
