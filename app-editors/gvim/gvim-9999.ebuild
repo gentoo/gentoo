@@ -31,11 +31,10 @@ HOMEPAGE="https://www.vim.org https://github.com/vim/vim"
 
 LICENSE="vim"
 SLOT="0"
-IUSE="acl aqua crypt cscope debug lua minimal motif netbeans nls perl python racket ruby selinux session sound tcl"
+IUSE="acl crypt cscope debug lua minimal motif netbeans nls perl python racket ruby selinux session sound tcl"
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
-	aqua? ( !motif )
 "
 
 RDEPEND="
@@ -47,12 +46,10 @@ RDEPEND="
 	x11-libs/libXext
 	x11-libs/libXt
 	acl? ( kernel_linux? ( sys-apps/acl ) )
-	!aqua? (
-		motif? ( >=x11-libs/motif-2.3:0 )
-		!motif? (
-			x11-libs/gtk+:3
-			x11-libs/libXft
-		)
+	motif? ( >=x11-libs/motif-2.3:0 )
+	!motif? (
+		x11-libs/gtk+:3
+		x11-libs/libXft
 	)
 	crypt? ( dev-libs/libsodium:= )
 	cscope? ( dev-util/cscope )
@@ -228,15 +225,9 @@ src_configure() {
 		)
 	fi
 
-	# Default is gtk unless aqua or motif are enabled
+	# Default is gtk unless motif is enabled
 	echo ; echo
-	if use aqua; then
-		einfo "Building gvim with the Carbon GUI"
-		myconf+=(
-			--enable-darwin
-			--enable-gui=carbon
-		)
-	elif use motif; then
+	if use motif; then
 		einfo "Building gvim with the MOTIF GUI"
 		myconf+=( --enable-gui=motif )
 	else
