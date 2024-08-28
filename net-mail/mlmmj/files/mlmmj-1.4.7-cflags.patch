@@ -1,0 +1,13 @@
+Don't add "-g" by default.
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -95,7 +95,7 @@ AM_CONDITIONAL([WANT_TESTS], [test x"$enable_tests" = xyes])
+ AM_CPPFLAGS="-I\$(top_srcdir)/include -DDEFAULTTEXTDIR='\"\$(textlibdir)\"'"
+ AC_SUBST(AM_CPPFLAGS)
+ 
+-AM_CFLAGS="-g -Wall -std=gnu99 -D_GNU_SOURCE=1 -Wextra -pedantic -Wsign-compare $COVERAGE_CFLAGS $ASAN_CFLAGS $UBSAN_CFLAGS"
++AM_CFLAGS="-Wall -std=gnu99 -D_GNU_SOURCE=1 -Wextra -pedantic -Wsign-compare $COVERAGE_CFLAGS $ASAN_CFLAGS $UBSAN_CFLAGS"
+ AC_SUBST(AM_CFLAGS)
+ 
+ AM_LDFLAGS="$COVERAGE_LDFLAGS $ASAN_LDFLAGS $UBSAN_LDFLAGS"
