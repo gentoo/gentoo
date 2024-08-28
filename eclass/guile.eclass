@@ -190,8 +190,9 @@ _guile_multibuild_wrapper() {
 	local -x SLOTTED_ED="${SLOTTED_D}${EPREFIX}/"
 	local -x GUILE_EFFECTIVE_VERSION="${GUILE_CURRENT_VERSION}"
 	mkdir -p "${BUILD_DIR}" || die
-	cd "${BUILD_DIR}" || die
+	pushd "${BUILD_DIR}" >/dev/null || die
 	"$@"
+	popd >/dev/null || die
 }
 
 # @VARIABLE: SLOTTED_D
