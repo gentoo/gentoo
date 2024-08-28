@@ -41,7 +41,7 @@ checktools() {
 		# llvm-objcopy does not support EFI target, try to use binutils objcopy or fail
 		tc-export OBJCOPY
 		OBJCOPY="${OBJCOPY/llvm-/}"
-		LANG=C LC_ALL=C "${OBJCOPY}" --help | grep -q '\<pei-' || die "${OBJCOPY} (objcopy) does not support EFI target"
+		LC_ALL=C "${OBJCOPY}" --help | grep -q '\<pei-' || die "${OBJCOPY} (objcopy) does not support EFI target"
 
 		tc-is-gcc || tc-is-clang || die "Unsupported compiler"
 	fi
@@ -106,9 +106,9 @@ src_compile() {
 	# see the comments in "${FILESDIR}"/${P}-fix-freestanding-on-musl.patch
 	tc-export CC
 	if tc-is-gcc; then
-		local -x CPPINCLUDEDIR=$(LANG=C ${CC} -print-search-dirs 2> /dev/null | grep ^install: | cut -f2 -d' ')/include
+		local -x CPPINCLUDEDIR=$(LC_ALL=C ${CC} -print-search-dirs 2> /dev/null | grep ^install: | cut -f2 -d' ')/include
 	elif tc-is-clang; then
-		local -x CPPINCLUDEDIR=$(LANG=C ${CC} -print-resource-dir 2> /dev/null)/include
+		local -x CPPINCLUDEDIR=$(LC_ALL=C ${CC} -print-resource-dir 2> /dev/null)/include
 		local -x EXTRACFLAGS=-D__DEFINED_wchar_t
 	fi
 
