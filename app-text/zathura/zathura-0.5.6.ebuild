@@ -16,26 +16,26 @@ else
 	SRC_URI="
 		https://github.com/pwmt/zathura/archive/${PV}.tar.gz -> ${P}.tar.gz
 	"
-	KEYWORDS="amd64 arm ~arm64 ~riscv x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="ZLIB"
 SLOT="0/5.6"
-IUSE="seccomp synctex man test"
+IUSE="man seccomp synctex test"
 
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-libs/girara-0.4.3
-	>=dev-libs/glib-2.72:2
 	dev-libs/json-glib
-	sys-apps/file
-	x11-libs/cairo
-	>=x11-libs/gtk+-3.24:3
-	>=dev-db/sqlite-3.6.23:3
+	man? ( dev-python/sphinx )
 	seccomp? ( sys-libs/libseccomp )
 	synctex? ( app-text/texlive-core )
-	man? ( dev-python/sphinx )
+	sys-apps/file
+	x11-libs/cairo
+	>=dev-db/sqlite-3.6.23:3
+	>=dev-libs/girara-0.4.3:=
+	>=dev-libs/glib-2.72:2
+	>=x11-libs/gtk+-3.24:3
 "
 DEPEND="
 	${RDEPEND}
@@ -48,11 +48,6 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
-
-#PATCHES=(
-#	"${FILESDIR}"/${P}-disable-seccomp-tests.patch
-#)
-
 src_configure() {
 	local emesonargs=(
 		-Dconvert-icon=disabled
