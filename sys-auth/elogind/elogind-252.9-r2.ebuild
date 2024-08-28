@@ -140,6 +140,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	udev_reload
 	if ! use pam; then
 		ewarn "${PN} will not be managing user logins/seats without USE=\"pam\"!"
 		ewarn "In other words, it will be useless for most applications."
@@ -180,4 +181,8 @@ pkg_postinst() {
 			elog "configuration remember to migrate those to new configuration file."
 		fi
 	done
+}
+
+pkg_postrm() {
+	udev_reload
 }
