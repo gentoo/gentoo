@@ -177,8 +177,6 @@ src_unpack() {
 src_prepare() {
 	default
 
-	sed -i '/-Werror$/d' "${WORKDIR}"/${P}/cmake/Modules/CompilerConfig.cmake || die
-
 	# -Werror=lto-type-mismatch
 	# https://bugs.gentoo.org/867250
 	# https://github.com/obsproject/obs-studio/issues/8988
@@ -219,7 +217,6 @@ src_configure() {
 		-DENABLE_WAYLAND=$(usex wayland)
 		-DENABLE_WEBRTC=OFF # Requires libdatachannel.
 		-DENABLE_WEBSOCKET=$(usex websocket)
-		-DOBS_CMAKE_VERSION=3
 	)
 
 	if [[ ${PV} != 9999 ]]; then
