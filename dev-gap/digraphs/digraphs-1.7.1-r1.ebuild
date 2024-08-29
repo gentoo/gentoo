@@ -20,6 +20,16 @@ RDEPEND="${DEPEND}
 	dev-gap/orb
 	dev-gap/datastructures"
 
+# There are a few tests that will fail without a PDF viewer installed.
+# Having xdg-open is good enough, and light weight, so it goes first.
+BDEPEND="test? ( || (
+	x11-misc/xdg-utils
+	app-text/gv
+	app-text/xpdf
+	app-text/evince
+	kde-apps/okular
+) )"
+
 DOCS=( CHANGELOG.md README.md )
 
 GAP_PKG_EXTRA_INSTALL=( data notebooks )
