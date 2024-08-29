@@ -20,13 +20,13 @@ LICENSE="
 	Apache-2.0 BSD Boost-1.0 CC0-1.0 Unlicense ZLIB
 	gui? ( CC-BY-4.0 ) tools? ( OFL-1.1 )
 "
-SLOT="4"
+SLOT="0"
 KEYWORDS="~amd64"
 # Enable roughly same as upstream by default so it works as expected,
 # except raycast (tools-only heavy dependency), and deprecated.
 IUSE="
 	alsa +dbus debug deprecated +fontconfig +gui pulseaudio raycast
-	+runner speech test +theora +tools +udev +upnp +vulkan wayland +webp
+	speech test +theora +tools +udev +upnp +vulkan wayland +webp
 "
 REQUIRED_USE="wayland? ( gui )"
 # TODO: tests still need more figuring out
@@ -95,14 +95,6 @@ PATCHES=(
 
 src_prepare() {
 	default
-
-	# handle slotting
-	sed -i "1,5s/ godot/&${SLOT}/i" misc/dist/linux/godot.6 || die
-	sed -i "/id/s/Godot/&${SLOT}/" misc/dist/linux/org.godotengine.Godot.appdata.xml || die
-	sed -e "s/=godot/&${SLOT}/" -e "/^Name=/s/$/ ${SLOT}/" \
-		-i misc/dist/linux/org.godotengine.Godot.desktop || die
-	sed -e "s/godot/&${SLOT}/g" \
-		-i misc/dist/shell/{godot.bash-completion,godot.fish,_godot.zsh-completion} || die
 
 	sed -i "s|pkg-config |$(tc-getPKG_CONFIG) |" platform/linuxbsd/detect.py || die
 
@@ -198,12 +190,6 @@ src_compile() {
 		use_static_cpp=no
 	)
 
-	if use runner && use tools; then
-		# build alternate faster + ~60% smaller binary for running
-		# games or servers without game development debug paths
-		escons extra_suffix=runner target=template_release "${esconsargs[@]}"
-	fi
-
 	esconsargs+=(
 		target=$(usex tools editor template_$(usex debug{,} release))
 		dev_build=$(usex debug)
@@ -212,43 +198,45 @@ src_compile() {
 		tests=$(usex tools $(usex test))
 	)
 
-	escons extra_suffix=main "${esconsargs[@]}"
+	escons "${esconsargs[@]}"
 }
 
 src_test() {
 	xdg_environment_reset
-	bin/godot*.main --headless --test || die
+
+	bin/godot* --headless --test || die
 }
 
 src_install() {
-	local s=godot${SLOT}
+	# suffix varies depending on arch/features, use wildcard to simplify
+	newbin bin/godot* godot
 
-	newbin bin/godot*.main ${s}
-	if use runner && use tools; then
-		newbin bin/godot*.runner ${s}-runner
-	else
-		# always available, revdeps shouldn't depend on [runner]
-		dosym ${s} /usr/bin/${s}-runner
-	fi
-
-	newman misc/dist/linux/godot.6 ${s}.6
+	doman misc/dist/linux/godot.6
 	dodoc AUTHORS.md CHANGELOG.md DONORS.md README.md
 
 	if use gui; then
-		newicon icon.svg ${s}.svg
-		newmenu misc/dist/linux/org.godotengine.Godot.desktop \
-			org.godotengine.${s^}.desktop
+		newicon icon.svg godot.svg
+		domenu misc/dist/linux/org.godotengine.Godot.desktop
 
 		insinto /usr/share/metainfo
-		newins misc/dist/linux/org.godotengine.Godot.appdata.xml \
-			org.godotengine.${s^}.appdata.xml
+		doins misc/dist/linux/org.godotengine.Godot.appdata.xml
 
 		insinto /usr/share/mime/application
-		newins misc/dist/linux/org.godotengine.Godot.xml \
-			org.godotengine.${s^}.xml
+		doins misc/dist/linux/org.godotengine.Godot.xml
 	fi
 
-	newbashcomp misc/dist/shell/godot.bash-completion ${s}
-	newfishcomp misc/dist/shell/godot.fish ${s}.fish
-	newzshcomp misc/dist/shell/_godot.zsh-completion _${s}
+	newbashcomp misc/dist/shell/godot.bash-completion godot
+	newfishcomp misc/dist/shell/godot.fish godot.fish
+	newzshcomp misc/dist/shell/_godot.zsh-completion _godot
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+
+	if has_version dev-games/godot:3 || has_version dev-games/godot:4; then
+		elog
+		elog "Gentoo's godot ebuild has removed slotting support meaning that godot"
+		elog "is now invoked with 'godot' rather than 'godot4', and godot3 has been"
+		elog "removed. USE=runner and 'godot*-runner' were also removed."
+	fi
 }
