@@ -18,7 +18,7 @@ IUSE="doc qt5 qt6"
 RDEPEND="
 	dev-libs/libltdl:0=
 	qt5? ( dev-qt/qthelp:5 dev-qt/qtgui:5 dev-qt/qtsql:5[sqlite] dev-qt/qtwidgets:5 )
-	qt6? ( dev-qt/qtbase:6[sqlite,widgets] dev-qt/qttools:6[assistent] )
+	qt6? ( dev-qt/qtbase:6[sqlite,widgets] dev-qt/qttools:6[assistant] )
 	dev-libs/openssl:*
 	doc? ( app-text/linuxdoc-tools )"
 DEPEND="${RDEPEND}"
