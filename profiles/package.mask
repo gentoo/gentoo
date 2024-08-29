@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-08-29)
+# Depends on kde-apps/konqueror:5 which is close to being obsolete.
+# No signs of upstream porting work. Removal on 2024-09-29.
+kde-misc/kio-gopher
+
 # Michał Górny <mgorny@gentoo.org> (2024-08-28)
 # API removals break gobject-introspection.
 >=dev-python/ensurepip-setuptools-74
