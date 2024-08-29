@@ -58,6 +58,7 @@ IDEPEND="
 QA_PREBUILT="
 	opt/Bitwarden/*.so*
 	opt/Bitwarden/bitwarden
+	opt/Bitwarden/bitwarden-app
 	opt/Bitwarden/chrome-sandbox
 	opt/Bitwarden/chrome_crashpad_handler
 "
