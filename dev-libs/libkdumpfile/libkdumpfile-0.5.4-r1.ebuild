@@ -3,8 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
-inherit autotools python-r1
+inherit autotools
 
 DESCRIPTION="Kernel coredump file access"
 HOMEPAGE="https://github.com/ptesarik/libkdumpfile"
@@ -14,10 +13,8 @@ LICENSE="|| ( LGPL-3+ GPL-2+ )"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="lzo snappy zlib zstd"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
-	${PYTHON_DEPS}
 	lzo? ( dev-libs/lzo )
 	snappy? ( app-arch/snappy:= )
 	zlib? ( sys-libs/zlib )
@@ -40,32 +37,21 @@ src_prepare() {
 }
 
 src_configure() {
-	# We could make Python optional in future as libkdumpfile's
-	# builtin Python bindings appear deprecated in favour of another
-	# CFFI-based approach, but given we're adding libkdumpfile for
-	# dev-debug/drgn right now which uses *these*, let's not bother.
-	local ECONF_SOURCE=${S}
 	local myeconfargs=(
+		# The Python bindings within libkdumpfile are deprecated
+		# and don't work w/ PEP517. There's a new CFFI bindings
+		# project we can use if anyone asks for them.
+		--without-python
 		$(use_with lzo lzo2)
 		$(use_with snappy)
 		$(use_with zlib)
 		$(use_with zstd libzstd)
 	)
 
-	python_foreach_impl run_in_build_dir econf "${myeconfargs[@]}"
-}
-
-src_compile() {
-	python_foreach_impl run_in_build_dir default
-}
-
-src_test() {
-	python_foreach_impl run_in_build_dir default
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
-	python_foreach_impl run_in_build_dir default
-	python_foreach_impl python_optimize
-	einstalldocs
+	default
 	find "${D}" -name '*.la' -delete || die
 }
