@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake desktop flag-o-matic
+inherit cmake desktop flag-o-matic xdg-utils
 
 JUMBOV=20070520
 DESCRIPTION="Interactive image manipulation program supporting a wide variety of formats"
@@ -55,4 +55,12 @@ src_install() {
 
 	newicon "${WORKDIR}"/xv-3.10a.png ${PN}.png
 	make_desktop_entry xv "" "" "Graphics;Viewer"
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
