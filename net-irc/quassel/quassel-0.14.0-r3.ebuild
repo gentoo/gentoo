@@ -11,7 +11,7 @@ if [[ ${PV} != *9999* ]]; then
 		SRC_URI="https://github.com/quassel/quassel/archive/refs/tags/${PV/_/-}.tar.gz -> ${P}.tar.gz"
 	else
 		SRC_URI="https://quassel-irc.org/pub/${MY_P}.tar.bz2"
-		KEYWORDS="~amd64 ~arm arm64 ~ppc64 ~riscv x86 ~amd64-linux"
+		KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86 ~amd64-linux"
 	fi
 	S="${WORKDIR}/${MY_P}"
 else
