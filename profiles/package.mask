@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-08-29)
+# This is so old that it was only kept alive as KF5-based version by means
+# of a downstream patch porting away from KDElibs4 (back in 2014!). Not
+# functional in KIO-6 revdeps. Removal on 2024-09-29.
+kde-misc/openofficeorg-thumbnail
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-08-29)
 # Long unmaintained Plasma 5-only desktop widget. Removal on 2024-09-29.
 kde-misc/plasma-applet-network-monitor
 
