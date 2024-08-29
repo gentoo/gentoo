@@ -14,7 +14,7 @@ SRC_URI="
 	test? (
 		utils? (
 			https://github.com/AcademySoftwareFoundation/openexr-images/archive/refs/tags/v1.0.tar.gz
-			  -> openexr-images-1.0.tar.gz
+				-> openexr-images-1.0.tar.gz
 		)
 	)
 "
@@ -22,14 +22,14 @@ SRC_URI="
 LICENSE="BSD"
 SLOT="0/31" # based on SONAME
 # -ppc -sparc because broken on big endian, bug #818424
-KEYWORDS="~amd64 ~arm ~arm64 ~loong -ppc ~ppc64 ~riscv -sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ~loong -ppc ~ppc64 ~riscv -sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 
 IUSE="cpu_flags_x86_avx doc examples large-stack utils test threads"
 REQUIRED_USE="doc? ( utils )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	app-arch/libdeflate:=
+	app-arch/libdeflate:=[zlib(+)]
 	>=dev-libs/imath-3.1.6:=
 "
 DEPEND="${RDEPEND}"
