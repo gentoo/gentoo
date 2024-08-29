@@ -1,0 +1,11 @@
+--- a/src/oidc-agent-service/oidc-agent-service
++++ b/src/oidc-agent-service/oidc-agent-service
+@@ -34,7 +34,7 @@ function echo_vars() {
+ }
+ 
+ function start() {
+-  json=$(${OIDC_AGENT} -a "${SOCK}" "${OIDC_AGENT_OPTS}" --pid-file="${PID_FILE}" --json)
++  json=$(${OIDC_AGENT} -a "${SOCK}" ${OIDC_AGENT_OPTS} --pid-file="${PID_FILE}" --json)
+   OIDCD_PID=$(${ECHO} "${json}" | "${JQ}" -r ".dpid")
+   echo_vars
+ }

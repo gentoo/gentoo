@@ -1,0 +1,29 @@
+--- a/Makefile
++++ b/Makefile
+@@ -560,7 +560,7 @@ install_conf: $(CONFIG_PATH)/oidc-agent/$(PROVIDERCONFIGD) $(CONFIG_PATH)/oidc-a
+ 	@echo "Installed config files"
+ 
+ .PHONY: install_bash
+-install_bash: $(BASH_COMPLETION_PATH)/$(AGENT) $(BASH_COMPLETION_PATH)/$(GEN) $(BASH_COMPLETION_PATH)/$(ADD) $(BASH_COMPLETION_PATH)/$(CLIENT) $(BASH_COMPLETION_PATH)/$(AGENT_SERVICE) $(BASH_COMPLETION_PATH)/$(KEYCHAIN) $(BASH_COMPLETION_PATH)/$(TOKENSH)
++install_bash: $(BASH_COMPLETION_PATH)/$(AGENT) $(BASH_COMPLETION_PATH)/$(GEN) $(BASH_COMPLETION_PATH)/$(ADD) $(BASH_COMPLETION_PATH)/$(CLIENT) $(BASH_COMPLETION_PATH)/$(AGENT_SERVICE) $(BASH_COMPLETION_PATH)/$(KEYCHAIN)
+ 	@echo "Installed bash completion"
+ 
+ .PHONY: install_man
+@@ -700,9 +700,6 @@ $(BASH_COMPLETION_PATH)/$(CLIENT): $(BASH_COMPLETION_PATH)
+ $(BASH_COMPLETION_PATH)/$(KEYCHAIN): $(BASH_COMPLETION_PATH)
+ 	@ln -s $(AGENT) $@
+ 
+-$(BASH_COMPLETION_PATH)/$(TOKENSH): $(BASH_COMPLETION_PATH)
+-	@ln -s $(AGENT) $@
+-
+ $(BASH_COMPLETION_PATH)/$(AGENT_SERVICE): $(CONFDIR)/bash-completion/oidc-agent-service $(BASH_COMPLETION_PATH)
+ 	@install -p -m 644 $< $@
+ 
+@@ -826,7 +823,6 @@ uninstall_bashcompletion:
+ 	@$(rm) $(BASH_COMPLETION_PATH)/$(AGENT)
+ 	@$(rm) $(BASH_COMPLETION_PATH)/$(AGENT_SERVICE)
+ 	@$(rm) $(BASH_COMPLETION_PATH)/$(KEYCHAIN)
+-	@$(rm) $(BASH_COMPLETION_PATH)/$(TOKENSH)
+ 	@echo "Uninstalled bash completion"
+ 
+ endif
