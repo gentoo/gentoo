@@ -65,7 +65,8 @@ QA_PREBUILT="
 src_install() {
 	insinto /opt
 	doins -r opt/${MY_PN}
-	fperms 755 /opt/Bitwarden/bitwarden
+	fperms 755 /opt/Bitwarden/bitwarden \
+		/opt/Bitwarden/bitwarden-app
 	fperms 4755 /opt/Bitwarden/chrome-sandbox
 
 	domenu usr/share/applications/bitwarden.desktop
