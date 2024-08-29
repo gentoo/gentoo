@@ -10,7 +10,7 @@ HOMEPAGE="https://www.dropbox.com/"
 SRC_URI="
 	amd64? ( https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-${PV}.tar.gz )
 	x86? ( https://clientupdates.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86-${PV}.tar.gz )
-	https://www.dropbox.com/sh/42f8d4kq6yt5lte/AAD69lhaw6gy46W8HfQAm0GSa/Glyph/Dropbox/SVG/DropboxGlyph_Blue.svg
+	https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/dropbox-icon.svg
 "
 
 LICENSE="BSD-2 CC-BY-ND-3.0 FTL MIT LGPL-2 openssl dropbox"
@@ -89,7 +89,7 @@ src_install() {
 
 	if use X; then
 		doicon -s 16 -c status "${T}"/status
-		newicon -s scalable "${DISTDIR}/DropboxGlyph_Blue.svg" dropbox.svg
+		newicon -s scalable "${DISTDIR}/dropbox-icon.svg" dropbox.svg
 	fi
 
 	make_desktop_entry "${PN}" "Dropbox" "dropbox"
