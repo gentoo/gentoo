@@ -347,6 +347,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.4.4-opencl-parallel-gmake-fix.patch
 	"${FILESDIR}"/${PN}-4.4.4-glslang.patch
 	"${FILESDIR}"/${PN}-4.4.4-amd-av1-vaapi.patch
+	"${FILESDIR}"/${PN}-4.4.5-incmptbl-pntr-types.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
