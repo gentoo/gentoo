@@ -143,6 +143,7 @@ BDEPEND="
 	$(llvm_gen_dep '
 		sys-devel/clang:${LLVM_SLOT}
 	')
+	elibc_musl? ( >=sys-libs/musl-1.2.5 )
 	virtual/pkgconfig
 	virtual/rust
 "
