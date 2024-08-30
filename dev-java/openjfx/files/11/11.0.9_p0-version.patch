@@ -7,9 +7,8 @@
 8252067: Change JavaFX release version in 11-dev to 11.0.9
 Reviewed-by: kcr
 
-diff -r 38425dc30b9a -r c0fe72db97a8 build.properties
---- a/build.properties	Thu Aug 20 10:24:03 2020 +0200
-+++ b/build.properties	Thu Aug 20 14:48:02 2020 +0200
+--- a/build.properties
++++ b/build.properties
 @@ -41,7 +41,7 @@
  # UPDATE THE FOLLOWING VALUES FOR A NEW RELEASE
  jfx.release.major.version=11

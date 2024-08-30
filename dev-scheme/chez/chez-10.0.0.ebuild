@@ -17,7 +17,7 @@ S="${WORKDIR}/csv${PV//a}"
 LICENSE="Apache-2.0 MIT"
 SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm ~x86"
-IUSE="X ncurses threads"
+IUSE="X +ncurses +threads"
 
 # "some output differs from expected", needs in-depth investigation.
 RESTRICT="test"
@@ -54,13 +54,16 @@ src_prepare() {
 
 src_configure() {
 	# See official docs for translation guide.
-	# https://cisco.github.io/ChezScheme/release_notes/v9.6/release_notes.html
-	# "t" for threading + arch_map + "le" for Linux (hardcoded for now)
+	# https://cisco.github.io/ChezScheme/release_notes/v10.0/release_notes.html
+	# "t" for threading + arch_map + "le" for Linux
 	local -A arch_map=(
-		[amd64]=a6
-		[arm]=arm32
-		[ppc]=ppc32
 		[x86]=i3
+		[amd64]=a6
+		[arm64]=arm64
+		[arm]=arm32
+		[riscv]=rv64
+		[loong]=la64
+		[ppc]=ppc32
 	)
 	local machine="$(usex threads 't' '')${arch_map[${ARCH}]}le"
 

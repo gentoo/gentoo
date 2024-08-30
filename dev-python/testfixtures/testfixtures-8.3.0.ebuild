@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 
 BDEPEND="
 	test? (
@@ -24,9 +24,7 @@ BDEPEND="
 		dev-python/django[${PYTHON_USEDEP}]
 		dev-python/pytest-django[${PYTHON_USEDEP}]
 		>=dev-python/sybil-6[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			>=dev-python/twisted-18[${PYTHON_USEDEP}]
-		' 3.{10..12})
+		>=dev-python/twisted-18[${PYTHON_USEDEP}]
 		sys-libs/timezone-data
 	)
 "

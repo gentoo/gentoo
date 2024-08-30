@@ -13,7 +13,7 @@ SRC_URI="https://linuxtv.org/downloads/v4l-utils/${MY_P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="bpf doc dvb jpeg qt5 tracer +utils"
 
 REQUIRED_USE="
@@ -99,7 +99,7 @@ multilib_src_configure() {
 		$(meson_native_use_bool utils v4l-utils)
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
 		-Dsystemdsystemunitdir="$(systemd_get_systemunitdir)"
-		-Dudevdir="$(get_udevdir)"
+		-Dudevdir="${EPREFIX}$(get_udevdir)"
 		$(meson_native_use_feature doc doxygen-doc)
 		$(meson_native_use_bool doc doxygen-html)
 		$(meson_native_use_bool doc doxygen-man)

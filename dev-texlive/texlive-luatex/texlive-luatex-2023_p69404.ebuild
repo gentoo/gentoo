@@ -248,7 +248,7 @@ DESCRIPTION="TeXLive LuaTeX packages"
 
 LICENSE="BSD CC-BY-SA-3.0 CC-BY-SA-4.0 FDL-1.1+ GPL-2 GPL-3 GPL-3+ LPPL-1.3 LPPL-1.3c MIT TeX-other-free public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 COMMON_DEPEND="
 	>=dev-texlive/texlive-basic-2023
 "

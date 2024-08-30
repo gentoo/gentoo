@@ -21,13 +21,18 @@ DEPEND="
 	media-libs/libpng:=[${MULTILIB_USEDEP}]
 	aom? ( >=media-libs/libaom-3.3.0:=[${MULTILIB_USEDEP}] )
 	dav1d? ( >=media-libs/dav1d-1.0.0:=[${MULTILIB_USEDEP}] )
-	extras? ( test? ( dev-cpp/gtest ) )
+	extras? (
+		test? (
+			dev-cpp/gtest
+			media-gfx/imagemagick[lcms]
+		)
+	)
 	gdk-pixbuf? (
 		dev-libs/glib:2[${MULTILIB_USEDEP}]
 		x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
 	)
 	rav1e? ( >=media-video/rav1e-0.5.1:=[capi] )
-	svt-av1? ( >=media-libs/svt-av1-0.9.1 )
+	svt-av1? ( >=media-libs/svt-av1-0.9.1:= )
 "
 RDEPEND="
 	${DEPEND}
@@ -39,12 +44,14 @@ BDEPEND="
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
-		-DAVIF_CODEC_AOM=$(usex aom SYSTEM OFF)
-		-DAVIF_CODEC_DAV1D=$(usex dav1d SYSTEM OFF)
 		-DAVIF_CODEC_LIBGAV1=OFF
+
+		# bug 916948
 		-DAVIF_LIBYUV=OFF
 
 		# Use system libraries.
+		-DAVIF_CODEC_AOM=$(usex aom SYSTEM OFF)
+		-DAVIF_CODEC_DAV1D=$(usex dav1d SYSTEM OFF)
 		-DAVIF_ZLIBPNG=SYSTEM
 		-DAVIF_JPEG=SYSTEM
 
@@ -62,6 +69,7 @@ multilib_src_configure() {
 			-DAVIF_BUILD_APPS=$(usex extras ON OFF)
 			-DAVIF_BUILD_TESTS=$(usex test ON OFF)
 			-DAVIF_ENABLE_GTEST=$(usex extras $(usex test ON OFF) OFF)
+			-DAVIF_GTEST=$(usex extras $(usex test SYSTEM OFF) OFF)
 		)
 	else
 		mycmakeargs+=(
@@ -72,6 +80,7 @@ multilib_src_configure() {
 			-DAVIF_BUILD_APPS=OFF
 			-DAVIF_BUILD_TESTS=OFF
 			-DAVIF_ENABLE_GTEST=OFF
+			-DAVIF_GTEST=OFF
 		)
 
 		if ! use aom ; then

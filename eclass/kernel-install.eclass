@@ -17,9 +17,7 @@
 # /usr/src/linux-${PV} containing the kernel image in its standard
 # location and System.map.
 #
-# The eclass exports src_test, pkg_postinst and pkg_postrm.
-# Additionally, the inherited mount-boot eclass exports pkg_pretend.
-# It also stubs out pkg_preinst and pkg_prerm defined by mount-boot.
+# The eclass exports src_test, pkg_preinst, pkg_postinst and pkg_postrm.
 
 # @ECLASS_VARIABLE: KERNEL_IUSE_GENERIC_UKI
 # @PRE_INHERIT
@@ -27,6 +25,15 @@
 # @DESCRIPTION:
 # If set to a non-null value, adds IUSE=generic-uki and required
 # logic to install a generic unified kernel image.
+
+# @ECLASS_VARIABLE: KV_FULL
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# A string containing the full kernel release version, e.g.
+# '6.9.6-gentoo-dist'. Defaults to ${PV}${KV_LOCALVERSION},
+# but can be set by the ebuild when this default value does
+# not match the kernel release. kernel-build.eclass sets this
+# to whatever is in the built kernel's kernel.release file.
 
 # @ECLASS_VARIABLE: KV_LOCALVERSION
 # @DEFAULT_UNSET
@@ -50,7 +57,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-inherit dist-kernel-utils mount-boot multiprocessing toolchain-funcs
+inherit dist-kernel-utils mount-boot-utils multiprocessing toolchain-funcs
 
 SLOT="${PV}"
 IUSE="+initramfs test"
@@ -65,7 +72,10 @@ _IDEPEND_BASE="
 		>=sys-kernel/installkernel-14
 	)
 	initramfs? (
-		>=sys-kernel/installkernel-14[dracut(-)]
+		|| (
+			>=sys-kernel/installkernel-14[dracut(-)]
+			>=sys-kernel/installkernel-14[ugrd(-)]
+		)
 	)
 "
 
@@ -192,7 +202,7 @@ if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
 	"
 	IDEPEND="
 		generic-uki? (
-			>=sys-kernel/installkernel-14[-dracut(-),-ukify(-)]
+			>=sys-kernel/installkernel-14[-dracut(-),-ugrd(-),-ukify(-)]
 		)
 		!generic-uki? (
 			${_IDEPEND_BASE}
@@ -526,6 +536,10 @@ kernel-install_test() {
 kernel-install_pkg_pretend() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	# Check, but don't die because we can fix the problem and then
+	# emerge --config ... to re-run installation.
+	nonfatal mount-boot_check_status
+
 	if ! has_version -d sys-kernel/linux-firmware; then
 		ewarn "sys-kernel/linux-firmware not found installed on your system."
 		ewarn "This package provides various firmware files that may be needed"
@@ -541,16 +555,26 @@ kernel-install_pkg_pretend() {
 
 	if ! use initramfs && ! has_version "${CATEGORY}/${PN}[-initramfs]"; then
 		ewarn
-		ewarn "WARNING: The standard configuration of the Gentoo distribution"
-		ewarn "kernels requires an initramfs! You have disabled the initramfs"
-		ewarn "USE flag and as a result dracut was not pulled in as a dependency."
-		ewarn "Please ensure that you are either overriding the standard"
-		ewarn "configuration or that an alternative initramfs generation plugin"
-		ewarn "is installed for your installkernel implementation!"
+		ewarn "WARNING: The default distribution kernel configuration is designed"
+		ewarn "to be used with an initramfs! Although possible, there is no guarantee"
+		ewarn "that distribution kernels will boot without an initramfs."
 		ewarn
-		ewarn "This is an advanced use case, you are on your own to ensure"
-		ewarn "that your system is bootable!"
+		ewarn "You have disabled the initramfs USE flag, and as a result the package manager"
+		ewarn "will not enforce the configuration of an initramfs generator in"
+		ewarn "sys-kernel/installkernel."
 		ewarn
+		ewarn "If you wish to use a custom initramfs generator, then please ensure that" 
+		ewarn "/sbin/installkernel is capable of calling it via a kernel installation hook,"
+		ewarn "and is also configured to use it via /etc/kernel/install.conf."
+		ewarn
+		ewarn "If you wish to boot without an initramfs, then please ensure that"
+		ewarn "all kernel drivers required to boot your system are built into the"
+		ewarn "kernel by modifying the default distribution kernel configuration"
+		ewarn "using /etc/kernel/config.d"
+		ewarn
+		ewarn "Please refer to the installkernel and distribution kernel documentation:"
+		ewarn "    https://wiki.gentoo.org/wiki/Installkernel"
+		ewarn "    https://wiki.gentoo.org/wiki/Project:Distribution_Kernel"
 	fi
 }
 
@@ -569,40 +593,47 @@ kernel-install_src_test() {
 kernel-install_pkg_preinst() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local dir_ver=${PV}${KV_LOCALVERSION}
-	local kernel_dir=${ED}/usr/src/linux-${dir_ver}
-	local relfile=${kernel_dir}/include/config/kernel.release
+	# Set KV_FULL to ${PV}${KV_LOCALVERSION} if it hasn't
+	# been set elsewhere for backward compatibility with existing
+	# bin-kernel packages
+	if [[ -z ${KV_FULL} ]]; then
+		KV_FULL=${PV}${KV_LOCALVERSION}
+	fi
+
+	local kernel_dir=${ED}/usr/src/linux-${KV_FULL}
 	local image_path=$(dist-kernel_get_image_path)
 	[[ ! -d ${kernel_dir} ]] &&
 		die "Kernel directory ${kernel_dir} not installed!"
-	[[ ! -f ${relfile} ]] &&
-		die "Release file ${relfile} not installed!"
-	local release
-	release="$(<"${relfile}")" || die
-	DIST_KERNEL_RELEASE="${release}"
 
 	# perform the version check for release ebuilds only
 	if [[ ${PV} != *9999 ]]; then
 		local expected_ver=$(dist-kernel_PV_to_KV "${PV}")
 
-		if [[ ${release} != ${expected_ver}* ]]; then
-			eerror "Kernel release mismatch!"
-			eerror "  expected (PV): ${expected_ver}*"
-			eerror "          found: ${release}"
-			eerror "Please verify that you are applying the correct patches."
-			die "Kernel release mismatch (${release} instead of ${expected_ver}*)"
+		if [[ ${KV_FULL} != ${expected_ver}* ]]; then
+			eerror "Kernel version does not match PV!"
+			eerror "Source version: ${KV_FULL}"
+			eerror "Expected (PV*): ${expected_ver}*"
+			eerror "Please ensure you are applying the correct patchset."
+			die "Kernel version mismatch: got ${KV_FULL}, expected ${expected_ver}*"
 		fi
 	fi
 
 	if [[ -L ${EROOT}/lib && ${EROOT}/lib -ef ${EROOT}/usr/lib ]]; then
 		# Adjust symlinks for merged-usr.
-		rm "${ED}/lib/modules/${release}"/{build,source} || die
-		dosym "../../../src/linux-${dir_ver}" "/usr/lib/modules/${release}/build"
-		dosym "../../../src/linux-${dir_ver}" "/usr/lib/modules/${release}/source"
+		rm "${ED}/lib/modules/${KV_FULL}"/{build,source} || die
+		dosym "../../../src/linux-${KV_FULL}" "/usr/lib/modules/${KV_FULL}/build"
+		dosym "../../../src/linux-${KV_FULL}" "/usr/lib/modules/${KV_FULL}/source"
+		local file
+		for file in .config System.map; do
+			if [[ -L "${ED}/lib/modules/${KV_FULL}/${file#.}" ]]; then
+				rm "${ED}/lib/modules/${KV_FULL}/${file#.}" || die
+				dosym "../../../src/linux-${KV_FULL}/${file}" "/usr/lib/modules/${KV_FULL}/${file#.}"
+			fi
+		done
 		for file in vmlinux vmlinuz; do
-			if [[ -L "${ED}/lib/modules/${release}/${file}" ]]; then
-				rm "${ED}/lib/modules/${release}/${file}" || die
-				dosym "../../../src/linux-${dir_ver}/${image_path}" "/usr/lib/modules/${release}/${file}"
+			if [[ -L "${ED}/lib/modules/${KV_FULL}/${file}" ]]; then
+				rm "${ED}/lib/modules/${KV_FULL}/${file}" || die
+				dosym "../../../src/linux-${KV_FULL}/${image_path}" "/usr/lib/modules/${KV_FULL}/${file}"
 			fi
 		done
 	fi
@@ -665,27 +696,8 @@ kernel-install_install_all() {
 		fi
 	fi
 
-	local success=
-	# not an actual loop but allows error handling with 'break'
-	while :; do
-		nonfatal mount-boot_check_status || break
-
-		nonfatal dist-kernel_install_kernel "${module_ver}" \
-			"${kernel_dir}/${image_path}" "${kernel_dir}/System.map" || break
-
-		success=1
-		break
-	done
-
-	if [[ ! ${success} ]]; then
-		eerror
-		eerror "The kernel files were copied to disk successfully but the kernel"
-		eerror "was not deployed successfully.  Once you resolve the problems,"
-		eerror "please run the equivalent of the following command to try again:"
-		eerror
-		eerror "    emerge --config ${CATEGORY}/${PN}:${SLOT}"
-		die "Kernel install failed, please fix the problems and run emerge --config ${CATEGORY}/${PN}:${SLOT}"
-	fi
+	dist-kernel_install_kernel "${module_ver}" "${kernel_dir}/${image_path}" \
+		"${kernel_dir}/System.map"
 }
 
 # @FUNCTION: kernel-install_pkg_postinst
@@ -695,13 +707,12 @@ kernel-install_install_all() {
 kernel-install_pkg_postinst() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local dir_ver=${PV}${KV_LOCALVERSION}
-	kernel-install_update_symlink "${EROOT}/usr/src/linux" "${dir_ver}"
+	kernel-install_update_symlink "${EROOT}/usr/src/linux" "${KV_FULL}"
 	dist-kernel_compressed_module_cleanup \
-		"${EROOT}/lib/modules/${DIST_KERNEL_RELEASE}"
+		"${EROOT}/lib/modules/${KV_FULL}"
 
 	if [[ -z ${ROOT} ]]; then
-		kernel-install_install_all "${dir_ver}"
+		kernel-install_install_all "${KV_FULL}"
 	fi
 
 	if [[ ${KERNEL_IUSE_GENERIC_UKI} ]] && use generic-uki; then
@@ -718,15 +729,6 @@ kernel-install_pkg_postinst() {
 	fi
 }
 
-# @FUNCTION: kernel-install_pkg_prerm
-# @DESCRIPTION:
-# Stub out mount-boot.eclass.
-kernel-install_pkg_prerm() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	# (no-op)
-}
-
 # @FUNCTION: kernel-install_pkg_postrm
 # @DESCRIPTION:
 # Clean up the generated initramfs from the removed kernel directory.
@@ -734,8 +736,7 @@ kernel-install_pkg_postrm() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	if [[ -z ${ROOT} && ! ${KERNEL_IUSE_GENERIC_UKI} ]]; then
-		local dir_ver=${PV}${KV_LOCALVERSION}
-		local kernel_dir=${EROOT}/usr/src/linux-${dir_ver}
+		local kernel_dir=${EROOT}/usr/src/linux-${KV_FULL}
 		local image_path=$(dist-kernel_get_image_path)
 		ebegin "Removing initramfs"
 		rm -f "${kernel_dir}/${image_path%/*}"/{initrd,uki.efi} &&
@@ -750,7 +751,11 @@ kernel-install_pkg_postrm() {
 kernel-install_pkg_config() {
 	[[ -z ${ROOT} ]] || die "ROOT!=/ not supported currently"
 
-	kernel-install_install_all "${PV}${KV_LOCALVERSION}"
+	if [[ -z ${KV_FULL} ]]; then
+		KV_FULL=${PV}${KV_LOCALVERSION}
+	fi
+
+	kernel-install_install_all "${KV_FULL}"
 }
 
 # @FUNCTION: kernel-install_compress_modules
@@ -761,18 +766,43 @@ kernel-install_compress_modules() {
 
 	if use modules-compress; then
 		einfo "Compressing kernel modules ..."
-		# xz options taken from scripts/Makefile.modinst
-		# we don't do 'xz -T' because it applies multithreading per file,
-		# so it works only for big files, and we have lots of small files
-		# instead
-		find "${ED}/lib" -name '*.ko' -print0 |
-			xargs -0 -P "$(makeopts_jobs)" -n 128 \
-				xz --check=crc32 --lzma2=dict=1MiB
+		if [[ -z ${KV_FULL} ]]; then
+			KV_FULL=${PV}${KV_LOCALVERSION}
+		fi
+		local suffix=$(dist-kernel_get_module_suffix "${ED}/usr/src/linux-${KV_FULL}/.config")
+		local compress=()
+		# Options taken from linux-mod-r1.eclass.
+		# We don't instruct the compressor to parallelize because it applies
+		# multithreading per file, so it works only for big files, and we have
+		# lots of small files instead.
+		case ${suffix} in
+			.ko)
+				return
+				;;
+			.ko.gz)
+				compress+=( gzip )
+				;;
+			.ko.xz)
+				compress+=( xz --check=crc32 --lzma2=dict=1MiB )
+				;;
+			.ko.zst)
+				compress+=( zstd -q --rm )
+				;;
+			*)
+				die "Unknown compressor: ${suffix}"
+				;;
+		esac
+
+		find "${ED}/lib/modules/${KV_FULL}" -name '*.ko' -print0 |
+			xargs -0 -P "$(makeopts_jobs)" -n 128 "${compress[@]}"
 		assert "Compressing kernel modules failed"
+
+		# Module paths have changed, run depmod
+		depmod --all --basedir "${ED}" ${KV_FULL} || die
 	fi
 }
 
 fi
 
-EXPORT_FUNCTIONS src_test pkg_preinst pkg_postinst pkg_prerm pkg_postrm
+EXPORT_FUNCTIONS src_test pkg_preinst pkg_postinst pkg_postrm
 EXPORT_FUNCTIONS pkg_config pkg_pretend

@@ -79,7 +79,7 @@ DESCRIPTION="TeXLive Chinese"
 
 LICENSE="FDL-1.1+ GPL-1+ GPL-3+ LGPL-2+ LPPL-1.3 LPPL-1.3c MIT TeX TeX-other-free"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 COMMON_DEPEND="
 	>=dev-texlive/texlive-langcjk-2023
 "

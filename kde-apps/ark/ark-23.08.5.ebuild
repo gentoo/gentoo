@@ -51,22 +51,21 @@ BDEPEND="
 	elibc_glibc? ( test? ( amd64? ( app-arch/rar ) x86? ( app-arch/rar ) ) )
 "
 
+CMAKE_SKIP_TESTS=(
+	# bug 822177: may segfault or hang indefinitely
+	kerfuffle-addtoarchivetest
+	# bug 827840: continuously broken with translations installed
+	plugins-clirartest
+	# bug 927184: requires DBus
+	app-batchextracttest
+)
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package zip LibZip)
 	)
 
 	ecm_src_configure
-}
-
-src_test() {
-	local myctestargs=(
-		# bug 822177: kerfuffle-addtoarchivetest: may segfault or hang indefinitely
-		# bug 827840: plugins-clirartest: continuously broken with translations installed
-		-E "(kerfuffle-addtoarchivetest|plugins-clirartest)"
-	)
-
-	ecm_src_test
 }
 
 pkg_postinst() {

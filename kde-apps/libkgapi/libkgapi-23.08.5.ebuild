@@ -30,15 +30,9 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND=">=dev-qt/linguist-tools-${QTMIN}:5"
 
-src_test() {
-	local myctestargs=(
-		# Both fail for multiple distros, see bug #832709 for more discussion
-		# Revisit at least once Qt 5.15.3 is in wider distribution (in Gentoo at least):
-		#   contacts-contactcreatejobtest, contacts-contactmodifyjobtest
-		# More failures not specific to Gentoo, bug #852593, KDE-bug #440648:
-		#  calendar-eventcreatejobtest, calendar-eventfetchjobtest, calendar-eventmodifyjobtest
-		-E "(contacts-contactcreatejobtest|contacts-contactmodifyjobtest|calendar-eventcreatejobtest|calendar-eventfetchjobtest|calendar-eventmodifyjobtest)"
-	)
-
-	ecm_src_test
-}
+CMAKE_SKIP_TESTS=(
+	# Failures not specific to Gentoo, bug #852593, KDE-bug #440648:
+	calendar-event{create,fetch,modify}jobtest
+	# bug 924625
+	tasks-task{create,modify}jobtest
+)

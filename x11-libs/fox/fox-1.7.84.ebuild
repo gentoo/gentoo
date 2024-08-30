@@ -65,6 +65,8 @@ src_prepare() {
 }
 
 src_configure() {
+	filter-lto
+
 	use debug || append-cppflags -DNDEBUG
 
 	# Not using --enable-release because of the options it sets like no SSP

@@ -4,7 +4,7 @@
 EAPI=8
 
 FORTRAN_NEEDED=fortran
-inherit cuda fortran-2 multilib-minimal
+inherit cuda flag-o-matic fortran-2 libtool multilib-minimal
 
 MY_P=${P/-mpi}
 
@@ -24,7 +24,7 @@ IUSE_OPENMPI_OFED_FEATURES="
 
 DESCRIPTION="A high-performance message passing library (MPI)"
 HOMEPAGE="https://www.open-mpi.org"
-SRC_URI="https://www.open-mpi.org/software/ompi/v$(ver_cut 1-2)/downloads/${MY_P}.tar.bz2"
+SRC_URI="https://download.open-mpi.org/release/open-mpi/v$(ver_cut 1-2)/${P}.tar.bz2"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
@@ -64,6 +64,10 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/openmpi/mpiext/mpiext_cuda_c.h
 )
 
+PATCHES=(
+	"${FILESDIR}/${PN}-4.1.6-incompatible-pointers.patch"
+)
+
 pkg_setup() {
 	fortran-2_pkg_setup
 
@@ -76,6 +80,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
+	elibtoolize
 
 	# Avoid test which ends up looking at system mounts
 	echo "int main() { return 0; }" > test/util/opal_path_nfs.c || die
@@ -87,6 +92,15 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# -Werror=lto-type-mismatch, -Werror=strict-aliasing
+	# The former even prevents successfully running ./configure, but both appear
+	# at `make` time as well.
+	# https://bugs.gentoo.org/913040
+	# https://github.com/open-mpi/ompi/issues/12674
+	# https://github.com/open-mpi/ompi/issues/12675
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	local myconf=(
 		--disable-mpi-java
 		# configure takes a looooong time, but upstream currently force

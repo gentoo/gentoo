@@ -13,7 +13,7 @@ SRC_URI="https://www.toedter.com/download/${P}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="1.2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="app-arch/unzip"
 

@@ -47,6 +47,7 @@ DEPEND="${COMMON_DEPEND}
 	gnome? ( gnome-base/gnome-common )
 "
 BDEPEND="
+	app-text/yelp-tools
 	dev-build/gtk-doc-am
 	dev-util/intltool
 	sys-devel/gettext

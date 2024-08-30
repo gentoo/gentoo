@@ -146,6 +146,7 @@ src_configure() {
 		--freedesktop
 		--noconfirm
 		--optimize
+		--no-ytk
 		--with-backends=${backends}
 		$({ use cpu_flags_ppc_altivec || use cpu_flags_x86_sse; } && \
 			echo '' || echo "--no-fpu-optimization")

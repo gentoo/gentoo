@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>holger@applied-asynchrony.com</email>
+    <name>Holger Hoffstätte</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
   <maintainer type="person">
     <email>chutzpah@gentoo.org</email>
+    <name>Patrick McLean</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>dlan@gentoo.org</email>
+    <name>Yixun Lan</name>
   </maintainer>
   <use>
     <flag name="fuzzing">Build bpftrace for fuzzing</flag>
+    <flag name="lldb">Parse debug info using<pkg>dev-debug/lldb</pkg></flag>
   </use>
   <upstream>
-    <remote-id type="github">iovisor/bpftrace</remote-id>
+    <remote-id type="github">bpftrace/bpftrace</remote-id>
   </upstream>
 </pkgmetadata>

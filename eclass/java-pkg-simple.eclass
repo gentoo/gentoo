@@ -26,8 +26,12 @@ _JAVA_PKG_SIMPLE_ECLASS=1
 
 inherit java-utils-2
 
-if ! has java-pkg-2 ${INHERITED}; then
-	eerror "java-pkg-simple eclass can only be inherited AFTER java-pkg-2"
+if has java-pkg-2 ${INHERITED}; then
+	JAVA_PKG_OPT=0
+elif has java-pkg-opt-2 ${INHERITED}; then
+	JAVA_PKG_OPT=1
+else
+	eerror "java-pkg-simple eclass can only be inherited AFTER java-pkg-2 or java-pkg-opt-2"
 fi
 
 # We are only interested in finding all java source files, wherever they may be.
@@ -50,7 +54,12 @@ if has test ${JAVA_PKG_IUSE}; then
 					test_deps+=" dev-java/testng:0";;
 		esac
 	done
-	[[ ${test_deps} ]] && DEPEND="test? ( ${test_deps} )"
+	if [[ ${JAVA_PKG_OPT} == 1 ]]; then
+		[[ ${test_deps} ]] && DEPEND="test? ( ${JAVA_PKG_OPT_USE}? ( ${test_deps} ) )"
+	else
+		[[ ${test_deps} ]] && DEPEND="test? ( ${test_deps} )"
+	fi
+
 	unset test_deps
 fi
 
@@ -347,6 +356,7 @@ java-pkg-simple_prepend_resources() {
 # If USE FLAG 'binary' exists and is set, it will just copy
 # ${JAVA_BINJAR_FILENAME} to ${S} and skip the rest of src_compile.
 java-pkg-simple_src_compile() {
+	[[ ${JAVA_PKG_OPT} == 1 ]] && ! use ${JAVA_PKG_OPT_USE} && return
 	local sources=sources.lst classes=target/classes apidoc=target/api moduleinfo
 
 	# do not compile if we decide to install binary jar
@@ -461,6 +471,7 @@ java-pkg-simple_src_compile() {
 # ${JAVA_JAR_FILENAME}. It will also install a launcher if
 # ${JAVA_MAIN_CLASS} is set. Also invokes einstalldocs.
 java-pkg-simple_src_install() {
+	[[ ${JAVA_PKG_OPT} == 1 ]] && ! use ${JAVA_PKG_OPT_USE} && return
 	local sources=sources.lst classes=target/classes apidoc=target/api
 
 	# install the jar file that we need
@@ -503,6 +514,7 @@ java-pkg-simple_src_install() {
 # in the "generated-test" directory as content of this directory is preserved,
 # whereas content of target/test-classes is removed.
 java-pkg-simple_src_test() {
+	[[ ${JAVA_PKG_OPT} == 1 ]] && ! use ${JAVA_PKG_OPT_USE} && return
 	local test_sources=test_sources.lst classes=target/test-classes moduleinfo
 	local tests_to_run classpath
 

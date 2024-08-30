@@ -3,12 +3,6 @@ From: Georgy Yakovlev <gyakovlev@gentoo.org>
 Date: Wed, 17 Nov 2021 19:52:13 -0800
 Subject: [PATCH] no -Werror
 
----
- buildSrc/linux.gradle | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/buildSrc/linux.gradle b/buildSrc/linux.gradle
-index 00a3bca..2295566 100644
 --- a/buildSrc/linux.gradle
 +++ b/buildSrc/linux.gradle
 @@ -231,7 +231,7 @@ FileTree ft_gtk = fileTree("${project(":graphics").projectDir}/src/main/native-g

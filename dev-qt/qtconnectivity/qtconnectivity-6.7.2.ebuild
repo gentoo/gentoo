@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Bluetooth and NFC support library for the Qt6 framework"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv x86"
 fi
 
 IUSE="+bluetooth nfc smartcard"
@@ -30,6 +30,7 @@ CMAKE_SKIP_TESTS=(
 	# most hardware tests are auto-skipped, but some still misbehave
 	# if bluez/hardware is available (generally tests here may not be
 	# very relevant without hardware, lists may need to be extended)
+	tst_qbluetoothdevicediscoveryagent #936485
 	tst_qbluetoothlocaldevice
 	tst_qbluetoothserver
 	tst_qbluetoothservicediscoveryagent

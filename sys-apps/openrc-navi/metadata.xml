@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>navi@vlhl.dev</email>
+		<name>Anna (navi) Figueiredo Gomes</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="bash">
+			enable the use of bash in service scripts (experimental)
+		</flag>
+		<flag name="netifrc">enable Gentoo's network stack (net.* scripts)</flag>
+		<flag name="newnet">enable the new network stack (experimental)</flag>
+		<flag name="s6">install s6-linux-init</flag>
+		<flag name="sysv-utils">Install sysvinit compatibility scripts for halt, init, poweroff, reboot and shutdown</flag>
+		<flag name="sysvinit">
+			control the dependency on sysvinit (experimental)
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">navi-desu/openrc</remote-id>
+	</upstream>
+</pkgmetadata>

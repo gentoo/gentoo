@@ -24,6 +24,7 @@
 		<flag name="polar">Enable support for the polar coordinate system via <pkg>x11-libs/qwtpolar</pkg></flag>
 		<flag name="qml">Enable support Qml-based plugins using <pkg>dev-qt/qtdeclarative</pkg></flag>
 		<flag name="serial">Enable support for serial GPS using <pkg>dev-qt/qtserialport</pkg></flag>
+		<flag name="webengine">Enable webengine support using <pkg>dev-qt/qtwebengine</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">qgis/QGIS</remote-id>

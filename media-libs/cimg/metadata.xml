@@ -4,7 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="github">GreycLab/CImg</remote-id>
-		<remote-id type="sourceforge">cimg</remote-id>
 		<remote-id type="cpe">cpe:/a:cimg:cimg</remote-id>
 	</upstream>
 </pkgmetadata>

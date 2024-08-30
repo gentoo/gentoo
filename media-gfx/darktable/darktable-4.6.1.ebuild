@@ -92,7 +92,7 @@ DEPEND="dev-db/sqlite:3
 	openexr? ( media-libs/openexr:= )
 	webp? ( media-libs/libwebp:= )"
 RDEPEND="${DEPEND}
-	kwallet? ( >=kde-frameworks/kwallet-5.34.0-r1 )"
+	kwallet? ( >=kde-frameworks/kwallet-5.34.0-r1:* )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.0_jsonschema-automagic.patch
@@ -149,6 +149,7 @@ src_configure() {
 		-DUSE_COLORD=$(usex colord)
 		-DUSE_GMIC=OFF
 		-DUSE_GRAPHICSMAGICK=$(usex graphicsmagick)
+		-DUSE_HEIF=$(usex heif)
 		-DUSE_JXL=$(usex jpegxl)
 		-DUSE_KWALLET=$(usex kwallet)
 		-DUSE_LIBSECRET=$(usex keyring)

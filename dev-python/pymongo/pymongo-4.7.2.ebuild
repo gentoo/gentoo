@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 
 inherit check-reqs distutils-r1
 
@@ -99,6 +99,17 @@ python_test() {
 		# fragile to timing? fails because we're getting too many logs
 		test/test_connection_logging.py::TestConnectionLoggingConnectionPoolOptions::test_maxConnecting_should_be_included_in_connection_pool_created_message_when_specified
 	)
+	local run_separately=(
+		# need to run some tests separately and then restart mongodb
+		# to prevent it from crashing
+		# https://bugs.gentoo.org/934389
+		# note that this list must not overlap with EPYTEST_DESELECT
+		test/test_change_stream.py
+		test/test_collation.py
+		test/test_database.py
+		test/test_gridfs.py
+		test/test_gridfs_bucket.py
+	)
 
 	if ! use test-full; then
 		# .invalid is guaranteed to return NXDOMAIN per RFC 6761
@@ -114,44 +125,54 @@ python_test() {
 	local dbpath=${TMPDIR}/mongo.db
 	local logpath=${TMPDIR}/mongod.log
 
-	# Now, the hard part: we need to find a free port for mongod.
-	# We're just trying to run it random port numbers and check the log
-	# for bind errors. It shall be noted that 'mongod --fork' does not
-	# return failure when it fails to bind.
+	local stage failed=
+	for stage in 1 2; do
+		# Now, the hard part: we need to find a free port for mongod.
+		# We're just trying to run it random port numbers and check the log
+		# for bind errors. It shall be noted that 'mongod --fork' does not
+		# return failure when it fails to bind.
 
-	mkdir -p "${dbpath}" || die
-	while true; do
-		ebegin "Trying to start mongod on port ${DB_PORT}"
+		mkdir -p "${dbpath}" || die
+		while true; do
+			ebegin "Trying to start mongod on port ${DB_PORT}"
 
-		LC_ALL=C \
-		mongod --dbpath "${dbpath}" --nojournal \
-			--bind_ip ${DB_IP} --port ${DB_PORT} \
-			--unixSocketPrefix "${TMPDIR}" \
-			--logpath "${logpath}" --fork \
-		&& sleep 2
+			LC_ALL=C \
+			mongod --dbpath "${dbpath}" --nojournal \
+				--bind_ip ${DB_IP} --port ${DB_PORT} \
+				--unixSocketPrefix "${TMPDIR}" \
+				--logpath "${logpath}" --fork \
+			&& sleep 2
 
-		# Now we need to check if the server actually started...
-		if [[ ${?} -eq 0 && -S "${TMPDIR}"/mongodb-${DB_PORT}.sock ]]; then
-			# yay!
-			eend 0
-			break
-		elif grep -q 'Address already in use' "${logpath}"; then
-			# ay, someone took our port!
-			eend 1
-			: $(( DB_PORT += 1 ))
-			continue
-		else
-			eend 1
-			eerror "Unable to start mongod for tests. See the server log:"
-			eerror "	${logpath}"
-			die "Unable to start mongod for tests."
-		fi
+			# Now we need to check if the server actually started...
+			if [[ ${?} -eq 0 && -S "${TMPDIR}"/mongodb-${DB_PORT}.sock ]]; then
+				# yay!
+				eend 0
+				break
+			elif grep -q 'Address already in use' "${logpath}"; then
+				# ay, someone took our port!
+				eend 1
+				: $(( DB_PORT += 1 ))
+				continue
+			else
+				eend 1
+				eerror "Unable to start mongod for tests. See the server log:"
+				eerror "	${logpath}"
+				die "Unable to start mongod for tests."
+			fi
+		done
+
+		case ${stage} in
+			1)
+				nonfatal epytest "${run_separately[@]}" || failed=1
+				;;
+			2)
+				EPYTEST_DESELECT+=( "${run_separately[@]}" )
+				nonfatal epytest || failed=1
+				;;
+		esac
+
+		mongod --dbpath "${dbpath}" --shutdown || die
 	done
-
-	local failed
-	nonfatal epytest || failed=1
-
-	mongod --dbpath "${dbpath}" --shutdown || die
 
 	[[ ${failed} ]] && die "Tests fail with ${EPYTHON}"
 

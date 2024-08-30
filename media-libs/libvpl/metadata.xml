@@ -11,9 +11,4 @@
 	<upstream>
 		<remote-id type="github">intel/libvpl</remote-id>
 	</upstream>
-	<use>
-		<flag name="drm">Build with DRM support</flag>
-		<flag name="experimental">Build dispatcher with experimental APIs</flag>
-		<flag name="tools">Build decode/encode/analyse/inspect tools</flag>
-	</use>
 </pkgmetadata>

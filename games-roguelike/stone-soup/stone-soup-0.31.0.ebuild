@@ -16,7 +16,7 @@ EAPI=8
 
 LUA_COMPAT=( lua5-1 )
 LUA_REQ_USE="deprecated"
-PYTHON_COMPAT=( python3_{10,11,12} )
+PYTHON_COMPAT=( python3_{10,11,12,13} )
 VIRTUALX_REQUIRED="manual"
 inherit desktop python-any-r1 lua-single xdg-utils toolchain-funcs
 

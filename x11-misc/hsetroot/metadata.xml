@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>marecki@gentoo.org</email>
-		<name>Marek Szuba</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 hsetroot is a tool which allows you to compose wallpapers ("root pixmaps") for
 X. It has a lot of options like rendering gradients, solids, images but it also

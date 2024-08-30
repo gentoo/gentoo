@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
@@ -28,3 +28,8 @@ BDEPEND="
 "
 
 distutils_enable_tests unittest
+
+PATCHES=(
+	# https://github.com/python/importlib_resources/pull/313
+	"${FILESDIR}/${P}-be.patch"
+)

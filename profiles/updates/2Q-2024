@@ -10,3 +10,4 @@ move dev-perl/Test2-Suite perl-core/Test2-Suite
 move dev-python/et_xmlfile dev-python/et-xmlfile
 move dev-python/qiskit-terra dev-python/qiskit
 move dev-python/jupyterlab_widgets dev-python/jupyterlab-widgets
+move dev-python/pyyaml_env_tag dev-python/pyyaml-env-tag

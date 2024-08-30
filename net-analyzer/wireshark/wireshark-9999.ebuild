@@ -5,7 +5,7 @@ EAPI=8
 
 LUA_COMPAT=( lua5-{1..2} )
 # TODO: check cmake/modules/UseAsn2Wrs.cmake for 3.12
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit fcaps flag-o-matic lua-single python-any-r1 qmake-utils xdg cmake
 
@@ -24,7 +24,7 @@ else
 	S="${WORKDIR}/${P/_/}"
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~amd64 ~arm64 ~hppa"
+		KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~riscv ~x86"
 	fi
 fi
 
@@ -139,11 +139,6 @@ if [[ ${PV} != *9999* ]] ; then
 	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-wireshark )"
 fi
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.6.0-redhat.patch
-	"${FILESDIR}"/${PN}-4.2.5-http2-test.patch
-)
-
 python_check_deps() {
 	use test || return 0
 
@@ -206,6 +201,10 @@ src_configure() {
 
 		# Force bundled lemon (bug 933119)
 		-DLEMON_EXECUTABLE=
+
+		-DRPMBUILD_EXECUTABLE=
+		-DGIT_EXECUTABLE=
+		-DENABLE_CCACHE=OFF
 
 		$(use androiddump && use pcap && echo -DEXTCAP_ANDROIDDUMP_LIBPCAP=yes)
 		$(usex gui LRELEASE=$(qt5_get_bindir)/lrelease '')

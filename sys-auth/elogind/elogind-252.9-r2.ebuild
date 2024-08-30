@@ -21,7 +21,7 @@ HOMEPAGE="https://github.com/elogind/elogind"
 
 LICENSE="CC0-1.0 LGPL-2.1+ public-domain"
 SLOT="0"
-IUSE="+acl audit +cgroup-hybrid debug doc +pam +policykit selinux test"
+IUSE="+acl audit cgroup-hybrid debug doc +pam +policykit selinux test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -54,8 +54,9 @@ DOCS=( README.md)
 
 PATCHES=(
 	"${FILESDIR}/${P}-nodocs.patch"
-	"${FILESDIR}/${PN}-252.9-musl-lfs.patch"
-	"${FILESDIR}/${PN}-252.9-musl-1.2.5.patch"
+	"${FILESDIR}/${P}-musl-lfs.patch"
+	"${FILESDIR}/${P}-musl-1.2.5.patch"
+	"${FILESDIR}/${P}-py-exec.patch" # bug 933398
 )
 
 python_check_deps() {
@@ -139,6 +140,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	udev_reload
 	if ! use pam; then
 		ewarn "${PN} will not be managing user logins/seats without USE=\"pam\"!"
 		ewarn "In other words, it will be useless for most applications."
@@ -179,4 +181,8 @@ pkg_postinst() {
 			elog "configuration remember to migrate those to new configuration file."
 		fi
 	done
+}
+
+pkg_postrm() {
+	udev_reload
 }

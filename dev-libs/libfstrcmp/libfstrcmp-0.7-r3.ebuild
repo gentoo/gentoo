@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/fstrcmp-${PV}.D001"
 LICENSE="GPL-3+"
 SLOT="0"
 IUSE="doc static-libs test"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~riscv x86"
 
 BDEPEND="
 	sys-apps/groff

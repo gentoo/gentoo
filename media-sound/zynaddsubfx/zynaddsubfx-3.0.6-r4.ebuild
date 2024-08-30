@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="+alsa doc dssi jack lash portaudio"
 REQUIRED_USE="|| ( alsa jack portaudio )"
 
@@ -24,6 +24,7 @@ DEPEND="
 	media-libs/liblo
 	sci-libs/fftw:3.0
 	sys-libs/zlib
+	virtual/opengl
 	alsa? ( media-libs/alsa-lib )
 	doc? ( dev-texlive/texlive-fontutils )
 	dssi? ( media-libs/dssi )

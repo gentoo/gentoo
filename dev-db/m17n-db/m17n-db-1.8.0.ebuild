@@ -7,11 +7,11 @@ GLIBC_PV="2.39"
 GLIBC_P="glibc-${GLIBC_PV}"
 
 DESCRIPTION="Database for the m17n library"
-HOMEPAGE="https://savannah.nongnu.org/projects/m17n https://git.savannah.nongnu.org/cgit/m17n/m17n-db.git"
+HOMEPAGE="https://www.nongnu.org/m17n/"
 SRC_URI="mirror://nongnu/m17n/${P}.tar.gz
 	elibc_musl? ( mirror://gnu/glibc/${GLIBC_P}.tar.xz )"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
 IUSE=""

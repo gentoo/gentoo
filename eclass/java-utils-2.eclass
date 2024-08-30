@@ -1838,7 +1838,7 @@ ejunit_() {
 	local junit=${1}
 	shift 1
 
-	local cp=$(java-pkg_getjars --with-dependencies ${junit}${pkgs})
+	local cp=$(java-pkg_getjars --build-only --with-dependencies ${junit}${pkgs})
 	if [[ ${1} = -cp || ${1} = -classpath ]]; then
 		cp="${2}:${cp}"
 		shift 2
@@ -1926,7 +1926,7 @@ etestng() {
 
 	local runner=org.testng.TestNG
 	if [[ ${PN} != testng ]]; then
-		local cp=$(java-pkg_getjars --with-dependencies testng)
+		local cp=$(java-pkg_getjars --build-only --with-dependencies testng)
 	else
 		local cp=testng.jar
 	fi
@@ -2033,13 +2033,23 @@ java-utils-2_pkg_preinst() {
 eant() {
 	debug-print-function ${FUNCNAME} $*
 
-	if [[ ${EBUILD_PHASE} = compile ]]; then
-		java-ant-2_src_configure
-	fi
+	if [[ ${!JAVA_PKG_BSFIX*} ]] \
+		|| [[ ${JAVA_ANT_BSFIX_EXTRA_ARGS} ]] \
+		|| [[ ${JAVA_ANT_CLASSPATH_TAGS} ]] \
+		|| [[ ${JAVA_ANT_JAVADOC_INPUT_DIRS} ]] \
+		|| [[ ${JAVA_ANT_REWRITE_CLASSPATH} ]] \
+		|| [[ ${EANT_BUILD_XML} ]] \
+		|| [[ ${!EANT_GENTOO_CLASSPATH*} ]] \
+		|| [[ ${EANT_TEST_GENTOO_CLASSPATH} ]]
+	then
+		if [[ ${EBUILD_PHASE} = compile ]]; then
+			java-ant-2_src_configure
+		fi
 
-	if ! has java-ant-2 ${INHERITED}; then
-		local msg="You should inherit java-ant-2 when using eant"
-		java-pkg_announce-qa-violation "${msg}"
+		if ! has java-ant-2 ${INHERITED}; then
+			local msg="You should inherit java-ant-2 when using eant"
+			java-pkg_announce-qa-violation "${msg}"
+		fi
 	fi
 
 	local antflags="-Dnoget=true -Dmaven.mode.offline=true -Dbuild.sysclasspath=ignore"
@@ -2713,7 +2723,13 @@ java-pkg_build-vm-from-handle() {
 	fi
 
 	for vm in ${JAVA_PKG_WANT_BUILD_VM}; do
-		if java-config-2 --select-vm=${vm} 2>/dev/null; then
+		local java_config
+		for java_config in java-config{,-2}; do
+			type -p ${java_config} >/dev/null && break
+		done
+		[[ -z ${java_config} ]] && die "No java-config binary in PATH"
+
+		if ${java_config} --select-vm=${vm} 2>/dev/null; then
 			echo ${vm}
 			return 0
 		fi

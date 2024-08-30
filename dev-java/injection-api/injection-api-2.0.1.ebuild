@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -13,7 +13,8 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Jakarta Dependency Injection"
 HOMEPAGE="https://jakarta.ee/specifications/dependency-injection/"
-SRC_URI="https://github.com/eclipse-ee4j/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jakartaee/inject/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/inject-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -23,7 +24,5 @@ DEPEND=">=virtual/jdk-11:*"
 RDEPEND=">=virtual/jre-1.8:*"
 
 DOCS=( {CONTRIBUTING,NOTICE}.md )
-
-S="${WORKDIR}/${P}"
 
 JAVA_SRC_DIR="src/main/java"

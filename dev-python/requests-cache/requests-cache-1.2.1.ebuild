@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1 optfeature
@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86"
 
 RDEPEND="
 	dev-python/attrs[${PYTHON_USEDEP}]

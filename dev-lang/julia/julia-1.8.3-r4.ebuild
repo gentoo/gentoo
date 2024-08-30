@@ -88,6 +88,10 @@ src_unpack() {
 src_prepare() {
 	default
 
+	# Various LTO issues.
+	# https://bugs.gentoo.org/855602
+	filter-lto
+
 	# Sledgehammer:
 	# - prevent fetching of bundled stuff in compile and install phase
 	# - respect CFLAGS
@@ -106,9 +110,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# bug #855602
-	filter-lto
-
 	# julia does not play well with the system versions of libuv
 	# Fails to compile with libpcre2 on split-usr, bug #893336
 	# USE_SYSTEM_LIBM=0 implies using external openlibm

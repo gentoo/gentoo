@@ -20,4 +20,9 @@
 		<remote-id type="github">unidata/netcdf4-python</remote-id>
 		<remote-id type="pypi">netCDF4</remote-id>
 	</upstream>
+	<use>
+		<flag name="blosc">
+			Allow using blosc compression via <pkg>dev-libs/c-blosc</pkg>
+		</flag>
+	</use>
 </pkgmetadata>

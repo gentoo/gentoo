@@ -1,0 +1,102 @@
+From 00f52c9f025b78aefd47637e2dd2c0cc8fd44d64 Mon Sep 17 00:00:00 2001
+From: Sparky Bluefang <sparky@bluefang-logic.com>
+Date: Thu, 13 Jun 2024 22:49:12 -0400
+Subject: [PATCH] Add option to disable building introspection and vala
+ bindings.
+
+---
+ libxapp/meson.build | 38 ++++++++++++++++++++++----------------
+ meson.build         |  5 ++++-
+ meson_options.txt   | 10 ++++++++++
+ 3 files changed, 36 insertions(+), 17 deletions(-)
+
+diff --git a/libxapp/meson.build b/libxapp/meson.build
+index d4034cb..c419b8f 100644
+--- a/libxapp/meson.build
++++ b/libxapp/meson.build
+@@ -119,16 +119,18 @@ libxapp_dep = declare_dependency(
+     sources: [ xapp_headers, dbus_headers ]
+ )
+ 
+-gir = gnome.generate_gir(libxapp,
+-    namespace: 'XApp',
+-    nsversion: '1.0',
+-    sources: xapp_headers + xapp_sources + dbus_headers + xapp_enums,
+-    identifier_prefix: 'XApp',
+-    symbol_prefix: 'xapp_',
+-    export_packages: 'xapp',
+-    includes: ['GObject-2.0', 'Gtk-3.0'],
+-    install: true
+-)
++if get_option('introspection')
++    gir = gnome.generate_gir(libxapp,
++        namespace: 'XApp',
++        nsversion: '1.0',
++        sources: xapp_headers + xapp_sources + dbus_headers + xapp_enums,
++        identifier_prefix: 'XApp',
++        symbol_prefix: 'xapp_',
++        export_packages: 'xapp',
++        includes: ['GObject-2.0', 'Gtk-3.0'],
++        install: true
++    )
++endif
+ 
+ pkg.generate(
+     libraries: libxapp,
+@@ -144,12 +146,16 @@ install_data(['xapp-glade-catalog.xml'],
+     install_dir : join_paths(get_option('datadir'), 'glade/catalogs')
+ )
+ 
+-gnome.generate_vapi('xapp',
+-    packages: ['glib-2.0', 'gio-unix-2.0', 'gtk+-3.0'],
+-    sources: gir[0],
+-    metadata_dirs: meson.current_source_dir(),
+-    install: true
+-)
++if get_option('vapi')
++    assert(is_variable('gir'), 'vapi requires introspection to be enabled')
++
++    gnome.generate_vapi('xapp',
++        packages: ['glib-2.0', 'gio-unix-2.0', 'gtk+-3.0'],
++        sources: gir[0],
++        metadata_dirs: meson.current_source_dir(),
++        install: true
++    )
++endif
+ 
+ if not app_lib_only
+     gtk3_module = shared_module(
+diff --git a/meson.build b/meson.build
+index 1783747..8b72f4b 100644
+--- a/meson.build
++++ b/meson.build
+@@ -47,7 +47,10 @@ top_inc = include_directories('.')
+ subdir('libxapp')
+ subdir('po')
+ subdir('schemas')
+-subdir('pygobject')
++
++if get_option('introspection')
++    subdir('pygobject')
++endif
+ 
+ if not app_lib_only
+     subdir('icons')
+diff --git a/meson_options.txt b/meson_options.txt
+index 3ea5310..5bfb661 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -38,3 +38,13 @@ option('xfce',
+     value: true,
+     description: 'Install xfce specific items.'
+ )
++option('introspection',
++    type: 'boolean',
++    value: true,
++    description: 'Enable GObject Introspection.'
++)
++option('vapi',
++    type: 'boolean',
++    value: true,
++    description: 'Enable Vala bindings.'
++)

@@ -3,13 +3,6 @@ From: Mat Booth <mat.booth@redhat.com>
 Date: Thu, 21 Jun 2018 15:57:01 +0100
 Subject: [PATCH 4/4] fix cast between incompatible function types
 
----
- modules/graphics/src/main/native-glass/gtk/glass_dnd.cpp | 8 ++++++--
- .../src/main/native-glass/gtk/glass_window_ime.cpp       | 9 +++------
- 2 files changed, 9 insertions(+), 8 deletions(-)
-
-diff --git a/modules/graphics/src/main/native-glass/gtk/glass_dnd.cpp b/modules/graphics/src/main/native-glass/gtk/glass_dnd.cpp
-index f85b1dae..3b9225f7 100644
 --- a/modules/graphics/src/main/native-glass/gtk/glass_dnd.cpp
 +++ b/modules/graphics/src/main/native-glass/gtk/glass_dnd.cpp
 @@ -556,7 +556,7 @@ static GdkDragContext *get_drag_context() {
@@ -41,8 +34,6 @@ index f85b1dae..3b9225f7 100644
                      }
                  }
              }
-diff --git a/modules/graphics/src/main/native-glass/gtk/glass_window_ime.cpp b/modules/graphics/src/main/native-glass/gtk/glass_window_ime.cpp
-index 82e54d11..51af2a6a 100644
 --- a/modules/graphics/src/main/native-glass/gtk/glass_window_ime.cpp
 +++ b/modules/graphics/src/main/native-glass/gtk/glass_window_ime.cpp
 @@ -122,15 +122,12 @@ bool WindowContextBase::filterIME(GdkEvent * event) {

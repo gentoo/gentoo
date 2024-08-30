@@ -179,6 +179,7 @@ multilib_src_configure() {
 		$(use_enable sound dummyaudio)
 		$(use_enable wayland video-wayland)
 		--disable-wayland-shared
+		--disable-libdecor
 		$(use_enable video_cards_vc4 video-rpi)
 		$(use_enable X video-x11)
 		--disable-x11-shared

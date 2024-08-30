@@ -10,6 +10,8 @@
 		<flag name="pmi">Build PMI1 and PMI2 interface</flag>
 	</use>
 	<upstream>
+		<doc>https://docs.openpmix.org</doc>
+		<bugs-to>https://github.com/openpmix/openpmix/issues</bugs-to>
 		<remote-id type="github">openpmix/openpmix</remote-id>
 	</upstream>
 </pkgmetadata>

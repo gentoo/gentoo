@@ -5,7 +5,7 @@ EAPI=8
 
 # Note: Please bump this in sync with dev-libs/libxml2.
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit flag-o-matic python-r1 multilib-minimal
 
 DESCRIPTION="XSLT libraries and tools"

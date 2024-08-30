@@ -451,7 +451,7 @@ LICENSE+="
 	Unicode-DFS-2016
 " # crates
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="doc +ssl test"
 RESTRICT="!test? ( test )"
 
@@ -532,7 +532,6 @@ python_compile_all() {
 }
 
 python_test() {
-	local -x COLUMNS=100 # match clap_builder crate default
 	local -x MATURIN_TEST_PYTHON=${EPYTHON}
 	local -x PIP_CONFIG_FILE=${T}/pip.conf
 	local -x VIRTUALENV_SYSTEM_SITE_PACKAGES=1
@@ -541,6 +540,8 @@ python_test() {
 	local -x PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
 
 	local skip=(
+		# picky cli output test that easily benignly fail (bug #937992)
+		--skip cli_tests
 		# avoid need for wasm over a single hello world test
 		--skip integration_wasm_hello_world
 		# fragile depending on rust version, also wants libpypy*-c.so for pypy
@@ -549,6 +550,9 @@ python_test() {
 		# to find the system's dev-python/uv (not worth the trouble)
 		--skip develop_hello_world::case_2
 		--skip develop_pyo3_ffi_pure::case_2
+		# fails on sparc since rust-1.74 (bug #934573), skip for now given
+		# should not affect the pep517 backend which is all we need on sparc
+		$(usev sparc '--skip build_context::test::test_macosx_deployment_target')
 	)
 
 	cargo_src_test -- "${skip[@]}"

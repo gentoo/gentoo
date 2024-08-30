@@ -1,0 +1,24 @@
+Newly caught as an error by gcc15.
+https://bugs.gentoo.org/936410
+https://github.com/RenderKit/embree/issues/486
+https://github.com/RenderKit/embree/commit/cda4cf1919bb2a748e78915fbd6e421a1056638d
+From: Daniel Opitz <daniel.opitz@intel.com>
+Date: Mon, 13 May 2024 10:17:51 +0200
+Subject: [PATCH] fix output operator, issue #486
+--- a/src/3rdparty/embree/kernels/geometry/pointi.h
++++ b/src/3rdparty/embree/kernels/geometry/pointi.h
+@@ -212,5 +212,5 @@
+     /*! output operator */
+-    friend __forceinline embree_ostream operator<<(embree_ostream cout, const PointMi& line)
++    friend __forceinline embree_ostream operator<<(embree_ostream cout, const PointMi& point)
+     {
+-      return cout << "Line" << M << "i {" << line.v0 << ", " << line.geomID() << ", " << line.primID() << "}";
++      return cout << "Point" << M << "i {" << point.geomID() << ", " << point.primID() << "}";
+     }
+--- a/src/3rdparty/embree/kernels/subdiv/bezier_curve.h
++++ b/src/3rdparty/embree/kernels/subdiv/bezier_curve.h
+@@ -137,3 +137,3 @@
+       friend embree_ostream operator<<(embree_ostream cout, const QuadraticBezierCurve& a) {
+-        return cout << "QuadraticBezierCurve ( (" << a.u.lower << ", " << a.u.upper << "), " << a.v0 << ", " << a.v1 << ", " << a.v2 << ")";
++        return cout << "QuadraticBezierCurve (" << a.v0 << ", " << a.v1 << ", " << a.v2 << ")";
+       }

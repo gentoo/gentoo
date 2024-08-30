@@ -12,7 +12,7 @@ SRC_URI="https://github.com/OpenPrinting/libppd/releases/download/${PV}/${P}.tar
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="+postscript +poppler"
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
 
 # pdftops has various possible implementations, but the default
 # really needs to be decent

@@ -13,15 +13,13 @@ if [[ "${PV}" == 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/caddyserver/caddy.git"
 else
 	SRC_URI="
-		https://github.com/caddyserver/caddy/archive/v${PV/_beta/-beta.}.tar.gz -> ${P}.tar.gz
+		https://github.com/caddyserver/caddy/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		https://github.com/rahilarious/gentoo-distfiles/releases/download/${P}/deps.tar.xz -> ${P}-deps.tar.xz
-		https://github.com/caddyserver/dist/archive/refs/tags/v${PV/_beta/-beta.}.tar.gz -> ${P}-docs.tar.gz
+		https://github.com/caddyserver/dist/archive/refs/tags/v${PV}.tar.gz -> ${P}-docs.tar.gz
 "
-	[[ ${PV} != *beta* ]] && \
-		KEYWORDS="~amd64 ~arm64 ~loong ~riscv"
+	KEYWORDS="~amd64 ~arm64 ~loong ~riscv"
 fi
 
-S="${WORKDIR}/${PN}-${PV/_beta/-beta.}"
 # MAIN
 LICENSE="Apache-2.0"
 # deps

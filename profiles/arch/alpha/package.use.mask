@@ -1,6 +1,42 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2024-08-23)
+# dev-util/bpftool and/or sys-devel/bpf-toolchain not keyworded here
+sys-apps/systemd bpf
+
+# Hans de Graaff <graaff@gentoo.org> (2024-08-16)
+# Requires large parts of dev-ruby/rails to be keyworded
+dev-ruby/minitest-hooks test
+
+# Matt Jolly <kangie@gentoo.org> (2024-08-14)
+# QUIC dependencies are not keyworded
+net-misc/curl http3 quic curl_quic_openssl curl_quic_ngtcp2
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-08-10)
+# Needs dev-libs/openspecfun which is not yet keyworded
+sci-visualization/gnuplot amos
+
+# Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
+# media-libs/quirc and media-sound/liblc3 are not keyworded here
+media-video/ffmpeg quirc liblc3
+
+# matoro <matoro_gentoo@matoro.tk> (2024-07-03)
+# Requires dev-util/shelltestrunner
+app-arch/mt-st test
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-04)
+# kde-frameworks/kservice not keyworded here
+x11-misc/xdg-utils plasma
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-03)
+# dev-python/redis lacks keywords here
+mail-filter/pyzor redis test
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-06-29)
+# media-libs/libplacebo is not keyworded
+media-video/ffmpeg libplacebo
+
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # Requires sys-devel/{clang,llvm}:16.
 dev-lang/python jit
@@ -51,6 +87,7 @@ app-alternatives/ninja samurai
 # indicate a passing test suite, you must check the logs.
 # https://buildd.debian.org/status/logs.php?pkg=weston&arch=alpha
 gui-libs/gtk wayland
+dev-libs/libportal wayland
 
 # matoro <matoro_gentoo@matoro.tk> (2023-06-18)
 # sci-physics/bullet not keyworded here (#908240)
@@ -209,7 +246,6 @@ sci-libs/umfpack cholmod
 media-libs/openal sndio
 media-video/ffmpeg sndio
 media-sound/moc sndio
-media-sound/mpd sndio
 media-libs/libsdl2 sndio
 media-libs/libao sndio
 
@@ -334,10 +370,6 @@ dev-db/percona-server cjk
 # Not keyworded (see bug #540540c#8)
 app-admin/sudo sssd
 sys-auth/pambase sssd
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-09-30)
-# Optional dependency blocking security cleanup, bug #627316
-media-sound/mpd wildmidi
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-06-06)
 # Needs sys-apps/fakechroot which isn't keyworded

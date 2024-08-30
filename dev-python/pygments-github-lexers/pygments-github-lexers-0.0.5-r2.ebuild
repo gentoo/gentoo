@@ -3,13 +3,20 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 DISTUTILS_USE_PEP517=setuptools
+
 inherit distutils-r1
 
 DESCRIPTION="Pygments Github custom lexers"
-HOMEPAGE="https://github.com/liluo/pygments-github-lexers"
-SRC_URI="https://github.com/liluo/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+HOMEPAGE="
+	https://github.com/liluo/pygments-github-lexers/
+	https://pypi.org/project/pygments-github-lexers/
+"
+SRC_URI="
+	https://github.com/liluo/${PN}/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="BSD-2"
 SLOT="0"

@@ -8,15 +8,14 @@ inherit autotools
 MY_P="${P/-/_}"
 
 DESCRIPTION="Library for downloading files via HTTP using the GET method"
-HOMEPAGE="http://http-fetcher.sourceforge.net"
+HOMEPAGE="https://http-fetcher.sourceforge.net"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc x86"
 IUSE="debug"
-
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.0-underquoted-http-fetcher-macro.patch

@@ -1,7 +1,5 @@
 Namespace functions for multi-bitdepth builds so that libraries are self-contained.
 
-Index: source/common/param.h
-===================================================================
 --- source.orig/common/param.h
 +++ source/common/param.h
 @@ -53,6 +53,18 @@ int x265_param_default_preset(x265_param
@@ -23,8 +21,6 @@ Index: source/common/param.h
  #define PARAM_NS X265_NS
  #endif
  }
-Index: source/encoder/api.cpp
-===================================================================
 --- source.orig/encoder/api.cpp
 +++ source/encoder/api.cpp
 @@ -106,9 +106,9 @@ x265_encoder *x265_encoder_open(x265_par
@@ -58,15 +54,6 @@ Index: source/encoder/api.cpp
      }
      x265_copy_params(&save, encoder->m_latestParam);
      int ret = encoder->reconfigureParam(encoder->m_latestParam, param_in);
-@@ -604,7 +604,7 @@ fail:
-         *pi_nal = 0;
- 
-     if (numEncoded && encoder->m_param->csvLogLevel && encoder->m_outputCount >= encoder->m_latestParam->chunkStart)
--        x265_csvlog_frame(encoder->m_param, pic_out);
-+        PARAM_NS::x265_csvlog_frame(encoder->m_param, pic_out);
- 
-     if (numEncoded < 0)
-         encoder->m_aborted = true;
 @@ -637,7 +637,7 @@ void x265_vmaf_encoder_log(x265_encoder*
          encoder->fetchStats(&stats, sizeof(stats));
          int padx = encoder->m_sps.conformanceWindow.rightOffset;
@@ -76,15 +63,6 @@ Index: source/encoder/api.cpp
      }
  }
  #endif
-@@ -651,7 +651,7 @@ void x265_encoder_log(x265_encoder* enc,
-         encoder->fetchStats(&stats, sizeof(stats));
-         int padx = encoder->m_sps.conformanceWindow.rightOffset;
-         int pady = encoder->m_sps.conformanceWindow.bottomOffset;
--        x265_csvlog_encode(encoder->m_param, &stats, padx, pady, argc, argv);
-+        PARAM_NS::x265_csvlog_encode(encoder->m_param, &stats, padx, pady, argc, argv);
-     }
- }
- 
 @@ -872,7 +872,7 @@ void x265_alloc_analysis_data(x265_param
      return;
  
@@ -94,8 +72,6 @@ Index: source/encoder/api.cpp
  }
  
  void x265_free_analysis_data(x265_param *param, x265_analysis_data* analysis)
-Index: source/encoder/encoder.cpp
-===================================================================
 --- source.orig/encoder/encoder.cpp
 +++ source/encoder/encoder.cpp
 @@ -186,8 +186,8 @@ void Encoder::create()
@@ -127,15 +103,6 @@ Index: source/encoder/encoder.cpp
              X265_FREE(m_dupBuffer[i]);
          }
  
-@@ -1592,7 +1592,7 @@ int Encoder::encode(const x265_picture*
-     if (m_exportedPic)
-     {
-         if (!m_param->bUseAnalysisFile && m_param->analysisSave)
--            x265_free_analysis_data(m_param, &m_exportedPic->m_analysisData);
-+            PARAM_NS::x265_free_analysis_data(m_param, &m_exportedPic->m_analysisData);
-         ATOMIC_DEC(&m_exportedPic->m_countRefEncoders);
-         m_exportedPic = NULL;
-         m_dpb->recycleUnreferenced();
 @@ -1968,7 +1968,7 @@ int Encoder::encode(const x265_picture*
  
              /* Free up inputPic->analysisData since it has already been used */
@@ -280,8 +247,6 @@ Index: source/encoder/encoder.cpp
      m_aborted = true; \
      return; \
  }\
-Index: source/common/param.cpp
-===================================================================
 --- source.orig/common/param.cpp
 +++ source/common/param.cpp
 @@ -102,7 +102,7 @@ x265_param *x265_param_alloc()
@@ -293,3 +258,23 @@ Index: source/common/param.cpp
  #ifdef SVT_HEVC
       x265_free(p->svtHevcParam);
  #endif
+--- source.orig/encoder/api.cpp
++++ source/encoder/api.cpp
+@@ -604,7 +604,7 @@ fail:
+         *pi_nal = 0;
+ 
+     if (numEncoded && encoder->m_param->csvLogLevel && encoder->m_outputCount >= encoder->m_latestParam->chunkStart)
+-        x265_csvlog_frame(encoder->m_param, pic_out);
++        PARAM_NS::x265_csvlog_frame(encoder->m_param, pic_out);
+ 
+     if (numEncoded < 0)
+         encoder->m_aborted = true;
+@@ -651,7 +651,7 @@ void x265_encoder_log(x265_encoder* enc,
+         encoder->fetchStats(&stats, sizeof(stats));
+         int padx = encoder->m_sps.conformanceWindow.rightOffset;
+         int pady = encoder->m_sps.conformanceWindow.bottomOffset;
+-        x265_csvlog_encode(encoder->m_param, &stats, padx, pady, argc, argv);
++        PARAM_NS::x265_csvlog_encode(encoder->m_param, &stats, padx, pady, argc, argv);
+     }
+ }
+ 

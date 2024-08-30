@@ -8,5 +8,6 @@
 	<use>
 		<flag name="hamlib">Enables support by the Hamlib amateur radio 
 		rig control library to get/set frequency and mode of the  ham radio</flag>
+		<flag name="rtlsdr">Add support for rtlsdr hardware</flag>
 	</use>
 </pkgmetadata>

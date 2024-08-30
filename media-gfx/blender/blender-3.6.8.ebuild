@@ -23,7 +23,7 @@ else
 	KEYWORDS="amd64 ~arm ~arm64"
 fi
 
-LICENSE="|| ( GPL-3 BL )"
+LICENSE="GPL-3+ cycles? ( Apache-2.0 )"
 SLOT="${PV%.*}"
 IUSE="+bullet +dds +fluid +openexr +tbb
 	alembic collada +color-management cuda +cycles cycles-bin-kernels

@@ -6,7 +6,7 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Hardware-based performance monitoring interface for Linux"
-HOMEPAGE="http://perfmon2.sourceforge.net"
+HOMEPAGE="https://perfmon2.sourceforge.net"
 SRC_URI="https://downloads.sourceforge.net/perfmon2/${PN}4/${P}.tar.gz"
 
 LICENSE="GPL-2 MIT"

@@ -3950,7 +3950,7 @@ DESCRIPTION="TeXLive LaTeX additional packages"
 
 LICENSE="Apache-2.0 Artistic BSD BSD-2 CC-BY-2.0 CC-BY-4.0 CC-BY-SA-3.0 CC-BY-SA-4.0 CC0-1.0 FDL-1.1+ GPL-1+ GPL-2 GPL-2+ GPL-3 GPL-3+ LGPL-2+ LGPL-3 LPPL-1.0 LPPL-1.2 LPPL-1.3 LPPL-1.3a LPPL-1.3c MIT OFL-1.1 TeX-other-free public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 COMMON_DEPEND="
 	>=dev-texlive/texlive-latexrecommended-2023
 	>=dev-texlive/texlive-pictures-2023

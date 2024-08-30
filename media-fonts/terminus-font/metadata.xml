@@ -5,10 +5,6 @@
     <email>fonts@gentoo.org</email>
     <name>Fonts</name>
   </maintainer>
-  <maintainer type="person">
-    <email>marecki@gentoo.org</email>
-    <name>Marek Szuba</name>
-  </maintainer>
   <stabilize-allarches/>
   <use>
     <flag name="a-like-o">

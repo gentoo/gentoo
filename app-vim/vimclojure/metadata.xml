@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>java@gentoo.org</email>
-		<name>Java</name>
+		<email>vim@gentoo.org</email>
+		<name>Gentoo Vim Project</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">vim-scripts/VimClojure</remote-id>

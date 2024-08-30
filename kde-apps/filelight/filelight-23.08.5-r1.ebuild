@@ -38,3 +38,8 @@ RDEPEND="${DEPEND}
 	>=kde-frameworks/kquickcharts-${KFMIN}:5
 	>=kde-frameworks/qqc2-desktop-style-${KFMIN}:5
 "
+
+CMAKE_SKIP_TESTS=(
+	# bug 911856
+	scanManagerTest
+)

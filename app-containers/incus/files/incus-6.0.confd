@@ -1,0 +1,27 @@
+## "INCUS_OPTIONS+=" is not POSIX-compliant, so we use
+## "INCUS_OPTIONS="${INCUS_OPTIONS}"" to not rely on bashmisms.
+## bgo#929138
+
+# Group which owns the shared socket
+INCUS_OPTIONS="${INCUS_OPTIONS} --group incus-admin"
+
+# Enable cpu profiling into the specified file
+#INCUS_OPTIONS="${INCUS_OPTIONS} --cpuprofile /tmp/lxc_cpu_profile"
+
+# Enable memory profiling into the specified file
+#INCUS_OPTIONS="${INCUS_OPTIONS} --memprofile /tmp/lxc_mem_profile"
+
+# Enable debug mode
+#INCUS_OPTIONS="${INCUS_OPTIONS} --debug"
+
+# For debugging, print a complete stack trace every n seconds
+#INCUS_OPTIONS="${INCUS_OPTIONS} --print-goroutines-every 5"
+
+# Enable verbose mode
+#INCUS_OPTIONS="${INCUS_OPTIONS} -v"
+
+# Logfile to log to
+#INCUS_OPTIONS="${INCUS_OPTIONS} --logfile /var/log/incus/incus.log"
+
+# Enable syslog logging
+#INCUS_OPTIONS="${INCUS_OPTIONS} --syslog"

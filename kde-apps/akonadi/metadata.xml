@@ -12,5 +12,6 @@
 		<flag name="designer">Install plugin for <pkg>dev-qt/designer</pkg></flag>
 		<flag name="kaccounts">Enable support for system-wide defined KAccounts</flag>
 		<flag name="tools">Install tools for developers and testing</flag>
+		<flag name="webengine">Enable support for system-wide defined KAccounts</flag>
 	</use>
 </pkgmetadata>

@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>mpagano@gentoo.org</email>
+		<name>Mike Pagano</name>
+	</maintainer>
 	<use>
 		<flag name="access-log">Support generating Apache-compatible access logs</flag>
 		<flag name="client">The client part of the library and libwebsockets-test-client</flag>
 		<flag name="extensions">Compile with extensions (permessage-deflate)</flag>
 		<flag name="generic-sessions">With the Generic Sessions plugin</flag>
 		<flag name="http-proxy">Support for rewriting HTTP proxying</flag>
+		<flag name="ipv6">Compile without support for ipv6</flag>
 		<flag name="lejp">With the Lightweight JSON Parser</flag>
 		<flag name="libev">Support event loops via <pkg>dev-libs/libev</pkg></flag>
 		<flag name="libevent">Support event loops via <pkg>dev-libs/libevent</pkg></flag>

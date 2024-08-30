@@ -32,6 +32,7 @@ PATCHES=(
 )
 
 src_configure() {
+	filter-lto # bug #931082
 	strip-flags
 	filter-flags -fstack-protector -fstack-protector-all
 	# breaks linking on multiple defined syms

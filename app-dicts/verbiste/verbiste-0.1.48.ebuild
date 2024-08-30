@@ -21,12 +21,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	dev-lang/perl
+	dev-perl/XML-Parser
 	sys-devel/gettext
 	virtual/pkgconfig
-	test? (
-		dev-lang/perl
-		dev-perl/XML-Parser
-	)
 "
 
 src_configure() {

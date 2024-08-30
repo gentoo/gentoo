@@ -1,0 +1,75 @@
+From c6402be3b5eb84f53367ebd57b1a38664a240d44 Mon Sep 17 00:00:00 2001
+From: Sparky Bluefang <sparky@bluefang-logic.com>
+Date: Wed, 3 Jul 2024 02:10:18 -0400
+Subject: [PATCH] Use Polkit agent for X11 sessions. Don't crash if polkit
+ doesn't start properly.
+
+---
+ debian/control                     |  1 -
+ js/ui/main.js                      |  4 +---
+ js/ui/polkitAuthenticationAgent.js | 20 +++++++++++++++++++-
+ 3 files changed, 20 insertions(+), 5 deletions(-)
+
+diff --git a/debian/control b/debian/control
+index b9812a1276..d886fac1ec 100644
+--- a/debian/control
++++ b/debian/control
+@@ -85,7 +85,6 @@ Depends:
+  metacity,
+  nemo,
+  network-manager-gnome [linux-any],
+- policykit-1-gnome,
+  python3,
+  python3-dbus,
+  python3-distro,
+diff --git a/js/ui/main.js b/js/ui/main.js
+index 12bcfc0cfc..55703b96b3 100644
+--- a/js/ui/main.js
++++ b/js/ui/main.js
+@@ -430,9 +430,7 @@ function start() {
+     _initUserSession();
+     screenRecorder = new ScreenRecorder.ScreenRecorder();
+ 
+-    if (Meta.is_wayland_compositor()) {
+-        PolkitAuthenticationAgent.init();
+-    }
++    PolkitAuthenticationAgent.init();
+ 
+     _startDate = new Date();
+ 
+diff --git a/js/ui/polkitAuthenticationAgent.js b/js/ui/polkitAuthenticationAgent.js
+index 5f0b55c387..e9ac7b8853 100644
+--- a/js/ui/polkitAuthenticationAgent.js
++++ b/js/ui/polkitAuthenticationAgent.js
+@@ -35,6 +35,7 @@ const PolkitAgent = imports.gi.PolkitAgent;
+ const ModalDialog = imports.ui.modalDialog;
+ const CinnamonEntry = imports.ui.cinnamonEntry;
+ const UserWidget = imports.ui.userWidget;
++const Main = imports.ui.main;
+ 
+ const DIALOG_ICON_SIZE = 64;
+ 
+@@ -389,5 +390,22 @@ AuthenticationAgent.prototype = {
+ }
+ 
+ function init() {
+-    let agent = new AuthenticationAgent();
++    try {
++        let agent = new AuthenticationAgent();
++    } catch(err) {
++        if(!(err instanceof Error)) {
++            err = new Error(err);
++        }
++
++        log('polkitAuthenticationAgent: init error ' + err);
++
++        let icon = new St.Icon({ icon_name: 'dialog-warning',
++                                 icon_type: St.IconType.FULLCOLOR,
++                                 icon_size: 36 });
++
++        Main.warningNotify(_('Unable to start Cinnamon PolicyKit Agent'), err.message +
++                           "\n\n" +
++                           _("If you have another PolicyKit Agent configured to autostart, it should be disabled."),
++                           icon);
++    }
+ }

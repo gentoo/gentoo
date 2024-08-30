@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 IUSE="doc static-libs"
 
 RDEPEND=">=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]"

@@ -1,0 +1,34 @@
+From d85dd623d7315f2e620c2c37e635f2fd3737a684 Mon Sep 17 00:00:00 2001
+From: Yifan Zhu <fanzhuyifan@gmail.com>
+Date: Wed, 7 Aug 2024 16:54:44 +0000
+Subject: [PATCH] screenedge: allow activating clients in drag and drop
+
+In particular, this allows dragging onto autohide and dogde-window
+panels.
+
+BUG: 450579
+
+
+(cherry picked from commit 7752db3a882b5432d7d5c0b118acf42eeb3a8aee)
+
+Co-authored-by: Yifan Zhu <fanzhuyifan@gmail.com>
+---
+ src/screenedge.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/screenedge.cpp b/src/screenedge.cpp
+index de9f55dcb69..b1b2a29f9e3 100644
+--- a/src/screenedge.cpp
++++ b/src/screenedge.cpp
+@@ -244,7 +244,7 @@ bool Edge::activatesForPointer() const
+     // Most actions do not handle drag and drop properly yet
+     // but at least allow "show desktop" and "application launcher".
+     if (waylandServer() && waylandServer()->seat()->isDragPointer()) {
+-        if (!m_edges->isDesktopSwitching() && m_action != ElectricActionShowDesktop && m_action != ElectricActionApplicationLauncher) {
++        if (!m_edges->isDesktopSwitching() && m_action != ElectricActionNone && m_action != ElectricActionShowDesktop && m_action != ElectricActionApplicationLauncher) {
+             return false;
+         }
+         // Don't activate edge when a mouse button is pressed, except when
+-- 
+GitLab
+

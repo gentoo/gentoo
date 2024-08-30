@@ -1,6 +1,74 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-08-26)
+# dev-util/bpftool and/or sys-devel/bpf-toolchain not keyworded here
+sys-apps/systemd bpf
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-08-26)
+# dev-ruby/thor not keyworded here
+app-text/htmltidy test
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-08-25)
+# simplify the dep tree
+app-admin/syslog-ng amqp grpc kafka mongodb smtp test
+app-crypt/pinentry efl
+app-text/doxygen gui
+dev-build/cmake gui
+dev-db/mysql cjk
+dev-db/percona-server cjk
+dev-libs/libisoburn frontend-optional
+dev-util/glade gjs
+dev-util/pkgcheck emacs
+dev-util/ragel doc
+dev-vcs/git doc subversion
+mail-mta/postfix mongodb
+media-sound/liblc3 test
+net-misc/rsync rrsync
+net-firewall/nftables doc
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-08-25)
+# Some optional emacs dependencies are not keyworded.
+app-editors/emacs gui mailutils
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-08-25)
+# net-libs/webkit-gtk has no mips keywords
+app-editors/emacs xwidgets
+dev-util/glade webkit
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-08-25)
+# alternatives not available on mips
+app-alternatives/awk nawk
+app-alternatives/bc gh
+app-alternatives/lex reflex
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-05)
+# Avoid unkeyworded media-gfx/libimagequant
+dev-python/pillow imagequant
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-04)
+# kde-frameworks/kservice not keyworded here
+x11-misc/xdg-utils plasma
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-01)
+# simplify the dep tree
+dev-python/click doc
+dev-python/cython doc
+dev-python/flake8 doc
+dev-python/flask doc
+dev-python/flit doc
+dev-python/greenlet doc
+dev-python/outcome doc
+dev-python/pytest-cov doc
+dev-python/pytest-trio doc
+dev-python/stevedore doc
+dev-python/sphinx-autodoc-typehints test
+dev-util/maturin doc
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-06-29)
+# media-libs/libplacebo is not keyworded
+media-video/ffmpeg libplacebo
+
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # Requires sys-devel/{clang,llvm}:16.
 dev-lang/python jit
@@ -55,7 +123,7 @@ net-analyzer/rrdtool rados
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-22)
 # Qt 5 is not keyworded here
-app-admin/setools X
+app-admin/setools X test
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-22)
 # Qt 5 is not keyworded here
@@ -182,10 +250,6 @@ media-libs/sdl-mixer midi
 # Michał Górny <mgorny@gentoo.org> (2017-12-30)
 # Moved from use.mask since they are flags local to one package.
 sys-kernel/mips-sources -ip27 -ip28 -ip30
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Requires USE=opencl that is masked in this profile.
-net-misc/bfgminer adl lm-sensors
 
 # Mart Raudsepp <leio@gentoo.org> (2017-05-27)
 # app-pda/libimobiledevice, app-pda/libplist and co not tested

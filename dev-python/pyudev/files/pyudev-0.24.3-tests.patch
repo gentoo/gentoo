@@ -1,0 +1,13 @@
+diff --git a/tests/_device_tests/_attributes_tests.py b/tests/_device_tests/_attributes_tests.py
+index 71b3a7a..9136cea 100644
+--- a/tests/_device_tests/_attributes_tests.py
++++ b/tests/_device_tests/_attributes_tests.py
+@@ -49,7 +49,7 @@ def test_getitem(self, a_context, device_datum):
+         device = Devices.from_path(a_context, device_datum.device_path)
+         assert all(
+             isinstance(device.attributes.get(key), bytes)
+-            for key in device_datum.attributes.keys()
++            for key in device_datum.attributes.keys() if key is not None
+         )
+ 
+     @given(strategies.sampled_from(_DEVICES))

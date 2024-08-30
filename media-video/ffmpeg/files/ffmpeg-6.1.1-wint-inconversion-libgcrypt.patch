@@ -1,0 +1,68 @@
+https://bugs.gentoo.org/935377
+https://git.ffmpeg.org/gitweb/ffmpeg.git/commit/42982b5a5d461530a792e69b3e8abdd9d6d67052
+
+From 42982b5a5d461530a792e69b3e8abdd9d6d67052 Mon Sep 17 00:00:00 2001
+From: Frank Plowman <post@frankplowman.com>
+Date: Fri, 22 Dec 2023 12:00:01 +0000
+Subject: [PATCH 1/1] avformat/ffrtmpcrypt: Fix int-conversion warning
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf8
+Content-Transfer-Encoding: 8bit
+
+The gcrypt definition of `bn_new` used to use the return statement
+on errors, with an AVERROR return value, regardless of the signature
+of the function where the macro is used - it is called in
+`dh_generate_key` and `ff_dh_init` which return pointers. As a result,
+compiling with gcrypt and the ffrtmpcrypt protocol resulted in an
+int-conversion warning. GCC 14 may upgrade these to errors [1].
+
+This patch fixes the problem by changing the macro to remove `AVERROR`
+and instead set `bn` to null if the allocation fails. This is the
+behaviour of all the other `bn_new` implementations and so the result is
+already checked at all the callsites. AFAICT, this should be the only
+change needed to get ffmpeg off Fedora's naughty list of projects with
+warnings which may be upgraded to errors in GCC 14 [2].
+
+[1]: https://gcc.gnu.org/pipermail/gcc/2023-May/241264.html
+[2]: https://www.mail-archive.com/devel@lists.fedoraproject.org/msg196024.html
+
+Signed-off-by: Frank Plowman <post@frankplowman.com>
+Signed-off-by: Martin StorsjÃ¶ <martin@martin.st>
+---
+ libavformat/rtmpdh.c | 21 ++++++++++++---------
+ 1 file changed, 12 insertions(+), 9 deletions(-)
+
+diff --git a/libavformat/rtmpdh.c b/libavformat/rtmpdh.c
+index 5ddae537a1..6a6c2ccd87 100644
+--- a/libavformat/rtmpdh.c
++++ b/libavformat/rtmpdh.c
+@@ -113,15 +113,18 @@ static int bn_modexp(FFBigNum bn, FFBigNum y, FFBigNum q, FFBigNum p)
+     return 0;
+ }
+ #elif CONFIG_GCRYPT
+-#define bn_new(bn)                                              \
+-    do {                                                        \
+-        if (!gcry_control(GCRYCTL_INITIALIZATION_FINISHED_P)) { \
+-            if (!gcry_check_version("1.5.4"))                   \
+-                return AVERROR(EINVAL);                         \
+-            gcry_control(GCRYCTL_DISABLE_SECMEM, 0);            \
+-            gcry_control(GCRYCTL_INITIALIZATION_FINISHED, 0);   \
+-        }                                                       \
+-        bn = gcry_mpi_new(1);                                   \
++#define bn_new(bn)                                                \
++    do {                                                          \
++        if (!gcry_control(GCRYCTL_INITIALIZATION_FINISHED_P)) {   \
++            if (gcry_check_version("1.5.4")) {                    \
++                gcry_control(GCRYCTL_DISABLE_SECMEM, 0);          \
++                gcry_control(GCRYCTL_INITIALIZATION_FINISHED, 0); \
++            }                                                     \
++        }                                                         \
++        if (gcry_control(GCRYCTL_INITIALIZATION_FINISHED_P))      \
++            bn = gcry_mpi_new(1);                                 \
++        else                                                      \
++            bn = NULL;                                            \
+     } while (0)
+ #define bn_free(bn)                 gcry_mpi_release(bn)
+ #define bn_set_word(bn, w)          gcry_mpi_set_ui(bn, w)
+-- 
+2.25.1

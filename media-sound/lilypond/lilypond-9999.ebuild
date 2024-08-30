@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..13} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit elisp-common autotools python-single-r1 toolchain-funcs xdg-utils
 
@@ -39,7 +39,7 @@ RDEPEND="app-text/ghostscript-gpl
 	media-fonts/tex-gyre
 	media-libs/fontconfig
 	media-libs/freetype:2
-	x11-libs/pango
+	>=x11-libs/pango-1.40
 	emacs? ( >=app-editors/emacs-23.1:* )
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
@@ -57,11 +57,6 @@ DEPEND="${RDEPEND}
 "
 # Correct output data for tests isn't bundled with releases
 RESTRICT="test"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.23.0-fix-font-size.patch
-	"${FILESDIR}"/${PN}-2.22.1-free_font.patch
-)
 
 DOCS=( DEDICATION README.md ROADMAP )
 

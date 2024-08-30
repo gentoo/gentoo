@@ -1,5 +1,3 @@
-diff --git a/libffado-2.4.1/support/mixer-qt4/ffado/mixer/globalmixer.py b/libffado-2.4.1-patched/support/mixer-qt4/ffado/mixer/globalmixer.py
-index 7078b0e..d184d73 100644
 --- libffado-2.4.1-old/support/mixer-qt4/ffado/mixer/globalmixer.py
 +++ libffado-2.4.1/support/mixer-qt4/ffado/mixer/globalmixer.py
 @@ -96,7 +96,6 @@ class GlobalMixer(QWidget):

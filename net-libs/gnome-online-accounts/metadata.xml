@@ -7,6 +7,7 @@
   </maintainer>
   <use>
     <flag name="gnome">Use <pkg>gnome-base/gnome-control-center</pkg> to set GNOME online accounts preferences</flag>
+    <flag name="ms365">Enable Microsoft 365 provider</flag>
   </use>
   <upstream>
     <remote-id type="gnome-gitlab">GNOME/gnome-online-accounts</remote-id>

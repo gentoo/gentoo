@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=meson-python
 DISTUTILS_EXT=1
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1 optfeature pypi
 
@@ -50,6 +50,12 @@ DOCS=( CONTRIBUTORS.txt RELEASE.txt )
 distutils_enable_tests pytest
 # There is a programmable error in your configuration file:
 #distutils_enable_sphinx doc/source dev-python/numpydoc dev-python/myst-parser
+
+PATCHES=(
+	# https://github.com/scikit-image/scikit-image/pull/7463
+	# stripped down to minimal 3.13 support
+	"${FILESDIR}/${P}-py313.patch"
+)
 
 src_test() {
 	# for some reason, upstream refetches data that's already in the tarball

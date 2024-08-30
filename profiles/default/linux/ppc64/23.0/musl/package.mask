@@ -1,0 +1,7 @@
+# Copyright 2024 Gentoo Authors.
+# Distributed under the terms of the GNU General Public License v2
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-08-15)
+# rust-bin is available on ppc64 musl starting from 1.80.1
+-dev-lang/rust-bin
+<dev-lang/rust-bin-1.80.1

@@ -4,7 +4,7 @@
 # @ECLASS: gnome2.eclass
 # @MAINTAINER:
 # gnome@gentoo.org
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: gnome2-utils
 # @BLURB: Provides phases for Gnome/Gtk+ based packages.
 # @DESCRIPTION:
@@ -12,7 +12,7 @@
 # GNOME framework. For additional functions, see gnome2-utils.eclass.
 
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -22,11 +22,9 @@ _GNOME2_ECLASS=1
 # @ECLASS_VARIABLE: GNOME2_EAUTORECONF
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Run eautoreconf instead of only elibtoolize
-GNOME2_EAUTORECONF=${GNOME2_EAUTORECONF:-""}
+# Run eautoreconf instead of only elibtoolize if set to "yes".
 
 [[ ${GNOME2_EAUTORECONF} == yes ]] && inherit autotools
-[[ ${EAPI} == 6 ]] && inherit ltprune
 
 inherit libtool gnome.org gnome2-utils xdg
 
@@ -34,7 +32,6 @@ inherit libtool gnome.org gnome2-utils xdg
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Extra options passed to elibtoolize
-ELTCONF=${ELTCONF:-""}
 
 # @ECLASS_VARIABLE: GNOME2_ECLASS_GIO_MODULES
 # @INTERNAL
@@ -42,13 +39,10 @@ ELTCONF=${ELTCONF:-""}
 # Array containing glib GIO modules
 
 # @ECLASS_VARIABLE: GNOME2_LA_PUNT
+# @DEFAULT_UNSET
 # @DESCRIPTION:
-# In EAPI 6, it relies on prune_libtool_files (from ltprune.eclass) for
-# this. Later EAPIs use find ... -delete. Available values for GNOME2_LA_PUNT:
-# - "no": will not clean any .la files
-# - "yes": will run prune_libtool_files --modules
-# - If it is not set, it will run prune_libtool_files
-GNOME2_LA_PUNT=${GNOME2_LA_PUNT:-""}
+# If set to "no", no .la files will be cleaned, otherwise
+# will run "find ... -delete" in src_install.
 
 # @FUNCTION: gnome2_src_prepare
 # @DESCRIPTION:
@@ -141,8 +135,7 @@ gnome2_src_install() {
 	export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL="1"
 
 	local sk_tmp_dir="/var/lib/scrollkeeper"
-	# scrollkeeper-update from rarian doesn't do anything. Then, since eapi6
-	# we stop taking care of it
+	# scrollkeeper-update from rarian doesn't do anything.
 	#
 	# if this is not present, scrollkeeper-update may segfault and
 	# create bogus directories in /var/lib/
@@ -150,9 +143,8 @@ gnome2_src_install() {
 
 	unset GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL
 
-	# Handle documentation as 'default' for eapi5, bug #373131
-	# Since eapi6 this is handled by default on its own plus MAINTAINERS and HACKING
-	# files that are really common in gnome packages (bug #573390)
+	# Install MAINTAINERS and HACKING which are really common
+	# in gnome packages (bug #573390)
 	local d
 	for d in HACKING MAINTAINERS; do
 		[[ -s ${d} ]] && dodoc "${d}"
@@ -170,16 +162,8 @@ gnome2_src_install() {
 	rm -rf "${ED}/usr/share/applications/mimeinfo.cache" || die
 
 	# Delete all .la files
-	if has ${EAPI} 6; then
-		case "${GNOME2_LA_PUNT}" in
-			yes)    prune_libtool_files --modules;;
-			no)     ;;
-			*)      prune_libtool_files;;
-		esac
-	else
-		if [[ ${GNOME2_LA_PUNT} != 'no' ]]; then
-			find "${ED}" -name '*.la' -delete || die
-		fi
+	if [[ ${GNOME2_LA_PUNT} != no ]]; then
+		find "${ED}" -type f -name '*.la' -delete || die
 	fi
 }
 

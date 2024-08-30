@@ -6,7 +6,7 @@ EAPI=8
 MY_P="opentelemetry-python-${PV}"
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{11..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1
 

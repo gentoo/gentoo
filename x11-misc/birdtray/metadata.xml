@@ -5,10 +5,6 @@
     <email>ago@gentoo.org</email>
     <name>Agostino Sarubbo</name>
   </maintainer>
-  <maintainer type="person">
-    <email>marecki@gentoo.org</email>
-    <name>Marek Szuba</name>
-  </maintainer>
   <upstream>
     <remote-id type="github">gyunaev/birdtray</remote-id>
   </upstream>

@@ -11,8 +11,4 @@
 		to easily add advanced indexing and search facilities to their own
 		applications.
 	</longdescription>
-	<use>
-		<flag name="inmemory">Enabled inmemory backend db support</flag>
-		<flag name="remote">Enabled remote backend db support</flag>
-	</use>
 </pkgmetadata>

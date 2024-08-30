@@ -1,0 +1,42 @@
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Subject: [PATCH] Build against Qt6
+
+diff --git a/external/qspatialite/CMakeLists.txt b/external/qspatialite/CMakeLists.txt
+index 33536da..61c7370 100644
+--- a/external/qspatialite/CMakeLists.txt
++++ b/external/qspatialite/CMakeLists.txt
+@@ -7,11 +7,19 @@ add_definitions(-DQT_SHARED)
+ 
+ include_directories(SYSTEM
+ 	${SQLITE3_INCLUDE_DIR}
+-	${Qt5Sql_PRIVATE_INCLUDE_DIRS}
+ )
++if (BUILD_WITH_QT6)
++  include_directories(SYSTEM ${Qt6Sql_PRIVATE_INCLUDE_DIRS})
++else()
++  include_directories(SYSTEM ${Qt5Sql_PRIVATE_INCLUDE_DIRS})
++endif()
+ 
+ set(QSQLSPATIALITE_SRC qsql_spatialite.cpp smain.cpp)
+-QT5_WRAP_CPP(QSQLSPATIALITE_SRC qsql_spatialite.h smain.h)
++if (BUILD_WITH_QT6)
++  QT6_WRAP_CPP(QSQLSPATIALITE_SRC qsql_spatialite.h smain.h)
++else()
++  QT5_WRAP_CPP(QSQLSPATIALITE_SRC qsql_spatialite.h smain.h)
++endif()
+ 
+ add_library(qsqlspatialite SHARED ${QSQLSPATIALITE_SRC})
+ target_link_libraries(qsqlspatialite
+diff --git a/external/qspatialite/qsql_spatialite.cpp b/external/qspatialite/qsql_spatialite.cpp
+index 0e8f15a..9e30004 100644
+--- a/external/qspatialite/qsql_spatialite.cpp
++++ b/external/qspatialite/qsql_spatialite.cpp
+@@ -632,7 +632,7 @@ bool QSpatiaLiteDriver::open( const QString &db, const QString &, const QString
+   bool openReadOnlyOption = false;
+   bool openUriOption = false;
+ 
+-  const auto opts = conOpts.splitRef( QLatin1Char( ';' ) );
++  const auto opts = conOpts.split( u';' );
+   for ( auto option : opts )
+   {
+     option = option.trimmed();

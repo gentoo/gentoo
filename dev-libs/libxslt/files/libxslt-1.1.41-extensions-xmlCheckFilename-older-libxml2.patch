@@ -1,0 +1,40 @@
+https://gitlab.gnome.org/GNOME/libxslt/-/commit/a85bd17ec52793b33074f0f785c3d989feb20170
+
+From a85bd17ec52793b33074f0f785c3d989feb20170 Mon Sep 17 00:00:00 2001
+From: Nick Wellnhofer <wellnhofer@aevum.de>
+Date: Fri, 21 Jun 2024 15:07:18 +0200
+Subject: [PATCH] extensions: Readd call to xmlCheckFilename with older libxml2
+
+Fix spurious warning with libxml2 before 2.13.0 caused by 014b2892.
+
+Fixes #113.
+---
+ libxslt/extensions.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/libxslt/extensions.c b/libxslt/extensions.c
+index 05cdf354..d3d61543 100644
+--- a/libxslt/extensions.c
++++ b/libxslt/extensions.c
+@@ -415,6 +415,19 @@ xsltExtModuleRegisterDynamic(const xmlChar * URI)
+                      module_filename, URI);
+ #endif
+ 
++#if LIBXML_VERSION < 21300
++    if (1 != xmlCheckFilename(module_filename)) {
++
++#ifdef WITH_XSLT_DEBUG_EXTENSIONS
++	xsltGenericDebug(xsltGenericDebugContext,
++                     "xmlCheckFilename failed for plugin: %s\n", module_filename);
++#endif
++
++        xmlFree(ext_name);
++        return (-1);
++    }
++#endif
++
+     /* attempt to open the module */
+     m = xmlModuleOpen(module_filename, 0);
+     if (NULL == m) {
+-- 
+GitLab

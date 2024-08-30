@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1 optfeature pypi
 
@@ -44,6 +44,11 @@ BDEPEND="
 distutils_enable_tests pytest
 distutils_enable_sphinx docs \
 	dev-python/sphinx-celery
+
+PATCHES=(
+	# https://github.com/celery/kombu/pull/2052
+	"${FILESDIR}/${P}-py313.patch"
+)
 
 python_test() {
 	local EPYTEST_DESELECT=(

@@ -10,10 +10,7 @@
 		header. Last but not least, it can be used to embed coSWID SBoM metadata
 		into PE/EFI binaries.
 	</longdescription>
-	<maintainer type="person">
-		<email>marecki@gentoo.org</email>
-		<name>Marek Szuba</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">uswid</remote-id>

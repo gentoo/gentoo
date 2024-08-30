@@ -1,0 +1,29 @@
+From 3f87b7af8baff33e2ed31c60a32da30a5291a346 Mon Sep 17 00:00:00 2001
+From: Nyall Dawson <nyall.dawson@gmail.com>
+Date: Mon, 29 Apr 2024 09:16:22 +1000
+Subject: [PATCH] Fix broken test
+
+This test was broken and not actually testing the QgsGeometry
+operator, and breaks compilation under qt 6.7
+---
+ tests/src/core/geometry/testqgsgeometry.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/src/core/geometry/testqgsgeometry.cpp b/tests/src/core/geometry/testqgsgeometry.cpp
+index 5cbb5b6b8c01..18e410c7a9af 100644
+--- a/tests/src/core/geometry/testqgsgeometry.cpp
++++ b/tests/src/core/geometry/testqgsgeometry.cpp
+@@ -1710,11 +1710,11 @@ void TestQgsGeometry::dataStream()
+   QCOMPARE( geom.constGet()->asWkt(), resultGeometry.constGet()->asWkt() );
+ 
+   //also test with geometry without data
+-  std::unique_ptr<QgsGeometry> emptyGeom( new QgsGeometry() );
++  QgsGeometry emptyGeom;
+ 
+   QByteArray ba2;
+   QDataStream ds2( &ba2, QIODevice::ReadWrite );
+-  ds2 << emptyGeom.get();
++  ds2 << emptyGeom;
+ 
+   ds2.device()->seek( 0 );
+   ds2 >> resultGeometry;

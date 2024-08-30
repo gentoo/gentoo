@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>pinkbyte@gentoo.org</email>
-		<name>Sergey Popov</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="ipoe">Build IPoE kernel module</flag>
 		<flag name="libtomcrypt">Support crypto algorithms through <pkg>dev-libs/libtomcrypt</pkg> instead of <pkg>dev-libs/openssl</pkg></flag>

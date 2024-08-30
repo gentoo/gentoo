@@ -623,6 +623,9 @@ qt5_base_configure() {
 		$(is-flagq -mno-dsp   && echo -no-mips_dsp)
 		$(is-flagq -mno-dspr2 && echo -no-mips_dspr2)
 
+		# bug #773199 and friends
+		$(tc-cpp-is-true "defined(__SSE2__)" ${CFLAGS} ${CXXFLAGS} || echo -no-feature-sse2)
+
 		# use pkg-config to detect include and library paths
 		-pkg-config
 

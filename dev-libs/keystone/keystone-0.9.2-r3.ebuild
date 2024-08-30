@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit cmake distutils-r1 flag-o-matic
 
@@ -50,6 +50,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}/${P}-strict-prototypes.patch"
+	"${FILESDIR}/${PN}-0.9.2-gcc15-cstdint.patch"
 )
 
 # Upstream doesn't flag patch releases (bug 858395)

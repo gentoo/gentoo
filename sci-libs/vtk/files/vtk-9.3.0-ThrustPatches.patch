@@ -1,0 +1,51 @@
+From 4a4466e7c8cd44d2be2bd3fe6f359faa8e9547aa Mon Sep 17 00:00:00 2001
+From: Kenneth Moreland <morelandkd@ornl.gov>
+Date: Tue, 4 Jun 2024 10:04:42 -0400
+Subject: [PATCH] Disable Thrust patch that is no longer needed in modern
+ Thrust
+
+There is a Thrust patch that works around an issue in Thrust 1.9.4
+(https://github.com/NVIDIa/ThirdParty/vtkm/vtkvtkm/vtk-m/thrust/issues/972). The underlying issue
+should be fixed in recent versions. In recent versions of CUDA, the patch
+breaks (https://gitlab.kitware.com/vtk/vtk-m/-/issues/818).
+
+This change fixes the problem by disabling the patch where it is not
+needed.
+--- /dev/null
++++ b/ThirdParty/vtkm/vtkvtkm/vtk-m/docs/changelog/obsolete-thrust-patch.md
+@@ -0,0 +1,9 @@
++# Disable Thrust patch that is no longer needed in modern Thrust
++
++There is a Thrust patch that works around an issue in Thrust 1.9.4
++(https://github.com/NVIDIa/ThirdParty/vtkm/vtkvtkm/vtk-m/thrust/issues/972). The underlying issue
++should be fixed in recent versions. In recent versions of CUDA, the patch
++breaks (https://gitlab.kitware.com/vtk/vtk-m/-/issues/818).
++
++This change fixes the problem by disabling the patch where it is not
++needed.
+--- a/ThirdParty/vtkm/vtkvtkm/vtk-m/vtkm/exec/cuda/internal/ThrustPatches.h
++++ b/ThirdParty/vtkm/vtkvtkm/vtk-m/vtkm/exec/cuda/internal/ThrustPatches.h
+@@ -170,9 +170,9 @@ ALIGN_RE_PAIR(vtkm::Int64, vtkm::Float64);
+ #undef ALIGN_RE_PAIR
+ }
+ }
+-#endif //THRUST_VERSION >= 100900
++#endif //THRUST_VERSION >= 100900 && THRUST_VERSION < 100906
+ 
+-#if THRUST_VERSION >= 100904
++#if (THRUST_VERSION >= 100904) && (THRUST_VERSION < 100909)
+ //So for thrust 1.9.4+ (CUDA 10.1+) the stateless_resource_allocator has a bug
+ //where it is not marked as __host__ __device__ && __thrust_exec_check_disable__.
+ //To fix this we add a new partial specialization on cuda::memory_resource
+@@ -236,7 +236,7 @@ public:
+ };
+ }
+ }
+-#endif //THRUST_VERSION >= 100903
++#endif //(THRUST_VERSION >= 100904) && (THRUST_VERSION < 100909)
+ 
+ 
+ #if THRUST_VERSION < 100900
+-- 
+GitLab
+

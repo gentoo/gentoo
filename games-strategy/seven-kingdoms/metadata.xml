@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>pinkbyte@gentoo.org</email>
-		<name>Sergey Popov</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">skfans</remote-id>
 		<remote-id type="github">the3dfxdude/7kaa</remote-id>

@@ -393,7 +393,7 @@ use utf8;
 use JSON::PP;
 
 open(my $targets_file, '<:encoding(UTF-8)', 'meson-info/intro-targets.json') || die $!;
-my $data = decode_json <$targets_file>;
+my $data = decode_json (join '', <$targets_file>);
 close($targets_file) || die $!;
 
 if(!$ARGV[0]) {

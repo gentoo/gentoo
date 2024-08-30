@@ -11,7 +11,7 @@ SRC_URI="https://github.com/JWasm/JWasm/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Watcom-1.0"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND=""
 DEPEND=""

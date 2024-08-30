@@ -11,6 +11,9 @@
 	</maintainer>
 	<use>
 		<flag name="custom-modes">Enable non-Opus modes, e.g. 44.1 kHz and 2^n frames</flag>
+		<flag name="deep-plc">Enable Deep Packet Loss Concealment (PLC)</flag>
+		<flag name="dred">Enable Deep REDundancy (DRED)</flag>
+		<flag name="osce">Enable Opus Speech Coding Enhancement (OSCE)</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">xiph/opus</remote-id>

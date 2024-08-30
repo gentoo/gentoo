@@ -7,6 +7,7 @@
   </maintainer>
   <use>
     <flag name="convert">Build ext2 conversion utility (btrfs-convert)</flag>
+    <flag name="experimental">Enable unstable and experimental features and install btrfs-corrupt-block, as needed by xfstests</flag>
     <flag name="reiserfs">Enable reiserfs support in btrfs-convert tool.</flag>
     <flag name="static">Build static binaries in addition to the dynamic ones</flag>
   </use>

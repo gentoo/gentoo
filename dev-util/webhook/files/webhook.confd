@@ -1,0 +1,2 @@
+# arguments for webhook
+command_args="-ip=localhost -port=9000 -hooks=/etc/webhook.json -logfile=/var/log/webhook.log"

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit autotools git-r3 python-any-r1
 
@@ -56,26 +56,9 @@ strip_completions() {
 
 		# Now-dead symlinks to deprecated completions
 		hd ncal
-
-		# FreeBSD
-		freebsd-update kldload kldunload portinstall portsnap
-		pkg_deinstall pkg_delete pkg_info
-
-		# For GNU mailman, which isn't packaged. If mailman isn't installed,
-		# it triggers a QA warning.
 	)
 
-	if [[ ${CHOST} = *solaris* ]]; then
-		# Triggers QA warning since it only defines a completion on Solaris,
-		# to avoid defining a bad one on macOS.
-		strip_completions+=(pkgutil)
-	fi
-
-	local file
-	for file in "${strip_completions[@]}"; do
-		rm "${ED}"/usr/share/bash-completion/completions/${file} ||
-			die "stripping ${file} failed"
-	done
+	rm -v "${strip_completions[@]/#/${ED}/usr/share/bash-completion/completions/}" || die
 
 	# remove deprecated completions (moved to other packages)
 	rm "${ED}"/usr/share/bash-completion/completions/_* || die

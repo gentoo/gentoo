@@ -1,5 +1,3 @@
-diff --git a/buildSrc/linux.gradle b/buildSrc/linux.gradle
-index 2295566..ce54c3f 100644
 --- a/buildSrc/linux.gradle
 +++ b/buildSrc/linux.gradle
 @@ -214,8 +214,8 @@ setupTools("linux_freetype_tools",

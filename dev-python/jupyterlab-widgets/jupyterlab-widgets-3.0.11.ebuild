@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=jupyter
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 pypi
@@ -17,9 +17,8 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86"
 
 BDEPEND="
-	>=dev-python/jupyterlab-4.1.8[${PYTHON_USEDEP}]
 	dev-python/jupyter-packaging[${PYTHON_USEDEP}]
 "

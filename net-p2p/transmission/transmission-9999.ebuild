@@ -41,6 +41,7 @@ BDEPEND="
 	qt6? ( dev-qt/qttools:6[linguist] )
 "
 COMMON_DEPEND="
+	app-arch/libdeflate:=[gzip(+)]
 	>=dev-libs/libevent-2.1.0:=[threads(+)]
 	!mbedtls? ( dev-libs/openssl:0= )
 	mbedtls? ( net-libs/mbedtls:0= )
@@ -91,7 +92,7 @@ src_configure() {
 
 		-DUSE_GTK_VERSION=4
 		-DUSE_SYSTEM_EVENT2=ON
-		-DUSE_SYSTEM_DEFLATE=OFF
+		-DUSE_SYSTEM_DEFLATE=ON
 		-DUSE_SYSTEM_DHT=OFF
 		-DUSE_SYSTEM_MINIUPNPC=ON
 		-DUSE_SYSTEM_NATPMP=ON

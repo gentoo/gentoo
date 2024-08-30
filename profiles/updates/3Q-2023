@@ -11,7 +11,6 @@ move dev-python/nest_asyncio dev-python/nest-asyncio
 move dev-python/libcloud dev-python/apache-libcloud
 move dev-python/uri_template dev-python/uri-template
 move dev-python/pykerberos dev-python/kerberos
-move dev-python/rapidfuzz_capi dev-python/rapidfuzz-capi
 move dev-python/line_profiler dev-python/line-profiler
 move dev-libs/paho-mqtt-c net-libs/paho-mqtt-c
 move dev-lisp/ecls dev-lisp/ecl

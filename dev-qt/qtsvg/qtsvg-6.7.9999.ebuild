@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit qt6-build
+inherit qt6-build toolchain-funcs
 
 DESCRIPTION="SVG rendering library for the Qt6 framework"
 
@@ -16,3 +16,11 @@ RDEPEND="
 	sys-libs/zlib:=
 "
 DEPEND="${RDEPEND}"
+
+src_test() {
+	# tst_QSvgRenderer::testFeColorMatrix (new in 6.7, likely low impact)
+	# is known failing on BE, could use more looking into (bug #935356)
+	[[ $(tc-endian) == big ]] && local CMAKE_SKIP_TESTS=( tst_qsvgrenderer )
+
+	qt6-build_src_test
+}

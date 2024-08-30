@@ -4,4 +4,12 @@
   <maintainer type="project">
     <email>base-system@gentoo.org</email>
   </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>leohdz172@proton.me</email>
+    <name>Leonardo Hernández Hernández</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
 </pkgmetadata>

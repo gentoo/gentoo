@@ -1,6 +1,30 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2024-08-23)
+# dev-util/bpftool and/or sys-devel/bpf-toolchain not keyworded here
+sys-apps/systemd bpf
+
+# Ulrich Müller <ulm@gentoo.org> (2024-08-03)
+# Needs dev-libs/openspecfun which is not yet keyworded
+sci-visualization/gnuplot amos
+
+# Joonas Niilola <juippis@gentoo.org> (2024-07-29)
+# Dependency not keyworded on sparc.
+dev-libs/re2 benchmark
+
+# Michał Górny <mgorny@gentoo.org> (2024-07-24)
+# Full testing requires www-client/firefox.
+dev-python/selenium test-rust
+
+# Sam James <sam@gentoo.org> (2024-07-03)
+# kde-frameworks/kservice not keyworded here
+x11-misc/xdg-utils plasma
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-06-29)
+# media-libs/libplacebo is not keyworded here
+media-video/ffmpeg libplacebo
+
 # Sam James <sam@gentoo.org> (2024-06-23)
 # app-crypt/gcr:4[gtk] is not available here
 app-crypt/pinentry gtk
@@ -102,10 +126,7 @@ dev-qt/qtgui vulkan
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
 # sys-apps/s6-linux-init has not been tested on this arch
 sys-apps/openrc s6
-
-# Sam James <sam@gentoo.org> (2023-09-22)
-# Qt 6 not keyworded here.
-dev-build/cmake gui
+sys-apps/openrc-navi s6
 
 # Sam James <sam@gentoo.org> (2023-07-21)
 # Requires app-emulation/qemu.
@@ -366,7 +387,6 @@ app-misc/tracker-miners test
 dev-ruby/rack-cache test
 dev-ruby/activemodel test
 dev-ruby/activerecord test
-dev-ruby/activesupport test
 dev-ruby/globalid test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-18)

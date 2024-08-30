@@ -14,7 +14,7 @@ SRC_URI="https://github.com/liblouis/liblouis/releases/download/v${PV}/${P}.tar.
 
 LICENSE="LGPL-2.1+"
 SLOT="0/20" # follows LIBLOUIS_CURRENT in configure.ac
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~loong ~ppc ppc64 ~riscv ~sparc x86"
 IUSE="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"

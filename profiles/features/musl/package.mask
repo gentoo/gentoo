@@ -1,6 +1,12 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2024-08-21)
+# systemtap needs porting to musl. Fails to compile in a few ways.
+# See bug #925857.
+dev-debug/systemtap
+sys-apps/tuned
+
 # Robert Förster <Dessa@gmake.de> (2024-05-06)
 # needs mongodb
 net-wireless/unifi
@@ -27,10 +33,6 @@ app-emulation/protontricks
 # Matthew Smith <matthew@gentoo.org> (2024-04-07)
 # Mask until execinfo.h use can be properly patched, bug #853856
 media-gfx/renderdoc
-
-# Maciej Barć <xgqt@gentoo.org> (2024-03-23)
-# Binary package, which is compiled against glibc
-www-apps/jellyfin-bin
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-03-15)
 # Needs ada
@@ -76,52 +78,22 @@ games-strategy/seven-kingdoms
 # this time. (#925547)
 app-arch/lrzip-next
 
-# Marek Szuba <marecki@gentoo.org> (2024-02-18)
-# Binary-only packages linked against glibc
-net-analyzer/nessus-agent-bin
-net-analyzer/nessus-bin
-
-# Marc Schiffbauer <mschiff@gentoo.org> (2024-02-16)
-# Binary package, which is compiled against glibc
-app-editors/logseq-desktop-bin
-
 # Christopher Fore <csfore@posteo.net> (2024-01-24)
 # >=sys-fs/bcachefs-tools-1.4.1 uses functions currently not in Musl
 # https://github.com/koverstreet/bcachefs-tools/issues/213
->=sys-fs/bcachefs-tools-1.4.1
+# The above was fixed in musl 1.2.5, which bcachefs-tools 1.11.0
+# will now depend on.
+# https://www.openwall.com/lists/musl/2024/03/01/2
+<sys-fs/bcachefs-tools-1.11.0
 
 # Conrad Kostecki <conikost@gentoo.org> (2024-01-23)
 # Uses glibc function getsourcefilter(),
 # which are not available on musl.
 net-misc/mcproxy
 
-# Giuseppe Foti  <foti.giuseppe@gmail.com> (2024-01-22)
-# Binary package, which is compiled against glibc
-app-office/drawio-desktop-bin
-
-# Maciej Barć <xgqt@gentoo.org> (2024-01-06)
-# Binary package, which is compiled against glibc
-app-office/joplin-desktop
-
-# Maciej Barć <xgqt@gentoo.org> (2024-01-06)
-# Binary package, which is compiled against glibc
-dev-util/azuredatastudio
-
 # Florian Schmaus <flow@gentoo.org> (2023-11-22)
 # Requires systemd which is not supported on musl.
 sys-power/sandmann-bin
-
-# Maciej Barć <xgqt@gentoo.org> (2023-09-16)
-# Binary package, which is compiled against glibc
-dev-lang/dafny-bin
-
-# Maciej Barć <xgqt@gentoo.org> (2023-09-16)
-# Binary package, which is compiled against glibc
-app-shells/pwsh-bin
-
-# Maciej Barć <xgqt@gentoo.org> (2023-07-01)
-# Binary package, which is compiled against glibc
-games-util/heroic-bin
 
 # Brahmajit Das <brahmajit.xyz@gmail.com> (2023-06-15)
 # The package uses innetgr which is not available in musl, bug 898556
@@ -135,14 +107,6 @@ sys-auth/polkit-pkla-compat
 # Maciej Barć <xgqt@gentoo.org> (2023-04-03)
 # Mask until execinfo.h use can be properly patched, bug #877721 and #903689.
 dev-scheme/guile-ssh
-
-# Conrad Kostecki <conikost@gentoo.org> (2023-03-01)
-# Binary package, which is compiled against glibc
-sys-block/arcconf
-
-# Conrad Kostecki <conikost@gentoo.org> (2023-03-01)
-# Binary package, which is compiled against glibc
-sys-apps/smcipmitool
 
 # Alfredo Tupone <tupone@gentoo.org> (2023-02-27)
 # Uses dev-util/nvidia-cuda-sdk
@@ -177,6 +141,7 @@ sys-apps/noexec
 dev-db/pg-gvm
 net-analyzer/notus-scanner
 net-analyzer/greenbone-feed-sync
+net-analyzer/boreas
 
 # Petr Vaněk <arkamar@atlas.cz> (2022-09-23)
 # Musl does not implement rresvport function, bugs #713810 and #713376.
@@ -236,13 +201,19 @@ app-benchmarks/geekbench
 app-benchmarks/geekbench-ml
 app-crypt/rainbowcrack
 app-crypt/yubioath-flutter-bin
+app-editors/logseq-desktop-bin
 app-editors/sublime-text
 app-editors/vscode
 app-editors/vscodium
 app-emulation/crossover-bin
+app-emulation/genymotion-bin
 app-misc/kryoflux-dtc
+app-office/drawio-desktop-bin
+app-office/joplin-desktop
 app-office/libreoffice-bin
 app-office/libreoffice-bin-debug
+app-office/onlyoffice-bin
+app-shells/pwsh-bin
 app-text/master-pdf-editor
 app-text/zotero-bin
 dev-db/ocp
@@ -251,11 +222,13 @@ dev-db/sqlcl-bin
 dev-games/ps2-packer
 dev-java/openjdk-bin
 dev-java/openjdk-jre-bin
+dev-lang/dafny-bin
 dev-libs/luise
 dev-libs/nwjs
 dev-perl/Lab-Zhinst
 dev-php/PEAR-MDB2_Driver_oci8
 dev-python/pyzotero
+dev-util/azuredatastudio
 dev-util/idea-community
 games-action/a-story-about-my-uncle
 games-action/badland
@@ -306,9 +279,8 @@ games-server/steamcmd
 games-server/ut2004-ded
 games-simulation/slime-rancher
 games-strategy/darwinia
-games-strategy/darwinia-demo
 games-strategy/knights-demo
-games-strategy/majesty-demo
+games-util/heroic-bin
 gnome-extra/nautilus-dropbox
 kde-apps/dolphin-plugins-dropbox
 mail-client/thunderbird-bin
@@ -322,6 +294,8 @@ media-video/amdgpu-pro-amf
 media-video/dvbackup
 media-video/makemkv
 media-video/popcorntime-bin
+net-analyzer/nessus-agent-bin
+net-analyzer/nessus-bin
 net-im/discord
 net-im/element-desktop-bin
 net-im/gitter-bin
@@ -352,11 +326,14 @@ sci-misc/jupyterlab-desktop-bin
 sci-misc/netlogo-bin
 sys-apps/intune-portal
 sys-apps/ipmicfg
+sys-apps/smcipmitool
 sys-apps/tas
+sys-block/arcconf
 sys-block/hpssacli
 sys-block/megacli
 www-apps/chromedriver-bin
 www-apps/grafana-bin
+www-apps/jellyfin-bin
 www-apps/kibana-bin
 www-client/firefox-bin
 www-client/google-chrome

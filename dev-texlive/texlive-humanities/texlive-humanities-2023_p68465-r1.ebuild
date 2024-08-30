@@ -153,7 +153,7 @@ DESCRIPTION="TeXLive Humanities packages"
 
 LICENSE="GPL-1+ LPPL-1.0 LPPL-1.2 LPPL-1.3 LPPL-1.3c"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 COMMON_DEPEND="
 	>=dev-texlive/texlive-latex-2023
 	doc? ( app-text/sword )

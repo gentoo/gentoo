@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1 pypi
 
@@ -29,6 +29,13 @@ RDEPEND="
 
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# https://github.com/mwaskom/seaborn/pull/3685
+	sed -i -e '/VisibleDeprecationWarning/d' tests/test_distributions.py || die
+}
 
 src_test() {
 	cat > matplotlibrc <<- EOF || die

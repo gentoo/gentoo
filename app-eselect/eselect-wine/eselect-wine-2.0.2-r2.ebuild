@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -69,23 +69,26 @@ pkg_postinst() {
 	if [[ ! ${REPLACING_VERSIONS##* } ]] ||
 		ver_test ${REPLACING_VERSIONS##* } -lt 2; then
 		elog
-		[[ ${REPLACING_VERSIONS} ]] &&
-			elog "${PN} changed a bit, suggest reviewing 'eselect wine help' (and list)."
-		elog "Please run '. ${EROOT}/etc/profile' to update PATH in current shells"
-		elog "(PATH should have ':${EPREFIX}/etc/eselect/wine/bin'). Wine can otherwise"
-		elog "be executed directly from '${EPREFIX}/etc/eselect/wine/bin/wine'."
+		elog "Warning:"
+		elog
+		elog "Please either run '. ${EPREFIX}/etc/profile' to update PATH in current shells"
+		elog "or re-login, otherwise running e.g. 'wine' without the full path will fail."
+		elog "(PATH should have ':${EPREFIX}/etc/eselect/wine/bin'). If needed, selected"
+		elog "'wine' can be executed using '${EPREFIX}/etc/eselect/wine/bin/wine'."
+		elog
+		elog "If still have issues, verify that shell configurations in \$HOME are not"
+		elog "overriding PATH, also non-POSIX shells (e.g. fish) may need manual handling."
+		elog
+		# note: not using EROOT given it wouldn't make much sense to update configs
+		# using that path or source profile outside the ROOT
 	fi
 
 	if [[ ${REPLACING_VERSIONS##* } ]] &&
 		ver_test ${REPLACING_VERSIONS##* } -lt 2.0.2-r1; then
-		elog
-		elog "Be warned that >=${PN}-2.0.2-r1 no longer installs the"
-		elog "'${EPREFIX}/usr/bin/wine' symbolic link. wine(1) can still be found"
+		elog "Note that >=${PN}-2.0.2-r1 no longer installs the"
+		elog "'${EPREFIX}/usr/bin/wine' symbolic link. 'wine' can still be found"
 		elog "in PATH but, if using the direct location for scripts and/or binfmt,"
 		elog "then please update these to use: '${EPREFIX}/etc/eselect/wine/bin/wine'"
-		elog
-		elog "If wine is not found in PATH, please ensure that not overriding the"
-		elog "default PATH value that should include ':${EPREFIX}/etc/eselect/wine/bin'"
 	fi
 }
 

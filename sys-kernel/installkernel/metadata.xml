@@ -6,12 +6,13 @@
 		<name>Distribution Kernel Project</name>
 	</maintainer>
 	<use>
-		<flag name="dracut">Generate an initrd or UKI on each kernel installation</flag>
+		<flag name="dracut">Generate an initramfs or UKI on each kernel installation</flag>
 		<flag name="efistub">EXPERIMENTAL: Update UEFI configuration on each kernel installation</flag>
 		<flag name="grub">Re-generate grub.cfg on each kernel installation, used grub.cfg is overridable with GRUB_CFG env var</flag>
 		<flag name="refind">Install a Gentoo icon for rEFInd alongside the (unified) kernel image, used icon is overridable with REFIND_ICON env var</flag>
 		<flag name="systemd">Use systemd's kernel-install to install kernels, overridable with SYSTEMD_KERNEL_INSTALL env var</flag>
 		<flag name="systemd-boot">Use systemd-boot's native layout by default</flag>
+		<flag name="ugrd">Generate an initramfs using UGRD on each kernel installation</flag>
 		<flag name="uki">Install UKIs to ESP/EFI/Linux for EFI stub booting and/or bootloaders with support for auto-discovering UKIs</flag>
 		<flag name="ukify">Build an UKI with systemd's ukify on each kernel installation</flag>
 	</use>

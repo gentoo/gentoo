@@ -14,7 +14,7 @@ else
 		https://github.com/cryfs/cryfs/archive/refs/tags/${PV}.tar.gz
 			-> ${P}.tar.gz
 	"
-	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Encrypted FUSE filesystem that conceals metadata"

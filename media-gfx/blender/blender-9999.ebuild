@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..12} )
 # matches media-libs/osl
-LLVM_COMPAT=( {15..17} )
+LLVM_COMPAT=( {15..18} )
 
 inherit check-reqs cmake cuda flag-o-matic llvm-r1 pax-utils python-single-r1 toolchain-funcs xdg-utils
 
@@ -31,7 +31,7 @@ else
 	RESTRICT="test" # the test archive returns LFS references.
 fi
 
-LICENSE="|| ( GPL-3 BL )"
+LICENSE="GPL-3+ cycles? ( Apache-2.0 )"
 SLOT="${PV%.*}"
 IUSE="
 	alembic +bullet collada +color-management cuda +cycles +cycles-bin-kernels
@@ -85,7 +85,14 @@ RDEPEND="${PYTHON_DEPS}
 	fftw? ( sci-libs/fftw:3.0= )
 	gmp? ( dev-libs/gmp )
 	gnome? ( gui-libs/libdecor )
-	hip? ( >=dev-util/hip-5.7:= )
+	hip? (
+		llvm_slot_17? (
+			dev-util/hip:0/5.7
+		)
+		llvm_slot_18? (
+			>=dev-util/hip-6.1:=[llvm_slot_18(-)]
+		)
+	)
 	jack? ( virtual/jack )
 	jemalloc? ( dev-libs/jemalloc:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
@@ -109,11 +116,8 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	optix? ( dev-libs/optix )
 	osl? (
-		>=media-libs/osl-1.13:=
-		$(llvm_gen_dep '
-			>=media-libs/osl-1.13[llvm_slot_${LLVM_SLOT}]
-			media-libs/mesa[llvm_slot_${LLVM_SLOT}]
-		')
+		>=media-libs/osl-1.13:=[${LLVM_USEDEP}]
+		media-libs/mesa[${LLVM_USEDEP}]
 	)
 	pdf? ( media-libs/libharu )
 	potrace? ( media-gfx/potrace )
@@ -207,7 +211,11 @@ blender_get_version() {
 pkg_pretend() {
 	blender_check_requirements
 
-	use oneapi && einfo "The Intel oneAPI support is rudimentary. Please report any bugs you find to https://bugs.gentoo.org/"
+	if use oneapi; then
+		einfo "The Intel oneAPI support is rudimentary."
+		einfo ""
+		einfo "Please report any bugs you find to https://bugs.gentoo.org/"
+	fi
 }
 
 pkg_setup() {

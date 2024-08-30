@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 EGIT_REPO_URI="https://github.com/buildbot/${PN}.git"
 inherit readme.gentoo-r1 git-r3 systemd distutils-r1
 
@@ -24,8 +24,10 @@ RDEPEND="
 	acct-user/buildbot
 	>=dev-python/alembic-1.6.0[${PYTHON_USEDEP}]
 	>=dev-python/autobahn-0.16.0[${PYTHON_USEDEP}]
+	>=dev-python/croniter-1.3.0[${PYTHON_USEDEP}]
+	>=dev-python/msgpack-0.6.0[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.1[${PYTHON_USEDEP}]
-	dev-python/markdown[${PYTHON_USEDEP}]
+	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/pyjwt[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
@@ -33,22 +35,19 @@ RDEPEND="
 	<dev-python/sqlalchemy-1.5.0[${PYTHON_USEDEP}]
 	>=dev-python/twisted-18.7.0[${PYTHON_USEDEP}]
 	>=dev-python/txaio-2.2.2[${PYTHON_USEDEP}]
+	>=dev-python/unidiff-0.7.5[${PYTHON_USEDEP}]
 	>=dev-python/zope-interface-4.1.1[${PYTHON_USEDEP}]
-	dev-util/buildbot-worker[${PYTHON_USEDEP}]
 	crypt? (
 		>=dev-python/pyopenssl-16.0.0[${PYTHON_USEDEP}]
 		dev-python/service-identity[${PYTHON_USEDEP}]
-		|| (
-			>=dev-python/twisted-18.7.0[${PYTHON_USEDEP},ssl(-)]
-			>=dev-python/twisted-18.7.0[${PYTHON_USEDEP},crypt(-)]
-		)
+		>=dev-python/twisted-18.7.0[${PYTHON_USEDEP},ssl(-)]
 		dev-python/idna[${PYTHON_USEDEP}]
 	)
 	irc? (
 		dev-python/txrequests[${PYTHON_USEDEP}]
 	)
 	docker? (
-		>=dev-python/docker-2.2.0[${PYTHON_USEDEP}]
+		>=dev-python/docker-7.0.0[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 	)
 "
@@ -56,13 +55,13 @@ BDEPEND="
 	test? (
 		${RDEPEND}
 		~dev-util/buildbot-pkg-${PV}[${PYTHON_USEDEP}]
-		dev-util/buildbot-worker[${PYTHON_USEDEP}]
+		~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
 		~dev-util/buildbot-www-${PV}[${PYTHON_USEDEP}]
 		>=dev-python/boto3-1.12.48[${PYTHON_USEDEP}]
 		dev-python/lz4[${PYTHON_USEDEP}]
 		dev-python/ldap3[${PYTHON_USEDEP}]
-		dev-python/markdown[${PYTHON_USEDEP}]
-		dev-python/moto[${PYTHON_USEDEP}]
+		>=dev-python/markdown-3.0.0[${PYTHON_USEDEP}]
+		>=dev-python/moto-4.2.13[${PYTHON_USEDEP}]
 		dev-python/parameterized[${PYTHON_USEDEP}]
 		dev-python/pypugjs[${PYTHON_USEDEP}]
 		dev-python/treq[${PYTHON_USEDEP}]

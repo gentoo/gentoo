@@ -1,4 +1,5 @@
 https://bugs.gentoo.org/930499
+https://bugs.gentoo.org/933188
 --- a/sbuild/sbuild-chroot-config.cc
 +++ b/sbuild/sbuild-chroot-config.cc
 @@ -31,6 +31,7 @@
@@ -30,3 +31,13 @@ https://bugs.gentoo.org/930499
  using namespace sbuild;
  
  namespace
+--- a/test/sbuild-run-parts.cc
++++ b/test/sbuild-run-parts.cc
+@@ -23,6 +23,7 @@
+ #include <iostream>
+ #include <sstream>
+ 
++#include <boost/filesystem/exception.hpp>
+ #include <boost/filesystem/operations.hpp>
+ 
+ #include <cppunit/extensions/HelperMacros.h>

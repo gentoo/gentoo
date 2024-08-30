@@ -1,0 +1,40 @@
+From 3167e4b9de35ea3010d84429b7eafb9a7c2afbb4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 10 Jul 2024 07:33:47 +0200
+Subject: [PATCH] Fix functional API tests to be endian-agnostic
+
+Fix the "backslashreplace" tests for the functional API to be
+endian-agnostic.  The tests used to rely on `.encode("utf-16")`
+producing the same data as found in the test file.  However, on big
+endian platforms it would produce a big endian encoding, while the test
+file is little endian.  To avoid the problem, explicitly specify
+`utf-16-le` encoding.  Since this meant that the BOM is no longer
+produced, explicitly include it in input.
+
+Fixes #312
+---
+ importlib_resources/tests/test_functional.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/importlib_resources/tests/test_functional.py b/importlib_resources/tests/test_functional.py
+index 69706cf..255bd13 100644
+--- a/importlib_resources/tests/test_functional.py
++++ b/importlib_resources/tests/test_functional.py
+@@ -82,7 +82,7 @@ def test_read_text(self):
+                 'utf-16.file',
+                 errors='backslashreplace',
+             ),
+-            'Hello, UTF-16 world!\n'.encode('utf-16').decode(
++            '\ufeffHello, UTF-16 world!\n'.encode('utf-16-le').decode(
+                 errors='backslashreplace',
+             ),
+         )
+@@ -130,7 +130,7 @@ def test_open_text(self):
+         ) as f:
+             self.assertEqual(
+                 f.read(),
+-                'Hello, UTF-16 world!\n'.encode('utf-16').decode(
++                '\ufeffHello, UTF-16 world!\n'.encode('utf-16-le').decode(
+                     errors='backslashreplace',
+                 ),
+             )

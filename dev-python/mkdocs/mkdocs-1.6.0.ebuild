@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 
 inherit distutils-r1
 
@@ -47,7 +47,7 @@ RDEPEND="
 	>=dev-python/ghp-import-1.0[${PYTHON_USEDEP}]
 	>=dev-python/pathspec-0.11.1[${PYTHON_USEDEP}]
 	>=dev-python/platformdirs-2.2.0[${PYTHON_USEDEP}]
-	>=dev-python/pyyaml_env_tag-0.1[${PYTHON_USEDEP}]
+	>=dev-python/pyyaml-env-tag-0.1[${PYTHON_USEDEP}]
 	>=dev-python/packaging-20.5[${PYTHON_USEDEP}]
 	>=dev-python/mergedeep-1.3.4[${PYTHON_USEDEP}]
 	>=dev-python/mkdocs-get-deps-0.2.0[${PYTHON_USEDEP}]

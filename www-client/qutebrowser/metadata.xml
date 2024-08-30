@@ -24,7 +24,6 @@
 	<use>
 		<flag name="adblock">Enable Brave's ABP-style adblocker library
 			for improved adblocking</flag>
-		<flag name="qt6">Use Qt6 that provides a newer Chromium version</flag>
 		<flag name="widevine">Unsupported closed-source DRM capability
 			(required by Netflix VOD)</flag>
 	</use>

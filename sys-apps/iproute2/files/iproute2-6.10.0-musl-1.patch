@@ -1,0 +1,41 @@
+From fbbe03cbc4fa8c801967aac2e2c444e93b2ca96a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20K=2E=20H=C3=BCttel?= <dilfridge@gentoo.org>
+Date: Sun, 4 Aug 2024 16:22:07 +0200
+Subject: [PATCH 1/2] libnetlink.h: Include <endian.h> explicitly for musl
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The code added in "f_flower: implement pfcp opts" uses h2be64,
+defined in endian.h. While this is pulled in around some corners
+for glibc (see below), that's not the case for musl and an
+explicit include is required there.
+
+. /usr/include/libmnl/libmnl.h
+.. /usr/include/sys/socket.h
+... /usr/include/bits/socket.h
+.... /usr/include/sys/types.h
+..... /usr/include/endian.h
+
+Fixes: 976dca372 ("f_flower: implement pfcp opts")
+Bug: https://bugs.gentoo.org/936234
+Signed-off-by: Andreas K. Hüttel <dilfridge@gentoo.org>
+---
+ include/libnetlink.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/libnetlink.h b/include/libnetlink.h
+index 30f0c2d2..7074e913 100644
+--- a/include/libnetlink.h
++++ b/include/libnetlink.h
+@@ -4,6 +4,7 @@
+ 
+ #include <stdio.h>
+ #include <string.h>
++#include <endian.h>
+ #include <asm/types.h>
+ #include <linux/netlink.h>
+ #include <linux/rtnetlink.h>
+-- 
+2.44.2
+

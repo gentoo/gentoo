@@ -8,7 +8,7 @@ EAPI=7
 # on new automake (major) releases, as well as the dependency in RDEPEND below too.
 # * Update _WANT_AUTOMAKE and _automake_atom case statement in autotools.eclass.
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/jimmeyering.asc
 inherit python-any-r1 verify-sig

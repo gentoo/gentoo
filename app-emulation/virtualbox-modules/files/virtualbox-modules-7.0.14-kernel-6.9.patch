@@ -1,0 +1,46 @@
+https://www.virtualbox.org/ticket/22033
+https://bugs.gentoo.org/937445
+
+--- a/vboxdrv/r0drv/linux/memobj-r0drv-linux.c
++++ b/vboxdrv/r0drv/linux/memobj-r0drv-linux.c
+@@ -114,6 +114,14 @@
+ # define LNX_MM_UP_WRITE(a_pMm)       up_write(&(a_pMm)->mmap_sem)
+ #endif
+ 
++/*
++ * p.._large alias for p.._leaf is gone in 6.9
++ */
++#if RTLNX_VER_MIN(6,9,0)
++# define p4d_large p4d_leaf
++# define pmd_large pmd_leaf
++# define pud_large pud_leaf
++#endif
+ 
+ /*********************************************************************************************************************************
+ *   Structures and Typedefs                                                                                                      *
+--- a/vboxnetflt/linux/VBoxNetFlt-linux.c
++++ b/vboxnetflt/linux/VBoxNetFlt-linux.c
+@@ -926,7 +926,10 @@ static void vboxNetFltLinuxSkBufToSG(PVB
+     for (i = 0; i < skb_shinfo(pBuf)->nr_frags; i++)
+     {
+         skb_frag_t *pFrag = &skb_shinfo(pBuf)->frags[i];
+-# if RTLNX_VER_MIN(5,4,0) || RTLNX_SUSE_MAJ_PREREQ(15, 2)
++# if RTLNX_VER_MIN(6,9,0)
++        pSG->aSegs[iSeg].cb = pFrag->len;
++        pSG->aSegs[iSeg].pv = VBOX_SKB_KMAP_FRAG(pFrag) + pFrag->offset;
++# elif RTLNX_VER_MIN(5,4,0) || RTLNX_SUSE_MAJ_PREREQ(15, 2)
+         pSG->aSegs[iSeg].cb = pFrag->bv_len;
+         pSG->aSegs[iSeg].pv = VBOX_SKB_KMAP_FRAG(pFrag) + pFrag->bv_offset;
+ # else /* < KERNEL_VERSION(5, 4, 0) */
+@@ -947,7 +950,10 @@ static void vboxNetFltLinuxSkBufToSG(PVB
+         for (i = 0; i < skb_shinfo(pFragBuf)->nr_frags; i++)
+         {
+             skb_frag_t *pFrag = &skb_shinfo(pFragBuf)->frags[i];
+-# if RTLNX_VER_MIN(5,4,0) || RTLNX_SUSE_MAJ_PREREQ(15, 2)
++# if RTLNX_VER_MIN(6,9,0)
++            pSG->aSegs[iSeg].cb = pFrag->len;
++            pSG->aSegs[iSeg].pv = VBOX_SKB_KMAP_FRAG(pFrag) + pFrag->offset;
++# elif RTLNX_VER_MIN(5,4,0) || RTLNX_SUSE_MAJ_PREREQ(15, 2)
+             pSG->aSegs[iSeg].cb = pFrag->bv_len;
+             pSG->aSegs[iSeg].pv = VBOX_SKB_KMAP_FRAG(pFrag) + pFrag->bv_offset;
+ # else /* < KERNEL_VERSION(5, 4, 0) */

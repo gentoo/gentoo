@@ -4,11 +4,21 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
-# Sam James <sam@gentoo.org> (2024-06-19)
-# The systemd implementation of installkernel doesn't currently support
-# updating the 'initramfs.img' and 'vmlinuz' symlinks that palo needs,
-# and palo is the only bootloader for HPPA.
-sys-kernel/installkernel systemd
+# Sam James <sam@gentoo.org> (2024-08-23)
+# dev-util/bpftool and/or sys-devel/bpf-toolchain not keyworded here
+sys-apps/systemd bpf
+
+# Ulrich Müller <ulm@gentoo.org> (2024-08-03)
+# Needs dev-libs/openspecfun which is not yet keyworded
+sci-visualization/gnuplot amos
+
+# Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
+# media-libs/quirc and media-sound/liblc3 are not keyworded here
+media-video/ffmpeg quirc liblc3
+
+# Sam James <sam@gentoo.org> (2024-07-03)
+# kde-frameworks/kservice not keyworded here
+x11-misc/xdg-utils plasma
 
 # Holger Hoffstätte <holger@applied-asynchrony.com> (2024-05-19)
 # media-libs/jasper not yet keyworded here: https://bugs.gentoo.org/921559
@@ -63,14 +73,11 @@ dev-qt/qtgui vulkan
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
 # sys-apps/s6-linux-init has not been tested on this arch
 sys-apps/openrc s6
+sys-apps/openrc-navi s6
 
 # Sam James <sam@gentoo.org> (2023-09-24)
 # Qt not keyworded here.
 app-text/doxygen gui
-
-# Sam James <sam@gentoo.org> (2023-09-22)
-# Qt 6 not keyworded here.
-dev-build/cmake gui
 
 # Sam James <sam@gentoo.org> (2023-09-18)
 # x11-libs/gtksourceview:4 not keyworded here

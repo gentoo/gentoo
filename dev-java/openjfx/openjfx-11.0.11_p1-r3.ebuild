@@ -83,6 +83,7 @@ PATCHES=(
 	"${FILESDIR}"/11/ffmpeg5.patch
 	"${FILESDIR}"/11/respect-cc.patch
 	"${FILESDIR}"/11/strip-blank-elements-flags.patch
+	"${FILESDIR}"/11/missing-casts.patch
 )
 
 egradle() {

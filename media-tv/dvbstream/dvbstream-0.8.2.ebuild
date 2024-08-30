@@ -12,7 +12,7 @@ S=${WORKDIR}/${PN}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="dev-lang/perl"
 BDEPEND="sys-kernel/linux-headers"

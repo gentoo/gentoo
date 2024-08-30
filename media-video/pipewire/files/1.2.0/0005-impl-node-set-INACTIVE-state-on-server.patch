@@ -1,0 +1,30 @@
+From d08df293a95ce976df1cc8c3ec367a8d5d84db35 Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Wed, 3 Jul 2024 17:42:39 +0200
+Subject: [PATCH 5/5] impl-node: set INACTIVE state on server
+
+Don't wait for the client to set the INACTIVE state, do it on the
+server. We already decremented the target required so we don't want to
+schedule the node anymore.
+
+Fixes some xruns when removing nodes in a stress test.
+---
+ src/pipewire/impl-node.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/pipewire/impl-node.c b/src/pipewire/impl-node.c
+index c75e5793e..be25aa83e 100644
+--- a/src/pipewire/impl-node.c
++++ b/src/pipewire/impl-node.c
+@@ -221,7 +221,7 @@ do_node_unprepare(struct spa_loop *loop, bool async, uint32_t seq,
+ 	if (!this->rt.prepared)
+ 		return 0;
+ 
+-	if (!this->remote || this->rt.target.activation->client_version < 1) {
++	if (!this->exported) {
+ 		/* We mark ourself as finished now, this will avoid going further into the process loop
+ 		 * in case our fd was ready (removing ourselfs from the loop should avoid that as well).
+ 		 * If we were supposed to be scheduled make sure we continue the graph for the peers we
+-- 
+2.45.2
+

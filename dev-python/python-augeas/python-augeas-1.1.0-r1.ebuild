@@ -5,12 +5,16 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Python bindings for Augeas"
-HOMEPAGE="http://augeas.net/"
+HOMEPAGE="
+	https://augeas.net/
+	https://github.com/hercules-team/python-augeas/
+	https://pypi.org/project/python-augeas/
+"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -20,11 +24,12 @@ RDEPEND="
 	app-admin/augeas
 	>=dev-python/cffi-1.0.0[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}"
+BDEPEND="
+	${RDEPEND}
+"
 
-PATCHES=( "${FILESDIR}/remove-tests.patch" )
+PATCHES=(
+	"${FILESDIR}/remove-tests.patch"
+)
 
-python_test() {
-	cd test || die
-	"${EPYTHON}" test_augeas.py || die "Tests failed with ${EPYTHON}"
-}
+distutils_enable_tests unittest

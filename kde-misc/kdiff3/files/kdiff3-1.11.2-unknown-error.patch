@@ -1,0 +1,132 @@
+From dbc690d7c5ae8e1917b214e14f21fedd4200c314 Mon Sep 17 00:00:00 2001
+From: Michael Reeves <reeves.87@gmail.com>
+Date: Fri, 9 Aug 2024 22:36:39 -0400
+Subject: [PATCH] Move SourceData init to constructor for KDiff3App
+
+BUG: 486782
+FIXED-IN: 1.11.3
+---
+ src/kdiff3.cpp       | 33 +++++++++++++++++----------------
+ src/kdiff3.h         |  8 ++++++--
+ src/kdiff3_shell.cpp |  4 ++--
+ 3 files changed, 25 insertions(+), 20 deletions(-)
+
+diff --git a/src/kdiff3.cpp b/src/kdiff3.cpp
+index a36fb6037..562e1dc8a 100644
+--- a/src/kdiff3.cpp
++++ b/src/kdiff3.cpp
+@@ -113,13 +113,28 @@ bool KDiff3App::isDirComparison() const
+ /*
+     Don't call completeInit from here it will be called in KDiff3Shell as needed.
+ */
+-KDiff3App::KDiff3App(QWidget* pParent, const QString& name, KDiff3Shell* pKDiff3Shell):
++KDiff3App::KDiff3App(QWidget* pParent, const QString& name, KDiff3Shell* pKDiff3Shell, const FileNames& names):
+     QMainWindow(pParent)
+ {
+     setWindowFlags(Qt::Widget);
+     setObjectName(name);
+     m_pKDiff3Shell = pKDiff3Shell;
+ 
++    //Get SourceData objects intalized as soon as possiable or wierd errors can happen on startup.
++    if(!names.fn1.isEmpty())
++    {
++        m_sd1->setFilename(names.fn1);
++        m_bDirCompare = m_sd1->isDir();
++    }
++    if(!names.fn2.isEmpty())
++    {
++        m_sd2->setFilename(names.fn2);
++    }
++    if(!names.fn3.isEmpty())
++    {
++        m_sd3->setFilename(names.fn3);
++    }
++
+     m_pCentralWidget = new QWidget(this);
+     QVBoxLayout* pCentralLayout = new QVBoxLayout(m_pCentralWidget);
+     pCentralLayout->setContentsMargins(0, 0, 0, 0);
+@@ -440,25 +455,11 @@ void KDiff3App::doFileCompare()
+     mainInit(m_totalDiffStatus);
+ }
+ 
+-void KDiff3App::completeInit(const QString& fn1, const QString& fn2, const QString& fn3)
++void KDiff3App::completeInit()
+ {
+     bool openError = false;
+     bool bSuccess = true;
+ 
+-    if(!fn1.isEmpty())
+-    {
+-        m_sd1->setFilename(fn1);
+-        m_bDirCompare = m_sd1->isDir();
+-    }
+-    if(!fn2.isEmpty())
+-    {
+-        m_sd2->setFilename(fn2);
+-    }
+-    if(!fn3.isEmpty())
+-    {
+-        m_sd3->setFilename(fn3);
+-    }
+-
+     //Should not fail ever.
+     assert(m_bDirCompare == m_sd1->isDir());
+     if(m_bDirCompare != m_sd2->isDir() || (!m_sd3->isEmpty() && m_bDirCompare != m_sd3->isDir()))
+diff --git a/src/kdiff3.h b/src/kdiff3.h
+index f27276a42..328be6700 100644
+--- a/src/kdiff3.h
++++ b/src/kdiff3.h
+@@ -101,6 +101,10 @@ class ReversibleScrollBar : public QScrollBar
+     void valueChanged2(qint32);
+ };
+ 
++struct FileNames {
++    const QString& fn1, fn2, fn3;
++};
++
+ /*
+   InitFlag
+ */
+@@ -124,7 +128,7 @@ class KDiff3App: public QMainWindow
+   public:
+     /** constructor of KDiff3App, calls all init functions to create the application.
+      */
+-    KDiff3App(QWidget* parent, const QString& name, KDiff3Shell* pKDiff3Shell);
++    KDiff3App(QWidget* parent, const QString& name, KDiff3Shell* pKDiff3Shell, const FileNames& names);
+     ~KDiff3App() override;
+ 
+     /** initializes the KActions of the application */
+@@ -141,7 +145,7 @@ class KDiff3App: public QMainWindow
+     void readOptions(KSharedConfigPtr);
+ 
+     // Finish initialisation
+-    void completeInit(const QString& fn1 = QString(), const QString& fn2 = QString(), const QString& fn3 = QString());
++    void completeInit();
+     //Restore goementry and showMainWindow
+     void showMainWindow();
+ 
+diff --git a/src/kdiff3_shell.cpp b/src/kdiff3_shell.cpp
+index 190c03163..1bb0048f7 100644
+--- a/src/kdiff3_shell.cpp
++++ b/src/kdiff3_shell.cpp
+@@ -26,7 +26,7 @@
+ 
+ KDiff3Shell::KDiff3Shell(const QString& fn1, const QString& fn2, const QString& fn3)
+ {
+-    m_widget = new KDiff3App(this, u8"KDiff3Part", this);
++    m_widget = new KDiff3App(this, u8"KDiff3Part", this, {fn1, fn2, fn3});
+     assert(m_widget);
+     setStandardToolBarMenuEnabled(true);
+ 
+@@ -36,7 +36,7 @@ KDiff3Shell::KDiff3Shell(const QString& fn1, const QString& fn2, const QString&
+ 
+     setCentralWidget(m_widget);
+ 
+-    m_widget->completeInit(fn1, fn2, fn3);
++    m_widget->completeInit();
+     chk_connect_a(m_widget, &KDiff3App::createNewInstance, this, &KDiff3Shell::slotNewInstance);
+ 
+     // apply the saved mainwindow settings, if any, and ask the mainwindow
+-- 
+GitLab
+

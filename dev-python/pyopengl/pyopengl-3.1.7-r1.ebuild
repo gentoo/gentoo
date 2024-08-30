@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
 PYPI_PN=PyOpenGL
 PYTHON_REQ_USE="tk?"
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 
 inherit distutils-r1 pypi virtualx
 
@@ -20,7 +20,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 IUSE="tk"
 
 RDEPEND="

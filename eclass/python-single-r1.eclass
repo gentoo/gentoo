@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-single-r1.eclass
@@ -393,6 +393,7 @@ python_gen_impl_dep() {
 # the Python build environment up for it.
 python_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
+	_python_sanity_checks
 
 	unset EPYTHON
 

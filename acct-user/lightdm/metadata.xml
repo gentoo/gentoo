@@ -2,7 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>marecki@gentoo.org</email>
-		<name>Marek Szuba</name>
+		<email>ceamac@gentoo.org</email>
+		<name>Viorel Munteanu</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>immoloism@gmail.com</email>
+		<name>Ian Jordan</name>
 	</maintainer>
 </pkgmetadata>

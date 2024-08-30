@@ -1,0 +1,20 @@
+From f5a1dd31c8e5807e52196ecfd337c22e0f197bf5 Mon Sep 17 00:00:00 2001
+From: Dan Helfman <witten@torsion.org>
+Date: Sun, 23 Jun 2024 18:28:41 -0700
+Subject: [PATCH] Fix PagerDuty hook traceback with Python < 3.10 (#886).
+
+https://github.com/borgmatic-collective/borgmatic/commit/f5a1dd31c8e5807e52196ecfd337c22e0f197bf5
+
+diff --git a/borgmatic/hooks/pagerduty.py b/borgmatic/hooks/pagerduty.py
+index 6ec1a6ef..e9e34da0 100644
+--- a/borgmatic/hooks/pagerduty.py
++++ b/borgmatic/hooks/pagerduty.py
+@@ -40,7 +40,7 @@ def ping_monitor(hook_config, config, config_filename, state, monitoring_log_lev
+         return
+ 
+     hostname = platform.node()
+-    local_timestamp = datetime.datetime.now(datetime.UTC).astimezone().isoformat()
++    local_timestamp = datetime.datetime.now(datetime.timezone.utc).astimezone().isoformat()
+     payload = json.dumps(
+         {
+             'routing_key': hook_config['integration_key'],

@@ -152,6 +152,7 @@ gpgme_src_configure() {
 		$(use test || echo "--disable-gpgconf-test --disable-gpg-test --disable-gpgsm-test --disable-g13-test")
 		--enable-languages="${languages[*]}"
 		$(use_enable static-libs static)
+		GPGRT_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-gpgrt-config"
 	)
 
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"

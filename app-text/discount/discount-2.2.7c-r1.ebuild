@@ -11,7 +11,7 @@ SRC_URI="https://github.com/Orc/discount/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/2.2.7"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ppc ppc64 ~riscv sparc x86"
 IUSE="minimal test"
 RESTRICT="!test? ( test )"
 

@@ -51,6 +51,7 @@ TEST_DEPEND="
 	server? (
 		x11-base/xorg-server[-minimal,xvfb]
 		x11-drivers/xf86-input-void
+		x11-drivers/xf86-video-dummy
 	)
 	webcam? ( media-video/v4l2loopback )
 	xinerama? ( x11-libs/libfakeXinerama )
@@ -337,13 +338,17 @@ python_test() {
 		--skip-slow unit.server.server_sockets_test \
 		--skip-slow unit.server.source.source_mixins_test \
 	|| die -n
+}
 
+python_install() {
 	# remove test file
-	rm "${INSTALL_ROOT}/usr/share/xpra/www" -r || die
+	rm -vrf "${BUILD_DIR}/install/usr/share/xpra/www"
+
+	distutils-r1_python_install
 }
 
 python_install_all() {
-	distutils-r1_python_prepare_all
+	distutils-r1_python_install_all
 
 	mv -v "${ED}"/usr/etc "${ED}"/ || die
 

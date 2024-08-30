@@ -1,0 +1,87 @@
+https://salsa.debian.org/reproducible-builds/diffoscope/-/commit/e6ef110086bcb1272c37b44074fcb083ed0c9b41
+
+From e6ef110086bcb1272c37b44074fcb083ed0c9b41 Mon Sep 17 00:00:00 2001
+From: Chris Lamb <lamby@debian.org>
+Date: Tue, 13 Aug 2024 11:13:17 +0100
+Subject: [PATCH] Update test_zip text fixtures and definitions to support new
+ IO::Compress changes. (Closes: Debian:#1078050)
+
+---
+ tests/comparators/test_zip.py            |  8 +++--
+ tests/data/zip2_zipdetails_expected_diff | 38 ++++++++++++------------
+ 2 files changed, 25 insertions(+), 21 deletions(-)
+
+diff --git a/tests/comparators/test_zip.py b/tests/comparators/test_zip.py
+index 570931ee..303b6f80 100644
+--- a/tests/comparators/test_zip.py
++++ b/tests/comparators/test_zip.py
+@@ -93,6 +93,7 @@ def test_compressed_files(differences):
+ 
+ 
+ @skip_unless_tools_exist("zipinfo", "bsdtar", "zipdetails")
++@skip_unless_tool_is_at_least("perl", io_compress_zip_version, "2.212")
+ def test_extra_fields(differences2):
+     assert_diff(differences2[0], "zip_bsdtar_expected_diff")
+     assert_diff(differences2[1], "zip2_zipdetails_expected_diff")
+@@ -148,11 +149,14 @@ def jmod_differences(jmod1, jmod2):
+     return jmod1.compare(jmod2).details
+ 
+ 
+-@skip_unless_tools_exist("zipinfo", "zipdetails")
++@skip_unless_tools_exist("zipinfo", "zipdetails", "zipnote")
+ @skip_unless_tool_is_at_least("perl", io_compress_zip_version, "2.212")
+ def test_jmod_metadata(jmod_differences, jmod1, jmod2):
++    assert jmod_differences[0].source1 == "zipinfo {}"
++    assert jmod_differences[1].source1.startswith("zipnote")
++    assert jmod_differences[2].source1.startswith("zipdetails")
+     assert_diff(jmod_differences[0], "jmod_zipinfo_expected_diff")
+-    assert_diff(jmod_differences[1], "jmod_zipdetails_expected_diff")
++    assert_diff(jmod_differences[2], "jmod_zipdetails_expected_diff")
+ 
+ 
+ def test_encrypted(encrypted_zip1, encrypted_zip2):
+diff --git a/tests/data/zip2_zipdetails_expected_diff b/tests/data/zip2_zipdetails_expected_diff
+index d764a818..291dca88 100644
+--- a/tests/data/zip2_zipdetails_expected_diff
++++ b/tests/data/zip2_zipdetails_expected_diff
+@@ -1,19 +1,19 @@
+-@@ -36,16 +36,16 @@
+- 0054 Uncompressed Length   000001BE
+- 0058 Filename Length       0008
+- 005A Extra Length          001C
+- 005C Filename              'XXX/XXXX'
+- 0064 Extra ID #0001        5455 'UT: Extended Timestamp'
+- 0066   Length              0009
+- 0068   Flags               '03 mod access'
+--0069   Mod Time            558AB455 'Wed Jun 24 13:44:53 2015'
+--006D   Access Time         558AB45F 'Wed Jun 24 13:45:03 2015'
+-+0069   Mod Time            41414141 'Fri Sep 10 05:53:05 2004'
+-+006D   Access Time         41414141 'Fri Sep 10 05:53:05 2004'
+- 0071 Extra ID #0002        7875 'ux: Unix Extra Type 3'
+- 0073   Length              000B
+- 0075   Version             01
+- 0076   UID Size            04
+- 0077   UID                 000003E8
+- 007B   GID Size            04
+- 007C   GID                 000003E8
++@@ -44,16 +44,16 @@
++ #
++ # WARNING: Offset 0x5C: Filename 'XXXXXXXX'
++ #          Zero length filename
++ #
++ 0064 Extra ID #1           5455 (21589) 'Extended Timestamp [UT]'
++ 0066   Length              0009 (9)
++ 0068   Flags               03 (3) 'Modification Access'
++-0069   Modification Time   558AB455 (1435153493) 'Wed Jun 24 13:44:53 2015'
++-006D   Access Time         558AB45F (1435153503) 'Wed Jun 24 13:45:03 2015'
+++0069   Modification Time   41414141 (1094795585) 'Fri Sep 10 05:53:05 2004'
+++006D   Access Time         41414141 (1094795585) 'Fri Sep 10 05:53:05 2004'
++ 0071 Extra ID #2           7875 (30837) 'Unix Extra type 3 [ux]'
++ 0073   Length              000B (11)
++ 0075   Version             01 (1)
++ 0076   UID Size            04 (4)
++ 0077   UID                 000003E8 (1000)
++ 007B   GID Size            04 (4)
++ 007C   GID                 000003E8 (1000)
+-- 
+GitLab

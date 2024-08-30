@@ -24,6 +24,8 @@ RESTRICT="!test? ( test )"
 BDEPEND=">=dev-util/lxqt-build-tools-2.0.0"
 DEPEND="
 	>=dev-qt/qtbase-6.6:6[dbus,gui,widgets,X]
+	kde-plasma/layer-shell-qt:6
+	media-libs/libcanberra
 	x11-libs/libX11
 	~x11-libs/qtermwidget-${PV}:=
 "

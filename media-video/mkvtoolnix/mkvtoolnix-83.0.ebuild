@@ -17,7 +17,7 @@ else
 		https://mkvtoolnix.download/sources/${P}.tar.xz
 		verify-sig? ( https://mkvtoolnix.download/sources/${P}.tar.xz.sig )
 	"
-	KEYWORDS="amd64 ~ppc ppc64 x86"
+	KEYWORDS="amd64 ppc ppc64 x86"
 
 	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/mkvtoolnix.asc"
 fi

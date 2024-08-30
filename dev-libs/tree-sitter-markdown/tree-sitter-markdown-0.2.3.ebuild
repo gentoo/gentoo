@@ -3,8 +3,6 @@
 
 EAPI=8
 
-TS_BINDINGS=( python )
-
 inherit tree-sitter-grammar
 
 DESCRIPTION="Markdown grammar for Tree-sitter"
@@ -14,4 +12,4 @@ S="${WORKDIR}/${P}/${PN}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"

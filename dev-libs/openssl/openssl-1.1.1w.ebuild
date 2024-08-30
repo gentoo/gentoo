@@ -8,7 +8,7 @@ inherit edo flag-o-matic toolchain-funcs multilib-minimal verify-sig
 
 MY_P=${P/_/-}
 DESCRIPTION="Full-strength general purpose cryptography library (including SSL and TLS)"
-HOMEPAGE="https://www.openssl.org/"
+HOMEPAGE="https://openssl-library.org/"
 SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
 	verify-sig? ( mirror://openssl/source/${MY_P}.tar.gz.asc )"
 S="${WORKDIR}/${MY_P}"

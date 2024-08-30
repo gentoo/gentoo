@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Call methods on native types"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	>=dev-perl/Scope-Guard-0.210.0

@@ -5,6 +5,10 @@
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">Thriftpy/thriftpy2</remote-id>
 		<remote-id type="pypi">thriftpy2</remote-id>

@@ -4,13 +4,19 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517="setuptools"
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1
 
 DESCRIPTION="A python implementation for Noise Protocol Framework"
-HOMEPAGE="https://github.com/tgalal/dissononce"
-SRC_URI="https://github.com/tgalal/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+HOMEPAGE="
+	https://github.com/tgalal/dissononce/
+	https://pypi.org/project/dissononce/
+"
+SRC_URI="
+	https://github.com/tgalal/dissononce/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
@@ -21,10 +27,13 @@ RDEPEND="
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/transitions[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	${RDEPEND}
+"
 
-DEPEND="${RDEPEND}"
-
-PATCHES=( "${FILESDIR}/${P}-fix-test-requirements.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-fix-test-requirements.patch"
+)
 
 distutils_enable_tests pytest
 

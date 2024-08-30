@@ -5,6 +5,7 @@
   <email>swegener@gentoo.org</email>
 </maintainer>
   <use>
+    <flag name="debuginfod">Enable debuginfod support via <pkg>dev-libs/elfutils</pkg> libdebuginfod</flag>
     <flag name="libvirt">Support probing of libvirt domains.</flag>
   </use>
 </pkgmetadata>

@@ -67,6 +67,7 @@ PATCHES=(
 	"${FILESDIR}"/8/Wno-error.patch
 	"${FILESDIR}"/8/don-t-force-msse.patch
 	"${FILESDIR}"/8/fxpackager-don-t-include-obsolete-sys-sysctl.h.patch
+	"${FILESDIR}"/8/missing-casts.patch
 )
 
 egradle() {

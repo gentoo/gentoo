@@ -3,7 +3,7 @@
 
 EAPI=8
 PYTHON_REQ_USE="xml(+)"
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit gnome.org gnome2-utils linux-info meson-multilib multilib python-any-r1 toolchain-funcs xdg
 
@@ -16,7 +16,7 @@ IUSE="dbus debug +elf gtk-doc +mime selinux static-libs sysprof systemtap test u
 RESTRICT="!test? ( test )"
 REQUIRED_USE="gtk-doc? ( test )" # Bug #777636
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 
 # * elfutils (via libelf) does not build on Windows. gresources are not embedded
 # within ELF binaries on that platform anyway and inspecting ELF binaries from

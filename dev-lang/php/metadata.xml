@@ -86,6 +86,9 @@
     <flag name="opcache">
       Enables built-in opcode cache, replacing pecl-apc et al.
     </flag>
+    <flag name="opcache-jit">
+      Enable Just In Time (JIT) compilation within the opcache extension
+    </flag>
     <flag name="pcntl">
       Enable the Process Control extension
     </flag>

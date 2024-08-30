@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>marecki@gentoo.org</email>
-		<name>Marek Szuba</name>
+		<email>grobian@gentoo.org</email>
+		<name>Fabian Groffen</name>
 	</maintainer>
 	<use>
 		<flag name="atahpt">Highpoint (HPT) ATA/RAID controller support</flag>

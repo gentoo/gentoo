@@ -1,0 +1,22 @@
+--- a/modules/graphics/src/main/native-font/pango.c
++++ b/modules/graphics/src/main/native-font/pango.c
+@@ -225,7 +225,7 @@ JNIEXPORT jboolean JNICALL OS_NATIVE(FcConfigAppFontAddFile)
+         if (text) {
+ //            rc = (jboolean)FcConfigAppFontAddFile(arg0, text);
+             if (fp) {
+-                rc = (jboolean)((jboolean (*)(void *, const char *))fp)(arg0, text);
++                rc = (jboolean)((jboolean (*)(void *, const char *))fp)((void *)(intptr_t)arg0, text);
+             }
+             (*env)->ReleaseStringUTFChars(env, arg1, text);
+         }
+--- a/modules/graphics/src/main/native-prism-es2/x11/X11GLContext.c
++++ b/modules/graphics/src/main/native-prism-es2/x11/X11GLContext.c
+@@ -275,7 +275,7 @@ JNIEXPORT jlong JNICALL Java_com_sun_prism_es2_X11GLContext_nInitialize
+                 dlsym(RTLD_DEFAULT, "glXSwapIntervalSGI");
+ 
+         if (ctxInfo->glXSwapIntervalSGI == NULL) {
+-            ctxInfo->glXSwapIntervalSGI = glXGetProcAddress("glXSwapIntervalSGI");
++            ctxInfo->glXSwapIntervalSGI = (PFNGLXSWAPINTERVALSGIPROC)glXGetProcAddress("glXSwapIntervalSGI");
+         }
+ 
+     }

@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 EGIT_REPO_URI="https://github.com/buildbot/buildbot.git"
 inherit readme.gentoo-r1 systemd distutils-r1
 
@@ -21,9 +21,10 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	acct-user/buildbot
-	!<dev-util/buildbot-1.0.0
+	!<dev-util/buildbot-3.0.0
 	>=dev-python/autobahn-0.16.0[${PYTHON_USEDEP}]
 	>=dev-python/msgpack-0.6.0[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
 	>=dev-python/twisted-18.7.0[${PYTHON_USEDEP}]
 "
 BDEPEND="

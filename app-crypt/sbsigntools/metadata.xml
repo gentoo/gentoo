@@ -2,7 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>tamiko@gentoo.org</email>
+		<email>andrewammerlaan@gentoo.org</email>
+		<name>Andrew Ammerlaan</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="launchpad">ubuntu</remote-id>

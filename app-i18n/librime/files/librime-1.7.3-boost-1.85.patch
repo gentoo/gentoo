@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/933408
+--- a/src/rime/lever/deployment_tasks.cc
++++ b/src/rime/lever/deployment_tasks.cc
+@@ -577,7 +577,7 @@
+       continue;
+     }
+     boost::system::error_code ec;
+-    fs::copy_file(entry, backup, fs::copy_option::overwrite_if_exists, ec);
++    fs::copy_file(entry, backup, fs::copy_options::overwrite_existing, ec);
+     if (ec) {
+       LOG(ERROR) << "error backing up file " << backup.string();
+       ++failure;
+
+--- a/src/rime/lever/customizer.cc
++++ b/src/rime/lever/customizer.cc
+@@ -94,7 +94,7 @@
+   if (redistribute || (is_dirty && !missing_original_copy)) {
+     try {
+       fs::copy_file(source_path_, dest_path_,
+-                    fs::copy_option::overwrite_if_exists);
++                    fs::copy_options::overwrite_existing);
+     }
+     catch (...) {
+       LOG(ERROR) << "Error copying config file '"

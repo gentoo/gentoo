@@ -14,9 +14,11 @@
     <flag name="gnuplot">Use <pkg>sci-visualization/gnuplot</pkg> to render plots if OpenGL is unavailable</flag>
     <flag name="imagemagick">Use <pkg>media-gfx/graphicsmagick</pkg> to read and write images</flag>
     <flag name="json">Allow using jsonencode and jsondecode commands via <pkg>dev-libs/rapidjson</pkg></flag>
+    <flag name="klu">Add support for KLU (<pkg>sci-libs/klu</pkg>)</flag>
     <flag name="qhull">Add support for <pkg>media-libs/qhull</pkg>, to allow `delaunay', `convhull', and related functions</flag>
     <flag name="qrupdate">Add support for <pkg>sci-libs/qrupdate</pkg>for QR and Cholesky update functions</flag>
     <flag name="sparse">Add enhanced support for sparse matrix algebra with SuiteSparse</flag>
+    <flag name="spqr">Add support for SPQR (<pkg>sci-libs/spqr</pkg>)</flag>
     <flag name="sundials">Enable the ode15i and ode15s ODE solvers using <pkg>sci-libs/sundials</pkg></flag>
   </use>
   <upstream>

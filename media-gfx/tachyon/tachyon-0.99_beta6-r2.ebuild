@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}/unix"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x64-macos"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86 ~x64-macos"
 IUSE="doc examples jpeg mpi +opengl openmp png threads"
 
 DEPEND="

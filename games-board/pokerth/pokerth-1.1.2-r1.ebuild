@@ -47,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.2-system-websockets.patch
 	"${FILESDIR}"/${PN}-1.1.2-boost-1.73.patch
 	"${FILESDIR}"/${PN}-1.1.2-protobuf-23.patch
+	"${FILESDIR}"/${PN}-1.1.2-boost-1.85.patch
 )
 
 src_prepare() {

@@ -1,0 +1,249 @@
+https://bugs.gentoo.org/933265
+--- a/src/core/common/avatarmanager.cpp
++++ b/src/core/common/avatarmanager.cpp
+@@ -87,20 +87,20 @@ AvatarManager::Init(const string &dataDir, const string &cacheDir)
+ 	path tmpDataPath(dataDir);
+ 	{
+ 		boost::mutex::scoped_lock lock(m_cacheDirMutex);
+-		m_cacheDir = tmpCachePath.directory_string();
++		m_cacheDir = tmpCachePath.string();
+ 	}
+ 	{
+ 		boost::mutex::scoped_lock lock(m_avatarsMutex);
+-		tmpRet = InternalReadDirectory((tmpDataPath / "gfx/avatars/default/people/").directory_string(), m_avatars);
++		tmpRet = InternalReadDirectory((tmpDataPath / "gfx/avatars/default/people/").string(), m_avatars);
+ 		retVal = retVal && tmpRet;
+-		tmpRet = InternalReadDirectory((tmpDataPath / "gfx/avatars/default/misc/").directory_string(), m_avatars);
++		tmpRet = InternalReadDirectory((tmpDataPath / "gfx/avatars/default/misc/").string(), m_avatars);
+ 		retVal = retVal && tmpRet;
+ 	}
+ 	if (cacheDir.empty() || tmpCachePath.empty())
+ 		LOG_ERROR("Cache directory was not set!");
+ 	else {
+ 		boost::mutex::scoped_lock lock(m_cachedAvatarsMutex);
+-		tmpRet = InternalReadDirectory(tmpCachePath.directory_string(), m_cachedAvatars);
++		tmpRet = InternalReadDirectory(tmpCachePath.string(), m_cachedAvatars);
+ 		retVal = retVal && tmpRet;
+ 	}
+ 
+@@ -113,7 +113,7 @@ AvatarManager::AddSingleAvatar(const std::string &fileName)
+ {
+ 	bool retVal = false;
+ 	path filePath(fileName);
+-	string tmpFileName(filePath.file_string());
++	string tmpFileName(filePath.string());
+ 
+ 	if (!fileName.empty() && !tmpFileName.empty()) {
+ 		unsigned outFileSize = 0;
+@@ -240,7 +240,7 @@ AvatarManager::GetAvatarFileType(const string &fileName)
+ 	AvatarFileType fileType;
+ 
+ 	path filePath(fileName);
+-	string ext(extension(filePath));
++	string ext(filePath.extension().string());
+ 	if (boost::algorithm::iequals(ext, ".png"))
+ 		fileType = AVATAR_FILE_TYPE_PNG;
+ 	else if (boost::algorithm::iequals(ext, ".jpg") || boost::algorithm::iequals(ext, ".jpeg"))
+@@ -362,7 +362,7 @@ AvatarManager::StoreAvatarInCache(const MD5Buf &md5buf, AvatarFileType avatarFil
+ 			if (IsValidAvatarFileType(avatarFileType, data, size)) {
+ 				path tmpPath(cacheDir);
+ 				tmpPath /= (md5buf.ToString() + ext);
+-				string fileName(tmpPath.file_string());
++				string fileName(tmpPath.string());
+ 				std::ofstream o(fileName.c_str(), ios_base::out | ios_base::binary | ios_base::trunc);
+ 				if (!o.fail()) {
+ 					o.write((const char *)data, size);
+@@ -426,7 +426,7 @@ AvatarManager::RemoveOldAvatarCacheEntries()
+ 	}
+ 	try {
+ 		path cachePath(cacheDir);
+-		cacheDir = cachePath.directory_string();
++		cacheDir = cachePath.string();
+ 		// Never delete anything if we do not have a special cache dir set.
+ 		if (!cacheDir.empty()) {
+ 			boost::mutex::scoped_lock lock(m_cachedAvatarsMutex);
+@@ -441,12 +441,12 @@ AvatarManager::RemoveOldAvatarCacheEntries()
+ 				while (i != end) {
+ 					bool keepFile = false;
+ 					path filePath(i->second);
+-					string fileString(filePath.file_string());
++					string fileString(filePath.string());
+ 					// Only consider files which are definitely in the cache dir.
+ 					if (fileString.size() > cacheDir.size() && fileString.substr(0, cacheDir.size()) == cacheDir) {
+ 						// Only consider files with MD5 as file name.
+ 						MD5Buf tmpBuf;
+-						if (exists(filePath) && tmpBuf.FromString(basename(filePath))) {
++						if (exists(filePath) && tmpBuf.FromString(filePath.stem().string())) {
+ 							timeMap.insert(TimeAvatarMap::value_type(last_write_time(filePath), i->first));
+ 							keepFile = true;
+ 						}
+@@ -520,10 +520,10 @@ AvatarManager::InternalReadDirectory(const std::string &dir, AvatarMap &avatars)
+ 			directory_iterator end;
+ 
+ 			while (i != end) {
+-				if (is_regular(i->status())) {
+-					string md5sum(basename(i->path()));
++				if (is_regular_file(i->status())) {
++					string md5sum(i->path().stem().string());
+ 					MD5Buf md5buf;
+-					string fileName(i->path().file_string());
++					string fileName(i->path().string());
+ 					if (md5buf.FromString(md5sum)) {
+ 						// Only consider files with md5sum as name.
+ 						avatars.insert(AvatarMap::value_type(md5buf, fileName));
+--- a/src/core/common/loghelper_server.cpp
++++ b/src/core/common/loghelper_server.cpp
+@@ -59,7 +59,7 @@ loghelper_init(const string &logDir, int logLevel)
+ 	path tmpLogFile(logDir);
+ 	tmpLogFile /= SERVER_MSG_LOG_FILE_NAME;
+ 
+-	g_logFile = tmpLogFile.directory_string();
++	g_logFile = tmpLogFile.string();
+ 	g_logLevel = logLevel;
+ }
+ 
+--- a/src/engine/log.cpp
++++ b/src/engine/log.cpp
+@@ -84,7 +84,7 @@ Log::init()
+ 				mySqliteLogFileName /= string("pokerth-log-") + curDateTime + ".pdb";
+ 
+ 				// open sqlite-db
+-				sqlite3_open(mySqliteLogFileName.directory_string().c_str(), &mySqliteLogDb);
++				sqlite3_open(mySqliteLogFileName.string().c_str(), &mySqliteLogDb);
+ 				if( mySqliteLogDb != 0 ) {
+ 
+ 					int i;
+--- a/src/engine/log.h
++++ b/src/engine/log.h
+@@ -73,7 +73,7 @@ public:
+ 
+ 	std::string getMySqliteLogFileName()
+ 	{
+-		return mySqliteLogFileName.directory_string();
++		return mySqliteLogFileName.string();
+ 	}
+ 
+ private:
+--- a/src/gui/qt/qttools/nonqthelper/nonqthelper.cpp
++++ b/src/gui/qt/qttools/nonqthelper/nonqthelper.cpp
+@@ -65,7 +65,7 @@ std::string
+ NonQtHelper::getDataPathStdString(const char *argv0)
+ {
+ 	boost::filesystem::path startPath(argv0);
+-	startPath = startPath.remove_leaf();
++	startPath = startPath.remove_filename();
+ 	startPath /= "data";
+-	return stringToUtf8(startPath.directory_string());
++	return stringToUtf8(startPath.string());
+ }
+--- a/src/net/common/clientstate.cpp
++++ b/src/net/common/clientstate.cpp
+@@ -211,7 +211,7 @@ ClientStateStartServerListDownload::Enter(boost::shared_ptr<ClientThread> client
+ 	} else {
+ 		// Download the server list.
+ 		boost::shared_ptr<DownloadHelper> downloader(new DownloadHelper);
+-		downloader->Init(client->GetContext().GetServerListUrl(), tmpServerListPath.directory_string());
++		downloader->Init(client->GetContext().GetServerListUrl(), tmpServerListPath.string());
+ 		ClientStateDownloadingServerList::Instance().SetDownloadHelper(downloader);
+ 		client->SetState(ClientStateDownloadingServerList::Instance());
+ 	}
+@@ -303,13 +303,13 @@ ClientStateReadingServerList::Enter(boost::shared_ptr<ClientThread> client)
+ 	path zippedServerListPath(context.GetCacheDir());
+ 	zippedServerListPath /= context.GetServerListUrl().substr(context.GetServerListUrl().find_last_of('/') + 1);
+ 	path xmlServerListPath;
+-	if (extension(zippedServerListPath) == ".z") {
+-		xmlServerListPath = change_extension(zippedServerListPath, "");
++	if (zippedServerListPath.extension().string() == ".z") {
++		xmlServerListPath = zippedServerListPath.replace_extension("");
+ 
+ 		// Unzip the file using zlib.
+ 		try {
+-			std::ifstream inFile(zippedServerListPath.directory_string().c_str(), ios_base::in | ios_base::binary);
+-			std::ofstream outFile(xmlServerListPath.directory_string().c_str(), ios_base::out | ios_base::trunc);
++			std::ifstream inFile(zippedServerListPath.string().c_str(), ios_base::in | ios_base::binary);
++			std::ofstream outFile(xmlServerListPath.string().c_str(), ios_base::out | ios_base::trunc);
+ 			boost::iostreams::filtering_streambuf<boost::iostreams::input> in;
+ 			in.push(boost::iostreams::zlib_decompressor());
+ 			in.push(inFile);
+@@ -321,7 +321,7 @@ ClientStateReadingServerList::Enter(boost::shared_ptr<ClientThread> client)
+ 		xmlServerListPath = zippedServerListPath;
+ 
+ 	// Parse the server address.
+-	TiXmlDocument doc(xmlServerListPath.directory_string());
++	TiXmlDocument doc(xmlServerListPath.string());
+ 
+ 	if (doc.LoadFile()) {
+ 		client->ClearServerInfoMap();
+--- a/src/net/common/clientthread.cpp
++++ b/src/net/common/clientthread.cpp
+@@ -977,7 +977,7 @@ ClientThread::GetCacheServerListFileName()
+ 	size_t pos = serverListUrl.find_last_of('/');
+ 	if (!GetContext().GetCacheDir().empty() && !serverListUrl.empty() && pos != string::npos && ++pos < serverListUrl.length()) {
+ 		tmpServerListPath /= serverListUrl.substr(pos);
+-		fileName = tmpServerListPath.directory_string();
++		fileName = tmpServerListPath.string();
+ 	}
+ 	return fileName;
+ }
+--- a/src/net/common/downloaderthread.cpp
++++ b/src/net/common/downloaderthread.cpp
+@@ -96,7 +96,7 @@ DownloaderThread::Main()
+ 				// Previous download was finished.
+ 				if (m_curDownloadData) {
+ 					path filepath(m_curDownloadData->filename);
+-					std::ifstream instream(filepath.file_string().c_str(), ios_base::in | ios_base::binary);
++					std::ifstream instream(filepath.string().c_str(), ios_base::in | ios_base::binary);
+ 					// Find out file size.
+ 					// Not fully portable, but works on win/linux/mac.
+ 					instream.seekg(0, ios_base::beg);
+@@ -132,7 +132,7 @@ DownloaderThread::Main()
+ 				}
+ 				if (m_curDownloadData && !m_curDownloadData->filename.empty()) {
+ 					path filepath(m_curDownloadData->filename);
+-					m_downloadHelper->Init(m_curDownloadData->address, filepath.file_string());
++					m_downloadHelper->Init(m_curDownloadData->address, filepath.string());
+ 					m_downloadInProgress = true;
+ 				}
+ 			}
+--- a/src/net/common/serverlobbythread.cpp
++++ b/src/net/common/serverlobbythread.cpp
+@@ -275,7 +275,7 @@ ServerLobbyThread::Init(const string &logDir)
+ 		boost::filesystem::path logPath(logDir);
+ 		if (!logDir.empty()) {
+ 			logPath /= SERVER_STATISTICS_FILE_NAME;
+-			m_statisticsFileName = logPath.directory_string();
++			m_statisticsFileName = logPath.string();
+ 			ReadStatisticsFile();
+ 		}
+ 	}
+@@ -1261,7 +1261,7 @@ ServerLobbyThread::HandleNetPacketAvatarEnd(boost::shared_ptr<SessionData> sessi
+ 				// Init finished - start session.
+ 				EstablishSession(session);
+ 				LOG_MSG("Client \"" << session->GetClientAddr() << "\" uploaded avatar \""
+-						<< boost::filesystem::path(avatarFileName).file_string() << "\".");
++						<< boost::filesystem::path(avatarFileName).string() << "\".");
+ 			} else
+ 				SessionError(session, ERR_NET_WRONG_AVATAR_SIZE);
+ 		}
+--- a/src/net/common/uploaderthread.cpp
++++ b/src/net/common/uploaderthread.cpp
+@@ -94,7 +94,7 @@ UploaderThread::Main()
+ 						url += filepath.filename().string();
+ #endif
+ 					}
+-					m_uploadHelper->Init(url, filepath.file_string(), data.user, data.pwd, data.filesize, data.httpPost);
++					m_uploadHelper->Init(url, filepath.string(), data.user, data.pwd, data.filesize, data.httpPost);
+ 					m_uploadInProgress = true;
+ 				}
+ 			}
+--- a/src/pokerth_server.cpp
++++ b/src/pokerth_server.cpp
+@@ -158,7 +158,7 @@ main(int argc, char *argv[])
+ 	if (pidFile.empty()) {
+ 		path tmpPidPath(myConfig->readConfigString("LogDir"));
+ 		tmpPidPath /= "pokerth.pid";
+-		pidFile = tmpPidPath.directory_string();
++		pidFile = tmpPidPath.string();
+ 	}
+ 	{
+ 		std::ofstream pidStream(pidFile.c_str(), ios_base::out | ios_base::trunc);

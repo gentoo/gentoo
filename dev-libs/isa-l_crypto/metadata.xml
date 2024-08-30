@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>marecki@gentoo.org</email>
-		<name>Marek Szuba</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 	ISA-L_crypto is a collection of optimized low-level functions targeting storage applications. ISA-L_crypto includes:
 	* Multi-buffer hashes - run multiple hash jobs together on one core for much better throughput than single-buffer versions.

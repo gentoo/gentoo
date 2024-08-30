@@ -124,7 +124,7 @@ RDEPEND="
 		virtual/libusb:1
 	)
 	dbus? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
-	echo-cancel? ( media-libs/webrtc-audio-processing:1 )
+	echo-cancel? ( >=media-libs/webrtc-audio-processing-1.2:1 )
 	extra? ( >=media-libs/libsndfile-1.0.20 )
 	ffmpeg? ( media-video/ffmpeg:= )
 	flatpak? ( dev-libs/glib )
@@ -274,7 +274,20 @@ multilib_src_configure() {
 		$(meson_native_use_feature X x11)
 		$(meson_native_use_feature X x11-xfixes)
 		$(meson_native_use_feature X libcanberra)
+
+		# TODO
+		-Dsnap=disabled
 	)
+
+	# This installs the schema file for pulseaudio-daemon, iff we are replacing
+	# the official sound-server
+	if use !sound-server; then
+		emesonargs+=( '-Dgsettings-pulse-schema=disabled' )
+	else
+		emesonargs+=(
+			$(meson_native_use_feature gsettings gsettings-pulse-schema)
+		)
+	fi
 
 	meson_src_configure
 }

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 
 inherit distutils-r1 pypi
 
@@ -23,3 +23,13 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+
+python_test() {
+	local EPYTEST_IGNORE=(
+		# optional tests, broken with >=dev-python/asgiref-3.8
+		tests/test_asgi.py
+	)
+
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest
+}

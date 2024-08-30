@@ -3,17 +3,6 @@ From: Georgy Yakovlev <gyakovlev@gentoo.org>
 Date: Sat, 19 Sep 2020 18:30:58 -0700
 Subject: [PATCH] don't force -msse
 
----
- .../src/main/native/gstreamer/projects/linux/avplugin/Makefile | 1 -
- .../main/native/gstreamer/projects/linux/fxplugins/Makefile    | 1 -
- .../src/main/native/gstreamer/projects/mac/fxplugins/Makefile  | 3 +--
- .../main/native/gstreamer/projects/mac/gstreamer-lite/Makefile | 3 +--
- .../src/main/native/jfxmedia/projects/linux/Makefile           | 1 -
- .../src/main/native/jfxmedia/projects/mac/Makefile             | 3 +--
- 6 files changed, 3 insertions(+), 9 deletions(-)
-
-diff --git a/modules/javafx.media/src/main/native/gstreamer/projects/linux/avplugin/Makefile b/modules/javafx.media/src/main/native/gstreamer/projects/linux/avplugin/Makefile
-index f27b9479..4e229f20 100644
 --- a/modules/javafx.media/src/main/native/gstreamer/projects/linux/avplugin/Makefile
 +++ b/modules/javafx.media/src/main/native/gstreamer/projects/linux/avplugin/Makefile
 @@ -23,7 +23,6 @@ CFLAGS := -fPIC                   \
@@ -24,8 +13,6 @@ index f27b9479..4e229f20 100644
           -fbuiltin               \
           -DHAVE_STDINT_H         \
           -DLINUX                 \
-diff --git a/modules/javafx.media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile b/modules/javafx.media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile
-index 627865f9..a4d99299 100644
 --- a/modules/javafx.media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile
 +++ b/modules/javafx.media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile
 @@ -20,7 +20,6 @@ CFLAGS := -fPIC                   \
@@ -36,8 +23,6 @@ index 627865f9..a4d99299 100644
           -fbuiltin               \
           -DHAVE_STDINT_H         \
           -DLINUX                 \
-diff --git a/modules/javafx.media/src/main/native/gstreamer/projects/mac/fxplugins/Makefile b/modules/javafx.media/src/main/native/gstreamer/projects/mac/fxplugins/Makefile
-index 9f80434d..659ab1c1 100644
 --- a/modules/javafx.media/src/main/native/gstreamer/projects/mac/fxplugins/Makefile
 +++ b/modules/javafx.media/src/main/native/gstreamer/projects/mac/fxplugins/Makefile
 @@ -30,8 +30,7 @@ CFLAGS += -fPIC                     \
@@ -50,8 +35,6 @@ index 9f80434d..659ab1c1 100644
  
  ifeq ($(BUILD_TYPE), Release)
      CFLAGS += -Os
-diff --git a/modules/javafx.media/src/main/native/gstreamer/projects/mac/gstreamer-lite/Makefile b/modules/javafx.media/src/main/native/gstreamer/projects/mac/gstreamer-lite/Makefile
-index 2020404c..34bdf42c 100644
 --- a/modules/javafx.media/src/main/native/gstreamer/projects/mac/gstreamer-lite/Makefile
 +++ b/modules/javafx.media/src/main/native/gstreamer/projects/mac/gstreamer-lite/Makefile
 @@ -51,8 +51,7 @@ CFLAGS += -fPIC \
@@ -64,8 +47,6 @@ index 2020404c..34bdf42c 100644
  
  ifeq ($(BUILD_TYPE), Release)
      CFLAGS += -Os
-diff --git a/modules/javafx.media/src/main/native/jfxmedia/projects/linux/Makefile b/modules/javafx.media/src/main/native/jfxmedia/projects/linux/Makefile
-index c9500236..175be13e 100644
 --- a/modules/javafx.media/src/main/native/jfxmedia/projects/linux/Makefile
 +++ b/modules/javafx.media/src/main/native/jfxmedia/projects/linux/Makefile
 @@ -43,7 +43,6 @@ ifdef HOST_COMPILE
@@ -76,8 +57,6 @@ index c9500236..175be13e 100644
  	          -DGSTREAMER_LITE
  
  	PACKAGES_INCLUDES := $(shell pkg-config --cflags glib-2.0)
-diff --git a/modules/javafx.media/src/main/native/jfxmedia/projects/mac/Makefile b/modules/javafx.media/src/main/native/jfxmedia/projects/mac/Makefile
-index 5ffd9eac..a7b3ddbb 100644
 --- a/modules/javafx.media/src/main/native/jfxmedia/projects/mac/Makefile
 +++ b/modules/javafx.media/src/main/native/jfxmedia/projects/mac/Makefile
 @@ -30,8 +30,7 @@ CFLAGS += -pipe \

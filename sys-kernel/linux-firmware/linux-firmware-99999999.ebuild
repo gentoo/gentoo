@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit dist-kernel-utils linux-info mount-boot savedconfig multiprocessing
+inherit dist-kernel-utils linux-info mount-boot savedconfig
 
 # In case this is a real snapshot, fill in commit below.
 # For normal, tagged releases, leave blank
@@ -19,7 +19,7 @@ else
 		SRC_URI="https://mirrors.edge.kernel.org/pub/linux/kernel/firmware/${P}.tar.xz"
 	fi
 
-	KEYWORDS="~amd64"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 DESCRIPTION="Linux firmware files"
@@ -66,6 +66,18 @@ IDEPEND="
 
 QA_PREBUILT="*"
 
+pkg_pretend() {
+	if use initramfs; then
+		if use dist-kernel; then
+			# Check, but don't die because we can fix the problem and then
+			# emerge --config ... to re-run installation.
+			[[ -z ${ROOT} ]] && nonfatal mount-boot_check_status
+		else
+			mount-boot_pkg_pretend
+		fi
+	fi
+}
+
 pkg_setup() {
 	if use compress-xz || use compress-zstd ; then
 		local CONFIG_CHECK
@@ -81,10 +93,6 @@ pkg_setup() {
 		fi
 	fi
 	linux-info_pkg_setup
-}
-
-pkg_pretend() {
-	use initramfs && mount-boot_pkg_pretend
 }
 
 src_unpack() {
@@ -107,27 +115,12 @@ src_prepare() {
 		|| die
 
 	chmod +x copy-firmware.sh || die
+	cp "${FILESDIR}/${PN}-make-amd-ucode-img.bash" "${T}/make-amd-ucode-img" || die
+	chmod +x "${T}/make-amd-ucode-img" || die
 
 	if use initramfs && ! use dist-kernel; then
 		if [[ -d "${S}/amd-ucode" ]]; then
-			local UCODETMP="${T}/ucode_tmp"
-			local UCODEDIR="${UCODETMP}/kernel/x86/microcode"
-			mkdir -p "${UCODEDIR}" || die
-			echo 1 > "${UCODETMP}/early_cpio"
-
-			local amd_ucode_file="${UCODEDIR}/AuthenticAMD.bin"
-			cat "${S}"/amd-ucode/*.bin > "${amd_ucode_file}" || die "Failed to concat amd cpu ucode"
-
-			if [[ ! -s "${amd_ucode_file}" ]]; then
-				die "Sanity check failed: '${amd_ucode_file}' is empty!"
-			fi
-
-			pushd "${UCODETMP}" &>/dev/null || die
-			find . -print0 | cpio --quiet --null -o -H newc -R 0:0 > "${S}"/amd-uc.img
-			popd &>/dev/null || die
-			if [[ ! -s "${S}/amd-uc.img" ]]; then
-				die "Failed to create '${S}/amd-uc.img'!"
-			fi
+			"${T}/make-amd-ucode-img" "${S}" "${S}/amd-ucode" || die
 		else
 			# If this will ever happen something has changed which
 			# must be reviewed
@@ -278,7 +271,17 @@ src_prepare() {
 }
 
 src_install() {
-	./copy-firmware.sh $(usex deduplicate '' '--ignore-duplicates') -v "${ED}/lib/firmware" || die
+
+	local FW_OPTIONS=( "-v" )
+
+	if use compress-xz; then
+		FW_OPTIONS+=( "--xz" )
+	elif use compress-zstd; then
+		FW_OPTIONS+=( "--zstd" )
+	fi
+	! use deduplicate && FW_OPTIONS+=( "--ignore-duplicates" )
+	FW_OPTIONS+=( "${ED}/lib/firmware" )
+	./copy-firmware.sh "${FW_OPTIONS[@]}" || die
 
 	pushd "${ED}/lib/firmware" &>/dev/null || die
 
@@ -324,36 +327,6 @@ src_install() {
 	find * ! -type d >> "${S}"/${PN}.conf || die
 	save_config "${S}"/${PN}.conf
 
-	if use compress-xz || use compress-zstd; then
-		einfo "Compressing firmware ..."
-		local target
-		local ext
-		local compressor
-
-		if use compress-xz; then
-			ext=xz
-			compressor="xz -T1 -C crc32"
-		elif use compress-zstd; then
-			ext=zst
-			compressor="zstd -15 -T1 -C -q --rm"
-		fi
-
-		# rename symlinks
-		while IFS= read -r -d '' f; do
-			# skip symlinks pointing to directories
-			[[ -d ${f} ]] && continue
-
-			target=$(readlink "${f}")
-			[[ $? -eq 0 ]] || die
-			ln -sf "${target}".${ext} "${f}" || die
-			mv -T "${f}" "${f}".${ext} || die
-		done < <(find . -type l -print0) || die
-
-		find . -type f ! -path "./amd-ucode/*" -print0 | \
-			xargs -0 -P $(makeopts_jobs) -I'{}' ${compressor} '{}' || die
-
-	fi
-
 	popd &>/dev/null || die
 
 	# Instruct Dracut on whether or not we want the microcode in initramfs
@@ -361,6 +334,17 @@ src_install() {
 		insinto /usr/lib/dracut/dracut.conf.d
 		newins - 10-${PN}.conf <<<"early_microcode=$(usex initramfs)"
 	)
+	if use initramfs; then
+		# Install installkernel/kernel-install hooks for non-dracut initramfs
+		# generators that don't bundled the microcode
+		dobin "${T}/make-amd-ucode-img"
+		(
+			exeinto /usr/lib/kernel/preinst.d
+			doexe "${FILESDIR}/35-amd-microcode.install"
+			exeinto /usr/lib/kernel/install.d
+			doexe "${FILESDIR}/35-amd-microcode-systemd.install"
+		)
+	fi
 
 	if use initramfs && ! use dist-kernel; then
 		insinto /boot
@@ -379,7 +363,7 @@ pkg_preinst() {
 	fi
 
 	# Make sure /boot is available if needed.
-	use initramfs && mount-boot_pkg_preinst
+	use initramfs && ! use dist-kernel && mount-boot_pkg_preinst
 }
 
 pkg_postinst() {
@@ -397,21 +381,22 @@ pkg_postinst() {
 		fi
 	done
 
-	# Don't forget to umount /boot if it was previously mounted by us.
 	if use initramfs; then
-		if [[ -z ${ROOT} ]] && use dist-kernel; then
-			dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}"
+		if use dist-kernel; then
+			[[ -z ${ROOT} ]] && dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}"
+		else
+			# Don't forget to umount /boot if it was previously mounted by us.
+			mount-boot_pkg_postinst
 		fi
-		mount-boot_pkg_postinst
 	fi
 }
 
 pkg_prerm() {
 	# Make sure /boot is mounted so that we can remove /boot/amd-uc.img!
-	use initramfs && mount-boot_pkg_prerm
+	use initramfs && ! use dist-kernel && mount-boot_pkg_prerm
 }
 
 pkg_postrm() {
 	# Don't forget to umount /boot if it was previously mounted by us.
-	use initramfs && mount-boot_pkg_postrm
+	use initramfs && ! use dist-kernel && mount-boot_pkg_postrm
 }

@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="GPL-2+ Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ppc ~ppc64 ~riscv ~s390 x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~s390 x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 

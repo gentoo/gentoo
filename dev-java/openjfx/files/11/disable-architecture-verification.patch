@@ -3,12 +3,6 @@ From: Georgy Yakovlev <gyakovlev@gentoo.org>
 Date: Sat, 19 Sep 2020 18:38:05 -0700
 Subject: [PATCH] disable architecture verification
 
----
- build.gradle | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/build.gradle b/build.gradle
-index 66a4b3c..f66ee01 100644
 --- a/build.gradle
 +++ b/build.gradle
 @@ -302,6 +302,7 @@ ext.MAVEN_GROUP_ID = "org.openjfx"

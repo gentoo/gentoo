@@ -103,7 +103,7 @@ DESCRIPTION="TeXLive XeTeX and packages"
 
 LICENSE="Apache-2.0 CC-BY-4.0 CC-BY-SA-4.0 GPL-1+ GPL-3 LGPL-2+ LPPL-1.2 LPPL-1.3 LPPL-1.3c MIT TeX-other-free public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 COMMON_DEPEND="
 	>=app-text/texlive-core-2023[xetex]
 	>=dev-texlive/texlive-basic-2023

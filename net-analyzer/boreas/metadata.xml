@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>foti.giuseppe@gmail.com</email>
+		<name>Giuseppe Foti</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Boreas is a command line tool to scan for alive hosts. It supports IPv4 and IPv6 address ranges and allows to exclude certain addresses from a range.
+	The alive ping tests support ICMP, TCP-ACK, TCP-SYN and ARP and any combination.
+	For TCP ping an individual port list can be applied.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">greenbone/boreas</remote-id>
+	</upstream>
+</pkgmetadata>

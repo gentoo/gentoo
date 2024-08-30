@@ -12,7 +12,6 @@
 		<remote-id type="github">oneapi-src/oneVPL-cpu</remote-id>
 	</upstream>
 	<use>
-		<flag name="experimental">Enable experimental API</flag>
 		<flag name="openh264">Use <pkg>media-libs/openh264</pkg> instead of <pkg>media-libs/x264</pkg></flag>
 	</use>
 </pkgmetadata>

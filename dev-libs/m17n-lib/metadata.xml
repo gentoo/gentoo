@@ -13,4 +13,7 @@
 		<flag name="libotf">Use <pkg>dev-libs/libotf</pkg> to handle OpenType fonts</flag>
 		<flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> to parse XML</flag>
 	</use>
+	<upstream>
+		<remote-id type="savannah-nongnu">m17n</remote-id>
+	</upstream>
 </pkgmetadata>

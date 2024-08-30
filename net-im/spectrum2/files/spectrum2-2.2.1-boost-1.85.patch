@@ -1,0 +1,103 @@
+Bug: https://bugs.gentoo.org/933691
+
+From: Bill Prendergast <dek.devel@baisenvar.info>
+
+Fix build with boost-1.85 (filesystem api v4 removed Deprecated Features)
+see https://www.boost.org/doc/libs/1_85_0/libs/filesystem/doc/deprecated.html
+
+--- a/plugin/cpp/Util.cpp
++++ b/plugin/cpp/Util.cpp
+@@ -53,7 +53,7 @@ void createDirectories(Transport::Config *config, const boost::filesystem::path&
+ 	}
+ 
+ 	// First create branch, by calling ourself recursively
+-	createDirectories(config, ph.branch_path());
++	createDirectories(config, ph.parent_path());
+ 	
+ 	// Now that parent's path exists, create the directory
+ 	create_directory(ph);
+@@ -89,7 +89,7 @@ void removeEverythingOlderThan(const std::vector<std::string> &dirs, time_t t) {
+ 			for (directory_iterator itr(p); itr != end_itr; ++itr) {
+ 				if (last_write_time(itr->path()) < t) {
+ 					try {
+-						if (is_regular(itr->path())) {
++						if (is_regular_file(itr->path())) {
+ 							remove(itr->path());
+ 						}
+ 						else if (is_directory(itr->path())) {
+--- a/spectrum/src/main.cpp
++++ b/spectrum/src/main.cpp
+@@ -147,7 +147,7 @@ static void _createDirectories(Transport::Config *config, boost::filesystem::pat
+ 	}
+ 
+ 	// First create branch, by calling ourself recursively
+-	_createDirectories(config, ph.branch_path());
++	_createDirectories(config, ph.parent_path());
+ 
+ 	// Now that parent's path exists, create the directory
+ 	boost::filesystem::create_directory(ph);
+--- a/spectrum_manager/src/methods.cpp
++++ b/spectrum_manager/src/methods.cpp
+@@ -168,7 +168,7 @@ int start_instances(ManagerConfig *config, const std::string &_jid) {
+ 
+ 		directory_iterator end_itr;
+ 		for (directory_iterator itr(p); itr != end_itr; ++itr) {
+-			if (is_regular(itr->path()) && extension(itr->path()) == ".cfg") {
++			if (is_regular_file(itr->path()) && itr->path().extension().string() == ".cfg") {
+ 				Config cfg;
+ 				if (cfg.load(itr->path().string()) == false) {
+ 					std::cerr << "Can't load config file " << itr->path().string() << ". Skipping...\n";
+@@ -232,7 +232,7 @@ void stop_instances(ManagerConfig *config, const std::string &_jid) {
+ 
+ 		directory_iterator end_itr;
+ 		for (directory_iterator itr(p); itr != end_itr; ++itr) {
+-			if (is_regular(itr->path()) && extension(itr->path()) == ".cfg") {
++			if (is_regular_file(itr->path()) && itr->path().extension().string() == ".cfg") {
+ 				Config cfg;
+ 				if (cfg.load(itr->path().string()) == false) {
+ 					std::cerr << "Can't load config file " << itr->path().string() << ". Skipping...\n";
+@@ -315,7 +315,7 @@ int restart_instances(ManagerConfig *config, const std::string &_jid) {
+ 
+ 		directory_iterator end_itr;
+ 		for (directory_iterator itr(p); itr != end_itr; ++itr) {
+-			if (is_regular(itr->path()) && extension(itr->path()) == ".cfg") {
++			if (is_regular_file(itr->path()) && itr->path().extension().string() == ".cfg") {
+ 				Config cfg;
+ 				if (cfg.load(itr->path().string()) == false) {
+ 					std::cerr << "Can't load config file " << itr->path().string() << ". Skipping...\n";
+@@ -401,7 +401,7 @@ int show_status(ManagerConfig *config) {
+ 
+ 		directory_iterator end_itr;
+ 		for (directory_iterator itr(p); itr != end_itr; ++itr) {
+-			if (is_regular(itr->path()) && extension(itr->path()) == ".cfg") {
++			if (is_regular_file(itr->path()) && itr->path().extension().string() == ".cfg") {
+ 				Config cfg;
+ 				if (cfg.load(itr->path().string()) == false) {
+ 					std::cerr << "Can't load config file " << itr->path().string() << ". Skipping...\n";
+@@ -531,7 +531,7 @@ std::string get_config(ManagerConfig *config, const std::string &jid, const std:
+ 
+ 		directory_iterator end_itr;
+ 		for (directory_iterator itr(p); itr != end_itr; ++itr) {
+-			if (is_regular(itr->path()) && extension(itr->path()) == ".cfg") {
++			if (is_regular_file(itr->path()) && itr->path().extension().string() == ".cfg") {
+ 				Config cfg;
+ 				if (cfg.load(itr->path().string()) == false) {
+ 					std::cerr << "Can't load config file " << itr->path().string() << ". Skipping...\n";
+@@ -572,7 +572,7 @@ void ask_local_server(ManagerConfig *config, Swift::BoostNetworkFactories &netwo
+ 		bool found = false;
+ 		directory_iterator end_itr;
+ 		for (directory_iterator itr(p); itr != end_itr; ++itr) {
+-			if (is_regular(itr->path()) && extension(itr->path()) == ".cfg") {
++			if (is_regular_file(itr->path()) && itr->path().extension().string() == ".cfg") {
+ 				Config cfg;
+ 				if (cfg.load(itr->path().string()) == false) {
+ 					std::cerr << "Can't load config file " << itr->path().string() << ". Skipping...\n";
+@@ -619,7 +619,7 @@ std::vector<std::string> show_list(ManagerConfig *config, bool show) {
+ 
+ 		directory_iterator end_itr;
+ 		for (directory_iterator itr(p); itr != end_itr; ++itr) {
+-			if (is_regular(itr->path()) && extension(itr->path()) == ".cfg") {
++			if (is_regular_file(itr->path()) && itr->path().extension().string() == ".cfg") {
+ 				Config cfg;
+ 				if (cfg.load(itr->path().string()) == false) {
+ 					std::cerr << "Can't load config file " << itr->path().string() << ". Skipping...\n";

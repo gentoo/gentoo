@@ -15,7 +15,7 @@ HOMEPAGE="https://invent.kde.org/libraries/ktextaddons"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 LICENSE="LGPL-2+"
@@ -34,6 +34,7 @@ DEPEND="
 	>=kde-frameworks/kcoreaddons-${KFMIN}:6
 	>=kde-frameworks/ki18n-${KFMIN}:6
 	>=kde-frameworks/kio-${KFMIN}:6
+	>=kde-frameworks/kwidgetsaddons-${KFMIN}:6
 	>=kde-frameworks/sonnet-${KFMIN}:6
 	>=kde-frameworks/syntax-highlighting-${KFMIN}:6
 	speech? ( >=dev-qt/qtspeech-${QTMIN}:6 )

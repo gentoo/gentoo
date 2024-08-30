@@ -307,7 +307,7 @@ else
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/${P^}"
 
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 SRC_URI+=" ${NUGET_URIS} "
@@ -322,6 +322,7 @@ DOTNET_PKG_PROJECTS=(
 DOTNET_PKG_BAD_PROJECTS=(
 	src/quicktest/QuickTest.fsproj
 	tests/Js/Main/Fable.Tests.fsproj
+	tests/Rust/Fable.Tests.Rust.fsproj
 )
 
 pkg_setup() {

@@ -11,7 +11,7 @@ SRC_URI="https://untroubled.org/bglibs/archive/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/2"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc x86"
 IUSE="doc"
 
 BDEPEND="

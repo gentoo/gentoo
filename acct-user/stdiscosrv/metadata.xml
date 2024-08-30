@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>marecki@gentoo.org</email>
-		<name>Marek Szuba</name>
-	</maintainer>
+  <maintainer type="person">
+    <email>mschiff@gentoo.org</email>
+    <name>Marc Schiffbauer</name>
+  </maintainer>
 </pkgmetadata>

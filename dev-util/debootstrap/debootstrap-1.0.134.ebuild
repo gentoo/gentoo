@@ -12,7 +12,7 @@ SRC_URI="https://salsa.debian.org/installer-team/${PN}/-/archive/${MY_PV}/${PN}-
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	app-arch/dpkg

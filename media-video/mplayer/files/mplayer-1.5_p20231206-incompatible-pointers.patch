@@ -1,0 +1,287 @@
+--- a/libaf/af_lavcresample.c
++++ b/libaf/af_lavcresample.c
+@@ -156,7 +156,7 @@ static af_data_t* play(struct af_instance_s* af, af_data_t* data)
+ 
+   memcpy(s->in[0], in, in_len);
+ 
+-  ret = swr_convert(s->swrctx, &s->tmp[0], out_len/chans/2, &s->in[0], in_len/chans/2);
++  ret = swr_convert(s->swrctx, &s->tmp[0], out_len/chans/2, (const uint8_t **)&s->in[0], in_len/chans/2);
+   if (ret < 0) return NULL;
+   out_len= ret*chans*2;
+ 
+--- a/libmpcodecs/ad_spdif.c
++++ b/libmpcodecs/ad_spdif.c
+@@ -131,7 +131,7 @@ static int init(sh_audio_t *sh)
+     // FORCE USE DTS-HD
+     if (lavf_ctx->streams[0]->codecpar->codec_id == AV_CODEC_ID_DTS)
+         av_dict_set(&opts, "dtshd_rate", "768000" /* 192000*4 */, 0);
+-    if ((res = avformat_write_header(lavf_ctx, opts)) < 0) {
++    if ((res = avformat_write_header(lavf_ctx, (AVDictionary **)opts)) < 0) {
+         av_dict_free(&opts);
+         if (res == AVERROR_PATCHWELCOME)
+             mp_msg(MSGT_DECAUDIO,MSGL_INFO,
+--- a/libmpcodecs/vd_ffmpeg.c
++++ b/libmpcodecs/vd_ffmpeg.c
+@@ -739,7 +739,7 @@ static int get_buffer(AVCodecContext *avctx, AVFrame *pic, int isreference){
+     if (ctx->use_vdpau) {
+         VdpVideoSurface surface = (VdpVideoSurface)mpi->priv;
+         avctx->draw_horiz_band= NULL;
+-        mpi->planes[3] = surface;
++        mpi->planes[3] = (unsigned char *)surface;
+     }
+ #endif
+ #if CONFIG_XVMC
+--- a/libmpcodecs/vf_pp.c
++++ b/libmpcodecs/vf_pp.c
+@@ -142,7 +142,7 @@ static int put_image(struct vf_instance *vf, mp_image_t *mpi, double pts, double
+ 
+     if(vf->priv->pp || !(mpi->flags&MP_IMGFLAG_DIRECT)){
+ 	// do the postprocessing! (or copy if no DR)
+-	pp_postprocess(mpi->planes           ,mpi->stride,
++	pp_postprocess((const uint8_t **)mpi->planes           ,mpi->stride,
+ 		    vf->dmpi->planes,vf->dmpi->stride,
+ 		    (mpi->w+7)&(~7),mpi->h,
+ 		    mpi->qscale, mpi->qstride,
+--- a/libmpcodecs/vf_scale.c
++++ b/libmpcodecs/vf_scale.c
+@@ -439,14 +439,14 @@ static void scale(struct SwsContext *sws1, struct SwsContext *sws2, uint8_t *src
+         int src_stride2[MP_MAX_PLANES]={2*src_stride[0], 2*src_stride[1], 2*src_stride[2], 2*src_stride[3]};
+         int dst_stride2[MP_MAX_PLANES]={2*dst_stride[0], 2*dst_stride[1], 2*dst_stride[2], 2*dst_stride[3]};
+ 
+-        sws_scale(sws1, src2, src_stride2, y>>1, h>>1, dst2, dst_stride2);
++        sws_scale(sws1, (const uint8_t * const*)src2, src_stride2, y>>1, h>>1, dst2, dst_stride2);
+         for(i=0; i<MP_MAX_PLANES; i++){
+             src2[i] += src_stride[i];
+             dst2[i] += dst_stride[i];
+         }
+-        sws_scale(sws2, src2, src_stride2, y>>1, h>>1, dst2, dst_stride2);
++        sws_scale(sws2, (const uint8_t * const*)src2, src_stride2, y>>1, h>>1, dst2, dst_stride2);
+     }else{
+-        sws_scale(sws1, src2, src_stride, y, h, dst, dst_stride);
++        sws_scale(sws1, (const uint8_t * const*)src2, src_stride, y, h, dst, dst_stride);
+     }
+ }
+ 
+--- a/libmpcodecs/vf_screenshot.c
++++ b/libmpcodecs/vf_screenshot.c
+@@ -60,7 +60,7 @@ static void draw_slice(struct vf_instance *vf, unsigned char** src,
+                        int* stride, int w,int h, int x, int y)
+ {
+     if (vf->priv->store_slices) {
+-        sws_scale(vf->priv->ctx, src, stride, y, h, vf->priv->pic->data, vf->priv->pic->linesize);
++        sws_scale(vf->priv->ctx, (const uint8_t * const*)src, stride, y, h, vf->priv->pic->data, vf->priv->pic->linesize);
+     }
+     vf_next_draw_slice(vf,src,stride,w,h,x,y);
+ }
+@@ -158,7 +158,7 @@ static void scale_image(struct vf_priv_s* priv, mp_image_t *mpi)
+     if (!priv->pic->data[0])
+         priv->pic->data[0] = av_malloc(priv->pic->linesize[0]*priv->dh);
+ 
+-    sws_scale(priv->ctx, mpi->planes, mpi->stride, 0, mpi->height, priv->pic->data, priv->pic->linesize);
++    sws_scale(priv->ctx, (const uint8_t * const*)mpi->planes, mpi->stride, 0, mpi->height, priv->pic->data, priv->pic->linesize);
+ }
+ 
+ static void start_slice(struct vf_instance *vf, mp_image_t *mpi)
+--- a/libmpdemux/demux_film.c
++++ b/libmpdemux/demux_film.c
+@@ -157,7 +157,7 @@ static int demux_film_fill_buffer(demuxer_t *demuxer, demux_stream_t *ds)
+         free(buf);
+       }
+       else {/* for 16bit */
+-        unsigned short* tmp = dp->buffer;
++        unsigned short* tmp = (short unsigned int *)dp->buffer;
+         unsigned short* buf = malloc(film_chunk.chunk_size);
+         for(i = 0; i < film_chunk.chunk_size/4; i++) {
+           buf[i*2] = tmp[i];
+--- a/libmpdemux/demux_lavf.c
++++ b/libmpdemux/demux_lavf.c
+@@ -378,7 +378,7 @@ static void handle_stream(demuxer_t *demuxer, AVFormatContext *avfc, int i) {
+         }
+         case AVMEDIA_TYPE_VIDEO:{
+             AVDictionaryEntry *rot = av_dict_get(st->metadata, "rotate",   NULL, 0);
+-            const int32_t *disp_matrix = av_stream_get_side_data(st, AV_PKT_DATA_DISPLAYMATRIX, NULL);
++            const int32_t *disp_matrix = (const int32_t *)av_stream_get_side_data(st, AV_PKT_DATA_DISPLAYMATRIX, NULL);
+             sh_video_t* sh_video;
+             BITMAPINFOHEADER *bih;
+             sh_video=new_sh_video_vid(demuxer, i, priv->video_streams);
+--- a/libmpdemux/muxer_avi.c
++++ b/libmpdemux/muxer_avi.c
+@@ -142,8 +142,8 @@ static muxer_stream_t* avifile_new_stream(muxer_t *muxer,int type){
+ static void write_avi_chunk(stream_t *stream,unsigned int id,int len,void* data){
+  int le_len = le2me_32(len);
+  int le_id = le2me_32(id);
+- stream_write_buffer(stream, &le_id, 4);
+- stream_write_buffer(stream, &le_len, 4);
++ stream_write_buffer(stream, (unsigned char *)&le_id, 4);
++ stream_write_buffer(stream, (unsigned char *)&le_len, 4);
+ 
+ if(len>0){
+   if(data){
+@@ -176,9 +176,9 @@ static void write_avi_list(stream_t *stream, unsigned int id, int len)
+   list_id = le2me_32(list_id);
+   le_len  = le2me_32(len);
+   le_id   = le2me_32(id);
+-  stream_write_buffer(stream, &list_id, 4);
+-  stream_write_buffer(stream, &le_len, 4);
+-  stream_write_buffer(stream, &le_id, 4);
++  stream_write_buffer(stream, (unsigned char *)&list_id, 4);
++  stream_write_buffer(stream, (unsigned char *)&le_len, 4);
++  stream_write_buffer(stream, (unsigned char *)&le_id, 4);
+ }
+ 
+ static void avifile_odml_new_riff(muxer_t *muxer)
+@@ -199,7 +199,7 @@ static void avifile_odml_new_riff(muxer_t *muxer)
+     riff[0]=le2me_32(mmioFOURCC('R','I','F','F'));
+     riff[1]=0;
+     riff[2]=le2me_32(mmioFOURCC('A','V','I','X'));
+-    stream_write_buffer(muxer->stream, riff, 12);
++    stream_write_buffer(muxer->stream, (unsigned char *)riff, 12);
+ 
+     write_avi_list(muxer->stream,listtypeAVIMOVIE,0);
+ 
+@@ -251,12 +251,12 @@ static void avifile_write_header(muxer_t *muxer){
+           movilen = le2me_32(rifflen - 12);
+           rifflen = le2me_32(rifflen);
+           stream_seek(muxer->stream, vsi->riffofs[i]+4);
+-          stream_write_buffer(muxer->stream,&rifflen,4);
++          stream_write_buffer(muxer->stream,(unsigned char *)&rifflen,4);
+ 
+           /* fixup movi length */
+           if (i > 0) {
+               stream_seek(muxer->stream, vsi->riffofs[i]+16);
+-              stream_write_buffer(muxer->stream,&movilen,4);
++              stream_write_buffer(muxer->stream,(unsigned char *)&movilen,4);
+           }
+       }
+ 
+@@ -269,7 +269,7 @@ static void avifile_write_header(muxer_t *muxer){
+     riff[0]=le2me_32(riff[0]);
+     riff[1]=le2me_32(riff[1]);
+     riff[2]=le2me_32(riff[2]);
+-    stream_write_buffer(muxer->stream,&riff,12);
++    stream_write_buffer(muxer->stream,(unsigned char *)&riff,12);
+   }
+ 
+   // update AVI header:
+@@ -406,7 +406,7 @@ static void avifile_write_header(muxer_t *muxer){
+ 	  idxhdr[6] = 0;
+ 	  idxhdr[7] = 0;
+ 
+-	  stream_write_buffer(muxer->stream,idxhdr,sizeof(idxhdr));
++	  stream_write_buffer(muxer->stream,(unsigned char *)idxhdr,sizeof(idxhdr));
+ 	  for (j=0; j<n; j++) {
+ 	      struct avi_odmlsuperidx_entry *entry = &si->superidx[j];
+ 	      unsigned int data[4];
+@@ -414,7 +414,7 @@ static void avifile_write_header(muxer_t *muxer){
+ 	      data[1] = le2me_32(entry->ofs >> 32);
+ 	      data[2] = le2me_32(entry->len);
+ 	      data[3] = le2me_32(entry->duration);
+-	      stream_write_buffer(muxer->stream,data,sizeof(data));
++	      stream_write_buffer(muxer->stream,(unsigned char *)data,sizeof(data));
+ 	  }
+       }
+   }
+@@ -642,13 +642,13 @@ static void avifile_odml_write_index(muxer_t *muxer){
+ 	si->superidx[j].ofs = stream_tell(muxer->stream);
+ 	si->superidx[j].duration = duration;
+ 
+-	stream_write_buffer(muxer->stream, idxhdr,sizeof(idxhdr));
++	stream_write_buffer(muxer->stream, (unsigned char *)idxhdr,sizeof(idxhdr));
+ 	for (k=0; k<entries_per_subidx && idxpos<si->idxpos; k++) {
+ 	    unsigned int entry[2];
+ 	    entry[0] = le2me_32(si->idx[idxpos].ofs - start);
+ 	    entry[1] = le2me_32(si->idx[idxpos].len | si->idx[idxpos].flags);
+ 	    idxpos++;
+-	    stream_write_buffer(muxer->stream, entry, sizeof(entry));
++	    stream_write_buffer(muxer->stream, (unsigned char *)entry, sizeof(entry));
+ 	}
+      }
+   }
+--- a/libvo/gl_common.c
++++ b/libvo/gl_common.c
+@@ -2239,7 +2239,7 @@ static XVisualInfo *getWindowVisualInfo(Window win) {
+   XVisualInfo vinfo_template;
+   int tmp;
+   if (!XGetWindowAttributes(mDisplay, win, &xw_attr))
+-    return DefaultVisual(mDisplay, 0);
++    return (XVisualInfo *)DefaultVisual(mDisplay, 0);
+   vinfo_template.visualid = XVisualIDFromVisual(xw_attr.visual);
+   return XGetVisualInfo(mDisplay, VisualIDMask, &vinfo_template, &tmp);
+ }
+--- a/libvo/vo_matrixview.c
++++ b/libvo/vo_matrixview.c
+@@ -170,7 +170,7 @@ static void flip_page(void)
+ 
+ static int draw_slice(uint8_t *src[], int stride[], int w, int h, int x, int y)
+ {
+-    sws_scale(sws, src, stride, y, h, map_image, map_stride);
++    sws_scale(sws, (const uint8_t * const*)src, stride, y, h, map_image, map_stride);
+     return 0;
+ }
+ 
+--- a/libvo/vo_x11.c
++++ b/libvo/vo_x11.c
+@@ -492,7 +492,7 @@ static int draw_slice(uint8_t * src[], int stride[], int w, int h,
+         dst[0] += dstStride[0] * (image_height - 1);
+         dstStride[0] = -dstStride[0];
+     }
+-    sws_scale(swsContext, src, stride, y, h, dst, dstStride);
++    sws_scale(swsContext, (const uint8_t * const*)src, stride, y, h, dst, dstStride);
+     return 0;
+ }
+ 
+--- a/loader/qtx/qtxsdk/components.h
++++ b/loader/qtx/qtxsdk/components.h
+@@ -780,7 +780,7 @@ static inline void dump_CodecDecompressParams(void* xxx){
+     printf("dstrect: %d;%d - %d;%d\n",cd->dstRect.top,cd->dstRect.left,cd->dstRect.bottom,cd->dstRect.right);
+     printf("wantedDestinationPixelTypes=%p\n",cd->wantedDestinationPixelTypes);
+     if(cd->wantedDestinationPixelTypes){
+-	unsigned int* p=cd->wantedDestinationPixelTypes;
++	unsigned int* p=(unsigned int *)cd->wantedDestinationPixelTypes;
+ 	while(p[0]){
+ 	    printf("  0x%08X %p\n",p[0],&p[0]);
+ 	    ++p;
+--- a/mp_msg.c
++++ b/mp_msg.c
+@@ -70,7 +70,7 @@ const char* filename_recode(const char* filename)
+     filename_len = strlen(filename);
+     max_path = MSGSIZE_MAX - 4;
+     precoded = recoded_filename;
+-    if (iconv(inv_msgiconv, &filename, &filename_len,
++    if (iconv(inv_msgiconv, (char ** restrict)&filename, &filename_len,
+               &precoded, &max_path) == (size_t)(-1) && errno == E2BIG) {
+         precoded[0] = precoded[1] = precoded[2] = '.';
+         precoded += 3;
+--- a/mplayer.c
++++ b/mplayer.c
+@@ -3536,7 +3536,7 @@ goto_enable_cache:
+                 break;
+             if ((mpctx->demuxer->file_format == DEMUXER_TYPE_AVI || mpctx->demuxer->file_format == DEMUXER_TYPE_ASF || mpctx->demuxer->file_format == DEMUXER_TYPE_MOV)
+                 && stream_dump_type == 2)
+-                stream_write_buffer(os, &in_size, 4);
++                stream_write_buffer(os, (unsigned char *)&in_size, 4);
+             if (in_size > 0) {
+                 stream_write_buffer(os, start, in_size);
+                 stream_dump_progress(in_size, mpctx->stream);
+--- a/sub/spudec.c
++++ b/sub/spudec.c
+@@ -899,7 +899,7 @@ static void sws_spu_image(unsigned char *d1, unsigned char *d2, int dw, int dh,
+ 	ctx=sws_getContext(sw, sh, AV_PIX_FMT_GRAY8, dw, dh, AV_PIX_FMT_GRAY8, SWS_GAUSS, &filter, NULL, NULL);
+ 	sws_scale(ctx,&s1,&ss,0,sh,&d1,&ds);
+ 	for (i=ss*sh-1; i>=0; i--) s2[i] = -s2[i];
+-	sws_scale(ctx,&s2,&ss,0,sh,&d2,&ds);
++	sws_scale(ctx,(const uint8_t * const*)&s2,&ss,0,sh,&d2,&ds);
+ 	for (i=ds*dh-1; i>=0; i--) d2[i] = -d2[i];
+ 	sws_freeContext(ctx);
+ }
+--- a/sub/sub.c
++++ b/sub/sub.c
+@@ -727,7 +727,7 @@ static inline void vo_update_text_sub(mp_osd_obj_t *obj, int dxs, int dys)
+ 	    // reading the subtitle words from vo_sub->text[]
+           while (*t) {
+             if (sub_utf8)
+-              c = utf8_get_char(&t);
++              c = utf8_get_char((const char **)&t);
+             else if ((c = *t++) >= 0x80 && sub_unicode)
+               c = (c<<8) + *t++;
+ 	      if (k==MAX_UCS){

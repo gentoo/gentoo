@@ -11,7 +11,7 @@ SRC_URI="https://github.com/wofr06/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="test"
 
 # Please check again on bumps! (bug #734896)
@@ -50,6 +50,7 @@ src_install() {
 	#   . /usr/share/bash-completion/less_completion
 	#   Or consider installing the file less_completion in /etc/bashcompletion.d
 	rm "${ED}"/usr/share/bash-completion/less_completion || die
+	rmdir "${ED}"/usr/share/bash-completion || die
 	insinto /etc/bash_completion.d
 	doins less_completion
 }

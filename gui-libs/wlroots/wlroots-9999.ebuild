@@ -11,7 +11,7 @@ HOMEPAGE="https://gitlab.freedesktop.org/wlroots/wlroots"
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/${PN}/${PN}.git"
 	inherit git-r3
-	SLOT="0.18"
+	SLOT="0.19"
 else
 	SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/releases/${PV}/downloads/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
@@ -28,22 +28,22 @@ REQUIRED_USE="
 "
 
 DEPEND="
-	>=dev-libs/wayland-1.22.0
+	>=dev-libs/wayland-1.23.0
 	media-libs/libglvnd
 	|| (
 		>=media-libs/mesa-24.1.0_rc1[opengl]
 		<media-libs/mesa-24.1.0_rc1[egl(+),gles2]
 	)
-	>=x11-libs/libdrm-2.4.120
+	>=x11-libs/libdrm-2.4.122
 	x11-libs/libxkbcommon
 	>=x11-libs/pixman-0.42.0
 	drm? (
-		media-libs/libdisplay-info
+		media-libs/libdisplay-info:=
 		sys-apps/hwdata
 		liftoff? ( >=dev-libs/libliftoff-0.4 )
 	)
 	lcms? ( media-libs/lcms:2 )
-	libinput? ( >=dev-libs/libinput-1.14.0:= )
+	libinput? ( >=dev-libs/libinput-1.19.0:= )
 	session? (
 		sys-auth/seatd:=
 		virtual/libudev
@@ -68,7 +68,7 @@ RDEPEND="
 	${DEPEND}
 "
 BDEPEND="
-	>=dev-libs/wayland-protocols-1.33
+	>=dev-libs/wayland-protocols-1.35
 	dev-util/wayland-scanner
 	virtual/pkgconfig
 "

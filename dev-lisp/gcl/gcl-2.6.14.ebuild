@@ -27,6 +27,7 @@ DEPEND="${RDEPEND}
 	>=dev-build/autoconf-2.52"
 
 src_configure() {
+	filter-lto # bug #931082
 	strip-flags
 	filter-flags -fstack-protector -fstack-protector-all
 	# breaks linking on multiple defined syms

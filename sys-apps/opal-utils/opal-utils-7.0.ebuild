@@ -1,37 +1,37 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit linux-info python-single-r1 systemd toolchain-funcs
 
 DESCRIPTION="OPAL firmware utilities"
 HOMEPAGE="https://github.com/open-power/skiboot"
 SRC_URI="https://github.com/open-power/skiboot/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/skiboot-${PV}"
 
 LICENSE="Apache-2.0 GPL-2+"
 SLOT="0"
 KEYWORDS="ppc64"
 IUSE="doc"
-
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND=""
-RDEPEND="${DEPEND} ${PYTHON_DEPS}"
-
-BDEPEND="doc? ( $(python_gen_cond_dep '
-	dev-python/sphinx[${PYTHON_USEDEP}]
-	dev-python/recommonmark[${PYTHON_USEDEP}]')
-)"
+RDEPEND="${PYTHON_DEPS}"
+BDEPEND="
+	doc? (
+		$(python_gen_cond_dep '
+			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/recommonmark[${PYTHON_USEDEP}]'
+		)
+	)
+"
 
 CONFIG_CHECK="~MTD_POWERNV_FLASH ~OPAL_PRD ~PPC_DT_CPU_FTRS ~SCOM_DEBUGFS"
 ERROR_MTD_POWERND_FLASH="CONFIG_MTD_POWERND_FLASH is required to use pflash and opal-gard"
 ERROR_OPAL_PRD="CONFIG_OPAL_PRD is required to run opal-prd daemon"
 ERROR_SCOM_DEBUGFS="CONFIG_SCOM_DEBUGFS is required to use xscom-utils"
-
-S="${WORKDIR}/skiboot-${PV}"
 
 PATCHES=(
 	"${FILESDIR}/flags.patch"
@@ -61,6 +61,17 @@ src_compile() {
 	use doc && emake V=1 -C doc html
 }
 
+src_test() {
+	emake V=1 -C external/opal-prd test
+	emake V=1 -C external/gard check
+
+	# 2 test are fragile and fails because of filename path
+	rm -v external/pflash/test/tests/01-info || die
+	rm -v external/pflash/test/tests/06-miscprint || die
+	emake V=1 -C external/pflash check
+	emake V=1 -C external/ffspart check
+}
+
 src_install() {
 	emake -C external/opal-prd DESTDIR="${D}" prefix="${EPREFIX}/usr" install
 	emake -C external/gard DESTDIR="${D}" prefix="${EPREFIX}/usr" install
@@ -81,15 +92,4 @@ src_install() {
 		local HTML_DOCS=( doc/_build/html/. )
 	fi
 	einstalldocs
-}
-
-src_test() {
-	emake V=1 -C external/opal-prd test
-	emake V=1 -C external/gard check
-
-	# 2 test are fragile and fails because of filename path
-	rm -v external/pflash/test/tests/01-info || die
-	rm -v external/pflash/test/tests/06-miscprint || die
-	emake V=1 -C external/pflash check
-	emake V=1 -C external/ffspart check
 }

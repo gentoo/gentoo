@@ -17,11 +17,13 @@
 		<flag name="hsts">Enable HTTP Strict Transport Security</flag>
 		<flag name="imap">Enable Internet Message Access Protocol support</flag>
 		<flag name="mbedtls">Enable mbedtls ssl backend</flag>
-		<flag name="nghttp3">Enable HTTP/3.0 support using <pkg>net-libs/nghttp3</pkg> and <pkg>net-libs/ngtcp2</pkg></flag>
+		<flag name="nghttp3">Enable HTTP/3 support using <pkg>net-libs/nghttp3</pkg></flag>
+		<flag name="http3">Enable HTTP/3 support</flag>
 		<flag name="openssl">Enable openssl ssl backend</flag>
 		<flag name="pop3">Enable Post Office Protocol 3 support</flag>
 		<flag name="progress-meter">Enable the progress meter</flag>
 		<flag name="psl">Enable Public Suffix List (PSL) support. See https://daniel.haxx.se/blog/2024/01/10/psl-in-curl/.</flag>
+		<flag name="quic">Enable support for QUIC (RFC 9000); a UDP-based protocol intended to replace TCP</flag>
 		<flag name="rtmp">Enable RTMP Streaming Media support</flag>
 		<flag name="rustls">Enable Rustls ssl backend</flag>
 		<flag name="smtp">Enable Simple Mail Transfer Protocol support</flag>

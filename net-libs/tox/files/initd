@@ -16,6 +16,8 @@ start() {
 	checkpath -d -q -o "${TOX_USER}":"${TOX_GROUP}" "${PIDDIR}"
 	checkpath -d -q -o "${TOX_USER}":"${TOX_GROUP}" "${KEYSDIR}"
 
+	set rc_ulimts 4096
+
 	start-stop-daemon --start \
 		--pidfile "${PIDFILE}" \
 		--user="${TOX_USER}" --group="${TOX_GROUP}" \

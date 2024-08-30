@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit python-any-r1 scons-utils toolchain-funcs
 
 DESCRIPTION="Real-time audio streaming over the network"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/roc-streaming/roc-toolkit/archive/refs/tags/v${PV}.t
 
 LICENSE="MPL-2.0"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="alsa llvm-libunwind pulseaudio sox sndfile ssl tools test unwind"
 RESTRICT="!test? ( test )"
 

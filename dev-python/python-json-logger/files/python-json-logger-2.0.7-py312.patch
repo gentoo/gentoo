@@ -1,0 +1,38 @@
+From 0ce621a8dd9dfa708a920c0ad90df8f7593b6110 Mon Sep 17 00:00:00 2001
+From: cache-miss <cache-miss>
+Date: Sat, 9 Mar 2024 18:27:24 +0800
+Subject: [PATCH] add taskName to reserved_attrs which was added in python 3.12
+
+Closes: https://github.com/madzak/python-json-logger/pull/188
+---
+ src/pythonjsonlogger/jsonlogger.py | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/src/pythonjsonlogger/jsonlogger.py b/src/pythonjsonlogger/jsonlogger.py
+index e250c7e..a911478 100644
+--- a/src/pythonjsonlogger/jsonlogger.py
++++ b/src/pythonjsonlogger/jsonlogger.py
+@@ -6,6 +6,7 @@ import logging
+ import json
+ import re
+ from datetime import date, datetime, time, timezone
++import sys
+ import traceback
+ import importlib
+ 
+@@ -23,6 +24,12 @@ RESERVED_ATTRS: Tuple[str, ...] = (
+     'msecs', 'message', 'msg', 'name', 'pathname', 'process',
+     'processName', 'relativeCreated', 'stack_info', 'thread', 'threadName')
+ 
++if sys.version_info >= (3, 12):
++    RESERVED_ATTRS = (
++        *RESERVED_ATTRS,
++        "taskName",
++    )
++
+ 
+ 
+ def merge_record_extra(
+-- 
+2.45.2
+

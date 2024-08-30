@@ -11,7 +11,7 @@ DESCRIPTION="Check what OS we're running on"
 
 LICENSE="GPL-2 Artistic Artistic-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ia64 ppc sparc x86"
 
 RDEPEND="
 	>=dev-perl/File-Find-Rule-0.280.0

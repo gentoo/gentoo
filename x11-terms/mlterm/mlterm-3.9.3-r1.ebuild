@@ -12,7 +12,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 ~riscv x86"
-IUSE="+X bidi brltty cairo debug fbcon fcitx freewnn gtk harfbuzz ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter wayland xft"
+IUSE="+X bidi brltty cairo debug fbcon fcitx gtk harfbuzz ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter wayland xft"
 REQUIRED_USE="|| ( X fbcon wayland )"
 
 RDEPEND="virtual/libcrypt:=
@@ -26,7 +26,6 @@ RDEPEND="virtual/libcrypt:=
 	cairo? ( x11-libs/cairo[X(+)] )
 	fbcon? ( media-fonts/unifont )
 	fcitx? ( app-i18n/fcitx:* )
-	freewnn? ( app-i18n/freewnn )
 	gtk? ( x11-libs/gtk+:3 )
 	harfbuzz? ( media-libs/harfbuzz[truetype(+)] )
 	ibus? ( app-i18n/ibus )
@@ -80,7 +79,7 @@ src_configure() {
 		$(use_enable brltty brlapi)
 		$(use_enable debug)
 		$(use_enable fcitx)
-		$(use_enable freewnn wnn)
+		--disable-wnn
 		$(use_enable harfbuzz otl)
 		$(use_enable ibus)
 		$(use_enable libssh2 ssh2)

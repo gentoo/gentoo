@@ -1,14 +1,23 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-06-23)
-# Pulls in kde-apps/kgpg is keyworded here
->=kde-apps/kdeutils-meta-24.05.1 -gpg
+# orbea <orbea@riseup.net> (2024-07-19)
+# Unmask the dynarec flag which has arm64 asm.
+games-emulation/rmg -dynarec
 
-# Sam James <sam@gentoo.org> (2024-06-13)
-# Needs as-yet-unkeyworded KF6 (bug #934215)
-app-crypt/pinentry qt6
-app-office/libreoffice qt6
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-07-16)
+# Unmask the ugrd flag for installkernel. It is keyworded here
+sys-kernel/installkernel -ugrd
+
+# matoro <matoro_gentoo@matoro.tk> (2024-07-14)
+# Abandoned upstream, does not take bug reports, unsupported in Gentoo.
+# Only remaining use is as a requirement for dev-lang/go on arm{,64}.
+# See #934149, #934151, #936022, #936021
+sys-devel/binutils -gold
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-06-23)
+# Pulls in kde-apps/kgpg which is keyworded here
+>=kde-apps/kdeutils-meta-24.05.1 -gpg
 
 # Ionen Wolkens <ionen@gentoo.org> (2024-05-19)
 # jit is supported here
@@ -86,6 +95,7 @@ dev-libs/botan -cpu_flags_arm_neon
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
 # sys-apps/s6-linux-init has not been tested on this arch
 sys-apps/openrc s6
+sys-apps/openrc-navi s6
 
 # Jon Janzen <jon@jonjanzen.com> (2023-09-11)
 # librttopo has not been tested on this arch

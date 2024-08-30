@@ -1,6 +1,14 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-08-26)
+# media-libs/libheif is not keyworded here
+heif
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-08-26)
+# media-libs/libjxl is not keyworded here
+jpegxl
+
 # Unmask the flag which corresponds to ARCH.
 -mips
 
@@ -81,7 +89,6 @@ cblas-external
 
 # Samuli Suominen <ssuominen@gentoo.org>
 # Media cannot be tested for MIPS at the moment.
-# media-libs/libmpeg3
 # media-libs/portaudio
 # dev-libs/libcdio
 # media-libs/musicbrainz

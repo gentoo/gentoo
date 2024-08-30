@@ -29,10 +29,8 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/packaging[${PYTHON_USEDEP}]
+		>=dev-python/pydantic-2.4.2[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			>=dev-python/pydantic-2.4.2[${PYTHON_USEDEP}]
-		' 3.{10..12})
 	)
 "
 

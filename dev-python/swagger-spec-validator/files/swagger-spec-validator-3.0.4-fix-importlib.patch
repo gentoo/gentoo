@@ -1,0 +1,22 @@
+--- a/swagger_spec_validator/common.py
++++ b/swagger_spec_validator/common.py
+@@ -12,7 +12,7 @@ from urllib.parse import urljoin
+ from urllib.request import pathname2url
+ from urllib.request import urlopen
+ 
+-import importlib_resources
++import importlib.resources as importlib_resources
+ import yaml
+ from typing_extensions import ParamSpec
+ 
+--- a/tests/common_test.py
++++ b/tests/common_test.py
+@@ -1,7 +1,7 @@
+ import uuid
+ from unittest import mock
+ 
+-import importlib_resources
++import importlib.resources as importlib_resources
+ 
+ from swagger_spec_validator.common import read_file
+ from swagger_spec_validator.common import read_resource_file

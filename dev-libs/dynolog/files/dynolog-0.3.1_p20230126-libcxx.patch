@@ -1,0 +1,13 @@
+dynolog mixes high_resolution_clock with system_clock, which is not allowed
+Upstream PR: https://github.com/facebookincubator/dynolog/pull/276
+--- a/hbt/src/common/Defs.h
++++ b/hbt/src/common/Defs.h
+@@ -40,7 +40,7 @@ template <class TStream>
+ TStream& LogCtxt(TStream& oss) {
+   oss << "pid: " << gettid() << " on ";
+   // Put date and time.
+-  auto p = std::chrono::high_resolution_clock::now();
++  auto p = std::chrono::system_clock::now();
+   auto t_c = std::chrono::system_clock::to_time_t(p);
+   oss << std::put_time(std::localtime(&t_c), "%F %T");
+   // Put microseconds.

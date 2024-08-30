@@ -14,15 +14,10 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
 	inherit git-r3
 else
-	if [[ ${PV} == *.* ]]; then
-		MY_PN=systemd-stable
-	else
-		MY_PN=systemd
-	fi
 	MY_PV=${PV/_/-}
-	MY_P=${MY_PN}-${MY_PV}
+	MY_P=${PN}-${MY_PV}
 	S=${WORKDIR}/${MY_P}
-	SRC_URI="https://github.com/systemd/${MY_PN}/archive/v${MY_PV}/${MY_P}.tar.gz"
+	SRC_URI="https://github.com/systemd/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 
 	if [[ ${PV} != *rc* ]] ; then
 		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
@@ -33,12 +28,12 @@ inherit bash-completion-r1 linux-info meson-multilib optfeature pam python-singl
 inherit secureboot systemd toolchain-funcs udev
 
 DESCRIPTION="System and service manager for Linux"
-HOMEPAGE="http://systemd.io/"
+HOMEPAGE="https://systemd.io/"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
 IUSE="
-	acl apparmor audit boot cgroup-hybrid cryptsetup curl +dns-over-tls elfutils
+	acl apparmor audit boot bpf cgroup-hybrid cryptsetup curl +dns-over-tls elfutils
 	fido2 +gcrypt gnutls homed http idn importd iptables +kernel-install +kmod
 	+lz4 lzma +openssl pam pcre pkcs11 policykit pwquality qrcode
 	+resolvconf +seccomp selinux split-usr +sysv-utils test tpm ukify vanilla xkb +zstd
@@ -139,6 +134,7 @@ RDEPEND="${COMMON_DEPEND}
 	)
 	sysv-utils? (
 		!sys-apps/openrc[sysv-utils(-)]
+		!sys-apps/openrc-navi[sysv-utils(-)]
 		!sys-apps/sysvinit
 	)
 	!sysv-utils? ( sys-apps/sysvinit )
@@ -162,6 +158,10 @@ BDEPEND="
 	>=sys-apps/coreutils-8.16
 	sys-devel/gettext
 	virtual/pkgconfig
+	bpf? (
+		dev-util/bpftool
+		sys-devel/bpf-toolchain
+	)
 	test? (
 		app-text/tree
 		dev-lang/perl
@@ -185,12 +185,38 @@ BDEPEND="
 QA_FLAGS_IGNORED="usr/lib/systemd/boot/efi/.*"
 QA_EXECSTACK="usr/lib/systemd/boot/efi/*"
 
+check_cgroup_layout() {
+	# https://bugs.gentoo.org/935261
+	[[ ${MERGE_TYPE} != buildonly ]] || return
+	[[ -z ${ROOT} ]] || return
+	[[ -e /sys/fs/cgroup/unified ]] || return
+	grep -q 'SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE=1' /proc/cmdline && return
+
+	eerror "This system appears to be booted with the 'hybrid' cgroup layout."
+	eerror "This layout obsolete and is disabled in systemd."
+
+	if grep -qF 'systemd.unified_cgroup_hierarchy'; then
+		eerror "Remove the systemd.unified_cgroup_hierarchy option"
+		eerror "from the kernel command line and reboot."
+		die "hybrid cgroup layout detected"
+	fi
+}
+
 pkg_pretend() {
 	if use split-usr; then
 		eerror "Please complete the migration to merged-usr."
 		eerror "https://wiki.gentoo.org/wiki/Merge-usr"
 		die "systemd no longer supports split-usr"
 	fi
+
+	check_cgroup_layout
+
+	if use cgroup-hybrid; then
+		eerror "Disable the 'cgroup-hybrid' USE flag."
+		eerror "Rebuild any initramfs images after rebuilding systemd."
+		die "cgroup-hybrid is no longer supported"
+	fi
+
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
 		local CONFIG_CHECK="~BLK_DEV_BSG ~CGROUPS
 			~CGROUP_BPF ~DEVTMPFS ~EPOLL ~FANOTIFY ~FHANDLE
@@ -201,6 +227,7 @@ pkg_pretend() {
 			~!SYSFS_DEPRECATED_V2"
 
 		use acl && CONFIG_CHECK+=" ~TMPFS_POSIX_ACL"
+		use bpf && CONFIG_CHECK+=" ~BPF ~BPF_SYSCALL ~BPF_LSM ~DEBUG_INFO_BTF"
 		use seccomp && CONFIG_CHECK+=" ~SECCOMP ~SECCOMP_FILTER"
 
 		if kernel_is -ge 5 10 20; then
@@ -250,7 +277,6 @@ src_prepare() {
 
 	if ! use vanilla; then
 		PATCHES+=(
-			"${FILESDIR}/gentoo-generator-path-r2.patch"
 			"${FILESDIR}/gentoo-journald-audit-r1.patch"
 		)
 	fi
@@ -282,7 +308,6 @@ multilib_src_configure() {
 		-Dsysvrcnd-path=
 		# no deps
 		-Dima=true
-		-Ddefault-hierarchy=$(usex cgroup-hybrid hybrid unified)
 		# Match /etc/shells, bug 919749
 		-Ddebug-shell="${EPREFIX}/bin/sh"
 		-Ddefault-user-shell="${EPREFIX}/bin/bash"
@@ -291,6 +316,8 @@ multilib_src_configure() {
 		$(meson_native_use_bool apparmor)
 		$(meson_native_use_bool audit)
 		$(meson_native_use_bool boot bootloader)
+		$(meson_native_use_bool bpf bpf-framework)
+		-Dbpf-compiler=gcc
 		$(meson_native_use_bool cryptsetup libcryptsetup)
 		$(meson_native_use_bool curl libcurl)
 		$(meson_native_use_bool dns-over-tls dns-over-tls)
@@ -349,8 +376,15 @@ multilib_src_configure() {
 		$(meson_native_true timesyncd)
 		$(meson_native_true tmpfiles)
 		$(meson_native_true vconsole)
-		$(meson_native_enabled vmspawn)
 	)
+
+	case $(tc-arch) in
+		amd64|arm|arm64|loong|ppc|ppc64|riscv|s390|x86)
+			# src/vmspawn/vmspawn-util.h: QEMU_MACHINE_TYPE
+			myconf+=( $(meson_native_enabled vmspawn) ) ;;
+		*)
+			myconf+=( -Dvmspawn=disabled ) ;;
+	esac
 
 	meson_src_configure "${myconf[@]}"
 }
@@ -502,6 +536,11 @@ pkg_postinst() {
 		ebegin "Reexecuting system manager (systemd)"
 		systemctl daemon-reexec
 		eend $? || FAIL=1
+
+		# https://lists.freedesktop.org/archives/systemd-devel/2024-June/050466.html
+		ebegin "Signaling user managers to reexec"
+		systemctl kill --kill-whom='main' --signal='SIGRTMIN+25' 'user@*.service'
+		eend $?
 	fi
 
 	if [[ ${FAIL} ]]; then

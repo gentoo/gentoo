@@ -1,0 +1,15 @@
+# https://sourceforge.net/p/dunelegacy/bugs/75/#12bf
+
+    Fix flickering in the game
+
+--- a/src/Game.cpp
++++ b/src/Game.cpp
+@@ -1094,8 +1094,6 @@ void Game::runMainLoop() {
+ 
+         drawScreen();
+ 
+-        SDL_RenderPresent(renderer);
+-
+         SDL_SetRenderTarget(renderer, nullptr);
+         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+         SDL_RenderClear(renderer);

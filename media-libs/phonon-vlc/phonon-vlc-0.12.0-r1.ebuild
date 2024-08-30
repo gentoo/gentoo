@@ -11,7 +11,7 @@ HOMEPAGE="https://community.kde.org/Phonon"
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/phonon/phonon-backend-vlc/${PV}/phonon-backend-vlc-${PV}.tar.xz"
 	S="${WORKDIR}"/phonon-backend-vlc-${PV}
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
 fi
 
 LICENSE="LGPL-2.1+ || ( LGPL-2.1 LGPL-3 )"
@@ -32,15 +32,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	dev-libs/libpcre2:*
+	>=kde-frameworks/extra-cmake-modules-5.115.0:*
 	virtual/pkgconfig
-	qt5? (
-		dev-qt/linguist-tools:5
-		>=kde-frameworks/extra-cmake-modules-5.115.0:*
-	)
-	qt6? (
-		dev-qt/qttools:6[linguist]
-		>=kde-frameworks/extra-cmake-modules-6.0.0:*
-	)
+	qt5? ( dev-qt/linguist-tools:5 )
+	qt6? ( dev-qt/qttools:6[linguist] )
 "
 
 pkg_setup() {

@@ -84,7 +84,7 @@ multilib_src_configure() {
 	)
 
 	# https://git.lysator.liu.se/nettle/nettle/-/issues/7
-	if use cpu_flags_ppc_altivec && ! tc-cpp-is-true "defined(__VSX__) && __VSX__ == 1" "${CPPFLAGS}" "${CFLAGS}" ; then
+	if use cpu_flags_ppc_altivec && ! tc-cpp-is-true "defined(__VSX__) && __VSX__ == 1" ${CPPFLAGS} ${CFLAGS} ; then
 		ewarn "cpu_flags_ppc_altivec is enabled, but nettle's asm requires >=P7."
 		ewarn "Disabling, sorry! See bug #920234."
 		myeconfargs+=( --disable-power-altivec )

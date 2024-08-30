@@ -13,4 +13,7 @@
 		"Swiss Army Knife SMTP; Command line SMTP testing, including TLS and
 		AUTH" - a full-featured Perl script for testing SMTP servers.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">jetmore/swaks</remote-id>
+	</upstream>
 </pkgmetadata>

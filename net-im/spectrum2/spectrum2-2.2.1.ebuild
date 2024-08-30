@@ -58,6 +58,11 @@ DEPEND="
 	test? ( dev-util/cppunit )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.2.1-boost-1.85.patch
+	"${FILESDIR}"/${PN}-2.2.1-use-c++14.patch
+)
+
 src_prepare() {
 	# Respect users LDFLAGS
 	sed -i -e "s/-Wl,-export-dynamic/& ${LDFLAGS}/" spectrum/src/CMakeLists.txt || die

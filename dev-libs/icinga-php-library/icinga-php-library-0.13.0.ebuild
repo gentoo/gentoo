@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,11 +10,10 @@ SRC_URI="https://github.com/${MY_GITHUB_AUTHOR}/${PN}/archive/refs/tags/v${PV}.t
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 DEPEND="dev-lang/php:*"
 RDEPEND="${DEPEND}"
-BDEPEND=""
 
 src_install() {
 	insinto "/usr/share/icinga-php/ipl"

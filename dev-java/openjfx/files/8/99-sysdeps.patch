@@ -1,5 +1,3 @@
-diff --git a/build.gradle b/build.gradle
-index 0914d7d..6bd9e78 100644
 --- a/build.gradle
 +++ b/build.gradle
 @@ -1309,6 +1309,7 @@ project(":graphics") {
@@ -10,8 +8,6 @@ index 0914d7d..6bd9e78 100644
      }
  
      // Create a single "native" task which will depend on all the individual native tasks for graphics
-diff --git a/buildSrc/build.gradle b/buildSrc/build.gradle
-index 25f88d1..642450d 100644
 --- a/buildSrc/build.gradle
 +++ b/buildSrc/build.gradle
 @@ -82,10 +82,13 @@ getConfigurations().create("antlr3");

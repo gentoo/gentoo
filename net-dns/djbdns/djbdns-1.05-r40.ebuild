@@ -14,7 +14,7 @@ SRC_URI="https://cr.yp.to/djbdns/${P}.tar.gz
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ~mips ppc ppc64 sparc x86"
 IUSE="ipv6 selinux"
 
 RDEPEND="

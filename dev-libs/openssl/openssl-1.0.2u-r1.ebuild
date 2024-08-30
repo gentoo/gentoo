@@ -22,17 +22,13 @@ MY_P=${P/_/-}
 BINDIST_PATCH_SET="openssl-1.0.2t-bindist-1.0.tar.xz"
 
 DESCRIPTION="full-strength general purpose cryptography library (including SSL and TLS)"
-HOMEPAGE="https://www.openssl.org/"
+HOMEPAGE="https://openssl-library.org/"
 SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
 	bindist? (
-		mirror://gentoo/${BINDIST_PATCH_SET}
-		https://dev.gentoo.org/~whissi/dist/openssl/${BINDIST_PATCH_SET}
+		mirror://gentoo/bb/${BINDIST_PATCH_SET}
 	)
 	!vanilla? (
-		mirror://gentoo/${PATCH_SET}.tar.xz
 		https://dev.gentoo.org/~chutzpah/dist/${PN}/${PATCH_SET}.tar.xz
-		https://dev.gentoo.org/~whissi/dist/${PN}/${PATCH_SET}.tar.xz
-		https://dev.gentoo.org/~polynomial-c/dist/${PATCH_SET}.tar.xz
 	)"
 
 LICENSE="openssl"

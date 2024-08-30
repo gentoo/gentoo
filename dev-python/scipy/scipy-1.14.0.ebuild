@@ -6,10 +6,10 @@ EAPI=8
 FORTRAN_NEEDED=fortran
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=meson-python
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit fortran-2 distutils-r1
+inherit flag-o-matic fortran-2 distutils-r1
 
 DESCRIPTION="Scientific algorithms library for Python"
 HOMEPAGE="
@@ -37,7 +37,7 @@ else
 		)"
 
 	if [[ ${PV} != *rc* ]] ; then
-		KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+		KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv ~s390 ~sparc x86"
 	fi
 fi
 
@@ -67,7 +67,7 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-arch/unzip )
 	fortran? (
-		>=dev-python/pythran-0.14.0[${PYTHON_USEDEP}]
+		>=dev-python/pythran-0.16.0[${PYTHON_USEDEP}]
 	)
 	test? (
 		>=dev-python/hypothesis-6.30[${PYTHON_USEDEP}]
@@ -95,17 +95,8 @@ python_configure_all() {
 		-Duse-pythran=$(usex fortran true false)
 	)
 
-	# hide real scipy, to prevent pythran crashing when scipy is being
-	# rebuilt for new numpy ABI
-	# https://github.com/serge-sans-paille/pythran/issues/2194
-	cat >> "${T}/scipy.py" <<-EOF || die
-		raise ImportError("hide real scipy")
-	EOF
-}
-
-python_compile() {
-	local -x PYTHONPATH="${T}${PYTHONPATH+:${PYTHONPATH}}"
-	distutils-r1_python_compile
+	# https://bugs.gentoo.org/932721
+	has_version '>=dev-python/numpy-2.0.0' && filter-lto
 }
 
 python_test() {
@@ -155,6 +146,12 @@ python_test() {
 				'scipy/sparse/tests/test_dok.py::test_dunder_ror[dok_matrix]'
 				# mismatched exception message
 				scipy/optimize/tests/test_hessian_update_strategy.py::TestHessianUpdateStrategy::test_initialize_catch_illegal
+			)
+			;;
+		python3.13)
+			EPYTEST_DESELECT+=(
+				# docstring formatting
+				scipy/misc/tests/test_doccer.py::test_decorator
 			)
 			;;
 	esac

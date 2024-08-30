@@ -16,9 +16,10 @@
 	<use>
 		<flag name="brotli">Enable output compression via <pkg>app-arch/brotli</pkg> (recommended)</flag>
 		<flag name="gnutls">Build module for TLS via <pkg>net-libs/gnutls</pkg></flag>
+		<flag name="libdeflate">Enable output compression via <pkg>app-arch/libdeflate</pkg></flag>
 		<flag name="maxminddb">Add support for geolocation using <pkg>dev-libs/libmaxminddb</pkg></flag>
 		<flag name="mbedtls">Build module for TLS via <pkg>net-libs/mbedtls</pkg></flag>
-		<flag name="nettle">Use <pkg>dev-libs/nettle</pkg> as crypto backend</flag>
+		<flag name="nettle">Use <pkg>dev-libs/nettle</pkg> as crypto library</flag>
 		<flag name="nss">Build module for TLS via Mozilla's Network Security Services</flag>
 		<flag name="webdav">Enable webdav properties</flag>
 		<flag name="zlib">Enable output compression via gzip or deflate algorithms from <pkg>sys-libs/zlib</pkg></flag>

@@ -1,6 +1,41 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2024-07-27)
+# Additional entries exposed by correcting musl, #936643
+x11-wm/xpra crypt oauth
+>=x11-wm/xpra-6.0.1-r1 test
+x11-misc/gpaste introspection gnome
+www-servers/servefile ssl
+sys-block/tgt rbd
+sci-physics/root jupyter
+sci-libs/branca doc test
+net-vpn/eduvpn-client doc
+net-misc/httpie test
+net-dns/dnsdist doh3 quic
+net-analyzer/linkchecker test
+x11-themes/arc-theme cinnamon
+dev-python/xdoctest test
+dev-python/stripe test
+dev-python/respx test
+dev-python/python-swiftclient test
+dev-python/pypdf test
+dev-python/oct2py test
+dev-python/octave-kernel test
+dev-python/markups test
+dev-python/keyrings-alt test
+sci-mathematics/cadabra jupyter
+sci-mathematics/yacas jupyter
+dev-python/metakernel test
+dev-python/elastic-transport test
+dev-python/genson test
+dev-python/construct test
+dev-db/barman test
+app-emulation/libvirt rbd virtiofsd
+app-misc/gramps test
+app-forensics/volatility3 jsonschema
+app-emulation/libguestfs test
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-19)
 # Requires dev-python/cryptography
 sys-kernel/installkernel efistub
@@ -196,7 +231,9 @@ dev-vcs/mercurial rust
 
 # Joonas Niilola <juippis@gentoo.org> (2020-10-02)
 # Sam James <sam@gentoo.org> (2021-03-11)
+# Michael Orlitzky <mjo@gentoo.org> (2024-07-09)
 # Dependency only keyworded on specific ${arch} profiles.
+>=dev-lang/php-8.3.9 avif
 dev-libs/efl avif
 kde-frameworks/kimageformats avif
 media-libs/gd avif

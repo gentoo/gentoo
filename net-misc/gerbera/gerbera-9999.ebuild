@@ -56,9 +56,9 @@ src_configure() {
 		-DWITH_EXIF=$(usex exif)
 		-DWITH_EXIV2=$(usex exiv2)
 		-DWITH_FFMPEGTHUMBNAILER=$(usex ffmpegthumbnailer)
-		-DWITH_INOTIFY=1
+		-DWITH_INOTIFY=ON
 		-DWITH_JS=$(usex javascript)
-		-DWITH_LASTFM=NO
+		-DWITH_LASTFM=OFF
 		-DWITH_MAGIC=$(usex magic)
 		-DWITH_MATROSKA=$(usex matroska)
 		-DWITH_MYSQL=$(usex mysql)

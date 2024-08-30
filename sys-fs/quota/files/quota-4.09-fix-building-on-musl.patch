@@ -1,0 +1,187 @@
+https://sourceforge.net/p/linuxquota/code/ci/e73c5b48e12c3f02e532864a1107cdc8a4feafc3/
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Sun, 14 Jul 2024 07:58:50 +0000
+Subject: [PATCH 1/1] Fix building on musl
+
+basename(3) is defined in libgen.h in MUSL. Include libgen.h where
+basename(3) is used.
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+Signed-off-by: Jan Kara <jack@suse.cz>
+--- a/convertquota.c
++++ b/convertquota.c
+@@ -14,6 +14,7 @@
+ #include <fcntl.h>
+ #include <errno.h>
+ #include <getopt.h>
++#include <libgen.h>
+ 
+ #include <endian.h>
+ 
+--- a/edquota.c
++++ b/edquota.c
+@@ -20,6 +20,7 @@
+ #include <stdlib.h>
+ #include <fcntl.h>
+ #include <getopt.h>
++#include <libgen.h>
+ 
+ #include "pot.h"
+ #include "quotaops.h"
+@@ -38,7 +39,7 @@ char *progname;
+ static int flags, quotatype;
+ static int fmt = -1;
+ static char *protoname;
+-static char *dirname;
++static char *dir_name;
+ 
+ static void usage(void)
+ {
+@@ -138,7 +139,7 @@ static int parse_options(int argc, char **argv)
+ 				  exit(1);
+ 			  break;
+ 		  case 'f':
+-			  dirname = optarg;
++			  dir_name = optarg;
+ 			  break;
+ 		  case 256:
+ 			  flags |= FL_NUMNAMES;
+@@ -176,7 +177,7 @@ static void copy_prototype(int argc, char **argv, struct quota_handle **handles)
+ 	protoprivs = getprivs(protoid, handles, 0);
+ 	while (argc-- > 0) {
+ 		id = name2id(*argv, quotatype, !!(flags & FL_NUMNAMES), NULL);
+-		curprivs = getprivs(id, handles, !dirname);
++		curprivs = getprivs(id, handles, !dir_name);
+ 		if (!curprivs)
+ 			die(1, _("Cannot get quota information for user %s\n"), *argv);
+ 		argv++;
+@@ -223,7 +224,7 @@ int main(int argc, char **argv)
+ 	argv += ret;
+ 
+ 	init_kernel_interface();
+-	handles = create_handle_list(dirname ? 1 : 0, dirname ? &dirname : NULL, quotatype, fmt,
++	handles = create_handle_list(dir_name ? 1 : 0, dir_name ? &dir_name : NULL, quotatype, fmt,
+ 			(flags & FL_NO_MIXED_PATHS) ? 0 : IOI_NFS_MIXED_PATHS,
+ 			(flags & FL_REMOTE) ? 0 : MS_LOCALONLY);
+ 	if (!handles[0]) {
+@@ -296,7 +297,7 @@ int main(int argc, char **argv)
+ 	else {
+ 		for (; argc > 0; argc--, argv++) {
+ 			id = name2id(*argv, quotatype, !!(flags & FL_NUMNAMES), NULL);
+-			curprivs = getprivs(id, handles, !dirname);
++			curprivs = getprivs(id, handles, !dir_name);
+ 			if (!curprivs)
+ 				die(1, _("Cannot get quota information for user %s.\n"), *argv);
+ 			if (flags & FL_EDIT_TIMES) {
+--- a/quota.c
++++ b/quota.c
+@@ -20,6 +20,7 @@
+ #include <unistd.h>
+ #include <limits.h>
+ #include <ctype.h>
++#include <libgen.h>
+ #ifdef RPC
+ #include <rpc/rpc.h>
+ #include "rquota.h"
+--- a/quota_nld.c
++++ b/quota_nld.c
+@@ -26,6 +26,7 @@
+ #include <fcntl.h>
+ #include <limits.h>
+ #include <signal.h>
++#include <libgen.h>
+ #include <sys/stat.h>
+ #include <asm/types.h>
+ 
+--- a/quotacheck.c
++++ b/quotacheck.c
+@@ -19,6 +19,7 @@
+ #include <unistd.h>
+ #include <stdlib.h>
+ #include <errno.h>
++#include <libgen.h>
+ 
+ #include <sys/stat.h>
+ #include <sys/types.h>
+--- a/quotaon.c
++++ b/quotaon.c
+@@ -13,6 +13,7 @@
+ #include <string.h>
+ #include <stdlib.h>
+ #include <stdarg.h>
++#include <libgen.h>
+ 
+ #include "quotaon.h"
+ #include "quota.h"
+--- a/quotastats.c
++++ b/quotastats.c
+@@ -24,6 +24,7 @@
+ #include <errno.h>
+ #include <string.h>
+ #include <signal.h>
++#include <libgen.h>
+ 
+ #include "pot.h"
+ #include "common.h"
+--- a/quotasync.c
++++ b/quotasync.c
+@@ -7,6 +7,7 @@
+ #include <string.h>
+ #include <errno.h>
+ #include <getopt.h>
++#include <libgen.h>
+ 
+ #include "pot.h"
+ #include "common.h"
+--- a/repquota.c
++++ b/repquota.c
+@@ -18,6 +18,7 @@
+ #include <pwd.h>
+ #include <grp.h>
+ #include <getopt.h>
++#include <libgen.h>
+ 
+ #include "pot.h"
+ #include "common.h"
+--- a/rquota_svc.c
++++ b/rquota_svc.c
+@@ -34,6 +34,7 @@
+ #include <signal.h>
+ #include <errno.h>
+ #include <netconfig.h>
++#include <libgen.h>
+ #ifdef HOSTS_ACCESS
+ #include <tcpd.h>
+ #include <netdb.h>
+--- a/setquota.c
++++ b/setquota.c
+@@ -18,6 +18,7 @@
+ #include <time.h>
+ #include <ctype.h>
+ #include <stdlib.h>
++#include <libgen.h>
+ 
+ #if defined(RPC)
+ #include "rquota.h"
+--- a/warnquota.c
++++ b/warnquota.c
+@@ -31,6 +31,7 @@
+ #include <time.h>
+ #include <getopt.h>
+ #include <locale.h>
++#include <libgen.h>
+ #ifdef HAVE_NL_LANGINFO
+ #include <langinfo.h>
+ #endif
+--- a/xqmstats.c
++++ b/xqmstats.c
+@@ -8,6 +8,7 @@
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <string.h>
++#include <libgen.h>
+ #include "common.h"
+ #include "pot.h"
+ 
+-- 
+2.45.2

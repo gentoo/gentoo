@@ -61,7 +61,7 @@ _LLVM_OLDEST_SLOT=15
 # @DESCRIPTION:
 # The newest stable LLVM version.  Versions newer than that won't
 # be automatically enabled via USE defaults.
-_LLVM_NEWEST_STABLE=17
+_LLVM_NEWEST_STABLE=18
 
 # == control variables ==
 
@@ -123,11 +123,16 @@ _llvm_set_globals() {
 	fi
 
 	if [[ ${stable[@]} ]]; then
+		# If there is at least one stable slot supported, then enable
+		# the newest stable slot by default.
 		IUSE="+llvm_slot_${stable[-1]}"
 		unset 'stable[-1]'
 	else
-		IUSE="+llvm_slot_${unstable[-1]}"
-		unset 'unstable[-1]'
+		# Otherwise, enable the "oldest" ~arch slot.  We really only
+		# expect a single ~arch version, so this primarily prevents
+		# defaulting to non-keyworded slots.
+		IUSE="+llvm_slot_${unstable[0]}"
+		unset 'unstable[0]'
 	fi
 	local nondefault=( "${stable[@]}" "${unstable[@]}" )
 	IUSE+=" ${nondefault[*]/#/llvm_slot_}"

@@ -18,7 +18,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-1.1 IBM"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 # Some failures, partly because we haven't patched Xerces but probably
 # also because this software is ancient. :(

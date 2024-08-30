@@ -11,25 +11,21 @@ inherit cmake elisp
 DESCRIPTION="Fully-featured terminal emulator based on libvterm"
 HOMEPAGE="https://github.com/akermu/emacs-libvterm/"
 
-if [[ "${PV}" == *9999* ]] ; then
-	inherit git-r3
-
-	EGIT_REPO_URI="https://github.com/akermu/${MY_PN}.git"
-else
-	if [[ "${PV}" = *_p20240102 ]] ; then
-		COMMIT=c3a3a23a5eace137947524c93644204bf6b56cff
-
-		SRC_URI="https://github.com/akermu/${MY_PN}/archive/${COMMIT}.tar.gz
+case ${PV} in
+	*9999*)
+		inherit git-r3
+		EGIT_REPO_URI="https://github.com/akermu/${MY_PN}.git"
+		;;
+	*_p20240705)
+		COMMIT=d9ea29fb10aed20512bd95dc5b8c1a01684044b1
+		;&			# fall through
+	*)
+		SRC_URI="https://github.com/akermu/${MY_PN}/archive/${COMMIT:-${PV}}.tar.gz
 			-> ${P}.tar.gz"
-		S="${WORKDIR}/${MY_PN}-${COMMIT}"
-	else
-		SRC_URI="https://github.com/akermu/${MY_PN}/archive/${PV}.tar.gz
-			-> ${P}.tar.gz"
-		S="${WORKDIR}/${MY_PN}-${PV}"
-	fi
-
-	KEYWORDS="~amd64 ~arm64 ~x86"
-fi
+		S="${WORKDIR}/${MY_PN}-${COMMIT:-${PV}}"
+		KEYWORDS="~amd64 ~arm64 ~x86"
+		;;
+esac
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -48,7 +44,7 @@ DOCS=( README.md )
 SITEFILE="50${PN}-gentoo.el"
 
 src_prepare() {
-	if [[ -e "${ESYSROOT}/usr/include/emacs-module.h" ]] ; then
+	if [[ -e ${ESYSROOT}/usr/include/emacs-module.h ]]; then
 		# Use system header file instead of bundled one.
 		rm emacs-module.h || die
 	else

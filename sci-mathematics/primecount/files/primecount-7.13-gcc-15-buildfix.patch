@@ -1,0 +1,30 @@
+From a4512db281754a487314b64fadf4537f4620396d Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Tue, 30 Jul 2024 16:19:25 -0400
+Subject: [PATCH] include/libdivide.h: backport gcc-15 fix
+
+This is commit 572d2408 to upstream libdivide, backported to the copy
+bundled with primecount. The issue is also fixed in primecount but
+won't arrive until v7.14.
+---
+ include/libdivide.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/libdivide.h b/include/libdivide.h
+index 3779ebd..7336efb 100644
+--- a/include/libdivide.h
++++ b/include/libdivide.h
+@@ -2015,8 +2015,8 @@ public:
+     }
+ 
+     bool operator==(const divider<T, ALGO>& other) const {
+-        return div.denom.magic == other.denom.magic &&
+-               div.denom.more == other.denom.more;
++        return div.denom.magic == other.div.denom.magic &&
++               div.denom.more == other.div.denom.more;
+     }
+ 
+     bool operator!=(const divider<T, ALGO>& other) const {
+-- 
+2.44.2
+

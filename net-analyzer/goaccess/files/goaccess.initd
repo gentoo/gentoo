@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 command="/usr/bin/goaccess"
@@ -7,6 +7,7 @@ name="GoAccess"
 description="Real-time web log analyzer"
 config="${CONFIG:-/etc/goaccess/goaccess.conf}"
 command_args="--real-time-html --daemonize -p $config ${OPTS}"
+pidfile="/run/goaccess/${RC_SVCNAME}.pid"
 start_stop_daemon_args="-q"
 
 depend() {

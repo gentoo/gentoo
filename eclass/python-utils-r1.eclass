@@ -332,6 +332,17 @@ _python_export() {
 				export PYTHON=${BROOT-${EPREFIX}}/usr/bin/${impl}
 				debug-print "${FUNCNAME}: PYTHON = ${PYTHON}"
 				;;
+			PYTHON_STDLIB)
+				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
+				PYTHON_STDLIB=$(
+					"${PYTHON}" - "${EPREFIX}/usr" <<-EOF || die
+						import sys, sysconfig
+						print(sysconfig.get_path("stdlib", vars={"installed_base": sys.argv[1]}))
+					EOF
+				)
+				export PYTHON_STDLIB
+				debug-print "${FUNCNAME}: PYTHON_STDLIB = ${PYTHON_STDLIB}"
+				;;
 			PYTHON_SITEDIR)
 				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
 				PYTHON_SITEDIR=$(
@@ -464,6 +475,18 @@ _python_export() {
 				die "_python_export: unknown variable ${var}"
 		esac
 	done
+}
+
+# @FUNCTION: python_get_stdlib
+# @USAGE: [<impl>]
+# @DESCRIPTION:
+# Obtain and print the 'stdlib' path for the given implementation. If no
+# implementation is provided, ${EPYTHON} will be used.
+python_get_stdlib() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	_python_export "${@}" PYTHON_STDLIB
+	echo "${PYTHON_STDLIB}"
 }
 
 # @FUNCTION: python_get_sitedir
@@ -1542,6 +1565,40 @@ python_has_version() {
 	done
 
 	return 0
+}
+
+# @FUNCTION: _python_sanity_checks
+# @INTERNAL
+# @DESCRIPTION:
+# Perform additional environment sanity checks.
+_python_sanity_checks() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	[[ ${_PYTHON_SANITY_CHECKED} ]] && return
+
+	if [[ -v PYTHONPATH ]]; then
+		local x paths=()
+		mapfile -d ':' -t paths <<<${PYTHONPATH}
+
+		for x in "${paths[@]}"; do
+			if [[ ${x} != /* ]]; then
+				eerror "Relative path found in PYTHONPATH:"
+				eerror
+				eerror "  PYTHONPATH=${PYTHONPATH@Q}"
+				eerror
+				eerror "This is guaranteed to cause random breakage.  Please make sure that"
+				eerror "your PYTHONPATH contains absolute paths only (and only if necessary)."
+				eerror "Note that empty values (including ':' at either end and an empty"
+				eerror "PYTHONPATH) count as the current directory.  If no PYTHONPATH"
+				eerror "is intended, it needs to be unset instead."
+				die "Relative paths in PYTHONPATH are forbidden: ${x@Q}"
+			fi
+		done
+
+		elog "PYTHONPATH=${PYTHONPATH@Q}"
+	fi
+
+	_PYTHON_SANITY_CHECKED=1
 }
 
 fi

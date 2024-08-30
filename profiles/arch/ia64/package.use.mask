@@ -1,6 +1,30 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2024-08-23)
+# dev-util/bpftool and/or sys-devel/bpf-toolchain not keyworded here
+sys-apps/systemd bpf
+
+# Matt Jolly <kangie@gentoo.org> (2024-08-14)
+# QUIC dependencies are not keyworded
+net-misc/curl http3 quic curl_quic_openssl curl_quic_ngtcp2
+
+# Ulrich Müller <ulm@gentoo.org> (2024-08-03)
+# Needs dev-libs/openspecfun which is not yet keyworded
+sci-visualization/gnuplot amos
+
+# Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
+# media-libs/quirc and media-sound/liblc3 are not keyworded here
+media-video/ffmpeg quirc liblc3
+
+# Sam James <sam@gentoo.org> (2024-07-03)
+# kde-frameworks/kservice not keyworded here
+x11-misc/xdg-utils plasma
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-06-29)
+# media-libs/libplacebo is not keyworded
+media-video/ffmpeg libplacebo
+
 # Thomas Bettler <thomas.bettler@gmail.com> (2024-06-10)
 # requires dev-libs/apache-arrow which is net yet keyworded
 sci-libs/gdal parquet
@@ -69,6 +93,7 @@ app-alternatives/ninja samurai
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
 # sys-apps/s6-linux-init has not been tested on this arch
 sys-apps/openrc s6
+sys-apps/openrc-navi s6
 
 # Sam James <sam@gentoo.org> (2023-09-24)
 # Qt not keyworded here.

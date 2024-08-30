@@ -22,6 +22,9 @@ IUSE="test"
 all_ruby_prepare() {
 	# Remove tests for unpackaged ORMs
 	rm -f spec/finders/{sequel,mongoid,data_mapper}* || die
+
+	sed -e '1igem "activerecord"' \
+		-i spec/spec_helper.rb || die
 }
 
 ruby_add_bdepend "

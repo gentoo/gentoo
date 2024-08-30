@@ -17,14 +17,14 @@ alpha		default/linux/alpha/17.0/desktop				exp
 alpha		default/linux/alpha/17.0/desktop/gnome				exp
 alpha		default/linux/alpha/17.0/desktop/gnome/systemd/merged-usr	exp
 alpha		default/linux/alpha/17.0/developer				exp
-alpha		default/linux/alpha/23.0					exp
-alpha		default/linux/alpha/23.0/systemd				exp
-alpha		default/linux/alpha/23.0/desktop				exp
-alpha		default/linux/alpha/23.0/desktop/gnome				exp
-alpha		default/linux/alpha/23.0/desktop/gnome/systemd			exp
-alpha		default/linux/alpha/23.0/split-usr				exp
-alpha		default/linux/alpha/23.0/split-usr/desktop			exp
-alpha		default/linux/alpha/23.0/split-usr/desktop/gnome		exp
+alpha		default/linux/alpha/23.0					stable
+alpha		default/linux/alpha/23.0/systemd				stable
+alpha		default/linux/alpha/23.0/desktop				stable
+alpha		default/linux/alpha/23.0/desktop/gnome				stable
+alpha		default/linux/alpha/23.0/desktop/gnome/systemd			stable
+alpha		default/linux/alpha/23.0/split-usr				stable
+alpha		default/linux/alpha/23.0/split-usr/desktop			stable
+alpha		default/linux/alpha/23.0/split-usr/desktop/gnome		stable
 
 
 # AMD64 Profiles
@@ -394,15 +394,6 @@ mips		default/linux/mips/23.0/split-usr/n32				exp
 mips		default/linux/mips/23.0/split-usr/n64				exp
 mips		default/linux/mips/23.0/split-usr/multilib/n32			exp
 mips		default/linux/mips/23.0/split-usr/multilib/n64			exp
-
-
-# Deprecated PPC64 Profiles
-# @MAINTAINER: ppc64@gentoo.org
-ppc		default/linux/powerpc/ppc64/17.0/32bit-userland				exp
-ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/desktop			exp
-ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/desktop/gnome		exp
-ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/desktop/gnome/systemd	exp
-ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/developer		exp
 
 
 # PPC profiles

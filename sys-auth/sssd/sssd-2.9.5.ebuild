@@ -15,7 +15,7 @@ DESCRIPTION="System Security Services Daemon provides access to identity and aut
 HOMEPAGE="https://github.com/SSSD/sssd"
 if [[ ${PV} != 9999 ]]; then
 	SRC_URI="https://github.com/SSSD/sssd/releases/download/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/SSSD/sssd.git"
@@ -214,6 +214,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with python python3-bindings)
 		# Annoyingly configure requires that you pick systemd XOR sysv
 		--with-initscript=$(usex systemd systemd sysv)
+		KRB5_CONFIG="${ESYSROOT}"/usr/bin/krb5-config
 	)
 
 	use systemd && myconf+=(

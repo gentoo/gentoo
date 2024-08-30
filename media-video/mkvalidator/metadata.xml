@@ -8,7 +8,4 @@
 	<longdescription lang="en">
 		mkvalidator is a simple command line tool to verify Matroska and WebM files for spec conformance. It checks the various bogus or missing key elements against the EBML DocType version of the file and reports the errors/warnings in the command line.
 	</longdescription>
-	<upstream>
-		<remote-id type="sourceforge">downloads</remote-id>
-	</upstream>
 </pkgmetadata>

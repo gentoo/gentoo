@@ -4,7 +4,7 @@
 # @ECLASS: unpacker.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: helpers for extraneous file formats and consistent behavior across EAPIs
 # @DESCRIPTION:
 # Some extraneous file formats are not part of PMS, or are only in certain
@@ -16,7 +16,7 @@
 #  - support partial unpacks?
 
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -430,10 +430,7 @@ _unpacker_get_decompressor() {
 		echo "xz -T$(makeopts_jobs) -dc" ;;
 	*.lz)
 		find_lz_unpacker() {
-			local has_version_arg="-b"
-
-			[[ ${EAPI} == 6 ]] && has_version_arg="--host-root"
-			if has_version "${has_version_arg}" ">=app-arch/xz-utils-5.4.0" ; then
+			if has_version -b ">=app-arch/xz-utils-5.4.0" ; then
 				echo xz
 				return
 			fi
@@ -537,7 +534,7 @@ _unpacker() {
 	esac
 
 	# 7z, rar and lha/lzh are handled by package manager in EAPI < 8
-	if [[ ${EAPI} != [67] ]]; then
+	if [[ ${EAPI} != 7 ]]; then
 		case ${m} in
 		*.7z)
 			arch="unpack_7z" ;;

@@ -1,0 +1,26 @@
+From ed5365ba0e6021d2dfbfe9b31bfd641d718eb978 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sat, 27 Jul 2024 07:52:15 -0400
+Subject: [PATCH 1/1] commands/sql/sql.drush.inc: ${var} -> {$var}
+
+This fixes a deprecation warning with newer PHPs.
+---
+ commands/sql/sql.drush.inc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/commands/sql/sql.drush.inc b/commands/sql/sql.drush.inc
+index 6d7a4aa..fcf2654 100644
+--- a/commands/sql/sql.drush.inc
++++ b/commands/sql/sql.drush.inc
+@@ -1414,7 +1414,7 @@ function drush_sql_format_oracle($query) {
+   $sqlp_settings = implode("\n", $settings)."\n";
+ 
+   // important for sqlplus to exit correctly
+-  return "${sqlp_settings}${query};\nexit;\n";
++  return "{$sqlp_settings}{$query};\nexit;\n";
+ }
+ 
+ 
+-- 
+2.44.2
+

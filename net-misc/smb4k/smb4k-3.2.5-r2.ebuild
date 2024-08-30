@@ -15,7 +15,7 @@ https://sourceforge.net/p/smb4k/home/Home/"
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.xz
 		https://dev.gentoo.org/~asturm/distfiles/${PN}-3.2.5-bundled-kdsoap-ws-discovery-client.patch.xz"
-	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+	KEYWORDS="amd64 arm64 ~riscv x86"
 fi
 
 LICENSE="GPL-2"

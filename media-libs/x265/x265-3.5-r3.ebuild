@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}/x265-3.3-ppc64.patch"
 	"${FILESDIR}/tests.patch"
 	"${FILESDIR}/test-ns.patch"
+	"${FILESDIR}/${PN}-3.5-r5-test-ns_2.patch"
 )
 
 src_unpack() {

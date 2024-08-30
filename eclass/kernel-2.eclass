@@ -1332,7 +1332,7 @@ getfilevar() {
 		unset ARCH
 
 		echo -e "include ${basefname}\ne:\n\t@echo \$(${1})" |
-			make -C "${basedname}" ${BUILD_FIXES} -s -f - e 2>/dev/null
+			make -C "${basedname}" -s -f - e 2>/dev/null
 
 		ARCH=${xarch}
 	fi

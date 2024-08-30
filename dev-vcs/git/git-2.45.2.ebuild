@@ -6,7 +6,7 @@ EAPI=8
 GENTOO_DEPEND_ON_PERL=no
 
 # bug #329479: git-remote-testgit is not multiple-version aware
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit toolchain-funcs perl-module bash-completion-r1 optfeature plocale python-single-r1 systemd
 
@@ -305,6 +305,10 @@ git_emake() {
 		OPTCC="$(tc-getCC)"
 		OPTCFLAGS="${CFLAGS}"
 		OPTLDFLAGS="${LDFLAGS}"
+
+		CURL_CONFIG="${ESYSROOT}/usr/bin/curl-config"
+		CURL_CFLAGS="$($(tc-getPKG_CONFIG) --cflags libcurl)"
+		CURL_LDFLAGS="$($(tc-getPKG_CONFIG) --libs libcurl)"
 
 		PERL_PATH="${EPREFIX}/usr/bin/perl"
 		PERL_MM_OPT=""

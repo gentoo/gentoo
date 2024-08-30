@@ -61,6 +61,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.3-libxml2-2.12-compatibility.patch
 	"${WORKDIR}"/${PN}-4.0.3-python3-compatibility.patch
 	"${FILESDIR}"/${PN}-4.0.3-reproducible-build.patch
+	"${FILESDIR}"/${PN}-4.0.3-miniupnpc.patch
 )
 
 pkg_setup() {
@@ -76,6 +77,9 @@ src_prepare() {
 
 	# Use correct LIBDIR for Lua
 	sed -e "s/lib/$(get_libdir)/g" -i Sluift/SConscript.variant || die
+
+	# bug #933871
+	sed -i -e 's:c++11:c++17:g' BuildTools/SCons/SConscript.boot || die
 
 	# Hack for finding Qt system libs
 	mkdir "${T}"/qt || die

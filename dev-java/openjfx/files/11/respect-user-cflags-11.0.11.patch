@@ -3,16 +3,6 @@ From: Georgy Yakovlev <gyakovlev@gentoo.org>
 Date: Sat, 1 Jun 2019 00:12:55 -0700
 Subject: [PATCH] respect user cflags
 
----
- buildSrc/linux.gradle                           |  7 ++++++-
- .../gstreamer/projects/linux/avplugin/Makefile  | 16 ++++++----------
- .../gstreamer/projects/linux/fxplugins/Makefile | 17 ++++++-----------
- .../projects/linux/gstreamer-lite/Makefile      | 16 ++++++----------
- .../native/jfxmedia/projects/linux/Makefile     | 16 ++++++----------
- 5 files changed, 30 insertions(+), 42 deletions(-)
-
-diff --git a/buildSrc/linux.gradle b/buildSrc/linux.gradle
-index 7a7cbc72..6705a0f3 100644
 --- a/buildSrc/linux.gradle
 +++ b/buildSrc/linux.gradle
 @@ -44,8 +44,11 @@ LINUX.library = { name -> return "lib${name}.so" as String }
@@ -45,8 +35,6 @@ index 7a7cbc72..6705a0f3 100644
  LINUX.iio.lib = "javafx_iio"
  
  LINUX.prismES2 = [:]
-diff --git a/modules/javafx.media/src/main/native/gstreamer/projects/linux/avplugin/Makefile b/modules/javafx.media/src/main/native/gstreamer/projects/linux/avplugin/Makefile
-index 450b55d3..f27b9479 100644
 --- a/modules/javafx.media/src/main/native/gstreamer/projects/linux/avplugin/Makefile
 +++ b/modules/javafx.media/src/main/native/gstreamer/projects/linux/avplugin/Makefile
 @@ -17,7 +17,7 @@ TARGET = $(BUILD_DIR)/lib$(BASE_NAME).so
@@ -89,8 +77,6 @@ index 450b55d3..f27b9479 100644
  
  ifneq ($(strip $(LIBAV_DIR)),)
  INCLUDES += -I$(LIBAV_DIR)/include
-diff --git a/modules/javafx.media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile b/modules/javafx.media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile
-index 1e58d4d3..627865f9 100644
 --- a/modules/javafx.media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile
 +++ b/modules/javafx.media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile
 @@ -14,7 +14,7 @@ DIRLIST = progressbuffer       \
@@ -132,8 +118,6 @@ index 1e58d4d3..627865f9 100644
  
  ifeq ($(ARCH), x32)
      CFLAGS += -m32
-diff --git a/modules/javafx.media/src/main/native/gstreamer/projects/linux/gstreamer-lite/Makefile b/modules/javafx.media/src/main/native/gstreamer/projects/linux/gstreamer-lite/Makefile
-index 5baa30a1..ddf0e521 100644
 --- a/modules/javafx.media/src/main/native/gstreamer/projects/linux/gstreamer-lite/Makefile
 +++ b/modules/javafx.media/src/main/native/gstreamer/projects/linux/gstreamer-lite/Makefile
 @@ -37,7 +37,7 @@ DIRLIST = gstreamer/gst \
@@ -174,8 +158,6 @@ index 5baa30a1..ddf0e521 100644
  
  ifeq ($(ARCH), x32)
      CFLAGS += -m32
-diff --git a/modules/javafx.media/src/main/native/jfxmedia/projects/linux/Makefile b/modules/javafx.media/src/main/native/jfxmedia/projects/linux/Makefile
-index ecbd859f..5881cf53 100644
 --- a/modules/javafx.media/src/main/native/jfxmedia/projects/linux/Makefile
 +++ b/modules/javafx.media/src/main/native/jfxmedia/projects/linux/Makefile
 @@ -17,7 +17,7 @@ DIRLIST = jni                \

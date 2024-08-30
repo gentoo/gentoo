@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib multibuild systemd toolchain-funcs
+inherit cmake-multilib systemd toolchain-funcs
 
 DESCRIPTION="Software real-time synthesizer based on the Soundfont 2 specifications"
 HOMEPAGE="https://www.fluidsynth.org"

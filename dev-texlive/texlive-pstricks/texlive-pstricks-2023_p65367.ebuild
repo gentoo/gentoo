@@ -270,7 +270,7 @@ DESCRIPTION="TeXLive PSTricks"
 
 LICENSE="GPL-1+ GPL-2 LGPL-2+ LGPL-3 LPPL-1.2 LPPL-1.3 LPPL-1.3c"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 COMMON_DEPEND="
 	>=dev-texlive/texlive-basic-2023
 	>=dev-texlive/texlive-plaingeneric-2023

@@ -5,10 +5,6 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>marecki@gentoo.org</email>
-		<name>Marek Szuba</name>
-	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="sourceforge">mormon</remote-id>

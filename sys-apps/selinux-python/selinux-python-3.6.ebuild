@@ -31,7 +31,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND=">=sys-libs/libselinux-${PV}:=[python]
 	>=sys-libs/libsemanage-${PV}:=[python(+)]
-	>=sys-libs/libsepol-${PV}:=
+	>=sys-libs/libsepol-${PV}:=[static-libs(+)]
 	>=app-admin/setools-4.2.0[${PYTHON_USEDEP}]
 	>=sys-process/audit-1.5.1[python,${PYTHON_USEDEP}]
 	${PYTHON_DEPS}"
@@ -97,10 +97,10 @@ src_install() {
 	done
 
 	# Create sepolgen.conf with different devel location definition
+	mkdir -p "${D}"/etc/selinux || die "Failed to create selinux directory";
 	if [[ -f /etc/selinux/config ]];
 	then
 		local selinuxtype=$(awk -F'=' '/^SELINUXTYPE/ {print $2}' /etc/selinux/config);
-		mkdir -p "${D}"/etc/selinux || die "Failed to create selinux directory";
 		echo "SELINUX_DEVEL_PATH=/usr/share/selinux/${selinuxtype}/include:/usr/share/selinux/${selinuxtype}" > "${D}"/etc/selinux/sepolgen.conf;
 	else
 		local selinuxtype="${POLICY_TYPES%% *}";

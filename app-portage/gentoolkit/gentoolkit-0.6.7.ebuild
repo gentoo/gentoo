@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} pypy3 )
+PYTHON_COMPAT=( python3_{10..13} pypy3 )
 PYTHON_REQ_USE="xml(+),threads(+)"
 
 inherit meson python-r1 tmpfiles
@@ -83,7 +83,8 @@ src_compile() {
 }
 
 src_test() {
-	python_foreach_impl meson_src_test --no-rebuild --verbose
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	python_foreach_impl epytest
 }
 
 src_install() {

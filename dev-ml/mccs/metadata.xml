@@ -6,6 +6,6 @@
 		<name>ML</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">AltGr/ocaml-mccs</remote-id>
+		<remote-id type="github">ocaml-opam/ocaml-mccs</remote-id>
 	</upstream>
 </pkgmetadata>

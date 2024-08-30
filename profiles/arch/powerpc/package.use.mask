@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-08-19)
+# kde-apps/kdesdk-thumbnailers is not yet keyworded
+kde-apps/thumbnailers gettext
+
 # Thomas Bettler <thomas.bettler@gmail.com> (2024-06-10)
 # requires dev-libs/apache-arrow which is net yet keyworded
 sci-libs/gdal parquet
@@ -67,6 +71,7 @@ media-libs/libaom cpu_flags_ppc_vsx
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
 # sys-apps/s6-linux-init has not been tested on this arch
 sys-apps/openrc s6
+sys-apps/openrc-navi s6
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2023-09-21)
 # dtrace/systemtap not availabie on ppc platform for jdk
@@ -188,10 +193,6 @@ www-client/chromium widevine
 # requires media-libs/sdl2-image, which is not yet keyworded
 app-emulation/qemu sdl-image
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
-# requires fwupd, which is not yet keyworded
-kde-plasma/discover firmware
-
 # Rick Farina <zerochaos@gentoo.org> (2020-01-03)
 # ubertooth needs net-libs/libbtbb and net-wireless/ubertooth which aren't keyworded
 net-wireless/kismet ubertooth
@@ -275,10 +276,6 @@ app-i18n/fcitx-libpinyin dictionary-manager
 # Göktürk Yüksek <gokturk@gentoo.org> (2017-08-15)
 # Requires java
 app-forensics/sleuthkit java
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-08)
-# Requires USE=opencl that is masked in this profile.
-net-misc/bfgminer adl lm-sensors
 
 # Michał Górny <mgorny@gentoo.org> (2017-03-24)
 # libcxx fails to compile on ppc*, #595744.

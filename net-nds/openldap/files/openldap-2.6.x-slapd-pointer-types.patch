@@ -1,0 +1,71 @@
+# https://git.openldap.org/openldap/openldap/-/commit/fb9e6a81bbee880549e7ec18f0a74ddddbd2d1ab.patch
+From fb9e6a81bbee880549e7ec18f0a74ddddbd2d1ab Mon Sep 17 00:00:00 2001
+From: Stephen Gallagher <sgallagh@redhat.com>
+Date: Tue, 6 Feb 2024 21:38:24 -0500
+Subject: [PATCH] ITS#10171 - Explicitly cast private values
+
+Fixes issues with -Werror=incompatible-pointer-types
+
+Signed-off-by: Stephen Gallagher <sgallagh@redhat.com>
+---
+ servers/slapd/config.c              | 2 +-
+ servers/slapd/overlays/constraint.c | 2 +-
+ servers/slapd/overlays/dyngroup.c   | 2 +-
+ servers/slapd/overlays/valsort.c    | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/servers/slapd/config.c b/servers/slapd/config.c
+index 80333f359c..987c862d91 100644
+--- a/servers/slapd/config.c
++++ b/servers/slapd/config.c
+@@ -151,7 +151,7 @@ int config_check_vals(ConfigTable *Conf, ConfigArgs *c, int check_only ) {
+ 	int rc, arg_user, arg_type, arg_syn, iarg;
+ 	unsigned uiarg;
+ 	long larg;
+-	size_t ularg;
++	unsigned long ularg;
+ 	ber_len_t barg;
+ 	
+ 	if(Conf->arg_type == ARG_IGNORED) {
+diff --git a/servers/slapd/overlays/constraint.c b/servers/slapd/overlays/constraint.c
+index f939b37762..0d6156af4d 100644
+--- a/servers/slapd/overlays/constraint.c
++++ b/servers/slapd/overlays/constraint.c
+@@ -557,7 +557,7 @@ done:;
+ 				a2->restrict_filter = ap.restrict_filter;
+ 				a2->restrict_val = ap.restrict_val;
+ 
+-				for ( app = &on->on_bi.bi_private; *app; app = &(*app)->ap_next )
++				for ( app = (constraint **)&on->on_bi.bi_private; *app; app = &(*app)->ap_next )
+ 					/* Get to the end */ ;
+ 
+ 				a2->ap_next = *app;
+diff --git a/servers/slapd/overlays/dyngroup.c b/servers/slapd/overlays/dyngroup.c
+index 5d890d6650..e0e70af2d9 100644
+--- a/servers/slapd/overlays/dyngroup.c
++++ b/servers/slapd/overlays/dyngroup.c
+@@ -111,7 +111,7 @@ static int dgroup_cf( ConfigArgs *c )
+ 		 */
+ 		a2 = ch_malloc( sizeof(adpair) );
+ 
+-		for ( app = &on->on_bi.bi_private; *app; app = &(*app)->ap_next )
++		for ( app = (adpair **)&on->on_bi.bi_private; *app; app = &(*app)->ap_next )
+ 			/* Get to the end */ ;
+ 
+ 		a2->ap_mem = ap.ap_mem;
+diff --git a/servers/slapd/overlays/valsort.c b/servers/slapd/overlays/valsort.c
+index 3d998e2fcb..e251500d0b 100644
+--- a/servers/slapd/overlays/valsort.c
++++ b/servers/slapd/overlays/valsort.c
+@@ -201,7 +201,7 @@ valsort_cf_func(ConfigArgs *c) {
+ 		return(1);
+ 	}
+ 
+-	for ( vip = &on->on_bi.bi_private; *vip; vip = &(*vip)->vi_next )
++	for ( vip = (valsort_info **)&on->on_bi.bi_private; *vip; vip = &(*vip)->vi_next )
+ 		/* Get to the end */ ;
+ 
+ 	vi = ch_malloc( sizeof(valsort_info) );
+-- 
+GitLab
+

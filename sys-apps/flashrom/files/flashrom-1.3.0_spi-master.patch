@@ -1,6 +1,10 @@
 Backported upstream commit
 https://github.com/flashrom/flashrom/commit/e1f30bbce7a603d518ecec9d7e6885719f396719
 
+This commit didn't apply straight because const/non-const changes were
+made inbetween, so there are some additional changes to silence more
+picky compilers like https://bugs.gentoo.org/915617
+
 --- a/bitbang_spi.c
 +++ b/bitbang_spi.c
 @@ -148,7 +148,6 @@
@@ -77,7 +81,7 @@ https://github.com/flashrom/flashrom/commit/e1f30bbce7a603d518ecec9d7e6885719f39
  int spi_aai_write(struct flashctx *flash, const uint8_t *buf, unsigned int start, unsigned int len);
  int spi_chip_write_256(struct flashctx *flash, const uint8_t *buf, unsigned int start, unsigned int len);
  int spi_chip_read(struct flashctx *flash, uint8_t *buf, unsigned int start, int unsigned len);
-+bool spi_probe_opcode(const struct flashctx *flash, uint8_t opcode);
++bool spi_probe_opcode(struct flashctx *flash, uint8_t opcode);
  
  /* spi25.c */
  int probe_spi_rdid(struct flashctx *flash);
@@ -235,7 +239,7 @@ https://github.com/flashrom/flashrom/commit/e1f30bbce7a603d518ecec9d7e6885719f39
  }
  
 -bool default_spi_probe_opcode(struct flashctx *flash, uint8_t opcode)
-+bool spi_probe_opcode(const struct flashctx *flash, uint8_t opcode)
++bool spi_probe_opcode(struct flashctx *flash, uint8_t opcode)
  {
 -	return true;
 +	if (!flash->mst->spi.probe_opcode)

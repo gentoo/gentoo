@@ -38,6 +38,7 @@ ruby_add_rdepend "
 
 ruby_add_bdepend "
 	test? (
+		dev-ruby/capybara
 		dev-ruby/mocha
 		~dev-ruby/actionpack-${PV}
 		~dev-ruby/activemodel-${PV}

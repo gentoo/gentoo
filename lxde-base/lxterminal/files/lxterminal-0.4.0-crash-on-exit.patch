@@ -1,0 +1,57 @@
+https://src.fedoraproject.org/rpms/lxterminal/blob/rawhide/f/lxterminal-0.4.0-avoid-segv-on-window-close.patch
+--- lxterminal-0.4.0/src/lxterminal.c.orig	2023-05-26 13:59:55.800250980 +0900
++++ lxterminal-0.4.0/src/lxterminal.c	2023-06-09 14:03:22.478441852 +0900
+@@ -59,6 +59,7 @@ static void terminal_new_window_activate
+ static void terminal_new_tab_activate_event(GtkAction * action, LXTerminal * terminal);
+ static void terminal_close_tab_activate_event(GtkAction * action, LXTerminal * terminal);
+ static void terminal_close_window_activate_event(GtkAction * action, LXTerminal * terminal);
++static void terminal_close_window_activate_event_internal(GtkAction * action, LXTerminal * terminal);
+ static void terminal_open_url_activate_event(GtkAction * action, LXTerminal * terminal);
+ static void terminal_copy_url_activate_event(GtkAction * action, LXTerminal * terminal);
+ static void terminal_copy_activate_event(GtkAction * action, LXTerminal * terminal);
+@@ -480,15 +481,28 @@ static void terminal_close_window_activa
+     if (!terminal_close_window_confirmation_dialog(terminal)) {
+         return;
+     }
++    terminal_close_window_activate_event_internal(action, terminal);
++}
+ 
++static void terminal_close_window_activate_event_internal(GtkAction * action, LXTerminal * terminal)
++{
+     /* Play it safe and delete tabs one by one. */
+-    while(terminal->terms->len > 0) {
++    while(1 /* terminal->terms->len > 0 */) {
++      /* terminal_child_exited_event() finally frees terminal->terms */
++      /* terminal_window_exit() finally frees terminal itself
++         when closing one window of multiple ones
++        */
++        guint len = terminal->terms->len;
+         Term *term = g_ptr_array_index(terminal->terms, 0);
+ #if VTE_CHECK_VERSION (0, 38, 0)
+         terminal_child_exited_event(VTE_TERMINAL(term->vte), 0, term);
+ #else
+         terminal_child_exited_event(VTE_TERMINAL(term->vte), term);
+ #endif
++       if (len <= 1) {
++          break;
++        }
++
+     }
+ }
+ 
+@@ -838,7 +852,15 @@ static void terminal_window_title_change
+ /* Handler for "delete-event" signal on a LXTerminal. */
+ static gboolean terminal_close_window_confirmation_event(GtkWidget * widget, GdkEventButton * event, LXTerminal * terminal)
+ {
++#if 0
+     return !terminal_close_window_confirmation_dialog(terminal);
++#else
++    gboolean status = terminal_close_window_confirmation_dialog(terminal);
++    if (status) {
++        terminal_close_window_activate_event_internal(NULL, terminal);
++    }
++    return TRUE; /* Always nuke this event, call the above function explicitly */
++#endif
+ }
+ 
+ /* Display closing tabs warning */

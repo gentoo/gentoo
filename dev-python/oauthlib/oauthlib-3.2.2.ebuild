@@ -25,9 +25,15 @@ RDEPEND="
 	dev-python/cryptography[${PYTHON_USEDEP}]
 "
 
-distutils_enable_tests unittest
+distutils_enable_tests pytest
 
 PATCHES=(
 	# https://github.com/oauthlib/oauthlib/commit/fe020db74199d5284c00d7735aa7d4ddc90f5d61
 	"${FILESDIR}/${P}-py313.patch"
+)
+
+EPYTEST_DESELECT=(
+	# exception mismatch
+	# https://github.com/oauthlib/oauthlib/issues/877
+	tests/oauth1/rfc5849/test_signatures.py::SignatureTests::test_rsa_bad_keys
 )

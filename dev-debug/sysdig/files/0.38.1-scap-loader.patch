@@ -1,0 +1,32 @@
+
+Sanitize the scap loader script to not attempt driver downloads or compilation
+by default, which would not work anyway as sysdig does not host prebuilt modules
+for Gentoo.
+
+Signed-off-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+
+--- sysdig-0.38.0/scripts/scap-driver-loader.in~ 2024-06-17 11:14:55.000000000 +0200
++++ sysdig-0.38.0/scripts/scap-driver-loader.in	2024-06-17 11:14:55.000000000 +0200
+@@ -662,8 +662,8 @@ print_usage() {
+ 	echo "Options:"
+ 	echo "  --help         show brief help"
+ 	echo "  --clean        try to remove an already present driver installation"
+-	echo "  --compile      try to compile the driver locally (default true)"
+-	echo "  --download     try to download a prebuilt driver (default true)"
++	echo "  --compile      try to compile the driver locally (default false)"
++	echo "  --download     try to download a prebuilt driver (default false)"
+ 	echo "  --source-only  skip execution and allow sourcing in another script"
+ 	echo ""
+ 	echo "Environment variables:"
+@@ -770,11 +770,6 @@ while test $# -gt 0; do
+ 	esac
+ done
+ 
+-if [ -z "$has_opts" ]; then
+-	ENABLE_COMPILE="yes"
+-	ENABLE_DOWNLOAD="yes"
+-fi
+-
+ if [ -z "$source_only" ]; then
+ 	echo "* Running scap-driver-loader for: driver version=${DRIVER_VERSION}, arch=${ARCH}, kernel release=${KERNEL_RELEASE}, kernel version=${KERNEL_VERSION}"
+ 

@@ -20,17 +20,18 @@ genfun_set_win_title() {
 	# the title bar to be affected.
 	genfun_set_win_title() {
 		genfun_sanitise_cwd
-		printf '\033]2;%s@%s - %s\007' "${USER}" "${HOSTNAME%%.*}" "${_cwd}"
+		printf '\033]0;%s@%s - %s\007' "${USER}" "${HOSTNAME%%.*}" "${_cwd}"
 	}
 
 	genfun_set_win_title
 }
 
-# If the TTY is that of sshd(8) then proceed no further. Alas, there exist many
-# operating environments in which the window title would otherwise not be
-# restored upon ssh(1) exiting. Users wishing to coerce the historical
-# behaviour have the option of setting PROMPT_COMMAND=(genfun_set_win_title).
-if [[ ${SSH_TTY} && ${SSH_TTY} == "$(tty)" ]]; then
+# Proceed no further if the TTY is that of sshd(8) and if not running a terminal
+# multiplexer. Alas, there exist many operating environments in which the window
+# title would otherwise not be restored upon ssh(1) exiting. Those who wish for
+# the title to be set unconditionally may adjust ~/.bashrc - or create a custom
+# bashrc.d drop-in - to define PROMPT_COMMAND=(genfun_set_win_title).
+if [[ ${SSH_TTY} && ${TERM} != @(screen|tmux)* && ${SSH_TTY} == "$(tty)" ]]; then
 	return
 fi
 

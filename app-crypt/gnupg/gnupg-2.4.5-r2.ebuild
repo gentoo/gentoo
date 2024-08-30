@@ -95,6 +95,10 @@ src_prepare() {
 	# which in turn requires discovery in Autoconf, something that upstream deeply resents.
 	sed -e "/DirectoryMode=/a ExecStartPost=-${EPREFIX}/bin/systemctl --user set-environment SSH_AUTH_SOCK=%t/gnupg/S.gpg-agent.ssh" \
 		-i "${T}"/gpg-agent-ssh.socket || die
+
+	# definition of getpeername etc uses different things like socket_fd_t
+	[[ ${CHOST} == *-solaris* ]] &&
+		append-cflags $(test-flags-CC -Wno-incompatible-pointer-types)
 }
 
 my_src_configure() {
@@ -132,7 +136,7 @@ my_src_configure() {
 		--enable-large-secmem
 
 		CC_FOR_BUILD="$(tc-getBUILD_CC)"
-		ac_cv_path_GPGRT_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-gpgrt-config"
+		GPGRT_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-gpgrt-config"
 
 		$("${S}/configure" --help | grep -o -- '--without-.*-prefix')
 	)

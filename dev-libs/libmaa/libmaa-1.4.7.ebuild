@@ -6,7 +6,7 @@ EAPI=8
 inherit multiprocessing toolchain-funcs
 
 DESCRIPTION="Library with low-level data structures which are helpful for writing compilers"
-HOMEPAGE="http://www.dict.org/"
+HOMEPAGE="https://dict.org/"
 SRC_URI="https://downloads.sourceforge.net/dict/${P}.tar.gz"
 
 LICENSE="MIT"

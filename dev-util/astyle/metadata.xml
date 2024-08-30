@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>tamiko@gentoo.org</email>
-		<name>Matthias Maier</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 		astyle is a code formatter for C, C++, and Java source code, with many
 		granular formatting options to assist in enforcing code formatting
@@ -18,6 +15,6 @@
 		<remote-id type="gitlab">saalen/astyle</remote-id>
 		<remote-id type="sourceforge">astyle</remote-id>
 		<bugs-to>https://sourceforge.net/p/astyle/bugs/</bugs-to>
-		<doc>http://astyle.sourceforge.net/astyle.html</doc>
+		<doc>https://astyle.sourceforge.net/astyle.html</doc>
 	</upstream>
 </pkgmetadata>

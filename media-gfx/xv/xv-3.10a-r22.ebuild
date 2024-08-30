@@ -70,6 +70,11 @@ src_prepare() {
 }
 
 src_compile() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/859823
+	# https://github.com/jasper-software/xv/issues/25
+	filter-lto
+
 	emake \
 		CC="$(tc-getCC)" CCOPTS="${CPPFLAGS} ${CFLAGS}" LDFLAGS="${LDFLAGS}" \
 		PREFIX="${EPREFIX}"/usr \

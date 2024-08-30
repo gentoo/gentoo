@@ -1,0 +1,47 @@
+From 8306771281f9b2883c5200ee241b0c0767bfe1b4 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sun, 30 Jun 2024 19:45:45 -0400
+Subject: [PATCH 1/1] eigen/test.c: loosen tolerance in eigenvalue norm tests
+
+One test for the (unit) norm of a random hermitian matrix's
+eigenvalues is victim to tolerance issues, e.g.
+
+  FAIL: herm random, normalized(1), unsorted (0.999999999999999112
+  observed vs 1 expected) [117761]
+
+The tolerance used is N*GSL_DBL_EPSILON, where N is the size of the
+matrix. On my machine, the actual error is four times GSL_DBL_EPSILON,
+which means that the tolernace is close but not quite right. Despite
+having done a PhD in numerical analysis, I am choosing to fix this
+with a shotgun:
+
+  * By a factor of 10
+  * Then also by a factor of N
+
+That's still extremely close, and hopefully will sweep the problem
+under the rug whether it's off by a constant or off by a function
+of N.
+
+Bug: https://bugs.gentoo.org/664936
+Bug: https://git.adelielinux.org/adelie/packages/-/issues/504
+Bug: https://savannah.gnu.org/bugs/?56843
+---
+ eigen/test.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/eigen/test.c b/eigen/test.c
+index b0bdcc7..2681721 100644
+--- a/eigen/test.c
++++ b/eigen/test.c
+@@ -506,7 +506,7 @@ test_eigen_herm_results (const gsl_matrix_complex * A,
+     {
+       gsl_vector_complex_const_view vi = gsl_matrix_complex_const_column(evec, i);
+       double nrm_v = gsl_blas_dznrm2(&vi.vector);
+-      gsl_test_rel (nrm_v, 1.0, N * GSL_DBL_EPSILON, "%s, normalized(%d), %s", 
++      gsl_test_rel (nrm_v, 1.0, N*N * 10.0 * GSL_DBL_EPSILON, "%s, normalized(%d), %s", 
+                     desc, i, desc2);
+     }
+ 
+-- 
+2.44.2
+

@@ -34,6 +34,7 @@
 	</use>
 	<upstream>
 		<bugs-to>https://sourceforge.net/p/cryptmount/bugs/</bugs-to>
+		<remote-id type="github">rwpenney/cryptmount</remote-id>
 		<remote-id type="sourceforge">cryptmount</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,6 +1,22 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-08-12)
+# Builds a amd vendored opencl runtime that causes collisions.
+# Hardly useful outside of maintainer testing. #934963, #936317
+dev-util/hip opencl
+
+# matoro <matoro_gentoo@matoro.tk> (2024-07-14)
+# Abandoned upstream, does not take bug reports, unsupported in Gentoo.
+# Only remaining use is as a requirement for dev-lang/go on arm{,64}.
+# See #934149, #934151, #936022, #936021
+sys-devel/binutils default-gold gold
+sys-devel/binutils-hppa64 default-gold gold
+
+# Zen <dev@pyl.onl> (2024-07-01)
+# UGRD is not keyworded everywhere yet
+sys-kernel/installkernel ugrd
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-23)
 # Pulls in kde-apps/kgpg which requires kde-apps/akonadi, which is as
 # part of the KDE PIM stack (big, requiring QtWebengine) only keyworded
@@ -119,10 +135,6 @@ kde-plasma/discover snap
 # Needs dev-python/py-cpuinfo which is not ported to all of our platforms
 # See bug #894078.
 dev-python/tables cpudetection
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2023-03-09)
-# media-libs/libplacebo is not keyworded anywhere except amd64/ppc64/x86 yet
-media-video/ffmpeg libplacebo
 
 # Michał Górny <mgorny@gentoo.org> (2023-01-24)
 # libomptarget is only supported on 64-bit architectures.
@@ -313,10 +325,6 @@ dev-java/openjdk:11 javafx
 # Matt Turner <mattst88@gentoo.org> (2019-06-20)
 # dev-lang/spidermonkey:60[jit] fails to build on most platforms
 >=dev-lang/spidermonkey-60 jit
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-05-09)
-# media-libs/libplacebo is not keyworded anywhere except amd64/ppc64/x86 yet
-media-video/vlc libplacebo
 
 # Denis Lisov <dennis.lissov@gmail.com> (2019-05-09)
 # Overlay can only be built on amd64 and x86

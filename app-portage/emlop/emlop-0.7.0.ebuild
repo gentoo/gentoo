@@ -68,8 +68,8 @@ CRATES="
 	thiserror-impl@1.0.57
 	thiserror@1.0.57
 	time-core@0.1.2
-	time-macros@0.2.17
-	time@0.3.34
+	time-macros@0.2.18
+	time@0.3.36
 	toml@0.8.10
 	toml_datetime@0.6.5
 	toml_edit@0.22.6
@@ -110,6 +110,11 @@ BDEPEND=">=virtual/rust-1.71.0"
 
 # rust does not use *FLAGS from make.conf, silence portage warning
 QA_FLAGS_IGNORED="usr/bin/${PN}"
+
+PATCHES=(
+	# Fix build with rust >= 1.80
+	"${FILESDIR}/${P}-time_dep.patch"
+)
 
 src_install() {
 	cargo_src_install

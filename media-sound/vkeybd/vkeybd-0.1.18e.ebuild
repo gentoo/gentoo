@@ -11,7 +11,7 @@ SRC_URI="https://github.com/tiwai/vkeybd/archive/refs/tags/v${PV}.tar.gz -> ${P}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~sparc ~x86"
+KEYWORDS="amd64 ~sparc x86"
 IUSE="alsa lash oss"
 
 RDEPEND="

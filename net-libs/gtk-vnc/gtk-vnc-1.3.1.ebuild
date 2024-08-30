@@ -44,7 +44,7 @@ BDEPEND="
 src_prepare() {
 	default
 
-	use vala & vala_setup
+	use vala && vala_setup
 }
 
 src_configure() {

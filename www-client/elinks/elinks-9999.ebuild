@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 LUA_COMPAT=( lua5-{1,2,3,4} luajit )
 
 inherit flag-o-matic meson lua-single python-single-r1

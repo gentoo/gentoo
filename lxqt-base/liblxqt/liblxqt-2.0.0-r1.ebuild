@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/lxqt/${PN}.git"
 else
 	SRC_URI="https://github.com/lxqt/${PN}/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64 ~riscv"
 fi
 
 LICENSE="LGPL-2.1+ BSD"
@@ -30,7 +30,7 @@ DEPEND="
 	kde-frameworks/kwindowsystem:6[X]
 	x11-libs/libX11
 	x11-libs/libXScrnSaver
-	backlight? ( sys-auth/polkit-qt[qt6] )
+	backlight? ( >=sys-auth/polkit-qt-0.200.0[qt6] )
 "
 RDEPEND="${DEPEND}"
 

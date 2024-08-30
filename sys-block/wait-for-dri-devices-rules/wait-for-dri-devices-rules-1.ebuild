@@ -1,4 +1,4 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,15 +10,12 @@ SRC_URI="https://gitlab.com/pachoramos/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE=""
+KEYWORDS="amd64"
 
-DEPEND=""
 RDEPEND="
 	sys-apps/systemd
 	virtual/udev
 "
-BDEPEND=""
 
 DOC_CONTENTS="
 	Feel free to modify

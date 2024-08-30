@@ -1,0 +1,35 @@
+From 0bb0dba91c51d367d9a37297f13e07f33c01bfdc Mon Sep 17 00:00:00 2001
+From: anarcat <anarcat@users.noreply.github.com>
+Date: Thu, 5 Oct 2023 02:10:32 -0400
+Subject: [PATCH] fix generic TLSA record generation (#46)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+It seems like the calculation for the TLSA record never really worked,
+as we're doing float division here on the `len()` field. In our case,
+that field returned `35.0` which is not valid in our environment.
+
+Doing an integer division gives the correct result in most cases, I
+believe.
+
+Closes: #45
+
+Co-authored-by: Jérôme Charaoui <jerome@riseup.net>
+---
+ tlsa | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tlsa b/tlsa
+index cea7230..ec97150 100755
+--- a/tlsa
++++ b/tlsa
+@@ -513,7 +513,7 @@ class TLSARecord:
+ 	def getRecord(self, generic=False):
+ 		"""Returns the RR string of this TLSARecord, either in rfc (default) or generic format"""
+ 		if generic:
+-			return '%s IN TYPE52 \# %s %s%s%s%s' % (self.name, (len(self.cert)/2)+3 , self._toHex(self.usage), self._toHex(self.selector), self._toHex(self.mtype), self.cert)
++			return '%s IN TYPE52 \# %s %s%s%s%s' % (self.name, (len(self.cert)//2)+3 , self._toHex(self.usage), self._toHex(self.selector), self._toHex(self.mtype), self.cert)
+ 		return '%s IN TLSA %s %s %s %s' % (self.name, self.usage, self.selector, self.mtype, self.cert)
+ 
+ 	def _toHex(self, val):

@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	dev-python/bottle[${PYTHON_USEDEP}]
@@ -67,7 +67,7 @@ python_test() {
 		tests/test_main.py::test_auto_servers
 	)
 
-	if ! has_version dev-python/twine; then
+	if ! has_version "dev-python/twine[${PYTHON_USEDEP}]"; then
 		EPYTEST_DESELECT+=(
 			tests/test_server.py::test_twine_upload
 			tests/test_server.py::test_twine_register

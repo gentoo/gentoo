@@ -64,7 +64,7 @@ RDEPEND="
 		>=app-admin/eselect-1.2
 		app-portage/getuto
 		>=app-shells/bash-5.0:0
-		>=sec-keys/openpgp-keys-gentoo-release-20230329
+		>=sec-keys/openpgp-keys-gentoo-release-20240703
 		>=sys-apps/sed-4.0.5
 		rsync-verify? (
 			>=app-crypt/gnupg-2.2.4-r2[ssl(-)]

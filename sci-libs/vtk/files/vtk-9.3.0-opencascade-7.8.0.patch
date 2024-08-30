@@ -16,8 +16,6 @@
  set(opencascade_missing_targets)
  foreach (opencascade_req_target IN LISTS opencascade_req_targets)
    if (NOT TARGET "${opencascade_req_target}")
-diff --git a/IO/OCCT/vtkOCCTReader.cxx b/IO/OCCT/vtkOCCTReader.cxx
-index 52e76be..7235309 100644
 --- a/IO/OCCT/vtkOCCTReader.cxx
 +++ b/IO/OCCT/vtkOCCTReader.cxx
 @@ -348,7 +348,7 @@ public:

@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit python-r1
 
@@ -30,9 +30,12 @@ BDEPEND="
 DOCS=( doc/{AUTHOR,README,TODO.txt} )
 
 src_prepare() {
+	eapply "${FILESDIR}/${P}-py312.patch"
+
 	sed \
 		-e "s:basedirs = \[binarypath, secondarypath, '/usr/share/gitstats'\]:basedirs = \['${EPREFIX}/usr/share/gitstats'\]:g" \
 	-i gitstats || die "failed to fix static files path"
+
 	default
 }
 

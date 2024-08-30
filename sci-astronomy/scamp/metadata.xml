@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-  <email>sci-astronomy@gentoo.org</email>
-  <name>Gentoo Astronomy Project</name>
-</maintainer>
-<longdescription lang="en">
-  SCAMP computes astrometric and photometric solutions from SExtractor catalogs
-  and stores them in header files. These headers files can be read by SWarp to
-  coadd images.
-</longdescription>
-<use>
-  <flag name="plplot">Build with <pkg>sci-libs/plplot</pkg> to allow diagnostic plots during processing</flag>
-</use>
+	<maintainer type="project">
+		<email>sci-astronomy@gentoo.org</email>
+		<name>Gentoo Astronomy Project</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>mario.haustein@hrz.tu-chemnitz.de</email>
+		<name>Mario Haustein</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		SCAMP computes astrometric and photometric solutions from SExtractor catalogs
+		and stores them in header files. These headers files can be read by SWarp to
+		coadd images.
+	</longdescription>
+	<use>
+		<flag name="plplot">Build with <pkg>sci-libs/plplot</pkg> to allow diagnostic plots during processing</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">astromatic/scamp</remote-id>
+	</upstream>
 </pkgmetadata>

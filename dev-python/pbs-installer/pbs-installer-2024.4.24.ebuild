@@ -4,7 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=pdm-backend
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
+
 inherit distutils-r1
 
 DESCRIPTION="Installer for Python Build Standalone"
@@ -13,7 +14,10 @@ HOMEPAGE="
 	https://github.com/frostming/pbs-installer/
 
 "
-SRC_URI="https://github.com/frostming/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="
+	https://github.com/frostming/pbs-installer/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"

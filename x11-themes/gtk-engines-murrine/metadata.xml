@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>marecki@gentoo.org</email>
-		<name>Marek Szuba</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 "Murrine" is an Italian word meaning the glass artworks done by Venicians glass
 blowers. They're absolutely wonderful and colorful.

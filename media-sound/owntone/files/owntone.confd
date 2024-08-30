@@ -1,0 +1,9 @@
+# Copyright 1999-2024 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# user and group to run owntone as
+#USER=owntone
+#GROUP=audio
+
+# any options to use when starting owntone
+#EXTRA_OPTS=

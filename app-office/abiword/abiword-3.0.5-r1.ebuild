@@ -86,6 +86,8 @@ PATCHES=(
 	"${WORKDIR}"/patches/${PN}-3.0.4-c++17-dynamic-exception-specifications.patch
 	"${FILESDIR}"/${PN}-3.0.5-musl-lose-precision-fix.patch
 	"${FILESDIR}"/${PN}-3.0.5-libxml2-2.12.patch
+	# https://bugs.gentoo.org/922633
+	"${FILESDIR}"/${PN}-3.0.5-gcc14.patch
 )
 
 src_prepare() {

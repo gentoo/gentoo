@@ -1,5 +1,5 @@
---- a/Accelerators/Vtkm/Core/vtkmlib/vtkmDataArray.hxx	2023-11-14 00:37:21.000000000 +0100
-+++ b/Accelerators/Vtkm/Core/vtkmlib/vtkmDataArray.hxx	2023-11-19 17:09:22.089595938 +0100
+--- a/Accelerators/Vtkm/Core/vtkmlib/vtkmDataArray.hxx
++++ b/Accelerators/Vtkm/Core/vtkmlib/vtkmDataArray.hxx
 @@ -334,7 +334,7 @@
  auto TransformForScalarRange(const ArrayHandleType& src,
    const vtkm::cont::ArrayHandle<vtkm::UInt8>& ghost, vtkm::UInt8 ghostValueToSkip, bool finitesOnly)

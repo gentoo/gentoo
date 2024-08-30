@@ -1,6 +1,24 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ian Jordan <immoloism@gmail.com> (2024-08-22)
+# Browser uses a prebuilt binary built against glibc (bug #934005)
+media-video/obs-studio browser
+
+# Sam James <sam@gentoo.org> (2024-08-21)
+# dev-debug/systemtap doesn't work on musl
+app-emulation/libvirt dtrace
+gui-libs/neatvnc tracing
+gui-apps/wayvnc tracing
+
+# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2024-08-06)
+# Requires sys-libs/libcxx.
+dev-cpp/benchmark libcxx
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-07-25)
+# Requires systemd-detect-virt
+app-emulation/virt-firmware test
+
 # Sam James <sam@gentoo.org> (2024-06-03)
 # Poor rendering performance otherwise (bug #931215) but it doesn't
 # work on musl.
@@ -53,6 +71,11 @@ sys-devel/clang-common cet
 sys-devel/gcc cet
 sys-libs/binutils-libs cet
 sys-libs/glibc cet
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-03-05)
+# gprofng is still somewhat messed up with musl-1.2.4, does not build
+# bug 912284
+sys-devel/binutils gprofng
 
 # Violet Purcell <vimproved@inventati.org> (2024-01-25)
 # f16c support in gtk4 requires the ifunc attribute, which
@@ -138,6 +161,7 @@ www-client/qutebrowser widevine
 net-analyzer/wireshark sdjournal
 sys-apps/ipmitool openbmc
 sys-auth/pambase homed
+dev-qt/qtbase journald
 
 # Petr Vaněk <arkamar@atlas.cz> (2022-03-15)
 # musl package does not currently provide gencat binary, which is needed for

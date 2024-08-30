@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1 pypi
 
@@ -39,11 +39,9 @@ BDEPEND+="
 		test-rust? (
 			dev-python/pyopenssl[${PYTHON_USEDEP}]
 		)
-		$(python_gen_cond_dep '
-			>=dev-python/boto3-1.17.72[${PYTHON_USEDEP}]
-			dev-python/httplib2[${PYTHON_USEDEP}]
-			>=dev-python/httpx-0.18.1[${PYTHON_USEDEP}]
-		' python3_{8..11})
+		>=dev-python/boto3-1.17.72[${PYTHON_USEDEP}]
+		dev-python/httplib2[${PYTHON_USEDEP}]
+		>=dev-python/httpx-0.18.1[${PYTHON_USEDEP}]
 	)
 "
 
@@ -61,6 +59,11 @@ python_test() {
 		tests/functional/test_passthrough.py
 		# eventlet is masked for removal
 		tests/bugfixes/nosetests/test_eventlet.py
+	)
+	local EPYTEST_DESELECT=(
+		# regressions with newer dev-python/requests
+		tests/functional/test_requests.py::test_httpretty_should_allow_registering_regexes_with_streaming_responses
+		tests/functional/test_requests.py::test_httpretty_should_handle_paths_starting_with_two_slashes
 	)
 
 	local ignore_by_dep=(

@@ -17,7 +17,7 @@ else
 fi
 
 DESCRIPTION="aMule, the all-platform eMule p2p client"
-HOMEPAGE="http://www.amule.org/"
+HOMEPAGE="https://www.amule.org/"
 
 LICENSE="GPL-2+"
 SLOT="0"

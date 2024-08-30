@@ -11,7 +11,7 @@ SRC_URI="https://fukuchi.org/works/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0/4"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~arm64-macos ~x64-macos"
 IUSE="png test"
 RESTRICT="!test? ( test )"
 

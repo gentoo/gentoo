@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: golang-vcs-snapshot.eclass
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 7
 # @PROVIDES: golang-base
 # @BLURB: eclass to unpack VCS snapshot tarballs for Go software
 # @DEPRECATED: go-module.eclass
@@ -45,7 +45,7 @@
 # and add the vendored tarballs to ${WORKDIR}/src/${EGO_PN}/vendor
 
 case ${EAPI} in
-	6|7) ;;
+	7) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 

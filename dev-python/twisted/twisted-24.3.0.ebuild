@@ -80,6 +80,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-24.3.0-skip-dsa-tests.patch"
+)
+
 python_prepare_all() {
 	# upstream test for making releases; not very useful and requires
 	# sphinx (including on py2)

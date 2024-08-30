@@ -4,14 +4,14 @@
 EAPI=8
 
 DESCRIPTION="\"minimum viable product\" Wayland compositor based on wlroots"
-HOMEPAGE="https://gitlab.freedesktop.org/wlroots/wlroots"
+HOMEPAGE="https://gitlab.freedesktop.org/wlroots/wlroots/-/tree/master/tinywl"
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/wlroots/wlroots.git"
 	inherit git-r3
 else
 	SRC_URI="https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/${PV}/downloads/wlroots-${PV}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 	S="${WORKDIR}/wlroots-${PV}"
 fi
 

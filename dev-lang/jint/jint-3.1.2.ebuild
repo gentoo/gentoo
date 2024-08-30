@@ -143,7 +143,7 @@ else
 	SRC_URI="https://github.com/sebastienros/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 SRC_URI+=" ${NUGET_URIS} "
@@ -162,6 +162,13 @@ DOTNET_PKG_BAD_PROJECTS=(
 pkg_setup() {
 	check-reqs_pkg_setup
 	dotnet-pkg_pkg_setup
+}
+
+src_prepare() {
+	dotnet-pkg_src_prepare
+
+	# Those files do not exist on musl. See bug https://bugs.gentoo.org/935450
+	rm Jint.Tests.PublicInterface/TimeSystemTests.cs || die
 }
 
 src_install() {

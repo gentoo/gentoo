@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">certbot/certbot</remote-id>
+		<remote-id type="pypi">certbot-apache</remote-id>
 	</upstream>
 </pkgmetadata>

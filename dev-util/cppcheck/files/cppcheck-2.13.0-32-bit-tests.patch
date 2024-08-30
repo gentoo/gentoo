@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/935368
+https://github.com/danmar/cppcheck/commit/9118d330d387e73a20e1bc46c65387306afa0895
+
+From 9118d330d387e73a20e1bc46c65387306afa0895 Mon Sep 17 00:00:00 2001
+From: chrchr-github <78114321+chrchr-github@users.noreply.github.com>
+Date: Sat, 23 Dec 2023 20:59:59 +0100
+Subject: [PATCH] Fix test failure on 32bit platform (#5803)
+
+--- a/test/testother.cpp
++++ b/test/testother.cpp
+@@ -2173,6 +2173,7 @@ class TestOther : public TestFixture {
+               "}\n");
+         ASSERT_EQUALS("[test.cpp:1]: (performance) Function parameter 't' should be passed by const reference.\n", errout.str());
+ 
++        Settings settings0 = settingsBuilder(_settings).platform(Platform::Type::Unix64).build();
+         check("struct S {\n" // #12138
+               "    union {\n"
+               "        int a = 0;\n"
+@@ -2189,7 +2190,7 @@ class TestOther : public TestFixture {
+               "};\n"
+               "void f(S s) {\n"
+               "    if (s.x > s.y) {}\n"
+-              "}\n");
++              "}\n", /*filename*/ nullptr, /*inconclusive*/ true, /*runSimpleChecks*/ true, /*verbose*/ false, &settings0);
+         ASSERT_EQUALS("", errout.str());
+ 
+         check("struct S { std::list<int> l; };\n" // #12147
+

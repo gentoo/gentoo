@@ -31,7 +31,7 @@ ADDR2LINE="llvm-addr2line"
 
 # Rust needs this to build some crates (like uutils)
 # https://github.com/rust-lang/rust/blob/master/compiler/rustc_llvm/build.rs
-LLVM_USE_LIBCXX=1
+LLVM_USE_LIBCXX="1"
 # https://github.com/rust-lang/cc-rs#c-support
 # https://github.com/rust-lang/cc-rs/blob/main/src/lib.rs
 CXXSTDLIB="c++"

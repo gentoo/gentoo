@@ -4,7 +4,7 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="github">joewing/jwm</remote-id>
-		<changelog>http://joewing.net/projects/jwm/snapshots/ChangeLog</changelog>
+		<changelog>https://github.com/joewing/jwm/releases</changelog>
 		<bugs-to>https://github.com/joewing/jwm/issues</bugs-to>
 	</upstream>
 	<longdescription>

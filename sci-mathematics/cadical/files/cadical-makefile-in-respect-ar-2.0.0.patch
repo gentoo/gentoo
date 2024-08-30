@@ -1,0 +1,11 @@
+--- a/makefile.in
++++ b/makefile.in
+@@ -60,7 +60,7 @@ mobical: src/mobical.o libcadical.a makefile $(LIBS)
+ 	$(COMPILE) -o $@ $< -L. -lcadical
+ 
+ libcadical.a: $(OBJ_SOLVER) $(OBJ_CONTRIB) makefile
+-	ar rc $@ $(OBJ_SOLVER) $(OBJ_CONTRIB)
++	${AR} rc $@ $(OBJ_SOLVER) $(OBJ_CONTRIB)
+ 
+ #--------------------------------------------------------------------------#
+ 

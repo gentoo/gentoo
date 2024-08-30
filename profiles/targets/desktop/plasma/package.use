@@ -70,6 +70,7 @@ media-libs/libsdl2 gles2
 
 # Required by kde-plasma/kwin
 media-libs/mesa wayland
+x11-base/xwayland libei
 
 # Required by kde-apps/kdenlive
 media-libs/mlt ffmpeg frei0r rubberband
@@ -87,7 +88,6 @@ sys-libs/zlib minizip
 # Keep existing defaults after dropping IUSE=phonon from make.defaults
 <app-office/calligra-3.3 phonon
 kde-apps/kio-extras phonon
-kde-apps/kio-extras-kf5 phonon
 kde-apps/marble phonon
 
 # Required by kde-plasma/plasma-meta
@@ -97,5 +97,5 @@ kde-plasma/kwin lock
 media-video/pipewire sound-server
 
 # Expected to be available by default in Plasma
-kde-frameworks/purpose kaccounts
-kde-plasma/plasma-desktop kaccounts
+kde-frameworks/purpose:5 kaccounts
+kde-plasma/plasma-desktop:5 kaccounts

@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>tamiko@gentoo.org</email>
-		<name>Matthias Maier</name>
+		<email>patrick@gentoo.org</email>
+		<name>Patrick Lauer</name>
 	</maintainer>
 	<use>
 		<flag name="general-32">Generic unoptimized 32-bits build</flag>

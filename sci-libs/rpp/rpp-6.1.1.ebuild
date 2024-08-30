@@ -29,7 +29,10 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	>=dev-build/cmake-3.22
 	>=dev-libs/half-1.12.0-r1
-	test? ( dev-cpp/gtest )
+	test? (
+		dev-cpp/gtest
+		media-libs/opencv:=
+	)
 "
 
 IUSE="cpu_flags_x86_avx2 cpu_flags_x86_fma3 cpu_flags_x86_f16c test"
@@ -54,7 +57,10 @@ src_prepare() {
 		-i CMakeLists.txt || die
 
 	cmake_src_prepare
-	use test && rcc_test_wrapper cmake_src_prepare
+	if use test; then
+		local PATCHES=()
+		rcc_test_wrapper cmake_src_prepare
+	fi
 }
 
 src_configure() {

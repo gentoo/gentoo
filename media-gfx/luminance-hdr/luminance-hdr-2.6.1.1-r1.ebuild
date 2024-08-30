@@ -52,6 +52,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.0-no-git.patch
 	"${FILESDIR}"/${PN}-2.6.0-docs.patch
 	"${FILESDIR}"/${PN}-2.5.1-openmp-automagic.patch
+	"${FILESDIR}"/${PN}-2.6.1.1-boost-1.85.patch
 	# patch by ArchLinux
 	"${FILESDIR}"/${P}-exiv2-0.28.patch
 )

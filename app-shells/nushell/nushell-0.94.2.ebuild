@@ -717,7 +717,7 @@ QA_FLAGS_IGNORED="usr/bin/nu.*"
 src_prepare() {
 	# The minimal Rust requirement is only needed on Windows for security reasons.
 	sed -i 's/rust-version = "1.77.2"//g' Cargo.toml
-	use plugins || eapply "${FILESDIR/${P}-dont-build-plugins.patch}"
+	use plugins || eapply "${FILESDIR/${PN}-dont-build-plugins.patch}"
 	default
 }
 

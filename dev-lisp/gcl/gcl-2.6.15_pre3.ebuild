@@ -35,6 +35,7 @@ PATCHES=(
 S="${WORKDIR}"/${PN}-Version_2_6_15pre3/${PN}
 
 src_configure() {
+	filter-lto # bug #931082
 	strip-flags
 	filter-flags -fstack-protector -fstack-protector-all
 

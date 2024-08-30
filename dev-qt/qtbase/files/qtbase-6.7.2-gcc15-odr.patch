@@ -1,0 +1,32 @@
+https://codereview.qt-project.org/c/qt/qtbase/+/582403
+From: Sam James <sam@gentoo.org>
+Date: Sat, 10 Aug 2024 16:43:05 +0100
+Subject: [PATCH] Fix ODR violation for IsFloatType_v
+
+With recent GCC 15 trunk, I started to see:
+```
+ld: .../kwalletentry.cc.o:(.rodata+0x0): multiple definition of `QtPrivate::IsFloatType_v<_Float16>';
+	src/runtime/kwalletd/backend/CMakeFiles/KF6WalletBackend.dir/cbc.cc.o:(.rodata+0x0): first defined here
+```
+
+The issue is that constexpr is only implicitly inline for functions or
+static data members [0], so the two constexpr IsFloatType_v definitions
+here cause an ODR violation.
+
+Explicitly mark them as inline constexpr.
+
+[0] http://eel.is/c++draft/dcl.constexpr#1.sentence-3
+--- a/src/corelib/global/qcomparehelpers.h
++++ b/src/corelib/global/qcomparehelpers.h
+@@ -348,9 +348,9 @@
+ 
+ template <typename T>
+-constexpr bool IsFloatType_v = std::is_floating_point_v<T>;
++inline constexpr bool IsFloatType_v = std::is_floating_point_v<T>;
+ 
+ #if QFLOAT16_IS_NATIVE
+ template <>
+-constexpr bool IsFloatType_v<QtPrivate::NativeFloat16Type> = true;
++inline constexpr bool IsFloatType_v<QtPrivate::NativeFloat16Type> = true;
+ #endif
+ 

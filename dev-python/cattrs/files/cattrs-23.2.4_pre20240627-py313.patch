@@ -1,0 +1,74 @@
+From b0ff7b1e40f4e3c1865da2cd04251eed6b64cd36 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tin=20Tvrtkovi=C4=87?= <tinchester@gmail.com>
+Date: Fri, 21 Jun 2024 01:25:15 +0200
+Subject: [PATCH] Fix some tests for 3.13
+
+---
+ tests/test_converter.py | 7 ++++---
+ tests/test_gen_dict.py  | 4 +++-
+ tests/typed.py          | 5 ++++-
+ 3 files changed, 11 insertions(+), 5 deletions(-)
+
+diff --git a/tests/test_converter.py b/tests/test_converter.py
+index b401860c..63a6502b 100644
+--- a/tests/test_converter.py
++++ b/tests/test_converter.py
+@@ -54,8 +54,8 @@ def test_simple_roundtrip(cls_and_vals, detailed_validation):
+ 
+ 
+ @given(
+-    simple_typed_classes(kw_only=False, newtypes=False)
+-    | simple_typed_dataclasses(newtypes=False),
++    simple_typed_classes(kw_only=False, newtypes=False, allow_nan=False)
++    | simple_typed_dataclasses(newtypes=False, allow_nan=False),
+     booleans(),
+ )
+ def test_simple_roundtrip_tuple(cls_and_vals, dv: bool):
+@@ -103,7 +103,8 @@ def test_simple_roundtrip_defaults_tuple(attr_and_vals):
+ 
+ 
+ @given(
+-    simple_typed_classes(newtypes=False) | simple_typed_dataclasses(newtypes=False),
++    simple_typed_classes(newtypes=False, allow_nan=False)
++    | simple_typed_dataclasses(newtypes=False, allow_nan=False),
+     unstructure_strats,
+ )
+ def test_simple_roundtrip_with_extra_keys_forbidden(cls_and_vals, strat):
+diff --git a/tests/test_gen_dict.py b/tests/test_gen_dict.py
+index 16911d51..5395b9e9 100644
+--- a/tests/test_gen_dict.py
++++ b/tests/test_gen_dict.py
+@@ -185,7 +185,9 @@ def test_unmodified_generated_structuring(cl_and_vals, dv: bool):
+ 
+ 
+ @given(
+-    simple_typed_classes(min_attrs=1) | simple_typed_dataclasses(min_attrs=1), data()
++    simple_typed_classes(min_attrs=1, allow_nan=False)
++    | simple_typed_dataclasses(min_attrs=1, allow_nan=False),
++    data(),
+ )
+ def test_renaming(cl_and_vals, data):
+     converter = Converter()
+diff --git a/tests/typed.py b/tests/typed.py
+index 7589c9a6..fa2573af 100644
+--- a/tests/typed.py
++++ b/tests/typed.py
+@@ -82,7 +82,9 @@ def simple_typed_classes(
+     ).flatmap(partial(_create_hyp_class, frozen=frozen))
+ 
+ 
+-def simple_typed_dataclasses(defaults=None, min_attrs=0, frozen=False, newtypes=True):
++def simple_typed_dataclasses(
++    defaults=None, min_attrs=0, frozen=False, newtypes=True, allow_nan=None
++):
+     """Yield tuples of (class, values)."""
+     return lists_of_typed_attrs(
+         defaults,
+@@ -90,6 +92,7 @@ def simple_typed_dataclasses(defaults=None, min_attrs=0, frozen=False, newtypes=
+         for_frozen=frozen,
+         allow_mutable_defaults=False,
+         newtypes=newtypes,
++        allow_nan=allow_nan,
+     ).flatmap(partial(_create_dataclass, frozen=frozen))
+ 
+ 

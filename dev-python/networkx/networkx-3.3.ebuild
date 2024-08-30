@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_FULLY_TESTED=( python3_{10..12} )
+PYTHON_FULLY_TESTED=( python3_{10..13} )
 PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" )
 
 inherit distutils-r1 multiprocessing optfeature pypi virtualx

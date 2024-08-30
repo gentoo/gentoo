@@ -47,7 +47,10 @@
 		<flag name="libaom">Enables <pkg>media-libs/libaom</pkg> based AV1 codec support.</flag>
 		<flag name="libaribb24">Enables ARIB text and caption decoding via <pkg>media-libs/aribb24</pkg>.</flag>
 		<flag name="libdrm">Enables <pkg>x11-libs/libdrm</pkg> support for better screen grabbing and hardware accelerated codecs.</flag>
+		<flag name="libdvdnav">Uses <pkg>media-libs/libdvdnav</pkg> to enable DVD demuxing</flag>
+		<flag name="libdvdread">Uses <pkg>media-libs/libdvdread</pkg> to enable DVD demuxing</flag>
 		<flag name="libilbc">Enables iLBC de/encoding via <pkg>media-libs/libilbc</pkg>.</flag>
+		<flag name="liblc3">Enables LC3 de/encoding via <pkg>media-sound/liblc3</pkg>.</flag>
 		<flag name="libplacebo">Adds flexible GPU-accelerated processing filter based on <pkg>media-libs/libplacebo</pkg>.</flag>
 		<flag name="librtmp">Enables Real Time Messaging Protocol using librtmp (<pkg>media-video/rtmpdump</pkg>) in addition to FFmpeg's native implementation.</flag>
 		<flag name="libsoxr">Enables audio resampling through <pkg>media-libs/soxr</pkg>.</flag>
@@ -65,6 +68,8 @@
 		<flag name="openssl">Enables <pkg>dev-libs/openssl</pkg> support. Adds support for encrypted network protocols (TLS/HTTPS).</flag>
 		<flag name="pic">Force shared libraries to be built as PIC (this is slower)</flag>
 		<flag name="postproc">Build and install libpostproc.</flag>
+		<flag name="qrcode">Enables QR encode generation via <pkg>media-gfx/qrencode</pkg></flag>
+		<flag name="quirc">Enables QR decoding via <pkg>media-libs/quirc</pkg></flag>
 		<flag name="rav1e">Enables AV1 encoding support via <pkg>media-video/rav1e</pkg>.</flag>
 		<flag name="rubberband">Adds time-stretching and pitch-shifting audio filter based on <pkg>media-libs/rubberband</pkg>.</flag>
 		<flag name="shaderc">Use <pkg>media-libs/shaderc</pkg> to compile GLSL</flag>

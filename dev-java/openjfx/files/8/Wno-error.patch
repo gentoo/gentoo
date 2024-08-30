@@ -3,18 +3,6 @@ From: Georgy Yakovlev <gyakovlev@gentoo.org>
 Date: Sun, 26 Apr 2020 21:15:36 -0700
 Subject: [PATCH] Wno-error
 
----
- buildSrc/armv5sf.gradle | 1 -
- buildSrc/armv6hf.gradle | 1 -
- buildSrc/armv6sf.gradle | 1 -
- buildSrc/armv7hf.gradle | 1 -
- buildSrc/armv7sf.gradle | 1 -
- buildSrc/linux.gradle   | 6 +++---
- buildSrc/x86egl.gradle  | 1 -
- 7 files changed, 3 insertions(+), 9 deletions(-)
-
-diff --git a/buildSrc/armv5sf.gradle b/buildSrc/armv5sf.gradle
-index ee154182..bee6003e 100644
 --- a/buildSrc/armv5sf.gradle
 +++ b/buildSrc/armv5sf.gradle
 @@ -135,7 +135,6 @@ def dfbLFlags = ["-ldl"]
@@ -25,8 +13,6 @@ index ee154182..bee6003e 100644
          "-I", file("modules/graphics/src/main/native-glass/monocle/")].flatten();
  def monocleLFlags = [extraLFlags, "-ldl", "-lm"].flatten()
  def glassCFlags = ["-ffast-math"]
-diff --git a/buildSrc/armv6hf.gradle b/buildSrc/armv6hf.gradle
-index dfdff237..0f090f23 100644
 --- a/buildSrc/armv6hf.gradle
 +++ b/buildSrc/armv6hf.gradle
 @@ -131,7 +131,6 @@ def extraLFlags = [
@@ -37,8 +23,6 @@ index dfdff237..0f090f23 100644
          "-I", file("modules/graphics/src/main/native-glass/monocle/")].flatten();
  def monocleLFlags = [extraLFlags, "-ldl", "-lm"].flatten()
  
-diff --git a/buildSrc/armv6sf.gradle b/buildSrc/armv6sf.gradle
-index ee6615f0..6ebbdd90 100644
 --- a/buildSrc/armv6sf.gradle
 +++ b/buildSrc/armv6sf.gradle
 @@ -135,7 +135,6 @@ def dfbLFlags = ["-ldl"]
@@ -49,8 +33,6 @@ index ee6615f0..6ebbdd90 100644
          "-I", file("modules/graphics/src/main/native-glass/monocle/")].flatten();
  def monocleLFlags = [extraLFlags, "-ldl", "-lm"].flatten()
  def glassCFlags = ["-ffast-math"]
-diff --git a/buildSrc/armv7hf.gradle b/buildSrc/armv7hf.gradle
-index e75bf8a9..092be817 100644
 --- a/buildSrc/armv7hf.gradle
 +++ b/buildSrc/armv7hf.gradle
 @@ -131,7 +131,6 @@ def extraLFlags = [
@@ -61,8 +43,6 @@ index e75bf8a9..092be817 100644
          "-I", file("modules/graphics/src/main/native-glass/monocle/")].flatten();
  def monocleLFlags = [extraLFlags, "-ldl", "-lm"].flatten()
  
-diff --git a/buildSrc/armv7sf.gradle b/buildSrc/armv7sf.gradle
-index 0bb8a530..38e98303 100644
 --- a/buildSrc/armv7sf.gradle
 +++ b/buildSrc/armv7sf.gradle
 @@ -135,7 +135,6 @@ def dfbLFlags = ["-ldl"]
@@ -73,8 +53,6 @@ index 0bb8a530..38e98303 100644
          "-I", file("modules/graphics/src/main/native-glass/monocle/")].flatten();
  def monocleLFlags = [extraLFlags, "-ldl", "-lm"].flatten()
  def glassCFlags = ["-ffast-math"]
-diff --git a/buildSrc/x86egl.gradle b/buildSrc/x86egl.gradle
-index 6bf6196b..ff24207d 100644
 --- a/buildSrc/x86egl.gradle
 +++ b/buildSrc/x86egl.gradle
 @@ -118,7 +118,6 @@ def extraLFlags = [

@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit bash-completion-r1 distutils-r1 pypi
 
@@ -16,28 +16,53 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 
-# "import file mismatch" when in S, "attempted relative import with no
-# known parent package" when in BUILD_DIR/install/.../borg/testsuite.
-# Needs work.
-RESTRICT="test"
-
-DEPEND="app-arch/lz4
+DEPEND="
+	app-arch/lz4
 	app-arch/zstd
 	dev-libs/openssl:0=
 	>=dev-libs/xxhash-0.8.1
-	virtual/acl"
+	virtual/acl
+"
 # borgbackup is *very* picky about which msgpack it work with,
 # check setup.py on bumps.
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
 	~dev-python/msgpack-1.0.8[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
-	dev-python/pyfuse3[${PYTHON_USEDEP}]"
+	dev-python/pyfuse3[${PYTHON_USEDEP}]
+"
 
-BDEPEND="dev-python/cython[${PYTHON_USEDEP}]
+BDEPEND="
+	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/pkgconfig[${PYTHON_USEDEP}]
-	dev-python/setuptools-scm[${PYTHON_USEDEP}]"
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
+	test? (
+		dev-python/python-dateutil[${PYTHON_USEDEP}]
+	)
+"
 
+# some tests randomly fail with xdist, bug #936524
 distutils_enable_tests pytest
+
+python_test() {
+	local EPYTEST_DESELECT=(
+		# Needs pytest-benchmark fixture
+		benchmark.py::test_
+
+		# TODO:
+		# Following tests fail because of additional warning in the output:
+		#   ResourceWarning: unclosed file <_io.BufferedReader name=14>
+		# which is not expected in asserts
+		archiver.py::ArchiverTestCase::test_create_content_from_command_with_failed_command
+		archiver.py::ArchiverTestCase::test_create_paths_from_command_with_failed_command
+		archiver.py::RemoteArchiverTestCase::test_create_content_from_command_with_failed_command
+		archiver.py::RemoteArchiverTestCase::test_create_paths_from_command_with_failed_command
+	)
+
+	# This disables fuse releated tests
+	local -x BORG_FUSE_IMPL="none"
+	epytest --pyargs borg.testsuite
+}
 
 src_install() {
 	distutils-r1_src_install

@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
@@ -17,8 +17,8 @@ inherit check-reqs cmake multiprocessing python-single-r1
 DESCRIPTION="C++ runtime system for parallel and distributed applications"
 HOMEPAGE="https://hpx.stellar-group.org/"
 
-SLOT="0"
 LICENSE="Boost-1.0"
+SLOT="0"
 IUSE="examples jemalloc mpi papi +perftools tbb zlib"
 # tests fail to compile
 RESTRICT="test"

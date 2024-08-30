@@ -18,7 +18,7 @@ S="${WORKDIR}"/${P}
 
 LICENSE="LGPL-3 BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 CP_DEPEND="
 	dev-java/commons-lang:3.6

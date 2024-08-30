@@ -4,8 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-# py3.13: https://github.com/bw2/ConfigArgParse/issues/294
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1
 
@@ -29,6 +28,11 @@ BDEPEND="
 "
 
 distutils_enable_tests unittest
+
+PATCHES=(
+	# https://github.com/bw2/ConfigArgParse/pull/295
+	"${FILESDIR}/${P}-py313.patch"
+)
 
 src_test() {
 	local -x COLUMNS=80

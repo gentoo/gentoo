@@ -54,10 +54,7 @@ RDEPEND="
 		dev-python/pyxdg[${PYTHON_USEDEP}]
 		dev-python/rencode[${PYTHON_USEDEP}]
 		dev-python/setproctitle[${PYTHON_USEDEP}]
-		|| (
-			>=dev-python/twisted-17.1.0[ssl(-),${PYTHON_USEDEP}]
-			>=dev-python/twisted-17.1.0[crypt(-),${PYTHON_USEDEP}]
-		)
+		>=dev-python/twisted-17.1.0[ssl(-),${PYTHON_USEDEP}]
 		>=dev-python/zope-interface-4.4.2[${PYTHON_USEDEP}]
 		dev-python/mako[${PYTHON_USEDEP}]
 	')

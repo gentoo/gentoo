@@ -1,6 +1,24 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Jolly <kangie@gentoo.org> (2024-08-14)
+# QUIC dependencies are not keyworded
+net-misc/curl http3 quic curl_quic_openssl curl_quic_ngtcp2
+
+# Michał Górny <mgorny@gentoo.org> (2024-07-24)
+# Full testing requires www-client/firefox.
+dev-python/selenium test-rust
+
+# Sam James <sam@gentoo.org> (2024-07-03)
+# kde-frameworks/kservice not keyworded here
+x11-misc/xdg-utils plasma
+
+# Ionen Wolkens <ionen@gentoo.org> (2024-07-02)
+# Needs dev-qt/qtquick3d:6 which itself needs media-libs/assimp that
+# is no longer keyworded here and currently fails tests (bug #935313).
+dev-python/PyQt6 quick3d
+dev-qt/qtmultimedia:6 qml
+
 # Sam James <sam@gentoo.org> (2024-05-19)
 # media-libs/jasper not yet keyworded here: https://bugs.gentoo.org/921559
 media-gfx/graphicsmagick jpeg2k
@@ -12,10 +30,6 @@ sys-devel/clang-runtime openmp
 # Matt Jolly <kangie@gentoo.org> (2024-03-02)
 # Fails tests, potential false negatives #911402
 app-antivirus/clamav system-mspack
-
-# Sam James <sam@gentoo.org> (2024-01-17)
-# The generated code is too large and it takes ages to build, bug #922249.
-dev-python/mypy native-extensions
 
 # Marek Szuba <marecki@gentoo.org> (2024-04-24)
 # Sam James <sam@gentoo.org> (2024-01-05)
@@ -37,10 +51,6 @@ dev-python/nbconvert test
 # Sam James <sam@gentoo.org> (2023-10-08)
 # dev-db/mysql not keyworded/stable here
 dev-perl/DBD-mysql mysql
-
-# Sam James <sam@gentoo.org> (2023-09-22)
-# Qt 6 not keyworded here.
-dev-build/cmake gui
 
 # Sam James <sam@gentoo.org> (2023-09-22)
 # sys-apps/flatpak is not keyworded here

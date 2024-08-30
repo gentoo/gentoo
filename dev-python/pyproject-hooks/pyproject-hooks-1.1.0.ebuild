@@ -33,3 +33,10 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# fails due to setuptools 70.1
+	# https://bugs.gentoo.org/936052
+	# https://github.com/pypa/pyproject-hooks/issues/203
+	tests/test_call_hooks.py::test_setup_py
+)

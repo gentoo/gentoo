@@ -26,6 +26,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.1-no-werror.patch
+	"${FILESDIR}"/${PN}-1.1.1-incompatible-pointer.patch
 )
 
 src_prepare() {

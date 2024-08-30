@@ -54,13 +54,11 @@ src_prepare() {
 
 python_test() {
 	local EPYTEST_DESELECT=(
-		# Needs network access
-		libcloud/test/compute/test_ovh.py::OvhTests::test_list_nodes_invalid_region
-		libcloud/test/test_connection.py::BaseConnectionClassTestCase::test_connection_timeout_raised
 		# TODO
 		libcloud/test/test_init.py::TestUtils::test_init_once_and_debug_mode
 	)
 
+	local -x NO_INTERNET=1
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
 }

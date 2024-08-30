@@ -44,13 +44,11 @@ QT_PV=6.2.0:6 # IDE_QT_VERSION_MIN
 
 # := is used where Qt's private APIs are used for safety
 COMMON_DEPEND="
+	dev-cpp/yaml-cpp:=
 	>=dev-qt/qt5compat-${QT_PV}
 	>=dev-qt/qtbase-${QT_PV}=[concurrent,dbus,gui,network,widgets,xml]
 	>=dev-qt/qtdeclarative-${QT_PV}=
-	clang? (
-		dev-cpp/yaml-cpp:=
-		$(llvm_gen_dep 'sys-devel/clang:${LLVM_SLOT}=')
-	)
+	clang? ( $(llvm_gen_dep 'sys-devel/clang:${LLVM_SLOT}=') )
 	designer? ( >=dev-qt/qttools-${QT_PV}[designer] )
 	help? (
 		>=dev-qt/qttools-${QT_PV}[assistant]
@@ -157,7 +155,9 @@ src_configure() {
 
 		-DWITH_QMLDESIGNER=$(usex qmldesigner)
 
-		-Djournald=no # not really useful unless match qtbase (needs systemd)
+		# meant to be in sync with qtbase[journald], but think(?) not worth
+		# handling given qt-creator can use QT_FORCE_STDERR_LOGGING=1 nowadays
+		-Djournald=no
 
 		# not packaged, but allow using if found
 		#-DCMAKE_DISABLE_FIND_PACKAGE_LibDDemangle=yes

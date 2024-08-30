@@ -16,16 +16,14 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~ia64 ~loong ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
-		$(python_gen_cond_dep '
-			dev-python/twisted[${PYTHON_USEDEP}]
-		' 3.{10..12})
+		dev-python/twisted[${PYTHON_USEDEP}]
 	)
 "
 

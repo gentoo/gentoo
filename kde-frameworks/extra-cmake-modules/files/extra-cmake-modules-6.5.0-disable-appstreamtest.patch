@@ -1,0 +1,31 @@
+From c287bae2677f0339d12a12f90147b5d96cdaa7a1 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 13 Aug 2024 21:44:24 +0200
+Subject: [PATCH] KDECMakeSettings.cmake: Add ECM_DISABLE_APPSTREAMTEST to not
+ run test
+
+and spend time in every consumer.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ kde-modules/KDECMakeSettings.cmake | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/kde-modules/KDECMakeSettings.cmake b/kde-modules/KDECMakeSettings.cmake
+index 3e4ac32f..9f73eb28 100644
+--- a/kde-modules/KDECMakeSettings.cmake
++++ b/kde-modules/KDECMakeSettings.cmake
+@@ -184,7 +184,10 @@ if(NOT KDE_SKIP_TEST_SETTINGS)
+       option(BUILD_TESTING "Build the testing tree." ON)
+       if(BUILD_TESTING)
+          enable_testing()
++option (ECM_DISABLE_APPSTREAMTEST "Do not run appstreamtest" OFF)
++if(NOT ECM_DISABLE_APPSTREAMTEST)
+          appstreamtest()
++endif()
+       endif ()
+    endif ()
+ 
+-- 
+2.45.2
+

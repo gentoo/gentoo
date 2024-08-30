@@ -22,13 +22,12 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	!media-libs/libmpcdec
-	!media-libs/libmpcdecsv7
 "
 
 PATCHES=(
 	"${FILESDIR}"/${P}-respect-cflags.patch
 	"${FILESDIR}"/${P}-fixup-link-depends.patch
+	"${FILESDIR}"/${P}-incompatible-pointers.patch
 )
 
 src_configure() {

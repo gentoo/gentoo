@@ -1,0 +1,18 @@
+--- a/src/chealpix.c
++++ b/src/chealpix.c
+@@ -532,7 +532,6 @@
+     return (long) res;
+ }
+ 
+-#ifndef __BMI2__
+ static int64_t spread_bits64(int v) {
+     return (int64_t) (utab[v & 0xff])
+             | ((int64_t) (utab[(v >> 8) & 0xff]) << 16)
+@@ -548,6 +547,7 @@
+             | (ctab[(raw >> 40) & 0xff] << 20);
+ }
+ 
++#ifndef __BMI2__
+ static int64_t xyf2nest64(int64_t nside, int ix, int iy, int face_num) {
+     return (face_num * nside * nside) + spread_bits64(ix)
+             + (spread_bits64(iy) << 1);

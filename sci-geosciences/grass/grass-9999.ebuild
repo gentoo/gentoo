@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="sqlite"  # bug 572440
 
 inherit desktop flag-o-matic python-single-r1 toolchain-funcs xdg
@@ -36,10 +36,11 @@ else
 	S="${WORKDIR}/${MY_P}"
 fi
 
-IUSE="blas bzip2 cxx fftw geos lapack las mysql netcdf nls odbc opencl opengl openmp pdal png postgres readline sqlite threads tiff truetype X zstd"
+IUSE="blas bzip2 cxx fftw geos lapack las mysql netcdf nls odbc opencl opengl openmp pdal png postgres readline sqlite svm threads tiff truetype X zstd"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
-	opengl? ( X )"
+	opengl? ( X )
+	pdal? ( cxx )"
 
 RDEPEND="
 	${PYTHON_DEPS}
@@ -48,7 +49,6 @@ RDEPEND="
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/ply[${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
-		dev-python/six[${PYTHON_USEDEP}]
 	')
 	sci-libs/gdal:=
 	sys-libs/gdbm:=
@@ -76,6 +76,7 @@ RDEPEND="
 	postgres? ( >=dev-db/postgresql-8.4:= )
 	readline? ( sys-libs/readline:= )
 	sqlite? ( dev-db/sqlite:3 )
+	svm? ( sci-libs/libsvm:= )
 	tiff? ( media-libs/tiff:= )
 	truetype? ( media-libs/freetype:2 )
 	X? (
@@ -202,6 +203,7 @@ src_configure() {
 		$(use_with las liblas "${EPREFIX}"/usr/bin/liblas-config)
 		$(use_with netcdf netcdf "${EPREFIX}"/usr/bin/nc-config)
 		$(use_with geos geos "${EPREFIX}"/usr/bin/geos-config)
+		$(use_with svm libsvm)
 		$(use_with X x)
 		$(use_with zstd)
 	)

@@ -9,7 +9,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/ksh93/ksh"
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ppc ~ppc64 ~riscv ~s390 ~sparc x86"
 	MY_PV=$(ver_rs 3 - 4 .)
 	SRC_URI="https://github.com/ksh93/${PN}/archive/v${MY_PV}/ksh-v${MY_PV}.tar.gz"
 	S="${WORKDIR}/${PN}-${MY_PV}"

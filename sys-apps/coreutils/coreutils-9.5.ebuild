@@ -33,7 +33,7 @@ else
 		verify-sig? ( mirror://gnu/${PN}/${P}.tar.xz.sig )
 	"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~x86-linux"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x86-linux"
 fi
 
 SRC_URI+=" !vanilla? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${MY_PATCH}.tar.xz )"
@@ -121,7 +121,10 @@ src_prepare() {
 	)
 
 	if ! use vanilla && [[ -d "${WORKDIR}"/${MY_PATCH} ]] ; then
-		PATCHES+=( "${WORKDIR}"/${MY_PATCH} )
+		PATCHES+=(
+			"${WORKDIR}"/${MY_PATCH}
+			"${FILESDIR}"/${PN}-9.5-skip-readutmp-test.patch
+		)
 	fi
 
 	default
@@ -224,9 +227,6 @@ src_test() {
 	local -x gl_public_submodule_commit=
 
 	local xfail_tests=(
-		# bug #629660
-		tests/dd/no-allocate.sh
-
 		# bug #675802
 		tests/env/env-S
 		tests/env/env-S.pl
@@ -244,6 +244,12 @@ src_test() {
 		#tests/touch/not-owner
 		#tests/touch/not-owner.sh
 	)
+
+	# This test is flaky (bug #629660, bug #935367).
+	cat > tests/dd/no-allocate.sh <<-EOF || die
+	#!/bin/sh
+	exit 77;
+	EOF
 
 	# This test is flaky (bug #910640).
 	cat > tests/tty/tty-eof.pl <<-EOF || die

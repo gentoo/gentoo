@@ -4,6 +4,6 @@
 # remove when python-3.4 goes end-of-life on 2019-03-16,
 # and when python-2.7 goes end-of-life on 2020-01-01.
 # https://docs.python.org/devguide/#status-of-python-branches
-ac_cv_func_getentropy=no
+ac_cv_func_getentropy="no"
 # Reconsider the stability of Prefix in 2019.
 ACCEPT_KEYWORDS="~${ARCH}"

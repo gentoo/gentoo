@@ -1,0 +1,40 @@
+https://bugs.gentoo.org/936838
+https://github.com/fail2ban/fail2ban/commit/c769046a1f729880cc53efdff4b52ac96010752f
+https://github.com/fail2ban/fail2ban/commit/54c0effceb998b73545073ac59c479d9d9bf19a4
+
+From c769046a1f729880cc53efdff4b52ac96010752f Mon Sep 17 00:00:00 2001
+From: sebres <info@sebres.de>
+Date: Sun, 11 Aug 2024 11:55:39 +0200
+Subject: [PATCH] Revert "`filterd./sshd.conf`: fixed journalmatch
+ (sshd.service seems to be renamed to ssh.service)" - it'd patched in debian
+ branch. This reverts commit 6fce23e7baa484c7d1f9b0c9a11986f3916c41dd.
+
+--- a/config/filter.d/sshd.conf
++++ b/config/filter.d/sshd.conf
+@@ -126,7 +126,7 @@ ignoreregex =
+ 
+ maxlines = 1
+ 
+-journalmatch = _SYSTEMD_UNIT=ssh.service + _COMM=sshd
++journalmatch = _SYSTEMD_UNIT=sshd.service + _COMM=sshd
+ 
+ # DEV Notes:
+ #
+
+From 54c0effceb998b73545073ac59c479d9d9bf19a4 Mon Sep 17 00:00:00 2001
+From: sebres <info@sebres.de>
+Date: Sun, 11 Aug 2024 12:10:12 +0200
+Subject: [PATCH] filter.d/sshd.conf: amend to #3747/#3812 (new ssh version
+ would log with `_COMM=sshd-session`)
+
+--- a/config/filter.d/sshd.conf
++++ b/config/filter.d/sshd.conf
+@@ -126,7 +126,7 @@ ignoreregex =
+ 
+ maxlines = 1
+ 
+-journalmatch = _SYSTEMD_UNIT=sshd.service + _COMM=sshd
++journalmatch = _SYSTEMD_UNIT=sshd.service + _COMM=sshd + _COMM=sshd-session
+ 
+ # DEV Notes:
+ #

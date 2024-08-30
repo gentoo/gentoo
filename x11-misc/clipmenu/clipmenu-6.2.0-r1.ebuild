@@ -1,9 +1,9 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit systemd
+inherit optfeature systemd
 
 DESCRIPTION="Clipboard management"
 HOMEPAGE="https://github.com/cdown/clipmenu"
@@ -49,7 +49,20 @@ src_install() {
 }
 
 pkg_postinst() {
+	optfeature "ignoring specific windows via CM_IGNORE_WINDOW" x11-misc/xdotool
+
+	if systemd_is_booted || has_version sys-apps/systemd; then
+		einfo ""
+		einfo "Make sure to import \$DISPLAY when using the systemd unit for clipmenud"
+		einfo "without a desktop environment. Preferably check /etc/X11/xinit/xinitrc{,.d}"
+		einfo "for relevant examples, or at least include the following in your ~/.xinitrc"
+		einfo "before clipmenud:"
+		einfo ""
+		einfo "systemctl --user import-environment DISPLAY"
+	fi
+
 	if ! use dmenu && ! use fzf && ! use rofi ; then
+		ewarn ""
 		ewarn "Clipmenu has been installed without a launcher."
 		ewarn "You will need to set \$CM_LAUNCHER to a dmenu-compatible app for clipmenu to work."
 		ewarn "Please refer to the documents for more info."

@@ -19,7 +19,7 @@ SRC_URI="https://github.com/grosser/parallel/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 
 DEPEND+="test? ( sys-process/lsof sys-process/procps )"
 

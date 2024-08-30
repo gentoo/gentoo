@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit elisp-common distutils-r1 optfeature
 
 if [[ ${PV} == *9999 ]] ; then
@@ -39,6 +39,7 @@ RDEPEND+="
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/pathspec[${PYTHON_USEDEP}]
 	>=dev-python/tree-sitter-0.22.0[${PYTHON_USEDEP}]
+	<dev-python/tree-sitter-0.23.0[${PYTHON_USEDEP}]
 	emacs? (
 		>=app-editors/emacs-24.1:*
 		app-emacs/ebuild-mode

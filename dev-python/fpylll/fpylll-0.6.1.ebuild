@@ -18,7 +18,7 @@ HOMEPAGE="
 # setup.py says "or later"
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~riscv"
 IUSE="test"
 
 DEPEND="
@@ -32,6 +32,8 @@ RDEPEND="
 BDEPEND="
 	>=dev-python/cython-3[${PYTHON_USEDEP}]
 "
+
+PATCHES=( "${FILESDIR}/${P}-testfix.patch" )
 
 distutils_enable_tests pytest
 

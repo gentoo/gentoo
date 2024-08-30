@@ -85,14 +85,15 @@ src_prepare() {
 	eautoreconf
 }
 
-multilib_src_configure() {
-	if [[ ${CHOST} == *86*-solaris* ]] ; then
-		# ASM code uses GNU ELF syntax, divide in particular, we need to
-		# allow this via ASFLAGS, since we don't have a flag-o-matic
-		# function for that, we'll have to abuse cflags for this
-		append-cflags -Wa,--divide
-	fi
+src_configure() {
+	# Sensitive to optimisation; parts of the codebase are built with
+	# -O0 already. Don't risk it with UB.
+	strip-flags
 
+	multilib-minimal_src_configure
+}
+
+multilib_src_configure() {
 	if [[ ${CHOST} == powerpc* ]] ; then
 		# ./configure does a lot of automagic, prevent that
 		# generic ppc32+ppc64 altivec
@@ -137,9 +138,6 @@ multilib_src_configure() {
 		# disabled due to various applications requiring privileges
 		# after libgcrypt drops them (bug #468616)
 		--without-capabilities
-
-		# http://trac.videolan.org/vlc/ticket/620
-		$([[ ${CHOST} == *86*-darwin* ]] && echo "--disable-asm")
 
 		$(use asm || echo "--disable-asm")
 

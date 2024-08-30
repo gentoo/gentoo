@@ -27,7 +27,6 @@ RDEPEND="${DEPEND}
 	sci-mathematics/maxima"
 
 src_prepare() {
-	setup-wxwidgets
 	cmake_src_prepare
 
 	sed -e "s|GPL.txt ||g" -e "s|share/doc/${PN}|share/doc/${PF}|g" -i CMakeLists.txt \
@@ -48,6 +47,8 @@ src_prepare() {
 }
 
 src_configure() {
+	setup-wxwidgets
+
 	local mycmakeargs=(
 		-DWXM_UNIT_TESTS=$(usex test)
 		-DWXM_DISABLE_WEBVIEW=$(usex webkit OFF ON)

@@ -4,7 +4,8 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/make.asc
-inherit flag-o-matic unpacker verify-sig
+GUILE_COMPAT=( 2-2 3-0 )
+inherit flag-o-matic unpacker verify-sig guile-single
 
 DESCRIPTION="Standard tool to compile source trees"
 HOMEPAGE="https://www.gnu.org/software/make/make.html"
@@ -24,8 +25,11 @@ LICENSE="GPL-3+"
 SLOT="0"
 IUSE="doc guile nls static test"
 RESTRICT="!test? ( test )"
+REQUIRED_USE="guile? ( ${GUILE_REQUIRED_USE} )"
 
-DEPEND="guile? ( >=dev-scheme/guile-1.8:= )"
+DEPEND="
+	guile? ( ${GUILE_DEPS} )
+"
 RDEPEND="
 	${DEPEND}
 	nls? ( virtual/libintl )
@@ -61,6 +65,16 @@ src_prepare() {
 
 	if [[ ${PV} == 9999 ]] ; then
 		eautoreconf
+	fi
+
+	if use guile; then
+		guile_bump_sources
+	fi
+}
+
+pkg_setup() {
+	if use guile; then
+		guile-single_pkg_setup
 	fi
 }
 

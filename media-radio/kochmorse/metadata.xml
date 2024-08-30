@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>marecki@gentoo.org</email>
-		<name>Marek Szuba</name>
+		<email>tomjbe@gentoo.org</email>
+		<name>Thomas Beierlein</name>
 	</maintainer>
 	<longdescription>
 		KochMorse is a simple morse-code tutor using the Koch method. It is

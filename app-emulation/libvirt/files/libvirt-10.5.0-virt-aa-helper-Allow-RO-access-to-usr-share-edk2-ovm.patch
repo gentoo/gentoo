@@ -1,0 +1,33 @@
+From 893800be49d2d58f78c96e4f06d9f24188cb8946 Mon Sep 17 00:00:00 2001
+Message-ID: <893800be49d2d58f78c96e4f06d9f24188cb8946.1720330325.git.mprivozn@redhat.com>
+From: Michal Privoznik <mprivozn@redhat.com>
+Date: Thu, 4 Jul 2024 13:07:47 +0200
+Subject: [PATCH] virt-aa-helper: Allow RO access to /usr/share/edk2-ovmf
+
+When binary version of edk2 is distributed, the files reside
+under /usr/share/edk2-ovmf as can be seen from Gentoo's ebuild
+[1]. Allow virt-aa-helper to generate paths under that dir.
+
+1: https://gitweb.gentoo.org/repo/gentoo.git/tree/sys-firmware/edk2-ovmf-bin/edk2-ovmf-bin-202202.ebuild
+Resolves: https://bugs.gentoo.org/911786
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+Reviewed-by: Andrea Bolognani <abologna@redhat.com>
+---
+ src/security/virt-aa-helper.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/security/virt-aa-helper.c b/src/security/virt-aa-helper.c
+index 402cbd9602..a3f85d26b0 100644
+--- a/src/security/virt-aa-helper.c
++++ b/src/security/virt-aa-helper.c
+@@ -475,6 +475,7 @@ valid_path(const char *path, const bool readonly)
+         "/initrd",
+         "/initrd.img",
+         "/usr/share/edk2/",
++        "/usr/share/edk2-ovmf/",             /* for OVMF images */
+         "/usr/share/OVMF/",                  /* for OVMF images */
+         "/usr/share/ovmf/",                  /* for OVMF images */
+         "/usr/share/AAVMF/",                 /* for AAVMF images */
+-- 
+2.44.2
+

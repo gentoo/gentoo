@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ RESTRICT="strip splitdebug"
 DEPEND=">=app-laptop/tuxedo-drivers-3.2.14"
 RDEPEND="${DEPEND}"
 # See bug #827729
-BDEPEND="app-arch/xz-utils[extra-filters]"
+BDEPEND="app-arch/xz-utils[extra-filters(+)]"
 
 S="${WORKDIR}"
 QA_PREBUILT="opt/tuxedo-control-center/*"

@@ -5,8 +5,8 @@ EAPI=8
 
 inherit toolchain-funcs
 
-DESCRIPTION="collection of games from NetBSD"
-HOMEPAGE="https://www.polyomino.org.uk/computer/software/bsd-games/"
+DESCRIPTION="Collection of games from NetBSD"
+HOMEPAGE="https://sourceforge.net/projects/bsd-games/"
 SRC_URI="https://github.com/msharov/bsd-games/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-3.1-verbose-build.patch.gz"
 

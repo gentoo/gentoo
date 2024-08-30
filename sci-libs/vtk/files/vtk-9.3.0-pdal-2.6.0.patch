@@ -6,12 +6,6 @@ Subject: [PATCH 1/2] IOPDAL: Always links with pdalcpp
 
 pdal_base and pdal_utils libraries are removed in PDAL 2.6.0
 link with pdalcpp instead starting from this version.
----
- IO/PDAL/CMakeLists.txt | 18 ++++++++++++------
- 1 file changed, 12 insertions(+), 6 deletions(-)
-
-diff --git a/IO/PDAL/CMakeLists.txt b/IO/PDAL/CMakeLists.txt
-index c31af0410f4..b83a9334109 100644
 --- a/IO/PDAL/CMakeLists.txt
 +++ b/IO/PDAL/CMakeLists.txt
 @@ -3,14 +3,20 @@ vtk_module_find_package(PACKAGE PDAL VERSION 2.1)
@@ -50,12 +44,6 @@ From: =?UTF-8?q?Timoth=C3=A9e=20Couble?= <timothee.couble@kitware.com>
 Date: Fri, 10 Nov 2023 10:12:32 +0100
 Subject: [PATCH 2/2] Add support for PDAL 2.0 version
 
----
- IO/PDAL/CMakeLists.txt | 9 +++++++++
- 1 file changed, 9 insertions(+)
-
-diff --git a/IO/PDAL/CMakeLists.txt b/IO/PDAL/CMakeLists.txt
-index b83a9334109..a7027524e4f 100644
 --- a/IO/PDAL/CMakeLists.txt
 +++ b/IO/PDAL/CMakeLists.txt
 @@ -23,4 +23,13 @@ vtk_module_add_module(VTK::IOPDAL

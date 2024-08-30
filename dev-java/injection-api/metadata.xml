@@ -5,6 +5,6 @@
 		<email>java@gentoo.org</email>
 	</maintainer>
 	<upstream>
-			<remote-id type="github">eclipse-ee4j/injection-api</remote-id>
+			<remote-id type="github">jakartaee/inject</remote-id>
 	</upstream>
 </pkgmetadata>

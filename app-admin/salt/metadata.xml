@@ -39,6 +39,5 @@ backbone of cloud and data center management.
   </use>
   <upstream>
     <remote-id type="pypi">salt</remote-id>
-    <remote-id type="github">saltstack/salt-vim</remote-id>
   </upstream>
 </pkgmetadata>

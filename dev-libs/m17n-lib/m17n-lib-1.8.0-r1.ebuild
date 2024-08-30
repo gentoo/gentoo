@@ -6,10 +6,10 @@ EAPI="8"
 inherit autotools
 
 DESCRIPTION="Multilingual Library for Unix/Linux"
-HOMEPAGE="https://savannah.nongnu.org/projects/m17n https://git.savannah.nongnu.org/cgit/m17n/m17n-lib.git"
+HOMEPAGE="https://www.nongnu.org/m17n/"
 SRC_URI="mirror://nongnu/m17n/${P}.tar.gz"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
 IUSE="X anthy athena bidi fontconfig gd libotf libxml2 spell xft"
@@ -35,7 +35,8 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-configure.patch
+	"${FILESDIR}"/${P}-configure.patch
+	"${FILESDIR}"/${PN}-clang.patch
 	"${FILESDIR}"/${PN}-freetype.patch
 	"${FILESDIR}"/${PN}-ftconfig.patch
 	"${FILESDIR}"/${PN}-ispell.patch

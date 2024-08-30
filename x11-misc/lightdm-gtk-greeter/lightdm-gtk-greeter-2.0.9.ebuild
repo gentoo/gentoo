@@ -8,12 +8,12 @@ inherit autotools xdg-utils
 DESCRIPTION="LightDM GTK+ Greeter"
 HOMEPAGE="https://github.com/Xubuntu/lightdm-gtk-greeter"
 SRC_URI="https://github.com/Xubuntu/${PN}/releases/download/${P}/${P}.tar.gz
-	branding? ( https://dev.gentoo.org/~marecki/dists/x11-misc/lightdm-gtk-greeter/lightdm-gentoo-patch-2.tar.gz )"
+	branding? ( https://dev.gentoo.org/~ceamac/x11-misc/lightdm-gtk-greeter/lightdm-gentoo-patch-2.tar.gz )"
 
 LICENSE="GPL-3 LGPL-3
 	branding? ( CC-BY-3.0 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 IUSE="appindicator branding"
 
 DEPEND="x11-libs/gtk+:3

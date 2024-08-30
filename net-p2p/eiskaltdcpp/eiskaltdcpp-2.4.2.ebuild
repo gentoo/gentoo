@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/eiskaltdcpp/eiskaltdcpp"
 
 LICENSE="GPL-2 GPL-3"
 SLOT="0"
-IUSE="cli daemon dbus +dht examples gold gtk idn javascript libcanberra libnotify lua +minimal pcre +qt5 spell sqlite upnp"
+IUSE="cli daemon dbus +dht examples gtk idn javascript libcanberra libnotify lua +minimal pcre +qt5 spell sqlite upnp"
 
 REQUIRED_USE="
 	dbus? ( qt5 )
@@ -82,7 +82,6 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
-	gold? ( sys-devel/binutils[gold] )
 	qt5? ( dev-qt/linguist-tools:5 )
 "
 
@@ -125,7 +124,7 @@ src_configure() {
 		-DUSE_MINIUPNP=$(usex upnp)
 		-DFORCE_XDG=ON
 		-DENABLE_STACKTRACE=OFF
-		-DUSE_GOLD=$(usex gold)
+		-DUSE_GOLD=OFF
 		-DLOCAL_JSONCPP=OFF
 		-DBUILD_STATIC=OFF
 		-DINSTALL_QT_TRANSLATIONS=OFF

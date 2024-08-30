@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ DESCRIPTION="Miscellaneous files"
 HOMEPAGE="https://savannah.gnu.org/projects/miscfiles/"
 # https://www.unicode.org/Public/${UNI_PV}/ucd/UnicodeData.txt
 SRC_URI="mirror://gnu/miscfiles/${P}.tar.gz
-	https://dev.gentoo.org/~whissi/dist/${PN}/UnicodeData-${UNI_PV}.txt.xz"
+	mirror://gentoo/0b/UnicodeData-${UNI_PV}.txt.xz"
 
 LICENSE="GPL-2 unicode"
 SLOT="0"

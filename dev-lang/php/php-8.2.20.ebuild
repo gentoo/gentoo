@@ -20,7 +20,7 @@ LICENSE="PHP-3.01
 	unicode? ( BSD-2 LGPL-2.1 )"
 
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ~ppc ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 # We can build the following SAPIs in the given order
 SAPIS="embed cli cgi fpm apache2 phpdbg"
@@ -150,6 +150,7 @@ PATCHES=(
 	"${FILESDIR}/php-iodbc-header-location.patch"
 	"${FILESDIR}/php-capstone-optional.patch"
 	"${FILESDIR}/php-8.2.8-openssl-tests.patch"
+	"${FILESDIR}/php-8.2.20-implicit-printf.patch"
 )
 
 # ARM/Windows functions (bug 923335)
@@ -338,6 +339,24 @@ src_prepare() {
 	#   https://github.com/php/php-src/issues/14368
 	#
 	rm ext/session/tests/gh13856.phpt || die
+
+	# Bug 935382, fixed eventually by
+	#
+	# - https://github.com/php/php-src/pull/14788
+	# - https://github.com/php/php-src/pull/14814
+	#
+	rm ext/standard/tests/strings/chunk_split_variation1_32bit.phpt || die
+	rm ext/standard/tests/strings/wordwrap_memory_limit.phpt || die
+
+	# Bug 935379, not yet fixed upstream but looks harmless (ordering
+	# of keys isn't guaranteed AFAICS):
+	#
+	# - https://github.com/php/php-src/issues/14786
+	#
+	rm ext/dba/tests/dba_gdbm.phpt || die
+
+	# https://github.com/php/php-src/pull/14439
+	rm ext/openssl/tests/bug74341.phpt || die
 }
 
 src_configure() {

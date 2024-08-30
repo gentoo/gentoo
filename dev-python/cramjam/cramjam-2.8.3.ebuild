@@ -151,7 +151,7 @@ CRATES="
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 
 inherit cargo distutils-r1
 
@@ -175,7 +175,7 @@ LICENSE+="
 	Unicode-DFS-2016
 "
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~riscv ~sparc x86"
 
 BDEPEND="
 	test? (
@@ -192,6 +192,7 @@ QA_FLAGS_IGNORED="usr/lib/py.*/site-packages/cramjam/cramjam.*.so"
 src_prepare() {
 	sed -i -e '/strip/d' pyproject.toml || die
 	distutils-r1_src_prepare
+	export UNSAFE_PYO3_SKIP_VERSION_CHECK=1
 }
 
 src_test() {

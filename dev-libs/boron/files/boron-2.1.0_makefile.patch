@@ -1,0 +1,62 @@
+diff --git a/Makefile b/Makefile
+index a590cbb..e3ee964 100644
+--- a/Makefile
++++ b/Makefile
+@@ -11,7 +11,7 @@ VIM_DIR=$(DESTDIR)/share/vim/vimfiles/syntax
+ 
+ OS := $(shell uname)
+ 
+-CFLAGS = -pipe -pedantic -Wall -W -Iinclude -Iurlan -Ieval -Isupport
++CFLAGS += -pipe -pedantic -Wall -W -Iinclude -Iurlan -Ieval -Isupport
+ CFLAGS += -O3 -DNDEBUG
+ #CFLAGS += -g -DDEBUG
+ 
+@@ -84,17 +84,17 @@ endif
+ 
+ 
+ $(ODIR)/%.o: urlan/%.c
+-	cc -c $(CFLAGS) $(CONFIG) $< -o $@
++	$(CC) -c $(CFLAGS) $(CONFIG) $< -o $@
+ $(ODIR)/%.o: support/%.c
+-	cc -c $(CFLAGS) $(CONFIG) $< -o $@
++	$(CC) -c $(CFLAGS) $(CONFIG) $< -o $@
+ $(ODIR)/%.o: eval/%.c
+-	cc -c $(CFLAGS) $(CONFIG) $< -o $@
++	$(CC) -c $(CFLAGS) $(CONFIG) $< -o $@
+ 
+ boron: $(EXE_OBJS) $(BORON_LIB)
+-	cc $^ -o $@ $(EXE_LIBS)
++	$(CC) $(LDFLAGS) $^ -o $@ $(EXE_LIBS)
+ 
+ $(ODIR)/os.o: unix/os.c
+-	cc -c $(CFLAGS) $(CONFIG) $< -o $@
++	$(CC) -c $(CFLAGS) $(LDFLAGS) $(CONFIG) $< -o $@
+ 
+ $(EXE_OBJS): | $(ODIR)
+ $(LIB_OBJS): | $(ODIR)
+@@ -108,7 +108,7 @@ ifdef STATIC_LIB
+ else ifeq ($(OS), Darwin)
+ 	libtool -dynamiclib -o $@ $^ -install_name @rpath/$(BORON_LIB) $(LIBS)
+ else
+-	cc -o $@ -shared -Wl,-soname,libboron.so.2 $^ $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ -shared -Wl,-soname,libboron.so.2 $^ $(LIBS)
+ 	ln -sf $(BORON_LIB) libboron.so.2
+ 	ln -sf $(BORON_LIB) libboron.so
+ endif
+@@ -130,13 +130,12 @@ ifeq ($(OS), Darwin)
+ 	install_name_tool -change libboron.dylib $(LIB_DIR)/libboron.dylib boron
+ 	install -m 644 libboron.dylib $(LIB_DIR)
+ else
+-	install -m 755 -s $(BORON_LIB) $(LIB_DIR)
++	install -m 755 $(BORON_LIB) $(LIB_DIR)
+ 	ln -s $(BORON_LIB) $(LIB_DIR)/libboron.so.2
+ endif
+ endif
+-	install -s -m 755 boron $(BIN_DIR)
+-	gzip -c -n doc/boron.troff > doc/boron.1.gz
+-	install -m 644 doc/boron.1.gz $(MAN_DIR)
++	install -m 755 boron $(BIN_DIR)
++	install -m 644 doc/boron.troff $(MAN_DIR)/boron.1
+ 
+ uninstall:
+ 	rm -f $(BIN_DIR)/boron $(MAN_DIR)/boron.1

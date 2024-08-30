@@ -5,10 +5,6 @@
 		<email>xgqt@gentoo.org</email>
 		<name>Maciej Barć</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>marecki@gentoo.org</email>
-		<name>Marek Szuba</name>
-	</maintainer>
 	<use>
 		<flag name="autotype">Add support to autotype the passwords into other applications</flag>
 		<flag name="browser">Enables browser plugin support</flag>

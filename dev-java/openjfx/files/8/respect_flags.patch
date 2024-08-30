@@ -3,17 +3,6 @@ From: Georgy Yakovlev <gyakovlev@gentoo.org>
 Date: Thu, 25 Mar 2021 10:06:49 -0700
 Subject: [PATCH] respect flags
 
----
- buildSrc/linux.gradle                           |  4 ++++
- .../gstreamer/projects/linux/avplugin/Makefile  | 16 ++++++----------
- .../gstreamer/projects/linux/fxplugins/Makefile | 17 ++++++-----------
- .../gstreamer/projects/linux/glib-lite/Makefile | 11 +++--------
- .../projects/linux/gstreamer-lite/Makefile      | 16 ++++++----------
- .../gstreamer/projects/linux/libffi/Makefile    |  6 ------
- 6 files changed, 25 insertions(+), 45 deletions(-)
-
-diff --git a/buildSrc/linux.gradle b/buildSrc/linux.gradle
-index a8886c16..e2397a54 100644
 --- a/buildSrc/linux.gradle
 +++ b/buildSrc/linux.gradle
 @@ -46,6 +46,9 @@ def commonFlags = [
@@ -34,8 +23,6 @@ index a8886c16..e2397a54 100644
  
  def toolchainDir
  if (hasProperty('toolchainDir')) {
-diff --git a/modules/media/src/main/native/gstreamer/projects/linux/avplugin/Makefile b/modules/media/src/main/native/gstreamer/projects/linux/avplugin/Makefile
-index f82f0537..01e069b1 100644
 --- a/modules/media/src/main/native/gstreamer/projects/linux/avplugin/Makefile
 +++ b/modules/media/src/main/native/gstreamer/projects/linux/avplugin/Makefile
 @@ -22,7 +22,7 @@ TARGET = $(BUILD_DIR)/lib$(BASE_NAME).so
@@ -78,8 +65,6 @@ index f82f0537..01e069b1 100644
  
  ifneq ($(strip $(LIBAV_DIR)),)
  INCLUDES += -I$(LIBAV_DIR)/include
-diff --git a/modules/media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile b/modules/media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile
-index 3887ac6d..99c82718 100644
 --- a/modules/media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile
 +++ b/modules/media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile
 @@ -19,7 +19,7 @@ DIRLIST = progressbuffer       \
@@ -121,8 +106,6 @@ index 3887ac6d..99c82718 100644
  
  ifeq ($(ARCH), x32)
      CFLAGS += -m32
-diff --git a/modules/media/src/main/native/gstreamer/projects/linux/glib-lite/Makefile b/modules/media/src/main/native/gstreamer/projects/linux/glib-lite/Makefile
-index c5b4b0a6..b0e6d6f9 100644
 --- a/modules/media/src/main/native/gstreamer/projects/linux/glib-lite/Makefile
 +++ b/modules/media/src/main/native/gstreamer/projects/linux/glib-lite/Makefile
 @@ -40,20 +40,15 @@ CFLAGS += -fPIC \
@@ -149,8 +132,6 @@ index c5b4b0a6..b0e6d6f9 100644
  
  ifeq ($(ARCH), x32)
      CFLAGS += -m32
-diff --git a/modules/media/src/main/native/gstreamer/projects/linux/gstreamer-lite/Makefile b/modules/media/src/main/native/gstreamer/projects/linux/gstreamer-lite/Makefile
-index 8634b559..109375f5 100644
 --- a/modules/media/src/main/native/gstreamer/projects/linux/gstreamer-lite/Makefile
 +++ b/modules/media/src/main/native/gstreamer/projects/linux/gstreamer-lite/Makefile
 @@ -41,7 +41,7 @@ DIRLIST = gstreamer/gst \
@@ -191,8 +172,6 @@ index 8634b559..109375f5 100644
  
  ifeq ($(ARCH), x32)
      CFLAGS += -m32
-diff --git a/modules/media/src/main/native/gstreamer/projects/linux/libffi/Makefile b/modules/media/src/main/native/gstreamer/projects/linux/libffi/Makefile
-index 62f1b802..54e0a63b 100644
 --- a/modules/media/src/main/native/gstreamer/projects/linux/libffi/Makefile
 +++ b/modules/media/src/main/native/gstreamer/projects/linux/libffi/Makefile
 @@ -20,12 +20,6 @@ CFLAGS += -c \

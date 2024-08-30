@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 DISTUTILS_EXT=1
 inherit distutils-r1
 
@@ -15,7 +15,7 @@ S=${WORKDIR}/${P}/py_ext
 
 LICENSE="|| ( Apache-2.0 BSD )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc64 x86"
 
 DEPEND="dev-libs/tlsh"
 RDEPEND="${DEPEND}"

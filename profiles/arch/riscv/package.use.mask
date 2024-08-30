@@ -1,14 +1,27 @@
 # Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Orlitzky <mjo@gentoo.org> (2024-08-26)
+# There's an unexplained test failure in sci-libs/qd that I've emailed
+# the authors about. Until we know what's up with that, USE=qd should
+# remain masked for consumers.
+sci-libs/fplll qd
+sci-mathematics/lcalc double-double quad-double
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-07-06)
+# KDE PIM is not keyworded here
+kde-apps/libkgapi:5 kf6compat
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-07-01)
+# USE="kf6compat,kaccounts" depends on kde-frameworks/purpose:6[webengine]
+# which is package.use.mask'ed on these arches. We cannot mask the
+# combination specifically but in reality kaccounts is useless without
+# additional dev-qt/qtwebengine revdeps.
+kde-frameworks/purpose:5 kaccounts
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-15)
 # Requires unkeyworded dev-qt/qtwebengine (and revdeps)
 kde-plasma/plasma-nm openconnect
-
-# Sam James <sam@gentoo.org> (2024-06-13)
-# Needs as-yet-unkeyworded KF6 (bug #934215)
-app-crypt/pinentry qt6
-app-office/libreoffice qt6
 
 # Sam James <sam@gentoo.org> (2024-05-19)
 # media-libs/jasper not yet keyworded here: https://bugs.gentoo.org/921559
@@ -37,6 +50,7 @@ media-libs/libplacebo -shaderc
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
 # sys-apps/s6-linux-init has not been tested on this arch
 sys-apps/openrc s6
+sys-apps/openrc-navi s6
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-08-30)
 # Avoid keywording more Qt stuff

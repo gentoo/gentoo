@@ -6,10 +6,10 @@ EAPI=7
 inherit autotools desktop
 
 DESCRIPTION="Simple DVD slideshow maker"
-HOMEPAGE="http://imagination.sourceforge.net/"
+HOMEPAGE="https://imagination.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${PN}/${PV}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 

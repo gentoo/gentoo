@@ -40,7 +40,7 @@ RDEPEND="
 	x11-libs/pango
 "
 # See bug #827729
-BDEPEND="app-arch/xz-utils[extra-filters]"
+BDEPEND="app-arch/xz-utils[extra-filters(+)]"
 
 QA_PREBUILT="opt/tuxedo-control-center/*"
 

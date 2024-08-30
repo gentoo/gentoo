@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake xdg
+inherit cmake flag-o-matic xdg
 
 DESCRIPTION="Full featured webcam capture application"
 HOMEPAGE="https://webcamoid.github.io"
@@ -24,23 +24,16 @@ IUSE="alsa ffmpeg gstreamer jack libuvc oss portaudio pulseaudio qtaudio qtcamer
 REQUIRED_USE="v4lutils? ( v4l )"
 
 COMMON_DEPEND="
-	dev-qt/qtconcurrent:5
-	dev-qt/qtcore:5
-	dev-qt/qtdbus:5
-	dev-qt/qtdeclarative:5
-	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtopengl:5
-	dev-qt/qtquickcontrols2:5
-	dev-qt/qtsvg:5
-	dev-qt/qtwidgets:5
+	dev-qt/qtbase:6[concurrent,dbus,gui,network,opengl,widgets]
+	dev-qt/qtdeclarative:6
+	dev-qt/qtsvg:6
 	ffmpeg?	( media-video/ffmpeg:= )
 	gstreamer? ( >=media-libs/gstreamer-1.6.0 )
 	jack? ( virtual/jack )
 	libuvc? ( media-libs/libuvc )
 	pulseaudio? ( media-libs/libpulse )
-	qtaudio? ( dev-qt/qtmultimedia:5 )
-	qtcamera? ( dev-qt/qtmultimedia:5 )
+	qtaudio? ( dev-qt/qtmultimedia:6 )
+	qtcamera? ( dev-qt/qtmultimedia:6 )
 	sdl? ( media-libs/libsdl2 )
 	v4l? ( media-libs/libv4l )
 "
@@ -52,6 +45,11 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/927104
+	# https://github.com/webcamoid/webcamoid/issues/702
+	filter-lto
+
 	#Disable git in package source. If not disabled the cmake configure process will show
 	#a lot of "fatal not a git repository" errors
 	sed -i 's|find_program(GIT_BIN git)|#find_program(GIT_BIN git)|' libAvKys/cmake/ProjectCommons.cmake || die
@@ -64,6 +62,7 @@ src_configure() {
 		"-DNOPIPEWIRE=1"
 		"-DNOPORTAUDIO=1" # PortAudio not packaged for gentoo
 		"-DNOALSA=$(usex alsa 0 1)"
+		"-DNOQTAUDIO=$(usex qtaudio 0 1)"
 		"-DNOQTCAMERA=$(usex qtcamera 0 1)"
 		"-DNOFFMPEG=$(usex ffmpeg 0 1)"
 		"-DNOGSTREAMER=$(usex gstreamer 0 1)"

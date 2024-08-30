@@ -1,0 +1,18 @@
+--- gnubiff-2.2.17/configure.ac
++++ gnubiff-2.2.17/configure.ac
+@@ -115,10 +115,15 @@
+ dnl LIBSSL (for AES encryption/decryption)
+ AC_CHECK_LIB(ssl, AES_encrypt, AC_DEFINE_UNQUOTED(HAVE_AES, 1, 
+ 			 Define to 1 if AES encryption is available), [
+ 	AC_CHECK_LIB(crypto, AES_encrypt, AC_DEFINE_UNQUOTED(HAVE_AES, 1))])
+ 
++dnl needed for gold
++AC_CHECK_LIB([X11],[XSync])
++
++AC_CHECK_LIB([gthread-2.0],[g_thread_init])
++
+ dnl GLIB, GTK, ...
+ GTK_REQUIRED="gtk+-3.0 >= 3.0.0"
+ GMODULE_REQUIRED="gmodule-export-2.0 >= 2.4"
+ X11="xproto x11"
+ PKG_CHECK_MODULES(GNUBIFF_DEP, 

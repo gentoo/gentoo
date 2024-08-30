@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,6 +9,8 @@ MYP=${PN}-v${PV}
 DESCRIPTION="Library to parse, pretty print, and evaluate CUDF documents"
 HOMEPAGE="http://www.mancoosi.org/cudf/"
 SRC_URI="https://gitlab.com/irill/${PN}/-/archive/v${PV}/${MYP}.tar.bz2"
+
+S="${WORKDIR}"/${MYP}
 
 LICENSE="LGPL-3"
 SLOT="0/${PV}"
@@ -33,8 +35,6 @@ DEPEND="${RDEPEND}
 BDEPEND="virtual/pkgconfig"
 
 QA_FLAGS_IGNORED='.*'
-
-S="${WORKDIR}"/${MYP}
 
 src_prepare() {
 	default

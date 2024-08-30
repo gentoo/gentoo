@@ -54,7 +54,7 @@ BDEPEND="
 
 LLVM_COMPONENTS=( compiler-rt cmake llvm/cmake )
 LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support llvm/utils/unittest )
-LLVM_PATCHSET=${PV/_/-}
+LLVM_PATCHSET=${PV/_/-}-r6
 llvm.org_set_globals
 
 python_check_deps() {

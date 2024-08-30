@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Scrapscript solves the software sharability problem. Modern software
+    breaks at boundaries. APIs diverge, packages crumble, configs ossify,
+    serialization corrupts, git tangles, dependencies break, documentation
+    dies, vulnerabilities surface, etc. To make software safe and sharable,
+    scrapscript combines existing wisdom in new ways: all expressions are
+    content-addressible "scraps", all programs are data, all programs are
+    "platformed".
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/tekknolagi/scrapscript/issues/</bugs-to>
+    <remote-id type="github">tekknolagi/scrapscript</remote-id>
+    <remote-id type="pypi">scrapscript</remote-id>
+  </upstream>
+</pkgmetadata>

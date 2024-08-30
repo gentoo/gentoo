@@ -48,7 +48,7 @@ else
 		mirror://debian/pool/main/c/${PN}/${PN}_${DEB_VER}${NMU_PR:++nmu}${NMU_PR}.tar.xz
 		https://archive.mozilla.org/pub/security/nss/releases/${RTM_NAME}/src/nss-${NSS_VER}.tar.gz
 		cacert? (
-			https://dev.gentoo.org/~whissi/dist/ca-certificates/nss-cacert-class1-class3-r2.patch
+			mirror://gentoo/d1/nss-cacert-class1-class3-r2.patch
 		)
 	"
 fi

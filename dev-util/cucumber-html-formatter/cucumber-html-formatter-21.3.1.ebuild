@@ -18,7 +18,7 @@ HOMEPAGE="https://cucumber.io/"
 
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
 SLOT="$(ver_cut 1)"
 IUSE="test"
 
@@ -27,5 +27,6 @@ RESTRICT="test"
 
 ruby_add_rdepend "
 	dev-util/cucumber-messages:22
+	!<dev-util/cucumber-html-formatter-19.2.0-r1:19
 	!<dev-util/cucumber-html-formatter-20.4.0-r1:20
 "

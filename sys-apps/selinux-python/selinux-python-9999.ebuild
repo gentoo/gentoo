@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI="8"
 PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="xml(+)"
 
@@ -31,7 +31,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND=">=sys-libs/libselinux-${PV}:=[python]
 	>=sys-libs/libsemanage-${PV}:=[python(+)]
-	>=sys-libs/libsepol-${PV}:=
+	>=sys-libs/libsepol-${PV}:=[static-libs(+)]
 	>=app-admin/setools-4.2.0[${PYTHON_USEDEP}]
 	>=sys-process/audit-1.5.1[python,${PYTHON_USEDEP}]
 	${PYTHON_DEPS}"
@@ -97,18 +97,21 @@ src_install() {
 	done
 
 	# Create sepolgen.conf with different devel location definition
+	mkdir -p "${D}"/etc/selinux || die "Failed to create selinux directory";
 	if [[ -f /etc/selinux/config ]];
 	then
 		local selinuxtype=$(awk -F'=' '/^SELINUXTYPE/ {print $2}' /etc/selinux/config);
-		mkdir -p "${D}"/etc/selinux || die "Failed to create selinux directory";
-		echo "SELINUX_DEVEL_PATH=/usr/share/selinux/${selinuxtype}/include:/usr/share/selinux/${selinuxtype}" > "${D}"/etc/selinux/sepolgen.conf;
+		echo "SELINUX_DEVEL_PATH=/usr/share/selinux/${selinuxtype}/include:/usr/share/selinux/${selinuxtype}" \
+			> "${D}"/etc/selinux/sepolgen.conf || die "Failed to generate sepolgen"
 	else
 		local selinuxtype="${POLICY_TYPES%% *}";
 		if [[ -n "${selinuxtype}" ]];
 		then
-			echo "SELINUX_DEVEL_PATH=/usr/share/selinux/${selinuxtype}/include:/usr/share/selinux/${selinuxtype}" > "${D}"/etc/selinux/sepolgen.conf;
+			echo "SELINUX_DEVEL_PATH=/usr/share/selinux/${selinuxtype}/include:/usr/share/selinux/${selinuxtype}" \
+				> "${D}"/etc/selinux/sepolgen.conf || die "Failed to generate sepolgen"
 		else
-			echo "SELINUX_DEVEL_PATH=/usr/share/selinux/strict/include:/usr/share/selinux/strict" > "${D}"/etc/selinux/sepolgen.conf;
+			echo "SELINUX_DEVEL_PATH=/usr/share/selinux/strict/include:/usr/share/selinux/strict" \
+				> "${D}"/etc/selinux/sepolgen.conf || die "Failed to generate sepolgen"
 		fi
 	fi
 }

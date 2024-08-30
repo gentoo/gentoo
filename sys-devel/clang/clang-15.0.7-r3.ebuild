@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 inherit cmake llvm llvm.org multilib multilib-minimal \
 	prefix python-single-r1 toolchain-funcs
 

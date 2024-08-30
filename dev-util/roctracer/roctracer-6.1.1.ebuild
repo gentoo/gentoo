@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 LLVM_COMPAT=( 18 )
 ROCM_VERSION=${PV}
 
@@ -41,6 +41,11 @@ python_check_deps() {
 		"dev-python/ply[${PYTHON_USEDEP}]"
 }
 
+pkg_setup() {
+	python-any-r1_pkg_setup
+	llvm-r1_pkg_setup
+}
+
 src_prepare() {
 	cmake_src_prepare
 
@@ -56,6 +61,9 @@ src_prepare() {
 
 	# Fix search path for HIP cmake
 	sed -e "s,\${ROCM_PATH}/lib/cmake,/usr/$(get_libdir)/cmake,g" -i test/CMakeLists.txt || die
+
+	# bug #892732
+	sed -i -e 's/-Werror//' CMakeLists.txt || die
 }
 
 src_configure() {
@@ -63,6 +71,7 @@ src_configure() {
 		-DCMAKE_MODULE_PATH="${EPREFIX}/usr/$(get_libdir)/cmake/hip"
 		-DFILE_REORG_BACKWARD_COMPATIBILITY=OFF
 		-DWITH_TESTS=$(usex test)
+		-DPython3_EXECUTABLE="${PYTHON}"
 	)
 	use test && mycmakeargs+=(
 		-DHIP_ROOT_DIR="${EPREFIX}/usr"

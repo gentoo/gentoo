@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools fortran-2
+inherit autotools flag-o-matic fortran-2
 
 MV=$(ver_cut 1)
 MY_PN=${PN}${MV}
@@ -70,6 +70,17 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/927728
+	#
+	# Fixed in SLOT 8, so no point in reporting it upstream or trying to fix
+	# it. The 6.x series is explicitly unsupported but graciously hosted "for
+	# reproduction of historic results".
+	#
+	# Anyway, the actual error is fortran related. The big feature of 8.x was
+	# porting to C++.
+	filter-lto
+
 	econf --disable-static
 }
 

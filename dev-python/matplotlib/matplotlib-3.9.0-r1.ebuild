@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=meson-python
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
 inherit distutils-r1 pypi virtualx
@@ -29,7 +29,7 @@ SRC_URI+="
 # Fonts: BitstreamVera, OFL-1.1
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~arm64-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~arm64-macos ~x64-macos"
 IUSE="cairo excel gtk3 latex qt5 tk webagg wxwidgets"
 
 DEPEND="
@@ -85,7 +85,7 @@ RDEPEND="
 	wxwidgets? (
 		$(python_gen_cond_dep '
 			dev-python/wxpython:*[${PYTHON_USEDEP}]
-		' python3_{10..11})
+		' python3_{10..12})
 	)
 "
 

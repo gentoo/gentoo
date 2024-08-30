@@ -9,13 +9,6 @@ avcodec.h stopped including bsf.h per FFmpeg commit
 57b5ec6ba7df [1]. Fixes compilation error against
 FFmpeg later than the mentioned commit.
 [1] https://github.com/FFmpeg/FFmpeg/commit/57b5ec6ba7df442caebc401c4a7ef3ebc066b519
----
- libhb/decavcodec.c  | 1 +
- libhb/muxavformat.c | 1 +
- 2 files changed, 2 insertions(+)
-
-diff --git a/libhb/decavcodec.c b/libhb/decavcodec.c
-index 372f86f82cf..e7a63289c0f 100644
 --- a/libhb/decavcodec.c
 +++ b/libhb/decavcodec.c
 @@ -41,6 +41,7 @@
@@ -26,8 +19,6 @@ index 372f86f82cf..e7a63289c0f 100644
  #include "libavfilter/avfilter.h"
  #include "libavfilter/buffersrc.h"
  #include "libavfilter/buffersink.h"
-diff --git a/libhb/muxavformat.c b/libhb/muxavformat.c
-index 232edd0942a..ad8e2a1d8fa 100644
 --- a/libhb/muxavformat.c
 +++ b/libhb/muxavformat.c
 @@ -8,6 +8,7 @@

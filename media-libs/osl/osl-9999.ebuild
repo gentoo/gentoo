@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..12} )
 
 # Check this on updates
-LLVM_COMPAT=( {15..17} )
+LLVM_COMPAT=( {15..18} )
 
 inherit cmake cuda flag-o-matic llvm-r1 toolchain-funcs python-single-r1
 
@@ -24,7 +24,7 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0/$(ver_cut 1-3)"
+SLOT="0/$(ver_cut 1-2)" # based on SONAME
 
 X86_CPU_FEATURES=(
 	sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4.1 sse4_2:sse4.2
@@ -32,8 +32,10 @@ X86_CPU_FEATURES=(
 )
 CPU_FEATURES=( "${X86_CPU_FEATURES[@]/#/cpu_flags_x86_}" )
 
-IUSE="doc gui libcxx nofma optix partio qt6 test ${CPU_FEATURES[*]%:*} python"
+IUSE="debug doc gui libcxx nofma optix partio qt6 test ${CPU_FEATURES[*]%:*} python"
+
 RESTRICT="!test? ( test )"
+
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # TODO optix
@@ -69,7 +71,12 @@ RDEPEND="
 	)
 "
 
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-util/patchelf
+	test? (
+		media-fonts/droid
+	)
+"
 BDEPEND="
 	sys-devel/bison
 	sys-devel/flex
@@ -130,25 +137,24 @@ src_configure() {
 					"b8_AVX512_noFMA"
 					"b16_AVX512_noFMA"
 				)
-			else
-				mybatched+=(
-					"b8_AVX512"
-					"b16_AVX512"
-				)
 			fi
+			mybatched+=(
+				"b8_AVX512"
+				"b16_AVX512"
+			)
 		fi
 		if use cpu_flags_x86_avx2 ; then
 			if use nofma; then
 				mybatched+=(
 					"b8_AVX2_noFMA"
 				)
-			else
-				mybatched+=(
-					"b8_AVX2"
-				)
 			fi
+			mybatched+=(
+				"b8_AVX2"
+			)
 		fi
-	elif use cpu_flags_x86_avx ; then
+	fi
+	if use cpu_flags_x86_avx ; then
 		mybatched+=(
 			"b8_AVX"
 		)
@@ -167,7 +173,6 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DCMAKE_POLICY_DEFAULT_CMP0146="OLD" # BUG FindCUDA
-		-DCMAKE_POLICY_DEFAULT_CMP0148="OLD" # BUG FindPythonInterp
 
 		# std::tuple_size_v is c++17
 		-DCMAKE_CXX_STANDARD="17"
@@ -180,15 +185,19 @@ src_configure() {
 		-DSTOP_ON_WARNING="no"
 		-DUSE_PARTIO="$(usex partio)"
 		-DUSE_PYTHON="$(usex python)"
-		-DPYTHON_VERSION="${EPYTHON/python}"
 		-DUSE_SIMD="$(IFS=","; echo "${mysimd[*]}")"
 		-DUSE_BATCHED="$(IFS=","; echo "${mybatched[*]}")"
 		-DUSE_LIBCPLUSPLUS="$(usex libcxx)"
 		-DOSL_USE_OPTIX="$(usex optix)"
-		-DVEC_REPORT="yes"
 
 		-DOpenImageIO_ROOT="${EPREFIX}/usr"
 	)
+
+	if use debug; then
+		mycmakeargs+=(
+			-DVEC_REPORT="yes"
+		)
+	fi
 
 	if use gui; then
 		mycmakeargs+=( -DUSE_QT="yes" )
@@ -219,6 +228,13 @@ src_configure() {
 		)
 	fi
 
+	if use python; then
+		mycmakeargs+=(
+			"-DPYTHON_VERSION=${EPYTHON#python}"
+			"-DPYTHON_SITE_DIR=$(python_get_sitedir)"
+		)
+	fi
+
 	cmake_src_configure
 }
 
@@ -245,166 +261,24 @@ src_test() {
 	fi
 
 	CMAKE_SKIP_TESTS=(
-		"broken"
+		"-broken$"
 		"^render"
 
 		# broken with in-tree <=dev-libs/optix-7.5.0 and out of date
 		"^example-cuda$"
 
 		# outright fail
+		"^testoptix.optix.opt$"
+		"^testoptix-noise.optix.opt$"
+		"^testoptix-reparam.optix.opt$"
 		"^transform-reg.regress.batched.opt$"
-
-		# SIGABRT similar to https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/issues/1363
-		"^derivs.opt.rs_bitcode$"
-		"^geomath.batched$"
-		"^matrix.batched$"
-		"^matrix.batched.opt$"
 		"^spline-reg.regress.batched.opt$"
-		"^transformc.batched$"
-	)
 
-	# These only fail inside sandbox
-	if [[ "${OSL_OPTIONAL_TESTS}" != "true" ]]; then
-		CMAKE_SKIP_TESTS+=(
-			# TODO: investigate failures
-			# SIGABRT similar to https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/issues/1363
-			"^andor-reg.regress.batched.opt$"
-			"^arithmetic-reg.regress.batched.opt$"
-			"^array-assign-reg.regress.batched.opt$"
-			"^array-copy-reg.regress.batched.opt$"
-			"^array-length-reg.regress.batched$"
-			"^closure-parameters.batched$"
-			"^closure-parameters.batched.opt$"
-			"^closure.batched$"
-			"^closure.batched.opt$"
-			"^debug-uninit$"
-			"^debug-uninit.batched$"
-			"^debug-uninit.batched.opt$"
-			"^debug-uninit.opt$"
-			"^debug-uninit.opt.rs_bitcode$"
-			"^derivs$"
-			"^derivs.batched$"
-			"^derivs.batched.opt$"
-			"^derivs.opt$"
-			"^exponential$"
-			"^exponential.opt$"
-			"^exponential.opt.rs_bitcode$"
-			"^filterwidth-reg.regress.batched.opt$"
-			"^geomath$"
-			"^geomath.batched.opt$"
-			"^geomath.opt$"
-			"^geomath.opt.rs_bitcode$"
-			"^getattribute-camera.batched$"
-			"^getattribute-camera.batched.opt$"
-			"^getattribute-shader.batched.opt$"
-			"^gettextureinfo-reg.regress.batched.opt$"
-			"^gettextureinfo-udim-reg.regress.batched.opt$"
-			"^gettextureinfo.batched$"
-			"^hyperb.batched.opt$"
-			"^hyperb.opt$"
-			"^hyperb.opt.rs_bitcode$"
-			"^initlist.batched$"
-			"^initlist.batched.opt$"
-			"^linearstep.batched$"
-			"^linearstep.batched.opt$"
-			"^loop.batched$"
-			"^loop.batched.opt$"
-			"^matrix$"
-			"^matrix-compref-reg.regress.batched.opt$"
-			"^matrix-reg.regress.rsbitcode.opt$"
-			"^matrix.opt$"
-			"^matrix.opt.rs_bitcode$"
-			"^matrix.rsbitcode.opt$"
-			"^message-no-closure.batched$"
-			"^message-no-closure.batched.opt$"
-			"^message-reg.regress.batched.opt$"
-			"^miscmath$"
-			"^miscmath.batched$"
-			"^miscmath.batched.opt$"
-			"^miscmath.opt$"
-			"^miscmath.opt.rs_bitcode$"
-			"^noise-cell.batched$"
-			"^noise-gabor-reg.regress.batched.opt$"
-			"^noise-gabor.batched$"
-			"^noise-gabor.batched.opt$"
-			"^noise-generic.batched$"
-			"^noise-generic.batched.opt$"
-			"^noise-perlin.batched$"
-			"^noise-perlin.batched.opt$"
-			"^noise-reg.regress.batched.opt$"
-			"^noise-simplex.batched$"
-			"^noise-simplex.batched.opt$"
-			"^noise.batched$"
-			"^opt-warnings.batched$"
-			"^opt-warnings.batched.opt$"
-			"^pnoise-cell.batched$"
-			"^pnoise-gabor.batched$"
-			"^pnoise-gabor.batched.opt$"
-			"^pnoise-generic.batched$"
-			"^pnoise-generic.batched.opt$"
-			"^pnoise-perlin.batched$"
-			"^pnoise-perlin.batched.opt$"
-			"^pnoise-reg.regress.batched.opt$"
-			"^pnoise.batched$"
-			"^pointcloud.batched$"
-			"^pointcloud.batched.opt$"
-			"^regex-reg.regress.batched.opt$"
-			"^select.batched$"
-			"^select.batched.opt$"
-			"^shaderglobals.batched$"
-			"^shaderglobals.batched.opt$"
-			"^smoothstep-reg.regress.batched.opt$"
-			"^spline-derivbug.batched$"
-			"^spline-derivbug.batched.opt$"
-			"^spline.batched$"
-			"^spline.batched.opt$"
-			"^splineinverse-ident.batched$"
-			"^splineinverse-ident.batched.opt$"
-			"^split-reg.regress.batched.opt$"
-			"^string$"
-			"^string-reg.regress.batched.opt$"
-			"^string.batched$"
-			"^string.batched.opt$"
-			"^string.opt$"
-			"^string.opt.rs_bitcode$"
-			"^struct-array-mixture.batched$"
-			"^struct-array-mixture.batched.opt$"
-			"^struct.batched$"
-			"^test-fmt-matrixcolor.opt.rs_bitcode$"
-			"^testoptix-noise.optix.opt$"
-			"^testoptix-reparam.optix.opt$"
-			"^texture-environment-opts-reg.regress.batched.opt$"
-			"^texture-opts-reg.regress.batched.opt$"
-			"^texture-wrap.batched$"
-			"^texture-wrap.batched.opt$"
-			"^transcendental-reg.regress.batched.opt$"
-			"^transform$"
-			"^transform.batched$"
-			"^transform.batched.opt$"
-			"^transform.opt$"
-			"^transform.opt.rs_bitcode$"
-			"^transformc$"
-			"^transformc.batched.opt$"
-			"^transformc.opt$"
-			"^transformc.opt.rs_bitcode$"
-			"^transformc.rsbitcode.opt$"
-			"^trig$"
-			"^trig-reg.regress.batched.opt$"
-			"^trig.batched$"
-			"^trig.batched.opt$"
-			"^trig.opt$"
-			"^trig.opt.rs_bitcode$"
-			"^vecctr.batched$"
-			"^vecctr.batched.opt$"
-			"^vector$"
-			"^vector-reg.regress.batched.opt$"
-			"^vector.opt$"
-			"^vector.opt.rs_bitcode$"
-			"^xml-reg.regress.batched.opt$"
-			# diff
-			"^testoptix.optix.opt$"
-		)
-	fi
+		# doesn't handle parameters
+		"^osl-imageio$"
+		"^osl-imageio.opt$"
+		"^osl-imageio.opt.rs_bitcode$"
+	)
 
 	myctestargs=(
 		# src/build-scripts/ci-test.bash
@@ -412,7 +286,7 @@ src_test() {
 	)
 
 	local -x DEBUG CXXFLAGS LD_LIBRARY_PATH DIR OSL_DIR OSL_SOURCE_DIR PYTHONPATH
-	DEBUG=1 # doubles the floating point tolerance
+	DEBUG=1 # doubles the floating point tolerance so we avoid FMA related issues
 	CXXFLAGS="-I${T}/usr/include"
 	LD_LIBRARY_PATH="${T}/usr/$(get_libdir)"
 	OSL_DIR="${T}/usr/$(get_libdir)/cmake/OSL"
@@ -423,6 +297,10 @@ src_test() {
 	fi
 
 	cmake_src_test
+
+	einfo ""
+	einfo "testing render tests in isolation"
+	einfo ""
 
 	CMAKE_SKIP_TESTS=(
 		"^render-background$"
@@ -444,4 +322,16 @@ src_test() {
 	)
 
 	cmake_src_test
+}
+
+src_install() {
+	cmake_src_install
+
+	if [[ -d "${ED}/usr/build-scripts" ]]; then
+		rm -rf "${ED}/usr/build-scripts" || die
+	fi
+
+	for batched_lib in "${ED}/usr/$(get_libdir)/lib_"*"_oslexec.so"; do
+		patchelf --set-soname "$(basename "${batched_lib}")" "${batched_lib}" || die
+	done
 }

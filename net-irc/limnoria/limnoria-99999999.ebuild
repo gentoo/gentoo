@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
-DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{10..12} )
+DISTUTILS_IN_SOURCE_BUILD=yes # needed for tests
 inherit distutils-r1
 
 MY_PV="${PV:0:4}-${PV:4:2}-${PV:6:2}"
@@ -18,7 +18,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	SRC_URI="https://github.com/ProgVal/${MY_PN}/archive/master-${MY_PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${MY_PN}-master-${MY_PV}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Python based extensible IRC infobot and channel bot"
@@ -37,14 +37,12 @@ RDEPEND="
 	dev-python/PySocks[${PYTHON_USEDEP}]
 	dev-python/sqlalchemy[${PYTHON_USEDEP}]
 	crypt? ( dev-python/python-gnupg[${PYTHON_USEDEP}] )
-	ssl? ( dev-python/pyopenssl[${PYTHON_USEDEP}] )
-	!net-irc/supybot
-	!net-irc/supybot-plugins"
+	ssl? ( dev-python/pyopenssl[${PYTHON_USEDEP}] )"
 
-python_prepare() {
-	einfo "Removing the RSS plugin because of clashes between libxml2's Python3"
-	einfo "bindings and feedparser."
-	rm -r "plugins/RSS" || die
+python_prepare_all() {
+	# replace "installed on ${timestamp}" with real version
+	echo "version='${MY_PV//-/.}'" > "${S}"/src/version.py || die
+	distutils-r1_python_prepare_all
 }
 
 python_test() {
@@ -53,9 +51,11 @@ python_test() {
 	EXCLUDE_PLUGINS=()
 	# intermittent failure due to issues loading libsandbox.so from LD_PRELOAD
 	# runs successfully when running the tests on the installed system
-	EXCLUDE_PLUGINS+=( --exclude="${PLUGINS_DIR}/Unix" )
-	# Runs despite --no-network (GH #1392)
-	EXCLUDE_PLUGINS+=( --exclude="${PLUGINS_DIR}/Aka" )
+	EXCLUDE_PLUGINS+=(
+		--exclude="${PLUGINS_DIR}/Unix"
+		--exclude="${PLUGINS_DIR}/Aka"
+		--exclude="${PLUGINS_DIR}/Misc"
+	)
 	"${EPYTHON}" "${BUILD_DIR}"/scripts/supybot-test "${BUILD_DIR}/../test" \
 		--plugins-dir="${PLUGINS_DIR}" --no-network \
 		--disable-multiprocessing "${EXCLUDE_PLUGINS[@]}" \

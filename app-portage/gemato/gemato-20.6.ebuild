@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=flit
 PYTHON_COMPAT=( python3_{10..13} pypy3 )
-PYTHON_REQ_USE='threads(+)'
+PYTHON_REQ_USE='threads(+),ssl(+)'
 
 inherit distutils-r1 pypi
 
@@ -17,12 +17,12 @@ HOMEPAGE="
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+gpg pretty-log tools"
 
 RDEPEND="
 	gpg? (
-		>=app-crypt/gnupg-2.2.20-r1
+		>=app-crypt/gnupg-2.2.20-r1[ssl]
 		dev-python/requests[${PYTHON_USEDEP}]
 	)
 	pretty-log? (

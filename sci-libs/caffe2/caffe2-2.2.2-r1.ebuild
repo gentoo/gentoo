@@ -13,7 +13,8 @@ MYP=${MYPN}-${PV}
 DESCRIPTION="A deep learning framework"
 HOMEPAGE="https://pytorch.org/"
 SRC_URI="https://github.com/pytorch/${MYPN}/archive/refs/tags/v${PV}.tar.gz
-	-> ${MYP}.tar.gz"
+	-> ${MYP}.tar.gz
+	https://dev.gentoo.org/~tupone/distfiles/${PN}-patches-20240809.tar.gz"
 
 S="${WORKDIR}"/${MYP}
 
@@ -97,16 +98,16 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.2.1-gentoo.patch
-	"${FILESDIR}"/${PN}-1.13.0-install-dirs.patch
-	"${FILESDIR}"/${PN}-1.12.0-glog-0.6.0.patch
-	"${FILESDIR}"/${PN}-1.13.1-tensorpipe.patch
-	"${FILESDIR}"/${PN}-2.0.0-gcc13.patch
-	"${FILESDIR}"/${PN}-2.0.0-cudnn_include_fix.patch
-	"${FILESDIR}"/${PN}-2.1.2-fix-rpath.patch
-	"${FILESDIR}"/${PN}-2.1.2-fix-openmp-link.patch
-	"${FILESDIR}"/${PN}-2.1.2-rocm-fix-std-cpp17.patch
-	"${FILESDIR}"/${P}-musl.patch
+	../patches/${PN}-2.2.1-gentoo.patch
+	../patches/${PN}-1.13.0-install-dirs.patch
+	../patches/${PN}-1.12.0-glog-0.6.0.patch
+	../patches/${PN}-1.13.1-tensorpipe.patch
+	../patches/${PN}-2.0.0-gcc13.patch
+	../patches/${PN}-2.0.0-cudnn_include_fix.patch
+	../patches/${PN}-2.1.2-fix-rpath.patch
+	../patches/${PN}-2.1.2-fix-openmp-link.patch
+	../patches/${PN}-2.1.2-rocm-fix-std-cpp17.patch
+	../patches/${P}-musl.patch
 )
 
 src_prepare() {

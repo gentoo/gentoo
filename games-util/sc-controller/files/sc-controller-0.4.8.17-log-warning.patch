@@ -1,0 +1,109 @@
+From 5c6b850f4ffe45427492d8b28bbf42b4ee5dd3e0 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Thu, 15 Aug 2024 21:25:42 +0100
+Subject: [PATCH] logging.warn was dropped in favour of logging.warning in
+ Python 3.13
+
+We already using logging.warning in many places.
+---
+ scc/actions.py   | 12 ++++++------
+ scc/gui/app.py   |  2 +-
+ scc/sccdaemon.py |  4 ++--
+ 3 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/scc/actions.py b/scc/actions.py
+index ae43db4b..4f4f5848 100644
+--- a/scc/actions.py
++++ b/scc/actions.py
+@@ -256,7 +256,7 @@ class Action(object):
+ 		Called when action is executed by pressing physical gamepad button.
+ 		'button_release' will be called later.
+ 		"""
+-		log.warn("Action %s can't handle button press event", self.__class__.__name__)
++		log.warning("Action %s can't handle button press event", self.__class__.__name__)
+ 	
+ 	
+ 	def button_release(self, mapper):
+@@ -264,7 +264,7 @@ class Action(object):
+ 		Called when action executed by pressing physical gamepad button is
+ 		expected to stop.
+ 		"""
+-		log.warn("Action %s can't handle button release event", self.__class__.__name__)
++		log.warning("Action %s can't handle button release event", self.__class__.__name__)
+ 	
+ 	
+ 	def axis(self, mapper, position, what):
+@@ -276,7 +276,7 @@ class Action(object):
+ 		'what' is one of LEFT, RIGHT or STICK (from scc.constants),
+ 		describing what is being updated
+ 		"""
+-		log.warn("Action %s can't handle axis event", self.__class__.__name__)
++		log.warning("Action %s can't handle axis event", self.__class__.__name__)
+ 	
+ 	
+ 	def pad(self, mapper, position, what):
+@@ -310,7 +310,7 @@ class Action(object):
+ 		'what' is one of LEFT, RIGHT, STICK (from scc.constants), describing what is
+ 		being updated
+ 		"""
+-		log.warn("Action %s can't handle whole stick event", self.__class__.__name__)
++		log.warning("Action %s can't handle whole stick event", self.__class__.__name__)
+ 	
+ 	
+ 	def whole_blocked(self, mapper, x, y, what):
+@@ -337,7 +337,7 @@ class Action(object):
+ 		
+ 		'what' can be None.
+ 		"""
+-		log.warn("Action %s can't handle incremental changes", self.__class__.__name__)
++		log.warning("Action %s can't handle incremental changes", self.__class__.__name__)
+ 	
+ 	
+ 	def cancel(self, mapper):
+@@ -397,7 +397,7 @@ class Action(object):
+ 		'position' contains current trigger position.
+ 		'old_position' contains last known trigger position.
+ 		"""
+-		log.warn("Action %s can't handle trigger event", self.__class__.__name__)
++		log.warning("Action %s can't handle trigger event", self.__class__.__name__)
+ 
+ 
+ class RangeOP(object):
+diff --git a/scc/gui/app.py b/scc/gui/app.py
+index fc6110f0..a537f831 100644
+--- a/scc/gui/app.py
++++ b/scc/gui/app.py
+@@ -633,7 +633,7 @@ class App(Gtk.Application, UserDataManager, BindingEditor):
+ 
+ 
+ 	def on_unknown_profile(self, ps, name):
+-		log.warn("Daemon reported unknown profile: '%s'; Overriding.", name)
++		log.warning("Daemon reported unknown profile: '%s'; Overriding.", name)
+ 		if self.current_file is not None and ps.get_controller() is not None:
+ 			ps.get_controller().set_profile(self.current_file.get_path())
+ 
+diff --git a/scc/sccdaemon.py b/scc/sccdaemon.py
+index cc140222..4a99b333 100644
+--- a/scc/sccdaemon.py
++++ b/scc/sccdaemon.py
+@@ -90,7 +90,7 @@ class SCCDaemon(Daemon):
+ 					if hasattr(mod, "init"):
+ 						to_init.append(mod)
+ 				else:
+-					log.warn("Skipping disabled driver '%s'", modname)
++					log.warning("Skipping disabled driver '%s'", modname)
+ 		
+ 		from scc.drivers import MOD_INIT_ORDER as order
+ 		index_fn = lambda n: order.index(n) if n in order else 1024
+@@ -500,7 +500,7 @@ class SCCDaemon(Daemon):
+ 							d.float()
+ 			except OSError as e:
+ 				# Most likely 'xinput' executable not found
+-				log.warn("Failed to deatach gamepad from xinput master: %s", e)
++				log.warning("Failed to deatach gamepad from xinput master: %s", e)
+ 	
+ 	
+ 	def load_default_profile(self, mapper=None):
+-- 
+2.45.2
+

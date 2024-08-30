@@ -84,6 +84,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/854732
+	# https://gitlab.com/menelkir/g15daemon/-/issues/10
+	filter-lto
+
 	append-cflags -fcommon #706712
 
 	econf $(use_enable static-libs static)

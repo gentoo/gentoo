@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{10..12} )
+PYTHON_COMPAT=( pypy3 python3_{10..13} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 pypi
@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86"
 
 RDEPEND="
 	>=dev-python/comm-0.1.3[${PYTHON_USEDEP}]
@@ -31,7 +31,6 @@ BDEPEND="
 	test? (
 		dev-python/ipykernel[${PYTHON_USEDEP}]
 		dev-python/jsonschema[${PYTHON_USEDEP}]
-		<dev-python/pytest-8.1[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 	)
 "
@@ -40,6 +39,13 @@ PDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/jupyter-widgets/ipywidgets/pull/3903
+	"${FILESDIR}/${P}-pytest-8.patch"
+	# https://github.com/jupyter-widgets/ipywidgets/pull/3924
+	"${FILESDIR}/${P}-py313.patch"
+)
 
 python_test() {
 	local EPYTEST_DESELECT=()

@@ -270,7 +270,7 @@ else
 		https://github.com/${PN}/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz
 		${CARGO_CRATE_URIS}
 	"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm64 ppc64 ~riscv x86"
 fi
 
 S="${WORKDIR}/${PN}-${MY_PV}"

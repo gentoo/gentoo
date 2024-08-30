@@ -11,7 +11,7 @@ HOMEPAGE="https://www.kdevelop.org/"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="LGPL-2+ LGPL-2.1+"
-SLOT="5"
+SLOT="0"
 KEYWORDS="amd64 arm64 ~ppc64 x86"
 
 BDEPEND="

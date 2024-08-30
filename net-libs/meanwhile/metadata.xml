@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">meanwhile</remote-id>
+		<remote-id type="github">obriencj/meanwhile</remote-id>
 	</upstream>
 </pkgmetadata>

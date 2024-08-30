@@ -1,10 +1,39 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@gentoo.org> (2024-06-13)
-# Needs as-yet-unkeyworded KF6 (bug #934215)
-app-crypt/pinentry qt6
-app-office/libreoffice qt6
+# orbea <orbea@riseup.net> (2024-07-19)
+# Unmask the dynarec flag which has x86 asm.
+games-emulation/rmg -dynarec
+
+# Matt Turner <mattst88@gentoo.org> (2024-07-17)
+# We only want to support spirv-llvm-translator >= 17 on x86, which is a
+# dependency of mesa.
+>=media-libs/mesa-24.1 llvm_slot_15 llvm_slot_16
+>=dev-util/intel_clc-24.1 llvm_slot_15 llvm_slot_16
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-07-12)
+# KDE PIM 6 is not being keyworded here
+kde-apps/libkgapi:5 kf6compat
+
+# Michael Orlitzky <mjo@gentoo.org> (2024-07-09)
+# The opcache extension fails to build on hardened x86, but only
+# if the JIT is enabled. Bug 930145.
+dev-lang/php opcache-jit
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-04)
+# app-office/lyx is unavailable on x86
+dev-tex/abntex lyx
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-07-01)
+# USE="kf6compat,kaccounts" depends on kde-frameworks/purpose:6[webengine]
+# which is package.use.mask'ed on these arches. We cannot mask the
+# combination specifically but in reality kaccounts is useless without
+# additional dev-qt/qtwebengine revdeps.
+kde-frameworks/purpose:5 kaccounts
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-06-17)
+# missing keywords on dev-python/PyQt6
+sci-geosciences/qgis qt6
 
 # José de Paula R. N. Assis <espinafre@gmail.com> (2024-03-25)
 # No PyQt6 (which is needed by USE=qt6 for qscintilla-python) on x86.
@@ -82,10 +111,6 @@ net-libs/pjproject webrtc
 # Ionen Wolkens <ionen@gentoo.org> (2023-03-30)
 # Needs x11-drivers/nvidia-drivers which is no longer available here.
 media-tv/mythtv nvdec
-
-# Craig Andrews <candrews@gentoo.org> (2023-03-09)
-# media-libs/libplacebo is keyworded here
-media-video/ffmpeg -libplacebo
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-02-06)
 # Successful build of dev-qt/qtwebengine depends on 64-bit host

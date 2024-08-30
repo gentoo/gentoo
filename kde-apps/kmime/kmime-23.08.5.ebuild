@@ -20,3 +20,8 @@ DEPEND="
 	>=kde-frameworks/ki18n-${KFMIN}:5
 "
 RDEPEND="${DEPEND}"
+
+CMAKE_SKIP_TESTS=(
+	# bug 924507
+	kmime-{header,message}test
+)

@@ -7,7 +7,7 @@ MY_P="${PN}-${PV:0:3}-${PV:4}"
 DESCRIPTION="bash source code debugging"
 HOMEPAGE="http://bashdb.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/bashdb/${MY_P}.tar.bz2
-	test? ( https://dev.gentoo.org/~whissi/dist/bashdb/bashdb-4.4-1.0.0-missing-test-files.tar.xz )"
+	test? ( mirror://gentoo/30/bashdb-4.4-1.0.0-missing-test-files.tar.xz )"
 
 LICENSE="GPL-2"
 SLOT="0"

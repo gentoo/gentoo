@@ -7,7 +7,7 @@ There are a few problems:
 
  * pi stress:  pthread_attr_setaffinity_np() is not supported
  * cyclictest: SIGEV_THREAD_ID is not supported
- * hackbench:  Fix include
+ * hackbench:  Fix include, add missing casts
  * all:        Fix sched_* calls
 
 With these changes applied, the rt-tests seem to run fine.
@@ -17,7 +17,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  Makefile                              |    5 --
  src/backfire/sendme.c                 |    1 
  src/cyclictest/cyclictest.c           |   68 ++++------------------------------
- src/hackbench/hackbench.c             |    4 +-
+ src/hackbench/hackbench.c             |   12 +++---
  src/include/musl.h                    |   28 ++++++++++++++
  src/lib/rt-utils.c                    |    1 
  src/pi_tests/tst-mutexpi10.c          |    2 +
@@ -25,7 +25,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  src/ptsematest/ptsematest.c           |    1 
  src/rt-migrate-test/rt-migrate-test.c |    1 
  src/sched_deadline/cyclicdeadline.c   |    1 
- 11 files changed, 47 insertions(+), 66 deletions(-)
+ 11 files changed, 51 insertions(+), 70 deletions(-)
  create mode 100644 src/include/musl.h
 
 --- a/Makefile
@@ -248,6 +248,30 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  static unsigned int datasize = 100;
  static unsigned int loops = 100;
  static unsigned int num_groups = 10;
+@@ -128,9 +130,9 @@ static int inet_socketpair(int fds[2])
+ 	sin.sin_port = 0;
+ 	sin.sin_addr.s_addr = inet_addr("127.0.0.1");
+ 
+-	if (bind(s1, &sin, len) < 0)
++	if (bind(s1, (struct sockaddr *)&sin, len) < 0)
+ 		barf("bind");
+-	if (getsockname(s1, &sin, &len) < 0)
++	if (getsockname(s1, (struct sockaddr *)&sin, &len) < 0)
+ 		barf("getsockname");
+ 	if (listen(s1, 10) < 0)
+ 		barf("listen");
+@@ -138,9 +140,9 @@ static int inet_socketpair(int fds[2])
+ 		barf("ioctl");
+ 	if (ioctl(s1, FIONBIO, &ul) < 0)
+ 		barf("ioctl");
+-	if (connect(s2, &sin, len) < 0)
++	if (connect(s2, (struct sockaddr *)&sin, len) < 0)
+ 		barf("connect");
+-	if ((fds[0] = accept(s1, &sin, &len)) < 0)
++	if ((fds[0] = accept(s1, (struct sockaddr *)&sin, &len)) < 0)
+ 		barf("accept");
+ 	ul = 0;
+ 	if (ioctl(s2, FIONBIO, &ul) < 0)
 --- /dev/null
 +++ b/src/include/musl.h
 @@ -0,0 +1,28 @@

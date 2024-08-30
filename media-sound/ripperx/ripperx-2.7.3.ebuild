@@ -9,6 +9,7 @@ DESCRIPTION="GTK program to rip CD audio tracks to Ogg, MP3 or FLAC"
 HOMEPAGE="https://sourceforge.net/projects/ripperx"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P/x/X}.tar.gz"
 
+S="${WORKDIR}/${P/x/X}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
@@ -24,12 +25,11 @@ BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
-S="${WORKDIR}/${P/x/X}"
-
 PATCHES=(
 	"${FILESDIR}"/${P}-ceilf-underlink.patch
 	"${FILESDIR}"/${P}-ldflags.patch
 	"${FILESDIR}"/${P}-pkgconfig.patch
+	"${FILESDIR}"/${P}-incompatible-pointer.patch
 )
 
 src_configure() {

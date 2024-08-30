@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit systemd tmpfiles
+inherit edo systemd tmpfiles
 
 MY_PN=${PN%-bin}
 MY_P=${MY_PN}-${PV}
@@ -15,10 +15,12 @@ SRC_URI="
 	https://raw.githubusercontent.com/openhab/openhab-linuxpkg/10061acd36524afb12a033fea6dcf142b399bf56/resources/usr/bin/openhab-cli
 		 -> openhab-cli-2024-01-14
 "
-KEYWORDS="~amd64 ~arm64"
 
+S="${WORKDIR}"
 LICENSE="EPL-2.0"
 SLOT="0"
+
+KEYWORDS="~amd64 ~arm64"
 
 MY_JAVA_DEPEND=">=virtual/jre-17"
 
@@ -31,8 +33,6 @@ RDEPEND="
 "
 
 BDEPEND="app-arch/unzip"
-
-S="${WORKDIR}"
 
 src_compile() {
 	:
@@ -100,4 +100,25 @@ EOF
 
 pkg_postinst() {
 	tmpfiles_process openhab.conf
+
+	if [[ -z ${REPLACING_VERSIONS} && -z ${OPENHAB_POSTINST_UPDATE} ]]; then
+	   return
+	fi
+
+	if [[ -d "${EROOT}"/run/systemd/system ]]; then
+		if systemctl is-active --quiet openhab; then
+			local openhab_service_active=1
+			einfo "Restarting OpenHAB service due to version update"
+			edob systemctl daemon-reload
+			edob systemctl stop openhab
+		fi
+
+		echo y | edob -m "Cleaning OpenHAB cache" \
+					  openhab-cli clean-cache
+		assert "Failed to clean OpenHAB cache"
+
+		if [[ -v openhab_service_active ]]; then
+			edob systemctl start openhab
+		fi
+	fi
 }

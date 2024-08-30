@@ -34,6 +34,11 @@ RDEPEND="
 	${DEPEND}
 "
 
+# False positive, always fails, bug #898658
+QA_CONFIG_IMPL_DECL_SKIP+=(
+	ioctlsocket
+)
+
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/ldns-config
 )

@@ -6,14 +6,31 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Viorel Munteanu <ceamac@gentoo.org> (2024-07-26)
+# Branch 7.1 needs a new BDEPEND for doc
+>=app-emulation/virtualbox-7.1 doc
+
+# orbea <orbea@riseup.net> (2024-07-19)
+# The dynarec is only supported upstream for amd64, arm, arm64 and x86.
+games-emulation/rmg dynarec
+
+# Maciej Mrozowski <reavertm@gentoo.org> (2024-07-14)
+# Fails with newer ffmpeg, bug #831486
+# Not needed by reverse deps as of 2024-07-14. Re-enable when
+# https://github.com/openscenegraph/OpenSceneGraph/pull/1281 or
+# similar effort is upstreamed
+dev-games/openscenegraph ffmpeg
+
+# Michał Górny <mgorny@gentoo.org> (2024-06-29)
+# JIT is experimental and prone to break packages.  Should you choose
+# to use it, please do not file Gentoo bugs and report any issues you
+# hit upstream.
+dev-lang/python jit
+
 # Sam James <sam@gentoo.org> (2024-06-24)
 # Breaks installed gems in hard-to-debug ways.
 # bug #887223, bug #891367, bug #903891, bug #917139
 dev-lang/ruby static-libs
-
-# Alfredo Tupone <tupone@gentoo.org> (2024-05-28)
-# Not working, bug #931046
->=sci-libs/caffe2-2.3.0 rocm
 
 # Sam James <sam@gentoo.org> (2024-05-09)
 # Experimental option upstream which seems undertested and underdocumented.
@@ -23,7 +40,7 @@ net-misc/openssh xmss
 # Matt Turner <mattst88@gentoo.org> (2024-05-08)
 # Brand new, introduces lots of new aspects to the build.
 # Masked for further testing.
-media-libs/mesa video_cards_nvk
+<media-libs/mesa-24.2 video_cards_nvk
 
 # Michał Górny <mgorny@gentoo.org> (2024-04-27)
 # dev-python/uv is nowhere near ready to be stabilized.
@@ -37,10 +54,6 @@ app-admin/testdisk ewf
 # Mike Gilbert <floppym@gentoo.org> (2024-04-18)
 # Wayland client is broken/deprecated by upstream. Bug 930197.
 >=net-misc/freerdp-3 wayland
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-04-06)
-# Depends on last-rited kde-apps/ktp-accounts-kcm
-dev-util/kdevelop reviewboard
 
 # Michał Górny <mgorny@gentoo.org> (2024-03-26)
 # sys-auth/pam_ssh is being last rited, bug #892031.
@@ -207,7 +220,6 @@ net-misc/curl sslv3
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-05-04)
 # No suitable version of dev-libs/protobuf available.
->=dev-java/protobuf-java-3.24.2 system-protoc
 =dev-java/protobuf-java-3.23.0 system-protoc
 
 # Joonas Niilola <juippis@gentoo.org> (2023-06-06)
@@ -559,13 +571,9 @@ dev-php/fedora-autoloader test
 dev-php/json-schema test
 dev-php/jsonlint test
 dev-php/recaptcha test
-dev-php/symfony-config test
-dev-php/symfony-dependency-injection test
-dev-php/symfony-event-dispatcher test
 dev-php/symfony-filesystem test
 dev-php/symfony-finder test
 dev-php/symfony-process test
-dev-php/symfony-yaml test
 dev-php/theseer-Autoload test
 dev-php/twig test
 
@@ -633,10 +641,6 @@ dev-python/autobahn xbr
 # Dependency pam_wrapper missing for tests, and RESTRICT=test is already set
 net-fs/samba test
 
-# Mike Gilbert <floppym@gentoo.org> (2020-04-23)
-# Tests are very sensitive to the host environment.
-dev-build/meson test
-
 # Alfredo Tupone <tupone@gentoo.org> (2020-04-04)
 # Ada support is not yet ready for sys-devel/gcc
 sys-devel/gcc ada
@@ -675,7 +679,7 @@ dev-python/statsmodels doc
 # Craig Andrews <candrews@gentoo.org> (2019-09-12)
 # OpenSSL (as of version 1.1.1) doesn't have APIs for QUIC support
 # see https://github.com/openssl/openssl/pull/8797
-net-libs/ngtcp2 ssl
+net-libs/ngtcp2 openssl
 net-misc/curl nghttp3
 
 # Thomas Deutschmann <whissi@gentoo.org> (2019-09-02)

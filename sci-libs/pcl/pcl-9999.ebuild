@@ -14,13 +14,12 @@ else
 	S="${WORKDIR}/${PN}-${P}"
 fi
 
-HOMEPAGE="https://pointclouds.org/"
 DESCRIPTION="2D/3D image and point cloud processing"
+HOMEPAGE="https://pointclouds.org/"
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1-2)"
 IUSE="cuda doc opengl openni openni2 pcap png +qhull qt5 qt6 usb vtk cpu_flags_x86_sse test tutorials"
-# tests need the gtest sources to be available at build time
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=sci-libs/flann-1.7.1
@@ -51,6 +50,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	!!dev-cpp/metslib
+	test? ( dev-cpp/gtest )
 "
 BDEPEND="
 	doc? (
@@ -62,7 +62,8 @@ BDEPEND="
 		dev-python/sphinx-rtd-theme
 		dev-python/sphinxcontrib-doxylink
 	)
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 REQUIRED_USE="
 	openni? ( usb )
@@ -73,6 +74,8 @@ REQUIRED_USE="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.12.1-allow-configuration-of-install-dirs.patch
 	"${FILESDIR}"/${PN}-1.12.1-fix-hardcoded-relative-directory-of-the-installed-cmake-files.patch
+	"${FILESDIR}/${PN}-1.14.1-gcc15.patch"
+	"${FILESDIR}/${PN}-1.14.1-tests.patch"
 )
 
 src_prepare() {
@@ -101,7 +104,7 @@ src_configure() {
 		"-DPCL_ENABLE_SSE=$(usex cpu_flags_x86_sse TRUE FALSE)"
 		"-DWITH_DOCS=$(usex doc TRUE FALSE)"
 		"-DWITH_TUTORIALS=$(usex tutorials TRUE FALSE)"
-		"-DBUILD_global_tests=FALSE"
+		-DBUILD_global_tests="$(usex test)"
 	)
 
 	if use qt5; then
@@ -113,4 +116,8 @@ src_configure() {
 	fi
 
 	cmake_src_configure
+}
+
+src_test() {
+	BUILD_DIR="${BUILD_DIR}/test" cmake_src_test
 }

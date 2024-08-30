@@ -20,6 +20,11 @@
     <name>Gentoo Mathematics Project</name>
   </maintainer>
 
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+
   <longdescription lang="en">
     When writing Cython code, special care must be taken to ensure that
     the code can be interrupted with CTRL-C. Since Cython optimizes for

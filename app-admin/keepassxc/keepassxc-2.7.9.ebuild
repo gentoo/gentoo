@@ -23,7 +23,7 @@ else
 		SRC_URI="https://github.com/keepassxreboot/${PN}/releases/download/${PV}/${P}-src.tar.xz"
 	fi
 
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 fi
 
 LICENSE="LGPL-2.1 GPL-2 GPL-3"

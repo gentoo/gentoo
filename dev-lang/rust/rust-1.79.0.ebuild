@@ -19,7 +19,7 @@ else
 	SLOT="stable/${ABI_VER}"
 	MY_P="rustc-${PV}"
 	SRC="${MY_P}-src.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
 fi
 
 RUST_STAGE0_VERSION="1.$(($(ver_cut 2) - 1)).0"
@@ -170,6 +170,7 @@ PATCHES=(
 	#"${FILESDIR}"/1.72.0-bump-libc-deps-to-0.2.146.patch  # pending refresh
 	"${FILESDIR}"/1.78.0-ignore-broken-and-non-applicable-tests.patch
 	"${FILESDIR}"/1.67.0-doc-wasm.patch
+	"${FILESDIR}"/1.79.0-revert-8c40426.patch
 )
 
 clear_vendor_checksums() {
@@ -499,6 +500,7 @@ src_configure() {
 		if use elibc_musl; then
 			cat <<- _EOF_ >> "${S}"/config.toml
 				crt-static = false
+				musl-root = "$($(tc-getCC) -print-sysroot)/usr"
 			_EOF_
 		fi
 	done

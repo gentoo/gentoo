@@ -14,7 +14,7 @@ SRC_URI="https://adishatz.org/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 IUSE="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

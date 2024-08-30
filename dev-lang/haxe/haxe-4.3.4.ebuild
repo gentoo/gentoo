@@ -12,7 +12,7 @@ if [[ "${PV}" == *9999* ]] ; then
 
 	EGIT_REPO_URI="https://github.com/HaxeFoundation/haxe.git"
 else
-	# Haxe-debian is a distribution variant then contains the required git modules.
+	# Haxe-debian is a distribution variant that contains the required git modules.
 	SRC_URI="https://github.com/HaxeFoundation/haxe-debian/archive/upstream/${PV}.tar.gz
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/haxe-debian-upstream-${PV}"

@@ -14,4 +14,10 @@
 		<flag name="headless-awt">Don't install the X backend for AWT, needed by some GUIs (used to be X flag)</flag>
 		<flag name="source">Install JVM sources</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">adoptium/temurin8-binaries</remote-id>
+		<remote-id type="github">adoptium/temurin11-binaries</remote-id>
+		<remote-id type="github">adoptium/temurin17-binaries</remote-id>
+		<remote-id type="github">adoptium/temurin21-binaries</remote-id>
+	</upstream>
 </pkgmetadata>

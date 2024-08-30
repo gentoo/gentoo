@@ -50,7 +50,7 @@ if [[ ${PV} != *9999* ]] ; then
 fi
 
 PATCHES=(
-	"${FILESDIR}/${PN}-desktop.patch"
+	"${FILESDIR}/${PN}-4.2.1-desktop.patch"
 )
 
 pkg_postinst() {

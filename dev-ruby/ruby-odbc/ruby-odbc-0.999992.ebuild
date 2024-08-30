@@ -21,7 +21,7 @@ SRC_URI="http://www.ch-werner.de/rubyodbc/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 Ruby-BSD )"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="test"
 
 DEPEND="${DEPEND} >=dev-db/unixODBC-2.0.6"

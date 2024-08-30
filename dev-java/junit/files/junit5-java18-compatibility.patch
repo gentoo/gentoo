@@ -1,0 +1,14 @@
+Description: Fixes the compatibility with the latest version of Java
+Author: Emmanuel Bourg <ebourg@apache.org>
+Forwarded: no
+--- a/junit-platform-launcher/src/main/java/org/junit/platform/launcher/TestIdentifier.java
++++ b/junit-platform-launcher/src/main/java/org/junit/platform/launcher/TestIdentifier.java
+@@ -316,7 +316,7 @@
+ 		}
+ 
+ 		@SuppressWarnings("unchecked")
+-		private SerializedForm(ObjectInputStream.GetField fields) throws IOException {
++		private SerializedForm(ObjectInputStream.GetField fields) throws ClassNotFoundException, IOException {
+ 			this.uniqueId = (String) fields.get("uniqueId", null);
+ 			this.parentId = (String) fields.get("parentId", null);
+ 			this.displayName = (String) fields.get("displayName", null);

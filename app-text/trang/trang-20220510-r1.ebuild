@@ -15,7 +15,7 @@ S="${WORKDIR}/jing-${P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="
 	app-i18n/unicode-data

@@ -1,0 +1,57 @@
+https://github.com/vmware/open-vm-tools/pull/732
+
+From 9403500c9aac5be8c38b528e9cc0c711ba2f0151 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sun, 4 Aug 2024 14:53:16 +0100
+Subject: [PATCH 1/2] Also try using pkg-config to detect xmlsec
+
+The xmlsec1-config script does not help when cross-compiling. pkg-config is
+subsequently used for a version detection anyway.
+---
+ open-vm-tools/configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/open-vm-tools/configure.ac b/open-vm-tools/configure.ac
+index 26b2e950..d46a51e2 100644
+--- a/open-vm-tools/configure.ac
++++ b/open-vm-tools/configure.ac
+@@ -879,7 +879,7 @@ if test "$enable_vgauth" = "yes" ; then
+    AC_VMW_DEFAULT_FLAGS([XMLSEC1])
+    AC_VMW_CHECK_LIB([xmlsec1],
+                      [XMLSEC1],
+-                     [],
++                     [xmlsec1],
+                      [xmlsec1-config],
+                      [],
+                      [xmlsec/xmlsec.h],
+-- 
+2.45.2
+
+
+From b9f0bb3205039d2fa4e8d1f6d2e4d622f3ef97b1 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sun, 4 Aug 2024 14:54:34 +0100
+Subject: [PATCH 2/2] Respect the $PKG_CONFIG variable when checking the xmlsec
+ version
+
+This particularly helps when cross-compiling.
+---
+ open-vm-tools/configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/open-vm-tools/configure.ac b/open-vm-tools/configure.ac
+index d46a51e2..39b9fa9c 100644
+--- a/open-vm-tools/configure.ac
++++ b/open-vm-tools/configure.ac
+@@ -884,7 +884,7 @@ if test "$enable_vgauth" = "yes" ; then
+                      [],
+                      [xmlsec/xmlsec.h],
+                      [xmlSecCheckVersionExt],
+-                     [XMLSEC1_VER=`pkg-config --modversion xmlsec1`
++                     [XMLSEC1_VER=`$PKG_CONFIG --modversion xmlsec1`
+                       xmlsec1_major_version="`echo $XMLSEC1_VER | cut -f1 -d. | cut -f1 -d-`"
+                       xmlsec1_minor_version="`echo $XMLSEC1_VER | cut -f2 -d. | cut -f1 -d-`"
+                       xmlsec1_micro_version="`echo $XMLSEC1_VER | cut -f3 -d. | cut -f1 -d-`"
+-- 
+2.45.2
+

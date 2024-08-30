@@ -6,11 +6,11 @@ EAPI=8
 inherit gap-pkg
 
 DESCRIPTION="The GAP Character Table Library"
-SLOT="0"
 SRC_URI="https://www.math.rwth-aachen.de/~Thomas.Breuer/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
-KEYWORDS="amd64"
+SLOT="0"
+KEYWORDS="amd64 ~riscv"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

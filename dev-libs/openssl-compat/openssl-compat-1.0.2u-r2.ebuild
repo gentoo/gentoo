@@ -25,20 +25,16 @@ DESCRIPTION="full-strength general purpose cryptography library (including SSL a
 HOMEPAGE="https://www.openssl.org/"
 SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
 	bindist? (
-		mirror://gentoo/${BINDIST_PATCH_SET}
-		https://dev.gentoo.org/~whissi/dist/openssl/${BINDIST_PATCH_SET}
+		mirror://gentoo/bb/${BINDIST_PATCH_SET}
 	)
 	!vanilla? (
-		mirror://gentoo/${PATCH_SET}.tar.xz
 		https://dev.gentoo.org/~chutzpah/dist/openssl/${PATCH_SET}.tar.xz
-		https://dev.gentoo.org/~whissi/dist/openssl/${PATCH_SET}.tar.xz
-		https://dev.gentoo.org/~polynomial-c/dist/${PATCH_SET}.tar.xz
 	)
-	https://dev.gentoo.org/~whissi/dist/openssl/openssl-compat-1.0.2u-versioned-symbols.patch.gz"
+	mirror://gentoo/ec/openssl-compat-1.0.2u-versioned-symbols.patch.gz"
 
 LICENSE="openssl"
 SLOT="1.0.0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~x86-linux"
 IUSE="+asm bindist gmp kerberos rfc3779 sctp cpu_flags_x86_sse2 sslv2 +sslv3 static-libs test +tls-heartbeat vanilla tls-compression"
 
 RESTRICT="!bindist? ( bindist )

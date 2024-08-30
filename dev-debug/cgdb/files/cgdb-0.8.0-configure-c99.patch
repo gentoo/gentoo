@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/830222
+https://github.com/cgdb/cgdb/pull/338
+
+From 039dba0ec3ae2c4b2636418652a5c63f9ff86049 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Wed, 8 Mar 2023 11:29:06 +0100
+Subject: [PATCH] configure: Avoid implicit int in readline check
+
+Future compilers will not accept implicit ints by default, altering
+the outcome of the check without this change.
+
+Signed-off-by: Florian Weimer <fweimer@redhat.com>
+--- a/config/readline_check_version.m4
++++ b/config/readline_check_version.m4
+@@ -86,7 +86,7 @@ AC_CACHE_VAL(ac_cv_rl_version,
+ #include <stdlib.h>
+ #include <readline/readline.h>
+ 
+-main()
++int main(void)
+ {
+ 	FILE *fp;
+ 	fp = fopen("conftest.rlv", "w");

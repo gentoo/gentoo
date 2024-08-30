@@ -78,10 +78,9 @@ usepil() {
 }
 
 python_configure_all() {
-	# It's important that these flags are also passed during the install phase
-	# as well. Make sure of that if you change the lines below. See bug 661308.
 	cat >> setup.cfg <<-EOF || die
 		[build_ext]
+		debug = True
 		disable_platform_guessing = True
 		$(usepil truetype)_freetype = True
 		$(usepil jpeg)_jpeg = True
@@ -94,8 +93,16 @@ python_configure_all() {
 		$(usepil xcb)_xcb = True
 		$(usepil zlib)_zlib = True
 	EOF
+	if use truetype; then
+		# these dependencies are implicitly disabled by USE=-truetype
+		# and we can't pass both disable_* and vendor_*
+		# https://bugs.gentoo.org/935124
+		cat >> setup.cfg <<-EOF || die
+			vendor_raqm = False
+			vendor_fribidi = False
+		EOF
+	fi
 
-	# We have patched in this env var.
 	tc-export PKG_CONFIG
 }
 

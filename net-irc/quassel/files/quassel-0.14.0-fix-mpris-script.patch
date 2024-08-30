@@ -1,0 +1,62 @@
+https://github.com/quassel/quassel/pull/617
+
+From c2ddbb99ed25c96e7f8eefd7eeff88f6d10c3875 Mon Sep 17 00:00:00 2001
+From: Andrew Udvare <audvare@gmail.com>
+Date: Fri, 3 May 2024 04:15:21 -0400
+Subject: [PATCH] data/scripts/mpris: update to use current MPRIS D-Bus
+ interface
+
+Update documentation
+Allow for . in the name of the player name
+Strip xesam: from the result
+---
+ data/scripts/mpris | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/data/scripts/mpris b/data/scripts/mpris
+index c483c7214a..ace8a573de 100755
+--- a/data/scripts/mpris
++++ b/data/scripts/mpris
+@@ -23,21 +23,21 @@
+ # Simple script to read metadata from mpris compatible mediaplayers via dbus.
+ #
+ # Run it like this:
+-# mpris amarok
++# mpris strawberry
+ #
+ # The script fills all fields exported by the player's dbusinterface.
+-# They are defined here: http://wiki.xmms2.xmms.se/wiki/MPRIS_Metadata
++# They are defined here: https://www.freedesktop.org/wiki/Specifications/mpris-spec/metadata/#fields
+ #
+ # To see which fields are actually available from your player,
+ # call something like this from a terminal:
+ #
+-# qdbus org.mpris.amarok /Player GetMetadata
++# qdbus org.mpris.MediaPlayer2.strawberry /org/mpris/MediaPlayer2 Metadata
+ # or
+-# qdbus org.mpris.vlc /Player GetMetadata
++# qdbus org.mpris.MediaPlayer2.mpv /org/mpris/MediaPlayer2 Metadata
+ # etc.
+-# 
++#
+ # Every field is available in the data hash 'd' via
+-# $d{"NAME_OF_FIELD"}
++# $d{"NAME_OF_FIELD"} (without the 'xesam:' prefix)
+ # To edit the output just change the marked line accordingly.
+ 
+ use strict;
+@@ -48,11 +48,11 @@ if($#ARGV < 0) {
+  exit 1;
+ }
+ 
+-die "Please don't use any special characters in playername." if($ARGV[0] =~ /[^\w\d_-]/);
++die "Please don't use any special characters in playername." if($ARGV[0] =~ /[^\.\w\d_-]/);
+ 
+-open(IN,"qdbus org.mpris.".$ARGV[0]." /Player GetMetadata|") or die "Couldn't get dbus result.";
++open(IN,"qdbus org.mpris.MediaPlayer2.".$ARGV[0]." /org/mpris/MediaPlayer2 Metadata|") or die "Couldn't get dbus result.";
+ while(<IN>) {
+-	$d{$1} = $2 if(/^([^:]+):\s+([^\n]+)/);
++	$d{$1} = $2 if(/^xesam:([^:]+):\s+([^\n]+)/);
+ }
+ close IN;
+ 

@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: golang-base.eclass
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Eclass that provides base functions for Go packages.
 # @DEPRECATED: go-module.eclass
 # @DESCRIPTION:
@@ -12,12 +12,9 @@
 # programming language; it also provides the build-time dependency on
 # dev-lang/go.
 
-case "${EAPI:-0}" in
-	5|6|7)
-		;;
-	*)
-		die "${ECLASS}: Unsupported EAPI (EAPI=${EAPI})"
-		;;
+case ${EAPI} in
+	7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ -z ${_GOLANG_BASE} ]]; then

@@ -30,11 +30,13 @@
 		<flag name="lua-rsvg">Enable if you want Lua RSVG bindings</flag>
 		<flag name="math">Enable support for glibc's libm math library</flag>
 		<flag name="moc">Enable monitoring of music played by <pkg>media-sound/moc</pkg></flag>
+		<flag name="mouse-events">Enable support for mouse events"</flag>
 		<flag name="mpd">Enable monitoring of music controlled by <pkg>media-sound/mpd</pkg></flag>
 		<flag name="nvidia">Enable reading of nvidia card temperature sensors via <pkg>x11-drivers/nvidia-drivers</pkg></flag>
 		<flag name="portmon">Enable support for tcp (ip4) port monitoring</flag>
 		<flag name="thinkpad">Enable support for IBM/Lenovo notebooks</flag>
 		<flag name="webserver">Enable support to act as a webserver serving conkys output using <pkg>net-libs/libmicrohttpd</pkg></flag>
 		<flag name="xmms2">Enable monitoring of music played by <pkg>media-sound/xmms2</pkg></flag>
+		<flag name="xinput">Enable support for Xinput 2 (slow)</flag>
 	</use>
 </pkgmetadata>

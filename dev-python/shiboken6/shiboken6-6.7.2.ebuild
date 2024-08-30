@@ -16,7 +16,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 
 LLVM_COMPAT=( {15..18} )
 
-inherit cmake flag-o-matic llvm-r1 python-r1 toolchain-funcs
+inherit cmake llvm-r1 python-r1 toolchain-funcs
 
 MY_PN="pyside-setup-everywhere-src"
 
@@ -31,7 +31,7 @@ S="${WORKDIR}/${MY_PN}-${PV}/sources/shiboken6"
 # arbitrarily relicensed. (TODO)
 LICENSE="|| ( GPL-2 GPL-3+ LGPL-3 ) GPL-3"
 SLOT="6/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv ~x86"
 IUSE="+docstrings numpy test vulkan"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -110,11 +110,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# -Werror=odr
-	# https://bugs.gentoo.org/925479
-	# https://bugreports.qt.io/browse/PYSIDE-2619
-	filter-lto
-
 	# Minimal tests for now, 2 failing with the extended version
 	# FIXME Subscripted generics cannot be used with class and instance checks
 	local mycmakeargs=(

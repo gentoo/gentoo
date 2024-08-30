@@ -57,7 +57,7 @@ LLVM_VERSION=$(ver_cut 1-3)
 # @DESCRIPTION:
 # The major version of current LLVM trunk.  Used to determine
 # the correct branch to use.
-_LLVM_MAIN_MAJOR=19
+_LLVM_MAIN_MAJOR=20
 
 # @ECLASS_VARIABLE: _LLVM_SOURCE_TYPE
 # @INTERNAL
@@ -72,14 +72,17 @@ if [[ -z ${_LLVM_SOURCE_TYPE+1} ]]; then
 			_LLVM_SOURCE_TYPE=snapshot
 
 			case ${PV} in
-				19.0.0_pre20240623)
-					EGIT_COMMIT=3ae6755719c6dfc07761b4e9bdac8c86bcb41734
+				20.0.0_pre20240822)
+					EGIT_COMMIT=503907dc505db1e439e7061113bf84dd105f2e35
 					;;
-				19.0.0_pre20240615)
-					EGIT_COMMIT=cddb9ce04e68d876de895d39d60b6af34d569012
+				20.0.0_pre20240815)
+					EGIT_COMMIT=db8ef6188cbbe2125e6d60bdef77a535105772df
 					;;
-				19.0.0_pre20240608)
-					EGIT_COMMIT=5aabbf0602c48b67bb89fd37f95bf97c95ded488
+				20.0.0_pre20240808)
+					EGIT_COMMIT=fd7d7882e7fa5a38d4bfde426120d4663718beb4
+					;;
+				20.0.0_pre20240801)
+					EGIT_COMMIT=130c135689ec12ab78c53645808524a8d28f7cae
 					;;
 				*)
 					die "Unknown snapshot: ${PV}"
@@ -241,12 +244,21 @@ llvm.org_set_globals() {
 				EGIT_BRANCH="release/${LLVM_MAJOR}.x"
 			;;
 		tar)
-			SRC_URI+="
-				https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV/_/-}/llvm-project-${PV/_/}.src.tar.xz
-				verify-sig? (
-					https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV/_/-}/llvm-project-${PV/_/}.src.tar.xz.sig
-				)
-			"
+			if [[ ${LLVM_MAJOR} -ge 19 ]]; then
+				SRC_URI+="
+					https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV/_/-}/llvm-project-${PV/_/-}.src.tar.xz
+					verify-sig? (
+						https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV/_/-}/llvm-project-${PV/_/-}.src.tar.xz.sig
+					)
+				"
+			else
+				SRC_URI+="
+					https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV/_/-}/llvm-project-${PV/_/}.src.tar.xz
+					verify-sig? (
+						https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV/_/-}/llvm-project-${PV/_/}.src.tar.xz.sig
+					)
+				"
+			fi
 			BDEPEND+="
 				verify-sig? (
 					>=sec-keys/openpgp-keys-llvm-18.1.6
@@ -359,7 +371,11 @@ llvm.org_src_unpack() {
 			git-r3_checkout '' . '' "${components[@]}"
 			;;
 		tar)
-			archive=llvm-project-${PV/_/}.src.tar.xz
+			if [[ ${LLVM_MAJOR} -ge 19 ]]; then
+				archive=llvm-project-${PV/_/-}.src.tar.xz
+			else
+				archive=llvm-project-${PV/_/}.src.tar.xz
+			fi
 			if use verify-sig; then
 				verify-sig_verify_detached \
 					"${DISTDIR}/${archive}" "${DISTDIR}/${archive}.sig"

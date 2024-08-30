@@ -9,8 +9,7 @@ EAPI=8
 : ${CMAKE_DOCS_PREBUILT:=1}
 
 CMAKE_DOCS_PREBUILT_DEV=sam
-#CMAKE_DOCS_VERSION=$(ver_cut 1-3)
-CMAKE_DOCS_VERSION=3.27.0
+CMAKE_DOCS_VERSION=$(ver_cut 1-2).0
 # Default to generating docs (inc. man pages) if no prebuilt; overridden later
 # See bug #784815
 CMAKE_DOCS_USEFLAG="+doc"
@@ -179,13 +178,9 @@ src_prepare() {
 		-e "s|@GENTOO_PORTAGE_EPREFIX@|${EPREFIX}/|g" \
 		Modules/Platform/{UnixPaths,Darwin}.cmake || die "sed failed"
 
-	if ! has_version -b \>=${CATEGORY}/${PN}-3.13 || ! cmake --version &>/dev/null ; then
-		CMAKE_BINARY="${S}/Bootstrap.cmk/cmake"
-		cmake_src_bootstrap
-	fi
-}
+	## in theory we could handle these flags in src_configure, as we do in many other packages. But we *must*
+	## handle them as part of bootstrapping, sadly.
 
-src_configure() {
 	# Fix linking on Solaris
 	[[ ${CHOST} == *-solaris* ]] && append-ldflags -lsocket -lnsl
 
@@ -193,6 +188,13 @@ src_configure() {
 	# https://gitlab.kitware.com/cmake/cmake/-/issues/20740
 	filter-lto
 
+	if ! has_version -b \>=${CATEGORY}/${PN}-3.13 || ! cmake --version &>/dev/null ; then
+		CMAKE_BINARY="${S}/Bootstrap.cmk/cmake"
+		cmake_src_bootstrap
+	fi
+}
+
+src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_USE_SYSTEM_LIBRARIES=ON
 		-DCMake_ENABLE_DEBUGGER=$(usex dap)
