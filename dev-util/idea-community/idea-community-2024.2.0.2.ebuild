@@ -100,7 +100,7 @@ src_install() {
 
 	insinto "${dir}"
 	doins -r *
-	fperms 755 "${dir}"/bin/{format.sh,idea,inspect.sh,restarter,fsnotifier}
+	fperms 755 "${dir}"/bin/{format.sh,idea,idea.sh,inspect.sh,restarter,fsnotifier}
 	if use amd64; then
 		JRE_DIR=jre
 		JRE_DIR=jre
