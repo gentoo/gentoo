@@ -219,8 +219,8 @@ LICENSE="BSD-2 BSD SSLeay MIT GPL-2 GPL-2+
 	nginx_modules_http_security? ( Apache-2.0 )
 	nginx_modules_http_push_stream? ( GPL-3 )"
 
-SLOT="mainline"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+SLOT="0"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 
 RESTRICT="!test? ( test )"
 
@@ -336,7 +336,7 @@ CDEPEND="
 RDEPEND="${CDEPEND}
 	app-misc/mime-types[nginx]
 	selinux? ( sec-policy/selinux-nginx )
-	!www-servers/nginx:0"
+	!www-servers/nginx:mainline"
 DEPEND="${CDEPEND}
 	arm? ( dev-libs/libatomic_ops )
 	libatomic? ( dev-libs/libatomic_ops )"
@@ -456,6 +456,12 @@ src_prepare() {
 	if use nginx_modules_http_upload_progress; then
 		cd "${HTTP_UPLOAD_PROGRESS_MODULE_WD}" || die
 		eapply "${FILESDIR}"/http_uploadprogress-nginx-1.23.0.patch
+		cd "${S}" || die
+	fi
+
+	if use nginx_modules_http_security ; then
+		cd "${HTTP_SECURITY_MODULE_WD}" || die
+		eapply "${FILESDIR}/http_security-nginx-1.26.2.patch"
 		cd "${S}" || die
 	fi
 
