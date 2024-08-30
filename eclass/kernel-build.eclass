@@ -243,7 +243,7 @@ kernel-build_src_configure() {
 		MAKEARGS+=( KBZIP2="lbzip2" )
 	fi
 
-	[[ -f .config ]] || die "Ebuild error: please copy default config into .config"
+	[[ -f .config ]] || die "Ebuild error: No .config, kernel-build_merge_configs was not called."
 
 	if [[ -z "${KV_LOCALVERSION}" ]]; then
 		KV_LOCALVERSION=$(sed -n -e 's#^CONFIG_LOCALVERSION="\(.*\)"$#\1#p' \
@@ -602,10 +602,13 @@ kernel-build_pkg_postinst() {
 # 3. Config saved via USE=savedconfig (if applicable).
 # 4. Module signing key specified via MODULES_SIGN_KEY* variables.
 # 5. User-supplied configs from ${BROOT}/etc/kernel/config.d/*.config.
+#
+# This function must be called by the ebuild in the src_prepare phase.
 kernel-build_merge_configs() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	[[ -f .config ]] || die "${FUNCNAME}: .config does not exist"
+	[[ -f .config ]] ||
+		die "${FUNCNAME}: No .config, please copy default config into .config"
 	has .config "${@}" &&
 		die "${FUNCNAME}: do not specify .config as parameter"
 
