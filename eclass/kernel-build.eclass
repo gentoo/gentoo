@@ -47,6 +47,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	app-alternatives/cpio
 	app-alternatives/bc
+	dev-lang/perl
 	sys-devel/bison
 	sys-devel/flex
 	virtual/libelf
