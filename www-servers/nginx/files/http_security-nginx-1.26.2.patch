@@ -1,0 +1,26 @@
+From 7d37ace7431ea9704faa98f29876bcd72ef4b1ff Mon Sep 17 00:00:00 2001
+From: Ervin Hegedus <airween@gmail.com>
+Date: Tue, 23 Apr 2024 21:42:02 +0200
+Subject: [PATCH] fix: Added missing header for conftest
+
+---
+ config | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/config b/config
+index c6e7467..3bf06a8 100644
+--- a/config
++++ b/config
+@@ -10,7 +10,8 @@
+ 
+ ngx_feature_name=
+ ngx_feature_run=no
+-ngx_feature_incs="#include <modsecurity/modsecurity.h>"
++ngx_feature_incs="#include <modsecurity/modsecurity.h>
++#include <stdio.h>"
+ ngx_feature_libs="-lmodsecurity"
+ ngx_feature_test='printf("hello");'
+ ngx_modsecurity_opt_I=
+-- 
+2.26.2
+
