@@ -79,18 +79,15 @@ src_prepare() {
 
 	# prepare the default config
 	case ${ARCH} in
+		arm | hppa | riscv | sparc)
+			> .config || die
+		;;
 		amd64)
 			cp "${DISTDIR}/kernel-x86_64-fedora.config.${CONFIG_VER}" .config || die
-			;;
-		arm)
-			return
 			;;
 		arm64)
 			cp "${DISTDIR}/kernel-aarch64-fedora.config.${CONFIG_VER}" .config || die
 			biendian=true
-			;;
-		hppa)
-			return
 			;;
 		ppc)
 			# assume powermac/powerbook defconfig
@@ -100,12 +97,6 @@ src_prepare() {
 		ppc64)
 			cp "${DISTDIR}/kernel-ppc64le-fedora.config.${CONFIG_VER}" .config || die
 			biendian=true
-			;;
-		riscv)
-			return
-			;;
-		sparc)
-			return
 			;;
 		x86)
 			cp "${DISTDIR}/kernel-i686-fedora.config.${CONFIG_VER}" .config || die
