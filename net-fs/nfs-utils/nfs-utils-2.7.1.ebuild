@@ -72,6 +72,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.2-no-werror.patch
 	"${FILESDIR}"/${PN}-udev-sysctl.patch
+	"${FILESDIR}"/${PN}-2.6.4-C99-inline.patch
 )
 
 pkg_setup() {
