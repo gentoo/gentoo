@@ -1,0 +1,20 @@
+diff --git a/dependencies/CMakeLists.txt b/dependencies/CMakeLists.txt
+index b9802392..056a0635 100644
+--- a/dependencies/CMakeLists.txt
++++ b/dependencies/CMakeLists.txt
+@@ -146,15 +146,3 @@ endfunction()
+ if(SIMDJSON_COMPETITION)
+   competition_scope_()
+ endif()
+-
+-cmake_dependent_option(SIMDJSON_CXXOPTS "Download cxxopts (necessary for tools)" ON
+-        SIMDJSON_ALLOW_DOWNLOADS OFF)
+-
+-if(SIMDJSON_CXXOPTS)
+-  set_off(CXXOPTS_BUILD_EXAMPLES)
+-  set_off(CXXOPTS_BUILD_TESTS)
+-  set_off(CXXOPTS_ENABLE_INSTALL)
+-
+-  import_dependency(cxxopts jarro2783/cxxopts 5965670)
+-  add_dependency(cxxopts)
+-endif()

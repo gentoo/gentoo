@@ -1,0 +1,33 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ca23a8a0..0bf54dd6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -303,12 +303,11 @@ endif()
+ #
+ # Compile tools / tests / benchmarks
+ #
+-add_subdirectory(tests)
+-add_subdirectory(examples)
+-if(CMAKE_SIZEOF_VOID_P EQUAL 8) # we only include the benchmarks on 64-bit systems.
+-  add_subdirectory(benchmark)
++if (SIMDJSON_TESTS)
++  add_subdirectory(tests)
++  add_subdirectory(fuzz)
+ endif()
+-add_subdirectory(fuzz)
++add_subdirectory(examples)
+ 
+ #
+ # Source files should be just ASCII
+diff --git a/tests/ondemand/compilation_failure_tests/CMakeLists.txt b/tests/ondemand/compilation_failure_tests/CMakeLists.txt
+index 54b74afb..b14567d3 100644
+--- a/tests/ondemand/compilation_failure_tests/CMakeLists.txt
++++ b/tests/ondemand/compilation_failure_tests/CMakeLists.txt
+@@ -13,6 +13,7 @@ function(add_dual_compile_test TEST_NAME)
+   target_compile_definitions(${TEST_NAME}_should_not_compile PRIVATE COMPILATION_TEST_USE_FAILING_CODE=1)
+ endfunction(add_dual_compile_test)
+ 
++target_compile_options(simdjson-internal-flags INTERFACE -Werror=uninitialized)
+ add_dual_compile_test(iterate_object)
+ add_dual_compile_test(iterate_array)
+ add_dual_compile_test(iterate_char_star)
