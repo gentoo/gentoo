@@ -1,0 +1,58 @@
+https://github.com/wrpearson/fasta36/pull/64
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Fri, 30 Aug 2024 11:01:16 +0000
+Subject: [PATCH 1/1] Fix building on musl libc
+
+On musl the functions fseeko and ftello are under include a few include
+guards
+
+#if defined(_POSIX_SOURCE) || defined(_POSIX_C_SOURCE) \
+ || defined(_XOPEN_SOURCE) || defined(_GNU_SOURCE) \
+ || defined(_BSD_SOURCE)
+...
+int pclose(FILE *);
+int fileno(FILE *);
+int fseeko(FILE *, off_t, int);
+off_t ftello(FILE *);
+...
+#endif
+
+This results in build failure on musl systems such as
+
+x86_64-pc-linux-musl-gcc -O2 -pipe -march=native -fno-diagnostics-color -msse2 -ffast-math  -O2 -pipe -march=native -fno-diagnostics-color -msse2 -ffast-math -g -std=c99 -O  -DPOSIX_C_SOURCE=2 -DSHOW_HELP -DSHOWSIM -DUNIX -DTIMES -DHZ=100 -DMAX_WORKERS=8 -DTHR_EXIT=pthread_exit  -DM10_CONS  -D_REENTRANT -DHAS_INTTYPES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_FSEEKO -DSAMP_STATS -DPGM_DOC -DUSE_MMAP  -D_LARGEFILE64_SOURCE  -DBIG_LIB64 -c nmgetlib.c -o lgetlib.o
+In file included from altlib.h:46,
+                 from nmgetlib.c:94:
+nmgetlib.c: In function 'agetlib':
+mm_file.h:32:15: error: implicit declaration of function 'ftello'; did you mean 'ftell'? [-Wimplicit-function-declaration]
+   32 | #define FTELL ftello
+      |               ^~~~~~
+nmgetlib.c:596:47: note: in expansion of macro 'FTELL'
+  596 |       if (lm_fd->libf != stdin) lm_fd->lpos = FTELL(lm_fd->libf);
+      |                                               ^~~~~
+nmgetlib.c: In function 'aranlib':
+mm_file.h:31:15: error: implicit declaration of function 'fseeko'; did you mean 'fseek'? [-Wimplicit-function-declaration]
+   31 | #define FSEEK fseeko
+      |               ^~~~~~
+nmgetlib.c:715:5: note: in expansion of macro 'FSEEK'
+  715 |     FSEEK(lm_fd->libf, seek, 0);
+      |     ^~~~~
+
+My patch adds -D_BSD_SOURCE to the linux Makefile and thus fixes the bug
+Reported on Gentoo Linux with musl libc (or musl profile)
+Please refer: https://bugs.gentoo.org/938324
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/make/Makefile.linux64_sse2
++++ b/make/Makefile.linux64_sse2
+@@ -28,7 +28,7 @@ LIB_DB=
+ 
+ # standard options
+ 
+-CFLAGS += -DPOSIX_C_SOURCE=2 -DSHOW_HELP -DSHOWSIM -DUNIX -DTIMES -DHZ=100 -DMAX_WORKERS=8 -DTHR_EXIT=pthread_exit  -DM10_CONS  -D_REENTRANT -DHAS_INTTYPES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_FSEEKO -DSAMP_STATS -DPGM_DOC -DUSE_MMAP  -D_LARGEFILE64_SOURCE  -DBIG_LIB64
++CFLAGS += -DPOSIX_C_SOURCE=2 -D_GNU_SOURCE -DSHOW_HELP -DSHOWSIM -DUNIX -DTIMES -DHZ=100 -DMAX_WORKERS=8 -DTHR_EXIT=pthread_exit  -DM10_CONS  -D_REENTRANT -DHAS_INTTYPES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -DUSE_FSEEKO -DSAMP_STATS -DPGM_DOC -DUSE_MMAP  -D_LARGEFILE64_SOURCE  -DBIG_LIB64
+ 
+ # -I/usr/include/mysql -DMYSQL_DB
+ # -DSUPERFAMNUM -DSFCHAR="'|'" 
+-- 
+2.46.0
+
