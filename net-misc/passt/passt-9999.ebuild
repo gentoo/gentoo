@@ -23,10 +23,6 @@ LICENSE="BSD GPL-2+"
 SLOT="0"
 IUSE="static"
 
-PATCHES=(
-	"${FILESDIR}"/Makefile-2024.03.20.patch
-)
-
 src_prepare() {
 	default
 	tc-export CC
