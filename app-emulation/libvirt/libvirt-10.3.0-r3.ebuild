@@ -269,7 +269,18 @@ src_prepare() {
 }
 
 src_configure() {
+	local native_file="${T}"/meson.${CHOST}.ini.local
+
+	# Workaround for bug #938302
+	if use dtrace && ! has_version "dev-debug/systemtap[dtrace-symlink(-)]" ; then
+		cat >> ${native_file} <<-EOF || die
+		[binaries]
+		dtrace='stap-dtrace'
+		EOF
+	fi
+
 	local emesonargs=(
+		--native-file "${native_file}"
 		$(meson_feature apparmor)
 		$(meson_feature apparmor apparmor_profiles)
 		$(meson_feature audit)
