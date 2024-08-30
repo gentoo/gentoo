@@ -6,8 +6,8 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="Display bandwidth usage on an interface"
-HOMEPAGE="http://www.ex-parrot.com/pdw/iftop/ https://code.blinkace.com/pdw/iftop"
-SRC_URI="http://www.ex-parrot.com/pdw/iftop/download/${P/_/}.tar.gz"
+HOMEPAGE="https://www.ex-parrot.com/pdw/iftop/ https://code.blinkace.com/pdw/iftop"
+SRC_URI="https://www.ex-parrot.com/pdw/iftop/download/${P/_/}.tar.gz"
 S="${WORKDIR}"/${P/_/}
 
 LICENSE="GPL-2"
