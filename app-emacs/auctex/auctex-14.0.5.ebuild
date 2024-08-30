@@ -36,6 +36,7 @@ RDEPEND="
 "
 BDEPEND="
 	${RDEPEND}
+	preview-latex? ( dev-texlive/texlive-latexextra )
 "
 
 TEXMF="/usr/share/texmf-site"
