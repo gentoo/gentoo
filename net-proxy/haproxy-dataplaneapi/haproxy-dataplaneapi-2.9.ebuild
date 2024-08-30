@@ -9,13 +9,11 @@ HOMEPAGE="https://github.com/haproxytech/dataplaneapi https://www.haproxy.com/do
 
 SRC_URI="https://github.com/haproxytech/dataplaneapi/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	http://gentooexperimental.org/~patrick/${P}-vendor.tar.xz"
+S="${WORKDIR}/dataplaneapi-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
-
-S="${WORKDIR}/dataplaneapi-${PV}"
 
 src_compile() {
 	ego build -o ./build/dataplaneapi ./cmd/dataplaneapi/
