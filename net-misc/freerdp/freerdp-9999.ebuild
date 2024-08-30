@@ -120,17 +120,27 @@ option_client() {
 	fi
 }
 
+run_for_testing() {
+	if use test; then
+		local BUILD_DIR="${WORKDIR}/${P}_testing"
+		"$@"
+	fi
+}
+
 src_configure() {
 	# bug #881695
 	filter-lto
+	freerdp_configure -DBUILD_TESTING=OFF
+	run_for_testing freerdp_configure -DBUILD_TESTING=ON
+}
 
+freerdp_configure() {
 	local mycmakeargs=(
 		-Wno-dev
 
 		# https://bugs.gentoo.org/927037
 		-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF
 
-		-DBUILD_TESTING=$(option test)
 		-DCHANNEL_URBDRC=$(option usb)
 		-DWITH_AAD=$(option aad)
 		-DWITH_ALSA=$(option alsa)
@@ -166,14 +176,21 @@ src_configure() {
 		-DWITH_WAYLAND=$(option_client wayland)
 		-DWITH_WEBVIEW=OFF
 		-DWITH_WINPR_TOOLS=$(option server)
+
+		"$@"
 	)
 	cmake_src_configure
+}
+
+src_compile() {
+	cmake_src_compile
+	run_for_testing cmake_src_compile
 }
 
 src_test() {
 	local myctestargs=( -E TestBacktrace )
 	has network-sandbox ${FEATURES} && myctestargs+=( -E TestConnect )
-	cmake_src_test
+	run_for_testing cmake_src_test
 }
 
 src_install() {
