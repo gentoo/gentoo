@@ -42,7 +42,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	!dev-debug/systemtap
+	!dev-debug/systemtap[dtrace-symlink(+)]
 	net-analyzer/wireshark
 	install-tests? (
 		app-alternatives/bc
