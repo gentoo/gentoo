@@ -354,10 +354,12 @@ src_test() {
 src_install() {
 	dotnet-pkg_src_install
 
-	insinto /usr/share/metainfo
-	doins ./NAPS2.Setup/config/linux/com.naps2.Naps2.metainfo.xml
+	newicon --size 128 ./NAPS2.Lib/Icons/scanner-128.png com.naps2.Naps2.png
 
 	domenu ./NAPS2.Setup/config/linux/com.naps2.Naps2.desktop
+
+	insinto /usr/share/metainfo
+	doins ./NAPS2.Setup/config/linux/com.naps2.Naps2.metainfo.xml
 
 	einstalldocs
 }
