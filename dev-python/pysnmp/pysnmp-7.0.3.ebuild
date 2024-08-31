@@ -9,7 +9,7 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="Python SNMP library"
 HOMEPAGE="
-	https://pypi.org/project/pysnmp-lexstudio/
+	https://pypi.org/project/pysnmp/
 	https://github.com/lextudio/pysnmp/
 "
 
@@ -21,16 +21,15 @@ PROPERTIES="test_network"
 RESTRICT="test"
 
 RDEPEND="
-	!!dev-python/pysnmp
-	>=dev-python/pyasn1-0.2.3[${PYTHON_USEDEP}]
+	>=dev-python/pyasn1-0.4.8[${PYTHON_USEDEP}]
 	>=dev-python/pysnmpcrypto-0.0.4[${PYTHON_USEDEP}]
 "
 PDEPEND="
-	>=dev-python/pysmi-lextudio-1.3.0[${PYTHON_USEDEP}]
+	>=dev-python/pysmi-1.3.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
-		>=dev-python/pysmi-lextudio-1.3.0[${PYTHON_USEDEP}]
+		>=dev-python/pysmi-1.3.0[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 	)
 "
