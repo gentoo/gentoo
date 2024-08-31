@@ -18,7 +18,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="eigen excel fftw fits hdf5 libcerf markdown matio netcdf ods origin root serial share telemetry"
+IUSE="eigen fftw fits hdf5 libcerf markdown matio netcdf ods origin root serial share telemetry xlsx"
 
 # IUSE="cantor"
 # 	cantor? (
@@ -46,7 +46,7 @@ DEPEND="
 	>=kde-frameworks/syntax-highlighting-${KFMIN}:6
 	>=sci-libs/gsl-1.15:=
 	eigen? ( dev-cpp/eigen:3= )
-	excel? ( dev-libs/qxlsx:= )
+	xlsx? ( dev-libs/qxlsx:= )
 	fftw? ( sci-libs/fftw:3.0= )
 	fits? ( sci-libs/cfitsio:= )
 	hdf5? ( sci-libs/hdf5:= )
@@ -90,7 +90,7 @@ src_configure() {
 		-DENABLE_VECTOR_BLF=OFF # not packaged
 		-DENABLE_CANTOR=OFF # $(usex cantor)
 		-DENABLE_EIGEN3=$(usex eigen)
-		-DENABLE_XLSX=$(usex excel)
+		-DENABLE_XLSX=$(usex xlsx)
 		-DENABLE_FFTW=$(usex fftw)
 		-DENABLE_FITS=$(usex fits)
 		-DENABLE_HDF5=$(usex hdf5)
