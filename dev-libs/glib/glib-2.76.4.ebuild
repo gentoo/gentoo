@@ -178,17 +178,7 @@ multilib_src_configure() {
 		#esac
 	#fi
 
-	local native_file="${T}"/meson.${CHOST}.ini.local
-	# Workaround for bug #938302
-	if use systemtap && ! has_version "dev-debug/systemtap[dtrace-symlink(-)]" ; then
-		cat >> ${native_file} <<-EOF || die
-		[binaries]
-		dtrace='stap-dtrace'
-		EOF
-	fi
-
 	local emesonargs=(
-		--native-file "${native_file}"
 		-Dbuildtype=$(usex debug debug plain)
 		-Ddefault_library=$(usex static-libs both shared)
 		-Druntime_dir="${EPREFIX}"/run
@@ -207,6 +197,17 @@ multilib_src_configure() {
 		$(meson_native_use_feature elf libelf)
 		-Dmultiarch=false
 	)
+
+	# Workaround for bug #938302
+	if use systemtap && ! has_version "dev-debug/systemtap[dtrace-symlink(-)]" ; then
+		local native_file="${T}"/meson.${CHOST}.ini.local
+		cat >> ${native_file} <<-EOF || die
+		[binaries]
+		dtrace='stap-dtrace'
+		EOF
+		emesonargs+=( --native-file "${native_file}" )
+	fi
+
 	meson_src_configure
 }
 
