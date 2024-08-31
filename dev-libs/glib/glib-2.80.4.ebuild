@@ -186,7 +186,18 @@ multilib_src_configure() {
 	#fi
 
 	use debug && EMESON_BUILD_TYPE=debug
+
+	local native_file="${T}"/meson.${CHOST}.ini.local
+	# Workaround for bug #938302
+	if use systemtap && ! has_version "dev-debug/systemtap[dtrace-symlink(-)]" ; then
+		cat >> ${native_file} <<-EOF || die
+		[binaries]
+		dtrace='stap-dtrace'
+		EOF
+	fi
+
 	local emesonargs=(
+		--native-file "${native_file}"
 		-Ddefault_library=$(usex static-libs both shared)
 		-Druntime_dir="${EPREFIX}"/run
 		$(meson_feature selinux)
