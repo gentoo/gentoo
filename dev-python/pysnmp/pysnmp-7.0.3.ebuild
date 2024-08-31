@@ -15,7 +15,7 @@ HOMEPAGE="
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~sparc"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~sparc"
 
 PROPERTIES="test_network"
 RESTRICT="test"
