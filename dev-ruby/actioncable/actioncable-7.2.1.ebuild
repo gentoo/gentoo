@@ -14,6 +14,7 @@ RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 RUBY_FAKEGEM_EXTRAINSTALL="app"
 
 RUBY_FAKEGEM_BINWRAP=""
+RUBY_FAKEGEM_TASK_TEST="-Ilib test"
 
 inherit ruby-fakegem
 
