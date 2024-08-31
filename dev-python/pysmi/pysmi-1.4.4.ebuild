@@ -9,7 +9,7 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="Pure-Python implementation of SNMP/SMI MIB parsing and conversion library"
 HOMEPAGE="
-	https://github.com/lextudiopysmi/
+	https://github.com/lextudio/pysmi/
 	https://pypi.org/project/pysmi/
 "
 
