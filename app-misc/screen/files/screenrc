@@ -51,9 +51,6 @@
 # Don't display the copyright page
   startup_message off			# default: on
 
-# Uses nethack-style messages
-# nethack on				# default: off
-
 # Affects the copying of text regions
   crlf off				# default: off
 
