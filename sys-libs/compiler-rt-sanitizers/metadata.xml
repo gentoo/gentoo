@@ -28,6 +28,8 @@
 		<flag name="scudo">Build Scudo Hardened Allocator.</flag>
 		<flag name="shadowcallstack">Build ShadowCallStack.</flag>
 		<flag name="gwp-asan">Build GWP-ASAN runtime.</flag>
+		<flag name="nsan">Build Numerical Sanitizer runtime.</flag>
+		<flag name="rtsan">Build Realtime Sanitizer runtime.</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">llvm/llvm-project</remote-id>
