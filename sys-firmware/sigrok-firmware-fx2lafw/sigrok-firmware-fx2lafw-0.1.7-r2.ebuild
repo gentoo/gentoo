@@ -6,7 +6,7 @@ EAPI="8"
 SDCC_DEPEND=">=dev-embedded/sdcc-3.4.0[device-lib(+),mcs51(+),sdcpp(+)]"
 
 if [[ ${PV} == "9999" ]]; then
-	EGIT_REPO_URI="git://sigrok.org/${PN}"
+	EGIT_REPO_URI="https://github.com/sigrokproject/${PN}.git"
 	inherit git-r3 autotools
 else
 	SRC_URI="
