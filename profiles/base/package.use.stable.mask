@@ -6,7 +6,6 @@
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-08-29)
 # Pin down kf6compat mask to currently stable versions.
-kde-frameworks/kio kf6compat
 <kde-apps/kio-extras-24.02.2-r2 kf6compat
 <kde-apps/libkgapi-23.08.5-r2 kf6compat
 <kde-frameworks/baloo-5.116.0-r1 kf6compat
