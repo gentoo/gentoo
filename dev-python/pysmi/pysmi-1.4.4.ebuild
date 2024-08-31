@@ -15,7 +15,7 @@ HOMEPAGE="
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~sparc"
 
 RDEPEND="
 	>=dev-python/jinja-3.1.3[${PYTHON_USEDEP}]
