@@ -5,6 +5,7 @@ EAPI=8
 
 USE_RUBY="ruby31 ruby32 ruby33"
 
+RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_EXTRADOC="Changelog.md README.md TODO"
 
 RUBY_FAKEGEM_GEMSPEC="highline.gemspec"
