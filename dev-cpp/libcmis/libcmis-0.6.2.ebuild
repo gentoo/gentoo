@@ -41,8 +41,12 @@ BDEPEND="
 	)
 "
 
-# https://github.com/tdf/libcmis/pull/52
-PATCHES=( "${FILESDIR}/${P}-libxml2-2.12.patch" ) # bug 917523
+PATCHES=(
+	# https://github.com/tdf/libcmis/pull/52
+	"${FILESDIR}"/${P}-libxml2-2.12.patch # bug 917523
+	# https://github.com/tdf/libcmis/pull/68
+	"${FILESDIR}"/${P}-boost-1.86.patch
+)
 
 src_prepare() {
 	default
