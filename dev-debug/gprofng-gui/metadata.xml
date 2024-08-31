@@ -2,6 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>java@gentoo.org</email>
+		<email>toolchain@gentoo.org</email>
+		<name>Gentoo Toolchain Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="savannah">gprofng-gui</remote-id>
+	</upstream>
 </pkgmetadata>
