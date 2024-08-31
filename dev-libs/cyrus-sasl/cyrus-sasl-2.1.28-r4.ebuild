@@ -60,6 +60,9 @@ src_prepare() {
 src_configure() {
 	export CC_FOR_BUILD="$(tc-getBUILD_CC)"
 
+	# Fails with C23 because of decls
+	append-flags -std=gnu17
+
 	# -Werror=lto-type-mismatch
 	# https://bugs.gentoo.org/894684
 	# https://github.com/cyrusimap/cyrus-sasl/pull/771
