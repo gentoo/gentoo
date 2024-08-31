@@ -1253,7 +1253,9 @@ distutils_pep517_install() {
 	fi
 
 	local cmd=() config_settings=
-	has cargo ${INHERITED} && cmd+=( cargo_env )
+	if has cargo ${INHERITED} && [[ ${_CARGO_GEN_CONFIG_HAS_RUN} ]]; then
+		cmd+=( cargo_env )
+	fi
 
 	case ${DISTUTILS_USE_PEP517} in
 		maturin)
