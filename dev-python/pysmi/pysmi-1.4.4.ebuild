@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=poetry
 PYTHON_COMPAT=( python3_{10..13} )
 inherit distutils-r1 pypi
 
-DESCRIPTION="A pure-Python implementation of SNMP/SMI MIB parsing and conversion library."
+DESCRIPTION="Pure-Python implementation of SNMP/SMI MIB parsing and conversion library"
 HOMEPAGE="
 	https://github.com/lextudiopysmi/
 	https://pypi.org/project/pysmi/
