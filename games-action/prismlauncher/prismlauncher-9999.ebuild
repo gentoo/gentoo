@@ -54,6 +54,7 @@ QT_DEPS="
 		>=dev-qt/qtcore-${MIN_QT_5_VERSION}:5
 		>=dev-qt/qtgui-${MIN_QT_5_VERSION}:5
 		>=dev-qt/qtnetwork-${MIN_QT_5_VERSION}:5
+		>=dev-qt/qtnetworkauth-${MIN_QT_5_VERSION}:5
 		>=dev-qt/qttest-${MIN_QT_5_VERSION}:5
 		>=dev-qt/qtwidgets-${MIN_QT_5_VERSION}:5
 		>=dev-qt/qtxml-${MIN_QT_5_VERSION}:5
@@ -62,6 +63,7 @@ QT_DEPS="
 	qt6? (
 		>=dev-qt/qtbase-${MIN_QT_6_VERSION}:6[concurrent,gui,network,widgets,xml(+)]
 		>=dev-qt/qt5compat-${MIN_QT_6_VERSION}:6
+		>=dev-qt/qtnetworkauth-${MIN_QT_6_VERSION}:6
 	)
 "
 
