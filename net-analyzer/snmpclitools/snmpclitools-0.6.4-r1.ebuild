@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..11} )
 inherit distutils-r1
 
-DESCRIPTION="Pure-Python SNMP management tools, formerly pysnmp-apps"
+DESCRIPTION="Pure-Python SNMP management tools"
 HOMEPAGE="https://github.com/etingof/snmpclitools"
 SRC_URI="https://github.com/etingof/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

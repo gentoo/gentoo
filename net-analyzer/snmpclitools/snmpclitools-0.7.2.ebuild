@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=poetry
 PYTHON_COMPAT=( python3_{10..13} )
 inherit distutils-r1 pypi
 
-DESCRIPTION="Pure-Python SNMP management tools, formerly pysnmp-apps"
+DESCRIPTION="Pure-Python SNMP management tools"
 HOMEPAGE="
 	https://github.com/lextudio/snmpclitools/
 	https://pypi.org/project/snmpclitools/
