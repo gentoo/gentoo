@@ -17,13 +17,13 @@ IUSE="doc qt5 qt6"
 
 RDEPEND="
 	dev-libs/libltdl:0=
-	qt5? ( dev-qt/qthelp:5 dev-qt/qtgui:5 dev-qt/qtsql:5[sqlite] dev-qt/qtwidgets:5 )
+	!qt6? ( dev-qt/qthelp:5 dev-qt/qtgui:5 dev-qt/qtsql:5[sqlite] dev-qt/qtwidgets:5 )
 	qt6? ( dev-qt/qtbase:6[sqlite,widgets] dev-qt/qttools:6[assistant] )
 	dev-libs/openssl:*
 	doc? ( app-text/linuxdoc-tools )"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	qt5? ( dev-qt/linguist-tools:5 )
+	!qt6? ( dev-qt/linguist-tools:5 )
 	qt6? ( dev-qt/qttools:6[linguist] )
 	doc? ( dev-python/sphinx dev-python/sphinxcontrib-htmlhelp dev-python/sphinxcontrib-qthelp )
 "
@@ -34,10 +34,10 @@ PATCHES=(
 )
 
 src_configure() {
-	local qt_version=Qt6
+	local qt_version=Qt5
 
-	if use qt5; then
-		qt_version=Qt5
+	if use qt6; then
+		qt_version=Qt6
 	fi
 
 	local mycmakeargs=(
