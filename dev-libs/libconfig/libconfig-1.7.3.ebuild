@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools multilib-minimal
+inherit autotools flag-o-matic multilib-minimal
 
 DESCRIPTION="Libconfig is a simple library for manipulating structured configuration files"
 HOMEPAGE="
@@ -26,9 +26,14 @@ DEPEND="
 
 src_prepare() {
 	default
+
+	# Fails with c23 b/c old decls
+	append-cflags -std=gnu17
+
 	sed -i \
 		-e '/sleep 3/d' \
 		configure.ac || die
+
 	eautoreconf
 	multilib_copy_sources
 }
