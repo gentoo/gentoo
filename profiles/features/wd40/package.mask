@@ -124,6 +124,7 @@ dev-python/consonance
 dev-python/PyGithub
 dev-python/adblock
 dev-python/pysnmp
+dev-python/pysnmp-mibs
 dev-python/pysmi
 dev-python/pysnmpcrypto
 dev-java/icedtea-web
