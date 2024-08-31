@@ -11,7 +11,7 @@ inherit distutils-r1 pypi
 DESCRIPTION="Strong cryptography support for PySNMP (SNMP library for Python)"
 HOMEPAGE="
 	https://pypi.org/project/pysnmpcrypto/
-	https://github.com/etingof/pysnmpcrypto
+	https://github.com/lextudio/pysnmpcrypto
 "
 
 LICENSE="BSD"
