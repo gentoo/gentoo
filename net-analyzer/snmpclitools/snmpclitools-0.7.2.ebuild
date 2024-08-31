@@ -15,7 +15,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~sparc"
 
 RDEPEND="
 	>=dev-python/pysnmp-6.0.0[${PYTHON_USEDEP}]
