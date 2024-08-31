@@ -10,7 +10,7 @@ inherit distutils-r1 pypi
 DESCRIPTION="A pure-Python implementation of SNMP/SMI MIB parsing and conversion library."
 HOMEPAGE="
 	https://github.com/lextudiopysmi/
-	https://pypi.org/project/pysmi-lextudio/
+	https://pypi.org/project/pysmi/
 "
 
 LICENSE="BSD-2"
@@ -18,14 +18,13 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	!!dev-python/pysmi
 	>=dev-python/jinja-3.1.3[${PYTHON_USEDEP}]
 	>=dev-python/ply-3.11[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.26.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
-		>=dev-python/pysnmp-lextudio-5.0.0[${PYTHON_USEDEP}]
+		>=dev-python/pysnmp-5.0.0[${PYTHON_USEDEP}]
 	)
 "
 
