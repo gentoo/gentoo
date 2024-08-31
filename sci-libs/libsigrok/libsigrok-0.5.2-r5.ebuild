@@ -96,6 +96,8 @@ src_prepare() {
 
 sigrok_src_configure() {
 	econf \
+		--disable-python \
+		--disable-ruby \
 		$(use_with bluetooth libbluez) \
 		$(use_with ftdi libftdi) \
 		$(use_with hidapi libhidapi) \
@@ -110,11 +112,11 @@ sigrok_src_configure() {
 
 each_python_configure() {
 	cd "${BUILD_DIR}"
-	sigrok_src_configure --disable-ruby --enable-python
+	sigrok_src_configure --enable-python
 }
 
 src_configure() {
-	sigrok_src_configure --disable-ruby --disable-python
+	sigrok_src_configure
 	use python && python_foreach_impl each_python_configure
 }
 
