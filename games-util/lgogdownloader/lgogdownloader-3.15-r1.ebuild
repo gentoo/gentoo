@@ -21,8 +21,16 @@ RDEPEND="
 	dev-libs/tinyxml2:0=
 	>=net-misc/curl-7.55:0=[ssl]
 	gui? (
-		!qt6? ( dev-qt/qtwebengine:5[widgets] )
-		qt6? ( dev-qt/qtwebengine:6[widgets] )
+		!qt6? (
+			dev-qt/qtcore:5
+			dev-qt/qtnetwork:5
+			dev-qt/qtwebengine:5[widgets]
+			dev-qt/qtwidgets:5
+		)
+		qt6? (
+			dev-qt/qtbase:6[network,widgets]
+			dev-qt/qtwebengine:6[widgets]
+		)
 	)
 "
 

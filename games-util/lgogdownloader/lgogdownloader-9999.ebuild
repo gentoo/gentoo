@@ -19,7 +19,10 @@ RDEPEND="
 	>=dev-libs/jsoncpp-1.7:0=
 	dev-libs/tinyxml2:0=
 	>=net-misc/curl-7.55:0=[ssl]
-	gui? ( dev-qt/qtwebengine:6[widgets] )
+	gui? (
+		dev-qt/qtbase:6[network,widgets]
+		dev-qt/qtwebengine:6[widgets]
+	)
 "
 
 DEPEND="
