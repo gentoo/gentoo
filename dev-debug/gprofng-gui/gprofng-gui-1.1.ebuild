@@ -7,7 +7,7 @@ inherit java-pkg-2
 
 DESCRIPTION="Full-fledged graphical interface to operate gprofng"
 HOMEPAGE="https://www.gnu.org/software/gprofng-gui/"
-SRC_URI="https://ftp.gnu.org/gnu/gprofng-gui/${P}.tar.gz"
+SRC_URI="mirror://gnu/gprofng-gui/${P}.tar.gz"
 S="${WORKDIR}/${P}"
 
 LICENSE="GPL-2"
