@@ -34,6 +34,70 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-08-31)
+# KDE PIM 5 depends on deprecated kde-frameworks/kross:5,
+# blocking deprecated dev-qt/qtscript:5 removal, and deprecated
+# dev-qt/qtwebengine:5.
+# x86 users: This is the end of the road for KDE PIM on x86. Export
+# your data with kde-apps/pim-data-exporter, if necessary, and migrate
+# to alternative PIM applications.
+# Bugs #810493, #925720. Removal on 2024-09-31.
+<app-office/merkuro-23.08.50
+<kde-apps/akonadi-23.08.50
+<kde-apps/akonadi-calendar-23.08.50
+<kde-apps/akonadi-contacts-23.08.50
+<kde-apps/akonadi-import-wizard-23.08.50
+<kde-apps/akonadi-mime-23.08.50
+<kde-apps/akonadi-notes-23.08.50
+<kde-apps/akonadi-search-23.08.50
+<kde-apps/akonadiconsole-23.08.50
+<kde-apps/akregator-23.08.50
+<kde-apps/calendarjanitor-23.08.50
+<kde-apps/calendarsupport-23.08.50
+<kde-apps/eventviews-23.08.50
+<kde-apps/grantlee-editor-23.08.50
+<kde-apps/grantleetheme-23.08.50
+<kde-apps/incidenceeditor-23.08.50
+<kde-apps/kaddressbook-23.08.50
+<kde-apps/kalarm-23.08.50
+<kde-apps/kcalutils-23.08.50
+<kde-apps/kdepim-addons-23.08.50
+<kde-apps/kdepim-meta-23.08.50
+<kde-apps/kdepim-runtime-23.08.50
+<kde-apps/kidentitymanagement-23.08.50
+<kde-apps/kimap-23.08.50
+<kde-apps/kitinerary-23.08.50
+<kde-apps/kldap-23.08.50
+<kde-apps/kleopatra-23.08.50
+<kde-apps/kmail-23.08.50
+<kde-apps/kmail-account-wizard-23.08.50
+<kde-apps/kmailtransport-23.08.50
+<kde-apps/kmbox-23.08.50
+<kde-apps/kmime-23.08.50
+<kde-apps/knotes-23.08.50
+<kde-apps/konsolekalendar-23.08.50
+<kde-apps/kontact-23.08.50
+<kde-apps/kontactinterface-23.08.50
+<kde-apps/korganizer-23.08.50
+<kde-apps/kpimtextedit-23.08.50
+<kde-apps/kpkpass-23.08.50
+<kde-apps/ksmtp-23.08.50
+<kde-apps/libgravatar-23.08.50
+<kde-apps/libkdepim-23.08.50
+<kde-apps/libkleo-23.08.50
+<kde-apps/libksieve-23.08.50
+<kde-apps/libktnef-23.08.50
+<kde-apps/mailcommon-23.08.50
+<kde-apps/mailimporter-23.08.50
+<kde-apps/mbox-importer-23.08.50
+<kde-apps/messagelib-23.08.50
+<kde-apps/pim-data-exporter-23.08.50
+<kde-apps/pim-sieve-editor-23.08.50
+<kde-apps/pimcommon-23.08.50
+<kde-misc/zanshin-23.08.50
+<kde-apps/kgpg-23.08.50
+app-text/kjots:5
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-08-31)
 # This is so old that it was only kept alive as KF5-based snapshot of an
 # upstream git branch containing a single "Initial port to KF/Qt5 (back in
 # 2017). That was never merged to master, project archived for a long time.
