@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-08-31)
+# This is so old that it was only kept alive as KF5-based snapshot of an
+# upstream git branch containing a single "Initial port to KF/Qt5 (back in
+# 2017). That was never merged to master, project archived for a long time.
+# Bug #759772. Removal on 2024-09-31.
+media-gfx/kcoloredit
+
 # Sam James <sam@gentoo.org> (2024-08-31)
 # Please unmask and test. If you have any issues, please file a new bug.
 # The mask will be lifted by 2024-09-02. Test it before then please!
