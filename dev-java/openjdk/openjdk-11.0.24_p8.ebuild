@@ -163,6 +163,11 @@ src_configure() {
 		export JDK_HOME="${WORKDIR}/openjdk-bootstrap-${!xpakvar}"
 	fi
 
+	# Workaround for bug #938302
+	if use systemtap && ! has_version "dev-debug/systemtap[dtrace-symlink(-)]" ; then
+		export DTRACE="${BROOT}"/usr/bin/stap-dtrace
+	fi
+
 	# Work around stack alignment issue, bug #647954.
 	use x86 && append-flags -mincoming-stack-boundary=2
 
