@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,7 +42,7 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	optfeature "Example programs using pysnmp" dev-python/pysnmp-apps
+	optfeature "Example programs using pysnmp" net-analyzer/snmpclitools
 	optfeature "IETF and other mibs" dev-python/pysnmp-mibs
 	optfeature "Dump MIBs in python format" dev-python/pysmi
 }
