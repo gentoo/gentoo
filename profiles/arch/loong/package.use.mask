@@ -309,6 +309,7 @@ media-plugins/gst-plugins-meta libvisual
 >=sys-libs/compiler-rt-sanitizers-17.0.0_pre20230705 -dfsan
 >=sys-libs/compiler-rt-sanitizers-17.0.0_pre20230717 -profile -xray
 >sys-libs/compiler-rt-sanitizers-17.0.0_pre20230717 -libfuzzer
+>=sys-libs/compiler-rt-sanitizers-19 -cfi
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-07-08)
 # virtual/{jdk,jre} is not available on loong yet.
