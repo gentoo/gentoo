@@ -7,6 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">etingof/snmpclitools</remote-id>
+		<remote-id type="pypi">snmpclitools</remote-id>
+		<remote-id type="github">lextudio/snmpclitools</remote-id>
 	</upstream>
 </pkgmetadata>

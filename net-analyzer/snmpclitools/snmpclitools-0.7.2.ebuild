@@ -10,7 +10,7 @@ inherit distutils-r1 pypi
 DESCRIPTION="Pure-Python SNMP management tools, formerly pysnmp-apps"
 HOMEPAGE="
 	https://github.com/lextudio/snmpclitools/
-	https://pypi.org/project/snmpclitools-lextudio/
+	https://pypi.org/project/snmpclitools/
 "
 
 LICENSE="BSD"
@@ -18,8 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	!!net-analyzer/snmpclitools
-	>=dev-python/pysnmp-lextudio-6.0.0[${PYTHON_USEDEP}]
+	>=dev-python/pysnmp-6.0.0[${PYTHON_USEDEP}]
 "
 
 # TODO: doc
