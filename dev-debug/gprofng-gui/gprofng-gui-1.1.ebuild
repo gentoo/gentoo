@@ -10,7 +10,7 @@ HOMEPAGE="https://www.gnu.org/software/gprofng-gui/"
 SRC_URI="mirror://gnu/gprofng-gui/${P}.tar.gz"
 S="${WORKDIR}/${P}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
 
