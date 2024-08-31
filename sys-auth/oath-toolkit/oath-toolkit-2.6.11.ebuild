@@ -27,12 +27,24 @@ BDEPEND="
 	test? ( dev-libs/libxml2 )
 "
 
+PATCHES=( "${FILESDIR}/${P}-fix-musl-build.patch" )
+
 QA_CONFIG_IMPL_DECL_SKIP=(
 	MIN # glibc fp
 	unreachable
 	alignof
 	static_assert
 )
+
+src_prepare() {
+	default
+
+	# After patching, we have to fix the mtime on libpskc/global.c so
+	# that it doesn't cause Makefile.gdoc to be rebuilt so that it
+	# doesn't cause Makefile.in to be rebuilt so that it doesn't try to
+	# run automake-1.16.5 for no reason. Bug 936309.
+	touch --reference=libpskc/errors.c libpskc/global.c || die
+}
 
 src_configure() {
 	local myeconfargs=(
