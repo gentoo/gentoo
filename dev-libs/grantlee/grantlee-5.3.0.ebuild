@@ -15,7 +15,7 @@ SLOT="5"
 KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 IUSE="debug doc test"
 
-RESTRICT="!test? ( test )"
+RESTRICT="test" # bug 874627
 
 RDEPEND="
 	dev-qt/qtcore:5
