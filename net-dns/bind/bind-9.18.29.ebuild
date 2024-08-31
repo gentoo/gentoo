@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -123,6 +123,22 @@ src_install() {
 	if ! use static-libs ; then
 		find "${ED}"/usr/lib* -name '*.la' -delete || die
 	fi
+
+	#
+	# /var/bind
+	#
+	# These need to remain for now because CONFIG_PROTECT won't
+	# save them and we shipped configs for years containing references
+	# to them.
+	#
+	# ftp://ftp.rs.internic.net/domain/named.cache:
+	insinto /var/bind
+	newins "${FILESDIR}"/named.cache-r4 named.cache
+	# bug #450406
+	dosym named.cache /var/bind/root.cache
+	#
+	insinto /var/bind/pri
+	newins "${FILESDIR}"/localhost.zone-r3 localhost.zone
 
 	dosym -r /var/bind/pri /etc/bind/pri
 	dosym -r /var/bind/sec /etc/bind/sec
