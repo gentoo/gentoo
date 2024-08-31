@@ -24,8 +24,7 @@ HOMEPAGE="https://transmissionbt.com/"
 # MIT is in several libtransmission/ headers
 LICENSE="|| ( GPL-2 GPL-3 Transmission-OpenSSL-exception ) GPL-2 MIT"
 SLOT="0"
-IUSE="appindicator cli debug gtk nls mbedtls qt5 qt6 systemd test"
-REQUIRED_USE="?? ( qt5 qt6 )"
+IUSE="appindicator cli debug gtk nls mbedtls qt6 systemd test"
 RESTRICT="!test? ( test )"
 
 ACCT_DEPEND="
@@ -37,7 +36,6 @@ BDEPEND="
 	nls? (
 		gtk? ( sys-devel/gettext )
 	)
-	qt5? ( dev-qt/linguist-tools:5 )
 	qt6? ( dev-qt/qttools:6[linguist] )
 "
 COMMON_DEPEND="
@@ -55,14 +53,6 @@ COMMON_DEPEND="
 		>=dev-cpp/gtkmm-4.11.1:4.0
 		>=dev-cpp/glibmm-2.60.0:2.68
 		appindicator? ( dev-libs/libayatana-appindicator )
-	)
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtdbus:5
-		dev-qt/qtgui:5
-		dev-qt/qtnetwork:5
-		dev-qt/qtsvg:5
-		dev-qt/qtwidgets:5
 	)
 	qt6? (
 		dev-qt/qtbase:6[dbus,gui,network,widgets]
@@ -108,8 +98,6 @@ src_configure() {
 
 	if use qt6; then
 		mycmakeargs+=( -DENABLE_QT=ON -DUSE_QT_VERSION=6 )
-	elif use qt5; then
-		mycmakeargs+=( -DENABLE_QT=ON -DUSE_QT_VERSION=5 )
 	else
 		mycmakeargs+=( -DENABLE_QT=OFF )
 	fi
@@ -144,14 +132,14 @@ src_install() {
 }
 
 pkg_postrm() {
-	if use gtk || use qt5 || use qt6; then
+	if use gtk || use qt6; then
 		xdg_desktop_database_update
 		xdg_icon_cache_update
 	fi
 }
 
 pkg_postinst() {
-	if use gtk || use qt5 || use qt6; then
+	if use gtk || use qt6; then
 		xdg_desktop_database_update
 		xdg_icon_cache_update
 	fi
