@@ -29,11 +29,13 @@ BDEPEND="
 
 PATCHES=( "${FILESDIR}/${P}-fix-musl-build.patch" )
 
+# fpurge is from gnulib, and unused as of 2.6.11
 QA_CONFIG_IMPL_DECL_SKIP=(
 	MIN # glibc fp
-	unreachable
 	alignof
+	fpurge
 	static_assert
+	unreachable
 )
 
 src_prepare() {
