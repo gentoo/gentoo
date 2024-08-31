@@ -16,7 +16,7 @@ KEYWORDS="~amd64"
 
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND="
-	sys-devel/binutils:*[gprofng]
+	sys-devel/binutils:*[gprofng(-)]
 	>=virtual/jre-1.8:*
 "
 
