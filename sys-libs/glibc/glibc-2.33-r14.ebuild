@@ -492,8 +492,10 @@ setup_env() {
 		return 0
 	fi
 
-	# Glibc does not work with gold (for various reasons) #269274.
-	tc-ld-disable-gold
+	# glibc does not work with non-bfd (for various reasons):
+	# * gold (bug #269274)
+	# * mold (bug #860900)
+	tc-ld-force-bfd
 
 	if use doc ; then
 		export MAKEINFO=makeinfo
