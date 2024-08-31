@@ -11,8 +11,7 @@ SRC_URI="https://github.com/Sude-/${PN}/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="WTFPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gui qt5 qt6"
-REQUIRED_USE="gui? ( ^^ ( qt5 qt6 ) )"
+IUSE="gui qt6"
 
 RDEPEND="
 	>=app-crypt/rhash-1.3.3-r2:0=
@@ -22,7 +21,7 @@ RDEPEND="
 	dev-libs/tinyxml2:0=
 	>=net-misc/curl-7.55:0=[ssl]
 	gui? (
-		qt5? ( dev-qt/qtwebengine:5[widgets] )
+		!qt6? ( dev-qt/qtwebengine:5[widgets] )
 		qt6? ( dev-qt/qtwebengine:6[widgets] )
 	)
 "
@@ -40,7 +39,7 @@ src_configure() {
 		-DUSE_QT_GUI=$(usex gui)
 	)
 	use gui && mycmakeargs+=(
-		-DCMAKE_DISABLE_FIND_PACKAGE_Qt6=$(usex qt5)
+		-DCMAKE_DISABLE_FIND_PACKAGE_Qt6=$(usex !qt6)
 	)
 	cmake_src_configure
 }
