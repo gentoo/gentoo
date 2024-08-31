@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~sparc"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~sparc"
 
 RDEPEND="
 	dev-python/cryptography[${PYTHON_USEDEP}]
