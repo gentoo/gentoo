@@ -368,6 +368,8 @@ multilib_src_install() {
 		dosym nmb.service "$(systemd_get_systemunitdir)/nmbd.service"
 		dosym smb.service "$(systemd_get_systemunitdir)/smbd.service"
 		dosym winbind.service "$(systemd_get_systemunitdir)/winbindd.service"
+
+		use python && python_optimize
 	fi
 
 	if use pam && use winbind ; then
