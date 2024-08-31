@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 inherit autotools python-single-r1
 
 if [[ ${PV} == *9999* ]]; then
-	EGIT_REPO_URI="git://sigrok.org/${PN}"
+	EGIT_REPO_URI="https://github.com/sigrokproject/${PN}.git"
 	inherit git-r3
 else
 	SRC_URI="https://sigrok.org/download/source/${PN}/${P}.tar.gz"
