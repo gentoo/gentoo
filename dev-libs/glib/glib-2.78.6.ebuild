@@ -168,6 +168,10 @@ src_prepare() {
 		-e '/AvailabilityMacros.h/d' \
 		gio/giomodule.c || die
 
+	# Add meson.${CHOST}.ini.local file that the build system expects to find,
+	# #938822
+	touch "${T}/meson.${CHOST}.ini.local" || die
+
 	default
 	gnome2_environment_reset
 	# TODO: python_name sedding for correct python shebang? Might be relevant mainly for glib-utils only
