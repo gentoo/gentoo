@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 inherit python-r1 java-pkg-opt-2 udev xdg-utils
 
 if [[ ${PV} == *9999* ]]; then
-	EGIT_REPO_URI="git://sigrok.org/${PN}"
+	EGIT_REPO_URI="https://github.com/sigrokproject/${PN}.git"
 	inherit git-r3 autotools
 else
 	SRC_URI="https://sigrok.org/download/source/${PN}/${P}.tar.gz"
