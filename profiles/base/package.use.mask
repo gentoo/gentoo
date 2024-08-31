@@ -6,6 +6,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-08-31)
+# Prepare for KDE PIM 5 removal and avoid conflicts w/ KDE PIM 6
+app-office/kmymoney:5 addressbook
+app-office/kraft:5 pim
+media-gfx/digikam:5 addressbook
+
 # Viorel Munteanu <ceamac@gentoo.org> (2024-07-26)
 # Branch 7.1 needs a new BDEPEND for doc
 >=app-emulation/virtualbox-7.1 doc
