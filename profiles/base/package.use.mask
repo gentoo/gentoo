@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-01)
+# Prepare for KDE PIM 5 removal
+<kde-apps/kde-apps-meta-23.08.50 pim
+<kde-apps/kdeutils-meta-23.08.50 gpg
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-08-31)
 # Prepare for KDE PIM 5 removal and avoid conflicts w/ KDE PIM 6
 app-office/kmymoney:5 addressbook
