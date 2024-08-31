@@ -23,7 +23,7 @@ RDEPEND="
 	doc? ( app-text/linuxdoc-tools )"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	!qt6? ( dev-qt/linguist-tools:5 )
+	!qt6? ( dev-qt/linguist-tools:5 dev-qt/qttest:5 )
 	qt6? ( dev-qt/qttools:6[linguist] )
 	doc? ( dev-python/sphinx dev-python/sphinxcontrib-htmlhelp dev-python/sphinxcontrib-qthelp )
 "
