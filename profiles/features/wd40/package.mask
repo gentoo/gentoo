@@ -44,6 +44,7 @@ net-analyzer/suricata
 net-analyzer/gvm-tools
 net-analyzer/gr-fosphor
 net-analyzer/gvm
+net-analyzer/snmpclitools
 media-sound/beets
 media-sound/gnome-sound-recorder
 media-gfx/oxipng
@@ -122,6 +123,9 @@ dev-python/dissononce
 dev-python/consonance
 dev-python/PyGithub
 dev-python/adblock
+dev-python/pysnmp
+dev-python/pysmi
+dev-python/pysnmpcrypto
 dev-java/icedtea-web
 dev-debug/pwndbg
 dev-db/mycli
