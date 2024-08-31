@@ -11,7 +11,7 @@ HOMEPAGE="https://accounts-sso.gitlab.io/"
 
 LICENSE="GPL-2+"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 DEPEND="
 	>=kde-frameworks/kwallet-${KFMIN}:6
