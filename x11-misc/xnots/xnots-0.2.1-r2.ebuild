@@ -5,8 +5,8 @@ EAPI=8
 
 inherit flag-o-matic toolchain-funcs
 
-DESCRIPTION="A desktop sticky note program for the unix geek"
-HOMEPAGE="http://xnots.sourceforge.net https://github.com/thePalindrome/xnots"
+DESCRIPTION="Desktop sticky note program for the unix geek"
+HOMEPAGE="https://xnots.sourceforge.net https://github.com/thePalindrome/xnots"
 SRC_URI="https://downloads.sourceforge.net/xnots/${P}.tar.gz"
 
 LICENSE="GPL-2"
