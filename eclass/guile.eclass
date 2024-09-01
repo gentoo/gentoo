@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: guile.eclass
-# @PROVIDES: guile-utils
 # @MAINTAINER:
 # Gentoo Scheme project <scheme@gentoo.org>
 # @AUTHOR:
 # Author: Arsen Arsenović <arsen@gentoo.org>
 # Inspired by prior work in the Gentoo Python ecosystem.
 # @SUPPORTED_EAPIS: 8
+# @PROVIDES: guile-utils
 # @BLURB: Utilities for packages multi-implementation Guile packages.
 # @DESCRIPTION:
 # This eclass facilitates building against many Guile implementations,
