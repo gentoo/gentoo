@@ -7,14 +7,11 @@ inherit multiprocessing systemd tmpfiles
 
 MY_PV="${PV/_p/-P}"
 MY_PV="${MY_PV/_rc/rc}"
-MY_P="${PN}-${MY_PV}"
-
-RRL_PV="${MY_PV}"
 
 DESCRIPTION="Berkeley Internet Name Domain - Name Server"
 HOMEPAGE="https://www.isc.org/software/bind"
 SRC_URI="https://downloads.isc.org/isc/bind9/${PV}/${P}.tar.xz"
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="MPL-2.0"
 SLOT="0"
