@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+        <maintainer type="project">
+                <email>radio@gentoo.org</email>
+                <name>Radio</name>
+        </maintainer>
+        <use>
+                <flag name="udev">Install udev rules to support rtl-sdr hardware</flag>
+        </use>
+        <upstream>
+                <remote-id type="github">rtlsdrblog/rtl-sdr-blog</remote-id>
+        </upstream>
+</pkgmetadata>
