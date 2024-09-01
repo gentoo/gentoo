@@ -29,8 +29,7 @@ if [[ ${PV} != 9999 ]] ; then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 IUSE="+daemon examples gtk +introspection kde pam selinux systemd test"
-# Tests restricted b/c of permissions
-RESTRICT="!test? ( test ) test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	acct-user/polkitd
