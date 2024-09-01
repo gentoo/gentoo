@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit mate optfeature
+inherit gnome2 mate optfeature
 
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
@@ -72,5 +72,6 @@ src_configure() {
 }
 
 pkg_postinst() {
+	gnome2_pkg_postinst
 	optfeature "webp support" gui-libs/gdk-pixbuf-loader-webp
 }
