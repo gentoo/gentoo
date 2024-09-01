@@ -26,7 +26,9 @@ DEPEND="
 		=kde-frameworks/kirigami-${PVCUT}*:6
 	)
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	examples? ( !${CATEGORY}/${PN}:5[examples(-)] )
+"
 
 src_configure() {
 	local mycmakeargs=(
