@@ -1,0 +1,26 @@
+diff --git a/cblocks/Makefile.in b/cblocks/Makefile.in
+index de1862b..d0b2047 100644
+--- a/cblocks/Makefile.in
++++ b/cblocks/Makefile.in
+@@ -35,7 +35,7 @@ install: cblocks
+ 	install -c ./cblocks $(bindir)/cblocks
+ 	install -d $(mandir)/man6
+ 	install -c ./cblocks.6 $(mandir)/man6/cblocks.6
+-	install -d -g games $(datadir)
++	install -d $(datadir)
+ 	install -c ./series/* $(datadir)/
+ 
+ movelist.o: movelist.c gen.h movelist.h
+diff --git a/csokoban/Makefile.in b/csokoban/Makefile.in
+index 0309aef..cb1ef14 100644
+--- a/csokoban/Makefile.in
++++ b/csokoban/Makefile.in
+@@ -34,7 +34,7 @@ install: csokoban
+ 	install -c ./csokoban $(bindir)/csokoban
+ 	install -d $(mandir)/man6
+ 	install -c ./csokoban.6 $(mandir)/man6/csokoban.6
+-	install -d -g games $(datadir)
++	install -d $(datadir)
+ 	install -c ./series/* $(datadir)/
+ 
+ movelist.o: movelist.c gen.h movelist.h
