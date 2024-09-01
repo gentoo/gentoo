@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{10..11} )
 inherit autotools python-single-r1
 
 DESCRIPTION="Utility that scans through the system and generates a menu of installed programs"
-HOMEPAGE="http://menumaker.sourceforge.net/"
+HOMEPAGE="https://menumaker.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
