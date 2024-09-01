@@ -80,6 +80,10 @@ QA_MULTILIB_PATHS="
 	usr/lib/polkit-1/polkitd
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-musl.patch
+)
+
 python_check_deps() {
 	python_has_version "dev-python/dbus-python[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/python-dbusmock[${PYTHON_USEDEP}]"
