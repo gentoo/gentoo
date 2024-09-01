@@ -185,6 +185,19 @@ pkg_postinst() {
 		elog "/var/bind because bind will now mount the needed directories into"
 		elog "the chroot dir."
 	fi
+
+	# show only when upgrading to 9.18
+	if [[ -n "${REPLACING_VERSIONS}" ]] && ver_test "${REPLACING_VERSIONS}" -lt 9.18; then
+		elog "As this is a major bind version upgrade, please read:"
+		elog "   https://kb.isc.org/docs/changes-to-be-aware-of-when-moving-from-bind-916-to-918"
+		elog "for differences in functionality."
+		elog ""
+		ewarn "In particular, please note that bind-9.18 does not need a root hints file anymore"
+		ewarn "and we only ship with one as a stop-gap. If your current configuration specifies a"
+		ewarn "root hints file - usually called named.cache - bind will not start as it will not be able"
+		ewarn "to find the specified file. Best practice is to delete the offending lines that"
+		ewarn "reference named.cache file from your configuration."
+	fi
 }
 
 pkg_config() {
