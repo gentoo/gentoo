@@ -2,19 +2,19 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: guile-single.eclass
-# @PROVIDES: guile-utils
 # @MAINTAINER:
 # Gentoo Scheme project <scheme@gentoo.org>
 # @AUTHOR:
 # Author: Arsen Arsenović <arsen@gentoo.org>
-# Inspired by prior work in the Gentoo Python ecosystem.
-# @BLURB: Utilities for packages that build against a single Guile.
 # @SUPPORTED_EAPIS: 8
 # @PROVIDES: guile-utils
+# @BLURB: Utilities for packages that build against a single Guile.
 # @DESCRIPTION:
 # This eclass facilitates packages building against a single slot of
 # Guile, which is normally something that uses Guile for extending, like
 # GNU Make, or for programs built in Guile, like Haunt.
+#
+# Inspired by prior work in the Gentoo Python ecosystem.
 #
 # These packages should use guile_gen_cond_dep to generate a dependency
 # string for their Guile package dependencies (i.e. other Guile single-
