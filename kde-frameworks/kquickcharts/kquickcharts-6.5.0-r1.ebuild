@@ -6,6 +6,7 @@ EAPI=8
 ECM_EXAMPLES="true"
 ECM_QTHELP="false"
 ECM_TEST="true"
+PVCUT=$(ver_cut 1-2)
 QTMIN=6.6.2
 inherit ecm frameworks.kde.org
 
@@ -16,15 +17,14 @@ LICENSE="LGPL-2+"
 KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
-# PVCUT=$(ver_cut 1-2)
-# 	examples? (
-# 		>=dev-qt/qtwidgets-${QTMIN}:6
-# 		=kde-frameworks/kdeclarative-${PVCUT}*:5
-# 		=kde-frameworks/kirigami-${PVCUT}*:5
-# 	)
 DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[gui]
 	>=dev-qt/qtdeclarative-${QTMIN}:6
+	examples? (
+		>=dev-qt/qtbase-${QTMIN}:6[widgets]
+		=kde-frameworks/kdeclarative-${PVCUT}*:6
+		=kde-frameworks/kirigami-${PVCUT}*:6
+	)
 "
 RDEPEND="${DEPEND}"
 
