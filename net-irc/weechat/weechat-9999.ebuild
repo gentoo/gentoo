@@ -85,10 +85,6 @@ BDEPEND+="
 	nls? ( >=sys-devel/gettext-0.15 )
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-3.3-cmake_lua_version.patch
-)
-
 DOCS="AUTHORS.md CHANGELOG.md CONTRIBUTING.md UPGRADING.md README.md"
 
 RESTRICT="!test? ( test )"
