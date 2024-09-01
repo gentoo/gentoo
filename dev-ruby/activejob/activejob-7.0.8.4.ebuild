@@ -39,7 +39,9 @@ ruby_add_bdepend "
 
 all_ruby_prepare() {
 	# Set test environment to our hand.
-	sed -i -e '/load_paths/d' test/helper.rb || die "Unable to remove load paths"
+	sed -e '/load_paths/d' \
+		-e '2igem "activesupport", "~> 7.0.0"' \
+		-i test/helper.rb || die "Unable to remove load paths"
 
 	# Remove all currently unpackaged queues.
 	sed -i -e 's/que queue_classic resque sidekiq sneakers sucker_punch backburner//' \
