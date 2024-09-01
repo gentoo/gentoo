@@ -1,0 +1,57 @@
+https://bugs.gentoo.org/924757
+https://bugs.gentoo.org/926891
+https://github.com/tesseract-ocr/tesseract/pull/4154
+
+(Note that if moving to CMake, can use the patch from ghostscript-gpl
+instead, i.e. https://src.fedoraproject.org/rpms/tesseract/blob/rawhide/f/tesseract_neon.patch).
+
+From b1e48789d61d995740762f66f505385db42410a5 Mon Sep 17 00:00:00 2001
+From: Jan Palus <jpalus@fastmail.com>
+Date: Mon, 30 Oct 2023 01:36:57 +0100
+Subject: [PATCH] Check if NEON extension are actually available
+
+User may pass own compiler flags to configure which override those
+provided by project through automake. Therefore it is possible for user
+on ARM platform to pass CXXFLAGS=-mfpu=vfp which will effectively
+disable NEON even though used compiler supports -mfpu=neon (since user
+supplied flags take precedence compiler invocation will use flags:
+-mfpu=neon -mfpu=vfp). Instead of checking whether compiler supports
+-mfpu=neon flag, check if NEON extensions are available by checking if
+__ARM_NEON is defined when compiling with -mfpu=neon and user supplied
+flags combined.
+
+Signed-off-by: Jan Palus <jpalus@fastmail.com>
+---
+ configure.ac | 18 ++++++++++++++----
+ 1 file changed, 14 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 0b38537229..0514b619c5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -178,10 +178,20 @@ case "${host_cpu}" in
+     ;;
+ 
+   arm*)
+-
+-    AX_CHECK_COMPILE_FLAG([-mfpu=neon], [neon=true], [neon=false], [$WERROR])
+-    AM_CONDITIONAL([HAVE_NEON], $neon)
+-    if $neon; then
++    SAVE_CXXFLAGS="$CXXFLAGS"
++    CXXFLAGS="-mfpu=neon $CXXFLAGS"
++    AC_MSG_CHECKING([for NEON support])
++    AC_COMPILE_IFELSE(
++    [AC_LANG_PROGRAM([], [[
++    #ifndef __ARM_NEON
++           #error
++    #endif
++    ]])],
++    [neon=yes], [neon=no])
++    AC_MSG_RESULT([$neon])
++    CXXFLAGS="$SAVE_CXXFLAGS"
++    AM_CONDITIONAL([HAVE_NEON], test "xyes" = "x$neon")
++    if test "xyes" = "$neon"; then
+       AC_DEFINE([HAVE_NEON], [1], [Enable NEON instructions])
+       NEON_CXXFLAGS="-mfpu=neon"
+       AC_SUBST([NEON_CXXFLAGS])
+
