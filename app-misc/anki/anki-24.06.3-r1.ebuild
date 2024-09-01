@@ -728,7 +728,7 @@ LICENSE+=" Unicode-3.0 openssl"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="doc +gui qt6 test"
+IUSE="doc +gui test"
 REQUIRED_USE="gui? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!gui? ( test ) !test? ( test )"
 
@@ -741,11 +741,12 @@ RESTRICT="!gui? ( test ) !test? ( test )"
 # rustls-native-certs to use the native certificate store.
 
 DEPEND="
-	dev-db/sqlite:3
 	>=app-arch/zstd-1.5.5:=
+	dev-db/sqlite:3
 "
 GUI_RDEPEND="
 	${PYTHON_DEPS}
+	dev-qt/qtsvg:6
 	$(python_gen_cond_dep '
 		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		dev-python/distro[${PYTHON_USEDEP}]
@@ -755,24 +756,13 @@ GUI_RDEPEND="
 		dev-python/jsonschema[${PYTHON_USEDEP}]
 		dev-python/markdown[${PYTHON_USEDEP}]
 		dev-python/protobuf-python[${PYTHON_USEDEP}]
+		>=dev-python/PyQt6-6.6.1[gui,network,opengl,quick,webchannel,widgets,${PYTHON_USEDEP}]
+		>=dev-python/PyQt6-sip-13.6.0[${PYTHON_USEDEP}]
+		>=dev-python/PyQt6-WebEngine-6.6.0[widgets,${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/send2trash[${PYTHON_USEDEP}]
-		dev-python/waitress[${PYTHON_USEDEP}]')
-	qt6? (
-		dev-qt/qtsvg:6
-		$(python_gen_cond_dep '
-			>=dev-python/PyQt6-6.6.1[gui,network,opengl,quick,webchannel,widgets,${PYTHON_USEDEP}]
-			>=dev-python/PyQt6-sip-13.6.0[${PYTHON_USEDEP}]
-			>=dev-python/PyQt6-WebEngine-6.6.0[widgets,${PYTHON_USEDEP}]')
-	)
-	!qt6? (
-		dev-qt/qtgui:5[jpeg,png]
-		dev-qt/qtsvg:5
-		$(python_gen_cond_dep '
-			>=dev-python/PyQt5-5.15.5[gui,network,webchannel,widgets,${PYTHON_USEDEP}]
-			>=dev-python/PyQt5-sip-12.9.0[${PYTHON_USEDEP}]
-			>=dev-python/PyQtWebEngine-5.15.5[${PYTHON_USEDEP}]')
-	)
+		dev-python/waitress[${PYTHON_USEDEP}]
+	')
 "
 RDEPEND="
 	${DEPEND}
@@ -788,8 +778,9 @@ BDEPEND="
 	doc? (
 		$(python_gen_cond_dep '
 			>=dev-python/sphinx-7.2.6[${PYTHON_USEDEP}]
+			dev-python/sphinx-autoapi[${PYTHON_USEDEP}]
 			dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
-			dev-python/sphinx-autoapi[${PYTHON_USEDEP}]')
+		')
 	)
 	gui? (
 		${PYTHON_DEPS}
@@ -797,9 +788,10 @@ BDEPEND="
 		app-arch/unzip
 		>=net-libs/nodejs-20.12.1
 		sys-apps/yarn
-		$(python_gen_cond_dep 'dev-python/wheel[${PYTHON_USEDEP}]')
-		qt6?	( $(python_gen_cond_dep 'dev-python/PyQt6[${PYTHON_USEDEP}]') )
-		!qt6?	( $(python_gen_cond_dep 'dev-python/PyQt5[${PYTHON_USEDEP}]') )
+		$(python_gen_cond_dep '
+			dev-python/PyQt6[${PYTHON_USEDEP}]
+			dev-python/wheel[${PYTHON_USEDEP}]
+		')
 	)
 	test? (
 		${RDEPEND}
@@ -808,8 +800,9 @@ BDEPEND="
 		dev-libs/openssl
 		dev-util/cargo-nextest
 		$(python_gen_cond_dep '
+			dev-python/mock[${PYTHON_USEDEP}]
 			dev-python/pytest[${PYTHON_USEDEP}]
-			dev-python/mock[${PYTHON_USEDEP}]')
+		')
 	)
 "
 
@@ -857,12 +850,6 @@ src_prepare() {
 		if use doc; then
 			ln -s "${BROOT}"/usr/bin/sphinx-apidoc out/pyenv/bin || die
 			ln -s "${BROOT}"/usr/bin/sphinx-build out/pyenv/bin || die
-		fi
-
-		# Anki's Qt detection mechanism falls back to Qt5 Python bindings, if Qt6
-		# Python bindings don't get imported successfully.
-		if ! use qt6; then
-			sed -i "s/import PyQt6/raise ImportError/" qt/aqt/qt/__init__.py || die
 		fi
 
 		# Fix hardcoded runner location
@@ -929,13 +916,13 @@ src_test() {
 }
 
 src_install() {
-	local DOC_CONTENTS="Users with add-ons that still rely on Anki's Qt5 GUI can either
-	switch to ${CATEGORY}/${PN}[-qt6], or temporarily set the environment variable
-	ENABLE_QT5_COMPAT to 1 to have Anki install the previous compatibility code.
-	The latter option has additional runtime dependencies. Please take a look
-	at this package's optional runtime features for a complete listing.
-	\n\nIn an early 2024 update, ENABLE_QT5_COMPAT will be removed, so this is not
-	a long-term solution.
+	local DOC_CONTENTS="Users with add-ons that still rely on Anki's Qt5 GUI
+	can temporarily set the environment variable ENABLE_QT5_COMPAT to 1 to have
+	Anki install the previous compatibility code. This option has additional
+	runtime dependencies. Please take a look at this package's optional runtime
+	features for a complete listing.
+	\n\nENABLE_QT5_COMPAT may be removed in the future, so this is not a
+	long-term solution.
 	\n\nAnki's user manual is located online at https://docs.ankiweb.net/
 	\nAnki's add-on developer manual is located online at
 	https://addon-docs.ankiweb.net/"
@@ -964,16 +951,16 @@ src_install() {
 }
 
 pkg_postinst() {
-	[[ "${REPLACING_VERSIONS%-r*}" = '2.1.15' ]] && local FORCE_PRINT_ELOG=1
+	ver_test ${REPLACING_VERSIONS} -lt 24.06.3-r1 && local FORCE_PRINT_ELOG=1
 	readme.gentoo_print_elog
 	if use gui; then
 		xdg_pkg_postinst
 		optfeature "LaTeX in cards" "app-text/texlive[extra] app-text/dvipng"
 		optfeature "sound support" media-video/mpv media-video/mplayer
-		optfeature "recording support" "media-sound/lame[frontend] dev-python/PyQt$(usex qt6 6 5)[multimedia]"
+		optfeature "recording support" "media-sound/lame[frontend] dev-python/PyQt6[multimedia]"
 		optfeature "faster database operations" dev-python/orjson
-		use qt6 && optfeature "compatibility with Qt5-dependent add-ons" dev-python/PyQt6[dbus,printsupport]
-		use qt6 && optfeature "Vulkan driver" "media-libs/vulkan-loader dev-qt/qtbase[vulkan]
+		optfeature "compatibility with Qt5-dependent add-ons" dev-python/PyQt6[dbus,printsupport]
+		optfeature "Vulkan driver" "media-libs/vulkan-loader dev-qt/qtbase:6[vulkan]
 			dev-qt/qtdeclarative:6[vulkan] dev-qt/qtwebengine:6[vulkan]"
 
 		einfo "You can customize the LaTeX header for your cards to fit your needs:"
