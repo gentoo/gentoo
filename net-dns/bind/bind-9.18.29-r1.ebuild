@@ -58,8 +58,8 @@ BDEPEND="
 src_configure() {
 	local myeconfargs=(
 		--prefix="${EPREFIX}"/usr
-		--sysconfdir=/etc/bind
-		--localstatedir=/var
+		--sysconfdir="${EPREFIX}"/etc/bind
+		--localstatedir="${EPREFIX}"/var
 		--enable-full-report
 		--without-readline
 		--with-openssl="${ESYSROOT}"/usr
