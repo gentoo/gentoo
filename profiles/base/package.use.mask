@@ -10,6 +10,11 @@
 # Causes crashes with e.g. dlz+samba (bug #938955)
 net-dns/bind jemalloc
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-02)
+# Prepare kde-apps/kaccounts-integration:5 cleanup
+kde-plasma/plasma-desktop:5 kaccounts
+kde-plasma/plasma-welcome:5 kaccounts
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-09-01)
 # Cleanup dev-qt/qtwebengine:5 revdeps
 <kde-apps/kdecore-meta-23.08.50 webengine
