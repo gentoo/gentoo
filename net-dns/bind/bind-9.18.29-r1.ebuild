@@ -113,7 +113,8 @@ src_install() {
 	fi
 
 	insinto /etc/bind
-	newins "${FILESDIR}"/named.conf-r9 named.conf.auth
+	newins "${FILESDIR}"/named.conf-r8 named.conf
+	newins "${FILESDIR}"/named.conf.auth named.conf.auth
 
 	newinitd "${FILESDIR}"/named.init-r15 named
 	newconfd "${FILESDIR}"/named.confd-r8 named
@@ -146,8 +147,8 @@ src_install() {
 	keepdir /var/bind/{pri,sec,dyn} /var/log/named
 
 	fowners root:named /{etc,var}/bind /var/log/named /var/bind/{sec,pri,dyn}
-	fowners root:named /etc/bind/{bind.keys,named.conf.auth}
-	fperms 0640 /etc/bind/{bind.keys,named.conf.auth}
+	fowners root:named /etc/bind/{bind.keys,named.conf,named.conf.auth}
+	fperms 0640 /etc/bind/{bind.keys,named.conf,named.conf.auth}
 	fperms 0750 /etc/bind /var/bind/pri
 	fperms 0770 /var/log/named /var/bind/{,sec,dyn}
 
