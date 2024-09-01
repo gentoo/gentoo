@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-ant-2.eclass
-# @DEPRECATED: none
 # @MAINTAINER:
 # java@gentoo.org
 # @AUTHOR:
@@ -11,6 +10,7 @@
 # @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: java-utils-2
 # @BLURB: eclass for ant based Java packages
+# @DEPRECATED: none
 # @DESCRIPTION:
 # Eclass for Ant-based Java packages. Provides support for both automatic and
 # manual manipulation of build.xml files. Should be inherited after java-pkg-2
