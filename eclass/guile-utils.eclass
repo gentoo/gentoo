@@ -6,13 +6,14 @@
 # Gentoo Scheme project <scheme@gentoo.org>
 # @AUTHOR:
 # Author: Arsen Arsenović <arsen@gentoo.org>
-# Inspired by prior work in the Gentoo Python ecosystem.
-# @BLURB: Common code between GNU Guile-related eclasses and ebuilds.
 # @SUPPORTED_EAPIS: 8
+# @BLURB: Common code between GNU Guile-related eclasses and ebuilds.
 # @DESCRIPTION:
 # This eclass contains various bits of common code between
 # dev-scheme/guile, Guile multi-implementation ebuilds and Guile
 # single-implementation ebuilds.
+#
+# Inspired by prior work in the Gentoo Python ecosystem.
 
 case "${EAPI}" in
 	8) ;;
