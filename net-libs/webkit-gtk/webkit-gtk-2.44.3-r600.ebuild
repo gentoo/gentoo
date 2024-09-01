@@ -244,6 +244,9 @@ src_configure() {
 		-DUSE_WOFF2=ON
 	)
 
+	# Temporary workaround for bug 938162 (upstream bug 271371).
+	use riscv && mycmakeargs+=( -DENABLE_JIT=OFF )
+
 	# https://bugs.gentoo.org/761238
 	append-cppflags -DNDEBUG
 
