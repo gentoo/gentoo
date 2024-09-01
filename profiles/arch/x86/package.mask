@@ -28,9 +28,6 @@ dev-python/spyder-unittest
 dev-python/spyder-line-profiler
 dev-python/spyder-vim
 dev-python/spyder-notebook
-dev-util/kdevelop:5
-dev-util/kdevelop-php:5
-dev-util/kdevelop-python:5
 kde-apps/akonadi-calendar:5
 kde-apps/akonadi-import-wizard:5
 kde-apps/akonadiconsole:5
