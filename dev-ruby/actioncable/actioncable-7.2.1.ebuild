@@ -39,10 +39,12 @@ ruby_add_rdepend "
 
 ruby_add_bdepend "
 	test? (
+		|| ( dev-ruby/rack:3.1 dev-ruby/rack:3.0 dev-ruby/rack:2.2 )
 		>=dev-ruby/railties-4.2.0
 		dev-ruby/test-unit:2
 		dev-ruby/mocha
 		>=dev-ruby/pg-1.1:1
+		www-servers/puma
 	)"
 
 all_ruby_prepare() {
