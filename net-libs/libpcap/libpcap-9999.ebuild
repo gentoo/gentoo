@@ -21,7 +21,10 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
-LICENSE="BSD"
+# The project itself has COPYING with BSD, but the files used for
+# the libpcap library itself seem to be a mix of BSD-with-attribution
+# and BSD-4.
+LICENSE="BSD BSD-with-attribution BSD-4"
 SLOT="0"
 IUSE="bluetooth dbus netlink rdma remote static-libs test usb yydebug"
 RESTRICT="!test? ( test )"
