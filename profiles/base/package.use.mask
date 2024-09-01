@@ -7,6 +7,11 @@
 # mask everywhere, unmask on arch/*) use arch/base.
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-09-01)
+# Prepare for kde-apps/kdesdk-meta:5 removal
+<kde-apps/kde-apps-meta-23.08.50 sdk
+kde-apps/umbrello:5 php
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-01)
 # Prepare for KDE PIM 5 removal
 <kde-apps/kde-apps-meta-23.08.50 pim
 <kde-apps/kdeutils-meta-23.08.50 gpg
