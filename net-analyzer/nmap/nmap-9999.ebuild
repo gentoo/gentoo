@@ -154,7 +154,7 @@ src_configure() {
 		# The bundled libdnet is incompatible with the version available in the
 		# tree, so we cannot use the system library here.
 		--with-libdnet=included
-		--with-pcre="${ESYSROOT}"/usr
+		--with-libpcre="${ESYSROOT}"/usr
 		--without-dpdk
 	)
 
