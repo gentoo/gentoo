@@ -56,6 +56,11 @@ if [[ ${PV} != *9999* ]] ; then
 	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-tcpdump-20240901 )"
 fi
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.99.5-libdir.patch
+	"${FILESDIR}"/${PN}-4.99.5-lfs.patch
+)
+
 src_prepare() {
 	default
 	eautoreconf
