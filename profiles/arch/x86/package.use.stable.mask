@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-02)
+# kde-plasma/plasma-workspace is not stable here.
+sys-auth/polkit kde
+virtual/notification-daemon kde
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-08-30)
 # KF6 is not stable here.
 >=app-crypt/pinentry-1.3.0 wayland
