@@ -1,0 +1,13 @@
+diff --git a/test/Makefile b/test/Makefile
+index 399d7168ff..80ab108a96 100644
+--- a/test/Makefile
++++ b/test/Makefile
+@@ -76,7 +76,7 @@ uninstall:
+ unit unit-tests: bins
+ 	PATH="$(BINDIR):$(PATH)" $(MAKE) rc
+ 	PKG_CONFIG_PATH=$(PREFIX)/lib/pkgconfig \
+-	LD_LIBRARY_PATH=$(PREFIX)/lib \
++	LD_LIBRARY_PATH=$(LD_LIBRARY_PATH):$(PREFIX)/lib \
+ 	PATH="$(BINDIR):$(PATH)" \
+ 		$(MAKE) -C unit run
+ 
