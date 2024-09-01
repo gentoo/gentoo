@@ -31,7 +31,7 @@ PLUGINS="+alias +buflist +charset +exec +fifo +fset +logger +relay +scripts +spe
 # dev-lang/v8 was dropped from Gentoo so we can't enable javascript support
 # dev-lang/php eclass support is lacking, php plugins don't work. bug #705702
 SCRIPT_LANGS="guile lua +perl +python ruby tcl"
-LANGS=" cs de es fr it ja pl ru"
+LANGS=" cs de es fr hu it ja pl pt pt_BR ru sr tr"
 IUSE="doc enchant man nls relay-api selinux test +zstd ${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS}"
 
 REQUIRED_USE="
