@@ -63,6 +63,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.03.0-c99.patch
+	"${FILESDIR}"/${PN}-10.03.1-arm64-neon-tesseract.patch
 )
 
 src_prepare() {
