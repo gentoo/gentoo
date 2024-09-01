@@ -33,6 +33,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4-use-mesonpy.patch"
+	"${FILESDIR}/${PN}-4-mpich-no-fortran-fix.patch"
 )
 
 python_prepare_all() {
