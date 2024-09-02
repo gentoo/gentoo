@@ -38,6 +38,9 @@ dev-qt/qtsql:5 mysql
 # Enable by default, requires kde-frameworks/kwayland
 kde-apps/yakuake absolute-position
 
+# Required by kde-plasma/plasma-workspace, in ksmserver
+kde-plasma/kde-cli-tools kdesu
+
 # Required by kde-frameworks/kapidox
 media-gfx/graphviz python
 
