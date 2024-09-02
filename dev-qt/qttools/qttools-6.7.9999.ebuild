@@ -36,8 +36,8 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	~dev-qt/qtbase-${PV}:6[network,widgets?]
-	assistant? ( ~dev-qt/qtbase-${PV}:6[sql,sqlite] )
+	~dev-qt/qtbase-${PV}:6[widgets?]
+	assistant? ( ~dev-qt/qtbase-${PV}:6[network,sql,sqlite] )
 	clang? (
 		$(llvm_gen_dep '
 			sys-devel/clang:${LLVM_SLOT}=
@@ -45,12 +45,12 @@ RDEPEND="
 		')
 	)
 	designer? (
-		~dev-qt/qtbase-${PV}:6[xml,zstd=]
+		~dev-qt/qtbase-${PV}:6[network,xml,zstd=]
 		zstd? ( app-arch/zstd:= )
 	)
 	qdbus? ( ~dev-qt/qtbase-${PV}:6[dbus,xml] )
 	qml? ( ~dev-qt/qtdeclarative-${PV}:6[widgets?] )
-	qtdiag? ( ~dev-qt/qtbase-${PV}:6[gles2-only=,vulkan=] )
+	qtdiag? ( ~dev-qt/qtbase-${PV}:6[network,gles2-only=,vulkan=] )
 	widgets? ( ~dev-qt/qtbase-${PV}:6[opengl=] )
 "
 DEPEND="
