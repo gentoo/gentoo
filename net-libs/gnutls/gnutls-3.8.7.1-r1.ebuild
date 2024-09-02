@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gnutls.asc
-inherit autotools multilib-minimal verify-sig flag-o-matic
+inherit autotools multilib-minimal verify-sig
 
 DESCRIPTION="A secure communications library implementing the SSL, TLS and DTLS protocols"
 HOMEPAGE="https://www.gnutls.org/"
