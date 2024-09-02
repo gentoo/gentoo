@@ -7,7 +7,7 @@ inherit cmake flag-o-matic toolchain-funcs xdg-utils
 
 if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="https://anongit.freedesktop.org/git/poppler/poppler.git"
+	EGIT_REPO_URI="https://gitlab.freedesktop.org/poppler/poppler"
 	SLOT="0/9999"
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/aacid.asc
