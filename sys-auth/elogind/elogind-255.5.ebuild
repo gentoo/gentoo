@@ -68,21 +68,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	if use elibc_musl; then
-		# Some of musl-specific patches break build on the
-		# glibc systems (like getdents), therefore those are
-		# only used when the build is done for musl.
-		PATCHES+=(
-			"${FILESDIR}/${P}-musl-sigfillset.patch"
-			"${FILESDIR}/${P}-musl-statx.patch"
-			"${FILESDIR}/${P}-musl-rlim-max.patch"
-			"${FILESDIR}/${P}-musl-getdents.patch"
-			"${FILESDIR}/${P}-musl-gshadow.patch"
-			"${FILESDIR}/${P}-musl-strerror_r.patch"
-			"${FILESDIR}/${P}-musl-more-strerror_r.patch"
-		)
-	fi
-
 	default
 	xdg_environment_reset
 }
