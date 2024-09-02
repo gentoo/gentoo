@@ -15,7 +15,7 @@ IUSE="+X alsa eglfs +ffmpeg gstreamer opengl pulseaudio qml v4l vaapi vulkan"
 # tst_qmediaplayerbackend hard requires qml, review in case becomes optional
 REQUIRED_USE="
 	|| ( ffmpeg gstreamer )
-	eglfs? ( ffmpeg opengl )
+	eglfs? ( ffmpeg opengl qml )
 	vaapi? ( ffmpeg opengl )
 	test? ( qml )
 "

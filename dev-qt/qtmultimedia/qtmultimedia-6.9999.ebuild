@@ -18,7 +18,7 @@ IUSE="
 # tst_qmediaplayerbackend hard requires qml, review in case becomes optional
 REQUIRED_USE="
 	|| ( ffmpeg gstreamer )
-	eglfs? ( ffmpeg opengl )
+	eglfs? ( ffmpeg opengl qml )
 	screencast? ( ffmpeg )
 	test? ( qml )
 	vaapi? ( ffmpeg opengl )
