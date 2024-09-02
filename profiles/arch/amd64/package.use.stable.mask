@@ -76,10 +76,6 @@ media-video/ffmpeg qsv
 # needs stabilizing
 media-video/ffmpeg vmaf
 
-# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
-# needs stabilizing
-media-video/ffmpeg amf
-
 # Joonas Niilola <juippis@gentoo.org> (2021-08-13)
 # dev-libs/efl is stabilized on amd64.
 app-crypt/pinentry -efl
