@@ -10,7 +10,7 @@ QTMIN=6.6.2
 inherit ecm frameworks.kde.org toolchain-funcs
 
 DESCRIPTION="Lightweight user interface framework for mobile and convergent applications"
-HOMEPAGE="https://techbase.kde.org/Kirigami"
+HOMEPAGE="https://community.kde.org/Kirigami"
 
 LICENSE="LGPL-2+"
 KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
