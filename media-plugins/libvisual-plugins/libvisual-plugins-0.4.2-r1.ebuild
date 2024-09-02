@@ -1,8 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit multilib-minimal
+inherit libtool multilib-minimal
 
 DESCRIPTION="collection of visualization plugins for use with the libvisual framework"
 HOMEPAGE="http://libvisual.org/"
@@ -35,6 +35,11 @@ DEPEND="${RDEPEND}
 	>=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}]"
 
 DOCS=( AUTHORS ChangeLog NEWS README TODO )
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 multilib_src_configure() {
 	ECONF_SOURCE=${S} \
