@@ -28,7 +28,7 @@ fi
 LICENSE="MIT"
 SLOT="0/${PV%.*}"
 IUSE="bzip2 +cxx debug dynamic-loading fpx heif imagemagick jbig jpeg jpeg2k jpegxl lcms lzma"
-IUSE+=" openmp perl png q16 q32 static-libs tcmalloc tiff truetype"
+IUSE+=" openmp perl postscript png q16 q32 static-libs tcmalloc tiff truetype"
 IUSE+=" webp wmf X zip zlib zstd"
 
 RDEPEND="
@@ -44,6 +44,7 @@ RDEPEND="
 	lcms? ( media-libs/lcms:2 )
 	lzma? ( app-arch/xz-utils )
 	perl? ( dev-lang/perl:= )
+	postscript? ( app-text/ghostscript-gpl:= )
 	png? ( media-libs/libpng:= )
 	tcmalloc? ( dev-util/google-perftools:= )
 	tiff? ( media-libs/tiff:= )
@@ -103,6 +104,7 @@ src_configure() {
 		--with-quantum-depth=${depth}
 		--without-frozenpaths
 		$(use_with cxx magick-plus-plus)
+		$(use_with postscript gs)
 		$(use_with heif)
 		$(use_with jpegxl jxl)
 		$(use_with perl)
