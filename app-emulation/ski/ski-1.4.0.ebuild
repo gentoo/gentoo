@@ -6,7 +6,7 @@ EAPI=8
 inherit flag-o-matic
 
 DESCRIPTION="ia64 instruction set simulator"
-HOMEPAGE="https://github.com/trofi/ski http://ski.sourceforge.net/"
+HOMEPAGE="https://github.com/trofi/ski https://ski.sourceforge.net/"
 SRC_URI="https://github.com/trofi/ski/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
