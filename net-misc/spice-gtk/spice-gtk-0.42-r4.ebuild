@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit desktop meson optfeature python-any-r1 readme.gentoo-r1 vala xdg
 
 DESCRIPTION="Set of GObject and Gtk objects for connecting to Spice servers and a client GUI"
-HOMEPAGE="https://www.spice-space.org https://cgit.freedesktop.org/spice/spice-gtk/"
+HOMEPAGE="https://www.spice-space.org https://gitlab.freedesktop.org/spice/spice-gtk"
 if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://anongit.freedesktop.org/git/spice/spice-gtk.git"
 	inherit git-r3
