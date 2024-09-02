@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="test program for capturing input device events"
-HOMEPAGE="https://cgit.freedesktop.org/evtest/"
+HOMEPAGE="https://gitlab.freedesktop.org/libevdev/evtest"
 #SRC_URI="https://cgit.freedesktop.org/evtest/snapshot/${PN}-${P}.tar.gz -> ${P}.tar.gz"
 SRC_URI="https://gitlab.freedesktop.org/libevdev/evtest/-/archive/${P}/${PN}-${P}.tar.bz2"
 S="${WORKDIR}/${PN}-${P}"

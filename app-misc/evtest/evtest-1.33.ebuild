@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="test program for capturing input device events"
-HOMEPAGE="https://cgit.freedesktop.org/evtest/"
+HOMEPAGE="https://gitlab.freedesktop.org/libevdev/evtest"
 SRC_URI="https://cgit.freedesktop.org/evtest/snapshot/${PN}-${P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
