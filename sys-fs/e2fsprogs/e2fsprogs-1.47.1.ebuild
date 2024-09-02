@@ -113,6 +113,10 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
+	# Parallel make issue #936493
+	emake -C lib/et V=1 compile_et
+	emake -C lib/ext2fs V=1 ext2_err.h
+
 	if multilib_is_native_abi && use tools ; then
 		emake V=1
 	else
