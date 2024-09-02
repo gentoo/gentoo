@@ -1,9 +1,6 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Resolve conflict between Plasma 6 and KDevelop 24.05
->=dev-util/kdevelop-24.05.1:5 -plasma
-
 # Alfred Wingate <parona@protonmail.com> (2023-12-25)
 # Prefer wayland over X with REQUIRED_USE: ^^ ( gbm wayland X )
 >=media-tv/kodi-20.2 wayland -X
