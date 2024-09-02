@@ -1,0 +1,36 @@
+From fead4fa8174aeb6e61354390e9ddee4627b31166 Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Fri, 23 Aug 2024 17:03:52 +0000
+Subject: [PATCH] klipper: fix copying cells when images are ignored
+
+When copying a cell to the clipboard, both the image and the plain text
+will be copied, and the plain text should be saved to the history when
+images are ignored.
+
+BUG: 491488
+FIXED-IN: 6.1.5
+
+
+(cherry picked from commit b83bc9a076fc0ae091f0df1eddce84d0d1dea5fd)
+
+Co-authored-by: Fushan Wen <qydwhotmail@gmail.com>
+---
+ klipper/klipper.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/klipper/klipper.cpp b/klipper/klipper.cpp
+index b41129d2e1b..24446e216ef 100644
+--- a/klipper/klipper.cpp
++++ b/klipper/klipper.cpp
+@@ -640,7 +640,7 @@ void Klipper::checkClipData(QClipboard::Mode mode, const QMimeData *data)
+     if (selectionMode && m_bSelectionTextOnly && !data->hasText())
+         return;
+ 
+-    if (m_bIgnoreImages && data->hasImage() && !data->hasFormat(QStringLiteral("x-kde-force-image-copy"))) {
++    if (m_bIgnoreImages && data->hasImage() && !data->hasText() /*BUG 491488*/ && !data->hasFormat(QStringLiteral("x-kde-force-image-copy"))) {
+         return;
+     }
+ 
+-- 
+GitLab
+
