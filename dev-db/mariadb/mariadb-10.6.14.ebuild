@@ -219,6 +219,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-10.6.11-gssapi.patch
 	eapply "${FILESDIR}"/${PN}-10.6.11-include.patch
 	eapply "${FILESDIR}"/${PN}-10.6.12-gcc-13.patch
+	eapply "${FILESDIR}"/${PN}-10.6.17-libxml-2.12.patch
 
 	eapply_user
 
@@ -360,6 +361,12 @@ src_configure() {
 		mycmakeargs+=( -DWITH_SSL=system -DCLIENT_PLUGIN_SHA256_PASSWORD=STATIC )
 	else
 		mycmakeargs+=( -DWITH_SSL=bundled )
+	fi
+
+	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then
+		mycmakeargs+=(
+			-DDTRACE="${BROOT}"/usr/bin/stap-dtrace
+		)
 	fi
 
 	# bfd.h is only used starting with 10.1 and can be controlled by NOT_FOR_DISTRIBUTION
