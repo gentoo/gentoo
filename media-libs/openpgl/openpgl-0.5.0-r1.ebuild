@@ -6,8 +6,8 @@ EAPI=8
 inherit cmake flag-o-matic
 
 DESCRIPTION="Intel Open Path Guiding Library"
-HOMEPAGE="https://github.com/OpenPathGuidingLibrary/openpgl"
-SRC_URI="https://github.com/OpenPathGuidingLibrary/openpgl/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/RenderKit/openpgl"
+SRC_URI="https://github.com/RenderKit/openpgl/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0/$(ver_cut 1-2)"
