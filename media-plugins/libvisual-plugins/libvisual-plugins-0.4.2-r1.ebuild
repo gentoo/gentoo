@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit libtool multilib-minimal
+inherit flag-o-matic libtool multilib-minimal
 
 DESCRIPTION="collection of visualization plugins for use with the libvisual framework"
 HOMEPAGE="http://libvisual.org/"
@@ -42,6 +42,14 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/927006
+	# https://github.com/Libvisual/libvisual/issues/358
+	#
+	# Do not trust with LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	ECONF_SOURCE=${S} \
 	econf \
 		$(use_enable jack) \
