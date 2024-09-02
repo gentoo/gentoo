@@ -28,7 +28,6 @@ RESTRICT="bindist mirror strip test"
 
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
-	app-crypt/libsecret
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr
