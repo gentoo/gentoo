@@ -42,7 +42,8 @@ src_configure() {
 
 	tc-ld-disable-gold
 
-	export libdir="/usr/$(get_libdir)"
+	export PREFIX="${EPREFIX}/usr"
+	export LIBDIR="${EPREFIX}/usr/$(get_libdir)"
 
 	# https://bugs.gentoo.org/562004
 	unset LIBS
