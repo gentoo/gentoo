@@ -100,6 +100,7 @@ src_prepare() {
 	patch -p1 -f < "${FILESDIR}"/${PN}-124-systemd.patch
 	patch -p1 -f < "${FILESDIR}"/${PN}-124-systemd-fixup.patch
 	patch -p1 -f < "${FILESDIR}"/${PN}-124-c99-fixes.patch
+	sed -i -e "s:dependency('systemd':dependency('libelogind':" meson.build || die
 
 	sed -i -e 's|unix-group:wheel|unix-user:0|' src/polkitbackend/*-default.rules || die
 }
