@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Fabian Groffen <grobian@gentoo.org> (2024-09-02)
+# exim_tinydb utility crashes due to invalid free() (used in startup script)
+=mail-mta/exim-4.98
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-08-31)
 # KDE PIM 5 depends on deprecated kde-frameworks/kross:5,
 # blocking deprecated dev-qt/qtscript:5 removal, and deprecated
