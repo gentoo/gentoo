@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 # This is the commit that the CI for the release commit used
 BINS_COMMIT="1203a9a2f51e32337c8434d9f4f7c4543552e271"
 
-inherit meson python-any-r1
+inherit flag-o-matic meson python-any-r1
 
 DESCRIPTION="reverse engineering framework for binary analysis"
 HOMEPAGE="https://rizin.re/"
@@ -36,6 +36,7 @@ RDEPEND="
 	dev-libs/openssl:0=
 	dev-libs/libpcre2:0=
 	>=dev-libs/tree-sitter-0.19.0
+	dev-libs/tree-sitter-c
 	dev-libs/xxhash
 	sys-apps/file
 	sys-libs/zlib:0=
@@ -69,6 +70,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# workaround tree-sitter-c induced underlinking in bug 928301
+	append-ldflags -ltree-sitter
+
 	local emesonargs=(
 		-Dcli=enabled
 		-Duse_sys_capstone=enabled
