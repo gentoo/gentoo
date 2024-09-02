@@ -108,12 +108,6 @@ app-text/kjots:5
 # Bug #759772. Removal on 2024-09-31.
 media-gfx/kcoloredit
 
-# Sam James <sam@gentoo.org> (2024-08-31)
-# Please unmask and test. If you have any issues, please file a new bug.
-# The mask will be lifted by 2024-09-02. Test it before then please!
-=net-dns/bind-9.18.29
-=net-dns/bind-tools-9.18.0
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-08-29)
 # No signs of development upstream (last commit in 2016). If you use this,
 # please ping them in order to get it ported over to KF6.
