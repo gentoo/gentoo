@@ -58,11 +58,17 @@ RDEPEND="${COMMON_DEPEND}
 	kde-apps/kio-extras:5
 	kde-apps/thumbnailers:5
 	>=kde-frameworks/ktexteditor-${KFMIN}:5
+	kde-plasma/kde-cli-tools:*[kdesu]
 "
 
 src_prepare() {
 	ecm_src_prepare
 	use handbook || cmake_comment_add_subdirectory doc/handbook
+}
+
+src_configure() {
+	local mycmakeargs=( -DKDESU_PATH=/usr/bin/kdesu )
+	ecm_src_configure
 }
 
 pkg_postinst() {
