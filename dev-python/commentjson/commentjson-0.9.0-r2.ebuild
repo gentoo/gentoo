@@ -28,6 +28,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/six[${PYTHON_USEDEP}]
+		dev-python/test[${PYTHON_USEDEP}]
 	)
 "
 
