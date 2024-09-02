@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ fi
 inherit autotools readme.gentoo-r1 systemd
 
 DESCRIPTION="Graphical boot animation (splash) and logger"
-HOMEPAGE="https://cgit.freedesktop.org/plymouth/"
+HOMEPAGE="https://gitlab.freedesktop.org/plymouth/plymouth"
 
 LICENSE="GPL-2"
 SLOT="0"
