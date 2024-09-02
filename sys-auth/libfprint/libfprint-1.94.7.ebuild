@@ -9,7 +9,7 @@ MY_P="${PN}-v${PV}"
 
 DESCRIPTION="Library to add support for consumer fingerprint readers"
 HOMEPAGE="
-	https://cgit.freedesktop.org/libfprint/libfprint
+	https://fprint.freedesktop.org/
 	https://gitlab.freedesktop.org/libfprint/libfprint
 "
 SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/v${PV}/${MY_P}.tar.bz2 -> ${P}.tar.bz2"
