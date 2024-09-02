@@ -269,6 +269,7 @@ src_test() {
 
 	local CMAKE_SKIP_TESTS=(
 		# fails with network sandbox
+		tst_certificateerror
 		tst_loadsignals
 		tst_qquickwebengineview
 		tst_qwebengineglobalsettings
