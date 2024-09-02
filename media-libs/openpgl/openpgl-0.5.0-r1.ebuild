@@ -41,7 +41,8 @@ src_configure() {
 		-DOPENPGL_ISA_AVX512="$(usex cpu_flags_x86_avx512dq)"
 		-DOPENPGL_ISA_NEON="$(usex arm64)"
 		# TODO look into neon 2x support
-		# -DOPENPGL_ISA_NEON2X="$(usex cpu_flags_arm_neon2x)"
+		# neon2x is "double pumped" neon on apple silicon
+		# -DOPENPGL_ISA_NEON2X="$(usex cpu_flags_arm64_neon2x)"
 	)
 
 	# This is currently needed on arm64 to get the NEON SIMD wrapper to compile the code successfully
