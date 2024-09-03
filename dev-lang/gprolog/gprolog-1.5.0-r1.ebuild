@@ -16,9 +16,11 @@ KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="debug doc examples"
 
 PATCHES=(
+	# https://github.com/didoudiaz/gprolog/commit/0ba64c81255e910d68be2191fd1e688801320db8
 	"${FILESDIR}"/${P}-ldflags.patch
 	"${FILESDIR}"/${P}-links.patch
 	"${FILESDIR}"/${P}-destdir.patch
+
 	"${FILESDIR}"/${P}-llvm-as.patch
 )
 
