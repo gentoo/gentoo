@@ -41,7 +41,12 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-23.04.2-autostart_disable.patch" ) # TODO: upstream
+PATCHES=(
+	# TODO: upstream
+	"${FILESDIR}/${PN}-23.04.2-autostart_disable.patch"
+	# Pending: https://invent.kde.org/multimedia/kmix/-/merge_requests/29
+	"${FILESDIR}/${PN}-24.12.2-revert-kcm_pulseaudio-dep.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(

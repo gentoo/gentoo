@@ -41,7 +41,16 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+<<<<<<< HEAD:kde-apps/kmix/kmix-24.12.1.ebuild
 PATCHES=( "${FILESDIR}/${PN}-23.04.2-autostart_disable.patch" ) # TODO: upstream
+=======
+PATCHES=(
+	# TODO: upstream
+	"${FILESDIR}/${PN}-23.04.2-autostart_disable.patch"
+	# Pending: https://invent.kde.org/multimedia/kmix/-/merge_requests/29
+	"${FILESDIR}/${PN}-24.05.2-revert-kcm_pulseaudio-dep.patch"
+)
+>>>>>>> aa17c6dbaed7 (kde-apps/kmix: Reference pending upstream MR):kde-apps/kmix/kmix-24.08.49.9999.ebuild
 
 src_configure() {
 	local mycmakeargs=(
