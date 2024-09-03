@@ -127,7 +127,7 @@ qtwebengine_check-reqs() {
 		ewarn "If run into issues, please try disabling before reporting a bug."
 	fi
 
-	local CHECKREQS_DISK_BUILD=8G
+	local CHECKREQS_DISK_BUILD=9G
 	local CHECKREQS_DISK_USR=360M
 
 	if ! has distcc ${FEATURES}; then #830661
