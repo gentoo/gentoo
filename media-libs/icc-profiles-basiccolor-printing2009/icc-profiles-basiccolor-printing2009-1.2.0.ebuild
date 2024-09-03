@@ -10,4 +10,3 @@ SRC_URI="https://downloads.sourceforge.net/openicc/basICColor-Profiles/${P}.tar.
 LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
