@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,9 +20,12 @@ HOMEPAGE="https://pwmt.org/projects/zathura-cb/"
 LICENSE="ZLIB"
 SLOT="0"
 
+# Tests currently only validating data files
+RESTRICT="test"
+
 RDEPEND="app-arch/libarchive:=
 	>=app-text/zathura-0.3.9
-	dev-libs/girara
+	dev-libs/girara:=
 	dev-libs/glib:2
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2[jpeg]
