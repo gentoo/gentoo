@@ -6,8 +6,8 @@ EAPI=8
 ECM_HANDBOOK="optional"
 ECM_TEST="true"
 PVCUT=$(ver_cut 1-3)
-KFMIN=6.5.0
-QTMIN=6.7.2
+KFMIN=6.3.0
+QTMIN=6.6.2
 inherit ecm gear.kde.org optfeature
 
 DESCRIPTION="Image viewer by KDE"
@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/gwenview/ https://userbase.kde.org/Gwenview"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="activities fits +mpris raw semantic-desktop share X"
 
 # requires running environment
@@ -80,6 +80,10 @@ BDEPEND="
 	>=dev-qt/qtwayland-${QTMIN}:6
 	dev-util/wayland-scanner
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-24.08.0-odr.patch
+)
 
 src_prepare() {
 	ecm_src_prepare

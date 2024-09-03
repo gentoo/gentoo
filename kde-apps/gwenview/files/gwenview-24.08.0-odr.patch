@@ -1,0 +1,58 @@
+From b5cc214574eeb62f469a058daf52cd92270e4aa9 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@gentoo.org>
+Date: Tue, 3 Sep 2024 00:40:11 -0400
+Subject: [PATCH] fix ODR violation: many files had the wrong definition of
+ Enum
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This enum has a different number of values, depending on whether
+gwenview is configured with the semanticinfo backend "none" or
+fake/baloo.
+
+In order to avoid Undefined Behavior, every file that includes sorting.h
+also has to include config-gwenview.h *before* sorting.h, which was not
+true. Solve this by including the config header inside the sorting.h
+header.
+
+Fixes link failures when LTO is enabled, since LTO allows the compiler
+to do whole-program optimization and type-check across the entire
+program:
+
+```
+/var/tmp/portage/kde-apps/gwenview-24.08.0/work/gwenview-24.08.0/app/../lib/sorting.h:37:6: error: type ‘Gwenview::Sorting::Enum’ violates the C++ One Definition Rule [-Werror=odr]
+   37 | enum Enum {
+      |      ^
+/var/tmp/portage/kde-apps/gwenview-24.08.0/work/gwenview-24.08.0/app/../lib/sorting.h:37:6: note: an enum with different number of values is defined in another translation unit
+   37 | enum Enum {
+      |      ^
+lto1: some warnings being treated as errors
+lto-wrapper: fatal error: /usr/bin/x86_64-pc-linux-gnu-g++ returned 1 exit status
+compilation terminated.
+/usr/libexec/gcc/x86_64-pc-linux-gnu/ld: error: lto-wrapper failed
+collect2: error: ld returned 1 exit status
+```
+
+Fixes: https://bugs.gentoo.org/921649
+---
+ lib/sorting.h | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/lib/sorting.h b/lib/sorting.h
+index 529ea6fc9..c008865cf 100644
+--- a/lib/sorting.h
++++ b/lib/sorting.h
+@@ -21,6 +21,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Cambridge, MA 02110-1301, USA
+ #ifndef SORTING_H
+ #define SORTING_H
+ 
++// Do not assume every file that includes this one, includes the config.h
++#include <config-gwenview.h>
++
+ // Qt
+ 
+ // KF
+-- 
+GitLab
+
