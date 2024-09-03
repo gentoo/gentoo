@@ -65,7 +65,7 @@ _umount() {
 _get_pidfile() {
 	# as suggested in bug #107724, bug 335398#c17
 	[ -n "${PIDFILE}" ] || PIDFILE=${CHROOT}$(\
-			/usr/sbin/named-checkconf -p ${CHROOT:+-t} ${CHROOT} ${NAMED_CONF#${CHROOT}} | grep 'pid-file' | cut -d\" -f2)
+			/usr/bin/named-checkconf -p ${CHROOT:+-t} ${CHROOT} ${NAMED_CONF#${CHROOT}} | grep 'pid-file' | cut -d\" -f2)
 	[ -z "${PIDFILE}" ] && PIDFILE=${CHROOT}/run/named/named.pid
 }
 
@@ -98,7 +98,7 @@ checkconfig() {
 		return 1
 	fi
 
-	/usr/sbin/named-checkconf ${CHROOT:+-t} ${CHROOT} ${NAMED_CONF#${CHROOT}} || {
+	/usr/bin/named-checkconf ${CHROOT:+-t} ${CHROOT} ${NAMED_CONF#${CHROOT}} || {
 		eerror "named-checkconf failed! Please fix your config first."
 		return 1
 	}
@@ -109,7 +109,7 @@ checkconfig() {
 
 checkzones() {
 	ebegin "Checking named configuration and zones"
-	/usr/sbin/named-checkconf -z -j ${CHROOT:+-t} ${CHROOT} ${NAMED_CONF#${CHROOT}}
+	/usr/bin/named-checkconf -z -j ${CHROOT:+-t} ${CHROOT} ${NAMED_CONF#${CHROOT}}
 	eend $?
 }
 

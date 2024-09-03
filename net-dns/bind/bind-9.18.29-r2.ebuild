@@ -149,7 +149,7 @@ src_install() {
 	fperms 0750 /etc/bind /var/bind/pri
 	fperms 0770 /var/log/named /var/bind/{,sec,dyn}
 
-	systemd_newunit "${FILESDIR}/named.service-r1" named.service
+	systemd_newunit "${FILESDIR}/named.service-r2" named.service
 	dotmpfiles "${FILESDIR}"/named.conf
 	exeinto /usr/libexec
 	doexe "${FILESDIR}/generate-rndc-key.sh"
