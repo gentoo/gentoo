@@ -5,6 +5,8 @@ EAPI=8
 
 MY_PN=DyLP
 
+inherit libtool
+
 DESCRIPTION="COIN-OR dynamic simplex linear program solver"
 HOMEPAGE="https://github.com/coin-or/DyLP/"
 SRC_URI="https://github.com/coin-or/${MY_PN}/archive/releases/${PV}.tar.gz
@@ -43,6 +45,7 @@ src_prepare() {
 		|| die "failed to fix the pkgconfig path in ${S}/configure"
 
 	default
+	elibtoolize
 }
 
 src_configure() {
@@ -69,6 +72,7 @@ src_install() {
 	use doc && HTML_DOC=("${BUILD_DIR}/doxydocs/html/")
 
 	emake DESTDIR="${D}" install
+	find "${ED}" -type f -name '*.la' -delete || die
 
 	# Duplicate junk, and in the wrong location.
 	rm -r "${ED}/usr/share/coin/doc/${MY_PN}" || die
