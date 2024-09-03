@@ -5,6 +5,7 @@ EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
+# py3.13: https://github.com/qutebrowser/qutebrowser/issues/8205
 PYTHON_COMPAT=( python3_{10..12} )
 inherit distutils-r1 xdg
 
