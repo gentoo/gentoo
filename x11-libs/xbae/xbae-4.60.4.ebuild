@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Motif-based widget to display a grid of cells as a spreadsheet"
-HOMEPAGE="http://xbae.sourceforge.net/"
+HOMEPAGE="https://xbae.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
