@@ -70,6 +70,7 @@ CMAKE_SKIP_TESTS=(
 	# tries to use real alsa or pulseaudio and fails in sandbox
 	tst_qaudiosink
 	tst_qaudiosource
+	tst_qmediacapture_gstreamer
 	tst_qmediacapturesession
 	tst_qmediaplayerbackend
 	tst_qsoundeffect
