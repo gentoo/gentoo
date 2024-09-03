@@ -21,10 +21,13 @@ LICENSE="ZLIB"
 SLOT="0"
 IUSE="+javascript"
 
+# Tests currently only validating data files
+RESTRICT="test"
+
 DEPEND="
-	>=app-text/mupdf-1.20.0:=[javascript?]
-	>=app-text/zathura-0.5.2:=
-	dev-libs/girara
+	>=app-text/mupdf-1.24.0:=[javascript?]
+	>=app-text/zathura-0.2.0:=
+	dev-libs/girara:=
 	dev-libs/glib:2
 	x11-libs/cairo
 "
@@ -34,7 +37,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.4.3-meson-mupdfthird.patch"
+	"${FILESDIR}/zathura-pdf-mupdf-0.4.3-meson-mupdfthird.patch"
 )
 
 src_prepare() (
