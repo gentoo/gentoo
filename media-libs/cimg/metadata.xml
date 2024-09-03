@@ -2,7 +2,15 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<longdescription>
+		The CImg Library is a small and open-source C++ library for image
+		processing, designed with these properties in mind: usefullness,
+		genericity, portability, simplicity, extensibility and freedom.
+		Due to its generic conception, it can cover a wide range of image
+		processing applications.
+	</longdescription>
 	<upstream>
+		<bugs-to>https://github.com/GreycLab/CImg/issues</bugs-to>
 		<remote-id type="github">GreycLab/CImg</remote-id>
 		<remote-id type="cpe">cpe:/a:cimg:cimg</remote-id>
 	</upstream>
