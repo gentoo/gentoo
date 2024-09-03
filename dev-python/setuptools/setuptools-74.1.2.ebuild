@@ -35,6 +35,9 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		>=dev-python/tomli-2.0.1[${PYTHON_USEDEP}]
 	' 3.10)
+	!!<=dev-libs/gobject-introspection-1.76.1-r0
+	!!=dev-libs/gobject-introspection-1.78.1-r0
+	!!=dev-libs/gobject-introspection-1.80.1-r1
 "
 BDEPEND="
 	${RDEPEND}
