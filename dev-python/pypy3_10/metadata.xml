@@ -14,5 +14,9 @@
 			to bootstrap pip and setuptools (if disabled, it will
 			be only possible to use venv `--without-pip`)
 		</flag>
+		<flag name="test-install">
+			Install the test suite packages, that are required to run
+			tests in a few reverse dependencies.
+		</flag>
 	</use>
 </pkgmetadata>
