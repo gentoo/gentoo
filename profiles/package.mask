@@ -38,6 +38,7 @@
 =mail-mta/exim-4.98
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-08-31)
+# All users must upgrade to KDE PIM 6.
 # KDE PIM 5 depends on deprecated kde-frameworks/kross:5,
 # blocking deprecated dev-qt/qtscript:5 removal, and deprecated
 # dev-qt/qtwebengine:5.
