@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake
 
-LIBBGCODE_COMMIT=b5c57c423c958a78dacae468aeee63ab3d2de947
+LIBBGCODE_COMMIT=3db61e45713932b4a9cdd469aa567d65e0095d00
 
 DESCRIPTION="Prusa Block & Binary G-code reader / writer / converter"
 HOMEPAGE="https://github.com/prusa3d/libbgcode"
