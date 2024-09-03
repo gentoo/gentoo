@@ -243,7 +243,7 @@ src_configure() {
 		use arm64 && tc-is-gcc && filter-flags '-march=*' '-mcpu=*'
 	fi
 
-	export NINJA NINJAFLAGS=$(get_NINJAOPTS)
+	export NINJAFLAGS=$(get_NINJAOPTS)
 	[[ ${NINJA_VERBOSE^^} == OFF ]] || NINJAFLAGS+=" -v"
 
 	local -x EXTRA_GN="${mygnargs[*]} ${EXTRA_GN}"
