@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2024-09-03)
+# Causes crashes with e.g. dlz+samba (bug #938955)
+net-dns/bind jemalloc
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-09-01)
 # Cleanup dev-qt/qtwebengine:5 revdeps
 <kde-apps/kdecore-meta-23.08.50 webengine
