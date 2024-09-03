@@ -3,12 +3,12 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="xml(+)"
 inherit gnome.org meson python-single-r1 xdg
 
 DESCRIPTION="Introspection system for GObject-based libraries"
-HOMEPAGE="https://wiki.gnome.org/Projects/GObjectIntrospection"
+HOMEPAGE="https://gi.readthedocs.io"
 
 LICENSE="LGPL-2+ GPL-2+"
 SLOT="0"
@@ -20,8 +20,11 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv 
 # virtual/pkgconfig needed at runtime, bug #505408
 RDEPEND="
 	>=dev-libs/gobject-introspection-common-${PV}
-	>=dev-libs/glib-2.75.0:2
+	>=dev-libs/glib-2.$(($(ver_cut 2) - 1)).0:2
 	dev-libs/libffi:=
+	$(python_gen_cond_dep '
+		<dev-python/setuptools-74[${PYTHON_USEDEP}]
+	')
 	doctool? (
 		$(python_gen_cond_dep '
 			dev-python/mako[${PYTHON_USEDEP}]
@@ -49,6 +52,8 @@ BDEPEND="
 		')
 	)
 "
+
+PATCHES=( "${FILESDIR}/${P}-tests-py312.patch" )
 
 pkg_setup() {
 	python-single-r1_pkg_setup

@@ -25,8 +25,8 @@ RDEPEND="
 	>=dev-libs/glib-2.79.0:2
 	dev-libs/libffi:=
 	$(python_gen_cond_dep '
-		dev-python/setuptools[${PYTHON_USEDEP}]
-	' 3.12)
+		<dev-python/setuptools-74[${PYTHON_USEDEP}]
+	')
 	doctool? (
 		$(python_gen_cond_dep '
 			dev-python/mako[${PYTHON_USEDEP}]
