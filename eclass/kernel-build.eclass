@@ -296,7 +296,13 @@ kernel-build_src_configure() {
 kernel-build_src_compile() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	emake O="${WORKDIR}"/build "${MAKEARGS[@]}" all
+	local targets=( all )
+
+	if grep -q "CONFIG_CTF=y" "${WORKDIR}/modprep/.config"; then
+		targets+=( ctf )
+	fi
+
+	emake O="${WORKDIR}"/build "${MAKEARGS[@]}" "${targets[@]}"
 }
 
 # @FUNCTION: kernel-build_src_test
@@ -335,6 +341,10 @@ kernel-build_src_install() {
 	# on arm or arm64 you also need dtb
 	if use arm || use arm64 || use riscv; then
 		targets+=( dtbs_install )
+	fi
+
+	if grep -q "CONFIG_CTF=y" "${WORKDIR}/modprep/.config"; then
+		targets+=( ctf_install )
 	fi
 
 	# Use the kernel build system to strip, this ensures the modules
@@ -430,6 +440,7 @@ kernel-build_src_install() {
 			mv "build/vmlinux" "${ED}${kernel_dir}/vmlinux" || die
 		fi
 		dostrip -x "${kernel_dir}/vmlinux"
+		dostrip -x "${kernel_dir}/vmlinux.ctfa"
 	fi
 
 	# strip empty directories
