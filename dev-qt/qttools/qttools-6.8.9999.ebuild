@@ -93,8 +93,6 @@ src_configure() {
 		# QtHelp into another package so that qtdeclarative can depend on it
 		# without a circular dependency with qttools
 		$(cmake_use_find_package qmlls Qt6QmlLSPrivate)
-
-		$(usev designer -DQT_UNITY_BUILD=OFF) # fails to build (QTBUG-122634)
 	)
 
 	qt6-build_src_configure
