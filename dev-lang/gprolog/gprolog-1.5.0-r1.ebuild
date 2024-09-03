@@ -32,6 +32,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# src/EnginePl/wam_archi.h:64:33: error: global register variable follows a function definition
+	# https://bugs.gentoo.org/855599
+	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=68384
+	filter-lto
+
 	CFLAGS_MACHINE="$(get-flag -march) $(get-flag -mcpu) $(get-flag -mtune)"
 
 	use debug && append-flags -DDEBUG
