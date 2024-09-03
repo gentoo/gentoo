@@ -48,5 +48,5 @@ BDEPEND="test? ( >=dev-qt/qtwayland-${QTMIN}:6 )"
 
 PATCHES=(
 	"${FILESDIR}/${P}-avoid-segfault.patch"
-	"${FILESDIR}/${P}-dont-process-null-streams"
+	"${FILESDIR}/${P}-dont-process-null-streams.patch"
 )
