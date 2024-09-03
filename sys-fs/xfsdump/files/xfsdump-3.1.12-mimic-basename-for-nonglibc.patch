@@ -1,0 +1,42 @@
+https://bugs.gentoo.org/937495
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Tue, 3 Sep 2024 06:14:54 +0000
+Subject: [PATCH 1/1] xfsdump: Mimic GNU basename() API for non-glibc library
+ e.g. musl
+
+musl only provides POSIX version of basename and it has also removed
+providing it via string.h header [1] which now results in compile errors
+with newer compilers e.g. clang-18
+
+[1] https://git.musl-libc.org/cgit/musl/commit/?id=725e17ed6dff4d0cd22487bb64470881e86a92e7
+
+Please also reffer: https://bugs.gentoo.org/937495
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/common/main.c
++++ b/common/main.c
+@@ -77,6 +77,9 @@
+ #define MINSTACKSZ	0x02000000
+ #define MAXSTACKSZ	0x08000000
+ 
++#if !defined(__GLIBC__)
++#define basename(src) (strrchr(src, '/') ? strrchr(src, '/') + 1 : src)
++#endif
+ 
+ /* declarations of externally defined global symbols *************************/
+ 
+--- a/invutil/invidx.c
++++ b/invutil/invidx.c
+@@ -41,6 +41,10 @@
+ #include "stobj.h"
+ #include "timeutil.h"
+ 
++#if !defined(__GLIBC__)
++#define basename(src) (strrchr(src, '/') ? strrchr(src, '/') + 1 : src)
++#endif
++
+ invidx_fileinfo_t *invidx_file;
+ int invidx_numfiles;
+ 
+-- 
+2.46.0
