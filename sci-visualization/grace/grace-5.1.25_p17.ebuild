@@ -4,7 +4,7 @@
 EAPI=8
 FORTRAN_NEEDED=fortran
 
-inherit desktop fortran-2 toolchain-funcs xdg
+inherit desktop flag-o-matic fortran-2 toolchain-funcs xdg
 
 DESCRIPTION="Motif based XY-plotting tool"
 HOMEPAGE="https://plasma-gate.weizmann.ac.il/Grace/"
@@ -79,6 +79,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing, -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/863293
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	tc-export CC AR
 
 	# the configure script just produces a basic Make.conf
