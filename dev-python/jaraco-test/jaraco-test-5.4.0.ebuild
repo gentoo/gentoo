@@ -24,6 +24,7 @@ RDEPEND="
 	dev-python/jaraco-collections[${PYTHON_USEDEP}]
 	dev-python/jaraco-context[${PYTHON_USEDEP}]
 	dev-python/jaraco-functools[${PYTHON_USEDEP}]
+	dev-python/test[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
