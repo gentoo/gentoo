@@ -165,11 +165,10 @@ src_prepare() {
 }
 
 src_configure() {
-	# The only component that uses gdk backends is the qgtk3 platformtheme plugin
 	if use gtk; then
-		# defang automagic dependencies
-		use wayland || append-cxxflags -DGENTOO_GTK_HIDE_WAYLAND
+		# defang automagic dependencies (bug #624960)
 		use X || append-cxxflags -DGENTOO_GTK_HIDE_X11
+		use wayland || append-cxxflags -DGENTOO_GTK_HIDE_WAYLAND
 	fi
 
 	local mycmakeargs=(
