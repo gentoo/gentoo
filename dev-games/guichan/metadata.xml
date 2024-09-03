@@ -11,5 +11,6 @@
 	<upstream>
 		<remote-id type="google-code">guichan</remote-id>
 		<remote-id type="sourceforge">guichan</remote-id>
+		<remote-id type="github">darkbitsorg/guichan</remote-id>
 	</upstream>
 </pkgmetadata>
