@@ -35,7 +35,7 @@ RDEPEND="
 
 BDEPEND="
 	test? (
-		<dev-python/pytest-8[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/waitress[${PYTHON_USEDEP}]
 	)
 "
