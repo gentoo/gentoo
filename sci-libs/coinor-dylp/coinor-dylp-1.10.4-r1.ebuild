@@ -5,7 +5,7 @@ EAPI=8
 
 MY_PN=DyLP
 
-inherit libtool
+inherit flag-o-matic libtool
 
 DESCRIPTION="COIN-OR dynamic simplex linear program solver"
 HOMEPAGE="https://github.com/coin-or/DyLP/"
@@ -49,6 +49,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# heavily vintage autotools relies on UB to detect SunOS
+	# https://bugs.gentoo.org/878143
+	# https://github.com/coin-or/DyLP/issues/27
+	filter-lto
+
 	local myeconfargs=(
 		--enable-dependency-linking
 		--with-coin-instdir="${ED}"/usr
