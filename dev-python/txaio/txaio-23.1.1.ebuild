@@ -17,6 +17,14 @@ HOMEPAGE="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+IUSE="test"
+RESTRICT="!test? ( test )"
+
+BDEPEND="
+	test? (
+		dev-python/test[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_sphinx docs \
 	'>=dev-python/sphinxcontrib-spelling-2.1.2' \
