@@ -81,6 +81,9 @@ BDEPEND="
 	dev-util/wayland-scanner
 "
 
+# Backport pending: https://invent.kde.org/graphics/gwenview/-/merge_requests/298
+PATCHES=( "${FILESDIR}"/${PN}-24.08.0-odr.patch ) # bugs 941274, 921649
+
 src_prepare() {
 	ecm_src_prepare
 	if ! use mpris; then
