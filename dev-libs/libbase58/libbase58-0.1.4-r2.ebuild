@@ -53,4 +53,6 @@ src_install() {
 		# It's hard to control this directory with multilib_is_native_abi && use tools, hence -f.
 		rm -rf "${ED}/TRASH" || die
 	fi
+
+	find "${ED}" -name '*.la' -delete || die
 }
