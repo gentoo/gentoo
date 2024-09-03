@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/938475
+https://codereview.qt-project.org/c/qt/qtbase/+/585668
+From: Sam James <sam@gentoo.org>
+Date: Sun, 25 Aug 2024 17:34:22 +0100
+Subject: [PATCH] QContiguousCache: fix include for qMin
+
+Include `<QtCore/qminmax.h>` for `qMin`. This came up downstream
+in Gentoo at https://bugs.gentoo.org/938475.
+--- a/src/corelib/tools/qcontiguouscache.h
++++ b/src/corelib/tools/qcontiguouscache.h
+@@ -10,2 +10,3 @@
+ #include <QtCore/qtcoreexports.h>
++#include <QtCore/qminmax.h>
+ #include <QtCore/qttypetraits.h>
