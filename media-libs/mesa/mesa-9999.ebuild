@@ -440,7 +440,6 @@ multilib_src_configure() {
 	emesonargs+=(
 		$(meson_use test build-tests)
 		-Dshared-glapi=enabled
-		-Ddri3=enabled
 		-Dexpat=enabled
 		$(meson_use opengl)
 		$(meson_feature opengl gbm)
