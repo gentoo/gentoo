@@ -9,8 +9,8 @@ DESCRIPTION="Greenbone Security Assistant"
 HOMEPAGE="https://www.greenbone.net https://github.com/greenbone/gsad"
 SRC_URI="https://github.com/greenbone/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-SLOT="0"
 LICENSE="AGPL-3+"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="brotli doc"
 
@@ -19,7 +19,7 @@ DEPEND="
 	>=net-libs/libmicrohttpd-0.9.0:=
 	dev-libs/libxml2:2
 	>=dev-libs/glib-2.42:2
-	>=net-analyzer/gvm-libs-22.6
+	>=net-analyzer/gvm-libs-22.8
 	>=net-libs/gnutls-3.2.15:=
 	>=sys-libs/zlib-1.2
 	dev-libs/libgcrypt:0=
