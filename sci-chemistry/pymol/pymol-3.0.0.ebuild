@@ -26,19 +26,20 @@ IUSE="+netcdf web"
 DEPEND="
 	dev-cpp/msgpack-cxx
 	dev-libs/mmtf-cpp
-	dev-python/pyopengl[${PYTHON_USEDEP}]
-	dev-python/PyQt5[opengl,${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
-	dev-python/pmw[${PYTHON_USEDEP}]
+	sys-libs/zlib
 	media-libs/freetype:2
 	media-libs/glew:0=
 	media-libs/glm
 	media-libs/libpng:0=
-	media-video/mpeg-tools
-	sys-libs/zlib
 	netcdf? ( sci-libs/netcdf:0= )
 "
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
+	media-video/mpeg-tools
+	dev-python/pyopengl[${PYTHON_USEDEP}]
+	dev-python/PyQt5[opengl,${PYTHON_USEDEP}]
+	dev-python/pmw[${PYTHON_USEDEP}]
 	sci-chemistry/chemical-mime-data
 "
 
