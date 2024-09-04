@@ -185,6 +185,7 @@ dev-util/perf python
 #
 # See https://github.com/openssl/openssl/issues/21340
 >=dev-libs/openssl-3.1 asm
+>=dev-libs/openssl-3.2 -asm
 
 # WANG Xuerui <xen0n@gentoo.org> (2023-06-03)
 # sys-cluster/knem not keyworded yet
