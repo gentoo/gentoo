@@ -56,6 +56,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.65.0-system-gtest.patch"
+	"${FILESDIR}/${PN}-1.65.0-vlog.patch"
 )
 
 python_check_deps() {
