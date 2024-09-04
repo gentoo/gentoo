@@ -312,6 +312,12 @@ kernel-build_src_compile() {
 kernel-build_src_test() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	local targets=( modules_install )
+
+	if grep -q "CONFIG_CTF=y" "${WORKDIR}/modprep/.config"; then
+		targets+=( ctf_install )
+	fi
+
 	# Use the kernel build system to strip, this ensures the modules
 	# are stripped *before* they are signed or compressed.
 	local strip_args
@@ -321,7 +327,7 @@ kernel-build_src_test() {
 
 	emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
 		INSTALL_MOD_PATH="${T}" INSTALL_MOD_STRIP="${strip_args}" \
-		modules_install ctf_install
+		"${targets[@]}"
 
 	kernel-install_test "${KV_FULL}" \
 		"${WORKDIR}/build/$(dist-kernel_get_image_path)" \
