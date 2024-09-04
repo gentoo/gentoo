@@ -1,0 +1,65 @@
+--- a/src/pythonprop/voaAreaPlot.py
++++ b/src/pythonprop/voaAreaPlot.py
+@@ -148,15 +148,15 @@ class VOAAreaPlot:
+         #    print "-180 < Latitude < 180.0, -90 < Longitude < 90"
+         #    sys.exit(1)
+ 
+-        portland = ListedColormap(["#0C3383", "#0b599b","#0a7fb4","#57a18f","#bec255","#f2c438","#f2a638","#ef8235","#e4502a","#d91e1e"])
++        portland = ListedColormap(["#0C3383","#0b599b","#0a7fb4","#57a18f","#bec255","#f2c438","#f2a638","#ef8235","#e4502a","#d91e1e"], name="portland")
+         try:
+-            plt.register_cmap(name='portland', cmap=portland)
++            matplotlib.colormaps.register(cmap=portland)
+         except ValueError:
+             print("Portland colormap is already registered")
+         colMap = color_map
+ 
+         projection = ccrs.PlateCarree()
+-        axes_class = (GeoAxes,dict(map_projection=projection))
++        axes_class = (GeoAxes,dict(projection=projection))
+ 
+         number_of_subplots = len(vg_files)
+ 
+@@ -208,7 +208,7 @@ class VOAAreaPlot:
+                     cbar_mode='single',
+                     cbar_pad=0.2,
+                     cbar_size='3%',
+-                    label_mode='')
++                    label_mode='L')
+         
+         self.main_title_label = fig.suptitle(str(self.image_defs['title']), fontsize=self.main_title_fontsize)
+ 
+@@ -292,7 +292,7 @@ class VOAAreaPlot:
+                     ax.plot([xpt],[ypt],'ro')
+                     ax.text(xpt+100000,ypt+100000,location.get_name())
+             """
+-            gl = ax.gridlines(crs=projection, draw_labels=True,
++            gl = ax.gridlines(crs=projection, draw_labels=["bottom", "left"],
+                   linewidth=1, color='black', alpha=0.75)
+             gl.xlabels_top = False
+             gl.xlabels_bottom = False
+diff --git a/src/pythonprop/voaP2PPlot.py b/src/pythonprop/voaP2PPlot.py
+index 7255667..4a3ff05 100644
+--- a/src/pythonprop/voaP2PPlot.py
++++ b/src/pythonprop/voaP2PPlot.py
+@@ -140,9 +140,10 @@ class VOAP2PPlot:
+         # set backend during initialization to avoid switching error
+         matplotlib.use('GTK3Agg')
+ 
+-        portland = ListedColormap(["#0C3383", "#0b599b","#0a7fb4","#57a18f","#bec255","#f2c438","#f2a638","#ef8235","#e4502a","#d91e1e"])
++        portland = ListedColormap(["#0C3383", "#0b599b","#0a7fb4","#57a18f","#bec255","#f2c438","#f2a638","#ef8235","#e4502a","#d91e1e"],
++name="portland")
+         try:
+-            matplotlib.cm.register_cmap(name='portland', cmap=portland)
++            matplotlib.colormaps.register(cmap=portland)
+         except ValueError:
+             print("Portland colormap is already registered")
+ 
+@@ -203,7 +204,7 @@ class VOAP2PPlot:
+                     cbar_mode='single',
+                     cbar_pad=0.2,
+                     cbar_size='3%',
+-                    label_mode='')
++                    label_mode='L')
+ 
+         self.main_title_label = fig.suptitle(plot_label+str(self.image_defs['title']), fontsize=self.main_title_fontsize)
+ 

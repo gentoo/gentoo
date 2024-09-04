@@ -7,9 +7,13 @@ PYTHON_COMPAT=( python3_{9..12} )
 
 inherit autotools python-single-r1
 
+MY_PV=$(ver_cut 1-3)
+
 DESCRIPTION="Scripts to prepare and plot VOACAP propagation predictions"
 HOMEPAGE="https://www.qsl.net/h/hz1jw/pythonprop"
-SRC_URI="https://github.com/jawatson/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jawatson/${PN}/archive/v${MY_PV}/${PN}-${MY_PV}.tar.gz -> ${P}.tar.gz"
+
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -31,7 +35,8 @@ DEPEND="${RDEPEND}
 	app-text/yelp-tools
 "
 
-PATCHES=( "${FILESDIR}/${PN}-drop-portland.patch" )
+PATCHES=( "${FILESDIR}/${PN}-0.30.1-p20240217.patch"
+		"${FILESDIR}/${PN}-matplotlib3.9.patch" )
 
 src_prepare() {
 	eapply_user
