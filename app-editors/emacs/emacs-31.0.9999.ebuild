@@ -464,6 +464,7 @@ src_test() {
 	emake \
 		EMACS_TEST_VERBOSE=1 \
 		EXCLUDE_TESTS="${exclude_tests[*]}" \
+		TERM=dumb \
 		TEST_BACKTRACE_LINE_LENGTH=nil \
 		check
 }
