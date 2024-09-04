@@ -67,6 +67,11 @@ python_prepare_all() {
 }
 
 python_configure_all() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/933235
+	# https://github.com/schrodinger/pymol-open-source/issues/395
+	filter-lto
+
 	use !netcdf && DISTUTILS_ARGS=( --no-vmd-plugins )
 }
 
