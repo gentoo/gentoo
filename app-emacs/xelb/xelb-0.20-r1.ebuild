@@ -3,6 +3,8 @@
 
 EAPI=8
 
+NEED_EMACS="27.1"
+
 inherit elisp
 
 DESCRIPTION="X protocol Emacs Lisp Binding"
@@ -23,6 +25,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 
 RDEPEND="
+	>=app-emacs/compat-30.0.0.0
 	app-editors/emacs[gui]
 	x11-apps/xauth
 "
