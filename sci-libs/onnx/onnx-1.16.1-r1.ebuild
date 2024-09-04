@@ -22,9 +22,9 @@ RDEPEND="
 	dev-python/protobuf-python[${PYTHON_USEDEP}]
 	dev-python/pybind11[${PYTHON_USEDEP}]
 	dev-libs/protobuf:=
+	dev-cpp/abseil-cpp:=
 "
-DEPEND="${RDEPEND}
-	dev-cpp/abseil-cpp"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	eapply "${FILESDIR}"/${PN}-1.15.0-hidden.patch
