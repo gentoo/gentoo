@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -71,7 +71,7 @@ RDEPEND="
 	dev-cpp/nlohmann_json
 	dev-db/sqlite:3
 	dev-libs/double-conversion:=
-	dev-libs/expat
+	<dev-libs/expat-2.6.0
 	dev-libs/icu:=
 	dev-libs/jsoncpp:=
 	>=dev-libs/libfmt-8.1.1:=

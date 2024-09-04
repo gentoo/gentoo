@@ -70,7 +70,7 @@ RDEPEND="
 	app-arch/xz-utils
 	dev-db/sqlite:3
 	dev-libs/double-conversion:=
-	dev-libs/expat
+	<dev-libs/expat-2.6.0
 	dev-libs/icu:=
 	dev-libs/jsoncpp:=
 	>=dev-libs/libfmt-8.1.1:=
