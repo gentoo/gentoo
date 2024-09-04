@@ -91,6 +91,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-11.0.2-musl-no-execinfo.patch
 	"${FILESDIR}"/${PN}-12.0.0-musl-no-malloc-trim.patch
+	"${FILESDIR}"/${PN}-14.0.1-clang19.patch
+	"${FILESDIR}"/${PN}-14.0.1-sol2-clang19-gcc15.patch
 )
 
 pkg_setup() {
