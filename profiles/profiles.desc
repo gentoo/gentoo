@@ -365,7 +365,7 @@ mips		default/linux/mips/23.0/mipsel/o32/systemd			exp
 mips		default/linux/mips/23.0/mipsel/n32				exp
 mips		default/linux/mips/23.0/mipsel/n32/systemd			exp
 mips		default/linux/mips/23.0/mipsel/n64				exp
-mips		default/linux/mips/23.0/mipsel/n64/systemd			exp
+mips		default/linux/mips/23.0/mipsel/n64/systemd			dev
 mips		default/linux/mips/23.0/mipsel/multilib/n32			exp
 mips		default/linux/mips/23.0/mipsel/multilib/n32/systemd		exp
 mips		default/linux/mips/23.0/mipsel/multilib/n64			exp
