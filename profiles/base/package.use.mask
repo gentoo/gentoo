@@ -11,8 +11,8 @@
 net-dns/bind jemalloc
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-09-02)
-# Prepare kde-apps/khelpcenter:5 cleanup
-kde-plasma/plasma-meta:5 handbook
+# kde-plasma/print-manager:5 and kde-apps/khelpcenter:5 cleanup
+kde-plasma/plasma-meta:5 cups handbook
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-09-02)
 # Prepare kde-apps/kaccounts-integration:5 cleanup
