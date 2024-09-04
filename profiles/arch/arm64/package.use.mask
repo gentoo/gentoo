@@ -281,11 +281,6 @@ media-video/ffmpeg -rav1e
 # Mask io-uring & zbc pending keywording
 sys-block/fio -io-uring
 
-# Michał Górny <mgorny@gentoo.org> (2020-06-19)
-# Requires dev-util/pahole.
-sys-kernel/gentoo-kernel debug
-sys-kernel/vanilla-kernel debug
-
 # Sam James <sam@gentoo.org> (2020-06-11)
 # PGO works on arm64
 >=www-client/firefox-68.9.0 -pgo
