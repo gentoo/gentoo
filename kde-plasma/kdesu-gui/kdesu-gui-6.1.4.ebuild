@@ -33,7 +33,10 @@ RDEPEND="${DEPEND}
 	sys-apps/dbus[X]
 "
 
-PATCHES=( "${FILESDIR}/${PN}-6.1.5-build-only-kdesu.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-6.1.5-build-only-kdesu.patch" # downstream split
+	"${FILESDIR}/${PN}-5.27.11-cmake.patch" # bug 939081, pending upstream MR
+)
 
 src_prepare() {
 	ecm_src_prepare
