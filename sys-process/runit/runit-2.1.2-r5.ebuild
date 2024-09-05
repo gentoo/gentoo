@@ -28,11 +28,10 @@ src_unpack() {
 
 src_prepare() {
 	default
-	cd "${S}"/..
+
+	cd "${S}"/.. || die
 	eapply -p3 "${WORKDIR}"/patches
-
-	cd "${S}"
-
+	cd "${S}" || die
 
 	# We either build everything or nothing static
 	sed -i -e 's:-static: :' Makefile || die
