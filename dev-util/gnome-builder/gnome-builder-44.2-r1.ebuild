@@ -225,7 +225,7 @@ src_configure() {
 		-Dplugin_retab=true
 		-Dplugin_rstcheck=true
 		-Dplugin_rubocop=true
-		-Dplugin_rust_analyzer=false # rust-analyzer not packaged
+		-Dplugin_rust_analyzer=true
 		-Dplugin_serve_d=true
 		-Dplugin_shellcheck=true
 		-Dplugin_shellcmd=true
@@ -273,6 +273,7 @@ pkg_postinst() {
 
 	optfeature_header "Language support"
 	optfeature "Rust's Cargo build system" virtual/rust
+	optfeature "Rust-analyzer" || dev-lang/rust[rust-analyzer] dev-lang/rust-bin[rust-analyzer]
 	optfeature "CMake" dev-build/cmake
 	optfeature "Java Maven build system" dev-java/maven-bin
 	optfeature "Meson Build system" dev-build/meson
