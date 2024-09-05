@@ -4,7 +4,6 @@
 EAPI="8"
 DESCRIPTION="Advanced IRC Client"
 HOMEPAGE="https://www.kvirc.net/ https://github.com/kvirc/KVIrc"
-CMAKE_MAKEFILE_GENERATOR="emake"
 PYTHON_COMPAT=( python3_{10..12} )
 
 inherit cmake flag-o-matic python-single-r1 xdg
