@@ -3,16 +3,13 @@
 
 EAPI=8
 
-MY_PN="igsc"
-MY_P="${MY_PN}-${PV}"
 PYTHON_COMPAT=( python3_{9..12} )
 
 inherit cmake python-any-r1
 
 DESCRIPTION="Intel graphics system controller firmware update library"
 HOMEPAGE="https://github.com/intel/igsc"
-SRC_URI="https://github.com/intel/${MY_PN}/archive/refs/tags/V${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="https://github.com/intel/${PN}/archive/refs/tags/V${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
