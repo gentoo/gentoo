@@ -50,7 +50,6 @@ src_prepare() {
 	dos2unix MANIFEST || die
 	dos2unix typemap || die
 
-	setup-wxwidgets
 	perl-module_src_prepare
 }
 
@@ -58,6 +57,7 @@ src_configure() {
 	# xspp sets CC to a c++ compiler but the eclass overrides it
 	# https://bugs.gentoo.org/931939
 	export CC="$(tc-getCXX)"
+	setup-wxwidgets
 	perl-module_src_configure
 }
 
