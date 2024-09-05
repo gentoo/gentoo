@@ -31,6 +31,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.39-gcc6.patch
 	"${FILESDIR}"/${PN}-0.39-respect-user-flags.patch
 	"${FILESDIR}"/${PN}-0.39-force-c++11.patch
+	"${FILESDIR}"/${PN}-0.39-scrub-gtk2.patch
 )
 
 src_configure() {
