@@ -11,7 +11,8 @@ inherit kernel-install toolchain-funcs unpacker
 
 MY_P=linux-${PV%.*}
 GENPATCHES_P=genpatches-${PV%.*}-$(( ${PV##*.} + 3 ))
-BINPKG=${PF/-bin}-1
+# XXX: Change me back to PF afer 6.10.8-r1
+BINPKG=${P/-bin}-1
 
 DESCRIPTION="Pre-built Linux kernel with Gentoo patches"
 HOMEPAGE="https://www.kernel.org/"
@@ -49,6 +50,7 @@ PDEPEND="
 BDEPEND="
 	app-alternatives/bc
 	app-alternatives/lex
+	dev-util/pahole
 	virtual/libelf
 	app-alternatives/yacc
 "
