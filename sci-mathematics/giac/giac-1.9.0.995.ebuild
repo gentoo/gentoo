@@ -59,6 +59,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.9.0.21-pari-2.15.patch"
 	"${FILESDIR}/${PN}-1.9.0.67-system-gl2ps.patch"
 	"${FILESDIR}/${P}-glibcxx-assertions.patch"
+	"${FILESDIR}/${P}-fix-undefined-behavior.patch"
 )
 
 REQUIRED_USE="test? ( gui )"
