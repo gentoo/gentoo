@@ -19,7 +19,7 @@ if [[ ${PV} = *9999* ]]; then
 	SRC_URI="${SRC_PATCHES}"
 else
 	SRC_URI="https://gitlab.freedesktop.org/wayland/${PN}/-/releases/${PV}/downloads/${P}.tar.xz"
-	KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="MIT CC-BY-SA-3.0"
@@ -41,7 +41,6 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-libs/libinput-1.2.0
 	>=dev-libs/wayland-1.22.0
-	=media-libs/libdisplay-info-0.1*:=
 	media-libs/libpng:0=
 	sys-auth/seatd:=
 	>=x11-libs/cairo-1.11.3
@@ -50,6 +49,7 @@ RDEPEND="
 	>=x11-libs/pixman-0.25.2
 	x11-misc/xkeyboard-config
 	drm? (
+		=media-libs/libdisplay-info-0.1*
 		>=media-libs/mesa-17.1[gbm(+)]
 		>=sys-libs/mtdev-1.1.0
 		>=virtual/udev-136
@@ -96,6 +96,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-neatvnc-0.8.patch
+	"${FILESDIR}"/${PN}-musl-basename.patch
 )
 
 python_check_deps() {
