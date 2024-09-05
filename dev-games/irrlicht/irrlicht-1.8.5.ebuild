@@ -5,11 +5,11 @@ EAPI=8
 
 inherit toolchain-funcs
 
-DESCRIPTION="open source high performance realtime 3D engine written in C++"
+DESCRIPTION="Open source high performance realtime 3D engine written in C++"
 HOMEPAGE="https://irrlicht.sourceforge.io/"
 SRC_URI="
 	https://downloads.sourceforge.net/irrlicht/${P}.zip
-	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.bz2"
+	https://dev.gentoo.org/~mgorny/dist/${PN}-1.8.4-patchset.tar.bz2"
 S="${WORKDIR}/${P}/source/${PN^}"
 
 LICENSE="ZLIB"
@@ -31,12 +31,11 @@ DEPEND="${RDEPEND}
 BDEPEND="app-arch/unzip"
 
 PATCHES=(
-	"${WORKDIR}"/${P}-patchset/${P}-gentoo.patch
-	"${WORKDIR}"/${P}-patchset/${P}-demoMake.patch
-	"${WORKDIR}"/${P}-patchset/${P}-mesa-10.x.patch
-	"${WORKDIR}"/${P}-patchset/${P}-jpeg-9a.patch
-	"${FILESDIR}"/${P}-remove-sys-sysctl.h.patch
-	"${FILESDIR}"/${P}-drop-register.patch
+	"${WORKDIR}"/${PN}-1.8.4-patchset/${PN}-1.8.4-gentoo.patch
+	"${WORKDIR}"/${PN}-1.8.4-patchset/${PN}-1.8.4-demoMake.patch
+	"${WORKDIR}"/${PN}-1.8.4-patchset/${PN}-1.8.4-mesa-10.x.patch
+	"${WORKDIR}"/${PN}-1.8.4-patchset/${PN}-1.8.4-jpeg-9a.patch
+	"${FILESDIR}"/${PN}-1.8.4-drop-register.patch
 )
 
 DOCS=( changes.txt readme.txt )
