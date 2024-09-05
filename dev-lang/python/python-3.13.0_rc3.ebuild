@@ -7,8 +7,9 @@ LLVM_COMPAT=( 18 )
 LLVM_OPTIONAL=1
 WANT_LIBTOOL="none"
 
-inherit autotools check-reqs flag-o-matic llvm-r1 multiprocessing
-inherit pax-utils python-utils-r1 toolchain-funcs verify-sig
+inherit autotools check-reqs flag-o-matic linux-info llvm-r1
+inherit multiprocessing pax-utils python-utils-r1 toolchain-funcs
+inherit verify-sig
 
 MY_PV=${PV/_}
 MY_P="Python-${MY_PV%_p*}"
@@ -114,6 +115,11 @@ QA_PKGCONFIG_VERSION=${PYVER}
 # false positives -- functions specific to *BSD
 QA_CONFIG_IMPL_DECL_SKIP=( chflags lchflags )
 
+declare -rA PYTHON_KERNEL_CHECKS=(
+	["CROSS_MEMORY_ATTACH"]="test_external_inspection", #bug 938589
+	["DNOTIFY"]="test_fcntl" # bug 938662
+)
+
 pkg_pretend() {
 	use test && check-reqs_pkg_pretend
 
@@ -129,6 +135,14 @@ pkg_pretend() {
 pkg_setup() {
 	use jit && llvm-r1_pkg_setup
 	use test && check-reqs_pkg_setup
+	if [[ "${MERGE_TYPE}" != binary ]] && { use test || use pgo; }
+	then
+		local CONFIG_CHECK
+		for f in "${!PYTHON_KERNEL_CHECKS[@]}"; do
+			CONFIG_CHECK+="~${f} "
+		done
+		linux-info_pkg_setup
+	fi
 }
 
 src_unpack() {
@@ -296,6 +310,14 @@ src_configure() {
 			)
 			;;
 	esac
+
+	# Kernel-config specific skips
+	for option in "${!PYTHON_KERNEL_CHECKS[@]}"; do
+		if ! linux_config_exists || ! linux_chkconfig_present "${option}"
+		then
+			COMMON_TEST_SKIPS+=( -x "${PYTHON_KERNEL_CHECKS[${option}]}" )
+		fi
+	done
 
 	# musl-specific skips
 	use elibc_musl && COMMON_TEST_SKIPS+=(
