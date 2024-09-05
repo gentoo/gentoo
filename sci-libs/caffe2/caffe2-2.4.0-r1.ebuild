@@ -126,6 +126,7 @@ PATCHES=(
 	../patches/${PN}-2.3.0-fix-libcpp.patch
 	"${FILESDIR}"/${PN}-2.4.0-libfmt-11.patch
 	"${FILESDIR}"/${P}-cpp-httplib.patch
+	"${FILESDIR}"/${P}-cstdint.patch
 )
 
 src_prepare() {
