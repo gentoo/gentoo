@@ -10,6 +10,7 @@
       <name>Proxy Maintainers</name>
     </maintainer>
     <upstream>
+      <remote-id type="codeberg">emersion/soju</remote-id>
       <remote-id type="sourcehut">~emersion/soju</remote-id>
       <remote-id type="github">alfredfo/soju-deps</remote-id>
     </upstream>
