@@ -12,7 +12,5 @@
 	</upstream>
 	<use>
 		<flag name="aspell">Enable spellchecking using <pkg>app-text/aspell</pkg></flag>
-		<flag name="hunspell">Enable spellchecking using <pkg>app-text/hunspell</pkg></flag>
-		<flag name="qml">Enable support for plugins using QML</flag>
 	</use>
 </pkgmetadata>
