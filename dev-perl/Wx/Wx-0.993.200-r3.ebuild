@@ -7,7 +7,7 @@ WX_GTK_VER="3.2-gtk3"
 DIST_AUTHOR=MDOOTSON
 DIST_VERSION=0.9932
 DIST_EXAMPLES=("samples/*")
-inherit wxwidgets virtualx perl-module
+inherit toolchain-funcs wxwidgets virtualx perl-module
 
 DESCRIPTION="Perl bindings for wxGTK"
 HOMEPAGE="https://wxperl.sourceforge.net/ https://metacpan.org/release/Wx"
@@ -52,6 +52,13 @@ src_prepare() {
 
 	setup-wxwidgets
 	perl-module_src_prepare
+}
+
+src_configure() {
+	# xspp sets CC to a c++ compiler but the eclass overrides it
+	# https://bugs.gentoo.org/931939
+	export CC="$(tc-getCXX)"
+	perl-module_src_configure
 }
 
 src_test() {
