@@ -163,14 +163,6 @@ kde-misc/latte-dock
 # and writeable. See https://github.com/nextcloud/desktop/issues/6863
 >=net-misc/nextcloud-client-3.13.1
 
-# William Hubbs <williamh@gentoo.org> (2024-08-21)
-# Dead upstream, multiple related bugs in Gentoo.
-# Removal on 2024-09-20
-# Bug #575478, #611846, #814551, #892653, #904989, #934410, #935656,
-# #938262
-# Treeclean request: #938282
-sys-process/runit
-
 # Arsen Arsenović <arsen@gentoo.org> (2024-08-02)
 # Guile rework masks.  Mask all packages or package versions that are
 # being bumped as part of the Guile reslotting process.
