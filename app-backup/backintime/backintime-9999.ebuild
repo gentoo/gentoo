@@ -14,10 +14,10 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/bit-team/${PN}/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64"
 fi
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 IUSE="examples gui test"
 RESTRICT="!test? ( test )"
@@ -40,11 +40,7 @@ RDEPEND="
 "
 BDEPEND="
 	sys-devel/gettext
-	test? (
-		$(python_gen_cond_dep '
-			dev-python/pyfakefs[${PYTHON_USEDEP}]
-		')
-	)
+	test? ( $(python_gen_cond_dep 'dev-python/pyfakefs[${PYTHON_USEDEP}]') )
 "
 
 PATCHES=(
@@ -78,9 +74,7 @@ src_configure() {
 src_compile() {
 	emake -C common
 
-	if use gui ; then
-		emake -C qt
-	fi
+	use gui && emake -C qt
 }
 
 src_test() {
@@ -93,7 +87,7 @@ src_test() {
 src_install() {
 	emake -C common DESTDIR="${D}" install
 
-	if use gui ; then
+	if use gui; then
 		emake -C qt DESTDIR="${D}" install
 	fi
 
