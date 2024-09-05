@@ -13,7 +13,6 @@ DESCRIPTION="Scintilla source code editing component for wxWidgets"
 LICENSE+=" HPND"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
-IUSE=""
 
 RDEPEND="
 	dev-perl/Alien-wxWidgets
