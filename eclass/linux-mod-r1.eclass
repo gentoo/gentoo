@@ -121,6 +121,7 @@ DEPEND="
 	virtual/linux-sources
 "
 BDEPEND="
+	dev-util/pahole
 	sys-apps/kmod[tools]
 	modules-sign? (
 		dev-libs/openssl
