@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools bash-completion-r1 flag-o-matic
+inherit autotools bash-completion-r1
 
 MY_P=${PN}-${PV/_rc/rc}
 DESCRIPTION="Mobile shell that supports roaming and intelligent local echo"
@@ -51,14 +51,19 @@ PATCHES=(
 src_prepare() {
 	default
 
+	# abseil-cpp needs >=c++14
+	local CXXSTD="14"
+	if has_version ">=dev-cpp/abseil-cpp-20240722.0"; then
+		# needs >=c++17
+		CXXSTD="17"
+	fi
+	sed -e "/AX_CXX_COMPILE_STDCXX/{s/11/${CXXSTD}/}" -i configure.ac || die
+
 	eautoreconf
 }
 
 src_configure() {
 	MAKEOPTS+=" V=1"
-
-	# protobuf needs >=c++14
-	append-cxxflags -std=gnu++14
 
 	local myeconfargs=(
 		# We install it ourselves in src_install
