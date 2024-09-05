@@ -25,7 +25,7 @@ FSF-APPROVED @GPL-COMPATIBLE AFL-2.1 AFL-3.0 Apache-1.0 Apache-1.1 APSL-2 BSD-4 
 # Note that the FSF lists these as nonfree: Artistic NOSA Watcom-1.0
 # We exclude NOSA and Watcom-1.0, but we keep Artistic because Debian
 # considers it DFSG-free.
-OSI-APPROVED-FREE 0BSD AFL-3.0 AGPL-3 AGPL-3+ Apache-1.1 Apache-2.0 APL-1.0 APSL-2 Artistic Artistic-2 BlueOak-1.0.0 Boost-1.0 BSD BSD-2 CDDL CNRI CPAL-1.0 CPL-1.0 ECL-2.0 EPL-1.0 EPL-2.0 EUPL-1.1 EUPL-1.2 GPL-1 GPL-1+ GPL-2 GPL-2+ GPL-3 GPL-3+ HPND IBM IPAfont ISC LGPL-2 LGPL-2+ LGPL-2.1 LGPL-2.1+ LGPL-3 LGPL-3+ LPL-1.02 LPPL-1.3c MirOS MIT MIT-0 MPL-1.0 MPL-1.1 MPL-2.0 Ms-PL Ms-RL nethack OFL-1.1 OSL-2.1 PHP-3 PHP-3.01 POSTGRESQL PSF-2 QPL-1.0 Sleepycat Unicode-3.0 Unicode-DFS-2016 Unlicense UPL-1.0 UoI-NCSA W3C wxWinLL-3 ZLIB ZPL
+OSI-APPROVED-FREE 0BSD AFL-3.0 AGPL-3 AGPL-3+ Apache-1.1 Apache-2.0 APL-1.0 APSL-2 Artistic Artistic-2 BlueOak-1.0.0 Boost-1.0 BSD BSD-2 CDDL CNRI CPAL-1.0 CPL-1.0 ECL-2.0 EPL-1.0 EPL-2.0 EUPL-1.1 EUPL-1.2 GPL-1 GPL-1+ GPL-2 GPL-2+ GPL-3 GPL-3+ HPND IBM IPAfont ISC LBNLBSD LGPL-2 LGPL-2+ LGPL-2.1 LGPL-2.1+ LGPL-3 LGPL-3+ LPL-1.02 LPPL-1.3c MirOS MIT MIT-0 MPL-1.0 MPL-1.1 MPL-2.0 Ms-PL Ms-RL nethack OFL-1.1 OSL-2.1 PHP-3 PHP-3.01 POSTGRESQL PSF-2 QPL-1.0 Sleepycat Unicode-3.0 Unicode-DFS-2016 Unlicense UPL-1.0 UoI-NCSA W3C wxWinLL-3 ZLIB ZPL
 
 # Misc licenses that are probably free software, i.e. follow the
 # Free Software Definition at https://www.gnu.org/philosophy/free-sw.html
