@@ -9,9 +9,9 @@ DESCRIPTION="Greenbone vulnerability manager, previously named openvas-manager"
 HOMEPAGE="https://www.greenbone.net https://github.com/greenbone/gvmd/"
 SRC_URI="https://github.com/greenbone/gvmd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-SLOT="0"
 LICENSE="AGPL-3+"
-KEYWORDS="amd64 ~x86"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
@@ -20,9 +20,10 @@ DEPEND="
 	app-crypt/gpgme:1=
 	dev-libs/libbsd
 	>=dev-db/postgresql-9.6:=[uuid]
+	>=dev-libs/cJSON-1.7.14
 	>=dev-libs/glib-2.42:2
 	>=dev-libs/libical-1.0.0:=
-	>=net-analyzer/gvm-libs-22.7
+	>=net-analyzer/gvm-libs-22.10
 	>=net-libs/gnutls-3.2.15:=[tools]
 "
 
