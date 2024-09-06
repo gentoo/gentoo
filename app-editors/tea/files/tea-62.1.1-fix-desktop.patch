@@ -1,0 +1,26 @@
+From 8fb78950cd2e50c76cbf34b5245a413a5f3477f0 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Sun, 19 Nov 2023 12:56:05 +0200
+Subject: [PATCH] Remove whitespace at the end the desktop file
+
+ * QA Notice: This package installs one or more .desktop files that do not
+ * pass validation.
+ *
+ *      /usr/share/applications/tea.desktop: error: (will be fatal in the future): value "text/plain;application/epub+zip;application/fb2;application/vnd.openxmlformats-officedocument.wordprocessingml.document;application/vnd.oasis.opendocument.text;application/rtf;application/x-tex; " for key "MimeType" in group "Desktop Entry" contains value " " which is an invalid MIME type: " " does not contain a subtype
+ *
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/desktop/tea.desktop
++++ b/desktop/tea.desktop
+@@ -6,7 +6,7 @@ Icon=tea
+ Exec=tea %F
+ Categories=Utility;TextEditor;
+ StartupNotify=false
+-MimeType=text/plain;application/epub+zip;application/fb2;application/vnd.openxmlformats-officedocument.wordprocessingml.document;application/vnd.oasis.opendocument.text;application/rtf;application/x-tex; 
++MimeType=text/plain;application/epub+zip;application/fb2;application/vnd.openxmlformats-officedocument.wordprocessingml.document;application/vnd.oasis.opendocument.text;application/rtf;application/x-tex;
+ NoDisplay=false
+ Version=1.1
+ Keywords=text editor;text;editor;
+-- 
+2.42.1
+
