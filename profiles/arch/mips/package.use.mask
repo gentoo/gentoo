@@ -188,7 +188,7 @@ app-alternatives/ninja samurai
 
 # matoro <matoro_gentoo@matoro.tk> (2023-06-18)
 # app-i18n/fcitx:4 not keyworded here
-media-libs/libsdl2 fcitx4
+media-libs/libsdl2 fcitx
 
 # Sam James <sam@gentoo.org> (2023-06-18)
 # Qt 5 not keyworded here

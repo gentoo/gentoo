@@ -15,11 +15,11 @@ LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86"
 
-IUSE="alsa aqua cpu_flags_ppc_altivec cpu_flags_x86_3dnow cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 custom-cflags dbus doc fcitx4 gles1 gles2 +haptic ibus jack +joystick kms libsamplerate nas opengl oss pipewire pulseaudio sndio +sound static-libs test +threads udev +video video_cards_vc4 vulkan wayland X xscreensaver"
+IUSE="alsa aqua cpu_flags_ppc_altivec cpu_flags_x86_3dnow cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 custom-cflags dbus doc fcitx gles1 gles2 +haptic ibus jack +joystick kms libsamplerate nas opengl oss pipewire pulseaudio sndio +sound static-libs test +threads udev +video video_cards_vc4 vulkan wayland X xscreensaver"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	alsa? ( sound )
-	fcitx4? ( dbus )
+	fcitx? ( dbus )
 	gles1? ( video )
 	gles2? ( video )
 	haptic? ( joystick )
@@ -38,7 +38,7 @@ COMMON_DEPEND="
 	virtual/libiconv[${MULTILIB_USEDEP}]
 	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
 	dbus? ( >=sys-apps/dbus-1.6.18-r1[${MULTILIB_USEDEP}] )
-	fcitx4? ( app-i18n/fcitx:4 )
+	fcitx? ( app-i18n/fcitx:* )
 	gles1? ( media-libs/mesa[${MULTILIB_USEDEP},gles1(+)] )
 	gles2? ( >=media-libs/mesa-9.1.6[${MULTILIB_USEDEP},gles2(+)] )
 	ibus? ( app-i18n/ibus )
@@ -206,7 +206,7 @@ multilib_src_configure() {
 		$(use_enable vulkan video-vulkan)
 		$(use_enable udev libudev)
 		$(use_enable dbus)
-		$(use_enable fcitx4 fcitx)
+		$(use_enable fcitx fcitx)
 		$(use_enable ibus)
 		--disable-directx
 		--disable-rpath
