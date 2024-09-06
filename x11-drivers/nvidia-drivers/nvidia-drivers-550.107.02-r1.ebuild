@@ -24,9 +24,7 @@ S=${WORKDIR}
 
 LICENSE="NVIDIA-r2 Apache-2.0 BSD BSD-2 GPL-2 MIT ZLIB curl openssl"
 SLOT="0/${PV%%.*}"
-KEYWORDS="-* ~amd64 ~arm64"
-# note: kernel-open is an upstream default in >=560 if all GPUs on the system
-# support it but, since no automagic here, keeping it off for the wider support
+KEYWORDS="-* amd64 ~arm64"
 IUSE="+X abi_x86_32 abi_x86_64 kernel-open persistenced powerd +static-libs +tools wayland"
 REQUIRED_USE="kernel-open? ( modules )"
 
@@ -62,8 +60,8 @@ RDEPEND="
 	)
 	powerd? ( sys-apps/dbus[abi_x86_32(-)?] )
 	wayland? (
-		>=gui-libs/egl-gbm-1.1.1-r2[abi_x86_32(-)?]
-		>=gui-libs/egl-wayland-1.1.13.1[abi_x86_32(-)?]
+		gui-libs/egl-gbm
+		>=gui-libs/egl-wayland-1.1.10
 	)
 "
 DEPEND="
@@ -74,7 +72,6 @@ DEPEND="
 		x11-libs/libXext
 	)
 	tools? (
-		dev-util/vulkan-headers
 		media-libs/libglvnd
 		sys-apps/dbus
 		x11-base/xorg-proto
@@ -148,7 +145,7 @@ src_prepare() {
 	use X || sed -i 's/"libGLX/"libEGL/' nvidia_{layers,icd}.json || die
 
 	# enable nvidia-drm.modeset=1 by default with USE=wayland
-	cp "${FILESDIR}"/nvidia-555.conf "${T}"/nvidia.conf || die
+	cp "${FILESDIR}"/nvidia-545.conf "${T}"/nvidia.conf || die
 	use !wayland || sed -i '/^#.*modeset=1$/s/^#//' "${T}"/nvidia.conf || die
 
 	# makefile attempts to install wayland library even if not built
@@ -230,7 +227,6 @@ src_install() {
 		[GLVND_EGL_ICD_JSON]=/usr/share/glvnd/egl_vendor.d
 		[OPENGL_DATA]=/usr/share/nvidia
 		[VULKAN_ICD_JSON]=/usr/share/vulkan
-		[VULKANSC_ICD_JSON]=/usr/share/vulkansc
 		[WINE_LIB]=/usr/${libdir}/nvidia/wine
 		[XORG_OUTPUTCLASS_CONFIG]=/usr/share/X11/xorg.conf.d
 
@@ -376,9 +372,8 @@ documentation that is installed alongside this README."
 			dosym ${m[4]} ${into}/${m[0]}
 			continue
 		fi
-		# avoid portage warning due to missing soname links in manifest
-		[[ ${m[0]} =~ .*((libnvidia-ngx.so|libnvidia-egl-gbm.so).*) ]] &&
-			dosym ${BASH_REMATCH[1]} ${into}/${BASH_REMATCH[2]}.1
+		[[ ${m[0]} =~ ^libnvidia-ngx.so|^libnvidia-egl-gbm.so ]] &&
+			dosym ${m[0]} ${into}/${m[0]%.so*}.so.1 # soname not in .manifest
 
 		printf -v m[1] %o $((m[1] | 0200)) # 444->644
 		insopts -m${m[1]}
@@ -404,6 +399,22 @@ documentation that is installed alongside this README."
 		insinto /usr/share/dbus-1/system.d
 		doins nvidia-dbus.conf
 	fi
+
+	# enabling is needed for sleep to work properly and little reason not to do
+	# it unconditionally for a better user experience
+	: "$(systemd_get_systemunitdir)"
+	local unitdir=${_#"${EPREFIX}"}
+	# not using relative symlinks to match systemd's own links
+	dosym {"${unitdir}",/etc/systemd/system/systemd-hibernate.service.wants}/nvidia-hibernate.service
+	dosym {"${unitdir}",/etc/systemd/system/systemd-hibernate.service.wants}/nvidia-resume.service
+	dosym {"${unitdir}",/etc/systemd/system/systemd-suspend.service.wants}/nvidia-suspend.service
+	dosym {"${unitdir}",/etc/systemd/system/systemd-suspend.service.wants}/nvidia-resume.service
+	# also add a custom elogind hook to do the equivalent of the above
+	exeinto /usr/lib/elogind/system-sleep
+	newexe "${FILESDIR}"/system-sleep.elogind nvidia
+	# <elogind-255.5 used a different path, keep a compatibility symlink
+	# TODO: cleanup ~1+ year after 255.5 is stable
+	dosym {/usr/lib,/"${libdir}"}/elogind/system-sleep/nvidia
 
 	# symlink non-versioned so nvidia-settings can use it even if misdetected
 	dosym nvidia-application-profiles-${PV}-key-documentation \
@@ -432,7 +443,6 @@ pkg_preinst() {
 	sed -i "s/@VIDEOGID@/${g}/" "${ED}"/etc/modprobe.d/nvidia.conf || die
 
 	# try to find driver mismatches using temporary supported-gpus.json
-	# TODO?: automatically check "kernelopen" bit for USE=kernel-open compat
 	for g in $(grep -l 0x10de /sys/bus/pci/devices/*/vendor 2>/dev/null); do
 		g=$(grep -io "\"devid\":\"$(<${g%vendor}device)\"[^}]*branch\":\"[0-9]*" \
 			"${ED}"/usr/share/nvidia/supported-gpus.json 2>/dev/null)
@@ -489,9 +499,9 @@ pkg_postinst() {
 
 	if use kernel-open && [[ ! -v NV_HAD_KERNEL_OPEN ]]; then
 		ewarn
-		ewarn "Open source variant of ${PN} was selected, note that it requires"
-		ewarn "Turing/Ampere+ GPUs (aka GTX 1650+). Try disabling if run into issues."
-		ewarn "Also see: ${EROOT}/usr/share/doc/${PF}/html/kernel_open.html"
+		ewarn "Open source variant of ${PN} was selected, be warned it is experimental"
+		ewarn "and only for modern GPUs (e.g. GTX 1650+). Try to disable if run into issues."
+		ewarn "Please also see: ${EROOT}/usr/share/doc/${PF}/html/kernel_open.html"
 	fi
 
 	if use wayland && use modules && [[ ! -v NV_HAD_WAYLAND ]]; then
@@ -504,12 +514,43 @@ pkg_postinst() {
 		elog "Of note, may possibly cause issues with SLI and Reverse PRIME."
 	fi
 
-	if use !kernel-open && [[ ${REPLACING_VERSIONS##* } ]] &&
-		ver_test ${REPLACING_VERSIONS##* } -lt 555
+	# these can be removed after some time, only to help the transition
+	# given users are unlikely to do further custom solutions if it works
+	# (see also https://github.com/elogind/elogind/issues/272)
+	if grep -riq "^[^#]*HandleNvidiaSleep=yes" "${EROOT}"/etc/elogind/sleep.conf.d/ 2>/dev/null
+	then
+		ewarn
+		ewarn "!!! WARNING !!!"
+		ewarn "Detected HandleNvidiaSleep=yes in ${EROOT}/etc/elogind/sleep.conf.d/."
+		ewarn "This 'could' cause issues if used in combination with the new hook"
+		ewarn "installed by the ebuild to handle sleep using the official upstream"
+		ewarn "script. It is recommended to disable the option."
+	fi
+	if [[ $(realpath "${EROOT}"{/etc,{/usr,}/lib*}/elogind/system-sleep | sort | uniq | \
+		xargs -d'\n' grep -Ril nvidia 2>/dev/null | wc -l) -gt 2 ]]
+	then
+		ewarn
+		ewarn "!!! WARNING !!!"
+		ewarn "Detected a custom script at ${EROOT}{/etc,{/usr,}/lib*}/elogind/system-sleep"
+		ewarn "referencing NVIDIA. This version of ${PN} has installed its own"
+		ewarn "hook at ${EROOT}/usr/lib/elogind/system-sleep/nvidia and it is recommended"
+		ewarn "to remove the custom one to avoid potential issues."
+		ewarn
+		ewarn "Feel free to ignore this warning if you know the other NVIDIA-related"
+		ewarn "scripts can be used together. The warning will be removed in the future."
+	fi
+	if [[ ${REPLACING_VERSIONS##* } ]] &&
+		ver_test ${REPLACING_VERSIONS##* } -lt 550.107.02-r1 # may get repeated
 	then
 		elog
-		elog "If using a Turing/Ampere+ GPU (aka GTX 1650+), note that >=nvidia-drivers-555"
-		elog "enables the use of the GSP firmware by default. *If* experience regressions,"
-		elog "please see '${EROOT}/etc/modprobe.d/nvidia.conf' to optionally disable."
+		elog "For suspend/sleep, 'NVreg_PreserveVideoMemoryAllocations=1' is now default"
+		elog "with this version of ${PN}. This is recommended (or required) by"
+		elog "major DEs especially with wayland but, *if* experience regressions with"
+		elog "suspend, try reverting to =0 in '${EROOT}/etc/modprobe.d/nvidia.conf'."
+		elog
+		elog "May notably be an issue when using neither systemd nor elogind to suspend."
+		elog
+		elog "Also, the systemd suspend/hibernate/resume services are now enabled by"
+		elog "default, and for openrc+elogind a similar hook has been installed."
 	fi
 }
