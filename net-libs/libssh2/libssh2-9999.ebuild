@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake-multilib git-r3
 
 DESCRIPTION="Library implementing the SSH2 protocol"
-HOMEPAGE="https://www.libssh2.org"
+HOMEPAGE="https://libssh2.org"
 EGIT_REPO_URI="https://github.com/libssh2/libssh2"
 
 LICENSE="BSD"

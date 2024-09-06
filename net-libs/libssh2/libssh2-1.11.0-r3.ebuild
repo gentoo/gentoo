@@ -6,8 +6,8 @@ EAPI=8
 inherit cmake-multilib
 
 DESCRIPTION="Library implementing the SSH2 protocol"
-HOMEPAGE="https://www.libssh2.org"
-SRC_URI="https://www.libssh2.org/download/${P}.tar.xz"
+HOMEPAGE="https://libssh2.org"
+SRC_URI="https://libssh2.org/download/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
