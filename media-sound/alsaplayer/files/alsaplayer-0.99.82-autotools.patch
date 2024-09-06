@@ -1,0 +1,24 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -82,11 +82,6 @@
+ dnl PKGCONFIG preparations
+ dnl ======================
+ 
+-if test -z $PKG_CONFIG_PATH; then
+-	PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
+-fi
+-
+-export PKG_CONFIG_PATH
+ 
+ 
+ dnl ===============
+--- a/output/jack/Makefile.am
++++ b/output/jack/Makefile.am
+@@ -24,7 +24,6 @@
+ 
+ AM_CXXFLAGS = $(COMMON_FLAGS) $(JACK_CFLAGS)
+ 
+-AM_CFLAGS = $(AM_CXXFLAGS)
+ 
+ libdir = $(ADDON_DIR)/output
+ 
