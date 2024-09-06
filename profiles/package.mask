@@ -239,11 +239,6 @@ dev-libs/libindicator
 # Removal on 2024-09-01.
 app-backup/mkstage4
 
-# James Le Cuirot <chewi@gentoo.org> (2024-07-29)
-# Superseded by media-libs/libv4l[utils].
-# Removal on 2024-08-29. Bug #936674.
-media-tv/v4l-utils
-
 # Eli Schwartz <eschwartz@gentoo.org> (2024-07-29)
 # Bad version can result in failing builds. Please upgrade to 72.1.0.
 =dev-python/ensurepip-setuptools-72.0.0
