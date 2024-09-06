@@ -231,7 +231,6 @@ sys-auth/pam_ldap
 # Superseded by dev-libs/libayatana-*.  No revdeps left.
 # Removal on 2024-09-05.  Bug #936881.
 dev-libs/libappindicator
-dev-libs/libindicator
 
 # Eli Schwartz <eschwartz@gentoo.org> (2024-07-29)
 # Bad version can result in failing builds. Please upgrade to 72.1.0.
