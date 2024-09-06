@@ -233,12 +233,6 @@ sys-auth/pam_ldap
 dev-libs/libappindicator
 dev-libs/libindicator
 
-# Sam James <sam@gentoo.org> (2024-08-02)
-# Unreliable software, unmaintained in Gentoo. Having it in the main
-# repositories may give users an impression of it being a safe tool.
-# Removal on 2024-09-01.
-app-backup/mkstage4
-
 # Eli Schwartz <eschwartz@gentoo.org> (2024-07-29)
 # Bad version can result in failing builds. Please upgrade to 72.1.0.
 =dev-python/ensurepip-setuptools-72.0.0
