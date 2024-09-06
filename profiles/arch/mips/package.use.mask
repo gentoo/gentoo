@@ -8,6 +8,7 @@ media-libs/libavif rav1e
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-08-26)
 # dev-util/bpftool and/or sys-devel/bpf-toolchain not keyworded here
 sys-apps/systemd bpf
+media-libs/libv4l bpf
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-08-26)
 # dev-ruby/thor not keyworded here
