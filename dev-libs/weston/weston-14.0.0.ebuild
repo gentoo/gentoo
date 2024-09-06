@@ -94,6 +94,10 @@ BDEPEND="
 	$(python_gen_any_dep 'dev-python/setuptools[${PYTHON_USEDEP}]')
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-kiosk-test.patch
+)
+
 python_check_deps() {
 	python_has_version "dev-python/setuptools[${PYTHON_USEDEP}]"
 }
