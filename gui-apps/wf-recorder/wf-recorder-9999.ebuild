@@ -25,7 +25,7 @@ DEPEND="
 	media-libs/mesa[opengl,wayland]
 	media-video/ffmpeg[pulseaudio?,x264]
 	x11-libs/libdrm
-	pipewire? ( media-video/pipewire:= )
+	pipewire? ( >=media-video/pipewire-1.0.5:= )
 	pulseaudio? ( media-libs/libpulse )
 "
 RDEPEND="${DEPEND}"
