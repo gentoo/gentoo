@@ -15,11 +15,11 @@ LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
 
-IUSE="alsa aqua cpu_flags_ppc_altivec cpu_flags_x86_3dnow cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 custom-cflags dbus doc fcitx4 gles1 gles2 +haptic ibus jack +joystick kms libsamplerate nas opengl oss pipewire pulseaudio sndio +sound static-libs test +threads udev +video video_cards_vc4 vulkan wayland X xscreensaver"
+IUSE="alsa aqua cpu_flags_ppc_altivec cpu_flags_x86_3dnow cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 custom-cflags dbus doc fcitx gles1 gles2 +haptic ibus jack +joystick kms libsamplerate nas opengl oss pipewire pulseaudio sndio +sound static-libs test +threads udev +video video_cards_vc4 vulkan wayland X xscreensaver"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	alsa? ( sound )
-	fcitx4? ( dbus )
+	fcitx? ( dbus )
 	gles1? ( video )
 	gles2? ( video )
 	haptic? ( joystick )
@@ -38,7 +38,7 @@ COMMON_DEPEND="
 	virtual/libiconv[${MULTILIB_USEDEP}]
 	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
 	dbus? ( >=sys-apps/dbus-1.6.18-r1[${MULTILIB_USEDEP}] )
-	fcitx4? ( app-i18n/fcitx:4 )
+	fcitx? ( app-i18n/fcitx:* )
 	gles1? ( media-libs/mesa[${MULTILIB_USEDEP},gles1(+)] )
 	gles2? ( >=media-libs/mesa-9.1.6[${MULTILIB_USEDEP},gles2(+)] )
 	ibus? ( app-i18n/ibus )
@@ -62,7 +62,6 @@ COMMON_DEPEND="
 	udev? ( >=virtual/libudev-208:=[${MULTILIB_USEDEP}] )
 	wayland? (
 		>=dev-libs/wayland-1.20[${MULTILIB_USEDEP}]
-		gui-libs/libdecor[${MULTILIB_USEDEP}]
 		>=media-libs/mesa-9.1.6[${MULTILIB_USEDEP},egl(+),gles2(+),wayland]
 		>=x11-libs/libxkbcommon-0.2.0[${MULTILIB_USEDEP}]
 	)
@@ -105,7 +104,6 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.16-static-libs.patch
-	"${FILESDIR}"/${PN}-2.28.5-fix-libdecor-0.2.patch
 )
 
 src_prepare() {
@@ -181,8 +179,7 @@ multilib_src_configure() {
 		$(use_enable sound dummyaudio)
 		$(use_enable wayland video-wayland)
 		--disable-wayland-shared
-		$(use_enable wayland libdecor)
-		--disable-libdecor-shared
+		--disable-libdecor
 		$(use_enable video_cards_vc4 video-rpi)
 		$(use_enable X video-x11)
 		--disable-x11-shared
@@ -206,7 +203,7 @@ multilib_src_configure() {
 		$(use_enable vulkan video-vulkan)
 		$(use_enable udev libudev)
 		$(use_enable dbus)
-		$(use_enable fcitx4 fcitx)
+		$(use_enable fcitx fcitx)
 		$(use_enable ibus)
 		--disable-directx
 		--disable-rpath
