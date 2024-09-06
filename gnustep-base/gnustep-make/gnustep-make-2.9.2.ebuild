@@ -55,7 +55,7 @@ pkg_setup() {
 
 	# For existing installations, determine if we will use another libobjc.so
 	if has_version gnustep-base/gnustep-make; then
-		local current_libobjc="$(awk -F: '/^OBJC_LIB_FLAG/ {print $2}' ${EPREFIX}/usr/share/GNUstep/Makefiles/config.make)"
+		local current_libobjc="$(awk -F: '/^OBJC_LIB_FLAG/ {print $2}' "${EPREFIX}"/usr/share/GNUstep/Makefiles/config.make)"
 		# Old installations did not set this explicitely
 		: ${current_libobjc:=libobjc.so.2}
 
