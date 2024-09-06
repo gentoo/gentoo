@@ -54,7 +54,7 @@ src_compile() {
 }
 
 _new_catalog() {
-	if [[ ${1} != @(guile|scm) ]] then
+	if [[ ${1} != @(guile|scm) ]] ; then
 		echo -n "(load \"${ROOT}/usr/share/slib/${1}.init\")" || die
 	fi
 	echo " (require 'new-catalog) (slib:report-version)" || die
