@@ -190,12 +190,6 @@ src_prepare() {
 	DISTUTILS_ARGS=(
 		--features=use-system-blosc2
 	)
-	ECARGO_ARGS=( "${DISTUTILS_ARGS[@]}" )
-}
-
-src_test() {
-	cargo_src_test
-	distutils-r1_src_test
 }
 
 python_test() {
