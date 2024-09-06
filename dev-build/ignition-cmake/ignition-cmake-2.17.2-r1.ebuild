@@ -14,6 +14,7 @@ SLOT="2"
 KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
+PATCHES=( "${FILESDIR}/protobuf2.patch" )
 S="${WORKDIR}/gz-cmake-${PN}2_${PV}"
 
 src_configure() {
