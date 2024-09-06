@@ -60,7 +60,6 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-uncompressed-man-pages.patch"
 	"${FILESDIR}/${PN}-4.4.0-unbundle-deps.patch"
-	"${FILESDIR}/${PN}-4.4.0-unbundle-harfbuzz.patch"
 	"${FILESDIR}/${PN}-4.2.0-dynamic_cast-crash.patch"
 	"${FILESDIR}/${PN}-4.4.0-include.patch"
 	"${FILESDIR}/${PN}-4.4.0-fix-main-toolbar-and-menubar.patch"
@@ -102,6 +101,7 @@ src_configure() {
 		-DMUE_COMPILE_USE_SYSTEM_OPUS=ON
 		-DMUE_COMPILE_USE_SYSTEM_OPUSENC=ON
 		-DMUE_COMPILE_USE_SYSTEM_TINYXML=ON
+		-DMUE_COMPILE_USE_SYSTEM_HARFBUZZ=ON
 		-DMUE_DOWNLOAD_SOUNDFONT=OFF
 		-DMUSE_APP_BUILD_MODE="release"
 		-DMUSE_MODULE_AUDIO_JACK="$(usex jack)"
