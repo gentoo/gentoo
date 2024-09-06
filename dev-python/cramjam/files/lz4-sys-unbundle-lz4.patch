@@ -1,0 +1,41 @@
+diff --git a/lz4-sys/Cargo.toml b/lz4-sys/Cargo.toml
+index 033f2eddc..4001ecd66 100644
+--- a/lz4-sys/Cargo.toml
++++ b/lz4-sys/Cargo.toml
+@@ -13,3 +13,5 @@ libc = "0.2.44"
+ 
+ [build-dependencies.cc]
+ version = "1.0.25"
++[build-dependencies.pkg-config]
++version = "0.3.9"
+diff --git a/lz4-sys/build.rs b/lz4-sys/build.rs
+index c69d25716..32a69f418 100644
+--- a/lz4-sys/build.rs
++++ b/lz4-sys/build.rs
+@@ -15,6 +15,18 @@ fn main() {
+ }
+ 
+ fn run() -> Result<(), Box<dyn Error>> {
++    let target = get_from_env("TARGET")?;
++
++    if !target.contains("windows")
++        && pkg_config::Config::new()
++            .print_system_libs(false)
++            .cargo_metadata(true)
++            .probe("liblz4")
++            .is_ok()
++    {
++        return Ok(());
++    }
++
+     let mut compiler = cc::Build::new();
+     compiler
+         .file("liblz4/lib/lz4.c")
+@@ -24,7 +36,6 @@ fn run() -> Result<(), Box<dyn Error>> {
+         // We always compile the C with optimization, because otherwise it is 20x slower.
+         .opt_level(3);
+ 
+-    let target = get_from_env("TARGET")?;
+     if target.contains("windows") {
+         if target == "i686-pc-windows-gnu" {
+             // Disable auto-vectorization for 32-bit MinGW target.
