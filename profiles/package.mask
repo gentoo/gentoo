@@ -227,11 +227,6 @@ sys-auth/pam_ldap
 >=mail-client/thunderbird-128.1.0
 >=mail-client/thunderbird-bin-128.1.0
 
-# Michał Górny <mgorny@gentoo.org> (2024-08-06)
-# Superseded by dev-libs/libayatana-*.  No revdeps left.
-# Removal on 2024-09-05.  Bug #936881.
-dev-libs/libappindicator
-
 # Eli Schwartz <eschwartz@gentoo.org> (2024-07-29)
 # Bad version can result in failing builds. Please upgrade to 72.1.0.
 =dev-python/ensurepip-setuptools-72.0.0
