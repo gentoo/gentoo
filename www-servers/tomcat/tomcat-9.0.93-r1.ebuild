@@ -9,33 +9,33 @@ inherit java-pkg-2 prefix verify-sig
 
 MY_P="apache-${P}-src"
 
-DESCRIPTION="Tomcat Servlet-6.0/JSP-3.1/EL-5.0/WebSocket-2.1/JASPIC-3.0 Container"
+DESCRIPTION="Tomcat Servlet-4.0/JSP-2.3/EL-3.0/WebSocket-1.1/JASPIC-1.1 Container"
 HOMEPAGE="https://tomcat.apache.org/"
-SRC_URI="mirror://apache/${PN}/tomcat-10/v${PV}/src/${MY_P}.tar.gz
+SRC_URI="mirror://apache/${PN}/tomcat-9/v${PV}/src/${MY_P}.tar.gz
 	verify-sig? ( https://downloads.apache.org/tomcat/tomcat-$(ver_cut 1)/v${PV}/src/${MY_P}.tar.gz.asc )"
 S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0"
-SLOT="10.1"
-KEYWORDS="amd64 ~arm ~arm64 ~amd64-linux"
+SLOT="9"
+KEYWORDS="amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="extra-webapps"
 
 RESTRICT="test" # can we run them on a production system?
 
-ECJ_SLOT="4.26"
+ECJ_SLOT="4.20"
 
 COMMON_DEP="dev-java/bnd-annotation:0
 	dev-java/eclipse-ecj:${ECJ_SLOT}
 	dev-java/jax-rpc-api:0
-	>=dev-java/jakartaee-migration-1.0.7-r2:0
 	dev-java/wsdl4j:0"
 RDEPEND="${COMMON_DEP}
 	acct-group/tomcat
 	acct-user/tomcat
-	>=virtual/jre-11:*"
+	>=virtual/jre-1.8:*"
 DEPEND="${COMMON_DEP}
 	app-admin/pwgen
 	>=dev-java/ant-1.10.14-r3:0
+	dev-java/bnd:0
 	dev-java/bnd-ant:0
 	dev-java/bnd-util:0
 	dev-java/bndlib:0
@@ -53,8 +53,7 @@ BDEPEND="verify-sig? ( ~sec-keys/openpgp-keys-apache-tomcat-${PV}:${PV} )"
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/tomcat-${PV}.apache.org.asc"
 
 PATCHES=(
-	"${FILESDIR}/tomcat-10.1.20-do-not-copy.patch"
-	"${FILESDIR}/tomcat-10.1.20-offline.patch"
+	"${FILESDIR}/tomcat-9.0.87-build.xml.patch"
 	"${FILESDIR}/tomcat-9.0.87-gentoo-bnd.patch"
 )
 
@@ -78,7 +77,6 @@ src_prepare() {
 		jaxrpc-lib.jar=$(java-pkg_getjars jax-rpc-api)
 		jdt.jar=$(java-pkg_getjars eclipse-ecj-${ECJ_SLOT})
 		libg.jar=$(java-pkg_getjars --build-only libg)
-		migration-lib.jar=$(java-pkg_getjars jakartaee-migration)
 		osgi-cmpn.jar=$(java-pkg_getjars --build-only osgi-cmpn-8)
 		osgi-core.jar=$(java-pkg_getjars --build-only osgi-core)
 		slf4j-api.jar=$(java-pkg_getjars --build-only slf4j-api)
@@ -169,10 +167,6 @@ src_install() {
 pkg_postinst() {
 	einfo "Ebuilds of Tomcat support running multiple instances. To manage Tomcat instances, run:"
 	einfo "  ${EPREFIX}/usr/share/${PN}-${SLOT}/gentoo/tomcat-instance-manager.bash --help"
-
-	ewarn "Please note that since version 10 the primary package for all implemented APIs"
-	ewarn "has changed from javax.* to jakarta.*. This will almost certainly require code"
-	ewarn "changes to enable applications to migrate from Tomcat 9 and earlier to Tomcat 10 and later."
 
 	einfo "Please read https://wiki.gentoo.org/wiki/Apache_Tomcat"
 }
