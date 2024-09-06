@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/sagemath/cypari2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 
 DEPEND="sci-mathematics/pari[gmp,doc]
 	dev-python/cysignals[${PYTHON_USEDEP}]"
