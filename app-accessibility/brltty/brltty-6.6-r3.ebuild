@@ -26,7 +26,7 @@ REQUIRED_USE="doc? ( api )
 	python? ( api ${PYTHON_REQUIRED_USE} )
 	tcl? ( api )"
 
-DEPEND="
+COMMON_DEPEND="
 	acct-group/brltty
 	acct-user/brltty
 	dev-libs/libpcre2[pcre32]
@@ -37,7 +37,6 @@ DEPEND="
 	gpm? ( >=sys-libs/gpm-1.20 )
 	iconv? ( virtual/libiconv )
 	icu? ( dev-libs/icu:= )
-	java? ( >=virtual/jdk-1.8:* )
 	louis? ( dev-libs/liblouis:= )
 	midi? ( media-libs/alsa-lib )
 	ncurses? ( sys-libs/ncurses:0= )
@@ -65,7 +64,12 @@ DEPEND="
 		x11-libs/libXt
 		x11-libs/libXtst
 	)"
-RDEPEND="${DEPEND}"
+DEPEND="${COMMON_DEPEND}
+	java? ( >=virtual/jdk-1.8:* )
+"
+RDEPEND="${COMMON_DEPEND}
+	java? ( >=virtual/jre-1.8:* )
+"
 BDEPEND="
 	>=dev-lang/tcl-8.6.13-r1
 	virtual/pkgconfig
