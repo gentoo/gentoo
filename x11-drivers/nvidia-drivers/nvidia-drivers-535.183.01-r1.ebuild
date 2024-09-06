@@ -4,10 +4,10 @@
 EAPI=8
 
 MODULES_OPTIONAL_IUSE=+modules
-inherit desktop flag-o-matic linux-mod-r1 readme.gentoo-r1
+inherit desktop flag-o-matic linux-mod-r1 multilib readme.gentoo-r1
 inherit systemd toolchain-funcs unpacker user-info
 
-MODULES_KERNEL_MAX=6.10
+MODULES_KERNEL_MAX=6.9
 NV_URI="https://download.nvidia.com/XFree86/"
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
@@ -62,6 +62,7 @@ RDEPEND="
 	wayland? (
 		gui-libs/egl-gbm
 		>=gui-libs/egl-wayland-1.1.10
+		media-libs/libglvnd
 	)
 "
 DEPEND="
@@ -88,7 +89,9 @@ BDEPEND="
 QA_PREBUILT="lib/firmware/* opt/bin/* usr/lib*"
 
 PATCHES=(
+	"${FILESDIR}"/nvidia-kernel-module-source-515.86.01-raw-ldflags.patch
 	"${FILESDIR}"/nvidia-modprobe-390.141-uvm-perms.patch
+	"${FILESDIR}"/nvidia-settings-390.144-raw-ldflags.patch
 	"${FILESDIR}"/nvidia-settings-530.30.02-desktop.patch
 )
 
@@ -111,6 +114,12 @@ pkg_setup() {
 	selection of a DRM device even if unused, e.g. CONFIG_DRM_AMDGPU=m or
 	DRM_I915=y, DRM_NOUVEAU=m also acceptable if a module and not built-in."
 
+	local ERROR_X86_KERNEL_IBT="CONFIG_X86_KERNEL_IBT: is set and, if the CPU supports the feature,
+	this *could* lead to modules load failure with ENDBR errors, or to
+	broken CUDA/NVENC. Please ignore if not having issues, but otherwise
+	try to unset or pass ibt=off to the kernel's command line." #911142
+	use kernel-open || CONFIG_CHECK+=" ~!X86_KERNEL_IBT"
+
 	use amd64 && kernel_is -ge 5 8 && CONFIG_CHECK+=" X86_PAT" #817764
 
 	use kernel-open && CONFIG_CHECK+=" MMU_NOTIFIER" #843827
@@ -131,6 +140,9 @@ src_prepare() {
 
 	default
 
+	kernel_is -ge 6 7 &&
+		eapply "${FILESDIR}"/nvidia-drivers-535.43.22-kernel-6.7.patch
+
 	# prevent detection of incomplete kernel DRM support (bug #603818)
 	sed 's/defined(CONFIG_DRM/defined(CONFIG_DRM_KMS_HELPER/g' \
 		-i kernel{,-module-source/kernel-open}/conftest.sh || die
@@ -139,22 +151,31 @@ src_prepare() {
 	sed 's/__USER__/nvpd/' \
 		nvidia-persistenced/init/systemd/nvidia-persistenced.service.template \
 		> "${T}"/nvidia-persistenced.service || die
-	sed -i "s|/usr|${EPREFIX}/opt|" systemd/system/nvidia-powerd.service || die
+	use !powerd || # file is missing on arm64 (masked)
+		sed -i "s|/usr|${EPREFIX}/opt|" systemd/system/nvidia-powerd.service || die
 
 	# use alternative vulkan icd option if USE=-X (bug #909181)
 	use X || sed -i 's/"libGLX/"libEGL/' nvidia_{layers,icd}.json || die
 
 	# enable nvidia-drm.modeset=1 by default with USE=wayland
-	cp "${FILESDIR}"/nvidia-545.conf "${T}"/nvidia.conf || die
+	cp "${FILESDIR}"/nvidia-470.conf "${T}"/nvidia.conf || die
 	use !wayland || sed -i '/^#.*modeset=1$/s/^#//' "${T}"/nvidia.conf || die
 
 	# makefile attempts to install wayland library even if not built
 	use wayland || sed -i 's/ WAYLAND_LIB_install$//' \
 		nvidia-settings/src/Makefile || die
+
+	# temporary option, nvidia will remove in the future
+	use !kernel-open ||
+		sed -i '/blacklist/a\
+\
+# Enable using kernel-open with workstation GPUs (experimental)\
+options nvidia NVreg_OpenRmEnableUnsupportedGpus=1' "${T}"/nvidia.conf || die
 }
 
 src_compile() {
 	tc-export AR CC CXX LD OBJCOPY OBJDUMP PKG_CONFIG
+	local -x RAW_LDFLAGS="$(get_abi_LDFLAGS) $(raw-ldflags)" # raw-ldflags.patch
 
 	local xnvflags=-fPIC #840389
 	# lto static libraries tend to cause problems without fat objects
@@ -237,6 +258,7 @@ src_install() {
 
 	local skip_files=(
 		$(usev !X "libGLX_nvidia libglxserver_nvidia")
+		$(usev !wayland libnvidia-vulkan-producer)
 		libGLX_indirect # non-glvnd unused fallback
 		libnvidia-{gtk,wayland-client} nvidia-{settings,xconfig} # from source
 		libnvidia-egl-gbm 15_nvidia_gbm # gui-libs/egl-gbm
@@ -400,6 +422,22 @@ documentation that is installed alongside this README."
 		doins nvidia-dbus.conf
 	fi
 
+	# enabling is needed for sleep to work properly and little reason not to do
+	# it unconditionally for a better user experience
+	: "$(systemd_get_systemunitdir)"
+	local unitdir=${_#"${EPREFIX}"}
+	# not using relative symlinks to match systemd's own links
+	dosym {"${unitdir}",/etc/systemd/system/systemd-hibernate.service.wants}/nvidia-hibernate.service
+	dosym {"${unitdir}",/etc/systemd/system/systemd-hibernate.service.wants}/nvidia-resume.service
+	dosym {"${unitdir}",/etc/systemd/system/systemd-suspend.service.wants}/nvidia-suspend.service
+	dosym {"${unitdir}",/etc/systemd/system/systemd-suspend.service.wants}/nvidia-resume.service
+	# also add a custom elogind hook to do the equivalent of the above
+	exeinto /usr/lib/elogind/system-sleep
+	newexe "${FILESDIR}"/system-sleep.elogind nvidia
+	# <elogind-255.5 used a different path (bug #939216), keep a compat symlink
+	# TODO: cleanup after 255.5 been stable for a few months
+	dosym {/usr/lib,/"${libdir}"}/elogind/system-sleep/nvidia
+
 	# symlink non-versioned so nvidia-settings can use it even if misdetected
 	dosym nvidia-application-profiles-${PV}-key-documentation \
 		${paths[APPLICATION_PROFILE]}/nvidia-application-profiles-key-documentation
@@ -407,16 +445,15 @@ documentation that is installed alongside this README."
 	# don't attempt to strip firmware files (silences errors)
 	dostrip -x ${paths[FIRMWARE]}
 
-	# sandbox issues with /dev/nvidiactl others (bug #904292,#921578)
+	# sandbox issues with /dev/nvidiactl (and /dev/char wrt bug #904292)
 	# are widespread and sometime affect revdeps of packages built with
 	# USE=opencl/cuda making it hard to manage in ebuilds (minimal set,
 	# ebuilds should handle manually if need others or addwrite)
 	insinto /etc/sandbox.d
-	newins - 20nvidia <<<'SANDBOX_PREDICT="/dev/nvidiactl:/dev/nvidia-caps:/dev/char"'
+	newins - 20nvidia <<<'SANDBOX_PREDICT="/dev/nvidiactl:/dev/char"'
 }
 
 pkg_preinst() {
-	has_version "${CATEGORY}/${PN}[kernel-open]" && NV_HAD_KERNEL_OPEN=
 	has_version "${CATEGORY}/${PN}[wayland]" && NV_HAD_WAYLAND=
 
 	use modules || return
@@ -481,7 +518,7 @@ pkg_postinst() {
 		ewarn "[2] https://wiki.gentoo.org/wiki/Nouveau"
 	fi
 
-	if use kernel-open && [[ ! -v NV_HAD_KERNEL_OPEN ]]; then
+	if use kernel-open; then
 		ewarn
 		ewarn "Open source variant of ${PN} was selected, be warned it is experimental"
 		ewarn "and only for modern GPUs (e.g. GTX 1650+). Try to disable if run into issues."
@@ -496,5 +533,45 @@ pkg_postinst() {
 		elog
 		elog "If you experience issues, either disable wayland or edit nvidia.conf."
 		elog "Of note, may possibly cause issues with SLI and Reverse PRIME."
+	fi
+
+	# these can be removed after some time, only to help the transition
+	# given users are unlikely to do further custom solutions if it works
+	# (see also https://github.com/elogind/elogind/issues/272)
+	if grep -riq "^[^#]*HandleNvidiaSleep=yes" "${EROOT}"/etc/elogind/sleep.conf.d/ 2>/dev/null
+	then
+		ewarn
+		ewarn "!!! WARNING !!!"
+		ewarn "Detected HandleNvidiaSleep=yes in ${EROOT}/etc/elogind/sleep.conf.d/."
+		ewarn "This 'could' cause issues if used in combination with the new hook"
+		ewarn "installed by the ebuild to handle sleep using the official upstream"
+		ewarn "script. It is recommended to disable the option."
+	fi
+	if [[ $(realpath "${EROOT}"{/etc,{/usr,}/lib*}/elogind/system-sleep | sort | uniq | \
+		xargs -d'\n' grep -Ril nvidia 2>/dev/null | wc -l) -gt 2 ]]
+	then
+		ewarn
+		ewarn "!!! WARNING !!!"
+		ewarn "Detected a custom script at ${EROOT}{/etc,{/usr,}/lib*}/elogind/system-sleep"
+		ewarn "referencing NVIDIA. This version of ${PN} has installed its own"
+		ewarn "hook at ${EROOT}/usr/lib/elogind/system-sleep/nvidia and it is recommended"
+		ewarn "to remove the custom one to avoid potential issues."
+		ewarn
+		ewarn "Feel free to ignore this warning if you know the other NVIDIA-related"
+		ewarn "scripts can be used together. The warning will be removed in the future."
+	fi
+	if [[ ${REPLACING_VERSIONS##* } ]] &&
+		ver_test ${REPLACING_VERSIONS##* } -lt 535.183.01-r1 # may get repeated
+	then
+		elog
+		elog "For suspend/sleep, 'NVreg_PreserveVideoMemoryAllocations=1' is now default"
+		elog "with this version of ${PN}. This is recommended (or required) by"
+		elog "major DEs especially with wayland but, *if* experience regressions with"
+		elog "suspend, try reverting to =0 in '${EROOT}/etc/modprobe.d/nvidia.conf'."
+		elog
+		elog "May notably be an issue when using neither systemd nor elogind to suspend."
+		elog
+		elog "Also, the systemd suspend/hibernate/resume services are now enabled by"
+		elog "default, and for openrc+elogind a similar hook has been installed."
 	fi
 }

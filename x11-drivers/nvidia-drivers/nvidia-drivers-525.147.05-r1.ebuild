@@ -7,7 +7,7 @@ MODULES_OPTIONAL_IUSE=+modules
 inherit desktop flag-o-matic linux-mod-r1 multilib readme.gentoo-r1
 inherit systemd toolchain-funcs unpacker user-info
 
-MODULES_KERNEL_MAX=6.9
+MODULES_KERNEL_MAX=6.7 # 6.6 for arm64 (see below)
 NV_URI="https://download.nvidia.com/XFree86/"
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
@@ -22,7 +22,7 @@ SRC_URI="
 # nvidia-installer is unused but here for GPL-2's "distribute sources"
 S=${WORKDIR}
 
-LICENSE="NVIDIA-r2 Apache-2.0 BSD BSD-2 GPL-2 MIT ZLIB curl openssl"
+LICENSE="NVIDIA-r2 BSD BSD-2 GPL-2 MIT ZLIB curl openssl"
 SLOT="0/${PV%%.*}"
 KEYWORDS="-* amd64 ~arm64"
 IUSE="+X abi_x86_32 abi_x86_64 kernel-open persistenced powerd +static-libs +tools wayland"
@@ -51,7 +51,6 @@ COMMON_DEPEND="
 "
 RDEPEND="
 	${COMMON_DEPEND}
-	dev-libs/openssl:0/3
 	sys-libs/glibc
 	X? (
 		media-libs/libglvnd[X,abi_x86_32(-)?]
@@ -89,10 +88,13 @@ BDEPEND="
 QA_PREBUILT="lib/firmware/* opt/bin/* usr/lib*"
 
 PATCHES=(
+	"${FILESDIR}"/nvidia-drivers-470.223.02-gpl-pfn_valid.patch
+	"${FILESDIR}"/nvidia-drivers-525.116.04-clang-unused-option.patch
+	"${FILESDIR}"/nvidia-drivers-525.147.05-gcc14.patch
 	"${FILESDIR}"/nvidia-kernel-module-source-515.86.01-raw-ldflags.patch
 	"${FILESDIR}"/nvidia-modprobe-390.141-uvm-perms.patch
+	"${FILESDIR}"/nvidia-settings-390.144-desktop.patch
 	"${FILESDIR}"/nvidia-settings-390.144-raw-ldflags.patch
-	"${FILESDIR}"/nvidia-settings-530.30.02-desktop.patch
 )
 
 pkg_setup() {
@@ -127,6 +129,11 @@ pkg_setup() {
 	Cannot be directly selected in the kernel's menuconfig, and may need
 	selection of another option that requires it such as CONFIG_KVM."
 
+	# screen_info is marked GPL on non-x86 in 6.7 and cannot be used
+	# (patchable, but just avoid advertising compatibility for now)
+	# https://forums.developer.nvidia.com/t/278367
+	use arm64 && MODULES_KERNEL_MAX=6.6
+
 	linux-mod-r1_pkg_setup
 }
 
@@ -139,9 +146,6 @@ src_prepare() {
 	mv NVIDIA-kernel-module-source-${PV} kernel-module-source || die
 
 	default
-
-	kernel_is -ge 6 7 &&
-		eapply "${FILESDIR}"/nvidia-drivers-535.43.22-kernel-6.7.patch
 
 	# prevent detection of incomplete kernel DRM support (bug #603818)
 	sed 's/defined(CONFIG_DRM/defined(CONFIG_DRM_KMS_HELPER/g' \
@@ -246,7 +250,6 @@ src_install() {
 		[FIRMWARE]=/lib/firmware/nvidia/${PV}
 		[GBM_BACKEND_LIB_SYMLINK]=/usr/${libdir}/gbm
 		[GLVND_EGL_ICD_JSON]=/usr/share/glvnd/egl_vendor.d
-		[OPENGL_DATA]=/usr/share/nvidia
 		[VULKAN_ICD_JSON]=/usr/share/vulkan
 		[WINE_LIB]=/usr/${libdir}/nvidia/wine
 		[XORG_OUTPUTCLASS_CONFIG]=/usr/share/X11/xorg.conf.d
@@ -263,7 +266,6 @@ src_install() {
 		libnvidia-{gtk,wayland-client} nvidia-{settings,xconfig} # from source
 		libnvidia-egl-gbm 15_nvidia_gbm # gui-libs/egl-gbm
 		libnvidia-egl-wayland 10_nvidia_wayland # gui-libs/egl-wayland
-		libnvidia-pkcs11.so # using the openssl3 version instead
 	)
 	local skip_modules=(
 		$(usev !X "nvfbc vdpau xdriver")
@@ -374,8 +376,6 @@ documentation that is installed alongside this README."
 
 		if [[ -v 'paths[${m[2]}]' ]]; then
 			into=${paths[${m[2]}]}
-		elif [[ ${m[2]} == EXPLICIT_PATH ]]; then
-			into=${m[3]}
 		elif [[ ${m[2]} == *_BINARY ]]; then
 			into=/opt/bin
 		elif [[ ${m[3]} == COMPAT32 ]]; then
@@ -421,6 +421,22 @@ documentation that is installed alongside this README."
 		insinto /usr/share/dbus-1/system.d
 		doins nvidia-dbus.conf
 	fi
+
+	# enabling is needed for sleep to work properly and little reason not to do
+	# it unconditionally for a better user experience
+	: "$(systemd_get_systemunitdir)"
+	local unitdir=${_#"${EPREFIX}"}
+	# not using relative symlinks to match systemd's own links
+	dosym {"${unitdir}",/etc/systemd/system/systemd-hibernate.service.wants}/nvidia-hibernate.service
+	dosym {"${unitdir}",/etc/systemd/system/systemd-hibernate.service.wants}/nvidia-resume.service
+	dosym {"${unitdir}",/etc/systemd/system/systemd-suspend.service.wants}/nvidia-suspend.service
+	dosym {"${unitdir}",/etc/systemd/system/systemd-suspend.service.wants}/nvidia-resume.service
+	# also add a custom elogind hook to do the equivalent of the above
+	exeinto /usr/lib/elogind/system-sleep
+	newexe "${FILESDIR}"/system-sleep.elogind nvidia
+	# <elogind-255.5 used a different path (bug #939216), keep a compat symlink
+	# TODO: cleanup after 255.5 been stable for a few months
+	dosym {/usr/lib,/"${libdir}"}/elogind/system-sleep/nvidia
 
 	# symlink non-versioned so nvidia-settings can use it even if misdetected
 	dosym nvidia-application-profiles-${PV}-key-documentation \
@@ -517,5 +533,45 @@ pkg_postinst() {
 		elog
 		elog "If you experience issues, either disable wayland or edit nvidia.conf."
 		elog "Of note, may possibly cause issues with SLI and Reverse PRIME."
+	fi
+
+	# these can be removed after some time, only to help the transition
+	# given users are unlikely to do further custom solutions if it works
+	# (see also https://github.com/elogind/elogind/issues/272)
+	if grep -riq "^[^#]*HandleNvidiaSleep=yes" "${EROOT}"/etc/elogind/sleep.conf.d/ 2>/dev/null
+	then
+		ewarn
+		ewarn "!!! WARNING !!!"
+		ewarn "Detected HandleNvidiaSleep=yes in ${EROOT}/etc/elogind/sleep.conf.d/."
+		ewarn "This 'could' cause issues if used in combination with the new hook"
+		ewarn "installed by the ebuild to handle sleep using the official upstream"
+		ewarn "script. It is recommended to disable the option."
+	fi
+	if [[ $(realpath "${EROOT}"{/etc,{/usr,}/lib*}/elogind/system-sleep | sort | uniq | \
+		xargs -d'\n' grep -Ril nvidia 2>/dev/null | wc -l) -gt 2 ]]
+	then
+		ewarn
+		ewarn "!!! WARNING !!!"
+		ewarn "Detected a custom script at ${EROOT}{/etc,{/usr,}/lib*}/elogind/system-sleep"
+		ewarn "referencing NVIDIA. This version of ${PN} has installed its own"
+		ewarn "hook at ${EROOT}/usr/lib/elogind/system-sleep/nvidia and it is recommended"
+		ewarn "to remove the custom one to avoid potential issues."
+		ewarn
+		ewarn "Feel free to ignore this warning if you know the other NVIDIA-related"
+		ewarn "scripts can be used together. The warning will be removed in the future."
+	fi
+	if [[ ${REPLACING_VERSIONS##* } ]] &&
+		ver_test ${REPLACING_VERSIONS##* } -lt 525.147.05-r1 # may get repeated
+	then
+		elog
+		elog "For suspend/sleep, 'NVreg_PreserveVideoMemoryAllocations=1' is now default"
+		elog "with this version of ${PN}. This is recommended (or required) by"
+		elog "major DEs especially with wayland but, *if* experience regressions with"
+		elog "suspend, try reverting to =0 in '${EROOT}/etc/modprobe.d/nvidia.conf'."
+		elog
+		elog "May notably be an issue when using neither systemd nor elogind to suspend."
+		elog
+		elog "Also, the systemd suspend/hibernate/resume services are now enabled by"
+		elog "default, and for openrc+elogind a similar hook has been installed."
 	fi
 }
