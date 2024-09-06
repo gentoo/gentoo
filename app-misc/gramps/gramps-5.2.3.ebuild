@@ -69,7 +69,8 @@ python_test() {
 	# test_imp_sample_ged wrongly detects mimetype for OBJE without file in ${S}
 	rm -f data/tests/imp_sample.ged || die
 
-	local -x GRAMPS_RESOURCES="${BUILD_DIR}/install/usr/share" GDK_BACKEND=-
+	# TZ=UTC is expected in ged export test, #939161
+	local -x GRAMPS_RESOURCES="${BUILD_DIR}/install/usr/share" GDK_BACKEND=- TZ=UTC
 	eunittest -p "*_test.py"
 
 	# we don't want to install this symlink
