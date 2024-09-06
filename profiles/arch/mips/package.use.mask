@@ -35,6 +35,7 @@ mail-mta/postfix mongodb
 media-sound/liblc3 test
 net-misc/rsync rrsync
 net-firewall/nftables doc
+dev-util/ccache doc
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-08-25)
 # Some optional emacs dependencies are not keyworded.
