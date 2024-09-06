@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <use>
+    <flag name="anthy">Enable support for <pkg>app-i18n/anthy</pkg></flag>
+    <flag name="rime">Enable support for <pkg>app-i18n/librime</pkg></flag>
+    <flag name="hardening">Enable hardening</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">hamonikr/nimf</remote-id>
+  </upstream>
+</pkgmetadata>
