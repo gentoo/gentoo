@@ -36,6 +36,7 @@ BDEPEND="
 RDEPEND="
 	dev-libs/tinyxml2:=
 	dev-qt/qtbase[concurrent,dbus,gui,network,opengl,widgets,xml]
+	dev-qt/qt5compat:6[qml]
 	dev-qt/qtdeclarative:6
 	dev-qt/qtnetworkauth:6
 	dev-qt/qtscxml:6
@@ -62,6 +63,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-unbundle-harfbuzz.patch"
 	"${FILESDIR}/${PN}-4.2.0-dynamic_cast-crash.patch"
 	"${FILESDIR}/${PN}-4.4.0-include.patch"
+	"${FILESDIR}/${PN}-4.4.0-fix-main-toolbar-and-menubar.patch"
 )
 
 src_unpack() {
@@ -97,6 +99,7 @@ src_configure() {
 		-DMUE_COMPILE_USE_CCACHE=OFF
 		-DMUE_COMPILE_USE_SYSTEM_FLAC=ON
 		-DMUE_COMPILE_USE_SYSTEM_FREETYPE=ON
+		-DMUE_COMPILE_USE_SYSTEM_OPUS=ON
 		-DMUE_COMPILE_USE_SYSTEM_OPUSENC=ON
 		-DMUE_COMPILE_USE_SYSTEM_TINYXML=ON
 		-DMUE_DOWNLOAD_SOUNDFONT=OFF
