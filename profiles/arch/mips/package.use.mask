@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-09-06)
+# media-libs/vidstab is not keyworded
+media-video/ffmpeg vidstab
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-09-06)
 # media-video/rav1e isn't keyworded here
 media-libs/libavif rav1e
 
