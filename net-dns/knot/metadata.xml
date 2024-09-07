@@ -10,8 +10,14 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
+		<flag name="authsignal">
+			Enable Automatic Authenticated DNSSEC Bootstrapping records
+		</flag>
 		<flag name="cookies">
 			Enable the DNS cookie module (RFC 7873)
+		</flag>
+		<flag name="dbus">
+			Enable DBus support as an alternative of systemd d-bus
 		</flag>
 		<flag name="doh">
 			Enable DNS over HTTP (DoH) using libnghttp2
