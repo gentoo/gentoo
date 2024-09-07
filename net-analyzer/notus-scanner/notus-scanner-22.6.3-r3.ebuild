@@ -20,7 +20,7 @@ DEPEND="
 	net-libs/paho-mqtt-c
 	>=dev-python/psutil-5.9[${PYTHON_USEDEP}]
 	>=dev-python/python-gnupg-0.5.1[${PYTHON_USEDEP}]
-	<dev-python/packaging-24.1[${PYTHON_USEDEP}]
+	<dev-python/packaging-24.2[${PYTHON_USEDEP}]
 	>=dev-python/paho-mqtt-1.5.1[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		<dev-python/tomli-3[${PYTHON_USEDEP}]
@@ -67,6 +67,16 @@ python_install() {
 	keepdir /var/lib/notus/advisories
 	if ! use prefix; then
 		fowners -R gvm:gvm /var/lib/notus
+	fi
+
+	# Adding notus-scanner.log to logrotate
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}/${PN}.logrotate" "${PN}"
+
+	# Set proper permissions on required files/directories
+	keepdir /var/log/gvm
+	if ! use prefix; then
+		fowners -R gvm:gvm /var/log/gvm
 	fi
 
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
