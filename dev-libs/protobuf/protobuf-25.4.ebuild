@@ -67,7 +67,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-26.1-disable-32-bit-tests.patch"
 	"${FILESDIR}/${PN}-23.3-static_assert-failure.patch"
 	"${FILESDIR}/${PN}-27.4-findJsonCpp.patch"
-	"${FILESDIR}/${PN}-28.0-disable-test_upb-lto.patch"
 )
 
 DOCS=( CONTRIBUTORS.txt README.md )
