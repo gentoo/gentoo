@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-07)
+# kde-plasma/plasma-workspace:6 is not keyworded
+sys-auth/polkit kde
+virtual/notification-daemon kde
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-07-31)
 # KF6 and media-libs/phonon will drop arm keyword
 app-office/texstudio video
