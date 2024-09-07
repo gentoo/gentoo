@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-utils.eclass
@@ -15,12 +15,16 @@
 # This eclass does not set any metadata variables nor export any phase
 # functions. It can be inherited safely.
 
-case ${EAPI:-0} in
-	[5678]) ;;
+if [[ ! ${_RUBY_UTILS} ]]; then
+
+case ${EAPI} in
+	5|6)
+		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
+		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
+		;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-if [[ ! ${_RUBY_UTILS} ]]; then
 
 # @ECLASS_VARIABLE: RUBY_TARGETS_PREFERENCE
 # @INTERNAL
