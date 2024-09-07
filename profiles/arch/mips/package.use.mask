@@ -4,6 +4,7 @@
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-09-07)
 # gui-libs/gtk:4 is not keyworded here
 app-crypt/gcr:4 gtk
+>=app-crypt/pinentry-1.3.0 gtk
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-09-06)
 # media-libs/vidstab is not keyworded
