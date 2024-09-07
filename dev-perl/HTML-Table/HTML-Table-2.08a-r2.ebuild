@@ -9,4 +9,4 @@ inherit perl-module
 DESCRIPTION="produces HTML tables"
 
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ~ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 ~ppc ~ppc64 sparc x86"

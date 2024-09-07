@@ -9,7 +9,7 @@ SRC_URI="mirror://gentoo/${P}-source.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 
 RDEPEND=">=net-print/cups-1.2"
 DEPEND="${RDEPEND}"

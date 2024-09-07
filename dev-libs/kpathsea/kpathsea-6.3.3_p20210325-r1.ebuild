@@ -14,7 +14,7 @@ SRC_URI="https://dev.gentoo.org/~sam/distfiles/texlive/texlive-${PV#*_p}-source.
 
 LICENSE="GPL-2"
 SLOT="0/${PV%_p*}"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc source static-libs"
 
 S=${WORKDIR}/texlive-${PV#*_p}-source/texk/${PN}

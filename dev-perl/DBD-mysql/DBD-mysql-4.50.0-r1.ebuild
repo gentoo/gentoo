@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="MySQL driver for the Perl5 Database Interface (DBI)"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 
 IUSE="mariadb +mysql test +ssl"
 RESTRICT="!test? ( test )"

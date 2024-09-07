@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="gnome"
 
 RDEPEND=">=x11-wm/fvwm-2.6.2"

@@ -17,7 +17,7 @@ S="${WORKDIR}"
 
 LICENSE="FDL-1.1"
 SLOT="2"
-KEYWORDS="amd64 arm hppa ~ia64 ppc ~s390 x86"
+KEYWORDS="amd64 arm hppa ppc ~s390 x86"
 
 BDEPEND="app-arch/unzip"
 

@@ -11,7 +11,7 @@ S="${WORKDIR}"
 
 LICENSE="CC-BY-SA-2.5"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 src_install() {
 	docinto pdf

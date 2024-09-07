@@ -11,7 +11,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-keyring"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="pam selinux +ssh-agent systemd test valgrind"
 RESTRICT="!test? ( test )"
 

@@ -10,4 +10,4 @@ inherit perl-module
 DESCRIPTION="Organize list of objects into parent/child order"
 
 SLOT="0"
-KEYWORDS="amd64 ~ia64 x86"
+KEYWORDS="amd64 x86"

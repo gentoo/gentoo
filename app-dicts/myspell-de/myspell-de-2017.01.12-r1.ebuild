@@ -25,7 +25,7 @@ SRC_URI="
 
 LICENSE="GPL-3 GPL-2 LGPL-3+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86"
 
 PLOCALES=( "de-AT" "de-CH" "de-DE" )
 IUSE+="+l10n_de ${PLOCALES[@]/#/l10n_}"

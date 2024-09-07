@@ -10,4 +10,4 @@ inherit perl-module
 DESCRIPTION="Translate signal names to/from numbers"
 
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ppc ~riscv sparc x86"
+KEYWORDS="amd64 ppc ~riscv sparc x86"

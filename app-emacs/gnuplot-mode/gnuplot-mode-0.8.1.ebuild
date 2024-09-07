@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN%-mode}-${PV}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="doc"
 
 BDEPEND="doc? ( virtual/latex-base )"

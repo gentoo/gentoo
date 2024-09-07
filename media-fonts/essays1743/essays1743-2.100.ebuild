@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="|| ( LGPL-2.1 OFL-1.1 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~loong ~ppc ~riscv ~s390 ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~loong ~ppc ~riscv ~s390 ~sparc ~x86 ~x64-macos"
 IUSE="+otf ttf"
 
 REQUIRED_USE="|| ( otf ttf )"

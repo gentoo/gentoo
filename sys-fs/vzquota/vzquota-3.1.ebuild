@@ -11,7 +11,7 @@ SRC_URI="http://download.openvz.org/utils/${PN}/${PV}/src/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~ppc64 ~sparc x86"
 
 src_prepare() {
 	default

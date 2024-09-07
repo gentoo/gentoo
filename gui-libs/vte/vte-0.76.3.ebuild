@@ -18,7 +18,7 @@ SRC_URI="${SRC_URI}
 LICENSE="LGPL-3+ GPL-3+"
 SLOT="2.91-gtk4" # vte_api_version + "-gtk4" in meson.build
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="+crypt debug gtk-doc +icu +introspection systemd +vala vanilla"
 REQUIRED_USE="
 	gtk-doc? ( introspection )

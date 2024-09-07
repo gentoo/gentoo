@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.netperf.org/${PN}/${P}.tar.bz2"
 
 LICENSE="netperf"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm64 ~hppa ppc ppc64 ~riscv sparc x86"
 IUSE="demo sctp"
 
 RDEPEND="

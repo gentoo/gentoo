@@ -11,7 +11,7 @@ SRC_URI="https://www.phy.duke.edu/~rgb/General/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="doc"
 RESTRICT="test" # Way too long
 

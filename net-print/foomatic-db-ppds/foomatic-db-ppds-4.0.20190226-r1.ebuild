@@ -10,7 +10,7 @@ S=${WORKDIR}/${PN/-ppds}-$(ver_cut 3)
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 
 PATCHES=(
 	"${FILESDIR}/Makefile.in-4.0.20120117.patch"

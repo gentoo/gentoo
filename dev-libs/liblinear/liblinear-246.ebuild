@@ -15,7 +15,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="BSD"
 SLOT="0/5"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 
 src_prepare() {
 	default

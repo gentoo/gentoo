@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm ~hppa ~ia64 ppc64 ~s390 sparc x86"
+KEYWORDS="amd64 arm ~hppa ppc64 ~s390 sparc x86"
 IUSE="clearpasswd ipalias maildrop mysql postgres spamassassin"
 REQUIRED_USE="mysql? ( !postgres )"
 

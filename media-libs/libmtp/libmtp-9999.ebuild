@@ -11,7 +11,7 @@ if [[ ${PV} == 9999* ]]; then
 else
 	inherit libtool
 	SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Implementation of Microsoft's Media Transfer Protocol (MTP)"

@@ -12,7 +12,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz
 
 LICENSE="LGPL-2.1"
 SLOT="2/25"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv sparc x86"
 IUSE="doc static-libs"
 
 RDEPEND="

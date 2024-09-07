@@ -9,7 +9,7 @@ SRC_URI="https://downloads.sourceforge.net/project/${PN}/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 MIT )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
 # Upstream recommended NSS in the past for licencing reasons but w/ OpenSSL 3 that's
 # no longer a problem, plus curl >= 8.3 doesn't support NSS anymore.
 IUSE="bindist curl doc nss"

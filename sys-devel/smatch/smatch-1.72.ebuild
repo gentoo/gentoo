@@ -14,7 +14,7 @@ else
 	# Update on bumps
 	S="${WORKDIR}"/${P}-7f4b936
 
-	KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86"
 fi
 
 DESCRIPTION="Static analysis tool for C"

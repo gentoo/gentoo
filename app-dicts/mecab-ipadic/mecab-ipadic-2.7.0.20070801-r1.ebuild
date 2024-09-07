@@ -12,7 +12,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="ipadic"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="unicode"
 
 DEPEND="app-text/mecab[unicode=]"

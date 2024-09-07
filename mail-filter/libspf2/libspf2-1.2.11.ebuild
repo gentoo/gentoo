@@ -12,7 +12,7 @@ SRC_URI="https://github.com/shevek/${PN}/archive/${GHASH}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1 BSD-2 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ppc ppc64 sparc x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.11-memset-include-string-h.patch

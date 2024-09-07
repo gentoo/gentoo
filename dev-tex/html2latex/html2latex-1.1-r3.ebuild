@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.gz
 LICENSE="GPL-2+"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ppc ppc64 ~riscv sparc x86"
 
 IUSE="imagemagick libwww"
 

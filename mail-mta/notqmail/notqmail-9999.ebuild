@@ -18,7 +18,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	inherit verify-sig
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 	SRC_URI="
 		https://github.com/notqmail/notqmail/releases/download/${P}/${P}.tar.xz
 		verify-sig? (

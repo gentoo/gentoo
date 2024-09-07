@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/poptop/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc x86"
 IUSE="gre-extreme-debug tcpd"
 
 RDEPEND="net-dialup/ppp:=

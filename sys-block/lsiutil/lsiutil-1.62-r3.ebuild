@@ -11,7 +11,7 @@ SRC_URI="https://docs.broadcom.com/docs-and-downloads/legacy-host-bus-adapters/l
 # can remove the distfiles from their mirror anytime.
 LICENSE="LSI"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~x86"
+KEYWORDS="~amd64 ~x86"
 RESTRICT="mirror bindist"
 
 BDEPEND="app-arch/unzip"

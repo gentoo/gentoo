@@ -11,7 +11,7 @@ SRC_URI="https://github.com/Matthias-Wandel/jhead/archive/refs/tags/${PV}.tar.gz
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.08-fix-makefile.patch

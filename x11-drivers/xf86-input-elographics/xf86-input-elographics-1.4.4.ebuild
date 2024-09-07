@@ -7,4 +7,4 @@ XORG_TARBALL_SUFFIX="xz"
 inherit xorg-3
 
 DESCRIPTION="Elographics input driver"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~loong ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~loong ppc ppc64 sparc x86"

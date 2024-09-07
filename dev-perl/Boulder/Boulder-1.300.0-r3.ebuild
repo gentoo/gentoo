@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="An API for hierarchical tag/value structures"
 
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ~ppc sparc x86"
+KEYWORDS="amd64 ~ppc sparc x86"
 IUSE="genbank store xml"
 
 RDEPEND="

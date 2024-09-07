@@ -10,4 +10,4 @@ inherit xorg-3
 DESCRIPTION="X.Org micro-misc font"
 LICENSE="public-domain"
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"

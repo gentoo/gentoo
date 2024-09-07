@@ -10,4 +10,4 @@ inherit perl-module
 DESCRIPTION="An API to the Perl weak references"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ppc sparc x86"

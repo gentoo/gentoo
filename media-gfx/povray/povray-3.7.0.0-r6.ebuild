@@ -24,7 +24,7 @@ S=${WORKDIR}/${PN}-${MY_PV}
 # to actually be in the sources, so we don't distribute it either.
 LICENSE="AGPL-3+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="debug +io-restrictions tiff X"
 
 DEPEND="

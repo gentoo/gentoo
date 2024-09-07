@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Produce common sub-string indices for two strings"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ~ppc sparc x86"
+KEYWORDS="~alpha amd64 ~ppc sparc x86"
 
 SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-swig.patch.xz"
 

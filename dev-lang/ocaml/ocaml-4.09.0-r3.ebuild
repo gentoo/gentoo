@@ -12,7 +12,7 @@ SRC_URI="https://github.com/ocaml/ocaml/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="LGPL-2.1"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 arm arm64 ~hppa ~mips ~ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="emacs flambda latex +ocamlopt spacetime xemacs"
 
 RDEPEND="sys-libs/binutils-libs:=

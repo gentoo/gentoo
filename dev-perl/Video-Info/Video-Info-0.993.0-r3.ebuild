@@ -11,7 +11,7 @@ DESCRIPTION="Perl extension for getting video info"
 
 LICENSE="Aladdin"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ~ppc sparc x86"
+KEYWORDS="amd64 ~ppc sparc x86"
 
 RDEPEND="
 	dev-perl/Class-MakeMethods

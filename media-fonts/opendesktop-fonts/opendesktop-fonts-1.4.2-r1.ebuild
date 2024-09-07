@@ -13,7 +13,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="Arphic"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~loong ppc ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~loong ppc ~riscv ~s390 sparc x86"
 IUSE=""
 
 FONT_CONF=(

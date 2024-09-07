@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ascii-boxes/boxes/archive/refs/tags/v${PV}.tar.gz ->
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~mips ppc ppc64 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

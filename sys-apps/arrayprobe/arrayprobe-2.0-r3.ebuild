@@ -11,7 +11,7 @@ SRC_URI="http://www.strocamp.net/opensource/compaq/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 x86"
+KEYWORDS="amd64 x86"
 
 PATCHES=(
 	"${FILESDIR}/${PV}-malloc-strlen.patch"

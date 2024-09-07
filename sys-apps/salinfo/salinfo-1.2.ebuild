@@ -12,7 +12,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 # ia64 only: dumps state of ia64 machine, uses ia64_fpreg structs, bug #725766
-KEYWORDS="-* ~ia64"
+KEYWORDS=""
 IUSE=""
 
 PATCHES=( "${FILESDIR}"/${P}-build.patch )

@@ -9,7 +9,7 @@ SRC_URI="ftp://ftp.ossp.org/pkg/lib/mm/${P}.tar.gz"
 
 LICENSE="mm"
 SLOT="1.2"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE=""
 
 src_prepare() {

@@ -11,7 +11,7 @@ SRC_URI="http://www.padl.com/download/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 LGPL-2 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ~ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~mips ~ppc ppc64 sparc x86"
 IUSE="ssl sasl"
 
 DEPEND="sys-libs/pam[${MULTILIB_USEDEP}]

@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 hppa ~ia64 ~x86"
+KEYWORDS="~alpha amd64 ~arm64 hppa ~x86"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-no-implicits.patch

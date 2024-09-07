@@ -12,7 +12,7 @@ SRC_URI="http://www.guru-group.fi/~too/sw/identd.readme -> ${P}.readme
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ppc ppc64 sparc x86"
 
 src_unpack() {
 	mkdir -p "${S}" || die

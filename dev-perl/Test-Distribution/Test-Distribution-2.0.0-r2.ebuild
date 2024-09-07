@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="perform tests on all modules of a distribution"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc x86"
 
 RDEPEND="
 	>=dev-perl/Pod-Coverage-0.200.0

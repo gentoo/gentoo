@@ -7,7 +7,7 @@ XORG_TARBALL_SUFFIX="xz"
 inherit xorg-3
 
 DESCRIPTION="X.Org fonttosfnt application"
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="media-libs/freetype:2
 	x11-libs/libX11

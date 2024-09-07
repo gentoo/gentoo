@@ -19,7 +19,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI+=" https://github.com/BOINC/boinc/archive/client_release/${MY_PV}/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 	S="${WORKDIR}/${PN}-client_release-${MY_PV}-${PV}"
 fi
 

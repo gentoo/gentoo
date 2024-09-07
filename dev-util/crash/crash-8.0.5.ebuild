@@ -24,7 +24,7 @@ else
 	SRC_URI="https://github.com/crash-utility/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 		${UPSTREAM_PATCHSET_URI} ${EXTRA_PATCHSET_URI}
 		mirror://gnu/gdb/gdb-${GDB_VERSION}.tar.gz"
-	KEYWORDS="-* ~alpha ~amd64 ~arm ~ia64 ~ppc64 ~riscv ~s390 ~x86"
+	KEYWORDS="-* ~alpha ~amd64 ~arm ~ppc64 ~riscv ~s390 ~x86"
 fi
 
 DESCRIPTION="Red Hat crash utility; used for analyzing kernel core dumps"

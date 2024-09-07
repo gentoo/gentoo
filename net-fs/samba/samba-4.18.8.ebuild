@@ -16,7 +16,7 @@ if [[ ${PV} == *_rc* ]]; then
 	SRC_URI="https://download.samba.org/pub/samba/rc/${MY_P}.tar.gz"
 else
 	SRC_URI="https://download.samba.org/pub/samba/stable/${MY_P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv sparc x86"
 fi
 S="${WORKDIR}/${MY_P}"
 

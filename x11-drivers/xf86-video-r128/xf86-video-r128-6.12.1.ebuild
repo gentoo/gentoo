@@ -8,7 +8,7 @@ inherit flag-o-matic xorg-3
 
 DESCRIPTION="ATI Rage128 video driver"
 
-KEYWORDS="~alpha amd64 ~ia64 ~loong ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~loong ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 
 src_configure() {
 	# always use C11 semantics

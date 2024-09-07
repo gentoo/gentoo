@@ -14,7 +14,7 @@ SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/python3-${P
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ppc ~riscv sparc x86"
+KEYWORDS="~alpha amd64 ~arm ppc ~riscv sparc x86"
 
 RDEPEND="dev-util/dialog"
 

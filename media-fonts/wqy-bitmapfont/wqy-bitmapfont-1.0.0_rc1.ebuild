@@ -13,7 +13,7 @@ SRC_URI="https://downloads.sourceforge.net/wqy/${MY_PN}-pcf-${PV/_rc/-RC}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~loong ppc ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~loong ppc ~riscv ~s390 sparc x86"
 IUSE=""
 # Only installs fonts
 RESTRICT="strip binchecks"

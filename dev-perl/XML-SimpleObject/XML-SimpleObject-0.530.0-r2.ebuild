@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A Perl XML Simple package"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ppc sparc x86"
 
 RDEPEND="
 	>=dev-perl/XML-Parser-2.300.0

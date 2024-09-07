@@ -11,7 +11,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_BRANCH="master"
 else
 	SRC_URI="https://gitweb.gentoo.org/proj/catalyst.git/snapshot/${MY_P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 	S="${WORKDIR}/${MY_P/_/-}"
 fi
 

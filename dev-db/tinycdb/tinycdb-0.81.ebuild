@@ -11,7 +11,7 @@ SRC_URI="https://www.corpit.ru/mjt/${PN}/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~hppa ~ia64 ~mips ppc ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~hppa ~mips ppc ~riscv x86"
 IUSE="static-libs"
 RESTRICT="test"
 

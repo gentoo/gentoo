@@ -11,7 +11,7 @@ DESCRIPTION="PostgreSQL Extension Network Client"
 HOMEPAGE="https://pgxn.github.io/pgxnclient/
 	https://pypi.org/project/pgxnclient/"
 
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 
 LICENSE="BSD"
 SLOT="0"
