@@ -167,6 +167,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-9.3.0-ThrustPatches.patch"
 	"${FILESDIR}/${PN}-9.3.0-core-octree_node.txx.patch"
 	"${FILESDIR}/${PN}-9.3.0-ThirdParty-gcc15.patch"
+	"${FILESDIR}/${PN}-9.3.0-r1-expat-2.6.0.patch"
 )
 
 DOCS=( CONTRIBUTING.md README.md )
