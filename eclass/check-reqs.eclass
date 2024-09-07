@@ -1,4 +1,4 @@
-# Copyright 2004-2023 Gentoo Authors
+# Copyright 2004-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: check-reqs.eclass
@@ -38,13 +38,17 @@
 # These checks should probably mostly work on non-Linux, and they should
 # probably degrade gracefully if they don't. Probably.
 
-case ${EAPI} in
-	6|7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_CHECK_REQS_ECLASS} ]]; then
 _CHECK_REQS_ECLASS=1
+
+case ${EAPI} in
+	6)
+		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
+		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
+		;;
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @ECLASS_VARIABLE: CHECKREQS_MEMORY
 # @DEFAULT_UNSET
