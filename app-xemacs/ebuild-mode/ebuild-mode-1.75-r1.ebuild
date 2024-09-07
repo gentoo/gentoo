@@ -42,7 +42,8 @@ src_test() {
 
 src_install() {
 	insinto /usr/lib/xemacs/site-packages/lisp/${PN}
-	doins ebuild-mode.{el,elc} gentoo-newsitem-mode.{el,elc}
+	doins ebuild-mode.{el,elc} ebuild-mode-keywords.el \
+		gentoo-newsitem-mode.{el,elc}
 	doins auto-autoloads.el
 }
 
