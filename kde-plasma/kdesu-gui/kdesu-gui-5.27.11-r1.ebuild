@@ -15,7 +15,7 @@ HOMEPAGE="https://invent.kde.org/plasma/kde-cli-tools"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="0"
-KEYWORDS="~loong ~x86"
+KEYWORDS="~loong x86"
 
 DEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5
