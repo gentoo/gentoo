@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-09-10)
+# ia64 only package. Since we drop ia64, we can remove this package.
+# Removal on 2024-10-10.  Bug #939298.
+sys-apps/salinfo
+
 # Ulrich Müller <ulm@gentoo.org> (2024-09-12)
 # Pretest versions, masked for testing.
 <app-editors/emacs-30.0.9999:30-vcs
