@@ -34,6 +34,13 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-09-07)
+# These packages are EOL in Plasma 6.
+# Removal on 2024-10-07.
+<kde-plasma/khotkeys-5.27.50:5
+<kde-plasma/libkworkspace-5.27.50:5
+<kde-plasma/xembed-sni-proxy-5.27.50:5
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-07)
 # Plasma 6 is not planned to be going stable on x86.
 # Plasma 5 will be cleaned up shortly. Removal on 2024-09-21.
 <kde-plasma/bluedevil-5.27.50:5
