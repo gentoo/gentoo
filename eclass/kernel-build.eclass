@@ -302,7 +302,9 @@ kernel-build_src_compile() {
 		targets+=( ctf )
 	fi
 
-	emake O="${WORKDIR}"/build "${MAKEARGS[@]}" "${targets[@]}"
+	for target in "${targets[@]}" ; do
+		emake O="${WORKDIR}"/build "${MAKEARGS[@]}" "${target}"
+	done
 }
 
 # @FUNCTION: kernel-build_src_test
@@ -325,9 +327,11 @@ kernel-build_src_test() {
 		strip_args="--strip-unneeded"
 	fi
 
-	emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
-		INSTALL_MOD_PATH="${T}" INSTALL_MOD_STRIP="${strip_args}" \
-		"${targets[@]}"
+	for target in "${targets[@]}" ; do
+		emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
+			INSTALL_MOD_PATH="${T}" INSTALL_MOD_STRIP="${strip_args}" \
+			"${target}"
+	done
 
 	kernel-install_test "${KV_FULL}" \
 		"${WORKDIR}/build/$(dist-kernel_get_image_path)" \
@@ -371,9 +375,11 @@ kernel-build_src_install() {
 		)
 	fi
 
-	emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
-		INSTALL_MOD_PATH="${ED}" INSTALL_MOD_STRIP="${strip_args}" \
-		INSTALL_PATH="${ED}/boot" "${compress[@]}" "${targets[@]}"
+	for target in "${targets[@]}" ; do
+		emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
+			INSTALL_MOD_PATH="${ED}" INSTALL_MOD_STRIP="${strip_args}" \
+			INSTALL_PATH="${ED}/boot" "${compress[@]}" "${target}"
+	done
 
 	# note: we're using mv rather than doins to save space and time
 	# install main and arch-specific headers first, and scripts
