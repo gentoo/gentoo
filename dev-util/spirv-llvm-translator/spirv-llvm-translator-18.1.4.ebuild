@@ -7,7 +7,7 @@ LLVM_COMPAT=( 18 )
 MY_PN="SPIRV-LLVM-Translator"
 MY_P="${MY_PN}-${PV}"
 
-inherit cmake flag-o-matic llvm-r1 multiprocessing
+inherit cmake-multilib flag-o-matic llvm-r1 multiprocessing
 
 DESCRIPTION="Bi-directional translator between SPIR-V and LLVM IR"
 HOMEPAGE="https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
@@ -21,8 +21,8 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-util/spirv-tools
-	sys-devel/llvm:${SLOT}=
+	dev-util/spirv-tools[${MULTILIB_USEDEP}]
+	sys-devel/llvm:${SLOT}=[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	>=dev-util/spirv-headers-1.3.280
@@ -46,7 +46,7 @@ src_prepare() {
 	sed -i -e 's/%triple/x86_64-unknown-linux-gnu/' test/DebugInfo/X86/*.ll || die
 }
 
-src_configure() {
+multilib_src_configure() {
 	local mycmakeargs=(
 		-DCCACHE_ALLOWED="OFF"
 		-DCMAKE_INSTALL_PREFIX="$(get_llvm_prefix)"
@@ -58,6 +58,6 @@ src_configure() {
 	cmake_src_configure
 }
 
-src_test() {
+multilib_src_test() {
 	lit -vv "-j${LIT_JOBS:-$(makeopts_jobs)}" "${BUILD_DIR}/test" || die
 }
