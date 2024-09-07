@@ -17,14 +17,18 @@ SLOT="0"
 KEYWORDS="amd64"
 IUSE="+gui"
 
-RDEPEND="
-	app-emulation/winetricks[gui?]
+RDEPEND="app-emulation/winetricks
 	$(python_gen_cond_dep '
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/vdf[${PYTHON_USEDEP}]
 	')
-	gui? ( gnome-extra/zenity )"
+	gui? ( gnome-extra/zenity
+		|| (
+			app-emulation/winetricks[gtk]
+			app-emulation/winetricks[kde]
+		)
+	)"
 BDEPEND="$(python_gen_cond_dep '
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 ')"
