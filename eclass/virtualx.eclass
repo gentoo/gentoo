@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: virtualx.eclass
@@ -9,13 +9,17 @@
 # @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: This eclass can be used for packages that need a working X environment to build.
 
-case ${EAPI} in
-	6|7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_VIRTUALX_ECLASS} ]]; then
 _VIRTUALX_ECLASS=1
+
+case ${EAPI} in
+	6)
+		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
+		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
+		;;
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @ECLASS_VARIABLE: VIRTUALX_REQUIRED
 # @PRE_INHERIT
