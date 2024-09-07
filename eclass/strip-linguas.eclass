@@ -1,4 +1,4 @@
-# Copyright 2004-2021 Gentoo Authors
+# Copyright 2004-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: strip-linguas.eclass
@@ -9,15 +9,19 @@
 # @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: convenience function for LINGUAS support
 
-case ${EAPI} in
-	5|6|7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_STRIP_LINGUAS_ECLASS} ]]; then
 _STRIP_LINGUAS_ECLASS=1
 
-# @FUNCTION: strip-linguas
+case ${EAPI} in
+	5|6)
+		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
+		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
+		;;
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+# FUNCTION: strip-linguas
 # @USAGE: [<allow LINGUAS>|<-i|-u> <directories of .po files>]
 # @DESCRIPTION:
 # Make sure that LINGUAS only contains languages that a package can
