@@ -21,12 +21,17 @@ COMMON_DEPEND="
 		>=dev-qt/qtbase-${QTMIN}:6=[wayland]
 		>=dev-qt/qtwayland-${QTMIN}:6
 	)
-	X? ( x11-libs/libX11 )
+	X? (
+		>=dev-qt/qtbase-${QTMIN}:6[X]
+		x11-libs/libX11
+	)
 "
 DEPEND="${COMMON_DEPEND}
-	x11-base/xorg-proto
 	wayland? ( >=dev-libs/plasma-wayland-protocols-1.11.1 )
-	X? ( x11-libs/libxcb )
+	X? (
+		x11-base/xorg-proto
+		x11-libs/libxcb
+	)
 "
 RDEPEND="${COMMON_DEPEND}
 	!${CATEGORY}/${PN}:5[-kf6compat(-)]
