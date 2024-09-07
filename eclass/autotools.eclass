@@ -13,11 +13,6 @@
 # Note: We require GNU m4, as does autoconf.  So feel free to use any features
 # from the GNU version of m4 without worrying about other variants (i.e. BSD).
 
-case ${EAPI} in
-	6|7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ ${_AUTOTOOLS_AUTO_DEPEND+set} == "set" ]] ; then
 	# See if we were included already, but someone changed the value
 	# of AUTOTOOLS_AUTO_DEPEND on us.  We could reload the entire
@@ -30,6 +25,15 @@ fi
 
 if [[ -z ${_AUTOTOOLS_ECLASS} ]] ; then
 _AUTOTOOLS_ECLASS=1
+
+case ${EAPI} in
+	6)
+		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
+		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
+		;;
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 [[ ${EAPI} == 6 ]] && inherit eqawarn
 
