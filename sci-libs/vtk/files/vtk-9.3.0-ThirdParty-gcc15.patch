@@ -1,0 +1,46 @@
+From d00b98bd8ef02f854f1068e8ab8fd2fb28244c3b Mon Sep 17 00:00:00 2001
+From: Ted Rodgers <ted.d.rodgers@gmail.com>
+Date: Sat, 10 Aug 2024 16:13:09 -0400
+Subject: [PATCH] include cstdint + correct case/words
+
+--- a/ThirdParty/vtkm/vtkvtkm/vtk-m/vtkm/filter/contour/worklet/mir/MIRTables.h
++++ b/ThirdParty/vtkm/vtkvtkm/vtk-m/vtkm/filter/contour/worklet/mir/MIRTables.h
+@@ -11402,7 +11402,7 @@ public:
+ 
+     VTKM_EXEC vtkm::UInt8 GetPoint(vtkm::Id pointIndex) const
+     {
+-      return this->CellFacePortal.Get(pointIndex);
++      return this->CellEdgesPortal.Get(pointIndex);
+     }
+ 
+   private:
+--- a/ThirdParty/vtkm/vtkvtkm/vtk-m/vtkm/filter/scalar_topology/worklet/contourtree_distributed/HierarchicalContourTree.h
++++ b/ThirdParty/vtkm/vtkvtkm/vtk-m/vtkm/filter/scalar_topology/worklet/contourtree_distributed/HierarchicalContourTree.h
+@@ -663,7 +663,7 @@ std::string HierarchicalContourTree<FieldType>::PrintDotSuperStructure(const cha
+   auto hyperarcsPortal = this->Hyperarcs.ReadPortal();
+   auto regularNodeGlobalIdsPortal = this->RegularNodeGlobalIds.ReadPortal();
+   auto whichIterationPortal = this->WhichIteration.ReadPortal();
+-  auto whichRoundPortal = this->whichRound.ReadPortal();
++  auto whichRoundPortal = this->WhichRound.ReadPortal();
+   auto superarcsPortal = this->Superarcs.ReadPortal();
+   auto superparentsPortal = this->Superparents.ReadPortal();
+   for (vtkm::Id supernode = 0; supernode < this->Supernodes.GetNumberOfValues(); supernode++)
+@@ -708,7 +708,7 @@ std::string HierarchicalContourTree<FieldType>::PrintDotSuperStructure(const cha
+     if (contourtree_augmented::NoSuchElement(superarcTo))
+     { // no superarc
+       // if it occurred on the final round, it's the global root and is shown as the NULL node
+-      if (whichRoundPortal.Get(superarcFrom) == this->NRounds)
++      if (whichRoundPortal.Get(superarcFrom) == this->NumRounds)
+       { // root node
+         outstream << "\tSN" << std::setw(1) << superarcFrom << " -> SA" << std::setw(1) << superarc
+                   << " [label=\"S" << std::setw(1) << superarc << "\",style=dotted]\n";
+--- a/ThirdParty/vtkm/vtkvtkm/vtk-m/vtkm/thirdparty/diy/vtkmdiy/include/vtkmdiy/thirdparty/chobo/small_vector.hpp
++++ b/ThirdParty/vtkm/vtkvtkm/vtk-m/vtkm/thirdparty/diy/vtkmdiy/include/vtkmdiy/thirdparty/chobo/small_vector.hpp
+@@ -136,6 +136,7 @@
+ //
+ #pragma once
+ 
++#include <cstdint>
+ #include <type_traits>
+ #include <cstddef>
+ #include <memory>
