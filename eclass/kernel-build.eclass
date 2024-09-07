@@ -302,6 +302,7 @@ kernel-build_src_compile() {
 		targets+=( ctf )
 	fi
 
+	local target
 	for target in "${targets[@]}" ; do
 		emake O="${WORKDIR}"/build "${MAKEARGS[@]}" "${target}"
 	done
@@ -327,6 +328,7 @@ kernel-build_src_test() {
 		strip_args="--strip-unneeded"
 	fi
 
+	local target
 	for target in "${targets[@]}" ; do
 		emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
 			INSTALL_MOD_PATH="${T}" INSTALL_MOD_STRIP="${strip_args}" \
@@ -375,6 +377,7 @@ kernel-build_src_install() {
 		)
 	fi
 
+	local target
 	for target in "${targets[@]}" ; do
 		emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
 			INSTALL_MOD_PATH="${ED}" INSTALL_MOD_STRIP="${strip_args}" \
