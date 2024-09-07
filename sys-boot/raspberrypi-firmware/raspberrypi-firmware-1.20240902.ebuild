@@ -20,7 +20,8 @@ HOMEPAGE="https://github.com/raspberrypi/firmware"
 
 LICENSE="GPL-2 raspberrypi-videocore-bin"
 SLOT="0"
-RESTRICT="binchecks strip"
+RESTRICT="strip"
+QA_PREBUILT="*"
 
 DOC_CONTENTS="Please configure your ram setup by editing /boot/config.txt"
 
