@@ -14,7 +14,7 @@ SRC_URI="https://downloads.sourceforge.net/project/c3p0/c3p0-src/c3p0-${PV}/${P}
 
 LICENSE="|| ( EPL-1.0 LGPL-2.1 )"
 SLOT="0"
-KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc64 x86 ~amd64-linux ~x86-linux"
 
 CP_DEPEND="
 	dev-java/log4j-12-api:2
