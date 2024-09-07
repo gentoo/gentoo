@@ -16,12 +16,15 @@ RESTRICT="test"
 
 # slot op: Uses Qt6::GuiPrivate for qtx11extras_p.h
 # slot op: Uses private/qwayland*_p.h headers
+# x11-base/xorg-proto: X11/Xlib.h included in public header kkeyserver.h,
+#   req. by KF6WindowSystemConfig.cmake; see also bug #939177
 RDEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[gui,wayland?]
 	>=dev-qt/qtdeclarative-${QTMIN}:6
 	wayland? ( >=dev-qt/qtwayland-${QTMIN}:6= )
 	X? (
 		>=dev-qt/qtbase-${QTMIN}:6=[gui]
+		x11-base/xorg-proto
 		x11-libs/libX11
 		x11-libs/libXfixes
 		x11-libs/libxcb
@@ -29,7 +32,6 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
-	X? ( x11-base/xorg-proto )
 	test? ( >=dev-qt/qtbase-${QTMIN}:6[widgets] )
 	wayland? (
 		dev-libs/plasma-wayland-protocols
