@@ -9,7 +9,7 @@ inherit autotools edo flag-o-matic multilib multilib-build optfeature
 inherit prefix python-any-r1 toolchain-funcs wrapper
 
 WINE_GECKO=2.47.4
-WINE_MONO=9.2.0
+WINE_MONO=9.3.0
 WINE_P=wine-$(ver_cut 1-2)
 
 if [[ ${PV} == *9999 ]]; then
@@ -74,6 +74,7 @@ WINE_DLOPEN_DEPEND="
 	fontconfig? ( media-libs/fontconfig[${MULTILIB_USEDEP}] )
 	kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )
 	netapi? ( net-fs/samba[${MULTILIB_USEDEP}] )
+	odbc? ( dev-db/unixODBC[${MULTILIB_USEDEP}] )
 	sdl? ( media-libs/libsdl2[haptic,joystick,${MULTILIB_USEDEP}] )
 	ssl? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
 	truetype? ( media-libs/freetype[${MULTILIB_USEDEP}] )
@@ -95,7 +96,6 @@ WINE_COMMON_DEPEND="
 		media-libs/gst-plugins-base:1.0[${MULTILIB_USEDEP}]
 		media-libs/gstreamer:1.0[${MULTILIB_USEDEP}]
 	)
-	odbc? ( dev-db/unixODBC[${MULTILIB_USEDEP}] )
 	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
 	pcap? ( net-libs/libpcap[${MULTILIB_USEDEP}] )
 	pulseaudio? ( media-libs/libpulse[${MULTILIB_USEDEP}] )
@@ -297,7 +297,6 @@ src_configure() {
 		$(use_with mingw)
 		$(use_with netapi)
 		$(use_with nls gettext)
-		$(use_with odbc)
 		$(use_with opencl)
 		$(use_with opengl)
 		$(use_with osmesa)
@@ -318,6 +317,7 @@ src_configure() {
 		$(use_with wayland)
 		$(use_with xcomposite)
 		$(use_with xinerama)
+		$(usev !odbc ac_cv_lib_soname_odbc=)
 	)
 
 	filter-lto # build failure
