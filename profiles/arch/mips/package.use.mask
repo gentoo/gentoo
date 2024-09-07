@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-09-07)
+# gui-libs/gtk:4 is not keyworded here
+app-crypt/gcr:4 gtk
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-09-06)
 # media-libs/vidstab is not keyworded
 media-video/ffmpeg vidstab
