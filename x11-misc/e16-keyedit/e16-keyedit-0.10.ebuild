@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~x86"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="x11-libs/gtk+:3"
-RDEPEND=${DEPEND}
+RDEPEND="${DEPEND}"
 
 src_configure() {
 	econf --with-gtk=gtk3
