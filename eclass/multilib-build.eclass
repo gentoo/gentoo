@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Gentoo Authors
+# Copyright 2013-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: multilib-build.eclass
@@ -17,13 +17,17 @@
 # dependencies shall use the USE dependency string in ${MULTILIB_USEDEP}
 # to properly request multilib enabled.
 
-case ${EAPI} in
-	6|7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_MULTILIB_BUILD_ECLASS} ]]; then
 _MULTILIB_BUILD_ECLASS=1
+
+case ${EAPI} in
+	6)
+		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
+		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
+		;;
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit multibuild multilib
 
