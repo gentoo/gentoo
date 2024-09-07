@@ -13,13 +13,17 @@
 # This eclass should be inherited for pure Java packages, or by packages which
 # need to use Java.
 
-case ${EAPI} in
-	6|7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_JAVA_PKG_2_ECLASS} ]] ; then
 _JAVA_PKG_2_ECLASS=1
+
+case ${EAPI} in
+	6)
+		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
+		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
+		;;
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit java-utils-2
 
