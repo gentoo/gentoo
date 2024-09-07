@@ -15,7 +15,7 @@ SRC_URI="https://openmesh.org/media/Releases/${MY_PV/-RC/RC}/${MY_PN}-${MY_PV}.t
 
 LICENSE="BSD"
 SLOT="4"
-KEYWORDS="~amd64 ~ia64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="qt5 static-libs test"
 RESTRICT="!test? ( test )"
 

@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.com/python-mode-devs/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 arm ~hppa ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 arm ~hppa ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 ELISP_REMOVE="python-mode-pkg.el"
 SITEFILE="50${PN}-gentoo.el"

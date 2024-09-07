@@ -11,7 +11,7 @@ SRC_URI="https://github.com/fumiyas/smbldap-tools/archive/refs/tags/v${PV}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="
 	dev-perl/perl-ldap

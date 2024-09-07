@@ -11,7 +11,7 @@ LICENSE="LGPL-2+"
 SLOT="0/18"
 IUSE="archive crypt gtk-doc +introspection test +uchardet"
 RESTRICT="!test? ( test )"
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~loong ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.56:2

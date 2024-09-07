@@ -14,7 +14,7 @@ S="${WORKDIR}/usr/X11R6/lib/X11/fonts/misc/sgi"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~ia64 ~loong ~ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~loong ~ppc ppc64 ~s390 sparc x86"
 
 FONT_S="${S}"
 FONT_SUFFIX="pcf.gz"

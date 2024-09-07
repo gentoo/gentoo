@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Module name tools and transformations"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="~alpha amd64 ~arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 
 RDEPEND=""
 BDEPEND="

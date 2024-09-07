@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl Module that parses encoding map XML files"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ppc sparc x86"
 
 RDEPEND="
 	>=dev-perl/XML-Parser-2.180.0

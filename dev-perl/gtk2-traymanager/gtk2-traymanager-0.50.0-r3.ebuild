@@ -14,7 +14,7 @@ HOMEPAGE="https://gtk2-perl.sf.net/ https://metacpan.org/release/Gtk2-TrayManage
 
 SLOT="0"
 LICENSE="LGPL-2"
-KEYWORDS="amd64 ~ia64 x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	x11-libs/gtk+:2

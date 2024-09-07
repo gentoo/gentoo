@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="The PBKDF2 password hashing algorithm"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc64 ~riscv sparc"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc64 ~riscv sparc"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

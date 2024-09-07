@@ -21,7 +21,7 @@ S="${WORKDIR}"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ppc ppc64 ~riscv sparc x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86 ~x64-macos"
 IUSE="l10n_ja l10n_ko +l10n_zh-CN l10n_zh-HK l10n_zh-TW"
 REQUIRED_USE="|| ( l10n_ja l10n_ko l10n_zh-CN l10n_zh-HK l10n_zh-TW )"
 RESTRICT="binchecks strip"

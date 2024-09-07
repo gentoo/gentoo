@@ -11,7 +11,7 @@ DESCRIPTION="An array which is kept sorted"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ~ppc sparc x86"
+KEYWORDS="amd64 ~ppc sparc x86"
 
 src_test() {
 	perl_rm_files t/pod.t t/pod-coverage.t

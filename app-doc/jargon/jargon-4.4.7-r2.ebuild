@@ -9,7 +9,7 @@ SRC_URI="http://www.catb.org/jargon/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 hppa ~mips ppc ppc64 ~riscv sparc x86"
 
 src_prepare() {
 	default

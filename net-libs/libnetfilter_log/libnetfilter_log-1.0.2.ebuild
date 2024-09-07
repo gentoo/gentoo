@@ -12,7 +12,7 @@ SRC_URI="https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ppc ~riscv ~sparc x86"
+KEYWORDS="amd64 ppc ~riscv ~sparc x86"
 IUSE="doc"
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/netfilter.org.asc
 

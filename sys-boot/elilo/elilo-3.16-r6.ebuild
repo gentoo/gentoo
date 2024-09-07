@@ -13,7 +13,7 @@ S="${WORKDIR}/${P}-source"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~x86"
+KEYWORDS="~amd64 ~x86"
 
 # gnu-efi contains only static libs, so there's no run-time dep on it
 DEPEND=">=sys-boot/gnu-efi-3.0g

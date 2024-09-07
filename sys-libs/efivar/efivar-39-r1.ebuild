@@ -11,7 +11,7 @@ SRC_URI="https://github.com/rhboot/efivar/archive/refs/tags/${PV}.tar.gz -> ${P}
 
 LICENSE="GPL-2"
 SLOT="0/1"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_PN}_${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~ia64 ~loong ppc ~ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="amd64 arm ~loong ppc ~ppc64 ~riscv ~s390 sparc x86"
 
 DOCS=( README ChangeLog )
 

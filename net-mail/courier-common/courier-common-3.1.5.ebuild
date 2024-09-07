@@ -12,7 +12,7 @@ SRC_URI="https://downloads.sourceforge.net/courier/${MYP}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ~ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ~ppc ppc64 ~s390 sparc x86"
 IUSE="berkdb +gdbm"
 
 RDEPEND="!mail-mta/courier

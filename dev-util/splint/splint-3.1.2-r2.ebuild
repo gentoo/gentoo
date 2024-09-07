@@ -11,7 +11,7 @@ SRC_URI="https://splint.org/downloads/${P}.src.tgz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv sparc x86 ~ppc-macos ~x64-macos"
 
 DEPEND="sys-devel/flex"
 

@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Copy file, file Copy file[s] | dir[s], dir"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~mips ppc ppc64 sparc x86"
 
 RDEPEND="
 	virtual/perl-File-Spec

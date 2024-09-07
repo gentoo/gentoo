@@ -12,7 +12,7 @@ S="${WORKDIR}/KacstArabicFonts-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~loong ~ppc ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~loong ~ppc ~riscv ~s390 ~sparc x86"
 IUSE=""
 
 FONT_SUFFIX="ttf"

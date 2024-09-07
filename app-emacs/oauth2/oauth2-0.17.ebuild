@@ -15,7 +15,7 @@ S="${WORKDIR}/elpa-${COMMIT:0:7}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 
 DOCS=( NEWS )
 SITEFILE="50${PN}-gentoo.el"

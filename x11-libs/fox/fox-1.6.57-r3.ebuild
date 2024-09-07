@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.fox-toolkit.org/pub/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="1.6"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+bzip2 +jpeg +opengl +png tiff +truetype +zlib debug doc profile"
 
 RDEPEND="

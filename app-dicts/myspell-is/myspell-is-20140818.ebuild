@@ -21,4 +21,4 @@ SRC_URI="https://extensions.libreoffice.org/assets/downloads/z/hunspell-is-${PV:
 
 LICENSE="CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86"

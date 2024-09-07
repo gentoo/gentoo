@@ -14,7 +14,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	SRC_URI="https://github.com/crash-utility/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 		mirror://gnu/gdb/gdb-${GDB_VERSION}.tar.xz"
-	KEYWORDS="-* ~alpha ~amd64 ~arm ~ia64 ~ppc64 ~s390 ~x86"
+	KEYWORDS="-* ~alpha ~amd64 ~arm ~ppc64 ~s390 ~x86"
 fi
 
 DESCRIPTION="Red Hat crash utility; used for analyzing kernel core dumps"

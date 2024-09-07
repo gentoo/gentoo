@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Companion module for Readonly.pm, to speed up read-only scalar variables"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ~ppc64 ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ppc ~ppc64 ~s390 ~sparc x86"
 
 RDEPEND="
 	dev-perl/Readonly

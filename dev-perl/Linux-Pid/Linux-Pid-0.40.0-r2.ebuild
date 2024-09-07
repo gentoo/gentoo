@@ -10,4 +10,4 @@ inherit perl-module
 DESCRIPTION="Interface to Linux getpp?id functions"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 ~riscv sparc x86"

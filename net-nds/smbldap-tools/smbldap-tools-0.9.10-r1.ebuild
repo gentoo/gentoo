@@ -9,7 +9,7 @@ SRC_URI="http://download.gna.org/smbldap-tools/sources/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~ppc ppc64 sparc x86"
 
 RDEPEND="
 	dev-perl/perl-ldap

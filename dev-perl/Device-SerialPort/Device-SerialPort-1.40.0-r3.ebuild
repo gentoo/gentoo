@@ -12,7 +12,7 @@ DESCRIPTION="Serial port Perl Module"
 # https://bugs.gentoo.org/734728
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ppc sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ppc sparc x86"
 
 #From the module:
 # If you run 'make test', you must make sure that nothing is plugged

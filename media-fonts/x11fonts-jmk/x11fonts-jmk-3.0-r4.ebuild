@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~ia64 ~loong ppc ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~loong ppc ~s390 sparc x86"
 
 BDEPEND="
 	sys-devel/gcc

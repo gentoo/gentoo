@@ -11,7 +11,7 @@ SRC_URI="https://gedit-technology.net/tarballs/libgedit-gtksourceview/${P}.tar.x
 
 LICENSE="LGPL-2.1+"
 SLOT="300"
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 
 IUSE="gtk-doc"
 

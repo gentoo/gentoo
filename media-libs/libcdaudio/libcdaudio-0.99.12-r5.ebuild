@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/libcdaudio/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 sparc x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.99-CAN-2005-0706.patch

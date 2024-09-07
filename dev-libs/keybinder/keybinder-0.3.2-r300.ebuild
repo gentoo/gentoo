@@ -11,7 +11,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv x86"
 IUSE="+introspection"
 
 RDEPEND="x11-libs/gtk+:3[X]

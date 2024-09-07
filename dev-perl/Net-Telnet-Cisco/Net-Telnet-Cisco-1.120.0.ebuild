@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Automate telnet sessions w/ routers&switches"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ~ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~mips ~ppc ppc64 sparc x86"
 
 RDEPEND="
 	>=dev-perl/Net-Telnet-3.20.0

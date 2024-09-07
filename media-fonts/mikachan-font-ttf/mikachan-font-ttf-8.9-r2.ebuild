@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge.jp/mikachan/5513/${MY_PN}-${PV}.tar.bz2
 
 LICENSE="free-noncomm"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~loong ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~loong ppc ppc64 ~s390 sparc x86"
 IUSE=""
 # Only installs fonts
 RESTRICT="strip binchecks"
