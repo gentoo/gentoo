@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: out-of-source-utils.eclass
@@ -12,13 +12,17 @@
 # This eclass provides a run_in_build_dir() helper that can be used
 # to execute specified command inside BUILD_DIR.
 
-case ${EAPI} in
-	6|7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ ! ${_OUT_OF_SOURCE_UTILS_ECLASS} ]]; then
 _OUT_OF_SOURCE_UTILS_ECLASS=1
+
+case ${EAPI} in
+	6)
+		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
+		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
+		;;
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @FUNCTION: run_in_build_dir
 # @USAGE: <argv>...
