@@ -1,0 +1,19 @@
+
+Fix compilation with gcc-15
+
+Bug: https://bugs.gentoo.org/937628
+Bug: https://github.com/PowerDNS/pdns/issues/14549
+
+Signed-off-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+
+diff -rup dnsdist-1.9.6/ext/json11/json11.cpp dnsdist-1.9.6-gcc15/ext/json11/json11.cpp
+--- dnsdist-1.9.6/ext/json11/json11.cpp	2024-07-15 11:46:15.000000000 +0200
++++ dnsdist-1.9.6-gcc15/ext/json11/json11.cpp	2024-08-09 18:03:51.090140981 +0200
+@@ -22,6 +22,7 @@
+ #include "json11.hpp"
+ #include <cassert>
+ #include <cmath>
++#include <cstdint>
+ #include <cstdlib>
+ #include <cstdio>
+ #include <limits>
