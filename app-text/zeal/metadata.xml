@@ -2,6 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <!--maintainer-needed-->
+  <use>
+    <flag name="X">Enable global shortcut support on X11</flag>
+  </use>
   <upstream>
     <remote-id type="github">zealdocs/zeal</remote-id>
   </upstream>
