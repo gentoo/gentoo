@@ -187,19 +187,11 @@ JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 # You probably shouldn't touch this variable except local testing.
 JAVA_PKG_COMPILER_DIR=${JAVA_PKG_COMPILER_DIR:="/usr/share/java-config-2/compiler"}
 
-# @VARIABLE: JAVA_PKG_COMPILERS_CONF
-# @INTERNAL
-# @DESCRIPTION:
-# Path to file containing information about which compiler to use.
-# Can be overloaded, but it should be overloaded only for local testing.
-JAVA_PKG_COMPILERS_CONF=${JAVA_PKG_COMPILERS_CONF:="/etc/java-config-2/build/compilers.conf"}
-
 # @ECLASS_VARIABLE: JAVA_PKG_FORCE_COMPILER
 # @INTERNAL
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Explicitly set a list of compilers to choose from. This is normally read from
-# JAVA_PKG_COMPILERS_CONF.
+# Used to force the use of a particular compiler. Should be used in src_compile.
 #
 # Useful for local testing.
 #
@@ -2329,23 +2321,21 @@ java-pkg_init() {
 # @INTERNAL
 # @DESCRIPTION:
 # This function attempts to figure out what compiler should be used. It does
-# this by reading the file at JAVA_PKG_COMPILERS_CONF, and checking the
-# COMPILERS variable defined there.
-# This can be overridden by a list in JAVA_PKG_FORCE_COMPILER
+# this by reading a list in JAVA_PKG_FORCE_COMPILER
 #
 # It will go through the list of compilers, and verify that it supports the
 # target and source that are needed. If it is not suitable, then the next
-# compiler is checked. When JAVA_PKG_FORCE_COMPILER is defined, this checking
-# isn't done.
+# compiler is checked.
+#
+# When JAVA_PKG_FORCE_COMPILER is defined, this checking isn't done.
 #
 # Once the which compiler to use has been figured out, it is set to
 # GENTOO_COMPILER.
 #
 # If you hadn't guessed, JAVA_PKG_FORCE_COMPILER is for testing only.
 #
-# If the user doesn't defined anything in JAVA_PKG_COMPILERS_CONF, or no
-# suitable compiler was found there, then the default is to use javac provided
-# by the current VM.
+# If no suitable compiler was found there, then the default is to use javac
+# provided by the current VM.
 # @RETURN: name of the compiler to use
 java-pkg_init-compiler_() {
 	debug-print-function ${FUNCNAME} $*
@@ -2356,13 +2346,11 @@ java-pkg_init-compiler_() {
 	fi
 
 	local compilers;
-	if [[ -z ${JAVA_PKG_FORCE_COMPILER} ]]; then
-		compilers="$(source ${JAVA_PKG_COMPILERS_CONF} 1>/dev/null 2>&1; echo	${COMPILERS})"
-	else
+	if [[ ${JAVA_PKG_FORCE_COMPILER} ]]; then
 		compilers=${JAVA_PKG_FORCE_COMPILER}
 	fi
 
-	debug-print "Read \"${compilers}\" from ${JAVA_PKG_COMPILERS_CONF}"
+	debug-print "Read \"${compilers}\" from ${JAVA_PKG_FORCE_COMPILER}"
 
 	# Figure out if we should announce what compiler we're using
 	local compiler
