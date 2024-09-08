@@ -33,6 +33,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-09-09)
+# Depends on broken dev-java/rxtx, bugs #761103, #867409, #874444, #898170
+# #927898.
+# Removal on 2024-10-31.
+sci-geosciences/bt747
+dev-java/rxtx
+dev-java/swingx
+dev-java/swingx-beaninfo
+dev-java/swingx-ws
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-09-07)
 # These packages are EOL in Plasma 6.
 # Removal on 2024-10-07.
