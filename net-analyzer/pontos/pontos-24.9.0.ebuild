@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..12} pypy3 )
 DISTUTILS_USE_PEP517=poetry
 
 inherit distutils-r1
@@ -17,9 +17,9 @@ HOMEPAGE="
 
 SRC_URI="https://github.com/greenbone/pontos/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-3+"
-KEYWORDS="amd64 ~x86"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	>=dev-python/colorful-0.5.4[${PYTHON_USEDEP}]
@@ -30,6 +30,7 @@ RDEPEND="
 	>=dev-python/python-dateutil-2.8.2[${PYTHON_USEDEP}]
 	>=dev-python/semver-2.13[${PYTHON_USEDEP}]
 	>=dev-python/lxml-4.9.0[${PYTHON_USEDEP}]
+	>=dev-python/shtab-1.7.0[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
