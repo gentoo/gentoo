@@ -14,7 +14,6 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
-IUSE=""
 
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}

@@ -12,7 +12,6 @@ SRC_URI="https://downloads.sourceforge.net/hugin/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm64 x86"
-IUSE=""
 
 DEPEND="
 	dev-libs/libxml2
