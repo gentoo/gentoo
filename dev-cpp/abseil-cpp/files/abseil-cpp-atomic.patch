@@ -1,0 +1,18 @@
+From beee02af5b83cfe72159e2579fa3c6e0fb8f93db Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Sun, 8 Sep 2024 17:09:17 +0200
+Subject: [PATCH] link to atomic on ppc
+
+Bug: https://bugs.gentoo.org/918981
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+--- a/absl/base/CMakeLists.txt
++++ b/absl/base/CMakeLists.txt
+@@ -131,6 +131,7 @@ absl_cc_library(
+     absl::base_internal
+     absl::core_headers
+     absl::errno_saver
++    atomic
+ )
+ 
+ absl_cc_library(
