@@ -8,7 +8,7 @@ inherit autotools
 MY_COMMIT=73b6fd183872096f20e6d1007429546a317a7cb1
 
 DESCRIPTION="Support library to communicate with Apple iPhone/iPod Touch devices"
-HOMEPAGE="https://www.libimobiledevice.org/"
+HOMEPAGE="https://libimobiledevice.org/"
 SRC_URI="https://github.com/libimobiledevice/libimobiledevice/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/${PN}-${MY_COMMIT}
 
