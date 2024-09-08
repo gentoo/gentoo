@@ -6,6 +6,7 @@
 dev-lang/spidermonkey:102
 =sys-auth/polkit-123
 =dev-lang/rust-1.71.1
+=virtual/rust-1.71.1-r2
 
 # matoro <matoro_gentoo@matoro.tk> (2023-12-15)
 # Broken on BE and no way to test on LE, mask for now
