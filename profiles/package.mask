@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2024-06-09)
+# These packages are no more needed. Use dev-ml/dune-private-libs
+# that include these
+# remove on 2024-10-08. Bug #939339
+dev-ml/stdune
+dev-ml/ordering
+dev-ml/dyn
+
 # Michał Górny <mgorny@gentoo.org> (2024-09-08)
 # Does not build anymore.  No upstream activity since 2021.
 # Removal on 2024-10-08.  Bug #932532.
