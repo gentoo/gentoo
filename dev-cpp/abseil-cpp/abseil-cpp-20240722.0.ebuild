@@ -69,3 +69,13 @@ multilib_src_configure() {
 
 	cmake_src_configure
 }
+
+multilib_src_test() {
+	if ! use amd64; then
+		CMAKE_SKIP_TESTS=(
+			absl_symbolize_test
+		)
+	fi
+
+	cmake_src_test
+}
