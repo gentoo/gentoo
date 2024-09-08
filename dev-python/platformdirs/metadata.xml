@@ -6,7 +6,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">platformdirs/platformdirs</remote-id>
+		<remote-id type="github">tox-dev/platformdirs</remote-id>
 		<remote-id type="pypi">platformdirs</remote-id>
 	</upstream>
 </pkgmetadata>
