@@ -9,13 +9,12 @@
 # @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Base eclass for Java packages
 # @DESCRIPTION:
-# This eclass provides functionality which is used by java-pkg-2.eclass,
-# java-pkg-opt-2.eclass and java-ant-2 eclass, as well as from ebuilds.
+# This eclass provides functionality which is used by java-pkg-2.eclass and
+# java-pkg-opt-2.eclass as well as from ebuilds.
 #
 # This eclass should not be inherited this directly from an ebuild. Instead,
 # you should inherit java-pkg-2 for Java packages or java-pkg-opt-2 for packages
-# that have optional Java support. In addition you can inherit java-ant-2 for
-# Ant-based packages.
+# that have optional Java support.
 
 if [[ -z ${_JAVA_UTILS_2_ECLASS} ]] ; then
 _JAVA_UTILS_2_ECLASS=1
@@ -101,7 +100,7 @@ JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Specify a non-standard Java source version for compilation (via javac -source
-# parameter or Ant equivalent via build.xml rewriting done by java-ant-2 eclass).
+# parameter).
 # Normally this is determined from the jdk version specified in DEPEND.
 # See java-pkg_get-source function below.
 #
