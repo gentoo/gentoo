@@ -14,5 +14,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">mlton</remote-id>
+		<remote-id type="github">MLton/mlton</remote-id>
 	</upstream>
 </pkgmetadata>
