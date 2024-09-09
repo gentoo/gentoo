@@ -42,7 +42,12 @@ check_and_set_objcopy() {
 		# llvm-objcopy does not support EFI target, try to use binutils objcopy or fail
 		tc-export OBJCOPY
 		OBJCOPY="${OBJCOPY/llvm-/}"
-		LC_ALL=C "${OBJCOPY}" --help | grep -q '\<pei-' || die "${OBJCOPY} (objcopy) does not support EFI target"
+		if ! use arm && ! use riscv; then
+			# bug #939338
+			# objcopy does not understand PE/COFF on these arches: arm32, riscv64 and mips64le
+			# gnu-efi containes a workaround
+			LC_ALL=C "${OBJCOPY}" --help | grep -q '\<pei-' || die "${OBJCOPY} (objcopy) does not support EFI target"
+		fi
 	fi
 }
 
