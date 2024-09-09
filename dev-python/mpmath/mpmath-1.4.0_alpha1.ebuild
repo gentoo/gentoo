@@ -22,16 +22,18 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
-		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pexpect[${PYTHON_USEDEP}]
 		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
 			dev-python/gmpy[${PYTHON_USEDEP}]
 		' 'python3*')
-		$(python_gen_cond_dep '
-			dev-python/ipython[${PYTHON_USEDEP}]
-		' 3.{10..12})
+		!mips? (
+			dev-python/matplotlib[${PYTHON_USEDEP}]
+			$(python_gen_cond_dep '
+				dev-python/ipython[${PYTHON_USEDEP}]
+			' 3.{10..12})
+		)
 	)
 "
 
