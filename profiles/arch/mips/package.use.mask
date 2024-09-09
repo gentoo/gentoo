@@ -55,6 +55,7 @@ dev-build/cmake gui
 dev-db/mysql cjk
 dev-db/percona-server cjk
 dev-libs/libisoburn frontend-optional
+dev-python/uvicorn test-rust
 dev-util/glade gjs
 dev-util/pkgcheck emacs
 dev-util/ragel doc
