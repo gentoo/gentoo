@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/minad/wl-pprint-annotated#readme"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	>=dev-haskell/text-0.11:=[profile?] <dev-haskell/text-2.1

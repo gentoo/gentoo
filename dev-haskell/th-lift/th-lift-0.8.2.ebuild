@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/RyanGlScott/th-lift"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND=">=dev-haskell/th-abstraction-0.2.3:=[profile?] <dev-haskell/th-abstraction-0.5:=[profile?]
 	>=dev-lang/ghc-7.4.1:=

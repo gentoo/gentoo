@@ -16,7 +16,7 @@ HOMEPAGE="https://hackage.haskell.org/package/lukko"
 
 LICENSE="GPL-2 BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND=">=dev-lang/ghc-8.8.1:=
 "

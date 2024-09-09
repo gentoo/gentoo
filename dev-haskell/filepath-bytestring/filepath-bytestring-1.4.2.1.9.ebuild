@@ -13,7 +13,7 @@ HOMEPAGE="https://hackage.haskell.org/package/filepath-bytestring"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 CABAL_CHDEPS=(
 	'filepath >= 1.4.2 && <= 1.4.2.1' 'filepath >= 1.4.2'

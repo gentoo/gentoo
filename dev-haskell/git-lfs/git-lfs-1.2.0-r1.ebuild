@@ -13,7 +13,7 @@ HOMEPAGE="https://hackage.haskell.org/package/git-lfs"
 
 LICENSE="AGPL-3"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 CABAL_CHDEPS=(
 	'aeson >= 1.3 && < 2.1' 'aeson >= 1.3'

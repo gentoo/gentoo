@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/yesodweb/Shelly.hs"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="examples lifted"
 
 CABAL_CHDEPS=(

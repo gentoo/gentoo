@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/maoe/lifted-async"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 CABAL_CHDEPS=(
 	'base >= 4.5 && < 4.16' 'base >= 4.5'
