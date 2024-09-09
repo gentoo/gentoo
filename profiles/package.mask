@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Eli Schwartz <eschwartz@gentoo.org> (2024-09-09)
+# Fails to build with modern C. Unmaintained for 20 years.
+# Removal on 2024-10-09.  Bug #877105, #927389.
+sci-chemistry/mopac7
+
 # Sam James <sam@gentoo.org> (2024-09-10)
 # Breaks both C++ stdlib impls with a casing issue:
 # * libstdc++ (https://gcc.gnu.org/PR116657)
