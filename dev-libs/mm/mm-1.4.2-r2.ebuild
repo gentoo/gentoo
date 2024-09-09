@@ -4,8 +4,8 @@
 EAPI=8
 
 DESCRIPTION="Shared Memory Abstraction Library"
-HOMEPAGE="http://www.ossp.org/pkg/lib/mm/"
-SRC_URI="ftp://ftp.ossp.org/pkg/lib/mm/${P}.tar.gz"
+HOMEPAGE="https://sr.ht/~nabijaczleweli/ossp"
+SRC_URI="https://lfs.nabijaczleweli.xyz/0022-OSSP.org-mirror/ftp.ossp.org/ossp-ftp/pkg/lib/mm/${P}.tar.gz"
 
 LICENSE="mm"
 SLOT="1.2"
