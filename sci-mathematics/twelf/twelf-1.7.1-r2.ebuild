@@ -9,7 +9,7 @@ MY_PN="${PN}-src"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Implementation of the logical framework LF"
-HOMEPAGE="http://twelf.org/"
+HOMEPAGE="https://twelf.org/"
 SRC_URI="https://github.com/standardml/twelf/releases/download/v${PV}/${MY_P}.tar.gz"
 
 SLOT="0/${PV}"
