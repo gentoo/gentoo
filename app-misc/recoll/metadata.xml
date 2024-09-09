@@ -14,7 +14,7 @@
 			<email>jfd@recoll.org</email>
 			<name>Jean-Francois Dockes</name>
 		</maintainer>
-		<bugs-to>https://bitbucket.org/medoc/recoll/issues</bugs-to>
+		<bugs-to>https://framagit.org/medoc92/recoll/-/issues</bugs-to>
 	</upstream>
 	<use>
 		<flag name="camelcase">Enable indexing for camelCase sentences and words</flag>
