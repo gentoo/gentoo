@@ -17,7 +17,7 @@ S=${WORKDIR}/admin/${P}/src
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ppc ppc64 ~s390 sparc x86"
-IUSE="static"
+IUSE="split-usr static"
 
 RDEPEND="sys-apps/openrc"
 
@@ -50,11 +50,14 @@ src_configure() {
 }
 
 src_install() {
-	into /
 	dobin $(<../package/commands)
 	dodir /sbin
-	mv "${ED}"/bin/{runit-init,runit,utmpset} "${ED}"/sbin/ || die "dosbin"
-	dosym ../etc/runit/2 /sbin/runsvdir-start
+	mv "${ED}"/usr/bin/{runit-init,runit,utmpset} "${ED}"/sbin/ || die "dosbin"
+	if use split-usr ; then
+		dosym ../etc/runit/2 /sbin/runsvdir-start
+	else
+		dosym ../../etc/runit/2 /sbin/runsvdir-start
+	fi
 
 	DOCS=( ../package/{CHANGES,README,THANKS,TODO} )
 	HTML_DOCS=( ../doc/*.html )
