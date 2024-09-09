@@ -2255,6 +2255,7 @@ java-pkg_force-compiler() {
 }
 
 # @FUNCTION: use_doc
+# @DEPRECATED: none
 # @DESCRIPTION:
 #
 # Helper function for getting ant to build javadocs. If the user has USE=doc,
