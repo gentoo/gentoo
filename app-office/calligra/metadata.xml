@@ -12,6 +12,7 @@
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 		<remote-id type="cpe">cpe:/a:calligra:calligra</remote-id>
+		<remote-id type="kde-invent">office/calligra</remote-id>
 	</upstream>
 	<use>
 		<flag name="charts">Build chartshape plugin for creating business charts with <pkg>dev-libs/kdiagram</pkg></flag>
