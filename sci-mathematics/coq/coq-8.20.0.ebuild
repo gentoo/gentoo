@@ -6,7 +6,7 @@ EAPI=8
 inherit check-reqs desktop dune edo
 
 DESCRIPTION="Proof assistant written in O'Caml"
-HOMEPAGE="http://coq.inria.fr/
+HOMEPAGE="https://coq.inria.fr/
 	https://github.com/coq/coq/"
 
 if [[ "${PV}" == *9999* ]] ; then
@@ -14,7 +14,7 @@ if [[ "${PV}" == *9999* ]] ; then
 
 	EGIT_REPO_URI="https://github.com/coq/coq.git"
 else
-	SRC_URI="https://github.com/coq/coq/archive/V${MY_PV}.tar.gz
+	SRC_URI="https://github.com/coq/coq/archive/V${PV}.tar.gz
 		-> ${P}.tar.gz"
 
 	KEYWORDS="~amd64 ~x86"
