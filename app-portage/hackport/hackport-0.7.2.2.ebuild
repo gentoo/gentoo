@@ -14,7 +14,7 @@ HOMEPAGE="https://hackage.haskell.org/package/hackport"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 GHC_BOOTSTRAP_PACKAGES=(
 	cabal-doctest
