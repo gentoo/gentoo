@@ -33,7 +33,6 @@ BDEPEND="hppa? ( sys-devel/binutils-hppa64 )"
 
 src_prepare() {
 	toolchain_src_prepare
-	eapply "${FILESDIR}"/gcc-12.3-ccache-ICE.patch
 }
 
 pkg_postinst() {
