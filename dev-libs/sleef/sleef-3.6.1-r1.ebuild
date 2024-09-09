@@ -22,9 +22,9 @@ BDEPEND="
 
 src_configure() {
 	local mycmakeargs=(
-		-DDISABLE_FFTW=ON
-		-DBUILD_QUAD=ON
-		-DBUILD_TESTS=$(usex test ON OFF)
+		-DSLEEF_DISABLE_FFTW=ON
+		-DSLEEF_BUILD_QUAD=ON
+		-DSLEEF_BUILD_TESTS=$(usex test ON OFF)
 	)
 
 	cmake_src_configure
