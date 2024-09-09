@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-inherit elisp-common
+inherit elisp-common flag-o-matic
 
 MY_PN="${PN}-src"
 MY_P="${MY_PN}-${PV}"
@@ -59,6 +59,12 @@ src_prepare() {
 }
 
 src_compile() {
+	# relocation R_X86_64_32 against hidden symbol `globalCPointer' can not be used when making a PIE object
+	# https://bugs.gentoo.org/863266
+	#
+	# The software is unmaintained and disables bug reports.
+	filter-lto
+
 	emake mlton CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS} -fno-PIE"
 	if use emacs ; then
 		pushd "${S}/emacs" || die "Could change directory to emacs"
