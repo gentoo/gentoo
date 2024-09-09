@@ -20,6 +20,8 @@ BDEPEND="
 	test? ( >=dev-libs/mpfr-4.2 )
 "
 
+PATCHES=( "${FILESDIR}"/${P}-musl.patch )
+
 src_configure() {
 	local mycmakeargs=(
 		-DSLEEF_DISABLE_FFTW=ON

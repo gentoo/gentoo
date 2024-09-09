@@ -1,0 +1,11 @@
+--- a/src/libm-tester/tester2simdsp.c	2024-09-09 18:40:10.340986358 +0200
++++ b/src/libm-tester/tester2simdsp.c	2024-09-09 18:40:43.240620974 +0200
+@@ -892,7 +892,7 @@
+       double u0 = countULPsp(t = vget(xacoshf(vd), e), frx);
+       
+       if ((fabs(d) < sqrt(FLT_MAX) && u0 > 1.0001) ||
+-	  (d >=  sqrt(FLT_MAX) && !(u0 <= 1.0001 || (isinff(t) && t > 0))) ||
++	  (d >=  sqrt(FLT_MAX) && !(u0 <= 1.0001 || (isinf(t) && t > 0))) ||
+ 	  (d <= -sqrt(FLT_MAX) && !isnan(t))) {
+ 	printf(ISANAME " acoshf arg=%.20g ulp=%.20g\n", d, u0);
+ 	fflush(stdout); ecnt++;
