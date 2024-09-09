@@ -5,12 +5,6 @@ Subject: [PATCH] Fix invalid Javadoc syntax that leads to errors
 
 Bug: https://bugs.gentoo.org/642030
 Signed-off-by: Yuan Liao <liaoyuan@gmail.com>
----
- src/gnu/io/RXTXPort.java | 50 ++++++++++++++++++++++------------------
- 1 file changed, 27 insertions(+), 23 deletions(-)
-
-diff --git a/src/gnu/io/RXTXPort.java b/src/gnu/io/RXTXPort.java
-index 622a6a8..77a23ea 100644
 --- a/src/gnu/io/RXTXPort.java
 +++ b/src/gnu/io/RXTXPort.java
 @@ -1732,7 +1732,7 @@ Documentation is at http://java.sun.com/products/jdk/1.2/docs/api/java/io/InputS

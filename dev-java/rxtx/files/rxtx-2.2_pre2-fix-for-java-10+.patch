@@ -16,10 +16,6 @@ https://salsa.debian.org/java-team/rxtx/-/blob/6500bd55f265de7d2dfef68dc1df5d8b9
 
 Bug: https://bugs.gentoo.org/831394
 
----
-Description: Fixes the build failure with Java 10
-Author: Emmanuel Bourg <ebourg@apache.org>
-Forwarded: no
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -111,11 +111,6 @@
