@@ -110,6 +110,8 @@ src_configure() {
 	if use qt5 || use qt6; then
 		emesonargs+=( -Dqtgui=true )
 		emesonargs+=( $(usex webengine "-Dwebpreview=true" "-Dwebpreview=false") )
+	else
+		emesonargs+=( -Dqtgui=false )
 	fi
 
 	meson_src_configure
