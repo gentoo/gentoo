@@ -74,7 +74,7 @@ src_prepare() {
 }
 
 src_configure() {
-	tc-ld-disable-gold #438058
+	tc-ld-force-bfd #438058
 
 	if use debug ; then
 		echo "CONFIG_DEBUG_LEVEL=8" >.config
