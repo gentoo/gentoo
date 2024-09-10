@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 CP_DEPEND="
-	dev-java/commons-cli:1
+	dev-java/commons-cli:0
 	dev-java/asm:9"
 RDEPEND=">=virtual/jre-1.8:*
 	${CP_DEPEND}"

@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="amd64 arm64 ppc64"
 
 CP_DEPEND="
-	dev-java/commons-cli:1
+	dev-java/commons-cli:0
 	dev-java/swt:4.27[cairo]
 "
 

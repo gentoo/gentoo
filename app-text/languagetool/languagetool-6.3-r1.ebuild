@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
 CP_DEPEND="
-	dev-java/commons-cli:1
+	dev-java/commons-cli:0
 	dev-java/commons-collections:4
 	dev-java/commons-io:1
 	dev-java/commons-lang:3.6
