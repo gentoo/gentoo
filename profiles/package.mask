@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Eli Schwartz <eschwartz@gentoo.org> (2024-09-09)
+# Upstream has dropped this package since MATE 1.28.
+# Removal on 2024-10-09.  Bug #932568.
+mate-extra/mate-netbook
+
+# Eli Schwartz <eschwartz@gentoo.org> (2024-09-09)
 # Fails to build with modern C. Unmaintained for 20 years.
 # Removal on 2024-10-09.  Bug #877105, #927389.
 sci-chemistry/mopac7
