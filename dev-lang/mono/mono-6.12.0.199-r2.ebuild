@@ -20,7 +20,6 @@ IUSE="doc minimal nls pax-kernel selinux xen"
 DEPEND="
 	app-crypt/mit-krb5[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
-	ia64? ( sys-libs/libunwind )
 	!minimal? ( >=dev-dotnet/libgdiplus-6.0.2 )
 	nls? ( sys-devel/gettext )
 "
