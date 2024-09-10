@@ -15,10 +15,10 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
-IUSE="camelcase chm +inotify qt5 qt6 session +spell systemd webengine"
+IUSE="camelcase chm +inotify qt6 session +spell systemd webengine"
 REQUIRED_USE="
 	session? ( inotify )
-	webengine? ( || ( qt5 qt6 ) )
+	webengine? ( qt6 )
 	${PYTHON_REQUIRED_USE}
 "
 
@@ -36,16 +36,6 @@ DEPEND="
 		dev-qt/qtbase:6[gui,network,widgets]
 		webengine? ( dev-qt/qtwebengine:6[widgets] )
 	)
-	!qt6? (
-		qt5? (
-			dev-qt/qtcore:5
-			dev-qt/qtgui:5
-			dev-qt/qtnetwork:5
-			dev-qt/qtprintsupport:5
-			dev-qt/qtwidgets:5
-			webengine? ( dev-qt/qtwebengine:5[widgets] )
-		)
-	)
 	session? (
 		inotify? (
 			x11-libs/libSM
@@ -60,9 +50,6 @@ DEPEND="
 
 BDEPEND="
 	qt6? ( dev-qt/qttools:6 )
-	!qt6? (
-		qt5? ( dev-qt/linguist-tools:5 )
-	)
 "
 
 RDEPEND="
@@ -84,17 +71,13 @@ src_prepare() {
 }
 
 src_configure() {
-	# qt6 has preference over qt5
-	if use qt6; then
-		export QMAKE="$(qt6_get_bindir)/qmake"
-	elif use qt5; then
-		export QMAKE="$(qt5_get_bindir)/qmake"
-	fi
+	use qt6 && export QMAKE="$(qt6_get_bindir)/qmake"
 
 	local emesonargs=(
 		$(meson_use camelcase)
 		$(meson_use chm python-chm)
 		$(meson_use inotify)
+		$(meson_use qt6 qtgui)
 		$(meson_use session x11mon)
 		$(meson_use spell aspell)
 		$(meson_use spell python-aspell)
@@ -107,12 +90,7 @@ src_configure() {
 		-Dsystemd-user-unit-dir="$(systemd_get_userunitdir)"
 	)
 
-	if use qt5 || use qt6; then
-		emesonargs+=( -Dqtgui=true )
-		emesonargs+=( $(usex webengine "-Dwebpreview=true" "-Dwebpreview=false") )
-	else
-		emesonargs+=( -Dqtgui=false )
-	fi
+	use qt6 && emesonargs+=( $(usex webengine "-Dwebpreview=true" "-Dwebpreview=false") )
 
 	meson_src_configure
 }
