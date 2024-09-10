@@ -37,8 +37,8 @@ https://bugs.gentoo.org/844235
  #include <boost/filesystem.hpp>
 +#include <boost/filesystem/fstream.hpp>
  #include <boost/filesystem/path.hpp>
- 
- #include "mongo/base/simple_string_data_comparator.h"
+ #include <pcrecpp.h>
+
 --- a/src/mongo/shell/shell_utils_extended.cpp
 +++ b/src/mongo/shell/shell_utils_extended.cpp
 @@ -37,6 +37,7 @@
