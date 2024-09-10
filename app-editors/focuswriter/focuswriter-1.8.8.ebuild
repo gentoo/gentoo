@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake xdg
 
 DESCRIPTION="Fullscreen and distraction-free word processor"
 HOMEPAGE="https://gottcode.org/focuswriter/
