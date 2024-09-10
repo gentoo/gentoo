@@ -277,24 +277,6 @@ hppa		default/linux/hppa/23.0/hppa2.0/split-usr			stable
 hppa		default/linux/hppa/23.0/hppa2.0/split-usr/desktop		exp
 
 
-# IA64 Profiles
-# @MAINTAINER: ia64@gentoo.org
-ia64		default/linux/ia64/17.0						exp
-ia64		default/linux/ia64/17.0/desktop					exp
-ia64		default/linux/ia64/17.0/desktop/gnome				exp
-ia64		default/linux/ia64/17.0/desktop/gnome/systemd/merged-usr	exp
-ia64		default/linux/ia64/17.0/developer				exp
-ia64		default/linux/ia64/17.0/systemd/merged-usr			exp
-ia64		default/linux/ia64/23.0						stable
-ia64		default/linux/ia64/23.0/desktop					stable
-ia64		default/linux/ia64/23.0/desktop/gnome				stable
-ia64		default/linux/ia64/23.0/desktop/gnome/systemd			stable
-ia64		default/linux/ia64/23.0/systemd					stable
-ia64		default/linux/ia64/23.0/split-usr				stable
-ia64		default/linux/ia64/23.0/split-usr/desktop			exp
-ia64		default/linux/ia64/23.0/split-usr/desktop/gnome			exp
-
-
 # LoongArch Profiles
 # @MAINTAINER: loong@gentoo.org
 loong		default/linux/loong/22.0/la64v100/lp64d						exp
