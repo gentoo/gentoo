@@ -78,9 +78,15 @@ src_prepare() {
 	# similar deal with gl2ps
 	rm src/gl2ps.[ch] || die
 
-	# mjs is an arm executable artifact that should not have been shipped
-	# Removing it so it can be rebuilt with the host architecture
-	rm src/mkjs || die
+	# These are executable (ARM) build artifacts that should not have
+	# been shipped. We remove them so they can be rebuilt properly.
+	rm src/mkjs doc/khicas.nwa || die
+
+	# Don't waste time eautoreconfing the bundled micropython that we
+	# never use.
+	sed -e 's/micropython-1.12//g' -i Makefile.am || die
+	sed -e '/micropython-1.12/d' -i configure.ac || die
+	rm -r micropython-1.12 || die
 
 	default
 	eautoreconf
