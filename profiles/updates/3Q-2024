@@ -4,3 +4,4 @@ move dev-qt/kdsingleapplication dev-libs/kdsingleapplication
 slotmove dev-util/kdevelop-pg-qt 5 0
 move dev-python/parse_type dev-python/parse-type
 slotmove app-admin/calamares 5 0
+slotmove x11-misc/kronometer 5 0
