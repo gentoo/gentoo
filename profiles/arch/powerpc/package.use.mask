@@ -295,7 +295,6 @@ dev-db/percona-server -numa
 # Requires unkeyworded dependencies
 dev-vcs/subversion kwallet
 net-irc/quassel kde
-net-libs/libproxy kde
 sys-auth/polkit kde
 sys-block/gparted kde
 virtual/notification-daemon kde

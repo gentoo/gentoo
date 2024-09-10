@@ -101,7 +101,6 @@ sci-mathematics/z3 java
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-10)
 # Needs kde-frameworks/{kwallet,ki18n,kconfig} stable
 dev-vcs/subversion kwallet
-net-libs/libproxy kde
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-10)
 # Needs kde-plasma/{polkit-kde-agent,plasma-workspace} stable
