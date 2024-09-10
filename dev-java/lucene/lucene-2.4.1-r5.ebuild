@@ -65,6 +65,8 @@ src_compile() {
 }
 
 src_test() {
+	# we found that running tests with eant creates completely different output than
+	# runnning with ant. no idea what exactly is causing that difference,
 	ant test-core
 }
 
