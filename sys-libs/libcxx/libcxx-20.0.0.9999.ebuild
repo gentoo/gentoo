@@ -144,6 +144,11 @@ multilib_src_compile() {
 
 multilib_src_test() {
 	local -x LIT_PRESERVES_TMP=1
+	cmake_build install-cxx-test-suite-prefix
+	cp "${BUILD_DIR}"/{lib,libcxx/test-suite-install/$(get_libdir)}/libc++_shared.so || die
+	if use static-libs; then
+		cp "${BUILD_DIR}"/{lib,libcxx/test-suite-install/$(get_libdir)}/libc++_static.a || die
+	fi
 	cmake_build check-cxx
 }
 
