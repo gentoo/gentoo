@@ -1,6 +1,10 @@
 # Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2024-09-10)
+# Mask on o32 until we've fixed kgcc64
+sys-boot/arcload
+
 # Joshua Kinard <kumba@gentoo.org> (2024-02-27)
 # app-arch/lrzip-next does not support 32-bit arches (#925548)
 app-arch/lrzip-next
