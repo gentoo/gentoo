@@ -146,7 +146,8 @@ src_configure() {
 }
 
 src_compile() {
-	emake verbose=1 $(usev !install-tests TRIGGERS='')
+	# -j1: https://github.com/oracle/dtrace-utils/issues/82
+	emake verbose=1 -j1 $(usev !install-tests TRIGGERS='')
 }
 
 src_test() {
@@ -155,7 +156,7 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install $(usev install-tests install-test)
+	emake DESTDIR="${D}" -j1 install $(usev install-tests install-test)
 
 	# Stripping the BPF libs breaks them
 	dostrip -x "/usr/$(get_libdir)"
