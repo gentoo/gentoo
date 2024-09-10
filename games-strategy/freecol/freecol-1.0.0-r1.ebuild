@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 CP_DEPEND="
-	dev-java/commons-cli:1
+	dev-java/commons-cli:0
 	dev-java/cortado:0
 	dev-java/findbugs-annotations:0
 	dev-java/miglayout:5

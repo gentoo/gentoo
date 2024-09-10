@@ -25,7 +25,7 @@ KEYWORDS="amd64 x86"
 
 CP_DEPEND="
 	>=dev-java/ant-1.10.14:0
-	dev-java/commons-cli:1
+	dev-java/commons-cli:0
 	dev-java/commons-collections:4
 	dev-java/commons-compress:0
 	dev-java/commons-io:1
