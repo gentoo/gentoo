@@ -16,7 +16,6 @@ amd64		stable
 arm		stable
 arm64		stable
 hppa		stable
-ia64		testing
 loong		testing
 m68k		testing
 mips		testing
