@@ -410,7 +410,7 @@ LICENSE+="
 "
 
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 
 BDEPEND="
 	dev-build/cmake
