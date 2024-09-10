@@ -46,11 +46,11 @@ src_prepare() {
 src_configure() {
 	CMAKE_USE_DIR="${S}"
 	CMAKE_BUILD_TYPE="Release"
-	local mycmakeargs=
+	local mycmakeargs
 	if use qt6; then
 		mycmakeargs=(-DUSE_QT=QT6)
 	else
-		(-DUSE_QT=QT5)
+		mycmakeargs=(-DUSE_QT=QT5)
 	fi
 	cmake_src_configure
 }
