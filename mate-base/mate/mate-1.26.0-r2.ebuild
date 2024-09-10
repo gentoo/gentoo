@@ -48,7 +48,6 @@ RDEPEND="
 		=app-text/atril-${MATE_BRANCH}*
 		=mate-extra/caja-extensions-${MATE_BRANCH}*
 		=mate-extra/mate-calc-${MATE_BRANCH}*
-		=mate-extra/mate-netbook-${MATE_BRANCH}*
 		=mate-extra/mate-power-manager-${MATE_BRANCH}*
 		=mate-extra/mate-screensaver-${MATE_BRANCH}*
 		=mate-extra/mate-system-monitor-${MATE_BRANCH}*
