@@ -4,15 +4,15 @@
 EAPI=8
 
 KFMIN=5.96.0
-ESVN_REPO_URI="https://svn.code.sf.net/p/kuroo/code/kuroo4/trunk"
-inherit ecm subversion
+inherit ecm
 
 DESCRIPTION="Graphical Portage frontend based on KDE Frameworks"
 HOMEPAGE="https://sourceforge.net/projects/kuroo/"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
