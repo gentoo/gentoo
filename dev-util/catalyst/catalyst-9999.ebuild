@@ -56,10 +56,6 @@ RDEPEND="
 			sys-boot/grub[grub_platforms_efi-64]
 			sys-fs/mtools
 		)
-		ia64?  (
-			sys-boot/grub[grub_platforms_efi-64]
-			sys-fs/mtools
-		)
 		ppc?   (
 			sys-boot/grub:2[grub_platforms_ieee1275]
 		)
