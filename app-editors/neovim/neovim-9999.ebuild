@@ -105,7 +105,7 @@ src_install() {
 
 	# install a default configuration file
 	insinto /etc/vim
-	newins "${FILESDIR}"/sysinit.vim-r1 sysinit.vim
+	doins "${FILESDIR}"/sysinit.vim
 
 	# symlink tree-sitter parsers
 	dodir /usr/share/nvim/runtime
