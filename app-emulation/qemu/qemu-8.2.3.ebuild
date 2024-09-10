@@ -281,7 +281,7 @@ BDEPEND="
 	dev-lang/perl
 	>=dev-build/meson-0.63.0
 	app-alternatives/ninja
-	dev-python/pip[${PYTHON_USEDEP}]
+	|| ( dev-python/pip[${PYTHON_USEDEP}] dev-lang/python[ensurepip(-)] )
 	virtual/pkgconfig
 	doc? (
 		>=dev-python/sphinx-1.6.0[${PYTHON_USEDEP}]
