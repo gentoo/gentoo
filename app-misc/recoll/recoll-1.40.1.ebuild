@@ -49,7 +49,7 @@ DEPEND="
 "
 
 BDEPEND="
-	qt6? ( dev-qt/qttools:6 )
+	qt6? ( dev-qt/qttools:6[linguist] )
 "
 
 RDEPEND="
