@@ -52,14 +52,10 @@ choose_target_chost() {
 }
 
 pkg_pretend() {
-	ewarn "You have decided to compile your own SeaBIOS. This is not"
-	ewarn "supported by upstream unless you use their recommended"
-	ewarn "toolchain (which you are not)."
-	elog
-	ewarn "If you are intending to use this build with QEMU, realize"
-	ewarn "you will not receive any support if you have compiled your"
-	ewarn "own SeaBIOS. Virtual machines subtly fail based on changes"
-	ewarn "in SeaBIOS."
+	ewarn "You have decided to compile your own SeaBIOS. This may cause subtle"
+	ewarn "failures at runtime. Please try sys-firmware/seabios-bin before"
+	ewarn "requesting support from Gentoo or upstream."
+
 	if [[ -z "$(choose_target_chost)" ]]; then
 		elog
 		eerror "Before you can compile ${PN}, you need to install a x86 cross-compiler"
