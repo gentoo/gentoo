@@ -81,7 +81,7 @@ src_configure() {
 src_install() {
 	emake INSTALL_ROOT="${ED}" install
 
-	dodoc README.md OpenRGB.patch
+	dodoc README.md
 
 	rm -r "${ED}"/usr/lib/udev/ || die
 	udev_dorules 60-openrgb.rules
