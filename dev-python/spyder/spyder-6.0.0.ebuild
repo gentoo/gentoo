@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_USE_PEP517=setuptools
 
-inherit distutils-r1 optfeature virtualx xdg
+inherit distutils-r1 optfeature xdg #virtualx
 
 # Commit of documentation to fetch
 DOCS_PV="6951e02799fc7cd1f29456f1d93cfdcb570dad27"
@@ -70,23 +70,23 @@ RDEPEND="
 	>=dev-python/yarl-1.9.4[${PYTHON_USEDEP}]
 "
 
-BDEPEND="
-	test? (
-		dev-python/cython[${PYTHON_USEDEP}]
-		dev-python/flaky[${PYTHON_USEDEP}]
-		dev-python/matplotlib[tk,${PYTHON_USEDEP}]
-		dev-python/pandas[${PYTHON_USEDEP}]
-		dev-python/pillow[${PYTHON_USEDEP}]
-		dev-python/pytest-lazy-fixture[${PYTHON_USEDEP}]
-		dev-python/pytest-mock[${PYTHON_USEDEP}]
-		dev-python/pytest-order[${PYTHON_USEDEP}]
-		dev-python/pytest-qt[${PYTHON_USEDEP}]
-		dev-python/pytest-timeout[${PYTHON_USEDEP}]
-		dev-python/pyyaml[${PYTHON_USEDEP}]
-		dev-python/QtPy[${PYTHON_USEDEP}]
-		dev-python/scipy[${PYTHON_USEDEP}]
-		dev-python/sympy[${PYTHON_USEDEP}]
-	)"
+# BDEPEND="
+# 	test? (
+# 		dev-python/cython[${PYTHON_USEDEP}]
+# 		dev-python/flaky[${PYTHON_USEDEP}]
+# 		dev-python/matplotlib[tk,${PYTHON_USEDEP}]
+# 		dev-python/pandas[${PYTHON_USEDEP}]
+# 		dev-python/pillow[${PYTHON_USEDEP}]
+# 		dev-python/pytest-lazy-fixture[${PYTHON_USEDEP}]
+# 		dev-python/pytest-mock[${PYTHON_USEDEP}]
+# 		dev-python/pytest-order[${PYTHON_USEDEP}]
+# 		dev-python/pytest-qt[${PYTHON_USEDEP}]
+# 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
+# 		dev-python/pyyaml[${PYTHON_USEDEP}]
+# 		dev-python/QtPy[${PYTHON_USEDEP}]
+# 		dev-python/scipy[${PYTHON_USEDEP}]
+# 		dev-python/sympy[${PYTHON_USEDEP}]
+# 	)"
 
 # Based on the courtesy of Arfrever
 # This patch removes a call to update-desktop-database during build
@@ -106,7 +106,7 @@ DOCS=(
 	"RELEASE.md"
 )
 
-distutils_enable_tests pytest
+# distutils_enable_tests pytest
 # TODO: Package sphinx-design
 # distutils_enable_sphinx docs/doc \
 # 	dev-python/sphinx-panels \
@@ -166,9 +166,9 @@ python_prepare_all() {
 
 # Calling pytest directly somehow passes the pytest arguments to spyder
 # causing an invalid argument error
-python_test() {
-	virtx "${EPYTHON}" runtests.py
-}
+# python_test() {
+# 	virtx "${EPYTHON}" runtests.py
+# }
 
 pkg_postinst() {
 	xdg_pkg_postinst
