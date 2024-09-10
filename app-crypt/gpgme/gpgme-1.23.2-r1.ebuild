@@ -69,6 +69,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.18.0-tests-start-stop-agent-use-command-v.patch
 	"${FILESDIR}"/${PN}-1.23.1-tests-gnupg-no-tofu.patch
+	# backport fix for setuptools 72.2 breakage
+	"${FILESDIR}"/ecd0c86d62351d267bdc9566286c532a394c711b.patch
 )
 
 src_prepare() {
