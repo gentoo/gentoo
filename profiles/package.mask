@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2024-09-10)
+# Breaks both C++ stdlib impls with a casing issue:
+# * libstdc++ (https://gcc.gnu.org/PR116657)
+# * libcxx (https://github.com/llvm/llvm-project/issues/107779)
+=sys-libs/timezone-data-2024b
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-09-09)
 # No revdeps for years, KF5-based. Removal on 2024-10-09.
 net-libs/libmediawiki
