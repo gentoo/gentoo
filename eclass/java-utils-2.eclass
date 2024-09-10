@@ -2254,30 +2254,6 @@ java-pkg_force-compiler() {
 	JAVA_PKG_FORCE_COMPILER="$@"
 }
 
-# @FUNCTION: use_doc
-# @DEPRECATED: none
-# @DESCRIPTION:
-#
-# Helper function for getting ant to build javadocs. If the user has USE=doc,
-# then 'javadoc' or the argument are returned. Otherwise, there is no return.
-#
-# The output of this should be passed to ant.
-# @CODE
-# Parameters:
-# $@ - Option value to return. Defaults to 'javadoc'
-#
-# Examples:
-# build javadocs by calling 'javadoc' target
-#	eant $(use_doc)
-#
-# build javadocs by calling 'apidoc' target
-#	eant $(use_doc apidoc)
-# @CODE
-# @RETURN string - Name of the target to create javadocs
-use_doc() {
-	use doc && echo ${@:-javadoc}
-}
-
 
 # @FUNCTION: java-pkg_init
 # @INTERNAL
