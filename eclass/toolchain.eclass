@@ -353,6 +353,7 @@ fi
 
 BDEPEND="
 	app-alternatives/yacc
+	sys-devel/binutils:*
 	>=sys-devel/flex-2.5.4
 	nls? ( sys-devel/gettext )
 	test? (
