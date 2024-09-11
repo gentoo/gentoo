@@ -1,17 +1,17 @@
 diff --git a/makefile b/makefile
-index cd79e4d4d..4d3c5e53b 100644
+index 60129a707..45ac2639d 100644
 --- a/makefile
 +++ b/makefile
-@@ -224,7 +224,7 @@ CPP = cpp
- #thing is, that the correctly transcribed URL will actually make tolua choke.
+@@ -226,7 +226,7 @@ CPP = cpp
  #So, -nostdinc will prevent the whole own comment blob of cpp to get generated
  #in the first place, as we never asked for it:
--CPPFLAGS = -C -P -nostdinc
-+CPPFLAGS = -C -P -nostdinc $(GENTOO_CPPFLAGS)
+ #CPPFLAGS = -C -P -nostdinc
+-CPPFLAGS = -x c -E -Wp,-C,-P,-nostdinc,-Wno-format-overflow
++CPPFLAGS = -x c -E -Wp,-C,-P,-nostdinc,-Wno-format-overflow $(GENTOO_CPPFLAGS)
  
  # gcc variant:
  #CPP = gcc
-@@ -235,6 +235,21 @@ CPPFLAGS = -C -P -nostdinc
+@@ -237,6 +237,21 @@ CPPFLAGS = -x c -E -Wp,-C,-P,-nostdinc,-Wno-format-overflow
  # For variations with X11
  X11BASE = /usr/X11R6
  
@@ -33,11 +33,11 @@ index cd79e4d4d..4d3c5e53b 100644
  
  # Account editor
  ACCEDIT_LIBS = -lncurses -lcrypt
-@@ -289,12 +304,10 @@ SERVER_EXTRA_LIBS = -lcrypt
+@@ -291,12 +306,10 @@ SERVER_EXTRA_LIBS = -lcrypt
  
  # With SDL2
  #  With sdl2-config
--CFLAGS = -pipe -Wall -DUSE_GCU -D_XOPEN_SOURCE -D_BSD_SOURCE -DMEXP=19937 -std=c99 -D_DEFAULT_SOURCE -DACC32 -fPIE -fsigned-char -Wno-format-truncation
+-CFLAGS = -pipe -Wall -DUSE_GCU -D_XOPEN_SOURCE -D_BSD_SOURCE -DMEXP=19937 -std=c99 -D_DEFAULT_SOURCE -DACC32 -fPIE -fsigned-char
  # Note: -fsigned-char is important for ARM64, as there 'char' is by default unsigned, while on x86/AM64 it is by default signed!
  #  With manually set prefix
  #CFLAGS = -pipe -Wall -DUSE_X11 -DUSE_GCU -I${X11BASE}/include -D_XOPEN_SOURCE -D_BSD_SOURCE -DMEXP=19937 -std=c99 -DSOUND_SDL -I/usr/local/include/SDL2 -I/usr/include/SDL2 -D_REENTRANT -D_DEFAULT_SOURCE -DACC32 -fPIE -Wno-format-truncation

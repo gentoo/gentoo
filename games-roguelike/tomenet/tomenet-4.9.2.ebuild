@@ -20,8 +20,8 @@ RDEPEND="sys-libs/ncurses:0
 			x11-libs/libX11
 		)
 		sound? (
-			media-libs/libsdl[sound]
-			media-libs/sdl-mixer[vorbis,smpeg,mp3]
+			media-libs/libsdl2[sound]
+			media-libs/sdl2-mixer[vorbis,mp3]
 		)
 	)"
 DEPEND="${RDEPEND}
@@ -32,7 +32,7 @@ S=${WORKDIR}/${P}/src
 
 PATCHES=(
 	"${FILESDIR}"/${P}-makefile.patch
-	"${FILESDIR}"/${P}-disable-experimental.patch
+	"${FILESDIR}"/${PN}-4.9.1-disable-experimental.patch
 )
 
 src_prepare() {
