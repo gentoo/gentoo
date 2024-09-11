@@ -1648,6 +1648,10 @@ java-pkg_set-current-vm() {
 	export GENTOO_VM=${1}
 }
 
+# @FUNCTION: java-pkg_current-vm-matches
+# @USAGE: <vm_string1> [<vm_string2> [<vm_string3>...]]
+# @RETURN: 0: the current vm matches any of the provided strings
+# @RETURN: 1: the current vm does not match any of the provided strings
 java-pkg_current-vm-matches() {
 	has $(java-pkg_get-current-vm) ${@}
 	return $?
@@ -2321,7 +2325,7 @@ java-pkg_init() {
 	export ANT_RESPECT_JAVA_HOME=
 }
 
-# @FUNCTION: java-pkg-init-compiler_
+# @FUNCTION: java-pkg_init-compiler_
 # @INTERNAL
 # @DESCRIPTION:
 # This function attempts to figure out what compiler should be used. It does
@@ -2342,9 +2346,7 @@ java-pkg_init() {
 # If the user doesn't defined anything in JAVA_PKG_COMPILERS_CONF, or no
 # suitable compiler was found there, then the default is to use javac provided
 # by the current VM.
-#
-#
-# @RETURN name of the compiler to use
+# @RETURN: name of the compiler to use
 java-pkg_init-compiler_() {
 	debug-print-function ${FUNCNAME} $*
 
@@ -2946,6 +2948,12 @@ java-pkg_ensure-dep() {
 	fi
 }
 
+# @FUNCTION: java-pkg_check-phase
+# @INTERNAL
+# @USAGE: <phase_name>
+# @DESCRIPTION:
+# Checks whether the phase specified in $1 is the current active phase. If not,
+# a helpful QA message is displayed
 java-pkg_check-phase() {
 	local phase=${1}
 	local funcname=${FUNCNAME[1]}
@@ -2955,6 +2963,12 @@ java-pkg_check-phase() {
 	fi
 }
 
+# @FUNCTION: java-pkg_check-versioned-jar
+# @INTERNAL
+# @USAGE: <jar_filename>
+# @DESCRIPTION:
+# Checks whether the jar specified in $1 contains ${PV}. If it does, a helpful
+# QA message is displayed
 java-pkg_check-versioned-jar() {
 	local jar=${1}
 
@@ -2963,6 +2977,12 @@ java-pkg_check-versioned-jar() {
 	fi
 }
 
+# @FUNCTION: java-pkg_announce-qa-violation
+# @INTERNAL
+# @USAGE: [--nodie] <msg>
+# @DESCRIPTION:
+# Prints out the <msg> as a QA message. If ${JAVA_PKG_STRICT} is set, then die
+# is called. This can be overridden by providing --nodie
 java-pkg_announce-qa-violation() {
 	local nodie
 	if [[ ${1} == "--nodie" ]]; then
@@ -2979,6 +2999,10 @@ increment-qa-violations() {
 	export JAVA_PKG_QA_VIOLATIONS
 }
 
+# @FUNCTION: is-java-strict
+# @INTERNAL
+# @RETURN: 0: JAVA_PKG_STRICT is set
+# @RETURN: 1: JAVA_PKG_STRICT is not set
 is-java-strict() {
 	[[ -n ${JAVA_PKG_STRICT} ]]
 	return $?
