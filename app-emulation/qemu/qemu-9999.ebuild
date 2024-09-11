@@ -479,7 +479,7 @@ src_prepare() {
 	export WINDRES=${CHOST}-windres
 
 	# Workaround for bug #938302
-	if use systemtap && ! has_version "dev-debug/systemtap[dtrace-symlink(-)]" ; then
+	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then
 		cat >> "${S}"/configs/meson/linux.txt <<-EOF || die
 		[binaries]
 		dtrace='stap-dtrace'
