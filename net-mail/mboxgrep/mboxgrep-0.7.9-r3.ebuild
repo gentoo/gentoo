@@ -5,11 +5,11 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="Grep for mbox files"
-SRC_URI="https://downloads.sourceforge.net/mboxgrep/${P}.tar.gz"
 HOMEPAGE="https://datatipp.se/mboxgrep/"
+SRC_URI="https://downloads.sourceforge.net/mboxgrep/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2+"
+SLOT="0"
 KEYWORDS="~amd64 ~ppc x86"
 IUSE="dmalloc"
 
