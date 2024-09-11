@@ -12,7 +12,7 @@ S="${WORKDIR}/clxclient-${PV}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~sparc ~x86"
 
 CDEPEND="
 	dev-libs/libclthreads
