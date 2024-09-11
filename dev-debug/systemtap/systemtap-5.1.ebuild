@@ -134,7 +134,7 @@ src_configure() {
 }
 
 src_test() {
-	# TODO: Install tests like dev-debug/dtrace[install-tests] and
+	# TODO: Install tests like dev-debug/dtrace[test-install] and
 	# e.g. Fedora does.
 	(
 		strip-flags
