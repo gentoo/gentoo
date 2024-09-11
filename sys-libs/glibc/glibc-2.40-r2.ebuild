@@ -979,6 +979,7 @@ src_prepare() {
 		fi
 		einfo "Applying Gentoo Glibc patchset ${patchsetname}"
 		eapply "${WORKDIR}"/patches
+		eapply "${FILESDIR}"/${P}-libio-legacy.patch
 		einfo "Done."
 	fi
 
