@@ -159,14 +159,6 @@ src_install() {
 		[trace]=1
 	)
 
-	local tool name
-	for tool in "${ED}"/usr/share/bcc/tools/*; do
-		[[ ! -x ${tool} && ! -L ${tool} || -d ${tool} ]] && continue
-		name=${tool##*/}
-		[[ -n ${rename_tools[${name}]} ]] && name=bcc-${name}
-		dosym -r "${tool#${ED}}" /usr/sbin/${name}
-	done
-
 	docompress /usr/share/${PN}/man
 
 	newenvd - "70${P}" <<-_EOF_
