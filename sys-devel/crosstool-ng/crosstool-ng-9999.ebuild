@@ -11,7 +11,7 @@ HOMEPAGE="https://crosstool-ng.github.io/"
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/crosstool-ng/crosstool-ng.git"
-	inherit git-r3
+	inherit autotools git-r3
 else
 	SRC_URI="
 		https://github.com/crosstool-ng/crosstool-ng/releases/download/${PN}-${PV/_rc/-rc}/${P}.tar.xz
@@ -55,6 +55,19 @@ BDEPEND="
 RDEPEND="
 	${BDEPEND}
 "
+
+src_prepare() {
+	if [[ ${PV} == 9999 ]]; then
+		# Some data files must be generated before autoreconf, and the logic
+		# is non-trivial, so the upstream bootstrap script must be used.
+		# In addition, eautoreconf mis-detects the project to make use of
+		# gettext while it actually isn't, so just rely on the invocation of
+		# autoreconf for us in the bootstrap script.
+		./bootstrap || die "bootstrap failed"
+	fi
+
+	default
+}
 
 src_configure() {
 	# Needs bison+flex
