@@ -74,7 +74,6 @@ my_src_configure() {
 		--disable-rpm
 		--disable-rpm415
 		--disable-ctf
-		--disable-debug-ct-propagation
 		# Don't try to run Valgrind on tests.
 		--disable-valgrind
 		--enable-bash-completion
