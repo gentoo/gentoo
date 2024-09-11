@@ -44,7 +44,7 @@ mate-extra/mate-netbook
 sci-chemistry/mopac7
 
 # Sam James <sam@gentoo.org> (2024-09-10)
-# Breaks libstdc++ impls with a casing issue: https://gcc.gnu.org/PR116657
+# Breaks libstdc++ with a casing issue: https://gcc.gnu.org/PR116657
 =sys-libs/timezone-data-2024b
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-09-09)
