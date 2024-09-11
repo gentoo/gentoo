@@ -25,6 +25,9 @@ PATCH_PV="2.53.18.2-r1"
 PATCH="${PN}-${PATCH_PV}-patches"
 PATCH_S="${WORKDIR}/gentoo-${PN}-patches-${PATCH_PV}"
 
+DESCRIPTION="Seamonkey Web Browser"
+HOMEPAGE="https://www.seamonkey-project.org/"
+
 SRC_URI="https://archive.seamonkey-project.org/releases/${MOZ_PV}/source/${MY_MOZ_P}.source.tar.xz
 	https://archive.seamonkey-project.org/releases/${MOZ_PV}/source/${MY_MOZ_P}.source-l10n.tar.xz
 	https://github.com/BioMike/gentoo-${PN}-patches/archive/refs/tags/${PATCH_PV}.tar.gz -> ${PATCH}.tar.gz"
@@ -36,16 +39,13 @@ MOZ_L10N_SOURCEDIR="${S}/${P}-l10n"
 inherit autotools check-reqs desktop edos2unix flag-o-matic llvm-r1 mozcoreconf-v6 mozlinguas-v2 pax-utils \
 	toolchain-funcs xdg-utils
 
-DESCRIPTION="Seamonkey Web Browser"
-HOMEPAGE="https://www.seamonkey-project.org/"
-
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 SLOT="0"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 SYSTEM_IUSE=( +system-{av1,harfbuzz,icu,jpeg,libevent,libvpx,png,sqlite} )
 IUSE="+chatzilla cpu_flags_arm_neon dbus +gmp-autoupdate +ipc jack
 lto pulseaudio selinux startup-notification test webrtc wifi"
 IUSE+=" ${SYSTEM_IUSE[@]}"
-KEYWORDS="~amd64 ~ppc64 ~x86"
 
 RESTRICT="!test? ( test )"
 
