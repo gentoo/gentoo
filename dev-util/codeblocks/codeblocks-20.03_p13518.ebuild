@@ -27,6 +27,7 @@ SRC_URI="
 
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~amd64"
 
 IUSE="fortran contrib debug"
 
