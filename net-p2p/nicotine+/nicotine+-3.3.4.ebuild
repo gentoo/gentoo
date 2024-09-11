@@ -16,18 +16,38 @@ S="${WORKDIR}/nicotine-plus-${PV}"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 # NOTE: good link - https://github.com/nicotine-plus/nicotine-plus/blob/master/doc/DEPENDENCIES.md
-BDEPEND="sys-devel/gettext" # TODO(setan): maybe add pycodestyle and pylint here if use test
+BDEPEND="
+	sys-devel/gettext
+	test? (
+		dev-python/pytest
+		|| (
+		   >=gui-libs/gtk-4.6.9[broadway]
+		   >=x11-libs/gtk+-3.22.20:3[broadway]
+		)
+	)
+"
 RDEPEND="
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	|| ( >=gui-libs/gtk-4.6.9[introspection] >=x11-libs/gtk+-3.22.20:3[introspection] )
+	|| (
+		>=gui-libs/gtk-4.6.9[introspection]
+		>=x11-libs/gtk+-3.22.20:3[introspection]
+	)
 "
 
 distutils_enable_tests pytest
 
 DOCS=( AUTHORS.md NEWS.md README.md TRANSLATORS.md )
 
+src_prepare() {
+	default
+	# remove update check test violating network sandbox
+	sed -i -e 's:test_update_check:_&:' \
+		"${S}"/pynicotine/tests/unit/test_version.py || die
+}
 pkg_postinst() {
 	xdg_pkg_postinst
 
