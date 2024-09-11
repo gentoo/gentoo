@@ -23,6 +23,7 @@ HOMEPAGE="https://sourceware.org/libabigail/"
 if [[ ${PV} == 9999 ]] ; then
 	LIBABIGAIL_DOCS_PREBUILT=0
 	EGIT_REPO_URI="https://sourceware.org/git/libabigail.git"
+	EGIT_SUBMODULES=()
 	inherit autotools git-r3
 else
 	SRC_URI="https://mirrors.kernel.org/sourceware/libabigail/${P}.tar.xz"
