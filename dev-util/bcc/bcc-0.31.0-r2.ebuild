@@ -18,7 +18,7 @@ SRC_URI="https://github.com/iovisor/bcc/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
-IUSE="+lua +python static-libs test"
+IUSE="+lua lzma +python static-libs test"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -29,13 +29,20 @@ REQUIRED_USE="
 RESTRICT="test"
 
 RDEPEND="
+	app-arch/zstd:=
 	>=dev-libs/elfutils-0.166:=
 	>=dev-libs/libbpf-1.2.0:=
+	dev-libs/libffi:=
 	sys-kernel/linux-headers
+	sys-libs/ncurses:=[tinfo]
 	$(llvm_gen_dep '
 		sys-devel/clang:${LLVM_SLOT}=
 		sys-devel/llvm:${LLVM_SLOT}=
 	')
+	lzma? ( || (
+		app-arch/xz-utils
+		app-arch/lzma
+	) )
 	python? ( ${PYTHON_DEPS} )
 	lua? ( ${LUA_DEPS} )
 "
@@ -52,6 +59,8 @@ DEPEND="
 "
 BDEPEND="
 	app-arch/zip
+	sys-devel/flex
+	sys-devel/bison
 	virtual/pkgconfig
 	python? ( ${DISTUTILS_DEPS} )
 "
@@ -60,6 +69,7 @@ PATCHES=(
 	"${FILESDIR}/bcc-0.9.0-no-luajit-automagic-dep.patch"
 	"${FILESDIR}/bcc-0.25.0-cmakelists.patch"
 	"${FILESDIR}/bcc-0.23.0-man-compress.patch"
+	"${FILESDIR}/bcc-0.31.0-no-automagic-deps.patch"
 )
 
 pkg_pretend() {
@@ -102,6 +112,8 @@ src_prepare() {
 		mv "${script}" "tools/old/old-${script##*/}" || die
 	done
 
+	sed -i '/#include <error.h>/d' examples/cpp/KModRetExample.cc || die
+
 	use static-libs || PATCHES+=( "${FILESDIR}/bcc-0.31.0-dont-install-static-libs.patch" )
 
 	# use distutils-r1 eclass funcs rather than letting upstream handle python
@@ -122,13 +134,15 @@ src_configure() {
 		-DREVISION=${PV%%_*}
 		-DENABLE_LLVM_SHARED=ON
 		-DENABLE_NO_PIE=OFF
+		-DWITH_LZMA=$(usex lzma)
 		-DCMAKE_USE_LIBBPF_PACKAGE=ON
 		-DLIBBPF_INCLUDE_DIRS="$($(tc-getPKG_CONFIG) --cflags-only-I libbpf | sed 's:-I::g')"
 		-DKERNEL_INCLUDE_DIRS="${KERNEL_DIR}"
+		-DNO_BLAZESYM=ON
 		-Wno-dev
 	)
 	if use lua && use lua_single_target_luajit; then
-		mycmakeargs+=( -DWITH_LUAJIT=1 )
+		mycmakeargs+=( -DWITH_LUAJIT=ON )
 	fi
 
 	cmake_src_configure
@@ -140,13 +154,32 @@ src_compile() {
 	bcc_distutils_phase
 }
 
+bcc_tool_name() {
+	local -A rename_tools=(
+		[trace]=1
+		[profile]=1
+		[inject]=1
+		[capable]=1
+	)
+
+	local name="${1}"
+
+	local name="${name##*/}"
+	name="${name%.py}"
+
+	[[ -n ${rename_tools[${name}]} ]] && name=bcc-${name}
+
+	printf -- '%s\n' "${name}"
+}
+
 python_install() {
 	distutils-r1_python_install
 
+	python_scriptinto /usr/sbin
+
 	local tool
 	for tool in $(grep -Elr '#!/usr/bin/(env |)python' "${MY_S}/tools"); do
-		local tool_name="${tool##*/}"
-		python_newscript "${tool}" "${tool_name%.py}"
+		python_newscript "${tool}" "$(bcc_tool_name "${tool}")"
 	done
 }
 
@@ -155,9 +188,17 @@ src_install() {
 	bcc_distutils_phase
 
 	newenvd "${FILESDIR}"/60bcc.env 60bcc.env
-	local -A rename_tools=(
-		[trace]=1
-	)
+
+	local tool target
+	for tool in "${ED}"/usr/share/bcc/tools/*; do
+		[[ -d ${tool} || ! -x ${tool} || ${tool} =~ .*[.](c|txt) ]] && continue
+		grep -qE '^#!/usr/bin/(env |)python' "${tool}" && continue
+
+		target="/usr/sbin/$(bcc_tool_name "${tool}")"
+		[[ -e ${ED}${target} ]] && continue
+
+		dosym -r "${tool#${ED}}" "${target}"
+	done
 
 	docompress /usr/share/${PN}/man
 
