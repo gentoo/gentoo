@@ -208,7 +208,7 @@ multilib_src_configure() {
 	)
 
 	# Workaround for bug #938302
-	if use systemtap && ! has_version "dev-debug/systemtap[dtrace-symlink(-)]" ; then
+	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then
 		local native_file="${T}"/meson.${CHOST}.ini.local
 		cat >> ${native_file} <<-EOF || die
 		[binaries]
