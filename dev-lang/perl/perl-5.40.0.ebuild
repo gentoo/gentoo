@@ -81,6 +81,10 @@ PDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-compilation-in-eprefix-bug-939014.patch"
+)
+
 # bug 390719, bug 523624
 # virtual/perl-Test-Harness is here for the bundled ExtUtils::MakeMaker
 
