@@ -141,7 +141,7 @@ src_configure() {
 	append-flags -fno-strict-aliasing
 
 	# Workaround for bug #938302
-	if use systemtap && ! has_version "dev-debug/systemtap[dtrace-symlink(-)]" ; then
+	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then
 		export DTRACE="${BROOT}"/usr/bin/stap-dtrace
 	fi
 
