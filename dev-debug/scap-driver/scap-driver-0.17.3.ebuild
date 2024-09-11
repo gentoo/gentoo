@@ -12,7 +12,7 @@ S="${WORKDIR}/libs-${PV}"
 
 LICENSE="Apache-2.0 GPL-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 
 RDEPEND="!<dev-debug/sysdig-${PV}[modules]"
 
