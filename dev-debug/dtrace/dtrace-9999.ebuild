@@ -21,7 +21,7 @@ fi
 
 LICENSE="UPL-1.0"
 SLOT="0"
-IUSE="systemd install-tests"
+IUSE="systemd test-install"
 
 # XXX: right now, we auto-adapt to whether multilibs are present:
 # should we force them to be? how?
@@ -44,7 +44,7 @@ RDEPEND="
 	${DEPEND}
 	!dev-debug/systemtap[dtrace-symlink(+)]
 	net-analyzer/wireshark
-	install-tests? (
+	test-install? (
 		app-alternatives/bc
 		app-editors/vim-core
 		dev-build/make
@@ -96,7 +96,7 @@ pkg_pretend() {
 	# https://gcc.gnu.org/PR84052
 	CONFIG_CHECK+=" !GCC_PLUGIN_RANDSTRUCT"
 
-	if use install-tests ; then
+	if use test-install ; then
 		# See test/modules
 		CONFIG_CHECK+=" ~EXT4_FS ~ISO9660_FS ~NFS_FS ~RDS ~TUN"
 	fi
@@ -147,7 +147,7 @@ src_configure() {
 
 src_compile() {
 	# -j1: https://github.com/oracle/dtrace-utils/issues/82
-	emake verbose=1 -j1 $(usev !install-tests TRIGGERS='')
+	emake verbose=1 -j1 $(usev !test-install TRIGGERS='')
 }
 
 src_test() {
@@ -156,7 +156,7 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" -j1 install $(usev install-tests install-test)
+	emake DESTDIR="${D}" -j1 install $(usev test-install install-test)
 
 	# Stripping the BPF libs breaks them
 	dostrip -x "/usr/$(get_libdir)"
