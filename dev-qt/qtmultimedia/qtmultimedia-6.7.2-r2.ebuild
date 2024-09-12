@@ -57,6 +57,7 @@ BDEPEND="~dev-qt/qtshadertools-${PV}:6"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gstreamer-no-v4l.patch
+	"${FILESDIR}"/${P}-ffmpeg-6.1.2.patch
 )
 
 CMAKE_SKIP_TESTS=(
