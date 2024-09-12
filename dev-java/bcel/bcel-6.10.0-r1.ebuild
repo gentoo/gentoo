@@ -23,7 +23,7 @@ VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/commons.apache.org.asc"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-commons )"
 CP_DEPEND="dev-java/commons-lang:3.6"
 DEPEND="${CP_DEPEND}
-	>=virtual/jdk-1.8:*"
+	>=virtual/jdk-11:*"
 RDEPEND="${CP_DEPEND}
 	>=virtual/jre-1.8:*"
 
