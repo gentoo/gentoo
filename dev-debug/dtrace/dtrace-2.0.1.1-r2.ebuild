@@ -25,10 +25,6 @@ IUSE="systemd test-install"
 
 # XXX: right now, we auto-adapt to whether multilibs are present:
 # should we force them to be? how?
-#
-# XXX: binutils-libs will need an extra patch for what dtrace does with
-# it in the absence of in-kernel CTF: it will be backported
-# to 2.42, but perhaps a patch would be a good idea before that?
 DEPEND="
 	dev-libs/elfutils
 	dev-libs/libbpf
