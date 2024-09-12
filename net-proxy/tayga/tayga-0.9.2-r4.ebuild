@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,6 +24,9 @@ src_prepare() {
 	default
 	sed -e '/^CFLAGS/d' \
 		-i configure.ac || die "sed failed"
+	# Workaround for bug #939535:
+	# eautoreconf does not run autoheader with --force
+	rm config.h.in || die "rm config.h.in failed"
 	eautoreconf
 }
 
