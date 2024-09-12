@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{10..12} pypy3 )
 inherit autotools flag-o-matic linux-info python-single-r1 toolchain-funcs
 
 DESCRIPTION="Linux trace/probe tool"
-HOMEPAGE="https://sourceware.org/systemtap/"
+HOMEPAGE="https://sourceware.org/systemtap/ https://sourceware.org/systemtap/wiki"
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://sourceware.org/git/systemtap.git"
 	inherit git-r3
