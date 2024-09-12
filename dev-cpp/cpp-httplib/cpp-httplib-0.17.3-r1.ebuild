@@ -22,7 +22,7 @@ else
 fi
 
 LICENSE="MIT"
-SLOT="0/$(ver_cut 1-2)"  # soversion
+SLOT="0/${PV}"  # soversion / /usr/include/httplib.h: CPPHTTPLIB_VERSION
 
 IUSE="brotli ssl test zlib"
 REQUIRED_USE="test? ( brotli ssl zlib )"
