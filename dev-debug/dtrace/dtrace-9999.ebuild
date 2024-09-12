@@ -174,10 +174,10 @@ pkg_postinst() {
 	# We need a udev reload to pick up the CUSE device node rules.
 	udev_reload
 
-	# TODO: One option for this is to detect when it's needed (DOF stash layout changes)
-	# and then e.g. sleep and restart for the user.
 	if [[ -n ${REPLACING_VERSIONS} ]]; then
 		# TODO: Make this more intelligent wrt comparison
+		# One option for this is to detect when it's needed (DOF stash layout changes)
+		# and then e.g. sleep and restart for the user.
 		if systemd_is_booted ; then
 			einfo "Restart the DTrace 'dtprobed' service after upgrades"
 			einfo "once all dtraces are stopped with:"
