@@ -48,6 +48,7 @@ PATCHES=(
 	"${FILESDIR}/biglybt-3.2.0.0-disable-shared-plugins.patch"
 	"${FILESDIR}/biglybt-3.5.0.0-Entities.javadoc.patch"
 	"${FILESDIR}/biglybt-3.6.0.0-disable-PluginUpdatePlugin.patch"
+	"${FILESDIR}/biglybt-3.6.0.0-fix-ambiguous.patch"
 )
 
 src_prepare() {
