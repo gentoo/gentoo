@@ -9,9 +9,15 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>Official Realtek r8152 linux driver. The following cards are currently supported:
-RTL8156 RTL8156B(S)(G) RTL8153 RTL8153B RTL8154 RTL8154B RTL8152B</longdescription>
+	<longdescription>
+		Official Realtek r8152 linux driver. Supports most realtek
+		USB network cards, including: RTL8157, RTL8156(,B), RTL8153(,B,C,D,E),
+		RTL8154(,B), RTL8152B.
+	</longdescription>
 	<use>
 		<flag name="center-tap-short">Enable support for center tap short</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">jayofdoom/realtek-r8152-unchanged</remote-id>
+	</upstream>
 </pkgmetadata>
