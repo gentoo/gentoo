@@ -181,12 +181,10 @@ pkg_postinst() {
 		# One option for this is to detect when it's needed (DOF stash layout changes)
 		# and then e.g. sleep and restart for the user.
 		if systemd_is_booted ; then
-			einfo "Restart the DTrace 'dtprobed' service after upgrades"
-			einfo "once all dtraces are stopped with:"
+			einfo "Restart the DTrace 'dtprobed' service after upgrades once all dtraces are stopped with:"
 			einfo " systemctl try-restart dtprobed"
 		else
-			einfo "Restart the DTrace 'dtprobed' service after upgrades"
-			einfo "once all dtraces are stopped with:"
+			einfo "Restart the DTrace 'dtprobed' service after upgrades once all dtraces are stopped with:"
 			einfo " /etc/init.d/dtprobed restart"
 		fi
 	else
