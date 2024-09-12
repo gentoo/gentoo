@@ -21,7 +21,7 @@ MOZ_PV="${PV}"
 MOZ_PV="${MOZ_PV/_beta/b}"
 MOZ_P="${P}"
 MY_MOZ_P="${PN}-${MOZ_PV}"
-PATCH_PV="2.53.18.2-r1"
+PATCH_PV="2.53.19"
 PATCH="${PN}-${PATCH_PV}-patches"
 PATCH_S="${WORKDIR}/gentoo-${PN}-patches-${PATCH_PV}"
 
