@@ -25,6 +25,8 @@ IUSE="systemd test-install"
 
 # XXX: right now, we auto-adapt to whether multilibs are present:
 # should we force them to be? how?
+#
+# TODO: can we make the wireshark dep conditional?
 DEPEND="
 	dev-libs/elfutils
 	dev-libs/libbpf
@@ -61,7 +63,7 @@ BDEPEND="
 	>=sys-devel/bpf-toolchain-14.1.0
 	sys-devel/flex
 "
-# TODO: Make this optional, valgrind.h is included unconditionally
+# This isn't yet optional, valgrind.h is included unconditionally
 # https://github.com/oracle/dtrace-utils/issues/80
 DEPEND+=" dev-debug/valgrind"
 
