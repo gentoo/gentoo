@@ -1,20 +1,19 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
 DEB_VER=6.2
 DESCRIPTION="edit disk partitions on Acorn machines"
-HOMEPAGE="http://www.arm.linux.org.uk/"
+HOMEPAGE="https://www.arm.linux.org.uk/"
 SRC_URI="ftp://ftp.arm.linux.org.uk/pub/armlinux/source/other/${P}.tar.gz
 	mirror://debian/pool/main/a/acorn-fdisk/acorn-fdisk_${PV}-${DEB_VER}.diff.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~m68k ~mips ppc ~s390 sparc x86"
-IUSE=""
 
 src_prepare() {
 	default
