@@ -22,6 +22,10 @@ CONFIG_CHECK="HAVE_SYSCALL_TRACEPOINTS ~TRACEPOINTS"
 # This version can be found in the corresponding *sysdig* tree in cmake/modules/driver.cmake
 DRIVER_VERSION="7.2.0+driver"
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-fix-kmod-build-on-6.4+.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		# we will use linux-mod, so just pretend to use bundled deps

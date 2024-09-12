@@ -1,0 +1,12 @@
+diff --git a/driver/configure/CLASS_CREATE_1/test.c b/driver/configure/CLASS_CREATE_1/test.c
+index 675113b..72c5406 100644
+--- a/driver/configure/CLASS_CREATE_1/test.c
++++ b/driver/configure/CLASS_CREATE_1/test.c
+@@ -21,6 +21,7 @@ MODULE_AUTHOR("the Falco authors");
+ static int class_create_test_init(void)
+ {
+ 	struct class *g_ppm_class = class_create("test");
++	(void)g_ppm_class;
+ 	return 0;
+ }
+ 
