@@ -43,7 +43,7 @@ src_prepare() {
 	default
 
 	# fix pointers for 64 bits
-	if use amd64 || use ia64; then
+	if use amd64; then
 		sed -e 's/INTEGER PIXMAP/INTEGER*8 PIXMAP/g' \
 			-i drivers/{gi,pp,wd}driv.f || die "sed 64bits failed"
 	fi

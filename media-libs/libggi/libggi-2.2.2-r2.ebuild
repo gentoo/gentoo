@@ -47,7 +47,7 @@ src_configure() {
 
 	use svga || myconf="${myconf} --disable-svga --disable-vgagl"
 
-	if use amd64 || use ppc64 || use ia64 ; then
+	if use amd64 || use ppc64 ; then
 		myconf="${myconf} --enable-64bitc"
 	else
 		myconf="${myconf} --disable-64bitc"
