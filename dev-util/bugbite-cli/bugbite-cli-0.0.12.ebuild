@@ -15,7 +15,7 @@ IUSE="static test"
 RESTRICT="!test? ( test ) "
 
 BDEPEND="
-	>=virtual/rust-1.75
+	>=virtual/rust-1.79
 	test? ( dev-util/cargo-nextest )
 "
 
