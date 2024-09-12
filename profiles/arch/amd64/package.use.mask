@@ -70,10 +70,6 @@ app-admin/syslog-ng -mqtt
 # Refind is only available on a subset of arches
 sys-kernel/installkernel -refind
 
-# Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
-# dev-python/PyQt6 and dev-python/pyside6 are keyworded here
-dev-python/QtPy -pyqt6 -pyside6
-
 # Michal Privoznik <michal.privoznik@gmail.com> (2024-01-21)
 # virtiofsd is available here
 app-emulation/libvirt -virtiofsd
