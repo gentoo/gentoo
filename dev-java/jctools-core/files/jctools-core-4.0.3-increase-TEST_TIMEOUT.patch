@@ -1,5 +1,6 @@
 https://bugs.gentoo.org/863977
 https://bugs.gentoo.org/924135
+
 --- a/src/test/java/org/jctools/util/TestUtil.java
 +++ b/src/test/java/org/jctools/util/TestUtil.java
 @@ -19,7 +19,7 @@ import static org.jctools.util.UnpaddedQueueFactory.newUnpaddedQueue;
