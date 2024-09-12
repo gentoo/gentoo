@@ -622,10 +622,6 @@ dev-haskell/haskell-src-exts test
 # Missing keywords, bug #524352
 >=app-accessibility/orca-3.12.3 braille
 
-# Christoph Junghans <junghans@gentoo.org> (2014-07-21)
-# Missing keywords on sci-libs/libcerf (bug 517726)
-sci-visualization/gnuplot libcerf
-
 # Pacho Ramos <pacho@gentoo.org> (2014-04-12)
 # Missing keywords, bug #507490
 net-misc/modemmanager mbim
