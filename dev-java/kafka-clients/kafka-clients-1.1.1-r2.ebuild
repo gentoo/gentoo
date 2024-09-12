@@ -20,7 +20,7 @@ KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 CP_DEPEND="
 	>=dev-java/lz4-java-1.4.1:0
 	>=dev-java/slf4j-api-1.7.25:0
-	>=dev-java/snappy-java-1.1.7.1:1.1
+	>=dev-java/snappy-java-1.1.10.5-r2:0
 "
 
 DEPEND="
