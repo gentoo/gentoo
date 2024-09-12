@@ -31,7 +31,7 @@ DEPEND="
 		x11-libs/libXrandr:=[${MULTILIB_USEDEP}]
 	)
 "
-PDEPEND="layers? ( media-libs/vulkan-layers:=[${MULTILIB_USEDEP}] )"
+PDEPEND="layers? ( media-libs/vulkan-layers[${MULTILIB_USEDEP}] )"
 
 multilib_src_configure() {
 	# Integrated clang assembler doesn't work with x86 - Bug #698164
