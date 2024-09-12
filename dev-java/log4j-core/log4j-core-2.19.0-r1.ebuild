@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -51,7 +51,7 @@ CP_DEPEND="
 	dev-java/jackson-dataformat-yaml:0
 	dev-java/jansi:2
 	dev-java/javax-mail:0
-	dev-java/jctools-core:3
+	>=dev-java/jctools-core-4.0.3-r1:0
 	dev-java/jeromq:0
 	dev-java/kafka-clients:0
 	dev-java/lmax-disruptor:0
