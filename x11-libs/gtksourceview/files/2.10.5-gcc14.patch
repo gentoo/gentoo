@@ -1,0 +1,21 @@
+
+Fix build with gcc-14.
+
+Backported version of patch from:
+https://gitlab.gnome.org/GNOME/gtksourceview/-/commit/b25e71c57fc934a7ce36e51826af9fa7c2cf9a80
+
+Bug: https://bugs.gentoo.org/937626
+
+Signed-off-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+
+--- gtksourceview-2.10.5/gtksourceview/gtksourceview.c	2010-08-22 13:45:05.000000000 +0200
++++ gtksourceview-2.10.5-gcc14/gtksourceview/gtksourceview.c	2024-08-09 16:11:37.319493797 +0200
+@@ -1766,7 +1766,7 @@ set_source_buffer (GtkSourceView *view,
+ 
+ 	if (buffer && GTK_IS_SOURCE_BUFFER (buffer))
+ 	{
+-		view->priv->source_buffer = g_object_ref (buffer);
++		view->priv->source_buffer = g_object_ref (GTK_SOURCE_BUFFER (buffer));
+ 
+ 		g_signal_connect (buffer,
+ 				  "highlight_updated",
