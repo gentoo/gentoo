@@ -53,7 +53,6 @@ RDEPEND="
 	dev-libs/mpdecimal:=
 	dev-python/gentoo-common
 	>=sys-libs/zlib-1.1.3:=
-	virtual/libcrypt:=
 	virtual/libintl
 	ensurepip? ( dev-python/ensurepip-pip )
 	gdbm? ( sys-libs/gdbm:=[berkdb] )
@@ -211,7 +210,7 @@ build_cbuild_python() {
 		# We disabled these for CBUILD because Python's setup.py can't handle locating
 		# libdir correctly for cross. This should be rechecked for the pure Makefile approach,
 		# and uncommented if needed.
-		#_ctypes _crypt
+		#_ctypes
 	EOF
 
 	ECONF_SOURCE="${S}" econf_build "${myeconfargs_cbuild[@]}"
