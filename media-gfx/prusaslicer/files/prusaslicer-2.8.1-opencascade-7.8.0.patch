@@ -1,0 +1,20 @@
+--- a/src/occt_wrapper/CMakeLists.txt
++++ b/src/occt_wrapper/CMakeLists.txt
+@@ -19,14 +19,11 @@ include(GenerateExportHeader)
+ 
+ generate_export_header(OCCTWrapper)
+ 
+-find_package(OpenCASCADE 7.6.1 REQUIRED)
++find_package(OpenCASCADE REQUIRED)
+ 
+ set(OCCT_LIBS
+-    TKXDESTEP
+-    TKSTEP
+-    TKSTEP209
+-    TKSTEPAttr
+-    TKSTEPBase
++    TKDESTEP
++    TKDESTL
+     TKXCAF
+     TKXSBase
+     TKVCAF
