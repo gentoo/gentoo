@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/xerial/snappy-java/"
 HCV="3.3.5"
 SRC_URI="https://github.com/xerial/snappy-java/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	test? ( https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-common/${HCV}/hadoop-common-${HCV}.jar )"
-S="${WORKDIR}/snappy-java-${PV}"
+S="${WORKDIR}/${P}"
 
 LICENSE="Apache-2.0"
 SLOT="1.1"
@@ -26,7 +26,7 @@ CP_DEPEND="dev-java/osgi-core:0"
 
 CDEPEND="
 	app-arch/snappy
-	dev-libs/bitshuffle
+	>=dev-libs/bitshuffle-0.3.5-r1
 "
 
 DEPEND=">=virtual/jdk-1.8:*
