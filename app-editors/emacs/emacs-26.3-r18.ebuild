@@ -125,7 +125,6 @@ src_prepare() {
 src_configure() {
 	strip-flags
 	filter-flags -pie					#526948
-
 	replace-flags "-O[3-9]" -O2
 
 	# We want floating-point arithmetic to be correct #933380
