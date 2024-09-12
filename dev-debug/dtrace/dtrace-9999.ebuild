@@ -76,6 +76,12 @@ QA_FLAGS_IGNORED="
 	usr/.*/dtrace/testsuite/test/triggers/.*
 "
 
+# TODO: report upstream (bug #938221) although it seems like it's
+# not relevant given it's a BPF object.
+QA_EXECSTACK="
+	usr/*/dtrace/bpf_dlib.*
+"
+
 pkg_pretend() {
 	# TODO: optional kernel patches
 
