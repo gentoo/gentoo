@@ -171,26 +171,54 @@ pkg_postinst() {
 	# We need a udev reload to pick up the CUSE device node rules.
 	udev_reload
 
-	# TODO: Restart it on upgrade? (it will carry across its own persistent state)
+	# TODO: One option for this is to detect when it's needed (DOF stash layout changes)
+	# and then e.g. sleep and restart for the user.
 	if [[ -n ${REPLACING_VERSIONS} ]]; then
 		# TODO: Make this more intelligent wrt comparison
 		if systemd_is_booted ; then
-			einfo "Restart the DTrace 'dtprobed' service after upgrades:"
+			einfo "Restart the DTrace 'dtprobed' service after upgrades"
+			einfo "once all dtraces are stopped with:"
 			einfo " systemctl try-restart dtprobed"
 		else
-			einfo "Restart the DTrace 'dtprobed' service with:"
+			einfo "Restart the DTrace 'dtprobed' service after upgrades"
+			einfo "once all dtraces are stopped with:"
 			einfo " /etc/init.d/dtprobed restart"
 		fi
 	else
 		einfo "See https://wiki.gentoo.org/wiki/DTrace for getting started."
 
-		if systemd_is_booted ; then
-			einfo "Enable and start the DTrace 'dtprobed' service with:"
+		# We can't do magic for people with ROOT=.
+		if [[ -n ${ROOT} ]] ; then
+			einfo "Enable and start the DTrace 'dtprobed' service for systemd with:"
 			einfo " systemctl enable --now dtprobed"
-		else
-			einfo "Enable and start the DTrace 'dtprobed' service with:"
+			einfo
+			einfo "Enable and start the DTrace 'dtprobed' service for OpenRC with:"
 			einfo " rc-update add dtprobed"
 			einfo " /etc/init.d/dtprobed start"
+			return
+		fi
+
+		# For first installs, we enable the service and start it.
+		#
+		# This is unusual, but the behaviour without dtprobed running
+		# is untested/unsupported. It's not a network service, it
+		# has no configuration, reads a single device node, and
+		# does all parsing within a seccomp jail. It also leads
+		# to hard-to-diagnose issues because USDT probes won't
+		# be registered and an application might have already
+		# started up which needs to be traced.
+		if systemd_is_booted ; then
+			ebegin "Enabling & starting DTrace 'dtprobed' service"
+			systemctl enable --now dtprobed
+			eend $?
+		else
+			ebegin "Enabling DTrace 'dtprobed' service"
+			rc-update add dtprobed
+			eend $?
+
+			ebegin "Starting DTrace 'dtprobed' service"
+			rc-service start dtprobed
+			eend $?
 		fi
 	fi
 }
