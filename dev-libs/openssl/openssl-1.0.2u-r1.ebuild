@@ -160,12 +160,6 @@ multilib_src_configure() {
 	#       ec_nistp_64_gcc_128="enable-ec_nistp_64_gcc_128"
 	#fi
 
-	# https://github.com/openssl/openssl/issues/2286
-	if use ia64 ; then
-		replace-flags -g3 -g2
-		replace-flags -ggdb3 -ggdb2
-	fi
-
 	local sslout=$(./gentoo.config)
 	einfo "Use configuration ${sslout:-(openssl knows best)}"
 	local config="Configure"

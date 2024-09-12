@@ -23,7 +23,6 @@ S="${WORKDIR}"
 src_install() {
 	exeinto /opt/bin
 	use amd64 && newexe Linux/lsiutil.x86_64 lsiutil
-	use ia64 && newexe Linux/lsiutil.ia64 lsiutil
 	use x86 && doexe Linux/lsiutil
 
 	dodoc changes.txt

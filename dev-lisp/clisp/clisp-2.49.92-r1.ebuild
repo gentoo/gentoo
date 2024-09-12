@@ -54,8 +54,8 @@ BUILDDIR="builddir"
 #  * oracle: can't install oracle-instantclient
 
 src_prepare() {
-	# More than -O1 breaks alpha/ia64
-	if use alpha || use ia64; then
+	# More than -O1 breaks alpha
+	if use alpha; then
 		sed -i -e 's/-O2//g' src/makemake.in || die
 	fi
 	eapply "${FILESDIR}"/"${P}"-after_glibc_cfree_bdb.patch
@@ -70,8 +70,8 @@ src_configure() {
 	# https://gitlab.com/gnu-clisp/clisp/-/issues/49
 	filter-lto
 
-	# We need this to build on alpha/ia64
-	if use alpha || use ia64; then
+	# We need this to build on alpha
+	if use alpha; then
 		replace-flags -O? -O1
 	fi
 

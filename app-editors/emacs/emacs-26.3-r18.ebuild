@@ -126,11 +126,7 @@ src_configure() {
 	strip-flags
 	filter-flags -pie					#526948
 
-	if use ia64; then
-		replace-flags "-O[2-9]" -O1		#325373
-	else
-		replace-flags "-O[3-9]" -O2
-	fi
+	replace-flags "-O[3-9]" -O2
 
 	# We want floating-point arithmetic to be correct #933380
 	append-flags -fno-fast-math -ffp-contract=off

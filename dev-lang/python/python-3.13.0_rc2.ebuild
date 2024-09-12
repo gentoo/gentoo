@@ -271,12 +271,6 @@ src_configure() {
 				-x test_strtod
 			)
 			;;
-		ia64*)
-			COMMON_TEST_SKIPS+=(
-				-x test_ctypes
-				-x test_external_inspection
-			)
-			;;
 		mips*)
 			COMMON_TEST_SKIPS+=(
 				-x test_ctypes
@@ -371,11 +365,6 @@ src_configure() {
 					# bug 931908
 					-x test_exceptions
 					-x test_os
-				)
-				;;
-			ia64*)
-				profile_task_flags+=(
-					-x test_signal
 				)
 				;;
 			powerpc64-*) # big endian
