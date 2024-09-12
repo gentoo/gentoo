@@ -157,6 +157,7 @@ sci-physics/qmeq
 ~media-gfx/skanpage-23.08.5
 ~sys-block/partitionmanager-23.08.5
 ~sys-libs/kpmcore-23.08.5
+<media-libs/pulseaudio-qt-1.4.0
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-09-07)
 # Plasma 6 is not planned to be going stable on x86.
