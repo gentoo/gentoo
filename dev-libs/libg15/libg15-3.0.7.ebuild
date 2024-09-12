@@ -7,7 +7,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://gitlab.com/menelkir/libg15.git"
 else
-	KEYWORDS="amd64 ppc ~ppc64 x86"
+	KEYWORDS="amd64 ppc ppc64 x86"
 	SRC_URI="https://gitlab.com/menelkir/${PN}/-/archive/${PV}/${P}.tar.bz2"
 fi
 
