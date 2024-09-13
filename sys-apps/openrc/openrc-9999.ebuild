@@ -18,13 +18,13 @@ fi
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="audit bash caps debug pam newnet +netifrc selinux s6 +sysvinit sysv-utils unicode"
+IUSE="audit bash debug pam newnet +netifrc selinux s6 +sysvinit sysv-utils unicode"
 
 COMMON_DEPEND="
+	sys-libs/libcap
+	sys-process/psmisc
 	pam? ( sys-libs/pam )
 	audit? ( sys-process/audit )
-	caps? ( sys-libs/libcap )
-	sys-process/psmisc
 	selinux? (
 		sys-apps/policycoreutils
 		>=sys-libs/libselinux-2.6
