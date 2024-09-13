@@ -54,7 +54,6 @@ src_configure() {
 	local emesonargs=(
 		$(meson_feature audit)
 		"-Dbranding=\"Gentoo Linux\""
-		$(meson_feature caps capabilities)
 		$(meson_use newnet)
 		-Dos=Linux
 		$(meson_use pam)
