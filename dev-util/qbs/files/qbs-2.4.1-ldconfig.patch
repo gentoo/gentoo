@@ -1,5 +1,9 @@
-diff --git a/share/qbs/modules/cpp/LinuxGCC.qbs b/share/qbs/modules/cpp/LinuxGCC.qbs
-index 4b594a0aa..9ad2a613b 100644
+https://bugs.gentoo.org/939142
+
+Exact cause unknown, but running qbs in portage's sandbox hangs
+for a few people while running ldconfig, and using "env" seemingly
+helps. Better (potentially upstreamable) patch welcome if someone
+can figure out the right fix.
 --- a/share/qbs/modules/cpp/LinuxGCC.qbs
 +++ b/share/qbs/modules/cpp/LinuxGCC.qbs
 @@ -48,7 +48,7 @@ UnixGCC {
