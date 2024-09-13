@@ -21,10 +21,6 @@
 # dev-python/pyside6 is not stable here
 dev-python/QtPy pyside6
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-06-13)
-# Waiting for KF6 stabilisation in bug #934478
-app-crypt/pinentry qt6
-
 # Sam James <sam@gentoo.org> (2024-04-30)
 # sys-block/nbdkit is not yet marked stable here
 app-emulation/libvirt nbd
