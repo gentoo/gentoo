@@ -290,6 +290,7 @@ kde-apps/dolphin-plugins-dropbox
 mail-client/thunderbird-bin
 mate-extra/caja-dropbox
 media-gfx/brscan4
+media-gfx/evoluspencil
 media-libs/amdgpu-pro-vulkan
 media-sound/baudline
 media-sound/teamspeak-server
