@@ -141,21 +141,16 @@ DEPEND="
 	sys-kernel/linux-headers
 	X? ( x11-base/xorg-proto )
 "
-# gitapply.sh prefers git but can fallback to patch+extras
+# gitapply.sh "can" work without git but that is hardly tested
+# and known failing with some versions, so force real git
 BDEPEND="
 	${PYTHON_DEPS}
-	|| (
-		dev-vcs/git
-		(
-			sys-apps/gawk
-			sys-apps/util-linux
-		)
-	)
 	|| (
 		sys-devel/binutils
 		sys-devel/lld
 	)
 	dev-lang/perl
+	dev-vcs/git
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
