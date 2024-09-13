@@ -15,7 +15,7 @@ S="${WORKDIR}/RetroShare"
 LICENSE="AGPL-3 Apache-2.0 CC-BY-SA-4.0 GPL-2 GPL-3 LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cli +gui +jsonapi keyring libupnp +miniupnp +service +sqlcipher plugins"
+IUSE="cli +gui +jsonapi keyring libupnp +miniupnp plugins +service +sqlcipher"
 
 REQUIRED_USE="
 	|| ( gui service )
@@ -27,33 +27,33 @@ RDEPEND="
 	app-arch/bzip2
 	dev-libs/openssl:0=
 	sys-libs/zlib
-	keyring? ( app-crypt/libsecret )
 	gui? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtmultimedia:5
 		dev-qt/qtnetwork:5
 		dev-qt/qtprintsupport:5
-		dev-qt/qtxml:5
 		dev-qt/qtwidgets:5
 		dev-qt/qtx11extras:5
+		dev-qt/qtxml:5
 		x11-libs/libX11
 		x11-libs/libXScrnSaver
 	)
+	keyring? ( app-crypt/libsecret )
 	libupnp? ( net-libs/libupnp:= )
 	miniupnp? ( net-libs/miniupnpc:= )
-	sqlcipher? ( dev-db/sqlcipher )
-	!sqlcipher? ( dev-db/sqlite:3 )
 	plugins? (
 		media-libs/speex
 		media-libs/speexdsp
 		<media-video/ffmpeg-5
 	)
+	sqlcipher? ( dev-db/sqlcipher )
+	!sqlcipher? ( dev-db/sqlite:3 )
 "
 DEPEND="
 	${RDEPEND}
-	jsonapi? ( >=dev-libs/rapidjson-1.1.0 )
 	gui? ( dev-qt/designer:5 )
+	jsonapi? ( >=dev-libs/rapidjson-1.1.0 )
 "
 BDEPEND="
 	dev-build/cmake
