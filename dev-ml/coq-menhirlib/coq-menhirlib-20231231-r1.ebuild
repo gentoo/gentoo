@@ -24,8 +24,8 @@ SLOT="0/${PV}"
 IUSE="+ocamlopt"
 
 RDEPEND="
+	<sci-mathematics/coq-8.20.0:=
 	>=dev-ml/menhir-${PV}:=
-	sci-mathematics/coq:=
 "
 DEPEND="
 	${RDEPEND}
