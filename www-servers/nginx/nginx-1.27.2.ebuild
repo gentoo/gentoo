@@ -710,7 +710,7 @@ src_configure() {
 		--prefix="${EPREFIX}"/usr \
 		--conf-path="${EPREFIX}"/etc/${PN}/${PN}.conf \
 		--error-log-path="${EPREFIX}"/var/log/${PN}/error_log \
-		--pid-path="${EPREFIX}"/run/${PN}.pid \
+		--pid-path="${EPREFIX}"/run/${PN}/${PN}.pid \
 		--lock-path="${EPREFIX}"/run/lock/${PN}.lock \
 		--with-cc-opt="-I${ESYSROOT}/usr/include" \
 		--with-ld-opt="-L${ESYSROOT}/usr/$(get_libdir)" \
