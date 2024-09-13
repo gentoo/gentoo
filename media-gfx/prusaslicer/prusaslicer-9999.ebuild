@@ -63,9 +63,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.6.0-dont-force-link-to-wayland-and-x11.patch"
 	"${FILESDIR}/${PN}-2.8.0-missing-includes.patch"
 	"${FILESDIR}/${PN}-2.8.0-wxwidgets-3.2.4.patch"
-	"${FILESDIR}/${PN}-2.8.0-cgal-6.0.patch"
 	"${FILESDIR}/${PN}-2.8.1-fixed-linking.patch"
-	"${FILESDIR}/${PN}-2.8.1-eigen3.patch"
+	"${FILESDIR}/${PN}-2.8.1-cgal-6.0.patch"
+	"${FILESDIR}/${PN}-2.8.1-fstream.patch"
 )
 
 src_prepare() {
@@ -79,9 +79,7 @@ src_prepare() {
 		src/occt_wrapper/CMakeLists.txt || die
 
 	find . -type f \( -name '*.cpp' -o -name '*.h' -o -name '*.hpp' \) -exec \
-		sed -i 's|#include <Eigen/|#include <eigen3/Eigen/|g' {} + || die
-	find . -type f \( -name '*.cpp' -o -name '*.h' -o -name '*.hpp' \) -exec \
-		sed -i 's|#include <unsupported/Eigen/|#include <eigen3/unsupported/Eigen/|g' {} + || die
+		sed -i 's|#include <Eigen/|#include <eigen3/Eigen/|g; s|#include <unsupported/Eigen/|#include <eigen3/unsupported/Eigen/|g' {} + || die
 
 	cmake_src_prepare
 }
