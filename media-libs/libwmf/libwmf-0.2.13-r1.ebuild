@@ -6,7 +6,10 @@ EAPI=8
 inherit autotools gnome2-utils
 
 DESCRIPTION="A library for reading vector images in Microsoft's Windows Metafile Format (WMF)"
-HOMEPAGE="https://github.com/caolanm/libwmf http://wvware.sourceforge.net/"
+HOMEPAGE="
+	https://github.com/caolanm/libwmf
+	https://wvware.sourceforge.net/
+"
 SRC_URI="https://github.com/caolanm/libwmf/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2"
