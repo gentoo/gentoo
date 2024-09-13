@@ -1,0 +1,13 @@
+diff --git a/share/qbs/modules/cpp/LinuxGCC.qbs b/share/qbs/modules/cpp/LinuxGCC.qbs
+index 4b594a0aa..9ad2a613b 100644
+--- a/share/qbs/modules/cpp/LinuxGCC.qbs
++++ b/share/qbs/modules/cpp/LinuxGCC.qbs
+@@ -48,7 +48,7 @@ UnixGCC {
+             var paths = [];
+             var ldconfig = new Process();
+             try {
+-                var success = ldconfig.exec("ldconfig", ["-vNX"]);
++                var success = ldconfig.exec("env", ["ldconfig", ["-vNX"]]);
+                 if (success === -1)
+                     return;
+                 var line;
