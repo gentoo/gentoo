@@ -24,7 +24,7 @@ _IUSE_QT_MODULES="
 	printsupport qml quick sensors serialport speech +sql svg testlib
 	webchannel webengine websockets +widgets +xml
 "
-IUSE="+pyqt5 pyqt6 pyside2 pyside6 ${_IUSE_QT_MODULES}"
+IUSE="+pyqt5 +pyqt6 pyside2 pyside6 ${_IUSE_QT_MODULES}"
 unset _IUSE_QT_MODULES
 
 REQUIRED_USE="
