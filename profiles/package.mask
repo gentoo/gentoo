@@ -374,13 +374,6 @@ app-text/cuneiform
 >=dev-libs/gobject-introspection-common-1.80
 >=x11-terms/ptyxis-46
 
-# Bernard Cafarelli <voyageur@gentoo.org> (2024-08-08)
-# Last release in 2004, website disappeared a long time ago.
-# Bad code quality, not packaged in other distros or dockapps.net
-# Many alternatives for audio recording available
-# Removal on 2024-09-08, bug #931764
-x11-plugins/wmrecord
-
 # Joonas Niilola <juippis@gentoo.org> (2024-08-07)
 # Upstream doesn't recommend updating from 115 just yet. New
 # installs are fine. Downgrading from 128 to 115 may be impossible
