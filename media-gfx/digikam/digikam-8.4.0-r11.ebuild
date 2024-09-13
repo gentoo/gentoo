@@ -14,7 +14,7 @@ SRC_URI="mirror://kde/stable/${PN}/${PV}/digiKam-${PV/_/-}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="addressbook calendar geolocation gphoto2 heif +imagemagick jpegxl +lensfun mysql openmp +panorama scanner semantic-desktop spell video"
 
 # bug 366505
