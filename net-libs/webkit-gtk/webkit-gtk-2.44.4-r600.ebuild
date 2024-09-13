@@ -26,16 +26,23 @@ REQUIRED_USE="|| ( aqua wayland X )"
 # https://bugs.webkit.org/show_bug.cgi?id=215986
 RESTRICT="test"
 
-# Dependencies found at Source/cmake/OptionsGTK.cmake
-# Missing WebRTC support, but ENABLE_WEB_RTC is experimental upstream
-# media-libs/mesa dep is for libgbm
-# >=gst-plugins-opus-1.14.4-r1 for opusparse (required by MSE)
-# TODO: gst-plugins-base[X] is only needed when build configuration ends up
-#       with GLX set, but that's a bit automagic too to fix
-# Softblocking <webkit-gtk-2.38:4 and <webkit-gtk-2.44:4.1 as since 2.44 this SLOT ships the WebKitWebDriver binary;
-# WebKitWebDriver is an automation tool for web developers, which lets one control the browser via WebDriver API - only one SLOT can ship it
-# TODO: There is build-time conditional depend on gtk-4.13.4 for using more efficient DmaBuf buffer type instead of EglImage, and gtk-4.13.7 for a11y support - ensure it at some point with a min dep
-# TODO: at-spi2-core (atspi-2.pc) is checked at build time, but not linked to in the gtk4 SLOT - is it an upstream check bug and only gtk-4.14 a11y support is used?
+# Dependencies can be found in Source/cmake/OptionsGTK.cmake.
+#
+# * Missing WebRTC support, but ENABLE_WEB_RTC is experimental upstream.
+# * media-libs/mesa dep is for libgbm
+# * >=gst-plugins-opus-1.14.4-r1 for opusparse (required by MSE)
+# * TODO: gst-plugins-base[X] is only needed when build configuration ends up
+#         with GLX set, but that's a bit automagic too to fix
+# * Softblocking <webkit-gtk-2.38:4 and <webkit-gtk-2.44:4.1 as since
+# * 2.44 this SLOT ships the WebKitWebDriver binary; WebKitWebDriver is
+#   an automation tool for web developers, which lets one control the
+#   browser via WebDriver API - only one SLOT can ship it.
+# * TODO: There is build-time conditional depend on gtk-4.13.4 for using
+#   more efficient DmaBuf buffer type instead of EglImage, and
+#   gtk-4.13.7 for a11y support - ensure it at some point with a min dep
+# * at-spi2-core (atspi-2.pc) is checked at build time, but not linked
+#   to in the gtk4 SLOT - is it an upstream check bug and only gtk-4.14
+#   a11y support is used?
 RDEPEND="
 	>=x11-libs/cairo-1.16.0[X?]
 	>=media-libs/fontconfig-2.13.0:1.0
