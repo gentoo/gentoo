@@ -45,6 +45,7 @@ CMAKE_SKIP_TESTS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.3.1-qtver.patch
+	"${FILESDIR}"/${PN}-2.4.1-ldconfig.patch
 )
 
 python_check_deps() {
