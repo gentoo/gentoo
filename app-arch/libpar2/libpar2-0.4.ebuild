@@ -20,6 +20,9 @@ BDEPEND="virtual/pkgconfig"
 src_prepare() {
 	default
 	elibtoolize
+
+	# broken distfile, see https://bugs.gentoo.org/939532
+	touch config.h.in || die
 }
 
 src_configure() {
