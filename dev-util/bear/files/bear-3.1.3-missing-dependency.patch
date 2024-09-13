@@ -1,0 +1,35 @@
+From 3ba056a6cdebd1608279e89b021e7c28bcee3ea3 Mon Sep 17 00:00:00 2001
+From: Ruben Carlo Benante <rcb@beco.cc>
+Date: Thu, 28 Mar 2024 23:29:41 -0300
+Subject: [PATCH] always_print_primitive_fields only if GOOGLE_PROTOBUF_VERSION
+ < 5026000 ref #566
+
+---
+ source/intercept/source/collect/db/EventsDatabaseWriter.cc | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/source/intercept/source/collect/db/EventsDatabaseWriter.cc b/source/intercept/source/collect/db/EventsDatabaseWriter.cc
+index 0403a1ae..bd30cb29 100644
+--- a/source/intercept/source/collect/db/EventsDatabaseWriter.cc
++++ b/source/intercept/source/collect/db/EventsDatabaseWriter.cc
+@@ -21,6 +21,8 @@
+ #include "libsys/Errors.h"
+ 
+ #include <google/protobuf/util/json_util.h>
++#include <google/protobuf/stubs/common.h>
++
+ #include <fmt/format.h>
+ 
+ #include <sys/types.h>
+@@ -36,7 +38,9 @@ namespace {
+     JsonPrintOptions create_print_options() {
+         JsonPrintOptions print_options;
+         print_options.add_whitespace = false;
+-        print_options.always_print_primitive_fields = true;
++#if GOOGLE_PROTOBUF_VERSION < 5026000
++            print_options.always_print_primitive_fields = true;
++#endif
+         print_options.preserve_proto_field_names = true;
+         print_options.always_print_enums_as_ints = false;
+         return print_options;
+

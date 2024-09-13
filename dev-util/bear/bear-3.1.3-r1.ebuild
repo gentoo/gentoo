@@ -44,6 +44,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-3.1.3-missing-dependency.patch"
+)
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
