@@ -39,6 +39,12 @@ python_test() {
 		tests/test_unit.py::Test10_WithLeftRecursionParsingBoundedMemo::testEmptyExpressionsAreHandledProperly
 	)
 
+	if ! has_version "dev-python/matplotlib[${PYTHON_USEDEP}]"; then
+		EPYTEST_IGNORE+=(
+			tests/test_matplotlib_cases.py
+		)
+	fi
+
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
 }
