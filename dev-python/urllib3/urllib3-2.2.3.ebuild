@@ -44,6 +44,7 @@ RDEPEND="
 	zstd? ( >=dev-python/zstandard-0.18.0[${PYTHON_USEDEP}] )
 "
 BDEPEND="
+	dev-python/hatch-vcs[${PYTHON_USEDEP}]
 	test? (
 		$(python_gen_cond_dep "
 			${RDEPEND}
