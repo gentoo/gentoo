@@ -28,5 +28,4 @@ media-libs/libaom
 gui-libs/gtk:4
 
 # Mask pam_ldap and nss_ldap - openldap dep missing.
-sys-auth/pam_ldap
 sys-auth/nss_ldap
