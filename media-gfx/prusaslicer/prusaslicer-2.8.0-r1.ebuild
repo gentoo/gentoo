@@ -64,6 +64,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.8.0-missing-includes.patch"
 	"${FILESDIR}/${PN}-2.8.0-fixed-linking.patch"
 	"${FILESDIR}/${PN}-2.8.0-wxwidgets-3.2.4.patch"
+	"${FILESDIR}/${PN}-2.8.0-cgal-6.0.patch"
 )
 
 src_prepare() {
