@@ -63,6 +63,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.6.0-dont-force-link-to-wayland-and-x11.patch"
 	"${FILESDIR}/${PN}-2.8.0-missing-includes.patch"
 	"${FILESDIR}/${PN}-2.8.0-fixed-linking.patch"
+	"${FILESDIR}/${PN}-2.8.0-wxwidgets-3.2.4.patch"
 )
 
 src_prepare() {
