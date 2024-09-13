@@ -1,7 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit libtool
 
 DESCRIPTION="A library for par2, extracted from par2cmdline"
 HOMEPAGE="https://launchpad.net/libpar2/"
@@ -14,6 +16,11 @@ KEYWORDS="amd64 ppc x86"
 RDEPEND="dev-libs/libsigc++:2"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 src_configure() {
 	econf --disable-static
