@@ -312,7 +312,13 @@ eautoreconf() {
 	else
 		eautoconf --force
 	fi
-	[[ ${AT_NOEAUTOHEADER} != "yes" ]] && eautoheader
+	if [[ ${AT_NOEAUTOHEADER} != "yes" ]] ; then
+		if [[ ${WANT_AUTOCONF} == "2.1" ]] ; then
+			eautoheader
+		else
+			eautoheader --force
+		fi
+	fi
 	[[ ${AT_NOEAUTOMAKE} != "yes" ]] && FROM_EAUTORECONF="yes" eautomake ${AM_OPTS}
 
 	if [[ ${AT_NOELIBTOOLIZE} != "yes" ]] ; then
