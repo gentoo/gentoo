@@ -22,11 +22,11 @@ RESTRICT="test"
 RDEPEND="
 	<dev-lang/ocaml-5
 	>=dev-lang/ocaml-4.14.1
-	dev-lang/ocaml:=[ocamlopt?]
+	<dev-ml/menhir-20240715:=
 	>=dev-ml/dune-2.9:=
 	>=dev-ml/yojson-2.0.0:=
+	dev-lang/ocaml:=[ocamlopt?]
 	dev-ml/csexp:=
-	dev-ml/menhir:=
 	emacs? (
 		>=app-editors/emacs-23.1:*
 		app-emacs/auto-complete
