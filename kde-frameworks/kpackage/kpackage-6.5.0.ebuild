@@ -23,8 +23,8 @@ RDEPEND="${DEPEND}"
 BDEPEND="man? ( >=kde-frameworks/kdoctools-${PVCUT}:6 )"
 
 CMAKE_SKIP_TESTS=(
-	# bug 650214
-	plasma-plasmoidpackagetest
+	# bugs 650214, 939041
+	plasmoidpackagetest
 	# requires network access
 	testpackage-appstream
 )
