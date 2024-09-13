@@ -14,7 +14,7 @@ SRC_URI="https://downloads.sourceforge.net/project/kde-cdemu-manager/kde_cdemu-$
 S="${WORKDIR}/${MY_PN}"
 
 LICENSE="GPL-2"
-SLOT="5"
+SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 

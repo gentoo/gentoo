@@ -6,3 +6,4 @@ move dev-python/parse_type dev-python/parse-type
 slotmove app-admin/calamares 5 0
 slotmove x11-misc/kronometer 5 0
 slotmove app-dicts/dikt 5 0
+slotmove app-cdr/kcdemu 5 0
