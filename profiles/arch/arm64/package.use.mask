@@ -55,10 +55,6 @@ www-servers/nginx test
 # Supports 64-bit NEON
 media-libs/zita-resampler -cpu_flags_arm_neon
 
-# Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
-# dev-python/PyQt6 is keyworded here
-dev-python/QtPy -pyqt6
-
 # Michal Privoznik <michal.privoznik@gmail.com> (2024-01-18)
 # No sys-block/nbdkit on arm, yet
 app-emulation/libvirt nbd
