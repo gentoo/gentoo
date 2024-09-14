@@ -18,8 +18,8 @@ SRC_URI="https://download.eclipse.org/eclipse/downloads/drops4/${DMF}/ecjsrc-${P
 S="${WORKDIR}"
 
 LICENSE="EPL-1.0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 SLOT="4.31"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
 BDEPEND="app-arch/unzip"
 COMMON_DEP="app-eselect/eselect-java"
