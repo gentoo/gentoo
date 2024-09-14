@@ -12,7 +12,7 @@
 	</longdescription>
 	<upstream>
 		<bugs-to>https://bugs.eclipse.org/bugs/enter_bug.cgi?product=Platform%38component=SWT</bugs-to>
-		<doc>https://wiki.eclipse.org/SWT</doc>
+		<doc>https://wiki.eclipse.org/SWT/</doc>
 		<remote-id type="github">eclipse-platform/eclipse.platform.swt</remote-id>
 	</upstream>
 </pkgmetadata>
