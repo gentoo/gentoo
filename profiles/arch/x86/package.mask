@@ -69,7 +69,5 @@ net-analyzer/nmapsi
 net-libs/signon-ui
 sci-geosciences/qmapshack
 >=sci-geosciences/gpsbabel-1.8.0
-sci-mathematics/rkward:5
-sci-visualization/labplot:5
 www-client/falkon
 www-client/otter
