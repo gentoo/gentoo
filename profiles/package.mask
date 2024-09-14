@@ -46,6 +46,12 @@ dev-util/cucumber-gherkin:22
 dev-ruby/hiera-eyaml:3
 dev-util/aruba:0
 
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2024-09-14)
+# No releases since 2016. Considering current state of development, it doesn't
+# look like it's ever getting updated to Qt6. The suggested replacement is its
+# fork media-sound/strawberry. Removal on 2024-10-14.
+media-sound/clementine
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-09-10)
 # ia64 only package. Since we drop ia64, we can remove this package.
 # Removal on 2024-10-10.  Bug #939298.
