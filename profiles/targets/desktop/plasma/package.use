@@ -20,10 +20,7 @@ dev-libs/libjcat gpg pkcs7
 # qtwebchannel package is fairly small, and python bindings are
 # required by some popular desktop packages such as calibre,
 # qutebrowser, and freecad (or indirectly through PyQt*WebEngine).
-dev-python/PyQt5 webchannel
 dev-python/PyQt6 webchannel
-dev-python/pyside2 designer location positioning quick
-dev-python/pyside2 printsupport webchannel
 dev-python/pyside6 webchannel
 
 # Required by sys-apps/flatpak, a dependency of kde-plasma/discover
@@ -40,9 +37,6 @@ kde-apps/yakuake absolute-position
 
 # Required by kde-plasma/plasma-workspace, in ksmserver
 kde-plasma/kde-cli-tools kdesu
-
-# Required by kde-frameworks/kapidox
-media-gfx/graphviz python
 
 # Required by media-gfx/graphviz which is required by kde-apps/kcachegrind
 media-libs/gd fontconfig
@@ -68,7 +62,6 @@ net-firewall/nftables json python xtables
 sys-libs/zlib minizip
 
 # Keep existing defaults after dropping IUSE=phonon from make.defaults
-<app-office/calligra-3.3 phonon
 kde-apps/kio-extras phonon
 kde-apps/marble phonon
 
@@ -77,7 +70,3 @@ kde-plasma/kwin lock
 
 # plasma profile never enabled pulseaudio. We're skipping to pipewire.
 media-video/pipewire sound-server
-
-# Expected to be available by default in Plasma
-kde-frameworks/purpose:5 kaccounts
-kde-plasma/plasma-desktop:5 kaccounts
