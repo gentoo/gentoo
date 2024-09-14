@@ -68,6 +68,5 @@ media-sound/teamspeak-client:3
 net-analyzer/nmapsi
 net-libs/signon-ui
 sci-geosciences/qmapshack
->=sci-geosciences/gpsbabel-1.8.0
 www-client/falkon
 www-client/otter
