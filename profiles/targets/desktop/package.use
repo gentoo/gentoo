@@ -25,6 +25,11 @@ app-text/poppler nss boost
 # accessibility required by kde-plasma/kwin:5
 dev-qt/qtgui:5 accessibility egl libinput
 
+# Mart Raudsepp <leio@gentoo.org> (2023-10-01)
+# kde-plasma/kwin and x11-wm/mutter[wayland] require xwayland[libei] for
+# emulated input portal for e.g. remote desktop remote input support
+x11-base/xwayland libei
+
 # Sam James <sam@gentoo.org> (2023-09-22)
 # Most people aren't going to use CMake's GUI. USE=gui is enabled by default
 # on desktop profiles and CMake is unavoidable, it feels a shame to drag in
