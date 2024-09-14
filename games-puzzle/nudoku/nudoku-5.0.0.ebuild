@@ -14,9 +14,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cairo"
 
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	sys-devel/gettext
+	virtual/pkgconfig
+"
 DEPEND="
-	>=sys-devel/gettext-0.20
 	sys-libs/ncurses:=
 	virtual/libintl
 	cairo? ( x11-libs/cairo )
