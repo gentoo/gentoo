@@ -22,7 +22,7 @@ DOCS=( doc/. )
 src_configure() {
 	econf \
 		$(use_enable nls) \
-		$(use_with ssl ssl=openssl)
+		$(use_with ssl ssl openssl)
 }
 
 pkg_postinst() {
