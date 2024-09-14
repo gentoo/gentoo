@@ -76,7 +76,7 @@ src_configure() {
 
 	econf \
 		--with-syscapstone \
-		--with-syslz4
+		--with-syslz4 \
 		--with-sysmagic \
 		--with-sysxxhash \
 		--with-syszip \
