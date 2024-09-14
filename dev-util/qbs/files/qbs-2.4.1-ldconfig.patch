@@ -11,7 +11,7 @@ can figure out the right fix.
              var ldconfig = new Process();
              try {
 -                var success = ldconfig.exec("ldconfig", ["-vNX"]);
-+                var success = ldconfig.exec("env", ["ldconfig", ["-vNX"]]);
++                var success = ldconfig.exec("env", ["ldconfig", "-vNX"]);
                  if (success === -1)
                      return;
                  var line;
