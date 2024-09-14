@@ -35,7 +35,7 @@
 
 # Hans de Graaff <graaff@gentoo.org> (2024-09-14)
 # Old slots that are not compatible with ruby32. Use the newer slots
-# instead.
+# instead. Removal on 2024-10-14.
 dev-ruby/hiera-eyaml:3
 dev-util/aruba:0
 
