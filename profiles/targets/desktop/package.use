@@ -11,8 +11,9 @@ net-p2p/transmission -qt5
 dev-qt/qtbase libproxy
 
 # Alfred Wingate <parona@protonmail.com> (2023-12-25)
-# Prefer X over gbm with REQUIRED_USE: ^^ ( gbm wayland X )
->=media-tv/kodi-20.2 X -gbm
+# Prefer wayland over X with REQUIRED_USE: ^^ ( gbm wayland X )
+# >=21.1 allows build with multiple display backends again
+<media-tv/kodi-21.1 wayland -X
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-11-12)
 # NSS: Required by kde-apps/okular[pdf]
