@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,6 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="libpng"
 SLOT="1.5"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="cpu_flags_arm_neon"
 
 RDEPEND="
 	sys-libs/zlib:=[${MULTILIB_USEDEP}]
@@ -37,14 +36,6 @@ src_prepare() {
 	default
 
 	elibtoolize
-}
-
-multilib_src_configure() {
-	local myeconfargs=(
-		$(use_enable cpu_flags_arm_neon arm-neon check)
-	)
-
-	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_compile() {
