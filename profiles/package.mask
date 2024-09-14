@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2024-09-14)
+# Old slots that are not compatible with ruby32. Use the newer slots
+# instead.
+dev-ruby/hiera-eyaml:3
+dev-util/aruba:0
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-09-10)
 # ia64 only package. Since we drop ia64, we can remove this package.
 # Removal on 2024-10-10.  Bug #939298.
