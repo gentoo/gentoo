@@ -32,7 +32,6 @@ kde-apps/umbrello:5 php
 # Prepare for KDE PIM 5 removal and avoid conflicts w/ KDE PIM 6
 app-office/kmymoney:5 addressbook
 app-office/kraft:5 pim
-media-gfx/digikam:5 addressbook
 
 # Viorel Munteanu <ceamac@gentoo.org> (2024-07-26)
 # Branch 7.1 needs a new BDEPEND for doc
