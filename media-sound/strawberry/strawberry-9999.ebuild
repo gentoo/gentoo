@@ -105,6 +105,7 @@ src_configure() {
 		-DENABLE_MOODBAR="$(usex moodbar)"
 		-DENABLE_MUSICBRAINZ="$(usex gstreamer)"
 		-DENABLE_SONGFINGERPRINTING="$(usex gstreamer)"
+		-DENABLE_SPOTIFY="$(usex gstreamer)"
 		-DENABLE_UDISKS2="$(usex udisks)"
 		-DENABLE_VLC="$(usex vlc)"
 		-DBUILD_WITH_QT6="$(usex qt6)"
