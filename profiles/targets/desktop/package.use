@@ -36,6 +36,13 @@ dev-build/cmake -gui -qt6
 # Required by dev-python/PyQt5[multimedia]
 dev-qt/qtmultimedia:5 widgets
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2023-05-21)
+# Needed by a global USE=wayland right now (REQUIRED_USE conflicts)
+media-libs/clutter egl
+media-libs/cogl gles2
+media-libs/libsdl2 gles2
+<media-libs/mesa-24.1 gles2
+
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2022-12-27)
 # On desktops it's common to use browser to browse internet, which these
 # days is full of emojis, which wouldn't render properly without the fonts.
