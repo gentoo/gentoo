@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="5"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="
