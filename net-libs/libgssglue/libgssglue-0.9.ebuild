@@ -6,7 +6,10 @@ EAPI=8
 inherit autotools readme.gentoo-r1
 
 DESCRIPTION="Exports a gssapi interface which calls other random gssapi libraries"
-HOMEPAGE="http://www.citi.umich.edu/projects/nfsv4/linux https://gitlab.com/gsasl/libgssglue"
+HOMEPAGE="
+	http://www.citi.umich.edu/projects/nfsv4/linux/
+	https://gitlab.com/gsasl/libgssglue
+"
 SRC_URI="https://gitlab.com/gsasl/libgssglue/-/archive/${P}/${PN}-${P}.tar.bz2"
 S="${WORKDIR}"/${PN}-${P}
 
