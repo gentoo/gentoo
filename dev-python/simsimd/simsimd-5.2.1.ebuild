@@ -31,6 +31,7 @@ IUSE="openmp"
 BDEPEND="
 	test? (
 		dev-python/pytest-repeat[${PYTHON_USEDEP}]
+		dev-python/tabulate[${PYTHON_USEDEP}]
 	)
 "
 
