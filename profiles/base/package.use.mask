@@ -33,10 +33,6 @@ kde-apps/umbrello:5 php
 app-office/kmymoney:5 addressbook
 app-office/kraft:5 pim
 
-# Viorel Munteanu <ceamac@gentoo.org> (2024-07-26)
-# Branch 7.1 needs a new BDEPEND for doc
->=app-emulation/virtualbox-7.1 doc
-
 # orbea <orbea@riseup.net> (2024-07-19)
 # The dynarec is only supported upstream for amd64, arm, arm64 and x86.
 games-emulation/rmg dynarec
@@ -85,10 +81,6 @@ app-admin/testdisk ewf
 # Michał Górny <mgorny@gentoo.org> (2024-03-26)
 # sys-auth/pam_ssh is being last rited, bug #892031.
 sys-auth/pambase pam_ssh
-
-# Viorel Munteanu <ceamac@gentoo.org> (2024-03-19)
-# The live version needs a new BDEPEND for doc
-=app-emulation/virtualbox-9999 doc
 
 # Guilherme Amadio <amadio@gentoo.org> (2024-03-09)
 # Requires manually installing dependencies, see bug #791802
