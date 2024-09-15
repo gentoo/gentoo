@@ -11,6 +11,7 @@ MY_PN="ot-recorder"
 DESCRIPTION="Stores and accesses location data published by the OwnTracks apps"
 HOMEPAGE="https://owntracks.org"
 SRC_URI="https://github.com/${PN/-//}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${P#*-}"
 LICENSE="GPL-2+ MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64"
@@ -44,8 +45,6 @@ RDEPEND="
 BDEPEND="
 	virtual/pkgconfig
 "
-
-S="${WORKDIR}/${P#*-}"
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
