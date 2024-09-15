@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/yydecode/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~ppc ~sparc ~x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.2.10-fix-strcmp-not-found.patch
