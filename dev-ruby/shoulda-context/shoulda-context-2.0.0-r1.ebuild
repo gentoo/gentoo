@@ -20,7 +20,7 @@ HOMEPAGE="https://github.com/thoughtbot/shoulda-context"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="doc test"
 
 PATCHES=( "${FILESDIR}/${P}-file-exists.patch" )
