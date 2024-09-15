@@ -30,12 +30,12 @@ RDEPEND="
 "
 
 DOCS=( README.org )
+ELISP_TEXINFO="${PN}.texi"
 SITEFILE="50${PN}-gentoo.el"
 
 elisp-enable-tests ert tests -l tests/test-plz.el
 
-src_install() {
-	elisp_src_install
-
-	doinfo "${PN}.info"
+src_compile() {
+	elisp-org-export-to texinfo README.org
+	elisp_src_compile
 }
