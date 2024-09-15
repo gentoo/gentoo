@@ -3,7 +3,7 @@
 
 EAPI=8
 
-NEED_EMACS=26
+NEED_EMACS="27.1"
 
 inherit readme.gentoo-r1 elisp
 
@@ -16,14 +16,19 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+RDEPEND="
+	>=app-emacs/compat-30.0.0.0
+"
 BDEPEND="
+	${RDEPEND}
 	sys-apps/texinfo
 "
 
+ELISP_TEXTINFO="${PN}.texi"
 SITEFILE="50${PN}-gentoo.el"
+
 DOC_CONTENTS="Enable orderless completion by placing
 	\"(setq completion-styles '(orderless))\" in your .emacs file."
-ELISP_TEXTINFO="${PN}.texi"
 
 src_compile() {
 	elisp_src_compile
