@@ -3,14 +3,6 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <use>
-    <flag name="nss">
-      Use Mozilla NSS (<pkg>dev-libs/nss</pkg>) as hash library; if
-      this is disabled, <pkg>dev-libs/openssl</pkg> is used instead.
-    </flag>
-    <flag name="bindist">
-      Alias for the nss USE flag, since there are license compliancy
-      trouble when using OpenSSL.
-    </flag>
     <flag name="curl">
       If enabled, <pkg>net-misc/curl</pkg> is used thorugh the libcurl
       library; if it's not, the curl command is used instead. Some
