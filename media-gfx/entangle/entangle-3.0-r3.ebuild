@@ -8,7 +8,10 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit gnome2-utils meson python-single-r1 xdg-utils
 
 DESCRIPTION="Tethered Camera Control & Capture"
-HOMEPAGE="https://entangle-photo.org/"
+HOMEPAGE="
+	https://entangle-photo.org/
+	https://gitlab.com/entangle/entangle/
+"
 SRC_URI="https://entangle-photo.org/download/sources/${P}.tar.xz"
 
 LICENSE="GPL-3+"
