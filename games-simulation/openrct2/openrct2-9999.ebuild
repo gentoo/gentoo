@@ -18,7 +18,7 @@ MY_PV_MSX="1.6"
 MY_PV_OBJ="1.4.7"
 MY_PV_RPL="0.0.79"
 MY_PV_SFX="1.0.5"
-MY_PV_TS="0.4.6"
+MY_PV_TS="0.4.14"
 
 DESCRIPTION="An open source re-implementation of Chris Sawyer's RollerCoaster Tycoon 2"
 HOMEPAGE="https://openrct2.org/"
