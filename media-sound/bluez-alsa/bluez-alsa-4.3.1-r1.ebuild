@@ -68,6 +68,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myeconfargs=(
+		--enable-cli
 		--enable-faststream
 		--enable-midi
 		--enable-rfcomm
