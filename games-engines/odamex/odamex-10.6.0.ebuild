@@ -42,10 +42,6 @@ BDEPEND="games-util/deutex"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.3.0-unbundle-fltk.patch
-	"${FILESDIR}"/${PN}-10.4.0-backport-pr928.patch
-	"${FILESDIR}"/${PN}-odalaunch-prefix.patch
-	"${FILESDIR}"/${PN}-lto.patch
-	"${FILESDIR}"/${PN}-musl.patch
 )
 
 src_prepare() {
