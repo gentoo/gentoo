@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_USE_PEP517=flit
 PYPI_PN=${PN/-/.}
 PYTHON_COMPAT=( python3_{10..13} pypy3 )
 
@@ -22,11 +22,19 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv 
 RDEPEND="
 	dev-python/jaraco-text[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	>=dev-python/setuptools-scm-1.15.0[${PYTHON_USEDEP}]
-"
 
 distutils_enable_tests pytest
+
+src_configure() {
+	grep -q 'build-backend = "setuptools' pyproject.toml ||
+		die "Upstream changed build-backend, recheck"
+	# write a custom pyproject.toml to ease setuptools bootstrap
+	sed -i -e \
+		's/build-backend = .*/build-backend = "flit_core.buildapi"/' \
+		-e '/^name = /a\' -e "version = \"${PV}\"" \
+		-e '/^dynamic =/d' \
+		pyproject.toml || die
+}
 
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
