@@ -12,7 +12,7 @@ S=${WORKDIR}/${VDRPLUGIN}-0.0.1-rc5
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 DEPEND="media-video/vdr"
 RDEPEND="${DEPEND}"
