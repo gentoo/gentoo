@@ -44,7 +44,7 @@ RDEPEND="
 	dev-cpp/opentelemetry-cpp
 	dev-libs/protobuf:=
 	dev-libs/pthreadpool
-	dev-libs/sleef
+	dev-libs/sleef[cpu_flags_x86_avx512f(+)]
 	virtual/lapack
 	sci-libs/onnx
 	sci-libs/foxi
