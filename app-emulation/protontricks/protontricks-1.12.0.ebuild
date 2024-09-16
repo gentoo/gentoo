@@ -7,15 +7,10 @@ PYTHON_COMPAT=( python3_{10..13} pypy3 )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
 
-inherit distutils-r1 xdg-utils
-
-COMMIT="f7b1fa33b0438dbd72f7222703f8442e40edc510"
-export SETUPTOOLS_SCM_PRETEND_VERSION="${PV%_p*}"
+inherit distutils-r1 pypi xdg-utils
 
 DESCRIPTION="app-emulation/winetricks wrapper for Proton (Steam Play) games"
 HOMEPAGE="https://github.com/Matoking/protontricks"
-SRC_URI="https://github.com/Matoking/${PN}/archive/${COMMIT}.tar.gz -> ${P}.gh.tar.gz"
-S="${WORKDIR}/${PN}-${COMMIT}"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -36,6 +31,12 @@ BDEPEND="$(python_gen_cond_dep '
 DOCS=( CHANGELOG.md README.md )
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	default
+	sed -i "/^from /s/\._vdf/vdf/g" src/protontricks/steam.py || die
+	rm -r src/protontricks/_vdf || die
+}
 
 pkg_postinst() {
 	xdg_desktop_database_update
