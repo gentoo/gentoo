@@ -18,8 +18,8 @@
 			<email>sebastian+dev@ramacher.at</email>
 		<name>Sebastian Ramacher</name>
 		</maintainer>
-		<doc lang="en">https://github.com/pwmt/zathura-pdf-mupdf/blob/develop/README.md</doc>
 		<bugs-to>https://github.com/pwmt/zathura-pdf-mupdf/issues</bugs-to>
+		<changelog>https://pwmt.org/projects/zathura-pdf-mupdf/download/</changelog>
 		<remote-id type="github">pwmt/zathura-pdf-mupdf</remote-id>
 	</upstream>
 </pkgmetadata>
