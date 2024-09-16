@@ -3,14 +3,15 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <upstream>
-    <remote-id type="github">Arkq/bluez-alsa</remote-id>
+    <remote-id type="github">arkq/bluez-alsa</remote-id>
   </upstream>
   <use>
     <flag name="aptx">aptX (HD) over Bluetooth (many Android compatible headphones)</flag>
     <flag name="hcitop">Enable top-like monitoring tool for HCI</flag>
     <flag name="ldac">Enable support for AOSP <pkg>media-libs/libldac</pkg> dispatcher</flag>
-    <flag name="liblc3">Enable LC3 support</flag>
+    <flag name="liblc3">Enable LC3-SWB audio support for HFP</flag>
     <flag name="mpg123">Enable support for MPEG audio playback via <pkg>media-sound/mpg123</pkg></flag>
-    <flag name="ofono">Enable ofono elephony support</flag>
+    <flag name="msbc">Enable mSBC audio support for HFP</flag>
+    <flag name="ofono">Enable oFono telephony support</flag>
   </use>
 </pkgmetadata>
