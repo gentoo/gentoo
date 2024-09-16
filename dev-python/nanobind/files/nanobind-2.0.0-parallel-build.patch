@@ -1,0 +1,7 @@
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 62f2bdb..e932cca 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -75 +75 @@ nanobind_add_stub(
+-  DEPENDS py_stub_test.py
++  DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/py_stub_test.py

@@ -31,7 +31,10 @@ BDEPEND="
 DOCS=( AUTHORS ChangeLog HACKING MAINTAINERS NEWS README )
 
 # Patch from 3.x for bug #394925
-PATCHES=( "${FILESDIR}/${P}-G_CONST_RETURN.patch" )
+PATCHES=(
+	"${FILESDIR}/2.10.5-G_CONST_RETURN.patch"
+	"${FILESDIR}/2.10.5-gcc14.patch"
+)
 
 src_prepare() {
 	gnome2_src_prepare

@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_P}/native"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc x86"
 
 DEPEND="dev-libs/apr:1="
 RDEPEND="${DEPEND}"

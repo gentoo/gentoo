@@ -78,6 +78,9 @@
 		<flag name="show">
 			Build the show module, a helper module for visibility automation
 		</flag>
+		<flag name="smesh">
+			Build the Salome SMESH module
+		</flag>
 		<flag name="surface">
 			Build the surface module and workbench
 		</flag>

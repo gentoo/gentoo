@@ -35,6 +35,10 @@ BDEPEND="
 	test? ( ${RDEPEND} )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-category-tests.patch
+)
+
 src_configure() {
 	local emesonargs=(
 		-Ddocdir=${PF}
