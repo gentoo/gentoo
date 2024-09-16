@@ -431,6 +431,13 @@ documentation that is installed alongside this README."
 	# ebuilds should handle manually if need others or addwrite)
 	insinto /etc/sandbox.d
 	newins - 20nvidia <<<'SANDBOX_PREDICT="/dev/nvidiactl:/dev/nvidia-caps:/dev/char"'
+
+	# Dracut does not include /etc/modprobe.d if hostonly=no, but we do need this
+	# to ensure that the nouveau blacklist is applied
+	# https://github.com/dracut-ng/dracut-ng/issues/674
+	# https://bugs.gentoo.org/932781
+	echo "install_items+=\" ${EPREFIX}/etc/modprobe.d/nvidia.conf \"" >> \
+		"${ED}/usr/lib/dracut/dracut.conf.d/10-${PN}.conf" || die
 }
 
 pkg_preinst() {
