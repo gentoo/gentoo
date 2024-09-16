@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="Free and open source log management"
-HOMEPAGE="https://www.graylog.org"
+HOMEPAGE="https://graylog.org"
 SRC_URI="https://downloads.graylog.org/releases/graylog/${P}.tgz"
 
 LICENSE="GPL-3"
@@ -12,13 +12,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 RESTRICT="strip"
 
-RDEPEND="acct-group/graylog
+RDEPEND="
+	acct-group/graylog
 	acct-user/graylog
-	>=virtual/jdk-1.8:*"
+	>=virtual/jdk-1.8:*
+"
 
-DOCS=(
-	README.markdown UPGRADING.rst
-)
+DOCS=( AUTHORS README.markdown SECURITY.md UPGRADING.md )
 
 GRAYLOG_DATA_DIR="/var/lib/graylog"
 GRAYLOG_INSTALL_DIR="/usr/share/graylog"
