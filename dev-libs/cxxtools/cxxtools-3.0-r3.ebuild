@@ -11,7 +11,7 @@ SRC_URI="https://github.com/maekitalo/cxxtools/archive/refs/tags/V${PV}.tar.gz -
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~sparc ~x86"
+KEYWORDS="amd64 ~sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
