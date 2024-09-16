@@ -12,7 +12,7 @@ S="${WORKDIR}/vdr-plugin-dvd-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="media-video/vdr
 	media-libs/libdvdnav
