@@ -32,6 +32,7 @@ RDEPEND="${DEPEND}
 	ftp? ( !net-ftp/ftp )
 	dnsdomainname? ( !sys-apps/net-tools )
 	hostname? ( !sys-apps/coreutils[hostname(-)] !sys-apps/net-tools[hostname(+)] )
+	inetd? ( !sys-apps/netkit-base )
 	ping? ( !net-misc/iputils )
 	ping6? ( !net-misc/iputils[ipv6(+)] )
 	rcp? ( !net-misc/netkit-rsh )
