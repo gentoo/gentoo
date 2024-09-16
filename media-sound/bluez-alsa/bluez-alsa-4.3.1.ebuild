@@ -57,14 +57,6 @@ BDEPEND="
 	man? ( virtual/pandoc )
 "
 
-PATCHES=(
-	"${FILESDIR}/${P}-fix-include-freeaptx.patch"
-	# https://github.com/arkq/bluez-alsa/issues/718
-	"${FILESDIR}/${P}-test-alsa-midi-checkdev.patch"
-	# https://github.com/arkq/bluez-alsa/issues/717
-	"${FILESDIR}/${P}-ldpreload.patch"
-)
-
 DOC_CONTENTS="Users can use this service when they are members of the \"audio\" group."
 
 src_prepare() {
