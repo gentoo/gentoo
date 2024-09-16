@@ -6,9 +6,6 @@
 		<name>James Le Cuirot</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">Azure/azure-nvme-utils</remote-id>
+		<remote-id type="github">Azure/azure-vm-utils</remote-id>
 	</upstream>
-	<use>
-		<flag name="lun-fallback">Enable fallback LUN calculation via NSID</flag>
-	</use>
 </pkgmetadata>
