@@ -11,7 +11,7 @@ SRC_URI="http://vdr.websitec.de/download/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="acct-user/vdr"
 DEPEND="media-video/vdr"
