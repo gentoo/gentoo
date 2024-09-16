@@ -15,7 +15,7 @@ LICENSE="GPL-3"
 # Check upstream changelog: https://camaya.net/gloox/changelog/
 SLOT="0/18"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="debug gnutls idn ssl static-libs test +xhtmlim zlib"
+IUSE="debug examples gnutls idn ssl static-libs test +xhtmlim zlib"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -34,12 +34,12 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--without-examples # not installed anyway so don't build them
 		$(usex debug "--enable-debug" '')
 		$(use_enable static-libs static)
 		$(use_enable xhtmlim)
-		$(use_with idn libidn)
+		$(use_with examples)
 		$(use_with gnutls)
+		$(use_with idn libidn)
 		$(use_with ssl openssl)
 		$(use_with test tests)
 		$(use_with zlib)
@@ -50,4 +50,11 @@ src_configure() {
 src_install() {
 	default
 	find "${ED}" -name "*.la" -delete || die
+
+	if use examples; then
+		# unhide the libs directory
+		mv "${S}"/src/examples/.libs "${S}"/src/examples/libs
+
+		dodoc -r src/examples/
+	fi
 }
