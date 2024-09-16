@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,6 +12,10 @@ SRC_URI="http://ftp.linux.org.uk/pub/linux/Networking/netkit/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ppc ppc64 sparc x86"
+
+RDEPEND="
+	!net-misc/inetutils[inetd]
+"
 
 PATCHES=(
 	"${FILESDIR}"/003_all_netkit-base-0.17-gcc4.patch
