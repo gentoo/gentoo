@@ -23,7 +23,10 @@ COMMON_DEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0
 	>=dev-libs/glib-2.50:2
 	>=gnome-base/libgtop-2.12:2=
-	>=media-libs/libcanberra-0.4[gtk3]
+	|| (
+		media-libs/libcanberra-gtk3
+		>=media-libs/libcanberra-0.4[gtk3(-)]
+	)
 	sys-libs/zlib
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
