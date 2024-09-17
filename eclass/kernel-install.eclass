@@ -650,7 +650,7 @@ kernel-install_extract_from_uki() {
 	local uki=${2}
 	local out=${3}
 
-	$(tc-getOBJCOPY) -O binary "-j.${extract_type}" "${uki}" "${out}" ||
+	$(tc-getOBJCOPY) "${uki}" --dump-section ".${extract_type}=${out}" ||
 		die "Failed to extract ${extract_type}"
 	chmod 644 "${out}" || die
 }
