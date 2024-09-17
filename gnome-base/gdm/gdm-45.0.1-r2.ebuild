@@ -19,12 +19,11 @@ LICENSE="
 
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
-
 IUSE="accessibility audit bluetooth-sound branding elogind fprint plymouth selinux systemd tcpd test wayland"
-
 RESTRICT="!test? ( test )"
 REQUIRED_USE="^^ ( elogind systemd )"
+
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 
 # dconf, dbus and g-s-d are needed at install time for dconf update
 # keyutils is automagic dep that makes autologin unlock login keyring
@@ -33,10 +32,12 @@ REQUIRED_USE="^^ ( elogind systemd )"
 COMMON_DEPEND="
 	virtual/udev
 	>=dev-libs/libgudev-232:=
-	>=dev-libs/glib-2.68:2
+	>=dev-libs/glib-2.56:2
 	>=x11-libs/gtk+-2.91.1:3
-	>=dev-libs/json-glib-1.2.0
-	>=media-libs/libcanberra-0.4[gtk3]
+	|| (
+		media-libs/libcanberra-gtk3
+		>=media-libs/libcanberra-0.4[gtk3(-)]
+	)
 	>=sys-apps/accountsservice-0.6.35
 	x11-libs/libxcb
 	sys-apps/keyutils:=
@@ -85,6 +86,7 @@ DEPEND="${COMMON_DEPEND}
 	x11-base/xorg-proto
 "
 BDEPEND="
+	app-text/docbook-xml-dtd:4.1.2
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	dev-util/itstool
@@ -92,6 +94,7 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	test? ( >=dev-libs/check-0.9.4 )
+	app-text/yelp-tools
 "
 
 DOC_CONTENTS="
@@ -109,6 +112,10 @@ DOC_CONTENTS="
 	You may need to install app-crypt/coolkey and sys-auth/pam_pkcs11
 	for smartcard support
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-45.0.1-c99.patch
+)
 
 src_prepare() {
 	default
