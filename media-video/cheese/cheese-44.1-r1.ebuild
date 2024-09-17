@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,10 @@ DEPEND="
 	>=media-libs/gst-plugins-base-1.4:1.0[ogg,pango,theora,vorbis]
 	>=media-libs/gst-plugins-bad-1.4:1.0
 	>=x11-libs/gtk+-3.13.4:3
-	>=media-libs/libcanberra-0.26[gtk3]
+	|| (
+		media-libs/libcanberra-gtk3
+		>=media-libs/libcanberra-0.26[gtk3(-)]
+	)
 	x11-libs/libX11
 	sys-apps/dbus
 	media-video/gnome-video-effects
