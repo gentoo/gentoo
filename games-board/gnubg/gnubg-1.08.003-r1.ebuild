@@ -32,7 +32,10 @@ RDEPEND="
 	x11-libs/cairo[svg(+)]
 	x11-libs/pango
 	gui? (
-		media-libs/libcanberra[gtk3]
+		|| (
+			media-libs/libcanberra-gtk3
+			media-libs/libcanberra[gtk3(-)]
+		)
 		x11-libs/gdk-pixbuf:2
 		x11-libs/gtk+:3
 	)
