@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit pam
+inherit pam systemd
 
 DESCRIPTION="Collection of common network programs"
 HOMEPAGE="https://www.gnu.org/software/inetutils/"
@@ -77,6 +77,46 @@ iu_pamd() {
 	fi
 }
 
+create_init() {
+	use "$1" || return
+
+	newinitd - "$1" <<-EOF
+	#!${EPREFIX}/sbin/openrc-run
+	command="${EPREFIX}/usr/libexec/$1"
+	command_args="$2"
+	pidfile="${EPREFIX}/var/run/$1.pid"
+	EOF
+
+	systemd_newunit - "$1.service" <<-EOF
+	[Service]
+	ExecStart="${EPREFIX}/usr/libexec/$1"${2:+ }$2
+	PIDFile=${EPREFIX}/var/run/$1.pid
+	Type=forking
+
+	[Install]
+	WantedBy=multi-user.target
+	EOF
+}
+
+create_socket() {
+	systemd_newunit - "$1.socket" <<-EOF
+	[Socket]
+	ListenStream=$2
+	Accept=yes
+
+	[Install]
+	WantedBy=sockets.target
+	EOF
+
+	systemd_newunit - "$1@.service" <<-EOF
+	[Service]
+	CollectMode=inactive-or-failed
+	ExecStart="${EPREFIX}/usr/libexec/$1"
+	StandardInput=socket
+	StandardError=journal
+	EOF
+}
+
 src_install() {
 	default
 	iu_pamd rexecd rexec
@@ -86,4 +126,16 @@ src_install() {
 		iu_pamd rlogind krlogin
 		iu_pamd rshd krsh
 	fi
+
+	create_init ftpd --daemon
+	create_init inetd
+	create_init rlogind --daemon
+	create_init syslogd
+
+	create_socket ftpd 21
+	create_socket rexecd 512
+	create_socket rlogind 513
+	create_socket rshd 514
+	create_socket telnetd 23
+	create_socket uucpd 540
 }
