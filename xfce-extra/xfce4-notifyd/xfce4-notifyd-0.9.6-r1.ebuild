@@ -27,9 +27,10 @@ DEPEND="
 	>=xfce-base/libxfce4util-4.12:=
 	>=xfce-base/xfce4-panel-4.14.0:=
 	>=xfce-base/xfconf-4.10:=
-	sound? (
-		>=media-libs/libcanberra-0.30[gtk3]
-	)
+	sound? ( || (
+		media-libs/libcanberra-gtk3
+		>=media-libs/libcanberra-0.30[gtk3(-)]
+	) )
 	wayland? (
 		>=gui-libs/gtk-layer-shell-0.7.0
 	)
