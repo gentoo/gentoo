@@ -52,6 +52,7 @@ QA_CONFIG_IMPL_DECL_SKIP=( MIN static_assert alignof unreachable )
 
 src_configure() {
 	local myconf=(
+		--localstatedir="${EPREFIX}/var"
 		--disable-clients
 		--disable-servers
 		$(use_with idn)
