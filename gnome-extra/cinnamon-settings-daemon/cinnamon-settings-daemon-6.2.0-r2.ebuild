@@ -23,7 +23,10 @@ RDEPEND="
 	>=gnome-extra/cinnamon-desktop-6.2:0=
 	media-libs/fontconfig
 	>=media-libs/lcms-2.2:2
-	media-libs/libcanberra[gtk3,pulseaudio]
+	|| (
+		media-libs/libcanberra-gtk3
+		media-libs/libcanberra[gtk3(-),pulseaudio]
+	)
 	>=media-libs/libpulse-0.9.16[glib]
 	>=sys-auth/polkit-0.97
 	x11-libs/cairo
