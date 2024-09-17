@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,7 +35,10 @@ DEPEND="
 	kerberos? ( app-crypt/mit-krb5 )
 	xface? ( >=media-libs/compface-1.5.1:= )
 	gnome? ( x11-libs/gtksourceview:4 )
-	media-libs/libcanberra[gtk3]
+	|| (
+		media-libs/libcanberra-gtk3
+		media-libs/libcanberra[gtk3(-)]
+	)
 	keyring? ( app-crypt/libsecret )
 	>=app-text/gspell-1.6:0=
 
