@@ -17,7 +17,7 @@ HOMEPAGE="https://rubyonrails.org"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
 ruby_add_rdepend "
 	~dev-ruby/actioncable-${PV}
