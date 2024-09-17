@@ -31,7 +31,10 @@ COMMON_DEPEND="
 	>=mate-base/mate-menus-1.28.0
 	>=media-libs/fontconfig-1:1.0
 	media-libs/freetype:2
-	media-libs/libcanberra:0[gtk3]
+	|| (
+		media-libs/libcanberra-gtk3
+		media-libs/libcanberra[gtk3(-)]
+	)
 	sys-auth/polkit[introspection]
 	x11-apps/xmodmap
 	x11-libs/cairo
