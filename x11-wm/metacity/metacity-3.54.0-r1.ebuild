@@ -10,7 +10,6 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/metacity/"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv"
-
 IUSE="+libcanberra vulkan xinerama"
 
 # TODO: libgtop could be optional, but no knob
@@ -25,7 +24,10 @@ RDEPEND="
 	x11-libs/libXrender
 	x11-libs/libXdamage
 	x11-libs/libXpresent
-	libcanberra? ( media-libs/libcanberra[gtk3] )
+	libcanberra? ( || (
+		media-libs/libcanberra-gtk3
+		media-libs/libcanberra[gtk3(-)]
+	) )
 	>=x11-libs/startup-notification-0.7
 	x11-libs/libXcursor
 	gnome-base/libgtop:2=
