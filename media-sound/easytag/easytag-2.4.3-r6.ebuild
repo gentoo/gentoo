@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,10 @@ REQUIRED_USE="
 
 RDEPEND="
 	>=dev-libs/glib-2.38:2
-	media-libs/libcanberra[gtk3]
+	|| (
+		media-libs/libcanberra-gtk3
+		media-libs/libcanberra[gtk3(-)]
+	)
 	>=x11-libs/gtk+-3.10:3
 	flac? ( >=media-libs/flac-1.3:= )
 	mp3? (
