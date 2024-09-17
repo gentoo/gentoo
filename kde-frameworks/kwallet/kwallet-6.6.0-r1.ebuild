@@ -20,6 +20,7 @@ DEPEND="
 	=kde-frameworks/kcolorscheme-${PVCUT}*:6
 	=kde-frameworks/kconfig-${PVCUT}*:6
 	=kde-frameworks/kcoreaddons-${PVCUT}*:6
+	=kde-frameworks/kcrash-${PVCUT}*:6
 	=kde-frameworks/kdbusaddons-${PVCUT}*:6
 	=kde-frameworks/ki18n-${PVCUT}*:6
 	=kde-frameworks/knotifications-${PVCUT}*:6
