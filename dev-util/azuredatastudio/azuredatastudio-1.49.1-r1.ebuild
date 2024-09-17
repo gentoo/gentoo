@@ -33,7 +33,10 @@ RDEPEND="
 	dev-libs/nss
 	dev-util/lttng-ust:0/2.12
 	media-libs/alsa-lib
-	media-libs/libcanberra[gtk3]
+	|| (
+		media-libs/libcanberra-gtk3
+		media-libs/libcanberra[gtk3(-)]
+	)
 	media-libs/libglvnd
 	media-libs/mesa
 	net-misc/curl
