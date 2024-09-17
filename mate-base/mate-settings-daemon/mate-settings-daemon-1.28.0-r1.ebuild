@@ -47,7 +47,10 @@ COMMON_DEPEND=">=dev-util/gdbus-codegen-2.76.4
 	smartcard? ( >=dev-libs/nss-3.11.2 )
 	sound? (
 		>=media-libs/libmatemixer-1.10
-		media-libs/libcanberra[gtk3]
+		|| (
+			media-libs/libcanberra-gtk3
+			media-libs/libcanberra[gtk3(-)]
+		)
 	virtual/libintl
 	)
 "
