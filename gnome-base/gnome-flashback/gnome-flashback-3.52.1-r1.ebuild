@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit gnome2 toolchain-funcs
 
 DESCRIPTION="GNOME Flashback session"
@@ -9,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-flashback/"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 IUSE="elogind systemd"
 REQUIRED_USE="^^ ( elogind systemd )"
 
@@ -18,7 +19,10 @@ RDEPEND="
 	>=x11-libs/gtk+-3.22.0:3[X]
 	>=gnome-base/gnome-desktop-43:3=
 	>=gnome-base/gnome-panel-3.35.2
-	>=media-libs/libcanberra-0.13[gtk3]
+	|| (
+		media-libs/libcanberra-gtk3
+		>=media-libs/libcanberra-0.13[gtk3(-)]
+	)
 	>=dev-libs/glib-2.67.3:2
 	>=gnome-base/gsettings-desktop-schemas-3.31.0
 	>=sys-auth/polkit-0.97
@@ -26,7 +30,6 @@ RDEPEND="
 	>=sys-power/upower-0.99.0:=
 	>=x11-libs/libXrandr-1.5.0
 	>=x11-libs/libXxf86vm-1.1.4
-
 	x11-libs/libxcb:=
 	x11-libs/libX11
 	gnome-base/gdm
@@ -51,7 +54,7 @@ BDEPEND="
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
-"
+" # autoconf-archive for eautoreconf
 RDEPEND="${RDEPEND}
 	x11-wm/metacity
 	gnome-base/gnome-panel
@@ -69,21 +72,17 @@ src_configure() {
 	# per-version die to force a manual recheck. Only update the explicit version if the
 	# "PKG_CHECK_MODULES([DESKTOP/SCREENSAVER], ...)" blocks did not change; otherwise adjust
 	# elogind conditional block below accordingly first.
-	if ver_test ${PV} -ne 3.54.0; then
+	if ver_test ${PV} -ne 3.52.1; then
 		die "Maintainer has not checked over packages MENU pkg-config deps for elogind support"
 	fi
 
 	if use elogind; then
 		local pkgconfig="$(tc-getPKG_CONFIG)"
-
-		local desktop_modules="glib-2.0 gio-2.0 gio-unix-2.0 gnome-desktop-3.0 gtk+-3.0 libelogind x11"
-		local screensaver_modules="gdm gio-unix-2.0 glib-2.0 gnome-desktop-3.0 gtk+-3.0 libelogind xxf86vm"
-
 		myconf+=(
-			DESKTOP_CFLAGS="$(${pkgconfig} --cflags ${desktop_modules})"
-			DESKTOP_LIBS="$(${pkgconfig} --libs ${desktop_modules})"
-			SCREENSAVER_CFLAGS="$(${pkgconfig} --cflags ${screensaver_modules})"
-			SCREENSAVER_LIBS="$(${pkgconfig} --libs ${screensaver_modules})"
+			DESKTOP_CFLAGS="$(${pkgconfig} --cflags glib-2.0 gio-2.0 gio-unix-2.0 gnome-desktop-3.0 gtk+-3.0 libelogind x11)"
+			DESKTOP_LIBS="$(${pkgconfig} --libs glib-2.0 gio-2.0 gio-unix-2.0 gnome-desktop-3.0 gtk+-3.0 libelogind x11)"
+			SCREENSAVER_CFLAGS="$(${pkgconfig} --cflags gdm gio-unix-2.0 glib-2.0 gnome-desktop-3.0 gtk+-3.0 libelogind xxf86vm)"
+			SCREENSAVER_LIBS="$(${pkgconfig} --libs gdm gio-unix-2.0 glib-2.0 gnome-desktop-3.0 gtk+-3.0 libelogind xxf86vm)"
 		)
 	fi
 
