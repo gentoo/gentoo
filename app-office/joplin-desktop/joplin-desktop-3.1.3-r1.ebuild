@@ -16,7 +16,7 @@ SRC_URI="https://github.com/laurent22/joplin/releases/download/v${PV}/${APPIMAGE
 
 LICENSE="AGPL-3+"
 SLOT="0"
-KEYWORDS="-* amd64"
+KEYWORDS="-* ~amd64"
 RESTRICT="bindist"
 
 RDEPEND="
@@ -28,7 +28,10 @@ RDEPEND="
 	dev-libs/nspr
 	dev-libs/nss
 	media-libs/alsa-lib
-	media-libs/libcanberra[gtk3]
+	|| (
+		media-libs/libcanberra-gtk3
+		media-libs/libcanberra[gtk3(-)]
+	)
 	media-libs/libglvnd
 	media-libs/mesa
 	net-misc/curl
