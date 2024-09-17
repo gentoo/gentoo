@@ -22,7 +22,10 @@ RESTRICT="test"
 COMMON_DEPEND="
 	>=dev-libs/dbus-glib-0.70
 	>=dev-libs/glib-2.50:2
-	>=media-libs/libcanberra-0.10:0[gtk3]
+	|| (
+		media-libs/libcanberra-gtk3
+		>=media-libs/libcanberra-0.10[gtk3(-)]
+	)
 	>=sys-apps/dbus-1
 	>=sys-power/upower-0.99.8:=
 	>=x11-apps/xrandr-1.3
