@@ -22,7 +22,7 @@ StartupNotify=true
 Categories=Network;Email;Calendar;
 Keywords=email;messages;calendar
 Actions=profile-manager-window;
-StartupWMClass=thunderbird
+StartupWMClass=thunderbird-esr
 
 [Desktop Action profile-manager-window]
 Name=Open the Profile Manager
