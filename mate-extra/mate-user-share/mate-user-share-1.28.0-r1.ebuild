@@ -22,7 +22,10 @@ COMMON_DEPEND="
 	>=dev-libs/dbus-glib-0.70
 	>=dev-libs/glib-2.50:2
 	>=mate-base/caja-1.17.1
-	media-libs/libcanberra[gtk3]
+	|| (
+		media-libs/libcanberra-gtk3
+		media-libs/libcanberra[gtk3(-)]
+	)
 	>=sys-apps/dbus-1.1.1
 	>=x11-libs/gdk-pixbuf-2:2
 	>=x11-libs/gtk+-3.22:3
