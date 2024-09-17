@@ -24,6 +24,8 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-build/scons[${PYTHON_USEDEP}]
+	>=dev-python/ordered-set-4.1.0[${PYTHON_USEDEP}]
+	>=dev-python/zstandard-0.15[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	${RDEPEND}
