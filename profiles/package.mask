@@ -387,13 +387,6 @@ app-text/cuneiform
 >=dev-libs/gobject-introspection-common-1.80
 >=x11-terms/ptyxis-46
 
-# Joonas Niilola <juippis@gentoo.org> (2024-08-07)
-# Upstream doesn't recommend updating from 115 just yet. New
-# installs are fine. Downgrading from 128 to 115 may be impossible
-# so have backups ready if you attempt an upgrade.
->=mail-client/thunderbird-128.1.0
->=mail-client/thunderbird-bin-128.1.0
-
 # Eli Schwartz <eschwartz@gentoo.org> (2024-07-29)
 # Bad version can result in failing builds. Please upgrade to 72.1.0.
 =dev-python/ensurepip-setuptools-72.0.0
