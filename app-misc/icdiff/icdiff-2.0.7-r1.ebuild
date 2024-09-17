@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-release-${PV}"
 
 LICENSE="PSF-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 PATCHES=(
 	"${FILESDIR}/icdiff-1.9.5-tests.patch"
