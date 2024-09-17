@@ -31,7 +31,10 @@ DEPEND="
 	>=gnome-base/gnome-desktop-2.91.3:3=
 	>=gnome-base/gsettings-desktop-schemas-2.91.92
 	>=gnome-extra/evolution-data-server-${PV}:=[gtk,weather?]
-	>=media-libs/libcanberra-0.25[gtk3]
+	|| (
+		media-libs/libcanberra-gtk3
+		>=media-libs/libcanberra-0.25[gtk3(-)]
+	)
 	>=net-libs/libsoup-3.0:3.0
 	>=net-libs/webkit-gtk-2.38.0:4.1[spell?]
 	>=x11-libs/cairo-1.9.15[glib]
