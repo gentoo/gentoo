@@ -29,7 +29,10 @@ RDEPEND="
 	media-gfx/exiv2:=
 	media-libs/lcms:2
 	media-libs/lensfun
-	media-libs/libcanberra[gtk3]
+	|| (
+		media-libs/libcanberra-gtk3
+		media-libs/libcanberra[gtk3(-)]
+	)
 	media-libs/libiptcdata
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
