@@ -18,7 +18,7 @@ RUBY_S="ruby-git-${PV}"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~ppc ~ppc64"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 DEPEND+="test? ( >=dev-vcs/git-1.6.0.0 net-misc/openssh app-arch/tar )"
