@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit gnome2 toolchain-funcs
 
 DESCRIPTION="GNOME Flashback session"
@@ -18,7 +19,10 @@ RDEPEND="
 	>=x11-libs/gtk+-3.22.0:3[X]
 	>=gnome-base/gnome-desktop-43:3=
 	>=gnome-base/gnome-panel-3.35.2
-	>=media-libs/libcanberra-0.13[gtk3]
+	|| (
+		media-libs/libcanberra-gtk3
+		>=media-libs/libcanberra-0.13[gtk3(-)]
+	)
 	>=dev-libs/glib-2.67.3:2
 	>=gnome-base/gsettings-desktop-schemas-3.31.0
 	>=sys-auth/polkit-0.97
@@ -26,7 +30,6 @@ RDEPEND="
 	>=sys-power/upower-0.99.0:=
 	>=x11-libs/libXrandr-1.5.0
 	>=x11-libs/libXxf86vm-1.1.4
-
 	x11-libs/libxcb:=
 	x11-libs/libX11
 	gnome-base/gdm
