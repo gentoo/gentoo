@@ -27,7 +27,7 @@ RDEPEND="
 	>=dev-python/numpy-1.23[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	>=dev-python/pybind11-2.12.0[${PYTHON_USEDEP}]
+	>=dev-python/pybind11-2.13.1[${PYTHON_USEDEP}]
 	test? (
 		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
