@@ -145,7 +145,8 @@ src_compile() {
 }
 
 src_test() {
-	virtx cmake_src_test
+	# -j1: https://gitlab.gnome.org/GNOME/evolution-data-server/-/issues/522
+	virtx cmake_src_test -j1
 }
 
 src_install() {
