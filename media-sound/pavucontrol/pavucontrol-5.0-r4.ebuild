@@ -22,7 +22,10 @@ RDEPEND="
 	dev-libs/json-glib
 	X? (
 		>=dev-cpp/gtkmm-3.22:3.0[X]
-		>=media-libs/libcanberra-0.16[gtk3]
+		|| (
+			media-libs/libcanberra-gtk3
+			>=media-libs/libcanberra-0.16[gtk3(-)]
+		)
 	)
 	!X? ( >=dev-cpp/gtkmm-3.22:3.0 )
 	>=dev-libs/libsigc++-2.2:2
