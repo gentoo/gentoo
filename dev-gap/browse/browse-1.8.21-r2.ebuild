@@ -20,8 +20,13 @@ DEPEND="sci-mathematics/gap:=
 	sys-libs/ncurses:="
 RDEPEND="${DEPEND}"
 
-GAP_PKG_EXTRA_INSTALL=( app bibl )
+BDEPEND="test? (
+	dev-gap/ctbllib
+	dev-gap/tomlib
+)"
 gap-pkg_enable_tests
+
+GAP_PKG_EXTRA_INSTALL=( app bibl )
 
 src_compile() {
 	# This has been emailed upstream but there's no public
