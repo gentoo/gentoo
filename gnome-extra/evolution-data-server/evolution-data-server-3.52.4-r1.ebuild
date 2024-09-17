@@ -42,7 +42,10 @@ RDEPEND="
 	gtk? (
 		>=x11-libs/gtk+-3.20:3
 		>=gui-libs/gtk-4.4:4
-		>=media-libs/libcanberra-0.25[gtk3]
+		|| (
+			media-libs/libcanberra-gtk3
+			>=media-libs/libcanberra-0.25[gtk3(-)]
+		)
 
 		oauth-gtk3? ( >=net-libs/webkit-gtk-2.34.0:4.1 )
 		oauth-gtk4? ( >=net-libs/webkit-gtk-2.39.90:6 )
