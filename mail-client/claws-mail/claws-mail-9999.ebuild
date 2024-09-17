@@ -66,7 +66,10 @@ COMMONDEPEND="
 	nls? ( >=sys-devel/gettext-0.18 )
 	nntp? ( >=net-libs/libetpan-0.57 )
 	notification? (
-		libcanberra? (  media-libs/libcanberra[gtk3] )
+		libcanberra? ( || (
+			media-libs/libcanberra-gtk3
+			media-libs/libcanberra[gtk3(-)]
+		) )
 		libnotify? ( x11-libs/libnotify )
 	)
 	perl? ( dev-lang/perl:= )
