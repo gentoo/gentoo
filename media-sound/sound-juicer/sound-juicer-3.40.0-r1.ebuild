@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,10 @@ RESTRICT="test" # only does appdata validation, which fails with network-sandbox
 DEPEND="
 	>=dev-libs/glib-2.49.5:2[dbus]
 	>=x11-libs/gtk+-3.21.6:3
-	media-libs/libcanberra[gtk3]
+	|| (
+		media-libs/libcanberra-gtk3
+		media-libs/libcanberra[gtk3(-)]
+	)
 	gnome-base/gsettings-desktop-schemas
 	>=app-cdr/brasero-2.90
 	media-libs/gstreamer:1.0
