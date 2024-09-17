@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit gnome.org gnome2-utils python-any-r1 meson udev virtualx xdg
 
@@ -11,22 +11,23 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-settings-daemon"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
-
 IUSE="+colord +cups debug elogind input_devices_wacom modemmanager networkmanager smartcard systemd test wayland"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="^^ ( elogind systemd )"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 
 COMMON_DEPEND="
 	>=sci-geosciences/geocode-glib-3.10:2
-	>=dev-libs/glib-2.70:2
+	>=dev-libs/glib-2.58:2
 	>=gnome-base/gnome-desktop-3.37.1:3=
-	>=gnome-base/gsettings-desktop-schemas-46.0
+	>=gnome-base/gsettings-desktop-schemas-42
 	>=x11-libs/gtk+-3.15.3:3[X,wayland?]
 	>=dev-libs/libgweather-4.2.0:4=
 	colord? ( >=x11-misc/colord-1.4.5:= )
-	media-libs/libcanberra[gtk3]
+	|| (
+		media-libs/libcanberra-gtk3
+		media-libs/libcanberra[gtk3(-)]
+	)
 	>=app-misc/geoclue-2.3.1:2.0
 	>=x11-libs/libnotify-0.7.3
 	>=media-libs/libpulse-16.1[glib]
@@ -52,8 +53,9 @@ COMMON_DEPEND="
 	x11-libs/libXi
 	x11-libs/libXext
 	media-libs/fontconfig
-	elogind? ( >=sys-auth/elogind-209 )
-	systemd? ( >=sys-apps/systemd-243 )
+	systemd? (
+		>=sys-apps/systemd-243
+	)
 "
 DEPEND="${COMMON_DEPEND}
 	x11-base/xorg-proto
@@ -61,6 +63,7 @@ DEPEND="${COMMON_DEPEND}
 # logind needed for power and session management, bug #464944
 RDEPEND="${COMMON_DEPEND}
 	gnome-base/dconf
+	elogind? ( sys-auth/elogind )
 "
 # rfkill requires linux/rfkill.h, thus linux-headers dep, not os-headers.
 # If this package wants to work on other kernels, we need to make rfkill conditional instead
@@ -84,8 +87,6 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/42.1-build-Make-wacom-optional-and-controllable-via-meson.patch
 	"${FILESDIR}"/${PN}-3.38.1-build-Allow-NM-optional-on-Linux.patch
-	# https://bugs.gentoo.org/937244 , is merged so it should not be needed since 46.1
-	"${FILESDIR}"/${P}-add-elogind-support.patch
 )
 
 python_check_deps() {
@@ -103,7 +104,6 @@ src_configure() {
 	local emesonargs=(
 		-Dudev_dir="$(get_udevdir)"
 		$(meson_use systemd)
-		$(meson_use elogind)
 		-Dalsa=true
 		-Dgudev=true
 		-Dgcr3=false
