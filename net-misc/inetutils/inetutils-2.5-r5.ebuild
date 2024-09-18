@@ -109,8 +109,10 @@ create_socket() {
 	EOF
 
 	systemd_newunit - "$1@.service" <<-EOF
-	[Service]
+	[Unit]
 	CollectMode=inactive-or-failed
+
+	[Service]
 	ExecStart="${EPREFIX}/usr/libexec/$1"
 	StandardInput=socket
 	StandardError=journal
