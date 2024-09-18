@@ -40,7 +40,7 @@ RDEPEND="app-i18n/uchardet
 	dev-libs/libfmt:=
 	dev-libs/libsigc++:2
 	dev-libs/libxml2:2
-	>=dev-libs/spdlog-1.5
+	>=dev-libs/spdlog-1.5:=
 	>=x11-libs/vte-0.70.2:2.91
 	net-misc/curl
 	x11-libs/cairo[X]
