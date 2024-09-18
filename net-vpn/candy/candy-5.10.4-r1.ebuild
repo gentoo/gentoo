@@ -14,10 +14,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 
 DEPEND="
-	dev-libs/poco
-	dev-libs/openssl
-	dev-libs/spdlog
-	dev-libs/libfmt
+	dev-libs/poco:=
+	dev-libs/openssl:=
+	dev-libs/spdlog:=
+	dev-libs/libfmt:=
 "
 RDEPEND="
 	${DEPEND}
