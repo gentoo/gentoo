@@ -5,10 +5,9 @@ EAPI=8
 
 DESCRIPTION="OpenPGP keys used by the strace project"
 HOMEPAGE="https://strace.io/"
-SRC_URI="
-	https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x296d6f29a020808e8717a8842db5bd89a340aeb7
-		-> ${P}-ldv.asc
-"
+# Mirrored from https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x296d6f29a020808e8717a8842db5bd89a340aeb7
+# on 2024-09-18.
+SRC_URI="https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-ldv.asc"
 S=${WORKDIR}
 
 LICENSE="public-domain"
