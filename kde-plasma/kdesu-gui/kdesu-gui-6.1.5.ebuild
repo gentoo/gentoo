@@ -35,7 +35,8 @@ RDEPEND="${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-6.1.5-build-only-kdesu.patch" # downstream split
-	"${FILESDIR}/${PN}-5.27.11-cmake.patch" # bug 939081, pending upstream MR
+	"${FILESDIR}/${PN}-5.27.11-cmake.patch" # bug 939081
+	"${FILESDIR}/${P}-fix-without-x11.patch" # bug 939735, pending upstream MR
 )
 
 src_prepare() {

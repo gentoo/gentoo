@@ -1,0 +1,28 @@
+From bcaa74b9c7d896f5578e1f681dfa1a1f0bf2756d Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 18 Sep 2024 19:34:20 +0000
+Subject: [PATCH] Fix build w/ WITH_X11=OFF when KWindowSystem was built w/
+ KWINDOWSYSTEM_X11=OFF
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ kdesu/kdesu.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/kdesu/kdesu.cpp b/kdesu/kdesu.cpp
+index 887df083..a5e4a945 100644
+--- a/kdesu/kdesu.cpp
++++ b/kdesu/kdesu.cpp
+@@ -40,7 +40,9 @@
+ #include <klocalizedstring.h>
+ #include <kmessagebox.h>
+ #include <kshell.h>
++#if WITH_X11
+ #include <kstartupinfo.h>
++#endif
+ #include <kuser.h>
+ #include <kwindowsystem.h>
+ 
+-- 
+2.46.0
+
