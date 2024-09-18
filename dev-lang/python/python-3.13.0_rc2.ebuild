@@ -243,13 +243,8 @@ src_configure() {
 
 	# Set baseline test skip flags.
 	COMMON_TEST_SKIPS=(
-		# failures
-		-x test_concurrent_futures
-		-x test_gdb
-		# flaky: https://github.com/python/cpython/issues/121973
-		-x test_pyrepl
-		# flaky: https://github.com/python/cpython/issues/122136 (bug #936314)
-		-x test_asyncio
+		# this is actually test_gdb.test_pretty_print
+		-x test_pretty_print
 	)
 
 	# Arch-specific skips.  See #931888 for a collection of these.
