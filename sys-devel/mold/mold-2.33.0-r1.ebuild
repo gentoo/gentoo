@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake toolchain-funcs
+inherit cmake flag-o-matic toolchain-funcs
 
 DESCRIPTION="A Modern Linker"
 HOMEPAGE="https://github.com/rui314/mold"
@@ -20,6 +20,7 @@ fi
 #  - siphash ( MIT CC0-1.0 )
 LICENSE="MIT BSD-2 CC0-1.0"
 SLOT="0"
+IUSE="debug"
 
 RDEPEND="
 	app-arch/zstd:=
@@ -69,6 +70,8 @@ src_prepare() {
 }
 
 src_configure() {
+	use debug || append-cppflags "-DNDEBUG"
+
 	local mycmakeargs=(
 		-DMOLD_ENABLE_QEMU_TESTS=OFF
 		-DMOLD_LTO=OFF # Should be up to the user to decide this with CXXFLAGS.

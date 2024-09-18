@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake toolchain-funcs
+inherit cmake flag-o-matic toolchain-funcs
 
 DESCRIPTION="A Modern Linker"
 HOMEPAGE="https://github.com/rui314/mold"
@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/rui314/mold/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~riscv ~sparc ~x86"
 fi
 
 # mold (MIT)
@@ -20,6 +20,7 @@ fi
 #  - siphash ( MIT CC0-1.0 )
 LICENSE="MIT BSD-2 CC0-1.0"
 SLOT="0"
+IUSE="debug"
 
 RDEPEND="
 	app-arch/zstd:=
@@ -65,6 +66,8 @@ src_prepare() {
 }
 
 src_configure() {
+	use debug || append-cppflags "-DNDEBUG"
+
 	local mycmakeargs=(
 		-DMOLD_ENABLE_QEMU_TESTS=OFF
 		-DMOLD_LTO=OFF # Should be up to the user to decide this with CXXFLAGS.
