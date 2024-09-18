@@ -38,7 +38,7 @@ SRC_URI+=" ppc64? ( elibc_musl? (
 LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4"
 SLOT="stable"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="big-endian clippy cpu_flags_x86_sse2 doc prefix profiler rust-analyzer rust-src rustfmt"
+IUSE="big-endian clippy cpu_flags_x86_sse2 doc prefix rust-analyzer rust-src rustfmt"
 
 RDEPEND="
 	>=app-eselect/eselect-rust-20190311
@@ -116,7 +116,6 @@ multilib_src_install() {
 	local components="rustc,cargo,${std}"
 	use doc && components="${components},rust-docs"
 	use clippy && components="${components},clippy-preview"
-	use profiler && components="${components},rust-demangler-preview"
 	use rustfmt && components="${components},rustfmt-preview"
 	use rust-analyzer && components="${components},rust-analyzer-preview,${analysis}"
 	# Rust component 'rust-src' is extracted from separate archive
@@ -154,7 +153,6 @@ multilib_src_install() {
 	)
 
 	use clippy && symlinks+=( clippy-driver cargo-clippy )
-	use profiler && symlinks+=( rust-demangler )
 	use rustfmt && symlinks+=( rustfmt cargo-fmt )
 	use rust-analyzer && symlinks+=( rust-analyzer )
 
@@ -201,9 +199,6 @@ multilib_src_install() {
 	if use clippy; then
 		echo /usr/bin/clippy-driver >> "${T}/provider-${P}"
 		echo /usr/bin/cargo-clippy >> "${T}/provider-${P}"
-	fi
-	if use profiler; then
-		echo /usr/bin/rust-demangler >> "${T}/provider-${P}"
 	fi
 	if use rustfmt; then
 		echo /usr/bin/rustfmt >> "${T}/provider-${P}"
