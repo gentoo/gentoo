@@ -5,7 +5,7 @@ EAPI=8
 
 PDFJAM_EXTRAS_COMMIT=622e03add59db004144c0b41722a09b3b29d6d3e
 
-DESCRIPTION="Allows the manipulation of PDF files"
+DESCRIPTION="Tool for manipulatiing PDF files"
 HOMEPAGE="https://github.com/rrthomas/pdfjam"
 SRC_URI="
 	https://github.com/rrthomas/pdfjam/releases/download/v${PV}/pdfjam-${PV}.tar.gz

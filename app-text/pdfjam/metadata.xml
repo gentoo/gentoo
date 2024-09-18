@@ -8,6 +8,22 @@
 	<use>
 		<flag name="extra">Install unsupported wrapper scripts, for example pdf90, pdfnup, pdfjoin</flag>
 	</use>
+	<longdescription>
+		The pdfjam is a shell script providing a simple interface to much of
+		the functionality of the excellent pdfpages package (by Andreas
+		Matthias) for LaTeX.
+
+		It takes one or more PDF files (and/or JPG/PNG graphics files) as input,
+		and produces one or more PDF files as output. It is useful for joining
+		files together, selecting pages, reducing several source pages onto one
+		output page.
+		However, it does not preserve hyperlinks.
+
+		If you don't like this package upstream recommends:
+		- <pkg>app-text/pdftk</pkg> (Java based)
+		- PDFsam (Java based)
+		- PSPDFUtils (Python based, supports PostScript)
+	</longdescription>
 	<upstream>
 		<remote-id type="github">rrthomas/pdfjam</remote-id>
 	</upstream>
