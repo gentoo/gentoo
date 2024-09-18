@@ -21,15 +21,18 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~amd64-linux"
 IUSE="examples"
 
+# NB: upstream requires building with numpy-2 but supports 1.x
+# at runtime
 DEPEND="
-	>=dev-python/numpy-1.22.3[${PYTHON_USEDEP}]
+	>=dev-python/numpy-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/scipy-1.8[${PYTHON_USEDEP}]
 "
 RDEPEND="
-	${DEPEND}
+	>=dev-python/numpy-1.22.3[${PYTHON_USEDEP}]
 	>=dev-python/packaging-21.3[${PYTHON_USEDEP}]
 	>=dev-python/pandas-1.4[${PYTHON_USEDEP}]
 	>=dev-python/patsy-0.5.6[${PYTHON_USEDEP}]
+	>=dev-python/scipy-1.8[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	${DEPEND}
