@@ -9,7 +9,7 @@ SRC_URI="https://downloads.sourceforge.net/avf/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ppc64 x86"
 IUSE="lzip +lzma webdav +zstd"
 
 RDEPEND="
