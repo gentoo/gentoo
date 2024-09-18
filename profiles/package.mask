@@ -379,6 +379,7 @@ dev-scheme/guile:3.0
 >=dev-scheme/guile-lzlib-0.0.2-r100
 >=dev-scheme/guile-ncurses-3.1-r100
 >=dev-scheme/guile-nyacc-1.06.7-r100
+>=dev-scheme/guile-sqlite3-0.1.3-r100
 
 # Eli Schwartz <eschwartz@gentoo.org> (2024-08-15)
 # Abandoned upstream since 2011, unmaintained in gentoo since 2017. Tons of
