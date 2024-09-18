@@ -52,8 +52,8 @@ PATCHES=(
 )
 
 QA_CONFIG_IMPL_DECL_SKIP=(
-	# Doesn't exist on Linux
-	arc4random_push
+	arc4random # missing on musl but it handles it fine
+	arc4random_push # doesn't exist on Linux
 )
 
 src_configure() {
