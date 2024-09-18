@@ -20,7 +20,6 @@ PATCH_GCC_VER="11.4.0"
 PATCH_VER="12"
 MUSL_VER="2"
 MUSL_GCC_VER="11.4.0"
-PYTHON_COMPAT=( python3_{10..12} )
 inherit toolchain
 
 DESCRIPTION="64bit kernel compiler"

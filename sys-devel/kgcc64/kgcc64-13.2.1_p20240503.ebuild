@@ -19,7 +19,6 @@ PATCH_GCC_VER="13.2.0"
 MUSL_VER="2"
 MUSL_GCC_VER="13.2.0"
 GCC_TARGET_NO_MULTILIB=true
-PYTHON_COMPAT=( python3_{10..12} )
 inherit toolchain
 
 DESCRIPTION="64bit kernel compiler"
