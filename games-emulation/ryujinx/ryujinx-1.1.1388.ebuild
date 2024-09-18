@@ -225,7 +225,7 @@ else
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/${PN^}-${PV}"
 
-	# KEYWORDS="amd64"
+	KEYWORDS="~amd64"
 fi
 
 SRC_URI+=" ${NUGET_URIS} "
@@ -280,9 +280,11 @@ src_unpack() {
 
 src_prepare() {
 	sed "s|1.0.0-dirty|${PV}|g" -i src/*/*.csproj || die
-	# The patch below can be removed once >=dotnet-sdk-8.0.401 is generally available
+
+	# The patch below can be removed once >=dotnet-sdk-8.0.401 is generally available.
 	sed 's|Include="Microsoft.CodeAnalysis.CSharp" Version="4.9.2"|Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0"|' \
 		-i Directory.Packages.props
+
 	dotnet-pkg_src_prepare
 }
 
