@@ -70,10 +70,10 @@ IUSE+=" wayland wifi +X"
 # Firefox-only IUSE
 IUSE+=" +gmp-autoupdate gnome-shell"
 
-# jumbo-build? ( clang ) -> bmo#1914774, bgo#939004 - causes seemingly random compile crashes with gcc.
+# !jumbo-build? ( clang ) -> bmo#1914774, bgo#939004 - causes seemingly random compile crashes with gcc.
 REQUIRED_USE="|| ( X wayland )
 	debug? ( !system-av1 )
-	jumbo-build? ( clang )
+	!jumbo-build? ( clang )
 	pgo? ( lto )
 	wayland? ( dbus )
 	wifi? ( dbus )"
