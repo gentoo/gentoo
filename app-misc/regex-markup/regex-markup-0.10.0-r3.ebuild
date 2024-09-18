@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,6 +17,7 @@ IUSE="examples nls"
 PATCHES=(
 	"${FILESDIR}"/${P}-locale.patch
 	"${FILESDIR}"/${PN}-0.10.0-r2-configure.patch
+	"${FILESDIR}"/${PN}-0.10.0-c99.patch
 )
 
 src_prepare() {
