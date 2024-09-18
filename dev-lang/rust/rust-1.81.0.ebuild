@@ -342,7 +342,6 @@ src_configure() {
 	local tools='"cargo","rustdoc"'
 	use clippy && tools+=',"clippy"'
 	use miri && tools+=',"miri"'
-	use profiler && tools+=',"rust-demangler"'
 	use rustfmt && tools+=',"rustfmt"'
 	use rust-analyzer && tools+=',"rust-analyzer","rust-analyzer-proc-macro-srv"'
 	use rust-src && tools+=',"src"'
@@ -685,7 +684,6 @@ src_install() {
 
 	use clippy && symlinks+=( clippy-driver cargo-clippy )
 	use miri && symlinks+=( miri cargo-miri )
-	use profiler && symlinks+=( rust-demangler )
 	use rustfmt && symlinks+=( rustfmt cargo-fmt )
 	use rust-analyzer && symlinks+=( rust-analyzer )
 
@@ -743,9 +741,6 @@ src_install() {
 	if use miri; then
 		echo /usr/bin/miri >> "${T}/provider-${P}"
 		echo /usr/bin/cargo-miri >> "${T}/provider-${P}"
-	fi
-	if use profiler; then
-		echo /usr/bin/rust-demangler >> "${T}/provider-${P}"
 	fi
 	if use rustfmt; then
 		echo /usr/bin/rustfmt >> "${T}/provider-${P}"
