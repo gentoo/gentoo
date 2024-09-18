@@ -22,7 +22,9 @@ _TOOLCHAIN_ECLASS=1
 DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="https://gcc.gnu.org/"
 
-inherit edo flag-o-matic gnuconfig libtool multilib pax-utils python-any-r1 toolchain-funcs prefix
+inherit edo flag-o-matic gnuconfig libtool multilib pax-utils toolchain-funcs prefix
+
+[[ -n ${TOOLCHAIN_HAS_TESTS} ]] && inherit python-any-r1
 
 tc_is_live() {
 	[[ ${PV} == *9999* ]]
@@ -142,6 +144,12 @@ tc_version_is_between() {
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Indicate the developer who hosts the patchset for an ebuild.
+
+# @ECLASS_VARIABLE: TOOLCHAIN_HAS_TESTS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Controls whether python-any-r1 is inherited and validate_failures.py
+# is used.
 
 # @ECLASS_VARIABLE: GCC_PV
 # @INTERNAL
@@ -273,6 +281,7 @@ STDCXX_INCDIR=${TOOLCHAIN_STDCXX_INCDIR:-${LIBPATH}/include/g++-v${GCC_BRANCH_VE
 LICENSE="GPL-3+ LGPL-3+ || ( GPL-3+ libgcc libstdc++ gcc-runtime-library-exception-3.1 ) FDL-1.3+"
 IUSE="test vanilla +nls"
 RESTRICT="!test? ( test )"
+[[ -z ${TOOLCHAIN_HAS_TESTS} ]] && RESTRICT+=" test"
 
 TC_FEATURES=()
 
@@ -537,7 +546,8 @@ get_gcc_src_uri() {
 	[[ -n ${MUSL_VER} ]] && \
 		GCC_SRC_URI+=" $(gentoo_urls gcc-${MUSL_GCC_VER}-musl-patches-${MUSL_VER}.tar.${TOOLCHAIN_PATCH_SUFFIX})"
 
-	GCC_SRC_URI+=" test? ( https://gitweb.gentoo.org/proj/gcc-patches.git/plain/scripts/testsuite-management/validate_failures.py?id=${GCC_VALIDATE_FAILURES_VERSION} -> gcc-validate-failures-${GCC_VALIDATE_FAILURES_VERSION}.py )"
+	[[ -n ${TOOLCHAIN_HAS_TESTS} ]] && \
+		GCC_SRC_URI+=" test? ( https://gitweb.gentoo.org/proj/gcc-patches.git/plain/scripts/testsuite-management/validate_failures.py?id=${GCC_VALIDATE_FAILURES_VERSION} -> gcc-validate-failures-${GCC_VALIDATE_FAILURES_VERSION}.py )"
 
 	echo "${GCC_SRC_URI}"
 }
@@ -569,7 +579,7 @@ toolchain_pkg_setup() {
 	# more legible.
 	MAKEOPTS="--output-sync=line ${MAKEOPTS}"
 
-	use test && python-any-r1_pkg_setup
+	[[ -n ${TOOLCHAIN_HAS_TESTS} ]] && use test && python-any-r1_pkg_setup
 }
 
 #---->> src_unpack <<----
@@ -633,7 +643,7 @@ toolchain_src_prepare() {
 		tc_enable_hardened_gcc
 	fi
 
-	if use test ; then
+	if [[ -n ${TOOLCHAIN_HAS_TESTS} ]] && use test ; then
 		cp "${DISTDIR}"/gcc-validate-failures-${GCC_VALIDATE_FAILURES_VERSION}.py "${T}"/validate_failures.py || die
 		chmod +x "${T}"/validate_failures.py || die
 	fi
@@ -2275,7 +2285,7 @@ toolchain_src_install() {
 	pax-mark -r "${ED}/libexec/gcc/${CTARGET}/${GCC_CONFIG_VER}/cc1"
 	pax-mark -r "${ED}/libexec/gcc/${CTARGET}/${GCC_CONFIG_VER}/cc1plus"
 
-	if use test ; then
+	if [[ -n ${TOOLCHAIN_HAS_TESTS} ]] && use test ; then
 		mkdir "${T}"/test-results || die
 		cd "${WORKDIR}"/build || die
 		find . -name \*.sum -exec cp --parents -v {} "${T}"/test-results \; || die
@@ -2434,7 +2444,7 @@ create_revdep_rebuild_entry() {
 #---->> pkg_pre* <<----
 
 toolchain_pkg_preinst() {
-	if [[ ${MERGE_TYPE} != binary ]] && use test ; then
+	if [[ -n ${TOOLCHAIN_HAS_TESTS} && ${MERGE_TYPE} != binary ]] && use test ; then
 		# Install as orphaned to allow comparison across more versions even
 		# after unmerged. Also useful for historical records and tracking
 		# down regressions a while after they first appeared, but were only
