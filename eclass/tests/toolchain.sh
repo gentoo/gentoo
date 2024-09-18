@@ -11,8 +11,6 @@ PR=r0
 source tests-common.sh || exit
 source version-funcs.sh || exit
 
-PYTHON_COMPAT=( python3_{10..13} )
-
 EAPI=7 inherit toolchain
 
 # Ignore actually running version of gcc and fake new version
