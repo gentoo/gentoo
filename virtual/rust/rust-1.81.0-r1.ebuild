@@ -15,6 +15,6 @@ KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="rustfmt profiler"
 
 RDEPEND="|| (
-	~dev-lang/rust-bin-${PV}[profiler?,rustfmt?,${MULTILIB_USEDEP}]
+	~dev-lang/rust-bin-${PV}[rustfmt?,${MULTILIB_USEDEP}]
 	~dev-lang/rust-${PV}[profiler?,rustfmt?,${MULTILIB_USEDEP}]
 )"
