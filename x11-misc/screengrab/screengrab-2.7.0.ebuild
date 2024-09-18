@@ -12,7 +12,6 @@ SRC_URI="https://github.com/lxqt/${PN}/releases/download/${PV}/${P}.tar.xz"
 LICENSE="GPL-2 GPL-2+ LGPL-2.1+"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~loong ~riscv x86"
-IUSE=""
 
 BDEPEND="dev-qt/linguist-tools:5"
 DEPEND="
