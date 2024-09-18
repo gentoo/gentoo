@@ -48,6 +48,11 @@ RDEPEND="
 
 BDEPEND="dev-build/autoconf-archive"
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# FP noise (bug #900068)
+	sendfile sendfilev
+)
+
 PATCHES=( "${FILESDIR}/${PN}-1.0.28-pam.patch" )
 
 src_prepare() {
