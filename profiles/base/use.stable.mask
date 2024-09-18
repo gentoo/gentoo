@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Sam James <sam@gentoo.org> (2024-09-18)
+# LLVM slots without stable keywords.
+llvm_slot_19
+
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # Python implementations without stable keywords.
 python_targets_python3_13
