@@ -56,7 +56,7 @@ src_install() {
 	guile_src_install
 
 	# Link includes DESTDIR
-	for file in ${ED}/usr/share/info/*.png; do
+	for file in "${ED}"/usr/share/info/*.png; do
 		rm "${file}" || die
 		dosym ../doc/${PF}/html/$(basename ${file}) ${file##${ED}}
 	done
