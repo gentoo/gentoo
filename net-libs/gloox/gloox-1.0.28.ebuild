@@ -53,7 +53,7 @@ src_install() {
 
 	if use examples; then
 		# unhide the libs directory
-		mv "${S}"/src/examples/.libs "${S}"/src/examples/libs
+		mv "${S}"/src/examples/.libs "${S}"/src/examples/libs || die
 
 		dodoc -r src/examples/
 	fi
