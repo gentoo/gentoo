@@ -16,7 +16,7 @@ else
 		https://github.com/martanne/vis/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 		test? ( https://github.com/martanne/vis-test/archive/${VIS_TEST_COMMIT}.tar.gz -> vis-test-${VIS_TEST_COMMIT}.tar.gz )
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+	KEYWORDS="~amd64 arm ~arm64 ~riscv ~x86"
 fi
 
 DESCRIPTION="modern, legacy free, simple yet efficient vim-like editor"
