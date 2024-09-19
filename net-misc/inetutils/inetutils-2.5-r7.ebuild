@@ -99,7 +99,9 @@ create_init() {
 	EOF
 }
 
-create_socket() {
+create_socket_stream() {
+	use "$1" || return
+
 	systemd_newunit - "$1.socket" <<-EOF
 	[Socket]
 	ListenStream=$2
@@ -120,6 +122,26 @@ create_socket() {
 	EOF
 }
 
+create_socket_datagram() {
+	use "$1" || return
+
+	systemd_newunit - "$1.socket" <<-EOF
+	[Socket]
+	ListenDatagram=$2
+
+	[Install]
+	WantedBy=sockets.target
+	EOF
+
+	systemd_newunit - "$1.service" <<-EOF
+	[Service]
+	ExecStart="${EPREFIX}/usr/libexec/$1"
+	KillMode=process
+	StandardInput=socket
+	StandardError=journal
+	EOF
+}
+
 src_install() {
 	default
 	iu_pamd rexecd rexec
@@ -135,10 +157,13 @@ src_install() {
 	create_init rlogind --daemon
 	create_init syslogd
 
-	create_socket ftpd 21
-	create_socket rexecd 512
-	create_socket rlogind 513
-	create_socket rshd 514
-	create_socket telnetd 23
-	create_socket uucpd 540
+	create_socket_stream ftpd 21
+	create_socket_stream rexecd 512
+	create_socket_stream rlogind 513
+	create_socket_stream rshd 514
+	create_socket_stream telnetd 23
+	create_socket_stream uucpd 540
+
+	create_socket_datagram tftpd 69
+	create_socket_datagram talkd 518
 }
