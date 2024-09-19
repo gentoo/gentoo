@@ -21,7 +21,7 @@ SRC_URI="https://github.com/moneta-rb/moneta/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE="test"
 
 ruby_add_depend "test? ( dev-ruby/bson dev-ruby/ox dev-ruby/rantly dev-ruby/sqlite3 dev-ruby/tokyocabinet )"
