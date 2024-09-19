@@ -40,6 +40,7 @@ RDEPEND="${DEPEND}
 	rlogin? ( !net-misc/netkit-rsh )
 	rsh? ( !net-misc/netkit-rsh )
 	logger? ( !sys-apps/util-linux[logger(+)] )
+	syslogd? ( !app-admin/sysklogd )
 	telnet? ( !net-misc/telnet-bsd !net-misc/netkit-telnetd )
 	telnetd? ( !net-misc/telnet-bsd !net-misc/netkit-telnetd )
 	tftp? ( !net-ftp/tftp-hpa )
