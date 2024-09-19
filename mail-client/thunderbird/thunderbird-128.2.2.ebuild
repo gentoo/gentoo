@@ -61,7 +61,7 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 
-IUSE="+clang dbus debug eme-free hardened hwaccel jack libproxy lto +openh264 pgo pulseaudio sndio"
+IUSE="+clang +dbus debug eme-free hardened hwaccel jack libproxy lto +openh264 pgo pulseaudio sndio"
 IUSE+=" selinux +system-av1 +system-harfbuzz +system-icu +system-jpeg +system-libevent"
 IUSE+=" +system-libvpx system-png +system-webp wayland wifi +X"
 
