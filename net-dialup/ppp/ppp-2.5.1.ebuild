@@ -7,10 +7,7 @@ inherit autotools linux-info pam tmpfiles
 
 DESCRIPTION="Point-to-Point Protocol (PPP)"
 HOMEPAGE="https://ppp.samba.org/"
-SRC_URI="
-	https://download.samba.org/pub/ppp/${P}.tar.gz
-	https://raw.githubusercontent.com/ppp-project/ppp/${P}/contrib/pppgetpass/pppgetpass.8
-"
+SRC_URI="https://download.samba.org/pub/ppp/${P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0/${PV}"
@@ -115,12 +112,9 @@ src_install() {
 		newsbin contrib/pppgetpass/pppgetpass.vt pppgetpass
 	fi
 
-	newtmpfiles "${FILESDIR}/pppd.tmpfiles" pppd.conf
+	doman contrib/pppgetpass/pppgetpass.8
 
-	# Missing from upstream tarball
-	# https://github.com/ppp-project/ppp/pull/412
-	#doman contrib/pppgetpass/pppgetpass.8
-	doman "${DISTDIR}/pppgetpass.8"
+	newtmpfiles "${FILESDIR}/pppd.tmpfiles" pppd.conf
 
 	insinto /etc/ppp/radius
 	doins pppd/plugins/radius/etc/{dictionary*,issue,port-id-map,radiusclient.conf,realms,servers}
