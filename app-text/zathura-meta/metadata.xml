@@ -4,6 +4,7 @@
   <!-- maintainer-needed -->
   <use>
     <flag name="cb">Install plug-in for ComicBook support</flag>
+    <flag name="epub">Install plug-in E-Book support</flag>
   </use>
   <upstream>
     <maintainer status="active">
