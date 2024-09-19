@@ -42,8 +42,8 @@ DOCS=( ABOUT-NLS AUTHORS ChangeLog GUILE-VERSION HACKING NEWS README THANKS )
 PATCHES=( "${FILESDIR}"/${PN}-2.2.3-gentoo-sandbox.patch )
 
 # Where to install data files.
-GUILE_DATA="${PREFIX}/usr/share/guile-data/${SLOT}"
-GUILE_PCDIR="/usr/share/guile-data/${SLOT}/pkgconfig"
+GUILE_DATA="${EPREFIX}/usr/share/guile-data/${SLOT}"
+GUILE_PCDIR="${EPREFIX}/usr/share/guile-data/${SLOT}/pkgconfig"
 
 src_configure() {
 	# see bug #676468
