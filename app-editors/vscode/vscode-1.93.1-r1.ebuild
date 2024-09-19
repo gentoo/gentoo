@@ -35,7 +35,7 @@ LICENSE="
 "
 SLOT="0"
 KEYWORDS="-* ~amd64 ~arm ~arm64"
-IUSE="egl kerberos wayland"
+IUSE="egl kerberos liveshare wayland"
 RESTRICT="mirror strip bindist"
 
 RDEPEND="
@@ -68,6 +68,7 @@ RDEPEND="
 	x11-libs/libXScrnSaver
 	x11-libs/pango
 	x11-misc/xdg-utils
+	liveshare? ( dev-libs/icu )
 	kerberos? ( app-crypt/mit-krb5 )
 "
 
