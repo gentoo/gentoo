@@ -1,17 +1,15 @@
 certificate version 0.1
-pusher DF84256885283521 1726770134 +0200
-pushee git.gentoo.org:repo/gentoo.git
-nonce 1726770133-e7ffefe5c98fd6358eac678aff04cf75ed0a4efd
+pusher 0x738409F520DF9190 1726770877 +0100
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1726770876-39428f7a6b0e86bed939d10a8abd7c045d21f2cd
 
-e75fe9497d0c026b0e09a63241dc3d2d89f1e419 ff263d44f3c9ad9e87eebb244cab0f75d2cadbc9 refs/heads/master
+ff263d44f3c9ad9e87eebb244cab0f75d2cadbc9 5ea16e7bfb8595488d4a535b513b856cafa20469 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCAAdFiEEx2qEUJQJjSjMiybFY5ra4jKeJA4FAmbsa9YACgkQY5ra4jKe
-JA7tpgf/UmwrIJO9C8ZX4h1u+ReT+ux5FRbOmMmTFnraiIby3g+9//thRfrAwajA
-I+EX45ZpszGHOkvc7hhgDzV5zT6KT0cI5ZgtMOYvRiAirPqp3VzewrgzqjtsQZAv
-POptypzqvnRXzsfn8Ak2qj3qRGmh+hiuOdjqIdwyVyN+V0zA/v+HnNoIVrhoqqfU
-LDhp/sdqbqrwR5hPKuDHGb0NRBuRnb2xVbqlUbte/kscsmer2wSr6n79mDVC1JTY
-RErqHy0w8HXtrhvqB2zKIJ7cJRyJH6j0Oe7xsf/5twEpo2uzMcv7RyX85jgOksLE
-ULGzQpSGd6abyaRvvrQUHJIt1Vn+bA==
-=tFmm
+iNUEABYKAH0WIQQlpruI3Zt2TGtVQcJzhAn1IN+RkAUCZuxuvV8UgAAAAAAuAChp
+c3N1ZXItZnByQG5vdGF0aW9ucy5vcGVucGdwLmZpZnRoaG9yc2VtYW4ubmV0MjVB
+NkJCODhERDlCNzY0QzZCNTU0MUMyNzM4NDA5RjUyMERGOTE5MAAKCRBzhAn1IN+R
+kJFZAP9XmDpeWPSDEh/5oHdvRJ56XAxT2+tw/J0rVcjDspKrpQD/Z+hMRs3uLL/O
+ucXzlJ6IGw8ZULRKbkPIO/tRC3qBiww=
+=1NVV
 -----END PGP SIGNATURE-----
