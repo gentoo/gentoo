@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools linux-info pam tmpfiles
+inherit linux-info pam tmpfiles
 
 DESCRIPTION="Point-to-Point Protocol (PPP)"
 HOMEPAGE="https://ppp.samba.org/"
@@ -58,7 +58,6 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	eautoreconf
 
 	# Set the right paths in radiusclient.conf
 	sed -e "s:/usr/local/etc:/etc:" \
