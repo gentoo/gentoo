@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/915615
+
+Patch contributed by Matt Whitlock <gentoo@mattwhitlock.name>
+
+--- a/src/core/uae/gencpu.c
++++ b/src/core/uae/gencpu.c
+@@ -304,7 +304,7 @@
+     insn_n_cycles += 4;
+ } 
+ 
+-static void fill_prefetch_next_1 (needcycles)
++static void fill_prefetch_next_1 (int needcycles)
+ {
+     if (needcycles && using_ce) {
+ 	printf ("\tint lostcycles;\n");
+
