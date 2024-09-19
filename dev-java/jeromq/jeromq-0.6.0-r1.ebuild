@@ -43,7 +43,7 @@ src_compile() {
 	# maven does it with jnacl not providing module-info
 	# need to figure out how jdeps could do so - we simply add one to jnacl
 	jdeps \
-		--module-path "$(java-pkg_getjars jnacl)" \
+		--module-path "$(java-pkg_getjars --build-only jnacl)" \
 		--add-modules com.neilalexander.jnacl \
 		--generate-module-info \
 		src/main/java \
