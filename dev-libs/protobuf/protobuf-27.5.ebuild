@@ -30,32 +30,29 @@ LICENSE="BSD"
 SLOT="0/${MY_SLOT}.0"
 IUSE="conformance debug emacs examples +libprotoc libupb +protobuf +protoc test zlib"
 
+# Require protobuf for the time being
 REQUIRED_USE="
-	|| (
-		libprotoc
-		libupb
-		protobuf
-		protoc
-	)
+	protobuf
+	examples? ( protobuf protoc )
+	libprotoc? ( protobuf )
+	libupb? (	protobuf )
+	protoc? ( protobuf )
 "
 
 RESTRICT="!test? ( test )"
 
 BDEPEND="
 	emacs? ( app-editors/emacs:* )
-	!protobuf? (
-		>=dev-libs/protobuf-${PV}
-	)
 "
 
 COMMON_DEPEND="
-	dev-libs/jsoncpp[${MULTILIB_USEDEP}]
 	>=dev-cpp/abseil-cpp-${ABSEIL_MIN_VER}:=[${MULTILIB_USEDEP}]
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
 "
 
 DEPEND="
 	${COMMON_DEPEND}
+	conformance? ( dev-libs/jsoncpp[${MULTILIB_USEDEP}] )
 	test? ( >=dev-cpp/gtest-1.11[${MULTILIB_USEDEP}] )
 "
 RDEPEND="
@@ -84,7 +81,6 @@ multilib_src_configure() {
 		-Dprotobuf_JSONCPP_PROVIDER="package"
 
 		-Dprotobuf_BUILD_CONFORMANCE="$(usex test "$(usex conformance)")"
-		-Dprotobuf_BUILD_EXAMPLES="$(usex examples)"
 		-Dprotobuf_BUILD_LIBPROTOC="$(usex libprotoc)"
 		-Dprotobuf_BUILD_LIBUPB="$(usex libupb)"
 		-Dprotobuf_BUILD_PROTOBUF_BINARIES="$(usex protobuf)"
@@ -95,13 +91,21 @@ multilib_src_configure() {
 		-Dprotobuf_DISABLE_RTTI="no"
 
 		-Dprotobuf_INSTALL="yes"
-		-Dprotobuf_INSTALL_EXAMPLES="$(usex examples)"
 		-Dprotobuf_TEST_XML_OUTDIR="$(usex test)"
 
 		-Dprotobuf_WITH_ZLIB="$(usex zlib)"
 		-Dprotobuf_VERBOSE="$(usex debug)"
 		-DCMAKE_MODULE_PATH="${S}/cmake"
 	)
+	if use protobuf ; then
+		if use examples ; then
+			mycmakeargs+=(
+				-Dprotobuf_BUILD_EXAMPLES="$(usex examples)"
+				-Dprotobuf_INSTALL_EXAMPLES="$(usex examples)"
+			)
+		fi
+	fi
+
 	use test && mycmakeargs+=( -Dprotobuf_USE_EXTERNAL_GTEST="yes" )
 
 	cmake_src_configure
