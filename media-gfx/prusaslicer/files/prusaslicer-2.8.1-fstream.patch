@@ -11,7 +11,7 @@
  
 --- a/src/slic3r/GUI/PresetArchiveDatabase.cpp
 +++ b/src/slic3r/GUI/PresetArchiveDatabase.cpp
-@@ -514,7 +514,7 @@ void PresetArchiveDatabase::load_app_manifest_json()
+@@ -515,7 +515,7 @@ void PresetArchiveDatabase::load_app_manifest_json()
  	if (!fs::exists(path, ec) || ec) {
  		copy_initial_manifest();
  	}
@@ -20,7 +20,7 @@
  	std::string data;
  	if (file.is_open()) {
  		std::string line;
-@@ -681,7 +681,7 @@ void PresetArchiveDatabase::save_app_manifest_json() const
+@@ -682,7 +682,7 @@ void PresetArchiveDatabase::save_app_manifest_json() const
  	data += "]";
  
  	std::string path = get_stored_manifest_path().string();
@@ -29,16 +29,9 @@
  	if (file.is_open()) {
  		file << data;
  		file.close();
-@@ -916,4 +916,4 @@ void PresetArchiveDatabase::sync_blocking()
- 	read_server_manifest(std::move(manifest));
- }
- 
--}} // Slic3r::GUI
-\ No newline at end of file
-+}} // Slic3r::GUI
 --- a/src/slic3r/Utils/Http.cpp
 +++ b/src/slic3r/Utils/Http.cpp
-@@ -301,7 +301,7 @@ void Http::priv::form_add_file(const char *name, const fs::path &path, const cha
+@@ -302,7 +302,7 @@ void Http::priv::form_add_file(const char *name, const fs::path &path, const cha
  //FIXME may throw! Is the caller aware of it?
  void Http::priv::set_post_body(const fs::path &path)
  {
