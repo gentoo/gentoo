@@ -32,7 +32,7 @@ DEPEND="
 	ldap? ( net-nds/openldap:= )
 	ldap-bind? ( net-nds/openldap:=[sasl] )
 	lmdb? ( >=dev-db/lmdb-0.9.11:= )
-	mongodb? ( dev-libs/mongo-c-driver dev-libs/libbson )
+	mongodb? ( >=dev-libs/mongo-c-driver-1.23.0 >=dev-libs/libbson-1.23.0 )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	nis? ( net-libs/libnsl:= )
 	pam? ( sys-libs/pam )
