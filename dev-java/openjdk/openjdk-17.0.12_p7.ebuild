@@ -177,11 +177,6 @@ src_configure() {
 		export JDK_HOME
 	fi
 
-	# Workaround for bug #938302
-	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then
-		export DTRACE="${BROOT}"/usr/bin/stap-dtrace
-	fi
-
 	# Work around stack alignment issue, bug #647954. in case we ever have x86
 	use x86 && append-flags -mincoming-stack-boundary=2
 
@@ -240,6 +235,11 @@ src_configure() {
 		else
 			die "${zip} not found or not readable"
 		fi
+	fi
+
+	# Workaround for bug #938302
+	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then
+		myconf+=( TRACE="${BROOT}"/usr/bin/stap-dtrace )
 	fi
 
 	if use !system-bootstrap ; then
