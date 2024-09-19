@@ -239,7 +239,7 @@ src_configure() {
 
 	# Workaround for bug #938302
 	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then
-		myconf+=( TRACE="${BROOT}"/usr/bin/stap-dtrace )
+		myconf+=( DTRACE="${BROOT}"/usr/bin/stap-dtrace )
 	fi
 
 	if use !system-bootstrap ; then
