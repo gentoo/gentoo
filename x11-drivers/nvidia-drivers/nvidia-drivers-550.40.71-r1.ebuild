@@ -97,6 +97,10 @@ PATCHES=(
 pkg_setup() {
 	use modules && [[ ${MERGE_TYPE} != binary ]] || return
 
+	# do early before linux-mod-r1 so can use chkconfig to setup CONFIG_CHECK
+	get_version
+	require_configured_kernel
+
 	local CONFIG_CHECK="
 		PROC_FS
 		~DRM_KMS_HELPER
@@ -107,15 +111,23 @@ pkg_setup() {
 		$(usev powerd '~CPU_FREQ')
 	"
 
-	local ERROR_DRM_KMS_HELPER="CONFIG_DRM_KMS_HELPER: is not set but needed for Xorg auto-detection
-	of drivers (no custom config), and for wayland / nvidia-drm.modeset=1.
-	Cannot be directly selected in the kernel's menuconfig, and may need
-	selection of a DRM device even if unused, e.g. CONFIG_DRM_AMDGPU=m or
-	DRM_I915=y, DRM_NOUVEAU=m also acceptable if a module and not built-in."
+	kernel_is -ge 6 11 && linux_chkconfig_present DRM_FBDEV_EMULATION &&
+		CONFIG_CHECK+=" DRM_TTM_HELPER"
 
 	use amd64 && kernel_is -ge 5 8 && CONFIG_CHECK+=" X86_PAT" #817764
 
 	use kernel-open && CONFIG_CHECK+=" MMU_NOTIFIER" #843827
+
+	local drm_helper_msg="Cannot be directly selected in the kernel's config menus, and may need
+	selection of a DRM device even if unused, e.g. CONFIG_DRM_AMDGPU=m or
+	DRM_QXL=m, DRM_NOUVEAU=m also acceptable if a module and *not* built-in."
+	local ERROR_DRM_KMS_HELPER="CONFIG_DRM_KMS_HELPER: is not set but needed for Xorg auto-detection
+	of drivers (no custom config), and for wayland / nvidia-drm.modeset=1.
+	${drm_helper_msg}"
+	local ERROR_DRM_TTM_HELPER="CONFIG_DRM_TTM_HELPER: is not set but is needed to compile when using
+	kernel version 6.11.x or newer while DRM_FBDEV_EMULATION is set.
+	${drm_helper_msg}
+	Many DRM devices like DRM_I915 cannot currently be used to enable this."
 	local ERROR_MMU_NOTIFIER="CONFIG_MMU_NOTIFIER: is not set but needed to build with USE=kernel-open.
 	Cannot be directly selected in the kernel's menuconfig, and may need
 	selection of another option that requires it such as CONFIG_KVM."
