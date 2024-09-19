@@ -45,6 +45,13 @@ pkg_setup() {
 	fi
 }
 
+src_prepare() {
+	default
+	# skip this specific doc step as produced files never installed
+	# this avoids calling the col command not available on musl based system.
+	sed -i "/^SUBDIRS/ s/doc//g" Makefile || die
+}
+
 src_configure() {
 	local myconf
 
