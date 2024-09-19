@@ -128,4 +128,5 @@ pkg_postinst() {
 	xdg_pkg_postinst
 	optfeature "desktop notifications" x11-libs/libnotify
 	optfeature "keyring support inside vscode" "virtual/secret-service"
+	optfeature "Live Share" dev-libs/icu
 }
