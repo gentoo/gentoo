@@ -1310,7 +1310,9 @@ toolchain_src_configure() {
 	fi
 
 	if in_iuse cet ; then
-		[[ ${CTARGET} == x86_64-*-gnu* ]] && confgcc+=( $(use_enable cet) )
+		if [[ ${CTARGET} == i[[34567]]86-*-linux* || ${CTARGET} == x86_64-*-gnu* ]] ; then
+			confgcc+=( $(use_enable cet) )
+		fi
 		[[ ${CTARGET} == aarch64-*-gnu* ]] && confgcc+=( $(use_enable cet standard-branch-protection) )
 	fi
 
