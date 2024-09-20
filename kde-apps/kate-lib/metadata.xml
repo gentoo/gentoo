@@ -10,7 +10,4 @@
 		<remote-id type="cpe">cpe:/a:kde:kate</remote-id>
 		<remote-id type="kde-invent">utilities/kate</remote-id>
 	</upstream>
-	<use>
-		<flag name="activities">Enable Plasma Activities support via <pkg>kde-plasma/plasma-activities</pkg></flag>
-	</use>
 </pkgmetadata>
