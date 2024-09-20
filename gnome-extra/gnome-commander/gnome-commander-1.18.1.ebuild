@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gnome2 meson optfeature
+inherit gnome2 meson optfeature virtualx
 
 DESCRIPTION="A graphical, full featured, twin-panel file manager"
 HOMEPAGE="https://gcmd.github.io/"
@@ -48,6 +48,10 @@ src_configure() {
 		$(meson_use doc help)
 	)
 	meson_src_configure
+}
+
+src_test() {
+	virtx meson_src_test
 }
 
 pkg_postinst() {
