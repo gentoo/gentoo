@@ -123,6 +123,8 @@ src_configure() {
 	# causing it to fail to catch exceptions sometimes
 	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=116057
 	tc-is-gcc && append-cxxflags -fno-tree-vectorize
+	# https://bugs.gentoo.org/931514
+	use arm64 && append-flags $(test-flags-CXX -mbranch-protection=none)
 	# nodejs unconditionally links to libatomic #869992
 	# specifically it requires __atomic_is_lock_free which
 	# is not yet implemented by sys-libs/compiler-rt (see
