@@ -11,8 +11,4 @@
 	<slots>
 		<subslots>Reflects ABI compatibility by soname version</subslots>
 	</slots>
-	<use>
-		<flag name="designer">Build plugins for <pkg>dev-qt/designer</pkg></flag>
-		<flag name="webengine">Enable display of detailed memory information using <pkg>dev-qt/qtwebengine</pkg>.</flag>
-	</use>
 </pkgmetadata>
