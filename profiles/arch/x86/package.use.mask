@@ -31,10 +31,6 @@ dev-tex/abntex lyx
 # additional dev-qt/qtwebengine revdeps.
 kde-frameworks/purpose:5 kaccounts
 
-# Paul Zander <negril.nx+gentoo@gmail.com> (2024-06-17)
-# missing keywords on dev-python/PyQt6
-sci-geosciences/qgis qt6
-
 # José de Paula R. N. Assis <espinafre@gmail.com> (2024-03-25)
 # No PyQt6 (which is needed by USE=qt6 for qscintilla-python) on x86.
 >=dev-python/qscintilla-python-2.14.1-r1 qt6
