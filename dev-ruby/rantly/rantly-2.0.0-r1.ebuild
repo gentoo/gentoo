@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/rantly-rb/rantly"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE=""
 
 all_ruby_prepare() {
