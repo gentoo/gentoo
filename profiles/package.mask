@@ -184,6 +184,7 @@ kde-frameworks/kross
 <kde-misc/zanshin-23.08.50
 <kde-apps/kgpg-23.08.50
 app-text/kjots:5
+kde-frameworks/kuserfeedback:5
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-08-31)
 # This is so old that it was only kept alive as KF5-based snapshot of an
