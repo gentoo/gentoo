@@ -3,6 +3,10 @@
 
 # New entries go on top.
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-09-21)
+# openjfx for OpenJDK 23 is not yet available.
+dev-java/openjdk:23 javafx
+
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
