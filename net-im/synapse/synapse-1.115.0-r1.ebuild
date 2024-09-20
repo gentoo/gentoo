@@ -159,6 +159,9 @@ RDEPEND="
 	dev-python/twisted[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 	dev-python/unpaddedbase64[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/legacy-cgi[${PYTHON_USEDEP}]
+	' 3.13)
 	postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 	systemd? ( dev-python/python-systemd[${PYTHON_USEDEP}] )
 "
