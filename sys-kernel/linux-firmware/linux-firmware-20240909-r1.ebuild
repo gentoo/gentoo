@@ -57,7 +57,12 @@ RDEPEND="!savedconfig? (
 			!sys-firmware/alsa-firmware[alsa_cards_ymfpci]
 		)
 	)
-	dist-kernel? ( virtual/dist-kernel )
+	dist-kernel? (
+		virtual/dist-kernel
+		initramfs? (
+			app-alternatives/cpio
+		)
+	)
 "
 IDEPEND="
 	dist-kernel? (
