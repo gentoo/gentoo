@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2025-06-29)
+# libvmaf has limited keywords
+media-libs/x265 vmaf
+
 # Michał Górny <mgorny@gentoo.org> (2025-09-28)
 # Masked until sci-libs/flexiblas and sci-libs/blas-lapack-aux-wrappers
 # are keyworded everywhere.  And for some more testing.
