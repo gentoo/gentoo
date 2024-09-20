@@ -1,0 +1,25 @@
+From 7b1df6fc2b989d8a64edaa47fe04edea95c45174 Mon Sep 17 00:00:00 2001
+From: Stefan Gerlach <stefan.gerlach@uni-konstanz.de>
+Date: Thu, 25 Jul 2024 08:21:38 +0000
+Subject: [PATCH] Fix "_WIN32" is not defined when not on Windows.
+
+---
+ include/ixion/env.hpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/ixion/env.hpp b/include/ixion/env.hpp
+index 92812e3e..7fee0702 100644
+--- a/include/ixion/env.hpp
++++ b/include/ixion/env.hpp
+@@ -33,7 +33,7 @@
+   #define IXION_DLLPUBLIC_VAR IXION_DLLPUBLIC extern
+ #endif
+ 
+-#if _WIN32
++#ifdef _WIN32
+ #define IXION_MOD_EXPORT __declspec(dllexport)
+ #else
+ #define IXION_MOD_EXPORT __attribute__ ((visibility ("default")))
+-- 
+GitLab
+
