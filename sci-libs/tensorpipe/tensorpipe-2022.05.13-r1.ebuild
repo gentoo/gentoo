@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,6 +11,8 @@ DESCRIPTION="provides a tensor-aware channel"
 HOMEPAGE="https://github.com/pytorch/tensorpipe/"
 SRC_URI="https://github.com/pytorch/${PN}/archive/${CommitId}.tar.gz
 	-> ${P}.tar.gz"
+
+S="${WORKDIR}"/${PN}-${CommitId}
 
 LICENSE="BSD"
 SLOT="0"
@@ -28,11 +30,10 @@ DEPEND="${RDEPEND}
 	dev-libs/libnop
 "
 
-S="${WORKDIR}"/${PN}-${CommitId}
-
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-musl.patch
+	"${FILESDIR}"/${P}-gcc15.patch
 )
 
 src_configure() {

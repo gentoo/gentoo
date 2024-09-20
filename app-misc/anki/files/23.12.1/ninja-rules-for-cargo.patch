@@ -1,0 +1,40 @@
+Fix the output path for Rust binaries in the Ninja file to match
+Cargo's target directory when CARGO_BUILD_TARGET is set.  This prevents
+file-not-found errors for some build steps.
+
+Provide the cargo-nextest binary ourselves to prevent network access.
+Set test runner options in the ebuild.
+
+From: Lucio Sauer <watermanpaint@posteo.net>
+--- a/build/ninja_gen/src/cargo.rs
++++ b/build/ninja_gen/src/cargo.rs
+@@ -61,6 +61,9 @@ impl RustOutput<'_> {
+         let mut path: Utf8PathBuf = rust_base.into();
+         if let Some(target) = target {
+             path = path.join(target);
++        } else {
++            let triple = std::env::var("CARGO_BUILD_TARGET").unwrap_or_default();
++            path = path.join(triple);
+         }
+         path = path.join(profile_output_dir(build_profile)).join(filename);
+         path.to_string()
+@@ -152,19 +155,11 @@ impl BuildAction for CargoTest {
+ 
+     fn files(&mut self, build: &mut impl FilesHandle) {
+         build.add_inputs("", &self.inputs);
+-        build.add_inputs("", inputs![":cargo-nextest"]);
+         build.add_env_var("ANKI_TEST_MODE", "1");
+         build.add_output_stamp("tests/cargo_test");
+     }
+ 
+     fn on_first_instance(&self, build: &mut Build) -> Result<()> {
+-        build.add_action(
+-            "cargo-nextest",
+-            CargoInstall {
+-                binary_name: "cargo-nextest",
+-                args: "cargo-nextest --version 0.9.57 --locked",
+-            },
+-        )?;
+         setup_flags(build)
+     }
+ }

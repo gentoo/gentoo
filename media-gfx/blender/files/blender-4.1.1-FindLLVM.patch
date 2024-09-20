@@ -1,0 +1,38 @@
+From: =?UTF-8?q?Jannik=20Gl=C3=BCckert?= <jannik.glueckert@gmail.com>
+Date: Fri, 23 Aug 2024 13:17:34 +0200
+Subject: [PATCH] fix FindLLVM lookup
+
+find out our installed libnames and use that in the lookup
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git build_files/cmake/Modules/FindLLVM.cmake build_files/cmake/Modules/FindLLVM.cmake
+index 4c7cc5f..21c760e 100644
+--- a/build_files/cmake/Modules/FindLLVM.cmake
++++ b/build_files/cmake/Modules/FindLLVM.cmake
+@@ -54,16 +54,21 @@ if(NOT LLVM_LIBPATH)
+   set(LLVM_LIBPATH ${LLVM_LIBPATH} CACHE PATH "Path to the LLVM library path")
+   mark_as_advanced(LLVM_LIBPATH)
+ endif()
++if(NOT LLVM_LIBNAMES)
++  execute_process(COMMAND ${LLVM_CONFIG} --libnames
++	  OUTPUT_VARIABLE LLVM_LIBNAMES
++          OUTPUT_STRIP_TRAILING_WHITESPACE)
++  set(LLVM_LIBNAMES ${LLVM_LIBNAMES} CACHE PATH "Name of the LLVM libraries")
++  mark_as_advanced(LLVM_LIBNAMES)
++endif()
+ 
+ if(LLVM_STATIC)
+   find_library(LLVM_LIBRARY
+-               NAMES LLVMAnalysis # first of a whole bunch of libs to get
++               NAMES ${LLVM_LIBNAMES}
+                PATHS ${LLVM_LIBPATH})
+ else()
+   find_library(LLVM_LIBRARY
+-               NAMES
+-                 LLVM-${LLVM_VERSION}
+-                 LLVMAnalysis  # check for the static library as a fall-back
++               NAMES ${LLVM_LIBNAMES}
+                PATHS ${LLVM_LIBPATH})
+ endif()
+ 

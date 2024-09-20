@@ -47,6 +47,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	app-alternatives/cpio
 	app-alternatives/bc
+	dev-lang/perl
 	sys-devel/bison
 	sys-devel/flex
 	virtual/libelf
@@ -167,8 +168,8 @@ kernel-build_pkg_setup() {
 
 # @FUNCTION: kernel-build_src_configure
 # @DESCRIPTION:
-# Prepare the toolchain for building the kernel, get the default .config
-# or restore savedconfig, and get build tree configured for modprep.
+# Prepare the toolchain for building the kernel, get the .config file,
+# and get build tree configured for modprep.
 kernel-build_src_configure() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -243,8 +244,7 @@ kernel-build_src_configure() {
 		MAKEARGS+=( KBZIP2="lbzip2" )
 	fi
 
-	restore_config .config
-	[[ -f .config ]] || die "Ebuild error: please copy default config into .config"
+	[[ -f .config ]] || die "Ebuild error: No .config, kernel-build_merge_configs was not called."
 
 	if [[ -z "${KV_LOCALVERSION}" ]]; then
 		KV_LOCALVERSION=$(sed -n -e 's#^CONFIG_LOCALVERSION="\(.*\)"$#\1#p' \
@@ -296,7 +296,16 @@ kernel-build_src_configure() {
 kernel-build_src_compile() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	emake O="${WORKDIR}"/build "${MAKEARGS[@]}" all
+	local targets=( all )
+
+	if grep -q "CONFIG_CTF=y" "${WORKDIR}/modprep/.config"; then
+		targets+=( ctf )
+	fi
+
+	local target
+	for target in "${targets[@]}" ; do
+		emake O="${WORKDIR}"/build "${MAKEARGS[@]}" "${target}"
+	done
 }
 
 # @FUNCTION: kernel-build_src_test
@@ -306,6 +315,12 @@ kernel-build_src_compile() {
 kernel-build_src_test() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	local targets=( modules_install )
+
+	if grep -q "CONFIG_CTF=y" "${WORKDIR}/modprep/.config"; then
+		targets+=( ctf_install )
+	fi
+
 	# Use the kernel build system to strip, this ensures the modules
 	# are stripped *before* they are signed or compressed.
 	local strip_args
@@ -313,9 +328,12 @@ kernel-build_src_test() {
 		strip_args="--strip-unneeded"
 	fi
 
-	emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
-		INSTALL_MOD_PATH="${T}" INSTALL_MOD_STRIP="${strip_args}" \
-		modules_install
+	local target
+	for target in "${targets[@]}" ; do
+		emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
+			INSTALL_MOD_PATH="${T}" INSTALL_MOD_STRIP="${strip_args}" \
+			"${target}"
+	done
 
 	kernel-install_test "${KV_FULL}" \
 		"${WORKDIR}/build/$(dist-kernel_get_image_path)" \
@@ -337,6 +355,10 @@ kernel-build_src_install() {
 		targets+=( dtbs_install )
 	fi
 
+	if grep -q "CONFIG_CTF=y" "${WORKDIR}/modprep/.config"; then
+		targets+=( ctf_install )
+	fi
+
 	# Use the kernel build system to strip, this ensures the modules
 	# are stripped *before* they are signed or compressed.
 	local strip_args
@@ -355,9 +377,12 @@ kernel-build_src_install() {
 		)
 	fi
 
-	emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
-		INSTALL_MOD_PATH="${ED}" INSTALL_MOD_STRIP="${strip_args}" \
-		INSTALL_PATH="${ED}/boot" "${compress[@]}" "${targets[@]}"
+	local target
+	for target in "${targets[@]}" ; do
+		emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
+			INSTALL_MOD_PATH="${ED}" INSTALL_MOD_STRIP="${strip_args}" \
+			INSTALL_PATH="${ED}/boot" "${compress[@]}" "${target}"
+	done
 
 	# note: we're using mv rather than doins to save space and time
 	# install main and arch-specific headers first, and scripts
@@ -430,6 +455,7 @@ kernel-build_src_install() {
 			mv "build/vmlinux" "${ED}${kernel_dir}/vmlinux" || die
 		fi
 		dostrip -x "${kernel_dir}/vmlinux"
+		dostrip -x "${kernel_dir}/vmlinux.ctfa"
 	fi
 
 	# strip empty directories
@@ -594,15 +620,22 @@ kernel-build_pkg_postinst() {
 # @FUNCTION: kernel-build_merge_configs
 # @USAGE: [distro.config...]
 # @DESCRIPTION:
-# Merge the config files specified as arguments (if any) into
-# the '.config' file in the current directory, then merge
-# any user-supplied configs from ${BROOT}/etc/kernel/config.d/*.config.
-# The '.config' file must exist already and contain the base
-# configuration.
+# Merge kernel config files.  The following is merged onto the '.config'
+# file in the current directory, in order:
+#
+# 1. Config files specified as arguments.
+# 2. Default module signing and compression configuration
+#    (if applicable).
+# 3. Config saved via USE=savedconfig (if applicable).
+# 4. Module signing key specified via MODULES_SIGN_KEY* variables.
+# 5. User-supplied configs from ${BROOT}/etc/kernel/config.d/*.config.
+#
+# This function must be called by the ebuild in the src_prepare phase.
 kernel-build_merge_configs() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	[[ -f .config ]] || die "${FUNCNAME}: .config does not exist"
+	[[ -f .config ]] ||
+		die "${FUNCNAME}: No .config, please copy default config into .config"
 	has .config "${@}" &&
 		die "${FUNCNAME}: do not specify .config as parameter"
 
@@ -613,30 +646,16 @@ kernel-build_merge_configs() {
 
 	local merge_configs=( "${@}" )
 
-	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
-		if use modules-sign; then
-			: "${MODULES_SIGN_HASH:=sha512}"
-			cat <<-EOF > "${WORKDIR}/modules-sign.config" || die
-				## Enable module signing
-				CONFIG_MODULE_SIG=y
-				CONFIG_MODULE_SIG_ALL=y
-				CONFIG_MODULE_SIG_FORCE=y
-				CONFIG_MODULE_SIG_${MODULES_SIGN_HASH^^}=y
-			EOF
-			if [[ -n ${MODULES_SIGN_KEY_CONTENTS} ]]; then
-				(umask 066 && touch "${T}/kernel_key.pem" || die)
-				echo "${MODULES_SIGN_KEY_CONTENTS}" > "${T}/kernel_key.pem" || die
-				unset MODULES_SIGN_KEY_CONTENTS
-				export MODULES_SIGN_KEY="${T}/kernel_key.pem"
-			fi
-			if [[ ${MODULES_SIGN_KEY} == pkcs11:* || -r ${MODULES_SIGN_KEY} ]]; then
-				echo "CONFIG_MODULE_SIG_KEY=\"${MODULES_SIGN_KEY}\"" \
-					>> "${WORKDIR}/modules-sign.config"
-			elif [[ -n ${MODULES_SIGN_KEY} ]]; then
-				die "MODULES_SIGN_KEY=${MODULES_SIGN_KEY} not found or not readable!"
-			fi
-			merge_configs+=( "${WORKDIR}/modules-sign.config" )
-		fi
+	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]] && use modules-sign; then
+		: "${MODULES_SIGN_HASH:=sha512}"
+		cat <<-EOF > "${WORKDIR}/modules-sign.config" || die
+			## Enable module signing
+			CONFIG_MODULE_SIG=y
+			CONFIG_MODULE_SIG_ALL=y
+			CONFIG_MODULE_SIG_FORCE=y
+			CONFIG_MODULE_SIG_${MODULES_SIGN_HASH^^}=y
+		EOF
+		merge_configs+=( "${WORKDIR}/modules-sign.config" )
 	fi
 
 	# Only semi-related but let's use that to avoid changing stable ebuilds.
@@ -648,6 +667,27 @@ kernel-build_merge_configs() {
 			CONFIG_MODULE_COMPRESS_XZ=y
 		EOF
 		merge_configs+=( "${WORKDIR}/module-compress.config" )
+	fi
+
+	restore_config "${WORKDIR}/savedconfig.config"
+	if [[ -f ${WORKDIR}/savedconfig.config ]]; then
+		merge_configs+=( "${WORKDIR}/savedconfig.config" )
+	fi
+
+	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]] && use modules-sign; then
+		if [[ -n ${MODULES_SIGN_KEY_CONTENTS} ]]; then
+			(umask 066 && touch "${T}/kernel_key.pem" || die)
+			echo "${MODULES_SIGN_KEY_CONTENTS}" > "${T}/kernel_key.pem" || die
+			unset MODULES_SIGN_KEY_CONTENTS
+			export MODULES_SIGN_KEY="${T}/kernel_key.pem"
+		fi
+		if [[ ${MODULES_SIGN_KEY} == pkcs11:* || -r ${MODULES_SIGN_KEY} ]]; then
+			echo "CONFIG_MODULE_SIG_KEY=\"${MODULES_SIGN_KEY}\"" \
+				>> "${WORKDIR}/modules-sign-key.config"
+			merge_configs+=( "${WORKDIR}/modules-sign-key.config" )
+		elif [[ -n ${MODULES_SIGN_KEY} ]]; then
+			die "MODULES_SIGN_KEY=${MODULES_SIGN_KEY} not found or not readable!"
+		fi
 	fi
 
 	if [[ ${#user_configs[@]} -gt 0 ]]; then

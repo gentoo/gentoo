@@ -14,13 +14,11 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=LabPlot2</bugs-to>
 		<remote-id type="kde-invent">education/labplot</remote-id>
 	</upstream>
 	<use>
-		<flag name="cantor">Enable support for different open-source computer algebra systems via <pkg>kde-apps/cantor</pkg></flag>
 		<flag name="eigen">Enable support for fast baseline removal via <pkg>dev-cpp/eigen</pkg></flag>
-		<flag name="excel">Enable support for importing/exporting Microsoft Excel files (.xlsx) via <pkg>dev-libs/qxlsx</pkg></flag>
 		<flag name="fits">Enable support for NASA's <pkg>sci-libs/cfitsio</pkg> library</flag>
 		<flag name="libcerf">Enable special functions from <pkg>sci-libs/libcerf</pkg></flag>
 		<flag name="markdown">Enable Markdown support via <pkg>app-text/discount</pkg></flag>
@@ -30,5 +28,6 @@
 		<flag name="root">Enable support for CERN's ROOT file type</flag>
 		<flag name="serial">Enable support for RS232 serial ports using <pkg>dev-qt/qtserialport</pkg></flag>
 		<flag name="share">Enable support for a share menu using <pkg>kde-frameworks/purpose</pkg></flag>
+		<flag name="xlsx">Enable support for importing/exporting Microsoft Excel files (.xlsx) via <pkg>dev-libs/qxlsx</pkg></flag>
 	</use>
 </pkgmetadata>

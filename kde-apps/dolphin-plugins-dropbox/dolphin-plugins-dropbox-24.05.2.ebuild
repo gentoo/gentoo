@@ -16,7 +16,7 @@ HOMEPAGE="https://apps.kde.org/dolphin_plugins/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 DEPEND="
@@ -54,9 +54,4 @@ src_configure() {
 		-DBUILD_svn=OFF
 	)
 	ecm_src_configure
-}
-
-src_install() {
-	ecm_src_install
-	rm "${D}"/usr/share/metainfo/org.kde.dolphin-plugins.metainfo.xml || die
 }

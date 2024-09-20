@@ -1,6 +1,39 @@
 # Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-13)
+# dev-python/pyside6 isn't keyworded here
+dev-python/QtPy pyside6
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-07)
+# kde-plasma/plasma-workspace:6 is not keyworded
+virtual/notification-daemon kde
+
+# Sam James <sam@gentoo.org> (2024-08-31)
+# dnstap USE masked due to missing keywords
+net-dns/bind dnstap
+
+# Sam James <sam@gentoo.org> (2024-08-23)
+# dev-util/bpftool and/or sys-devel/bpf-toolchain not keyworded here
+sys-apps/systemd bpf
+
+# WANG Xuerui <xen0n@gentoo.org> (2024-08-22)
+# dev-lang/spidermonkey gained JIT support for loong since version 107,
+# but the nearest packaged version is 115.
+>=dev-lang/spidermonkey-115 -jit
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-08-19)
+# kde-apps/kdesdk-thumbnailers is not yet keyworded
+kde-apps/thumbnailers gettext
+
+# Hans de Graaff <graaff@gentoo.org> (2024-08-18)
+# Requires large parts of dev-ruby/rails to be keyworded
+dev-ruby/minitest-hooks test
+
+# Matt Jolly <kangie@gentoo.org> (2024-08-14)
+# QUIC dependencies are not keyworded
+net-misc/curl http3 quic curl_quic_openssl curl_quic_ngtcp2
+
 # Ulrich Müller <ulm@gentoo.org> (2024-08-03)
 # Needs dev-libs/openspecfun which is not yet keyworded
 sci-visualization/gnuplot amos
@@ -117,7 +150,6 @@ dev-python/pyside6 3d location scxml
 app-office/libreoffice clang
 <dev-db/postgresql-16 llvm
 <dev-lang/rust-1.73.0 wasm
-dev-lang/spidermonkey clang lto
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-07-26)
 # MPV currently[1] has no plans to support >=lua5-3 making luajit
@@ -285,6 +317,7 @@ media-plugins/gst-plugins-meta libvisual
 >=sys-libs/compiler-rt-sanitizers-17.0.0_pre20230705 -dfsan
 >=sys-libs/compiler-rt-sanitizers-17.0.0_pre20230717 -profile -xray
 >sys-libs/compiler-rt-sanitizers-17.0.0_pre20230717 -libfuzzer
+>=sys-libs/compiler-rt-sanitizers-19 -cfi
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-07-08)
 # virtual/{jdk,jre} is not available on loong yet.

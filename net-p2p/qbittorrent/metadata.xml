@@ -12,5 +12,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">qbittorrent/qBittorrent</remote-id>
+		<changelog>https://www.qbittorrent.org/news</changelog>
 	</upstream>
 </pkgmetadata>

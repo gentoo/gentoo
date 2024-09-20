@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+DESCRIPTION="An Apache2 authentication DSO using external programs"
+HOMEPAGE="https://github.com/phokz/mod-auth-external"
+
 inherit apache-module
 
 if [[ ${PV} == *9999 ]] ; then
@@ -10,16 +14,13 @@ if [[ ${PV} == *9999 ]] ; then
 	S="${WORKDIR}/${P}/mod_authnz_external"
 else
 	SRC_URI="https://github.com/phokz/mod-auth-external/archive/${P}.tar.gz"
-	KEYWORDS="amd64 x86"
 	S="${WORKDIR}/mod-auth-external-${P}"
+	KEYWORDS="amd64 x86"
 fi
-
-DESCRIPTION="An Apache2 authentication DSO using external programs"
-HOMEPAGE="https://github.com/phokz/mod-auth-external"
 
 LICENSE="Apache-1.1"
 SLOT="2"
-IUSE=""
+
 need_apache2_4
 
 DOCFILES="AUTHENTICATORS CHANGES INSTALL INSTALL.HARDCODE README TODO UPGRADE"

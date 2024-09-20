@@ -22,6 +22,6 @@
     <flag name="wordperfect">Enable wordperfect file support via <pkg>app-text/libwpd</pkg></flag>
   </use>
   <upstream>
-    <remote-id type="gnome-gitlab">World/abiword</remote-id>
+    <remote-id type="gnome-gitlab">World/AbiWord</remote-id>
   </upstream>
 </pkgmetadata>

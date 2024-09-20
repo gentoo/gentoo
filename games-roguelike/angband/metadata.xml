@@ -12,4 +12,7 @@
 	<use>
 		<flag name="sound">Enable and install sounds</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">angband/angband</remote-id>
+	</upstream>
 </pkgmetadata>

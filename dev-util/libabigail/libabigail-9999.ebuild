@@ -16,14 +16,15 @@ LIBABIGAIL_DOCS_USEFLAG="+doc"
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit autotools bash-completion-r1 python-any-r1 out-of-source
+inherit libtool bash-completion-r1 python-any-r1 out-of-source
 
 DESCRIPTION="Suite of tools for checking ABI differences between ELF objects"
 HOMEPAGE="https://sourceware.org/libabigail/"
 if [[ ${PV} == 9999 ]] ; then
 	LIBABIGAIL_DOCS_PREBUILT=0
 	EGIT_REPO_URI="https://sourceware.org/git/libabigail.git"
-	inherit git-r3
+	EGIT_SUBMODULES=()
+	inherit autotools git-r3
 else
 	SRC_URI="https://mirrors.kernel.org/sourceware/libabigail/${P}.tar.xz"
 	if [[ ${LIBABIGAIL_DOCS_PREBUILT} == 1 ]] ; then
@@ -58,9 +59,11 @@ BDEPEND="
 
 src_prepare() {
 	default
-	# need to run our autotools, due to ltmain.sh including Redhat calls:
-	# cannot read spec file '/usr/lib/rpm/redhat/redhat-hardened-ld': No such file or directory
-	eautoreconf
+	if [[ ${PV} = 9999 ]] ; then
+		eautoreconf
+	else
+		elibtoolize
+	fi
 }
 
 my_src_configure() {
@@ -71,7 +74,6 @@ my_src_configure() {
 		--disable-rpm
 		--disable-rpm415
 		--disable-ctf
-		--disable-debug-ct-propagation
 		# Don't try to run Valgrind on tests.
 		--disable-valgrind
 		--enable-bash-completion

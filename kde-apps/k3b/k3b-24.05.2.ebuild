@@ -8,7 +8,7 @@ ECM_TEST="true"
 PVCUT=$(ver_cut 1-3)
 KFMIN=5.115.0
 QTMIN=5.15.12
-inherit ecm gear.kde.org
+inherit ecm flag-o-matic gear.kde.org
 
 DESCRIPTION="Full-featured burning and ripping application based on KDE Frameworks"
 HOMEPAGE="https://apps.kde.org/k3b/ https://userbase.kde.org/K3b"
@@ -73,6 +73,11 @@ RDEPEND="${DEPEND}
 DOCS+=( ChangeLog {FAQ,PERMISSIONS,README}.txt )
 
 src_configure() {
+	# -Werror=odr, -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/924376
+	# https://bugs.kde.org/show_bug.cgi?id=492571
+	filter-lto
+
 	local mycmakeargs=(
 		-DK3B_BUILD_API_DOCS=OFF
 		-DK3B_BUILD_EXTERNAL_ENCODER_PLUGIN=ON

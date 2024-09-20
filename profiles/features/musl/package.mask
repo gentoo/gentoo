@@ -1,6 +1,16 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2024-08-31)
+# sys-devel/binutils[gprofng] is masked on musl
+dev-debug/gprofng-gui
+
+# Sam James <sam@gentoo.org> (2024-08-21)
+# systemtap needs porting to musl. Fails to compile in a few ways.
+# See bug #925857.
+dev-debug/systemtap
+sys-apps/tuned
+
 # Robert Förster <Dessa@gmake.de> (2024-05-06)
 # needs mongodb
 net-wireless/unifi
@@ -75,7 +85,10 @@ app-arch/lrzip-next
 # Christopher Fore <csfore@posteo.net> (2024-01-24)
 # >=sys-fs/bcachefs-tools-1.4.1 uses functions currently not in Musl
 # https://github.com/koverstreet/bcachefs-tools/issues/213
->=sys-fs/bcachefs-tools-1.4.1
+# The above was fixed in musl 1.2.5, which bcachefs-tools 1.11.0
+# will now depend on.
+# https://www.openwall.com/lists/musl/2024/03/01/2
+<sys-fs/bcachefs-tools-1.11.0
 
 # Conrad Kostecki <conikost@gentoo.org> (2024-01-23)
 # Uses glibc function getsourcefilter(),
@@ -277,6 +290,7 @@ kde-apps/dolphin-plugins-dropbox
 mail-client/thunderbird-bin
 mate-extra/caja-dropbox
 media-gfx/brscan4
+media-gfx/evoluspencil
 media-libs/amdgpu-pro-vulkan
 media-sound/baudline
 media-sound/teamspeak-server

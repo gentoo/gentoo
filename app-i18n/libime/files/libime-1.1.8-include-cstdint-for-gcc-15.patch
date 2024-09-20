@@ -1,0 +1,12 @@
+https://github.com/fcitx/libime/pull/78
+
+--- a/src/libime/table/autophrasedict.h
++++ b/src/libime/table/autophrasedict.h
+@@ -8,6 +8,7 @@
+ 
+ #include "libimetable_export.h"
+ #include <cstddef>
++#include <cstdint>
+ #include <fcitx-utils/macros.h>
+ #include <functional>
+ #include <istream>

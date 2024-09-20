@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit flag-o-matic meson python-single-r1 toolchain-funcs vala
 
 MY_PV=${PV}a # cleanup next bump

@@ -1,0 +1,36 @@
+From fad9230cea8a9970980c36b442b71b864e69ded3 Mon Sep 17 00:00:00 2001
+From: Kai Krakow <kai@kaishome.de>
+Date: Sun, 30 Jun 2024 16:27:20 +0200
+Subject: [PATCH 1/2] context: demote "abandoned toxic match" to debug log
+ level
+
+This log message creates a overwhelmingly lot of messages in the system
+journal, leading to write-back flushing storms under high activity. As
+it is a work-around message, it is probably only useful to developers,
+thus demote to debug level.
+
+This fixes latency spikes in desktop usage after adding a lot of new
+files, especially since systemd-journal starts to flush caches if it
+sees memory pressure.
+
+Signed-off-by: Kai Krakow <kai@kaishome.de>
+---
+ src/bees-context.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/bees-context.cc b/src/bees-context.cc
+index 09ec152..2251783 100644
+--- a/src/bees-context.cc
++++ b/src/bees-context.cc
+@@ -471,7 +471,7 @@ BeesContext::scan_one_extent(const BeesFileRange &bfr, const Extent &e)
+ 
+ 			// Hash is toxic
+ 			if (found_addr.is_toxic()) {
+-				BEESLOGWARN("WORKAROUND: abandoned toxic match for hash " << hash << " addr " << found_addr << " matching bbd " << bbd);
++				BEESLOGDEBUG("WORKAROUND: abandoned toxic match for hash " << hash << " addr " << found_addr << " matching bbd " << bbd);
+ 				// Don't push these back in because we'll never delete them.
+ 				// Extents may become non-toxic so give them a chance to expire.
+ 				// hash_table->push_front_hash_addr(hash, found_addr);
+-- 
+2.44.2
+

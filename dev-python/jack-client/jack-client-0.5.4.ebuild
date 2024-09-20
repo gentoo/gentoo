@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # Tests require disabling the sandbox, ALSA with at least one functioning
 # PCM output device, and a very specific JACK server to even start (so far

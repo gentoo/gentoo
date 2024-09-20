@@ -12,7 +12,7 @@ S="${WORKDIR}"
 
 LICENSE="bonnie"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~mips ppc ppc64 sparc x86"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-includes.patch

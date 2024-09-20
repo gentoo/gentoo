@@ -91,13 +91,13 @@ unset ADDONS_SRC
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="accessibility base bluetooth +branding clang coinmp +cups custom-cflags +dbus debug eds firebird
-googledrive gstreamer +gtk kde ldap +mariadb odk pdfimport postgres qt5 qt6 test valgrind vulkan
+googledrive gstreamer +gtk kde ldap +mariadb odk pdfimport postgres qt6 test valgrind vulkan
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	base? ( java )
 	bluetooth? ( dbus )
-	kde? ( || ( qt5 qt6 ) )
+	kde? ( qt6 )
 	libreoffice_extensions_nlpsolver? ( java )
 	libreoffice_extensions_scripting-beanshell? ( java )
 	libreoffice_extensions_scripting-javascript? ( java )
@@ -209,20 +209,11 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		x11-libs/pango
 	)
 	kde? (
-		qt5? (
-			kde-frameworks/kconfig:5
-			kde-frameworks/kcoreaddons:5
-			kde-frameworks/ki18n:5
-			kde-frameworks/kio:5
-			kde-frameworks/kwindowsystem:5
-		)
-		qt6? (
-			kde-frameworks/kconfig:6
-			kde-frameworks/kcoreaddons:6
-			kde-frameworks/ki18n:6
-			kde-frameworks/kio:6
-			kde-frameworks/kwindowsystem:6
-		)
+		kde-frameworks/kconfig:6
+		kde-frameworks/kcoreaddons:6
+		kde-frameworks/ki18n:6
+		kde-frameworks/kio:6
+		kde-frameworks/kwindowsystem:6
 	)
 	ldap? ( net-nds/openldap:= )
 	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
@@ -231,12 +222,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	!mariadb? ( dev-db/mysql-connector-c:= )
 	pdfimport? ( >=app-text/poppler-22.06:=[cxx] )
 	postgres? ( >=dev-db/postgresql-9.0:*[kerberos] )
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtx11extras:5
-	)
 	qt6? ( dev-qt/qtbase:6[gui,widgets] )
 "
 # FIXME: cppunit should be moved to test conditional
@@ -312,7 +297,6 @@ PATCHES=(
 	# "${WORKDIR}"/${PATCHSET/.tar.xz/}
 
 	# not upstreamable stuff
-	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 	"${FILESDIR}/${PN}-24.2-qtdetect.patch"
 
@@ -474,9 +458,6 @@ src_configure() {
 	export PYTHON_CFLAGS=$(python_get_CFLAGS)
 	export PYTHON_LIBS=$(python_get_LIBS)
 
-	if use qt5; then
-		export QT5DIR="$(qt5_get_bindir)/.."
-	fi
 	if use qt6; then
 		export QT6DIR="$(qt6_get_bindir)/.."
 	fi
@@ -521,6 +502,7 @@ src_configure() {
 		--disable-online-update
 		--disable-openssl
 		--disable-pdfium
+		--disable-qt5
 		--with-extra-buildid="${gentoo_buildid}"
 		--enable-extension-integration
 		--with-external-dict-dir="${EPREFIX}/usr/share/myspell"
@@ -555,11 +537,11 @@ src_configure() {
 		$(use_enable firebird firebird-sdbc)
 		$(use_enable gstreamer gstreamer-1-0)
 		$(use_enable gtk gtk3)
+		$(use_enable kde kf6)
 		$(use_enable ldap)
 		$(use_enable odk)
 		$(use_enable pdfimport)
 		$(use_enable postgres postgresql-sdbc)
-		$(use_enable qt5)
 		$(use_enable qt6)
 		$(use_enable vulkan skia)
 		$(use_with accessibility lxml)
@@ -570,9 +552,6 @@ src_configure() {
 		$(use_with odk doxygen)
 		$(use_with valgrind)
 	)
-
-	use qt5 && myeconfargs+=( $(use_enable kde kf5) )
-	use qt6 && myeconfargs+=( $(use_enable kde kf6) )
 
 	if use eds || use gtk; then
 		myeconfargs+=( --enable-dconf --enable-gio )

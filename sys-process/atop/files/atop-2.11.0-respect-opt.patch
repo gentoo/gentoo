@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -21,7 +21,7 @@ PMPATH2  = /usr/lib64/pm-utils/sleep.d
+ PMPATHD  = /usr/lib/systemd/system-sleep
+ 
+ PKG_CONFIG ?= pkg-config
+-CFLAGS  += -O2 -I. -Wall $(shell $(PKG_CONFIG) --cflags glib-2.0)  -Wno-stringop-truncation -Wmissing-prototypes -Wmissing-declarations -Wformat-security # -DNOPERFEVENT   # -DHTTPSTATS
++CFLAGS  += -I. -Wall $(shell $(PKG_CONFIG) --cflags glib-2.0)  -Wno-stringop-truncation -Wmissing-prototypes -Wmissing-declarations -Wformat-security # -DNOPERFEVENT   # -DHTTPSTATS
+ LDFLAGS += $(shell $(PKG_CONFIG) --libs glib-2.0)
+ OBJMOD0  = version.o
+ OBJMOD1  = various.o  deviate.o   procdbase.o

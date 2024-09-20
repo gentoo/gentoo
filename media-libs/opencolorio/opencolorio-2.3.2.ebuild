@@ -90,6 +90,7 @@ RESTRICT="test" #"!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.1-adjust-python-installation.patch"
+	"${FILESDIR}/${PN}-2.3.2-include-cstdint.patch"
 )
 
 pkg_setup() {

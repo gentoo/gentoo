@@ -14,5 +14,6 @@
 	</upstream>
 	<use>
 		<flag name="desktop-portal">Enable <pkg>sys-apps/xdg-desktop-portal</pkg> backend implementation for Cinnamon</flag>
+		<flag name="internal-polkit">Use Cinnamon's internal polkit agent instead of <pkg>gnome-extra/polkit-gnome</pkg>. This does not currently support multi-user fast switching.</flag>
 	</use>
 </pkgmetadata>

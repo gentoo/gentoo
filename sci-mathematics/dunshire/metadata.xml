@@ -5,8 +5,4 @@
     <email>mjo@gentoo.org</email>
     <name>Michael Orlitzky</name>
   </maintainer>
-
-  <upstream>
-    <remote-id type="pypi">dunshire</remote-id>
-  </upstream>
 </pkgmetadata>

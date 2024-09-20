@@ -10,12 +10,12 @@ inherit cmake flag-o-matic systemd xdg-utils
 CMAKE_USE_DIR="${S}/src"
 
 DESCRIPTION="Multi Purpose Voice Services System, including Qtel for EchoLink"
-HOMEPAGE="http://www.svxlink.org"
+HOMEPAGE="https://www.svxlink.org"
 SRC_URI="https://github.com/sm0svx/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="ogg qt5 rtlsdr"
 
 DEPEND="dev-lang/tcl:=
@@ -47,7 +47,7 @@ BDEPEND="
 src_prepare() {
 	# fix build for MUSL (bug #936813)
 	if use elibc_musl ; then
-		eapply -p1 "${FILESDIR}/$P-musl.patch"
+		eapply -p1 "${FILESDIR}/${P}-musl.patch"
 	fi
 	if ! use ogg ; then
 		# drop automatic discovery of dependency

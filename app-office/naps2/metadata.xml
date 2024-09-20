@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>dotnet@gentoo.org</email>
+    <name>Gentoo Dotnet Project</name>
+  </maintainer>
+  <longdescription>
+    NAPS2 on Linux allows you to scan from USB (using SANE) and network
+    scanners. Use your chosen settings, or set up multiple profiles for
+    different devices and configurations. Once you've finished scanning, you
+    can save, email, or print with only a couple clicks. Save to PDF, TIFF,
+    JPEG, PNG, or other file types.  Easily rotate, crop, and rearrange
+    scanned pages. Adjust brightness, contrast, and apply automatic document
+    corrections to make your scanned pages look great. Use OCR to add
+    searchable text to your PDFs in any of over 100 languages. Use batch
+    scanning, advanced profile settings, and an optional CLI to automate
+    tedious tasks.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/cyanfish/naps2/issues/</bugs-to>
+    <remote-id type="github">cyanfish/naps2</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -5,13 +5,13 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit autotools python-any-r1 qmake-utils
+inherit autotools flag-o-matic python-any-r1 qmake-utils
 
 MY_P=qp${PV}
 
 DESCRIPTION="Extended Prolog supporting quantifiers, object-variables and substitutions"
-HOMEPAGE="http://staff.itee.uq.edu.au/pjr/HomePages/QuPrologHome.html"
-SRC_URI="http://staff.itee.uq.edu.au/pjr/HomePages/QPFiles/${MY_P}.tar.gz"
+HOMEPAGE="https://staff.itee.uq.edu.au/pjr/HomePages/QuPrologHome.html"
+SRC_URI="https://staff.itee.uq.edu.au/pjr/HomePages/QPFiles/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2+"
 SLOT="0"
@@ -46,6 +46,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/924768
+	# Upstream's sole provided contact method is email. I have sent an email
+	# describing the issue with a fairly rapid response saying there will be
+	# a new release "shortly" and that hopefully it will include a fix. -- Eli
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	econf \
 		--libdir=/usr/$(get_libdir) \
 		$(use_enable debug) \

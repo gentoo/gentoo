@@ -5,6 +5,9 @@
 	<email>prolog@gentoo.org</email>
 	<name>Prolog</name>
 </maintainer>
+<upstream>
+	<remote-id type="github">vscosta/yap</remote-id>
+</upstream>
 <use>
 	<flag name="R">Enable support for connecting R to Prolog</flag>
 	<flag name="raptor">Enable support for Raptor RDF syntax libarary</flag>

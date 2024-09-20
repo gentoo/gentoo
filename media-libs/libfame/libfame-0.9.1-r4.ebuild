@@ -12,7 +12,7 @@ SRC_URI="https://downloads.sourceforge.net/fame/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 sparc x86"
 IUSE="cpu_flags_x86_mmx"
 
 PATCHES=(

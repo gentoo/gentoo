@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.com/iniparser/iniparser/-/archive/v${PV}/iniparser-v${PV
 S="${WORKDIR}/${PN}-v${PV}"
 LICENSE="MIT"
 SLOT="4"
-#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc examples"
 
 BDEPEND="doc? ( app-text/doxygen )"

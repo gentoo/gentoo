@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc test"
 
-ruby_add_rdepend "|| ( dev-ruby/public_suffix:5 dev-ruby/public_suffix:4 )"
+ruby_add_rdepend "dev-ruby/public_suffix:5"
 
 ruby_add_bdepend "test? ( dev-ruby/rspec-its )"
 

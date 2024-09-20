@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-0001-use-system-provided-act-binary.patch
 	"${FILESDIR}"/${P}-0002-Gentoo-specific-remove-add_dependencies.patch
 	"${FILESDIR}"/${P}-0001-remove-std-and-opt-flags.patch
+	"${FILESDIR}"/${P}-include-cstdint.patch
 )
 
 src_configure() {

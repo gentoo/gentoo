@@ -1,0 +1,27 @@
+From 5e08a2474436574d7ed6de006573dd9bc036cd5c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20K=2E=20H=C3=BCttel?= <dilfridge@gentoo.org>
+Date: Sun, 8 Sep 2024 21:10:13 +0200
+Subject: [PATCH 2/2] Revert "set perl install base to that of ImageMagick's"
+
+This reverts commit 2d5edb26e22dd34ac1e43936b5c461bf0dbdb03a.
+---
+ PerlMagick/quantum/Makefile.PL.in | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/PerlMagick/quantum/Makefile.PL.in b/PerlMagick/quantum/Makefile.PL.in
+index fabebd300..fa0bf3384 100644
+--- a/PerlMagick/quantum/Makefile.PL.in
++++ b/PerlMagick/quantum/Makefile.PL.in
+@@ -220,9 +220,6 @@ WriteMakefile
+    # Linker flags for building a dynamically loadable module
+    'LDDLFLAGS' => $LDDLFLAGS_magick,
+ 
+-   # Install PerlMagick into ImageMagick prefix
+-   'INSTALL_BASE' => '@PREFIX_DIR@',
+-
+    # Install PerlMagick binary into ImageMagick bin directory
+    'INSTALLBIN'	=> '@BIN_DIR@',
+ 
+-- 
+2.44.2
+

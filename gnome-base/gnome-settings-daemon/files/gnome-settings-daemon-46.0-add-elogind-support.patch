@@ -1,0 +1,98 @@
+From 46f998d7308cb18832666bc34ee54b1d9c27739f Mon Sep 17 00:00:00 2001
+From: Nathaniel Russell <naterussell83@gmail.com>
+Date: Sat, 13 Jan 2024 00:29:49 +0000
+Subject: [PATCH] build: Add elogind support
+
+---
+ meson.build                           | 17 ++++++++++++-----
+ meson_options.txt                     |  2 +-
+ plugins/sharing/gsd-sharing-manager.c |  5 ++++-
+ plugins/sharing/meson.build           |  7 ++++++-
+ 4 files changed, 23 insertions(+), 8 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index deecd3f1e..e07fa841b 100644
+--- a/meson.build
++++ b/meson.build
+@@ -111,13 +111,20 @@ x11_dep = dependency('x11')
+ xfixes_dep = dependency('xfixes', version: '>= 6.0')
+ 
+ enable_systemd = get_option('systemd')
+-systemd_dep = dependency('systemd', version: '>= 243', required: enable_systemd)
+-if systemd_dep.found()
+-  systemd_userunitdir = systemd_dep.get_variable(pkgconfig: 'systemduserunitdir',
+-                                                 pkgconfig_define: ['prefix', gsd_prefix])
++enable_elogind = get_option('elogind')
++
++if enable_systemd and enable_elogind
++  error('Only systemd or elogind support should be activated')
++elif enable_systemd
++  systemd_dep = dependency('systemd', version: '>= 243', required: true)
++  libsystemd_dep = dependency('libsystemd', version: '>= 243', required: true)
++  systemd_userunitdir = systemd_dep.get_pkgconfig_variable('systemduserunitdir',
++                                                           define_variable: ['prefix', gsd_prefix])
++elif enable_elogind
++  elogind_dep = dependency('libelogind', version: '>= 209', required: true)
+ endif
+-libsystemd_dep = dependency('libsystemd', version: '>= 243', required: enable_systemd)
+ 
++config_h.set10('HAVE_SYSTEMD_LIB', enable_systemd or enable_elogind)
+ 
+ m_dep = cc.find_library('m')
+ 
+diff --git a/meson_options.txt b/meson_options.txt
+index 1d913b4d2..5e2cccab6 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,6 +1,6 @@
+ option('udev_dir', type: 'string', value: '', description: 'Absolute path of the udev base directory')
+ option('systemd', type: 'boolean', value: true, description: 'Enable systemd integration')
+-
++option('elogind', type: 'boolean', value: false, description: 'Use elogind')
+ option('alsa', type: 'boolean', value: true, description: 'build with ALSA support (not optional on Linux platforms)')
+ option('gudev', type: 'boolean', value: true, description: 'build with gudev device support (not optional on Linux platforms)')
+ option('cups', type: 'boolean', value: true, description: 'build with CUPS support')
+diff --git a/plugins/sharing/gsd-sharing-manager.c b/plugins/sharing/gsd-sharing-manager.c
+index 2ab2cb054..c669e7bde 100644
+--- a/plugins/sharing/gsd-sharing-manager.c
++++ b/plugins/sharing/gsd-sharing-manager.c
+@@ -20,12 +20,15 @@
+ #include "config.h"
+ 
+ #include <locale.h>
+-#include <systemd/sd-login.h>
+ #include <glib.h>
+ #include <gio/gio.h>
+ #include <gio/gdesktopappinfo.h>
+ #include <glib/gstdio.h>
+ 
++#if HAVE_SYSTEMD_LIB
++#include <systemd/sd-login.h>
++#endif
++
+ #if HAVE_NETWORK_MANAGER
+ #include <NetworkManager.h>
+ #endif /* HAVE_NETWORK_MANAGER */
+diff --git a/plugins/sharing/meson.build b/plugins/sharing/meson.build
+index bda21608a..c65c4f9a5 100644
+--- a/plugins/sharing/meson.build
++++ b/plugins/sharing/meson.build
+@@ -6,9 +6,14 @@ sources = files(
+ deps = plugins_deps + [
+   gio_unix_dep,
+   libnotify_dep,
+-  libsystemd_dep
+ ]
+ 
++if enable_systemd
++  deps += libsystemd_dep
++elif enable_elogind
++  deps += elogind_dep
++endif
++
+ if enable_network_manager
+   deps += libnm_dep
+ endif
+-- 
+GitLab
+

@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2024-08-23)
+# dev-util/bpftool and/or sys-devel/bpf-toolchain not keyworded here
+sys-apps/systemd bpf
+
 # Ulrich Müller <ulm@gentoo.org> (2024-08-03)
 # Needs dev-libs/openspecfun which is not yet keyworded
 sci-visualization/gnuplot amos
@@ -404,7 +408,6 @@ x11-libs/qwt designer
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-15)
 # USE=bpf depends on sys-devel/clang which is not keyworded on sparc
 media-libs/libv4l bpf
-media-tv/v4l-utils bpf
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-14)
 # dev-lang/luajit is not keyworded on sparc
@@ -618,10 +621,6 @@ dev-haskell/haskell-src-exts test
 # Pacho Ramos <pacho@gentoo.org> (2014-10-03)
 # Missing keywords, bug #524352
 >=app-accessibility/orca-3.12.3 braille
-
-# Christoph Junghans <junghans@gentoo.org> (2014-07-21)
-# Missing keywords on sci-libs/libcerf (bug 517726)
-sci-visualization/gnuplot libcerf
 
 # Pacho Ramos <pacho@gentoo.org> (2014-04-12)
 # Missing keywords, bug #507490

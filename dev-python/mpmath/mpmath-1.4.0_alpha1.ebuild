@@ -17,31 +17,28 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
-		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pexpect[${PYTHON_USEDEP}]
 		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
 			dev-python/gmpy[${PYTHON_USEDEP}]
 		' 'python3*')
-		$(python_gen_cond_dep '
-			dev-python/ipython[${PYTHON_USEDEP}]
-		' 3.{10..12})
+		!mips? (
+			dev-python/matplotlib[${PYTHON_USEDEP}]
+			$(python_gen_cond_dep '
+				dev-python/ipython[${PYTHON_USEDEP}]
+			' 3.{10..12})
+		)
 	)
 "
 
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
-
-PATCHES=(
-	# https://github.com/mpmath/mpmath/pull/816
-	"${FILESDIR}/${P}-numpy-2.patch"
-)
 
 python_test() {
 	local EPYTEST_DESELECT=(
@@ -51,6 +48,10 @@ python_test() {
 		mpmath/tests/test_cli.py::test_bare_console_pretty
 		mpmath/tests/test_cli.py::test_bare_console_without_ipython
 		mpmath/tests/test_cli.py::test_bare_console_wrap_floats
+		# precision problems on some arches, also np2
+		# https://github.com/mpmath/mpmath/pull/816
+		# https://github.com/mpmath/mpmath/issues/836
+		mpmath/tests/test_convert.py::test_compatibility
 	)
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1

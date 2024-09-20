@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit qt6-build toolchain-funcs
+inherit flag-o-matic qt6-build toolchain-funcs
 
 DESCRIPTION="Cross-platform application development framework"
 
@@ -99,7 +99,7 @@ COMMON_DEPEND="
 			cups? ( net-print/cups )
 			gtk? (
 				x11-libs/gdk-pixbuf:2
-				x11-libs/gtk+:3
+				>=x11-libs/gtk+-3.24.41-r1:3[X?,wayland?]
 				x11-libs/pango
 			)
 		)
@@ -165,6 +165,12 @@ src_prepare() {
 }
 
 src_configure() {
+	if use gtk; then
+		# defang automagic dependencies (bug #624960)
+		use X || append-cxxflags -DGENTOO_GTK_HIDE_X11
+		use wayland || append-cxxflags -DGENTOO_GTK_HIDE_WAYLAND
+	fi
+
 	local mycmakeargs=(
 		-DBUILD_WITH_PCH=OFF
 
@@ -296,6 +302,8 @@ src_test() {
 		# may randomly hang+timeout, perhaps related to -j as well
 		tst_qprocess #936484
 		tst_qtimer
+		# haystacksWithMoreThan4GiBWork can easily OOM (16GB ram not enough)
+		tst_qlatin1stringmatcher
 		# these can be flaky depending on the environment/toolchain
 		tst_qlogging # backtrace log test can easily vary
 		tst_q{,raw}font # affected by available fonts / settings (bug #914737)

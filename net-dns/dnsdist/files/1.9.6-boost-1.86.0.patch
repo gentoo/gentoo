@@ -1,0 +1,35 @@
+
+Fix compilation with boost-1.86.
+Patch path prefix adapted for dnsdist.
+
+From: https://github.com/PowerDNS/pdns/commit/eed56000b1d68ac083b8e8bea4ff0ea30a1579c4
+
+From eed56000b1d68ac083b8e8bea4ff0ea30a1579c4 Mon Sep 17 00:00:00 2001
+From: Michael Cho <michael@michaelcho.dev>
+Date: Thu, 15 Aug 2024 22:49:17 -0400
+Subject: [PATCH] Fix build with boost 1.86.0
+
+Boost 1.86.0 changes seem to no longer indirectly include header which
+causes build to fail with:
+```
+uuid-utils.cc:38:58:
+error: 'random' is not a class, namespace, or enumeration
+```
+
+boost/random/mersenne_twister.hpp has been available since Boost 1.21.2
+---
+ pdns/uuid-utils.cc | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/pdns/uuid-utils.cc b/pdns/uuid-utils.cc
+index c59e0a0d0daa..301daff0bb1e 100644
+--- a/uuid-utils.cc
++++ b/uuid-utils.cc
+@@ -30,6 +30,7 @@
+ #endif /* BOOST_PENDING_INTEGER_LOG2_HPP */
+ #endif /* BOOST_VERSION */
+ 
++#include <boost/random/mersenne_twister.hpp>
+ #include <boost/uuid/uuid_generators.hpp>
+ 
+ // The default of:

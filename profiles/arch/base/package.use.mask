@@ -1,6 +1,11 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2024-08-12)
+# Builds a amd vendored opencl runtime that causes collisions.
+# Hardly useful outside of maintainer testing. #934963, #936317
+dev-util/hip opencl
+
 # matoro <matoro_gentoo@matoro.tk> (2024-07-14)
 # Abandoned upstream, does not take bug reports, unsupported in Gentoo.
 # Only remaining use is as a requirement for dev-lang/go on arm{,64}.
@@ -54,10 +59,6 @@ app-admin/syslog-ng mqtt
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-02-09)
 # Refind is only available on a subset of arches
 sys-kernel/installkernel refind
-
-# Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
-# dev-python/PyQt6 and dev-python/pyside6 have very few keywords
-dev-python/QtPy pyqt6 pyside6
 
 # Michal Privoznik <michal.privoznik@gmail.com> (2024-01-21)
 # virtiofsd is only available on some arches
@@ -247,7 +248,7 @@ sys-libs/compiler-rt-sanitizers asan dfsan lsan msan hwasan tsan
 sys-libs/compiler-rt-sanitizers ubsan safestack cfi scudo
 sys-libs/compiler-rt-sanitizers shadowcallstack gwp-asan
 sys-libs/compiler-rt-sanitizers libfuzzer memprof orc profile xray
-sys-libs/compiler-rt-sanitizers ctx-profile
+sys-libs/compiler-rt-sanitizers ctx-profile nsan rtsan
 
 # Sam James <sam@gentoo.org> (2020-10-24)
 # asm redc is only available on amd64,
@@ -297,7 +298,7 @@ app-emulation/aranym jit
 
 # Craig Andrews <candrews@gentoo.org> (2019-10-08)
 # net-libs/nghttp3 net-libs/ngtcp2[ssl] are not available on all arches
-net-misc/curl nghttp3 http3 quic curl_quic_openssl
+net-misc/curl nghttp3
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
 # Moved from arch/powerpc/ppc64 as it applies to most architectures.

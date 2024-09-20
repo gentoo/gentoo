@@ -11,7 +11,7 @@ HOMEPAGE="https://gnome.pages.gitlab.gnome.org/libadwaita/ https://gitlab.gnome.
 
 LICENSE="LGPL-2.1+"
 SLOT="1"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc ppc64 ~riscv x86"
 
 IUSE="+introspection test +vala"
 REQUIRED_USE="vala? ( introspection )"

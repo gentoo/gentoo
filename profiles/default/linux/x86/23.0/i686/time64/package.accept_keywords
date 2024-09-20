@@ -1,0 +1,6 @@
+# Copyright 2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# For better testing of time64, we use gcc-14 here already in an otherwise stable
+# environment.
+sys-devel/gcc:14 ~x86

@@ -14,7 +14,7 @@ S="${WORKDIR}/${P//./-}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64"
 
 BDEPEND="app-arch/unzip"
 CP_DEPEND="dev-java/javacup:0"

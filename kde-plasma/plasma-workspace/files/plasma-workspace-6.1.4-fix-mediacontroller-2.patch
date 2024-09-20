@@ -1,0 +1,46 @@
+From 1ff8f37f6a8fb47697364d56460989abbd764bbf Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Fri, 9 Aug 2024 00:57:31 +0000
+Subject: [PATCH] libkmpris: refresh player when track list changes
+
+For some players when the current track list changes, it doesn't emit
+all changed properties for org.mpris.MediaPlayer2.Player. This adds a
+check for the track list so when the track list changes, the player
+information is refreshed.
+
+BUG: 490569
+FIXED-IN: 6.1.5
+
+
+(cherry picked from commit 627f5418409f2e362fb83f6fdb6f427221460a0c)
+
+Co-authored-by: Fushan Wen <qydwhotmail@gmail.com>
+---
+ libkmpris/playercontainer.cpp | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/libkmpris/playercontainer.cpp b/libkmpris/playercontainer.cpp
+index f48103d507d..c8d37efae5e 100644
+--- a/libkmpris/playercontainer.cpp
++++ b/libkmpris/playercontainer.cpp
+@@ -711,15 +711,11 @@ void PlayerContainer::onGetPropsFinished(QDBusPendingCallWatcher *watcher)
+ 
+ void PlayerContainer::onPropertiesChanged(const QString &interfaceName, const QVariantMap &changedProperties, const QStringList &invalidatedProperties)
+ {
+-    if (interfaceName != QLatin1String("org.mpris.MediaPlayer2.Player") && interfaceName != QLatin1String("org.mpris.MediaPlayer2")) {
+-        // org.mpris.MediaPlayer2.TrackList is ignored for now
+-        return;
+-    }
+-    if (!invalidatedProperties.empty()) {
++    if (!invalidatedProperties.empty() || interfaceName == u"org.mpris.MediaPlayer2.TrackList") {
+         disconnect(m_propsIface, &OrgFreedesktopDBusPropertiesInterface::PropertiesChanged, this, &PlayerContainer::onPropertiesChanged);
+         disconnect(m_playerIface, &OrgMprisMediaPlayer2PlayerInterface::Seeked, this, &PlayerContainer::onSeeked);
+         refresh();
+-    } else {
++    } else if (interfaceName == u"org.mpris.MediaPlayer2.Player" || interfaceName == u"org.mpris.MediaPlayer2") [[likely]] {
+         updateFromMap(changedProperties);
+     }
+ }
+-- 
+GitLab
+

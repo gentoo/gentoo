@@ -1,0 +1,37 @@
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Wed, 21 Aug 2024 14:53:50 +0200
+Subject: [PATCH] apitrace: Explicitly include <cstdint>
+
+GCC 15 will no longer include it by default, resulting in build failures in projects that do not explicitly include it.
+
+Error:
+apitrace-9.0/retrace/metric_writer.cpp: In static member function ‘static void ProfilerQuery::writeMetricEntryCallback(Metric*, int, void*, int, void*)’:
+apitrace-9.0/retrace/metric_writer.cpp:50:70: error: ‘uint64_t’ does not name a type
+50 |         case CNT_NUM_UINT64: std::cout << "\t" <<
+*(reinterpret_cast<uint64_t*>(data)); break;
+|
+^~~~~~~~
+apitrace-9.0/retrace/metric_writer.cpp:29:1: note: ‘uint64_t’ is defined in header ‘<cstdint>’; this is probably fixable by adding ‘#include <cstdint>’
+   28 | #include "metric_writer.hpp"
+  +++ |+#include <cstdint>
+   29 |
+apitrace-9.0/retrace/metric_writer.cpp:50:78: error: expected ‘>’ before ‘*’ token
+50 |         case CNT_NUM_UINT64: std::cout << "\t" <<
+*(reinterpret_cast<uint64_t*>(data)); break;
+|
+^
+
+See-also: https://gcc.gnu.org/pipermail/gcc-cvs/2024-August/407124.html
+See-also: https://bugs.gentoo.org/937722
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+--- a/retrace/metric_writer.cpp
++++ b/retrace/metric_writer.cpp
+@@ -24,6 +24,7 @@
+  **************************************************************************/
+ 
+ #include <iostream>
++#include <cstdint>
+ 
+ #include "metric_writer.hpp"
+ 

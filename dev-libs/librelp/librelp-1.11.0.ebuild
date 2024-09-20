@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,13 +7,16 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit autotools python-any-r1
 
 DESCRIPTION="An easy to use library for the RELP protocol"
-HOMEPAGE="https://www.rsyslog.com/librelp/"
+HOMEPAGE="
+	https://www.rsyslog.com/librelp/
+	https://github.com/rsyslog/librelp
+"
 SRC_URI="https://download.rsyslog.com/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+ doc? ( FDL-1.3 )"
 # subslot = soname version
 SLOT="0/0.5.1"
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ppc64 ~riscv sparc x86"
 IUSE="debug doc +ssl +gnutls openssl static-libs test"
 REQUIRED_USE="ssl? ( ^^ ( gnutls openssl ) )"
 RESTRICT="!test? ( test )"

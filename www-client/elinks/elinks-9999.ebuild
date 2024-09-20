@@ -3,10 +3,12 @@
 
 EAPI=8
 
+GUILE_REQ_USE="deprecated"
+GUILE_COMPAT=( 2-2 3-0 )
 PYTHON_COMPAT=( python3_{10..12} )
 LUA_COMPAT=( lua5-{1,2,3,4} luajit )
 
-inherit flag-o-matic meson lua-single python-single-r1
+inherit flag-o-matic guile-single meson lua-single python-single-r1
 
 DESCRIPTION="Advanced and well-established text-mode web browser"
 HOMEPAGE="http://elinks.or.cz/"
@@ -17,7 +19,7 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	SRC_URI="https://github.com/rkd77/elinks/releases/download/v${PV}/${P}.tar.xz"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 LICENSE="GPL-2"
@@ -26,6 +28,7 @@ IUSE="bittorrent brotli bzip2 debug finger ftp gopher gpm gnutls guile idn"
 IUSE+=" javascript lua lzma +mouse nls nntp perl python samba ssl test tre unicode X xml zlib zstd"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
+	guile? ( ${GUILE_REQUIRED_USE} )
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
@@ -37,7 +40,7 @@ RDEPEND="
 	gpm? (
 		>=sys-libs/gpm-1.20.0-r5
 	)
-	guile? ( >=dev-scheme/guile-1.6.4-r1[deprecated] )
+	guile? ( ${GUILE_DEPS} )
 	idn? ( net-dns/libidn2:= )
 	javascript? (
 		dev-cpp/libxmlpp:5.0
@@ -72,9 +75,14 @@ BDEPEND="
 "
 
 pkg_setup() {
+	use guile && guile-single_pkg_setup
 	use lua && lua-single_pkg_setup
-
 	use python && python-single-r1_pkg_setup
+}
+
+src_prepare() {
+	default
+	use guile && guile_bump_sources
 }
 
 src_configure() {
@@ -168,6 +176,8 @@ src_install() {
 	# elinks uses an internal copy of gettext which ships files that may
 	# collide with the system's gettext (https://bugs.gentoo.org/635090)
 	rm -f "${ED}"/usr/{share/locale/locale,lib/charset}.alias || die
+
+	use guile && guile_unstrip_ccache
 }
 
 pkg_postinst() {

@@ -1,0 +1,35 @@
+https://bugs.kde.org/show_bug.cgi?id=488326
+https://invent.kde.org/frameworks/kirigami/-/commit/7dea849cc263ddb33986e1e93669459ddde6990e
+https://invent.kde.org/frameworks/kirigami/-/merge_requests/1589
+
+From 7dea849cc263ddb33986e1e93669459ddde6990e Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Sun, 21 Jul 2024 00:32:51 +0200
+Subject: [PATCH] Disable cachegen
+
+For some reason it breaks kirigami
+
+BUGS: 488326
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -9,12 +9,12 @@ add_subdirectory(layouts)
+ add_library(Kirigami)
+ add_library(KF6::Kirigami ALIAS Kirigami)
+ 
+-if (WIN32)
+-    # Kirigami apparently adds too many sources so on Windows we end
+-    # up running into command line length limits. So disable cache
+-    # generation on Windows for now.
+-    set(_extra_options NO_CACHEGEN)
+-endif()
++# On Windows Kirigami apparently adds too many sources so on Windows we end
++# up running into command line length limits. So disable cache
++# generation on Windows for now.
++# On Qt 6.7.2 cachegen is causing https://bugs.kde.org/show_bug.cgi?id=488326
++# investigate if future versions fix it and we can re-enable it
++set(_extra_options NO_CACHEGEN)
+ if (BUILD_SHARED_LIBS)
+     set(_extra_options ${_extra_options} NO_PLUGIN_OPTIONAL)
+ endif()
+-- 
+GitLab

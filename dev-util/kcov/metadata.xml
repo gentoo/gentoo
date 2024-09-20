@@ -1,11 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>beatussum@protonmail.com</email>
+		<name>Mattéo Rossillol‑‑Laruelle</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		<pkg>dev-util/kcov</pkg> is a FreeBSD/Linux/Mac OS code coverage
+		tester for compiled languages, Python and Bash.
+		<pkg>dev-util/kcov</pkg> was originally a fork of Bcov, but has
+		since evolved to support a large feature set in addition to that
+		of Bcov.
+
+		<pkg>dev-util/kcov</pkg>, like Bcov, uses DWARF debugging
+		information for compiled programs to make it possible to collect
+		coverage information without special compiler switches.
+	</longdescription>
+	<longdescription lang="fr">
+		<pkg>dev-util/kcov</pkg> est un testeur de couverture de code
+		FreeBSD/Linux/Mac OS pour des langages compilés, Python et Bash.
+		<pkg>dev-util/kcov</pkg> est, à l'origine, un fork de Bcov, mais
+		a depuis évolué de manière à supporter un vaste nombre de
+		fonctionnalités en addition de celle Bcov.
+
+		<pkg>dev-util/kcov</pkg>, comme Bcov, utilise les informations
+		de débogage DWARF pour les langages compilés afin de permettre
+		la collecte d'information de couverture sans variations d'un
+		compilateur à l'autre.
+	</longdescription>
 	<use>
-		<flag name="binutils">Use <pkg>sys-libs/binutils-libs</pkg> for --verify support</flag>
+		<flag name="binutils">Use <pkg>sys-libs/binutils-libs</pkg> for `--verify` support</flag>
+	</use>
+	<use lang="fr">
+		<flag name="binutils">Utiliser <pkg>sys-libs/binutils-libs</pkg> pour le support de `--verify`</flag>
 	</use>
 	<upstream>
+		<maintainer status="active">
+			<name>Simon Kågström</name>
+			<email>simon.kagstrom@gmail.com</email>
+		</maintainer>
+		<changelog>https://raw.githubusercontent.com/SimonKagstrom/kcov/master/ChangeLog</changelog>
+		<bugs-to>https://github.com/SimonKagstrom/kcov/issues/</bugs-to>
 		<remote-id type="github">SimonKagstrom/kcov</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,5 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2024-08-06)
+# Requires sys-libs/libcxx.
+dev-cpp/benchmark libcxx
 
 # Mike Frysinger <vapier@gentoo.org> (2014-10-21)
 # This target supports ASAN/etc... #504200.

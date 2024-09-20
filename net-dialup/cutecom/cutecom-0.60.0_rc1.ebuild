@@ -10,19 +10,17 @@ MY_PV=${PV/_rc/-RC}
 DESCRIPTION="A serial terminal, like minicom, written in Qt"
 HOMEPAGE="https://gitlab.com/cutecom/cutecom"
 SRC_URI="https://gitlab.com/cutecom/cutecom/-/archive/v${MY_PV}/cutecom-v${MY_PV}.tar.bz2"
+S="${WORKDIR}/cutecom-v${MY_PV}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
-IUSE=""
+KEYWORDS="amd64 ~arm64 x86"
 
 DEPEND="
 	dev-qt/qtbase:6
 	dev-qt/qtserialport:6"
 RDEPEND="${DEPEND}
 	net-dialup/lrzsz"
-
-S="${WORKDIR}/cutecom-v${MY_PV}"
 
 src_prepare() {
 	cmake_src_prepare

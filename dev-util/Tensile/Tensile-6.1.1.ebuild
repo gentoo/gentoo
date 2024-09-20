@@ -88,6 +88,8 @@ src_prepare() {
 }
 
 src_configure() {
+	rocm_use_hipcc
+
 	distutils-r1_src_configure
 	if use client; then
 		local mycmakeargs=(
@@ -97,7 +99,7 @@ src_configure() {
 			-DTensile_LIBRARY_FORMAT=msgpack
 			-DAMDGPU_TARGETS="$(get_amdgpu_flags)"
 		)
-		CXX=hipcc cmake_src_configure
+		cmake_src_configure
 	fi
 }
 

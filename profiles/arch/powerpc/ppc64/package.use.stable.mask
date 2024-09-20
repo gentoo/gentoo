@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-12)
+# dev-python/pyside6 is not stable here
+dev-python/QtPy pyside6
+
 # Sam James <sam@gentoo.org> (2024-04-30)
 # sys-block/nbdkit is not yet marked stable here
 app-emulation/libvirt nbd

@@ -30,28 +30,18 @@ IUSE="jack test video"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	dev-qt/linguist-tools:5
+	dev-qt/qttools:6[linguist]
 	virtual/pkgconfig
 "
 RDEPEND="
 	dev-libs/tinyxml2:=
-	dev-qt/qtconcurrent:5
-	dev-qt/qtcore:5
-	dev-qt/qtdbus:5
-	dev-qt/qtdeclarative:5
-	dev-qt/qtgui:5
-	dev-qt/qthelp:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtnetworkauth:5
-	dev-qt/qtopengl:5
-	dev-qt/qtprintsupport:5
-	dev-qt/qtquickcontrols:5
-	dev-qt/qtquickcontrols2:5[widgets]
-	>=dev-qt/qtsingleapplication-2.6.1_p20171024[X]
-	dev-qt/qtsvg:5
-	dev-qt/qtx11extras:5
-	dev-qt/qtxml:5
-	dev-qt/qtxmlpatterns:5
+	dev-qt/qtbase[concurrent,dbus,gui,network,opengl,widgets,xml]
+	dev-qt/qt5compat:6[qml]
+	dev-qt/qtdeclarative:6
+	dev-qt/qtnetworkauth:6
+	dev-qt/qtscxml:6
+	dev-qt/qtsvg:6
+	dev-qt/qttools:6[assistant]
 	>=media-libs/alsa-lib-1.0.0
 	media-libs/flac:=
 	>=media-libs/freetype-2.5.2
@@ -63,16 +53,17 @@ RDEPEND="
 	jack? ( virtual/jack )
 	video? ( media-video/ffmpeg )
 "
-# dev-cpp/gtest is required even when tests are disabled!
 DEPEND="
 	${RDEPEND}
-	dev-cpp/gtest
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.2.0-uncompressed-man-pages.patch"
-	"${FILESDIR}/${PN}-9999-unbundle-deps.patch"
+	"${FILESDIR}/${PN}-4.4.0-uncompressed-man-pages.patch"
+	"${FILESDIR}/${PN}-4.4.0-unbundle-deps.patch"
 	"${FILESDIR}/${PN}-4.2.0-dynamic_cast-crash.patch"
+	"${FILESDIR}/${PN}-4.4.0-include.patch"
+	"${FILESDIR}/${PN}-4.4.0-fix-main-toolbar-and-menubar.patch"
+	"${FILESDIR}/${PN}-4.5.0-missing-include.patch"
 )
 
 src_unpack() {
@@ -89,11 +80,6 @@ src_prepare() {
 
 	# Move soundfonts to the correct directory
 	mv -v "${WORKDIR}"/sound/* "${S}"/share/sound/ || die "Failed to move soundfont files"
-
-	# Make sure we don't accidentally use bundled third party deps
-	# for which we want to use system packages instead.
-	rm -r thirdparty/{flac,googletest,lame,opus,opusenc} \
-		|| die "Failed to remove unused thirdparty directories"
 }
 
 src_configure() {
@@ -104,26 +90,37 @@ src_configure() {
 	export PATH="$(qt5_get_bindir):${PATH}"
 
 	local mycmakeargs=(
+		-DCMAKE_BUILD_TYPE="release"
 		-DCMAKE_CXX_FLAGS_RELEASE="${CXXFLAGS}"
 		-DCMAKE_C_FLAGS_RELEASE="${CFLAGS}"
 		-DCMAKE_INSTALL_PREFIX=/usr
 		-DCMAKE_SKIP_RPATH=TRUE
-		-DMUE_BUILD_CRASHPAD_CLIENT=OFF
-		-DMUE_BUILD_UNIT_TESTS="$(usex test)"
-		-DMUE_BUILD_UPDATE_MODULE=OFF
 		-DMUE_BUILD_VIDEOEXPORT_MODULE="$(usex video)"
 		-DMUE_COMPILE_USE_CCACHE=OFF
+		-DMUE_COMPILE_USE_SYSTEM_FLAC=ON
 		-DMUE_COMPILE_USE_SYSTEM_FREETYPE=ON
+		-DMUE_COMPILE_USE_SYSTEM_OPUS=ON
+		-DMUE_COMPILE_USE_SYSTEM_OPUSENC=ON
+		-DMUE_COMPILE_USE_SYSTEM_TINYXML=ON
+		-DMUE_COMPILE_USE_SYSTEM_HARFBUZZ=ON
 		-DMUE_DOWNLOAD_SOUNDFONT=OFF
-		-DMUE_ENABLE_AUDIO_JACK=$(usex jack)
-		-DMUSESCORE_BUILD_MODE=release
+		-DMUSE_APP_BUILD_MODE="release"
+		-DMUSE_MODULE_AUDIO_JACK="$(usex jack)"
+		-DMUSE_MODULE_DIAGNOSTICS_CRASHPAD_CLIENT=OFF
+		# tests
+		-DMUE_BUILD_BRAILLE_TESTS="$(usex test)"
+		-DMUE_BUILD_ENGRAVING_TESTS="$(usex test)"
+		-DMUE_BUILD_IMPORTEXPORT_TESTS="$(usex test)"
+		-DMUE_BUILD_NOTATION_TESTS="$(usex test)"
+		-DMUE_BUILD_PLAYBACK_TESTS="$(usex test)"
+		-DMUE_BUILD_PROJECT_TESTS="$(usex test)"
 	)
 	cmake_src_configure
 }
 
 src_compile() {
 	cd "${BUILD_DIR}" || die
-	cmake_build lrelease manpages
+	cmake_build
 	cmake_src_compile
 }
 

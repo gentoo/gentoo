@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sam James <sam@gentoo.org> (2024-08-23)
+# dev-util/bpftool and/or sys-devel/bpf-toolchain not keyworded here
+sys-apps/systemd bpf
+
 # Ulrich Müller <ulm@gentoo.org> (2024-08-03)
 # Needs dev-libs/openspecfun which is not yet keyworded
 sci-visualization/gnuplot amos

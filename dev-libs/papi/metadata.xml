@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
+	<!-- maintainer-needed -->
+	<upstream>
+		<remote-id type="github">icl-utk-edu/papi</remote-id>
+		<changelog>https://github.com/icl-utk-edu/papi/wiki/PAPI-Releases</changelog>
+	</upstream>
 </pkgmetadata>

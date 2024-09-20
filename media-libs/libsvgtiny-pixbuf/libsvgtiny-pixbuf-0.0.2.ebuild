@@ -8,7 +8,7 @@ HOMEPAGE="https://michael.orlitzky.com/code/libsvgtiny-pixbuf.xhtml"
 SRC_URI="https://michael.orlitzky.com/code/releases/${P}.tar.xz"
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~riscv"
 
 RDEPEND="dev-libs/libxml2:=
 	media-libs/libsvgtiny:=

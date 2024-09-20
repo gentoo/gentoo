@@ -23,10 +23,15 @@ SLOT="$(ver_cut 1)"
 KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="test"
 
-ruby_add_bdepend "test? ( dev-ruby/faraday:1 >=dev-ruby/rack-test-0.6 dev-ruby/webmock )"
+ruby_add_bdepend "test? (
+	dev-ruby/faraday:1
+	|| ( dev-ruby/rack:3.0 dev-ruby/rack:2.2 )
+	>=dev-ruby/rack-test-0.6
+	dev-ruby/webmock
+)"
 
 all_ruby_prepare() {
 	sed -i -e "s:_relative ':'./:" ${RUBY_FAKEGEM_GEMSPEC} || die
 
-	sed -i -e '2igem "faraday", "~> 1.0"' spec/spec_helper.rb || die
+	sed -i -e '2igem "faraday", "~> 1.0"; gem "rack", "<3.1"' spec/spec_helper.rb || die
 }

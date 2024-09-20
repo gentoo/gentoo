@@ -1,0 +1,39 @@
+https://bugs.gentoo.org/937420
+https://aomedia.issues.chromium.org/issues/357622679
+https://aomedia-review.googlesource.com/c/aom/+/192404
+
+From b20dcf3adf51919226b436151734ba38d1123850 Mon Sep 17 00:00:00 2001
+From: James Zern <jzern@google.com>
+Date: Tue, 06 Aug 2024 10:38:00 -0700
+Subject: [PATCH] update libwebm to libwebm-1.0.0.31-10-g3b63004
+
+This fixes a build error seen in gcc 15:
+3b63004 mkvparser/mkvparser.cc: add missing <cstdint> include
+
+Bug: aomedia:357622679
+Change-Id: I6c4a1795d189f9993d4f2c5c9f0375912bc58f0c
+(cherry picked from commit e448dcd13a9f534c7291903e9ab18dfc4fea54ad)
+--- a/third_party/libwebm/mkvmuxer/mkvmuxerutil.h
++++ b/third_party/libwebm/mkvmuxer/mkvmuxerutil.h
+@@ -8,9 +8,9 @@
+ #ifndef MKVMUXER_MKVMUXERUTIL_H_
+ #define MKVMUXER_MKVMUXERUTIL_H_
+ 
+-#include "mkvmuxertypes.h"
++#include <stdint.h>
+ 
+-#include "stdint.h"
++#include "mkvmuxertypes.h"
+ 
+ namespace mkvmuxer {
+ class Cluster;
+--- a/third_party/libwebm/mkvparser/mkvparser.cc
++++ b/third_party/libwebm/mkvparser/mkvparser.cc
+@@ -16,6 +16,7 @@
+ #include <cfloat>
+ #include <climits>
+ #include <cmath>
++#include <cstdint>
+ #include <cstring>
+ #include <memory>
+ #include <new>

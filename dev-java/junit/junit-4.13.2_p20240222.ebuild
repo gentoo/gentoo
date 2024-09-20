@@ -44,7 +44,8 @@ src_prepare() {
 src_test() {
 	cd "${JAVA_TEST_SRC_DIR}" || die
 
-	local CP=".:../resources:${S}/${PN}.jar:$(java-pkg_getjars ${JAVA_TEST_GENTOO_CLASSPATH})"
+	local CP=".:../resources:${S}/${PN}.jar:$(java-pkg_getjars \
+		--build-only ${JAVA_TEST_GENTOO_CLASSPATH})"
 
 	ejavac -cp "${CP}" -d . $(find * -name "*.java")
 	# pom.xml lines 264-268

@@ -51,7 +51,7 @@ done
 unset lang
 
 BDEPEND="
-	app-arch/xz-utils[extra-filters]
+	app-arch/xz-utils[extra-filters(+)]
 "
 DEPEND="
 	acct-group/tsm

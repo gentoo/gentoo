@@ -19,7 +19,7 @@ else
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/${APP_PN}-${PV}"
 
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="GPL-3+"

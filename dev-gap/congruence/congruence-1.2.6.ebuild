@@ -10,6 +10,6 @@ SRC_URI="https://github.com/gap-packages/congruence/releases/download/v${PV}/${P
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 gap-pkg_enable_tests

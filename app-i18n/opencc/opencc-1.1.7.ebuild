@@ -34,6 +34,10 @@ BDEPEND="${PYTHON_DEPS}
 
 DOCS=( AUTHORS NEWS.md README.md )
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-missing-cstdint-for-gcc-15.patch"
+)
+
 src_prepare() {
 	rm -r deps || die
 

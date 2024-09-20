@@ -7,18 +7,16 @@ USE_RUBY="ruby31 ruby32 ruby33"
 # Upstream has specs but they are not available in the gem and the
 # repository upstream is not tagged for this.
 RUBY_FAKEGEM_RECIPE_TEST="none"
-
 RUBY_FAKEGEM_EXTRADOC="NEWS.md README.md"
 
 inherit ruby-fakegem
 
 DESCRIPTION="Provides deploying functionality for Nanoc"
 HOMEPAGE="https://nanoc.app/"
-LICENSE="MIT"
 
-KEYWORDS="~amd64 ~riscv"
+LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-IUSE=""
+KEYWORDS="~amd64 ~riscv"
 
 ruby_add_rdepend "
 	www-apps/nanoc-checking:1

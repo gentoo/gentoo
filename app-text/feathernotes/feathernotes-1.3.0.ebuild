@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake xdg
 
-DESCRIPTION=" Lightweight Qt Notes-Manager for Linux"
+DESCRIPTION="Lightweight Qt Notes-Manager for Linux"
 HOMEPAGE="https://github.com/tsujan/FeatherNotes"
 SRC_URI="https://github.com/tsujan/FeatherNotes/archive/V${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/FeatherNotes-${PV}"

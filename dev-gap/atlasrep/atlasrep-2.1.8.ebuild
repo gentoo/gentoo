@@ -22,7 +22,7 @@ SRC_URI="https://www.math.rwth-aachen.de/~Thomas.Breuer/atlasrep/${P}.tar.gz
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~riscv"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

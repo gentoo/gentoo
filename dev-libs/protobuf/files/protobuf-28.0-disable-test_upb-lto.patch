@@ -1,0 +1,23 @@
+From 14fe043db8162df9ddc2308437cace6434c67bd9 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Fri, 30 Aug 2024 03:22:16 +0200
+Subject: [PATCH] disable test_upb
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/cmake/tests.cmake b/cmake/tests.cmake
+index c8ae114..eac821c 100644
+--- a/cmake/tests.cmake
++++ b/cmake/tests.cmake
+@@ -175,7 +175,7 @@ add_test(NAME full-test
+   COMMAND tests ${protobuf_GTEST_ARGS}
+   WORKING_DIRECTORY ${protobuf_SOURCE_DIR})
+ 
+-if (protobuf_BUILD_LIBUPB)
++if (protobuf_BUILD_LIBUPB AND FALSE)
+   set(upb_test_proto_genfiles)
+   foreach(proto_file ${upb_test_protos_files} ${descriptor_proto_proto_srcs})
+     foreach(generator upb upbdefs upb_minitable)
+-- 
+2.46.0
+

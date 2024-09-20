@@ -1,0 +1,10 @@
+--- a/meson.build
++++ b/meson.build
+@@ -1,6 +1,6 @@
+ project('appmenu-gtk-module', 'c',
+ 	meson_version: '>=0.61.0',
+-	version: '24.02',
++	version: '24.05',
+ 	license: ['LGPL-3.0-or-later'],
+     default_options: [
+         'c_std=gnu11',

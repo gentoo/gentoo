@@ -6,10 +6,10 @@ EAPI=8
 inherit meson
 
 DESCRIPTION="Linux kernel trace event library"
-HOMEPAGE="https://git.kernel.org/pub/scm/libs/libtrace/libtraceevent.git/"
+HOMEPAGE="https://www.trace-cmd.org/"
 
 if [[ ${PV} =~ [9]{4,} ]]; then
-	EGIT_REPO_URI="git://git.kernel.org/pub/scm/libs/libtrace/libtraceevent.git/"
+	EGIT_REPO_URI="https://git.kernel.org/pub/scm/libs/libtrace/libtraceevent.git/"
 	inherit git-r3
 else
 	SRC_URI="https://git.kernel.org/pub/scm/libs/libtrace/libtraceevent.git/snapshot/${P}.tar.gz"

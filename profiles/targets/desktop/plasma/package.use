@@ -1,24 +1,6 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Resolve conflict between Plasma 6 and KDevelop 24.05
->=dev-util/kdevelop-24.05.1:5 -plasma
-
-# Sam James <sam@gentoo.org> (2024-06-13)
-# Needed by dependencies of KDE Plasma and KDE Gear
-app-crypt/gpgme qt6
-app-crypt/pinentry qt6
-app-crypt/qca qt6
-app-text/poppler qt6
-dev-libs/qtkeychain qt6
-media-libs/phonon qt6
-media-libs/phonon-vlc qt6
-net-libs/accounts-qml qt6
-net-libs/accounts-qt qt6
-net-libs/signond qt6
-net-libs/signon-oauth2 qt6
-sys-auth/polkit-qt qt6
-
 # Alfred Wingate <parona@protonmail.com> (2023-12-25)
 # Prefer wayland over X with REQUIRED_USE: ^^ ( gbm wayland X )
 >=media-tv/kodi-20.2 wayland -X
@@ -38,17 +20,11 @@ dev-libs/libjcat gpg pkcs7
 # qtwebchannel package is fairly small, and python bindings are
 # required by some popular desktop packages such as calibre,
 # qutebrowser, and freecad (or indirectly through PyQt*WebEngine).
-dev-python/PyQt5 webchannel
 dev-python/PyQt6 webchannel
-dev-python/pyside2 designer location positioning quick
-dev-python/pyside2 printsupport webchannel
 dev-python/pyside6 webchannel
 
 # Required by sys-apps/flatpak, a dependency of kde-plasma/discover
 dev-util/ostree curl
-
-# Required by <net-im/neochat-23.08.50
-dev-qt/qtmultimedia:5 gstreamer
 
 # Required by app-editors/okteta:5
 dev-qt/qtscript:5 scripttools
@@ -59,8 +35,8 @@ dev-qt/qtsql:5 mysql
 # Enable by default, requires kde-frameworks/kwayland
 kde-apps/yakuake absolute-position
 
-# Required by kde-frameworks/kapidox
-media-gfx/graphviz python
+# Required by kde-plasma/plasma-workspace, in ksmserver
+kde-plasma/kde-cli-tools kdesu
 
 # Required by media-gfx/graphviz which is required by kde-apps/kcachegrind
 media-libs/gd fontconfig
@@ -86,7 +62,6 @@ net-firewall/nftables json python xtables
 sys-libs/zlib minizip
 
 # Keep existing defaults after dropping IUSE=phonon from make.defaults
-<app-office/calligra-3.3 phonon
 kde-apps/kio-extras phonon
 kde-apps/marble phonon
 
@@ -95,7 +70,3 @@ kde-plasma/kwin lock
 
 # plasma profile never enabled pulseaudio. We're skipping to pipewire.
 media-video/pipewire sound-server
-
-# Expected to be available by default in Plasma
-kde-frameworks/purpose:5 kaccounts
-kde-plasma/plasma-desktop:5 kaccounts

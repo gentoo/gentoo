@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,12 +6,12 @@ EAPI=8
 inherit meson udev
 
 DESCRIPTION="Library to add support for consumer fingerprint readers"
-HOMEPAGE="https://cgit.freedesktop.org/libfprint/libfprint/ https://github.com/freedesktop/libfprint https://gitlab.freedesktop.org/libfprint/libfprint"
+HOMEPAGE="https://fprint.freedesktop.org/ https://github.com/freedesktop/libfprint https://gitlab.freedesktop.org/libfprint/libfprint"
 SRC_URI="https://github.com/freedesktop/libfprint/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="2"
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 ~riscv sparc x86"
 IUSE="examples gtk-doc +introspection"
 
 RDEPEND="

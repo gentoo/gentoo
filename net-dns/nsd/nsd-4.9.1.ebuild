@@ -101,7 +101,9 @@ src_configure() {
 		--with-zonesdir="${EPREFIX}${NSD_ZNDIR}"
 	)
 
-	# This configure switch is only available on a glibc-based system.
+	# This configure switch only appears on glibc-based userlands.
+	# It enables 64-bit time_t to support timestamps greater than
+	# the year 2038 (D_TIME_BITS=64).
 	if use elibc_glibc; then
 		myconf+=( $(use_enable year2038) )
 	fi

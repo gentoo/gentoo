@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~ppc64 ~riscv"
 
 RDEPEND=">=dev-cpp/robin-map-1.3.0"
 DEPEND="${RDEPEND}"
@@ -34,11 +34,17 @@ EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 python_prepare_all() {
+	local PATCHES=(
+		# simplified version of https://github.com/wjakob/nanobind/pull/718
+		"${FILESDIR}/${PN}-2.0.0-parallel-build.patch"
+	)
+
 	# This test assumes in-source build for the .pyi stubs.
 	# (Hack because EPYTEST_IGNORE doesn't work with the paths it collects(?))
 	echo > tests/test_stubs.py || die
 
 	cmake_src_prepare
+	PATCHES=()
 	distutils-r1_python_prepare_all
 }
 

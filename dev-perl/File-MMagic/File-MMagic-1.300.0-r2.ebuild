@@ -11,7 +11,7 @@ DESCRIPTION="The Perl Image-Info Module"
 
 SLOT="0"
 LICENSE="File-MMagic"
-KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
 
 BDEPEND="
 	virtual/perl-ExtUtils-MakeMaker

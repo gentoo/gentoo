@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc source"
 inherit flag-o-matic java-pkg-2 java-pkg-simple toolchain-funcs
 
 MY_PV="${PV/_rc/RC}"
-MY_DMF="https://download.eclipse.org/eclipse/downloads/drops4/R-${MY_PV}-202312010110"
+MY_DMF="https://archive.eclipse.org/eclipse/downloads/drops4/R-${MY_PV}-202312010110"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="GTK based SWT Library"

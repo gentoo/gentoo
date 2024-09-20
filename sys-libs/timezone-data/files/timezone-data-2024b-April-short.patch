@@ -1,0 +1,22 @@
+https://github.com/eggert/tz/commit/926b507fa5c3192b1b68fab5910cbd3ba9377c97
+
+From 926b507fa5c3192b1b68fab5910cbd3ba9377c97 Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Thu, 5 Sep 2024 14:36:02 -0700
+Subject: [PATCH] "Apr", not "April", in IN column
+
+* northamerica (Rule): Use "Apr", not "April", in the IN column.
+Both forms are valid, but "Apr" is more consistent.
+Problem reported by Howard Hinnant.
+--- a/northamerica
++++ b/northamerica
+@@ -2631,7 +2631,7 @@ Zone America/Dawson	-9:17:40 -	LMT	1900 Aug 20
+ # http://puentelibre.mx/noticia/ciudad_juarez_cambio_horario_noviembre_2022/
+ 
+ # Rule	NAME	FROM	TO	-	IN	ON	AT	SAVE	LETTER/S
+-Rule	Mexico	1931	only	-	April	30	0:00	1:00	D
++Rule	Mexico	1931	only	-	Apr	30	0:00	1:00	D
+ Rule	Mexico	1931	only	-	Oct	1	0:00	0	S
+ Rule	Mexico	1939	only	-	Feb	5	0:00	1:00	D
+ Rule	Mexico	1939	only	-	Jun	25	0:00	0	S
+

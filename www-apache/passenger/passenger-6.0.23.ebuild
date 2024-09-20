@@ -45,14 +45,9 @@ pkg_setup() {
 all_ruby_prepare() {
 	eapply "${FILESDIR}"/${PN}-5.1.11-gentoo.patch
 
-	# Change these with sed instead of a patch so that we can easily use
-	# the toolchain-funcs methods.
-	sed -i -e "/^CC/ s/=.*$/= '$(tc-getCC)'/" \
-		-e "/^CXX\s/ s/=.*$/= '$(tc-getCXX)'/" \
-		-e 's/PlatformInfo.debugging_cflags//' build/basics.rb || die
-
 	# Avoid fixed debugging CFLAGs.
-	sed -e '/debugging_cflags/areturn ""' -i src/ruby_supportlib/phusion_passenger/platform_info/compiler.rb || die
+	sed -e '/debugging_\(c\|cxx\)flags/areturn ""' \
+		-i src/ruby_supportlib/phusion_passenger/platform_info/compiler.rb || die
 
 	# Use sed here so that we can dynamically set the documentation directory.
 	sed -i -e "s:/usr/share/doc/passenger:/usr/share/doc/${P}:" \
@@ -68,8 +63,10 @@ all_ruby_prepare() {
 	# Make sure we use the system-provided version where possible
 	rm -rf src/cxx_supportlib/vendor-copy/libuv || die "Unable to remove vendored code."
 
-	# Fix hard-coded use of AR
-	sed -i -e "s/ar cru/"$(tc-getAR)" cru/" build/support/cplusplus.rb || die
+	# Fix hard-coded use of AR and RANLIB
+	sed -e "s/ar cru/"$(tc-getAR)" cru/" \
+		-e "s/ranlib/"$(tc-getRANLIB)"/" \
+		-i build/support/cplusplus.rb || die
 
 	# Make sure apache support is not attempted with -apache2
 	if ! use apache2 ; then

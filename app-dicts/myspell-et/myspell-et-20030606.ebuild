@@ -20,7 +20,7 @@ SRC_URI="http://www.meso.ee/~jjpp/speller/ispell-et_${PV}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86"
 
 S="${WORKDIR}/ispell-et-${PV}"
 

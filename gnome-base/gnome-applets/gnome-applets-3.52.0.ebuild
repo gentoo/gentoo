@@ -9,7 +9,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-applets/"
 
 LICENSE="GPL-2+ FDL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 IUSE="tracker"
 
 # FIXME: automagic wireless-tools

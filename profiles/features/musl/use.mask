@@ -1,9 +1,13 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Select the correct ELIBC
 -elibc_musl
 elibc_glibc
+
+# Sam James <sam@gentoo.org> (2024-08-21)
+# dev-debug/systemtap doesn't work on musl
+systemtap
 
 # Sam James <sam@gentoo.org> (2022-10-04)
 # Mask USE flags which pull in a binary package linked against glibc (rolling

@@ -1,0 +1,58 @@
+Pre-built node_modules allows us to run JS tests but we lose the ability to
+hack node packages' source files in YARN_CACHE_FOLDER.
+
+From: Lucio Sauer <watermanpaint@posteo.net>
+--- a/build/ninja_gen/src/node.rs
++++ b/build/ninja_gen/src/node.rs
+@@ -76,12 +76,11 @@ pub struct YarnInstall<'a> {
+ 
+ impl BuildAction for YarnInstall<'_> {
+     fn command(&self) -> &str {
+-        "$runner yarn $yarn $out"
++        "$runner yarn $out"
+     }
+ 
+     fn files(&mut self, build: &mut impl build::FilesHandle) {
+         build.add_inputs("", &self.package_json_and_lock);
+-        build.add_inputs("yarn", inputs![":yarn:bin"]);
+         build.add_outputs("out", vec!["node_modules/.marker"]);
+         for (key, value) in &self.exports {
+             let outputs: Vec<_> = value.iter().map(|o| format!("node_modules/{o}")).collect();
+--- a/build/runner/src/yarn.rs
++++ b/build/runner/src/yarn.rs
+@@ -1,36 +1,18 @@
+ // Copyright: Ankitects Pty Ltd and contributors
+ // License: GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html
+ 
+-use std::env;
+ use std::path::Path;
+-use std::process::Command;
+ 
+ use clap::Args;
+ 
+-use crate::run::run_command;
+-
+ #[derive(Args)]
+ pub struct YarnArgs {
+-    yarn_bin: String,
+     stamp: String,
+ }
+ 
+ pub fn setup_yarn(args: YarnArgs) {
+     link_node_modules();
+ 
+-    if env::var("OFFLINE_BUILD").is_ok() {
+-        println!("OFFLINE_BUILD is set");
+-        println!("Running yarn with '--offline' and '--ignore-scripts'.");
+-        run_command(
+-            Command::new(&args.yarn_bin)
+-                .arg("install")
+-                .arg("--offline")
+-                .arg("--ignore-scripts"),
+-        );
+-    } else {
+-        run_command(Command::new(&args.yarn_bin).arg("install"));
+-    }
+-
+     std::fs::write(args.stamp, b"").unwrap();
+ }

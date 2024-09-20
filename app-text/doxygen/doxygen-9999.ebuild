@@ -3,11 +3,11 @@
 
 EAPI=8
 
-LLVM_MAX_SLOT=17
-PYTHON_COMPAT=( python3_{10..12} )
+LLVM_COMPAT=( 18 )
+PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="xml(+)"
 
-inherit cmake flag-o-matic llvm python-any-r1
+inherit cmake flag-o-matic llvm-r1 python-any-r1
 
 DESCRIPTION="Documentation system for most programming languages"
 HOMEPAGE="https://www.doxygen.nl/"
@@ -18,7 +18,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="https://doxygen.nl/files/${P}.src.tar.gz"
 	SRC_URI+=" https://downloads.sourceforge.net/doxygen/rel-${PV}/${P}.src.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 # GPL-2 also for bundled libmscgen
@@ -43,14 +43,15 @@ RDEPEND="
 	dev-lang/perl
 	dev-libs/libfmt:=
 	dev-libs/spdlog:=
-	media-libs/libpng:=
 	virtual/libiconv
 	clang? (
-		<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=
+		$(llvm_gen_dep '
+			sys-devel/clang:${LLVM_SLOT}=
+			sys-devel/llvm:${LLVM_SLOT}=
+		')
 	)
 	dot? (
-		media-gfx/graphviz
-		media-libs/freetype
+		media-gfx/graphviz[freetype(+)]
 	)
 	doc? (
 		dev-texlive/texlive-bibtexextra
@@ -72,7 +73,6 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.9.4-link_with_pthread.patch"
-	"${FILESDIR}/${PN}-1.9.7-musl-1.2.4.patch"
 	"${FILESDIR}/${PN}-1.9.8-suppress-unused-option-libcxx.patch"
 
 	# Backports
@@ -81,7 +81,7 @@ PATCHES=(
 DOCS=( LANGUAGE.HOWTO README.md )
 
 pkg_setup() {
-	use clang && llvm_pkg_setup
+	use clang && llvm-r1_pkg_setup
 	python-any-r1_pkg_setup
 }
 
@@ -120,6 +120,9 @@ src_configure() {
 		-Duse_sys_sqlite3=ON
 		-DBUILD_SHARED_LIBS=OFF
 		-DGIT_EXECUTABLE="false"
+
+		# Noisy and irrelevant downstream
+		-Wno-dev
 	)
 
 	use doc && mycmakeargs+=(
@@ -149,5 +152,12 @@ src_compile() {
 src_install() {
 	cmake_src_install
 
-	doman doc/*.1
+	# manpages are only automatically installed when docs are
+	# https://github.com/doxygen/doxygen/pull/10647
+	doman doc/doxygen.1
+	use gui && doman doc/doxywizard.1
+	use doxysearch && {
+		doman doc/doxyindexer.1
+		doman doc/doxysearch.1
+	}
 }

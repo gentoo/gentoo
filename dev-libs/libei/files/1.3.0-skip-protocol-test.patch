@@ -1,0 +1,21 @@
+Test times out, even after fixing it once.
+
+https://bugs.gentoo.org/930476
+https://gitlab.freedesktop.org/libinput/libei/-/merge_requests/286
+
+diff --git a/test/meson.build b/test/meson.build
+index 1a2f70b..87c3f3a 100644
+--- a/test/meson.build
++++ b/test/meson.build
+@@ -161,11 +161,6 @@ if enable_pytest
+                    output: '@PLAINNAME@',
+                    configuration: protocol_test_config)
+ 
+-    test('protocol-test', pytest,
+-        args: pytest_args + ['-k', 'TestEiProtocol'],
+-        suite: 'python',
+-        workdir: meson.project_build_root(),
+-    )
+     if valgrind.found()
+         env = environment()
+         env.set('LIBEI_USE_VALGRIND', '1')

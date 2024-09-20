@@ -1,0 +1,7 @@
+dev-erlang/fast_xml
+dev-erlang/jose
+dev-erlang/mqtree
+dev-erlang/p1_oauth2
+dev-erlang/p1_pgsql
+dev-erlang/xmpp
+net-im/ejabberd

@@ -1,0 +1,51 @@
+# HG changeset patch
+# User Julien Cristau <jcristau@debian.org>
+# Date 1721983948 -7200
+#      Fri Jul 26 10:52:28 2024 +0200
+# Branch stable
+# Node ID 63ede7a43a3731fecc7e5b535144c6bd59911284
+# Parent  e6508d1e0b47fb5437a36e1f5fe00dc032991b9b
+demandimport: don't delay threading import
+
+A recent cpython change breaks demandimport by importing threading
+locally in importlib.util.LazyLoader.exec_module; add it (plus warnings
+and _weakrefset, which are imported by threading) to demandimport's
+ignore list.
+
+```
+Traceback (most recent call last):
+  File "/usr/bin/hg", line 57, in <module>
+    from mercurial import dispatch
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "/usr/lib/python3/dist-packages/hgdemandimport/demandimportpy3.py", line 52, in exec_module
+    super().exec_module(module)
+  File "<frozen importlib.util>", line 257, in exec_module
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "/usr/lib/python3/dist-packages/hgdemandimport/demandimportpy3.py", line 52, in exec_module
+    super().exec_module(module)
+  File "<frozen importlib.util>", line 267, in exec_module
+AttributeError: partially initialized module 'threading' has no attribute 'RLock' (most likely due to a circular import)
+```
+
+Ref: https://github.com/python/cpython/issues/117983
+     https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1076449
+     https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1076747
+
+diff --git a/hgdemandimport/__init__.py b/hgdemandimport/__init__.py
+--- a/hgdemandimport/__init__.py
++++ b/hgdemandimport/__init__.py
+@@ -58,6 +58,10 @@
+     # setuptools uses this hack to inject it's own distutils at import time
+     'setuptools',
+     '_distutils_hack.override',
++    # threading is locally imported by importlib.util.LazyLoader.exec_module
++    '_weakrefset',
++    'warnings',
++    'threading',
+ }
+ 
+ _pypy = '__pypy__' in sys.builtin_module_names

@@ -1,7 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit libtool
 
 DESCRIPTION="Multithreaded multifrontal sparse QR factorization library"
 HOMEPAGE="https://people.engr.tamu.edu/davis/suitesparse.html"
@@ -9,7 +11,7 @@ SRC_URI="http://202.36.178.9/sage/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~loong ~ppc ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc partition tbb"
 
 BDEPEND="virtual/pkgconfig
@@ -24,6 +26,11 @@ DEPEND="
 	partition? ( >=sci-libs/metis-5.1.0 )
 	tbb? ( <dev-cpp/tbb-2021:= )"
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 src_configure() {
 	econf \

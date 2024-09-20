@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/936433
+
+diff --git a/libavutil/hwcontext_vaapi.c b/libavutil/hwcontext_vaapi.c
+index 4b81bd1..4e7f49f 100644
+--- a/libavutil/hwcontext_vaapi.c
++++ b/libavutil/hwcontext_vaapi.c
+@@ -1032,7 +1032,7 @@ static int vaapi_map_from_drm(AVHWFramesContext *src_fc, AVFrame *dst,
+     uint32_t va_fourcc;
+     int err, i, j, k;
+ 
+-    unsigned long buffer_handle;
++    uintptr_t buffer_handle;
+     VASurfaceAttribExternalBuffers buffer_desc;
+     VASurfaceAttrib attrs[2] = {
+         {

@@ -140,6 +140,11 @@ src_configure() {
 	# as it's risky with newer compilers to leave it as it is.
 	append-flags -fno-strict-aliasing
 
+	# Workaround for bug #938302
+	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then
+		export DTRACE="${BROOT}"/usr/bin/stap-dtrace
+	fi
+
 	# Socks support via dante
 	if use socks5 ; then
 		# Socks support can't be disabled as long as SOCKS_SERVER is

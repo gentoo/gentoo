@@ -51,8 +51,11 @@ RDEPEND="
 		media-libs/fontconfig
 		media-libs/freetype:2
 	)
-	opengl? (
+	gles2-only? (
 		media-libs/libglvnd
+	)
+	opengl? (
+		media-libs/libglvnd[X]
 	)
 	X? (
 		x11-libs/libX11

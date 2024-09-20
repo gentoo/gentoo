@@ -6,14 +6,14 @@ EAPI=8
 inherit toolchain-funcs
 
 DESCRIPTION="Tools for use with Usermode Linux virtual machines"
-HOMEPAGE="http://user-mode-linux.sourceforge.net/"
-SRC_URI="http://user-mode-linux.sourceforge.net/uml_utilities_${PV}.tar.bz2"
+HOMEPAGE="https://user-mode-linux.sourceforge.net/"
+SRC_URI="https://user-mode-linux.sourceforge.net/uml_utilities_${PV}.tar.bz2"
 
 S="${WORKDIR}"/tools-${PV}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 arm x86"
 IUSE="fuse"
 
 RDEPEND="

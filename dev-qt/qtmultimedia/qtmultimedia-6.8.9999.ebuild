@@ -18,7 +18,7 @@ IUSE="
 # tst_qmediaplayerbackend hard requires qml, review in case becomes optional
 REQUIRED_USE="
 	|| ( ffmpeg gstreamer )
-	eglfs? ( ffmpeg opengl )
+	eglfs? ( ffmpeg opengl qml )
 	screencast? ( ffmpeg )
 	test? ( qml )
 	vaapi? ( ffmpeg opengl )
@@ -76,7 +76,9 @@ CMAKE_SKIP_TESTS=(
 	# tries to use real alsa or pulseaudio and fails in sandbox
 	tst_qaudiosink
 	tst_qaudiosource
+	tst_qmediacapture_gstreamer
 	tst_qmediacapturesession
+	tst_qmediaframeinputsbackend
 	tst_qmediaplayerbackend
 	tst_qsoundeffect
 	# may try to use v4l2 or hardware acceleration depending on availability

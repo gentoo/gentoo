@@ -1,0 +1,25 @@
+https://github.com/fail2ban/fail2ban/commit/9e31cfc1f10e8304dc0b5adf0a429d57fcb598a3
+
+From 9e31cfc1f10e8304dc0b5adf0a429d57fcb598a3 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sat, 24 Aug 2024 11:59:59 -0400
+Subject: [PATCH] files/fail2ban-openrc.init.in: start after nftables
+
+The "after iptables" clause in the OpenRC service script's depend()
+function causes fail2ban to start after iptables, if iptables is
+scheduled to start. Here we add "after nftables" as well: nftables is
+the successor to iptables, and fail2ban supports it out-of-the-box.
+If nftables is scheduled to start, we want to wait until it's done
+before starting fail2ban.
+--- a/files/fail2ban-openrc.init.in
++++ b/files/fail2ban-openrc.init.in
+@@ -44,7 +44,7 @@ retry="30"
+ 
+ depend() {
+ 	use logger
+-	after iptables
++	after iptables nftables
+ }
+ 
+ checkconfig() {
+

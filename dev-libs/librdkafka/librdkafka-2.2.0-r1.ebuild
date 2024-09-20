@@ -5,7 +5,7 @@ EAPI="8"
 
 PYTHON_COMPAT=( python3_{9..12} )
 
-inherit python-any-r1 toolchain-funcs
+inherit flag-o-matic python-any-r1 toolchain-funcs
 
 DESCRIPTION="Apache Kafka C/C++ client library"
 HOMEPAGE="https://github.com/confluentinc/librdkafka"
@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/confluentinc/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~loong ~ppc ppc64 ~riscv ~sparc x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~sparc x86"
 fi
 
 LICENSE="BSD-2"
@@ -66,6 +66,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# error: unknown register name ‘%edx’ in ‘asm’
+	# https://bugs.gentoo.org/895464
+	# https://github.com/confluentinc/librdkafka/issues/2426
+	filter-lto
+
 	tc-export AR CC CXX LD NM OBJDUMP PKG_CONFIG STRIP
 
 	local myeconf=(

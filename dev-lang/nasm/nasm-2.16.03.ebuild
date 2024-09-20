@@ -12,8 +12,8 @@ S="${WORKDIR}"/${P/_}
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ia64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc lto"
+KEYWORDS="amd64 arm64 ~loong ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+IUSE="doc"
 
 QA_CONFIG_IMPL_DECL_SKIP=(
 	# Windows.
@@ -75,10 +75,9 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconfargs=(
-		$(use_enable lto)
-	)
-	econf "${myconfargs[@]}"
+	# --enable-lto just appends -flto to *FLAGS
+	# so let users just use lto through normal make.conf *FLAGS
+	econf
 }
 
 src_compile() {

@@ -166,9 +166,6 @@ src_configure() {
 		myconf="${myconf} --without-database"
 	fi
 
-	# Enabling modules will cause segfaults outside the XEmacs build directory
-	use ia64  && myconf="${myconf} --without-modules"
-
 	einfo "${myconf}"
 
 	# see bug 576512

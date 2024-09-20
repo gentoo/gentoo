@@ -1,0 +1,97 @@
+commit e79b671aa7bc4edbae5d8272d523caa092f7548d
+Author: John Helmert III <ajak@gentoo.org>
+Date:   Fri Aug 30 23:13:23 2024 -0700
+
+    add missing cstdint includes
+    
+    In GCC 15, cstdint is less commonly included in stdlib headers so we
+    need explicit includes: https://gcc.gnu.org/gcc-15/porting_to.html
+    
+    See-Also: https://bugs.gentoo.org/937526
+    Signed-off-by: John Helmert III <ajak@gentoo.org>
+
+diff --git a/include/ipc/decoder.hpp b/include/ipc/decoder.hpp
+index 9d1afe1c..dcdf9e1a 100644
+--- a/include/ipc/decoder.hpp
++++ b/include/ipc/decoder.hpp
+@@ -5,6 +5,8 @@
+ #include "errors.hpp"
+ #include "ipc/msg.hpp"
+ 
++#include <cstdint>
++
+ POLYBAR_NS
+ 
+ namespace ipc {
+diff --git a/include/ipc/encoder.hpp b/include/ipc/encoder.hpp
+index 1fd36f60..ebb1ea82 100644
+--- a/include/ipc/encoder.hpp
++++ b/include/ipc/encoder.hpp
+@@ -4,6 +4,8 @@
+ #include "errors.hpp"
+ #include "ipc/msg.hpp"
+ 
++#include <cstdint>
++
+ POLYBAR_NS
+ 
+ namespace ipc {
+diff --git a/include/ipc/msg.hpp b/include/ipc/msg.hpp
+index 1b37022d..a423d3bb 100644
+--- a/include/ipc/msg.hpp
++++ b/include/ipc/msg.hpp
+@@ -3,6 +3,7 @@
+ #include "common.hpp"
+ 
+ #include <array>
++#include <cstdint>
+ 
+ POLYBAR_NS
+ 
+diff --git a/include/utils/color.hpp b/include/utils/color.hpp
+index 491d48ee..9d301af7 100644
+--- a/include/utils/color.hpp
++++ b/include/utils/color.hpp
+@@ -1,6 +1,7 @@
+ #pragma once
+ 
+ #include <cstdlib>
++#include <cstdint>
+ 
+ #include "common.hpp"
+ 
+diff --git a/include/utils/string.hpp b/include/utils/string.hpp
+index 45eaec06..27e06f7a 100644
+--- a/include/utils/string.hpp
++++ b/include/utils/string.hpp
+@@ -1,5 +1,6 @@
+ #pragma once
+ 
++#include <cstdint>
+ #include <sstream>
+ 
+ #include "common.hpp"
+diff --git a/src/ipc/encoder.cpp b/src/ipc/encoder.cpp
+index 87cbd915..38da55a1 100644
+--- a/src/ipc/encoder.cpp
++++ b/src/ipc/encoder.cpp
+@@ -2,6 +2,7 @@
+ 
+ #include <cassert>
+ #include <cstring>
++#include <cstdint>
+ 
+ POLYBAR_NS
+ 
+diff --git a/src/utils/color.cpp b/src/utils/color.cpp
+index 59fa59ae..7e47dad5 100644
+--- a/src/utils/color.cpp
++++ b/src/utils/color.cpp
+@@ -1,6 +1,7 @@
+ #include "utils/color.hpp"
+ 
+ #include <algorithm>
++#include <cstdint>
+ 
+ POLYBAR_NS
+ 

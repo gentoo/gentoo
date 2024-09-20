@@ -10,7 +10,7 @@ SRC_URI="https://downloads.sourceforge.net/docbook2x/${P}.tar.gz"
 HOMEPAGE="http://docbook2x.sourceforge.net/"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~x86-linux ~x64-macos"
 IUSE="test"
 RESTRICT="!test? ( test )"
 LICENSE="MIT"

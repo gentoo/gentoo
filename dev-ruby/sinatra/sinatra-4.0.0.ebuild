@@ -19,7 +19,7 @@ SRC_URI="https://github.com/sinatra/sinatra/archive/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="test"
+IUSE="doc test"
 
 ruby_add_rdepend "
 	dev-ruby/mustermann:3
@@ -43,11 +43,7 @@ ruby_add_bdepend "
 ruby_add_bdepend "doc? ( dev-ruby/yard )"
 
 all_ruby_prepare() {
-	# sed -i \
-	# 	-e "/require 'rack'/igem 'rack', '~> 2.2', '>= 2.2.4'" \
-	# 	test/test_helper.rb || die
-
-	# # Avoid spec broken by newer rack versions, already removed upstream.
-	# sed -i -e 's/"bytes=IV-LXVI", //' test/static_test.rb || die
-:
+	sed -i \
+		-e "/require 'rack'/igem 'rack', '~> 3.0.0'" \
+		test/test_helper.rb || die
 }

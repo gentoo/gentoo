@@ -1,4 +1,4 @@
-# Copyright 2004-2023 Gentoo Authors
+# Copyright 2004-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-pkg-2.eclass
@@ -13,13 +13,17 @@
 # This eclass should be inherited for pure Java packages, or by packages which
 # need to use Java.
 
-case ${EAPI} in
-	6|7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_JAVA_PKG_2_ECLASS} ]] ; then
 _JAVA_PKG_2_ECLASS=1
+
+case ${EAPI} in
+	6)
+		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
+		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
+		;;
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit java-utils-2
 
@@ -39,12 +43,6 @@ DEPEND="${JAVA_PKG_E_DEPEND}"
 # Nothing special for RDEPEND... just the same as DEPEND.
 RDEPEND="${DEPEND}"
 
-# Commons packages follow the same rules so do it here
-if [[ ${CATEGORY} = dev-java && ${PN} = commons-* ]]; then
-	HOMEPAGE="http://commons.apache.org/${PN#commons-}/"
-	SRC_URI="mirror://apache/${PN/-///}/source/${P}-src.tar.gz"
-fi
-
 
 # @FUNCTION: java-pkg-2_pkg_setup
 # @DESCRIPTION:
@@ -63,6 +61,7 @@ java-pkg-2_src_prepare() {
 
 
 # @FUNCTION: java-pkg-2_src_compile
+# @DEPRECATED: none
 # @DESCRIPTION:
 # Default src_compile for java packages
 #
@@ -98,6 +97,7 @@ java-pkg-2_src_compile() {
 }
 
 # @FUNCTION: java-pkg-2_src_test
+# @DEPRECATED: none
 # @DESCRIPTION:
 # src_test, not exported.
 java-pkg-2_src_test() {

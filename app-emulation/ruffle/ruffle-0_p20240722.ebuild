@@ -672,7 +672,7 @@ LICENSE+="
 	MPL-2.0 OFL-1.1 openssl Unicode-DFS-2016 ZLIB
 " # crates
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

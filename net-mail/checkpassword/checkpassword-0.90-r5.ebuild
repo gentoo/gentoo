@@ -12,7 +12,7 @@ SRC_URI="https://cr.yp.to/checkpwd/${P}.tar.gz"
 # http://cr.yp.to/distributors.html
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 IUSE="static"
 RESTRICT="mirror bindist"
 

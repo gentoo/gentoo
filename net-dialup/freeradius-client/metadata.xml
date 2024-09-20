@@ -17,6 +17,9 @@
 		shell scripts and a utility to query the status of a (Merit) RADIUS
 		server.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">FreeRADIUS/freeradius-client</remote-id>
+	</upstream>
 	<use>
 		<flag name="scp">
 			Add service type hints derived from username prefix

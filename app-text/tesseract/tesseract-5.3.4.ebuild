@@ -37,6 +37,10 @@ DEPEND="${COMMON_DEPEND}
 	dev-libs/libxslt
 	doc? ( app-text/doxygen )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.4.1-arm64-neon-tesseract.patch
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }

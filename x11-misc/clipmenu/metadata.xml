@@ -9,6 +9,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">cdown/clipmenu</remote-id>
+	</upstream>
 	<use>
 		<flag name="dmenu">Use dmenu as default launcher</flag>
 		<flag name="rofi">Use rofi as default launcher</flag>

@@ -1,6 +1,86 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-09-08)
+# Packages needing dev-python/selenium.
+dev-python/aiohttp-cors test
+dev-python/django test
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-09-08)
+# requires <llvm-18
+dev-db/postgresql llvm_slot_15 llvm_slot_16 llvm_slot_17
+media-libs/mesa llvm_slot_15 llvm_slot_16 llvm_slot_17
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-09-08)
+# needs libgdata[gnome-online-accounts], depends on net-libs/webkit-gtk
+gnome-base/gvfs google test
+
+# Michał Górny <mgorny@gentoo.org> (2024-09-08)
+# libcxx is broken on mips, https://bugs.gentoo.org/939297#c2
+sys-devel/clang-common default-libcxx
+sys-devel/clang-runtime libcxx
+
+# Hans de Graaff <graaff@gentoo.org> (2024-09-08)
+# Requires large parts of dev-ruby/rails to be keyworded
+dev-ruby/minitest-hooks test
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-09-07)
+# gui-libs/gtk:4 is not keyworded here
+app-crypt/gcr:4 gtk
+>=app-crypt/pinentry-1.3.0 gtk
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-09-06)
+# media-libs/vidstab is not keyworded
+media-video/ffmpeg vidstab
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-09-06)
+# media-video/rav1e isn't keyworded here
+media-libs/libavif rav1e
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-08-26)
+# dev-util/bpftool and/or sys-devel/bpf-toolchain not keyworded here
+sys-apps/systemd bpf
+media-libs/libv4l bpf
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-08-26)
+# dev-ruby/thor not keyworded here
+app-text/htmltidy test
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-08-25)
+# simplify the dep tree
+app-admin/syslog-ng amqp grpc kafka mongodb smtp test
+app-crypt/pinentry efl
+app-text/doxygen gui
+dev-build/cmake gui
+dev-db/mysql cjk
+dev-db/percona-server cjk
+dev-libs/libisoburn frontend-optional
+dev-python/uvicorn test-rust
+dev-util/glade gjs
+dev-util/pkgcheck emacs
+dev-util/ragel doc
+dev-vcs/git doc subversion
+mail-mta/postfix mongodb
+media-sound/liblc3 test
+net-misc/rsync rrsync
+net-firewall/nftables doc
+dev-util/ccache doc
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-08-25)
+# Some optional emacs dependencies are not keyworded.
+app-editors/emacs gui mailutils
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-08-25)
+# net-libs/webkit-gtk has no mips keywords
+app-editors/emacs xwidgets
+dev-util/glade webkit
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-08-25)
+# alternatives not available on mips
+app-alternatives/awk nawk
+app-alternatives/bc gh
+app-alternatives/lex reflex
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-07-05)
 # Avoid unkeyworded media-gfx/libimagequant
 dev-python/pillow imagequant
@@ -82,7 +162,7 @@ net-analyzer/rrdtool rados
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-22)
 # Qt 5 is not keyworded here
-app-admin/setools X
+app-admin/setools X test
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-22)
 # Qt 5 is not keyworded here
@@ -188,7 +268,7 @@ app-text/enchant voikko
 
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # No drivers on this architecture support Vulkan
-media-libs/mesa vulkan vulkan-overlay zink
+media-libs/mesa vulkan vulkan-overlay zink video_cards_zink
 
 # Michał Górny <mgorny@gentoo.org> (2018-01-23)
 # USE=collab requires unkeyworded net-libs/loudmouth & dev-cpp/asio.

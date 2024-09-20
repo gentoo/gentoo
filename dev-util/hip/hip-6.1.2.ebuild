@@ -59,6 +59,12 @@ BDEPEND="
 "
 RDEPEND="${DEPEND}
 	sys-devel/clang-runtime:=
+	opencl? (
+		!dev-libs/opencl-icd-loader
+		!dev-libs/rocm-opencl-runtime
+		!dev-util/clinfo
+		!dev-util/opencl-headers
+	)
 	video_cards_amdgpu? (
 		dev-util/hipcc:${SLOT}[${LLVM_USEDEP}]
 		>=dev-libs/rocm-device-libs-${PV}

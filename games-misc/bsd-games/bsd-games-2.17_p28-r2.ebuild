@@ -52,6 +52,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-2.17-bg.patch
 	eapply "${FILESDIR}"/${PN}-2.17-gcc4.patch
 	eapply "${FILESDIR}"/${PN}-2.17-rename-getdate-clash.patch
+	eapply "${FILESDIR}"/${PN}-2.17-sigpause-gnusource.patch
 
 	default
 

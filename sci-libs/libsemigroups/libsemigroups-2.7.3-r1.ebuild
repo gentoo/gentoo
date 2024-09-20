@@ -10,7 +10,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
 # Source headers have "or any later version"
 LICENSE="GPL-3+"
 SLOT="0/2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="cpu_flags_x86_popcnt"
 
 PATCHES=( "${FILESDIR}/${P}-gcc-15-buildfix.patch" )

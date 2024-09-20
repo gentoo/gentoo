@@ -14,7 +14,7 @@ SRC_URI="https://downloads.sourceforge.net/png-mng/${P}-jumbo-patches-${JUMBOV}.
 
 LICENSE="xv"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~hppa ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="jpeg tiff png"
 
 DEPEND="
@@ -70,6 +70,11 @@ src_prepare() {
 }
 
 src_compile() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/859823
+	# https://github.com/jasper-software/xv/issues/25
+	filter-lto
+
 	emake \
 		CC="$(tc-getCC)" CCOPTS="${CPPFLAGS} ${CFLAGS}" LDFLAGS="${LDFLAGS}" \
 		PREFIX="${EPREFIX}"/usr \

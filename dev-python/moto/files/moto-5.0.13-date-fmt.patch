@@ -1,0 +1,48 @@
+From 3bbc65d23cb58904f8cc79676e4fb079d9f6f37b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 7 Sep 2024 20:20:42 +0200
+Subject: [PATCH] [transfer] Fix date_imported to use a correct ISO 8601 date
+
+Fix `date_imported` key to use a proper ISO 8601 format (with hyphens
+and colons) rather than concatenated numbers.  Botocore expects
+the former rather than the latter, and when given a bare number it
+incorrectly interprets it as UNIX timestamp rather than `%Y%m%d%H%M%S`
+date.
+
+This can particularly be seen on systems with 32-bit time_t, where
+the resulting timestamp overflows (it would correspond to year 643378
+today), and causes `tests/test_transfer/test_transfer.py` failures
+such as:
+
+```
+E       RuntimeError: Unable to calculate correct timezone offset for "20240907201715"
+```
+
+When using `%Y-%m-%d %H:%M:%S` format, the relevant tests pass both
+on systems with 64-bit and 32-bit time_t.
+---
+ moto/transfer/models.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/moto/transfer/models.py b/moto/transfer/models.py
+index ca9f5e69ec9..599a6f5e2ea 100644
+--- a/moto/transfer/models.py
++++ b/moto/transfer/models.py
+@@ -167,7 +167,7 @@ def create_user(
+             }
+             user.posix_profile = posix_profile
+         if ssh_public_key_body is not None:
+-            now = datetime.now().strftime("%Y%m%d%H%M%S")
++            now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+             ssh_public_keys = [
+                 {
+                     "date_imported": now,
+@@ -205,7 +205,7 @@ def import_ssh_public_key(
+             raise ServerNotFound(server_id=server_id)
+         for user in self.servers[server_id]._users:
+             if user.user_name == user_name:
+-                date_imported = datetime.now().strftime("%Y%m%d%H%M%S")
++                date_imported = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                 ssh_public_key_id = (
+                     f"{server_id}:{user_name}:public_key:{date_imported}"
+                 )

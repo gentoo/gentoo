@@ -11,7 +11,7 @@ SRC_URI="https://www.ibr.cs.tu-bs.de/projects/libsmi/download/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~m68k ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~m68k ppc ppc64 ~riscv ~s390 sparc x86"
 RESTRICT="test"
 
 # libsmi-0.5.0-implicit-function-declarations.patch touches parser

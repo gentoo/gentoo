@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit cmake python-single-r1 xdg
 
@@ -53,10 +53,6 @@ BDEPEND="
 	virtual/pkgconfig
 	qt5? ( dev-qt/linguist-tools:5 )
 "
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-4.2-gcc13.patch
-)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup

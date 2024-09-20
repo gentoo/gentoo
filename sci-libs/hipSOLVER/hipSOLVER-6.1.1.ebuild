@@ -36,6 +36,8 @@ PATCHES=(
 )
 
 src_configure() {
+	rocm_use_hipcc
+
 	local mycmakeargs=(
 		-DAMDGPU_TARGETS="$(get_amdgpu_flags)"
 		-DBUILD_FILE_REORG_BACKWARD_COMPATIBILITY=OFF
@@ -43,5 +45,5 @@ src_configure() {
 		-DBUILD_WITH_SPARSE=$(usex sparse ON OFF)
 	)
 
-	CXX=hipcc cmake_src_configure
+	cmake_src_configure
 }

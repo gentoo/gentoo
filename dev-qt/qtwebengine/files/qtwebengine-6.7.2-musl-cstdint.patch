@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/939519
+
+Just one more of these, should be merged with the cstdint patch
+in patchset next update & ideally upstreamed eventually.
+--- a/src/3rdparty/chromium/third_party/blink/public/common/page_state/page_state.h
++++ b/src/3rdparty/chromium/third_party/blink/public/common/page_state/page_state.h
+@@ -6,4 +6,5 @@
+ #define THIRD_PARTY_BLINK_PUBLIC_COMMON_PAGE_STATE_PAGE_STATE_H_
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>

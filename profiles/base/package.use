@@ -1,12 +1,13 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-05-30)
-# Only up to python 3.11 supported, bug #929546
-<dev-util/kdevelop-python-24.05.1:5 python_single_target_python3_11
-~www-client/falkon-23.08.5 python_single_target_python3_11
-dev-python/pyside2 python_targets_python3_11
-dev-python/shiboken2 python_targets_python3_11
+# Michał Górny <mgorny@gentoo.org> (2024-09-15)
+# Each flag is used by exactly one version, so let's default-enable
+# them all to make tattoo not fail on almost everything.
+dev-python/python-tests:3.10 python_targets_python3_10
+dev-python/python-tests:3.11 python_targets_python3_11
+dev-python/python-tests:3.12 python_targets_python3_12
+dev-python/python-tests:3.13 python_targets_python3_13
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-03-23)
 # Used by pkgcheck, so let's make it easier for all developers to install it

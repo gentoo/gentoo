@@ -1,0 +1,37 @@
+https://github.com/qpdf/qpdf/commit/6918f0b7eb0160059d712ee19ba0ce2d65b9f89c
+
+From: Christopher Fore <csfore@posteo.net>
+Date: Mon, 5 Aug 2024 09:41:50 -0400
+Subject: [PATCH] libtests: include cstdint for GCC 15
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+GCC 15 starts to no longer include this by default, requiring it to be
+explicitly included.
+
+Error message:
+libtests/cxx11.cc:75:16: error: ‘uint8_t’ was not declared in this scope
+   75 |     check_size<uint8_t>(1, false);
+      |                ^~~~~~~
+libtests/cxx11.cc:10:1: note: ‘uint8_t’ is defined in header ‘<cstdint>’; this is probably fixable by adding ‘#include <cstdint>’
+    9 | #include <regex>
+  +++ |+#include <cstdint>
+   10 | #include <type_traits>
+
+Signed-off-by: Christopher Fore <csfore@posteo.net>
+---
+ libtests/cxx11.cc | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libtests/cxx11.cc b/libtests/cxx11.cc
+index 59c74fa86..953ad00f9 100644
+--- a/libtests/cxx11.cc
++++ b/libtests/cxx11.cc
+@@ -1,5 +1,6 @@
+ #include <qpdf/assert_test.h>
+ 
++#include <cstdint>
+ #include <cstdlib>
+ #include <cstring>
+ #include <functional>

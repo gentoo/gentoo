@@ -1,0 +1,45 @@
+https://gitlab.com/gnutls/gnutls/-/commit/f3e8eac0586a19f4dafd89f68006a536b826e65a
+
+From f3e8eac0586a19f4dafd89f68006a536b826e65a Mon Sep 17 00:00:00 2001
+From: Andreas Metzler <ametzler@bebt.de>
+Date: Thu, 15 Aug 2024 16:22:02 +0200
+Subject: [PATCH] revert back to datefudge for "openssl ocsp".
+
+openssl's -attime only changes the verification logic but not the
+generation.
+
+Broken by: d1bc7f644422c4d87edfcd9fafe7f292a1a3a6de
+
+Signed-off-by: Andreas Metzler <ametzler@bebt.de>
+--- a/tests/ocsp-tests/ocsp-must-staple-connection.sh
++++ b/tests/ocsp-tests/ocsp-must-staple-connection.sh
+@@ -48,6 +48,8 @@ fi
+ 
+ . "${srcdir}/scripts/common.sh"
+ 
++skip_if_no_datefudge
++
+ eval "${GETPORT}"
+ # Port for gnutls-serv
+ TLS_SERVER_PORT=$PORT
+@@ -69,7 +71,6 @@ fi
+ 
+ CERTDATE="2016-04-28 00:00:00"
+ TESTDATE="2016-04-29 00:00:00"
+-EPOCHTESTDATE=1461888000
+ EXP_OCSP_DATE="2016-03-27 00:00:00"
+ 
+ OCSP_PID=""
+@@ -129,8 +130,8 @@ cp "${srcdir}/ocsp-tests/certs/ocsp_index.txt.attr" ${ATTRFILE}
+ # SO_REUSEADDR usage.
+ PORT=${OCSP_PORT}
+ launch_bare_server \
+-	  "${OPENSSL}" ocsp -attime "${EPOCHTESTDATE}" \
+-	  -index "${INDEXFILE}" -text \
++	  "$FAKETIME" "${TESTDATE}" \
++	  "${OPENSSL}" ocsp -index "${INDEXFILE}" -text \
+ 	  -port "${OCSP_PORT}" \
+ 	  -rsigner "${srcdir}/ocsp-tests/certs/ocsp-server.pem" \
+ 	  -rkey "${srcdir}/ocsp-tests/certs/ocsp-server.key" \
+-- 
+GitLab

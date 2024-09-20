@@ -13,7 +13,7 @@ SRC_URI="https://github.com/ibus/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.gh
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="boost lua nls"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	lua? ( ${LUA_REQUIRED_USE} )"

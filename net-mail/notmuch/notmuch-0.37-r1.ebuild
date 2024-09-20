@@ -28,7 +28,7 @@ IUSE="apidoc crypt doc emacs mutt nmbug python test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	app-arch/xz-utils[extra-filters(-)]
+	app-arch/xz-utils[extra-filters(+)]
 	virtual/pkgconfig
 	apidoc? (
 		app-text/doxygen

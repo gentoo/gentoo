@@ -20,7 +20,7 @@ SRC_URI="https://github.com/james-d-mitchell/${PN}/archive/refs/tags/v${PV}.tar.
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 RDEPEND="dev-python/pyyaml[${PYTHON_USEDEP}]"
 

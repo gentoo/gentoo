@@ -41,6 +41,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-brotli-unbundle.patch
 	"${FILESDIR}"/${P}-libc-dlopen-glibc-2.34.patch
 	"${FILESDIR}"/${P}-pkgconfig-waffle.patch
+	"${FILESDIR}/${PN}-9.0-include-cstdint.patch"
 )
 
 src_prepare() {

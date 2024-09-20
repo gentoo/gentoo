@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit qt6-build toolchain-funcs
+inherit flag-o-matic qt6-build toolchain-funcs
 
 DESCRIPTION="Cross-platform application development framework"
 
@@ -99,7 +99,7 @@ COMMON_DEPEND="
 			cups? ( net-print/cups )
 			gtk? (
 				x11-libs/gdk-pixbuf:2
-				x11-libs/gtk+:3
+				>=x11-libs/gtk+-3.24.41-r1:3[X?,wayland?]
 				x11-libs/pango
 			)
 		)
@@ -145,6 +145,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.5.2-no-symlink-check.patch
 	"${FILESDIR}"/${PN}-6.6.1-forkfd-childstack-size.patch
 	"${FILESDIR}"/${PN}-6.6.3-gcc14-avx512fp16.patch
+	"${FILESDIR}"/${PN}-6.7.2-qcontiguouscache.patch
 )
 
 src_prepare() {
@@ -165,6 +166,12 @@ src_prepare() {
 }
 
 src_configure() {
+	if use gtk; then
+		# defang automagic dependencies (bug #624960)
+		use X || append-cxxflags -DGENTOO_GTK_HIDE_X11
+		use wayland || append-cxxflags -DGENTOO_GTK_HIDE_WAYLAND
+	fi
+
 	local mycmakeargs=(
 		-DBUILD_WITH_PCH=OFF
 

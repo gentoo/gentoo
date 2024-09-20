@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>arsen@gentoo.org</email>
+		<name>Arsen Arsenović</name>
+	</maintainer>
+	<use>
+		<flag name="test-install">
+			Install the testsuite for manual use. It is not suitable
+			for automatic execution within the ebuild because it
+			requires root privlieges.
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">oracle/dtrace-utils</remote-id>
+	</upstream>
+</pkgmetadata>

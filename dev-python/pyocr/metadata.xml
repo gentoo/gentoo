@@ -15,10 +15,6 @@ It has been tested only on GNU/Linux systems. It should also work on similar sys
 
 Pyocr can be used as a wrapper for google's Tesseract-OCR or Cuneiform. It can read all image types supported by Pillow, including jpeg, png, gif, bmp, tiff, and others. It also support bounding box data.
 	</longdescription>
-	<use>
-		<flag name="cuneiform">Enable support for the <pkg>app-text/cuneiform</pkg> OCR engine</flag>
-		<flag name="tesseract">Enable support for the <pkg>app-text/tesseract</pkg> OCR engine</flag>
-	</use>
 	<upstream>
 		<remote-id type="pypi">pyocr</remote-id>
 		<remote-id type="gnome-gitlab">World/OpenPaperwork/pyocr</remote-id>

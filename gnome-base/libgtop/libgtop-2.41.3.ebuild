@@ -9,7 +9,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/libgtop"
 
 LICENSE="GPL-2+"
 SLOT="2/11" # libgtop soname version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="+introspection"
 
 RDEPEND="

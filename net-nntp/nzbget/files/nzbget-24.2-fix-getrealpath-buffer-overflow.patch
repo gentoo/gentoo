@@ -1,0 +1,174 @@
+https://github.com/nzbgetcom/nzbget/commit/f89978f7479cbb0ff2f96c8632d9d2f31834e6c8
+
+From f89978f7479cbb0ff2f96c8632d9d2f31834e6c8 Mon Sep 17 00:00:00 2001
+From: Denis <146707790+dnzbk@users.noreply.github.com>
+Date: Wed, 7 Aug 2024 11:54:33 -0700
+Subject: [PATCH] Fixed: buffer overflow using getrealpath function (#346)
+
+- use a safer approach of using `getrealpath` according to the [doc](https://man7.org/linux/man-pages/man3/realpath.3.html)
+- using `std::string_view` instead of `std::string&` for better performance
+- improved `SystemInfoTest` to make it more flexible
+--- a/daemon/util/FileSystem.cpp
++++ b/daemon/util/FileSystem.cpp
+@@ -56,20 +56,21 @@ void FileSystem::NormalizePathSeparators(char* path)
+ 	}
+ }
+ 
+-std::optional<std::string> FileSystem::GetFileRealPath(const std::string& path)
++std::optional<std::string> FileSystem::GetFileRealPath(std::string_view path)
+ {
+-	char buffer[256];
+-
+ #ifdef WIN32
+-	DWORD len = GetFullPathName(path.c_str(), 256, buffer, nullptr);
++	char buffer[MAX_PATH];
++	DWORD len = GetFullPathName(path.data(), MAX_PATH, buffer, nullptr);
+ 	if (len != 0)
+ 	{
+-		return std::optional<std::string>{ buffer };
++		return std::optional{ buffer };
+ 	}
+ #else
+-	if (realpath(path.c_str(), buffer) != nullptr)
++	if (char* realPath = realpath(path.data(), nullptr))
+ 	{
+-		return std::optional<std::string>{ buffer };
++		std::string res = realPath;
++		free(realPath);
++		return std::optional(std::move(res));
+ 	}
+ #endif
+ 
+--- a/daemon/util/FileSystem.h
++++ b/daemon/util/FileSystem.h
+@@ -40,7 +40,7 @@ class FileSystem
+ 	static char* BaseFileName(const char* filename);
+ 	static bool SameFilename(const char* filename1, const char* filename2);
+ 	static void NormalizePathSeparators(char* path);
+-	static std::optional<std::string> GetFileRealPath(const std::string& path);
++	static std::optional<std::string> GetFileRealPath(std::string_view path);
+ 	static bool LoadFileIntoBuffer(const char* filename, CharBuffer& buffer, bool addTrailingNull);
+ 	static bool SaveBufferIntoFile(const char* filename, const char* buffer, int bufLen);
+ 	static bool AllocateFile(const char* filename, int64 size, bool sparse, CString& errmsg);
+--- a/tests/system/SystemInfoTest.cpp
++++ b/tests/system/SystemInfoTest.cpp
+@@ -28,22 +28,22 @@
+ #include "Log.h"
+ #include "DiskState.h"
+ 
+-Log* g_Log = new Log();
++Log* g_Log;
+ Options* g_Options;
+ DiskState* g_DiskState;
+ 
+-std::string GetToolsJsonStr(const std::vector<System::Tool> tools)
++std::string GetToolsJsonStr(const std::vector<System::Tool>& tools)
+ {
+ 	std::string json = "\"Tools\":[";
+ 
+ 	for (size_t i = 0; i < tools.size(); ++i)
+ 	{
+ 		std::string path = tools[i].path;
+-		for (size_t i = 0; i < path.length(); ++i) {
+-			if (path[i] == '\\')
++		for (size_t j = 0; j < path.length(); ++j) {
++			if (path[j] == '\\')
+ 			{
+-				path.insert(i, "\\");
+-				++i;
++				path.insert(j, "\\");
++				++j;
+ 			}
+ 		}
+ 
+@@ -62,7 +62,7 @@ std::string GetToolsJsonStr(const std::vector<System::Tool> tools)
+ 	return json;
+ }
+ 
+-std::string GetLibrariesJsonStr(const std::vector<System::Library> libs)
++std::string GetLibrariesJsonStr(const std::vector<System::Library>& libs)
+ {
+ 	std::string json = "\"Libraries\":[";
+ 
+@@ -82,7 +82,7 @@ std::string GetLibrariesJsonStr(const std::vector<System::Library> libs)
+ 	return json;
+ }
+ 
+-std::string GetToolsXmlStr(const std::vector<System::Tool> tools)
++std::string GetToolsXmlStr(const std::vector<System::Tool>& tools)
+ {
+ 	std::string xml = "<Tools>";
+ 
+@@ -110,7 +110,7 @@ std::string GetToolsXmlStr(const std::vector<System::Tool> tools)
+ 	return xml;
+ }
+ 
+-std::string GetLibrariesXmlStr(const std::vector<System::Library> libs)
++std::string GetLibrariesXmlStr(const std::vector<System::Library>& libs)
+ {
+ 	std::string xml = "<Libraries>";
+ 
+@@ -126,13 +126,32 @@ std::string GetLibrariesXmlStr(const std::vector<System::Library> libs)
+ 	return xml;
+ }
+ 
++std::string GetNetworkXmlStr(const System::Network& network)
++{
++	std::string res = "<Network>";
++	res += network.publicIP.empty()
++		? "<member><name>PublicIP</name><value><string/></value></member>"
++		: "<member><name>PublicIP</name><value><string>" + network.publicIP + "</string></value></member>";
++		
++	res += network.privateIP.empty()
++		? "<member><name>PrivateIP</name><value><string/></value></member>"
++		: "<member><name>PrivateIP</name><value><string>" + network.privateIP + "</string></value></member>";
++
++	res += "</Network>";
++	return res;
++}
++
+ BOOST_AUTO_TEST_CASE(SystemInfoTest)
+ {
+-	BOOST_CHECK(0 == 0);
++	Log log;
++	DiskState ds;
+ 	Options::CmdOptList cmdOpts;
+ 	cmdOpts.push_back("SevenZipCmd=7z");
+ 	cmdOpts.push_back("UnrarCmd=unrar");
+ 	Options options(&cmdOpts, nullptr);
++
++	g_Log = &log;
++	g_DiskState = &ds;
+ 	g_Options = &options;
+ 
+ 	auto sysInfo = std::make_unique<System::SystemInfo>();
+@@ -157,14 +176,25 @@ BOOST_AUTO_TEST_CASE(SystemInfoTest)
+ 		"</string></value></member>" +
+ 		"<member><name>Arch</name><value><string>" + sysInfo->GetCPUInfo().GetArch() +
+ 		"</string></value></member></CPU>" +
+-		"<Network><member><name>PublicIP</name><value><string>" + sysInfo->GetNetworkInfo().publicIP +
+-		"</string></value></member>"
+-		"<member><name>PrivateIP</name><value><string>" + sysInfo->GetNetworkInfo().privateIP +
+-		"</string></value></member></Network>" +
++		GetNetworkXmlStr(sysInfo->GetNetworkInfo()) +
+ 		GetToolsXmlStr(sysInfo->GetTools()) +
+ 		GetLibrariesXmlStr(sysInfo->GetLibraries()) +
+ 		"</struct></value>";
+ 
++	BOOST_TEST_MESSAGE("EXPECTED JSON STR: ");
++	BOOST_TEST_MESSAGE(jsonStrExpected);
++
++	BOOST_TEST_MESSAGE("RESULT JSON STR: ");
++	BOOST_TEST_MESSAGE(jsonStrResult);
++
++	BOOST_TEST_MESSAGE("EXPECTED XML STR: ");
++	BOOST_TEST_MESSAGE(xmlStrExpected);
++
++	BOOST_TEST_MESSAGE("RESULT XML STR: ");
++	BOOST_TEST_MESSAGE(xmlStrResult);
++
+ 	BOOST_CHECK(jsonStrResult == jsonStrExpected);
+ 	BOOST_CHECK(xmlStrResult == xmlStrExpected);
++
++	xmlCleanupParser();
+ }

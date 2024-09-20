@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: prefix.eclass
@@ -12,13 +12,17 @@
 # located somewhere in the filesystem.  Prefix ebuilds require
 # additional functions and variables which are defined by this eclass.
 
-case ${EAPI:-0} in
-	[5678]) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_PREFIX_ECLASS} ]]; then
 _PREFIX_ECLASS=1
+
+case ${EAPI} in
+	5|6)
+		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
+		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
+		;;
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @ECLASS_VARIABLE: EPREFIX
 # @DESCRIPTION:

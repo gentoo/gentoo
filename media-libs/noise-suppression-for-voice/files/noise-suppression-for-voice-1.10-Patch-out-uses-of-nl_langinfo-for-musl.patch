@@ -1,0 +1,36 @@
+From b0ab5ab1b140fe76ff2e923e9d6434ad434adb88 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Kacper=20S=C5=82omi=C5=84ski?=
+ <kacper.slominski72@gmail.com>
+Date: Sun, 11 Aug 2024 23:46:21 +0200
+Subject: [PATCH 3/3] Patch out uses of nl_langinfo for musl
+
+Not available on musl, instead use the alternative code path for BSD.
+---
+ .../JUCE/modules/juce_core/native/juce_linux_SystemStats.cpp  | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/external/JUCE/modules/juce_core/native/juce_linux_SystemStats.cpp b/external/JUCE/modules/juce_core/native/juce_linux_SystemStats.cpp
+index 84abf88..a7b3343 100644
+--- a/external/JUCE/modules/juce_core/native/juce_linux_SystemStats.cpp
++++ b/external/JUCE/modules/juce_core/native/juce_linux_SystemStats.cpp
+@@ -198,7 +198,7 @@ String SystemStats::getComputerName()
+ 
+ String SystemStats::getUserLanguage()
+ {
+-   #if JUCE_BSD
++   #if JUCE_BSD || (JUCE_LINUX && !defined(__GLIBC__))
+     if (auto langEnv = getenv ("LANG"))
+         return String::fromUTF8 (langEnv).upToLastOccurrenceOf (".UTF-8", false, true);
+ 
+@@ -210,7 +210,7 @@ String SystemStats::getUserLanguage()
+ 
+ String SystemStats::getUserRegion()
+ {
+-   #if JUCE_BSD
++   #if JUCE_BSD || (JUCE_LINUX && !defined(__GLIBC__))
+     return {};
+    #else
+     return getLocaleValue (_NL_IDENTIFICATION_TERRITORY);
+-- 
+2.44.2
+

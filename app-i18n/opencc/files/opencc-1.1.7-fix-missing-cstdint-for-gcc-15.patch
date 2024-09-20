@@ -1,0 +1,13 @@
+https://github.com/BYVoid/OpenCC/pull/894
+Fix missing cstdint for GCC 15
+
+--- a/src/SerializedValues.cpp
++++ b/src/SerializedValues.cpp
+@@ -17,6 +17,7 @@
+  */
+ 
+ #include <cassert>
++#include <cstdint>
+ #include <cstring>
+ 
+ #include "Lexicon.hpp"

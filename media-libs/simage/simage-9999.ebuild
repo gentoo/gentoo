@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,27 +13,20 @@ if [[ ${PV} = *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/coin3d/simage.git"
 else
 	SRC_URI="https://github.com/coin3d/simage/releases/download/v${PV}/${P}-src.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 	S="${WORKDIR}/${PN}"
 fi
 
 LICENSE="BSD-1"
 SLOT="0"
-IUSE="gif jpeg png qt5 qt6 sndfile test tiff vorbis zlib"
-REQUIRED_USE="qt5? ( !qt6 )"
+IUSE="gif jpeg png qt6 sndfile test tiff vorbis zlib"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	gif? ( media-libs/giflib:= )
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	png? ( media-libs/libpng:= )
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-	)
-	qt6? (
-		dev-qt/qtbase:6[gui]
-	)
+	qt6? ( dev-qt/qtbase:6[gui] )
 	sndfile? (
 		media-libs/libsndfile
 		media-libs/flac:=
@@ -60,12 +53,6 @@ PATCHES=(
 DOCS=(AUTHORS ChangeLog NEWS README)
 
 src_configure() {
-	local use_qt
-	if use qt5 || use qt6 ; then
-		use_qt=ON
-	else
-		use_qt=OFF
-	fi
 	local mycmakeargs=(
 		-DSIMAGE_BUILD_SHARED_LIBS=ON
 		-DSIMAGE_BUILD_EXAMPLES=OFF
@@ -75,8 +62,9 @@ src_configure() {
 		-DSIMAGE_USE_GDIPLUS=OFF # Windows
 		-DSIMAGE_USE_CGIMAGE=OFF # OS X only
 		-DSIMAGE_USE_QUICKTIME=OFF # OS X only
-		-DSIMAGE_USE_QIMAGE=${use_qt}
-		-DSIMAGE_USE_QT5=$(usex qt5)
+		-DSIMAGE_USE_QIMAGE=$(usex qt6)
+		-DSIMAGE_USE_QT4=OFF
+		-DSIMAGE_USE_QT5=OFF
 		-DSIMAGE_USE_QT6=$(usex qt6)
 		-DSIMAGE_USE_CPACK=OFF
 		-DSIMAGE_USE_STATIC_LIBS=OFF

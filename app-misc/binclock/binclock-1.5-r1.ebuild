@@ -11,7 +11,7 @@ SRC_URI="http://www.ngolde.de/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm64 ~mips ppc ppc64 sparc x86"
 
 PATCHES=( "${FILESDIR}"/${P}-Makefile.patch )
 

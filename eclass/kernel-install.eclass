@@ -560,21 +560,21 @@ kernel-install_pkg_pretend() {
 		ewarn "that distribution kernels will boot without an initramfs."
 		ewarn
 		ewarn "You have disabled the initramfs USE flag, and as a result the package manager"
-        ewarn "will not enforce the configuration of an initramfs generator in"
-        ewarn "sys-kernel/installkernel."
-        ewarn
+		ewarn "will not enforce the configuration of an initramfs generator in"
+		ewarn "sys-kernel/installkernel."
+		ewarn
 		ewarn "If you wish to use a custom initramfs generator, then please ensure that" 
-        ewarn "/sbin/installkernel is capable of calling it via a kernel installation hook,"
-        ewarn "and is also configured to use it via /etc/kernel/install.conf."
-        ewarn
-        ewarn "If you wish to boot without an initramfs, then please ensure that"
-        ewarn "all kernel drivers required to boot your system are built into the"
-        ewarn "kernel by modifying the default distribution kernel configuration"
-        ewarn "using /etc/kernel/config.d"
-        ewarn
+		ewarn "/sbin/installkernel is capable of calling it via a kernel installation hook,"
+		ewarn "and is also configured to use it via /etc/kernel/install.conf."
+		ewarn
+		ewarn "If you wish to boot without an initramfs, then please ensure that"
+		ewarn "all kernel drivers required to boot your system are built into the"
+		ewarn "kernel by modifying the default distribution kernel configuration"
+		ewarn "using /etc/kernel/config.d"
+		ewarn
 		ewarn "Please refer to the installkernel and distribution kernel documentation:"
 		ewarn "    https://wiki.gentoo.org/wiki/Installkernel"
-        ewarn "    https://wiki.gentoo.org/wiki/Project:Distribution_Kernel"
+		ewarn "    https://wiki.gentoo.org/wiki/Project:Distribution_Kernel"
 	fi
 }
 
@@ -650,7 +650,7 @@ kernel-install_extract_from_uki() {
 	local uki=${2}
 	local out=${3}
 
-	$(tc-getOBJCOPY) -O binary "-j.${extract_type}" "${uki}" "${out}" ||
+	$(tc-getOBJCOPY) "${uki}" --dump-section ".${extract_type}=${out}" ||
 		die "Failed to extract ${extract_type}"
 	chmod 644 "${out}" || die
 }
@@ -766,14 +766,39 @@ kernel-install_compress_modules() {
 
 	if use modules-compress; then
 		einfo "Compressing kernel modules ..."
-		# xz options taken from scripts/Makefile.modinst
-		# we don't do 'xz -T' because it applies multithreading per file,
-		# so it works only for big files, and we have lots of small files
-		# instead
-		find "${ED}/lib" -name '*.ko' -print0 |
-			xargs -0 -P "$(makeopts_jobs)" -n 128 \
-				xz --check=crc32 --lzma2=dict=1MiB
+		if [[ -z ${KV_FULL} ]]; then
+			KV_FULL=${PV}${KV_LOCALVERSION}
+		fi
+		local suffix=$(dist-kernel_get_module_suffix "${ED}/usr/src/linux-${KV_FULL}/.config")
+		local compress=()
+		# Options taken from linux-mod-r1.eclass.
+		# We don't instruct the compressor to parallelize because it applies
+		# multithreading per file, so it works only for big files, and we have
+		# lots of small files instead.
+		case ${suffix} in
+			.ko)
+				return
+				;;
+			.ko.gz)
+				compress+=( gzip )
+				;;
+			.ko.xz)
+				compress+=( xz --check=crc32 --lzma2=dict=1MiB )
+				;;
+			.ko.zst)
+				compress+=( zstd -q --rm )
+				;;
+			*)
+				die "Unknown compressor: ${suffix}"
+				;;
+		esac
+
+		find "${ED}/lib/modules/${KV_FULL}" -name '*.ko' -print0 |
+			xargs -0 -P "$(makeopts_jobs)" -n 128 "${compress[@]}"
 		assert "Compressing kernel modules failed"
+
+		# Module paths have changed, run depmod
+		depmod --all --basedir "${ED}" ${KV_FULL} || die
 	fi
 }
 

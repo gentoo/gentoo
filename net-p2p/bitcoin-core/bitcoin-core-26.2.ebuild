@@ -94,6 +94,7 @@ DOCS=(
 )
 
 PATCHES=(
+	"${FILESDIR}/25.0-gcc15.patch"
 	"${FILESDIR}/26.0-syslibs.patch"
 	"${FILESDIR}/26.0-init.patch"
 )

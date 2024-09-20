@@ -19,8 +19,6 @@
   </maintainer>
 
   <upstream>
-    <remote-id type="github">
-      graph-algorithms/edge-addition-planarity-suite
-    </remote-id>
+    <remote-id type="github">graph-algorithms/edge-addition-planarity-suite</remote-id>
   </upstream>
 </pkgmetadata>

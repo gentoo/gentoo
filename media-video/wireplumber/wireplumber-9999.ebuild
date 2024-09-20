@@ -68,7 +68,7 @@ PATCHES=(
 	# Defer enabling sound server parts to media-video/pipewire
 	# TODO: Soon, we should be able to migrate to just a dropin at
 	# /usr/share. See https://gitlab.freedesktop.org/pipewire/wireplumber/-/issues/652#note_2399735.
-	"${FILESDIR}"/${PN}-0.4.81-config-disable-sound-server-parts.patch
+	"${FILESDIR}"/${PN}-0.5.6-config-disable-sound-server-parts.patch
 )
 
 src_configure() {

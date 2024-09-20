@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vim-doc.eclass
@@ -16,12 +16,16 @@
 # DEPEND in vim-plugin or by whatever version of vim is being
 # installed by the eclass.
 
+if [[ ! ${_VIM_DOC_ECLASS} ]] ; then
+
 case ${EAPI} in
-	6|7|8) ;;
+	6)
+		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
+		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
+		;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-if [[ ! ${_VIM_DOC_ECLASS} ]] ; then
 
 # @FUNCTION: update_vim_helptags
 # @USAGE:

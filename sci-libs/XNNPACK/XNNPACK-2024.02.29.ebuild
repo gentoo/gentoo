@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit cmake
+inherit cmake flag-o-matic
 
 CommitId=fcbf55af6cf28a4627bcd1f703ab7ad843f0f3a2
 
@@ -54,6 +54,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/933414
+	# https://github.com/google/XNNPACK/issues/6806
+	filter-lto
+
 	local mycmakeargs=(
 		-DXNNPACK_BUILD_BENCHMARKS=OFF
 		-DXNNPACK_USE_SYSTEM_LIBS=ON

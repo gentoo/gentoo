@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,18 +19,18 @@ else
 	SRC_URI="https://www.tcpdump.org/release/${P}.tar.gz"
 	SRC_URI+=" verify-sig? ( https://www.tcpdump.org/release/${P}.tar.gz.sig )"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="+drop-root +smi +ssl +samba suid test"
+IUSE="+caps +smi +ssl +samba suid test"
 REQUIRED_USE="test? ( samba )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=net-libs/libpcap-1.10.1
-	drop-root? (
+	caps? (
 		acct-group/pcap
 		acct-user/pcap
 		sys-libs/libcap-ng
@@ -50,16 +50,11 @@ DEPEND="
 		dev-lang/perl
 	)
 "
-BDEPEND="drop-root? ( virtual/pkgconfig )"
+BDEPEND="caps? ( virtual/pkgconfig )"
 
 if [[ ${PV} != *9999* ]] ; then
-	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-tcpdump )"
+	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-tcpdump-20240901 )"
 fi
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-9999-libdir.patch
-	"${FILESDIR}"/${PN}-9999-lfs.patch
-)
 
 src_prepare() {
 	default
@@ -69,19 +64,18 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable samba smb) \
-		$(use_with drop-root cap-ng) \
-		$(use_with drop-root chroot '') \
+		$(use_with caps cap-ng) \
 		$(use_with smi) \
 		$(use_with ssl crypto "${ESYSROOT}/usr") \
-		$(usex drop-root "--with-user=pcap" "")
+		$(usex caps "--with-user=pcap" "")
 }
 
 src_test() {
-	if [[ ${EUID} -ne 0 ]] || ! use drop-root ; then
+	if [[ ${EUID} -ne 0 ]] || ! use caps ; then
 		emake check
 	else
 		ewarn "If you want to run the test suite, make sure you either"
-		ewarn "set FEATURES=userpriv or set USE=-drop-root"
+		ewarn "set FEATURES=userpriv or set USE=-caps"
 	fi
 }
 

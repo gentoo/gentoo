@@ -12,20 +12,16 @@ RELEASE_COMMIT="8a83b53"
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://passt.top/passt"
+	EGIT_REPO_URI="https://passt.top/passt"
 else
 	SRC_URI="https://passt.top/passt/snapshot/passt-${RELEASE_COMMIT}.tar.xz -> ${P}.tar.xz"
 	S="${WORKDIR}/${PN}-${RELEASE_COMMIT}"
-	KEYWORDS="~amd64 ~arm64 ~riscv"
+	KEYWORDS="~amd64 ~arm64 ~loong ~riscv"
 fi
 
 LICENSE="BSD GPL-2+"
 SLOT="0"
 IUSE="static"
-
-PATCHES=(
-	"${FILESDIR}"/Makefile-2024.03.20.patch
-)
 
 src_prepare() {
 	default

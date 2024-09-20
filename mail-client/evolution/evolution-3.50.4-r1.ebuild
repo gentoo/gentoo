@@ -140,7 +140,8 @@ src_compile() {
 }
 
 src_test() {
-	cmake_src_test
+	# -j1: https://gitlab.gnome.org/GNOME/evolution-data-server/-/issues/522
+	cmake_src_test -j1
 }
 
 src_install() {

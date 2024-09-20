@@ -29,10 +29,6 @@ sys-kernel/installkernel ugrd
 # Experimental, virt-firmware is keyworded only unstable
 sys-kernel/installkernel efistub
 
-# Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
-# dev-python/pyside6 is not stable here yet
-dev-python/QtPy pyside6
-
 # Ionen Wolkens <ionen@gentoo.org> (2024-01-16)
 # cuda (and thus cudnn) are not available in stable
 media-libs/opencv cudnn
@@ -49,10 +45,6 @@ sys-kernel/gentoo-kernel-bin generic-uki
 # Jon Janzen <jon@jonjanzen.com> (2023-09-11)
 # librttopo has not been stabalized on this arch yet
 dev-db/spatialite rttopo
-
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-08-21)
-# Mask testing on stable until we have stable qt6
-dev-python/pytest-qt test
 
 # Matt Jolly <kangie@gentoo.org> (2023-08-10)
 # net-libs/ngtcp2 is not marked stable
@@ -83,10 +75,6 @@ media-video/ffmpeg qsv
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # needs stabilizing
 media-video/ffmpeg vmaf
-
-# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
-# needs stabilizing
-media-video/ffmpeg amf
 
 # Joonas Niilola <juippis@gentoo.org> (2021-08-13)
 # dev-libs/efl is stabilized on amd64.

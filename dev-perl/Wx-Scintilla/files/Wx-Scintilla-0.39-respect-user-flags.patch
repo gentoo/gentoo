@@ -1,0 +1,18 @@
+--- a/inc/Module/Build/Scintilla.pm
++++ b/inc/Module/Build/Scintilla.pm
+@@ -89,7 +89,7 @@
+ 
+ sub stc_ldflags {
+ 	my $self = shift;
+-	return Alien::wxWidgets->link_flags;
++	return Alien::wxWidgets->link_flags . $Config{ldflags};
+ }
+ 
+ sub stc_defines {
+@@ -119,6 +119,7 @@
+ 	my $flags   = qx($command);
+ 	chomp($flags);
+ 	$flags .= ' ' . Alien::wxWidgets->c_flags;
++	$flags .= ' ' . $Config{ccflags};
+ 	return $flags;
+ }

@@ -9,17 +9,17 @@ DESCRIPTION="Compute Groebner fans and tropical varieties"
 HOMEPAGE="https://users-math.au.dk/~jensen/software/gfan/gfan.html"
 SRC_URI="https://users-math.au.dk/~jensen/software/${PN}/${PN}${PV}.tar.gz"
 
+S="${WORKDIR}/${PN}${PV}"
+
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
 BDEPEND="doc? ( virtual/latex-base )"
 DEPEND="dev-libs/gmp:0=[cxx(+)]
 	sci-libs/cddlib:0="
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${PN}${PV}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.6.2-xcode9.3_compat.patch"

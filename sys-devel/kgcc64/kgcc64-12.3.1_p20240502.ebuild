@@ -19,7 +19,6 @@ PATCH_GCC_VER="12.3.0"
 MUSL_VER="1"
 MUSL_GCC_VER="12.3.0"
 GCC_TARGET_NO_MULTILIB=true
-PYTHON_COMPAT=( python3_{10..12} )
 inherit toolchain
 
 DESCRIPTION="64bit kernel compiler"
@@ -33,7 +32,6 @@ BDEPEND="hppa? ( sys-devel/binutils-hppa64 )"
 
 src_prepare() {
 	toolchain_src_prepare
-	eapply "${FILESDIR}"/gcc-12.3-ccache-ICE.patch
 }
 
 pkg_postinst() {

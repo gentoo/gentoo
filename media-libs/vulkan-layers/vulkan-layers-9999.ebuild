@@ -27,7 +27,7 @@ IUSE="wayland X"
 RDEPEND="~dev-util/spirv-tools-${PV}[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	>=dev-cpp/robin-hood-hashing-3.11.5
+	>=dev-cpp/robin-hood-hashing-3.11.5-r2
 	~dev-util/glslang-${PV}:=[${MULTILIB_USEDEP}]
 	~dev-util/spirv-headers-${PV}
 	~dev-util/vulkan-headers-${PV}

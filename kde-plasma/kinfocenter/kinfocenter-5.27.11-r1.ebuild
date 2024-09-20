@@ -76,15 +76,24 @@ src_install() {
 
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+		optfeature_header "Query network filesystem info:"
 		optfeature "NFS information module" net-fs/nfs-utils
 		optfeature "Samba status information module" net-fs/samba
-		optfeature "Vulkan graphics API information module" dev-util/vulkan-tools
-		optfeature "advanced CPU information module" sys-apps/util-linux
+		optfeature_header "Query firmware/hardware info:"
 	fi
-	optfeature "Wayland information module" app-misc/wayland-utils
-	optfeature "Firmware security module" "app-text/aha sys-apps/fwupd"
-	optfeature "OpenGL information module" x11-apps/mesa-progs
-	optfeature "PCI devices information module" sys-apps/pciutils
-	optfeature "X Server information module" x11-apps/xdpyinfo
+	optfeature "System DMI table readout" sys-apps/dmidecode
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+		optfeature "Firmware security module" "app-text/aha sys-apps/fwupd"
+		optfeature "PCI devices information module" sys-apps/pciutils
+		optfeature "advanced CPU information module" sys-apps/util-linux
+		optfeature_header "Query GPU/graphics support info:"
+	fi
+	optfeature "OpenCL information module" dev-util/clinfo
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+		optfeature "OpenGL information module" x11-apps/mesa-progs
+		optfeature "Vulkan graphics API information module" dev-util/vulkan-tools
+		optfeature "Wayland information module" app-misc/wayland-utils
+		optfeature "X Server information module" x11-apps/xdpyinfo
+	fi
 	ecm_pkg_postinst
 }

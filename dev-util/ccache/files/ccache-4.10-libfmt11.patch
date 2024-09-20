@@ -1,0 +1,85 @@
+
+Patch from:
+https://github.com/ccache/ccache/commit/71f772e9d3d4f8045cfa7bccd03bd21c1e8fbef1
+
+From db136b6819d95bb53582e4fea8c328029c8f5681 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Holger=20Hoffst=C3=A4tte?= <holger@applied-asynchrony.com>
+Date: Tue, 2 Jul 2024 12:53:04 +0200
+Subject: [PATCH] build: Try harder to determine FMT_VERSION
+
+fmt-11.0 moved the FMT_VERSION from core.h to base.h, so try the
+new header first and then fall back to the old one.
+
+Closes: #1477
+---
+ cmake/FindFmt.cmake | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/cmake/FindFmt.cmake b/cmake/FindFmt.cmake
+index 55126a3172..0619f4615e 100644
+--- a/cmake/FindFmt.cmake
++++ b/cmake/FindFmt.cmake
+@@ -3,11 +3,19 @@ mark_as_advanced(FMT_INCLUDE_DIR FMT_LIBRARY)
+ if(DEP_FMT STREQUAL "BUNDLED")
+   message(STATUS "Using bundled Fmt as requested")
+ else()
+-  find_path(FMT_INCLUDE_DIR fmt/core.h)
++  find_path(FMT_INCLUDE_DIR fmt/base.h fmt/core.h)
+   find_library(FMT_LIBRARY fmt)
+   if(FMT_INCLUDE_DIR AND FMT_LIBRARY)
+-    file(READ "${FMT_INCLUDE_DIR}/fmt/core.h" _fmt_core_h)
+-    string(REGEX MATCH "#define FMT_VERSION ([0-9]+)" _ "${_fmt_core_h}")
++    file(READ "${FMT_INCLUDE_DIR}/fmt/base.h" _fmt_base_h)
++    string(REGEX MATCH "#define FMT_VERSION ([0-9]+)" _ "${_fmt_base_h}")
++    if("${CMAKE_MATCH_0}" STREQUAL "")
++      file(READ "${FMT_INCLUDE_DIR}/fmt/core.h" _fmt_core_h)
++      string(REGEX MATCH "#define FMT_VERSION ([0-9]+)" _ "${_fmt_core_h}")
++    endif()
++    if("${CMAKE_MATCH_0}" STREQUAL "")
++      message(FATAL_ERROR "FMT_VERSION not found")
++      return()
++    endif()
+     math(EXPR _fmt_major "${CMAKE_MATCH_1} / 10000")
+     math(EXPR _fmt_minor "${CMAKE_MATCH_1} / 100 % 100")
+     math(EXPR _fmt_patch "${CMAKE_MATCH_1} % 100")
+
+Patch from:
+https://github.com/ccache/ccache/commit/3b09afc5f792f0bd0a15cf6b8408ea40eb069787
+
+From 3b09afc5f792f0bd0a15cf6b8408ea40eb069787 Mon Sep 17 00:00:00 2001
+From: Joel Rosdahl <joel@rosdahl.net>
+Date: Tue, 2 Jul 2024 17:05:43 +0200
+Subject: [PATCH] build: Fix detection of Fmt version for Fmt<11
+
+Fixes regression in 71f772e9d3d4f8045cfa7bccd03bd21c1e8fbef1.
+---
+ cmake/FindFmt.cmake | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/cmake/FindFmt.cmake b/cmake/FindFmt.cmake
+index 0619f4615e..7c39291eca 100644
+--- a/cmake/FindFmt.cmake
++++ b/cmake/FindFmt.cmake
+@@ -3,15 +3,16 @@ mark_as_advanced(FMT_INCLUDE_DIR FMT_LIBRARY)
+ if(DEP_FMT STREQUAL "BUNDLED")
+   message(STATUS "Using bundled Fmt as requested")
+ else()
+-  find_path(FMT_INCLUDE_DIR fmt/base.h fmt/core.h)
++  find_path(FMT_INCLUDE_DIR NAMES fmt/base.h fmt/core.h)
+   find_library(FMT_LIBRARY fmt)
+   if(FMT_INCLUDE_DIR AND FMT_LIBRARY)
+-    file(READ "${FMT_INCLUDE_DIR}/fmt/base.h" _fmt_base_h)
+-    string(REGEX MATCH "#define FMT_VERSION ([0-9]+)" _ "${_fmt_base_h}")
+-    if("${CMAKE_MATCH_0}" STREQUAL "")
+-      file(READ "${FMT_INCLUDE_DIR}/fmt/core.h" _fmt_core_h)
+-      string(REGEX MATCH "#define FMT_VERSION ([0-9]+)" _ "${_fmt_core_h}")
++    if(EXISTS "${FMT_INCLUDE_DIR}/fmt/base.h")
++      set(_fmt_h base.h)
++    else()
++      set(_fmt_h core.h)
+     endif()
++    file(READ "${FMT_INCLUDE_DIR}/fmt/${_fmt_h}" _fmt_h_content)
++    string(REGEX MATCH "#define FMT_VERSION ([0-9]+)" _ "${_fmt_h_content}")
+     if("${CMAKE_MATCH_0}" STREQUAL "")
+       message(FATAL_ERROR "FMT_VERSION not found")
+       return()

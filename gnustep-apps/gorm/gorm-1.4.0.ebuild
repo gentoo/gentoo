@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/dev-apps/${P}.tar.gz"
 S=${WORKDIR}/apps-${PN}-${PN}-${PV//./_}
 LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 DEPEND=">=gnustep-base/gnustep-gui-0.31.0"
 RDEPEND="${DEPEND}"

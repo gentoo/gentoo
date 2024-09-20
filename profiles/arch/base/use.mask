@@ -17,10 +17,6 @@ jasper
 # sci-libs/atlas is only supported on specific architectures
 atlas
 
-# Michał Górny <mgorny@gentoo.org> (2024-02-05)
-# LLVM slots without keywords.
-llvm_slot_19
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-07-11)
 # Mask secureboot flag on arches where sbsigntools is not keyworded
 secureboot
@@ -160,6 +156,7 @@ video_cards_i915
 video_cards_i965
 video_cards_intel
 video_cards_nvidia
+video_cards_nvk
 video_cards_vesa
 video_cards_via
 video_cards_vmware
@@ -248,7 +245,6 @@ amd64
 arm
 arm64
 hppa
-ia64
 loong
 m68k
 mips

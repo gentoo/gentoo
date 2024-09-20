@@ -204,7 +204,7 @@ esac
 # This is an optimization that can avoid the overhead of calling into
 # the build system in pure Python packages and packages using the stable
 # Python ABI.
-DISTUTILS_ALLOW_WHEEL_REUSE=1
+: ${DISTUTILS_ALLOW_WHEEL_REUSE=1}
 
 # @ECLASS_VARIABLE: BUILD_DIR
 # @OUTPUT_VARIABLE
@@ -936,6 +936,7 @@ _distutils-r1_print_package_versions() {
 # distutils patches and/or quirks.
 distutils-r1_python_prepare_all() {
 	debug-print-function ${FUNCNAME} "${@}"
+	_python_sanity_checks
 	_distutils-r1_check_all_phase_mismatch
 
 	if [[ ! ${DISTUTILS_OPTIONAL} ]]; then
@@ -1251,7 +1252,11 @@ distutils_pep517_install() {
 		die "mydistutilsargs are banned in PEP517 mode (use DISTUTILS_ARGS)"
 	fi
 
-	local config_settings=
+	local cmd=() config_settings=
+	if has cargo ${INHERITED} && [[ ${_CARGO_GEN_CONFIG_HAS_RUN} ]]; then
+		cmd+=( cargo_env )
+	fi
+
 	case ${DISTUTILS_USE_PEP517} in
 		maturin)
 			# `maturin pep517 build-wheel --help` for options
@@ -1388,9 +1393,14 @@ distutils_pep517_install() {
 			;;
 	esac
 
+	# https://pyo3.rs/latest/building-and-distribution.html#cross-compiling
+	if tc-is-cross-compiler; then
+		local -x PYO3_CROSS_LIB_DIR=${SYSROOT}/$(python_get_stdlib)
+	fi
+
 	local build_backend=$(_distutils-r1_get_backend)
 	einfo "  Building the wheel for ${PWD#${WORKDIR}/} via ${build_backend}"
-	local cmd=(
+	cmd+=(
 		"${EPYTHON}" -m gpep517 build-wheel
 			--prefix="${EPREFIX}/usr"
 			--backend "${build_backend}"
@@ -1792,16 +1802,6 @@ distutils-r1_run_phase() {
 		# bug fixes from Cython (this works only when setup.py is using
 		# cythonize() but it's better than nothing)
 		local -x CYTHON_FORCE_REGEN=1
-
-		# Rust extensions are incompatible with C/C++ LTO compiler
-		# see e.g. https://bugs.gentoo.org/910220
-		if has cargo ${INHERITED}; then
-			local x
-			for x in $(all-flag-vars); do
-				local -x "${x}=${!x}"
-			done
-			filter-lto
-		fi
 	fi
 
 	# silence warnings when pydevd is loaded on Python 3.11+
@@ -2111,8 +2111,10 @@ _distutils-r1_post_python_install() {
 		local strays=()
 		local p
 		mapfile -d $'\0' -t strays < <(
+			# jar for jpype, https://bugs.gentoo.org/937642
 			find "${sitedir}" -maxdepth 1 -type f '!' '(' \
 					-name '*.egg-info' -o \
+					-name '*.jar' -o \
 					-name '*.pth' -o \
 					-name '*.py' -o \
 					-name '*.pyi' -o \

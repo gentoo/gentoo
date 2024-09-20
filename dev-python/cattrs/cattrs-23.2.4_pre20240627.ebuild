@@ -24,7 +24,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="test-rust"
 
 RDEPEND="
@@ -73,6 +73,15 @@ python_test() {
 		tests/test_preconf.py::test_msgspec_json_unstruct_collection_overrides
 		tests/test_preconf.py::test_msgspec_json_unions
 		tests/test_preconf.py::test_msgspec_json_converter
+
+		# tests need updating for attrs-24*
+		# https://github.com/python-attrs/cattrs/issues/575
+		tests/test_baseconverter.py
+		tests/test_converter.py
+		tests/test_gen_dict.py::test_individual_overrides
+		tests/test_gen_dict.py::test_nodefs_generated_unstructuring_cl
+		tests/test_gen_dict.py::test_unmodified_generated_structuring
+		tests/test_structure_attrs.py::test_structure_simple_from_dict_default
 	)
 
 	if ! has_version "dev-python/orjson[${PYTHON_USEDEP}]"; then

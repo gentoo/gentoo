@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake xdg
 
 DESCRIPTION="Fullscreen and distraction-free word processor"
 HOMEPAGE="https://gottcode.org/focuswriter/
@@ -12,7 +12,7 @@ SRC_URI="https://gottcode.org/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3+ LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 
 BDEPEND="
 	dev-qt/qttools:6[linguist]

@@ -9,7 +9,7 @@ DESCRIPTION="Analyzes and Reports on system logs"
 HOMEPAGE="https://sourceforge.net/projects/logwatch/"
 
 if [[ ${PV} == 9999 ]] ; then
-	EGIT_REPO_URI="https://git.code.sf.net/p/logwatch/git ${PN}"
+	EGIT_REPO_URI="https://git.code.sf.net/p/logwatch/git"
 	inherit git-r3
 else
 	SRC_URI="https://downloads.sourceforge.net/${PN}/${P}/${P}.tar.gz"

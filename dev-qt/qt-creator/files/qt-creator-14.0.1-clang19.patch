@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/937600
+
+qt-creator has a workaround for clang (formerly) lacking an implementation
+for __cpp_template_template_args, but the workaround causes issues now that
+it is available.
+
+https://github.com/llvm/llvm-project/pull/89807
+https://github.com/qt-creator/qt-creator/commit/d400dce35d817afd719ffadf8c8f43c8814c05c1
+--- a/src/libs/utils/algorithm.h
++++ b/src/libs/utils/algorithm.h
+@@ -259,5 +259,5 @@
+          typename ResultContainer = C<Result>>
+ Q_REQUIRED_RESULT decltype(auto) transform(SC &&container, F function);
+-#ifdef Q_CC_CLANG
++#if defined(Q_CC_CLANG) && !defined(__cpp_template_template_args)
+ // "Matching of template template-arguments excludes compatible templates"
+ // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0522r0.html (P0522R0)
+@@ -810,5 +810,5 @@
+ }
+ 
+-#ifdef Q_CC_CLANG
++#if defined(Q_CC_CLANG) && !defined(__cpp_template_template_args)
+ template<template<typename, typename> class C, // result container type
+          typename SC,                          // input container type

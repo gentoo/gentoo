@@ -1,0 +1,134 @@
+From 6510b876d1cb5428db4822974cdebfed209692b0 Mon Sep 17 00:00:00 2001
+From: Matthias Clasen <mclasen@redhat.com>
+Date: Tue, 9 Apr 2024 21:01:26 -0400
+Subject: [PATCH] build: Add a missing dependency
+
+Add the generated gdk headers to the sources for all the backends,
+to guarantee that they are generated before the library is used.
+
+Fixes: #6618
+---
+ gdk/broadway/meson.build |  3 +--
+ gdk/macos/meson.build    |  2 +-
+ gdk/meson.build          | 12 +++++++++---
+ gdk/wayland/meson.build  |  7 +------
+ gdk/win32/meson.build    |  2 +-
+ gdk/x11/meson.build      |  7 +------
+ 6 files changed, 14 insertions(+), 19 deletions(-)
+
+diff --git a/gdk/broadway/meson.build b/gdk/broadway/meson.build
+index ef7fa0ef589..f0a77b37c2d 100644
+--- a/gdk/broadway/meson.build
++++ b/gdk/broadway/meson.build
+@@ -52,8 +52,7 @@ broadwayjs_h = custom_target('broadwayjs.h',
+ )
+ 
+ libgdk_broadway = static_library('gdk-broadway',
+-  clienthtml_h, broadwayjs_h,
+-  gdk_broadway_sources, gdkconfig, gdkenum_h,
++  sources: [ clienthtml_h, broadwayjs_h, gdk_broadway_sources, gdk_gen_headers ],
+   include_directories: [confinc, gdkinc],
+   c_args: [
+     '-DGTK_COMPILATION',
+diff --git a/gdk/macos/meson.build b/gdk/macos/meson.build
+index b3baefb898e..d80334b8946 100644
+--- a/gdk/macos/meson.build
++++ b/gdk/macos/meson.build
+@@ -61,7 +61,7 @@ gdk_macos_deps = [
+ libgdk_c_args += ['-xobjective-c']
+ 
+ libgdk_macos = static_library('gdk-macos',
+-  gdk_macos_sources, gdkconfig, gdkenum_h,
++  sources: [ gdk_macos_sources, gdk_gen_headers ],
+   include_directories: [ confinc, gdkinc, ],
+   c_args: [ libgdk_c_args, common_cflags, ],
+   link_with: [],
+diff --git a/gdk/meson.build b/gdk/meson.build
+index 9c0a36e19ec..62e80ea6c44 100644
+--- a/gdk/meson.build
++++ b/gdk/meson.build
+@@ -202,7 +202,13 @@ gdkwayland_inc = include_directories('wayland')
+ wlinc = include_directories('.')
+ win32rcinc = include_directories('win32/rc')
+ 
+-gdk_gen_headers = [gdkenum_h, gdkmarshal_h, gdkconfig, gdkversionmacros_h, gdk_visibility_h]
++gdk_gen_headers = [
++  gdkenum_h,
++  gdkmarshal_h,
++  gdkconfig,
++  gdkversionmacros_h,
++  gdk_visibility_h,
++]
+ 
+ gdk_deps = [
+   libm,
+@@ -278,7 +284,7 @@ if gdk_backends.length() == 0
+ endif
+ 
+ libgdk = static_library('gdk',
+-  sources: [gdk_sources, gdk_backends_gen_headers, gdkconfig],
++  sources: [gdk_sources, gdk_backends_gen_headers, gdk_gen_headers],
+   dependencies: gdk_deps + [libgtk_css_dep],
+   link_with: [libgtk_css],
+   include_directories: [confinc, gdkx11_inc, wlinc],
+@@ -290,7 +296,7 @@ libgdk = static_library('gdk',
+ # list the dependencies and generated headers and such, for use in the
+ # "public" libgtk_dep used by internal executables.
+ libgdk_dep = declare_dependency(
+-  sources: ['gdk.h', gdkconfig, gdkenum_h],
++  sources: ['gdk.h', gdk_gen_headers],
+   include_directories: [confinc, gdkx11_inc, wlinc],
+   dependencies: gdk_deps + [libgtk_css_dep],
+ )
+diff --git a/gdk/wayland/meson.build b/gdk/wayland/meson.build
+index 00e584a1053..e7c1ac34103 100644
+--- a/gdk/wayland/meson.build
++++ b/gdk/wayland/meson.build
+@@ -117,12 +117,7 @@ foreach p: proto_sources
+ endforeach
+ 
+ libgdk_wayland = static_library('gdk-wayland',
+-  sources: [
+-    gdk_wayland_sources,
+-    gdk_wayland_gen_headers,
+-    gdkconfig,
+-    gdkenum_h,
+-  ],
++  sources: [ gdk_wayland_sources, gdk_wayland_gen_headers, gdk_gen_headers ],
+   include_directories: [ confinc, gdkinc, ],
+   c_args: [
+     '-DGTK_COMPILATION',
+diff --git a/gdk/win32/meson.build b/gdk/win32/meson.build
+index 3dc16aabb6c..cc56a15d95a 100644
+--- a/gdk/win32/meson.build
++++ b/gdk/win32/meson.build
+@@ -64,7 +64,7 @@ gdk_win32_deps = [
+ ]
+ 
+ libgdk_win32 = static_library('gdk-win32',
+-  gdk_win32_sources, gdkconfig, gdkenum_h,
++  sources: [ gdk_win32_sources, gdk_gen_headers ],
+   include_directories: [ confinc, gdkinc ],
+   c_args: [
+     '-DGTK_COMPILATION',
+diff --git a/gdk/x11/meson.build b/gdk/x11/meson.build
+index 013d8b1d00c..c9aa5383ab1 100644
+--- a/gdk/x11/meson.build
++++ b/gdk/x11/meson.build
+@@ -73,12 +73,7 @@ gdk_x11_deps = [
+ ]
+ 
+ libgdk_x11 = static_library('gdk-x11',
+-  sources: [
+-    gdkmarshal_h,
+-    gdkenum_h,
+-    gdkconfig,
+-    gdk_x11_sources,
+-  ],
++  sources: [ gdk_gen_headers, gdk_x11_sources ],
+   include_directories: [ confinc, gdkinc, ],
+   c_args: [
+     '-DGTK_COMPILATION',
+-- 
+GitLab
+

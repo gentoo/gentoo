@@ -60,11 +60,6 @@ dev-python/ipython nbconvert
 # dev-libs/criterion is not marked stable yet
 app-admin/syslog-ng test
 
-# Sam James <sam@gentoo.org> (2022-01-15)
-# Requires dev-util/pahole which is not yet marked stable on arm.
-sys-kernel/gentoo-kernel debug
-sys-kernel/vanilla-kernel debug
-
 # Sam James <sam@gentoo.org> (2021-10-25)
 # Various dependencies not yet stable on arm
 # bug #816981
@@ -106,7 +101,6 @@ sci-mathematics/z3 java
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-10)
 # Needs kde-frameworks/{kwallet,ki18n,kconfig} stable
 dev-vcs/subversion kwallet
-net-libs/libproxy kde
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-10)
 # Needs kde-plasma/{polkit-kde-agent,plasma-workspace} stable

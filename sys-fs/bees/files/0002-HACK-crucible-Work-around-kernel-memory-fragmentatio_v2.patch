@@ -1,0 +1,43 @@
+From 291574986ccfaff8b620f6baa185a567f2f0cfb5 Mon Sep 17 00:00:00 2001
+From: Kai Krakow <kai@kaishome.de>
+Date: Sun, 9 Jul 2023 12:24:40 +0200
+Subject: [PATCH 2/2] HACK: crucible: Work around kernel memory fragmentation
+
+According to @Zygo:
+
+> This will drastically reduce the number of reflinks bees can handle
+> to a single extent, but that size is beyond more than enough for most
+> filesystems. Making the buffer smaller may also reduce the size of
+> vmallocs which might be aggravating the kernel's memory manager.
+
+v2:
+
+According to @Zygo:
+
+> Lately I've been running with vm.swappiness=0 and
+> BEES_MAX_EXTENT_REF_COUNT set to 9999. With those settings there's no
+> swapping at all.
+
+Link: https://github.com/Zygo/bees/issues/260#issuecomment-1627586574
+Link: https://github.com/Zygo/bees/issues/260#issuecomment-2068287231
+Signed-off-by: Kai Krakow <kai@kaishome.de>
+---
+ src/bees.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/bees.h b/src/bees.h
+index 4dbc005..a3c3872 100644
+--- a/src/bees.h
++++ b/src/bees.h
+@@ -96,7 +96,7 @@ const double BEES_TOO_LONG = 5.0;
+ const double BEES_TOXIC_SYS_DURATION = 0.1;
+ 
+ // Maximum number of refs to a single extent
+-const size_t BEES_MAX_EXTENT_REF_COUNT = (16 * 1024 * 1024 / 24) - 1;
++const size_t BEES_MAX_EXTENT_REF_COUNT = (10000) - 1;
+ 
+ // How long between hash table histograms
+ const double BEES_HASH_TABLE_ANALYZE_INTERVAL = BEES_STATS_INTERVAL;
+-- 
+2.44.2
+

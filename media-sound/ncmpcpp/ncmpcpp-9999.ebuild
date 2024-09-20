@@ -12,7 +12,7 @@ HOMEPAGE="
 "
 EGIT_REPO_URI="https://github.com/ncmpcpp/ncmpcpp"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 IUSE="clock outputs taglib visualizer"
 

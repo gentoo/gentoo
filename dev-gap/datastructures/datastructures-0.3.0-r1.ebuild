@@ -6,11 +6,11 @@ EAPI=8
 inherit flag-o-matic gap-pkg
 
 DESCRIPTION="Collection of standard data structures for GAP"
-SLOT="0"
 SRC_URI="https://github.com/gap-packages/datastructures/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64"
+SLOT="0"
+KEYWORDS="~amd64 ~riscv"
 
 DEPEND="sci-mathematics/gap:="
 RDEPEND="${DEPEND}"

@@ -1,0 +1,31 @@
+From d1fff7cea2231e7980d85790486edb70d093a1dc Mon Sep 17 00:00:00 2001
+From: Rakesh Roy <rakesh.roy@amd.com>
+Date: Wed, 20 Mar 2024 22:50:22 +0530
+Subject: [PATCH] SWDEV-445096 - Fix -O0 crash in OpenCL tests
+
+- With https://gerrit-git.amd.com/c/lightning/ec/llvm-project/+/1002628 applied, at -O0 Kernel::dynamicParallelism() returns true but virtual queue isn't created
+- This causes segfault inside VirtualGPU::submitKernelInternal() when getVQVirtualAddress() is called
+
+Change-Id: Ia7af042adad2329e870c142caaac3e8fa886f8b8
+---
+ rocclr/device/rocm/rocvirtual.cpp | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/rocclr/device/rocm/rocvirtual.cpp b/rocclr/device/rocm/rocvirtual.cpp
+index 51080013b..1610aecfe 100644
+--- a/rocclr/device/rocm/rocvirtual.cpp
++++ b/rocclr/device/rocm/rocvirtual.cpp
+@@ -3326,8 +3326,11 @@ bool VirtualGPU::submitKernelInternal(const amd::NDRangeContainer& sizes,
+ 
+   if (gpuKernel.dynamicParallelism()) {
+     dispatchBarrierPacket(kBarrierPacketHeader, true);
+-    static_cast<KernelBlitManager&>(blitMgr()).runScheduler(
+-        getVQVirtualAddress(), schedulerParam_, schedulerQueue_, schedulerSignal_, schedulerThreads_);
++    if (virtualQueue_ != nullptr) {
++      static_cast<KernelBlitManager&>(blitMgr()).runScheduler(
++          getVQVirtualAddress(), schedulerParam_, schedulerQueue_,
++          schedulerSignal_, schedulerThreads_);
++    }
+   }
+ 
+   // Check if image buffer write back is required

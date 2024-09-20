@@ -1,0 +1,43 @@
+From 40a430cf13876120416d82d581745033d273576c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20K=2E=20H=C3=BCttel?= <dilfridge@gentoo.org>
+Date: Sun, 4 Aug 2024 17:47:35 +0200
+Subject: [PATCH 2/2] rdma.c: Add <libgen.h> include for basename on musl
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This include file is required on musl for availability of basename.
+
+Note that for glibc adding the include can have the side effect of
+switching from the GNU implementation of basename (which does not touch
+its argument) to the POSIX implementation (which under certain
+circumstances modifies the string passed to it, e.g. removing trailing
+slashes).
+
+This is safe however since the C99 and C11 standard says:
+> The parameters argc and argv and the strings pointed to by the argv
+> array shall be modiﬁable by the program, and retain their last-stored
+> values between program startup and program termination.
+(multiple google results, unfortunately no official reference link)
+
+Bug: https://bugs.gentoo.org/926341
+Signed-off-by: Andreas K. Hüttel <dilfridge@gentoo.org>
+---
+ rdma/rdma.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/rdma/rdma.c b/rdma/rdma.c
+index 131c6b2a..f835bf3f 100644
+--- a/rdma/rdma.c
++++ b/rdma/rdma.c
+@@ -4,6 +4,7 @@
+  * Authors:     Leon Romanovsky <leonro@mellanox.com>
+  */
+ 
++#include <libgen.h>
+ #include "rdma.h"
+ #include "version.h"
+ #include "color.h"
+-- 
+2.44.2
+

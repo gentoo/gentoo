@@ -1,0 +1,10 @@
+--- a/gloo/types.h	2024-09-06 22:05:07.308213847 +0200
++++ b/gloo/types.h	2024-09-06 22:05:32.598941783 +0200
+@@ -5,6 +5,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <cstdint>
+ 
+ #ifdef __CUDA_ARCH__
+ #include <cuda.h>

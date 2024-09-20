@@ -243,14 +243,14 @@ yolodev.expecto.testsdk@0.14.2
 inherit check-reqs dotnet-pkg
 
 DESCRIPTION="F# language server using the Language Server Protocol"
-HOMEPAGE="https://github.com/fsharp/FsAutoComplete/"
+HOMEPAGE="https://github.com/ionide/FsAutoComplete/"
 
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://github.com/fsharp/${MY_PN}.git"
+	EGIT_REPO_URI="https://github.com/ionide/${MY_PN}.git"
 else
-	SRC_URI="https://github.com/fsharp/${MY_PN}/archive/v${PV}.tar.gz
+	SRC_URI="https://github.com/ionide/${MY_PN}/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/${MY_PN}-${PV}"
 

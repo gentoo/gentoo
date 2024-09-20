@@ -6,13 +6,13 @@ gcc		https://gcc.gnu.org/pub/gcc/ http://mirrors.concertpass.com/gcc/ https://mi
 gimp		https://ftp.fau.de/gimp/gimp/ ftp://ftp.fau.de/gimp/gimp/ https://artfiles.org/gimp.org/pub/gimp/ https://www.mirrorservice.org/sites/ftp.gimp.org/pub/gimp/ ftp://ftp.mirrorservice.org/sites/ftp.gimp.org/pub/gimp/
 gnome		https://download.gnome.org/
 gnu		https://ftp.gnu.org/gnu/ https://artfiles.org/gnu.org/ https://www.mirrorservice.org/sites/ftp.gnu.org/gnu/
-gnupg		https://www.mirrorservice.org/sites/ftp.gnupg.org/gcrypt/ https://ftp.heanet.ie/mirrors/ftp.gnupg.org/gcrypt/ https://mirrors.dotsrc.org/gcrypt/ https://gnupg.org/ftp/gcrypt/ ftp://ftp.gnupg.org/gcrypt/
+gnupg		https://www.mirrorservice.org/sites/ftp.gnupg.org/gcrypt/ https://mirrors.dotsrc.org/gcrypt/ https://gnupg.org/ftp/gcrypt/ ftp://ftp.gnupg.org/gcrypt/
 goproxy https://proxy.golang.org/ https://goproxy.io/
 idsoftware	ftp://ftp.fu-berlin.de/pc/games/idgames/idstuff ftp://ftp.gamers.org/pub/idgames/idstuff
 imagemagick	https://imagemagick.org/archive/releases/ https://mirror.checkdomain.de/imagemagick/releases/ https://ftp.acc.umu.se/mirror/imagemagick.org/ftp/releases/ ftp://ftp.fifi.org/pub/ImageMagick/releases/
 kde		https://download.kde.org https://mirror.csclub.uwaterloo.ca/kde ftp://mirrors.dotsrc.org/kde http://kde.mirror.anlx.net
 lokigames	http://updates.lokigames.com
-mariadb		https://archive.mariadb.org/ http://ftp.bme.hu/pub/mirrors/mariadb/ https://ftp.heanet.ie/mirrors/mariadb/ https://ftp.nluug.nl/db/mariadb/ https://mirrors.up.pt/pub/mariadb/ https://rsync.osuosl.org/pub/mariadb/ https://mirror.netcologne.de/mariadb/
+mariadb		https://archive.mariadb.org/ http://ftp.bme.hu/pub/mirrors/mariadb/ https://ftp.nluug.nl/db/mariadb/ https://mirrors.up.pt/pub/mariadb/ https://rsync.osuosl.org/pub/mariadb/ https://mirror.netcologne.de/mariadb/
 mplayer		https://www1.mplayerhq.hu/MPlayer http://www2.mplayerhq.hu/MPlayer http://www7.mplayerhq.hu/MPlayer http://www8.mplayerhq.hu/MPlayer ftp://ftp1.mplayerhq.hu/MPlayer/ ftp://ftp6.mplayerhq.hu/MPlayer/ ftp://ftp7.mplayerhq.hu/MPlayer/ ftp://ftp8.mplayerhq.hu/MPlayer/
 nongnu		https://download.savannah.nongnu.org/releases/ https://ftp.cc.uoc.gr/mirrors/nongnu.org/ http://ftp.twaren.net/Unix/NonGNU/ https://mirror.csclub.uwaterloo.ca/nongnu/ ftp://mirror.csclub.uwaterloo.ca/nongnu/ https://mirrors.fe.up.pt/pub/nongnu/ ftp://mirrors.fe.up.pt/pub/nongnu/ https://nongnu.askapache.com/ https://nongnu.uib.no/ ftp://nongnu.uib.no/pub/nongnu/ http://savannah.c3sl.ufpr.br/ ftp://ftp.twaren.net/Unix/NonGNU/
 openbsd		https://cdn.openbsd.org/pub/OpenBSD https://fastly.cdn.openbsd.org/pub/OpenBSD

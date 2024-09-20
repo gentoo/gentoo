@@ -3,12 +3,12 @@
 
 EAPI=8
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1
 
 DESCRIPTION="A tool for signing and email all UIDs on a set of PGP keys"
-HOMEPAGE="https://www.phildev.net/pius/ https://github.com/jaymzh/pius"
+HOMEPAGE="https://github.com/jaymzh/pius"
 SRC_URI="https://github.com/jaymzh/pius/releases/download/v${PV}/pius-${PV}.tar.bz2"
 
 LICENSE="GPL-2"

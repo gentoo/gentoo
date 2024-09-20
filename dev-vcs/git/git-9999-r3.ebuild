@@ -50,7 +50,7 @@ if [[ ${PV} != *9999 ]]; then
 	SRC_URI+=" doc? ( ${SRC_URI_KORG}/${PN}-htmldocs-${DOC_VER}.tar.${SRC_URI_SUFFIX} )"
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 	fi
 fi
 
@@ -306,6 +306,10 @@ git_emake() {
 		OPTCFLAGS="${CFLAGS}"
 		OPTLDFLAGS="${LDFLAGS}"
 
+		CURL_CONFIG="${ESYSROOT}/usr/bin/curl-config"
+		CURL_CFLAGS="$($(tc-getPKG_CONFIG) --cflags libcurl)"
+		CURL_LDFLAGS="$($(tc-getPKG_CONFIG) --libs libcurl)"
+
 		PERL_PATH="${EPREFIX}/usr/bin/perl"
 		PERL_MM_OPT=""
 
@@ -465,6 +469,8 @@ src_test() {
 	# Now run the tests, keep going if we hit an error, and don't terminate on
 	# failure
 	local rc
+	# t0610-reftable-basics.sh uses $A
+	local -x A=
 	einfo "Start test run"
 	#MAKEOPTS=-j1
 	nonfatal git_emake --keep-going test

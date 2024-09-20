@@ -7,5 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="sourceforge">cwdaemon</remote-id>
+    <remote-id type="github">acerion/cwdaemon</remote-id>
   </upstream>
 </pkgmetadata>

@@ -6,11 +6,11 @@ EAPI=8
 inherit autotools gap-pkg
 
 DESCRIPTION="Bindings for low level C library I/O routines"
-SLOT="0"
 SRC_URI="https://github.com/gap-packages/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-3+"
-KEYWORDS="amd64"
+SLOT="0"
+KEYWORDS="amd64 ~riscv"
 IUSE="examples"
 
 DEPEND="sci-mathematics/gap:="

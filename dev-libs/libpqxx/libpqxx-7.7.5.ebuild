@@ -13,7 +13,7 @@ SRC_URI="https://github.com/jtv/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 # SONAME version is equal to major.minor
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ppc ppc64 sparc x86"
 IUSE="doc static-libs"
 
 RDEPEND="dev-db/postgresql:="

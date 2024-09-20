@@ -53,7 +53,7 @@ pkg_postinst() {
 	if ! has_version x11-libs/gtk+:3 ; then
 		elog "${PN}-setup script supports GNOME via x11-libs/gtk+:3."
 	fi
-	if ! has_version kde-plasma/kde-cli-tools:5 ; then
-		elog "${PN}-setup script supports Plasma 5 via kde-plasma/kde-cli-tools:5."
+	if ! has_version kde-plasma/kdesu-gui ; then
+		elog "${PN}-setup script supports Plasma via kde-plasma/kdesu-gui."
 	fi
 }

@@ -31,7 +31,7 @@ PATCHES=(
 )
 
 src_configure() {
-	append-ldflags -Wl,-z,noexecstack
+	append-ldflags -Wl,-z,notext -Wl,-z,noexecstack
 	use amd64 && multilib_toolchain_setup x86 #441876
 
 	econf \

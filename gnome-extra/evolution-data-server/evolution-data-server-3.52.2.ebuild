@@ -19,7 +19,7 @@ REQUIRED_USE="
 	vala? ( introspection )
 "
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 # berkdb needed only for migrating old addressbook data from <3.13 versions, bug #519512
 # glib-2.70 for build-time optional GPowerProfileMonitor
@@ -145,7 +145,8 @@ src_compile() {
 }
 
 src_test() {
-	virtx cmake_src_test
+	# -j1: https://gitlab.gnome.org/GNOME/evolution-data-server/-/issues/522
+	virtx cmake_src_test -j1
 }
 
 src_install() {

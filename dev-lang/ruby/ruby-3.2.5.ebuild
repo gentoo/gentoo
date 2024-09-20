@@ -79,6 +79,7 @@ PDEPEND="
 src_prepare() {
 	eapply "${FILESDIR}"/"${SLOT}"/010*.patch
 	eapply "${FILESDIR}"/"${SLOT}"/011*.patch
+	eapply "${FILESDIR}"/"${SLOT}"/013*.patch
 	eapply "${FILESDIR}"/"${SLOT}"/902*.patch
 
 	if use elibc_musl ; then
@@ -163,6 +164,11 @@ src_configure() {
 	# In many places aliasing rules are broken; play it safe
 	# as it's risky with newer compilers to leave it as it is.
 	append-flags -fno-strict-aliasing
+
+	# Workaround for bug #938302
+	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then
+		export DTRACE="${BROOT}"/usr/bin/stap-dtrace
+	fi
 
 	# Socks support via dante
 	if use socks5 ; then

@@ -1,10 +1,6 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Ulrich Müller <ulm@gentoo.org> (2024-08-03)
-# Needs dev-libs/openspecfun which is not yet keyworded
-sci-visualization/gnuplot amos
-
 # orbea <orbea@riseup.net> (2024-07-19)
 # Unmask the dynarec flag which has arm64 asm.
 games-emulation/rmg -dynarec
@@ -58,10 +54,6 @@ www-servers/nginx test
 # Alexander Tsoy <alexander@tsoy.me> (2024-01-31)
 # Supports 64-bit NEON
 media-libs/zita-resampler -cpu_flags_arm_neon
-
-# Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
-# dev-python/PyQt6 is keyworded here
-dev-python/QtPy -pyqt6
 
 # Michal Privoznik <michal.privoznik@gmail.com> (2024-01-18)
 # No sys-block/nbdkit on arm, yet
@@ -241,7 +233,7 @@ app-text/enchant voikko
 sys-libs/compiler-rt-sanitizers -asan -dfsan -lsan -msan -hwasan -tsan
 sys-libs/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
 sys-libs/compiler-rt-sanitizers -gwp-asan -shadowcallstack
-sys-libs/compiler-rt-sanitizers -libfuzzer -profile -xray
+sys-libs/compiler-rt-sanitizers -libfuzzer -profile -xray -rtsan
 >=sys-libs/compiler-rt-sanitizers-16 -orc
 
 # Roy Bamford <neddyseagoon@gentoo.org> (2020-12-07)
@@ -284,11 +276,6 @@ media-video/ffmpeg -rav1e
 # Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
 # Mask io-uring & zbc pending keywording
 sys-block/fio -io-uring
-
-# Michał Górny <mgorny@gentoo.org> (2020-06-19)
-# Requires dev-util/pahole.
-sys-kernel/gentoo-kernel debug
-sys-kernel/vanilla-kernel debug
 
 # Sam James <sam@gentoo.org> (2020-06-11)
 # PGO works on arm64

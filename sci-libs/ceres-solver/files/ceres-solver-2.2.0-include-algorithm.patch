@@ -1,0 +1,18 @@
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Wed, 21 Aug 2024 20:19:25 +0200
+Subject: [PATCH] include algorithm
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+--- a/internal/ceres/cuda_streamed_buffer.h
++++ b/internal/ceres/cuda_streamed_buffer.h
+@@ -34,6 +34,9 @@
+ #include "ceres/internal/config.h"
+ 
+ #ifndef CERES_NO_CUDA
++
++#include <algorithm>
++
+ #include "ceres/cuda_buffer.h"
+ 
+ namespace ceres::internal {

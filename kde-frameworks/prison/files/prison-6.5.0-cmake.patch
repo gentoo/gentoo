@@ -1,0 +1,42 @@
+From 073c611f0027ca1d7e5de18003993d3a85c2968e Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 24 Aug 2024 12:31:03 +0200
+Subject: [PATCH] Fix WITH_QUICK=OFF by moving ECMQmlModule behind the
+ conditional
+
+Otherwise we still end up with
+
+> -- Could NOT find Qt6Qml (missing: Qt6Qml_DIR)
+
+and finally
+
+> Failed setting up ECMQmlModule
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6a97368..11f3a52 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -23,7 +23,6 @@ include(ECMAddTests)
+ include(CMakePackageConfigHelpers)
+ include(ECMSetupVersion)
+ include(ECMQtDeclareLoggingCategory)
+-include(ECMQmlModule)
+ include(ECMDeprecationSettings)
+ 
+ set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
+@@ -39,6 +38,7 @@ option(WITH_MULTIMEDIA "Build scanner support" ON)
+ find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Core Gui)
+ 
+ if (WITH_QUICK)
++    include(ECMQmlModule)
+     find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Quick)
+ endif()
+ 
+-- 
+2.46.0
+

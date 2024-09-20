@@ -18,6 +18,15 @@ if [[ -z ${_LIBTOOL_ECLASS} ]]; then
 _LIBTOOL_ECLASS=1
 
 case ${EAPI} in
+	6)
+		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
+		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
+		;;
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+case ${EAPI} in
 	6) DEPEND=">=app-portage/elt-patches-20240116" ;;
 	7|8) BDEPEND=">=app-portage/elt-patches-20240116" ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;

@@ -1,0 +1,23 @@
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Fri, 23 Aug 2024 14:31:40 +0200
+Subject: [PATCH] don't force old c++ standards
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -221,14 +221,6 @@ if(GCC)
+     if(NOT INTEL_CXX AND NOT CLANG AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 8.0)
+         add_definitions(-Wno-class-memaccess)
+     endif()
+-    if(ENABLE_HDR10_PLUS)
+-        if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS "4.8")
+-            message(FATAL_ERROR "gcc version above 4.8 required to support hdr10plus")
+-        endif()
+-        add_definitions(-std=gnu++11)
+-    else()
+-        add_definitions(-std=gnu++98)
+-    endif()
+     if(ENABLE_PIC)
+          add_definitions(-fPIC)
+     endif(ENABLE_PIC)

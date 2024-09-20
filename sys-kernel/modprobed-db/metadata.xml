@@ -5,6 +5,7 @@
 		<email>eschwartz@gentoo.org</email>
 		<name>Eli Schwartz</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">graysky2/modprobed-db</remote-id>
 	</upstream>

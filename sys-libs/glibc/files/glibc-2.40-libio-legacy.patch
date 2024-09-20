@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/939446
+https://sourceware.org/PR32164
+https://sourceware.org/git/?p=glibc.git;a=commit;h=7073164add3b874cf0c19ca0fb84236f6bb0985d
+
+From 7073164add3b874cf0c19ca0fb84236f6bb0985d Mon Sep 17 00:00:00 2001
+From: Siddhesh Poyarekar <siddhesh@sourceware.org>
+Date: Tue, 3 Sep 2024 14:58:33 -0400
+Subject: [PATCH] libio: Attempt wide backup free only for non-legacy code
+
+_wide_data and _mode are not available in legacy code, so do not attempt
+to free the wide backup buffer in legacy code.
+
+Resolves: BZ #32137 and BZ #27821
+
+Signed-off-by: Siddhesh Poyarekar <siddhesh@sourceware.org>
+Reviewed-by: Florian Weimer <fweimer@redhat.com>
+(cherry picked from commit ae4d44b1d501421ad9a3af95279b8f4d1546f1ce)
+--- a/libio/genops.c
++++ b/libio/genops.c
+@@ -819,7 +819,7 @@ _IO_unbuffer_all (void)
+       /* Free up the backup area if it was ever allocated.  */
+       if (_IO_have_backup (fp))
+ 	_IO_free_backup_area (fp);
+-      if (fp->_mode > 0 && _IO_have_wbackup (fp))
++      if (!legacy && fp->_mode > 0 && _IO_have_wbackup (fp))
+ 	_IO_free_wbackup_area (fp);
+ 
+       if (! (fp->_flags & _IO_UNBUFFERED)
+-- 
+2.43.5

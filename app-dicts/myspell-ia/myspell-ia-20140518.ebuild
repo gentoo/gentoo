@@ -22,4 +22,4 @@ HOMEPAGE="https://extensions.openoffice.org/en/project/interlingua-dictionario-o
 SRC_URI="https://downloads.sourceforge.net/aoo-extensions/dict-ia-${MY_PV}.oxt -> ${P}.oxt"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86"

@@ -10,10 +10,12 @@ EAPI=8
 LUA_COMPAT=( lua5-1 luajit )
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit cmake lua-single python-single-r1
+inherit cmake flag-o-matic lua-single python-single-r1
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/csound/csound.git"
+	# vcpkg is not used anyway
+	EGIT_SUBMODULES=()
 	inherit git-r3
 else
 	DOC_P="Csound${PV}"
@@ -115,6 +117,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr, -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/860492
+	# https://github.com/csound/csound/issues/1919
+	filter-lto
+
 	local mycmakeargs=(
 		-DBUILD_BELA=OFF
 		-DBUILD_CSBEATS=$(usex beats)

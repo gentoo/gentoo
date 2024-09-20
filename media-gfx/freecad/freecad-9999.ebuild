@@ -26,12 +26,12 @@ fi
 # examples are licensed CC-BY-SA (without note of specific version)
 LICENSE="LGPL-2 CC-BY-SA-4.0"
 SLOT="0"
-IUSE="debug designer +gui qt6 test"
+IUSE="debug designer +gui +qt6 test"
 
 FREECAD_EXPERIMENTAL_MODULES="cloud netgen pcl"
 FREECAD_STABLE_MODULES="addonmgr fem idf image inspection material
-	openscad part-design path points raytracing robot show surface
-	techdraw tux"
+	openscad part-design path points raytracing robot show smesh
+	surface techdraw tux"
 
 for module in ${FREECAD_STABLE_MODULES}; do
 	IUSE="${IUSE} +${module}"
@@ -51,6 +51,7 @@ RDEPEND="
 	dev-libs/libfmt:=
 	dev-libs/libspnav[X]
 	dev-libs/xerces-c[icu]
+	dev-ruby/asciidoctor
 	!qt6? (
 		dev-qt/qtconcurrent:5
 		dev-qt/qtcore:5
@@ -117,6 +118,10 @@ RDEPEND="
 	netgen? ( media-gfx/netgen[opencascade] )
 	openscad? ( media-gfx/openscad )
 	pcl? ( sci-libs/pcl:=[opengl,openni2,vtk] )
+	smesh? (
+		!qt6? ( sci-libs/vtk:=[qt5] )
+		qt6? ( sci-libs/vtk:=[-qt5,qt6] )
+	)
 	$(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pybind11[${PYTHON_USEDEP}]
@@ -124,9 +129,9 @@ RDEPEND="
 		fem? ( dev-python/ply[${PYTHON_USEDEP}] )
 	')
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}
 	>=dev-cpp/eigen-3.3.1:3
+	dev-cpp/ms-gsl
 	test? (
 		$(python_gen_cond_dep 'dev-python/pyyaml[${PYTHON_USEDEP}]')
 		!qt6? ( dev-qt/qttest:5 )
@@ -194,10 +199,13 @@ src_configure() {
 	# https://github.com/FreeCAD/FreeCAD/issues/13173
 	filter-lto
 
+	# Fix building tests
+	append-ldflags -Wl,--copy-dt-needed-entries
+
 	local mycmakeargs=(
 		-DBUILD_ADDONMGR=$(usex addonmgr)
 		-DBUILD_ARCH=ON
-		-DBUILD_ASSEMBLY=OFF					# deprecated
+		-DBUILD_ASSEMBLY=OFF                    # Requires OndselSolver
 		-DBUILD_CLOUD=$(usex cloud)
 		-DBUILD_COMPLETE=OFF					# deprecated
 		-DBUILD_DRAFT=ON
@@ -227,7 +235,7 @@ src_configure() {
 		-DBUILD_ROBOT=$(usex robot)
 		-DBUILD_SHOW=$(usex show)
 		-DBUILD_SKETCHER=ON						# needed by draft workspace
-		-DBUILD_SMESH=ON
+		-DBUILD_SMESH=$(usex smesh)
 		-DBUILD_SPREADSHEET=ON
 		-DBUILD_START=ON
 		-DBUILD_SURFACE=$(usex surface)
@@ -333,14 +341,13 @@ src_install() {
 		# https://github.com/coin3d/coin/issues/451
 		: \${QT_QPA_PLATFORM:=xcb}
 		export QT_QPA_PLATFORM
-		exec /usr/$(get_libdir)/${PN}/bin/FreeCAD \${@}
+		exec /usr/$(get_libdir)/${PN}/bin/FreeCAD "\${@}"
 		_EOF_
 		mv "${ED}"/usr/$(get_libdir)/${PN}/share/* "${ED}"/usr/share || die "failed to move shared resources"
 	fi
 	dosym -r /usr/$(get_libdir)/${PN}/bin/FreeCADCmd /usr/bin/freecadcmd
 
 	rm -r "${ED}"/usr/$(get_libdir)/${PN}/include/E57Format || die "failed to drop unneeded include directory E57Format"
-	use test && (rm -r "${ED}"/usr/include/${PN}/{gmock,gtest} || die)
 
 	python_optimize "${ED}"/usr/share/${PN}/data/Mod/Start/StartPage "${ED}"/usr/$(get_libdir)/${PN}{/Ext,/Mod}/
 	# compile main package in python site-packages as well

@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit python-single-r1
+inherit flag-o-matic python-single-r1
 
 DESCRIPTION="A console based XMPP client inspired by Irssi"
 HOMEPAGE="https://profanity-im.github.io"
@@ -77,6 +77,11 @@ pkg_setup() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/932874
+	# https://github.com/profanity-im/profanity/issues/1992
+	filter-lto
+
 	local myeconfargs=(
 		--enable-gdk-pixbuf
 		$(use_enable libnotify notifications)

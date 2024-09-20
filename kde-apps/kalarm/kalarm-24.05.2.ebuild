@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/kalarm/ https://userbase.kde.org/KAlarm"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE="+pim speech X"
 
 COMMON_DEPEND="
@@ -62,6 +62,7 @@ RDEPEND="${COMMON_DEPEND}
 	pim? ( >=kde-apps/kdepim-runtime-${PVCUT}:6 )
 "
 DEPEND="${COMMON_DEPEND}
+	speech? ( kde-apps/kpimtextedit[speech] )
 	X? ( x11-base/xorg-proto )
 "
 

@@ -1,18 +1,14 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
 
 DESCRIPTION="Host OS native assembler as and static linker ld"
 HOMEPAGE="https://prefix.gentoo.org/"
-SRC_URI=""
 
 LICENSE="GPL-2" # actually, we don't know, the wrapper is
 SLOT="0"
-
 KEYWORDS="~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
-
-IUSE=""
 
 DEPEND="sys-devel/binutils-config"
 RDEPEND="${DEPEND}"

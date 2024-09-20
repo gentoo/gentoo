@@ -8,15 +8,13 @@ inherit desktop java-pkg-2
 DESCRIPTION="Oracle SQL Developer is a graphical tool for database development"
 HOMEPAGE="https://www.oracle.com/technetwork/developer-tools/sql-developer/overview/index.html"
 SRC_URI="${P}-no-jre.zip"
-S="${WORKDIR}/${PN}"
-
-RESTRICT="bindist fetch"
+S=${WORKDIR}/${PN}
 
 LICENSE="OTN"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-
 IUSE="mssql mysql postgres sybase"
+RESTRICT="bindist fetch"
 
 RDEPEND="
 	dev-java/openjdk:11[javafx]
@@ -27,8 +25,6 @@ RDEPEND="
 	sybase? ( dev-java/jtds:1.3 )
 "
 BDEPEND="app-arch/unzip"
-
-S="${WORKDIR}/${PN}"
 
 QA_PREBUILT="
 	opt/${PN}/netbeans/platform/modules/lib/amd64/linux/libjnidispatch-422.so

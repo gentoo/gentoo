@@ -1,0 +1,29 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -427,7 +427,7 @@ fi
+ 
+ if test "$ipv6" = "yes" -a "$ipv6lib" != "none"; then
+ 	if test -d $ipv6libdir -a -f $ipv6libdir/lib$ipv6lib.a; then
+-		LIBS="-L$ipv6libdir -l$ipv6lib $LIBS"
++		LIBS="-l$ipv6lib $LIBS"
+ 		echo "You have $ipv6lib library, using it"
+ 	else
+ 		if test "$ipv6trylibc" = "yes"; then
+@@ -1168,7 +1168,7 @@ return 0;
+ 		#
+ 		AC_LBL_SAVE_CHECK_STATE
+ 		CFLAGS="$CFLAGS -I$libcrypto_root/include"
+-		LIBS="$LIBS -L$libcrypto_root/lib -lcrypto"
++		LIBS="$LIBS -lcrypto"
+ 		AC_MSG_CHECKING(whether we have a system OpenSSL/libressl that we can use)
+ 		AC_LINK_IFELSE([AC_LANG_PROGRAM(
+ 		    [[
+@@ -1182,7 +1182,7 @@ return 0;
+ 			AC_MSG_RESULT(yes)
+ 			HAVE_LIBCRYPTO=yes
+ 			LIBCRYPTO_CFLAGS="-I$libcrypto_root/include"
+-			LIBCRYPTO_LIBS="-L$libcrypto_root/lib -lcrypto"
++			LIBCRYPTO_LIBS="-lcrypto"
+ 		    ],
+ 		    AC_MSG_RESULT(no))
+ 		AC_LBL_RESTORE_CHECK_STATE

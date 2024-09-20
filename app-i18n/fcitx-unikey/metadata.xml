@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>tanekliang@gmail.com</email>
+		<name>Yongxiang Liang</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>cjk@gentoo.org</email>
 		<name>Cjk</name>
@@ -10,5 +18,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">fcitx/fcitx-unikey</remote-id>
+		<remote-id type="github">fcitx/fcitx5-unikey</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,0 +1,36 @@
+From a193fae2ace4aa9086f9b73fa7008a016c30061e Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Wed, 21 Aug 2024 13:40:02 +0300
+Subject: [PATCH] Silence git "command not found"
+
+--- a/cmake/modules/FindLibDvdRead.cmake
++++ b/cmake/modules/FindLibDvdRead.cmake
+@@ -39,6 +39,9 @@ if(NOT TARGET LibDvdRead::LibDvdRead)
+ 
+   set(LIBDVDREAD_VERSION ${${MODULE}_VER})
+ 
++  set(patches "${CORE_SOURCE_DIR}/tools/depends/target/${MODULE_LC}/silence-git.patch")
++  generate_patchcommand("${patches}")
++
+   set(HOST_ARCH ${ARCH})
+   if(CORE_SYSTEM_NAME STREQUAL android)
+     if(ARCH STREQUAL arm)
+--- /dev/null
++++ b/tools/depends/target/libdvdread/silence-git.patch
+@@ -0,0 +1,13 @@
++diff --git a/Makefile.am b/Makefile.am
++index f2849b8..7cee887 100644
++--- a/Makefile.am
+++++ b/Makefile.am
++@@ -2,7 +2,7 @@ ACLOCAL_AMFLAGS = -Im4
++ 
++ AM_CPPFLAGS = -I$(top_srcdir)/src -I$(top_builddir)/src/dvdread $(CSS_CFLAGS)
++ 
++-dist_doc_DATA = AUTHORS ChangeLog COPYING NEWS README.md TODO
+++dist_doc_DATA = AUTHORS COPYING NEWS README.md TODO
++ 
++ MAINTAINERCLEANFILES = ChangeLog
++ 
+-- 
+2.46.0
+

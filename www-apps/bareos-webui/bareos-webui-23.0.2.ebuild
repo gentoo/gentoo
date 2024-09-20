@@ -29,8 +29,6 @@ RESTRICT="mirror"
 
 LICENSE="AGPL-3"
 
-IUSE=""
-
 DEPEND=""
 RDEPEND="${DEPEND}
 	dev-lang/php[bzip2,ctype,curl,fileinfo,filter,fpm,gd,iconv,intl,mhash,nls,pdo,postgres,session,simplexml,ssl,xml,xmlreader,xmlwriter,zip]

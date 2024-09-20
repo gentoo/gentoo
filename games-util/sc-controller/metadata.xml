@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="github">C0rn3j/sc-controller</remote-id>
 	</upstream>
+	<use>
+		<flag name="trayicon">Enable system tray icon</flag>
+	</use>
 </pkgmetadata>

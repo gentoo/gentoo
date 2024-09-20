@@ -1,5 +1,0 @@
-# Force the flag which corresponds to ARCH.
-ppc
-
-# Unforce the flag which corresponds to the 64-bit ARCH.
--ppc64

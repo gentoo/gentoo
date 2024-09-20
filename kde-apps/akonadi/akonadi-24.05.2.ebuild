@@ -16,7 +16,7 @@ HOMEPAGE="https://community.kde.org/KDE_PIM/akonadi"
 
 LICENSE="LGPL-2.1+"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE="+mysql postgres sqlite tools +webengine xml"
 
 REQUIRED_USE="|| ( mysql postgres sqlite ) test? ( tools )"

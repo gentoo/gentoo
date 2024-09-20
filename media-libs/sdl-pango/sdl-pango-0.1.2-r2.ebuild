@@ -13,7 +13,7 @@ S="${WORKDIR}/SDL_Pango-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ppc sparc x86"
 IUSE="static-libs"
 
 DEPEND="

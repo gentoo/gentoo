@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake toolchain-funcs
+inherit cmake flag-o-matic toolchain-funcs
 
 DESCRIPTION="A Modern Linker"
 HOMEPAGE="https://github.com/rui314/mold"
@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/rui314/mold/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~riscv ~sparc ~x86"
 fi
 
 # mold (MIT)
@@ -20,6 +20,7 @@ fi
 #  - siphash ( MIT CC0-1.0 )
 LICENSE="MIT BSD-2 CC0-1.0"
 SLOT="0"
+IUSE="debug"
 
 RDEPEND="
 	app-arch/zstd:=
@@ -47,24 +48,26 @@ src_prepare() {
 	cmake_src_prepare
 
 	# Needs unpackaged dwarfdump
-	rm test/elf/{{dead,compress}-debug-sections,compressed-debug-info}.sh || die
+	rm test/{{dead,compress}-debug-sections,compressed-debug-info}.sh || die
 
 	# Heavy tests, need qemu
-	rm test/elf/gdb-index-{compress-output,dwarf{2,3,4,5}}.sh || die
-	rm test/elf/lto-{archive,dso,gcc,llvm,version-script}.sh || die
+	rm test/gdb-index-{compress-output,dwarf{2,3,4,5}}.sh || die
+	rm test/lto-{archive,dso,gcc,llvm,version-script}.sh || die
 
 	# Sandbox sadness
-	rm test/elf/run.sh || die
+	rm test/run.sh || die
 	sed -i 's|`pwd`/mold-wrapper.so|"& ${LD_PRELOAD}"|' \
-		test/elf/mold-wrapper{,2}.sh || die
+		test/mold-wrapper{,2}.sh || die
 
 	# static-pie tests require glibc built with static-pie support
 	if ! has_version -d 'sys-libs/glibc[static-pie(+)]'; then
-		rm test/elf/{,ifunc-}static-pie.sh || die
+		rm test/{,ifunc-}static-pie.sh || die
 	fi
 }
 
 src_configure() {
+	use debug || append-cppflags "-DNDEBUG"
+
 	local mycmakeargs=(
 		-DMOLD_ENABLE_QEMU_TESTS=OFF
 		-DMOLD_LTO=OFF # Should be up to the user to decide this with CXXFLAGS.

@@ -18,7 +18,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/TigerVNC/tigervnc/"
 else
 	SRC_URI+=" https://github.com/TigerVNC/tigervnc/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 LICENSE="GPL-2"
@@ -44,7 +44,6 @@ COMMON_DEPEND="
 	gnutls? ( net-libs/gnutls:= )
 	nls? ( virtual/libiconv )
 	server? (
-		dev-libs/libbsd
 		dev-libs/openssl:0=
 		sys-libs/pam
 		x11-libs/libXau
@@ -97,7 +96,7 @@ BDEPEND="
 PATCHES=(
 	# Restore Java viewer
 	"${FILESDIR}"/${PN}-1.11.0-install-java-viewer.patch
-	"${FILESDIR}"/${PN}-1.12.0-xsession-path.patch
+	"${FILESDIR}"/${PN}-1.14.0-xsession-path.patch
 	"${FILESDIR}"/${PN}-1.12.80-disable-server-and-pam.patch
 )
 
@@ -198,8 +197,8 @@ src_install() {
 		emake -C unix/xserver/hw/vnc DESTDIR="${D}" install
 		rm -v "${ED}"/usr/$(get_libdir)/xorg/modules/extensions/libvnc.la || die
 
-		newconfd "${FILESDIR}"/${PN}-1.13.1.confd ${PN}
-		newinitd "${FILESDIR}"/${PN}-1.13.90.initd ${PN}
+		newconfd "${FILESDIR}"/${PN}-1.14.0.confd ${PN}
+		newinitd "${FILESDIR}"/${PN}-1.14.0.initd ${PN}
 
 		systemd_douserunit unix/vncserver/vncserver@.service
 
@@ -218,6 +217,13 @@ pkg_postinst() {
 	use server && [[ -n ${REPLACING_VERSIONS} ]] && ver_test "${REPLACING_VERSIONS}" -lt 1.13.1-r3 && {
 		elog 'OpenRC users: please migrate to one service per display as documented here:'
 		elog 'https://wiki.gentoo.org/wiki/TigerVNC#Migrating_from_1.13.1-r2_or_lower:'
+		elog
+	}
+
+	use server && {
+		elog 'PLEASE NOTE:'
+		elog '	The default config directory is now ${XDG_CONFIG_HOME}/tigervnc or'
+		elog '	~/.config/tigervnc instead of ~/.vnc'
 		elog
 	}
 

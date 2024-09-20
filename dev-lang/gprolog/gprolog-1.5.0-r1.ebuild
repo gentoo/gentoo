@@ -16,9 +16,11 @@ KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="debug doc examples"
 
 PATCHES=(
+	# https://github.com/didoudiaz/gprolog/commit/0ba64c81255e910d68be2191fd1e688801320db8
 	"${FILESDIR}"/${P}-ldflags.patch
 	"${FILESDIR}"/${P}-links.patch
 	"${FILESDIR}"/${P}-destdir.patch
+
 	"${FILESDIR}"/${P}-llvm-as.patch
 )
 
@@ -30,6 +32,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# src/EnginePl/wam_archi.h:64:33: error: global register variable follows a function definition
+	# https://bugs.gentoo.org/855599
+	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=68384
+	filter-lto
+
 	CFLAGS_MACHINE="$(get-flag -march) $(get-flag -mcpu) $(get-flag -mtune)"
 
 	use debug && append-flags -DDEBUG

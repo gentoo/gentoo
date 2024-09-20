@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="A simple podcast aggregator optimized for running as a scheduled job"
-HOMEPAGE="http://podget.sourceforge.net/ https://github.com/dvehrs/podget"
+HOMEPAGE="https://podget.sourceforge.net/ https://github.com/dvehrs/podget"
 SRC_URI="https://github.com/dvehrs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

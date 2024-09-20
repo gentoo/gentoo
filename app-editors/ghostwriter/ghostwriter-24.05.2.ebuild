@@ -14,7 +14,7 @@ HOMEPAGE="https://ghostwriter.kde.org/"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE=""
 
 RDEPEND="
@@ -38,3 +38,5 @@ BDEPEND="
 "
 
 DOCS=( CHANGELOG.md README.md )
+
+PATCHES=( "${FILESDIR}/${P}-bogusdep.patch" ) # in 24.08, bugs 936578 and 937708

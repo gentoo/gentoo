@@ -1,0 +1,42 @@
+From c04a456a3e3f7c55722b8c77144991c657fc3af6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 14 Aug 2024 13:34:22 +0200
+Subject: [PATCH] FIX: Pass `refcheck=False` to `np.ndarray.resize()` for PyPy
+ compat
+
+Pass `refcheck=False` when resizing an `np.ndarray` in place, in order
+to fix a test failure on PyPy3:
+
+```
+Traceback (most recent call last):
+  File "/tmp/PyTables/tables/tests/test_direct_chunk.py", line 266, in test_write_chunk_missing1
+    return self._test_write_chunk_missing(shrink_after=False)
+  File "/tmp/PyTables/tables/tests/test_direct_chunk.py", line 255, in _test_write_chunk_missing
+    new_obj.resize(self.array.shape)
+ValueError: cannot resize an array with refcheck=True on PyPy.
+Use the np.resize function or refcheck=False
+```
+
+Since the object is created immediately above the `.resize()` call,
+adding `refcheck=False` should be entirely safe.  Furthermore,
+unlike `np.resize()` this preserves the current behavior when new shape
+is larger than the original.
+
+Fixes #1202
+---
+ tables/tests/test_direct_chunk.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tables/tests/test_direct_chunk.py b/tables/tests/test_direct_chunk.py
+index ccc82516d..ed290d7e6 100644
+--- a/tables/tests/test_direct_chunk.py
++++ b/tables/tests/test_direct_chunk.py
+@@ -252,7 +252,7 @@ def _test_write_chunk_missing(self, shrink_after):
+             self.array.truncate(self.shape[0] - 1)
+ 
+         new_obj = self.obj.copy()
+-        new_obj.resize(self.array.shape)
++        new_obj.resize(self.array.shape, refcheck=False)
+         obj_slice = tuple(slice(s, s + cs) for (s, cs)
+                           in zip(chunk_start, self.chunkshape))
+         if not shrink_after:

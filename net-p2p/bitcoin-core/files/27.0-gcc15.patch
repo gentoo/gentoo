@@ -1,0 +1,61 @@
+From e866aecd9b5697aee1291bc4daf48d09824804d4 Mon Sep 17 00:00:00 2001
+From: Matt Whitlock <bitcoin@mattwhitlock.name>
+Date: Wed, 7 Aug 2024 21:14:28 -0400
+Subject: [PATCH] policy/feerate.h: avoid constraint self-dependency
+
+In file included from /usr/lib/gcc/x86_64-pc-linux-gnu/15/include/g++-v15/format:48,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/15/include/g++-v15/bits/chrono_io.h:39,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/15/include/g++-v15/chrono:3362,
+                 from ./util/time.h:9,
+                 from ./primitives/block.h:12,
+                 from ./blockencodings.h:8,
+                 from blockencodings.cpp:5:
+/usr/lib/gcc/x86_64-pc-linux-gnu/15/include/g++-v15/type_traits: In substitution of 'template<class _Up>  requires !(is_same_v<std::optional<_Tp>, typename std::remove_cvref<_It2>::type>) && (is_constructible_v<_Tp, const _Up&>) && (__construct_from_contained_value<_Up, typename std::remove_cv< <template-parameter-1-1> >::type>) constexpr std::optional<CFeeRate>::optional(const std::optional<_Tp>&) [with _Up = CFeeRate]':
+/usr/lib/gcc/x86_64-pc-linux-gnu/15/include/g++-v15/type_traits:1140:25:   required by substitution of 'template<class _Tp, class ... _Args> using std::__is_constructible_impl = std::__bool_constant<__is_constructible(_Tp, _Args ...)> [with _Tp = CFeeRate; _Args = {std::optional<CFeeRate>&}]'
+ 1140 |       = __bool_constant<__is_constructible(_Tp, _Args...)>;
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/lib/gcc/x86_64-pc-linux-gnu/15/include/g++-v15/type_traits:1145:12:   required from 'struct std::is_constructible<CFeeRate, std::optional<CFeeRate>&>'
+ 1145 |     struct is_constructible
+      |            ^~~~~~~~~~~~~~~~
+/usr/lib/gcc/x86_64-pc-linux-gnu/15/include/g++-v15/type_traits:178:35:   required by substitution of 'template<class ... _Bn> std::__detail::__first_t<std::integral_constant<bool, false>, typename std::enable_if<(!(bool)(_Bn::value)), void>::type ...> std::__detail::__or_fn(int) [with _Bn = {std::is_constructible<CFeeRate, std::optional<CFeeRate>&>, std::is_convertible<std::optional<CFeeRate>&, CFeeRate>, std::is_constructible<CFeeRate, std::optional<CFeeRate> >, std::is_convertible<std::optional<CFeeRate>, CFeeRate>, std::is_constructible<CFeeRate, const std::optional<CFeeRate>&>, std::is_convertible<const std::optional<CFeeRate>&, CFeeRate>, std::is_constructible<CFeeRate, const std::optional<CFeeRate> >, std::is_convertible<const std::optional<CFeeRate>, CFeeRate>}]'
+  178 |                                      __enable_if_t<!bool(_Bn::value)>...>;
+      |                                                               ^~~~~
+/usr/lib/gcc/x86_64-pc-linux-gnu/15/include/g++-v15/type_traits:196:41:   required from 'struct std::__or_<std::is_constructible<CFeeRate, std::optional<CFeeRate>&>, std::is_convertible<std::optional<CFeeRate>&, CFeeRate>, std::is_constructible<CFeeRate, std::optional<CFeeRate> >, std::is_convertible<std::optional<CFeeRate>, CFeeRate>, std::is_constructible<CFeeRate, const std::optional<CFeeRate>&>, std::is_convertible<const std::optional<CFeeRate>&, CFeeRate>, std::is_constructible<CFeeRate, const std::optional<CFeeRate> >, std::is_convertible<const std::optional<CFeeRate>, CFeeRate> >'
+  196 |     : decltype(__detail::__or_fn<_Bn...>(0))
+      |                ~~~~~~~~~~~~~~~~~~~~~~~~~^~~
+/usr/lib/gcc/x86_64-pc-linux-gnu/15/include/g++-v15/optional:824:45:   required from 'constexpr const bool std::optional<CFeeRate>::__construct_from_contained_value<CFeeRate, CFeeRate>'
+  824 |           = !__converts_from_optional<_Tp, _From>::value;
+      |                                                    ^~~~~
+/usr/lib/gcc/x86_64-pc-linux-gnu/15/include/g++-v15/optional:884:7:   required by substitution of 'template<class _Up>  requires !(is_same_v<std::optional<_Tp>, typename std::remove_cvref<_It2>::type>) && (is_constructible_v<_Tp, const _Up&>) && (__construct_from_contained_value<_Up, typename std::remove_cv< <template-parameter-1-1> >::type>) constexpr std::optional<CFeeRate>::optional(const std::optional<_Tp>&) [with _Up = CFeeRate]'
+  884 |           && __construct_from_contained_value<_Up>
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+./validation.h:164:41:   required from here
+  164 |         return MempoolAcceptResult(state);
+      |                                         ^
+/usr/lib/gcc/x86_64-pc-linux-gnu/15/include/g++-v15/optional:886:2:   required by the constraints of 'template<class _Tp> template<class _Up>  requires !(is_same_v<std::optional<_Tp>, typename std::remove_cvref<_It2>::type>) && (is_constructible_v<_Tp, const _Up&>) && (__construct_from_contained_value<_Up, typename std::remove_cv< <template-parameter-1-1> >::type>) constexpr std::optional<_Tp>::optional(const std::optional<_From>&)'
+/usr/lib/gcc/x86_64-pc-linux-gnu/15/include/g++-v15/optional:884:14: error: satisfaction of atomic constraint '__construct_from_contained_value<_Up, typename std::remove_cv< <template-parameter-1-1> >::type> [with _Tp = _Tp; _Up = _Up]' depends on itself
+  884 |           && __construct_from_contained_value<_Up>
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---
+ src/policy/feerate.h | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/src/policy/feerate.h b/src/policy/feerate.h
+index 2e50172914..63ddf6827d 100644
+--- a/src/policy/feerate.h
++++ b/src/policy/feerate.h
+@@ -38,10 +38,8 @@ private:
+ public:
+     /** Fee rate of 0 satoshis per kvB */
+     CFeeRate() : nSatoshisPerK(0) { }
+-    template<typename I>
++    template<std::integral I>
+     explicit CFeeRate(const I _nSatoshisPerK): nSatoshisPerK(_nSatoshisPerK) {
+-        // We've previously had bugs creep in from silent double->int conversion...
+-        static_assert(std::is_integral<I>::value, "CFeeRate should be used without floats");
+     }
+ 
+     /**
+-- 
+2.45.2
+

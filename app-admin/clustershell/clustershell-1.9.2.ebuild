@@ -24,6 +24,7 @@ KEYWORDS="amd64 ~x86"
 RDEPEND="dev-python/pyyaml[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? (
+		!!>=dev-libs/expat-2.6.0
 		app-shells/pdsh
 		virtual/openssh
 		app-alternatives/bc

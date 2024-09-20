@@ -1,0 +1,32 @@
+Fixed exhaustively upstream in https://github.com/kcat/openal-soft/commit/64f8e8347f7ed3f98917fae7587f4d72b54c28ef
+but doesn't apply cleanly, so do a minimal fix here.
+--- a/alc/alu.h
++++ b/alc/alu.h
+@@ -2,6 +2,7 @@
+ #define ALU_H
+ 
+ #include <bitset>
++#include <cstdint>
+ 
+ #include "aloptional.h"
+ 
+--- a/core/mixer/defs.h
++++ b/core/mixer/defs.h
+@@ -2,6 +2,7 @@
+ #define CORE_MIXER_DEFS_H
+ 
+ #include <array>
++#include <cstdint>
+ #include <stdlib.h>
+ 
+ #include "alspan.h"
+--- a/core/uhjfilter.h
++++ b/core/uhjfilter.h
+@@ -2,6 +2,7 @@
+ #define CORE_UHJFILTER_H
+ 
+ #include <array>
++#include <cstdint>
+ 
+ #include "almalloc.h"
+ #include "alspan.h"

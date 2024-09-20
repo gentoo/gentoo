@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,6 +32,7 @@ SRC_URI="http://www.suse.de/~stepan/source/milo-${milo_version}.tar.bz2
 	http://ftp.namesys.com/pub/reiserfs-for-2.2/linux-2.2.20-reiserfs-3.5.35.diff.bz2
 	https://dev.gentoo.org/~taviso/milo/linload.exe
 	http://www.ibiblio.org/pub/Linux/docs/HOWTO/MILO-HOWTO"
+S="${WORKDIR}/milo-${milo_version}"
 
 #
 # milo license is dec palcode license, dec bios emulation license, and gpl-2 rolled
@@ -44,14 +45,10 @@ SRC_URI="http://www.suse.de/~stepan/source/milo-${milo_version}.tar.bz2
 
 LICENSE="MILO"
 SLOT="0"
-
 KEYWORDS="-* ~alpha"
-IUSE=""
 
 DEPEND="sys-apps/kbd"
 RDEPEND="sys-fs/mtools"
-
-S=${WORKDIR}/milo-${milo_version}
 
 # You can change the default MILO serial
 # number here, the MILO default is "Linux_is_Great!".

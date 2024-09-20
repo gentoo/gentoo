@@ -14,7 +14,6 @@
 	conjunto de órdenes.
 	</longdescription>
 	<use>
-		<flag name="developer">Enable features of interest to developers</flag>
 		<flag name="extended-keys">Support for extended keys (arrows, home etc)</flag>
 		<flag name="gtk">Use gtk+ to determine mimetypes</flag>
 		<flag name="vim">Install the vifm vim plugin and vim-compatible documentation</flag>

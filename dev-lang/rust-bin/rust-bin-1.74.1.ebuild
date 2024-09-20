@@ -129,7 +129,7 @@ multilib_src_install() {
 		|| die
 
 	if use prefix; then
-		local interpreter=$(patchelf --print-interpreter ${EPREFIX}/bin/bash)
+		local interpreter=$(patchelf --print-interpreter "${EPREFIX}/bin/bash")
 		ebegin "Changing interpreter to ${interpreter} for Gentoo prefix at ${ED}/opt/${P}/bin"
 		find "${ED}/opt/${P}/bin" -type f -print0 | \
 			while IFS=  read -r -d '' filename; do

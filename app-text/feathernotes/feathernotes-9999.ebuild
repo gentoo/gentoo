@@ -5,7 +5,7 @@ EAPI=8
 
 inherit git-r3 cmake xdg
 
-DESCRIPTION=" Lightweight Qt Notes-Manager for Linux"
+DESCRIPTION="Lightweight Qt Notes-Manager for Linux"
 HOMEPAGE="https://github.com/tsujan/FeatherNotes"
 EGIT_REPO_URI="https://github.com/tsujan/FeatherNotes"
 

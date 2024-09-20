@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,10 +14,10 @@ else
 	SRC_URI="https://github.com/marazmista/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
+S="${WORKDIR}/${P}/${PN}"
+
 LICENSE="GPL-2"
 SLOT="0"
-
-IUSE=""
 
 RDEPEND="
 	!<x11-apps/radeon-profile-20200504-r1
@@ -25,8 +25,6 @@ RDEPEND="
 	dev-qt/qtnetwork:5
 "
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/${P}/${PN}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-20190603-run_subdir.patch"

@@ -9,19 +9,24 @@ MY_PN=Browse
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="GAP ncurses interface for browsing two-dimensional data"
-SLOT="0"
 SRC_URI="https://www.math.rwth-aachen.de/homes/${MY_PN}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3+"
-KEYWORDS="amd64"
+SLOT="0"
+KEYWORDS="amd64 ~riscv"
 
 DEPEND="sci-mathematics/gap:=
 	sys-libs/ncurses:="
 RDEPEND="${DEPEND}"
 
-GAP_PKG_EXTRA_INSTALL=( app bibl )
+BDEPEND="test? (
+	dev-gap/ctbllib
+	dev-gap/tomlib
+)"
 gap-pkg_enable_tests
+
+GAP_PKG_EXTRA_INSTALL=( app bibl )
 
 src_compile() {
 	# This has been emailed upstream but there's no public

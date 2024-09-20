@@ -53,6 +53,14 @@ src_prepare() {
 	if use modules ; then
 		cd "${WORKDIR}"/${NETATOP_P} || die
 		eapply "${FILESDIR}"/${PN}-2.9.0-netatop-makefile.patch
+
+		sed \
+			-e "s#\`uname -r\`#${KV_FULL}#g" \
+			-e "s#\$(shell uname -r)#${KV_FULL}#g" \
+			-i {.,daemon,module}/Makefile || die
+
+		grep -rq "uname -r" && die "found uname calls"
+
 		cd "${S}" || die
 	fi
 

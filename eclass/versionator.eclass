@@ -1,6 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
 # @ECLASS: versionator.eclass
 # @MAINTAINER:
 # Jonathan Callen <jcallen@gentoo.org>

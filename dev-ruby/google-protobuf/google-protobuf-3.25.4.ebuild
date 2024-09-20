@@ -22,7 +22,7 @@ LICENSE="BSD"
 SLOT="3"
 KEYWORDS="~amd64 ~arm64"
 
-DEPEND=" >=dev-libs/protobuf-3.25.0"
+DEPEND=">=dev-libs/protobuf-3.25.0[protoc(+)]"
 
 all_ruby_prepare() {
 	sed -e '/extensiontask/ s:^:#:' \

@@ -1,0 +1,31 @@
+From 6708b9acf81b69e82166ac65893241235513c026 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 10 Aug 2024 10:03:37 +0200
+Subject: [PATCH] cmake: Use KDE_INSTALL_FULL_LIBEXECDIR_KF instead of manual
+ path mangling
+
+KDE_INSTALL_LIBEXECDIR_KF is not guaranteed to be relative.
+
+BUG: 491462
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/config-kfilemetadata.h.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/config-kfilemetadata.h.in b/src/config-kfilemetadata.h.in
+index ad54c71..984bfd4 100644
+--- a/src/config-kfilemetadata.h.in
++++ b/src/config-kfilemetadata.h.in
+@@ -6,7 +6,7 @@
+ 
+ #ifndef CONFIGKFILEMETADATA_H
+ #define CONFIGKFILEMETADATA_H
+-#define LIBEXEC_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/${KDE_INSTALL_LIBEXECDIR_KF}"
++#define LIBEXEC_INSTALL_DIR "${KDE_INSTALL_FULL_LIBEXECDIR_KF}"
+ 
+ #cmakedefine01 HAVE_AVSTREAM_CODECPAR
+ 
+-- 
+2.45.2
+

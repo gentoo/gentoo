@@ -4,11 +4,6 @@ https://salsa.debian.org/java-team/rxtx/-/blob/6500bd55f265de7d2dfef68dc1df5d8b9
 
 Bug: https://bugs.gentoo.org/550534
 
----
-From: tony mancill <tmancill@debian.org>
-Forwarded: no
-Description: use format specifiers in fprintf statements for hardening flags
-
 --- a/src/SerialImp.c
 +++ b/src/SerialImp.c
 @@ -5108,7 +5108,7 @@

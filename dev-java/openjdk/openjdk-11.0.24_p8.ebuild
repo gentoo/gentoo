@@ -50,7 +50,7 @@ S="${WORKDIR}/jdk${SLOT}u-jdk-${MY_PV}"
 
 LICENSE="GPL-2-with-classpath-exception"
 SLOT="${MY_PV%%[.+]*}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 ~riscv x86"
 
 IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap lto selinux source system-bootstrap systemtap"
 
@@ -226,6 +226,11 @@ src_configure() {
 		else
 			die "${zip} not found or not readable"
 		fi
+	fi
+
+	# Workaround for bug #938302
+	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then
+		myconf+=( DTRACE="${BROOT}"/usr/bin/stap-dtrace )
 	fi
 
 	if use !system-bootstrap ; then

@@ -1,0 +1,29 @@
+From: Ted Rodgers <ted.d.rodgers@gmail.com>
+Date: Fri, 23 Aug 2024 12:15:56 +0200
+Subject: [PATCH] Explicitly include <cstdint>
+
+GCC 15 will no longer include <cstdint> by default, resulting in build
+failures in projects that do not explicitly include it.
+
+Error:
+/var/tmp/portage/media-libs/x265-3.5-r4/work/x265_3.5/source/dynamicHDR10/json11/json11.cpp:101:32: error: ‘uint8_t’ does not name a type
+  101 |         } else if (static_cast<uint8_t>(ch) <= 0x1f) {
+      |                                ^~~~~~~
+/var/tmp/portage/media-libs/x265-3.5-r4/work/x265_3.5/source/dynamicHDR10/json11/json11.cpp:28:1: note: ‘uint8_t’ is defined in header ‘<cstdint>’; this is probably fixable by adding ‘#include <cstdint>’
+   27 | #include <limits>
+  +++ |+#include <cstdint>
+   28 | 
+
+See-also: https://gcc.gnu.org/pipermail/gcc-cvs/2024-August/407124.html
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+--- a/dynamicHDR10/json11/json11.cpp
++++ b/dynamicHDR10/json11/json11.cpp
+@@ -25,6 +25,7 @@
+ #include <cstdlib>
+ #include <cstdio>
+ #include <limits>
++#include <cstdint>
+ 
+ #if _MSC_VER
+ #pragma warning(disable: 4510) //const member cannot be default initialized

@@ -1,0 +1,8 @@
+https://bugs.gentoo.org/938475
+Older version of https://codereview.qt-project.org/c/qt/qtbase/+/585668 for 6.7
+--- a/src/corelib/tools/qcontiguouscache.h
++++ b/src/corelib/tools/qcontiguouscache.h
+@@ -10,2 +10,3 @@
+ #include <QtCore/qtcoreexports.h>
++#include <QtCore/qglobal.h>
+ #include <QtCore/qtypeinfo.h>

@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Perl module for dumping Perl objects from/to XML"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ia64 ppc sparc x86"
+KEYWORDS="amd64 ~hppa ppc sparc x86"
 
 RDEPEND="
 	>=dev-perl/XML-Parser-2.160.0

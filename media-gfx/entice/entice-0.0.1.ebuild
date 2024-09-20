@@ -11,7 +11,7 @@ SRC_URI="https://git.enlightenment.org/vtorri/entice/releases/download/v${PV}/${
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="|| ( dev-libs/efl[X] dev-libs/efl[wayland] )
 	media-libs/libexif"

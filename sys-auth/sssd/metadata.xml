@@ -20,7 +20,7 @@
 		<flag name="samba">Add Privileged Attribute Certificate Support for Kerberos</flag>
 		<flag name="subid">Support subordinate uid and gid ranges in FreeIPA</flag>
 		<flag name="sudo">Build helper to let <pkg>app-admin/sudo</pkg> use sssd provided information</flag>
-		<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
+		<flag name="systemtap">Enable SystemTap/DTrace tracing</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:fedoraproject:sssd</remote-id>

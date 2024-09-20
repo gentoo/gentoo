@@ -1,0 +1,26 @@
+From 5ef040ffe2fc743ecff0d744b82a24e5c9b521a8 Mon Sep 17 00:00:00 2001
+From: Nick Sarnie <sarnex@gentoo.org>
+Date: Thu, 8 Aug 2024 17:21:31 -0400
+Subject: [PATCH] Fix build with icu 75
+
+Signed-off-by: Nick Sarnie <sarnex@gentoo.org>
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 197d0a788..02cb56052 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -144,7 +144,7 @@ AS_IF([test x$enable_compiler_flags != xno], [
+   CXXFLAGS="$CXXFLAGS -Wall -Wextra -Wno-unused-parameter -fno-strict-aliasing"
+ 
+   # For mac compiler which still stuck on c++98
+-  AC_CXX_FLAG([-std=c++14])
++  AC_CXX_FLAG([-std=c++17])
+ 
+   # -O* messes with debugging.
+   AS_IF([test x$enable_debug = xyes], [
+-- 
+2.45.2
+

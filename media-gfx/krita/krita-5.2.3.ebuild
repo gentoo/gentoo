@@ -11,7 +11,7 @@ inherit ecm kde.org python-single-r1
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~riscv"
+	KEYWORDS="amd64 ~arm64 ~riscv"
 fi
 
 DESCRIPTION="Free digital painting application. Digital Painting, Creative Freedom!"
@@ -98,6 +98,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.2.2-fftw.patch # bug 913518
 	# git master
 	"${FILESDIR}"/${PN}-5.1.5-sip-6.8.patch # bug 919139
+	"${FILESDIR}"/${PN}-5.2.3-znver4-xsimd.patch # bug 936296
 )
 
 pkg_setup() {

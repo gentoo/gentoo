@@ -1,0 +1,28 @@
+From 3862ebc02771f33c309e9ee91b696aff0fbdc20e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20K=2E=20H=C3=BCttel?= <dilfridge@gentoo.org>
+Date: Sun, 8 Sep 2024 21:10:01 +0200
+Subject: [PATCH 1/2] Revert "install perl module into user-specified prefix
+ (#7192)"
+
+This reverts commit c09d35f22090585a0357ecfbd58786022a37aae7.
+---
+ PerlMagick/Makefile.PL.in | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/PerlMagick/Makefile.PL.in b/PerlMagick/Makefile.PL.in
+index 902f01dc2..622a502ea 100644
+--- a/PerlMagick/Makefile.PL.in
++++ b/PerlMagick/Makefile.PL.in
+@@ -223,9 +223,6 @@ WriteMakefile
+    # Linker flags for building a dynamically loadable module
+    'LDDLFLAGS' => $LDDLFLAGS_magick,
+ 
+-   # Install PerlMagick into ImageMagick prefix
+-   'INSTALL_BASE' => '@PREFIX_DIR@',
+-
+    # Install PerlMagick binary into ImageMagick bin directory
+    'INSTALLBIN'	=> '@BIN_DIR@',
+ 
+-- 
+2.44.2
+

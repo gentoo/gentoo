@@ -8,19 +8,17 @@ inherit autotools
 DESCRIPTION="top for UNIX systems"
 HOMEPAGE="https://unixtop.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/unixtop/top-${PV/_/}.tar.bz2"
+S="${WORKDIR}/top-${PV/_/}"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64-linux ~x64-solaris"
-IUSE=""
 
 DEPEND="sys-libs/ncurses:="
 RDEPEND="
 	${RDEPEND}
 	!sys-process/procps
 "
-
-S=${WORKDIR}/top-${PV/_/}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.8_beta1-ncurses.patch

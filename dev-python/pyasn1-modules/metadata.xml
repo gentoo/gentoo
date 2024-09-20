@@ -8,6 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">pyasn1-modules</remote-id>
-		<remote-id type="github">etingof/pyasn1-modules</remote-id>
+		<remote-id type="github">pyasn1/pyasn1-modules</remote-id>
 	</upstream>
 </pkgmetadata>

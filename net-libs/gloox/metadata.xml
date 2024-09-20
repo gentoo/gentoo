@@ -5,4 +5,7 @@
 	<upstream>
 		<changelog>https://camaya.net/gloox/changelog/</changelog>
 	</upstream>
+	<use>
+		<flag name="xhtmlim">expose internal NodeList for optional XHTML-IM rendering without external parser</flag>
+	</use>
 </pkgmetadata>

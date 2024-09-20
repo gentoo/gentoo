@@ -1,17 +1,18 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Ulrich Müller <ulm@gentoo.org> (2024-08-03)
-# Needs dev-libs/openspecfun which is not yet keyworded
-sci-visualization/gnuplot amos
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-07)
+# kde-plasma/plasma-workspace:6 is not keyworded
+sys-auth/polkit kde
+virtual/notification-daemon kde
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-07-31)
+# KF6 and media-libs/phonon will drop arm keyword
+app-office/texstudio video
 
 # Michał Górny <mgorny@gentoo.org> (2024-07-24)
 # Full testing requires www-client/firefox.
 dev-python/selenium test-rust
-
-# Matt Jolly <kangie@gentoo.org> (2023-08-10)
-# nghttp3 has been tested to work on amd64
-net-misc/curl -http3 -quic -curl_quic_openssl curl_quic_ngtcp2
 
 # orbea <orbea@riseup.net> (2024-07-19)
 # Unmask the dynarec flag which has arm asm.

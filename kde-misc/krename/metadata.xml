@@ -8,4 +8,7 @@
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
+	<use>
+		<flag name="office">Enable support for file naming based on ODF metadata</flag>
+	</use>
 </pkgmetadata>

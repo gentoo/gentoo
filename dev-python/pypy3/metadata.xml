@@ -8,4 +8,10 @@
 	<upstream>
 		<remote-id type="heptapod">pypy/pypy</remote-id>
 	</upstream>
+	<use>
+		<flag name="test-install">
+			Install the test suite packages, that are required to run
+			tests in a few reverse dependencies.
+		</flag>
+	</use>
 </pkgmetadata>

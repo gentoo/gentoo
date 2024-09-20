@@ -8,12 +8,12 @@ inherit gap-pkg
 MY_PN=GAPDoc
 MY_P="${MY_PN}-${PV}"
 DESCRIPTION="GAP documentation structure and tooling"
-SLOT="0"
 SRC_URI="https://github.com/frankluebeck/${MY_PN}/archive/relv${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-relv${PV}"
 
 LICENSE="GPL-2+"
-KEYWORDS="amd64"
+SLOT="0"
+KEYWORDS="amd64 ~riscv"
 IUSE="examples"
 
 # PackageInfo.g defines TestFile := tst/test.tst, but that

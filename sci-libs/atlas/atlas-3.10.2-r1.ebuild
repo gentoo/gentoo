@@ -78,8 +78,6 @@ src_configure() {
 			fi
 		elif use ppc || use x86; then
 			myconf+=( "-b 32" )
-		elif use ia64; then
-			myconf+=( "-b 64" )
 		fi
 		if use fortran; then
 			myconf+=(

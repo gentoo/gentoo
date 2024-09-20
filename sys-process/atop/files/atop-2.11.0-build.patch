@@ -1,0 +1,35 @@
+From 26a85b778ecf45989347ddee256af65f9b26747d Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 11 Aug 2024 22:04:15 +0100
+Subject: [PATCH] foo
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/Makefile
++++ b/Makefile
+@@ -35,19 +35,19 @@ VERS     = $(shell ./atop -V 2>/dev/null| sed -e 's/^[^ ]* //' -e 's/ .*//')
+ all: 		atop atopsar atopacctd atopconvert atopcat atophide
+ 
+ atop:		atop.o    $(ALLMODS) Makefile
+-		$(CC) atop.o $(ALLMODS) -o atop -lncursesw -lz -lm -lrt $(LDFLAGS)
++		$(CC) $(CFLAGS) atop.o $(ALLMODS) -o atop $(shell ${PKG_CONFIG} --libs ncurses) -lz -lm -lrt $(LDFLAGS)
+ 
+ atopsar:	atop
+ 		ln -sf atop atopsar
+ 
+ atopacctd:	atopacctd.o netlink.o
+-		$(CC) atopacctd.o netlink.o -o atopacctd $(LDFLAGS)
++		$(CC) $(CFLAGS) atopacctd.o netlink.o -o atopacctd $(LDFLAGS)
+ 
+ atopconvert:	atopconvert.o
+-		$(CC) atopconvert.o -o atopconvert -lz $(LDFLAGS)
++		$(CC) $(CFLAGS) atopconvert.o -o atopconvert -lz $(LDFLAGS)
+ 
+ atopcat:	atopcat.o
+-		$(CC) atopcat.o -o atopcat $(LDFLAGS)
++		$(CC) $(CFLAGS) atopcat.o -o atopcat $(LDFLAGS)
+ 
+ atophide:	atophide.o
+ 		$(CC) atophide.o -o atophide -lz $(LDFLAGS)
+-- 
+2.45.2
+

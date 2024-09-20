@@ -1,0 +1,42 @@
+From 06cd691e6d9664847d0fb5f096e296be85bedc59 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@gentoo.org>
+Date: Thu, 15 Aug 2024 20:55:25 -0400
+Subject: [PATCH] fix missing include
+
+int64_t comes from stdint.h, but it was never included. This is
+transitively provided by some headers, on some versions of GCC, but in
+GCC 15 a bit of routine cleanup means this header is no longer silently
+exposed to arbitrary codebases without asking.
+
+As such, it fails to build.
+
+In upstream libmspub commit 28c545e7d04d58af998bcf4af5d1bb326d29836c,
+the boost cstdint header was added as part of other work. I am not sure
+why -- maybe to fix this missing header? :D But using all of boost for
+this is a bit odd and unnecessary, especially when not backporting an
+entire commit.
+
+Add in the correct stdlib header as a local backport while distros wait
+for libmspub to release a new version.
+
+Signed-off-by: Eli Schwartz <eschwartz@gentoo.org>
+---
+ src/lib/Coordinate.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/lib/Coordinate.h b/src/lib/Coordinate.h
+index bec3fe2..b87608d 100644
+--- a/src/lib/Coordinate.h
++++ b/src/lib/Coordinate.h
+@@ -10,6 +10,8 @@
+ #ifndef INCLUDED_COORDINATE_H
+ #define INCLUDED_COORDINATE_H
+ 
++#include <cstdint>
++
+ #include "MSPUBConstants.h"
+ 
+ namespace libmspub
+-- 
+2.44.2
+

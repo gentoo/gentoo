@@ -12,7 +12,7 @@ RELEASE_COMMIT="7288448"
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://passt.top/passt"
+	EGIT_REPO_URI="https://passt.top/passt"
 else
 	SRC_URI="https://passt.top/passt/snapshot/passt-${RELEASE_COMMIT}.tar.xz -> ${P}.tar.xz"
 	S="${WORKDIR}/${PN}-${RELEASE_COMMIT}"

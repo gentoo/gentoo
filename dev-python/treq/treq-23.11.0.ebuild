@@ -26,6 +26,9 @@ RDEPEND="
 	dev-python/incremental[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.1.0[${PYTHON_USEDEP}]
 	>=dev-python/twisted-18.7.0[ssl(-),${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/legacy-cgi[${PYTHON_USEDEP}]
+	' 3.13)
 "
 BDEPEND="
 	dev-python/incremental[${PYTHON_USEDEP}]

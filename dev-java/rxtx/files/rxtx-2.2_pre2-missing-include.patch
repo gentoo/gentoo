@@ -1,0 +1,10 @@
+--- a/src/SerialImp.c
++++ b/src/SerialImp.c
+@@ -146,6 +146,7 @@
+ #ifdef LIBLOCKDEV
+ #include	<lockdev.h>
+ #endif /* LIBLOCKDEV */
++#include <sys/sysmacros.h>
+ 
+ extern int errno;
+ 

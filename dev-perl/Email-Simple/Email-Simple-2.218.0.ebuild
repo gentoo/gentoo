@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Simple parsing of RFC2822 message format and headers"
 
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	virtual/perl-Carp

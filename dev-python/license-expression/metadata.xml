@@ -6,7 +6,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">nexB/license-expression</remote-id>
+		<remote-id type="github">aboutcode-org/license-expression</remote-id>
 		<remote-id type="pypi">license-expression</remote-id>
 	</upstream>
 </pkgmetadata>

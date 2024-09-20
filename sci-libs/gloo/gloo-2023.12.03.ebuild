@@ -38,6 +38,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2022.05.18-gentoo.patch
 	"${FILESDIR}"/${PN}-2023.01.17-cuda.patch
 	"${FILESDIR}"/${PN}-2023.01.17-ssl3.patch
+	"${FILESDIR}"/${P}-gcc15.patch
 )
 
 src_prepare() {

@@ -1,0 +1,146 @@
+https://bugs.gentoo.org/936061
+https://gitlab.freedesktop.org/wlroots/wlroots/-/issues/3859
+https://gitlab.freedesktop.org/wayland/wayland/-/merge_requests/401
+
+From 7be937e795ff88128d64b88f9482f05aa0d91319 Mon Sep 17 00:00:00 2001
+From: Kirill Primak <vyivel@eclair.cafe>
+Date: Sat, 29 Jun 2024 15:05:00 +0300
+Subject: [PATCH] Put WL_DEPRECATED in front of the function declarations
+
+This fixes the following clang error when using C23:
+
+../src/wayland-server-core.h:680:41: error: 'deprecated' attribute cannot be applied to types
+  680 |                      int32_t stride, uint32_t format) WL_DEPRECATED;
+      |                                                       ^
+../src/wayland-util.h:52:25: note: expanded from macro 'WL_DEPRECATED'
+   52 | #define WL_DEPRECATED [[deprecated]]
+      |                         ^
+
+Signed-off-by: Kirill Primak <vyivel@eclair.cafe>
+--- a/src/wayland-server-core.h
++++ b/src/wayland-server-core.h
+@@ -674,10 +674,11 @@ wl_display_init_shm(struct wl_display *display);
+ uint32_t *
+ wl_display_add_shm_format(struct wl_display *display, uint32_t format);
+ 
++WL_DEPRECATED
+ struct wl_shm_buffer *
+ wl_shm_buffer_create(struct wl_client *client,
+ 		     uint32_t id, int32_t width, int32_t height,
+-		     int32_t stride, uint32_t format) WL_DEPRECATED;
++		     int32_t stride, uint32_t format);
+ 
+ void
+ wl_log_set_handler_server(wl_log_func_t handler);
+--- a/src/wayland-server.c
++++ b/src/wayland-server.c
+@@ -2483,9 +2483,10 @@ wl_priv_signal_final_emit(struct wl_priv_signal *signal, void *data)
+ 
+ /** \cond */ /* Deprecated functions below. */
+ 
++WL_DEPRECATED
+ uint32_t
+ wl_client_add_resource(struct wl_client *client,
+-		       struct wl_resource *resource) WL_DEPRECATED;
++		       struct wl_resource *resource);
+ 
+ WL_EXPORT uint32_t
+ wl_client_add_resource(struct wl_client *client,
+@@ -2514,11 +2515,12 @@ wl_client_add_resource(struct wl_client *client,
+ 	return resource->object.id;
+ }
+ 
++WL_DEPRECATED
+ struct wl_resource *
+ wl_client_add_object(struct wl_client *client,
+ 		     const struct wl_interface *interface,
+ 		     const void *implementation,
+-		     uint32_t id, void *data) WL_DEPRECATED;
++		     uint32_t id, void *data);
+ 
+ WL_EXPORT struct wl_resource *
+ wl_client_add_object(struct wl_client *client,
+@@ -2537,10 +2539,11 @@ wl_client_add_object(struct wl_client *client,
+ 	return resource;
+ }
+ 
++WL_DEPRECATED
+ struct wl_resource *
+ wl_client_new_object(struct wl_client *client,
+ 		     const struct wl_interface *interface,
+-		     const void *implementation, void *data) WL_DEPRECATED;
++		     const void *implementation, void *data);
+ 
+ WL_EXPORT struct wl_resource *
+ wl_client_new_object(struct wl_client *client,
+@@ -2599,10 +2602,11 @@ wl_client_get_user_data(struct wl_client *client)
+ 	return client->data;
+ }
+ 
++WL_DEPRECATED
+ struct wl_global *
+ wl_display_add_global(struct wl_display *display,
+ 		      const struct wl_interface *interface,
+-		      void *data, wl_global_bind_func_t bind) WL_DEPRECATED;
++		      void *data, wl_global_bind_func_t bind);
+ 
+ WL_EXPORT struct wl_global *
+ wl_display_add_global(struct wl_display *display,
+@@ -2612,9 +2616,10 @@ wl_display_add_global(struct wl_display *display,
+ 	return wl_global_create(display, interface, interface->version, data, bind);
+ }
+ 
++WL_DEPRECATED
+ void
+ wl_display_remove_global(struct wl_display *display,
+-			 struct wl_global *global) WL_DEPRECATED;
++			 struct wl_global *global);
+ 
+ WL_EXPORT void
+ wl_display_remove_global(struct wl_display *display, struct wl_global *global)
+--- a/src/wayland-server.h
++++ b/src/wayland-server.h
+@@ -70,30 +70,35 @@ struct wl_resource {
+ 	void *data;
+ };
+ 
++WL_DEPRECATED
+ uint32_t
+ wl_client_add_resource(struct wl_client *client,
+-		       struct wl_resource *resource) WL_DEPRECATED;
++		       struct wl_resource *resource);
+ 
++WL_DEPRECATED
+ struct wl_resource *
+ wl_client_add_object(struct wl_client *client,
+ 		     const struct wl_interface *interface,
+ 		     const void *implementation,
+-		     uint32_t id, void *data) WL_DEPRECATED;
++		     uint32_t id, void *data);
+ 
++WL_DEPRECATED
+ struct wl_resource *
+ wl_client_new_object(struct wl_client *client,
+ 		     const struct wl_interface *interface,
+-		     const void *implementation, void *data) WL_DEPRECATED;
++		     const void *implementation, void *data);
+ 
++WL_DEPRECATED
+ struct wl_global *
+ wl_display_add_global(struct wl_display *display,
+ 		      const struct wl_interface *interface,
+ 		      void *data,
+-		      wl_global_bind_func_t bind) WL_DEPRECATED;
++		      wl_global_bind_func_t bind);
+ 
++WL_DEPRECATED
+ void
+ wl_display_remove_global(struct wl_display *display,
+-			 struct wl_global *global) WL_DEPRECATED;
++			 struct wl_global *global);
+ 
+ #endif
+ 
+-- 
+GitLab
+

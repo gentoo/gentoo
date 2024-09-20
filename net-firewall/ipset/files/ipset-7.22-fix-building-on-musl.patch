@@ -1,0 +1,10 @@
+--- a/src/ipset.c	2024-08-30 14:21:19.201863069 +0000
++++ b/src/ipset.c	2024-08-30 14:21:52.525571560 +0000
+@@ -15,6 +15,7 @@
+ #include <config.h>
+ #include <libipset/ipset.h>		/* ipset library */
+ #include <libipset/xlate.h>		/* translate to nftables */
++#include <libgen.h>
+ 
+ int
+ main(int argc, char *argv[])

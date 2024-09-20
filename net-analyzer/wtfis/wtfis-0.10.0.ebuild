@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit distutils-r1
 
 DESCRIPTION="Passive hostname, domain and IP lookup tool for non-robots"
@@ -15,7 +15,7 @@ if [[ ${PV} = "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/pirxthepilot/wtfis.git"
 else
 	SRC_URI="https://github.com/pirxthepilot/wtfis/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
-	KEYWORDS="~amd64 ~loong ~x86"
+	KEYWORDS="amd64 ~loong x86"
 fi
 
 LICENSE="MIT"

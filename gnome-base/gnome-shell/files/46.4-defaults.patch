@@ -1,0 +1,11 @@
+--- a/data/org.gnome.shell.gschema.xml.in~	2024-08-03 20:13:53.000000000 +0200
++++ b/data/org.gnome.shell.gschema.xml.in	2024-08-09 13:38:24.886239853 +0200
+@@ -61,7 +61,7 @@
+       </description>
+     </key>
+     <key name="favorite-apps" type="as">
+-      <default>[ 'org.gnome.Epiphany.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Music.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'org.gnome.TextEditor.desktop']</default>
++      <default>[ 'chromium-browser-chromium.desktop', 'firefox.desktop', 'firefox-bin.desktop', 'org.gnome.Evolution.desktop', 'org.gnome.Epiphany.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Music.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'org.gnome.TextEditor.desktop']</default>
+       <summary>List of desktop file IDs for favorite applications</summary>
+       <description>
+         The applications corresponding to these identifiers

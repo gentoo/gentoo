@@ -5,13 +5,13 @@ EAPI=8
 
 CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
 LUA_COMPAT=( luajit )
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit cmake flag-o-matic lua-single optfeature python-single-r1 xdg
 
 CEF_DIR="cef_binary_5060_linux_x86_64"
 CEF_REVISION="_v3"
-OBS_BROWSER_COMMIT="2a2879b5a69f4a99cd7459d8595af46cdb23115c"
+OBS_BROWSER_COMMIT="be9f1b646406d2250b402581b043f1558042d7f0"
 OBS_WEBSOCKET_COMMIT="0548c7798a323fe5296c150e13b898a5ee62fc1e"
 
 DESCRIPTION="Software for Recording and Streaming Live Video Content"
@@ -26,9 +26,12 @@ if [[ ${PV} == 9999 ]]; then
 	)
 else
 	SRC_URI="
-		https://github.com/obsproject/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-		https://github.com/obsproject/obs-browser/archive/${OBS_BROWSER_COMMIT}.tar.gz -> obs-browser-${OBS_BROWSER_COMMIT}.tar.gz
-		https://github.com/obsproject/obs-websocket/archive/${OBS_WEBSOCKET_COMMIT}.tar.gz -> obs-websocket-${OBS_WEBSOCKET_COMMIT}.tar.gz
+		https://github.com/obsproject/${PN}/archive/${PV}.tar.gz
+			-> ${P}.tar.gz
+		https://github.com/obsproject/obs-browser/archive/${OBS_BROWSER_COMMIT}.tar.gz
+			-> obs-browser-${OBS_BROWSER_COMMIT}.tar.gz
+		https://github.com/obsproject/obs-websocket/archive/${OBS_WEBSOCKET_COMMIT}.tar.gz
+			-> obs-websocket-${OBS_WEBSOCKET_COMMIT}.tar.gz
 	"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
@@ -39,9 +42,8 @@ LICENSE="Boost-1.0 GPL-2+ MIT Unlicense"
 SLOT="0"
 IUSE="
 	+alsa browser decklink fdk jack lua mpegts nvenc pipewire pulseaudio
-	python qsv speex +ssl test truetype v4l vlc wayland websocket
+	python qsv sndio speex test-input truetype v4l vlc wayland websocket
 "
-RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	browser? ( || ( alsa pulseaudio ) )
 	lua? ( ${LUA_REQUIRED_USE} )
@@ -66,6 +68,7 @@ DEPEND="
 	media-libs/x264:=
 	media-video/ffmpeg:=[nvenc?,opus,x264]
 	net-misc/curl
+	net-libs/mbedtls:=
 	sys-apps/dbus
 	sys-apps/pciutils
 	sys-apps/util-linux
@@ -111,13 +114,13 @@ DEPEND="
 		net-libs/librist
 		net-libs/srt
 	)
+	nvenc? ( >=media-libs/nv-codec-headers-12 )
 	pipewire? ( media-video/pipewire:= )
 	pulseaudio? ( media-libs/libpulse )
 	python? ( ${PYTHON_DEPS} )
 	qsv? ( media-libs/libvpl )
+	sndio? ( media-sound/sndio )
 	speex? ( media-libs/speexdsp )
-	ssl? ( net-libs/mbedtls:= )
-	test? ( dev-util/cmocka )
 	truetype? (
 		media-libs/fontconfig
 		media-libs/freetype
@@ -137,7 +140,9 @@ DEPEND="
 		dev-libs/qr-code-generator
 	)
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	qsv? ( media-libs/intel-mediasdk )
+"
 
 QA_PREBUILT="
 	usr/lib*/obs-plugins/chrome-sandbox
@@ -172,46 +177,46 @@ src_unpack() {
 src_prepare() {
 	default
 
-	sed -i '/-Werror$/d' "${WORKDIR}"/${P}/cmake/Modules/CompilerConfig.cmake || die
-
 	# -Werror=lto-type-mismatch
 	# https://bugs.gentoo.org/867250
 	# https://github.com/obsproject/obs-studio/issues/8988
 	use wayland && filter-lto
 
 	cmake_src_prepare
+
+	pushd deps/json11 &> /dev/null || die
+		eapply "${FILESDIR}/json11-1.0.0-include-cstdint.patch"
+	popd &> /dev/null || die
 }
 
 src_configure() {
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
 		$(usev browser -DCEF_ROOT_DIR=../${CEF_DIR})
-		-DCALM_DEPRECATION=ON
-		-DCCACHE_SUPPORT=OFF
 		-DENABLE_ALSA=$(usex alsa)
 		-DENABLE_AJA=OFF
 		-DENABLE_BROWSER=$(usex browser)
+		-DENABLE_CCACHE=OFF
 		-DENABLE_DECKLINK=$(usex decklink)
+		-DENABLE_FFMPEG_NVENC=$(usex nvenc)
 		-DENABLE_FREETYPE=$(usex truetype)
 		-DENABLE_JACK=$(usex jack)
 		-DENABLE_LIBFDK=$(usex fdk)
-		-DENABLE_NATIVE_NVENC=$(usex nvenc)
 		-DENABLE_NEW_MPEGTS_OUTPUT=$(usex mpegts)
+		-DENABLE_NVENC=$(usex nvenc)
 		-DENABLE_PIPEWIRE=$(usex pipewire)
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
 		-DENABLE_QSV11=$(usex qsv)
 		-DENABLE_RNNOISE=ON
-		-DENABLE_RTMPS=$(usex ssl ON OFF) # Needed for bug 880861
+		-DENABLE_SNDIO=$(usex sndio)
 		-DENABLE_SPEEXDSP=$(usex speex)
-		-DENABLE_UNIT_TESTS=$(usex test)
+		-DENABLE_TEST_INPUT=$(usex test-input)
 		-DENABLE_V4L2=$(usex v4l)
 		-DENABLE_VLC=$(usex vlc)
 		-DENABLE_VST=ON
 		-DENABLE_WAYLAND=$(usex wayland)
 		-DENABLE_WEBRTC=OFF # Requires libdatachannel.
 		-DENABLE_WEBSOCKET=$(usex websocket)
-		-DOBS_MULTIARCH_SUFFIX=${libdir#lib}
-		-DUNIX_STRUCTURE=1
 	)
 
 	if [[ ${PV} != 9999 ]]; then
@@ -230,7 +235,7 @@ src_configure() {
 		mycmakeargs+=( -DENABLE_SCRIPTING=OFF )
 	fi
 
-	if use browser && use ssl; then
+	if use browser; then
 		mycmakeargs+=( -DENABLE_WHATSNEW=ON )
 	else
 		mycmakeargs+=( -DENABLE_WHATSNEW=OFF )

@@ -1,16 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
 
-inherit elisp-common
+inherit elisp-common flag-o-matic
 
 MY_PN="${PN}-src"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Implementation of the logical framework LF"
-HOMEPAGE="http://twelf.org/"
-SRC_URI="http://twelf.plparty.org/releases/${MY_P}.tar.gz"
+HOMEPAGE="https://twelf.org/"
+SRC_URI="https://github.com/standardml/twelf/releases/download/v${PV}/${MY_P}.tar.gz"
 
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
@@ -59,6 +59,12 @@ src_prepare() {
 }
 
 src_compile() {
+	# relocation R_X86_64_32 against hidden symbol `globalCPointer' can not be used when making a PIE object
+	# https://bugs.gentoo.org/863266
+	#
+	# The software is unmaintained and disables bug reports.
+	filter-lto
+
 	emake mlton CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS} -fno-PIE"
 	if use emacs ; then
 		pushd "${S}/emacs" || die "Could change directory to emacs"

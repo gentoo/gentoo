@@ -10,7 +10,7 @@ SRC_URI="https://github.com/baszoetekouw/pinfo/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="nls readline"
 
 RDEPEND="

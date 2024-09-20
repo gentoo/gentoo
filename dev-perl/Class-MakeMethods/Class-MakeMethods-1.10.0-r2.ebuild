@@ -10,5 +10,5 @@ inherit perl-module
 DESCRIPTION="Automated method creation module for Perl"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ppc ~s390 sparc x86"
 PATCHES=( "${FILESDIR}/${P}-perl526.patch" )

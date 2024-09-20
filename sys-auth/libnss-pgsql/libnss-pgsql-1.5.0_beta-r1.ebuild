@@ -1,22 +1,20 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit autotools
 
-KEYWORDS="~amd64 ~x86"
+MY_P="${P/_/-}"
 
 DESCRIPTION="Name Service Switch module for use with PostgreSQL"
 HOMEPAGE="http://pgfoundry.org/projects/sysauth/"
-
-MY_P="${P/_/-}"
 SRC_URI="http://pgfoundry.org/frs/download.php/1878/${MY_P}.tgz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-db/postgresql:*"
 DEPEND="${RDEPEND}

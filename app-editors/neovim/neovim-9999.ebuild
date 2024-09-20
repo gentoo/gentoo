@@ -49,6 +49,7 @@ DEPEND="${LUA_DEPS}
 	$(lua_gen_cond_dep '
 		dev-lua/LuaBitOp[${LUA_USEDEP}]
 	' lua5-{1,2})
+	>=dev-libs/libutf8proc-2.9.0:=
 	>=dev-libs/libuv-1.46.0:=
 	>=dev-libs/libvterm-0.3.3
 	>=dev-libs/msgpack-3.0.0:=
@@ -58,11 +59,10 @@ DEPEND="${LUA_DEPS}
 	=dev-libs/tree-sitter-lua-0.1*
 	=dev-libs/tree-sitter-markdown-0.2*
 	=dev-libs/tree-sitter-python-0.21*
-	=dev-libs/tree-sitter-query-0.3*
+	=dev-libs/tree-sitter-query-0.4*
 	=dev-libs/tree-sitter-vim-0.4*
-	=dev-libs/tree-sitter-vimdoc-2*
+	=dev-libs/tree-sitter-vimdoc-3*
 	>=dev-libs/unibilium-2.0.0:0=
-	>=dev-libs/libutf8proc-2.9.0:=
 "
 RDEPEND="
 	${DEPEND}
@@ -90,13 +90,12 @@ src_prepare() {
 }
 
 src_configure() {
-	ln -s "${BROOT}"/usr/bin/luajit "${BUILD_DIR}"/luajit || die
 	# TODO: Investigate USE_BUNDLED, doesn't seem to be needed right now
 	local mycmakeargs=(
 		# appends -flto
 		-DENABLE_LTO=OFF
 		-DPREFER_LUA=$(usex lua_single_target_luajit no "$(lua_get_version)")
-		-DLUA_PRG="${ELUA}"
+		-DLUA_PRG="${LUA}"
 	)
 	cmake_src_configure
 }
@@ -106,7 +105,7 @@ src_install() {
 
 	# install a default configuration file
 	insinto /etc/vim
-	newins "${FILESDIR}"/sysinit.vim-r1 sysinit.vim
+	doins "${FILESDIR}"/sysinit.vim
 
 	# symlink tree-sitter parsers
 	dodir /usr/share/nvim/runtime

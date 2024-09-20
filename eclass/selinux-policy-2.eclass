@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Eclass for installing SELinux policy, and optionally
@@ -260,13 +260,9 @@ selinux-policy-2_pkg_postinst() {
 	local COMMAND
 
 	for i in ${POLICY_TYPES}; do
-		if [[ "${MODS}" = "unconfined" ]]; then
-			case ${i} in
-			strict|mcs|mls)
-				einfo "Ignoring loading of unconfined module in ${i} module store.";
-				continue
-				;;
-			esac
+		if [[ "${i}" == "strict" ]] && [[ "${MODS}" = "unconfined" ]]; then
+			einfo "Ignoring loading of unconfined module in strict module store.";
+			continue;
 		fi
 
 		einfo "Inserting the following modules into the $i module store: ${MODS}"

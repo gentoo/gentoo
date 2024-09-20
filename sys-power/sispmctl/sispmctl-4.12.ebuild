@@ -6,7 +6,7 @@ EAPI=8
 inherit systemd udev
 
 DESCRIPTION="GEMBIRD SiS-PM control utility"
-HOMEPAGE="http://sispmctl.sourceforge.net/"
+HOMEPAGE="https://sispmctl.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/sispmctl/${P}.tar.gz"
 
 LICENSE="GPL-2+"

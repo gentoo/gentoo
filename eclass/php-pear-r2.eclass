@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: php-pear-r2.eclass
@@ -14,13 +14,17 @@
 # Note that this eclass doesn't handle dependencies of PEAR packages
 # on purpose; please use (R)DEPEND to define them correctly!
 
-case ${EAPI} in
-	6|7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_PHP_PEAR_R2_ECLASS} ]]; then
 _PHP_PEAR_R2_ECLASS=1
+
+case ${EAPI} in
+	6)
+		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
+		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
+		;;
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 RDEPEND=">=dev-php/pear-1.8.1"
 [[ ${EAPI} != [67] ]] && IDEPEND=">=dev-php/pear-1.8.1"

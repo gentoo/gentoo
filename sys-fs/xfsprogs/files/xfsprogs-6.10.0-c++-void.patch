@@ -1,0 +1,46 @@
+https://bugs.gentoo.org/938569
+https://lore.kernel.org/linux-xfs/172480131521.2291268.17945339760767205637.stgit@frogsfrogsfrogs/
+
+From fd885ea4d54be6e98df7342bd99b77bc8cbd64d5 Mon Sep 17 00:00:00 2001
+Message-ID: <fd885ea4d54be6e98df7342bd99b77bc8cbd64d5.1724802060.git.sam@gentoo.org>
+From: "Darrick J. Wong" <djwong@kernel.org>
+Date: Tue, 27 Aug 2024 16:33:58 -0700
+Subject: [PATCH] xfs: fix C++ compilation errors in xfs_fs.h
+
+Several people reported C++ compilation errors due to things that C
+compilers allow but C++ compilers do not.  Fix both of these problems,
+and hope there aren't more of these brown paper bags in 2 months when we
+finally get these fixes through the process into a released xfsprogs.
+
+Reported-by: kernel@mattwhitlock.name
+Reported-by: sam@gentoo.org
+Closes: https://bugzilla.kernel.org/show_bug.cgi?id=219203
+Fixes: 233f4e12bbb2c ("xfs: add parent pointer ioctls")
+Signed-off-by: Darrick J. Wong <djwong@kernel.org>
+---
+ libxfs/xfs_fs.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/libxfs/xfs_fs.h b/libxfs/xfs_fs.h
+index 454b63ef..2b8e1f4f 100644
+--- a/libxfs/xfs_fs.h
++++ b/libxfs/xfs_fs.h
+@@ -906,13 +906,13 @@ static inline struct xfs_getparents_rec *
+ xfs_getparents_next_rec(struct xfs_getparents *gp,
+ 			struct xfs_getparents_rec *gpr)
+ {
+-	void *next = ((void *)gpr + gpr->gpr_reclen);
++	void *next = ((char *)gpr + gpr->gpr_reclen);
+ 	void *end = (void *)(uintptr_t)(gp->gp_buffer + gp->gp_bufsize);
+ 
+ 	if (next >= end)
+ 		return NULL;
+ 
+-	return next;
++	return (struct xfs_getparents_rec *)next;
+ }
+ 
+ /* Iterate through this file handle's directory parent pointers. */
+-- 
+2.46.0
+

@@ -16,7 +16,7 @@ REQUIRED_USE="
 	test? ( introspection )
 "
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.76.0:2
@@ -106,6 +106,8 @@ PATCHES=(
 	# such support.
 	# https://bugs.gentoo.org/624960
 	"${FILESDIR}"/0001-gdk-add-a-poison-macro-to-hide-GDK_WINDOWING_.patch
+	# backport patch to fix race conditions in building generated headers
+	"${FILESDIR}"/6510b876d1cb5428db4822974cdebfed209692b0.patch
 )
 
 python_check_deps() {

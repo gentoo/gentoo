@@ -2,7 +2,7 @@
 Name=VSCode
 Comment=Editing evolved
 GenericName=Code Editor
-Exec=/usr/bin/vscode @exec_extra_flags@ --unity-launch %F
+Exec=/usr/bin/vscode @exec_extra_flags@ %F
 Icon=vscode
 Type=Application
 StartupNotify=false

@@ -53,7 +53,7 @@ python_site_check() {
 
 		# check for packages installing outside site-packages
 		case ${CATEGORY}/${PN} in
-			dev-lang/python|dev-python/pypy*)
+			dev-lang/python|dev-python/pypy*|dev-python/python-tests)
 				;;
 			*)
 				while IFS= read -d $'\0' -r f; do

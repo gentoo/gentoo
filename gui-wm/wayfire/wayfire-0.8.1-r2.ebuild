@@ -61,6 +61,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/wayfire-0.8.0-dont-use-installed-config-h.patch"
+	"${FILESDIR}"/${P}-fix-gcc-15.patch
 )
 
 src_prepare() {

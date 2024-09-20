@@ -1,0 +1,10 @@
+--- a/src/framework/extensions/devtools/apidumpmodel.cpp
++++ b/src/framework/extensions/devtools/apidumpmodel.cpp
+@@ -22,6 +22,7 @@
+ #include "apidumpmodel.h"
+ 
+ #include <QClipboard>
++#include <QGuiApplication>
+ 
+ #include "extensions/api/extapi.h"
+ 

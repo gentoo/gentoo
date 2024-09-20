@@ -6,11 +6,11 @@ EAPI=8
 inherit gap-pkg prefix
 
 DESCRIPTION="GRaph Algorithms using PErmutation groups"
-SLOT="0"
 SRC_URI="https://github.com/gap-packages/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2+"
-KEYWORDS="~amd64"
+SLOT="0"
+KEYWORDS="~amd64 ~riscv"
 IUSE="bliss"
 
 RDEPEND="bliss? ( sci-libs/bliss )

@@ -6,6 +6,6 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">sus-rb/sus</remote-id>
+    <remote-id type="github">socketry/sus</remote-id>
   </upstream>
 </pkgmetadata>

@@ -6,10 +6,10 @@ EAPI=8
 inherit meson
 
 DESCRIPTION="Linux kernel trace file system library"
-HOMEPAGE="https://git.kernel.org/pub/scm/libs/libtrace/libtracefs.git/"
+HOMEPAGE="https://www.trace-cmd.org/"
 
 if [[ ${PV} =~ [9]{4,} ]]; then
-	EGIT_REPO_URI="git://git.kernel.org/pub/scm/libs/libtrace/libtracefs.git/"
+	EGIT_REPO_URI="https://git.kernel.org/pub/scm/libs/libtrace/libtracefs.git/"
 	inherit git-r3
 else
 	SRC_URI="https://git.kernel.org/pub/scm/libs/libtrace/libtracefs.git/snapshot/${P}.tar.gz"

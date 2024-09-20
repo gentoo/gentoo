@@ -3,8 +3,8 @@
 
 EAPI=8
 
-DESCRIPTION="A tray menu for the Fluxbox toolbar"
-HOMEPAGE="http://ftmenu.sourceforge.net/"
+DESCRIPTION="Tray menu for the Fluxbox toolbar"
+HOMEPAGE="https://ftmenu.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

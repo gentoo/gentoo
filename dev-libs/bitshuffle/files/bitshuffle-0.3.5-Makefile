@@ -26,8 +26,10 @@ OBJS = \
 	src/bitshuffle_core.o \
 	src/iochain.o
 
+LIBS := -llz4
+
 $(SOFILE): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ -shared $(LDFLAGS) -Wl,-soname,$(SONAME) $^
+	$(CC) $(CFLAGS) -o $@ -shared $(LDFLAGS) -Wl,-soname,$(SONAME) $^ $(LIBS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -Isrc -c $< -o $@

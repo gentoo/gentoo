@@ -92,6 +92,7 @@ dev-python/spyder-notebook
 dev-util/kdevelop
 dev-util/kdevelop-php
 dev-util/kdevelop-python
+kde-frameworks/purpose-kaccounts-services
 kde-apps/akonadi-calendar
 kde-apps/akonadi-import-wizard
 kde-apps/akonadiconsole
@@ -128,6 +129,7 @@ kde-apps/parley
 kde-apps/pim-data-exporter
 kde-apps/pim-sieve-editor
 kde-misc/kio-gdrive
+kde-misc/kio-gdrive-common
 kde-misc/tellico
 kde-misc/zanshin
 media-gfx/digikam

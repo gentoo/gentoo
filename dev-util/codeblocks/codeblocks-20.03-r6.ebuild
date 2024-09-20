@@ -8,7 +8,7 @@ WX_GTK_VER="3.0-gtk3"
 inherit autotools flag-o-matic wxwidgets xdg
 
 DESCRIPTION="The open source, cross platform, free C, C++ and Fortran IDE"
-HOMEPAGE="https://codeblocks.org/"
+HOMEPAGE="https://www.codeblocks.org/"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.xz
 	https://dev.gentoo.org/~leio/distfiles/${P}-fortran.tar.xz
 	https://dev.gentoo.org/~leio/distfiles/${P}-fortran-update-v1.7.tar.xz

@@ -617,6 +617,7 @@ _python_multibuild_wrapper() {
 # locally, and the former two are exported to the command environment.
 python_foreach_impl() {
 	debug-print-function ${FUNCNAME} "${@}"
+	_python_sanity_checks
 
 	if [[ ${_DISTUTILS_R1_ECLASS} ]]; then
 		if has "${EBUILD_PHASE}" prepare configure compile test install &&
@@ -708,6 +709,7 @@ python_foreach_impl() {
 # @CODE
 python_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
+	_python_sanity_checks
 
 	local has_check_deps
 	declare -f python_check_deps >/dev/null && has_check_deps=1

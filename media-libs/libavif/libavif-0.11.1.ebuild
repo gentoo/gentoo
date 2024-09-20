@@ -25,7 +25,7 @@ DEPEND="media-libs/libjpeg-turbo[${MULTILIB_USEDEP}]
 	extras? ( dev-cpp/gtest )
 	gdk-pixbuf? ( x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}] )
 	rav1e? ( >=media-video/rav1e-0.5.1:=[capi] )
-	svt-av1? ( >=media-libs/svt-av1-0.9.1 )"
+	svt-av1? ( >=media-libs/svt-av1-0.9.1:= )"
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 

@@ -12,6 +12,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">pysubs2</remote-id>
-		<remote-id type="github">tkarabela/pysubs</remote-id>
+		<remote-id type="github">tkarabela/pysubs2</remote-id>
 	</upstream>
 </pkgmetadata>

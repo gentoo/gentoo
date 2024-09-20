@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,11 @@ DESCRIPTION="C++ class library of cryptographic schemes"
 HOMEPAGE="https://cryptopp.com"
 SRC_URI="
 	https://www.cryptopp.com/cryptopp${PV//.}.zip
-	verify-sig? ( https://cryptopp.com/cryptopp${PV//.}.zip.sig )
+	https://github.com/weidai11/cryptopp/releases/download/CRYPTOPP_${PV//./_}/cryptopp${PV//.}.zip
+	verify-sig? (
+		https://cryptopp.com/cryptopp${PV//.}.zip.sig
+		https://github.com/weidai11/cryptopp/releases/download/CRYPTOPP_${PV//./_}/cryptopp${PV//.}.zip.sig
+	)
 "
 
 S="${WORKDIR}"

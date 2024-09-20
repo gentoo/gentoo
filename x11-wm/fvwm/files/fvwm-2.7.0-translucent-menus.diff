@@ -1,0 +1,507 @@
+diff --git i/fvwm/colorset.c w/fvwm/colorset.c
+index e10f1d1..0217cc3 100644
+--- i/fvwm/colorset.c
++++ w/fvwm/colorset.c
+@@ -164,6 +164,8 @@ static char *csetopts[] =
+ 	"NoIconTint",
+ 	"IconAlpha",
+ 
++	"Translucent",
++	"NoTranslucent",
+ 	NULL
+ };
+ 
+@@ -625,6 +627,7 @@ void parse_colorset(int n, char *line)
+ 	char *fg_tint = NULL;
+ 	char *bg_tint = NULL;
+ 	char *icon_tint = NULL;
++	char *translucent_tint = NULL;
+ 	Bool have_pixels_changed = False;
+ 	Bool has_icon_pixels_changed = False;
+ 	Bool has_fg_changed = False;
+@@ -637,6 +640,7 @@ void parse_colorset(int n, char *line)
+ 	Bool has_fg_tint_changed = False;
+ 	Bool has_bg_tint_changed = False;
+ 	Bool has_icon_tint_changed = False;
++	Bool has_translucent_tint_changed = False;
+ 	Bool has_pixmap_changed = False;
+ 	Bool has_shape_changed = False;
+ 	Bool has_image_alpha_changed = False;
+@@ -764,6 +768,10 @@ void parse_colorset(int n, char *line)
+ 		case 21: /* Plain */
+ 			has_pixmap_changed = True;
+ 			free_colorset_background(cs, True);
++			cs->is_translucent = False;
++			cs->translucent_tint_percent = 0;
++			cs->color_flags &= ~TRANSLUCENT_TINT_SUPPLIED;
++			has_translucent_tint_changed = True;
+ 			break;
+ 		case 22: /* NoShape */
+ 			has_shape_changed = True;
+@@ -930,6 +938,24 @@ void parse_colorset(int n, char *line)
+ 				cs->icon_alpha_percent = tmp;
+ 			}
+ 			break;
++		case 42: /* Translucent */
++			cs->is_translucent = True;
++			parse_simple_tint(
++				cs, args, &translucent_tint,
++				TRANSLUCENT_TINT_SUPPLIED,
++				&has_translucent_tint_changed, &percent,
++				"Translucent");
++			if (has_translucent_tint_changed)
++			{
++				cs->translucent_tint_percent = percent;
++			}
++			break;
++		case 43: /* NoTranslucent */
++			cs->is_translucent = False;
++			cs->translucent_tint_percent = 0;
++			cs->color_flags &= ~TRANSLUCENT_TINT_SUPPLIED;
++			has_translucent_tint_changed = True;
++			break;
+ 		default:
+ 			/* test for ?Gradient */
+ 			if (option[0] && StrEquals(&option[1], "Gradient"))
+@@ -1632,6 +1658,27 @@ void parse_colorset(int n, char *line)
+ 		}
+ 	}
+ 
++	/*
++	 * ---------- change the translucent tint colour ----------
++	 */
++	if (has_translucent_tint_changed)
++	{
++		/* user specified colour */
++		if (translucent_tint != NULL)
++		{
++			PictureFreeColors(
++				dpy, Pcmap, &cs->translucent_tint, 1, 0, True);
++			cs->translucent_tint = GetColor(translucent_tint);
++		}
++		else
++		{
++			/* default */
++			PictureFreeColors(
++				dpy, Pcmap, &cs->translucent_tint, 1, 0, True);
++			cs->translucent_tint = GetColor(black);
++		}
++	}
++
+ 	/*
+ 	 * ---------- send new colorset to fvwm and clean up ----------
+ 	 */
+@@ -1728,6 +1775,7 @@ void alloc_colorset(int n)
+ 			ncs->fgsh = GetColor(white);
+ 			ncs->tint = GetColor(black);
+ 			ncs->icon_tint = GetColor(black);
++			ncs->translucent_tint = GetColor(black);
+ 			ncs->pixmap = XCreatePixmapFromBitmapData(
+ 				dpy, Scr.NoFocusWin,
+ 				&g_bits[4 * (nColorsets % 3)], 4, 4,
+@@ -1745,6 +1793,7 @@ void alloc_colorset(int n)
+ 			ncs->fgsh = GetForeShadow(ncs->fg, ncs->bg);
+ 			ncs->tint = GetColor(black);
+ 			ncs->icon_tint = GetColor(black);
++			ncs->translucent_tint = GetColor(black);
+ 		}
+ 		ncs->fg_tint = ncs->bg_tint = GetColor(black);
+ 		/* set flags for fg contrast, bg average */
+@@ -1756,6 +1805,7 @@ void alloc_colorset(int n)
+ 		ncs->icon_alpha_percent = 100;
+ 		ncs->tint_percent = 0;
+ 		ncs->icon_tint_percent = 0;
++		ncs->translucent_tint_percent = 0;
+ 		ncs->fg_tint_percent = ncs->bg_tint_percent = 0;
+ 		ncs->dither = (PictureDitherByDefault())? True:False;
+ 		nColorsets++;
+diff --git i/fvwm/menuroot.h w/fvwm/menuroot.h
+index d9f33d6..de5e2d6 100644
+--- i/fvwm/menuroot.h
++++ w/fvwm/menuroot.h
+@@ -146,6 +146,9 @@ typedef struct MenuRootDynamic
+ 		int d_npixels;
+ 	} stored_pixels;
+ 	/* alloc pixels when dithering is used for gradients */
++	/* x,y XMapRaise */
++	int x;
++	int y;
+ } MenuRootDynamic;
+ 
+ /* access macros to dynamic menu members */
+diff --git i/fvwm/menus.c w/fvwm/menus.c
+index 345ac06..6daf035 100644
+--- i/fvwm/menus.c
++++ w/fvwm/menus.c
+@@ -78,6 +78,19 @@
+ #define SCTX_GET_MR(ctx)	((ctx).type == SCTX_MENU_ROOT ? \
+ 				 (ctx).menu_root.menu_root : NULL)
+ 
++#define MENU_IS_TRANSLUCENT(mr,cs) \
++	(!MR_IS_TEAR_OFF_MENU(mr) && CSET_IS_TRANSLUCENT(cs))
++#define MENU_IS_TRANSPARENT(mr,cs) \
++	(MENU_IS_TRANSLUCENT(mr,cs) || CSET_IS_TRANSPARENT(cs))
++#define MR_IS_TRANSLUCENT_MENU(mr)  \
++	(!MR_IS_TEAR_OFF_MENU(mr) && MR_STYLE(mr) && \
++	ST_HAS_MENU_CSET(MR_STYLE(mr)) && CSET_IS_TRANSLUCENT( \
++						ST_CSET_MENU(MR_STYLE(mr))))
++#define MR_IS_TRANSPARENT_MENU(mr) \
++	(MR_IS_TRANSLUCENT_MENU(mr) || (MR_STYLE(mr) && \
++	ST_HAS_MENU_CSET(MR_STYLE(mr)) && CSET_IS_TRANSPARENT( \
++						ST_CSET_MENU(MR_STYLE(mr)))))
++
+ /* ---------------------------- imports ------------------------------------ */
+ 
+ /* This external is safe. It's written only during startup. */
+@@ -220,6 +233,8 @@ typedef struct mloop_static_info_t
+ } mloop_static_info_t;
+ 
+ /* ---------------------------- forward declarations ----------------------- */
++static MenuRoot *seek_submenu_instance(
++	MenuRoot *parent_menu, MenuItem *parent_item);
+ 
+ /* ---------------------------- local variables ---------------------------- */
+ 
+@@ -381,12 +396,22 @@ static void animated_move_back(
+ 		Bool transparent_bg = False;
+ 
+ 		/* move it back */
+-		if (ST_HAS_MENU_CSET(MR_STYLE(mr)) &&
+-		    CSET_IS_TRANSPARENT(ST_CSET_MENU(MR_STYLE(mr))))
++		if (MR_IS_TRANSPARENT_MENU(mr))
+ 		{
+ 			transparent_bg = True;
+ 			get_menu_repaint_transparent_parameters(
+ 				&mrtp, mr, fw);
++			if (MR_IS_TRANSLUCENT_MENU(mr) && MR_SUBMENU_ITEM(mr))
++			{
++				MenuRoot *smr;
++				smr = seek_submenu_instance(
++					mr, MR_SUBMENU_ITEM(mr));
++				if (smr)
++				{
++					/* just unmap it here, popdown later */
++					XUnmapWindow(dpy, MR_WINDOW(smr));
++				}
++			}
+ 		}
+ 		AnimatedMoveOfWindow(
+ 			MR_WINDOW(mr), act_x, act_y, act_x - MR_XANIMATION(mr),
+@@ -1912,6 +1937,7 @@ static void make_menu_window(MenuRoot *mr, Bool is_tear_off)
+ 				/* Doh.  Use the standard display instead. */
+ 				MR_CREATE_DPY(mr) = dpy;
+ 			}
++			MR_IS_TEAR_OFF_MENU(mr) = 1;
+ 		}
+ 		else
+ 		{
+@@ -2716,7 +2742,37 @@ static void paint_menu(
+ 	}
+ 	MR_IS_PAINTED(mr) = 1;
+ 	/* paint the menu background */
+-	if (ms && ST_HAS_MENU_CSET(ms))
++	if (MR_IS_TRANSLUCENT_MENU(mr))
++	{
++		Pixmap trans = None;
++		FvwmRenderAttributes fra;
++		colorset_t *colorset = &Colorset[ST_CSET_MENU(ms)];
++	
++		fra.mask = 0;
++		if (colorset->translucent_tint_percent > 0)
++		{
++			fra.mask = FRAM_HAVE_TINT;
++			fra.tint = colorset->translucent_tint;
++			fra.tint_percent = colorset->translucent_tint_percent;
++		}
++		if (MR_IS_BACKGROUND_SET(mr) == False)
++		{
++			trans = PGraphicsCreateTranslucent(
++				dpy, MR_WINDOW(mr), &fra,
++				BACK_GC(ST_MENU_INACTIVE_GCS(ms)),
++				MR_X(mr), MR_Y(mr), MR_WIDTH(mr), MR_HEIGHT(mr));
++			XMapRaised(dpy, MR_WINDOW(mr));
++			if (trans != None)
++			{
++				XSetWindowBackgroundPixmap(
++					dpy, MR_WINDOW(mr), trans);
++				MR_IS_BACKGROUND_SET(mr) = True;
++				clear_expose_menu_area(MR_WINDOW(mr), pevent);
++				XFreePixmap(dpy, trans);
++			}
++		}
++	}
++	else if (ms && ST_HAS_MENU_CSET(ms))
+ 	{
+ 		if (MR_IS_BACKGROUND_SET(mr) == False)
+ 		{
+@@ -3525,10 +3581,7 @@ static int pop_menu_up(
+ 					MR_HAS_POPPED_UP_RIGHT(mr) = 0;
+ 				}
+ 				MR_XANIMATION(parent_menu) += end_x - prev_x;
+-				if (ST_HAS_MENU_CSET(MR_STYLE(parent_menu)) &&
+-				    CSET_IS_TRANSPARENT(
+-					    ST_CSET_MENU(
+-						    MR_STYLE(parent_menu))))
++				if (MR_IS_TRANSPARENT_MENU(parent_menu))
+ 				{
+ 					transparent_bg = True;
+ 					get_menu_repaint_transparent_parameters(
+@@ -3707,10 +3760,21 @@ static int pop_menu_up(
+ 	 */
+ 
+ 	XMoveWindow(dpy, MR_WINDOW(mr), x, y);
++	MR_X(mr) = x;
++	MR_Y(mr) = y;
+ 	XSelectInput(dpy, MR_WINDOW(mr), event_mask);
+-	XMapRaised(dpy, MR_WINDOW(mr));
+-	if (popdown_window)
+-		XUnmapWindow(dpy, popdown_window);
++	if (MR_IS_TRANSLUCENT_MENU(mr))
++	{
++		if (popdown_window)
++			XUnmapWindow(dpy, popdown_window);
++		paint_menu(mr, NULL, fw);
++	}
++	else
++	{
++		XMapRaised(dpy, MR_WINDOW(mr));
++		if (popdown_window)
++			XUnmapWindow(dpy, popdown_window);
++	}
+ 	XFlush(dpy);
+ 	MR_MAPPED_COPIES(mr)++;
+ 	MST_USAGE_COUNT(mr)++;
+@@ -6274,16 +6338,122 @@ void update_transparent_menu_bg(
+ 	{
+ 		last = True;
+ 	}
+-	if (!last && CSET_IS_TRANSPARENT_PR_TINT(ST_CSET_MENU(ms)))
++	if (!last &&
++	    (CSET_IS_TRANSPARENT_PR_TINT(ST_CSET_MENU(ms)) ||
++	     MR_IS_TRANSLUCENT_MENU(mr)))
+ 	{
+ 		/* too slow ... */
+ 		return;
+ 	}
+-	SetWindowBackgroundWithOffset(
+-		dpy, MR_WINDOW(mr), step_x - current_x, step_y - current_y,
+-		MR_WIDTH(mr), MR_HEIGHT(mr),
+-		&Colorset[ST_CSET_MENU(ms)], Pdepth,
+-		FORE_GC(MST_MENU_INACTIVE_GCS(mr)), False);
++	if (MR_IS_TRANSLUCENT_MENU(mr))
++	{
++		Pixmap trans, tmp;
++		FvwmRenderAttributes fra;
++		colorset_t *colorset = &Colorset[ST_CSET_MENU(ms)];
++
++		fra.mask = 0;
++		if (colorset->translucent_tint_percent > 0)
++		{
++			fra.mask = FRAM_HAVE_TINT;
++			fra.tint = colorset->translucent_tint;
++			fra.tint_percent = colorset->translucent_tint_percent;
++		}
++		if (current_x == step_x) 
++		{
++			/* Reuse the old pixmap for the part of the menu 
++			 * that has not moved. (This can be extended to get
++			 * two new rectangles, one in each direction)
++			 * 
++			 * It saves the unmapping of the window and makes 
++			 * Things less flickering.
++			 */
++			GC my_gc;
++			unsigned long valuemask = GCSubwindowMode;
++			XGCValues values;
++			int out_y=0;
++			values.subwindow_mode = IncludeInferiors;
++			if (step_y < 0)
++			{
++				out_y = -step_y;
++			}
++			trans = XCreatePixmap(dpy, MR_WINDOW(mr), MR_WIDTH(mr),
++					      MR_HEIGHT(mr), Pdepth);
++			my_gc = fvwmlib_XCreateGC(dpy,  MR_WINDOW(mr), 0, NULL);
++			XChangeGC(dpy, my_gc, valuemask, &values);
++
++			XClearWindow(dpy, MR_WINDOW(mr));
++
++			if (current_y < step_y)
++			{
++				XCopyArea(dpy, MR_WINDOW(mr), trans, my_gc, 0, 
++					  step_y-current_y, MR_WIDTH(mr), 
++					  MR_HEIGHT(mr)-(step_y-current_y),
++					  0,0);
++				tmp = PGraphicsCreateTranslucent(
++					dpy, MR_WINDOW(mr), &fra,
++					BACK_GC(ST_MENU_INACTIVE_GCS(ms)),
++					current_x, current_y+MR_HEIGHT(mr), 
++					MR_WIDTH(mr), step_y-current_y);
++
++				XCopyArea(dpy, tmp, trans, my_gc, 0, 0,
++					  MR_WIDTH(mr), step_y-current_y,0,
++					  MR_HEIGHT(mr)-(step_y-current_y));
++			}
++			else 
++			{
++				XCopyArea(dpy, MR_WINDOW(mr), trans, my_gc, 0, 
++					  0, MR_WIDTH(mr), 
++					  MR_HEIGHT(mr)-(current_y-step_y), 0,
++					  current_y-step_y);
++				tmp = PGraphicsCreateTranslucent(
++					dpy, MR_WINDOW(mr), &fra,
++					BACK_GC(ST_MENU_INACTIVE_GCS(ms)),
++					current_x,step_y, MR_WIDTH(mr),
++					current_y-step_y);
++				XCopyArea(dpy, tmp, trans, my_gc, 0, 0,
++					  MR_WIDTH(mr), current_y-step_y,0,
++					  out_y);
++			}
++			MR_X(mr) = step_x;
++			MR_Y(mr) = step_y;
++			XFreePixmap(dpy, tmp);
++			XFreeGC(dpy,my_gc);
++		}		
++		else
++		{
++			XUnmapWindow(dpy, MR_WINDOW(mr));
++			MR_X(mr) = step_x;
++			MR_Y(mr) = step_y;
++			trans = PGraphicsCreateTranslucent(
++				dpy, MR_WINDOW(mr), &fra,
++				BACK_GC(ST_MENU_INACTIVE_GCS(ms)),
++				step_x, step_y, MR_WIDTH(mr), 
++				MR_HEIGHT(mr));
++			XMapRaised(dpy, MR_WINDOW(mr));
++		}
++		XSetWindowBackgroundPixmap(
++			dpy, MR_WINDOW(mr), trans);
++		XFreePixmap(dpy, trans);
++		if (current_x == step_x)
++		{
++			/* Redraw the border */
++			RelieveRectangle(
++				dpy, MR_WINDOW(mr), 0, 0, MR_WIDTH(mr) - 1,
++				MR_HEIGHT(mr) - 1, (Pdepth < 2) ?
++				SHADOW_GC(MST_MENU_INACTIVE_GCS(mr)) :
++				HILIGHT_GC(MST_MENU_INACTIVE_GCS(mr)),
++				SHADOW_GC(MST_MENU_INACTIVE_GCS(mr)), 
++				MST_BORDER_WIDTH(mr));
++		}
++	}
++	else
++	{
++		SetWindowBackgroundWithOffset(
++			dpy, MR_WINDOW(mr), step_x - current_x,
++			step_y - current_y, MR_WIDTH(mr), MR_HEIGHT(mr),
++			&Colorset[ST_CSET_MENU(ms)], Pdepth,
++			FORE_GC(MST_MENU_INACTIVE_GCS(mr)), False);
++	}
+ }
+ 
+ 
+@@ -6324,10 +6494,7 @@ void repaint_transparent_menu(
+ 	}
+ 	if (!is_bg_set)
+ 	{
+-		SetWindowBackground(
+-			dpy, MR_WINDOW(mr), MR_WIDTH(mr), MR_HEIGHT(mr),
+-			&Colorset[ST_CSET_MENU(ms)], Pdepth,
+-			FORE_GC(MST_MENU_INACTIVE_GCS(mr)), False);
++		update_transparent_menu_bg(prtm, x, y, x, y, end_x, end_y);
+ 	}
+ 	/* redraw the background of non active item */
+ 	for (mi = MR_FIRST_ITEM(mr); mi != NULL; mi = MI_NEXT_ITEM(mi))
+@@ -6951,10 +7118,12 @@ void UpdateMenuColorset(int cset)
+ 				SetWindowBackground(
+ 					dpy, MR_WINDOW(mr), MR_WIDTH(mr),
+ 					MR_HEIGHT(mr),
+-					&Colorset[ST_CSET_MENU(ms)],
+-					Pdepth,
++					&Colorset[ST_CSET_MENU(ms)], Pdepth,
+ 					FORE_GC(MST_MENU_INACTIVE_GCS(mr)),
+-					True);
++					False);
++				XClearArea(
++					dpy, MR_WINDOW(mr), 0, 0, MR_WIDTH(mr),
++					MR_HEIGHT(mr), True);
+ 			}
+ 			else if ((ST_HAS_ACTIVE_CSET(ms) &&
+ 				  ST_CSET_ACTIVE(ms) == cset) ||
+diff --git i/fvwm/menus.h w/fvwm/menus.h
+index 28e9db3..6b620b2 100644
+--- i/fvwm/menus.h
++++ w/fvwm/menus.h
+@@ -15,6 +15,9 @@
+ #define IS_MENU_RETURN(x) \
+   ((x)==MENU_DONE || (x)==MENU_ABORTED || (x)==MENU_SUBMENU_TORN_OFF)
+ 
++#define MR_X(m)                     ((m)->d->x)
++#define MR_Y(m)                     ((m)->d->y)
++
+ struct MenuRoot;
+ struct MenuStyle;
+ struct MenuReturn;
+diff --git i/libs/Colorset.h w/libs/Colorset.h
+index d610b52..6c1892e 100644
+--- i/libs/Colorset.h
++++ w/libs/Colorset.h
+@@ -51,6 +51,10 @@ typedef struct
+ 	Bool dither;
+ 	Bool allows_buffered_transparency;
+ 	Bool is_maybe_root_transparent;
++	/* only use by fvwm menu (non tear-off) */
++	Bool is_translucent;
++	Pixel translucent_tint;
++	unsigned int translucent_tint_percent : 7;
+ #endif
+ } colorset_t;
+ 
+@@ -78,6 +82,7 @@ typedef struct
+ #define FG_TINT_SUPPLIED  0x100
+ #define BG_TINT_SUPPLIED  0x200
+ #define ICON_TINT_SUPPLIED 0x400
++#define TRANSLUCENT_TINT_SUPPLIED 0x800
+ #endif
+ 
+ /* colorsets are stored as an array of structs to permit fast dereferencing */
+@@ -153,6 +158,11 @@ extern colorset_t *Colorset;
+     (cset != NULL && cset->pixmap == ParentRelative && \
+      cset->tint_percent > 0)
+ 
++#define CSET_IS_TRANSLUCENT(cset) \
++    (cset >= 0 && Colorset[cset].is_translucent)
++#define CSETS_IS_TRANSLUCENT(cset) \
++    (cset && cset->is_translucent)
++
+ #ifndef FVWM_COLORSET_PRIVATE
+ /* Create n new colorsets, fvwm/colorset.c does its own thing (different size)
+  */
+diff --git i/libs/PictureGraphics.c w/libs/PictureGraphics.c
+index f861726..a2fdbea 100644
+--- i/libs/PictureGraphics.c
++++ w/libs/PictureGraphics.c
+@@ -1360,7 +1360,7 @@ void PGraphicsTintRectangle(
+ 	}
+ }
+ 
+-#if 0 /* humm... maybe useful one day with menus */
++#if 1 /* humm... maybe useful one day with menus */
+ Pixmap PGraphicsCreateTranslucent(
+ 	Display *dpy, Window win, FvwmRenderAttributes *fra, GC gc,
+ 	int x, int y, int width, int height)
+diff --git i/libs/PictureGraphics.h w/libs/PictureGraphics.h
+index ec75601..5e0001d 100644
+--- i/libs/PictureGraphics.h
++++ w/libs/PictureGraphics.h
+@@ -122,7 +122,9 @@ void PGraphicsTintRectangle(
+ 	Display *dpy, Window win, Pixel tint, int tint_percent,
+ 	Drawable dest, Bool dest_is_a_window, GC gc, GC mono_gc, GC alpha_gc,
+ 	int dest_x, int dest_y, int dest_w, int dest_h);
+-
++Pixmap PGraphicsCreateTranslucent(
++	Display *dpy, Window win, FvwmRenderAttributes *fra, GC gc,
++	int x, int y, int width, int height);
+ /* never used ! */
+ Pixmap PGraphicsCreateDitherPixmap(
+ 	Display *dpy, Window win, Drawable src, Pixmap mask, int depth, GC gc,

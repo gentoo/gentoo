@@ -14,7 +14,7 @@ S="${WORKDIR}/${P^}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="cuda test"
 RESTRICT="!test? ( test )"
 
@@ -46,6 +46,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.1.4-tests.patch"
+	"${FILESDIR}/${PN}-3.1.4-reduce-grpc-verbosity.patch"
 )
 
 pkg_setup() {
@@ -104,7 +105,7 @@ src_test() {
 	fi
 
 	mylitopts+=(-j "$(makeopts_jobs)" )
-	[[ -n "${LIT_SKIP_TESTS[*]}" ]] && mylitopts+=( --filter-out "($( IFS='|'; echo "${CMAKE_SKIP_TESTS[*]}"))" )
+	[[ -n "${LIT_SKIP_TESTS[*]}" ]] && mylitopts+=( --filter-out "($( IFS='|'; echo "${LIT_SKIP_TESTS[*]}"))" )
 
 	export LIT_OPTS="${mylitopts[*]}"
 

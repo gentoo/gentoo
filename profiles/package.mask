@@ -33,46 +33,413 @@
 
 #--- END OF EXAMPLES ---
 
-# Sam James <sam@gentoo.org> (2024-08-02)
-# Unreliable software, unmaintained in Gentoo. Having it in the main
-# repositories may give users an impression of it being a safe tool.
-# Removal on 2024-09-01.
-app-backup/mkstage4
+# Eli Schwartz <eschwartz@gentoo.org> (2024-09-19)
+# Breaks parallel builds with fatal compiler errors.
+# Bug #939798, #939875.
+=dev-python/setuptools-75.0.0
+=dev-python/setuptools-75.1.0
 
-# James Le Cuirot <chewi@gentoo.org> (2024-07-29)
-# Superseded by media-libs/libv4l[utils].
-# Removal on 2024-08-29. Bug #936674.
-media-tv/v4l-utils
+# Hans de Graaff <graaff@gentoo.org> (2024-09-14)
+# Obsolete slots that were used for older cucumber version but that no
+# longer have reverse dependencies. Removal on 2024-10-14.
+dev-util/cucumber-compatibility-kit:10
+dev-util/cucumber-core:12
+dev-util/cucumber-gherkin:22
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-07-29)
-# Lacks maintainer capacity for update version plus java dependencies.
-# A pull request for the version bump could be provided on request.
-# Removal on 2024-08-28. Bug #736076.
-media-video/bdsup2sub
+# Hans de Graaff <graaff@gentoo.org> (2024-09-14)
+# Old slots that are not compatible with ruby32. Use the newer slots
+# instead. Removal on 2024-10-14.
+dev-ruby/hiera-eyaml:3
+dev-util/aruba:0
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2024-09-10)
+# ia64 only package. Since we drop ia64, we can remove this package.
+# Removal on 2024-10-10.  Bug #939298.
+sys-apps/salinfo
+
+# Ulrich Müller <ulm@gentoo.org> (2024-09-12)
+# Pretest versions, masked for testing.
+<app-editors/emacs-30.0.9999:30-vcs
+
+# Eli Schwartz <eschwartz@gentoo.org> (2024-09-09)
+# Upstream has dropped this package since MATE 1.28.
+# Removal on 2024-10-09.  Bug #932568.
+mate-extra/mate-netbook
+
+# Eli Schwartz <eschwartz@gentoo.org> (2024-09-09)
+# Fails to build with modern C. Unmaintained for 20 years.
+# Removal on 2024-10-09.  Bug #877105, #927389.
+sci-chemistry/mopac7
+
+# Sam James <sam@gentoo.org> (2024-09-10)
+# Breaks libstdc++ with a casing issue: https://gcc.gnu.org/PR116657
+=sys-libs/timezone-data-2024b
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-09)
+# No revdeps for years, KF5-based. Removal on 2024-10-09.
+net-libs/libmediawiki
+
+# Alfredo Tupone <tupone@gentoo.org> (2024-06-09)
+# These packages are no more needed. Use dev-ml/dune-private-libs
+# that include these
+# remove on 2024-10-08. Bug #939339
+dev-ml/stdune
+dev-ml/ordering
+dev-ml/dyn
+
+# Michał Górny <mgorny@gentoo.org> (2024-09-08)
+# Does not build anymore.  No upstream activity since 2021.
+# Removal on 2024-10-08.  Bug #932532.
+sci-physics/qmeq
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-07)
+# These packages are EOL in Plasma 6.
+# Removal on 2024-10-07.
+<kde-plasma/khotkeys-5.27.50:5
+<kde-plasma/libkworkspace-5.27.50:5
+<kde-plasma/xembed-sni-proxy-5.27.50:5
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-07)
+# Mask remaining KDE Gear 23.08.5 packages for removal on 2024-09-21.
+# All of these have KF6-based upgrades available - all users must upgrade.
+~app-cdr/dolphin-plugins-mountiso-23.08.5
+~app-crypt/keysmith-23.08.5
+~kde-apps/ark-23.08.5
+~kde-apps/baloo-widgets-23.08.5
+~kde-apps/bomber-23.08.5
+~kde-apps/bovo-23.08.5
+~kde-apps/dolphin-23.08.5
+~kde-apps/filelight-23.08.5
+~kde-apps/granatier-23.08.5
+~kde-apps/kajongg-23.08.5
+~kde-apps/kapman-23.08.5
+~kde-apps/kate-addons-23.08.5
+~kde-apps/kate-23.08.5
+~kde-apps/kate-lib-23.08.5
+~kde-apps/katomic-23.08.5
+~kde-apps/kbackup-23.08.5
+~kde-apps/kblackbox-23.08.5
+~kde-apps/kblocks-23.08.5
+~kde-apps/kbounce-23.08.5
+~kde-apps/kbreakout-23.08.5
+~kde-apps/kcalc-23.08.5
+~kde-apps/kcalutils-23.08.5
+~kde-apps/kcharselect-23.08.5
+~kde-apps/kdebugsettings-23.08.5
+~kde-apps/kdf-23.08.5
+~kde-apps/kdialog-23.08.5
+~kde-apps/kdiamond-23.08.5
+~kde-apps/keditbookmarks-23.08.5
+~kde-apps/kfind-23.08.5
+~kde-apps/kfourinline-23.08.5
+~kde-apps/kgoldrunner-23.08.5
+~kde-apps/kigo-23.08.5
+~kde-apps/killbots-23.08.5
+~kde-apps/kiriki-23.08.5
+~kde-apps/kjumpingcube-23.08.5
+~kde-apps/klickety-23.08.5
+~kde-apps/klines-23.08.5
+~kde-apps/kmahjongg-23.08.5
+~kde-apps/kmines-23.08.5
+~kde-apps/knavalbattle-23.08.5
+~kde-apps/knetwalk-23.08.5
+~kde-apps/knights-23.08.5
+~kde-apps/kolf-23.08.5
+~kde-apps/kollision-23.08.5
+~kde-apps/kolourpaint-24.02.2
+~kde-apps/konquest-23.08.5
+~kde-apps/konsole-23.08.5
+~kde-apps/kpat-23.08.5
+~kde-apps/kreversi-23.08.5
+~kde-apps/kshisen-23.08.5
+~kde-apps/ksirk-23.08.5
+~kde-apps/ksnakeduel-23.08.5
+~kde-apps/kspaceduel-23.08.5
+~kde-apps/ksquares-23.08.5
+~kde-apps/ksudoku-23.08.5
+~kde-apps/kteatime-23.08.5
+~kde-apps/ktimer-23.08.5
+~kde-apps/ktuberling-23.08.5
+~kde-apps/kubrick-23.08.5
+~kde-apps/kwalletmanager-23.08.5
+~kde-apps/kwrite-23.08.5
+~kde-apps/libkdegames-23.08.5
+~kde-apps/libkmahjongg-23.08.5
+~kde-apps/lskat-23.08.5
+~kde-apps/palapeli-23.08.5
+~kde-apps/picmi-23.08.5
+~kde-apps/sweeper-23.08.5
+~kde-apps/yakuake-23.08.5
+~kde-misc/kclock-23.08.5
+~kde-misc/kweather-23.08.5
+~kde-misc/markdownpart-23.08.5
+~media-gfx/skanpage-23.08.5
+~sys-block/partitionmanager-23.08.5
+~sys-libs/kpmcore-23.08.5
+<media-libs/pulseaudio-qt-1.4.0
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-07)
+# Plasma 6 is not planned to be going stable on x86.
+# Plasma 5 will be cleaned up shortly. Removal on 2024-09-21.
+<kde-plasma/bluedevil-5.27.50:5
+<kde-plasma/breeze-5.27.50:5
+<kde-plasma/breeze-grub-5.27.50:5
+<kde-plasma/breeze-gtk-5.27.50:5
+<kde-plasma/breeze-plymouth-5.27.50:5
+<kde-plasma/discover-5.27.50:5
+<kde-plasma/drkonqi-5.27.50:5
+<kde-plasma/flatpak-kcm-5.27.50:5
+<kde-plasma/kactivitymanagerd-5.27.50:5
+<kde-plasma/kde-cli-tools-5.27.50:5
+<kde-plasma/kde-gtk-config-5.27.50:5
+<kde-plasma/kdecoration-5.27.50:5
+<kde-plasma/kdeplasma-addons-5.27.50:5
+<kde-plasma/kgamma-5.27.50:5
+<kde-plasma/kinfocenter-5.27.50:5
+<kde-plasma/kmenuedit-5.27.50:5
+<kde-plasma/kpipewire-5.27.50:5
+<kde-plasma/kscreen-5.27.50:5
+<kde-plasma/kscreenlocker-5.27.50:5
+<kde-plasma/ksshaskpass-5.27.50:5
+<kde-plasma/ksystemstats-5.27.50:5
+<kde-plasma/kwallet-pam-5.27.50:5
+<kde-plasma/kwin-5.27.50:5
+<kde-plasma/kwrited-5.27.50:5
+<kde-plasma/layer-shell-qt-5.27.50:5
+<kde-plasma/libksysguard-5.27.50:5
+<kde-plasma/milou-5.27.50:5
+<kde-plasma/oxygen-5.27.50:5
+<kde-plasma/oxygen-sounds-5.27.50:5
+<kde-plasma/plasma-browser-integration-5.27.50:5
+<kde-plasma/plasma-desktop-5.27.50:5
+<kde-plasma/plasma-disks-5.27.50:5
+<kde-plasma/plasma-firewall-5.27.50:5
+<kde-plasma/plasma-integration-5.27.50:5
+<kde-plasma/plasma-meta-5.27.50:5
+<kde-plasma/plasma-nm-5.27.50:5
+<kde-plasma/plasma-pa-5.27.50:5
+<kde-plasma/plasma-sdk-5.27.50:5
+<kde-plasma/plasma-systemmonitor-5.27.50:5
+<kde-plasma/plasma-thunderbolt-5.27.50:5
+<kde-plasma/plasma-workspace-5.27.50:5
+<kde-plasma/plasma-workspace-wallpapers-5.27.50:5
+<kde-plasma/plasma-vault-5.27.50:5
+<kde-plasma/plasma-welcome-5.27.50:5
+<kde-plasma/plymouth-kcm-5.27.50:5
+<kde-plasma/powerdevil-5.27.50:5
+<kde-plasma/sddm-kcm-5.27.50:5
+<kde-plasma/systemsettings-5.27.50:5
+<kde-plasma/xdg-desktop-portal-kde-5.27.50:5
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-04)
+# Unmaintained upstream, latest media-libs/phonon release incompatible.
+# Removal on 2024-10-04.
+media-libs/phonon-gstreamer
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-04)
+# KF5 Porting aids (from KDElibs4). No more, or PMASKED revdeps.
+# Removal on 2024-10-04. Bug #755956
+kde-frameworks/khtml
+kde-frameworks/kjs
+kde-frameworks/kross
+
+# Fabian Groffen <grobian@gentoo.org> (2024-09-02)
+# exim_tinydb utility crashes due to invalid free() (used in startup script)
+=mail-mta/exim-4.98
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-08-31)
+# All users must upgrade to KDE PIM 6.
+# KDE PIM 5 depends on deprecated kde-frameworks/kross:5,
+# blocking deprecated dev-qt/qtscript:5 removal, and deprecated
+# dev-qt/qtwebengine:5.
+# x86 users: This is the end of the road for KDE PIM on x86. Export
+# your data with kde-apps/pim-data-exporter, if necessary, and migrate
+# to alternative PIM applications.
+# Bugs #810493, #925720. Removal on 2024-09-31.
+<app-office/merkuro-23.08.50
+<kde-apps/akonadi-23.08.50
+<kde-apps/akonadi-calendar-23.08.50
+<kde-apps/akonadi-contacts-23.08.50
+<kde-apps/akonadi-import-wizard-23.08.50
+<kde-apps/akonadi-mime-23.08.50
+<kde-apps/akonadi-notes-23.08.50
+<kde-apps/akonadi-search-23.08.50
+<kde-apps/akonadiconsole-23.08.50
+<kde-apps/akregator-23.08.50
+<kde-apps/calendarjanitor-23.08.50
+<kde-apps/calendarsupport-23.08.50
+<kde-apps/eventviews-23.08.50
+<kde-apps/grantlee-editor-23.08.50
+<kde-apps/grantleetheme-23.08.50
+<kde-apps/incidenceeditor-23.08.50
+<kde-apps/kaddressbook-23.08.50
+<kde-apps/kalarm-23.08.50
+<kde-apps/kcalutils-23.08.50
+<kde-apps/kdepim-addons-23.08.50
+<kde-apps/kdepim-meta-23.08.50
+<kde-apps/kdepim-runtime-23.08.50
+<kde-apps/kidentitymanagement-23.08.50
+<kde-apps/kimap-23.08.50
+<kde-apps/kitinerary-23.08.50
+<kde-apps/kldap-23.08.50
+<kde-apps/kleopatra-23.08.50
+<kde-apps/kmail-23.08.50
+<kde-apps/kmail-account-wizard-23.08.50
+<kde-apps/kmailtransport-23.08.50
+<kde-apps/kmbox-23.08.50
+<kde-apps/kmime-23.08.50
+<kde-apps/knotes-23.08.50
+<kde-apps/konsolekalendar-23.08.50
+<kde-apps/kontact-23.08.50
+<kde-apps/kontactinterface-23.08.50
+<kde-apps/korganizer-23.08.50
+<kde-apps/kpimtextedit-23.08.50
+<kde-apps/kpkpass-23.08.50
+<kde-apps/ksmtp-23.08.50
+<kde-apps/libgravatar-23.08.50
+<kde-apps/libkdepim-23.08.50
+<kde-apps/libkleo-23.08.50
+<kde-apps/libksieve-23.08.50
+<kde-apps/libktnef-23.08.50
+<kde-apps/mailcommon-23.08.50
+<kde-apps/mailimporter-23.08.50
+<kde-apps/mbox-importer-23.08.50
+<kde-apps/messagelib-23.08.50
+<kde-apps/pim-data-exporter-23.08.50
+<kde-apps/pim-sieve-editor-23.08.50
+<kde-apps/pimcommon-23.08.50
+<kde-misc/zanshin-23.08.50
+<kde-apps/kgpg-23.08.50
+app-text/kjots:5
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-08-31)
+# This is so old that it was only kept alive as KF5-based snapshot of an
+# upstream git branch containing a single "Initial port to KF/Qt5 (back in
+# 2017). That was never merged to master, project archived for a long time.
+# Bug #759772. Removal on 2024-09-31.
+media-gfx/kcoloredit
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-08-29)
+# No signs of development upstream (last commit in 2016). If you use this,
+# please ping them in order to get it ported over to KF6.
+# Removal on 2024-09-29.
+kde-misc/ktoshiba
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-08-29)
+# This is so old that it was only kept alive as KF5-based version by means
+# of a downstream patch porting away from KDElibs4 (back in 2014!). Not
+# functional in KIO-6 revdeps. Removal on 2024-09-29.
+kde-misc/openofficeorg-thumbnail
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-08-29)
+# Long unmaintained Plasma 5-only desktop widget. Removal on 2024-09-29.
+kde-misc/plasma-applet-network-monitor
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-08-29)
+# This is so old that it was only kept alive as KF5-based version by means
+# of a downstream patch porting away from KDElibs4. No reports of it even
+# being in a working state (e.g. bug 813031). Removal on 2024-09-29.
+kde-misc/kio-locate
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-08-25)
+# Broken with current Plasma 5 version, not ported to Plasma 6.
+# Removal on 2024-09-24.
+kde-misc/latte-dock
+
+# Florian Schmaus <flow@gentoo.org> (2024-08-23)
+# Has a serious bug that causes synced directories to end up world read-
+# and writeable. See https://github.com/nextcloud/desktop/issues/6863
+>=net-misc/nextcloud-client-3.13.1
+
+# Arsen Arsenović <arsen@gentoo.org> (2024-08-02)
+# Guile rework masks.  Mask all packages or package versions that are
+# being bumped as part of the Guile reslotting process.
+# Masked until the whole Guile ecosystem is updated.
+>=dev-scheme/slib-3.3.1-r100
+www-apps/haunt
+dev-scheme/guile-commonmark
+>=dev-scheme/guile-reader-0.6.3-r100
+dev-scheme/guile:2.2
+dev-scheme/guile:3.0
+>=dev-build/make-4.4.1-r100
+>=app-office/gnucash-5.8-r100
+>=app-shells/gash-0.3.0-r100
+>=dev-build/remake-4.3.1.1.6-r100
+>=dev-debug/gdb-15.1-r100
+>=dev-scheme/akku-1.1.0-r100
+>=dev-scheme/bytestructures-2.0.2-r100
+>=dev-scheme/fibers-1.2.0_p20230522-r100
+>=dev-scheme/goosh-1.3-r100
+>=dev-scheme/guile-colorized-0.1_p20191205-r100
+>=dev-scheme/guile-config-0.5.1-r100
+>=dev-scheme/guile-dbi-2.1.9
+>=dev-scheme/guile-dbd-postgresql-2.1.9
+>=dev-scheme/guile-dbd-sqlite3-2.1.9
+>=dev-scheme/guile-gcrypt-0.4.0-r100
+>=dev-scheme/guile-git-0.7.0-r100
+>=dev-scheme/guile-gnutls-4.0.0-r100
+>=dev-scheme/guile-hall-0.4.1-r100
+>=dev-scheme/guile-json-4.7.3-r100
+>=dev-scheme/guile-lib-0.2.7-r100
+>=dev-scheme/guile-libyaml-20211124-r100
+>=dev-scheme/guile-lzlib-0.0.2-r100
+>=dev-scheme/guile-ncurses-3.1-r100
+>=dev-scheme/guile-nyacc-1.06.7-r100
+>=dev-scheme/guile-sqlite3-0.1.3-r100
+>=dev-scheme/guile-ssh-0.16.4-r100
+>=dev-scheme/guile-zlib-0.1.0-r100
+>=dev-scheme/guile-zstd-0.1.1-r100
+>=dev-scheme/xdgdirs-2.2-r100
+>=media-gfx/graphviz-12.0.0-r100
+>=media-sound/lilypond-2.24.4-r100
+>=net-analyzer/alive-2.0.5-r100
+>=net-irc/weechat-4.4.2-r100
+>=net-mail/mailutils-3.17-r100
+>=sci-electronics/geda-1.10.2-r100
+>=sci-electronics/gwave-20190116-r100
+>=sci-libs/linux-gpib-4.3.6-r100
+>=sci-libs/nlopt-2.7.1-r100
+>=sys-devel/autogen-5.18.16-r100
+>=www-client/elinks-0.16.1.1-r100
+>=x11-misc/xbindkeys-1.8.7-r100
+>=dev-scheme/guile-gi-0.3.2-r100
+>=media-sound/denemo-2.6.0-r100
+>=dev-scheme/skribilo-0.10.0-r100
+
+# Eli Schwartz <eschwartz@gentoo.org> (2024-08-15)
+# Abandoned upstream since 2011, unmaintained in gentoo since 2017. Tons of
+# patches, breaks again with GCC 14. Severe QA issues, automagic dependencies,
+# sole reverse dependency wants to remove it anyway.
+# Removal on 2024-09-14. Bug #829229, #854900, #863959, #880839, #882265, #931102, #914924.
+app-text/cuneiform
+
+# Ionen Wolkens <ionen@gentoo.org> (2024-08-11)
+# >=1.1.14 enables usage of explicit sync (with >=nvidia-drivers-560
+# and compositors that supports like kwin-6), which currently seems
+# to be causing too many problems ranging from application crashes
+# and potential VRAM leaking (even with the fixes in 1.1.15) and may
+# be better left masked for the time being. It can hwoever solve
+# flicking/stutter issues on some setups so users may want to unmask
+# if heavily affected (bug #937773).
+>=gui-libs/egl-wayland-1.1.14
+
+# Pacho Ramos <pacho@gentoo.org> (2024-08-09)
+# Mask until we find out a way to deal better with the upstream
+# introduced circular dep, bug #937616
+>=dev-libs/glib-2.80
+>=dev-util/glib-utils-2.80
+>=dev-util/gdbus-codegen-2.80
+>=gnome-base/gnome-shell-46
+>=gnome-extra/gnome-shell-extensions-46
+>=gnome-base/nautilus-46
+>=dev-libs/gobject-introspection-1.80
+>=dev-libs/gobject-introspection-common-1.80
+>=x11-terms/ptyxis-46
 
 # Eli Schwartz <eschwartz@gentoo.org> (2024-07-29)
 # Bad version can result in failing builds. Please upgrade to 72.1.0.
 =dev-python/ensurepip-setuptools-72.0.0
 =dev-python/setuptools-72.0.0
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-07-27)
-# Stable version stuck on EAPI=6.
-# Lacks maintainer capacity for dev-lang/scala.
-# Removal on 2024-08-26.  Bugs #932012, #932737, #933607.
-dev-lang/scala
-dev-lang/mozart
-dev-lang/mozart-stdlib
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-27)
-# EAPI=6 package, awaits version bump.
-# Removal on 2024-08-26.  Bug #936756.
-www-apps/rt
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-27)
-# EAPI=6, awaits version bump. This is *-macos prefix only package, so
-# hard to verify EAPI bump without the maintainer.
-# Removal on 2024-08-26.  Bug #936755.
-dev-debug/gdb-apple
 
 # Alfred Wingate <parona@protonmail.com> (2024-07-24)
 # Includes change that breaks firewalld notably.
@@ -82,141 +449,9 @@ dev-debug/gdb-apple
 # https://lore.kernel.org/netfilter-devel/Zp7FqL_YK3p_dQ8B@egarver-mac/
 =net-firewall/nftables-1.1.0
 
-# Sam James <sam@gentoo.org> (2024-07-24)
-# Fails to build with GCC 15, several open bugs
-# including test failures. Unpackaged by others.
-# Removal on 2024-08-23.  Bug #936581.
-app-accessibility/epos
-
-# David Seifert <soap@gentoo.org> (2024-07-22)
-# Unmaintained, replaced by app-portage/pram which has more features
-# and works better for merging PRs. Removal on 2024-08-21.
-dev-perl/Gentoo-App-Pram
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-07-21)
-# No more revdeps after net-libs/telepathy-accounts-signon last-rites.
-# Removal on 2024-08-20.
-net-libs/libsignon-glib
-
-# Hans de Graaff <graaff@gentoo.org> (2024-07-21)
-# Obsolete slots that are no longer used by any cucumber
-# version. Removal on 2024-08-21.
-dev-util/cucumber-core:10
-dev-util/cucumber-cucumber-expressions:16
-dev-util/cucumber-gherking:22
-dev-util/cucumber-html-formatter:20
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-20)
-# EAPI=6, fails to apply patch during src_prepare.
-# Removal on 2024-08-19.  Bugs #936398, #908957, #908959.
-media-video/raspberrypi-omxplayer
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-19)
-# EAPI=6 games. Feel free to drop any package after bumping it's EAPI.
-# Removal on 2024-08-18.  Bug #936299.
-games-arcade/sdl-sopwith
-games-arcade/syobon
-games-arcade/wop
-games-mud/crystal
-games-mud/gmudix
-games-mud/kildclient
-games-puzzle/color-lines
-games-puzzle/hangman
-games-puzzle/magiccube4d
-games-puzzle/scramble
-games-puzzle/zaz
-games-simulation/cannonsmash
-games-strategy/crimson
-
-# Ionen Wolkens <ionen@gentoo.org> (2024-07-18)
-# Explicit sync currently causes firefox to crash[1][2][3] (should be
-# improved in >=firefox-130 or so) among others like obs-studio[3],
-# and is still to be considered experimental. So keeping masked for
-# the time being while issues are ironed out.
-#
-# Feel free to unmask if not affected as it should improve the
-# experience esp. with Plasma 6 + wayland + nvidia, but please try
-# 1.1.13 before reporting crashes, freezes, or visual issues (and
-# bugs should go upstream).
-#
-# [1] https://github.com/NVIDIA/egl-wayland/issues/110
-# [2] https://github.com/NVIDIA/egl-wayland/issues/117
-# [3] https://bugzilla.mozilla.org/show_bug.cgi?id=1898476
-# [4] https://github.com/NVIDIA/egl-wayland/issues/118
-# and: https://bugzilla.mozilla.org/show_bug.cgi?id=1908825
-~gui-libs/egl-wayland-1.1.14
-
-# Hans de Graaff <graaff@gentoo.org> (2024-07-17)
-# Obsolete slot. Please use a newer slot instead. No reverse
-# dependencies left. Removal on 2024-08-17.
-dev-ruby/rmagick:4
-
-# Eli Schwartz <eschwartz@gentoo.org> (2024-07-15)
-# FreeWnn has no activity upstream on its (very slow!) development site
-# since 2015. Website is gone. Various build failures, fails to build
-# with gcc 14.  All of its reverse dependencies are even more dead, as
-# they do not even have distfiles anymore.
-# Removal on 2024-08-14.  Bug 936129.
-# Bug #829613, #854579, #871603, #874114, #934595.
-app-i18n/freewnn
-app-i18n/im-freewnn
-app-dicts/wnn-ldic
-app-i18n/kinput2
-
-# Hans de Graaff <graaff@gentoo.org> (2024-07-14)
-# Ancient package, last release ca. 2009. Upstream is gone. All
-# improvements are now available in dev-ruby/irb itself.
-# Removal on 2024-08-14.
-dev-ruby/wirble
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-13)
-# Maintainer-needed, depends on very old gui-libs/wlroots version,
-# no activity upstream since Jan 2022.
-# Removal on 2024-08-12.  Bugs #935921, #867808.
-gui-wm/hikari
-
-# Hans de Graaff <graaff@gentoo.org> (2024-07-12)
-# Test dependency that is no longer maintained, last release in
-# 2019. Broken in various ways. No reverse dependencies left.
-# Removal on 2024-08-12.
-dev-ruby/rspectacular
-
-# Michał Górny <mgorny@gentoo.org> (2024-07-12)
-# Obsoleted by dev-python/pytest-freezer (usually a drop-in replacement).
-# No reverse dependencies left.
-# Removal on 2024-08-11.  Bug #934604.
-dev-python/pytest-freezegun
-
-# Jaco Kroon <jaco@uls.co.za> (2024-07-11)
-# Superseded by xl2tpd, this no longer has any operational advantage over
-# xl2tpd.  If you need help you're welcome to contact me (jkroon on
-# libera.chat).
-# Removal on 2024-08-11. bugs: #414901, #768075, #919269
-net-dialup/openl2tp
-
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
 # New major ffmpeg version. Tracker bug #928905.
 >=media-video/ffmpeg-7.0
-
-# Michał Górny <mgorny@gentoo.org> (2024-07-06)
-# Leftover backport for Python 3.9.  No revdeps.
-# Removal on 2024-08-05.  Bug #935676.
-dev-python/pathlib2
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-05)
-# EAPI=6, no reverse dependencies, various issues with modern C.
-# Removal on 2024-08-04.  Bugs #935553, #875746, #875245, #731094.
-media-video/luvcview
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-05)
-# EAPI=6, no reverse dependencies, fails tests.
-# Removal on 2024-08-04.  Bugs #935549, #873463, #741508.
-sci-libs/minuit
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2024-07-05)
-# EAPI=6, many compilation and configure issues, more QA issues.
-# Removal on 2024-08-04.  Bug #935545.
-sci-astronomy/esomidas
 
 # Joonas Niilola <juippis@gentoo.org> (2024-07-04)
 # libxml2-2.13.1 removed "deprecated" symbols that other (older)
@@ -235,11 +470,6 @@ sci-astronomy/esomidas
 # The symbol versioning "fix" breaks anything built with 3.0.0.
 =dev-libs/libassuan-3.0.1
 
-# Hans de Graaff <graaff@gentoo.org> (2024-06-21)
-# Obsolete slot. Please use a newer slot instead.
-# Masked for removal on 2024-07-21.
-dev-ruby/public_suffix:4
-
 # Cédric Krier <cedk@gentoo.org> (2023-06-15)
 # critical regression with potential data loss:
 # https://lists.mercurial-scm.org/pipermail/mercurial-devel/2024-June/297954.html
@@ -248,14 +478,6 @@ dev-ruby/public_suffix:4
 ~dev-vcs/mercurial-6.7.1
 ~dev-vcs/mercurial-6.7.2
 ~dev-vcs/mercurial-6.7.3
-
-# Viorel Munteanu <ceamac@gentoo.org> (2024-06-11)
-# dev-php/pear, dev-php/PEAR-* and their reverse dependencies: mask for removal
-# in 30 days.
-# They are all unmaintained, most of the ebuilds are still EAPI 6, and together
-# they have around 40 bugs.
-# Removal: 2024-08-11.  Bug #933998.
-dev-php/PEAR-Mail_mimeDecode
 
 # Alfredo Tupone <tupone@gentoo.org> (2024-06-09)
 # Not ready for testing
@@ -454,6 +676,7 @@ sec-keys/openpgp-keys-jiatan
 # Lots of package breakage as usual for new versions. Masked until most/all
 # reverse dependencies are fixed. Tracker bug is bug #906077.
 >=dev-libs/libfmt-10
+>=games-emulation/dolphin-2407
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-03-30)
 # NVIDIA dropped support for the 390.xx branch in December 2022[1].

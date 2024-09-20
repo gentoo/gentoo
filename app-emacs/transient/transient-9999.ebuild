@@ -28,7 +28,7 @@ ELISP_TEXINFO="docs/${PN}.texi"
 SITEFILE="50${PN}-gentoo.el"
 
 RDEPEND="
-	>=app-emacs/compat-29.1.4.1
+	>=app-emacs/compat-30.0.0.0
 "
 BDEPEND="
 	${RDEPEND}

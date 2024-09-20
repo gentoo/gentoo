@@ -466,6 +466,7 @@ BDEPEND="
 		dev-python/boltons[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
 		dev-vcs/git
+		elibc_musl? ( dev-util/patchelf )
 	)
 "
 RDEPEND+=" ${DEPEND}"
@@ -502,6 +503,9 @@ src_prepare() {
 src_configure() {
 	export OPENSSL_NO_VENDOR=1
 
+	# bug #938847 (TODO?: should probably be an eclass default for musl)
+	use elibc_musl && RUSTFLAGS+=" -C target-feature=-crt-static"
+
 	# https://github.com/rust-lang/stacker/issues/79
 	use s390 && ! is-flagq '-march=*' &&
 		append-cflags $(test-flags-CC -march=z10)
@@ -532,7 +536,6 @@ python_compile_all() {
 }
 
 python_test() {
-	local -x COLUMNS=100 # match clap_builder crate default
 	local -x MATURIN_TEST_PYTHON=${EPYTHON}
 	local -x PIP_CONFIG_FILE=${T}/pip.conf
 	local -x VIRTUALENV_SYSTEM_SITE_PACKAGES=1
@@ -541,6 +544,8 @@ python_test() {
 	local -x PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
 
 	local skip=(
+		# picky cli output test that easily benignly fail (bug #937992)
+		--skip cli_tests
 		# avoid need for wasm over a single hello world test
 		--skip integration_wasm_hello_world
 		# fragile depending on rust version, also wants libpypy*-c.so for pypy

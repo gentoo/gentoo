@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="plugins">Installed needed Python packages for using Sigil plugins</flag>
+		<flag name="system-mathjax">Use the system-wide <pkg>dev-libs/mathjax</pkg> instead of bundled</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">Sigil-Ebook/Sigil</remote-id>

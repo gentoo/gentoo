@@ -1,0 +1,89 @@
+From 625be283aa5fcfe0cfe1cc3851226d7677a21cdc Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Mon, 2 Sep 2024 20:00:20 -0400
+Subject: [PATCH] configure: fix implicit function declarations
+
+Import fedora patch:
+https://src.fedoraproject.org/rpms/grace/blob/rawhide/f/grace-configure-c99-1.patch
+
+Do not call the XmRegisterConverters function because current Motif
+does not declare it (but still exports it).  With this call, the
+result of this configure check depends on whether the compiler
+supports implicit function declarations or not.
+
+Additionally add missing includes to various checks that lacked them.
+Florian's patch moved from exit to return, but adding the includes is
+shorter.
+---
+ configure | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/configure b/configure
+index d58ce51..3f3c1f3 100755
+--- a/configure
++++ b/configure
+@@ -4931,6 +4931,7 @@ else
+ /* end confdefs.h.  */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ 
+ #define LOG2EA 0.44269504088896340735992
+@@ -8309,6 +8310,7 @@ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
++#include <stdlib.h>
+ #include <string.h>
+ #include <zlib.h>
+       int main(void) {
+@@ -8395,6 +8397,7 @@ else
+ /* end confdefs.h.  */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <jpeglib.h>
+       int main(void) {
+         int vinc;
+@@ -8479,6 +8482,7 @@ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
++#include <stdlib.h>
+ #include <string.h>
+ #include <png.h>
+       int main(void) {
+@@ -8566,6 +8570,8 @@ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
++#include <stdlib.h>
++#include <string.h>
+ #include <pdflib.h>
+       int main(void) {
+         char *vinc;
+@@ -9516,11 +9522,11 @@ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
++#include <stdlib.h>
+ #include <Xm/XmAll.h>
+       int main(void) {
+         int vlibn, vincn;
+         vincn = XmVersion;
+-        XmRegisterConverters();
+         vlibn = xmUseVersion;
+         if (vincn < 1002) {
+           exit(1);
+@@ -9790,6 +9796,7 @@ else
+ /* end confdefs.h.  */
+ 
+ #include <XmHTML/XmHTML.h>
++#include <stdlib.h>
+       int main(void) {
+         int vlib, vinc;
+         vlib = XmHTMLGetVersion();
+-- 
+2.44.2
+

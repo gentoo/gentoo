@@ -1,9 +1,17 @@
 # Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Ulrich Müller <ulm@gentoo.org> (2024-08-03)
-# Needs dev-libs/openspecfun which is not yet keyworded
-sci-visualization/gnuplot amos
+# Michael Orlitzky <mjo@gentoo.org> (2024-09-01)
+# Mask the optional plotting backend sci-libs/vtk because it's a beast
+# and I don't want to deal with it right now.
+sci-mathematics/maxima vtk
+
+# Michael Orlitzky <mjo@gentoo.org> (2024-08-26)
+# There's an unexplained test failure in sci-libs/qd that I've emailed
+# the authors about. Until we know what's up with that, USE=qd should
+# remain masked for consumers.
+sci-libs/fplll qd
+sci-mathematics/lcalc double-double quad-double
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-07-06)
 # KDE PIM is not keyworded here
@@ -76,8 +84,10 @@ sys-kernel/installkernel -systemd-boot -ukify -uki
 sys-block/tgt rbd
 
 # jinqiang zhang <peeweep@0x0.ee> (2023-03-27)
-# Sanitizers supported on this architecture.
+# Sanitizers supported on riscv64.
 sys-libs/compiler-rt-sanitizers -asan -lsan
+>=sys-libs/compiler-rt-sanitizers-19 -libfuzzer -hwasan -profile -tsan
+>=sys-libs/compiler-rt-sanitizers-19 -ubsan -scudo
 
 # Yixun Lan <dlan@gentoo.org> (2023-02-16)
 # USE=java depend on virtual/jdk:1.8 which is not support on RISC-V
