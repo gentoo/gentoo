@@ -1,0 +1,15 @@
+See bug #938613
+--- a/dog.c
++++ b/dog.c
+@@ -77,9 +77,11 @@
+ #endif
+ 
+ #if ALLOW_LINUX_EXTENSIONS
++#if defined(__GLIBC__)
+ #define ALLOW_STRFRY			1
+ extern char *strfry __P ((char *__string));
+ #else
++#endif
+ #define ALLOW_STRFRY			0
+ #endif
+ 
