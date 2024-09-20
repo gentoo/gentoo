@@ -8,6 +8,7 @@
     <flag name="10bit">Add support for producing 10bits HEVC.</flag>
     <flag name="12bit">Add support for producing 12bits HEVC.</flag>
     <flag name="numa">Build with support for NUMA nodes.</flag>
+    <flag name="vmaf">Enable Netflix's Perceptual video quality assessment via <pkg>media-libs/libvmaf</pkg></flag>
   </use>
   <upstream>
     <remote-id type="bitbucket">multicoreware/x265_git</remote-id>

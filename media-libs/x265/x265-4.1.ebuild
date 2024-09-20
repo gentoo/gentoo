@@ -46,10 +46,13 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.5-r5-cpp-std.patch"
 	"${FILESDIR}/${PN}-3.5-r5-gcc15.patch"
 
+	"${FILESDIR}/${PN}-3.6-cmake-cleanup.patch"
+
 	"${FILESDIR}/${PN}-4.1-test-ns.patch"
 
 	"${FILESDIR}/${PN}-3.6-code-cleanup_2.patch"
 	"${FILESDIR}/${PN}-3.6-code-cleanup_3.patch"
+	"${FILESDIR}/${PN}-3.6-code-cleanup_4.patch"
 
 	"${FILESDIR}/${PN}-4.1-vmaf.patch"
 )
