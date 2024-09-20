@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 18 )
+LLVM_COMPAT=( 19 )
 LLVM_OPTIONAL=1
 
 inherit check-reqs cmake edo llvm-r1 toolchain-funcs
