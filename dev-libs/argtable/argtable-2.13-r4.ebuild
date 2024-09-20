@@ -9,7 +9,7 @@ MY_PV="$(ver_rs 1 '-')"
 MY_P=${PN}${MY_PV}
 
 DESCRIPTION="An ANSI C library for parsing GNU-style command-line options with minimal fuss"
-HOMEPAGE="https://argtable.sourceforge.net"
+HOMEPAGE="https://argtable.sourceforge.io"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_P}.tar.gz"
 S="${WORKDIR}"/${MY_P}
 
