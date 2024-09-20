@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake flag-o-matic multilib-minimal multibuild
 
 DESCRIPTION="Library for encoding video streams into the H.265/HEVC format"
-HOMEPAGE="http://x265.org/ https://bitbucket.org/multicoreware/x265_git/"
+HOMEPAGE="https://www.x265.org/ https://bitbucket.org/multicoreware/x265_git/"
 
 if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
@@ -108,7 +108,7 @@ multilib_src_configure() {
 		-DGIT_ARCHETYPE=1 #814116
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 	)
-	if multilib_is_native_abi; then
+	if ! multilib_is_native_abi; then
 		mycmakeargs+=(
 			-DENABLE_CLI="no"
 		)
