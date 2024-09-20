@@ -163,6 +163,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.22.5-krunner-cwd-at-home.patch" # TODO upstream: KDE-bug 432975, bug 767478
 	"${FILESDIR}/${P}-fix-wayland-session-restore-saving.patch" # KDE-bug 436318
 	"${FILESDIR}/${P}-fix-x11-logout-w-session-restore.patch" # bug 938925, KDE-bug 488853
+	"${FILESDIR}/${P}-fix-systemsettings-crash.patch" # KDE-bug 486922
 )
 
 src_prepare() {
