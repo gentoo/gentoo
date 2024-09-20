@@ -1,0 +1,79 @@
+From 20fa56ae2de154c3cd7b423e8df72ffa1d00852f Mon Sep 17 00:00:00 2001
+From: local <localhost>
+Date: Fri, 20 Sep 2024 12:23:12 +0100
+Subject: [PATCH] Make LibArchive as shared library dependency
+
+Signed-off-by: local <localhost>
+---
+ CMakeLists.txt             | 11 +++++++++++
+ src/app/CMakeLists.txt     |  2 +-
+ third_party/CMakeLists.txt |  3 ++-
+ 3 files changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9710c82f..1bc31d6c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -44,6 +44,7 @@ option(USE_SHARED_GIFLIB  "Use your installed copy of giflib" off)
+ option(USE_SHARED_JPEGLIB "Use your installed copy of jpeglib" off)
+ option(USE_SHARED_JSON11  "Use your installed copy of json11" off)
+ option(USE_SHARED_ZLIB    "Use your installed copy of zlib" off)
++option(USE_SHARED_LIBARCHIVE "Use your installed copy of libarchive" off)
+ option(USE_SHARED_LIBPNG  "Use your installed copy of libpng" off)
+ option(USE_SHARED_TINYXML "Use your installed copy of tinyxml" off)
+ option(USE_SHARED_PIXMAN  "Use your installed copy of pixman" off)
+@@ -221,6 +222,16 @@ else()
+ endif()
+ include_directories(${ZLIB_INCLUDE_DIRS})
+ 
++# libarchive
++if(USE_SHARED_LIBARCHIVE)
++  find_package(LibArchive REQUIRED)
++else()
++  set(LibArchive_FOUND)
++  set(LibArchive_LIBRARIES archive_static)
++  set(LibArchive_INCLUDE_DIRS $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/libarchive/libarchive>)
++endif()
++include_directories(${LibArchive_INCLUDE_DIRS})
++
+ # libpng
+ if(USE_SHARED_LIBPNG)
+   find_package(PNG REQUIRED)
+diff --git a/src/app/CMakeLists.txt b/src/app/CMakeLists.txt
+index 7b0668b4..680da42a 100644
+--- a/src/app/CMakeLists.txt
++++ b/src/app/CMakeLists.txt
+@@ -759,8 +759,8 @@ target_link_libraries(app-lib
+   ${ZLIB_LIBRARIES}
+   ${FREETYPE_LIBRARIES}
+   ${HARFBUZZ_LIBRARIES}
++  ${LibArchive_LIBRARIES}
+   json11
+-  archive_static
+   fmt
+   tinyexpr
+   qoi)
+diff --git a/third_party/CMakeLists.txt b/third_party/CMakeLists.txt
+index 8ca9d19e..ac381af4 100644
+--- a/third_party/CMakeLists.txt
++++ b/third_party/CMakeLists.txt
+@@ -122,6 +122,7 @@ if(NOT USE_SHARED_JSON11)
+ endif()
+ 
+ # libarchive
++if(NOT USE_SHARED_LIBARCHIVE)
+ set(HAVE_WCSCPY 1)
+ set(HAVE_WCSLEN 1)
+ 
+@@ -143,7 +144,7 @@ set(ENABLE_LIBB2 OFF CACHE BOOL "Enable the use of the system LIBB2 library if f
+ add_subdirectory(libarchive)
+ target_include_directories(archive_static INTERFACE
+   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/libarchive/libarchive>)
+-
++endif()
+ # benchmark
+ if(ENABLE_BENCHMARKS)
+   set(BENCHMARK_ENABLE_TESTING OFF CACHE BOOL "Enable testing of the benchmark library.")
+-- 
+2.46.0
+
