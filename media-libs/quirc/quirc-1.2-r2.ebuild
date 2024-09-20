@@ -15,7 +15,7 @@ else
 	SRC_URI="
 		https://github.com/dlbeer/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	"
-	KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 fi
 
 DEPEND="
