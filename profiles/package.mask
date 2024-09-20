@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-20)
+# No more revdeps after app-accessibility/kontrast:5 cleanup.
+# Removal on 2024-10-20.
+dev-db/futuresql5
+
 # Eli Schwartz <eschwartz@gentoo.org> (2024-09-19)
 # Breaks parallel builds with fatal compiler errors.
 # Bug #939798, #939875.
