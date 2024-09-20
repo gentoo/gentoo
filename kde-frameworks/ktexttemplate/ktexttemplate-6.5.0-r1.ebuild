@@ -6,7 +6,7 @@ EAPI=8
 ECM_TEST="true"
 PVCUT=$(ver_cut 1-2)
 QTMIN=6.6.2
-inherit ecm frameworks.kde.org
+inherit ecm flag-o-matic frameworks.kde.org
 
 DESCRIPTION="Library to allow separating the structure of documents from data they contain"
 
@@ -20,3 +20,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-qt/qttools:6[linguist] )"
+
+src_configure() {
+	# https://gcc.gnu.org/PR116783
+	use arm64 && append-flags $(test-flags-CXX -mno-late-ldp-fusion)
+
+	ecm_src_configure
+}
