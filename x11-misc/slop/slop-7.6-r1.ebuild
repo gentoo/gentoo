@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,6 +35,11 @@ DEPEND="
 "
 
 PATCHES=( "${FILESDIR}/${PN}"-7.5-missing-header.patch )
+
+src_prepare() {
+	use icu && eapply "${FILESDIR}/"icu-75.1-cxx17.patch
+	cmake_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(

@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/933863
+https://github.com/naelstrof/slop/issues/172
+
+--- a/CMakeLists.txt	
++++ a/CMakeLists.txt	
+@@ -53,13 +53,13 @@ if ( SLOP_OPENGL )
+ endif()
+ 
+ set_property(TARGET ${LIBRARY_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
+-set_property(TARGET ${LIBRARY_NAME} PROPERTY CXX_STANDARD 11)
++set_property(TARGET ${LIBRARY_NAME} PROPERTY CXX_STANDARD 17)
+ set_property(TARGET ${LIBRARY_NAME} PROPERTY CXX_EXTENSIONS OFF)
+ 
+ add_executable(${EXECUTABLE_NAME} src/main.cpp)
+ 
+ set_property(TARGET ${EXECUTABLE_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
+-set_property(TARGET ${EXECUTABLE_NAME} PROPERTY CXX_STANDARD 11)
++set_property(TARGET ${EXECUTABLE_NAME} PROPERTY CXX_STANDARD 17)
+ set_property(TARGET ${EXECUTABLE_NAME} PROPERTY CXX_EXTENSIONS OFF)
+ 
+ set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/modules" )
