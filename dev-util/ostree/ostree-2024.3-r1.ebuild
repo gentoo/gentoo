@@ -16,12 +16,11 @@ S="${WORKDIR}/lib${P}"
 LICENSE="LGPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
-IUSE="archive +curl doc dracut gnutls +gpg grub +http2 httpd introspection libmount selinux sodium ssl +soup systemd zeroconf"
+IUSE="archive +curl doc dracut gnutls +gpg grub +http2 introspection libmount selinux sodium ssl +soup systemd zeroconf"
 RESTRICT="test"
 REQUIRED_USE="
 	dracut? ( systemd )
 	http2? ( curl )
-	httpd? ( || ( curl soup ) )
 "
 
 RDEPEND="
@@ -93,7 +92,6 @@ src_configure() {
 		$(usex introspection --enable-introspection={,} yes no)
 		$(use_with gpg gpgme)
 		$(use_enable http2)
-		$(use_enable httpd trivial-httpd-cmdline)
 		$(use_with selinux )
 		$(use_with soup soup3)
 		--without-soup # libsoup:2.4
