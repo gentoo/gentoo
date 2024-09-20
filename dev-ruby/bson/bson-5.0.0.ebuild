@@ -18,7 +18,7 @@ RUBY_S="bson-ruby-${PV}"
 
 LICENSE="APSL-2"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="test doc"
 
 ruby_add_rdepend "dev-ruby/base64 dev-ruby/bigdecimal"
