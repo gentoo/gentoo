@@ -1,0 +1,36 @@
+index 828bd16..95ab178 100644
+--- a/src/System.Management.Automation/SourceGenerators/PSVersionInfoGenerator/PSVersionInfoGenerator.csproj
++++ b/src/System.Management.Automation/SourceGenerators/PSVersionInfoGenerator/PSVersionInfoGenerator.csproj
+@@ -14,7 +14,7 @@
+   </PropertyGroup>
+ 
+   <ItemGroup>
+-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.9.2" PrivateAssets="all" />
++    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" PrivateAssets="all" />
+     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" PrivateAssets="all" />
+     <!-- This section is to force the version of non-direct dependencies -->
+     <PackageReference Include="Microsoft.NETCore.Platforms" Version="1.1.2" />
+index 2629c21..a2163f0 100644
+--- a/src/System.Management.Automation/System.Management.Automation.csproj
++++ b/src/System.Management.Automation/System.Management.Automation.csproj
+@@ -43,7 +43,7 @@
+     <PackageReference Include="System.Security.AccessControl" Version="6.0.1" />
+     <PackageReference Include="System.Security.Cryptography.Pkcs" Version="8.0.0" />
+     <PackageReference Include="System.Security.Permissions" Version="8.0.0" />
+-    <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
++    <PackageReference Include="System.Text.Encoding.CodePages" Version="7.0.0" />
+     <!-- the following package(s) are from the powershell org -->
+     <PackageReference Include="Microsoft.Management.Infrastructure" Version="3.0.0" />
+     <PackageReference Include="Microsoft.PowerShell.Native" Version="7.4.0" />
+index c1ab875..b742b0f 100644
+--- a/test/tools/WebListener/WebListener.csproj
++++ b/test/tools/WebListener/WebListener.csproj
+@@ -8,7 +8,7 @@
+ 
+   <ItemGroup>
+     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.0" />
+-    <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
++    <PackageReference Include="System.Text.Encoding.CodePages" Version="7.0.0" />
+   </ItemGroup>
+ 
+   <ItemGroup>
