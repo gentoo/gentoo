@@ -76,6 +76,8 @@ BDEPEND="
 	sys-devel/gettext
 "
 
+PATCHES=( "${FILESDIR}/${P}-ods-buildfix.patch" )
+
 src_prepare() {
 	ecm_src_prepare
 

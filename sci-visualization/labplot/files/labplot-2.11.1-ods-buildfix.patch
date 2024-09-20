@@ -1,0 +1,38 @@
+From 0edfd2862a8f953cdd06ffe4940e1da5b7b5dc17 Mon Sep 17 00:00:00 2001
+From: Alexander Semke <alexander.semke@web.de>
+Date: Mon, 15 Jul 2024 09:56:40 +0200
+Subject: [PATCH] Minor qt6 related fixes.
+
+---
+ src/kdefrontend/datasources/OdsOptionsWidget.cpp | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/src/kdefrontend/datasources/OdsOptionsWidget.cpp b/src/kdefrontend/datasources/OdsOptionsWidget.cpp
+index 6424032dd..c90943695 100644
+--- a/src/kdefrontend/datasources/OdsOptionsWidget.cpp
++++ b/src/kdefrontend/datasources/OdsOptionsWidget.cpp
+@@ -67,9 +67,9 @@ void OdsOptionsWidget::sheetSelectionChanged() {
+ 	}
+ 
+ 	if (selectedItems.size() > 1)
+-		emit enableDataPortionSelection(false);
++		Q_EMIT enableDataPortionSelection(false);
+ 	else // one selected item
+-		emit enableDataPortionSelection(true);
++		Q_EMIT enableDataPortionSelection(true);
+ 
+ 	auto* item = selectedItems.last();
+ 	auto* const filter = static_cast<OdsFilter*>(m_fileWidget->currentFileFilter());
+@@ -98,7 +98,8 @@ void OdsOptionsWidget::sheetSelectionChanged() {
+ 		const int maxColumns = 100;
+ 		for (int row = 0; row < rowCount; ++row) {
+ 			auto lineString = importedStrings.at(row);
+-			colCount = std::min(maxColumns, lineString.size());
++			const int size = lineString.size();
++			colCount = std::min(maxColumns, size);
+ 			if (row == 0) {
+ 				ui.twPreview->setColumnCount(colCount);
+ 
+-- 
+GitLab
+
