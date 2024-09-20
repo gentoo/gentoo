@@ -15,4 +15,4 @@ DESCRIPTION="PHP extension for parsing and working with RFC822 and MIME complian
 LICENSE="PHP-3.01"
 SLOT="7"
 
-KEYWORDS="amd64 ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
