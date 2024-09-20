@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit libtool
+
 MY_PV="$(ver_rs 1 '-')"
 MY_P=${PN}${MY_PV}
 
@@ -20,6 +22,11 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.13-Fix-implicit-function-declaration.patch
 	"${FILESDIR}"/${PN}-2.13-Fix-undeclared-library-function.patch
 )
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 src_configure() {
 	econf \
