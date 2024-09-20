@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<bugs-to>https://nomacs.org/redmine/projects/nomacs</bugs-to>
+		<bugs-to>https://github.com/nomacs/nomacs/issues/</bugs-to>
 		<remote-id type="github">nomacs/nomacs</remote-id>
 		<remote-id type="sourceforge">nomacs</remote-id>
 	</upstream>
