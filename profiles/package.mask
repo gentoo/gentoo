@@ -183,59 +183,6 @@ sci-physics/qmeq
 ~sys-libs/kpmcore-23.08.5
 <media-libs/pulseaudio-qt-1.4.0
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-07)
-# Plasma 6 is not planned to be going stable on x86.
-# Plasma 5 will be cleaned up shortly. Removal on 2024-09-21.
-<kde-plasma/bluedevil-5.27.50:5
-<kde-plasma/breeze-5.27.50:5
-<kde-plasma/breeze-grub-5.27.50:5
-<kde-plasma/breeze-gtk-5.27.50:5
-<kde-plasma/breeze-plymouth-5.27.50:5
-<kde-plasma/discover-5.27.50:5
-<kde-plasma/drkonqi-5.27.50:5
-<kde-plasma/flatpak-kcm-5.27.50:5
-<kde-plasma/kactivitymanagerd-5.27.50:5
-<kde-plasma/kde-cli-tools-5.27.50:5
-<kde-plasma/kde-gtk-config-5.27.50:5
-<kde-plasma/kdecoration-5.27.50:5
-<kde-plasma/kdeplasma-addons-5.27.50:5
-<kde-plasma/kgamma-5.27.50:5
-<kde-plasma/kinfocenter-5.27.50:5
-<kde-plasma/kmenuedit-5.27.50:5
-<kde-plasma/kpipewire-5.27.50:5
-<kde-plasma/kscreen-5.27.50:5
-<kde-plasma/kscreenlocker-5.27.50:5
-<kde-plasma/ksshaskpass-5.27.50:5
-<kde-plasma/ksystemstats-5.27.50:5
-<kde-plasma/kwallet-pam-5.27.50:5
-<kde-plasma/kwin-5.27.50:5
-<kde-plasma/kwrited-5.27.50:5
-<kde-plasma/layer-shell-qt-5.27.50:5
-<kde-plasma/libksysguard-5.27.50:5
-<kde-plasma/milou-5.27.50:5
-<kde-plasma/oxygen-5.27.50:5
-<kde-plasma/oxygen-sounds-5.27.50:5
-<kde-plasma/plasma-browser-integration-5.27.50:5
-<kde-plasma/plasma-desktop-5.27.50:5
-<kde-plasma/plasma-disks-5.27.50:5
-<kde-plasma/plasma-firewall-5.27.50:5
-<kde-plasma/plasma-integration-5.27.50:5
-<kde-plasma/plasma-meta-5.27.50:5
-<kde-plasma/plasma-nm-5.27.50:5
-<kde-plasma/plasma-pa-5.27.50:5
-<kde-plasma/plasma-sdk-5.27.50:5
-<kde-plasma/plasma-systemmonitor-5.27.50:5
-<kde-plasma/plasma-thunderbolt-5.27.50:5
-<kde-plasma/plasma-workspace-5.27.50:5
-<kde-plasma/plasma-workspace-wallpapers-5.27.50:5
-<kde-plasma/plasma-vault-5.27.50:5
-<kde-plasma/plasma-welcome-5.27.50:5
-<kde-plasma/plymouth-kcm-5.27.50:5
-<kde-plasma/powerdevil-5.27.50:5
-<kde-plasma/sddm-kcm-5.27.50:5
-<kde-plasma/systemsettings-5.27.50:5
-<kde-plasma/xdg-desktop-portal-kde-5.27.50:5
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-09-04)
 # Unmaintained upstream, latest media-libs/phonon release incompatible.
 # Removal on 2024-10-04.
