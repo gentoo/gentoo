@@ -17,7 +17,7 @@ KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
 IUSE="+firmware flatpak snap telemetry webengine"
 
 # libmarkdown (app-text/discount) only used in PackageKitBackend
-DEPEND="
+COMMON_DEPEND="
 	>=dev-libs/appstream-1.0.0:=[qt6]
 	dev-libs/kirigami-addons:6
 	>=dev-qt/qtbase-${QTMIN}:6=[concurrent,dbus,gui,network,widgets]
@@ -47,8 +47,11 @@ DEPEND="
 	telemetry? ( >=kde-frameworks/kuserfeedback-${KFMIN}:6 )
 	webengine? ( >=dev-qt/qtwebview-${QTMIN}:6 )
 "
-RDEPEND="${DEPEND}
+RDEPEND="${COMMON_DEPEND}
 	snap? ( app-containers/snapd )
+"
+DEPEND="${COMMON_DEPEND}
+	dev-libs/qcoro
 "
 BDEPEND=">=kde-frameworks/kcmutils-${KFMIN}:6"
 
