@@ -17,7 +17,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~arm64"
+KEYWORDS="arm64"
 
 DEPEND=">=sys-apps/asahi-scripts-20230606"
 RDEPEND="${DEPEND}
