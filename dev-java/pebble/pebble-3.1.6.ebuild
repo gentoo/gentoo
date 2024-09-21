@@ -25,12 +25,14 @@ CP_DEPEND="
 	dev-java/slf4j-api:0
 	dev-java/unbescape:0
 "
-
-DEPEND="${CP_DEPEND}
-	>=virtual/jdk-1.8:*"
-
-RDEPEND="${CP_DEPEND}
-	>=virtual/jre-1.8:*"
+DEPEND="
+	${CP_DEPEND}
+	>=virtual/jdk-1.8:*
+"
+RDEPEND="
+	${CP_DEPEND}
+	>=virtual/jre-1.8:*
+"
 
 JAVA_AUTOMATIC_MODULE_NAME="io.pebbletemplates"
 JAVA_SRC_DIR="src/main/java"
