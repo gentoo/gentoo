@@ -78,6 +78,7 @@ src_configure() {
 		$(cmake_use_find_package aprs Perl)
 		$(cmake_use_find_package geolocation Qt5Positioning)
 		-DBUILD_MARBLE_TESTS=$(usex test)
+		-DBUILD_WITH_DBUS=$(usex dbus)
 		-DWITH_DESIGNER_PLUGIN=$(usex designer)
 		-DWITH_libgps=$(usex gps)
 		-DWITH_KF5=$(usex kde)
