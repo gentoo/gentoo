@@ -12,4 +12,4 @@ S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~arm64"
+KEYWORDS="arm64"
