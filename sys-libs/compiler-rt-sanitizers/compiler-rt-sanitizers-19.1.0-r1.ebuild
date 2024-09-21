@@ -3,18 +3,18 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
-inherit check-reqs cmake flag-o-matic llvm llvm.org python-any-r1
+PYTHON_COMPAT=( python3_{10..13} )
+inherit check-reqs cmake flag-o-matic llvm.org llvm-utils python-any-r1
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
-SLOT="${LLVM_VERSION}"
-KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86 ~amd64-linux ~ppc-macos ~x64-macos"
+SLOT="${LLVM_MAJOR}"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~x86 ~amd64-linux ~ppc-macos ~x64-macos"
 IUSE="+abi_x86_32 abi_x86_64 +clang debug test"
 # base targets
-IUSE+=" +libfuzzer +memprof +orc +profile +xray"
+IUSE+=" +ctx-profile +libfuzzer +memprof +orc +profile +xray"
 # sanitizer targets, keep in sync with config-ix.cmake
 # NB: ubsan, scudo deliberately match two entries
 SANITIZER_FLAGS=(
@@ -39,13 +39,12 @@ DEPEND="
 	virtual/libcrypt[abi_x86_32(-)?,abi_x86_64(-)?]
 "
 BDEPEND="
-	clang? ( sys-devel/clang )
+	clang? ( sys-devel/clang:${LLVM_MAJOR} )
 	elibc_glibc? ( net-libs/libtirpc )
 	test? (
-		!!<sys-apps/sandbox-2.13
 		$(python_gen_any_dep ">=dev-python/lit-15[\${PYTHON_USEDEP}]")
 		=sys-devel/clang-${LLVM_VERSION}*:${LLVM_MAJOR}
-		sys-libs/compiler-rt:${LLVM_VERSION}
+		sys-libs/compiler-rt:${LLVM_MAJOR}
 	)
 	!test? (
 		${PYTHON_DEPS}
@@ -53,8 +52,9 @@ BDEPEND="
 "
 
 LLVM_COMPONENTS=( compiler-rt cmake llvm/cmake )
-LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support llvm/utils/unittest )
-LLVM_PATCHSET=${PV/_/-}-r6
+LLVM_TEST_COMPONENTS=(
+	llvm/include/llvm/ProfileData llvm/lib/Testing/Support third-party
+)
 llvm.org_set_globals
 
 python_check_deps() {
@@ -75,7 +75,6 @@ pkg_pretend() {
 
 pkg_setup() {
 	check_space
-	LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
 	python-any-r1_pkg_setup
 }
 
@@ -91,9 +90,6 @@ src_prepare() {
 		fi
 	done
 
-	# bug #926330
-	sed -i -e '/-Wthread-safety/d' CMakeLists.txt cmake/config-ix.cmake || die
-
 	# TODO: fix these tests to be skipped upstream
 	if use asan && ! use profile; then
 		rm test/asan/TestCases/asan_and_llvm_coverage_test.cpp || die
@@ -101,11 +97,15 @@ src_prepare() {
 	if use ubsan && ! use cfi; then
 		> test/cfi/CMakeLists.txt || die
 	fi
+	# hangs, sigh
+	rm test/tsan/getline_nohang.cpp || die
 
 	llvm.org_src_prepare
 }
 
 src_configure() {
+	llvm_prepend_path "${LLVM_MAJOR}"
+
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
 
@@ -127,15 +127,16 @@ src_configure() {
 	done
 
 	local mycmakeargs=(
-		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${LLVM_VERSION}"
+		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${LLVM_MAJOR}"
 		# use a build dir structure consistent with install
 		# this makes it possible to easily deploy test-friendly clang
-		-DCOMPILER_RT_OUTPUT_DIR="${BUILD_DIR}/lib/clang/${LLVM_VERSION}"
+		-DCOMPILER_RT_OUTPUT_DIR="${BUILD_DIR}/lib/clang/${LLVM_MAJOR}"
 
 		-DCOMPILER_RT_INCLUDE_TESTS=$(usex test)
 		# builtins & crt installed by sys-libs/compiler-rt
 		-DCOMPILER_RT_BUILD_BUILTINS=OFF
 		-DCOMPILER_RT_BUILD_CRT=OFF
+		-DCOMPILER_RT_BUILD_CTX_PROFILE=$(usex ctx-profile)
 		-DCOMPILER_RT_BUILD_LIBFUZZER=$(usex libfuzzer)
 		-DCOMPILER_RT_BUILD_MEMPROF=$(usex memprof)
 		-DCOMPILER_RT_BUILD_ORC=$(usex orc)
@@ -155,7 +156,6 @@ src_configure() {
 
 	if use test; then
 		mycmakeargs+=(
-			-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 			-DLLVM_LIT_ARGS="$(get_lit_flags)"
 
@@ -188,19 +188,19 @@ src_configure() {
 	cmake_src_configure
 
 	if use test; then
-		local sys_dir=( "${EPREFIX}"/usr/lib/clang/${LLVM_VERSION}/lib/* )
+		local sys_dir=( "${EPREFIX}"/usr/lib/clang/${LLVM_MAJOR}/lib/* )
 		[[ -e ${sys_dir} ]] || die "Unable to find ${sys_dir}"
 		[[ ${#sys_dir[@]} -eq 1 ]] || die "Non-deterministic compiler-rt install: ${sys_dir[*]}"
 
 		# copy clang over since resource_dir is located relatively to binary
 		# therefore, we can put our new libraries in it
-		mkdir -p "${BUILD_DIR}"/lib/{llvm/${LLVM_MAJOR}/{bin,$(get_libdir)},clang/${LLVM_VERSION}/include} || die
+		mkdir -p "${BUILD_DIR}"/lib/{llvm/${LLVM_MAJOR}/{bin,$(get_libdir)},clang/${LLVM_MAJOR}/include} || die
 		cp "${EPREFIX}"/usr/lib/llvm/${LLVM_MAJOR}/bin/clang{,++} \
 			"${BUILD_DIR}"/lib/llvm/${LLVM_MAJOR}/bin/ || die
-		cp "${EPREFIX}"/usr/lib/clang/${LLVM_VERSION}/include/*.h \
-			"${BUILD_DIR}"/lib/clang/${LLVM_VERSION}/include/ || die
+		cp "${EPREFIX}"/usr/lib/clang/${LLVM_MAJOR}/include/*.h \
+			"${BUILD_DIR}"/lib/clang/${LLVM_MAJOR}/include/ || die
 		cp "${sys_dir}"/*builtins*.a \
-			"${BUILD_DIR}/lib/clang/${LLVM_VERSION}/lib/${sys_dir##*/}/" || die
+			"${BUILD_DIR}/lib/clang/${LLVM_MAJOR}/lib/${sys_dir##*/}/" || die
 		# we also need LLVMgold.so for gold-based tests
 		if [[ -f ${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}/$(get_libdir)/LLVMgold.so ]]; then
 			ln -s "${EPREFIX}"/usr/lib/llvm/${LLVM_MAJOR}/$(get_libdir)/LLVMgold.so \
@@ -216,9 +216,6 @@ src_test() {
 	local -x SANDBOX_ON=0
 	# wipe LD_PRELOAD to make ASAN happy
 	local -x LD_PRELOAD=
-	# avoid confusing with hardening, upstreamed for >= 16
-	# https://github.com/llvm/llvm-project/issues/60394
-	local -x CLANG_NO_DEFAULT_CONFIG=1
 
 	cmake_build check-all
 }

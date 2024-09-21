@@ -39,7 +39,7 @@ DEPEND="
 	virtual/libcrypt[abi_x86_32(-)?,abi_x86_64(-)?]
 "
 BDEPEND="
-	clang? ( sys-devel/clang )
+	clang? ( sys-devel/clang:${LLVM_MAJOR} )
 	elibc_glibc? ( net-libs/libtirpc )
 	test? (
 		$(python_gen_any_dep ">=dev-python/lit-15[\${PYTHON_USEDEP}]")
