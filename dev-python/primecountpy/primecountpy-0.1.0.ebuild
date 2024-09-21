@@ -16,7 +16,6 @@ HOMEPAGE="https://pypi.org/project/primecountpy/
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~riscv"
-IUSE=""
 
 DEPEND="sci-mathematics/primecount
 	dev-python/cysignals[${PYTHON_USEDEP}]"
