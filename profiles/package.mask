@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-09-21)
+# Unmaintained.  Broken with >=dev-python/pytest-8.
+# Replaced by dev-python/pytest-lazy-fixtures.  No revdeps left.
+# Removal on 2024-10-21.  Bug #939420.
+dev-python/pytest-lazy-fixture
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-09-20)
 # No more revdeps after app-accessibility/kontrast:5 cleanup.
 # Removal on 2024-10-20.
