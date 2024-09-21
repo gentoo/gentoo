@@ -209,8 +209,6 @@ SRC_URI="
 	https://github.com/Qiskit/qiskit/archive/${PV/_}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 	${CARGO_CRATE_URIS}
-	https://github.com/PyO3/pyo3/pull/4324.patch
-		-> pyo3-ffi-0.22.1-py313.patch
 "
 S=${WORKDIR}/${MY_P}
 
@@ -272,9 +270,6 @@ src_prepare() {
 
 	# strip forcing -Werror from tests that also leaks to other packages
 	sed -i -e '/filterwarnings.*error/d' test/utils/base.py || die
-
-	cd "${ECARGO_VENDOR}"/pyo3-ffi-*/ || die
-	eapply -p2 "${DISTDIR}/pyo3-ffi-0.22.1-py313.patch"
 }
 
 python_test() {
