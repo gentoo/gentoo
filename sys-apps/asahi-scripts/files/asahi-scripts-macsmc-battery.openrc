@@ -1,0 +1,51 @@
+#!/sbin/openrc-run
+# Save and restore the SMC's charge end threshold
+
+extra_commands="save restore"
+
+depend() {
+	need udev
+}
+
+has_battery() {
+	if [ ! -e /sys/class/power_supply/macsmc-battery ]; then
+		eerror "macsmc-battery was not found!"
+		return 2
+	fi
+
+	return 0
+}
+
+restore() {
+	ebegin "Restoring macsmc-battery saved charge end threshold"
+
+	has_battery || return $?
+
+	if [ ! -e /etc/udev/macsmc-battery.conf ]; then
+		ewarn "No saved charge end threshold found! Saving current value..."
+		save
+		return $?
+	fi
+
+	sed -e 's/CHARGE_CONTROL_END_THRESHOLD=//' /etc/udev/macsmc-battery.conf > /sys/class/power_supply/macsmc-battery/charge_control_end_threshold
+	return 0
+}
+
+save() {
+	ebegin "Saving current macsmc-battery charge end threshold"
+
+	has_battery || return $?
+
+	sed -e 's/^/CHARGE_CONTROL_END_THRESHOLD=/' /sys/class/power_supply/macsmc-battery/charge_control_end_threshold > /etc/udev/macsmc-battery.conf
+	return 0
+}
+
+start() {
+	restore
+	eend $?
+}
+
+stop() {
+	save
+	eend $?
+}
