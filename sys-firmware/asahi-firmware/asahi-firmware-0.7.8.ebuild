@@ -16,7 +16,7 @@ SRC_URI="https://github.com/AsahiLinux/${_name}/archive/refs/tags/v${PV}.tar.gz 
 S="${WORKDIR}/${_name}-${PV}"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~arm64"
+KEYWORDS="arm64"
 
 DEPEND=">=sys-apps/asahi-scripts-20230606"
 RDEPEND="${DEPEND}
