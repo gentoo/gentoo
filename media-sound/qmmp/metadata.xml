@@ -15,7 +15,8 @@
 		<flag name="dbus">Enable DBus notifiications and MPRIS support</flag>
 		<flag name="enca">Detects the character encoding automatically</flag>
 		<flag name="game">Enable Game music support</flag>
-		<flag name="gnome">Enable Gnome hotkey support (requires Qt5DBus)</flag>
+		<flag name="gnome">Enable Gnome hotkey support (requires QtDBus)</flag>
+		<flag name="libxmp">Enable module files renderer (modplug replacement)</flag>
 		<flag name="lyrics">Fetch track lyrics from the web</flag>
 		<flag name="midi">Enable midi support using wildmidi library</flag>
 		<flag name="notifier">Enable qmmps' notifier system</flag>
