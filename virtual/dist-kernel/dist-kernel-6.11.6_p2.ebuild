@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Virtual to depend on any Distribution Kernel"
 SLOT="asahi/${PVR}"
-KEYWORDS="~arm64"
+KEYWORDS="arm64"
 
 RDEPEND="
 	~sys-kernel/asahi-kernel-${PV}:asahi=
