@@ -65,5 +65,6 @@ src_configure() {
 	CONFIGURE_FLAGS="--disable-dependency-tracking --disable-silent-rules"
 	CONFIGURE_FLAGS+=" --with-libkdumpfile"
 	CONFIGURE_FLAGS+=" $(use_enable openmp)"
+	CONFIGURE_FLAGS+=" --host=${CHOST}"
 	distutils-r1_src_configure
 }
