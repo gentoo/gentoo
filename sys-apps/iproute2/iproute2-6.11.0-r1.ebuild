@@ -24,7 +24,6 @@ RESTRICT="test"
 
 # We could make libmnl optional, but it's tiny, so eh
 RDEPEND="
-	!net-misc/arpd
 	!minimal? ( net-libs/libmnl:= )
 	atm? ( net-dialup/linux-atm )
 	berkdb? ( sys-libs/db:= )
