@@ -1,0 +1,35 @@
+From https://bugs.gentoo.org/939811
+From: Holger Hoffstätte <holger@applied-asynchrony.com>
+
+--- a/bridge/mst.c
++++ b/bridge/mst.c
+@@ -4,8 +4,6 @@
+  */
+ 
+ #include <stdio.h>
+-#include <linux/if_bridge.h>
+-#include <net/if.h>
+ 
+ #include "libnetlink.h"
+ #include "json_print.h"
+@@ -13,6 +11,9 @@
+ 
+ #include "br_common.h"
+ 
++#include <linux/if_bridge.h>
++#include <net/if.h>
++
+ #define MST_ID_LEN 9
+ 
+ #define __stringify_1(x...) #x
+--- a/include/json_print.h
++++ b/include/json_print.h
+@@ -11,6 +11,8 @@
+ #include "json_writer.h"
+ #include "color.h"
+ 
++const struct timeval;
++
+ #define _IS_JSON_CONTEXT(type) (is_json_context() && (type & PRINT_JSON || type & PRINT_ANY))
+ #define _IS_FP_CONTEXT(type)   (!is_json_context() && (type & PRINT_FP || type & PRINT_ANY))
+ 
