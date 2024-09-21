@@ -5,11 +5,10 @@ EAPI=8
 
 inherit cmake xdg
 
-DESCRIPTION="Qt5-based audio player with winamp/xmms skins support"
+DESCRIPTION="Qt-based audio player with winamp/xmms skins support"
 HOMEPAGE="https://qmmp.ylsoftware.com"
 if [[ ${PV} != *9999* ]]; then
-	SRC_URI="https://qmmp.ylsoftware.com/files/${P}.tar.bz2
-		https://downloads.sourceforge.net/${PN}-dev/files/${P}.tar.bz2"
+	SRC_URI="https://qmmp.ylsoftware.com/files/${PN}/$(ver_cut 1-2)/${P}.tar.bz2"
 	KEYWORDS="amd64 x86"
 else
 	inherit subversion
@@ -21,9 +20,9 @@ LICENSE="GPL-2"
 SLOT="0"
 # KEYWORDS further up
 IUSE="aac +alsa analyzer archive bs2b cdda cover crossfade cue curl +dbus enca
-ffmpeg flac game gnome jack ladspa lyrics +mad midi mms mplayer musepack
+ffmpeg flac game gnome jack ladspa libxmp lyrics +mad midi mms mplayer musepack
 notifier opus oss pipewire projectm pulseaudio qsui qtmedia scrobbler shout sid
-sndfile soxr stereo tray udisks +vorbis wavpack xmp"
+sndfile soxr stereo tray udisks +vorbis wavpack"
 
 REQUIRED_USE="
 	gnome? ( dbus )
@@ -59,6 +58,7 @@ RDEPEND="
 		virtual/jack
 	)
 	ladspa? ( media-plugins/cmt-plugins )
+	libxmp? ( media-libs/libxmp )
 	mad? (
 		media-libs/libmad:=
 		media-sound/mpg123:=
@@ -87,7 +87,6 @@ RDEPEND="
 		media-libs/libvorbis
 	)
 	wavpack? ( media-sound/wavpack )
-	xmp? ( media-libs/libxmp )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/linguist-tools:5"
@@ -150,7 +149,7 @@ src_configure() {
 		-DUSE_UDISKS="$(usex udisks)"
 		-DUSE_VORBIS="$(usex vorbis)"
 		-DUSE_WAVPACK="$(usex wavpack)"
-		-DUSE_XMP="$(usex xmp)"
+		-DUSE_XMP="$(usex libxmp)"
 	)
 
 	cmake_src_configure
