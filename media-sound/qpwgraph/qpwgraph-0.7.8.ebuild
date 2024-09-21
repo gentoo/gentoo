@@ -20,7 +20,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="alsa trayicon wayland"
+IUSE="alsa trayicon"
 
 BDEPEND="
 	dev-qt/qttools:6[linguist]
@@ -37,7 +37,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DCONFIG_ALSA_MIDI=$(usex alsa)
 		-DCONFIG_SYSTEM_TRAY=$(usex trayicon)
-		-DCONFIG_WAYLAND=$(usex wayland)
+		-DCONFIG_WAYLAND=1
 		-DCONFIG_QT6=1
 	)
 	cmake_src_configure
