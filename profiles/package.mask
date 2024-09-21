@@ -34,6 +34,14 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2024-09-21)
+# Discontinued upstream.  Since 7.3.17, only 2.7 and 3.10 are released.
+# Vulnerable.
+# Removal on 2024-10-21.  Bug #939951.
+dev-python/pypy3_9
+dev-python/pypy3_9-exe
+dev-python/pypy3_9-exe-bin
+
+# Michał Górny <mgorny@gentoo.org> (2024-09-21)
 # Unmaintained.  Broken with >=dev-python/pytest-8.
 # Replaced by dev-python/pytest-lazy-fixtures.  No revdeps left.
 # Removal on 2024-10-21.  Bug #939420.
