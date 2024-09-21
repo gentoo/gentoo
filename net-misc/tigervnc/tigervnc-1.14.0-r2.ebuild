@@ -102,6 +102,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.11.0-install-java-viewer.patch
 	"${FILESDIR}"/${PN}-1.14.0-xsession-path.patch
 	"${FILESDIR}"/${PN}-1.12.80-disable-server-and-pam.patch
+	"${FILESDIR}"/${P}-typo-VncAuth.patch # bug #938694
 )
 
 src_unpack() {
