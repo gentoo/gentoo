@@ -13,12 +13,10 @@ S="${WORKDIR}/${PN}-v${PV}"
 LICENSE="Sympow-BSD"
 SLOT="0"
 KEYWORDS="amd64 ~riscv"
-IUSE=""
 
 # Pari is used at build time to generate data.
 BDEPEND="sys-apps/help2man
 	sci-mathematics/pari"
-DEPEND=""
 RDEPEND="sci-mathematics/pari"
 
 PATCHES=(
