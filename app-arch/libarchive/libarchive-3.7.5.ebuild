@@ -38,12 +38,10 @@ RDEPEND="
 	nettle? ( dev-libs/nettle:=[${MULTILIB_USEDEP}] )
 	zstd? ( app-arch/zstd:=[${MULTILIB_USEDEP}] )
 "
-# TODO: fix attr/xattr.h includes and remove sys-apps/attr dep
 DEPEND="${RDEPEND}
 	kernel_linux? (
 		virtual/os-headers
 		e2fsprogs? ( sys-fs/e2fsprogs[${MULTILIB_USEDEP}] )
-		xattr? ( sys-apps/attr[${MULTILIB_USEDEP}] )
 	)
 	test? (
 		app-arch/lrzip
@@ -75,6 +73,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.7.2-lrzip.patch"
 	# https://github.com/libarchive/libarchive/pull/2330
 	"${FILESDIR}/${P}-iso9660-times.patch"
+	# https://github.com/libarchive/libarchive/pull/2335
+	"${FILESDIR}/${P}-attr-dep.patch"
 )
 
 src_prepare() {
