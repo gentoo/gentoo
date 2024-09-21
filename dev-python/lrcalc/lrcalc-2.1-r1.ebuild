@@ -16,7 +16,6 @@ SRC_URI="$(pypi_sdist_url) -> ${PN}_python-${PV}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 ~riscv"
-IUSE=""
 
 BDEPEND="dev-python/cython[${PYTHON_USEDEP}]"
 DEPEND="~sci-mathematics/lrcalc-${PV}"
