@@ -56,7 +56,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="asahi/${PVR}"
-KEYWORDS="~arm64"
+KEYWORDS="arm64"
 
 IUSE="debug"
 
