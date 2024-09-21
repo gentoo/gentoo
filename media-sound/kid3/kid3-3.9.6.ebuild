@@ -44,7 +44,7 @@ DEPEND="
 	)
 	mp3? ( media-libs/id3lib )
 	mp4? ( media-libs/libmp4v2 )
-	mpris? ( dev-qt/qttools:6[qdbus] )
+	mpris? ( dev-qt/qtbase:6[dbus] )
 	taglib? ( >=media-libs/taglib-1.9.1:= )
 	vorbis? (
 		media-libs/libogg
