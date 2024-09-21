@@ -5,7 +5,7 @@ EAPI=8
 
 JAVA_PKG_IUSE="doc source"
 
-inherit java-pkg-2 java-pkg-simple prefix
+inherit java-pkg-2 java-pkg-simple
 
 DMF="R-${PV/_rc/RC}-202106111600"
 
@@ -39,26 +39,9 @@ src_prepare() {
 
 	# Exception in thread "main" java.lang.SecurityException: Invalid signature file digest for Manifest main attributes
 	rm META-INF/ECLIPSE_* || die
+
 	mkdir "${JAVA_RESOURCE_DIRS}" || die
 	find -type f \
 		! -name '*.java' \
 		| xargs cp --parent -t "${JAVA_RESOURCE_DIRS}" || die
-}
-
-src_install() {
-	java-pkg-simple_src_install
-	insinto /usr/share/java-config-2/compiler
-	doins "${FILESDIR}/ecj-${SLOT}"
-	eprefixify "${ED}"/usr/share/java-config-2/compiler/ecj-${SLOT}
-}
-
-pkg_postinst() {
-	einfo "To select between slots of ECJ..."
-	einfo " # eselect ecj"
-
-	eselect ecj update ecj-${SLOT}
-}
-
-pkg_postrm() {
-	eselect ecj update
 }

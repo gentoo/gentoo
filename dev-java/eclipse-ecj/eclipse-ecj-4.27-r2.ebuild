@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc source"
 # https://github.com/eclipse-jdt/eclipse.jdt.core/blob/R4_30/org.eclipse.jdt.core.compiler.batch/pom.xml#L20
 MAVEN_ID="org.eclipse.jdt:org.eclipse.jdt.core.compiler.batch:3.33.0"
 
-inherit java-pkg-2 java-pkg-simple prefix
+inherit java-pkg-2 java-pkg-simple
 
 DMF="R-${PV/_rc/RC}-202303020300"
 
@@ -43,26 +43,9 @@ src_prepare() {
 
 	# Exception in thread "main" java.lang.SecurityException: Invalid signature file digest for Manifest main attributes
 	rm META-INF/ECLIPSE_* || die
+
 	mkdir "${JAVA_RESOURCE_DIRS}" || die
 	find -type f \
 		! -name '*.java' \
 		| xargs cp --parent -t "${JAVA_RESOURCE_DIRS}" || die
-}
-
-src_install() {
-	java-pkg-simple_src_install
-	insinto /usr/share/java-config-2/compiler
-	doins "${FILESDIR}/ecj-${SLOT}"
-	eprefixify "${ED}"/usr/share/java-config-2/compiler/ecj-${SLOT}
-}
-
-pkg_postinst() {
-	einfo "To select between slots of ECJ..."
-	einfo " # eselect ecj"
-
-	eselect ecj update ecj-${SLOT}
-}
-
-pkg_postrm() {
-	eselect ecj update
 }
