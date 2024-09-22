@@ -41,7 +41,7 @@ LIB_DEPEND="
 	nettle? ( >=dev-libs/nettle-2.4[static-libs(+)] )
 	openssl? ( dev-libs/openssl:0=[static-libs(+)] )
 	pwquality? ( dev-libs/libpwquality[static-libs(+)] )
-	ssh? ( net-libs/libssh[sftp,static-libs(+)] )
+	ssh? ( net-libs/libssh[static-libs(+)] )
 	sys-fs/lvm2[static-libs(+)]
 "
 # We have to always depend on ${LIB_DEPEND} rather than put behind
