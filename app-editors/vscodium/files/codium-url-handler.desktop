@@ -4,6 +4,7 @@ Comment=Editing evolved
 GenericName=Code Editor
 Exec=/usr/bin/vscodium @exec_extra_flags@ --open-url %U
 Icon=vscodium
+StartupWMClass=Codium
 Type=Application
 NoDisplay=true
 StartupNotify=true
