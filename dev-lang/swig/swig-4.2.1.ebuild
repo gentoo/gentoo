@@ -27,6 +27,17 @@ BDEPEND="virtual/pkgconfig"
 
 DOCS=( ANNOUNCE CHANGES CHANGES.current README TODO )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-tests-fpic.patch
+)
+
+src_prepare() {
+	default
+
+	# Delete after 4.2.1 (bug #900769, bug #935318)
+	sed -i -e 's:fpic:fPIC:' configure.ac configure || die
+}
+
 src_configure() {
 	# TODO: add USE for various langs? (https://bugs.gentoo.org/921504#c3)
 	econf \
