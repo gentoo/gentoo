@@ -14,7 +14,7 @@ S="${WORKDIR}"/${P/_/-}
 LICENSE="GPL-2+"
 SLOT="0/12" # libcryptsetup.so version
 if [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 CRYPTO_BACKENDS="gcrypt kernel nettle +openssl"
@@ -41,7 +41,7 @@ LIB_DEPEND="
 	nettle? ( >=dev-libs/nettle-2.4[static-libs(+)] )
 	openssl? ( dev-libs/openssl:0=[static-libs(+)] )
 	pwquality? ( dev-libs/libpwquality[static-libs(+)] )
-	ssh? ( net-libs/libssh[static-libs(+)] )
+	ssh? ( net-libs/libssh[sftp,static-libs(+)] )
 	sys-fs/lvm2[static-libs(+)]
 "
 # We have to always depend on ${LIB_DEPEND} rather than put behind
