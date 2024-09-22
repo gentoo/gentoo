@@ -487,10 +487,9 @@ src_test() {
 	# And bail if there was a problem
 	[[ ${rc} -eq 0 ]] || die "Tests failed. Please file a bug!"
 
+	popd &>/dev/null || die
 	if use perl ; then
-		make -C contrib/credential/netrc test || \
-		make -C contrib/credential/netrc testverbose || \
-		die "Tests failed for git-credential-netrc failed.  Please file a bug!"
+		emake -C contrib/credential/netrc testverbose
 	fi
 }
 
