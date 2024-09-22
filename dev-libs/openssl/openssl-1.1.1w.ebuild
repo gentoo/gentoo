@@ -32,7 +32,7 @@ BDEPEND="
 		app-alternatives/bc
 		kernel_linux? ( sys-process/procps )
 	)
-	verify-sig? ( >=sec-keys/openpgp-keys-openssl-20230801 )"
+	verify-sig? ( <sec-keys/openpgp-keys-openssl-20240920 )"
 PDEPEND="app-misc/ca-certificates"
 
 # force upgrade to prevent broken login, bug #696950
