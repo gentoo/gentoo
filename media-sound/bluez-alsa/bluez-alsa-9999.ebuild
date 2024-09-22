@@ -17,7 +17,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="aac aptx debug hcitop lame ldac liblc3 man mpg123 ofono static-libs systemd test unwind upower"
+IUSE="aac aptx debug hcitop lame ldac liblc3 man mpg123 msbc ofono opus static-libs systemd test unwind upower"
 
 RESTRICT="!test? ( test )"
 
@@ -40,7 +40,9 @@ RDEPEND="
 	ldac? ( >=media-libs/libldac-2.0.0 )
 	liblc3? ( >=media-sound/liblc3-1.0.0 )
 	mpg123? ( media-sound/mpg123[${MULTILIB_USEDEP}] )
+	msbc? ( >=media-libs/spandsp-0.0.6 )
 	ofono? ( net-misc/ofono )
+	opus? ( >=media-libs/opus-1.0.0 )
 	systemd? ( sys-apps/systemd )
 	unwind? ( sys-libs/libunwind[${MULTILIB_USEDEP}] )
 	upower? ( sys-power/upower )
@@ -66,7 +68,6 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myeconfargs=(
-		--enable-cli
 		--enable-faststream
 		--enable-midi
 		--enable-rfcomm
@@ -76,6 +77,8 @@ multilib_src_configure() {
 		$(use_enable lame mp3lame)
 		$(use_enable man manpages)
 		$(use_enable mpg123)
+		$(use_enable msbc)
+		$(use_enable opus)
 		$(use_enable static-libs static)
 		$(use_enable systemd)
 		$(use_enable test)
