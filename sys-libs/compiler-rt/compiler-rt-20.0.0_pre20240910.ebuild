@@ -19,7 +19,7 @@ DEPEND="
 	sys-devel/llvm:${LLVM_MAJOR}
 "
 BDEPEND="
-	clang? ( sys-devel/clang )
+	clang? ( sys-devel/clang:${LLVM_MAJOR} )
 	test? (
 		$(python_gen_any_dep ">=dev-python/lit-15[\${PYTHON_USEDEP}]")
 		=sys-devel/clang-${LLVM_VERSION}*:${LLVM_MAJOR}
