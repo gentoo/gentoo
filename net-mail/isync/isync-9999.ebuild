@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="MailDir mailbox synchronizer"
 HOMEPAGE="https://isync.sourceforge.io/"
@@ -23,12 +23,9 @@ RDEPEND="
 	sasl?	( dev-libs/cyrus-sasl )
 	ssl?	( >=dev-libs/openssl-0.9.6:0= )
 	zlib?	( sys-libs/zlib:0= )
-	!sci-chemistry/mdtraj
 "
-DEPEND=${RDEPEND}
-BDEPEND="
-	dev-lang/perl
-"
+DEPEND="${RDEPEND}"
+BDEPEND=">=dev-lang/perl-5.14"
 
 src_prepare() {
 	default
