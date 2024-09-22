@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..12} )
-inherit python-single-r1
+inherit libtool python-single-r1
 
 DESCRIPTION="General purpose formula parser & interpreter"
 HOMEPAGE="https://gitlab.com/ixion/ixion"
@@ -43,7 +43,11 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	[[ ${PV} == *9999* ]] && eautoreconf
+	if [[ ${PV} == *9999* ]]; then
+		eautoreconf
+	else
+		elibtoolize
+	fi
 }
 
 src_configure() {
