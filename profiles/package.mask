@@ -38,6 +38,7 @@
 # bugs. Please switch to a newer GCC version using gcc-config.
 # The lowest supported version of GCC is GCC 12.
 <dev-util/nvidia-cuda-toolkit-12
+<dev-libs/cudnn-8.8.0.121
 <sys-devel/gcc-12
 <sys-devel/kgcc64-12
 
