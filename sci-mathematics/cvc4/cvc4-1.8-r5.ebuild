@@ -57,6 +57,17 @@ src_configure() {
 		-DENABLE_PROOFS="$(usex proofs ON OFF)"
 	)
 	cmake_src_configure
+	# Bug #934053 - build with musl
+	antlr3 "${S}"/src/parser/cvc/Cvc.g -fo "${BUILD_DIR}"/src/parser/cvc || die
+	sed -i \
+		-e "s|k = NULL|k = 0|g" \
+		-e "s|n = NULL|n = 0|g" \
+		-e "s|k1 = NULL|k1 = 0|g" \
+		-e "s|k2 = NULL|k2 = 0|g" \
+		-e "s|lo = NULL|lo = 0|g" \
+		-e "s|hi = NULL|hi = 0|g" \
+		"${BUILD_DIR}"/src/parser/cvc/CvcParser.c \
+		die
 }
 
 src_test() {
