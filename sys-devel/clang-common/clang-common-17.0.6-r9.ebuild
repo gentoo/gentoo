@@ -3,23 +3,22 @@
 
 EAPI=8
 
-inherit bash-completion-r1 llvm.org
+inherit bash-completion-r1 llvm.org multilib
 
 DESCRIPTION="Common files shared between multiple slots of clang"
 HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv sparc x86 ~amd64-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86 ~amd64-linux ~arm64-macos ~ppc-macos ~x64-macos"
 IUSE="
-	default-compiler-rt default-libcxx default-lld llvm-libunwind
-	hardened stricter
+	default-compiler-rt default-libcxx default-lld
+	bootstrap-prefix cet hardened llvm-libunwind
 "
 
 PDEPEND="
-	sys-devel/clang:*
 	default-compiler-rt? (
-		sys-devel/clang-runtime:${PV}[compiler-rt]
+		sys-devel/clang-runtime:${LLVM_MAJOR}[compiler-rt]
 		llvm-libunwind? ( sys-libs/llvm-libunwind[static-libs] )
 		!llvm-libunwind? ( sys-libs/libunwind[static-libs] )
 	)
@@ -63,6 +62,83 @@ pkg_pretend() {
 	fi
 }
 
+_doclang_cfg() {
+	local triple="${1}"
+
+	local tool
+	for tool in ${triple}-clang{,++}; do
+		newins - "${tool}.cfg" <<-EOF
+			# This configuration file is used by ${tool} driver.
+			@gentoo-common.cfg
+			@gentoo-common-ld.cfg
+		EOF
+		if [[ ${triple} == x86_64* ]]; then
+			cat >> "${ED}/etc/clang/${tool}.cfg" <<-EOF || die
+				@gentoo-cet.cfg
+			EOF
+		fi
+	done
+
+	if use kernel_Darwin; then
+		cat >> "${ED}/etc/clang/${triple}-clang++.cfg" <<-EOF || die
+			-lc++abi
+		EOF
+	fi
+
+	newins - "${triple}-clang-cpp.cfg" <<-EOF
+		# This configuration file is used by the ${triple}-clang-cpp driver.
+		@gentoo-common.cfg
+	EOF
+	if [[ ${triple} == x86_64* ]]; then
+		cat >> "${ED}/etc/clang/${triple}-clang-cpp.cfg" <<-EOF || die
+			@gentoo-cet.cfg
+		EOF
+	fi
+
+	# Install symlinks for triples with other vendor strings since some
+	# programs insist on mangling the triple.
+	local vendor
+	for vendor in gentoo pc unknown; do
+		local vendor_triple="${triple%%-*}-${vendor}-${triple#*-*-}"
+		for tool in clang{,++,-cpp}; do
+			if [[ ! -f "${ED}/etc/clang/${vendor_triple}-${tool}.cfg" ]]; then
+				dosym "${triple}-${tool}.cfg" "/etc/clang/${vendor_triple}-${tool}.cfg"
+			fi
+		done
+	done
+}
+
+doclang_cfg() {
+	local triple="${1}"
+
+	_doclang_cfg ${triple}
+
+	# LLVM may have different arch names in some cases. For example in x86
+	# profiles the triple uses i686, but llvm will prefer i386 if invoked
+	# with "clang" on x86 or "clang -m32" on x86_64. The gentoo triple will
+	# be used if invoked through ${CHOST}-clang{,++,-cpp} though.
+	#
+	# To make sure the correct triples are installed,
+	# see Triple::getArchTypeName() in llvm/lib/TargetParser/Triple.cpp
+	# and compare with CHOST values in profiles.
+
+	local abi=${triple%%-*}
+	case ${abi} in
+		armv4l|armv4t|armv5tel|armv6j|armv7a)
+			_doclang_cfg ${triple/${abi}/arm}
+			;;
+		i686)
+			_doclang_cfg ${triple/${abi}/i386}
+			;;
+		sparc)
+			_doclang_cfg ${triple/${abi}/sparcel}
+			;;
+		sparc64)
+			_doclang_cfg ${triple/${abi}/sparcv9}
+			;;
+	esac
+}
+
 src_install() {
 	newbashcomp bash-autocomplete.sh clang
 
@@ -91,16 +167,40 @@ src_install() {
 		-include "${EPREFIX}/usr/include/gentoo/maybe-stddefs.h"
 	EOF
 
+	# clang-cpp does not like link args being passed to it when directly
+	# invoked, so use a separate configuration file.
+	newins - gentoo-common-ld.cfg <<-EOF
+		# This file contains flags common to clang and clang++
+		@gentoo-hardened-ld.cfg
+	EOF
+
 	# Baseline hardening (bug #851111)
-	# (-fstack-clash-protection is omitted because of a possible Clang bug,
-	# see bug #892537 and bug #865339.)
 	newins - gentoo-hardened.cfg <<-EOF
 		# Some of these options are added unconditionally, regardless of
 		# USE=hardened, for parity with sys-devel/gcc.
+		-Xarch_host -fstack-clash-protection
 		-Xarch_host -fstack-protector-strong
 		-fPIE
 		-include "${EPREFIX}/usr/include/gentoo/fortify.h"
 	EOF
+
+	newins - gentoo-cet.cfg <<-EOF
+		-Xarch_host -fcf-protection=$(usex cet full none)
+	EOF
+
+	if use kernel_Darwin; then
+		newins - gentoo-hardened-ld.cfg <<-EOF
+			# There was -Wl,-z,relro here, but it's not supported on Mac
+			# TODO: investigate whether -bind_at_load or -read_only_stubs will do the job
+		EOF
+	else
+		newins - gentoo-hardened-ld.cfg <<-EOF
+			# Some of these options are added unconditionally, regardless of
+			# USE=hardened, for parity with sys-devel/gcc.
+			-Wl,-z,relro
+			-Wl,-z,now
+		EOF
+	fi
 
 	dodir /usr/include/gentoo
 
@@ -127,12 +227,19 @@ src_install() {
 	#  define __GENTOO_HAS_FEATURE(x) 0
 	# endif
 	#
-	# if defined(__OPTIMIZE__) && __OPTIMIZE__ > 0
+	# if defined(__STDC_HOSTED__) && __STDC_HOSTED__ == 1
+	#  define __GENTOO_NOT_FREESTANDING 1
+	# else
+	#  define __GENTOO_NOT_FREESTANDING 0
+	# endif
+	#
+	# if defined(__OPTIMIZE__) && __OPTIMIZE__ > 0 && __GENTOO_NOT_FREESTANDING > 0
 	#  if !defined(__SANITIZE_ADDRESS__) && !__GENTOO_HAS_FEATURE(address_sanitizer) && !__GENTOO_HAS_FEATURE(memory_sanitizer)
 	#   define _FORTIFY_SOURCE ${fortify_level}
 	#  endif
 	# endif
 	# undef __GENTOO_HAS_FEATURE
+	# undef __GENTOO_NOT_FREESTANDING
 	#endif
 	EOF
 
@@ -143,33 +250,43 @@ src_install() {
 
 			# Analogue to GLIBCXX_ASSERTIONS
 			# https://libcxx.llvm.org/UsingLibcxx.html#assertions-mode
+			# https://libcxx.llvm.org/Hardening.html#using-hardened-mode
 			-D_LIBCPP_ENABLE_ASSERTIONS=1
 		EOF
-	fi
 
-	if use stricter; then
-		newins - gentoo-stricter.cfg <<-EOF
-			# This file increases the strictness of older clang versions
-			# to match the newest upstream version.
-
-			# clang-16 defaults
-			-Werror=implicit-function-declaration
-			-Werror=implicit-int
-			-Werror=incompatible-function-pointer-types
-		EOF
-
-		cat >> "${ED}/etc/clang/gentoo-common.cfg" <<-EOF || die
-			@gentoo-stricter.cfg
+		cat >> "${ED}/etc/clang/gentoo-hardened-ld.cfg" <<-EOF || die
+			# Options below are conditional on USE=hardened.
 		EOF
 	fi
 
-	local tool
-	for tool in clang{,++,-cpp}; do
-		newins - "${tool}.cfg" <<-EOF
-			# This configuration file is used by ${tool} driver.
-			@gentoo-common.cfg
-		EOF
+	# We only install config files for supported ABIs because unprefixed tools
+	# might be used for crosscompilation where e.g. PIE may not be supported.
+	# See bug #912237 and bug #901247. Just ${CHOST} won't do due to bug #912685.
+	local abi
+	for abi in $(get_all_abis); do
+		local abi_chost=$(get_abi_CHOST "${abi}")
+		doclang_cfg "${abi_chost}"
 	done
+
+	if use kernel_Darwin; then
+		cat >> "${ED}/etc/clang/gentoo-common.cfg" <<-EOF || die
+			# Gentoo Prefix on Darwin
+			-Wl,-search_paths_first
+			-Wl,-rpath,${EPREFIX}/usr/lib
+			-L ${EPREFIX}/usr/lib
+			-isystem ${EPREFIX}/usr/include
+			-isysroot ${EPREFIX}/MacOSX.sdk
+		EOF
+		if use bootstrap-prefix ; then
+			# bootstrap-prefix is only set during stage2 of bootstrapping
+			# Prefix, where EPREFIX is set to EPREFIX/tmp.
+			# Here we need to point it at the future lib dir of the stage3's
+			# EPREFIX.
+			cat >> "${ED}/etc/clang/gentoo-common.cfg" <<-EOF || die
+				-Wl,-rpath,${EPREFIX}/../usr/lib
+			EOF
+		fi
+	fi
 }
 
 pkg_preinst() {
