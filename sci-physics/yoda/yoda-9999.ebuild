@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..12} )
 
-inherit bash-completion-r1 python-single-r1 optfeature
+inherit bash-completion-r1 python-single-r1 optfeature autotools
 
 DESCRIPTION="Yet more Objects for (High Energy Physics) Data Analysis"
 HOMEPAGE="https://yoda.hepforge.org/"
@@ -47,6 +47,12 @@ BDEPEND="
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
+}
+
+src_prepare() {
+	default
+	# reconf due to 9999 version
+	eautoreconf
 }
 
 src_configure() {
