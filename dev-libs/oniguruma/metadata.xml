@@ -18,6 +18,7 @@
 		<flag name="crnl-as-line-terminator">Enable CR+NL as line terminator</flag>
 	</use>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:oniguruma_project:oniguruma</remote-id>
 		<remote-id type="github">kkos/oniguruma</remote-id>
 	</upstream>
 </pkgmetadata>
