@@ -37,6 +37,7 @@ BDEPEND="
 	>=sys-apps/sed-4.0
 	sys-apps/gawk
 	sys-apps/texinfo
+	sys-apps/which
 	sys-devel/bison
 	sys-devel/flex
 	curl? ( net-misc/curl )
