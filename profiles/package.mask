@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Robin H. Johnson <robbat2@gentoo.org> (2024-09-22)
+# Upstream testing release; fails some tests as well here
+# Beware that if you upgrade to it, you may need to reset your keyrings.
+>=app-crypt/gnupg-2.5
+
 # Michał Górny <mgorny@gentoo.org> (2024-09-21)
 # Discontinued upstream.  Since 7.3.17, only 2.7 and 3.10 are released.
 # Vulnerable.
