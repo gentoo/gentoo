@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.bz2
 
 LICENSE="LGPL-2.1 GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 ~loong ~riscv ~x86"
 IUSE="selinux test"
 RESTRICT="!test? ( test )"
 
