@@ -38,7 +38,7 @@ DEPEND="
 	>=kde-plasma/libkscreen-${PVCUT}:6=
 	>=kde-plasma/libplasma-${PVCUT}:6
 	X? (
-		>=dev-qt/qtbase-${QTMIN}:6=
+		>=dev-qt/qtbase-${QTMIN}:6=[X]
 		x11-libs/libX11
 		x11-libs/libxcb:=
 		x11-libs/libXi
