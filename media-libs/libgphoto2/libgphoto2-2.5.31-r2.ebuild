@@ -41,7 +41,7 @@ IUSE_CAMERAS=(
 	pccam300 pccam600 pentax polaroid_pdc320 polaroid_pdc640 polaroid_pdc700 ptp2
 	ricoh ricoh_g3
 	samsung sierra sipix_blink2 sipix_web2 smal sonix sony_dscf1 sony_dscf55
-	soundvision	spca50x sq905 st2205 stv0674 stv0680 sx330z
+	soundvision spca50x sq905 st2205 stv0674 stv0680 sx330z
 	toshiba_pdrm11 topfield tp6801
 )
 
