@@ -43,10 +43,22 @@ src_configure() {
 		$(use_with pcre)
 }
 
+src_compile() {
+	# Override these variables per Makefile.in to get verbose logs
+	emake FLAGS="-k" RUNPIPE=""
+}
+
 src_test() {
 	# The tests won't get run w/o an explicit call, broken Makefiles?
 	# java skipped for bug #921504
-	emake skip-java=true check
+	# *-sections for bug #935318
+	emake check \
+		skip-java=true \
+		FLAGS="-k" \
+		RUNPIPE="" \
+		CFLAGS="${CFLAGS} -ffunction-sections -fdata-sections" \
+		CXXFLAGS="${CXXFLAGS} -ffunction-sections -fdata-sections" \
+		LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
