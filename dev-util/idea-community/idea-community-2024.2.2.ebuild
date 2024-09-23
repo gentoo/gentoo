@@ -73,15 +73,17 @@ src_prepare() {
 	rm -vf "${S}"/lib/pty4j-native/linux/mips64el/libpty.so
 
 	if [[ -d "${S}"/"${JRE_DIR}" ]]; then
-		for file in "${PLUGIN_DIR}"/{libfxplugins.so,libjfxmedia.so}
-		do
+		for file in "${PLUGIN_DIR}"/{libfxplugins.so,libjfxmedia.so}; do
 			if [[ -f "$file" ]]; then
-			  patchelf --set-rpath '$ORIGIN' $file || die
+				patchelf --set-rpath '$ORIGIN' $file || die
 			fi
 		done
 	fi
-
 	rm -vf "${S}"/lib/pty4j-native/linux/x86-64/libpty.so
+
+	for file in "${S}/jbr/lib/"{libjcef.so,jcef_helper}; do
+		patchelf --set-rpath '$ORIGIN' $file || die
+	done
 
 	sed -i \
 		-e "\$a\\\\" \
@@ -89,7 +91,7 @@ src_prepare() {
 		-e "\$a# Disable automatic updates as these are handled through Gentoo's" \
 		-e "\$a# package manager. See bug #704494" \
 		-e "\$a#-----------------------------------------------------------------------" \
-		-e "\$aide.no.platform.update=Gentoo"  bin/idea.properties
+		-e "\$aide.no.platform.update=Gentoo" bin/idea.properties
 
 	eapply_user
 }
@@ -102,7 +104,6 @@ src_install() {
 	doins -r *
 	fperms 755 "${dir}"/bin/{format.sh,idea,idea.sh,inspect.sh,restarter,fsnotifier}
 	if use amd64; then
-		JRE_DIR=jre
 		JRE_DIR=jre
 	fi
 
@@ -124,12 +125,14 @@ src_install() {
 
 	# recommended by: https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
 	mkdir -p "${D}/etc/sysctl.d/" || die
-	echo "fs.inotify.max_user_watches = 524288" > "${D}/etc/sysctl.d/30-idea-inotify-watches.conf" || die
+	echo "fs.inotify.max_user_watches = 524288" >"${D}/etc/sysctl.d/30-idea-inotify-watches.conf" || die
 
 	# remove bundled harfbuzz
 	rm -f "${D}"/lib/libharfbuzz.so || die "Unable to remove bundled harfbuzz"
 
-	# remove bundled java
-	rm -r ${dst}/jbr || die "Unable to remove bundled java"
-
+	# jetbrains runtime
+	JBR_BINARIES="java javadoc jdb jhsdb jmap jrunscript jstat keytool serialver javac jcmd jfr jinfo jps jstack jwebserver rmiregistry"
+	for jbrbin in $JBR_BINARIES; do
+		fperms 755 "${dir}/jbr/bin/${jbrbin}"
+	done
 }
