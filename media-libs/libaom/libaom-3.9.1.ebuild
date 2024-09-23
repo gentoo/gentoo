@@ -16,7 +16,7 @@ else
 		https://storage.googleapis.com/aom-releases/${P}.tar.gz
 		test? ( https://deps.gentoo.zip/${CATEGORY}/${P}-testdata.tar.xz )
 	"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Alliance for Open Media AV1 Codec SDK"
