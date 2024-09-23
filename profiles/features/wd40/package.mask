@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2024-09-23)
+# Requires dev-python/nh3.
+dev-python/textile
+
 # matoro <matoro_gentoo@matoro.tk> (2024-08-10), #936643
 # Unmask old pre-rust librsvg.  This has vulnerabilities,
 # so it is masked by default and only unmasked on wd40
