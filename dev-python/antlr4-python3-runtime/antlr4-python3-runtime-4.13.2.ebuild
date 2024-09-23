@@ -23,7 +23,7 @@ S="${WORKDIR}/${MY_P}/runtime/Python3"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 src_prepare() {
 	# https://github.com/antlr/antlr4/pull/4593
