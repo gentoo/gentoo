@@ -566,9 +566,6 @@ src_install() {
 	fi
 
 	rm -r "${libdir}"/ensurepip/_bundled || die
-	if ! use ensurepip; then
-		rm -r "${libdir}"/ensurepip || die
-	fi
 	if ! use sqlite; then
 		rm -r "${libdir}/"sqlite3 || die
 	fi
