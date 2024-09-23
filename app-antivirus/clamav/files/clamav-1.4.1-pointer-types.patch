@@ -1,0 +1,29 @@
+From 26c465b562f08d4b4c3da688a6a3b051ddc51b01 Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Mon, 23 Sep 2024 21:25:07 +1000
+Subject: [PATCH] Resolve incompatible-pointer-types
+
+Explicitly cast regex match to `const char **`; we don't modify the
+value once it's set like this; we should be safe.
+
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+---
+ libclamav/regex/engine.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libclamav/regex/engine.c b/libclamav/regex/engine.c
+index 68a1767fb..38add7d15 100644
+--- a/libclamav/regex/engine.c
++++ b/libclamav/regex/engine.c
+@@ -223,7 +223,7 @@ matcher(struct re_guts *g, const char *string, size_t nmatch,
+ 			dp = dissect(m, m->coldp, endp, gf, gl);
+ 		} else {
+ 			if (g->nplus > 0 && m->lastpos == NULL)
+-				m->lastpos = (char **)cli_max_malloc((g->nplus+1) *
++				m->lastpos = (const char **)cli_max_malloc((g->nplus+1) *
+ 							sizeof(char *));
+ 			if (g->nplus > 0 && m->lastpos == NULL) {
+ 				free(m->pmatch);
+-- 
+2.45.2
+

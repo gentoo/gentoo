@@ -154,7 +154,7 @@ CRATES="
 
 # Get the commit from the CLAM-2329-new-from-slice branch
 declare -A GIT_CRATES=(
-	[onenote_parser]="https://github.com/Cisco-Talos/onenote.rs;8b450447e58143004b68dd21c11b710fdb79be92;onenote.rs-%commit%"
+	[onenote_parser]="https://github.com/Cisco-Talos/onenote.rs;29c08532252b917543ff268284f926f30876bb79;onenote.rs-%commit%"
 )
 
 inherit cargo cmake flag-o-matic llvm python-any-r1 systemd tmpfiles
@@ -224,6 +224,10 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-clamav )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-pointer-types.patch"
+)
+
 python_check_deps() {
 	python_has_version -b "dev-python/pytest[${PYTHON_USEDEP}]"
 }
@@ -234,8 +238,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eapply --dir="${WORKDIR}/onenote.rs-8b450447e58143004b68dd21c11b710fdb79be92" \
-		"${FILESDIR}/${PN}-1.3.1-onenote-rs.patch"
 	cmake_src_prepare
 }
 
