@@ -13,7 +13,7 @@ S=${WORKDIR}/enblend
 
 LICENSE="GPL-2+ FDL-1.2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="cpu_flags_x86_sse2 debug doc openmp tcmalloc"
 
 REQUIRED_USE="tcmalloc? ( !debug )"
