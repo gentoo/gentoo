@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Eli Schwartz <eschwartz@gentoo.org> (2024-09-22)
+# Unmaintained, abandoned upstream, does not compile with GCC 14.
+# Removal on 2024-10-22.  Bug #874732.
+dev-util/biew
+
 # Sam James <sam@gentoo.org> (2024-09-22)
 # GCC 11 and older no longer receive upstream support or fixes for
 # bugs. Please switch to a newer GCC version using gcc-config.
