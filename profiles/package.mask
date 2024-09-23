@@ -266,6 +266,7 @@ kde-misc/latte-dock
 www-apps/haunt
 dev-scheme/guile-commonmark
 >=dev-scheme/guile-reader-0.6.3-r100
+dev-scheme/guile:1.8
 dev-scheme/guile:2.2
 dev-scheme/guile:3.0
 >=dev-build/make-4.4.1-r100
