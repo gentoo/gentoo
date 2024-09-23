@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>dotnet@gentoo.org</email>
+    <name>Gentoo Dotnet Project</name>
+  </maintainer>
+  <use>
+    <flag name="pipewire">Use pipewire to enable sound output</flag>
+  </use>
+  <upstream>
+    <changelog>https://github.com/ppy/osu/releases/</changelog>
+    <bugs-to>https://github.com/ppy/osu/issues/</bugs-to>
+    <remote-id type="github">ppy/osu</remote-id>
+  </upstream>
+</pkgmetadata>
