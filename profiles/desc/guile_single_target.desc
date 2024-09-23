@@ -3,5 +3,6 @@
 
 # This file contains descriptions of GUILE_SINGLE_TARGET USE_EXPAND flags.
 
+1-8 - Build only for GNU Guile 1.8.
 2-2 - Build only for GNU Guile 2.2.
 3-0 - Build only for GNU Guile 3.0.
