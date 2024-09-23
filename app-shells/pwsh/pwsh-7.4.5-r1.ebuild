@@ -21,12 +21,14 @@ jsonpointer.net@3.0.3
 jsonschema.net@5.2.7
 markdig.signed@0.33.0
 microsoft.applicationinsights@2.21.0
-microsoft.bcl.asyncinterfaces@5.0.0
+microsoft.bcl.asyncinterfaces@8.0.0
 microsoft.codeanalysis.analyzers@3.3.4
 microsoft.codeanalysis.common@4.8.0
+microsoft.codeanalysis.common@4.9.2
 microsoft.codeanalysis.csharp@4.8.0
+microsoft.codeanalysis.csharp@4.9.2
 microsoft.codecoverage@17.7.2
-microsoft.extensions.objectpool@5.0.17
+microsoft.extensions.objectpool@8.0.8
 microsoft.management.infrastructure.runtime.unix@3.0.0
 microsoft.management.infrastructure.runtime.win@3.0.0
 microsoft.management.infrastructure@3.0.0
@@ -44,7 +46,7 @@ microsoft.win32.primitives@4.3.0
 microsoft.win32.registry.accesscontrol@8.0.0
 microsoft.win32.registry@4.7.0
 microsoft.win32.systemevents@8.0.0
-microsoft.windows.compatibility@8.0.1
+microsoft.windows.compatibility@8.0.8
 netstandard.library@1.6.1
 netstandard.library@2.0.3
 newtonsoft.json@13.0.1
@@ -109,6 +111,7 @@ system.buffers@4.5.1
 system.codedom@8.0.0
 system.collections.concurrent@4.3.0
 system.collections.immutable@7.0.0
+system.collections.immutable@8.0.0
 system.collections@4.3.0
 system.componentmodel.composition.registration@8.0.0
 system.componentmodel.composition@8.0.0
@@ -119,7 +122,7 @@ system.data.oledb@8.0.0
 system.data.sqlclient@4.8.6
 system.diagnostics.debug@4.3.0
 system.diagnostics.diagnosticsource@4.3.0
-system.diagnostics.diagnosticsource@8.0.0
+system.diagnostics.diagnosticsource@8.0.1
 system.diagnostics.eventlog@8.0.0
 system.diagnostics.performancecounter@8.0.0
 system.diagnostics.tools@4.3.0
@@ -127,9 +130,10 @@ system.diagnostics.tracing@4.3.0
 system.directoryservices.accountmanagement@8.0.0
 system.directoryservices.protocols@8.0.0
 system.directoryservices@8.0.0
-system.drawing.common@8.0.1
+system.drawing.common@8.0.8
 system.formats.asn1@6.0.0
 system.formats.asn1@8.0.0
+system.formats.asn1@8.0.1
 system.globalization.calendars@4.3.0
 system.globalization.extensions@4.3.0
 system.globalization@4.3.0
@@ -144,7 +148,7 @@ system.linq.expressions@4.3.0
 system.linq@4.3.0
 system.management@8.0.0
 system.memory@4.5.5
-system.net.http.winhttphandler@8.0.0
+system.net.http.winhttphandler@8.0.2
 system.net.http@4.3.0
 system.net.nameresolution@4.3.0
 system.net.primitives@4.3.0
@@ -162,6 +166,7 @@ system.reflection.emit@4.3.0
 system.reflection.extensions@4.3.0
 system.reflection.metadata@1.6.0
 system.reflection.metadata@7.0.0
+system.reflection.metadata@8.0.0
 system.reflection.primitives@4.3.0
 system.reflection.typeextensions@4.3.0
 system.reflection@4.3.0
@@ -176,6 +181,7 @@ system.runtime.numerics@4.3.0
 system.runtime@4.3.0
 system.security.accesscontrol@4.7.0
 system.security.accesscontrol@6.0.0
+system.security.accesscontrol@6.0.1
 system.security.claims@4.3.0
 system.security.cryptography.algorithms@4.3.0
 system.security.cryptography.cng@4.3.0
@@ -188,7 +194,7 @@ system.security.cryptography.primitives@4.3.0
 system.security.cryptography.protecteddata@8.0.0
 system.security.cryptography.x509certificates@4.3.0
 system.security.cryptography.xml@6.0.1
-system.security.cryptography.xml@8.0.0
+system.security.cryptography.xml@8.0.1
 system.security.permissions@8.0.0
 system.security.principal.windows@4.3.0
 system.security.principal.windows@4.7.0
@@ -206,9 +212,8 @@ system.text.encoding.codepages@7.0.0
 system.text.encoding.codepages@8.0.0
 system.text.encoding.extensions@4.3.0
 system.text.encoding@4.3.0
-system.text.encodings.web@6.0.0
 system.text.encodings.web@8.0.0
-system.text.json@6.0.9
+system.text.json@8.0.4
 system.text.regularexpressions@4.3.0
 system.threading.accesscontrol@8.0.0
 system.threading.tasks.extensions@4.3.0
@@ -231,19 +236,19 @@ xunit.extensibility.core@2.4.0
 xunit.extensibility.core@2.5.3
 xunit.extensibility.execution@2.4.0
 xunit.extensibility.execution@2.5.3
-xunit.runner.visualstudio@2.5.6
+xunit.runner.visualstudio@2.5.8
 xunit.skippablefact@1.4.13
 xunit@2.5.3
-xunitxml.testlogger@3.1.17
+xunitxml.testlogger@3.1.20
 "
 
 # Additional PowerShell Gallery modules.
 NUGETS+="
 microsoft.powershell.archive@1.2.5
-microsoft.powershell.psresourceget@1.0.1
+microsoft.powershell.psresourceget@1.0.4.1
 packagemanagement@1.4.8.1
 powershellget@2.2.5
-psreadline@2.3.4
+psreadline@2.3.5
 threadjob@2.0.3
 "
 
@@ -259,7 +264,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="amd64 arm arm64"
+KEYWORDS="~amd64 ~arm ~arm64"
 IUSE="gui"
 
 # TODO: "LibraryImports.g.cs", "PSVersionInfo.g.cs" not found.
@@ -292,6 +297,7 @@ DOTNET_PKG_PROJECTS=(
 PATCHES=(
 	"${FILESDIR}/pwsh-7.3.3-disable-update-check.patch"
 	"${FILESDIR}/pwsh-7.4.0-disable-telemetry.patch"
+	"${FILESDIR}/pwsh-7.4.5-downgrade-codeanalysis.patch"
 )
 
 DOCS=( CHANGELOG CHANGELOG.md CODE_OF_CONDUCT.md README.md docs )
@@ -385,9 +391,15 @@ src_install() {
 	insinto "${dest_root}/ref"
 	doins "${WORKDIR}/${P}_ref"/*
 
-	# Remove "libpsl-native.so" provided by "microsoft.powershell.native".
+	# Replace "libpsl-native.so" provided by "microsoft.powershell.native".
 	rm "${ED}/${dest_root}/libpsl-native.so" || die
 	dosym -r "/usr/$(get_libdir)/libpsl-native.so" "${dest_root}/libpsl-native.so"
+
+	# On musl remove "libSystem.IO.Ports.Native.so" linked against glibc.
+	if ! use elibc_glibc ; then
+		ewarn "libSystem.IO.Ports.Native.so is available only for glibc, removing it"
+		rm "${ED}/${dest_root}/libSystem.IO.Ports.Native.so" || die
+	fi
 
 	if use gui ; then
 		newicon assets/ps_black_128.svg "powershell-${SLOT}.svg"
