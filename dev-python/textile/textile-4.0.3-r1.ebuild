@@ -25,8 +25,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 RDEPEND="
+	dev-python/nh3[${PYTHON_USEDEP}]
 	dev-python/regex[${PYTHON_USEDEP}]
-	dev-python/textile[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
