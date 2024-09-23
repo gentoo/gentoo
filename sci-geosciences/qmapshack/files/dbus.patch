@@ -1,0 +1,15 @@
+diff '--color=auto' -U3 -r qmapshack-1f009ac0be1d1c2a4c31aa1283f4009e88685d34.orig/CMakeLists.txt qmapshack-1f009ac0be1d1c2a4c31aa1283f4009e88685d34/CMakeLists.txt
+--- qmapshack-1f009ac0be1d1c2a4c31aa1283f4009e88685d34.orig/CMakeLists.txt	2024-09-04 18:48:55.000000000 +0700
++++ qmapshack-1f009ac0be1d1c2a4c31aa1283f4009e88685d34/CMakeLists.txt	2024-09-23 22:32:02.157927751 +0700
+@@ -200,9 +200,9 @@
+ 
+ if(USE_QT6DBus)
+     find_package(Qt6DBus REQUIRED)
+-    if(Qt5DBus_FOUND)
++    if(Qt6DBus_FOUND)
+         add_definitions(-DHAVE_DBUS)
+-    endif(Qt5DBus_FOUND)
++    endif(Qt6DBus_FOUND)
+ endif(USE_QT6DBus)
+ 
+ # Everything included. Let's finetune the mess a bit more
