@@ -18,12 +18,15 @@ HOMEPAGE="https://www.riverbankcomputing.com/software/pyqtwebengine/"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm64"
-IUSE="debug quick +widgets"
+IUSE="debug kerberos quick +widgets"
 
 RDEPEND="
 	>=dev-python/PyQt6-${QT_PV%:*}[gui,ssl,${PYTHON_USEDEP}]
 	>=dev-qt/qtbase-${QT_PV}[gui,widgets?]
 	>=dev-qt/qtwebengine-${QT_PV}[widgets]
+	kerberos? (
+		>=dev-qt/qtwebengine-${QT_PV}[kerberos]
+	)
 	quick? (
 		dev-python/PyQt6[qml]
 		>=dev-qt/qtwebengine-${QT_PV}[qml]

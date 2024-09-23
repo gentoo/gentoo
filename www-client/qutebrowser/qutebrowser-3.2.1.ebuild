@@ -27,7 +27,7 @@ HOMEPAGE="https://qutebrowser.org/"
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="+adblock pdf widevine"
+IUSE="+adblock kerberos pdf widevine"
 
 RDEPEND="
 	$(python_gen_cond_dep '
@@ -41,6 +41,7 @@ RDEPEND="
 		dev-python/zipp[${PYTHON_USEDEP}]
 		dev-qt/qtbase:6[icu,sqlite]
 		adblock? ( dev-python/adblock[${PYTHON_USEDEP}] )
+		kerberos? ( dev-python/PyQt6-WebEngine[${PYTHON_USEDEP}] )
 		pdf? ( www-plugins/pdfjs )
 		widevine? ( www-plugins/chrome-binary-plugins )
 	')
