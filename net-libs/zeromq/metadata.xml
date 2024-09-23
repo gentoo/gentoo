@@ -33,10 +33,6 @@
 			Use strlcpy() from <pkg>dev-libs/libbsd</pkg> instead of internal
 			implementation.
 		</flag>
-		<flag name="pgm">
-			Build PGM (Pragmatic General Multicast)extention, a protocol for reliable 
-			multicast transport of data over IP networks.
-		</flag>
 		<flag name="sodium">
 			Use <pkg>dev-libs/libsodium</pkg> for cryptography
 		</flag>
