@@ -12,7 +12,7 @@ S="${WORKDIR}/JWasm-${PV}"
 
 LICENSE="Watcom-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.18-types-test.patch
