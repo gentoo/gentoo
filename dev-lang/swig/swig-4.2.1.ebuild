@@ -27,10 +27,6 @@ BDEPEND="virtual/pkgconfig"
 
 DOCS=( ANNOUNCE CHANGES CHANGES.current README TODO )
 
-PATCHES=(
-	"${FILESDIR}"/${P}-tests-fpic.patch
-)
-
 src_prepare() {
 	default
 
