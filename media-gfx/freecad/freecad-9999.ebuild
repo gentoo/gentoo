@@ -45,6 +45,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	${PYTHON_DEPS}
+	dev-cpp/gtest
 	dev-cpp/yaml-cpp
 	dev-libs/OpenNI2[opengl(+)]
 	dev-libs/boost:=
@@ -143,6 +144,7 @@ BDEPEND="
 	test? (
 		$(python_gen_cond_dep 'dev-python/pyyaml[${PYTHON_USEDEP}]')
 		!qt6? ( dev-qt/qttest:5 )
+		dev-cpp/gtest
 	)
 "
 
