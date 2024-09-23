@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ MY_PV=${PV/_/-}
 
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit cmake distutils-r1
 
 DESCRIPTION="A lightweight multi-platform, multi-architecture CPU emulator framework"
@@ -25,7 +25,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="BSD-2 GPL-2 LGPL-2.1"
 SLOT="0/2"
-IUSE="python static-libs"
+IUSE="logging python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="${PYTHON_DEPS}
@@ -35,6 +35,13 @@ BDEPEND="virtual/pkgconfig
 	python? ( ${DISTUTILS_DEPS} )"
 
 UNICORN_TARGETS="x86 arm aarch64 riscv mips sparc m68k ppc s390x tricore"
+
+# suppress warning wrt 'implicit function declaration' in config logs due to
+# auto-detection of some libc functions (bug #906919)
+QA_CONFIG_IMPL_DECL_SKIP=(
+	clock_adjtime
+	malloc_trim
+)
 
 wrap_python() {
 	if use python; then
@@ -59,6 +66,8 @@ src_prepare() {
 src_configure(){
 	local mycmakeargs=(
 		-DUNICORN_ARCH="${UNICORN_TARGETS// /;}"
+		-DUNICORN_LOGGING=$(usex logging)
+		-DZIG_BUILD=OFF
 	)
 
 	cmake_src_configure
