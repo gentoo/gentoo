@@ -66,8 +66,9 @@ src_prepare() {
 }
 
 src_configure() {
-	# see bug #178499
-	filter-flags -ftree-vectorize
+	# See bug #178499.  filter-flags no longer works since the compiler
+	# will vectorize by default when optimizing.
+	append-flags -fno-tree-vectorize -fno-strict-aliasing
 
 	#will fail for me if posix is disabled or without modules -- hkBst
 	myconf=(
