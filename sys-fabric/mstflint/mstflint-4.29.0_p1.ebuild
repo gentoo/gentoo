@@ -35,6 +35,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/mstflint-4.29.0-build-system.patch"
+	"${FILESDIR}/mstflint-4.29.0-gcc15.patch"
 )
 
 src_prepare() {
@@ -46,6 +47,10 @@ src_prepare() {
 
 	sed -e 's:_LDFLAGS = :_LDFLAGS = $(LDFLAGS) :' \
 		-i */Makefile.am mstdump/crd_main/Makefile.am || die
+
+	# https://bugs.gentoo.org/939944
+	sed -r -e 's:-Werror(=[a-zA-Z0-9-]+|) ::' \
+		-i configure.ac ext_libs/json/Makefile.am || die
 
 	printf -- '#define TOOLS_GIT_SHA "%s"' "${EGIT_COMMIT}" > ./common/gitversion.h || die
 
