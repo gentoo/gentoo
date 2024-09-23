@@ -71,6 +71,10 @@ BDEPEND="
 	x86? ( dev-lang/nasm )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-freetype-2.13.3.patch
+)
+
 src_prepare() {
 	default
 
