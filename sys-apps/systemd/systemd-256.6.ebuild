@@ -440,7 +440,11 @@ multilib_src_install_all() {
 	keepdir /var/log/journal
 
 	if use pam; then
-		newpamd "${FILESDIR}"/systemd-user.pam systemd-user
+		if use selinux; then
+			newpamd "${FILESDIR}"/systemd-user-selinux.pam systemd-user
+		else
+			newpamd "${FILESDIR}"/systemd-user.pam systemd-user
+		fi
 	fi
 
 	if use kernel-install; then
