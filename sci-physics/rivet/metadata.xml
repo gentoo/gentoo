@@ -18,6 +18,7 @@
 		<flag name="zlib">Build with zlib</flag>
 		<flag name="hepmc3">Build with HepMC3</flag>
 		<flag name="hepmc2">Build with HepMC2</flag>
+		<flag name="highfive">Build with hdf5 and highfive</flag>
 	</use>
 	<upstream>
 		<remote-id type="gitlab">hepcedar/rivet</remote-id>
