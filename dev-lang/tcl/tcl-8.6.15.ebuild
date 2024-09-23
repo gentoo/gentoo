@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 # Please bump with dev-lang/tk!
 
@@ -12,6 +12,8 @@ MY_P="${PN}${PV}"
 DESCRIPTION="Tool Command Language"
 HOMEPAGE="http://www.tcl.tk/"
 SRC_URI="https://downloads.sourceforge.net/tcl/${PN}-core${PV}-src.tar.gz"
+
+SPARENT="${WORKDIR}/${MY_P}"
 S="${SPARENT}"/unix
 
 LICENSE="tcltk Spencer-99"
@@ -21,8 +23,6 @@ IUSE="debug +threads"
 
 RDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
-
-SPARENT="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.6.10-multilib.patch
