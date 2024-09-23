@@ -4,7 +4,8 @@
 EAPI=8
 
 DESCRIPTION="Line and word breaking library"
-HOMEPAGE="http://vimgadgets.sourceforge.net/libunibreak/"
+HOMEPAGE="http://vimgadgets.sourceforge.net/libunibreak/
+	https://github.com/adah1972/libunibreak"
 SRC_URI="https://github.com/adah1972/${PN}/releases/download/${PN}_$(ver_rs 1- '_')/${P}.tar.gz"
 
 LICENSE="ZLIB"
