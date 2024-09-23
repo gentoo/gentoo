@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Patrick McLean <chutzpah@gentoo.org> (2024-09-23)
+# Only supported on x86/amd64 (bug #940014).
+net-misc/lldpd -seccomp
+
 # orbea <orbea@riseup.net> (2024-07-19)
 # Unmask the dynarec flag which has x86 asm.
 games-emulation/rmg -dynarec

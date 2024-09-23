@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Patrick McLean <chutzpah@gentoo.org> (2024-09-23)
+# Only supported on x86/amd64 (bug #940014).
+net-misc/lldpd seccomp
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-09-12)
 # No suitable version of dev-libs/protobuf available.
 =dev-java/protobuf-java-4.28.1 system-protoc

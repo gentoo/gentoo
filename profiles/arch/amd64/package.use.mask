@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrick McLean <chutzpah@gentoo.org> (2024-09-23)
+# Only supported on x86/amd64 (bug #940014).
+net-misc/lldpd -seccomp
+
 # orbea <orbea@riseup.net> (2024-07-19)
 # Unmask the dynarec flag which has amd64 asm.
 games-emulation/rmg -dynarec
