@@ -66,7 +66,7 @@ index 00000000000..7e28982fb13
 +  }
 +}
 diff --git a/gcc/tree-vect-patterns.cc b/gcc/tree-vect-patterns.cc
-index e7e877dd2ad..b913d6de003 100644
+index e7e877dd2adb55262822f1660f8d92b42d44e6d0..f0298b2ab97a1e7dd0d943340e1389c3c0fa796e 100644
 --- a/gcc/tree-vect-patterns.cc
 +++ b/gcc/tree-vect-patterns.cc
 @@ -6062,12 +6062,15 @@ vect_recog_bool_pattern (vec_info *vinfo,
@@ -80,14 +80,9 @@ index e7e877dd2ad..b913d6de003 100644
  	return NULL;
        else if (TREE_CODE (TREE_TYPE (var)) == BOOLEAN_TYPE
 -	       && !vect_get_internal_def (vinfo, var))
-+	       && var_def_info
-+	       && (STMT_VINFO_DEF_TYPE (var_def_info) == vect_external_def
++	       && (!var_def_info
++		   || STMT_VINFO_DEF_TYPE (var_def_info) == vect_external_def
 +		   || STMT_VINFO_DEF_TYPE (var_def_info) == vect_constant_def))
  	{
  	  /* If the condition is already a boolean then manually convert it to a
  	     mask of the given integer type but don't set a vectype.  */
-
-base-commit: 358db2e3ed4acf44282d1d9ebbc4a1a3b6e38d21
--- 
-2.46.1
-
