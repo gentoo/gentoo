@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,6 @@ HOMEPAGE="https://github.com/mooltipass/moolticute"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="systemd"
 
 RDEPEND="
 	>=dev-libs/libusb-1.0.20
@@ -29,8 +28,7 @@ RDEPEND="
 	dev-qt/qttest:5
 	dev-qt/qtwebsockets:5
 	dev-qt/qtwidgets:5
-	systemd? ( sys-apps/systemd )
-	!systemd? ( sys-apps/systemd-utils )
+	virtual/libudev:=
 "
 BDEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
