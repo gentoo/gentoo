@@ -128,10 +128,8 @@ src_install() {
 	mv "${ED}"/usr/share/aclocal/guile{,-"${SLOT}"}.m4 || die
 	find "${ED}" -name '*.la' -delete || die
 
-	# GUILE_LOAD_PATH for TeXmacs (bug #23493)
 	newenvd - "50guile${SLOT}" <<-EOF
 	PKG_CONFIG_PATH="${GUILE_PCDIR}"
-	GUILE_LOAD_PATH="${EPREFIX}/usr/share/guile/${SLOT}"
 	EOF
 
 	# necessary for registering slib, see bug 206896
