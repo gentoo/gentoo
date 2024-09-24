@@ -254,11 +254,6 @@ kde-misc/plasma-applet-network-monitor
 # being in a working state (e.g. bug 813031). Removal on 2024-09-29.
 kde-misc/kio-locate
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-08-25)
-# Broken with current Plasma 5 version, not ported to Plasma 6.
-# Removal on 2024-09-24.
-kde-misc/latte-dock
-
 # Florian Schmaus <flow@gentoo.org> (2024-08-23)
 # Has a serious bug that causes synced directories to end up world read-
 # and writeable. See https://github.com/nextcloud/desktop/issues/6863
