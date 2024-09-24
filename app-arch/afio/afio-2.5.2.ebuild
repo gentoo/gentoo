@@ -12,7 +12,7 @@ SRC_URI="https://github.com/kholtman/${PN}/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="Artistic LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ppc ~sparc ~x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.2-fix-build-system.patch
