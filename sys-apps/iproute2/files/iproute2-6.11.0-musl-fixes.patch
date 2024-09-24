@@ -28,7 +28,7 @@ From: Holger Hoffstätte <holger@applied-asynchrony.com>
  #include "json_writer.h"
  #include "color.h"
  
-+const struct timeval;
++struct timeval;
 +
  #define _IS_JSON_CONTEXT(type) (is_json_context() && (type & PRINT_JSON || type & PRINT_ANY))
  #define _IS_FP_CONTEXT(type)   (!is_json_context() && (type & PRINT_FP || type & PRINT_ANY))
