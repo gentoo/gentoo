@@ -1,0 +1,23 @@
+Subject: [PATCH] fix: read_history() multiple times will add repeat histories to history lists
+
+backport from upstream
+---
+ src/libwrapper.cpp | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/libwrapper.cpp b/src/libwrapper.cpp
+index 6be59c5..80077ac 100644
+--- a/src/libwrapper.cpp
++++ b/src/libwrapper.cpp
+@@ -415,10 +415,9 @@ search_result Library::process_phrase(const char *loc_str, IReadLine &io, bool f
+                        colorize_output_ ? ESC_END : "");
+             }
+             int choise;
+-            std::unique_ptr<IReadLine> choice_readline(create_readline_object());
+             for (;;) {
+                 std::string str_choise;
+-                choice_readline->read(_("Your choice[-1 to abort]: "), str_choise);
++                io.read(_("Your choice[-1 to abort]: "), str_choise);
+                 sscanf(str_choise.c_str(), "%d", &choise);
+                 if (choise >= 0 && choise < int(res_list.size())) {
+                     sdcv_pager pager;
