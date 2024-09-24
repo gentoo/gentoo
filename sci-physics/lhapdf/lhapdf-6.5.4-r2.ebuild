@@ -26,7 +26,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://www.hepforge.org/downloads/lhapdf/${MY_PF}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${MY_PF}"
-	KEYWORDS="amd64"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="GPL-2"
@@ -44,18 +44,23 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.5.4-include-cstdint.patch
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
 	default
-	# live git does not have a configure script
+	# Let cython reproduce this for more recent python versions
+	rm wrappers/python/lhapdf.cpp || die
 	eautoreconf
 }
 
 src_configure() {
-	CONFIG_SHELL="${EPREFIX}/bin/bash" \
+	local -x CONFIG_SHELL="${EPREFIX}/bin/bash"
 	econf \
 		--disable-static \
 		$(use_enable python)
