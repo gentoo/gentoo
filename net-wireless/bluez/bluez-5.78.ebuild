@@ -66,6 +66,9 @@ PATCHES=(
 	# https://bugs.gentoo.org/539844
 	# https://github.com/bluez/bluez/issues/268
 	"${FILESDIR}"/${PN}-udevadm-path-r1.patch
+	# bug #926344
+	# https://github.com/bluez/bluez/issues/843
+	"${FILESDIR}"/${PN}-5.78-musl-1.2.5.patch
 )
 
 pkg_setup() {
