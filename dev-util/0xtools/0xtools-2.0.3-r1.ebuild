@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..12} )
 
-inherit python-single-r1 systemd toolchain-funcs
+inherit python-single-r1 systemd toolchain-funcs wrapper
 
 DESCRIPTION="Always-on profiling for production systems"
 HOMEPAGE="https://0x.tools/
@@ -26,11 +26,15 @@ LICENSE="GPL-2+"
 SLOT="0"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="
+BDEPEND="
 	${PYTHON_DEPS}
 "
-BDEPEND="
-	${RDEPEND}
+RDEPEND="
+	${BDEPEND}
+	sys-power/cpupower
+	$(python_gen_cond_dep '
+		dev-util/bcc[${PYTHON_USEDEP}]
+	')
 "
 
 DOCS=( CHANGELOG.md README.md )
@@ -43,9 +47,12 @@ src_compile() {
 }
 
 src_install() {
+	# "cpumhzturbo" requires "turbostat", which is not packaged,
+	# see bug: https://bugs.gentoo.org/939913
+
 	# C executables and scripts
 	exeinto /usr/bin
-	doexe bin/{cpumhz,cpumhzturbo,vmtop,xcapture,xtop}
+	doexe bin/{cpumhz,vmtop,xcapture,xtop}
 	doexe bin/{run_xcapture.sh,run_xcpu.sh}
 
 	# Python executables
@@ -58,6 +65,13 @@ src_install() {
 	systemd_dounit xcapture.service
 	systemd_dounit xcapture-restart.service
 	systemd_dounit xcapture-restart.timer
+
+	# Setup for "xcapture-bpf".
+	exeinto "/lib/${PN}/xcapture"
+	doexe bin/xcapture-bpf
+	insinto "/lib/${PN}/xcapture"
+	doins bin/xcapture-bpf.c
+	make_wrapper xcapture-bpf "/lib/${PN}/xcapture/xcapture-bpf"
 
 	# Service config
 	insinto /etc/default
