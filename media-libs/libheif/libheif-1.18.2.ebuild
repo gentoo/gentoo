@@ -55,6 +55,8 @@ src_prepare() {
 		ln -s "${ESYSROOT}"/usr/include/catch2/catch.hpp tests/catch.hpp || die
 	fi
 
+	sed -e '/Werror/d' -i CMakeLists.txt || die # bug 936466
+
 	cmake_src_prepare
 
 	multilib_copy_sources
