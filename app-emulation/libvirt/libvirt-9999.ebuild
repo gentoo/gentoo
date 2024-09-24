@@ -111,7 +111,7 @@ RDEPEND="
 	qemu? (
 		>=app-emulation/qemu-4.2
 		app-crypt/swtpm
-		>=dev-libs/yajl-2.0.3:=
+		dev-libs/json-c:=
 	)
 	rbd? ( sys-cluster/ceph )
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.26 )
@@ -297,7 +297,7 @@ src_configure() {
 		$(meson_feature pcap libpcap)
 		$(meson_feature policykit polkit)
 		$(meson_feature qemu driver_qemu)
-		$(meson_feature qemu yajl)
+		$(meson_feature qemu json_c)
 		$(meson_feature rbd storage_rbd)
 		$(meson_feature sasl)
 		$(meson_feature selinux)
