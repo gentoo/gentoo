@@ -18,7 +18,7 @@ IUSE+=" ${IUSE_CPU_FLAGS// / cpu_flags_x86_}"
 
 RDEPEND="x11-libs/fltk:1[threads,xft]
 	x11-libs/libX11
-	sys-apps/systemd-utils
+	virtual/libudev:=
 	media-libs/libsamplerate
 	media-libs/libpng:=
 	x11-misc/xdg-utils
