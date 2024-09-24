@@ -61,7 +61,7 @@ src_unpack() {
 	if use verify-sig; then
 		einfo "Unpacking linux-${PV}.tar.xz ..."
 		verify-sig_verify_detached - "${DISTDIR}"/linux-${PV}.tar.sign \
-			< <(xz -cd "${DISTDIR}"/linux-${PV}.tar.xz | tee >(tar -x))
+			< <(xz -cd "${DISTDIR}"/linux-${PV}.tar.xz | tee >(tar -xf -))
 		assert "Unpack failed"
 		unpack "gentoo-kernel-config-${GENTOO_CONFIG_VER}.tar.gz"
 	else

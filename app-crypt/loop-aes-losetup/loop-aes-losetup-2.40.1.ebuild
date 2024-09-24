@@ -55,7 +55,7 @@ src_unpack() {
 	if use verify-sig; then
 		einfo "Unpacking ${MY_P}.tar.xz ..."
 		verify-sig_verify_detached - "${DISTDIR}"/${MY_P}.tar.sign \
-			< <(xz -cd "${DISTDIR}"/${MY_P}.tar.xz | tee >(tar -x)) "${BROOT}"/usr/share/openpgp-keys/karelzak.asc
+			< <(xz -cd "${DISTDIR}"/${MY_P}.tar.xz | tee >(tar -xf -)) "${BROOT}"/usr/share/openpgp-keys/karelzak.asc
 		assert "Unpack failed"
 
 		verify-sig_verify_detached "${DISTDIR}"/${LOOPAES_P}.tar.bz2{,.sign}
