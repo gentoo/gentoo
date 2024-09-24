@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 
 RUBY_FAKEGEM_EXTRADOC="Readme.md"
 
@@ -22,9 +22,11 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
 
+PATCHES=( "${FILESDIR}/${P}-rails71.patch" )
+
 ruby_add_bdepend "test? (
-	dev-ruby/rails:7.0
-	dev-ruby/activerecord:7.0[sqlite]
+	dev-ruby/rails:7.1
+	dev-ruby/activerecord:7.1[sqlite]
 	dev-ruby/temple
 	dev-ruby/ruby-gettext
 	dev-ruby/haml
@@ -42,5 +44,5 @@ all_ruby_prepare() {
 	rm spec/gettext_i18n_rails/slim_parser_spec.rb spec/gettext_i18n_rails/haml_parser_spec.rb || die
 
 	# Test against specific Rails version
-	sed -e '1igem "rails", "~>7.0.0"' -i spec/spec_helper.rb || die
+	sed -e '1igem "rails", "~>7.1.0"' -i spec/spec_helper.rb || die
 }
