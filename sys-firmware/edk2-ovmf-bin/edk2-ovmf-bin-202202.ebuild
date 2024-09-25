@@ -19,7 +19,7 @@ LICENSE="BSD-2 MIT"
 SLOT="0"
 KEYWORDS="amd64 arm64 ~loong ~ppc ppc64 ~riscv x86"
 
-RDEPEND="!sys-firmware/edk2-ovmf"
+RDEPEND="!sys-firmware/edk2"
 
 DISABLE_AUTOFORMATTING=true
 DOC_CONTENTS="This package contains the tianocore edk2 UEFI firmware for 64-bit x86
