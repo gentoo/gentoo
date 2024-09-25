@@ -33,6 +33,7 @@ KEYWORDS="-* ~amd64"
 
 BDEPEND="app-emulation/qemu
 	>=dev-lang/nasm-2.0.7
+	sys-apps/which
 	>=sys-power/iasl-20160729
 	${PYTHON_DEPS}"
 RDEPEND="!sys-firmware/edk2-ovmf-bin"
