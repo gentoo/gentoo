@@ -44,16 +44,11 @@ virtual machines. The firmware is located under
 	/usr/share/edk2-ovmf/OVMF_VARS.fd
 	/usr/share/edk2-ovmf/OVMF_CODE.secboot.fd
 
-If USE=binary is enabled, we also install an OVMF variables file (coming from
-fedora) that contains secureboot default keys
-
-	/usr/share/edk2-ovmf/OVMF_VARS.secboot.fd
-
-If you have compiled this package by hand, you need to either populate all
-necessary EFI variables by hand by booting
-	/usr/share/edk2-ovmf/UefiShell.(iso|img)
+To use Secure Boot, you need to either populate the necessary EFI
+variables by booting:
+	/usr/share/edk2-ovmf/UefiShell.img
 or creating OVMF_VARS.secboot.fd by hand:
-	https://github.com/puiterwijk/qemu-ovmf-secureboot
+	https://github.com/rhuefi/qemu-ovmf-secureboot
 
 The firmware does not support csm (due to no free csm implementation
 available). If you need a firmware with csm support you have to download
