@@ -2,10 +2,7 @@ diff --git a/lz4-sys/Cargo.toml b/lz4-sys/Cargo.toml
 index 033f2eddc..4001ecd66 100644
 --- a/lz4-sys/Cargo.toml
 +++ b/lz4-sys/Cargo.toml
-@@ -13,3 +13,5 @@ libc = "0.2.44"
- 
- [build-dependencies.cc]
- version = "1.0.25"
+@@ -1,0 +1,2 @@ libc = "0.2.44"
 +[build-dependencies.pkg-config]
 +version = "0.3.9"
 diff --git a/lz4-sys/build.rs b/lz4-sys/build.rs
