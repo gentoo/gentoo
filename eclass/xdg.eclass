@@ -45,8 +45,6 @@ case ${EAPI} in
 			default
 		}
 
-		EXPORT_FUNCTIONS src_prepare
-
 		DEPEND="${_XDG_DEPEND}"
 		;;
 	*)
@@ -130,5 +128,13 @@ xdg_pkg_postrm() {
 }
 
 fi
+
+case ${EAPI} in
+	6|7)
+		EXPORT_FUNCTIONS src_prepare
+		;;
+	*)
+		;;
+esac
 
 EXPORT_FUNCTIONS pkg_preinst pkg_postinst pkg_postrm
