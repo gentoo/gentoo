@@ -25,15 +25,12 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="dedicated gtk3 gtk4 json mapimg modpack mysql nls +qt5 qt6 readline rule-editor sdl +server +sound +system-lua web-server"
+IUSE="dedicated gtk3 gtk4 json mapimg modpack mysql nls +qt6 readline rule-editor sdl +server +sound +system-lua web-server"
 
-# I'm pretty sure that you can't build both qt flavours at the same time
 REQUIRED_USE="
 	system-lua? ( ${LUA_REQUIRED_USE} )
-	!dedicated? ( || ( gtk3 gtk4 qt5 qt6 sdl ) )
-	dedicated? ( !gtk3 !gtk4 !mapimg !nls !qt5 !qt6 !sdl !sound )
-	qt5?  ( !qt6 )
-	qt6?  ( !qt5 )
+	!dedicated? ( || ( gtk3 gtk4 qt6 sdl ) )
+	dedicated? ( !gtk3 !gtk4 !mapimg !nls !qt6 !sdl !sound )
 "
 
 RDEPEND="
@@ -51,14 +48,7 @@ RDEPEND="
 		gtk4? ( gui-libs/gtk:4 )
 		mapimg? ( media-gfx/imagemagick:= )
 		nls? ( virtual/libintl )
-		qt5? (
-			dev-qt/qtcore:5
-			dev-qt/qtgui:5
-			dev-qt/qtwidgets:5
-		)
-		qt6? (
-			dev-qt/qtbase:6[gui,widgets]
-		)
+		qt6? ( dev-qt/qtbase:6[gui,widgets] )
 		sdl? (
 			media-libs/libsdl2[video]
 			media-libs/sdl2-gfx
@@ -132,9 +122,7 @@ src_configure() {
 		freeciv_enable_ui sdl sdl2 cli
 		freeciv_enable_ui gtk3 gtk3.22 gtk3
 		freeciv_enable_ui gtk4
-		freeciv_enable_ui qt5 qt
 		freeciv_enable_ui qt6 qt
-		use qt5 && emesonargs+=( -Dqtver=qt5 )
 		use qt6 && emesonargs+=( -Dqtver=qt6 )
 	else
 		if use modpack ; then
