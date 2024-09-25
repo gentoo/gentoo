@@ -5,7 +5,6 @@ EAPI=7
 
 DESCRIPTION="Meta package containing deps on all xorg drivers"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
-SRC_URI=""
 
 LICENSE="metapackage"
 SLOT="0"
