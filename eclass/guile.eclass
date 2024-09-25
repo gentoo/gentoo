@@ -353,7 +353,7 @@ guile_src_install() {
 	einstalldocs
 }
 
-EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_compile \
-				 src_install src_test
-
 fi  # _GUILE_ECLASS
+
+EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_compile \
+				src_install src_test
