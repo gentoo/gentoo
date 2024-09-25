@@ -240,6 +240,6 @@ guile-single_src_install() {
 	guile_unstrip_ccache
 }
 
-EXPORT_FUNCTIONS pkg_setup src_prepare src_install
-
 fi  # _GUILE_SINGLE_ECLASS
+
+EXPORT_FUNCTIONS pkg_setup src_prepare src_install
