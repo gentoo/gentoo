@@ -1,0 +1,100 @@
+https://bugreports.qt.io/browse/QTBUG-129193 
+https://forums.gentoo.org/viewtopic-t-1170690.html
+https://forums.gentoo.org/viewtopic-t-1169619.html
+https://codereview.qt-project.org/c/qt/qtbase/+/593073
+From: Thiago Macieira <thiago.macieira@intel.com>
+Date: Mon, 23 Sep 2024 13:44:31 -0700
+Subject: [PATCH] qsimd_x86: disable the requirement that CPUs must have RNGs
+
+Intel CPUs have had this since 2013 (Ivy Bridge), but some older
+Bulldozer AMD CPUs appear to be missing it. This creates a mismatch
+between when the __haswell__ macro gets declared in qsimd_p.h and the
+runtime check using the CpuArchHaswell value. That in turn creates a
+condition where qInitDrawhelperFunctions() in qdrawhelper.cpp leaves the
+memfill pointers set to null.
+
+#elif defined(__SSE2__)
+#  ifndef __haswell__
+    qt_memfill32 = qt_memfill32_sse2;
+    qt_memfill64 = qt_memfill64_sse2;
+#  endif
+...
+#if defined(QT_COMPILER_SUPPORTS_AVX2)
+    if (qCpuHasFeature(ArchHaswell)) {
+        qt_memfill32 = qt_memfill32_avx2;
+        qt_memfill64 = qt_memfill64_avx2;
+
+It does this so the qt_memfillXX_sse2 functions don't have to be defined
+anywhere, so the QtGui build won't carry unnecessary dead code.
+
+This is old code (from Qt 4.x) and several improvements I've made for
+QtCore are not applied yet. My work for qSimdDispatcher[1] isn't
+complete: it might have avoided this problem here, but it would also
+have required major work for the draw helpers to work in the first
+place.
+
+[1] https://codereview.qt-project.org/c/qt/qtbase/+/537384
+
+Pick-to: 6.8 6.7 6.5 6.2
+Fixes: QTBUG-129193
+Change-Id: Ia427a9e502b0fb46b2bdfffda8e2131b7091c9e9
+Reviewed-by: Allan Sandfeld Jensen <allan.jensen@qt.io>
+--- a/src/corelib/global/qsimd_x86_p.h
++++ b/src/corelib/global/qsimd_x86_p.h
+@@ -85,16 +85,14 @@
+ #define cpu_snb                 (cpu_wsm \
+                                  | cpu_feature_avx)
+ #define cpu_ivb                 (cpu_snb \
+-                                 | cpu_feature_f16c \
+-                                 | cpu_feature_rdrnd)
++                                 | cpu_feature_f16c)
+ #define cpu_hsw                 (cpu_ivb \
+                                  | cpu_feature_avx2 \
+                                  | cpu_feature_fma \
+                                  | cpu_feature_bmi \
+                                  | cpu_feature_bmi2 \
+                                  | cpu_feature_movbe)
+-#define cpu_bdw                 (cpu_hsw \
+-                                 | cpu_feature_rdseed)
++#define cpu_bdw                 (cpu_hsw)
+ #define cpu_bdx                 (cpu_bdw)
+ #define cpu_skl                 (cpu_bdw)
+ #define cpu_skx                 (cpu_skl \
+@@ -237,9 +235,9 @@
+ #define QT_FUNCTION_TARGET_STRING_ARCH_NHM          QT_FUNCTION_TARGET_STRING_ARCH_CORE2 ",sse4.1,sse4.2,popcnt"
+ #define QT_FUNCTION_TARGET_STRING_ARCH_WSM          QT_FUNCTION_TARGET_STRING_ARCH_NHM
+ #define QT_FUNCTION_TARGET_STRING_ARCH_SNB          QT_FUNCTION_TARGET_STRING_ARCH_WSM ",avx"
+-#define QT_FUNCTION_TARGET_STRING_ARCH_IVB          QT_FUNCTION_TARGET_STRING_ARCH_SNB ",f16c,rdrnd,fsgsbase"
++#define QT_FUNCTION_TARGET_STRING_ARCH_IVB          QT_FUNCTION_TARGET_STRING_ARCH_SNB ",f16c,fsgsbase"
+ #define QT_FUNCTION_TARGET_STRING_ARCH_HSW          QT_FUNCTION_TARGET_STRING_ARCH_IVB ",avx2,fma,bmi,bmi2,lzcnt,movbe"
+-#define QT_FUNCTION_TARGET_STRING_ARCH_BDW          QT_FUNCTION_TARGET_STRING_ARCH_HSW ",adx,rdseed"
++#define QT_FUNCTION_TARGET_STRING_ARCH_BDW          QT_FUNCTION_TARGET_STRING_ARCH_HSW ",adx"
+ #define QT_FUNCTION_TARGET_STRING_ARCH_BDX          QT_FUNCTION_TARGET_STRING_ARCH_BDW
+ #define QT_FUNCTION_TARGET_STRING_ARCH_SKL          QT_FUNCTION_TARGET_STRING_ARCH_BDW ",xsavec,xsaves"
+ #define QT_FUNCTION_TARGET_STRING_ARCH_SKX          QT_FUNCTION_TARGET_STRING_ARCH_SKL ",avx512f,avx512dq,avx512cd,avx512bw,avx512vl"
+@@ -473,9 +471,9 @@
+     CpuArchNHM = cpu_nhm,
+     CpuArchWSM = cpu_wsm,
+     CpuArchSNB = cpu_snb,
+-    CpuArchIVB = cpu_ivb,
++    CpuArchIVB = cpu_ivb,                                    ///< rdrnd
+     CpuArchHSW = cpu_hsw,                                    ///< hle,rtm
+-    CpuArchBDW = cpu_bdw,
++    CpuArchBDW = cpu_bdw,                                    ///< rdseed
+     CpuArchBDX = cpu_bdx,
+     CpuArchSKL = cpu_skl,
+     CpuArchSKX = cpu_skx,                                    ///< clwb
+--- a/util/x86simdgen/3rdparty/simd-intel.conf
++++ b/util/x86simdgen/3rdparty/simd-intel.conf
+@@ -142,9 +142,9 @@
+ arch=NHM	Core2	sse4.1,sse4.2,popcnt
+ arch=WSM	NHM
+ arch=SNB	WSM	avx
+-arch=IVB	SNB	f16c,rdrnd,fsgsbase
++arch=IVB	SNB	f16c,fsgsbase		        # rdrnd
+ arch=HSW	IVB	avx2,fma,bmi,bmi2,lzcnt,movbe	# hle,rtm
+-arch=BDW	HSW	adx,rdseed
++arch=BDW	HSW	adx				# rdseed
+ arch=BDX	BDW
+ arch=SKL	BDW	xsavec,xsaves
+ arch=SKX	SKL	avx512f,avx512dq,avx512cd,avx512bw,avx512vl #clwb
