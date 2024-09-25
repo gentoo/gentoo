@@ -19,10 +19,10 @@ BUNDLED_BROTLI_SUBMODULE_SHA="f4153a09f87cbb9c826d8fc12c74642bb2d879ea"
 # TODO: the binary 202105 package currently lacks the preseeded
 #       OVMF_VARS.secboot.fd file (that we typically get from fedora)
 
-SRC_URI="https://github.com/tianocore/edk2/archive/edk2-stable${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/tianocore/edk2/archive/edk2-stable${PV}.tar.gz -> edk2-ovmf-${PV}.tar.gz
 	https://github.com/openssl/openssl/archive/${BUNDLED_OPENSSL_SUBMODULE_SHA}.tar.gz -> openssl-${BUNDLED_OPENSSL_SUBMODULE_SHA}.tar.gz
 	https://github.com/google/brotli/archive/${BUNDLED_BROTLI_SUBMODULE_SHA}.tar.gz -> brotli-${BUNDLED_BROTLI_SUBMODULE_SHA}.tar.gz
-	https://dev.gentoo.org/~ajak/distfiles/${P}-qemu-firmware.tar.xz"
+	https://dev.gentoo.org/~ajak/distfiles/edk2-ovmf-${PV}-qemu-firmware.tar.xz"
 
 LICENSE="BSD-2 MIT"
 SLOT="0"
@@ -144,7 +144,7 @@ src_compile() {
 }
 
 src_install() {
-	insinto /usr/share/${PN}
+	insinto /usr/share/edk2-ovmf
 	doins ovmf/*
 
 	insinto /usr/share/qemu/firmware
