@@ -25,8 +25,13 @@ MY_PV="$((10#${PV:6:2}))$(convert_month ${PV:4:2})${PV:0:4}"
 MY_P="${PN}-stable_${MY_PV}"
 
 DESCRIPTION="Large-scale Atomic/Molecular Massively Parallel Simulator"
-HOMEPAGE="https://lammps.sandia.gov/"
-SRC_URI="https://github.com/lammps/lammps/archive/refs/tags/stable_${MY_PV}.tar.gz"
+HOMEPAGE="https://www.lammps.org"
+SRC_URI="
+	https://github.com/lammps/lammps/archive/refs/tags/stable_${MY_PV}.tar.gz
+	test? (
+		https://github.com/google/googletest/archive/release-1.12.1.tar.gz -> ${PN}-gtest-1.12.1.tar.gz
+	)
+"
 S="${WORKDIR}/${MY_P}/cmake"
 
 LICENSE="GPL-2"
@@ -64,6 +69,7 @@ BDEPEND="${DISTUTILS_DEPS}"
 DEPEND="${RDEPEND}
 	test? (
 		dev-cpp/gtest
+		dev-libs/libyaml
 	)
 "
 
@@ -78,6 +84,10 @@ src_prepare() {
 		pushd ../python || die
 		distutils-r1_src_prepare
 		popd || die
+	fi
+	if use test; then
+		mkdir "${BUILD_DIR}/_deps"
+		cp "${DISTDIR}/${PN}-gtest-1.12.1.tar.gz" "${BUILD_DIR}/_deps/release-1.12.1.tar.gz"
 	fi
 }
 
