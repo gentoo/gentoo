@@ -9,10 +9,6 @@ inherit xorg-3
 DESCRIPTION="X.Org driver for joystick input devices"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~loong ~m68k ppc ppc64 sparc x86"
 
-RDEPEND=""
-DEPEND="${RDEPEND}
-	x11-base/xorg-proto"
-
 src_install() {
 	xorg-3_src_install
 
