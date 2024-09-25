@@ -247,7 +247,7 @@ X86_FIRMWARE_DEPEND="
 	)
 	!pin-upstream-blobs? (
 		|| (
-			>=sys-firmware/edk2-ovmf-${EDK2_OVMF_VERSION}
+			>=sys-firmware/edk2-${EDK2_OVMF_VERSION}
 			>=sys-firmware/edk2-ovmf-bin-${EDK2_OVMF_VERSION}
 		)
 		sys-firmware/ipxe[qemu]
@@ -933,7 +933,7 @@ pkg_postinst() {
 		if has_version 'sys-firmware/edk2-ovmf-bin'; then
 			ewarn "	$(best_version sys-firmware/edk2-ovmf-bin)"
 		else
-			ewarn " $(best_version sys-firmware/edk2-ovmf)"
+			ewarn " $(best_version sys-firmware/edk2)"
 		fi
 
 		if has_version 'sys-firmware/seabios-bin'; then
@@ -960,7 +960,7 @@ pkg_info() {
 	if has_version 'sys-firmware/edk2-ovmf-bin'; then
 		echo "  $(best_version sys-firmware/edk2-ovmf-bin)"
 	else
-		echo "  $(best_version sys-firmware/edk2-ovmf)"
+		echo "  $(best_version sys-firmware/edk2)"
 	fi
 
 	if has_version 'sys-firmware/seabios-bin'; then
