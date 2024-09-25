@@ -13,7 +13,7 @@ PARI_VER=2.3.5
 
 DESCRIPTION="Perl interface to PARI"
 SRC_URI="${SRC_URI}
-	http://pari.math.u-bordeaux.fr/pub/pari/OLD/${PARI_VER%.*}/pari-${PARI_VER}.tar.gz"
+	https://pari.math.u-bordeaux.fr/pub/pari/OLD/${PARI_VER%.*}/pari-${PARI_VER}.tar.gz"
 S_PARI="${WORKDIR}"/pari-${PARI_VER}
 
 SLOT="0"
