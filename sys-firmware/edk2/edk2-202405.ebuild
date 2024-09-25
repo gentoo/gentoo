@@ -37,6 +37,11 @@ BDEPEND="app-emulation/qemu
 	${PYTHON_DEPS}"
 RDEPEND="!sys-firmware/edk2-ovmf-bin"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-202408-werror.patch"
+	"${FILESDIR}/${PN}-202408-binutils-2.41-textrels.patch"
+)
+
 DISABLE_AUTOFORMATTING=true
 DOC_CONTENTS="This package contains the tianocore edk2 UEFI firmware for 64-bit x86
 virtual machines. The firmware is located under
