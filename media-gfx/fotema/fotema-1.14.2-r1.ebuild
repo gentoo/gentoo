@@ -51,6 +51,14 @@ ECARGO_VENDOR=${S}/vendor
 
 QA_FLAGS_IGNORED="/usr/bin/fotema"
 
+src_prepare() {
+	default
+
+	# patch the dependency on flatpak-spawn out (sigh)
+	find "${S}"/{core,src} -name '*.rs' \
+		-exec sed -i -e '/FlatpakSpawn/d' {} + || die
+}
+
 src_configure() {
 	cat >> "${ECARGO_HOME}/config.toml" <<-EOF || die
 
