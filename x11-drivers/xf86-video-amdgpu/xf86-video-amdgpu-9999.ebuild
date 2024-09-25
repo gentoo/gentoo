@@ -6,9 +6,7 @@ XORG_DRI="always"
 XORG_TARBALL_SUFFIX="xz"
 inherit xorg-3
 
-if [[ ${PV} == 9999* ]]; then
-	SRC_URI=""
-else
+if [[ ${PV} != 9999* ]]; then
 	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 fi
 
