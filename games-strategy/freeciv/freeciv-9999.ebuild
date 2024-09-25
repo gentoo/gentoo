@@ -189,6 +189,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
+
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		einfo "There are a number of supported authentication backends."
 		einfo "sqlite3 is the default, however dedicated servers may wish to"
