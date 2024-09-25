@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit cmake
+PYTHON_COMPAT=( python3_{10..13} )
+inherit cmake python-any-r1
 
 DESCRIPTION="C++ wrappers for SIMD intrinsics"
 HOMEPAGE="https://github.com/xtensor-stack/xsimd"
@@ -19,9 +20,11 @@ RESTRICT="!test? ( test )"
 BDEPEND="
 	doc? (
 		app-text/doxygen
-		dev-python/breathe
-		dev-python/sphinx
-		dev-python/sphinx-rtd-theme
+		$(python_gen_any_dep '
+			dev-python/breathe[${PYTHON_USEDEP}]
+			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
+		')
 	)
 	test? ( dev-cpp/doctest )"
 
@@ -31,6 +34,17 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-13.0.0-sve-rvv.patch
 	"${FILESDIR}"/${PN}-13.0.0-detection-simd-with-mitigations.patch
 )
+
+python_check_deps() {
+	python_has_version "dev-python/sphinx[${PYTHON_USEDEP}]" &&
+		python_has_version "dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]" &&
+		python_has_version "dev-python/breathe[${PYTHON_USEDEP}]"
+
+}
+
+pkg_setup() {
+	use doc && python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	sed -i \
