@@ -6,11 +6,6 @@ EAPI=7
 XORG_DRI="always"
 inherit xorg-3
 
-if [[ ${PV} == *9999 ]]; then
-	EGIT_REPO_URI="https://gitlab.freedesktop.org/xorg/driver/xf86-video-nouveau"
-	SRC_URI=""
-fi
-
 DESCRIPTION="Accelerated Open Source driver for nVidia cards"
 HOMEPAGE="
 	https://nouveau.freedesktop.org/
