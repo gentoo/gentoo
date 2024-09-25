@@ -23,7 +23,7 @@ RESTRICT="test" #839681
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/commons.apache.org.asc"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-commons )"
 DEPEND="
-	>=virtual/jdk-1.8:*
+	>=virtual/jdk-11:*
 	test? (
 		dev-java/commons-lang:3.6
 		dev-java/hamcrest:0
