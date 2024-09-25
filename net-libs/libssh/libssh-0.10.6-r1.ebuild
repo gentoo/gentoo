@@ -118,6 +118,10 @@ multilib_src_compile() {
 	multilib_is_native_abi && use doc && cmake_src_compile docs
 }
 
+multilib_src_test() {
+	cmake_src_test --timeout 3000
+}
+
 multilib_src_install() {
 	cmake_src_install
 	multilib_is_native_abi && use doc && local HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
