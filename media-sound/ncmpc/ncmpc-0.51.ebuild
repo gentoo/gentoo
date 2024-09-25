@@ -20,6 +20,7 @@ BDEPEND="
 	doc? ( dev-python/sphinx )
 "
 RDEPEND="
+	dev-libs/libfmt
 	media-libs/libmpdclient
 	sys-libs/ncurses:=[unicode(+)]
 	lirc? ( app-misc/lirc )
