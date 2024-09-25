@@ -574,6 +574,9 @@ toolchain_pkg_setup() {
 	# bug #265283
 	unset LANGUAGES
 
+	# bug #932245
+	[[ ${LIBTOOL} = rlibtool ]] && die "\$LIBTOOL is using rlibtool from dev-build/slibtool. You must not use rlibtool, only rclibtool."
+
 	# See https://www.gnu.org/software/make/manual/html_node/Parallel-Output.html
 	# Avoid really confusing logs from subconfigure spam, makes logs far
 	# more legible.
