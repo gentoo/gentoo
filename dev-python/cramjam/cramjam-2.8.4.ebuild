@@ -150,6 +150,21 @@ BDEPEND="
 		dev-python/numpy[${PYTHON_USEDEP}]
 	)
 "
+# bundled isal deps
+BDEPEND+="
+	amd64? (
+		|| (
+			>=dev-lang/nasm-2.13
+			>=dev-lang/yasm-1.2.0
+		)
+	)
+	x86? (
+		|| (
+			>=dev-lang/nasm-2.13
+			>=dev-lang/yasm-1.2.0
+		)
+	)
+"
 
 distutils_enable_tests pytest
 
