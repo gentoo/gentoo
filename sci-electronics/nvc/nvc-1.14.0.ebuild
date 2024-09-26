@@ -89,7 +89,6 @@ src_configure() {
 
 	local ECONF_SOURCE="${NVC_SOURCEDIR}"
 	local -a myconf=(
-		--enable-verilog
 		--enable-vital
 		--with-bash-completion="$(get_bashcompdir)"
 		$(use_enable debug)
