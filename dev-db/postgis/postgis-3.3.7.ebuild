@@ -3,7 +3,7 @@
 
 EAPI=8
 
-POSTGRES_COMPAT=( {12..16} )
+POSTGRES_COMPAT=( {11..16} )
 POSTGRES_USEDEP="server"
 inherit autotools postgres-multi toolchain-funcs
 
@@ -15,7 +15,7 @@ if [[ ${PV} = *9999* ]] ; then
 else
 	PGIS="$(ver_cut 1-2)"
 	SRC_URI="https://download.osgeo.org/postgis/source/${MY_P}.tar.gz"
-	KEYWORDS=""
+	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="Geographic Objects for PostgreSQL"
@@ -37,7 +37,7 @@ RDEPEND="${POSTGRES_DEP}
 	dev-libs/libxml2:2
 	dev-libs/protobuf-c:=
 	>=sci-libs/geos-3.9.0
-	>=sci-libs/proj-6.1.0:=
+	>=sci-libs/proj-4.9.0:=
 	>=sci-libs/gdal-1.10.0:=
 	address-standardizer? ( dev-libs/libpcre2 )
 	gtk? ( x11-libs/gtk+:2 )
@@ -95,7 +95,7 @@ src_compile() {
 
 	if use doc ; then
 		postgres-multi_foreach emake comments
-		postgres-multi_forbest emake cheatsheets
+		postgres-multi_foreach emake cheatsheets
 		postgres-multi_forbest emake -C doc html
 	fi
 }
@@ -112,7 +112,12 @@ src_install() {
 
 	if use doc ; then
 		postgres-multi_foreach emake DESTDIR="${D}" comments-install
-		postgres-multi_forbest emake DESTDIR="${D}" -C doc cheatsheet-install html-install html-assets-install
+
+		docinto html
+		postgres-multi_forbest dodoc doc/html/{postgis.html,style.css}
+
+		docinto html/images
+		postgres-multi_forbest dodoc doc/html/images/*
 	fi
 
 	use static-libs || find "${ED}" -name '*.a' -delete
