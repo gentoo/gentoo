@@ -12,7 +12,8 @@ SRC_URI="https://infraroot.at/pub/mtd/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
-IUSE="+lzo +ssl test xattr +zstd"
+IUSE="+lzo +ssl test xattr +zstd ubifs"
+REQUIRED_USE="ubifs? ( lzo ssl xattr zstd )"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -34,14 +35,19 @@ src_prepare() {
 }
 
 src_configure() {
-	# --enable-tests is for test programs that are installed
+	# --with-tests is for test programs that are installed; was --enable-tests in earlier versions
 	local myeconfargs=(
-		--enable-tests
+		--with-tests
+		--with-zlib
+		--enable-ubihealthd
+		--with-lsmtd
+		--with-jffs
 		$(use_enable test unit-tests)
 		$(use_with lzo)
-		$(use_with ssl ubifs)
 		$(use_with xattr)
 		$(use_with zstd)
+		$(use_with ubifs)
+		$(use_with ubifs crypto) # UBIFS-specific crypto support
 	)
 	econf "${myeconfargs[@]}"
 }
