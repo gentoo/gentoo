@@ -63,6 +63,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${P}-configure.patch"
 	eapply "${FILESDIR}/${P}-mule-tests.patch"
 	eapply "${FILESDIR}/${P}-configure-libc-version.patch"
+	eapply "${FILESDIR}/${P}-which.patch"
 
 	eapply_user
 

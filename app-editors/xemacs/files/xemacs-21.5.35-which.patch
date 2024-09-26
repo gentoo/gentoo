@@ -1,0 +1,12 @@
+diff -r 22f2684b1b82 configure.ac
+--- a/configure.ac	Mon Sep 23 16:24:03 2024 +0100
++++ b/configure.ac	Thu Sep 26 07:57:11 2024 +0200
+@@ -2518,7 +2518,7 @@
+ dnl We need a recent version of makeinfo
+ AC_MSG_CHECKING([for makeinfo >= 4.12])
+ MAKEINFO=
+-for prog in `which -a makeinfo`; do
++for prog in `type -P makeinfo`; do
+   mi_verstr=[`$prog --version | sed -n '1s/^.* \([0-9][0-9.]*\)$/\1/p'`]
+   mi_major=`echo $mi_verstr | cut -d. -f1`
+   mi_minor=`echo $mi_verstr | cut -d. -f2`
