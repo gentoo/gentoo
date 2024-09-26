@@ -144,7 +144,6 @@ RDEPEND="${COMMON_DEPEND}
 	)
 	!sysv-utils? ( sys-apps/sysvinit )
 	resolvconf? ( !net-dns/openresolv )
-	!sys-apps/hwids[udev]
 	!sys-auth/nss-myhostname
 	!sys-fs/eudev
 	!sys-fs/udev
