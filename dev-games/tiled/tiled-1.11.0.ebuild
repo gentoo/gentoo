@@ -49,7 +49,6 @@ qbs_format_flags() {
 
 src_configure() {
 	if use python; then
-		eapply "${FILESDIR}"/${P}-python.patch
 		QBS_PRODUCTS="${QBS_PRODUCTS},python"
 	fi
 	if ! use minimal; then
