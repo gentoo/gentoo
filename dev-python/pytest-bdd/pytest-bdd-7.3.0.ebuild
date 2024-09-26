@@ -3,10 +3,6 @@
 
 EAPI=8
 
-# TODO: may be able to switch to pypi tarball next bump, also wouldn't hurt
-# to build the formerly forgotten docs if the tarball includes them
-# https://github.com/pytest-dev/pytest-bdd/issues/703
-
 DISTUTILS_USE_PEP517=poetry
 PYTHON_COMPAT=( python3_{10..13} )
 inherit distutils-r1
