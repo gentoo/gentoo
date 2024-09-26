@@ -127,6 +127,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.5.8.0-fits.patch"
 	"${FILESDIR}/${PN}-2.5.8.0-fix-unit_simd.patch"
 	"${FILESDIR}/${PN}-2.5.8.0-fix-tests.patch"
+	"${FILESDIR}/${PN}-2.5.12.0-heif-find-fix.patch"
 )
 
 pkg_setup() {
