@@ -42,6 +42,16 @@ check_and_set_objcopy() {
 		# llvm-objcopy does not support EFI target, try to use binutils objcopy or fail
 		tc-export OBJCOPY
 		OBJCOPY="${OBJCOPY/llvm-/}"
+		# Test OBJCOPY to see if it supports EFI targets, and return if it does
+		LC_ALL=C "${OBJCOPY}" --help | grep -q '\<pei-' && return 0
+		# If OBJCOPY does not support EFI targets, it is possible that the 'objcopy' on our path is
+		# still LLVM if the 'binutils-plugin' USE flag is set. In this case, we check to see if the
+		# '(prefix)/usr/bin/objcopy' binary is available (it should be, it's a dependency), and if
+		# so, we use the absolute path explicitly.
+		local binutils_objcopy="${EPREFIX}"/usr/bin/"${OBJCOPY}"
+		if [[ -e "${binutils_objcopy}" ]]; then
+			OBJCOPY="${binutils_objcopy}"
+		fi
 		LANG=C LC_ALL=C "${OBJCOPY}" --help | grep -q '\<pei-' || die "${OBJCOPY} (objcopy) does not support EFI target"
 	fi
 }
