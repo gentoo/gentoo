@@ -19,7 +19,7 @@ SLOT="0"
 IUSE="nls X wayland"
 REQUIRED_USE="|| ( X wayland )"
 
-COMMON_DEPEND="dev-libs/atk
+COMMON_DEPEND=">=app-accessibility/at-spi2-core-2.46.0
 	>=dev-libs/glib-2.50:2
 	>=dev-libs/libxml2-2.9.0
 	>=sys-apps/dbus-1
