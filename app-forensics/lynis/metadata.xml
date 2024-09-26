@@ -8,4 +8,9 @@
   <use>
     <flag name="cron">Install /etc/cron.* files</flag>
   </use>
+  <upstream>
+    <bugs-to>https://github.com/CISOfy/lynis/issues</bugs-to>
+    <changelog>https://raw.githubusercontent.com/CISOfy/lynis/refs/heads/master/CHANGELOG.md</changelog>
+    <remote-id type="github">CISOfy/lynis</remote-id>
+  </upstream>
 </pkgmetadata>
