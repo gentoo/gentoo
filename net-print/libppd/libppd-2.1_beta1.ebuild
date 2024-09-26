@@ -10,8 +10,8 @@ S="${WORKDIR}"/${P/_beta/b}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="+postscript +poppler"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+IUSE="+postscript +poppler"
 
 # pdftops has various possible implementations, but the default
 # really needs to be decent
