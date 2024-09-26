@@ -1,0 +1,32 @@
+{
+    "description": "UEFI for arm64 VMs, without SB, empty varstore",
+    "interface-types": [
+        "uefi"
+    ],
+    "mapping": {
+        "device": "flash",
+        "mode" : "split",
+        "executable": {
+            "filename": "/usr/share/edk2/ArmVirtQemu-AARCH64/QEMU_EFI.qcow2",
+            "format": "qcow2"
+        },
+        "nvram-template": {
+            "filename": "/usr/share/edk2/ArmVirtQemu-AARCH64/QEMU_VARS.qcow2",
+            "format": "qcow2"
+        }
+    },
+    "targets": [
+        {
+            "architecture": "aarch64",
+            "machines": [
+                "virt-*"
+            ]
+        }
+    ],
+    "features": [
+
+    ],
+    "tags": [
+
+    ]
+}

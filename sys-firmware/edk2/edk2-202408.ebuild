@@ -13,6 +13,7 @@ HOMEPAGE="https://github.com/tianocore/edk2"
 
 DBXDATE="05092023" # MMDDYYYY
 BUNDLED_BROTLI_SUBMODULE_SHA="f4153a09f87cbb9c826d8fc12c74642bb2d879ea"
+BUNDLED_LIBFDT_SUBMODULE_SHA="cfff805481bdea27f900c32698171286542b8d3c"
 BUNDLED_LIBSPDM_SUBMODULE_SHA="50924a4c8145fc721e17208f55814d2b38766fe6"
 BUNDLED_MBEDTLS_SUBMODULE_SHA="8c89224991adff88d53cd380f42a2baa36f91454"
 BUNDLED_MIPI_SYS_T_SUBMODULE_SHA="370b5944c046bab043dd8b133727b2135af7747a"
@@ -36,12 +37,19 @@ SRC_URI="
 		https://uefi.org/sites/default/files/resources/x64_DBXUpdate_${DBXDATE}.bin
 		https://uefi.org/sites/default/files/resources/x64_DBXUpdate.bin -> x64_DBXUpdate_${DBXDATE}.bin
 	)
+
+	arm64? (
+		https://uefi.org/sites/default/files/resources/arm64_DBXUpdate_${DBXDATE}.bin
+		https://uefi.org/sites/default/files/resources/arm64_DBXUpdate.bin -> arm64_DBXUpdate_${DBXDATE}.bin
+		https://github.com/devicetree-org/pylibfdt/archive/${BUNDLED_LIBFDT_SUBMODULE_SHA}.tar.gz
+			-> pylibfdt-${BUNDLED_LIBFDT_SUBMODULE_SHA}.tar.gz
+	)
 "
 
 S="${WORKDIR}/${PN}-${PN}-stable${PV}"
 LICENSE="BSD-2 MIT"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* ~amd64 ~arm64"
 
 BDEPEND="
 	${PYTHON_DEPS}
@@ -78,6 +86,14 @@ pkg_setup() {
 		UNIT1="OVMF_VARS.fd"
 		FMT="raw"
 		;;
+	arm64)
+		TARGET_ARCH="AARCH64"
+		QEMU_ARCH="aarch64"
+		ARCH_DIRS="${DIR}/ArmVirtQemu-AARCH64"
+		UNIT0="QEMU_EFI.qcow2"
+		UNIT1="QEMU_VARS.qcow2"
+		FMT="qcow2"
+		;;
 	esac
 
 	DOC_CONTENTS="This package includes the TianoCore EDK II UEFI firmware for ${QEMU_ARCH}
@@ -100,6 +116,13 @@ download one for yourself. Firmware blobs are commonly labelled:
 	OVMF_CODE-with-csm.fd
 	OVMF_VARS-with-csm.fd"
 		;;
+	arm64) DOC_CONTENTS+="
+
+WARNING! QEMU_EFI.secboot_INSECURE.qcow2 does have Secure Boot
+enabled, but it must not be used in production. The lack of an SMM
+implementation for arm64 in this firmware means that the EFI
+variable store is unprotected, making the firmware unsafe."
+		;;
 	esac
 }
 
@@ -121,6 +144,10 @@ src_prepare() {
 		MdePkg/Library/MipiSysTLib/mipisyst
 	link_mod "${WORKDIR}/openssl-${BUNDLED_OPENSSL_SUBMODULE_SHA}" \
 		CryptoPkg/Library/OpensslLib/openssl
+
+	use arm64 &&
+		link_mod "${WORKDIR}/pylibfdt-${BUNDLED_LIBFDT_SUBMODULE_SHA}" \
+			MdePkg/Library/BaseFdtLib/libfdt
 
 	default
 
@@ -207,6 +234,25 @@ src_compile() {
 		# Fedora only converts newer images to QCOW2. 2MB images are raw.
 		raw_to_qcow2 0 Build/OvmfX64_4M*/"${BUILD_DIR}"/FV/OVMF_{CODE,VARS}.fd
 		;;
+	arm64)
+		BUILD_ARGS+=(
+			# grub.efi uses EfiLoaderData for code
+			--pcd PcdDxeNxMemoryProtectionPolicy=0xC000000000007FD1
+			# shim.efi has broken MemAttr code
+			--pcd PcdUninstallMemAttrProtocol=TRUE
+		)
+
+		mybuild -a AARCH64 -p ArmVirtPkg/ArmVirtQemu.dsc \
+			-D BUILD_SHELL=FALSE \
+			-D SECURE_BOOT_ENABLE
+
+		mv -T Build/ArmVirtQemu-AARCH64 Build/ArmVirtQemu-AARCH64.secboot_INSECURE || die
+
+		mybuild -a AARCH64 -p ArmVirtPkg/ArmVirtQemu.dsc
+
+		mk_fw_vars arm64 Build/ArmVirtQemu-AARCH64.secboot_INSECURE/"${BUILD_DIR}"/FV/QEMU_VARS.fd
+		raw_to_qcow2 64m Build/ArmVirtQemu-AARCH64*/"${BUILD_DIR}"/FV/QEMU_{EFI,VARS}.fd
+		;;
 	esac
 }
 
@@ -228,6 +274,14 @@ src_install() {
 
 		# Compatibility with older package versions.
 		dosym ${PN}/OvmfX64 /usr/share/edk2-ovmf
+		;;
+	arm64)
+		insinto ${DIR}/ArmVirtQemu-AARCH64
+
+		for TYPE in "" .secboot_INSECURE; do
+			newins Build/ArmVirtQemu-AARCH64${TYPE}/"${BUILD_DIR}"/FV/QEMU_EFI.qcow2 QEMU_EFI${TYPE}.qcow2
+			newins Build/ArmVirtQemu-AARCH64${TYPE}/"${BUILD_DIR}"/FV/QEMU_VARS.qcow2 QEMU_VARS${TYPE}.qcow2
+		done
 		;;
 	esac
 
