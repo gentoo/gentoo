@@ -93,11 +93,14 @@ src_compile() {
 }
 
 src_install() {
-	java-pkg-simple_src_install
-	java-pkg_dojar "lang-model.jar"
+	java-pkg_dojar {cdi-api,lang-model}.jar
+
+	use doc && java-pkg_dojavadoc target/api
 
 	if use source; then
-		java-pkg_dosrc "lang-model/src/main/java/*"
-		java-pkg_dosrc "api/src/main/java/*"
+		java-pkg_dosrc lang-model/src/main/java/*
+		java-pkg_dosrc api/src/main/java/*
 	fi
+
+	einstalldocs
 }
