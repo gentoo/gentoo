@@ -37,7 +37,6 @@ COMMON_DEPEND="dev-libs/atk
 
 RDEPEND="${COMMON_DEPEND}
 	!x11-misc/notify-osd
-	!x11-misc/qtnotifydaemon
 	!x11-misc/notification-daemon
 "
 
