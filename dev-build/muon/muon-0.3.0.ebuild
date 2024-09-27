@@ -11,12 +11,13 @@ MESON_TESTS_DIRNAME="meson-tests-${MESON_TESTS_HASH}"
 DESCRIPTION="A meson-compatible build system"
 HOMEPAGE="https://muon.build/"
 SRC_URI="
-	https://muon.build/releases/v${PV}/${P}.tar.gz
+	https://muon.build/releases/v${PV}/${PN}-v${PV}.tar.gz
 	test? (
 		 https://git.sr.ht/~lattis/meson-tests/archive/${MESON_TESTS_HASH}.tar.gz
 			-> ${MESON_TESTS_DIRNAME}.tar.gz
 	)
 "
+S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="GPL-3"
 SLOT="0"
