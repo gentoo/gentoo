@@ -1,0 +1,216 @@
+diff --git a/sdk/attestation/azure-security-attestation/CMakeLists.txt b/sdk/attestation/azure-security-attestation/CMakeLists.txt
+index 8dec8cf..dff3461 100644
+--- a/sdk/attestation/azure-security-attestation/CMakeLists.txt
++++ b/sdk/attestation/azure-security-attestation/CMakeLists.txt
+@@ -86,6 +86,7 @@ create_code_coverage(attestation azure-security-attestation azure-security-attes
+ 
+ 
+ get_az_version("${CMAKE_CURRENT_SOURCE_DIR}/src/private/package_version.hpp")
++set_target_properties(azure-security-attestation PROPERTIES VERSION ${AZ_LIBRARY_VERSION})
+ generate_documentation(azure-security-attestation ${AZ_LIBRARY_VERSION})
+ 
+ az_vcpkg_export(
+diff --git a/sdk/core/azure-core-amqp/CMakeLists.txt b/sdk/core/azure-core-amqp/CMakeLists.txt
+index 3ef7bf8..e99d57f 100644
+--- a/sdk/core/azure-core-amqp/CMakeLists.txt
++++ b/sdk/core/azure-core-amqp/CMakeLists.txt
+@@ -177,6 +177,7 @@ target_link_libraries(azure-core-amqp PRIVATE
+     PUBLIC Azure::azure-core)
+ 
+ get_az_version("${CMAKE_CURRENT_SOURCE_DIR}/src/private/package_version.hpp")
++set_target_properties(azure-core-amqp PROPERTIES VERSION ${AZ_LIBRARY_VERSION})
+ generate_documentation(azure-core-amqp ${AZ_LIBRARY_VERSION})
+ 
+ az_vcpkg_export(
+diff --git a/sdk/core/azure-core-tracing-opentelemetry/CMakeLists.txt b/sdk/core/azure-core-tracing-opentelemetry/CMakeLists.txt
+index 23cf7d1..3834d6c 100644
+--- a/sdk/core/azure-core-tracing-opentelemetry/CMakeLists.txt
++++ b/sdk/core/azure-core-tracing-opentelemetry/CMakeLists.txt
+@@ -80,6 +80,7 @@ if (BUILD_AZURE_CORE_TRACING_OPENTELEMETRY)
+ endif()
+ 
+ get_az_version("${CMAKE_CURRENT_SOURCE_DIR}/src/private/package_version.hpp")
++set_target_properties(azure-core-tracing-opentelemetry PROPERTIES VERSION ${AZ_LIBRARY_VERSION})
+ generate_documentation(azure-core-tracing-opentelemetry ${AZ_LIBRARY_VERSION})
+ 
+ if(BUILD_AZURE_CORE_TRACING_OPENTELEMETRY)
+diff --git a/sdk/core/azure-core/CMakeLists.txt b/sdk/core/azure-core/CMakeLists.txt
+index 87c5cfd..9dbf5a0 100644
+--- a/sdk/core/azure-core/CMakeLists.txt
++++ b/sdk/core/azure-core/CMakeLists.txt
+@@ -192,6 +192,7 @@ if(BUILD_TRANSPORT_WINHTTP)
+ endif()
+ 
+ get_az_version("${CMAKE_CURRENT_SOURCE_DIR}/src/private/package_version.hpp")
++set_target_properties(azure-core PROPERTIES VERSION ${AZ_LIBRARY_VERSION})
+ generate_documentation(azure-core ${AZ_LIBRARY_VERSION})
+ 
+ az_vcpkg_export(
+diff --git a/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/CMakeLists.txt b/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/CMakeLists.txt
+index 2152690..4af757c 100644
+--- a/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/CMakeLists.txt
++++ b/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/CMakeLists.txt
+@@ -91,6 +91,7 @@ target_link_libraries(azure-messaging-eventhubs-checkpointstore-blob
+ create_code_coverage(eventhubs azure-messaging-eventhubs-checkpointstore-blob azure-messaging-eventhubs-blobcheckpointstore-test "tests?/*;samples?/*")
+ 
+ get_az_version("${CMAKE_CURRENT_SOURCE_DIR}/src/private/package_version.hpp")
++set_target_properties(azure-messaging-eventhubs-checkpointstore-blob PROPERTIES VERSION ${AZ_LIBRARY_VERSION})
+ #generate_documentation(azure-messaging-eventhubs-checkpointstore-blob ${AZ_LIBRARY_VERSION})
+ generate_documentation(azure-messaging-eventhubs-checkpointstore-blob ${AZ_LIBRARY_VERSION})
+ 
+diff --git a/sdk/eventhubs/azure-messaging-eventhubs/CMakeLists.txt b/sdk/eventhubs/azure-messaging-eventhubs/CMakeLists.txt
+index 0ea0b8e..e0dbe51 100644
+--- a/sdk/eventhubs/azure-messaging-eventhubs/CMakeLists.txt
++++ b/sdk/eventhubs/azure-messaging-eventhubs/CMakeLists.txt
+@@ -116,6 +116,7 @@ target_compile_definitions(azure-messaging-eventhubs PRIVATE _azure_BUILDING_SDK
+ create_code_coverage(eventhubs azure-messaging-eventhubs azure-messaging-eventhubs-test "tests?/*;samples?/*")
+ 
+ get_az_version("${CMAKE_CURRENT_SOURCE_DIR}/src/private/package_version.hpp")
++set_target_properties(azure-messaging-eventhubs PROPERTIES VERSION ${AZ_LIBRARY_VERSION})
+ generate_documentation(azure-messaging-eventhubs ${AZ_LIBRARY_VERSION})
+ 
+ add_subdirectory(test)
+diff --git a/sdk/identity/azure-identity/CMakeLists.txt b/sdk/identity/azure-identity/CMakeLists.txt
+index 57fe6bb..3c21177 100644
+--- a/sdk/identity/azure-identity/CMakeLists.txt
++++ b/sdk/identity/azure-identity/CMakeLists.txt
+@@ -117,6 +117,7 @@ else()
+ endif()
+ 
+ get_az_version("${CMAKE_CURRENT_SOURCE_DIR}/src/private/package_version.hpp")
++set_target_properties(azure-identity PROPERTIES VERSION ${AZ_LIBRARY_VERSION})
+ generate_documentation(azure-identity ${AZ_LIBRARY_VERSION})
+ 
+ az_vcpkg_export(
+diff --git a/sdk/keyvault/azure-security-keyvault-administration/CMakeLists.txt b/sdk/keyvault/azure-security-keyvault-administration/CMakeLists.txt
+index 5f70eb3..b065d33 100644
+--- a/sdk/keyvault/azure-security-keyvault-administration/CMakeLists.txt
++++ b/sdk/keyvault/azure-security-keyvault-administration/CMakeLists.txt
+@@ -95,6 +95,7 @@ target_compile_definitions(azure-security-keyvault-administration PRIVATE _azure
+ create_code_coverage(keyvault azure-security-keyvault-administration azure-security-keyvault-administration-test "tests?/*;samples?/*")
+ 
+ get_az_version("${CMAKE_CURRENT_SOURCE_DIR}/src/private/package_version.hpp")
++set_target_properties(azure-security-keyvault-administration PROPERTIES VERSION ${AZ_LIBRARY_VERSION})
+ generate_documentation(azure-security-keyvault-administration ${AZ_LIBRARY_VERSION})
+ if(BUILD_TESTING)
+ 
+diff --git a/sdk/keyvault/azure-security-keyvault-certificates/CMakeLists.txt b/sdk/keyvault/azure-security-keyvault-certificates/CMakeLists.txt
+index 0806e09..8014038 100644
+--- a/sdk/keyvault/azure-security-keyvault-certificates/CMakeLists.txt
++++ b/sdk/keyvault/azure-security-keyvault-certificates/CMakeLists.txt
+@@ -100,6 +100,7 @@ target_compile_definitions(azure-security-keyvault-certificates PRIVATE _azure_B
+ create_code_coverage(keyvault azure-security-keyvault-certificates azure-security-keyvault-certificates-test "tests?/*;samples?/*")
+ 
+ get_az_version("${CMAKE_CURRENT_SOURCE_DIR}/src/private/package_version.hpp")
++set_target_properties(azure-security-keyvault-certificates PROPERTIES VERSION ${AZ_LIBRARY_VERSION})
+ generate_documentation(azure-security-keyvault-certificates ${AZ_LIBRARY_VERSION})
+ 
+ if(BUILD_TESTING)
+diff --git a/sdk/keyvault/azure-security-keyvault-keys/CMakeLists.txt b/sdk/keyvault/azure-security-keyvault-keys/CMakeLists.txt
+index 6217fd1..2de5e64 100644
+--- a/sdk/keyvault/azure-security-keyvault-keys/CMakeLists.txt
++++ b/sdk/keyvault/azure-security-keyvault-keys/CMakeLists.txt
+@@ -138,6 +138,7 @@ target_compile_definitions(azure-security-keyvault-keys PRIVATE _azure_BUILDING_
+ create_code_coverage(keyvault azure-security-keyvault-keys azure-security-keyvault-keys-test "tests?/*;samples?/*")
+ 
+ get_az_version("${CMAKE_CURRENT_SOURCE_DIR}/src/private/package_version.hpp")
++set_target_properties(azure-security-keyvault-keys PROPERTIES VERSION ${AZ_LIBRARY_VERSION})
+ generate_documentation(azure-security-keyvault-keys ${AZ_LIBRARY_VERSION})
+ 
+ if(BUILD_TESTING)
+diff --git a/sdk/keyvault/azure-security-keyvault-secrets/CMakeLists.txt b/sdk/keyvault/azure-security-keyvault-secrets/CMakeLists.txt
+index 7cc62a8..3664d8c 100644
+--- a/sdk/keyvault/azure-security-keyvault-secrets/CMakeLists.txt
++++ b/sdk/keyvault/azure-security-keyvault-secrets/CMakeLists.txt
+@@ -115,6 +115,7 @@ target_compile_definitions(azure-security-keyvault-secrets PRIVATE _azure_BUILDI
+ create_code_coverage(keyvault azure-security-keyvault-secrets azure-security-keyvault-secrets-test "tests?/*;samples?/*")
+ 
+ get_az_version("${CMAKE_CURRENT_SOURCE_DIR}/src/private/package_version.hpp")
++set_target_properties(azure-security-keyvault-secrets PROPERTIES VERSION ${AZ_LIBRARY_VERSION})
+ generate_documentation(azure-security-keyvault-secrets ${AZ_LIBRARY_VERSION})
+ if(BUILD_TESTING)
+ 
+diff --git a/sdk/storage/azure-storage-blobs/CMakeLists.txt b/sdk/storage/azure-storage-blobs/CMakeLists.txt
+index f87ceae..657ef33 100644
+--- a/sdk/storage/azure-storage-blobs/CMakeLists.txt
++++ b/sdk/storage/azure-storage-blobs/CMakeLists.txt
+@@ -96,6 +96,7 @@ target_link_libraries(azure-storage-blobs PUBLIC Azure::azure-storage-common)
+ target_compile_definitions(azure-storage-blobs PRIVATE _azure_BUILDING_SDK)
+ 
+ get_az_version("${CMAKE_CURRENT_SOURCE_DIR}/src/private/package_version.hpp")
++set_target_properties(azure-storage-blobs PROPERTIES VERSION ${AZ_LIBRARY_VERSION})
+ generate_documentation(azure-storage-blobs ${AZ_LIBRARY_VERSION})
+ 
+ az_vcpkg_export(
+diff --git a/sdk/storage/azure-storage-common/CMakeLists.txt b/sdk/storage/azure-storage-common/CMakeLists.txt
+index 30f056d..ce90e8a 100644
+--- a/sdk/storage/azure-storage-common/CMakeLists.txt
++++ b/sdk/storage/azure-storage-common/CMakeLists.txt
+@@ -107,6 +107,7 @@ else()
+ endif()
+ 
+ get_az_version("${CMAKE_CURRENT_SOURCE_DIR}/src/private/package_version.hpp")
++set_target_properties(azure-storage-common PROPERTIES VERSION ${AZ_LIBRARY_VERSION})
+ generate_documentation(azure-storage-common ${AZ_LIBRARY_VERSION})
+ 
+ az_vcpkg_export(
+diff --git a/sdk/storage/azure-storage-files-datalake/CMakeLists.txt b/sdk/storage/azure-storage-files-datalake/CMakeLists.txt
+index 71905c8..ac82507 100644
+--- a/sdk/storage/azure-storage-files-datalake/CMakeLists.txt
++++ b/sdk/storage/azure-storage-files-datalake/CMakeLists.txt
+@@ -92,6 +92,7 @@ target_include_directories(
+ target_link_libraries(azure-storage-files-datalake PUBLIC Azure::azure-storage-blobs)
+ 
+ get_az_version("${CMAKE_CURRENT_SOURCE_DIR}/src/private/package_version.hpp")
++set_target_properties(azure-storage-files-datalake PROPERTIES VERSION ${AZ_LIBRARY_VERSION})
+ generate_documentation(azure-storage-files-datalake ${AZ_LIBRARY_VERSION})
+ 
+ az_vcpkg_export(
+diff --git a/sdk/storage/azure-storage-files-shares/CMakeLists.txt b/sdk/storage/azure-storage-files-shares/CMakeLists.txt
+index 891f954..cf6cd92 100644
+--- a/sdk/storage/azure-storage-files-shares/CMakeLists.txt
++++ b/sdk/storage/azure-storage-files-shares/CMakeLists.txt
+@@ -88,6 +88,7 @@ target_include_directories(
+ target_link_libraries(azure-storage-files-shares PUBLIC Azure::azure-storage-common)
+ 
+ get_az_version("${CMAKE_CURRENT_SOURCE_DIR}/src/private/package_version.hpp")
++set_target_properties(azure-storage-files-shares PROPERTIES VERSION ${AZ_LIBRARY_VERSION})
+ generate_documentation(azure-storage-files-shares ${AZ_LIBRARY_VERSION})
+ 
+ az_vcpkg_export(
+diff --git a/sdk/storage/azure-storage-queues/CMakeLists.txt b/sdk/storage/azure-storage-queues/CMakeLists.txt
+index e567623..2e340d5 100644
+--- a/sdk/storage/azure-storage-queues/CMakeLists.txt
++++ b/sdk/storage/azure-storage-queues/CMakeLists.txt
+@@ -81,6 +81,7 @@ target_include_directories(
+ target_link_libraries(azure-storage-queues PUBLIC Azure::azure-storage-common)
+ 
+ get_az_version("${CMAKE_CURRENT_SOURCE_DIR}/src/private/package_version.hpp")
++set_target_properties(azure-storage-queues PROPERTIES VERSION ${AZ_LIBRARY_VERSION})
+ generate_documentation(azure-storage-queues ${AZ_LIBRARY_VERSION})
+ 
+ az_vcpkg_export(
+diff --git a/sdk/tables/azure-data-tables/CMakeLists.txt b/sdk/tables/azure-data-tables/CMakeLists.txt
+index 038e267..d7e7976 100644
+--- a/sdk/tables/azure-data-tables/CMakeLists.txt
++++ b/sdk/tables/azure-data-tables/CMakeLists.txt
+@@ -106,6 +106,7 @@ target_include_directories(
+ target_link_libraries(azure-data-tables PUBLIC Azure::azure-core)
+ 
+ get_az_version("${CMAKE_CURRENT_SOURCE_DIR}/src/private/package_version.hpp")
++set_target_properties(azure-data-tables PROPERTIES VERSION ${AZ_LIBRARY_VERSION})
+ generate_documentation(azure-data-tables ${AZ_LIBRARY_VERSION})
+ 
+ az_vcpkg_export(
+diff --git a/sdk/template/azure-template/CMakeLists.txt b/sdk/template/azure-template/CMakeLists.txt
+index 84e3d17..43f3320 100644
+--- a/sdk/template/azure-template/CMakeLists.txt
++++ b/sdk/template/azure-template/CMakeLists.txt
+@@ -78,6 +78,7 @@ add_library(Azure::azure-template ALIAS azure-template)
+ create_code_coverage(template azure-template azure-template-test "tests?/*;samples?/*")
+ 
+ get_az_version("${CMAKE_CURRENT_SOURCE_DIR}/src/private/package_version.hpp")
++set_target_properties(azure-template PROPERTIES VERSION ${AZ_LIBRARY_VERSION})
+ generate_documentation(azure-template ${AZ_LIBRARY_VERSION})
+ 
+ az_vcpkg_export(
