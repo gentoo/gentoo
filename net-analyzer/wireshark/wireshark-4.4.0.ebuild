@@ -23,7 +23,7 @@ else
 	S="${WORKDIR}/${P/_/}"
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~riscv ~x86"
+		KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc64 ~riscv ~x86"
 	fi
 fi
 
@@ -137,6 +137,8 @@ RDEPEND="
 if [[ ${PV} != *9999* ]] ; then
 	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-wireshark )"
 fi
+
+PATCHES=( "${FILESDIR}/wireshark-4.4.0-fix-filesystem-absolute-paths.patch" )
 
 python_check_deps() {
 	use test || return 0
