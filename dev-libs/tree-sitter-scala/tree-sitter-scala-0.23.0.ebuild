@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/tree-sitter/tree-sitter-scala"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 src_prepare() {
 	default
