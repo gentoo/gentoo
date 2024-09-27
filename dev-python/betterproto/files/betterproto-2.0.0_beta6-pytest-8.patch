@@ -1,0 +1,39 @@
+From bfe6592b4f95886bbe395af2c2fa3d9e2a562315 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 27 Sep 2024 19:01:53 +0200
+Subject: [PATCH] Update no-warning tests for pytest-8
+
+Replace the deprecated `pytest.warns(None)` with the suggested
+replacement (from https://github.com/pytest-dev/pytest/issues/9404)
+to make the test suite forward compatible with pytest-8.  This works
+correctly with pytest-6 as well.
+---
+ tests/test_deprecated.py | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/tests/test_deprecated.py b/tests/test_deprecated.py
+index 84e08bd..bee14f1 100644
+--- a/tests/test_deprecated.py
++++ b/tests/test_deprecated.py
+@@ -32,14 +32,12 @@ def test_message_with_deprecated_field(message):
+ 
+ 
+ def test_message_with_deprecated_field_not_set(message):
+-    with pytest.warns(None) as record:
++    with warnings.catch_warnings():
++        warnings.simplefilter("error")
+         Test(value=10)
+ 
+-    assert not record
+-
+ 
+ def test_message_with_deprecated_field_not_set_default(message):
+-    with pytest.warns(None) as record:
++    with warnings.catch_warnings():
++        warnings.simplefilter("error")
+         _ = Test(value=10).message
+-
+-    assert not record
+-- 
+2.46.2
+
