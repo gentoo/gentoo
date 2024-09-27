@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit readme.gentoo-r1 secureboot
 
-BINPKG="${P/-bin/}-1"
+BINPKG="edk2-ovmf-${PV}-1"
 
 DESCRIPTION="UEFI firmware for 64-bit x86 virtual machines"
 HOMEPAGE="https://github.com/tianocore/edk2"
@@ -46,8 +46,8 @@ one for yourself. Firmware blobs are commonly labeled
 
 In order to use the firmware you can run qemu the following way
 
-	$ qemu-system-x86_64 \
-		-drive file=/usr/share/edk2-ovmf/OVMF.fd,if=pflash,format=raw,unit=0,readonly=on \
+	$ qemu-system-x86_64 \\
+		-drive file=/usr/share/edk2-ovmf/OVMF.fd,if=pflash,format=raw,unit=0,readonly=on \\
 		..."
 
 src_unpack() {
@@ -55,7 +55,7 @@ src_unpack() {
 }
 
 src_install() {
-	mv "usr/share/doc/${P/-bin/}" "usr/share/doc/${PF}" || die
+	mv "usr/share/doc/edk2-ovmf-${PV}" "usr/share/doc/${PF}" || die
 
 	# Don't want to try to install the readme from the source package
 	rm "usr/share/doc/${PF}/README.gentoo.bz2"
