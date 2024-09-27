@@ -245,7 +245,7 @@ SEABIOS_VERSION="1.16.3"
 
 X86_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
-		~sys-firmware/edk2-ovmf-bin-${EDK2_OVMF_VERSION}
+		~sys-firmware/edk2-bin-${EDK2_OVMF_VERSION}
 		~sys-firmware/ipxe-1.21.1[binary,qemu]
 		~sys-firmware/seabios-bin-${SEABIOS_VERSION}
 		~sys-firmware/sgabios-0.1_pre10[binary]
@@ -253,7 +253,7 @@ X86_FIRMWARE_DEPEND="
 	!pin-upstream-blobs? (
 		|| (
 			>=sys-firmware/edk2-${EDK2_OVMF_VERSION}
-			>=sys-firmware/edk2-ovmf-bin-${EDK2_OVMF_VERSION}
+			>=sys-firmware/edk2-bin-${EDK2_OVMF_VERSION}
 		)
 		sys-firmware/ipxe[qemu]
 		|| (
@@ -951,8 +951,8 @@ pkg_postinst() {
 	if use pin-upstream-blobs && firmware_abi_change; then
 		ewarn "This version of qemu pins new versions of firmware blobs:"
 
-		if has_version 'sys-firmware/edk2-ovmf-bin'; then
-			ewarn "	$(best_version sys-firmware/edk2-ovmf-bin)"
+		if has_version 'sys-firmware/edk2-bin'; then
+			ewarn "	$(best_version sys-firmware/edk2-bin)"
 		else
 			ewarn " $(best_version sys-firmware/edk2)"
 		fi
@@ -978,8 +978,8 @@ pkg_info() {
 	echo "Using:"
 	echo "  $(best_version app-emulation/spice-protocol)"
 
-	if has_version 'sys-firmware/edk2-ovmf-bin'; then
-		echo "  $(best_version sys-firmware/edk2-ovmf-bin)"
+	if has_version 'sys-firmware/edk2-bin'; then
+		echo "  $(best_version sys-firmware/edk2-bin)"
 	else
 		echo "  $(best_version sys-firmware/edk2)"
 	fi

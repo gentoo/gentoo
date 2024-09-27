@@ -33,7 +33,7 @@ BDEPEND="app-emulation/qemu
 	sys-apps/which
 	>=sys-power/iasl-20160729
 	${PYTHON_DEPS}"
-RDEPEND="!sys-firmware/edk2-ovmf-bin"
+RDEPEND="!sys-firmware/edk2-bin"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-202105-werror.patch"

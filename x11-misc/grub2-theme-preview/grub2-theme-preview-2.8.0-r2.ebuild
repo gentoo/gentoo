@@ -22,11 +22,11 @@ RDEPEND="app-emulation/qemu
 	sys-fs/mtools
 	grub_platforms_efi-64? (
 		sys-boot/grub:2[grub_platforms_efi-64]
-		|| ( sys-firmware/edk2 sys-firmware/edk2-ovmf-bin )
+		|| ( sys-firmware/edk2 sys-firmware/edk2-bin )
 	)
 	grub_platforms_efi-32? (
 		sys-boot/grub:2[grub_platforms_efi-32]
-		|| ( sys-firmware/edk2 sys-firmware/edk2-ovmf-bin )
+		|| ( sys-firmware/edk2 sys-firmware/edk2-bin )
 	)
 	!grub_platforms_efi-32? (
 		!grub_platforms_efi-64? (

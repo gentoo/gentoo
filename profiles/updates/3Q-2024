@@ -10,3 +10,4 @@ slotmove app-cdr/kcdemu 5 0
 move sys-apps/azure-nvme-utils sys-apps/azure-vm-utils
 move dev-python/sphinx-aiohttp-theme dev-python/aiohttp-theme
 move sys-firmware/edk2-ovmf sys-firmware/edk2
+move sys-firmware/edk2-ovmf-bin sys-firmware/edk2-bin

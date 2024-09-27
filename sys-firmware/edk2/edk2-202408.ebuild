@@ -60,7 +60,7 @@ BDEPEND="
 "
 
 RDEPEND="
-	!sys-firmware/edk2-ovmf-bin
+	!sys-firmware/edk2-bin
 "
 
 PATCHES=(
