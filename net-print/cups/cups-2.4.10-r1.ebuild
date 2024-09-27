@@ -18,7 +18,7 @@ else
 	SRC_URI="https://github.com/OpenPrinting/cups/releases/download/v${MY_PV}/cups-${MY_PV}-source.tar.gz"
 	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-patches.tar.xz"
 	if [[ ${PV} != *_beta* && ${PV} != *_rc* ]] ; then
-		KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
+		KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
 	fi
 fi
 
