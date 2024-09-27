@@ -1,6 +1,14 @@
 # Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2024-09-27)
+# media-libs/libilbc needs porting
+media-video/ffmpeg libilbc
+net-analyzer/wireshark ilbc
+net-libs/pjproject ilbc
+net-misc/asterisk ilbc
+net-voip/yate ilbc
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-09-14)
 # needs re-keywording and clean-up of media-libs/opencollada
 media-libs/assimp collada
@@ -258,7 +266,7 @@ app-cdr/brasero tracker
 # time being
 dev-cpp/libcmis man
 media-libs/opencv tesseract
-media-video/ffmpeg libilbc libtesseract
+media-video/ffmpeg libtesseract
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # sys-auth/sssd isn't keyworded here yet
