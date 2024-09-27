@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-09-27)
+# dev-qt/qtremoteobjects:6 has not been stabilized yet.
+dev-python/PyQt6 remoteobjects
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-07-24)
 # No stable versions of ROCm at the moment
 sys-apps/hwloc rocm

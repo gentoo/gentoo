@@ -21,6 +21,7 @@
 		<flag name="qml">Build bindings for the QtQml module and enable the qml plugin</flag>
 		<flag name="quick">Build bindings for the QtQuick module</flag>
 		<flag name="quick3d">Build bindings for the QtQuick3D module</flag>
+		<flag name="remoteobjects">Build bindings for the QtRemoteObjects module</flag>
 		<flag name="sensors">Build bindings for the QtSensors module</flag>
 		<flag name="serialport">Build bindings for the QtSerialPort module</flag>
 		<flag name="spatialaudio">Build bindings for the QtSpatialAudio module</flag>

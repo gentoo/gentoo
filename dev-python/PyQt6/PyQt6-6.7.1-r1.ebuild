@@ -23,8 +23,8 @@ KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv x86"
 IUSE="
 	bluetooth +dbus debug designer examples gles2-only +gui help
 	multimedia +network nfc opengl pdfium positioning +printsupport
-	qml quick quick3d serialport sensors spatialaudio speech +sql
-	+ssl svg testlib webchannel websockets +widgets +xml
+	qml quick quick3d remoteobjects serialport sensors spatialaudio
+	speech +sql +ssl svg testlib webchannel websockets +widgets +xml
 "
 # see `grep -r "%Import " sip` and `grep qmake_QT project.py`
 REQUIRED_USE="
@@ -37,6 +37,7 @@ REQUIRED_USE="
 	qml? ( network )
 	quick3d? ( gui qml )
 	quick? ( gui qml )
+	remoteobjects? ( network )
 	spatialaudio? ( multimedia )
 	sql? ( widgets )
 	svg? ( gui )
@@ -68,6 +69,7 @@ DEPEND="
 	qml? ( >=dev-qt/qtdeclarative-${QT_PV}[widgets?] )
 	quick3d? ( >=dev-qt/qtquick3d-${QT_PV} )
 	quick? ( >=dev-qt/qtdeclarative-${QT_PV}[opengl] )
+	remoteobjects? ( >=dev-qt/qtremoteobjects-${QT_PV} )
 	sensors? ( >=dev-qt/qtsensors-${QT_PV} )
 	serialport? ( >=dev-qt/qtserialport-${QT_PV} )
 	speech? (
@@ -141,7 +143,7 @@ python_configure_all() {
 		$(pyqt_use_enable quick QtQuick \
 			$(usev widgets QtQuickWidgets))
 		$(pyqt_use_enable quick3d QtQuick3D)
-		--disable=QtRemoteObjects # not packaged
+		$(pyqt_use_enable remoteobjects QtRemoteObjects)
 		$(pyqt_use_enable sensors QtSensors)
 		$(pyqt_use_enable serialport QtSerialPort)
 		$(pyqt_use_enable spatialaudio QtSpatialAudio)
