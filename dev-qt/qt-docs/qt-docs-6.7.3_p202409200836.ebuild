@@ -75,7 +75,7 @@ qt6_docs_generate_metadata() {
 		-quick3dphysics/qtquick3dphysics
 		+quick3d/qtquick3d
 		-quickeffectmaker/qtquickeffectmaker
-		-remoteobjects/qtremoteobjects
+		+remoteobjects/qtremoteobjects
 		+scxml/qtscxml
 		+sensors/qtsensors
 		+serialbus/qtserialbus
