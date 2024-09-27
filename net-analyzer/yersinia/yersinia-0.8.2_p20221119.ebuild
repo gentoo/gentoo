@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,10 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="A framework for layer 2 attacks"
 HOMEPAGE="http://www.yersinia.net/"
-SRC_URI="https://github.com/tomac/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+#SRC_URI="https://github.com/tomac/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+COMMIT="867b309eced9e02b63412855440cd4f5f7727431"
+SRC_URI="https://github.com/tomac/yersinia/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -15,13 +18,14 @@ KEYWORDS="amd64 x86"
 IUSE="gtk ncurses"
 
 RDEPEND="
-	>=net-libs/libnet-1.1.2
+	>=net-libs/libnet-1.1.2:1.1
 	>=net-libs/libpcap-0.9.4
 	ncurses? ( >=sys-libs/ncurses-5.5:= )
 	gtk? (
 		dev-libs/glib:2
-		x11-libs/gdk-pixbuf
-		=x11-libs/gtk+-2*
+		x11-libs/gdk-pixbuf:2
+		=x11-libs/gtk+-2*:2
+		x11-libs/pango
 	)
 "
 DEPEND="${RDEPEND}"
@@ -32,8 +36,6 @@ DOCS=( AUTHORS ChangeLog FAQ README THANKS TODO )
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.7.1-no-ncurses.patch
 	"${FILESDIR}"/${PN}-0.7.3-tinfo.patch
-	"${FILESDIR}"/${PN}-0.8.2-configure-clang16.patch
-	"${FILESDIR}"/${PN}-0.8.2-configure-clang16-deux.patch
 )
 
 src_prepare() {

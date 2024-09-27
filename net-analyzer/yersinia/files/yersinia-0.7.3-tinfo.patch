@@ -1,5 +1,5 @@
---- a/configure.in
-+++ b/configure.in
+--- a/configure.ac
++++ b/configure.ac
 @@ -467,6 +467,7 @@
       AC_DEFINE(HAVE_REMOTE_ADMIN)
  fi
