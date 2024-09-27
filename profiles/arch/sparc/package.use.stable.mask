@@ -122,7 +122,3 @@ dev-libs/libzip mbedtls
 net-libs/libssh mbedtls
 net-libs/libssh2 mbedtls
 net-vpn/openvpn mbedtls
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-04-04)
-# Needs stable net-libs/webkit-gtk, bug #712260
-app-editors/emacs xwidgets
