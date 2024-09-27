@@ -7,19 +7,19 @@ EAPI=8
 #hackport: flags: +pedantic
 
 CABAL_FEATURES="nocabaldep"
-inherit haskell-cabal git-r3
+inherit haskell-cabal
 
 DESCRIPTION="Rebuild Haskell dependencies in Gentoo"
 HOMEPAGE="https://github.com/gentoo-haskell/haskell-updater#readme"
-EGIT_REPO_URI="https://github.com/gentoo-haskell/haskell-updater.git"
 
 LICENSE="GPL-3+"
 SLOT="0"
+KEYWORDS="~amd64 ~ppc64 ~amd64-linux ~ppc-macos ~x64-macos"
 
-# Need a lower version for portage to get --reinstall-atoms
+# Need a lower version for portage to get --keep-going
 RDEPEND="
 	|| (
-		>=sys-apps/portage-2.1.10
+		>=sys-apps/portage-2.1.6
 		sys-apps/pkgcore
 	)
 "
@@ -37,8 +37,6 @@ src_prepare() {
 		sed -i -e 's,"/","'"${EPREFIX}"'/",g' \
 			"${S}/Distribution/Gentoo/GHC.hs" || die
 	fi
-
-	sed -e 's/^version:.*/&.9999/' -i ${PN}.cabal || die # just to distinct from release install
 }
 
 src_configure() {
