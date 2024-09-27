@@ -594,20 +594,6 @@ dev-build/automake:1.11
 media-plugins/kodi-game-libretro-nestopia
 media-plugins/kodi-game-libretro-dosbox
 
-# Sam James <sam@gentoo.org> (2020-10-05)
-# Masked for testing. New major versions of Guile
-# often break reverse dependencies.
-# Guile in Gentoo is not slotted, so let's be cautious.
-# bug #705554, bug #689408.
->=dev-scheme/guile-3.0.4
-
-# Matt Turner <mattst88@gentoo.org> (2019-09-01)
-# TeXmacs is the only remaining package in tree that requires guile-1.8, which
-# is unsupported upstream. A TeXmacs port to Guile-2 has been in progress for a
-# few years. Bug #436400
-app-office/texmacs
-<dev-scheme/guile-2
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-10-07)
 # Masked for more testing especially of reverse-deps.
 # ogre 1.11/1.12 breakage: bug #834468
