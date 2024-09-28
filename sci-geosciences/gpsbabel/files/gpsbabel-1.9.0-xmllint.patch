@@ -1,0 +1,10 @@
+--- a/tools/make_gpsbabel_doc.sh
++++ b/tools/make_gpsbabel_doc.sh
+@@ -2,7 +2,6 @@
+ set -ex
+ 
+ perl xmldoc/makedoc
+-xmllint --noout --relaxng http://docbook.org/xml/5.0/rng/docbook.rng xmldoc/readme.xml
+ # the following doesn't seem to work.
+ #xmllint --noout --schematron http://docbook.org/xml/5.0/sch/docbook.sch xmldoc/readme.xml
+ # jing and many depedencies removed from fedora
