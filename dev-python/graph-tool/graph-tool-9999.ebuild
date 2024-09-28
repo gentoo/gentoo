@@ -18,7 +18,7 @@ fi
 DESCRIPTION="An efficient python module for manipulation and statistical analysis of graphs"
 HOMEPAGE="https://graph-tool.skewed.de/"
 
-LICENSE="GPL-3"
+LICENSE="LGPL-3"
 SLOT="0"
 IUSE="+cairo openmp"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
