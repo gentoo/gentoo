@@ -23,9 +23,12 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 
+# setup.txt + requirements/runtime.in
 RDEPEND="
 	dev-python/certifi[${PYTHON_USEDEP}]
 	dev-python/googleapis-common-protos[${PYTHON_USEDEP}]
+	dev-python/h2[${PYTHON_USEDEP}]
+	dev-python/multidict[${PYTHON_USEDEP}]
 	dev-python/protobuf-python[${PYTHON_USEDEP}]
 "
 BDEPEND="
