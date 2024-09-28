@@ -1,0 +1,35 @@
+From 758cec338057b23007ffd14c960634ff0ee24af1 Mon Sep 17 00:00:00 2001
+From: Jarrett Johnson <jarrett.johnson@schrodinger.com>
+Date: Tue, 27 Aug 2024 20:06:57 -0400
+Subject: [PATCH] Make numpy2 compatible
+
+---
+ layer2/ObjectMap.cpp    | 1 +
+ modules/chempy/brick.py | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/layer2/ObjectMap.cpp b/layer2/ObjectMap.cpp
+index ada826f8a..62e3457a4 100644
+--- a/layer2/ObjectMap.cpp
++++ b/layer2/ObjectMap.cpp
+@@ -5596,6 +5596,7 @@ static int ObjectMapNumPyArrayToMapState(PyMOLGlobals * G, ObjectMapState * ms,
+   void * ptr;
+ 
+ #ifdef _PYMOL_NUMPY
++  import_array1(0);
+   PyArrayObject * pao = (PyArrayObject *) ary;
+   const int itemsize = PyArray_ITEMSIZE(pao);
+ #endif
+diff --git a/modules/chempy/brick.py b/modules/chempy/brick.py
+index fc514eb3a..e4c0f1bbb 100644
+--- a/modules/chempy/brick.py
++++ b/modules/chempy/brick.py
+@@ -31,7 +31,7 @@ def from_numpy(cls, data, grid, origin=(0.0, 0.0, 0.0)):
+         @param range: 3f sequence
+         @param origin: 3f sequence
+         '''
+-        data = numpy.asfarray(data)
++        data = numpy.asarray(data, dtype=numpy.float64)
+         assert len(data.shape) == 3
+ 
+         self = cls()

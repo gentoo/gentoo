@@ -1,0 +1,187 @@
+From 9d3061ca58d8b69d7dad74a68fc13fe81af0ff8e Mon Sep 17 00:00:00 2001
+From: Jarrett Johnson <jarrett.johnson@schrodinger.com>
+Date: Thu, 5 Sep 2024 11:20:02 -0400
+Subject: [PATCH] Symbol renaming in molfile_plugin and internal linkage
+
+Fixes #395
+---
+ contrib/uiuc/plugins/molfile_plugin/src/ReadPARM7.h    | 10 +++++-----
+ .../uiuc/plugins/molfile_plugin/src/parm7plugin.cpp    |  8 +++++---
+ contrib/uiuc/plugins/molfile_plugin/src/parmplugin.cpp |  2 ++
+ layer0/Isosurf.cpp                                     |  6 ++++--
+ layer0/Tetsurf.cpp                                     |  6 ++++--
+ ov/src/OVOneToAny.cpp                                  |  2 ++
+ ov/src/OVOneToOne.cpp                                  |  2 ++
+ 7 files changed, 24 insertions(+), 12 deletions(-)
+
+diff --git a/contrib/uiuc/plugins/molfile_plugin/src/ReadPARM7.h b/contrib/uiuc/plugins/molfile_plugin/src/ReadPARM7.h
+index 21d967d79..6bd6ddb08 100644
+--- a/contrib/uiuc/plugins/molfile_plugin/src/ReadPARM7.h
++++ b/contrib/uiuc/plugins/molfile_plugin/src/ReadPARM7.h
+@@ -59,7 +59,7 @@
+ #endif
+ 
+ 
+-typedef struct parm {
++typedef struct parm7 {
+   char title[85];
+   char version[85];
+   int   IfBox, Nmxrs, IfCap,
+@@ -70,7 +70,7 @@ typedef struct parm {
+         Ipatm, Natcap,Ifpert,Nbper,Ngper,Ndper,Mbper,Mgper,Mdper,
+         Numextra;
+   _REAL Box[3], Cutcap, Xcap, Ycap, Zcap;
+-} parmstruct;
++} parm7struct;
+ 
+ static int read_parm7_flag(FILE *file, const char *flag, const char *format) {
+   char buf[1024];
+@@ -359,10 +359,10 @@ static void close_parm7_file(FILE *fileptr, int popn) {
+ 
+ static const char *parm7 = "%8d%8d%8d%8d%8d%8d%8d%8d%8d%8d\n";
+ 
+-static parmstruct *read_parm7_header(FILE *file) {
++static parm7struct *read_parm7_header(FILE *file) {
+   char sdum[512]; 
+-  parmstruct *prm;
+-  prm = new parmstruct;
++  parm7struct *prm;
++  prm = new parm7struct;
+ 
+   /* READ VERSION */
+   fgets(sdum, 512, file);
+diff --git a/contrib/uiuc/plugins/molfile_plugin/src/parm7plugin.cpp b/contrib/uiuc/plugins/molfile_plugin/src/parm7plugin.cpp
+index faf2717c6..2d46553b4 100644
+--- a/contrib/uiuc/plugins/molfile_plugin/src/parm7plugin.cpp
++++ b/contrib/uiuc/plugins/molfile_plugin/src/parm7plugin.cpp
+@@ -24,13 +24,15 @@
+ #include "molfile_plugin.h"
+ #include "ReadPARM7.h"
+ 
++namespace {
+ typedef struct {
+-  parmstruct *prm;
++  parm7struct *prm;
+   int popn;
+   FILE *fd;
+   int nbonds;
+   int *from, *to;
+ } parmdata;
++}
+ 
+ static void *open_parm7_read(const char *filename, const char *,int *natoms) {
+   FILE *fd;
+@@ -39,7 +41,7 @@ static void *open_parm7_read(const char *filename, const char *,int *natoms) {
+     fprintf(stderr, "parm7plugin) Cannot open parm file '%s'\n", filename);
+     return NULL;
+   }
+-  parmstruct *prm = read_parm7_header(fd);
++  parm7struct *prm = read_parm7_header(fd);
+   if (!prm) {
+     close_parm7_file(fd, popn);
+     return NULL; 
+@@ -58,7 +60,7 @@ static void *open_parm7_read(const char *filename, const char *,int *natoms) {
+ 
+ static int read_parm7_structure(void *mydata, int *optflags, molfile_atom_t *atoms) {
+   parmdata *p = (parmdata *)mydata;
+-  const parmstruct *prm = p->prm;
++  const parm7struct *prm = p->prm;
+   FILE *file = p->fd;
+   char buf[85];
+   char field[85];
+diff --git a/contrib/uiuc/plugins/molfile_plugin/src/parmplugin.cpp b/contrib/uiuc/plugins/molfile_plugin/src/parmplugin.cpp
+index acabcb1b5..4996383e1 100644
+--- a/contrib/uiuc/plugins/molfile_plugin/src/parmplugin.cpp
++++ b/contrib/uiuc/plugins/molfile_plugin/src/parmplugin.cpp
+@@ -24,12 +24,14 @@
+ #include "ReadPARM.h"
+ #include "molfile_plugin.h"
+ 
++namespace {
+ typedef struct {
+   ReadPARM *rp;
+   FILE *parm;
+   int natoms;
+   int *from, *to;
+ } parmdata;
++}
+ 
+ static void *open_parm_read(const char *filename, const char *, 
+     int *natoms) {
+diff --git a/layer0/Isosurf.cpp b/layer0/Isosurf.cpp
+index 77cf42eeb..b2dfaedd7 100644
+--- a/layer0/Isosurf.cpp
++++ b/layer0/Isosurf.cpp
+@@ -44,11 +44,13 @@ Z* -------------------------------------------------------------------
+ 
+ #define I4(field,P1,P2,P3,P4) ((field)->get<int>(P1,P2,P3,P4))
+ 
+-typedef struct PointType {
++namespace {
++struct PointType {
+   float Point[3];
+   int NLink;
+   struct PointType* Link[4];
+-} PointType;
++};
++}
+ 
+ #define EdgePtPtr(field,P2,P3,P4,P5) ((field)->ptr(P2,P3,P4,P5))
+ 
+diff --git a/layer0/Tetsurf.cpp b/layer0/Tetsurf.cpp
+index 0d78b535e..cb2f5b37b 100644
+--- a/layer0/Tetsurf.cpp
++++ b/layer0/Tetsurf.cpp
+@@ -38,12 +38,14 @@ Z* -------------------------------------------------------------------
+ 
+ #define I3(field,P1,P2,P3) ((field)->get<int>(P1,P2,P3))
+ 
+-typedef struct {
++namespace {
++struct PointType {
+   float Point[3];
+   float Normal[3];
+   int NormalFlag;
+   int Link;
+-} PointType;
++};
++}
+ 
+ typedef struct {
+   PointType *p[3];
+diff --git a/ov/src/OVOneToAny.cpp b/ov/src/OVOneToAny.cpp
+index 1a675a51b..5dbbc498c 100644
+--- a/ov/src/OVOneToAny.cpp
++++ b/ov/src/OVOneToAny.cpp
+@@ -8,11 +8,13 @@
+ 
+ /* FYI: "up" stands for UniquePair -- a precursor to OneToAny */
+ 
++namespace {
+ typedef struct {
+   int active;
+   ov_word forward_value, reverse_value;
+   ov_size forward_next;
+ } up_element;
++}
+ 
+ struct _OVOneToAny {
+   OVHeap *heap;
+diff --git a/ov/src/OVOneToOne.cpp b/ov/src/OVOneToOne.cpp
+index 6dfa8f457..4e9baf9c6 100644
+--- a/ov/src/OVOneToOne.cpp
++++ b/ov/src/OVOneToOne.cpp
+@@ -8,11 +8,13 @@
+ 
+ /* FYI: "up" stands for UniquePair -- a precursor to OneToOne */
+ 
++namespace {
+ typedef struct {
+   int active;
+   ov_word forward_value, reverse_value;
+   ov_size forward_next, reverse_next;
+ } up_element;
++}
+ 
+ struct _OVOneToOne {
+   OVHeap *heap;

@@ -1,0 +1,22 @@
+From f005dde377e3e50b6e3f405939435c5061fa8b63 Mon Sep 17 00:00:00 2001
+From: Jarrett Johnson <36459667+JarrettSJohnson@users.noreply.github.com>
+Date: Mon, 22 Apr 2024 11:12:21 -0400
+Subject: [PATCH] PYMOL-4869: Only compare eof token in maeffplugin parser
+
+---
+ contrib/uiuc/plugins/molfile_plugin/src/maeffplugin.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/contrib/uiuc/plugins/molfile_plugin/src/maeffplugin.cpp b/contrib/uiuc/plugins/molfile_plugin/src/maeffplugin.cpp
+index efaede65b..0547ff91b 100644
+--- a/contrib/uiuc/plugins/molfile_plugin/src/maeffplugin.cpp
++++ b/contrib/uiuc/plugins/molfile_plugin/src/maeffplugin.cpp
+@@ -248,7 +248,7 @@ const char * Tokenizer::token(bool ignore_single) {
+   char c = peek();
+   bool good = false;
+   ssize_t diff;
+-  while(state != DONE && c >= 0) {
++  while(state != DONE && c != std::char_traits<char>::eof()) {
+     // make sure we have space in m_token for 2 more characters
+     if ((diff = ptr-m_token) >= max_token_size-1) {
+       m_token = (char *)realloc( m_token, 2*max_token_size );

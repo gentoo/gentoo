@@ -1,0 +1,26 @@
+From 11325a6014565700be9673236c9b7b6c856ea6d9 Mon Sep 17 00:00:00 2001
+From: Jarrett Johnson <jarrett.johnson@schrodinger.com>
+Date: Wed, 28 Aug 2024 22:07:15 -0400
+Subject: [PATCH] Python 3.12 TypeError: convert progress to int for progress
+ bar
+
+---
+ modules/pmg_qt/pymol_qt_gui.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/modules/pmg_qt/pymol_qt_gui.py b/modules/pmg_qt/pymol_qt_gui.py
+index f2d663204..6e935b0d6 100644
+--- a/modules/pmg_qt/pymol_qt_gui.py
++++ b/modules/pmg_qt/pymol_qt_gui.py
+@@ -929,9 +929,9 @@ def command_set_cursor(self, i):
+         return self.lineedit.setCursorPosition(i)
+ 
+     def update_progress(self):
+-        progress = self.cmd.get_progress()
++        progress = int(self.cmd.get_progress() * 100)
+         if progress >= 0:
+-            self.progressbar.setValue(progress * 100)
++            self.progressbar.setValue(progress)
+             self.progressbar.show()
+             self.abortbutton.show()
+         else:
