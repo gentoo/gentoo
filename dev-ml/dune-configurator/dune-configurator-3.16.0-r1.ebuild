@@ -5,19 +5,28 @@ EAPI=8
 
 inherit dune
 
-DESCRIPTION="Embed locations informations inside executable and libraries"
+DESCRIPTION="Helper library for gathering system configuration"
 HOMEPAGE="https://github.com/ocaml/dune"
 SRC_URI="https://github.com/ocaml/dune/archive/${PV}.tar.gz -> dune-${PV}.tar.gz"
 S="${WORKDIR}/dune-${PV}"
 
-LICENSE="MIT"
+LICENSE="Apache-2.0"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ppc64 x86"
+KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
 IUSE="+ocamlopt"
 RESTRICT="test"
 
-RDEPEND=">=dev-ml/dune-3.12"
-DEPEND="${RDEPEND}"
+BDEPEND=">=dev-ml/dune-3.12"
+DEPEND="
+	>=dev-ml/csexp-1.5:=[ocamlopt?]
+"
+RDEPEND="${DEPEND}"
+
+src_prepare() {
+	default
+
+	rm -r vendor/{csexp,pp} || die
+}
 
 src_configure() {
 	:

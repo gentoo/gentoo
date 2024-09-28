@@ -20,6 +20,12 @@ RESTRICT="test"
 BDEPEND=">=dev-ml/dune-3.12"
 RDEPEND="${DEPEND}"
 
+src_prepare() {
+	default
+
+	rm -r vendor/{csexp,pp} || die
+}
+
 src_configure() {
 	:
 }

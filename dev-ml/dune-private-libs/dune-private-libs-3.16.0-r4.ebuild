@@ -5,9 +5,10 @@ EAPI=8
 
 inherit dune
 
-DESCRIPTION="Helper library for gathering system configuration"
+DESCRIPTION="Private libraries of Dune"
 HOMEPAGE="https://github.com/ocaml/dune"
-SRC_URI="https://github.com/ocaml/dune/archive/${PV}.tar.gz -> dune-${PV}.tar.gz"
+SRC_URI="https://github.com/ocaml/dune/archive/${PV}.tar.gz
+	-> dune-${PV}.tar.gz"
 S="${WORKDIR}/dune-${PV}"
 
 LICENSE="Apache-2.0"
@@ -18,16 +19,18 @@ RESTRICT="test"
 
 BDEPEND=">=dev-ml/dune-3.12"
 DEPEND="
-	>=dev-ml/csexp-1.5:=[ocamlopt?]
+	dev-ml/csexp:=[ocamlopt?]
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!dev-ml/stdune
+	!dev-ml/dyn
+	!dev-ml/ordering
+"
 
 src_prepare() {
 	default
 
-	# This enables dune-configurator to use the vendored csexp module
-	sed -i 's/stdune.csexp/dune-configurator.csexp/' \
-		vendor/csexp/src/dune || die
+	rm -r vendor/{csexp,pp} || die
 }
 
 src_configure() {
@@ -35,5 +38,9 @@ src_configure() {
 }
 
 src_compile() {
-	dune-compile ${PN}
+	dune-compile ordering dyn stdune ${PN}
+}
+
+src_install() {
+	dune-install ordering dyn stdune ${PN}
 }
