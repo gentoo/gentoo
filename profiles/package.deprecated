@@ -28,12 +28,6 @@ dev-python/pytest-lazy-fixture
 # from the removed cgi module rather than rely on this.
 dev-python/legacy-cgi
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-03-10)
-# ant-core should no longer be ussed as of version 1.10.14 or higher.
-# It is now completely integrated in dev-java/ant and will be removed after a
-# grace period.
-dev-java/ant-core
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-03-09)
 # Unmaintained upstream. Does not build with llvm-16 and up, nor with
 # python-3.12 and up. Please port to Qt6.
