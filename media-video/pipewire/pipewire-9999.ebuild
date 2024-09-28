@@ -193,10 +193,12 @@ src_prepare() {
 
 multilib_src_configure() {
 	local logind=disabled
-	if use systemd ; then
-		logind=enabled
-	elif use elogind ; then
-		logind=enabled
+	if multilib_is_native_abi ; then
+		if use systemd ; then
+			logind=enabled
+		elif use elogind ; then
+			logind=enabled
+		fi
 	fi
 
 	local emesonargs=(
