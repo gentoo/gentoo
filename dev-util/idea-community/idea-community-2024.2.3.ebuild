@@ -128,8 +128,4 @@ src_install() {
 
 	# remove bundled harfbuzz
 	rm -f "${D}"/lib/libharfbuzz.so || die "Unable to remove bundled harfbuzz"
-
-	# remove bundled java
-	rm -r ${dst}/jbr || die "Unable to remove bundled java"
-
 }
