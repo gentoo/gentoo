@@ -85,7 +85,7 @@ dev-db/futuresql5
 # Eli Schwartz <eschwartz@gentoo.org> (2024-09-19)
 # Breaks parallel builds with fatal compiler errors.
 # Bug #939798, #939875.
-=dev-python/setuptools-75.0.0
+=dev-python/ensurepip-setuptools-75.1.0
 =dev-python/setuptools-75.1.0
 
 # Hans de Graaff <graaff@gentoo.org> (2024-09-14)
