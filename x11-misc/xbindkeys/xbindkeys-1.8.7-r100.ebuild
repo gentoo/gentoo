@@ -30,6 +30,10 @@ DEPEND="
 
 DOCS=( AUTHORS BUGS ChangeLog README TODO xbindkeysrc )
 
+pkg_setup() {
+	use guile && guile-single_pkg_setup
+}
+
 src_prepare() {
 	default
 
