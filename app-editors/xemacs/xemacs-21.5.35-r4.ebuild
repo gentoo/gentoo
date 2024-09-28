@@ -50,6 +50,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+BDEPEND="sys-apps/texinfo"
+
 PDEPEND="app-xemacs/xemacs-base
 	app-xemacs/mule-base"
 
