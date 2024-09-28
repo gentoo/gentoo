@@ -35,20 +35,20 @@ RDEPEND="
 	sys-libs/zlib
 
 	client? (
+		media-libs/libglvnd[X]
+		media-libs/libjpeg-turbo:=
 		media-libs/libogg
 		media-libs/libpng:0=
-		media-libs/libsdl2[joystick,opengl,sound,threads,video]
+		media-libs/libsdl2[joystick,opengl,sound,threads(+),video]
 		media-libs/libtheora
 		media-libs/libvorbis
 		media-libs/sdl2-mixer[vorbis]
 		media-libs/sdl2-ttf
 		media-libs/xvid
-		virtual/jpeg:0
-		virtual/opengl
 	)
 
 	server? (
-		media-libs/libsdl2[threads]
+		media-libs/libsdl2[threads(+)]
 	)
 "
 
