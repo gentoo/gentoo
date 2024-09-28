@@ -20,7 +20,6 @@ RESTRICT="test"
 BDEPEND=">=dev-ml/dune-3.12"
 DEPEND="
 	dev-ml/csexp:=[ocamlopt?]
-	>=dev-ml/pp-1.2.0:=[ocamlopt?]
 "
 RDEPEND="${DEPEND}
 	!dev-ml/stdune
@@ -31,7 +30,7 @@ RDEPEND="${DEPEND}
 src_prepare() {
 	default
 
-	rm -r vendor/{csexp,pp} || die
+	rm -r vendor/csexp || die
 }
 
 src_configure() {
