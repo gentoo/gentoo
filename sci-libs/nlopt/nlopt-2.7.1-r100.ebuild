@@ -31,6 +31,11 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="python? ( dev-lang/swig )"
 
+pkg_setup() {
+	use guile && guile-single_pkg_setup
+	fortran-2_pkg_setup
+}
+
 src_prepare() {
 	cmake_src_prepare
 
