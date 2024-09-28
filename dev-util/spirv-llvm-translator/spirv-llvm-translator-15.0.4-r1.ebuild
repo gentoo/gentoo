@@ -3,11 +3,11 @@
 
 EAPI=8
 
-LLVM_MAX_SLOT="17"
+LLVM_COMPAT=( 15 )
 MY_PN="SPIRV-LLVM-Translator"
 MY_P="${MY_PN}-${PV}"
 
-inherit cmake flag-o-matic llvm multiprocessing
+inherit cmake flag-o-matic llvm-r1
 
 DESCRIPTION="Bi-directional translator between SPIR-V and LLVM IR"
 HOMEPAGE="https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="UoI-NCSA"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -25,7 +25,7 @@ RDEPEND="
 	sys-devel/llvm:${SLOT}=
 "
 DEPEND="${RDEPEND}
-	>=dev-util/spirv-headers-1.3.275
+	dev-util/spirv-headers
 "
 BDEPEND="
 	virtual/pkgconfig
@@ -46,7 +46,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DCCACHE_ALLOWED="OFF"
-		-DCMAKE_INSTALL_PREFIX="$(get_llvm_prefix ${LLVM_MAX_SLOT})"
+		-DCMAKE_INSTALL_PREFIX="$(get_llvm_prefix)"
 		-DLLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR="${ESYSROOT}/usr/include/spirv"
 		-DLLVM_SPIRV_INCLUDE_TESTS=$(usex test "ON" "OFF")
 		-Wno-dev
@@ -56,5 +56,5 @@ src_configure() {
 }
 
 src_test() {
-	lit -vv "-j${LIT_JOBS:-$(makeopts_jobs)}" "${BUILD_DIR}/test" || die
+	lit "${BUILD_DIR}/test" || die
 }

@@ -3,11 +3,11 @@
 
 EAPI=8
 
-LLVM_MAX_SLOT="16"
+LLVM_COMPAT=( 16 )
 MY_PN="SPIRV-LLVM-Translator"
 MY_P="${MY_PN}-${PV}"
 
-inherit cmake flag-o-matic llvm multiprocessing
+inherit cmake flag-o-matic llvm-r1 multiprocessing
 
 DESCRIPTION="Bi-directional translator between SPIR-V and LLVM IR"
 HOMEPAGE="https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
@@ -50,7 +50,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DCCACHE_ALLOWED="OFF"
-		-DCMAKE_INSTALL_PREFIX="$(get_llvm_prefix ${LLVM_MAX_SLOT})"
+		-DCMAKE_INSTALL_PREFIX="$(get_llvm_prefix)"
 		-DLLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR="${ESYSROOT}/usr/include/spirv"
 		-DLLVM_SPIRV_INCLUDE_TESTS=$(usex test "ON" "OFF")
 		-Wno-dev
