@@ -103,7 +103,7 @@ src_prepare() {
 
 	# Fix hardcoded ovmf file path, see bug 763180
 	sed -i \
-		-e "s:/usr/share/OVMF:/usr/share/edk2-ovmf:g" \
+		-e "s:/usr/share/OVMF:/usr/share/edk2/OvmfX64:g" \
 		-e "s:OVMF_VARS.ms.fd:OVMF_VARS.fd:g" \
 		doc/environment.md \
 		lxd/apparmor/instance.go \
