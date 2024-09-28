@@ -1,0 +1,25 @@
+From c5966796a772d1e6504fd5c7f3e4678ede1a5a29 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 28 Sep 2024 08:50:03 +0200
+Subject: [PATCH] Update test_websocket.py::test_invalid_upgrade for
+ websockets==0.13*
+
+Update the expected messages in
+`tests/protocols/test_websocket.py::test_invalid_upgrade[websockets-h11]`
+to cover the new variant emitted by websockets==0.13*.
+---
+ tests/protocols/test_websocket.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/protocols/test_websocket.py b/tests/protocols/test_websocket.py
+index 074c01d03..78c65d635 100644
+--- a/tests/protocols/test_websocket.py
++++ b/tests/protocols/test_websocket.py
+@@ -114,6 +114,7 @@ def app(scope: Scope):
+                     "missing or empty sec-websocket-key header",  # wsproto
+                     "failed to open a websocket connection: missing " "sec-websocket-key header",
+                     "failed to open a websocket connection: missing or empty " "sec-websocket-key header",
++                    "failed to open a websocket connection: missing sec-websocket-key header; 'sec-websocket-key'",
+                 ]
+             )
+ 
