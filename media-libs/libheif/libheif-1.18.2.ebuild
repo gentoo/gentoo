@@ -24,7 +24,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	test? (
-		dev-cpp/catch
+		<dev-cpp/catch-3
 		dev-lang/go
 	)
 "
