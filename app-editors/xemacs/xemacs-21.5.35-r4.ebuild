@@ -64,6 +64,8 @@ src_prepare() {
 	eapply "${FILESDIR}/${P}-mule-tests.patch"
 	eapply "${FILESDIR}/${P}-configure-libc-version.patch"
 	eapply "${FILESDIR}/${P}-which.patch"
+	eapply "${FILESDIR}/${P}-misalignment.patch"
+	eapply "${FILESDIR}/${P}-va_args.patch"
 
 	eapply_user
 
