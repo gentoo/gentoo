@@ -23,7 +23,7 @@ else
 		-> ${REAL_P}.tar.gz"
 	S="${WORKDIR}/${REAL_PN}-${COMMIT}"
 
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 LICENSE="BSD-2 GPL-2 GPL-3 Unlicense"
