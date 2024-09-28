@@ -353,9 +353,9 @@ src_test() {
 
 src_install() {
 	dotnet-pkg_src_install
+	fperms a+x "/usr/share/${P}/_linux/"*
 
 	newicon --size 128 ./NAPS2.Lib/Icons/scanner-128.png com.naps2.Naps2.png
-
 	domenu ./NAPS2.Setup/config/linux/com.naps2.Naps2.desktop
 
 	insinto /usr/share/metainfo
