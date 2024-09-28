@@ -24,7 +24,7 @@ GCC_TARBALL_SRC_URI="
 		-> ${MYP}.tar.gz
 	${BASE_URI}/8ace7d06e469d36d726cc8badb0ed78411e727f3?filename=${INTFDIR}.tar.gz
 		-> ${INTFDIR}.tar.gz
-	bootstrap? (
+	!system-bootstrap? (
 		amd64? (
 			${BASE_URI}/6eb6eef6bb897e4c743a519bfebe0b1d6fc409c6?filename=${BTSTRP_AMD64}.tar.gz&rand=1193
 			-> ${BTSTRP_AMD64}.tar.gz
@@ -42,7 +42,7 @@ HOMEPAGE="http://libre.adacore.com/"
 
 LICENSE+=" GPL-2 GPL-3"
 KEYWORDS="amd64 x86"
-IUSE="+ada +bootstrap"
+IUSE="+ada system-bootstrap"
 RESTRICT="test"
 
 RDEPEND="!=sys-devel/gcc-${TOOLCHAIN_GCC_PV}*"
@@ -64,7 +64,7 @@ src_prepare() {
 		BTSTRP=${BTSTRP_X86}
 	fi
 
-	if use bootstrap; then
+	if ! use system-bootstrap; then
 		GCC="${WORKDIR}"/${BTSTRP}/bin/gcc
 	else
 		GCC=${ADA:-$(tc-getCC)}
@@ -78,10 +78,10 @@ src_prepare() {
 		GNATMAKE="${gnatpath}/${GNATMAKE}"
 	fi
 
-	if ! use bootstrap && [[ -z "$(type ${GNATMAKE} 2>/dev/null)" ]] ; then
+	if use system-bootstrap && [[ -z "$(type ${GNATMAKE} 2>/dev/null)" ]] ; then
 		eerror "You need a gcc compiler that provides the Ada Compiler:"
 		eerror "1) use gcc-config to select the right compiler or"
-		eerror "2) set the bootstrap use flag or"
+		eerror "2) disable the system-bootstrap use flag or"
 		eerror "3) set ADA to a working gcc ada compiler"
 		die "ada compiler not available"
 	fi
@@ -89,7 +89,7 @@ src_prepare() {
 	local bundledchost=""
 	use amd64 && local bundledchost="x86_64"
 	use x86 && local bundledchost="i686"
-	if use bootstrap; then
+	if ! use system-bootstrap; then
 		rm "${WORKDIR}"/${BTSTRP}/libexec/gcc/${bundledchost}-pc-linux-gnu/4.7.4/ld \
 			|| die
 		ln -s /usr/bin/$CHOST-ld \
