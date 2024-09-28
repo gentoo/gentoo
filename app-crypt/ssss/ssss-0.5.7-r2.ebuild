@@ -25,8 +25,10 @@ src_prepare() {
 
 	tc-export CC
 
-	# Respect users [CL]FLAGS and don't strip, as portage does this part
-	sed -e 's/-O2/$(CFLAGS) -lgmp $(LDFLAGS)/g' -e '/strip/d' -i Makefile || die
+	# Respect users [CL]FLAGS
+	# Don't strip, as portage does this part
+	# Don't use 'which'
+	sed -e 's/-O2/$(CFLAGS) -lgmp $(LDFLAGS)/g' -e '/strip/d' -e 's/which/type -P/g' -i Makefile || die
 }
 
 src_install() {
