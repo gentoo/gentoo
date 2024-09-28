@@ -52,7 +52,7 @@ src_install() {
 
 	# C executables and scripts
 	exeinto /usr/bin
-	doexe bin/{cpumhz,vmtop,xcapture,xtop}
+	doexe bin/{cpumhz,vmtop,xcapture}
 	doexe bin/{run_xcapture.sh,run_xcpu.sh}
 
 	# Python executables
@@ -72,6 +72,10 @@ src_install() {
 	insinto "/lib/${PN}/xcapture"
 	doins bin/xcapture-bpf.c
 	make_wrapper xcapture-bpf "/lib/${PN}/xcapture/xcapture-bpf"
+
+	# There is a upstream command "xtop" that wraps around "xcapture-bpf"
+	# but its broken because of dynamic path lookup for "xcapture-bpf".
+	make_wrapper xtop "xcapture-bpf --xtop --clear-screen"
 
 	# Service config
 	insinto /etc/default
