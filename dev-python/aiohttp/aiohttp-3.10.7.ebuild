@@ -109,18 +109,6 @@ python_test() {
 		tests/test_circular_imports.py::test_no_warnings
 	)
 
-	case ${EPYTHON} in
-		python3.13)
-			EPYTEST_DESELECT+=(
-				# TODO: hang
-				tests/test_run_app.py::TestShutdown::test_shutdown_new_conn_rejected
-				tests/test_run_app.py::TestShutdown::test_shutdown_timeout_handler
-				tests/test_run_app.py::TestShutdown::test_shutdown_timeout_not_reached
-				tests/test_run_app.py::TestShutdown::test_shutdown_wait_for_handler
-			)
-			;;
-	esac
-
 	# upstream unconditionally blocks building C extensions
 	# on PyPy3 but the test suite needs an explicit switch
 	if [[ ${EPYTHON} == pypy3 ]] || ! use native-extensions; then
