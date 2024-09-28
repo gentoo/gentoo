@@ -62,6 +62,8 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-install.patch
 	"${FILESDIR}"/${P}-mxml4.patch
+	"${FILESDIR}"/${P}-flags.patch
+	"${FILESDIR}"/${P}-no-register.patch
 )
 
 src_unpack() {

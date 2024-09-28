@@ -1,0 +1,84 @@
+From 829468a95ae1dca297765143b0a0aa73717e13d6 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 28 Sep 2024 19:53:59 +0100
+Subject: [PATCH] ISO C++17 does not allow 'register' storage class specifier
+
+---
+ src/client/renderer/r_font.cpp |  2 +-
+ src/common/md5.cpp             |  2 +-
+ src/shared/shared.cpp          | 12 ++++++------
+ 3 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/src/client/renderer/r_font.cpp b/src/client/renderer/r_font.cpp
+index abbe67e68e..53c69d6ee9 100644
+--- a/src/client/renderer/r_font.cpp
++++ b/src/client/renderer/r_font.cpp
+@@ -259,7 +259,7 @@ void R_FontListCache_f (void)
+  */
+ static int R_FontHash (const char* string, const font_t* font)
+ {
+-	register int hashValue, i;
++	int hashValue, i;
+ 
+ 	hashValue = 0x2040189 * ((font - fonts) + 1);
+ 	for (i = 0; string[i] != '\0'; i++)
+diff --git a/src/common/md5.cpp b/src/common/md5.cpp
+index e04b34b05c..46ba312f0d 100644
+--- a/src/common/md5.cpp
++++ b/src/common/md5.cpp
+@@ -78,7 +78,7 @@ static void MD5Init (struct MD5Context *ctx)
+  */
+ static void MD5Transform (uint32_t buf[4], uint32_t const in[16])
+ {
+-	register uint32_t a, b, c, d;
++	uint32_t a, b, c, d;
+ 
+ 	a = buf[0];
+ 	b = buf[1];
+diff --git a/src/shared/shared.cpp b/src/shared/shared.cpp
+index 07347378c4..0d4e27b556 100644
+--- a/src/shared/shared.cpp
++++ b/src/shared/shared.cpp
+@@ -105,8 +105,8 @@ char* Com_ConvertToASCII7 (char* s)
+  */
+ static int Com_FilterAfterStar (const char* pattern, const char* text)
+ {
+-	register const char* p = pattern, *t = text;
+-	register char c, c1;
++	const char* p = pattern, *t = text;
++	char c, c1;
+ 
+ 	while ((c = *p++) == '?' || c == '*')
+ 		if (c == '?' && *t++ == '\0')
+@@ -144,8 +144,8 @@ static int Com_FilterAfterStar (const char* pattern, const char* text)
+  */
+ int Com_Filter (const char* pattern, const char* text)
+ {
+-	register const char* p = pattern, *t = text;
+-	register char c;
++	const char* p = pattern, *t = text;
++	char c;
+ 
+ 	while ((c = *p++) != '\0')
+ 		switch (c) {
+@@ -166,7 +166,7 @@ int Com_Filter (const char* pattern, const char* text)
+ 
+ 		case '[':
+ 			{
+-				register char c1 = *t++;
++				char c1 = *t++;
+ 				int invert;
+ 
+ 				if (!c1)
+@@ -178,7 +178,7 @@ int Com_Filter (const char* pattern, const char* text)
+ 
+ 				c = *p++;
+ 				while (1) {
+-					register char cstart = c, cend = c;
++					char cstart = c, cend = c;
+ 
+ 					if (c == '\\') {
+ 						cstart = *p++;
+-- 
+2.46.0
+
