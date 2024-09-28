@@ -146,10 +146,6 @@ RDEPEND="
 "
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.0.21-libphp-version.patch
-)
-
 pkg_setup() {
 	python_setup
 	use lua && lua-single_pkg_setup
