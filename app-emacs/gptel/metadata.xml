@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    gptel is a simple Large Language Model chat client for Emacs, with
+    support for multiple models and backends. It works in the spirit of
+    Emacs, available at any time and uniformly in any buffer.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/karthink/gptel/issues/</bugs-to>
+    <remote-id type="github">karthink/gptel</remote-id>
+  </upstream>
+  <stabilize-allarches />
+</pkgmetadata>
