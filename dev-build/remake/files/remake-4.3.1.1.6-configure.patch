@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/926824
+Patch from upstream, configure regenerated
+
+commit 371ed0ac8bf3c1d25775c8b025229f490363f4ab
+Author: rocky <rocky@gnu.org>
+Date:   Sun, 26 Mar 2023 14:35:39 -0400
+
+    Fix some small typos
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -434,7 +434,7 @@ AC_ARG_WITH([profiler_resolution],
+   [prof_res="1000"])
+ 
+ AS_IF([test "x$prof_res" = "xno"],
+-      [],_
++      [],
+       [AC_DEFINE_UNQUOTED([PROFILER_MIN_RES],
+                           [$prof_res],
+                           [Minimum profiler resolution in nanoseconds])])
+--- a/configure
++++ b/configure
+@@ -18444,7 +18444,6 @@
+ if test "x$prof_res" = "xno"; then :
+ 
+ else
+-  _
+ 
+ cat >>confdefs.h <<_ACEOF
+ #define PROFILER_MIN_RES $prof_res

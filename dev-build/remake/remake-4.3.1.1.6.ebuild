@@ -26,6 +26,8 @@ RDEPEND="
 "
 BDEPEND="guile? ( >=dev-scheme/guile-1.8 )"
 
+PATCHES=( "${FILESDIR}"/${P}-configure.patch )
+
 src_configure() {
 	# Fixed in upstream make/gnulib, just not yet propagated into remake (bug #863827)
 	filter-lto

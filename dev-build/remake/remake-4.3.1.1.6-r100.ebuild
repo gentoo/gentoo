@@ -29,6 +29,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-configure.patch )
+
 pkg_setup() {
 	use guile && guile-single_pkg_setup
 }
