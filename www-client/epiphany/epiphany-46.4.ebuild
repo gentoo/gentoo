@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome.org gnome2-utils meson xdg virtualx
 
 DESCRIPTION="GNOME webbrowser based on Webkit"
-HOMEPAGE="https://wiki.gnome.org/Apps/Web https://gitlab.gnome.org/GNOME/epiphany"
+HOMEPAGE="https://apps.gnome.org/Epiphany/ https://gitlab.gnome.org/GNOME/epiphany"
 
 LICENSE="GPL-3+"
 SLOT="0"
