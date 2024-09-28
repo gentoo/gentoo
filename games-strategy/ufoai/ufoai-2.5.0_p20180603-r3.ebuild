@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop flag-o-matic toolchain-funcs xdg
 
@@ -30,7 +30,7 @@ IUSE="+client cpu_flags_x86_sse debug server"
 REQUIRED_USE="|| ( client server )"
 
 RDEPEND="
-	dev-libs/mxml:0
+	dev-libs/mxml:4
 	net-misc/curl
 	sys-libs/zlib
 
@@ -61,7 +61,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-install.patch
-	"${FILESDIR}"/${P}-mxml3.patch
+	"${FILESDIR}"/${P}-mxml4.patch
 )
 
 src_unpack() {
