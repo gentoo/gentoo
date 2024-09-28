@@ -40,7 +40,7 @@ RDEPEND="
 		media-libs/libsdl2[joystick,opengl,sound,threads,video]
 		media-libs/libtheora
 		media-libs/libvorbis
-		media-libs/sdl2-mixer
+		media-libs/sdl2-mixer[vorbis]
 		media-libs/sdl2-ttf
 		media-libs/xvid
 		virtual/jpeg:0
