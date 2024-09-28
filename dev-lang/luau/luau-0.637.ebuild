@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake
 
 DESCRIPTION="Gradually typed embeddable scripting language derived from Lua"
-HOMEPAGE="https://luau-lang.org/
+HOMEPAGE="https://luau.org/
 	https://github.com/luau-lang/luau/"
 
 if [[ "${PV}" == *9999* ]] ; then
