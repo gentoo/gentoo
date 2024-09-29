@@ -872,8 +872,8 @@ toolchain_src_configure() {
 		local ada_candidate
 		# We always prefer the version being built if possible
 		# as it has the greatest chance of success. Failing that,
-		# try the latest installed GCC and iterate downwards.
-		for ada_candidate in ${SLOT} $(seq ${latest_gcc} -1 10) ; do
+		# try GCC 10 and iterate upwards.
+		for ada_candidate in ${SLOT} $(seq 10 ${latest_gcc}) ; do
 			has_version -b "sys-devel/gcc:${ada_candidate}" || continue
 
 			ebegin "Testing sys-devel/gcc:${ada_candidate} for Ada"
