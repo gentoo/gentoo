@@ -991,6 +991,32 @@ toolchain_src_configure() {
 		export CC="$(tc-getCC) -specs=${T}/ada.spec"
 	fi
 
+	if _tc_use_if_iuse d ; then
+		local latest_gcc=$(best_version -b "sys-devel/gcc")
+		latest_gcc="${latest_gcc#sys-devel/gcc-}"
+		latest_gcc=$(ver_cut 1 ${latest_gcc})
+
+		local d_bootstrap
+		local d_candidate
+		# We always prefer the version being built if possible
+		# as it has the greatest chance of success. Failing that,
+		# try the latest installed GCC and iterate downwards.
+		for d_candidate in ${SLOT} $(seq ${latest_gcc} -1 10) ; do
+			has_version -b "sys-devel/gcc:${d_candidate}" || continue
+
+			ebegin "Testing sys-devel/gcc:${d_candidate} for D"
+			if has_version -b "sys-devel/gcc:${d_candidate}[d(-)]" ; then
+				d_bootstrap=${d_candidate}
+
+				eend 0
+				break
+			fi
+			eend 1
+		done
+
+		export GDC="${BROOT}/usr/${CTARGET}/gcc-bin/${d_bootstrap}/gdc"
+	fi
+
 	confgcc+=(
 		--prefix="${PREFIX}"
 		--bindir="${BINPATH}"
