@@ -20,19 +20,21 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="X chafa dbus ddcutil drm gnome imagemagick opencl opengl osmesa pulseaudio sqlite test vulkan wayland xcb xfce xrandr"
+IUSE="X chafa dbus ddcutil drm elf gnome imagemagick opencl opengl osmesa pulseaudio sqlite test vulkan wayland xcb xfce xrandr"
 RESTRICT="!test? ( test )"
 
 # note - qa-vdb will always report errors because fastfetch loads the libs dynamically
 # make sure to crank yyjson minimum version to match bundled version
 RDEPEND="
 	>=dev-libs/yyjson-0.10.0
+	sys-apps/hwdata
 	sys-libs/zlib
 	X? ( x11-libs/libX11 )
 	chafa? ( media-gfx/chafa )
 	dbus? ( sys-apps/dbus )
 	ddcutil? ( app-misc/ddcutil:= )
 	drm? ( x11-libs/libdrm )
+	elf? ( virtual/libelf:= )
 	gnome? (
 		dev-libs/glib
 		gnome-base/dconf
@@ -83,6 +85,7 @@ src_configure() {
 		-DENABLE_DCONF=$(usex gnome)
 		-DENABLE_DDCUTIL=$(usex ddcutil)
 		-DENABLE_DRM=$(usex drm)
+		-DENABLE_ELF=$(usex elf)
 		-DENABLE_EGL=$(usex opengl)
 		-DENABLE_GIO=$(usex gnome)
 		-DENABLE_GLX=$(usex opengl)
