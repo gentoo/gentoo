@@ -1014,7 +1014,9 @@ toolchain_src_configure() {
 			eend 1
 		done
 
-		export GDC="${BROOT}/usr/${CTARGET}/gcc-bin/${d_bootstrap}/gdc"
+		if [[ -n ${d_bootstrap} ]] ; then
+			export GDC="${BROOT}/usr/${CTARGET}/gcc-bin/${d_bootstrap}/gdc"
+		fi
 	fi
 
 	confgcc+=(
