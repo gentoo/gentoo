@@ -10,13 +10,15 @@ inherit lua-single
 MY_P=${PN}-v${PV}
 
 DESCRIPTION="Application firewall and intrusion detection"
-HOMEPAGE="https://github.com/SpiderLabs/ModSecurity"
-SRC_URI="https://github.com/SpiderLabs/ModSecurity/releases/download/v${PV}/${MY_P}.tar.gz"
+HOMEPAGE="https://github.com/owasp-modsecurity/ModSecurity"
+SRC_URI="
+	https://github.com/owasp-modsecurity/ModSecurity/releases/download/v${PV}/${MY_P}.tar.gz
+"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="doc fuzzyhash geoip geoip2 json lmdb lua pcre2"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
