@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2024-09-29)
+# This package has not been updated since Python 3.11.2.  It bundles
+# part of Python stdlib that's most likely vulnerable by now, as well
+# as some third-party packages.  And it really needs a dedicated
+# maintainer.
+# Removal on 2024-10-29.  Bug #910612.
+dev-python/brython
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-09-28)
 # Nothing depends on it. Removal on 2024-10-28.
 dev-java/ant-core
