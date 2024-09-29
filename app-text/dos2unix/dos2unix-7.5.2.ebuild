@@ -33,6 +33,7 @@ DEPEND="
 BDEPEND="
 	dev-lang/perl
 	nls? ( sys-devel/gettext )
+	test? ( elibc_musl? ( sys-apps/musl-locales ) )
 "
 
 handle_locales() {
