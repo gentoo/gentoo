@@ -5,12 +5,10 @@ EAPI=8
 
 inherit optfeature
 
-MY_PV=${PV/_/-}
-
 DESCRIPTION="OWASP ModSecurity Core Rule Set"
 HOMEPAGE="https://coreruleset.org/"
-SRC_URI="https://github.com/coreruleset/coreruleset/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/coreruleset-${MY_PV}"
+SRC_URI="https://github.com/coreruleset/coreruleset/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/coreruleset-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -19,11 +17,11 @@ IUSE="+apache2"
 
 RDEPEND="apache2? ( >=www-apache/mod_security-2.9.6 )"
 
-DOCS=( CHANGES.md CONTRIBUTORS.md crs-setup.conf.example KNOWN_BUGS.md README.md )
+DOCS=( CHANGES.md CONTRIBUTORS.md crs-setup.conf.example KNOWN_BUGS README.md )
 
 src_install() {
 	insinto "/usr/share/${PN}"
-	doins -r plugins rules
+	doins -r rules
 
 	einstalldocs
 
