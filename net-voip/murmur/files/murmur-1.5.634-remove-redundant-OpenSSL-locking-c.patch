@@ -1,0 +1,54 @@
+From 2be534747d2bd111e64fb163120caa6c78d04abe Mon Sep 17 00:00:00 2001
+From: Alyssa Ross <hi@alyssa.is>
+Date: Mon, 16 Sep 2024 18:16:49 +0200
+Subject: [PATCH] FIX(client, server): Remove redundant OpenSSL locking
+ callback check
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+CRYPTO_get_locking_callback() has been defined to NULL since OpenSSL
+1.1.0.  This check therefore doesn't do anything in any supported
+version of OpenSSL:
+
+https://github.com/openssl/openssl/blob/abd30777cc72029e8a44e4b67201cae8ed3d19c1/include/openssl/crypto.h#L220
+
+This fixes the following compiler error that I saw with GCC 14:
+
+/build/source/src/SSL.cpp: In static member function ‘static void MumbleSSL::initialize()’:
+/build/source/src/SSL.cpp:36:14: error: converting to ‘bool’ from ‘std::nullptr_t’ requires direct-initialization [-fpermissive]
+   36 |         if (!CRYPTO_get_locking_callback()) {
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+(cherry picked from commit 56945a9dfb62d29dccfe561572ebf64500deaed1)
+---
+ src/SSL.cpp | 13 +------------
+ 1 file changed, 1 insertion(+), 12 deletions(-)
+
+diff --git a/src/SSL.cpp b/src/SSL.cpp
+index bb30f7e9f..72161009c 100644
+--- a/src/SSL.cpp
++++ b/src/SSL.cpp
+@@ -24,18 +24,7 @@ void MumbleSSL::initialize() {
+ 	SSL_library_init(); // Safe to discard return value, per OpenSSL man pages.
+ 	SSL_load_error_strings();
+ 
+-	// Determine if a locking callback has not been set.
+-	// This should be the case if there are multiple copies
+-	// of OpensSSL in the address space. This is mostly due
+-	// to Qt dynamically loading OpenSSL when it is not
+-	// configured with -openssl-linked.
+-	//
+-	// If we detect that no locking callback is configured, we
+-	// have to set it up ourselves to allow multi-threaded use
+-	// of OpenSSL.
+-	if (!CRYPTO_get_locking_callback()) {
+-		SSLLocks::initialize();
+-	}
++	SSLLocks::initialize();
+ }
+ 
+ void MumbleSSL::destroy() {
+-- 
+2.46.2
+
