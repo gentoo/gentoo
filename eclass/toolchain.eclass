@@ -2303,7 +2303,7 @@ toolchain_src_install() {
 	cd "${D}"${BINPATH} || die
 	# Ugh: we really need to auto-detect this list.
 	#      It's constantly out of date.
-	for x in cpp gcc gccrs g++ c++ gcov g77 gfortran gccgo gnat* ; do
+	for x in cpp gcc gccrs g++ c++ gcov gdc g77 gfortran gccgo gnat* ; do
 		# For some reason, g77 gets made instead of ${CTARGET}-g77...
 		# this should take care of that
 		if [[ -f ${x} ]] ; then
