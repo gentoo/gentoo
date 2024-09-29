@@ -78,6 +78,14 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.16.1.1-python-3.12.patch
+	"${FILESDIR}"/${P}-gettext.patch
+	"${FILESDIR}"/${P}-libcss.patch
+	"${FILESDIR}"/${P}-musl.patch
+	"${FILESDIR}"/${P}-sftp.patch
+)
+
 pkg_setup() {
 	use guile && guile-single_pkg_setup
 	use lua && lua-single_pkg_setup
