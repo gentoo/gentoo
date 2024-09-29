@@ -520,6 +520,10 @@ src_compile() {
 			|| die
 	done
 
+	if ! use client; then
+		return 0
+	fi
+
 	mkdir shell-init || die
 	for shell in bash fish zsh; do
 		"${ATUIN_BIN}" init ${shell} > shell-init/${shell} || die
@@ -574,6 +578,10 @@ src_install() {
 	newbashcomp "completions/${PN}.bash" "${PN}"
 	dozshcomp "completions/_${PN}"
 	dofishcomp "completions/${PN}.fish"
+
+	if ! use client; then
+		return 0
+	fi
 
 	insinto "/usr/share/${PN}"
 	doins -r shell-init
