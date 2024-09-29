@@ -8,7 +8,7 @@ LUA_REQ_USE="deprecated"
 DISTUTILS_OPTIONAL=1
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 PLOCALES="de es fr hi hr hu id it ja pl pt_BR pt_PR ro ru sk zh"
 PLOCALE_BACKUP="en"
 inherit autotools distutils-r1 lua-single plocale toolchain-funcs
