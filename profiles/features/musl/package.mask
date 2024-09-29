@@ -199,6 +199,7 @@ app-admin/awscli-bin
 app-admin/bitwarden-desktop-bin
 app-admin/puppet-agent
 app-admin/puppetserver
+app-admin/winbox
 app-arch/rar
 app-backup/tsm
 app-benchmarks/geekbench
