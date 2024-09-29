@@ -37,11 +37,6 @@
 # Nothing depends on it. Removal on 2024-10-28.
 dev-java/ant-core
 
-# Michał Górny <mgorny@gentoo.org> (2024-09-28)
-# Causes dev-python/aiohttp tests to hang, could affect runtime too.
-# https://github.com/aio-libs/aiohttp/issues/9325
-=dev-python/aiohappyeyeballs-2.4.2
-
 # Michał Górny <mgorny@gentoo.org> (2024-09-25)
 # Fails on deprecated config options from eclass, except that if we
 # update them, then all existing packages break.
