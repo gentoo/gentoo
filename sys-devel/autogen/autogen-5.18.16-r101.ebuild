@@ -4,6 +4,7 @@
 EAPI=8
 
 GUILE_COMPAT=( 2-2 3-0 )
+GUILE_REQ_USE="deprecated"
 inherit flag-o-matic autotools guile-single toolchain-funcs
 
 DESCRIPTION="Program and text file generation"
