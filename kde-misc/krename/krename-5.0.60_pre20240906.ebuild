@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/krename/ https://userbase.kde.org/KRename"
 LICENSE="GPL-2"
 SLOT="6"
 IUSE="exif office pdf taglib truetype"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 
 DEPEND="
 	>=dev-qt/qt5compat-${QTMIN}:6
