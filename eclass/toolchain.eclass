@@ -1603,6 +1603,8 @@ toolchain_src_configure() {
 	einfo "Languages:       ${GCC_LANG}"
 	einfo "GCC version:     $($(tc-getCC) -v 2>&1 | grep ' version ' | awk '{ print $3 }')"
 	is_ada && einfo "GNAT version:    $(gnat 2>&1 | grep GNAT | awk '{ print $2 }')"
+	is_d && einfo "GDC version:     $(${GDC} -v 2>&1 | grep ' version ' | awk '{ print $3 }')"
+
 	echo
 
 	# Build in a separate build tree
