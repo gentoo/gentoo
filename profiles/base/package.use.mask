@@ -3,6 +3,10 @@
 
 # New entries go on top.
 
+# Yongxiang Liang <tanekliang@gmail.com> (2024-10-10)
+# Fcitx 4 has been archived.
+app-i18n/mozc fcitx4
+
 # Michael Orlitzky <mjo@gentoo.org> (2024-10-07)
 # Disable "webservices" support for gthumb because it pulls in the old
 # libsoup2 slot of webkit-gtk. Upstream hasn't really budged on this in
