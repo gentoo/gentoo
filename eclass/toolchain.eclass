@@ -891,7 +891,7 @@ toolchain_src_configure() {
 
 		# As a last resort, use dev-lang/gnat-gpl.
 		# TODO: Make gnat-gpl coinstallable with gcc:10.
-		if [[ -z ${ada_bootstrap} ]] ; then
+		if ver_test ${ada_bootstrap} -gt ${PV} || [[ -z ${ada_bootstrap} ]] ; then
 			ebegin "Testing dev-lang/gnat-gpl for Ada"
 			if has_version -b "dev-lang/gnat-gpl" ; then
 				ada_bootstrap=10
