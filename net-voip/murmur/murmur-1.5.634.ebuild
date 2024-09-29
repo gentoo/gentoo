@@ -72,6 +72,11 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	# fix build on musl, bug #888960
+	"${FILESDIR}"/murmur-1.5.634-remove-redundant-OpenSSL-locking-c.patch
+)
+
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="
 The default 'SuperUser' password will be written into the log file
