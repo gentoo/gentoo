@@ -16,7 +16,7 @@ HOMEPAGE="https://apps.kde.org/kronometer https://userbase.kde.org/Kronometer"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,widgets]
