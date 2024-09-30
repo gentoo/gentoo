@@ -903,6 +903,9 @@ toolchain_src_configure() {
 		# OK, even gnat-gpl didn't work. Give up for now.
 		# TODO: Source a newer, or build our own, bootstrap tarball.
 		if [[ -z ${ada_bootstrap} ]] ; then
+			eerror "Couldn't find a suitable GNAT compiler for Ada!"
+			eerror "Please try installing dev-lang/gnat-gpl."
+			eerror "For other platforms, you may need to use crossdev."
 			die "Fallback ada-bootstrap path not yet implemented!"
 
 			#einfo "Using bootstrap GNAT compiler..."
