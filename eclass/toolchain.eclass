@@ -869,6 +869,9 @@ toolchain_src_configure() {
 
 		local ada_bootstrap
 		local ada_candidate
+		# GNAT can usually be built using the last major version and
+		# the current version, at least.
+		#
 		# We always prefer the version being built if possible
 		# as it has the greatest chance of success. Failing that,
 		# try GCC 10 and iterate upwards.
@@ -877,9 +880,6 @@ toolchain_src_configure() {
 
 			ebegin "Testing sys-devel/gcc:${ada_candidate} for Ada"
 			if has_version -b "sys-devel/gcc:${ada_candidate}[ada(-)]" ; then
-				# Make sure we set a path to the Ada bootstrap if gcc[ada] is not already
-				# installed. GNAT can usually be built using the last major version and
-				# the current version, at least.
 				ada_bootstrap=${ada_candidate}
 
 				eend 0
