@@ -27,7 +27,6 @@ LICENSE="GPL-2"
 SLOT="2"
 IUSE="vanilla"
 
-# Pull in libltdl directly until we convert packages to the new dep.
 RDEPEND="
 	sys-devel/gnuconfig
 	>=dev-build/autoconf-2.69:*
