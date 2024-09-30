@@ -1,0 +1,72 @@
+--- a/gcc-10-2021-20210519-19A74-src/gcc/ada/osint.adb	2017-03-10 21:58:02.600710156 +0100
++++ b/gcc-10-2021-20210519-19A74-src/gcc/ada/osint.adb	2017-03-10 21:59:38.033983293 +0100
+@@ -2229,14 +2229,11 @@
+       for J in Start_Of_Prefix .. Name_Len - Prog'Length + 1 loop
+          if Name_Buffer (J .. J + Prog'Length - 1) = Prog then
+             End_Of_Prefix := J - 1;
++            Start_Of_Suffix := J + Prog'Length;
+             exit;
+          end if;
+       end loop;
+ 
+-      if End_Of_Prefix > 1 then
+-         Start_Of_Suffix := End_Of_Prefix + Prog'Length + 1;
+-      end if;
+-
+       --  Create the new program name
+ 
+       return new String'
+--- a/gcc-10-2021-20210519-19A74-src/config/cet.m4	2022-01-01 11:18:09.663425422 +0100
++++ b/gcc-10-2021-20210519-19A74-src/config/cet.m4	2022-01-01 11:18:14.809345911 +0100
+@@ -62,7 +62,6 @@
+   i[[34567]]86-*-linux* | x86_64-*-linux*)
+     may_have_cet=yes
+     save_CFLAGS="$CFLAGS"
+-    CFLAGS="$CFLAGS -fcf-protection"
+     case "$enable_cet" in
+       auto)
+ 	# Check if target supports multi-byte NOPs
+--- a/gcc-10-2021-20210519-19A74-src/libiberty/configure	2024-03-02 19:45:34.658271627 +0100
++++ b/gcc-10-2021-20210519-19A74-src/libiberty/configure	2024-03-02 19:54:48.013538533 +0100
+@@ -6709,6 +6709,9 @@
+   if test "$cross_compiling" = yes; then :
+   ac_cv_c_stack_direction=0
+ else
++  cat >>confdefs.h <<_ACEOF
++extern void exit(int status);
++_ACEOF
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ find_stack_direction ()
+@@ -7539,6 +7542,11 @@
+   if test "$cross_compiling" = yes; then :
+   ac_cv_func_strncmp_works=yes
+ else
++  cat >>confdefs.h <<_ACEOF
++ extern long unsigned int strlen(const char *s);
++ extern char *strcpy(char *dst, const char *src);
++ extern int strncmp(const char *s1, const char *s2, long unsigned int n);
++_ACEOF
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
+--- a/gcc-10-2021-20210519-19A74-src/libsanitizer/configure	2024-03-02 20:41:56.810707374 +0100
++++ b/gcc-10-2021-20210519-19A74-src/libsanitizer/configure	2024-03-02 20:43:00.189080219 +0100
+@@ -16073,6 +16073,7 @@
+     sanitizer_supported=no
+     cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ #include <sys/syscall.h>
++#include <unistd.h>
+ int
+ main ()
+--- a/gcc-10-2021-20210519-19A74-src/libgfortran/configure	2024-03-02 21:57:47.282939696 +0100
++++ b/gcc-10-2021-20210519-19A74-src/libgfortran/configure	2024-03-02 21:58:34.702446345 +0100
+@@ -26391,6 +26391,7 @@
+ #if HAVE_IEEEFP_H
+ # include <ieeefp.h>
+ #endif /* HAVE_IEEEFP_H */
++extern void fpsetmask(int);
+ int
+ main ()
+ {
