@@ -68,6 +68,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-103-acct-user-group-gentoo.patch
 	# https://github.com/dracut-ng/dracut-ng/pull/507
 	"${FILESDIR}"/${PN}-103-systemd-udev-256-kmod.patch
+	# libsystemd-core is sometimes missing
+	"${FILESDIR}"/${PN}-103-always-install-libsystemd.patch
 )
 
 src_configure() {
