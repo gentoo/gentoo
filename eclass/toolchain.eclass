@@ -1022,18 +1022,6 @@ toolchain_src_configure() {
 	fi
 	[[ -n ${CBUILD} ]] && confgcc+=( --build=${CBUILD} )
 
-	_need_ada_bootstrap_mangling() {
-		if [[ ${CATEGORY}/${PN} == dev-lang/gnat-gpl ]] ; then
-			_tc_use_if_iuse system-bootstrap && return 0
-			return 1
-		fi
-
-		_tc_use_if_iuse ada
-	}
-
-	_need_ada_bootstrap_mangling && toolchain_setup_ada
-	_tc_use_if_iuse d && toolchain_setup_d
-
 	confgcc+=(
 		--prefix="${PREFIX}"
 		--bindir="${BINPATH}"
@@ -1087,6 +1075,18 @@ toolchain_src_configure() {
 	is_ada && GCC_LANG+=",ada"
 	is_modula2 && GCC_LANG+=",m2"
 	is_rust && GCC_LANG+=",rust"
+
+	_need_ada_bootstrap_mangling() {
+		if [[ ${CATEGORY}/${PN} == dev-lang/gnat-gpl ]] ; then
+			_tc_use_if_iuse system-bootstrap && return 0
+			return 1
+		fi
+
+		_tc_use_if_iuse ada
+	}
+
+	_need_ada_bootstrap_mangling && toolchain_setup_ada
+	_tc_use_if_iuse d && toolchain_setup_d
 
 	confgcc+=( --enable-languages=${GCC_LANG} )
 
