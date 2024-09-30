@@ -43,7 +43,7 @@ src_prepare() {
 
 	if ! use gtk; then
 		# bug #514802
-		sed -i -e '/AM_GLIB_GNU_GETTEXT/d' configure.in || die
+		sed -i -e '/AM_GLIB_GNU_GETTEXT/d' configure.ac || die
 	fi
 
 	eautoreconf
