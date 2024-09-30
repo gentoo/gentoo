@@ -27,12 +27,6 @@ RDEPEND="${DEPEND}
 	!dev-ml/ordering
 "
 
-src_prepare() {
-	default
-
-	rm -r vendor/csexp || die
-}
-
 src_configure() {
 	:
 }
