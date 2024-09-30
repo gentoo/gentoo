@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2024-09-30)
+# gnat-gpl is purely for bootstrapping Ada and it's based on an old
+# version of GCC. Avoid risks of miscompilations.
+dev-lang/gnat-gpl pgo lto
+
 # Patrick McLean <chutzpah@gentoo.org> (2024-09-23)
 # Only supported on x86/amd64 (bug #940014).
 net-misc/lldpd seccomp
