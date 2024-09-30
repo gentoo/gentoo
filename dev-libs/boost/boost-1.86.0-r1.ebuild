@@ -52,6 +52,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.79.0-build-auto_index-tool.patch
 	"${FILESDIR}"/${PN}-1.85.0-bcp-filesystem.patch
 	"${FILESDIR}"/${PN}-1.85.0-python-numpy-2.patch
+
+	# backports
+	# https://github.com/boostorg/compute/issues/889
+	"${FILESDIR}"/${PN}-1.86.0-uuid-compute-backport.patch
 )
 
 create_user-config.jam() {
