@@ -775,7 +775,6 @@ tc_enable_hardened_gcc() {
 	sed -i \
 		-e "/^HARD_CFLAGS = /s|=|= ${hardened_gcc_flags} |" \
 		"${S}"/gcc/Makefile.in || die
-
 }
 
 # This is a historical wart.  The original Gentoo/amd64 port used:
