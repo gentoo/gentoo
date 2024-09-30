@@ -11,7 +11,7 @@ EAPI=8
 
 # FIXME: cleanup subslot after 1.85.0
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit flag-o-matic multiprocessing python-r1 toolchain-funcs multilib-minimal
 
