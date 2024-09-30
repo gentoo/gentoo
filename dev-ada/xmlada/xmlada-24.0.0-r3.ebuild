@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-ADA_COMPAT=( gnat_2021 gcc_12 gcc_13 )
+ADA_COMPAT=( gnat_2021 gcc_12 gcc_13 gcc_14 )
 inherit ada multiprocessing
 
 DESCRIPTION="Set of modules that provide a simple manipulation of XML streams"
@@ -14,15 +14,32 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 LICENSE="GPL-3"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="+shared static-libs static-pic"
+IUSE="doc +shared static-libs static-pic"
 REQUIRED_USE="|| ( shared static-libs static-pic )
 	${ADA_REQUIRED_USE}"
 
 RDEPEND="${ADA_DEPS}"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
+BDEPEND="doc? (
+	dev-tex/latexmk
+	dev-python/sphinx
+	dev-python/sphinx-rtd-theme
+	dev-texlive/texlive-latexextra
+)"
 
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-23.0.0-gentoo.patch
+	"${FILESDIR}"/${P}-gentoo.patch
+)
+
+src_prepare() {
+	default
+	sed -i \
+		-e "s|@PF@|${PF}|g" \
+		input_sources/xmlada_input.gpr \
+		|| die
+}
 
 src_compile() {
 	build () {
@@ -40,6 +57,10 @@ src_compile() {
 	if use static-pic; then
 		build static-pic
 	fi
+	if use doc; then
+		emake -C docs latexpdf
+		emake -C docs html
+	fi
 }
 
 src_test() {
@@ -51,6 +72,14 @@ src_test() {
 		-cargs ${ADAFLAGS} || die "gprbuild failed"
 	emake --no-print-directory -C tests tests | tee xmlada.testLog
 	grep -q DIFF xmlada.testLog && die
+	rm docs/*/b__* || die
+	rm docs/*/*ali || die
+	rm docs/*/*std* || die
+	rm docs/*/*bexch || die
+	rm docs/*/*.o || die
+	rm docs/*/*example || die
+	rm docs/dom/domexample2 || die
+	rm docs/sax/saxexample_main || die
 }
 
 src_install() {
@@ -74,13 +103,4 @@ src_install() {
 	einstalldocs
 	dodoc xmlada-roadmap.txt
 	rm -rf "${D}"/usr/share/gpr/manifests
-	rm -f "${D}"/usr/share/examples/xmlada/*/b__*
-	rm -f "${D}"/usr/share/examples/xmlada/*/*.adb.std*
-	rm -f "${D}"/usr/share/examples/xmlada/*/*.ali
-	rm -f "${D}"/usr/share/examples/xmlada/*/*.bexch
-	rm -f "${D}"/usr/share/examples/xmlada/*/*.o
-	rm -f "${D}"/usr/share/examples/xmlada/*/*example
-	rm -f "${D}"/usr/share/examples/xmlada/dom/domexample2
-	rm -f "${D}"/usr/share/examples/xmlada/sax/saxexample_main
-	mv "${D}"/usr/share/examples/xmlada "${D}"/usr/share/doc/"${PF}"/examples || die
 }
