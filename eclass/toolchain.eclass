@@ -981,7 +981,7 @@ toolchain_src_configure() {
 		local tool
 		for tool in gnat{,bind,chop,clean,kr,link,ls,make,name,prep} ; do
 			cat <<-EOF > "${T}"/ada-wrappers/${tool} || die
-			#!/bin/bash
+			#!/bin/sh
 			exec $(type -P ${CBUILD}-${tool}-${ada_bootstrap}) -specs=${T}/ada.spec "\$@"
 			EOF
 			chmod +x "${T}"/ada-wrappers/${tool} || die
