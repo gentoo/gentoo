@@ -1,6 +1,12 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2024-09-30)
+# gnat-gpl only exists for (bootstrapping) Ada. Until bug #940471 is handled,
+# force Ada on. Once it is split/moved/gutted, this won't be necessary
+# as it'll always build Ada.
+dev-lang/gnat-gpl ada
+
 # Michał Górny <mgorny@gentoo.org> (2024-06-29)
 # Disabling GIL (enabling freethreading) is experimental and prone
 # to break packages.  Should you choose to test it, please do not file
