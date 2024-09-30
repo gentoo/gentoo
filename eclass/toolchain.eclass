@@ -1526,10 +1526,20 @@ toolchain_src_configure() {
 	fi
 
 	if in_iuse cet ; then
-		if [[ ${CTARGET} == i[[34567]]86-*-linux* || ${CTARGET} == x86_64-*-gnu* ]] ; then
-			confgcc+=( $(use_enable cet) )
-		fi
-		[[ ${CTARGET} == aarch64-*-gnu* ]] && confgcc+=( $(use_enable cet standard-branch-protection) )
+		# Usage: triple_arch triple_env cet_name
+		enable_cet_for() {
+			if [[ ${CTARGET} == ${1}-* ]] ; then
+				if use cet && [[ ${CTARGET} == *-${2}* ]]; then
+					confgcc+=( --enable-${3} )
+				else
+					confgcc+=( --disable-${3} )
+				fi
+			fi
+		}
+
+		enable_cet_for 'i[34567]86' 'linux' 'cet'
+		enable_cet_for 'x86_64' 'gnu' 'cet'
+		enable_cet_for 'aarch64' 'gnu' 'standard-branch-protection'
 	fi
 
 	if in_iuse systemtap ; then
