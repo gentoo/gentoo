@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit libtool
+
 DESCRIPTION="Legacy library for PPD files, split out of cups-filters"
 HOMEPAGE="https://github.com/OpenPrinting/libppd"
 SRC_URI="https://github.com/OpenPrinting/libppd/releases/download/${PV/_beta/b}/${P/_beta/b}.tar.xz"
@@ -34,6 +36,11 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-CVE-2024-47175.patch
 )
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 src_configure() {
 	local myeconfargs=(
