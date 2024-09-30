@@ -889,7 +889,7 @@ toolchain_src_configure() {
 		done
 
 		# As a last resort, use dev-lang/gnat-gpl.
-		# TODO: Make gnat-gpl coinstallable with gcc:10.
+		# TODO: Make gnat-gpl coinstallable with gcc:10 (bug #940471).
 		if ver_test ${ada_bootstrap} -gt ${PV} || [[ -z ${ada_bootstrap} ]] ; then
 			ebegin "Testing dev-lang/gnat-gpl for Ada"
 			if has_version -b "dev-lang/gnat-gpl" ; then
@@ -901,7 +901,7 @@ toolchain_src_configure() {
 		fi
 
 		# OK, even gnat-gpl didn't work. Give up for now.
-		# TODO: Source a newer, or build our own, bootstrap tarball.
+		# TODO: Source a newer, or build our own, bootstrap tarball (bug #940472).
 		if [[ -z ${ada_bootstrap} ]] ; then
 			eerror "Couldn't find a suitable GNAT compiler for Ada!"
 			eerror "Please try installing dev-lang/gnat-gpl."
