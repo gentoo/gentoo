@@ -1006,10 +1006,6 @@ toolchain_src_configure() {
 	einfo "CXXFLAGS=\"${CXXFLAGS}\""
 	einfo "LDFLAGS=\"${LDFLAGS}\""
 
-	# Force internal zip based jar script to avoid random
-	# issues with 3rd party jar implementations. bug #384291
-	export JAR=no
-
 	local confgcc=( --host=${CHOST} )
 
 	if is_crosscompile || tc-is-cross-compiler ; then
