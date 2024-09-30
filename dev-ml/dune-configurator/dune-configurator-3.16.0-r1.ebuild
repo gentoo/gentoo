@@ -25,7 +25,9 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	default
 
-	rm -r vendor/{csexp,pp} || die
+	# This enables dune-configurator to use the vendored csexp module
+	sed -i 's/stdune.csexp/dune-configurator.csexp/' \
+		vendor/csexp/src/dune || die
 }
 
 src_configure() {
