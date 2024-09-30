@@ -4,6 +4,7 @@
 # Yongxiang Liang <tanekliang@gentoo.org> (2024-10-10)
 # app-i18n/fcitx:5 is not yet keyworded
 media-libs/libsdl2 fcitx
+x11-terms/mlterm fcitx
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-08-19)
 # kde-apps/kdesdk-thumbnailers is not yet keyworded
