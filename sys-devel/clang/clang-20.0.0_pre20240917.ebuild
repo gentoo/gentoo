@@ -331,12 +331,6 @@ multilib_src_configure() {
 		)
 	fi
 
-	if [[ -n ${EPREFIX} ]]; then
-		mycmakeargs+=(
-			-DGCC_INSTALL_PREFIX="${EPREFIX}/usr"
-		)
-	fi
-
 	if tc-is-cross-compiler; then
 		has_version -b sys-devel/clang:${LLVM_MAJOR} ||
 			die "sys-devel/clang:${LLVM_MAJOR} is required on the build host."
