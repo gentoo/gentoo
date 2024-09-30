@@ -147,6 +147,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.6.3-gcc14-avx512fp16.patch
 	"${FILESDIR}"/${PN}-6.7.2-qcontiguouscache.patch
 	"${FILESDIR}"/${PN}-6.7.2-haswell-no-rdrnd.patch
+	"${FILESDIR}"/${PN}-6.7.3-erratic-mouse-input.patch
 )
 
 src_prepare() {
