@@ -253,7 +253,7 @@ src_prepare() {
 		# This patch neuters the "safe directory" detection.
 		# bugs #838271, #838223
 		PATCHES+=(
-			"${FILESDIR}"/git-2.37.2-unsafe-directory.patch
+			"${FILESDIR}"/git-2.46.2-unsafe-directory.patch
 		)
 	fi
 
