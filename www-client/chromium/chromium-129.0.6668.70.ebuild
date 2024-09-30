@@ -416,7 +416,21 @@ pkg_setup() {
 					einfo "Using rust ${rustc_ver} to build"
 			fi
 
+			# Chromium requires the Rust profiler library while setting up its build environment.
+			# Since a standard Rust comes with the profiler, instead of patching it out (build/rust/std/BUILD.gn#L103)
+			# we'll just do a sanity check on the selected slot.
+			if [[ "$(eselect --brief rust show 2>/dev/null)" != *"bin"* ]]; then
+				local arch=$(uname -m)
+				local rust_lib_path="${EPREFIX}/usr/lib/rust/${rustc_ver}/lib/rustlib/${arch}-unknown-linux-gnu/lib"
+				local profiler_lib=$(find "${rust_lib_path}" -name "libprofiler_builtins-*.rlib" -print -quit)
+				if [[ -z "${profiler_lib}" ]]; then
+					eerror "Rust ${rustc_ver} is missing the profiler library."
+					eerror "ebuild dependency resolution should have ensured that a Rust with the profiler was installed."
+					die "Please \`eselect\` a Rust slot that has the profiler."
+				fi
+			fi
 		fi
+
 		# Users should never hit this, it's purely a development convenience
 		if ver_test $(gn --version || die) -lt ${GN_MIN_VER}; then
 			die "dev-build/gn >= ${GN_MIN_VER} is required to build this Chromium"
