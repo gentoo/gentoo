@@ -113,23 +113,6 @@ src_prepare() {
 	if use prefix ; then
 		# Fix hardcoded SHELL var in mkmf library
 		sed -i -e "s#\(SHELL = \).*#\1${EPREFIX}/bin/sh#" lib/mkmf.rb || die
-
-		if [[ ${CHOST} == *darwin* ]] ; then
-			# avoid symlink loop on Darwin (?!)
-			sed -i \
-				-e '/LIBRUBY_ALIASES=/s/lib$(RUBY_INSTALL_NAME).$(SOEXT)//' \
-				configure.ac || die
-
-			# make ar/libtool hack for Darwin work
-			sed -i \
-				-e "s/ac_cv_prog_ac_ct_AR='libtool/ac_cv_prog_AR='${CHOST}-libtool/" \
-				configure.ac || die
-
-			# disable using security framework (GCC barfs on those headers)
-			sed -i \
-				-e 's/MAC_OS_X_VERSION_MIN_REQUIRED/_DISABLED_/' \
-				random.c || die
-		fi
 	fi
 
 	eapply_user
@@ -197,7 +180,10 @@ src_configure() {
 	# Provide an empty LIBPATHENV because we disable rpath but we do not
 	# need LD_LIBRARY_PATH by default since that breaks USE=multitarget
 	# #564272
-	INSTALL="${EPREFIX}/usr/bin/install -c" LIBPATHENV="" econf \
+	# except on Darwin, where we really need LIBPATHENV to set the right
+	# DYLD_ stuff during the invocation of miniruby for it to work
+	[[ ${CHOST} == *-darwin* ]] || export LIBPATHENV=""
+	INSTALL="${EPREFIX}/usr/bin/install -c" econf \
 		--program-suffix=${MY_SUFFIX} \
 		--with-soname=ruby${MY_SUFFIX} \
 		--with-readline-dir="${EPREFIX}"/usr \
@@ -249,10 +235,6 @@ src_install() {
 	local MINIRUBY=$(echo -e 'include Makefile\ngetminiruby:\n\t@echo $(MINIRUBY)'|make -f - getminiruby)
 
 	local -x LD_LIBRARY_PATH="${S}:${ED}/usr/$(get_libdir)${LD_LIBRARY_PATH+:}${LD_LIBRARY_PATH}"
-
-	if [[ ${CHOST} == *darwin* ]] ; then
-		local -x DYLD_LIBRARY_PATH="${S}:${ED}/usr/$(get_libdir)${DYLD_LIBRARY_PATH+:}${DYLD_LIBRARY_PATH}"
-	fi
 
 	local -x RUBYLIB="${S}:${ED}/usr/$(get_libdir)/ruby/${RUBYVERSION}"
 	for d in $(find "${S}/ext" -type d) ; do
