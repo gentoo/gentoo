@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Yongxiang Liang <tanekliang@gentoo.org> (2024-10-10)
+# app-i18n/fcitx:5 is not yet keyworded
+media-libs/libsdl2 fcitx
+
 # David Roman <davidroman96@gmail.com> (2024-10-04)
 # dev-libs/libunibreak is not keyworded
 media-libs/libass libunibreak
