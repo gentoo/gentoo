@@ -2029,6 +2029,15 @@ gcc_do_make() {
 		BOOT_LDFLAGS=${BOOT_LDFLAGS-"${abi_ldflags} ${LDFLAGS}"}
 		LDFLAGS_FOR_TARGET="${LDFLAGS_FOR_TARGET:-${LDFLAGS}}"
 
+		# If we need to in future, we could really simplify this
+		# to just be unconditional for stage1. It doesn't really
+		# matter there. If we want to go in the other direction
+		# and make this more conditional, we could check if
+		# the bootstrap compiler is < GCC 12. See bug #940470.
+		if _tc_use_if_iuse d && use hardened ; then
+			STAGE1_CXXFLAGS+=" -U_GLIBCXX_ASSERTIONS"
+		fi
+
 		emakeargs+=(
 			STAGE1_CFLAGS="${STAGE1_CFLAGS}"
 			STAGE1_CXXFLAGS="${STAGE1_CXXFLAGS}"
