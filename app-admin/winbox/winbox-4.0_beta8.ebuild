@@ -31,7 +31,7 @@ BDEPEND="app-arch/unzip"
 
 RESTRICT="bindist mirror"
 
-QA_PREBUILT="opt/winbox/winbox"
+QA_PREBUILT="opt/winbox/WinBox"
 
 src_install() {
 	exeinto /opt/winbox
