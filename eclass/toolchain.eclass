@@ -998,8 +998,7 @@ toolchain_src_configure() {
 	gcc_do_filter_flags
 
 	if ! tc_version_is_at_least 11 && [[ $(gcc-major-version) -ge 12 ]] ; then
-		# https://gcc.gnu.org/PR105695
-		# bug #849359
+		# https://gcc.gnu.org/PR105695 (bug #849359)
 		export ac_cv_std_swap_in_utility=no
 	fi
 
