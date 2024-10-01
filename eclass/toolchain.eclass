@@ -983,17 +983,18 @@ toolchain_setup_ada() {
 	local tool
 	for tool in gnat{,bind,chop,clean,kr,link,ls,make,name,prep} ; do
 		if [[ ${ada_bootstrap_type} == ada-bootstrap ]] ; then
-			ln -s "${BROOT}"/usr/lib/ada-bootstrap/bin/${tool} "${T}"/ada-wrappers/${CBUILD}-${tool}-${ada_bootstrap} || die
+			ln -s "${BROOT}"/usr/lib/ada-bootstrap/bin/${tool} \
+				"${T}"/ada-wrappers/${CBUILD}-${tool}-${ada_bootstrap} || die
 		fi
 
 		cat <<-EOF > "${T}"/ada-wrappers/${tool} || die
-			#!/bin/sh
-			exec $(type -P ${CBUILD}-${tool}-${ada_bootstrap}) -specs=${T}/ada.spec "\$@"
-			EOF
-		chmod +x "${T}"/ada-wrappers/${tool} || die
+		#!/bin/sh
+		exec ${CBUILD}-${tool}-${ada_bootstrap} --specs=${T}/ada.spec "\$@"
+		EOF
 
 		export "${tool^^}"="${T}"/ada-wrappers/${tool}
 	done
+	chmod +x "${T}"/ada-wrappers/gnat{,bind,chop,clean,kr,link,ls,make,name,prep} || die
 
 	export PATH="${T}/ada-wrappers:${old_path}"
 	export CC="$(tc-getCC) -specs=${T}/ada.spec"
