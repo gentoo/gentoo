@@ -26,6 +26,11 @@ RDEPEND="
 	>=dev-python/icalendar-5.0.11[${PYTHON_USEDEP}]
 	dev-python/tzdata[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	test? (
+		dev-python/pytz[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests pytest
 
