@@ -956,8 +956,8 @@ toolchain_setup_ada() {
 			;;
 	esac
 
-	# Easier to substitute these values in rather than escape
-	# lots of bits above in heredoc.
+	# Easier to substitute these values in rather than escape lots of
+	# bits above in the heredoc.
 	sed -i \
 		-e "s:\${BROOT}:${BROOT}:" \
 		-e "s:\${CBUILD}:${CBUILD}:" \
@@ -965,9 +965,9 @@ toolchain_setup_ada() {
 		-e "s:\${ada_bootstrap}:${ada_bootstrap}:" \
 		"${T}"/ada.spec || die
 
-	# The Makefile tries to find libgnat by querying $(CC) which
-	# won't work for us as the stage1 compiler doesn't necessarily
-	# have Ada support. Substitute the Ada compiler we found earlier.
+	# The Makefile tries to find libgnat by querying $(CC) which won't
+	# work for us as the stage1 compiler doesn't necessarily have Ada
+	# support. Substitute the Ada compiler we found earlier.
 	local adalib
 	adalib=$(${CBUILD}-gcc-${ada_bootstrap} -print-libgcc-file-name || die "Finding adalib dir failed")
 	adalib="${adalib%/*}/adalib"
@@ -975,8 +975,8 @@ toolchain_setup_ada() {
 		-e "s:adalib=.*:adalib=${adalib}:" \
 		"${S}"/gcc/ada/gcc-interface/Make-lang.in || die
 
-	# Create bin wrappers because not all of the build system
-	# respects GNATBIND or GNATMAKE.
+	# Create bin wrappers because not all of the build system respects
+	# GNATBIND or GNATMAKE.
 	mkdir "${T}"/ada-wrappers || die
 	local tool
 	for tool in gnat{,bind,chop,clean,kr,link,ls,make,name,prep} ; do
