@@ -2076,6 +2076,7 @@ gcc_do_make() {
 		# using not-O0 is just a build-time speed improvement anyway.
 		if ! tc-is-gcc || ver_test $(gcc-fullversion) -lt 10 ; then
 			STAGE1_CFLAGS="-O0"
+			STAGE1_CXXFLAGS="-O0"
 		fi
 
 		# We only want to use the system's CFLAGS if not building a
