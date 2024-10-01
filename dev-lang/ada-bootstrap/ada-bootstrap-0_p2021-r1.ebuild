@@ -133,7 +133,8 @@ src_prepare() {
 src_configure() {
 	local adabdir=/usr/lib/${PN}
 	local prefix=${EPREFIX}${adabdir}
-	local -x PATH=${PWD}/bin:${PATH}
+
+	export PATH=${GNATDIR}/bin:${PWD}/bin:${PATH}
 
 	# This version is GCC 4.7.4 with a bolted-on newer GNAT; be very
 	# conservative, we just want it to build for bootstrapping proper
