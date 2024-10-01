@@ -1,13 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 # Note: Please bump in sync with dev-libs/libxslt
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="xml(+)"
-inherit python-r1 multilib-minimal
+inherit flag-o-matic python-r1 multilib-minimal
 
 XSTS_HOME="http://www.w3.org/XML/2004/xml-schema-test-suite"
 XSTS_NAME_1="xmlschema2002-01-16"
@@ -23,7 +23,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit autotools git-r3
 else
 	inherit gnome.org libtool
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 SRC_URI+="
@@ -37,7 +37,7 @@ S="${WORKDIR}/${PN}-${PV%_rc*}"
 
 LICENSE="MIT"
 SLOT="2"
-IUSE="examples icu lzma +python readline static-libs test"
+IUSE="debug examples +ftp icu lzma +python readline static-libs test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -53,7 +53,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 if [[ ${PV} == 9999 ]] ; then
-	BDEPEND+=" dev-build/gtk-doc-am"
+	BDEPEND+=" dev-util/gtk-doc-am"
 fi
 
 MULTILIB_CHOST_TOOLS=(
@@ -71,7 +71,7 @@ src_unpack() {
 		unpack ${tarname}
 
 		if [[ -n ${PATCHSET_VERSION} ]] ; then
-			unpack ${PN}-${PATCHSET_VERSION}.tar.xz
+			unpack ${PN}-${PATCHSET_VERSION}.tar.bz2
 		fi
 	fi
 
@@ -99,8 +99,17 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# Filter seemingly problematic CFLAGS (bug #26320)
+	filter-flags -fprefetch-loop-arrays -funroll-loops
+
+	# Notes:
+	# The meaning of the 'debug' USE flag does not apply to the --with-debug
+	# switch (enabling the libxml2 debug module). See bug #100898.
 	libxml2_configure() {
 		ECONF_SOURCE="${S}" econf \
+			--enable-ipv6 \
+			$(use_with ftp) \
+			$(use_with debug run-debug) \
 			$(use_with icu) \
 			$(use_with lzma) \
 			$(use_enable static-libs static) \
@@ -130,6 +139,7 @@ multilib_src_compile() {
 	if multilib_is_native_abi && use python ; then
 		NATIVE_BUILD_DIR="${BUILD_DIR}"
 		python_foreach_impl run_in_build_dir libxml2_py_emake all
+
 	fi
 
 	# Remove all references to $SYSROOT from installed files
