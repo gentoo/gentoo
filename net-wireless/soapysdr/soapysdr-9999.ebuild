@@ -21,13 +21,14 @@ fi
 
 LICENSE="Boost-1.0"
 SLOT="0/${PV}"
-IUSE="bladerf hackrf python rtlsdr plutosdr uhd"
+IUSE="bladerf hackrf python rtlsdr plutosdr uhd airspyhf"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}"
 BDEPEND="python? ( dev-lang/swig:0 )"
 PDEPEND="
+	airspyhf? ( net-wireless/soapyairspyhf )
 	bladerf? ( net-wireless/soapybladerf )
 	hackrf? ( net-wireless/soapyhackrf )
 	rtlsdr? ( net-wireless/soapyrtlsdr )
