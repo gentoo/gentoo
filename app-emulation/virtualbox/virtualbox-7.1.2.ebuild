@@ -273,6 +273,9 @@ src_prepare() {
 		java-pkg-opt-2_src_prepare
 	fi
 
+	# bug #940482
+	filter-flags -fno-plt
+
 	# bug #908814
 	filter-lto
 
