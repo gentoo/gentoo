@@ -37,7 +37,19 @@ SLOT="0" # TODO: slot based on GCC version used
 KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="test"
 
-BDEPEND="sys-devel/binutils"
+BDEPEND="
+	app-alternatives/yacc
+	sys-devel/binutils:*
+	>=sys-devel/flex-2.5.4
+"
+DEPEND="
+	>=dev-libs/gmp-4.3.2:=
+	>=dev-libs/mpfr-2.4.2:=
+	>=dev-libs/mpc-0.8.1:=
+	sys-libs/zlib
+	virtual/libiconv
+"
+RDEPEND="${DEPEND}"
 
 pkg_pretend() {
 	if tc-is-clang; then
