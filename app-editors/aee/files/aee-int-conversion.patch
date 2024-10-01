@@ -1,0 +1,48 @@
+--- a/aee.c
++++ b/aee.c
+@@ -1543,7 +1543,7 @@
+ 	temp_buf->main_buffer = FALSE;
+ 	temp_buf->edit_buffer = FALSE;
+ 	temp_buf->dos_file = FALSE;
+-	temp_buf->journ_fd = NULL;
++	temp_buf->journ_fd = -1;
+ 	return (temp_buf);
+ }
+ 
+--- a/journal.c
++++ b/journal.c
+@@ -72,6 +72,7 @@
+ #include "aee.h"
+ 
+ #include <time.h>
++#include <unistd.h>
+ 
+ /*
+  |	writes the contents of the line, updates the value stored in 
+@@ -215,7 +216,7 @@
+ 	{
+ 		wmove(com_win, 0, 0);
+ 		wstandout(com_win);
+-		wprintf(com_win, journal_err_str);
++		wprintw(com_win, journal_err_str);
+ 		wstandend(com_win);
+ 		wrefresh(com_win);
+ 		return;
+@@ -310,7 +311,7 @@
+ 		 |	Unable to open journal file.
+ 		 */
+ 
+-		buffer->journ_fd = NULL;
++		buffer->journ_fd = -1;
+ 		return(1);
+ 	}
+ 
+@@ -860,7 +861,7 @@
+ 	{
+ 		wprintw(com_win, cant_opn_rcvr_fil_msg);
+ 		buffer->journalling = FALSE;
+-		buffer->journ_fd = NULL;
++		buffer->journ_fd = -1;
+ 		return;
+ 	}
+ 
