@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake edo multibuild systemd verify-sig xdg
+inherit cmake edo multibuild optfeature systemd verify-sig xdg
 
 DESCRIPTION="BitTorrent client in C++ and Qt"
 HOMEPAGE="https://www.qbittorrent.org"
@@ -126,4 +126,10 @@ src_install() {
 		newconfd "${FILESDIR}/${PN}.confd" "${PN}"
 		newinitd "${FILESDIR}/${PN}.initd" "${PN}"
 	fi
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+
+	optfeature "I2P anonymyzing network support" net-vpn/i2pd net-vpn/i2p
 }
