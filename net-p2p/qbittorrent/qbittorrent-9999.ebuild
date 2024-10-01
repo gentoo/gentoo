@@ -22,36 +22,23 @@ else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/qBittorrent.asc
 fi
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-IUSE="+dbus +gui qt6 systemd test webui"
+IUSE="+dbus +gui systemd test webui"
 RESTRICT="!test? ( test )"
-REQUIRED_USE="|| ( gui webui )
+REQUIRED_USE="
+	|| ( gui webui )
 	dbus? ( gui )
 "
 
 RDEPEND="
-	>=dev-libs/openssl-1.1.1:=
+	>=dev-libs/openssl-3.0.2:=
 	>=net-libs/libtorrent-rasterbar-1.2.19:=
 	>=sys-libs/zlib-1.2.11
-	qt6? ( >=dev-qt/qtbase-6.2:6[network,ssl,sql,sqlite,xml] )
-	!qt6? (
-		dev-qt/qtcore:5
-		dev-qt/qtnetwork:5[ssl]
-		dev-qt/qtsql:5[sqlite]
-		dev-qt/qtxml:5
-	)
+	>=dev-qt/qtbase-6.5:6[network,ssl,sql,sqlite,xml]
 	gui? (
-		!qt6? (
-			dev-qt/qtgui:5
-			dev-qt/qtsvg:5
-			dev-qt/qtwidgets:5
-			dbus? ( dev-qt/qtdbus:5 )
-		)
-		qt6? (
-			>=dev-qt/qtbase-6.2:6[dbus?,gui,widgets]
-			>=dev-qt/qtsvg-6.2:6
-		)
+		>=dev-qt/qtbase-6.5:6[dbus?,gui,widgets]
+		>=dev-qt/qtsvg-6.5:6
 	)
 	webui? (
 		acct-group/qbittorrent
@@ -60,14 +47,12 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	>=dev-libs/boost-1.71
-	test? (
-		!qt6? ( dev-qt/qttest:5 )
-	)"
+	>=dev-libs/boost-1.76
+"
 BDEPEND+="
-	!qt6? ( dev-qt/linguist-tools:5 )
-	qt6? ( >=dev-qt/qttools-6.2:6[linguist] )
-	virtual/pkgconfig"
+	>=dev-qt/qttools-6.5:6[linguist]
+	virtual/pkgconfig
+"
 
 DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md )
 
@@ -86,7 +71,6 @@ src_configure() {
 			-DSTACKTRACE=$(usex !elibc_musl)
 			# More verbose build logs are preferable for bug reports
 			-DVERBOSE_CONFIGURE=ON
-			-DQT6=$(usex qt6)
 			-DWEBUI=$(usex webui)
 			-DTESTING=$(usex test)
 		)
