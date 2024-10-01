@@ -161,6 +161,7 @@ src_configure() {
 		--disable-nls # filename collisions
 		--disable-libcc1
 		--disable-libgomp
+		--disable-libitm
 		--disable-libquadmath
 		--disable-libsanitizer
 		--disable-libssp
