@@ -968,7 +968,7 @@ toolchain_setup_ada() {
 	if [[ ${ada_bootstrap_type} == ada-bootstrap ]] ; then
 		old_path="${PATH}"
 		export PATH="${BROOT}/usr/lib/ada-bootstrap/bin:${PATH}"
-		adalib=$(${BROOT}/usr/lib/ada-bootstrap/bin/${CBUILD}-gcc -print-libgcc-file-name || die "Finding adalib dir failed")
+		adalib=$("${BROOT}"/usr/lib/ada-bootstrap/bin/${CBUILD}-gcc -print-libgcc-file-name || die "Finding adalib dir failed")
 	else
 		adalib=$(${CBUILD}-gcc-${ada_bootstrap} -print-libgcc-file-name || die "Finding adalib dir failed")
 	fi
