@@ -242,12 +242,6 @@ kde-frameworks/kuserfeedback:5
 # Bug #759772. Removal on 2024-09-31.
 media-gfx/kcoloredit
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-08-29)
-# No signs of development upstream (last commit in 2016). If you use this,
-# please ping them in order to get it ported over to KF6.
-# Removal on 2024-09-29.
-kde-misc/ktoshiba
-
 # Florian Schmaus <flow@gentoo.org> (2024-08-23)
 # Has a serious bug that causes synced directories to end up world read-
 # and writeable. See https://github.com/nextcloud/desktop/issues/6863
