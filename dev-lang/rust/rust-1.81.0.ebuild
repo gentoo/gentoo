@@ -310,7 +310,7 @@ src_prepare() {
 	# is not set bug. #741708
 	if use x86; then
 		if ! use cpu_flags_x86_sse2; then
-			eapply "${FILESDIR}/1.81.0-pentiumpro-baseline.patch"
+			eapply "${FILESDIR}/1.81.0-i486-baseline.patch"
 		fi
 	fi
 
