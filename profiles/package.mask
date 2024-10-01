@@ -258,12 +258,6 @@ kde-misc/openofficeorg-thumbnail
 # Long unmaintained Plasma 5-only desktop widget. Removal on 2024-09-29.
 kde-misc/plasma-applet-network-monitor
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-08-29)
-# This is so old that it was only kept alive as KF5-based version by means
-# of a downstream patch porting away from KDElibs4. No reports of it even
-# being in a working state (e.g. bug 813031). Removal on 2024-09-29.
-kde-misc/kio-locate
-
 # Florian Schmaus <flow@gentoo.org> (2024-08-23)
 # Has a serious bug that causes synced directories to end up world read-
 # and writeable. See https://github.com/nextcloud/desktop/issues/6863
