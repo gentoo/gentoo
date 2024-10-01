@@ -111,6 +111,7 @@ PATCHES=(
 src_configure() {
 	# bug #835653
 	use x86 && replace-flags -Os -O2
+	use x86 && replace-flags -Oz -O2
 
 	# localstatedir is used for the log location; we need to override the default
 	#	from ebuild.sh
