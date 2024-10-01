@@ -945,19 +945,23 @@ toolchain_setup_ada() {
 			%{gnatc*|gnats*: -o %j} %{-param*}
 		EOF
 
-	# XXX: Hack for now
-	if [[ ${ada_bootstrap_type} == ada-bootstrap ]] ; then
-		sed -i \
-			-e "s:\${gnat1_path}:${BROOT}/usr/lib/ada-bootstrap/libexec/gcc/x86_64-pc-linux-gnu/10/gnat1:" \
-			"${T}"/ada.spec || die
-	fi
+	old_path="${PATH}"
+	case ${ada_bootstrap_type} in
+		ada-bootstrap)
+			export PATH="${BROOT}/usr/lib/ada-bootstrap/bin:${PATH}"
+			gnat1_path=${BROOT}/usr/lib/ada-bootstrap/libexec/gcc/${CBUILD}/${ada_bootstrap}/gnat1
+			;;
+		*)
+			gnat1_path=${BROOT}/usr/libexec/gcc/${CBUILD}/${ada_bootstrap}/gnat1
+			;;
+	esac
 
 	# Easier to substitute these values in rather than escape
 	# lots of bits above in heredoc.
 	sed -i \
 		-e "s:\${BROOT}:${BROOT}:" \
 		-e "s:\${CBUILD}:${CBUILD}:" \
-		-e "s:\${gnat1_path}:${BROOT}/usr/libexec/gcc/${CBUILD}/${ada_bootstrap}/gnat1:" \
+		-e "s:\${gnat1_path}:${gnat1_path}:" \
 		-e "s:\${ada_bootstrap}:${ada_bootstrap}:" \
 		"${T}"/ada.spec || die
 
@@ -965,13 +969,7 @@ toolchain_setup_ada() {
 	# won't work for us as the stage1 compiler doesn't necessarily
 	# have Ada support. Substitute the Ada compiler we found earlier.
 	local adalib
-	if [[ ${ada_bootstrap_type} == ada-bootstrap ]] ; then
-		old_path="${PATH}"
-		export PATH="${BROOT}/usr/lib/ada-bootstrap/bin:${PATH}"
-		adalib=$("${BROOT}"/usr/lib/ada-bootstrap/bin/${CBUILD}-gcc -print-libgcc-file-name || die "Finding adalib dir failed")
-	else
-		adalib=$(${CBUILD}-gcc-${ada_bootstrap} -print-libgcc-file-name || die "Finding adalib dir failed")
-	fi
+	adalib=$(${CBUILD}-gcc-${ada_bootstrap} -print-libgcc-file-name || die "Finding adalib dir failed")
 	adalib="${adalib%/*}/adalib"
 	sed -i \
 		-e "s:adalib=.*:adalib=${adalib}:" \
@@ -982,11 +980,6 @@ toolchain_setup_ada() {
 	mkdir "${T}"/ada-wrappers || die
 	local tool
 	for tool in gnat{,bind,chop,clean,kr,link,ls,make,name,prep} ; do
-		if [[ ${ada_bootstrap_type} == ada-bootstrap ]] ; then
-			ln -s "${BROOT}"/usr/lib/ada-bootstrap/bin/${tool} \
-				"${T}"/ada-wrappers/${CBUILD}-${tool}-${ada_bootstrap} || die
-		fi
-
 		cat <<-EOF > "${T}"/ada-wrappers/${tool} || die
 		#!/bin/sh
 		exec $(type -P ${CBUILD}-${tool}-${ada_bootstrap}) --specs=${T}/ada.spec "\$@"
