@@ -140,6 +140,8 @@ src_configure() {
 	# conservative, we just want it to build for bootstrapping proper
 	# sys-devel/gcc[ada]. We don't need it to be fast.
 	strip-flags
+	CC="${WORKDIR}"/${BTSTRP}/bin/gcc strip-unsupported-flags
+	CC="${WORKDIR}"/${GNATDIR}/bin/gcc strip-unsupported-flags
 	strip-unsupported-flags
 	filter-lto
 	append-flags -O2
