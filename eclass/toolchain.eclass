@@ -989,7 +989,7 @@ toolchain_setup_ada() {
 
 		cat <<-EOF > "${T}"/ada-wrappers/${tool} || die
 		#!/bin/sh
-		exec ${CBUILD}-${tool}-${ada_bootstrap} --specs=${T}/ada.spec "\$@"
+		exec $(type -P ${CBUILD}-${tool}-${ada_bootstrap}) --specs=${T}/ada.spec "\$@"
 		EOF
 
 		export "${tool^^}"="${T}"/ada-wrappers/${tool}
