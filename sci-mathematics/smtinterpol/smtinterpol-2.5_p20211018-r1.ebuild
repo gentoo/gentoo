@@ -16,7 +16,7 @@ S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 BDEPEND=">=dev-java/ant-1.10.14-r3:0"
 RDEPEND=">=virtual/jre-1.8:*"
