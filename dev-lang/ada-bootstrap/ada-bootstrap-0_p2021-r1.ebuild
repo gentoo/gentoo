@@ -134,7 +134,7 @@ src_configure() {
 	local adabdir=/usr/lib/${PN}
 	local prefix=${EPREFIX}${adabdir}
 
-	export PATH="${WORKDIR}"/${GNATDIR}/bin:${S}/bin:${PWD}/bin:${PATH}
+	export PATH="${WORKDIR}"/${BTSTRP}/bin:"${WORKDIR}"/${GNATDIR}/bin:${PWD}/bin:${PATH}
 
 	# This version is GCC 4.7.4 with a bolted-on newer GNAT; be very
 	# conservative, we just want it to build for bootstrapping proper
