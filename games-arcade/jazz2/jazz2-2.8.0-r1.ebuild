@@ -34,6 +34,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-about-section.patch"
+	"${FILESDIR}/${P}-strict-aliasing.patch" #940326
 )
 
 src_prepare() {
