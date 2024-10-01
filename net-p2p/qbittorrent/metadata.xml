@@ -5,6 +5,10 @@
 		<email>eschwartz@gentoo.org</email>
 		<name>Eli Schwartz</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>fkobi@pm.me</email>
+		<name>Filip Kobierski</name>
+	</maintainer>
 	<use>
 		<flag name="webui">
 			Install qBittorrent Web UI (qbittorrent-nox) and systemd/OpenRC service
