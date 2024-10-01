@@ -10,11 +10,6 @@ net-p2p/transmission -qt5
 # Required by kde-frameworks/kio:6
 dev-qt/qtbase libproxy
 
-# Alfred Wingate <parona@protonmail.com> (2023-12-25)
-# Prefer wayland over X with REQUIRED_USE: ^^ ( gbm wayland X )
-# >=21.1 allows build with multiple display backends again
-<media-tv/kodi-21.1 wayland -X
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-11-12)
 # NSS: Required by kde-apps/okular[pdf]
 # Boost: app-text/poppler[qt5] recommended w/ Boost (bug #795888)
