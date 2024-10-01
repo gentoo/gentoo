@@ -162,7 +162,7 @@ if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
 		["sys-apps/rng-tools"]="GPL-2"
 		["sys-apps/sed"]="GPL-3+"
 		["sys-apps/shadow"]="BSD GPL-2"
-		["sys-apps/systemd[boot(-),cryptsetup,pkcs11,policykit,tpm,ukify(-)]"]="GPL-2 LGPL-2.1 MIT public-domain"
+		[">=sys-apps/systemd-257[boot(-),cryptsetup,pkcs11,policykit,tpm,ukify(-)]"]="GPL-2 LGPL-2.1 MIT public-domain"
 		["sys-apps/util-linux"]="GPL-2 GPL-3 LGPL-2.1 BSD-4 MIT public-domain"
 		["sys-auth/polkit"]="LGPL-2"
 		["sys-block/nbd"]="GPL-2"
