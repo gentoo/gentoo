@@ -402,7 +402,16 @@ if tc_has_feature valgrind ; then
 fi
 
 if [[ ${PN} != gnat-gpl ]] && tc_has_feature ada ; then
-	BDEPEND+=" ada? ( || ( sys-devel/gcc:${SLOT}[ada] <sys-devel/gcc-${SLOT}[ada] dev-lang/gnat-gpl[ada] ) )"
+	BDEPEND+="
+		ada? (
+			|| (
+				sys-devel/gcc:${SLOT}[ada]
+				<sys-devel/gcc-${SLOT}[ada]
+				<dev-lang/ada-bootstrap-${SLOT}
+				dev-lang/gnat-gpl[ada]
+			)
+		)
+	"
 fi
 
 # TODO: Add a pkg_setup & pkg_pretend check for whether the active compiler
@@ -850,10 +859,28 @@ toolchain_setup_ada() {
 		eend 1
 	done
 
-	# As a last resort, use dev-lang/gnat-gpl.
-	# TODO: Make gnat-gpl coinstallable with gcc:10 (bug #940471).
+	# As a penultimate resort, try dev-lang/ada-bootstrap.
 	if ver_test ${ada_bootstrap} -gt ${PV} || [[ -z ${ada_bootstrap} ]] ; then
-		ebegin "Testing dev-lang/gnat-gpl for Ada"
+		ebegin "Testing fallback dev-lang/ada-bootstrap for Ada"
+		if has_version -b "<dev-lang/ada-bootstrap-${SLOT}" ; then
+			local latest_ada_bootstrap=$(best_version -b "<dev-lang/ada-bootstrap-${SLOT}")
+			latest_ada_bootstrap="${latest_ada_bootstrap#dev-lang/ada-bootstrap-}"
+			latest_ada_bootstrap=$(ver_cut 1 ${latest_ada_bootstrap})
+			ada_bootstrap=${latest_ada_bootstrap}
+
+			# TODO: Figure out ada-bootstrap versioning/slots
+			export PATH="${BROOT}/usr/lib/ada-bootstrap/bin:${PATH}"
+
+			eend 0
+			break
+		else
+			eend 1
+		fi
+	fi
+
+	# As a last resort, try dev-lang/gnat-gpl.
+	if ver_test ${ada_bootstrap} -gt ${PV} || [[ -z ${ada_bootstrap} ]] ; then
+		ebegin "Testing fallback dev-lang/gnat-gpl for Ada"
 		if has_version -b "dev-lang/gnat-gpl" ; then
 			ada_bootstrap=10
 			eend 0
@@ -866,12 +893,9 @@ toolchain_setup_ada() {
 	# TODO: Source a newer, or build our own, bootstrap tarball (bug #940472).
 	if [[ -z ${ada_bootstrap} ]] ; then
 		eerror "Couldn't find a suitable GNAT compiler for Ada!"
-		eerror "Please try installing dev-lang/gnat-gpl."
+		eerror "Please try installing dev-lang/ada-bootstrap or failing that, dev-lang/gnat-gpl."
 		eerror "For other platforms, you may need to use crossdev."
-		die "Fallback ada-bootstrap path not yet implemented!"
-
-		#einfo "Using bootstrap GNAT compiler..."
-		#export PATH="${BROOT}/opt/ada-bootstrap-${GCCMAJOR}/bin:${PATH}"
+		die "Couldn't find an Ada bootstrap compiler!"
 	fi
 
 	cat <<-"EOF" > "${T}"/ada.spec || die
