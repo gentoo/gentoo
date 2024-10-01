@@ -85,7 +85,7 @@ src_prepare() {
 
 	gnatbase=$(basename ${GCC})
 	gnatpath=$(dirname ${GCC})
-	GNATMAKE=${gnatbase/gcc/gnatmake}
+	export GNATMAKE=${gnatbase/gcc/gnatmake}
 	if [[ ${gnatpath} != "." ]] ; then
 		GNATMAKE="${gnatpath}/${GNATMAKE}"
 	fi
