@@ -650,7 +650,10 @@ kernel-install_extract_from_uki() {
 	local uki=${2}
 	local out=${3}
 
-	$(tc-getOBJCOPY) "${uki}" --dump-section ".${extract_type}=${out}" ||
+	# objcopy overwrites input if there is no output, dump the output in T.
+	# We unfortunately cannot use /dev/null here
+	$(tc-getOBJCOPY) "${uki}" "${T}/dump.efi" \
+		--dump-section ".${extract_type}=${out}" ||
 		die "Failed to extract ${extract_type}"
 	chmod 644 "${out}" || die
 }
