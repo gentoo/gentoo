@@ -1,0 +1,63 @@
+diff '--color=auto' -ur qmapshack-1f009ac0be1d1c2a4c31aa1283f4009e88685d34.orig/CMakeLists.txt qmapshack-1f009ac0be1d1c2a4c31aa1283f4009e88685d34/CMakeLists.txt
+--- qmapshack-1f009ac0be1d1c2a4c31aa1283f4009e88685d34.orig/CMakeLists.txt	2024-09-30 20:02:57.701618381 +0200
++++ qmapshack-1f009ac0be1d1c2a4c31aa1283f4009e88685d34/CMakeLists.txt	2024-09-30 20:05:59.159600329 +0200
+@@ -200,9 +200,9 @@
+ 
+ if(USE_QT6DBus)
+     find_package(Qt6DBus REQUIRED)
+-    if(Qt5DBus_FOUND)
++    if(Qt6DBus_FOUND)
+         add_definitions(-DHAVE_DBUS)
+-    endif(Qt5DBus_FOUND)
++    endif(Qt6DBus_FOUND)
+ endif(USE_QT6DBus)
+ 
+ # Everything included. Let's finetune the mess a bit more
+diff '--color=auto' -ur qmapshack-1f009ac0be1d1c2a4c31aa1283f4009e88685d34.orig/src/qmapshack/CMakeLists.txt qmapshack-1f009ac0be1d1c2a4c31aa1283f4009e88685d34/src/qmapshack/CMakeLists.txt
+--- qmapshack-1f009ac0be1d1c2a4c31aa1283f4009e88685d34.orig/src/qmapshack/CMakeLists.txt	2024-09-30 20:02:57.687618460 +0200
++++ qmapshack-1f009ac0be1d1c2a4c31aa1283f4009e88685d34/src/qmapshack/CMakeLists.txt	2024-09-30 20:06:51.470306845 +0200
+@@ -368,12 +368,12 @@
+ )
+ 
+ 
+-if(Qt5DBus_FOUND)
++if(Qt6DBus_FOUND)
+ set( SRCS
+     ${SRCS}
+     device/CDeviceWatcherLinux.cpp
+ )
+-endif(Qt5DBus_FOUND)
++endif(Qt6DBus_FOUND)
+ 
+ 
+ if (APPLE)
+@@ -746,12 +746,12 @@
+ )
+ 
+ 
+-if(Qt5DBus_FOUND)
++if(Qt6DBus_FOUND)
+ set( HDRS
+     ${HDRS}
+     device/CDeviceWatcherLinux.h
+ )
+-endif(Qt5DBus_FOUND)
++endif(Qt6DBus_FOUND)
+ 
+ 
+ if(APPLE)
+@@ -977,11 +977,11 @@
+     )
+ endif(${DEVELOPMENT_VERSION})
+ 
+-if(Qt5DBus_FOUND)
++if(Qt6DBus_FOUND)
+     set(DBUS_LIB Qt6::DBus)
+-else(Qt5DBus_FOUND)
++else(Qt6DBus_FOUND)
+     set(DBUS_LIB)
+-endif(Qt5DBus_FOUND)
++endif(Qt6DBus_FOUND)
+ 
+ target_link_libraries(${APPLICATION_NAME}
+     Qt6::Widgets
