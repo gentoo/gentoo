@@ -235,13 +235,6 @@ kde-frameworks/kross
 app-text/kjots:5
 kde-frameworks/kuserfeedback:5
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-08-31)
-# This is so old that it was only kept alive as KF5-based snapshot of an
-# upstream git branch containing a single "Initial port to KF/Qt5 (back in
-# 2017). That was never merged to master, project archived for a long time.
-# Bug #759772. Removal on 2024-09-31.
-media-gfx/kcoloredit
-
 # Florian Schmaus <flow@gentoo.org> (2024-08-23)
 # Has a serious bug that causes synced directories to end up world read-
 # and writeable. See https://github.com/nextcloud/desktop/issues/6863
