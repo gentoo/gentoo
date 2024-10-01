@@ -2171,8 +2171,10 @@ toolchain_src_test() {
 	(
 		# Workaround our -Wformat-security default which breaks
 		# various tests as it adds unexpected warning output.
-		GCC_TESTS_CFLAGS+=" -Wno-format-security -Wno-format"
-		GCC_TESTS_CXXFLAGS+=" -Wno-format-security -Wno-format"
+		if tc_version_is_at_least 13 ; then
+			GCC_TESTS_CFLAGS+=" -Wno-format-security -Wno-format"
+			GCC_TESTS_CXXFLAGS+=" -Wno-format-security -Wno-format"
+		fi
 
 		# Workaround our -Wtrampolines default which breaks
 		# tests too.
@@ -2182,8 +2184,10 @@ toolchain_src_test() {
 		GCC_TESTS_LDFLAGS+=" -Wl,--no-warn-execstack"
 		# Avoid confusing tests like Fortran/C interop ones where
 		# CFLAGS are used.
-		GCC_TESTS_CFLAGS+=" -Wno-complain-wrong-lang"
-		GCC_TESTS_CXXFLAGS+=" -Wno-complain-wrong-lang"
+		if tc_version_is_at_least 13 ; then
+			GCC_TESTS_CFLAGS+=" -Wno-complain-wrong-lang"
+			GCC_TESTS_CXXFLAGS+=" -Wno-complain-wrong-lang"
+		fi
 
 		# Issues with Ada tests:
 		# gnat.dg/align_max.adb
