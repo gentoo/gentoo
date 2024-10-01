@@ -884,7 +884,7 @@ toolchain_setup_ada() {
 		ebegin "Testing fallback dev-lang/gnat-gpl for Ada"
 		if has_version -b "dev-lang/gnat-gpl" ; then
 			ada_bootstrap=10
-			ada_bootstrap=gcc
+			ada_bootstrap_type=gcc
 			eend 0
 		else
 			eend 1
