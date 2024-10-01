@@ -186,6 +186,14 @@ src_install() {
 	# -j1 to match bug #906155, other packages may be fragile too
 	emake -C "${WORKDIR}"/build -j1 MAKEINFO=: V=1 DESTDIR="${D}" install
 
+	# Make `gcc-config`-style symlinks
+	local tool
+	cd "${ED}"/usr/lib/ada-bootstrap/bin || die
+	for tool in gnat{,bind,chop,clean,kr,link,ls,make,name,prep} ; do
+		ln -s ${tool} ${CBUILD}-${tool} || die
+		ln -s ${tool} ${CBUILD}-${tool}-10 || die
+	done
+
 	# Delete libdep.a, which has a colliding name and is useless for bpf,
 	# which does not make use of cross-library dependencies: the libdep.a
 	# for the native binutils will do.
