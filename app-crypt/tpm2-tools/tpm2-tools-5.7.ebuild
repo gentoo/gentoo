@@ -38,6 +38,7 @@ BDEPEND="virtual/pkgconfig
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.6-Makefile-am-Dont-require-pandoc-for-tests.patch"
+	"${FILESDIR}/${PN}-5.7-tests-Eliminate-dependency-on-which.patch"
 )
 
 python_check_deps() {
