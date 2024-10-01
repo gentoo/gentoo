@@ -254,10 +254,6 @@ kde-misc/ktoshiba
 # functional in KIO-6 revdeps. Removal on 2024-09-29.
 kde-misc/openofficeorg-thumbnail
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-08-29)
-# Long unmaintained Plasma 5-only desktop widget. Removal on 2024-09-29.
-kde-misc/plasma-applet-network-monitor
-
 # Florian Schmaus <flow@gentoo.org> (2024-08-23)
 # Has a serious bug that causes synced directories to end up world read-
 # and writeable. See https://github.com/nextcloud/desktop/issues/6863
