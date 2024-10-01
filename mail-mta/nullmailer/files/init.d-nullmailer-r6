@@ -42,8 +42,21 @@ checkconfig() {
 	fi
 }
 
+checkdirtree() {
+	checkpath --directory \
+		  --owner nullmail:nullmail \
+		  --mode 0770 \
+		  /var/spool/nullmailer/{failed,queue,tmp} \
+		  /var/log/nullmailer
+	checkpath --pipe \
+		  --owner nullmail:nullmail \
+		  --mode 0660 \
+		  /var/spool/nullmailer/trigger
+}
+
 start_pre() {
 	checkconfig
+	checkdirtree # Account for setups where /var/spool/nullmailer is on tmpfs
 }
 
 stop_pre() {
