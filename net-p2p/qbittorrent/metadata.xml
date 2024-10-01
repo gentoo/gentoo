@@ -11,7 +11,11 @@
 		</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">qbittorrent/qBittorrent</remote-id>
+		<bugs-to>https://github.com/qbittorrent/qBittorrent/issues</bugs-to>
 		<changelog>https://www.qbittorrent.org/news</changelog>
+		<doc>https://github.com/qbittorrent/qBittorrent/wiki</doc>
+		<remote-id type="github">qbittorrent/qBittorrent</remote-id>
+		<!-- Sourceforge hosts the distfiles.
+		Ignore the "redirection" and "missing remote-id" warnings -->
 	</upstream>
 </pkgmetadata>
