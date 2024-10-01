@@ -585,7 +585,7 @@ cargo_env() {
 	local -x CARGO_BUILD_TARGET=$(rust_abi)
 	local TRIPLE=${CARGO_BUILD_TARGET//-/_}
 	local TRIPLE=${TRIPLE^^} LD_A=( $(tc-getCC) ${LDFLAGS} )
-	local -x CARGO_TARGET_"${TRIPLE}"_RUSTFLAGS="-C strip=none -C linker=${LD_A[0]}"
+	local -Ix CARGO_TARGET_"${TRIPLE}"_RUSTFLAGS+=" -C strip=none -C linker=${LD_A[0]}"
 	[[ ${#LD_A[@]} -gt 1 ]] && local CARGO_TARGET_"${TRIPLE}"_RUSTFLAGS+="$(printf -- ' -C link-arg=%s' "${LD_A[@]:1}")"
 	local CARGO_TARGET_"${TRIPLE}"_RUSTFLAGS+=" ${RUSTFLAGS}"
 
