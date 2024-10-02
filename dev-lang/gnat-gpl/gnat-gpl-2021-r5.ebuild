@@ -35,7 +35,7 @@ GCC_TARBALL_SRC_URI="
 		)
 	)"
 
-inherit toolchain-funcs toolchain
+inherit flag-o-matic toolchain-funcs toolchain
 
 DESCRIPTION="GNAT Ada Compiler - GPL version"
 HOMEPAGE="http://libre.adacore.com/"
@@ -145,7 +145,15 @@ src_prepare() {
 
 src_configure() {
 	export PATH=${PWD}/bin:${PATH}
+
+	# This version is GCC 4.7.4 with a bolted-on newer GNAT; be very
+	# conservative, we just want it to build for bootstrapping proper
+	# sys-devel/gcc[ada]. We don't need it to be fast.
+	strip-flags
+	strip-unsupported-flags
+	filter-lto
 	downgrade_arch_flags "$(gcc-version)"
+
 	toolchain_src_configure
 }
 
