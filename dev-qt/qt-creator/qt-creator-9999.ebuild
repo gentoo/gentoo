@@ -77,6 +77,7 @@ COMMON_DEPEND="
 	tracing? (
 		app-arch/zstd:=
 		dev-libs/elfutils
+		>=dev-qt/qtcharts-${QT_PV}
 		>=dev-qt/qtshadertools-${QT_PV}
 	)
 "
@@ -162,6 +163,7 @@ src_configure() {
 		# to plugins with additional build-time dependencies.
 		-DBUILD_LIBRARY_TRACING=$(usex tracing) # qml+perfprofiler,ctfvisual
 		-DBUILD_EXECUTABLE_PERFPARSER=$(usex tracing)
+		-DBUILD_PLUGIN_APPSTATISTICSMONITOR=$(usex tracing)
 
 		-DBUILD_PLUGIN_CLANGCODEMODEL=$(usex clang)
 		-DBUILD_PLUGIN_CLANGFORMAT=$(usex clang)
@@ -267,6 +269,7 @@ Qt Quick:
 - QmlProfiler (USE=tracing)
 
 Utilities:
+- AppStatisticsMonitor (USE=tracing)
 - Autotest (dev-cpp/catch, dev-cpp/gtest, or dev-libs/boost if used)
 - Conan (dev-util/conan)
 - Docker (app-containers/docker)
