@@ -28,6 +28,7 @@ RDEPEND="
 	app-misc/lockfile-progs
 	dev-lang/perl
 	dev-perl/mime-construct
+	sys-apps/debianutils
 	virtual/mailx
 	cron? ( sys-apps/util-linux )
 "
@@ -67,7 +68,7 @@ src_install() {
 
 	if use cron; then
 		exeinto /etc/cron.hourly
-		newexe "${FILESDIR}"/"${PN}"-r4.cron ${PN}
+		newexe "${FILESDIR}"/"${PN}"-r5.cron ${PN}
 		insinto /etc/cron.d
 		newins "${FILESDIR}"/${PN}.cron.d ${PN}
 		DOC_CONTENTS="${DOC_CONTENTS}\n
