@@ -34,7 +34,7 @@ S="${WORKDIR}"/${MYP}
 
 LICENSE="GPL-2 GPL-3"
 SLOT="0" # TODO: slot based on GCC version used
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 RESTRICT="test"
 
 BDEPEND="
