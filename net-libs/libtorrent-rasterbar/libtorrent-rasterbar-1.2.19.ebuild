@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit cmake python-single-r1
 
@@ -14,6 +14,7 @@ SRC_URI="https://github.com/arvidn/libtorrent/releases/download/v${PV}/${P}.tar.
 LICENSE="BSD"
 SLOT="0/10"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc x86"
+
 IUSE="+dht debug python ssl test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
@@ -22,18 +23,14 @@ DEPEND="
 	dev-libs/boost:=
 	python? (
 		${PYTHON_DEPS}
-		$(python_gen_cond_dep '
-			dev-libs/boost[python,${PYTHON_USEDEP}]
-		')
+		$(python_gen_cond_dep 'dev-libs/boost[python,${PYTHON_USEDEP}]')
 	)
 	ssl? ( dev-libs/openssl:= )
 "
 RDEPEND="${DEPEND}"
-BDEPEND="python? (
-		$(python_gen_cond_dep '
-			dev-python/setuptools[${PYTHON_USEDEP}]
-		')
-	)"
+BDEPEND="
+	python? ( $(python_gen_cond_dep 'dev-python/setuptools[${PYTHON_USEDEP}]') )
+"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -43,11 +40,11 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
 		-Dbuild_examples=OFF
+		-Dbuild_tests=$(usex test ON OFF)
 		-Ddht=$(usex dht ON OFF)
 		-Dencryption=$(usex ssl ON OFF)
 		-Dlogging=$(usex debug ON OFF)
 		-Dpython-bindings=$(usex python ON OFF)
-		-Dbuild_tests=$(usex test ON OFF)
 	)
 
 	# We need to drop the . from the Python version to satisfy Boost's
