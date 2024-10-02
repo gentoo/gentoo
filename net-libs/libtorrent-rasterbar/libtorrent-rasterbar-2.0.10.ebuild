@@ -14,6 +14,7 @@ SRC_URI="https://github.com/arvidn/libtorrent/releases/download/v${PV}/${P}.tar.
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc x86"
+
 IUSE="+dht debug examples gnutls python ssl test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
@@ -29,23 +30,19 @@ RDEPEND="
 	${DEPEND}
 	python? (
 		${PYTHON_DEPS}
-		$(python_gen_cond_dep '
-			dev-libs/boost[python,${PYTHON_USEDEP}]
-		')
+		$(python_gen_cond_dep 'dev-libs/boost[python,${PYTHON_USEDEP}]')
 	)
 "
 BDEPEND="
 	dev-util/patchelf
 	python? (
 		${PYTHON_DEPS}
-		$(python_gen_cond_dep '
-			dev-python/setuptools[${PYTHON_USEDEP}]
-		')
+		$(python_gen_cond_dep 'dev-python/setuptools[${PYTHON_USEDEP}]')
 	)
-	test? (
-		${PYTHON_DEPS}
-	)
+	test? (	${PYTHON_DEPS} )
 "
+
+DOCS=( AUTHORS README ChangeLog )
 
 pkg_setup() {
 	# python required for tests due to webserver.py
@@ -56,15 +53,15 @@ pkg_setup() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_CXX_STANDARD=17
+		-DCMAKE_CXX_STANDARD=17 # works with 20, change when revbumping
 		-DBUILD_SHARED_LIBS=ON
 		-Dbuild_examples=$(usex examples)
+		-Dbuild_tests=$(usex test)
 		-Ddht=$(usex dht)
 		-Dencryption=$(usex ssl)
 		-Dgnutls=$(usex gnutls)
 		-Dlogging=$(usex debug)
 		-Dpython-bindings=$(usex python)
-		-Dbuild_tests=$(usex test)
 	)
 
 	# We need to drop the . from the Python version to satisfy Boost's
