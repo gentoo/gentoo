@@ -1040,9 +1040,10 @@ toolchain_src_configure() {
 		export ac_cv_std_swap_in_utility=no
 	fi
 
-	einfo "CFLAGS=\"${CFLAGS}\""
-	einfo "CXXFLAGS=\"${CXXFLAGS}\""
-	einfo "LDFLAGS=\"${LDFLAGS}\""
+	local flag
+	for flag in $(all-flag-vars) ; do
+		einfo "${flag}=\"${!flag}\""
+	done
 
 	local confgcc=( --host=${CHOST} )
 
