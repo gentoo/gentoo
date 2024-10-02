@@ -83,9 +83,6 @@ src_prepare() {
 }
 
 src_install() {
-	gunzip usr/share/doc/spotify-client/changelog.gz || die
-	dodoc usr/share/doc/spotify-client/changelog
-
 	SPOTIFY_PKG_HOME=usr/share/spotify
 	insinto /usr/share/pixmaps
 	doins ${SPOTIFY_PKG_HOME}/icons/*.png
