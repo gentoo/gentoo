@@ -12,7 +12,7 @@
 		<flag name="plugin-dev">Install the 'Devel' component needed to build external Qt Creator plugins</flag>
 		<flag name="qmldesigner">Build QmlDesigner and related plugins (Insight, StudioWelcome)</flag>
 		<flag name="serialterminal">Build the serial terminal plugin</flag>
-		<flag name="tracing">Build plugins requiring tracing capabilities (CtfVisualizer, PerfProfiler, QmlProfiler)</flag>
+		<flag name="tracing">Build plugins for tracing requiring extra dependencies (AppStatisticsMonitor, CtfVisualizer, PerfProfiler, QmlProfiler)</flag>
 		<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> with the help USE rather than bundled litehtml</flag>
 	</use>
 	<upstream>
