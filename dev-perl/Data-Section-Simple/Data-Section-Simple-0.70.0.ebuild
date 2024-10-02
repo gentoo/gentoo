@@ -16,5 +16,6 @@ BDEPEND="
 	>=virtual/perl-ExtUtils-MakeMaker-6.780.0
 	test? (
 		>=virtual/perl-Test-Simple-0.960.0
+		dev-perl/Test-Requires
 	)
 "
