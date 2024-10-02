@@ -9,7 +9,7 @@ DESCRIPTION="Qt-based audio player with winamp/xmms skins support"
 HOMEPAGE="https://qmmp.ylsoftware.com"
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="https://qmmp.ylsoftware.com/files/${PN}/$(ver_cut 1-2)/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 else
 	inherit subversion
 	QMMP_DEV_BRANCH="1.3"
@@ -92,10 +92,6 @@ DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/linguist-tools:5"
 
 DOCS=( AUTHORS ChangeLog README )
-
-PATCHES=(
-	"${FILESDIR}/${PN}-1.6.0-udisks_plugin.patch"
-)
 
 src_prepare() {
 	if has_version dev-libs/libcdio-paranoia ; then
