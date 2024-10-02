@@ -14,7 +14,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 IUSE="audit bluetooth +concheck connection-sharing debug dhclient dhcpcd elogind gnutls +gtk-doc +introspection iptables iwd psl libedit +nss nftables +modemmanager ofono ovs policykit +ppp resolvconf selinux syslog systemd teamd test +tools vala +wext +wifi"
 RESTRICT="!test? ( test )"
