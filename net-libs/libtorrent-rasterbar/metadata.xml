@@ -2,12 +2,26 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<longdescription>
+		Libtorrent-rasterbar is a fork of libtorrent, a C++ bittorrent
+		implementation. It's main goals are to be efficient and easy to use.
+
+		It supports many extensions as microTP, DHT extensions, UDP
+		trackers, HTTP seeding and more. Besides that it has bindings
+		for Go, Java, Python and Node.
+	</longdescription>
+	<use>
+		<flag name="dht">Enable support for Mainline DHT (distributed hash table)</flag>
+		<flag name="examples">Build and install example binaries</flag>
+	</use>
 	<upstream>
-		<remote-id type="google-code">libtorrent</remote-id>
-		<remote-id type="sourceforge">libtorrent</remote-id>
+		<maintainer status="active">
+			<email>arvid@libtorrent.org</email>
+			<name>Arvid Norberg</name>
+		</maintainer>
+		<bugs-to>https://github.com/arvidn/libtorrent/issues</bugs-to>
+		<changelog>https://raw.githubusercontent.com/arvidn/libtorrent/refs/heads/RC_2_0/ChangeLog</changelog>
+		<doc>https://www.libtorrent.org/features.html</doc>
 		<remote-id type="github">arvidn/libtorrent</remote-id>
 	</upstream>
-	<use>
-		<flag name="dht">Enable DHT (distributed hash table) support</flag>
-	</use>
 </pkgmetadata>
