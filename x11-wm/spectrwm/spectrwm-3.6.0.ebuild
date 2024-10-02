@@ -11,7 +11,7 @@ S="${WORKDIR}/${PN}-${PN^^}_${PV//./_}"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="
 	elibc_musl? ( sys-libs/queue-standalone )
