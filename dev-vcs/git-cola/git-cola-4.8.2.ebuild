@@ -15,21 +15,13 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+pyqt5 pyqt6 pyside2 pyside6"
-
-REQUIRED_USE="
-	|| ( pyqt5 pyqt6 pyside2 pyside6 )
-"
 
 RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/polib[${PYTHON_USEDEP}]
 		dev-python/pygments[${PYTHON_USEDEP}]
-		pyqt5? ( dev-python/QtPy[pyqt5,gui,network,${PYTHON_USEDEP}] )
-		pyqt6? ( dev-python/QtPy[pyqt6,gui,network,${PYTHON_USEDEP}] )
-		pyside2? ( dev-python/QtPy[pyside2,gui,network,${PYTHON_USEDEP}] )
-		pyside6? ( dev-python/QtPy[pyside6,gui,network,${PYTHON_USEDEP}] )
+		dev-python/QtPy[pyqt6,gui,network,${PYTHON_USEDEP}]
 		dev-python/send2trash[${PYTHON_USEDEP}]
 	')
 	dev-vcs/git
@@ -39,12 +31,8 @@ BDEPEND="
 	$(python_gen_cond_dep "
 		dev-python/setuptools-scm[\${PYTHON_USEDEP}]
 		test? (
-			${VIRTUALX_DEPEND}
 			dev-python/pytest[\${PYTHON_USEDEP}]
-			pyqt5? ( dev-python/QtPy[\${PYTHON_USEDEP},pyqt5,gui,network] )
-			pyqt6? ( dev-python/QtPy[\${PYTHON_USEDEP},pyqt6,gui,network] )
-			pyside2? ( dev-python/QtPy[\${PYTHON_USEDEP},pyside2,gui,network] )
-			pyside6? ( dev-python/QtPy[\${PYTHON_USEDEP},pyside6,gui,network] )
+			dev-python/QtPy[pyqt6,gui,network,\${PYTHON_USEDEP}]
 		)
 	")
 "
@@ -56,7 +44,7 @@ distutils_enable_tests pytest
 src_prepare() {
 	sed -i "s|doc/git-cola =|doc/${PF} =|" setup.cfg || die
 	# remove bundled qtpy and polib
-	rm -Rf "${S}"/qtpy "${S}"/cola/polib.py || die
+	rm -Rf qtpy cola/polib.py || die
 	distutils-r1_src_prepare
 }
 
@@ -78,11 +66,7 @@ src_install() {
 	distutils-r1_src_install
 
 	# patch the binaries to use desired qtpy backend
-	local qt_api=$(use pyqt5 && echo "pyqt5" || (
-		use pyqt6 && echo "pyqt6" || (
-		use pyside2 && echo "pyside2" || echo "pyside6"
-	)))
-	sed -i "s|import sys|import sys\nimport os\nos.environ['QT_API'] = '${qt_api}'\n|" "${D}"/usr/bin/* || die
+	sed -i "s|import sys|import sys\nimport os\nos.environ['QT_API'] = 'pyqt6'\n|" "${D}"/usr/bin/* || die
 
 	readme.gentoo_create_doc
 }
