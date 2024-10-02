@@ -75,6 +75,9 @@ PATCHES=(
 
 	# backward compatibility with <dev-libs/libfmt-11
 	"${FILESDIR}/${PN}-3.9.0-older-libfmt.patch"
+
+	# see https://github.com/rspamd/rspamd/issues/5163
+	"${FILESDIR}/${P}-libucl-type.patch"
 )
 
 src_prepare() {
