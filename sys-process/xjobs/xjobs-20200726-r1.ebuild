@@ -9,7 +9,7 @@ SRC_URI="https://www.maier-komor.de/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="examples"
 
 # The ./configure script uses sys-apps/which to locate flex...
