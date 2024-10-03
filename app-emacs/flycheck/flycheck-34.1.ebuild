@@ -34,6 +34,7 @@ BDEPEND="
 
 ELISP_REMOVE="
 	test/specs/test-documentation.el
+	test/specs/test-gpg.el
 	test/specs/test-melpa-package.el
 "
 
