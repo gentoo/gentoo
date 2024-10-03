@@ -1,0 +1,50 @@
+From cb5ba83c0ba95eae0026afdc8ae0312b8e51f647 Mon Sep 17 00:00:00 2001
+From: Zac Medico <zmedico@gmail.com>
+Date: Wed, 2 Oct 2024 16:48:38 -0700
+Subject: [PATCH] Eliminate non-public test.support usage
+
+This fixes the "No module named test" issue reported here:
+
+https://bugs.gentoo.org/940579
+---
+ src/test/test_dbapi.py | 17 ++++++-----------
+ 1 file changed, 6 insertions(+), 11 deletions(-)
+
+diff --git a/src/test/test_dbapi.py b/src/test/test_dbapi.py
+index df32f2f..cb756d2 100644
+--- a/src/test/test_dbapi.py
++++ b/src/test/test_dbapi.py
+@@ -24,13 +24,6 @@
+ from __future__ import print_function
+ 
+ import sys
+-try:
+-    import test.support.warnings_helper as test_support
+-except ImportError:
+-    try:
+-        import test.support as test_support
+-    except ImportError:
+-        from test import test_support
+ import unittest
+ 
+ import pyrqlite.dbapi2 as sqlite
+@@ -571,10 +564,12 @@ class ConstructorTests(unittest.TestCase):
+         ts = sqlite.TimestampFromTicks(42)
+ 
+     def test_CheckBinary(self):
+-        with (test_support.check_warnings() if sys.version_info[0] >= 3
+-            else test_support.check_py3k_warnings()):
+-            b = sqlite.Binary(chr(0).encode() + b"'"
+-                if sys.version_info[0] >= 3 else chr(0) + b"'")
++        self.assertEqual(
++            b"\0'",
++            sqlite.Binary(
++                chr(0).encode() + b"'" if sys.version_info[0] >= 3 else chr(0) + b"'"
++            ),
++        )
+ 
+ class ExtensionTests(unittest.TestCase):
+     @classmethod
+-- 
+2.45.2
+
