@@ -22,7 +22,17 @@ fi
 LICENSE="BSD-2"
 SLOT="0"
 
+PATCHES=( "${FILESDIR}/${PN}-3.22-ncursesw.patch" )
+
 DOCS=( README{,-ja}.md document )
+
+src_prepare() {
+	if [[ -f edlog ]] ; then
+		rm edlog || die
+	fi
+
+	default
+}
 
 src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
