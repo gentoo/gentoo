@@ -295,6 +295,10 @@ src_configure() {
 		# - Broken at runtime without Java (https://sourceware.org/bugzilla/show_bug.cgi?id=29479)
 		# - binutils-config (and this ebuild?) needs adaptation first (https://bugs.gentoo.org/865113)
 		$(use_enable gprofng)
+
+		# Enables colored disassembly by default (equivalent to passing
+		# --disassembler-color=terminal to all objdump invocations).
+		--enable-colored-disassembly
 	)
 
 	case ${CTARGET} in
