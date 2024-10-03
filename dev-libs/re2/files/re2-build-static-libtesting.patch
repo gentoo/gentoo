@@ -1,0 +1,19 @@
+Bug: https://bugs.gentoo.org/940734
+
+Building with CMake, the benchmark binary is linked with libtesting.so shared
+library.  This means that libtesting.so needs to be installed for runtime symbol
+resolution.  Better to build libtesting.a statically just like the Makefile does.
+Also, quiet QA warning about an insecure RPATH.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -182,7 +182,8 @@
+       util/pcre.cc
+       )
+ 
+-  add_library(testing ${TESTING_SOURCES})
++  add_library(testing STATIC ${TESTING_SOURCES})
++  set(CMAKE_SKIP_RPATH TRUE)
+   if(BUILD_SHARED_LIBS AND WIN32)
+     target_compile_definitions(testing PRIVATE -DRE2_BUILD_TESTING_DLL)
+   endif()
