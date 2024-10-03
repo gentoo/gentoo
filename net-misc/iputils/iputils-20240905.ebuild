@@ -55,6 +55,10 @@ if [[ ${PV} == 9999 ]] ; then
 	"
 fi
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-20240905-man-pages.patch
+)
+
 src_prepare() {
 	default
 
