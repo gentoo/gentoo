@@ -132,7 +132,6 @@ BDEPEND="${PYTHON_DEPS}
 		$(python_gen_any_dep '
 			dev-python/python-dbusmock[${PYTHON_USEDEP}]
 		')
-		x11-apps/setxkbmap
 	)
 "
 
