@@ -10,7 +10,6 @@ SRC_URI="https://lfs.nabijaczleweli.xyz/0022-OSSP.org-mirror/ftp.ossp.org/ossp-f
 LICENSE="mm"
 SLOT="1.2"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE=""
 
 src_prepare() {
 	default
