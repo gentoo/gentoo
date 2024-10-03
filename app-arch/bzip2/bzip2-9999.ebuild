@@ -23,6 +23,10 @@ PDEPEND="
 	app-alternatives/bzip2
 "
 
+BDEPEND="
+	dev-python/pytest
+"
+
 multilib_src_configure() {
 	local emesonargs=(
 		-Ddefault_library=$(usex static-libs both shared)
