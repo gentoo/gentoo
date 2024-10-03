@@ -8,7 +8,7 @@ LLVM_OPTIONAL=1
 CARGO_OPTIONAL=1
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit flag-o-matic llvm-r1 meson-multilib python-any-r1 linux-info rust-toolchain toolchain-funcs
+inherit flag-o-matic llvm-r1 meson-multilib python-any-r1 linux-info rust-toolchain
 
 MY_P="${P/_/-}"
 
@@ -307,7 +307,7 @@ multilib_src_configure() {
 	local emesonargs=()
 
 	# bug #932591 and https://gitlab.freedesktop.org/mesa/mesa/-/issues/11140
-	tc-is-gcc && [[ $(gcc-major-version) -ge 14 ]] && filter-lto
+	filter-lto
 
 	local platforms
 	use X && platforms+="x11"
