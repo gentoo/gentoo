@@ -844,10 +844,11 @@ toolchain_setup_ada() {
 	# GNAT can usually be built using the last major version and
 	# the current version, at least.
 	#
-	# We always prefer the version being built if possible
-	# as it has the greatest chance of success. Failing that,
-	# try GCC 10 and iterate upwards.
-	for ada_candidate in ${SLOT} $(seq 10 ${latest_gcc}) ; do
+	# Order of preference (descending):
+	# 1) Match the version being built;
+	# 2) Iterate downwards from the version being built;
+	# 3) Iterate upwards from the version being built to the greatest version installed.
+	for ada_candidate in ${SLOT} $(seq -1 $((${SLOT} - 1)) 10) $(seq $((${SLOT} + 1)) ${latest_gcc}) ; do
 		has_version -b "sys-devel/gcc:${ada_candidate}" || continue
 
 		ebegin "Testing sys-devel/gcc:${ada_candidate} for Ada"
@@ -1005,10 +1006,11 @@ toolchain_setup_d() {
 
 	local d_bootstrap
 	local d_candidate
-	# We always prefer the version being built if possible
-	# as it has the greatest chance of success. Failing that,
-	# try GCC 10 and iterate upwards.
-	for d_candidate in ${SLOT} $(seq 10 ${latest_gcc}) ; do
+	# Order of preference (descending):
+	# 1) Match the version being built;
+	# 2) Iterate downwards from the version being built;
+	# 3) Iterate upwards from the version being built to the greatest version installed.
+	for d_candidate in ${SLOT} $(seq -1 $((${SLOT} - 1)) 10) $(seq $((${SLOT} + 1)) ${latest_gcc}) ; do
 		has_version -b "sys-devel/gcc:${d_candidate}" || continue
 
 		ebegin "Testing sys-devel/gcc:${d_candidate} for D"
