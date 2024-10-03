@@ -62,7 +62,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-unbundle-deps.patch"
 	"${FILESDIR}/${PN}-4.2.0-dynamic_cast-crash.patch"
 	"${FILESDIR}/${PN}-4.4.0-include.patch"
-	"${FILESDIR}/${PN}-4.4.0-fix-main-toolbar-and-menubar.patch"
 	"${FILESDIR}/${PN}-4.5.0-missing-include.patch"
 )
 
