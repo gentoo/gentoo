@@ -20,8 +20,8 @@ SRC_URI="
 	https://github.com/siemens/kas/archive/refs/tags/${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 	test? (
-		https://dev.gentoo.org/~someone/dist/${MY_P}.gitbundle
-		https://dev.gentoo.org/~someone/dist/evolve.hgbundle
+		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${MY_P}.gitbundle
+		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/evolve.hgbundle
 	)
 "
 
@@ -35,12 +35,13 @@ RDEPEND="
 	>=dev-python/jsonschema-2.5.0[${PYTHON_USEDEP}]
 	>=dev-python/kconfiglib-14.1.0[${PYTHON_USEDEP}]
 	>=dev-python/GitPython-3.1.0[${PYTHON_USEDEP}]
-	dev-tcltk/snack[python,${PYTHON_USEDEP}]
+	dev-libs/newt[${PYTHON_USEDEP}]
 "
 
 BDEPEND="
 	${RDEPEND}
 	test? (
+		dev-vcs/git
 		dev-vcs/mercurial
 	)
 "
@@ -48,13 +49,12 @@ BDEPEND="
 distutils_enable_tests pytest
 
 src_test() {
+	export KAS_REPO_REF_DIR=${T}
 
-		export KAS_REPO_REF_DIR=${T}
+	# tests try to clone https://github.com/siemens/kas
+	git clone -q -b master "${DISTDIR}/${MY_P}.gitbundle" "${T}/github.com.siemens.kas.git" || die
+	# tests try to clone https://repo.mercurial-scm.org/evolve
+	hg clone -q "${DISTDIR}/evolve.hgbundle" "${T}/repo.mercurial-scm.org.evolve" || die
 
-		# tests try to clone https://github.com/siemens/kas
-		git clone -q -b master "${DISTDIR}/${MY_P}.gitbundle" "${T}/github.com.siemens.kas.git" || die
-		# tests try to clone https://repo.mercurial-scm.org/evolve
-		hg clone -q "${DISTDIR}/evolve.hgbundle" "${T}/repo.mercurial-scm.org.evolve" || die
-
-		distutils-r1_src_test
+	distutils-r1_src_test
 }
