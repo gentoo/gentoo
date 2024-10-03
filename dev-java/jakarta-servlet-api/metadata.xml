@@ -4,8 +4,12 @@
 	<maintainer type="project">
 		<email>java@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">jakartaee/servlet</remote-id>
+	</upstream>
 	<slots>
 		<slot name="4">provides javax.servlet</slot>
-		<slot name="6">provides jakarta.servlet</slot>
+		<slot name="6">https://jakarta.ee/specifications/servlet/6.0/</slot>
+		<slot name="6.1">https://jakarta.ee/specifications/servlet/6.1/</slot>
 	</slots>
 </pkgmetadata>
