@@ -37,7 +37,7 @@ PATCHES=(
 src_prepare() {
 	cmake_src_prepare
 
-	use ppc && eapply "${FILESDIR}/${PN}-atomic-patch"
+	use ppc && eapply "${FILESDIR}/${PN}-atomic.patch"
 
 	# un-hardcode abseil compiler flags
 	sed -i \
