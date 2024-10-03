@@ -1,0 +1,42 @@
+# This file is fetched from https://d2mfgivbiy2fiw.cloudfront.net/file/data/rwpvsmwwvh35bpcsfw4t/PHID-FILE-mxdzufadfb2lsy24j5mh/D186421.1728057072.diff
+# Bug assigned to this issue is at https://bugzilla.mozilla.org/show_bug.cgi?id=1849070
+# The solution of the issue is at https://phabricator.services.mozilla.com/D186421
+# 
+# Current patch file is introduced by Denis Pronin, email: dannftk@yandex.ru
+
+diff --git a/js/src/builtin/intl/Locale.cpp b/js/src/builtin/intl/Locale.cpp
+--- a/js/src/builtin/intl/Locale.cpp
++++ b/js/src/builtin/intl/Locale.cpp
+@@ -799,12 +799,14 @@
+ 
+ static inline auto FindUnicodeExtensionType(JSLinearString* unicodeExtension,
+                                             UnicodeKey key) {
+   JS::AutoCheckCannotGC nogc;
+   return unicodeExtension->hasLatin1Chars()
+-             ? FindUnicodeExtensionType(unicodeExtension->latin1Chars(nogc),
+-                                        unicodeExtension->length(), key)
++             ? FindUnicodeExtensionType(
++                   reinterpret_cast<const char*>(
++                       unicodeExtension->latin1Chars(nogc)),
++                   unicodeExtension->length(), key)
+              : FindUnicodeExtensionType(unicodeExtension->twoByteChars(nogc),
+                                         unicodeExtension->length(), key);
+ }
+ 
+ // Return the sequence of types for the Unicode extension keyword specified by
+@@ -917,11 +919,13 @@
+ }
+ 
+ static inline auto BaseNameParts(JSLinearString* baseName) {
+   JS::AutoCheckCannotGC nogc;
+   return baseName->hasLatin1Chars()
+-             ? BaseNameParts(baseName->latin1Chars(nogc), baseName->length())
++             ? BaseNameParts(
++                   reinterpret_cast<const char*>(baseName->latin1Chars(nogc)),
++                   baseName->length())
+              : BaseNameParts(baseName->twoByteChars(nogc), baseName->length());
+ }
+ 
+ // Intl.Locale.prototype.maximize ()
+ static bool Locale_maximize(JSContext* cx, const CallArgs& args) {
+

@@ -267,6 +267,7 @@ src_prepare() {
 
 	eapply "${WORKDIR}"/firefox-patches
 	eapply "${WORKDIR}"/spidermonkey-patches
+	eapply "${FILESDIR}"/spidermonkey-${PV}-llvm-clang-18.patch
 
 	default
 
