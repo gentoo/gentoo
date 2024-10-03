@@ -45,3 +45,17 @@ src_configure() {
 
 	qt6-build_src_configure
 }
+
+src_install() {
+	qt6-build_src_install
+
+	if [[ ! -e ${D}${QT6_LIBDIR}/libQt6QuickControls2.so.6 ]]; then #940675
+		eerror "${CATEGORY}/${PF} seems to have been improperly built and"
+		eerror "install was aborted to protect the system. Possibly(?) due"
+		eerror "to a rare portage ordering bug. If using portage, try:"
+		eerror "    emerge -1 qtshadertools:6 qtdeclarative:6"
+		eerror "If that did not resolve the issue, please provide build.log"
+		eerror "on https://bugs.gentoo.org/940675"
+		die "aborting due to incomplete/broken build (see above)"
+	fi
+}
