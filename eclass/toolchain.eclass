@@ -848,7 +848,7 @@ toolchain_setup_ada() {
 	# 1) Match the version being built;
 	# 2) Iterate downwards from the version being built;
 	# 3) Iterate upwards from the version being built to the greatest version installed.
-	for ada_candidate in ${SLOT} $(seq -1 $((${SLOT} - 1)) 10) $(seq $((${SLOT} + 1)) ${latest_gcc}) ; do
+	for ada_candidate in ${SLOT} $(seq $((${SLOT} - 1)) -1 10) $(seq $((${SLOT} + 1)) ${latest_gcc}) ; do
 		has_version -b "sys-devel/gcc:${ada_candidate}" || continue
 
 		ebegin "Testing sys-devel/gcc:${ada_candidate} for Ada"
@@ -1010,7 +1010,7 @@ toolchain_setup_d() {
 	# 1) Match the version being built;
 	# 2) Iterate downwards from the version being built;
 	# 3) Iterate upwards from the version being built to the greatest version installed.
-	for d_candidate in ${SLOT} $(seq -1 $((${SLOT} - 1)) 10) $(seq $((${SLOT} + 1)) ${latest_gcc}) ; do
+	for d_candidate in ${SLOT} $(seq $((${SLOT} - 1)) -1 10) $(seq $((${SLOT} + 1)) ${latest_gcc}) ; do
 		has_version -b "sys-devel/gcc:${d_candidate}" || continue
 
 		ebegin "Testing sys-devel/gcc:${d_candidate} for D"
