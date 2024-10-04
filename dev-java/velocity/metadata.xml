@@ -6,6 +6,7 @@
 		<name>Java</name>
 	</maintainer>
 	<upstream>
+		<changelog>https://velocity.apache.org/engine/2.4/changes.html</changelog>
 		<remote-id type="github">apache/velocity-engine</remote-id>
 	</upstream>
 </pkgmetadata>
