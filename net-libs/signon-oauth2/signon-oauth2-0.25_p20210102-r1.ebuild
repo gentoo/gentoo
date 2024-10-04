@@ -40,7 +40,7 @@ RDEPEND="
 		dev-qt/qtnetwork:5[ssl]
 	)
 	qt6? ( dev-qt/qtbase:6[network,ssl] )
-	>=net-libs/signond-8.61-r100[qt5=,qt6=]
+	>=net-libs/signond-8.61-r100[qt5=,qt6(+)=]
 "
 DEPEND="
 	${RDEPEND}
