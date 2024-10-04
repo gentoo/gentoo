@@ -31,7 +31,7 @@ BDEPEND="
 "
 RDEPEND="
 	python? ( ${PYTHON_DEPS} )
-	yaml? ( >=dev-libs/libyaml-0.2.3 )
+	yaml? ( >=dev-libs/libyaml-0.2.3[static-libs?] )
 "
 DEPEND="
 	${RDEPEND}
