@@ -54,11 +54,8 @@ dev-games/openscenegraph las
 dev-libs/efl physics
 media-libs/a52dec djbfft
 dev-python/graphviz test
-kde-apps/cantor R
 dev-python/sympy symengine
-kde-apps/gwenview fits
 kde-apps/marble gps
-kde-plasma/plasma-workspace gps
 media-gfx/graphviz gts
 media-libs/libpano13 suitesparse
 media-libs/opencv gdal lapack
