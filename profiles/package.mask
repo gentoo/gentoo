@@ -156,11 +156,6 @@ sci-physics/qmeq
 <kde-plasma/libkworkspace-5.27.50:5
 <kde-plasma/xembed-sni-proxy-5.27.50:5
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-04)
-# Unmaintained upstream, latest media-libs/phonon release incompatible.
-# Removal on 2024-10-04.
-media-libs/phonon-gstreamer
-
 # Fabian Groffen <grobian@gentoo.org> (2024-09-02)
 # exim_tinydb utility crashes due to invalid free() (used in startup script)
 =mail-mta/exim-4.98
