@@ -7,21 +7,17 @@ POSTGRES_COMPAT=( {12..17} )
 POSTGRES_USEDEP="server"
 inherit autotools postgres-multi toolchain-funcs
 
-MY_P="${PN}-$(ver_rs 3 '')"
-
 if [[ ${PV} = *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.osgeo.org/gitea/postgis/postgis.git"
 else
 	PGIS="$(ver_cut 1-2)"
-	SRC_URI="https://download.osgeo.org/postgis/source/${MY_P}.tar.gz"
+	SRC_URI="https://download.osgeo.org/postgis/source/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="Geographic Objects for PostgreSQL"
 HOMEPAGE="https://postgis.net"
-
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
