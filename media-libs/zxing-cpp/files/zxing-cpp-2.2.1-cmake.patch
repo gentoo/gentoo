@@ -1,0 +1,27 @@
+From 77475338af4920fe2568d69b2318a0d5e9be77ce Mon Sep 17 00:00:00 2001
+From: axxel <awagger@gmail.com>
+Date: Fri, 15 Mar 2024 22:23:17 +0100
+Subject: [PATCH] cmake: if (NOT CMAKE_CXX...) should have been if (NOT DEFINED
+ CMAKE_CXX...)
+
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 678fa6b62b..d7a1d81c85 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -61,10 +61,10 @@ if(NOT BUILD_DEPENDENCIES IN_LIST BUILD_DEPENDENCIES_LIST)
+     message(FATAL_ERROR "BUILD_DEPENDENCIES must be one of ${BUILD_DEPENDENCIES_LIST}")
+ endif()
+ 
+-if (NOT CMAKE_CXX_STANDARD)
++if (NOT DEFINED CMAKE_CXX_STANDARD)
+     set (CMAKE_CXX_STANDARD 17)
+ endif()
+-if (NOT CMAKE_CXX_EXTENSIONS)
++if (NOT DEFINED CMAKE_CXX_EXTENSIONS)
+     set (CMAKE_CXX_EXTENSIONS OFF)
+ endif()
+ 
