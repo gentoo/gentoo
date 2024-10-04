@@ -1000,8 +1000,17 @@ toolchain_setup_ada() {
 # Determine the most suitable GDC (D compiler) for bootstrapping
 # and setup the environment for building.
 toolchain_setup_d() {
-	local latest_gcc=$(best_version -b "sys-devel/gcc")
-	latest_gcc="${latest_gcc#sys-devel/gcc-}"
+	local gcc_pkg gcc_bin_base
+	if tc-is-cross-compiler ; then
+		gcc_pkg=cross-${CHOST}/gcc
+		gcc_bin_base=${BROOT}/usr/${CBUILD}/${CHOST}/gcc-bin
+	else
+		gcc_pkg=sys-devel/gcc
+		gcc_bin_base=${BROOT}/usr/${CHOST}/gcc-bin
+	fi
+
+	local latest_gcc=$(best_version -b "${gcc_pkg}")
+	latest_gcc="${latest_gcc#${gcc_pkg}-}"
 	latest_gcc=$(ver_cut 1 ${latest_gcc})
 
 	local d_bootstrap
@@ -1011,10 +1020,10 @@ toolchain_setup_d() {
 	# 2) Iterate downwards from the version being built;
 	# 3) Iterate upwards from the version being built to the greatest version installed.
 	for d_candidate in ${SLOT} $(seq $((${SLOT} - 1)) -1 10) $(seq $((${SLOT} + 1)) ${latest_gcc}) ; do
-		has_version -b "sys-devel/gcc:${d_candidate}" || continue
+		has_version -b "${gcc_pkg}:${d_candidate}" || continue
 
-		ebegin "Testing sys-devel/gcc:${d_candidate} for D"
-		if has_version -b "sys-devel/gcc:${d_candidate}[d(-)]" ; then
+		ebegin "Testing ${gcc_pkg}:${d_candidate} for D"
+		if has_version -b "${gcc_pkg}:${d_candidate}[d(-)]" ; then
 			d_bootstrap=${d_candidate}
 
 			eend 0
@@ -1024,7 +1033,7 @@ toolchain_setup_d() {
 	done
 
 	if [[ -n ${d_bootstrap} ]] ; then
-		export GDC="${BROOT}/usr/${CTARGET}/gcc-bin/${d_bootstrap}/gdc"
+		export GDC=${gcc_bin_base}/${d_bootstrap}/${CHOST}-gdc
 	fi
 }
 
