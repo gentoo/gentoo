@@ -1948,6 +1948,7 @@ gcc_do_filter_flags() {
 		CFLAGS="-O2 -pipe"
 		FFLAGS=${CFLAGS}
 		FCFLAGS=${CFLAGS}
+		GDCFLAGS=${CFLAGS}
 
 		# "hppa2.0-unknown-linux-gnu" -> hppa2_0_unknown_linux_gnu
 		local VAR="CFLAGS_"${CTARGET//[-.]/_}
