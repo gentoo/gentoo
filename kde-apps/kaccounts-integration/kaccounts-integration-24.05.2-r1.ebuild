@@ -5,10 +5,10 @@ EAPI=8
 
 ECM_TEST="forceoptional"
 KF5MIN=5.115.0
-KFMIN=6.5.0
+KFMIN=6.3.0
 PVCUT=$(ver_cut 1-3)
 QT5MIN=5.15.12
-QTMIN=6.7.2
+QTMIN=6.6.2
 VIRTUALDBUS_TEST="true"
 inherit ecm gear.kde.org multibuild
 
@@ -17,7 +17,7 @@ HOMEPAGE="https://community.kde.org/KTp"
 
 LICENSE="LGPL-2.1"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE="qt5"
 
 # bug #549444
@@ -32,8 +32,8 @@ COMMON_DEPEND="
 	>=kde-frameworks/ki18n-${KFMIN}:6
 	>=kde-frameworks/kio-${KFMIN}:6
 	>=kde-frameworks/kwallet-${KFMIN}:6
-	>=net-libs/accounts-qt-1.16_p20220803[qt5?,qt6]
-	>=net-libs/signond-8.61-r100[qt5?,qt6]
+	>=net-libs/accounts-qt-1.17[qt5(-)?,qt6(+)]
+	>=net-libs/signond-8.61-r100[qt5(-)?,qt6(+)]
 	qt5? (
 		>=dev-qt/qtdeclarative-${QT5MIN}:5
 		>=dev-qt/qtgui-${QT5MIN}:5
@@ -49,6 +49,7 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	dev-libs/qcoro
 	>=kde-frameworks/kcmutils-${KFMIN}:6
+	kde-plasma/kde-cli-tools:*
 	qt5? (
 		dev-libs/qcoro5
 		>=kde-frameworks/kcmutils-${KF5MIN}:5
