@@ -6,8 +6,8 @@ EAPI=8
 ECM_DESIGNERPLUGIN="true"
 ECM_QTHELP="true"
 ECM_TEST="forceoptional"
-KFMIN=6.5.0
-QTMIN=6.7.2
+KFMIN=6.3.0
+QTMIN=6.6.2
 VIRTUALDBUS_TEST="true"
 inherit ecm gear.kde.org
 
@@ -16,7 +16,7 @@ HOMEPAGE="https://community.kde.org/KDE_PIM/akonadi"
 
 LICENSE="LGPL-2.1+"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE="+mysql postgres sqlite tools +webengine xml"
 
 REQUIRED_USE="|| ( mysql postgres sqlite ) test? ( tools )"
@@ -38,7 +38,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:6
 	webengine? (
 		kde-apps/kaccounts-integration:6
-		>=net-libs/accounts-qt-1.16_p20220803[qt6]
+		>=net-libs/accounts-qt-1.17[qt6(+)]
 	)
 	xml? ( dev-libs/libxml2 )
 "
