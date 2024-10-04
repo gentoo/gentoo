@@ -75,11 +75,9 @@ src_configure() {
 }
 
 pkg_postinst() {
-	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		optfeature "konsole view" "kde-apps/konsolepart:5" "kde-apps/konsole:5"
-		optfeature "Markdown text previews" "kde-misc/markdownpart:${SLOT}"
-		optfeature "video thumbnails" "kde-apps/ffmpegthumbs:${SLOT}"
-		optfeature "bookmarks support" "kde-apps/keditbookmarks:${SLOT}"
-	fi
+	optfeature "konsole view" "kde-apps/konsolepart:${SLOT}"
+	optfeature "Markdown text previews" "kde-misc/markdownpart:${SLOT}"
+	optfeature "Google Drive service" "kde-misc/kio-gdrive:${SLOT}"
+	optfeature "bookmarks support" "kde-apps/keditbookmarks:${SLOT}"
 	ecm_pkg_postinst
 }
