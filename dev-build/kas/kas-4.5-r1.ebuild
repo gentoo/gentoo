@@ -19,10 +19,6 @@ HOMEPAGE="
 SRC_URI="
 	https://github.com/siemens/kas/archive/refs/tags/${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
-	test? (
-		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${MY_P}.gitbundle
-		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/evolve.hgbundle
-	)
 "
 
 LICENSE="MIT"
@@ -46,15 +42,9 @@ BDEPEND="
 	)
 "
 
+# unable to pre-download test repositories as the required
+# environment variable KAS_REPO_REF_DIR is deleted during
+# testing
+PROPERTIES="test_network"
+
 distutils_enable_tests pytest
-
-src_test() {
-	export KAS_REPO_REF_DIR=${T}
-
-	# tests try to clone https://github.com/siemens/kas
-	git clone -q -b master "${DISTDIR}/${MY_P}.gitbundle" "${T}/github.com.siemens.kas.git" || die
-	# tests try to clone https://repo.mercurial-scm.org/evolve
-	hg clone -q "${DISTDIR}/evolve.hgbundle" "${T}/repo.mercurial-scm.org.evolve" || die
-
-	distutils-r1_src_test
-}
