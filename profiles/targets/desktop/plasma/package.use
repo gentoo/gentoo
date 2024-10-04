@@ -26,13 +26,10 @@ dev-util/ostree curl
 dev-qt/qtscript:5 scripttools
 
 # Required by kde-apps/akonadi:5
-dev-qt/qtsql:5 mysql
+dev-qt/qtbase:6 mysql
 
 # Enable by default, requires kde-frameworks/kwayland
 kde-apps/yakuake absolute-position
-
-# Required by kde-plasma/plasma-workspace, in ksmserver
-kde-plasma/kde-cli-tools kdesu
 
 # Required by media-gfx/graphviz which is required by kde-apps/kcachegrind
 media-libs/gd fontconfig
