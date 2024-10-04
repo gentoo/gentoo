@@ -130,6 +130,7 @@ pkg_postinst() {
 		base_uri+="${PGIS}"
 	fi
 
-	elog "To finish installing PostGIS, follow the directions detailed at:"
-	elog "${base_uri}/postgis_installation.html#create_new_db_extensions"
+	elog "To create a spatial database follow the directions detailed at:"
+	elog "${base_uri}/postgis_administration.html#create_spatial_db"
+
 }
