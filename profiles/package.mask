@@ -61,12 +61,6 @@ dev-python/brython
 # Nothing depends on it. Removal on 2024-10-28.
 dev-java/ant-core
 
-# Michał Górny <mgorny@gentoo.org> (2024-09-25)
-# Fails on deprecated config options from eclass, except that if we
-# update them, then all existing packages break.
-# https://github.com/scikit-build/scikit-build-core/issues/912
-=dev-python/rapidfuzz-3.10.0
-
 # Eli Schwartz <eschwartz@gentoo.org> (2024-09-22)
 # Unmaintained, abandoned upstream, does not compile with GCC 14.
 # Removal on 2024-10-22.  Bug #874732.
