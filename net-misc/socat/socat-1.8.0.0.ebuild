@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,7 +47,9 @@ src_configure() {
 }
 
 src_test() {
-	edo ./test.sh -v --expect-fail 217,311,313,410,478,528
+	# Most tests are skipped because they need network access or a TTY
+	# 518 519 need extra permissions
+	edo ./test.sh -v --expect-fail 217,311,313,410,478,518,519,528
 }
 
 src_install() {
