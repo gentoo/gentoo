@@ -6,6 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
+# py3.13: https://github.com/OpenTTD/nml/issues/340
 PYTHON_COMPAT=( python3_{9..12} )
 inherit distutils-r1
 
