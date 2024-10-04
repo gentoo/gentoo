@@ -454,8 +454,8 @@ pkg_postinst() {
 		elog "you should install:"
 		elog "   dev-db/postgis"
 	elif use python; then
-		elog "Support of PostgreSQL is disabled."
-		elog "But some installed python-plugins import the psycopg2 module."
+		elog "Support of PostgreSQL is disabled but some of the"
+		elog "installed python-plugins import the psycopg2 module."
 		elog "If you do not need these plugins just disable them"
 		elog "in the Plugins menu, else you need to set USE=\"postgres\""
 	fi
