@@ -1032,9 +1032,24 @@ toolchain_setup_d() {
 		eend 1
 	done
 
-	if [[ -n ${d_bootstrap} ]] ; then
-		export GDC=${gcc_bin_base}/${d_bootstrap}/${CHOST}-gdc
+	if [[ -z ${d_bootstrap} ]] ; then
+		if tc-is-cross-compiler ; then
+			# We can't add cross-${CHOST}/gcc[d] to BDEPEND but we can
+			# print a useful message to the user.
+			eerror "No ${gcc_pkg}[d] was found installed."
+			eerror "When cross-compiling GDC a bootstrap GDC is required."
+			eerror "Either disable the d USE flag or add:"
+			eerror ""
+			eerror "    ${gcc_pkg} d"
+			eerror ""
+			eerror "In your package.use and re-emerge it."
+			eerror ""
+		fi
+
+		die "Did not find any appropriate GDC compiler installed"
 	fi
+
+	export GDC=${gcc_bin_base}/${d_bootstrap}/${CHOST}-gdc
 }
 
 #---->> src_configure <<----
