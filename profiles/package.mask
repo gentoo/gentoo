@@ -165,7 +165,6 @@ media-libs/phonon-gstreamer
 # KF5 Porting aids (from KDElibs4). No more, or PMASKED revdeps.
 # Removal on 2024-10-04. Bug #755956
 kde-frameworks/khtml
-kde-frameworks/kjs
 
 # Fabian Groffen <grobian@gentoo.org> (2024-09-02)
 # exim_tinydb utility crashes due to invalid free() (used in startup script)
