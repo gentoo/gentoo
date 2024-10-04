@@ -32,15 +32,6 @@ app-alternatives/yacc reference
 # Causes crashes with e.g. dlz+samba (bug #938955)
 net-dns/bind jemalloc
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-02)
-# kde-plasma/print-manager:5 and kde-apps/khelpcenter:5 cleanup
-kde-plasma/plasma-meta:5 cups handbook
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-02)
-# Prepare kde-apps/kaccounts-integration:5 cleanup
-kde-plasma/plasma-desktop:5 kaccounts
-kde-plasma/plasma-welcome:5 kaccounts
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-09-01)
 # Prepare for dev-util/kdevelop:5 removal
 kde-apps/umbrello:5 php
