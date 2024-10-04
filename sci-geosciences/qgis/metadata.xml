@@ -27,6 +27,9 @@
 		<flag name="webengine">Enable webengine support using <pkg>dev-qt/qtwebengine</pkg></flag>
 	</use>
 	<upstream>
+		<bugs-to>https://github.com/qgis/QGIS/issues</bugs-to>
+		<changelog>https://qgis.org/project/visual-changelogs/</changelog>
+		<doc>https://docs.qgis.org/latest/en/docs/index.html</doc>
 		<remote-id type="github">qgis/QGIS</remote-id>
 	</upstream>
 </pkgmetadata>
