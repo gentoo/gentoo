@@ -18,7 +18,7 @@ else
 		examples? ( https://qgis.org/downloads/data/qgis_sample_data.tar.gz -> qgis_sample_data-2.8.14.tar.gz )"
 	KEYWORDS="~amd64"
 fi
-inherit cmake flag-o-matic python-single-r1 virtualx xdg
+inherit cmake flag-o-matic optfeature python-single-r1 virtualx xdg
 
 DESCRIPTION="User friendly Geographic Information System"
 HOMEPAGE="https://www.qgis.org/"
@@ -450,9 +450,7 @@ src_install() {
 
 pkg_postinst() {
 	if use postgres; then
-		elog "If you don't intend to use an external PostGIS server"
-		elog "you should install:"
-		elog "   dev-db/postgis"
+		optfeature "Local PostGIS server" dev-db/postgis
 	elif use python; then
 		elog "Support of PostgreSQL is disabled but some of the"
 		elog "installed python-plugins import the psycopg2 module."
