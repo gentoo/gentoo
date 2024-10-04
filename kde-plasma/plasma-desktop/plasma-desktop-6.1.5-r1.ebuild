@@ -89,7 +89,7 @@ COMMON_DEPEND="
 	semantic-desktop? ( >=kde-frameworks/baloo-${KFMIN}:6 )
 	webengine? (
 		kde-apps/kaccounts-integration:6
-		>=net-libs/accounts-qt-1.16_p20220803[qt6]
+		>=net-libs/accounts-qt-1.17[qt6(+)]
 	)
 "
 DEPEND="${COMMON_DEPEND}
@@ -115,7 +115,7 @@ RDEPEND="${COMMON_DEPEND}
 	x11-apps/setxkbmap
 	x11-misc/xdg-user-dirs
 	screencast? ( >=kde-plasma/kpipewire-${PVCUT}:6 )
-	webengine? ( >=net-libs/signon-oauth2-0.25_p20210102[qt6] )
+	webengine? ( >=net-libs/signon-oauth2-0.25_p20210102[qt6(+)] )
 "
 BDEPEND="
 	dev-util/intltool
