@@ -166,7 +166,6 @@ media-libs/phonon-gstreamer
 # Removal on 2024-10-04. Bug #755956
 kde-frameworks/khtml
 kde-frameworks/kjs
-kde-frameworks/kross
 
 # Fabian Groffen <grobian@gentoo.org> (2024-09-02)
 # exim_tinydb utility crashes due to invalid free() (used in startup script)
