@@ -234,6 +234,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-18.2.1-gcc14.patch"
 	"${FILESDIR}/ceph-18.2.1-gcc14-2.patch"
 	"${FILESDIR}/ceph-18.2.4-liburing.patch"
+	"${FILESDIR}/ceph-18.2.4-spdk.patch"
 )
 
 check-reqs_export_vars() {
