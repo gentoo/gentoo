@@ -236,10 +236,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	# Apply CBS patch.
-	cd "${WORKDIR}"/build-deps || die
-	eapply "${FILESDIR}"/${PN}-cross-cbs.patch
-
 	# Apply general ffmpeg patches.
 	cd "${WORKDIR}"/build-deps/ffmpeg_sources/ffmpeg || die
 	eapply "${WORKDIR}"/build-deps/ffmpeg_patches/ffmpeg/*.patch
