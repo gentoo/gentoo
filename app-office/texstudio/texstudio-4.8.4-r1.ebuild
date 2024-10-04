@@ -46,6 +46,9 @@ src_prepare() {
 		rm -r "${dir}" || die "Failed to delete ${dir}"
 	done
 
+	# https://bugs.gentoo.org/940747
+	sed -i 's/Qt5 //' CMakeLists.txt || die
+
 	cmake_src_prepare
 }
 
