@@ -1148,7 +1148,15 @@ toolchain_src_configure() {
 		# unless USE=debug. Note that snapshots on stable branches don't count as "non-released"
 		# for these purposes.
 		if grep -q "experimental" gcc/DEV-PHASE ; then
-			# - USE=debug for pre-releases: yes,extra,rtl
+			# Tell users about the non-obvious behavior here so they don't think
+			# e.g. the next GCC release is super slow to compile things.
+			ewarn "Unreleased GCCs default to extra runtime checks even with USE=-debug,"
+			ewarn "matching upstream default behavior. We recommend keeping these enabled."
+			ewarn "The checks (sometimes substantially) increase build time but provide important protection"
+			ewarn "from potential miscompilations (wrong code) by turning them into build-time errors."
+			ewarn "To override (not recommended), set: GCC_CHECKS_LIST=\"release\"."
+
+			# - USE=debug for pre-releases: yes,extra,rtl (stornger than USE=debug for releases)
 			# - USE=-debug for pre-releases: yes,extra (following upstream default)
 			confgcc+=( --enable-checking="${GCC_CHECKS_LIST:-$(usex debug yes,extra,rtl yes,extra)}" )
 		else
