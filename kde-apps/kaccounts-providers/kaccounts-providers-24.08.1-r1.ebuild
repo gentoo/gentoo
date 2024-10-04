@@ -4,8 +4,8 @@
 EAPI=8
 
 PVCUT=$(ver_cut 1-3)
-KFMIN=6.3.0
-QTMIN=6.6.2
+KFMIN=6.5.0
+QTMIN=6.7.2
 inherit ecm gear.kde.org
 
 DESCRIPTION="KDE accounts providers"
@@ -13,10 +13,10 @@ HOMEPAGE="https://community.kde.org/KTp"
 
 LICENSE="LGPL-2.1"
 SLOT="6"
-KEYWORDS="amd64 arm64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
-DEPEND="
+COMMON_DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[gui,xml]
 	>=dev-qt/qtdeclarative-${QTMIN}:6
 	>=dev-qt/qtwebengine-${QTMIN}:6[qml]
@@ -26,8 +26,11 @@ DEPEND="
 	>=kde-frameworks/kio-${KFMIN}:6
 	>=kde-frameworks/kpackage-${KFMIN}:6
 "
-RDEPEND="${DEPEND}
-	>=net-libs/signon-oauth2-0.25_p20210102[qt6]
+DEPEND="${COMMON_DEPEND}
+	dev-libs/qcoro[network]
+"
+RDEPEND="${COMMON_DEPEND}
+	>=net-libs/signon-oauth2-0.25_p20210102[qt6(+)]
 	>=net-libs/signon-ui-0.15_p20231016
 "
 BDEPEND="dev-util/intltool"
