@@ -11,7 +11,7 @@ DESCRIPTION="KDE Development Utilities"
 
 LICENSE="GPL-2+"
 SLOT="6"
-KEYWORDS="amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~riscv ~x86"
 IUSE=""
 
 DEPEND="
