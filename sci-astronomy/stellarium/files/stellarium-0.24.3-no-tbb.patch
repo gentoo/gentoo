@@ -1,0 +1,12 @@
+Don't depend on libtbb
+
+--- a/cmake/Check-std_execution.cmake
++++ b/cmake/Check-std_execution.cmake
+@@ -3,6 +3,7 @@ try_compile(STD_EXECUTION_KNOWN "${CMAKE_BINARY_DIR}" "${CMAKE_CURRENT_LIST_DIR}
+ if(STD_EXECUTION_KNOWN)
+ 	message(STATUS "Checking that std::execution::par is supported by the C++ library - yes")
+ else()
++	message(FATAL_ERROR "Gentoo: std::execution::par not available")
+ 	try_compile(STD_EXECUTION_KNOWN "${CMAKE_BINARY_DIR}" "${CMAKE_CURRENT_LIST_DIR}/check-std_execution.cpp" LINK_LIBRARIES tbb)
+ 	if(STD_EXECUTION_KNOWN)
+ 		message(STATUS "Checking that std::execution::par is supported by the C++ library - yes")
