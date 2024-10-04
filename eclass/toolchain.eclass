@@ -1129,9 +1129,12 @@ toolchain_src_configure() {
 
 		_tc_use_if_iuse ada
 	}
+	_need_d_bootstrap() {
+		_tc_use_if_iuse d && [[ ${GCCMAJOR} -ge 12 ]]
+	}
 
 	_need_ada_bootstrap_mangling && toolchain_setup_ada
-	_tc_use_if_iuse d && toolchain_setup_d
+	_need_d_bootstrap && toolchain_setup_d
 
 	confgcc+=( --enable-languages=${GCC_LANG} )
 
