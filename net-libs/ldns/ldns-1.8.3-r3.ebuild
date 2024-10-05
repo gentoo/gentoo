@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit autotools python-single-r1 multilib-minimal
 
 DESCRIPTION="A library with the aim to simplify DNS programming in C"
-HOMEPAGE="https://www.nlnetlabs.nl/projects/ldns/"
+HOMEPAGE="https://www.nlnetlabs.nl/projects/ldns/about/"
 SRC_URI="https://www.nlnetlabs.nl/downloads/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
