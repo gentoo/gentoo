@@ -18,6 +18,7 @@ RESTRICT="test"
 
 COMMON_DEPEND="
 	dev-debug/gdb
+	media-libs/freetype:2
 	sys-libs/ncurses:=
 	x11-libs/libX11
 	x11-libs/libXaw
@@ -36,16 +37,8 @@ RDEPEND="${COMMON_DEPEND}
 	x11-apps/xfontsel
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-3.3.12-man.patch"
-	"${FILESDIR}/${PN}-3.3.12-tinfo.patch"
-#	"${FILESDIR}/${PN}-3.4.0-gcc9.patch"
-	"${FILESDIR}/${PN}-3.3.12-parallel.patch"
-)
-
 DOCS=(
-	AUTHORS CREDITS INSTALL NEWS README TIPS
-	doc/ddd{.pdf,-themes.pdf}
+	README doc/ddd{.pdf,-themes.pdf}
 )
 
 src_prepare() {
