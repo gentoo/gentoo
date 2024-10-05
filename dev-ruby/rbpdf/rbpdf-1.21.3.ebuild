@@ -28,7 +28,7 @@ ruby_add_rdepend "
 	dev-ruby/actionview
 	dev-ruby/htmlentities
 	=dev-ruby/rbpdf-font-1.19*
-	|| ( dev-ruby/mini_magick dev-ruby/rmagick )
+	|| ( dev-ruby/mini_magick:0 dev-ruby/rmagick )
 "
 
 # Two of the tests require png/jpeg support in "magick identify",
@@ -46,6 +46,8 @@ all_ruby_prepare() {
 
 each_ruby_test() {
 	local cmd='gem "test-unit", ">= 3.0"'
+	cmd+=' and '
+	cmd+='gem "mini_magick", "~>4.0"'
 	cmd+=' and '
 	cmd+='require "test/unit"'
 	cmd+=' and '
