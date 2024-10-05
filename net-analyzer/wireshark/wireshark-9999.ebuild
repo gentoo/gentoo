@@ -264,10 +264,10 @@ src_install() {
 	# https://gitlab.com/wireshark/wireshark/-/commit/fe7bfdf6caac9204ab5f34eeba7b0f4a0314d3cd
 	cmake_src_install install-headers
 
-	# prepare Relase Notes redirector if necessary (bug #939195)
-	local relnotes="doc/release-notes.html"
-
 	if ! use doc; then
+		# prepare Relase Notes redirector (bug #939195)
+		local relnotes="doc/release-notes.html"
+
 		# by default create a link for our specific version
 		local relversion="wireshark-${PV}.html"
 
@@ -276,11 +276,13 @@ src_install() {
 			relversion=""
 		fi
 
+		# patch version into redirector & install it
 		sed -e "s/#VERSION#/${relversion}/g" < "${FILESDIR}/release-notes.html" > ${relnotes} || die
+		dodoc ${relnotes}
 	fi
 
 	# FAQ is not required as is installed from help/faq.txt
-	dodoc AUTHORS ChangeLog README* doc/randpkt.txt doc/README* ${relnotes}
+	dodoc AUTHORS ChangeLog README* doc/randpkt.txt doc/README*
 
 	# install headers
 	insinto /usr/include/wireshark
