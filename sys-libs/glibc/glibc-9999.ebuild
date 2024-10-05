@@ -6,7 +6,7 @@ EAPI=8
 # Bumping notes: https://wiki.gentoo.org/wiki/Project:Toolchain/sys-libs/glibc
 # Please read & adapt the page as necessary if obsolete.
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 TMPFILES_OPTIONAL=1
 
 EMULTILIB_PKG="true"
