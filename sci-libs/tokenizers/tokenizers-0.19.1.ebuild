@@ -12,24 +12,20 @@ DISTUTILS_SINGLE_IMPL=1
 
 CRATES="
 	adler@1.0.2
-	aho-corasick@1.1.2
 	aho-corasick@1.1.3
 	anes@0.1.6
-	anstream@0.6.11
 	anstream@0.6.13
 	anstyle-parse@0.2.3
 	anstyle-query@1.0.2
 	anstyle-wincon@3.0.2
 	anstyle@1.0.6
 	assert_approx_eq@1.1.0
-	autocfg@1.1.0
 	autocfg@1.2.0
 	base64@0.13.1
 	base64@0.21.7
 	bit-set@0.5.3
 	bit-vec@0.6.3
 	bitflags@1.3.2
-	bitflags@2.4.2
 	bitflags@2.5.0
 	bumpalo@3.15.4
 	cast@0.3.0
@@ -38,11 +34,8 @@ CRATES="
 	ciborium-io@0.2.2
 	ciborium-ll@0.2.2
 	ciborium@0.2.2
-	clap@4.5.0
 	clap@4.5.4
-	clap_builder@4.5.0
 	clap_builder@4.5.2
-	clap_derive@4.5.0
 	clap_derive@4.5.4
 	clap_lex@0.7.0
 	colorchoice@1.0.0
@@ -74,7 +67,6 @@ CRATES="
 	errno@0.3.8
 	esaxx-rs@0.1.10
 	fancy-regex@0.13.0
-	fastrand@2.0.1
 	fastrand@2.0.2
 	flate2@1.0.28
 	fnv@1.0.7
@@ -85,21 +77,18 @@ CRATES="
 	half@2.4.0
 	heck@0.4.1
 	heck@0.5.0
-	hermit-abi@0.3.5
 	hermit-abi@0.3.9
 	hf-hub@0.3.2
 	humantime@2.1.0
 	ident_case@1.0.1
 	idna@0.5.0
 	indicatif@0.17.8
-	indoc@2.0.4
 	indoc@2.0.5
 	instant@0.1.12
 	is-terminal@0.4.12
 	itertools@0.10.5
 	itertools@0.11.0
 	itertools@0.12.1
-	itoa@1.0.10
 	itoa@1.0.11
 	js-sys@0.3.69
 	lazy_static@1.4.0
@@ -107,14 +96,11 @@ CRATES="
 	libredox@0.1.3
 	linux-raw-sys@0.4.13
 	lock_api@0.4.11
-	log@0.4.20
 	log@0.4.21
 	macro_rules_attribute-proc_macro@0.2.0
 	macro_rules_attribute@0.2.0
 	matrixmultiply@0.3.8
-	memchr@2.7.1
 	memchr@2.7.2
-	memoffset@0.9.0
 	memoffset@0.9.1
 	minimal-lexical@0.2.1
 	miniz_oxide@0.7.2
@@ -141,7 +127,6 @@ CRATES="
 	parking_lot_core@0.9.9
 	paste@1.0.14
 	percent-encoding@2.3.1
-	pkg-config@0.3.29
 	pkg-config@0.3.30
 	plotters-backend@0.3.5
 	plotters-svg@0.3.5
@@ -161,7 +146,6 @@ CRATES="
 	rawpointer@0.2.1
 	rayon-cond@0.3.0
 	rayon-core@1.12.1
-	rayon@1.8.1
 	rayon@1.10.0
 	redox_syscall@0.4.1
 	regex-automata@0.4.5
@@ -169,16 +153,13 @@ CRATES="
 	redox_users@0.4.5
 	regex-automata@0.4.6
 	regex-syntax@0.8.3
-	regex@1.10.3
 	regex@1.10.4
 	ring@0.17.8
 	rustc-hash@1.1.0
-	rustix@0.38.31
 	rustix@0.38.32
 	rustls-pki-types@1.4.1
 	rustls-webpki@0.102.2
 	rustls@0.22.3
-	ryu@1.0.16
 	ryu@1.0.17
 	scopeguard@1.2.0
 	same-file@1.0.6
@@ -195,16 +176,11 @@ CRATES="
 	strsim@0.10.0
 	strsim@0.11.1
 	subtle@2.5.0
-	syn@1.0.109
 	syn@2.0.60
-	target-lexicon@0.12.13
 	target-lexicon@0.12.14
-	tempfile@3.10.0
 	tempfile@3.10.1
 	termcolor@1.4.1
-	thiserror-impl@1.0.56
 	thiserror-impl@1.0.58
-	thiserror@1.0.56
 	thiserror@1.0.58
 	tinytemplate@1.2.1
 	tinyvec@1.6.0
