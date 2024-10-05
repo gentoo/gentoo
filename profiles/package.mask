@@ -338,6 +338,7 @@ dev-ml/ppx_js_style:0/0.17
 >=xfce-base/garcon-4.19
 >=xfce-base/libxfce4ui-4.19
 >=xfce-base/libxfce4util-4.19
+>=xfce-base/libxfce4windowing-4.19.5
 >=xfce-base/thunar-4.19
 >=xfce-base/tumbler-4.19
 >=xfce-base/xfce4-appfinder-4.19
