@@ -132,15 +132,16 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	use jit && llvm-r1_pkg_setup
-	use test && check-reqs_pkg_setup
-	if [[ "${MERGE_TYPE}" != binary ]] && { use test || use pgo; }
-	then
-		local CONFIG_CHECK
-		for f in "${!PYTHON_KERNEL_CHECKS[@]}"; do
-			CONFIG_CHECK+="~${f} "
-		done
-		linux-info_pkg_setup
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		use jit && llvm-r1_pkg_setup
+		use test && check-reqs_pkg_setup
+		if use test || use pgo; then
+			local CONFIG_CHECK
+			for f in "${!PYTHON_KERNEL_CHECKS[@]}"; do
+				CONFIG_CHECK+="~${f} "
+			done
+			linux-info_pkg_setup
+		fi
 	fi
 }
 
