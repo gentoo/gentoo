@@ -3,7 +3,7 @@
 
 EAPI=8
 GNOME_ORG_MODULE="NetworkManager"
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit gnome.org linux-info meson-multilib flag-o-matic python-any-r1 \
 		readme.gentoo-r1 systemd toolchain-funcs udev vala virtualx
