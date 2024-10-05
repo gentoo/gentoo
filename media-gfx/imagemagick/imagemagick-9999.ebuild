@@ -20,7 +20,7 @@ fi
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="A collection of tools and libraries for many image formats"
-HOMEPAGE="https://www.imagemagick.org/"
+HOMEPAGE="https://imagemagick.org/index.php"
 
 LICENSE="imagemagick"
 # Please check this on bumps, SONAME is often not updated! Use abidiff on old/new.
