@@ -1,0 +1,39 @@
+From f0e9e24f1f20801bd49c78b30b951433f834a2c7 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sat, 5 Oct 2024 08:48:57 -0400
+Subject: [PATCH] src/gfanlib_tropicalhomotopy.h: avoid out-of-bounds vector
+ indexes
+
+Add a check to ensure that we don't try to access the -1st element of
+a vector. The code would be trying to subtract zero from the entry, so
+it was "harmless," but it does crash glibcxx when assertions are
+enabled (as they are on hardened Gentoo). This should allow the
+SageMath "mixed volume" tests to pass.
+---
+ src/gfanlib_tropicalhomotopy.h | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/src/gfanlib_tropicalhomotopy.h b/src/gfanlib_tropicalhomotopy.h
+index f3127ba..f6db26e 100644
+--- a/src/gfanlib_tropicalhomotopy.h
++++ b/src/gfanlib_tropicalhomotopy.h
+@@ -454,10 +454,12 @@ template<class mvtyp, class mvtypDouble, class mvtypDivisor>
+ 			//chioices are "relative" so no update is needed.
+ 
+ 			choices=parent.choices;
+-			int numberToDrop=(subconfigurationIndex!=0) ? numberToDrop=k+1 : 0;
+-
+-			choices[subconfigurationIndex-1].first-=numberToDrop;
+-			choices[subconfigurationIndex-1].second-=numberToDrop;
++			int numberToDrop = 0;
++			if (subconfigurationIndex != 0) {
++				numberToDrop=k+1;
++				choices[subconfigurationIndex-1].first-=numberToDrop;
++				choices[subconfigurationIndex-1].second-=numberToDrop;
++			}
+ 
+ 			denominator=parent.denominator;
+ 			int offsetOld=0;
+-- 
+2.45.2
+

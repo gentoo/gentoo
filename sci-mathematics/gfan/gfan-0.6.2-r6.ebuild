@@ -27,6 +27,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.6.2-fix-0602ResultantFanProjection.patch"
 	"${FILESDIR}/${PN}-0.6.2-fix-spelling-errors.patch"
 	"${FILESDIR}/${PN}-0.6.2-find-name.patch"
+	"${FILESDIR}/${PN}-0.6.2-glibcxx-assertions.patch"
 )
 
 pkg_setup() {
