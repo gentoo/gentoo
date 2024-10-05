@@ -16,7 +16,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
-BDEPEND="doc? ( virtual/latex-base )"
+# texlive-plaingeneric is needed for \usepackage{ulem} in
+# the manual
+BDEPEND="doc? (
+	dev-texlive/texlive-plaingeneric
+	virtual/latex-base
+)"
 DEPEND="dev-libs/gmp:0=[cxx(+)]
 	sci-libs/cddlib:0="
 RDEPEND="${DEPEND}"
