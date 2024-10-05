@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2024-10-05)
+# media-libs/jasper fails tests (bug #907259)
+media-gfx/graphicsmagick jpeg2k
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-07-23)
 # kde-frameworks/kservice, dev-qt/qtpaths not stable here
 x11-misc/xdg-utils plasma
