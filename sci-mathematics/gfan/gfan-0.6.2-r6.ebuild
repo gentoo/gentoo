@@ -17,8 +17,9 @@ KEYWORDS="~amd64 ~arm ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
 # texlive-plaingeneric is needed for \usepackage{ulem} in
-# the manual
+# the manual. ghostscript-gpl provides the "dvipdf" command.
 BDEPEND="doc? (
+	app-text/ghostscript-gpl
 	dev-texlive/texlive-plaingeneric
 	virtual/latex-base
 )"
