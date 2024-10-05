@@ -31,7 +31,7 @@ LICENSE="GPL-2"
 SLOT="0/${PV}"
 IUSE="androiddump bcg729 brotli +capinfos +captype ciscodump +dftest doc dpauxmon"
 IUSE+=" +dumpcap +editcap +gui http2 http3 ilbc kerberos libxml2 lua lz4 maxminddb"
-IUSE+=" +mergecap +minizip +netlink opus +plugins +pcap qt6 +randpkt"
+IUSE+=" +mergecap +minizip +netlink opus +plugins +pcap +randpkt"
 IUSE+=" +randpktdump +reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl"
 IUSE+=" sdjournal test +text2pcap tfshark +tshark +udpdump wifi zlib +zstd"
 
@@ -66,20 +66,11 @@ RDEPEND="
 	opus? ( media-libs/opus )
 	pcap? ( net-libs/libpcap )
 	gui? (
+		dev-qt/qtbase:6[concurrent,dbus,gui,widgets]
+		dev-qt/qt5compat:6
+		dev-qt/qtdeclarative:6
+		dev-qt/qtmultimedia:6
 		x11-misc/xdg-utils
-		qt6? (
-			dev-qt/qtbase:6[concurrent,dbus,gui,widgets]
-			dev-qt/qt5compat:6
-			dev-qt/qtmultimedia:6
-		)
-		!qt6? (
-			dev-qt/qtcore:5
-			dev-qt/qtconcurrent:5
-			dev-qt/qtgui:5
-			dev-qt/qtmultimedia:5
-			dev-qt/qtprintsupport:5
-			dev-qt/qtwidgets:5
-		)
 	)
 	sbc? ( media-libs/sbc )
 	sdjournal? ( sys-apps/systemd:= )
@@ -94,11 +85,6 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	gui? (
-		!qt6? (
-			dev-qt/qtdeclarative:5
-		)
-	)
 "
 # TODO: 4.0.0_rc1 release notes say:
 # "Perl is no longer required to build Wireshark, but may be required to build some source code files and run code analysis checks."
@@ -114,12 +100,7 @@ BDEPEND="
 		dev-libs/libxslt
 	)
 	gui? (
-		qt6? (
-			dev-qt/qttools:6[linguist]
-		)
-		!qt6? (
-			dev-qt/linguist-tools:5
-		)
+		dev-qt/qttools:6[linguist]
 	)
 	test? (
 		$(python_gen_any_dep '
@@ -206,10 +187,10 @@ src_configure() {
 		-DENABLE_CCACHE=OFF
 
 		$(use androiddump && use pcap && echo -DEXTCAP_ANDROIDDUMP_LIBPCAP=yes)
-		$(usex gui LRELEASE=$(qt5_get_bindir)/lrelease '')
-		$(usex gui MOC=$(qt5_get_bindir)/moc '')
-		$(usex gui RCC=$(qt5_get_bindir)/rcc '')
-		$(usex gui UIC=$(qt5_get_bindir)/uic '')
+		$(usex gui LRELEASE=$(qt6_get_bindir)/lrelease '')
+		$(usex gui MOC=$(qt6_get_bindir)/moc '')
+		$(usex gui RCC=$(qt6_get_bindir)/rcc '')
+		$(usex gui UIC=$(qt6_get_bindir)/uic '')
 
 		-DBUILD_androiddump=$(usex androiddump)
 		-DBUILD_capinfos=$(usex capinfos)
@@ -233,7 +214,7 @@ src_configure() {
 		-DBUILD_udpdump=$(usex udpdump)
 
 		-DBUILD_wireshark=$(usex gui)
-		-DUSE_qt6=$(usex qt6)
+		-DUSE_qt6=$(usex gui)
 
 		-DENABLE_WERROR=OFF
 		-DENABLE_BCG729=$(usex bcg729)
