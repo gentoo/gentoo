@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org>
+# This version is known to break on certain systems. At the
+# same time it fixes several reported issues. Masked until
+# we can work out how to resolve the situation.
+# See also: https://github.com/gentoo/gentoo/pull/36091
+~sys-boot/plymouth-24.004.60
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-10-05)
 # Masked for removal in 30 days. Broken since KF6 incapacitated
 # breeze-icons-rcc, but no one even complained. Upstream porting
