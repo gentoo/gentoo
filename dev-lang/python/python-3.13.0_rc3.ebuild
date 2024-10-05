@@ -77,7 +77,6 @@ DEPEND="
 	${RDEPEND}
 	bluetooth? ( net-wireless/bluez )
 	test? (
-		app-arch/xz-utils
 		dev-python/ensurepip-pip
 		dev-python/ensurepip-setuptools
 		dev-python/ensurepip-wheel
