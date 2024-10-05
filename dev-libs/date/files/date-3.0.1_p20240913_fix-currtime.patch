@@ -1,0 +1,16 @@
+Fix current_zone() error: ios_base::clear: unspecified iostream_category error
+
+Upstream-Bug: https://github.com/Alexays/Waybar/issues/3643
+
+diff --git a/src/tz.cpp b/src/tz.cpp
+index 89a08fd..872d262 100644
+--- a/src/tz.cpp
++++ b/src/tz.cpp
+@@ -603,6 +604,7 @@ static
+ std::string
+ get_alpha_word(std::istream& in)
+ {
++    std::ws(in);
+     std::string s;
+     while (!in.eof() && std::isalpha(in.peek()))
+         s.push_back(static_cast<char>(in.get()));
