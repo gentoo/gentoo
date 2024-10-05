@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 XORG_TARBALL_SUFFIX="xz"
 XORG_MODULE=proto/
 
