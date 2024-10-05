@@ -15,6 +15,11 @@ dev-qt/qtbase libproxy
 # Boost: app-text/poppler[qt5] recommended w/ Boost (bug #795888)
 app-text/poppler nss boost
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2023-11-11)
+# egl, libinput required by kde-plasma/kwayland:5
+# accessibility required by kde-plasma/kwin:5
+dev-qt/qtgui:5 accessibility egl libinput
+
 # Mart Raudsepp <leio@gentoo.org> (2023-10-01)
 # kde-plasma/kwin and x11-wm/mutter[wayland] require xwayland[libei] for
 # emulated input portal for e.g. remote desktop remote input support
