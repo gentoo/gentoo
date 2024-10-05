@@ -120,7 +120,9 @@ declare -rA PYTHON_KERNEL_CHECKS=(
 )
 
 pkg_pretend() {
-	use test && check-reqs_pkg_pretend
+	if use pgo || use test; then
+		check-reqs_pkg_pretend
+	fi
 
 	if ! use gil || use jit; then
 		ewarn "USE=-gil and USE=jit flags are considered experimental upstream.  Using"
@@ -134,8 +136,9 @@ pkg_pretend() {
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		use jit && llvm-r1_pkg_setup
-		use test && check-reqs_pkg_setup
 		if use test || use pgo; then
+			check-reqs_pkg_setup
+
 			local CONFIG_CHECK
 			for f in "${!PYTHON_KERNEL_CHECKS[@]}"; do
 				CONFIG_CHECK+="~${f} "
