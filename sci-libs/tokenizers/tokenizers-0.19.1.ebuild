@@ -326,7 +326,6 @@ src_test() {
 
 src_install() {
 	cd tokenizers
-	cargo_src_install
 	cd ../bindings/python
 	distutils-r1_src_install
 }
