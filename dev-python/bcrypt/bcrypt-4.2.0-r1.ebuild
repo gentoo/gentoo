@@ -77,7 +77,7 @@ distutils_enable_tests pytest
 
 export UNSAFE_PYO3_SKIP_VERSION_CHECK=1
 
-python_configure() {
+python_configure_all() {
 	# Workaround for sys-cluster/ceph (bug #920906)
 	# https://github.com/pyca/bcrypt/issues/694
 	# https://github.com/PyO3/pyo3/issues/3451
