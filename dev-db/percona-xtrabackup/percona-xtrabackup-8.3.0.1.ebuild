@@ -21,7 +21,8 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+# Only supports 64-bit (bug #940127)
+KEYWORDS="~amd64 -x86"
 
 DEPEND="
 	app-arch/lz4:0=
