@@ -19,7 +19,7 @@ SRC_URI="https://github.com/ansible/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~riscv"
 
 RDEPEND="
 	>=app-admin/ansible-core-2.14[${PYTHON_USEDEP}]
