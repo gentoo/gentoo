@@ -77,6 +77,13 @@ distutils_enable_tests pytest
 
 export UNSAFE_PYO3_SKIP_VERSION_CHECK=1
 
+src_prepare() {
+	distutils-r1_src_prepare
+
+	cd "${ECARGO_VENDOR}"/pyo3-0*/ || die
+	eapply "${FILESDIR}/bcrypt-4.2.0-patch-pyo3-subinterp.patch"
+}
+
 python_configure_all() {
 	# Workaround for sys-cluster/ceph (bug #920906)
 	# https://github.com/pyca/bcrypt/issues/694
