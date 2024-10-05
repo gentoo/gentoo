@@ -54,6 +54,7 @@ BDEPEND="
 CONFIG_CHECK="~DEBUG_INFO_BTF"
 
 pkg_setup() {
+	python-any-r1_pkg_setup
 	use llvm && llvm-r1_pkg_setup
 }
 
@@ -104,6 +105,9 @@ src_prepare() {
 
 	# remove -Werror (bug 887981)
 	sed -i -e 's/\-Werror//g' ../../lib/bpf/Makefile || die
+
+	# fix up python shebangs (bug 940781)
+	python_fix_shebang "${S_K}"/scripts/bpf_doc.py
 }
 
 bpftool_make() {
