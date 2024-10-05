@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,11 +19,11 @@ fi
 DESCRIPTION="A library for Microsoft compression formats"
 HOMEPAGE="https://www.cabextract.org.uk/libmspack/"
 
+S="${WORKDIR}/${MY_P}"
+
 LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="debug doc"
-
-S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	if [[ ${PV} == *9999 ]] ; then
