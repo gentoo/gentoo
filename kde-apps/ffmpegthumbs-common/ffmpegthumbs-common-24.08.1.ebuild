@@ -10,7 +10,7 @@ inherit ecm-common gear.kde.org
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
 
 RDEPEND="
 	!<kde-apps/ffmpegthumbs-23.08.5-r1:5
