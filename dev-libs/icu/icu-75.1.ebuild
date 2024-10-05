@@ -5,7 +5,7 @@ EAPI=8
 
 # Please bump with dev-libs/icu-layoutex
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/icu.asc
 inherit autotools flag-o-matic multilib-minimal python-any-r1 toolchain-funcs verify-sig
 
@@ -42,6 +42,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-65.1-remove-bashisms.patch"
 	"${FILESDIR}/${PN}-64.2-darwin.patch"
 	"${FILESDIR}/${PN}-68.1-nonunicode.patch"
+	# https://github.com/unicode-org/icu/commit/60d6bd71efc0cde8f861b109ff87dbbf9fc96586
+	"${FILESDIR}/${PN}-75.1-python3_13-tests.patch"
 )
 
 src_prepare() {
