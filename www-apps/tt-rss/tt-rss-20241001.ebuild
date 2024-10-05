@@ -8,12 +8,13 @@ inherit webapp
 DESCRIPTION="Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX"
 HOMEPAGE="https://tt-rss.org/"
 SRC_URI="https://dev.gentoo.org/~chewi/distfiles/${P}.tar.xz"
+S="${WORKDIR}/${PN}"
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
 IUSE="+acl daemon gd +mysqli postgres"
 REQUIRED_USE="|| ( mysqli postgres )"
 
-PHP_SLOTS="8.2 8.1"
+PHP_SLOTS="8.3"
 PHP_USE="gd?,mysqli?,postgres?,curl,fileinfo,intl,json(+),pdo,unicode,xml"
 
 php_rdepend() {
@@ -50,8 +51,6 @@ DEPEND="
 
 need_httpd_cgi # From webapp.eclass
 
-S="${WORKDIR}/${PN}"
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-no-chmod.patch
 )
@@ -62,8 +61,9 @@ src_install() {
 	insinto "${MY_HTDOCSDIR}"
 	doins -r *
 
-	# When updating, grep the code for additional DiskCache::instances as they
-	# cannot be created later due to permissions.
+	# When updating, grep the code for new DiskCache::instance occurrences as
+	# these directories cannot be created later due to permissions. Some
+	# of these directories are already present in the source tree.
 	keepdir "${MY_HTDOCSDIR}"/cache/{feed-icons,starred-images}
 
 	local dir
