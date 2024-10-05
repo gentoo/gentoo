@@ -1,0 +1,20 @@
+https://github.com/OpenTTD/nml/issues/340
+https://github.com/OpenTTD/nml/pull/341
+
+From 0bebfe612d489a20fa5a71b06963ea3ee80379d0 Mon Sep 17 00:00:00 2001
+From: glx22 <glx@openttd.org>
+Date: Sat, 5 Oct 2024 01:00:32 +0200
+Subject: [PATCH] Fix #340: Always use raw strings for token regex
+
+--- a/nml/tokens.py
++++ b/nml/tokens.py
+@@ -195,7 +195,7 @@ def t_ignore_comment(self, t):
+         self.increment_lines(t.value.count("\n"))
+ 
+     def t_ignore_whitespace(self, t):
+-        "[ \t\r]+"
++        r"[ \t\r]+"
+         pass
+ 
+     def t_line_directive1(self, t):
+
