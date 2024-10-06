@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="threads(+)"
 inherit waf-utils multilib-minimal python-single-r1
 
@@ -70,7 +70,7 @@ multilib_src_compile() {
 multilib_src_test() {
 	# the default src_test runs 'make test' and 'make check', letting
 	# the tests fail occasionally (reason: unknown)
-	emake check
+	emake check WAF_BIN="${WAF_BINARY}"
 }
 
 multilib_src_install() {
