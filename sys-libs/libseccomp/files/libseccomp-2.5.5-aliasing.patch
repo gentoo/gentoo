@@ -1,0 +1,30 @@
+https://github.com/seccomp/libseccomp/commit/2847f10dddca72167309c04cd09f326fd3b78e2f
+
+From 2847f10dddca72167309c04cd09f326fd3b78e2f Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 24 Dec 2023 20:38:06 +0100
+Subject: [PATCH] scmp_bpf_sim: fix aliasing UB
+
+See https://github.com/seccomp/libseccomp/pull/425.
+
+Punning sys_data_b between uint32_t* and struct* seccomp_data isn't legal,
+use memcpy to fix the testsuite with Clang 17.
+
+Modern compilers recognise this idiom and optimise it out anyway.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+Acked-by: Tom Hromatka <tom.hromatka@oracle.com>
+Signed-off-by: Paul Moore <paul@paul-moore.com>
+--- a/tools/scmp_bpf_sim.c
++++ b/tools/scmp_bpf_sim.c
+@@ -182,7 +182,8 @@ static void bpf_execute(const struct bpf_program *prg,
+ 		switch (code) {
+ 		case BPF_LD+BPF_W+BPF_ABS:
+ 			if (k < BPF_SYSCALL_MAX) {
+-				uint32_t val = *((uint32_t *)&sys_data_b[k]);
++				uint32_t val;
++				memcpy(&val, &sys_data_b[k], sizeof(val));
+ 				state.acc = ttoh32(arch, val);
+ 			} else
+ 				exit_error(ERANGE, ip_c);
+
