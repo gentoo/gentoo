@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/red-data-tools/red-colors"
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="amd64 ~ppc ~riscv ~x86"
 
 ruby_add_rdepend "
 	dev-ruby/json
