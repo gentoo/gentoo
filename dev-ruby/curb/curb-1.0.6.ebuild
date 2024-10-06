@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/taf2/curb"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="test"
 
 DEPEND=" net-misc/curl[ssl] test? ( net-misc/curl )"
