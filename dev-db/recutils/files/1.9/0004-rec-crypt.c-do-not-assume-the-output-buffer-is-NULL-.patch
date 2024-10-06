@@ -1,0 +1,110 @@
+From 2160498461d6a9298cc7e6707bf3cad94d66d14f Mon Sep 17 00:00:00 2001
+Message-ID: <2160498461d6a9298cc7e6707bf3cad94d66d14f.1728191717.git.sam@gentoo.org>
+In-Reply-To: <9f08064fef75ce02df9b6133d240c0fa84df458e.1728191717.git.sam@gentoo.org>
+References: <9f08064fef75ce02df9b6133d240c0fa84df458e.1728191717.git.sam@gentoo.org>
+From: Craig Mason-Jones <craig@lateral.co.za>
+Date: Sun, 3 Sep 2023 12:04:37 +0200
+Subject: [PATCH 04/10] rec-crypt.c: do not assume the output buffer is NULL
+ terminated in rec_decrypt
+
+2023-09-03  Craig Mason-Jones <craig@lateral.co.za>
+
+	* torture/utils/recsel.sh (recsel-confidential-12): New test.
+	(confidential12): New input file.
+	* src/rec-crypt.c (rec_decrypt): The output buffer may not be
+	null-terminated.
+---
+ ChangeLog               |  7 +++++++
+ src/rec-crypt.c         | 15 +++++++++------
+ torture/utils/recsel.sh | 17 +++++++++++++++++
+ 3 files changed, 33 insertions(+), 6 deletions(-)
+
+diff --git a/ChangeLog b/ChangeLog
+index d7cba1a..02c15d2 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,3 +1,10 @@
++2023-09-03  Craig Mason-Jones <craig@lateral.co.za>
++
++	* torture/utils/recsel.sh (recsel-confidential-12): New test.
++	(confidential12): New input file.
++	* src/rec-crypt.c (rec_decrypt): The output buffer may not be
++	null-terminated.
++
+ 2023-06-05  Jose E. Marchesi  <jemarch@gnu.org>
+ 
+ 	* configure.ac: Use gl_PROG_BISON instead of gl_BISON.
+diff --git a/src/rec-crypt.c b/src/rec-crypt.c
+index 97e92f4..5c88716 100644
+--- a/src/rec-crypt.c
++++ b/src/rec-crypt.c
+@@ -219,22 +219,25 @@ rec_decrypt (char   *in,
+   /* Make sure the decrypted data is ok by checking the CRC at the end
+      of the sequence.  */
+ 
+-  if (strlen(*out) > 4)
++  /* If there no padding added in the encryption stage, the data and
++     CRC fills the output buffer. This means that strlen (*out) would
++     fail, because it might buffer over-run.  */
++  size_t outlen = strnlen (*out, *out_size);
++
++  if (outlen > 4)
+     {
+       uint32_t crc = 0;
+-
+-      memcpy (&crc, *out + strlen(*out) - 4, 4);
++      memcpy (&crc, *out + outlen - 4, 4);
+ #if defined WORDS_BIGENDIAN
+       crc = rec_endian_swap (crc);
+ #endif
+-
+-      if (crc32 (*out, strlen(*out) - 4) != crc)
++      if (crc32 (*out, outlen - 4) != crc)
+         {
+           gcry_cipher_close (handler);
+           return false;
+         }
+ 
+-      (*out)[strlen(*out) - 4] = '\0';
++      (*out)[outlen - 4] = '\0';
+     }
+   else
+     {
+diff --git a/torture/utils/recsel.sh b/torture/utils/recsel.sh
+index b868cef..6ce2a59 100755
+--- a/torture/utils/recsel.sh
++++ b/torture/utils/recsel.sh
+@@ -171,6 +171,15 @@ User: foo
+ Password: encrypted-MHyd3Dqz+iaViL8h1m18sA==
+ '
+ 
++test_declare_input_file confidential12 \
++'%rec: Login
++%doc: Login to a website or application
++%type: Name line
++%confidential: Password
++
++Name: Test2
++Password: encrypted-YaDdF2AIprCfgUjOPlCWO8/WFq0=
++'
+ test_declare_input_file sort \
+ '%rec: Sorted
+ %sort: Id
+@@ -1242,6 +1251,14 @@ test_tool recsel-confidential-num ok \
+ Password: secret
+ '
+ 
++test_tool recsel-confidential-12 ok \
++          recsel \
++          '-s thisismyverysecretpassword' \
++          confidential12 \
++'Name: Test2
++Password: 123456789012
++'
++
+ fi # crypt_support
+ 
+ test_tool recsel-sort ok \
+-- 
+2.46.2
+
