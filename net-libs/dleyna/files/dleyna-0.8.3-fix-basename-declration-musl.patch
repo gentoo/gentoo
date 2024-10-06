@@ -1,0 +1,53 @@
+https://gitlab.gnome.org/World/dLeyna/-/merge_requests/9
+From: Brahmajit Das <brahmajit.xyz@gmail.com>
+Date: Wed, 31 Jul 2024 04:31:19 +0000
+Subject: [PATCH 1/1] Fix implicit declaration of basename
+
+On musl there is only one implementation of basename, which comes from
+the libgen.h header file. However, in this case the code is using GNU
+implementation of basename, which is not available on musl. This results
+in build error:
+
+../dLeyna-v0.8.3/libdleyna/core/log.c: In function 'dleyna_log_init':
+../dLeyna-v0.8.3/libdleyna/core/log.c:156:17: error: implicit declaration of function 'basename'; did you mean 'g_basename'? [-Wimplicit-function-declaration]
+  156 |         openlog(basename(program), option, LOG_DAEMON);
+      |                 ^~~~~~~~
+      |                 g_basename
+../dLeyna-v0.8.3/libdleyna/core/log.c:156:17: error: passing argument 1 of 'openlog' makes pointer from integer without a cast [-Wint-conversion]
+  156 |         openlog(basename(program), option, LOG_DAEMON);
+      |                 ^~~~~~~~~~~~~~~~~
+      |                 |
+      |                 int
+In file included from ../dLeyna-v0.8.3/libdleyna/core/log.h:27,
+                 from ../dLeyna-v0.8.3/libdleyna/core/log.c:30:
+
+Please also reffer: https://bugs.gentoo.org/936939
+
+Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
+--- a/libdleyna/core/log.c
++++ b/libdleyna/core/log.c
+@@ -41,6 +41,12 @@ struct dleyna_log_t_ {
+ 
+ static dleyna_log_t s_log_context;
+ 
++char *gnu_basename(char *s)
++{
++  char *p = strrchr(s, '/');
++  return p ? p+1 : s;
++}
++
+ static void prv_get_mf(int log_level, int *mask, GLogLevelFlags *flags)
+ {
+ 	*mask = 0;
+@@ -153,7 +159,7 @@ void dleyna_log_init(const char *program, const char *version)
+ 	s_log_context.log_domain = g_strdup(program);
+ 	prv_set_flags_from_param();
+ 
+-	openlog(basename(program), option, LOG_DAEMON);
++	openlog(gnu_basename(program), option, LOG_DAEMON);
+ 
+ 	old = setlogmask(LOG_MASK(LOG_INFO));
+ 	syslog(LOG_INFO, "dLeyna core version %s", VERSION);
+-- 
+2.45.2
+
