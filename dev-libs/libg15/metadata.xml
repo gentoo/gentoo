@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
+		<remote-id type="gitlab">menelkir/libg15</remote-id>
 		<remote-id type="sourceforge">g15tools</remote-id>
 	</upstream>
 </pkgmetadata>
