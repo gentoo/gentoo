@@ -173,11 +173,6 @@ dev-ml/dyn
 # Removal on 2024-10-08.  Bug #932532.
 sci-physics/qmeq
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-09-07)
-# These packages are EOL in Plasma 6.
-# Removal on 2024-10-07.
-<kde-plasma/khotkeys-5.27.50:5
-
 # Fabian Groffen <grobian@gentoo.org> (2024-09-02)
 # exim_tinydb utility crashes due to invalid free() (used in startup script)
 =mail-mta/exim-4.98
