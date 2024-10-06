@@ -9,6 +9,7 @@ MY_P="${PN}4-${PV}"
 DESCRIPTION="Phil Budne's port of Macro SNOBOL4 in C, for modern machines"
 HOMEPAGE="http://www.snobol4.org/csnobol4/"
 SRC_URI="ftp://ftp.snobol4.org/snobol/old/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -18,8 +19,6 @@ IUSE="doc"
 DEPEND="sys-libs/gdbm[berkdb]"
 RDEPEND="${DEPEND}"
 BDEPEND="sys-devel/m4"
-
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
