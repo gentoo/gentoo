@@ -19,7 +19,7 @@ SRC_URI="https://github.com/socketry/multipart-post/archive/v${PV}.tar.gz -> ${P
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86"
 
 all_ruby_prepare() {
 	sed -i -e '/\(bundler\|covered\)/ s:^:#:' spec/spec_helper.rb || die
