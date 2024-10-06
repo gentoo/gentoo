@@ -178,7 +178,6 @@ sci-physics/qmeq
 # Removal on 2024-10-07.
 <kde-plasma/khotkeys-5.27.50:5
 <kde-plasma/libkworkspace-5.27.50:5
-<kde-plasma/xembed-sni-proxy-5.27.50:5
 
 # Fabian Groffen <grobian@gentoo.org> (2024-09-02)
 # exim_tinydb utility crashes due to invalid free() (used in startup script)
