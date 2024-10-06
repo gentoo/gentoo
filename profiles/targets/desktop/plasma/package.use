@@ -25,7 +25,7 @@ dev-util/ostree curl
 # Required by app-editors/okteta:5
 dev-qt/qtscript:5 scripttools
 
-# Required by kde-apps/akonadi:5
+# Required by kde-apps/akonadi:6
 dev-qt/qtbase:6 mysql
 
 # Enable by default, requires kde-frameworks/kwayland
