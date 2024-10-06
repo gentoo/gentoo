@@ -363,7 +363,7 @@ LICENSE+=" Apache-2.0 BSD ISC MIT MPL-2.0 MPL-2.0 Unicode-DFS-2016"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 
-RDEPEND=">=dev-libs/libgit2-1.7:=
+RDEPEND=">=dev-libs/libgit2-1.8.1:=
 	dev-libs/openssl:=
 	net-libs/libssh2:=
 	net-misc/curl[ssl]
