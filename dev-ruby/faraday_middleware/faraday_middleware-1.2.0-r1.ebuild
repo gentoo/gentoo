@@ -19,7 +19,7 @@ SRC_URI="https://github.com/lostisland/faraday_middleware/archive/v${PV}.tar.gz 
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="brotli +parsexml +oauth +mashify +rashify"
 
 ruby_add_rdepend "
