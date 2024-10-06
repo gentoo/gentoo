@@ -50,7 +50,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/gtk-doc
 	dev-build/gtk-doc-am
 	>=dev-build/libtool-2.2.6:2
-	>=mate-base/mate-desktop-1.28.0[introspection?]
+	>=mate-base/mate-desktop-$(ver_cut 1-2)[introspection?]
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
