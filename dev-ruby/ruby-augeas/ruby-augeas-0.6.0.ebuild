@@ -17,7 +17,7 @@ HOMEPAGE="https://augeas.net/"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
 
 RDEPEND=">=app-admin/augeas-1.1.0"
 DEPEND="${RDEPEND}
