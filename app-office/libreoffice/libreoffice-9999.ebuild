@@ -146,6 +146,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/libxslt
 	dev-libs/nspr
 	dev-libs/nss
+	dev-libs/openssl:=
 	>=dev-libs/redland-1.0.16
 	>=dev-libs/xmlsec-1.2.35:=[nss]
 	>=games-engines/box2d-2.4.1:0
@@ -167,7 +168,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-libs/openjpeg:=
 	media-libs/tiff:=
 	media-libs/zxing-cpp:=
-	net-misc/curl
+	net-misc/curl[kerberos]
 	sci-mathematics/lpsolve:=
 	sys-libs/zlib
 	virtual/opengl
@@ -214,11 +215,14 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	ldap? ( net-nds/openldap:= )
 	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
 	libreoffice_extensions_scripting-javascript? ( >=dev-java/rhino-1.7.14:1.6 )
-	mariadb? ( dev-db/mariadb-connector-c:= )
+	mariadb? ( dev-db/mariadb-connector-c:=[kerberos] )
 	!mariadb? ( dev-db/mysql-connector-c:= )
 	pdfimport? ( >=app-text/poppler-22.06:=[cxx] )
 	postgres? ( >=dev-db/postgresql-9.0:*[kerberos] )
-	qt6? ( dev-qt/qtbase:6[gui,widgets] )
+	qt6? (
+		dev-qt/qtbase:6[gui,widgets]
+		dev-qt/qtmultimedia:6
+	)
 "
 # FIXME: cppunit should be moved to test conditional
 #        after everything upstream is under gbuild
@@ -496,7 +500,6 @@ src_configure() {
 		--disable-fetch-external
 		--disable-gtk3-kde5
 		--disable-online-update
-		--disable-openssl
 		--disable-pdfium
 		--disable-qt5
 		--with-extra-buildid="${gentoo_buildid}"
