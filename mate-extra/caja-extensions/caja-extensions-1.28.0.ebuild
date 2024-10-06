@@ -27,7 +27,7 @@ COMMON_DEPEND=">=dev-libs/glib-2.50:2
 		>=dev-libs/dbus-glib-0.60
 		>=sys-apps/dbus-1
 	)
-	open-terminal? ( >=mate-base/mate-desktop-1.28.0 )
+	open-terminal? ( >=mate-base/mate-desktop-$(ver_cut 1-2) )
 	pidgin? ( >=dev-libs/dbus-glib-0.60 )
 	upnp? ( >=net-libs/gupnp-1.6.5 )
 	xattr? ( sys-apps/attr )
