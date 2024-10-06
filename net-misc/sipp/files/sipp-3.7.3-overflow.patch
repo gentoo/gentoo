@@ -1,0 +1,84 @@
+https://bugs.gentoo.org/940748
+https://github.com/SIPp/sipp/commit/fdc0c97e1d8acbe4de0d89cf26dfe74bf9b413ed
+
+From fdc0c97e1d8acbe4de0d89cf26dfe74bf9b413ed Mon Sep 17 00:00:00 2001
+From: Orgad Shaneh <orgad.shaneh@audiocodes.com>
+Date: Wed, 11 Sep 2024 20:55:06 +0300
+Subject: [PATCH] Fix 32-bit compilation
+
+--- a/src/call.cpp
++++ b/src/call.cpp
+@@ -1563,8 +1563,8 @@ char * call::get_last_header(const char * name)
+     if (name[len - 1] == ':') {
+         return get_header(last_recv_msg, name, false);
+     } else {
+-        char with_colon[MAX_HEADER_LEN];
+-        sprintf(with_colon, "%s:", name);
++        char with_colon[MAX_HEADER_LEN+2];
++        snprintf(with_colon, MAX_HEADER_LEN+2, "%s:", name);
+         return get_header(last_recv_msg, with_colon, false);
+     }
+ }
+@@ -1604,8 +1604,8 @@ char * call::get_last_request_uri()
+     }
+ 
+     last_request_uri[0] = '\0';
+-    if (tmp && (tmp_len > 0)) {
+-        strncpy(last_request_uri, tmp, tmp_len);
++    if (tmp_len > 0) {
++        memcpy(last_request_uri, tmp, tmp_len);
+     }
+     last_request_uri[tmp_len] = '\0';
+ 
+--- a/src/rtpstream.cpp
++++ b/src/rtpstream.cpp
+@@ -2702,7 +2702,7 @@ void rtpstream_audioecho_thread(void* param)
+                 pthread_mutex_lock(&debugremutexaudio);
+                 if (debugrefileaudio != nullptr)
+                 {
+-                    fprintf(debugrefileaudio, "DATA SUCCESSFULLY RECEIVED [AUDIO] nr = %ld...", nr);
++                    fprintf(debugrefileaudio, "DATA SUCCESSFULLY RECEIVED [AUDIO] nr = %d...", int(nr));
+                 }
+                 for (int i = 0; i < 12; i++)
+                 {
+@@ -2780,7 +2780,8 @@ void rtpstream_audioecho_thread(void* param)
+                     pthread_mutex_lock(&debugremutexaudio);
+                     if (debugrefileaudio != nullptr)
+                     {
+-                        fprintf(debugrefileaudio, "DATA SUCCESSFULLY SENT [AUDIO] seq_num = [%u] -- MISMATCHED RECV/SENT BYTE COUNT -- errno = %d nr = %ld ns = %ld\n", seq_num, errno, nr, ns);
++                        fprintf(debugrefileaudio, "DATA SUCCESSFULLY SENT [AUDIO] seq_num = [%u] -- MISMATCHED RECV/SENT BYTE COUNT -- errno = %d nr = %d ns = %d\n",
++                                seq_num, errno, int(nr), int(ns));
+                     }
+                     pthread_mutex_unlock(&debugremutexaudio);
+                 } else {
+@@ -2961,7 +2962,7 @@ void rtpstream_videoecho_thread(void* param)
+                 pthread_mutex_lock(&debugremutexvideo);
+                 if (debugrefilevideo != nullptr)
+                 {
+-                    fprintf(debugrefilevideo, "DATA SUCCESSFULLY RECEIVED [VIDEO] nr = %ld...", nr);
++                    fprintf(debugrefilevideo, "DATA SUCCESSFULLY RECEIVED [VIDEO] nr = %d...", int(nr));
+                 }
+                 for (int i = 0; i < 12; i++)
+                 {
+@@ -3038,7 +3039,8 @@ void rtpstream_videoecho_thread(void* param)
+                     pthread_mutex_lock(&debugremutexvideo);
+                     if (debugrefilevideo != nullptr)
+                     {
+-                        fprintf(debugrefilevideo, "DATA SUCCESSFULLY SENT [VIDEO] seq_num = [%u] -- MISMATCHED RECV/SENT BYTE COUNT -- errno = %d nr = %ld ns = %ld\n", seq_num, errno, nr, ns);
++                        fprintf(debugrefilevideo, "DATA SUCCESSFULLY SENT [VIDEO] seq_num = [%u] -- MISMATCHED RECV/SENT BYTE COUNT -- errno = %d nr = %d ns = %d\n",
++                                seq_num, errno, int(nr), int(ns));
+                     }
+                     pthread_mutex_unlock(&debugremutexvideo);
+                 } else {
+--- a/src/sip_parser.cpp
++++ b/src/sip_parser.cpp
+@@ -455,7 +455,7 @@ static const char* internal_find_header(const char* msg, const char* name, const
+         ptr = strchr(ptr, '\n');
+         if (!ptr || ptr[-1] != '\r' || (ptr[1] == '\r' && ptr[2] == '\n')) {
+             if (ptr && ptr[-1] != '\r') {
+-                WARNING("Missing CR during header scan at pos %ld", ptr - msg);
++                WARNING("Missing CR during header scan at pos %d", int(ptr - msg));
+                 /* continue? */
+             }
+             return nullptr;
+
