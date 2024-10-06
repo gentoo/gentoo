@@ -20,7 +20,7 @@ KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 DEPEND="
 	app-arch/lz4:=
-	dev-java/mvel:2.5
+	dev-java/mvel:0
 	dev-libs/xxhash:0
 	>=virtual/jdk-1.8:*
 	test? ( dev-java/randomized-runner:0 )"
@@ -52,7 +52,7 @@ src_compile() {
 	einfo "Code generation"
 	"$(java-config -J)" \
 		-Dout.dir="src/java" \
-		-cp "$(java-pkg_getjars --build-only mvel-2.5)" \
+		-cp "$(java-pkg_getjars --build-only mvel)" \
 		org.mvel2.sh.Main \
 		src/build/gen_sources.mvel \
 		|| die
