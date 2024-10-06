@@ -12,7 +12,7 @@ S="${WORKDIR}"/${MY_PN}-${PV}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ppc64 ~riscv ~sparc ~x86"
 
 RDEPEND="
 	sys-apps/grep[pcre]
