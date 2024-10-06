@@ -18,4 +18,7 @@
 		various technologies. Currently bridging between UDP tunnels, Ethernet
 		and TAP interfaces is supported. Packet capture is also supported.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">GNS3/ubridge</remote-id>
+	</upstream>
 </pkgmetadata>
