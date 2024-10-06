@@ -42,7 +42,7 @@ COMMON_DEPEND="
 "
 
 RDEPEND="${COMMON_DEPEND}
-	mate-base/mate-desktop
+	>=mate-base/mate-desktop-$(ver_cut 1-2)
 	virtual/libintl
 	x11-apps/xdpyinfo
 	x11-misc/xdg-user-dirs
