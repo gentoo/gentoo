@@ -18,7 +18,7 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.50:2
 	dev-libs/libxml2:2
 	>=mate-base/mate-panel-1.28.0
-	>=mate-base/mate-desktop-1.28.0
+	>=mate-base/mate-desktop-$(ver_cut 1-2)
 	>=media-libs/libcanberra-0.13[gtk3]
 	>=media-libs/libmatemixer-1.28.0
 	x11-libs/cairo
