@@ -53,7 +53,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.3.2-disable-version-check.patch"
 	"${FILESDIR}/${PN}-2.3.3-fix-exception.patch"
 	"${FILESDIR}/${PN}-2.3.3-backport-pr368.patch"
-	"${FILESDIR}/${PN}-2.3.3-wx3.2.patch"
 	"${FILESDIR}/${PN}-2.3.3-use-xdg-open-as-preview-default.patch"
 )
 
