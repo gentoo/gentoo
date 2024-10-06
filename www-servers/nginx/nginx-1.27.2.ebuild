@@ -746,7 +746,7 @@ src_install() {
 	systemd_newunit "${FILESDIR}"/nginx.service-r1 nginx.service
 
 	doman man/nginx.8
-	dodoc CHANGES* README
+	dodoc CHANGES* README.md
 
 	# just keepdir. do not copy the default htdocs files (bug #449136)
 	keepdir /var/www/localhost
