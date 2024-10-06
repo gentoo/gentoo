@@ -13,7 +13,7 @@ S="${WORKDIR}"/${PN}.el-${PV}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~sparc ~x86"
 RESTRICT="test"  # Tests fail
 
 RDEPEND="
