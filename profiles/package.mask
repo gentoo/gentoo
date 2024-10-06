@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2024-10-06)
+# Obsolete slot without reverse dependencies. Use the newer slot
+# instead. Removal on 2024-11-08.
+dev-ruby/base64:0.1
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org>
 # This version is known to break on certain systems. At the
 # same time it fixes several reported issues. Masked until
