@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/puppetlabs/puppet-lint"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 PATCH_NAME="${PN}-4.2.3-pr181-fix-warnings.patch"
 #SRC_URI+=" https://github.com/puppetlabs/puppet-lint/pull/181.patch -> ${PATCH_NAME} "
