@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="apt">Enables Debians APT support</flag>
+		<flag name="compose">Enable appstream compose</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">ximion/appstream</remote-id>

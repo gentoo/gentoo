@@ -21,7 +21,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Distributions/AppStream/"
 LICENSE="LGPL-2.1+ GPL-2+"
 # check as_api_level
 SLOT="0/4"
-IUSE="apt doc +introspection qt5 systemd test"
+IUSE="apt compose doc +introspection qt5 systemd test"
 RESTRICT="test" # bug 691962
 
 RDEPEND="
@@ -63,7 +63,7 @@ src_configure() {
 	local emesonargs=(
 		-Dapidocs=false
 		-Ddocs=false
-		-Dcompose=false
+		-Dcompose=$(usex compose true false)
 		-Dmaintainer=false
 		-Dstatic-analysis=false
 		-Dstemming=true
