@@ -51,6 +51,11 @@ src_prepare() {
 	eautoreconf
 }
 
+src_compile() {
+	unset ARCH
+	default
+}
+
 src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
