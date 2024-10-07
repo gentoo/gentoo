@@ -15,10 +15,10 @@
 	</longdescription>
 	<use>
 		<flag name="3d">Build QGIS 3D library using <pkg>dev-qt/qt3d</pkg></flag>
-		<flag name="georeferencer">Determines whether georeferencer plugin should be built</flag>
+		<flag name="georeferencer">Build the georeferencer plugin</flag>
 		<flag name="grass">Add support for grass</flag>
 		<flag name="hdf5">Enable MDAL support for <pkg>sci-libs/hdf5</pkg></flag>
-		<flag name="mapserver">Determines whether mapserver should be built</flag>
+		<flag name="mapserver">Build the mapserver</flag>
 		<flag name="netcdf">Enable MDAL support for GRIB and XMDF formats</flag>
 		<flag name="pdal">Enable support for PDAL for point clouds via <pkg>sci-libs/pdal</pkg></flag>
 		<flag name="polar">Enable support for the polar coordinate system via <pkg>x11-libs/qwtpolar</pkg></flag>
@@ -27,6 +27,9 @@
 		<flag name="webengine">Enable webengine support using <pkg>dev-qt/qtwebengine</pkg></flag>
 	</use>
 	<upstream>
+		<bugs-to>https://github.com/qgis/QGIS/issues</bugs-to>
+		<changelog>https://qgis.org/project/visual-changelogs/</changelog>
+		<doc>https://docs.qgis.org/latest/en/docs/index.html</doc>
 		<remote-id type="github">qgis/QGIS</remote-id>
 	</upstream>
 </pkgmetadata>
