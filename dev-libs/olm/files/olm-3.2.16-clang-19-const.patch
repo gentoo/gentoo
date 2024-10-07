@@ -1,0 +1,17 @@
+Fixes compilation on Clang 19.
+Patch by Marco Rebhan <me@dblsaiko.net>
+Fixes https://bugs.gentoo.org/940764
+
+Signed-off-by: Gavin D. Howard <gavin@gavinhoward.com>
+
+--- a/include/olm/list.hh
++++ b/include/olm/list.hh
+@@ -99,7 +99,7 @@ public:
+             return *this;
+         }
+         T * this_pos = _data;
+-        T * const other_pos = other._data;
++        T const * other_pos = other._data;
+         while (other_pos != other._end) {
+             *this_pos = *other;
+             ++this_pos;
