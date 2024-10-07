@@ -10,7 +10,7 @@ MY_P=linux-${PV}
 # https://koji.fedoraproject.org/koji/packageinfo?packageID=8
 # forked to https://github.com/projg2/fedora-kernel-config-for-gentoo
 CONFIG_VER=6.11.1-gentoo
-GENTOO_CONFIG_VER=g13
+GENTOO_CONFIG_VER=g14
 
 DESCRIPTION="Linux kernel built from vanilla upstream sources"
 HOMEPAGE="
