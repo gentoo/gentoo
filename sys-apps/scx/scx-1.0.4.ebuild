@@ -496,6 +496,7 @@ RDEPEND="
 	dev-util/bpftool
 "
 BDEPEND="
+	app-misc/jq
 	$(llvm_gen_dep '
 		sys-devel/clang:${LLVM_SLOT}=
 	')
