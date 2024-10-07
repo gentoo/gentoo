@@ -19,6 +19,10 @@ HOMEPAGE="https://savannah.gnu.org/projects/config"
 LICENSE="GPL-3+-with-autoconf-exception"
 SLOT="0"
 
+PATCHES=(
+	"${FILESDIR}"/gnuconfig-20230731-llvm-libc.patch
+)
+
 maint_pkg_create() {
 	cd "${S}" || die
 
