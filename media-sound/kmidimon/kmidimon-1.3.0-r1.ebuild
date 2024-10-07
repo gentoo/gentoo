@@ -19,7 +19,7 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	media-libs/alsa-lib
-	>=media-sound/drumstick-2.4.0
+	<media-sound/drumstick-2.7.0
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
