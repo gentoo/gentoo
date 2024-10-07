@@ -1,22 +1,23 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="sqlite?"
 DISTUTILS_USE_PEP517=hatchling
 DISTUTILS_SINGLE_IMPL=1
+PYPI_NO_NORMALIZE=1
+PYPI_PN=LinkChecker
 
-inherit bash-completion-r1 distutils-r1 multiprocessing optfeature
+inherit bash-completion-r1 distutils-r1 multiprocessing optfeature pypi
 
 DESCRIPTION="Check websites for broken links"
 HOMEPAGE="https://github.com/linkchecker/linkchecker"
-SRC_URI="https://github.com/linkchecker/linkchecker/releases/download/v${PV}/LinkChecker-${PV}.tar.gz"
-KEYWORDS="amd64 x86"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="sqlite"
 
 RDEPEND="
@@ -30,15 +31,15 @@ BDEPEND="
 	test? (
 		$(python_gen_cond_dep '
 			app-text/pdfminer[${PYTHON_USEDEP}]
-			dev-python/parameterized[${PYTHON_USEDEP}]
+			dev-python/cryptography[${PYTHON_USEDEP}]
 			dev-python/pyftpdlib[${PYTHON_USEDEP}]
 			dev-python/pyopenssl[${PYTHON_USEDEP}]
-			dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		')
 		sys-devel/gettext
 	)
 "
 
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 PATCHES=( "${FILESDIR}/${PN}-9.3-bash-completion.patch" )
@@ -49,10 +50,9 @@ DOCS=(
 )
 
 python_test() {
-	# Telnet test uses miniboa which is not available in Gentoo
-	rm -f tests/checker/test_telnet.py
-	# Multiple warnings about unclosed test sockets with epytest
-	pytest -vra -n "$(makeopts_jobs)"|| die
+	# epytest overrides bs4 ignores from pytest.ini
+	# and also outputs multiple warnings about unclosed test sockets
+	pytest -vra -n "$(makeopts_jobs)" || die
 }
 
 python_install_all() {

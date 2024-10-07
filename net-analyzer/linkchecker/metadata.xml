@@ -14,5 +14,6 @@
   </use>
   <upstream>
     <remote-id type="github">linkchecker/linkchecker</remote-id>
+    <remote-id type="pypi">LinkChecker</remote-id>
   </upstream>
 </pkgmetadata>
