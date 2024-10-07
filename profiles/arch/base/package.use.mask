@@ -308,11 +308,6 @@ sys-firmware/seabios debug
 # upstream tarballs for tier-2 arches do not ship docs
 dev-lang/rust-bin doc
 
-# Craig Andrews <candrews@gentoo.org> (2019-07-03)
-# Raspberry Pi support is only available on arm.
-# Mask raspberry-pi USE globally, unmask on arm.
-media-tv/kodi raspberry-pi
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-22)
 # mask here and unmask in profiles for specific arches
 dev-java/openjdk:8 javafx

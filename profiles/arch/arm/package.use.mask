@@ -255,10 +255,6 @@ dev-util/schroot zfs
 # PPS should work on all arches, but only keyworded on some arches
 >=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
 
-# Craig Andrews <candrews@gentoo.org> (2019-07-03)
-# Unmask Raspberry Pi support on arm.
-media-tv/kodi -raspberry-pi
-
 # Matt Turner <mattst88@gentoo.org> (2019-06-20)
 # dev-lang/spidermonkey:60[jit] fails to build on most platforms, but does
 # build on arm.

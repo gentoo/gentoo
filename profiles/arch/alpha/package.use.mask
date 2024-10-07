@@ -561,10 +561,6 @@ media-libs/gst-plugins-base ivorbis
 # remove mask if/when media-gfx/argyllcms is keywored here.
 x11-misc/colord argyllcms extra-print-profiles
 
-# Raúl Porcel <armin76@gentoo.org> (2012-12-30)
-# Needs testing
-media-libs/phonon vlc
-
 # Raúl Porcel <armin76@gentoo.org> (2012-05-28)
 # Needs x11-misc/lightdm(which also requires some other deps)
 x11-misc/xscreensaver new-login

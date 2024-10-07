@@ -92,7 +92,6 @@ media-libs/mesa vulkan-overlay
 # Deps not yet stable
 # Migrated from package.use.mask
 app-text/asciidoc test
-media-libs/phonon vlc
 net-misc/openssh security-key
 dev-util/geany-plugins markdown
 app-arch/rpm test
