@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-POSTGRES_COMPAT=( {11..15} )
+POSTGRES_COMPAT=( 9.6 {10..15} )
 POSTGRES_USEDEP="server"
 inherit autotools postgres-multi toolchain-funcs
 
@@ -15,7 +15,7 @@ if [[ ${PV} = *9999* ]] ; then
 else
 	PGIS="$(ver_cut 1-2)"
 	SRC_URI="https://download.osgeo.org/postgis/source/${MY_P}.tar.gz"
-	KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="Geographic Objects for PostgreSQL"
@@ -53,9 +53,10 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
+	"${FILESDIR}/${PN}-2.2.0-arflags.patch"
+	"${FILESDIR}/${PN}-3.0.3-avoid-calling-ar-directly.patch"
 	"${FILESDIR}/${PN}-3.0.3-try-other-cpp-names.patch"
-	# source: https://github.com/google/flatbuffers/pull/7897
-	"${FILESDIR}/${P}-flatbuffers-abseil-2023.patch" # bug 905378
+	"${FILESDIR}/${PN}-3.3.2-flatbuffers-abseil-2023.patch"
 )
 
 src_prepare() {
@@ -137,6 +138,6 @@ pkg_postinst() {
 		base_uri+="${PGIS}"
 	fi
 
-	elog "To finish installing PostGIS, follow the directions detailed at:"
-	elog "${base_uri}/postgis_installation.html#create_new_db_extensions"
+	elog "To create a spatial database follow the directions detailed at:"
+	elog "${base_uri}/postgis_administration.html#create_spatial_db"
 }

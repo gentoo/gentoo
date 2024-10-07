@@ -21,6 +21,11 @@
 		</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://postgis.net/development/bug_reporting/</bugs-to>
+		<changelog>https://postgis.net/news/</changelog>
+		<doc>https://postgis.net/documentation/</doc>
+		<!-- https://git.osgeo.org/gitea/postgis/postgis/ -->
+		<!-- mirrors below -->
 		<remote-id type="github">postgis/postgis</remote-id>
 		<remote-id type="gitlab">postgis/postgis</remote-id>
 	</upstream>
