@@ -12,7 +12,6 @@
 <kde-frameworks/kglobalaccel-5.116.0-r1 kf6compat
 <kde-frameworks/kguiaddons-5.116.0-r1 kf6compat
 <kde-frameworks/kwallet-5.116.0-r1 kf6compat
-<kde-plasma/libplasma-5.116.0-r1 kf6compat
 
 # Joonas Niilola <juippis@gentoo.org> (2023-07-14)
 # Calendar is broken with some languages on 115.0 release with <icu-75.
