@@ -80,7 +80,8 @@ RDEPEND="${DEPEND}
 		extras? ( ${EXTRA_RDEPEND} )
 	)
 "
-BDEPEND="test? ( ${TEST_DEPEND} )"
+BDEPEND="app-text/ghostscript-gpl
+	test? ( ${TEST_DEPEND} )"
 
 src_prepare() {
 	default
