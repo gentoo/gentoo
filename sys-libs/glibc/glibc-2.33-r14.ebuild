@@ -411,6 +411,11 @@ setup_flags() {
 	# https://sourceware.org/PR27837
 	filter-ldflags '-Wl,--relax'
 
+	# Fails to link (bug #940709) in some cases but even if it manages to,
+	# subtle runtime breakage will occur because the linker scripts need
+	# adaptation. Mentioned in PR21557#c0.
+	filter-ldflags '-Wl,--gc-sections'
+
 	# #492892
 	filter-flags -frecord-gcc-switches
 

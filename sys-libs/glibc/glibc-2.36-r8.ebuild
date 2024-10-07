@@ -434,6 +434,11 @@ setup_flags() {
 	# https://sourceware.org/PR27837
 	filter-ldflags '-Wl,--relax'
 
+	# Fails to link (bug #940709) in some cases but even if it manages to,
+	# subtle runtime breakage will occur because the linker scripts need
+	# adaptation. Mentioned in PR21557#c0.
+	filter-ldflags '-Wl,--gc-sections'
+
 	# some weird software relies on sysv hashes in glibc, bug 863863, bug 864100
 	# we have to do that here already so mips can filter it out again :P
 	if use hash-sysv-compat ; then
