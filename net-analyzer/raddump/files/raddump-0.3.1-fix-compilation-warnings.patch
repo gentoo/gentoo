@@ -1,0 +1,34 @@
+---
+ pktrecord.c | 2 +-
+ raddump.c   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pktrecord.c b/pktrecord.c
+index d45dcc6..7ba9ce0 100644
+--- a/pktrecord.c
++++ b/pktrecord.c
+@@ -169,7 +169,7 @@ int tcpdump_next(struct prec_handle *ph, struct pktrecord *p) {
+   
+ #ifdef HAVE_PCAP_NEXT_EX
+   if (pcap_next_ex(ph->pcap_handle, &(ph->pcap_hdr),
+-		   &(p->pkt_data)) != 1) return 0;
++		   (const u_char**) &(p->pkt_data)) != 1) return 0;
+ #else
+   /* older version of libpcap */
+   p->pkt_data = (unsigned char *)pcap_next(ph->pcap_handle, ph->pcap_hdr);
+diff --git a/raddump.c b/raddump.c
+index ed945e0..265e4e2 100644
+--- a/raddump.c
++++ b/raddump.c
+@@ -199,7 +199,7 @@ int main(int argc, char **argv) {
+       sprintf(vlan_id_string,"vlan %d ",VLAN_ID(&vh));
+     }
+ 
+-    printf("%02d:%02d:%02d.%06d radius %s%s:%d > %s:%d %s %u\n",
++    printf("%02d:%02d:%02d.%06ld radius %s%s:%d > %s:%d %s %u\n",
+ 	   localt.tm_hour, localt.tm_min, localt.tm_sec,
+ 	   tstamp.tv_usec,
+ 	   vlan_id_string,
+-- 
+2.44.2
+
