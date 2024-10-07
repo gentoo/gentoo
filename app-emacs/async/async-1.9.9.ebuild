@@ -22,7 +22,7 @@ else
 		-> ${REAL_P}.tar.gz"
 	S="${WORKDIR}/${REAL_PN}-${COMMIT}"
 
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2+"
