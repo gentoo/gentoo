@@ -9,7 +9,7 @@ inherit ecm-common gear.kde.org
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv x86"
 
 RDEPEND="
 	!<kde-apps/kdesdk-thumbnailers-24.05.2-r1:5
