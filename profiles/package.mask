@@ -33,6 +33,46 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2024-10-08)
+# Masked for testing and (mostly) to avoid upgrade noise given
+# PyQt6-6.7.x is known broken with it and depends on <6.8. Feel
+# free to unmask early if not using PyQt6.
+=dev-python/pyside6-6.8.0*
+=dev-python/pyside6-tools-6.8.0*
+=dev-python/shiboken6-6.8.0*
+=dev-qt/qt-docs-6.8.0*
+=dev-qt/qt3d-6.8.0*
+=dev-qt/qt5compat-6.8.0*
+=dev-qt/qtbase-6.8.0*
+=dev-qt/qtcharts-6.8.0*
+=dev-qt/qtconnectivity-6.8.0*
+=dev-qt/qtdeclarative-6.8.0*
+=dev-qt/qthttpserver-6.8.0*
+=dev-qt/qtimageformats-6.8.0*
+=dev-qt/qtlanguageserver-6.8.0*
+=dev-qt/qtlocation-6.8.0*
+=dev-qt/qtmultimedia-6.8.0*
+=dev-qt/qtnetworkauth-6.8.0*
+=dev-qt/qtpositioning-6.8.0*
+=dev-qt/qtquick3d-6.8.0*
+=dev-qt/qtquicktimeline-6.8.0*
+=dev-qt/qtremoteobjects-6.8.0*
+=dev-qt/qtscxml-6.8.0*
+=dev-qt/qtsensors-6.8.0*
+=dev-qt/qtserialbus-6.8.0*
+=dev-qt/qtserialport-6.8.0*
+=dev-qt/qtshadertools-6.8.0*
+=dev-qt/qtspeech-6.8.0*
+=dev-qt/qtsvg-6.8.0*
+=dev-qt/qttools-6.8.0*
+=dev-qt/qttranslations-6.8.0*
+=dev-qt/qtvirtualkeyboard-6.8.0*
+=dev-qt/qtwayland-6.8.0*
+=dev-qt/qtwebchannel-6.8.0*
+=dev-qt/qtwebengine-6.8.0*
+=dev-qt/qtwebsockets-6.8.0*
+=dev-qt/qtwebview-6.8.0*
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-10-07)
 # No more revdeps, merged into kde-frameworks/kpeople upstream.
 # Removal on 2024-11-06.
