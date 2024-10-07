@@ -1,0 +1,10 @@
+--- a/setup.py	2024-10-07 09:26:57.170224220 -0000
++++ b/setup.py	2024-10-07 09:31:15.301213425 -0000
+@@ -411,6 +411,7 @@
+             "ASM Builds for BoringSSL currently not supported on:",
+             boringssl_asm_platform,
+         )
++asm_key = ''
+ if asm_key:
+     asm_files = grpc_core_dependencies.ASM_SOURCE_FILES[asm_key]
+ else:

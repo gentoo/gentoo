@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">grpcio</remote-id>
+		<remote-id type="github">grpc/grpc</remote-id>
+	</upstream>
+	<use>
+		<flag name="system-cares">Use the system-cares <pkg>net-dns/c-ares</pkg> instead of bundled</flag>
+		<flag name="system-re">Use the system-re <pkg>dev-libs/re2</pkg> instead of bundled</flag>
+		<flag name="system-ssl">Use the system-ssl <pkg>dev-libs/openssl</pkg> instead of bundled</flag>
+		<flag name="system-zlib">Use the system-zlib <pkg>sys-libs/zlib</pkg> instead of bundled</flag>
+	</use>
+</pkgmetadata>
