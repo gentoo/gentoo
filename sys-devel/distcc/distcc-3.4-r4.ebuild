@@ -153,6 +153,7 @@ src_install() {
 
 	insinto /usr/share/shadowman/tools
 	newins - distcc <<<"${EPREFIX}/usr/lib/distcc/bin"
+	# Dummy symlinks to distccd to satisfy command whitelist, bug 650986
 	newins - distccd <<<"${EPREFIX}/usr/lib/distcc"
 
 	rm -r "${ED}/etc/default" || die
