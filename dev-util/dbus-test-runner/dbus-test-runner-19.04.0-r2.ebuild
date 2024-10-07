@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit python-single-r1
 
 DESCRIPTION="Run executables under a new DBus session for testing"
