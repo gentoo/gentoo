@@ -15,10 +15,6 @@ games-emulation/rmg -dynarec
 >=media-libs/mesa-24.1 llvm_slot_15 llvm_slot_16
 >=dev-util/intel_clc-24.1 llvm_slot_15 llvm_slot_16
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-07-12)
-# KDE PIM 6 is not being keyworded here
-kde-apps/libkgapi:5 kf6compat
-
 # Michael Orlitzky <mjo@gentoo.org> (2024-07-09)
 # The opcache extension fails to build on hardened x86, but only
 # if the JIT is enabled. Bug 930145.

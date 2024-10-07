@@ -21,10 +21,6 @@ sci-mathematics/maxima vtk
 sci-libs/fplll qd
 sci-mathematics/lcalc double-double quad-double
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-07-06)
-# KDE PIM is not keyworded here
-kde-apps/libkgapi:5 kf6compat
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-07-01)
 # USE="kf6compat,kaccounts" depends on kde-frameworks/purpose:6[webengine]
 # which is package.use.mask'ed on these arches. We cannot mask the
