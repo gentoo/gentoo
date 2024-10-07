@@ -11,7 +11,7 @@ HOMEPAGE="https://userbase.kde.org/QCA"
 LICENSE="LGPL-2.1"
 SLOT="2"
 KEYWORDS=""
-IUSE="botan debug doc examples gcrypt gpg logger nss pkcs11 +qt5 qt6 sasl softstore +ssl test"
+IUSE="botan debug doc examples gcrypt gpg logger nss pkcs11 qt5 +qt6 sasl softstore +ssl test"
 REQUIRED_USE="|| ( qt5 qt6 )"
 
 RESTRICT="!test? ( test )"
