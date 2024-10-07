@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit distutils-r1 toolchain-funcs multilib-minimal
 
@@ -153,6 +153,19 @@ src_compile() {
 		cd python || die
 		distutils-r1_src_compile
 	fi
+}
+
+src_test() {
+	multilib-minimal_src_test
+
+	if use python ; then
+		cd python || die
+		distutils-r1_src_test
+	fi
+}
+
+python_test() {
+	eunittest
 }
 
 multilib_src_install() {
