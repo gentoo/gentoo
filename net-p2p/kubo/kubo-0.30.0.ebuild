@@ -5,14 +5,22 @@ EAPI=8
 
 inherit go-module shell-completion systemd
 
+FS_MIG_V="1.0.1"
+FS_MIG_N="fs-repo-15-to-16"
+MY_FS_MIG="${FS_MIG_N}-v${FS_MIG_V}"
+FS_MIG_DIR="fs-repo-migrations-${MY_FS_MIG}"
+
 DESCRIPTION="Main implementation of IPFS"
 HOMEPAGE="https://ipfs.tech https://github.com/ipfs/kubo/"
 SRC_URI="https://github.com/ipfs/${PN}/releases/download/v${PV}/kubo-source.tar.gz -> ${P}.tar.gz"
+SRC_URI+=" https://github.com/ipfs/fs-repo-migrations/archive/refs/tags/${FS_MIG_N}/v${FS_MIG_V}.tar.gz -> ${P}-${MY_FS_MIG}.tar.gz"
+SRC_URI+=" https://gentoo.kropotkin.rocks/go-pkgs/${MY_FS_MIG}-vendor.tar.xz -> ${P}-${MY_FS_MIG}-vendor.tar.xz"
+
 S="${WORKDIR}"
 
 LICENSE="Apache-2.0 BSD BSD-2 CC0-1.0 ISC MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	acct-group/ipfs
@@ -22,6 +30,12 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 DOCS=( CHANGELOG.md CONTRIBUTING.md README.md docs/ )
+
+src_prepare() {
+	default
+
+	sed -i '/fs-repo-1[0-9]-to-*/d' "${FS_MIG_DIR}/ignored-migrations" || die
+}
 
 src_compile() {
 	local mygoargs
@@ -35,6 +49,9 @@ src_compile() {
 	IPFS_PATH="" ./ipfs commands completion bash > ipfs-completion.bash || die
 	IPFS_PATH="" ./ipfs commands completion fish > ipfs-completion.fish || die
 	IPFS_PATH="" ./ipfs commands completion zsh > ipfs-completion.zsh || die
+
+	cd "${FS_MIG_DIR}" || die
+	emake
 }
 
 src_test() {
@@ -57,6 +74,8 @@ src_install() {
 
 	keepdir /var/log/ipfs
 	fowners -R ipfs:ipfs /var/log/ipfs
+
+	find "${FS_MIG_DIR}" -executable -type f -name "fs-repo-*" -exec dobin {} \; || die
 }
 
 pkg_postinst() {
