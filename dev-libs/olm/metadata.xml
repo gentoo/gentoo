@@ -11,7 +11,7 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://gitlab.matrix.org/matrix-org/olm</bugs-to>
-		<remote-id type="gitlab">matrix-org/olm</remote-id>
+		<remote-id type="github">matrix-org/olm</remote-id>
 	</upstream>
 	<longdescription lang="en">
 		Official, audited implementation of the olm and megolm cryptographic
