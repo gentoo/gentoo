@@ -1,12 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PLOCALES="cs de en es fi fr hr hu id_ID it ja nl pl pt_BR ru sv uk zh_TW"
-inherit flag-o-matic plocale qmake-utils xdg
+inherit cmake xdg
 
-if [[ ${PV} != *9999 ]] ; then
+if [[ ${PV} != *9999* ]] ; then
 	SRC_URI="https://github.com/openstreetmap/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 else
@@ -15,87 +14,58 @@ else
 fi
 
 DESCRIPTION="Qt based map editor for the openstreetmap.org project"
-HOMEPAGE="http://www.merkaartor.be https://github.com/openstreetmap/merkaartor"
+HOMEPAGE="https://www.merkaartor.be https://github.com/openstreetmap/merkaartor"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug exif gps libproxy webengine"
+IUSE="exif gps libproxy webengine zbar"
 
+# bundles qtsingleapplication again, unfortunately
 DEPEND="
-	dev-qt/qtconcurrent:5
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtprintsupport:5
-	dev-qt/qtsingleapplication[X,qt5(+)]
-	dev-qt/qtsvg:5
-	dev-qt/qtwidgets:5
-	dev-qt/qtxml:5
+	dev-libs/protobuf:=
+	dev-qt/qt5compat:6
+	dev-qt/qtbase:6[concurrent,gui,network,widgets,xml]
+	dev-qt/qtnetworkauth:6
+	dev-qt/qtsvg:6
 	sci-libs/gdal:=
 	sci-libs/proj:=
 	sys-libs/zlib
 	exif? ( media-gfx/exiv2:= )
 	gps? ( >=sci-geosciences/gpsd-3.17-r2:= )
-	libproxy? ( net-libs/libproxy )
-	webengine? ( dev-qt/qtwebengine:5[widgets] )
+	libproxy? ( >=net-libs/libproxy-0.5 )
+	webengine? ( dev-qt/qtwebengine:6[widgets] )
+	zbar? ( media-gfx/zbar )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	dev-qt/linguist-tools:5
+	dev-qt/qttools:6[linguist]
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-0.18.3-sharedir-pluginsdir.patch ) # bug 621826
-
 DOCS=( AUTHORS CHANGELOG )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.20.0-disable-git.patch # downstream patch
+	# pending upstream PR: https://github.com/openstreetmap/merkaartor/pull/291
+	"${FILESDIR}"/${PN}-0.20.0-GNUInstallDirs.patch
+)
+
 src_prepare() {
-	default
+	# no Qt5 automagic, please
+	sed -e "/^ *find_package.*QT NAMES/s/Qt5 //" -i CMakeLists.txt || die
 
-	rm -r 3rdparty || die "Failed to remove bundled libs"
-
-	my_rm_loc() {
-		sed -i -e "s:../translations/${PN}_${1}.\(ts\|qm\)::" src/src.pro || die
-		rm "translations/${PN}_${1}.ts" || die
-	}
-
-	if [[ -n "$(plocale_get_locales)" ]]; then
-		plocale_for_each_disabled_locale my_rm_loc
-		$(qt5_get_bindir)/lrelease src/src.pro || die
-	fi
-
-	# build system expects to be building from git
-	if [[ ${PV} != *9999 ]] ; then
-		sed -i src/Config.pri -e "s:SION = .*:SION = \"${PV}\":g" || die
-	fi
+	cmake_src_prepare
 }
 
 src_configure() {
-	if has_version "<sci-libs/proj-8.0.0" ; then
-		# bug #685234
-		append-cppflags -DACCEPT_USE_OF_DEPRECATED_PROJ_API_H
-	fi
-
-	# TRANSDIR_SYSTEM is for bug #385671
-	local myeqmakeargs=(
-		PREFIX="${EPREFIX}/usr"
-		LIBDIR="${EPREFIX}/usr/$(get_libdir)"
-		PLUGINS_DIR="/usr/$(get_libdir)/${PN}/plugins"
-		SHARE_DIR_PATH="/usr/share/${PN}"
-		TRANSDIR_MERKAARTOR="${EPREFIX}/usr/share/${PN}/translations"
-		TRANSDIR_SYSTEM="${EPREFIX}/usr/share/qt5/translations"
-		SYSTEM_QTSA=1
-		NODEBUG=$(usex debug 0 1)
-		GEOIMAGE=$(usex exif 1 0)
-		GPSDLIB=$(usex gps 1 0)
-		LIBPROXY=$(usex libproxy 1 0)
-		USEWEBENGINE=$(usex webengine 1 0)
+	local mycmakeargs=(
+		-DGEOIMAGE=$(usex exif)
+		-DGPSD=$(usex gps)
+		-DLIBPROXY=$(usex libproxy)
+		-DWEBENGINE=$(usex webengine)
+		-DZBAR=$(usex zbar)
+		-DEXTRA_TESTS=OFF
 	)
-	[[ ${PV} != *9999 ]] && myeqmakeargs+=( RELEASE=1 )
 
-	eqmake5 "${myeqmakeargs[@]}" Merkaartor.pro
-}
-
-src_install() {
-	emake install INSTALL_ROOT="${D}"
+	cmake_src_configure
 }

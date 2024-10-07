@@ -1,0 +1,13 @@
+Description: Don't use git for version information.
+Author: Bas Couwenberg <sebastic@debian.org>
+Forwarded: not-needed
+
+--- a/cmake/vcs.cmake
++++ b/cmake/vcs.cmake
+@@ -1,5 +1,5 @@
+ 
+-if (EXISTS "${CMAKE_SOURCE_DIR}/.git")
++if (EXISTS "${CMAKE_SOURCE_DIR}/.git" AND NOT EXISTS "${CMAKE_SOURCE_DIR}/debian")
+     # If git directory is present, we require git executable and gather our info from git commands.
+     find_package(Git)
+     if (NOT ${GIT_FOUND})
