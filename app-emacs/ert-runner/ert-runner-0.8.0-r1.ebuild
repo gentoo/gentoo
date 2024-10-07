@@ -54,7 +54,18 @@ SITEFILE="50${PN}-gentoo.el"
 src_prepare() {
 	elisp_src_prepare
 
-	sed "s|@SITELISP@|${EPREFIX}${SITELISP}/${PN}|" -i "./bin/${PN}" || die
+	# There are two "ert-runner" launchers,
+	# the one in "${S}" will be installed,
+	# the one in ./bin/ert-runner will be used only for tests.
+
+	# For later install.
+	sed "./bin/${PN}" \
+		-e "s|@SITELISP@|${EPREFIX}${SITELISP}/${PN}|" \
+		> "./${PN}.bash" \
+		|| die
+
+	# For tests.
+	sed -i "./bin/${PN}" -e "s|@SITELISP@|${S}|" || die
 }
 
 src_compile() {
@@ -75,13 +86,13 @@ src_test() {
 	chmod +x "${T}/bin/cask" || die
 	local -x PATH="${T}/bin:${PATH}" || die
 
-	edo ecukes --debug --reporter spec --script --verbose features
+	edo ecukes --debug --reporter spec --script --verbose ./features
 }
 
 src_install() {
 	elisp_src_install
-	elisp-install "${PN}/reporters" reporters/*.el{,c}
+	elisp-install "${PN}/reporters" ./reporters/*.el{,c}
 
 	exeinto /usr/bin
-	doexe "./bin/${PN}"
+	newexe "./${PN}.bash" "${PN}"
 }
