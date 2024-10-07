@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby30 ruby31"
+USE_RUBY="ruby31 ruby32 ruby33"
 inherit ruby-single
 
 DOCBOOKDIR="/usr/share/sgml/${PN/-//}"
