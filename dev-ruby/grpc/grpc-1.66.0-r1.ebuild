@@ -20,8 +20,10 @@ IUSE=""
 
 ruby_add_rdepend "
 	dev-ruby/googleapis-common-protos-types:1
-	>=dev-ruby/google-protobuf-3.24.4:3
+	>=dev-ruby/google-protobuf-3.24.4:0
 "
+
+pkg_setup() { :; }
 
 each_ruby_configure() {
 	export GRPC_RUBY_BUILD_PROCS="$(makeopts_jobs)"
