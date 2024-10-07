@@ -25,3 +25,10 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# avoid dep on coverage (to ignore warnings from coverage)
+	sed -i -e '/coverage/d' pyproject.toml || die
+}
