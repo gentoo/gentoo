@@ -3,6 +3,13 @@
 
 # New entries go on top.
 
+# Michael Orlitzky <mjo@gentoo.org> (2024-10-07)
+# Disable "webservices" support for gthumb because it pulls in the old
+# libsoup2 slot of webkit-gtk. Upstream hasn't really budged on this in
+# over two years. Fedora has disabled webservices support already, and
+# that makes it OK if we do it too, right? Bug 893700.
+media-gfx/gthumb webkit
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2024-09-21)
 # openjfx for OpenJDK 23 is not yet available.
 dev-java/openjdk:23 javafx
