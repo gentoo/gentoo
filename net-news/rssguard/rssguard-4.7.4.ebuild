@@ -15,60 +15,37 @@ SRC_URI="
 LICENSE="|| ( LGPL-3 GPL-2+ ) AGPL-3+ BSD GPL-3+ MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="libmpv mysql qt6 qtmultimedia +sqlite webengine"
+IUSE="libmpv mysql qtmultimedia +sqlite webengine"
 REQUIRED_USE="
 	|| ( mysql sqlite )
 	?? ( libmpv qtmultimedia )
 "
 
 BDEPEND="
-	!qt6? ( dev-qt/linguist-tools:5 )
-	qt6? ( dev-qt/qttools:6[linguist] )
+	dev-qt/qttools:6[linguist]
 "
 DEPEND="
+	dev-qt/qtbase:6[concurrent,dbus,gui,mysql?,network,sql,sqlite?,ssl,widgets]
+	dev-qt/qtdeclarative:6
+	dev-qt/qtmultimedia:6[gstreamer]
+	dev-qt/qt5compat:6
+	media-libs/libglvnd
 	sys-libs/zlib:=
-	libmpv? ( media-video/mpv:= )
-	!qt6? (
-		dev-qt/qtconcurrent:5
-		dev-qt/qtcore:5
-		dev-qt/qtdbus:5
-		dev-qt/qtdeclarative:5
-		dev-qt/qtgui:5
-		dev-qt/qtmultimedia:5[gstreamer]
-		dev-qt/qtnetwork:5[ssl]
-		dev-qt/qtsql:5[mysql?,sqlite?]
-		dev-qt/qtwidgets:5
-		dev-qt/qtxml:5
-		libmpv? (
-			dev-qt/qtopengl:5
-		)
-		qtmultimedia? (
-			dev-qt/qtmultimedia:5
-			dev-qt/qtopengl:5
-		)
-		webengine? ( dev-qt/qtwebengine:5[widgets(+)] )
+	libmpv? (
+		dev-qt/qtbase:6[opengl]
+		media-video/mpv:=
 	)
-	qt6? (
-		dev-qt/qtbase:6[concurrent,dbus,gui,mysql?,network,sql,sqlite?,ssl,widgets]
-		dev-qt/qtdeclarative:6
-		dev-qt/qtmultimedia:6[gstreamer]
-		dev-qt/qt5compat:6
-		media-libs/libglvnd
-		libmpv? (
-			dev-qt/qtbase:6[opengl]
-		)
-		qtmultimedia? (
-			dev-qt/qtbase:6[opengl]
-			dev-qt/qtmultimedia:6
-		)
-		webengine? ( dev-qt/qtwebengine:6[widgets(+)] )
+	qtmultimedia? (
+		dev-qt/qtbase:6[opengl]
+		dev-qt/qtmultimedia:6
 	)
+	webengine? ( dev-qt/qtwebengine:6[widgets(+)] )
 "
 RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_WITH_QT6=$(usex qt6)
+		-DBUILD_WITH_QT6=ON
 		-DNO_LITE=$(usex webengine)
 		-DREVISION_FROM_GIT=OFF
 		-DNO_UPDATE_CHECK=ON
