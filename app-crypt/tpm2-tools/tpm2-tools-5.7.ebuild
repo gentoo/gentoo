@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit autotools bash-completion-r1 flag-o-matic python-any-r1
 
 DESCRIPTION="Tools for the TPM 2.0 TSS"
