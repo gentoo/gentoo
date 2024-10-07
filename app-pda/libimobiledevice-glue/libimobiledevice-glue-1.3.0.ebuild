@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit libtool
+
 DESCRIPTION="Support library for libimobiledevice projects"
 HOMEPAGE="https://github.com/libimobiledevice/libimobiledevice-glue"
 SRC_URI="https://github.com/libimobiledevice/libimobiledevice-glue/releases/download/${PV}/${P}.tar.bz2"
@@ -14,6 +16,11 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~x86"
 RDEPEND=">=app-pda/libplist-2.3:="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 src_install() {
 	default
