@@ -33,6 +33,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	oss? ( virtual/os-headers )"
 BDEPEND="
+	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )"
