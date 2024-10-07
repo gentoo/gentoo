@@ -13,12 +13,11 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="
-	sys-libs/ncurses
-	virtual/libintl
-"
+RDEPEND="sys-libs/ncurses
+	virtual/libintl"
 DEPEND="${RDEPEND}"
-BDEPEND="sys-devel/gettext"
+BDEPEND="app-alternatives/lex
+	sys-devel/gettext"
 
 PATCHES=( "${FILESDIR}"/${PN}-2.1-makefile.patch )
 
