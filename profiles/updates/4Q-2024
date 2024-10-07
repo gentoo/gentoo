@@ -1,1 +1,2 @@
 move dev-python/pyopengl_accelerate dev-python/pyopengl-accelerate
+move sys-apps/scx sys-kernel/scx
