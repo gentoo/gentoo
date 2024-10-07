@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-10-07)
+# No more revdeps, merged into kde-frameworks/kpeople upstream.
+# Removal on 2024-11-06.
+dev-libs/kpeoplevcard
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2024-10-07)
 # Unmaintained and archived upstream, removal on 2024-11-06.
 net-im/choqok
 
