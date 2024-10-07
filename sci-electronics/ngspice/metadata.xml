@@ -11,6 +11,7 @@
 	</longdescription>
 	<use>
 		<flag name="deprecated">Build old and deprecated apps</flag>
+		<flag name="klu">Add support for KLU (embedded version of suitesparse)</flag>
 		<flag name="shared">Build ngspice as a shared library</flag>
 	</use>
 	<upstream>
