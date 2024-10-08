@@ -5,7 +5,7 @@ EAPI=8
 
 JAVA_PKG_IUSE="doc source"
 
-inherit java-pkg-2 java-pkg-simple prefix
+inherit java-pkg-2 java-pkg-simple
 
 DMF="R-${PV}-202211231800"
 
@@ -18,10 +18,7 @@ LICENSE="EPL-1.0"
 SLOT="4.26"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 
-BDEPEND="
-	app-arch/unzip
-	app-arch/zip
-"
+BDEPEND="app-arch/unzip"
 COMMON_DEP="app-eselect/eselect-java"
 DEPEND="${COMMON_DEP}
 	>=dev-java/ant-1.10.14:0
@@ -40,34 +37,11 @@ JAVA_RESOURCE_DIRS="res"
 src_prepare() {
 	java-pkg-2_src_prepare
 
+	# Exception in thread "main" java.lang.SecurityException: Invalid signature file digest for Manifest main attributes
+	rm META-INF/ECLIPSE_* || die
+
 	mkdir "${JAVA_RESOURCE_DIRS}" || die
 	find org META-INF -type f \
 		! -name '*.java' \
 		| xargs cp --parent -t "${JAVA_RESOURCE_DIRS}" || die
-}
-
-src_compile() {
-	java-pkg-simple_src_compile
-	#925083
-	# Exception in thread "main" java.lang.SecurityException: Invalid signature file digest for Manifest main attributes
-	zip -d ecj.jar "META-INF/ECLIPSE_.RSA" || die "Failed to remove ECLIPSE_.RSA"
-	zip -d ecj.jar "META-INF/ECLIPSE_.SF" || die "Failed to remove ECLIPSE_.SF"
-}
-
-src_install() {
-	java-pkg-simple_src_install
-	insinto /usr/share/java-config-2/compiler
-	doins "${FILESDIR}/ecj-${SLOT}"
-	eprefixify "${ED}"/usr/share/java-config-2/compiler/ecj-${SLOT}
-}
-
-pkg_postinst() {
-	einfo "To select between slots of ECJ..."
-	einfo " # eselect ecj"
-
-	eselect ecj update ecj-${SLOT}
-}
-
-pkg_postrm() {
-	eselect ecj update
 }
