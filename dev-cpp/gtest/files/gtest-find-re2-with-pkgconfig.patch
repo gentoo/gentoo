@@ -1,0 +1,32 @@
+dev-libs/re2 is built with a Makefile which doesn't install any cmake modules.
+For now, use pkgconfig.
+
+Bug: https://bugs.gentoo.org/940734
+Signed-off-by: Peter Levine <plevine457@gmail.com>
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -25,7 +25,9 @@
+     find_package(absl REQUIRED)
+   endif()
+   if(NOT TARGET re2::re2)
+-    find_package(re2 REQUIRED)
++    find_package(PkgConfig REQUIRED)
++    pkg_check_modules(re2 REQUIRED IMPORTED_TARGET re2)
++    add_library(re2::re2 ALIAS PkgConfig::re2)
+   endif()
+ endif()
+ 
+--- a/googletest/cmake/Config.cmake.in
++++ b/googletest/cmake/Config.cmake.in
+@@ -6,7 +6,9 @@
+ endif()
+ if (@GTEST_HAS_ABSL@)
+   find_dependency(absl)
+-  find_dependency(re2)
++  find_package(PkgConfig)
++  pkg_check_modules(re2 IMPORTED_TARGET re2)
++  add_library(re2::re2 ALIAS PkgConfig::re2)
+ endif()
+ 
+ include("${CMAKE_CURRENT_LIST_DIR}/@targets_export_name@.cmake")
