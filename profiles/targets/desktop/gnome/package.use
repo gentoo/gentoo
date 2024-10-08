@@ -35,6 +35,7 @@ app-crypt/gcr vala
 # Required for gnome-base/gnome-2.32 to be merged directly, for
 # gnome-extra/hamster-applet-2.32 and x11-misc/alacarte-0.13
 dev-lang/python sqlite
+dev-lang/python-freethreading sqlite
 
 # Required by app-accessibility/orca-3
 app-accessibility/speech-dispatcher python

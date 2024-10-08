@@ -78,6 +78,7 @@ app-office/libreoffice qt6
 # Requires arch-specific code in python (relocs handling), in addition to
 # sys-devel/{clang,llvm}.
 dev-lang/python jit
+dev-lang/python-freethreading jit
 
 # WANG Xuerui <xen0n@gentoo.org> (2024-05-16)
 # dev-ruby/asciidoctor has some really heavy deps, and is not keyworded on
