@@ -82,6 +82,10 @@ LIBSLURMDB_PERL_S="${S}/contribs/perlapi/libslurmdb/perl"
 
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-22.05.3_autoconf-lua.patch
+)
+
 pkg_setup() {
 	use lua && lua-single_pkg_setup
 }
@@ -136,7 +140,7 @@ src_configure() {
 	use mysql || myconf+=( --without-mysql_config )
 	econf "${myconf[@]}" \
 		$(use_enable debug) \
-		$(use_with lua) \
+		$(use_enable lua) \
 		$(use_enable pam) \
 		$(use_enable X x11) \
 		$(use_with munge) \
@@ -222,8 +226,7 @@ src_install() {
 	newbashcomp contribs/slurm_completion_help/slurm_completion.sh scontrol
 	bashcomp_alias scontrol \
 		sreport sacctmgr squeue scancel sshare sbcast sinfo \
-		sprio sacct salloc sbatch srun sattach sdiag sstat \
-		scrontab slurmrestd strigger
+		sprio sacct salloc sbatch srun sattach sdiag sstat
 	# install systemd files
 	newtmpfiles "${FILESDIR}/slurm.tmpfiles" slurm.conf
 	systemd_dounit etc/slurmd.service etc/slurmctld.service etc/slurmdbd.service
