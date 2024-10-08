@@ -6,21 +6,17 @@
 # Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: A generic eclass for building multiple variants of packages.
 # @DESCRIPTION:
 # The multibuild eclass aims to provide a generic framework for building
 # multiple 'variants' of a package (e.g. multilib, Python
 # implementations).
 
-if [[ ! ${_MULTIBUILD_ECLASS} ]]; then
+if [[ -z ${_MULTIBUILD_ECLASS} ]]; then
 _MULTIBUILD_ECLASS=1
 
 case ${EAPI} in
-	6)
-		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
-		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
-		;;
 	7|8)
 		# backwards compatibility for run_in_build_dir
 		inherit out-of-source-utils
