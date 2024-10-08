@@ -23,13 +23,13 @@
 # metadata/install-qa-check.d/60python-pyc
 # See bug #704286, bug #781878
 
+if [[ -z ${_PYTHON_UTILS_R1_ECLASS} ]]; then
+_PYTHON_UTILS_R1_ECLASS=1
+
 case ${EAPI} in
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-if [[ ! ${_PYTHON_UTILS_R1_ECLASS} ]]; then
-_PYTHON_UTILS_R1_ECLASS=1
 
 [[ ${EAPI} == 7 ]] && inherit eapi8-dosym
 inherit multiprocessing toolchain-funcs
@@ -617,8 +617,8 @@ python_optimize() {
 			# 2) skip paths which do not exist
 			#    (python2.6 complains about them verbosely)
 
-			if [[ ${f} == /* && -d ${D%/}${f} ]]; then
-				set -- "${D%/}${f}" "${@}"
+			if [[ ${f} == /* && -d ${D}${f} ]]; then
+				set -- "${D}${f}" "${@}"
 			fi
 		done < <(
 			"${PYTHON}" - <<-EOF || die
@@ -634,7 +634,7 @@ python_optimize() {
 	local d
 	for d; do
 		# make sure to get a nice path without //
-		local instpath=${d#${D%/}}
+		local instpath=${d#${D}}
 		instpath=/${instpath##/}
 
 		einfo "Optimize Python modules for ${instpath}"
@@ -741,7 +741,7 @@ python_newexe() {
 
 	# don't use this at home, just call python_doscript() instead
 	if [[ ${_PYTHON_REWRITE_SHEBANG} ]]; then
-		python_fix_shebang -q "${ED%/}/${d}/${newfn}"
+		python_fix_shebang -q "${ED}${d}/${newfn}"
 	fi
 }
 
@@ -872,15 +872,15 @@ python_domodule() {
 			insinto "${d}"
 			doins -r "${@}" || return ${?}
 		)
-		python_optimize "${ED%/}/${d}"
+		python_optimize "${ED}${d}"
 	elif [[ -n ${BUILD_DIR} ]]; then
 		local dest=${BUILD_DIR}/install${EPREFIX}/${d}
 		mkdir -p "${dest}" || die
 		cp -pR "${@}" "${dest}/" || die
 		(
-			cd "${dest}" &&
-			chmod -R a+rX "${@##*/}"
-		) || die
+			cd "${dest}" || die
+			chmod -R a+rX "${@##*/}" || die
+		)
 	else
 		die "${FUNCNAME} can only be used in src_install or with BUILD_DIR set"
 	fi
@@ -1103,17 +1103,17 @@ python_fix_shebang() {
 			fi
 
 			if [[ ! ${quiet} ]]; then
-				einfo "Fixing shebang in ${f#${D%/}}."
+				einfo "Fixing shebang in ${f#${D}}."
 			fi
 
 			if [[ ! ${error} ]]; then
-				debug-print "${FUNCNAME}: in file ${f#${D%/}}"
+				debug-print "${FUNCNAME}: in file ${f#${D}}"
 				debug-print "${FUNCNAME}: rewriting shebang: ${shebang}"
 				sed -i -e "1s@${from}@#!${EPREFIX}/usr/bin/${EPYTHON}@" "${f}" || die
 				any_fixed=1
 			else
 				eerror "The file has incompatible shebang:"
-				eerror "  file: ${f#${D%/}}"
+				eerror "  file: ${f#${D}}"
 				eerror "  current shebang: ${shebang}"
 				eerror "  requested impl: ${EPYTHON}"
 				die "${FUNCNAME}: conversion of incompatible shebang requested"
@@ -1121,7 +1121,7 @@ python_fix_shebang() {
 		done < <(find -H "${path}" -type f -print0 || die)
 
 		if [[ ! ${any_fixed} ]]; then
-			eerror "QA error: ${FUNCNAME}, ${path#${D%/}} did not match any fixable files."
+			eerror "QA error: ${FUNCNAME}, ${path#${D}} did not match any fixable files."
 			eerror "There are no Python files in specified directory."
 			die "${FUNCNAME} did not match any fixable files"
 		fi
