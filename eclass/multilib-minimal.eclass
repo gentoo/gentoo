@@ -4,7 +4,7 @@
 # @ECLASS: multilib-minimal.eclass
 # @MAINTAINER:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: multilib-build
 # @BLURB: wrapper for multilib builds providing convenient multilib_src_* functions
 # @DESCRIPTION:
@@ -25,14 +25,10 @@
 
 inherit multilib-build
 
-if [[ ! ${_MULTILIB_MINIMAL_ECLASS} ]]; then
+if [[ -z ${_MULTILIB_MINIMAL_ECLASS} ]]; then
 _MULTILIB_MINIMAL_ECLASS=1
 
 case ${EAPI} in
-	6)
-		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
-		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
-		;;
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
