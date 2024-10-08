@@ -11,7 +11,7 @@ SRC_URI="https://github.com/badaix/aixlog/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm ppc ppc64 ~riscv x86"
 
 src_configure() {
 	local mycmakeargs=( -DBUILD_EXAMPLE=OFF )
