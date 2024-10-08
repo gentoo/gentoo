@@ -14,6 +14,8 @@ SRC_URI="https://github.com/desultory/${PN}/archive/refs/tags/${PV}.tar.gz -> ${
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
+RESTRICT="test"
+PROPERTIES="test_privileged"
 
 RDEPEND="
 	app-misc/pax-utils
@@ -62,15 +64,7 @@ pkg_postinst() {
 distutils_enable_tests unittest
 
 src_test() {
-	if [[ ! -w '/dev/kvm' ]]; then
-		ewarn "Skipping tests: Cannot write to /dev/kvm."
-		return 1
-	fi
-	if [[ ! -r "$(command -v mount)" ]]; then
-		ewarn "Cannot read the mount binary, tests may fail until"
-		ewarn "util-linux is re-emerged without the sfperms feature."
-	fi
-
+	addwrite /dev/kvm
 	distutils-r1_src_test
 }
 
