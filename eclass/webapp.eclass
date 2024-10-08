@@ -4,7 +4,7 @@
 # @ECLASS: webapp.eclass
 # @MAINTAINER:
 # web-apps@gentoo.org
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: functions for installing applications to run under a web server
 # @DESCRIPTION:
 # The webapp eclass contains functions to handle web applications with
@@ -14,10 +14,6 @@ if [[ -z ${_WEBAPP_ECLASS} ]]; then
 _WEBAPP_ECLASS=1
 
 case ${EAPI} in
-	6)
-		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
-		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
-		;;
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
@@ -55,9 +51,9 @@ IS_REPLACE=0
 INSTALL_CHECK_FILE="installed_by_webapp_eclass"
 SETUP_CHECK_FILE="setup_by_webapp_eclass"
 
-ETC_CONFIG="${ROOT%/}/etc/vhosts/webapp-config"
-WEBAPP_CONFIG="${ROOT%/}/usr/sbin/webapp-config"
-WEBAPP_CLEANER="${ROOT%/}/usr/sbin/webapp-cleaner"
+ETC_CONFIG="${EROOT}/etc/vhosts/webapp-config"
+WEBAPP_CONFIG="${EROOT}/usr/sbin/webapp-config"
+WEBAPP_CLEANER="${EROOT}/usr/sbin/webapp-cleaner"
 
 # ==============================================================================
 # INTERNAL FUNCTIONS
@@ -370,7 +366,7 @@ webapp_src_preinst() {
 # @DESCRIPTION:
 # The default pkg_setup() for this eclass. This will gather required variables
 # from webapp-config and check if there is an application installed to
-# `${ROOT%/}/var/www/localhost/htdocs/${PN}/' if USE=vhosts is not set.
+# `${ROOT}/var/www/localhost/htdocs/${PN}/' if USE=vhosts is not set.
 #
 # You need to call this function BEFORE anything else has run in your custom
 # pkg_setup().
@@ -394,7 +390,7 @@ webapp_pkg_setup() {
 	G_HOSTNAME="localhost"
 	webapp_read_config
 
-	local my_dir="${ROOT%/}/${VHOST_ROOT}/${MY_HTDOCSBASE}/${PN}"
+	local my_dir="${ROOT}/${VHOST_ROOT}/${MY_HTDOCSBASE}/${PN}"
 
 	# if USE=vhosts is enabled OR no application is installed we're done here
 	if ! has vhosts ${IUSE} || use vhosts || [[ ! -d "${my_dir}" ]]; then
@@ -458,7 +454,7 @@ webapp_src_install() {
 # @FUNCTION: webapp_pkg_postinst
 # @DESCRIPTION:
 # The default pkg_postinst() for this eclass. This installs the web application to
-# `${ROOT%/}/var/www/localhost/htdocs/${PN}/' if USE=vhosts is not set. Otherwise
+# `${ROOT}/var/www/localhost/htdocs/${PN}/' if USE=vhosts is not set. Otherwise
 # display a short notice how to install this application with webapp-config.
 #
 # You need to call this function AFTER everything else has run in your custom
@@ -469,7 +465,7 @@ webapp_pkg_postinst() {
 	webapp_read_config
 
 	# sanity checks, to catch bugs in the ebuild
-	if [[ ! -f "${ROOT%/}/${MY_APPDIR}/${INSTALL_CHECK_FILE}" ]]; then
+	if [[ ! -f "${ROOT}/${MY_APPDIR}/${INSTALL_CHECK_FILE}" ]]; then
 		eerror
 		eerror "This ebuild did not call webapp_src_install() at the end"
 		eerror "of the src_install() function"
