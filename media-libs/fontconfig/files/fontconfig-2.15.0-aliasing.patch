@@ -1,0 +1,53 @@
+https://gitlab.freedesktop.org/fontconfig/fontconfig/-/merge_requests/333
+
+From 8db62f5a77fd53543dd58e12da7bd96082228893 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 8 Oct 2024 16:48:19 +0100
+Subject: [PATCH] fontconfig: mark _FcPatternIter as may_alias
+
+We had a report of GCC 14 with -O3 -flto causing wrong font
+sizes with fontconfig (showing up in qalculate-gtk).
+
+It turns out to be because _FcPatternIter and _FcPatternPrivateIter
+are punned between which violates strict-aliasing rules, which
+manifested in FcDefaultSubstitute getting a bogus value from
+FcValueCanonicalize for size.
+
+void* isn't allowed to alias anything -- you can pass addresses
+around provided you cast back to the original type, but if you
+access through the wrong type, you've violated aliasing rules.
+
+Bug: https://bugs.gentoo.org/940923
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/fontconfig/fontconfig.h
++++ b/fontconfig/fontconfig.h
+@@ -32,8 +32,10 @@
+ 
+ #if defined(__GNUC__) && (__GNUC__ >= 4)
+ #define FC_ATTRIBUTE_SENTINEL(x) __attribute__((__sentinel__(0)))
++#define FC_ATTRIBUTE_MAY_ALIAS __attribute__((may_alias))
+ #else
+ #define FC_ATTRIBUTE_SENTINEL(x)
++#define FC_ATTRIBUTE_MAY_ALIAS
+ #endif
+ 
+ #ifndef FcPublic
+@@ -253,7 +255,7 @@ typedef enum _FcValueBinding {
+ 
+ typedef struct _FcPattern   FcPattern;
+ 
+-typedef struct _FcPatternIter {
++typedef struct FC_ATTRIBUTE_MAY_ALIAS _FcPatternIter {
+     void *dummy1;
+     void *dummy2;
+ } FcPatternIter;
+@@ -1160,6 +1162,7 @@ FcConfigParseAndLoadFromMemory (FcConfig       *config,
+ _FCFUNCPROTOEND
+ 
+ #undef FC_ATTRIBUTE_SENTINEL
++#undef FC_ATTRIBUTE_MAY_ALIAS
+ 
+ 
+ #ifndef _FCINT_H_
+-- 
+GitLab
