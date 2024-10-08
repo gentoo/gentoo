@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: app-alternatives.eclass
@@ -21,7 +21,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} unsupported."
 esac
 
-if [[ ! ${_APP_ALTERNATIVES_ECLASS} ]]; then
+if [[ -z ${_APP_ALTERNATIVES_ECLASS} ]]; then
 _APP_ALTERNATIVES_ECLASS=1
 
 # @ECLASS_VARIABLE: ALTERNATIVES

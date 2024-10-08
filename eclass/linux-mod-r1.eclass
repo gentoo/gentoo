@@ -106,7 +106,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_LINUX_MOD_R1_ECLASS} ]]; then
+if [[ -z ${_LINUX_MOD_R1_ECLASS} ]]; then
 _LINUX_MOD_R1_ECLASS=1
 
 inherit dist-kernel-utils edo linux-info multiprocessing toolchain-funcs

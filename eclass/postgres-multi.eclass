@@ -19,7 +19,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_POSTGRES_MULTI_ECLASS} ]]; then
+if [[ -z ${_POSTGRES_MULTI_ECLASS} ]]; then
 _POSTGRES_MULTI_ECLASS=1
 
 inherit multibuild postgres

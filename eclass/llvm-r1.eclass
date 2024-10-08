@@ -42,7 +42,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_LLVM_R1_ECLASS} ]]; then
+if [[ -z ${_LLVM_R1_ECLASS} ]]; then
 _LLVM_R1_ECLASS=1
 
 inherit llvm-utils

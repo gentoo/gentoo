@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: dotnet.eclass
@@ -17,7 +17,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_DOTNET_ECLASS} ]]; then
+if [[ -z ${_DOTNET_ECLASS} ]]; then
 _DOTNET_ECLASS=1
 
 BDEPEND="dev-lang/mono"

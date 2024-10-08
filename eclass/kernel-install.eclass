@@ -49,7 +49,7 @@
 # packages to depend on for building the generic UKI and their licenses.
 # Used in kernel-build.eclass.
 
-if [[ ! ${_KERNEL_INSTALL_ECLASS} ]]; then
+if [[ -z ${_KERNEL_INSTALL_ECLASS} ]]; then
 _KERNEL_INSTALL_ECLASS=1
 
 case ${EAPI} in

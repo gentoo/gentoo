@@ -18,7 +18,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_RUBY_NG_GNOME2_ECLASS} ]]; then
+if [[ -z ${_RUBY_NG_GNOME2_ECLASS} ]]; then
 _RUBY_NG_GNOME2_ECLASS=1
 
 RUBY_FAKEGEM_NAME="${RUBY_FAKEGEM_NAME:-${PN#ruby-}}"

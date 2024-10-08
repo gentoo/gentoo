@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: emboss-r3.eclass
@@ -38,7 +38,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_EMBOSS_R3_ECLASS} ]]; then
+if [[ -z ${_EMBOSS_R3_ECLASS} ]]; then
 _EMBOSS_R3_ECLASS=1
 
 inherit flag-o-matic

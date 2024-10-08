@@ -23,7 +23,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_SELINUX_POLICY_2_ECLASS} ]]; then
+if [[ -z ${_SELINUX_POLICY_2_ECLASS} ]]; then
 _SELINUX_POLICY_2_ECLASS=1
 
 # @ECLASS_VARIABLE: MODS

@@ -33,7 +33,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_KERNEL_BUILD_ECLASS} ]]; then
+if [[ -z ${_KERNEL_BUILD_ECLASS} ]]; then
 _KERNEL_BUILD_ECLASS=1
 
 PYTHON_COMPAT=( python3_{10..13} )

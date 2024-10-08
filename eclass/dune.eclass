@@ -19,7 +19,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_DUNE_ECLASS} ]]; then
+if [[ -z ${_DUNE_ECLASS} ]]; then
 _DUNE_ECLASS=1
 
 # @ECLASS_VARIABLE: DUNE_PKG_NAME

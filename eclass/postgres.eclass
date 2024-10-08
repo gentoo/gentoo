@@ -19,7 +19,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_POSTGRES_ECLASS} ]]; then
+if [[ -z ${_POSTGRES_ECLASS} ]]; then
 _POSTGRES_ECLASS=1
 
 # @ECLASS_VARIABLE: _POSTGRES_ALL_VERSIONS

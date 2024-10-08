@@ -20,7 +20,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_MOZCORECONF_V6_ECLASS} ]]; then
+if [[ -z ${_MOZCORECONF_V6_ECLASS} ]]; then
 _MOZCORECONF_V6_ECLASS=1
 
 inherit toolchain-funcs flag-o-matic python-any-r1
