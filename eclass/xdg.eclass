@@ -6,7 +6,7 @@
 # freedesktop-bugs@gentoo.org
 # @AUTHOR:
 # Original author: Gilles Dartiguelongue <eva@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: xdg-utils
 # @BLURB: Provides phases for XDG compliant packages.
 # @DESCRIPTION:
@@ -17,10 +17,6 @@ if [[ -z ${_XDG_ECLASS} ]]; then
 _XDG_ECLASS=1
 
 case ${EAPI} in
-	6)
-		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
-		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
-		;;
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
@@ -34,7 +30,7 @@ inherit xdg-utils
 "
 
 case ${EAPI} in
-	6|7)
+	7)
 		# src_prepare is only exported in EAPI < 8.
 		# @FUNCTION: xdg_src_prepare
 		# @DESCRIPTION:
