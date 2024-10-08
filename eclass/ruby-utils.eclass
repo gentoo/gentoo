@@ -6,7 +6,7 @@
 # Ruby team <ruby@gentoo.org>
 # @AUTHOR:
 # Author: Hans de Graaff <graaff@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: An eclass for supporting ruby scripts and bindings in non-ruby packages
 # @DESCRIPTION:
 # The ruby-utils eclass is designed to allow an easier installation of
@@ -15,13 +15,10 @@
 # This eclass does not set any metadata variables nor export any phase
 # functions. It can be inherited safely.
 
-if [[ ! ${_RUBY_UTILS} ]]; then
+if [[ -z ${_RUBY_UTILS_ECLASS} ]] ; then
+_RUBY_UTILS_ECLASS=1
 
 case ${EAPI} in
-	5|6)
-		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
-		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
-		;;
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
@@ -68,5 +65,4 @@ _ruby_implementation_depend() {
 	echo "$2${rubypn}$3${rubyslot}"
 }
 
-_RUBY_UTILS=1
 fi
