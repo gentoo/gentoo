@@ -533,10 +533,6 @@ gui-libs/gtk ffmpeg vulkan
 # lto does not work on dev-lang/gnat-gpl-2021
 dev-lang/gnat-gpl:10 lto
 
-# Mike Gilbert <floppym@gentoo.org> (2021-06-14)
-# Avoid running failing tests by default.
-sys-kernel/dracut test
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-05-09)
 # Dependency requires sys-apps/systemd. Will only be unmasked in systemd target.
 kde-plasma/plasma-meta firewall

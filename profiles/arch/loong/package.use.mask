@@ -1,6 +1,10 @@
 # Copyright 2022-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-10-08)
+# Not all required dependencies are keyworded here
+sys-kernel/dracut test
+
 # David Roman <davidroman96@gmail.com> (2024-10-04)
 # dev-libs/libunibreak is not keyworded
 media-libs/libass libunibreak
