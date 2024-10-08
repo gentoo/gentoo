@@ -21,8 +21,6 @@ KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-distutils_enable_tests pytest
-
 BDEPEND="
 	app-arch/unzip
 	test? ( dev-python/pillow[jpeg,${PYTHON_USEDEP}] )
@@ -32,6 +30,8 @@ PATCHES=(
 	# From https://github.com/hMatoba/Piexif/pull/109
 	"${FILESDIR}"/${P}-tests-pillow-7.2.0.patch
 )
+
+distutils_enable_tests pytest
 
 src_prepare() {
 	edos2unix tests/s_test.py  # to be able to patch it
