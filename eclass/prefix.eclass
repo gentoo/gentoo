@@ -5,7 +5,7 @@
 # @MAINTAINER:
 # Feel free to contact the Prefix team through <prefix@gentoo.org> if
 # you have problems, suggestions or questions.
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Eclass to provide Prefix functionality
 # @DESCRIPTION:
 # Gentoo Prefix allows users to install into a self defined offset
@@ -16,10 +16,6 @@ if [[ -z ${_PREFIX_ECLASS} ]]; then
 _PREFIX_ECLASS=1
 
 case ${EAPI} in
-	5|6)
-		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
-		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
-		;;
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
