@@ -6,7 +6,7 @@
 # java@gentoo.org
 # @AUTHOR:
 # Thomas Matthijs <axxo@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: java-utils-2
 # @BLURB: Eclass for Java Packages
 # @DESCRIPTION:
@@ -17,10 +17,6 @@ if [[ -z ${_JAVA_PKG_2_ECLASS} ]] ; then
 _JAVA_PKG_2_ECLASS=1
 
 case ${EAPI} in
-	6)
-		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
-		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
-		;;
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
