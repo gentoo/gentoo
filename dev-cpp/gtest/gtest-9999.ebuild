@@ -41,7 +41,10 @@ RDEPEND="${DEPEND}"
 # Exclude tests that fail with FEATURES="usersandbox"
 CMAKE_SKIP_TESTS=( "googletest-(death-test|port)-test" )
 
-PATCHES=( "${FILESDIR}"/gtest-find-re2-with-pkgconfig.patch )
+PATCHES=(
+	"${FILESDIR}"/gtest-find-re2-with-pkgconfig.patch
+	"${FILESDIR}"/gtest-1.15.2-fix-gtest_help_test.patch
+)
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
