@@ -20,10 +20,8 @@ IUSE="examples ipv6"
 
 RDEPEND="net-firewall/iptables[ipv6(+)?]"
 BDEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	sys-devel/gettext
-	$(python_gen_cond_dep '
-		dev-python/setuptools[${PYTHON_USEDEP}]
-	' python3_12)
 "
 
 PATCHES=(
@@ -35,6 +33,8 @@ PATCHES=(
 	"${FILESDIR}/${P}-shebang.patch"
 	# Fix bash completions, bug #526300
 	"${FILESDIR}/${PN}-0.36-bash-completion.patch"
+	# Strip distutils use
+	"${FILESDIR}/${PN}-0.36.1-distutils.patch"
 )
 
 pkg_pretend() {
