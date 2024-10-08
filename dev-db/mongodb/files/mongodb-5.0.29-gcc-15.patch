@@ -1,0 +1,13 @@
+https://github.com/abseil/abseil-cpp/commit/809e5de7b92950849289236a5a09e9cb4f32c7b9
+diff --git a/src/third_party/abseil-cpp-master/abseil-cpp/absl/container/internal/container_memory.h b/src/third_party/abseil-cpp-master/abseil-cpp/absl/container/internal/container_memory.h
+index e67529ecb6e..d777480d604 100644
+--- a/src/third_party/abseil-cpp-master/abseil-cpp/absl/container/internal/container_memory.h
++++ b/src/third_party/abseil-cpp-master/abseil-cpp/absl/container/internal/container_memory.h
+@@ -17,6 +17,7 @@
+ 
+ #include <cassert>
+ #include <cstddef>
++#include <cstdint>
+ #include <memory>
+ #include <new>
+ #include <tuple>

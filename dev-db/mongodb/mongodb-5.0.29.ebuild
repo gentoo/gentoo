@@ -3,28 +3,31 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+LLVM_COMPAT=( 18 )
+LLVM_OPTIONAL=1
+
+PYTHON_COMPAT=( python3_{10..13} )
 
 SCONS_MIN_VERSION="3.3.1"
 CHECKREQS_DISK_BUILD="2400M"
 CHECKREQS_DISK_USR="512M"
 CHECKREQS_MEMORY="1024M"
 
-inherit check-reqs flag-o-matic multiprocessing pax-utils python-any-r1 scons-utils systemd toolchain-funcs
+inherit check-reqs flag-o-matic llvm-r1 multiprocessing pax-utils python-any-r1 scons-utils systemd toolchain-funcs
 
 MY_PV=r${PV/_rc/-rc}
 MY_P=mongo-${MY_PV}
 
 DESCRIPTION="A high-performance, open source, schema-free document-oriented database"
 HOMEPAGE="https://www.mongodb.com"
-SRC_URI="https://github.com/mongodb/mongo/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/mongodb/mongo/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0 SSPL-1"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 -riscv"
+KEYWORDS="~amd64 ~arm64 -riscv"
 CPU_FLAGS="cpu_flags_x86_avx"
-IUSE="debug kerberos mongosh ssl +tools ${CPU_FLAGS}"
+IUSE="debug clang kerberos mongosh ssl +tools ${CPU_FLAGS}"
 
 # https://github.com/mongodb/mongo/wiki/Test-The-Mongodb-Server
 # resmoke needs python packages not yet present in Gentoo
@@ -33,12 +36,18 @@ RESTRICT="test"
 RDEPEND="acct-group/mongodb
 	acct-user/mongodb
 	>=app-arch/snappy-1.1.7:=
+	app-arch/zstd:=
 	>=dev-cpp/yaml-cpp-0.6.2:=
 	dev-libs/boost:=[nls]
 	>=dev-libs/libpcre-8.42[cxx]
-	app-arch/zstd:=
 	dev-libs/snowball-stemmer:=
+	net-misc/curl
 	>=sys-libs/zlib-1.2.12:=
+	clang? (
+		$(llvm_gen_dep "
+			sys-devel/clang:\${LLVM_SLOT}
+		")
+	)
 	kerberos? ( dev-libs/cyrus-sasl[kerberos] )
 	ssl? (
 		>=dev-libs/openssl-1.0.1g:0=
@@ -63,7 +72,7 @@ PDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.4.1-boost.patch"
-	"${FILESDIR}/${PN}-4.4.1-gcc11.patch"
+	"${FILESDIR}/${PN}-5.0.29-gcc-11.patch"
 	"${FILESDIR}/${PN}-5.0.2-fix-scons.patch"
 	"${FILESDIR}/${PN}-5.0.2-no-compass.patch"
 	"${FILESDIR}/${PN}-5.0.2-skip-no-exceptions.patch"
@@ -76,6 +85,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.4.29-no-enterprise.patch"
 	"${FILESDIR}/${PN}-5.0.26-boost-1.85.patch"
 	"${FILESDIR}/${PN}-5.0.26-boost-1.85-extra.patch"
+	"${FILESDIR}/${PN}-5.0.29-gcc-15.patch"
 )
 
 python_check_deps() {
@@ -105,6 +115,14 @@ pkg_pretend() {
 	fi
 }
 
+pkg_setup() {
+	python-any-r1_pkg_setup
+	if use clang; then
+		llvm-r1_pkg_setup
+		llvm_fix_tool_path CC CXX
+	fi
+}
+
 src_prepare() {
 	default
 
@@ -121,15 +139,10 @@ src_configure() {
 	# --use-system-tcmalloc is strongly NOT recommended:
 	# for MONGO_GIT_HASH use GitOrigin-RevId from the commit of the tag
 	scons_opts=(
-		AR="$(tc-getAR)"
-		CC="$(tc-getCC)"
-		CXX="$(tc-getCXX)"
-		CCFLAGS="${CXXFLAGS}"
-
 		VERBOSE=1
 		VARIANT_DIR=gentoo
 		MONGO_VERSION="${PV}"
-		MONGO_GIT_HASH="0b4f1ea980b5380a66425a90b414106a191365f4"
+		MONGO_GIT_HASH="cd239f3b0c7796df9e576ae5a9efcf4e6960560c"
 
 		--disable-warnings-as-errors
 		--force-jobs # Reapply #906897, fix #935274
@@ -142,6 +155,54 @@ src_configure() {
 		--use-system-zlib
 		--use-system-zstd
 	)
+
+	local have_switched_compiler=
+	if use clang && ! tc-is-clang; then
+		# Force clang
+		local version_clang=$(clang --version 2>/dev/null | grep -F -- 'clang version' | awk '{ print $3 }')
+		[[ -n ${version_clang} ]] && version_clang=$(ver_cut 1 "${version_clang}")
+		[[ -z ${version_clang} ]] && die "Failed to read clang version!"
+
+		if tc-is-gcc; then
+			have_switched_compiler=yes
+		fi
+
+		AR=llvm-ar
+		CC=${CHOST}-clang-${version_clang}
+		CXX=${CHOST}-clang++-${version_clang}
+
+		scons_opts+=(
+			AR="$(get_llvm_prefix)/bin/${AR}"
+			CC="$(get_llvm_prefix)/bin/${CC}"
+			CXX="$(get_llvm_prefix)/bin/${CXX}"
+		)
+	elif ! use clang && ! tc-is-gcc ; then
+		# Force gcc
+		have_switched_compiler=yes
+		AR=gcc-ar
+		CC=${CHOST}-gcc
+		CXX=${CHOST}-g++
+		scons_opts+=(
+			AR="${AR}"
+			CC="${CC}"
+			CXX="${CXX}"
+		)
+	else
+		scons_opts+=(
+			AR="$(tc-getAR)"
+			CC="$(tc-getCC)"
+			CXX="$(tc-getCXX)"
+		)
+	fi
+
+	if [[ -n "${have_switched_compiler}" ]] ; then
+		# Because we switched active compiler we have to ensure
+		# that no unsupported flags are set
+		strip-unsupported-flags
+		scons_opts+=(
+			CCFLAGS="${CXXFLAGS}"
+		)
+	fi
 
 	use arm64 && scons_opts+=( --use-hardware-crc32=off ) # Bug 701300
 	use amd64 && scons_opts+=( --experimental-optimization=-sandybridge ) # Bug 890294
@@ -172,7 +233,7 @@ src_configure() {
 }
 
 src_compile() {
-	PREFIX="${EPREFIX}/usr" ./buildscripts/scons.py "${scons_opts[@]}" install-core || die
+	PREFIX="${EPREFIX}/usr" ./buildscripts/scons.py "${scons_opts[@]}" install-devcore || die
 }
 
 src_install() {

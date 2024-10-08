@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/932251
+https://github.com/mongodb/mongo/commit/f8e4be7f6da71f978b2aa9991febb4c7ad89c903#diff-010644a9158d28e5745762753c7ce454444c9fb9ab4c684e9f2fdcff50c6f539
+https://bugs.gentoo.org/932251#c3
+
+--- a/src/mongo/db/initialize_server_global_state.cpp
++++ b/src/mongo/db/initialize_server_global_state.cpp
+@@ -328,7 +328,7 @@
+                                         << "\" should name a file, not a directory.");
+             }
+ 
+-            if (!serverGlobalParams.logAppend && boost::filesystem::is_regular(absoluteLogpath)) {
++            if (!serverGlobalParams.logAppend && boost::filesystem::is_regular_file(absoluteLogpath)) {
+                 std::string renameTarget = absoluteLogpath + "." + terseCurrentTimeForFilename();
+                 boost::system::error_code ec;
+                 boost::filesystem::rename(absoluteLogpath, renameTarget, ec);
+
