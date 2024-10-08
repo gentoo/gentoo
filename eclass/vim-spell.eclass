@@ -6,7 +6,7 @@
 # Vim Maintainers <vim@gentoo.org>
 # @AUTHOR:
 # Ciaran McCreesh <ciaranm@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Eclass for managing Vim spell files.
 # @DESCRIPTION:
 # How to make a vim spell file package using prebuilt spell lists
@@ -66,10 +66,6 @@ if [[ -z ${_VIM_SPELL_ECLASS} ]] ; then
 _VIM_SPELL_ECLASS=1
 
 case ${EAPI} in
-	6)
-		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
-		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
-		;;
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
