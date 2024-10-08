@@ -1494,9 +1494,16 @@ distutils-r1_python_compile() {
 				# that this relies on the assumption that we're building
 				# from the oldest to the newest implementation,
 				# and the wheels are forward-compatible.
-				if [[ ( ! ${DISTUTILS_EXT} && ${whl} == *py3-none-any* ) ||
-					( ${EPYTHON} == python* && ${whl} == *-abi3-* ) ]]
-				then
+				if [[
+					( ! ${DISTUTILS_EXT} && ${whl} == *py3-none-any* ) ||
+					(
+						${EPYTHON} == python* &&
+						# freethreading does not support stable ABI
+						# at the moment
+						${EPYTHON} != *t &&
+						${whl} == *-abi3-*
+					)
+				]]; then
 					distutils_wheel_install "${BUILD_DIR}/install" "${whl}"
 					return
 				fi
