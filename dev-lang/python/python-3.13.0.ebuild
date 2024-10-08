@@ -34,7 +34,7 @@ LICENSE="PSF-2"
 SLOT="${PYVER}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="
-	bluetooth build debug +ensurepip examples gdbm +gil jit
+	bluetooth build debug +ensurepip examples gdbm jit
 	libedit +ncurses pgo +readline +sqlite +ssl test tk valgrind
 "
 REQUIRED_USE="jit? ( ${LLVM_REQUIRED_USE} )"
@@ -124,12 +124,12 @@ pkg_pretend() {
 		check-reqs_pkg_pretend
 	fi
 
-	if ! use gil || use jit; then
-		ewarn "USE=-gil and USE=jit flags are considered experimental upstream.  Using"
-		ewarn "them could lead to unexpected breakage, including race conditions"
+	if use jit; then
+		ewarn "USE=jit is considered experimental upstream.  Using it"
+		ewarn "could lead to unexpected breakage, including race conditions"
 		ewarn "and crashes, respectively.  Please do not file Gentoo bugs, unless"
-		ewarn "you can reproduce the problem with dev-lang/python[gil,-jit].  Instead,"
-		ewarn "please consider reporting freethreading / JIT problems upstream."
+		ewarn "you can reproduce the problem with dev-lang/python[-jit].  Instead,"
+		ewarn "please consider reporting JIT problems upstream."
 	fi
 }
 
@@ -431,9 +431,9 @@ src_configure() {
 		--with-platlibdir=lib
 		--with-pkg-config=yes
 		--with-wheel-pkg-dir="${EPREFIX}"/usr/lib/python/ensurepip
+		--enable-gil
 
 		$(use_with debug assertions)
-		$(use_enable gil)
 		$(use_enable jit experimental-jit)
 		$(use_enable pgo optimizations)
 		$(use_with readline readline "$(usex libedit editline readline)")
