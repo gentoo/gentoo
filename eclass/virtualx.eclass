@@ -6,17 +6,13 @@
 # x11@gentoo.org
 # @AUTHOR:
 # Original author: Martin Schlemmer <azarah@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: This eclass can be used for packages that need a working X environment to build.
 
 if [[ -z ${_VIRTUALX_ECLASS} ]]; then
 _VIRTUALX_ECLASS=1
 
 case ${EAPI} in
-	6)
-		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
-		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
-		;;
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
@@ -36,15 +32,15 @@ esac
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Standard dependencies string that is automatically added to BDEPEND
-# (in EAPI-6: DEPEND) unless VIRTUALX_REQUIRED is set to "manual".
+# unless VIRTUALX_REQUIRED is set to "manual".
 # DEPRECATED: Pre-EAPI-8 you can specify the variable BEFORE inherit
 # to add more dependencies.
-[[ ${EAPI} != [67] ]] && VIRTUALX_DEPEND=""
+[[ ${EAPI} != 7 ]] && VIRTUALX_DEPEND=""
 VIRTUALX_DEPEND+="
 	x11-base/xorg-server[xvfb]
 	x11-apps/xhost
 "
-[[ ${EAPI} != [67] ]] && readonly VIRTUALX_DEPEND
+[[ ${EAPI} != 7 ]] && readonly VIRTUALX_DEPEND
 
 [[ ${VIRTUALX_COMMAND} ]] && die "VIRTUALX_COMMAND has been removed and is a no-op"
 
@@ -61,8 +57,6 @@ case ${VIRTUALX_REQUIRED} in
 			RESTRICT+=" !test? ( test )"
 		;;
 esac
-
-[[ ${EAPI} == 6 ]] && DEPEND="${BDEPEND}"
 
 
 # @FUNCTION: virtx
