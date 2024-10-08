@@ -14,7 +14,7 @@ SRC_URI="https://github.com/hartwork/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="grub_platforms_efi-32 grub_platforms_efi-64"
 
 RDEPEND="app-emulation/qemu
