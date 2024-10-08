@@ -16,6 +16,8 @@ llvm_slot_19
 # Python implementations without stable keywords.
 python_targets_python3_13
 python_single_target_python3_13
+python_targets_python3_13t
+python_single_target_python3_13t
 python_targets_pypy3
 python_single_target_pypy3
 
