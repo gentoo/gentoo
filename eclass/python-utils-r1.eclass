@@ -41,6 +41,7 @@ inherit multiprocessing toolchain-funcs
 _PYTHON_ALL_IMPLS=(
 	pypy3
 	python3_{10..13}
+	python3_13t
 )
 readonly _PYTHON_ALL_IMPLS
 
@@ -136,7 +137,7 @@ _python_set_impls() {
 			# please keep them in sync with _PYTHON_ALL_IMPLS
 			# and _PYTHON_HISTORICAL_IMPLS
 			case ${i} in
-				pypy3|python3_9|python3_1[0-3])
+				pypy3|python3_9|python3_1[0-3]|python3_13t)
 					;;
 				jython2_7|pypy|pypy1_[89]|pypy2_0|python2_[5-7]|python3_[1-9])
 					obsolete+=( "${i}" )
@@ -232,7 +233,7 @@ _python_impl_matches() {
 					return 0
 				;;
 			3.8|3.9|3.1[1-3])
-				[[ ${impl} == python${pattern/./_} ]] && return 0
+				[[ ${impl%t} == python${pattern/./_} ]] && return 0
 				;;
 			*)
 				# unify value style to allow lax matching
@@ -435,7 +436,7 @@ _python_export() {
 									or "")
 							EOF
 						)
-						val=${PYTHON}${flags}-config
+						val=${PYTHON%t}${flags}-config
 						;;
 					*)
 						die "${impl}: obtaining ${var} not supported"
