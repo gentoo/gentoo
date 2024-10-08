@@ -4,7 +4,7 @@
 # @ECLASS: flag-o-matic.eclass
 # @MAINTAINER:
 # toolchain@gentoo.org
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: common functions to manipulate and query toolchain flags
 # @DESCRIPTION:
 # This eclass contains a suite of functions to help developers sanely
@@ -14,17 +14,11 @@ if [[ -z ${_FLAG_O_MATIC_ECLASS} ]]; then
 _FLAG_O_MATIC_ECLASS=1
 
 case ${EAPI} in
-	6)
-		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
-		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
-		;;
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 inherit toolchain-funcs
-
-[[ ${EAPI} == 6 ]] && inherit eqawarn
 
 # @FUNCTION: all-flag-vars
 # @DESCRIPTION:
@@ -39,7 +33,7 @@ all-flag-vars() {
 # {C,CPP,CXX,CCAS,F,FC,LD}FLAGS that we allow in strip-flags
 # Note: shell globs and character lists are allowed
 setup-allowed-flags() {
-	[[ ${EAPI} == [67] ]] ||
+	[[ ${EAPI} == 7 ]] ||
 		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
 	_setup-allowed-flags "$@"
 }
@@ -570,7 +564,7 @@ strip-flags() {
 # Returns shell true if <flag> is supported by given <compiler>,
 # else returns shell false.
 test-flag-PROG() {
-	[[ ${EAPI} == [67] ]] ||
+	[[ ${EAPI} == 7 ]] ||
 		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
 	_test-flag-PROG "$@"
 }
@@ -720,7 +714,7 @@ test-flag-CCLD() { _test-flag-PROG CC c+ld "$@"; }
 # Returns shell true if <flags> are supported by given <compiler>,
 # else returns shell false.
 test-flags-PROG() {
-	[[ ${EAPI} == [67] ]] ||
+	[[ ${EAPI} == 7 ]] ||
 		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
 	_test-flags-PROG "$@"
 }
