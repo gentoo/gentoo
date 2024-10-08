@@ -11,13 +11,13 @@
 # GNAT for Ada). If not building GCC itself, please use toolchain-funcs.eclass
 # instead.
 
+if [[ -z ${_TOOLCHAIN_ECLASS} ]]; then
+_TOOLCHAIN_ECLASS=1
+
 case ${EAPI} in
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-if [[ -z ${_TOOLCHAIN_ECLASS} ]]; then
-_TOOLCHAIN_ECLASS=1
 
 DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="https://gcc.gnu.org/"
@@ -2647,7 +2647,7 @@ fix_libtool_libdir_paths() {
 	pushd "${D}" >/dev/null || die
 
 	pushd "./${libpath}" >/dev/null || die
-	local dir="${PWD#${D%/}}"
+	local dir="${PWD#${D}}"
 	local allarchives=$(echo *.la)
 	allarchives="\(${allarchives// /\\|}\)"
 	popd >/dev/null || die
