@@ -44,11 +44,6 @@
 # For more information, please see the Python Guide:
 # https://projects.gentoo.org/python/guide/
 
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 # @ECLASS_VARIABLE: DISTUTILS_EXT
 # @PRE_INHERIT
 # @DEFAULT_UNSET
@@ -224,6 +219,11 @@ esac
 
 if [[ -z ${_DISTUTILS_R1_ECLASS} ]]; then
 _DISTUTILS_R1_ECLASS=1
+
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit flag-o-matic
 inherit multibuild multilib multiprocessing ninja-utils toolchain-funcs
@@ -1022,7 +1022,7 @@ _distutils-r1_create_setup_cfg() {
 			[install]
 			compile = True
 			optimize = 2
-			root = ${D%/}
+			root = ${D}
 		_EOF_
 
 		if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
@@ -1522,10 +1522,10 @@ _distutils-r1_wrap_scripts() {
 	local scriptdir=$(python_get_scriptdir)
 	local f python_files=() non_python_files=()
 
-	if [[ -d ${D%/}${scriptdir} ]]; then
-		for f in "${D%/}${scriptdir}"/*; do
+	if [[ -d ${D}${scriptdir} ]]; then
+		for f in "${D}${scriptdir}"/*; do
 			[[ -d ${f} ]] && die "Unexpected directory: ${f}"
-			debug-print "${FUNCNAME}: found executable at ${f#${D%/}/}"
+			debug-print "${FUNCNAME}: found executable at ${f#${D}/}"
 
 			local shebang
 			read -r shebang < "${f}"
@@ -1537,7 +1537,7 @@ _distutils-r1_wrap_scripts() {
 				non_python_files+=( "${f}" )
 			fi
 
-			mkdir -p "${D%/}${bindir}" || die
+			mkdir -p "${D}${bindir}" || die
 		done
 
 		for f in "${python_files[@]}"; do
@@ -1553,8 +1553,8 @@ _distutils-r1_wrap_scripts() {
 		for f in "${non_python_files[@]}"; do
 			local basename=${f##*/}
 
-			debug-print "${FUNCNAME}: moving ${f#${D%/}/} to ${bindir}/${basename}"
-			mv "${f}" "${D%/}${bindir}/${basename}" || die
+			debug-print "${FUNCNAME}: moving ${f#${D}/} to ${bindir}/${basename}"
+			mv "${f}" "${D}${bindir}/${basename}" || die
 		done
 	fi
 }
@@ -1662,8 +1662,8 @@ distutils-r1_python_install() {
 		find "${BUILD_DIR}"/install -type d -empty -delete || die
 		[[ -d ${BUILD_DIR}/install ]] && merge_root=1
 	else
-		local root=${D%/}/_${EPYTHON}
-		[[ ${DISTUTILS_SINGLE_IMPL} ]] && root=${D%/}
+		local root=${D}/_${EPYTHON}
+		[[ ${DISTUTILS_SINGLE_IMPL} ]] && root=${D}
 
 		# inline DISTUTILS_ARGS logic from esetup.py in order to make
 		# argv overwriting easier
@@ -1717,7 +1717,7 @@ distutils-r1_python_install() {
 	fi
 
 	if [[ ${merge_root} ]]; then
-		multibuild_merge_root "${root}" "${D%/}"
+		multibuild_merge_root "${root}" "${D}"
 	fi
 	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 		_distutils-r1_wrap_scripts "${scriptdir}"
@@ -2100,7 +2100,7 @@ _distutils-r1_strip_namespace_packages() {
 _distutils-r1_post_python_install() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local sitedir=${D%/}$(python_get_sitedir)
+	local sitedir=${D}$(python_get_sitedir)
 	if [[ -d ${sitedir} ]]; then
 		_distutils-r1_strip_namespace_packages "${sitedir}"
 
@@ -2161,13 +2161,13 @@ _distutils-r1_check_namespace_pth() {
 
 	while IFS= read -r -d '' f; do
 		pth+=( "${f}" )
-	done < <(find "${ED%/}" -name '*-nspkg.pth' -print0)
+	done < <(find "${ED}" -name '*-nspkg.pth' -print0)
 
 	if [[ ${pth[@]} ]]; then
 		eerror "The following *-nspkg.pth files were found installed:"
 		eerror
 		for f in "${pth[@]}"; do
-			eerror "  ${f#${ED%/}}"
+			eerror "  ${f#${ED}}"
 		done
 		eerror
 		eerror "The presence of those files may break namespaces in Python 3.5+. Please"
