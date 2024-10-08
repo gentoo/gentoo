@@ -4,17 +4,13 @@
 # @ECLASS: wrapper.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: create a shell wrapper script
 
 if [[ -z ${_WRAPPER_ECLASS} ]]; then
 _WRAPPER_ECLASS=1
 
 case ${EAPI} in
-	5|6)
-		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
-		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
-		;;
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
@@ -59,7 +55,7 @@ make_wrapper() {
 		exeopts -m 0755
 		exeinto "${path}"
 		newexe "${tmpwrapper}" "${wrapper}"
-		) || die
+		)
 	else
 		newbin "${tmpwrapper}" "${wrapper}"
 	fi
