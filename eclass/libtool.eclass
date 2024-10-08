@@ -4,7 +4,7 @@
 # @ECLASS: libtool.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: quickly update bundled libtool code
 # @DESCRIPTION:
 # This eclass patches ltmain.sh distributed with libtoolized packages with the
@@ -18,19 +18,11 @@ if [[ -z ${_LIBTOOL_ECLASS} ]]; then
 _LIBTOOL_ECLASS=1
 
 case ${EAPI} in
-	6)
-		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
-		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
-		;;
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-case ${EAPI} in
-	6) DEPEND=">=app-portage/elt-patches-20240116" ;;
-	7|8) BDEPEND=">=app-portage/elt-patches-20240116" ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
+BDEPEND=">=app-portage/elt-patches-20240116"
 
 inherit toolchain-funcs
 
