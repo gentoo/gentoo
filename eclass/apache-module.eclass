@@ -4,7 +4,7 @@
 # @ECLASS: apache-module.eclass
 # @MAINTAINER:
 # apache-bugs@gentoo.org
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Provides a common set of functions for apache modules
 # @DESCRIPTION:
 # This eclass handles apache modules in a sane way.
@@ -44,15 +44,10 @@
 # </IfDefine>
 # @CODE
 
-
 if [[ -z ${_APACHE_MODULE_ECLASS} ]]; then
 _APACHE_MODULE_ECLASS=1
 
 case ${EAPI} in
-	6)
-		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
-		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
-		;;
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
