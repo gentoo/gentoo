@@ -4,7 +4,7 @@
 # @ECLASS: udev.eclass
 # @MAINTAINER:
 # systemd@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Default eclass for determining udev directories.
 # @DESCRIPTION:
 # Default eclass for determining udev directories.
@@ -40,21 +40,13 @@ if [[ -z ${_UDEV_ECLASS} ]]; then
 _UDEV_ECLASS=1
 
 case ${EAPI} in
-	6)
-		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
-		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
-		;;
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 inherit toolchain-funcs
 
-if [[ ${EAPI} == [56] ]]; then
-	DEPEND="virtual/pkgconfig"
-else
-	BDEPEND="virtual/pkgconfig"
-fi
+BDEPEND="virtual/pkgconfig"
 
 # @FUNCTION: _udev_get_udevdir
 # @INTERNAL
@@ -126,7 +118,7 @@ udev_newrules() {
 # Should be called from pkg_postinst and pkg_postrm in packages which install
 # udev rules or hwdb data.
 udev_reload() {
-	if [[ -n ${ROOT%/} ]]; then
+	if [[ -n ${ROOT} ]]; then
 		return 0
 	fi
 
