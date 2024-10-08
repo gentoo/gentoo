@@ -4,7 +4,7 @@
 # @ECLASS: mono-env.eclass
 # @MAINTAINER:
 # maintainer-needed@gentoo.org
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Set environment variables commonly used by dotnet packages.
 # @DESCRIPTION:
 # Set environment variables commonly used by dotnet packages.
@@ -13,10 +13,6 @@ if [[ -z ${_MONO_ENV_ECLASS} ]] ; then
 _MONO_ENV_ECLASS=1
 
 case ${EAPI} in
-	6)
-		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
-		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
-		;;
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
