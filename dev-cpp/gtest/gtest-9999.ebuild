@@ -34,6 +34,9 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( ${PYTHON_DEPS} )"
 
+# Exclude tests that fail with FEATURES="usersandbox"
+CMAKE_SKIP_TESTS=( "googletest-(death-test|port)-test" )
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
@@ -59,11 +62,6 @@ multilib_src_configure() {
 	fi
 
 	cmake_src_configure
-}
-
-multilib_src_test() {
-	# Exclude tests that fail with FEATURES="usersandbox"
-	cmake_src_test -E "googletest-(death-test|port)-test"
 }
 
 multilib_src_install_all() {
