@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Brian Harring <ferringb@gentoo.org>
 # Mike Frysinger <vapier@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: multiprocessing helper functions
 # @DESCRIPTION:
 # The multiprocessing eclass contains a suite of utility functions
@@ -28,10 +28,6 @@ if [[ -z ${_MULTIPROCESSING_ECLASS} ]]; then
 _MULTIPROCESSING_ECLASS=1
 
 case ${EAPI} in
-	5|6)
-		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
-		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
-		;;
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
