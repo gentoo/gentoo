@@ -1,0 +1,46 @@
+https://bugreports.qt.io/browse/QTBUG-125053
+https://bugreports.qt.io/browse/QTBUG-127340
+https://codereview.qt-project.org/c/qt/qtbase/+/593123
+--- a/src/corelib/itemmodels/qabstractitemmodel.cpp
++++ b/src/corelib/itemmodels/qabstractitemmodel.cpp
+@@ -3396,4 +3396,11 @@
+ void QAbstractItemModel::beginResetModel()
+ {
++    Q_D(QAbstractItemModel);
++    if (d->resetting) {
++        qWarning() << "beginResetModel called on" << this << "without calling endResetModel first";
++        // Warn, but don't return early in case user code relies on the incorrect behavior.
++    }
++
++    d->resetting = true;
+     emit modelAboutToBeReset(QPrivateSignal());
+ }
+@@ -3413,6 +3420,12 @@
+ {
+     Q_D(QAbstractItemModel);
++    if (!d->resetting) {
++        qWarning() << "endResetModel called on" << this << "without calling beginResetModel first";
++        // Warn, but don't return early in case user code relies on the incorrect behavior.
++    }
++
+     d->invalidatePersistentIndexes();
+     resetInternalData();
++    d->resetting = false;
+     emit modelReset(QPrivateSignal());
+ }
+--- a/src/corelib/itemmodels/qabstractitemmodel_p.h
++++ b/src/corelib/itemmodels/qabstractitemmodel_p.h
+@@ -46,4 +46,6 @@
+     ~QAbstractItemModelPrivate();
+ 
++    static const QAbstractItemModelPrivate *get(const QAbstractItemModel *model) { return model->d_func(); }
++
+     void removePersistentIndexData(QPersistentModelIndexData *data);
+     void movePersistentIndexes(const QList<QPersistentModelIndexData *> &indexes, int change, const QModelIndex &parent,
+@@ -116,4 +118,6 @@
+     } persistent;
+ 
++    bool resetting = false;
++
+     static const QHash<int,QByteArray> &defaultRoleNames();
+     static bool isVariantLessThan(const QVariant &left, const QVariant &right,

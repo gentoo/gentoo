@@ -148,6 +148,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.7.2-qcontiguouscache.patch
 	"${FILESDIR}"/${PN}-6.7.2-haswell-no-rdrnd.patch
 	"${FILESDIR}"/${PN}-6.7.3-erratic-mouse-input.patch
+	"${FILESDIR}"/${PN}-6.7.3-QTBUG-125053.patch
 )
 
 src_prepare() {
