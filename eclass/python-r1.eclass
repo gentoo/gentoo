@@ -30,13 +30,13 @@
 # For more information, please see the Python Guide:
 # https://projects.gentoo.org/python/guide/
 
+if [[ -z ${_PYTHON_R1_ECLASS} ]]; then
+_PYTHON_R1_ECLASS=1
+
 case ${EAPI} in
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-if [[ -z ${_PYTHON_R1_ECLASS} ]]; then
-_PYTHON_R1_ECLASS=1
 
 if [[ ${_PYTHON_SINGLE_R1_ECLASS} ]]; then
 	die 'python-r1.eclass can not be used with python-single-r1.eclass.'
@@ -789,7 +789,7 @@ python_replicate_script() {
 		)
 
 		python_fix_shebang -q \
-			"${files[@]/*\//${D%/}/${PYTHON_SCRIPTDIR}/}"
+			"${files[@]/*\//${D}${PYTHON_SCRIPTDIR}/}"
 	}
 
 	local files=( "${@}" )
