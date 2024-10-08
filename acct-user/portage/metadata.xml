@@ -4,4 +4,7 @@
 	<maintainer type="project">
 		<email>dev-portage@gentoo.org</email>
 	</maintainer>
+	<use>
+		<flag name="video">Allow access to GPUs during tests run</flag>
+	</use>
 </pkgmetadata>
