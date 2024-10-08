@@ -23,6 +23,7 @@ python3_10		old	3.10
 python3_11		old	3.11
 python3_12		current	3.12
 python3_13		experimental	3.13
+python3_13t		experimental	3.13t
 
 pypy1_8	2.7-pypy-1.8	dead	p1.8
 pypy1_9	2.7-pypy-1.9	dead	p1.9
