@@ -42,6 +42,9 @@
 # sci-mathematics/gap in DEPEND as well, and may also want a subslot
 # dependency.
 
+if [[ -z ${_GAP_PKG_ECLASS} ]]; then
+_GAP_PKG_ECLASS=1
+
 case ${EAPI} in
 	8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
@@ -381,8 +384,10 @@ gap-pkg_src_install() {
 		# usual "find" command doesn't work here because occasionally we
 		# find *.la files in GAP packages that are not libtool archives
 		# and should not be deleted.
-		find "${ED%/}$(gap-pkg_dir)/bin" -type f -name '*.la' -delete || die
+		find "${ED}$(gap-pkg_dir)/bin" -type f -name '*.la' -delete || die
 	fi
 }
+
+fi
 
 EXPORT_FUNCTIONS src_configure src_compile src_test src_install
