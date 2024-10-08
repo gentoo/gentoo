@@ -4,20 +4,16 @@
 # @ECLASS: desktop.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: support for desktop files, menus, and icons
-
-case ${EAPI} in
-	6)
-		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
-		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
-		;;
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
 
 if [[ -z ${_DESKTOP_ECLASS} ]]; then
 _DESKTOP_ECLASS=1
+
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @FUNCTION: make_desktop_entry
 # @USAGE: <command> [name] [icon] [type] [fields]
@@ -216,7 +212,7 @@ make_desktop_entry() {
 		insopts -m 0644
 		insinto /usr/share/applications
 		doins "${desktop}"
-	) || die "installing desktop file failed"
+	)
 }
 
 # @FUNCTION: make_session_desktop
@@ -357,7 +353,7 @@ _iconins() {
 	if [[ ${funcname} == newicon ]] ; then
 		newins "$@"
 	fi
-	) || die
+	)
 }
 
 # @FUNCTION: doicon
