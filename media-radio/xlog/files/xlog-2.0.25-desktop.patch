@@ -1,0 +1,12 @@
+diff --git a/data/desktop/xlog.desktop b/data/desktop/xlog.desktop
+index 5be4ce1..bee2c12 100644
+--- a/data/desktop/xlog.desktop
++++ b/data/desktop/xlog.desktop
+@@ -8,5 +8,5 @@ Exec=xlog %F
+ Icon=xlog
+ Terminal=false
+ Type=Application
+-Categories=Utility;Database;HamRadio;GTK
+-MimeType=text/x-xlog
++Categories=Utility;Database;HamRadio;GTK;
++MimeType=text/x-xlog;
