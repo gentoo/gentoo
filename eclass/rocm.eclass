@@ -89,7 +89,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_ROCM_ECLASS} ]]; then
+if [[ -z ${_ROCM_ECLASS} ]]; then
 _ROCM_ECLASS=1
 
 inherit flag-o-matic

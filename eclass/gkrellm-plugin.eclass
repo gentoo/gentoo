@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gkrellm-plugin.eclass
@@ -36,7 +36,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_GKRELLM_PLUGIN_ECLASS} ]]; then
+if [[ -z ${_GKRELLM_PLUGIN_ECLASS} ]]; then
 _GKRELLM_PLUGIN_ECLASS=1
 
 inherit multilib

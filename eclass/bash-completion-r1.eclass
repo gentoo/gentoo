@@ -23,7 +23,7 @@
 # }
 # @CODE
 
-if [[ ! ${_BASH_COMPLETION_R1_ECLASS} ]]; then
+if [[ -z ${_BASH_COMPLETION_R1_ECLASS} ]]; then
 _BASH_COMPLETION_R1_ECLASS=1
 
 inherit toolchain-funcs

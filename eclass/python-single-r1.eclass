@@ -42,7 +42,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_PYTHON_SINGLE_R1_ECLASS} ]]; then
+if [[ -z ${_PYTHON_SINGLE_R1_ECLASS} ]]; then
 _PYTHON_SINGLE_R1_ECLASS=1
 
 if [[ ${_PYTHON_R1_ECLASS} ]]; then

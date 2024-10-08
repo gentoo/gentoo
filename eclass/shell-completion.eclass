@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: shell-completion.eclass
@@ -20,7 +20,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported"
 esac
 
-if [[ ! ${_SHELL_COMPLETION_ECLASS} ]]; then
+if [[ -z ${_SHELL_COMPLETION_ECLASS} ]]; then
 _SHELL_COMPLETION_ECLASS=1
 
 # Extend bash-completion-r1

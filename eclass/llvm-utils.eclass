@@ -18,7 +18,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_LLVM_UTILS_ECLASS} ]]; then
+if [[ -z ${_LLVM_UTILS_ECLASS} ]]; then
 _LLVM_UTILS_ECLASS=1
 
 # @FUNCTION: llvm_tuple_to_target
