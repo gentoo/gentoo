@@ -8,12 +8,20 @@
 # Author: Diego E. Pettenò <flameeyes@gentoo.org>
 # Author: Alex Legler <a3li@gentoo.org>
 # Author: Hans de Graaff <graaff@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: ruby-ng
 # @BLURB: An eclass for installing Ruby packages to behave like RubyGems.
 # @DESCRIPTION:
 # This eclass allows to install arbitrary Ruby libraries (including Gems),
 # providing integration into the RubyGems system even for "regular" packages.
+
+if [[ -z ${_RUBY_FAKEGEM_ECLASS} ]]; then
+_RUBY_FAKEGEM_ECLASS=1
+
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit ruby-ng
 
@@ -61,14 +69,7 @@ RUBY_FAKEGEM_TASK_TEST="${RUBY_FAKEGEM_TASK_TEST-test}"
 #  - rdoc (calls `rdoc-2`, adds dev-ruby/rdoc to the dependencies);
 #  - yard (calls `yard`, adds dev-ruby/yard to the dependencies);
 #  - none
-case ${EAPI} in
-	5|6)
-		RUBY_FAKEGEM_RECIPE_DOC="${RUBY_FAKEGEM_RECIPE_DOC-rake}"
-		;;
-	*)
-		RUBY_FAKEGEM_RECIPE_DOC="${RUBY_FAKEGEM_RECIPE_DOC-rdoc}"
-		;;
-esac
+: "${RUBY_FAKEGEM_RECIPE_DOC=rdoc}"
 
 # @ECLASS_VARIABLE: RUBY_FAKEGEM_DOCDIR
 # @DEFAULT_UNSET
@@ -138,15 +139,6 @@ RUBY_FAKEGEM_BINDIR="${RUBY_FAKEGEM_BINDIR-bin}"
 # legacy way to install extensions for a long time.
 RUBY_FAKEGEM_EXTENSION_LIBDIR="${RUBY_FAKEGEM_EXTENSION_LIBDIR-lib}"
 
-case ${EAPI} in
-	6)
-		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
-		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
-		;;
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 RUBY_FAKEGEM_SUFFIX="${RUBY_FAKEGEM_SUFFIX:-}"
 
 
@@ -215,13 +207,7 @@ SRC_URI="https://rubygems.org/gems/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}$
 
 ruby_add_bdepend "virtual/rubygems"
 ruby_add_rdepend virtual/rubygems
-case ${EAPI} in
-	5|6)
-		;;
-	*)
-		ruby_add_depend virtual/rubygems
-		;;
-esac
+ruby_add_depend virtual/rubygems
 
 # Many (but not all) extensions use pkgconfig in src_configure.
 if [[ ${#RUBY_FAKEGEM_EXTENSIONS[@]} -gt 0 ]]; then
@@ -258,7 +244,7 @@ ruby_fakegem_doins() {
 	(
 		insinto $(ruby_fakegem_gemsdir)/gems/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}
 		doins "$@"
-	) || die "failed $0 $@"
+	)
 }
 
 # @FUNCTION: ruby_fakegem_newins
@@ -278,7 +264,7 @@ ruby_fakegem_newins() {
 
 		insinto $(ruby_fakegem_gemsdir)/gems/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}${newdirname}
 		newins "$1" ${newbasename}
-	) || die "failed $0 $@"
+	)
 }
 
 # @FUNCTION: ruby_fakegem_install_gemspec
@@ -303,7 +289,7 @@ ruby_fakegem_install_gemspec() {
 				ruby_fakegem_genspec ${gemspec}
 			fi
 		fi
-	) || die "Unable to generate gemspec file."
+	)
 
 	insinto $(ruby_fakegem_gemsdir)/specifications
 	newins ${gemspec} ${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}.gemspec || die "Unable to install gemspec file."
@@ -349,14 +335,9 @@ ruby_fakegem_metadata_gemspec() {
 ruby_fakegem_genspec() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	case ${EAPI} in
-		5|6) ;;
-		*)
-			eqawarn "Generating generic fallback gemspec *without* dependencies"
-			eqawarn "This will only work when there are no runtime dependencies"
-			eqawarn "Set RUBY_FAKEGEM_GEMSPEC to generate a proper specifications file"
-			;;
-	esac
+	eqawarn "Generating generic fallback gemspec *without* dependencies"
+	eqawarn "This will only work when there are no runtime dependencies"
+	eqawarn "Set RUBY_FAKEGEM_GEMSPEC to generate a proper specifications file"
 
 	local required_paths="'lib'"
 	for path in ${RUBY_FAKEGEM_REQUIRE_PATHS}; do
@@ -434,7 +415,7 @@ EOF
 
 		exeinto ${binpath:-/usr/bin}
 		newexe "${T}"/gembin-wrapper-${gembinary} $(basename $newbinary)
-	) || die "Unable to create fakegem wrapper"
+	)
 }
 
 # @FUNCTION: each_fakegem_configure
@@ -701,3 +682,5 @@ all_ruby_install() {
 
 	all_fakegem_install
 }
+
+fi
