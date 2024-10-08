@@ -4,7 +4,7 @@
 # @ECLASS: vim-plugin.eclass
 # @MAINTAINER:
 # vim@gentoo.org
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: used for installing vim plugins
 # @DESCRIPTION:
 # This eclass simplifies installation of app-vim plugins into
@@ -16,17 +16,13 @@ if [[ -z ${_VIM_PLUGIN_ECLASS} ]]; then
 _VIM_PLUGIN_ECLASS=1
 
 case ${EAPI} in
-	6)
-		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
-		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
-		;;
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 inherit vim-doc
 
-[[ ${EAPI} != [67] ]] && _DEFINE_VIM_PLUGIN_SRC_PREPARE=true
+[[ ${EAPI} != 7 ]] && _DEFINE_VIM_PLUGIN_SRC_PREPARE=true
 
 # @ECLASS_VARIABLE: VIM_PLUGIN_VIM_VERSION
 # @DESCRIPTION:
@@ -102,8 +98,8 @@ vim-plugin_src_install() {
 	# Install remainder of plugin
 	insinto /usr/share/vim/vimfiles/
 	local d
-	case ${EAPI:-0} in
-		6|7)
+	case ${EAPI} in
+		7)
 			for d in *; do
 				[[ -d "${d}" ]] || continue
 				doins -r "${d}"
