@@ -110,7 +110,7 @@ readonly _ADA_ALL_IMPLS
 # unsupported, returns 1 -- and the caller should ignore the entry.
 # If it is invalid, dies with an appropriate error message.
 _ada_impl_supported() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${#} -eq 1 ]] || die "${FUNCNAME}: takes exactly 1 argument (impl)."
 
@@ -208,7 +208,7 @@ _ada_set_impls() {
 # They are described more completely in the eclass
 # variable documentation.
 ada_export() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local impl var
 
@@ -404,7 +404,7 @@ unset -f _ada_single_set_globals
 # setup will be done. If wrapper update is requested, the directory
 # shall be removed first.
 ada_wrapper_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local workdir=${1:-${T}/${EADA}}
 	local impl=${2:-${EADA}}
@@ -470,7 +470,7 @@ ada_wrapper_setup() {
 # Determine what the selected Ada implementation is and set
 # the Ada build environment up for it.
 ada_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	unset EADA
 
@@ -518,7 +518,7 @@ ada_setup() {
 # @DESCRIPTION:
 # Runs ada_setup.
 ada_pkg_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${MERGE_TYPE} != binary ]] && ada_setup
 }

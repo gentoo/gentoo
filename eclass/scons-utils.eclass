@@ -132,7 +132,7 @@ fi
 escons() {
 	local ret
 
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ ! ${EPYTHON} ]]; then
 		eerror "EPYTHON is unset while calling escons. This most likely means that"

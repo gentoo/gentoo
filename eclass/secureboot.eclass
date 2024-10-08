@@ -74,7 +74,7 @@ _SECUREBOOT_ECLASS=1
 # If USE=secureboot is enabled die if the required user variables are unset
 # and die if the keys can't be found.
 _secureboot_die_if_unset() {
-	debug-print-function ${FUNCNAME[0]} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 	use secureboot || return
 
 	if [[ -z ${SECUREBOOT_SIGN_KEY} || -z ${SECUREBOOT_SIGN_CERT} ]]; then
@@ -99,7 +99,7 @@ _secureboot_die_if_unset() {
 # @DESCRIPTION:
 # Checks if required user variables are set before starting the build
 secureboot_pkg_setup() {
-	debug-print-function ${FUNCNAME[0]} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 	use secureboot || return
 
 	# If we are merging a binary then the files in this binary
@@ -117,7 +117,7 @@ secureboot_pkg_setup() {
 # If no output file is specified the output file will be the same
 # as the input file, i.e. the file will be overwritten.
 secureboot_sign_efi_file() {
-	debug-print-function ${FUNCNAME[0]} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 	use secureboot || return
 
 	local input_file=${1}
@@ -153,7 +153,7 @@ secureboot_sign_efi_file() {
 # By default signed files gain the .signed suffix. If the --in-place
 # argument is given the efi files are replaced with a signed version in place.
 secureboot_auto_sign() {
-	debug-print-function ${FUNCNAME[0]} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 	use secureboot || return
 
 	[[ ${EBUILD_PHASE} == install ]] ||

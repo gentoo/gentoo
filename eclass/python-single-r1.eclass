@@ -269,7 +269,7 @@ unset -f _python_single_set_globals
 # REQUIRED_USE="doc? ( ^^ ( python_single_target_python2_7 ) )"
 # @CODE
 python_gen_useflags() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local impl matches=()
 
@@ -313,7 +313,7 @@ python_gen_useflags() {
 #     dev-python/unittest2[python_targets_pypy(-)?,...] )"
 # @CODE
 python_gen_cond_dep() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local impl matches=()
 
@@ -367,7 +367,7 @@ python_gen_cond_dep() {
 #     dev-python/pypy[xml(+)] ) )"
 # @CODE
 python_gen_impl_dep() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local impl
 	local matches=()
@@ -392,7 +392,7 @@ python_gen_impl_dep() {
 # Determine what the selected Python implementation is and set
 # the Python build environment up for it.
 python_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 	_python_sanity_checks
 
 	unset EPYTHON
@@ -448,7 +448,7 @@ python_setup() {
 # @DESCRIPTION:
 # Runs python_setup.
 python-single-r1_pkg_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${MERGE_TYPE} != binary ]] && python_setup
 }

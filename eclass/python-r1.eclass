@@ -242,7 +242,7 @@ unset -f _python_set_globals
 # Enforce the proper setting of PYTHON_TARGETS, if PYTHON_COMPAT_OVERRIDE
 # is not in effect. If it is, just warn that the flags will be ignored.
 _python_validate_useflags() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ ${PYTHON_COMPAT_OVERRIDE} ]]; then
 		if [[ ! ${_PYTHON_COMPAT_OVERRIDE_WARNED} ]]; then
@@ -282,7 +282,7 @@ _python_validate_useflags() {
 #
 # This is an internal function used to implement python_gen_cond_dep.
 _python_gen_usedep() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local impl matches=()
 
@@ -322,7 +322,7 @@ _python_gen_usedep() {
 # REQUIRED_USE="doc? ( || ( python_targets_python2_7 ) )"
 # @CODE
 python_gen_useflags() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local impl matches=()
 
@@ -366,7 +366,7 @@ python_gen_useflags() {
 #     dev-python/unittest2[python_targets_pypy?] )"
 # @CODE
 python_gen_cond_dep() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local impl matches=()
 	local dep=${1}
@@ -428,7 +428,7 @@ python_gen_cond_dep() {
 #     dev-python/pypy[xml(+)] ) )"
 # @CODE
 python_gen_impl_dep() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local impl matches=()
 	local PYTHON_REQ_USE=${1}
@@ -506,7 +506,7 @@ python_gen_impl_dep() {
 # )
 # @CODE
 python_gen_any_dep() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local depstr=${1}
 	shift
@@ -554,7 +554,7 @@ python_gen_any_dep() {
 # to implementation-specific build directory matching BUILD_DIR used by
 # python_foreach_abi().
 python_copy_sources() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local MULTIBUILD_VARIANTS
 	_python_obtain_impls
@@ -590,7 +590,7 @@ _python_obtain_impls() {
 # Initialize the environment for Python implementation selected
 # for multibuild.
 _python_multibuild_wrapper() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local -x EPYTHON PYTHON
 	local -x PATH=${PATH} PKG_CONFIG_PATH=${PKG_CONFIG_PATH}
@@ -616,7 +616,7 @@ _python_multibuild_wrapper() {
 # For each command being run, EPYTHON, PYTHON and BUILD_DIR are set
 # locally, and the former two are exported to the command environment.
 python_foreach_impl() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 	_python_sanity_checks
 
 	if [[ ${_DISTUTILS_R1_ECLASS} ]]; then
@@ -708,7 +708,7 @@ python_foreach_impl() {
 # }
 # @CODE
 python_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 	_python_sanity_checks
 
 	local has_check_deps
@@ -774,7 +774,7 @@ python_setup() {
 # All specified files must start with a 'python' shebang. A file not
 # having a matching shebang will be refused.
 python_replicate_script() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_python_replicate_script() {
 		local _PYTHON_FIX_SHEBANG_QUIET=1

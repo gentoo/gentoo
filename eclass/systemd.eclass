@@ -75,7 +75,7 @@ _systemd_unprefix() {
 # ${D}).  This function always succeeds, even if systemd is not
 # installed.
 systemd_get_systemunitdir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_systemd_get_dir systemdsystemunitdir /lib/systemd/system
 }
@@ -86,7 +86,7 @@ systemd_get_systemunitdir() {
 # ${D}). This function always succeeds, even if systemd is not
 # installed.
 systemd_get_userunitdir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_systemd_get_dir systemduserunitdir /usr/lib/systemd/user
 }
@@ -97,7 +97,7 @@ systemd_get_userunitdir() {
 # ${D}). This function always succeeds, even if systemd is not
 # installed.
 systemd_get_utildir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_systemd_get_dir systemdutildir /lib/systemd
 }
@@ -107,7 +107,7 @@ systemd_get_utildir() {
 # Output the path for the systemd system generator directory (not including
 # ${D}). This function always succeeds, even if systemd is not installed.
 systemd_get_systemgeneratordir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_systemd_get_dir systemdsystemgeneratordir /lib/systemd/system-generators
 }
@@ -117,7 +117,7 @@ systemd_get_systemgeneratordir() {
 # Output the path for the systemd system preset directory (not including
 # ${D}). This function always succeeds, even if systemd is not installed.
 systemd_get_systempresetdir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_systemd_get_dir systemdsystempresetdir /lib/systemd/system-preset
 }
@@ -126,7 +126,7 @@ systemd_get_systempresetdir() {
 # @DESCRIPTION:
 # Output the path for the system sleep directory.
 systemd_get_sleepdir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 	_systemd_get_dir systemdsleepdir /lib/systemd/system-sleep
 }
 
@@ -135,7 +135,7 @@ systemd_get_sleepdir() {
 # @DESCRIPTION:
 # Install systemd unit(s). Uses doins, thus it is fatal.
 systemd_dounit() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	(
 		insopts -m 0644
@@ -149,7 +149,7 @@ systemd_dounit() {
 # @DESCRIPTION:
 # Install systemd unit with a new name. Uses newins, thus it is fatal.
 systemd_newunit() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	(
 		insopts -m 0644
@@ -163,7 +163,7 @@ systemd_newunit() {
 # @DESCRIPTION:
 # Install systemd user unit(s). Uses doins, thus it is fatal.
 systemd_douserunit() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	(
 		insopts -m 0644
@@ -178,7 +178,7 @@ systemd_douserunit() {
 # Install systemd user unit with a new name. Uses newins, thus it
 # is fatal.
 systemd_newuserunit() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	(
 		insopts -m 0644
@@ -195,7 +195,7 @@ systemd_newuserunit() {
 # <conf-file> with the .conf suffix stripped is used
 # (e.g. foo.service.conf -> foo.service.d/00gentoo.conf).
 systemd_install_serviced() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local src=${1}
 	local service=${2}
@@ -233,7 +233,7 @@ systemd_install_serviced() {
 # 	RestartSec=120
 # EOF
 systemd_install_dropin() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local basedir
 	if [[ $# -ge 1 ]] && [[ $1 == "--user" ]]; then
@@ -265,7 +265,7 @@ systemd_install_dropin() {
 # Enable service in desired target, e.g. install a symlink for it.
 # Uses dosym, thus it is fatal.
 systemd_enable_service() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${#} -eq 2 ]] || die "Synopsis: systemd_enable_service target service"
 
@@ -290,7 +290,7 @@ systemd_enable_service() {
 #
 # Doc: https://www.freedesktop.org/wiki/Software/systemd/timedated/
 systemd_enable_ntpunit() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 	if [[ ${#} -lt 2 ]]; then
 		die "Usage: systemd_enable_ntpunit <NN-name> <service>..."
 	fi
@@ -335,7 +335,7 @@ systemd_enable_ntpunit() {
 #
 # See: https://www.freedesktop.org/wiki/Software/systemd/catalog
 systemd_update_catalog() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${EBUILD_PHASE} == post* ]] \
 		|| die "${FUNCNAME} disallowed during ${EBUILD_PHASE_FUNC:-${EBUILD_PHASE}}"
@@ -365,7 +365,7 @@ systemd_update_catalog() {
 #
 # See: man sd_booted
 systemd_is_booted() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -d /run/systemd/system ]]
 	local ret=${?}

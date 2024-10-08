@@ -67,7 +67,7 @@ _udev_get_udevdir() {
 # @DESCRIPTION:
 # Use the short version $(get_udevdir) instead!
 udev_get_udevdir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	eerror "This ebuild should be using the get_udevdir() function instead of the deprecated udev_get_udevdir()"
 	die "Deprecated function call: udev_get_udevdir(), please report to (overlay) maintainers."
@@ -79,7 +79,7 @@ udev_get_udevdir() {
 # This function always succeeds, even if udev is not installed.
 # The fallback value is set to /lib/udev
 get_udevdir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	echo "$(_udev_get_udevdir)"
 }
@@ -89,7 +89,7 @@ get_udevdir() {
 # @DESCRIPTION:
 # Install udev rule(s). Uses doins, thus it is fatal.
 udev_dorules() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	(
 		insopts -m 0644
@@ -103,7 +103,7 @@ udev_dorules() {
 # @DESCRIPTION:
 # Install udev rule with a new name. Uses newins, thus it is fatal.
 udev_newrules() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	(
 		insopts -m 0644

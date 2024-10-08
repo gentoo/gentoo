@@ -69,7 +69,7 @@ _rebar_find_dep() {
 # @DESCRIPTION:
 # Run rebar with verbose flag. Die on failure.
 erebar() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	(( $# > 0 )) || die "erebar: at least one target is required"
 
@@ -87,7 +87,7 @@ erebar() {
 # Existence of rebar.config is optional, but file description file must exist
 # at 'src/${PN}.app.src'.
 rebar_src_prepare() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	default
 	rebar_set_vsn
@@ -101,7 +101,7 @@ rebar_src_prepare() {
 # @DESCRIPTION:
 # Configure with ERL_LIBS set.
 rebar_src_configure() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local -x ERL_LIBS="${EPREFIX}$(get_erl_libs)"
 	default
@@ -111,7 +111,7 @@ rebar_src_configure() {
 # @DESCRIPTION:
 # Compile project with rebar.
 rebar_src_compile() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	erebar compile
 }
@@ -120,7 +120,7 @@ rebar_src_compile() {
 # @DESCRIPTION:
 # Run unit tests.
 rebar_src_test() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	erebar eunit
 }
@@ -132,7 +132,7 @@ rebar_src_test() {
 #
 # Function expects that project conforms to Erlang/OTP structure.
 rebar_src_install() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local bin
 	local dest="$(get_erl_libs)/${P}"

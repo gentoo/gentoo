@@ -245,7 +245,7 @@ nuget_unpack-non-nuget-archives() {
 # This function is used inside "dotnet-pkg_src_prepare"
 # from the "dotnet-pkg" eclass.
 nuget_writeconfig() {
-	debug-print-function "${FUNCNAME[0]}" "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	case "${1}" in
 		"" ) die "${FUNCNAME[0]}: no directory/file path specified" ;;

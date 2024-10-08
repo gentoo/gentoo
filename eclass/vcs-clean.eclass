@@ -23,7 +23,7 @@ esac
 # Remove CVS directories and .cvs* files recursively.  Useful when a
 # source tarball contains internal CVS directories.  Defaults to ${PWD}.
 ecvs_clean() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ $# -eq 0 ]] && set -- .
 	find "$@" '(' -type d -name 'CVS' -prune -o -type f -name '.cvs*' ')' \
@@ -36,7 +36,7 @@ ecvs_clean() {
 # Remove .svn directories recursively.  Useful when a source tarball
 # contains internal Subversion directories.  Defaults to ${PWD}.
 esvn_clean() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ $# -eq 0 ]] && set -- .
 	find "$@" -type d -name '.svn' -prune -exec rm -rf '{}' + || die
@@ -48,7 +48,7 @@ esvn_clean() {
 # Remove .git* directories recursively.  Useful when a source tarball
 # contains internal Git directories.  Defaults to ${PWD}.
 egit_clean() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ $# -eq 0 ]] && set -- .
 	find "$@" -type d -name '.git*' -prune -exec rm -rf '{}' + || die

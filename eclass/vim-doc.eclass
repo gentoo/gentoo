@@ -29,7 +29,7 @@ esac
 # @DESCRIPTION:
 # Update the documentation tags in the versioned Vim directory.
 update_vim_helptags() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local vimfiles helpfile files vim d
 

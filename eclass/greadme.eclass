@@ -69,7 +69,7 @@ _GREADME_REL_PATH="/usr/share/doc/${PF}/README.gentoo"
 # Create the readme doc via stdin.  You can use --append to append to an
 # existing readme doc.
 greadme_stdin() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local append
 	if [[ ${1} = --append ]]; then
@@ -97,7 +97,7 @@ greadme_stdin() {
 # @DESCRIPTION:
 # Installs the provided file as readme doc.
 greadme_file() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local input_doc_file="${1}"
 	if [[ -z ${input_doc_file} ]]; then
@@ -114,7 +114,7 @@ greadme_file() {
 # @DESCRIPTION:
 # Installs the readme file from the temp directory into the image.
 _greadme_install_doc() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local greadme="${_GREADME_TMP_FILE}"
 	if [[ ! ${GREADME_DISABLE_AUTOFORMAT} ]]; then
@@ -148,7 +148,7 @@ _greadme_install_doc() {
 # Performs checks like comparing the readme doc from the image with a
 # potentially existing one in the live system.
 greadme_pkg_preinst() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		_GREADME_SHOW="fresh-install"
@@ -224,7 +224,7 @@ greadme_pkg_preinst() {
 # @DESCRIPTION:
 # Conditionally shows the contents of the readme doc via elog.
 greadme_pkg_postinst() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ ! -v _GREADME_SHOW ]]; then
 		die "_GREADME_SHOW not set. Did you call greadme_pkg_preinst?"

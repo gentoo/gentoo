@@ -46,7 +46,7 @@ if [[ ${_DEFINE_VIM_PLUGIN_SRC_PREPARE} ]]; then
 # other packages.
 # Note that this function is only defined and exported in EAPIs >= 8.
 vim-plugin_src_prepare() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	default_src_prepare
 
@@ -90,7 +90,7 @@ _VIM_PLUGIN_ALLOWED_DIRS=(
 # }
 # @CODE
 vim-plugin_src_install() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	# Install non-vim-help-docs
 	einstalldocs
@@ -124,7 +124,7 @@ vim-plugin_src_install() {
 #
 # * display_vim_plugin_help
 vim-plugin_pkg_postinst() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	update_vim_helptags # from vim-doc
 	update_vim_afterscripts	# see below
@@ -137,7 +137,7 @@ vim-plugin_pkg_postinst() {
 # This function calls the update_vim_helptags and update_vim_afterscripts
 # functions and eventually removes a bunch of empty directories.
 vim-plugin_pkg_postrm() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	update_vim_helptags # from vim-doc
 	update_vim_afterscripts	# see below
@@ -154,7 +154,7 @@ vim-plugin_pkg_postrm() {
 # Creates scripts in /usr/share/vim/vimfiles/after/*
 # comprised of the snippets in /usr/share/vim/vimfiles/after/*/*.d
 update_vim_afterscripts() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local d f afterdir="${EROOT}"/usr/share/vim/vimfiles/after
 
@@ -193,7 +193,7 @@ update_vim_afterscripts() {
 # extra message regarding enabling filetype plugins is displayed if
 # VIM_PLUGIN_MESSAGES includes the word "filetype".
 display_vim_plugin_help() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local h
 

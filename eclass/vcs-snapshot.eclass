@@ -57,7 +57,7 @@ _VCS_SNAPSHOT_ECLASS=1
 # local names. Other archive types will be passed down to regular
 # unpack.
 vcs-snapshot_src_unpack() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local renamed_any=
 	local f

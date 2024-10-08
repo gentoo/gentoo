@@ -285,7 +285,7 @@ unset -f _lua_single_set_globals
 #
 # This is an internal function used to implement lua_gen_cond_dep.
 _lua_gen_usedep() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local impl matches=()
 
@@ -338,7 +338,7 @@ _lua_impl_matches() {
 # Verify whether the patterns passed to the eclass function are correct
 # (i.e. can match any valid implementation).  Dies on wrong pattern.
 _lua_verify_patterns() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local impl pattern
 	for pattern; do
@@ -381,7 +381,7 @@ _lua_verify_patterns() {
 #     dev-lua/backported_core_module[lua_targets_lua5-3(-)?,...] )"
 # @CODE
 lua_gen_cond_dep() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local impl matches=()
 
@@ -440,7 +440,7 @@ lua_gen_cond_dep() {
 # )"
 # @CODE
 lua_gen_impl_dep() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local impl
 	local matches=()
@@ -465,7 +465,7 @@ lua_gen_impl_dep() {
 # Determine what the selected Lua implementation is and set
 # the Lua build environment up for it.
 lua_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	unset ELUA
 
@@ -520,7 +520,7 @@ lua_setup() {
 # @DESCRIPTION:
 # Runs lua_setup.
 lua-single_pkg_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${MERGE_TYPE} != binary ]] && lua_setup
 }

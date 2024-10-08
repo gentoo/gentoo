@@ -36,7 +36,7 @@ _APP_ALTERNATIVES_ECLASS=1
 # @DESCRIPTION:
 # Set ebuild metadata variables.
 _app-alternatives_set_globals() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ ${ALTERNATIVES@a} != *a* ]]; then
 		die 'ALTERNATIVES must be an array.'
@@ -71,7 +71,7 @@ _app-alternatives_set_globals
 # @DESCRIPTION:
 # Get the flag name for the selected alternative (i.e. the USE flag set).
 get_alternative() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local flag
 	for flag in "${ALTERNATIVES[@]%%:*}"; do

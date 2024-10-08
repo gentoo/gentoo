@@ -75,7 +75,7 @@ readonly _PYTHON_HISTORICAL_IMPLS
 # Verify whether the patterns passed to the eclass function are correct
 # (i.e. can match any valid implementation).  Dies on wrong pattern.
 _python_verify_patterns() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local impl pattern
 	for pattern; do
@@ -298,7 +298,7 @@ _python_impl_matches() {
 # PYTHON_SITEDIR. They are described more completely in the eclass
 # variable documentation.
 _python_export() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local impl var
 
@@ -483,7 +483,7 @@ _python_export() {
 # Obtain and print the 'stdlib' path for the given implementation. If no
 # implementation is provided, ${EPYTHON} will be used.
 python_get_stdlib() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_python_export "${@}" PYTHON_STDLIB
 	echo "${PYTHON_STDLIB}"
@@ -496,7 +496,7 @@ python_get_stdlib() {
 # implementation. If no implementation is provided, ${EPYTHON} will
 # be used.
 python_get_sitedir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_python_export "${@}" PYTHON_SITEDIR
 	echo "${PYTHON_SITEDIR}"
@@ -508,7 +508,7 @@ python_get_sitedir() {
 # Obtain and print the include path for the given implementation. If no
 # implementation is provided, ${EPYTHON} will be used.
 python_get_includedir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_python_export "${@}" PYTHON_INCLUDEDIR
 	echo "${PYTHON_INCLUDEDIR}"
@@ -523,7 +523,7 @@ python_get_includedir() {
 # Please note that this function can be used with CPython only. Use
 # in another implementation will result in a fatal failure.
 python_get_library_path() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_python_export "${@}" PYTHON_LIBPATH
 	echo "${PYTHON_LIBPATH}"
@@ -540,7 +540,7 @@ python_get_library_path() {
 # It requires Python and pkg-config installed, and therefore proper
 # build-time dependencies need be added to the ebuild.
 python_get_CFLAGS() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_python_export "${@}" PYTHON_CFLAGS
 	echo "${PYTHON_CFLAGS}"
@@ -557,7 +557,7 @@ python_get_CFLAGS() {
 # It requires Python and pkg-config installed, and therefore proper
 # build-time dependencies need be added to the ebuild.
 python_get_LIBS() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_python_export "${@}" PYTHON_LIBS
 	echo "${PYTHON_LIBS}"
@@ -574,7 +574,7 @@ python_get_LIBS() {
 # It requires Python installed, and therefore proper build-time
 # dependencies need be added to the ebuild.
 python_get_PYTHON_CONFIG() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_python_export "${@}" PYTHON_CONFIG
 	echo "${PYTHON_CONFIG}"
@@ -587,7 +587,7 @@ python_get_PYTHON_CONFIG() {
 # implementation. If no implementation is provided, ${EPYTHON} will
 # be used.
 python_get_scriptdir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_python_export "${@}" PYTHON_SCRIPTDIR
 	echo "${PYTHON_SCRIPTDIR}"
@@ -600,7 +600,7 @@ python_get_scriptdir() {
 # paths). If no directories are provided, the default system paths
 # are used (prepended with ${D}).
 python_optimize() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
 
@@ -677,7 +677,7 @@ python_optimize() {
 # }
 # @CODE
 python_scriptinto() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_PYTHON_SCRIPTROOT=${1}
 }
@@ -691,7 +691,7 @@ python_scriptinto() {
 # The executable will be wrapped properly for the Python implementation,
 # though no shebang mangling will be performed.
 python_doexe() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${EBUILD_PHASE} != install ]] &&
 		die "${FUNCNAME} can only be used in src_install"
@@ -712,7 +712,7 @@ python_doexe() {
 # though no shebang mangling will be performed. It will be renamed
 # to <new-name>.
 python_newexe() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${EBUILD_PHASE} != install ]] &&
 		die "${FUNCNAME} can only be used in src_install"
@@ -762,7 +762,7 @@ python_newexe() {
 # }
 # @CODE
 python_doscript() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${EBUILD_PHASE} != install ]] &&
 		die "${FUNCNAME} can only be used in src_install"
@@ -789,7 +789,7 @@ python_doscript() {
 # }
 # @CODE
 python_newscript() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${EBUILD_PHASE} != install ]] &&
 		die "${FUNCNAME} can only be used in src_install"
@@ -827,7 +827,7 @@ python_newscript() {
 # }
 # @CODE
 python_moduleinto() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_PYTHON_MODULEROOT=${1}
 }
@@ -852,7 +852,7 @@ python_moduleinto() {
 # }
 # @CODE
 python_domodule() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
 
@@ -900,7 +900,7 @@ python_domodule() {
 # }
 # @CODE
 python_doheader() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${EBUILD_PHASE} != install ]] &&
 		die "${FUNCNAME} can only be used in src_install"
@@ -932,7 +932,7 @@ python_doheader() {
 # setup will be done. If wrapper update is requested, the directory
 # shall be removed first.
 _python_wrapper_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local workdir=${1:-${T}/${EPYTHON}}
 	local impl=${2:-${EPYTHON}}
@@ -1034,7 +1034,7 @@ _python_wrapper_setup() {
 # Python version (but not non-Python shebangs).  --quiet causes
 # the function not to list modified files verbosely.
 python_fix_shebang() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${EPYTHON} ]] || die "${FUNCNAME}: EPYTHON unset (pkg_setup not called?)"
 
@@ -1154,7 +1154,7 @@ _python_check_locale_sanity() {
 # nothing if LC_ALL is defined, or if the current locale uses a UTF-8 charmap.
 # This may be used to work around the quirky open() behavior of python3.
 python_export_utf8_locale() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	# If the locale program isn't available, just return.
 	type locale &>/dev/null || return 0
@@ -1206,7 +1206,7 @@ python_export_utf8_locale() {
 # to be taken to run einstalldocs from the same directory
 # (usually ${S}).
 build_sphinx() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 	[[ ${#} -eq 1 ]] || die "${FUNCNAME} takes 1 arg: <directory>"
 
 	local dir=${1}
@@ -1252,7 +1252,7 @@ _python_check_EPYTHON() {
 # package sources that would block installed packages from being used
 # (and effectively e.g. make it impossible to load compiled extensions).
 _python_check_occluded_packages() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -z ${BUILD_DIR} || ! -d ${BUILD_DIR}/install ]] && return
 
@@ -1362,7 +1362,7 @@ _python_check_occluded_packages() {
 #
 # This command dies on failure and respects nonfatal.
 epytest() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_python_check_EPYTHON
 	_python_check_occluded_packages
@@ -1490,7 +1490,7 @@ epytest() {
 #
 # This command dies on failure and respects nonfatal.
 eunittest() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_python_check_EPYTHON
 	_python_check_occluded_packages
@@ -1515,7 +1515,7 @@ eunittest() {
 # code.  Checks whether the interpreter is installed, runs
 # python_check_deps() if declared.
 _python_run_check_deps() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local impl=${1}
 
@@ -1547,7 +1547,7 @@ _python_run_check_deps() {
 # The wrapper accepts multiple package specifications.  For the check
 # to succeed, *all* specified atoms must match.
 python_has_version() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local root_arg=( -b )
 	case ${1} in
@@ -1572,7 +1572,7 @@ python_has_version() {
 # @DESCRIPTION:
 # Perform additional environment sanity checks.
 _python_sanity_checks() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${_PYTHON_SANITY_CHECKED} ]] && return
 

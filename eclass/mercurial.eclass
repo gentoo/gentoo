@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mercurial.eclass
@@ -100,7 +100,7 @@ EHG_OFFLINE="${EHG_OFFLINE:-${EVCS_OFFLINE}}"
 # EHG_CHECKOUT_DIR, which defaults to S.
 
 mercurial_fetch() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	EHG_REPO_URI=${1-${EHG_REPO_URI}}
 	[[ -z "${EHG_REPO_URI}" ]] && die "EHG_REPO_URI is empty"

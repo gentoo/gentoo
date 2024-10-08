@@ -62,7 +62,7 @@ WEBAPP_CLEANER="${EROOT}/usr/sbin/webapp-cleaner"
 # Load the config file /etc/vhosts/webapp-config
 # Supports both the old bash version, and the new python version
 webapp_read_config() {
-	debug-print-function $FUNCNAME $*
+	debug-print-function ${FUNCNAME} "$@"
 
 	if has_version '>=app-admin/webapp-config-1.50'; then
 		ENVVAR=$(${WEBAPP_CONFIG} --query ${PN} ${PVR}) || die "Could not read settings from webapp-config!"
@@ -79,7 +79,7 @@ webapp_read_config() {
 
 # Check whether a specified file exists in the given directory (`.' by default)
 webapp_checkfileexists() {
-	debug-print-function $FUNCNAME $*
+	debug-print-function ${FUNCNAME} "$@"
 
 	local my_prefix=${2:+${2}/}
 
@@ -92,12 +92,12 @@ webapp_checkfileexists() {
 }
 
 webapp_check_installedat() {
-	debug-print-function $FUNCNAME $*
+	debug-print-function ${FUNCNAME} "$@"
 	${WEBAPP_CONFIG} --show-installed -h localhost -d "${INSTALL_DIR}" 2> /dev/null
 }
 
 webapp_getinstalltype() {
-	debug-print-function $FUNCNAME $*
+	debug-print-function ${FUNCNAME} "$@"
 
 	if ! has vhosts ${IUSE} || use vhosts; then
 		return
@@ -174,7 +174,7 @@ need_httpd_fastcgi() {
 # @DESCRIPTION:
 # Mark a file config-protected for a web-based application.
 webapp_configfile() {
-	debug-print-function $FUNCNAME $*
+	debug-print-function ${FUNCNAME} "$@"
 
 	local m
 	for m in "$@"; do
@@ -197,7 +197,7 @@ webapp_configfile() {
 # Install a script that will run after a virtual copy is created, and
 # before a virtual copy has been removed.
 webapp_hook_script() {
-	debug-print-function $FUNCNAME $*
+	debug-print-function ${FUNCNAME} "$@"
 
 	webapp_checkfileexists "${1}"
 
@@ -211,7 +211,7 @@ webapp_hook_script() {
 # @DESCRIPTION:
 # Install a text file containing post-installation instructions.
 webapp_postinst_txt() {
-	debug-print-function $FUNCNAME $*
+	debug-print-function ${FUNCNAME} "$@"
 
 	webapp_checkfileexists "${2}"
 
@@ -224,7 +224,7 @@ webapp_postinst_txt() {
 # @DESCRIPTION:
 # Install a text file containing post-upgrade instructions.
 webapp_postupgrade_txt() {
-	debug-print-function $FUNCNAME $*
+	debug-print-function ${FUNCNAME} "$@"
 
 	webapp_checkfileexists "${2}"
 
@@ -234,7 +234,7 @@ webapp_postupgrade_txt() {
 
 # helper for webapp_serverowned()
 _webapp_serverowned() {
-	debug-print-function $FUNCNAME $*
+	debug-print-function ${FUNCNAME} "$@"
 
 	webapp_checkfileexists "${1}" "${D}"
 	local my_file
@@ -253,7 +253,7 @@ _webapp_serverowned() {
 # The ownership of the file is NOT set until the application is installed using
 # the webapp-config tool. If -R is given directories are handled recursively.
 webapp_serverowned() {
-	debug-print-function $FUNCNAME $*
+	debug-print-function ${FUNCNAME} "$@"
 
 	local m
 	if [[ "${1}" == "-R" ]]; then
@@ -280,7 +280,7 @@ webapp_serverowned() {
 # used by default. Note: this function will automagically prepend $1 to the
 # front of your config file's name.
 webapp_server_configfile() {
-	debug-print-function $FUNCNAME $*
+	debug-print-function ${FUNCNAME} "$@"
 
 	webapp_checkfileexists "${2}"
 
@@ -303,7 +303,7 @@ webapp_server_configfile() {
 # If a version is given the script should upgrade the database schema from
 # the given version to $PVR.
 webapp_sqlscript() {
-	debug-print-function $FUNCNAME $*
+	debug-print-function ${FUNCNAME} "$@"
 
 	webapp_checkfileexists "${2}"
 
@@ -330,7 +330,7 @@ webapp_sqlscript() {
 # You need to call this function in src_install() BEFORE anything else has run.
 # For now we just create required webapp-config directories.
 webapp_src_preinst() {
-	debug-print-function $FUNCNAME $*
+	debug-print-function ${FUNCNAME} "$@"
 
 	# sanity checks, to catch bugs in the ebuild
 	if [[ ! -f "${T}/${SETUP_CHECK_FILE}" ]]; then
@@ -371,7 +371,7 @@ webapp_src_preinst() {
 # You need to call this function BEFORE anything else has run in your custom
 # pkg_setup().
 webapp_pkg_setup() {
-	debug-print-function $FUNCNAME $*
+	debug-print-function ${FUNCNAME} "$@"
 
 	# to test whether or not the ebuild has correctly called this function
 	# we add an empty file to the filesystem
@@ -432,7 +432,7 @@ webapp_pkg_setup() {
 # You need to call this function AFTER everything else has run in your custom
 # src_install().
 webapp_src_install() {
-	debug-print-function $FUNCNAME $*
+	debug-print-function ${FUNCNAME} "$@"
 
 	# to test whether or not the ebuild has correctly called this function
 	# we add an empty file to the filesystem
@@ -460,7 +460,7 @@ webapp_src_install() {
 # You need to call this function AFTER everything else has run in your custom
 # pkg_postinst().
 webapp_pkg_postinst() {
-	debug-print-function $FUNCNAME $*
+	debug-print-function ${FUNCNAME} "$@"
 
 	webapp_read_config
 
@@ -539,7 +539,7 @@ webapp_pkg_postinst() {
 # remove all installed copies of this web application. Otherwise instruct the
 # user to manually remove those copies. See bug #136959.
 webapp_pkg_prerm() {
-	debug-print-function $FUNCNAME $*
+	debug-print-function ${FUNCNAME} "$@"
 
 	local my_output=
 	my_output="$(${WEBAPP_CONFIG} --list-installs ${PN} ${PVR})"

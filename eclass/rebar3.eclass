@@ -76,7 +76,7 @@ _rebar_find_dep() {
 # @DESCRIPTION:
 # Run rebar with verbose flag. Die on failure.
 erebar3() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	(( $# > 0 )) || die "${FUNCNAME}: at least one target is required"
 
@@ -99,7 +99,7 @@ erebar3() {
 # Existence of rebar.config is optional, but file description file must exist
 # at 'src/${PN}.app.src'.
 rebar3_src_prepare() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	default
 	rebar_set_vsn
@@ -118,7 +118,7 @@ rebar3_src_prepare() {
 # @DESCRIPTION:
 # Configure with ERL_LIBS set.
 rebar3_src_configure() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local -x ERL_LIBS="${EPREFIX}$(get_erl_libs)"
 	default
@@ -128,7 +128,7 @@ rebar3_src_configure() {
 # @DESCRIPTION:
 # Compile project with rebar3.
 rebar3_src_compile() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	erebar3 as "${REBAR_PROFILE}" release --all
 }
@@ -137,7 +137,7 @@ rebar3_src_compile() {
 # @DESCRIPTION:
 # Run unit tests.
 rebar3_src_test() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	erebar3 eunit -v
 }
@@ -149,7 +149,7 @@ rebar3_src_test() {
 #
 # Function expects that project conforms to Erlang/OTP structure.
 rebar3_install_lib() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local dest="$(get_erl_libs)/${P}"
 	insinto "${dest}"
@@ -169,7 +169,7 @@ rebar3_install_lib() {
 #
 # Function expects that project conforms to Erlang/OTP structure.
 rebar3_src_install() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	pushd "_build/${REBAR_PROFILE}" >/dev/null || die
 	if [[ -d rel/${PN} ]]; then

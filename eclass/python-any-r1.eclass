@@ -245,7 +245,7 @@ unset -f _python_any_set_globals
 # )
 # @CODE
 python_gen_any_dep() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local depstr=${1}
 	[[ ${depstr} ]] || die "No dependency string provided"
@@ -271,7 +271,7 @@ python_gen_any_dep() {
 #
 # This function will call python_check_deps() if defined.
 python_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 	_python_sanity_checks
 
 	# support developer override
@@ -338,7 +338,7 @@ python_setup() {
 # In a binary package installs is a no-op. If you need Python in pkg_*
 # phases of a binary package, call python_setup directly.
 python-any-r1_pkg_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${MERGE_TYPE} != binary ]] && python_setup
 }

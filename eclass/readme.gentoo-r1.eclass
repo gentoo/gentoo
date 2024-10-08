@@ -54,7 +54,7 @@ esac
 # ${FILESDIR}/README.gentoo-${SLOT} also.
 # Usually called at src_install phase.
 readme.gentoo_create_doc() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ -n "${DOC_CONTENTS}" ]]; then
 		if [[ -n "${DISABLE_AUTOFORMATTING}" ]]; then
@@ -94,7 +94,7 @@ readme.gentoo_create_doc() {
 # rely on specific REPLACING_VERSIONS handling in your ebuild to print messages
 # when people update from versions still providing old message.
 readme.gentoo_print_elog() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ -z "${README_GENTOO_DOC_VALUE}" ]]; then
 		die "readme.gentoo_print_elog invoked without matching readme.gentoo_create_doc call!"

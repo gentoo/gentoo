@@ -41,7 +41,7 @@ esac
 # @EXAMPLE:
 # _bash-completion-r1_get_bashdir completionsdir /usr/share/bash-completion
 _bash-completion-r1_get_bashdir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if $(tc-getPKG_CONFIG) --exists bash-completion &>/dev/null; then
 		local path
@@ -59,7 +59,7 @@ _bash-completion-r1_get_bashdir() {
 # @DESCRIPTION:
 # Get unprefixed bash-completion completions directory.
 _bash-completion-r1_get_bashcompdir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_bash-completion-r1_get_bashdir completionsdir /usr/share/bash-completion/completions
 }
@@ -69,7 +69,7 @@ _bash-completion-r1_get_bashcompdir() {
 # @DESCRIPTION:
 # Get unprefixed bash-completion helpers directory.
 _bash-completion-r1_get_bashhelpersdir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_bash-completion-r1_get_bashdir helpersdir /usr/share/bash-completion/helpers
 }
@@ -78,7 +78,7 @@ _bash-completion-r1_get_bashhelpersdir() {
 # @DESCRIPTION:
 # Get the bash-completion completions directory.
 get_bashcompdir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	echo "${EPREFIX}$(_bash-completion-r1_get_bashcompdir)"
 }
@@ -88,7 +88,7 @@ get_bashcompdir() {
 # @DESCRIPTION:
 # Get the bash-completion helpers directory.
 get_bashhelpersdir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	echo "${EPREFIX}$(_bash-completion-r1_get_bashhelpersdir)"
 }
@@ -99,7 +99,7 @@ get_bashhelpersdir() {
 # Install bash-completion files passed as args. Has EAPI-dependent failure
 # behavior (like doins).
 dobashcomp() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	(
 		insopts -m 0644
@@ -114,7 +114,7 @@ dobashcomp() {
 # Install bash-completion file under a new name. Has EAPI-dependent failure
 # behavior (like newins).
 newbashcomp() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	(
 		insopts -m 0644
@@ -128,7 +128,7 @@ newbashcomp() {
 # @DESCRIPTION:
 # Alias <basename> completion to one or more commands (<alias>es).
 bashcomp_alias() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${#} -lt 2 ]] && die "Usage: ${FUNCNAME} <basename> <alias>..."
 	local base=${1} f

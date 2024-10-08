@@ -129,7 +129,7 @@ inherit guile-utils
 # Please keep in ascending order.
 
 _guile_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	# Inhibit generating the GUILE_USEDEP.  This variable is not usable
 	# for single packages.
@@ -162,7 +162,7 @@ unset -f _guile_setup
 # "
 # @CODE
 guile_gen_cond_dep() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local deps="$1"
 	shift
@@ -196,7 +196,7 @@ guile_gen_cond_dep() {
 #
 # For details on the latter three, see guile_export.
 guile-single_pkg_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	guile_set_common_vars
 
@@ -223,7 +223,7 @@ guile-single_pkg_setup() {
 # Runs the default prepare stage, and then bumps Guile sources via
 # guile_bump_sources.
 guile-single_src_prepare() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	default
 	guile_bump_sources
@@ -234,7 +234,7 @@ guile-single_src_prepare() {
 # Runs the default install stage, and then marks ccache files not to be
 # stripped using guile_unstrip_ccache.
 guile-single_src_install() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	default
 	guile_unstrip_ccache

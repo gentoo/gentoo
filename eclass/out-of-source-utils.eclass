@@ -25,7 +25,7 @@ esac
 # @DESCRIPTION:
 # Run the given command in the directory pointed by BUILD_DIR.
 run_in_build_dir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 	local ret
 
 	[[ ${#} -eq 0 ]] && die "${FUNCNAME}: no command specified."

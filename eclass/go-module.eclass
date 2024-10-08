@@ -322,7 +322,7 @@ go-module_set_globals() {
 # It sets up the go module proxy in the appropriate location.
 go-module_setup_proxy() {
 	# shellcheck disable=SC2120
-	debug-print-function "${FUNCNAME}" "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ ! ${_GO_MODULE_SET_GLOBALS_CALLED} ]]; then
 		die "go-module_set_globals must be called in global scope"
@@ -401,7 +401,7 @@ go-module_src_unpack() {
 # directory correctly.
 _go-module_src_unpack_gosum() {
 	# shellcheck disable=SC2120
-	debug-print-function "${FUNCNAME}" "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ ! ${_GO_MODULE_SET_GLOBALS_CALLED} ]]; then
 		die "go-module_set_globals must be called in global scope"
@@ -472,7 +472,7 @@ _go-module_gosum_synthesize_files() {
 # the package, without actually building it yet.
 _go-module_src_unpack_verify_gosum() {
 	# shellcheck disable=SC2120
-	debug-print-function "${FUNCNAME}" "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ ! ${_GO_MODULE_SET_GLOBALS_CALLED} ]]; then
 		die "go-module_set_globals must be called in global scope"
@@ -499,7 +499,7 @@ _go-module_src_unpack_verify_gosum() {
 # This function is used in live ebuilds to vendor the dependencies when
 # upstream doesn't vendor them.
 go-module_live_vendor() {
-	debug-print-function "${FUNCNAME}" "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	# shellcheck disable=SC2086
 	has live ${PROPERTIES} ||
