@@ -47,6 +47,10 @@ CMAKE_SKIP_TESTS=(
 	tst_scaling
 )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.8.0-wayland.xml-1.23.0.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package qml Qt6Quick)
