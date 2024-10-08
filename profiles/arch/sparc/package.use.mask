@@ -9,6 +9,10 @@ www-client/elinks libcss
 # Exposes a kernel bug which causes system lockup (bug #899540)
 sys-libs/liburing test
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2024-10-08)
+# Not all required dependencies are keyworded here
+sys-kernel/dracut test
+
 # David Roman <davidroman96@gmail.com> (2024-10-04)
 # dev-libs/libunibreak not keyworded here
 media-libs/libass libunibreak
