@@ -104,7 +104,7 @@ LICENSE+="
 "
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 BDEPEND=">=virtual/rust-1.71.0"
 
