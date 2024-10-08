@@ -6,7 +6,7 @@
 # java@gentoo.org
 # @AUTHOR:
 # Thomas Matthijs <axxo@gentoo.org>, Karl Trygve Kalleberg <karltk@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Base eclass for Java packages
 # @DESCRIPTION:
 # This eclass provides functionality which is used by java-pkg-2.eclass and
@@ -20,17 +20,9 @@ if [[ -z ${_JAVA_UTILS_2_ECLASS} ]] ; then
 _JAVA_UTILS_2_ECLASS=1
 
 case ${EAPI} in
-	6)
-		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
-		ewarn "${CATEGORY}/${PF}: Support will be removed on 2024-10-08. Please port to newer EAPI."
-		;;
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-# EAPI 7 has version functions built-in. Use eapi7-ver for all earlier EAPIs.
-# Keep versionator inheritance in case consumers are using it implicitly.
-[[ ${EAPI} == 6 ]] && inherit eapi7-ver eqawarn multilib versionator
 
 # Make sure we use java-config-2
 export WANT_JAVA_CONFIG="2"
@@ -299,12 +291,12 @@ java-pkg_doexamples() {
 		( # dont want to pollute calling env
 			insinto "${dest}"
 			doins -r ${1}/*
-		) || die "Installing examples failed"
+		)
 	else
 		( # dont want to pollute calling env
 			insinto "${dest}"
 			doins -r "$@"
-		) || die "Installing examples failed"
+		)
 	fi
 
 	# Let's make a symlink to the directory we have everything else under
@@ -429,7 +421,7 @@ java-pkg_dojar() {
 				(
 					insinto "${JAVA_PKG_JARDEST}"
 					doins "${jar}"
-				) || die "failed to install ${jar}"
+				)
 				java-pkg_append_ JAVA_PKG_CLASSPATH "${EPREFIX}${JAVA_PKG_JARDEST}/${jar_basename}"
 				debug-print "installed ${jar} to ${ED}${JAVA_PKG_JARDEST}"
 			# make a symlink to the original jar if it's symlink
@@ -577,7 +569,7 @@ java-pkg_doso() {
 					insinto "${JAVA_PKG_LIBDEST}"
 					insopts -m0755
 					doins "${lib}"
-				) || die "failed to install ${lib}"
+				)
 				java-pkg_append_ JAVA_PKG_LIBRARY "${JAVA_PKG_LIBDEST}"
 				debug-print "Installing ${lib} to ${JAVA_PKG_LIBDEST}"
 			# otherwise make a symlink to the symlink's origin
@@ -809,7 +801,7 @@ java-pkg_dosrc() {
 	(
 		insinto "${JAVA_PKG_SOURCESPATH}"
 		doins ${zip_path}
-	) || die "Failed to install source"
+	)
 
 	JAVA_SOURCES="${JAVA_PKG_SOURCESPATH}/${zip_name}"
 
@@ -1982,8 +1974,9 @@ etestng() {
 # src_prepare Searches for bundled jars
 # Don't call directly, but via java-pkg-2_src_prepare!
 java-utils-2_src_prepare() {
+	# have default_src_prepare starting from EAPI 9, see https://bugs.gentoo.org/780585
 	case ${EAPI} in
-		[678]) eapply_user ;;
+		[78]) eapply_user ;;
 		*) default_src_prepare ;;
 	esac
 
