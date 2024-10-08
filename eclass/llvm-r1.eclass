@@ -101,7 +101,7 @@ _LLVM_NEWEST_STABLE=18
 # packages using the same eclass, to enforce a LLVM slot match.
 
 _llvm_set_globals() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ ${LLVM_COMPAT@a} != *a* ]]; then
 		die "LLVM_COMPAT must be set to an array before inheriting ${ECLASS}"
@@ -169,7 +169,7 @@ unset -f _llvm_set_globals
 # "
 # @CODE
 llvm_gen_dep() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${#} -ne 1 ]] && die "Usage: ${FUNCNAME} <dependency>"
 
@@ -194,7 +194,7 @@ llvm_gen_dep() {
 # With "-b" option, the path is prefixed by BROOT. LLVM dependencies
 # should be in BDEPEND then.
 get_llvm_prefix() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${#} -gt 1 ]] && die "Usage: ${FUNCNAME} [-b|-d]"
 
@@ -228,7 +228,7 @@ get_llvm_prefix() {
 # Note that this function is not exported if LLVM_OPTIONAL is set.
 # In that case, it needs to be called manually.
 llvm-r1_pkg_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		[[ -z ${LLVM_SLOT} ]] && die "LLVM_SLOT unset (broken USE_EXPAND?)"

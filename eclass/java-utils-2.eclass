@@ -3024,7 +3024,7 @@ java-pkg_clean() {
 # $1 - classpath variable either EANT_GENTOO_CLASSPATH or JAVA_GENTOO_CLASSPATH
 # @CODE
 java-pkg_gen-cp() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local atom
 	for atom in ${CP_DEPEND}; do

@@ -87,7 +87,7 @@ _get_tsg_abi_ver() {
 }
 
 tree-sitter-grammar_src_prepare() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	default
 
@@ -102,7 +102,7 @@ tree-sitter-grammar_src_prepare() {
 }
 
 tree-sitter-grammar_src_configure() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local binding
 	for binding in "${TS_BINDINGS[@]}"; do
@@ -156,7 +156,7 @@ _tree-sitter-grammar_legacy_compile() {
 }
 
 tree-sitter-grammar_src_compile() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	# legacy grammars don't have a pyproject.toml
 	if [[ -f "${S}/pyproject.toml" ]]; then
@@ -186,13 +186,13 @@ tree-sitter-grammar_src_compile() {
 # Runs the Tree Sitter parser's test suite.
 # See: https://tree-sitter.github.io/tree-sitter/creating-parsers#command-test
 tree-sitter-grammar_src_test() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	tree-sitter test || die "Test suite failed"
 }
 
 tree-sitter-grammar_src_install() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	# legacy grammars don't have a pyproject.toml
 	if [[ -f "${S}/pyproject.toml" ]]; then

@@ -90,7 +90,7 @@ S="${WORKDIR}"
 # Set `comparator' and `version' to include a comparator (=, >=, etc.) and a
 # version string to the returned string
 ruby_implementation_depend() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_ruby_implementation_depend $1
 }
@@ -132,7 +132,7 @@ _ruby_get_all_impls() {
 # ruby_add_bdepend(), but may also be useful in an ebuild to specify
 # more complex dependencies.
 ruby_samelib() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_ruby_set_globals_invalidate_if_stale
 
@@ -151,7 +151,7 @@ ruby_samelib() {
 # Not all implementations have the same command basename as the
 # target; This function translate between the two
 ruby_implementation_command() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local _ruby_name=$1
 
@@ -212,7 +212,7 @@ _ruby_wrap_conditions() {
 # Note: runtime dependencies are also added as build-time test
 # dependencies.
 ruby_add_rdepend() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	case $# in
 		1) ;;
@@ -248,7 +248,7 @@ ruby_add_rdepend() {
 # dependencies instead of setting DEPEND or BDEPEND yourself. The list
 # of atoms uses the same syntax as normal dependencies.
 ruby_add_bdepend() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	case $# in
 		1) ;;
@@ -271,7 +271,7 @@ ruby_add_bdepend() {
 # @DESCRIPTION:
 # Adds the specified dependencies to DEPEND, similar to ruby_add_bdepend.
 ruby_add_depend() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	case $# in
 		1) ;;
@@ -288,7 +288,7 @@ ruby_add_depend() {
 # @DESCRIPTION:
 # Gets an array of ruby use targets enabled by the user
 ruby_get_use_implementations() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_ruby_set_globals_invalidate_if_stale
 
@@ -303,7 +303,7 @@ ruby_get_use_implementations() {
 # @DESCRIPTION:
 # Gets an array of ruby use targets that the ebuild sets
 ruby_get_use_targets() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_ruby_set_globals_invalidate_if_stale
 	_ruby_get_use_targets
@@ -316,7 +316,7 @@ ruby_get_use_targets() {
 # Gets an array of ruby use targets that the ebuild sets
 _RUBY_GET_USE_TARGETS=""
 _ruby_get_use_targets() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_ruby_set_globals_invalidate_if_stale
 
@@ -343,7 +343,7 @@ _ruby_get_use_targets() {
 # RDEPEND="${DEPEND}"
 _RUBY_IMPLEMENTATIONS_DEPEND=""
 ruby_implementations_depend() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	_ruby_set_globals_invalidate_if_stale
 	_ruby_implementations_depend
@@ -472,7 +472,7 @@ _ruby_each_implementation() {
 # @DESCRIPTION:
 # Check whether at least one ruby target implementation is present.
 ruby-ng_pkg_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	# This only checks that at least one implementation is present
 	# before doing anything; by leaving the parameters empty we know
@@ -484,7 +484,7 @@ ruby-ng_pkg_setup() {
 # @DESCRIPTION:
 # Unpack the source archive.
 ruby-ng_src_unpack() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	mkdir "${WORKDIR}"/all
 	pushd "${WORKDIR}"/all &>/dev/null || die
@@ -522,7 +522,7 @@ _ruby_source_copy() {
 # Apply patches and prepare versions for each ruby target
 # implementation. Also carry out common clean up tasks.
 ruby-ng_src_prepare() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	# Way too many Ruby packages are prepared on OSX without removing
 	# the extra data forks, we do it here to avoid repeating it for
@@ -546,7 +546,7 @@ ruby-ng_src_prepare() {
 # @DESCRIPTION:
 # Configure the package.
 ruby-ng_src_configure() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if type each_ruby_configure &>/dev/null; then
 		_ruby_each_implementation each_ruby_configure
@@ -560,7 +560,7 @@ ruby-ng_src_configure() {
 # @DESCRIPTION:
 # Compile the package.
 ruby-ng_src_compile() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if type each_ruby_compile &>/dev/null; then
 		_ruby_each_implementation each_ruby_compile
@@ -574,7 +574,7 @@ ruby-ng_src_compile() {
 # @DESCRIPTION:
 # Run tests for the package.
 ruby-ng_src_test() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if type each_ruby_test &>/dev/null; then
 		_ruby_each_implementation each_ruby_test
@@ -617,7 +617,7 @@ _each_ruby_check_install() {
 # @DESCRIPTION:
 # Install the package for each ruby target implementation.
 ruby-ng_src_install() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if type each_ruby_install &>/dev/null; then
 		_ruby_each_implementation each_ruby_install
@@ -634,7 +634,7 @@ ruby-ng_src_install() {
 # @USAGE: rbconfig item
 # @RETURN: Returns the value of the given rbconfig item of the Ruby interpreter in ${RUBY}.
 ruby_rbconfig_value() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	echo $(${RUBY} --disable=did_you_mean -rrbconfig -e "puts RbConfig::CONFIG['$1']" || die "Could not read ruby configuration for '${1}'")
 }
@@ -644,7 +644,7 @@ ruby_rbconfig_value() {
 # @DESCRIPTION:
 # Installs the specified file(s) into the sitelibdir of the Ruby interpreter in ${RUBY}.
 doruby() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -z ${RUBY} ]] && die "\$RUBY is not set"
 	( # don't want to pollute calling env
@@ -658,7 +658,7 @@ doruby() {
 # @FUNCTION: ruby_get_libruby
 # @RETURN: The location of libruby*.so belonging to the Ruby interpreter in ${RUBY}.
 ruby_get_libruby() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	${RUBY} -rrbconfig -e 'puts File.join(RbConfig::CONFIG["libdir"], RbConfig::CONFIG["LIBRUBY"])'
 }
@@ -666,7 +666,7 @@ ruby_get_libruby() {
 # @FUNCTION: ruby_get_hdrdir
 # @RETURN: The location of the header files belonging to the Ruby interpreter in ${RUBY}.
 ruby_get_hdrdir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local rubyhdrdir=$(ruby_rbconfig_value 'rubyhdrdir')
 
@@ -680,7 +680,7 @@ ruby_get_hdrdir() {
 # @FUNCTION: ruby_get_version
 # @RETURN: The version of the Ruby interpreter in ${RUBY}, or what 'ruby' points to.
 ruby_get_version() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local ruby=${RUBY:-$(type -p ruby 2>/dev/null)}
 
@@ -690,7 +690,7 @@ ruby_get_version() {
 # @FUNCTION: ruby_get_implementation
 # @RETURN: The implementation of the Ruby interpreter in ${RUBY}, or what 'ruby' points to.
 ruby_get_implementation() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local ruby=${RUBY:-$(type -p ruby 2>/dev/null)}
 
@@ -713,7 +713,7 @@ ruby_get_implementation() {
 # rspec version that must be executed. It defaults to 2 for historical
 # compatibility.
 ruby-ng_rspec() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local version=${RSPEC_VERSION-2}
 	local files="$@"
@@ -755,7 +755,7 @@ ruby-ng_rspec() {
 # This is simply a wrapper around the cucumber command (executed by $RUBY})
 # which also respects TEST_VERBOSE and NOCOLOR environment variables.
 ruby-ng_cucumber() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ "${DEPEND}${BDEPEND}" != *"dev-util/cucumber"* ]]; then
 		ewarn "Missing test dependency dev-util/cucumber"
@@ -788,7 +788,7 @@ ruby-ng_cucumber() {
 # This is simply a wrapper around the sus-parallel command (executed by $RUBY})
 # which also respects TEST_VERBOSE and NOCOLOR environment variables.
 ruby-ng_sus() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ "${DEPEND}${BDEPEND}" != *"dev-ruby/sus"* ]]; then
 		ewarn "Missing test dependency dev-ruby/sus"
@@ -816,7 +816,7 @@ ruby-ng_sus() {
 # their script and we installed a broken wrapper for a while.
 # This also respects TEST_VERBOSE and NOCOLOR environment variables.
 ruby-ng_testrb-2() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ "${DEPEND}${BDEPEND}" != *"dev-ruby/test-unit"* ]]; then
 		ewarn "Missing test dependency dev-ruby/test-unit"

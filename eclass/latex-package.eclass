@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: latex-package.eclass
@@ -93,7 +93,7 @@ LATEX_DOC_ARGUMENTS=""
 # It installs the files found in the current directory to the standard locations
 # for a TeX installation
 latex-package_src_doinstall() {
-	debug-print-function "${FUNCNAME}" "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	# Avoid generating font cache outside of the sandbox
 	export VARTEXFONTS="${T}/fonts"
@@ -205,7 +205,7 @@ latex-package_src_doinstall() {
 # Calls latex for each *.ins in the current directory in order to generate the
 # relevant files that will be installed
 latex-package_src_compile() {
-	debug-print-function "${FUNCNAME}" "$@"
+	debug-print-function ${FUNCNAME} "$@"
 	while IFS= read -r -d '' i; do
 		einfo "Extracting from ${i}"
 		latex --halt-on-error --interaction=nonstopmode "${i}" || die
@@ -216,7 +216,7 @@ latex-package_src_compile() {
 # @DESCRIPTION:
 # Installs the package
 latex-package_src_install() {
-	debug-print-function "${FUNCNAME}" "$@"
+	debug-print-function ${FUNCNAME} "$@"
 	latex-package_src_doinstall all
 	einstalldocs
 }
@@ -226,7 +226,7 @@ latex-package_src_install() {
 # Calls latex-package_rehash to ensure the TeX installation is consistent with
 # the kpathsea database
 latex-package_pkg_postinst() {
-	debug-print-function "${FUNCNAME}" "$@"
+	debug-print-function ${FUNCNAME} "$@"
 	latex-package_rehash
 }
 
@@ -235,7 +235,7 @@ latex-package_pkg_postinst() {
 # Calls latex-package_rehash to ensure the TeX installation is consistent with
 # the kpathsea database
 latex-package_pkg_postrm() {
-	debug-print-function "${FUNCNAME}" "$@"
+	debug-print-function ${FUNCNAME} "$@"
 	latex-package_rehash
 }
 
@@ -243,7 +243,7 @@ latex-package_pkg_postrm() {
 # @DESCRIPTION:
 # Rehashes the kpathsea database, according to the current TeX installation
 latex-package_rehash() {
-	debug-print-function "${FUNCNAME}" "$@"
+	debug-print-function ${FUNCNAME} "$@"
 	texmf-update
 }
 

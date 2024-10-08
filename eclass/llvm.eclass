@@ -119,7 +119,7 @@ declare -g -r _LLVM_KNOWN_SLOTS=( {19..8} )
 # the function defaults to checking whether sys-devel/llvm:${LLVM_SLOT}
 # is installed.
 get_llvm_slot() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local hv_switch=-d
 	while [[ ${1} == -* ]]; do
@@ -170,7 +170,7 @@ get_llvm_slot() {
 #
 # The options and behavior is the same as for get_llvm_slot.
 get_llvm_prefix() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local prefix=${ESYSROOT}
 	[[ ${1} == -b ]] && prefix=${BROOT}
@@ -193,7 +193,7 @@ get_llvm_prefix() {
 # If any other behavior is desired, the contents of the function
 # should be inlined into the ebuild and modified as necessary.
 llvm_pkg_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ ${LLVM_ECLASS_SKIP_PKG_SETUP} ]]; then
 		return

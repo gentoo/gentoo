@@ -95,7 +95,7 @@ esac
 # nevertheless. It is preferred to call 'die' inside of the passed
 # function.
 multibuild_foreach_variant() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${MULTIBUILD_VARIANTS} ]] \
 		|| die "MULTIBUILD_VARIANTS need to be set"
@@ -146,7 +146,7 @@ multibuild_foreach_variant() {
 #
 # The function returns command exit status.
 multibuild_for_best_variant() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${MULTIBUILD_VARIANTS} ]] \
 		|| die "MULTIBUILD_VARIANTS need to be set"
@@ -162,7 +162,7 @@ multibuild_for_best_variant() {
 # be placed in directories matching BUILD_DIRs used by
 # multibuild_foreach().
 multibuild_copy_sources() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local _MULTIBUILD_INITIAL_BUILD_DIR=${BUILD_DIR:-${S}}
 
@@ -184,7 +184,7 @@ multibuild_copy_sources() {
 # (the real root). Both directories have to be real, absolute paths
 # (i.e. including ${D}). Source root will be removed.
 multibuild_merge_root() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local src=${1}
 	local dest=${2}

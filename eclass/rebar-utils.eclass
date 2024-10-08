@@ -68,7 +68,7 @@ _rebar_find_dep() {
 # Coverage is not relevant in this context, so there's no harm to disable it,
 # although the issue should be fixed.
 rebar_disable_coverage() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local rebar_config="${1:-rebar.config}"
 
@@ -88,7 +88,7 @@ rebar_disable_coverage() {
 #
 # The function dies on failure.
 rebar_fix_include_path() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local pn="${1}"
 	local rebar_config="${2:-rebar.config}"
@@ -123,7 +123,7 @@ rebar_fix_include_path() {
 #
 # The function dies on failure.
 rebar_remove_deps() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local rebar_config="${1:-rebar.config}"
 
@@ -148,7 +148,7 @@ rebar_remove_deps() {
 #
 # The function dies on failure.
 rebar_set_vsn() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local version="${1:-${PV%_*}}"
 

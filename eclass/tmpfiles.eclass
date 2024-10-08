@@ -76,7 +76,7 @@ fi
 # @DESCRIPTION:
 # Install one or more tmpfiles.d files into /usr/lib/tmpfiles.d.
 dotmpfiles() {
-	debug-print-function "${FUNCNAME}" "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local f
 	for f; do
@@ -97,7 +97,7 @@ dotmpfiles() {
 # @DESCRIPTION:
 # Install a tmpfiles.d file in /usr/lib/tmpfiles.d under a new name.
 newtmpfiles() {
-	debug-print-function "${FUNCNAME}" "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ $2 != *.conf ]]; then
 		die "tmpfiles.d files must end with .conf"
@@ -116,7 +116,7 @@ newtmpfiles() {
 # Call a tmpfiles.d implementation to create new volatile and temporary
 # files and directories.
 tmpfiles_process() {
-	debug-print-function "${FUNCNAME}" "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${EBUILD_PHASE} == postinst ]] || die "${FUNCNAME}: Only valid in pkg_postinst"
 	[[ ${#} -gt 0 ]] || die "${FUNCNAME}: Must specify at least one filename"

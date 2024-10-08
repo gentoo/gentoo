@@ -136,7 +136,7 @@ postgres_check_slot() {
 # is required if pkg_setup() is declared in the ebuild.
 # Exports PG_SLOT, PG_CONFIG, and PKG_CONFIG_PATH.
 postgres_pkg_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local compat_slot
 	local best_slot

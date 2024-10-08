@@ -43,7 +43,7 @@ _shell-completion_get_zshcompdir() {
 # @FUNCTION: get_fishcompdir
 # @RETURN: the fish completions directory (with EPREFIX)
 get_fishcompdir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	echo "${EPREFIX}$(_shell-completion_get_fishcompdir)"
 }
@@ -51,7 +51,7 @@ get_fishcompdir() {
 # @FUNCTION: get_zshcompdir
 # @RETURN: the zsh completions directory (with EPREFIX)
 get_zshcompdir() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	echo "${EPREFIX}$(_shell-completion_get_zshcompdir)"
 }
@@ -61,7 +61,7 @@ get_zshcompdir() {
 # @DESCRIPTION:
 # Install fish completion files passed as args.
 dofishcomp() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	(
 		insopts -m 0644
@@ -75,7 +75,7 @@ dofishcomp() {
 # @DESCRIPTION:
 # Install zsh completion files passed as args.
 dozshcomp() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	(
 		insopts -m 0644
@@ -89,7 +89,7 @@ dozshcomp() {
 # @DESCRIPTION:
 # Install fish file under a new name.
 newfishcomp() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	(
 		insopts -m 0644
@@ -103,7 +103,7 @@ newfishcomp() {
 # @DESCRIPTION:
 # Install zsh file under a new name.
 newzshcomp() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	(
 		insopts -m 0644

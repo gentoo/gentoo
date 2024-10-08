@@ -124,7 +124,7 @@ inherit guile-utils multibuild
 # Please keep in ascending order.
 
 _guile_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	guile_generate_depstrings guile_targets '||'
 }
@@ -142,7 +142,7 @@ unset -f _guile_setup
 # @DESCRIPTION:
 # Sets up eclass-internal variables for this build.
 guile_pkg_setup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	guile_set_common_vars
 	GUILE_SELECTED_TARGETS=()
@@ -161,7 +161,7 @@ guile_pkg_setup() {
 # Create a single copy of the package sources for each selected Guile
 # implementation.
 guile_copy_sources() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local MULTIBUILD_VARIANTS
 	MULTIBUILD_VARIANTS=("${GUILE_SELECTED_TARGETS[@]}")
@@ -177,7 +177,7 @@ guile_copy_sources() {
 # guile_foreach_impl.
 _guile_multibuild_wrapper() {
 	local GUILE_CURRENT_VERSION="${MULTIBUILD_VARIANT}"
-	debug-print-function ${FUNCNAME} "${@}" "on ${MULTIBUILD_VARIANT}"
+	debug-print-function ${FUNCNAME} "$@" "on ${MULTIBUILD_VARIANT}"
 
 	local -x PATH="${PATH}"
 	guile_create_temporary_config "${GUILE_CURRENT_VERSION}"
@@ -245,7 +245,7 @@ _guile_multibuild_wrapper() {
 # This combination should cover Guile detection of a large amount of
 # packages out of the box.
 guile_foreach_impl() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local MULTIBUILD_VARIANTS
 	MULTIBUILD_VARIANTS=("${GUILE_SELECTED_TARGETS[@]}")
@@ -261,7 +261,7 @@ guile_foreach_impl() {
 # @DESCRIPTION:
 # Runs a single merge_root step for guile_merge_roots.
 _guile_merge_single_root() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	multibuild_merge_root "${SLOTTED_D}" "${D}"
 }
@@ -270,7 +270,7 @@ _guile_merge_single_root() {
 # @DESCRIPTION:
 # Merges install roots from all slots, diagnosing conflicts.
 guile_merge_roots() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	guile_foreach_impl _guile_merge_single_root
 }
@@ -280,7 +280,7 @@ guile_merge_roots() {
 # Runs the passed command once, for the best installed Guile
 # implementation.
 guile_for_best_impl() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	multibuild_for_best_variant _guile_multibuild_wrapper "${@}"
 }
@@ -292,7 +292,7 @@ guile_for_best_impl() {
 # Bumps SCM sources runs the default src_prepare and bumps all *.scm
 # files.  See guile_bump_sources of guile-utils.eclass.
 guile_src_prepare() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	default
 	guile_bump_sources
@@ -302,7 +302,7 @@ guile_src_prepare() {
 # @DESCRIPTION:
 # Runs the default src_configure for each selected variant target.
 guile_src_configure() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	guile_foreach_impl default
 }
@@ -311,7 +311,7 @@ guile_src_configure() {
 # @DESCRIPTION:
 # Runs the default src_compile for each selected variant target.
 guile_src_compile() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	guile_foreach_impl default
 }
@@ -320,7 +320,7 @@ guile_src_compile() {
 # @DESCRIPTION:
 # Runs the default src_test phase for each implementation.
 guile_src_test() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	guile_foreach_impl default
 }
@@ -331,7 +331,7 @@ guile_src_test() {
 # Imitates the default build system install "substep", but for a given
 # ${SLOTTED_D} rather than the usual ${D}.  See guile_src_install.
 _guile_default_install_slot() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ -f Makefile ]] || [[ -f GNUmakefile ]] || [[ -f makefile ]]; then
 		emake DESTDIR="${SLOTTED_D}" install
@@ -344,7 +344,7 @@ _guile_default_install_slot() {
 # thing for a GNU Build System based Guile package, for each selected
 # variant target.  Merges roots after completing the installs.
 guile_src_install() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	guile_foreach_impl _guile_default_install_slot
 	guile_merge_roots

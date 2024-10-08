@@ -46,7 +46,7 @@ BDEPEND="virtual/pkgconfig"
 # Checks that GUILE_COMPAT is set to an array, and has no invalid
 # values.
 guile_check_compat() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if ! [[ ${GUILE_COMPAT@a} == *a* ]]; then
 		die "GUILE_COMPAT not set to an array"
@@ -86,7 +86,7 @@ guile_check_compat
 # Sets common variables that apply to all Guile packages, namely,
 # QA_PREBUILT.
 guile_set_common_vars() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	# These aren't strictly speaking prebuilt. but they do generated a
 	# nonstandard ELF object.
@@ -101,7 +101,7 @@ guile_set_common_vars() {
 # Alters ${PKG_CONFIG_PATH} such that it does not contain any Guile
 # slots besides the ones required by the caller.
 guile_filter_pkgconfig_path() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local filtered_path= unfiltered_path path
 	IFS=: read -ra unfiltered_path <<<"${PKG_CONFIG_PATH}"
@@ -132,7 +132,7 @@ guile_filter_pkgconfig_path() {
 # Generates GUILE_REQUIRED_USE/GUILE_DEPS/GUILE_USEDEP based on
 # GUILE_COMPAT, and populates IUSE.
 guile_generate_depstrings() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	# Generate IUSE, REQUIRED_USE, GUILE_USEDEP
 	local prefix="$1" depop="$2"
@@ -169,7 +169,7 @@ guile_generate_depstrings() {
 # @DESCRIPTION:
 # Marks site-ccache files not to be stripped.  Operates on ${D}.
 guile_unstrip_ccache() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local ccache
 	while read -r -d $'\0' ccache; do
@@ -196,7 +196,7 @@ guile_unstrip_ccache() {
 # - GUILE_SITECCACHEDIR - Path to the site-ccache directory,
 # - GUILE_SITEDIR - Path to the site Scheme directory
 guile_export() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local gver
 	if [[ "${GUILE_CURRENT_VERSION}" ]]; then
@@ -243,7 +243,7 @@ guile_export() {
 # Creates a guile-config executable for a given Guile version, and
 # inserts it into path.
 guile_create_temporary_config() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${1} ]] || die "Must specify a Guile version"
 
@@ -267,7 +267,7 @@ guile_create_temporary_config() {
 #
 # http://debbugs.gnu.org/cgi/bugreport.cgi?bug=38112
 guile_bump_sources() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	einfo "bumping *.scm source files..."
 	find "${S}" -name "*.scm" -exec touch {} + || die

@@ -72,7 +72,7 @@ dist-kernel_get_image_path() {
 # the kernel version, <image> full path to the image, <system.map>
 # full path to System.map.
 dist-kernel_install_kernel() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${#} -eq 3 ]] || die "${FUNCNAME}: invalid arguments"
 	local version=${1}
@@ -125,7 +125,7 @@ dist-kernel_install_kernel() {
 # This function is to be used in pkg_postinst() of ebuilds installing
 # kernel modules that are included in the initramfs.
 dist-kernel_reinstall_initramfs() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${#} -eq 2 ]] || die "${FUNCNAME}: invalid arguments"
 	local kernel_dir=${1}
@@ -148,7 +148,7 @@ dist-kernel_reinstall_initramfs() {
 # @DESCRIPTION:
 # Convert a Gentoo-style ebuild version to kernel "x.y.z[-rcN]" version.
 dist-kernel_PV_to_KV() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${#} -ne 1 ]] && die "${FUNCNAME}: invalid arguments"
 	local pv=${1}
@@ -165,7 +165,7 @@ dist-kernel_PV_to_KV() {
 # Returns the suffix for kernel modules based on the CONFIG_MODULES_COMPESS_*
 # setting in the kernel config and USE=modules-compress.
 dist-kernel_get_module_suffix() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${#} -eq 1 ]] || die "${FUNCNAME}: invalid arguments"
 
@@ -194,7 +194,7 @@ dist-kernel_get_module_suffix() {
 # Traverse path for duplicate (un)compressed modules and remove all
 # but the newest variant.
 dist-kernel_compressed_module_cleanup() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ ${#} -ne 1 ]] && die "${FUNCNAME}: invalid arguments"
 	local path=${1}

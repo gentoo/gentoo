@@ -171,7 +171,7 @@ kernel-build_pkg_setup() {
 # Prepare the toolchain for building the kernel, get the .config file,
 # and get build tree configured for modprep.
 kernel-build_src_configure() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if ! tc-is-cross-compiler && use hppa ; then
 		if [[ ${CHOST} == hppa2.0-* ]] ; then
@@ -294,7 +294,7 @@ kernel-build_src_configure() {
 # @DESCRIPTION:
 # Compile the kernel sources.
 kernel-build_src_compile() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local targets=( all )
 
@@ -313,7 +313,7 @@ kernel-build_src_compile() {
 # Test the built kernel via qemu.  This just wraps the logic
 # from kernel-install.eclass with the correct paths.
 kernel-build_src_test() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local targets=( modules_install )
 
@@ -345,7 +345,7 @@ kernel-build_src_test() {
 # Install the built kernel along with subset of sources
 # into /usr/src/linux-${KV_FULL}.  Install the modules.  Save the config.
 kernel-build_src_install() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	# do not use 'make install' as it behaves differently based
 	# on what kind of installkernel is installed
@@ -632,7 +632,7 @@ kernel-build_pkg_postinst() {
 #
 # This function must be called by the ebuild in the src_prepare phase.
 kernel-build_merge_configs() {
-	debug-print-function ${FUNCNAME} "${@}"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -f .config ]] ||
 		die "${FUNCNAME}: No .config, please copy default config into .config"
