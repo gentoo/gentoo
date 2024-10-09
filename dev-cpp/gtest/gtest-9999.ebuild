@@ -21,7 +21,7 @@ else
 			-> ${P}.tar.gz"
 		S="${WORKDIR}"/googletest-${GOOGLETEST_COMMIT}
 	fi
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 DESCRIPTION="Google C++ Testing Framework"
@@ -29,10 +29,22 @@ HOMEPAGE="https://github.com/google/googletest"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="doc examples test"
+IUSE="abseil doc examples test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( ${PYTHON_DEPS} )"
+DEPEND="abseil? (
+	dev-cpp/abseil-cpp:=[${MULTILIB_USEDEP}]
+	dev-libs/re2:=[${MULTILIB_USEDEP}] )"
+RDEPEND="${DEPEND}"
+
+# Exclude tests that fail with FEATURES="usersandbox"
+CMAKE_SKIP_TESTS=( "googletest-(death-test|port)-test" )
+
+PATCHES=(
+	"${FILESDIR}"/gtest-find-re2-with-pkgconfig.patch
+	"${FILESDIR}"/gtest-1.15.2-fix-gtest_help_test.patch
+)
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
@@ -46,6 +58,7 @@ multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_GMOCK=ON
 		-DINSTALL_GTEST=ON
+		-DGTEST_HAS_ABSL=$(usex abseil)
 
 		# tests
 		-Dgmock_build_tests=$(usex test)
@@ -59,11 +72,6 @@ multilib_src_configure() {
 	fi
 
 	cmake_src_configure
-}
-
-multilib_src_test() {
-	# Exclude tests that fail with FEATURES="usersandbox"
-	cmake_src_test -E "googletest-(death-test|port)-test"
 }
 
 multilib_src_install_all() {

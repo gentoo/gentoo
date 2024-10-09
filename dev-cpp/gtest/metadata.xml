@@ -9,6 +9,11 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="abseil">
+			Build with functionality provided by <pkg>dev-cpp/abseil-cpp</pkg> and <pkg>dev-libs/re2</pkg>
+		</flag>
+	</use>
 	<upstream>
 		<doc lang="en">https://github.com/google/googletest/tree/HEAD/docs</doc>
 		<remote-id type="github">google/googletest</remote-id>

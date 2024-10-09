@@ -1,12 +1,12 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 # Python is required for tests and some build tasks.
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..13} )
 
-inherit cmake-multilib python-any-r1
+inherit cmake-multilib flag-o-matic python-any-r1 toolchain-funcs
 
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
@@ -21,7 +21,7 @@ else
 			-> ${P}.tar.gz"
 		S="${WORKDIR}"/googletest-${GOOGLETEST_COMMIT}
 	fi
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 DESCRIPTION="Google C++ Testing Framework"
@@ -29,38 +29,49 @@ HOMEPAGE="https://github.com/google/googletest"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="doc examples test"
+IUSE="abseil doc examples test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( ${PYTHON_DEPS} )"
+DEPEND="abseil? (
+	dev-cpp/abseil-cpp:=[${MULTILIB_USEDEP}]
+	dev-libs/re2:=[${MULTILIB_USEDEP}] )"
+RDEPEND="${DEPEND}"
+
+# Exclude tests that fail with FEATURES="usersandbox"
+CMAKE_SKIP_TESTS=( "googletest-(death-test|port)-test" )
+
+PATCHES=(
+	"${FILESDIR}"/gtest-find-re2-with-pkgconfig.patch
+	"${FILESDIR}"/gtest-1.15.2-fix-gtest_help_test.patch
+)
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
 
-src_prepare() {
-	cmake_src_prepare
-
-	sed -i -e '/set(cxx_base_flags /s:-Werror::' \
-		googletest/cmake/internal_utils.cmake || die "sed failed!"
-}
-
 multilib_src_configure() {
+	if use arm && [[ $(tc-is-softfloat) =~ (softfp)|(no) ]]; then
+		replace-flags -O* -O1 # bug #925093
+	fi
+
 	local mycmakeargs=(
 		-DBUILD_GMOCK=ON
 		-DINSTALL_GTEST=ON
+		-DGTEST_HAS_ABSL=$(usex abseil)
 
 		# tests
 		-Dgmock_build_tests=$(usex test)
 		-Dgtest_build_tests=$(usex test)
-		-DPYTHON_EXECUTABLE="${PYTHON}"
 	)
-	cmake_src_configure
-}
+	if use test; then
+		if use x86 || use x86-linux; then
+			append-cxxflags -ffloat-store # bug #905007
+		fi
+		mycmakeargs+=( -DPython3_EXECUTABLE="${PYTHON}" )
+	fi
 
-multilib_src_test() {
-	# Exclude tests that fail with FEATURES="usersandbox"
-	cmake_src_test -E "googletest-(death-test|port)-test"
+	cmake_src_configure
 }
 
 multilib_src_install_all() {

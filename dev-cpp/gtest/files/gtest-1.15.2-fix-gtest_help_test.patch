@@ -1,0 +1,17 @@
+Similar to the bazel build, gtest is supposed to pass --has_absl_flags to
+gtest_help_test if building with abseil support but neglects to.
+
+--- a/googletest/CMakeLists.txt
++++ b/googletest/CMakeLists.txt
+@@ -293,7 +293,11 @@
+   py_test(googletest-filter-unittest)
+ 
+   cxx_executable(gtest_help_test_ test gtest_main)
++  if(NOT GTEST_HAS_ABSL)
+   py_test(gtest_help_test)
++  else()
++  py_test(gtest_help_test --has_absl_flags)
++  endif()
+ 
+   cxx_executable(googletest-list-tests-unittest_ test gtest)
+   py_test(googletest-list-tests-unittest)
