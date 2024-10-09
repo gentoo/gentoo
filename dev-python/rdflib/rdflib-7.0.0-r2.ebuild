@@ -21,7 +21,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="examples sqlite"
 
 RDEPEND="
-	<dev-python/isodate-1[${PYTHON_USEDEP}]
+	<dev-python/isodate-0.7[${PYTHON_USEDEP}]
 	>=dev-python/isodate-0.6.0[${PYTHON_USEDEP}]
 	dev-python/html5lib[${PYTHON_USEDEP}]
 	<dev-python/pyparsing-4[${PYTHON_USEDEP}]
