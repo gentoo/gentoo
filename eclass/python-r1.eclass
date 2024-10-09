@@ -129,10 +129,6 @@ inherit multibuild python-utils-r1
 # depend on another Python package being built for the same Python
 # implementations.
 #
-# The generate USE-flag list is compatible with packages using python-r1
-# and python-distutils-ng eclasses. It must not be used on packages
-# using python.eclass.
-#
 # Example use:
 # @CODE
 # RDEPEND="dev-python/foo[${PYTHON_USEDEP}]"
