@@ -1,0 +1,36 @@
+From 60f253dbba70f2146f7226e476030a5b6074e1ac Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Thu, 10 Oct 2024 09:28:20 +1000
+Subject: [PATCH] Update patch to v6
+
+---
+ build/gen.py | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/build/gen.py b/build/gen.py
+index d1c649c..1fc5b4d 100755
+--- a/build/gen.py
++++ b/build/gen.py
+@@ -431,11 +431,6 @@ def WriteGNNinja(path, platform, host, options, args_list):
+       if not platform.is_darwin():
+         cflags.extend(['-D_LIBCPP_DEBUG=1', '-D_GLIBCXX_DEBUG=1'])
+     else:
+-      cflags.append('-DNDEBUG')
+-      cflags.append('-O3')
+-      if options.no_strip:
+-        cflags.append('-g')
+-      ldflags.append('-O3')
+       # Use -fdata-sections and -ffunction-sections to place each function
+       # or data item into its own section so --gc-sections can eliminate any
+       # unused functions and data items.
+@@ -482,7 +477,6 @@ def WriteGNNinja(path, platform, host, options, args_list):
+         '-D_FILE_OFFSET_BITS=64',
+         '-D__STDC_CONSTANT_MACROS', '-D__STDC_FORMAT_MACROS',
+         '-pthread',
+-        '-pipe',
+         '-fno-exceptions',
+         '-fno-rtti',
+         '-fdiagnostics-color',
+-- 
+2.46.2
+
