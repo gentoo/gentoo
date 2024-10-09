@@ -11,7 +11,7 @@ SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2 GPL-1+"  # any GPL version for quilt.el
 SLOT="0"
-KEYWORDS="~amd64 arm arm64 ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
+KEYWORDS="amd64 arm arm64 ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
 IUSE="emacs graphviz"
 # unresolved test failures
 RESTRICT="test"
