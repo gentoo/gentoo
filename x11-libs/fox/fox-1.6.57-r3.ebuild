@@ -56,10 +56,13 @@ src_configure() {
 	append-flags -fno-strict-aliasing
 	filter-lto
 
+	use debug || append-cppflags -DNDEBUG
+
+	# Not using --enable-release because of the options it sets like no SSP
 	econf \
 		--disable-static \
-		--enable-$(usex debug debug release) \
 		$(use_enable bzip2 bz2lib) \
+		$(use_enable debug) \
 		$(use_enable jpeg) \
 		$(use_with opengl) \
 		$(use_enable png) \
