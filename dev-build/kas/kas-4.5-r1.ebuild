@@ -8,7 +8,6 @@ PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1
 
-MY_P="kas-${PV}"
 DESCRIPTION="Setup tool for bitbake based projects"
 HOMEPAGE="
 	https://github.com/siemens/kas
@@ -18,7 +17,7 @@ HOMEPAGE="
 # pypi does not package tests
 SRC_URI="
 	https://github.com/siemens/kas/archive/refs/tags/${PV}.tar.gz
-		-> ${MY_P}.gh.tar.gz
+		-> ${P}.gh.tar.gz
 "
 
 LICENSE="MIT"
