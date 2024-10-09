@@ -71,9 +71,8 @@ src_compile() {
 	LOCAL_MAKEOPTS=(
 		CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LFLAGS="${LDFLAGS}"
 		WINTTYLIB="$($(tc-getPKG_CONFIG) --libs ncurses)"
-		HACKDIR="${EPREFIX}/usr/$(get_libdir)/nethack" INSTDIR="${ED}/usr/$(get_libdir)/nethack"
-		SHELLDIR="${ED}/usr/bin" VARDIR="${ED}/var/games/nethack"
-		)
+		HACKDIR="${EPREFIX}/usr/$(get_libdir)/nethack"
+	)
 
 	emake "${LOCAL_MAKEOPTS[@]}" nethack recover Guidebook spec_levs
 
@@ -82,7 +81,12 @@ src_compile() {
 }
 
 src_install() {
-	emake "${LOCAL_MAKEOPTS[@]}" install
+	emake \
+		"${LOCAL_MAKEOPTS[@]}" \
+		INSTDIR="${ED}/usr/$(get_libdir)/nethack" \
+		SHELLDIR="${ED}/usr/bin" \
+		VARDIR="${ED}/var/games/nethack" \
+		install
 
 	mv "${ED}/usr/$(get_libdir)/nethack/recover" "${ED}/usr/bin/recover-nethack" || die "Failed to move recover-nethack"
 
