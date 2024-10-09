@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# The package has a fallback implementation which is a noop but warns
+# if the extensions weren't built, so we always build them.
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..13} pypy3 )
