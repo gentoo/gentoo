@@ -23,6 +23,11 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv 
 
 distutils_enable_tests pytest
 
+python_compile() {
+	local -x CIBUILDWHEEL=1
+	distutils-r1_python_compile
+}
+
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
