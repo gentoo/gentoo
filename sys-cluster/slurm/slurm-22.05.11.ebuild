@@ -21,14 +21,18 @@ else
 	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 fi
 
-inherit autotools bash-completion-r1 lua-single pam perl-module prefix toolchain-funcs systemd ${INHERIT_GIT} tmpfiles
+inherit autotools bash-completion-r1 flag-o-matic lua-single pam \
+		perl-module prefix toolchain-funcs systemd ${INHERIT_GIT} \
+		tmpfiles
 
 DESCRIPTION="A Highly Scalable Resource Manager"
 HOMEPAGE="https://www.schedmd.com https://github.com/SchedMD/slurm"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="X debug hdf5 html ipmi json lua multiple-slurmd +munge mysql numa nvml ofed pam perl slurmdbd slurmrestd static-libs torque ucx yaml"
+
+IUSE="X debug hdf5 html ipmi json lua multiple-slurmd +munge mysql numa
+		nvml ofed pam perl slurmdbd slurmrestd static-libs torque ucx yaml"
 
 # See bug #813924 for hdf5lib < dep, needs proper fix
 COMMON_DEPEND="
@@ -87,6 +91,7 @@ PATCHES=(
 )
 
 pkg_setup() {
+	append-ldflags -Wl,-z,lazy
 	use lua && lua-single_pkg_setup
 }
 
