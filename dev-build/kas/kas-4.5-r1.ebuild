@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit distutils-r1
+inherit distutils-r1 optfeature
 
 DESCRIPTION="Setup tool for bitbake based projects"
 HOMEPAGE="
@@ -47,3 +47,9 @@ BDEPEND="
 PROPERTIES="test_network"
 
 distutils_enable_tests pytest
+
+pkg_postinst() {
+	optfeature_header "Install optional tools to clone repositories:"
+	optfeature "git repository support" dev-vcs/git
+	optfeature "mercurial repository support" dev-vcs/mercurial
+}
