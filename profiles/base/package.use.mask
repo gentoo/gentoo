@@ -3,6 +3,11 @@
 
 # New entries go on top.
 
+# Peter Levine <plevine457@gmail.com> (2024-10-09)
+# Leads to missing symbols while building testcases
+# Masked for further testing.
+dev-cpp/gtest abseil
+
 # Michael Orlitzky <mjo@gentoo.org> (2024-10-07)
 # Disable "webservices" support for gthumb because it pulls in the old
 # libsoup2 slot of webkit-gtk. Upstream hasn't really budged on this in
