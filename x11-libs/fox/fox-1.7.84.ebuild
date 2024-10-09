@@ -65,6 +65,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing (bug #864412, bug #940648)
+	# Do not trust it for LTO either.
+	append-flags -fno-strict-aliasing
 	filter-lto
 
 	use debug || append-cppflags -DNDEBUG

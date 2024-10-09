@@ -51,10 +51,7 @@ src_prepare() {
 }
 
 src_configure() {
-	# -Werror=strict-aliasing
-	# https://bugs.gentoo.org/864412
-	# Fixed in 1.7.84
-	#
+	# -Werror=strict-aliasing (bug #864412, bug #940648)
 	# Do not trust it for LTO either.
 	append-flags -fno-strict-aliasing
 	filter-lto
