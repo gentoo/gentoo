@@ -3,6 +3,11 @@
 
 # New entries go on top.
 
+# Peter Levine <plevine457@gmail.com> (2024-10-09)
+# Leads to missing symbols while building testcases
+# Masked for further testing.
+dev-cpp/gtest abseil
+
 # Yongxiang Liang <tanekliang@gmail.com> (2024-10-10)
 # Fcitx 4 has been archived.
 app-i18n/mozc fcitx4
