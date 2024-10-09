@@ -23,7 +23,7 @@ https://bugs.gentoo.org/937889
 +    with warnings.catch_warnings():
 +        # Workaround for deprecation warnings w/ newer cryptography
 +        # https://github.com/certbot/certbot/issues/9967 (bug #937889)
-+        warnings.filterwarnings("ignore",category=DeprecationWarning)
++        warnings.filterwarnings("ignore", category=CryptographyDeprecationWarning)
 +
 +        if not response_ocsp.this_update:
 +            raise AssertionError('param thisUpdate is not set.')
