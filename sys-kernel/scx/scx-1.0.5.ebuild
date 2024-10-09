@@ -319,7 +319,6 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	dev-util/bpftool
 "
 BDEPEND="
 	app-misc/jq
@@ -327,6 +326,7 @@ BDEPEND="
 		sys-devel/clang:${LLVM_SLOT}=[llvm_targets_BPF(-)]
 	')
 	>=virtual/rust-1.72
+	<=dev-util/bpftool-7.5.0-r1
 "
 
 CONFIG_CHECK="
