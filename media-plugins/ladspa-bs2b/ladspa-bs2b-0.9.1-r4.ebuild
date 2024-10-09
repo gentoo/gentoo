@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/bs2b/plugins/LADSPA%20plugin/${PV}/${
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 DEPEND="media-libs/ladspa-sdk
 		>=media-libs/libbs2b-3.1.0"
