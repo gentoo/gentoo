@@ -4,7 +4,7 @@
 EAPI="8"
 
 FIREFOX_PATCHSET="firefox-128esr-patches-03.tar.xz"
-SPIDERMONKEY_PATCHSET="spidermonkey-128-patches-01.tar.xz"
+SPIDERMONKEY_PATCHSET="spidermonkey-128-patches-02.tar.xz"
 
 LLVM_COMPAT=( 17 18 )
 
@@ -69,10 +69,10 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="${PYTHON_DEPS}
 	$(llvm_gen_dep '
-		sys-devel/llvm:${LLVM_SLOT}
 		clang? (
 			sys-devel/clang:${LLVM_SLOT}
 			sys-devel/lld:${LLVM_SLOT}
+			sys-devel/llvm:${LLVM_SLOT}
 			virtual/rust:0/llvm-${LLVM_SLOT}
 		)
 	')
@@ -92,14 +92,14 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/firefox-${PV%_*}"
 
 llvm_check_deps() {
-	if ! has_version -b "sys-devel/llvm:${LLVM_SLOT}" ; then
-		einfo "sys-devel/llvm:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
-		return 1
-	fi
-
 	if use clang ; then
 		if ! has_version -b "sys-devel/clang:${LLVM_SLOT}" ; then
 			einfo "sys-devel/clang:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
+			return 1
+		fi
+
+		if ! has_version -b "sys-devel/llvm:${LLVM_SLOT}" ; then
+			einfo "sys-devel/llvm:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
 			return 1
 		fi
 
@@ -263,8 +263,8 @@ src_prepare() {
 	# sed-in toolchain prefix
 	sed -i \
 		-e "s/objdump/${CHOST}-objdump/" \
-		python/mozbuild/mozbuild/configure/check_debug_ranges.py \
-		|| die "sed failed to set toolchain prefix"
+		python/mozbuild/mozbuild/configure/check_debug_ranges.py ||
+			die "sed failed to set toolchain prefix"
 
 	einfo "Removing pre-built binaries ..."
 	find third_party -type f \( -name '*.so' -o -name '*.o' \) -print -delete || die
@@ -283,7 +283,7 @@ src_configure() {
 	einfo "Current RUSTFLAGS: ${RUSTFLAGS}"
 
 	local have_switched_compiler=
-	if use clang; then
+	if use clang ; then
 		# Force clang
 		einfo "Enforcing the use of clang due to USE=clang ..."
 
@@ -294,11 +294,14 @@ src_configure() {
 		if tc-is-gcc; then
 			have_switched_compiler=yes
 		fi
+
 		AR=llvm-ar
 		CC=${CHOST}-clang-${version_clang}
 		CXX=${CHOST}-clang++-${version_clang}
 		NM=llvm-nm
 		RANLIB=llvm-ranlib
+		READELF=llvm-readelf
+		OBJDUMP=llvm-objdump
 
 	elif ! use clang && ! tc-is-gcc ; then
 		# Force gcc
@@ -309,6 +312,8 @@ src_configure() {
 		CXX=${CHOST}-g++
 		NM=gcc-nm
 		RANLIB=gcc-ranlib
+		READELF=readelf
+		OBJDUMP=objdump
 	fi
 
 	if [[ -n "${have_switched_compiler}" ]] ; then
@@ -323,7 +328,7 @@ src_configure() {
 	export HOST_CXX="$(tc-getBUILD_CXX)"
 	export AS="$(tc-getCC) -c"
 
-	tc-export CC CXX LD AR AS NM OBJDUMP RANLIB PKG_CONFIG
+	tc-export CC CXX LD AR AS NM OBJDUMP RANLIB READELF PKG_CONFIG
 
 	# Pass the correct toolchain paths through cbindgen
 	if tc-is-cross-compiler ; then
@@ -460,7 +465,6 @@ src_test() {
 src_install() {
 	cd "${BUILD_DIR}" || die
 	default
-	# DESTDIR="${D}" ./mach install || die
 
 	# fix soname links
 	pushd "${ED}"/usr/$(get_libdir) &>/dev/null || die
