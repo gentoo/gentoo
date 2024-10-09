@@ -32,6 +32,9 @@ src_prepare() {
 		"${FILESDIR}/${P}-test.patch"
 	)
 
-	sed -e '/--cov/d' -i pyproject.toml || die
 	distutils-r1_src_prepare
+
+	sed -i -e '/--cov/d' pyproject.toml || die
+	# unpin dependencies
+	sed -i -e 's:\^:>=:' pyproject.toml || die
 }
