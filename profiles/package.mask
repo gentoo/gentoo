@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Orlitzky <mjo@gentoo.org> (2024-10-09)
+# This is the new stable series of webkit-gtk, but it has a new
+# less-portable rendering engine, and doesn't yet build on ~riscv for
+# reasons unrelated to that. It's easier to play around with it in
+# the tree, but it's not ready for end users yet.
+>=net-libs/webkit-gtk-2.46.0
+
 # Ionen Wolkens <ionen@gentoo.org> (2024-10-08)
 # Masked for testing and (mostly) to avoid upgrade noise given
 # PyQt6-6.7.x is known broken with it and depends on <6.8. Feel
