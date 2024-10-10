@@ -9,15 +9,17 @@ inherit python-single-r1
 DESCRIPTION="A command-line tool and library to read and convert trace files"
 HOMEPAGE="https://babeltrace.org/"
 SRC_URI="https://www.efficios.com/files/${PN}/${PN}$(ver_cut 1)-${PV}.tar.bz2"
+S="${WORKDIR}/${PN}$(ver_cut 1)-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1)"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+
 IUSE="doc +elfutils +man plugins python"
 REQUIRED_USE="plugins? ( python ) python? ( ${PYTHON_REQUIRED_USE} )"
-S="${WORKDIR}/${PN}$(ver_cut 1)-${PV}"
 
-RDEPEND=">=dev-libs/glib-2.28:2
+RDEPEND="
+	>=dev-libs/glib-2.28:2
 	elfutils? ( >=dev-libs/elfutils-0.154 )
 	python? ( ${PYTHON_DEPS} )
 "
@@ -39,15 +41,18 @@ BDEPEND="${RDEPEND}
 
 src_configure() {
 	use python && export PYTHON_CONFIG="${EPYTHON}-config"
-	econf \
-		$(use_enable doc api-doc) \
-		$(use_enable elfutils debug-info) \
-		$(use_enable man man-pages) \
-		$(use_enable python python-bindings) \
-		$(usex python $(use_enable doc python-bindings-doc) --disable-python-bindings-doc) \
-		$(use_enable plugins python-plugins) \
-		--disable-built-in-plugins \
+	local myeconfargs=(
+		--disable-built-in-plugins
 		--disable-built-in-python-plugin-support
+		--disable-Werror #920929
+		$(use_enable doc api-doc)
+		$(use_enable elfutils debug-info)
+		$(use_enable man man-pages)
+		$(use_enable python python-bindings)
+		$(usex python $(use_enable doc python-bindings-doc) --disable-python-bindings-doc)
+		$(use_enable plugins python-plugins)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
