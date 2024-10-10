@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Michal Privoznik <michal.privoznik@gmail.com> (2024-10-10)
+# virtualbox is available here
+app-emulation/libvirt -virtualbox
+
 # Patrick McLean <chutzpah@gentoo.org> (2024-09-23)
 # Only supported on x86/amd64 (bug #940014).
 net-misc/lldpd -seccomp
