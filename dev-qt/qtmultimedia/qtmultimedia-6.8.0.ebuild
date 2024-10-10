@@ -92,7 +92,7 @@ CMAKE_SKIP_TESTS=(
 
 src_configure() {
 	# normally passed by the build system, but needed for 32-on-64 chroots
-	use x86 && append-cppflags -DPFFFT_SIMD_DISABLE
+	use x86 && append-cppflags -DDISABLE_SIMD -DPFFFT_SIMD_DISABLE
 
 	local mycmakeargs=(
 		$(cmake_use_find_package qml Qt6Qml)
